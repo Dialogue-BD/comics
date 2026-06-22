@@ -77,12 +77,15 @@
     // Detect iOS to use native rendering, otherwise fallback to Google Docs Viewer
     var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     
+    // Cache-buster query parameter to force Google's servers to fetch the fresh compressed file
+    var cacheBuster = "?v=" + Date.now();
+    
     if (isIOS) {
       // iOS can render PDF inline in iframe natively
-      document.getElementById("pdf-viewer").src = randomPdf;
+      document.getElementById("pdf-viewer").src = randomPdf + cacheBuster;
     } else {
       // Android / others require Google Docs Viewer
-      var pdfUrl = "https://twinhall.github.io/comics/stories/" + randomPdf;
+      var pdfUrl = "https://twinhall.github.io/comics/stories/" + randomPdf + cacheBuster;
       document.getElementById("pdf-viewer").src = "https://docs.google.com/viewer?url=" + encodeURIComponent(pdfUrl) + "&embedded=true";
     }
 
@@ -94,8 +97,8 @@
     btn.addEventListener("click", function() {
       var isFullscreen = document.fullscreenElement || 
                          document.mozFullScreenElement || 
-                         document.webkitFullscreenElement || 
-                         document.msFullscreenElement;
+                         document.webkitFullScreenElement || 
+                         document.msFullScreenElement;
                          
       if (isFullscreen) {
         if (document.exitFullscreen) {
@@ -125,7 +128,7 @@
     function updateFullscreenIcons() {
       var isFullscreen = document.fullscreenElement || 
                          document.mozFullScreenElement || 
-                         document.webkitFullscreenElement || 
+                         document.webkitFullScreenElement || 
                          document.msFullscreenElement;
       if (isFullscreen) {
         enterIcon.style.display = "none";
