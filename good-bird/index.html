@@ -290,6 +290,125 @@
       }
     });
 
+    // DESKTOP EVENT LISTENERS
+
+    // 1. Mouse Wheel Scroll & Trackpad Zoom
+    document.body.addEventListener("wheel", function(e) {
+      contentHeight = container.offsetHeight;
+      if (e.ctrlKey) {
+        e.preventDefault();
+        var factor = 1 - e.deltaY * 0.01;
+        var newScale = scale * factor;
+        if (newScale < 1) newScale = 1;
+        if (newScale > 5) newScale = 5;
+        
+        var mouseX = e.clientX;
+        var mouseY = e.clientY;
+        
+        var newPosX = mouseX - window.innerWidth / 2 - (newScale / scale) * (mouseX - window.innerWidth / 2 - posX);
+        var newPosY = mouseY - (newScale / scale) * (mouseY - posY);
+        
+        var maxPanX = (newScale - 1) * window.innerWidth / 2;
+        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+        
+        if (contentHeight * newScale <= window.innerHeight) {
+          posY = (window.innerHeight - contentHeight * newScale) / 2;
+        } else {
+          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * newScale, newPosY));
+        }
+        
+        scale = newScale;
+        updateTransform();
+      } else {
+        if (scale > 1 || contentHeight * scale > window.innerHeight) {
+          e.preventDefault();
+          var newPosY = posY - e.deltaY;
+          var newPosX = posX - e.deltaX;
+          
+          var maxPanX = (scale - 1) * window.innerWidth / 2;
+          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+          
+          if (contentHeight * scale <= window.innerHeight) {
+            posY = (window.innerHeight - contentHeight * scale) / 2;
+          } else {
+            posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
+          }
+          updateTransform();
+        }
+      }
+    }, { passive: false });
+
+    // 2. Mouse Click-and-Drag Panning
+    var isMouseDown = false;
+    var mouseStartX = 0, mouseStartY = 0;
+    document.body.addEventListener("mousedown", function(e) {
+      if (e.button !== 0 || e.target.closest("#fullscreen-btn")) return;
+      isMouseDown = true;
+      mouseStartX = e.clientX;
+      mouseStartY = e.clientY;
+      basePosX = posX;
+      basePosY = posY;
+      document.body.style.cursor = "grabbing";
+    });
+
+    document.body.addEventListener("mousemove", function(e) {
+      if (!isMouseDown) return;
+      contentHeight = container.offsetHeight;
+      if (scale > 1 || contentHeight * scale > window.innerHeight) {
+        e.preventDefault();
+        var dx = e.clientX - mouseStartX;
+        var dy = e.clientY - mouseStartY;
+        
+        var newPosX = basePosX + dx;
+        var newPosY = basePosY + dy;
+        
+        var maxPanX = (scale - 1) * window.innerWidth / 2;
+        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+        
+        if (contentHeight * scale <= window.innerHeight) {
+          posY = (window.innerHeight - contentHeight * scale) / 2;
+        } else {
+          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
+        }
+        updateTransform();
+      }
+    });
+
+    document.body.addEventListener("mouseup", function() {
+      isMouseDown = false;
+      document.body.style.cursor = "default";
+    });
+    document.body.addEventListener("mouseleave", function() {
+      isMouseDown = false;
+      document.body.style.cursor = "default";
+    });
+
+    // 3. Keyboard Arrow & Page Key Scrolling
+    document.addEventListener("keydown", function(e) {
+      contentHeight = container.offsetHeight;
+      var scrollAmount = 40;
+      var pageScroll = window.innerHeight * 0.8;
+      
+      var deltaY = 0;
+      if (e.key === "ArrowDown") deltaY = scrollAmount;
+      else if (e.key === "ArrowUp") deltaY = -scrollAmount;
+      else if (e.key === "PageDown") deltaY = pageScroll;
+      else if (e.key === "PageUp") deltaY = -pageScroll;
+      else if (e.key === "Spacebar" || e.key === " ") deltaY = e.shiftKey ? -pageScroll : pageScroll;
+      else return;
+
+      if (scale > 1 || contentHeight * scale > window.innerHeight) {
+        e.preventDefault();
+        var newPosY = posY - deltaY;
+        if (contentHeight * scale <= window.innerHeight) {
+          posY = (window.innerHeight - contentHeight * scale) / 2;
+        } else {
+          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
+        }
+        updateTransform();
+      }
+    });
+
     // Fullscreen Toggle logic
     var btn = document.getElementById("fullscreen-btn");
     var enterIcon = document.getElementById("enter-icon");

@@ -169,6 +169,75 @@
       }
     });
 
+    // DESKTOP EVENT LISTENERS
+
+    // 1. Mouse Wheel Trackpad Zoom
+    document.body.addEventListener("wheel", function(e) {
+      if (e.ctrlKey) {
+        e.preventDefault();
+        var factor = 1 - e.deltaY * 0.01;
+        var newScale = scale * factor;
+        if (newScale < 1) newScale = 1;
+        if (newScale > 5) newScale = 5;
+        
+        var mouseX = e.clientX;
+        var mouseY = e.clientY;
+        
+        var newPosX = mouseX - window.innerWidth / 2 - (newScale / scale) * (mouseX - window.innerWidth / 2 - posX);
+        var newPosY = mouseY - window.innerHeight / 2 - (newScale / scale) * (mouseY - window.innerHeight / 2 - posY);
+        
+        var maxPanX = (newScale - 1) * window.innerWidth / 2;
+        var maxPanY = (newScale - 1) * window.innerHeight / 2;
+        
+        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+        posY = Math.min(maxPanY, Math.max(-maxPanY, newPosY));
+        
+        scale = newScale;
+        updateTransform();
+      }
+    }, { passive: false });
+
+    // 2. Mouse Click-and-Drag Panning
+    var isMouseDown = false;
+    var mouseStartX = 0, mouseStartY = 0;
+    document.body.addEventListener("mousedown", function(e) {
+      if (e.button !== 0 || e.target.closest("#fullscreen-btn")) return;
+      isMouseDown = true;
+      mouseStartX = e.clientX;
+      mouseStartY = e.clientY;
+      basePosX = posX;
+      basePosY = posY;
+      document.body.style.cursor = "grabbing";
+    });
+
+    document.body.addEventListener("mousemove", function(e) {
+      if (!isMouseDown) return;
+      if (scale > 1) {
+        e.preventDefault();
+        var dx = e.clientX - mouseStartX;
+        var dy = e.clientY - mouseStartY;
+        
+        var newPosX = basePosX + dx;
+        var newPosY = basePosY + dy;
+        
+        var maxPanX = (scale - 1) * window.innerWidth / 2;
+        var maxPanY = (scale - 1) * window.innerHeight / 2;
+        
+        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+        posY = Math.min(maxPanY, Math.max(-maxPanY, newPosY));
+        updateTransform();
+      }
+    });
+
+    document.body.addEventListener("mouseup", function() {
+      isMouseDown = false;
+      document.body.style.cursor = "default";
+    });
+    document.body.addEventListener("mouseleave", function() {
+      isMouseDown = false;
+      document.body.style.cursor = "default";
+    });
+
     function toggleFullscreen() {
       var isFullscreen = document.fullscreenElement || 
                          document.mozFullScreenElement || 
