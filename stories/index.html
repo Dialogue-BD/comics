@@ -6,6 +6,8 @@
   <title>Wordless Picture Story</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Load PDF.js from cdnjs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <style>
     body, html {
       margin: 0;
@@ -15,23 +17,44 @@
       overflow: hidden;
       background-color: #000000;
       font-family: sans-serif;
+      touch-action: none; /* Disable default browser touch zoom/scroll */
     }
-    /* Container to hold the iframe and allow CSS scaling */
     #viewer-container {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 100vw;
+      height: 100vh;
       overflow: hidden;
-      perspective: 1000px;
+      position: relative;
     }
-    iframe {
+    #pdf-container {
       width: 100%;
-      height: 100%;
-      border: none;
-      transition: transform 0.05s linear;
-      transform-origin: center center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: center top;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    canvas {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      background-color: #1a1a1a;
+    }
+    /* Loading overlay */
+    #loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffffff;
+      font-size: 18px;
+      z-index: 10000;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
     }
     /* Floating Fullscreen Button */
     #fullscreen-btn {
@@ -65,101 +88,210 @@
   </style>
 </head>
 <body>
+  <div id="loading">Loading Story...</div>
   <div id="viewer-container">
-    <iframe id="pdf-viewer" src=""></iframe>
+    <div id="pdf-container"></div>
   </div>
 
   <!-- Floating Button to Toggle Fullscreen -->
   <div id="fullscreen-btn" title="Toggle Fullscreen">
-    <!-- Fullscreen Enter Icon -->
     <svg id="enter-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
     </svg>
-    <!-- Fullscreen Exit Icon -->
     <svg id="exit-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
       <path d="M4 14h6v6m10-6h-6v6M4 10h6V4m10 6h-6V4"></path>
     </svg>
   </div>
 
   <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
     var pdfs = ["buried_treasure.pdf", "genesis_1.pdf", "good_samaritan.pdf", "good_samaritan_hijra.pdf", "hingsha.pdf", "prodigal_son.pdf", "ruth_in_bd.pdf", "the_flower_man.pdf"];
-
-    // Select a random PDF
     var randomPdf = pdfs[Math.floor(Math.random() * pdfs.length)];
-    
-    // Detect iOS to use native rendering, otherwise fallback to Google Docs Viewer
-    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     var cacheBuster = "?v=" + Date.now();
-    var pdfViewer = document.getElementById("pdf-viewer");
-    
-    if (isIOS) {
-      pdfViewer.src = randomPdf + cacheBuster;
-    } else {
-      var pdfUrl = "https://twinhall.github.io/comics/stories/" + randomPdf + cacheBuster;
-      pdfViewer.src = "https://docs.google.com/viewer?url=" + encodeURIComponent(pdfUrl) + "&embedded=true";
-    }
 
-    // TWO-FINGER PINCH TO ZOOM FOR IFRAME
+    var container = document.getElementById("pdf-container");
+    var loading = document.getElementById("loading");
+
     var scale = 1;
+    var posX = 0;
+    var posY = 0;
+    var contentHeight = 0;
+
     var initDist = 0;
+    var initMidX = 0, initMidY = 0;
+    var baseScale = 1;
+    var basePosX = 0, basePosY = 0;
+    var startX = 0, startY = 0;
+    var activeTouch = false;
     var isPinching = false;
 
-    function getDistance(t1, t2) {
-      return Math.sqrt(Math.pow(t1.clientX - t2.clientX, 2) + Math.pow(t1.clientY - t2.clientY, 2));
+    var touchStartTime = 0;
+    var startTouchX = 0, startTouchY = 0;
+    var isGesture = false;
+    var lastTap = 0;
+
+    // Load PDF
+    pdfjsLib.getDocument(randomPdf + cacheBuster).promise.then(async function(pdf) {
+      for (var pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        var page = await pdf.getPage(pageNum);
+        var viewport = page.getViewport({ scale: 1.0 });
+        var fitScale = window.innerWidth / viewport.width;
+        var pageViewport = page.getViewport({ scale: fitScale });
+
+        var canvas = document.createElement("canvas");
+        var ctx = canvas.getContext("2d");
+        var dpr = window.devicePixelRatio || 1;
+        
+        canvas.width = pageViewport.width * dpr;
+        canvas.height = pageViewport.height * dpr;
+        canvas.style.width = pageViewport.width + "px";
+        canvas.style.height = pageViewport.height + "px";
+
+        container.appendChild(canvas);
+
+        var renderContext = {
+          canvasContext: ctx,
+          viewport: pageViewport,
+          transform: [dpr, 0, 0, dpr, 0, 0]
+        };
+        await page.render(renderContext).promise;
+      }
+      loading.style.opacity = "0";
+      setTimeout(function() { loading.style.display = "none"; }, 300);
+      
+      // Update dimensions and initial centering
+      contentHeight = container.offsetHeight;
+      centerContent();
+    }).catch(function(err) {
+      console.error(err);
+      loading.innerText = "Error loading story.";
+    });
+
+    function centerContent() {
+      if (contentHeight * scale <= window.innerHeight) {
+        posY = (window.innerHeight - contentHeight * scale) / 2;
+      } else {
+        posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, posY));
+      }
+      posX = 0;
+      updateTransform();
     }
 
-    // Attach listeners to the body to capture pinch gestures
+    function updateTransform() {
+      container.style.transform = "translate(" + posX + "px, " + posY + "px) scale(" + scale + ")";
+    }
+
+    // Touch Event Handlers
     document.body.addEventListener("touchstart", function(e) {
+      activeTouch = true;
       if (e.touches.length === 2) {
-        initDist = getDistance(e.touches[0], e.touches[1]);
         isPinching = true;
+        initDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+        initMidX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        initMidY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        baseScale = scale;
+        basePosX = posX;
+        basePosY = posY;
+      } else if (e.touches.length === 1) {
+        isPinching = false;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        basePosX = posX;
+        basePosY = posY;
+
+        touchStartTime = Date.now();
+        startTouchX = e.touches[0].clientX;
+        startTouchY = e.touches[0].clientY;
+        isGesture = false;
       }
     });
 
     document.body.addEventListener("touchmove", function(e) {
-      if (isPinching && e.touches.length === 2 && initDist > 0) {
-        e.preventDefault(); // Prevent default browser zoom/scroll while pinching
-        var dist = getDistance(e.touches[0], e.touches[1]);
-        var factor = dist / initDist;
-        var newScale = scale * factor;
-        
-        // Bound zoom between 1x and 4x
-        if (newScale < 1) newScale = 1;
-        if (newScale > 4) newScale = 4;
-        
-        pdfViewer.style.transform = "scale(" + newScale + ")";
-      }
-    });
+      if (!activeTouch) return;
+      contentHeight = container.offsetHeight;
 
-    document.body.addEventListener("touchend", function(e) {
-      if (e.touches.length < 2 && isPinching) {
-        isPinching = false;
-        
-        // Extract scale from matrix to save current zoom level
-        var transform = pdfViewer.style.transform;
-        var match = transform.match(/scale\(([^)]+)\)/);
-        if (match) {
-          scale = parseFloat(match[1]);
-        }
-        initDist = 0;
-      }
-    });
-
-    // Double tap to reset zoom
-    var lastTap = 0;
-    document.body.addEventListener("touchend", function(e) {
-      var currentTime = new Date().getTime();
-      var tapLength = currentTime - lastTap;
-      if (tapLength < 300 && tapLength > 0) {
-        // Double tap detected! Reset zoom
-        scale = 1;
-        pdfViewer.style.transform = "scale(1)";
+      if (e.touches.length === 2 && isPinching) {
         e.preventDefault();
+        var dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+        var midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        var midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+        var factor = dist / initDist;
+        var newScale = baseScale * factor;
+        if (newScale < 1) newScale = 1;
+        if (newScale > 5) newScale = 5;
+
+        // Midpoint-centered zoom formulas
+        var newPosX = midX - window.innerWidth / 2 - (newScale / baseScale) * (initMidX - window.innerWidth / 2 - basePosX);
+        var newPosY = midY - (newScale / baseScale) * (initMidY - basePosY);
+
+        // Apply scale & bound translations
+        var maxPanX = (newScale - 1) * window.innerWidth / 2;
+        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+
+        if (contentHeight * newScale <= window.innerHeight) {
+          posY = (window.innerHeight - contentHeight * newScale) / 2;
+        } else {
+          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * newScale, newPosY));
+        }
+
+        scale = newScale;
+        updateTransform();
+      } else if (e.touches.length === 1) {
+        var dx = e.touches[0].clientX - startTouchX;
+        var dy = e.touches[0].clientY - startTouchY;
+        if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
+          isGesture = true;
+        }
+
+        // We can always drag if the content overflows the screen vertically, or if scale > 1
+        if (scale > 1 || contentHeight * scale > window.innerHeight) {
+          e.preventDefault();
+          var currentX = e.touches[0].clientX;
+          var currentY = e.touches[0].clientY;
+
+          var newPosX = basePosX + (currentX - startX);
+          var newPosY = basePosY + (currentY - startY);
+
+          var maxPanX = (scale - 1) * window.innerWidth / 2;
+          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+
+          if (contentHeight * scale <= window.innerHeight) {
+            posY = (window.innerHeight - contentHeight * scale) / 2;
+          } else {
+            posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
+          }
+          updateTransform();
+        }
       }
-      lastTap = currentTime;
     });
 
-    // Toggle Fullscreen Function
+    document.body.addEventListener("touchend", function(e) {
+      if (e.touches.length === 0) {
+        activeTouch = false;
+        isPinching = false;
+
+        // Double-tap reset
+        var currentTime = Date.now();
+        var tapLength = currentTime - lastTap;
+        if (tapLength < 300 && tapLength > 0 && !isGesture) {
+          scale = 1;
+          centerContent();
+          e.preventDefault();
+        }
+        lastTap = currentTime;
+      } else if (e.touches.length === 1) {
+        // Switch to panning cleanly
+        isPinching = false;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        basePosX = posX;
+        basePosY = posY;
+      }
+    });
+
+    // Fullscreen Toggle logic
     var btn = document.getElementById("fullscreen-btn");
     var enterIcon = document.getElementById("enter-icon");
     var exitIcon = document.getElementById("exit-icon");
@@ -167,38 +299,27 @@
     btn.addEventListener("click", function() {
       var isFullscreen = document.fullscreenElement || 
                          document.mozFullScreenElement || 
-                         document.webkitFullScreenElement || 
+                         document.webkitFullscreenElement || 
                          document.msFullscreenElement;
-                         
       if (isFullscreen) {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen();
       } else {
         var docElm = document.documentElement;
-        if (docElm.requestFullscreen) {
-          docElm.requestFullscreen();
-        } else if (docElm.mozRequestFullScreen) {
-          docElm.mozRequestFullScreen();
-        } else if (docElm.webkitRequestFullscreen) {
-          docElm.webkitRequestFullscreen();
-        } else if (docElm.msRequestFullscreen) {
-          docElm.msRequestFullscreen();
-        }
+        if (docElm.requestFullscreen) docElm.requestFullscreen();
+        else if (docElm.mozRequestFullScreen) docElm.mozRequestFullScreen();
+        else if (docElm.webkitRequestFullscreen) docElm.webkitRequestFullscreen();
+        else if (docElm.msRequestFullscreen) docElm.msRequestFullscreen();
       }
     });
 
     function updateFullscreenIcons() {
       var isFullscreen = document.fullscreenElement || 
                          document.mozFullScreenElement || 
-                         document.webkitFullScreenElement || 
-                         document.msFullScreenElement;
+                         document.webkitFullscreenElement || 
+                         document.msFullscreenElement;
       if (isFullscreen) {
         enterIcon.style.display = "none";
         exitIcon.style.display = "block";
@@ -212,6 +333,12 @@
     document.addEventListener("webkitfullscreenchange", updateFullscreenIcons);
     document.addEventListener("mozfullscreenchange", updateFullscreenIcons);
     document.addEventListener("MSFullscreenChange", updateFullscreenIcons);
+
+    // Re-center on window resize
+    window.addEventListener("resize", function() {
+      contentHeight = container.offsetHeight;
+      centerContent();
+    });
   </script>
 </body>
 </html>

@@ -25,7 +25,6 @@
       width: auto;
       height: auto;
       object-fit: contain;
-      transition: transform 0.05s linear; /* Smooth micro-animation for zooming */
       transform-origin: center center;
     }
   </style>
@@ -44,34 +43,46 @@
 
     // PINCH TO ZOOM & PAN LOGIC (纯JS实现，在全屏模式下依然完美缩放与拖拽)
     var scale = 1;
-    var initDist = 0;
-    var startX = 0, startY = 0;
     var posX = 0, posY = 0;
+    
+    var initDist = 0;
+    var initMidX = 0, initMidY = 0;
+    var baseScale = 1;
+    var basePosX = 0, basePosY = 0;
+    var startX = 0, startY = 0;
     var activeTouch = false;
+    var isPinching = false;
     
     // Tap-to-fullscreen detection
     var touchStartTime = 0;
     var startTouchX = 0, startTouchY = 0;
     var isGesture = false;
+    var lastTap = 0;
 
-    function getDistance(t1, t2) {
-      return Math.sqrt(Math.pow(t1.clientX - t2.clientX, 2) + Math.pow(t1.clientY - t2.clientY, 2));
+    function updateTransform() {
+      img.style.transform = "translate(" + posX + "px, " + posY + "px) scale(" + scale + ")";
     }
 
     document.body.addEventListener("touchstart", function(e) {
+      activeTouch = true;
       if (e.touches.length === 2) {
-        initDist = getDistance(e.touches[0], e.touches[1]);
-        activeTouch = true;
-        isGesture = true;
+        isPinching = true;
+        initDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+        initMidX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        initMidY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        baseScale = scale;
+        basePosX = posX;
+        basePosY = posY;
       } else if (e.touches.length === 1) {
-        // Record tap start
+        isPinching = false;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        basePosX = posX;
+        basePosY = posY;
+        
         touchStartTime = Date.now();
         startTouchX = e.touches[0].clientX;
         startTouchY = e.touches[0].clientY;
-        
-        startX = e.touches[0].clientX - posX;
-        startY = e.touches[0].clientY - posY;
-        activeTouch = true;
         isGesture = false;
       }
     });
@@ -79,61 +90,82 @@
     document.body.addEventListener("touchmove", function(e) {
       if (!activeTouch) return;
       
-      // Determine if it is a drag/gesture
-      if (e.touches.length === 1) {
+      if (e.touches.length === 2 && isPinching) {
+        e.preventDefault();
+        var dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+        var midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        var midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        
+        var factor = dist / initDist;
+        var newScale = baseScale * factor;
+        if (newScale < 1) newScale = 1;
+        if (newScale > 5) newScale = 5;
+        
+        // Midpoint-centered zoom formulas (for center-center origin)
+        var newPosX = midX - window.innerWidth / 2 - (newScale / baseScale) * (initMidX - window.innerWidth / 2 - basePosX);
+        var newPosY = midY - window.innerHeight / 2 - (newScale / baseScale) * (initMidY - window.innerHeight / 2 - basePosY);
+        
+        // Bound panning
+        var maxPanX = (newScale - 1) * window.innerWidth / 2;
+        var maxPanY = (newScale - 1) * window.innerHeight / 2;
+        
+        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+        posY = Math.min(maxPanY, Math.max(-maxPanY, newPosY));
+        scale = newScale;
+        updateTransform();
+      } else if (e.touches.length === 1) {
         var dx = e.touches[0].clientX - startTouchX;
         var dy = e.touches[0].clientY - startTouchY;
         if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
           isGesture = true;
         }
-      }
-
-      if (e.touches.length === 2 && initDist > 0) {
-        e.preventDefault();
-        var dist = getDistance(e.touches[0], e.touches[1]);
-        var factor = dist / initDist;
-        var newScale = scale * factor;
         
-        // Bounded zoom between 1x and 4x
-        if (newScale < 1) newScale = 1;
-        if (newScale > 4) newScale = 4;
-        
-        img.style.transform = "scale(" + newScale + ") translate(" + (posX / newScale) + "px, " + (posY / newScale) + "px)";
-      } else if (e.touches.length === 1 && scale > 1) {
-        e.preventDefault();
-        posX = e.touches[0].clientX - startX;
-        posY = e.touches[0].clientY - startY;
-        
-        // Bound panning boundaries
-        var maxPanX = (scale - 1) * window.innerWidth / 2;
-        var maxPanY = (scale - 1) * window.innerHeight / 2;
-        if (posX > maxPanX) posX = maxPanX;
-        if (posX < -maxPanX) posX = -maxPanX;
-        if (posY > maxPanY) posY = maxPanY;
-        if (posY < -maxPanY) posY = -maxPanY;
-        
-        img.style.transform = "scale(" + scale + ") translate(" + (posX / scale) + "px, " + (posY / scale) + "px)";
+        if (scale > 1) {
+          e.preventDefault();
+          var currentX = e.touches[0].clientX;
+          var currentY = e.touches[0].clientY;
+          
+          var newPosX = basePosX + (currentX - startX);
+          var newPosY = basePosY + (currentY - startY);
+          
+          var maxPanX = (scale - 1) * window.innerWidth / 2;
+          var maxPanY = (scale - 1) * window.innerHeight / 2;
+          
+          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+          posY = Math.min(maxPanY, Math.max(-maxPanY, newPosY));
+          updateTransform();
+        }
       }
     });
 
     document.body.addEventListener("touchend", function(e) {
-      if (e.touches.length < 2) {
-        if (e.touches.length === 0) {
-          activeTouch = false;
-          
+      if (e.touches.length === 0) {
+        activeTouch = false;
+        isPinching = false;
+        
+        // Double-tap reset
+        var currentTime = Date.now();
+        var tapLength = currentTime - lastTap;
+        if (tapLength < 300 && tapLength > 0 && !isGesture) {
+          scale = 1;
+          posX = 0;
+          posY = 0;
+          updateTransform();
+          e.preventDefault();
+        } else {
           // Tap check: if no gesture and short duration, toggle fullscreen
           if (!isGesture && (Date.now() - touchStartTime < 250)) {
             toggleFullscreen();
           }
         }
-        
-        // Extract scale from transform matrix to keep state
-        var transform = img.style.transform;
-        var match = transform.match(/scale\(([^)]+)\)/);
-        if (match) {
-          scale = parseFloat(match[1]);
-        }
-        initDist = 0;
+        lastTap = currentTime;
+      } else if (e.touches.length === 1) {
+        // Transition to panning without jumps
+        isPinching = false;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        basePosX = posX;
+        basePosY = posY;
       }
     });
 
