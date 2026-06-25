@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Mezban</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Load PDF.js from cdnjs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #000000;
+      font-family: sans-serif;
+      touch-action: none; /* Disable default browser touch zoom/scroll */
+    }
+    #viewer-container {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    #pdf-container {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: center top;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    canvas {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      background-color: #1a1a1a;
+    }
+    /* Loading overlay */
+    #loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffffff;
+      font-size: 18px;
+      z-index: 10000;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    /* Floating Fullscreen Button */
+    #fullscreen-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #fullscreen-btn:active {
+      transform: scale(0.9);
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+    #fullscreen-btn svg {
+      width: 24px;
+      height: 24px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">Loading Story...</div>
+  <div id="viewer-container">
+    <div id="pdf-container"></div>
+  </div>
+
+  <!-- Floating Button to Toggle Fullscreen -->
+  <div id="fullscreen-btn" title="Toggle Fullscreen">
+    <svg id="enter-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+    </svg>
+    <svg id="exit-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+      <path d="M4 14h6v6m10-6h-6v6M4 10h6V4m10 6h-6V4"></path>
+    </svg>
+  </div>
+
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    var pdfUrl = "mezban.pdf";
+    var cacheBuster = "?v=" + Date.now();
+
+    var container = document.getElementById("pdf-container");
+    var loading = document.getElementById("loading");
+
+    var scale = 1;
+    var posX = 0;
+    var posY = 0;
+    var contentHeight = 0;
+
+    var initDist = 0;
+    var initMidX = 0, initMidY = 0;
+    var baseScale = 1;
+    var basePosX = 0, basePosY = 0;
+    var startX = 0, startY = 0;
+    var activeTouch = false;
+    var isPinching = false;
+
+    var touchStartTime = 0;
+    var startTouchX = 0, startTouchY = 0;
+    var isGesture = false;
+    var lastTap = 0;
+
+    // Load PDF
+    pdfjsLib.getDocument(pdfUrl + cacheBuster).promise.then(async function(pdf) {
+      for (var pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        var page = await pdf.getPage(pageNum);
+        var viewport = page.getViewport({ scale: 1.0 });
+        var fitScale = window.innerWidth / viewport.width;
+        var pageViewport = page.getViewport({ scale: fitScale });
+
+        var canvas = document.createElement("canvas");
+        var ctx = canvas.getContext("2d");
+        var dpr = window.devicePixelRatio || 1;
+        
+        canvas.width = pageViewport.width * dpr;
+        canvas.height = pageViewport.height * dpr;
+        canvas.style.width = pageViewport.width + "px";
+        canvas.style.height = pageViewport.height + "px";
+
+        container.appendChild(canvas);
+
+        var renderContext = {
+          canvasContext: ctx,
+          viewport: pageViewport,
+          transform: [dpr, 0, 0, dpr, 0, 0]
+        };
+        await page.render(renderContext).promise;
+      }
+      loading.style.opacity = "0";
+      setTimeout(function() { loading.style.display = "none"; }, 300);
+      
+      // Update dimensions and initial centering
+      contentHeight = container.offsetHeight;
+      centerContent();
+    }).catch(function(err) {
+      console.error(err);
+      loading.innerText = "Error loading story.";
+    });
+
+    function centerContent() {
+      if (contentHeight * scale <= window.innerHeight) {
+        posY = (window.innerHeight - contentHeight * scale) / 2;
+      } else {
+        posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, posY));
+      }
+      posX = 0;
+      updateTransform();
+    }
+
+    function updateTransform() {
+      container.style.transform = "translate(" + posX + "px, " + posY + "px) scale(" + scale + ")";
+    }
+
+    // Touch Event Handlers
+    document.body.addEventListener("touchstart", function(e) {
+      activeTouch = true;
+      if (e.touches.length === 2) {
+        isPinching = true;
+        initDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+        initMidX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        initMidY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        baseScale = scale;
+        basePosX = posX;
+        basePosY = posY;
+      } else if (e.touches.length === 1) {
+        isPinching = false;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        basePosX = posX;
+        basePosY = posY;
+
+        touchStartTime = Date.now();
+        startTouchX = e.touches[0].clientX;
+        startTouchY = e.touches[0].clientY;
+        isGesture = false;
+      }
+    });
+
+    document.body.addEventListener("touchmove", function(e) {
+      if (!activeTouch) return;
+      contentHeight = container.offsetHeight;
+
+      if (e.touches.length === 2 && isPinching) {
+        e.preventDefault();
+        var dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+        var midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        var midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+        var factor = dist / initDist;
+        var newScale = baseScale * factor;
+        if (newScale < 1) newScale = 1;
+        if (newScale > 5) newScale = 5;
+
+        // Midpoint-centered zoom formulas
+        var newPosX = midX - window.innerWidth / 2 - (newScale / baseScale) * (initMidX - window.innerWidth / 2 - basePosX);
+        var newPosY = midY - (newScale / baseScale) * (initMidY - basePosY);
+
+        // Apply scale & bound translations
+        var maxPanX = (newScale - 1) * window.innerWidth / 2;
+        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+
+        if (contentHeight * newScale <= window.innerHeight) {
+          posY = (window.innerHeight - contentHeight * newScale) / 2;
+        } else {
+          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * newScale, newPosY));
+        }
+
+        scale = newScale;
+        updateTransform();
+      } else if (e.touches.length === 1) {
+        var dx = e.touches[0].clientX - startTouchX;
+        var dy = e.touches[0].clientY - startTouchY;
+        if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
+          isGesture = true;
+        }
+
+        // We can always drag if the content overflows the screen vertically, or if scale > 1
+        if (scale > 1 || contentHeight * scale > window.innerHeight) {
+          e.preventDefault();
+          var currentX = e.touches[0].clientX;
+          var currentY = e.touches[0].clientY;
+
+          var newPosX = basePosX + (currentX - startX);
+          var newPosY = basePosY + (currentY - startY);
+
+          var maxPanX = (scale - 1) * window.innerWidth / 2;
+          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+
+          if (contentHeight * scale <= window.innerHeight) {
+            posY = (window.innerHeight - contentHeight * scale) / 2;
+          } else {
+            posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
+          }
+          updateTransform();
+        }
+      }
+    });
+
+    document.body.addEventListener("touchend", function(e) {
+      if (e.touches.length === 0) {
+        activeTouch = false;
+        isPinching = false;
+
+        // Double-tap reset
+        var currentTime = Date.now();
+        var tapLength = currentTime - lastTap;
+        if (tapLength < 300 && tapLength > 0 && !isGesture) {
+          scale = 1;
+          centerContent();
+          e.preventDefault();
+        }
+        lastTap = currentTime;
+      } else if (e.touches.length === 1) {
+        // Switch to panning cleanly
+        isPinching = false;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        basePosX = posX;
+        basePosY = posY;
+      }
+    });
+
+    // DESKTOP EVENT LISTENERS
+
+    // 1. Mouse Wheel Scroll & Trackpad Zoom
+    document.body.addEventListener("wheel", function(e) {
+      contentHeight = container.offsetHeight;
+      if (e.ctrlKey) {
+        e.preventDefault();
+        var factor = 1 - e.deltaY * 0.01;
+        var newScale = scale * factor;
+        if (newScale < 1) newScale = 1;
+        if (newScale > 5) newScale = 5;
+        
+        var mouseX = e.clientX;
+        var mouseY = e.clientY;
+        
+        var newPosX = mouseX - window.innerWidth / 2 - (newScale / scale) * (mouseX - window.innerWidth / 2 - posX);
+        var newPosY = mouseY - (newScale / scale) * (mouseY - posY);
+        
+        var maxPanX = (newScale - 1) * window.innerWidth / 2;
+        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+        
+        if (contentHeight * newScale <= window.innerHeight) {
+          posY = (window.innerHeight - contentHeight * newScale) / 2;
+        } else {
+          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * newScale, newPosY));
+        }
+        
+        scale = newScale;
+        updateTransform();
+      } else {
+        if (scale > 1 || contentHeight * scale > window.innerHeight) {
+          e.preventDefault();
+          var newPosY = posY - e.deltaY;
+          var newPosX = posX - e.deltaX;
+          
+          var maxPanX = (scale - 1) * window.innerWidth / 2;
+          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+          
+          if (contentHeight * scale <= window.innerHeight) {
+            posY = (window.innerHeight - contentHeight * scale) / 2;
+          } else {
+            posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
+          }
+          updateTransform();
+        }
+      }
+    }, { passive: false });
+
+    // 2. Mouse Click-and-Drag Panning
+    var isMouseDown = false;
+    var mouseStartX = 0, mouseStartY = 0;
+    document.body.addEventListener("mousedown", function(e) {
+      if (e.button !== 0 || e.target.closest("#fullscreen-btn")) return;
+      isMouseDown = true;
+      mouseStartX = e.clientX;
+      mouseStartY = e.clientY;
+      basePosX = posX;
+      basePosY = posY;
+      document.body.style.cursor = "grabbing";
+    });
+
+    document.body.addEventListener("mousemove", function(e) {
+      if (!isMouseDown) return;
+      contentHeight = container.offsetHeight;
+      if (scale > 1 || contentHeight * scale > window.innerHeight) {
+        e.preventDefault();
+        var dx = e.clientX - mouseStartX;
+        var dy = e.clientY - mouseStartY;
+        
+        var newPosX = basePosX + dx;
+        var newPosY = basePosY + dy;
+        
+        var maxPanX = (scale - 1) * window.innerWidth / 2;
+        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+        
+        if (contentHeight * scale <= window.innerHeight) {
+          posY = (window.innerHeight - contentHeight * scale) / 2;
+        } else {
+          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
+        }
+        updateTransform();
+      }
+    });
+
+    document.body.addEventListener("mouseup", function() {
+      isMouseDown = false;
+      document.body.style.cursor = "default";
+    });
+    document.body.addEventListener("mouseleave", function() {
+      isMouseDown = false;
+      document.body.style.cursor = "default";
+    });
+
+    // 3. Keyboard Arrow & Page Key Scrolling
+    document.addEventListener("keydown", function(e) {
+      contentHeight = container.offsetHeight;
+      var scrollAmount = 40;
+      var pageScroll = window.innerHeight * 0.8;
+      
+      var deltaY = 0;
+      if (e.key === "ArrowDown") deltaY = scrollAmount;
+      else if (e.key === "ArrowUp") deltaY = -scrollAmount;
+      else if (e.key === "PageDown") deltaY = pageScroll;
+      else if (e.key === "PageUp") deltaY = -pageScroll;
+      else if (e.key === "Spacebar" || e.key === " ") deltaY = e.shiftKey ? -pageScroll : pageScroll;
+      else return;
+
+      if (scale > 1 || contentHeight * scale > window.innerHeight) {
+        e.preventDefault();
+        var newPosY = posY - deltaY;
+        if (contentHeight * scale <= window.innerHeight) {
+          posY = (window.innerHeight - contentHeight * scale) / 2;
+        } else {
+          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
+        }
+        updateTransform();
+      }
+    });
+
+    // Fullscreen Toggle logic
+    var btn = document.getElementById("fullscreen-btn");
+    var enterIcon = document.getElementById("enter-icon");
+    var exitIcon = document.getElementById("exit-icon");
+
+    btn.addEventListener("click", function() {
+      var isFullscreen = document.fullscreenElement || 
+                         document.mozFullScreenElement || 
+                         document.webkitFullscreenElement || 
+                         document.msFullscreenElement;
+      if (isFullscreen) {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen();
+      } else {
+        var docElm = document.documentElement;
+        if (docElm.requestFullscreen) docElm.requestFullscreen();
+        else if (docElm.mozRequestFullScreen) docElm.mozRequestFullScreen();
+        else if (docElm.webkitRequestFullscreen) docElm.webkitRequestFullscreen();
+        else if (docElm.msRequestFullscreen) docElm.msRequestFullscreen();
+      }
+    });
+
+    function updateFullscreenIcons() {
+      var isFullscreen = document.fullscreenElement || 
+                         document.mozFullScreenElement || 
+                         document.webkitFullscreenElement || 
+                         document.msFullscreenElement;
+      if (isFullscreen) {
+        enterIcon.style.display = "none";
+        exitIcon.style.display = "block";
+      } else {
+        enterIcon.style.display = "block";
+        exitIcon.style.display = "none";
+      }
+    }
+
+    document.addEventListener("fullscreenchange", updateFullscreenIcons);
+    document.addEventListener("webkitfullscreenchange", updateFullscreenIcons);
+    document.addEventListener("mozfullscreenchange", updateFullscreenIcons);
+    document.addEventListener("MSFullscreenChange", updateFullscreenIcons);
+
+    // Re-center on window resize
+    window.addEventListener("resize", function() {
+      contentHeight = container.offsetHeight;
+      centerContent();
+    });
+  </script>
+</body>
+</html>
