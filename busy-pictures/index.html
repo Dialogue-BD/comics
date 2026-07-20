@@ -290,6 +290,81 @@
       height: 24px;
       pointer-events: none;
     }
+    
+    /* Landscape and Small Viewport Optimizations */
+    @media (max-height: 500px) {
+      #prompt-panel {
+        bottom: 12px;
+        left: 12px;
+        width: 320px;
+        max-height: calc(100vh - 24px);
+        padding: 12px;
+        border-radius: 12px;
+        overflow-y: auto;
+      }
+      .panel-header {
+        margin-bottom: 8px;
+      }
+      .prompt-text {
+        font-size: 14px;
+        margin: 8px 0;
+        line-height: 1.4;
+      }
+      .hint-container {
+        padding: 6px 10px;
+        margin-bottom: 10px;
+        border-left-width: 3px;
+      }
+      .hint-title {
+        font-size: 9px;
+        margin-bottom: 2px;
+      }
+      .hint-text {
+        font-size: 11px;
+      }
+      .filter-section {
+        margin-bottom: 10px;
+        padding-top: 8px;
+      }
+      .filter-label {
+        font-size: 9px;
+        margin-bottom: 4px;
+      }
+      .filter-btn {
+        padding: 4px;
+        font-size: 11px;
+        border-radius: 4px;
+      }
+      .actions-grid {
+        margin-top: 8px;
+        gap: 6px;
+      }
+      .action-btn {
+        padding: 6px;
+        font-size: 11px;
+        border-radius: 6px;
+      }
+      #toggle-btn {
+        bottom: 12px;
+        left: 12px;
+        width: 44px;
+        height: 44px;
+      }
+      #toggle-btn svg {
+        width: 20px;
+        height: 20px;
+      }
+      #fullscreen-btn {
+        bottom: 12px;
+        right: 12px;
+        width: 44px;
+        height: 44px;
+      }
+      #fullscreen-btn svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -700,6 +775,22 @@
     document.addEventListener("MSFullscreenChange", updateFullscreenIcons);
     
     window.addEventListener("resize", centerContent);
+    
+    // Prevent touch events inside prompt panel and floating buttons from propagating to body zoom/pan handlers
+    var stopPropagation = function(e) {
+      e.stopPropagation();
+    };
+    panel.addEventListener("touchstart", stopPropagation);
+    panel.addEventListener("touchmove", stopPropagation);
+    panel.addEventListener("touchend", stopPropagation);
+    
+    restoreBtn.addEventListener("touchstart", stopPropagation);
+    restoreBtn.addEventListener("touchmove", stopPropagation);
+    restoreBtn.addEventListener("touchend", stopPropagation);
+    
+    fsBtn.addEventListener("touchstart", stopPropagation);
+    fsBtn.addEventListener("touchmove", stopPropagation);
+    fsBtn.addEventListener("touchend", stopPropagation);
     
     // Run Init
     window.onload = init;
