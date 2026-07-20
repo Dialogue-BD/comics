@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>Wordless Picture Story</title>
+  <title>North End Story</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <!-- Load PDF.js from cdnjs -->
@@ -85,9 +85,55 @@
       height: 24px;
       pointer-events: none;
     }
+
+    /* Floating audio button */
+    .audio-btn {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      transition: opacity 0.5s ease, transform 0.2s ease, background-color 0.2s ease;
+      opacity: 0.85;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body.idle .audio-btn {
+      opacity: 0.15;
+    }
+    .audio-btn:hover {
+      opacity: 1 !important;
+      transform: scale(1.05);
+      background: rgba(0, 0, 0, 0.85);
+    }
+    .audio-btn:active {
+      transform: scale(0.95);
+    }
+    .audio-btn svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
+  <!-- Floating Play/Pause Button at the top-right -->
+  <button id="audio-btn" class="audio-btn" onclick="toggleAudio(event)">
+    <svg class="play-icon" viewBox="0 0 24 24" width="28" height="28"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="pause-icon" viewBox="0 0 24 24" width="28" height="28" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+  </button>
+  <audio id="story-audio" src="north_end.mp3" preload="auto"></audio>
+
   <div id="loading">Loading Story...</div>
   <div id="viewer-container">
     <div id="pdf-container"></div>
@@ -106,8 +152,7 @@
   <script>
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-    var pdfs = ['american_fisherman.pdf', 'bangladesh_businessman_fisherman.pdf', 'buried_treasure.pdf', 'good_samaritan.pdf', 'good_samaritan_hijra.pdf', 'hingsha.pdf', 'kindness_repentence.pdf', 'mezban.pdf', 'north_end.pdf', 'prodigal_son.pdf', 'ruth_in_bd.pdf'];
-    var randomPdf = pdfs[Math.floor(Math.random() * pdfs.length)];
+    var pdfUrl = "north_end.pdf";
     var cacheBuster = "?v=" + Date.now();
 
     var container = document.getElementById("pdf-container");
@@ -132,7 +177,7 @@
     var lastTap = 0;
 
     // Load PDF
-    pdfjsLib.getDocument(randomPdf + cacheBuster).promise.then(async function(pdf) {
+    pdfjsLib.getDocument(pdfUrl + cacheBuster).promise.then(async function(pdf) {
       for (var pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
         var page = await pdf.getPage(pageNum);
         var viewport = page.getViewport({ scale: 1.0 });
@@ -343,7 +388,7 @@
     var isMouseDown = false;
     var mouseStartX = 0, mouseStartY = 0;
     document.body.addEventListener("mousedown", function(e) {
-      if (e.button !== 0 || e.target.closest("#fullscreen-btn")) return;
+      if (e.button !== 0 || e.target.closest("#fullscreen-btn") || e.target.closest("#audio-btn")) return;
       isMouseDown = true;
       mouseStartX = e.clientX;
       mouseStartY = e.clientY;
@@ -458,6 +503,52 @@
       contentHeight = container.offsetHeight;
       centerContent();
     });
+
+    // AUDIO PLAYER LOGIC
+    var audio = document.getElementById("story-audio");
+    var audioBtn = document.getElementById("audio-btn");
+    var playIcon = audioBtn.querySelector(".play-icon");
+    var pauseIcon = audioBtn.querySelector(".pause-icon");
+
+    function toggleAudio(e) {
+      if (e) {
+        e.stopPropagation(); // Prevent fullscreen toggle on tap
+      }
+      
+      if (audio.paused) {
+        audio.play().then(function() {
+          playIcon.style.display = "none";
+          pauseIcon.style.display = "block";
+        }).catch(function(err) {
+          console.error("Playback failed:", err);
+        });
+      } else {
+        audio.pause();
+        playIcon.style.display = "block";
+        pauseIcon.style.display = "none";
+      }
+    }
+
+    audio.addEventListener("ended", function() {
+      playIcon.style.display = "block";
+      pauseIcon.style.display = "none";
+      audio.currentTime = 0;
+    });
+
+    // INACTIVITY AUTO-FADE FOR AUDIO BUTTON
+    var idleTimer;
+    function resetIdleTimer() {
+      document.body.classList.remove("idle");
+      clearTimeout(idleTimer);
+      idleTimer = setTimeout(function() {
+        document.body.classList.add("idle");
+      }, 2500);
+    }
+    document.addEventListener("mousemove", resetIdleTimer);
+    document.addEventListener("touchstart", resetIdleTimer);
+    document.addEventListener("touchmove", resetIdleTimer);
+    document.addEventListener("wheel", resetIdleTimer);
+    resetIdleTimer();
   </script>
 </body>
 </html>
