@@ -16,21 +16,22 @@ denser pictures take more).
 |-----:|--------:|--------|
 | 1 | 210 | Done, verified, boxes align |
 | 2 | 246 | Done, verified, boxes align |
-| 3 | — | **NEXT — original data, boxes drift.** |
-| 4–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
+| 3 | 173 | Done, verified, boxes align |
+| 4 | — | **NEXT — original data, boxes drift.** |
+| 5–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
 
 Grammar is already correct for **all 25 pages** (42 fields per object). Only the
 boxes and object coverage need redoing on pages 2–25.
 
 **Update this table after every page.**
 
-### Starting page 3
+### Starting page 4
 
-Page 2 is finished; nothing to resume. Begin page 3 from scratch with the tile
-method below, writing `tools/page_data_3.py` as you go so a later run can pick
+Page 3 is finished; nothing to resume. Begin page 4 from scratch with the tile
+method below, writing `tools/page_data_4.py` as you go so a later run can pick
 it up mid-page.
 
-Two things page 2 taught, worth carrying forward:
+Things pages 2 and 3 taught, worth carrying forward:
 
 - Twelve tiles at ~20 objects each overshoots the 250 ceiling. Aim for about
   14 per tile and check the count before committing; trimming afterwards is
@@ -38,6 +39,18 @@ Two things page 2 taught, worth carrying forward:
 - Large background shapes (cliffs, walls, hedges, water) pad the count without
   giving a learner anything to name. Keep a few for variety, then cut the rest
   when trimming to the ceiling.
+- Work in a clone you own. `/tmp` persists between runs and the leftover clone
+  from the previous run belongs to a different uid, so `rm -rf /tmp/cw` fails
+  silently and you end up reading a stale checkout. Clone into `$HOME/work`
+  instead.
+- Background `git clone` dies when the bash call returns. Launch it with
+  `setsid nohup ... & disown` and then poll the log, or it never finishes.
+- Do the arithmetic from the tile's own span rather than the printed labels:
+  `x_pct = x0 + px / (tile_width_px / tile_span)`. Confirm it against two
+  labels before recording anything; on page 3 that gave 32.4 px per x unit and
+  21.4 px per y unit, and every box landed first time.
+- Verbs ending in "ing" that are genuinely bare infinitives ("swing", "ring")
+  will trip a naive regex check for `-ing` after a modal. They are fine.
 
 ## The one thing that will waste your time if you miss it
 
