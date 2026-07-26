@@ -677,34 +677,52 @@
       var pageKey = "wimmelbook_" + (currentImageIndex + 1);
       var objects = spatialIndex[pageKey] || [];
 
-      // box format in Gemini Vision: [ymin, xmin, ymax, xmax]
-      var matched = null;
+      // box format: [ymin, xmin, ymax, xmax] as percentages of the image
+      // Dense pages nest small objects inside large ones (a person on a roof, a
+      // bird on a canopy). Always prefer the SMALLEST box that contains the tap,
+      // so the big background object never swallows the detail sitting on it.
+      // Zoom-aware selection. A box only becomes the preferred target once it is
+      // physically big enough to tap on screen (MIN_TAP px). Zoomed out, the
+      // pigeon on the roof is a few pixels wide, so the tap resolves to the
+      // station building; zoom in and the pigeon grows past the threshold and
+      // wins instead. rect already includes the CSS scale() transform, so this
+      // tracks the pinch-zoom level for free.
+      var MIN_TAP = 44;
+      var matched = null, bestArea = Infinity;
+      var fallback = null, fallbackArea = -1;
       for (var i = 0; i < objects.length; i++) {
         var b = objects[i].box;
         var ymin = b[0], xmin = b[1], ymax = b[2], xmax = b[3];
         if (relX >= xmin && relX <= xmax && relY >= ymin && relY <= ymax) {
-          matched = objects[i];
-          break;
-        }
-      }
-
-      if (!matched && objects.length > 0) {
-        var minDist = 99999;
-        for (var j = 0; j < objects.length; j++) {
-          var b = objects[j].box;
-          var ymin = b[0], xmin = b[1], ymax = b[2], xmax = b[3];
-          var cx = (xmin + xmax) / 2;
-          var cy = (ymin + ymax) / 2;
-          var dist = Math.hypot(relX - cx, relY - cy);
-          if (dist < minDist) {
-            minDist = dist;
-            matched = objects[j];
+          var area = (xmax - xmin) * (ymax - ymin);
+          var wPx = ((xmax - xmin) / 100) * rect.width;
+          var hPx = ((ymax - ymin) / 100) * rect.height;
+          // Geometric mean, so a long thin object (a train, a bridge) is judged
+          // on its overall on-screen presence rather than its short side.
+          if (Math.sqrt(wPx * hPx) >= MIN_TAP) {
+            // Big enough to aim at: prefer the most specific such object.
+            if (area < bestArea) { bestArea = area; matched = objects[i]; }
+          } else if (area > fallbackArea) {
+            // Too small to aim at right now: remember the roomiest one.
+            fallbackArea = area; fallback = objects[i];
           }
         }
-        // Only accept nearest object if within tight 5% distance threshold
-        if (minDist > 5) {
-          matched = null;
+      }
+      // Nothing was comfortably tappable, so fall back to the largest hit.
+      if (!matched) matched = fallback;
+
+      // Fallback: nearest object by distance to its EDGE (not its centre), so a
+      // near-miss on a small object beats a far-off hit on a large one.
+      if (!matched && objects.length > 0) {
+        var minDist = Infinity;
+        for (var j = 0; j < objects.length; j++) {
+          var b2 = objects[j].box;
+          var dx = Math.max(b2[1] - relX, 0, relX - b2[3]);
+          var dy = Math.max(b2[0] - relY, 0, relY - b2[2]);
+          var dist = Math.hypot(dx, dy);
+          if (dist < minDist) { minDist = dist; matched = objects[j]; }
         }
+        if (minDist > 2.5) matched = null;
       }
 
       if (matched) {
