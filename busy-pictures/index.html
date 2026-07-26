@@ -399,8 +399,13 @@
     <div id="prompt-text" class="prompt-text">Find a character. What are they doing right now?</div>
     
     <div class="hint-container">
-      <div class="hint-title">Structure Hint</div>
+      <div class="hint-title">Structure Formula (গঠনশৈলী)</div>
       <div id="hint-text" class="hint-text">is/are + verb-ing</div>
+    </div>
+
+    <div class="hint-container" style="margin-top: 8px;">
+      <div class="hint-title">Example Flooding Output (ইংরেজি উদাহরণ)</div>
+      <div id="example-text" class="hint-text" style="font-style: normal; white-space: pre-line; color: #cbd5e1; font-size: 11px; line-height: 1.4;"></div>
     </div>
     
     <!-- Filter Options -->
@@ -544,10 +549,11 @@
       badge.className = "badge level-" + prompt.level.toLowerCase();
       badge.innerText = prompt.level;
       
-      // Grammar title, prompt text, hint text
+      // Grammar title, prompt text, hint text, example text
       document.getElementById("grammar-title").innerText = prompt.grammar_point;
       document.getElementById("prompt-text").innerText = prompt.prompt;
       document.getElementById("hint-text").innerText = prompt.hint;
+      document.getElementById("example-text").innerText = prompt.example;
     }
     
     // PINCH-TO-ZOOM & PAN LOGIC (centered-origin math)
