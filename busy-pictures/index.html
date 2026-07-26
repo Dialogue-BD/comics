@@ -73,9 +73,63 @@
       opacity: 0;
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 890;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
     }
     #box-highlight.active {
       opacity: 1;
+    }
+    #box-label {
+      background: #0284c7;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-top: -24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    /* Top Page Navigation Bar */
+    #page-nav-bar {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 4px 10px;
+      z-index: 800;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .nav-btn {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #f8fafc;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .nav-btn:hover {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+    #page-indicator {
+      color: #38bdf8;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 0 6px;
     }
     
     #speech-toast {
@@ -372,10 +426,17 @@
   </style>
 </head>
 <body>
+  <!-- Top Page Navigation Bar -->
+  <div id="page-nav-bar">
+    <button class="nav-btn" onclick="prevImage()" title="Previous Picture">◀</button>
+    <span id="page-indicator">Pic 1 of 25</span>
+    <button class="nav-btn" onclick="nextImage()" title="Next Picture">▶</button>
+  </div>
+
   <div id="viewer-container">
     <img id="comic-img" src="" alt="Wimmelbook Page">
     <div id="target-ring"></div>
-    <div id="box-highlight"></div>
+    <div id="box-highlight"><span id="box-label"></span></div>
   </div>
 
   <!-- Speech Toast Banner -->
@@ -537,20 +598,41 @@
       return prompts.filter(p => isPromptMatchingFilter(p, activeFilter));
     }
     
-    // Rolling
+    // Rolling & Navigation
+    function prevImage() {
+      var newIndex = (currentImageIndex - 1 + images.length) % images.length;
+      setImageIndex(newIndex);
+    }
+
+    function nextImage() {
+      var newIndex = (currentImageIndex + 1) % images.length;
+      setImageIndex(newIndex);
+    }
+
+    function setImageIndex(idx) {
+      currentImageIndex = idx;
+      img.src = images[currentImageIndex] + "?v=" + Date.now();
+      updatePageIndicator();
+      scale = 1;
+      posX = 0;
+      posY = 0;
+      updateTransform();
+    }
+
+    function updatePageIndicator() {
+      var indicator = document.getElementById("page-indicator");
+      if (indicator) {
+        indicator.innerText = "Pic " + (currentImageIndex + 1) + " of " + images.length;
+      }
+    }
+
     function rollImage() {
       var newIndex;
       do {
         newIndex = Math.floor(Math.random() * images.length);
       } while (images.length > 1 && newIndex === currentImageIndex);
       
-      currentImageIndex = newIndex;
-      img.src = images[currentImageIndex] + "?v=" + Date.now();
-      
-      scale = 1;
-      posX = 0;
-      posY = 0;
-      updateTransform();
+      setImageIndex(newIndex);
     }
     
     function rollPrompt() {
@@ -619,8 +701,8 @@
             matched = objects[j];
           }
         }
-        // Only accept nearest object if within 18% distance threshold
-        if (minDist > 18) {
+        // Only accept nearest object if within tight 5% distance threshold
+        if (minDist > 5) {
           matched = null;
         }
       }
@@ -645,6 +727,8 @@
       boxHighlight.style.top = hTop + "px";
       boxHighlight.style.width = hWidth + "px";
       boxHighlight.style.height = hHeight + "px";
+      var boxLabel = document.getElementById("box-label");
+      if (boxLabel) boxLabel.innerText = obj.name;
       boxHighlight.classList.add("active");
 
       // Snap glowing target orb to center of recognized object
@@ -657,7 +741,7 @@
       setTimeout(() => {
         boxHighlight.classList.remove("active");
         targetRing.classList.remove("active");
-      }, 1200);
+      }, 1400);
 
       // Build Sentence
       var prompt = prompts[currentPromptIndex];
@@ -720,6 +804,7 @@
     var startX = 0, startY = 0;
     var activeTouch = false, isPinching = false, isGesture = false;
     var touchStartTime = 0, startTouchX = 0, startTouchY = 0;
+    var lastTouchTapTime = 0;
 
     function centerContent() {
       posX = 0;
@@ -733,13 +818,14 @@
     
     // CLICK / TOUCH TAP DETECTION
     document.getElementById("viewer-container").addEventListener("click", function(e) {
-      if (e.target.closest("#prompt-panel") || e.target.closest("#toggle-btn") || e.target.closest("#fullscreen-btn")) return;
+      if (Date.now() - lastTouchTapTime < 450) return; // Prevent synthesized touch click double invocation
+      if (e.target.closest("#prompt-panel") || e.target.closest("#toggle-btn") || e.target.closest("#fullscreen-btn") || e.target.closest("#page-nav-bar")) return;
       handleImageTap(e.clientX, e.clientY);
     });
 
     // TOUCH EVENTS
     document.body.addEventListener("touchstart", function(e) {
-      if (e.target.closest("#prompt-panel") || e.target.closest("#toggle-btn") || e.target.closest("#fullscreen-btn")) return;
+      if (e.target.closest("#prompt-panel") || e.target.closest("#toggle-btn") || e.target.closest("#fullscreen-btn") || e.target.closest("#page-nav-bar")) return;
       activeTouch = true;
       if (e.touches.length === 2) {
         isPinching = true;
@@ -761,7 +847,7 @@
     });
 
     document.body.addEventListener("touchmove", function(e) {
-      if (e.target.closest("#prompt-panel") || e.target.closest("#toggle-btn") || e.target.closest("#fullscreen-btn")) return;
+      if (e.target.closest("#prompt-panel") || e.target.closest("#toggle-btn") || e.target.closest("#fullscreen-btn") || e.target.closest("#page-nav-bar")) return;
       if (isPinching && e.touches.length === 2) {
         e.preventDefault();
         var dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
@@ -787,9 +873,10 @@
     });
 
     document.body.addEventListener("touchend", function(e) {
-      if (e.target.closest("#prompt-panel") || e.target.closest("#toggle-btn") || e.target.closest("#fullscreen-btn")) return;
+      if (e.target.closest("#prompt-panel") || e.target.closest("#toggle-btn") || e.target.closest("#fullscreen-btn") || e.target.closest("#page-nav-bar")) return;
       if (e.touches.length === 0) {
         if (!isGesture && (Date.now() - touchStartTime < 300)) {
+          lastTouchTapTime = Date.now();
           handleImageTap(startTouchX, startTouchY);
         }
         activeTouch = false;
