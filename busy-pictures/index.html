@@ -25,46 +25,50 @@
       overflow: hidden;
       position: relative;
     }
+    /* The wrapper shrink-wraps the image and carries the pan/zoom transform.
+       Overlays live INSIDE it and are positioned in image percentages, so they
+       stay welded to the artwork. Previously they were position:fixed and placed
+       with pixel maths from getBoundingClientRect(), which drifts on mobile
+       because fixed elements pin to the layout viewport while the visual
+       viewport moves under pinch-zoom and the collapsing address bar. */
+    #img-wrap {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      margin: auto;
+      width: max-content;
+      height: max-content;
+      transform-origin: center center;
+      transition: transform 0.05s ease-out;
+    }
     #comic-img {
+      display: block;
       max-width: 100vw;
       max-height: 100vh;
       width: auto;
       height: auto;
-      object-fit: contain;
-      transform-origin: center center;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      transition: transform 0.05s ease-out;
     }
     
     /* Target Ring & Speech Toast */
     #target-ring {
-      position: fixed;
+      position: absolute;
       width: 60px;
       height: 60px;
-      margin-left: -30px;
-      margin-top: -30px;
+      transform-origin: center center;
       border: 3px solid #38bdf8;
       border-radius: 50%;
       box-shadow: 0 0 20px #38bdf8, inset 0 0 15px #38bdf8;
       pointer-events: none;
       opacity: 0;
-      transform: scale(0.5);
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 900;
     }
     #target-ring.active {
       opacity: 1;
-      transform: scale(1.1);
     }
 
     /* Bounding Box Highlight */
     #box-highlight {
-      position: fixed;
+      position: absolute;
       border: 3px dashed #38bdf8;
       background: rgba(56, 189, 248, 0.18);
       border-radius: 8px;
@@ -434,9 +438,11 @@
   </div>
 
   <div id="viewer-container">
-    <img id="comic-img" src="" alt="Wimmelbook Page">
-    <div id="target-ring"></div>
-    <div id="box-highlight"><span id="box-label"></span></div>
+    <div id="img-wrap">
+      <img id="comic-img" src="" alt="Wimmelbook Page">
+      <div id="target-ring"></div>
+      <div id="box-highlight"><span id="box-label"></span></div>
+    </div>
   </div>
 
   <!-- Speech Toast Banner -->
@@ -737,29 +743,23 @@
     }
 
     function triggerObjectTap(obj, clientX, clientY) {
-      var rect = img.getBoundingClientRect();
       var b = obj.box; // [ymin, xmin, ymax, xmax]
       var ymin = b[0], xmin = b[1], ymax = b[2], xmax = b[3];
 
-      var hLeft = rect.left + (xmin / 100.0) * rect.width;
-      var hTop = rect.top + (ymin / 100.0) * rect.height;
-      var hWidth = ((xmax - xmin) / 100.0) * rect.width;
-      var hHeight = ((ymax - ymin) / 100.0) * rect.height;
-
-      // Draw bounding box highlight around recognized object
-      boxHighlight.style.left = hLeft + "px";
-      boxHighlight.style.top = hTop + "px";
-      boxHighlight.style.width = hWidth + "px";
-      boxHighlight.style.height = hHeight + "px";
+      // Percentages of the image, applied inside #img-wrap. No viewport maths,
+      // so this cannot drift when the mobile visual viewport moves.
+      boxHighlight.style.left = xmin + "%";
+      boxHighlight.style.top = ymin + "%";
+      boxHighlight.style.width = (xmax - xmin) + "%";
+      boxHighlight.style.height = (ymax - ymin) + "%";
       var boxLabel = document.getElementById("box-label");
       if (boxLabel) boxLabel.innerText = obj.name;
       boxHighlight.classList.add("active");
 
-      // Snap glowing target orb to center of recognized object
-      var centerX = hLeft + hWidth / 2;
-      var centerY = hTop + hHeight / 2;
-      targetRing.style.left = centerX + "px";
-      targetRing.style.top = centerY + "px";
+      // Snap glowing target orb to centre of recognised object
+      targetRing.style.left = ((xmin + xmax) / 2) + "%";
+      targetRing.style.top = ((ymin + ymax) / 2) + "%";
+      applyOverlayScale();
       targetRing.classList.add("active");
 
       setTimeout(() => {
@@ -836,8 +836,25 @@
       updateTransform();
     }
     
+    var imgWrap = document.getElementById("img-wrap");
+
     function updateTransform() {
-      img.style.transform = "translate(" + posX + "px, " + posY + "px) scale(" + scale + ")";
+      imgWrap.style.transform = "translate(" + posX + "px, " + posY + "px) scale(" + scale + ")";
+      applyOverlayScale();
+    }
+
+    // The overlays scale with the image, which is what we want for the box
+    // itself but not for its chrome. Counter-scale the ring, border and label
+    // so they stay a constant size on screen at any zoom level.
+    function applyOverlayScale() {
+      var k = 1 / (scale || 1);
+      targetRing.style.transform = "translate(-50%, -50%) scale(" + k + ")";
+      boxHighlight.style.borderWidth = (3 * k) + "px";
+      var bl = document.getElementById("box-label");
+      if (bl) {
+        bl.style.transformOrigin = "top center";
+        bl.style.transform = "scale(" + k + ")";
+      }
     }
     
     // CLICK / TOUCH TAP DETECTION
