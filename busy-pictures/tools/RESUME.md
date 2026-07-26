@@ -17,21 +17,22 @@ denser pictures take more).
 | 1 | 210 | Done, verified, boxes align |
 | 2 | 246 | Done, verified, boxes align |
 | 3 | 173 | Done, verified, boxes align |
-| 4 | — | **NEXT — original data, boxes drift.** |
-| 5–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
+| 4 | 209 | Done, verified, boxes align |
+| 5 | — | **NEXT — original data, boxes drift.** |
+| 6–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
 
 Grammar is already correct for **all 25 pages** (42 fields per object). Only the
 boxes and object coverage need redoing on pages 2–25.
 
 **Update this table after every page.**
 
-### Starting page 4
+### Starting page 5
 
-Page 3 is finished; nothing to resume. Begin page 4 from scratch with the tile
-method below, writing `tools/page_data_4.py` as you go so a later run can pick
+Page 4 is finished; nothing to resume. Begin page 5 from scratch with the tile
+method below, writing `tools/page_data_5.py` as you go so a later run can pick
 it up mid-page.
 
-Things pages 2 and 3 taught, worth carrying forward:
+Things pages 2, 3 and 4 taught, worth carrying forward:
 
 - Twelve tiles at ~20 objects each overshoots the 250 ceiling. Aim for about
   14 per tile and check the count before committing; trimming afterwards is
@@ -51,6 +52,19 @@ Things pages 2 and 3 taught, worth carrying forward:
   21.4 px per y unit, and every box landed first time.
 - Verbs ending in "ing" that are genuinely bare infinitives ("swing", "ring")
   will trip a naive regex check for `-ing` after a modal. They are fine.
+- Tiles overlap by 3%, so anything in the shared strip gets written twice with
+  slightly different boxes and the IoU filter does not always catch it. Easier
+  to claim the strip for one tile while reading: record an object only from the
+  tile whose interior it sits in. Page 4 came out with zero seam duplicates
+  that way.
+- `/tmp` is shared with other sandboxes and the leftovers are owned by another
+  uid, so `rm -rf /tmp/<name>` fails and a redirect into an existing
+  `/tmp/*.log` dies with "Permission denied" — which can leave you tailing
+  another session's log and thinking your clone ran. Do everything under
+  `$HOME/work`.
+- The Read tool sees the host filesystem, not the sandbox, so tiles have to be
+  written into the outputs mount to be viewable. `tiler.py <page> <outputs
+  dir> pN` and then read them from there; copy `check_pageN.png` over too.
 
 ## The one thing that will waste your time if you miss it
 
