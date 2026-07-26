@@ -15,29 +15,29 @@ denser pictures take more).
 | Page | Objects | Status |
 |-----:|--------:|--------|
 | 1 | 210 | Done, verified, boxes align |
-| 2 | 87 so far | **IN PROGRESS — tiles r0c0 and r0c1 done. CONTINUE, do not restart.** |
-| 3–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
+| 2 | 246 | Done, verified, boxes align |
+| 3 | — | **NEXT — original data, boxes drift.** |
+| 4–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
 
 Grammar is already correct for **all 25 pages** (42 fields per object). Only the
 boxes and object coverage need redoing on pages 2–25.
 
 **Update this table after every page.**
 
-### Resuming page 2
+### Starting page 3
 
-`tools/page_data_2.py` already holds 87 objects from the first two tiles, each
-block headed by a `# TILE rXcY` comment. **Append** the remaining tiles to it —
-do not start the file again. Tiles still to do, in order:
+Page 2 is finished; nothing to resume. Begin page 3 from scratch with the tile
+method below, writing `tools/page_data_3.py` as you go so a later run can pick
+it up mid-page.
 
-    r0c2  r0c3  r1c0  r1c1  r1c2  r1c3  r2c0  r2c1  r2c2  r2c3
+Two things page 2 taught, worth carrying forward:
 
-Page 2 is a shopping mall atrium: carousel in the middle, snack bar and toy shop
-upstairs, a car on display, buskers and shoppers on the ground floor. It is
-dense, so aim towards the upper end of the 150–250 range.
-
-Regenerate the tiles with:
-
-    python3 busy-pictures/tools/tiler.py busy-pictures/wimmelbook_2.jpg /tmp/tiles p2
+- Twelve tiles at ~20 objects each overshoots the 250 ceiling. Aim for about
+  14 per tile and check the count before committing; trimming afterwards is
+  easy but re-reading tiles is not.
+- Large background shapes (cliffs, walls, hedges, water) pad the count without
+  giving a learner anything to name. Keep a few for variety, then cut the rest
+  when trimming to the ceiling.
 
 ## The one thing that will waste your time if you miss it
 
