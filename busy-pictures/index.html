@@ -617,6 +617,9 @@
 
     function setImageIndex(idx) {
       currentImageIndex = idx;
+      lastTappedObject = null;
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+      speechToast.classList.remove("visible");
       img.src = images[currentImageIndex] + "?v=" + Date.now();
       updatePageIndicator();
       scale = 1;
@@ -651,7 +654,7 @@
       } while (filtered.length > 1 && rolledPrompt === prompts[currentPromptIndex]);
       
       currentPromptIndex = prompts.indexOf(rolledPrompt);
-      updatePromptUI();
+      updatePromptUI(true);
     }
     
     function rollAll() {
@@ -659,7 +662,17 @@
       rollPrompt();
     }
     
-    function updatePromptUI() {
+    // Rebuild the sentence for whatever was tapped last, under the current
+    // grammar prompt. Without this, rerolling the prompt changed the panel but
+    // left the toast and the spoken sentence on the previous grammar point.
+    function refreshSpokenSentence(respeak) {
+      if (!lastTappedObject) return;
+      var sentence = buildGrammarSentence(lastTappedObject.grammar_data, prompts[currentPromptIndex]);
+      showSpeechToast(lastTappedObject.name, sentence);
+      if (respeak) speakText(lastTappedObject.name + ". " + sentence);
+    }
+
+    function updatePromptUI(respeak) {
       var prompt = prompts[currentPromptIndex];
       
       var badge = document.getElementById("level-badge");
@@ -670,6 +683,7 @@
       document.getElementById("prompt-text").innerText = prompt.prompt;
       document.getElementById("hint-text").innerText = prompt.hint;
       document.getElementById("example-text").innerText = prompt.example;
+      refreshSpokenSentence(!!respeak);
     }
     
     // TAP TO RECOGNIZE & SPEAK ENGINE
@@ -742,7 +756,10 @@
       }
     }
 
+    var lastTappedObject = null;
+
     function triggerObjectTap(obj, clientX, clientY) {
+      lastTappedObject = obj;
       var b = obj.box; // [ymin, xmin, ymax, xmax]
       var ymin = b[0], xmin = b[1], ymax = b[2], xmax = b[3];
 
