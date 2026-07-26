@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Busy Pictures — Box Annotator</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin:0; height:100%; overflow:hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#0f172a; color:#e2e8f0; }
+  #app { display:flex; flex-direction:column; height:100%; }
+
+  #bar { display:flex; align-items:center; gap:8px; padding:8px 10px; background:#1e293b; border-bottom:1px solid #334155; flex-wrap:wrap; z-index:10; }
+  #bar select, #bar button { font-size:13px; padding:6px 10px; border-radius:8px; border:1px solid #475569; background:#334155; color:#e2e8f0; cursor:pointer; }
+  #bar button:hover { background:#475569; }
+  #bar button.on { background:#0ea5e9; border-color:#0ea5e9; color:#04283b; font-weight:600; }
+  #bar .sep { width:1px; height:22px; background:#475569; }
+  #bar .stat { font-size:12px; color:#94a3b8; }
+  #bar .stat b { color:#e2e8f0; }
+
+  #main { flex:1; display:flex; min-height:0; }
+  #stage { flex:1; position:relative; overflow:hidden; background:#020617; touch-action:none; }
+  #world { position:absolute; top:0; left:0; transform-origin:0 0; }
+  #pic { display:block; user-select:none; -webkit-user-drag:none; }
+
+  .box { position:absolute; border:2px solid rgba(56,189,248,.95); background:rgba(56,189,248,.12); }
+  .box.existing { border-color:rgba(250,204,21,.9); background:rgba(250,204,21,.10); border-style:dashed; }
+  .box.sel { border-color:#f43f5e; background:rgba(244,63,94,.18); z-index:5; }
+  .box .tag { position:absolute; top:-17px; left:-2px; font-size:10px; line-height:14px; padding:0 4px; background:rgba(2,6,23,.85); color:#e2e8f0; border-radius:3px; white-space:nowrap; pointer-events:none; }
+  .h { position:absolute; width:14px; height:14px; background:#f43f5e; border:2px solid #fff; border-radius:50%; }
+  .h.nw{left:-7px;top:-7px;cursor:nwse-resize} .h.ne{right:-7px;top:-7px;cursor:nesw-resize}
+  .h.sw{left:-7px;bottom:-7px;cursor:nesw-resize} .h.se{right:-7px;bottom:-7px;cursor:nwse-resize}
+
+  #side { width:280px; background:#1e293b; border-left:1px solid #334155; display:flex; flex-direction:column; }
+  #lblwrap { padding:10px; border-bottom:1px solid #334155; }
+  #lblwrap label { font-size:11px; color:#94a3b8; display:block; margin-bottom:4px; }
+  #label { width:100%; font-size:13px; padding:8px; border-radius:8px; border:1px solid #475569; background:#0f172a; color:#e2e8f0; }
+  #lblhint { font-size:11px; color:#64748b; margin-top:6px; line-height:1.4; }
+  #list { flex:1; overflow-y:auto; }
+  .row { padding:7px 10px; font-size:12px; border-bottom:1px solid #26344a; cursor:pointer; display:flex; gap:6px; }
+  .row:hover { background:#293b52; }
+  .row.sel { background:#0c4a6e; }
+  .row .n { color:#64748b; min-width:26px; }
+  .row .t { flex:1; }
+  .row .t.empty { color:#64748b; font-style:italic; }
+  .row .dot { width:8px; height:8px; border-radius:50%; margin-top:4px; flex:none; }
+  #help { position:absolute; left:10px; bottom:10px; font-size:11px; color:#94a3b8; background:rgba(2,6,23,.8); padding:8px 10px; border-radius:8px; line-height:1.6; pointer-events:none; }
+  @media (max-width:820px){ #side{width:200px} #help{display:none} }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="bar">
+    <select id="page"></select>
+    <button id="loadExisting">Load existing</button>
+    <div class="sep"></div>
+    <button id="mDraw" class="on">Draw</button>
+    <button id="mPan">Pan</button>
+    <div class="sep"></div>
+    <button id="zin">＋</button><button id="zout">－</button><button id="zfit">Fit</button>
+    <div class="sep"></div>
+    <button id="del">Delete</button>
+    <button id="undo">Undo</button>
+    <div class="sep"></div>
+    <button id="imp">Import</button>
+    <button id="exp">Export JSON</button>
+    <input type="file" id="file" accept="application/json" style="display:none">
+    <div class="sep"></div>
+    <span class="stat">boxes <b id="cnt">0</b> · labelled <b id="cntL">0</b> · zoom <b id="cntZ">100%</b></span>
+  </div>
+  <div id="main">
+    <div id="stage">
+      <div id="world"><img id="pic" alt=""></div>
+      <div id="help">
+        <b>Draw</b> — drag on empty space<br>
+        <b>Move</b> — drag inside a box · <b>Resize</b> — corner dots<br>
+        <b>Pan</b> — scroll, or space+drag, or two fingers<br>
+        <b>Zoom</b> — ⌘/Ctrl + scroll, or pinch<br>
+        <b>Delete</b> — Backspace · <b>Undo</b> — ⌘Z
+      </div>
+    </div>
+    <div id="side">
+      <div id="lblwrap">
+        <label>Label for selected box (optional)</label>
+        <input id="label" placeholder="e.g. the man in green" autocomplete="off">
+        <div id="lblhint">Leave blank and Claude names it from the crop. Type a hint only when it's ambiguous.</div>
+      </div>
+      <div id="list"></div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var PAGES = 25;
+  var boxes = [];          // {box:[ymin,xmin,ymax,xmax], label, existing:bool}
+  var sel = -1, undoStack = [];
+  var scale = 1, tx = 0, ty = 0;
+  var mode = 'draw';
+
+  var stage = document.getElementById('stage'),
+      world = document.getElementById('world'),
+      pic   = document.getElementById('pic'),
+      list  = document.getElementById('list'),
+      labelI= document.getElementById('label'),
+      pageS = document.getElementById('page');
+
+  for (var i=1;i<=PAGES;i++){ var o=document.createElement('option'); o.value=i; o.textContent='Picture '+i; pageS.appendChild(o); }
+
+  function curPage(){ return parseInt(pageS.value,10); }
+  function snapshot(){ undoStack.push(JSON.stringify(boxes)); if(undoStack.length>80) undoStack.shift(); }
+  function applyTransform(){ world.style.transform = 'translate('+tx+'px,'+ty+'px) scale('+scale+')';
+    document.getElementById('cntZ').textContent = Math.round(scale*100)+'%'; }
+
+  function fit(){
+    var sw = stage.clientWidth, sh = stage.clientHeight;
+    if(!pic.naturalWidth) return;
+    scale = Math.min(sw/pic.naturalWidth, sh/pic.naturalHeight)*0.96;
+    tx = (sw - pic.naturalWidth*scale)/2;
+    ty = (sh - pic.naturalHeight*scale)/2;
+    applyTransform();
+  }
+
+  // ---- coordinate helpers: screen <-> image percent ----
+  function toPct(cx, cy){
+    var r = pic.getBoundingClientRect();
+    return [ (cx - r.left)/r.width*100, (cy - r.top)/r.height*100 ];
+  }
+  function clamp(v){ return Math.max(0, Math.min(100, v)); }
+  function r1(v){ return Math.round(v*10)/10; }
+
+  // ---- rendering ----
+  function render(){
+    Array.prototype.slice.call(world.querySelectorAll('.box')).forEach(function(n){ n.remove(); });
+    boxes.forEach(function(b, i){
+      var y0=b.box[0], x0=b.box[1], y1=b.box[2], x1=b.box[3];
+      var d=document.createElement('div');
+      d.className='box'+(b.existing?' existing':'')+(i===sel?' sel':'');
+      d.style.left=x0+'%'; d.style.top=y0+'%';
+      d.style.width=(x1-x0)+'%'; d.style.height=(y1-y0)+'%';
+      d.dataset.i=i;
+      if(b.label){ var t=document.createElement('div'); t.className='tag'; t.textContent=b.label; d.appendChild(t); }
+      if(i===sel){ ['nw','ne','sw','se'].forEach(function(h){ var k=document.createElement('div'); k.className='h '+h; k.dataset.h=h; d.appendChild(k); }); }
+      world.appendChild(d);
+    });
+    document.getElementById('cnt').textContent = boxes.length;
+    document.getElementById('cntL').textContent = boxes.filter(function(b){return b.label;}).length;
+    renderList();
+  }
+  function renderList(){
+    list.innerHTML='';
+    boxes.forEach(function(b,i){
+      var row=document.createElement('div'); row.className='row'+(i===sel?' sel':'');
+      row.innerHTML='<div class="dot" style="background:'+(b.existing?'#facc15':'#38bdf8')+'"></div>'+
+                    '<div class="n">'+(i+1)+'</div>'+
+                    '<div class="t'+(b.label?'':' empty')+'">'+(b.label? escapeHtml(b.label) : 'unnamed')+'</div>';
+      row.onclick=function(){ sel=i; labelI.value=b.label||''; render(); };
+      list.appendChild(row);
+    });
+    var s=list.querySelector('.row.sel'); if(s&&s.scrollIntoView) s.scrollIntoView({block:'nearest'});
+  }
+  function escapeHtml(s){ return s.replace(/[&<>"]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c];}); }
+
+  // ---- image + existing data ----
+  function loadPage(){
+    pic.src = 'wimmelbook_'+curPage()+'.jpg';
+    pic.onload = function(){ fit(); render(); };
+    boxes=[]; sel=-1; undoStack=[]; labelI.value='';
+  }
+  pageS.onchange = loadPage;
+
+  document.getElementById('loadExisting').onclick = function(){
+    fetch('spatial_index.json?t='+Date.now()).then(function(r){ return r.json(); }).then(function(d){
+      var arr = d['wimmelbook_'+curPage()] || [];
+      snapshot();
+      arr.forEach(function(o){
+        boxes.push({ box:[r1(o.box[0]),r1(o.box[1]),r1(o.box[2]),r1(o.box[3])], label:o.name||'', existing:true });
+      });
+      render();
+    }).catch(function(e){ alert('Could not load spatial_index.json — '+e); });
+  };
+
+  // ---- modes ----
+  function setMode(m){ mode=m;
+    document.getElementById('mDraw').className = m==='draw'?'on':'';
+    document.getElementById('mPan').className  = m==='pan'?'on':'';
+  }
+  document.getElementById('mDraw').onclick=function(){setMode('draw');};
+  document.getElementById('mPan').onclick =function(){setMode('pan');};
+
+  // ---- pointer interaction ----
+  var drag=null, pts={}, pinch=null, space=false;
+
+  stage.addEventListener('pointerdown', function(e){
+    stage.setPointerCapture(e.pointerId);
+    pts[e.pointerId]={x:e.clientX,y:e.clientY};
+    var n=Object.keys(pts).length;
+    if(n===2){ startPinch(); drag=null; return; }
+    if(n>2) return;
+
+    if(mode==='pan' || space || e.button===1){ drag={t:'pan',x:e.clientX,y:e.clientY,tx:tx,ty:ty}; return; }
+
+    var handle = e.target.classList && e.target.classList.contains('h') ? e.target.dataset.h : null;
+    if(handle && sel>=0){ snapshot(); drag={t:'resize',h:handle}; return; }
+
+    var bEl = e.target.classList && e.target.classList.contains('box') ? e.target : null;
+    if(bEl){
+      sel = parseInt(bEl.dataset.i,10);
+      labelI.value = boxes[sel].label||'';
+      snapshot();
+      var p=toPct(e.clientX,e.clientY);
+      drag={t:'move', px:p[0], py:p[1], orig:boxes[sel].box.slice()};
+      render(); return;
+    }
+    // draw new
+    var q=toPct(e.clientX,e.clientY);
+    if(q[0]<0||q[0]>100||q[1]<0||q[1]>100) return;
+    snapshot();
+    boxes.push({box:[clamp(q[1]),clamp(q[0]),clamp(q[1]),clamp(q[0])], label:'', existing:false});
+    sel=boxes.length-1; labelI.value='';
+    drag={t:'new', ax:q[0], ay:q[1]};
+    render();
+  });
+
+  stage.addEventListener('pointermove', function(e){
+    if(pts[e.pointerId]) pts[e.pointerId]={x:e.clientX,y:e.clientY};
+    if(pinch){ movePinch(); return; }
+    if(!drag) return;
+    if(drag.t==='pan'){ tx=drag.tx+(e.clientX-drag.x); ty=drag.ty+(e.clientY-drag.y); applyTransform(); return; }
+    var p=toPct(e.clientX,e.clientY);
+    var b=boxes[sel];
+    if(drag.t==='new'){
+      b.box=[clamp(Math.min(drag.ay,p[1])), clamp(Math.min(drag.ax,p[0])),
+             clamp(Math.max(drag.ay,p[1])), clamp(Math.max(drag.ax,p[0]))];
+    } else if(drag.t==='move'){
+      var dx=p[0]-drag.px, dy=p[1]-drag.py, o=drag.orig;
+      var w=o[3]-o[1], h=o[2]-o[0];
+      var nx=Math.max(0,Math.min(100-w,o[1]+dx)), ny=Math.max(0,Math.min(100-h,o[0]+dy));
+      b.box=[ny,nx,ny+h,nx+w];
+    } else if(drag.t==='resize'){
+      var y0=b.box[0],x0=b.box[1],y1=b.box[2],x1=b.box[3];
+      if(drag.h.indexOf('n')>=0) y0=clamp(p[1]); else y1=clamp(p[1]);
+      if(drag.h.indexOf('w')>=0) x0=clamp(p[0]); else x1=clamp(p[0]);
+      b.box=[Math.min(y0,y1),Math.min(x0,x1),Math.max(y0,y1),Math.max(x0,x1)];
+    }
+    render();
+  });
+
+  function endPointer(e){
+    delete pts[e.pointerId];
+    if(Object.keys(pts).length<2) pinch=null;
+    if(drag && drag.t==='new'){
+      var b=boxes[sel];
+      if((b.box[3]-b.box[1])<0.4 || (b.box[2]-b.box[0])<0.4){ boxes.splice(sel,1); sel=-1; }
+      else { b.box=b.box.map(r1); labelI.focus(); }
+      render();
+    } else if(drag && boxes[sel]){ boxes[sel].box=boxes[sel].box.map(r1); render(); }
+    drag=null;
+  }
+  stage.addEventListener('pointerup', endPointer);
+  stage.addEventListener('pointercancel', endPointer);
+
+  function startPinch(){
+    var k=Object.keys(pts); if(k.length<2) return;
+    var a=pts[k[0]], b=pts[k[1]];
+    pinch={ d:Math.hypot(a.x-b.x,a.y-b.y), cx:(a.x+b.x)/2, cy:(a.y+b.y)/2, s:scale, tx:tx, ty:ty };
+  }
+  function movePinch(){
+    var k=Object.keys(pts); if(k.length<2) return;
+    var a=pts[k[0]], b=pts[k[1]];
+    var d=Math.hypot(a.x-b.x,a.y-b.y), cx=(a.x+b.x)/2, cy=(a.y+b.y)/2;
+    var f=d/pinch.d, ns=Math.max(0.05,Math.min(30,pinch.s*f));
+    var sr=stage.getBoundingClientRect();
+    tx = cx-sr.left - (pinch.cx-sr.left - pinch.tx)*(ns/pinch.s);
+    ty = cy-sr.top  - (pinch.cy-sr.top  - pinch.ty)*(ns/pinch.s);
+    scale=ns; applyTransform();
+  }
+
+  stage.addEventListener('wheel', function(e){
+    e.preventDefault();
+    var sr=stage.getBoundingClientRect();
+    if(e.ctrlKey||e.metaKey){
+      var ns=Math.max(0.05,Math.min(30, scale*(1-e.deltaY*0.0025)));
+      tx = e.clientX-sr.left - (e.clientX-sr.left-tx)*(ns/scale);
+      ty = e.clientY-sr.top  - (e.clientY-sr.top -ty)*(ns/scale);
+      scale=ns;
+    } else { tx-=e.deltaX; ty-=e.deltaY; }
+    applyTransform();
+  }, {passive:false});
+
+  document.getElementById('zin').onclick =function(){ zoomBy(1.25); };
+  document.getElementById('zout').onclick=function(){ zoomBy(0.8); };
+  document.getElementById('zfit').onclick=fit;
+  function zoomBy(f){
+    var sr=stage.getBoundingClientRect(), cx=sr.width/2, cy=sr.height/2;
+    var ns=Math.max(0.05,Math.min(30,scale*f));
+    tx = cx-(cx-tx)*(ns/scale); ty = cy-(cy-ty)*(ns/scale); scale=ns; applyTransform();
+  }
+
+  // ---- label / delete / undo ----
+  labelI.addEventListener('input', function(){ if(sel>=0){ boxes[sel].label=labelI.value; renderList(); } });
+  labelI.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); labelI.blur(); } });
+
+  function delSel(){ if(sel<0) return; snapshot(); boxes.splice(sel,1); sel=-1; labelI.value=''; render(); }
+  document.getElementById('del').onclick=delSel;
+  document.getElementById('undo').onclick=function(){ if(!undoStack.length) return; boxes=JSON.parse(undoStack.pop()); sel=-1; labelI.value=''; render(); };
+
+  document.addEventListener('keydown', function(e){
+    if(e.target===labelI) return;
+    if(e.code==='Space'){ space=true; }
+    if(e.key==='Backspace'||e.key==='Delete'){ e.preventDefault(); delSel(); }
+    if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='z'){ e.preventDefault(); document.getElementById('undo').click(); }
+    if(e.key==='Escape'){ sel=-1; labelI.value=''; render(); }
+  });
+  document.addEventListener('keyup', function(e){ if(e.code==='Space') space=false; });
+
+  // ---- import / export ----
+  document.getElementById('exp').onclick=function(){
+    var out={ page: curPage(), image:'wimmelbook_'+curPage()+'.jpg', count: boxes.length,
+      boxes: boxes.map(function(b){ return { box:b.box.map(r1), label:b.label||'' }; }) };
+    var blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='boxes_page'+curPage()+'.json'; a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); },2000);
+  };
+  document.getElementById('imp').onclick=function(){ document.getElementById('file').click(); };
+  document.getElementById('file').onchange=function(e){
+    var f=e.target.files[0]; if(!f) return;
+    var rd=new FileReader();
+    rd.onload=function(){
+      try{
+        var d=JSON.parse(rd.result);
+        if(d.page && d.page!==curPage()){ pageS.value=d.page; loadPage(); }
+        snapshot();
+        boxes=(d.boxes||[]).map(function(b){ return {box:b.box.map(r1), label:b.label||'', existing:false}; });
+        sel=-1; render();
+      }catch(err){ alert('Could not read that file — '+err); }
+    };
+    rd.readAsText(f);
+  };
+
+  window.addEventListener('resize', function(){ if(pic.naturalWidth) applyTransform(); });
+  loadPage();
+})();
+</script>
+</body>
+</html>
