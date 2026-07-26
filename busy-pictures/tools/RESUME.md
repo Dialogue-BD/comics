@@ -15,12 +15,29 @@ denser pictures take more).
 | Page | Objects | Status |
 |-----:|--------:|--------|
 | 1 | 210 | Done, verified, boxes align |
-| 2–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
+| 2 | 87 so far | **IN PROGRESS — tiles r0c0 and r0c1 done. CONTINUE, do not restart.** |
+| 3–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
 
 Grammar is already correct for **all 25 pages** (42 fields per object). Only the
 boxes and object coverage need redoing on pages 2–25.
 
 **Update this table after every page.**
+
+### Resuming page 2
+
+`tools/page_data_2.py` already holds 87 objects from the first two tiles, each
+block headed by a `# TILE rXcY` comment. **Append** the remaining tiles to it —
+do not start the file again. Tiles still to do, in order:
+
+    r0c2  r0c3  r1c0  r1c1  r1c2  r1c3  r2c0  r2c1  r2c2  r2c3
+
+Page 2 is a shopping mall atrium: carousel in the middle, snack bar and toy shop
+upstairs, a car on display, buskers and shoppers on the ground floor. It is
+dense, so aim towards the upper end of the 150–250 range.
+
+Regenerate the tiles with:
+
+    python3 busy-pictures/tools/tiler.py busy-pictures/wimmelbook_2.jpg /tmp/tiles p2
 
 ## The one thing that will waste your time if you miss it
 
