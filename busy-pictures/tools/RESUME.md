@@ -24,8 +24,8 @@ denser pictures take more).
 | 8 | 245 | Done, verified, boxes align |
 | 9 | 206 | Done, verified, boxes align |
 | 10 | 193 | Done, verified, boxes align |
-| 11 | — | **NEXT — original data, boxes drift.** |
-| 12–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
+| 11 | 217 | Done, verified, boxes align |
+| 12–25 | ~50–100 each | **NEXT — original data, boxes drift. This is the work.** |
 
 Grammar is already correct for **all 25 pages** (42 fields per object). Only the
 boxes and object coverage need redoing on pages 2–25.
