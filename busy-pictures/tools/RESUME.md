@@ -25,7 +25,8 @@ denser pictures take more).
 | 9 | 206 | Done, verified, boxes align |
 | 10 | 193 | Done, verified, boxes align |
 | 11 | 217 | Done, verified, boxes align |
-| 12–13 | ~50–100 each | **NEXT — original data, boxes drift. This is the work.** |
+| 12 | ~50–100 | **NEXT — original data, boxes drift. This is the work.** |
+| 13 | 244 | Done, verified, boxes align |
 | 14 | 165 | Done, verified, boxes align |
 | 15 | 151 | Done, verified, boxes align |
 | 16–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
