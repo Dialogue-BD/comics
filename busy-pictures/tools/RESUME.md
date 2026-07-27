@@ -20,21 +20,38 @@ denser pictures take more).
 | 4 | 209 | Done, verified, boxes align |
 | 5 | 213 | Done, verified, boxes align |
 | 6 | 239 | Done, verified, boxes align |
-| 7 | 90 so far | **IN PROGRESS — tiles r0c0–r0c3 done. CONTINUE, do not restart.** |
-| 8–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
+| 7 | 246 | Done, verified, boxes align |
+| 8 | — | **NEXT — original data, boxes drift.** |
+| 9–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
 
 Grammar is already correct for **all 25 pages** (42 fields per object). Only the
 boxes and object coverage need redoing on pages 2–25.
 
 **Update this table after every page.**
 
-### Starting page 7
+### Starting page 8
 
-Page 6 is finished; nothing to resume. Begin page 7 from scratch with the tile
-method below, writing `tools/page_data_7.py` as you go so a later run can pick
+Page 7 is finished; nothing to resume. Begin page 8 from scratch with the tile
+method below, writing `tools/page_data_8.py` as you go so a later run can pick
 it up mid-page.
 
-Things pages 2–6 taught, worth carrying forward:
+Two runs overlapped on page 7 and both worked on it at once. One had pushed a
+partial 90-object file covering the top row of tiles when the other finished
+the whole page at 246; the complete file replaced the partial one and
+`merge_page.py` was re-run on top of the newer commit so the index stayed
+consistent. If a page is already marked IN PROGRESS with a recent commit
+behind it, check `git log` before starting — the work may already be moving.
+
+**wimmelbook_6.jpg and wimmelbook_7.jpg are the same artwork.** A pixel
+comparison lines up at zero offset; only scan and JPEG noise differ. Page 7's
+boxes were read independently from its own tiles and then checked against the
+verified page 6 set, and the two agreed to within about half a percent, which
+is a useful confirmation that the tile arithmetic below is sound. Before
+starting any page, it is worth a quick `md5sum` / pixel diff against the pages
+already done — if another duplicate turns up, the verified data is both a
+naming reference for ambiguous shapes and a free accuracy check.
+
+Things pages 2–7 taught, worth carrying forward:
 
 - Twelve tiles at ~20 objects each overshoots the 250 ceiling. Aim for about
   14 per tile and check the count before committing; trimming afterwards is
