@@ -18,53 +18,63 @@ denser pictures take more).
 | 2 | 246 | Done, verified, boxes align |
 | 3 | 173 | Done, verified, boxes align |
 | 4 | 209 | Done, verified, boxes align |
-| 5 | — | **NEXT — original data, boxes drift.** |
-| 6–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
+| 5 | 213 | Done, verified, boxes align |
+| 6 | — | **NEXT — original data, boxes drift.** |
+| 7–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
 
 Grammar is already correct for **all 25 pages** (42 fields per object). Only the
 boxes and object coverage need redoing on pages 2–25.
 
 **Update this table after every page.**
 
-### Starting page 5
+### Starting page 6
 
-Page 4 is finished; nothing to resume. Begin page 5 from scratch with the tile
-method below, writing `tools/page_data_5.py` as you go so a later run can pick
+Page 5 is finished; nothing to resume. Begin page 6 from scratch with the tile
+method below, writing `tools/page_data_6.py` as you go so a later run can pick
 it up mid-page.
 
-Things pages 2, 3 and 4 taught, worth carrying forward:
+Things pages 2–5 taught, worth carrying forward:
 
 - Twelve tiles at ~20 objects each overshoots the 250 ceiling. Aim for about
   14 per tile and check the count before committing; trimming afterwards is
-  easy but re-reading tiles is not.
+  easy but re-reading tiles is not. Page 5 came in at 213 from roughly 17–18
+  per tile, which is a comfortable working rate.
 - Large background shapes (cliffs, walls, hedges, water) pad the count without
   giving a learner anything to name. Keep a few for variety, then cut the rest
   when trimming to the ceiling.
-- Work in a clone you own. `/tmp` persists between runs and the leftover clone
-  from the previous run belongs to a different uid, so `rm -rf /tmp/cw` fails
-  silently and you end up reading a stale checkout. Clone into `$HOME/work`
-  instead.
+- Work in a clone you own, and clone into `$HOME/work` — **not** `/tmp`.
+  `/tmp` is shared with other sandboxes and the leftovers there belong to a
+  different uid, so `rm -rf /tmp/cw` fails, the clone lands somewhere else, and
+  a redirect into an existing `/tmp/*.log` dies with "Permission denied" —
+  which can leave you tailing another session's log and believing your clone
+  ran. This happened again on the page 5 run despite the warning; go straight
+  to `$HOME`.
 - Background `git clone` dies when the bash call returns. Launch it with
   `setsid nohup ... & disown` and then poll the log, or it never finishes.
 - Do the arithmetic from the tile's own span rather than the printed labels:
   `x_pct = x0 + px / (tile_width_px / tile_span)`. Confirm it against two
-  labels before recording anything; on page 3 that gave 32.4 px per x unit and
-  21.4 px per y unit, and every box landed first time.
+  labels before recording anything. On pages 3 and 5 that gave ~32.4 px per x
+  unit and ~21.5 px per y unit, and every box landed first time.
 - Verbs ending in "ing" that are genuinely bare infinitives ("swing", "ring")
   will trip a naive regex check for `-ing` after a modal. They are fine.
 - Tiles overlap by 3%, so anything in the shared strip gets written twice with
   slightly different boxes and the IoU filter does not always catch it. Easier
   to claim the strip for one tile while reading: record an object only from the
-  tile whose interior it sits in. Page 4 came out with zero seam duplicates
-  that way.
-- `/tmp` is shared with other sandboxes and the leftovers are owned by another
-  uid, so `rm -rf /tmp/<name>` fails and a redirect into an existing
-  `/tmp/*.log` dies with "Permission denied" — which can leave you tailing
-  another session's log and thinking your clone ran. Do everything under
-  `$HOME/work`.
+  tile whose interior it sits in — for a 4x3 grid that means column interiors
+  at 0–25 / 25–50 / 50–75 / 75–100 and row interiors at 0–33.3 / 33.3–66.7 /
+  66.7–100. Pages 4 and 5 both came out with zero seam duplicates that way.
+- Objects that straddle a seam (a long lorry, a car, an excavator) are best
+  recorded once, from the tile holding most of them, with a box that runs past
+  the tile edge to the object's true extent. Splitting them into two half-boxes
+  makes two clumsy tap targets.
+- Names must be unique within a page. Where a picture has five bushes, give
+  each one a place ("Bush by the steps", "Bush by the pavement") rather than
+  numbering them.
 - The Read tool sees the host filesystem, not the sandbox, so tiles have to be
   written into the outputs mount to be viewable. `tiler.py <page> <outputs
-  dir> pN` and then read them from there; copy `check_pageN.png` over too.
+  dir> pN` and then read them from there; copy `check_pageN.png` over too, and
+  crop a couple of quadrants from it at full size — drift shows up in a crop
+  that is invisible in the whole-page view.
 
 ## The one thing that will waste your time if you miss it
 
