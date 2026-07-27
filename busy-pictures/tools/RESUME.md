@@ -22,31 +22,31 @@ denser pictures take more).
 | 6 | 239 | Done, verified, boxes align |
 | 7 | 246 | Done, verified, boxes align |
 | 8 | 245 | Done, verified, boxes align |
-| 9 | — | **NEXT — original data, boxes drift.** |
-| 10–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
+| 9 | 206 | Done, verified, boxes align |
+| 10 | — | **NEXT — original data, boxes drift.** |
+| 11–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
 
 Grammar is already correct for **all 25 pages** (42 fields per object). Only the
 boxes and object coverage need redoing on pages 2–25.
 
 **Update this table after every page.**
 
-### Starting page 9
+### Starting page 10
 
-Page 8 is finished; nothing to resume. Begin page 9 from scratch with the tile
-method below, writing `tools/page_data_9.py` as you go so a later run can pick
-it up mid-page.
+Pages 8 and 9 are both finished; nothing to resume. Begin page 10 from scratch
+with the tile method below, writing `tools/page_data_10.py` as you go so a
+later run can pick it up mid-page.
 
 An `md5sum` across all 25 pages shows pages 6 and 7 are still the only
-duplicate pair, so pages 9–25 each have to be read on their own. Run that
+duplicate pair, so pages 10–25 each have to be read on their own. Run that
 check anyway at the start of a page — it costs one command and would save a
 whole session.
 
-Page 8 is a cutaway block of flats with a street in front of it, and it is the
-densest page so far: twelve tiles at 15–20 objects each came to 277 before
-trimming. Cutting 31 background shapes (roof tiles, gutters, drainpipes, plain
-doors, the long pavement hedge) brought it to 245 and lost nothing a learner
-would want to name. Expect to over-collect and trim on pages like this rather
-than trying to hit the ceiling exactly while reading.
+Two pages fit comfortably in one run at this pace. Page 8 (a cutaway block of
+flats) came in at 245 and page 9 (the Wimmeltown high street, with the
+building site, the shops, the school, the daycare and the police station) at
+206, both in the same session. The limiting factor is reading the twelve
+tiles, not authoring the sentences, so do not slow down over wording.
 
 Two runs overlapped on page 7 and both worked on it at once. One had pushed a
 partial 90-object file covering the top row of tiles when the other finished
@@ -61,7 +61,13 @@ boxes were read independently from its own tiles and then checked against the
 verified page 6 set, and the two agreed to within about half a percent, which
 is a useful confirmation that the tile arithmetic below is sound.
 
-Things pages 2–8 taught, worth carrying forward:
+Things pages 2–9 taught, worth carrying forward:
+
+- A shape glimpsed at the very edge of a tile is the commonest source of a
+  wrong name. On page 9 a white panel at the right edge of one tile was
+  recorded as a parked van; the check render showed it was the bonnet of the
+  police car, already recorded from the tile next door. If an object is cut by
+  the tile edge, look at the neighbouring tile before naming it.
 
 - On a cutaway building page the same object often appears in two tiles with
   two different apparent widths, because one tile cuts it at its edge. The red
