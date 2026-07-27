@@ -21,19 +21,32 @@ denser pictures take more).
 | 5 | 213 | Done, verified, boxes align |
 | 6 | 239 | Done, verified, boxes align |
 | 7 | 246 | Done, verified, boxes align |
-| 8 | — | **NEXT — original data, boxes drift.** |
-| 9–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
+| 8 | 245 | Done, verified, boxes align |
+| 9 | — | **NEXT — original data, boxes drift.** |
+| 10–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
 
 Grammar is already correct for **all 25 pages** (42 fields per object). Only the
 boxes and object coverage need redoing on pages 2–25.
 
 **Update this table after every page.**
 
-### Starting page 8
+### Starting page 9
 
-Page 7 is finished; nothing to resume. Begin page 8 from scratch with the tile
-method below, writing `tools/page_data_8.py` as you go so a later run can pick
+Page 8 is finished; nothing to resume. Begin page 9 from scratch with the tile
+method below, writing `tools/page_data_9.py` as you go so a later run can pick
 it up mid-page.
+
+An `md5sum` across all 25 pages shows pages 6 and 7 are still the only
+duplicate pair, so pages 9–25 each have to be read on their own. Run that
+check anyway at the start of a page — it costs one command and would save a
+whole session.
+
+Page 8 is a cutaway block of flats with a street in front of it, and it is the
+densest page so far: twelve tiles at 15–20 objects each came to 277 before
+trimming. Cutting 31 background shapes (roof tiles, gutters, drainpipes, plain
+doors, the long pavement hedge) brought it to 245 and lost nothing a learner
+would want to name. Expect to over-collect and trim on pages like this rather
+than trying to hit the ceiling exactly while reading.
 
 Two runs overlapped on page 7 and both worked on it at once. One had pushed a
 partial 90-object file covering the top row of tiles when the other finished
@@ -46,12 +59,19 @@ behind it, check `git log` before starting — the work may already be moving.
 comparison lines up at zero offset; only scan and JPEG noise differ. Page 7's
 boxes were read independently from its own tiles and then checked against the
 verified page 6 set, and the two agreed to within about half a percent, which
-is a useful confirmation that the tile arithmetic below is sound. Before
-starting any page, it is worth a quick `md5sum` / pixel diff against the pages
-already done — if another duplicate turns up, the verified data is both a
-naming reference for ambiguous shapes and a free accuracy check.
+is a useful confirmation that the tile arithmetic below is sound.
 
-Things pages 2–7 taught, worth carrying forward:
+Things pages 2–8 taught, worth carrying forward:
+
+- On a cutaway building page the same object often appears in two tiles with
+  two different apparent widths, because one tile cuts it at its edge. The red
+  sofa, the dark chest and the desert picture on page 8 each read narrower from
+  the tile that clipped them. When a name repeats across neighbouring tiles,
+  take the union of the two reads rather than either one, and record it once.
+- `/tmp` is still poisoned by earlier sandboxes. On this run `rm -rf /tmp/cw`
+  failed on every file, the clone went into it anyway, and git then refused
+  with "dubious ownership". Cloning to `$HOME/repo/c` worked first time. Go
+  straight there.
 
 - Twelve tiles at ~20 objects each overshoots the 250 ceiling. Aim for about
   14 per tile and check the count before committing; trimming afterwards is
