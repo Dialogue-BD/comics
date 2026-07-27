@@ -168,6 +168,10 @@
     #speech-toast .toast-icon {
       font-size: 18px;
     }
+    #speech-toast .toast-title {
+      color: #38bdf8;
+      font-weight: 700;
+    }
     
     /* Prompts Panel Overlay */
     #prompt-panel {
@@ -445,6 +449,7 @@
   <div id="speech-toast">
     <span class="toast-icon">🔊</span>
     <div>
+      <span id="toast-title" class="toast-title">Object</span>:
       <span id="toast-text">Grammar sentence will appear here</span>
     </div>
   </div>
@@ -529,6 +534,7 @@
     var targetRing = document.getElementById("target-ring");
     var boxHighlight = document.getElementById("box-highlight");
     var speechToast = document.getElementById("speech-toast");
+    var toastTitle = document.getElementById("toast-title");
     var toastText = document.getElementById("toast-text");
     
     var toastTimeout = null;
@@ -661,7 +667,7 @@
     function refreshSpokenSentence(respeak) {
       if (!lastTappedObject) return;
       var sentence = buildGrammarSentence(lastTappedObject.grammar_data, prompts[currentPromptIndex]);
-      showSpeechToast(sentence || "");
+      showSpeechToast(lastTappedObject.name, sentence || "");
       if (respeak && sentence) speakText(sentence);
     }
 
@@ -781,7 +787,7 @@
       var prompt = prompts[currentPromptIndex];
       var gData = obj.grammar_data;
       var sentence = buildGrammarSentence(gData, prompt);
-      showSpeechToast(sentence || "");
+      showSpeechToast(obj.name, sentence || "");
       if (sentence) speakText(sentence);
     }
 
@@ -795,7 +801,8 @@
       return out;
     }
 
-    function showSpeechToast(sentence) {
+    function showSpeechToast(name, sentence) {
+      toastTitle.innerText = name;
       toastText.innerText = sentence;
       speechToast.classList.add("visible");
 
