@@ -669,7 +669,7 @@
       if (!lastTappedObject) return;
       var sentence = buildGrammarSentence(lastTappedObject.grammar_data, prompts[currentPromptIndex]);
       showSpeechToast(lastTappedObject.name, sentence || "");
-      if (respeak) speakText(sentence ? (lastTappedObject.name + ". " + sentence) : lastTappedObject.name);
+      if (respeak && sentence) speakText(sentence);
     }
 
     function updatePromptUI(respeak) {
@@ -789,7 +789,7 @@
       var gData = obj.grammar_data;
       var sentence = buildGrammarSentence(gData, prompt);
       showSpeechToast(obj.name, sentence || "");
-      speakText(sentence ? (obj.name + ". " + sentence) : obj.name);
+      if (sentence) speakText(sentence);
     }
 
     // Fields whose stored value is already a complete sentence. Everything else
