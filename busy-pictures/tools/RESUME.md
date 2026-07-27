@@ -19,21 +19,22 @@ denser pictures take more).
 | 3 | 173 | Done, verified, boxes align |
 | 4 | 209 | Done, verified, boxes align |
 | 5 | 213 | Done, verified, boxes align |
-| 6 | — | **NEXT — original data, boxes drift.** |
-| 7–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
+| 6 | 239 | Done, verified, boxes align |
+| 7 | — | **NEXT — original data, boxes drift.** |
+| 8–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
 
 Grammar is already correct for **all 25 pages** (42 fields per object). Only the
 boxes and object coverage need redoing on pages 2–25.
 
 **Update this table after every page.**
 
-### Starting page 6
+### Starting page 7
 
-Page 5 is finished; nothing to resume. Begin page 6 from scratch with the tile
-method below, writing `tools/page_data_6.py` as you go so a later run can pick
+Page 6 is finished; nothing to resume. Begin page 7 from scratch with the tile
+method below, writing `tools/page_data_7.py` as you go so a later run can pick
 it up mid-page.
 
-Things pages 2–5 taught, worth carrying forward:
+Things pages 2–6 taught, worth carrying forward:
 
 - Twelve tiles at ~20 objects each overshoots the 250 ceiling. Aim for about
   14 per tile and check the count before committing; trimming afterwards is
@@ -42,7 +43,20 @@ Things pages 2–5 taught, worth carrying forward:
 - Large background shapes (cliffs, walls, hedges, water) pad the count without
   giving a learner anything to name. Keep a few for variety, then cut the rest
   when trimming to the ceiling.
-- Work in a clone you own, and clone into `$HOME/work` — **not** `/tmp`.
+- `$HOME` itself is the safe place to clone, not `$HOME/work` and definitely
+  not `/tmp`. On the page 6 run `/tmp/cw` was still sitting there owned by
+  `nobody` from an earlier sandbox, so `rm -rf` failed on every file, `git
+  clone` went ahead into it anyway, and the resulting checkout could not be
+  written to — plus the redirect into `/tmp/clone.log` was refused. Clone to
+  `$HOME/repo`, log to `$HOME/clone.log`, done.
+- A `--sparse` clone checks out only the root by default. After it finishes you
+  still need `git sparse-checkout add busy-pictures`, and the first attempt
+  fails with "dubious ownership" if the directory is not yours — another reason
+  to clone somewhere you own.
+- Git refuses to run in a clone it thinks belongs to someone else. If you do
+  hit that, `git config --global --add safe.directory <path>` clears it, but
+  the real fix is to clone into a directory you own in the first place.
+- Work in a clone you own, and clone into `$HOME` — **not** `/tmp`.
   `/tmp` is shared with other sandboxes and the leftovers there belong to a
   different uid, so `rm -rf /tmp/cw` fails, the clone lands somewhere else, and
   a redirect into an existing `/tmp/*.log` dies with "Permission denied" —
@@ -67,6 +81,13 @@ Things pages 2–5 taught, worth carrying forward:
   recorded once, from the tile holding most of them, with a box that runs past
   the tile edge to the object's true extent. Splitting them into two half-boxes
   makes two clumsy tap targets.
+- Two boxes over the same thing under different names is the one mistake the
+  check render catches late. Page 6 had a "living room window" that turned out
+  to be the front door already recorded from a neighbouring tile; the IoU
+  filter did not catch it because the boxes only partly overlapped. When two
+  names sound like they could describe the same object, look before committing.
+- Reading twelve tiles at 15–25 objects each landed page 6 on 239 without any
+  trimming, which is a comfortable rate for a page this dense.
 - Names must be unique within a page. Where a picture has five bushes, give
   each one a place ("Bush by the steps", "Bush by the pavement") rather than
   numbering them.
