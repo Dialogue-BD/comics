@@ -20,7 +20,7 @@ denser pictures take more).
 | 4 | 209 | Done, verified, boxes align |
 | 5 | 213 | Done, verified, boxes align |
 | 6 | 239 | Done, verified, boxes align |
-| 7 | — | **NEXT — original data, boxes drift.** |
+| 7 | 90 so far | **IN PROGRESS — tiles r0c0–r0c3 done. CONTINUE, do not restart.** |
 | 8–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
 
 Grammar is already correct for **all 25 pages** (42 fields per object). Only the
