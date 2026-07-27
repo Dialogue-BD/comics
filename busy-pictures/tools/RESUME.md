@@ -23,19 +23,26 @@ denser pictures take more).
 | 7 | 246 | Done, verified, boxes align |
 | 8 | 245 | Done, verified, boxes align |
 | 9 | 206 | Done, verified, boxes align |
-| 10 | — | **NEXT — original data, boxes drift.** |
-| 11–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
+| 10 | 193 | Done, verified, boxes align |
+| 11 | — | **NEXT — original data, boxes drift.** |
+| 12–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
 
 Grammar is already correct for **all 25 pages** (42 fields per object). Only the
 boxes and object coverage need redoing on pages 2–25.
 
 **Update this table after every page.**
 
-### Starting page 10
+### Starting page 11
 
-Pages 8 and 9 are both finished; nothing to resume. Begin page 10 from scratch
-with the tile method below, writing `tools/page_data_10.py` as you go so a
-later run can pick it up mid-page.
+Page 10 is finished; nothing to resume. Begin page 11 from scratch with the
+tile method below, writing `tools/page_data_11.py` as you go so a later run
+can pick it up mid-page.
+
+Page 10 was the city park — the cafe terrace, the fountain, the kite meadow,
+the puppet theatre, the ice cream kiosk, the sandpit and the playground. It
+came in at 193 objects from twelve tiles at 12–21 objects each. The sparser
+tiles (the lawn corners) only carry a dozen worth naming, and that is fine;
+padding them with grass tufts and background hedges would not help a learner.
 
 An `md5sum` across all 25 pages shows pages 6 and 7 are still the only
 duplicate pair, so pages 10–25 each have to be read on their own. Run that
@@ -78,6 +85,17 @@ Things pages 2–9 taught, worth carrying forward:
   failed on every file, the clone went into it anyway, and git then refused
   with "dubious ownership". Cloning to `$HOME/repo/c` worked first time. Go
   straight there.
+- On the page 10 run the leftover `/tmp/cw` did the same thing again, and the
+  redirect into the existing `/tmp/clone.log` was refused too, so the log
+  being tailed was a previous session's — it read as a clean successful clone
+  when nothing had happened. Cloning to a name nothing else had used
+  (`/tmp/cwA`, logging to `/tmp/cloneA.log`) worked, but `$HOME` is still the
+  right answer. If a clone looks suspiciously instant, check the log's owner
+  and mtime before trusting it.
+- The Read tool cannot see the sandbox filesystem, so it cannot open the
+  clone, and the Write tool cannot write into it either — every `page_data`
+  file has to be created from bash with a heredoc. Only the tiles and the
+  check render, copied into the outputs mount, are visible to Read.
 
 - Twelve tiles at ~20 objects each overshoots the 250 ceiling. Aim for about
   14 per tile and check the count before committing; trimming afterwards is
