@@ -1,0 +1,46 @@
+# Page 9 — Wimmeltown high street: shops, the school, the daycare and the traffic.
+# Boxes read straight off the tiler grid labels, one block per tile.
+P = [
+
+# TILE r0c0
+("Yellow tower crane", [0.6, 2.0, 12.0, 16.6], "The yellow tower crane", "swing", "over the building site", False),
+("Builder in the orange vest", [6.4, 4.9, 11.3, 6.1], "The builder in the orange vest", "measure", "the new wall", False),
+("Builder in the red helmet", [6.4, 6.3, 11.3, 7.7], "The builder in the red helmet", "work", "on the building site", False),
+("White farmhouse", [4.7, 11.4, 7.5, 16.5], "The white farmhouse", "stand", "in the green fields", False),
+("Yellow house behind the market", [4.3, 17.3, 10.6, 21.6], "The yellow house behind the market", "look", "down on the high street", False),
+("Big green tree", [4.7, 6.0, 10.8, 10.2], "The big green tree", "grow", "beside the building site", False),
+("Yellow digger", [11.0, 8.5, 19.9, 17.4], "The yellow digger", "dig", "a hole in the ground", False),
+("Driver in the digger", [14.7, 15.2, 18.5, 16.8], "The driver in the digger", "pull", "the levers", False),
+("Pile of sand", [16.4, 10.5, 19.4, 14.3], "The pile of sand", "wait", "beside the digger", False),
+("Half-built brick wall", [12.7, 4.8, 18.5, 9.2], "The half-built brick wall", "rise", "behind the fence", False),
+("Building site fence", [13.1, 0.0, 18.9, 4.8], "The building site fence", "keep", "the children out", False),
+("Chimney above the shop", [2.9, 12.8, 5.2, 13.7], "The chimney above the shop", "poke", "through the roof", False),
+("Pink house", [8.7, 18.2, 28.7, 27.9], "The pink house", "stand", "next to the supermarket", False),
+("Oval window", [10.6, 21.6, 12.9, 23.1], "The oval window", "shine", "in the morning light", False),
+("Tall arched window", [16.4, 19.1, 21.0, 21.0], "The tall arched window", "face", "the high street", False),
+("Second arched window", [16.4, 23.0, 21.3, 24.8], "The second arched window", "let", "the sunshine in", False),
+("Wimmelmarket sign", [22.2, 0.9, 25.9, 14.3], "The Wimmelmarket sign", "hang", "above the shop windows", False),
+("Woman at the checkout", [28.7, 9.2, 36.0, 11.5], "The woman at the checkout", "pay", "for her shopping", False),
+("Shop assistant in the red shirt", [28.5, 11.9, 36.0, 13.9], "The shop assistant in the red shirt", "pack", "the bags", False),
+("Kids yoga sign", [28.0, 22.0, 31.0, 25.0], "The kids yoga sign", "advertise", "the class upstairs", False),
+("Bush beside the shop", [30.6, 19.1, 33.3, 21.6], "The bush beside the shop", "grow", "against the wall", False),
+
+# TILE r0c1
+("Round window in the gable", [12.2, 32.4, 13.8, 34.1], "The round window in the gable", "look", "out over the street", False),
+("Big arched studio window", [17.1, 30.1, 25.0, 35.5], "The big arched studio window", "show", "the yoga class inside", False),
+("Children doing yoga", [17.8, 30.7, 24.7, 35.0], "The children doing yoga", "stretch", "on their mats", True),
+("Tall brick chimney", [3.1, 36.7, 7.1, 37.9], "The tall brick chimney", "stand", "above the tiled roof", False),
+("Solar panels", [6.4, 39.0, 9.9, 48.2], "The solar panels", "catch", "the morning sun", True),
+("Trees behind the houses", [1.0, 30.1, 5.4, 35.8], "The trees behind the houses", "wave", "in the wind", True),
+("Waiter on the balcony", [13.1, 44.2, 19.6, 46.8], "The waiter on the balcony", "carry", "a tray to the table", False),
+("Tray of drinks", [17.5, 44.5, 18.9, 45.8], "The tray of drinks", "wobble", "in the waiter's hands", False),
+("Red flowers on the balcony", [18.7, 41.6, 20.8, 44.1], "The red flowers on the balcony", "spill", "over the flower box", True),
+("Balcony railing", [20.6, 39.0, 23.3, 49.8], "The balcony railing", "run", "along the front of the cafe", False),
+("Yellow curtains", [25.7, 38.7, 30.6, 41.6], "The yellow curtains", "hang", "in the cafe window", True),
+("Bucket of red flowers", [18.0, 48.4, 20.3, 50.9], "The bucket of red flowers", "stand", "outside the flower shop", False),
+("Pot of purple flowers", [27.1, 48.8, 30.6, 51.0], "The pot of purple flowers", "brighten", "the pavement", False),
+("Man pushing a wheelchair", [26.4, 47.2, 33.3, 49.0], "The man pushing a wheelchair", "help", "his friend along the path", False),
+("Nurse in the white uniform", [27.3, 43.8, 33.3, 45.6], "The nurse in the white uniform", "walk", "beside the wheelchair", False),
+("Girl in the purple top", [29.9, 41.3, 36.0, 43.2], "The girl in the purple top", "wait", "outside the cafe", False),
+("Ladder on the fire engine", [29.6, 22.0, 36.0, 39.2], "The ladder on the fire engine", "stretch", "along the roof of the truck", False),
+]
