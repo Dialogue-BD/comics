@@ -4,10 +4,10 @@
       "id": "p1_obj_1",
       "name": "Yellow rescue helicopter",
       "box": [
-        3.0,
+        3,
         12.5,
         11.5,
-        22.0
+        22
       ],
       "grammar_data": {
         "subject": "The yellow rescue helicopter",
@@ -117,10 +117,10 @@
       "id": "p1_obj_2",
       "name": "Snowy mountain peak",
       "box": [
-        4.0,
-        0.0,
-        21.0,
-        16.0
+        4,
+        0,
+        21,
+        16
       ],
       "grammar_data": {
         "subject": "The snowy mountain peak",
@@ -231,9 +231,9 @@
       "name": "Alpine chalet with balcony",
       "box": [
         10.5,
-        21.0,
+        21,
         16.5,
-        27.0
+        27
       ],
       "grammar_data": {
         "subject": "The alpine chalet with balcony",
@@ -344,7 +344,7 @@
       "name": "White farmhouse on the slope",
       "box": [
         13.5,
-        21.0,
+        21,
         17.5,
         24.5
       ],
@@ -458,7 +458,7 @@
       "box": [
         17.5,
         6.6,
-        21.0,
+        21,
         8.8
       ],
       "grammar_data": {
@@ -1021,9 +1021,9 @@
       "id": "p1_obj_10",
       "name": "Pigeon carrying a letter",
       "box": [
-        30.0,
+        30,
         11.5,
-        33.0,
+        33,
         13.6
       ],
       "grammar_data": {
@@ -1134,10 +1134,10 @@
       "id": "p1_obj_11",
       "name": "Pine forest on the ridge",
       "box": [
-        13.0,
-        15.0,
+        13,
+        15,
         20.5,
-        21.0
+        21
       ],
       "grammar_data": {
         "subject": "The pine forest on the ridge",
@@ -1248,7 +1248,7 @@
       "name": "White high-speed train",
       "box": [
         19.5,
-        0.0,
+        0,
         24.5,
         34.3
       ],
@@ -1473,7 +1473,7 @@
       "id": "p1_obj_14",
       "name": "Chalet with a red roof",
       "box": [
-        4.0,
+        4,
         30.7,
         10.8,
         35.6
@@ -2038,7 +2038,7 @@
       "id": "p1_obj_19",
       "name": "Second chamois on the ledge",
       "box": [
-        18.0,
+        18,
         47.5,
         20.8,
         49.3
@@ -2377,9 +2377,9 @@
       "id": "p1_obj_22",
       "name": "Cyclist on a mountain path",
       "box": [
-        16.0,
-        23.0,
-        18.0,
+        16,
+        23,
+        18,
         24.5
       ],
       "grammar_data": {
@@ -2490,10 +2490,10 @@
       "id": "p1_obj_23",
       "name": "Pine forest above the tunnel",
       "box": [
-        2.0,
-        24.0,
-        20.0,
-        34.0
+        2,
+        24,
+        20,
+        34
       ],
       "grammar_data": {
         "subject": "The pine forest above the tunnel",
@@ -2832,7 +2832,7 @@
         15.6,
         56.3,
         19.6,
-        58.0
+        58
       ],
       "grammar_data": {
         "subject": "The climber in the blue jacket",
@@ -3058,7 +3058,7 @@
         1.3,
         52.7,
         3.8,
-        54.0
+        54
       ],
       "grammar_data": {
         "subject": "The small violet hot air balloon",
@@ -3284,7 +3284,7 @@
         17.9,
         61.1,
         21.9,
-        76.0
+        76
       ],
       "grammar_data": {
         "subject": "The brown cargo train",
@@ -3397,7 +3397,7 @@
         21.9,
         57.5,
         31.5,
-        78.0
+        78
       ],
       "grammar_data": {
         "subject": "The stone railway viaduct",
@@ -3510,7 +3510,7 @@
         10.8,
         68.7,
         19.3,
-        78.0
+        78
       ],
       "grammar_data": {
         "subject": "The right-hand tunnel portal",
@@ -3733,7 +3733,7 @@
       "id": "p1_obj_34",
       "name": "Steam train driver",
       "box": [
-        31.0,
+        31,
         52.9,
         33.4,
         54.2
@@ -3849,7 +3849,7 @@
         30.5,
         56.4,
         35.5,
-        60.0
+        60
       ],
       "grammar_data": {
         "subject": "The red railway carriage",
@@ -4187,7 +4187,7 @@
       "box": [
         24.3,
         60.6,
-        33.0,
+        33,
         62.4
       ],
       "grammar_data": {
@@ -4411,10 +4411,10 @@
       "id": "p1_obj_40",
       "name": "Waterfall in the gorge",
       "box": [
-        33.0,
+        33,
         63.8,
         36.3,
-        66.0
+        66
       ],
       "grammar_data": {
         "subject": "The waterfall in the gorge",
@@ -4638,8 +4638,8 @@
       "name": "Second bird of prey",
       "box": [
         2.6,
-        76.0,
-        5.0,
+        76,
+        5,
         79.2
       ],
       "grammar_data": {
@@ -4751,9 +4751,9 @@
       "name": "Ibex with long horns",
       "box": [
         14.2,
-        76.0,
+        76,
         18.6,
-        78.0
+        78
       ],
       "grammar_data": {
         "subject": "The ibex with long horns",
@@ -4864,7 +4864,7 @@
       "name": "Ibex on the lower ledge",
       "box": [
         22.9,
-        75.0,
+        75,
         27.3,
         77.6
       ],
@@ -4979,7 +4979,7 @@
         5.2,
         90.2,
         10.6,
-        100.0
+        100
       ],
       "grammar_data": {
         "subject": "The red mountain station",
@@ -5091,7 +5091,7 @@
       "box": [
         10.1,
         82.2,
-        33.0,
+        33,
         93.5
       ],
       "grammar_data": {
@@ -5202,9 +5202,9 @@
       "id": "p1_obj_47",
       "name": "Yellow funicular car",
       "box": [
-        31.0,
+        31,
         73.7,
-        40.0,
+        40,
         82.8
       ],
       "grammar_data": {
@@ -5317,7 +5317,7 @@
       "box": [
         20.8,
         83.5,
-        33.0,
+        33,
         92.3
       ],
       "grammar_data": {
@@ -5542,7 +5542,7 @@
       "name": "Rider on a motor scooter",
       "box": [
         25.7,
-        95.0,
+        95,
         30.2,
         97.2
       ],
@@ -5655,7 +5655,7 @@
       "name": "Tunnel mouth by the cargo train",
       "box": [
         10.8,
-        72.0,
+        72,
         21.2,
         76.3
       ],
@@ -5767,10 +5767,10 @@
       "id": "p1_obj_52",
       "name": "Mountain road",
       "box": [
-        30.0,
-        93.0,
+        30,
+        93,
         36.3,
-        100.0
+        100
       ],
       "grammar_data": {
         "subject": "The mountain road",
@@ -6108,8 +6108,8 @@
       "box": [
         51.6,
         10.6,
-        54.0,
-        12.0
+        54,
+        12
       ],
       "grammar_data": {
         "subject": "The driver leaning from the cab",
@@ -6222,7 +6222,7 @@
         37.4,
         10.8,
         42.4,
-        13.0
+        13
       ],
       "grammar_data": {
         "subject": "The rider on the ATV",
@@ -6446,7 +6446,7 @@
       "name": "Two teenage friends in pink and yellow",
       "box": [
         58.5,
-        10.0,
+        10,
         63.5,
         11.2
       ],
@@ -6559,7 +6559,7 @@
       "name": "Man in a yellow shirt",
       "box": [
         58.3,
-        13.0,
+        13,
         64.4,
         14.2
       ],
@@ -7012,7 +7012,7 @@
       "box": [
         61.4,
         3.2,
-        67.0,
+        67,
         7.1
       ],
       "grammar_data": {
@@ -7123,10 +7123,10 @@
       "id": "p1_obj_64",
       "name": "Apple tree with red fruit",
       "box": [
-        39.0,
+        39,
         18.5,
         47.3,
-        23.0
+        23
       ],
       "grammar_data": {
         "subject": "The apple tree with red fruit",
@@ -7239,7 +7239,7 @@
         44.3,
         22.4,
         47.1,
-        27.0
+        27
       ],
       "grammar_data": {
         "subject": "The red and white parasol",
@@ -7351,8 +7351,8 @@
       "box": [
         47.1,
         22.5,
-        54.0,
-        28.0
+        54,
+        28
       ],
       "grammar_data": {
         "subject": "The outdoor restaurant terrace",
@@ -7577,7 +7577,7 @@
       "box": [
         30.3,
         15.7,
-        44.0,
+        44,
         18.2
       ],
       "grammar_data": {
@@ -7688,10 +7688,10 @@
       "id": "p1_obj_69",
       "name": "Pine woods behind the station",
       "box": [
-        33.0,
-        0.0,
-        60.0,
-        6.0
+        33,
+        0,
+        60,
+        6
       ],
       "grammar_data": {
         "subject": "The pine woods behind the station",
@@ -7801,9 +7801,9 @@
       "id": "p1_obj_70",
       "name": "Alpine farmhouse with green shutters",
       "box": [
-        36.0,
+        36,
         27.6,
-        47.0,
+        47,
         48.1
       ],
       "grammar_data": {
@@ -8256,7 +8256,7 @@
         49.7,
         32.5,
         51.9,
-        35.0
+        35
       ],
       "grammar_data": {
         "subject": "The geese near the farmhouse",
@@ -8480,7 +8480,7 @@
       "name": "Piglet",
       "box": [
         52.3,
-        36.0,
+        36,
         53.9,
         37.5
       ],
@@ -8821,7 +8821,7 @@
         54.9,
         41.1,
         57.1,
-        47.0
+        47
       ],
       "grammar_data": {
         "subject": "The swallows flying by the roof",
@@ -9044,7 +9044,7 @@
       "id": "p1_obj_81",
       "name": "Magpie on the roof",
       "box": [
-        64.0,
+        64,
         33.6,
         65.6,
         34.9
@@ -9160,7 +9160,7 @@
         59.4,
         33.8,
         61.3,
-        35.0
+        35
       ],
       "grammar_data": {
         "subject": "The bird on the roof edge",
@@ -9384,7 +9384,7 @@
       "name": "Orange barn roof",
       "box": [
         55.1,
-        22.0,
+        22,
         66.7,
         33.7
       ],
@@ -9951,7 +9951,7 @@
         35.5,
         60.3,
         39.8,
-        66.0
+        66
       ],
       "grammar_data": {
         "subject": "The ground-mounted solar array",
@@ -10177,7 +10177,7 @@
         54.5,
         61.2,
         61.1,
-        64.0
+        64
       ],
       "grammar_data": {
         "subject": "The worker installing a solar panel",
@@ -10288,7 +10288,7 @@
       "name": "Second roofer in a yellow helmet",
       "box": [
         64.6,
-        53.0,
+        53,
         72.6,
         55.8
       ],
@@ -10967,8 +10967,8 @@
       "box": [
         42.4,
         68.6,
-        44.0,
-        70.0
+        44,
+        70
       ],
       "grammar_data": {
         "subject": "The sheep on the upper slope",
@@ -11081,7 +11081,7 @@
         45.7,
         72.3,
         47.6,
-        74.0
+        74
       ],
       "grammar_data": {
         "subject": "The sheep near the picnic tables",
@@ -11191,7 +11191,7 @@
       "id": "p1_obj_100",
       "name": "Lamb below the road",
       "box": [
-        50.0,
+        50,
         69.8,
         51.6,
         71.8
@@ -11304,8 +11304,8 @@
       "id": "p1_obj_101",
       "name": "Boy watching the sheep",
       "box": [
-        50.0,
-        72.0,
+        50,
+        72,
         52.6,
         73.2
       ],
@@ -11531,7 +11531,7 @@
       "name": "Main station roof",
       "box": [
         48.1,
-        47.0,
+        47,
         60.6,
         74.2
       ],
@@ -11644,7 +11644,7 @@
       "name": "Station facade with green timbers",
       "box": [
         59.6,
-        47.0,
+        47,
         69.7,
         71.7
       ],
@@ -11757,7 +11757,7 @@
       "name": "Solar panel on the lower roof",
       "box": [
         66.6,
-        68.0,
+        68,
         69.7,
         74.2
       ],
@@ -11869,7 +11869,7 @@
       "id": "p1_obj_106",
       "name": "White camper van",
       "box": [
-        40.0,
+        40,
         84.5,
         48.1,
         92.3
@@ -11982,7 +11982,7 @@
       "id": "p1_obj_107",
       "name": "Pink camper bus",
       "box": [
-        44.0,
+        44,
         78.2,
         48.8,
         84.6
@@ -12209,7 +12209,7 @@
       "name": "Picnic table with a white cloth",
       "box": [
         49.7,
-        74.0,
+        74,
         52.3,
         77.7
       ],
@@ -12434,9 +12434,9 @@
       "id": "p1_obj_111",
       "name": "Orange dome tent",
       "box": [
-        50.0,
+        50,
         79.1,
-        55.0,
+        55,
         85.8
       ],
       "grammar_data": {
@@ -13565,7 +13565,7 @@
       "name": "Woman walking in pink",
       "box": [
         63.5,
-        84.0,
+        84,
         69.7,
         85.7
       ],
@@ -14130,9 +14130,9 @@
       "name": "Mountain road through the campsite",
       "box": [
         39.8,
-        72.0,
+        72,
         44.5,
-        100.0
+        100
       ],
       "grammar_data": {
         "subject": "The mountain road through the campsite",
@@ -14243,7 +14243,7 @@
       "name": "Blue and white passenger train",
       "box": [
         76.4,
-        0.0,
+        0,
         96.7,
         27.5
       ],
@@ -14356,7 +14356,7 @@
       "name": "Red regional train",
       "box": [
         67.7,
-        0.0,
+        0,
         77.1,
         17.6
       ],
@@ -14470,7 +14470,7 @@
       "box": [
         80.4,
         4.5,
-        85.0,
+        85,
         6.6
       ],
       "grammar_data": {
@@ -14694,7 +14694,7 @@
       "id": "p1_obj_131",
       "name": "Train ticket taker in a red cap",
       "box": [
-        85.0,
+        85,
         9.4,
         92.5,
         11.4
@@ -15036,7 +15036,7 @@
         90.3,
         6.6,
         98.6,
-        9.0
+        9
       ],
       "grammar_data": {
         "subject": "The man pushing a pram",
@@ -15259,7 +15259,7 @@
       "id": "p1_obj_136",
       "name": "Dachshund on the platform",
       "box": [
-        96.0,
+        96,
         1.5,
         98.1,
         3.8
@@ -15373,7 +15373,7 @@
       "name": "Man in jeans on the path",
       "box": [
         63.7,
-        14.0,
+        14,
         68.2,
         15.5
       ],
@@ -15487,7 +15487,7 @@
       "box": [
         63.7,
         15.1,
-        67.0,
+        67,
         16.6
       ],
       "grammar_data": {
@@ -15599,7 +15599,7 @@
       "name": "Woman in orange with a child",
       "box": [
         66.3,
-        19.0,
+        19,
         71.9,
         20.8
       ],
@@ -16053,7 +16053,7 @@
         63.7,
         20.5,
         77.8,
-        28.0
+        28
       ],
       "grammar_data": {
         "subject": "The depot doorway",
@@ -16279,7 +16279,7 @@
         74.8,
         18.8,
         76.7,
-        21.0
+        21
       ],
       "grammar_data": {
         "subject": "The sleeping dog on the grass",
@@ -17296,7 +17296,7 @@
         66.8,
         34.2,
         73.1,
-        53.0
+        53
       ],
       "grammar_data": {
         "subject": "The platform canopy",
@@ -17408,7 +17408,7 @@
       "box": [
         76.2,
         42.8,
-        83.0,
+        83,
         45.5
       ],
       "grammar_data": {
@@ -17745,7 +17745,7 @@
       "id": "p1_obj_158",
       "name": "Open guitar case with coins",
       "box": [
-        84.0,
+        84,
         43.3,
         85.6,
         45.5
@@ -18086,7 +18086,7 @@
       "box": [
         80.4,
         43.6,
-        85.0,
+        85,
         45.3
       ],
       "grammar_data": {
@@ -18200,7 +18200,7 @@
         82.6,
         45.6,
         86.9,
-        47.0
+        47
       ],
       "grammar_data": {
         "subject": "The boy clapping along",
@@ -18426,7 +18426,7 @@
         83.7,
         51.3,
         87.3,
-        53.0
+        53
       ],
       "grammar_data": {
         "subject": "The small child in the red stroller",
@@ -18536,7 +18536,7 @@
       "id": "p1_obj_165",
       "name": "Ornate platform lamp",
       "box": [
-        79.0,
+        79,
         31.4,
         94.1,
         34.8
@@ -18988,7 +18988,7 @@
       "id": "p1_obj_169",
       "name": "Grey suitcase on the platform",
       "box": [
-        92.0,
+        92,
         38.4,
         94.8,
         40.2
@@ -19892,7 +19892,7 @@
       "id": "p1_obj_177",
       "name": "Blue ticket machine",
       "box": [
-        79.0,
+        79,
         59.3,
         87.6,
         62.3
@@ -20459,7 +20459,7 @@
       "box": [
         87.8,
         54.7,
-        100.0,
+        100,
         61.7
       ],
       "grammar_data": {
@@ -20571,8 +20571,8 @@
       "name": "Double platform lamp",
       "box": [
         86.1,
-        63.0,
-        100.0,
+        63,
+        100,
         66.8
       ],
       "grammar_data": {
@@ -20685,7 +20685,7 @@
       "box": [
         90.6,
         50.7,
-        100.0,
+        100,
         53.2
       ],
       "grammar_data": {
@@ -20797,9 +20797,9 @@
       "name": "Man in an orange shirt",
       "box": [
         88.9,
-        47.0,
-        100.0,
-        49.0
+        47,
+        100,
+        49
       ],
       "grammar_data": {
         "subject": "The man in an orange shirt",
@@ -21024,7 +21024,7 @@
       "box": [
         93.4,
         55.9,
-        100.0,
+        100,
         57.5
       ],
       "grammar_data": {
@@ -21250,8 +21250,8 @@
       "box": [
         76.5,
         62.5,
-        88.0,
-        70.0
+        88,
+        70
       ],
       "grammar_data": {
         "subject": "The arched station doorway",
@@ -21814,7 +21814,7 @@
       "name": "Solar panel on the corner roof",
       "box": [
         67.7,
-        72.0,
+        72,
         73.1,
         74.6
       ],
@@ -22492,8 +22492,8 @@
       "name": "Boy with a camera",
       "box": [
         87.7,
-        84.0,
-        94.0,
+        84,
+        94,
         86.2
       ],
       "grammar_data": {
@@ -22606,7 +22606,7 @@
       "box": [
         88.9,
         87.4,
-        94.0,
+        94,
         89.4
       ],
       "grammar_data": {
@@ -22830,7 +22830,7 @@
       "id": "p1_obj_203",
       "name": "Woman with red hair",
       "box": [
-        83.0,
+        83,
         87.5,
         88.7,
         89.5
@@ -22945,7 +22945,7 @@
       "box": [
         82.8,
         90.2,
-        94.0,
+        94,
         93.7
       ],
       "grammar_data": {
@@ -23056,9 +23056,9 @@
       "id": "p1_obj_205",
       "name": "Woman in purple",
       "box": [
-        83.0,
+        83,
         95.4,
-        92.0,
+        92,
         97.8
       ],
       "grammar_data": {
@@ -23621,10 +23621,10 @@
       "id": "p1_obj_210",
       "name": "Wooden terrace railing",
       "box": [
-        88.0,
-        72.0,
-        97.0,
-        92.0
+        88,
+        72,
+        97,
+        92
       ],
       "grammar_data": {
         "subject": "The wooden terrace railing",
@@ -23736,10 +23736,10 @@
       "id": "p2_obj_1",
       "name": "Pink Minibus",
       "box": [
-        38,
+        27.5,
         0,
-        47,
-        11
+        34,
+        9.5
       ],
       "grammar_data": {
         "subject": "The pink minibus",
@@ -23849,10 +23849,10 @@
       "id": "p2_obj_2",
       "name": "Street Guitarist",
       "box": [
-        31,
-        21,
-        41,
-        26
+        28.5,
+        24.5,
+        35,
+        27
       ],
       "grammar_data": {
         "subject": "The street guitarist",
@@ -23962,10 +23962,10 @@
       "id": "p2_obj_3",
       "name": "Colorful Merry-Go-Round",
       "box": [
-        17,
-        35,
-        38,
-        50
+        7,
+        27.7,
+        29,
+        40.2
       ],
       "grammar_data": {
         "subject": "The colourful merry-go-round",
@@ -24075,10 +24075,10 @@
       "id": "p2_obj_4",
       "name": "Hot Dog Stand",
       "box": [
-        14,
-        38,
-        28,
-        49
+        3.5,
+        22,
+        8,
+        27
       ],
       "grammar_data": {
         "subject": "The hot dog stand",
@@ -24301,10 +24301,10 @@
       "id": "p2_obj_6",
       "name": "Stroller on the station platform",
       "box": [
-        31.0,
-        58.0,
-        38.0,
-        64.0
+        24,
+        22,
+        28,
+        23.5
       ],
       "grammar_data": {
         "subject": "The stroller on the station platform",
@@ -24527,10 +24527,10 @@
       "id": "p2_obj_8",
       "name": "Red Commuter Train",
       "box": [
-        39,
-        0,
-        52,
-        44
+        37.5,
+        6,
+        48,
+        33
       ],
       "grammar_data": {
         "subject": "The red commuter train",
@@ -24640,10 +24640,10 @@
       "id": "p2_obj_9",
       "name": "Blue Modern Train",
       "box": [
-        40,
-        35,
-        55,
-        100
+        41.3,
+        44.1,
+        55.2,
+        53
       ],
       "grammar_data": {
         "subject": "The blue modern train",
@@ -24753,10 +24753,10 @@
       "id": "p2_obj_10",
       "name": "Train Conductor",
       "box": [
-        45,
-        31,
-        53,
-        35
+        43.6,
+        49.7,
+        49.1,
+        52
       ],
       "grammar_data": {
         "subject": "The train conductor",
@@ -24866,10 +24866,10 @@
       "id": "p2_obj_11",
       "name": "Boy Chasing Small Dog",
       "box": [
-        46,
-        13,
-        52,
-        19
+        50.1,
+        22.5,
+        52.9,
+        24.8
       ],
       "grammar_data": {
         "subject": "The boy chasing the small dog",
@@ -24979,10 +24979,10 @@
       "id": "p2_obj_12",
       "name": "Woman Holding Balloons",
       "box": [
-        46,
-        58,
-        53,
-        62
+        25.5,
+        26.3,
+        29,
+        29.7
       ],
       "grammar_data": {
         "subject": "The woman holding balloons",
@@ -25092,10 +25092,10 @@
       "id": "p2_obj_13",
       "name": "Red Freight Train",
       "box": [
-        10,
-        62,
-        31,
-        100
+        5,
+        72.6,
+        17,
+        95.5
       ],
       "grammar_data": {
         "subject": "The red freight train",
@@ -25431,10 +25431,10 @@
       "id": "p2_obj_16",
       "name": "Live Music Band",
       "box": [
-        68,
-        27,
-        78,
-        44
+        28,
+        20,
+        35,
+        27
       ],
       "grammar_data": {
         "subject": "The live music band",
@@ -25544,10 +25544,10 @@
       "id": "p2_obj_17",
       "name": "Diners on Restaurant Balcony",
       "box": [
-        69,
-        1,
-        78,
-        25
+        42,
+        3,
+        58.5,
+        20
       ],
       "grammar_data": {
         "subject": "The diners on the restaurant balcony",
@@ -25657,10 +25657,10 @@
       "id": "p2_obj_18",
       "name": "Couple Playing Chess",
       "box": [
-        73,
-        52,
-        79,
-        63
+        73.5,
+        53.1,
+        81.1,
+        55.4
       ],
       "grammar_data": {
         "subject": "The couple playing chess",
@@ -25770,10 +25770,10 @@
       "id": "p2_obj_19",
       "name": "Man Reading Newspaper in Lounge Chair",
       "box": [
-        64,
-        72,
-        76,
-        80
+        72.1,
+        35.8,
+        80.6,
+        39.7
       ],
       "grammar_data": {
         "subject": "The man reading a newspaper in a lounge chair",
@@ -25883,10 +25883,10 @@
       "id": "p2_obj_20",
       "name": "Man Grilling Food",
       "box": [
-        63,
-        41,
-        71,
-        46
+        52.5,
+        3.3,
+        60.3,
+        8.3
       ],
       "grammar_data": {
         "subject": "The man grilling food",
@@ -25996,10 +25996,10 @@
       "id": "p2_obj_21",
       "name": "Child Relaxing in Green Tent",
       "box": [
-        67,
-        44,
-        73,
-        55
+        75.6,
+        72.5,
+        82.3,
+        80
       ],
       "grammar_data": {
         "subject": "The child in the green tent",
@@ -26109,10 +26109,10 @@
       "id": "p2_obj_22",
       "name": "Family Building Sandcastle",
       "box": [
-        71,
-        77,
-        79,
-        86
+        82.6,
+        77.6,
+        84.8,
+        79.4
       ],
       "grammar_data": {
         "subject": "The family building the sandcastle",
@@ -26222,10 +26222,10 @@
       "id": "p2_obj_23",
       "name": "Person Windsurfing",
       "box": [
-        67,
-        81,
-        95,
-        100
+        78.4,
+        92.1,
+        94.6,
+        99
       ],
       "grammar_data": {
         "subject": "The windsurfer",
@@ -26335,10 +26335,10 @@
       "id": "p2_obj_24",
       "name": "Couple Rowing Red Boat",
       "box": [
-        85,
-        31,
-        93,
-        44
+        85.1,
+        34.2,
+        96,
+        46.5
       ],
       "grammar_data": {
         "subject": "The couple rowing the red boat",
@@ -26448,10 +26448,10 @@
       "id": "p2_obj_25",
       "name": "Swimmer in Inflatable Ring",
       "box": [
-        88,
-        50,
-        94,
-        57
+        87.2,
+        50.8,
+        91.4,
+        53
       ],
       "grammar_data": {
         "subject": "The swimmer in the inflatable ring",
@@ -26900,10 +26900,10 @@
       "id": "p2_obj_29",
       "name": "Person on Personal Watercraft",
       "box": [
-        88,
-        61,
-        93,
-        68
+        88.6,
+        82.2,
+        95.3,
+        87.2
       ],
       "grammar_data": {
         "subject": "The person on the personal watercraft",
@@ -27013,10 +27013,10 @@
       "id": "p2_obj_30",
       "name": "Group Around Campfire",
       "box": [
-        76,
-        86,
-        85,
-        96
+        79.3,
+        91.3,
+        83,
+        94.3
       ],
       "grammar_data": {
         "subject": "The group around the campfire",
@@ -27239,10 +27239,10 @@
       "id": "p2_obj_32",
       "name": "White Train in Tunnel",
       "box": [
-        61,
-        53,
-        69,
-        76
+        32.9,
+        82.1,
+        44,
+        96.8
       ],
       "grammar_data": {
         "subject": "The white train in the tunnel",
@@ -27352,10 +27352,10 @@
       "id": "p2_obj_33",
       "name": "Cameraman Filming",
       "box": [
-        31,
-        27,
-        42,
-        31
+        28,
+        15.5,
+        35,
+        18.5
       ],
       "grammar_data": {
         "subject": "The cameraman filming",
@@ -27465,10 +27465,10 @@
       "id": "p2_obj_34",
       "name": "Child Eating Ice Cream",
       "box": [
-        30,
-        46,
-        35,
-        48
+        80.9,
+        23.4,
+        86.5,
+        25.3
       ],
       "grammar_data": {
         "subject": "The child eating ice cream",
@@ -27691,10 +27691,10 @@
       "id": "p2_obj_36",
       "name": "Man Offering Flowers",
       "box": [
-        58,
-        50,
-        64,
-        54
+        53.8,
+        22.6,
+        60.3,
+        24.8
       ],
       "grammar_data": {
         "subject": "The man offering flowers",
@@ -28256,10 +28256,10 @@
       "id": "p2_obj_41",
       "name": "Pigeons on Rooftop",
       "box": [
-        0,
-        56,
-        5,
-        61
+        3.5,
+        64.5,
+        5.5,
+        67.6
       ],
       "grammar_data": {
         "subject": "The pigeons on the rooftop",
@@ -29386,10 +29386,10 @@
       "id": "p2_obj_51",
       "name": "Man smoking a pipe in the alcove",
       "box": [
-        0.0,
-        0.0,
-        12.0,
-        7.0
+        6.5,
+        2,
+        13,
+        6
       ],
       "grammar_data": {
         "subject": "The man smoking a pipe in the alcove",
@@ -29499,10 +29499,10 @@
       "id": "p2_obj_52",
       "name": "Man in a green top hat playing an accordion",
       "box": [
-        0.0,
-        7.0,
-        12.0,
-        14.0
+        5,
+        9,
+        11,
+        11.5
       ],
       "grammar_data": {
         "subject": "The man in the green top hat playing the accordion",
@@ -29612,10 +29612,10 @@
       "id": "p2_obj_53",
       "name": "Man and woman listening to the accordion performer",
       "box": [
-        0.0,
-        13.0,
-        13.0,
-        20.0
+        4.5,
+        14,
+        11,
+        16
       ],
       "grammar_data": {
         "subject": "The man and woman listening to the accordion performer",
@@ -29725,10 +29725,10 @@
       "id": "p2_obj_54",
       "name": "People on the landing watching below",
       "box": [
-        8.0,
-        0.0,
-        18.0,
-        20.0
+        12,
+        5,
+        19,
+        17
       ],
       "grammar_data": {
         "subject": "The people on the landing",
@@ -29838,10 +29838,10 @@
       "id": "p2_obj_55",
       "name": "Woman carrying a child in red pants on her shoulders",
       "box": [
-        7.0,
-        11.0,
-        18.0,
-        17.0
+        29,
+        5.5,
+        35.5,
+        7
       ],
       "grammar_data": {
         "subject": "The woman carrying the child in red pants on her shoulders",
@@ -29951,10 +29951,10 @@
       "id": "p2_obj_56",
       "name": "Man in a pirate costume and pirate hat",
       "box": [
-        17.0,
-        10.0,
-        30.0,
-        17.0
+        25,
+        13,
+        31,
+        15.5
       ],
       "grammar_data": {
         "subject": "The man in the pirate costume and pirate hat",
@@ -30064,10 +30064,10 @@
       "id": "p2_obj_57",
       "name": "Photograph of a tropical palm-tree pirate scene",
       "box": [
-        18.0,
-        10.0,
-        31.0,
-        15.0
+        23,
+        10,
+        28.5,
+        14
       ],
       "grammar_data": {
         "subject": "The photograph of the tropical palm-tree pirate scene",
@@ -30177,10 +30177,10 @@
       "id": "p2_obj_58",
       "name": "Child in a pirate hat posing with a pirate character",
       "box": [
-        18.0,
-        13.0,
-        31.0,
-        20.0
+        30,
+        11,
+        35.5,
+        13
       ],
       "grammar_data": {
         "subject": "The child in the pirate hat posing with the pirate character",
@@ -30290,10 +30290,10 @@
       "id": "p2_obj_59",
       "name": "Bird perched on a lit balcony beam",
       "box": [
-        12.0,
-        58.0,
-        19.0,
-        65.0
+        39.7,
+        15.2,
+        44,
+        16.9
       ],
       "grammar_data": {
         "subject": "The bird perched on the lit balcony beam",
@@ -30403,10 +30403,10 @@
       "id": "p2_obj_60",
       "name": "Barbecue grill",
       "box": [
-        73.0,
-        91.0,
-        84.0,
-        98.0
+        56.4,
+        5.6,
+        60.3,
+        8.3
       ],
       "grammar_data": {
         "subject": "The barbecue grill",
@@ -30516,10 +30516,10 @@
       "id": "p2_obj_61",
       "name": "Rock singer with an electric bass guitar",
       "box": [
-        52.0,
-        11.0,
-        65.0,
-        18.0
+        52.9,
+        15.4,
+        63.1,
+        19.3
       ],
       "grammar_data": {
         "subject": "The rock singer with the electric bass guitar",
@@ -30629,10 +30629,10 @@
       "id": "p2_obj_62",
       "name": "Pigeons frightening the people below",
       "box": [
-        44.0,
-        14.0,
-        54.0,
-        23.0
+        79.8,
+        6.5,
+        81.8,
+        8
       ],
       "grammar_data": {
         "subject": "The pigeons frightening the people below",
@@ -30742,10 +30742,10 @@
       "id": "p2_obj_63",
       "name": "Woman frightened by the flying pigeons",
       "box": [
-        48.0,
-        18.0,
-        61.0,
-        24.0
+        85.1,
+        0.2,
+        90.4,
+        2.1
       ],
       "grammar_data": {
         "subject": "The woman frightened by the flying pigeons",
@@ -30855,10 +30855,10 @@
       "id": "p2_obj_64",
       "name": "Man holding a camera",
       "box": [
-        45.0,
-        22.0,
-        58.0,
-        28.0
+        85.8,
+        4.2,
+        90.9,
+        6.7
       ],
       "grammar_data": {
         "subject": "The man holding a camera",
@@ -30968,10 +30968,10 @@
       "id": "p2_obj_65",
       "name": "Kneeling photographer capturing a pigeon photobomb",
       "box": [
-        53.0,
-        22.0,
-        66.0,
-        29.0
+        83,
+        13.7,
+        89.9,
+        16.9
       ],
       "grammar_data": {
         "subject": "The kneeling photographer capturing the pigeon photobomb",
@@ -31081,10 +31081,10 @@
       "id": "p2_obj_66",
       "name": "Wooden balcony railing beside a flying drone",
       "box": [
-        61.0,
-        7.0,
-        74.0,
-        17.0
+        81.6,
+        16.6,
+        91.8,
+        21.1
       ],
       "grammar_data": {
         "subject": "The wooden balcony railing",
@@ -31194,10 +31194,10 @@
       "id": "p2_obj_67",
       "name": "Boy buying ice cream beside the cart wheel",
       "box": [
-        27.0,
-        16.0,
-        38.0,
-        22.0
+        77,
+        25.4,
+        83.9,
+        27.6
       ],
       "grammar_data": {
         "subject": "The boy buying ice cream beside the cart wheel",
@@ -31307,10 +31307,10 @@
       "id": "p2_obj_68",
       "name": "Man reading the newspaper",
       "box": [
-        9.0,
-        4.0,
-        18.0,
-        10.0
+        72.1,
+        35.8,
+        80.6,
+        39.7
       ],
       "grammar_data": {
         "subject": "The man reading the newspaper",
@@ -31420,10 +31420,10 @@
       "id": "p2_obj_69",
       "name": "Cat interested in the fishing bait",
       "box": [
-        28.0,
-        72.0,
-        38.0,
-        79.0
+        81.4,
+        37.3,
+        83.9,
+        39.2
       ],
       "grammar_data": {
         "subject": "The cat interested in the fishing bait",
@@ -31533,10 +31533,10 @@
       "id": "p2_obj_70",
       "name": "Woman in an orange sweater beneath a wall-washing workman",
       "box": [
-        34.0,
-        39.0,
-        49.0,
-        46.0
+        34,
+        39,
+        49,
+        46
       ],
       "grammar_data": {
         "subject": "The woman in the orange sweater",
@@ -31646,10 +31646,10 @@
       "id": "p2_obj_71",
       "name": "Yellow snorkeling flippers",
       "box": [
-        89.0,
-        57.0,
-        96.0,
-        62.0
+        91.9,
+        52.3,
+        96,
+        55
       ],
       "grammar_data": {
         "subject": "The yellow snorkeling flippers",
@@ -31759,10 +31759,10 @@
       "id": "p2_obj_72",
       "name": "Boy in a deckchair",
       "box": [
-        72.0,
-        84.0,
-        83.0,
-        91.0
+        71.6,
+        85.9,
+        77.9,
+        90
       ],
       "grammar_data": {
         "subject": "The boy in the deckchair",
@@ -31872,10 +31872,10 @@
       "id": "p2_obj_73",
       "name": "Woman offering a sausage to a little dog",
       "box": [
-        68.0,
-        37.0,
-        80.0,
-        45.0
+        70.3,
+        70,
+        75.1,
+        72.6
       ],
       "grammar_data": {
         "subject": "The woman offering a sausage to the little dog",
@@ -31985,10 +31985,10 @@
       "id": "p2_obj_74",
       "name": "Girl wearing rollerblades",
       "box": [
-        70.0,
-        61.0,
-        82.0,
-        68.0
+        70.5,
+        61.3,
+        78.8,
+        64.4
       ],
       "grammar_data": {
         "subject": "The girl wearing rollerblades",
@@ -32098,10 +32098,10 @@
       "id": "p2_obj_75",
       "name": "Man carrying a green backpacking pack",
       "box": [
-        68.0,
-        75.0,
-        81.0,
-        82.0
+        40.1,
+        85.9,
+        47.3,
+        88.6
       ],
       "grammar_data": {
         "subject": "The man carrying the green backpacking pack",
@@ -32211,10 +32211,10 @@
       "id": "p2_obj_76",
       "name": "Woman being pulled by a dog chasing pigeons",
       "box": [
-        43.0,
-        12.0,
-        58.0,
-        20.0
+        45.5,
+        27.5,
+        51.9,
+        30.1
       ],
       "grammar_data": {
         "subject": "The woman being pulled by the dog chasing pigeons",
@@ -32324,10 +32324,10 @@
       "id": "p2_obj_77",
       "name": "Girl rollerblading through the archway",
       "box": [
-        62.0,
-        57.0,
-        76.0,
-        65.0
+        22.7,
+        43.6,
+        28.1,
+        45.4
       ],
       "grammar_data": {
         "subject": "The girl rollerblading through the archway",
@@ -32437,10 +32437,10 @@
       "id": "p2_obj_78",
       "name": "Blue flag",
       "box": [
-        77.0,
-        96.0,
-        95.0,
-        100.0
+        15.4,
+        48.4,
+        23.4,
+        53
       ],
       "grammar_data": {
         "subject": "The blue flag",
@@ -32550,10 +32550,10 @@
       "id": "p2_obj_79",
       "name": "Satellite dish on the roof",
       "box": [
-        0.0,
-        55.0,
-        10.0,
-        62.0
+        7,
+        68.8,
+        9.2,
+        70.4
       ],
       "grammar_data": {
         "subject": "The satellite dish on the roof",
@@ -32663,10 +32663,10 @@
       "id": "p2_obj_80",
       "name": "Dog urinating under the bridge",
       "box": [
-        62.0,
-        77.0,
-        73.0,
-        84.0
+        21.8,
+        73.6,
+        24.5,
+        76.4
       ],
       "grammar_data": {
         "subject": "The dog urinating under the bridge",
@@ -32778,10 +32778,10 @@
       "id": "p3_obj_1",
       "name": "Freight train on elevated bridge",
       "box": [
-        0,
-        0,
-        10,
-        100
+        81.4,
+        59.3,
+        100,
+        76.3
       ],
       "grammar_data": {
         "subject": "The freight train on the elevated bridge",
@@ -32891,10 +32891,10 @@
       "id": "p3_obj_2",
       "name": "Two parachutists descending",
       "box": [
-        0,
-        40,
-        15,
-        55
+        0.9,
+        29.4,
+        13.6,
+        41.1
       ],
       "grammar_data": {
         "subject": "The two parachutists descending",
@@ -33004,10 +33004,10 @@
       "id": "p3_obj_3",
       "name": "Three rock climbers ascending a mountain",
       "box": [
-        15,
-        34,
-        30,
-        52
+        18,
+        35.4,
+        28.7,
+        49.9
       ],
       "grammar_data": {
         "subject": "The three rock climbers ascending the mountain",
@@ -33117,10 +33117,10 @@
       "id": "p3_obj_4",
       "name": "Colorful balloons floating in the air",
       "box": [
-        0,
+        11.7,
         8,
-        18,
-        82
+        44.4,
+        82.5
       ],
       "grammar_data": {
         "subject": "The colorful balloons floating in the air",
@@ -33230,10 +33230,10 @@
       "id": "p3_obj_5",
       "name": "Yellow passenger train on a curved track",
       "box": [
-        35,
-        9,
-        53,
-        39
+        42,
+        0,
+        56.6,
+        27.5
       ],
       "grammar_data": {
         "subject": "The yellow passenger train on the curved track",
@@ -33343,10 +33343,10 @@
       "id": "p3_obj_6",
       "name": "Winding river in a valley",
       "box": [
-        15,
-        10,
-        30,
-        40
+        15.4,
+        6,
+        29.2,
+        24.7
       ],
       "grammar_data": {
         "subject": "The winding river in the valley",
@@ -33569,10 +33569,10 @@
       "id": "p3_obj_8",
       "name": "Vintage green pickup truck",
       "box": [
-        54,
-        10,
-        60,
-        20
+        56.4,
+        0.8,
+        65.9,
+        12.7
       ],
       "grammar_data": {
         "subject": "The vintage green pickup truck",
@@ -33682,10 +33682,10 @@
       "id": "p3_obj_9",
       "name": "Bustling outdoor fruit and vegetable stand",
       "box": [
-        56,
-        17,
-        68,
-        32
+        49.3,
+        11.3,
+        64.1,
+        28
       ],
       "grammar_data": {
         "subject": "The bustling outdoor fruit and vegetable stand",
@@ -33795,10 +33795,10 @@
       "id": "p3_obj_10",
       "name": "Market vendor serving a customer",
       "box": [
-        62,
-        23,
-        68,
-        27
+        57.1,
+        17.9,
+        64.1,
+        26.2
       ],
       "grammar_data": {
         "subject": "The market vendor serving a customer",
@@ -33908,10 +33908,10 @@
       "id": "p3_obj_11",
       "name": "Molly's Hotel building",
       "box": [
-        45,
-        30,
-        72,
-        40
+        35.5,
+        31.3,
+        69.7,
+        48.9
       ],
       "grammar_data": {
         "subject": "Molly's Hotel building",
@@ -34021,10 +34021,10 @@
       "id": "p3_obj_12",
       "name": "Man waving from Molly's Hotel balcony",
       "box": [
-        61,
-        31,
-        65,
-        33
+        49.8,
+        28.6,
+        58.5,
+        47
       ],
       "grammar_data": {
         "subject": "The man waving from Molly's Hotel balcony",
@@ -34134,10 +34134,10 @@
       "id": "p3_obj_13",
       "name": "Local Post Office building",
       "box": [
-        54,
-        40,
-        72,
-        48
+        44.4,
+        48.2,
+        69.7,
+        53
       ],
       "grammar_data": {
         "subject": "The local post office building",
@@ -34247,10 +34247,10 @@
       "id": "p3_obj_14",
       "name": "Greg's General Store building",
       "box": [
-        54,
-        50,
-        72,
-        60
+        37.1,
+        58.3,
+        69.7,
+        75.5
       ],
       "grammar_data": {
         "subject": "Greg's General Store building",
@@ -34473,10 +34473,10 @@
       "id": "p3_obj_16",
       "name": "Tall water tower",
       "box": [
-        30,
-        55,
-        48,
-        60
+        20.6,
+        55.9,
+        35.5,
+        62.1
       ],
       "grammar_data": {
         "subject": "The tall water tower",
@@ -34586,10 +34586,10 @@
       "id": "p3_obj_17",
       "name": "Herd of bison grazing in a green meadow",
       "box": [
-        34.0,
-        76.0,
-        43.0,
-        87.0
+        20,
+        22,
+        32.7,
+        26
       ],
       "grammar_data": {
         "subject": "The herd of bison grazing in the green meadow",
@@ -34700,9 +34700,9 @@
       "name": "Yellow helicopter flying",
       "box": [
         0,
-        70,
-        10,
-        80
+        86.2,
+        12.1,
+        97.5
       ],
       "grammar_data": {
         "subject": "The yellow helicopter flying",
@@ -34925,10 +34925,10 @@
       "id": "p3_obj_20",
       "name": "Clothes drying on a clothesline",
       "box": [
-        55,
-        53,
-        60,
-        58
+        46.7,
+        58.9,
+        49.5,
+        67.4
       ],
       "grammar_data": {
         "subject": "The clothes drying on the clothesline",
@@ -35038,10 +35038,10 @@
       "id": "p3_obj_21",
       "name": "Two pigeons on a windowsill",
       "box": [
-        59,
-        52,
-        62,
-        55
+        51.4,
+        62.4,
+        53.8,
+        67.7
       ],
       "grammar_data": {
         "subject": "Two pigeons on a windowsill",
@@ -35151,10 +35151,10 @@
       "id": "p3_obj_22",
       "name": "Red pickup truck parked",
       "box": [
-        68,
-        55,
-        76,
-        62
+        68.1,
+        53.2,
+        79.7,
+        69.2
       ],
       "grammar_data": {
         "subject": "The red pickup truck",
@@ -35264,10 +35264,10 @@
       "id": "p3_obj_23",
       "name": "Group of street musicians performing",
       "box": [
-        69,
-        35,
-        76,
-        48
+        64.9,
+        41.9,
+        73.7,
+        49.5
       ],
       "grammar_data": {
         "subject": "The group of street musicians",
@@ -35716,10 +35716,10 @@
       "id": "p3_obj_27",
       "name": "Photographer taking a picture",
       "box": [
-        72,
-        60,
-        75,
-        63
+        75.1,
+        73.7,
+        80.9,
+        76
       ],
       "grammar_data": {
         "subject": "The photographer taking a picture",
@@ -35829,10 +35829,10 @@
       "id": "p3_obj_28",
       "name": "Dog chasing a running cat",
       "box": [
-        71,
-        51,
-        74,
-        54
+        66.5,
+        18.7,
+        71.8,
+        23.9
       ],
       "grammar_data": {
         "subject": "The dog chasing a running cat",
@@ -36168,10 +36168,10 @@
       "id": "p3_obj_31",
       "name": "Child riding a skateboard",
       "box": [
-        78,
-        77,
-        81,
-        80
+        83,
+        95.9,
+        88.6,
+        98.4
       ],
       "grammar_data": {
         "subject": "The child riding a skateboard",
@@ -36281,10 +36281,10 @@
       "id": "p3_obj_32",
       "name": "\"Tropical Fruits\" delivery truck trailer",
       "box": [
-        72,
+        65.8,
         0,
         80,
-        20
+        10.2
       ],
       "grammar_data": {
         "subject": "The \"Tropical Fruits\" delivery truck trailer",
@@ -36394,10 +36394,10 @@
       "id": "p3_obj_33",
       "name": "\"GRAIN\" cargo train car",
       "box": [
-        72,
-        20,
-        80,
-        35
+        71.4,
+        12.3,
+        81.4,
+        28
       ],
       "grammar_data": {
         "subject": "The \"GRAIN\" cargo train car",
@@ -36507,10 +36507,10 @@
       "id": "p3_obj_34",
       "name": "\"WEST-EAST CARGO\" train car",
       "box": [
-        76,
-        37,
-        83,
-        49
+        76.5,
+        34.3,
+        84.6,
+        53
       ],
       "grammar_data": {
         "subject": "The \"WEST-EAST CARGO\" train car",
@@ -36620,10 +36620,10 @@
       "id": "p3_obj_35",
       "name": "\"Speed Express\" passenger train",
       "box": [
-        80,
-        0,
-        99,
-        60
+        83.5,
+        22,
+        100,
+        53
       ],
       "grammar_data": {
         "subject": "The \"Speed Express\" passenger train",
@@ -36733,10 +36733,10 @@
       "id": "p3_obj_36",
       "name": "Red freight train engine",
       "box": [
-        80,
-        77,
-        99,
-        99
+        83.5,
+        75.4,
+        100,
+        98.9
       ],
       "grammar_data": {
         "subject": "The red freight train engine",
@@ -36959,10 +36959,10 @@
       "id": "p3_obj_38",
       "name": "Passengers looking out of train windows",
       "box": [
-        84,
-        5,
-        89,
-        50
+        83.2,
+        7.3,
+        87,
+        9.3
       ],
       "grammar_data": {
         "subject": "The passengers looking out of the train windows",
@@ -37072,10 +37072,10 @@
       "id": "p3_obj_39",
       "name": "Engineer in freight train cab",
       "box": [
-        86,
-        92,
-        90,
-        95
+        89.5,
+        57.6,
+        92.1,
+        59
       ],
       "grammar_data": {
         "subject": "The engineer in the freight train cab",
@@ -37298,10 +37298,10 @@
       "id": "p3_obj_41",
       "name": "Small bird in flight",
       "box": [
-        20,
-        75,
-        23,
-        78
+        16.4,
+        72.9,
+        17.5,
+        76.9
       ],
       "grammar_data": {
         "subject": "The small bird",
@@ -37411,10 +37411,10 @@
       "id": "p3_obj_42",
       "name": "Sheep grazing in a field",
       "box": [
-        42,
-        85,
-        45,
-        88
+        35.7,
+        86.8,
+        38,
+        89.9
       ],
       "grammar_data": {
         "subject": "The sheep in the field",
@@ -37524,10 +37524,10 @@
       "id": "p3_obj_43",
       "name": "White windmill on a distant hill",
       "box": [
-        25,
-        70,
-        35,
-        73
+        19.9,
+        72,
+        25.2,
+        74.8
       ],
       "grammar_data": {
         "subject": "The white windmill on the distant hill",
@@ -37637,10 +37637,10 @@
       "id": "p3_obj_44",
       "name": "Village church with a steeple",
       "box": [
-        28,
-        77,
-        35,
-        80
+        19.4,
+        80.8,
+        30.6,
+        84.2
       ],
       "grammar_data": {
         "subject": "The village church",
@@ -37863,10 +37863,10 @@
       "id": "p3_obj_46",
       "name": "Child playing with a small toy car",
       "box": [
-        74,
-        61,
-        77,
-        64
+        78.4,
+        79.3,
+        84,
+        84.7
       ],
       "grammar_data": {
         "subject": "The child playing with the toy car",
@@ -37976,10 +37976,10 @@
       "id": "p3_obj_47",
       "name": "Couple embracing lovingly",
       "box": [
-        73,
-        58,
-        77,
-        60
+        72.3,
+        69.2,
+        80.2,
+        72.6
       ],
       "grammar_data": {
         "subject": "The couple embracing lovingly",
@@ -38089,10 +38089,10 @@
       "id": "p3_obj_48",
       "name": "\"Greg's Cafe\" storefront sign",
       "box": [
-        64,
-        62,
-        68,
-        67
+        37.1,
+        75.4,
+        69.7,
+        99.8
       ],
       "grammar_data": {
         "subject": "The Greg's Cafe storefront sign",
@@ -38202,10 +38202,10 @@
       "id": "p3_obj_49",
       "name": "Man carrying a guitar case",
       "box": [
-        70,
-        35,
-        74,
-        38
+        66.5,
+        33.4,
+        69.7,
+        35.1
       ],
       "grammar_data": {
         "subject": "The man carrying a guitar case",
@@ -38315,10 +38315,10 @@
       "id": "p3_obj_50",
       "name": "Woman carrying a market basket",
       "box": [
-        65,
-        27,
-        70,
-        30
+        58,
+        24.5,
+        64.1,
+        26.2
       ],
       "grammar_data": {
         "subject": "The woman carrying a market basket",
@@ -38428,10 +38428,10 @@
       "id": "p3_obj_51",
       "name": "Chickens in the pickup-truck bed",
       "box": [
-        55.0,
-        5.0,
-        62.0,
-        15.0
+        57.1,
+        9.3,
+        59.4,
+        12
       ],
       "grammar_data": {
         "subject": "The chickens in the pickup-truck bed",
@@ -38541,10 +38541,10 @@
       "id": "p3_obj_52",
       "name": "Man who tripped and spilled his groceries",
       "box": [
-        66.0,
-        22.0,
-        75.0,
-        30.0
+        68.8,
+        23,
+        70.9,
+        26.1
       ],
       "grammar_data": {
         "subject": "The man who tripped and spilled his groceries",
@@ -38654,10 +38654,10 @@
       "id": "p3_obj_53",
       "name": "Snowboarder in blue",
       "box": [
-        89.0,
-        2.0,
-        99.0,
-        10.0
+        64.3,
+        31.4,
+        69.7,
+        34.7
       ],
       "grammar_data": {
         "subject": "The snowboarder in blue",
@@ -38767,10 +38767,10 @@
       "id": "p3_obj_54",
       "name": "Woman in yellow carrying a girl in red pants",
       "box": [
-        65.0,
-        43.0,
-        77.0,
-        50.0
+        65.1,
+        39.9,
+        74.6,
+        42.2
       ],
       "grammar_data": {
         "subject": "The woman in yellow carrying the girl in red pants",
@@ -38880,10 +38880,10 @@
       "id": "p3_obj_55",
       "name": "Open box of spilling cheese",
       "box": [
-        69.0,
-        49.0,
-        77.0,
-        55.0
+        69.9,
+        51.5,
+        72.5,
+        53.6
       ],
       "grammar_data": {
         "subject": "The open box of spilling cheese",
@@ -38993,10 +38993,10 @@
       "id": "p3_obj_56",
       "name": "Dark-skinned man wearing glasses",
       "box": [
-        68.0,
-        37.0,
-        77.0,
-        42.0
+        66.7,
+        65.4,
+        70.2,
+        67.4
       ],
       "grammar_data": {
         "subject": "The man wearing glasses",
@@ -39106,10 +39106,10 @@
       "id": "p3_obj_57",
       "name": "Couple posing for a photograph",
       "box": [
-        68.0,
-        42.0,
-        77.0,
-        48.0
+        72.3,
+        69.2,
+        80.2,
+        72.6
       ],
       "grammar_data": {
         "subject": "The couple posing for a photograph",
@@ -39219,10 +39219,10 @@
       "id": "p3_obj_58",
       "name": "Blue lawn mower",
       "box": [
-        75.0,
-        85.0,
-        83.0,
-        92.0
+        93.7,
+        5.1,
+        96.7,
+        8.2
       ],
       "grammar_data": {
         "subject": "The blue lawn mower",
@@ -39332,10 +39332,10 @@
       "id": "p3_obj_59",
       "name": "Girl controlling a remote-control car",
       "box": [
-        76.0,
-        92.0,
-        87.0,
-        99.0
+        78.4,
+        82.8,
+        84,
+        84.7
       ],
       "grammar_data": {
         "subject": "The girl controlling the remote-control car",
@@ -39445,10 +39445,10 @@
       "id": "p3_obj_60",
       "name": "Elderly man on a mobility scooter",
       "box": [
-        75.0,
-        86.0,
-        86.0,
-        94.0
+        76.5,
+        86.8,
+        83.2,
+        91.8
       ],
       "grammar_data": {
         "subject": "The elderly man on the mobility scooter",
@@ -39558,10 +39558,10 @@
       "id": "p3_obj_61",
       "name": "Messenger pigeon carrying a letter",
       "box": [
-        72.0,
-        13.0,
-        79.0,
-        18.0
+        17.8,
+        78.6,
+        21.7,
+        81.1
       ],
       "grammar_data": {
         "subject": "The messenger pigeon",
@@ -39671,10 +39671,10 @@
       "id": "p3_obj_62",
       "name": "Roof hatch",
       "box": [
-        45.0,
-        69.0,
-        53.0,
-        76.0
+        35.5,
+        72.8,
+        37.1,
+        75.5
       ],
       "grammar_data": {
         "subject": "The roof hatch",
@@ -39784,10 +39784,10 @@
       "id": "p3_obj_63",
       "name": "Dog dozing on the roof ledge",
       "box": [
-        47.0,
-        56.0,
-        53.0,
-        63.0
+        50.3,
+        56.4,
+        51.4,
+        58.3
       ],
       "grammar_data": {
         "subject": "The dog dozing on the roof ledge",
@@ -40012,10 +40012,10 @@
       "id": "p4_obj_2",
       "name": "White RV Camper on Road",
       "box": [
-        11,
-        76,
-        16,
-        86
+        11.3,
+        60,
+        18,
+        68.2
       ],
       "grammar_data": {
         "subject": "The white RV camper",
@@ -40351,10 +40351,10 @@
       "id": "p4_obj_5",
       "name": "Wimmel Ranch Entrance Sign",
       "box": [
-        36,
-        55,
-        48,
-        68
+        35.7,
+        56.5,
+        39.2,
+        68.2
       ],
       "grammar_data": {
         "subject": "The Wimmel Ranch entrance sign",
@@ -40464,10 +40464,10 @@
       "id": "p4_obj_6",
       "name": "Wild Turkey Displaying Feathers",
       "box": [
-        46,
-        44,
-        54,
-        50
+        35.1,
+        45.9,
+        38.6,
+        48.8
       ],
       "grammar_data": {
         "subject": "The wild turkey",
@@ -40690,10 +40690,10 @@
       "id": "p4_obj_8",
       "name": "Children on a Pony",
       "box": [
-        68,
-        60,
-        77,
-        68
+        57.6,
+        62.9,
+        64.7,
+        67.1
       ],
       "grammar_data": {
         "subject": "The children on the pony",
@@ -40803,10 +40803,10 @@
       "id": "p4_obj_9",
       "name": "Ranch Windmill",
       "box": [
-        32,
-        73,
-        50,
-        79
+        25,
+        87.9,
+        34.6,
+        90.4
       ],
       "grammar_data": {
         "subject": "The ranch windmill",
@@ -40916,10 +40916,10 @@
       "id": "p4_obj_10",
       "name": "Large Red Barn",
       "box": [
-        45,
-        76,
-        87,
-        99
+        32.1,
+        81.2,
+        69,
+        100
       ],
       "grammar_data": {
         "subject": "The large red barn",
@@ -41029,10 +41029,10 @@
       "id": "p4_obj_11",
       "name": "Rancher Pushing Wheelbarrow",
       "box": [
-        54,
-        87,
-        68,
-        94
+        72,
+        86.2,
+        76.4,
+        90
       ],
       "grammar_data": {
         "subject": "The rancher pushing the wheelbarrow",
@@ -41142,10 +41142,10 @@
       "id": "p4_obj_12",
       "name": "Cow in Barn Stall",
       "box": [
-        55,
-        92,
-        65,
-        98
+        63.7,
+        85.5,
+        68.6,
+        93.5
       ],
       "grammar_data": {
         "subject": "The cow in the barn stall",
@@ -41255,10 +41255,10 @@
       "id": "p4_obj_13",
       "name": "Vulture Perched on Barn Roof",
       "box": [
-        34,
-        82,
-        41,
-        86
+        27.3,
+        92.8,
+        33.4,
+        95.3
       ],
       "grammar_data": {
         "subject": "The vulture perched on the barn roof",
@@ -41368,10 +41368,10 @@
       "id": "p4_obj_14",
       "name": "Messenger pigeon carrying a letter by the barn",
       "box": [
-        51.0,
-        77.0,
-        59.0,
-        84.0
+        49.4,
+        87,
+        52.9,
+        89.3
       ],
       "grammar_data": {
         "subject": "The messenger pigeon",
@@ -41707,10 +41707,10 @@
       "id": "p4_obj_17",
       "name": "Group of Foals Lying Down",
       "box": [
-        86,
-        10,
-        97,
-        28
+        74.4,
+        12.9,
+        93.9,
+        18.3
       ],
       "grammar_data": {
         "subject": "The group of foals",
@@ -41820,10 +41820,10 @@
       "id": "p4_obj_18",
       "name": "Cowboy with Lasso on Horse",
       "box": [
-        56,
-        29,
-        69,
-        42
+        39.2,
+        20,
+        44.1,
+        22
       ],
       "grammar_data": {
         "subject": "The cowboy with the lasso",
@@ -41933,10 +41933,10 @@
       "id": "p4_obj_19",
       "name": "Herd of Bison Grazing",
       "box": [
-        27,
-        17,
-        47,
-        62
+        16.4,
+        13.4,
+        18.7,
+        16.1
       ],
       "grammar_data": {
         "subject": "The herd of bison",
@@ -42046,10 +42046,10 @@
       "id": "p4_obj_20",
       "name": "Bighorn Sheep on Cliff",
       "box": [
-        56,
-        9,
-        65,
-        15
+        31.5,
+        3.9,
+        37.4,
+        7.9
       ],
       "grammar_data": {
         "subject": "The bighorn sheep on the cliff",
@@ -42159,10 +42159,10 @@
       "id": "p4_obj_21",
       "name": "Coyotes on Rock Outcropping",
       "box": [
-        46,
-        65,
-        54,
-        74
+        34.8,
+        31.8,
+        39,
+        34.8
       ],
       "grammar_data": {
         "subject": "The coyotes on the rock outcropping",
@@ -42498,10 +42498,10 @@
       "id": "p4_obj_24",
       "name": "Flock of Sheep in Pen",
       "box": [
-        59,
-        31,
-        70,
-        51
+        45.7,
+        25.3,
+        63.6,
+        51.5
       ],
       "grammar_data": {
         "subject": "The flock of sheep in the pen",
@@ -42611,10 +42611,10 @@
       "id": "p4_obj_25",
       "name": "Black Horse Rearing Up",
       "box": [
-        66,
-        24,
-        81,
-        33
+        55.9,
+        18,
+        69,
+        24.1
       ],
       "grammar_data": {
         "subject": "The black horse rearing up",
@@ -42724,10 +42724,10 @@
       "id": "p4_obj_26",
       "name": "Cowboy Wrangling a Bull",
       "box": [
-        79,
-        40,
-        92,
-        53
+        76.8,
+        42.1,
+        86.2,
+        49
       ],
       "grammar_data": {
         "subject": "The cowboy wrangling the bull",
@@ -42837,10 +42837,10 @@
       "id": "p4_obj_27",
       "name": "Children Watching Rodeo",
       "box": [
-        75,
-        56,
-        84,
-        62
+        67.8,
+        41,
+        78.9,
+        43.8
       ],
       "grammar_data": {
         "subject": "The children watching the rodeo",
@@ -42950,10 +42950,10 @@
       "id": "p4_obj_28",
       "name": "Pig Pen with Numerous Pigs",
       "box": [
-        95,
-        31,
-        100,
-        50
+        82.1,
+        25,
+        96.8,
+        51.4
       ],
       "grammar_data": {
         "subject": "The pigs in the pen",
@@ -43176,10 +43176,10 @@
       "id": "p4_obj_30",
       "name": "Animal Water Trough",
       "box": [
-        99,
-        57,
-        100,
-        68
+        90.3,
+        52.9,
+        98.7,
+        59.5
       ],
       "grammar_data": {
         "subject": "The animal water trough",
@@ -43289,10 +43289,10 @@
       "id": "p4_obj_31",
       "name": "Hind legs of the bucking bull",
       "box": [
-        79.0,
-        39.0,
-        92.0,
-        52.0
+        72.7,
+        50,
+        79,
+        54
       ],
       "grammar_data": {
         "subject": "The hind legs of the bucking bull",
@@ -43402,10 +43402,10 @@
       "id": "p4_obj_32",
       "name": "Small Goats and Kids",
       "box": [
-        93,
-        79,
-        100,
-        92
+        89.2,
+        83.8,
+        93.1,
+        85.8
       ],
       "grammar_data": {
         "subject": "The small goats and kids",
@@ -43628,10 +43628,10 @@
       "id": "p4_obj_34",
       "name": "Bird with its nest and chicks on the roof",
       "box": [
-        74.0,
-        10.0,
-        82.0,
-        18.0
+        49.9,
+        4.5,
+        51.3,
+        6.5
       ],
       "grammar_data": {
         "subject": "The bird with its nest and chicks on the roof",
@@ -43741,10 +43741,10 @@
       "id": "p4_obj_35",
       "name": "Bluebird on Nest",
       "box": [
-        75,
-        12,
-        79,
-        16
+        49.9,
+        4.5,
+        51.3,
+        6.5
       ],
       "grammar_data": {
         "subject": "The bluebird on the nest",
@@ -44080,10 +44080,10 @@
       "id": "p4_obj_38",
       "name": "Calf with Mother Cow",
       "box": [
-        77,
-        77,
-        85,
-        81
+        73.4,
+        74,
+        77.4,
+        79.2
       ],
       "grammar_data": {
         "subject": "The calf with its mother cow",
@@ -44306,10 +44306,10 @@
       "id": "p4_obj_40",
       "name": "Bison calf",
       "box": [
-        25.0,
-        19.0,
-        34.0,
-        27.0
+        27.1,
+        36.7,
+        31.5,
+        41
       ],
       "grammar_data": {
         "subject": "The bison calf",
@@ -44419,10 +44419,10 @@
       "id": "p4_obj_41",
       "name": "Rooster",
       "box": [
-        64.0,
-        84.0,
-        72.0,
-        91.0
+        89.2,
+        72.5,
+        92.4,
+        74.9
       ],
       "grammar_data": {
         "subject": "The rooster",
@@ -44532,10 +44532,10 @@
       "id": "p4_obj_42",
       "name": "Turkey Vulture Standing",
       "box": [
-        41,
-        79,
-        49,
-        84
+        27.3,
+        92.8,
+        33.4,
+        95.3
       ],
       "grammar_data": {
         "subject": "The turkey vulture",
@@ -44645,10 +44645,10 @@
       "id": "p4_obj_43",
       "name": "Two howling coyotes",
       "box": [
-        38.0,
-        43.0,
-        47.0,
-        51.0
+        34.8,
+        31.8,
+        39,
+        34.8
       ],
       "grammar_data": {
         "subject": "The two howling coyotes",
@@ -44758,10 +44758,10 @@
       "id": "p4_obj_44",
       "name": "Tall Saguaro Cactus",
       "box": [
-        21,
-        48,
-        46,
-        52
+        10.6,
+        38.4,
+        23.1,
+        39.8
       ],
       "grammar_data": {
         "subject": "The tall saguaro cactus",
@@ -44871,10 +44871,10 @@
       "id": "p4_obj_45",
       "name": "Child Petting a Calf",
       "box": [
-        84,
-        70,
-        92,
-        76
+        78.1,
+        75.9,
+        85,
+        78.1
       ],
       "grammar_data": {
         "subject": "The child petting a calf",
@@ -44984,10 +44984,10 @@
       "id": "p4_obj_46",
       "name": "Man on Roof of Jeep",
       "box": [
-        54,
-        55,
-        64,
-        62
+        31.9,
+        80.7,
+        39.7,
+        82.5
       ],
       "grammar_data": {
         "subject": "The man on the roof of the jeep",
@@ -45436,10 +45436,10 @@
       "id": "p4_obj_50",
       "name": "White spotted pony rolling on the ground",
       "box": [
-        82.0,
-        36.0,
-        94.0,
-        55.0
+        82,
+        15.6,
+        86.6,
+        24.4
       ],
       "grammar_data": {
         "subject": "The white spotted pony rolling on the ground",
@@ -45551,10 +45551,10 @@
       "id": "p5_obj_1",
       "name": "Logging truck carrying timber",
       "box": [
-        19,
-        7,
-        43,
-        29
+        8,
+        6.7,
+        21.1,
+        18.1
       ],
       "grammar_data": {
         "subject": "The logging truck",
@@ -45664,10 +45664,10 @@
       "id": "p5_obj_2",
       "name": "Man fixing tire swing",
       "box": [
-        25,
-        6,
-        31,
-        9
+        36.8,
+        6.7,
+        40.2,
+        11
       ],
       "grammar_data": {
         "subject": "The man fixing the tire swing",
@@ -46229,10 +46229,10 @@
       "id": "p5_obj_7",
       "name": "Worker installing solar panels",
       "box": [
-        10,
-        48,
-        20,
-        56
+        7.5,
+        47.6,
+        14.8,
+        57.9
       ],
       "grammar_data": {
         "subject": "The worker installing the solar panels",
@@ -46342,10 +46342,10 @@
       "id": "p5_obj_8",
       "name": "Worker laying roof tiles",
       "box": [
-        18,
-        62,
-        28,
-        70
+        6.3,
+        46.9,
+        15.9,
+        62.4
       ],
       "grammar_data": {
         "subject": "The worker laying the roof tiles",
@@ -46568,10 +46568,10 @@
       "id": "p5_obj_10",
       "name": "Worker building brick wall in attic",
       "box": [
-        25,
-        49,
-        36,
-        58
+        19.7,
+        52.3,
+        33.4,
+        57.8
       ],
       "grammar_data": {
         "subject": "The worker building the brick wall",
@@ -46681,10 +46681,10 @@
       "id": "p5_obj_11",
       "name": "Worker carrying insulation in attic",
       "box": [
-        26,
-        60,
-        37,
-        70
+        10.5,
+        60.4,
+        16.4,
+        64.3
       ],
       "grammar_data": {
         "subject": "The worker carrying the insulation",
@@ -46794,10 +46794,10 @@
       "id": "p5_obj_12",
       "name": "Door being carried upstairs",
       "box": [
-        35.0,
-        58.0,
-        48.0,
-        68.0
+        19.9,
+        68.1,
+        30.5,
+        72.9
       ],
       "grammar_data": {
         "subject": "The door being carried upstairs",
@@ -47585,10 +47585,10 @@
       "id": "p5_obj_19",
       "name": "Woman being splashed with paint from above",
       "box": [
-        61.0,
-        36.0,
-        75.0,
-        44.0
+        55.7,
+        46.5,
+        65.9,
+        49.4
       ],
       "grammar_data": {
         "subject": "The woman being splashed with paint",
@@ -47698,10 +47698,10 @@
       "id": "p5_obj_20",
       "name": "Yellow dump truck",
       "box": [
-        64,
-        25,
+        67,
+        10.8,
         77,
-        36
+        30.6
       ],
       "grammar_data": {
         "subject": "The yellow dump truck",
@@ -48263,10 +48263,10 @@
       "id": "p5_obj_25",
       "name": "Girl on green scooter",
       "box": [
-        81,
-        12,
-        91,
-        19
+        86.8,
+        12.9,
+        95.1,
+        20.9
       ],
       "grammar_data": {
         "subject": "The girl on the green scooter",
@@ -48828,10 +48828,10 @@
       "id": "p5_obj_30",
       "name": "Excavator digging ground",
       "box": [
-        61,
-        68,
-        77,
-        78
+        64.9,
+        71.5,
+        68.6,
+        74.2
       ],
       "grammar_data": {
         "subject": "The excavator",
@@ -49732,10 +49732,10 @@
       "id": "p5_obj_38",
       "name": "Road Closed signs and barriers",
       "box": [
-        74,
-        40,
-        88,
-        61
+        75.1,
+        65,
+        84.9,
+        67.5
       ],
       "grammar_data": {
         "subject": "The Road Closed signs and barriers",
@@ -50184,10 +50184,10 @@
       "id": "p5_obj_42",
       "name": "Distant village church steeple",
       "box": [
-        12,
-        28,
-        22,
-        32
+        5.8,
+        32.3,
+        15.3,
+        35.3
       ],
       "grammar_data": {
         "subject": "The distant village church steeple",
@@ -50410,10 +50410,10 @@
       "id": "p5_obj_44",
       "name": "Hot air balloon",
       "box": [
-        0,
-        68,
-        11,
-        71
+        4,
+        68.4,
+        8.7,
+        70.1
       ],
       "grammar_data": {
         "subject": "The hot air balloon",
@@ -50636,10 +50636,10 @@
       "id": "p5_obj_46",
       "name": "Builder singing into a broom like a microphone",
       "box": [
-        27.0,
-        80.0,
-        42.0,
-        87.0
+        23.2,
+        80.3,
+        33.4,
+        82.9
       ],
       "grammar_data": {
         "subject": "The builder singing into his broom",
@@ -50975,10 +50975,10 @@
       "id": "p5_obj_49",
       "name": "Playhouse with red roof",
       "box": [
-        47,
-        24,
-        64,
-        31
+        64.9,
+        90.3,
+        78.8,
+        100
       ],
       "grammar_data": {
         "subject": "The playhouse with the red roof",
@@ -51090,10 +51090,10 @@
       "id": "p6_obj_1",
       "name": "Wind turbines generating power",
       "box": [
-        29,
-        39,
-        44,
-        53
+        2.8,
+        15.3,
+        13.5,
+        28.2
       ],
       "grammar_data": {
         "subject": "The wind turbines",
@@ -51203,10 +51203,10 @@
       "id": "p6_obj_2",
       "name": "Wooden observation tower",
       "box": [
-        28,
-        54,
-        43,
-        59
+        5.1,
+        29.1,
+        15.3,
+        35.4
       ],
       "grammar_data": {
         "subject": "The wooden observation tower",
@@ -51316,10 +51316,10 @@
       "id": "p6_obj_3",
       "name": "Large eagle soaring",
       "box": [
-        15,
-        17,
-        33,
-        36
+        4.2,
+        4.2,
+        13.6,
+        15.5
       ],
       "grammar_data": {
         "subject": "The large eagle",
@@ -51429,10 +51429,10 @@
       "id": "p6_obj_4",
       "name": "Brown owl perched on tree",
       "box": [
-        24,
-        6,
-        31,
-        12
+        20,
+        9.4,
+        26.5,
+        12.1
       ],
       "grammar_data": {
         "subject": "The brown owl",
@@ -51542,10 +51542,10 @@
       "id": "p6_obj_5",
       "name": "Red squirrel on tree trunk",
       "box": [
-        32,
-        23,
-        37,
-        26
+        30.5,
+        10.5,
+        34,
+        13.1
       ],
       "grammar_data": {
         "subject": "The red squirrel",
@@ -51655,10 +51655,10 @@
       "id": "p6_obj_6",
       "name": "Motorcyclist riding off-road",
       "box": [
-        35,
-        50,
-        41,
-        56
+        16.3,
+        28,
+        20.7,
+        31.6
       ],
       "grammar_data": {
         "subject": "The motorcyclist",
@@ -51881,10 +51881,10 @@
       "id": "p6_obj_8",
       "name": "Beaver beside the tree trunk",
       "box": [
-        39.0,
-        38.0,
-        49.0,
-        46.0
+        25.3,
+        15.8,
+        28.4,
+        19.2
       ],
       "grammar_data": {
         "subject": "The beaver beside the tree trunk",
@@ -51994,10 +51994,10 @@
       "id": "p6_obj_9",
       "name": "Beaver on a log",
       "box": [
-        37.0,
-        24.0,
-        46.0,
-        32.0
+        23,
+        18.8,
+        25.2,
+        20.2
       ],
       "grammar_data": {
         "subject": "The beaver on the log",
@@ -52559,10 +52559,10 @@
       "id": "p6_obj_14",
       "name": "Beaver dam in the stream",
       "box": [
-        36.0,
-        28.0,
-        47.0,
-        40.0
+        20,
+        18.2,
+        22.8,
+        21.6
       ],
       "grammar_data": {
         "subject": "The beaver dam",
@@ -52672,10 +52672,10 @@
       "id": "p6_obj_15",
       "name": "Two long-legged birds in stream",
       "box": [
-        44,
-        46,
-        51,
-        52
+        29.5,
+        21,
+        34.5,
+        23.8
       ],
       "grammar_data": {
         "subject": "The two long-legged birds",
@@ -53237,10 +53237,10 @@
       "id": "p6_obj_20",
       "name": "Distant city skyline",
       "box": [
-        24,
-        77,
-        36,
-        99
+        4,
+        74.9,
+        10,
+        93
       ],
       "grammar_data": {
         "subject": "The distant city skyline",
@@ -53350,10 +53350,10 @@
       "id": "p6_obj_21",
       "name": "Sailboats on the lake",
       "box": [
-        30,
-        70,
-        39,
-        81
+        9.5,
+        65.2,
+        14.1,
+        67.2
       ],
       "grammar_data": {
         "subject": "The sailboats on the lake",
@@ -53463,10 +53463,10 @@
       "id": "p6_obj_22",
       "name": "Stork on a rooftop nest",
       "box": [
-        37,
-        73,
-        44,
-        79
+        14.9,
+        72.3,
+        19.5,
+        76.3
       ],
       "grammar_data": {
         "subject": "The stork on the rooftop nest",
@@ -53576,10 +53576,10 @@
       "id": "p6_obj_23",
       "name": "Flock of geese flying",
       "box": [
-        27,
-        61,
-        35,
-        73
+        4.2,
+        56.4,
+        8.9,
+        66.6
       ],
       "grammar_data": {
         "subject": "The flock of geese",
@@ -53689,10 +53689,10 @@
       "id": "p6_obj_24",
       "name": "Boy flying a red kite",
       "box": [
-        50,
-        60,
-        56,
-        64
+        25.3,
+        50.4,
+        30.7,
+        55.3
       ],
       "grammar_data": {
         "subject": "The boy flying the red kite",
@@ -54254,10 +54254,10 @@
       "id": "p6_obj_29",
       "name": "Pigeons on house roof",
       "box": [
-        56,
-        61,
-        60,
-        68
+        18.6,
+        87.7,
+        21.6,
+        89.3
       ],
       "grammar_data": {
         "subject": "The pigeons on the house roof",
@@ -54819,10 +54819,10 @@
       "id": "p6_obj_34",
       "name": "Boy in snorkeling gear posing in front of a fish tank",
       "box": [
-        43.0,
-        72.0,
-        54.0,
-        80.0
+        41,
+        74.6,
+        51.2,
+        76.7
       ],
       "grammar_data": {
         "subject": "The boy in snorkeling gear",
@@ -55158,10 +55158,10 @@
       "id": "p6_obj_37",
       "name": "Pond with swans and ducks",
       "box": [
-        67,
-        34,
-        86,
-        56
+        12.8,
+        72.9,
+        15,
+        82.2
       ],
       "grammar_data": {
         "subject": "The pond with the swans and ducks",
@@ -55384,10 +55384,10 @@
       "id": "p6_obj_39",
       "name": "Pheasant running near the fence",
       "box": [
-        67.0,
-        63.0,
-        74.0,
-        71.0
+        70.2,
+        34.7,
+        72.5,
+        36.9
       ],
       "grammar_data": {
         "subject": "The pheasant running near the fence",
@@ -56288,10 +56288,10 @@
       "id": "p6_obj_47",
       "name": "Cat on the camper roof",
       "box": [
-        44.0,
-        75.0,
-        52.0,
-        82.0
+        77,
+        87.7,
+        79.3,
+        90.8
       ],
       "grammar_data": {
         "subject": "The cat on the camper roof",
@@ -56401,10 +56401,10 @@
       "id": "p6_obj_48",
       "name": "Bat flying above the roof",
       "box": [
-        51.0,
-        73.0,
-        59.0,
-        82.0
+        22.3,
+        82.8,
+        27,
+        85.9
       ],
       "grammar_data": {
         "subject": "The bat",
@@ -56740,10 +56740,10 @@
       "id": "p6_obj_51",
       "name": "Dust cloud behind the biker",
       "box": [
-        16.0,
-        25.0,
-        23.0,
-        34.0
+        18,
+        25.2,
+        19.9,
+        26.4
       ],
       "grammar_data": {
         "subject": "The dust cloud",
@@ -56853,10 +56853,10 @@
       "id": "p6_obj_52",
       "name": "Doe at the water",
       "box": [
-        23.0,
-        24.0,
-        32.0,
-        31.0
+        22.1,
+        25.7,
+        25.3,
+        28.6
       ],
       "grammar_data": {
         "subject": "The doe",
@@ -56968,10 +56968,10 @@
       "id": "p7_obj_1",
       "name": "Flying Eagle",
       "box": [
-        6,
-        11,
-        23,
-        31
+        4.2,
+        4.2,
+        13.6,
+        15.5
       ],
       "grammar_data": {
         "subject": "The eagle",
@@ -57081,10 +57081,10 @@
       "id": "p7_obj_2",
       "name": "Three Wind Turbines",
       "box": [
-        14,
-        33,
-        22,
-        41
+        2.8,
+        15.3,
+        13.5,
+        28.2
       ],
       "grammar_data": {
         "subject": "Three wind turbines",
@@ -57194,10 +57194,10 @@
       "id": "p7_obj_3",
       "name": "Wooden Observation Tower",
       "box": [
-        10,
-        48,
-        27,
-        52
+        5.1,
+        29.1,
+        15.3,
+        35.4
       ],
       "grammar_data": {
         "subject": "The wooden observation tower",
@@ -57307,10 +57307,10 @@
       "id": "p7_obj_4",
       "name": "Brown Owl on Tree Branch",
       "box": [
-        20,
-        10,
-        26,
-        17
+        21.6,
+        4,
+        27,
+        6.6
       ],
       "grammar_data": {
         "subject": "The brown owl on the tree branch",
@@ -57420,10 +57420,10 @@
       "id": "p7_obj_5",
       "name": "Gray Owl on Tree Trunk",
       "box": [
-        45,
-        12,
-        53,
-        19
+        20,
+        9.4,
+        26.5,
+        12.1
       ],
       "grammar_data": {
         "subject": "The gray owl on tree trunk",
@@ -57646,10 +57646,10 @@
       "id": "p7_obj_7",
       "name": "Squirrel on Tree Branch",
       "box": [
-        28,
-        22,
-        33,
-        28
+        30.5,
+        10.5,
+        34,
+        13.1
       ],
       "grammar_data": {
         "subject": "The squirrel on the tree branch",
@@ -57759,10 +57759,10 @@
       "id": "p7_obj_8",
       "name": "Motorcyclist on Dirt Bike",
       "box": [
-        25,
-        46,
-        32,
-        52
+        16.3,
+        28,
+        20.7,
+        31.6
       ],
       "grammar_data": {
         "subject": "The motorcyclist on dirt bike",
@@ -57872,10 +57872,10 @@
       "id": "p7_obj_9",
       "name": "Red Fox near Fence",
       "box": [
-        59,
-        29,
-        65,
-        36
+        22.1,
+        25.7,
+        25.3,
+        28.6
       ],
       "grammar_data": {
         "subject": "The red fox near fence",
@@ -57985,10 +57985,10 @@
       "id": "p7_obj_10",
       "name": "Eurasian Badger Foraging",
       "box": [
-        41,
-        31,
-        47,
-        39
+        25.3,
+        15.8,
+        28.4,
+        19.2
       ],
       "grammar_data": {
         "subject": "The eurasian badger",
@@ -58324,10 +58324,10 @@
       "id": "p7_obj_13",
       "name": "Herons Wading in Stream",
       "box": [
-        38,
-        20,
-        45,
-        25
+        29.5,
+        21,
+        34.5,
+        23.8
       ],
       "grammar_data": {
         "subject": "The herons in stream",
@@ -58776,10 +58776,10 @@
       "id": "p7_obj_17",
       "name": "Boy Flying Kite",
       "box": [
-        38,
-        60,
-        48,
-        65
+        25.3,
+        50.4,
+        30.7,
+        55.3
       ],
       "grammar_data": {
         "subject": "The boy",
@@ -60810,10 +60810,10 @@
       "id": "p7_obj_35",
       "name": "City Skyline in Distance",
       "box": [
-        16,
-        75,
-        25,
-        96
+        4,
+        74.9,
+        10,
+        97.7
       ],
       "grammar_data": {
         "subject": "The city skyline in distance",
@@ -61149,10 +61149,10 @@
       "id": "p7_obj_38",
       "name": "Distant Mountain Range",
       "box": [
-        12,
-        45,
-        22,
-        70
+        7,
+        11.5,
+        13.2,
+        26
       ],
       "grammar_data": {
         "subject": "The distant mountain range",
@@ -61940,10 +61940,10 @@
       "id": "p7_obj_45",
       "name": "Deer Doe",
       "box": [
-        58,
-        9,
-        64,
-        15
+        57.7,
+        13.1,
+        64.9,
+        17.3
       ],
       "grammar_data": {
         "subject": "The deer doe",
@@ -62620,10 +62620,10 @@
       "id": "p8_obj_1",
       "name": "Red hot air balloon floating",
       "box": [
-        2,
-        4,
-        11,
-        8
+        1.2,
+        6.4,
+        5.2,
+        8.6
       ],
       "grammar_data": {
         "subject": "The red hot air balloon",
@@ -62846,10 +62846,10 @@
       "id": "p8_obj_3",
       "name": "Bird of prey flying over the hills",
       "box": [
-        0.0,
-        15.0,
-        10.0,
-        22.0
+        1.3,
+        16.5,
+        4,
+        19.3
       ],
       "grammar_data": {
         "subject": "The bird of prey",
@@ -63185,10 +63185,10 @@
       "id": "p8_obj_6",
       "name": "Woman working at desk in attic",
       "box": [
-        32,
-        42,
-        51,
-        52
+        2.9,
+        43.2,
+        13.3,
+        45.3
       ],
       "grammar_data": {
         "subject": "The woman working at the desk",
@@ -63976,7 +63976,7 @@
       "id": "p8_obj_13",
       "name": "Child eating dinner at dining table",
       "box": [
-        29.0,
+        29,
         30,
         33.2,
         35
@@ -64089,7 +64089,7 @@
       "id": "p8_obj_14",
       "name": "Man showering in blue bathroom",
       "box": [
-        20.0,
+        20,
         50,
         30.7,
         57
@@ -65558,10 +65558,10 @@
       "id": "p8_obj_27",
       "name": "Boy riding red toy car on pavement",
       "box": [
-        77.8,
-        6,
-        84.9,
-        10
+        76.6,
+        6.9,
+        84.5,
+        9.4
       ],
       "grammar_data": {
         "subject": "The boy riding the red toy car on the pavement",
@@ -65897,10 +65897,10 @@
       "id": "p8_obj_30",
       "name": "Man riding green bicycle on street",
       "box": [
-        59.4,
-        20,
-        70.0,
-        31
+        63.7,
+        6.5,
+        72.2,
+        13.5
       ],
       "grammar_data": {
         "subject": "The man riding the green bicycle on the street",
@@ -66010,10 +66010,10 @@
       "id": "p8_obj_31",
       "name": "Blue family car driving on road",
       "box": [
-        87.5,
-        5,
-        99.9,
-        23
+        86.1,
+        5.4,
+        99.2,
+        22.5
       ],
       "grammar_data": {
         "subject": "The blue family car driving on the road",
@@ -66123,10 +66123,10 @@
       "id": "p8_obj_32",
       "name": "Woman driving blue car",
       "box": [
-        89.6,
-        9,
-        93.0,
-        13
+        89.5,
+        11.9,
+        93.9,
+        13.9
       ],
       "grammar_data": {
         "subject": "The woman driving the blue car",
@@ -66349,10 +66349,10 @@
       "id": "p8_obj_34",
       "name": "Woman riding pink scooter with flowers",
       "box": [
-        85.2,
-        38,
-        98.1,
-        46
+        85.7,
+        40.1,
+        96.9,
+        43.5
       ],
       "grammar_data": {
         "subject": "The woman riding the pink scooter with flowers",
@@ -66462,10 +66462,10 @@
       "id": "p8_obj_35",
       "name": "Green garbage truck",
       "box": [
-        72.0,
-        56.0,
-        98.0,
-        88.0
+        72.4,
+        55.4,
+        95.5,
+        77.8
       ],
       "grammar_data": {
         "subject": "The green garbage truck",
@@ -66575,10 +66575,10 @@
       "id": "p8_obj_36",
       "name": "Blue trash bin",
       "box": [
-        76.0,
-        86.0,
-        94.0,
-        93.0
+        82,
+        85.8,
+        92.2,
+        89.5
       ],
       "grammar_data": {
         "subject": "The blue trash bin",
@@ -66914,9 +66914,9 @@
       "id": "p8_obj_39",
       "name": "Squirrel with acorn in large tree",
       "box": [
-        53.0,
+        53,
         88,
-        58.0,
+        58,
         92
       ],
       "grammar_data": {
@@ -67027,7 +67027,7 @@
       "id": "p8_obj_40",
       "name": "Girl pushing boy in wheelchair",
       "box": [
-        77.0,
+        77,
         13,
         84.4,
         17
@@ -67140,7 +67140,7 @@
       "id": "p8_obj_41",
       "name": "People waiting at bus stop",
       "box": [
-        39.0,
+        39,
         89,
         43.6,
         94
@@ -67253,9 +67253,9 @@
       "id": "p8_obj_42",
       "name": "Blue city bus at bus stop",
       "box": [
-        31.4,
-        93,
-        42.8,
+        30.3,
+        97.2,
+        45.5,
         100
       ],
       "grammar_data": {
@@ -67366,7 +67366,7 @@
       "id": "p8_obj_43",
       "name": "Woman watering plants (far right garden)",
       "box": [
-        70.0,
+        70,
         95,
         78.5,
         99
@@ -67481,7 +67481,7 @@
       "box": [
         35.3,
         62,
-        40.0,
+        40,
         69
       ],
       "grammar_data": {
@@ -67705,7 +67705,7 @@
       "id": "p8_obj_46",
       "name": "Green hills in background",
       "box": [
-        0.0,
+        0,
         16,
         14.2,
         30
@@ -67931,10 +67931,10 @@
       "id": "p8_obj_48",
       "name": "Bus stop sign",
       "box": [
-        22.0,
-        90.0,
-        42.0,
-        94.0
+        26.1,
+        89.5,
+        32.4,
+        90.7
       ],
       "grammar_data": {
         "subject": "The bus stop sign",
@@ -68157,10 +68157,10 @@
       "id": "p8_obj_50",
       "name": "Red station wagon car",
       "box": [
-        49.4,
-        0,
-        63.8,
-        14
+        46.2,
+        9.2,
+        60.6,
+        15.1
       ],
       "grammar_data": {
         "subject": "The red station wagon car",
@@ -68270,10 +68270,10 @@
       "id": "p8_obj_51",
       "name": "Black bird with a nest under the roof",
       "box": [
-        17.0,
-        1.0,
-        26.0,
-        7.0
+        21.7,
+        2.7,
+        24.7,
+        4.6
       ],
       "grammar_data": {
         "subject": "The black bird with a nest under the roof",
@@ -68383,10 +68383,10 @@
       "id": "p8_obj_52",
       "name": "Grandmother welcoming a child in a red dress with a doll",
       "box": [
-        42.0,
-        1.0,
-        57.0,
-        9.0
+        44.5,
+        1.8,
+        58.7,
+        4.8
       ],
       "grammar_data": {
         "subject": "The grandmother in a red dress with a doll",
@@ -68496,10 +68496,10 @@
       "id": "p8_obj_53",
       "name": "Toy dolphin stuffed animal on the sofa",
       "box": [
-        63.0,
-        19.0,
-        72.0,
-        29.0
+        69.9,
+        16,
+        71.7,
+        18.8
       ],
       "grammar_data": {
         "subject": "The toy dolphin stuffed animal on the sofa",
@@ -68609,10 +68609,10 @@
       "id": "p8_obj_54",
       "name": "Spider plant in the stairwell",
       "box": [
-        28.0,
-        72.0,
-        39.0,
-        77.0
+        28,
+        72,
+        39,
+        77
       ],
       "grammar_data": {
         "subject": "The spider plant in the stairwell",
@@ -68722,10 +68722,10 @@
       "id": "p8_obj_55",
       "name": "Man holding a pet snake on the balcony",
       "box": [
-        15.0,
-        89.0,
-        30.0,
-        96.0
+        9.6,
+        92.4,
+        17.5,
+        94.9
       ],
       "grammar_data": {
         "subject": "The man on the balcony",
@@ -68835,10 +68835,10 @@
       "id": "p8_obj_56",
       "name": "Snake terrarium visible through the balcony window",
       "box": [
-        13.0,
-        94.0,
-        30.0,
-        100.0
+        9.4,
+        91.7,
+        16.4,
+        99.4
       ],
       "grammar_data": {
         "subject": "The snake terrarium visible through the balcony window",
@@ -68948,10 +68948,10 @@
       "id": "p8_obj_57",
       "name": "Mouse in the attic",
       "box": [
-        7.0,
-        11.0,
-        15.0,
-        18.0
+        12.9,
+        21.6,
+        14.2,
+        23.3
       ],
       "grammar_data": {
         "subject": "The mouse in the attic",
@@ -69061,10 +69061,10 @@
       "id": "p8_obj_58",
       "name": "Pink lunch box",
       "box": [
-        5.0,
-        47.0,
-        13.0,
-        55.0
+        44.8,
+        41.3,
+        46.7,
+        42.8
       ],
       "grammar_data": {
         "subject": "The pink lunch box",
@@ -69289,10 +69289,10 @@
       "id": "p9_obj_2",
       "name": "Yellow construction crane",
       "box": [
-        1,
-        0,
-        29,
-        21
+        0.6,
+        2,
+        12,
+        16.6
       ],
       "grammar_data": {
         "subject": "The yellow construction crane",
@@ -69402,10 +69402,10 @@
       "id": "p9_obj_3",
       "name": "Yellow excavator digging dirt",
       "box": [
-        18,
-        26,
-        40,
-        39
+        11,
+        8.5,
+        19.9,
+        17.4
       ],
       "grammar_data": {
         "subject": "The yellow excavator",
@@ -69854,10 +69854,10 @@
       "id": "p9_obj_7",
       "name": "Red fire engine driving",
       "box": [
-        31,
-        40,
-        58,
-        62
+        31.2,
+        18.6,
+        48.9,
+        38.5
       ],
       "grammar_data": {
         "subject": "The red fire engine",
@@ -69967,10 +69967,10 @@
       "id": "p9_obj_8",
       "name": "Firefighter driving the fire engine",
       "box": [
-        40,
-        49,
-        47,
-        52
+        35.5,
+        21.6,
+        39.9,
+        23.4
       ],
       "grammar_data": {
         "subject": "The firefighter",
@@ -70080,10 +70080,10 @@
       "id": "p9_obj_9",
       "name": "Pink building housing 'Kids Yoga'",
       "box": [
-        20,
-        25,
-        43,
-        46
+        28,
+        22,
+        31,
+        25
       ],
       "grammar_data": {
         "subject": "The pink building",
@@ -70306,10 +70306,10 @@
       "id": "p9_obj_11",
       "name": "Orange cat walking on a roof",
       "box": [
-        49,
-        10,
-        53,
-        13
+        53.1,
+        5.1,
+        55.7,
+        8
       ],
       "grammar_data": {
         "subject": "The orange cat on a roof",
@@ -70532,10 +70532,10 @@
       "id": "p9_obj_13",
       "name": "Bus driver behind the wheel",
       "box": [
-        57,
-        54,
-        61,
-        56
+        56.4,
+        35.5,
+        59.6,
+        37
       ],
       "grammar_data": {
         "subject": "The bus driver behind the wheel",
@@ -70758,10 +70758,10 @@
       "id": "p9_obj_15",
       "name": "Wimmel town Elementary School",
       "box": [
-        40,
-        56,
-        76,
-        74
+        31.2,
+        55.1,
+        69.5,
+        77.8
       ],
       "grammar_data": {
         "subject": "The wimmel town elementary school",
@@ -70871,10 +70871,10 @@
       "id": "p9_obj_16",
       "name": "Child with backpack entering school",
       "box": [
-        65,
-        61,
-        74,
-        65
+        66.4,
+        58.8,
+        74.1,
+        60.8
       ],
       "grammar_data": {
         "subject": "The child with backpack",
@@ -71210,10 +71210,10 @@
       "id": "p9_obj_19",
       "name": "Flower Shop with potted plants",
       "box": [
-        18,
-        48,
-        40,
-        61
+        15.2,
+        50.6,
+        17.8,
+        56.8
       ],
       "grammar_data": {
         "subject": "The flower shop with potted plants",
@@ -71323,10 +71323,10 @@
       "id": "p9_obj_20",
       "name": "Kim's Bakery store",
       "box": [
-        23,
-        81,
-        41,
-        91
+        16.4,
+        82.7,
+        18.7,
+        90.9
       ],
       "grammar_data": {
         "subject": "The kim's bakery store",
@@ -71775,10 +71775,10 @@
       "id": "p9_obj_24",
       "name": "Market stall with striped awning",
       "box": [
-        39,
-        88,
-        55,
-        99
+        22.2,
+        89.2,
+        27.8,
+        97.5
       ],
       "grammar_data": {
         "subject": "The market stall with striped awning",
@@ -72340,10 +72340,10 @@
       "id": "p9_obj_29",
       "name": "Police patrol car",
       "box": [
-        69,
-        72,
-        80,
-        84
+        71,
+        75.9,
+        83.8,
+        87.3
       ],
       "grammar_data": {
         "subject": "The police patrol car",
@@ -72679,10 +72679,10 @@
       "id": "p9_obj_32",
       "name": "Dot's Daycare center",
       "box": [
-        52,
+        55.2,
         0,
-        79,
-        31
+        70.6,
+        27.6
       ],
       "grammar_data": {
         "subject": "The dot's daycare center",
@@ -72905,10 +72905,10 @@
       "id": "p9_obj_34",
       "name": "Children playing in a sandpit",
       "box": [
-        86,
-        0,
-        99,
-        13
+        93.1,
+        7.5,
+        98.7,
+        9.7
       ],
       "grammar_data": {
         "subject": "The children in a sandpit",
@@ -73018,10 +73018,10 @@
       "id": "p9_obj_35",
       "name": "Woman pushing a person in a wheelchair",
       "box": [
-        78,
-        29,
-        91,
-        35
+        26.4,
+        47.2,
+        33.3,
+        49
       ],
       "grammar_data": {
         "subject": "The woman in a wheelchair",
@@ -73131,10 +73131,10 @@
       "id": "p9_obj_36",
       "name": "Child swinging on a playground swing",
       "box": [
-        89,
-        32,
-        98,
-        38
+        87.1,
+        36.1,
+        95.5,
+        38.4
       ],
       "grammar_data": {
         "subject": "The child on a playground swing",
@@ -73357,10 +73357,10 @@
       "id": "p9_obj_38",
       "name": "Man opening car door for child",
       "box": [
-        83,
-        60,
-        99,
-        72
+        89.9,
+        61.7,
+        98.7,
+        63.5
       ],
       "grammar_data": {
         "subject": "The man",
@@ -73470,10 +73470,10 @@
       "id": "p9_obj_39",
       "name": "Yellow family car",
       "box": [
-        85,
-        59,
-        99,
-        72
+        86.2,
+        59.2,
+        99.5,
+        74.8
       ],
       "grammar_data": {
         "subject": "The yellow family car",
@@ -74713,10 +74713,10 @@
       "id": "p9_obj_50",
       "name": "Boy running on playground path",
       "box": [
-        70,
-        49,
-        77,
-        53
+        81,
+        29.2,
+        87.8,
+        31.5
       ],
       "grammar_data": {
         "subject": "The boy on playground path",
@@ -74826,10 +74826,10 @@
       "id": "p9_obj_51",
       "name": "Woman waving to a child in pink beside a flowerpot",
       "box": [
-        75.0,
-        14.0,
-        90.0,
-        23.0
+        77.3,
+        10.5,
+        89.7,
+        14.3
       ],
       "grammar_data": {
         "subject": "The woman in pink beside a flowerpot",
@@ -74939,10 +74939,10 @@
       "id": "p9_obj_52",
       "name": "Nurse changing bedding and spotting an escaping patient",
       "box": [
-        19.0,
-        43.0,
-        34.0,
-        52.0
+        13.1,
+        44.2,
+        19.6,
+        46.8
       ],
       "grammar_data": {
         "subject": "The nurse",
@@ -75052,10 +75052,10 @@
       "id": "p9_obj_53",
       "name": "Black bird eating crumbs on the roof",
       "box": [
-        43.0,
-        72.0,
-        51.0,
-        80.0
+        43.1,
+        93.5,
+        45.7,
+        96
       ],
       "grammar_data": {
         "subject": "The black bird on the roof",
@@ -75165,10 +75165,10 @@
       "id": "p9_obj_54",
       "name": "Squirrel climbing the tree",
       "box": [
-        46.0,
-        46.0,
-        61.0,
-        53.0
+        43.1,
+        52,
+        45.2,
+        53.5
       ],
       "grammar_data": {
         "subject": "The squirrel",
@@ -75732,10 +75732,10 @@
       "id": "p10_obj_5",
       "name": "Restroom sign on cafe building",
       "box": [
-        7,
-        24,
-        10,
-        28
+        2.1,
+        19.1,
+        4.7,
+        22.8
       ],
       "grammar_data": {
         "subject": "The restroom sign on cafe building",
@@ -75845,10 +75845,10 @@
       "id": "p10_obj_6",
       "name": "Man resting under a tree as an acorn falls on him",
       "box": [
-        43.0,
-        3.0,
-        57.0,
-        12.0
+        47.6,
+        6,
+        55.5,
+        12
       ],
       "grammar_data": {
         "subject": "The man resting under the tree",
@@ -76071,10 +76071,10 @@
       "id": "p10_obj_8",
       "name": "Ducks swimming in the pond",
       "box": [
-        82,
-        4,
-        87,
-        8
+        64.2,
+        3.1,
+        66.1,
+        4.9
       ],
       "grammar_data": {
         "subject": "The ducks in the pond",
@@ -76184,10 +76184,10 @@
       "id": "p10_obj_9",
       "name": "Policeman catching a boy in a red cap littering",
       "box": [
-        80.0,
-        8.0,
-        98.0,
-        21.0
+        76.5,
+        16,
+        88.9,
+        19.1
       ],
       "grammar_data": {
         "subject": "The policeman in a red cap littering",
@@ -76297,10 +76297,10 @@
       "id": "p10_obj_10",
       "name": "Child riding a red toy car",
       "box": [
-        91,
-        13,
-        98,
-        18
+        89.8,
+        12.8,
+        97.9,
+        16.5
       ],
       "grammar_data": {
         "subject": "The child",
@@ -76410,10 +76410,10 @@
       "id": "p10_obj_11",
       "name": "Family having a picnic on checkered blanket",
       "box": [
-        81,
-        26,
-        96,
-        36
+        84.1,
+        24.8,
+        95.8,
+        36.7
       ],
       "grammar_data": {
         "subject": "The family on checkered blanket",
@@ -76523,10 +76523,10 @@
       "id": "p10_obj_12",
       "name": "Child on blue spring rider",
       "box": [
-        90,
-        30,
-        97,
-        34
+        74,
+        29.6,
+        81.4,
+        34.9
       ],
       "grammar_data": {
         "subject": "The child on blue spring rider",
@@ -76636,10 +76636,10 @@
       "id": "p10_obj_13",
       "name": "Boy riding a black and green scooter",
       "box": [
-        86,
-        22,
-        98,
-        28
+        53.4,
+        26.5,
+        66.9,
+        29.7
       ],
       "grammar_data": {
         "subject": "The boy",
@@ -76749,10 +76749,10 @@
       "id": "p10_obj_14",
       "name": "Children splashing in the fountain",
       "box": [
-        61,
-        30,
-        81,
-        38
+        30.3,
+        24.3,
+        56.9,
+        42.1
       ],
       "grammar_data": {
         "subject": "The children in the fountain",
@@ -76862,10 +76862,10 @@
       "id": "p10_obj_15",
       "name": "Woman pushing a blue baby stroller",
       "box": [
-        35,
-        59,
-        45,
-        63
+        28.6,
+        55.2,
+        36,
+        58.4
       ],
       "grammar_data": {
         "subject": "The woman",
@@ -77201,10 +77201,10 @@
       "id": "p10_obj_18",
       "name": "Man playing acoustic guitar on the grass",
       "box": [
-        28,
-        38,
-        43,
-        45
+        13,
+        41.8,
+        21.6,
+        45.8
       ],
       "grammar_data": {
         "subject": "The man on the grass",
@@ -77314,10 +77314,10 @@
       "id": "p10_obj_19",
       "name": "Brown dog sitting near guitarist",
       "box": [
-        28,
-        36,
-        38,
-        39
+        16.2,
+        37.1,
+        23,
+        40.1
       ],
       "grammar_data": {
         "subject": "The brown dog near guitarist",
@@ -77427,10 +77427,10 @@
       "id": "p10_obj_20",
       "name": "Ice cream vendor at the kiosk",
       "box": [
-        38,
-        88,
-        54,
-        92
+        13.7,
+        82.5,
+        36,
+        98.9
       ],
       "grammar_data": {
         "subject": "The ice cream vendor at the kiosk",
@@ -77540,10 +77540,10 @@
       "id": "p10_obj_21",
       "name": "Girl buying ice cream from kiosk",
       "box": [
-        53,
-        87,
-        68,
-        91
+        26.2,
+        90.2,
+        36,
+        92.7
       ],
       "grammar_data": {
         "subject": "The girl",
@@ -77653,10 +77653,10 @@
       "id": "p10_obj_22",
       "name": "Boy skateboarding and doing a trick",
       "box": [
-        48,
-        81,
-        62,
-        88
+        39.7,
+        91.9,
+        49.7,
+        97.6
       ],
       "grammar_data": {
         "subject": "The boy",
@@ -77766,10 +77766,10 @@
       "id": "p10_obj_23",
       "name": "Boy sliding down a blue slide",
       "box": [
-        89,
-        64,
-        99,
-        76
+        65.1,
+        72,
+        69.8,
+        74.2
       ],
       "grammar_data": {
         "subject": "The boy",
@@ -77879,10 +77879,10 @@
       "id": "p10_obj_24",
       "name": "Children playing with sand toys in sandbox",
       "box": [
-        84,
-        56,
-        97,
-        75
+        75.1,
+        61.8,
+        81,
+        64.9
       ],
       "grammar_data": {
         "subject": "The children in sandbox",
@@ -77992,10 +77992,10 @@
       "id": "p10_obj_25",
       "name": "Girl on a playground swing",
       "box": [
-        94,
-        71,
-        100,
-        76
+        53.4,
+        62.9,
+        57.6,
+        64.9
       ],
       "grammar_data": {
         "subject": "The girl on a playground swing",
@@ -78105,10 +78105,10 @@
       "id": "p10_obj_26",
       "name": "Man pushing a child on a swing",
       "box": [
-        81,
-        30,
-        96,
-        38
+        50.4,
+        57.5,
+        62.7,
+        64.9
       ],
       "grammar_data": {
         "subject": "The man on a swing",
@@ -78331,10 +78331,10 @@
       "id": "p10_obj_28",
       "name": "Girl on a seesaw with friend",
       "box": [
-        90,
-        73,
-        98,
-        83
+        77.5,
+        86.8,
+        93,
+        98.5
       ],
       "grammar_data": {
         "subject": "The girl on a seesaw with friend",
@@ -78557,10 +78557,10 @@
       "id": "p10_obj_30",
       "name": "Man flying a bat-shaped kite",
       "box": [
-        1,
-        52,
-        40,
-        57
+        0.7,
+        67.7,
+        7.2,
+        73.4
       ],
       "grammar_data": {
         "subject": "The man",
@@ -78670,10 +78670,10 @@
       "id": "p10_obj_31",
       "name": "Girl flying a pink diamond kite",
       "box": [
-        0,
-        61,
-        18,
-        66
+        1.6,
+        58.9,
+        6.9,
+        62.1
       ],
       "grammar_data": {
         "subject": "The girl",
@@ -78783,10 +78783,10 @@
       "id": "p10_obj_32",
       "name": "Black dog chasing a red ball",
       "box": [
-        14,
-        60,
-        30,
-        67
+        6.9,
+        86.8,
+        14.6,
+        91.1
       ],
       "grammar_data": {
         "subject": "The black dog",
@@ -78896,10 +78896,10 @@
       "id": "p10_obj_33",
       "name": "Puppet show booth with children watching",
       "box": [
-        26,
-        68,
-        49,
-        76
+        17.4,
+        68.3,
+        36,
+        74.8
       ],
       "grammar_data": {
         "subject": "The puppet show booth with children",
@@ -79235,10 +79235,10 @@
       "id": "p10_obj_36",
       "name": "Empty wooden park bench",
       "box": [
-        40,
+        28.1,
         36,
-        47,
-        44
+        35.5,
+        43
       ],
       "grammar_data": {
         "subject": "The empty wooden park bench",
@@ -79348,10 +79348,10 @@
       "id": "p10_obj_37",
       "name": "Green public trash bin",
       "box": [
-        49,
-        15,
-        58,
-        19
+        39.7,
+        13.3,
+        44.6,
+        15.7
       ],
       "grammar_data": {
         "subject": "The green public trash bin",
@@ -79461,10 +79461,10 @@
       "id": "p10_obj_38",
       "name": "Large green deciduous tree (center)",
       "box": [
-        48,
-        45,
-        92,
-        57
+        31,
+        47,
+        66.9,
+        58.7
       ],
       "grammar_data": {
         "subject": "The large green deciduous tree",
@@ -79574,10 +79574,10 @@
       "id": "p10_obj_39",
       "name": "Ducks walking near the pond",
       "box": [
-        72,
-        20,
-        78,
-        23
+        64.2,
+        3.1,
+        66.1,
+        4.9
       ],
       "grammar_data": {
         "subject": "The ducks near the pond",
@@ -80139,9 +80139,9 @@
       "id": "p10_obj_44",
       "name": "Man jogging on the park path",
       "box": [
-        47,
-        60,
-        71,
+        34.3,
+        61.4,
+        47.4,
         66
       ],
       "grammar_data": {
@@ -80591,9 +80591,9 @@
       "id": "p10_obj_48",
       "name": "Elderly man walking with boy on tricycle",
       "box": [
-        45,
-        40,
-        61,
+        30.3,
+        38.8,
+        43.6,
         45
       ],
       "grammar_data": {
@@ -80817,10 +80817,10 @@
       "id": "p10_obj_50",
       "name": "Little girl in red dress running",
       "box": [
-        55,
-        48,
-        70,
-        53
+        46,
+        20.2,
+        52.3,
+        22.5
       ],
       "grammar_data": {
         "subject": "The little girl in red dress",
@@ -80930,10 +80930,10 @@
       "id": "p10_obj_51",
       "name": "Squirrel dropping an acorn from a branch",
       "box": [
-        29.0,
-        3.0,
-        40.0,
-        10.0
+        35.2,
+        2.6,
+        38.3,
+        6.2
       ],
       "grammar_data": {
         "subject": "The squirrel",
@@ -81043,10 +81043,10 @@
       "id": "p10_obj_52",
       "name": "Stroller beside the swings",
       "box": [
-        61.0,
-        60.0,
-        74.0,
-        67.0
+        62.7,
+        60.4,
+        69.7,
+        63.6
       ],
       "grammar_data": {
         "subject": "The stroller beside the swings",
@@ -81156,10 +81156,10 @@
       "id": "p10_obj_53",
       "name": "Woman in pink struck by a toy arrow",
       "box": [
-        41.0,
-        14.0,
-        56.0,
-        22.0
+        39.7,
+        87.3,
+        51.1,
+        90.5
       ],
       "grammar_data": {
         "subject": "The woman in pink",
@@ -81269,10 +81269,10 @@
       "id": "p10_obj_54",
       "name": "Grandmother running to her crying granddaughter at the fountain",
       "box": [
-        47.0,
-        18.0,
-        65.0,
-        28.0
+        38.3,
+        17.1,
+        49.7,
+        21.6
       ],
       "grammar_data": {
         "subject": "The grandmother at the fountain",
@@ -81382,10 +81382,10 @@
       "id": "p10_obj_55",
       "name": "Toddler in a yellow shirt needing the restroom",
       "box": [
-        7.0,
-        25.0,
-        21.0,
-        32.0
+        6.2,
+        26.9,
+        13.4,
+        28.6
       ],
       "grammar_data": {
         "subject": "The toddler in a yellow shirt",
