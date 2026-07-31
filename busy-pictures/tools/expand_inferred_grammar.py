@@ -60,6 +60,8 @@ PERSON_WORDS = {
     "mother", "father", "lady", "passenger", "tourist", "skier", "snowboarder",
     "parachutist", "swimmer", "sailor", "painter", "plasterer", "carpenter",
     "electrician", "mechanic", "gardener", "beekeeper", "doctor", "patient",
+    "chef", "drummer", "workman", "plumber", "bricklayer", "surveyor",
+    "birdwatcher", "parent", "binman", "roofer", "vendor", "clerk",
 }
 MALE_WORDS = {
     "man", "boy", "father", "grandfather", "husband", "cowboy", "policeman",
@@ -77,10 +79,17 @@ ANIMAL_WORDS = {
     "badger", "marten", "butterfly", "butterflies", "frog", "fish", "bat",
     "snake", "crocodile", "donkey", "mule", "camel", "llama", "swallow",
     "elk", "moose", "bear", "bee", "chick", "hen",
+    "dachshund", "dove", "vulture", "roadrunner", "rattlesnake", "crow",
+    "mare", "osprey", "raccoon", "boar", "hare", "woodpecker", "hedgehog",
+    "marten", "puppy", "labrador", "retriever", "poodle", "beagle",
+    "turtle", "duckling", "lizard", "dane",
     "swallows", "dogs", "cats", "horses", "ponies", "cows", "bulls",
     "birds", "pigeons", "ducks", "geese", "chickens", "prairie", "antelope",
     "pronghorn", "buffalo", "bison", "coyotes", "rabbits", "piglets", "foals",
     "lambs", "seagulls", "bears", "bees", "chicks", "hens",
+    "doves", "vultures", "crows", "raccoons", "boars", "hares",
+    "woodpeckers", "hedgehogs", "martens", "puppies", "retrievers",
+    "poodles", "beagles", "turtles", "ducklings", "lizards",
 }
 
 
@@ -135,6 +144,8 @@ def inflect_first(base: str, form: str, plural: bool = False) -> str:
                  "past": "held", "pp": "held"},
         "carry": {"third": "carry" if plural else "carries", "ing": "carrying",
                   "past": "carried", "pp": "carried"},
+        "hit": {"third": "hit" if plural else "hits", "ing": "hitting",
+                "past": "hit", "pp": "hit"},
     }
     if first in irregular:
         return irregular[first][form] + tail
@@ -151,7 +162,8 @@ def inflect_first(base: str, form: str, plural: bool = False) -> str:
         if first.endswith("e") and first != "be":
             word = first[:-1] + "ing"
         elif first in {"nap", "sit", "run", "swim", "stop", "hop", "drop",
-                       "plan", "chat", "clap"}:
+                       "plan", "chat", "clap", "spot", "fit", "pat", "rub",
+                       "dig", "get", "step", "skip", "hug", "grab", "drag"}:
             word = first + first[-1] + "ing"
         else:
             word = first + "ing"
@@ -161,7 +173,8 @@ def inflect_first(base: str, form: str, plural: bool = False) -> str:
         elif first.endswith("y") and len(first) > 1 and first[-2] not in "aeiou":
             word = first[:-1] + "ied"
         elif first in {"nap", "sit", "run", "swim", "stop", "hop", "drop",
-                       "plan", "chat", "clap"}:
+                       "plan", "chat", "clap", "spot", "fit", "pat", "rub",
+                       "dig", "get", "step", "skip", "hug", "grab", "drag"}:
             word = first + first[-1] + "ed"
         else:
             word = first + "ed"
