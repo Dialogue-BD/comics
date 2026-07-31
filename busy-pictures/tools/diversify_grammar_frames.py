@@ -723,7 +723,7 @@ def routine_sentences(ctx: Context) -> dict[str, str]:
         f"{ctx.subject} {ctx.have} to {ctx.rule['base']} before the day ends.",
         f"To remain useful, {ctx.obj_phrase} {ctx.have} to keep {ctx.rule['ing']}.",
         f"Whenever conditions change, {ctx.obj_phrase} {ctx.have} to {ctx.rule['base']}.",
-        f"{ctx.subject} {ctx.have} to use enough {ctx.rule['resource']} to {ctx.rule['base']}.",
+        f"{ctx.subject} {ctx.have} to have enough {ctx.rule['resource']} available to {ctx.rule['base']}.",
         f"During the busiest period, {ctx.obj_phrase} {ctx.have} to {ctx.rule['base']} safely.",
         f"Before anyone can rely on {ctx.pronoun_object}, {ctx.obj_phrase} {ctx.have} to {ctx.rule['base']}.",
     ])
