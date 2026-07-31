@@ -273,6 +273,7 @@
       margin-bottom: 12px;
     }
     .filter-label {
+      display: block;
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -301,6 +302,37 @@
       color: #0f172a;
       border-color: #38bdf8;
       font-weight: 700;
+    }
+
+    .voice-select {
+      width: 100%;
+      min-height: 36px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #f8fafc;
+      padding: 7px 32px 7px 10px;
+      border-radius: 7px;
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .voice-select:focus-visible {
+      outline: 2px solid #38bdf8;
+      outline-offset: 2px;
+    }
+    .voice-select:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    .voice-select option {
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    .voice-help {
+      margin-top: 4px;
+      color: #94a3b8;
+      font-size: 10px;
+      line-height: 1.3;
     }
     
     .actions-grid {
@@ -487,6 +519,14 @@
         <button id="filter-adv" class="filter-btn" onclick="setFilter('advanced')">B1-B2</button>
       </div>
     </div>
+
+    <div class="filter-section">
+      <label class="filter-label" for="accent-select">English pronunciation</label>
+      <select id="accent-select" class="voice-select" aria-describedby="voice-help">
+        <option value="auto">Automatic</option>
+      </select>
+      <div id="voice-help" class="voice-help">Accent choices depend on the English voices available on this device.</div>
+    </div>
     
     <!-- Action buttons -->
     <div class="actions-grid">
@@ -536,8 +576,16 @@
     var speechToast = document.getElementById("speech-toast");
     var toastTitle = document.getElementById("toast-title");
     var toastText = document.getElementById("toast-text");
+    var accentSelect = document.getElementById("accent-select");
     
     var toastTimeout = null;
+    var accentVoices = {};
+    var accentOptions = [
+      { lang: "en-US", label: "American English" },
+      { lang: "en-GB", label: "British English" },
+      { lang: "en-AU", label: "Australian English" },
+      { lang: "en-IN", label: "Indian English" }
+    ];
     
     // Unlock Audio Context on first mobile touch
     document.body.addEventListener("touchstart", function unlockAudio() {
@@ -549,8 +597,88 @@
 
     // Initialization
     function init() {
+      initVoiceSelector();
       rollAll();
       centerContent();
+    }
+
+    function normalizeLanguageTag(tag) {
+      return String(tag || "").replace(/_/g, "-").toLowerCase();
+    }
+
+    function getSavedAccent() {
+      try {
+        return window.localStorage.getItem("busyPicturesEnglishAccent") || "auto";
+      } catch (err) {
+        return "auto";
+      }
+    }
+
+    function saveAccent(value) {
+      try {
+        window.localStorage.setItem("busyPicturesEnglishAccent", value);
+      } catch (err) {}
+    }
+
+    function chooseAccentVoice(voices) {
+      return voices.find(function(voice) { return voice.default; }) ||
+        voices.find(function(voice) { return voice.localService; }) ||
+        voices[0] ||
+        null;
+    }
+
+    function populateVoiceSelector() {
+      if (!("speechSynthesis" in window)) {
+        accentSelect.innerHTML = '<option value="auto">Speech unavailable</option>';
+        accentSelect.disabled = true;
+        return;
+      }
+
+      var voices = window.speechSynthesis.getVoices();
+      var savedAccent = getSavedAccent();
+      accentVoices = {};
+      accentSelect.innerHTML = '<option value="auto">Automatic</option>';
+
+      accentOptions.forEach(function(option) {
+        var matchingVoices = voices.filter(function(voice) {
+          return normalizeLanguageTag(voice.lang) === option.lang.toLowerCase();
+        });
+        var voice = chooseAccentVoice(matchingVoices);
+        if (!voice) return;
+
+        accentVoices[option.lang] = voice;
+        var optionElement = document.createElement("option");
+        optionElement.value = option.lang;
+        optionElement.textContent = option.label;
+        accentSelect.appendChild(optionElement);
+      });
+
+      accentSelect.value = accentVoices[savedAccent] ? savedAccent : "auto";
+    }
+
+    function initVoiceSelector() {
+      populateVoiceSelector();
+      if (!("speechSynthesis" in window)) return;
+
+      accentSelect.addEventListener("change", function() {
+        saveAccent(accentSelect.value);
+        refreshSpokenSentence(true);
+      });
+      window.speechSynthesis.addEventListener("voiceschanged", populateVoiceSelector);
+      // Some browsers populate their voice list shortly after page load without
+      // dispatching voiceschanged reliably.
+      window.setTimeout(populateVoiceSelector, 500);
+    }
+
+    function getAutomaticEnglishVoice() {
+      if (!("speechSynthesis" in window)) return null;
+      var englishVoices = window.speechSynthesis.getVoices().filter(function(voice) {
+        return normalizeLanguageTag(voice.lang).indexOf("en-") === 0 ||
+          normalizeLanguageTag(voice.lang) === "en";
+      });
+      return englishVoices.find(function(voice) { return voice.default; }) ||
+        englishVoices[0] ||
+        null;
     }
     
     // Panel minimization
@@ -819,9 +947,11 @@
       window.speechSynthesis.cancel();
       
       var u = new SpeechSynthesisUtterance(text);
+      var selectedVoice = accentVoices[accentSelect.value] || getAutomaticEnglishVoice();
       u.rate = 0.85;
       u.pitch = 1.0;
-      u.lang = 'en-US';
+      u.lang = selectedVoice ? selectedVoice.lang : 'en-US';
+      if (selectedVoice) u.voice = selectedVoice;
       window.speechSynthesis.speak(u);
     }
 
