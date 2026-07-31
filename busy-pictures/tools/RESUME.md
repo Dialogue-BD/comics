@@ -14,13 +14,62 @@ denser pictures take more).
 
 | Page | Objects | Status |
 |-----:|--------:|--------|
-| 1 | 210 | Done, verified, boxes align |
-| 2–25 | ~50–100 each | **Original data — boxes drift. This is the work.** |
+| 1–15 | 151–246 | Done, verified |
+| 16 | 175 | Done, verified, boxes align (`tools/page16_data.py`) |
+| 17 | 181 | Done, verified, boxes align (`tools/page17_data.py`) |
+| 18 | 223 | Done, verified, boxes align (`tools/page18_data.py`) |
+| 19–20 | 198, 174 | Done |
+| 21 | 238 | Done, verified, boxes align (`tools/page21_data.py`) |
+| 22–25 | 50, 50, 50, 47 | **Original data — boxes drift. This is the remaining work.** |
 
-Grammar is already correct for **all 25 pages** (42 fields per object). Only the
-boxes and object coverage need redoing on pages 2–25.
+Four pages (16, 17, 18, 21) were done in one session using the tile method
+below — faster than the "one page per session" estimate, because the pipeline
+was already built. Their `pageNN_data.py` files are kept in `tools/` so a box
+can be corrected and the page re-merged without re-reading tiles.
 
 **Update this table after every page.**
+
+## Grammar: all 25 pages now carry the 7 `main_*` tenses — DONE
+
+The viewer's prompt list maps all 7 grammar points to `main_simple_present`,
+`main_present_continuous`, `main_simple_past`, `main_past_continuous`,
+`main_present_perfect`, `main_future_going_to`, `main_future_will`.
+
+- Pages 1–10 already had them (hand-authored, richest on page 1).
+- Pages 11–25 were generated: **2,344 objects**, 16,408 sentences.
+- Whole book: **4,524 objects × 7 = 31,668 sentences**, none missing.
+- `var images` now lists all 25 pages, so 11–25 are reachable in the app.
+
+### How the generation works
+
+`tools/main_tenses.py` — the engine. Input is the same 4-tuple the box pipeline
+uses: `(subject, bare verb, rest, plural)`. Nothing new had to be authored,
+because the legacy 42-field data is fully reversible: `future_will` is always
+`"will <bare verb> <rest>"`, so `recover()` reads the verb straight back out.
+
+Each tense gets its own rotating time marker, keyed off a stable hash of the
+object id — so output is **deterministic**; re-running changes nothing.
+
+Two things that matter and are easy to regress:
+
+- **Stative verbs get a different marker bank.** "The pitch stretched behind the
+  fence a few minutes ago" implies it has since moved. Scenery draws from
+  continuity markers instead ("still stretches", "has stretched for years").
+  See `STATIVE` and the `STAT_*` lists.
+- **Plurality is re-derived from the subject, not trusted from legacy data.**
+  Pages 22–25 carry wrong plural flags ("The cows … has to"). `is_plural()`
+  reads the subject noun phrase, and deliberately treats "the group of children"
+  as singular — "the group … is enjoying" is correct.
+
+`tools/apply_main_tenses.py` — writes it in. Also repairs regularised
+participles book-wide (340 fixed: `has rised` → `has risen`, `has showed` →
+`has shown`, …) and rewrites 24 legacy compound verb phrases where only the head
+verb could inflect ("builds or repair a wooden item"). Verbs whose regular
+participle is also correct are left alone via `KEEP_REGULAR` — "has proved" is
+standard English and was not churned.
+
+Re-run any time with `python3 tools/apply_main_tenses.py` (`--dry-run` to
+preview). It is idempotent.
 
 ## The one thing that will waste your time if you miss it
 
