@@ -496,10 +496,17 @@
 
     /* Portrait-friendly guided tour. The small launch button stays out of the
        artwork; the transport controls only appear while a tour is running. */
-    #tour-launch {
+    #top-controls {
       position: fixed;
       top: 16px;
       right: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 1100;
+    }
+    #tour-launch,
+    #mute-btn {
       min-height: 42px;
       padding: 0 14px;
       border: 1px solid rgba(56, 189, 248, 0.55);
@@ -513,10 +520,19 @@
       font-size: 13px;
       font-weight: 750;
       cursor: pointer;
-      z-index: 1100;
       -webkit-tap-highlight-color: transparent;
     }
-    #tour-launch:hover, #tour-launch:focus-visible {
+    #mute-btn {
+      min-width: 46px;
+      padding-inline: 12px;
+    }
+    #mute-btn[aria-pressed="true"] {
+      border-color: rgba(251, 191, 36, 0.7);
+      background: rgba(120, 53, 15, 0.94);
+      color: #fef3c7;
+    }
+    #tour-launch:hover, #tour-launch:focus-visible,
+    #mute-btn:hover, #mute-btn:focus-visible {
       background: #38bdf8;
       color: #0f172a;
       outline: none;
@@ -620,11 +636,34 @@
         width: 44px;
         height: 44px;
       }
-      #tour-launch { top: 12px; right: 12px; min-height: 44px; }
+      #top-controls {
+        top: 12px;
+        right: 12px;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      #tour-launch, #mute-btn { min-height: 44px; }
+      #mute-btn {
+        width: 44px;
+        padding: 0;
+      }
+      #mute-label { display: none; }
       body.tour-active #fullscreen-btn { display: none; }
+      body.tour-active.panel-open #tour-controls {
+        top: max(64px, calc(env(safe-area-inset-top) + 64px));
+        bottom: auto;
+        transform: translateX(-50%) translateY(-24px);
+      }
+      body.tour-active.panel-open #tour-controls.visible {
+        transform: translateX(-50%) translateY(0);
+      }
       #prompt-panel {
         max-height: calc(100vh - 24px);
         max-height: calc(100dvh - 24px);
+      }
+      body.tour-active.panel-open #prompt-panel {
+        max-height: calc(100vh - 132px);
+        max-height: calc(100dvh - 132px);
       }
     }
 
@@ -727,6 +766,10 @@
       .voice-select { min-height: 32px; font-size: 11px; padding: 5px 28px 5px 8px; }
       .action-btn { padding: 5px; font-size: 10px; }
       #toggle-btn, #fullscreen-btn { bottom: 8px; width: 40px; height: 40px; }
+      body.tour-active.panel-open #prompt-panel {
+        max-height: none;
+        padding-top: 124px;
+      }
     }
     .flooding-banner {
       background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(239, 68, 68, 0.25));
@@ -750,7 +793,10 @@
     <button class="nav-btn" onclick="nextImage()" title="Next Picture">▶</button>
   </div>
 
-  <button id="tour-launch" type="button" onclick="startTour()" aria-label="Start an automatic object tour">▶ Auto tour</button>
+  <div id="top-controls" role="group" aria-label="Playback controls">
+    <button id="mute-btn" type="button" onclick="toggleMute()" aria-label="Mute narration" aria-pressed="false" title="Mute narration"><span id="mute-icon" aria-hidden="true">🔊</span> <span id="mute-label">Sound</span></button>
+    <button id="tour-launch" type="button" onclick="startTour()" aria-label="Start an automatic object tour">▶ Auto tour</button>
+  </div>
 
   <div id="viewer-container">
     <div id="img-wrap">
@@ -762,7 +808,7 @@
 
   <!-- Speech Toast Banner -->
   <div id="speech-toast">
-    <span class="toast-icon">🔊</span>
+    <span id="toast-icon" class="toast-icon">🔊</span>
     <div>
       <span id="toast-title" class="toast-title">Object</span>:
       <span id="toast-text">Grammar sentence will appear here</span>
@@ -888,7 +934,11 @@
     var speechToast = document.getElementById("speech-toast");
     var toastTitle = document.getElementById("toast-title");
     var toastText = document.getElementById("toast-text");
+    var toastIcon = document.getElementById("toast-icon");
     var accentSelect = document.getElementById("accent-select");
+    var muteBtn = document.getElementById("mute-btn");
+    var muteIcon = document.getElementById("mute-icon");
+    var muteLabel = document.getElementById("mute-label");
     var tourLaunch = document.getElementById("tour-launch");
     var tourControls = document.getElementById("tour-controls");
     var tourPlay = document.getElementById("tour-play");
@@ -903,6 +953,7 @@
     var suggestionNote = document.getElementById("suggestion-note");
     
     var toastTimeout = null;
+    var narrationMuted = getSavedMute();
     var accentVoices = {};
     var accentOptions = [
       { lang: "en-US", label: "American English" },
@@ -921,6 +972,7 @@
 
     // Initialization
     function init() {
+      updateMuteButton();
       initVoiceSelector();
       updateSuggestionTools();
       applyOrientationLayout();
@@ -945,6 +997,40 @@
       try {
         window.localStorage.setItem("busyPicturesEnglishAccent", value);
       } catch (err) {}
+    }
+
+    function getSavedMute() {
+      try {
+        return window.localStorage.getItem("busyPicturesNarrationMuted") === "true";
+      } catch (err) {
+        return false;
+      }
+    }
+
+    function saveMute() {
+      try {
+        window.localStorage.setItem("busyPicturesNarrationMuted", String(narrationMuted));
+      } catch (err) {}
+    }
+
+    function updateMuteButton() {
+      if (!muteBtn) return;
+      muteBtn.setAttribute("aria-pressed", String(narrationMuted));
+      muteBtn.setAttribute("aria-label", narrationMuted ? "Unmute narration" : "Mute narration");
+      muteBtn.title = narrationMuted ? "Unmute narration" : "Mute narration";
+      if (muteIcon) muteIcon.textContent = narrationMuted ? "🔇" : "🔊";
+      if (muteLabel) muteLabel.textContent = narrationMuted ? "Muted" : "Sound";
+      if (toastIcon) toastIcon.textContent = narrationMuted ? "🔇" : "🔊";
+    }
+
+    function toggleMute() {
+      narrationMuted = !narrationMuted;
+      saveMute();
+      stopNarration();
+      updateMuteButton();
+      if (tourState.active && !tourState.paused && !tourState.completed) {
+        presentTourObject(true);
+      }
     }
 
     // Chrome's local (localService) voices are the robotic eSpeak-class ones.
@@ -1109,6 +1195,7 @@
         panel.classList.remove("collapsed");
         restoreBtn.classList.remove("visible");
       }
+      document.body.classList.toggle("panel-open", !collapse);
       syncDrawerTab();
     }
 
@@ -1805,6 +1892,11 @@
         if (token !== narrationToken) return;
         speakWithSynthesis(text, token, finish);
       }
+      if (narrationMuted) {
+        // Preserve a comfortable autoplay pace while skipping the utterance.
+        window.setTimeout(finish, Math.max(900, Math.min(5000, wordCount * 300 + 600)));
+        return;
+      }
       useSynthesis();
     }
 
@@ -2025,7 +2117,7 @@
     
     // CLICK / TOUCH TAP DETECTION
     function isViewerControl(target) {
-      return target.closest("#prompt-panel, #toggle-btn, #fullscreen-btn, #page-nav-bar, #tour-launch, #tour-controls, #drawer-tab, #suggestion-modal");
+      return target.closest("#prompt-panel, #toggle-btn, #fullscreen-btn, #page-nav-bar, #top-controls, #tour-controls, #drawer-tab, #suggestion-modal");
     }
 
     document.getElementById("viewer-container").addEventListener("click", function(e) {
