@@ -24,7 +24,11 @@
       height: 100vh;
       overflow: hidden;
       position: relative;
+      cursor: grab;
     }
+    #viewer-container.hotspot-hover { cursor: pointer; }
+    body.pointer-panning #viewer-container { cursor: grabbing; }
+    body.pointer-panning #img-wrap { transition: none; }
     /* The wrapper shrink-wraps the image and carries the pan/zoom transform.
        Overlays live INSIDE it and are positioned in image percentages, so they
        stay welded to the artwork. Previously they were position:fixed and placed
@@ -46,6 +50,8 @@
       max-height: 100vh;
       width: auto;
       height: auto;
+      -webkit-user-drag: none;
+      user-drag: none;
     }
     
     /* Target Ring & Speech Toast */
@@ -350,6 +356,97 @@
       background: #0284c7;
       color: #fff;
     }
+
+    .correction-tools {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .correction-tools .action-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+    }
+    #suggestion-status {
+      min-height: 14px;
+      margin-top: 6px;
+      color: #94a3b8;
+      font-size: 10px;
+      line-height: 1.35;
+    }
+    #suggestion-modal[hidden] { display: none; }
+    #suggestion-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      box-sizing: border-box;
+      background: rgba(2, 6, 23, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .suggestion-card {
+      width: min(440px, 100%);
+      max-height: calc(100dvh - 32px);
+      overflow-y: auto;
+      box-sizing: border-box;
+      padding: 20px;
+      border: 1px solid rgba(125, 211, 252, 0.35);
+      border-radius: 16px;
+      background: #0f172a;
+      color: #f8fafc;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+    .suggestion-card h2 {
+      margin: 0 0 6px;
+      color: #7dd3fc;
+      font-size: 18px;
+    }
+    .suggestion-card p {
+      margin: 0 0 14px;
+      color: #94a3b8;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .suggestion-field {
+      display: block;
+      margin-bottom: 12px;
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .suggestion-field input,
+    .suggestion-field textarea {
+      display: block;
+      width: 100%;
+      margin-top: 5px;
+      padding: 10px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 8px;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.08);
+      color: #f8fafc;
+      font: inherit;
+      font-size: 14px;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+    .suggestion-field input[readonly] { color: #94a3b8; }
+    .suggestion-field textarea { min-height: 76px; resize: vertical; }
+    .suggestion-field input:focus-visible,
+    .suggestion-field textarea:focus-visible {
+      outline: 2px solid #38bdf8;
+      outline-offset: 2px;
+    }
+    .suggestion-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .suggestion-actions .action-btn { min-height: 42px; padding: 9px 12px; }
     
     #toggle-btn {
       position: fixed;
@@ -657,7 +754,7 @@
 
   <div id="viewer-container">
     <div id="img-wrap">
-      <img id="comic-img" src="" alt="Wimmelbook Page">
+      <img id="comic-img" src="" alt="Wimmelbook Page" draggable="false">
       <div id="target-ring"></div>
       <div id="box-highlight"><span id="box-label"></span></div>
     </div>
@@ -677,7 +774,7 @@
     <button id="tour-play" class="tour-btn" type="button" onclick="toggleTourPlayback()" aria-label="Pause tour">Ⅱ</button>
     <button id="tour-next" class="tour-btn" type="button" onclick="stepTour(1)" aria-label="Next object">›</button>
     <span id="tour-progress" aria-live="polite">1 / 1</span>
-    <button id="tour-close" class="tour-btn" type="button" onclick="stopTour(false)" aria-label="Close tour">✕</button>
+    <button id="tour-close" class="tour-btn" type="button" onclick="stopTour(false)" aria-label="Stop tour">✕</button>
   </div>
 
   <!-- Draggable/Collapsible Prompt Panel -->
@@ -708,9 +805,9 @@
     <details class="filter-section voice-details">
       <summary class="filter-label voice-summary">English pronunciation</summary>
       <select id="accent-select" class="voice-select" aria-describedby="voice-help">
-        <option value="auto">Automatic</option>
+        <option value="en-US">American English</option>
       </select>
-      <div id="voice-help" class="voice-help">Only accents your device has voice data for will appear here.</div>
+      <div id="voice-help" class="voice-help">Accent choices use the best available installed English voice.</div>
       <div id="voice-missing" class="voice-missing" style="display:none;"></div>
     </details>
     
@@ -723,6 +820,11 @@
       <button class="action-btn" onclick="rollImage()">New Picture</button>
       <button class="action-btn" onclick="rollPrompt()">New Prompt</button>
     </div>
+    <div class="correction-tools">
+      <button id="suggest-label-btn" class="action-btn" type="button" onclick="openLabelSuggestion()" disabled>✎ Suggest label edit</button>
+      <button id="export-suggestions-btn" class="action-btn" type="button" onclick="exportLabelSuggestions()" disabled>Export (0)</button>
+    </div>
+    <div id="suggestion-status" aria-live="polite">Select an object to suggest a correction.</div>
   </div>
 
   <!-- Re-open float action button -->
@@ -733,6 +835,29 @@
       <path d="M12 8h.01"></path>
     </svg>
   </button>
+
+  <div id="suggestion-modal" hidden role="dialog" aria-modal="true" aria-labelledby="suggestion-title">
+    <form id="suggestion-form" class="suggestion-card">
+      <h2 id="suggestion-title">Suggest a better label</h2>
+      <p>The suggestion is saved on this device. You can then continue to GitHub to add it to the repository log, or export all saved suggestions as JSON.</p>
+      <label class="suggestion-field">
+        Current label
+        <input id="suggestion-current-label" type="text" readonly>
+      </label>
+      <label class="suggestion-field">
+        Suggested label
+        <input id="suggestion-new-label" type="text" maxlength="160" autocomplete="off" required>
+      </label>
+      <label class="suggestion-field">
+        Optional note
+        <textarea id="suggestion-note" maxlength="1000" placeholder="What did the picture show instead?"></textarea>
+      </label>
+      <div class="suggestion-actions">
+        <button class="action-btn" type="button" onclick="closeLabelSuggestion()">Cancel</button>
+        <button class="action-btn primary" type="submit">Save &amp; continue to GitHub</button>
+      </div>
+    </form>
+  </div>
 
   <!-- Fullscreen Toggle Button -->
   <div id="fullscreen-btn" onclick="toggleFullscreen()" title="Toggle Fullscreen">
@@ -762,9 +887,18 @@
     var toastTitle = document.getElementById("toast-title");
     var toastText = document.getElementById("toast-text");
     var accentSelect = document.getElementById("accent-select");
+    var tourLaunch = document.getElementById("tour-launch");
     var tourControls = document.getElementById("tour-controls");
     var tourPlay = document.getElementById("tour-play");
     var tourProgress = document.getElementById("tour-progress");
+    var suggestLabelBtn = document.getElementById("suggest-label-btn");
+    var exportSuggestionsBtn = document.getElementById("export-suggestions-btn");
+    var suggestionStatus = document.getElementById("suggestion-status");
+    var suggestionModal = document.getElementById("suggestion-modal");
+    var suggestionForm = document.getElementById("suggestion-form");
+    var suggestionCurrentLabel = document.getElementById("suggestion-current-label");
+    var suggestionNewLabel = document.getElementById("suggestion-new-label");
+    var suggestionNote = document.getElementById("suggestion-note");
     
     var toastTimeout = null;
     var accentVoices = {};
@@ -786,6 +920,7 @@
     // Initialization
     function init() {
       initVoiceSelector();
+      updateSuggestionTools();
       applyOrientationLayout();
       rollAll();
       centerContent();
@@ -797,9 +932,10 @@
 
     function getSavedAccent() {
       try {
-        return window.localStorage.getItem("busyPicturesEnglishAccent") || "auto";
+        var saved = window.localStorage.getItem("busyPicturesEnglishAccent") || "en-US";
+        return saved === "auto" || saved === "system" ? "en-US" : saved;
       } catch (err) {
-        return "auto";
+        return "en-US";
       }
     }
 
@@ -817,6 +953,7 @@
       var score = 0;
       if (/google/.test(n)) score += 50;
       if (/natural|neural|premium|enhanced|wavenet|siri/.test(n)) score += 40;
+      if (/samantha|ava|allison|serena|daniel|karen|rishi|moira|tessa|veena|zoe|jamie|isha/.test(n)) score += 35;
       if (/microsoft/.test(n)) score += 20;
       if (!voice.localService) score += 25;
       if (/compact|espeak|pico|monotone/.test(n)) score -= 60;
@@ -826,7 +963,26 @@
 
     function chooseAccentVoice(voices) {
       if (!voices.length) return null;
-      return voices.slice().sort(function(a, b) { return voiceScore(b) - voiceScore(a); })[0];
+      var premium = voices.filter(function(voice) {
+        return /premium/i.test(String(voice.name || ""));
+      });
+      var natural = voices.filter(function(voice) {
+        return /enhanced|natural|neural|wavenet/i.test(String(voice.name || ""));
+      });
+      var pool = premium.length ? premium : (natural.length ? natural : voices);
+      return pool.slice().sort(function(a, b) { return voiceScore(b) - voiceScore(a); })[0];
+    }
+
+    function getBestEnglishVoice() {
+      if (!("speechSynthesis" in window)) return null;
+      var englishVoices = window.speechSynthesis.getVoices().filter(function(voice) {
+        var lang = normalizeLanguageTag(voice.lang);
+        return lang === "en" || lang.indexOf("en-") === 0;
+      });
+      var americanVoices = englishVoices.filter(function(voice) {
+        return regionTag(voice.lang) === "en-us";
+      });
+      return chooseAccentVoice(americanVoices) || chooseAccentVoice(englishVoices);
     }
 
     // "en-GB-x-gbb", "en_GB_#male" and "en-GB" must all match the en-GB option.
@@ -839,14 +995,14 @@
 
     function populateVoiceSelector() {
       if (!("speechSynthesis" in window)) {
-        accentSelect.innerHTML = '<option value="auto">Speech unavailable</option>';
+        accentSelect.innerHTML = '<option value="en-US">Speech unavailable</option>';
         accentSelect.disabled = true;
         return;
       }
 
       var voices = window.speechSynthesis.getVoices();
       // Android fires voiceschanged with a momentarily empty list. Rebuilding
-      // here is what used to reset the menu back to Automatic.
+      // here is what used to reset the menu back to the system voice.
       if (!voices.length) return;
 
       var signature = voices.map(function(v) { return v.name + "|" + v.lang; }).join(",");
@@ -855,11 +1011,10 @@
       if (document.activeElement === accentSelect) return;
       lastVoiceSignature = signature;
 
-      var current = accentSelect.value && accentSelect.value !== "auto"
-        ? accentSelect.value : getSavedAccent();
+      var current = accentSelect.value || getSavedAccent();
 
       accentVoices = {};
-      accentSelect.innerHTML = '<option value="auto">Automatic</option>';
+      accentSelect.innerHTML = "";
 
       accentOptions.forEach(function(option) {
         var wanted = option.lang.toLowerCase();
@@ -873,7 +1028,14 @@
         accentSelect.appendChild(el);
       });
 
-      accentSelect.value = accentVoices[current] ? current : "auto";
+      var fallbackAccent = accentVoices["en-US"] ? "en-US" : Object.keys(accentVoices)[0];
+      if (!fallbackAccent) {
+        accentSelect.innerHTML = '<option value="en-US">No English voice installed</option>';
+        accentSelect.disabled = true;
+      } else {
+        accentSelect.disabled = false;
+        accentSelect.value = accentVoices[current] ? current : fallbackAccent;
+      }
       reportMissingAccents();
     }
 
@@ -934,17 +1096,6 @@
       });
     }
 
-    function getAutomaticEnglishVoice() {
-      if (!("speechSynthesis" in window)) return null;
-      var englishVoices = window.speechSynthesis.getVoices().filter(function(voice) {
-        return normalizeLanguageTag(voice.lang).indexOf("en-") === 0 ||
-          normalizeLanguageTag(voice.lang) === "en";
-      });
-      return englishVoices.find(function(voice) { return voice.default; }) ||
-        englishVoices[0] ||
-        null;
-    }
-    
     // Panel minimization
     var drawerTab = document.getElementById("drawer-tab");
 
@@ -1048,6 +1199,8 @@
       stopTour(true);
       currentImageIndex = idx;
       lastTappedObject = null;
+      updateTourLaunch();
+      updateSuggestionTools();
       speechToast.classList.remove("visible");
       img.src = images[currentImageIndex] + "?v=" + Date.now();
       updatePageIndicator();
@@ -1112,9 +1265,9 @@
     }
     
     // TAP TO RECOGNIZE & SPEAK ENGINE
-    function handleImageTap(clientX, clientY) {
+    function findObjectAt(clientX, clientY, includeNearMiss) {
       var rect = img.getBoundingClientRect();
-      if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) return;
+      if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) return null;
 
       var relX = ((clientX - rect.left) / rect.width) * 100;
       var relY = ((clientY - rect.top) / rect.height) * 100;
@@ -1164,7 +1317,7 @@
 
       // Fallback: nearest object by distance to its EDGE (not its centre), so a
       // near-miss on a small object beats a far-off hit on a large one.
-      if (!matched && objects.length > 0) {
+      if (!matched && includeNearMiss && objects.length > 0) {
         var minDist = Infinity;
         for (var j = 0; j < objects.length; j++) {
           var b2 = objects[j].box;
@@ -1175,6 +1328,12 @@
         }
         if (minDist > 2.5) matched = null;
       }
+
+      return matched;
+    }
+
+    function handleImageTap(clientX, clientY) {
+      var matched = findObjectAt(clientX, clientY, true);
 
       if (matched) {
         if (tourState.active) {
@@ -1193,6 +1352,8 @@
     function triggerObjectTap(obj, clientX, clientY, options) {
       options = options || {};
       lastTappedObject = obj;
+      updateTourLaunch();
+      updateSuggestionTools();
       var b = obj.box; // [ymin, xmin, ymax, xmax]
       var ymin = b[0], xmin = b[1], ymax = b[2], xmax = b[3];
 
@@ -1236,6 +1397,168 @@
       }
     }
 
+    // ---- community label corrections ---------------------------------
+    // A file:// page cannot silently write into its Git repository. Keep a
+    // durable local queue, provide a repository-friendly JSON export, and open
+    // a prefilled GitHub issue so an authenticated user can log the correction.
+    var LABEL_SUGGESTIONS_KEY = "busyPicturesLabelSuggestions:v1";
+    var LABEL_SUGGESTIONS_REPO = "https://github.com/Dialogue-BD/comics/issues/new";
+    var labelSuggestions = loadLabelSuggestions();
+    var suggestionContext = null;
+
+    function loadLabelSuggestions() {
+      try {
+        var saved = JSON.parse(window.localStorage.getItem(LABEL_SUGGESTIONS_KEY) || "[]");
+        return Array.isArray(saved) ? saved : [];
+      } catch (err) {
+        return [];
+      }
+    }
+
+    function persistLabelSuggestions() {
+      try {
+        window.localStorage.setItem(LABEL_SUGGESTIONS_KEY, JSON.stringify(labelSuggestions));
+        return true;
+      } catch (err) {
+        return false;
+      }
+    }
+
+    function updateSuggestionTools(message) {
+      var hasSelection = !!lastTappedObject;
+      if (suggestLabelBtn) suggestLabelBtn.disabled = !hasSelection;
+      if (exportSuggestionsBtn) {
+        exportSuggestionsBtn.disabled = labelSuggestions.length === 0;
+        exportSuggestionsBtn.textContent = "Export (" + labelSuggestions.length + ")";
+      }
+      if (!suggestionStatus) return;
+      if (message) suggestionStatus.textContent = message;
+      else if (hasSelection) suggestionStatus.textContent = "Selected: " + lastTappedObject.name;
+      else if (labelSuggestions.length) suggestionStatus.textContent = labelSuggestions.length + " suggestion" + (labelSuggestions.length === 1 ? "" : "s") + " saved on this device.";
+      else suggestionStatus.textContent = "Select an object to suggest a correction.";
+    }
+
+    function openLabelSuggestion() {
+      if (!lastTappedObject || !suggestionModal) return;
+      suggestionContext = {
+        object: lastTappedObject,
+        pageIndex: currentImageIndex
+      };
+      suggestionCurrentLabel.value = lastTappedObject.name || "";
+      suggestionNewLabel.value = "";
+      suggestionNote.value = "";
+      suggestionNewLabel.setCustomValidity("");
+      suggestionModal.hidden = false;
+      window.setTimeout(function() { suggestionNewLabel.focus(); }, 0);
+    }
+
+    function closeLabelSuggestion() {
+      if (!suggestionModal) return;
+      suggestionModal.hidden = true;
+      suggestionContext = null;
+      if (suggestLabelBtn && !suggestLabelBtn.disabled) suggestLabelBtn.focus();
+    }
+
+    function makeSuggestionId() {
+      if (window.crypto && typeof window.crypto.randomUUID === "function") return window.crypto.randomUUID();
+      return "suggestion-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+    }
+
+    function markdownCode(value) {
+      return "`" + String(value == null ? "" : value).replace(/`/g, "\\`") + "`";
+    }
+
+    function githubIssueUrl(record) {
+      var title = "Label correction: " + record.current_label + " → " + record.suggested_label;
+      var body = [
+        "## Busy-picture label correction",
+        "",
+        "- Page: " + markdownCode(record.page_key) + " (picture " + record.page_number + ")",
+        "- Image: " + markdownCode(record.image),
+        "- Object ID: " + markdownCode(record.object_id),
+        "- Box `[ymin, xmin, ymax, xmax]`: " + markdownCode(JSON.stringify(record.box)),
+        "- Current label: " + markdownCode(record.current_label),
+        "- Suggested label: " + markdownCode(record.suggested_label),
+        "",
+        "### Note",
+        record.note || "No additional note.",
+        "",
+        "Suggestion ID: " + markdownCode(record.id)
+      ].join("\n");
+      return LABEL_SUGGESTIONS_REPO + "?title=" + encodeURIComponent(title) + "&body=" + encodeURIComponent(body) + "&labels=" + encodeURIComponent("label-correction");
+    }
+
+    function submitLabelSuggestion(e) {
+      e.preventDefault();
+      if (!suggestionContext || !suggestionContext.object) return;
+      var proposed = suggestionNewLabel.value.trim();
+      var current = String(suggestionContext.object.name || "").trim();
+      if (!proposed) return;
+      if (proposed.toLocaleLowerCase() === current.toLocaleLowerCase()) {
+        suggestionNewLabel.setCustomValidity("Please enter a different label.");
+        suggestionNewLabel.reportValidity();
+        return;
+      }
+      suggestionNewLabel.setCustomValidity("");
+      var pageIndex = suggestionContext.pageIndex;
+      var obj = suggestionContext.object;
+      var record = {
+        schema_version: 1,
+        id: makeSuggestionId(),
+        created_at: new Date().toISOString(),
+        page_key: "wimmelbook_" + (pageIndex + 1),
+        page_number: pageIndex + 1,
+        image: images[pageIndex],
+        object_id: obj.id || "",
+        box: Array.isArray(obj.box) ? obj.box.slice() : [],
+        current_label: current,
+        suggested_label: proposed,
+        note: suggestionNote.value.trim(),
+        status: "pending-review"
+      };
+      labelSuggestions.push(record);
+      var persisted = persistLabelSuggestions();
+      suggestionModal.hidden = true;
+      suggestionContext = null;
+      updateSuggestionTools(
+        persisted
+          ? "Suggestion saved locally. Finish submitting it in the GitHub tab."
+          : "GitHub opened, but this browser could not save a local backup."
+      );
+      var issueWindow = window.open(githubIssueUrl(record), "_blank", "noopener");
+      if (!issueWindow) {
+        updateSuggestionTools("Suggestion saved locally. Allow pop-ups or use Export to keep the repository log.");
+      }
+    }
+
+    function exportLabelSuggestions() {
+      if (!labelSuggestions.length) return;
+      var payload = {
+        schema_version: 1,
+        exported_at: new Date().toISOString(),
+        repository: "Dialogue-BD/comics",
+        suggestions: labelSuggestions
+      };
+      var blob = new Blob([JSON.stringify(payload, null, 2) + "\n"], { type: "application/json" });
+      var url = URL.createObjectURL(blob);
+      var link = document.createElement("a");
+      link.href = url;
+      link.download = "label-suggestions.json";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(function() { URL.revokeObjectURL(url); }, 0);
+      updateSuggestionTools("Exported " + labelSuggestions.length + " saved suggestion" + (labelSuggestions.length === 1 ? "." : "s."));
+    }
+
+    suggestionForm.addEventListener("submit", submitLabelSuggestion);
+    suggestionModal.addEventListener("click", function(e) {
+      if (e.target === suggestionModal) closeLabelSuggestion();
+    });
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape" && !suggestionModal.hidden) closeLabelSuggestion();
+    });
+
 
     // Every grammar point now has its own complete, stored sentence.
     function buildGrammarSentence(gData, prompt) {
@@ -1254,6 +1577,7 @@
       index: 0,
       objects: [],
       timer: null,
+      motionTimer: null,
       runId: 0
     };
 
@@ -1269,6 +1593,24 @@
         window.clearTimeout(tourState.timer);
         tourState.timer = null;
       }
+      if (tourState.motionTimer) {
+        window.clearTimeout(tourState.motionTimer);
+        tourState.motionTimer = null;
+      }
+    }
+
+    function updateTourLaunch() {
+      if (!tourLaunch) return;
+      var canResume = currentPageObjects().indexOf(lastTappedObject) >= 0;
+      tourLaunch.textContent = canResume ? "▶ Resume tour" : "▶ Auto tour";
+      tourLaunch.setAttribute(
+        "aria-label",
+        canResume ? "Resume automatic tour from the last selected object" : "Start an automatic object tour"
+      );
+    }
+
+    function releaseImageForManualControl() {
+      if (imgWrap) imgWrap.style.transition = "none";
     }
 
     function updateTourControls() {
@@ -1295,7 +1637,8 @@
       tourState.paused = false;
       tourState.completed = false;
       tourState.objects = objects;
-      tourState.index = 0;
+      var resumeIndex = objects.indexOf(lastTappedObject);
+      tourState.index = resumeIndex >= 0 ? resumeIndex : 0;
       tourState.runId += 1;
       document.body.classList.add("tour-active");
       tourControls.classList.add("visible");
@@ -1305,10 +1648,11 @@
     }
 
     function stopTour(resetView) {
+      var wasTourActive = tourState.active;
       clearTourTimer();
       tourState.runId += 1;
       tourState.active = false;
-      tourState.paused = false;
+      tourState.paused = true;
       tourState.completed = false;
       tourState.objects = [];
       stopNarration();
@@ -1316,6 +1660,7 @@
       highlightTimeout = null;
       boxHighlight.classList.remove("active");
       targetRing.classList.remove("active");
+      releaseImageForManualControl();
       document.body.classList.remove("tour-active");
       if (tourControls) tourControls.classList.remove("visible");
       if (resetView && typeof scale !== "undefined") {
@@ -1323,6 +1668,10 @@
         posX = 0;
         posY = 0;
         updateTransform();
+      }
+      updateTourLaunch();
+      if (wasTourActive && !resetView) {
+        showSpeechToast("Tour stopped", "Pinch, zoom, or tap another object. Resume will begin there.");
       }
     }
 
@@ -1332,7 +1681,9 @@
       tourState.runId += 1;
       tourState.paused = true;
       stopNarration();
+      releaseImageForManualControl();
       updateTourControls();
+      showSpeechToast("Tour paused", "Pinch, zoom, or tap another object, then press play.");
     }
 
     function toggleTourPlayback() {
@@ -1384,8 +1735,10 @@
       posY = -(offsetY * scale) + safeCenterY - (viewportHeight / 2);
       imgWrap.style.transition = "transform 650ms cubic-bezier(0.22, 1, 0.36, 1)";
       updateTransform();
-      window.setTimeout(function() {
+      if (tourState.motionTimer) window.clearTimeout(tourState.motionTimer);
+      tourState.motionTimer = window.setTimeout(function() {
         imgWrap.style.transition = "transform 0.05s ease-out";
+        tourState.motionTimer = null;
       }, 700);
       return true;
     }
@@ -1441,36 +1794,12 @@
     }
 
     // ---- narration ------------------------------------------------------
-    // Preferred path: MP3s pre-generated with Edge neural voices
-    // (tools/make_audio.py). Identical on every device and far better than the
-    // built-in voices. Falls back to speechSynthesis when a file is missing.
-    var audioManifest = null, audioManifestTried = false, currentAudio = null;
+    // Always use an explicitly selected installed English voice. Never fall
+    // back to the operating system's generic default voice.
     var narrationToken = 0;
-
-    function loadAudioManifest() {
-      if (audioManifestTried) return Promise.resolve(audioManifest);
-      audioManifestTried = true;
-      return fetch("audio/manifest.json", { cache: "force-cache" })
-        .then(function(r) { return r.ok ? r.json() : null; })
-        .then(function(m) { audioManifest = m; return m; })
-        .catch(function() { audioManifest = null; return null; });
-    }
-
-    function sha1Hex(str) {
-      if (!(window.crypto && window.crypto.subtle)) return Promise.resolve(null);
-      return window.crypto.subtle
-        .digest("SHA-1", new TextEncoder().encode(str))
-        .then(function(buf) {
-          return Array.prototype.map
-            .call(new Uint8Array(buf), function(b) { return ("0" + b.toString(16)).slice(-2); })
-            .join("");
-        })
-        .catch(function() { return null; });
-    }
 
     function stopNarration() {
       narrationToken += 1;
-      if (currentAudio) { try { currentAudio.pause(); } catch (e) {} currentAudio = null; }
       if ("speechSynthesis" in window) window.speechSynthesis.cancel();
     }
 
@@ -1497,21 +1826,7 @@
         if (token !== narrationToken) return;
         speakWithSynthesis(text, token, finish);
       }
-
-      loadAudioManifest().then(function(manifest) {
-        if (token !== narrationToken) return;
-        if (!manifest) return useSynthesis();
-        return sha1Hex(text).then(function(key) {
-          if (token !== narrationToken) return;
-          if (!key || !manifest[key]) return useSynthesis();
-          var audio = new Audio("audio/" + key.slice(0, 2) + "/" + key + ".mp3");
-          currentAudio = audio;
-          audio.onended = finish;
-          audio.onerror = useSynthesis;
-          var played = audio.play();
-          if (played && played.catch) played.catch(useSynthesis);
-        });
-      }).catch(useSynthesis);
+      useSynthesis();
     }
 
     function speakWithSynthesis(text, token, onEnd) {
@@ -1521,16 +1836,15 @@
       synth.cancel();
 
       var u = new SpeechSynthesisUtterance(text);
-      var selectedVoice = accentVoices[accentSelect.value] || getAutomaticEnglishVoice();
-      u.rate = 0.9;
-      u.pitch = 1.0;
-      if (selectedVoice) {
-        u.voice = selectedVoice;
-        // Android ignores .voice unless .lang agrees with it.
-        u.lang = selectedVoice.lang;
-      } else {
-        u.lang = 'en-US';
+      var selectedVoice = accentVoices[accentSelect.value] || getBestEnglishVoice();
+      if (!selectedVoice) {
+        if (onEnd) onEnd();
+        return;
       }
+      u.voice = selectedVoice;
+      u.rate = 0.95;
+      // Android ignores .voice unless .lang agrees with it.
+      u.lang = selectedVoice.lang;
       u.onend = onEnd;
       // Some Chromium builds report a speech error immediately when no system
       // voice is configured. Let speakText's reading-time safety timer finish
@@ -1561,11 +1875,160 @@
     }
     
     var imgWrap = document.getElementById("img-wrap");
+    var viewerContainer = document.getElementById("viewer-container");
 
     function updateTransform() {
       imgWrap.style.transform = "translate(" + posX + "px, " + posY + "px) scale(" + scale + ")";
       applyOverlayScale();
     }
+
+    function clampZoom(value) {
+      return Math.max(1, Math.min(5, value));
+    }
+
+    // Keep the picture point under the fingers/cursor fixed while changing
+    // scale. Mac trackpad pinch arrives as ctrl+wheel in Chromium.
+    function zoomAtScreenPoint(nextScale, clientX, clientY) {
+      nextScale = clampZoom(nextScale);
+      if (nextScale === scale) return;
+      var rect = viewerContainer.getBoundingClientRect();
+      var centerX = rect.left + rect.width / 2;
+      var centerY = rect.top + rect.height / 2;
+      var ratio = nextScale / scale;
+      posX = (clientX - centerX) - ratio * ((clientX - centerX) - posX);
+      posY = (clientY - centerY) - ratio * ((clientY - centerY) - posY);
+      scale = nextScale;
+      updateTransform();
+    }
+
+    function isPictureGesture(e) {
+      return e.target && e.target.closest && e.target.closest("#viewer-container") && !isViewerControl(e.target);
+    }
+
+    function handleTrackpadWheel(e) {
+      if (!isPictureGesture(e)) return;
+
+      if (e.ctrlKey || e.metaKey) {
+        e.preventDefault();
+        if (tourState.active && !tourState.paused) pauseTour();
+        releaseImageForManualControl();
+        zoomAtScreenPoint(scale * Math.exp(-e.deltaY * 0.008), e.clientX, e.clientY);
+        return;
+      }
+
+      // A normal two-finger trackpad movement is a wheel event. Once zoomed,
+      // use it to pan the picture instead of trying to scroll the fixed page.
+      if (scale <= 1) return;
+      e.preventDefault();
+      if (tourState.active && !tourState.paused) pauseTour();
+      releaseImageForManualControl();
+      var deltaUnit = e.deltaMode === 1 ? 16 : (e.deltaMode === 2 ? viewerContainer.clientHeight : 1);
+      posX -= e.deltaX * deltaUnit;
+      posY -= e.deltaY * deltaUnit;
+      updateTransform();
+    }
+
+    // Capture at window level: Chromium/Electron can otherwise consume a
+    // Mac trackpad pinch as browser zoom before the image receives the event.
+    window.addEventListener("wheel", handleTrackpadWheel, { passive: false, capture: true });
+
+    // Safari exposes trackpad pinch through gesture events instead.
+    var gestureStartScale = 1;
+    window.addEventListener("gesturestart", function(e) {
+      if (!isPictureGesture(e)) return;
+      e.preventDefault();
+      if (tourState.active && !tourState.paused) pauseTour();
+      releaseImageForManualControl();
+      gestureStartScale = scale;
+    }, { passive: false, capture: true });
+    window.addEventListener("gesturechange", function(e) {
+      if (!isPictureGesture(e)) return;
+      e.preventDefault();
+      var rect = viewerContainer.getBoundingClientRect();
+      zoomAtScreenPoint(
+        gestureStartScale * e.scale,
+        Number.isFinite(e.clientX) ? e.clientX : rect.left + rect.width / 2,
+        Number.isFinite(e.clientY) ? e.clientY : rect.top + rect.height / 2
+      );
+    }, { passive: false, capture: true });
+    window.addEventListener("gestureend", function(e) {
+      if (isPictureGesture(e)) e.preventDefault();
+    }, { passive: false, capture: true });
+
+    // Click-and-drag on a trackpad behaves like a mouse. Use mouse events here
+    // because browsers may hand an <img> drag to their native drag-and-drop
+    // system before a pointer-capture pan receives any movement.
+    var pointerPan = {
+      active: false,
+      startX: 0,
+      startY: 0,
+      baseX: 0,
+      baseY: 0,
+      dragged: false
+    };
+    var suppressPointerClickUntil = 0;
+
+    // Explicitly block the browser's translucent-image drag preview. It was
+    // stealing the gesture on Mac trackpads even though the grab cursor showed.
+    img.addEventListener("dragstart", function(e) {
+      e.preventDefault();
+    });
+
+    viewerContainer.addEventListener("mousedown", function(e) {
+      if (e.button !== 0 || isViewerControl(e.target)) return;
+      e.preventDefault();
+      viewerContainer.classList.remove("hotspot-hover");
+      pointerPan.active = true;
+      pointerPan.startX = e.clientX;
+      pointerPan.startY = e.clientY;
+      pointerPan.baseX = posX;
+      pointerPan.baseY = posY;
+      pointerPan.dragged = false;
+    });
+
+    window.addEventListener("mousemove", function(e) {
+      if (!pointerPan.active) return;
+      var dx = e.clientX - pointerPan.startX;
+      var dy = e.clientY - pointerPan.startY;
+      if (!pointerPan.dragged && Math.hypot(dx, dy) < 5) return;
+      if (!pointerPan.dragged) {
+        pointerPan.dragged = true;
+        if (tourState.active && !tourState.paused) pauseTour();
+        releaseImageForManualControl();
+        document.body.classList.add("pointer-panning");
+      }
+      e.preventDefault();
+      posX = pointerPan.baseX + dx;
+      posY = pointerPan.baseY + dy;
+      updateTransform();
+    });
+
+    function finishPointerPan() {
+      if (!pointerPan.active) return;
+      if (pointerPan.dragged) suppressPointerClickUntil = Date.now() + 450;
+      pointerPan.active = false;
+      document.body.classList.remove("pointer-panning");
+    }
+
+    window.addEventListener("mouseup", finishPointerPan);
+    window.addEventListener("blur", finishPointerPan);
+
+    // A pointing hand previews genuine hotspot regions without changing the
+    // grab cursor used for empty parts of the picture or the grabbing cursor
+    // used during a drag.
+    viewerContainer.addEventListener("mousemove", function(e) {
+      if (pointerPan.active || isViewerControl(e.target)) {
+        viewerContainer.classList.remove("hotspot-hover");
+        return;
+      }
+      viewerContainer.classList.toggle(
+        "hotspot-hover",
+        !!findObjectAt(e.clientX, e.clientY, false)
+      );
+    });
+    viewerContainer.addEventListener("mouseleave", function() {
+      viewerContainer.classList.remove("hotspot-hover");
+    });
 
     // The overlays scale with the image, which is what we want for the box
     // itself but not for its chrome. Counter-scale the ring, border and label
@@ -1583,10 +2046,11 @@
     
     // CLICK / TOUCH TAP DETECTION
     function isViewerControl(target) {
-      return target.closest("#prompt-panel, #toggle-btn, #fullscreen-btn, #page-nav-bar, #tour-launch, #tour-controls, #drawer-tab");
+      return target.closest("#prompt-panel, #toggle-btn, #fullscreen-btn, #page-nav-bar, #tour-launch, #tour-controls, #drawer-tab, #suggestion-modal");
     }
 
     document.getElementById("viewer-container").addEventListener("click", function(e) {
+      if (Date.now() < suppressPointerClickUntil) return;
       if (Date.now() - lastTouchTapTime < 450) return; // Prevent synthesized touch click double invocation
       if (isViewerControl(e.target)) return;
       handleImageTap(e.clientX, e.clientY);
@@ -1623,10 +2087,9 @@
         var dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
         var factor = dist / initDist;
         var newScale = baseScale * factor;
-        if (newScale < 1) newScale = 1;
-        if (newScale > 5) newScale = 5;
-        scale = newScale;
-        updateTransform();
+        var pinchX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        var pinchY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        zoomAtScreenPoint(newScale, pinchX, pinchY);
       } else if (e.touches.length === 1) {
         var dx = e.touches[0].clientX - startTouchX;
         var dy = e.touches[0].clientY - startTouchY;
