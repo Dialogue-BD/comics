@@ -44,7 +44,12 @@
                 <p class="section-kicker">Your feeling</p>
                 <h2 id="wheel-instruction">Choose one from the center</h2>
               </div>
-              <button class="quiet-button" id="start-over" type="button">↻ Start over</button>
+              <div class="wheel-actions">
+                <button class="quiet-button emoji-mode-button" id="emoji-mode" type="button" aria-pressed="false" aria-label="Show only emojis on the emotions wheel">
+                  <span aria-hidden="true">🙂</span> Emoji-only
+                </button>
+                <button class="quiet-button" id="start-over" type="button">↻ Start over</button>
+              </div>
             </div>
 
             <div class="mobile-choices" id="mobile-choices" aria-label="Visible emotion choices"></div>
@@ -82,6 +87,7 @@
             <div>
               <p class="section-kicker">Follow the voice</p>
               <div class="selected-heading">
+                <span class="selected-emoji" id="selected-emoji" aria-hidden="true">😊</span>
                 <h2 id="selected-word">Happy</h2>
                 <span class="pronunciation" id="pronunciation">/ˈhæp.i/</span>
               </div>

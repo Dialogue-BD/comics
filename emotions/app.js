@@ -67,6 +67,21 @@ const emotionBanglaTerms = {
   Powerless: "ক্ষমতাহীন", Guilty: "অপরাধবোধ", Ashamed: "লজ্জিত", Remorseful: "অনুতপ্ত"
 };
 
+const emotionEmojis = {
+  Fear: "😨", Insecure: "😟", Inadequate: "😞", Inferior: "😔", Rejected: "😢", Alienated: "👽",
+  Disrespected: "😠", Anxious: "😰", Overwhelmed: "🤯", Worried: "😟", Scared: "😱", Terrified: "😱", Frightened: "😨",
+  Anger: "😠", Mad: "😡", Enraged: "🤬", Furious: "🤬", Hurt: "💔", Devastated: "😭", Embarrassed: "😳",
+  Threatened: "😤", Jealous: "😒", Distant: "😶", Suspicious: "🤨", Withdrawn: "🫥",
+  Surprise: "😮", Confused: "😕", Disillusioned: "😔", Perplexed: "🤔", Startled: "😲", Shocked: "😲",
+  Dismayed: "😧", Amazed: "🤩", Astonished: "😮", Awe: "🤩", Excited: "🤗", Eager: "😃", Energetic: "⚡",
+  Happy: "😊", Joyful: "😄", Liberated: "🕊️", Ecstatic: "🤩", Proud: "😌", Confident: "😎", Important: "🌟",
+  Optimistic: "🌅", Open: "🤗", Inspired: "💡", Peaceful: "😌", Hopeful: "🌱", Loving: "🥰",
+  Disgust: "🤢", Avoidance: "🙈", Hesitant: "😬", Aversion: "🙅", Disapproval: "👎", Judgmental: "🧐",
+  Loathing: "🤮", Awful: "😖", Revulsion: "🤢", Detestable: "👿", Disappointed: "😞", Revolted: "🤮", Repugnant: "🤢",
+  Sad: "😢", Bored: "😐", Indifferent: "😑", Apathetic: "🫤", Lonely: "🥺", Isolated: "🏝️", Abandoned: "😭",
+  Despair: "😫", Vulnerable: "🫣", Powerless: "😔", Guilty: "😓", Ashamed: "😳", Remorseful: "😔"
+};
+
 const banglaCategoryGuides = {
   Fear: {
     situation: "অনিরাপত্তা, অনিশ্চয়তা বা বিপদের আশঙ্কা হলে এমন অনুভূতি হতে পারে।",
@@ -325,16 +340,19 @@ const pronunciation = {
 
 let savedCefr = "A2";
 let savedAutoPlay = false;
+let savedEmojiOnly = false;
 try {
   const storedCefr = localStorage.getItem("english-club-cefr");
   if (["A1", "A2", "B1", "B2", "C1", "C2"].includes(storedCefr)) savedCefr = storedCefr;
   savedAutoPlay = localStorage.getItem("english-club-autoplay") === "true";
+  savedEmojiOnly = localStorage.getItem("english-club-emoji-only") === "true";
 } catch (_) {}
 
-const state = { primary: null, secondary: null, selected: null, speaking: false, autoPlay: savedAutoPlay, rotation: 0, cefr: savedCefr, trail: [], color: "#e65f42" };
+const state = { primary: null, secondary: null, selected: null, speaking: false, autoPlay: savedAutoPlay, emojiOnly: savedEmojiOnly, rotation: 0, cefr: savedCefr, trail: [], color: "#e65f42" };
 const wheel = document.querySelector("#emotion-wheel");
 const playButton = document.querySelector("#play-all");
 const globalAudioToggle = document.querySelector("#global-audio-toggle");
+const emojiModeButton = document.querySelector("#emoji-mode");
 const transcriptCard = document.querySelector("#transcript-card");
 const liveTranscript = document.querySelector("#live-transcript");
 const transcriptStatus = document.querySelector("#transcript-status");
@@ -399,12 +417,13 @@ function makeSector({ name, translation = "", color, start, end, inner, outer, l
   button.style.clipPath = ringPolygon(inner, outer, start, end);
   button.style.animationDelay = `${delay}ms`;
   button.setAttribute("aria-label", `${name}${translation ? `, ${translation}` : ""}. Select to hear this emotion.`);
-  button.innerHTML = `<span class="sector__label"><span>${name}</span>${translation ? `<span class="sector__bangla" lang="bn">${translation}</span>` : ""}</span>`;
+  button.innerHTML = `<span class="sector__label"><span class="sector__main"><span class="sector__emoji" aria-hidden="true">${emotionEmojis[name] || "🙂"}</span><span class="sector__word">${name}</span></span>${translation ? `<span class="sector__bangla" lang="bn">${translation}</span>` : ""}</span>`;
   return button;
 }
 
 function renderWheel() {
   wheel.replaceChildren();
+  wheel.classList.toggle("is-emoji-only", state.emojiOnly);
   const fragment = document.createDocumentFragment();
 
   wheelData.forEach((primary, pIndex) => {
@@ -629,6 +648,7 @@ function updateLesson(name, trail, color) {
   state.trail = [...trail];
   state.color = color;
   transcriptCard.style.setProperty("--lesson-color", color);
+  document.querySelector("#selected-emoji").textContent = emotionEmojis[name] || "🙂";
   document.querySelector("#selected-word").textContent = name;
   document.querySelector("#pronunciation").textContent = pronunciation[name.toLowerCase()] || "Tap Listen to hear the pronunciation";
   document.querySelector("#breadcrumb").textContent = trail.join("  ›  ");
@@ -752,9 +772,10 @@ function renderMobileChoices() {
   choices.forEach(choice => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `choice-chip${state.selected === choice.name ? " is-selected" : ""}`;
+    button.className = `choice-chip${state.selected === choice.name ? " is-selected" : ""}${state.emojiOnly ? " is-emoji-only" : ""}`;
     button.style.setProperty("--chip-color", choice.color);
-    button.textContent = choice.name;
+    button.textContent = state.emojiOnly ? (emotionEmojis[choice.name] || "🙂") : `${emotionEmojis[choice.name] || "🙂"} ${choice.name}`;
+    button.setAttribute("aria-label", `Select ${choice.name}`);
     button.addEventListener("click", choice.action);
     container.append(button);
   });
@@ -1208,6 +1229,18 @@ globalAudioToggle.addEventListener("click", () => {
   if (!state.autoPlay && state.speaking) stopSpeech();
   updateGlobalAudioButton();
 });
+
+function updateEmojiModeButton() {
+  emojiModeButton.setAttribute("aria-pressed", String(state.emojiOnly));
+  emojiModeButton.setAttribute("aria-label", state.emojiOnly ? "Show words and emojis on the emotions wheel" : "Show only emojis on the emotions wheel");
+}
+
+emojiModeButton.addEventListener("click", () => {
+  state.emojiOnly = !state.emojiOnly;
+  try { localStorage.setItem("english-club-emoji-only", String(state.emojiOnly)); } catch (_) {}
+  updateEmojiModeButton();
+  renderWheel();
+});
 const cefrButtons = [...document.querySelectorAll("#cefr-selector button")];
 
 function updateCefrButtons() {
@@ -1246,6 +1279,7 @@ window.addEventListener("beforeunload", stopSpeech);
 if ("speechSynthesis" in window) window.speechSynthesis.onvoiceschanged = chooseVoice;
 updateCefrButtons();
 updateGlobalAudioButton();
+updateEmojiModeButton();
 renderWheel();
 updateClueLanguage();
 updateClueResult();
