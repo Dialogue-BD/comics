@@ -272,14 +272,17 @@ const pronunciation = {
 };
 
 let savedCefr = "A2";
+let savedMuted = false;
 try {
   const storedCefr = localStorage.getItem("english-club-cefr");
   if (["A1", "A2", "B1", "B2", "C1", "C2"].includes(storedCefr)) savedCefr = storedCefr;
+  savedMuted = localStorage.getItem("english-club-muted") === "true";
 } catch (_) {}
 
-const state = { primary: null, secondary: null, selected: null, speaking: false, rotation: 0, cefr: savedCefr, trail: [], color: "#e65f42" };
+const state = { primary: null, secondary: null, selected: null, speaking: false, muted: savedMuted, rotation: 0, cefr: savedCefr, trail: [], color: "#e65f42" };
 const wheel = document.querySelector("#emotion-wheel");
 const playButton = document.querySelector("#play-all");
+const globalAudioToggle = document.querySelector("#global-audio-toggle");
 const transcriptCard = document.querySelector("#transcript-card");
 const liveTranscript = document.querySelector("#live-transcript");
 const transcriptStatus = document.querySelector("#transcript-status");
@@ -603,6 +606,29 @@ function chooseVoice() {
     || null;
 }
 
+function saveMutedPreference() {
+  try { localStorage.setItem("english-club-muted", String(state.muted)); } catch (_) {}
+}
+
+function updateGlobalAudioButton() {
+  const icon = globalAudioToggle.querySelector(".header-audio-button__icon");
+  const label = globalAudioToggle.querySelector(".header-audio-button__label");
+  globalAudioToggle.setAttribute("aria-pressed", String(state.muted));
+  if (state.speaking) {
+    icon.textContent = "■";
+    label.textContent = "Stop audio";
+    globalAudioToggle.setAttribute("aria-label", "Stop spoken lesson");
+  } else if (state.muted) {
+    icon.textContent = "🔊";
+    label.textContent = "Sound on";
+    globalAudioToggle.setAttribute("aria-label", "Turn spoken lessons on");
+  } else {
+    icon.textContent = "🔇";
+    label.textContent = "Mute";
+    globalAudioToggle.setAttribute("aria-label", "Mute spoken lessons");
+  }
+}
+
 function utter(text, onStart, onEnd, emphasis = false, onBoundary = null) {
   const item = new SpeechSynthesisUtterance(text);
   item.lang = "en-US";
@@ -620,8 +646,14 @@ function utter(text, onStart, onEnd, emphasis = false, onBoundary = null) {
 function speakLesson() {
   if (!state.selected || !("speechSynthesis" in window)) return;
   stopSpeech();
+  if (state.muted) {
+    resetTranscript(`${state.cefr} · Muted`);
+    updateGlobalAudioButton();
+    return;
+  }
   resetTranscript();
   state.speaking = true;
+  updateGlobalAudioButton();
   playButton.classList.add("is-playing");
   playButton.querySelector(".sound-orb__icon").textContent = "■";
   playButton.querySelector(".sound-orb__label").textContent = "Stop";
@@ -649,6 +681,7 @@ function finishSpeech() {
   playButton.querySelector(".sound-orb__label").textContent = "Listen";
   transcriptStatus.textContent = state.selected ? `${state.cefr} · Finished` : `${state.cefr} · Ready to listen`;
   transcriptStatus.classList.remove("is-speaking");
+  updateGlobalAudioButton();
 }
 
 function stopSpeech() {
@@ -945,7 +978,7 @@ function renderPoll(data) {
   if (!data.reasonsVisible) {
     const message = document.createElement("p");
     message.className = "poll-empty";
-    message.textContent = `Reasons stay hidden until at least 3 people respond. ${data.total}/3 so far.`;
+    message.textContent = "The first written reason will appear here.";
     pollReasons.append(message);
   } else if (!data.reasons.length) {
     const message = document.createElement("p");
@@ -1017,8 +1050,23 @@ submitPoll.addEventListener("click", async () => {
 setInterval(loadPoll, 5000);
 document.addEventListener("visibilitychange", () => { if (!document.hidden) loadPoll(); });
 
-playButton.addEventListener("click", () => state.speaking ? stopSpeech() : speakLesson());
+playButton.addEventListener("click", () => {
+  if (state.speaking) return stopSpeech();
+  if (state.muted) {
+    state.muted = false;
+    saveMutedPreference();
+    updateGlobalAudioButton();
+  }
+  speakLesson();
+});
 document.querySelector("#stop-audio").addEventListener("click", stopSpeech);
+globalAudioToggle.addEventListener("click", () => {
+  if (state.speaking) return stopSpeech();
+  state.muted = !state.muted;
+  saveMutedPreference();
+  updateGlobalAudioButton();
+  if (state.muted && state.selected) resetTranscript(`${state.cefr} · Muted`);
+});
 const cefrButtons = [...document.querySelectorAll("#cefr-selector button")];
 
 function updateCefrButtons() {
@@ -1056,6 +1104,7 @@ document.querySelector("#start-over").addEventListener("click", () => {
 window.addEventListener("beforeunload", stopSpeech);
 if ("speechSynthesis" in window) window.speechSynthesis.onvoiceschanged = chooseVoice;
 updateCefrButtons();
+updateGlobalAudioButton();
 renderWheel();
 updateClueLanguage();
 updateClueResult();

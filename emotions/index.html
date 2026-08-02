@@ -15,7 +15,13 @@
           <span class="club-mark__dot" aria-hidden="true"></span>
           <span>English Club</span>
         </div>
-        <div class="date-chip" id="today">Daily check-in</div>
+        <div class="header-actions">
+          <div class="date-chip" id="today">Daily check-in</div>
+          <button class="header-audio-button" id="global-audio-toggle" type="button" aria-pressed="false" aria-label="Mute spoken lessons">
+            <span class="header-audio-button__icon" aria-hidden="true">🔇</span>
+            <span class="header-audio-button__label">Mute</span>
+          </button>
+        </div>
       </header>
 
       <main>
@@ -56,6 +62,8 @@
               </div>
             </div>
 
+            <div class="mobile-choices" id="mobile-choices" aria-label="Visible emotion choices"></div>
+
             <div class="wheel-stage">
               <div class="wheel-halo" aria-hidden="true"></div>
               <div class="emotion-wheel" id="emotion-wheel" role="group" aria-label="Emotions wheel"></div>
@@ -80,7 +88,6 @@
               <span><i class="key-dot key-dot--three"></i>most exact</span>
             </div>
 
-            <div class="mobile-choices" id="mobile-choices" aria-label="Visible emotion choices"></div>
           </div>
 
         </section>
@@ -116,6 +123,39 @@
             </div>
             <p class="poll-submit-status" id="poll-submit-status" aria-live="polite"></p>
           </div>
+        </section>
+
+        <section class="poll-card" id="daily-poll" aria-labelledby="poll-heading">
+          <div class="poll-card__header">
+            <div>
+              <p class="section-kicker">Our room, this hour</p>
+              <h2 id="poll-heading">Anonymous emotion check-in</h2>
+              <p id="poll-date"></p>
+            </div>
+            <div class="live-badge"><span aria-hidden="true"></span>Live</div>
+          </div>
+
+          <div class="poll-overview">
+            <div class="poll-total">
+              <strong id="poll-total">0</strong>
+              <span>responses this hour</span>
+              <small id="poll-updated">Waiting for the first response…</small>
+            </div>
+            <div class="poll-chart" id="poll-chart" aria-label="Live emotion poll results"></div>
+          </div>
+
+          <div class="poll-lower">
+            <div class="popular-words">
+              <p class="section-kicker">Words people chose</p>
+              <div id="popular-words"><span class="poll-empty">No responses yet.</span></div>
+            </div>
+            <div class="anonymous-reasons">
+              <p class="section-kicker">Anonymous reasons</p>
+              <div id="poll-reasons"><p class="poll-empty">The first written reason will appear here.</p></div>
+            </div>
+          </div>
+
+          <p class="poll-privacy">No names, emails, or profiles are collected. One response per device can be updated during the hour. The board resets at the start of each hour in Dhaka.</p>
         </section>
 
         <section class="clues-card" id="feeling-clues" aria-labelledby="clues-heading">
@@ -161,39 +201,6 @@
               <p class="clue-note">These clues can guide you, but they cannot prove exactly what you feel.</p>
             </aside>
           </div>
-        </section>
-
-        <section class="poll-card" id="daily-poll" aria-labelledby="poll-heading">
-          <div class="poll-card__header">
-            <div>
-              <p class="section-kicker">Our room, this hour</p>
-              <h2 id="poll-heading">Anonymous emotion check-in</h2>
-              <p id="poll-date"></p>
-            </div>
-            <div class="live-badge"><span aria-hidden="true"></span>Live</div>
-          </div>
-
-          <div class="poll-overview">
-            <div class="poll-total">
-              <strong id="poll-total">0</strong>
-              <span>responses this hour</span>
-              <small id="poll-updated">Waiting for the first response…</small>
-            </div>
-            <div class="poll-chart" id="poll-chart" aria-label="Live emotion poll results"></div>
-          </div>
-
-          <div class="poll-lower">
-            <div class="popular-words">
-              <p class="section-kicker">Words people chose</p>
-              <div id="popular-words"><span class="poll-empty">No responses yet.</span></div>
-            </div>
-            <div class="anonymous-reasons">
-              <p class="section-kicker">Anonymous reasons</p>
-              <div id="poll-reasons"><p class="poll-empty">Reasons appear after at least three people respond.</p></div>
-            </div>
-          </div>
-
-          <p class="poll-privacy">No names, emails, or profiles are collected. The live board resets automatically at the start of each hour in Dhaka.</p>
         </section>
 
         <p class="privacy-note">Learning preferences stay on this device. Anonymous poll responses are stored only for the shared hourly check-in.</p>
