@@ -73,6 +73,7 @@ button { color: inherit; }
 .header-audio-button:hover { background: #2f493d; }
 .header-audio-button:focus-visible { outline: 3px solid rgba(230,95,66,.35); outline-offset: 2px; }
 .header-audio-button[aria-pressed="true"] { color: var(--ink); background: #f0c962; }
+.header-audio-button[aria-pressed="true"]:hover { background: #e8bd45; }
 .header-audio-button__icon { font-size: 13px; line-height: 1; }
 
 .club-mark {
