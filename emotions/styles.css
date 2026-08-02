@@ -423,6 +423,13 @@ button { color: inherit; }
 .transcript-token { display: inline; border-radius: 5px; padding: 1px 2px; transition: color .12s ease, background .12s ease, box-shadow .12s ease; }
 .transcript-token.is-spoken { color: #3d6255; background: rgba(104,169,139,.12); }
 .transcript-token.is-current { color: #18251f; background: #f4c95d; box-shadow: 0 0 0 3px rgba(244,201,93,.22); }
+.bangla-transcript { margin-top: 20px; padding: 18px 20px 19px; border: 1px solid rgba(63,97,85,.16); border-radius: 17px; background: rgba(104,169,139,.08); }
+.bangla-transcript__header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 10px; }
+.bangla-transcript h4 { margin: 0; color: #294c40; font-size: 15px; font-weight: 800; }
+.bangla-transcript__header span { flex: 0 0 auto; padding: 5px 9px; border-radius: 99px; color: white; background: #3f6155; font-size: 9px; font-weight: 850; letter-spacing: .08em; }
+.bangla-transcript__lines { color: #35584c; font-size: clamp(15px, 1.35vw, 18px); line-height: 1.75; }
+.bangla-transcript__lines p { margin: 0; }
+.bangla-transcript__lines p + p { margin-top: 4px; }
 
 .clues-card {
   width: min(920px, 100%);
@@ -577,6 +584,7 @@ button { color: inherit; }
   .transcript-card { padding: 20px 15px 23px; border-radius: 21px; }
   .transcript-card__header { align-items: flex-start; flex-direction: column; gap: 13px; }
   .transcript-card h2 { overflow-wrap: anywhere; font-size: clamp(37px, 12vw, 46px); }
+  .bangla-transcript { padding: 15px 14px 16px; }
   .bangla-definition { font-size: 14px; }
   .audio-controls { justify-content: space-between; padding-top: 14px; }
   .stop-button { min-height: 42px; padding-inline: 14px; }
