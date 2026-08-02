@@ -46,6 +46,58 @@ const primaryBangla = {
   Sad: { word: "দুঃখ", definition: "ক্ষতি, কষ্ট বা হতাশায় মন খারাপের অনুভূতি।" }
 };
 
+const emotionBanglaTerms = {
+  Fear: "ভয়", Insecure: "অনিরাপত্তা", Inadequate: "নিজেকে যথেষ্ট মনে না হওয়া", Inferior: "হীন মনে হওয়া",
+  Rejected: "প্রত্যাখ্যাত", Alienated: "বিচ্ছিন্ন", Disrespected: "অসম্মানিত", Anxious: "উদ্বিগ্ন",
+  Overwhelmed: "চাপে দিশেহারা", Worried: "চিন্তিত", Scared: "ভীত", Terrified: "আতঙ্কিত", Frightened: "ভয় পাওয়া",
+  Anger: "রাগ", Mad: "রাগান্বিত", Enraged: "প্রচণ্ড ক্ষুব্ধ", Furious: "প্রচণ্ড রাগান্বিত", Hurt: "কষ্ট পাওয়া",
+  Devastated: "বিধ্বস্ত", Embarrassed: "বিব্রত", Threatened: "হুমকির মুখে", Jealous: "ঈর্ষান্বিত",
+  Distant: "মানসিকভাবে দূরে", Suspicious: "সন্দেহপ্রবণ", Withdrawn: "নিজেকে গুটিয়ে নেওয়া",
+  Surprise: "বিস্ময়", Confused: "বিভ্রান্ত", Disillusioned: "মোহভঙ্গ", Perplexed: "কিংকর্তব্যবিমূঢ়",
+  Startled: "চমকে ওঠা", Shocked: "হতবাক", Dismayed: "হতাশ ও বিচলিত", Amazed: "বিস্মিত",
+  Astonished: "অত্যন্ত বিস্মিত", Awe: "সম্ভ্রমমিশ্রিত বিস্ময়", Excited: "উত্তেজিত", Eager: "আগ্রহী", Energetic: "উদ্যমী",
+  Happy: "সুখী", Joyful: "আনন্দিত", Liberated: "মুক্ত", Ecstatic: "আনন্দে আত্মহারা", Proud: "গর্বিত",
+  Confident: "আত্মবিশ্বাসী", Important: "গুরুত্বপূর্ণ মনে হওয়া", Optimistic: "আশাবাদী", Open: "খোলামেলা",
+  Inspired: "অনুপ্রাণিত", Peaceful: "শান্ত", Hopeful: "আশাবাদী", Loving: "স্নেহময়",
+  Disgust: "ঘৃণা", Avoidance: "এড়িয়ে চলা", Hesitant: "দ্বিধাগ্রস্ত", Aversion: "প্রবল অনীহা",
+  Disapproval: "অসম্মতি", Judgmental: "অন্যকে বিচার করার মনোভাব", Loathing: "তীব্র ঘৃণা", Awful: "ভীষণ খারাপ লাগা",
+  Revulsion: "তীব্র বিতৃষ্ণা", Detestable: "ঘৃণ্য", Disappointed: "হতাশ", Revolted: "অত্যন্ত বিতৃষ্ণ",
+  Repugnant: "জঘন্য", Sad: "দুঃখিত", Bored: "একঘেয়ে ও বিরক্ত", Indifferent: "উদাসীন", Apathetic: "নিরুৎসাহী ও উদাসীন",
+  Lonely: "একাকী", Isolated: "বিচ্ছিন্ন", Abandoned: "পরিত্যক্ত", Despair: "নিরাশা", Vulnerable: "অরক্ষিত ও স্পর্শকাতর",
+  Powerless: "ক্ষমতাহীন", Guilty: "অপরাধবোধ", Ashamed: "লজ্জিত", Remorseful: "অনুতপ্ত"
+};
+
+const banglaCategoryGuides = {
+  Fear: {
+    situation: "অনিরাপত্তা, অনিশ্চয়তা বা বিপদের আশঙ্কা হলে এমন অনুভূতি হতে পারে।",
+    body: "হৃদস্পন্দন বেড়ে যাওয়া, শরীর শক্ত হওয়া বা সরে যেতে ইচ্ছে করার মতো লক্ষণ দেখা দিতে পারে।"
+  },
+  Anger: {
+    situation: "কিছু অন্যায়, কষ্টদায়ক বা বাধা সৃষ্টি করছে মনে হলে এমন অনুভূতি হতে পারে।",
+    body: "শরীর গরম হওয়া, পেশি শক্ত হওয়া বা জোরে কথা বলতে ইচ্ছে করার মতো লক্ষণ দেখা দিতে পারে।"
+  },
+  Surprise: {
+    situation: "হঠাৎ বা অপ্রত্যাশিত কিছু ঘটলে এমন অনুভূতি হতে পারে।",
+    body: "চমকে ওঠা, চোখ বড় হওয়া বা মুহূর্তের জন্য শ্বাস আটকে যাওয়ার মতো লক্ষণ দেখা দিতে পারে।"
+  },
+  Happy: {
+    situation: "নিরাপত্তা, সাফল্য, ভালোবাসা বা মানুষের সঙ্গে সংযোগ অনুভব করলে এমন অনুভূতি হতে পারে।",
+    body: "শরীর হালকা, শান্ত, উষ্ণ বা উদ্যমী লাগার মতো লক্ষণ দেখা দিতে পারে।"
+  },
+  Disgust: {
+    situation: "কিছু খুব অপছন্দনীয়, অস্বস্তিকর বা ভুল মনে হলে এমন অনুভূতি হতে পারে।",
+    body: "বমি বমি লাগা, মুখ কুঁচকে যাওয়া বা দূরে সরে যেতে ইচ্ছে করার মতো লক্ষণ দেখা দিতে পারে।"
+  },
+  Sad: {
+    situation: "ক্ষতি, কষ্ট, হতাশা বা একাকিত্বের অভিজ্ঞতায় এমন অনুভূতি হতে পারে।",
+    body: "শরীর ভারী লাগা, শক্তি কমে যাওয়া বা কাঁদতে ইচ্ছে করার মতো লক্ষণ দেখা দিতে পারে।"
+  }
+};
+
+const banglaStrength = {
+  gentle: "মৃদু", medium: "মাঝারি", strong: "তীব্র", "very strong": "খুব তীব্র"
+};
+
 const clueData = [
   { id: "b-avoid", type: "behavior", label: "Avoiding or getting away", scores: { Fear: 3, Disgust: 1 } },
   { id: "b-fidget", type: "behavior", label: "Fidgeting or acting out", scores: { Fear: 3, Anger: 1 } },
@@ -506,6 +558,73 @@ function sentencesFor(name) {
   return lessons[state.cefr];
 }
 
+function banglaTermFor(name) {
+  const key = Object.keys(emotionBanglaTerms).find(item => item.toLowerCase() === String(name).toLowerCase());
+  return key ? emotionBanglaTerms[key] : name;
+}
+
+function banglaSentencesFor(name) {
+  const info = emotionInfo[name] || ["you are experiencing this feeling", "medium", "something affects you", "notice a change in your body", "happy"];
+  const primaryName = state.trail[0] || wheelData.find(category =>
+    category.name === name || category.children.some(child => child.name === name || child.children.includes(name))
+  )?.name || "Happy";
+  const primary = primaryBangla[primaryName];
+  const guide = banglaCategoryGuides[primaryName];
+  const term = banglaTermFor(name);
+  const contrastName = info[4];
+  const contrastLabel = contrastName.charAt(0).toUpperCase() + contrastName.slice(1);
+  const contrastTerm = banglaTermFor(contrastName);
+  const strength = banglaStrength[info[1]] || "পরিস্থিতিভেদে ভিন্ন মাত্রার";
+  const coreMeaning = primary.definition.replace(/।$/, "");
+
+  const openings = {
+    A1: [
+      `“${name}” মানে “${term}”।`,
+      `এটি ${primary.word} ধরনের একটি অনুভূতি।`
+    ],
+    A2: [
+      `“${name}” শব্দটির সহজ বাংলা অর্থ “${term}”।`,
+      `এটি এমন একটি অনুভূতি, যার মূল অর্থ হলো: ${coreMeaning}।`
+    ],
+    B1: [
+      `“${name}” এমন একটি অনুভূতি, যাকে বাংলায় “${term}” বলা যায়।`,
+      `এই অনুভূতিটি ${primary.word}-এর অংশ; অর্থাৎ ${coreMeaning}।`
+    ],
+    B2: [
+      `“${name}” একটি নির্দিষ্ট আবেগগত প্রতিক্রিয়া; বাংলায় এর কাছাকাছি অর্থ “${term}”।`,
+      `এটি ${primary.word}-এর বিস্তৃত অভিজ্ঞতার মধ্যে পড়ে: ${coreMeaning}।`
+    ],
+    C1: [
+      `“${name}” শব্দটি একটি সূক্ষ্ম আবেগগত অবস্থাকে বোঝায়; বাংলায় এর অর্থ “${term}”।`,
+      `অর্থের দিক থেকে এটি ${primary.word}-এর অন্তর্গত—${coreMeaning}।`
+    ],
+    C2: [
+      `সবচেয়ে নির্ভুল অর্থে “${name}” একটি বিশেষ আবেগগত অবস্থাকে প্রকাশ করে; বাংলায় এর নিকটতম অর্থ “${term}”।`,
+      `শব্দটির অর্থগত ক্ষেত্র ${primary.word}-এর সঙ্গে যুক্ত: ${coreMeaning}।`
+    ]
+  };
+
+  return [
+    ...openings[state.cefr],
+    guide.situation,
+    `এই অনুভূতির তীব্রতা সাধারণত ${strength}; তবে ব্যক্তি ও পরিস্থিতি অনুযায়ী তা বদলাতে পারে।`,
+    guide.body,
+    `“${name}” এবং “${contrastLabel}” (${contrastTerm}) কাছাকাছি মনে হলেও একই অনুভূতি নয়।`,
+    `উদাহরণ: “আজ আমি ${term} অনুভব করছি, কারণ …।”`
+  ];
+}
+
+function renderBanglaTranscript(name) {
+  const container = document.querySelector("#bangla-transcript");
+  document.querySelector("#bangla-transcript-level").textContent = state.cefr;
+  container.replaceChildren();
+  banglaSentencesFor(name).forEach(text => {
+    const line = document.createElement("p");
+    line.textContent = text;
+    container.append(line);
+  });
+}
+
 function updateLesson(name, trail, color) {
   state.trail = [...trail];
   state.color = color;
@@ -541,6 +660,7 @@ function renderTranscript(name) {
     liveTranscript.append(row);
     return { element: row, tokens, text };
   });
+  renderBanglaTranscript(name);
   resetTranscript();
 }
 
