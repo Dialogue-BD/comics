@@ -47,21 +47,6 @@
               <button class="quiet-button" id="start-over" type="button">↻ Start over</button>
             </div>
 
-            <div class="cefr-section">
-              <div class="cefr-section__label">
-                <span>Choose your English level</span>
-                <small>The definition and spoken lesson will change.</small>
-              </div>
-              <div class="cefr-selector" id="cefr-selector" role="group" aria-label="Choose a CEFR English level">
-                <button type="button" data-level="A1" aria-pressed="false"><strong>A1</strong><span>Beginner</span></button>
-                <button type="button" data-level="A2" aria-pressed="true"><strong>A2</strong><span>Elementary</span></button>
-                <button type="button" data-level="B1" aria-pressed="false"><strong>B1</strong><span>Intermediate</span></button>
-                <button type="button" data-level="B2" aria-pressed="false"><strong>B2</strong><span>Upper int.</span></button>
-                <button type="button" data-level="C1" aria-pressed="false"><strong>C1</strong><span>Advanced</span></button>
-                <button type="button" data-level="C2" aria-pressed="false"><strong>C2</strong><span>Proficient</span></button>
-              </div>
-            </div>
-
             <div class="mobile-choices" id="mobile-choices" aria-label="Visible emotion choices"></div>
 
             <div class="wheel-stage">
@@ -111,6 +96,20 @@
           <div class="audio-controls" aria-label="Audio controls">
             <button type="button" class="stop-button" id="stop-audio">■ Stop</button>
             <p class="transcript-status" id="transcript-status" aria-live="polite">Ready to listen</p>
+          </div>
+          <div class="cefr-section">
+            <div class="cefr-section__label">
+              <span>Choose your English level</span>
+              <small>The definition and spoken lesson will change.</small>
+            </div>
+            <div class="cefr-selector" id="cefr-selector" role="group" aria-label="Choose a CEFR English level">
+              <button type="button" data-level="A1" aria-pressed="false"><strong>A1</strong><span>Beginner</span></button>
+              <button type="button" data-level="A2" aria-pressed="true"><strong>A2</strong><span>Elementary</span></button>
+              <button type="button" data-level="B1" aria-pressed="false"><strong>B1</strong><span>Intermediate</span></button>
+              <button type="button" data-level="B2" aria-pressed="false"><strong>B2</strong><span>Upper int.</span></button>
+              <button type="button" data-level="C1" aria-pressed="false"><strong>C1</strong><span>Advanced</span></button>
+              <button type="button" data-level="C2" aria-pressed="false"><strong>C2</strong><span>Proficient</span></button>
+            </div>
           </div>
           <h3 id="transcript-heading">Listening transcript</h3>
           <div class="live-transcript" id="live-transcript" aria-live="off"></div>
