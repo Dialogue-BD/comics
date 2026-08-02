@@ -1073,22 +1073,6 @@
       return rankAccentVoices(voices)[0] || null;
     }
 
-    function isMacDesktop() {
-      return /Macintosh|Mac OS X/i.test(navigator.userAgent) &&
-             !/iPhone|iPad|iPod/i.test(navigator.userAgent);
-    }
-
-    function getPreferredMacVoice(voices) {
-      if (!isMacDesktop()) return null;
-      var highQualityDefaults = voices.filter(function(voice) {
-        var lang = normalizeLanguageTag(voice.lang);
-        return voice.default &&
-               (lang === "en" || lang.indexOf("en-") === 0) &&
-               voiceQualityTier(voice) > 1;
-      });
-      return chooseAccentVoice(highQualityDefaults);
-    }
-
     function getAccentVoiceCandidates() {
       if (!("speechSynthesis" in window)) return [];
       var wanted = String(accentSelect.value || getSavedAccent()).toLowerCase();
@@ -1112,11 +1096,9 @@
         if (!alreadyAdded) candidates.push({ key: key, voice: voice });
       }
 
-      // macOS users can choose a high-quality default voice whose language tag
-      // differs from the menu accent (Karen, for example, is tagged en-AU).
-      // Honour that explicit Premium/Enhanced system choice before trying the
-      // selected accent and the remaining installed English voices.
-      addCandidate(getPreferredMacVoice(voices));
+      // Start with the explicitly selected accent. In particular, do not try
+      // macOS's generic system default first: Chrome can silently reject that
+      // utterance and then block the real voice queued behind it.
       addCandidate(accentVoices[accentSelect.value]);
       rankAccentVoices(matching).forEach(addCandidate);
       rankAccentVoices(otherEnglish).forEach(addCandidate);
@@ -1926,6 +1908,10 @@
     // back to the operating system's generic default voice.
     var narrationToken = 0;
     var narrationNeedsRestartDelay = false;
+    // Chromium has historically been sensitive to utterances being garbage
+    // collected while native speech is still being prepared. Keep the current
+    // utterance strongly referenced until it ends, errors, or is cancelled.
+    var activeUtterance = null;
 
     function stopNarration() {
       narrationToken += 1;
@@ -1934,7 +1920,10 @@
         narrationNeedsRestartDelay = !!(synth.speaking || synth.pending);
         // Calling cancel() while Chromium is idle can swallow the utterance
         // spoken immediately afterward. Only cancel real queued narration.
-        if (narrationNeedsRestartDelay) synth.cancel();
+        if (narrationNeedsRestartDelay) {
+          synth.cancel();
+          activeUtterance = null;
+        }
       }
     }
 
@@ -1985,9 +1974,7 @@
 
       // Desktop Chromium can expose an empty list briefly after a reload.
       // Wait for voiceschanged/getVoices instead of treating that as silence.
-      // On macOS the native default can speak even when getVoices() is empty,
-      // so keep that first attempt inside the user's click gesture.
-      if (!candidates.length && !isMacDesktop() && voiceWaitCount < 6) {
+      if (!candidates.length && voiceWaitCount < 6) {
         window.setTimeout(function() {
           if (token !== narrationToken) return;
           lastVoiceSignature = "";
@@ -1997,82 +1984,66 @@
         return;
       }
 
+      if (!candidates.length) {
+        showSpeechToast("Speech unavailable", "Chrome did not provide an installed English voice.");
+        if (onEnd) onEnd();
+        return;
+      }
+
       var candidateIndex = 0;
-      var systemDefaultTried = false;
       function tryNextVoice() {
         if (token !== narrationToken) return;
-        var selectedVoice = null;
-        var usingSystemDefault = false;
-
-        // Leaving both voice and lang unset is how Web Speech delegates to the
-        // macOS Spoken Content voice. This should use Karen (Premium) on the
-        // reported desktop, while explicit accent voices remain fallbacks.
-        if (isMacDesktop() && !systemDefaultTried) {
-          systemDefaultTried = true;
-          usingSystemDefault = true;
-        } else if (candidateIndex < candidates.length) {
-          selectedVoice = candidates[candidateIndex++];
-        } else {
-          if (isMacDesktop()) {
-            showSpeechToast("Speech unavailable", "This browser did not start macOS text-to-speech.");
-          }
+        if (candidateIndex >= candidates.length) {
+          showSpeechToast("Speech unavailable", "Chrome could not start any installed English voice.");
           if (onEnd) onEnd();
           return;
         }
+        var selectedVoice = candidates[candidateIndex++];
 
         var settled = false;
-        var startTimer = null;
         var completionTimer = null;
         var u = new SpeechSynthesisUtterance(text);
+        activeUtterance = u;
         u.rate = 0.95;
-        if (!usingSystemDefault) {
-          u.voice = selectedVoice;
-          // Android ignores .voice unless .lang agrees with it.
-          u.lang = selectedVoice.lang;
-        }
-        u.onstart = function() {
-          if (startTimer) window.clearTimeout(startTimer);
-        };
+        u.voice = selectedVoice;
+        // Android ignores .voice unless .lang agrees with it.
+        u.lang = selectedVoice.lang;
         u.onend = function() {
           if (settled || token !== narrationToken) return;
           settled = true;
-          if (startTimer) window.clearTimeout(startTimer);
           if (completionTimer) window.clearTimeout(completionTimer);
+          activeUtterance = null;
           if (onEnd) onEnd();
         };
         u.onerror = function() {
           if (settled || token !== narrationToken) return;
           settled = true;
-          if (startTimer) window.clearTimeout(startTimer);
           if (completionTimer) window.clearTimeout(completionTimer);
+          activeUtterance = null;
           // A desktop network voice may be listed but unavailable. Retry with
           // the next explicitly listed English voice.
-          window.setTimeout(tryNextVoice, 80);
+          window.setTimeout(tryNextVoice, 250);
         };
         function startUtterance() {
           if (token !== narrationToken) return;
           try { synth.resume(); } catch (err) {}
           synth.speak(u);
-          // Some macOS voices remain listed even when their downloadable data
-          // is absent. Move on if one never starts, or reports that it started
-          // but then never completes an audible utterance.
-          startTimer = window.setTimeout(function() {
-            if (settled || token !== narrationToken) return;
-            settled = true;
-            synth.cancel();
-            window.setTimeout(tryNextVoice, 80);
-          }, 1200);
+          // Chrome on macOS does not reliably emit `start`, even for an
+          // utterance it is preparing correctly. Do not cancel based on that
+          // event. Retain only a generous final guard for a genuinely wedged
+          // voice, then give Chromium time to finish cancel() before retrying.
           completionTimer = window.setTimeout(function() {
             if (settled || token !== narrationToken) return;
             settled = true;
             synth.cancel();
-            window.setTimeout(tryNextVoice, 80);
-          }, Math.max(5000, text.split(/\s+/).length * 700 + 2200));
+            activeUtterance = null;
+            window.setTimeout(tryNextVoice, 300);
+          }, Math.max(15000, text.split(/\s+/).length * 1000 + 5000));
         }
 
         if (narrationNeedsRestartDelay) {
           narrationNeedsRestartDelay = false;
-          window.setTimeout(startUtterance, 60);
+          window.setTimeout(startUtterance, 250);
         } else {
           // Keep the first desktop utterance inside the user's click gesture.
           startUtterance();
