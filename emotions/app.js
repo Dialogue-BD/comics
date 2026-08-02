@@ -272,14 +272,14 @@ const pronunciation = {
 };
 
 let savedCefr = "A2";
-let savedMuted = false;
+let savedAutoPlay = false;
 try {
   const storedCefr = localStorage.getItem("english-club-cefr");
   if (["A1", "A2", "B1", "B2", "C1", "C2"].includes(storedCefr)) savedCefr = storedCefr;
-  savedMuted = localStorage.getItem("english-club-muted") === "true";
+  savedAutoPlay = localStorage.getItem("english-club-autoplay") === "true";
 } catch (_) {}
 
-const state = { primary: null, secondary: null, selected: null, speaking: false, muted: savedMuted, rotation: 0, cefr: savedCefr, trail: [], color: "#e65f42" };
+const state = { primary: null, secondary: null, selected: null, speaking: false, autoPlay: savedAutoPlay, rotation: 0, cefr: savedCefr, trail: [], color: "#e65f42" };
 const wheel = document.querySelector("#emotion-wheel");
 const playButton = document.querySelector("#play-all");
 const globalAudioToggle = document.querySelector("#global-audio-toggle");
@@ -287,6 +287,9 @@ const transcriptCard = document.querySelector("#transcript-card");
 const liveTranscript = document.querySelector("#live-transcript");
 const transcriptStatus = document.querySelector("#transcript-status");
 let transcriptRows = [];
+let wordHighlightTimer = null;
+let timedHighlightRow = -1;
+let timedHighlightCursor = 0;
 
 document.querySelector("#today").textContent = new Intl.DateTimeFormat("en", { weekday: "long", month: "long", day: "numeric" }).format(new Date());
 
@@ -406,7 +409,7 @@ function selectPrimary(index) {
   updateLesson(wheelData[index].name, [wheelData[index].name], wheelData[index].color);
   renderWheel();
   setStep(2, "Now choose a more specific feeling");
-  speakLesson();
+  if (state.autoPlay) speakLesson();
 }
 
 function selectSecondary(primaryIndex, secondaryIndex) {
@@ -419,7 +422,7 @@ function selectSecondary(primaryIndex, secondaryIndex) {
   updateLesson(secondary.name, [primary.name, secondary.name], primary.color);
   renderWheel();
   setStep(3, "Choose the most exact word — or keep this one");
-  speakLesson();
+  if (state.autoPlay) speakLesson();
 }
 
 function selectTertiary(primaryIndex, secondaryIndex, name) {
@@ -432,7 +435,7 @@ function selectTertiary(primaryIndex, secondaryIndex, name) {
   updateLesson(name, [primary.name, secondary.name, name], primary.color);
   renderWheel();
   setStep(3, "You found a precise feeling word");
-  speakLesson();
+  if (state.autoPlay) speakLesson();
 }
 
 function setStep(step, instruction) {
@@ -547,21 +550,60 @@ function resetTranscript(message = `${state.cefr} · Ready to listen`) {
   transcriptStatus.classList.remove("is-speaking");
 }
 
-function markTranscriptWord(rowIndex, charIndex = 0, includeEarlierRows = true) {
+function highlightTranscriptToken(rowIndex, tokenIndex, includeEarlierRows = true) {
   const row = transcriptRows[rowIndex];
   if (!row) return;
   transcriptRows.forEach((item, index) => item.tokens.forEach(token => {
     token.element.classList.remove("is-current");
     if (includeEarlierRows && index < rowIndex) token.element.classList.add("is-spoken");
   }));
-  const active = row.tokens.find(token => charIndex >= token.start && charIndex < token.end) || row.tokens[0];
-  row.tokens.forEach(token => {
-    if (token.start < active.start) token.element.classList.add("is-spoken");
+  const active = row.tokens[tokenIndex] || row.tokens[0];
+  row.tokens.forEach((token, index) => {
+    if (index < tokenIndex) token.element.classList.add("is-spoken");
   });
   active?.element.classList.remove("is-spoken");
   active?.element.classList.add("is-current");
   transcriptStatus.textContent = `${state.cefr} · Listening to ${state.selected}`;
   transcriptStatus.classList.add("is-speaking");
+}
+
+function markTranscriptWord(rowIndex, charIndex = 0, includeEarlierRows = true) {
+  const row = transcriptRows[rowIndex];
+  if (!row) return;
+  const tokenIndex = Math.max(0, row.tokens.findIndex(token => charIndex >= token.start && charIndex < token.end));
+  if (timedHighlightRow === rowIndex) timedHighlightCursor = Math.max(timedHighlightCursor, tokenIndex + 1);
+  highlightTranscriptToken(rowIndex, tokenIndex, includeEarlierRows);
+}
+
+function clearTimedHighlight() {
+  if (wordHighlightTimer !== null) window.clearTimeout(wordHighlightTimer);
+  wordHighlightTimer = null;
+  timedHighlightRow = -1;
+  timedHighlightCursor = 0;
+}
+
+function tokenHighlightDelay(token) {
+  const text = token?.element.textContent || "";
+  const letters = text.replace(/[^A-Za-z0-9]/g, "").length;
+  const punctuationPause = /[.!?,;:]$/.test(text) ? 120 : 0;
+  return Math.min(650, 205 + letters * 28 + punctuationPause);
+}
+
+function startTimedHighlight(rowIndex) {
+  clearTimedHighlight();
+  timedHighlightRow = rowIndex;
+  timedHighlightCursor = 0;
+
+  const advance = () => {
+    if (!state.speaking || timedHighlightRow !== rowIndex) return;
+    const row = transcriptRows[rowIndex];
+    if (!row || timedHighlightCursor >= row.tokens.length) return;
+    const tokenIndex = timedHighlightCursor++;
+    highlightTranscriptToken(rowIndex, tokenIndex);
+    wordHighlightTimer = window.setTimeout(advance, tokenHighlightDelay(row.tokens[tokenIndex]));
+  };
+
+  advance();
 }
 
 function completeTranscriptRow(rowIndex, includeEarlierRows = true) {
@@ -606,27 +648,11 @@ function chooseVoice() {
     || null;
 }
 
-function saveMutedPreference() {
-  try { localStorage.setItem("english-club-muted", String(state.muted)); } catch (_) {}
-}
-
 function updateGlobalAudioButton() {
   const icon = globalAudioToggle.querySelector(".header-audio-button__icon");
-  const label = globalAudioToggle.querySelector(".header-audio-button__label");
-  globalAudioToggle.setAttribute("aria-pressed", String(state.muted));
-  if (state.speaking) {
-    icon.textContent = "■";
-    label.textContent = "Stop audio";
-    globalAudioToggle.setAttribute("aria-label", "Stop spoken lesson");
-  } else if (state.muted) {
-    icon.textContent = "🔊";
-    label.textContent = "Sound on";
-    globalAudioToggle.setAttribute("aria-label", "Turn spoken lessons on");
-  } else {
-    icon.textContent = "🔇";
-    label.textContent = "Mute";
-    globalAudioToggle.setAttribute("aria-label", "Mute spoken lessons");
-  }
+  globalAudioToggle.setAttribute("aria-pressed", String(state.autoPlay));
+  globalAudioToggle.setAttribute("aria-label", state.autoPlay ? "Turn automatic speech off" : "Turn automatic speech on");
+  icon.textContent = state.autoPlay ? "🔊" : "🔇";
 }
 
 function utter(text, onStart, onEnd, emphasis = false, onBoundary = null) {
@@ -646,11 +672,6 @@ function utter(text, onStart, onEnd, emphasis = false, onBoundary = null) {
 function speakLesson() {
   if (!state.selected || !("speechSynthesis" in window)) return;
   stopSpeech();
-  if (state.muted) {
-    resetTranscript(`${state.cefr} · Muted`);
-    updateGlobalAudioButton();
-    return;
-  }
   resetTranscript();
   state.speaking = true;
   updateGlobalAudioButton();
@@ -659,15 +680,19 @@ function speakLesson() {
   playButton.querySelector(".sound-orb__label").textContent = "Stop";
 
   speechSynthesis.speak(utter(state.selected,
-    () => markTranscriptWord(0, 0),
-    () => completeTranscriptRow(0),
+    () => startTimedHighlight(0),
+    () => {
+      clearTimedHighlight();
+      completeTranscriptRow(0);
+    },
     true,
     event => markTranscriptWord(0, event.charIndex)
   ));
   sentencesFor(state.selected).forEach((text, index) => {
     speechSynthesis.speak(utter(text,
-      () => markTranscriptWord(index + 1, 0),
+      () => startTimedHighlight(index + 1),
       () => {
+      clearTimedHighlight();
       completeTranscriptRow(index + 1);
       if (index === 6) finishSpeech();
     }, false, event => markTranscriptWord(index + 1, event.charIndex)));
@@ -675,6 +700,7 @@ function speakLesson() {
 }
 
 function finishSpeech() {
+  clearTimedHighlight();
   state.speaking = false;
   playButton.classList.remove("is-playing");
   playButton.querySelector(".sound-orb__icon").textContent = "▶";
@@ -685,6 +711,7 @@ function finishSpeech() {
 }
 
 function stopSpeech() {
+  clearTimedHighlight();
   if ("speechSynthesis" in window) speechSynthesis.cancel();
   transcriptRows.forEach(row => row.tokens.forEach(token => token.element.classList.remove("is-current")));
   finishSpeech();
@@ -1052,20 +1079,14 @@ document.addEventListener("visibilitychange", () => { if (!document.hidden) load
 
 playButton.addEventListener("click", () => {
   if (state.speaking) return stopSpeech();
-  if (state.muted) {
-    state.muted = false;
-    saveMutedPreference();
-    updateGlobalAudioButton();
-  }
   speakLesson();
 });
 document.querySelector("#stop-audio").addEventListener("click", stopSpeech);
 globalAudioToggle.addEventListener("click", () => {
-  if (state.speaking) return stopSpeech();
-  state.muted = !state.muted;
-  saveMutedPreference();
+  state.autoPlay = !state.autoPlay;
+  try { localStorage.setItem("english-club-autoplay", String(state.autoPlay)); } catch (_) {}
+  if (!state.autoPlay && state.speaking) stopSpeech();
   updateGlobalAudioButton();
-  if (state.muted && state.selected) resetTranscript(`${state.cefr} · Muted`);
 });
 const cefrButtons = [...document.querySelectorAll("#cefr-selector button")];
 
@@ -1084,7 +1105,7 @@ cefrButtons.forEach(button => button.addEventListener("click", () => {
     const reason = document.querySelector("#reason").value;
     updateLesson(state.selected, state.trail, state.color);
     document.querySelector("#reason").value = reason;
-    speakLesson();
+    if (state.autoPlay) speakLesson();
   }
 }));
 
