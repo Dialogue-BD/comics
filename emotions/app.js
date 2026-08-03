@@ -377,143 +377,6 @@ function ringPolygon(inner, outer, start, end) {
   return `polygon(${points.map(([x,y]) => `${x.toFixed(2)}% ${y.toFixed(2)}%`).join(",")})`;
 }
 
-function mixHex(base, target, amount) {
-  const from = base.replace("#", "");
-  const to = target.replace("#", "");
-  const channels = [0, 2, 4].map(index => {
-    const start = parseInt(from.slice(index, index + 2), 16);
-    const end = parseInt(to.slice(index, index + 2), 16);
-    return Math.round(start + (end - start) * amount).toString(16).padStart(2, "0");
-  });
-  return `#${channels.join("")}`;
-}
-
-function primaryFill(color) {
-  return mixHex(color, "#ffffff", 0.16);
-}
-
-function secondaryFill(color, branchIndex) {
-  return mixHex(color, "#ffffff", [0.12, 0.30, 0.48, 0.66][branchIndex]);
-}
-
-function tertiaryFill(parentShade, siblingIndex) {
-  return mixHex(parentShade, "#ffffff", siblingIndex === 0 ? 0.10 : 0.21);
-}
-
-function makeSector({ name, translation = "", color, start, end, inner, outer, level, selected, muted, delay = 0 }) {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = `sector sector--${level} is-new${selected ? " is-selected" : ""}${muted ? " is-muted" : ""}`;
-  button.style.setProperty("--sector-color", color);
-  const labelRadius = level === "primary" ? 11.85 : (inner + outer) / 2;
-  const middleAngle = (start + end) / 2;
-  const [labelX, labelY] = point(labelRadius, middleAngle);
-  let textRotation = ((middleAngle + 180) % 360 + 360) % 360 - 180;
-  if (textRotation > 90) textRotation -= 180;
-  if (textRotation < -90) textRotation += 180;
-  button.style.setProperty("--label-x", `${labelX}%`);
-  button.style.setProperty("--label-y", `${labelY}%`);
-  button.style.setProperty("--text-rotation", `${textRotation}deg`);
-  button.style.clipPath = ringPolygon(inner, outer, start, end);
-  button.style.animationDelay = `${delay}ms`;
-  button.setAttribute("aria-label", `${name}${translation ? `, ${translation}` : ""}. Select to hear this emotion.`);
-  button.innerHTML = `<span class="sector__label"><span class="sector__main"><span class="sector__emoji" aria-hidden="true">${emotionEmojis[name] || "🙂"}</span><span class="sector__word">${name}</span></span>${translation ? `<span class="sector__bangla" lang="bn">${translation}</span>` : ""}</span>`;
-  return button;
-}
-
-function renderWheel() {
-  wheel.replaceChildren();
-  wheel.classList.toggle("is-emoji-only", state.emojiOnly);
-  const fragment = document.createDocumentFragment();
-
-  wheelData.forEach((primary, pIndex) => {
-    const primarySelected = state.primary === pIndex;
-    const mainColor = primaryFill(primary.color);
-    const button = makeSector({
-      name: primary.name, translation: primaryBangla[primary.name].word, color: mainColor, start: primary.start, end: primary.start + 60,
-      inner: 0, outer: 17.2, level: "primary", selected: primarySelected, muted: state.primary !== null && !primarySelected
-    });
-    button.addEventListener("click", () => selectPrimary(pIndex));
-    fragment.append(button);
-
-    if (primarySelected) {
-      primary.children.forEach((secondary, sIndex) => {
-        const start = primary.start + sIndex * 15;
-        const secondarySelected = state.secondary === sIndex;
-        const branchColor = secondaryFill(primary.color, sIndex);
-        const secondButton = makeSector({
-          name: secondary.name, color: branchColor, start, end: start + 15,
-          inner: 17.6, outer: 31.2, level: "secondary", selected: secondarySelected,
-          muted: state.secondary !== null && !secondarySelected, delay: sIndex * 35
-        });
-        secondButton.addEventListener("click", () => selectSecondary(pIndex, sIndex));
-        fragment.append(secondButton);
-      });
-
-      if (state.secondary !== null) {
-        primary.children.forEach((secondary, sIndex) => {
-          const branchColor = secondaryFill(primary.color, sIndex);
-          secondary.children.forEach((name, tIndex) => {
-            const start = primary.start + sIndex * 15 + tIndex * 7.5;
-            const selected = state.selected === name;
-            const thirdButton = makeSector({
-              name, color: tertiaryFill(branchColor, tIndex), start, end: start + 7.5, inner: 31.6, outer: 48,
-              level: "tertiary", selected, muted: state.secondary !== sIndex, delay: (sIndex * 2 + tIndex) * 28
-            });
-            thirdButton.addEventListener("click", () => selectTertiary(pIndex, sIndex, name));
-            fragment.append(thirdButton);
-          });
-        });
-      }
-    }
-  });
-
-  wheel.append(fragment);
-  renderMobileChoices();
-}
-
-function selectPrimary(index) {
-  stopSpeech();
-  state.primary = index;
-  state.secondary = null;
-  state.selected = wheelData[index].name;
-  updateLesson(wheelData[index].name, [wheelData[index].name], wheelData[index].color);
-  renderWheel();
-  setStep(2, "Now choose a more specific feeling");
-  if (state.autoPlay) speakLesson();
-}
-
-function selectSecondary(primaryIndex, secondaryIndex) {
-  stopSpeech();
-  state.primary = primaryIndex;
-  state.secondary = secondaryIndex;
-  const primary = wheelData[primaryIndex];
-  const secondary = primary.children[secondaryIndex];
-  state.selected = secondary.name;
-  updateLesson(secondary.name, [primary.name, secondary.name], primary.color);
-  renderWheel();
-  setStep(3, "Choose the most exact word — or keep this one");
-  if (state.autoPlay) speakLesson();
-}
-
-function selectTertiary(primaryIndex, secondaryIndex, name) {
-  stopSpeech();
-  state.primary = primaryIndex;
-  state.secondary = secondaryIndex;
-  state.selected = name;
-  const primary = wheelData[primaryIndex];
-  const secondary = primary.children[secondaryIndex];
-  updateLesson(name, [primary.name, secondary.name, name], primary.color);
-  renderWheel();
-  setStep(3, "You found a precise feeling word");
-  if (state.autoPlay) speakLesson();
-}
-
-function setStep(step, instruction) {
-  document.querySelectorAll(".step").forEach(el => el.classList.toggle("is-active", Number(el.dataset.step) <= step));
-  document.querySelector("#wheel-instruction").textContent = instruction;
-}
-
 const emotionFloodingData = {
   Fear: {
     collocations: ["feel fear", "deep fear", "overcome fear", "fear of failure", "constant fear"],
@@ -529,7 +392,7 @@ const emotionFloodingData = {
       "“I won't lie, my heart was in my throat the entire time I was up on that stage.”",
       "“She was paralyzed with fear when the storm knocked the power out.”",
       "“You've got to face your fears head-on if you want to get past this block.”",
-      "“I had a moment of pure panic, but I forced myself to take a deep breath and keep going.”",
+      "“I had a moment of pure panic, but I forced myself to take a deep breath.”",
       "“There's no sense in living in fear of things you can't control anyway.”"
     ]
   },
@@ -551,6 +414,96 @@ const emotionFloodingData = {
       "“Take a breath—there's no need to work yourself up into a lather over it.”"
     ]
   },
+  Insecure: {
+    collocations: ["feel insecure", "deeply insecure", "insecure feeling", "emotionally insecure", "socially insecure"],
+    colligations: ["insecure about my skills", "feel insecure around experts", "become insecure when criticized", "too insecure to share", "insecure in a relationship"],
+    distinctions: [
+      "Being insecure isn't just being shy, it's doubting your own worth and abilities.",
+      "Feeling insecure is more self-focused than being generally worried.",
+      "Insecurity is less about external danger and more about internal self-doubt.",
+      "Being insecure isn't permanent, it changes with support and practice.",
+      "Feeling insecure is more subtle than feeling inferior."
+    ],
+    dialogue: [
+      "“I always feel like I'm swimming in deep water when I sit in on those high-level meetings.”",
+      "“She's second-guessing every decision she makes lately.”",
+      "“Imposter syndrome really got the better of me during my first week on the job.”",
+      "“Don't sell yourself short—you earned your spot at this table.”",
+      "“He puts on a tough front, but underneath it all he's deeply insecure.”"
+    ]
+  },
+  Overwhelmed: {
+    collocations: ["feel overwhelmed", "completely overwhelmed", "overwhelmed by work", "overwhelmed by choices", "emotionally overwhelmed"],
+    colligations: ["overwhelmed with tasks", "feel overwhelmed when busy", "become overwhelmed easily", "too overwhelmed to speak", "overwhelmed by the response"],
+    distinctions: [
+      "Being overwhelmed isn't just being busy, it's feeling like demands exceed your capacity.",
+      "Feeling overwhelmed is more paralyzing than just working hard.",
+      "Being overwhelmed is less about fear and more about mental cognitive overload.",
+      "Feeling overwhelmed isn't failure, it's a signal to step back and prioritize.",
+      "Overwhelmed is more intense than feeling slightly stressed."
+    ],
+    dialogue: [
+      "“I'm completely snowed under with deadlines this week.”",
+      "“My brain feels like it has fifty open tabs right now.”",
+      "“She's reaching her breaking point with everything on her plate.”",
+      "“I just need to take a step back and catch my breath before I drown in this.”",
+      "“It was just the straw that broke the camel's back after an exhausting month.”"
+    ]
+  },
+  Scared: {
+    collocations: ["feel scared", "scared of heights", "scared of darkness", "deeply scared", "scared to death"],
+    colligations: ["scared of making mistakes", "feel scared when alone", "become scared suddenly", "too scared to move", "scared for the future"],
+    distinctions: [
+      "Being scared isn't just feeling uneasy, it's a strong instinctual reaction to perceived danger.",
+      "Feeling scared is more immediate than feeling anxious.",
+      "Being scared is less about ongoing stress and more about a sudden threat.",
+      "Scared is less overwhelming than being terrified.",
+      "Being scared focuses your attention instantly on safety."
+    ],
+    dialogue: [
+      "“I was scared out of my wits when the door suddenly slammed shut.”",
+      "“He shook like a leaf during his entire driving test.”",
+      "“Don't let fear keep you in your comfort zone forever.”",
+      "“She was scared half to death by the sudden thunderclap.”",
+      "“I had cold feet right before walking out on stage.”"
+    ]
+  },
+  Terrified: {
+    collocations: ["terrified of snakes", "completely terrified", "terrified look", "terrified voice", "deeply terrified"],
+    colligations: ["terrified to go inside", "feel terrified when trapped", "become terrified instantly", "too terrified to scream", "terrified of losing someone"],
+    distinctions: [
+      "Being terrified isn't just being scared, it's extreme, overwhelming dread.",
+      "Feeling terrified is more severe and paralyzing than being nervous.",
+      "Terrified is less controllable than mild fear.",
+      "Being terrified freezes your ability to think logically.",
+      "Terrified is the highest intensity of fear before panic."
+    ],
+    dialogue: [
+      "“I was scared stiff when I looked down over the cliff edge.”",
+      "“She froze in her tracks, completely petrified by the sudden noise.”",
+      "“My blood ran cold when I heard the alarm go off in the middle of the night.”",
+      "“He was trembling like a leaf after the near-miss on the highway.”",
+      "“It scared the living daylights out of me when the lights cut out.”"
+    ]
+  },
+  Worried: {
+    collocations: ["feel worried", "deeply worried", "worried look", "constantly worried", "worried parent"],
+    colligations: ["worried about money", "worried that something happened", "feel worried when late", "too worried to sleep", "worried for your safety"],
+    distinctions: [
+      "Being worried isn't immediate physical danger, it's mental tension about a possible outcome.",
+      "Feeling worried is more cognitive than feeling panicked.",
+      "Worry is less about present harm and more about future uncertainty.",
+      "Being worried isn't permanent, it resolves when you get clarity.",
+      "Worry is more specific than general background anxiety."
+    ],
+    dialogue: [
+      "“I'm worried sick about how he's going to handle the news.”",
+      "“She's been pacing the floor all evening waiting for a call.”",
+      "“Don't lose any sleep over it—things usually sort themselves out.”",
+      "“It's been weighing heavily on my mind ever since yesterday.”",
+      "“He was beside himself with worry until they finally got home safely.”"
+    ]
+  },
   Happy: {
     collocations: ["feel happy", "genuinely happy", "happy memory", "happy moment", "extremely happy"],
     colligations: ["happy about the news", "happy to help", "feel happy when together", "make someone happy", "so happy that I smiled"],
@@ -567,6 +520,114 @@ const emotionFloodingData = {
       "“Honestly, seeing everyone come together like this just warms my heart.”",
       "“We had an absolute blast at the reunion last night.”",
       "“I couldn't be happier with how everything turned out in the end.”"
+    ]
+  },
+  Confident: {
+    collocations: ["feel confident", "highly confident", "confident voice", "confident smile", "deeply confident"],
+    colligations: ["confident in my skills", "confident about the test", "feel confident when prepared", "become confident with practice", "confident to speak up"],
+    distinctions: [
+      "Being confident isn't being arrogant, it's trusting your own abilities and judgment.",
+      "Feeling confident is more grounded and calm than boasting.",
+      "Confidence is less about perfection and more about self-assurance.",
+      "Being confident helps you handle mistakes gracefully.",
+      "Confidence is quieter than loud pride."
+    ],
+    dialogue: [
+      "“She carried herself with quiet poise throughout the tough interview.”",
+      "“He was in his element presenting the project to the board.”",
+      "“I feel like I really hit my stride after the first few months on the job.”",
+      "“Walk in there with your head held high—you know your stuff.”",
+      "“She didn't bat an eye when asked the most difficult question.”"
+    ]
+  },
+  Excited: {
+    collocations: ["feel excited", "super excited", "excited voice", "excited about the trip", "deeply excited"],
+    colligations: ["excited to meet you", "excited for the weekend", "feel excited when planning", "become excited easily", "too excited to sleep"],
+    distinctions: [
+      "Being excited isn't quiet contentment, it's high-energy eagerness about something positive.",
+      "Feeling excited is more energetic than just feeling peaceful.",
+      "Excitement is less about looking back and more about forward anticipation.",
+      "Being excited lights up your motivation and focus.",
+      "Excitement is more active than gentle happiness."
+    ],
+    dialogue: [
+      "“I'm bouncing off the walls waiting for the concert tonight!”",
+      "“She was beside herself with excitement when she opened the gift.”",
+      "“We're all hyped up for the championship game this weekend.”",
+      "“He was like a kid in a candy store when he walked into the tech expo.”",
+      "“I can barely contain my enthusiasm for this new project.”"
+    ]
+  },
+  Joyful: {
+    collocations: ["feel joyful", "joyful heart", "joyful occasion", "deeply joyful", "purely joyful"],
+    colligations: ["joyful about life", "joyful to give", "feel joyful in nature", "make someone joyful", "joyful celebration"],
+    distinctions: [
+      "Being joyful isn't dependent on circumstances, it's a deep, radiant inner warmth.",
+      "Feeling joyful is more profound than surface-level happiness.",
+      "Joy is less fleeting than a temporary pleasure.",
+      "Being joyful lifts your spirit and connects you with others.",
+      "Joy is deeper and richer than simple satisfaction."
+    ],
+    dialogue: [
+      "“Her face lit up with pure joy when she saw her old friend.”",
+      "“There was an infectious sense of joy spreading through the crowd.”",
+      "“It brought immense joy to my heart to see them reconciled.”",
+      "“We were singing at the top of our lungs out of sheer delight.”",
+      "“She has a buoyant spirit that brightens up any room she walks into.”"
+    ]
+  },
+  Optimistic: {
+    collocations: ["feel optimistic", "optimistic outlook", "cautiously optimistic", "deeply optimistic", "always optimistic"],
+    colligations: ["optimistic about the future", "optimistic for success", "feel optimistic when trying", "remain optimistic under stress", "optimistic frame of mind"],
+    distinctions: [
+      "Being optimistic isn't ignoring reality, it's expecting good possibilities through action.",
+      "Feeling optimistic is more forward-looking than enjoying the present.",
+      "Optimism is less about current comfort and more about hope for tomorrow.",
+      "Being optimistic helps you stay resilient during setbacks.",
+      "Optimism is more active than passive hope."
+    ],
+    dialogue: [
+      "“I'm looking on the bright side despite the rainy forecast.”",
+      "“Every cloud has a silver lining if you look hard enough.”",
+      "“She always sees the glass as half full, no matter what happens.”",
+      "“I'm keeping my fingers crossed for a smooth outcome.”",
+      "“He maintains a sunny disposition even during tough times.”"
+    ]
+  },
+  Peaceful: {
+    collocations: ["feel peaceful", "peaceful mind", "peaceful place", "deeply peaceful", "truly peaceful"],
+    colligations: ["peaceful after work", "peaceful in nature", "feel peaceful when resting", "become peaceful with music", "peaceful environment"],
+    distinctions: [
+      "Being peaceful isn't just silence, it's freedom from inner turmoil and conflict.",
+      "Feeling peaceful is more calm than feeling excited.",
+      "Peace is less about outer control and more about inner harmony.",
+      "Being peaceful helps you make clear, thoughtful choices.",
+      "Peace is more steady than intense joy."
+    ],
+    dialogue: [
+      "“I felt at total peace sitting by the quiet lake at sunrise.”",
+      "“She has a serene presence that puts everyone at ease.”",
+      "“After all the drama settled down, a sense of calm washed over the house.”",
+      "“My mind was completely at rest for the first time in weeks.”",
+      "“It was a smooth sailing afternoon with zero stress.”"
+    ]
+  },
+  Proud: {
+    collocations: ["feel proud", "proud moment", "deeply proud", "proud parent", "immensely proud"],
+    colligations: ["proud of your work", "proud to serve", "feel proud when succeeding", "make your family proud", "proud achievement"],
+    distinctions: [
+      "Being proud isn't arrogance, it's feeling healthy satisfaction in effort and growth.",
+      "Feeling proud is more reflective than simple joy.",
+      "Pride is less about comparing and more about honoring real effort.",
+      "Being proud boosts your self-esteem and motivation.",
+      "Healthy pride recognizes effort, not just luck."
+    ],
+    dialogue: [
+      "“I'm bursting with pride seeing how far you've come!”",
+      "“She stood tall and took a well-deserved bow after the performance.”",
+      "“He wore his hard-earned medal like a badge of honor.”",
+      "“You should hold your head high after everything you accomplished.”",
+      "“That was a feather in her cap that nobody can take away.”"
     ]
   },
   Anger: {
