@@ -1,0 +1,90 @@
+Feature Specification: Interactive Emotional Boundaries Quiz
+1. Project Overview
+Target URL: https://dialogue-bd.com/emotions/
+Component Goal: An interactive, bilingual (English/Bangla) self-assessment quiz that helps users evaluate their emotional boundaries based on the "Too Close / Too Far" framework.
+Design Philosophy: Visual-first, mobile-responsive, and structured to prevent cognitive overload. The English copy must remain at a B1 comprehension level.
+
+2. Integration Strategy
+Where to place it on the page:
+
+Create a new section on the /emotions/ page titled: "Do You Have a Healthy Relationship with Your Emotions?"
+
+Placement: Insert this component immediately following any introductory text about emotional health, or use the component's own built-in Intro State as the section header.
+
+Container: The component should be housed in a responsive container (max-width: 800px, centered) so it doesn't stretch too wide on desktop monitors, maintaining readability.
+
+3. Component Architecture & UI States
+The component must operate as a Single Page Application (SPA) widget with four distinct visual states, transitioning smoothly between them without page reloads.
+
+State 0: Global Navigation (Always Visible)
+Language Toggle: A sticky or fixed toggle at the top right of the component container: English | বাংলা.
+
+Behavior: Toggling this must immediately swap the text strings from the data object without resetting the user's progress or current state.
+
+State 1: Introduction View
+Headline: Displays introTitle.
+
+Description: Displays introDesc.
+
+Educational Cards: A 3-column layout (or stacked on mobile) displaying the three core concepts:
+
+Card 1: 🔴 tooCloseTitle & tooCloseDesc
+
+Card 2: 🔵 tooFarTitle & tooFarDesc
+
+Card 3: 🟢 middleTitle & middleDesc
+
+Call to Action: A prominent, primary button displaying quizStartBtn. Clicking this transitions to State 2.
+
+State 2: Active Quiz View
+Progress Indicator: A visual bar or text (e.g., "Question X of 5") at the top.
+
+Question Text: Displays the current question.
+
+Options: Render the 4 options as large, clickable, touch-friendly cards.
+
+Hover/Focus states should clearly indicate interactivity.
+
+Once clicked, visually highlight the selected option.
+
+Navigation: A "Next Question" (nextBtn) or "See My Results" (resultBtn) button that only becomes clickable after an option is selected.
+
+State 3: Results View
+Score Display: scoreLabel followed by the calculated number (e.g., "Your Score: 4/5").
+
+Result Card: Dynamically render the title and description matching the user's score bracket (Low, Mid, or High). Use the corresponding color theme (Red, Yellow, Green) for the result card border or background.
+
+Reset: A subtle "Retake Quiz" text link or icon to reset the state back to State 1.
+
+4. Logic & State Management
+State Variables Needed:
+
+currentLanguage: String ('en' or 'bn'). Default: 'en'.
+
+quizStarted: Boolean. Default: false.
+
+currentQuestionIndex: Integer (0 to 4). Default: 0.
+
+userScores: Array of integers (storing the score of each selected answer).
+
+Scoring Logic:
+
+Total Score = Sum of userScores.
+
+If Total Score == 0 or 1 ➔ Show results.low
+
+If Total Score == 2 or 3 ➔ Show results.mid
+
+If Total Score == 4 or 5 ➔ Show results.high
+
+5. Design & CSS Guidelines
+Typography: Use the existing font stack from dialogue-bd.com. Ensure the Bangla font renders cleanly with proper line height (e.g., line-height: 1.6).
+
+Animations: Use subtle CSS transitions (e.g., opacity: 0 to 1, transform: translateY(10px) to translateY(0)) when moving between quiz questions to make it feel polished.
+
+Colors: * Primary interactive elements (buttons, active states) should inherit your site's primary brand color.
+
+Result tiers should utilize soft, semantic alert colors (soft red, soft amber/yellow, soft green) for visual reinforcement.
+
+6. Content Payload (JSON Data)
+(Instruct your coder to use the exact JSON object provided below to populate the component. This contains the B1 English and Bangla translations.)
