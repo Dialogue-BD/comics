@@ -514,67 +514,208 @@ function setStep(step, instruction) {
   document.querySelector("#wheel-instruction").textContent = instruction;
 }
 
-function sentencesFor(name) {
-  const info = emotionInfo[name] || [`you are experiencing ${name.toLowerCase()}`, "medium", "something affects you", "notice a change in your body", "happy", "the two words describe different experiences", `I feel ${name.toLowerCase()} today`];
+const emotionFloodingData = {
+  Fear: {
+    collocations: ["feel fear", "deep fear", "overcome fear", "fear of failure", "constant fear"],
+    colligations: ["fear of doing something", "in fear for someone", "fear that something will happen", "driven by fear to act", "no fear about the future"],
+    distinctions: [
+      "Fear vs. Anxiety: Fear reacts to immediate, present danger; anxiety worries about uncertain future threats.",
+      "Fear vs. Terror: Fear is the general awareness of danger; terror is extreme, acute, overwhelming dread.",
+      "Fear vs. Surprise: Fear expects harm or pain; surprise simply reacts to something unexpected.",
+      "Fear vs. Panic: Fear is an emotional state; panic is sudden, unreasoning physical action caused by fear.",
+      "Fear vs. Caution: Fear can freeze or control you; caution is a deliberate choice to act safely."
+    ],
+    dialogue: [
+      "“I won't lie, my heart was in my throat the entire time I was up on that stage.”",
+      "“She was paralyzed with fear when the storm knocked the power out.”",
+      "“You've got to face your fears head-on if you want to get past this block.”",
+      "“I had a moment of pure panic, but I forced myself to take a deep breath and keep going.”",
+      "“There's no sense in living in fear of things you can't control anyway.”"
+    ]
+  },
+  Anxious: {
+    collocations: ["feel anxious", "socially anxious", "anxious thought", "anxious energy", "deeply anxious"],
+    colligations: ["anxious about the exam", "anxious to succeed", "feel anxious when speaking", "become anxious if ignored", "too anxious to sleep"],
+    distinctions: [
+      "Anxious vs. Scared: Anxiety focuses on future uncertainty; fear reacts to immediate real-time danger.",
+      "Anxious vs. Nervous: Nervousness is brief jitters before an event; anxiety is persistent, internal apprehension.",
+      "Anxious vs. Worried: Worrying is a mental thought loop; feeling anxious involves physical tension and restlessness.",
+      "Anxious vs. Overwhelmed: Being anxious is anticipating trouble; being overwhelmed is having too much to process at once.",
+      "Anxious vs. Terrified: Terrified is acute, unbearable dread; anxious is moderate, uneasy anticipation."
+    ],
+    dialogue: [
+      "“I've been on pins and needles all morning waiting for the test results.”",
+      "“To be honest, having all eyes on me gives me serious butterflies.”",
+      "“She's running on pure nervous energy ahead of the big presentation tomorrow.”",
+      "“I was sweating bullets until I finally got the confirmation email.”",
+      "“Take a breath—there's no need to work yourself up into a lather over it.”"
+    ]
+  },
+  Happy: {
+    collocations: ["feel happy", "genuinely happy", "happy memory", "happy moment", "extremely happy"],
+    colligations: ["happy about the news", "happy to help", "feel happy when together", "make someone happy", "so happy that I smiled"],
+    distinctions: [
+      "Happy vs. Excited: Happiness can be peaceful and contented; excitement is high-energy anticipation.",
+      "Happy vs. Joyful: Happiness is an everyday pleasing state; joy is deep, radiant, spiritual warmth.",
+      "Happy vs. Content: Contentment means needing nothing more; happiness often includes active pleasure.",
+      "Happy vs. Relieved: Relief is pleasure after pain or worry ends; happiness is positive well-being.",
+      "Happy vs. Ecstatic: Ecstatic is intense, overwhelming joy; happy is calm and balanced."
+    ],
+    dialogue: [
+      "“I'm over the moon about getting accepted into the exchange program!”",
+      "“He was walking on air for days after he got the good news.”",
+      "“Honestly, seeing everyone come together like this just warms my heart.”",
+      "“We had an absolute blast at the reunion last night.”",
+      "“I couldn't be happier with how everything turned out in the end.”"
+    ]
+  },
+  Anger: {
+    collocations: ["feel anger", "blind anger", "suppress anger", "express anger", "righteous anger"],
+    colligations: ["anger at someone", "anger over the decision", "feel anger when cheated", "channel anger into action", "filled with anger"],
+    distinctions: [
+      "Anger vs. Hurt: Anger pushes against a threat or wrongdoing; hurt focuses on internal pain.",
+      "Anger vs. Frustration: Frustration comes from being blocked; anger comes from feeling mistreated.",
+      "Anger vs. Fury: Anger is strong disapproval; fury is intense, explosive, destructive anger.",
+      "Anger vs. Annoyance: Annoyance is minor irritation; anger is a powerful emotional objection.",
+      "Anger vs. Resentment: Anger is an immediate reaction; resentment is harbored, long-term bitterness."
+    ],
+    dialogue: [
+      "“I was seeing red when I saw how unfairly they treated her.”",
+      "“Don't blow your top over a minor miscommunication.”",
+      "“He really hit a nerve when he criticized my work in front of everyone.”",
+      "“I had to bite my tongue so I wouldn't snap at him right then and there.”",
+      "“She was steaming mad after waiting two hours for nothing.”"
+    ]
+  },
+  Sad: {
+    collocations: ["feel sad", "deeply sad", "sad story", "sad truth", "heartbreakingly sad"],
+    colligations: ["sad about the loss", "sad to leave", "feel sad when alone", "make someone sad", "too sad to speak"],
+    distinctions: [
+      "Sad vs. Depressed: Sadness is a natural reaction to loss; depression is a prolonged clinical state.",
+      "Sad vs. Lonely: Sadness is emotional pain; loneliness is a specific ache for human connection.",
+      "Sad vs. Disappointed: Disappointment is unmet expectation; sadness is deeper emotional sorrow.",
+      "Sad vs. Grieving: Sadness is a general mood; grief is intense processing of profound loss.",
+      "Sad vs. Tired: Sadness drains emotional spirit; tiredness affects physical body energy."
+    ],
+    dialogue: [
+      "“I've been feeling down in the dumps ever since my roommate moved out.”",
+      "“It really broke my heart to see him pack up his things.”",
+      "“She's had a heavy heart all week after hearing the news.”",
+      "“I'm just going through a rough patch right now, but I'll pull through.”",
+      "“It brought a tear to my eye seeing how much they missed each other.”"
+    ]
+  },
+  Surprise: {
+    collocations: ["total surprise", "pleasant surprise", "caught by surprise", "look of surprise", "gasp in surprise"],
+    colligations: ["surprised by the news", "surprised to hear", "feel surprised when", "taken by surprise", "much to my surprise"],
+    distinctions: [
+      "Surprise vs. Shock: Surprise can be pleasant or mild; shock is jarring and hard to process.",
+      "Surprise vs. Astonishment: Surprise is any unexpected event; astonishment is overwhelming wonder.",
+      "Surprise vs. Fear: Surprise has neutral orientation; fear expects danger or pain.",
+      "Surprise vs. Confusion: Surprise is immediate reaction; confusion is ongoing lack of understanding.",
+      "Surprise vs. Awe: Awe combines surprise with deep reverence or respect."
+    ],
+    dialogue: [
+      "“Out of the blue, she called me up after five years!”",
+      "“That caught me completely off guard—I didn't see it coming at all.”",
+      "“My jaw dropped when I saw the final test scores.”",
+      "“I had to do a double take when he walked into the room.”",
+      "“Well, knock me down with a feather—I never expected that!”"
+    ]
+  },
+  Disgust: {
+    collocations: ["deep disgust", "feel disgust", "look of disgust", "moral disgust", "utter disgust"],
+    colligations: ["disgust at the behavior", "disgusted by the smell", "turn away in disgust", "filled with disgust", "express disgust towards"],
+    distinctions: [
+      "Disgust vs. Anger: Disgust wants to push away or recoil; anger wants to confront or fight.",
+      "Disgust vs. Dislike: Dislike is mild preference; disgust involves physical or visceral repulsion.",
+      "Disgust vs. Contempt: Disgust rejects something foul; contempt looks down on someone as inferior.",
+      "Disgust vs. Fear: Disgust recoils from contamination; fear retreats from physical danger.",
+      "Disgust vs. Aversion: Disgust is acute emotional revulsion; aversion is long-term avoidance."
+    ],
+    dialogue: [
+      "“Ugh, that smells so foul it turned my stomach immediately.”",
+      "“I was completely grossed out by how messy the kitchen was left.”",
+      "“His dishonest behavior left a really bad taste in my mouth.”",
+      "“She recoiled in disgust the moment she saw what was inside.”",
+      "“I couldn't even look at it—it was absolutely revolting.”"
+    ]
+  }
+};
+
+function getFloodingData(name) {
+  if (emotionFloodingData[name]) return emotionFloodingData[name];
+  const info = emotionInfo[name] || [`you feel ${name.toLowerCase()}`, "medium", "something happens", "notice a change", "happy", "the two emotions describe different experiences", `I feel ${name.toLowerCase()} right now`];
   const word = name.toLowerCase();
   const contrast = info[4].toLowerCase();
-  const lessons = {
-    A1: [
-      `${name} is a feeling.`,
-      `It means ${info[0]}.`,
-      `You may feel ${word} when ${info[2]}.`,
-      `This can be a ${info[1]} feeling.`,
-      `Your body may ${info[3]}.`,
-      `${name} and ${contrast} are different feelings.`,
-      `Example: “${info[6]}.”`
+
+  return {
+    collocations: [
+      `feel ${word}`,
+      `deeply ${word}`,
+      `increasingly ${word}`,
+      `${word} feeling`,
+      `genuinely ${word}`
     ],
-    A2: [
-      `${name} means ${info[0]}.`,
-      `It is usually a ${info[1]} feeling.`,
-      `You may feel ${word} when ${info[2]}.`,
-      `Your body may ${info[3]}.`,
-      `Do not confuse ${word} with ${contrast}.`,
-      `Here is the difference: ${info[5]}.`,
-      `For example: “${info[6]}.”`
+    colligations: [
+      `${word} about the situation`,
+      `${word} to respond`,
+      `feel ${word} when facing changes`,
+      `become ${word} under pressure`,
+      `so ${word} that it shows`
     ],
-    B1: [
-      `${name} describes a feeling in which ${info[0]}.`,
-      `It often happens when ${info[2]}.`,
-      `The feeling is generally ${info[1]} in strength.`,
-      `You might notice that your body starts to ${info[3]}.`,
-      `${name} can seem similar to ${contrast}, but they are not identical.`,
-      `The main difference is that ${info[5]}.`,
-      `A natural example is: “${info[6]}.”`
+    distinctions: [
+      `${name} vs. ${info[4]}: ${name} occurs when ${info[0]}, whereas ${contrast} is distinct because ${info[5]}.`,
+      `${name} Intensity: Its strength is typically ${info[1]}, triggering specific emotional responses when ${info[2]}.`,
+      `Somatic Signal: Body awareness reveals ${name} when you ${info[3]}.`,
+      `Semantic Domain: ${name} maps to internal experiences rather than simple external reactions.`,
+      `Usage Boundary: Use ${word} when focusing on personal state rather than general conditions.`
     ],
-    B2: [
-      `${name} describes an emotional response in which ${info[0]}.`,
-      `It commonly appears in situations where ${info[2]}.`,
-      `Its intensity is generally ${info[1]}, although the experience can vary.`,
-      `Physically, you may ${info[3]}.`,
-      `Although ${word} may resemble ${contrast}, the two words are not interchangeable.`,
-      `The useful distinction is this: ${info[5]}.`,
-      `In everyday speech, you might say: “${info[6]}.”`
-    ],
-    C1: [
-      `The term ${word} denotes an emotional state in which ${info[0]}.`,
-      `It tends to arise in circumstances where ${info[2]}.`,
-      `Its emotional force is typically ${info[1]}, though context can alter its intensity.`,
-      `The feeling may be physically expressed when you ${info[3]}.`,
-      `${name} overlaps in meaning with ${contrast}, but each word frames the experience differently.`,
-      `Semantically, the distinction is that ${info[5]}.`,
-      `The word is used naturally in the sentence: “${info[6]}.”`
-    ],
-    C2: [
-      `At its most precise, ${word} captures an emotional state in which ${info[0]}.`,
-      `It commonly emerges in contexts where ${info[2]}, although its triggers can be highly individual.`,
-      `Its characteristically ${info[1]} force helps convey the scale of the emotional response.`,
-      `Somatically, the experience may reveal itself when you ${info[3]}.`,
-      `The term occupies nearby semantic territory to ${contrast}, yet substituting one for the other can erase an important nuance.`,
-      `The crucial distinction is this: ${info[5]}.`,
-      `An idiomatic illustration would be: “${info[6]}.”`
+    dialogue: [
+      `“To be honest, I'm feeling quite ${word} about how things are going.”`,
+      `“Whenever that happens, it always makes me feel a bit ${word} inside.”`,
+      `“She tried to hide it, but you could tell she was deeply ${word}.”`,
+      `“I get completely ${word} when I don't know what to expect next.”`,
+      `“It's totally normal to feel ${word} in a situation like this.”`
     ]
   };
-  return lessons[state.cefr];
+}
+
+function sentencesFor(name) {
+  const flooding = getFloodingData(name);
+
+  const lessons = {
+    A1: [
+      `Collocation 1: ${flooding.collocations[0]}`,
+      `Collocation 2: ${flooding.collocations[1]}`,
+      `Collocation 3: ${flooding.collocations[2]}`,
+      `Collocation 4: ${flooding.collocations[3]}`,
+      `Collocation 5: ${flooding.collocations[4]}`,
+      `Colligation 1: ${flooding.colligations[0]}`,
+      `Colligation 2: ${flooding.colligations[1]}`,
+      `Colligation 3: ${flooding.colligations[2]}`,
+      `Colligation 4: ${flooding.colligations[3]}`,
+      `Colligation 5: ${flooding.colligations[4]}`
+    ],
+    A2: [
+      `Collocation 1: ${flooding.collocations[0]}`,
+      `Collocation 2: ${flooding.collocations[1]}`,
+      `Collocation 3: ${flooding.collocations[2]}`,
+      `Collocation 4: ${flooding.collocations[3]}`,
+      `Collocation 5: ${flooding.collocations[4]}`,
+      `Colligation 1: ${flooding.colligations[0]}`,
+      `Colligation 2: ${flooding.colligations[1]}`,
+      `Colligation 3: ${flooding.colligations[2]}`,
+      `Colligation 4: ${flooding.colligations[3]}`,
+      `Colligation 5: ${flooding.colligations[4]}`
+    ],
+    B1: flooding.distinctions.slice(0, 5),
+    B2: flooding.distinctions,
+    C1: flooding.dialogue.slice(0, 5),
+    C2: flooding.dialogue
+  };
+
+  return lessons[state.cefr] || lessons.A2;
 }
 
 function banglaTermFor(name) {
@@ -593,43 +734,44 @@ function banglaSentencesFor(name) {
   const contrastName = info[4];
   const contrastLabel = contrastName.charAt(0).toUpperCase() + contrastName.slice(1);
   const contrastTerm = banglaTermFor(contrastName);
-  const strength = banglaStrength[info[1]] || "পরিস্থিতিভেদে ভিন্ন মাত্রার";
-  const coreMeaning = primary.definition.replace(/।$/, "");
 
-  const openings = {
+  const levelActivities = {
     A1: [
-      `“${name}” মানে “${term}”।`,
-      `এটি ${primary.word} ধরনের একটি অনুভূতি।`
+      `শব্দ ও অর্থ: “${name}” মানে “${term}” (মূল অনুভূতি: ${primary.word})।`,
+      `শ্রবণ অনুশীলন (A1-A2): নিচে ৫টি সাধারণ Collocation (শব্দগুচ্ছ) এবং ৫টি Colligation (ব্যাকরণগত প্রয়োগ) শুনুন।`,
+      `পরামর্শ: শব্দটির সাথে অন্য শব্দ কীভাবে যুক্ত হয় তা বার বার শুনে অভ্যস্ত হন।`
     ],
     A2: [
-      `“${name}” শব্দটির সহজ বাংলা অর্থ “${term}”।`,
-      `এটি এমন একটি অনুভূতি, যার মূল অর্থ হলো: ${coreMeaning}।`
+      `শব্দ ও অর্থ: “${name}” এর সহজ বাংলা “${term}” (মূল অনুভূতি: ${primary.word})।`,
+      `শ্রবণ অনুশীলন (A2): ৫টি কলকেশন ও ৫টি কলিগেশন পর পর উচ্চারণ করা হচ্ছে।`,
+      `পরামর্শ: প্রতিটি শব্দগুচ্ছের সাবলীল ব্যবহার ও উচ্চারণ অনুকরণ করুন।`
     ],
     B1: [
-      `“${name}” এমন একটি অনুভূতি, যাকে বাংলায় “${term}” বলা যায়।`,
-      `এই অনুভূতিটি ${primary.word}-এর অংশ; অর্থাৎ ${coreMeaning}।`
+      `শব্দ ও অর্থ: “${name}” (বাংলা: “${term}”)—কাছাকাছি অনুভূতি: “${contrastLabel}” (${contrastTerm})।`,
+      `শ্রবণ অনুশীলন (B1): সূক্ষ্ম পার্থক্য ও বৈসাদৃশ্যের (Distinction & Contrast) বাক্যসমূহ শুনুন।`,
+      `পরামর্শ: সমার্থক বা কাছাকাছি অনুভূতিগুলোর মধ্যে সূক্ষ্ম পার্থক্য বুঝতে এটি সাহায্য করবে।`
     ],
     B2: [
-      `“${name}” একটি নির্দিষ্ট আবেগগত প্রতিক্রিয়া; বাংলায় এর কাছাকাছি অর্থ “${term}”।`,
-      `এটি ${primary.word}-এর বিস্তৃত অভিজ্ঞতার মধ্যে পড়ে: ${coreMeaning}।`
+      `শব্দ ও অর্থ: “${name}” (বাংলা: “${term}”)—অর্থগত সীমা ও সূক্ষ্ম পার্থক্য।`,
+      `শ্রবণ অনুশীলন (B2): শব্দটির সেমান্টিক ওয়েব (Semantic Web) এবং বৈসাদৃশ্যমূলক বাক্য শুনুন।`,
+      `পরামর্শ: সমার্থক শব্দের চেয়ে ঠিক কোন জায়গায় শব্দটির প্রয়োগ আলাদা তা খেয়াল করুন।`
     ],
     C1: [
-      `“${name}” শব্দটি একটি সূক্ষ্ম আবেগগত অবস্থাকে বোঝায়; বাংলায় এর অর্থ “${term}”।`,
-      `অর্থের দিক থেকে এটি ${primary.word}-এর অন্তর্গত—${coreMeaning}।`
+      `শব্দ ও অর্থ: “${name}” (বাংলা: “${term}”)—স্বাভাবিক নেটিভ ব্যবহার।`,
+      `শ্রবণ অনুশীলন (C1): ইংরেজিতে প্রাত্যহিক কথোপকথন (Colloquial & Idiomatic Dialogue) শুনুন।`,
+      `পরামর্শ: সাধারণ আলাপে নেটিভ স্পিকাররা কীভাবে প্রবাদ বা বাকধারা ব্যবহার করেন তা লক্ষ্য করুন।`
     ],
     C2: [
-      `সবচেয়ে নির্ভুল অর্থে “${name}” একটি বিশেষ আবেগগত অবস্থাকে প্রকাশ করে; বাংলায় এর নিকটতম অর্থ “${term}”।`,
-      `শব্দটির অর্থগত ক্ষেত্র ${primary.word}-এর সঙ্গে যুক্ত: ${coreMeaning}।`
+      `শব্দ ও অর্থ: “${name}” (বাংলা: “${term}”)—উচ্চমানের সাবলীলতা ও বাকধারা।`,
+      `শ্রবণ অনুশীলন (C2): নেটিভ কথোপকথনের বাস্তব উদাহরণ ও ভাবপ্রকাশের বাক্য শুনুন।`,
+      `পরামর্শ: অনুভূতি প্রকাশের প্রাতিষ্ঠানিক ও ঘরোয়া রূপের প্রয়োগ আয়ত্ত করুন।`
     ]
   };
 
   return [
-    ...openings[state.cefr],
+    ...(levelActivities[state.cefr] || levelActivities.A2),
     guide.situation,
-    `এই অনুভূতির তীব্রতা সাধারণত ${strength}; তবে ব্যক্তি ও পরিস্থিতি অনুযায়ী তা বদলাতে পারে।`,
-    guide.body,
-    `“${name}” এবং “${contrastLabel}” (${contrastTerm}) কাছাকাছি মনে হলেও একই অনুভূতি নয়।`,
-    `উদাহরণ: “আজ আমি ${term} অনুভব করছি, কারণ …।”`
+    guide.body
   ];
 }
 
@@ -829,13 +971,14 @@ function speakLesson() {
     true,
     event => markTranscriptWord(0, event.charIndex)
   ));
-  sentencesFor(state.selected).forEach((text, index) => {
+  const lines = sentencesFor(state.selected);
+  lines.forEach((text, index) => {
     speechSynthesis.speak(utter(text,
       () => startTimedHighlight(index + 1),
       () => {
       clearTimedHighlight();
       completeTranscriptRow(index + 1);
-      if (index === 6) finishSpeech();
+      if (index === lines.length - 1) finishSpeech();
     }, false, event => markTranscriptWord(index + 1, event.charIndex)));
   });
 }

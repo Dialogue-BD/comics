@@ -427,13 +427,12 @@ button { color: inherit; }
 .cefr-selector span { display: block; margin-top: 2px; overflow: hidden; font-size: 7.5px; font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
 .transcript-status { margin: 0; padding: 8px 12px; border-radius: 99px; background: #ebe9e0; color: #737c77; font-size: 10px; font-weight: 800; }
 .transcript-status.is-speaking { color: white; background: var(--ink); }
-.live-transcript { max-width: 1100px; margin: 20px auto 0; color: #7e8782; font-family: Georgia, "Times New Roman", serif; font-size: clamp(18px, 1.75vw, 25px); line-height: 1.75; }
-.transcript-line { display: inline; }
-.transcript-line::after { content: " "; }
-.transcript-line:first-child { display: block; margin-bottom: 5px; color: var(--ink); font-size: 1.18em; font-weight: 700; }
-.transcript-token { display: inline; border-radius: 5px; padding: 1px 2px; transition: color .12s ease, background .12s ease, box-shadow .12s ease; }
-.transcript-token.is-spoken { color: #253b32; background: color-mix(in srgb, var(--lesson-color) 44%, white); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--lesson-color) 32%, transparent); }
-.transcript-token.is-current { color: #18251f; background: #f4c95d; box-shadow: 0 0 0 3px rgba(244,201,93,.22); }
+.live-transcript { max-width: 1100px; margin: 20px auto 0; color: #7e8782; font-family: Georgia, "Times New Roman", serif; font-size: clamp(17px, 1.6vw, 23px); line-height: 1.7; }
+.transcript-line { display: block; margin-bottom: 8px; }
+.transcript-line:first-child { color: var(--ink); font-size: 1.15em; font-weight: 700; margin-bottom: 12px; }
+.transcript-token { display: inline; border-radius: 5px; padding: 1px 4px; transition: color .12s ease, background .12s ease, box-shadow .12s ease; }
+.transcript-token.is-spoken { color: #253b32; background: color-mix(in srgb, var(--lesson-color) 35%, white); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--lesson-color) 25%, transparent); }
+.transcript-token.is-current { color: #18251f; background: #f4c95d; box-shadow: 0 0 0 3px rgba(244,201,93,.25); }
 .bangla-transcript { margin-top: 20px; padding: 18px 20px 19px; border: 1px solid rgba(63,97,85,.16); border-radius: 17px; background: rgba(104,169,139,.08); }
 .bangla-transcript__header { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 10px; }
 .bangla-transcript h4 { margin: 0; color: #294c40; font-size: 15px; font-weight: 800; }
