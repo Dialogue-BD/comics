@@ -962,9 +962,14 @@ button { color: inherit; }
   margin-bottom: 24px;
 }
 
-.eq-result-card.eq-tier-low  { border-color: #cc3e2a; background: rgba(210,68,50,.06);  }
-.eq-result-card.eq-tier-mid  { border-color: #b8832a; background: rgba(184,131,42,.06); }
-.eq-result-card.eq-tier-high { border-color: #2b9268; background: rgba(42,165,112,.06); }
+.eq-result-card.eq-tier-close { border-color: #cc3e2a; background: rgba(210,68,50,.06);  }
+.eq-result-card.eq-tier-far   { border-color: #3a5cd4; background: rgba(62,104,210,.06); }
+.eq-result-card.eq-tier-mid   { border-color: #b8832a; background: rgba(184,131,42,.06); }
+.eq-result-card.eq-tier-high  { border-color: #2b9268; background: rgba(42,165,112,.06); }
+
+/* Pattern breakdown pills on result screen */
+.eq-score-val { display: inline-flex; gap: 14px; align-items: baseline; }
+.eq-sc-h, .eq-sc-c, .eq-sc-f { font-family: Georgia, serif; font-size: 20px; font-weight: 500; line-height: 1; color: var(--ink); }
 
 .eq-result-card h3 {
   margin: 0 0 10px;
