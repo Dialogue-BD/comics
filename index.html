@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visual Stories & Activities</title>
+  <title>Visual Stories &amp; Activities</title>
   <meta name="description" content="A collection of visual stories, comics, and language learning activities.">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,7 +31,7 @@
     header {
       text-align: center;
       padding: 56px 16px 40px;
-      max-width: 640px;
+      max-width: 680px;
       margin: 0 auto;
     }
 
@@ -39,7 +39,6 @@
       font-size: clamp(1.6rem, 5vw, 2.4rem);
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: var(--text);
     }
 
     header p {
@@ -49,10 +48,49 @@
       line-height: 1.6;
     }
 
-    .section-label {
+    /* ── Featured (Action Comic) ── */
+    .featured-wrap {
       max-width: 900px;
-      margin: 40px auto 12px;
-      font-size: 0.72rem;
+      margin: 0 auto 32px;
+    }
+
+    .card-featured {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--surface);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    .card-featured:hover {
+      background: var(--surface-hover);
+      transform: translateY(-2px);
+    }
+
+    .card-featured .icon { font-size: 2.2rem; flex-shrink: 0; }
+
+    .card-featured .title {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .card-featured .desc {
+      margin-top: 4px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── Section label ── */
+    .label {
+      max-width: 900px;
+      margin: 0 auto 12px;
+      font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -60,9 +98,10 @@
       padding: 0 4px;
     }
 
+    /* ── 13-card grid ── */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 14px;
       max-width: 900px;
       margin: 0 auto;
@@ -78,7 +117,6 @@
       text-decoration: none;
       color: inherit;
       transition: background 0.15s, border-color 0.15s, transform 0.15s;
-      cursor: pointer;
     }
 
     .card:hover {
@@ -87,31 +125,26 @@
       transform: translateY(-2px);
     }
 
-    .card-icon {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      line-height: 1;
-    }
+    .card .icon { font-size: 1.4rem; margin-bottom: 10px; line-height: 1; }
 
-    .card-title {
-      font-size: 0.95rem;
+    .card .title {
+      font-size: 0.92rem;
       font-weight: 600;
-      color: var(--text);
       line-height: 1.3;
     }
 
-    .card-desc {
+    .card .desc {
       margin-top: 6px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       line-height: 1.55;
       flex: 1;
     }
 
-    .card-badge {
+    .badge {
       display: inline-block;
       margin-top: 12px;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -121,30 +154,8 @@
       padding: 2px 7px;
     }
 
-    /* Featured card (full-width) */
-    .card.featured {
-      grid-column: 1 / -1;
-      flex-direction: row;
-      align-items: center;
-      gap: 20px;
-      padding: 24px 28px;
-    }
-
-    .card.featured .card-body { flex: 1; }
-
-    .card.featured .card-icon {
-      font-size: 2.4rem;
-      margin-bottom: 0;
-    }
-
-    .card.featured .card-title { font-size: 1.05rem; }
-
     @media (max-width: 480px) {
-      .card.featured {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .card.featured .card-icon { margin-bottom: 8px; }
+      .card-featured { flex-direction: column; align-items: flex-start; }
     }
 
     footer {
@@ -159,128 +170,118 @@
 
   <header>
     <h1>Visual Stories &amp; Activities</h1>
-    <p>Interactive comics, picture stories, and language activities. Tap any card to open.</p>
+    <p>Interactive comics, picture stories, and language activities.<br>Tap any card to open.</p>
   </header>
 
-  <!-- Comics & Image Viewers -->
-  <p class="section-label">Comics &amp; Image Viewers</p>
-  <div class="grid">
-
-    <a class="card featured" href="/comic.html">
-      <div class="card-icon">🎲</div>
-      <div class="card-body">
-        <div class="card-title">Action Comic — Random Viewer</div>
-        <div class="card-desc">Opens a random comic image in a full-screen viewer. Pinch to zoom, drag to pan. Tap to go fullscreen on mobile.</div>
-        <span class="card-badge">Interactive</span>
+  <!-- Featured -->
+  <div class="featured-wrap">
+    <a class="card-featured" href="/comic.html">
+      <div class="icon">🎲</div>
+      <div>
+        <div class="title">Action Comic — Random Viewer</div>
+        <div class="desc">Opens a random comic image in a full-screen viewer. Pinch to zoom, drag to pan. Tap to go fullscreen on mobile.</div>
       </div>
     </a>
-
-    <a class="card" href="/busy-pictures/">
-      <div class="card-icon">🔍</div>
-      <div class="card-title">Busy Pictures</div>
-      <div class="card-desc">Wimmelbook-style scenes with AI tap-to-speak. Tap objects to hear and learn vocabulary.</div>
-      <span class="card-badge">AI · Audio</span>
-    </a>
-
-    <a class="card" href="/narratives/">
-      <div class="card-icon">📖</div>
-      <div class="card-title">Action Narrative</div>
-      <div class="card-desc">Swipeable sequential image narratives. Follow the story panel by panel.</div>
-      <span class="card-badge">Gallery</span>
-    </a>
-
   </div>
 
-  <!-- Picture Stories -->
-  <p class="section-label">Picture Stories</p>
+  <!-- 13 subpages -->
+  <p class="label">All Pages</p>
   <div class="grid">
 
-    <a class="card" href="/stories/">
-      <div class="card-icon">📚</div>
-      <div class="card-title">Wordless Picture Stories</div>
-      <div class="card-desc">A collection of stories told entirely through images — open any title as a PDF.</div>
-      <span class="card-badge">PDF</span>
+    <a class="card" href="/narratives/">
+      <div class="icon">📖</div>
+      <div class="title">Action Narrative</div>
+      <div class="desc">Swipeable sequential image narratives. Follow the story panel by panel.</div>
+      <span class="badge">Gallery</span>
     </a>
 
     <a class="card" href="/american-fisherman/">
-      <div class="card-icon">🎣</div>
-      <div class="card-title">The American &amp; The Fisherman</div>
-      <div class="card-desc">A classic parable about ambition and contentment, illustrated with audio narration.</div>
-      <span class="card-badge">Audio · PDF</span>
+      <div class="icon">🎣</div>
+      <div class="title">The American &amp; The Fisherman</div>
+      <div class="desc">A classic parable about ambition and contentment, illustrated with audio narration.</div>
+      <span class="badge">Audio · PDF</span>
     </a>
 
-    <a class="card" href="/good-bird/">
-      <div class="card-icon">🐦</div>
-      <div class="card-title">The Good Bird</div>
-      <div class="card-desc">Visual story inspired by Peter Wezel's wordless picture book tradition.</div>
-      <span class="card-badge">Visual Story</span>
-    </a>
-
-    <a class="card" href="/north-end/">
-      <div class="card-icon">🏙️</div>
-      <div class="card-title">North End Story</div>
-      <div class="card-desc">A neighbourhood picture narrative set in the North End.</div>
-      <span class="card-badge">Visual Story</span>
-    </a>
-
-    <a class="card" href="/ecclesiastes/">
-      <div class="card-icon">📜</div>
-      <div class="card-title">Ecclesiastes — হেদায়েতকারী</div>
-      <div class="card-desc">Illustrated pages from Ecclesiastes with Bengali audio for each section.</div>
-      <span class="card-badge">Audio · Bilingual</span>
-    </a>
-
-    <a class="card" href="/hingsha/">
-      <div class="card-icon">⚖️</div>
-      <div class="card-title">Hingsha</div>
-      <div class="card-desc">A visual story exploring conflict and resolution.</div>
-      <span class="card-badge">Visual Story</span>
-    </a>
-
-    <a class="card" href="/kindness-repentence/">
-      <div class="card-icon">🤝</div>
-      <div class="card-title">Kindness &amp; Repentence</div>
-      <div class="card-desc">A picture story on themes of kindness, forgiveness, and change.</div>
-      <span class="card-badge">Visual Story</span>
-    </a>
-
-    <a class="card" href="/mezban/">
-      <div class="card-icon">🍽️</div>
-      <div class="card-title">Mezban</div>
-      <div class="card-desc">A feast and community story illustrated in comic form.</div>
-      <span class="card-badge">Visual Story</span>
-    </a>
-
-  </div>
-
-  <!-- Language Activities -->
-  <p class="section-label">Language Activities</p>
-  <div class="grid">
-
-    <a class="card" href="/reflecting-listening/">
-      <div class="card-icon">🪞</div>
-      <div class="card-title">Listen Like a Mirror</div>
-      <div class="card-desc">A visual, levelled pair activity for practising reflective listening in English.</div>
-      <span class="card-badge">ESL · Pair Activity</span>
+    <a class="card" href="/busy-pictures/">
+      <div class="icon">🔍</div>
+      <div class="title">Busy Pictures</div>
+      <div class="desc">Wimmelbook-style scenes with AI tap-to-speak. Tap objects to hear and learn vocabulary.</div>
+      <span class="badge">AI · Audio</span>
     </a>
 
     <a class="card" href="/cross-cultural-coms/">
-      <div class="card-icon">🌏</div>
-      <div class="card-title">Cross-Cultural Communication</div>
-      <div class="card-desc">Activities and scenarios for navigating communication across cultures.</div>
-      <span class="card-badge">Activity</span>
+      <div class="icon">🌏</div>
+      <div class="title">Cross-Cultural Communication</div>
+      <div class="desc">Activities and scenarios for navigating communication across cultures.</div>
+      <span class="badge">Activity</span>
+    </a>
+
+    <a class="card" href="/ecclesiastes/">
+      <div class="icon">📜</div>
+      <div class="title">Ecclesiastes — হেদায়েতকারী</div>
+      <div class="desc">Illustrated pages from Ecclesiastes with Bengali audio for each section.</div>
+      <span class="badge">Audio · Bilingual</span>
+    </a>
+
+    <a class="card" href="/good-bird/">
+      <div class="icon">🐦</div>
+      <div class="title">The Good Bird</div>
+      <div class="desc">Visual story inspired by Peter Wezel's wordless picture book tradition.</div>
+      <span class="badge">Visual Story</span>
+    </a>
+
+    <a class="card" href="/hingsha/">
+      <div class="icon">⚖️</div>
+      <div class="title">Hingsha</div>
+      <div class="desc">A visual story exploring conflict and resolution.</div>
+      <span class="badge">Visual Story</span>
+    </a>
+
+    <a class="card" href="/kindness-repentence/">
+      <div class="icon">🤝</div>
+      <div class="title">Kindness &amp; Repentence</div>
+      <div class="desc">A picture story on themes of kindness, forgiveness, and change.</div>
+      <span class="badge">Visual Story</span>
+    </a>
+
+    <a class="card" href="/mezban/">
+      <div class="icon">🍽️</div>
+      <div class="title">Mezban</div>
+      <div class="desc">A feast and community story illustrated in comic form.</div>
+      <span class="badge">Visual Story</span>
+    </a>
+
+    <a class="card" href="/north-end/">
+      <div class="icon">🏙️</div>
+      <div class="title">North End Story</div>
+      <div class="desc">A neighbourhood picture narrative set in the North End.</div>
+      <span class="badge">Visual Story</span>
+    </a>
+
+    <a class="card" href="/reflecting-listening/">
+      <div class="icon">🪞</div>
+      <div class="title">Listen Like a Mirror</div>
+      <div class="desc">A visual, levelled pair activity for practising reflective listening in English.</div>
+      <span class="badge">ESL · Pair Activity</span>
     </a>
 
     <a class="card" href="/ruorators/">
-      <div class="card-icon">🎤</div>
-      <div class="card-title">RU Orators</div>
-      <div class="card-desc">Speaking and storytelling resources for oral communication practice.</div>
-      <span class="card-badge">Speaking</span>
+      <div class="icon">🎤</div>
+      <div class="title">RU Orators</div>
+      <div class="desc">Speaking and storytelling resources for oral communication practice.</div>
+      <span class="badge">Speaking</span>
+    </a>
+
+    <a class="card" href="/stories/">
+      <div class="icon">📚</div>
+      <div class="title">Wordless Picture Stories</div>
+      <div class="desc">A collection of stories told entirely through images — open any title as a PDF.</div>
+      <span class="badge">PDF</span>
     </a>
 
   </div>
 
-  <footer>Visual Stories &amp; Activities — hosted on Replit</footer>
+  <footer>Visual Stories &amp; Activities</footer>
 
 </body>
 </html>
