@@ -1,0 +1,957 @@
+{
+  "schema_version": 1,
+  "exported_at": "2026-08-03T17:17:26.135Z",
+  "repository": "Dialogue-BD/comics",
+  "suggestions": [
+    {
+      "schema_version": 1,
+      "id": "58f591ec-b831-4767-b9ae-1ddeef1a985c",
+      "created_at": "2026-08-03T15:59:51.289Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_4",
+      "box": [
+        13.5,
+        21,
+        17.5,
+        24.5
+      ],
+      "current_label": "White farmhouse on the slope",
+      "suggested_label": "White chalet on the slope",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "43351729-a0ea-4560-ad18-2a10e0afb0ca",
+      "created_at": "2026-08-03T16:00:41.738Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_21",
+      "box": [
+        11.8,
+        28.2,
+        12.9,
+        29.2
+      ],
+      "current_label": "Goat grazing on the hillside",
+      "suggested_label": "Sheep grazing on the hillside",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "241a0c9c-63e5-4052-aeb1-8996ef89d610",
+      "created_at": "2026-08-03T16:01:36.496Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_22",
+      "box": [
+        16,
+        23,
+        18,
+        24.5
+      ],
+      "current_label": "Cyclist on a mountain path",
+      "suggested_label": "Chalet on the slope",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "d96014ba-ca67-435e-b0f6-1f32c80cf28d",
+      "created_at": "2026-08-03T16:02:04.833Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_23",
+      "box": [
+        2,
+        24,
+        20,
+        34
+      ],
+      "current_label": "Pine forest above the tunnel",
+      "suggested_label": "Chalet's on alpine slope above tunnel",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "8013431f-94bb-4457-808e-5e6c68f0a545",
+      "created_at": "2026-08-03T16:02:32.258Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_29",
+      "box": [
+        2.8,
+        60.5,
+        7.3,
+        66.5
+      ],
+      "current_label": "Green biplane",
+      "suggested_label": "Green plane",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "664f731e-362e-4b37-a0f7-d296e7ae2f76",
+      "created_at": "2026-08-03T16:03:11.275Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_40",
+      "box": [
+        33,
+        63.8,
+        36.3,
+        66
+      ],
+      "current_label": "Waterfall in the gorge",
+      "suggested_label": "Large boulder",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "81b3d896-db48-4cfc-b08c-6eacfd6aefe8",
+      "created_at": "2026-08-03T16:04:04.275Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_54",
+      "box": [
+        50.7,
+        9.3,
+        60.6,
+        21.6
+      ],
+      "current_label": "Black steam locomotive",
+      "suggested_label": "Silver steam locomotive",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "70f3718c-6bca-4df2-851f-d060b1b0bf9a",
+      "created_at": "2026-08-03T16:04:48.209Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_60",
+      "box": [
+        61.4,
+        17.1,
+        66.4,
+        18.6
+      ],
+      "current_label": "Boy in an orange shirt",
+      "suggested_label": "Boy with red backpack",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "7470a3ae-d680-497f-a1ef-eedf83019f05",
+      "created_at": "2026-08-03T16:05:03.138Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_61",
+      "box": [
+        64.2,
+        14.8,
+        69.7,
+        16.4
+      ],
+      "current_label": "Boy in a green shirt",
+      "suggested_label": "Man in green jacket walking his dog",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "b4203921-fee3-460b-b60c-1a32e2d32d52",
+      "created_at": "2026-08-03T16:06:50.679Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_102",
+      "box": [
+        32.2,
+        61.4,
+        35.5,
+        63.8
+      ],
+      "current_label": "Rocks and waterfall above the farm",
+      "suggested_label": "Rocks in the gorge",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "1e467896-be4f-47e6-92f1-8a534de974fb",
+      "created_at": "2026-08-03T16:07:27.075Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_116",
+      "box": [
+        55.7,
+        84.9,
+        59.4,
+        86.8
+      ],
+      "current_label": "Two children playing",
+      "suggested_label": "A boy playing with two dogs",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "b4170238-f8ee-491c-a60a-44f6cb1f4766",
+      "created_at": "2026-08-03T16:07:49.787Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_119",
+      "box": [
+        61.1,
+        77.5,
+        68.2,
+        79.5
+      ],
+      "current_label": "Hiker with an orange cap",
+      "suggested_label": "Hiker with an yellow cap",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "79a8b54b-6630-402b-834f-5722133fb31f",
+      "created_at": "2026-08-03T16:08:01.458Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_118",
+      "box": [
+        61.4,
+        75.4,
+        68.2,
+        77.4
+      ],
+      "current_label": "Hiker with a yellow backpack",
+      "suggested_label": "Hiker with large green bag",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "ad1d63c2-5828-4b5c-b50a-20dd7bddb07b",
+      "created_at": "2026-08-03T16:08:42.479Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_130",
+      "box": [
+        80.9,
+        7.4,
+        85.2,
+        9.3
+      ],
+      "current_label": "Red suitcase in the window",
+      "suggested_label": "Red skiis",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "04817200-cd44-4cd2-839d-9fa6450ae8a9",
+      "created_at": "2026-08-03T16:10:09.509Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_176",
+      "box": [
+        72.4,
+        76.2,
+        74.3,
+        77.5
+      ],
+      "current_label": "Goose on the roof",
+      "suggested_label": "Chicken on the roof",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "22ec2eed-570c-4f32-a2c6-5ef8b06bb35d",
+      "created_at": "2026-08-03T16:10:44.392Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_192",
+      "box": [
+        69.8,
+        79.1,
+        71.9,
+        80.5
+      ],
+      "current_label": "Goose on the station roof",
+      "suggested_label": "Chicken on the station roof",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "9e34bbad-6b8d-4d76-82b5-3bb4ac01e765",
+      "created_at": "2026-08-03T16:11:11.430Z",
+      "page_key": "wimmelbook_1",
+      "page_number": 1,
+      "image": "wimmelbook_1.jpg",
+      "object_id": "p1_obj_199",
+      "box": [
+        86.8,
+        81.2,
+        93.1,
+        83.2
+      ],
+      "current_label": "Girl with a drink",
+      "suggested_label": "Girl taking photo with smartphone",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "d5e51952-5e92-48dd-a6f2-5affbfd56843",
+      "created_at": "2026-08-03T16:33:25.086Z",
+      "page_key": "wimmelbook_2",
+      "page_number": 2,
+      "image": "wimmelbook_2.jpg",
+      "object_id": "p2_obj_10",
+      "box": [
+        14.5,
+        7,
+        19,
+        8.5
+      ],
+      "current_label": "Girl with blonde hair on the escalator",
+      "suggested_label": "Woman wiht blonde hair",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "19782356-b8e5-4308-bef3-5721ef83cc91",
+      "created_at": "2026-08-03T16:33:40.807Z",
+      "page_key": "wimmelbook_2",
+      "page_number": 2,
+      "image": "wimmelbook_2.jpg",
+      "object_id": "p2_obj_11",
+      "box": [
+        14,
+        9,
+        18.5,
+        10.5
+      ],
+      "current_label": "Woman in red on the escalator",
+      "suggested_label": "Man with hat waving",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "a37a61d7-5223-4c07-bdff-c0b5ac99a25b",
+      "created_at": "2026-08-03T16:33:56.741Z",
+      "page_key": "wimmelbook_2",
+      "page_number": 2,
+      "image": "wimmelbook_2.jpg",
+      "object_id": "p2_obj_12",
+      "box": [
+        13,
+        11.5,
+        17.5,
+        13.5
+      ],
+      "current_label": "Man leaning on the handrail",
+      "suggested_label": "Man with sombrero hat",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "4f6341d6-53fa-42ca-9189-597d46414cc6",
+      "created_at": "2026-08-03T16:34:10.099Z",
+      "page_key": "wimmelbook_2",
+      "page_number": 2,
+      "image": "wimmelbook_2.jpg",
+      "object_id": "p2_obj_13",
+      "box": [
+        13,
+        13,
+        17,
+        14.5
+      ],
+      "current_label": "Woman in pink on the escalator",
+      "suggested_label": "Girl in pink waving",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "8f982802-e80d-4b40-a1b1-69686bf7171a",
+      "created_at": "2026-08-03T16:34:24.535Z",
+      "page_key": "wimmelbook_2",
+      "page_number": 2,
+      "image": "wimmelbook_2.jpg",
+      "object_id": "p2_obj_14",
+      "box": [
+        12,
+        11,
+        16,
+        12.5
+      ],
+      "current_label": "Woman in a sun hat",
+      "suggested_label": "Man in sombrero hat",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "642fa7ea-8f96-4178-9683-6226541e0730",
+      "created_at": "2026-08-03T16:35:19.490Z",
+      "page_key": "wimmelbook_2",
+      "page_number": 2,
+      "image": "wimmelbook_2.jpg",
+      "object_id": "p2_obj_31",
+      "box": [
+        29,
+        22.5,
+        35,
+        24.5
+      ],
+      "current_label": "Musician in green",
+      "suggested_label": "Musician",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "761ebf64-5db6-4563-8f07-bdffeed7c620",
+      "created_at": "2026-08-03T16:35:31.436Z",
+      "page_key": "wimmelbook_2",
+      "page_number": 2,
+      "image": "wimmelbook_2.jpg",
+      "object_id": "p2_obj_30",
+      "box": [
+        28,
+        20,
+        35,
+        22.5
+      ],
+      "current_label": "Guitarist in a hat",
+      "suggested_label": "Busker in green",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "14c3a9d1-f0d1-438b-afca-858c5335c0b4",
+      "created_at": "2026-08-03T16:35:56.698Z",
+      "page_key": "wimmelbook_2",
+      "page_number": 2,
+      "image": "wimmelbook_2.jpg",
+      "object_id": "p2_obj_32",
+      "box": [
+        28.5,
+        24.5,
+        35,
+        27
+      ],
+      "current_label": "Second guitarist",
+      "suggested_label": "Boy reaching for balloon",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "9fa78588-843b-453b-bc6c-c2945ff97c69",
+      "created_at": "2026-08-03T16:37:41.011Z",
+      "page_key": "wimmelbook_2",
+      "page_number": 2,
+      "image": "wimmelbook_2.jpg",
+      "object_id": "p2_obj_83",
+      "box": [
+        29.5,
+        50.2,
+        33.7,
+        51.6
+      ],
+      "current_label": "Man in a yellow shirt",
+      "suggested_label": "Man with girl on shoulders",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "e84f36f1-6ee3-401e-bc25-d3fb4993f3e8",
+      "created_at": "2026-08-03T16:42:05.602Z",
+      "page_key": "wimmelbook_2",
+      "page_number": 2,
+      "image": "wimmelbook_2.jpg",
+      "object_id": "p2_obj_229",
+      "box": [
+        70,
+        81,
+        78.3,
+        84.4
+      ],
+      "current_label": "Boy with a surfboard",
+      "suggested_label": "Surprised skiier with winter clothes",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "4b7a5ea1-af2f-49cb-a569-0edd1cdcf593",
+      "created_at": "2026-08-03T16:42:49.843Z",
+      "page_key": "wimmelbook_2",
+      "page_number": 2,
+      "image": "wimmelbook_2.jpg",
+      "object_id": "p2_obj_245",
+      "box": [
+        91.9,
+        78.8,
+        94.4,
+        80.3
+      ],
+      "current_label": "Dog in the water",
+      "suggested_label": "Inflatable dolphin",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "4735f65f-3057-4852-aca2-d211fb7ef058",
+      "created_at": "2026-08-03T16:45:37.307Z",
+      "page_key": "wimmelbook_3",
+      "page_number": 3,
+      "image": "wimmelbook_3.jpg",
+      "object_id": "p3_obj_57",
+      "box": [
+        39.7,
+        4,
+        53.8,
+        12.3
+      ],
+      "current_label": "Dry streambed",
+      "suggested_label": "gravel beside railroad",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "56f732d1-4172-4331-88f5-eb60af8b2dc7",
+      "created_at": "2026-08-03T16:45:53.102Z",
+      "page_key": "wimmelbook_3",
+      "page_number": 3,
+      "image": "wimmelbook_3.jpg",
+      "object_id": "p3_obj_60",
+      "box": [
+        56.3,
+        6.9,
+        59.4,
+        8.8
+      ],
+      "current_label": "Dog at the steering wheel",
+      "suggested_label": "Chicken on teal truck",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "003ecbb2-bee3-47cb-b2b4-9825ac7afe54",
+      "created_at": "2026-08-03T16:46:18.754Z",
+      "page_key": "wimmelbook_3",
+      "page_number": 3,
+      "image": "wimmelbook_3.jpg",
+      "object_id": "p3_obj_66",
+      "box": [
+        64.6,
+        13.1,
+        69.3,
+        15.1
+      ],
+      "current_label": "Man with a walking stick",
+      "suggested_label": "Man walking his dog",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "c2540589-3a80-4340-a696-11c482de9def",
+      "created_at": "2026-08-03T16:46:39.561Z",
+      "page_key": "wimmelbook_3",
+      "page_number": 3,
+      "image": "wimmelbook_3.jpg",
+      "object_id": "p3_obj_70",
+      "box": [
+        52.8,
+        5.9,
+        54.2,
+        7.1
+      ],
+      "current_label": "Squirrel on the gravel",
+      "suggested_label": "Flying bird",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "13f710c5-f3e4-4990-8b97-356993ab66f6",
+      "created_at": "2026-08-03T16:48:20.353Z",
+      "page_key": "wimmelbook_3",
+      "page_number": 3,
+      "image": "wimmelbook_3.jpg",
+      "object_id": "p3_obj_121",
+      "box": [
+        90,
+        2.5,
+        96.3,
+        4.3
+      ],
+      "current_label": "Girl in orange with a suitcase",
+      "suggested_label": "Girl mowing the lawn",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "ef94ea10-89a8-420e-b452-8b199ceb715d",
+      "created_at": "2026-08-03T16:48:36.345Z",
+      "page_key": "wimmelbook_3",
+      "page_number": 3,
+      "image": "wimmelbook_3.jpg",
+      "object_id": "p3_obj_125",
+      "box": [
+        68.6,
+        15.9,
+        70.9,
+        17.1
+      ],
+      "current_label": "Cat on a lead",
+      "suggested_label": "Small dog barking",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "0172abeb-6ba8-493a-970e-461aabf7008c",
+      "created_at": "2026-08-03T16:48:51.678Z",
+      "page_key": "wimmelbook_3",
+      "page_number": 3,
+      "image": "wimmelbook_3.jpg",
+      "object_id": "p3_obj_127",
+      "box": [
+        66.5,
+        22.1,
+        69.5,
+        23.9
+      ],
+      "current_label": "Jumping dog",
+      "suggested_label": "man falling down",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "f309605f-6aa0-4e62-b661-20cfcb65c3d9",
+      "created_at": "2026-08-03T16:49:09.353Z",
+      "page_key": "wimmelbook_3",
+      "page_number": 3,
+      "image": "wimmelbook_3.jpg",
+      "object_id": "p3_obj_133",
+      "box": [
+        66.5,
+        33.4,
+        69.7,
+        35.1
+      ],
+      "current_label": "Red guitar case",
+      "suggested_label": "Snowboard",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "32769370-912d-4913-a688-8de7f50a7f7c",
+      "created_at": "2026-08-03T16:49:44.863Z",
+      "page_key": "wimmelbook_3",
+      "page_number": 3,
+      "image": "wimmelbook_3.jpg",
+      "object_id": "p3_obj_143",
+      "box": [
+        69.8,
+        24.8,
+        72.1,
+        30
+      ],
+      "current_label": "Dog lying on the pavement",
+      "suggested_label": "Groceries spilling on ground",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "39441442-86f2-444c-a896-ed5452ccb70e",
+      "created_at": "2026-08-03T16:50:33.124Z",
+      "page_key": "wimmelbook_3",
+      "page_number": 3,
+      "image": "wimmelbook_3.jpg",
+      "object_id": "p3_obj_162",
+      "box": [
+        70.4,
+        82.6,
+        77.7,
+        84.9
+      ],
+      "current_label": "Man in an orange jacket",
+      "suggested_label": "Man stepping in dog poop",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "a3af4ed3-9a07-4714-a499-32d982525a1d",
+      "created_at": "2026-08-03T16:50:45.882Z",
+      "page_key": "wimmelbook_3",
+      "page_number": 3,
+      "image": "wimmelbook_3.jpg",
+      "object_id": "p3_obj_163",
+      "box": [
+        75.6,
+        77.4,
+        79.5,
+        80.8
+      ],
+      "current_label": "Two dogs on leads",
+      "suggested_label": "Husky dog",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "f9634fbb-7a2a-441b-927a-7b7a2ac9bc13",
+      "created_at": "2026-08-03T16:51:09.395Z",
+      "page_key": "wimmelbook_3",
+      "page_number": 3,
+      "image": "wimmelbook_3.jpg",
+      "object_id": "p3_obj_169",
+      "box": [
+        65.3,
+        97.5,
+        73.7,
+        99.3
+      ],
+      "current_label": "Man in a cowboy hat",
+      "suggested_label": "Man with girl on shoulders",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "d47102f7-78a5-4ad9-9922-adadbc57cc54",
+      "created_at": "2026-08-03T17:09:25.454Z",
+      "page_key": "wimmelbook_5",
+      "page_number": 5,
+      "image": "wimmelbook_5.jpg",
+      "object_id": "p5_obj_26",
+      "box": [
+        20.8,
+        32.9,
+        22.2,
+        34.3
+      ],
+      "current_label": "Round window",
+      "suggested_label": "mounted light",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "530a04cc-e545-4435-9095-8ff29c3cbcf0",
+      "created_at": "2026-08-03T17:09:54.367Z",
+      "page_key": "wimmelbook_5",
+      "page_number": 5,
+      "image": "wimmelbook_5.jpg",
+      "object_id": "p5_obj_33",
+      "box": [
+        28.6,
+        40.3,
+        30.5,
+        46.7
+      ],
+      "current_label": "Scaffold plank",
+      "suggested_label": "Table",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "7af25426-d36d-4620-aca9-b5f0153155b5",
+      "created_at": "2026-08-03T17:10:21.242Z",
+      "page_key": "wimmelbook_5",
+      "page_number": 5,
+      "image": "wimmelbook_5.jpg",
+      "object_id": "p5_obj_40",
+      "box": [
+        10.5,
+        60.4,
+        16.4,
+        64.3
+      ],
+      "current_label": "Man with insulation",
+      "suggested_label": "Man installing insulation",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "6dc060d3-9593-4707-9276-dd4e3d1c62fc",
+      "created_at": "2026-08-03T17:11:12.763Z",
+      "page_key": "wimmelbook_5",
+      "page_number": 5,
+      "image": "wimmelbook_5.jpg",
+      "object_id": "p5_obj_52",
+      "box": [
+        30.2,
+        65.9,
+        33.1,
+        68.6
+      ],
+      "current_label": "Red toolbox",
+      "suggested_label": "toolbox",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "352d2d19-7fd3-4dae-a48c-6dfbcf85720a",
+      "created_at": "2026-08-03T17:12:28.896Z",
+      "page_key": "wimmelbook_5",
+      "page_number": 5,
+      "image": "wimmelbook_5.jpg",
+      "object_id": "p5_obj_89",
+      "box": [
+        36.8,
+        26.1,
+        46.9,
+        29.2
+      ],
+      "current_label": "Worker with a backpack",
+      "suggested_label": "Worker with toolbox",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "57ef40d3-ebfa-4751-9294-6a2bb97fc010",
+      "created_at": "2026-08-03T17:12:45.725Z",
+      "page_key": "wimmelbook_5",
+      "page_number": 5,
+      "image": "wimmelbook_5.jpg",
+      "object_id": "p5_obj_92",
+      "box": [
+        39.3,
+        32.3,
+        49.2,
+        35.6
+      ],
+      "current_label": "Man with a red board",
+      "suggested_label": "Man with cupboard",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "b6ae466a-ee51-42e7-97cc-5340cd530e83",
+      "created_at": "2026-08-03T17:12:57.975Z",
+      "page_key": "wimmelbook_5",
+      "page_number": 5,
+      "image": "wimmelbook_5.jpg",
+      "object_id": "p5_obj_94",
+      "box": [
+        51.6,
+        32.7,
+        53.7,
+        34.7
+      ],
+      "current_label": "Oval window",
+      "suggested_label": "Exterior light",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "81f29c81-12ef-43b0-97a4-7921069928d1",
+      "created_at": "2026-08-03T17:13:57.679Z",
+      "page_key": "wimmelbook_5",
+      "page_number": 5,
+      "image": "wimmelbook_5.jpg",
+      "object_id": "p5_obj_107",
+      "box": [
+        51.1,
+        42.8,
+        53.4,
+        45.1
+      ],
+      "current_label": "Ceiling pipe",
+      "suggested_label": "Paint roller rolling paint",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "3070536d-ccda-4535-ae7b-dd2ce9409751",
+      "created_at": "2026-08-03T17:15:44.938Z",
+      "page_key": "wimmelbook_5",
+      "page_number": 5,
+      "image": "wimmelbook_5.jpg",
+      "object_id": "p5_obj_158",
+      "box": [
+        77.7,
+        9.4,
+        84.9,
+        12.2
+      ],
+      "current_label": "Boy in a green jacket",
+      "suggested_label": "Boy carrying toy backhoe",
+      "note": "",
+      "status": "pending-review"
+    },
+    {
+      "schema_version": 1,
+      "id": "5ce401ad-3fdb-4da0-bb1b-012ed95e5e0d",
+      "created_at": "2026-08-03T17:16:13.459Z",
+      "page_key": "wimmelbook_5",
+      "page_number": 5,
+      "image": "wimmelbook_5.jpg",
+      "object_id": "p5_obj_169",
+      "box": [
+        91.6,
+        8.4,
+        93.7,
+        12.4
+      ],
+      "current_label": "Small stones",
+      "suggested_label": "Smoke from scooter",
+      "note": "",
+      "status": "pending-review"
+    }
+  ]
+}
