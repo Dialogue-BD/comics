@@ -2488,9 +2488,10 @@ exploreMatch.addEventListener("click", () => {
   document.querySelector(".experience").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-const pollApiOrigin = location.hostname === "dialogue-bd.github.io"
-  ? "https://english-club-emotions.halcyondays.chatgpt.site"
-  : "";
+// Always use the external poll API — the static file server has no /api/poll handler.
+// Previously this was conditional on the GitHub Pages hostname, which caused the
+// static server to receive POST requests and return HTML instead of JSON.
+const pollApiOrigin = "https://english-club-emotions.halcyondays.chatgpt.site";
 const pollState = { windowKey: "", loading: false };
 const pollTotal = document.querySelector("#poll-total");
 const pollUpdated = document.querySelector("#poll-updated");
@@ -2630,7 +2631,8 @@ submitPoll.addEventListener("click", async () => {
         reason
       })
     });
-    const result = await response.json();
+    let result;
+    try { result = await response.json(); } catch (_) { result = {}; }
     if (!response.ok) throw new Error(result.error || "Could not share this response.");
     pollSubmitStatus.textContent = "Shared anonymously. You can update it again during this hour.";
     submitPoll.textContent = "Update my anonymous response";
