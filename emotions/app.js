@@ -1216,6 +1216,7 @@ function updateLesson(name, trail, color) {
 
   renderTranscript(name);
   renderDefinitionSection(name);
+  showReflectionCard(name);
 }
 
 function renderDefinitionSection(name) {
@@ -1865,6 +1866,9 @@ document.querySelector("#start-over").addEventListener("click", () => {
   transcriptCard.hidden = true;
   const definitionCard = document.querySelector("#definition-card");
   if (definitionCard) definitionCard.hidden = true;
+  const reflectionCard = document.querySelector("#reflection-card");
+  if (reflectionCard) reflectionCard.hidden = true;
+  clearReflectionCycles();
   liveTranscript.replaceChildren();
   transcriptRows = [];
   setWheelRotation(0);
@@ -1912,4 +1916,458 @@ if ("speechSynthesis" in window) {
     populateVoiceSelect();
   };
   populateVoiceSelect();
+}
+
+// ── Self-Reflection Card ──────────────────────────────────────────────────
+
+const reflectionHints = {
+  // Primary emotions
+  Fear: {
+    because: ["something I care about feels threatened", "I can't see how this ends", "I'm in unfamiliar territory and have no map"],
+    stake: ["whether I'm actually safe", "something I can't afford to lose", "my ability to trust my own judgment here"],
+    need: ["more information before I can move", "someone to stand beside me", "to name exactly what I'm afraid of"]
+  },
+  Anger: {
+    because: ["something unjust happened and no one seems to care", "my boundary was crossed and I wasn't heard", "I was let down by someone who knew better"],
+    stake: ["my sense of what's fair in this relationship", "whether I can trust this person going forward", "my own integrity if I stay silent"],
+    need: ["to say what happened out loud", "to be heard before I can move on", "to figure out what I actually want to change"]
+  },
+  Surprise: {
+    because: ["something happened that I had no framework for", "reality just shifted and I'm still catching up", "I was expecting one thing and got something completely different"],
+    stake: ["my sense of how predictable the world is", "the plan I had that now needs to change", "my ability to adapt when things don't go as expected"],
+    need: ["a moment to absorb it before I react", "to figure out if this is good or bad news", "to update my picture of what's actually happening"]
+  },
+  Happy: {
+    because: ["things aligned in a way they don't always", "the people I care about showed up for me", "I was doing exactly what I'm supposed to be doing"],
+    stake: ["my ability to notice and keep this feeling instead of rushing past it", "the relationships that made it possible", "my sense of what a good day actually looks like"],
+    need: ["to slow down enough to feel it fully", "to say thank you to someone who made it happen", "to carry some of this into what comes next"]
+  },
+  Disgust: {
+    because: ["something violated my sense of what's acceptable", "I was exposed to something I can't un-see", "my values were pushed up against something that doesn't share them"],
+    stake: ["my sense of what I'm willing to participate in", "a relationship or environment that may not be good for me", "where I choose to spend my energy going forward"],
+    need: ["some distance before I decide anything", "to name exactly what was violated", "a space that reflects my values"]
+  },
+  Sad: {
+    because: ["something I cared about is gone or changed beyond recognition", "I can feel the weight of time and loss together", "everything just feels heavier than it should"],
+    stake: ["my ability to grieve honestly without collapsing", "the relationships that need me present even when I'm not okay", "my own health if I push through without feeling this"],
+    need: ["to let myself be sad for a while without fixing it", "one person to be with who won't try to cheer me up", "permission to feel what this actually is"]
+  },
+
+  // Fear branch
+  Insecure: {
+    because: ["I keep comparing where I am to where I thought I'd be", "I can't tell if I actually belong here", "I can't tell if people are being genuine with me"],
+    stake: ["whether I actually measure up", "my sense of who I am in this group", "whether I'm welcome here at all"],
+    need: ["one honest conversation", "to stop measuring myself against the wrong ruler", "a reminder of something I've done well"]
+  },
+  Inadequate: {
+    because: ["everyone else seems to already know what I don't", "I keep trying and it keeps not being enough", "I made a mistake I should have avoided"],
+    stake: ["my belief that I'm capable of this", "whether I stay or give up", "how I see myself going forward"],
+    need: ["to hear that learning takes time", "one small win to build on", "permission to not know everything yet"]
+  },
+  Inferior: {
+    because: ["they have something I feel like I'll never have", "I was treated like my opinion didn't count", "I looked around the room and felt out of place"],
+    stake: ["my sense of dignity in this space", "whether I keep showing up", "whether I trust my own voice"],
+    need: ["to be seen as an equal", "space to prove something to myself", "to stop explaining myself to people who aren't listening"]
+  },
+  Rejected: {
+    because: ["I reached out and got nothing back", "I was left out when I expected to be included", "I said something real and it landed badly"],
+    stake: ["my willingness to try again", "whether I belong in this group", "trust that openness is worth the risk"],
+    need: ["to know it wasn't about me", "a reason to believe this isn't the pattern", "time before I try again"]
+  },
+  Alienated: {
+    because: ["I can't find the conversation I actually want to be in", "I look around and no one seems to see what I see", "something changed and I don't know how to close the gap"],
+    stake: ["whether I stay connected or start pulling away", "my sense of shared purpose with these people", "whether I'm able to belong somewhere"],
+    need: ["one person who speaks my language", "to find what I still have in common here", "a bridge, not a wall"]
+  },
+  Disrespected: {
+    because: ["what I said was dismissed without a real response", "they spoke to me like I didn't know my own experience", "my time and effort were treated as unimportant"],
+    stake: ["whether I keep putting in the same effort here", "my self-respect in this relationship", "whether I can trust this space to be fair"],
+    need: ["an acknowledgment that it happened", "to decide what I'll accept going forward", "to say clearly what I expect"]
+  },
+  Anxious: {
+    because: ["there's too much uncertain and not enough I can control", "I keep running through the worst versions of how this goes", "I haven't been able to stop thinking about it since yesterday"],
+    stake: ["my ability to keep functioning under pressure", "whether I trust myself to handle what's coming", "something I've been building that could fall apart"],
+    need: ["one thing I can actually do right now", "to put the spiral on pause for an hour", "someone to think this through with me"]
+  },
+  Overwhelmed: {
+    because: ["I keep adding to the list and nothing gets taken off", "every direction I look, something needs my attention", "I said yes too many times and now I can't keep up"],
+    stake: ["my ability to do any of it well", "my health if I don't slow down soon", "the things that matter getting buried under the urgent ones"],
+    need: ["permission to drop one thing", "someone to help me sort what's actually essential", "a clear end to today's list"]
+  },
+  Worried: {
+    because: ["I haven't heard anything and my mind is filling in the gaps", "something I care about is out of my hands", "the last time this happened it didn't go well"],
+    stake: ["someone I love or something I've worked for", "my trust that things tend to work out", "my ability to be present while I wait"],
+    need: ["actual information instead of guessing", "something to do with my hands while I wait", "to hear that worrying about it makes sense"]
+  },
+  Scared: {
+    because: ["I don't know what happens if I get this wrong", "the thing I'm facing feels bigger than me", "I keep imagining the moment things go badly"],
+    stake: ["my sense of safety or control", "something I'm not ready to lose", "whether I go forward or find a way around"],
+    need: ["to break it into smaller pieces", "to know someone's done this and come out okay", "to stop imagining the ending before it happens"]
+  },
+  Terrified: {
+    because: ["I've never faced something like this before", "the risk feels real and very close", "I've lost the ability to tell myself it'll be fine"],
+    stake: ["everything I've worked to keep stable", "my confidence that I can survive hard things", "someone I need to protect"],
+    need: ["to get through the next ten minutes, not the whole thing", "to not be alone in this", "one steady thing to hold onto"]
+  },
+  Frightened: {
+    because: ["something I didn't expect made the danger feel real", "I can feel my body reacting before my mind catches up", "the thing I've been trying not to think about just got closer"],
+    stake: ["my sense of control in a situation that matters", "how I'll act when it counts", "whether I can think clearly under this much pressure"],
+    need: ["to slow my breathing first", "a plan that gives me something to do", "to talk it through with someone calm"]
+  },
+
+  // Anger branch
+  Mad: {
+    because: ["it keeps happening and nothing changes", "I feel like my feelings were dismissed", "I was blamed for something that wasn't my fault"],
+    stake: ["whether I stay or walk away", "the respect I should be getting but am not", "a relationship that matters but is breaking"],
+    need: ["some space before I say what I'm thinking", "someone to actually listen without defending", "to see something change, even something small"]
+  },
+  Enraged: {
+    because: ["this has been building for a long time and today broke something open", "the injustice is too obvious and too ignored", "I feel like I'm not being treated as a person"],
+    stake: ["my ability to act clearly instead of just react", "the relationship I'm about to say something permanent to", "something I've been holding in for too long"],
+    need: ["an outlet before I say something I can't take back", "someone who won't tell me to calm down", "to be taken seriously for once"]
+  },
+  Furious: {
+    because: ["what happened was a betrayal, not just a mistake", "I've been patient for too long and it's run out", "the thing that mattered most to me was treated like nothing"],
+    stake: ["my trust in this person or institution", "what I'm willing to put up with going forward", "my own self-respect in deciding what I do next"],
+    need: ["to decide what I'm going to do before I do anything", "to name what specifically was violated", "to feel like I have some power here"]
+  },
+  Hurt: {
+    because: ["someone I trusted said or did something that cut deep", "I expected care and got carelessness instead", "what happened made me feel like I don't matter to them"],
+    stake: ["the closeness I thought existed in this relationship", "my willingness to be open with this person again", "whether I say what actually happened or just bury it"],
+    need: ["to know the hurt was seen and acknowledged", "to understand what the other person was thinking", "time to figure out if this is fixable"]
+  },
+  Devastated: {
+    because: ["something I built or hoped for fell apart completely", "the loss is real and I can't pretend it isn't", "I can't see a version of things that gets better from here"],
+    stake: ["my belief that things I care about can last", "my energy to start over", "a future I was counting on"],
+    need: ["to sit with this for a moment without having to fix it", "someone who doesn't try to silver-line it", "one small concrete reason to keep going"]
+  },
+  Embarrassed: {
+    because: ["I did or said something in front of people and I can't stop replaying it", "I thought no one was watching and they were", "I showed a part of myself I wasn't ready to share"],
+    stake: ["how I'm perceived by people I respect", "my confidence in that setting going forward", "my ability to show my face and try again"],
+    need: ["to know people have already forgotten it", "to laugh at it before the shame hardens", "permission to be imperfect in public"]
+  },
+  Threatened: {
+    because: ["someone is getting what I was counting on having", "the thing I've built feels like it could be taken", "I feel like I'm being pushed out of a space that was mine"],
+    stake: ["my position, my sense of safety, or my belonging", "whether I act from strength or from fear", "a relationship that's getting complicated by something neither of us is naming"],
+    need: ["to understand if the threat is real or imagined", "to stop making decisions in reaction", "a direct conversation instead of a silent competition"]
+  },
+  Jealous: {
+    because: ["they have what I want, and I can't pretend I don't want it", "I care about this person more than they seem to care about me", "I'm watching someone get something I've been working toward"],
+    stake: ["the relationship — if I let this eat at me, I'll damage it", "my own self-image when I feel like this", "whether I turn this into drive or let it become resentment"],
+    need: ["to admit it instead of dressing it up as something else", "to focus on my own path for a while", "a real conversation if someone's closeness is what I'm worried about"]
+  },
+  Distant: {
+    because: ["I've been burned before and I'm not ready to risk it again", "something happened that I haven't processed and I'm closing off instead", "I can feel myself pulling back but I don't know how to stop"],
+    stake: ["a relationship that needs more than I'm giving right now", "my own need for connection underneath the wall I'm building", "whether I address what caused this or let it compound"],
+    need: ["space to figure out what made me shut down", "a low-pressure way back into contact", "to stop pretending everything's fine"]
+  },
+  Suspicious: {
+    because: ["something doesn't add up and I can't let it go", "I've been misled before in a similar situation", "their words and their actions don't match and I keep noticing it"],
+    stake: ["whether I can trust my own read of people", "a relationship that might be fine — or might not be", "my willingness to be open if the suspicion hardens into certainty"],
+    need: ["more information before I decide what to believe", "to ask the direct question I've been avoiding", "to know if my gut is pattern-matching or just afraid"]
+  },
+  Withdrawn: {
+    because: ["I don't have the energy to be around people right now", "I said something that didn't land and I'd rather disappear than try again", "the world outside feels like more than I can take today"],
+    stake: ["my relationships if I stay closed too long", "my own mental health if this becomes the default", "the version of me that used to be able to show up"],
+    need: ["permission to rest without guilt", "one person to check in without expecting much back", "a reason to come back out when I'm ready"]
+  },
+
+  // Surprise branch
+  Confused: {
+    because: ["I keep getting different answers and I don't know which one to trust", "I thought I understood and then realized I didn't", "the rules keep changing and I can't find the stable ground"],
+    stake: ["my ability to make a good decision with the information I have", "my trust in the people giving me conflicting signals", "my time — I can't afford to keep going in the wrong direction"],
+    need: ["one clear answer from one reliable source", "permission to say I don't understand instead of pretending I do", "to slow down enough to sort out what I actually know"]
+  },
+  Disillusioned: {
+    because: ["I believed in something that turned out to be different than I thought", "the gap between what was promised and what happened is too wide to ignore", "I trusted a person or idea and they didn't hold up"],
+    stake: ["my optimism — it's getting harder to extend it again", "my ability to invest in the next thing wholeheartedly", "a belief that shaped how I saw myself"],
+    need: ["to grieve the version I thought was true", "time before I'm expected to commit to something new", "one thing that still deserves my faith"]
+  },
+  Perplexed: {
+    because: ["I keep trying to find the logic and there isn't any", "someone's behavior makes no sense to me no matter how I look at it", "I understand all the pieces but not how they fit together"],
+    stake: ["my ability to respond well in a confusing situation", "a relationship where I've lost the thread of what's happening", "my confidence in my own ability to figure things out"],
+    need: ["more context, not more opinions", "to talk it through out loud with someone patient", "to accept that some things won't resolve neatly"]
+  },
+  Startled: {
+    because: ["something hit me without warning and I'm still recovering from the jolt", "I wasn't ready and it showed", "my body reacted before I had a chance to think"],
+    stake: ["my composure in a situation where I need to stay clear-headed", "my sense of safety in this environment", "the impression I gave in a moment I'd rather have back"],
+    need: ["a minute to settle before I do anything", "to laugh at it if it's laughable", "to check that I'm actually okay"]
+  },
+  Shocked: {
+    because: ["what just happened doesn't fit with what I thought I knew", "someone I trusted did something I would have said was impossible for them", "the news arrived too fast for me to have any defense against it"],
+    stake: ["my picture of who this person is or how this situation works", "the trust and certainty I was building on", "my ability to absorb bad surprises without shutting down"],
+    need: ["to sit still for a moment before I do anything", "to say it out loud to make it real", "to understand what comes next, even if I can't change what happened"]
+  },
+  Dismayed: {
+    because: ["the thing I was hoping for didn't come through", "I watched something avoidable happen anyway", "I expected better and got something I wasn't prepared for"],
+    stake: ["my belief that effort and care translate to good outcomes", "my energy for trying again", "a relationship where the disappointment is between two people"],
+    need: ["to be honest about how let-down I actually feel", "to understand if this is fixable or something I need to accept", "time to decide what I want to do with what's left"]
+  },
+  Amazed: {
+    because: ["what just happened is more than I expected was possible", "someone showed me something I didn't know could exist", "the world just got larger in my imagination"],
+    stake: ["how I see what's possible from here", "the energy and direction this feeling could give me", "my sense of connection to something larger than my daily routine"],
+    need: ["to hold this feeling a little longer before it fades", "to tell someone so it becomes more real", "to let it change something small about how I move today"]
+  },
+  Astonished: {
+    because: ["this was so far outside anything I predicted, I don't have a response yet", "the scale of what happened is still landing", "I've never seen anything like it"],
+    stake: ["my sense of how the world works", "a moment that could reshape something important", "the story I tell myself about what's possible"],
+    need: ["time to translate this into something I can actually use", "to tell someone who will understand why it matters", "to let the surprise become something more lasting"]
+  },
+  Awe: {
+    because: ["I came into contact with something much bigger than me and I wasn't prepared", "beauty or scale or complexity stopped me completely", "for a moment I forgot about myself"],
+    stake: ["my sense of proportion — this puts things in a different perspective", "a connection to something that feels meaningful beyond my daily life", "my gratitude, which I forget to exercise"],
+    need: ["to stay here a little longer", "to remember this feeling when things feel small and grinding", "to share it with someone"]
+  },
+  Excited: {
+    because: ["something I've been waiting for is finally about to happen", "a door just opened that I didn't expect", "I can see clearly how good this could be"],
+    stake: ["my ability to channel this into something real rather than just feeling it", "the opportunity — it's real and it won't wait forever", "my relationships with the people this excitement involves"],
+    need: ["to do something concrete while the energy is here", "to share it with someone who'll match my enthusiasm", "to make sure my excitement doesn't run ahead of my preparation"]
+  },
+  Eager: {
+    because: ["I can already picture how well this goes", "I've been waiting for an opening and this is it", "every part of me is pointing in the same direction"],
+    stake: ["the window — it won't stay open forever", "my follow-through, which has to match my enthusiasm", "the impression I give when I arrive with this much energy"],
+    need: ["to channel this before it turns into restlessness", "a clear first step to move on right now", "someone to be excited with"]
+  },
+  Energetic: {
+    because: ["something clicked and I feel like I could take on twice as much", "I slept well, the news was good, and everything feels possible", "I can feel momentum building and it's rare — I want to use it"],
+    stake: ["the work I could actually get done while this lasts", "a chance to move something forward that's been stuck", "my own sense of capability when I feel this way"],
+    need: ["to point this at something that actually matters", "to not waste it on busy work", "to remember this feeling when the low days come"]
+  },
+
+  // Happy branch
+  Joyful: {
+    because: ["something happened that reminded me why everything is worth it", "I felt fully present for the first time in a while", "there was nothing I needed to fix or worry about, just this"],
+    stake: ["my ability to access this when things are harder", "a moment with someone I love that I want to remember", "my gratitude, which this moment is demanding"],
+    need: ["to be fully here and not think about what's next", "to mark this moment in some way", "to tell someone how good this feels"]
+  },
+  Liberated: {
+    because: ["I finally let go of something that had been weighing on me for too long", "I stopped waiting for permission and just did it", "the thing I was afraid of happened and I survived it"],
+    stake: ["what I do with the freedom now that I have it", "the patterns I can finally break without the old weight", "my sense of what I'm actually capable of"],
+    need: ["to use this feeling before it fades back into habit", "to decide what I want to build in the space I just cleared", "to celebrate this — actually celebrate it"]
+  },
+  Ecstatic: {
+    because: ["everything I hoped for came together at once", "the feeling is too big to hold quietly", "something happened that I didn't think was possible for me"],
+    stake: ["turning this peak into something that lasts beyond the moment", "sharing it with people who will understand", "my ability to commit when the high settles down"],
+    need: ["to share it loudly and immediately", "to write it down so future-me can find it", "to let it change my idea of what I'm capable of"]
+  },
+  Proud: {
+    because: ["I did something hard and I did it well", "I kept going when it would have been easier to stop", "someone I care about saw me clearly and reflected something good"],
+    stake: ["my belief in my own capabilities when things get difficult again", "the story I carry about who I am", "my relationship with the person whose opinion made this land"],
+    need: ["to let myself feel this instead of moving straight to the next challenge", "to acknowledge the effort, not just the result", "to share it with one person who will understand why it matters"]
+  },
+  Confident: {
+    because: ["I've done this before and I remember how it went", "the preparation I put in is finally showing", "I can see exactly what I need to do and I trust my ability to do it"],
+    stake: ["acting from this place instead of second-guessing it away", "the decision or moment this feeling is preparing me for", "my ability to hold this when things get harder"],
+    need: ["to move while I feel this, not wait", "to stop adding qualifications to my own ability", "to remember this specific feeling for the next time I doubt myself"]
+  },
+  Important: {
+    because: ["what I did made a real difference to someone", "I was included and asked for my perspective in a way that felt genuine", "for once, the work I put in was visible to the people who matter"],
+    stake: ["my continued investment in this role or relationship", "my sense of purpose — which depends on mattering to something larger than myself", "the energy I'll bring to the next hard thing"],
+    need: ["to let this land instead of deflecting it", "to understand exactly what created it so I can seek it again", "to tell someone it happened"]
+  },
+  Optimistic: {
+    because: ["the thing I was worried about looks more manageable from here", "I can see a path even if it's not perfectly clear", "something shifted and the future feels real again"],
+    stake: ["the plans and decisions this feeling could help me make well", "my relationship with hope, which I sometimes abandon too early", "my ability to invite others into this view"],
+    need: ["to act on this before doubt creeps back in", "to make one concrete decision that reflects this feeling", "to share the view with someone who's been struggling to see it"]
+  },
+  Open: {
+    because: ["the conversation went somewhere I didn't expect and I liked it", "I let my guard down and nothing bad happened", "I'm curious about something new and it doesn't feel threatening"],
+    stake: ["a relationship that gets deeper if I stay in this mode", "an idea that only becomes useful if I follow it honestly", "my own growth, which depends on staying teachable"],
+    need: ["to stay in this mode long enough to see what it produces", "to have the conversation I've been avoiding", "to follow the curiosity without needing to know where it leads"]
+  },
+  Inspired: {
+    because: ["I encountered something that made me see what was possible", "someone showed me who they are and I want to be like that", "something unlocked in me that had been stuck"],
+    stake: ["doing something with this before it evaporates", "a new direction I could take my work or my attention", "the belief that I have something worth creating"],
+    need: ["to act on this within the next hour, not the next month", "to protect this feeling from the first person who might dismiss it", "to write something down before the feeling outpaces the idea"]
+  },
+  Peaceful: {
+    because: ["for the moment, there's nothing that needs my urgent attention", "something resolved that had been pulling at me", "I'm exactly where I want to be, with exactly who I want to be with"],
+    stake: ["my ability to rest without guilt", "the relationships that created this — they need tending", "my sense of what I'm working toward when things aren't peaceful"],
+    need: ["to be fully here instead of waiting for the peace to end", "to express gratitude for this, even quietly", "to remember what created this and try to build more of it"]
+  },
+  Hopeful: {
+    because: ["something gave me reason to believe this could still go well", "I can see evidence that things are moving in the right direction", "I let myself imagine the good version and it felt possible, not naive"],
+    stake: ["my willingness to keep investing in what I'm hoping for", "the energy I need to push through the uncertain middle part", "the people I hope are hoping too"],
+    need: ["to hold this without squeezing it too tight", "to take one step that reflects the hope instead of waiting for certainty", "to share it with someone who could use it"]
+  },
+  Loving: {
+    because: ["I feel close to someone in a way that doesn't need words to explain", "I'm grateful for this person in a way that's hard to hold quietly", "I looked at someone and everything complicated fell away"],
+    stake: ["saying something before the moment passes", "the relationship itself, which grows or shrinks based on whether I tend it", "my ability to receive love as well as give it"],
+    need: ["to say something out loud, not just feel it", "to do one small thing that shows it", "to be fully present with this person right now"]
+  },
+
+  // Disgust branch
+  Avoidance: {
+    because: ["getting closer to this feels like a risk I'm not ready to take", "I've been in this situation before and the ending wasn't good", "every time I try to approach it, something in me pulls back"],
+    stake: ["whether I'm protecting myself wisely or just hiding", "an opportunity or relationship that requires me to get closer", "my own pattern — if I avoid too many things, the world gets smaller"],
+    need: ["to understand what specifically I'm afraid of about this", "one small step toward it, not the whole thing", "to decide consciously instead of just drifting away"]
+  },
+  Hesitant: {
+    because: ["I can see two ways forward and they both have real costs", "I'm waiting for more certainty that probably won't come", "my gut and my logic are saying different things"],
+    stake: ["the decision that's waiting for me while I hesitate", "my relationship with the person or process waiting on me", "my own confidence if I let hesitation become a habit"],
+    need: ["a deadline — mine or someone else's", "to separate the real reasons from the comfortable excuses", "to commit to something even if I'm not sure, and see what happens"]
+  },
+  Aversion: {
+    because: ["everything about this situation activates my defenses", "it goes against something I hold as a core value", "I've been in contact with it and I can feel the wrongness of it"],
+    stake: ["how long I remain in proximity to this", "my integrity if I stay without saying something", "my health — some things are worth strongly avoiding"],
+    need: ["to trust this reaction instead of talking myself out of it", "clear distance between me and the thing", "to say what I observe without needing to convince everyone"]
+  },
+  Disapproval: {
+    because: ["what I watched happen crossed a clear line for me", "I expected better from the person or system involved", "the gap between what was said and what was done is too wide"],
+    stake: ["whether I say something or stay silent and what that says about me", "a relationship where honesty is the only path forward", "my own standards — I can't claim them if I don't hold others to them"],
+    need: ["to be clear and direct without making it a lecture", "to focus on the behavior, not the whole person", "to decide what I want from this: change or just acknowledgment"]
+  },
+  Judgmental: {
+    because: ["I'm looking at someone and I can't stop cataloguing what's wrong", "I feel like my standards are being violated and the feeling won't quiet down", "something about them is triggering something in me I haven't examined"],
+    stake: ["the relationship — judgment without compassion poisons things quietly", "something about me that this reaction might be pointing toward", "my ability to stay curious instead of closing down"],
+    need: ["to ask what's underneath the judgment", "to get curious about their situation before I decide what I see", "to notice if I'm judging something in them that I'm afraid of in myself"]
+  },
+  Loathing: {
+    because: ["this goes so far against my values that proximity feels like a kind of harm", "the feeling has been building for a long time and it's settled into something solid", "I've tried to be fair about it and the conclusion keeps being the same"],
+    stake: ["my well-being if I stay in contact with this", "a decision about whether to remove myself or say something permanent", "my integrity in a situation where what I do reflects who I am"],
+    need: ["significant distance before I make any decisions", "to check whether this is about one thing or has become total", "to decide if I want to change anything or just protect myself"]
+  },
+  Awful: {
+    because: ["what happened sits wrong in every way I can examine it", "I feel it in my body as much as my head", "there's no reframing that makes this okay"],
+    stake: ["my trust in this situation or person going forward", "my sense of what I deserve in the spaces I occupy", "the decision I'll need to make about staying or leaving"],
+    need: ["to be honest that it was bad, not soften it for anyone", "time before I'm expected to be okay", "to name it clearly, even just to myself"]
+  },
+  Revulsion: {
+    because: ["I was exposed to something that hit something deep and instinctive", "the wrongness of it won't reduce no matter how I think about it", "it violated something about dignity I didn't know I held so strongly"],
+    stake: ["my sense of safety in this environment", "whether I can be present in this space again without residue", "what I decide to do with what I witnessed"],
+    need: ["to get out and get some air, space, different company", "to talk to someone whose values I trust", "to take some action, however small, in the opposite direction"]
+  },
+  Detestable: {
+    because: ["it represents everything I've worked to move away from", "looking at it clearly, there's nothing I can find that's redeemable", "it's been wrong for so long I can't separate it from the harm it's caused"],
+    stake: ["where I put my energy — do I fight this or move away from it", "my integrity in staying silent in a space that tolerates it", "my own moral clarity about what I stand for"],
+    need: ["to remove myself if I can't change it", "to decide what kind of opposition is worth it", "to not carry this alone"]
+  },
+  Disappointed: {
+    because: ["I expected more from someone I trusted", "I put real hope into this and it came back empty", "the outcome doesn't match the effort I put in"],
+    stake: ["my willingness to invest next time", "the relationship if the disappointment is between us", "my belief that things I care about can turn out well"],
+    need: ["to say I'm disappointed out loud, not just absorb it", "to understand if this was a failure of expectation or a failure of commitment", "to decide what, if anything, I want to ask for"]
+  },
+  Revolted: {
+    because: ["what I witnessed contradicts something basic about how people should be treated", "I had no way to prepare for what I saw or heard", "the feeling came fully formed — there was no gradual buildup"],
+    stake: ["my sense of safety in this context", "my trust in the people around me who didn't react", "what I'm willing to be a silent witness to"],
+    need: ["to voice it — even writing it down helps", "to be around people with the same baseline as mine", "to do something, even one small thing, that points the other way"]
+  },
+  Repugnant: {
+    because: ["something I've encountered violates my sense of what's decent", "I can't find any angle that makes it acceptable", "it confirms a fear I had and hoped wasn't true"],
+    stake: ["how I respond without making things worse", "my mental health if I dwell on it too long", "what this means for the larger situation I'm in"],
+    need: ["to give myself permission to walk away from this", "to voice it to someone who won't minimize it", "to focus on something that restores my sense of what's good"]
+  },
+
+  // Sad branch
+  Bored: {
+    because: ["nothing in reach feels like it deserves my attention", "I'm going through the motions without any of it meaning anything", "the same day is repeating and I can't find the variation"],
+    stake: ["my time — boredom that stays becomes drift", "something I used to care about that I'm slowly disconnecting from", "my need for growth, which isn't being met here"],
+    need: ["one new thing to be curious about", "to change one part of the routine", "to ask honestly whether this place or role still fits me"]
+  },
+  Indifferent: {
+    because: ["I've been disappointed here enough times that I stopped feeling it", "I used to care about this and somewhere along the way the caring stopped", "I can see reasons why this should matter to me but I can't feel them"],
+    stake: ["a relationship or role I'm quietly exiting without deciding to", "my own engagement with my life if this becomes my default mode", "whether someone notices and says something before the distance becomes permanent"],
+    need: ["to understand what caused the shutdown", "one small thing that's genuinely interesting, not just required", "to check whether I'm protecting myself or just disappearing"]
+  },
+  Apathetic: {
+    because: ["even the things I chose are starting to feel like obligations", "I've lost the thread of why any of this matters", "something drained the energy that used to make this feel worth it"],
+    stake: ["my sense of meaning, which has gone quiet", "my relationships if I stay in this fog too long", "my health — this kind of flatness can signal something that needs attention"],
+    need: ["to find out if this is tiredness, grief, or something else", "permission to want less for a while, not more", "one small thing that produces actual feeling, positive or negative"]
+  },
+  Lonely: {
+    because: ["I'm surrounded by people and still can't find the connection I'm looking for", "the people I want to be with aren't reachable right now", "I've been keeping my real thoughts to myself for too long"],
+    stake: ["my mental health if isolation becomes the pattern", "a friendship that's quietly going cold because I keep not reaching out", "my ability to trust people enough to let them in"],
+    need: ["to reach out to one person, even a short message", "to find one space where being known is possible", "to say something real to someone instead of staying at the surface"]
+  },
+  Isolated: {
+    because: ["the distance between me and other people feels physical even when they're close", "I've been withdrawing step by step and now I'm far from where I was", "the community I thought I had turned out to be less solid than I thought"],
+    stake: ["my wellbeing over the long term — isolation compounds", "a relationship that I could still repair if I moved now", "my belief that belonging is possible for me"],
+    need: ["a small, low-commitment way back into contact", "one person who already knows me well enough that I don't have to start from scratch", "to be honest that I've been absent and not pretend it was fine"]
+  },
+  Abandoned: {
+    because: ["someone I counted on left without explanation", "I reached out repeatedly and got silence", "I was there for them and when I needed them, they weren't there"],
+    stake: ["my trust in people going forward — this is the kind of wound that changes how you open up", "my sense of whether I'm worth staying for", "a grief that's real and deserves real acknowledgment"],
+    need: ["to hear that what happened was real and not in my head", "to grieve this fully before I decide what it means about people", "time before I'm expected to be okay with it"]
+  },
+  Despair: {
+    because: ["I've been trying for long enough that I don't know if I have more tries in me", "the gap between where I am and where I need to be feels uncrossable", "something happened that I can't see past right now"],
+    stake: ["my will to keep going — this needs attention, not patience", "the people who depend on me and need me to stay present", "my own life, which is worth fighting for even when it doesn't feel that way"],
+    need: ["to talk to someone — not text, actually talk", "to focus on today, just today, not the whole picture", "professional support if this feeling has been here for more than a few days"]
+  },
+  Vulnerable: {
+    because: ["I let someone see me honestly and now I'm waiting to see how they treat that", "something stripped away my usual defenses and I'm exposed", "I'm in a situation where I have less control than I need"],
+    stake: ["my trust in this person and whether openness was the right call", "my future willingness to be honest — this will either affirm or close that down", "something raw and true about me that I'm not sure I wanted visible"],
+    need: ["gentleness, especially from myself", "to know the person I opened to can be trusted with it", "to not regret having been real"]
+  },
+  Powerless: {
+    because: ["the outcome depends entirely on decisions I have no influence over", "I've tried every approach I have and none of them moved it", "something is happening to me that I cannot stop"],
+    stake: ["my sense of agency — this is a hard feeling to carry for long", "a situation that may require me to ask for help I haven't asked for yet", "my mental health if helplessness becomes the story I tell myself"],
+    need: ["to find one thing, however small, that I can actually affect", "to ask for help without framing it as failure", "to separate what's truly fixed from what still has some give"]
+  },
+  Guilty: {
+    because: ["I did something I knew wasn't right and I can't stop thinking about it", "I let someone down who was counting on me", "I took the easier path instead of the honest one"],
+    stake: ["my integrity — this keeps its grip until I address it", "the relationship with the person I harmed or failed", "my ability to forgive myself, which depends on facing this honestly"],
+    need: ["to make it right if making it right is still possible", "to apologize — directly, specifically, without hedging", "to decide what I want to do differently and mean it"]
+  },
+  Ashamed: {
+    because: ["I acted in a way that contradicts who I want to be", "people saw something about me that I'm not ready to claim", "I feel the gap between my values and my behavior and it's wider than I can explain"],
+    stake: ["my sense of who I am — shame speaks directly to identity", "whether I address this or let it shape me from the inside silently", "a relationship where trust was damaged"],
+    need: ["to distinguish between guilt (I did something bad) and shame (I am bad)", "to talk to someone I respect about what happened", "to take one step toward the person I want to be"]
+  },
+  Remorseful: {
+    because: ["I caused harm I didn't intend and the intention doesn't make the harm smaller", "I had a chance to do the right thing and chose the wrong one", "I've been carrying this and the weight isn't getting lighter on its own"],
+    stake: ["the relationship I damaged and whether it can be restored", "my integrity if I acknowledge this only privately and never to the person who deserves to hear it", "my ability to move forward — remorse without action becomes a trap"],
+    need: ["to say what happened clearly to the person affected", "to ask what repair looks like, not assume I already know", "to forgive myself after I've made it right, not before"]
+  }
+};
+
+const _defaultReflectionHints = {
+  because: ["something that matters to me is involved", "it caught me off guard", "I wasn't expecting to feel this way"],
+  stake: ["something I care about", "my sense of what's important right now", "a relationship or situation that needs attention"],
+  need: ["time to sit with this", "to talk it through with someone", "to understand what's driving the feeling"]
+};
+
+let _reflectionCycles = [];
+
+function clearReflectionCycles() {
+  _reflectionCycles.forEach(clearInterval);
+  _reflectionCycles = [];
+}
+
+function _cyclePlaceholder(input, hints) {
+  if (!hints || hints.length === 0) return;
+  let i = 0;
+  input.placeholder = hints[0];
+  const id = setInterval(() => {
+    if (!input.value) {
+      i = (i + 1) % hints.length;
+      input.placeholder = hints[i];
+    }
+  }, 3600);
+  _reflectionCycles.push(id);
+}
+
+function showReflectionCard(name) {
+  const card = document.querySelector("#reflection-card");
+  if (!card) return;
+
+  clearReflectionCycles();
+
+  const emotionEl = document.querySelector("#reflection-emotion");
+  if (emotionEl) emotionEl.textContent = name.toLowerCase();
+
+  const becauseInput = document.querySelector("#reflection-because");
+  const stakeInput  = document.querySelector("#reflection-stake");
+  const needInput   = document.querySelector("#reflection-need");
+  if (becauseInput) becauseInput.value = "";
+  if (stakeInput)   stakeInput.value   = "";
+  if (needInput)    needInput.value    = "";
+
+  const hints = reflectionHints[name] || _defaultReflectionHints;
+  if (becauseInput) _cyclePlaceholder(becauseInput, hints.because);
+  if (stakeInput)   _cyclePlaceholder(stakeInput,   hints.stake);
+  if (needInput)    _cyclePlaceholder(needInput,     hints.need);
+
+  card.style.setProperty("--lesson-color", state.color || "#e65f42");
+  card.hidden = false;
 }

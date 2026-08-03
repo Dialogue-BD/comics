@@ -144,6 +144,26 @@
           </section>
         </section>
 
+        <!-- SELF-REFLECTION CARD -->
+        <section class="reflection-card" id="reflection-card" aria-labelledby="reflection-heading" hidden>
+          <p class="section-kicker">Self-Reflection</p>
+          <h2 class="reflection-card__heading" id="reflection-heading">Put it into words</h2>
+          <div class="reflection-fields">
+            <div class="reflection-row">
+              <label class="reflection-label" for="reflection-because">I feel <strong id="reflection-emotion">…</strong> because</label>
+              <input type="text" id="reflection-because" class="reflection-input" autocomplete="off" spellcheck="true" placeholder="">
+            </div>
+            <div class="reflection-row">
+              <label class="reflection-label" for="reflection-stake">What's really at stake though is</label>
+              <input type="text" id="reflection-stake" class="reflection-input" autocomplete="off" spellcheck="true" placeholder="">
+            </div>
+            <div class="reflection-row">
+              <label class="reflection-label" for="reflection-need">I need</label>
+              <input type="text" id="reflection-need" class="reflection-input" autocomplete="off" spellcheck="true" placeholder="">
+            </div>
+          </div>
+        </section>
+
         <!-- DEFINITION & REFERENCE CARD (BELOW DRILL TRANSCRIPT) -->
         <section class="definition-card" id="definition-card" aria-labelledby="definition-heading" hidden>
           <div class="definition-card__header">
@@ -247,6 +267,6 @@
       </main>
     </div>
 
-    <script src="app.js?v=flooding8"></script>
+    <script src="app.js?v=flooding9"></script>
   </body>
 </html>
