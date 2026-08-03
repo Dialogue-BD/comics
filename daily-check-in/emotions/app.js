@@ -519,11 +519,11 @@ const emotionFloodingData = {
     collocations: ["feel fear", "deep fear", "overcome fear", "fear of failure", "constant fear"],
     colligations: ["fear of doing something", "in fear for someone", "fear that something will happen", "driven by fear to act", "no fear about the future"],
     distinctions: [
-      "Fear vs. Anxiety: Fear reacts to immediate, present danger; anxiety worries about uncertain future threats.",
-      "Fear vs. Terror: Fear is the general awareness of danger; terror is extreme, acute, overwhelming dread.",
-      "Fear vs. Surprise: Fear expects harm or pain; surprise simply reacts to something unexpected.",
-      "Fear vs. Panic: Fear is an emotional state; panic is sudden, unreasoning physical action caused by fear.",
-      "Fear vs. Caution: Fear can freeze or control you; caution is a deliberate choice to act safely."
+      "Fear isn't just being anxious, it's reacting to immediate danger right in front of you.",
+      "Feeling fear is more urgent and immediate than feeling nervous.",
+      "Fear is less about future uncertainty and more about real-time threat.",
+      "Being afraid isn't being weak, it's your body's natural survival signal.",
+      "Fear is more acute and physical than general concern."
     ],
     dialogue: [
       "“I won't lie, my heart was in my throat the entire time I was up on that stage.”",
@@ -537,11 +537,11 @@ const emotionFloodingData = {
     collocations: ["feel anxious", "socially anxious", "anxious thought", "anxious energy", "deeply anxious"],
     colligations: ["anxious about the exam", "anxious to succeed", "feel anxious when speaking", "become anxious if ignored", "too anxious to sleep"],
     distinctions: [
-      "Anxious vs. Scared: Anxiety focuses on future uncertainty; fear reacts to immediate real-time danger.",
-      "Anxious vs. Nervous: Nervousness is brief jitters before an event; anxiety is persistent, internal apprehension.",
-      "Anxious vs. Worried: Worrying is a mental thought loop; feeling anxious involves physical tension and restlessness.",
-      "Anxious vs. Overwhelmed: Being anxious is anticipating trouble; being overwhelmed is having too much to process at once.",
-      "Anxious vs. Terrified: Terrified is acute, unbearable dread; anxious is moderate, uneasy anticipation."
+      "Being anxious isn't just being scared, it's feeling like something bad might happen later.",
+      "Feeling anxious is more persistent than a quick moment of nervousness.",
+      "Anxiety is less about immediate danger and more about future uncertainty.",
+      "Being anxious isn't a sudden action, it's a long-lasting internal tension.",
+      "Feeling anxious is more intense than just worrying about a problem."
     ],
     dialogue: [
       "“I've been on pins and needles all morning waiting for the test results.”",
@@ -555,11 +555,11 @@ const emotionFloodingData = {
     collocations: ["feel happy", "genuinely happy", "happy memory", "happy moment", "extremely happy"],
     colligations: ["happy about the news", "happy to help", "feel happy when together", "make someone happy", "so happy that I smiled"],
     distinctions: [
-      "Happy vs. Excited: Happiness can be peaceful and contented; excitement is high-energy anticipation.",
-      "Happy vs. Joyful: Happiness is an everyday pleasing state; joy is deep, radiant, spiritual warmth.",
-      "Happy vs. Content: Contentment means needing nothing more; happiness often includes active pleasure.",
-      "Happy vs. Relieved: Relief is pleasure after pain or worry ends; happiness is positive well-being.",
-      "Happy vs. Ecstatic: Ecstatic is intense, overwhelming joy; happy is calm and balanced."
+      "Being happy isn't just feeling excited, it's a calm feeling of well-being and satisfaction.",
+      "Feeling happy is more steady and lasting than a quick thrill.",
+      "Happiness is less about big achievements and more about everyday comfort.",
+      "Being happy isn't having zero problems, it's feeling good in the present moment.",
+      "Feeling happy is more calm and grounded than being ecstatic."
     ],
     dialogue: [
       "“I'm over the moon about getting accepted into the exchange program!”",
@@ -573,11 +573,11 @@ const emotionFloodingData = {
     collocations: ["feel anger", "blind anger", "suppress anger", "express anger", "righteous anger"],
     colligations: ["anger at someone", "anger over the decision", "feel anger when cheated", "channel anger into action", "filled with anger"],
     distinctions: [
-      "Anger vs. Hurt: Anger pushes against a threat or wrongdoing; hurt focuses on internal pain.",
-      "Anger vs. Frustration: Frustration comes from being blocked; anger comes from feeling mistreated.",
-      "Anger vs. Fury: Anger is strong disapproval; fury is intense, explosive, destructive anger.",
-      "Anger vs. Annoyance: Annoyance is minor irritation; anger is a powerful emotional objection.",
-      "Anger vs. Resentment: Anger is an immediate reaction; resentment is harbored, long-term bitterness."
+      "Anger isn't just being annoyed, it's a strong emotional push against something unfair.",
+      "Feeling angry is more active and forward-moving than feeling hurt inside.",
+      "Anger is less about feeling bad and more about wanting to fix a wrong.",
+      "Being mad isn't losing control, it's standing up when a boundary is broken.",
+      "Fury is much more explosive and intense than everyday anger."
     ],
     dialogue: [
       "“I was seeing red when I saw how unfairly they treated her.”",
@@ -591,11 +591,11 @@ const emotionFloodingData = {
     collocations: ["feel sad", "deeply sad", "sad story", "sad truth", "heartbreakingly sad"],
     colligations: ["sad about the loss", "sad to leave", "feel sad when alone", "make someone sad", "too sad to speak"],
     distinctions: [
-      "Sad vs. Depressed: Sadness is a natural reaction to loss; depression is a prolonged clinical state.",
-      "Sad vs. Lonely: Sadness is emotional pain; loneliness is a specific ache for human connection.",
-      "Sad vs. Disappointed: Disappointment is unmet expectation; sadness is deeper emotional sorrow.",
-      "Sad vs. Grieving: Sadness is a general mood; grief is intense processing of profound loss.",
-      "Sad vs. Tired: Sadness drains emotional spirit; tiredness affects physical body energy."
+      "Sadness isn't just being tired, it's an emotional reaction to loss or pain.",
+      "Feeling sad is more about internal pain, whereas feeling lonely is wanting connection.",
+      "Sadness is less about immediate anger and more about quiet emotional processing.",
+      "Being sad isn't giving up, it's letting yourself feel what you lost.",
+      "Feeling down is less intense than deep grief."
     ],
     dialogue: [
       "“I've been feeling down in the dumps ever since my roommate moved out.”",
@@ -609,11 +609,11 @@ const emotionFloodingData = {
     collocations: ["total surprise", "pleasant surprise", "caught by surprise", "look of surprise", "gasp in surprise"],
     colligations: ["surprised by the news", "surprised to hear", "feel surprised when", "taken by surprise", "much to my surprise"],
     distinctions: [
-      "Surprise vs. Shock: Surprise can be pleasant or mild; shock is jarring and hard to process.",
-      "Surprise vs. Astonishment: Surprise is any unexpected event; astonishment is overwhelming wonder.",
-      "Surprise vs. Fear: Surprise has neutral orientation; fear expects danger or pain.",
-      "Surprise vs. Confusion: Surprise is immediate reaction; confusion is ongoing lack of understanding.",
-      "Surprise vs. Awe: Awe combines surprise with deep reverence or respect."
+      "Surprise isn't always scary, it's just your mind reacting to the unexpected.",
+      "Being surprised is more short-lived than being confused.",
+      "Surprise is less about danger and more about sudden new information.",
+      "Being shocked is much more jarring than simply being surprised.",
+      "Surprise happens in a second, whereas curiosity lasts longer."
     ],
     dialogue: [
       "“Out of the blue, she called me up after five years!”",
@@ -627,11 +627,11 @@ const emotionFloodingData = {
     collocations: ["deep disgust", "feel disgust", "look of disgust", "moral disgust", "utter disgust"],
     colligations: ["disgust at the behavior", "disgusted by the smell", "turn away in disgust", "filled with disgust", "express disgust towards"],
     distinctions: [
-      "Disgust vs. Anger: Disgust wants to push away or recoil; anger wants to confront or fight.",
-      "Disgust vs. Dislike: Dislike is mild preference; disgust involves physical or visceral repulsion.",
-      "Disgust vs. Contempt: Disgust rejects something foul; contempt looks down on someone as inferior.",
-      "Disgust vs. Fear: Disgust recoils from contamination; fear retreats from physical danger.",
-      "Disgust vs. Aversion: Disgust is acute emotional revulsion; aversion is long-term avoidance."
+      "Disgust isn't just disliking something, it's a strong physical urge to recoil.",
+      "Feeling disgust is more physical and visceral than just being angry.",
+      "Disgust is less about fighting back and more about keeping away from harm.",
+      "Being revolted is much stronger than just feeling uncomfortable.",
+      "Disgust is more about physical repulsion than moral disagreement."
     ],
     dialogue: [
       "“Ugh, that smells so foul it turned my stomach immediately.”",
@@ -665,11 +665,11 @@ function getFloodingData(name) {
       `so ${word} that it shows`
     ],
     distinctions: [
-      `${name} vs. ${info[4]}: ${name} occurs when ${info[0]}, whereas ${contrast} is distinct because ${info[5]}.`,
-      `${name} Intensity: Its strength is typically ${info[1]}, triggering specific emotional responses when ${info[2]}.`,
-      `Somatic Signal: Body awareness reveals ${name} when you ${info[3]}.`,
-      `Semantic Domain: ${name} maps to internal experiences rather than simple external reactions.`,
-      `Usage Boundary: Use ${word} when focusing on personal state rather than general conditions.`
+      `${name} isn't just ${contrast}, it's ${info[0]}.`,
+      `Feeling ${word} is more ${info[1]} than simply feeling ${contrast}.`,
+      `Being ${word} is less about immediate danger and more about when ${info[2]}.`,
+      `You feel ${word} when your body starts to ${info[3]}.`,
+      `${name} is more focused on internal experience than ${contrast}.`
     ],
     dialogue: [
       `“To be honest, I'm feeling quite ${word} about how things are going.”`,
@@ -684,31 +684,14 @@ function getFloodingData(name) {
 function sentencesFor(name) {
   const flooding = getFloodingData(name);
 
+  const collocationsAndColligations = [
+    ...flooding.collocations,
+    ...flooding.colligations
+  ];
+
   const lessons = {
-    A1: [
-      `Collocation 1: ${flooding.collocations[0]}`,
-      `Collocation 2: ${flooding.collocations[1]}`,
-      `Collocation 3: ${flooding.collocations[2]}`,
-      `Collocation 4: ${flooding.collocations[3]}`,
-      `Collocation 5: ${flooding.collocations[4]}`,
-      `Colligation 1: ${flooding.colligations[0]}`,
-      `Colligation 2: ${flooding.colligations[1]}`,
-      `Colligation 3: ${flooding.colligations[2]}`,
-      `Colligation 4: ${flooding.colligations[3]}`,
-      `Colligation 5: ${flooding.colligations[4]}`
-    ],
-    A2: [
-      `Collocation 1: ${flooding.collocations[0]}`,
-      `Collocation 2: ${flooding.collocations[1]}`,
-      `Collocation 3: ${flooding.collocations[2]}`,
-      `Collocation 4: ${flooding.collocations[3]}`,
-      `Collocation 5: ${flooding.collocations[4]}`,
-      `Colligation 1: ${flooding.colligations[0]}`,
-      `Colligation 2: ${flooding.colligations[1]}`,
-      `Colligation 3: ${flooding.colligations[2]}`,
-      `Colligation 4: ${flooding.colligations[3]}`,
-      `Colligation 5: ${flooding.colligations[4]}`
-    ],
+    A1: collocationsAndColligations,
+    A2: collocationsAndColligations,
     B1: flooding.distinctions.slice(0, 5),
     B2: flooding.distinctions,
     C1: flooding.dialogue.slice(0, 5),
@@ -939,9 +922,11 @@ function updateGlobalAudioButton() {
 }
 
 function utter(text, onStart, onEnd, emphasis = false, onBoundary = null) {
-  const item = new SpeechSynthesisUtterance(text);
+  const cleanText = String(text || "").trim();
+  const formatted = /[.!?]$/.test(cleanText) ? cleanText : `${cleanText}.`;
+  const item = new SpeechSynthesisUtterance(formatted);
   item.lang = "en-US";
-  item.rate = 0.95;
+  item.rate = 0.92;
   item.pitch = emphasis ? 1.04 : 1;
   const voice = chooseVoice();
   if (voice) item.voice = voice;
