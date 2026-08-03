@@ -37,6 +37,23 @@
           <div class="step" data-step="3"><span>3</span><strong>Find your word</strong></div>
         </nav>
 
+        <section class="cefr-bar-container" aria-label="CEFR level selection">
+          <div class="cefr-section">
+            <div class="cefr-section__label">
+              <span>Choose your English level</span>
+              <small>Changes the aural input flooding activity (Collocations, Semantic Web, or Native Dialogue).</small>
+            </div>
+            <div class="cefr-selector" id="cefr-selector" role="group" aria-label="Choose a CEFR English level">
+              <button type="button" data-level="A1" aria-pressed="false"><strong>A1</strong><span>Beginner</span></button>
+              <button type="button" data-level="A2" aria-pressed="true"><strong>A2</strong><span>Elementary</span></button>
+              <button type="button" data-level="B1" aria-pressed="false"><strong>B1</strong><span>Intermediate</span></button>
+              <button type="button" data-level="B2" aria-pressed="false"><strong>B2</strong><span>Upper int.</span></button>
+              <button type="button" data-level="C1" aria-pressed="false"><strong>C1</strong><span>Advanced</span></button>
+              <button type="button" data-level="C2" aria-pressed="false"><strong>C2</strong><span>Proficient</span></button>
+            </div>
+          </div>
+        </section>
+
         <section class="experience" aria-label="Interactive emotions check-in">
           <div class="wheel-card">
             <div class="wheel-card__topline">
@@ -82,19 +99,19 @@
 
         </section>
 
+        <!-- AURAL FLOODING DRILLS TRANSCRIPT (DIRECTLY UNDER WHEEL) -->
         <section class="transcript-card" id="transcript-card" aria-labelledby="transcript-heading" hidden>
           <div class="transcript-card__header">
             <div>
-              <p class="section-kicker">Follow the voice</p>
+              <p class="section-kicker">Aural Input Flooding Exercise</p>
               <div class="selected-heading">
                 <span class="selected-emoji" id="selected-emoji" aria-hidden="true">😊</span>
                 <h2 id="selected-word">Happy</h2>
                 <span class="pronunciation" id="pronunciation">/ˈhæp.i/</span>
               </div>
               <p class="breadcrumb" id="breadcrumb"></p>
-              <p class="bangla-definition" id="bangla-definition" lang="bn"></p>
             </div>
-            <button class="sound-orb" id="play-all" type="button" aria-label="Listen to this word and all example sentences">
+            <button class="sound-orb" id="play-all" type="button" aria-label="Listen to the input flooding exercise">
               <span class="sound-orb__icon" aria-hidden="true">▶</span>
               <span class="sound-orb__label">Listen</span>
             </button>
@@ -102,20 +119,6 @@
           <div class="audio-controls" aria-label="Audio controls">
             <button type="button" class="stop-button" id="stop-audio">■ Stop</button>
             <p class="transcript-status" id="transcript-status" aria-live="polite">Ready to listen</p>
-          </div>
-          <div class="cefr-section">
-            <div class="cefr-section__label">
-              <span>Choose your English level</span>
-              <small>Changes the aural input flooding activity (Collocations, Semantic Web, or Native Dialogue).</small>
-            </div>
-            <div class="cefr-selector" id="cefr-selector" role="group" aria-label="Choose a CEFR English level">
-              <button type="button" data-level="A1" aria-pressed="false"><strong>A1</strong><span>Beginner</span></button>
-              <button type="button" data-level="A2" aria-pressed="true"><strong>A2</strong><span>Elementary</span></button>
-              <button type="button" data-level="B1" aria-pressed="false"><strong>B1</strong><span>Intermediate</span></button>
-              <button type="button" data-level="B2" aria-pressed="false"><strong>B2</strong><span>Upper int.</span></button>
-              <button type="button" data-level="C1" aria-pressed="false"><strong>C1</strong><span>Advanced</span></button>
-              <button type="button" data-level="C2" aria-pressed="false"><strong>C2</strong><span>Proficient</span></button>
-            </div>
           </div>
           <h3 id="transcript-heading">Listening transcript</h3>
           <div class="live-transcript" id="live-transcript" aria-live="off"></div>
@@ -126,6 +129,18 @@
             </div>
             <div class="bangla-transcript__lines" id="bangla-transcript" aria-live="polite"></div>
           </section>
+        </section>
+
+        <!-- DEFINITION & REFERENCE CARD (BELOW DRILL TRANSCRIPT) -->
+        <section class="definition-card" id="definition-card" aria-labelledby="definition-heading" hidden>
+          <div class="definition-card__header">
+            <div>
+              <p class="section-kicker">Dictionary & Usage Reference</p>
+              <h2 id="definition-heading">Meaning & Reference</h2>
+              <p class="bangla-definition" id="bangla-definition" lang="bn"></p>
+            </div>
+          </div>
+          <div class="definition-body" id="definition-body"></div>
           <div class="share-prompt">
             <label for="reason"><span>Now tell the group</span>I feel <strong id="prompt-word">happy</strong> because…</label>
             <textarea id="reason" rows="2" maxlength="220" placeholder="Write a few words to help you remember."></textarea>
@@ -219,6 +234,6 @@
       </main>
     </div>
 
-    <script src="app.js?v=flooding2"></script>
+    <script src="app.js?v=flooding3"></script>
   </body>
 </html>

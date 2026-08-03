@@ -784,6 +784,38 @@ function updateLesson(name, trail, color) {
   document.querySelector("#reason").placeholder = `I feel ${name.toLowerCase()} because…`;
 
   renderTranscript(name);
+  renderDefinitionSection(name);
+}
+
+function renderDefinitionSection(name) {
+  const definitionCard = document.querySelector("#definition-card");
+  const definitionBody = document.querySelector("#definition-body");
+  if (!definitionCard || !definitionBody) return;
+  definitionCard.hidden = false;
+  definitionCard.style.setProperty("--lesson-color", state.color);
+
+  const info = emotionInfo[name] || [`you feel ${name.toLowerCase()}`, "medium", "something happens", "notice a change", "happy", "the two emotions describe different experiences", `I feel ${name.toLowerCase()} right now`];
+  const word = name.toLowerCase();
+  const contrastName = info[4].charAt(0).toUpperCase() + info[4].slice(1);
+  const contrastTerm = banglaTermFor(info[4]);
+
+  document.querySelector("#definition-heading").textContent = `${name} — Meaning & Reference`;
+
+  definitionBody.replaceChildren();
+
+  const blocks = [
+    { title: "Core Meaning", text: `<strong>${name}</strong> means ${info[0]}. It is typically a <em>${info[1]}</em> feeling.` },
+    { title: "When You Feel It & Body Signals", text: `You may feel <strong>${word}</strong> when ${info[2]}. Physically, your body may ${info[3]}.` },
+    { title: "Distinction vs. Neighboring Feeling", text: `Do not confuse <strong>${word}</strong> with <strong>${contrastName}</strong> (${contrastTerm}). ${info[5]}.` },
+    { title: "Example Sentence", text: `“${info[6]}.”`, isExample: true }
+  ];
+
+  blocks.forEach(block => {
+    const card = document.createElement("div");
+    card.className = `def-block${block.isExample ? " def-block--example" : ""}`;
+    card.innerHTML = `<h4>${block.title}</h4><p>${block.text}</p>`;
+    definitionBody.append(card);
+  });
 }
 
 function renderTranscript(name) {
@@ -1396,6 +1428,8 @@ document.querySelector("#start-over").addEventListener("click", () => {
   state.secondary = null;
   state.selected = null;
   transcriptCard.hidden = true;
+  const definitionCard = document.querySelector("#definition-card");
+  if (definitionCard) definitionCard.hidden = true;
   liveTranscript.replaceChildren();
   transcriptRows = [];
   setWheelRotation(0);
