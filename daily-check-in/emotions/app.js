@@ -377,6 +377,143 @@ function ringPolygon(inner, outer, start, end) {
   return `polygon(${points.map(([x,y]) => `${x.toFixed(2)}% ${y.toFixed(2)}%`).join(",")})`;
 }
 
+function mixHex(base, target, amount) {
+  const from = base.replace("#", "");
+  const to = target.replace("#", "");
+  const channels = [0, 2, 4].map(index => {
+    const start = parseInt(from.slice(index, index + 2), 16);
+    const end = parseInt(to.slice(index, index + 2), 16);
+    return Math.round(start + (end - start) * amount).toString(16).padStart(2, "0");
+  });
+  return `#${channels.join("")}`;
+}
+
+function primaryFill(color) {
+  return mixHex(color, "#ffffff", 0.16);
+}
+
+function secondaryFill(color, branchIndex) {
+  return mixHex(color, "#ffffff", [0.12, 0.30, 0.48, 0.66][branchIndex]);
+}
+
+function tertiaryFill(parentShade, siblingIndex) {
+  return mixHex(parentShade, "#ffffff", siblingIndex === 0 ? 0.10 : 0.21);
+}
+
+function makeSector({ name, translation = "", color, start, end, inner, outer, level, selected, muted, delay = 0 }) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = `sector sector--${level} is-new${selected ? " is-selected" : ""}${muted ? " is-muted" : ""}`;
+  button.style.setProperty("--sector-color", color);
+  const labelRadius = level === "primary" ? 11.85 : (inner + outer) / 2;
+  const middleAngle = (start + end) / 2;
+  const [labelX, labelY] = point(labelRadius, middleAngle);
+  let textRotation = ((middleAngle + 180) % 360 + 360) % 360 - 180;
+  if (textRotation > 90) textRotation -= 180;
+  if (textRotation < -90) textRotation += 180;
+  button.style.setProperty("--label-x", `${labelX}%`);
+  button.style.setProperty("--label-y", `${labelY}%`);
+  button.style.setProperty("--text-rotation", `${textRotation}deg`);
+  button.style.clipPath = ringPolygon(inner, outer, start, end);
+  button.style.animationDelay = `${delay}ms`;
+  button.setAttribute("aria-label", `${name}${translation ? `, ${translation}` : ""}. Select to hear this emotion.`);
+  button.innerHTML = `<span class="sector__label"><span class="sector__main"><span class="sector__emoji" aria-hidden="true">${emotionEmojis[name] || "🙂"}</span><span class="sector__word">${name}</span></span>${translation ? `<span class="sector__bangla" lang="bn">${translation}</span>` : ""}</span>`;
+  return button;
+}
+
+function renderWheel() {
+  wheel.replaceChildren();
+  wheel.classList.toggle("is-emoji-only", state.emojiOnly);
+  const fragment = document.createDocumentFragment();
+
+  wheelData.forEach((primary, pIndex) => {
+    const primarySelected = state.primary === pIndex;
+    const mainColor = primaryFill(primary.color);
+    const button = makeSector({
+      name: primary.name, translation: primaryBangla[primary.name].word, color: mainColor, start: primary.start, end: primary.start + 60,
+      inner: 0, outer: 17.2, level: "primary", selected: primarySelected, muted: state.primary !== null && !primarySelected
+    });
+    button.addEventListener("click", () => selectPrimary(pIndex));
+    fragment.append(button);
+
+    if (primarySelected) {
+      primary.children.forEach((secondary, sIndex) => {
+        const start = primary.start + sIndex * 15;
+        const secondarySelected = state.secondary === sIndex;
+        const branchColor = secondaryFill(primary.color, sIndex);
+        const secondButton = makeSector({
+          name: secondary.name, color: branchColor, start, end: start + 15,
+          inner: 17.6, outer: 31.2, level: "secondary", selected: secondarySelected,
+          muted: state.secondary !== null && !secondarySelected, delay: sIndex * 35
+        });
+        secondButton.addEventListener("click", () => selectSecondary(pIndex, sIndex));
+        fragment.append(secondButton);
+      });
+
+      if (state.secondary !== null) {
+        primary.children.forEach((secondary, sIndex) => {
+          const branchColor = secondaryFill(primary.color, sIndex);
+          secondary.children.forEach((name, tIndex) => {
+            const start = primary.start + sIndex * 15 + tIndex * 7.5;
+            const selected = state.selected === name;
+            const thirdButton = makeSector({
+              name, color: tertiaryFill(branchColor, tIndex), start, end: start + 7.5, inner: 31.6, outer: 48,
+              level: "tertiary", selected, muted: state.secondary !== sIndex, delay: (sIndex * 2 + tIndex) * 28
+            });
+            thirdButton.addEventListener("click", () => selectTertiary(pIndex, sIndex, name));
+            fragment.append(thirdButton);
+          });
+        });
+      }
+    }
+  });
+
+  wheel.append(fragment);
+  renderMobileChoices();
+}
+
+function selectPrimary(index) {
+  stopSpeech();
+  state.primary = index;
+  state.secondary = null;
+  state.selected = wheelData[index].name;
+  updateLesson(wheelData[index].name, [wheelData[index].name], wheelData[index].color);
+  renderWheel();
+  setStep(2, "Now choose a more specific feeling");
+  if (state.autoPlay) speakLesson();
+}
+
+function selectSecondary(primaryIndex, secondaryIndex) {
+  stopSpeech();
+  state.primary = primaryIndex;
+  state.secondary = secondaryIndex;
+  const primary = wheelData[primaryIndex];
+  const secondary = primary.children[secondaryIndex];
+  state.selected = secondary.name;
+  updateLesson(secondary.name, [primary.name, secondary.name], primary.color);
+  renderWheel();
+  setStep(3, "Choose the most exact word — or keep this one");
+  if (state.autoPlay) speakLesson();
+}
+
+function selectTertiary(primaryIndex, secondaryIndex, name) {
+  stopSpeech();
+  state.primary = primaryIndex;
+  state.secondary = secondaryIndex;
+  state.selected = name;
+  const primary = wheelData[primaryIndex];
+  const secondary = primary.children[secondaryIndex];
+  updateLesson(name, [primary.name, secondary.name, name], primary.color);
+  renderWheel();
+  setStep(3, "You found a precise feeling word");
+  if (state.autoPlay) speakLesson();
+}
+
+function setStep(step, instruction) {
+  document.querySelectorAll(".step").forEach(el => el.classList.toggle("is-active", Number(el.dataset.step) <= step));
+  document.querySelector("#wheel-instruction").textContent = instruction;
+}
+
 const emotionFloodingData = {
   Fear: {
     collocations: ["feel fear", "deep fear", "overcome fear", "fear of failure", "constant fear"],
