@@ -1057,6 +1057,422 @@ const emotionFloodingData = {
   }
 };
 
+const customC2Data = {
+  Frightened: [
+    `"I jumped clean out of my skin when the door slammed."`,
+    `"She went white as a sheet the moment she saw the shadow."`,
+    `"He bolted out of there like a bat out of hell."`,
+    `"My heart was hammering so hard I thought it would come through my chest."`,
+    `"I was so frightened I practically flew to the other side of the room."`
+  ],
+  Mad: [
+    `"I completely lost my cool when I heard what had happened."`,
+    `"That was the last straw—I finally blew my top."`,
+    `"He flew off the handle over the tiniest little thing."`,
+    `"I had to walk away before I said something I'd seriously regret."`,
+    `"She was absolutely hopping mad and not hiding it one bit."`
+  ],
+  Enraged: [
+    `"He went absolutely ballistic when he found out."`,
+    `"I hit the roof when I saw what they'd done behind our backs."`,
+    `"She was fit to be tied by the end of that meeting."`,
+    `"He was absolutely livid and not even trying to hide it."`,
+    `"I was so enraged I could barely see straight."`
+  ],
+  Furious: [
+    `"I was absolutely seething when I finally got off that call."`,
+    `"She was spitting feathers by the time he showed up."`,
+    `"I was so furious I had to leave before I completely lost it."`,
+    `"He was steaming—you could practically see smoke coming out his ears."`,
+    `"They were up in arms the moment the decision came down."`
+  ],
+  Hurt: [
+    `"That really cut me to the quick, I won't lie."`,
+    `"What she said knocked the wind right out of me."`,
+    `"It stings more because it came from someone I actually trusted."`,
+    `"That hit me right where it hurts."`,
+    `"I'm still licking my wounds over that one."`
+  ],
+  Devastated: [
+    `"When I heard, my whole world just came crashing down."`,
+    `"She was completely gutted—it took weeks for her to come around."`,
+    `"He fell apart at the seams after the separation."`,
+    `"I was absolutely floored—I couldn't even form a sentence."`,
+    `"It pulled the rug completely out from under everything we'd built."`
+  ],
+  Embarrassed: [
+    `"I wanted the ground to open up and swallow me whole."`,
+    `"My face went bright red—I must have looked absolutely ridiculous."`,
+    `"I could have died on the spot, honestly."`,
+    `"I was absolutely mortified the moment the words left my mouth."`,
+    `"I'm still cringing about it weeks later."`
+  ],
+  Threatened: [
+    `"My hackles went up the moment he walked into the room."`,
+    `"Every alarm bell in my head started going off at once."`,
+    `"I felt like I was being backed into a corner with nowhere to go."`,
+    `"Something about the whole setup put me immediately on edge."`,
+    `"I kept my guard up all evening—something felt very off."`
+  ],
+  Jealous: [
+    `"The green-eyed monster really got the better of me that night."`,
+    `"I couldn't help feeling a pang every time they were together."`,
+    `"My nose was well out of joint when she got the role I wanted."`,
+    `"I hate to admit it, but I was absolutely green with envy."`,
+    `"I kept comparing myself and it was eating me alive."`
+  ],
+  Distant: [
+    `"I was there in body but not in spirit the whole evening."`,
+    `"I just wasn't present—I had one foot out the door mentally."`,
+    `"I phoned it in all week without really knowing why."`,
+    `"She drifted off somewhere in her own world and we couldn't reach her."`,
+    `"He was miles away every time we tried to talk to him."`
+  ],
+  Suspicious: [
+    `"I smelled a rat the moment she changed her story."`,
+    `"Something about the whole thing just didn't add up."`,
+    `"My gut was screaming that something wasn't right."`,
+    `"I had a sneaking suspicion something was going on behind the scenes."`,
+    `"He kept giving me the runaround, which only made things worse."`
+  ],
+  Withdrawn: [
+    `"She retreated into her shell and wouldn't let anyone in."`,
+    `"He went completely quiet and put up walls around himself."`,
+    `"I pulled back from everyone for a while—I just needed the space."`,
+    `"She shut down the moment things got too intense."`,
+    `"He was present physically but completely closed off inside."`
+  ],
+  Inadequate: [
+    `"I feel like I'm totally out of my depth in these meetings."`,
+    `"It's like I'm always punching above my weight and barely keeping up."`,
+    `"I was in way over my head and everyone seemed to know it."`,
+    `"I felt like a complete fraud sitting at that table."`,
+    `"No matter how hard I tried, I just couldn't measure up."`
+  ],
+  Inferior: [
+    `"I always feel like the odd one out when everyone else just gets it."`,
+    `"I spent the whole evening feeling like second fiddle to everyone there."`,
+    `"It's like I don't belong in the room—they're just on a different level."`,
+    `"I constantly felt like I had to prove myself just to be taken seriously."`,
+    `"Next to her, I felt completely small and invisible."`
+  ],
+  Rejected: [
+    `"I got the cold shoulder from the whole group without any explanation."`,
+    `"Being left out in the cold like that really knocks you sideways."`,
+    `"I felt like an outsider looking in through the window."`,
+    `"The door was shut in my face before I even got a chance to speak."`,
+    `"You don't forget the feeling of being shown the door like that."`
+  ],
+  Alienated: [
+    `"I felt like a fish out of water the entire time I was there."`,
+    `"I couldn't relate to a single person in the room—it was completely isolating."`,
+    `"It was like being a stranger in a strange land, even among people I knew."`,
+    `"No matter what I said, I just couldn't find a way in."`,
+    `"I was on the outside looking in, and nobody was holding the door open."`
+  ],
+  Disrespected: [
+    `"She talked down to me like I had absolutely no idea what I was doing."`,
+    `"They walked all over my input like it didn't count for anything."`,
+    `"I was treated like I was nobody—like my presence didn't even register."`,
+    `"He cut me off mid-sentence without a second thought."`,
+    `"Being talked over in every single meeting really takes its toll on you."`
+  ],
+  Confused: [
+    `"I couldn't make head or tail of what was going on."`,
+    `"My head was completely spinning by the time they finished explaining."`,
+    `"It went clean over my head the first three times."`,
+    `"I'd lost the thread entirely by the halfway point."`,
+    `"None of it was computing—I just stared and nodded."`
+  ],
+  Disillusioned: [
+    `"Once the scales fell from my eyes, I couldn't unsee any of it."`,
+    `"The magic was completely gone after I found out the truth."`,
+    `"You build something up so much, and then reality just shatters it."`,
+    `"I felt like I'd been sold a dream that turned out to be smoke and mirrors."`,
+    `"The whole thing left a really bitter taste in my mouth."`
+  ],
+  Perplexed: [
+    `"I couldn't wrap my head around it no matter how many times I read it."`,
+    `"It just didn't compute—the pieces weren't fitting together."`,
+    `"I didn't know which way was up by the time she'd finished talking."`,
+    `"The more I thought about it, the less sense it made."`,
+    `"It's still a complete puzzle to me, if I'm being honest."`
+  ],
+  Startled: [
+    `"I jumped clean out of my skin when the alarm went off."`,
+    `"That nearly gave me a heart attack—I didn't hear them come in."`,
+    `"She practically hit the ceiling when the door banged."`,
+    `"He shot up out of his chair like he'd been given an electric shock."`,
+    `"Don't creep up on me like that—my heart's still racing."`
+  ],
+  Shocked: [
+    `"I was absolutely floored when the announcement came through."`,
+    `"It knocked me for six—I just sat there in complete silence."`,
+    `"I couldn't believe my ears when she told me what had happened."`,
+    `"The news stopped me dead in my tracks."`,
+    `"My mind went completely blank—I couldn't form a single word."`
+  ],
+  Dismayed: [
+    `"My heart sank the moment I heard how bad it had gotten."`,
+    `"The bottom fell completely out of my plans when I heard the news."`,
+    `"I couldn't believe it had come to this—we'd worked so hard."`,
+    `"It was a real gut punch watching it all fall apart like that."`,
+    `"I just stood there shaking my head—it was hard to take in."`
+  ],
+  Amazed: [
+    `"I was absolutely blown away by the whole performance."`,
+    `"I couldn't believe my eyes—it was beyond anything I'd imagined."`,
+    `"She left us completely gobsmacked from start to finish."`,
+    `"My jaw literally dropped when I saw what they'd built."`,
+    `"It just took my breath away—I had absolutely nothing to say."`
+  ],
+  Astonished: [
+    `"My jaw hit the floor when he walked through the door."`,
+    `"I was completely gobsmacked—I had no words for it whatsoever."`,
+    `"It was beyond belief—I had to ask twice if it was actually real."`,
+    `"She stopped dead in her tracks when she saw the results."`,
+    `"Nobody saw that coming—we were all absolutely floored."`
+  ],
+  Awe: [
+    `"It stopped me dead in my tracks—I just stood there taking it all in."`,
+    `"You feel very small standing there, in the best possible way."`,
+    `"It was one of those moments that take your breath clean away."`,
+    `"Words honestly don't do it justice—you just have to be there."`,
+    `"Something about it made the whole world go quiet for a second."`
+  ],
+  Eager: [
+    `"I was raring to go from the moment I heard about it."`,
+    `"I'm chomping at the bit to get started on this one."`,
+    `"She was itching to dive in the second they gave the green light."`,
+    `"I couldn't wait to sink my teeth into the project."`,
+    `"He was first in line before we'd even confirmed the details."`
+  ],
+  Energetic: [
+    `"I was firing on all cylinders from the moment I woke up."`,
+    `"She was in full swing before everyone else had finished their coffee."`,
+    `"I was buzzing all morning—couldn't sit still if I tried."`,
+    `"He hit the ground running on day one and never looked back."`,
+    `"I had so much fuel in the tank I didn't know what to do with it."`
+  ],
+  Liberated: [
+    `"It felt like a weight had lifted straight off my shoulders."`,
+    `"I could finally breathe again—properly breathe."`,
+    `"It gave me a whole new lease on life after everything I'd been through."`,
+    `"Handing in that resignation felt like walking out of a cage."`,
+    `"I felt completely unchained for the first time in years."`
+  ],
+  Ecstatic: [
+    `"I was on cloud nine for the rest of the week."`,
+    `"She was absolutely beside herself with joy when she found out."`,
+    `"I could have floated home—I was that happy."`,
+    `"Honestly, I'm still pinching myself."`,
+    `"We were over the moon—it was the best news we'd ever had."`
+  ],
+  Important: [
+    `"For the first time, I actually felt like I had a voice in the room."`,
+    `"It meant everything to know my input was genuinely valued."`,
+    `"People were leaning in when I spoke—that doesn't happen often."`,
+    `"I finally felt like I was part of something, not just along for the ride."`,
+    `"She made me feel like what I had to say actually mattered."`
+  ],
+  Open: [
+    `"I went in with a completely clean slate and a fresh pair of eyes."`,
+    `"I'm all ears—throw it at me and let's see where it lands."`,
+    `"I was willing to throw out the rulebook if it meant something better."`,
+    `"Come to me with anything—I won't shoot it down before I've heard you out."`,
+    `"I went in without a fixed position and it was surprisingly refreshing."`
+  ],
+  Inspired: [
+    `"Ideas were flying around my head so fast I couldn't write quick enough."`,
+    `"She fired me up in a way I hadn't felt in a long time."`,
+    `"I was on fire after that talk—I couldn't wait to get to work."`,
+    `"Something clicked and suddenly everything felt possible."`,
+    `"It lit a spark in me that I thought had been well and truly out."`
+  ],
+  Hopeful: [
+    `"There's finally a light at the end of the tunnel."`,
+    `"I think we're really starting to turn a corner."`,
+    `"Things are finally starting to look up—I can feel it."`,
+    `"It's not much, but it's enough to keep me going for now."`,
+    `"For the first time in a while, I woke up thinking things might be okay."`
+  ],
+  Loving: [
+    `"I'd move mountains for that person without a second thought."`,
+    `"My heart was completely full just watching them from across the room."`,
+    `"I honestly couldn't picture my life without them in it."`,
+    `"The love I have for them is just bone deep—it never goes away."`,
+    `"I'd do anything for them, and I mean that without any reservation."`
+  ],
+  Avoidance: [
+    `"I just couldn't bring myself to face it, so I kept putting it off."`,
+    `"I gave it a wide berth for as long as I possibly could."`,
+    `"Every time it came up, I found a reason to be somewhere else."`,
+    `"I danced around it for months before finally sitting down with it."`,
+    `"I kept finding excuses—anything not to have to deal with it."`
+  ],
+  Hesitant: [
+    `"I dragged my feet on the decision a lot longer than I should have."`,
+    `"I sat on the fence for way too long and nearly missed my chance."`,
+    `"I couldn't quite pull the trigger—something kept holding me back."`,
+    `"I kept second-guessing myself right up to the last minute."`,
+    `"I was in two minds about it the whole way through."`
+  ],
+  Aversion: [
+    `"My skin crawls just thinking about it—I honestly can't help it."`,
+    `"It turns my stomach—I have a really visceral reaction to it."`,
+    `"I just can't stomach it no matter how hard I try."`,
+    `"Even the idea of it makes me want to look the other way."`,
+    `"I've always had a strong aversion to it—it's not rational, it just is."`
+  ],
+  Disapproval: [
+    `"I raised an eyebrow at that—it didn't sit well with me at all."`,
+    `"She wasn't impressed one bit, and she didn't hold back saying so."`,
+    `"I shook my head when I heard—it wasn't the right call."`,
+    `"That's not something I can get behind, and I was very clear about that."`,
+    `"He made his feelings known without raising his voice—very pointed."`
+  ],
+  Judgmental: [
+    `"I'll hold my hand up—I wrote her off before I'd even spoken to her."`,
+    `"I pointed the finger too fast without knowing the full story."`,
+    `"I jumped to conclusions and made a complete fool of myself."`,
+    `"I had him pegged as trouble from day one—unfairly, as it turned out."`,
+    `"I need to stop making snap judgments—it doesn't serve anyone."`
+  ],
+  Loathing: [
+    `"I can't stand the sight of him—it goes back years."`,
+    `"The very thought of it makes my blood boil."`,
+    `"I have a deep-rooted contempt for that kind of behavior."`,
+    `"Every time his name comes up, my stomach turns."`,
+    `"It's not something I can explain rationally—I just despise it entirely."`
+  ],
+  Awful: [
+    `"I felt absolutely terrible about it—truly one of my worst moments."`,
+    `"That was a real low point for all of us, no question."`,
+    `"It hit rock bottom before we even knew what was happening."`,
+    `"I've felt rough before, but nothing quite like that."`,
+    `"I walked away from it feeling completely hollowed out."`
+  ],
+  Revulsion: [
+    `"It made my stomach turn the second I saw it."`,
+    `"I practically gagged—I couldn't even look at it properly."`,
+    `"I still can't get the image out of my head, weeks later."`,
+    `"My whole body recoiled before my brain had even processed it."`,
+    `"I've never had such a gut reaction to anything in my life."`
+  ],
+  Detestable: [
+    `"That kind of behavior is completely beyond the pale."`,
+    `"I have absolutely no stomach for that sort of thing."`,
+    `"It crosses every line I have—there's no coming back from it."`,
+    `"Some things are just indefensible, and that's one of them."`,
+    `"I find it morally reprehensible, and I'm not going to pretend otherwise."`
+  ],
+  Disappointed: [
+    `"It really took the shine off everything we'd been working toward."`,
+    `"It fell well short of what we'd been promised—a real letdown."`,
+    `"I was let down pretty badly, and it was hard not to take personally."`,
+    `"I had high hopes going in, and it just didn't deliver."`,
+    `"After all that build-up, it was a proper anticlimax."`
+  ],
+  Revolted: [
+    `"It nearly made me sick to my stomach on the spot."`,
+    `"I couldn't look at it twice—it crossed a line I can't forgive."`,
+    `"My whole body recoiled the moment I realized what it was."`,
+    `"It was deeply offensive—I had to leave the room."`,
+    `"I can't even talk about it without feeling physically ill."`
+  ],
+  Repugnant: [
+    `"It goes against every grain of my being—I won't even entertain it."`,
+    `"That crosses every line imaginable and then some."`,
+    `"I find it completely beyond the pale on every level."`,
+    `"It's morally offensive in a way I don't have words for."`,
+    `"The very idea of it is abhorrent to me—I won't soften that."`
+  ],
+  Bored: [
+    `"I was climbing the walls by the second hour."`,
+    `"It was like watching paint dry—absolutely no end in sight."`,
+    `"I was counting ceiling tiles by the time lunch finally came."`,
+    `"I've been going through the motions all week with nothing to show for it."`,
+    `"I was so bored I started making up games just to stay awake."`
+  ],
+  Indifferent: [
+    `"I genuinely couldn't care less either way—it's all the same to me."`,
+    `"Six of one, half a dozen of the other—I'm not fussed."`,
+    `"Makes absolutely no odds to me—you decide."`,
+    `"I've got no horse in this race, so do what you like."`,
+    `"I've got no strong feelings about it at all, if I'm being honest."`
+  ],
+  Apathetic: [
+    `"I've just been going through the motions for months now."`,
+    `"I couldn't be bothered to lift a finger about it either way."`,
+    `"I'm doing just enough to get by and that's about it."`,
+    `"Nothing really lands anymore—I just let it wash over me."`,
+    `"I used to care deeply about this, but the spark's just gone."`
+  ],
+  Lonely: [
+    `"You can go a whole day without a single real conversation, and it hollows you out."`,
+    `"I'm just rattling around in an empty house with nobody to talk to."`,
+    `"It's the kind of lonely you feel even in a crowded room."`,
+    `"I've got people all around me and still feel completely alone."`,
+    `"You can only fill the silence for so long before it really gets to you."`
+  ],
+  Isolated: [
+    `"I felt completely off the map out there—cut off from everything familiar."`,
+    `"It was like I'd fallen off the face of the earth for a while."`,
+    `"I was so far removed from everything that it started to mess with my head."`,
+    `"There was nobody around who remotely understood what I was going through."`,
+    `"You can handle a lot, but complete isolation really wears you down."`
+  ],
+  Abandoned: [
+    `"I was left to fend for myself when I needed support the most."`,
+    `"They hung me out to dry without a second thought."`,
+    `"It felt like being thrown to the wolves after everything I'd done."`,
+    `"I was out on my own with absolutely no one in my corner."`,
+    `"The person I counted on most just disappeared when things got hard."`
+  ],
+  Despair: [
+    `"I was completely at the end of my rope—there was nothing left."`,
+    `"I couldn't see a single way out, no matter which direction I looked."`,
+    `"I'd hit rock bottom and didn't have the strength to start climbing."`,
+    `"I was running on empty and I just stopped caring."`,
+    `"For a while, I genuinely stopped believing things could ever get better."`
+  ],
+  Vulnerable: [
+    `"I went in with my heart on my sleeve and left myself wide open."`,
+    `"I felt completely exposed out there with nothing to fall back on."`,
+    `"I dropped my guard and let people see the parts I usually keep hidden."`,
+    `"There was no armor left—I was completely raw."`,
+    `"Putting yourself out there like that takes everything you've got."`
+  ],
+  Powerless: [
+    `"My hands were completely tied—there was nothing I could do."`,
+    `"I was fighting with one arm behind my back the entire time."`,
+    `"I watched it happen and couldn't do a single thing to stop it."`,
+    `"The decision was out of my hands and I just had to live with it."`,
+    `"It's an awful feeling, watching something unfold with zero control."`
+  ],
+  Guilty: [
+    `"It's been eating me up inside ever since it happened."`,
+    `"I tossed and turned over it for weeks—I couldn't let it go."`,
+    `"I couldn't live with myself knowing what I'd done."`,
+    `"It's been sitting on my chest like a stone I can't shift."`,
+    `"I owe an apology that I still haven't found the courage to give."`
+  ],
+  Ashamed: [
+    `"I couldn't look anyone in the eye for days afterward."`,
+    `"I wanted the ground to swallow me up—I truly did."`,
+    `"I didn't want to show my face after what happened."`,
+    `"It's not something I'm proud of, and I won't pretend it didn't happen."`,
+    `"I felt like I'd let myself down in the worst possible way."`
+  ],
+  Remorseful: [
+    `"I'd give anything to go back and undo what I did."`,
+    `"It's something I still haven't forgiven myself for, honestly."`,
+    `"The regret is bone deep—I think about it more than I should."`,
+    `"I can't undo what happened, and that's something I have to live with."`,
+    `"I kept saying sorry because I meant it—truly meant every word of it."`
+  ]
+};
+
 function getFloodingData(name) {
   if (emotionFloodingData[name]) return emotionFloodingData[name];
   const info = emotionInfo[name] || [`you feel ${name.toLowerCase()}`, "moderate", "facing unexpected situations", "notice a change in your body", "calm", "the two emotions express different internal states", `I feel ${name.toLowerCase()} in this moment`];
@@ -1102,12 +1518,12 @@ function getFloodingData(name) {
       isNoun ? `“You shouldn't let ${nounWord} control your key decisions.”` : `“It is completely natural to feel ${adjWord} in this situation.”`,
       isNoun ? `“It takes courage to face your ${nounWord} head-on.”` : `“Don't let feeling ${adjWord} stop you from applying.”`
     ],
-    dialogueC2: [
-      `“I've been feeling completely out of sorts all afternoon.”`,
-      `“That sudden change really threw me for a loop.”`,
-      `“She was caught completely off guard by the update.”`,
-      `“He's been pacing the floor trying to process it all.”`,
-      `“It's been weighing heavily on my mind all day long.”`
+    dialogueC2: customC2Data[name] || [
+      `"I've been feeling completely out of sorts all afternoon."`,
+      `"That sudden change really threw me for a loop."`,
+      `"She was caught completely off guard by the update."`,
+      `"He's been pacing the floor trying to process it all."`,
+      `"It's been weighing heavily on my mind all day long."`
     ]
   };
 }
