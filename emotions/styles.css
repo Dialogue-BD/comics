@@ -968,8 +968,31 @@ button { color: inherit; }
 .eq-result-card.eq-tier-high  { border-color: #2b9268; background: rgba(42,165,112,.06); }
 
 /* Pattern breakdown pills on result screen */
-.eq-score-val { display: inline-flex; gap: 14px; align-items: baseline; }
-.eq-sc-h, .eq-sc-c, .eq-sc-f { font-family: Georgia, serif; font-size: 20px; font-weight: 500; line-height: 1; color: var(--ink); }
+.eq-score-val { display: inline-flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
+.eq-sc-h, .eq-sc-c, .eq-sc-f, .eq-sc-m { font-family: Georgia, serif; font-size: 20px; font-weight: 500; line-height: 1; color: var(--ink); }
+
+/* Honest-answer note on intro */
+.eq-honest-note {
+  margin: 0 0 22px;
+  padding: 11px 16px;
+  border-radius: 12px;
+  background: rgba(24,37,31,.04);
+  border: 1px solid rgba(24,37,31,.07);
+  color: var(--muted);
+  font-size: 12px;
+  font-style: italic;
+  line-height: 1.65;
+  text-align: center;
+}
+
+/* Instruct line shown under each question */
+.eq-quiz-instruct {
+  margin: -6px 0 18px;
+  color: var(--muted);
+  font-size: 11px;
+  font-style: italic;
+  opacity: .8;
+}
 
 .eq-result-card h3 {
   margin: 0 0 10px;

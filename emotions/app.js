@@ -3220,58 +3220,60 @@ function showReflectionCard(name) {
       resultBtn: "See My Results",
       scoreLabel: "Your pattern:",
       retakeLabel: "Retake Quiz",
+      honestNote: "There are no right or wrong answers. Choose the option that honestly reflects what you would most likely do — go with your first instinct and do not overthink it.",
+      quizInstruct: "Trust your first instinct — pick the option that feels most honest, not the one that sounds best.",
       questionOf: function(c, t) { return "Question " + c + " of " + t; },
       questions: [
         {
           text: "1. You see a relative or old classmate posting about their perfect life and big success on social media. You:",
           options: [
-            { text: "Immediately post your own best photos to look successful.", type: "Far" },
-            { text: "Leave a very nice comment, but feel a bad knot in your stomach.", type: "Close" },
-            { text: "Feel guilty for being jealous, tell yourself it is wrong, and log off.", type: "Far" },
-            { text: "Notice the jealousy, accept that you feel a bit left behind, and take a healthy break.", type: "Healthy" }
+            { text: "You feel a sudden wave of inadequacy and spend the next hour scrolling their profile, comparing every detail to your own life.", type: "Close" },
+            { text: "You immediately post your own best photos and highlights so your life looks equally successful.", type: "Far" },
+            { text: "You leave a warm comment and close the app, but the knot in your stomach stays with you all day without you really addressing it.", type: "Mixed" },
+            { text: "You notice the jealousy, name it, take a short break from the app, and later talk to a friend about feeling left behind.", type: "Healthy" }
           ]
         },
         {
           text: "2. Your boss explicitly promised you wouldn't work this weekend. But on Friday afternoon, they ask you to work late and come in on Saturday for the third week in a row. You:",
           options: [
-            { text: "Say yes immediately to look good, but feel very angry inside while working.", type: "Far" },
-            { text: "Agree to work, but cancel family plans and eat comfort food to feel better.", type: "Far" },
-            { text: "Take a step back to understand your fear of saying no, and plan a respectful talk with your boss.", type: "Healthy" },
-            { text: "Politely decline, but spend the whole weekend terrified that you will lose your job.", type: "Close" }
+            { text: "You go home so angry you cannot sleep — you replay the conversation for hours and send your boss a frustrated message that night.", type: "Close" },
+            { text: "You immediately say yes, swallow your frustration, and spend the weekend working in silent resentment while telling yourself it is fine.", type: "Far" },
+            { text: "You agree to work, but spend the weekend procrastinating and half-working — unable to fully enjoy your time off or fully commit to the job.", type: "Mixed" },
+            { text: "You take a breath, acknowledge the frustration, and arrange a time to speak calmly with your boss about the pattern and your earlier agreement.", type: "Healthy" }
           ]
         },
         {
           text: "3. At a family gathering, a close relative makes a mean comment about your life choices in front of everyone. You:",
           options: [
-            { text: "Stay silent to keep the peace, smile, but complain bitterly to a friend later.", type: "Far" },
-            { text: "Smile and pretend to agree, but secretly try to undo their interference later.", type: "Far" },
-            { text: "Feel the hurt or anger, breathe deeply to understand why it hurts, and plan a calm, private talk later.", type: "Healthy" },
-            { text: "Stop talking, give them the cold shoulder, and fall into a bad mood.", type: "Close" }
+            { text: "You cannot hold it in — you snap back at them, your voice rises, or you leave the room abruptly and create a scene.", type: "Close" },
+            { text: "You smile, say it is fine, and pretend the comment did not bother you — but you replay it quietly for days.", type: "Far" },
+            { text: "You say nothing in the moment, but spend the rest of the gathering sulking and barely speaking to anyone, without ever addressing it.", type: "Mixed" },
+            { text: "You stay calm in the moment and later find a private opportunity to tell them honestly and kindly how the comment made you feel.", type: "Healthy" }
           ]
         },
         {
           text: "4. You worked very hard for a promotion or an academic opportunity, but someone else got it. You:",
           options: [
-            { text: "Tell yourself to 'just get over it' and try to ignore the painful disappointment.", type: "Far" },
-            { text: "Feel deeply discouraged, like a total failure, and believe things never work out for you.", type: "Close" },
-            { text: "Sit down with a trusted mentor or friend to share your sadness and ask for guidance.", type: "Healthy" },
-            { text: "Keep the anger inside and secretly hope the other person fails.", type: "Far" }
+            { text: "You are so devastated you lose all motivation — you start making mistakes, withdraw from the team, or hint loudly about quitting.", type: "Close" },
+            { text: "You tell yourself it does not matter and push yourself to act completely normal, but the disappointment festers and you start resenting your colleagues.", type: "Far" },
+            { text: "You vent to a colleague and feel better temporarily, but you take no concrete steps to understand what happened or how to move forward.", type: "Mixed" },
+            { text: "You let yourself feel the disappointment, talk it through with someone you trust, and after a day or two ask your manager for honest feedback.", type: "Healthy" }
           ]
         },
         {
           text: "5. You have a huge presentation tomorrow morning. It is 10:00 PM, and you are still obsessively changing tiny details. You:",
           options: [
-            { text: "Keep changing colors and fonts for hours, hoping perfect visuals will hide your anxiety.", type: "Far" },
-            { text: "Blame yourself severely for being slow and get stuck in an anxious loop.", type: "Close" },
-            { text: "Give up completely because you feel overwhelmed, call in sick, and watch videos late into the night.", type: "Far" },
-            { text: "Realize perfectionism is taking over, accept that your work is already good enough, and go to sleep.", type: "Healthy" }
+            { text: "The anxiety spikes — you panic, call a friend in distress for an hour, and end up going to bed at 2 AM still feeling unprepared.", type: "Close" },
+            { text: "You keep changing colours and fonts for hours, telling yourself you are being productive, to avoid sitting with the feeling of uncertainty.", type: "Far" },
+            { text: "You force yourself to close the laptop, but then scroll your phone anxiously for another hour worrying about the presentation instead of actually resting.", type: "Mixed" },
+            { text: "You notice that perfectionism is feeding your anxiety, choose to stop, remind yourself the preparation was solid, and go to bed at a reasonable time.", type: "Healthy" }
           ]
         }
       ],
       results: {
         close: { tier: "eq-tier-close", title: "🔴 You Tend to Get Swept Up in Your Emotions",     desc: "When a difficult feeling arrives, it quickly takes over — you may find yourself ruminating, feeling like a victim of circumstances, or stuck in emotional storms you can't escape. Your feelings are real and valid. The next step is learning to observe them with a little compassionate distance, so they inform you rather than control you." },
         far:   { tier: "eq-tier-far",   title: "🔵 You Tend to Push Your Emotions Away",           desc: "You probably learned early that showing painful feelings causes trouble, so you push them down or stay busy to avoid them. But suppressed emotions don't disappear — they resurface later as sudden outbursts or quiet numbness. Gently welcoming your feelings, instead of silencing them, will turn them into a source of real strength." },
-        mid:   { tier: "eq-tier-mid",   title: "🟡 You are Navigating a Mixed Internal Landscape", desc: "Some of your emotions are at a healthy distance, but others catch you off guard. Under big stress you might overwork, try too hard to please people, or have sudden outbursts. Learning to meet your feelings with calm curiosity will bring you more steadiness day to day." },
+        mid:   { tier: "eq-tier-mid",   title: "🟡 You are Navigating a Mixed Internal Landscape", desc: "Your responses show a blend of all three patterns — sometimes feelings sweep you up, sometimes you push them away, and sometimes you find the healthy middle. This is the most common and honest profile. Recognising your own patterns is already a real strength. With practice, you can learn to catch yourself in each situation and respond with a little more calm and intention." },
         high:  { tier: "eq-tier-high",  title: "🟢 You Maintain a Healthy, Comfortable Distance",  desc: "You have strong emotional awareness. When an intense feeling arrives, you can pause, observe it with kindness, and speak from your feelings rather than react from them. This gives you honest, steady relationships and genuine inner peace." }
       }
     },
@@ -3288,58 +3290,60 @@ function showReflectionCard(name) {
       resultBtn: "ফলাফল দেখুন",
       scoreLabel: "আপনার প্যাটার্ন:",
       retakeLabel: "পুনরায় শুরু করুন",
+      honestNote: "কোনো সঠিক বা ভুল উত্তর নেই। বাস্তবে আপনি যা করতেন তার সবচেয়ে কাছের উত্তরটি বেছে নিন — প্রথম যা মনে আসে সেটিই বেছে নিন, বেশি ভাববেন না।",
+      quizInstruct: "প্রথম যে উত্তরটি মনে আসে সেটি বেছে নিন — সেরাটা নয়, সবচেয়ে সৎটা।",
       questionOf: function(c, t) { return "প্রশ্ন " + c + " / " + t; },
       questions: [
         {
           text: "১. সোশ্যাল মিডিয়ায় আপনার কোনো আত্মীয় বা পুরোনো সহপাঠী তাদের চমৎকার জীবন ও বড় সাফল্যের ছবি পোস্ট করেছেন। আপনি:",
           options: [
-            { text: "নিজেকে সফল দেখাতে সাথে সাথে আপনার নিজের সেরা ছবিগুলো পোস্ট করবেন।", type: "Far" },
-            { text: "খুব সুন্দর একটি মন্তব্য করবেন, কিন্তু মনে মনে এক ধরণের অস্বস্তি বা কষ্ট অনুভব করবেন।", type: "Close" },
-            { text: "ঈর্ষান্বিত হওয়ার জন্য নিজের উপর অপরাধবোধ করবেন, নিজেকে বলবেন এটা ভুল, এবং সোশ্যাল মিডিয়া বন্ধ করে দেবেন।", type: "Far" },
-            { text: "ঈর্ষাটি খেয়াল করবেন, মেনে নেবেন যে আপনি কিছুটা পিছিয়ে আছেন বোধ করছেন, এবং একটু বিরতি নেবেন।", type: "Healthy" }
+            { text: "হঠাৎ নিজেকে অপর্যাপ্ত মনে হয় এবং পরের এক ঘণ্টা তাদের প্রোফাইল স্ক্রল করতে করতে নিজের জীবনের সাথে প্রতিটি বিষয় তুলনা করেন।", type: "Close" },
+            { text: "সাথে সাথে নিজের সেরা ছবি ও হাইলাইটগুলো পোস্ট করেন, যাতে আপনার জীবনটাও সমান সফল দেখায়।", type: "Far" },
+            { text: "একটি উষ্ণ মন্তব্য করে অ্যাপ বন্ধ করেন, কিন্তু পেটের ভেতরের অস্বস্তিটা সারাদিন থেকে যায় — আপনি সেটা নিয়ে কিছুই করেন না।", type: "Mixed" },
+            { text: "ঈর্ষার অনুভূতিটি খেয়াল করেন, তার নাম দেন, অ্যাপ থেকে একটু বিরতি নেন এবং পরে একজন বন্ধুর সাথে পিছিয়ে পড়ার অনুভূতি নিয়ে কথা বলেন।", type: "Healthy" }
           ]
         },
         {
           text: "২. আপনার বস কথা দিয়েছিলেন যে এই উইকেন্ডে আপনাকে কাজ করতে হবে না। কিন্তু টানা তৃতীয় সপ্তাহের মতো শুক্রবার বিকেলে তিনি আপনাকে দেরিতে যেতে এবং শনিবারে অফিসে আসতে বললেন। আপনি:",
           options: [
-            { text: "ভালো সাজতে সাথে সাথে হ্যাঁ বলবেন, কিন্তু কাজ করার সময় মনে মনে প্রচণ্ড রেগে থাকবেন।", type: "Far" },
-            { text: "কাজ করতে রাজি হবেন, কিন্তু পারিবারিক পরিকল্পনা বাতিল করবেন এবং মন ভালো করতে অতিরিক্ত জাঙ্ক ফুড খাবেন।", type: "Far" },
-            { text: "একটু ভাববেন কেন আপনার 'না' বলতে ভয় লাগছে, এবং বসের সাথে এই বিষয়ে একটি সম্মানজনক আলোচনার পরিকল্পনা করবেন।", type: "Healthy" },
-            { text: "ভদ্রভাবে না বলবেন, কিন্তু চাকরি চলে যাওয়ার ভয়ে পুরো উইকেন্ড আতঙ্কের মধ্যে কাটাবেন।", type: "Close" }
+            { text: "এতটাই রাগান্বিত হয়ে বাড়ি যান যে ঘুম আসে না — ঘণ্টার পর ঘণ্টা কথোপকথনটা মাথায় ঘোরে এবং সেই রাতেই বসকে একটি রাগান্বিত বার্তা পাঠান।", type: "Close" },
+            { text: "সাথে সাথে হ্যাঁ বলেন, রাগ গিলে ফেলেন এবং সারা উইকেন্ড নীরব ক্ষোভে কাজ করেন — নিজেকে বলেন সব ঠিক আছে।", type: "Far" },
+            { text: "কাজ করতে রাজি হন, কিন্তু উইকেন্ড জুড়ে অর্ধেক মনে কাজ করেন — না ছুটি উপভোগ করতে পারেন, না কাজে পুরোপুরি মনোযোগ দিতে পারেন।", type: "Mixed" },
+            { text: "একটু শ্বাস নেন, রাগটি মনে মনে স্বীকার করেন এবং বসের সাথে শান্তভাবে কথা বলার একটি সময় ঠিক করেন — এই প্যাটার্ন ও আগের প্রতিশ্রুতি নিয়ে।", type: "Healthy" }
           ]
         },
         {
           text: "৩. একটি পারিবারিক অনুষ্ঠানে, একজন ঘনিষ্ঠ আত্মীয় সবার সামনে আপনার জীবনের সিদ্ধান্ত নিয়ে একটি কটূক্তি করলেন। আপনি:",
           options: [
-            { text: "শান্তি বজায় রাখতে চুপ থাকবেন, হাসবেন, কিন্তু পরে কোনো বন্ধুর কাছে এই নিয়ে খুব ক্ষোভ প্রকাশ করবেন।", type: "Far" },
-            { text: "হেসে তাদের কথায় সম্মতি জানানোর ভান করবেন, কিন্তু পরে গোপনে পরিস্থিতি নিজের মতো করার চেষ্টা করবেন।", type: "Far" },
-            { text: "কষ্ট বা রাগটি অনুভব করবেন, কেন খারাপ লেগেছে তা বুঝতে গভীরভাবে শ্বাস নেবেন এবং পরে শান্তভাবে একা কথা বলার পরিকল্পনা করবেন।", type: "Healthy" },
-            { text: "কথা বলা বন্ধ করে দেবেন, তাদের এড়িয়ে চলবেন এবং নিজের মুড খারাপ করে রাখবেন।", type: "Close" }
+            { text: "নিজেকে ধরে রাখতে পারেন না — পাল্টা কথা বলেন, গলা উঁচু হয়ে যায়, বা হঠাৎ ঘর থেকে বেরিয়ে যান এবং একটি দৃশ্য তৈরি হয়।", type: "Close" },
+            { text: "হাসেন, বলেন 'ঠিক আছে' এবং ভান করেন কথাটা কিছুই না — কিন্তু পরের কয়েকদিন সেটা মাথায় চুপচাপ ঘুরতে থাকে।", type: "Far" },
+            { text: "মুহূর্তে কিছু বলেন না, কিন্তু বাকি অনুষ্ঠান চুপচাপ কাটান এবং কারো সাথে ঠিকমতো কথা বলেন না — বিষয়টা কখনো মোকাবেলা করা হয় না।", type: "Mixed" },
+            { text: "মুহূর্তে শান্ত থাকেন এবং পরে একটি ব্যক্তিগত সুযোগ খুঁজে তাকে সৎ ও সদয়ভাবে জানান যে কথাটা আপনাকে কেমন লাগিয়েছিল।", type: "Healthy" }
           ]
         },
         {
           text: "৪. আপনি কোনো প্রমোশন বা শিক্ষার সুযোগের জন্য খুব কঠোর পরিশ্রম করেছিলেন, কিন্তু অন্য কেউ সেটি পেয়ে গেল। আপনি:",
           options: [
-            { text: "নিজেকে বলবেন 'যা হওয়ার হয়েছে' এবং এই কষ্টের অনুভূতিটি পুরোপুরি এড়িয়ে যাওয়ার চেষ্টা করবেন।", type: "Far" },
-            { text: "গভীরভাবে হতাশ হয়ে পড়বেন, নিজেকে ব্যর্থ ভাববেন এবং বিশ্বাস করবেন যে আপনার ভাগ্যটাই খারাপ।", type: "Close" },
-            { text: "কোনো বিশ্বস্ত মেন্টর বা বন্ধুর সাথে বসে আপনার দুঃখ ভাগ করে নেবেন এবং পরামর্শ চাইবেন।", type: "Healthy" },
-            { text: "রাগ মনের ভেতরে চেপে রাখবেন এবং গোপনে ওই ব্যক্তির ব্যর্থতা কামনা করবেন।", type: "Far" }
+            { text: "এতটাই ভেঙে পড়েন যে কাজে মনোযোগ হারান — ভুল করতে থাকেন, দলের কাছ থেকে সরে যান, বা জোরে জোরে চাকরি ছাড়ার ইঙ্গিত দেন।", type: "Close" },
+            { text: "নিজেকে বলেন এটা কিছুই না এবং সম্পূর্ণ স্বাভাবিক ভাব ধরে রাখার চেষ্টা করেন, কিন্তু হতাশা জমতে থাকে এবং সহকর্মীদের প্রতি বিরক্তি আসতে শুরু করে।", type: "Far" },
+            { text: "একজন সহকর্মীর কাছে মনের কথা বলেন এবং সাময়িকভাবে ভালো লাগে, কিন্তু কী হয়েছিল বা কীভাবে এগিয়ে যাবেন তা বোঝার জন্য কোনো পদক্ষেপ নেন না।", type: "Mixed" },
+            { text: "নিজেকে হতাশ হতে দেন, কোনো বিশ্বস্ত মানুষের কাছে মন খুলে বলেন এবং এক-দুদিন পর ম্যানেজারের কাছ থেকে সৎ মতামত চান।", type: "Healthy" }
           ]
         },
         {
           text: "৫. আগামীকাল সকালে আপনার একটি বড় প্রেজেন্টেশন আছে। এখন রাত ১০টা বাজে এবং আপনি এখনো খুঁটিনাটি বিষয়গুলো নিয়ে অতিরিক্ত চিন্তা করছেন। আপনি:",
           options: [
-            { text: "ঘণ্টার পর ঘণ্টা ধরে স্লাইডের রঙ ও ফন্ট পরিবর্তন করতে থাকবেন, যাতে নিখুঁত ডিজাইনের আড়ালে আপনার দুশ্চিন্তা লুকিয়ে রাখা যায়।", type: "Far" },
-            { text: "দেরি করার জন্য নিজেকে খুব দোষারোপ করবেন এবং একটি চিন্তার আবর্তে আটকে যাবেন।", type: "Close" },
-            { text: "অতিরিক্ত চাপের কারণে হাল ছেড়ে দেবেন, অসুস্থতার অজুহাত দেবেন এবং রাত জেগে ভিডিও দেখবেন।", type: "Far" },
-            { text: "বুঝতে পারবেন যে পারফেকশনিজমের ভূত আপনার ওপর ভর করছে, মেনে নেবেন যে আপনার কাজ যথেষ্ট ভালো হয়েছে এবং ঘুমাতে যাবেন।", type: "Healthy" }
+            { text: "উদ্বেগ তীব্র হয়ে ওঠে — আতঙ্কিত হয়ে পড়েন, এক ঘণ্টা বন্ধুকে ফোন করে কষ্ট ভাগ করেন এবং শেষ পর্যন্ত রাত ২টায় ঘুমাতে যান, তবুও অপ্রস্তুত বোধ করতে থাকেন।", type: "Close" },
+            { text: "ঘণ্টার পর ঘণ্টা রঙ ও ফন্ট পরিবর্তন করতে থাকেন — নিজেকে বলেন উৎপাদনশীল হচ্ছেন, কিন্তু আসলে অনিশ্চয়তার অনুভূতি থেকে পালাচ্ছেন।", type: "Far" },
+            { text: "জোর করে ল্যাপটপ বন্ধ করেন, কিন্তু তারপর আরও এক ঘণ্টা ফোনে প্রেজেন্টেশন নিয়ে দুশ্চিন্তা করতে করতে স্ক্রল করেন — প্রকৃত বিশ্রাম নেন না।", type: "Mixed" },
+            { text: "বুঝতে পারেন পারফেকশনিজম আপনার উদ্বেগকে বাড়াচ্ছে, থামার সিদ্ধান্ত নেন, নিজেকে মনে করিয়ে দেন প্রস্তুতি ভালোই হয়েছে এবং যুক্তিসঙ্গত সময়ে ঘুমাতে যান।", type: "Healthy" }
           ]
         }
       ],
       results: {
         close: { tier: "eq-tier-close", title: "🔴 আপনি প্রায়ই আবেগের স্রোতে ভেসে যান",                        desc: "যখন কোনো কঠিন অনুভূতি আসে, সেটি দ্রুত আপনার উপর নিয়ন্ত্রণ নিতে পারে। আপনি হয়তো একটি চিন্তার আবর্তে আটকে যান, নিজেকে পরিস্থিতির শিকার ভাবেন, বা আবেগের ঝড় থেকে বের হতে পারেন না। আপনার অনুভূতিগুলো সত্যিকারের ও গুরুত্বপূর্ণ — পরবর্তী পদক্ষেপ হলো সেগুলোকে একটু সহানুভূতিশীল দূরত্ব থেকে দেখতে শেখা, যাতে সেগুলো আপনাকে পথ দেখায়, নিয়ন্ত্রণ না করে।" },
         far:   { tier: "eq-tier-far",   title: "🔵 আপনি আপনার আবেগকে দূরে ঠেলে দেওয়ার চেষ্টা করেন",          desc: "আপনি হয়তো জীবনের শুরুতেই শিখেছেন যে কষ্টদায়ক আবেগ প্রকাশ করলে সমস্যা তৈরি হয়। তাই আপনি অনুভূতিগুলো চেপে রাখেন বা নিজেকে ব্যস্ত রাখেন। কিন্তু দমন করা অনুভূতি হারিয়ে যায় না — সেগুলো পরে হঠাৎ বিস্ফোরণ বা শূন্যতা হিসেবে ফিরে আসে। নিজের অনুভূতিগুলোকে আলতোভাবে গ্রহণ করতে শিখলে তা আপনার শক্তিতে পরিণত হবে।" },
-        mid:   { tier: "eq-tier-mid",   title: "🟡 আপনি একটি মিশ্র মানসিক অবস্থার মধ্য দিয়ে যাচ্ছেন",         desc: "আপনার কিছু আবেগ স্বাস্থ্যকর দূরত্বে আছে, কিন্তু কিছু আবেগ আপনাকে আকস্মিক চমকে দেয়। যখন বড় ধরণের মানসিক চাপ আসে, আপনি হয়তো অতিরিক্ত কাজ করেন, মানুষকে বেশি খুশি করার চেষ্টা করেন অথবা হঠাৎ রেগে যান। কৌতূহল ও স্নেহের সাথে অনুভূতিগুলো পর্যবেক্ষণ করতে শিখলে আপনি আরও স্থিরতা পাবেন।" },
+        mid:   { tier: "eq-tier-mid",   title: "🟡 আপনি একটি মিশ্র মানসিক অবস্থার মধ্য দিয়ে যাচ্ছেন",         desc: "আপনার উত্তরগুলো তিনটি প্যাটার্নের মিশেল দেখাচ্ছে — কখনো আবেগ আপনাকে অভিভূত করে, কখনো আপনি সেগুলো দূরে ঠেলে দেন, আবার কখনোবা স্বাস্থ্যকর মধ্যপন্থা খুঁজে পান। এটিই সবচেয়ে সাধারণ ও সৎ প্রোফাইল। নিজের প্যাটার্নটি চেনার এই সচেতনতাই একটি বড় শক্তি — এখন থেকে কোন পরিস্থিতিতে কোন দিকে যাচ্ছেন তা লক্ষ্য করুন এবং আরও শান্তভাবে সাড়া দেওয়ার চেষ্টা করুন।" },
         high:  { tier: "eq-tier-high",  title: "🟢 আপনি আবেগ থেকে একটি স্বাস্থ্যকর ও আরামদায়ক দূরত্ব বজায় রাখেন", desc: "আপনার মানসিক সচেতনতা চমৎকার। যখন কোনো তীব্র অনুভূতি আসে, আপনি থামতে পারেন, সেটিকে দয়া ও সহানুভূতির সাথে দেখতে পারেন এবং আবেগের বশে কাজ না করে শান্তভাবে নিজের অনুভূতির কথা প্রকাশ করতে পারেন। এটি আপনাকে শক্তিশালী, সৎ সম্পর্ক ও প্রকৃত মানসিক শান্তি দেয়।" }
       }
     }
@@ -3370,7 +3374,9 @@ function showReflectionCard(name) {
   var resultCard   = document.getElementById('eq-result-card');
   var resultTitle  = document.getElementById('eq-result-title');
   var resultDesc   = document.getElementById('eq-result-desc');
-  var retakeLbl    = document.getElementById('eq-retake-lbl');
+  var retakeLbl      = document.getElementById('eq-retake-lbl');
+  var honestNoteEl   = document.getElementById('eq-honest-note');
+  var quizInstructEl = document.getElementById('eq-quiz-instruct');
 
   if (!phaseIntro) return; // guard: quiz card not on page
 
@@ -3388,6 +3394,7 @@ function showReflectionCard(name) {
       cards[i].querySelector('p').textContent  = c.desc;
     });
     startBtn.textContent = data.quizStartBtn;
+    if (honestNoteEl) honestNoteEl.textContent = data.honestNote;
   }
 
   // ── Render quiz question ──────────────────────────────────────────────────
@@ -3398,6 +3405,7 @@ function showReflectionCard(name) {
     progFill.style.width = pct + '%';
     progLabel.textContent = data.questionOf(qIndex + 1, TOTAL);
     questionEl.textContent = q.text;
+    if (quizInstructEl) quizInstructEl.textContent = data.quizInstruct;
     optionsEl.innerHTML = '';
     pending = null;
     nextBtn.disabled = true;
@@ -3431,16 +3439,18 @@ function showReflectionCard(name) {
     var healthyCount = picks.filter(function(t) { return t === 'Healthy'; }).length;
     var closeCount   = picks.filter(function(t) { return t === 'Close';   }).length;
     var farCount     = picks.filter(function(t) { return t === 'Far';     }).length;
-    // Tier logic: 3+ Healthy → high; otherwise dominant Close/Far wins; equal → mid
+    var mixedCount   = picks.filter(function(t) { return t === 'Mixed';   }).length;
+    // 3+ of the same non-mixed type triggers that specific result; everything else → mixed
     var tier;
-    if      (healthyCount >= 3)     tier = data.results.high;
-    else if (closeCount > farCount) tier = data.results.close;
-    else if (farCount > closeCount) tier = data.results.far;
-    else                            tier = data.results.mid;
+    if      (healthyCount >= 3) tier = data.results.high;
+    else if (closeCount   >= 3) tier = data.results.close;
+    else if (farCount     >= 3) tier = data.results.far;
+    else                        tier = data.results.mid;
     scoreLbl.textContent = data.scoreLabel;
     scoreVal.innerHTML   = '<span class="eq-sc-h">💚 ' + healthyCount + '</span>'
                          + '<span class="eq-sc-c">🔴 ' + closeCount   + '</span>'
-                         + '<span class="eq-sc-f">🔵 ' + farCount      + '</span>';
+                         + '<span class="eq-sc-f">🔵 ' + farCount     + '</span>'
+                         + '<span class="eq-sc-m">🟡 ' + mixedCount   + '</span>';
     resultCard.className    = 'eq-result-card ' + tier.tier;
     resultTitle.textContent = tier.title;
     resultDesc.textContent  = tier.desc;
