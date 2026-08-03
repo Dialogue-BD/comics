@@ -1380,13 +1380,13 @@
         "quantifier_too_many": "Too many obstacles could prevent the pine forest from supporting plant life.",
         "quantifier_too_much": "Too much damage could stop the pine forest from supporting plant life.",
         "deduction_present_might": "The soil here might be fertile, judging by how tall these pines have grown.",
-        "main_simple_present": "Trains often pass unseen under this chalets.",
-        "main_present_continuous": "The chalets is standing quietly above the tunnel entrance.",
-        "main_simple_past": "The chalets grew thicker with every passing decade.",
-        "main_past_continuous": "The chalets was swaying in the wind when the white high-speed train entered the tunnel below.",
-        "main_present_perfect": "The chalets has grown thick enough to hide the ridge behind it.",
-        "main_future_going_to": "The chalets is going to lose a few needles once autumn arrives.",
-        "main_future_will": "The chalets will still stand green long after the snow melts."
+        "main_simple_present": "The chalets on the alpine slope stand quietly above the train tunnel.",
+        "main_present_continuous": "The chalets on the alpine slope are catching the warm afternoon sunlight.",
+        "main_simple_past": "The chalets on the alpine slope caught the last rays of evening light.",
+        "main_past_continuous": "The chalets on the alpine slope were glowing in the sunset when the train entered the tunnel.",
+        "main_present_perfect": "The chalets on the alpine slope have overlooked the valley for many decades.",
+        "main_future_going_to": "The chalets on the alpine slope are going to be covered in snow before long.",
+        "main_future_will": "The chalets on the alpine slope will be visible from the train window as it exits the tunnel."
       }
     },
     {
@@ -2510,13 +2510,13 @@
         "infinitive_complement": "The waterfall appears to drop further than the viaduct is tall.",
         "passive_simple_was": "The gorge was carved out by this waterfall over thousands of years.",
         "conjunction_but": "The waterfall makes a tremendous noise, but you can't hear it over the trains.",
-        "main_simple_present": "People nearby often notice the large boulder changing with the seasons.",
-        "main_present_continuous": "The large boulder is crashing down through the narrow gorge.",
-        "main_simple_past": "The large boulder crashed down over the rocks below the viaduct.",
-        "main_past_continuous": "The large boulder was roaring loudly when the cargo train crossed overhead.",
-        "main_present_perfect": "The large boulder has carved a deep channel into the gorge over centuries.",
-        "main_future_going_to": "The large boulder is going to swell after the next heavy rainfall.",
-        "main_future_will": "The large boulder will keep flowing long after the snow above it melts away."
+        "main_simple_present": "The large boulder sits in the gorge beneath the railway viaduct.",
+        "main_present_continuous": "The large boulder is resting in the gorge below the viaduct.",
+        "main_simple_past": "The large boulder tumbled into the gorge after a rockslide long ago.",
+        "main_past_continuous": "The large boulder was sitting in the gorge when the cargo train crossed overhead.",
+        "main_present_perfect": "The large boulder has sat wedged in the gorge for many years.",
+        "main_future_going_to": "The large boulder is going to stay in the gorge for a very long time.",
+        "main_future_will": "The large boulder will remain in the gorge even after the next big storm."
       }
     },
     {
@@ -27865,13 +27865,13 @@
         "perception_see": "Even at a glance, people can see the jumping dog leaping after a ball.",
         "relative_defining_that": "This is a white dog that is leaping after a ball.",
         "reported_told": "The man who tripped and spilled his groceries told a friend that the dog had searched for food earlier.",
-        "main_simple_present": "The man never leaps after a ball when it feels threatened.",
-        "main_present_continuous": "The man is leaping after a ball.",
-        "main_simple_past": "The man who tripped and spilled his groceries saw the man leap after a ball.",
-        "main_past_continuous": "The man was leaping after a ball.",
-        "main_present_perfect": "The man has leaped after a ball.",
-        "main_future_going_to": "The man is going to leap after a ball.",
-        "main_future_will": "The man will leap after a ball."
+        "main_simple_present": "The man sometimes trips on the uneven pavement near the market.",
+        "main_present_continuous": "The man is falling down after losing his footing on the kerb.",
+        "main_simple_past": "The man fell down when he slipped on the wet pavement.",
+        "main_past_continuous": "The man was falling down when his shopping bags hit the ground.",
+        "main_present_perfect": "The man has fallen right in the middle of the busy street.",
+        "main_future_going_to": "The man is going to drop everything he is carrying.",
+        "main_future_will": "The man will need a hand getting back to his feet."
       }
     },
     {
@@ -28606,13 +28606,13 @@
         "past_continuous_visual": "At that moment, the dog lying was stretching out on the warm pavement.",
         "perception_watch": "You could watch the dog lying stretching out on the warm pavement.",
         "preposition_on": "The dog is lying on the pavement.",
-        "main_simple_present": "The spilled groceries stretches out on the warm pavement.",
-        "main_present_continuous": "The spilled groceries is stretching out on the warm pavement.",
-        "main_simple_past": "The spilled groceries stretched out on the warm pavement.",
-        "main_past_continuous": "At that moment, the groceries lying was stretching out on the warm pavement.",
-        "main_present_perfect": "The spilled groceries has stretched out on the warm pavement.",
-        "main_future_going_to": "The spilled groceries is going to stretch out on the warm pavement.",
-        "main_future_will": "The spilled groceries will stretch out on the warm pavement."
+        "main_simple_present": "Groceries often spill when someone drops their bags in a hurry.",
+        "main_present_continuous": "The groceries are spilling all over the pavement.",
+        "main_simple_past": "The groceries spilled across the street when the man fell.",
+        "main_past_continuous": "The groceries were spilling everywhere when the husky dog ran past.",
+        "main_present_perfect": "The groceries have scattered all over the pavement.",
+        "main_future_going_to": "The groceries are going to roll into the road if nobody picks them up.",
+        "main_future_will": "The groceries will need to be gathered up before a car drives over them."
       }
     },
     {
@@ -40611,13 +40611,13 @@
         "adverbs_manner": "The ceiling pipe saves time during the job usefully.",
         "past_continuous_visual": "While people passed nearby, the ceiling pipe was sticking out of the old ceiling.",
         "gerund_complement": "People value having the ceiling pipe available when it needs to provide useful support.",
-        "main_simple_present": "People nearby often notice the paint roller providing useful support.",
-        "main_present_continuous": "The paint roller is sticking out of the old ceiling.",
-        "main_simple_past": "The paint roller stuck out of the old ceiling.",
-        "main_past_continuous": "While people passed nearby, the paint roller was sticking out of the old ceiling.",
-        "main_present_perfect": "The paint roller has stuck out of the old ceiling.",
-        "main_future_going_to": "The paint roller is going to stick out of the old ceiling.",
-        "main_future_will": "The paint roller will stick out of the old ceiling."
+        "main_simple_present": "The paint roller rolls fresh paint evenly onto the wall.",
+        "main_present_continuous": "The paint roller is rolling a smooth coat of paint across the wall.",
+        "main_simple_past": "The paint roller left a clean coat of paint on the wall.",
+        "main_past_continuous": "The paint roller was rolling paint when the worker stepped back to check the coverage.",
+        "main_present_perfect": "The paint roller has already covered most of the wall.",
+        "main_future_going_to": "The paint roller is going to need more paint from the tray very soon.",
+        "main_future_will": "The paint roller will finish the wall before the end of the day."
       }
     },
     {
@@ -42677,13 +42677,13 @@
         "preposition_next_to": "The small stones are next to the scooter's back wheel.",
         "there_are": "There are small stones next to the scooter's back wheel.",
         "adverbs_manner": "Reliably, the small stones support a daily task.",
-        "main_simple_present": "The smoke from the scooter lie next to the scooter's back wheel.",
-        "main_present_continuous": "The smoke from the scooter are lying next to the scooter's back wheel.",
-        "main_simple_past": "The smoke from the scooter scattered next to the scooter's back wheel.",
-        "main_past_continuous": "The smoke from the scooter were lying there when the scooter rolled past.",
-        "main_present_perfect": "The smoke from the scooter have lain there since the road was resurfaced.",
-        "main_future_going_to": "The smoke from the scooter are going to be swept away soon.",
-        "main_future_will": "The smoke from the scooter will stay scattered until someone sweeps them up."
+        "main_simple_present": "The smoke from the scooter drifts slowly across the building site.",
+        "main_present_continuous": "The smoke from the scooter is rising into the air above the street.",
+        "main_simple_past": "The smoke from the scooter rose in a thin trail as it pulled away.",
+        "main_past_continuous": "The smoke from the scooter was drifting across the site when the scooter accelerated away.",
+        "main_present_perfect": "The smoke from the scooter has left a faint smell in the air.",
+        "main_future_going_to": "The smoke from the scooter is going to clear once the wind picks up.",
+        "main_future_will": "The smoke from the scooter will fade quickly in the open air."
       }
     },
     {
