@@ -192,7 +192,7 @@
     },
     {
       "id": "p1_obj_4",
-      "name": "White farmhouse on the slope",
+      "name": "White chalet on the slope",
       "box": [
         13.5,
         21,
@@ -200,7 +200,7 @@
         24.5
       ],
       "grammar_data": {
-        "subject": "The white farmhouse on the slope",
+        "subject": "The white chalet on the slope",
         "progressive_is": "The white farmhouse is drying washing on a line outside.",
         "preposition_in_front_of": "The white farmhouse stands in front of the alpine chalet with balcony.",
         "there_is": "There is a white farmhouse standing lower down the same slope.",
@@ -241,13 +241,13 @@
         "past_continuous_visual": "While people passed nearby, the white farmhouse was drying washing on a line outside.",
         "deduction_present_might": "It might be very old, judging by the worn stone around its doorway.",
         "preposition_on": "The white farmhouse is on the slope.",
-        "main_simple_present": "The white farmhouse often supports daily activity for longer than expected.",
-        "main_present_continuous": "The white farmhouse is drying washing on a line outside.",
-        "main_simple_past": "The white farmhouse lost a roof tile in last winter's storm and gained a new one in spring.",
-        "main_past_continuous": "The white farmhouse was drying laundry on its line when the geese wandered past.",
-        "main_present_perfect": "The white farmhouse has sheltered the same family for three generations.",
-        "main_future_going_to": "The white farmhouse is going to get new shutters before the tourist season starts.",
-        "main_future_will": "The white farmhouse will stand through many more alpine winters."
+        "main_simple_present": "The white chalet often supports daily activity for longer than expected.",
+        "main_present_continuous": "The white chalet is drying washing on a line outside.",
+        "main_simple_past": "The white chalet lost a roof tile in last winter's storm and gained a new one in spring.",
+        "main_past_continuous": "The white chalet was drying laundry on its line when the geese wandered past.",
+        "main_present_perfect": "The white chalet has sheltered the same family for three generations.",
+        "main_future_going_to": "The white chalet is going to get new shutters before the tourist season starts.",
+        "main_future_will": "The white chalet will stand through many more alpine winters."
       }
     },
     {
@@ -1191,7 +1191,7 @@
     },
     {
       "id": "p1_obj_21",
-      "name": "Goat grazing on the hillside",
+      "name": "Sheep grazing on the hillside",
       "box": [
         11.8,
         28.2,
@@ -1199,7 +1199,7 @@
         29.2
       ],
       "grammar_data": {
-        "subject": "The goat grazing on the hillside",
+        "subject": "The sheep grazing on the hillside",
         "to_be_is": "The goat is calm and sure-footed.",
         "progressive_is": "The goat is chewing grass on the open hillside.",
         "preposition_on": "The goat is standing above the tunnel, below the pine forest on the ridge.",
@@ -1242,18 +1242,18 @@
         "past_continuous_visual": "Just before this moment, the goat was balancing on a slope steeper than most hikers would dare climb.",
         "deduction_present_might": "It might be used to steep ground, judging by how calmly it stands there.",
         "criticism_should_not": "The goat shouldn't have ignored a warning from the cyclist on a mountain path.",
-        "main_simple_present": "The goat often wanders further than the farm animals below.",
-        "main_present_continuous": "The goat is chewing grass on the open hillside.",
-        "main_simple_past": "The goat caught the scent of thyme and wandered toward it.",
-        "main_past_continuous": "The goat was nibbling thistles when the cyclist rattled past on the mountain path.",
-        "main_present_perfect": "The goat has wandered close to the chamois on the rocky ledge.",
-        "main_future_going_to": "The goat is going to climb higher before the sun gets too hot.",
-        "main_future_will": "The goat will probably ignore the paraglider drifting overhead."
+        "main_simple_present": "The sheep often wanders further than the farm animals below.",
+        "main_present_continuous": "The sheep is chewing grass on the open hillside.",
+        "main_simple_past": "The sheep caught the scent of thyme and wandered toward it.",
+        "main_past_continuous": "The sheep was nibbling thistles when the cyclist rattled past on the mountain path.",
+        "main_present_perfect": "The sheep has wandered close to the chamois on the rocky ledge.",
+        "main_future_going_to": "The sheep is going to climb higher before the sun gets too hot.",
+        "main_future_will": "The sheep will probably ignore the paraglider drifting overhead."
       }
     },
     {
       "id": "p1_obj_22",
-      "name": "Cyclist on a mountain path",
+      "name": "Chalet on the slope",
       "box": [
         16,
         23,
@@ -1261,7 +1261,7 @@
         24.5
       ],
       "grammar_data": {
-        "subject": "The cyclist on the mountain path",
+        "subject": "The chalet on the slope",
         "to_be_is": "The cyclist on the mountain path is fit and focused.",
         "progressive_is": "The cyclist is riding along the narrow mountain path.",
         "preposition_on": "The cyclist is riding on the mountain path below the pine forest and above the goat.",
@@ -1321,18 +1321,18 @@
         "perception_see": "Even at a glance, people can see the cyclist riding this narrow path without touching the brakes.",
         "third_conditional_regret": "If the cyclist had prepared earlier, he would have completed the journey more easily.",
         "criticism_should_not": "The cyclist shouldn't have ignored a warning from the rider on an ATV.",
-        "main_simple_present": "People nearby often notice the cyclist completing the journey.",
-        "main_present_continuous": "The cyclist is riding along the narrow mountain path.",
-        "main_simple_past": "The cyclist on the mountain path caught his breath at the top of the climb.",
-        "main_past_continuous": "The cyclist on the mountain path was freewheeling downhill when the goat looked up from the grass.",
-        "main_present_perfect": "The cyclist on the mountain path has already climbed the steepest part of the mountain path.",
-        "main_future_going_to": "The cyclist on the mountain path is going to stop for water at the next bend.",
-        "main_future_will": "The cyclist on the mountain path will reach the ridge before the paraglider lands."
+        "main_simple_present": "People nearby often notice the chalet completing the journey.",
+        "main_present_continuous": "The chalet is riding along the narrow mountain path.",
+        "main_simple_past": "The chalet on the slope caught his breath at the top of the climb.",
+        "main_past_continuous": "The chalet on the slope was freewheeling downhill when the goat looked up from the grass.",
+        "main_present_perfect": "The chalet on the slope has already climbed the steepest part of the mountain path.",
+        "main_future_going_to": "The chalet on the slope is going to stop for water at the next bend.",
+        "main_future_will": "The chalet on the slope will reach the ridge before the paraglider lands."
       }
     },
     {
       "id": "p1_obj_23",
-      "name": "Pine forest above the tunnel",
+      "name": "Chalets on alpine slope above tunnel",
       "box": [
         2,
         24,
@@ -1340,7 +1340,7 @@
         34
       ],
       "grammar_data": {
-        "subject": "The pine forest above the tunnel",
+        "subject": "The chalets on the alpine slope above the tunnel",
         "progressive_is": "The pine forest is standing quietly above the tunnel entrance.",
         "preposition_next_to": "The pine forest is next to the goat grazing on the hillside.",
         "preposition_behind": "The chalet with a brown roof stands behind the pine forest.",
@@ -1380,13 +1380,13 @@
         "quantifier_too_many": "Too many obstacles could prevent the pine forest from supporting plant life.",
         "quantifier_too_much": "Too much damage could stop the pine forest from supporting plant life.",
         "deduction_present_might": "The soil here might be fertile, judging by how tall these pines have grown.",
-        "main_simple_present": "Trains often pass unseen under this pine forest.",
-        "main_present_continuous": "The pine forest is standing quietly above the tunnel entrance.",
-        "main_simple_past": "The pine forest grew thicker with every passing decade.",
-        "main_past_continuous": "The pine forest was swaying in the wind when the white high-speed train entered the tunnel below.",
-        "main_present_perfect": "The pine forest has grown thick enough to hide the ridge behind it.",
-        "main_future_going_to": "The pine forest is going to lose a few needles once autumn arrives.",
-        "main_future_will": "The pine forest will still stand green long after the snow melts."
+        "main_simple_present": "Trains often pass unseen under this chalets.",
+        "main_present_continuous": "The chalets is standing quietly above the tunnel entrance.",
+        "main_simple_past": "The chalets grew thicker with every passing decade.",
+        "main_past_continuous": "The chalets was swaying in the wind when the white high-speed train entered the tunnel below.",
+        "main_present_perfect": "The chalets has grown thick enough to hide the ridge behind it.",
+        "main_future_going_to": "The chalets is going to lose a few needles once autumn arrives.",
+        "main_future_will": "The chalets will still stand green long after the snow melts."
       }
     },
     {
@@ -1722,7 +1722,7 @@
     },
     {
       "id": "p1_obj_29",
-      "name": "Green biplane",
+      "name": "Green plane",
       "box": [
         2.8,
         60.5,
@@ -1730,7 +1730,7 @@
         66.5
       ],
       "grammar_data": {
-        "subject": "The green biplane",
+        "subject": "The green plane",
         "to_be_is": "The green biplane is small and fast in the mountain sky.",
         "progressive_is": "The green biplane is looping between the drifting balloons.",
         "there_is": "There is a green biplane weaving through the sky above the valley.",
@@ -1772,13 +1772,13 @@
         "past_continuous_visual": "While people passed nearby, the green biplane was looping between the drifting balloons.",
         "simultaneous_while": "While the biplane was looping between the drifting balloons, the red hot air balloon carried passengers above the landscape.",
         "deduction_present_might": "The pilot might be very skilled, given how tightly the biplane turns.",
-        "main_simple_present": "The biplane often loops twice before flying off toward the peaks.",
-        "main_present_continuous": "The green biplane is looping between the drifting balloons.",
-        "main_simple_past": "The green biplane swept low over the ridge before climbing again.",
-        "main_past_continuous": "The green biplane was climbing when it passed under the paraglider canopy.",
-        "main_present_perfect": "The green biplane has buzzed past the wind turbine on the hill twice already.",
-        "main_future_going_to": "The green biplane is going to loop back over the viaduct next.",
-        "main_future_will": "The biplane will pass close to the stone railway viaduct on its next turn."
+        "main_simple_present": "The plane often loops twice before flying off toward the peaks.",
+        "main_present_continuous": "The green plane is looping between the drifting balloons.",
+        "main_simple_past": "The green plane swept low over the ridge before climbing again.",
+        "main_past_continuous": "The green plane was climbing when it passed under the paraglider canopy.",
+        "main_present_perfect": "The green plane has buzzed past the wind turbine on the hill twice already.",
+        "main_future_going_to": "The green plane is going to loop back over the viaduct next.",
+        "main_future_will": "The plane will pass close to the stone railway viaduct on its next turn."
       }
     },
     {
@@ -2454,7 +2454,7 @@
     },
     {
       "id": "p1_obj_40",
-      "name": "Waterfall in the gorge",
+      "name": "Large boulder",
       "box": [
         33,
         63.8,
@@ -2462,7 +2462,7 @@
         66
       ],
       "grammar_data": {
-        "subject": "The waterfall in the gorge",
+        "subject": "The large boulder",
         "to_be_is": "The waterfall is powerful and constant.",
         "progressive_is": "The waterfall is crashing down through the narrow gorge.",
         "preposition_next_to": "The waterfall is next to the rocks and waterfall above the farm.",
@@ -2510,13 +2510,13 @@
         "infinitive_complement": "The waterfall appears to drop further than the viaduct is tall.",
         "passive_simple_was": "The gorge was carved out by this waterfall over thousands of years.",
         "conjunction_but": "The waterfall makes a tremendous noise, but you can't hear it over the trains.",
-        "main_simple_present": "People nearby often notice the waterfall changing with the seasons.",
-        "main_present_continuous": "The waterfall is crashing down through the narrow gorge.",
-        "main_simple_past": "The waterfall crashed down over the rocks below the viaduct.",
-        "main_past_continuous": "The waterfall was roaring loudly when the cargo train crossed overhead.",
-        "main_present_perfect": "The waterfall has carved a deep channel into the gorge over centuries.",
-        "main_future_going_to": "The waterfall is going to swell after the next heavy rainfall.",
-        "main_future_will": "The waterfall will keep flowing long after the snow above it melts away."
+        "main_simple_present": "People nearby often notice the large boulder changing with the seasons.",
+        "main_present_continuous": "The large boulder is crashing down through the narrow gorge.",
+        "main_simple_past": "The large boulder crashed down over the rocks below the viaduct.",
+        "main_past_continuous": "The large boulder was roaring loudly when the cargo train crossed overhead.",
+        "main_present_perfect": "The large boulder has carved a deep channel into the gorge over centuries.",
+        "main_future_going_to": "The large boulder is going to swell after the next heavy rainfall.",
+        "main_future_will": "The large boulder will keep flowing long after the snow above it melts away."
       }
     },
     {
@@ -3316,7 +3316,7 @@
     },
     {
       "id": "p1_obj_54",
-      "name": "Black steam locomotive",
+      "name": "Silver steam locomotive",
       "box": [
         50.7,
         9.3,
@@ -3324,7 +3324,7 @@
         21.6
       ],
       "grammar_data": {
-        "subject": "The black steam locomotive",
+        "subject": "The silver steam locomotive",
         "to_be_is": "The locomotive is old, heavy and covered in soot.",
         "progressive_is": "The locomotive is taking on water under the metal tower.",
         "preposition_on": "The locomotive stands on the track just below the metal water tower.",
@@ -3364,7 +3364,7 @@
         "quantifier_too_much": "With too much moisture, the locomotive would find it harder to follow the planned route.",
         "past_continuous_visual": "Earlier in the day, the locomotive was taking on water under the metal tower.",
         "deduction_present_might": "The locomotive might be almost ready to leaves, since steam is already hissing from its valves.",
-        "main_simple_present": "The black steam locomotive pulls carriages along this mountain line every day.",
+        "main_simple_present": "The silver steam locomotive pulls carriages along this mountain line every day.",
         "main_present_continuous": "The locomotive is taking on water under the metal tower.",
         "main_simple_past": "The locomotive pulled out of the depot with a loud hiss of steam.",
         "main_past_continuous": "The locomotive was taking on water when the brown cargo train rolled past on the next track.",
@@ -3719,7 +3719,7 @@
     },
     {
       "id": "p1_obj_60",
-      "name": "Boy in an orange shirt",
+      "name": "Boy with red backpack",
       "box": [
         61.4,
         17.1,
@@ -3727,7 +3727,7 @@
         18.6
       ],
       "grammar_data": {
-        "subject": "The boy in an orange shirt",
+        "subject": "The boy with a red backpack",
         "to_be_is": "The boy is fast and full of energy.",
         "progressive_is": "The boy is running quickly up the path.",
         "preposition_in_front_of": "The boy stands in front of the man in a yellow shirt.",
@@ -3789,7 +3789,7 @@
     },
     {
       "id": "p1_obj_61",
-      "name": "Boy in a green shirt",
+      "name": "Man in green jacket walking his dog",
       "box": [
         64.2,
         14.8,
@@ -3797,7 +3797,7 @@
         16.4
       ],
       "grammar_data": {
-        "subject": "The boy in a green shirt",
+        "subject": "The man in a green jacket walking his dog",
         "to_be_is": "The boy is quick and a little reckless.",
         "progressive_is": "The boy is running along the grassy path.",
         "there_is": "There is a boy in a green shirt running near the farmhouse fence.",
@@ -3843,12 +3843,12 @@
         "perception_watch": "You can watch the boy running along the grassy path.",
         "causative_have": "A supervisor has the boy briefed when the plan changes.",
         "main_simple_present": "He usually runs ahead of the man in the yellow shirt.",
-        "main_present_continuous": "The boy is running along the grassy path.",
-        "main_simple_past": "The boy raced ahead of his friends and grabbed the fence rail.",
-        "main_past_continuous": "The boy was tying his shoelace when the dog on a leash barked.",
-        "main_present_perfect": "The boy has already scraped his knee climbing over the fence.",
-        "main_future_going_to": "The boy is going to climb over the low stone wall next.",
-        "main_future_will": "The boy will get grass stains on his green shirt before lunch."
+        "main_present_continuous": "The man is running along the grassy path.",
+        "main_simple_past": "The man raced ahead of his friends and grabbed the fence rail.",
+        "main_past_continuous": "The man was tying his shoelace when the dog on a leash barked.",
+        "main_present_perfect": "The man has already scraped his knee climbing over the fence.",
+        "main_future_going_to": "The man is going to climb over the low stone wall next.",
+        "main_future_will": "The man will get grass stains on his green jacket before lunch."
       }
     },
     {
@@ -6302,7 +6302,7 @@
     },
     {
       "id": "p1_obj_102",
-      "name": "Rocks and waterfall above the farm",
+      "name": "Rocks in the gorge",
       "box": [
         32.2,
         61.4,
@@ -6310,7 +6310,7 @@
         63.8
       ],
       "grammar_data": {
-        "subject": "The rocks and waterfall above the farm",
+        "subject": "The rocks in the gorge",
         "to_be_are": "The and waterfall are steep and mossy.",
         "progressive_are": "The and waterfall are gleaming in the spray below the upper slope.",
         "there_are": "There are rocks and a waterfall on the slope above the farm.",
@@ -6355,13 +6355,13 @@
         "perception_see": "Even at a glance, people can see the and waterfall gleaming in the spray below the upper slope.",
         "pronoun_them": "The spray from the fall keeps the moss green all around them.",
         "passive_simple_were": "The rocks were worn smooth by the waterfall long before the farm was built.",
-        "main_simple_present": "With enough time, the and waterfall often change with the seasons.",
-        "main_present_continuous": "The and waterfall are gleaming in the spray below the upper slope.",
-        "main_simple_past": "The and waterfall carved a new channel down the rock face last spring.",
-        "main_past_continuous": "The and waterfall were roaring louder than usual when the snow melted early this year.",
-        "main_present_perfect": "The and waterfall have worn a smooth groove into the grey stone over the decades.",
-        "main_future_going_to": "The and waterfall are going to freeze into icicles once the first frost arrives.",
-        "main_future_will": "The and waterfall will keep tumbling down long after the farm below is asleep."
+        "main_simple_present": "With enough time, the and rocks in the gorge often change with the seasons.",
+        "main_present_continuous": "The and rocks in the gorge are gleaming in the spray below the upper slope.",
+        "main_simple_past": "The and rocks in the gorge carved a new channel down the rock face last spring.",
+        "main_past_continuous": "The and rocks in the gorge were roaring louder than usual when the snow melted early this year.",
+        "main_present_perfect": "The and rocks in the gorge have worn a smooth groove into the grey stone over the decades.",
+        "main_future_going_to": "The and rocks in the gorge are going to freeze into icicles once the first frost arrives.",
+        "main_future_will": "The and rocks in the gorge will keep tumbling down long after the farm below is asleep."
       }
     },
     {
@@ -7132,7 +7132,7 @@
     },
     {
       "id": "p1_obj_116",
-      "name": "Two children playing",
+      "name": "A boy playing with two dogs",
       "box": [
         55.7,
         84.9,
@@ -7140,7 +7140,7 @@
         86.8
       ],
       "grammar_data": {
-        "subject": "Two children playing",
+        "subject": "A boy playing with two dogs",
         "to_be_are": "The two children are loud and full of energy.",
         "progressive_are": "The two children are running around near the dome tents.",
         "there_are": "There are two children playing tag beside the tents.",
@@ -7188,13 +7188,13 @@
         "deduction_present_cannot": "The two children can't be completely unprepared because they can explore a new activity.",
         "perception_watch": "From nearby, people can watch the two children outruning most of the adults at the campsite.",
         "past_continuous_were": "The two children were chasing each other round the tent when their mother called.",
-        "main_simple_present": "On an ordinary day, the two children usually explore a new activity.",
-        "main_present_continuous": "The two children are running around near the dome tents.",
-        "main_simple_past": "Two children chased each other around the orange dome tent all morning.",
-        "main_past_continuous": "The two children were chasing each other round the tent when their mother called.",
-        "main_present_perfect": "Two children have already tired themselves out running across the grass.",
-        "main_future_going_to": "Two children are going to build a den behind the blue dome tent.",
-        "main_future_will": "Two children will fall asleep early tonight after all this running."
+        "main_simple_present": "On an ordinary day, the a boy usually explore a new activity.",
+        "main_present_continuous": "The a boy are running around near the dome tents.",
+        "main_simple_past": "A boy chased each other around the orange dome tent all morning.",
+        "main_past_continuous": "The a boy were chasing each other round the tent when their mother called.",
+        "main_present_perfect": "A boy have already tired themselves out running across the grass.",
+        "main_future_going_to": "A boy are going to build a den behind the blue dome tent.",
+        "main_future_will": "A boy will fall asleep early tonight after all this running."
       }
     },
     {
@@ -7256,7 +7256,7 @@
     },
     {
       "id": "p1_obj_118",
-      "name": "Hiker with a yellow backpack",
+      "name": "Hiker with large green bag",
       "box": [
         61.4,
         75.4,
@@ -7264,7 +7264,7 @@
         77.4
       ],
       "grammar_data": {
-        "subject": "The hiker with a yellow backpack",
+        "subject": "The hiker with the large green bag",
         "to_be_is": "The hiker with the yellow backpack is fit and determined.",
         "progressive_is": "The hiker is walking past the campsite toward the mountain road.",
         "there_is": "There is a hiker with a yellow backpack walking along the mountain road.",
@@ -7317,7 +7317,7 @@
     },
     {
       "id": "p1_obj_119",
-      "name": "Hiker with an orange cap",
+      "name": "Hiker with a yellow cap",
       "box": [
         61.1,
         77.5,
@@ -7325,7 +7325,7 @@
         79.5
       ],
       "grammar_data": {
-        "subject": "The hiker with an orange cap",
+        "subject": "The hiker with a yellow cap",
         "to_be_is": "The hiker with the orange cap is tanned and cheerful.",
         "progressive_is": "The hiker is walking past the campsite with his orange cap on.",
         "there_is": "There is a hiker in an orange cap walking near the campsite.",
@@ -7370,7 +7370,7 @@
         "deduction_present_might": "He might be experienced, since he moves so easily along the steep path.",
         "preposition_next_to": "The hiker is next to the hiker with a yellow backpack.",
         "main_simple_present": "He always wears that same bright cap on every hike.",
-        "main_present_continuous": "The hiker is walking past the campsite with his orange cap on.",
+        "main_present_continuous": "The hiker is walking past the campsite with his yellow cap on.",
         "main_simple_past": "The hiker waved at the campers before continuing up the trail.",
         "main_past_continuous": "The hiker was checking the map when the wind almost blew off his cap.",
         "main_present_perfect": "The hiker has already crossed the stream near the campsite.",
@@ -8011,7 +8011,7 @@
     },
     {
       "id": "p1_obj_130",
-      "name": "Red suitcase in the window",
+      "name": "Red skis",
       "box": [
         80.9,
         7.4,
@@ -8019,7 +8019,7 @@
         9.3
       ],
       "grammar_data": {
-        "subject": "The red suitcase in the window",
+        "subject": "The red skis",
         "progressive_is": "The red suitcase is resting against the train window.",
         "there_is": "There is a red suitcase propped up against the train window.",
         "future_going_is": "The red suitcase is going to be lifted down at the next station.",
@@ -8059,13 +8059,13 @@
         "quantifier_too_many": "Too many repairs could prevent the red suitcase from holding essential supplies.",
         "quantifier_too_much": "Too much heat would interfere with organizing small objects.",
         "preposition_in": "The red suitcase is in the window.",
-        "main_simple_present": "The red suitcase usually organizes small objects before the busiest part of the day.",
-        "main_present_continuous": "The red suitcase is resting against the train window.",
-        "main_simple_past": "The red suitcase sat on the train seat since the last stop.",
-        "main_past_continuous": "The red suitcase was sliding across the seat when the train braked suddenly.",
-        "main_present_perfect": "The red suitcase has travelled two stations already this morning.",
-        "main_future_going_to": "The red suitcase is going to be lifted down at the next station.",
-        "main_future_will": "The red suitcase will probably stay in the window seat until the final stop."
+        "main_simple_present": "The red skis usually organizes small objects before the busiest part of the day.",
+        "main_present_continuous": "The red skis is resting against the train window.",
+        "main_simple_past": "The red skis sat on the train seat since the last stop.",
+        "main_past_continuous": "The red skis was sliding across the seat when the train braked suddenly.",
+        "main_present_perfect": "The red skis has travelled two stations already this morning.",
+        "main_future_going_to": "The red skis is going to be lifted down at the next station.",
+        "main_future_will": "The red skis will probably stay in the window seat until the final stop."
       }
     },
     {
@@ -10827,7 +10827,7 @@
     },
     {
       "id": "p1_obj_176",
-      "name": "Goose on the roof",
+      "name": "Chicken on the roof",
       "box": [
         72.4,
         76.2,
@@ -10835,7 +10835,7 @@
         77.5
       ],
       "grammar_data": {
-        "subject": "The goose on the roof",
+        "subject": "The chicken on the roof",
         "to_be_is": "The goose is alert and watchful.",
         "progressive_is": "The goose is standing on the ridge of the roof.",
         "there_is": "There is a goose standing on the ridge of the roof.",
@@ -10874,13 +10874,13 @@
         "superlative_most": "The keeper regards the goose as the most observant individual.",
         "perception_watch": "You can watch the goose balancing easily along the narrow ridge of the roof.",
         "preposition_on": "The goose is on the roof.",
-        "main_simple_present": "It usually climbs onto the roof after the other geese have eaten.",
-        "main_present_continuous": "The goose is standing on the ridge of the roof.",
-        "main_simple_past": "The goose waddled along the ridge tiles and settled down.",
-        "main_past_continuous": "The goose was preening its feathers when a swallow flew past.",
-        "main_present_perfect": "The goose has perched on this roof since sunrise.",
-        "main_future_going_to": "The goose is going to honk loudly at the next passing train.",
-        "main_future_will": "The goose will probably fly down when the farmer brings the feed."
+        "main_simple_present": "It usually climbs onto the roof after the other chickens have eaten.",
+        "main_present_continuous": "The chicken is standing on the ridge of the roof.",
+        "main_simple_past": "The chicken waddled along the ridge tiles and settled down.",
+        "main_past_continuous": "The chicken was preening its feathers when a swallow flew past.",
+        "main_present_perfect": "The chicken has perched on this roof since sunrise.",
+        "main_future_going_to": "The chicken is going to honk loudly at the next passing train.",
+        "main_future_will": "The chicken will probably fly down when the farmer brings the feed."
       }
     },
     {
@@ -11852,7 +11852,7 @@
     },
     {
       "id": "p1_obj_192",
-      "name": "Goose on the station roof",
+      "name": "Chicken on the station roof",
       "box": [
         69.8,
         79.1,
@@ -11860,7 +11860,7 @@
         80.5
       ],
       "grammar_data": {
-        "subject": "The goose on the station roof",
+        "subject": "The chicken on the station roof",
         "to_be_is": "The goose is loud and territorial.",
         "progressive_is": "The goose is standing on the ridge of the station roof.",
         "there_is": "There is a goose standing on the station roof.",
@@ -11897,12 +11897,12 @@
         "superlative_est": "This goose is the noisiest bird on the whole roof.",
         "perception_watch": "You can watch the goose seing the whole platform from up on the roof.",
         "main_simple_present": "It always honks at anyone who climbs too near the roof.",
-        "main_present_continuous": "The goose is standing on the ridge of the station roof.",
-        "main_simple_past": "The goose waddled along the ridge tiles and flapped its wings.",
-        "main_past_continuous": "The goose was preening its feathers when a pigeon landed nearby.",
-        "main_present_perfect": "The goose has already chased the chickens off this corner of the roof.",
-        "main_future_going_to": "The goose is going to fly down toward the platform for scraps.",
-        "main_future_will": "The goose will honk loudly if anyone climbs too close."
+        "main_present_continuous": "The chicken is standing on the ridge of the station roof.",
+        "main_simple_past": "The chicken waddled along the ridge tiles and flapped its wings.",
+        "main_past_continuous": "The chicken was preening its feathers when a pigeon landed nearby.",
+        "main_present_perfect": "The chicken has already chased the chickens off this corner of the roof.",
+        "main_future_going_to": "The chicken is going to fly down toward the platform for scraps.",
+        "main_future_will": "The chicken will honk loudly if anyone climbs too close."
       }
     },
     {
@@ -12272,7 +12272,7 @@
     },
     {
       "id": "p1_obj_199",
-      "name": "Girl with a drink",
+      "name": "Girl taking photo with smartphone",
       "box": [
         86.8,
         81.2,
@@ -12280,7 +12280,7 @@
         83.2
       ],
       "grammar_data": {
-        "subject": "The girl with a drink",
+        "subject": "The girl taking a photo with her smartphone",
         "to_be_is": "The girl with the drink is relaxed and happy.",
         "progressive_is": "The girl is drinking something cold on the balcony.",
         "there_is": "There is a girl with a drink standing on the balcony.",
@@ -12323,12 +12323,12 @@
         "simultaneous_while": "While the girl was exploring something new, the wooden terrace railing served the building for many years.",
         "deduction_present_might": "She might be thirsty, since she has barely stopped drinking since she arrived.",
         "criticism_should_not": "The girl shouldn't have ignored a warning from the woman taking a photograph.",
-        "main_simple_present": "She usually buys a drink after a long walk uphill.",
-        "main_present_continuous": "The girl is drinking something cold on the balcony.",
-        "main_simple_past": "The girl sipped her drink and looked out over the valley.",
-        "main_past_continuous": "The girl was drinking when the boy with a camera pointed toward the mountains.",
-        "main_present_perfect": "The girl has already finished half of her drink.",
-        "main_future_going_to": "The girl is going to finish her drink before the next train arrives.",
+        "main_simple_present": "She usually buys a smartphone after a long walk uphill.",
+        "main_present_continuous": "The girl is smartphoneing something cold on the balcony.",
+        "main_simple_past": "The girl sipped her smartphone and looked out over the valley.",
+        "main_past_continuous": "The girl was smartphoneing when the boy with a camera pointed toward the mountains.",
+        "main_present_perfect": "The girl has already finished half of her smartphone.",
+        "main_future_going_to": "The girl is going to finish her smartphone before the next train arrives.",
         "main_future_will": "The girl will need a refill before the walk back down."
       }
     },
@@ -13484,7 +13484,7 @@
     },
     {
       "id": "p2_obj_10",
-      "name": "Girl with blonde hair on the escalator",
+      "name": "Woman with blonde hair",
       "box": [
         14.5,
         7,
@@ -13492,7 +13492,7 @@
         8.5
       ],
       "grammar_data": {
-        "subject": "The girl with blonde hair",
+        "subject": "The woman with blonde hair",
         "progressive_is": "The girl with blonde hair is riding down the escalator.",
         "there_is": "There is a girl with blonde hair riding down the escalator.",
         "demonstrative_that": "That is a girl with blonde hair riding down the escalator.",
@@ -13512,18 +13512,18 @@
         "reported_told": "The woman in red on the escalator told a friend that the girl had explored a new activity earlier.",
         "criticism_should_not": "The girl should not have ignored a warning from the woman in red on the escalator.",
         "perception_watch": "From nearby, people can watch the girl riding down the escalator.",
-        "main_simple_present": "The girl with blonde hair rides down the escalator.",
-        "main_present_continuous": "The girl with blonde hair is riding down the escalator.",
-        "main_simple_past": "The girl with blonde hair rode down the escalator.",
-        "main_past_continuous": "Earlier in the day, the girl was riding down the escalator.",
-        "main_present_perfect": "The girl with blonde hair has ridden down the escalator.",
-        "main_future_going_to": "The girl with blonde hair is going to ride down the escalator.",
-        "main_future_will": "The girl with blonde hair will ride down the escalator."
+        "main_simple_present": "The woman with blonde hair rides down the escalator.",
+        "main_present_continuous": "The woman with blonde hair is riding down the escalator.",
+        "main_simple_past": "The woman with blonde hair rode down the escalator.",
+        "main_past_continuous": "Earlier in the day, the woman was riding down the escalator.",
+        "main_present_perfect": "The woman with blonde hair has ridden down the escalator.",
+        "main_future_going_to": "The woman with blonde hair is going to ride down the escalator.",
+        "main_future_will": "The woman with blonde hair will ride down the escalator."
       }
     },
     {
       "id": "p2_obj_11",
-      "name": "Woman in red on the escalator",
+      "name": "Man with hat waving",
       "box": [
         14,
         9,
@@ -13531,7 +13531,7 @@
         10.5
       ],
       "grammar_data": {
-        "subject": "The woman in red",
+        "subject": "The man with a hat waving",
         "preposition_next_to": "The woman in red is next to the people on the landing.",
         "there_is": "There is a woman in red next to the people on the landing.",
         "demonstrative_that": "That is a woman in red.",
@@ -13541,18 +13541,18 @@
         "relative_defining_who": "The woman is the person who assists someone nearby.",
         "reported_told": "The people on the landing watching below told a friend that the woman had assisted someone nearby earlier.",
         "criticism_should_not": "The woman should not have ignored a warning from the people on the landing watching below.",
-        "main_simple_present": "The woman in red keeps reviewing the plan.",
-        "main_present_continuous": "The woman in red is keeping reviewing the plan.",
-        "main_simple_past": "The woman in red kept reviewing the plan.",
-        "main_past_continuous": "The woman in red was keeping reviewing the plan.",
-        "main_present_perfect": "The woman in red has kept reviewing the plan.",
-        "main_future_going_to": "The woman in red is going to keep reviewing the plan.",
-        "main_future_will": "The woman in red will keep reviewing the plan."
+        "main_simple_present": "The man with a hat keeps reviewing the plan.",
+        "main_present_continuous": "The man with a hat is keeping reviewing the plan.",
+        "main_simple_past": "The man with a hat kept reviewing the plan.",
+        "main_past_continuous": "The man with a hat was keeping reviewing the plan.",
+        "main_present_perfect": "The man with a hat has kept reviewing the plan.",
+        "main_future_going_to": "The man with a hat is going to keep reviewing the plan.",
+        "main_future_will": "The man with a hat will keep reviewing the plan."
       }
     },
     {
       "id": "p2_obj_12",
-      "name": "Man leaning on the handrail",
+      "name": "Man with sombrero hat",
       "box": [
         13,
         11.5,
@@ -13560,7 +13560,7 @@
         13.5
       ],
       "grammar_data": {
-        "subject": "The man in the white vest",
+        "subject": "The man with a sombrero hat",
         "progressive_is": "The man in the white vest is leaning on the escalator handrail.",
         "there_is": "There is a man in the white vest leaning on the escalator handrail.",
         "demonstrative_that": "That is a man in the white vest leaning on the escalator handrail.",
@@ -13575,18 +13575,18 @@
         "criticism_should_not": "The man should not have ignored a warning from the woman in pink on the escalator.",
         "causative_have": "An instructor has the man trained when the plan changes.",
         "preposition_on": "The man is leaning on the handrail.",
-        "main_simple_present": "The man in the white vest leans on the escalator handrail.",
-        "main_present_continuous": "The man in the white vest is leaning on the escalator handrail.",
-        "main_simple_past": "The man in the white vest leaned on the escalator handrail.",
-        "main_past_continuous": "The man in the white vest was leaning on the escalator handrail.",
-        "main_present_perfect": "The man in the white vest has leaned on the escalator handrail.",
-        "main_future_going_to": "The man in the white vest is going to lean on the escalator handrail.",
-        "main_future_will": "The man in the white vest will lean on the escalator handrail."
+        "main_simple_present": "The man with a sombrero hat leans on the escalator handrail.",
+        "main_present_continuous": "The man with a sombrero hat is leaning on the escalator handrail.",
+        "main_simple_past": "The man with a sombrero hat leaned on the escalator handrail.",
+        "main_past_continuous": "The man with a sombrero hat was leaning on the escalator handrail.",
+        "main_present_perfect": "The man with a sombrero hat has leaned on the escalator handrail.",
+        "main_future_going_to": "The man with a sombrero hat is going to lean on the escalator handrail.",
+        "main_future_will": "The man with a sombrero hat will lean on the escalator handrail."
       }
     },
     {
       "id": "p2_obj_13",
-      "name": "Woman in pink on the escalator",
+      "name": "Girl in pink waving",
       "box": [
         13,
         13,
@@ -13594,7 +13594,7 @@
         14.5
       ],
       "grammar_data": {
-        "subject": "The woman in pink",
+        "subject": "The girl in pink waving",
         "progressive_is": "The woman in pink is holding a shopping bag.",
         "there_is": "There is a woman in pink holding a shopping bag.",
         "demonstrative_that": "That is a woman in pink holding a shopping bag.",
@@ -13611,18 +13611,18 @@
         "past_continuous_visual": "Earlier in the day, the woman was holding a shopping bag.",
         "criticism_should_not": "The woman should not have ignored a warning from the man leaning on the handrail.",
         "perception_watch": "You could watch the woman holding a shopping bag.",
-        "main_simple_present": "The woman in pink holds a shopping bag.",
-        "main_present_continuous": "The woman in pink is holding a shopping bag.",
-        "main_simple_past": "The woman in pink held a shopping bag.",
-        "main_past_continuous": "Earlier in the day, the woman was holding a shopping bag.",
-        "main_present_perfect": "The woman in pink has held a shopping bag.",
-        "main_future_going_to": "The woman in pink is going to hold a shopping bag.",
-        "main_future_will": "The woman in pink will hold a shopping bag."
+        "main_simple_present": "The girl in pink holds a shopping bag.",
+        "main_present_continuous": "The girl in pink is holding a shopping bag.",
+        "main_simple_past": "The girl in pink held a shopping bag.",
+        "main_past_continuous": "Earlier in the day, the girl was holding a shopping bag.",
+        "main_present_perfect": "The girl in pink has held a shopping bag.",
+        "main_future_going_to": "The girl in pink is going to hold a shopping bag.",
+        "main_future_will": "The girl in pink will hold a shopping bag."
       }
     },
     {
       "id": "p2_obj_14",
-      "name": "Woman in a sun hat",
+      "name": "Man in sombrero hat",
       "box": [
         12,
         11,
@@ -13630,7 +13630,7 @@
         12.5
       ],
       "grammar_data": {
-        "subject": "The woman in the sun hat",
+        "subject": "The man in a sombrero hat",
         "progressive_is": "The woman in the sun hat is waiting at the top of the escalator.",
         "there_is": "There is a woman in the sun hat waiting at the top of the escalator.",
         "demonstrative_that": "That is a woman in the sun hat waiting at the top of the escalator.",
@@ -13645,13 +13645,13 @@
         "reported_told": "The man leaning on the handrail told a friend that the woman had assisted someone nearby earlier.",
         "criticism_should_not": "The woman should not have ignored a warning from the man leaning on the handrail.",
         "perception_watch": "You can watch the woman waiting at the top of the escalator.",
-        "main_simple_present": "The woman in the sun hat waits at the top of the escalator.",
-        "main_present_continuous": "The woman in the sun hat is waiting at the top of the escalator.",
-        "main_simple_past": "The woman in the sun hat waited at the top of the escalator.",
-        "main_past_continuous": "The woman in the sun hat was waiting at the top of the escalator.",
-        "main_present_perfect": "The woman in the sun hat has waited at the top of the escalator.",
-        "main_future_going_to": "The woman in the sun hat is going to wait at the top of the escalator.",
-        "main_future_will": "The woman in the sun hat will wait at the top of the escalator."
+        "main_simple_present": "The man in a sombrero hat waits at the top of the escalator.",
+        "main_present_continuous": "The man in a sombrero hat is waiting at the top of the escalator.",
+        "main_simple_past": "The man in a sombrero hat waited at the top of the escalator.",
+        "main_past_continuous": "The man in a sombrero hat was waiting at the top of the escalator.",
+        "main_present_perfect": "The man in a sombrero hat has waited at the top of the escalator.",
+        "main_future_going_to": "The man in a sombrero hat is going to wait at the top of the escalator.",
+        "main_future_will": "The man in a sombrero hat will wait at the top of the escalator."
       }
     },
     {
@@ -14292,7 +14292,7 @@
     },
     {
       "id": "p2_obj_30",
-      "name": "Guitarist in a hat",
+      "name": "Busker in green",
       "box": [
         28,
         20,
@@ -14300,7 +14300,7 @@
         22.5
       ],
       "grammar_data": {
-        "subject": "The guitarist in the hat",
+        "subject": "The busker in green",
         "progressive_is": "The guitarist in the hat is playing an old song.",
         "there_is": "There is a guitarist in the hat playing an old song.",
         "demonstrative_that": "That is a guitarist in the hat playing an old song.",
@@ -14339,18 +14339,18 @@
         "if_only": "If only the guitarist had more time to entertain the crowd!",
         "third_conditional_regret": "If the guitarist had prepared earlier, they would have followed the rhythm more easily.",
         "criticism_should_not": "The guitarist should not have ignored a warning from the musician in green.",
-        "main_simple_present": "The guitarist often practises a difficult passage for longer than expected.",
-        "main_present_continuous": "The guitarist in the hat is playing an old song.",
-        "main_simple_past": "The guitarist in the hat played an old song.",
-        "main_past_continuous": "The guitarist in the hat was playing an old song.",
-        "main_present_perfect": "The guitarist in the hat has played an old song.",
-        "main_future_going_to": "The guitarist is going to respond to the audience very soon.",
-        "main_future_will": "The guitarist will probably practise a difficult passage before evening."
+        "main_simple_present": "The busker often practises a difficult passage for longer than expected.",
+        "main_present_continuous": "The busker in green is playing an old song.",
+        "main_simple_past": "The busker in green played an old song.",
+        "main_past_continuous": "The busker in green was playing an old song.",
+        "main_present_perfect": "The busker in green has played an old song.",
+        "main_future_going_to": "The busker is going to respond to the audience very soon.",
+        "main_future_will": "The busker will probably practise a difficult passage before evening."
       }
     },
     {
       "id": "p2_obj_31",
-      "name": "Musician in green",
+      "name": "Musician",
       "box": [
         29,
         22.5,
@@ -14358,7 +14358,7 @@
         24.5
       ],
       "grammar_data": {
-        "subject": "The musician in green",
+        "subject": "The musician",
         "progressive_is": "The musician is singing along with the band.",
         "there_is": "There is a musician in green singing along with the band.",
         "demonstrative_that": "That is a musician in green singing along with the band.",
@@ -14404,14 +14404,14 @@
         "main_present_continuous": "The musician is singing along with the band.",
         "main_simple_past": "The man in the pirate costume and pirate hat saw the musician sing along with the band.",
         "main_past_continuous": "Just before this moment, the musician was singing along with the band.",
-        "main_present_perfect": "The musician in green has sung along with the band.",
+        "main_present_perfect": "The musician has sung along with the band.",
         "main_future_going_to": "The musician is going to adjust the performance very soon.",
-        "main_future_will": "The musician in green will sing along with the band."
+        "main_future_will": "The musician will sing along with the band."
       }
     },
     {
       "id": "p2_obj_32",
-      "name": "Second guitarist",
+      "name": "Boy reaching for balloon",
       "box": [
         28.5,
         24.5,
@@ -14419,7 +14419,7 @@
         27
       ],
       "grammar_data": {
-        "subject": "The second guitarist",
+        "subject": "The boy reaching for a balloon",
         "progressive_is": "The second guitarist is strumming a steady rhythm.",
         "there_is": "There is a second guitarist strumming a steady rhythm.",
         "demonstrative_that": "That is a second guitarist strumming a steady rhythm.",
@@ -14461,13 +14461,13 @@
         "perception_watch": "From nearby, people can watch the second guitarist strumming a steady rhythm.",
         "causative_have": "The organizer has the second guitarist prepared before a demanding task.",
         "preposition_next_to": "The second guitarist is next to the musician in green.",
-        "main_simple_present": "At this time of day, the second guitarist often follows the rhythm.",
-        "main_present_continuous": "The second guitarist is strumming a steady rhythm.",
-        "main_simple_past": "The second guitarist strummed a steady rhythm.",
-        "main_past_continuous": "The second guitarist was strumming a steady rhythm.",
-        "main_present_perfect": "The second guitarist has strummed a steady rhythm.",
-        "main_future_going_to": "The second guitarist is going to adjust the performance very soon.",
-        "main_future_will": "The second guitarist will strum a steady rhythm."
+        "main_simple_present": "At this time of day, the boy reaching for a balloon often follows the rhythm.",
+        "main_present_continuous": "The boy reaching for a balloon is reaching for a balloon.",
+        "main_simple_past": "The boy reaching for a balloon strummed a steady rhythm.",
+        "main_past_continuous": "The boy reaching for a balloon was reaching for a balloon.",
+        "main_present_perfect": "The boy reaching for a balloon has strummed a steady rhythm.",
+        "main_future_going_to": "The boy reaching for a balloon is going to adjust the performance very soon.",
+        "main_future_will": "The boy reaching for a balloon will strum a steady rhythm."
       }
     },
     {
@@ -16463,7 +16463,7 @@
     },
     {
       "id": "p2_obj_83",
-      "name": "Man in a yellow shirt",
+      "name": "Man with girl on shoulders",
       "box": [
         29.5,
         50.2,
@@ -16471,7 +16471,7 @@
         51.6
       ],
       "grammar_data": {
-        "subject": "The man in the yellow shirt",
+        "subject": "The man with a girl on his shoulders",
         "progressive_is": "The man in the yellow shirt is carrying a heavy box.",
         "there_is": "There is a man in the yellow shirt carrying a heavy box.",
         "demonstrative_that": "That is a man in the yellow shirt carrying a heavy box.",
@@ -16487,12 +16487,12 @@
         "past_continuous_visual": "While people passed nearby, the man was carrying a heavy box.",
         "criticism_should_not": "The man should not have ignored a warning from the woman in orange.",
         "main_simple_present": "On especially busy days, the man sometimes assists someone nearby.",
-        "main_present_continuous": "The man in the yellow shirt is carrying a heavy box.",
-        "main_simple_past": "The man in blue jeans saw the man in the yellow shirt carry a heavy box.",
+        "main_present_continuous": "The man with a girl on his shoulders is carrying a heavy box.",
+        "main_simple_past": "The man in blue jeans saw the man with a girl on his shoulders carry a heavy box.",
         "main_past_continuous": "While people passed nearby, the man was carrying a heavy box.",
-        "main_present_perfect": "The man in the yellow shirt has carried a heavy box.",
-        "main_future_going_to": "The man in the yellow shirt is going to carry a heavy box.",
-        "main_future_will": "The man in the yellow shirt will carry a heavy box."
+        "main_present_perfect": "The man with a girl on his shoulders has carried a heavy box.",
+        "main_future_going_to": "The man with a girl on his shoulders is going to carry a heavy box.",
+        "main_future_will": "The man with a girl on his shoulders will carry a heavy box."
       }
     },
     {
@@ -17607,7 +17607,7 @@
     },
     {
       "id": "p2_obj_112",
-      "name": "Wooden café balcony",
+      "name": "Wooden caf\u00e9 balcony",
       "box": [
         42,
         3,
@@ -18140,7 +18140,7 @@
     },
     {
       "id": "p2_obj_125",
-      "name": "Café table",
+      "name": "Caf\u00e9 table",
       "box": [
         60.8,
         4.5,
@@ -18152,33 +18152,33 @@
         "preposition_next_to": "The wooden table is next to the man in the orange shirt.",
         "there_is": "There is a wooden table next to the man in the orange shirt.",
         "demonstrative_that": "That is a wooden table.",
-        "demonstrative_this": "This is the café table, an object known for supporting its user.",
-        "possessive_noun": "Without the café table's frame, it could not organize the room.",
-        "ability_can": "The café table can organize the room.",
-        "ability_cannot": "The café table cannot organize the room if it is badly damaged.",
+        "demonstrative_this": "This is the caf\u00e9 table, an object known for supporting its user.",
+        "possessive_noun": "Without the caf\u00e9 table's frame, it could not organize the room.",
+        "ability_can": "The caf\u00e9 table can organize the room.",
+        "ability_cannot": "The caf\u00e9 table cannot organize the room if it is badly damaged.",
         "frequency_always": "The table always holds useful items when several items need a firm surface.",
-        "comparative_more": "People find the café table more versatile than a poorly prepared alternative.",
-        "obligation_must": "The café table must remain able to provide a resting place.",
-        "future_going_is": "The café table is going to keep holding useful items throughout the day.",
-        "future_will": "The café table will keep holding useful items for the rest of the day.",
-        "infinitive_purpose": "People use the café table to support its user.",
-        "quantifier_enough": "Having enough space makes organizing the room possible for the café table.",
-        "quantifier_not_enough": "Without enough strength, the café table might not support its user.",
+        "comparative_more": "People find the caf\u00e9 table more versatile than a poorly prepared alternative.",
+        "obligation_must": "The caf\u00e9 table must remain able to provide a resting place.",
+        "future_going_is": "The caf\u00e9 table is going to keep holding useful items throughout the day.",
+        "future_will": "The caf\u00e9 table will keep holding useful items for the rest of the day.",
+        "infinitive_purpose": "People use the caf\u00e9 table to support its user.",
+        "quantifier_enough": "Having enough space makes organizing the room possible for the caf\u00e9 table.",
+        "quantifier_not_enough": "Without enough strength, the caf\u00e9 table might not support its user.",
         "quantifier_too_many": "There would be too many changes for the table to organize the room safely.",
-        "conjunction_so": "Someone needs a stable surface, so the café table can support its user.",
-        "past_continuous_visual": "The café table was supporting its user.",
-        "used_to": "The café table used to create extra space in a quieter setting.",
-        "present_perfect_has": "The café table has provided a resting place many times before.",
-        "first_conditional": "If the café table organizes the room, it will remain useful for longer.",
-        "gerund_complement": "Workers avoid interrupting the café table while it is organizing the room.",
-        "infinitive_complement": "The café table seems ready to organize the room.",
-        "third_conditional_alternate": "If the café table had not organized the room, it would have been less useful during the day.",
-        "perception_see": "From nearby, you can see the café table supporting its user.",
-        "reported_told": "A local specialist told a colleague that the café table had supported its user earlier.",
+        "conjunction_so": "Someone needs a stable surface, so the caf\u00e9 table can support its user.",
+        "past_continuous_visual": "The caf\u00e9 table was supporting its user.",
+        "used_to": "The caf\u00e9 table used to create extra space in a quieter setting.",
+        "present_perfect_has": "The caf\u00e9 table has provided a resting place many times before.",
+        "first_conditional": "If the caf\u00e9 table organizes the room, it will remain useful for longer.",
+        "gerund_complement": "Workers avoid interrupting the caf\u00e9 table while it is organizing the room.",
+        "infinitive_complement": "The caf\u00e9 table seems ready to organize the room.",
+        "third_conditional_alternate": "If the caf\u00e9 table had not organized the room, it would have been less useful during the day.",
+        "perception_see": "From nearby, you can see the caf\u00e9 table supporting its user.",
+        "reported_told": "A local specialist told a colleague that the caf\u00e9 table had supported its user earlier.",
         "main_simple_present": "The wooden table organizes the room.",
         "main_present_continuous": "The wooden table is organizing the room.",
         "main_simple_past": "The wooden table organized the room.",
-        "main_past_continuous": "The café table was supporting its user.",
+        "main_past_continuous": "The caf\u00e9 table was supporting its user.",
         "main_present_perfect": "The wooden table has organized the room.",
         "main_future_going_to": "The wooden table is going to organize the room.",
         "main_future_will": "The wooden table will organize the room."
@@ -18206,7 +18206,7 @@
         "obligation_must": "To keep the meal safe, the man in the blue cap must eat his dinner carefully.",
         "future_will": "The meal will continue when the man in the blue cap eats his dinner.",
         "conjunction_because": "The man in the blue cap eats his dinner because he wants to prepare or enjoy the food.",
-        "simultaneous_while": "While the man in the blue cap is eating his dinner, the potted palm is growing in the corner of the café.",
+        "simultaneous_while": "While the man in the blue cap is eating his dinner, the potted palm is growing in the corner of the caf\u00e9.",
         "second_conditional": "If the man in the blue cap's hat failed, the meal would stop.",
         "perception_see": "Even at a glance, people can see the man eating his dinner.",
         "perception_watch": "The man in the orange shirt is watching the man in the blue cap eating his dinner while standing to the right of him.",
@@ -18234,23 +18234,23 @@
       ],
       "grammar_data": {
         "subject": "The potted palm",
-        "progressive_is": "The potted palm is growing in the corner of the café.",
-        "there_is": "There is a potted palm growing in the corner of the café.",
-        "demonstrative_that": "That is a potted palm growing in the corner of the café.",
-        "infinitive_purpose": "The palm grows in the corner of the café to reach enough light and water.",
-        "simultaneous_while": "While the palm is growing in the corner of the café, the man in the blue cap is eating his dinner.",
-        "relative_defining_that": "This is a potted palm that is growing in the corner of the café.",
+        "progressive_is": "The potted palm is growing in the corner of the caf\u00e9.",
+        "there_is": "There is a potted palm growing in the corner of the caf\u00e9.",
+        "demonstrative_that": "That is a potted palm growing in the corner of the caf\u00e9.",
+        "infinitive_purpose": "The palm grows in the corner of the caf\u00e9 to reach enough light and water.",
+        "simultaneous_while": "While the palm is growing in the corner of the caf\u00e9, the man in the blue cap is eating his dinner.",
+        "relative_defining_that": "This is a potted palm that is growing in the corner of the caf\u00e9.",
         "quantifier_enough": "With enough water, the potted palm can continue supporting plant life.",
         "quantifier_too_many": "There would be too many changes for the palm to shape the landscape safely.",
-        "past_continuous_visual": "The palm was growing in the corner of the café.",
+        "past_continuous_visual": "The palm was growing in the corner of the caf\u00e9.",
         "reported_told": "A local specialist told a colleague that the potted palm had supported plant life earlier.",
-        "main_simple_present": "The potted palm grows in the corner of the café.",
-        "main_present_continuous": "The potted palm is growing in the corner of the café.",
-        "main_simple_past": "The potted palm grew in the corner of the café.",
-        "main_past_continuous": "The palm was growing in the corner of the café.",
-        "main_present_perfect": "The potted palm has grown in the corner of the café.",
-        "main_future_going_to": "The potted palm is going to grow in the corner of the café.",
-        "main_future_will": "The potted palm will grow in the corner of the café."
+        "main_simple_present": "The potted palm grows in the corner of the caf\u00e9.",
+        "main_present_continuous": "The potted palm is growing in the corner of the caf\u00e9.",
+        "main_simple_past": "The potted palm grew in the corner of the caf\u00e9.",
+        "main_past_continuous": "The palm was growing in the corner of the caf\u00e9.",
+        "main_present_perfect": "The potted palm has grown in the corner of the caf\u00e9.",
+        "main_future_going_to": "The potted palm is going to grow in the corner of the caf\u00e9.",
+        "main_future_will": "The potted palm will grow in the corner of the caf\u00e9."
       }
     },
     {
@@ -22424,7 +22424,7 @@
     },
     {
       "id": "p2_obj_229",
-      "name": "Boy with a surfboard",
+      "name": "Surprised skier with winter clothes",
       "box": [
         70,
         81,
@@ -22432,7 +22432,7 @@
         84.4
       ],
       "grammar_data": {
-        "subject": "The boy in yellow",
+        "subject": "The surprised skier in winter clothes",
         "progressive_is": "The boy in yellow is carrying a red surfboard.",
         "there_is": "There is a boy in yellow carrying a red surfboard.",
         "demonstrative_that": "That is a boy in yellow carrying a red surfboard.",
@@ -22459,13 +22459,13 @@
         "criticism_should_not": "The boy should not have ignored a warning from the boy in a deckchair.",
         "perception_watch": "You can watch the boy carrying a red surfboard.",
         "causative_have": "An instructor has the boy prepared when the plan changes.",
-        "main_simple_present": "Without warning, the boy sometimes notices an unusual detail.",
-        "main_present_continuous": "The boy in yellow is carrying a red surfboard.",
-        "main_simple_past": "The boy in yellow carried a red surfboard.",
-        "main_past_continuous": "The boy in yellow was carrying a red surfboard.",
-        "main_present_perfect": "The boy in yellow has carried a red surfboard.",
-        "main_future_going_to": "The boy in yellow is going to carry a red surfboard.",
-        "main_future_will": "The boy in yellow will carry a red surfboard."
+        "main_simple_present": "Without warning, the skier sometimes notices an unusual detail.",
+        "main_present_continuous": "The surprised skier is carrying a red skis.",
+        "main_simple_past": "The surprised skier carried a red skis.",
+        "main_past_continuous": "The surprised skier was carrying a red skis.",
+        "main_present_perfect": "The surprised skier has carried a red skis.",
+        "main_future_going_to": "The surprised skier is going to carry a red skis.",
+        "main_future_will": "The surprised skier will carry a red skis."
       }
     },
     {
@@ -23057,7 +23057,7 @@
     },
     {
       "id": "p2_obj_245",
-      "name": "Dog in the water",
+      "name": "Inflatable dolphin",
       "box": [
         91.9,
         78.8,
@@ -23065,7 +23065,7 @@
         80.3
       ],
       "grammar_data": {
-        "subject": "The wet dog",
+        "subject": "The inflatable dolphin",
         "progressive_is": "The wet dog is swimming after its owner.",
         "there_is": "There is a wet dog swimming after its owner.",
         "demonstrative_that": "That is a wet dog swimming after its owner.",
@@ -23081,13 +23081,13 @@
         "criticism_should_not": "The dog should not have ignored a warning from the boy in the shallow water.",
         "perception_watch": "You can watch the dog swimming after its owner.",
         "preposition_in": "The dog is in the water.",
-        "main_simple_present": "The wet dog swims after its owner.",
-        "main_present_continuous": "The wet dog is swimming after its owner.",
-        "main_simple_past": "The boy in the sea saw the wet dog swim after its owner.",
-        "main_past_continuous": "Earlier in the day, the dog was swimming after its owner.",
-        "main_present_perfect": "The wet dog has swum after its owner.",
-        "main_future_going_to": "The wet dog is going to swim after its owner.",
-        "main_future_will": "The wet dog will swim after its owner."
+        "main_simple_present": "The inflatable dolphin swims after its owner.",
+        "main_present_continuous": "The inflatable dolphin is swimming after its owner.",
+        "main_simple_past": "The boy in the sea saw the inflatable dolphin swim after its owner.",
+        "main_past_continuous": "Earlier in the day, the inflatable dolphin was swimming after its owner.",
+        "main_present_perfect": "The inflatable dolphin has swum after its owner.",
+        "main_future_going_to": "The inflatable dolphin is going to swim after its owner.",
+        "main_future_will": "The inflatable dolphin will swim after its owner."
       }
     },
     {
@@ -25120,7 +25120,7 @@
     },
     {
       "id": "p3_obj_57",
-      "name": "Dry streambed",
+      "name": "Gravel beside railroad",
       "box": [
         39.7,
         4,
@@ -25128,7 +25128,7 @@
         12.3
       ],
       "grammar_data": {
-        "subject": "The dry streambed",
+        "subject": "The gravel beside the railroad",
         "progressive_is": "The dry streambed is winding between the rocks.",
         "there_is": "There is a dry streambed winding between the rocks.",
         "demonstrative_that": "That is a dry streambed winding between the rocks.",
@@ -25136,13 +25136,13 @@
         "perception_see": "From a clear viewpoint, a visitor can see the streambed winding between the rocks.",
         "relative_defining_that": "This is a dry streambed that is winding between the rocks.",
         "first_conditional": "If the dry streambed keeps winding between the rocks, it will stay in good condition.",
-        "main_simple_present": "The dry streambed winds between the rocks.",
-        "main_present_continuous": "The dry streambed is winding between the rocks.",
-        "main_simple_past": "The dry streambed wound between the rocks.",
-        "main_past_continuous": "The dry streambed was winding between the rocks.",
-        "main_present_perfect": "The dry streambed has wound between the rocks.",
-        "main_future_going_to": "The dry streambed is going to wind between the rocks.",
-        "main_future_will": "The dry streambed will wind between the rocks."
+        "main_simple_present": "The gravel beside the railroad winds between the rocks.",
+        "main_present_continuous": "The gravel beside the railroad is winding between the rocks.",
+        "main_simple_past": "The gravel beside the railroad wound between the rocks.",
+        "main_past_continuous": "The gravel beside the railroad was winding between the rocks.",
+        "main_present_perfect": "The gravel beside the railroad has wound between the rocks.",
+        "main_future_going_to": "The gravel beside the railroad is going to wind between the rocks.",
+        "main_future_will": "The gravel beside the railroad will wind between the rocks."
       }
     },
     {
@@ -25257,7 +25257,7 @@
     },
     {
       "id": "p3_obj_60",
-      "name": "Dog at the steering wheel",
+      "name": "Chicken on teal truck",
       "box": [
         56.3,
         6.9,
@@ -25265,7 +25265,7 @@
         8.8
       ],
       "grammar_data": {
-        "subject": "The dog at the steering wheel",
+        "subject": "The chicken on the teal truck",
         "progressive_is": "The dog is sitting in the driver's seat.",
         "there_is": "There is a dog at the sitting in the driver's seat.",
         "demonstrative_that": "That is a dog at the sitting in the driver's seat.",
@@ -25285,12 +25285,12 @@
         "criticism_should_not": "The dog should not have ignored a warning from the man with a walking stick.",
         "perception_watch": "You can watch the dog sitting in the driver's seat.",
         "main_simple_present": "A cautious animal never continues sitting in the driver's seat after hearing an alarm.",
-        "main_present_continuous": "The dog is sitting in the driver's seat.",
-        "main_simple_past": "The dog at the steering wheel sat in the driver's seat.",
-        "main_past_continuous": "Just before this moment, the dog was sitting in the driver's seat.",
-        "main_present_perfect": "The dog at the steering wheel has sat in the driver's seat.",
-        "main_future_going_to": "The dog at the steering wheel is going to sit in the driver's seat.",
-        "main_future_will": "The dog at the steering wheel will sit in the driver's seat."
+        "main_present_continuous": "The chicken is sitting on top of the teal truck.",
+        "main_simple_past": "The chicken on the teal truck sat in the driver's seat.",
+        "main_past_continuous": "Just before this moment, the chicken was sitting in the driver's seat.",
+        "main_present_perfect": "The chicken on the teal truck has sat in the driver's seat.",
+        "main_future_going_to": "The chicken on the teal truck is going to sit in the driver's seat.",
+        "main_future_will": "The chicken on the teal truck will sit in the driver's seat."
       }
     },
     {
@@ -25462,7 +25462,7 @@
     },
     {
       "id": "p3_obj_66",
-      "name": "Man with a walking stick",
+      "name": "Man walking his dog",
       "box": [
         64.6,
         13.1,
@@ -25470,7 +25470,7 @@
         15.1
       ],
       "grammar_data": {
-        "subject": "The man with the walking stick",
+        "subject": "The man walking his dog",
         "progressive_is": "The man with the walking stick is strolling past the market.",
         "there_is": "There is a man with the strolling past the market.",
         "demonstrative_that": "That is a man with the strolling past the market.",
@@ -25483,13 +25483,13 @@
         "pronoun_him": "The market vendor in a blue apron asked him to review the plan.",
         "quantifier_too_much": "Exposure to too much responsibility might prevent the man from assisting someone nearby.",
         "reported_told": "The market vendor in a blue apron told a friend that the man had reviewed the plan earlier.",
-        "main_simple_present": "The man with the walking stick strolls past the market.",
-        "main_present_continuous": "The man with the walking stick is strolling past the market.",
-        "main_simple_past": "The man with the walking stick strolled past the market.",
-        "main_past_continuous": "The man with the walking stick was strolling past the market.",
-        "main_present_perfect": "The man with the walking stick has strolled past the market.",
-        "main_future_going_to": "The man with the walking stick is going to stroll past the market.",
-        "main_future_will": "The man with the walking stick will stroll past the market."
+        "main_simple_present": "The man walking his dog strolls past the market.",
+        "main_present_continuous": "The man walking his dog is strolling past the market.",
+        "main_simple_past": "The man walking his dog strolled past the market.",
+        "main_past_continuous": "The man walking his dog was strolling past the market.",
+        "main_present_perfect": "The man walking his dog has strolled past the market.",
+        "main_future_going_to": "The man walking his dog is going to stroll past the market.",
+        "main_future_will": "The man walking his dog will stroll past the market."
       }
     },
     {
@@ -25604,7 +25604,7 @@
     },
     {
       "id": "p3_obj_70",
-      "name": "Squirrel on the gravel",
+      "name": "Flying bird",
       "box": [
         52.8,
         5.9,
@@ -25612,7 +25612,7 @@
         7.1
       ],
       "grammar_data": {
-        "subject": "The squirrel",
+        "subject": "The flying bird",
         "progressive_is": "The squirrel is scampering across the gravel.",
         "there_is": "There is a squirrel scampering across the gravel.",
         "demonstrative_that": "That is a squirrel scampering across the gravel.",
@@ -25625,13 +25625,13 @@
         "past_continuous_visual": "The squirrel was scampering across the gravel.",
         "perception_watch": "You could watch the squirrel scampering across the gravel.",
         "preposition_on": "The squirrel is on the gravel.",
-        "main_simple_present": "The squirrel scamperes across the gravel.",
-        "main_present_continuous": "The squirrel is scampering across the gravel.",
-        "main_simple_past": "The squirrel scampered across the gravel.",
-        "main_past_continuous": "The squirrel was scampering across the gravel.",
-        "main_present_perfect": "The squirrel has scampered across the gravel.",
-        "main_future_going_to": "The squirrel is going to scampere across the gravel.",
-        "main_future_will": "The squirrel will scampere across the gravel."
+        "main_simple_present": "The flying bird scamperes across the gravel.",
+        "main_present_continuous": "The flying bird is scampering across the gravel.",
+        "main_simple_past": "The flying bird scampered across the gravel.",
+        "main_past_continuous": "The flying bird was scampering across the gravel.",
+        "main_present_perfect": "The flying bird has scampered across the gravel.",
+        "main_future_going_to": "The flying bird is going to scampere across the gravel.",
+        "main_future_will": "The flying bird will scampere across the gravel."
       }
     },
     {
@@ -27602,7 +27602,7 @@
     },
     {
       "id": "p3_obj_121",
-      "name": "Girl in orange with a suitcase",
+      "name": "Girl mowing the lawn",
       "box": [
         90,
         2.5,
@@ -27610,7 +27610,7 @@
         4.3
       ],
       "grammar_data": {
-        "subject": "The girl in orange",
+        "subject": "The girl mowing the lawn",
         "progressive_is": "The girl in orange is hurrying along the trackside.",
         "there_is": "There is a girl in orange hurrying along the trackside.",
         "demonstrative_that": "That is a girl in orange hurrying along the trackside.",
@@ -27634,13 +27634,13 @@
         "reported_told": "The passenger with grey hair told a friend that the girl had explored a new activity earlier.",
         "criticism_should_not": "The girl should not have ignored a warning from the passenger with grey hair.",
         "perception_watch": "From nearby, people can watch the girl hurrying along the trackside.",
-        "main_simple_present": "The girl in orange hurries along the trackside.",
-        "main_present_continuous": "The girl in orange is hurrying along the trackside.",
-        "main_simple_past": "The girl in orange hurried along the trackside.",
+        "main_simple_present": "The girl mowing the lawn hurries along the trackside.",
+        "main_present_continuous": "The girl mowing the lawn is hurrying along the trackside.",
+        "main_simple_past": "The girl mowing the lawn hurried along the trackside.",
         "main_past_continuous": "Earlier in the day, the girl was hurrying along the trackside.",
-        "main_present_perfect": "The girl in orange has hurried along the trackside.",
-        "main_future_going_to": "The girl in orange is going to hurry along the trackside.",
-        "main_future_will": "The girl in orange will hurry along the trackside."
+        "main_present_perfect": "The girl mowing the lawn has hurried along the trackside.",
+        "main_future_going_to": "The girl mowing the lawn is going to hurry along the trackside.",
+        "main_future_will": "The girl mowing the lawn will hurry along the trackside."
       }
     },
     {
@@ -27776,7 +27776,7 @@
     },
     {
       "id": "p3_obj_125",
-      "name": "Cat on a lead",
+      "name": "Small dog barking",
       "box": [
         68.6,
         15.9,
@@ -27784,7 +27784,7 @@
         17.1
       ],
       "grammar_data": {
-        "subject": "The white cat",
+        "subject": "The small dog barking",
         "progressive_is": "The white cat is trotting along on its lead.",
         "there_is": "There is a white cat trotting along on its lead.",
         "demonstrative_that": "That is a white cat trotting along on its lead.",
@@ -27797,13 +27797,13 @@
         "criticism_should_not": "The cat should not have ignored a warning from the man with a walking stick.",
         "perception_watch": "From nearby, people can watch the cat trotting along on its lead.",
         "preposition_on": "The cat is on a lead.",
-        "main_simple_present": "The white cat never trots along on its lead when it feels threatened.",
-        "main_present_continuous": "The white cat is trotting along on its lead.",
-        "main_simple_past": "The white cat trotted along on its lead.",
-        "main_past_continuous": "The white cat was trotting along on its lead.",
-        "main_present_perfect": "The white cat has trotted along on its lead.",
-        "main_future_going_to": "The white cat is going to trot along on its lead.",
-        "main_future_will": "The white cat will trot along on its lead."
+        "main_simple_present": "The small dog never trots along on its lead when it feels threatened.",
+        "main_present_continuous": "The small dog is trotting along on its lead.",
+        "main_simple_past": "The small dog trotted along on its lead.",
+        "main_past_continuous": "The small dog was trotting along on its lead.",
+        "main_present_perfect": "The small dog has trotted along on its lead.",
+        "main_future_going_to": "The small dog is going to trot along on its lead.",
+        "main_future_will": "The small dog will trot along on its lead."
       }
     },
     {
@@ -27842,7 +27842,7 @@
     },
     {
       "id": "p3_obj_127",
-      "name": "Jumping dog",
+      "name": "Man falling down",
       "box": [
         66.5,
         22.1,
@@ -27850,7 +27850,7 @@
         23.9
       ],
       "grammar_data": {
-        "subject": "The white dog",
+        "subject": "The man falling down",
         "progressive_is": "The white dog is leaping after a ball.",
         "there_is": "There is a white dog leaping after a ball.",
         "demonstrative_that": "That is a white dog leaping after a ball.",
@@ -27865,13 +27865,13 @@
         "perception_see": "Even at a glance, people can see the jumping dog leaping after a ball.",
         "relative_defining_that": "This is a white dog that is leaping after a ball.",
         "reported_told": "The man who tripped and spilled his groceries told a friend that the dog had searched for food earlier.",
-        "main_simple_present": "The white dog never leaps after a ball when it feels threatened.",
-        "main_present_continuous": "The white dog is leaping after a ball.",
-        "main_simple_past": "The man who tripped and spilled his groceries saw the white dog leap after a ball.",
-        "main_past_continuous": "The white dog was leaping after a ball.",
-        "main_present_perfect": "The white dog has leaped after a ball.",
-        "main_future_going_to": "The white dog is going to leap after a ball.",
-        "main_future_will": "The white dog will leap after a ball."
+        "main_simple_present": "The man never leaps after a ball when it feels threatened.",
+        "main_present_continuous": "The man is leaping after a ball.",
+        "main_simple_past": "The man who tripped and spilled his groceries saw the man leap after a ball.",
+        "main_past_continuous": "The man was leaping after a ball.",
+        "main_present_perfect": "The man has leaped after a ball.",
+        "main_future_going_to": "The man is going to leap after a ball.",
+        "main_future_will": "The man will leap after a ball."
       }
     },
     {
@@ -28162,7 +28162,7 @@
     },
     {
       "id": "p3_obj_133",
-      "name": "Red guitar case",
+      "name": "Snowboard",
       "box": [
         66.5,
         33.4,
@@ -28170,7 +28170,7 @@
         35.1
       ],
       "grammar_data": {
-        "subject": "The red guitar case",
+        "subject": "The snowboard",
         "progressive_is": "The case is leaning against the porch.",
         "there_is": "There is a red guitar case leaning against the porch.",
         "demonstrative_that": "That is a red guitar case leaning against the porch.",
@@ -28182,13 +28182,13 @@
         "quantifier_too_much": "With too much pressure, the case would find it harder to support safe storage.",
         "passive_simple_is": "The case is regularly tuned by the owner.",
         "passive_continuous_is": "The case is being tuned by the owner.",
-        "main_simple_present": "Without much assistance, the case usually protects its contents.",
-        "main_present_continuous": "The case is leaning against the porch.",
-        "main_simple_past": "The red guitar case leaned against the porch.",
-        "main_past_continuous": "The red guitar case was leaning against the porch.",
-        "main_present_perfect": "The red guitar case has leaned against the porch.",
-        "main_future_going_to": "The red guitar case is going to lean against the porch.",
-        "main_future_will": "The red guitar case will lean against the porch."
+        "main_simple_present": "Without much assistance, the snowboard usually protects its contents.",
+        "main_present_continuous": "The snowboard is leaning against the porch.",
+        "main_simple_past": "The snowboard leaned against the porch.",
+        "main_past_continuous": "The snowboard was leaning against the porch.",
+        "main_present_perfect": "The snowboard has leaned against the porch.",
+        "main_future_going_to": "The snowboard is going to lean against the porch.",
+        "main_future_will": "The snowboard will lean against the porch."
       }
     },
     {
@@ -28585,7 +28585,7 @@
     },
     {
       "id": "p3_obj_143",
-      "name": "Dog lying on the pavement",
+      "name": "Groceries spilling on ground",
       "box": [
         69.8,
         24.8,
@@ -28593,7 +28593,7 @@
         30
       ],
       "grammar_data": {
-        "subject": "The sleepy dog",
+        "subject": "The groceries spilling on the ground",
         "progressive_is": "The sleepy dog is stretching out on the warm pavement.",
         "there_is": "There is a sleepy dog stretching out on the warm pavement.",
         "demonstrative_that": "That is a sleepy dog stretching out on the warm pavement.",
@@ -28606,13 +28606,13 @@
         "past_continuous_visual": "At that moment, the dog lying was stretching out on the warm pavement.",
         "perception_watch": "You could watch the dog lying stretching out on the warm pavement.",
         "preposition_on": "The dog is lying on the pavement.",
-        "main_simple_present": "The sleepy dog stretches out on the warm pavement.",
-        "main_present_continuous": "The sleepy dog is stretching out on the warm pavement.",
-        "main_simple_past": "The sleepy dog stretched out on the warm pavement.",
-        "main_past_continuous": "At that moment, the dog lying was stretching out on the warm pavement.",
-        "main_present_perfect": "The sleepy dog has stretched out on the warm pavement.",
-        "main_future_going_to": "The sleepy dog is going to stretch out on the warm pavement.",
-        "main_future_will": "The sleepy dog will stretch out on the warm pavement."
+        "main_simple_present": "The spilled groceries stretches out on the warm pavement.",
+        "main_present_continuous": "The spilled groceries is stretching out on the warm pavement.",
+        "main_simple_past": "The spilled groceries stretched out on the warm pavement.",
+        "main_past_continuous": "At that moment, the groceries lying was stretching out on the warm pavement.",
+        "main_present_perfect": "The spilled groceries has stretched out on the warm pavement.",
+        "main_future_going_to": "The spilled groceries is going to stretch out on the warm pavement.",
+        "main_future_will": "The spilled groceries will stretch out on the warm pavement."
       }
     },
     {
@@ -29389,7 +29389,7 @@
     },
     {
       "id": "p3_obj_162",
-      "name": "Man in an orange jacket",
+      "name": "Man stepping in dog poop",
       "box": [
         70.4,
         82.6,
@@ -29397,7 +29397,7 @@
         84.9
       ],
       "grammar_data": {
-        "subject": "The man in the orange jacket",
+        "subject": "The man stepping in dog poop",
         "progressive_is": "The man in the orange jacket is walking past the cafe.",
         "there_is": "There is a man in the orange jacket walking past the cafe.",
         "demonstrative_that": "That is a man in the orange jacket walking past the cafe.",
@@ -29413,18 +29413,18 @@
         "reported_told": "The girl controlling a remote-control car told a friend that the man had assisted someone nearby earlier.",
         "criticism_should_not": "The man should not have ignored a warning from the girl controlling a remote-control car.",
         "perception_watch": "You can watch the man walking past the cafe.",
-        "main_simple_present": "The man in the orange jacket walks past the cafe.",
-        "main_present_continuous": "The man in the orange jacket is walking past the cafe.",
-        "main_simple_past": "The elderly man on the mobility scooter saw the man in the orange jacket walk past the cafe.",
-        "main_past_continuous": "The man in the orange jacket was walking past the cafe.",
-        "main_present_perfect": "The man in the orange jacket has walked past the cafe.",
-        "main_future_going_to": "The man in the orange jacket is going to walk past the cafe.",
-        "main_future_will": "The man in the orange jacket will walk past the cafe."
+        "main_simple_present": "The man stepping in dog poop walks past the cafe.",
+        "main_present_continuous": "The man stepping in dog poop is walking past the cafe.",
+        "main_simple_past": "The elderly man on the mobility scooter saw the man stepping in dog poop walk past the cafe.",
+        "main_past_continuous": "The man stepping in dog poop was walking past the cafe.",
+        "main_present_perfect": "The man stepping in dog poop has walked past the cafe.",
+        "main_future_going_to": "The man stepping in dog poop is going to walk past the cafe.",
+        "main_future_will": "The man stepping in dog poop will walk past the cafe."
       }
     },
     {
       "id": "p3_obj_163",
-      "name": "Two dogs on leads",
+      "name": "Husky dog",
       "box": [
         75.6,
         77.4,
@@ -29432,7 +29432,7 @@
         80.8
       ],
       "grammar_data": {
-        "subject": "The two dogs",
+        "subject": "The husky dog",
         "progressive_are": "The two dogs are tugging at their leads.",
         "there_are": "There are two dogs tugging at their leads.",
         "demonstrative_those": "Those are two dogs tugging at their leads.",
@@ -29463,13 +29463,13 @@
         "passive_simple_are": "The two dogs are walked along this street every afternoon.",
         "passive_continuous_are": "The two dogs are being pulled apart by their own leads.",
         "third_conditional_regret": "If their owner had used one lead each, the two dogs would not have tangled themselves.",
-        "main_simple_present": "On an ordinary day, the two dogs usually search for food.",
-        "main_present_continuous": "The two dogs are tugging at their leads.",
-        "main_simple_past": "The two dogs tugged at their leads.",
-        "main_past_continuous": "The two dogs were tugging at their leads.",
-        "main_present_perfect": "The two dogs have tugged at their leads.",
-        "main_future_going_to": "The two dogs are going to tug at their leads.",
-        "main_future_will": "The two dogs will tug at their leads."
+        "main_simple_present": "On an ordinary day, the husky dog usually search for food.",
+        "main_present_continuous": "The husky dog are tugging at their leads.",
+        "main_simple_past": "The husky dog tugged at their leads.",
+        "main_past_continuous": "The husky dog were tugging at their leads.",
+        "main_present_perfect": "The husky dog have tugged at their leads.",
+        "main_future_going_to": "The husky dog are going to tug at their leads.",
+        "main_future_will": "The husky dog will tug at their leads."
       }
     },
     {
@@ -29748,7 +29748,7 @@
     },
     {
       "id": "p3_obj_169",
-      "name": "Man in a cowboy hat",
+      "name": "Man with girl on shoulders",
       "box": [
         65.3,
         97.5,
@@ -29756,7 +29756,7 @@
         99.3
       ],
       "grammar_data": {
-        "subject": "The man in the cowboy hat",
+        "subject": "The man with a girl on his shoulders",
         "progressive_is": "The man in the cowboy hat is watching the trains go by.",
         "there_is": "There is a man in the cowboy hat watching the trains go by.",
         "demonstrative_that": "That is a man in the cowboy hat watching the trains go by.",
@@ -29776,12 +29776,12 @@
         "criticism_should_not": "The man should not have ignored a warning from the boy with a green backpack.",
         "perception_watch": "From nearby, people can watch the man watching the trains go by.",
         "main_simple_present": "When extra information is available, the man sometimes reviews the plan.",
-        "main_present_continuous": "The man in the cowboy hat is watching the trains go by.",
-        "main_simple_past": "The man in the cowboy hat watched the trains go by.",
+        "main_present_continuous": "The man with a girl on his shoulders is watching the trains go by.",
+        "main_simple_past": "The man with a girl on his shoulders watched the trains go by.",
         "main_past_continuous": "While people passed nearby, the man was watching the trains go by.",
-        "main_present_perfect": "The man in the cowboy hat has watched the trains go by.",
-        "main_future_going_to": "The man in the cowboy hat is going to watch the trains go by.",
-        "main_future_will": "The man in the cowboy hat will watch the trains go by."
+        "main_present_perfect": "The man with a girl on his shoulders has watched the trains go by.",
+        "main_future_going_to": "The man with a girl on his shoulders is going to watch the trains go by.",
+        "main_future_will": "The man with a girl on his shoulders will watch the trains go by."
       }
     },
     {
@@ -37916,7 +37916,7 @@
     },
     {
       "id": "p5_obj_26",
-      "name": "Round window",
+      "name": "Mounted light",
       "box": [
         20.8,
         32.9,
@@ -37924,7 +37924,7 @@
         34.3
       ],
       "grammar_data": {
-        "subject": "The round window",
+        "subject": "The mounted light",
         "progressive_is": "The round window is letting light into the hallway.",
         "there_is": "There is a round window letting light into the hallway.",
         "demonstrative_that": "That is a round window letting light into the hallway.",
@@ -37935,13 +37935,13 @@
         "quantifier_too_many": "Too many changes would make sheltering local people harder for the round window.",
         "quantifier_too_much": "Too much pressure could stop the round window from allowing fresh air inside.",
         "past_continuous_visual": "Earlier in the day, the round window was letting light into the hallway.",
-        "main_simple_present": "The round window lets light into the hallway.",
-        "main_present_continuous": "The round window is letting light into the hallway.",
-        "main_simple_past": "The round window let light into the hallway.",
-        "main_past_continuous": "Earlier in the day, the round window was letting light into the hallway.",
-        "main_present_perfect": "The round window has let light into the hallway.",
-        "main_future_going_to": "The round window is going to let light into the hallway.",
-        "main_future_will": "The round window will let light into the hallway."
+        "main_simple_present": "The mounted light lets light into the hallway.",
+        "main_present_continuous": "The mounted light is letting light into the hallway.",
+        "main_simple_past": "The mounted light let light into the hallway.",
+        "main_past_continuous": "Earlier in the day, the mounted light was letting light into the hallway.",
+        "main_present_perfect": "The mounted light has let light into the hallway.",
+        "main_future_going_to": "The mounted light is going to let light into the hallway.",
+        "main_future_will": "The mounted light will let light into the hallway."
       }
     },
     {
@@ -38141,7 +38141,7 @@
     },
     {
       "id": "p5_obj_33",
-      "name": "Scaffold plank",
+      "name": "Table",
       "box": [
         28.6,
         40.3,
@@ -38149,7 +38149,7 @@
         46.7
       ],
       "grammar_data": {
-        "subject": "The scaffold plank",
+        "subject": "The table",
         "progressive_is": "The scaffold plank is carrying the two workmen.",
         "there_is": "There is a scaffold plank carrying the two workmen.",
         "demonstrative_that": "That is a scaffold plank carrying the two workmen.",
@@ -38161,13 +38161,13 @@
         "relative_defining_that": "This is a scaffold plank that is carrying the two workmen.",
         "relative_nondefining_which": "The scaffold plank, which is carrying the two workmen, is next to the man in the green shirt.",
         "past_continuous_visual": "Just before this moment, the scaffold plank was carrying the two workmen.",
-        "main_simple_present": "The scaffold plank carries the two workmen.",
-        "main_present_continuous": "The scaffold plank is carrying the two workmen.",
-        "main_simple_past": "The scaffold plank carried the two workmen.",
-        "main_past_continuous": "Just before this moment, the scaffold plank was carrying the two workmen.",
-        "main_present_perfect": "The scaffold plank has carried the two workmen.",
-        "main_future_going_to": "The scaffold plank is going to carry the two workmen.",
-        "main_future_will": "The scaffold plank will carry the two workmen."
+        "main_simple_present": "The table carries the two workmen.",
+        "main_present_continuous": "The table is carrying the two workmen.",
+        "main_simple_past": "The table carried the two workmen.",
+        "main_past_continuous": "Just before this moment, the table was carrying the two workmen.",
+        "main_present_perfect": "The table has carried the two workmen.",
+        "main_future_going_to": "The table is going to carry the two workmen.",
+        "main_future_will": "The table will carry the two workmen."
       }
     },
     {
@@ -38410,7 +38410,7 @@
     },
     {
       "id": "p5_obj_40",
-      "name": "Man with insulation",
+      "name": "Man installing insulation",
       "box": [
         10.5,
         60.4,
@@ -38418,7 +38418,7 @@
         64.3
       ],
       "grammar_data": {
-        "subject": "The man with the insulation",
+        "subject": "The man installing insulation",
         "progressive_is": "The man with the insulation is pushing soft wool between the beams.",
         "there_is": "There is a man with the insulation pushing soft wool between the beams.",
         "demonstrative_that": "That is a man with the insulation pushing soft wool between the beams.",
@@ -38434,13 +38434,13 @@
         "reported_told": "The roofer in a yellow helmet told a friend that the man had reviewed the plan earlier.",
         "criticism_should_not": "The man should not have ignored a warning from the roofer in a yellow helmet.",
         "perception_watch": "You can watch the man pushing soft wool between the beams.",
-        "main_simple_present": "The man with the insulation sometimes pauses when the wooden roof frame comes closer.",
-        "main_present_continuous": "The man with the insulation is pushing soft wool between the beams.",
-        "main_simple_past": "The man with the insulation pushed soft wool between the beams.",
+        "main_simple_present": "The man installing the insulation sometimes pauses when the wooden roof frame comes closer.",
+        "main_present_continuous": "The man installing the insulation is pushing soft wool between the beams.",
+        "main_simple_past": "The man installing the insulation pushed soft wool between the beams.",
         "main_past_continuous": "While people passed nearby, the man was pushing soft wool between the beams.",
-        "main_present_perfect": "The man with the insulation has pushed soft wool between the beams.",
-        "main_future_going_to": "The man with the insulation is going to push soft wool between the beams.",
-        "main_future_will": "The man with the insulation will push soft wool between the beams."
+        "main_present_perfect": "The man installing the insulation has pushed soft wool between the beams.",
+        "main_future_going_to": "The man installing the insulation is going to push soft wool between the beams.",
+        "main_future_will": "The man installing the insulation will push soft wool between the beams."
       }
     },
     {
@@ -38784,7 +38784,7 @@
     },
     {
       "id": "p5_obj_52",
-      "name": "Red toolbox",
+      "name": "Toolbox",
       "box": [
         30.2,
         65.9,
@@ -38792,17 +38792,17 @@
         68.6
       ],
       "grammar_data": {
-        "subject": "The red toolbox",
+        "subject": "The toolbox",
         "frequency_often": "The red toolbox often organizes small objects for longer than expected.",
         "adverbs_manner": "The red toolbox safely holds essential supplies.",
         "conjunction_and": "The red toolbox holds essential supplies, and the white radiator does its job.",
-        "main_simple_present": "The red toolbox often organizes small objects for longer than expected.",
-        "main_present_continuous": "The red toolbox is sitting open on the workbench.",
-        "main_simple_past": "The red toolbox sat open on the workbench.",
-        "main_past_continuous": "The red toolbox was sitting open while the worker searched for a tool.",
-        "main_present_perfect": "The red toolbox has held the worker's tools all day.",
-        "main_future_going_to": "The red toolbox is going to be packed away at the end of the day.",
-        "main_future_will": "The red toolbox will stay open until the job is finished."
+        "main_simple_present": "The toolbox often organizes small objects for longer than expected.",
+        "main_present_continuous": "The toolbox is sitting open on the workbench.",
+        "main_simple_past": "The toolbox sat open on the workbench.",
+        "main_past_continuous": "The toolbox was sitting open while the worker searched for a tool.",
+        "main_present_perfect": "The toolbox has held the worker's tools all day.",
+        "main_future_going_to": "The toolbox is going to be packed away at the end of the day.",
+        "main_future_will": "The toolbox will stay open until the job is finished."
       }
     },
     {
@@ -40013,7 +40013,7 @@
     },
     {
       "id": "p5_obj_89",
-      "name": "Worker with a backpack",
+      "name": "Worker with toolbox",
       "box": [
         36.8,
         26.1,
@@ -40021,7 +40021,7 @@
         29.2
       ],
       "grammar_data": {
-        "subject": "The worker with the backpack",
+        "subject": "The worker with a toolbox",
         "progressive_is": "The worker with the backpack is climbing the outside stairs.",
         "there_is": "There is a worker with the backpack climbing the outside stairs.",
         "demonstrative_that": "That is a worker with the backpack climbing the outside stairs.",
@@ -40045,13 +40045,13 @@
         "if_only": "If only the worker had more time to prepare the materials!",
         "criticism_should_not": "The worker should not have ignored a warning from the man with a red board.",
         "perception_watch": "You can watch the worker climbing the outside stairs.",
-        "main_simple_present": "The worker with the backpack climbs the outside stairs.",
-        "main_present_continuous": "The worker with the backpack is climbing the outside stairs.",
-        "main_simple_past": "The worker with the backpack climbed the outside stairs.",
+        "main_simple_present": "The worker with a toolbox climbs the outside stairs.",
+        "main_present_continuous": "The worker with a toolbox is climbing the outside stairs.",
+        "main_simple_past": "The worker with a toolbox climbed the outside stairs.",
         "main_past_continuous": "The worker was climbing the outside stairs.",
-        "main_present_perfect": "The worker with the backpack has climbed the outside stairs.",
-        "main_future_going_to": "The worker with the backpack is going to climb the outside stairs.",
-        "main_future_will": "The worker with the backpack will climb the outside stairs."
+        "main_present_perfect": "The worker with a toolbox has climbed the outside stairs.",
+        "main_future_going_to": "The worker with a toolbox is going to climb the outside stairs.",
+        "main_future_will": "The worker with a toolbox will climb the outside stairs."
       }
     },
     {
@@ -40117,7 +40117,7 @@
     },
     {
       "id": "p5_obj_92",
-      "name": "Man with a red board",
+      "name": "Man with cupboard",
       "box": [
         39.3,
         32.3,
@@ -40125,7 +40125,7 @@
         35.6
       ],
       "grammar_data": {
-        "subject": "The man with the red board",
+        "subject": "The man with a cupboard",
         "progressive_is": "The man with the red board is carrying a red panel through the door.",
         "there_is": "There is a man with the red board carrying a red panel through the door.",
         "demonstrative_that": "That is a man with the red board carrying a red panel through the door.",
@@ -40139,13 +40139,13 @@
         "reported_told": "The worker with a backpack told a friend that the man had assisted someone nearby earlier.",
         "criticism_should_not": "The man should not have ignored a warning from the worker with a backpack.",
         "perception_watch": "From nearby, people can watch the man carrying a red panel through the door.",
-        "main_simple_present": "The man with the red board sometimes pauses when the red panel comes closer.",
-        "main_present_continuous": "The man with the red board is carrying a red panel through the door.",
-        "main_simple_past": "The man with the red board carried a red panel through the door.",
-        "main_past_continuous": "The man with the red board was carrying a red panel through the door.",
-        "main_present_perfect": "The man with the red board has carried a red panel through the door.",
-        "main_future_going_to": "The man with the red board is going to carry a red panel through the door.",
-        "main_future_will": "The man with the red board will carry a red panel through the door."
+        "main_simple_present": "The man with the cupcupboard sometimes pauses when the cupcupboard comes closer.",
+        "main_present_continuous": "The man with the cupcupboard is carrying a cupcupboard through the door.",
+        "main_simple_past": "The man with the cupcupboard carried a cupcupboard through the door.",
+        "main_past_continuous": "The man with the cupcupboard was carrying a cupcupboard through the door.",
+        "main_present_perfect": "The man with the cupcupboard has carried a cupcupboard through the door.",
+        "main_future_going_to": "The man with the cupcupboard is going to carry a cupcupboard through the door.",
+        "main_future_will": "The man with the cupcupboard will carry a cupcupboard through the door."
       }
     },
     {
@@ -40183,7 +40183,7 @@
     },
     {
       "id": "p5_obj_94",
-      "name": "Oval window",
+      "name": "Exterior light",
       "box": [
         51.6,
         32.7,
@@ -40191,7 +40191,7 @@
         34.7
       ],
       "grammar_data": {
-        "subject": "The oval window",
+        "subject": "The exterior light",
         "preposition_next_to": "The oval window is next to the lower wooden staircase.",
         "simultaneous_while": "While the window is looking out over the garden, the lower wooden staircase is leading up from the garden.",
         "relative_nondefining_which": "The oval window, which is looking out over the garden, is next to the lower wooden staircase.",
@@ -40199,13 +40199,13 @@
         "imperative_negative": "Do not disturb the oval window during protecting the interior!",
         "past_regular": "After a brief inspection, a local specialist cleaned the oval window.",
         "past_continuous_visual": "Earlier in the day, the oval window was looking out over the garden.",
-        "main_simple_present": "The oval window looks out over the garden.",
-        "main_present_continuous": "The oval window is looking out over the garden.",
-        "main_simple_past": "After a brief inspection, a local specialist cleaned the oval window.",
-        "main_past_continuous": "Earlier in the day, the oval window was looking out over the garden.",
-        "main_present_perfect": "The oval window has looked out over the garden since the house was built.",
-        "main_future_going_to": "The oval window is going to need cleaning again soon.",
-        "main_future_will": "The oval window will keep looking out over the garden."
+        "main_simple_present": "The exterior light looks out over the garden.",
+        "main_present_continuous": "The exterior light is looking out over the garden.",
+        "main_simple_past": "After a brief inspection, a local specialist cleaned the exterior light.",
+        "main_past_continuous": "Earlier in the day, the exterior light was looking out over the garden.",
+        "main_present_perfect": "The exterior light has looked out over the garden since the house was built.",
+        "main_future_going_to": "The exterior light is going to need cleaning again soon.",
+        "main_future_will": "The exterior light will keep looking out over the garden."
       }
     },
     {
@@ -40591,7 +40591,7 @@
     },
     {
       "id": "p5_obj_107",
-      "name": "Ceiling pipe",
+      "name": "Paint roller rolling paint",
       "box": [
         51.1,
         42.8,
@@ -40599,7 +40599,7 @@
         45.1
       ],
       "grammar_data": {
-        "subject": "The ceiling pipe",
+        "subject": "The paint roller rolling paint",
         "progressive_is": "The ceiling pipe is sticking out of the old ceiling.",
         "there_is": "There is a pipe sticking out of the old ceiling.",
         "demonstrative_that": "That is a pipe sticking out of the old ceiling.",
@@ -40611,13 +40611,13 @@
         "adverbs_manner": "The ceiling pipe saves time during the job usefully.",
         "past_continuous_visual": "While people passed nearby, the ceiling pipe was sticking out of the old ceiling.",
         "gerund_complement": "People value having the ceiling pipe available when it needs to provide useful support.",
-        "main_simple_present": "People nearby often notice the ceiling pipe providing useful support.",
-        "main_present_continuous": "The ceiling pipe is sticking out of the old ceiling.",
-        "main_simple_past": "The ceiling pipe stuck out of the old ceiling.",
-        "main_past_continuous": "While people passed nearby, the ceiling pipe was sticking out of the old ceiling.",
-        "main_present_perfect": "The ceiling pipe has stuck out of the old ceiling.",
-        "main_future_going_to": "The ceiling pipe is going to stick out of the old ceiling.",
-        "main_future_will": "The ceiling pipe will stick out of the old ceiling."
+        "main_simple_present": "People nearby often notice the paint roller providing useful support.",
+        "main_present_continuous": "The paint roller is sticking out of the old ceiling.",
+        "main_simple_past": "The paint roller stuck out of the old ceiling.",
+        "main_past_continuous": "While people passed nearby, the paint roller was sticking out of the old ceiling.",
+        "main_present_perfect": "The paint roller has stuck out of the old ceiling.",
+        "main_future_going_to": "The paint roller is going to stick out of the old ceiling.",
+        "main_future_will": "The paint roller will stick out of the old ceiling."
       }
     },
     {
@@ -42263,7 +42263,7 @@
     },
     {
       "id": "p5_obj_158",
-      "name": "Boy in a green jacket",
+      "name": "Boy carrying toy backhoe",
       "box": [
         77.7,
         9.4,
@@ -42271,7 +42271,7 @@
         12.2
       ],
       "grammar_data": {
-        "subject": "The boy in the green jacket",
+        "subject": "The boy carrying a toy backhoe",
         "progressive_is": "The boy in the green jacket is running after his mother.",
         "there_is": "There is a boy in the green jacket running after his mother.",
         "demonstrative_that": "That is a boy in the green jacket running after his mother.",
@@ -42289,12 +42289,12 @@
         "perception_watch": "You can watch the boy running after his mother.",
         "preposition_next_to": "The boy is next to the woman in a purple dress.",
         "main_simple_present": "Whenever enough energy is available, the boy usually helps a friend.",
-        "main_present_continuous": "The boy in the green jacket is running after his mother.",
+        "main_present_continuous": "The boy carrying a toy backhoe is running after his mother.",
         "main_simple_past": "After a brief inspection, a colleague reminded the boy.",
-        "main_past_continuous": "The boy in the green jacket was running after his mother.",
-        "main_present_perfect": "The boy in the green jacket has run after his mother.",
-        "main_future_going_to": "The boy in the green jacket is going to run after his mother.",
-        "main_future_will": "The boy in the green jacket will run after his mother."
+        "main_past_continuous": "The boy carrying a toy backhoe was running after his mother.",
+        "main_present_perfect": "The boy carrying a toy backhoe has run after his mother.",
+        "main_future_going_to": "The boy carrying a toy backhoe is going to run after his mother.",
+        "main_future_will": "The boy carrying a toy backhoe will run after his mother."
       }
     },
     {
@@ -42665,7 +42665,7 @@
     },
     {
       "id": "p5_obj_169",
-      "name": "Small stones",
+      "name": "Smoke from scooter",
       "box": [
         91.6,
         8.4,
@@ -42673,17 +42673,17 @@
         12.4
       ],
       "grammar_data": {
-        "subject": "The small stones",
+        "subject": "The smoke from the scooter",
         "preposition_next_to": "The small stones are next to the scooter's back wheel.",
         "there_are": "There are small stones next to the scooter's back wheel.",
         "adverbs_manner": "Reliably, the small stones support a daily task.",
-        "main_simple_present": "The small stones lie next to the scooter's back wheel.",
-        "main_present_continuous": "The small stones are lying next to the scooter's back wheel.",
-        "main_simple_past": "The small stones scattered next to the scooter's back wheel.",
-        "main_past_continuous": "The small stones were lying there when the scooter rolled past.",
-        "main_present_perfect": "The small stones have lain there since the road was resurfaced.",
-        "main_future_going_to": "The small stones are going to be swept away soon.",
-        "main_future_will": "The small stones will stay scattered until someone sweeps them up."
+        "main_simple_present": "The smoke from the scooter lie next to the scooter's back wheel.",
+        "main_present_continuous": "The smoke from the scooter are lying next to the scooter's back wheel.",
+        "main_simple_past": "The smoke from the scooter scattered next to the scooter's back wheel.",
+        "main_past_continuous": "The smoke from the scooter were lying there when the scooter rolled past.",
+        "main_present_perfect": "The smoke from the scooter have lain there since the road was resurfaced.",
+        "main_future_going_to": "The smoke from the scooter are going to be swept away soon.",
+        "main_future_will": "The smoke from the scooter will stay scattered until someone sweeps them up."
       }
     },
     {
@@ -135226,7 +135226,7 @@
         "main_present_continuous": "The boy is taunting the cow from behind the fence.",
         "main_simple_past": "The boy teased the cow a moment ago.",
         "main_past_continuous": "The boy was taunting the cow while it stood beside the fence.",
-        "main_present_perfect": "The boy has attracted the cow’s attention.",
+        "main_present_perfect": "The boy has attracted the cow\u2019s attention.",
         "main_future_going_to": "The boy is going to step back from the cow.",
         "main_future_will": "The boy will stop taunting the cow when it comes closer."
       }
@@ -135654,7 +135654,7 @@
         "main_past_continuous": "The tractor siren was flashing while the tractor crossed the farmyard.",
         "main_present_perfect": "The tractor siren has alerted the nearby workers.",
         "main_future_going_to": "The tractor siren is going to flash when the tractor moves.",
-        "main_future_will": "The tractor siren will warn everyone in the tractor’s path."
+        "main_future_will": "The tractor siren will warn everyone in the tractor\u2019s path."
       }
     },
     {
@@ -136018,7 +136018,7 @@
         "main_simple_past": "The goat sniffed around the pickup a moment ago.",
         "main_past_continuous": "The goat was sniffing beside the pickup while people worked nearby.",
         "main_present_perfect": "The goat has followed a scent to the pickup.",
-        "main_future_going_to": "The goat is going to sniff around the truck’s tyres.",
+        "main_future_going_to": "The goat is going to sniff around the truck\u2019s tyres.",
         "main_future_will": "The goat will keep exploring beside the pickup."
       }
     },
