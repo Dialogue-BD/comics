@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f3e9">
+    <meta name="description" content="An interactive emotions wheel for English Club daily check-ins.">
+    <title>How Are You Feeling? · English Club</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="club-mark" aria-label="English Club">
+          <span class="club-mark__dot" aria-hidden="true"></span>
+          <span>English Club</span>
+        </div>
+        <div class="header-actions">
+          <div class="date-chip" id="today">Daily check-in</div>
+          <button class="header-audio-button" id="global-audio-toggle" type="button" aria-pressed="false" aria-label="Turn automatic speech on">
+            <span class="header-audio-button__icon" aria-hidden="true">🔇</span>
+            <span class="header-audio-button__label">Auto-play</span>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">Name it. Learn it. Share it.</p>
+          <h1 id="page-title">How are you feeling <em>today?</em></h1>
+          <p class="intro__copy">Start in the middle. Choose a big feeling, then move outward to find a more exact English word.</p>
+        </section>
+
+        <nav class="steps" aria-label="Three steps">
+          <div class="step is-active" data-step="1"><span>1</span><strong>Choose a feeling</strong></div>
+          <div class="step" data-step="2"><span>2</span><strong>Get specific</strong></div>
+          <div class="step" data-step="3"><span>3</span><strong>Find your word</strong></div>
+        </nav>
+
+        <section class="experience" aria-label="Interactive emotions check-in">
+          <div class="wheel-card">
+            <div class="wheel-card__topline">
+              <div>
+                <p class="section-kicker">Your feeling</p>
+                <h2 id="wheel-instruction">Choose one from the center</h2>
+              </div>
+              <div class="wheel-actions">
+                <button class="quiet-button emoji-mode-button" id="emoji-mode" type="button" aria-pressed="false" aria-label="Show only emojis on the emotions wheel">
+                  <span aria-hidden="true">🙂</span> Emoji-only
+                </button>
+                <button class="quiet-button" id="start-over" type="button">↻ Start over</button>
+              </div>
+            </div>
+
+            <div class="mobile-choices" id="mobile-choices" aria-label="Visible emotion choices"></div>
+
+            <div class="wheel-stage">
+              <div class="wheel-halo" aria-hidden="true"></div>
+              <div class="emotion-wheel" id="emotion-wheel" role="group" aria-label="Emotions wheel"></div>
+              <div class="wheel-center" aria-hidden="true">
+                <span>How do</span>
+                <strong>you feel?</strong>
+              </div>
+            </div>
+
+            <div class="rotation-controls" aria-label="Rotate the emotions wheel">
+              <span class="drag-hint">↻ Drag the wheel to rotate</span>
+              <div class="rotation-buttons">
+                <button type="button" id="rotate-left" aria-label="Rotate wheel left">−15°</button>
+                <button type="button" id="reset-rotation">Center</button>
+                <button type="button" id="rotate-right" aria-label="Rotate wheel right">+15°</button>
+              </div>
+            </div>
+
+            <div class="wheel-key" aria-live="polite">
+              <span><i class="key-dot key-dot--one"></i>big feeling</span>
+              <span><i class="key-dot key-dot--two"></i>more specific</span>
+              <span><i class="key-dot key-dot--three"></i>most exact</span>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section class="transcript-card" id="transcript-card" aria-labelledby="transcript-heading" hidden>
+          <div class="transcript-card__header">
+            <div>
+              <p class="section-kicker">Follow the voice</p>
+              <div class="selected-heading">
+                <span class="selected-emoji" id="selected-emoji" aria-hidden="true">😊</span>
+                <h2 id="selected-word">Happy</h2>
+                <span class="pronunciation" id="pronunciation">/ˈhæp.i/</span>
+              </div>
+              <p class="breadcrumb" id="breadcrumb"></p>
+              <p class="bangla-definition" id="bangla-definition" lang="bn"></p>
+            </div>
+            <button class="sound-orb" id="play-all" type="button" aria-label="Listen to this word and all example sentences">
+              <span class="sound-orb__icon" aria-hidden="true">▶</span>
+              <span class="sound-orb__label">Listen</span>
+            </button>
+          </div>
+          <div class="audio-controls" aria-label="Audio controls">
+            <button type="button" class="stop-button" id="stop-audio">■ Stop</button>
+            <p class="transcript-status" id="transcript-status" aria-live="polite">Ready to listen</p>
+          </div>
+          <div class="cefr-section">
+            <div class="cefr-section__label">
+              <span>Choose your English level</span>
+              <small>The definition and spoken lesson will change.</small>
+            </div>
+            <div class="cefr-selector" id="cefr-selector" role="group" aria-label="Choose a CEFR English level">
+              <button type="button" data-level="A1" aria-pressed="false"><strong>A1</strong><span>Beginner</span></button>
+              <button type="button" data-level="A2" aria-pressed="true"><strong>A2</strong><span>Elementary</span></button>
+              <button type="button" data-level="B1" aria-pressed="false"><strong>B1</strong><span>Intermediate</span></button>
+              <button type="button" data-level="B2" aria-pressed="false"><strong>B2</strong><span>Upper int.</span></button>
+              <button type="button" data-level="C1" aria-pressed="false"><strong>C1</strong><span>Advanced</span></button>
+              <button type="button" data-level="C2" aria-pressed="false"><strong>C2</strong><span>Proficient</span></button>
+            </div>
+          </div>
+          <h3 id="transcript-heading">Listening transcript</h3>
+          <div class="live-transcript" id="live-transcript" aria-live="off"></div>
+          <section class="bangla-transcript" lang="bn" aria-labelledby="bangla-transcript-heading">
+            <div class="bangla-transcript__header">
+              <h4 id="bangla-transcript-heading">সহজ বাংলা অনুবাদ</h4>
+              <span id="bangla-transcript-level">A2</span>
+            </div>
+            <div class="bangla-transcript__lines" id="bangla-transcript" aria-live="polite"></div>
+          </section>
+          <div class="share-prompt">
+            <label for="reason"><span>Now tell the group</span>I feel <strong id="prompt-word">happy</strong> because…</label>
+            <textarea id="reason" rows="2" maxlength="220" placeholder="Write a few words to help you remember."></textarea>
+            <div class="anonymous-submit">
+              <p><strong>Anonymous:</strong> do not include anyone’s name or contact details.</p>
+              <button type="button" id="submit-poll">Share anonymously</button>
+            </div>
+            <p class="poll-submit-status" id="poll-submit-status" aria-live="polite"></p>
+          </div>
+        </section>
+
+        <section class="poll-card" id="daily-poll" aria-labelledby="poll-heading">
+          <div class="poll-card__header">
+            <div>
+              <p class="section-kicker">Our room, this hour</p>
+              <h2 id="poll-heading">Anonymous emotion check-in</h2>
+              <p id="poll-date"></p>
+            </div>
+            <div class="live-badge"><span aria-hidden="true"></span>Live</div>
+          </div>
+
+          <div class="poll-overview">
+            <div class="poll-total">
+              <strong id="poll-total">0</strong>
+              <span>responses this hour</span>
+              <small id="poll-updated">Waiting for the first response…</small>
+            </div>
+            <div class="poll-chart" id="poll-chart" aria-label="Live emotion poll results"></div>
+          </div>
+
+          <div class="poll-lower">
+            <div class="popular-words">
+              <p class="section-kicker">Words people chose</p>
+              <div id="popular-words"><span class="poll-empty">No responses yet.</span></div>
+            </div>
+            <div class="anonymous-reasons">
+              <p class="section-kicker">Anonymous reasons</p>
+              <div id="poll-reasons"><p class="poll-empty">The first written reason will appear here.</p></div>
+            </div>
+          </div>
+
+          <p class="poll-privacy">No names, emails, or profiles are collected. One response per device can be updated during the hour. The board resets at the start of each hour in Dhaka.</p>
+        </section>
+
+        <section class="clues-card" id="feeling-clues" aria-labelledby="clues-heading">
+          <div class="clues-card__header">
+            <div>
+              <p class="section-kicker">Notice the clues</p>
+              <h2 id="clues-heading">How do I know what I’m feeling?</h2>
+            </div>
+            <div class="clue-language-area">
+              <p id="clues-intro">Choose 1–3 clues that fit best. You can add more if you need to.</p>
+              <div class="clue-language" id="clue-language" role="group" aria-label="Language for clue options">
+                <button type="button" data-clue-language="en" aria-pressed="true">English</button>
+                <button type="button" data-clue-language="bn" aria-pressed="false" lang="bn">বাংলা</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="clue-workspace">
+            <div class="clue-picker">
+              <div class="clue-tabs" role="tablist" aria-label="Types of emotional clues">
+                <button type="button" id="behavior-tab" role="tab" aria-selected="true" aria-controls="clue-options" data-clue-mode="behavior">
+                  <span class="clue-tab__label" id="behavior-tab-label">What am I doing?</span> <span class="clue-tab__count" id="behavior-count">0</span>
+                </button>
+                <button type="button" id="sensation-tab" role="tab" aria-selected="false" aria-controls="clue-options" data-clue-mode="sensation">
+                  <span class="clue-tab__label" id="sensation-tab-label">What is my body doing?</span> <span class="clue-tab__count" id="sensation-count">0</span>
+                </button>
+              </div>
+              <div class="clue-options" id="clue-options" role="tabpanel" aria-labelledby="behavior-tab"></div>
+              <button type="button" class="show-more-clues" id="show-more-clues" aria-expanded="false">Show all clues</button>
+            </div>
+
+            <aside class="clue-result" aria-live="polite">
+              <p class="section-kicker">Your possible match</p>
+              <div id="clue-result-content">
+                <h3>Start with one clue.</h3>
+                <p>Think about what you are doing or what you notice in your body right now.</p>
+              </div>
+              <div class="clue-bars" id="clue-bars" aria-label="Possible emotion matches"></div>
+              <div class="clue-result__actions">
+                <button type="button" class="explore-match" id="explore-match" hidden>Explore this emotion ↑</button>
+                <button type="button" class="clear-clues" id="clear-clues" disabled>Clear clues</button>
+              </div>
+              <p class="clue-note">These clues can guide you, but they cannot prove exactly what you feel.</p>
+            </aside>
+          </div>
+        </section>
+
+        <p class="privacy-note">Learning preferences stay on this device. Anonymous poll responses are stored only for the shared hourly check-in.</p>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
