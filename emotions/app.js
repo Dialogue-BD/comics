@@ -1473,6 +1473,422 @@ const customC2Data = {
   ]
 };
 
+const customC1Data = {
+  Frightened: [
+    `"She was frightened to walk home alone after the street lights went out."`,
+    `"He looked frightened the moment the alarm started going off."`,
+    `"Even as an adult, I get frightened by sudden loud noises in the night."`,
+    `"The child was so frightened by the thunder that she refused to leave the bed."`,
+    `"She tried to stay calm, but anyone could see she was genuinely frightened."`
+  ],
+  Inadequate: [
+    `"She felt inadequate whenever her more experienced colleagues spoke up in meetings."`,
+    `"He admitted feeling inadequate when he first stepped into the managerial role."`,
+    `"Nobody should feel inadequate for not knowing everything from the start."`,
+    `"Her harsh feedback left him feeling deeply inadequate for the rest of the week."`,
+    `"It's common to feel inadequate in a new environment—it doesn't mean you don't belong."`
+  ],
+  Inferior: [
+    `"He always felt inferior to his older brother, no matter how well he did."`,
+    `"Being the least experienced person in the room made her feel inferior."`,
+    `"She refused to let anyone make her feel inferior because of her background."`,
+    `"Feeling inferior at work can quietly drain your confidence over time."`,
+    `"He knew his skills were solid, but he still felt inferior going into the interview."`
+  ],
+  Rejected: [
+    `"She felt rejected when her proposal was turned down without any explanation."`,
+    `"Being rejected from the program was a real blow to his confidence."`,
+    `"He tried not to feel rejected, but the silence was hard to ignore."`,
+    `"Feeling rejected by people you're close to is far more painful than rejection by strangers."`,
+    `"She picked herself up quickly after being rejected the first time around."`
+  ],
+  Alienated: [
+    `"He felt alienated from his colleagues because of the language barrier."`,
+    `"Growing up bilingual, she sometimes felt alienated from both cultures at once."`,
+    `"The new policies made many long-serving employees feel alienated."`,
+    `"He became increasingly alienated from his family after moving abroad."`,
+    `"Feeling alienated in a new country is completely normal in the first year."`
+  ],
+  Disrespected: [
+    `"She felt genuinely disrespected when her idea was presented as someone else's."`,
+    `"He walked out of the meeting feeling completely disrespected."`,
+    `"Being interrupted in every conversation made her feel disrespected as a professional."`,
+    `"He had given years to that company and felt deeply disrespected by the decision."`,
+    `"You don't have to accept being disrespected, even in a professional context."`
+  ],
+  Mad: [
+    `"He was mad at himself for missing such an obvious mistake."`,
+    `"She got mad when she found out they had gone ahead without consulting her."`,
+    `"It makes me genuinely mad when people assume I don't know what I'm talking about."`,
+    `"Don't get mad at me—I was only doing what I was told."`,
+    `"He was so mad he had to take a long walk before he could speak to anyone calmly."`
+  ],
+  Enraged: [
+    `"She was enraged when she discovered the contract had been changed without notice."`,
+    `"He was enraged by the injustice and refused to drop the subject."`,
+    `"The crowd became enraged after the announcement was made."`,
+    `"Being deliberately excluded from the decision left her enraged for days."`,
+    `"He was enraged when his hard work was publicly credited to someone else."`
+  ],
+  Furious: [
+    `"She was furious when the flight was cancelled with no warning and no offer of help."`,
+    `"He was furious to find out the deadline had been moved without anyone telling him."`,
+    `"I was furious that the same issue had been ignored for the third time."`,
+    `"She stayed completely silent but was absolutely furious underneath."`,
+    `"He tried to remain professional, but his fury at the outcome was hard to conceal."`
+  ],
+  Hurt: [
+    `"She was deeply hurt when her closest friend didn't show up."`,
+    `"He felt hurt by the criticism, even though he knew it was meant to be constructive."`,
+    `"It's okay to feel hurt when someone lets you down—it means you trusted them."`,
+    `"She was hurt by what was said and found it difficult to move past."`,
+    `"He didn't say much, but you could see he was genuinely hurt by the response."`
+  ],
+  Devastated: [
+    `"She was devastated when she didn't get the role she had spent months preparing for."`,
+    `"He was devastated to hear that the project had been cancelled entirely."`,
+    `"The whole team was devastated by the sudden loss of their manager."`,
+    `"She was completely devastated after the breakup and needed time to herself."`,
+    `"It's hard not to feel devastated when something you've worked hard for falls apart."`
+  ],
+  Embarrassed: [
+    `"He was embarrassed to admit he had completely forgotten the meeting was that morning."`,
+    `"She felt embarrassed when her phone rang loudly in the middle of the presentation."`,
+    `"Being called out in front of everyone made him feel deeply embarrassed."`,
+    `"I was so embarrassed when I got the client's name wrong in the email."`,
+    `"She laughed it off, but she was clearly embarrassed by the mistake."`
+  ],
+  Threatened: [
+    `"He felt threatened by her expertise and began trying to undermine her."`,
+    `"She felt threatened when a new colleague started outperforming her regularly."`,
+    `"Strong leaders aren't threatened by people who challenge their thinking."`,
+    `"He felt threatened by the change and resisted it every step of the way."`,
+    `"She felt her position was being threatened and became increasingly defensive."`
+  ],
+  Jealous: [
+    `"She was jealous of her sister's easy confidence in social situations."`,
+    `"He got jealous whenever his partner spent too much time with old friends."`,
+    `"I'll admit I was a little jealous when she got promoted ahead of me."`,
+    `"Feeling jealous is natural—acting on it is what damages relationships."`,
+    `"He was jealous of the attention she was receiving and struggled to hide it."`
+  ],
+  Distant: [
+    `"She seemed distant all evening and barely said a word at dinner."`,
+    `"He became distant after the argument and stopped returning calls."`,
+    `"When she's under pressure, she tends to go quiet and feel distant from everyone."`,
+    `"I noticed she was distant during the meeting—something was clearly on her mind."`,
+    `"Being emotionally distant is sometimes a way of protecting yourself from further hurt."`
+  ],
+  Suspicious: [
+    `"He was suspicious when the numbers in the report didn't quite add up."`,
+    `"She became suspicious when he changed his story for the third time."`,
+    `"It's sensible to be suspicious when an offer seems too good to be true."`,
+    `"He was suspicious of the proposal and immediately asked for more details."`,
+    `"She had been suspicious of his motives from the very beginning."`
+  ],
+  Withdrawn: [
+    `"He became increasingly withdrawn after the difficult semester."`,
+    `"She grew withdrawn during that period and rarely spoke to anyone outside work."`,
+    `"Being withdrawn doesn't always mean something is wrong—sometimes you just need space."`,
+    `"He had been withdrawn for weeks before anyone thought to check in on him."`,
+    `"Feeling withdrawn during stressful periods is more common than most people admit."`
+  ],
+  Confused: [
+    `"She was confused by the conflicting instructions from two different managers."`,
+    `"He left the meeting feeling confused about what exactly was being asked of him."`,
+    `"I was confused when the results came back completely different from what we'd expected."`,
+    `"Don't be confused by the terminology—just ask for a plain explanation."`,
+    `"She was genuinely confused and wasn't trying to be difficult."`
+  ],
+  Disillusioned: [
+    `"He became disillusioned with politics after years of promises that never materialized."`,
+    `"She felt disillusioned when she realized the company's values didn't match its actions."`,
+    `"Many young workers feel disillusioned when careers don't match what they were told to expect."`,
+    `"It's normal to feel disillusioned when reality falls short of what you'd imagined."`,
+    `"He wasn't angry—just deeply disillusioned with the way things had turned out."`
+  ],
+  Perplexed: [
+    `"She was perplexed by his decision to resign right when things were finally improving."`,
+    `"He sat there perplexed, reading the same section over and over."`,
+    `"The consultant was perplexed by the data and asked for more time to review it."`,
+    `"I was completely perplexed when the fix stopped working with no explanation."`,
+    `"She gave a perplexed look and asked him to start again from the beginning."`
+  ],
+  Startled: [
+    `"She was startled when a pigeon flew right past her head on the stairwell."`,
+    `"He was startled by the sudden knock at the door late at night."`,
+    `"The noise startled everyone in the room and the meeting stopped abruptly."`,
+    `"She startled easily and hated being approached from behind without warning."`,
+    `"He was startled to find a message already waiting for him so early in the morning."`
+  ],
+  Shocked: [
+    `"She was shocked to discover that her account had been suspended without notice."`,
+    `"He was shocked by how quickly the situation had escalated."`,
+    `"The whole office was shocked when the CEO resigned with no advance warning."`,
+    `"I was shocked to read what had happened while I was away."`,
+    `"She stood there, visibly shocked, and took a long moment to gather her thoughts."`
+  ],
+  Dismayed: [
+    `"He was dismayed to see how much the neighborhood had changed."`,
+    `"She was dismayed by the lack of support from the people she had counted on."`,
+    `"The team was dismayed when the funding was withdrawn at the last minute."`,
+    `"I was dismayed to find the document hadn't been saved after all that work."`,
+    `"He was visibly dismayed by the results and needed time before he could respond."`
+  ],
+  Amazed: [
+    `"She was amazed by how much he had developed since she last worked with him."`,
+    `"I'm constantly amazed by what this small team manages to produce."`,
+    `"He was amazed that such a small adjustment had made such a significant difference."`,
+    `"We were all amazed when the most junior member of the team solved it first."`,
+    `"She stood amazed at the view and completely forgot what she had been about to say."`
+  ],
+  Astonished: [
+    `"She was astonished to find the whole project had been completed ahead of schedule."`,
+    `"He was astonished by the level of detail in the final presentation."`,
+    `"I was genuinely astonished when I saw the transformation they had pulled off."`,
+    `"The panel was astonished when the candidate gave such a composed and confident answer."`,
+    `"She looked astonished and asked twice whether the news had actually been confirmed."`
+  ],
+  Awe: [
+    `"Standing at the edge of the canyon, I was filled with a sense of awe."`,
+    `"She spoke with awe about the architect who had designed the whole structure."`,
+    `"The sheer scale of the project left everyone in genuine awe."`,
+    `"He looked on in awe as the orchestra performed the entire piece without a score."`,
+    `"There's something awe-inspiring about watching a master craftsperson at work."`
+  ],
+  Eager: [
+    `"She was eager to get started and had already read the entire brief."`,
+    `"He was so eager to impress on his first day that he arrived an hour early."`,
+    `"The students were eager to share their findings with the rest of the group."`,
+    `"Don't be so eager to answer—take a moment to think it through properly."`,
+    `"She was eager for feedback and took every comment seriously."`
+  ],
+  Energetic: [
+    `"She was energetic and enthusiastic from the moment she joined the team."`,
+    `"He felt energetic after the run and went straight into a very productive morning."`,
+    `"The session was great—everyone left feeling energetic and motivated."`,
+    `"She's always energetic in meetings—it's impossible not to be drawn into her enthusiasm."`,
+    `"He was unusually energetic that day, so he used the time to clear the backlog."`
+  ],
+  Liberated: [
+    `"She felt liberated after finally saying what she'd been thinking for months."`,
+    `"He felt liberated once he stopped trying to please everyone around him."`,
+    `"Leaving that environment was liberating—she felt clear-headed for the first time in years."`,
+    `"There's something deeply liberating about making a decision that is entirely your own."`,
+    `"He felt a sense of liberation once the long negotiation was finally resolved."`
+  ],
+  Ecstatic: [
+    `"She was ecstatic when she found out she'd been accepted onto the program."`,
+    `"He was ecstatic about the win and couldn't stop talking about it for days."`,
+    `"The whole team was ecstatic when they hit the target a week ahead of schedule."`,
+    `"I was ecstatic to hear that the surgery had gone better than anyone had expected."`,
+    `"She was so ecstatic she burst into tears when she got the call."`
+  ],
+  Important: [
+    `"She finally felt important when the director asked for her opinion directly."`,
+    `"He felt important when the board stopped the meeting to hear his proposal."`,
+    `"Everyone deserves to feel important and genuinely valued in their workplace."`,
+    `"Making staff feel important is one of the clearest markers of good leadership."`,
+    `"She played an important role in getting the project to where it is today."`
+  ],
+  Open: [
+    `"She went into the negotiation with an open mind and came out with a better deal."`,
+    `"He was open about his concerns from the start, which made everything easier."`,
+    `"Being open to criticism is one of the fastest ways to actually improve."`,
+    `"I try to stay open to different approaches, even when I have a clear preference."`,
+    `"She was open to revising the plan if there was a strong enough reason to do so."`
+  ],
+  Inspired: [
+    `"She was inspired by her mentor and chose to go into the same field."`,
+    `"He left the conference feeling deeply inspired and full of ideas."`,
+    `"I was inspired by how they had rebuilt the organization from almost nothing."`,
+    `"The documentary inspired her to change her career path entirely."`,
+    `"Seeing his work in the gallery left me feeling inspired for the whole week."`
+  ],
+  Hopeful: [
+    `"She was hopeful that the new policy would make a real difference on the ground."`,
+    `"He remained hopeful even when progress seemed frustratingly slow."`,
+    `"I'm hopeful the relationship can be repaired if both sides are willing to talk."`,
+    `"The positive feedback made her hopeful about the direction things were heading."`,
+    `"It's hard to stay hopeful when things keep falling through, but it genuinely matters."`
+  ],
+  Loving: [
+    `"She had always been loving and patient, even when things were difficult."`,
+    `"He grew up in a loving household and wanted to give the same to his own children."`,
+    `"She sent a long, loving message on her grandmother's birthday."`,
+    `"He found it hard to express himself, but his actions were consistently loving."`,
+    `"A loving relationship takes real effort from both sides, but it's worth it."`
+  ],
+  Avoidance: [
+    `"Her avoidance of the subject made everyone in the room uncomfortable."`,
+    `"His avoidance of difficult conversations was quietly holding the whole team back."`,
+    `"Avoidance is a natural response to discomfort, but it rarely makes things better."`,
+    `"She recognized her own avoidance of the task and made herself sit down with it."`,
+    `"Therapy helped him understand why avoidance had become his default way of coping."`
+  ],
+  Hesitant: [
+    `"She was hesitant to volunteer without knowing more about the commitment involved."`,
+    `"He seemed hesitant when asked to give his opinion in front of the whole group."`,
+    `"I was hesitant at first, but the results proved the change was absolutely worth it."`,
+    `"Don't be hesitant to ask for help—it's a sign of self-awareness, not weakness."`,
+    `"She was hesitant about the new direction and asked for more time to think it over."`
+  ],
+  Aversion: [
+    `"He had a strong aversion to confrontation and would go to great lengths to avoid it."`,
+    `"Her aversion to public speaking held her back for years before she sought help."`,
+    `"Some people develop an aversion to certain foods after a single bad experience."`,
+    `"His aversion to change made it difficult to introduce any new processes at all."`,
+    `"She had a clear aversion to making decisions under pressure and was upfront about it."`
+  ],
+  Disapproval: [
+    `"He expressed his disapproval of the approach in a calm but very direct way."`,
+    `"Her disapproval was evident even though she never raised her voice."`,
+    `"She registered her disapproval and then let the team make the final call."`,
+    `"He showed his disapproval by refusing to sign off on the final version."`,
+    `"Disapproval, expressed constructively and early, can actually drive positive change."`
+  ],
+  Judgmental: [
+    `"He was being judgmental without having heard the full story."`,
+    `"She caught herself being judgmental and tried to approach the situation differently."`,
+    `"Growing up in a very judgmental household made it hard for him to trust people."`,
+    `"It's easy to be judgmental from the outside when you don't know the context."`,
+    `"The team became judgmental of new ideas before they'd even been properly tested."`
+  ],
+  Loathing: [
+    `"She felt a deep loathing for dishonesty that went all the way back to her childhood."`,
+    `"His loathing of office politics was one of the main reasons he preferred working alone."`,
+    `"There was a barely concealed loathing between the two senior managers."`,
+    `"She looked at the memo with undisguised loathing and dropped it on the desk."`,
+    `"His self-loathing after the incident took a very long time to work through."`
+  ],
+  Awful: [
+    `"I feel awful about the way I handled that conversation."`,
+    `"She felt awful when she realized her comment had been completely misunderstood."`,
+    `"The news hit everyone hard—it was an awful thing for the whole team to go through."`,
+    `"He was looking awful—pale and completely exhausted—so we told him to go home."`,
+    `"She said she felt awful about missing the event and wanted to find a way to make it up."`
+  ],
+  Revulsion: [
+    `"She felt a wave of revulsion when she saw the conditions they were living in."`,
+    `"His revulsion at the suggestion was immediate and written all over his face."`,
+    `"She couldn't disguise her revulsion when the topic was brought up."`,
+    `"The revulsion on his face said everything he was unwilling to put into words."`,
+    `"She felt a mixture of revulsion and sadness watching the documentary."`
+  ],
+  Detestable: [
+    `"He found that kind of dishonest behavior utterly detestable."`,
+    `"The report described the working conditions as detestable and called for urgent change."`,
+    `"She was open about finding the policy detestable from the moment it was announced."`,
+    `"He used the word detestable in his resignation letter, and nobody disagreed."`,
+    `"Some things are simply detestable, regardless of the justification offered."`
+  ],
+  Disappointed: [
+    `"She was disappointed when the event was cancelled with so little notice."`,
+    `"He was deeply disappointed that the final work didn't reflect the effort he'd put in."`,
+    `"I was disappointed with the outcome, but I understood why the decision was made."`,
+    `"She was disappointed but professional, and said she would apply again next year."`,
+    `"Being disappointed doesn't mean it's over—sometimes the timing just isn't right."`
+  ],
+  Revolted: [
+    `"She was revolted by the conditions described in the investigation."`,
+    `"He was revolted when he found out how the product had actually been manufactured."`,
+    `"The audience was clearly revolted by what the documentary showed."`,
+    `"She was revolted by the comment and made her feelings clear immediately."`,
+    `"He was revolted by the idea and refused to have his name associated with it."`
+  ],
+  Repugnant: [
+    `"She found the proposal morally repugnant and said so in plain terms."`,
+    `"His behavior was described as repugnant in multiple formal complaints."`,
+    `"He found any compromise on this point entirely repugnant."`,
+    `"She considered the policy repugnant and immediately drafted a formal objection."`,
+    `"Some attitudes are simply repugnant to the kind of organization we want to be."`
+  ],
+  Bored: [
+    `"He was completely bored by the second hour of the conference."`,
+    `"She was so bored with the routine that she started applying for other positions."`,
+    `"The students looked bored, so the teacher switched to something more interactive."`,
+    `"Don't let yourself get bored—there's almost always a challenge worth finding."`,
+    `"He was bored with the project and it began to show in the quality of his work."`
+  ],
+  Indifferent: [
+    `"She was indifferent to the outcome and said either option was fine with her."`,
+    `"He appeared indifferent to criticism, which was both a strength and a blind spot."`,
+    `"The committee seemed completely indifferent to the community's concerns."`,
+    `"I'm largely indifferent to the format—just make sure the content is solid."`,
+    `"She was indifferent about the destination, so he went ahead and made the call."`
+  ],
+  Apathetic: [
+    `"He had grown apathetic about the project after too many setbacks."`,
+    `"She became apathetic when her suggestions were repeatedly dismissed."`,
+    `"Feeling apathetic is often a signal that you need a real change, not just a break."`,
+    `"The team grew apathetic after months of working without any clear direction."`,
+    `"He was apathetic about the new initiative—he'd seen too many like it fail before."`
+  ],
+  Lonely: [
+    `"She felt lonely despite being surrounded by people at the office all day."`,
+    `"He grew lonely after the move and hadn't yet found people he could connect with."`,
+    `"Feeling lonely in a new city is very common, especially in the first year."`,
+    `"She confided that she'd been feeling lonely since her closest friend moved away."`,
+    `"He didn't want to admit he was lonely, so he kept himself as busy as possible."`
+  ],
+  Isolated: [
+    `"She felt isolated when no one else on the team seemed to share her perspective."`,
+    `"He felt increasingly isolated after the restructure moved his whole department."`,
+    `"Working remotely can leave people feeling isolated without the right kind of support."`,
+    `"She felt isolated within the group and didn't know how to bridge the gap."`,
+    `"Being geographically isolated from family made the whole adjustment much harder."`
+  ],
+  Abandoned: [
+    `"She felt abandoned when her mentor left the company without any warning at all."`,
+    `"He felt abandoned when the organization withdrew its support mid-project."`,
+    `"People who felt abandoned in childhood often carry that pattern into adult relationships."`,
+    `"She felt abandoned by the very people she had most relied on during the crisis."`,
+    `"He struggled to admit he felt abandoned, seeing it as a sign of weakness."`
+  ],
+  Despair: [
+    `"She fell into despair after receiving the third rejection letter in a row."`,
+    `"There was a sense of collective despair when the funding was finally pulled."`,
+    `"He spoke openly about the despair he had felt before finding the right support."`,
+    `"Don't give in to despair—even the most difficult periods eventually pass."`,
+    `"She described the despair of watching everything she had built slowly fall apart."`
+  ],
+  Vulnerable: [
+    `"She felt vulnerable sharing her personal story in front of the whole team."`,
+    `"He was at his most vulnerable right after the diagnosis came through."`,
+    `"Being vulnerable with people you trust isn't weakness—it takes real courage."`,
+    `"She had never allowed herself to feel vulnerable before, and the unfamiliarity scared her."`,
+    `"He opened up about feeling vulnerable in a way that surprised everyone in the room."`
+  ],
+  Powerless: [
+    `"She felt powerless watching decisions being made that directly affected her."`,
+    `"He described feeling powerless when the appeal process dragged on for months."`,
+    `"Feeling powerless in your own workplace is a serious sign that something needs to change."`,
+    `"She felt powerless in the situation and reached out to someone she trusted for advice."`,
+    `"He admitted feeling powerless during the illness and how difficult that had been to sit with."`
+  ],
+  Guilty: [
+    `"She felt guilty for leaving early, even though she had every right to."`,
+    `"He felt guilty about missing his daughter's performance and couldn't stop apologizing."`,
+    `"Feeling guilty is one thing—actually doing something about it is what matters."`,
+    `"She felt guilty every time she said no, even when it was completely reasonable."`,
+    `"He had carried that guilt for years before he finally spoke to someone about what had happened."`
+  ],
+  Ashamed: [
+    `"He was deeply ashamed of how he had behaved during that difficult period."`,
+    `"She felt ashamed to ask for help, even when she genuinely needed it."`,
+    `"He was ashamed to admit the mistake in front of the whole team."`,
+    `"You have nothing to be ashamed of—you did the best you could at the time."`,
+    `"She carried a deep sense of shame for years before she was finally able to talk about it."`
+  ],
+  Remorseful: [
+    `"He was genuinely remorseful and apologized without making any excuses."`,
+    `"She looked remorseful when she realized how much her comment had affected him."`,
+    `"Being remorseful is important, but it has to be followed up with changed behavior."`,
+    `"He was remorseful about the decision, even though he had believed it was right at the time."`,
+    `"She wrote him a remorseful letter explaining what had led to her actions."`
+  ]
+};
+
 function getFloodingData(name) {
   if (emotionFloodingData[name]) return emotionFloodingData[name];
   const info = emotionInfo[name] || [`you feel ${name.toLowerCase()}`, "moderate", "facing unexpected situations", "notice a change in your body", "calm", "the two emotions express different internal states", `I feel ${name.toLowerCase()} in this moment`];
@@ -1511,12 +1927,12 @@ function getFloodingData(name) {
       `${name} is clear, not vague.`,
       `${name} is quiet, not loud.`
     ],
-    dialogueC1: [
-      isNoun ? `“He felt a sudden surge of ${nounWord} during the meeting.”` : `“I felt quite ${adjWord} right before the presentation.”`,
-      isNoun ? `“She tried to hide her ${nounWord}, but her voice trembled.”` : `“She looked ${adjWord} when she heard the unexpected news.”`,
-      isNoun ? `“There was a deep sense of ${nounWord} throughout the room.”` : `“He gets ${adjWord} whenever plans change suddenly.”`,
-      isNoun ? `“You shouldn't let ${nounWord} control your key decisions.”` : `“It is completely natural to feel ${adjWord} in this situation.”`,
-      isNoun ? `“It takes courage to face your ${nounWord} head-on.”` : `“Don't let feeling ${adjWord} stop you from applying.”`
+    dialogueC1: customC1Data[name] || [
+      isNoun ? `"He felt a sudden surge of ${nounWord} during the meeting."` : `"I felt quite ${adjWord} right before the presentation."`,
+      isNoun ? `"She tried to hide her ${nounWord}, but her voice trembled."` : `"She looked ${adjWord} when she heard the unexpected news."`,
+      isNoun ? `"There was a deep sense of ${nounWord} throughout the room."` : `"He gets ${adjWord} whenever plans change suddenly."`,
+      isNoun ? `"You shouldn't let ${nounWord} control your key decisions."` : `"It is completely natural to feel ${adjWord} in this situation."`,
+      isNoun ? `"It takes courage to face your ${nounWord} head-on."` : `"Don't let feeling ${adjWord} stop you from applying."`
     ],
     dialogueC2: customC2Data[name] || [
       `"I've been feeling completely out of sorts all afternoon."`,
