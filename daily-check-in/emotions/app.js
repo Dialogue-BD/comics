@@ -1060,37 +1060,47 @@ const emotionFloodingData = {
 function getFloodingData(name) {
   if (emotionFloodingData[name]) return emotionFloodingData[name];
   const info = emotionInfo[name] || [`you feel ${name.toLowerCase()}`, "moderate", "facing unexpected situations", "notice a change in your body", "calm", "the two emotions express different internal states", `I feel ${name.toLowerCase()} in this moment`];
-  const word = name.toLowerCase();
+  const rawWord = name.toLowerCase();
   const contrast = info[4].toLowerCase();
+
+  // Grammatical noun vs adjective detection & word family inflection
+  const isNoun = ["awe", "grief", "panic", "rage", "resentment", "jealousy", "envy", "shame", "guilt", "fear", "anger", "disgust", "surprise"].includes(rawWord);
+  const adjWord = isNoun ? (rawWord === "awe" ? "awesome" : rawWord === "grief" ? "grieved" : rawWord === "panic" ? "panicked" : rawWord === "rage" ? "enraged" : rawWord === "resentment" ? "resentful" : rawWord === "jealousy" ? "jealous" : rawWord === "envy" ? "envious" : rawWord === "shame" ? "ashamed" : rawWord === "guilt" ? "guilty" : `${rawWord}ful`) : rawWord;
+  const nounWord = isNoun ? rawWord : (rawWord === "scared" ? "fear" : rawWord === "anxious" ? "anxiety" : rawWord === "insecure" ? "insecurity" : rawWord === "overwhelmed" ? "overload" : rawWord === "terrified" ? "terror" : rawWord === "worried" ? "worry" : rawWord === "happy" ? "happiness" : rawWord === "confident" ? "confidence" : rawWord === "excited" ? "excitement" : rawWord === "joyful" ? "joy" : rawWord === "optimistic" ? "optimism" : rawWord === "peaceful" ? "peace" : rawWord === "proud" ? "pride" : rawWord === "sad" ? "sadness" : rawWord);
 
   return {
     collocations: [
-      `feel ${word}`,
-      `deeply ${word}`,
-      `${word} feeling`,
-      `genuinely ${word}`,
-      `become ${word}`
+      isNoun ? `filled with ${nounWord}` : `feel ${adjWord}`,
+      isNoun ? `deep ${nounWord}` : `deeply ${adjWord}`,
+      isNoun ? `sense of ${nounWord}` : `${adjWord} state`,
+      isNoun ? `express ${nounWord}` : `genuinely ${adjWord}`,
+      isNoun ? `overcome ${nounWord}` : `become ${adjWord}`
     ],
     colligations: [
-      `${word} about situation`,
-      `${word} to respond`,
-      `feel ${word} when`,
-      `too ${word} to`,
-      `so ${word} that`
+      isNoun ? `in ${nounWord} of` : `${adjWord} about things`,
+      isNoun ? `driven by ${nounWord}` : `too ${adjWord} to focus`,
+      isNoun ? `feel ${nounWord} when` : `feel ${adjWord} when facing change`,
+      isNoun ? `with pure ${nounWord}` : `become ${adjWord} under pressure`,
+      isNoun ? `no ${nounWord} left` : `so ${adjWord} that it shows`
     ],
     distinctions: [
       `${name} is ${info[1]}, not ${contrast}.`,
       `${name} is inner, not outer.`,
       `${name} is now, not later.`,
       `${name} is mind, not body.`,
-      `${name} is deep, not surface.`
+      `${name} is deep, not surface.`,
+      `${name} is state, not action.`,
+      `${name} is present, not past.`,
+      `${name} is real, not fake.`,
+      `${name} is clear, not vague.`,
+      `${name} is quiet, not loud.`
     ],
     dialogueC1: [
-      `“I felt a sudden wave of ${word} during the meeting.”`,
-      `“She tried to hide her ${word}, but everyone noticed.”`,
-      `“He felt ${word} when facing the unexpected change.”`,
-      `“It is completely natural to feel ${word} in this situation.”`,
-      `“Don't let ${word} control your decisions going forward.”`
+      isNoun ? `“He felt a sudden surge of ${nounWord} during the meeting.”` : `“I felt quite ${adjWord} right before the presentation.”`,
+      isNoun ? `“She tried to hide her ${nounWord}, but her voice trembled.”` : `“She looked ${adjWord} when she heard the unexpected news.”`,
+      isNoun ? `“There was a deep sense of ${nounWord} throughout the room.”` : `“He gets ${adjWord} whenever plans change suddenly.”`,
+      isNoun ? `“You shouldn't let ${nounWord} control your key decisions.”` : `“It is completely natural to feel ${adjWord} in this situation.”`,
+      isNoun ? `“It takes courage to face your ${nounWord} head-on.”` : `“Don't let feeling ${adjWord} stop you from applying.”`
     ],
     dialogueC2: [
       `“I've been feeling completely out of sorts all afternoon.”`,
@@ -1368,10 +1378,13 @@ function chooseVoice() {
 }
 
 function updateGlobalAudioButton() {
+  if (!globalAudioToggle) return;
   const icon = globalAudioToggle.querySelector(".header-audio-button__icon");
+  const label = globalAudioToggle.querySelector(".header-audio-button__label");
   globalAudioToggle.setAttribute("aria-pressed", String(state.autoPlay));
   globalAudioToggle.setAttribute("aria-label", state.autoPlay ? "Turn automatic speech off" : "Turn automatic speech on");
-  icon.textContent = state.autoPlay ? "🔊" : "🔇";
+  if (icon) icon.textContent = state.autoPlay ? "🔊" : "🔇";
+  if (label) label.textContent = state.autoPlay ? "Auto-play ON" : "Auto-play OFF";
 }
 
 function utter(text, onStart, onEnd, emphasis = false, onBoundary = null) {
@@ -1379,9 +1392,10 @@ function utter(text, onStart, onEnd, emphasis = false, onBoundary = null) {
   const formatted = /[.!?]$/.test(cleanText) ? cleanText : `${cleanText}.`;
   const item = new SpeechSynthesisUtterance(formatted);
   item.lang = "en-US";
-  item.rate = 0.92;
+  item.rate = state.speechRate || 0.9;
   item.pitch = emphasis ? 1.04 : 1;
-  const voice = chooseVoice();
+  const voices = ("speechSynthesis" in window) ? speechSynthesis.getVoices() : [];
+  const voice = voices.find(v => v.voiceURI === state.voiceURI) || chooseVoice();
   if (voice) item.voice = voice;
   item.onstart = onStart || null;
   item.onend = onEnd || null;
@@ -1868,3 +1882,34 @@ updateClueLanguage();
 updateClueResult();
 setPollWindow();
 loadPoll();
+
+
+function populateVoiceSelect() {
+  const voiceSelect = document.querySelector("#voice-select");
+  if (!voiceSelect || !("speechSynthesis" in window)) return;
+  const voices = speechSynthesis.getVoices().filter(v => v.lang.startsWith("en"));
+  voiceSelect.replaceChildren();
+  voices.forEach(v => {
+    const opt = document.createElement("option");
+    opt.value = v.voiceURI;
+    opt.textContent = `${v.name} (${v.lang})`;
+    voiceSelect.appendChild(opt);
+  });
+  if (state.voiceURI) voiceSelect.value = state.voiceURI;
+}
+
+document.querySelector("#voice-select")?.addEventListener("change", e => {
+  state.voiceURI = e.target.value;
+});
+
+document.querySelector("#rate-select")?.addEventListener("change", e => {
+  state.speechRate = parseFloat(e.target.value) || 0.9;
+});
+
+if ("speechSynthesis" in window) {
+  window.speechSynthesis.onvoiceschanged = () => {
+    chooseVoice();
+    populateVoiceSelect();
+  };
+  populateVoiceSelect();
+}

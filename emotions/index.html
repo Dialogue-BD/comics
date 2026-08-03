@@ -17,12 +17,42 @@
         </div>
         <div class="header-actions">
           <div class="date-chip" id="today">Daily check-in</div>
-          <button class="header-audio-button" id="global-audio-toggle" type="button" aria-pressed="false" aria-label="Turn automatic speech on">
-            <span class="header-audio-button__icon" aria-hidden="true">🔇</span>
-            <span class="header-audio-button__label">Auto-play</span>
-          </button>
         </div>
       </header>
+
+      <!-- PERSISTENT STICKY CONTROLS BAR (AUTOPLAY + COLOR-CODED CEFR) -->
+      <section class="sticky-bar-container" id="sticky-bar-container" aria-label="Persistent controls">
+        <div class="sticky-bar">
+          <div class="sticky-bar__left">
+            <button class="header-audio-button" id="global-audio-toggle" type="button" aria-pressed="false" aria-label="Turn automatic speech on">
+              <span class="header-audio-button__icon" aria-hidden="true">🔇</span>
+              <span class="header-audio-button__label">Auto-play</span>
+            </button>
+            <div class="audio-tune-inline">
+              <select id="voice-select" class="tune-select" aria-label="Select speech voice"></select>
+              <select id="rate-select" class="tune-select" aria-label="Select speech speed">
+                <option value="0.75">0.75x</option>
+                <option value="0.9" selected>0.9x</option>
+                <option value="1">1.0x</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="sticky-bar__right">
+            <div class="cefr-bar-label">
+              <span>CEFR Level & Activity:</span>
+            </div>
+            <div class="cefr-selector" id="cefr-selector" role="group" aria-label="Choose a CEFR English level">
+              <button type="button" data-level="A1" class="cefr-btn cefr-btn--a" aria-pressed="false"><strong>A1</strong><span>Collocations</span></button>
+              <button type="button" data-level="A2" class="cefr-btn cefr-btn--a" aria-pressed="true"><strong>A2</strong><span>Colligations</span></button>
+              <button type="button" data-level="B1" class="cefr-btn cefr-btn--b" aria-pressed="false"><strong>B1</strong><span>5 Contrasts</span></button>
+              <button type="button" data-level="B2" class="cefr-btn cefr-btn--b" aria-pressed="false"><strong>B2</strong><span>10 Contrasts</span></button>
+              <button type="button" data-level="C1" class="cefr-btn cefr-btn--c" aria-pressed="false"><strong>C1</strong><span>Headword Line</span></button>
+              <button type="button" data-level="C2" class="cefr-btn cefr-btn--c" aria-pressed="false"><strong>C2</strong><span>Idiom Line</span></button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <main>
         <section class="intro" aria-labelledby="page-title">
@@ -36,23 +66,6 @@
           <div class="step" data-step="2"><span>2</span><strong>Get specific</strong></div>
           <div class="step" data-step="3"><span>3</span><strong>Find your word</strong></div>
         </nav>
-
-        <section class="cefr-bar-container" aria-label="CEFR level selection">
-          <div class="cefr-section">
-            <div class="cefr-section__label">
-              <span>Choose your English level</span>
-              <small>Changes the aural input flooding activity (Collocations, Semantic Web, or Native Dialogue).</small>
-            </div>
-            <div class="cefr-selector" id="cefr-selector" role="group" aria-label="Choose a CEFR English level">
-              <button type="button" data-level="A1" aria-pressed="false"><strong>A1</strong><span>Beginner</span></button>
-              <button type="button" data-level="A2" aria-pressed="true"><strong>A2</strong><span>Elementary</span></button>
-              <button type="button" data-level="B1" aria-pressed="false"><strong>B1</strong><span>Intermediate</span></button>
-              <button type="button" data-level="B2" aria-pressed="false"><strong>B2</strong><span>Upper int.</span></button>
-              <button type="button" data-level="C1" aria-pressed="false"><strong>C1</strong><span>Advanced</span></button>
-              <button type="button" data-level="C2" aria-pressed="false"><strong>C2</strong><span>Proficient</span></button>
-            </div>
-          </div>
-        </section>
 
         <section class="experience" aria-label="Interactive emotions check-in">
           <div class="wheel-card">
@@ -234,6 +247,6 @@
       </main>
     </div>
 
-    <script src="app.js?v=flooding7"></script>
+    <script src="app.js?v=flooding8"></script>
   </body>
 </html>
