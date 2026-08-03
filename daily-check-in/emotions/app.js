@@ -519,23 +519,23 @@ const emotionFloodingData = {
     collocations: ["feel fear", "deep fear", "overcome fear", "fear of failure", "fear of heights"],
     colligations: ["in fear for", "driven by fear", "fear that happens", "fear about future", "no fear left"],
     distinctions: [
-      "Fear is not anxiety, but immediate danger.",
-      "Fear is more urgent than nervousness.",
-      "Fear is less about doubt than real threat.",
-      "Fear is not weakness, but a survival signal.",
-      "Fear is more physical than general concern.",
-      "Fear is not panic, but focused alarm.",
-      "Fear is less about the future than the present.",
-      "Fear is more intense than feeling uneasy.",
-      "Fear is not anger, but self-defense.",
-      "Fear is less controllable than mild worry."
+      "Fear is danger, not worry.",
+      "Fear is urgent, not mild.",
+      "Fear is threat, not doubt.",
+      "Fear is survival, not weakness.",
+      "Fear is physical, not emotional.",
+      "Fear is alarm, not sadness.",
+      "Fear is now, not later.",
+      "Fear is acute, not dull.",
+      "Fear is action, not thought.",
+      "Fear is intense, not calm."
     ],
     dialogueC1: [
-      "“I had a sudden surge of fear when the room went dark.”",
-      "“You have to face your fear head-on to overcome it.”",
-      "“She tried to hide her fear, but her hands were shaking.”",
-      "“Living in constant fear will drain all your energy.”",
-      "“I felt a sharp chill of fear run down my spine.”"
+      "“My biggest fear is letting down the people who depend on me.”",
+      "“He conquered his fear of public speaking by practicing every day.”",
+      "“There was a moment of sheer fear when the brakes stopped responding.”",
+      "“She tried to hide her fear, but her voice was trembling.”",
+      "“You can't let fear paralyze you when opportunity knocks.”"
     ],
     dialogueC2: [
       "“My heart was in my throat the entire time I was up on stage.”",
@@ -549,23 +549,23 @@ const emotionFloodingData = {
     collocations: ["feel anxious", "socially anxious", "anxious thought", "anxious energy", "deeply anxious"],
     colligations: ["anxious about exams", "anxious to succeed", "feel anxious when", "too anxious to", "anxious waiting period"],
     distinctions: [
-      "Anxious is not scared, but expecting trouble.",
-      "Anxious is more persistent than nervousness.",
-      "Anxious is less about danger than doubt.",
-      "Anxious is not panic, but ongoing tension.",
-      "Anxious is more future-focused than present fear.",
-      "Anxious is not calm, but internally restless.",
-      "Anxious is less physical than sudden fright.",
-      "Anxious is more specific than general worry.",
-      "Anxious is not angry, but hesitant.",
-      "Anxious is less grounded than feeling secure."
+      "Anxious is doubt, not danger.",
+      "Anxious is future, not present.",
+      "Anxious is tension, not panic.",
+      "Anxious is mind, not body.",
+      "Anxious is waiting, not acting.",
+      "Anxious is restless, not calm.",
+      "Anxious is ongoing, not sudden.",
+      "Anxious is uneasy, not safe.",
+      "Anxious is concern, not fury.",
+      "Anxious is hesitant, not steady."
     ],
     dialogueC1: [
-      "“I always get anxious whenever I have to give a speech.”",
-      "“She felt anxious about leaving her keys behind.”",
-      "“He looked anxious as he waited for his turn.”",
-      "“Try not to get too anxious about things you can't change.”",
-      "“I feel anxious whenever I don't get a prompt reply.”"
+      "“I always get anxious right before giving a big presentation.”",
+      "“She was so anxious about the test results that she couldn't sleep.”",
+      "“He looked anxious while waiting for the doctor to call his name.”",
+      "“Sitting in traffic when you're late makes anyone feel anxious.”",
+      "“Try to stay calm and don't get anxious over small delays.”"
     ],
     dialogueC2: [
       "“I've been on pins and needles all morning waiting for news.”",
@@ -579,23 +579,23 @@ const emotionFloodingData = {
     collocations: ["feel insecure", "deeply insecure", "insecure feeling", "socially insecure", "emotionally insecure"],
     colligations: ["insecure about skills", "feel insecure around", "become insecure when", "too insecure to", "insecure in relationships"],
     distinctions: [
-      "Insecure is not shy, but doubting your worth.",
-      "Insecure is more self-focused than general worry.",
-      "Insecure is less about safety than adequacy.",
-      "Insecure is not inferior, but feeling unsteady.",
-      "Insecure is more internal than physical fear.",
-      "Insecure is not confident, but full of self-doubt.",
-      "Insecure is less outward than anger or pride.",
-      "Insecure is more fragile than quiet modesty.",
-      "Insecure is not helpless, but hesitant.",
-      "Insecure is less stable than self-assurance."
+      "Insecure is doubt, not shyness.",
+      "Insecure is self, not others.",
+      "Insecure is worth, not safety.",
+      "Insecure is unsteady, not calm.",
+      "Insecure is quiet, not loud.",
+      "Insecure is fragile, not strong.",
+      "Insecure is inner, not outer.",
+      "Insecure is fear, not anger.",
+      "Insecure is hesitant, not bold.",
+      "Insecure is low, not high."
     ],
     dialogueC1: [
-      "“I used to feel very insecure about my public speaking.”",
-      "“She feels insecure whenever her work is compared to others.”",
-      "“It's easy to feel insecure in a room full of experts.”",
-      "“He gets insecure if he isn't included in key emails.”",
-      "“Don't let feeling insecure stop you from applying.”"
+      "“He felt insecure about his accent when he first moved here.”",
+      "“Comparing yourself to people on social media will make you insecure.”",
+      "“She was insecure about leading the team without prior experience.”",
+      "“It's natural to feel insecure when starting out in a new field.”",
+      "“His defensive attitude comes from feeling insecure about his role.”"
     ],
     dialogueC2: [
       "“I always feel like I'm swimming in deep water around experts.”",
@@ -609,23 +609,23 @@ const emotionFloodingData = {
     collocations: ["feel overwhelmed", "completely overwhelmed", "overwhelmed by work", "emotionally overwhelmed", "overwhelmed with tasks"],
     colligations: ["feel overwhelmed when", "become overwhelmed easily", "too overwhelmed to", "overwhelmed by choices", "deeply overwhelmed state"],
     distinctions: [
-      "Overwhelmed is not busy, but exceeding capacity.",
-      "Overwhelmed is more paralyzing than hard work.",
-      "Overwhelmed is less about fear than mental overload.",
-      "Overwhelmed is not failure, but needing a pause.",
-      "Overwhelmed is more intense than mild stress.",
-      "Overwhelmed is not lazy, but flooded with input.",
-      "Overwhelmed is less organized than focused effort.",
-      "Overwhelmed is more exhausting than routine tasks.",
-      "Overwhelmed is not weak, but overloaded.",
-      "Overwhelmed is less manageable than light pressure."
+      "Overwhelmed is overload, not laziness.",
+      "Overwhelmed is stuck, not busy.",
+      "Overwhelmed is capacity, not fear.",
+      "Overwhelmed is limit, not failure.",
+      "Overwhelmed is heavy, not light.",
+      "Overwhelmed is flooded, not clear.",
+      "Overwhelmed is noise, not peace.",
+      "Overwhelmed is chaos, not order.",
+      "Overwhelmed is excess, not lack.",
+      "Overwhelmed is stop, not go."
     ],
     dialogueC1: [
-      "“I feel completely overwhelmed by all these new assignments.”",
-      "“She became overwhelmed when three people asked for help at once.”",
-      "“It's normal to feel overwhelmed during your first month.”",
-      "“He was so overwhelmed that he had to step out for air.”",
-      "“Don't let yourself get overwhelmed—take it one task at a time.”"
+      "“I am completely overwhelmed by the sheer volume of emails today.”",
+      "“She felt overwhelmed trying to balance work, family, and studies.”",
+      "“Don't get overwhelmed—just take the project one step at a time.”",
+      "“He was so overwhelmed by the support that he broke down in tears.”",
+      "“The new manager looked overwhelmed during his first week on the floor.”"
     ],
     dialogueC2: [
       "“I'm completely snowed under with deadlines this week.”",
@@ -639,23 +639,23 @@ const emotionFloodingData = {
     collocations: ["feel scared", "scared of heights", "deeply scared", "scared to death", "scared of failure"],
     colligations: ["feel scared when", "become scared suddenly", "too scared to", "scared of dark", "scared for future"],
     distinctions: [
-      "Scared is not uneasy, but a threat response.",
-      "Scared is more immediate than anxiety.",
-      "Scared is less about stress than present risk.",
-      "Scared is not terrified, but sharp alarm.",
-      "Scared is more physical than quiet concern.",
-      "Scared is not hesitant, but recoiling.",
-      "Scared is less prolonged than chronic worry.",
-      "Scared is more sudden than feeling sad.",
-      "Scared is not weak, but naturally cautious.",
-      "Scared is less calm than relaxed confidence."
+      "Scared is threat, not stress.",
+      "Scared is sudden, not slow.",
+      "Scared is alarm, not worry.",
+      "Scared is recoil, not advance.",
+      "Scared is real, not fake.",
+      "Scared is wild, not tame.",
+      "Scared is reflex, not plan.",
+      "Scared is shock, not calm.",
+      "Scared is sharp, not soft.",
+      "Scared is safety, not risk."
     ],
     dialogueC1: [
-      "“I got scared when the storm cut off the power unexpectedly.”",
-      "“She was scared to voice her opinion in front of the boss.”",
-      "“Don't be scared of making mistakes while learning.”",
-      "“He felt scared when he realized he was lost in the woods.”",
-      "“I'm scared that we won't finish before the deadline.”"
+      "“I was scared to death when the thunderstorm knocked out the lights.”",
+      "“She's scared of making mistakes in front of her supervisor.”",
+      "“Don't be scared to ask questions if you don't understand the task.”",
+      "“He got scared when he realized he had lost his way in the city.”",
+      "“My dog gets scared every time there are loud fireworks outside.”"
     ],
     dialogueC2: [
       "“I was scared out of my wits when the door slammed shut.”",
@@ -669,23 +669,23 @@ const emotionFloodingData = {
     collocations: ["terrified of snakes", "completely terrified", "terrified look", "terrified voice", "deeply terrified"],
     colligations: ["terrified to enter", "feel terrified when", "become terrified instantly", "too terrified to", "terrified of loss"],
     distinctions: [
-      "Terrified is not just scared, but extreme dread.",
-      "Terrified is more severe than nervousness.",
-      "Terrified is less controllable than mild fear.",
-      "Terrified is not uneasy, but completely frozen.",
-      "Terrified is more overwhelming than simple alarm.",
-      "Terrified is not hesitant, but paralyzed.",
-      "Terrified is less rational than calm thinking.",
-      "Terrified is more intense than sudden shock.",
-      "Terrified is not worried, but panic-stricken.",
-      "Terrified is less flexible than quick alertness."
+      "Terrified is dread, not worry.",
+      "Terrified is frozen, not nervous.",
+      "Terrified is extreme, not mild.",
+      "Terrified is helpless, not steady.",
+      "Terrified is panic, not concern.",
+      "Terrified is severe, not light.",
+      "Terrified is silent, not loud.",
+      "Terrified is shock, not doubt.",
+      "Terrified is cold, not warm.",
+      "Terrified is trapped, not free."
     ],
     dialogueC1: [
-      "“I was terrified that the bridge wouldn't hold.”",
-      "“She felt terrified during her first solo flight.”",
-      "“He was terrified of making a bad impression.”",
-      "“The patient felt terrified before entering surgery.”",
-      "“I get terrified whenever I hear loud sirens.”"
+      "“She was terrified of heights, so climbing the tower was huge.”",
+      "“I was terrified that we wouldn't reach the hospital in time.”",
+      "“He looked terrified as the severe turbulence shook the plane.”",
+      "“The child was terrified of being left alone in the dark room.”",
+      "“I get terrified just thinking about swimming in open ocean water.”"
     ],
     dialogueC2: [
       "“I was scared stiff when I looked down over the cliff.”",
@@ -699,23 +699,23 @@ const emotionFloodingData = {
     collocations: ["feel worried", "deeply worried", "worried look", "constantly worried", "worried parent"],
     colligations: ["worried about money", "worried that happens", "feel worried when", "too worried to", "worried for safety"],
     distinctions: [
-      "Worried is not panic, but mental tension.",
-      "Worried is more cognitive than physical fright.",
-      "Worried is less about present harm than future outcomes.",
-      "Worried is not hopeless, but seeking clarity.",
-      "Worried is more specific than general anxiety.",
-      "Worried is not angry, but preoccupied.",
-      "Worried is less sudden than sudden fear.",
-      "Worried is more persistent than temporary doubt.",
-      "Worried is not terrified, but uneasy.",
-      "Worried is less peaceful than quiet trust."
+      "Worried is mind, not body.",
+      "Worried is future, not now.",
+      "Worried is tension, not pain.",
+      "Worried is outcome, not threat.",
+      "Worried is restless, not calm.",
+      "Worried is thought, not deed.",
+      "Worried is uneasy, not angry.",
+      "Worried is slow, not fast.",
+      "Worried is doubt, not faith.",
+      "Worried is care, not hate."
     ],
     dialogueC1: [
-      "“I am worried about how he will handle the news.”",
-      "“She looked worried as she checked her phone.”",
-      "“He gets worried whenever his kids travel alone.”",
-      "“Don't be worried about things outside your control.”",
-      "“I feel worried when I don't hear back promptly.”"
+      "“My parents were worried sick when I didn't call after landing.”",
+      "“She's worried that her application won't arrive before the deadline.”",
+      "“He looked worried while reading through the contract terms.”",
+      "“There's no point getting worried about things you cannot change.”",
+      "“I'm worried about how the team will handle the sudden workload.”"
     ],
     dialogueC2: [
       "“I'm worried sick about how he's going to handle the news.”",
@@ -729,23 +729,23 @@ const emotionFloodingData = {
     collocations: ["feel happy", "genuinely happy", "happy memory", "happy moment", "extremely happy"],
     colligations: ["happy about news", "happy to help", "feel happy when", "make someone happy", "happy with results"],
     distinctions: [
-      "Happy is not excitement, but calm contentment.",
-      "Happy is more steady than a quick thrill.",
-      "Happy is less about big wins than daily comfort.",
-      "Happy is not perfect, but present well-being.",
-      "Happy is more grounded than ecstatic joy.",
-      "Happy is not boastful, but warm inside.",
-      "Happy is less intense than wild enthusiasm.",
-      "Happy is more peaceful than restless ambition.",
-      "Happy is not proud, but satisfied.",
-      "Happy is less fleeting than momentary pleasure."
+      "Happy is calm, not thrill.",
+      "Happy is warm, not cold.",
+      "Happy is present, not past.",
+      "Happy is light, not heavy.",
+      "Happy is content, not greedy.",
+      "Happy is quiet, not wild.",
+      "Happy is safe, not scared.",
+      "Happy is good, not bad.",
+      "Happy is easy, not hard.",
+      "Happy is smile, not frown."
     ],
     dialogueC1: [
-      "“I am so happy that you could join us tonight.”",
-      "“She looked genuinely happy receiving the award.”",
-      "“Seeing my team succeed makes me happy.”",
-      "“He was happy with how the project turned out.”",
-      "“We are happy to help you with your application.”"
+      "“Seeing my family together after so long makes me truly happy.”",
+      "“She was happy to hear that her best friend got the job offer.”",
+      "“He gave a happy laugh when his daughter took her first steps.”",
+      "“I'm just happy that everything worked out without any trouble.”",
+      "“They built a simple, happy life in a quiet coastal town.”"
     ],
     dialogueC2: [
       "“I'm over the moon about getting into the program!”",
@@ -759,23 +759,23 @@ const emotionFloodingData = {
     collocations: ["feel confident", "highly confident", "confident voice", "confident smile", "deeply confident"],
     colligations: ["confident in skills", "confident about test", "feel confident when", "become confident with", "confident to speak"],
     distinctions: [
-      "Confident is not arrogant, but trusting your skills.",
-      "Confident is more grounded than loud boasting.",
-      "Confident is less about perfection than self-assurance.",
-      "Confident is not reckless, but poised.",
-      "Confident is more calm than aggressive pride.",
-      "Confident is not shy, but ready to act.",
-      "Confident is less anxious than insecure.",
-      "Confident is more stable than temporary luck.",
-      "Confident is not fearful, but self-reliant.",
-      "Confident is less hesitant than uncertain."
+      "Confident is trust, not pride.",
+      "Confident is quiet, not loud.",
+      "Confident is steady, not rash.",
+      "Confident is ready, not shy.",
+      "Confident is sure, not boastful.",
+      "Confident is calm, not angry.",
+      "Confident is strong, not weak.",
+      "Confident is poise, not fear.",
+      "Confident is clear, not lost.",
+      "Confident is firm, not soft."
     ],
     dialogueC1: [
-      "“I feel confident that our strategy will work.”",
-      "“She sounded confident during her presentation.”",
-      "“He felt confident after studying for two weeks.”",
-      "“It's important to appear confident in an interview.”",
-      "“I am confident we will meet our goals this quarter.”"
+      "“She walked into the interview room feeling calm and confident.”",
+      "“He was confident that his team had prepared thoroughly.”",
+      "“Speaking clearly helps you sound more confident during presentations.”",
+      "“I feel confident about our chances of winning the contract.”",
+      "“Practice builds skill, and skill makes you truly confident.”"
     ],
     dialogueC2: [
       "“She carried herself with quiet poise throughout the tough interview.”",
@@ -789,23 +789,23 @@ const emotionFloodingData = {
     collocations: ["feel excited", "super excited", "excited voice", "excited about trip", "deeply excited"],
     colligations: ["excited to meet", "excited for weekend", "feel excited when", "become excited easily", "too excited to"],
     distinctions: [
-      "Excited is not calm, but high-energy eagerness.",
-      "Excited is more energetic than peacefulness.",
-      "Excited is less about the past than future anticipation.",
-      "Excited is not anxious, but eager for joy.",
-      "Excited is more active than gentle happiness.",
-      "Excited is not quiet, but expressive.",
-      "Excited is less steady than peaceful contentment.",
-      "Excited is more forward-looking than serene joy.",
-      "Excited is not angry, but enthusiastic.",
-      "Excited is less reserved than cautious hope."
+      "Excited is eager, not calm.",
+      "Excited is high, not low.",
+      "Excited is future, not present.",
+      "Excited is fast, not slow.",
+      "Excited is spark, not shade.",
+      "Excited is active, not passive.",
+      "Excited is thrill, not fear.",
+      "Excited is wild, not quiet.",
+      "Excited is glad, not sad.",
+      "Excited is jump, not sit."
     ],
     dialogueC1: [
-      "“I feel excited about starting my new position.”",
-      "“She was excited to see her old school friends.”",
-      "“He looked excited when opening the surprise box.”",
-      "“We are excited to announce our launch date.”",
-      "“They felt excited before taking off on vacation.”"
+      "“The kids are so excited about going to the amusement park tomorrow.”",
+      "“I'm really excited to collaborate on this new project with you.”",
+      "“She sounded excited when describing her upcoming trip to Asia.”",
+      "“He was too excited to sleep the night before the championship.”",
+      "“We are excited to share our latest product updates with everyone.”"
     ],
     dialogueC2: [
       "“I'm bouncing off the walls waiting for the concert tonight!”",
@@ -819,23 +819,23 @@ const emotionFloodingData = {
     collocations: ["feel joyful", "joyful heart", "joyful occasion", "deeply joyful", "purely joyful"],
     colligations: ["joyful about life", "joyful to give", "feel joyful in", "make someone joyful", "joyful celebration"],
     distinctions: [
-      "Joyful is not superficial, but deep inner warmth.",
-      "Joyful is more profound than surface happiness.",
-      "Joyful is less fleeting than quick pleasure.",
-      "Joyful is not noisy, but radiant.",
-      "Joyful is more uplifting than simple satisfaction.",
-      "Joyful is not smug, but generous.",
-      "Joyful is less external than loud celebration.",
-      "Joyful is more enduring than temporary excitement.",
-      "Joyful is not boastful, but deeply grateful.",
-      "Joyful is less heavy than serious pride."
+      "Joyful is deep, not surface.",
+      "Joyful is inner, not outer.",
+      "Joyful is lasting, not quick.",
+      "Joyful is radiant, not loud.",
+      "Joyful is spirit, not mind.",
+      "Joyful is warm, not cold.",
+      "Joyful is light, not dark.",
+      "Joyful is gift, not trade.",
+      "Joyful is rich, not poor.",
+      "Joyful is life, not death."
     ],
     dialogueC1: [
-      "“She felt joyful when her family gathered together.”",
-      "“He gave a joyful laugh after hearing the good news.”",
-      "“We shared a joyful moment celebrating the milestone.”",
-      "“It was a joyful reunion after years apart.”",
-      "“I feel joyful seeing the children play outside.”"
+      "“The wedding celebration was a deeply joyful occasion for everyone.”",
+      "“She burst into joyful laughter when she opened the surprise package.”",
+      "“There was a joyful energy in the air during the holiday festival.”",
+      "“Helping others brings a quiet, joyful satisfaction to his heart.”",
+      "“They shared a joyful moment when the final goal was scored.”"
     ],
     dialogueC2: [
       "“Her face lit up with pure joy when she saw her old friend.”",
@@ -845,27 +845,117 @@ const emotionFloodingData = {
       "“She has a buoyant spirit that brightens up any room.”"
     ]
   },
+  Optimistic: {
+    collocations: ["feel optimistic", "optimistic outlook", "cautiously optimistic", "deeply optimistic", "always optimistic"],
+    colligations: ["optimistic about future", "optimistic for success", "feel optimistic when", "remain optimistic under", "optimistic frame of mind"],
+    distinctions: [
+      "Optimistic is hope, not blind.",
+      "Optimistic is future, not past.",
+      "Optimistic is forward, not back.",
+      "Optimistic is bright, not dark.",
+      "Optimistic is open, not closed.",
+      "Optimistic is can, not cannot.",
+      "Optimistic is light, not heavy.",
+      "Optimistic is active, not passive.",
+      "Optimistic is faith, not fear.",
+      "Optimistic is growth, not loss."
+    ],
+    dialogueC1: [
+      "“Despite the tough market conditions, she remains optimistic.”",
+      "“He takes an optimistic approach to solving complex problems.”",
+      "“I am cautiously optimistic about our quarterly performance targets.”",
+      "“Her optimistic attitude keeps the entire team motivated.”",
+      "“It's good to stay optimistic even when facing temporary setbacks.”"
+    ],
+    dialogueC2: [
+      "“I'm looking on the bright side despite the rainy forecast.”",
+      "“Every cloud has a silver lining if you look hard enough.”",
+      "“She always sees the glass as half full, no matter what happens.”",
+      "“I'm keeping my fingers crossed for a smooth outcome.”",
+      "“He maintains a sunny disposition even during tough times.”"
+    ]
+  },
+  Peaceful: {
+    collocations: ["feel peaceful", "peaceful mind", "peaceful place", "deeply peaceful", "truly peaceful"],
+    colligations: ["peaceful after work", "peaceful in nature", "feel peaceful when", "become peaceful with", "peaceful environment"],
+    distinctions: [
+      "Peaceful is calm, not noisy.",
+      "Peaceful is still, not wild.",
+      "Peaceful is rest, not rush.",
+      "Peaceful is smooth, not rough.",
+      "Peaceful is soft, not hard.",
+      "Peaceful is light, not dark.",
+      "Peaceful is free, not bound.",
+      "Peaceful is deep, not shallow.",
+      "Peaceful is safe, not scared.",
+      "Peaceful is silent, not loud."
+    ],
+    dialogueC1: [
+      "“Sitting by the lake at sunrise gives me a peaceful feeling.”",
+      "“She enjoyed a peaceful afternoon reading in the quiet garden.”",
+      "“After a long busy week, I just need a peaceful weekend at home.”",
+      "“His gentle voice created a peaceful atmosphere in the room.”",
+      "“The mountain village offered a peaceful escape from city noise.”"
+    ],
+    dialogueC2: [
+      "“I felt at total peace sitting by the quiet lake at sunrise.”",
+      "“She has a serene presence that puts everyone at ease.”",
+      "“After all the drama settled down, a sense of calm washed over the house.”",
+      "“My mind was completely at rest for the first time in weeks.”",
+      "“It was a smooth sailing afternoon with zero stress.”"
+    ]
+  },
+  Proud: {
+    collocations: ["feel proud", "proud moment", "deeply proud", "proud parent", "immensely proud"],
+    colligations: ["proud of work", "proud to serve", "feel proud when", "make someone proud", "proud achievement"],
+    distinctions: [
+      "Proud is honor, not boast.",
+      "Proud is effort, not luck.",
+      "Proud is tall, not low.",
+      "Proud is inner, not outer.",
+      "Proud is growth, not greed.",
+      "Proud is work, not rest.",
+      "Proud is glad, not mean.",
+      "Proud is earned, not given.",
+      "Proud is firm, not weak.",
+      "Proud is warm, not cold."
+    ],
+    dialogueC1: [
+      "“Her parents were immensely proud when she graduated with honors.”",
+      "“He felt proud of the house he had built with his own hands.”",
+      "“You should be proud of how hard you worked to get here.”",
+      "“She took a proud stance as she received the community award.”",
+      "“Our team is proud to contribute to such a meaningful cause.”"
+    ],
+    dialogueC2: [
+      "“I'm bursting with pride seeing how far you've come!”",
+      "“She stood tall and took a well-deserved bow after the performance.”",
+      "“He wore his hard-earned medal like a badge of honor.”",
+      "“You should hold your head high after everything you accomplished.”",
+      "“That was a feather in her cap that nobody can take away.”"
+    ]
+  },
   Anger: {
     collocations: ["feel anger", "blind anger", "suppress anger", "express anger", "righteous anger"],
     colligations: ["anger at someone", "anger over decision", "feel anger when", "channel anger into", "filled with anger"],
     distinctions: [
-      "Anger is not annoyance, but active pushback.",
-      "Anger is more forward-moving than feeling hurt.",
-      "Anger is less about suffering than fixing a wrong.",
-      "Anger is not out of control, but defending boundaries.",
-      "Anger is more forceful than quiet discontent.",
-      "Anger is not sadness, but energetic protest.",
-      "Anger is less passive than silent resentment.",
-      "Anger is more direct than subtle spite.",
-      "Anger is not fear, but confronting threat.",
-      "Anger is less reflective than thoughtful calm."
+      "Anger is protest, not hurt.",
+      "Anger is fire, not ice.",
+      "Anger is push, not pull.",
+      "Anger is loud, not quiet.",
+      "Anger is boundaries, not hatred.",
+      "Anger is action, not grief.",
+      "Anger is hot, not cold.",
+      "Anger is fight, not flight.",
+      "Anger is now, not later.",
+      "Anger is force, not weakness."
     ],
     dialogueC1: [
-      "“I had to control my anger during the tense meeting.”",
-      "“Her anger was understandable after the unfair decision.”",
-      "“He expressed his anger through a stern letter.”",
-      "“It's important to manage anger before taking action.”",
-      "“You could hear the rising anger in his voice.”"
+      "“He struggled to contain his anger after the unfair treatment.”",
+      "“Her eyes flashed with anger when she heard the dishonest claim.”",
+      "“Miscommunication can easily lead to unnecessary anger between friends.”",
+      "“Channel your anger into constructive action rather than yelling.”",
+      "“You could hear the rising anger in his voice during the debate.”"
     ],
     dialogueC2: [
       "“I was seeing red when I saw how unfairly she was treated.”",
@@ -879,23 +969,23 @@ const emotionFloodingData = {
     collocations: ["feel sad", "deeply sad", "sad story", "sad truth", "heartbreakingly sad"],
     colligations: ["sad about loss", "sad to leave", "feel sad when", "make someone sad", "too sad to"],
     distinctions: [
-      "Sad is not tired, but grieving loss.",
-      "Sad is more internal than feeling lonely.",
-      "Sad is less about anger than quiet processing.",
-      "Sad is not giving up, but honoring pain.",
-      "Sad is more gentle than bitter disappointment.",
-      "Sad is not fearful, but quiet in heart.",
-      "Sad is less active than angry protest.",
-      "Sad is more reflective than sudden panic.",
-      "Sad is not hostile, but tender.",
-      "Sad is less bright than joyful hope."
+      "Sad is loss, not tired.",
+      "Sad is heavy, not light.",
+      "Sad is quiet, not angry.",
+      "Sad is tears, not fire.",
+      "Sad is grief, not fear.",
+      "Sad is hurt, not mean.",
+      "Sad is down, not up.",
+      "Sad is processing, not fighting.",
+      "Sad is soft, not sharp.",
+      "Sad is slow, not fast."
     ],
     dialogueC1: [
-      "“I felt sad saying goodbye at the airport.”",
-      "“She looked sad after hearing the unfortunate news.”",
-      "“It makes me sad to see old landmarks destroyed.”",
-      "“He felt sad when his vacation came to an end.”",
-      "“We felt sad that we couldn't attend the ceremony.”"
+      "“It made me sad to say goodbye to my colleagues after five years.”",
+      "“She felt sad watching her old childhood neighborhood change.”",
+      "“He looked sad as he read the final chapter of the story.”",
+      "“It's completely normal to feel sad when missing loved ones.”",
+      "“The sad news brought a quiet hush over the entire office.”"
     ],
     dialogueC2: [
       "“I've been feeling down in the dumps ever since.”",
@@ -909,23 +999,23 @@ const emotionFloodingData = {
     collocations: ["deep disgust", "feel disgust", "look of disgust", "moral disgust", "utter disgust"],
     colligations: ["disgust at behavior", "disgusted by smell", "turn in disgust", "filled with disgust", "express disgust towards"],
     distinctions: [
-      "Disgust is not dislike, but physical recoil.",
-      "Disgust is more physical than moral anger.",
-      "Disgust is less about fighting than keeping away.",
-      "Disgust is not mild irritation, but gut repulsion.",
-      "Disgust is more immediate than cold contempt.",
-      "Disgust is not fear, but rejection of bad input.",
-      "Disgust is less thoughtful than reasoned disagreement.",
-      "Disgust is more visceral than simple disapproval.",
-      "Disgust is not sadness, but strong turn-away.",
-      "Disgust is less passive than quiet avoidance."
+      "Disgust is recoil, not dislike.",
+      "Disgust is stomach, not head.",
+      "Disgust is away, not near.",
+      "Disgust is foul, not sweet.",
+      "Disgust is physical, not moral.",
+      "Disgust is turn, not fight.",
+      "Disgust is sick, not mad.",
+      "Disgust is sharp, not dull.",
+      "Disgust is push, not hold.",
+      "Disgust is gross, not fine."
     ],
     dialogueC1: [
-      "“She felt disgust at how the litter was dumped in the park.”",
-      "“He expressed disgust toward the corrupt practices.”",
-      "“I felt disgust after discovering the rotten food.”",
-      "“Their disrespectful comments filled her with disgust.”",
-      "“He turned away in disgust from the foul spill.”"
+      "“She pulled her hand back in disgust after touching the slime.”",
+      "“He expressed disgust at how much food was wasted at the party.”",
+      "“A look of disgust crossed his face when he smelled the spoiled milk.”",
+      "“The dishonest corruption scandal caused widespread public disgust.”",
+      "“I turned away in disgust when I saw the filthy alleyway.”"
     ],
     dialogueC2: [
       "“Ugh, that smells so foul it turned my stomach immediately.”",
@@ -939,23 +1029,23 @@ const emotionFloodingData = {
     collocations: ["total surprise", "pleasant surprise", "caught by surprise", "look of surprise", "gasp in surprise"],
     colligations: ["surprised by news", "surprised to hear", "feel surprised when", "taken by surprise", "much to surprise"],
     distinctions: [
-      "Surprise is not fear, but sudden unexpected input.",
-      "Surprise is more short-lived than confusion.",
-      "Surprise is less about danger than novel news.",
-      "Surprise is not shock, but quick discovery.",
-      "Surprise is more instantaneous than lasting curiosity.",
-      "Surprise is not panic, but sudden alertness.",
-      "Surprise is less planned than anticipated events.",
-      "Surprise is more neutral than joy or dread.",
-      "Surprise is not anger, but sudden focus.",
-      "Surprise is less enduring than deep wonder."
+      "Surprise is sudden, not slow.",
+      "Surprise is shock, not fear.",
+      "Surprise is new, not old.",
+      "Surprise is gasp, not sigh.",
+      "Surprise is open, not closed.",
+      "Surprise is quick, not long.",
+      "Surprise is now, not next.",
+      "Surprise is shift, not stay.",
+      "Surprise is flash, not shadow.",
+      "Surprise is fresh, not stale."
     ],
     dialogueC1: [
-      "“It was a pleasant surprise to see you here today.”",
-      "“She expressed surprise when she won the award.”",
-      "“I felt surprise at how fast the time passed.”",
-      "“He hid his surprise when the door opened.”",
-      "“To my surprise, the assignment was quite straightforward.”"
+      "“His unexpected visit was a wonderful surprise for the whole family.”",
+      "“She gasped in surprise when she saw the birthday decorations.”",
+      "“To my great surprise, the complex problem turned out to be easy.”",
+      "“He couldn't hide his surprise when his name was called first.”",
+      "“Life is full of surprise twists that change our direction.”"
     ],
     dialogueC2: [
       "“Out of the blue, she called me up after five years!”",
@@ -989,18 +1079,18 @@ function getFloodingData(name) {
       `so ${word} that`
     ],
     distinctions: [
-      `${name} is not ${contrast}, but feeling ${info[0]}.`,
-      `${name} is more ${info[1]} than ${contrast}.`,
-      `${name} is less about danger than ${info[2]}.`,
-      `${name} is not panic, but inner awareness.`,
-      `${name} is more focused than general ${contrast}.`
+      `${name} is ${info[1]}, not ${contrast}.`,
+      `${name} is inner, not outer.`,
+      `${name} is now, not later.`,
+      `${name} is mind, not body.`,
+      `${name} is deep, not surface.`
     ],
     dialogueC1: [
-      `“I feel quite ${word} about how things are turning out.”`,
-      `“Whenever that happens, I feel a bit ${word} inside.”`,
-      `“She tried to play it cool, but she felt deeply ${word}.”`,
-      `“He becomes ${word} when plans change unexpectedly.”`,
-      `“It is completely natural to feel ${word} in this situation.”`
+      `“I felt a sudden wave of ${word} during the meeting.”`,
+      `“She tried to hide her ${word}, but everyone noticed.”`,
+      `“He felt ${word} when facing the unexpected change.”`,
+      `“It is completely natural to feel ${word} in this situation.”`,
+      `“Don't let ${word} control your decisions going forward.”`
     ],
     dialogueC2: [
       `“I've been feeling completely out of sorts all afternoon.”`,
