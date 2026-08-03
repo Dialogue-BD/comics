@@ -76,26 +76,17 @@ button { color: inherit; }
 .header-audio-button[aria-pressed="true"]:hover { background: #e8bd45; }
 .header-audio-button__icon { font-size: 13px; line-height: 1; }
 
-.club-mark {
+.site-logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: var(--ink);
   text-decoration: none;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: .12em;
-  text-transform: uppercase;
+  flex-shrink: 0;
 }
 
-.club-mark__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50% 50% 50% 12%;
-  background: var(--active);
-  transform: rotate(-18deg);
-  box-shadow: 10px 2px 0 #efbb48, 5px 10px 0 #4c9994;
-  margin: 0 12px 6px 0;
+.site-logo__img {
+  height: 44px;
+  width: auto;
+  display: block;
 }
 
 .date-chip {
