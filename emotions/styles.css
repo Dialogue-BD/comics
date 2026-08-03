@@ -85,8 +85,11 @@ button { color: inherit; }
 
 .site-logo__img {
   height: 48px;
+  max-height: 48px;
+  max-width: 160px;
   width: auto;
   display: block;
+  object-fit: contain;
 }
 
 .date-chip {
