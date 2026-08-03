@@ -3203,3 +3203,305 @@ function showReflectionCard(name) {
   card.style.setProperty("--lesson-color", state.color || "#e65f42");
   card.hidden = false;
 }
+
+// ── Emotional Boundaries Quiz ──────────────────────────────────────────────
+(function initEQQuiz() {
+  const DATA = {
+    en: {
+      introTitle: "Do You Have a Healthy Relationship with Your Emotions?",
+      introDesc: "In our culture, family harmony and social expectations are very important. Because of this, we often handle our emotions in two extreme ways: we get 'Too Close' or 'Too Far'.",
+      concepts: [
+        { title: "🔴 Too Close (Overwhelmed)", desc: "This happens when an emotion completely controls you. You might stay silent and suffer for others, feel hopeless, or feel like a victim. You lose your peace and feel trapped in the storm.", cls: "eq-concept--red" },
+        { title: "🟢 The Healthy Middle Ground", desc: "A healthy relationship means standing at a comfortable distance. You can look at your anger, sadness, or fear with calmness and curiosity. You listen to your feelings, but you do not let them drive the car.", cls: "eq-concept--green" },
+        { title: "🔵 Too Far (Suppressed)", desc: "To keep up appearances or 'save face', you push your feelings away. You avoid difficult talks or blame others. But hidden feelings do not disappear; they explode later over small things.", cls: "eq-concept--blue" }
+      ],
+      quizStartBtn: "Take the Quiz",
+      nextBtn: "Next Question",
+      resultBtn: "See My Results",
+      scoreLabel: "Your Score:",
+      retakeLabel: "Retake Quiz",
+      questionOf: function(c, t) { return "Question " + c + " of " + t; },
+      questions: [
+        {
+          text: "1. You see a relative or old classmate posting about their perfect life and big success on social media. You:",
+          options: [
+            { text: "Immediately post your own best photos to look successful.", score: 0 },
+            { text: "Leave a very nice comment, but feel a bad knot in your stomach.", score: 0 },
+            { text: "Feel guilty for being jealous, tell yourself it is wrong, and log off.", score: 0 },
+            { text: "Notice the jealousy, accept that you feel a bit left behind, and take a healthy break.", score: 1 }
+          ]
+        },
+        {
+          text: "2. Your boss explicitly promised you wouldn't work this weekend. But on Friday afternoon, they ask you to work late and come in on Saturday for the third week in a row. You:",
+          options: [
+            { text: "Say yes immediately to look good, but feel very angry inside while working.", score: 0 },
+            { text: "Agree to work, but cancel family plans and eat comfort food to feel better.", score: 0 },
+            { text: "Take a step back to understand your fear of saying no, and plan a respectful talk with your boss.", score: 1 },
+            { text: "Politely decline, but spend the whole weekend terrified that you will lose your job.", score: 0 }
+          ]
+        },
+        {
+          text: "3. At a family gathering, a close relative makes a mean comment about your life choices in front of everyone. You:",
+          options: [
+            { text: "Stay silent to keep the peace, smile, but complain bitterly to a friend later.", score: 0 },
+            { text: "Smile and pretend to agree, but secretly try to undo their interference later.", score: 0 },
+            { text: "Feel the hurt or anger, breathe deeply to understand why it hurts, and plan a calm, private talk later.", score: 1 },
+            { text: "Stop talking, give them the cold shoulder, and fall into a bad mood.", score: 0 }
+          ]
+        },
+        {
+          text: "4. You worked very hard for a promotion or an academic opportunity, but someone else got it. You:",
+          options: [
+            { text: "Tell yourself to 'just get over it' and try to ignore the painful disappointment.", score: 0 },
+            { text: "Feel deeply discouraged, like a total failure, and believe things never work out for you.", score: 0 },
+            { text: "Sit down with a trusted mentor or friend to share your sadness and ask for guidance.", score: 1 },
+            { text: "Keep the anger inside and secretly hope the other person fails.", score: 0 }
+          ]
+        },
+        {
+          text: "5. You have a huge presentation tomorrow morning. It is 10:00 PM, and you are still obsessively changing tiny details. You:",
+          options: [
+            { text: "Keep changing colors and fonts for hours, hoping perfect visuals will hide your anxiety.", score: 0 },
+            { text: "Blame yourself severely for being slow and get stuck in an anxious loop.", score: 0 },
+            { text: "Give up completely because you feel overwhelmed, call in sick, and watch videos late into the night.", score: 0 },
+            { text: "Realize perfectionism is taking over, accept that your work is already good enough, and go to sleep.", score: 1 }
+          ]
+        }
+      ],
+      results: {
+        low:  { tier: "eq-tier-low",  title: "🔴 You Tend to Stay Too Far From Your Emotions",    desc: "You probably learned early in life that showing painful emotions causes trouble. You push your feelings down or pretend everything is fine. You stay busy to avoid loneliness or fear. Learning to welcome your feelings gently will help you turn them into strengths." },
+        mid:  { tier: "eq-tier-mid",  title: "🟡 You are Navigating a Mixed Internal Landscape",  desc: "Some of your emotions are at a healthy distance, but others catch you by surprise. When big stress hits, you might overwork, try too hard to please people, or have sudden emotional outbursts. Learning to observe your feelings with curiosity will give you more peace." },
+        high: { tier: "eq-tier-high", title: "🟢 You Maintain a Healthy, Comfortable Distance",   desc: "You have great emotional awareness. When an intense feeling comes, you can pause, observe it with kindness, and speak calmly for your feelings instead of reacting from them. This helps you build strong, honest relationships." }
+      }
+    },
+    bn: {
+      introTitle: "আপনার আবেগের সাথে আপনার সম্পর্কটি কি স্বাস্থ্যকর?",
+      introDesc: "আমাদের সংস্কৃতিতে পারিবারিক সম্প্রীতি এবং সামাজিক প্রত্যাশাকে অনেক বড় করে দেখা হয়। এই কারণে আমরা প্রায়ই আমাদের আবেগগুলোকে দুটি চরম উপায়ে সামলাই: হয় আমরা আবেগের 'খুব কাছে' চলে যাই, না হয় 'অনেক দূরে' ঠেলে দিই।",
+      concepts: [
+        { title: "🔴 খুব কাছে (নিয়ন্ত্রণ হারিয়ে ফেলা)", desc: "এটি তখন ঘটে যখন কোনো আবেগ আপনাকে পুরোপুরি নিয়ন্ত্রণ করে। আপনি হয়তো অন্যের জন্য নীরবে কষ্ট সহ্য করেন, নিজেকে অসহায় ভাবেন, বা নিজেকে পরিস্থিতির শিকার মনে করেন। আপনি আপনার মনের শান্তি হারান এবং আবেগের ঝড়ে আটকে যান।", cls: "eq-concept--red" },
+        { title: "🟢 স্বাস্থ্যকর মধ্যপন্থা", desc: "একটি স্বাস্থ্যকর সম্পর্কের মানে হলো আবেগ থেকে একটি আরামদায়ক দূরত্ব বজায় রাখা। আপনি শান্তভাবে এবং কৌতূহল নিয়ে আপনার রাগ, দুঃখ বা ভয়কে দেখতে পারেন। আপনি আপনার অনুভূতির কথা শুনবেন, তবে তাকে আপনার জীবন চালাতে দেবেন না।", cls: "eq-concept--green" },
+        { title: "🔵 অনেক দূরে (আবেগ চেপে রাখা)", desc: "লোকলজ্জা এড়াতে বা 'সম্মান বাঁচাতে' আপনি আপনার অনুভূতিগুলোকে দূরে ঠেলে দেন। আপনি কঠিন আলোচনা এড়িয়ে চলেন বা অন্যদের দোষারোপ করেন। কিন্তু লুকিয়ে রাখা অনুভূতিগুলো হারিয়ে যায় না; পরবর্তীতে ছোটখাটো বিষয় নিয়ে সেগুলো হঠাৎ বিস্ফোরিত হয়।", cls: "eq-concept--blue" }
+      ],
+      quizStartBtn: "কুইজ শুরু করুন",
+      nextBtn: "পরবর্তী প্রশ্ন",
+      resultBtn: "ফলাফল দেখুন",
+      scoreLabel: "আপনার স্কোর:",
+      retakeLabel: "পুনরায় শুরু করুন",
+      questionOf: function(c, t) { return "প্রশ্ন " + c + " / " + t; },
+      questions: [
+        {
+          text: "১. সোশ্যাল মিডিয়ায় আপনার কোনো আত্মীয় বা পুরোনো সহপাঠী তাদের চমৎকার জীবন ও বড় সাফল্যের ছবি পোস্ট করেছেন। আপনি:",
+          options: [
+            { text: "নিজেকে সফল দেখাতে সাথে সাথে আপনার নিজের সেরা ছবিগুলো পোস্ট করবেন।", score: 0 },
+            { text: "খুব সুন্দর একটি মন্তব্য করবেন, কিন্তু মনে মনে এক ধরণের অস্বস্তি বা কষ্ট অনুভব করবেন।", score: 0 },
+            { text: "ঈর্ষান্বিত হওয়ার জন্য নিজের উপর অপরাধবোধ করবেন, নিজেকে বলবেন এটা ভুল, এবং সোশ্যাল মিডিয়া বন্ধ করে দেবেন।", score: 0 },
+            { text: "ঈর্ষাটি খেয়াল করবেন, মেনে নেবেন যে আপনি কিছুটা পিছিয়ে আছেন বোধ করছেন, এবং একটু বিরতি নেবেন।", score: 1 }
+          ]
+        },
+        {
+          text: "২. আপনার বস কথা দিয়েছিলেন যে এই উইকেন্ডে আপনাকে কাজ করতে হবে না। কিন্তু টানা তৃতীয় সপ্তাহের মতো শুক্রবার বিকেলে তিনি আপনাকে দেরিতে যেতে এবং শনিবারে অফিসে আসতে বললেন। আপনি:",
+          options: [
+            { text: "ভালো সাজতে সাথে সাথে হ্যাঁ বলবেন, কিন্তু কাজ করার সময় মনে মনে প্রচণ্ড রেগে থাকবেন।", score: 0 },
+            { text: "কাজ করতে রাজি হবেন, কিন্তু পারিবারিক পরিকল্পনা বাতিল করবেন এবং মন ভালো করতে অতিরিক্ত জাঙ্ক ফুড খাবেন।", score: 0 },
+            { text: "একটু ভাববেন কেন আপনার 'না' বলতে ভয় লাগছে, এবং বসের সাথে এই বিষয়ে একটি সম্মানজনক আলোচনার পরিকল্পনা করবেন।", score: 1 },
+            { text: "ভদ্রভাবে না বলবেন, কিন্তু চাকরি চলে যাওয়ার ভয়ে পুরো উইকেন্ড আতঙ্কের মধ্যে কাটাবেন।", score: 0 }
+          ]
+        },
+        {
+          text: "৩. একটি পারিবারিক অনুষ্ঠানে, একজন ঘনিষ্ঠ আত্মীয় সবার সামনে আপনার জীবনের সিদ্ধান্ত নিয়ে একটি কটূক্তি করলেন। আপনি:",
+          options: [
+            { text: "শান্তি বজায় রাখতে চুপ থাকবেন, হাসবেন, কিন্তু পরে কোনো বন্ধুর কাছে এই নিয়ে খুব ক্ষোভ প্রকাশ করবেন।", score: 0 },
+            { text: "হেসে তাদের কথায় সম্মতি জানানোর ভান করবেন, কিন্তু পরে গোপনে পরিস্থিতি নিজের মতো করার চেষ্টা করবেন।", score: 0 },
+            { text: "কষ্ট বা রাগটি অনুভব করবেন, কেন খারাপ লেগেছে তা বুঝতে গভীরভাবে শ্বাস নেবেন এবং পরে শান্তভাবে একা কথা বলার পরিকল্পনা করবেন।", score: 1 },
+            { text: "কথা বলা বন্ধ করে দেবেন, তাদের এড়িয়ে চলবেন এবং নিজের মুড খারাপ করে রাখবেন।", score: 0 }
+          ]
+        },
+        {
+          text: "৪. আপনি কোনো প্রমোশন বা শিক্ষার সুযোগের জন্য খুব কঠোর পরিশ্রম করেছিলেন, কিন্তু অন্য কেউ সেটি পেয়ে গেল। আপনি:",
+          options: [
+            { text: "নিজেকে বলবেন 'যা হওয়ার হয়েছে' এবং এই কষ্টের অনুভূতিটি পুরোপুরি এড়িয়ে যাওয়ার চেষ্টা করবেন।", score: 0 },
+            { text: "গভীরভাবে হতাশ হয়ে পড়বেন, নিজেকে ব্যর্থ ভাববেন এবং বিশ্বাস করবেন যে আপনার ভাগ্যটাই খারাপ।", score: 0 },
+            { text: "কোনো বিশ্বস্ত মেন্টর বা বন্ধুর সাথে বসে আপনার দুঃখ ভাগ করে নেবেন এবং পরামর্শ চাইবেন।", score: 1 },
+            { text: "রাগ মনের ভেতরে চেপে রাখবেন এবং গোপনে ওই ব্যক্তির ব্যর্থতা কামনা করবেন।", score: 0 }
+          ]
+        },
+        {
+          text: "৫. আগামীকাল সকালে আপনার একটি বড় প্রেজেন্টেশন আছে। এখন রাত ১০টা বাজে এবং আপনি এখনো খুঁটিনাটি বিষয়গুলো নিয়ে অতিরিক্ত চিন্তা করছেন। আপনি:",
+          options: [
+            { text: "ঘণ্টার পর ঘণ্টা ধরে স্লাইডের রঙ ও ফন্ট পরিবর্তন করতে থাকবেন, যাতে নিখুঁত ডিজাইনের আড়ালে আপনার দুশ্চিন্তা লুকিয়ে রাখা যায়।", score: 0 },
+            { text: "দেরি করার জন্য নিজেকে খুব দোষারোপ করবেন এবং একটি চিন্তার আবর্তে আটকে যাবেন।", score: 0 },
+            { text: "অতিরিক্ত চাপের কারণে হাল ছেড়ে দেবেন, অসুস্থতার অজুহাত দেবেন এবং রাত জেগে ভিডিও দেখবেন।", score: 0 },
+            { text: "বুঝতে পারবেন যে পারফেকশনিজমের ভূত আপনার ওপর ভর করছে, মেনে নেবেন যে আপনার কাজ যথেষ্ট ভালো হয়েছে এবং ঘুমাতে যাবেন।", score: 1 }
+          ]
+        }
+      ],
+      results: {
+        low:  { tier: "eq-tier-low",  title: "🔴 আপনি আপনার আবেগ থেকে অনেক দূরে থাকার চেষ্টা করেন", desc: "আপনি হয়তো জীবনের শুরুতেই শিখেছেন যে কষ্টদায়ক আবেগ প্রকাশ করলে সমস্যা তৈরি হয়। তাই আপনি অনুভূতিগুলো চেপে রাখেন বা সবকিছু ঠিক আছে এমন ভান করেন। একাকীত্ব বা ভয় এড়াতে আপনি নিজেকে ব্যস্ত রাখেন। নিজের অনুভূতিগুলোকে আলতোভাবে গ্রহণ করতে শিখলে তা আপনার শক্তিতে পরিণত হবে।" },
+        mid:  { tier: "eq-tier-mid",  title: "🟡 আপনি একটি মিশ্র মানসিক অবস্থার মধ্য দিয়ে যাচ্ছেন", desc: "আপনার কিছু আবেগ স্বাস্থ্যকর দূরত্বে আছে, কিন্তু কিছু আবেগ আপনাকে আকস্মিক চমকে দেয়। যখন বড় ধরণের মানসিক চাপ আসে, আপনি হয়তো অতিরিক্ত কাজ করেন, মানুষকে বেশি খুশি করার চেষ্টা করেন অথবা হঠাৎ রেগে যান। কৌতূহল নিয়ে অনুভূতিগুলো পর্যবেক্ষণ করতে শিখলে আপনি আরও শান্তি পাবেন।" },
+        high: { tier: "eq-tier-high", title: "🟢 আপনি আবেগ থেকে একটি স্বাস্থ্যকর ও আরামদায়ক দূরত্ব বজায় রাখেন", desc: "আপনার মানসিক সচেতনতা চমৎকার। যখন কোনো তীব্র অনুভূতি আসে, আপনি থামতে পারেন, সেটিকে দয়া ও সহানুভূতির সাথে দেখতে পারেন এবং আবেগের বশে কাজ না করে শান্তভাবে নিজের অনুভূতির কথা প্রকাশ করতে পারেন। এটি আপনাকে শক্তিশালী ও সৎ সম্পর্ক গড়তে সাহায্য করে।" }
+      }
+    }
+  };
+
+  const TOTAL = 5;
+
+  // State
+  var lang       = 'en';
+  var phase      = 'intro';  // 'intro' | 'quiz' | 'results'
+  var qIndex     = 0;
+  var scores     = [];
+  var pending    = null;     // score of currently selected option
+
+  // DOM refs
+  var phaseIntro   = document.getElementById('eq-phase-intro');
+  var phaseQuiz    = document.getElementById('eq-phase-quiz');
+  var phaseResults = document.getElementById('eq-phase-results');
+  var startBtn     = document.getElementById('eq-start-btn');
+  var nextBtn      = document.getElementById('eq-next-btn');
+  var retakeBtn    = document.getElementById('eq-retake-btn');
+  var progFill     = document.getElementById('eq-prog-fill');
+  var progLabel    = document.getElementById('eq-prog-label');
+  var questionEl   = document.getElementById('eq-question');
+  var optionsEl    = document.getElementById('eq-options');
+  var scoreLbl     = document.getElementById('eq-score-lbl');
+  var scoreVal     = document.getElementById('eq-score-val');
+  var resultCard   = document.getElementById('eq-result-card');
+  var resultTitle  = document.getElementById('eq-result-title');
+  var resultDesc   = document.getElementById('eq-result-desc');
+  var retakeLbl    = document.getElementById('eq-retake-lbl');
+
+  if (!phaseIntro) return; // guard: quiz card not on page
+
+  function d() { return DATA[lang]; }
+
+  // ── Render intro ──────────────────────────────────────────────────────────
+  function renderIntro() {
+    var data = d();
+    phaseIntro.querySelector('.eq-intro-title').textContent = data.introTitle;
+    phaseIntro.querySelector('.eq-intro-desc').textContent  = data.introDesc;
+    var cards = phaseIntro.querySelectorAll('.eq-concept');
+    data.concepts.forEach(function(c, i) {
+      cards[i].className = 'eq-concept ' + c.cls;
+      cards[i].querySelector('h3').textContent = c.title;
+      cards[i].querySelector('p').textContent  = c.desc;
+    });
+    startBtn.textContent = data.quizStartBtn;
+  }
+
+  // ── Render quiz question ──────────────────────────────────────────────────
+  function renderQuestion() {
+    var data = d();
+    var q = data.questions[qIndex];
+    var pct = ((qIndex) / TOTAL * 100).toFixed(0);
+    progFill.style.width = pct + '%';
+    progLabel.textContent = data.questionOf(qIndex + 1, TOTAL);
+    questionEl.textContent = q.text;
+    optionsEl.innerHTML = '';
+    pending = null;
+    nextBtn.disabled = true;
+    nextBtn.textContent = (qIndex === TOTAL - 1) ? data.resultBtn : data.nextBtn;
+
+    q.options.forEach(function(opt, i) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'eq-option';
+      btn.textContent = opt.text;
+      btn.setAttribute('role', 'radio');
+      btn.setAttribute('aria-checked', 'false');
+      btn.setAttribute('data-score', opt.score);
+      btn.addEventListener('click', function() {
+        optionsEl.querySelectorAll('.eq-option').forEach(function(b) {
+          b.classList.remove('eq-selected');
+          b.setAttribute('aria-checked', 'false');
+        });
+        btn.classList.add('eq-selected');
+        btn.setAttribute('aria-checked', 'true');
+        pending = opt.score;
+        nextBtn.disabled = false;
+      });
+      optionsEl.appendChild(btn);
+    });
+  }
+
+  // ── Render results ────────────────────────────────────────────────────────
+  function renderResults() {
+    var data   = d();
+    var total  = scores.reduce(function(a, b) { return a + b; }, 0);
+    var tier   = total <= 1 ? data.results.low : total <= 3 ? data.results.mid : data.results.high;
+    scoreLbl.textContent   = data.scoreLabel;
+    scoreVal.textContent   = total + ' / ' + TOTAL;
+    resultCard.className   = 'eq-result-card ' + tier.tier;
+    resultTitle.textContent = tier.title;
+    resultDesc.textContent  = tier.desc;
+    retakeLbl.textContent   = data.retakeLabel;
+    progFill.style.width    = '100%';
+  }
+
+  // ── Phase transition ──────────────────────────────────────────────────────
+  function showPhase(next) {
+    [phaseIntro, phaseQuiz, phaseResults].forEach(function(p) {
+      p.hidden = true;
+      p.classList.remove('eq-entering');
+    });
+    var el = next === 'intro' ? phaseIntro : next === 'quiz' ? phaseQuiz : phaseResults;
+    el.hidden = false;
+    // Force reflow then add animation class
+    void el.offsetWidth;
+    el.classList.add('eq-entering');
+    phase = next;
+  }
+
+  // ── Language swap (no state reset) ───────────────────────────────────────
+  function applyLang() {
+    if (phase === 'intro')   { renderIntro(); }
+    if (phase === 'quiz')    { renderQuestion(); }
+    if (phase === 'results') { renderResults(); }
+  }
+
+  // ── Language toggle listeners ─────────────────────────────────────────────
+  document.querySelectorAll('.eq-lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (btn.dataset.lang === lang) return;
+      lang = btn.dataset.lang;
+      document.querySelectorAll('.eq-lang-btn').forEach(function(b) {
+        var active = b.dataset.lang === lang;
+        b.classList.toggle('eq-lang-active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      applyLang();
+    });
+  });
+
+  // ── Start quiz ────────────────────────────────────────────────────────────
+  startBtn.addEventListener('click', function() {
+    qIndex = 0;
+    scores = [];
+    showPhase('quiz');
+    renderQuestion();
+  });
+
+  // ── Next / finish ─────────────────────────────────────────────────────────
+  nextBtn.addEventListener('click', function() {
+    if (nextBtn.disabled || pending === null) return;
+    scores.push(pending);
+    pending = null;
+    qIndex++;
+    if (qIndex < TOTAL) {
+      renderQuestion();
+    } else {
+      showPhase('results');
+      renderResults();
+    }
+  });
+
+  // ── Retake ────────────────────────────────────────────────────────────────
+  retakeBtn.addEventListener('click', function() {
+    qIndex = 0;
+    scores = [];
+    showPhase('intro');
+    renderIntro();
+  });
+
+  // ── Boot ──────────────────────────────────────────────────────────────────
+  renderIntro();
+}());
