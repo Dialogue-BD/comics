@@ -2488,10 +2488,8 @@ exploreMatch.addEventListener("click", () => {
   document.querySelector(".experience").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-// Always use the external poll API — the static file server has no /api/poll handler.
-// Previously this was conditional on the GitHub Pages hostname, which caused the
-// static server to receive POST requests and return HTML instead of JSON.
-const pollApiOrigin = "https://english-club-emotions.halcyondays.chatgpt.site";
+// Poll API is now built into server.py (SQLite-backed) — same origin, no external dependency.
+const pollApiOrigin = "";
 const pollState = { windowKey: "", loading: false };
 const pollTotal = document.querySelector("#poll-total");
 const pollUpdated = document.querySelector("#poll-updated");
