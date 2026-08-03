@@ -1,0 +1,76 @@
+That is another excellent catch. I accidentally left the `"type"` labels out of the final JSON specification block!
+
+For the scorer to know how to tally the results, every single option in the JSON needs a `"type"` attribute attached to it (either `"Far"`, `"Close"`, or `"Healthy"`).
+
+Here is the exact instruction and updated JSON snippet to give to your coder to fix the `questions` array.
+
+---
+
+### 📝 Prompt Update for the AI Coder
+
+```text
+Please update the `questions` array in the JSON payload. We are replacing the `"score": 0` system with a `"type"` system so the logic can accurately tally how many "Far", "Close", and "Healthy" responses the user selects.
+
+Replace the entire `questions` array for both the English (`en`) and Bangla (`bn`) objects with the following properly labeled data:
+
+```json
+"questions": [
+  {
+    "id": 1,
+    "text": "1. You see a relative or old classmate posting about their perfect life and big success on social media. You:",
+    "options": [
+      { "text": "Immediately post your own best photos to look successful.", "type": "Far" },
+      { "text": "Leave a very nice comment, but feel a bad knot in your stomach.", "type": "Close" },
+      { "text": "Feel guilty for being jealous, tell yourself it is wrong, and log off.", "type": "Far" },
+      { "text": "Notice the jealousy, accept that you feel a bit left behind, and take a healthy break.", "type": "Healthy" }
+    ]
+  },
+  {
+    "id": 2,
+    "text": "2. Your boss explicitly promised you wouldn't work this weekend. But on Friday afternoon, they ask you to work late and come in on Saturday for the third week in a row. You:",
+    "options": [
+      { "text": "Say yes immediately to look good, but feel very angry inside while working.", "type": "Far" },
+      { "text": "Agree to work, but cancel family plans and eat comfort food to feel better.", "type": "Far" },
+      { "text": "Take a step back to understand your fear of saying no, and plan a respectful talk with your boss.", "type": "Healthy" },
+      { "text": "Politely decline, but spend the whole weekend terrified that you will lose your job.", "type": "Close" }
+    ]
+  },
+  {
+    "id": 3,
+    "text": "3. At a family gathering, a close relative makes a mean comment about your life choices in front of everyone. You:",
+    "options": [
+      { "text": "Stay silent to keep the peace, smile, but complain bitterly to a friend later.", "type": "Far" },
+      { "text": "Smile and pretend to agree, but secretly try to undo their interference later.", "type": "Far" },
+      { "text": "Feel the hurt or anger, breathe deeply to understand why it hurts, and plan a calm, private talk later.", "type": "Healthy" },
+      { "text": "Stop talking, give them the cold shoulder, and fall into a bad mood.", "type": "Close" }
+    ]
+  },
+  {
+    "id": 4,
+    "text": "4. You worked very hard for a promotion or an academic opportunity, but someone else got it. You:",
+    "options": [
+      { "text": "Tell yourself to 'just get over it' and try to ignore the painful disappointment.", "type": "Far" },
+      { "text": "Feel deeply discouraged, like a total failure, and believe things never work out for you.", "type": "Close" },
+      { "text": "Sit down with a trusted mentor or friend to share your sadness and ask for guidance.", "type": "Healthy" },
+      { "text": "Keep the anger inside and secretly hope the other person fails.", "type": "Far" }
+    ]
+  },
+  {
+    "id": 5,
+    "text": "5. You have a huge presentation tomorrow morning. It is 10:00 PM, and you are still obsessively changing tiny details. You:",
+    "options": [
+      { "text": "Keep changing colors and fonts for hours, hoping perfect visuals will hide your anxiety.", "type": "Far" },
+      { "text": "Blame yourself severely for being slow and get stuck in an anxious loop.", "type": "Close" },
+      { "text": "Give up completely because you feel overwhelmed, call in sick, and watch videos late into the night.", "type": "Far" },
+      { "text": "Realize perfectionism is taking over, accept that your work is already good enough, and go to sleep.", "type": "Healthy" }
+    ]
+  }
+]
+
+```
+
+*(Make sure the coder applies these exact same `"type"` tags to the corresponding Bangla (`bn`) translations as well!)*
+
+```
+
+```
