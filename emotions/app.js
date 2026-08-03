@@ -519,11 +519,16 @@ const emotionFloodingData = {
     collocations: ["feel fear", "deep fear", "overcome fear", "fear of failure", "fear of heights"],
     colligations: ["in fear for", "driven by fear", "fear that happens", "fear about future", "no fear left"],
     distinctions: [
-      "Fear isn't anxiety—it's immediate present danger.",
-      "Fear is more urgent than feeling nervous.",
-      "Fear is less about doubt, more about real-time threat.",
-      "Being afraid isn't weak—it's a survival signal.",
-      "Fear is more acute than general concern."
+      "Fear is not anxiety, but immediate danger.",
+      "Fear is more urgent than nervousness.",
+      "Fear is less about doubt than real threat.",
+      "Fear is not weakness, but a survival signal.",
+      "Fear is more physical than general concern.",
+      "Fear is not panic, but focused alarm.",
+      "Fear is less about the future than the present.",
+      "Fear is more intense than feeling uneasy.",
+      "Fear is not anger, but self-defense.",
+      "Fear is less controllable than mild worry."
     ],
     dialogueC1: [
       "“I had a sudden surge of fear when the room went dark.”",
@@ -544,11 +549,16 @@ const emotionFloodingData = {
     collocations: ["feel anxious", "socially anxious", "anxious thought", "anxious energy", "deeply anxious"],
     colligations: ["anxious about exams", "anxious to succeed", "feel anxious when", "too anxious to", "anxious waiting period"],
     distinctions: [
-      "Anxious isn't scared—it's future uncertainty.",
-      "Feeling anxious is more persistent than nervousness.",
-      "Anxiety is less about danger, more about doubt.",
-      "Anxious isn't panic—it's internal tension.",
-      "Anxiety is more specific than general worry."
+      "Anxious is not scared, but expecting trouble.",
+      "Anxious is more persistent than nervousness.",
+      "Anxious is less about danger than doubt.",
+      "Anxious is not panic, but ongoing tension.",
+      "Anxious is more future-focused than present fear.",
+      "Anxious is not calm, but internally restless.",
+      "Anxious is less physical than sudden fright.",
+      "Anxious is more specific than general worry.",
+      "Anxious is not angry, but hesitant.",
+      "Anxious is less grounded than feeling secure."
     ],
     dialogueC1: [
       "“I always get anxious whenever I have to give a speech.”",
@@ -569,11 +579,16 @@ const emotionFloodingData = {
     collocations: ["feel insecure", "deeply insecure", "insecure feeling", "socially insecure", "emotionally insecure"],
     colligations: ["insecure about skills", "feel insecure around", "become insecure when", "too insecure to", "insecure in relationships"],
     distinctions: [
-      "Insecure isn't shy—it's self-worth doubt.",
-      "Insecurity is more internal than general worry.",
-      "Insecure is less about safety, more about adequacy.",
-      "Being insecure isn't permanent—it changes with support.",
-      "Insecure is subtle, whereas inferior is lower status."
+      "Insecure is not shy, but doubting your worth.",
+      "Insecure is more self-focused than general worry.",
+      "Insecure is less about safety than adequacy.",
+      "Insecure is not inferior, but feeling unsteady.",
+      "Insecure is more internal than physical fear.",
+      "Insecure is not confident, but full of self-doubt.",
+      "Insecure is less outward than anger or pride.",
+      "Insecure is more fragile than quiet modesty.",
+      "Insecure is not helpless, but hesitant.",
+      "Insecure is less stable than self-assurance."
     ],
     dialogueC1: [
       "“I used to feel very insecure about my public speaking.”",
@@ -594,11 +609,16 @@ const emotionFloodingData = {
     collocations: ["feel overwhelmed", "completely overwhelmed", "overwhelmed by work", "emotionally overwhelmed", "overwhelmed with tasks"],
     colligations: ["feel overwhelmed when", "become overwhelmed easily", "too overwhelmed to", "overwhelmed by choices", "deeply overwhelmed state"],
     distinctions: [
-      "Overwhelmed isn't busy—it's exceeding capacity.",
+      "Overwhelmed is not busy, but exceeding capacity.",
       "Overwhelmed is more paralyzing than hard work.",
-      "Overwhelmed is less about fear, more about mental overload.",
-      "Being overwhelmed isn't failure—it's a signal to pause.",
-      "Overwhelmed is more intense than mild stress."
+      "Overwhelmed is less about fear than mental overload.",
+      "Overwhelmed is not failure, but needing a pause.",
+      "Overwhelmed is more intense than mild stress.",
+      "Overwhelmed is not lazy, but flooded with input.",
+      "Overwhelmed is less organized than focused effort.",
+      "Overwhelmed is more exhausting than routine tasks.",
+      "Overwhelmed is not weak, but overloaded.",
+      "Overwhelmed is less manageable than light pressure."
     ],
     dialogueC1: [
       "“I feel completely overwhelmed by all these new assignments.”",
@@ -619,11 +639,16 @@ const emotionFloodingData = {
     collocations: ["feel scared", "scared of heights", "deeply scared", "scared to death", "scared of failure"],
     colligations: ["feel scared when", "become scared suddenly", "too scared to", "scared of dark", "scared for future"],
     distinctions: [
-      "Scared isn't uneasy—it's instinctual threat response.",
-      "Feeling scared is more immediate than anxiety.",
-      "Scared is less about stress, more about present danger.",
-      "Scared is less paralyzing than terrified.",
-      "Scared focuses attention instantly on safety."
+      "Scared is not uneasy, but a threat response.",
+      "Scared is more immediate than anxiety.",
+      "Scared is less about stress than present risk.",
+      "Scared is not terrified, but sharp alarm.",
+      "Scared is more physical than quiet concern.",
+      "Scared is not hesitant, but recoiling.",
+      "Scared is less prolonged than chronic worry.",
+      "Scared is more sudden than feeling sad.",
+      "Scared is not weak, but naturally cautious.",
+      "Scared is less calm than relaxed confidence."
     ],
     dialogueC1: [
       "“I got scared when the storm cut off the power unexpectedly.”",
@@ -644,11 +669,16 @@ const emotionFloodingData = {
     collocations: ["terrified of snakes", "completely terrified", "terrified look", "terrified voice", "deeply terrified"],
     colligations: ["terrified to enter", "feel terrified when", "become terrified instantly", "too terrified to", "terrified of loss"],
     distinctions: [
-      "Terrified isn't scared—it's overwhelming dread.",
+      "Terrified is not just scared, but extreme dread.",
       "Terrified is more severe than nervousness.",
       "Terrified is less controllable than mild fear.",
-      "Terrified freezes ability to think logically.",
-      "Terrified is acute panic before action."
+      "Terrified is not uneasy, but completely frozen.",
+      "Terrified is more overwhelming than simple alarm.",
+      "Terrified is not hesitant, but paralyzed.",
+      "Terrified is less rational than calm thinking.",
+      "Terrified is more intense than sudden shock.",
+      "Terrified is not worried, but panic-stricken.",
+      "Terrified is less flexible than quick alertness."
     ],
     dialogueC1: [
       "“I was terrified that the bridge wouldn't hold.”",
@@ -669,11 +699,16 @@ const emotionFloodingData = {
     collocations: ["feel worried", "deeply worried", "worried look", "constantly worried", "worried parent"],
     colligations: ["worried about money", "worried that happens", "feel worried when", "too worried to", "worried for safety"],
     distinctions: [
-      "Worried isn't panic—it's mental future tension.",
-      "Feeling worried is more cognitive than physical panic.",
-      "Worry is less about harm, more about uncertainty.",
-      "Worried isn't permanent—clarity resolves it.",
-      "Worry is more specific than background anxiety."
+      "Worried is not panic, but mental tension.",
+      "Worried is more cognitive than physical fright.",
+      "Worried is less about present harm than future outcomes.",
+      "Worried is not hopeless, but seeking clarity.",
+      "Worried is more specific than general anxiety.",
+      "Worried is not angry, but preoccupied.",
+      "Worried is less sudden than sudden fear.",
+      "Worried is more persistent than temporary doubt.",
+      "Worried is not terrified, but uneasy.",
+      "Worried is less peaceful than quiet trust."
     ],
     dialogueC1: [
       "“I am worried about how he will handle the news.”",
@@ -694,11 +729,16 @@ const emotionFloodingData = {
     collocations: ["feel happy", "genuinely happy", "happy memory", "happy moment", "extremely happy"],
     colligations: ["happy about news", "happy to help", "feel happy when", "make someone happy", "happy with results"],
     distinctions: [
-      "Happy isn't excitement—it's calm contentment.",
-      "Feeling happy is more steady than a quick thrill.",
-      "Happiness is less about big wins, more about daily comfort.",
-      "Happy isn't zero problems—it's present well-being.",
-      "Happy is more grounded than ecstatic."
+      "Happy is not excitement, but calm contentment.",
+      "Happy is more steady than a quick thrill.",
+      "Happy is less about big wins than daily comfort.",
+      "Happy is not perfect, but present well-being.",
+      "Happy is more grounded than ecstatic joy.",
+      "Happy is not boastful, but warm inside.",
+      "Happy is less intense than wild enthusiasm.",
+      "Happy is more peaceful than restless ambition.",
+      "Happy is not proud, but satisfied.",
+      "Happy is less fleeting than momentary pleasure."
     ],
     dialogueC1: [
       "“I am so happy that you could join us tonight.”",
@@ -719,11 +759,16 @@ const emotionFloodingData = {
     collocations: ["feel confident", "highly confident", "confident voice", "confident smile", "deeply confident"],
     colligations: ["confident in skills", "confident about test", "feel confident when", "become confident with", "confident to speak"],
     distinctions: [
-      "Confident isn't arrogant—it's trusting self-ability.",
-      "Feeling confident is quieter than boasting.",
-      "Confidence is less about perfection, more about self-assurance.",
-      "Confident helps you handle mistakes gracefully.",
-      "Confidence is calmer than loud pride."
+      "Confident is not arrogant, but trusting your skills.",
+      "Confident is more grounded than loud boasting.",
+      "Confident is less about perfection than self-assurance.",
+      "Confident is not reckless, but poised.",
+      "Confident is more calm than aggressive pride.",
+      "Confident is not shy, but ready to act.",
+      "Confident is less anxious than insecure.",
+      "Confident is more stable than temporary luck.",
+      "Confident is not fearful, but self-reliant.",
+      "Confident is less hesitant than uncertain."
     ],
     dialogueC1: [
       "“I feel confident that our strategy will work.”",
@@ -744,11 +789,16 @@ const emotionFloodingData = {
     collocations: ["feel excited", "super excited", "excited voice", "excited about trip", "deeply excited"],
     colligations: ["excited to meet", "excited for weekend", "feel excited when", "become excited easily", "too excited to"],
     distinctions: [
-      "Excited isn't quiet calm—it's high-energy eagerness.",
-      "Feeling excited is more energetic than peacefulness.",
-      "Excitement is less about past, more about future.",
-      "Excited lights up motivation and focus.",
-      "Excitement is more active than gentle happiness."
+      "Excited is not calm, but high-energy eagerness.",
+      "Excited is more energetic than peacefulness.",
+      "Excited is less about the past than future anticipation.",
+      "Excited is not anxious, but eager for joy.",
+      "Excited is more active than gentle happiness.",
+      "Excited is not quiet, but expressive.",
+      "Excited is less steady than peaceful contentment.",
+      "Excited is more forward-looking than serene joy.",
+      "Excited is not angry, but enthusiastic.",
+      "Excited is less reserved than cautious hope."
     ],
     dialogueC1: [
       "“I feel excited about starting my new position.”",
@@ -769,11 +819,16 @@ const emotionFloodingData = {
     collocations: ["feel joyful", "joyful heart", "joyful occasion", "deeply joyful", "purely joyful"],
     colligations: ["joyful about life", "joyful to give", "feel joyful in", "make someone joyful", "joyful celebration"],
     distinctions: [
-      "Joyful isn't circumstance-based—it's deep inner warmth.",
-      "Feeling joyful is more profound than surface happiness.",
-      "Joy is less fleeting than temporary pleasure.",
-      "Joyful lifts spirit and connects with others.",
-      "Joy is richer than simple satisfaction."
+      "Joyful is not superficial, but deep inner warmth.",
+      "Joyful is more profound than surface happiness.",
+      "Joyful is less fleeting than quick pleasure.",
+      "Joyful is not noisy, but radiant.",
+      "Joyful is more uplifting than simple satisfaction.",
+      "Joyful is not smug, but generous.",
+      "Joyful is less external than loud celebration.",
+      "Joyful is more enduring than temporary excitement.",
+      "Joyful is not boastful, but deeply grateful.",
+      "Joyful is less heavy than serious pride."
     ],
     dialogueC1: [
       "“She felt joyful when her family gathered together.”",
@@ -794,11 +849,16 @@ const emotionFloodingData = {
     collocations: ["feel anger", "blind anger", "suppress anger", "express anger", "righteous anger"],
     colligations: ["anger at someone", "anger over decision", "feel anger when", "channel anger into", "filled with anger"],
     distinctions: [
-      "Anger isn't annoyance—it's active opposition to wrong.",
-      "Feeling angry is more forward-moving than hurt.",
-      "Anger is less about feeling bad, more about fixing wrong.",
-      "Anger isn't losing control—it's defending boundaries.",
-      "Fury is much more explosive than everyday anger."
+      "Anger is not annoyance, but active pushback.",
+      "Anger is more forward-moving than feeling hurt.",
+      "Anger is less about suffering than fixing a wrong.",
+      "Anger is not out of control, but defending boundaries.",
+      "Anger is more forceful than quiet discontent.",
+      "Anger is not sadness, but energetic protest.",
+      "Anger is less passive than silent resentment.",
+      "Anger is more direct than subtle spite.",
+      "Anger is not fear, but confronting threat.",
+      "Anger is less reflective than thoughtful calm."
     ],
     dialogueC1: [
       "“I had to control my anger during the tense meeting.”",
@@ -819,11 +879,16 @@ const emotionFloodingData = {
     collocations: ["feel sad", "deeply sad", "sad story", "sad truth", "heartbreakingly sad"],
     colligations: ["sad about loss", "sad to leave", "feel sad when", "make someone sad", "too sad to"],
     distinctions: [
-      "Sadness isn't fatigue—it's emotional reaction to loss.",
-      "Sad is internal pain; lonely is desire for connection.",
-      "Sadness is less about anger, more about quiet processing.",
-      "Being sad isn't giving up—it's honoring what was lost.",
-      "Feeling down is less intense than deep grief."
+      "Sad is not tired, but grieving loss.",
+      "Sad is more internal than feeling lonely.",
+      "Sad is less about anger than quiet processing.",
+      "Sad is not giving up, but honoring pain.",
+      "Sad is more gentle than bitter disappointment.",
+      "Sad is not fearful, but quiet in heart.",
+      "Sad is less active than angry protest.",
+      "Sad is more reflective than sudden panic.",
+      "Sad is not hostile, but tender.",
+      "Sad is less bright than joyful hope."
     ],
     dialogueC1: [
       "“I felt sad saying goodbye at the airport.”",
@@ -844,11 +909,16 @@ const emotionFloodingData = {
     collocations: ["deep disgust", "feel disgust", "look of disgust", "moral disgust", "utter disgust"],
     colligations: ["disgust at behavior", "disgusted by smell", "turn in disgust", "filled with disgust", "express disgust towards"],
     distinctions: [
-      "Disgust isn't dislike—it's visceral urge to recoil.",
-      "Disgust is more physical than anger.",
-      "Disgust is less about fighting, more about keeping away.",
-      "Revolted is much stronger than uncomfortable.",
-      "Disgust is physical repulsion, not just disagreement."
+      "Disgust is not dislike, but physical recoil.",
+      "Disgust is more physical than moral anger.",
+      "Disgust is less about fighting than keeping away.",
+      "Disgust is not mild irritation, but gut repulsion.",
+      "Disgust is more immediate than cold contempt.",
+      "Disgust is not fear, but rejection of bad input.",
+      "Disgust is less thoughtful than reasoned disagreement.",
+      "Disgust is more visceral than simple disapproval.",
+      "Disgust is not sadness, but strong turn-away.",
+      "Disgust is less passive than quiet avoidance."
     ],
     dialogueC1: [
       "“She felt disgust at how the litter was dumped in the park.”",
@@ -869,11 +939,16 @@ const emotionFloodingData = {
     collocations: ["total surprise", "pleasant surprise", "caught by surprise", "look of surprise", "gasp in surprise"],
     colligations: ["surprised by news", "surprised to hear", "feel surprised when", "taken by surprise", "much to surprise"],
     distinctions: [
-      "Surprise isn't fear—it's reaction to the unexpected.",
+      "Surprise is not fear, but sudden unexpected input.",
       "Surprise is more short-lived than confusion.",
-      "Surprise is less about danger, more about new info.",
-      "Shocked is much more jarring than surprised.",
-      "Surprise is instantaneous; curiosity endures."
+      "Surprise is less about danger than novel news.",
+      "Surprise is not shock, but quick discovery.",
+      "Surprise is more instantaneous than lasting curiosity.",
+      "Surprise is not panic, but sudden alertness.",
+      "Surprise is less planned than anticipated events.",
+      "Surprise is more neutral than joy or dread.",
+      "Surprise is not anger, but sudden focus.",
+      "Surprise is less enduring than deep wonder."
     ],
     dialogueC1: [
       "“It was a pleasant surprise to see you here today.”",
@@ -914,11 +989,11 @@ function getFloodingData(name) {
       `so ${word} that`
     ],
     distinctions: [
-      `${name} isn't ${contrast}—it's feeling ${info[0]}.`,
-      `Feeling ${word} is more ${info[1]} than general ${contrast}.`,
-      `${name} is less about danger, more about ${info[2]}.`,
-      `You feel ${word} when your body starts to ${info[3]}.`,
-      `${name} focuses on inner awareness rather than ${contrast}.`
+      `${name} is not ${contrast}, but feeling ${info[0]}.`,
+      `${name} is more ${info[1]} than ${contrast}.`,
+      `${name} is less about danger than ${info[2]}.`,
+      `${name} is not panic, but inner awareness.`,
+      `${name} is more focused than general ${contrast}.`
     ],
     dialogueC1: [
       `“I feel quite ${word} about how things are turning out.”`,
