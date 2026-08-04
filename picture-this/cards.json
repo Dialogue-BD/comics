@@ -172,5 +172,35 @@
     "title": "Cleaning Day",
     "front": "pages/page_057.png",
     "back": "pages/page_058.png"
+  },
+  {
+    "id": "in-the-garden",
+    "title": "In the Garden",
+    "front": "pages/page_059.png",
+    "back": "pages/page_060.png"
+  },
+  {
+    "id": "at-the-playground",
+    "title": "At the Playground",
+    "front": "pages/page_061.png",
+    "back": "pages/page_062.png"
+  },
+  {
+    "id": "on-the-farm",
+    "title": "On the Farm",
+    "front": "pages/page_063.png",
+    "back": "pages/page_064.png"
+  },
+  {
+    "id": "baby-things",
+    "title": "Baby Things",
+    "front": "pages/page_065.png",
+    "back": "pages/page_066.png"
+  },
+  {
+    "id": "party-time",
+    "title": "Party Time",
+    "front": "pages/page_067.png",
+    "back": "pages/page_068.png"
   }
 ]

@@ -9,7 +9,7 @@
     "kind": "pdf"
   },
   "cards_file": "cards.json",
-  "card_count": 29,
+  "card_count": 34,
   "pages": [
     {
       "id": "page_001",
@@ -358,6 +358,66 @@
       "image": "pages/page_058.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_059",
+      "image": "pages/page_059.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_060",
+      "image": "pages/page_060.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_061",
+      "image": "pages/page_061.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_062",
+      "image": "pages/page_062.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_063",
+      "image": "pages/page_063.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_064",
+      "image": "pages/page_064.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_065",
+      "image": "pages/page_065.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_066",
+      "image": "pages/page_066.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_067",
+      "image": "pages/page_067.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_068",
+      "image": "pages/page_068.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -385,6 +445,31 @@
       "id": "cleaning-day",
       "title": "Cleaning Day",
       "band_color": "green"
+    },
+    {
+      "id": "in-the-garden",
+      "title": "In the Garden",
+      "band_color": "green"
+    },
+    {
+      "id": "at-the-playground",
+      "title": "At the Playground",
+      "band_color": "red"
+    },
+    {
+      "id": "on-the-farm",
+      "title": "On the Farm",
+      "band_color": "red"
+    },
+    {
+      "id": "baby-things",
+      "title": "Baby Things",
+      "band_color": "orange"
+    },
+    {
+      "id": "party-time",
+      "title": "Party Time",
+      "band_color": "red"
     }
   ]
 }
