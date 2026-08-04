@@ -1,0 +1,176 @@
+[
+  {
+    "id": "weather",
+    "title": "The Weather",
+    "front": "pages/page_001.png",
+    "back": "pages/page_002.png"
+  },
+  {
+    "id": "vegetables",
+    "title": "Eat Your Vegetables",
+    "front": "pages/page_003.png",
+    "back": "pages/page_004.png"
+  },
+  {
+    "id": "zoo",
+    "title": "A Trip to the Zoo",
+    "front": "pages/page_005.png",
+    "back": "pages/page_006.png"
+  },
+  {
+    "id": "feelings",
+    "title": "Feelings",
+    "front": "pages/page_007.png",
+    "back": "pages/page_008.png"
+  },
+  {
+    "id": "beverages",
+    "title": "Beverages",
+    "front": "pages/page_009.png",
+    "back": "pages/page_010.png"
+  },
+  {
+    "id": "play",
+    "title": "Let’s Play!",
+    "front": "pages/page_011.png",
+    "back": "pages/page_012.png"
+  },
+  {
+    "id": "school",
+    "title": "Time for School",
+    "front": "pages/page_013.png",
+    "back": "pages/page_014.png"
+  },
+  {
+    "id": "personal-items",
+    "title": "Personal Items",
+    "front": "pages/page_015.png",
+    "back": "pages/page_016.png"
+  },
+  {
+    "id": "snack-time",
+    "title": "Snack Time!",
+    "front": "pages/page_017.png",
+    "back": "pages/page_018.png"
+  },
+  {
+    "id": "hobbies",
+    "title": "Hobbies",
+    "front": "pages/page_019.png",
+    "back": "pages/page_020.png"
+  },
+  {
+    "id": "shapes",
+    "title": "Shapes",
+    "front": "pages/page_021.png",
+    "back": "pages/page_022.png"
+  },
+  {
+    "id": "bugs",
+    "title": "Bugs",
+    "front": "pages/page_023.png",
+    "back": "pages/page_024.png"
+  },
+  {
+    "id": "tools",
+    "title": "Tools",
+    "front": "pages/page_025.png",
+    "back": "pages/page_026.png"
+  },
+  {
+    "id": "outdoor-places",
+    "title": "Outdoor Places",
+    "front": "pages/page_027.png",
+    "back": "pages/page_028.png"
+  },
+  {
+    "id": "furniture",
+    "title": "Furniture",
+    "front": "pages/page_029.png",
+    "back": "pages/page_030.png"
+  },
+  {
+    "id": "communication-tools",
+    "title": "Communication Tools",
+    "front": "pages/page_031.png",
+    "back": "pages/page_032.png"
+  },
+  {
+    "id": "transportation",
+    "title": "Transportation",
+    "front": "pages/page_033.png",
+    "back": "pages/page_034.png"
+  },
+  {
+    "id": "great-outdoors",
+    "title": "The Great Outdoors",
+    "front": "pages/page_035.png",
+    "back": "pages/page_036.png"
+  },
+  {
+    "id": "jobs",
+    "title": "Jobs",
+    "front": "pages/page_037.png",
+    "back": "pages/page_038.png"
+  },
+  {
+    "id": "everyday-foods",
+    "title": "Everyday Foods",
+    "front": "pages/page_039.png",
+    "back": "pages/page_040.png"
+  },
+  {
+    "id": "musical-instruments",
+    "title": "Musical Instruments",
+    "front": "pages/page_041.png",
+    "back": "pages/page_042.png"
+  },
+  {
+    "id": "market",
+    "title": "At the Market",
+    "front": "pages/page_043.png",
+    "back": "pages/page_044.png"
+  },
+  {
+    "id": "outdoor-gear",
+    "title": "Outdoor Gear",
+    "front": "pages/page_045.png",
+    "back": "pages/page_046.png"
+  },
+  {
+    "id": "pets",
+    "title": "Pets",
+    "front": "pages/page_047.png",
+    "back": "pages/page_048.png"
+  },
+  {
+    "id": "at-the-beach",
+    "title": "At the Beach",
+    "front": "pages/page_049.png",
+    "back": "pages/page_050.png"
+  },
+  {
+    "id": "in-the-kitchen",
+    "title": "In the Kitchen",
+    "front": "pages/page_051.png",
+    "back": "pages/page_052.png"
+  },
+  {
+    "id": "getting-dressed",
+    "title": "Getting Dressed",
+    "front": "pages/page_053.png",
+    "back": "pages/page_054.png"
+  },
+  {
+    "id": "at-the-doctor",
+    "title": "At the Doctor",
+    "front": "pages/page_055.png",
+    "back": "pages/page_056.png"
+  },
+  {
+    "id": "cleaning-day",
+    "title": "Cleaning Day",
+    "front": "pages/page_057.png",
+    "back": "pages/page_058.png"
+  }
+]

@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#101218">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Picture This! — Conversation Cards</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --accent: 193 86% 64%;
+      --ink: #f7f7f4;
+      --muted: rgba(247, 247, 244, .66);
+      --glass: rgba(20, 22, 29, .66);
+      --border: rgba(255, 255, 255, .14);
+      --card-ratio: .6470588;
+      font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #101218;
+    }
+
+    body {
+      color: var(--ink);
+      overscroll-behavior: none;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    button { font: inherit; }
+
+    .app {
+      position: fixed;
+      inset: 0;
+      min-height: 100dvh;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 42%, hsl(var(--accent) / .19), transparent 42%),
+        radial-gradient(circle at 82% 4%, hsl(var(--accent-shifted, 260 80% 64%) / .1), transparent 34%),
+        linear-gradient(145deg, #171a22 0%, #0c0e13 58%, #12141b 100%);
+      transition: background .45s ease;
+    }
+
+    .app::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .18;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+
+    .topbar {
+      position: absolute;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: max(14px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) 10px max(18px, env(safe-area-inset-left));
+      pointer-events: none;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      letter-spacing: -.02em;
+      font-size: clamp(.95rem, 3.7vw, 1.08rem);
+      font-weight: 760;
+    }
+
+    .brand-mark {
+      width: 11px;
+      height: 11px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: hsl(var(--accent));
+      box-shadow: 0 0 0 5px hsl(var(--accent) / .14), 0 0 22px hsl(var(--accent) / .65);
+    }
+
+    .side-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--glass);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, .2);
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .stage {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding:
+        max(65px, calc(env(safe-area-inset-top) + 56px))
+        max(16px, env(safe-area-inset-right))
+        max(92px, calc(env(safe-area-inset-bottom) + 76px))
+        max(16px, env(safe-area-inset-left));
+      perspective: 1500px;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    .stage.is-dragging { cursor: grabbing; }
+
+    .deck {
+      position: relative;
+      width: min(calc(100vw - 32px), calc((100dvh - 157px) * var(--card-ratio)), 540px);
+      aspect-ratio: 198 / 306;
+      transform-style: preserve-3d;
+      transition: opacity .16s ease, scale .16s ease, filter .16s ease;
+    }
+
+    .deck.is-changing {
+      opacity: 0;
+      scale: .94;
+      filter: blur(5px);
+    }
+
+    .card {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      border: 0;
+      border-radius: clamp(14px, 4.6vw, 25px);
+      outline: none;
+      color: inherit;
+      background: transparent;
+      box-shadow:
+        0 3px 2px rgba(255, 255, 255, .22) inset,
+        0 22px 68px rgba(0, 0, 0, .54),
+        0 5px 15px rgba(0, 0, 0, .35);
+      transform-style: preserve-3d;
+      transform: translate3d(var(--drag-x, 0px), 0, 0) rotateZ(var(--tilt-z, 0deg)) rotateY(var(--rotate-y, 0deg));
+      transition: transform .62s cubic-bezier(.2, .84, .24, 1);
+      will-change: transform;
+      cursor: inherit;
+    }
+
+    .card::before,
+    .card::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      bottom: 12px;
+      width: 9px;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(90deg, #aaa9a4, #f7f6f1 48%, #b8b7b1);
+      backface-visibility: visible;
+      -webkit-backface-visibility: visible;
+    }
+
+    .card::before {
+      left: 0;
+      transform-origin: left center;
+      transform: rotateY(90deg);
+    }
+
+    .card::after {
+      right: 0;
+      transform-origin: right center;
+      transform: rotateY(-90deg);
+    }
+
+    .card.is-dragging { transition: none; }
+
+    .card:focus-visible {
+      box-shadow:
+        0 0 0 4px hsl(var(--accent) / .92),
+        0 22px 68px rgba(0, 0, 0, .54);
+    }
+
+    .face {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .36);
+      border-radius: inherit;
+      background: #f8f7f2;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: translateZ(.5px);
+    }
+
+    .face.back { transform: rotateY(180deg) translateZ(.5px); }
+
+    .face img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+
+    .shine {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      border-radius: inherit;
+      opacity: var(--shine-opacity, .08);
+      pointer-events: none;
+      background: linear-gradient(var(--shine-angle, 118deg), transparent 18%, rgba(255,255,255,.7) 48%, transparent 70%);
+      mix-blend-mode: screen;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .footer {
+      position: absolute;
+      z-index: 20;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: end;
+      gap: 12px;
+      padding: 10px max(16px, env(safe-area-inset-right)) max(14px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+      pointer-events: none;
+    }
+
+    .footer > * { pointer-events: auto; }
+
+    .action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      width: max-content;
+      padding: 0 15px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--glass);
+      color: var(--ink);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .24);
+      cursor: pointer;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+
+    .action:hover { background: rgba(37, 40, 50, .82); border-color: rgba(255,255,255,.24); }
+    .action:active { transform: scale(.94); }
+    .action:focus-visible { outline: 3px solid hsl(var(--accent)); outline-offset: 3px; }
+    .action svg { width: 19px; height: 19px; }
+    .action span { font-size: .82rem; font-weight: 760; }
+    .fullscreen { justify-self: end; width: 48px; padding: 0; }
+
+    .instructions {
+      align-self: center;
+      min-width: 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: clamp(.7rem, 2.7vw, .83rem);
+      line-height: 1.3;
+      pointer-events: none;
+    }
+
+    .instructions strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--ink);
+      font-size: .77rem;
+      letter-spacing: .01em;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-height: 560px) {
+      .stage { padding-top: 18px; padding-bottom: 18px; }
+      .deck { width: min(calc(100vw - 170px), calc((100dvh - 36px) * var(--card-ratio)), 540px); }
+      .topbar { padding-top: max(10px, env(safe-area-inset-top)); }
+      .brand, .side-pill { opacity: .86; }
+      .footer { grid-template-columns: auto 1fr auto; }
+      .instructions { visibility: hidden; }
+    }
+
+    @media (max-width: 380px) {
+      .action span { display: none; }
+      .action { width: 48px; padding: 0; }
+      .footer { grid-template-columns: 48px 1fr 48px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card { transition-duration: .01ms; }
+      .deck, .app { transition-duration: .01ms; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app" id="app">
+    <header class="topbar" aria-hidden="true">
+      <div class="brand"><span class="brand-mark"></span><span>Picture This!</span></div>
+      <div class="side-pill" id="side-pill">Picture side</div>
+    </header>
+
+    <section class="stage" id="stage" aria-label="Conversation card">
+      <div class="deck" id="deck">
+        <div class="card" id="card" role="button" tabindex="0" aria-label="Flip card to the question side">
+          <span class="face front"><img id="front-image" alt="" draggable="false"></span>
+          <span class="face back"><img id="back-image" alt="" draggable="false"></span>
+          <span class="shine" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <button class="action shuffle" id="shuffle" type="button" aria-label="Show a new random card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 3v6h-6"></path><path d="M3 21v-6h6"></path>
+          <path d="M5.5 9A7 7 0 0 1 17 5l4 4"></path><path d="M18.5 15A7 7 0 0 1 7 19l-4-4"></path>
+        </svg>
+        <span>New card</span>
+      </button>
+
+      <div class="instructions" aria-hidden="true">
+        <strong id="card-count">Card 1 of 24</strong>
+        Swipe or tap to flip
+      </div>
+
+      <button class="action fullscreen" id="fullscreen" type="button" aria-label="Enter fullscreen">
+        <svg class="enter-fullscreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"></path>
+        </svg>
+        <svg class="exit-fullscreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+          <path d="M8 3v3a2 2 0 0 1-2 2H3M16 3v3a2 2 0 0 0 2 2h3M8 21v-3a2 2 0 0 0-2-2H3M16 21v-3a2 2 0 0 1 2-2h3"></path>
+        </svg>
+      </button>
+    </footer>
+
+    <p class="sr-only" id="status" aria-live="polite"></p>
+  </main>
+
+  <script>
+    // Mirrors cards.json so the activity also works when opened directly from file://.
+    // PICTURE_THIS_CARDS_START
+    const cards = [
+  {
+    "id": "weather",
+    "title": "The Weather",
+    "front": "pages/page_001.png",
+    "back": "pages/page_002.png"
+  },
+  {
+    "id": "vegetables",
+    "title": "Eat Your Vegetables",
+    "front": "pages/page_003.png",
+    "back": "pages/page_004.png"
+  },
+  {
+    "id": "zoo",
+    "title": "A Trip to the Zoo",
+    "front": "pages/page_005.png",
+    "back": "pages/page_006.png"
+  },
+  {
+    "id": "feelings",
+    "title": "Feelings",
+    "front": "pages/page_007.png",
+    "back": "pages/page_008.png"
+  },
+  {
+    "id": "beverages",
+    "title": "Beverages",
+    "front": "pages/page_009.png",
+    "back": "pages/page_010.png"
+  },
+  {
+    "id": "play",
+    "title": "Let’s Play!",
+    "front": "pages/page_011.png",
+    "back": "pages/page_012.png"
+  },
+  {
+    "id": "school",
+    "title": "Time for School",
+    "front": "pages/page_013.png",
+    "back": "pages/page_014.png"
+  },
+  {
+    "id": "personal-items",
+    "title": "Personal Items",
+    "front": "pages/page_015.png",
+    "back": "pages/page_016.png"
+  },
+  {
+    "id": "snack-time",
+    "title": "Snack Time!",
+    "front": "pages/page_017.png",
+    "back": "pages/page_018.png"
+  },
+  {
+    "id": "hobbies",
+    "title": "Hobbies",
+    "front": "pages/page_019.png",
+    "back": "pages/page_020.png"
+  },
+  {
+    "id": "shapes",
+    "title": "Shapes",
+    "front": "pages/page_021.png",
+    "back": "pages/page_022.png"
+  },
+  {
+    "id": "bugs",
+    "title": "Bugs",
+    "front": "pages/page_023.png",
+    "back": "pages/page_024.png"
+  },
+  {
+    "id": "tools",
+    "title": "Tools",
+    "front": "pages/page_025.png",
+    "back": "pages/page_026.png"
+  },
+  {
+    "id": "outdoor-places",
+    "title": "Outdoor Places",
+    "front": "pages/page_027.png",
+    "back": "pages/page_028.png"
+  },
+  {
+    "id": "furniture",
+    "title": "Furniture",
+    "front": "pages/page_029.png",
+    "back": "pages/page_030.png"
+  },
+  {
+    "id": "communication-tools",
+    "title": "Communication Tools",
+    "front": "pages/page_031.png",
+    "back": "pages/page_032.png"
+  },
+  {
+    "id": "transportation",
+    "title": "Transportation",
+    "front": "pages/page_033.png",
+    "back": "pages/page_034.png"
+  },
+  {
+    "id": "great-outdoors",
+    "title": "The Great Outdoors",
+    "front": "pages/page_035.png",
+    "back": "pages/page_036.png"
+  },
+  {
+    "id": "jobs",
+    "title": "Jobs",
+    "front": "pages/page_037.png",
+    "back": "pages/page_038.png"
+  },
+  {
+    "id": "everyday-foods",
+    "title": "Everyday Foods",
+    "front": "pages/page_039.png",
+    "back": "pages/page_040.png"
+  },
+  {
+    "id": "musical-instruments",
+    "title": "Musical Instruments",
+    "front": "pages/page_041.png",
+    "back": "pages/page_042.png"
+  },
+  {
+    "id": "market",
+    "title": "At the Market",
+    "front": "pages/page_043.png",
+    "back": "pages/page_044.png"
+  },
+  {
+    "id": "outdoor-gear",
+    "title": "Outdoor Gear",
+    "front": "pages/page_045.png",
+    "back": "pages/page_046.png"
+  },
+  {
+    "id": "pets",
+    "title": "Pets",
+    "front": "pages/page_047.png",
+    "back": "pages/page_048.png"
+  },
+  {
+    "id": "at-the-beach",
+    "title": "At the Beach",
+    "front": "pages/page_049.png",
+    "back": "pages/page_050.png"
+  },
+  {
+    "id": "in-the-kitchen",
+    "title": "In the Kitchen",
+    "front": "pages/page_051.png",
+    "back": "pages/page_052.png"
+  },
+  {
+    "id": "getting-dressed",
+    "title": "Getting Dressed",
+    "front": "pages/page_053.png",
+    "back": "pages/page_054.png"
+  },
+  {
+    "id": "at-the-doctor",
+    "title": "At the Doctor",
+    "front": "pages/page_055.png",
+    "back": "pages/page_056.png"
+  },
+  {
+    "id": "cleaning-day",
+    "title": "Cleaning Day",
+    "front": "pages/page_057.png",
+    "back": "pages/page_058.png"
+  }
+];
+    // PICTURE_THIS_CARDS_END
+
+    const app = document.querySelector("#app");
+    const stage = document.querySelector("#stage");
+    const deck = document.querySelector("#deck");
+    const card = document.querySelector("#card");
+    const frontImage = document.querySelector("#front-image");
+    const backImage = document.querySelector("#back-image");
+    const sidePill = document.querySelector("#side-pill");
+    const cardCount = document.querySelector("#card-count");
+    const status = document.querySelector("#status");
+    const shuffleButton = document.querySelector("#shuffle");
+    const fullscreenButton = document.querySelector("#fullscreen");
+    const enterFullscreenIcon = fullscreenButton.querySelector(".enter-fullscreen");
+    const exitFullscreenIcon = fullscreenButton.querySelector(".exit-fullscreen");
+
+    let cardIndex = 0;
+    let angle = 0;
+    let startAngle = 0;
+    let startX = 0;
+    let startY = 0;
+    let lastX = 0;
+    let startTime = 0;
+    let dragging = false;
+
+    function secureRandomIndex(max) {
+      if (window.crypto && window.crypto.getRandomValues) {
+        const values = new Uint32Array(1);
+        window.crypto.getRandomValues(values);
+        return Math.floor((values[0] / 4294967296) * max);
+      }
+      return Math.floor(Math.random() * max);
+    }
+
+    function initialCardIndex() {
+      const requested = Number(new URLSearchParams(location.search).get("card"));
+      if (Number.isInteger(requested) && requested >= 1 && requested <= cards.length) return requested - 1;
+
+      let previous = -1;
+      try { previous = Number(sessionStorage.getItem("picture-this-last-card")); } catch (_) {}
+      let next = secureRandomIndex(cards.length);
+      if (cards.length > 1 && next === previous) next = (next + 1 + secureRandomIndex(cards.length - 1)) % cards.length;
+      return next;
+    }
+
+    function isQuestionSide() {
+      return Math.abs(Math.round(angle / 180)) % 2 === 1;
+    }
+
+    function updateSideUI(announce = true) {
+      const questionSide = isQuestionSide();
+      const current = cards[cardIndex];
+      sidePill.textContent = questionSide ? "Question side" : "Picture side";
+      card.setAttribute("aria-label", questionSide
+        ? `${current.title}. Question side. Flip to the picture side.`
+        : `${current.title}. Picture side. Flip to the question side.`);
+      if (announce) status.textContent = `${current.title}: ${questionSide ? "question side" : "picture side"}.`;
+    }
+
+    function applyTransform(nextAngle = angle, dragX = 0) {
+      const progress = Math.min(1, Math.abs(dragX) / Math.max(180, deck.clientWidth * .7));
+      card.style.setProperty("--rotate-y", `${nextAngle}deg`);
+      card.style.setProperty("--drag-x", `${dragX * .12}px`);
+      card.style.setProperty("--tilt-z", `${Math.max(-2.2, Math.min(2.2, dragX * .012))}deg`);
+      card.style.setProperty("--shine-opacity", `${.07 + progress * .18}`);
+      card.style.setProperty("--shine-angle", dragX < 0 ? "62deg" : "118deg");
+    }
+
+    function finishFlip(direction) {
+      angle = startAngle + (direction < 0 ? -180 : 180);
+      card.classList.remove("is-dragging");
+      stage.classList.remove("is-dragging");
+      applyTransform(angle, 0);
+      updateSideUI();
+      if (navigator.vibrate) navigator.vibrate(12);
+    }
+
+    function flip(direction = 1) {
+      startAngle = angle;
+      finishFlip(direction);
+    }
+
+    function cancelDrag() {
+      dragging = false;
+      card.classList.remove("is-dragging");
+      stage.classList.remove("is-dragging");
+      applyTransform(startAngle, 0);
+      angle = startAngle;
+    }
+
+    function onPointerDown(event) {
+      if (event.button !== undefined && event.button !== 0) return;
+      dragging = true;
+      startX = lastX = event.clientX;
+      startY = event.clientY;
+      startTime = performance.now();
+      startAngle = angle;
+      card.classList.add("is-dragging");
+      stage.classList.add("is-dragging");
+      stage.setPointerCapture?.(event.pointerId);
+    }
+
+    function onPointerMove(event) {
+      if (!dragging) return;
+      lastX = event.clientX;
+      const dx = lastX - startX;
+      const rotation = Math.max(-118, Math.min(118, dx * (180 / Math.max(210, deck.clientWidth * .72))));
+      applyTransform(startAngle + rotation, dx);
+    }
+
+    function onPointerUp(event) {
+      if (!dragging) return;
+      dragging = false;
+      const dx = event.clientX - startX;
+      const dy = event.clientY - startY;
+      const elapsed = Math.max(1, performance.now() - startTime);
+      const velocity = dx / elapsed;
+      const wasTap = Math.hypot(dx, dy) < 9;
+      const committed = Math.abs(dx) > Math.min(72, deck.clientWidth * .18) || Math.abs(velocity) > .48;
+
+      if (wasTap) {
+        finishFlip(1);
+      } else if (committed && Math.abs(dx) > Math.abs(dy) * .8) {
+        finishFlip(dx < 0 ? -1 : 1);
+      } else {
+        cancelDrag();
+      }
+    }
+
+    function showCard(index, announce = true) {
+      cardIndex = index;
+      angle = 0;
+      startAngle = 0;
+      const current = cards[index];
+      frontImage.src = current.front;
+      frontImage.alt = `${current.title} picture card`;
+      backImage.src = current.back;
+      backImage.alt = `${current.title} discussion questions`;
+      cardCount.textContent = `Card ${index + 1} of ${cards.length}`;
+      app.style.setProperty("--accent", `${(188 + index * 17) % 360} 84% 64%`);
+      app.style.setProperty("--accent-shifted", `${(260 + index * 17) % 360} 80% 64%`);
+      applyTransform(0, 0);
+      updateSideUI(false);
+      document.title = `${current.title} — Picture This!`;
+      try { sessionStorage.setItem("picture-this-last-card", String(index)); } catch (_) {}
+      if (announce) status.textContent = `New card: ${current.title}. Picture side.`;
+    }
+
+    function newRandomCard() {
+      let next = secureRandomIndex(cards.length - 1);
+      if (next >= cardIndex) next += 1;
+      deck.classList.add("is-changing");
+      window.setTimeout(() => {
+        showCard(next);
+        deck.classList.remove("is-changing");
+      }, 165);
+    }
+
+    function fullscreenElement() {
+      return document.fullscreenElement || document.webkitFullscreenElement;
+    }
+
+    async function toggleFullscreen() {
+      try {
+        if (fullscreenElement()) {
+          const exit = document.exitFullscreen || document.webkitExitFullscreen;
+          if (exit) await exit.call(document);
+        } else {
+          const enter = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen;
+          if (enter) await enter.call(document.documentElement);
+        }
+      } catch (_) {
+        status.textContent = "Fullscreen is not available in this browser.";
+      }
+    }
+
+    function updateFullscreenButton() {
+      const active = Boolean(fullscreenElement());
+      enterFullscreenIcon.hidden = active;
+      exitFullscreenIcon.hidden = !active;
+      fullscreenButton.setAttribute("aria-label", active ? "Exit fullscreen" : "Enter fullscreen");
+    }
+
+    stage.addEventListener("pointerdown", onPointerDown);
+    stage.addEventListener("pointermove", onPointerMove);
+    stage.addEventListener("pointerup", onPointerUp);
+    stage.addEventListener("pointercancel", cancelDrag);
+    shuffleButton.addEventListener("click", newRandomCard);
+    fullscreenButton.addEventListener("click", toggleFullscreen);
+    document.addEventListener("fullscreenchange", updateFullscreenButton);
+    document.addEventListener("webkitfullscreenchange", updateFullscreenButton);
+    document.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") flip(-1);
+      if (event.key === "ArrowRight" || event.key === " " || event.key === "Enter") flip(1);
+      if (event.key.toLowerCase() === "n") newRandomCard();
+    });
+
+    if (!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen)) {
+      fullscreenButton.hidden = true;
+    }
+
+    showCard(initialCardIndex(), false);
+  </script>
+</body>
+</html>
