@@ -1,0 +1,390 @@
+{
+  "schema_version": 1,
+  "title": "Picture This!",
+  "mode": "sequence",
+  "learner_language": "en",
+  "curriculum_profile": "core",
+  "source": {
+    "file": "picture_this-cards.pdf",
+    "kind": "pdf"
+  },
+  "cards_file": "cards.json",
+  "card_count": 29,
+  "pages": [
+    {
+      "id": "page_001",
+      "image": "pages/page_001.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_002",
+      "image": "pages/page_002.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_003",
+      "image": "pages/page_003.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_004",
+      "image": "pages/page_004.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_005",
+      "image": "pages/page_005.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_006",
+      "image": "pages/page_006.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_007",
+      "image": "pages/page_007.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_008",
+      "image": "pages/page_008.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_009",
+      "image": "pages/page_009.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_010",
+      "image": "pages/page_010.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_011",
+      "image": "pages/page_011.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_012",
+      "image": "pages/page_012.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_013",
+      "image": "pages/page_013.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_014",
+      "image": "pages/page_014.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_015",
+      "image": "pages/page_015.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_016",
+      "image": "pages/page_016.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_017",
+      "image": "pages/page_017.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_018",
+      "image": "pages/page_018.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_019",
+      "image": "pages/page_019.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_020",
+      "image": "pages/page_020.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_021",
+      "image": "pages/page_021.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_022",
+      "image": "pages/page_022.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_023",
+      "image": "pages/page_023.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_024",
+      "image": "pages/page_024.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_025",
+      "image": "pages/page_025.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_026",
+      "image": "pages/page_026.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_027",
+      "image": "pages/page_027.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_028",
+      "image": "pages/page_028.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_029",
+      "image": "pages/page_029.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_030",
+      "image": "pages/page_030.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_031",
+      "image": "pages/page_031.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_032",
+      "image": "pages/page_032.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_033",
+      "image": "pages/page_033.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_034",
+      "image": "pages/page_034.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_035",
+      "image": "pages/page_035.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_036",
+      "image": "pages/page_036.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_037",
+      "image": "pages/page_037.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_038",
+      "image": "pages/page_038.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_039",
+      "image": "pages/page_039.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_040",
+      "image": "pages/page_040.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_041",
+      "image": "pages/page_041.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_042",
+      "image": "pages/page_042.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_043",
+      "image": "pages/page_043.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_044",
+      "image": "pages/page_044.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_045",
+      "image": "pages/page_045.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_046",
+      "image": "pages/page_046.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_047",
+      "image": "pages/page_047.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_048",
+      "image": "pages/page_048.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_049",
+      "image": "pages/page_049.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_050",
+      "image": "pages/page_050.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_051",
+      "image": "pages/page_051.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_052",
+      "image": "pages/page_052.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_053",
+      "image": "pages/page_053.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_054",
+      "image": "pages/page_054.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_055",
+      "image": "pages/page_055.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_056",
+      "image": "pages/page_056.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_057",
+      "image": "pages/page_057.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_058",
+      "image": "pages/page_058.png",
+      "width": 825,
+      "height": 1275
+    }
+  ],
+  "generated_cards": [
+    {
+      "id": "at-the-beach",
+      "title": "At the Beach",
+      "band_color": "green"
+    },
+    {
+      "id": "in-the-kitchen",
+      "title": "In the Kitchen",
+      "band_color": "orange"
+    },
+    {
+      "id": "getting-dressed",
+      "title": "Getting Dressed",
+      "band_color": "orange"
+    },
+    {
+      "id": "at-the-doctor",
+      "title": "At the Doctor",
+      "band_color": "orange"
+    },
+    {
+      "id": "cleaning-day",
+      "title": "Cleaning Day",
+      "band_color": "green"
+    }
+  ]
+}
