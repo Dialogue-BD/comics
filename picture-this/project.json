@@ -9,7 +9,7 @@
     "kind": "pdf"
   },
   "cards_file": "cards.json",
-  "card_count": 34,
+  "card_count": 44,
   "pages": [
     {
       "id": "page_001",
@@ -418,6 +418,126 @@
       "image": "pages/page_068.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_069",
+      "image": "pages/page_069.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_070",
+      "image": "pages/page_070.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_071",
+      "image": "pages/page_071.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_072",
+      "image": "pages/page_072.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_073",
+      "image": "pages/page_073.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_074",
+      "image": "pages/page_074.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_075",
+      "image": "pages/page_075.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_076",
+      "image": "pages/page_076.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_077",
+      "image": "pages/page_077.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_078",
+      "image": "pages/page_078.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_079",
+      "image": "pages/page_079.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_080",
+      "image": "pages/page_080.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_081",
+      "image": "pages/page_081.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_082",
+      "image": "pages/page_082.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_083",
+      "image": "pages/page_083.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_084",
+      "image": "pages/page_084.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_085",
+      "image": "pages/page_085.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_086",
+      "image": "pages/page_086.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_087",
+      "image": "pages/page_087.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_088",
+      "image": "pages/page_088.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -470,6 +590,56 @@
       "id": "party-time",
       "title": "Party Time",
       "band_color": "red"
+    },
+    {
+      "id": "science-lab",
+      "title": "Science Lab",
+      "band_color": "orange"
+    },
+    {
+      "id": "sewing-kit",
+      "title": "Sewing Kit",
+      "band_color": "red"
+    },
+    {
+      "id": "winter-fun",
+      "title": "Winter Fun",
+      "band_color": "orange"
+    },
+    {
+      "id": "laundry-day",
+      "title": "Laundry Day",
+      "band_color": "green"
+    },
+    {
+      "id": "movie-night",
+      "title": "Movie Night",
+      "band_color": "orange"
+    },
+    {
+      "id": "space-travel",
+      "title": "Space Travel",
+      "band_color": "green"
+    },
+    {
+      "id": "hair-salon",
+      "title": "Hair Salon",
+      "band_color": "blue"
+    },
+    {
+      "id": "at-the-airport",
+      "title": "At the Airport",
+      "band_color": "green"
+    },
+    {
+      "id": "at-the-office",
+      "title": "At the Office",
+      "band_color": "blue"
+    },
+    {
+      "id": "under-the-sea",
+      "title": "Under the Sea",
+      "band_color": "blue"
     }
   ]
 }
