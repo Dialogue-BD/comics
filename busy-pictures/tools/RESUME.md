@@ -31,6 +31,15 @@ can be corrected and the page re-merged without re-reading tiles.
 
 ## Grammar: all 25 pages now carry the 7 `main_*` tenses — DONE
 
+### Label correction batch — 2026-08-05
+
+`tools/apply_label_updates.py` applied the 233 exported suggestions as 227
+distinct object updates across pages 10–22 (the newest entry wins when an
+object was submitted twice). Each corrected object has a hand-authored
+subject/action frame and all seven live `main_*` tense sentences were rebuilt.
+The script writes both `spatial_index.json` and the inline `spatialIndex` in
+`index.html`; it is safe to rerun with the same export.
+
 The viewer's prompt list maps all 7 grammar points to `main_simple_present`,
 `main_present_continuous`, `main_simple_past`, `main_past_continuous`,
 `main_present_perfect`, `main_future_going_to`, `main_future_will`.

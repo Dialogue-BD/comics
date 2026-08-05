@@ -1,0 +1,13 @@
+{
+  "canvas": {"width": 825, "height": 1275, "dpi": 300, "page_width_pt": 198, "page_height_pt": 306},
+  "palette": {
+    "blue": "#DBEFFA",
+    "green": "#E4F3BC",
+    "orange": "#FDE1B1",
+    "red": "#DDA1B3"
+  },
+  "title": {"ink_top": 23, "max_width": 720, "start_size": 64, "min_size": 48},
+  "grid": {"left": 67, "top": 132, "right": 758, "bottom": 1035, "column_gap": 36, "row_gap": 22, "cell_padding": 18},
+  "footer": {"gradient_top": 1045, "label_top": 1062, "label_bottom": 1244, "max_width": 724, "start_size": 46, "min_size": 34, "labels_per_line": 2, "line_count": 3},
+  "questions": {"number_x": 56, "text_x": 112, "right": 760, "top": 140, "bottom": 1150, "start_size": 46, "min_size": 34, "line_height_ratio": 1.2, "block_gap_ratio": 0.48}
+}

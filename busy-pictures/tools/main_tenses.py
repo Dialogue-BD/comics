@@ -51,7 +51,8 @@ IRREG = {
     'send': ('sent', 'sent'), 'spend': ('spent', 'spent'), 'pay': ('paid', 'paid'),
     'hurt': ('hurt', 'hurt'), 'shut': ('shut', 'shut'), 'hit': ('hit', 'hit'),
     'beat': ('beat', 'beaten'), 'freeze': ('froze', 'frozen'),
-    'show': ('showed', 'shown'), 'sew': ('sewed', 'sewn'), 'prove': ('proved', 'proven'),
+    'show': ('showed', 'shown'), 'shoot': ('shot', 'shot'),
+    'sew': ('sewed', 'sewn'), 'prove': ('proved', 'proven'),
     'ring': ('rang', 'rung'), 'sink': ('sank', 'sunk'), 'weave': ('wove', 'woven'),
 }
 
@@ -156,14 +157,14 @@ def _clean(s):
     return s[0].upper() + s[1:]
 
 
-def build_main(subject, verb, rest, plural=False, key=''):
+def build_main(subject, verb, rest, plural=False, key='', stative_override=None):
     """Return the 7 main_* fields as a dict."""
     rest = (' ' + rest.strip()).rstrip() if rest else ''
     IS, WAS, HAS = ('are', 'were', 'have') if plural else ('is', 'was', 'has')
     pres = verb if plural else third(verb)
     subj = subject.strip()
 
-    stative = verb in STATIVE
+    stative = verb in STATIVE if stative_override is None else stative_override
     freq = _slot(key + 'f', FREQ)
     when = _slot(key + 'p', STAT_PAST if stative else PAST_WHEN)
     intr = _slot(key + 'i', STAT_INTERRUPT if stative else INTERRUPT)

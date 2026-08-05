@@ -1,0 +1,4 @@
+interface:
+  display_name: "Picture This! Card Generator"
+  short_description: "Create matched front-and-back ESL cards"
+  default_prompt: "Use $generate-picture-this-cards to create a new Picture This! card pair for a category."

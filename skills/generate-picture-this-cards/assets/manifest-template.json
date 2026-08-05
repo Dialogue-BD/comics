@@ -1,0 +1,22 @@
+{
+  "title": "At the Beach",
+  "slug": "at-the-beach",
+  "band_color": "auto",
+  "seed": "at-the-beach-v1",
+  "items": [
+    {"label": "Beach Ball", "description": "a colorful inflatable beach ball", "image": "assets/beach-ball.png", "chroma_key": "#ff00ff"},
+    {"label": "Sun Hat", "description": "a wide-brimmed woven sun hat", "image": "assets/sun-hat.png", "chroma_key": "#00ff00"},
+    {"label": "Beach Towel", "description": "a neatly rolled striped beach towel", "image": "assets/beach-towel.png", "chroma_key": "#00ff00"},
+    {"label": "Sunscreen", "description": "a plain unbranded bottle of sunscreen", "image": "assets/sunscreen.png", "chroma_key": "#00ff00"},
+    {"label": "Sandcastle", "description": "a small detailed sandcastle", "image": "assets/sandcastle.png", "chroma_key": "#00ff00"},
+    {"label": "Flip-Flops", "description": "one pair of colorful flip-flops", "image": "assets/flip-flops.png", "chroma_key": "#ff00ff"}
+  ],
+  "questions": [
+    "Which items on the card would you take to the beach? Why?",
+    "Which item is the most useful on a hot day? Why?",
+    "Which of these items have you used before? Where did you use them?",
+    "How do people use each item at the beach?",
+    "What are three more things people might bring to the beach?",
+    "Imagine you are planning a beach day. Which three items would you pack first? Why?"
+  ]
+}
