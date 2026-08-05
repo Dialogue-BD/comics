@@ -9,7 +9,7 @@
     "kind": "pdf"
   },
   "cards_file": "cards.json",
-  "card_count": 44,
+  "card_count": 54,
   "pages": [
     {
       "id": "page_001",
@@ -538,6 +538,126 @@
       "image": "pages/page_088.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_089",
+      "image": "pages/page_089.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_090",
+      "image": "pages/page_090.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_091",
+      "image": "pages/page_091.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_092",
+      "image": "pages/page_092.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_093",
+      "image": "pages/page_093.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_094",
+      "image": "pages/page_094.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_095",
+      "image": "pages/page_095.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_096",
+      "image": "pages/page_096.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_097",
+      "image": "pages/page_097.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_098",
+      "image": "pages/page_098.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_099",
+      "image": "pages/page_099.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_100",
+      "image": "pages/page_100.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_101",
+      "image": "pages/page_101.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_102",
+      "image": "pages/page_102.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_103",
+      "image": "pages/page_103.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_104",
+      "image": "pages/page_104.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_105",
+      "image": "pages/page_105.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_106",
+      "image": "pages/page_106.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_107",
+      "image": "pages/page_107.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_108",
+      "image": "pages/page_108.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -639,6 +759,56 @@
     {
       "id": "under-the-sea",
       "title": "Under the Sea",
+      "band_color": "blue"
+    },
+    {
+      "id": "at-the-library",
+      "title": "At the Library",
+      "band_color": "orange"
+    },
+    {
+      "id": "at-the-harbor",
+      "title": "At the Harbor",
+      "band_color": "green"
+    },
+    {
+      "id": "photography",
+      "title": "Photography",
+      "band_color": "red"
+    },
+    {
+      "id": "fitness-equipment",
+      "title": "Fitness Equipment",
+      "band_color": "orange"
+    },
+    {
+      "id": "at-the-museum",
+      "title": "At the Museum",
+      "band_color": "red"
+    },
+    {
+      "id": "city-street",
+      "title": "City Street",
+      "band_color": "blue"
+    },
+    {
+      "id": "at-a-wedding",
+      "title": "At a Wedding",
+      "band_color": "blue"
+    },
+    {
+      "id": "bathroom-fixtures",
+      "title": "Bathroom Fixtures",
+      "band_color": "blue"
+    },
+    {
+      "id": "money-and-banking",
+      "title": "Money and Banking",
+      "band_color": "orange"
+    },
+    {
+      "id": "houseplants",
+      "title": "Houseplants",
       "band_color": "blue"
     }
   ]
