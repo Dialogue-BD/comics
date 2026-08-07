@@ -1980,7 +1980,7 @@
         var span = document.createElement("span");
         span.className = "sub-word";
         span.dataset.wi = wi;
-        span.textContent = w.display + (wi < lyric.words.length - 1 ? " " : "");
+        span.textContent = (w.display || w.word) + (wi < lyric.words.length - 1 ? " " : "");
         songSubtitleWords.appendChild(span);
       });
       lastRenderedLyricIndex = lyricIndex;
