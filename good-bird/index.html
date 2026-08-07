@@ -318,7 +318,7 @@
       justify-content: center;
       background: #000000;
       border-radius: var(--radius-sm);
-      overflow: hidden;
+      overflow: visible; /* Must be visible so abs-positioned subtitle & overlays aren't clipped */
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
       border: 1px solid var(--border);
       position: relative;
@@ -331,12 +331,13 @@
       max-height: 100%;
       object-fit: contain;
       outline: none;
+      border-radius: var(--radius-sm);
     }
 
     /* Karaoke Subtitle Banner Overlay */
     .song-subtitle-box {
       position: absolute;
-      bottom: 30px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(8, 11, 20, 0.92);
@@ -345,12 +346,14 @@
       padding: 10px 28px 12px;
       border-radius: 36px;
       text-align: center;
-      z-index: 100;
+      z-index: 200;
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(79,126,248,0.15);
       pointer-events: none;
-      transition: opacity 0.25s ease;
+      transition: opacity 0.3s ease;
       max-width: 92%;
       min-width: 220px;
+      opacity: 1; /* Always visible — JS controls content, not visibility */
+      white-space: nowrap;
     }
 
     /* Each word in the karaoke subtitle */
@@ -1258,7 +1261,7 @@
       <!-- Karaoke Subtitle Banner Overlay -->
       <div id="song-subtitle-box" class="song-subtitle-box">
         <span class="sub-note">♪</span>
-        <span id="song-subtitle-words"></span>
+        <span id="song-subtitle-words"><span class="sub-word" style="color:rgba(200,210,240,0.6); font-size:1.1rem;">The Good Bird Song</span></span>
         <span class="sub-note">♪</span>
       </div>
 
@@ -1771,10 +1774,10 @@
         }
         updateKaraokeHighlight(activeLyric, curTime);
       } else {
-        // Between lines — show idle state
-        songSubtitleBox.style.opacity = "0.55";
+        // Between lines — show gentle idle note
+        songSubtitleBox.style.opacity = "0.7";
         if (lastRenderedLyricIndex !== -1) {
-          songSubtitleWords.innerHTML = "";
+          songSubtitleWords.innerHTML = '<span class="sub-word" style="color:rgba(200,210,240,0.6); font-size:1.1rem; transform:none;">The Good Bird Song</span>';
           lastRenderedLyricIndex = -1;
         }
       }
