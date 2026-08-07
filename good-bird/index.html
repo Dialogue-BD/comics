@@ -425,7 +425,7 @@
       border-radius: var(--radius-sm);
     }
 
-    /* 3D REALISTIC PRINTED PHOTOGRAPH CARD - MAXIMIZED CLARITY & EDGE PROTECTION */
+    /* 3D REALISTIC PRINTED PHOTOGRAPH CARD */
     .story-card {
       width: 100%;
       max-width: 250px;
@@ -436,7 +436,7 @@
       border: 1.5px solid #cbd5e1;
       overflow: hidden;
       position: relative;
-      cursor: grab;
+      cursor: pointer; /* Pointer cursor indicates click-to-zoom */
       user-select: none;
       touch-action: none;
       display: flex;
@@ -447,7 +447,7 @@
       margin: 0 auto;
     }
 
-    /* 3D "HOLD UP / PICK UP" LIFT ELEVATION ON HOVER/SELECT - CONTROLLED LIFT */
+    /* 3D "HOLD UP / PICK UP" LIFT ELEVATION ON HOVER/SELECT */
     .story-card:hover {
       border-color: var(--accent);
       transform: translateY(-12px) scale(1.08) rotate(0deg) !important;
@@ -880,7 +880,7 @@
       <div class="activity-header">
         <div class="activity-info">
           <h2>🧩 Narrative Sequencing Activity</h2>
-          <p>Classroom Demo: Pick up physical scene photos from the tabletop and drop them into the sequence line!</p>
+          <p>Classroom Demo: Click any scene photo to inspect in full resolution, or drag &amp; drop photos into the sequence line!</p>
         </div>
         <div class="controls-bar">
           <button id="btn-check" class="btn btn-primary">✓ Check Story</button>
@@ -901,7 +901,7 @@
           <div class="section-title">
             <span>📸 Unsorted Photo Tabletop</span>
           </div>
-          <span class="section-hint-text">Each photo has a scene letter label • Pick up &amp; drag photos into slots below</span>
+          <span class="section-hint-text">Click any photo to zoom in • Drag &amp; drop photos into sequence slots below</span>
         </div>
         <div id="pool-grid" class="pool-grid"></div>
       </div>
@@ -1517,20 +1517,13 @@
         card.classList.remove("dragging");
       });
 
-      // Click / Tap Handler for Select & Place
+      // CLICKING THE SCENE CARD AUTOMATICALLY OPENS HIGH-RES LIGHTBOX PREVIEW (JUST LIKE MAGNIFYING GLASS)
       card.addEventListener("click", function(e) {
         e.stopPropagation();
-        if (selectedCard === pageIdx) {
-          selectedCard = null;
-          hideFeedback();
-        } else {
-          selectedCard = pageIdx;
-          showFeedback("Scene photo " + pageLetters[pageIdx] + " picked up! Tap any slot below to place it.", "info");
-        }
-        renderBoard();
+        openPreviewModal(pageIdx);
       });
 
-      // Touch Drag Handler
+      // Touch Drag Handler for Touch Devices
       setupTouchDrag(card, pageIdx, locationType, locationIndex);
 
       return card;
@@ -1604,24 +1597,6 @@
           moveCardToSlot(data, targetSlotIndex);
         } catch (err) {}
       });
-
-      slotEl.addEventListener("click", function() {
-        var targetSlotIndex = parseInt(slotEl.dataset.slotIndex);
-        if (selectedCard !== null) {
-          var srcType = "pool";
-          var srcIndex = pool.indexOf(selectedCard);
-          if (srcIndex === -1) {
-            srcType = "slot";
-            srcIndex = slots.indexOf(selectedCard);
-          }
-
-          moveCardToSlot({
-            pageIdx: selectedCard,
-            locType: srcType,
-            locIndex: srcIndex
-          }, targetSlotIndex);
-        }
-      });
     }
 
     function setupPoolDropEvents(poolEl) {
@@ -1641,19 +1616,6 @@
           var data = JSON.parse(e.dataTransfer.getData("text/plain"));
           moveCardToPool(data);
         } catch (err) {}
-      });
-
-      poolEl.addEventListener("click", function(e) {
-        if (selectedCard !== null && e.target.closest("#pool-grid")) {
-          var srcIndex = slots.indexOf(selectedCard);
-          if (srcIndex > -1) {
-            moveCardToPool({
-              pageIdx: selectedCard,
-              locType: "slot",
-              locIndex: srcIndex
-            });
-          }
-        }
       });
     }
 
