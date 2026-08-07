@@ -404,18 +404,20 @@
       border: 1px solid rgba(79, 126, 248, 0.3);
     }
 
-    /* Tabletop Pool Grid */
+    /* Tabletop Pool Grid - NATURAL ASPECT PROPORTIONS WITH NO BLACK BARS */
     .pool-grid {
       flex: 1;
       min-height: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(160px, 13vw), 1fr));
-      grid-auto-rows: 1fr;
-      gap: 10px 14px;
-      padding: 8px 6px;
-      overflow: hidden;
+      grid-template-columns: repeat(auto-fill, minmax(min(210px, 16vw), 1fr));
+      grid-auto-rows: max-content; /* Content-driven row height to prevent vertical stretching */
+      gap: 14px 18px;
+      padding: 10px 8px;
+      overflow-y: auto;
       align-items: center;
-      perspective: 1000px; /* 3D Perspective Depth */
+      justify-items: center;
+      align-content: center;
+      perspective: 1000px;
     }
 
     .pool-grid.drag-over {
@@ -426,10 +428,10 @@
     /* 3D REALISTIC PRINTED PHOTOGRAPH CARD */
     .story-card {
       width: 100%;
-      height: 100%;
-      max-height: 100%;
-      background: #f8fafc; /* Crisp white/cream photo paper frame */
-      padding: 6px 6px 8px 6px;
+      max-width: 260px;
+      aspect-ratio: 4 / 3.2; /* Natural photo ratio matching story spreads */
+      background: #ffffff; /* Clean white photo paper frame */
+      padding: 6px 6px 6px 6px;
       border-radius: 8px;
       border: 1px solid #cbd5e1;
       overflow: hidden;
@@ -439,9 +441,10 @@
       touch-action: none;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5), 0 2px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45), 0 2px 5px rgba(0, 0, 0, 0.25);
       transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, border-color 0.22s ease;
       will-change: transform;
+      margin: 0 auto;
     }
 
     /* 3D "HOLD UP / PICK UP" LIFT ELEVATION ON HOVER/SELECT */
@@ -493,7 +496,7 @@
       width: 100%;
       flex: 1;
       min-height: 0;
-      background: #000;
+      background: #f8fafc; /* Crisp clean mat background - NO BLACK BARS! */
       border-radius: 4px;
       position: relative;
       overflow: hidden;
@@ -503,11 +506,9 @@
     }
 
     .card-thumb {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Full illustration rendered with zero distortion */
       pointer-events: none;
     }
 
@@ -679,13 +680,21 @@
 
     /* Slot Card Adjustments (Flattened 0deg inside slot) */
     .slot .story-card {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      aspect-ratio: unset;
       border-radius: 4px;
       padding: 2px;
       box-shadow: none;
       transform: rotate(0deg) !important;
+      margin: 0;
     }
     .slot .story-card:hover {
       transform: rotate(0deg) !important;
+    }
+    .slot .card-thumb-wrap {
+      background: #000;
     }
     .slot .card-letter-badge {
       min-width: 18px;
