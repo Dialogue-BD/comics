@@ -34,7 +34,7 @@
       --text-muted: #8c97b0;
       --radius-sm: 8px;
       --radius: 14px;
-      --header-h: 56px;
+      --header-h: 52px;
     }
 
     body, html {
@@ -72,9 +72,9 @@
     .back-btn {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      padding: 6px 12px;
+      padding: 5px 10px;
       border-radius: var(--radius-sm);
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border);
@@ -91,7 +91,7 @@
     }
 
     .story-title {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 700;
       white-space: nowrap;
       overflow: hidden;
@@ -99,7 +99,7 @@
     }
 
     .story-title span {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 400;
       color: var(--text-muted);
       margin-left: 6px;
@@ -118,9 +118,9 @@
       background: transparent;
       border: none;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 6px;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -227,7 +227,7 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ------------------------------------------------------------- */
-    /* Sequencing Activity Workspace - Physical Tabletop Layout */
+    /* Sequencing Activity Workspace - ZERO SCROLL WIDESCREEN TV LAYOUT */
     /* ------------------------------------------------------------- */
     #activity-container {
       position: absolute;
@@ -235,34 +235,37 @@
       left: 0;
       width: 100vw;
       height: calc(100vh - var(--header-h));
-      overflow-y: auto;
+      overflow: hidden; /* ZERO VERTICAL SCROLLING FOR TV DISPLAY */
       background: var(--bg);
-      padding: 16px 16px 40px;
+      padding: 10px 14px 12px;
       display: none;
     }
 
     .activity-wrapper {
-      max-width: 1400px;
+      width: 100%;
+      height: 100%;
+      max-width: 1800px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 8px;
     }
 
+    /* Top Controls Bar */
     .activity-header {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 14px 20px;
+      border-radius: var(--radius-sm);
+      padding: 8px 16px;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
+      flex: 0 0 auto;
     }
 
     .activity-info h2 {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -270,27 +273,26 @@
     }
 
     .activity-info p {
-      margin-top: 2px;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
+      margin-top: 1px;
     }
 
     .controls-bar {
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .btn {
       font-family: inherit;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      padding: 8px 16px;
-      border-radius: var(--radius-sm);
+      padding: 6px 14px;
+      border-radius: 6px;
       border: 1px solid transparent;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.15s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -332,12 +334,13 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 10px 16px;
+      padding: 6px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       font-weight: 600;
+      flex: 0 0 auto;
       transition: all 0.3s ease;
     }
     .feedback-banner.success {
@@ -356,12 +359,16 @@
       color: var(--warning);
     }
 
-    /* Main Tabletop Work Area (Picture Cards Deck) */
+    /* MAIN TABLETOP DECK AREA: Takes up available space with LARGE PICTURE CARDS */
     .tabletop-section {
       background: var(--tabletop-bg);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      flex: 1 1 58%;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
       box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
     }
 
@@ -369,39 +376,44 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
+      margin-bottom: 6px;
+      flex: 0 0 auto;
     }
 
     .section-title {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .section-hint-text {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
     }
 
     .placed-badge {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 3px 8px;
       border-radius: 12px;
       background: rgba(79, 126, 248, 0.18);
       color: var(--accent);
       border: 1px solid rgba(79, 126, 248, 0.3);
     }
 
-    /* LARGE Picture Cards Grid */
+    /* Tabletop Pool Grid */
     .pool-grid {
+      flex: 1;
+      min-height: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 18px;
-      min-height: 260px;
-      padding: 8px;
+      grid-template-columns: repeat(auto-fill, minmax(min(160px, 13vw), 1fr));
+      grid-auto-rows: 1fr;
+      gap: 8px 10px;
+      padding: 4px;
+      overflow: hidden;
+      align-items: center;
     }
 
     .pool-grid.drag-over {
@@ -412,9 +424,11 @@
     /* Physical Story Card Styling */
     .story-card {
       width: 100%;
+      height: 100%;
+      max-height: 100%;
       background: #181d28;
-      border-radius: 10px;
-      border: 2px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      border: 2px solid rgba(255, 255, 255, 0.14);
       overflow: hidden;
       position: relative;
       cursor: grab;
@@ -422,14 +436,14 @@
       touch-action: none;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
 
     .story-card:hover {
       border-color: var(--accent);
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.65), 0 0 15px var(--accent-glow);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.6), 0 0 12px var(--accent-glow);
       z-index: 20;
     }
 
@@ -441,36 +455,37 @@
 
     .story-card.selected {
       border: 3px solid var(--accent);
-      box-shadow: 0 0 20px var(--accent-glow), 0 12px 28px rgba(0, 0, 0, 0.6);
-      transform: translateY(-6px);
+      box-shadow: 0 0 16px var(--accent-glow), 0 8px 20px rgba(0, 0, 0, 0.6);
+      transform: translateY(-4px);
       z-index: 25;
     }
 
-    /* Big Bright Letter Badge for Classroom Display */
+    /* Prominent Classroom Scene Letter Badge */
     .card-letter-badge {
       position: absolute;
-      top: 8px;
-      left: 8px;
-      min-width: 32px;
-      height: 32px;
-      padding: 0 8px;
-      border-radius: 8px;
-      background: #f59e0b; /* Bright amber/yellow */
+      top: 6px;
+      left: 6px;
+      min-width: 28px;
+      height: 28px;
+      padding: 0 6px;
+      border-radius: 6px;
+      background: #f59e0b;
       color: #0d0f14;
-      font-size: 1.1rem;
+      font-size: 1.02rem;
       font-weight: 900;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 12;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-      border: 2px solid #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+      border: 1.5px solid #ffffff;
       letter-spacing: -0.02em;
     }
 
     .card-thumb-wrap {
       width: 100%;
-      aspect-ratio: 4/3;
+      flex: 1;
+      min-height: 0;
       background: #000;
       position: relative;
       overflow: hidden;
@@ -480,46 +495,46 @@
     }
 
     .card-thumb {
-      width: 100%;
-      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
       object-fit: contain;
       pointer-events: none;
     }
 
     .card-footer {
-      padding: 8px 10px;
+      padding: 3px 6px;
       background: rgba(14, 18, 26, 0.95);
       border-top: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex: 0 0 auto;
     }
 
     .card-label {
-      font-size: 0.82rem;
+      font-size: 0.75rem;
       font-weight: 800;
       color: var(--warning);
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
     .card-controls {
       display: flex;
-      gap: 6px;
+      gap: 4px;
     }
 
     .card-btn {
-      width: 26px;
-      height: 26px;
-      border-radius: 6px;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
       background: rgba(255, 255, 255, 0.1);
       color: #fff;
       border: 1px solid rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       cursor: pointer;
       transition: all 0.15s ease;
     }
@@ -531,88 +546,96 @@
 
     .status-icon {
       position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 26px;
-      height: 26px;
+      top: 6px;
+      right: 6px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.82rem;
+      font-size: 0.75rem;
       font-weight: 800;
       color: #fff;
       z-index: 10;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.5);
     }
     .status-icon.correct { background: var(--success); }
     .status-icon.incorrect { background: var(--error); }
 
-    /* Compact Sequence Line (Slots 1 to 13) */
+    /* BOTTOM SEQUENCE RAIL (SLOTS 1 TO 13 IN 1 SINGLE WIDESCREEN ROW) */
     .sequence-section {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sequence-section .section-head {
+      margin-bottom: 2px;
     }
 
     .narrative-stages {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-bottom: 12px;
+      gap: 6px;
+      margin-bottom: 4px;
     }
 
     .stage-pill {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 6px 10px;
+      border-radius: 4px;
+      padding: 3px 6px;
       text-align: center;
     }
     .stage-title {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--accent);
     }
     .stage-desc {
-      font-size: 0.72rem;
+      font-size: 0.65rem;
       color: var(--text-muted);
     }
 
     .slots-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(13, 1fr); /* Exactly 13 slots across 1 single row on widescreen! */
+      gap: 6px;
     }
 
     .slot {
       aspect-ratio: 4/3;
       background: rgba(0, 0, 0, 0.35);
-      border: 2px dashed var(--border);
-      border-radius: var(--radius-sm);
+      border: 1.5px dashed var(--border);
+      border-radius: 6px;
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 3px;
+      padding: 2px;
       transition: all 0.2s ease;
     }
 
     .slot-num-badge {
       position: absolute;
-      top: 4px;
-      left: 4px;
-      width: 22px;
-      height: 22px;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: rgba(0, 0, 0, 0.85);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -621,7 +644,7 @@
     }
 
     .slot-label {
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       color: var(--text-muted);
       text-align: center;
       pointer-events: none;
@@ -630,22 +653,22 @@
     .slot.drag-over {
       border-color: var(--accent);
       background: rgba(79, 126, 248, 0.2);
-      box-shadow: 0 0 12px var(--accent-glow);
+      box-shadow: 0 0 10px var(--accent-glow);
     }
 
     .slot.correct {
       border-style: solid;
       border-color: var(--success);
-      box-shadow: 0 0 12px var(--success-glow);
+      box-shadow: 0 0 10px var(--success-glow);
     }
 
     .slot.incorrect {
       border-style: solid;
       border-color: var(--error);
-      box-shadow: 0 0 12px var(--error-glow);
+      box-shadow: 0 0 10px var(--error-glow);
     }
 
-    /* Compact card inside slot */
+    /* Slot Card Adjustments */
     .slot .story-card {
       border-radius: 4px;
       box-shadow: none;
@@ -654,16 +677,16 @@
       transform: none;
     }
     .slot .card-letter-badge {
-      min-width: 22px;
-      height: 22px;
-      font-size: 0.75rem;
-      top: 3px;
-      left: 3px;
+      min-width: 18px;
+      height: 18px;
+      font-size: 0.68rem;
+      top: 2px;
+      left: 2px;
       border-width: 1px;
-      padding: 0 4px;
+      padding: 0 3px;
     }
     .slot .card-footer {
-      display: none; /* Hide footer in compact slot to focus purely on picture! */
+      display: none;
     }
 
     /* Touch Drag Ghost Floating Element */
@@ -671,12 +694,12 @@
       position: fixed;
       pointer-events: none;
       z-index: 30000;
-      width: 180px;
-      height: 135px;
+      width: 160px;
+      height: 120px;
       opacity: 0.9;
       transform: translate(-50%, -50%);
       box-shadow: 0 14px 35px rgba(0,0,0,0.7);
-      border-radius: 10px;
+      border-radius: 8px;
       border: 3px solid var(--accent);
       overflow: hidden;
       background: #000;
@@ -785,13 +808,12 @@
       z-index: 28000;
     }
 
-    @media (max-width: 640px) {
+    /* Responsive adjustments for narrow/vertical screens */
+    @media (max-width: 900px) {
+      #activity-container { overflow-y: auto; }
+      .slots-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
       .narrative-stages { grid-template-columns: 1fr; }
       .story-title span { display: none; }
-      .pool-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-      .slots-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
-      .activity-header { flex-direction: column; align-items: flex-start; }
-      .controls-bar { width: 100%; justify-content: space-between; }
     }
   </style>
 </head>
@@ -1044,10 +1066,10 @@
     /* READER VIEW LOGIC (Pan/Zoom/Touch) */
     /* ------------------------------------------------------------- */
     function centerContent() {
-      if (contentHeight * scale <= (window.innerHeight - 56)) {
-        posY = ((window.innerHeight - 56) - contentHeight * scale) / 2;
+      if (contentHeight * scale <= (window.innerHeight - 52)) {
+        posY = ((window.innerHeight - 52) - contentHeight * scale) / 2;
       } else {
-        posY = Math.min(0, Math.max((window.innerHeight - 56) - contentHeight * scale, posY));
+        posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * scale, posY));
       }
       posX = 0;
       updateTransform();
@@ -1103,10 +1125,10 @@
         var maxPanX = (newScale - 1) * window.innerWidth / 2;
         posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
 
-        if (contentHeight * newScale <= (window.innerHeight - 56)) {
-          posY = ((window.innerHeight - 56) - contentHeight * newScale) / 2;
+        if (contentHeight * newScale <= (window.innerHeight - 52)) {
+          posY = ((window.innerHeight - 52) - contentHeight * newScale) / 2;
         } else {
-          posY = Math.min(0, Math.max((window.innerHeight - 56) - contentHeight * newScale, newPosY));
+          posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * newScale, newPosY));
         }
 
         scale = newScale;
@@ -1118,7 +1140,7 @@
           isGesture = true;
         }
 
-        if (scale > 1 || contentHeight * scale > (window.innerHeight - 56)) {
+        if (scale > 1 || contentHeight * scale > (window.innerHeight - 52)) {
           e.preventDefault();
           var currentX = e.touches[0].clientX;
           var currentY = e.touches[0].clientY;
@@ -1129,10 +1151,10 @@
           var maxPanX = (scale - 1) * window.innerWidth / 2;
           posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
 
-          if (contentHeight * scale <= (window.innerHeight - 56)) {
-            posY = ((window.innerHeight - 56) - contentHeight * scale) / 2;
+          if (contentHeight * scale <= (window.innerHeight - 52)) {
+            posY = ((window.innerHeight - 52) - contentHeight * scale) / 2;
           } else {
-            posY = Math.min(0, Math.max((window.innerHeight - 56) - contentHeight * scale, newPosY));
+            posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * scale, newPosY));
           }
           updateTransform();
         }
@@ -1180,16 +1202,16 @@
         var maxPanX = (newScale - 1) * window.innerWidth / 2;
         posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
         
-        if (contentHeight * newScale <= (window.innerHeight - 56)) {
-          posY = ((window.innerHeight - 56) - contentHeight * newScale) / 2;
+        if (contentHeight * newScale <= (window.innerHeight - 52)) {
+          posY = ((window.innerHeight - 52) - contentHeight * newScale) / 2;
         } else {
-          posY = Math.min(0, Math.max((window.innerHeight - 56) - contentHeight * newScale, newPosY));
+          posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * newScale, newPosY));
         }
         
         scale = newScale;
         updateTransform();
       } else {
-        if (scale > 1 || contentHeight * scale > (window.innerHeight - 56)) {
+        if (scale > 1 || contentHeight * scale > (window.innerHeight - 52)) {
           e.preventDefault();
           var newPosY = posY - e.deltaY;
           var newPosX = posX - e.deltaX;
@@ -1197,10 +1219,10 @@
           var maxPanX = (scale - 1) * window.innerWidth / 2;
           posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
           
-          if (contentHeight * scale <= (window.innerHeight - 56)) {
-            posY = ((window.innerHeight - 56) - contentHeight * scale) / 2;
+          if (contentHeight * scale <= (window.innerHeight - 52)) {
+            posY = ((window.innerHeight - 52) - contentHeight * scale) / 2;
           } else {
-            posY = Math.min(0, Math.max((window.innerHeight - 56) - contentHeight * scale, newPosY));
+            posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * scale, newPosY));
           }
           updateTransform();
         }
@@ -1223,7 +1245,7 @@
     viewerContainer.addEventListener("mousemove", function(e) {
       if (!isMouseDown) return;
       contentHeight = container.offsetHeight;
-      if (scale > 1 || contentHeight * scale > (window.innerHeight - 56)) {
+      if (scale > 1 || contentHeight * scale > (window.innerHeight - 52)) {
         e.preventDefault();
         var dx = e.clientX - mouseStartX;
         var dy = e.clientY - mouseStartY;
@@ -1234,10 +1256,10 @@
         var maxPanX = (scale - 1) * window.innerWidth / 2;
         posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
         
-        if (contentHeight * scale <= (window.innerHeight - 56)) {
-          posY = ((window.innerHeight - 56) - contentHeight * scale) / 2;
+        if (contentHeight * scale <= (window.innerHeight - 52)) {
+          posY = ((window.innerHeight - 52) - contentHeight * scale) / 2;
         } else {
-          posY = Math.min(0, Math.max((window.innerHeight - 56) - contentHeight * scale, newPosY));
+          posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * scale, newPosY));
         }
         updateTransform();
       }
@@ -1334,11 +1356,11 @@
         var emptyMsg = document.createElement("div");
         emptyMsg.style.gridColumn = "1 / -1";
         emptyMsg.style.textAlign = "center";
-        emptyMsg.style.padding = "30px";
+        emptyMsg.style.padding = "20px";
         emptyMsg.style.color = "var(--success)";
         emptyMsg.style.fontSize = "0.95rem";
         emptyMsg.style.fontWeight = "600";
-        emptyMsg.innerText = "✨ All picture cards have been placed onto the sequence line! Click 'Check Story' to verify your order.";
+        emptyMsg.innerText = "✨ All picture cards placed on sequence line! Click 'Check Story' to verify.";
         poolGrid.appendChild(emptyMsg);
       } else {
         for (var p = 0; p < pool.length; p++) {
