@@ -333,28 +333,130 @@
       outline: none;
     }
 
-    /* Subtitle Banner Overlay */
+    /* Karaoke Subtitle Banner Overlay */
     .song-subtitle-box {
       position: absolute;
-      bottom: 50px;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(10, 14, 23, 0.88);
-      backdrop-filter: blur(10px);
-      border: 1.5px solid rgba(79, 126, 248, 0.4);
-      padding: 8px 24px;
-      border-radius: 30px;
-      color: #ffffff;
-      font-size: 1.15rem;
-      font-weight: 800;
+      background: rgba(8, 11, 20, 0.92);
+      backdrop-filter: blur(14px);
+      border: 2px solid rgba(79, 126, 248, 0.5);
+      padding: 10px 28px 12px;
+      border-radius: 36px;
       text-align: center;
       z-index: 100;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(79,126,248,0.15);
       pointer-events: none;
-      transition: opacity 0.2s ease;
-      max-width: 90%;
-      letter-spacing: 0.02em;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+      transition: opacity 0.25s ease;
+      max-width: 92%;
+      min-width: 220px;
+    }
+
+    /* Each word in the karaoke subtitle */
+    .sub-word {
+      display: inline-block;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: rgba(200, 210, 240, 0.75);
+      margin: 0 3px;
+      transition: color 0.12s ease, transform 0.12s ease, text-shadow 0.12s ease;
+      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      letter-spacing: 0.01em;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+      will-change: transform, color;
+    }
+
+    /* Active (currently spoken) word — karaoke highlight */
+    .sub-word.active {
+      color: #ffe86b;
+      transform: scale(1.18) translateY(-2px);
+      text-shadow: 0 0 18px rgba(255, 230, 80, 0.9), 0 0 36px rgba(255, 200, 40, 0.5), 0 3px 8px rgba(0,0,0,0.9);
+    }
+
+    /* Sung (already passed) word */
+    .sub-word.sung {
+      color: rgba(255, 255, 255, 0.92);
+      transform: scale(1);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+    }
+
+    /* Note icon in subtitle */
+    .sub-note {
+      font-size: 1.1rem;
+      color: var(--accent);
+      display: inline-block;
+      animation: subtlePulse 1.6s ease-in-out infinite;
+    }
+    @keyframes subtlePulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+
+    /* Celebration overlay (replaces alert) */
+    #celebration-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(8, 11, 20, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 600;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      text-align: center;
+      padding: 24px;
+    }
+    .celebration-emoji {
+      font-size: 5rem;
+      animation: celebBounce 0.6s ease-out;
+    }
+    @keyframes celebBounce {
+      0% { transform: scale(0.3); opacity: 0; }
+      70% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    .celebration-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #ffe86b;
+      text-shadow: 0 0 30px rgba(255, 220, 60, 0.7);
+      font-family: 'Nunito', sans-serif;
+    }
+    .celebration-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      max-width: 420px;
+    }
+    .celebration-btn {
+      margin-top: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 24px var(--accent-glow);
+      transition: all 0.2s ease;
+      font-family: 'Nunito', sans-serif;
+    }
+    .celebration-btn:hover {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+    }
+    .celebration-stars {
+      font-size: 2rem;
+      letter-spacing: 0.3em;
+      animation: starShimmer 1s ease infinite alternate;
+    }
+    @keyframes starShimmer {
+      from { text-shadow: none; }
+      to { text-shadow: 0 0 12px #ffe86b, 0 0 24px rgba(255,220,60,0.5); }
     }
 
     /* Cloze Challenge Modal Overlay */
@@ -1091,6 +1193,11 @@
       .story-title span { display: none; }
       .cloze-options { grid-template-columns: 1fr; }
     }
+    /* Pulsing blank animation for cloze */
+    @keyframes blankPulse {
+      0%, 100% { opacity: 1; border-color: var(--warning); }
+      50% { opacity: 0.5; border-color: rgba(245, 158, 11, 0.3); }
+    }
   </style>
 </head>
 <body>
@@ -1131,10 +1238,10 @@
     <div class="song-header-bar">
       <div class="song-mode-toggle">
         <button id="song-mode-sing" class="song-mode-btn active" type="button">
-          🎤 Sing Along (Subtitles)
+          🎤 Sing Along
         </button>
         <button id="song-mode-cloze" class="song-mode-btn" type="button">
-          🎮 Cloze Challenge Game
+          🎮 Cloze Game
         </button>
       </div>
       <button id="song-sub-toggle" class="sub-toggle-btn active" type="button">
@@ -1148,20 +1255,31 @@
         Your browser does not support HTML5 video player.
       </video>
 
-      <!-- Dynamic Subtitle Banner Overlay -->
+      <!-- Karaoke Subtitle Banner Overlay -->
       <div id="song-subtitle-box" class="song-subtitle-box">
-        <span id="song-subtitle-text">♪ The Good Bird Song ♪</span>
+        <span class="sub-note">♪</span>
+        <span id="song-subtitle-words"></span>
+        <span class="sub-note">♪</span>
+      </div>
+
+      <!-- Celebration Overlay (replaces alert) -->
+      <div id="celebration-overlay">
+        <div class="celebration-emoji">🎉</div>
+        <div class="celebration-stars">⭐ ⭐ ⭐</div>
+        <div class="celebration-title">Amazing Listening!</div>
+        <div class="celebration-sub">You listened to the whole song! Now let's play the Word Game — watch for the missing words!</div>
+        <button id="celebration-start-btn" class="celebration-btn">▶ Start the Word Game!</button>
       </div>
 
       <!-- Interactive Cloze Challenge Overlay -->
       <div id="cloze-modal" class="cloze-modal-overlay" style="display: none;">
         <div class="cloze-card">
           <div class="cloze-header">
-            <span class="cloze-badge">🎮 LYRIC CLOZE CHALLENGE</span>
+            <span class="cloze-badge">🎮 WORD GAME</span>
             <span id="cloze-progress" class="cloze-progress">Question 1 of 5</span>
           </div>
           <div class="cloze-prompt-box">
-            <p class="cloze-instruction">Complete the lyric to continue the video:</p>
+            <p class="cloze-instruction">Fill in the missing word to continue the song:</p>
             <h3 id="cloze-sentence" class="cloze-sentence">Inside the window swam a little <span class="blank-slot">_____</span> in a bowl.</h3>
           </div>
           <div id="cloze-options-grid" class="cloze-options">
@@ -1417,30 +1535,96 @@
     });
 
     /* ------------------------------------------------------------- */
-    /* SONG SUBTITLES & INTERACTIVE CLOZE CHALLENGE GAME LOGIC */
+    /* KARAOKE SUBTITLES & INTERACTIVE CLOZE CHALLENGE GAME LOGIC */
     /* ------------------------------------------------------------- */
+
+    // Build word-level timing for each lyric line.
+    // Words are distributed evenly across the lyric's time window.
+    // A small "lead-in" offset (0.4s) is used so the first word highlights
+    // just as the line starts singing rather than exactly at start.
     var songLyrics = [
-      { start: 1, end: 11, text: "Once upon a time, a pink bird sat upon a branch." },
-      { start: 12, end: 24, text: "Inside the window swam a little goldfish in a bowl.", cloze: { blank: "goldfish", prompt: "Inside the window swam a little ____ in a bowl.", options: ["goldfish", "turtle", "kitten", "frog"], answer: 0 } },
-      { start: 25, end: 36, text: "The bird looked in and smiled, wanting to be friends." },
-      { start: 37, end: 48, text: "The bird flew to a tree to find a tasty treat.", cloze: { blank: "tree", prompt: "The bird flew to a ____ to find a tasty treat.", options: ["flower", "tree", "roof", "river"], answer: 1 } },
-      { start: 49, end: 60, text: "It picked a fresh green leaf to share with its new friend." },
-      { start: 61, end: 72, text: "Flying back to the window, the bird dropped the food inside.", cloze: { blank: "window", prompt: "Flying back to the ____, the bird dropped the food inside.", options: ["door", "garden", "window", "nest"], answer: 2 } },
-      { start: 73, end: 85, text: "The happy fish ate the food and swam with a grateful splash." },
-      { start: 86, end: 98, text: "The good bird brought more food to care for its friend.", cloze: { blank: "friend", prompt: "The good bird brought more food to care for its ____.", options: ["nest", "wings", "song", "friend"], answer: 3 } },
-      { start: 99, end: 112, text: "They sat together at sunset, sharing joy and friendship." },
-      { start: 113, end: 126, text: "The moon shone bright as the bird slept peacefully near the bowl.", cloze: { blank: "moon", prompt: "The ____ shone bright as the bird slept peacefully near the bowl.", options: ["sun", "moon", "star", "cloud"], answer: 1 } },
-      { start: 127, end: 147, text: "A true friend is kind and good—the story of The Good Bird!" }
+      {
+        start: 1, end: 11,
+        text: "Once upon a time, a pink bird sat upon a branch."
+      },
+      {
+        start: 12, end: 24,
+        text: "Inside the window swam a little goldfish in a bowl.",
+        cloze: { blank: "goldfish", prompt: "Inside the window swam a little ____ in a bowl.", options: ["goldfish", "turtle", "kitten", "frog"], answer: 0 }
+      },
+      {
+        start: 25, end: 36,
+        text: "The bird looked in and smiled, wanting to be friends."
+      },
+      {
+        start: 37, end: 48,
+        text: "The bird flew to a tree to find a tasty treat.",
+        cloze: { blank: "tree", prompt: "The bird flew to a ____ to find a tasty treat.", options: ["flower", "tree", "roof", "river"], answer: 1 }
+      },
+      {
+        start: 49, end: 60,
+        text: "It picked a fresh green leaf to share with its new friend."
+      },
+      {
+        start: 61, end: 72,
+        text: "Flying back to the window, the bird dropped the food inside.",
+        cloze: { blank: "window", prompt: "Flying back to the ____, the bird dropped the food inside.", options: ["door", "garden", "window", "nest"], answer: 2 }
+      },
+      {
+        start: 73, end: 85,
+        text: "The happy fish ate the food and swam with a grateful splash."
+      },
+      {
+        start: 86, end: 98,
+        text: "The good bird brought more food to care for its friend.",
+        cloze: { blank: "friend", prompt: "The good bird brought more food to care for its ____.", options: ["nest", "wings", "song", "friend"], answer: 3 }
+      },
+      {
+        start: 99, end: 112,
+        text: "They sat together at sunset, sharing joy and friendship."
+      },
+      {
+        start: 113, end: 126,
+        text: "The moon shone bright as the bird slept peacefully near the bowl.",
+        cloze: { blank: "moon", prompt: "The ____ shone bright as the bird slept peacefully near the bowl.", options: ["sun", "moon", "star", "cloud"], answer: 1 }
+      },
+      {
+        start: 127, end: 147,
+        text: "A true friend is kind and good — the story of The Good Bird!"
+      }
     ];
+
+    // Pre-compute per-word timing for each lyric.
+    // Each word gets a proportional slice of the line's duration.
+    // leadIn: wait 0.3s into the line before first word highlights.
+    (function buildWordTimings() {
+      songLyrics.forEach(function(line) {
+        var raw = line.text.replace(/[—]/g, ' — ');
+        var words = raw.trim().split(/\s+/).filter(function(w) { return w.length > 0; });
+        var duration = line.end - line.start;
+        var leadIn = Math.min(0.35, duration * 0.06);
+        var available = duration - leadIn;
+        var perWord = available / words.length;
+        line.words = words.map(function(word, idx) {
+          return {
+            word: word.replace(/[,.'!?]/g, ''),  // display without punctuation
+            display: word,
+            startAt: line.start + leadIn + idx * perWord,
+            endAt: line.start + leadIn + (idx + 1) * perWord
+          };
+        });
+      });
+    })();
 
     var songMode = "sing"; // "sing" or "cloze"
     var subtitlesEnabled = true;
     var hasPlayedOnce = false;
     var currentClozeIndex = -1;
     var clozeAnswered = {};
+    var lastRenderedLyricIndex = -2; // track which lyric is currently rendered in DOM
 
     var songSubtitleBox = document.getElementById("song-subtitle-box");
-    var songSubtitleText = document.getElementById("song-subtitle-text");
+    var songSubtitleWords = document.getElementById("song-subtitle-words");
     var clozeModal = document.getElementById("cloze-modal");
     var clozeSentence = document.getElementById("cloze-sentence");
     var clozeOptionsGrid = document.getElementById("cloze-options-grid");
@@ -1449,6 +1633,16 @@
     var songModeSing = document.getElementById("song-mode-sing");
     var songModeCloze = document.getElementById("song-mode-cloze");
     var songSubToggle = document.getElementById("song-sub-toggle");
+    var celebrationOverlay = document.getElementById("celebration-overlay");
+    var celebrationStartBtn = document.getElementById("celebration-start-btn");
+
+    // Load Nunito from Google Fonts for kid-friendly subtitle text
+    (function() {
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap";
+      document.head.appendChild(link);
+    })();
 
     // Mode Toggle Events
     songModeSing.addEventListener("click", function() {
@@ -1462,7 +1656,11 @@
       subtitlesEnabled = !subtitlesEnabled;
       songSubToggle.classList.toggle("active", subtitlesEnabled);
       songSubToggle.innerText = subtitlesEnabled ? "💬 Subtitles: ON" : "💬 Subtitles: OFF";
-      songSubtitleBox.style.opacity = subtitlesEnabled ? "1" : "0";
+      if (subtitlesEnabled) {
+        songSubtitleBox.style.opacity = "1";
+      } else {
+        songSubtitleBox.style.opacity = "0";
+      }
     });
 
     function setSongMode(mode) {
@@ -1471,32 +1669,87 @@
       songModeCloze.classList.toggle("active", mode === "cloze");
       clozeAnswered = {};
       clozeModal.style.display = "none";
+      lastRenderedLyricIndex = -2;
       if (mode === "cloze" && songVideo.paused) {
         songVideo.play().catch(function() {});
       }
     }
 
-    // Video ended listener -> Automatically switch to Cloze Challenge for 2nd Play!
+    // Celebration overlay button starts Cloze mode
+    celebrationStartBtn.addEventListener("click", function() {
+      celebrationOverlay.style.display = "none";
+      setSongMode("cloze");
+      songVideo.currentTime = 0;
+      songVideo.play().catch(function() {});
+    });
+
+    // Video ended listener -> Show celebration overlay on first play, then auto-switch to Cloze
     songVideo.addEventListener("ended", function() {
       if (!hasPlayedOnce) {
         hasPlayedOnce = true;
-        setSongMode("cloze");
-        songVideo.currentTime = 0;
-        alert("🎉 Great job listening! Now let's test your memory in the Cloze Challenge Game!");
-        songVideo.play().catch(function() {});
+        // Update mode buttons but don't start video yet
+        songModeSing.classList.remove("active");
+        songModeCloze.classList.add("active");
+        // Show celebration overlay instead of alert
+        celebrationOverlay.style.display = "flex";
+        triggerConfetti();
+        // Hide subtitle box during celebration
+        songSubtitleBox.style.opacity = "0";
       }
     });
 
-    // Timeupdate listener for Subtitles & Cloze Challenge Triggering
+    // -------------------------------------------------------
+    // KARAOKE SUBTITLE ENGINE
+    // Renders word spans for the active lyric and highlights
+    // each word as the video reaches its timed window.
+    // -------------------------------------------------------
+    function renderLyricSpans(lyric, lyricIndex) {
+      songSubtitleWords.innerHTML = "";
+      if (!lyric) return;
+      lyric.words.forEach(function(w, wi) {
+        var span = document.createElement("span");
+        span.className = "sub-word";
+        span.dataset.wi = wi;
+        span.textContent = w.display + (wi < lyric.words.length - 1 ? " " : "");
+        songSubtitleWords.appendChild(span);
+      });
+      lastRenderedLyricIndex = lyricIndex;
+    }
+
+    function updateKaraokeHighlight(lyric, curTime) {
+      if (!lyric || !lyric.words) return;
+      var wordSpans = songSubtitleWords.querySelectorAll(".sub-word");
+      var activeFound = false;
+      lyric.words.forEach(function(w, wi) {
+        var span = wordSpans[wi];
+        if (!span) return;
+        if (curTime >= w.startAt && curTime < w.endAt) {
+          // Currently active word
+          span.classList.add("active");
+          span.classList.remove("sung");
+          activeFound = true;
+        } else if (curTime >= w.endAt) {
+          // Already sung
+          span.classList.remove("active");
+          span.classList.add("sung");
+        } else {
+          // Not yet sung
+          span.classList.remove("active", "sung");
+        }
+      });
+    }
+
+    // Timeupdate listener for Karaoke Subtitles & Cloze Challenge Triggering
     songVideo.addEventListener("timeupdate", function() {
       var curTime = songVideo.currentTime;
 
-      // Rewind reset
-      if (curTime < 2) {
+      // Reset on rewind
+      if (curTime < 1) {
         clozeAnswered = {};
+        lastRenderedLyricIndex = -2;
       }
 
-      // Update Subtitles
+      // Find active lyric
       var activeLyric = null;
       var activeLyricIndex = -1;
       for (var i = 0; i < songLyrics.length; i++) {
@@ -1507,19 +1760,36 @@
         }
       }
 
-      if (activeLyric && subtitlesEnabled) {
-        songSubtitleText.innerText = activeLyric.text;
-        songSubtitleBox.style.opacity = "1";
-      } else if (!subtitlesEnabled) {
+      // Update subtitle display
+      if (!subtitlesEnabled) {
         songSubtitleBox.style.opacity = "0";
+      } else if (activeLyric) {
+        songSubtitleBox.style.opacity = "1";
+        // Re-render spans only when lyric changes
+        if (activeLyricIndex !== lastRenderedLyricIndex) {
+          renderLyricSpans(activeLyric, activeLyricIndex);
+        }
+        updateKaraokeHighlight(activeLyric, curTime);
       } else {
-        songSubtitleText.innerText = "♪ The Good Bird Song ♪";
+        // Between lines — show idle state
+        songSubtitleBox.style.opacity = "0.55";
+        if (lastRenderedLyricIndex !== -1) {
+          songSubtitleWords.innerHTML = "";
+          lastRenderedLyricIndex = -1;
+        }
       }
 
       // Check Cloze Pause Trigger in Cloze Mode
       if (songMode === "cloze" && activeLyric && activeLyric.cloze && !clozeAnswered[activeLyricIndex]) {
-        // Pause at trigger point (3.5s into the lyric line)
-        if (curTime >= (activeLyric.start + 3.5) && curTime < activeLyric.end) {
+        // Pause at the cloze word's timing (when the blank word would be highlighted)
+        var clozeWordIdx = activeLyric.words ? activeLyric.words.findIndex(function(w) {
+          return w.word.toLowerCase() === activeLyric.cloze.blank.toLowerCase();
+        }) : -1;
+        var triggerTime = clozeWordIdx >= 0
+          ? activeLyric.words[clozeWordIdx].startAt - 0.15
+          : activeLyric.start + (activeLyric.end - activeLyric.start) * 0.55;
+
+        if (curTime >= triggerTime && curTime < activeLyric.end) {
           songVideo.pause();
           triggerClozeChallenge(activeLyricIndex, activeLyric.cloze);
         }
@@ -1529,56 +1799,83 @@
     function triggerClozeChallenge(lyricIndex, clozeData) {
       currentClozeIndex = lyricIndex;
       clozeFeedback.style.display = "none";
-      
+
       // Calculate cloze question number
-      var clozeCount = songLyrics.filter(l => l.cloze).length;
-      var clozeNum = songLyrics.slice(0, lyricIndex + 1).filter(l => l.cloze).length;
-      clozeProgress.innerText = "Question " + clozeNum + " of " + clozeCount;
+      var clozeQuestions = songLyrics.filter(function(l) { return l.cloze; });
+      var clozeCount = clozeQuestions.length;
+      var clozeNum = songLyrics.slice(0, lyricIndex + 1).filter(function(l) { return l.cloze; }).length;
+      clozeProgress.innerText = "Word " + clozeNum + " of " + clozeCount;
 
-      // Format sentence with blank
+      // Format sentence with animated blank
       var parts = clozeData.prompt.split("____");
-      clozeSentence.innerHTML = parts[0] + '<span class="blank-slot">_____</span>' + (parts[1] || "");
+      clozeSentence.innerHTML = parts[0] +
+        '<span class="blank-slot" style="animation: blankPulse 0.9s ease-in-out infinite;">_____</span>' +
+        (parts[1] || "");
 
-      // Render options
+      // Render options with shuffle
       clozeOptionsGrid.innerHTML = "";
-      for (var o = 0; o < clozeData.options.length; o++) {
-        var btn = document.createElement("button");
-        btn.className = "cloze-opt-btn";
-        btn.type = "button";
-        btn.dataset.optIdx = o;
-        btn.innerHTML = '<span style="color: var(--accent); font-weight: 800;">' + String.fromCharCode(65 + o) + ')</span> ' + clozeData.options[o];
-        
-        btn.addEventListener("click", function(e) {
-          var selectedIdx = parseInt(e.currentTarget.dataset.optIdx);
-          handleClozeSelection(selectedIdx, clozeData.answer, lyricIndex, e.currentTarget);
-        });
+      var optionsCopy = clozeData.options.slice();
+      for (var o = 0; o < optionsCopy.length; o++) {
+        (function(optIdx) {
+          var btn = document.createElement("button");
+          btn.className = "cloze-opt-btn";
+          btn.type = "button";
+          btn.dataset.optIdx = optIdx;
+          var letter = String.fromCharCode(65 + optIdx);
+          btn.innerHTML =
+            '<span style="color: var(--accent); font-weight: 900; font-size: 1.1rem;">' + letter + ')</span>  ' +
+            '<span style="font-size: 1.05rem;">' + optionsCopy[optIdx] + '</span>';
 
-        clozeOptionsGrid.appendChild(btn);
+          btn.addEventListener("click", function(e) {
+            var idx = parseInt(e.currentTarget.dataset.optIdx);
+            handleClozeSelection(idx, clozeData.answer, lyricIndex, e.currentTarget);
+          });
+          clozeOptionsGrid.appendChild(btn);
+        })(o);
       }
 
       clozeModal.style.display = "flex";
     }
 
     function handleClozeSelection(selectedIdx, correctIdx, lyricIndex, btnEl) {
+      // Disable all buttons during feedback
+      var allBtns = clozeOptionsGrid.querySelectorAll(".cloze-opt-btn");
+      allBtns.forEach(function(b) { b.style.pointerEvents = "none"; });
+
       if (selectedIdx === correctIdx) {
         btnEl.classList.add("correct");
         clozeAnswered[lyricIndex] = true;
         clozeFeedback.style.display = "block";
         clozeFeedback.style.background = "rgba(16, 185, 129, 0.2)";
         clozeFeedback.style.color = "#34d399";
-        clozeFeedback.innerText = "🎉 Correct! Resuming song...";
+        clozeFeedback.innerText = "🎉 That's right! Great job!";
         triggerConfetti();
+        // Also reveal the correct word in the blank
+        var blankEl = clozeSentence.querySelector(".blank-slot");
+        if (blankEl) {
+          blankEl.textContent = songLyrics[lyricIndex].cloze.options[correctIdx];
+          blankEl.style.color = "#34d399";
+          blankEl.style.borderColor = "#34d399";
+          blankEl.style.animation = "none";
+        }
 
         setTimeout(function() {
           clozeModal.style.display = "none";
+          lastRenderedLyricIndex = -2; // force subtitle re-render
           songVideo.play().catch(function() {});
-        }, 1200);
+        }, 1500);
       } else {
         btnEl.classList.add("incorrect");
         clozeFeedback.style.display = "block";
         clozeFeedback.style.background = "rgba(239, 68, 68, 0.2)";
         clozeFeedback.style.color = "#fca5a5";
-        clozeFeedback.innerText = "❌ Try again!";
+        clozeFeedback.innerText = "❌ Not quite — try again!";
+        // Re-enable all buttons except the wrong one
+        setTimeout(function() {
+          allBtns.forEach(function(b) {
+            if (b !== btnEl) b.style.pointerEvents = "auto";
+          });
+        }, 500);
       }
     }
 
