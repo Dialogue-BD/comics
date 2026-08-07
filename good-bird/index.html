@@ -227,7 +227,7 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ------------------------------------------------------------- */
-    /* Fullscreen Video Song View */
+    /* Fullscreen Video Song View & Interactive Cloze Game */
     /* ------------------------------------------------------------- */
     #song-container {
       position: absolute;
@@ -238,14 +238,79 @@
       overflow: hidden;
       background: #000000;
       display: none;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 12px;
+      padding: 8px 12px 12px;
+      gap: 6px;
+    }
+
+    .song-header-bar {
+      width: 100%;
+      max-width: 1920px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: rgba(18, 22, 34, 0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 6px 12px;
+      flex: 0 0 auto;
+    }
+
+    .song-mode-toggle {
+      display: flex;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 3px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      gap: 4px;
+    }
+
+    .song-mode-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .song-mode-btn:hover { color: var(--text); }
+    .song-mode-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    .sub-toggle-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .sub-toggle-btn.active {
+      border-color: var(--success);
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.15);
     }
 
     .song-wrapper {
       width: 100%;
-      height: 100%;
+      flex: 1;
+      min-height: 0;
       max-width: 1920px;
       max-height: 1080px;
       display: flex;
@@ -256,6 +321,7 @@
       overflow: hidden;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
       border: 1px solid var(--border);
+      position: relative;
     }
 
     #song-video {
@@ -263,8 +329,153 @@
       height: 100%;
       max-width: 100%;
       max-height: 100%;
-      object-fit: contain; /* Full aspect ratio preserved with crisp theater background */
+      object-fit: contain;
       outline: none;
+    }
+
+    /* Subtitle Banner Overlay */
+    .song-subtitle-box {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(10, 14, 23, 0.88);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(79, 126, 248, 0.4);
+      padding: 8px 24px;
+      border-radius: 30px;
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-align: center;
+      z-index: 100;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      max-width: 90%;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+
+    /* Cloze Challenge Modal Overlay */
+    .cloze-modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(9, 11, 16, 0.88);
+      backdrop-filter: blur(8px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .cloze-card {
+      background: var(--surface);
+      border: 1.5px solid var(--accent);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px var(--accent-glow);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      width: 100%;
+      max-width: 620px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .cloze-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cloze-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      background: rgba(79, 126, 248, 0.15);
+      padding: 4px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(79, 126, 248, 0.3);
+    }
+
+    .cloze-progress {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .cloze-instruction {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .cloze-sentence {
+      font-size: 1.22rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.4;
+    }
+
+    .blank-slot {
+      color: var(--warning);
+      border-bottom: 2px dashed var(--warning);
+      padding: 0 8px;
+    }
+
+    .cloze-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .cloze-opt-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1.5px solid var(--border);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .cloze-opt-btn:hover {
+      background: rgba(79, 126, 248, 0.2);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .cloze-opt-btn.correct {
+      background: rgba(16, 185, 129, 0.3) !important;
+      border-color: var(--success) !important;
+      color: #34d399 !important;
+      box-shadow: 0 0 16px var(--success-glow);
+    }
+
+    .cloze-opt-btn.incorrect {
+      background: rgba(239, 68, 68, 0.25) !important;
+      border-color: var(--error) !important;
+      color: #fca5a5 !important;
+    }
+
+    .cloze-feedback {
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 8px;
+      border-radius: 6px;
     }
 
     /* ------------------------------------------------------------- */
@@ -878,6 +1089,7 @@
       .slots-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
       .narrative-stages { grid-template-columns: 1fr; }
       .story-title span { display: none; }
+      .cloze-options { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -914,13 +1126,50 @@
     </svg>
   </div>
 
-  <!-- 2. Fullscreen Video Song View Container -->
+  <!-- 2. Fullscreen Video Song View & Interactive Cloze Game -->
   <div id="song-container">
+    <div class="song-header-bar">
+      <div class="song-mode-toggle">
+        <button id="song-mode-sing" class="song-mode-btn active" type="button">
+          🎤 Sing Along (Subtitles)
+        </button>
+        <button id="song-mode-cloze" class="song-mode-btn" type="button">
+          🎮 Cloze Challenge Game
+        </button>
+      </div>
+      <button id="song-sub-toggle" class="sub-toggle-btn active" type="button">
+        💬 Subtitles: ON
+      </button>
+    </div>
+
     <div class="song-wrapper">
       <video id="song-video" controls controlslist="nodownload" playsinline preload="auto">
         <source src="good_bird_song.mp4" type="video/mp4">
         Your browser does not support HTML5 video player.
       </video>
+
+      <!-- Dynamic Subtitle Banner Overlay -->
+      <div id="song-subtitle-box" class="song-subtitle-box">
+        <span id="song-subtitle-text">♪ The Good Bird Song ♪</span>
+      </div>
+
+      <!-- Interactive Cloze Challenge Overlay -->
+      <div id="cloze-modal" class="cloze-modal-overlay" style="display: none;">
+        <div class="cloze-card">
+          <div class="cloze-header">
+            <span class="cloze-badge">🎮 LYRIC CLOZE CHALLENGE</span>
+            <span id="cloze-progress" class="cloze-progress">Question 1 of 5</span>
+          </div>
+          <div class="cloze-prompt-box">
+            <p class="cloze-instruction">Complete the lyric to continue the video:</p>
+            <h3 id="cloze-sentence" class="cloze-sentence">Inside the window swam a little <span class="blank-slot">_____</span> in a bowl.</h3>
+          </div>
+          <div id="cloze-options-grid" class="cloze-options">
+            <!-- Options dynamically rendered here -->
+          </div>
+          <div id="cloze-feedback" class="cloze-feedback" style="display: none;"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1166,6 +1415,172 @@
         songVideo.play().catch(function() {});
       }
     });
+
+    /* ------------------------------------------------------------- */
+    /* SONG SUBTITLES & INTERACTIVE CLOZE CHALLENGE GAME LOGIC */
+    /* ------------------------------------------------------------- */
+    var songLyrics = [
+      { start: 1, end: 11, text: "Once upon a time, a pink bird sat upon a branch." },
+      { start: 12, end: 24, text: "Inside the window swam a little goldfish in a bowl.", cloze: { blank: "goldfish", prompt: "Inside the window swam a little ____ in a bowl.", options: ["goldfish", "turtle", "kitten", "frog"], answer: 0 } },
+      { start: 25, end: 36, text: "The bird looked in and smiled, wanting to be friends." },
+      { start: 37, end: 48, text: "The bird flew to a tree to find a tasty treat.", cloze: { blank: "tree", prompt: "The bird flew to a ____ to find a tasty treat.", options: ["flower", "tree", "roof", "river"], answer: 1 } },
+      { start: 49, end: 60, text: "It picked a fresh green leaf to share with its new friend." },
+      { start: 61, end: 72, text: "Flying back to the window, the bird dropped the food inside.", cloze: { blank: "window", prompt: "Flying back to the ____, the bird dropped the food inside.", options: ["door", "garden", "window", "nest"], answer: 2 } },
+      { start: 73, end: 85, text: "The happy fish ate the food and swam with a grateful splash." },
+      { start: 86, end: 98, text: "The good bird brought more food to care for its friend.", cloze: { blank: "friend", prompt: "The good bird brought more food to care for its ____.", options: ["nest", "wings", "song", "friend"], answer: 3 } },
+      { start: 99, end: 112, text: "They sat together at sunset, sharing joy and friendship." },
+      { start: 113, end: 126, text: "The moon shone bright as the bird slept peacefully near the bowl.", cloze: { blank: "moon", prompt: "The ____ shone bright as the bird slept peacefully near the bowl.", options: ["sun", "moon", "star", "cloud"], answer: 1 } },
+      { start: 127, end: 147, text: "A true friend is kind and good—the story of The Good Bird!" }
+    ];
+
+    var songMode = "sing"; // "sing" or "cloze"
+    var subtitlesEnabled = true;
+    var hasPlayedOnce = false;
+    var currentClozeIndex = -1;
+    var clozeAnswered = {};
+
+    var songSubtitleBox = document.getElementById("song-subtitle-box");
+    var songSubtitleText = document.getElementById("song-subtitle-text");
+    var clozeModal = document.getElementById("cloze-modal");
+    var clozeSentence = document.getElementById("cloze-sentence");
+    var clozeOptionsGrid = document.getElementById("cloze-options-grid");
+    var clozeProgress = document.getElementById("cloze-progress");
+    var clozeFeedback = document.getElementById("cloze-feedback");
+    var songModeSing = document.getElementById("song-mode-sing");
+    var songModeCloze = document.getElementById("song-mode-cloze");
+    var songSubToggle = document.getElementById("song-sub-toggle");
+
+    // Mode Toggle Events
+    songModeSing.addEventListener("click", function() {
+      setSongMode("sing");
+    });
+    songModeCloze.addEventListener("click", function() {
+      setSongMode("cloze");
+    });
+
+    songSubToggle.addEventListener("click", function() {
+      subtitlesEnabled = !subtitlesEnabled;
+      songSubToggle.classList.toggle("active", subtitlesEnabled);
+      songSubToggle.innerText = subtitlesEnabled ? "💬 Subtitles: ON" : "💬 Subtitles: OFF";
+      songSubtitleBox.style.opacity = subtitlesEnabled ? "1" : "0";
+    });
+
+    function setSongMode(mode) {
+      songMode = mode;
+      songModeSing.classList.toggle("active", mode === "sing");
+      songModeCloze.classList.toggle("active", mode === "cloze");
+      clozeAnswered = {};
+      clozeModal.style.display = "none";
+      if (mode === "cloze" && songVideo.paused) {
+        songVideo.play().catch(function() {});
+      }
+    }
+
+    // Video ended listener -> Automatically switch to Cloze Challenge for 2nd Play!
+    songVideo.addEventListener("ended", function() {
+      if (!hasPlayedOnce) {
+        hasPlayedOnce = true;
+        setSongMode("cloze");
+        songVideo.currentTime = 0;
+        alert("🎉 Great job listening! Now let's test your memory in the Cloze Challenge Game!");
+        songVideo.play().catch(function() {});
+      }
+    });
+
+    // Timeupdate listener for Subtitles & Cloze Challenge Triggering
+    songVideo.addEventListener("timeupdate", function() {
+      var curTime = songVideo.currentTime;
+
+      // Rewind reset
+      if (curTime < 2) {
+        clozeAnswered = {};
+      }
+
+      // Update Subtitles
+      var activeLyric = null;
+      var activeLyricIndex = -1;
+      for (var i = 0; i < songLyrics.length; i++) {
+        if (curTime >= songLyrics[i].start && curTime <= songLyrics[i].end) {
+          activeLyric = songLyrics[i];
+          activeLyricIndex = i;
+          break;
+        }
+      }
+
+      if (activeLyric && subtitlesEnabled) {
+        songSubtitleText.innerText = activeLyric.text;
+        songSubtitleBox.style.opacity = "1";
+      } else if (!subtitlesEnabled) {
+        songSubtitleBox.style.opacity = "0";
+      } else {
+        songSubtitleText.innerText = "♪ The Good Bird Song ♪";
+      }
+
+      // Check Cloze Pause Trigger in Cloze Mode
+      if (songMode === "cloze" && activeLyric && activeLyric.cloze && !clozeAnswered[activeLyricIndex]) {
+        // Pause at trigger point (3.5s into the lyric line)
+        if (curTime >= (activeLyric.start + 3.5) && curTime < activeLyric.end) {
+          songVideo.pause();
+          triggerClozeChallenge(activeLyricIndex, activeLyric.cloze);
+        }
+      }
+    });
+
+    function triggerClozeChallenge(lyricIndex, clozeData) {
+      currentClozeIndex = lyricIndex;
+      clozeFeedback.style.display = "none";
+      
+      // Calculate cloze question number
+      var clozeCount = songLyrics.filter(l => l.cloze).length;
+      var clozeNum = songLyrics.slice(0, lyricIndex + 1).filter(l => l.cloze).length;
+      clozeProgress.innerText = "Question " + clozeNum + " of " + clozeCount;
+
+      // Format sentence with blank
+      var parts = clozeData.prompt.split("____");
+      clozeSentence.innerHTML = parts[0] + '<span class="blank-slot">_____</span>' + (parts[1] || "");
+
+      // Render options
+      clozeOptionsGrid.innerHTML = "";
+      for (var o = 0; o < clozeData.options.length; o++) {
+        var btn = document.createElement("button");
+        btn.className = "cloze-opt-btn";
+        btn.type = "button";
+        btn.dataset.optIdx = o;
+        btn.innerHTML = '<span style="color: var(--accent); font-weight: 800;">' + String.fromCharCode(65 + o) + ')</span> ' + clozeData.options[o];
+        
+        btn.addEventListener("click", function(e) {
+          var selectedIdx = parseInt(e.currentTarget.dataset.optIdx);
+          handleClozeSelection(selectedIdx, clozeData.answer, lyricIndex, e.currentTarget);
+        });
+
+        clozeOptionsGrid.appendChild(btn);
+      }
+
+      clozeModal.style.display = "flex";
+    }
+
+    function handleClozeSelection(selectedIdx, correctIdx, lyricIndex, btnEl) {
+      if (selectedIdx === correctIdx) {
+        btnEl.classList.add("correct");
+        clozeAnswered[lyricIndex] = true;
+        clozeFeedback.style.display = "block";
+        clozeFeedback.style.background = "rgba(16, 185, 129, 0.2)";
+        clozeFeedback.style.color = "#34d399";
+        clozeFeedback.innerText = "🎉 Correct! Resuming song...";
+        triggerConfetti();
+
+        setTimeout(function() {
+          clozeModal.style.display = "none";
+          songVideo.play().catch(function() {});
+        }, 1200);
+      } else {
+        btnEl.classList.add("incorrect");
+        clozeFeedback.style.display = "block";
+        clozeFeedback.style.background = "rgba(239, 68, 68, 0.2)";
+        clozeFeedback.style.color = "#fca5a5";
+        clozeFeedback.innerText = "❌ Try again!";
+      }
+    }
 
     /* ------------------------------------------------------------- */
     /* READER VIEW LOGIC (Pan/Zoom/Touch) */
@@ -1598,7 +2013,7 @@
         card.classList.remove("dragging");
       });
 
-      // CLICKING THE SCENE CARD AUTOMATICALLY OPENS HIGH-RES LIGHTBOX PREVIEW (JUST LIKE MAGNIFYING GLASS)
+      // CLICKING THE SCENE CARD AUTOMATICALLY OPENS HIGH-RES LIGHTBOX PREVIEW
       card.addEventListener("click", function(e) {
         e.stopPropagation();
         openPreviewModal(pageIdx);
