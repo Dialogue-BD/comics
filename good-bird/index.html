@@ -1541,145 +1541,347 @@
     /* KARAOKE SUBTITLES & INTERACTIVE CLOZE CHALLENGE GAME LOGIC */
     /* ------------------------------------------------------------- */
 
-    // Build word-level timing for each lyric line.
-    // Words are distributed evenly across the lyric's time window.
-    // A small "lead-in" offset (0.4s) is used so the first word highlights
-    // just as the line starts singing rather than exactly at start.
-    // ── TIMING NOTE ──────────────────────────────────────────────────
-    // start/end are in seconds.  They are best estimates based on the
-    // 147-second video and typical children's song pacing.
-    // If a line is early/late, just adjust its start & end values here.
+    // ── Word timestamps from OpenAI Whisper (word_timestamps=True) ───
+    // Each lyric line has exact per-word startAt/endAt from the audio.
+    // The cloze pause fires when the blank word's startAt is reached.
     // ─────────────────────────────────────────────────────────────────
     var songLyrics = [
-      // ── Verse 1 ──────────────────────────────────────────────────
+      // ── Verse 1 ──────────────────────────────────────────────────────
       {
-        start: 4, end: 11,
-        text: "Up in the sky so blue and bright,"
+        start: 7.98, end: 11.92,
+        text: "Up in the sky so blue and bright,",
+        words: [
+          { word: "Up", startAt: 7.98, endAt: 8.94 },
+          { word: "in", startAt: 8.94, endAt: 9.26 },
+          { word: "the", startAt: 9.26, endAt: 9.44 },
+          { word: "sky", startAt: 9.44, endAt: 9.84 },
+          { word: "so", startAt: 10.24, endAt: 10.48 },
+          { word: "blue", startAt: 10.48, endAt: 10.98 },
+          { word: "and", startAt: 10.98, endAt: 11.38 },
+          { word: "bright,", startAt: 11.38, endAt: 11.92 }
+        ]
       },
       {
-        start: 11, end: 18,
-        text: "A little pink bird is taking flight."
+        start: 12.18, end: 21.02,
+        text: "A little pink bird is taking flight.",
+        words: [
+          { word: "A", startAt: 12.18, endAt: 12.74 },
+          { word: "little", startAt: 12.74, endAt: 13.14 },
+          { word: "pink", startAt: 13.14, endAt: 13.52 },
+          { word: "bird", startAt: 13.52, endAt: 14.18 },
+          { word: "is", startAt: 14.18, endAt: 14.64 },
+          { word: "taking", startAt: 14.64, endAt: 15.20 },
+          { word: "flight.", startAt: 15.20, endAt: 21.02 }
+        ]
       },
       {
-        start: 18, end: 26,
-        text: "She flies on down to a window sill,"
+        start: 23.64, end: 27.90,
+        text: "She flies on down to a window sill,",
+        words: [
+          { word: "She", startAt: 23.64, endAt: 24.64 },
+          { word: "flies", startAt: 24.64, endAt: 25.14 },
+          { word: "on", startAt: 25.14, endAt: 25.50 },
+          { word: "down", startAt: 25.50, endAt: 26.02 },
+          { word: "to", startAt: 26.02, endAt: 26.46 },
+          { word: "a", startAt: 26.46, endAt: 26.78 },
+          { word: "window", startAt: 26.78, endAt: 27.40 },
+          { word: "sill,", startAt: 27.40, endAt: 27.90 }
+        ]
       },
       {
-        start: 26, end: 33,
+        start: 27.90, end: 31.92,
         text: "Where a sad little fish is sitting still.",
-        cloze: {
-          blank: "fish",
-          prompt: "Where a sad little ____ is sitting still.",
-          options: ["fish", "cat", "frog", "bird"],
-          answer: 0
-        }
+        words: [
+          { word: "Where", startAt: 27.90, endAt: 28.48 },
+          { word: "a", startAt: 28.48, endAt: 28.76 },
+          { word: "sad", startAt: 28.76, endAt: 29.14 },
+          { word: "little", startAt: 29.14, endAt: 29.62 },
+          { word: "fish", startAt: 29.62, endAt: 30.18 },
+          { word: "is", startAt: 30.18, endAt: 30.62 },
+          { word: "sitting", startAt: 30.62, endAt: 31.20 },
+          { word: "still.", startAt: 31.20, endAt: 31.92 }
+        ],
+        cloze: { blank: "fish", prompt: "Where a sad little ____ is sitting still.", options: ["fish", "cat", "frog", "bird"], answer: 0 }
       },
-      // ── Verse 2 ──────────────────────────────────────────────────
+      // ── Verse 2 ──────────────────────────────────────────────────────
       {
-        start: 36, end: 43,
-        text: "The orange fish has no food to eat,"
-      },
-      {
-        start: 43, end: 50,
-        text: "And wishes he had a tasty treat."
-      },
-      {
-        start: 50, end: 57,
-        text: "So the helpful bird flies to the ground,"
-      },
-      {
-        start: 57, end: 64,
-        text: "And looks for a treat that can be found."
-      },
-      // ── Chorus ───────────────────────────────────────────────────
-      {
-        start: 67, end: 75,
-        text: "Oh, the good pink bird is kind and sweet,"
+        start: 33.30, end: 36.94,
+        text: "The orange fish has no food to eat,",
+        words: [
+          { word: "The", startAt: 33.30, endAt: 33.68 },
+          { word: "orange", startAt: 33.68, endAt: 34.12 },
+          { word: "fish", startAt: 34.12, endAt: 34.58 },
+          { word: "has", startAt: 34.58, endAt: 35.10 },
+          { word: "no", startAt: 35.10, endAt: 35.52 },
+          { word: "food", startAt: 35.52, endAt: 36.08 },
+          { word: "to", startAt: 36.08, endAt: 36.44 },
+          { word: "eat,", startAt: 36.44, endAt: 36.94 }
+        ]
       },
       {
-        start: 75, end: 82,
+        start: 37.52, end: 40.92,
+        text: "And wishes he had a tasty treat.",
+        words: [
+          { word: "And", startAt: 37.52, endAt: 37.72 },
+          { word: "wishes", startAt: 37.72, endAt: 38.10 },
+          { word: "he", startAt: 38.10, endAt: 38.50 },
+          { word: "had", startAt: 38.50, endAt: 39.12 },
+          { word: "a", startAt: 39.12, endAt: 39.60 },
+          { word: "tasty", startAt: 39.60, endAt: 40.16 },
+          { word: "treat.", startAt: 40.16, endAt: 40.92 }
+        ]
+      },
+      {
+        start: 49.44, end: 52.98,
+        text: "So the helpful bird flies to the ground,",
+        words: [
+          { word: "So", startAt: 49.44, endAt: 49.68 },
+          { word: "the", startAt: 49.68, endAt: 50.30 },
+          { word: "helpful", startAt: 50.30, endAt: 50.96 },
+          { word: "bird", startAt: 50.96, endAt: 51.62 },
+          { word: "flies", startAt: 51.62, endAt: 52.08 },
+          { word: "to", startAt: 52.08, endAt: 52.42 },
+          { word: "the", startAt: 52.42, endAt: 52.70 },
+          { word: "ground,", startAt: 52.70, endAt: 52.98 }
+        ]
+      },
+      {
+        start: 53.28, end: 57.02,
+        text: "And looks for a treat that can be found.",
+        words: [
+          { word: "And", startAt: 53.28, endAt: 53.70 },
+          { word: "looks", startAt: 53.70, endAt: 54.02 },
+          { word: "for", startAt: 54.02, endAt: 54.54 },
+          { word: "a", startAt: 54.54, endAt: 54.78 },
+          { word: "treat", startAt: 54.78, endAt: 55.08 },
+          { word: "that", startAt: 55.08, endAt: 55.54 },
+          { word: "can", startAt: 55.54, endAt: 55.98 },
+          { word: "be", startAt: 55.98, endAt: 56.32 },
+          { word: "found.", startAt: 56.32, endAt: 57.02 }
+        ]
+      },
+      // ── Chorus ───────────────────────────────────────────────────────
+      {
+        start: 57.32, end: 60.86,
+        text: "Oh, the good pink bird is kind and sweet,",
+        words: [
+          { word: "Oh,", startAt: 57.32, endAt: 57.52 },
+          { word: "the", startAt: 57.60, endAt: 57.72 },
+          { word: "good", startAt: 57.72, endAt: 58.10 },
+          { word: "pink", startAt: 58.10, endAt: 58.52 },
+          { word: "bird", startAt: 58.52, endAt: 59.16 },
+          { word: "is", startAt: 59.16, endAt: 59.64 },
+          { word: "kind", startAt: 59.64, endAt: 60.06 },
+          { word: "and", startAt: 60.06, endAt: 60.36 },
+          { word: "sweet,", startAt: 60.36, endAt: 60.86 }
+        ]
+      },
+      {
+        start: 61.34, end: 64.82,
         text: "She shared a wiggly, yummy treat!",
-        cloze: {
-          blank: "treat",
-          prompt: "She shared a wiggly, yummy ____!",
-          options: ["song", "leaf", "treat", "water"],
-          answer: 2
-        }
+        words: [
+          { word: "She", startAt: 61.34, endAt: 61.64 },
+          { word: "shared", startAt: 61.64, endAt: 62.22 },
+          { word: "a", startAt: 62.22, endAt: 62.68 },
+          { word: "wiggly,", startAt: 62.68, endAt: 63.16 },
+          { word: "yummy", startAt: 63.44, endAt: 64.16 },
+          { word: "treat!", startAt: 64.16, endAt: 64.82 }
+        ],
+        cloze: { blank: "treat", prompt: "She shared a wiggly, yummy ____!", options: ["song", "leaf", "treat", "water"], answer: 2 }
       },
       {
-        start: 82, end: 89,
-        text: "A simple act of friendly care,"
+        start: 64.82, end: 69.00,
+        text: "A simple act of friendly care,",
+        words: [
+          { word: "A", startAt: 64.82, endAt: 65.68 },
+          { word: "simple", startAt: 65.68, endAt: 66.38 },
+          { word: "act", startAt: 66.60, endAt: 67.32 },
+          { word: "of", startAt: 67.32, endAt: 67.60 },
+          { word: "friendly", startAt: 67.60, endAt: 68.18 },
+          { word: "care,", startAt: 68.18, endAt: 69.00 }
+        ]
       },
       {
-        start: 89, end: 97,
-        text: "Makes the world happy everywhere!"
+        start: 69.28, end: 80.72,
+        text: "Makes the world happy everywhere!",
+        words: [
+          { word: "Makes", startAt: 69.28, endAt: 70.10 },
+          { word: "the", startAt: 70.10, endAt: 70.50 },
+          { word: "world", startAt: 70.50, endAt: 71.10 },
+          { word: "happy", startAt: 71.10, endAt: 71.62 },
+          { word: "everywhere!", startAt: 71.62, endAt: 80.72 }
+        ]
       },
-      // ── Verse 3 ──────────────────────────────────────────────────
+      // ── Verse 3 ──────────────────────────────────────────────────────
       {
-        start: 100, end: 107,
-        text: "She finds a worm near a grassy tree,"
+        start: 80.72, end: 84.84,
+        text: "She finds a worm near a grassy tree,",
+        words: [
+          { word: "She", startAt: 80.72, endAt: 81.66 },
+          { word: "finds", startAt: 81.66, endAt: 82.20 },
+          { word: "a", startAt: 82.20, endAt: 82.56 },
+          { word: "worm", startAt: 82.56, endAt: 83.06 },
+          { word: "near", startAt: 83.06, endAt: 83.54 },
+          { word: "a", startAt: 83.54, endAt: 83.76 },
+          { word: "grassy", startAt: 83.76, endAt: 84.38 },
+          { word: "tree,", startAt: 84.38, endAt: 84.84 }
+        ]
       },
       {
-        start: 107, end: 114,
+        start: 85.24, end: 93.24,
         text: "And carries it back so carefully.",
-        cloze: {
-          blank: "carefully",
-          prompt: "And carries it back so ____.",
-          options: ["quickly", "carefully", "slowly", "happily"],
-          answer: 1
-        }
+        words: [
+          { word: "And", startAt: 85.24, endAt: 85.72 },
+          { word: "carries", startAt: 85.72, endAt: 86.22 },
+          { word: "it", startAt: 86.22, endAt: 86.58 },
+          { word: "back", startAt: 86.58, endAt: 87.00 },
+          { word: "so", startAt: 87.00, endAt: 87.54 },
+          { word: "carefully.", startAt: 87.54, endAt: 93.24 }
+        ],
+        cloze: { blank: "carefully", prompt: "And carries it back so ____.", options: ["quickly", "carefully", "slowly", "happily"], answer: 1 }
       },
       {
-        start: 114, end: 121,
-        text: "She drops it in the fish's bowl,"
+        start: 96.58, end: 100.90,
+        text: "She drops it in the fish's bowl,",
+        words: [
+          { word: "She", startAt: 96.58, endAt: 97.66 },
+          { word: "drops", startAt: 97.66, endAt: 98.12 },
+          { word: "it", startAt: 98.12, endAt: 98.80 },
+          { word: "in", startAt: 98.80, endAt: 99.28 },
+          { word: "the", startAt: 99.28, endAt: 99.56 },
+          { word: "fish's", startAt: 99.56, endAt: 100.12 },
+          { word: "bowl,", startAt: 100.12, endAt: 100.90 }
+        ]
       },
       {
-        start: 121, end: 128,
-        text: "Making him happy is her goal!"
+        start: 101.60, end: 104.96,
+        text: "Making him happy is her goal!",
+        words: [
+          { word: "Making", startAt: 101.60, endAt: 102.16 },
+          { word: "him", startAt: 102.16, endAt: 102.58 },
+          { word: "happy", startAt: 102.58, endAt: 103.16 },
+          { word: "is", startAt: 103.16, endAt: 104.06 },
+          { word: "her", startAt: 104.06, endAt: 104.38 },
+          { word: "goal!", startAt: 104.38, endAt: 104.96 }
+        ]
       },
-      // ── Verse 4 ──────────────────────────────────────────────────
+      // ── Verse 4 ──────────────────────────────────────────────────────
       {
-        start: 131, end: 137,
-        text: "The fish is full and swims with glee,"
+        start: 104.96, end: 108.82,
+        text: "The fish is full and swims with glee,",
+        words: [
+          { word: "The", startAt: 104.96, endAt: 105.66 },
+          { word: "fish", startAt: 105.66, endAt: 106.14 },
+          { word: "is", startAt: 106.14, endAt: 106.62 },
+          { word: "full", startAt: 106.62, endAt: 107.08 },
+          { word: "and", startAt: 107.08, endAt: 107.56 },
+          { word: "swims", startAt: 107.56, endAt: 107.96 },
+          { word: "with", startAt: 107.96, endAt: 108.40 },
+          { word: "glee,", startAt: 108.40, endAt: 108.82 }
+        ]
       },
       {
-        start: 137, end: 142,
-        text: "He's happy as a fish can be."
+        start: 109.24, end: 112.92,
+        text: "He's happy as a fish can be.",
+        words: [
+          { word: "He's", startAt: 109.24, endAt: 109.76 },
+          { word: "happy", startAt: 109.76, endAt: 110.18 },
+          { word: "as", startAt: 110.18, endAt: 111.24 },
+          { word: "a", startAt: 111.24, endAt: 111.58 },
+          { word: "fish", startAt: 111.58, endAt: 111.98 },
+          { word: "can", startAt: 111.98, endAt: 112.42 },
+          { word: "be.", startAt: 112.42, endAt: 112.92 }
+        ]
       },
       {
-        start: 142, end: 146,
-        text: "And when the night-time comes to keep,"
+        start: 113.58, end: 116.94,
+        text: "And when the night-time comes to keep,",
+        words: [
+          { word: "And", startAt: 113.58, endAt: 113.72 },
+          { word: "when", startAt: 113.72, endAt: 114.02 },
+          { word: "the", startAt: 114.02, endAt: 114.44 },
+          { word: "night-time", startAt: 114.44, endAt: 115.44 },
+          { word: "comes", startAt: 115.44, endAt: 116.12 },
+          { word: "to", startAt: 116.12, endAt: 116.40 },
+          { word: "keep,", startAt: 116.40, endAt: 116.94 }
+        ]
       },
       {
-        start: 146, end: 147,
+        start: 117.56, end: 125.30,
         text: "Side by side they fall asleep.",
-        cloze: {
-          blank: "asleep",
-          prompt: "Side by side they fall ____.",
-          options: ["away", "down", "asleep", "apart"],
-          answer: 2
-        }
+        words: [
+          { word: "Side", startAt: 117.56, endAt: 118.10 },
+          { word: "by", startAt: 118.10, endAt: 118.46 },
+          { word: "side", startAt: 118.46, endAt: 119.14 },
+          { word: "they", startAt: 119.14, endAt: 119.56 },
+          { word: "fall", startAt: 119.56, endAt: 120.08 },
+          { word: "asleep.", startAt: 120.08, endAt: 125.30 }
+        ],
+        cloze: { blank: "asleep", prompt: "Side by side they fall ____.", options: ["away", "down", "asleep", "apart"], answer: 2 }
+      },
+      // ── Chorus (repeat) ──────────────────────────────────────────────
+      {
+        start: 128.42, end: 132.92,
+        text: "Oh, the good pink bird is kind and sweet,",
+        words: [
+          { word: "Oh,", startAt: 128.42, endAt: 129.46 },
+          { word: "the", startAt: 129.58, endAt: 129.68 },
+          { word: "good", startAt: 129.68, endAt: 130.10 },
+          { word: "pink", startAt: 130.10, endAt: 130.58 },
+          { word: "bird", startAt: 130.58, endAt: 131.18 },
+          { word: "is", startAt: 131.18, endAt: 131.64 },
+          { word: "kind", startAt: 131.64, endAt: 132.08 },
+          { word: "and", startAt: 132.08, endAt: 132.36 },
+          { word: "sweet,", startAt: 132.36, endAt: 132.92 }
+        ]
+      },
+      {
+        start: 133.00, end: 136.82,
+        text: "She shared a wiggly, yummy treat!",
+        words: [
+          { word: "She", startAt: 133.00, endAt: 133.66 },
+          { word: "shared", startAt: 133.66, endAt: 134.18 },
+          { word: "a", startAt: 134.18, endAt: 134.66 },
+          { word: "wiggly,", startAt: 134.66, endAt: 135.20 },
+          { word: "yummy", startAt: 135.78, endAt: 136.14 },
+          { word: "treat!", startAt: 136.14, endAt: 136.82 }
+        ]
+      },
+      {
+        start: 137.54, end: 141.12,
+        text: "A simple act of friendly care,",
+        words: [
+          { word: "A", startAt: 137.54, endAt: 137.72 },
+          { word: "simple", startAt: 137.72, endAt: 138.34 },
+          { word: "act", startAt: 138.54, endAt: 139.30 },
+          { word: "of", startAt: 139.30, endAt: 139.66 },
+          { word: "friendly", startAt: 139.66, endAt: 140.16 },
+          { word: "care,", startAt: 140.16, endAt: 141.12 }
+        ]
+      },
+      {
+        start: 141.50, end: 144.52,
+        text: "Makes the world happy everywhere!",
+        words: [
+          { word: "Makes", startAt: 141.50, endAt: 142.08 },
+          { word: "the", startAt: 142.08, endAt: 142.48 },
+          { word: "world", startAt: 142.48, endAt: 143.04 },
+          { word: "happy", startAt: 143.04, endAt: 143.64 },
+          { word: "everywhere!", startAt: 143.64, endAt: 144.52 }
+        ]
       }
     ];
 
-    // Pre-compute per-word timing for each lyric.
-    // Each word gets a proportional slice of the line's duration.
-    // leadIn: wait 0.3s into the line before first word highlights.
+    // buildWordTimings: words are now baked-in from Whisper above.
+    // This is a no-op kept for safety in case any line is missing words.
     (function buildWordTimings() {
       songLyrics.forEach(function(line) {
-        var raw = line.text.replace(/[—]/g, ' — ');
-        var words = raw.trim().split(/\s+/).filter(function(w) { return w.length > 0; });
+        if (line.words && line.words.length > 0) return; // already have Whisper data
+        var words = line.text.trim().split(/\s+/).filter(function(w) { return w.length > 0; });
         var duration = line.end - line.start;
-        var leadIn = Math.min(0.35, duration * 0.06);
-        var available = duration - leadIn;
-        var perWord = available / words.length;
+        var perWord = duration / words.length;
         line.words = words.map(function(word, idx) {
-          return {
-            word: word.replace(/[,.'!?]/g, ''),  // display without punctuation
-            display: word,
-            startAt: line.start + leadIn + idx * perWord,
-            endAt: line.start + leadIn + (idx + 1) * perWord
-          };
+          return { word: word, startAt: line.start + idx * perWord, endAt: line.start + (idx + 1) * perWord };
         });
       });
     })();
