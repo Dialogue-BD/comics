@@ -1545,55 +1545,120 @@
     // Words are distributed evenly across the lyric's time window.
     // A small "lead-in" offset (0.4s) is used so the first word highlights
     // just as the line starts singing rather than exactly at start.
+    // ── TIMING NOTE ──────────────────────────────────────────────────
+    // start/end are in seconds.  They are best estimates based on the
+    // 147-second video and typical children's song pacing.
+    // If a line is early/late, just adjust its start & end values here.
+    // ─────────────────────────────────────────────────────────────────
     var songLyrics = [
+      // ── Verse 1 ──────────────────────────────────────────────────
       {
-        start: 1, end: 11,
-        text: "Once upon a time, a pink bird sat upon a branch."
+        start: 4, end: 11,
+        text: "Up in the sky so blue and bright,"
       },
       {
-        start: 12, end: 24,
-        text: "Inside the window swam a little goldfish in a bowl.",
-        cloze: { blank: "goldfish", prompt: "Inside the window swam a little ____ in a bowl.", options: ["goldfish", "turtle", "kitten", "frog"], answer: 0 }
+        start: 11, end: 18,
+        text: "A little pink bird is taking flight."
       },
       {
-        start: 25, end: 36,
-        text: "The bird looked in and smiled, wanting to be friends."
+        start: 18, end: 26,
+        text: "She flies on down to a window sill,"
       },
       {
-        start: 37, end: 48,
-        text: "The bird flew to a tree to find a tasty treat.",
-        cloze: { blank: "tree", prompt: "The bird flew to a ____ to find a tasty treat.", options: ["flower", "tree", "roof", "river"], answer: 1 }
+        start: 26, end: 33,
+        text: "Where a sad little fish is sitting still.",
+        cloze: {
+          blank: "fish",
+          prompt: "Where a sad little ____ is sitting still.",
+          options: ["fish", "cat", "frog", "bird"],
+          answer: 0
+        }
+      },
+      // ── Verse 2 ──────────────────────────────────────────────────
+      {
+        start: 36, end: 43,
+        text: "The orange fish has no food to eat,"
       },
       {
-        start: 49, end: 60,
-        text: "It picked a fresh green leaf to share with its new friend."
+        start: 43, end: 50,
+        text: "And wishes he had a tasty treat."
       },
       {
-        start: 61, end: 72,
-        text: "Flying back to the window, the bird dropped the food inside.",
-        cloze: { blank: "window", prompt: "Flying back to the ____, the bird dropped the food inside.", options: ["door", "garden", "window", "nest"], answer: 2 }
+        start: 50, end: 57,
+        text: "So the helpful bird flies to the ground,"
       },
       {
-        start: 73, end: 85,
-        text: "The happy fish ate the food and swam with a grateful splash."
+        start: 57, end: 64,
+        text: "And looks for a treat that can be found."
+      },
+      // ── Chorus ───────────────────────────────────────────────────
+      {
+        start: 67, end: 75,
+        text: "Oh, the good pink bird is kind and sweet,"
       },
       {
-        start: 86, end: 98,
-        text: "The good bird brought more food to care for its friend.",
-        cloze: { blank: "friend", prompt: "The good bird brought more food to care for its ____.", options: ["nest", "wings", "song", "friend"], answer: 3 }
+        start: 75, end: 82,
+        text: "She shared a wiggly, yummy treat!",
+        cloze: {
+          blank: "treat",
+          prompt: "She shared a wiggly, yummy ____!",
+          options: ["song", "leaf", "treat", "water"],
+          answer: 2
+        }
       },
       {
-        start: 99, end: 112,
-        text: "They sat together at sunset, sharing joy and friendship."
+        start: 82, end: 89,
+        text: "A simple act of friendly care,"
       },
       {
-        start: 113, end: 126,
-        text: "The moon shone bright as the bird slept peacefully near the bowl.",
-        cloze: { blank: "moon", prompt: "The ____ shone bright as the bird slept peacefully near the bowl.", options: ["sun", "moon", "star", "cloud"], answer: 1 }
+        start: 89, end: 97,
+        text: "Makes the world happy everywhere!"
+      },
+      // ── Verse 3 ──────────────────────────────────────────────────
+      {
+        start: 100, end: 107,
+        text: "She finds a worm near a grassy tree,"
       },
       {
-        start: 127, end: 147,
-        text: "A true friend is kind and good — the story of The Good Bird!"
+        start: 107, end: 114,
+        text: "And carries it back so carefully.",
+        cloze: {
+          blank: "carefully",
+          prompt: "And carries it back so ____.",
+          options: ["quickly", "carefully", "slowly", "happily"],
+          answer: 1
+        }
+      },
+      {
+        start: 114, end: 121,
+        text: "She drops it in the fish's bowl,"
+      },
+      {
+        start: 121, end: 128,
+        text: "Making him happy is her goal!"
+      },
+      // ── Verse 4 ──────────────────────────────────────────────────
+      {
+        start: 131, end: 137,
+        text: "The fish is full and swims with glee,"
+      },
+      {
+        start: 137, end: 142,
+        text: "He's happy as a fish can be."
+      },
+      {
+        start: 142, end: 146,
+        text: "And when the night-time comes to keep,"
+      },
+      {
+        start: 146, end: 147,
+        text: "Side by side they fall asleep.",
+        cloze: {
+          blank: "asleep",
+          prompt: "Side by side they fall ____.",
+          options: ["away", "down", "asleep", "apart"],
+          answer: 2
+        }
       }
     ];
 
