@@ -1305,6 +1305,7 @@
           <p>Classroom Demo: Click any scene photo to inspect in full resolution, or drag &amp; drop photos into the sequence line!</p>
         </div>
         <div class="controls-bar">
+          <button id="btn-intro-video" class="btn btn-secondary" style="background: rgba(147, 51, 234, 0.25); border-color: rgba(168, 85, 247, 0.5); color: #e9d5ff; font-weight: 700;">🎬 Intro Video</button>
           <button id="btn-check" class="btn btn-primary">✓ Check Story</button>
           <button id="btn-hint" class="btn btn-secondary">💡 Hint</button>
           <button id="btn-shuffle" class="btn btn-secondary">🔀 Reshuffle</button>
@@ -1373,6 +1374,43 @@
         <button id="modal-prev-btn" class="btn btn-secondary">← Previous</button>
         <button id="modal-next-btn" class="btn btn-secondary">Next →</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Story Structure Intro Video Modal -->
+  <div id="activity-intro-modal" class="modal-overlay" style="display: none; align-items: center; justify-content: center; z-index: 1000;">
+    <div class="modal-card" style="max-width: 900px; width: 92%; background: #0f1422; border: 2px solid rgba(168, 85, 247, 0.4); border-radius: 20px; padding: 0; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.85), 0 0 40px rgba(168, 85, 247, 0.25);">
+      
+      <!-- Modal Header -->
+      <div style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.95), rgba(30, 27, 75, 0.95)); padding: 18px 24px; border-bottom: 1px solid rgba(168, 85, 247, 0.3); display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(168, 85, 247, 0.3); color: #f3e8ff; font-size: 0.78rem; font-weight: 800; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px;">
+            🎬 LESSON INTRO
+          </div>
+          <h3 style="margin: 0; color: #ffffff; font-family: 'Nunito', var(--font-sans); font-size: 1.4rem; font-weight: 800;">The Secret Shape of Stories</h3>
+          <p style="margin: 3px 0 0 0; color: rgba(226, 232, 240, 0.85); font-size: 0.92rem;">Watch this quick lesson on story structure before starting your sequencing activity!</p>
+        </div>
+        <button id="intro-modal-close-btn" class="modal-close" style="background: rgba(255,255,255,0.12); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">✕</button>
+      </div>
+
+      <!-- Video Container -->
+      <div style="padding: 20px; background: #090d16; display: flex; flex-direction: column; align-items: center;">
+        <video id="activity-intro-video" controls style="width: 100%; max-height: 55vh; border-radius: 12px; background: #000000; box-shadow: 0 10px 30px rgba(0,0,0,0.7); outline: none;">
+          <source src="secret_shape_of_stories.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+
+      <!-- Modal Footer -->
+      <div style="background: #0f1422; padding: 16px 24px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+        <div id="intro-video-status" style="color: #cbd5e1; font-size: 0.95rem; font-family: 'Nunito', var(--font-sans); font-weight: 600; display: flex; align-items: center; gap: 8px;">
+          <span>💡 Learn about Beginning, Middle &amp; End!</span>
+        </div>
+        <button id="btn-start-activity-from-video" class="btn btn-primary" style="background: linear-gradient(135deg, #a855f7, #7c3aed); border: none; font-family: 'Nunito', var(--font-sans); font-size: 1.05rem; font-weight: 800; padding: 12px 26px; border-radius: 30px; box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4); cursor: pointer; transition: all 0.2s ease;">
+          🧩 Start Sequencing Activity →
+        </button>
+      </div>
+
     </div>
   </div>
 
@@ -1512,6 +1550,76 @@
       centerContent();
     });
 
+    /* ------------------------------------------------------------- */
+    /* STORY STRUCTURE INTRO VIDEO MODAL LOGIC                        */
+    /* ------------------------------------------------------------- */
+    var activityIntroModal = document.getElementById("activity-intro-modal");
+    var activityIntroVideo = document.getElementById("activity-intro-video");
+    var btnIntroVideo = document.getElementById("btn-intro-video");
+    var btnStartActivityFromVideo = document.getElementById("btn-start-activity-from-video");
+    var introModalCloseBtn = document.getElementById("intro-modal-close-btn");
+    var introVideoStatus = document.getElementById("intro-video-status");
+    var hasSeenIntroVideo = false;
+
+    function openIntroVideoModal() {
+      if (!activityIntroModal) return;
+      activityIntroModal.style.display = "flex";
+      activityIntroModal.classList.add("active");
+      if (activityIntroVideo) {
+        activityIntroVideo.currentTime = 0;
+        activityIntroVideo.play().catch(function() {});
+      }
+    }
+
+    function closeIntroVideoModal() {
+      if (!activityIntroModal) return;
+      activityIntroModal.style.display = "none";
+      activityIntroModal.classList.remove("active");
+      if (activityIntroVideo) {
+        activityIntroVideo.pause();
+      }
+      hasSeenIntroVideo = true;
+    }
+
+    if (btnIntroVideo) {
+      btnIntroVideo.addEventListener("click", function() {
+        openIntroVideoModal();
+      });
+    }
+
+    if (btnStartActivityFromVideo) {
+      btnStartActivityFromVideo.addEventListener("click", function() {
+        closeIntroVideoModal();
+      });
+    }
+
+    if (introModalCloseBtn) {
+      introModalCloseBtn.addEventListener("click", function() {
+        closeIntroVideoModal();
+      });
+    }
+
+    if (activityIntroModal) {
+      activityIntroModal.addEventListener("click", function(e) {
+        if (e.target === activityIntroModal) {
+          closeIntroVideoModal();
+        }
+      });
+    }
+
+    if (activityIntroVideo) {
+      activityIntroVideo.addEventListener("ended", function() {
+        if (introVideoStatus) {
+          introVideoStatus.innerHTML = "🎉 <strong style='color:#4ade80;'>Awesome watching!</strong> Ready to start the activity!";
+        }
+        if (btnStartActivityFromVideo) {
+          btnStartActivityFromVideo.innerText = "▶ Begin Sequencing Activity!";
+          btnStartActivityFromVideo.style.boxShadow = "0 0 25px rgba(168, 85, 247, 0.8)";
+        }
+        triggerConfetti();
+      });
+    }
+
     tabActivity.addEventListener("click", function() {
       tabActivity.classList.add("active");
       tabRead.classList.remove("active");
@@ -1521,6 +1629,10 @@
       songContainer.style.display = "none";
       fullscreenBtn.style.display = "none";
       pauseSongVideo();
+
+      if (!hasSeenIntroVideo) {
+        openIntroVideoModal();
+      }
     });
 
     tabSong.addEventListener("click", function() {
