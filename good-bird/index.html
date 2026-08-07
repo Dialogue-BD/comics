@@ -17,22 +17,23 @@
     }
 
     :root {
-      --bg: #0d0f14;
-      --surface: #161a23;
-      --surface-hover: #1f2533;
-      --border: #262c3d;
+      --bg: #0b0d12;
+      --surface: #141822;
+      --surface-hover: #1c2230;
+      --tabletop-bg: #11151f;
+      --border: #232a3b;
       --accent: #4f7ef8;
       --accent-hover: #3b6be8;
-      --accent-glow: rgba(79, 126, 248, 0.3);
+      --accent-glow: rgba(79, 126, 248, 0.4);
       --success: #10b981;
-      --success-glow: rgba(16, 185, 129, 0.35);
+      --success-glow: rgba(16, 185, 129, 0.4);
       --error: #ef4444;
-      --error-glow: rgba(239, 68, 68, 0.35);
+      --error-glow: rgba(239, 68, 68, 0.4);
       --warning: #f59e0b;
       --text: #e8eaf0;
       --text-muted: #8c97b0;
       --radius-sm: 8px;
-      --radius: 12px;
+      --radius: 14px;
       --header-h: 56px;
     }
 
@@ -52,7 +53,7 @@
       left: 0;
       width: 100vw;
       height: var(--header-h);
-      background: rgba(22, 26, 35, 0.92);
+      background: rgba(20, 24, 34, 0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       display: flex;
@@ -128,9 +129,7 @@
       gap: 6px;
     }
 
-    .tab-btn:hover {
-      color: var(--text);
-    }
+    .tab-btn:hover { color: var(--text); }
 
     .tab-btn.active {
       background: var(--accent);
@@ -171,7 +170,6 @@
       background-color: #1a1a1a;
     }
 
-    /* Floating Fullscreen Button for Reader */
     #fullscreen-btn {
       position: fixed;
       bottom: 24px;
@@ -190,7 +188,6 @@
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
       transition: all 0.2s ease;
     }
-
     #fullscreen-btn:hover {
       background-color: var(--accent);
       border-color: var(--accent);
@@ -208,7 +205,7 @@
       font-weight: 600;
       z-index: 20000;
       pointer-events: none;
-      background: rgba(22, 26, 35, 0.9);
+      background: rgba(22, 26, 35, 0.92);
       padding: 14px 24px;
       border-radius: 30px;
       border: 1px solid var(--border);
@@ -230,7 +227,7 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ------------------------------------------------------------- */
-    /* Sequencing Activity Workspace */
+    /* Sequencing Activity Workspace - Physical Tabletop Layout */
     /* ------------------------------------------------------------- */
     #activity-container {
       position: absolute;
@@ -240,32 +237,32 @@
       height: calc(100vh - var(--header-h));
       overflow-y: auto;
       background: var(--bg);
-      padding: 20px 16px 40px;
+      padding: 16px 16px 40px;
       display: none;
     }
 
     .activity-wrapper {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
     }
 
     .activity-header {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px 20px;
+      padding: 14px 20px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
     }
 
     .activity-info h2 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -273,8 +270,8 @@
     }
 
     .activity-info p {
-      margin-top: 4px;
-      font-size: 0.88rem;
+      margin-top: 2px;
+      font-size: 0.85rem;
       color: var(--text-muted);
     }
 
@@ -335,11 +332,11 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 12px 18px;
+      padding: 10px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       transition: all 0.3s ease;
     }
@@ -359,76 +356,216 @@
       color: var(--warning);
     }
 
-    /* Narrative Stages Guide */
-    .narrative-stages {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 6px;
-    }
-
-    .stage-pill {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 8px 12px;
-      text-align: center;
-    }
-    .stage-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--accent);
-    }
-    .stage-desc {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    /* Board Sections */
-    .board-section {
-      background: var(--surface);
+    /* Main Tabletop Work Area (Picture Cards Deck) */
+    .tabletop-section {
+      background: var(--tabletop-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 18px;
+      padding: 20px;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
     }
 
     .section-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .section-title {
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .placed-badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 12px;
-      background: rgba(79, 126, 248, 0.15);
-      color: var(--accent);
+    .section-hint-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
 
-    /* Grid of 13 Slots */
+    .placed-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: rgba(79, 126, 248, 0.18);
+      color: var(--accent);
+      border: 1px solid rgba(79, 126, 248, 0.3);
+    }
+
+    /* LARGE Picture Cards Grid */
+    .pool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 18px;
+      min-height: 260px;
+      padding: 8px;
+    }
+
+    .pool-grid.drag-over {
+      background: rgba(79, 126, 248, 0.08);
+      border-radius: var(--radius-sm);
+    }
+
+    /* Physical Story Card Styling */
+    .story-card {
+      width: 100%;
+      background: #181d28;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      position: relative;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .story-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.65), 0 0 15px var(--accent-glow);
+      z-index: 20;
+    }
+
+    .story-card:active, .story-card.dragging {
+      cursor: grabbing;
+      opacity: 0.7;
+      transform: scale(0.96);
+    }
+
+    .story-card.selected {
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow), 0 12px 28px rgba(0, 0, 0, 0.6);
+      transform: translateY(-6px);
+      z-index: 25;
+    }
+
+    .card-thumb-wrap {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #000;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    .card-footer {
+      padding: 8px 10px;
+      background: rgba(14, 18, 26, 0.95);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .card-controls {
+      display: flex;
+      gap: 6px;
+    }
+
+    .card-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .card-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .status-icon {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #fff;
+      z-index: 10;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .status-icon.correct { background: var(--success); }
+    .status-icon.incorrect { background: var(--error); }
+
+    /* Compact Sequence Line (Slots 1 to 13) */
+    .sequence-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+    }
+
+    .narrative-stages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .stage-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 6px 10px;
+      text-align: center;
+    }
+    .stage-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+    .stage-desc {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
     .slots-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+      gap: 10px;
     }
 
     .slot {
-      aspect-ratio: 3/4;
-      background: rgba(0, 0, 0, 0.25);
+      aspect-ratio: 4/3;
+      background: rgba(0, 0, 0, 0.35);
       border: 2px dashed var(--border);
       border-radius: var(--radius-sm);
       position: relative;
@@ -436,21 +573,21 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 4px;
+      padding: 3px;
       transition: all 0.2s ease;
     }
 
     .slot-num-badge {
       position: absolute;
-      top: 6px;
-      left: 6px;
-      width: 24px;
-      height: 24px;
+      top: 4px;
+      left: 4px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.8);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -459,16 +596,15 @@
     }
 
     .slot-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
       text-align: center;
       pointer-events: none;
-      padding: 0 8px;
     }
 
     .slot.drag-over {
       border-color: var(--accent);
-      background: rgba(79, 126, 248, 0.15);
+      background: rgba(79, 126, 248, 0.2);
       box-shadow: 0 0 12px var(--accent-glow);
     }
 
@@ -484,141 +620,47 @@
       box-shadow: 0 0 12px var(--error-glow);
     }
 
-    /* Unsorted Pool Grid */
-    .pool-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 12px;
-      min-height: 120px;
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: var(--radius-sm);
-      padding: 12px;
-      border: 1px dashed var(--border);
-    }
-
-    .pool-grid.drag-over {
-      border-color: var(--accent);
-      background: rgba(79, 126, 248, 0.1);
-    }
-
-    /* Draggable Story Card */
-    .story-card {
-      width: 100%;
-      height: 100%;
-      background: #1a1d26;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-      position: relative;
-      cursor: grab;
-      user-select: none;
-      touch-action: none;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-    }
-
-    .story-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    }
-
-    .story-card:active, .story-card.dragging {
-      cursor: grabbing;
-      opacity: 0.6;
-      transform: scale(0.96);
-    }
-
-    .story-card.selected {
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 14px var(--accent-glow);
-    }
-
-    .card-thumb {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: #000;
-      pointer-events: none;
-    }
-
-    .card-controls {
-      position: absolute;
-      bottom: 4px;
-      right: 4px;
-      display: flex;
-      gap: 4px;
-      z-index: 10;
-    }
-
-    .card-btn {
-      width: 24px;
-      height: 24px;
+    /* Compact card inside slot */
+    .slot .story-card {
       border-radius: 4px;
-      background: rgba(0, 0, 0, 0.75);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      cursor: pointer;
-      transition: background 0.15s;
+      box-shadow: none;
     }
-
-    .card-btn:hover {
-      background: var(--accent);
-      border-color: var(--accent);
+    .slot .story-card:hover {
+      transform: none;
     }
-
-    .status-icon {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: #fff;
-      z-index: 10;
+    .slot .card-footer {
+      display: none; /* Hide footer in compact slot to focus purely on picture! */
     }
-    .status-icon.correct { background: var(--success); }
-    .status-icon.incorrect { background: var(--error); }
 
     /* Touch Drag Ghost Floating Element */
     .touch-ghost {
       position: fixed;
       pointer-events: none;
       z-index: 30000;
-      width: 110px;
-      height: 145px;
-      opacity: 0.85;
+      width: 180px;
+      height: 135px;
+      opacity: 0.9;
       transform: translate(-50%, -50%);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-      border-radius: 8px;
-      border: 2px solid var(--accent);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.7);
+      border-radius: 10px;
+      border: 3px solid var(--accent);
       overflow: hidden;
+      background: #000;
     }
     .touch-ghost img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      background: #000;
     }
 
-    /* Modal Lightbox for Page Preview */
+    /* Modal Lightbox for High-Res Page Preview */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.88);
       backdrop-filter: blur(8px);
       z-index: 25000;
       display: flex;
@@ -639,12 +681,12 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      max-width: 90vw;
-      max-height: 90vh;
+      max-width: 92vw;
+      max-height: 92vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
     }
 
     .modal-header {
@@ -672,7 +714,7 @@
     .modal-close:hover { color: var(--text); background: rgba(255,255,255,0.1); }
 
     .modal-body {
-      padding: 12px;
+      padding: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -680,11 +722,12 @@
     }
 
     .modal-img {
-      max-width: 80vw;
+      max-width: 82vw;
       max-height: 75vh;
       object-fit: contain;
-      border-radius: 4px;
+      border-radius: 6px;
       background: #000;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
     }
 
     .modal-nav {
@@ -708,8 +751,8 @@
     @media (max-width: 640px) {
       .narrative-stages { grid-template-columns: 1fr; }
       .story-title span { display: none; }
-      .slots-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
-      .pool-grid { grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); }
+      .pool-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+      .slots-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
       .activity-header { flex-direction: column; align-items: flex-start; }
       .controls-bar { width: 100%; justify-content: space-between; }
     }
@@ -755,7 +798,7 @@
       <div class="activity-header">
         <div class="activity-info">
           <h2>🧩 Narrative Sequencing Activity</h2>
-          <p>Drag &amp; drop (or tap) each page card into order from 1 to 13 to reconstruct the story arc.</p>
+          <p>Pick up pages from the picture cards pile and drag (or tap) them into order from 1 to 13!</p>
         </div>
         <div class="controls-bar">
           <button id="btn-check" class="btn btn-primary">✓ Check Story</button>
@@ -767,50 +810,52 @@
 
       <!-- Feedback / Status Toast Banner -->
       <div id="feedback-banner" class="feedback-banner info" style="display: none;">
-        <span id="feedback-msg">Arrange the 13 pages below.</span>
+        <span id="feedback-msg">Arrange the 13 pages below into correct story sequence.</span>
       </div>
 
-      <!-- Narrative Structure Stage Pills -->
-      <div class="narrative-stages">
-        <div class="stage-pill">
-          <div class="stage-title">🌱 Beginning (1 – 3)</div>
-          <div class="stage-desc">Character &amp; Setting Introduction</div>
-        </div>
-        <div class="stage-pill">
-          <div class="stage-title">⚡ Middle (4 – 9)</div>
-          <div class="stage-desc">Action, Interaction &amp; Problem</div>
-        </div>
-        <div class="stage-pill">
-          <div class="stage-title">✨ Ending (10 – 13)</div>
-          <div class="stage-desc">Climax, Friendship &amp; Resolution</div>
-        </div>
-      </div>
-
-      <!-- Story Order Target Slots (1 to 13) -->
-      <div class="board-section">
+      <!-- MAIN WORKSPACE: Physical Picture Cards Tabletop (LARGE PICTURES) -->
+      <div class="tabletop-section">
         <div class="section-head">
           <div class="section-title">
-            <span>📖 Story Sequence (Target Slots 1–13)</span>
+            <span>🎴 Unsorted Story Cards Tabletop</span>
+          </div>
+          <span class="section-hint-text">Inspect pictures &amp; drag cards to sequence line below</span>
+        </div>
+        <div id="pool-grid" class="pool-grid"></div>
+      </div>
+
+      <!-- BOTTOM TARGET LINE: Compact Story Sequence Rail (Slots 1 to 13) -->
+      <div class="sequence-section">
+        <div class="section-head">
+          <div class="section-title">
+            <span>📖 Story Sequence Line (Slots 1–13)</span>
           </div>
           <span id="placed-counter" class="placed-badge">Placed: 0 / 13</span>
         </div>
-        <div id="slots-grid" class="slots-grid"></div>
-      </div>
 
-      <!-- Unsorted Pages Pool -->
-      <div class="board-section">
-        <div class="section-head">
-          <div class="section-title">
-            <span>🎴 Unsorted Page Cards Pool</span>
+        <!-- Narrative Structure Stage Indicators -->
+        <div class="narrative-stages">
+          <div class="stage-pill">
+            <div class="stage-title">🌱 Beginning (1 – 3)</div>
+            <div class="stage-desc">Character &amp; Setting Introduction</div>
+          </div>
+          <div class="stage-pill">
+            <div class="stage-title">⚡ Middle (4 – 9)</div>
+            <div class="stage-desc">Action, Interaction &amp; Conflict</div>
+          </div>
+          <div class="stage-pill">
+            <div class="stage-title">✨ Ending (10 – 13)</div>
+            <div class="stage-desc">Climax &amp; Resolution</div>
           </div>
         </div>
-        <div id="pool-grid" class="pool-grid"></div>
+
+        <div id="slots-grid" class="slots-grid"></div>
       </div>
 
     </div>
   </div>
 
-  <!-- Page Zoom Modal Lightbox -->
+  <!-- High-Res Page Zoom Modal Lightbox -->
   <div id="preview-modal" class="modal-overlay">
     <div class="modal-card">
       <div class="modal-header">
@@ -860,7 +905,7 @@
 
     // Activity state
     var totalPages = 0;
-    var pageThumbnails = []; // Data URLs for pages 0..12 (1..13)
+    var pageThumbnails = []; // High resolution Data URLs for cards
     var slots = new Array(13).fill(null); // slots[i] = pageIndex (0-based) or null
     var pool = []; // array of pageIndexes in pool
     var selectedCard = null; // pageIndex currently selected via click
@@ -898,8 +943,8 @@
         };
         await page.render(renderContext).promise;
 
-        // 2. Generate crisp thumbnail for Activity View
-        var thumbScale = 300 / viewport.width; // ~300px width thumbnail
+        // 2. Generate high-resolution thumbnail for Tabletop Cards (600px width render for extreme clarity)
+        var thumbScale = 600 / viewport.width;
         var thumbViewport = page.getViewport({ scale: thumbScale });
         var thumbCanvas = document.createElement("canvas");
         thumbCanvas.width = thumbViewport.width;
@@ -911,7 +956,7 @@
           viewport: thumbViewport
         }).promise;
         
-        pageThumbnails.push(thumbCanvas.toDataURL("image/jpeg", 0.85));
+        pageThumbnails.push(thumbCanvas.toDataURL("image/jpeg", 0.90));
       }
 
       // Hide loading spinner
@@ -1212,7 +1257,6 @@
     var placedCounter = document.getElementById("placed-counter");
 
     function initActivityBoard() {
-      // Create initial pool of 0..12 shuffled
       pool = [];
       for (var i = 0; i < totalPages; i++) pool.push(i);
       shuffleArray(pool);
@@ -1235,7 +1279,28 @@
     }
 
     function renderBoard() {
-      // Render target slots
+      // 1. Render Tabletop Pool (Large Picture Cards)
+      poolGrid.innerHTML = "";
+      if (pool.length === 0) {
+        var emptyMsg = document.createElement("div");
+        emptyMsg.style.gridColumn = "1 / -1";
+        emptyMsg.style.textAlign = "center";
+        emptyMsg.style.padding = "30px";
+        emptyMsg.style.color = "var(--success)";
+        emptyMsg.style.fontSize = "0.95rem";
+        emptyMsg.style.fontWeight = "600";
+        emptyMsg.innerText = "✨ All picture cards have been placed onto the sequence line! Click 'Check Story' to verify your order.";
+        poolGrid.appendChild(emptyMsg);
+      } else {
+        for (var p = 0; p < pool.length; p++) {
+          var pPageIdx = pool[p];
+          var poolCard = createCardElement(pPageIdx, "pool", p);
+          poolGrid.appendChild(poolCard);
+        }
+      }
+      setupPoolDropEvents(poolGrid);
+
+      // 2. Render Target Sequence Line (Slots 1 to 13)
       slotsGrid.innerHTML = "";
       var placedCount = 0;
 
@@ -1250,7 +1315,6 @@
         numBadge.innerText = (s + 1);
         slotDiv.appendChild(numBadge);
 
-        // Apply check status classes
         if (checkResults) {
           if (checkResults[s] === true) slotDiv.classList.add("correct");
           else if (checkResults[s] === false) slotDiv.classList.add("incorrect");
@@ -1280,27 +1344,6 @@
       }
 
       placedCounter.innerText = "Placed: " + placedCount + " / " + totalPages;
-
-      // Render pool grid
-      poolGrid.innerHTML = "";
-      if (pool.length === 0) {
-        var emptyMsg = document.createElement("div");
-        emptyMsg.style.gridColumn = "1 / -1";
-        emptyMsg.style.textAlign = "center";
-        emptyMsg.style.padding = "20px";
-        emptyMsg.style.color = "var(--text-muted)";
-        emptyMsg.style.fontSize = "0.85rem";
-        emptyMsg.innerText = "All page cards have been placed! Click 'Check Story' to verify.";
-        poolGrid.appendChild(emptyMsg);
-      } else {
-        for (var p = 0; p < pool.length; p++) {
-          var pPageIdx = pool[p];
-          var poolCard = createCardElement(pPageIdx, "pool", p);
-          poolGrid.appendChild(poolCard);
-        }
-      }
-
-      setupPoolDropEvents(poolGrid);
     }
 
     function createCardElement(pageIdx, locationType, locationIndex) {
@@ -1315,29 +1358,42 @@
         card.classList.add("selected");
       }
 
-      // Thumbnail Image
+      // Thumbnail Container
+      var thumbWrap = document.createElement("div");
+      thumbWrap.className = "card-thumb-wrap";
+
       var img = document.createElement("img");
       img.className = "card-thumb";
       img.src = pageThumbnails[pageIdx];
-      img.alt = "Page " + (pageIdx + 1);
-      card.appendChild(img);
+      img.alt = "Page Card";
+      thumbWrap.appendChild(img);
+      card.appendChild(thumbWrap);
 
-      // Card Controls (Zoom button)
+      // Footer bar (Controls & Label)
+      var footer = document.createElement("div");
+      footer.className = "card-footer";
+
+      var label = document.createElement("div");
+      label.className = "card-label";
+      label.innerText = locationType === "slot" ? ("Slot " + (locationIndex + 1)) : "Card";
+      footer.appendChild(label);
+
       var controls = document.createElement("div");
       controls.className = "card-controls";
       
       var zoomBtn = document.createElement("button");
       zoomBtn.className = "card-btn";
-      zoomBtn.title = "Inspect Page";
+      zoomBtn.title = "Inspect High-Res Picture";
       zoomBtn.innerText = "🔍";
       zoomBtn.addEventListener("click", function(e) {
         e.stopPropagation();
         openPreviewModal(pageIdx);
       });
       controls.appendChild(zoomBtn);
-      card.appendChild(controls);
+      footer.appendChild(controls);
+      card.appendChild(footer);
 
-      // Desktop HTML5 Drag Events
+      // HTML5 Drag Events
       card.addEventListener("dragstart", function(e) {
         e.dataTransfer.setData("text/plain", JSON.stringify({
           pageIdx: pageIdx,
@@ -1355,11 +1411,11 @@
       card.addEventListener("click", function(e) {
         e.stopPropagation();
         if (selectedCard === pageIdx) {
-          selectedCard = null; // deselect
+          selectedCard = null;
           hideFeedback();
         } else {
           selectedCard = pageIdx;
-          showFeedback("Page card selected! Tap any slot above to place it.", "info");
+          showFeedback("Picture card selected! Tap any slot in the sequence line below to place it.", "info");
         }
         renderBoard();
       });
@@ -1386,7 +1442,7 @@
         slots[srcIndex] = null;
       }
 
-      // If slot had an existing card, move it to src location (swap) or back to pool
+      // If target slot had an existing card, swap locations
       if (existingSlotPageIdx !== null) {
         if (srcType === "slot") {
           slots[srcIndex] = existingSlotPageIdx;
@@ -1439,11 +1495,9 @@
         } catch (err) {}
       });
 
-      // Tap empty slot or occupied slot to place selected card
       slotEl.addEventListener("click", function() {
         var targetSlotIndex = parseInt(slotEl.dataset.slotIndex);
         if (selectedCard !== null) {
-          // Find source of selectedCard
           var srcType = "pool";
           var srcIndex = pool.indexOf(selectedCard);
           if (srcIndex === -1) {
@@ -1480,7 +1534,7 @@
       });
 
       poolEl.addEventListener("click", function(e) {
-        if (selectedCard !== null && e.target === poolEl) {
+        if (selectedCard !== null && e.target.closest("#pool-grid")) {
           var srcIndex = slots.indexOf(selectedCard);
           if (srcIndex > -1) {
             moveCardToPool({
@@ -1500,7 +1554,7 @@
       var isTouchDragging = false;
 
       cardEl.addEventListener("touchstart", function(e) {
-        if (e.target.closest(".card-btn")) return; // skip if tapping zoom button
+        if (e.target.closest(".card-btn")) return;
         if (e.touches.length !== 1) return;
 
         touchStartPos.x = e.touches[0].clientX;
@@ -1516,7 +1570,6 @@
 
         if (!isTouchDragging && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
           isTouchDragging = true;
-          // Create ghost
           touchGhost = document.createElement("div");
           touchGhost.className = "touch-ghost";
           var img = document.createElement("img");
@@ -1530,7 +1583,6 @@
           touchGhost.style.left = touch.clientX + "px";
           touchGhost.style.top = touch.clientY + "px";
 
-          // Highlight target slot
           var elem = document.elementFromPoint(touch.clientX, touch.clientY);
           var slot = elem ? elem.closest(".slot") : null;
           document.querySelectorAll(".slot.drag-over").forEach(s => s.classList.remove("drag-over"));
@@ -1570,7 +1622,7 @@
       });
     }
 
-    /* Buttons: Check, Hint, Reshuffle, Reveal */
+    /* Action Buttons */
     document.getElementById("btn-check").addEventListener("click", function() {
       var correctCount = 0;
       checkResults = [];
@@ -1590,23 +1642,19 @@
         showFeedback("🎉 Perfect! You arranged all 13 pages in perfect narrative order!", "success");
         triggerConfetti();
       } else {
-        showFeedback("Score: " + correctCount + " / " + totalPages + " pages in correct position. Check the green/red slots and keep going!", "warning");
+        showFeedback("Score: " + correctCount + " / " + totalPages + " pages in correct position. Check green/red indicators and keep going!", "warning");
       }
     });
 
     document.getElementById("btn-hint").addEventListener("click", function() {
-      // Find first slot that is empty or incorrect
       for (var s = 0; s < totalPages; s++) {
         if (slots[s] !== s) {
-          // If page s is in pool or another slot, move it to slot s!
           var currentLocOfPageS = slots.indexOf(s);
           if (currentLocOfPageS > -1) {
-            // Swap page in slot s and slot currentLocOfPageS
             var temp = slots[s];
             slots[s] = s;
             slots[currentLocOfPageS] = temp;
           } else {
-            // It's in pool
             var pIdx = pool.indexOf(s);
             if (pIdx > -1) pool.splice(pIdx, 1);
             if (slots[s] !== null) pool.push(slots[s]);
@@ -1623,7 +1671,7 @@
 
     document.getElementById("btn-shuffle").addEventListener("click", function() {
       initActivityBoard();
-      showFeedback("Board reshuffled! Try arranging the pages into sequence.", "info");
+      showFeedback("Board reshuffled! Pick up cards from the tabletop and arrange them in order.", "info");
     });
 
     document.getElementById("btn-reveal").addEventListener("click", function() {
