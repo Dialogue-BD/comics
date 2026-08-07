@@ -783,6 +783,172 @@
       border-radius: 6px;
       margin-bottom: 10px;
     }
+    /* Learning Focus Mode Toggle */
+    .mode-toggle-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    .mode-toggle-header {
+      font-size: 10px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mode-toggle-buttons {
+      display: flex;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 3px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      gap: 4px;
+    }
+    .mode-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      user-select: none;
+    }
+    .mode-btn:hover {
+      color: #f8fafc;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .mode-btn.active-grammar {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0f172a;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+    }
+    .mode-btn.active-vocab {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Vocab Focus Banner */
+    .vocab-focus-banner {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .vocab-focus-title {
+      color: #34d399;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .vocab-focus-desc {
+      color: #cbd5e1;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+    /* Learning Focus Mode Toggle */
+    .mode-toggle-card {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    .mode-toggle-header {
+      font-size: 10px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mode-toggle-buttons {
+      display: flex;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 3px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      gap: 4px;
+    }
+    .mode-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      user-select: none;
+    }
+    .mode-btn:hover {
+      color: #f8fafc;
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .mode-btn.active-grammar {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0f172a;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+    }
+    .mode-btn.active-vocab {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Vocab Focus Banner */
+    .vocab-focus-banner {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .vocab-focus-title {
+      color: #34d399;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .vocab-focus-desc {
+      color: #cbd5e1;
+      font-size: 11px;
+      line-height: 1.4;
+    }
   </style>
 </head>
 <body>
@@ -833,19 +999,43 @@
       </div>
       <div id="grammar-title" class="grammar-point">Present Continuous</div>
     </div>
-    
-    <div class="flooding-banner">⚡ আউটপুট ফ্লাডিং চ্যালেঞ্জ: ছবির প্রতিটি চরিত্রের ওপর এই নিয়মটি প্রয়োগ করুন!</div>
 
-    <div id="prompt-text" class="prompt-text">Find a character. What are they doing right now?</div>
-    
-    <div class="hint-container">
-      <div class="hint-title">Structure Formula (গঠনশৈলী)</div>
-      <div id="hint-text" class="hint-text">is/are + verb-ing</div>
+    <!-- Learning Focus Mode Toggle -->
+    <div class="mode-toggle-card">
+      <div class="mode-toggle-header">
+        <span>Learning Focus</span>
+        <span id="mode-badge" style="color: #f59e0b;">Grammar Active</span>
+      </div>
+      <div class="mode-toggle-buttons">
+        <button id="mode-grammar-btn" class="mode-btn active-grammar" type="button" onclick="setLearningMode('grammar')">
+          ⚡ Grammar Flood
+        </button>
+        <button id="mode-vocab-btn" class="mode-btn" type="button" onclick="setLearningMode('vocab')">
+          🏷️ Vocab Focus
+        </button>
+      </div>
     </div>
 
-    <div class="hint-container" id="example-box" style="margin-top: 8px;">
-      <div class="hint-title">Example Flooding Output (ইংরেজি উদাহরণ)</div>
-      <div id="example-text" class="hint-text" style="font-style: normal; white-space: pre-line; color: #cbd5e1; font-size: 11px; line-height: 1.4;"></div>
+    <!-- Vocab Focus Mode Banner -->
+    <div id="vocab-focus-box" class="vocab-focus-banner" style="display: none;">
+      <div class="vocab-focus-title">🏷️ Vocabulary Focus Mode</div>
+      <div class="vocab-focus-desc">Click or tap any object in the picture to discover its English name &amp; clear pronunciation!</div>
+    </div>
+    
+    <div id="grammar-details-group">
+      <div class="flooding-banner">⚡ আউটপুট ফ্লাডিং চ্যালেঞ্জ: ছবির প্রতিটি চরিত্রের ওপর এই নিয়মটি প্রয়োগ করুন!</div>
+
+      <div id="prompt-text" class="prompt-text">Find a character. What are they doing right now?</div>
+      
+      <div class="hint-container">
+        <div class="hint-title">Structure Formula (গঠনশৈলী)</div>
+        <div id="hint-text" class="hint-text">is/are + verb-ing</div>
+      </div>
+
+      <div class="hint-container" id="example-box" style="margin-top: 8px;">
+        <div class="hint-title">Example Flooding Output (ইংরেজি উদাহরণ)</div>
+        <div id="example-text" class="hint-text" style="font-style: normal; white-space: pre-line; color: #cbd5e1; font-size: 11px; line-height: 1.4;"></div>
+      </div>
     </div>
     
     <details class="filter-section voice-details">
@@ -971,12 +1161,68 @@
     }, { once: true });
 
     // Initialization
+    var learningMode = getSavedLearningMode();
+
+    function getSavedLearningMode() {
+      try {
+        var saved = window.localStorage.getItem("busyPicturesLearningMode");
+        return saved === "vocab" ? "vocab" : "grammar";
+      } catch (err) {
+        return "grammar";
+      }
+    }
+
+    function saveLearningMode(mode) {
+      try {
+        window.localStorage.setItem("busyPicturesLearningMode", mode);
+      } catch (err) {}
+    }
+
+    function setLearningMode(mode) {
+      learningMode = mode === "vocab" ? "vocab" : "grammar";
+      saveLearningMode(learningMode);
+
+      var grammarBtn = document.getElementById("mode-grammar-btn");
+      var vocabBtn = document.getElementById("mode-vocab-btn");
+      var modeBadge = document.getElementById("mode-badge");
+      var grammarGroup = document.getElementById("grammar-details-group");
+      var vocabBox = document.getElementById("vocab-focus-box");
+      var grammarTitle = document.getElementById("grammar-title");
+
+      if (learningMode === "vocab") {
+        if (grammarBtn) grammarBtn.className = "mode-btn";
+        if (vocabBtn) vocabBtn.className = "mode-btn active-vocab";
+        if (modeBadge) {
+          modeBadge.innerText = "Vocab Mode";
+          modeBadge.style.color = "#10b981";
+        }
+        if (grammarGroup) grammarGroup.style.display = "none";
+        if (vocabBox) vocabBox.style.display = "block";
+        if (grammarTitle) grammarTitle.innerText = "Vocabulary Focus";
+      } else {
+        if (grammarBtn) grammarBtn.className = "mode-btn active-grammar";
+        if (vocabBtn) vocabBtn.className = "mode-btn";
+        if (modeBadge) {
+          modeBadge.innerText = "Grammar Active";
+          modeBadge.style.color = "#f59e0b";
+        }
+        if (grammarGroup) grammarGroup.style.display = "block";
+        if (vocabBox) vocabBox.style.display = "none";
+        updatePromptUI(false);
+      }
+
+      if (lastTappedObject) {
+        refreshSpokenSentence(true);
+      }
+    }
+
     function init() {
       updateMuteButton();
       initVoiceSelector();
       updateSuggestionTools();
       applyOrientationLayout();
       rollAll();
+      setLearningMode(learningMode);
       centerContent();
     }
 
@@ -1382,9 +1628,14 @@
     // left the toast and the spoken sentence on the previous grammar point.
     function refreshSpokenSentence(respeak) {
       if (!lastTappedObject) return;
-      var sentence = buildGrammarSentence(lastTappedObject.grammar_data, prompts[currentPromptIndex]);
-      showSpeechToast(lastTappedObject.name, sentence || "");
-      if (respeak) speakText(sentence || lastTappedObject.name);
+      if (learningMode === "vocab") {
+        showSpeechToast("English Vocab", lastTappedObject.name);
+        if (respeak) speakText(lastTappedObject.name);
+      } else {
+        var sentence = buildGrammarSentence(lastTappedObject.grammar_data, prompts[currentPromptIndex]);
+        showSpeechToast(lastTappedObject.name, sentence || "");
+        if (respeak) speakText(sentence || lastTappedObject.name);
+      }
     }
 
     function updatePromptUI(respeak) {
@@ -1491,19 +1742,22 @@
       }, options.highlightDuration || 1400);
 
       // Build Sentence
-      var prompt = prompts[currentPromptIndex];
-      var gData = obj.grammar_data;
-      var sentence = buildGrammarSentence(gData, prompt);
-      showSpeechToast(obj.name, sentence || "");
-      // No sentence stored for this grammar point on this object: the
-      // construction does not work here, so just name the thing.
-      if (options.nameFirst) {
-        speakText(obj.name, function() {
-          if (sentence) speakText(sentence, options.onSpeechEnd);
-          else if (options.onSpeechEnd) options.onSpeechEnd();
-        });
+      if (learningMode === "vocab") {
+        showSpeechToast("English Vocab", obj.name);
+        speakText(obj.name, options.onSpeechEnd);
       } else {
-        speakText(sentence || obj.name, options.onSpeechEnd);
+        var prompt = prompts[currentPromptIndex];
+        var gData = obj.grammar_data;
+        var sentence = buildGrammarSentence(gData, prompt);
+        showSpeechToast(obj.name, sentence || "");
+        if (options.nameFirst) {
+          speakText(obj.name, function() {
+            if (sentence) speakText(sentence, options.onSpeechEnd);
+            else if (options.onSpeechEnd) options.onSpeechEnd();
+          });
+        } else {
+          speakText(sentence || obj.name, options.onSpeechEnd);
+        }
       }
     }
 
