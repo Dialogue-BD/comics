@@ -17,18 +17,18 @@
     }
 
     :root {
-      --bg: #0b0d12;
-      --surface: #141822;
-      --surface-hover: #1c2230;
-      --tabletop-bg: #11151f;
-      --border: #232a3b;
+      --bg: #090b10;
+      --surface: #121622;
+      --surface-hover: #1a2030;
+      --tabletop-bg: radial-gradient(circle at 50% 30%, #1c2333 0%, #0d111a 70%, #07090e 100%);
+      --border: #232a3c;
       --accent: #4f7ef8;
       --accent-hover: #3b6be8;
-      --accent-glow: rgba(79, 126, 248, 0.4);
+      --accent-glow: rgba(79, 126, 248, 0.5);
       --success: #10b981;
-      --success-glow: rgba(16, 185, 129, 0.4);
+      --success-glow: rgba(16, 185, 129, 0.5);
       --error: #ef4444;
-      --error-glow: rgba(239, 68, 68, 0.4);
+      --error-glow: rgba(239, 68, 68, 0.5);
       --warning: #f59e0b;
       --text: #e8eaf0;
       --text-muted: #8c97b0;
@@ -53,7 +53,7 @@
       left: 0;
       width: 100vw;
       height: var(--header-h);
-      background: rgba(20, 24, 34, 0.94);
+      background: rgba(18, 22, 34, 0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       display: flex;
@@ -227,7 +227,7 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ------------------------------------------------------------- */
-    /* Sequencing Activity Workspace - ZERO SCROLL WIDESCREEN TV LAYOUT */
+    /* Sequencing Activity Workspace - 3D PHYSICAL TABLETOP LAYOUT */
     /* ------------------------------------------------------------- */
     #activity-container {
       position: absolute;
@@ -235,16 +235,16 @@
       left: 0;
       width: 100vw;
       height: calc(100vh - var(--header-h));
-      overflow: hidden; /* ZERO VERTICAL SCROLLING FOR TV DISPLAY */
+      overflow: hidden; /* ZERO SCROLLING ON WIDESCREEN TV */
       background: var(--bg);
-      padding: 10px 14px 12px;
+      padding: 8px 12px 10px;
       display: none;
     }
 
     .activity-wrapper {
       width: 100%;
       height: 100%;
-      max-width: 1800px;
+      max-width: 1850px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -256,7 +256,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 8px 16px;
+      padding: 6px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -265,7 +265,7 @@
     }
 
     .activity-info h2 {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -359,29 +359,30 @@
       color: var(--warning);
     }
 
-    /* MAIN TABLETOP DECK AREA: Takes up available space with LARGE PICTURE CARDS */
+    /* 3D PHYSICAL TABLETOP STUDIO SURFACE */
     .tabletop-section {
       background: var(--tabletop-bg);
       border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius);
       padding: 10px 14px;
-      flex: 1 1 58%;
+      flex: 1 1 60%;
       min-height: 0;
       display: flex;
       flex-direction: column;
-      box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+      box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.7), 0 4px 20px rgba(0, 0, 0, 0.4);
+      position: relative;
     }
 
     .section-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       flex: 0 0 auto;
     }
 
     .section-title {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -410,10 +411,11 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(160px, 13vw), 1fr));
       grid-auto-rows: 1fr;
-      gap: 8px 10px;
-      padding: 4px;
+      gap: 10px 14px;
+      padding: 8px 6px;
       overflow: hidden;
       align-items: center;
+      perspective: 1000px; /* 3D Perspective Depth */
     }
 
     .pool-grid.drag-over {
@@ -421,14 +423,15 @@
       border-radius: var(--radius-sm);
     }
 
-    /* Physical Story Card Styling */
+    /* 3D REALISTIC PRINTED PHOTOGRAPH CARD */
     .story-card {
       width: 100%;
       height: 100%;
       max-height: 100%;
-      background: #181d28;
+      background: #f8fafc; /* Crisp white/cream photo paper frame */
+      padding: 6px 6px 8px 6px;
       border-radius: 8px;
-      border: 2px solid rgba(255, 255, 255, 0.14);
+      border: 1px solid #cbd5e1;
       overflow: hidden;
       position: relative;
       cursor: grab;
@@ -436,49 +439,53 @@
       touch-action: none;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5), 0 2px 5px rgba(0, 0, 0, 0.3);
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+      will-change: transform;
     }
 
+    /* 3D "HOLD UP / PICK UP" LIFT ELEVATION ON HOVER/SELECT */
     .story-card:hover {
       border-color: var(--accent);
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.6), 0 0 12px var(--accent-glow);
-      z-index: 20;
+      transform: translateY(-22px) scale(1.15) rotate(0deg) !important;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 22px var(--accent-glow);
+      z-index: 100;
     }
 
     .story-card:active, .story-card.dragging {
       cursor: grabbing;
-      opacity: 0.7;
-      transform: scale(0.96);
+      opacity: 0.8;
+      transform: scale(1.1) translateY(-14px) rotate(0deg) !important;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.75);
+      z-index: 100;
     }
 
     .story-card.selected {
       border: 3px solid var(--accent);
-      box-shadow: 0 0 16px var(--accent-glow), 0 8px 20px rgba(0, 0, 0, 0.6);
-      transform: translateY(-4px);
-      z-index: 25;
+      box-shadow: 0 0 25px var(--accent-glow), 0 25px 55px rgba(0, 0, 0, 0.85);
+      transform: translateY(-22px) scale(1.15) rotate(0deg) !important;
+      z-index: 120;
     }
 
-    /* Prominent Classroom Scene Letter Badge */
+    /* High Visibility Classroom Letter Badge */
     .card-letter-badge {
       position: absolute;
-      top: 6px;
-      left: 6px;
-      min-width: 28px;
-      height: 28px;
-      padding: 0 6px;
+      top: 10px;
+      left: 10px;
+      min-width: 30px;
+      height: 30px;
+      padding: 0 7px;
       border-radius: 6px;
-      background: #f59e0b;
+      background: #f59e0b; /* Bright amber/yellow */
       color: #0d0f14;
-      font-size: 1.02rem;
+      font-size: 1.05rem;
       font-weight: 900;
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 12;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
-      border: 1.5px solid #ffffff;
+      z-index: 20;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.65);
+      border: 2px solid #ffffff;
       letter-spacing: -0.02em;
     }
 
@@ -487,6 +494,7 @@
       flex: 1;
       min-height: 0;
       background: #000;
+      border-radius: 4px;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -504,9 +512,8 @@
     }
 
     .card-footer {
-      padding: 3px 6px;
-      background: rgba(14, 18, 26, 0.95);
-      border-top: 1px solid var(--border);
+      padding: 4px 4px 0 4px;
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -514,9 +521,9 @@
     }
 
     .card-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      color: var(--warning);
+      color: #334155;
     }
 
     .card-controls {
@@ -528,7 +535,7 @@
       width: 22px;
       height: 22px;
       border-radius: 4px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(15, 23, 42, 0.85);
       color: #fff;
       border: 1px solid rgba(255, 255, 255, 0.2);
       display: flex;
@@ -557,22 +564,23 @@
       font-size: 0.75rem;
       font-weight: 800;
       color: #fff;
-      z-index: 10;
+      z-index: 20;
       box-shadow: 0 3px 8px rgba(0,0,0,0.5);
     }
     .status-icon.correct { background: var(--success); }
     .status-icon.incorrect { background: var(--error); }
 
-    /* BOTTOM SEQUENCE RAIL (SLOTS 1 TO 13 IN 1 SINGLE WIDESCREEN ROW) */
+    /* DIGITAL PHOTO DOCK REEL (SLOTS 1 TO 13 IN 1 HORIZONTAL ROW) */
     .sequence-section {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 10px 14px;
+      padding: 8px 14px 10px;
       flex: 0 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
+      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
     }
 
     .sequence-section .section-head {
@@ -613,7 +621,7 @@
 
     .slot {
       aspect-ratio: 4/3;
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(0, 0, 0, 0.5);
       border: 1.5px dashed var(--border);
       border-radius: 6px;
       position: relative;
@@ -623,6 +631,7 @@
       justify-content: center;
       padding: 2px;
       transition: all 0.2s ease;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8);
     }
 
     .slot-num-badge {
@@ -632,7 +641,7 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.9);
       border: 1px solid var(--border);
       color: var(--text-muted);
       font-size: 0.68rem;
@@ -652,36 +661,38 @@
 
     .slot.drag-over {
       border-color: var(--accent);
-      background: rgba(79, 126, 248, 0.2);
-      box-shadow: 0 0 10px var(--accent-glow);
+      background: rgba(79, 126, 248, 0.25);
+      box-shadow: 0 0 14px var(--accent-glow);
     }
 
     .slot.correct {
       border-style: solid;
       border-color: var(--success);
-      box-shadow: 0 0 10px var(--success-glow);
+      box-shadow: 0 0 12px var(--success-glow);
     }
 
     .slot.incorrect {
       border-style: solid;
       border-color: var(--error);
-      box-shadow: 0 0 10px var(--error-glow);
+      box-shadow: 0 0 12px var(--error-glow);
     }
 
-    /* Slot Card Adjustments */
+    /* Slot Card Adjustments (Flattened 0deg inside slot) */
     .slot .story-card {
       border-radius: 4px;
+      padding: 2px;
       box-shadow: none;
+      transform: rotate(0deg) !important;
     }
     .slot .story-card:hover {
-      transform: none;
+      transform: rotate(0deg) !important;
     }
     .slot .card-letter-badge {
       min-width: 18px;
       height: 18px;
       font-size: 0.68rem;
-      top: 2px;
-      left: 2px;
+      top: 3px;
+      left: 3px;
       border-width: 1px;
       padding: 0 3px;
     }
@@ -689,25 +700,28 @@
       display: none;
     }
 
-    /* Touch Drag Ghost Floating Element */
+    /* 3D Floating Touch Drag Ghost */
     .touch-ghost {
       position: fixed;
       pointer-events: none;
       z-index: 30000;
-      width: 160px;
-      height: 120px;
-      opacity: 0.9;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 14px 35px rgba(0,0,0,0.7);
+      width: 190px;
+      height: 145px;
+      opacity: 0.95;
+      transform: translate(-50%, -50%) scale(1.1) rotate(2deg);
+      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.85), 0 0 20px var(--accent-glow);
       border-radius: 8px;
       border: 3px solid var(--accent);
+      background: #fff;
+      padding: 4px;
       overflow: hidden;
-      background: #000;
     }
     .touch-ghost img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      background: #000;
+      border-radius: 4px;
     }
 
     /* Modal Lightbox for High-Res Page Preview */
@@ -857,7 +871,7 @@
       <div class="activity-header">
         <div class="activity-info">
           <h2>🧩 Narrative Sequencing Activity</h2>
-          <p>Classroom Demo: Call out the big letter badges on each scene to sequence the story!</p>
+          <p>Classroom Demo: Pick up physical scene photos from the tabletop and drop them into the sequence line!</p>
         </div>
         <div class="controls-bar">
           <button id="btn-check" class="btn btn-primary">✓ Check Story</button>
@@ -869,21 +883,21 @@
 
       <!-- Feedback / Status Toast Banner -->
       <div id="feedback-banner" class="feedback-banner info" style="display: none;">
-        <span id="feedback-msg">Arrange the 13 picture cards below into correct story sequence.</span>
+        <span id="feedback-msg">Arrange the 13 scene photographs below into correct story sequence.</span>
       </div>
 
-      <!-- MAIN WORKSPACE: Physical Picture Cards Tabletop (LARGE PICTURES) -->
+      <!-- MAIN WORKSPACE: 3D Studio Photo Tabletop -->
       <div class="tabletop-section">
         <div class="section-head">
           <div class="section-title">
-            <span>🎴 Unsorted Story Cards Tabletop</span>
+            <span>📸 Unsorted Photo Tabletop</span>
           </div>
-          <span class="section-hint-text">Each scene has a random letter label for easy classroom discussion</span>
+          <span class="section-hint-text">Each photo has a scene letter label • Pick up &amp; drag photos into slots below</span>
         </div>
         <div id="pool-grid" class="pool-grid"></div>
       </div>
 
-      <!-- BOTTOM TARGET LINE: Compact Story Sequence Rail (Slots 1 to 13) -->
+      <!-- BOTTOM TARGET LINE: Compact Digital Photo Dock Reel (Slots 1 to 13) -->
       <div class="sequence-section">
         <div class="section-head">
           <div class="section-title">
@@ -966,6 +980,7 @@
     var totalPages = 0;
     var pageThumbnails = []; // High resolution Data URLs for cards
     var pageLetters = []; // Mapping pageIndex -> assigned Letter string (e.g. 'A', 'F', 'B')
+    var cardRotations = []; // Organic 3D tabletop rotation angles per page
     var slots = new Array(13).fill(null); // slots[i] = pageIndex (0-based) or null
     var pool = []; // array of pageIndexes in pool
     var selectedCard = null; // pageIndex currently selected via click
@@ -1320,12 +1335,15 @@
     var placedCounter = document.getElementById("placed-counter");
 
     function initActivityBoard() {
-      // Generate random letter assignments for each page (e.g. Page 1 -> 'G', Page 2 -> 'A', etc.)
+      // Generate random letter assignments for each page
       var lettersShuffled = alphabet.slice(0, totalPages);
       shuffleArray(lettersShuffled);
       pageLetters = [];
+      cardRotations = [];
       for (var i = 0; i < totalPages; i++) {
         pageLetters[i] = lettersShuffled[i];
+        // Organic physical photo tabletop rotation (-4.5deg to +4.5deg)
+        cardRotations[i] = (Math.random() * 9 - 4.5).toFixed(1) + "deg";
       }
 
       pool = [];
@@ -1350,7 +1368,7 @@
     }
 
     function renderBoard() {
-      // 1. Render Tabletop Pool (Large Picture Cards)
+      // 1. Render Tabletop Pool (Large 3D Physical Photo Cards)
       poolGrid.innerHTML = "";
       if (pool.length === 0) {
         var emptyMsg = document.createElement("div");
@@ -1360,7 +1378,7 @@
         emptyMsg.style.color = "var(--success)";
         emptyMsg.style.fontSize = "0.95rem";
         emptyMsg.style.fontWeight = "600";
-        emptyMsg.innerText = "✨ All picture cards placed on sequence line! Click 'Check Story' to verify.";
+        emptyMsg.innerText = "✨ All scene photos placed on sequence line! Click 'Check Story' to verify.";
         poolGrid.appendChild(emptyMsg);
       } else {
         for (var p = 0; p < pool.length; p++) {
@@ -1424,6 +1442,11 @@
       card.dataset.pageIndex = pageIdx;
       card.dataset.locType = locationType;
       card.dataset.locIndex = locationIndex;
+
+      // Apply organic physical tabletop tilt if in pool
+      if (locationType === "pool") {
+        card.style.transform = "rotate(" + cardRotations[pageIdx] + ")";
+      }
 
       if (selectedCard === pageIdx) {
         card.classList.add("selected");
@@ -1493,7 +1516,7 @@
           hideFeedback();
         } else {
           selectedCard = pageIdx;
-          showFeedback("Scene " + pageLetters[pageIdx] + " selected! Tap any slot in the sequence line below to place it.", "info");
+          showFeedback("Scene photo " + pageLetters[pageIdx] + " picked up! Tap any slot below to place it.", "info");
         }
         renderBoard();
       });
