@@ -446,6 +446,28 @@
       z-index: 25;
     }
 
+    /* Big Bright Letter Badge for Classroom Display */
+    .card-letter-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      min-width: 32px;
+      height: 32px;
+      padding: 0 8px;
+      border-radius: 8px;
+      background: #f59e0b; /* Bright amber/yellow */
+      color: #0d0f14;
+      font-size: 1.1rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 12;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      border: 2px solid #ffffff;
+      letter-spacing: -0.02em;
+    }
+
     .card-thumb-wrap {
       width: 100%;
       aspect-ratio: 4/3;
@@ -474,9 +496,12 @@
     }
 
     .card-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--warning);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .card-controls {
@@ -584,7 +609,7 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       border: 1px solid var(--border);
       color: var(--text-muted);
       font-size: 0.72rem;
@@ -627,6 +652,15 @@
     }
     .slot .story-card:hover {
       transform: none;
+    }
+    .slot .card-letter-badge {
+      min-width: 22px;
+      height: 22px;
+      font-size: 0.75rem;
+      top: 3px;
+      left: 3px;
+      border-width: 1px;
+      padding: 0 4px;
     }
     .slot .card-footer {
       display: none; /* Hide footer in compact slot to focus purely on picture! */
@@ -700,6 +734,9 @@
     .modal-title {
       font-size: 0.95rem;
       font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .modal-close {
@@ -798,7 +835,7 @@
       <div class="activity-header">
         <div class="activity-info">
           <h2>🧩 Narrative Sequencing Activity</h2>
-          <p>Pick up pages from the picture cards pile and drag (or tap) them into order from 1 to 13!</p>
+          <p>Classroom Demo: Call out the big letter badges on each scene to sequence the story!</p>
         </div>
         <div class="controls-bar">
           <button id="btn-check" class="btn btn-primary">✓ Check Story</button>
@@ -810,7 +847,7 @@
 
       <!-- Feedback / Status Toast Banner -->
       <div id="feedback-banner" class="feedback-banner info" style="display: none;">
-        <span id="feedback-msg">Arrange the 13 pages below into correct story sequence.</span>
+        <span id="feedback-msg">Arrange the 13 picture cards below into correct story sequence.</span>
       </div>
 
       <!-- MAIN WORKSPACE: Physical Picture Cards Tabletop (LARGE PICTURES) -->
@@ -819,7 +856,7 @@
           <div class="section-title">
             <span>🎴 Unsorted Story Cards Tabletop</span>
           </div>
-          <span class="section-hint-text">Inspect pictures &amp; drag cards to sequence line below</span>
+          <span class="section-hint-text">Each scene has a random letter label for easy classroom discussion</span>
         </div>
         <div id="pool-grid" class="pool-grid"></div>
       </div>
@@ -859,7 +896,7 @@
   <div id="preview-modal" class="modal-overlay">
     <div class="modal-card">
       <div class="modal-header">
-        <div id="modal-page-title" class="modal-title">Page Preview</div>
+        <div id="modal-page-title" class="modal-title">Picture Preview</div>
         <button id="modal-close-btn" class="modal-close">✕</button>
       </div>
       <div class="modal-body">
@@ -906,11 +943,15 @@
     // Activity state
     var totalPages = 0;
     var pageThumbnails = []; // High resolution Data URLs for cards
+    var pageLetters = []; // Mapping pageIndex -> assigned Letter string (e.g. 'A', 'F', 'B')
     var slots = new Array(13).fill(null); // slots[i] = pageIndex (0-based) or null
     var pool = []; // array of pageIndexes in pool
     var selectedCard = null; // pageIndex currently selected via click
     var checkResults = null; // array of booleans when checked
     var currentPreviewPageIndex = 0;
+
+    // Available letters pool for random assignment
+    var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
     // Load PDF and render Reader + Activity thumbnails
     pdfjsLib.getDocument(pdfUrl + cacheBuster).promise.then(async function(pdf) {
@@ -1257,6 +1298,14 @@
     var placedCounter = document.getElementById("placed-counter");
 
     function initActivityBoard() {
+      // Generate random letter assignments for each page (e.g. Page 1 -> 'G', Page 2 -> 'A', etc.)
+      var lettersShuffled = alphabet.slice(0, totalPages);
+      shuffleArray(lettersShuffled);
+      pageLetters = [];
+      for (var i = 0; i < totalPages; i++) {
+        pageLetters[i] = lettersShuffled[i];
+      }
+
       pool = [];
       for (var i = 0; i < totalPages; i++) pool.push(i);
       shuffleArray(pool);
@@ -1358,6 +1407,13 @@
         card.classList.add("selected");
       }
 
+      // PROMINENT RANDOM LETTER BADGE FOR CLASSROOM DEMO
+      var letterBadge = document.createElement("div");
+      letterBadge.className = "card-letter-badge";
+      letterBadge.title = "Scene Letter " + pageLetters[pageIdx];
+      letterBadge.innerText = pageLetters[pageIdx];
+      card.appendChild(letterBadge);
+
       // Thumbnail Container
       var thumbWrap = document.createElement("div");
       thumbWrap.className = "card-thumb-wrap";
@@ -1365,7 +1421,7 @@
       var img = document.createElement("img");
       img.className = "card-thumb";
       img.src = pageThumbnails[pageIdx];
-      img.alt = "Page Card";
+      img.alt = "Scene " + pageLetters[pageIdx];
       thumbWrap.appendChild(img);
       card.appendChild(thumbWrap);
 
@@ -1375,7 +1431,7 @@
 
       var label = document.createElement("div");
       label.className = "card-label";
-      label.innerText = locationType === "slot" ? ("Slot " + (locationIndex + 1)) : "Card";
+      label.innerText = "Scene " + pageLetters[pageIdx];
       footer.appendChild(label);
 
       var controls = document.createElement("div");
@@ -1383,7 +1439,7 @@
       
       var zoomBtn = document.createElement("button");
       zoomBtn.className = "card-btn";
-      zoomBtn.title = "Inspect High-Res Picture";
+      zoomBtn.title = "Inspect Scene " + pageLetters[pageIdx];
       zoomBtn.innerText = "🔍";
       zoomBtn.addEventListener("click", function(e) {
         e.stopPropagation();
@@ -1415,7 +1471,7 @@
           hideFeedback();
         } else {
           selectedCard = pageIdx;
-          showFeedback("Picture card selected! Tap any slot in the sequence line below to place it.", "info");
+          showFeedback("Scene " + pageLetters[pageIdx] + " selected! Tap any slot in the sequence line below to place it.", "info");
         }
         renderBoard();
       });
@@ -1639,10 +1695,10 @@
       renderBoard();
 
       if (correctCount === totalPages) {
-        showFeedback("🎉 Perfect! You arranged all 13 pages in perfect narrative order!", "success");
+        showFeedback("🎉 Perfect! You arranged all 13 scenes in perfect narrative order!", "success");
         triggerConfetti();
       } else {
-        showFeedback("Score: " + correctCount + " / " + totalPages + " pages in correct position. Check green/red indicators and keep going!", "warning");
+        showFeedback("Score: " + correctCount + " / " + totalPages + " scenes in correct position. Check green/red indicators and keep going!", "warning");
       }
     });
 
@@ -1660,18 +1716,18 @@
             if (slots[s] !== null) pool.push(slots[s]);
             slots[s] = s;
           }
-          showFeedback("💡 Hint: Placed Page " + (s + 1) + " into Slot " + (s + 1) + "!", "info");
+          showFeedback("💡 Hint: Placed Scene " + pageLetters[s] + " into Slot " + (s + 1) + "!", "info");
           checkResults = null;
           renderBoard();
           return;
         }
       }
-      showFeedback("All pages are already in correct order!", "success");
+      showFeedback("All scenes are already in correct order!", "success");
     });
 
     document.getElementById("btn-shuffle").addEventListener("click", function() {
       initActivityBoard();
-      showFeedback("Board reshuffled! Pick up cards from the tabletop and arrange them in order.", "info");
+      showFeedback("Board reshuffled with new random letter labels!", "info");
     });
 
     document.getElementById("btn-reveal").addEventListener("click", function() {
@@ -1680,7 +1736,7 @@
       pool = [];
       checkResults = new Array(totalPages).fill(true);
       renderBoard();
-      showFeedback("Revealed correct narrative order (Pages 1 to 13).", "info");
+      showFeedback("Revealed correct narrative order (Slots 1 to 13).", "info");
       triggerConfetti();
     });
 
@@ -1710,7 +1766,7 @@
 
     function updateModalContent() {
       modalImg.src = pageThumbnails[currentPreviewPageIndex];
-      modalPageTitle.innerText = "Page " + (currentPreviewPageIndex + 1) + " of " + totalPages;
+      modalPageTitle.innerText = "Scene " + pageLetters[currentPreviewPageIndex] + " (Page " + (currentPreviewPageIndex + 1) + " of " + totalPages + ")";
     }
 
     modalCloseBtn.addEventListener("click", function() {
