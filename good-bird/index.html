@@ -1,30 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>The Good Bird - Peter Wezel</title>
+  <title>The Good Bird - Story &amp; Sequence Activity</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <!-- Load PDF.js from cdnjs -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <style>
-    body, html {
+    /* Global Reset & Design Tokens */
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    :root {
+      --bg: #0d0f14;
+      --surface: #161a23;
+      --surface-hover: #1f2533;
+      --border: #262c3d;
+      --accent: #4f7ef8;
+      --accent-hover: #3b6be8;
+      --accent-glow: rgba(79, 126, 248, 0.3);
+      --success: #10b981;
+      --success-glow: rgba(16, 185, 129, 0.35);
+      --error: #ef4444;
+      --error-glow: rgba(239, 68, 68, 0.35);
+      --warning: #f59e0b;
+      --text: #e8eaf0;
+      --text-muted: #8c97b0;
+      --radius-sm: 8px;
+      --radius: 12px;
+      --header-h: 56px;
+    }
+
+    body, html {
       width: 100vw;
       height: 100vh;
+      overflow: hidden;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* App Header */
+    #app-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: var(--header-h);
+      background: rgba(22, 26, 35, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 10000;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .back-btn {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .back-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--accent);
+    }
+
+    .story-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .story-title span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-left: 6px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 3px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      gap: 2px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    /* PDF Reader Container */
+    #viewer-container {
+      position: absolute;
+      top: var(--header-h);
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - var(--header-h));
       overflow: hidden;
       background-color: #000000;
-      font-family: sans-serif;
-      touch-action: none; /* Disable default browser touch zoom/scroll */
+      touch-action: none;
     }
-    #viewer-container {
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-    }
+
     #pdf-container {
       width: 100%;
       position: absolute;
@@ -35,15 +160,43 @@
       flex-direction: column;
       align-items: center;
     }
-    canvas {
+
+    #pdf-container canvas {
       width: 100%;
       max-width: 100%;
       height: auto;
       display: block;
       margin-bottom: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
       background-color: #1a1a1a;
     }
+
+    /* Floating Fullscreen Button for Reader */
+    #fullscreen-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background-color: rgba(22, 26, 35, 0.85);
+      color: #ffffff;
+      border: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+      transition: all 0.2s ease;
+    }
+
+    #fullscreen-btn:hover {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
     /* Loading overlay */
     #loading {
       position: fixed;
@@ -51,49 +204,540 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: #ffffff;
-      font-size: 18px;
-      z-index: 10000;
+      font-size: 1rem;
+      font-weight: 600;
+      z-index: 20000;
       pointer-events: none;
+      background: rgba(22, 26, 35, 0.9);
+      padding: 14px 24px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 10px;
       transition: opacity 0.3s ease;
     }
-    /* Floating Fullscreen Button */
-    #fullscreen-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 56px;
-      height: 56px;
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: var(--accent);
       border-radius: 50%;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ------------------------------------------------------------- */
+    /* Sequencing Activity Workspace */
+    /* ------------------------------------------------------------- */
+    #activity-container {
+      position: absolute;
+      top: var(--header-h);
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - var(--header-h));
+      overflow-y: auto;
+      background: var(--bg);
+      padding: 20px 16px 40px;
+      display: none;
+    }
+
+    .activity-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .activity-header {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .activity-info h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .activity-info p {
+      margin-top: 4px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
       cursor: pointer;
-      z-index: 9999;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
       transition: all 0.2s ease;
-      -webkit-tap-highlight-color: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
     }
-    #fullscreen-btn:active {
-      transform: scale(0.9);
-      background-color: rgba(0, 0, 0, 0.9);
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
     }
-    #fullscreen-btn svg {
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--text-muted);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-muted);
+      border-color: var(--border);
+    }
+    .btn-outline:hover {
+      color: var(--text);
+      border-color: var(--text-muted);
+    }
+
+    /* Score Toast / Feedback Banner */
+    .feedback-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .feedback-banner.success {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--success);
+      color: var(--success);
+    }
+    .feedback-banner.info {
+      background: rgba(79, 126, 248, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .feedback-banner.warning {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--warning);
+      color: var(--warning);
+    }
+
+    /* Narrative Stages Guide */
+    .narrative-stages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .stage-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      text-align: center;
+    }
+    .stage-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+    .stage-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Board Sections */
+    .board-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .placed-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 12px;
+      background: rgba(79, 126, 248, 0.15);
+      color: var(--accent);
+    }
+
+    /* Grid of 13 Slots */
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .slot {
+      aspect-ratio: 3/4;
+      background: rgba(0, 0, 0, 0.25);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-sm);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .slot-num-badge {
+      position: absolute;
+      top: 6px;
+      left: 6px;
       width: 24px;
       height: 24px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .slot-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
       pointer-events: none;
+      padding: 0 8px;
+    }
+
+    .slot.drag-over {
+      border-color: var(--accent);
+      background: rgba(79, 126, 248, 0.15);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .slot.correct {
+      border-style: solid;
+      border-color: var(--success);
+      box-shadow: 0 0 12px var(--success-glow);
+    }
+
+    .slot.incorrect {
+      border-style: solid;
+      border-color: var(--error);
+      box-shadow: 0 0 12px var(--error-glow);
+    }
+
+    /* Unsorted Pool Grid */
+    .pool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      min-height: 120px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      border: 1px dashed var(--border);
+    }
+
+    .pool-grid.drag-over {
+      border-color: var(--accent);
+      background: rgba(79, 126, 248, 0.1);
+    }
+
+    /* Draggable Story Card */
+    .story-card {
+      width: 100%;
+      height: 100%;
+      background: #1a1d26;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+
+    .story-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .story-card:active, .story-card.dragging {
+      cursor: grabbing;
+      opacity: 0.6;
+      transform: scale(0.96);
+    }
+
+    .story-card.selected {
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 14px var(--accent-glow);
+    }
+
+    .card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+      pointer-events: none;
+    }
+
+    .card-controls {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      display: flex;
+      gap: 4px;
+      z-index: 10;
+    }
+
+    .card-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .card-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .status-icon {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #fff;
+      z-index: 10;
+    }
+    .status-icon.correct { background: var(--success); }
+    .status-icon.incorrect { background: var(--error); }
+
+    /* Touch Drag Ghost Floating Element */
+    .touch-ghost {
+      position: fixed;
+      pointer-events: none;
+      z-index: 30000;
+      width: 110px;
+      height: 145px;
+      opacity: 0.85;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      border-radius: 8px;
+      border: 2px solid var(--accent);
+      overflow: hidden;
+    }
+    .touch-ghost img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
+
+    /* Modal Lightbox for Page Preview */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 25000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    }
+
+    .modal-header {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .modal-close:hover { color: var(--text); background: rgba(255,255,255,0.1); }
+
+    .modal-body {
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+    }
+
+    .modal-img {
+      max-width: 80vw;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 4px;
+      background: #000;
+    }
+
+    .modal-nav {
+      padding: 10px 18px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Canvas Confetti Layer */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 28000;
+    }
+
+    @media (max-width: 640px) {
+      .narrative-stages { grid-template-columns: 1fr; }
+      .story-title span { display: none; }
+      .slots-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+      .pool-grid { grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); }
+      .activity-header { flex-direction: column; align-items: flex-start; }
+      .controls-bar { width: 100%; justify-content: space-between; }
     }
   </style>
 </head>
 <body>
-  <div id="loading">Loading Story...</div>
+
+  <!-- App Header Bar -->
+  <header id="app-header">
+    <div class="header-left">
+      <a href="../" class="back-btn" title="Back to All Stories">← Stories</a>
+      <h1 class="story-title">The Good Bird <span>by Peter Wezel</span></h1>
+    </div>
+    <div class="nav-tabs">
+      <button id="tab-read" class="tab-btn active"><span class="icon">📖</span> Read Story</button>
+      <button id="tab-activity" class="tab-btn"><span class="icon">🧩</span> Sequence Activity</button>
+    </div>
+  </header>
+
+  <!-- Loading Indicator -->
+  <div id="loading"><div class="spinner"></div> Loading Story Pages...</div>
+
+  <!-- 1. PDF Reader View -->
   <div id="viewer-container">
     <div id="pdf-container"></div>
   </div>
 
-  <!-- Floating Button to Toggle Fullscreen -->
+  <!-- Floating Fullscreen Button for Reader -->
   <div id="fullscreen-btn" title="Toggle Fullscreen">
     <svg id="enter-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
@@ -102,6 +746,89 @@
       <path d="M4 14h6v6m10-6h-6v6M4 10h6V4m10 6h-6V4"></path>
     </svg>
   </div>
+
+  <!-- 2. Sequencing Activity Workspace -->
+  <div id="activity-container">
+    <div class="activity-wrapper">
+      
+      <!-- Controls Header -->
+      <div class="activity-header">
+        <div class="activity-info">
+          <h2>🧩 Narrative Sequencing Activity</h2>
+          <p>Drag &amp; drop (or tap) each page card into order from 1 to 13 to reconstruct the story arc.</p>
+        </div>
+        <div class="controls-bar">
+          <button id="btn-check" class="btn btn-primary">✓ Check Story</button>
+          <button id="btn-hint" class="btn btn-secondary">💡 Hint</button>
+          <button id="btn-shuffle" class="btn btn-secondary">🔀 Reshuffle</button>
+          <button id="btn-reveal" class="btn btn-outline">👁️ Reveal Answer</button>
+        </div>
+      </div>
+
+      <!-- Feedback / Status Toast Banner -->
+      <div id="feedback-banner" class="feedback-banner info" style="display: none;">
+        <span id="feedback-msg">Arrange the 13 pages below.</span>
+      </div>
+
+      <!-- Narrative Structure Stage Pills -->
+      <div class="narrative-stages">
+        <div class="stage-pill">
+          <div class="stage-title">🌱 Beginning (1 – 3)</div>
+          <div class="stage-desc">Character &amp; Setting Introduction</div>
+        </div>
+        <div class="stage-pill">
+          <div class="stage-title">⚡ Middle (4 – 9)</div>
+          <div class="stage-desc">Action, Interaction &amp; Problem</div>
+        </div>
+        <div class="stage-pill">
+          <div class="stage-title">✨ Ending (10 – 13)</div>
+          <div class="stage-desc">Climax, Friendship &amp; Resolution</div>
+        </div>
+      </div>
+
+      <!-- Story Order Target Slots (1 to 13) -->
+      <div class="board-section">
+        <div class="section-head">
+          <div class="section-title">
+            <span>📖 Story Sequence (Target Slots 1–13)</span>
+          </div>
+          <span id="placed-counter" class="placed-badge">Placed: 0 / 13</span>
+        </div>
+        <div id="slots-grid" class="slots-grid"></div>
+      </div>
+
+      <!-- Unsorted Pages Pool -->
+      <div class="board-section">
+        <div class="section-head">
+          <div class="section-title">
+            <span>🎴 Unsorted Page Cards Pool</span>
+          </div>
+        </div>
+        <div id="pool-grid" class="pool-grid"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Page Zoom Modal Lightbox -->
+  <div id="preview-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div id="modal-page-title" class="modal-title">Page Preview</div>
+        <button id="modal-close-btn" class="modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <img id="modal-img" class="modal-img" src="" alt="Page Preview">
+      </div>
+      <div class="modal-nav">
+        <button id="modal-prev-btn" class="btn btn-secondary">← Previous</button>
+        <button id="modal-next-btn" class="btn btn-secondary">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
 
   <script>
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
@@ -112,6 +839,7 @@
     var container = document.getElementById("pdf-container");
     var loading = document.getElementById("loading");
 
+    // Reader state
     var scale = 1;
     var posX = 0;
     var posY = 0;
@@ -130,10 +858,24 @@
     var isGesture = false;
     var lastTap = 0;
 
-    // Load PDF
+    // Activity state
+    var totalPages = 0;
+    var pageThumbnails = []; // Data URLs for pages 0..12 (1..13)
+    var slots = new Array(13).fill(null); // slots[i] = pageIndex (0-based) or null
+    var pool = []; // array of pageIndexes in pool
+    var selectedCard = null; // pageIndex currently selected via click
+    var checkResults = null; // array of booleans when checked
+    var currentPreviewPageIndex = 0;
+
+    // Load PDF and render Reader + Activity thumbnails
     pdfjsLib.getDocument(pdfUrl + cacheBuster).promise.then(async function(pdf) {
-      for (var pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+      totalPages = pdf.numPages;
+      slots = new Array(totalPages).fill(null);
+      
+      for (var pageNum = 1; pageNum <= totalPages; pageNum++) {
         var page = await pdf.getPage(pageNum);
+        
+        // 1. Render for Reader View
         var viewport = page.getViewport({ scale: 1.0 });
         var fitScale = window.innerWidth / viewport.width;
         var pageViewport = page.getViewport({ scale: fitScale });
@@ -155,23 +897,71 @@
           transform: [dpr, 0, 0, dpr, 0, 0]
         };
         await page.render(renderContext).promise;
+
+        // 2. Generate crisp thumbnail for Activity View
+        var thumbScale = 300 / viewport.width; // ~300px width thumbnail
+        var thumbViewport = page.getViewport({ scale: thumbScale });
+        var thumbCanvas = document.createElement("canvas");
+        thumbCanvas.width = thumbViewport.width;
+        thumbCanvas.height = thumbViewport.height;
+        var thumbCtx = thumbCanvas.getContext("2d");
+        
+        await page.render({
+          canvasContext: thumbCtx,
+          viewport: thumbViewport
+        }).promise;
+        
+        pageThumbnails.push(thumbCanvas.toDataURL("image/jpeg", 0.85));
       }
+
+      // Hide loading spinner
       loading.style.opacity = "0";
       setTimeout(function() { loading.style.display = "none"; }, 300);
       
-      // Update dimensions and initial centering
+      // Update dimensions and initial centering for reader
       contentHeight = container.offsetHeight;
       centerContent();
+
+      // Init activity game board
+      initActivityBoard();
     }).catch(function(err) {
       console.error(err);
       loading.innerText = "Error loading story.";
     });
 
+    // Navigation Tabs logic
+    var tabRead = document.getElementById("tab-read");
+    var tabActivity = document.getElementById("tab-activity");
+    var viewerContainer = document.getElementById("viewer-container");
+    var activityContainer = document.getElementById("activity-container");
+    var fullscreenBtn = document.getElementById("fullscreen-btn");
+
+    tabRead.addEventListener("click", function() {
+      tabRead.classList.add("active");
+      tabActivity.classList.remove("active");
+      viewerContainer.style.display = "block";
+      activityContainer.style.display = "none";
+      fullscreenBtn.style.display = "flex";
+      contentHeight = container.offsetHeight;
+      centerContent();
+    });
+
+    tabActivity.addEventListener("click", function() {
+      tabActivity.classList.add("active");
+      tabRead.classList.remove("active");
+      viewerContainer.style.display = "none";
+      activityContainer.style.display = "block";
+      fullscreenBtn.style.display = "none";
+    });
+
+    /* ------------------------------------------------------------- */
+    /* READER VIEW LOGIC (Pan/Zoom/Touch) */
+    /* ------------------------------------------------------------- */
     function centerContent() {
-      if (contentHeight * scale <= window.innerHeight) {
-        posY = (window.innerHeight - contentHeight * scale) / 2;
+      if (contentHeight * scale <= (window.innerHeight - 56)) {
+        posY = ((window.innerHeight - 56) - contentHeight * scale) / 2;
       } else {
-        posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, posY));
+        posY = Math.min(0, Math.max((window.innerHeight - 56) - contentHeight * scale, posY));
       }
       posX = 0;
       updateTransform();
@@ -181,8 +971,8 @@
       container.style.transform = "translate(" + posX + "px, " + posY + "px) scale(" + scale + ")";
     }
 
-    // Touch Event Handlers
-    document.body.addEventListener("touchstart", function(e) {
+    // Touch Event Handlers for PDF viewer
+    viewerContainer.addEventListener("touchstart", function(e) {
       activeTouch = true;
       if (e.touches.length === 2) {
         isPinching = true;
@@ -206,7 +996,7 @@
       }
     });
 
-    document.body.addEventListener("touchmove", function(e) {
+    viewerContainer.addEventListener("touchmove", function(e) {
       if (!activeTouch) return;
       contentHeight = container.offsetHeight;
 
@@ -221,18 +1011,16 @@
         if (newScale < 1) newScale = 1;
         if (newScale > 5) newScale = 5;
 
-        // Midpoint-centered zoom formulas
         var newPosX = midX - window.innerWidth / 2 - (newScale / baseScale) * (initMidX - window.innerWidth / 2 - basePosX);
         var newPosY = midY - (newScale / baseScale) * (initMidY - basePosY);
 
-        // Apply scale & bound translations
         var maxPanX = (newScale - 1) * window.innerWidth / 2;
         posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
 
-        if (contentHeight * newScale <= window.innerHeight) {
-          posY = (window.innerHeight - contentHeight * newScale) / 2;
+        if (contentHeight * newScale <= (window.innerHeight - 56)) {
+          posY = ((window.innerHeight - 56) - contentHeight * newScale) / 2;
         } else {
-          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * newScale, newPosY));
+          posY = Math.min(0, Math.max((window.innerHeight - 56) - contentHeight * newScale, newPosY));
         }
 
         scale = newScale;
@@ -244,8 +1032,7 @@
           isGesture = true;
         }
 
-        // We can always drag if the content overflows the screen vertically, or if scale > 1
-        if (scale > 1 || contentHeight * scale > window.innerHeight) {
+        if (scale > 1 || contentHeight * scale > (window.innerHeight - 56)) {
           e.preventDefault();
           var currentX = e.touches[0].clientX;
           var currentY = e.touches[0].clientY;
@@ -256,22 +1043,21 @@
           var maxPanX = (scale - 1) * window.innerWidth / 2;
           posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
 
-          if (contentHeight * scale <= window.innerHeight) {
-            posY = (window.innerHeight - contentHeight * scale) / 2;
+          if (contentHeight * scale <= (window.innerHeight - 56)) {
+            posY = ((window.innerHeight - 56) - contentHeight * scale) / 2;
           } else {
-            posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
+            posY = Math.min(0, Math.max((window.innerHeight - 56) - contentHeight * scale, newPosY));
           }
           updateTransform();
         }
       }
     });
 
-    document.body.addEventListener("touchend", function(e) {
+    viewerContainer.addEventListener("touchend", function(e) {
       if (e.touches.length === 0) {
         activeTouch = false;
         isPinching = false;
 
-        // Double-tap reset
         var currentTime = Date.now();
         var tapLength = currentTime - lastTap;
         if (tapLength < 300 && tapLength > 0 && !isGesture) {
@@ -281,7 +1067,6 @@
         }
         lastTap = currentTime;
       } else if (e.touches.length === 1) {
-        // Switch to panning cleanly
         isPinching = false;
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
@@ -290,10 +1075,8 @@
       }
     });
 
-    // DESKTOP EVENT LISTENERS
-
-    // 1. Mouse Wheel Scroll & Trackpad Zoom
-    document.body.addEventListener("wheel", function(e) {
+    // Mouse Wheel Scroll & Trackpad Zoom for Reader
+    viewerContainer.addEventListener("wheel", function(e) {
       contentHeight = container.offsetHeight;
       if (e.ctrlKey) {
         e.preventDefault();
@@ -311,16 +1094,16 @@
         var maxPanX = (newScale - 1) * window.innerWidth / 2;
         posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
         
-        if (contentHeight * newScale <= window.innerHeight) {
-          posY = (window.innerHeight - contentHeight * newScale) / 2;
+        if (contentHeight * newScale <= (window.innerHeight - 56)) {
+          posY = ((window.innerHeight - 56) - contentHeight * newScale) / 2;
         } else {
-          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * newScale, newPosY));
+          posY = Math.min(0, Math.max((window.innerHeight - 56) - contentHeight * newScale, newPosY));
         }
         
         scale = newScale;
         updateTransform();
       } else {
-        if (scale > 1 || contentHeight * scale > window.innerHeight) {
+        if (scale > 1 || contentHeight * scale > (window.innerHeight - 56)) {
           e.preventDefault();
           var newPosY = posY - e.deltaY;
           var newPosX = posX - e.deltaX;
@@ -328,20 +1111,20 @@
           var maxPanX = (scale - 1) * window.innerWidth / 2;
           posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
           
-          if (contentHeight * scale <= window.innerHeight) {
-            posY = (window.innerHeight - contentHeight * scale) / 2;
+          if (contentHeight * scale <= (window.innerHeight - 56)) {
+            posY = ((window.innerHeight - 56) - contentHeight * scale) / 2;
           } else {
-            posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
+            posY = Math.min(0, Math.max((window.innerHeight - 56) - contentHeight * scale, newPosY));
           }
           updateTransform();
         }
       }
     }, { passive: false });
 
-    // 2. Mouse Click-and-Drag Panning
+    // Mouse Click-and-Drag Panning
     var isMouseDown = false;
     var mouseStartX = 0, mouseStartY = 0;
-    document.body.addEventListener("mousedown", function(e) {
+    viewerContainer.addEventListener("mousedown", function(e) {
       if (e.button !== 0 || e.target.closest("#fullscreen-btn")) return;
       isMouseDown = true;
       mouseStartX = e.clientX;
@@ -351,10 +1134,10 @@
       document.body.style.cursor = "grabbing";
     });
 
-    document.body.addEventListener("mousemove", function(e) {
+    viewerContainer.addEventListener("mousemove", function(e) {
       if (!isMouseDown) return;
       contentHeight = container.offsetHeight;
-      if (scale > 1 || contentHeight * scale > window.innerHeight) {
+      if (scale > 1 || contentHeight * scale > (window.innerHeight - 56)) {
         e.preventDefault();
         var dx = e.clientX - mouseStartX;
         var dy = e.clientY - mouseStartY;
@@ -365,51 +1148,21 @@
         var maxPanX = (scale - 1) * window.innerWidth / 2;
         posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
         
-        if (contentHeight * scale <= window.innerHeight) {
-          posY = (window.innerHeight - contentHeight * scale) / 2;
+        if (contentHeight * scale <= (window.innerHeight - 56)) {
+          posY = ((window.innerHeight - 56) - contentHeight * scale) / 2;
         } else {
-          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
+          posY = Math.min(0, Math.max((window.innerHeight - 56) - contentHeight * scale, newPosY));
         }
         updateTransform();
       }
     });
 
-    document.body.addEventListener("mouseup", function() {
-      isMouseDown = false;
-      document.body.style.cursor = "default";
-    });
-    document.body.addEventListener("mouseleave", function() {
+    window.addEventListener("mouseup", function() {
       isMouseDown = false;
       document.body.style.cursor = "default";
     });
 
-    // 3. Keyboard Arrow & Page Key Scrolling
-    document.addEventListener("keydown", function(e) {
-      contentHeight = container.offsetHeight;
-      var scrollAmount = 40;
-      var pageScroll = window.innerHeight * 0.8;
-      
-      var deltaY = 0;
-      if (e.key === "ArrowDown") deltaY = scrollAmount;
-      else if (e.key === "ArrowUp") deltaY = -scrollAmount;
-      else if (e.key === "PageDown") deltaY = pageScroll;
-      else if (e.key === "PageUp") deltaY = -pageScroll;
-      else if (e.key === "Spacebar" || e.key === " ") deltaY = e.shiftKey ? -pageScroll : pageScroll;
-      else return;
-
-      if (scale > 1 || contentHeight * scale > window.innerHeight) {
-        e.preventDefault();
-        var newPosY = posY - deltaY;
-        if (contentHeight * scale <= window.innerHeight) {
-          posY = (window.innerHeight - contentHeight * scale) / 2;
-        } else {
-          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
-        }
-        updateTransform();
-      }
-    });
-
-    // Fullscreen Toggle logic
+    // Fullscreen Toggle
     var btn = document.getElementById("fullscreen-btn");
     var enterIcon = document.getElementById("enter-icon");
     var exitIcon = document.getElementById("exit-icon");
@@ -448,14 +1201,549 @@
     }
 
     document.addEventListener("fullscreenchange", updateFullscreenIcons);
-    document.addEventListener("webkitfullscreenchange", updateFullscreenIcons);
-    document.addEventListener("mozfullscreenchange", updateFullscreenIcons);
-    document.addEventListener("MSFullscreenChange", updateFullscreenIcons);
 
-    // Re-center on window resize
+    /* ------------------------------------------------------------- */
+    /* SEQUENCING ACTIVITY GAME LOGIC */
+    /* ------------------------------------------------------------- */
+    var slotsGrid = document.getElementById("slots-grid");
+    var poolGrid = document.getElementById("pool-grid");
+    var feedbackBanner = document.getElementById("feedback-banner");
+    var feedbackMsg = document.getElementById("feedback-msg");
+    var placedCounter = document.getElementById("placed-counter");
+
+    function initActivityBoard() {
+      // Create initial pool of 0..12 shuffled
+      pool = [];
+      for (var i = 0; i < totalPages; i++) pool.push(i);
+      shuffleArray(pool);
+
+      slots = new Array(totalPages).fill(null);
+      selectedCard = null;
+      checkResults = null;
+      hideFeedback();
+
+      renderBoard();
+    }
+
+    function shuffleArray(arr) {
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+    }
+
+    function renderBoard() {
+      // Render target slots
+      slotsGrid.innerHTML = "";
+      var placedCount = 0;
+
+      for (var s = 0; s < totalPages; s++) {
+        var slotDiv = document.createElement("div");
+        slotDiv.className = "slot";
+        slotDiv.dataset.slotIndex = s;
+
+        // Slot number badge
+        var numBadge = document.createElement("div");
+        numBadge.className = "slot-num-badge";
+        numBadge.innerText = (s + 1);
+        slotDiv.appendChild(numBadge);
+
+        // Apply check status classes
+        if (checkResults) {
+          if (checkResults[s] === true) slotDiv.classList.add("correct");
+          else if (checkResults[s] === false) slotDiv.classList.add("incorrect");
+        }
+
+        var pageIdx = slots[s];
+        if (pageIdx !== null) {
+          placedCount++;
+          var card = createCardElement(pageIdx, "slot", s);
+          slotDiv.appendChild(card);
+
+          if (checkResults) {
+            var statusIcon = document.createElement("div");
+            statusIcon.className = "status-icon " + (checkResults[s] ? "correct" : "incorrect");
+            statusIcon.innerText = checkResults[s] ? "✓" : "✕";
+            slotDiv.appendChild(statusIcon);
+          }
+        } else {
+          var label = document.createElement("div");
+          label.className = "slot-label";
+          label.innerText = "Slot " + (s + 1);
+          slotDiv.appendChild(label);
+        }
+
+        setupSlotDropEvents(slotDiv);
+        slotsGrid.appendChild(slotDiv);
+      }
+
+      placedCounter.innerText = "Placed: " + placedCount + " / " + totalPages;
+
+      // Render pool grid
+      poolGrid.innerHTML = "";
+      if (pool.length === 0) {
+        var emptyMsg = document.createElement("div");
+        emptyMsg.style.gridColumn = "1 / -1";
+        emptyMsg.style.textAlign = "center";
+        emptyMsg.style.padding = "20px";
+        emptyMsg.style.color = "var(--text-muted)";
+        emptyMsg.style.fontSize = "0.85rem";
+        emptyMsg.innerText = "All page cards have been placed! Click 'Check Story' to verify.";
+        poolGrid.appendChild(emptyMsg);
+      } else {
+        for (var p = 0; p < pool.length; p++) {
+          var pPageIdx = pool[p];
+          var poolCard = createCardElement(pPageIdx, "pool", p);
+          poolGrid.appendChild(poolCard);
+        }
+      }
+
+      setupPoolDropEvents(poolGrid);
+    }
+
+    function createCardElement(pageIdx, locationType, locationIndex) {
+      var card = document.createElement("div");
+      card.className = "story-card";
+      card.draggable = true;
+      card.dataset.pageIndex = pageIdx;
+      card.dataset.locType = locationType;
+      card.dataset.locIndex = locationIndex;
+
+      if (selectedCard === pageIdx) {
+        card.classList.add("selected");
+      }
+
+      // Thumbnail Image
+      var img = document.createElement("img");
+      img.className = "card-thumb";
+      img.src = pageThumbnails[pageIdx];
+      img.alt = "Page " + (pageIdx + 1);
+      card.appendChild(img);
+
+      // Card Controls (Zoom button)
+      var controls = document.createElement("div");
+      controls.className = "card-controls";
+      
+      var zoomBtn = document.createElement("button");
+      zoomBtn.className = "card-btn";
+      zoomBtn.title = "Inspect Page";
+      zoomBtn.innerText = "🔍";
+      zoomBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        openPreviewModal(pageIdx);
+      });
+      controls.appendChild(zoomBtn);
+      card.appendChild(controls);
+
+      // Desktop HTML5 Drag Events
+      card.addEventListener("dragstart", function(e) {
+        e.dataTransfer.setData("text/plain", JSON.stringify({
+          pageIdx: pageIdx,
+          locType: locationType,
+          locIndex: locationIndex
+        }));
+        card.classList.add("dragging");
+      });
+
+      card.addEventListener("dragend", function() {
+        card.classList.remove("dragging");
+      });
+
+      // Click / Tap Handler for Select & Place
+      card.addEventListener("click", function(e) {
+        e.stopPropagation();
+        if (selectedCard === pageIdx) {
+          selectedCard = null; // deselect
+          hideFeedback();
+        } else {
+          selectedCard = pageIdx;
+          showFeedback("Page card selected! Tap any slot above to place it.", "info");
+        }
+        renderBoard();
+      });
+
+      // Touch Drag Handler
+      setupTouchDrag(card, pageIdx, locationType, locationIndex);
+
+      return card;
+    }
+
+    /* Slot and Pool Drop Handlers */
+    function moveCardToSlot(cardData, targetSlotIndex) {
+      var srcPageIdx = cardData.pageIdx;
+      var srcType = cardData.locType;
+      var srcIndex = cardData.locIndex;
+
+      var existingSlotPageIdx = slots[targetSlotIndex];
+
+      // Remove card from old location
+      if (srcType === "pool") {
+        var pIdx = pool.indexOf(srcPageIdx);
+        if (pIdx > -1) pool.splice(pIdx, 1);
+      } else if (srcType === "slot") {
+        slots[srcIndex] = null;
+      }
+
+      // If slot had an existing card, move it to src location (swap) or back to pool
+      if (existingSlotPageIdx !== null) {
+        if (srcType === "slot") {
+          slots[srcIndex] = existingSlotPageIdx;
+        } else {
+          pool.push(existingSlotPageIdx);
+        }
+      }
+
+      slots[targetSlotIndex] = srcPageIdx;
+      selectedCard = null;
+      checkResults = null;
+      hideFeedback();
+      renderBoard();
+    }
+
+    function moveCardToPool(cardData) {
+      var srcPageIdx = cardData.pageIdx;
+      var srcType = cardData.locType;
+      var srcIndex = cardData.locIndex;
+
+      if (srcType === "slot") {
+        slots[srcIndex] = null;
+        if (pool.indexOf(srcPageIdx) === -1) {
+          pool.push(srcPageIdx);
+        }
+        selectedCard = null;
+        checkResults = null;
+        hideFeedback();
+        renderBoard();
+      }
+    }
+
+    function setupSlotDropEvents(slotEl) {
+      slotEl.addEventListener("dragover", function(e) {
+        e.preventDefault();
+        slotEl.classList.add("drag-over");
+      });
+
+      slotEl.addEventListener("dragleave", function() {
+        slotEl.classList.remove("drag-over");
+      });
+
+      slotEl.addEventListener("drop", function(e) {
+        e.preventDefault();
+        slotEl.classList.remove("drag-over");
+        try {
+          var data = JSON.parse(e.dataTransfer.getData("text/plain"));
+          var targetSlotIndex = parseInt(slotEl.dataset.slotIndex);
+          moveCardToSlot(data, targetSlotIndex);
+        } catch (err) {}
+      });
+
+      // Tap empty slot or occupied slot to place selected card
+      slotEl.addEventListener("click", function() {
+        var targetSlotIndex = parseInt(slotEl.dataset.slotIndex);
+        if (selectedCard !== null) {
+          // Find source of selectedCard
+          var srcType = "pool";
+          var srcIndex = pool.indexOf(selectedCard);
+          if (srcIndex === -1) {
+            srcType = "slot";
+            srcIndex = slots.indexOf(selectedCard);
+          }
+
+          moveCardToSlot({
+            pageIdx: selectedCard,
+            locType: srcType,
+            locIndex: srcIndex
+          }, targetSlotIndex);
+        }
+      });
+    }
+
+    function setupPoolDropEvents(poolEl) {
+      poolEl.addEventListener("dragover", function(e) {
+        e.preventDefault();
+        poolEl.classList.add("drag-over");
+      });
+
+      poolEl.addEventListener("dragleave", function() {
+        poolEl.classList.remove("drag-over");
+      });
+
+      poolEl.addEventListener("drop", function(e) {
+        e.preventDefault();
+        poolEl.classList.remove("drag-over");
+        try {
+          var data = JSON.parse(e.dataTransfer.getData("text/plain"));
+          moveCardToPool(data);
+        } catch (err) {}
+      });
+
+      poolEl.addEventListener("click", function(e) {
+        if (selectedCard !== null && e.target === poolEl) {
+          var srcIndex = slots.indexOf(selectedCard);
+          if (srcIndex > -1) {
+            moveCardToPool({
+              pageIdx: selectedCard,
+              locType: "slot",
+              locIndex: srcIndex
+            });
+          }
+        }
+      });
+    }
+
+    /* Custom Touch Drag Engine for Mobile */
+    var touchGhost = null;
+    function setupTouchDrag(cardEl, pageIdx, locType, locIndex) {
+      var touchStartPos = { x: 0, y: 0 };
+      var isTouchDragging = false;
+
+      cardEl.addEventListener("touchstart", function(e) {
+        if (e.target.closest(".card-btn")) return; // skip if tapping zoom button
+        if (e.touches.length !== 1) return;
+
+        touchStartPos.x = e.touches[0].clientX;
+        touchStartPos.y = e.touches[0].clientY;
+        isTouchDragging = false;
+      }, { passive: true });
+
+      cardEl.addEventListener("touchmove", function(e) {
+        if (e.touches.length !== 1) return;
+        var touch = e.touches[0];
+        var dx = touch.clientX - touchStartPos.x;
+        var dy = touch.clientY - touchStartPos.y;
+
+        if (!isTouchDragging && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+          isTouchDragging = true;
+          // Create ghost
+          touchGhost = document.createElement("div");
+          touchGhost.className = "touch-ghost";
+          var img = document.createElement("img");
+          img.src = pageThumbnails[pageIdx];
+          touchGhost.appendChild(img);
+          document.body.appendChild(touchGhost);
+        }
+
+        if (isTouchDragging && touchGhost) {
+          e.preventDefault();
+          touchGhost.style.left = touch.clientX + "px";
+          touchGhost.style.top = touch.clientY + "px";
+
+          // Highlight target slot
+          var elem = document.elementFromPoint(touch.clientX, touch.clientY);
+          var slot = elem ? elem.closest(".slot") : null;
+          document.querySelectorAll(".slot.drag-over").forEach(s => s.classList.remove("drag-over"));
+          if (slot) slot.classList.add("drag-over");
+        }
+      }, { passive: false });
+
+      cardEl.addEventListener("touchend", function(e) {
+        if (isTouchDragging && touchGhost) {
+          var touch = e.changedTouches[0];
+          var elem = document.elementFromPoint(touch.clientX, touch.clientY);
+          
+          if (touchGhost) {
+            touchGhost.remove();
+            touchGhost = null;
+          }
+          document.querySelectorAll(".slot.drag-over").forEach(s => s.classList.remove("drag-over"));
+
+          var targetSlot = elem ? elem.closest(".slot") : null;
+          var targetPool = elem ? elem.closest(".pool-grid") : null;
+
+          if (targetSlot) {
+            var targetSlotIndex = parseInt(targetSlot.dataset.slotIndex);
+            moveCardToSlot({
+              pageIdx: pageIdx,
+              locType: locType,
+              locIndex: locIndex
+            }, targetSlotIndex);
+          } else if (targetPool && locType === "slot") {
+            moveCardToPool({
+              pageIdx: pageIdx,
+              locType: locType,
+              locIndex: locIndex
+            });
+          }
+        }
+      });
+    }
+
+    /* Buttons: Check, Hint, Reshuffle, Reveal */
+    document.getElementById("btn-check").addEventListener("click", function() {
+      var correctCount = 0;
+      checkResults = [];
+
+      for (var s = 0; s < totalPages; s++) {
+        if (slots[s] === s) {
+          checkResults[s] = true;
+          correctCount++;
+        } else {
+          checkResults[s] = false;
+        }
+      }
+
+      renderBoard();
+
+      if (correctCount === totalPages) {
+        showFeedback("🎉 Perfect! You arranged all 13 pages in perfect narrative order!", "success");
+        triggerConfetti();
+      } else {
+        showFeedback("Score: " + correctCount + " / " + totalPages + " pages in correct position. Check the green/red slots and keep going!", "warning");
+      }
+    });
+
+    document.getElementById("btn-hint").addEventListener("click", function() {
+      // Find first slot that is empty or incorrect
+      for (var s = 0; s < totalPages; s++) {
+        if (slots[s] !== s) {
+          // If page s is in pool or another slot, move it to slot s!
+          var currentLocOfPageS = slots.indexOf(s);
+          if (currentLocOfPageS > -1) {
+            // Swap page in slot s and slot currentLocOfPageS
+            var temp = slots[s];
+            slots[s] = s;
+            slots[currentLocOfPageS] = temp;
+          } else {
+            // It's in pool
+            var pIdx = pool.indexOf(s);
+            if (pIdx > -1) pool.splice(pIdx, 1);
+            if (slots[s] !== null) pool.push(slots[s]);
+            slots[s] = s;
+          }
+          showFeedback("💡 Hint: Placed Page " + (s + 1) + " into Slot " + (s + 1) + "!", "info");
+          checkResults = null;
+          renderBoard();
+          return;
+        }
+      }
+      showFeedback("All pages are already in correct order!", "success");
+    });
+
+    document.getElementById("btn-shuffle").addEventListener("click", function() {
+      initActivityBoard();
+      showFeedback("Board reshuffled! Try arranging the pages into sequence.", "info");
+    });
+
+    document.getElementById("btn-reveal").addEventListener("click", function() {
+      slots = [];
+      for (var i = 0; i < totalPages; i++) slots.push(i);
+      pool = [];
+      checkResults = new Array(totalPages).fill(true);
+      renderBoard();
+      showFeedback("Revealed correct narrative order (Pages 1 to 13).", "info");
+      triggerConfetti();
+    });
+
+    function showFeedback(msg, type) {
+      feedbackMsg.innerText = msg;
+      feedbackBanner.className = "feedback-banner " + (type || "info");
+      feedbackBanner.style.display = "flex";
+    }
+
+    function hideFeedback() {
+      feedbackBanner.style.display = "none";
+    }
+
+    /* Modal Preview Lightbox */
+    var modalOverlay = document.getElementById("preview-modal");
+    var modalImg = document.getElementById("modal-img");
+    var modalPageTitle = document.getElementById("modal-page-title");
+    var modalCloseBtn = document.getElementById("modal-close-btn");
+    var modalPrevBtn = document.getElementById("modal-prev-btn");
+    var modalNextBtn = document.getElementById("modal-next-btn");
+
+    function openPreviewModal(pageIdx) {
+      currentPreviewPageIndex = pageIdx;
+      updateModalContent();
+      modalOverlay.classList.add("active");
+    }
+
+    function updateModalContent() {
+      modalImg.src = pageThumbnails[currentPreviewPageIndex];
+      modalPageTitle.innerText = "Page " + (currentPreviewPageIndex + 1) + " of " + totalPages;
+    }
+
+    modalCloseBtn.addEventListener("click", function() {
+      modalOverlay.classList.remove("active");
+    });
+    modalOverlay.addEventListener("click", function(e) {
+      if (e.target === modalOverlay) modalOverlay.classList.remove("active");
+    });
+
+    modalPrevBtn.addEventListener("click", function() {
+      if (currentPreviewPageIndex > 0) {
+        currentPreviewPageIndex--;
+        updateModalContent();
+      }
+    });
+
+    modalNextBtn.addEventListener("click", function() {
+      if (currentPreviewPageIndex < totalPages - 1) {
+        currentPreviewPageIndex++;
+        updateModalContent();
+      }
+    });
+
+    /* Lightweight Canvas Confetti */
+    function triggerConfetti() {
+      var canvas = document.getElementById("confetti-canvas");
+      var ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      var pieces = [];
+      var colors = ["#4f7ef8", "#10b981", "#f59e0b", "#ec4899", "#8b5cf6"];
+
+      for (var i = 0; i < 100; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          speedY: Math.random() * 3 + 2,
+          speedX: Math.random() * 2 - 1,
+          rot: Math.random() * 360
+        });
+      }
+
+      var duration = 2.5 * 1000;
+      var start = Date.now();
+
+      function frame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        var elapsed = Date.now() - start;
+
+        for (var p = 0; p < pieces.length; p++) {
+          var item = pieces[p];
+          item.y += item.speedY;
+          item.x += item.speedX;
+          item.rot += 4;
+
+          ctx.save();
+          ctx.translate(item.x, item.y);
+          ctx.rotate((item.rot * Math.PI) / 180);
+          ctx.fillStyle = item.color;
+          ctx.fillRect(-item.size / 2, -item.size / 2, item.size, item.size);
+          ctx.restore();
+        }
+
+        if (elapsed < duration) {
+          requestAnimationFrame(frame);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+
+    // Re-center reader on window resize
     window.addEventListener("resize", function() {
-      contentHeight = container.offsetHeight;
-      centerContent();
+      if (tabRead.classList.contains("active")) {
+        contentHeight = container.offsetHeight;
+        centerContent();
+      }
     });
   </script>
 </body>
