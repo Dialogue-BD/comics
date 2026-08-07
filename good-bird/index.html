@@ -227,7 +227,7 @@
     @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ------------------------------------------------------------- */
-    /* Sequencing Activity Workspace - 3D PHYSICAL TABLETOP LAYOUT */
+    /* Sequencing Activity Workspace - ZERO-CUTOFF FULLSCREEN TV LAYOUT */
     /* ------------------------------------------------------------- */
     #activity-container {
       position: absolute;
@@ -364,7 +364,7 @@
       background: var(--tabletop-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 10px 14px;
+      padding: 8px 12px;
       flex: 1 1 60%;
       min-height: 0;
       display: flex;
@@ -377,7 +377,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       flex: 0 0 auto;
     }
 
@@ -404,15 +404,15 @@
       border: 1px solid rgba(79, 126, 248, 0.3);
     }
 
-    /* Tabletop Pool Grid - NATURAL ASPECT PROPORTIONS WITH NO BLACK BARS */
+    /* Tabletop Pool Grid - RESIZED FOR PERFECT 2-ROW FIT & ZERO CUTOFF */
     .pool-grid {
       flex: 1;
       min-height: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(210px, 16vw), 1fr));
-      grid-auto-rows: max-content; /* Content-driven row height to prevent vertical stretching */
-      gap: 14px 18px;
-      padding: 10px 8px;
+      grid-template-columns: repeat(auto-fill, minmax(min(155px, 12.5vw), 1fr));
+      grid-auto-rows: max-content;
+      gap: 12px 14px;
+      padding: 22px 14px 14px 14px; /* Generous top padding prevents letter badges/tilts from cutting off */
       overflow-y: auto;
       align-items: center;
       justify-items: center;
@@ -428,11 +428,11 @@
     /* 3D REALISTIC PRINTED PHOTOGRAPH CARD */
     .story-card {
       width: 100%;
-      max-width: 260px;
-      aspect-ratio: 4 / 3.2; /* Natural photo ratio matching story spreads */
+      max-width: 210px;
+      aspect-ratio: 4 / 3.2; /* Natural photo ratio */
       background: #ffffff; /* Clean white photo paper frame */
-      padding: 6px 6px 6px 6px;
-      border-radius: 8px;
+      padding: 5px 5px 5px 5px;
+      border-radius: 7px;
       border: 1px solid #cbd5e1;
       overflow: hidden;
       position: relative;
@@ -441,7 +441,7 @@
       touch-action: none;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45), 0 2px 5px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.25);
       transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, border-color 0.22s ease;
       will-change: transform;
       margin: 0 auto;
@@ -450,45 +450,45 @@
     /* 3D "HOLD UP / PICK UP" LIFT ELEVATION ON HOVER/SELECT */
     .story-card:hover {
       border-color: var(--accent);
-      transform: translateY(-22px) scale(1.15) rotate(0deg) !important;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 22px var(--accent-glow);
+      transform: translateY(-18px) scale(1.14) rotate(0deg) !important;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-glow);
       z-index: 100;
     }
 
     .story-card:active, .story-card.dragging {
       cursor: grabbing;
       opacity: 0.8;
-      transform: scale(1.1) translateY(-14px) rotate(0deg) !important;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.75);
+      transform: scale(1.08) translateY(-12px) rotate(0deg) !important;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
       z-index: 100;
     }
 
     .story-card.selected {
       border: 3px solid var(--accent);
-      box-shadow: 0 0 25px var(--accent-glow), 0 25px 55px rgba(0, 0, 0, 0.85);
-      transform: translateY(-22px) scale(1.15) rotate(0deg) !important;
+      box-shadow: 0 0 22px var(--accent-glow), 0 20px 45px rgba(0, 0, 0, 0.85);
+      transform: translateY(-18px) scale(1.14) rotate(0deg) !important;
       z-index: 120;
     }
 
     /* High Visibility Classroom Letter Badge */
     .card-letter-badge {
       position: absolute;
-      top: 10px;
-      left: 10px;
-      min-width: 30px;
-      height: 30px;
-      padding: 0 7px;
-      border-radius: 6px;
+      top: 8px;
+      left: 8px;
+      min-width: 26px;
+      height: 26px;
+      padding: 0 6px;
+      border-radius: 5px;
       background: #f59e0b; /* Bright amber/yellow */
       color: #0d0f14;
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       font-weight: 900;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 20;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.65);
-      border: 2px solid #ffffff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.65);
+      border: 1.5px solid #ffffff;
       letter-spacing: -0.02em;
     }
 
@@ -513,7 +513,7 @@
     }
 
     .card-footer {
-      padding: 4px 4px 0 4px;
+      padding: 3px 4px 0 4px;
       background: transparent;
       display: flex;
       align-items: center;
@@ -522,7 +522,7 @@
     }
 
     .card-label {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
       color: #334155;
     }
@@ -533,8 +533,8 @@
     }
 
     .card-btn {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       border-radius: 4px;
       background: rgba(15, 23, 42, 0.85);
       color: #fff;
@@ -542,7 +542,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       cursor: pointer;
       transition: all 0.15s ease;
     }
@@ -714,8 +714,8 @@
       position: fixed;
       pointer-events: none;
       z-index: 30000;
-      width: 190px;
-      height: 145px;
+      width: 170px;
+      height: 130px;
       opacity: 0.95;
       transform: translate(-50%, -50%) scale(1.1) rotate(2deg);
       box-shadow: 0 25px 55px rgba(0, 0, 0, 0.85), 0 0 20px var(--accent-glow);
@@ -1351,8 +1351,8 @@
       cardRotations = [];
       for (var i = 0; i < totalPages; i++) {
         pageLetters[i] = lettersShuffled[i];
-        // Organic physical photo tabletop rotation (-4.5deg to +4.5deg)
-        cardRotations[i] = (Math.random() * 9 - 4.5).toFixed(1) + "deg";
+        // Organic physical photo tabletop rotation (-3.5deg to +3.5deg)
+        cardRotations[i] = (Math.random() * 7 - 3.5).toFixed(1) + "deg";
       }
 
       pool = [];
