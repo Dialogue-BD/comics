@@ -334,61 +334,62 @@
       border-radius: var(--radius-sm);
     }
 
-    /* Karaoke Subtitle Banner Overlay */
+    /* Karaoke Subtitle Banner Overlay — Centered in Middle of Screen */
     .song-subtitle-box {
       position: absolute;
-      bottom: 20px;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
-      background: rgba(8, 11, 20, 0.92);
-      backdrop-filter: blur(14px);
-      border: 2px solid rgba(79, 126, 248, 0.5);
-      padding: 10px 28px 12px;
-      border-radius: 36px;
+      transform: translate(-50%, -50%);
+      background: rgba(8, 11, 20, 0.94);
+      backdrop-filter: blur(16px);
+      border: 3px solid rgba(129, 140, 248, 0.6);
+      padding: 16px 36px 18px;
+      border-radius: 42px;
       text-align: center;
       z-index: 200;
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(79,126,248,0.15);
+      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.92), 0 0 40px rgba(99, 102, 241, 0.35);
       pointer-events: none;
-      transition: opacity 0.3s ease;
-      max-width: 92%;
-      min-width: 220px;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      max-width: 90%;
+      min-width: 280px;
       opacity: 1; /* Always visible — JS controls content, not visibility */
       white-space: nowrap;
     }
 
-    /* Each word in the karaoke subtitle */
+    /* Each word in the karaoke subtitle — Large & Readable */
     .sub-word {
       display: inline-block;
-      font-size: 1.45rem;
+      font-size: 2.1rem;
       font-weight: 800;
-      color: rgba(200, 210, 240, 0.75);
-      margin: 0 3px;
+      color: rgba(220, 230, 255, 0.85);
+      margin: 0 5px;
       transition: color 0.12s ease, transform 0.12s ease, text-shadow 0.12s ease;
       font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       letter-spacing: 0.01em;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+      text-shadow: 0 3px 10px rgba(0,0,0,0.9);
       will-change: transform, color;
     }
 
     /* Active (currently spoken) word — karaoke highlight */
     .sub-word.active {
       color: #ffe86b;
-      transform: scale(1.18) translateY(-2px);
-      text-shadow: 0 0 18px rgba(255, 230, 80, 0.9), 0 0 36px rgba(255, 200, 40, 0.5), 0 3px 8px rgba(0,0,0,0.9);
+      transform: scale(1.22) translateY(-3px);
+      text-shadow: 0 0 22px rgba(255, 230, 80, 0.95), 0 0 44px rgba(255, 200, 40, 0.6), 0 4px 12px rgba(0,0,0,0.95);
     }
 
     /* Sung (already passed) word */
     .sub-word.sung {
-      color: rgba(255, 255, 255, 0.92);
+      color: #ffffff;
       transform: scale(1);
-      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+      text-shadow: 0 3px 10px rgba(0,0,0,0.9);
     }
 
     /* Note icon in subtitle */
     .sub-note {
-      font-size: 1.1rem;
-      color: var(--accent);
+      font-size: 1.6rem;
+      color: #818cf8;
       display: inline-block;
+      margin: 0 4px;
       animation: subtlePulse 1.6s ease-in-out infinite;
     }
     @keyframes subtlePulse {
