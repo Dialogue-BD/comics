@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <!-- Load PDF.js from cdnjs -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <!-- No external script dependencies -->
   <style>
     /* Global Reset & Design Tokens */
     *, *::before, *::after {
@@ -1206,16 +1206,120 @@
 
     /* Responsive adjustments for narrow/vertical screens */
     @media (max-width: 900px) {
-      #activity-container { overflow-y: auto; }
+      #activity-container, #dual-match-container { overflow-y: auto; }
       .slots-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
       .narrative-stages { grid-template-columns: 1fr; }
       .story-title span { display: none; }
       .cloze-options { grid-template-columns: 1fr; }
+      .dual-row { flex-direction: column !important; align-items: stretch !important; }
     }
     /* Pulsing blank animation for cloze */
     @keyframes blankPulse {
       0%, 100% { opacity: 1; border-color: var(--warning); }
       50% { opacity: 0.5; border-color: rgba(245, 158, 11, 0.3); }
+    }
+
+    /* Dual Perspective Match Container */
+    #dual-match-container {
+      position: absolute;
+      top: var(--header-h);
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - var(--header-h));
+      overflow-y: auto;
+      background: var(--bg);
+      padding: 16px 20px 40px;
+      display: none;
+    }
+    .dual-match-wrapper {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .dual-row {
+      display: flex;
+      align-items: center;
+      background: rgba(18, 22, 34, 0.95);
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 14px 20px;
+      gap: 18px;
+      transition: all 0.25s ease;
+    }
+    .dual-row.correct {
+      border-color: var(--success);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    }
+    .dual-row.incorrect {
+      border-color: var(--error);
+    }
+    .dual-slot {
+      flex: 1;
+      min-width: 200px;
+      min-height: 140px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 2px dashed rgba(129, 140, 248, 0.5);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+    .dual-slot.drag-over {
+      border-color: var(--accent);
+      background: rgba(99, 102, 241, 0.2);
+      transform: scale(1.02);
+    }
+    .dual-pool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 14px;
+      padding: 10px 4px;
+    }
+    .dual-card {
+      background: #0f1422;
+      border: 1.5px solid rgba(99, 102, 241, 0.4);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: grab;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .dual-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-color: #818cf8;
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+    }
+    .dual-card:active {
+      cursor: grabbing;
+    }
+    .dual-card img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+    .reader-img {
+      width: 100%;
+      max-width: 1200px;
+      height: auto;
+      display: block;
+      margin: 0 auto 16px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      background: #111;
+      cursor: pointer;
+    }
+    #img-container {
+      width: 100%;
+      padding: 16px;
+      box-sizing: border-box;
     }
   </style>
 </head>
@@ -1230,6 +1334,7 @@
     <div class="nav-tabs">
       <button id="tab-read" class="tab-btn active"><span class="icon">📖</span> Read Story</button>
       <button id="tab-activity" class="tab-btn"><span class="icon">🧩</span> Sequence Activity</button>
+      <button id="tab-dual-match" class="tab-btn"><span class="icon">🔀</span> Dual Perspective Match</button>
       <button id="tab-song" class="tab-btn"><span class="icon">🎵</span> Song</button>
     </div>
   </header>
@@ -1237,9 +1342,14 @@
   <!-- Loading Indicator -->
   <div id="loading"><div class="spinner"></div> Loading Story Pages...</div>
 
-  <!-- 1. PDF Reader View -->
+  <!-- 1. Story Reader View -->
   <div id="viewer-container">
-    <div id="pdf-container"></div>
+    <div id="perspective-switcher" style="display:flex; align-items:center; gap:10px; padding:10px 16px 0; flex-wrap:wrap;">
+      <span style="color:#94a3b8; font-weight:800; font-size:0.9rem;">READ PERSPECTIVE:</span>
+      <button id="btn-perspective-mouse" style="background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:1.5px solid #818cf8;font-weight:800;padding:6px 16px;border-radius:20px;cursor:pointer;transition:all 0.2s;">🐭 Mouse's Story</button>
+      <button id="btn-perspective-bear" style="background:rgba(255,255,255,0.08);color:#cbd5e1;border:1.5px solid rgba(255,255,255,0.15);font-weight:800;padding:6px 16px;border-radius:20px;cursor:pointer;transition:all 0.2s;">🐻 Bear's Story</button>
+    </div>
+    <div id="img-container"></div>
   </div>
 
   <!-- Floating Fullscreen Button for Reader -->
@@ -1376,6 +1486,46 @@
     </div>
   </div>
 
+  <!-- 4. Dual Perspective Matching Activity Workspace -->
+  <div id="dual-match-container">
+    <div class="dual-match-wrapper">
+      
+      <!-- Dual Match Header -->
+      <div class="activity-header">
+        <div class="activity-info">
+          <h2>🔀 Dual Perspective Matching</h2>
+          <p>Align parallel story beats: Match each Mouse scene to the corresponding scene told from the Bear's perspective!</p>
+        </div>
+        <div class="controls-bar">
+          <button id="btn-dual-check" class="btn btn-primary">✓ Check Alignment</button>
+          <button id="btn-dual-hint" class="btn btn-secondary">💡 Hint</button>
+          <button id="btn-dual-shuffle" class="btn btn-secondary">🔀 Reshuffle</button>
+          <button id="btn-dual-reveal" class="btn btn-outline">👁️ Reveal Answer</button>
+        </div>
+      </div>
+
+      <!-- Dual Match Feedback Banner -->
+      <div id="dual-feedback-banner" class="feedback-banner info" style="display: none;">
+        <span id="dual-feedback-msg">Drag and drop Bear spread cards from the pool below into the matching perspective rows.</span>
+      </div>
+
+      <!-- Parallel Story Rows (5 Key Thematic Matches) -->
+      <div id="dual-match-rows" style="display: flex; flex-direction: column; gap: 14px;"></div>
+
+      <!-- Unsorted Bear Perspective Spreads Pool -->
+      <div class="tabletop-section" style="margin-top: 10px;">
+        <div class="section-head">
+          <div class="section-title">
+            <span>🐻 Unsorted Bear Perspective Spreads</span>
+          </div>
+          <span class="section-hint-text">Drag a Bear card into the corresponding row above</span>
+        </div>
+        <div id="dual-pool-grid" class="dual-pool-grid"></div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- High-Res Page Zoom Modal Lightbox -->
   <div id="preview-modal" class="modal-overlay">
     <div class="modal-card">
@@ -1434,149 +1584,1008 @@
   <canvas id="confetti-canvas"></canvas>
 
   <script>
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-    var pdfUrl = "mouse_strawberry_spreads.pdf";
-    var cacheBuster = "?v=" + Date.now();
-
-    var container = document.getElementById("pdf-container");
-    var loading = document.getElementById("loading");
-
-    // Reader state
-    var scale = 1;
-    var posX = 0;
-    var posY = 0;
-    var contentHeight = 0;
-
-    var initDist = 0;
-    var initMidX = 0, initMidY = 0;
-    var baseScale = 1;
-    var basePosX = 0, basePosY = 0;
-    var startX = 0, startY = 0;
-    var activeTouch = false;
-    var isPinching = false;
-
-    var touchStartTime = 0;
-    var startTouchX = 0, startTouchY = 0;
-    var isGesture = false;
-    var lastTap = 0;
-
-    // Activity state
-    var totalPages = 0;
-    var pageThumbnails = []; // High resolution Data URLs for cards
-    var pageLetters = []; // Mapping pageIndex -> assigned Letter string (e.g. 'A', 'F', 'B')
-    var cardRotations = []; // Organic 3D tabletop rotation angles per page
-    var slots = new Array(13).fill(null); // slots[i] = pageIndex (0-based) or null
-    var pool = []; // array of pageIndexes in pool
-    var selectedCard = null; // pageIndex currently selected via click
-    var checkResults = null; // array of booleans when checked
-    var currentPreviewPageIndex = 0;
-
-    // Available letters pool for random assignment
-    var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-
-    // Load PDF and render Reader + Activity thumbnails
-    pdfjsLib.getDocument(pdfUrl + cacheBuster).promise.then(async function(pdf) {
-      totalPages = pdf.numPages;
-      slots = new Array(totalPages).fill(null);
-      
-      for (var pageNum = 1; pageNum <= totalPages; pageNum++) {
-        var page = await pdf.getPage(pageNum);
-        
-        // 1. Render for Reader View
-        var viewport = page.getViewport({ scale: 1.0 });
-        var fitScale = window.innerWidth / viewport.width;
-        var pageViewport = page.getViewport({ scale: fitScale });
-
-        var canvas = document.createElement("canvas");
-        var ctx = canvas.getContext("2d");
-        var dpr = window.devicePixelRatio || 1;
-        
-        canvas.width = pageViewport.width * dpr;
-        canvas.height = pageViewport.height * dpr;
-        canvas.style.width = pageViewport.width + "px";
-        canvas.style.height = pageViewport.height + "px";
-
-        container.appendChild(canvas);
-
-        var renderContext = {
-          canvasContext: ctx,
-          viewport: pageViewport,
-          transform: [dpr, 0, 0, dpr, 0, 0]
-        };
-        await page.render(renderContext).promise;
-
-        // 2. Generate high-resolution thumbnail for Tabletop Cards (600px width render for extreme clarity)
-        var thumbScale = 600 / viewport.width;
-        var thumbViewport = page.getViewport({ scale: thumbScale });
-        var thumbCanvas = document.createElement("canvas");
-        thumbCanvas.width = thumbViewport.width;
-        thumbCanvas.height = thumbViewport.height;
-        var thumbCtx = thumbCanvas.getContext("2d");
-        
-        await page.render({
-          canvasContext: thumbCtx,
-          viewport: thumbViewport
-        }).promise;
-        
-        pageThumbnails.push(thumbCanvas.toDataURL("image/jpeg", 0.90));
-      }
-
-      // Hide loading spinner
-      loading.style.opacity = "0";
-      setTimeout(function() { loading.style.display = "none"; }, 300);
-      
-      // Update dimensions and initial centering for reader
-      contentHeight = container.offsetHeight;
-      centerContent();
-
-      // Init activity game board
-      initActivityBoard();
-    }).catch(function(err) {
-      console.error(err);
-      loading.innerText = "Error loading story.";
-    });
-
-    // Navigation Tabs logic
+    /* ------------------------------------------------------------- */
+    /* GLOBAL DOM ELEMENTS & APPLICATION STATE                        */
+    /* ------------------------------------------------------------- */
     var tabRead = document.getElementById("tab-read");
     var tabActivity = document.getElementById("tab-activity");
+    var tabDualMatch = document.getElementById("tab-dual-match");
     var tabSong = document.getElementById("tab-song");
+
     var viewerContainer = document.getElementById("viewer-container");
     var activityContainer = document.getElementById("activity-container");
+    var dualMatchContainer = document.getElementById("dual-match-container");
     var songContainer = document.getElementById("song-container");
-    var songVideo = document.getElementById("song-video");
-    var fullscreenBtn = document.getElementById("fullscreen-btn");
 
-    function pauseSongVideo() {
-      if (songVideo && !songVideo.paused) {
-        songVideo.pause();
-      }
+    var imgContainer = document.getElementById("img-container");
+    var loading = document.getElementById("loading");
+    var fullscreenBtn = document.getElementById("fullscreen-btn");
+    var enterIcon = document.getElementById("enter-icon");
+    var exitIcon = document.getElementById("exit-icon");
+
+    var btnPerspectiveMouse = document.getElementById("btn-perspective-mouse");
+    var btnPerspectiveBear = document.getElementById("btn-perspective-bear");
+    var currentReaderPerspective = "mouse";
+
+    // Activity state
+    var totalPages = 13;
+    var pageThumbnails = [];
+    for (var m = 1; m <= 13; m++) {
+      var numStr = m < 10 ? "0" + m : "" + m;
+      pageThumbnails.push("spreads/spread_" + numStr + ".jpg");
     }
 
-    tabRead.addEventListener("click", function() {
-      tabRead.classList.add("active");
-      tabActivity.classList.remove("active");
-      tabSong.classList.remove("active");
-      viewerContainer.style.display = "block";
-      activityContainer.style.display = "none";
-      songContainer.style.display = "none";
-      fullscreenBtn.style.display = "flex";
-      pauseSongVideo();
-      contentHeight = container.offsetHeight;
-      centerContent();
-    });
+    var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    var pageLetters = [];
+    var cardRotations = [];
+    var slots = new Array(totalPages).fill(null);
+    var pool = [];
+    var selectedCard = null;
+    var checkResults = null;
+    var currentPreviewPageIndex = 0;
 
-    /* ------------------------------------------------------------- */
-    /* STORY STRUCTURE INTRO VIDEO MODAL LOGIC                        */
-    /* ------------------------------------------------------------- */
+    var slotsGrid = document.getElementById("slots-grid");
+    var poolGrid = document.getElementById("pool-grid");
+    var feedbackBanner = document.getElementById("feedback-banner");
+    var feedbackMsg = document.getElementById("feedback-msg");
+    var placedCounter = document.getElementById("placed-counter");
+
+    // Modal preview elements
+    var modalOverlay = document.getElementById("preview-modal");
+    var modalImg = document.getElementById("modal-img");
+    var modalPageTitle = document.getElementById("modal-page-title");
+    var modalCloseBtn = document.getElementById("modal-close-btn");
+    var modalPrevBtn = document.getElementById("modal-prev-btn");
+    var modalNextBtn = document.getElementById("modal-next-btn");
+
+    // Intro video modal
     var activityIntroModal = document.getElementById("activity-intro-modal");
     var activityIntroVideo = document.getElementById("activity-intro-video");
     var btnIntroVideo = document.getElementById("btn-intro-video");
     var btnStartActivityFromVideo = document.getElementById("btn-start-activity-from-video");
     var introModalCloseBtn = document.getElementById("intro-modal-close-btn");
     var introVideoStatus = document.getElementById("intro-video-status");
-    var hasSeenIntroVideo = false;
 
+    /* ------------------------------------------------------------- */
+    /* 1. STORY READER: MOUSE & BEAR PERSPECTIVE LOADER               */
+    /* ------------------------------------------------------------- */
+    function loadReaderPerspective(perspective) {
+      if (!imgContainer) return;
+      imgContainer.innerHTML = "";
+
+      var isBear = perspective === "bear";
+      var count = isBear ? 8 : 13;
+      var prefix = isBear ? "bear_spreads/bear_spread_" : "spreads/spread_";
+      var titlePrefix = isBear ? "Bear's Perspective — Page " : "Mouse's Perspective — Spread ";
+
+      for (var i = 1; i <= count; i++) {
+        var numStr = i < 10 ? "0" + i : "" + i;
+        var imgSrc = prefix + numStr + ".jpg";
+
+        var img = document.createElement("img");
+        img.className = "reader-img";
+        img.src = imgSrc;
+        img.alt = titlePrefix + i;
+        (function(src, title) {
+          img.addEventListener("click", function() {
+            openPreviewModalSrc(src, title);
+          });
+        }(imgSrc, titlePrefix + i));
+
+        imgContainer.appendChild(img);
+      }
+
+      if (loading) {
+        loading.style.opacity = "0";
+        setTimeout(function() { loading.style.display = "none"; }, 250);
+      }
+    }
+
+    if (btnPerspectiveMouse) {
+      btnPerspectiveMouse.addEventListener("click", function() {
+        if (currentReaderPerspective === "mouse") return;
+        currentReaderPerspective = "mouse";
+        btnPerspectiveMouse.style.background = "linear-gradient(135deg, #6366f1, #4f46e5)";
+        btnPerspectiveMouse.style.color = "#ffffff";
+        btnPerspectiveMouse.style.borderColor = "#818cf8";
+        btnPerspectiveBear.style.background = "rgba(255,255,255,0.08)";
+        btnPerspectiveBear.style.color = "#cbd5e1";
+        btnPerspectiveBear.style.borderColor = "rgba(255,255,255,0.15)";
+        loadReaderPerspective("mouse");
+      });
+    }
+
+    if (btnPerspectiveBear) {
+      btnPerspectiveBear.addEventListener("click", function() {
+        if (currentReaderPerspective === "bear") return;
+        currentReaderPerspective = "bear";
+        btnPerspectiveBear.style.background = "linear-gradient(135deg, #6366f1, #4f46e5)";
+        btnPerspectiveBear.style.color = "#ffffff";
+        btnPerspectiveBear.style.borderColor = "#818cf8";
+        btnPerspectiveMouse.style.background = "rgba(255,255,255,0.08)";
+        btnPerspectiveMouse.style.color = "#cbd5e1";
+        btnPerspectiveMouse.style.borderColor = "rgba(255,255,255,0.15)";
+        loadReaderPerspective("bear");
+      });
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 2. NAVIGATION TABS LOGIC                                      */
+    /* ------------------------------------------------------------- */
+    function pauseSongVideo() {
+      var songVideo = document.getElementById("song-video");
+      if (songVideo && !songVideo.paused) {
+        songVideo.pause();
+      }
+    }
+
+    if (tabRead) {
+      tabRead.addEventListener("click", function() {
+        tabRead.classList.add("active");
+        tabActivity.classList.remove("active");
+        tabDualMatch.classList.remove("active");
+        tabSong.classList.remove("active");
+
+        viewerContainer.style.display = "block";
+        activityContainer.style.display = "none";
+        dualMatchContainer.style.display = "none";
+        songContainer.style.display = "none";
+        if (fullscreenBtn) fullscreenBtn.style.display = "flex";
+        pauseSongVideo();
+      });
+    }
+
+    if (tabActivity) {
+      tabActivity.addEventListener("click", function() {
+        tabActivity.classList.add("active");
+        tabRead.classList.remove("active");
+        tabDualMatch.classList.remove("active");
+        tabSong.classList.remove("active");
+
+        viewerContainer.style.display = "none";
+        activityContainer.style.display = "block";
+        dualMatchContainer.style.display = "none";
+        songContainer.style.display = "none";
+        if (fullscreenBtn) fullscreenBtn.style.display = "none";
+        pauseSongVideo();
+      });
+    }
+
+    if (tabDualMatch) {
+      tabDualMatch.addEventListener("click", function() {
+        tabDualMatch.classList.add("active");
+        tabRead.classList.remove("active");
+        tabActivity.classList.remove("active");
+        tabSong.classList.remove("active");
+
+        viewerContainer.style.display = "none";
+        activityContainer.style.display = "none";
+        dualMatchContainer.style.display = "block";
+        songContainer.style.display = "none";
+        if (fullscreenBtn) fullscreenBtn.style.display = "none";
+        pauseSongVideo();
+
+        if (dualSlots.every(function(s) { return s === null; })) {
+          initDualMatchBoard();
+        }
+      });
+    }
+
+    if (tabSong) {
+      tabSong.addEventListener("click", function() {
+        tabSong.classList.add("active");
+        tabRead.classList.remove("active");
+        tabActivity.classList.remove("active");
+        tabDualMatch.classList.remove("active");
+
+        viewerContainer.style.display = "none";
+        activityContainer.style.display = "none";
+        dualMatchContainer.style.display = "none";
+        songContainer.style.display = "flex";
+        if (fullscreenBtn) fullscreenBtn.style.display = "none";
+
+        var songVideo = document.getElementById("song-video");
+        if (songVideo) {
+          songVideo.currentTime = 0;
+          songVideo.play().catch(function() {});
+        }
+      });
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 3. DUAL PERSPECTIVE MATCHING GAME LOGIC                       */
+    /* ------------------------------------------------------------- */
+    var dualMatchRows = document.getElementById("dual-match-rows");
+    var dualPoolGrid = document.getElementById("dual-pool-grid");
+    var dualFeedbackBanner = document.getElementById("dual-feedback-banner");
+    var dualFeedbackMsg = document.getElementById("dual-feedback-msg");
+
+    var dualPairs = [
+      {
+        theme: "🍓 Fresh Picked Strawberry",
+        desc: "Mouse picking the ripe strawberry ↔ Bear smelling the fresh fruit scent",
+        mouseSpread: "spreads/spread_02.jpg",
+        correctBearIndex: 0 // bear_spread_01
+      },
+      {
+        theme: "👁️ The Big Bear Knows",
+        desc: "Mouse worried bear loves red strawberries ↔ Bear stomping across the forest",
+        mouseSpread: "spreads/spread_04.jpg",
+        correctBearIndex: 1 // bear_spread_02
+      },
+      {
+        theme: "🙈 Hidden & Guarded",
+        desc: "Mouse hiding with chains & lock ↔ Bear sniffing tall trees and searching",
+        mouseSpread: "spreads/spread_07.jpg",
+        correctBearIndex: 2 // bear_spread_03
+      },
+      {
+        theme: "🎭 The Disguise",
+        desc: "Mouse disguising strawberry with mustache & glasses ↔ Bear looking for disguised fruit",
+        mouseSpread: "spreads/spread_09.jpg",
+        correctBearIndex: 3 // bear_spread_04
+      },
+      {
+        theme: "🍰 Shared Together",
+        desc: "Mouse cutting strawberry in half ↔ Delicious strawberry shared and eaten together!",
+        mouseSpread: "spreads/spread_11.jpg",
+        correctBearIndex: 6 // bear_spread_07
+      }
+    ];
+
+    var dualSlots = new Array(dualPairs.length).fill(null);
+    var dualPool = [0, 1, 2, 3, 4, 5, 6, 7];
+    var dualCheckResults = null;
+
+    function initDualMatchBoard() {
+      dualPool = [0, 1, 2, 3, 4, 5, 6, 7];
+      shuffleArray(dualPool);
+      dualSlots = new Array(dualPairs.length).fill(null);
+      dualCheckResults = null;
+      hideDualFeedback();
+      renderDualBoard();
+    }
+
+    function renderDualBoard() {
+      if (!dualMatchRows) return;
+      dualMatchRows.innerHTML = "";
+
+      for (var r = 0; r < dualPairs.length; r++) {
+        var pair = dualPairs[r];
+        var rowEl = document.createElement("div");
+        rowEl.className = "dual-row";
+
+        if (dualCheckResults) {
+          if (dualCheckResults[r] === true) {
+            rowEl.classList.add("correct");
+          } else if (dualCheckResults[r] === false) {
+            rowEl.classList.add("incorrect");
+          }
+        }
+
+        // LEFT CARD: Mouse Perspective
+        var leftCard = document.createElement("div");
+        leftCard.style.cssText = "flex: 1; min-width: 180px; max-width: 260px; background: #0f1422; border-radius: 12px; overflow: hidden; border: 1px solid rgba(99, 102, 241, 0.3); text-align: center; position: relative;";
+
+        var mouseLabel = document.createElement("div");
+        mouseLabel.style.cssText = "padding: 4px 8px; background: rgba(99, 102, 241, 0.2); color: #818cf8; font-size: 0.75rem; font-weight: 800;";
+        mouseLabel.textContent = "🐭 MOUSE PERSPECTIVE";
+        leftCard.appendChild(mouseLabel);
+
+        var mouseImg = document.createElement("img");
+        mouseImg.src = pair.mouseSpread;
+        mouseImg.style.cssText = "width: 100%; height: 110px; object-fit: cover; display: block; cursor: pointer;";
+        (function(src, title) {
+          mouseImg.addEventListener("click", function() {
+            openPreviewModalSrc(src, title + " (Mouse)");
+          });
+        }(pair.mouseSpread, pair.theme));
+        leftCard.appendChild(mouseImg);
+
+        // CENTER BADGE: Theme & Story Beat Description
+        var centerBadge = document.createElement("div");
+        centerBadge.style.cssText = "flex: 1; min-width: 180px; text-align: center;";
+
+        var themeTitle = document.createElement("div");
+        themeTitle.style.cssText = "font-size: 1.15rem; font-weight: 800; color: #ffe86b; margin-bottom: 4px;";
+        themeTitle.textContent = pair.theme;
+        centerBadge.appendChild(themeTitle);
+
+        var themeDesc = document.createElement("div");
+        themeDesc.style.cssText = "font-size: 0.82rem; color: #94a3b8;";
+        themeDesc.textContent = pair.desc;
+        centerBadge.appendChild(themeDesc);
+
+        // RIGHT SLOT: Bear Perspective Droppable Slot
+        var rightSlot = document.createElement("div");
+        rightSlot.className = "dual-slot";
+        rightSlot.dataset.rowIndex = r;
+
+        var placedBearIdx = dualSlots[r];
+        if (placedBearIdx !== null) {
+          rightSlot.style.borderStyle = "solid";
+          rightSlot.style.borderColor = "rgba(99, 102, 241, 0.8)";
+
+          var bCard = document.createElement("div");
+          bCard.style.cssText = "width: 100%; height: 100%; text-align: center; overflow: hidden; border-radius: 10px; position: relative;";
+
+          var bearLabel = document.createElement("div");
+          bearLabel.style.cssText = "padding: 4px 8px; background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 0.75rem; font-weight: 800;";
+          bearLabel.textContent = "🐻 BEAR PERSPECTIVE";
+          bCard.appendChild(bearLabel);
+
+          var numStr = placedBearIdx < 9 ? "0" + (placedBearIdx + 1) : "" + (placedBearIdx + 1);
+          var bearSrc = "bear_spreads/bear_spread_" + numStr + ".jpg";
+          var bearImg = document.createElement("img");
+          bearImg.src = bearSrc;
+          bearImg.style.cssText = "width: 100%; height: 105px; object-fit: cover; display: block; cursor: pointer;";
+          (function(src) {
+            bearImg.addEventListener("click", function() {
+              openPreviewModalSrc(src, "Bear Spread " + (placedBearIdx + 1));
+            });
+          }(bearSrc));
+          bCard.appendChild(bearImg);
+
+          var removeBtn = document.createElement("button");
+          removeBtn.type = "button";
+          removeBtn.style.cssText = "position: absolute; top: 4px; right: 4px; background: rgba(0,0,0,0.7); border: none; color: #fff; width: 22px; height: 22px; border-radius: 50%; cursor: pointer; font-size: 0.75rem;";
+          removeBtn.textContent = "✕";
+          (function(rowIdx) {
+            removeBtn.addEventListener("click", function(e) {
+              e.stopPropagation();
+              removeDualSlot(rowIdx);
+            });
+          }(r));
+          bCard.appendChild(removeBtn);
+
+          rightSlot.appendChild(bCard);
+        } else {
+          var placeholder = document.createElement("span");
+          placeholder.style.cssText = "color: #64748b; font-size: 0.85rem; font-weight: 700;";
+          placeholder.textContent = "Drop Bear Spread Here";
+          rightSlot.appendChild(placeholder);
+        }
+
+        setupDualSlotDrop(rightSlot, r);
+
+        rowEl.appendChild(leftCard);
+        rowEl.appendChild(centerBadge);
+        rowEl.appendChild(rightSlot);
+        dualMatchRows.appendChild(rowEl);
+      }
+
+      // Render pool of Bear Cards
+      dualPoolGrid.innerHTML = "";
+      if (dualPool.length === 0) {
+        var emptyMsg = document.createElement("div");
+        emptyMsg.style.cssText = "grid-column: 1/-1; text-align: center; color: var(--success); font-weight: 800; font-size: 1rem; padding: 12px;";
+        emptyMsg.textContent = "✨ All Bear spreads placed! Click 'Check Alignment' to verify.";
+        dualPoolGrid.appendChild(emptyMsg);
+      } else {
+        for (var b = 0; b < dualPool.length; b++) {
+          var bIdx = dualPool[b];
+          var card = document.createElement("div");
+          card.className = "dual-card";
+          card.draggable = true;
+          card.dataset.bearIdx = bIdx;
+
+          var poolLabel = document.createElement("div");
+          poolLabel.style.cssText = "padding: 4px 8px; background: rgba(99, 102, 241, 0.2); color: #818cf8; font-size: 0.72rem; font-weight: 800;";
+          poolLabel.textContent = "🐻 Bear Spread " + (bIdx + 1);
+          card.appendChild(poolLabel);
+
+          var numStr2 = bIdx < 9 ? "0" + (bIdx + 1) : "" + (bIdx + 1);
+          var poolImg = document.createElement("img");
+          poolImg.src = "bear_spreads/bear_spread_" + numStr2 + ".jpg";
+          card.appendChild(poolImg);
+
+          (function(cardEl, bearIdx) {
+            cardEl.addEventListener("dragstart", function(e) {
+              e.dataTransfer.setData("text/plain", "" + bearIdx);
+            });
+            cardEl.addEventListener("click", function() {
+              openPreviewModalSrc("bear_spreads/bear_spread_" + (bearIdx < 9 ? "0" + (bearIdx + 1) : (bearIdx + 1)) + ".jpg", "Bear Spread " + (bearIdx + 1));
+            });
+          }(card, bIdx));
+
+          dualPoolGrid.appendChild(card);
+        }
+      }
+    }
+
+    function setupDualSlotDrop(slotEl, rowIndex) {
+      slotEl.addEventListener("dragover", function(e) {
+        e.preventDefault();
+        slotEl.classList.add("drag-over");
+      });
+      slotEl.addEventListener("dragleave", function() {
+        slotEl.classList.remove("drag-over");
+      });
+      slotEl.addEventListener("drop", function(e) {
+        e.preventDefault();
+        slotEl.classList.remove("drag-over");
+        var bearIdxStr = e.dataTransfer.getData("text/plain");
+        if (bearIdxStr !== "") {
+          var bearIdx = parseInt(bearIdxStr);
+          placeDualCard(bearIdx, rowIndex);
+        }
+      });
+    }
+
+    function placeDualCard(bearIdx, targetRowIndex) {
+      var poolIdx = dualPool.indexOf(bearIdx);
+      if (poolIdx > -1) {
+        dualPool.splice(poolIdx, 1);
+      } else {
+        for (var i = 0; i < dualSlots.length; i++) {
+          if (dualSlots[i] === bearIdx) dualSlots[i] = null;
+        }
+      }
+
+      var existing = dualSlots[targetRowIndex];
+      if (existing !== null && dualPool.indexOf(existing) === -1) {
+        dualPool.push(existing);
+      }
+
+      dualSlots[targetRowIndex] = bearIdx;
+      dualCheckResults = null;
+      hideDualFeedback();
+      renderDualBoard();
+    }
+
+    function removeDualSlot(rowIndex) {
+      var existing = dualSlots[rowIndex];
+      if (existing !== null) {
+        dualSlots[rowIndex] = null;
+        if (dualPool.indexOf(existing) === -1) {
+          dualPool.push(existing);
+        }
+        dualCheckResults = null;
+        hideDualFeedback();
+        renderDualBoard();
+      }
+    }
+
+    // Dual match action buttons
+    var btnDualCheck = document.getElementById("btn-dual-check");
+    var btnDualHint = document.getElementById("btn-dual-hint");
+    var btnDualShuffle = document.getElementById("btn-dual-shuffle");
+    var btnDualReveal = document.getElementById("btn-dual-reveal");
+
+    if (btnDualCheck) {
+      btnDualCheck.addEventListener("click", function() {
+        var correctCount = 0;
+        dualCheckResults = [];
+        for (var r = 0; r < dualPairs.length; r++) {
+          if (dualSlots[r] === dualPairs[r].correctBearIndex) {
+            dualCheckResults[r] = true;
+            correctCount++;
+          } else {
+            dualCheckResults[r] = false;
+          }
+        }
+        renderDualBoard();
+
+        if (correctCount === dualPairs.length) {
+          showDualFeedback("🎉 Outstanding! You aligned all 5 parallel story beats between the Mouse and Bear perspectives!", "success");
+          triggerConfetti();
+        } else {
+          showDualFeedback("Score: " + correctCount + " / " + dualPairs.length + " correct alignments. Check the green/red highlights and keep exploring!", "warning");
+        }
+      });
+    }
+
+    if (btnDualHint) {
+      btnDualHint.addEventListener("click", function() {
+        for (var r = 0; r < dualPairs.length; r++) {
+          var targetBear = dualPairs[r].correctBearIndex;
+          if (dualSlots[r] !== targetBear) {
+            placeDualCard(targetBear, r);
+            showDualFeedback("💡 Hint: Aligned '" + dualPairs[r].theme + "' with Bear Spread " + (targetBear + 1) + "!", "info");
+            return;
+          }
+        }
+        showDualFeedback("All parallel story beats are already aligned correctly!", "success");
+      });
+    }
+
+    if (btnDualShuffle) {
+      btnDualShuffle.addEventListener("click", function() {
+        initDualMatchBoard();
+        showDualFeedback("Dual perspective matching board reshuffled!", "info");
+      });
+    }
+
+    if (btnDualReveal) {
+      btnDualReveal.addEventListener("click", function() {
+        for (var r = 0; r < dualPairs.length; r++) {
+          dualSlots[r] = dualPairs[r].correctBearIndex;
+        }
+        dualPool = [4, 5, 7];
+        dualCheckResults = new Array(dualPairs.length).fill(true);
+        renderDualBoard();
+        showDualFeedback("Revealed all parallel perspective alignments!", "info");
+        triggerConfetti();
+      });
+    }
+
+    function showDualFeedback(msg, type) {
+      if (!dualFeedbackMsg || !dualFeedbackBanner) return;
+      dualFeedbackMsg.innerText = msg;
+      dualFeedbackBanner.className = "feedback-banner " + (type || "info");
+      dualFeedbackBanner.style.display = "flex";
+    }
+
+    function hideDualFeedback() {
+      if (dualFeedbackBanner) dualFeedbackBanner.style.display = "none";
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 4. MODAL PREVIEW LIGHTBOX                                     */
+    /* ------------------------------------------------------------- */
+    function openPreviewModal(pageIdx) {
+      currentPreviewPageIndex = pageIdx;
+      updateModalContent();
+      if (modalOverlay) modalOverlay.classList.add("active");
+    }
+
+    function openPreviewModalSrc(imgSrc, titleText) {
+      if (modalImg) modalImg.src = imgSrc;
+      if (modalPageTitle) modalPageTitle.innerText = titleText;
+      if (modalOverlay) modalOverlay.classList.add("active");
+    }
+
+    function updateModalContent() {
+      if (modalImg) modalImg.src = pageThumbnails[currentPreviewPageIndex];
+      if (modalPageTitle) modalPageTitle.innerText = "Spread " + pageLetters[currentPreviewPageIndex] + " (Spread " + (currentPreviewPageIndex + 1) + " of " + totalPages + ")";
+    }
+
+    if (modalCloseBtn) {
+      modalCloseBtn.addEventListener("click", function() {
+        if (modalOverlay) modalOverlay.classList.remove("active");
+      });
+    }
+
+    if (modalOverlay) {
+      modalOverlay.addEventListener("click", function(e) {
+        if (e.target === modalOverlay) modalOverlay.classList.remove("active");
+      });
+    }
+
+    if (modalPrevBtn) {
+      modalPrevBtn.addEventListener("click", function() {
+        if (currentPreviewPageIndex > 0) {
+          currentPreviewPageIndex--;
+          updateModalContent();
+        }
+      });
+    }
+
+    if (modalNextBtn) {
+      modalNextBtn.addEventListener("click", function() {
+        if (currentPreviewPageIndex < totalPages - 1) {
+          currentPreviewPageIndex++;
+          updateModalContent();
+        }
+      });
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 5. SEQUENCING ACTIVITY GAME LOGIC                             */
+    /* ------------------------------------------------------------- */
+    function initActivityBoard() {
+      var lettersShuffled = alphabet.slice(0, totalPages);
+      shuffleArray(lettersShuffled);
+      pageLetters = [];
+      cardRotations = [];
+      for (var i = 0; i < totalPages; i++) {
+        pageLetters[i] = lettersShuffled[i];
+        cardRotations[i] = (Math.random() * 7 - 3.5).toFixed(1) + "deg";
+      }
+
+      pool = [];
+      for (var i = 0; i < totalPages; i++) pool.push(i);
+      shuffleArray(pool);
+
+      slots = new Array(totalPages).fill(null);
+      selectedCard = null;
+      checkResults = null;
+      hideFeedback();
+
+      renderBoard();
+    }
+
+    function shuffleArray(arr) {
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+    }
+
+    function renderBoard() {
+      if (!poolGrid || !slotsGrid) return;
+      poolGrid.innerHTML = "";
+      if (pool.length === 0) {
+        var emptyMsg = document.createElement("div");
+        emptyMsg.style.cssText = "grid-column: 1 / -1; text-align: center; padding: 20px; color: var(--success); font-size: 0.95rem; font-weight: 600;";
+        emptyMsg.innerText = "✨ All scene photos placed on sequence line! Click 'Check Story' to verify.";
+        poolGrid.appendChild(emptyMsg);
+      } else {
+        for (var p = 0; p < pool.length; p++) {
+          var pPageIdx = pool[p];
+          var poolCard = createCardElement(pPageIdx, "pool", p);
+          poolGrid.appendChild(poolCard);
+        }
+      }
+      setupPoolDropEvents(poolGrid);
+
+      slotsGrid.innerHTML = "";
+      var placedCount = 0;
+
+      for (var s = 0; s < totalPages; s++) {
+        var slotDiv = document.createElement("div");
+        slotDiv.className = "slot";
+        slotDiv.dataset.slotIndex = s;
+
+        var numBadge = document.createElement("div");
+        numBadge.className = "slot-num-badge";
+        numBadge.innerText = (s + 1);
+        slotDiv.appendChild(numBadge);
+
+        if (checkResults) {
+          if (checkResults[s] === true) slotDiv.classList.add("correct");
+          else if (checkResults[s] === false) slotDiv.classList.add("incorrect");
+        }
+
+        var pageIdx = slots[s];
+        if (pageIdx !== null) {
+          placedCount++;
+          var card = createCardElement(pageIdx, "slot", s);
+          slotDiv.appendChild(card);
+
+          if (checkResults) {
+            var statusIcon = document.createElement("div");
+            statusIcon.className = "status-icon " + (checkResults[s] ? "correct" : "incorrect");
+            statusIcon.innerText = checkResults[s] ? "✓" : "✕";
+            slotDiv.appendChild(statusIcon);
+          }
+        } else {
+          var label = document.createElement("div");
+          label.className = "slot-label";
+          label.innerText = "Slot " + (s + 1);
+          slotDiv.appendChild(label);
+        }
+
+        setupSlotDropEvents(slotDiv);
+        slotsGrid.appendChild(slotDiv);
+      }
+
+      if (placedCounter) {
+        placedCounter.innerText = "Placed: " + placedCount + " / " + totalPages;
+      }
+    }
+
+    function createCardElement(pageIdx, locationType, locationIndex) {
+      var card = document.createElement("div");
+      card.className = "story-card";
+      card.draggable = true;
+      card.dataset.pageIndex = pageIdx;
+      card.dataset.locType = locationType;
+      card.dataset.locIndex = locationIndex;
+
+      if (locationType === "pool") {
+        card.style.transform = "rotate(" + cardRotations[pageIdx] + ")";
+      }
+
+      if (selectedCard === pageIdx) {
+        card.classList.add("selected");
+      }
+
+      var letterBadge = document.createElement("div");
+      letterBadge.className = "card-letter-badge";
+      letterBadge.title = "Scene Letter " + pageLetters[pageIdx];
+      letterBadge.innerText = pageLetters[pageIdx];
+      card.appendChild(letterBadge);
+
+      var thumbWrap = document.createElement("div");
+      thumbWrap.className = "card-thumb-wrap";
+
+      var img = document.createElement("img");
+      img.className = "card-thumb";
+      img.src = pageThumbnails[pageIdx];
+      img.alt = "Scene " + pageLetters[pageIdx];
+      thumbWrap.appendChild(img);
+      card.appendChild(thumbWrap);
+
+      var footer = document.createElement("div");
+      footer.className = "card-footer";
+
+      var label = document.createElement("div");
+      label.className = "card-label";
+      label.innerText = "Scene " + pageLetters[pageIdx];
+      footer.appendChild(label);
+
+      var controls = document.createElement("div");
+      controls.className = "card-controls";
+      
+      var zoomBtn = document.createElement("button");
+      zoomBtn.className = "card-btn";
+      zoomBtn.title = "Inspect Scene " + pageLetters[pageIdx];
+      zoomBtn.innerText = "🔍";
+      zoomBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        openPreviewModal(pageIdx);
+      });
+      controls.appendChild(zoomBtn);
+      footer.appendChild(controls);
+      card.appendChild(footer);
+
+      card.addEventListener("dragstart", function(e) {
+        e.dataTransfer.setData("text/plain", JSON.stringify({
+          pageIdx: pageIdx,
+          locType: locationType,
+          locIndex: locationIndex
+        }));
+        card.classList.add("dragging");
+      });
+
+      card.addEventListener("dragend", function() {
+        card.classList.remove("dragging");
+      });
+
+      card.addEventListener("click", function(e) {
+        e.stopPropagation();
+        openPreviewModal(pageIdx);
+      });
+
+      setupTouchDrag(card, pageIdx, locationType, locationIndex);
+      return card;
+    }
+
+    function moveCardToSlot(cardData, targetSlotIndex) {
+      var srcPageIdx = cardData.pageIdx;
+      var srcType = cardData.locType;
+      var srcIndex = cardData.locIndex;
+      var existingSlotPageIdx = slots[targetSlotIndex];
+
+      if (srcType === "pool") {
+        var pIdx = pool.indexOf(srcPageIdx);
+        if (pIdx > -1) pool.splice(pIdx, 1);
+      } else if (srcType === "slot") {
+        slots[srcIndex] = null;
+      }
+
+      if (existingSlotPageIdx !== null) {
+        if (srcType === "slot") {
+          slots[srcIndex] = existingSlotPageIdx;
+        } else {
+          pool.push(existingSlotPageIdx);
+        }
+      }
+
+      slots[targetSlotIndex] = srcPageIdx;
+      selectedCard = null;
+      checkResults = null;
+      hideFeedback();
+      renderBoard();
+    }
+
+    function moveCardToPool(cardData) {
+      var srcPageIdx = cardData.pageIdx;
+      var srcType = cardData.locType;
+      var srcIndex = cardData.locIndex;
+
+      if (srcType === "slot") {
+        slots[srcIndex] = null;
+        if (pool.indexOf(srcPageIdx) === -1) {
+          pool.push(srcPageIdx);
+        }
+        selectedCard = null;
+        checkResults = null;
+        hideFeedback();
+        renderBoard();
+      }
+    }
+
+    function setupSlotDropEvents(slotEl) {
+      slotEl.addEventListener("dragover", function(e) {
+        e.preventDefault();
+        slotEl.classList.add("drag-over");
+      });
+      slotEl.addEventListener("dragleave", function() {
+        slotEl.classList.remove("drag-over");
+      });
+      slotEl.addEventListener("drop", function(e) {
+        e.preventDefault();
+        slotEl.classList.remove("drag-over");
+        try {
+          var data = JSON.parse(e.dataTransfer.getData("text/plain"));
+          var targetSlotIndex = parseInt(slotEl.dataset.slotIndex);
+          moveCardToSlot(data, targetSlotIndex);
+        } catch (err) {}
+      });
+    }
+
+    function setupPoolDropEvents(poolEl) {
+      poolEl.addEventListener("dragover", function(e) {
+        e.preventDefault();
+        poolEl.classList.add("drag-over");
+      });
+      poolEl.addEventListener("dragleave", function() {
+        poolEl.classList.remove("drag-over");
+      });
+      poolEl.addEventListener("drop", function(e) {
+        e.preventDefault();
+        poolEl.classList.remove("drag-over");
+        try {
+          var data = JSON.parse(e.dataTransfer.getData("text/plain"));
+          moveCardToPool(data);
+        } catch (err) {}
+      });
+    }
+
+    /* Touch Drag Engine for Mobile Devices */
+    var touchGhost = null;
+    function setupTouchDrag(cardEl, pageIdx, locType, locIndex) {
+      var touchStartPos = { x: 0, y: 0 };
+      var isTouchDragging = false;
+
+      cardEl.addEventListener("touchstart", function(e) {
+        if (e.target.closest(".card-btn")) return;
+        if (e.touches.length !== 1) return;
+        touchStartPos.x = e.touches[0].clientX;
+        touchStartPos.y = e.touches[0].clientY;
+        isTouchDragging = false;
+      }, { passive: true });
+
+      cardEl.addEventListener("touchmove", function(e) {
+        if (e.touches.length !== 1) return;
+        var touch = e.touches[0];
+        var dx = touch.clientX - touchStartPos.x;
+        var dy = touch.clientY - touchStartPos.y;
+
+        if (!isTouchDragging && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+          isTouchDragging = true;
+          touchGhost = document.createElement("div");
+          touchGhost.className = "touch-ghost";
+          var img = document.createElement("img");
+          img.src = pageThumbnails[pageIdx];
+          touchGhost.appendChild(img);
+          document.body.appendChild(touchGhost);
+        }
+
+        if (isTouchDragging && touchGhost) {
+          e.preventDefault();
+          touchGhost.style.left = touch.clientX + "px";
+          touchGhost.style.top = touch.clientY + "px";
+
+          var elem = document.elementFromPoint(touch.clientX, touch.clientY);
+          var slot = elem ? elem.closest(".slot") : null;
+          document.querySelectorAll(".slot.drag-over").forEach(function(s) { s.classList.remove("drag-over"); });
+          if (slot) slot.classList.add("drag-over");
+        }
+      }, { passive: false });
+
+      cardEl.addEventListener("touchend", function(e) {
+        if (isTouchDragging && touchGhost) {
+          var touch = e.changedTouches[0];
+          var elem = document.elementFromPoint(touch.clientX, touch.clientY);
+          
+          if (touchGhost) {
+            touchGhost.remove();
+            touchGhost = null;
+          }
+          document.querySelectorAll(".slot.drag-over").forEach(function(s) { s.classList.remove("drag-over"); });
+
+          var targetSlot = elem ? elem.closest(".slot") : null;
+          var targetPool = elem ? elem.closest(".pool-grid") : null;
+
+          if (targetSlot) {
+            var targetSlotIndex = parseInt(targetSlot.dataset.slotIndex);
+            moveCardToSlot({
+              pageIdx: pageIdx,
+              locType: locType,
+              locIndex: locIndex
+            }, targetSlotIndex);
+          } else if (targetPool && locType === "slot") {
+            moveCardToPool({
+              pageIdx: pageIdx,
+              locType: locType,
+              locIndex: locIndex
+            });
+          }
+        }
+      });
+    }
+
+    var btnCheck = document.getElementById("btn-check");
+    var btnHint = document.getElementById("btn-hint");
+    var btnShuffle = document.getElementById("btn-shuffle");
+    var btnReveal = document.getElementById("btn-reveal");
+
+    if (btnCheck) {
+      btnCheck.addEventListener("click", function() {
+        var correctCount = 0;
+        checkResults = [];
+        for (var s = 0; s < totalPages; s++) {
+          if (slots[s] === s) {
+            checkResults[s] = true;
+            correctCount++;
+          } else {
+            checkResults[s] = false;
+          }
+        }
+        renderBoard();
+
+        if (correctCount === totalPages) {
+          showFeedback("🎉 Perfect! You arranged all 13 scenes in perfect narrative order!", "success");
+          triggerConfetti();
+        } else {
+          showFeedback("Score: " + correctCount + " / " + totalPages + " scenes in correct position. Check green/red indicators and keep going!", "warning");
+        }
+      });
+    }
+
+    if (btnHint) {
+      btnHint.addEventListener("click", function() {
+        for (var s = 0; s < totalPages; s++) {
+          if (slots[s] !== s) {
+            var currentLocOfPageS = slots.indexOf(s);
+            if (currentLocOfPageS > -1) {
+              var temp = slots[s];
+              slots[s] = s;
+              slots[currentLocOfPageS] = temp;
+            } else {
+              var pIdx = pool.indexOf(s);
+              if (pIdx > -1) pool.splice(pIdx, 1);
+              if (slots[s] !== null) pool.push(slots[s]);
+              slots[s] = s;
+            }
+            showFeedback("💡 Hint: Placed Scene " + pageLetters[s] + " into Slot " + (s + 1) + "!", "info");
+            checkResults = null;
+            renderBoard();
+            return;
+          }
+        }
+        showFeedback("All scenes are already in correct order!", "success");
+      });
+    }
+
+    if (btnShuffle) {
+      btnShuffle.addEventListener("click", function() {
+        initActivityBoard();
+        showFeedback("Board reshuffled with new random letter labels!", "info");
+      });
+    }
+
+    if (btnReveal) {
+      btnReveal.addEventListener("click", function() {
+        slots = [];
+        for (var i = 0; i < totalPages; i++) slots.push(i);
+        pool = [];
+        checkResults = new Array(totalPages).fill(true);
+        renderBoard();
+        showFeedback("Revealed correct narrative order (Slots 1 to 13).", "info");
+        triggerConfetti();
+      });
+    }
+
+    function showFeedback(msg, type) {
+      if (!feedbackMsg || !feedbackBanner) return;
+      feedbackMsg.innerText = msg;
+      feedbackBanner.className = "feedback-banner " + (type || "info");
+      feedbackBanner.style.display = "flex";
+    }
+
+    function hideFeedback() {
+      if (feedbackBanner) feedbackBanner.style.display = "none";
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 6. INTRO VIDEO MODAL LOGIC                                    */
+    /* ------------------------------------------------------------- */
     function openIntroVideoModal() {
       if (!activityIntroModal) return;
       activityIntroModal.style.display = "flex";
@@ -1588,12 +2597,8 @@
         try {
           activityIntroVideo.load();
           activityIntroVideo.currentTime = 0;
-          activityIntroVideo.play().catch(function(err) {
-            console.log("Intro video playback note:", err);
-          });
-        } catch (e) {
-          console.log("Video load error:", e);
-        }
+          activityIntroVideo.play().catch(function() {});
+        } catch (e) {}
       }
     }
 
@@ -1604,81 +2609,26 @@
       if (activityIntroVideo) {
         activityIntroVideo.pause();
       }
-      hasSeenIntroVideo = true;
     }
 
     if (btnIntroVideo) {
-      btnIntroVideo.addEventListener("click", function() {
-        openIntroVideoModal();
-      });
+      btnIntroVideo.addEventListener("click", openIntroVideoModal);
     }
-
     if (btnStartActivityFromVideo) {
-      btnStartActivityFromVideo.addEventListener("click", function() {
-        closeIntroVideoModal();
-      });
+      btnStartActivityFromVideo.addEventListener("click", closeIntroVideoModal);
     }
-
     if (introModalCloseBtn) {
-      introModalCloseBtn.addEventListener("click", function() {
-        closeIntroVideoModal();
-      });
+      introModalCloseBtn.addEventListener("click", closeIntroVideoModal);
     }
-
     if (activityIntroModal) {
       activityIntroModal.addEventListener("click", function(e) {
-        if (e.target === activityIntroModal) {
-          closeIntroVideoModal();
-        }
+        if (e.target === activityIntroModal) closeIntroVideoModal();
       });
     }
 
-    if (activityIntroVideo) {
-      activityIntroVideo.addEventListener("ended", function() {
-        if (introVideoStatus) {
-          introVideoStatus.innerHTML = "🎉 <strong style='color:#4ade80;'>Awesome watching!</strong> Ready to start the activity!";
-        }
-        if (btnStartActivityFromVideo) {
-          btnStartActivityFromVideo.innerText = "▶ Begin Sequencing Activity!";
-          btnStartActivityFromVideo.style.boxShadow = "0 0 25px rgba(168, 85, 247, 0.8)";
-        }
-        triggerConfetti();
-      });
-    }
-
-    tabActivity.addEventListener("click", function() {
-      tabActivity.classList.add("active");
-      tabRead.classList.remove("active");
-      tabSong.classList.remove("active");
-      viewerContainer.style.display = "none";
-      activityContainer.style.display = "block";
-      songContainer.style.display = "none";
-      fullscreenBtn.style.display = "none";
-      pauseSongVideo();
-    });
-
-    tabSong.addEventListener("click", function() {
-      tabSong.classList.add("active");
-      tabRead.classList.remove("active");
-      tabActivity.classList.remove("active");
-      viewerContainer.style.display = "none";
-      activityContainer.style.display = "none";
-      songContainer.style.display = "flex";
-      fullscreenBtn.style.display = "none";
-      if (songVideo) {
-        songVideo.currentTime = 0;
-        songVideo.play().catch(function() {});
-      }
-    });
-
     /* ------------------------------------------------------------- */
-    /* KARAOKE SUBTITLES & INTERACTIVE CLOZE CHALLENGE GAME LOGIC */
+    /* 7. KARAOKE SUBTITLES & CLOZE CHALLENGE GAME LOGIC             */
     /* ------------------------------------------------------------- */
-
-    // ── Word timestamps from OpenAI Whisper (word_timestamps=True) ───
-    // Each lyric line has exact per-word startAt/endAt from the audio.
-    // The cloze pause fires when the blank word's startAt is reached.
-    // ─────────────────────────────────────────────────────────────────
     var songLyrics = [
       {
         start: 10.9, end: 15.44,
@@ -1986,27 +2936,14 @@
       },
     ];
 
-    // buildWordTimings: words are now baked-in from Whisper above.
-    // This is a no-op kept for safety in case any line is missing words.
-    (function buildWordTimings() {
-      songLyrics.forEach(function(line) {
-        if (line.words && line.words.length > 0) return; // already have Whisper data
-        var words = line.text.trim().split(/\s+/).filter(function(w) { return w.length > 0; });
-        var duration = line.end - line.start;
-        var perWord = duration / words.length;
-        line.words = words.map(function(word, idx) {
-          return { word: word, startAt: line.start + idx * perWord, endAt: line.start + (idx + 1) * perWord };
-        });
-      });
-    })();
-
-    var songMode = "sing"; // "sing" or "cloze"
+    var songMode = "sing";
     var subtitlesEnabled = true;
     var hasPlayedOnce = false;
     var currentClozeIndex = -1;
     var clozeAnswered = {};
-    var lastRenderedLyricIndex = -2; // track which lyric is currently rendered in DOM
+    var lastRenderedLyricIndex = -2;
 
+    var songVideo = document.getElementById("song-video");
     var songSubtitleBox = document.getElementById("song-subtitle-box");
     var songSubtitleWords = document.getElementById("song-subtitle-words");
     var clozeModal = document.getElementById("cloze-modal");
@@ -2020,76 +2957,116 @@
     var celebrationOverlay = document.getElementById("celebration-overlay");
     var celebrationStartBtn = document.getElementById("celebration-start-btn");
 
-    // Load Nunito from Google Fonts for kid-friendly subtitle text
-    (function() {
-      var link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = "https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap";
-      document.head.appendChild(link);
-    })();
+    if (songModeSing) {
+      songModeSing.addEventListener("click", function() { setSongMode("sing"); });
+    }
+    if (songModeCloze) {
+      songModeCloze.addEventListener("click", function() { setSongMode("cloze"); });
+    }
 
-    // Mode Toggle Events
-    songModeSing.addEventListener("click", function() {
-      setSongMode("sing");
-    });
-    songModeCloze.addEventListener("click", function() {
-      setSongMode("cloze");
-    });
-
-    songSubToggle.addEventListener("click", function() {
-      subtitlesEnabled = !subtitlesEnabled;
-      songSubToggle.classList.toggle("active", subtitlesEnabled);
-      songSubToggle.innerText = subtitlesEnabled ? "💬 Subtitles: ON" : "💬 Subtitles: OFF";
-      if (subtitlesEnabled) {
-        songSubtitleBox.style.opacity = "1";
-      } else {
-        songSubtitleBox.style.opacity = "0";
-      }
-    });
+    if (songSubToggle) {
+      songSubToggle.addEventListener("click", function() {
+        subtitlesEnabled = !subtitlesEnabled;
+        songSubToggle.classList.toggle("active", subtitlesEnabled);
+        songSubToggle.innerText = subtitlesEnabled ? "💬 Subtitles: ON" : "💬 Subtitles: OFF";
+        if (songSubtitleBox) {
+          songSubtitleBox.style.opacity = subtitlesEnabled ? "1" : "0";
+        }
+      });
+    }
 
     function setSongMode(mode) {
       songMode = mode;
-      songModeSing.classList.toggle("active", mode === "sing");
-      songModeCloze.classList.toggle("active", mode === "cloze");
+      if (songModeSing) songModeSing.classList.toggle("active", mode === "sing");
+      if (songModeCloze) songModeCloze.classList.toggle("active", mode === "cloze");
       clozeAnswered = {};
-      clozeModal.style.display = "none";
+      if (clozeModal) clozeModal.style.display = "none";
       lastRenderedLyricIndex = -2;
-      if (mode === "cloze" && songVideo.paused) {
+      if (mode === "cloze" && songVideo && songVideo.paused) {
         songVideo.play().catch(function() {});
       }
     }
 
-    // Celebration overlay button starts Cloze mode
-    celebrationStartBtn.addEventListener("click", function() {
-      celebrationOverlay.style.display = "none";
-      setSongMode("cloze");
-      songVideo.currentTime = 0;
-      songVideo.play().catch(function() {});
-    });
+    if (celebrationStartBtn) {
+      celebrationStartBtn.addEventListener("click", function() {
+        if (celebrationOverlay) celebrationOverlay.style.display = "none";
+        setSongMode("cloze");
+        if (songVideo) {
+          songVideo.currentTime = 0;
+          songVideo.play().catch(function() {});
+        }
+      });
+    }
 
-    // Video ended listener -> Show celebration overlay on first play, then auto-switch to Cloze
-    songVideo.addEventListener("ended", function() {
-      if (!hasPlayedOnce) {
-        hasPlayedOnce = true;
-        // Update mode buttons but don't start video yet
-        songModeSing.classList.remove("active");
-        songModeCloze.classList.add("active");
-        // Show celebration overlay instead of alert
-        celebrationOverlay.style.display = "flex";
-        triggerConfetti();
-        // Hide subtitle box during celebration
-        songSubtitleBox.style.opacity = "0";
-      }
-    });
+    if (songVideo) {
+      songVideo.addEventListener("ended", function() {
+        if (!hasPlayedOnce) {
+          hasPlayedOnce = true;
+          if (songModeSing) songModeSing.classList.remove("active");
+          if (songModeCloze) songModeCloze.classList.add("active");
+          if (celebrationOverlay) celebrationOverlay.style.display = "flex";
+          triggerConfetti();
+          if (songSubtitleBox) songSubtitleBox.style.opacity = "0";
+        }
+      });
 
-    // -------------------------------------------------------
-    // KARAOKE SUBTITLE ENGINE
-    // Renders word spans for the active lyric and highlights
-    // each word as the video reaches its timed window.
-    // -------------------------------------------------------
+      songVideo.addEventListener("timeupdate", function() {
+        var curTime = songVideo.currentTime;
+        if (curTime < 1) {
+          clozeAnswered = {};
+          lastRenderedLyricIndex = -2;
+        }
+
+        var activeLyric = null;
+        var activeLyricIndex = -1;
+        for (var i = 0; i < songLyrics.length; i++) {
+          if (curTime >= songLyrics[i].start && curTime <= songLyrics[i].end) {
+            activeLyric = songLyrics[i];
+            activeLyricIndex = i;
+            break;
+          }
+        }
+
+        if (!subtitlesEnabled) {
+          if (songSubtitleBox) songSubtitleBox.style.opacity = "0";
+        } else if (activeLyric && songSubtitleBox) {
+          songSubtitleBox.style.opacity = "1";
+          if (activeLyricIndex !== lastRenderedLyricIndex) {
+            renderLyricSpans(activeLyric, activeLyricIndex);
+          }
+          updateKaraokeHighlight(activeLyric, curTime);
+        } else if (songSubtitleBox) {
+          songSubtitleBox.style.opacity = "0.7";
+          if (lastRenderedLyricIndex !== -1) {
+            songSubtitleWords.innerHTML = "";
+            var idleSpan = document.createElement("span");
+            idleSpan.className = "sub-word";
+            idleSpan.style.cssText = "color:rgba(200,210,240,0.6); font-size:1.1rem; transform:none;";
+            idleSpan.textContent = "The Berry-Scented Disguise";
+            songSubtitleWords.appendChild(idleSpan);
+            lastRenderedLyricIndex = -1;
+          }
+        }
+
+        if (songMode === "cloze" && activeLyric && activeLyric.cloze && !clozeAnswered[activeLyricIndex]) {
+          var clozeWordIdx = activeLyric.words ? activeLyric.words.findIndex(function(w) {
+            return w.word.toLowerCase().indexOf(activeLyric.cloze.blank.toLowerCase()) !== -1;
+          }) : -1;
+          var triggerTime = clozeWordIdx >= 0
+            ? activeLyric.words[clozeWordIdx].startAt - 0.15
+            : activeLyric.start + (activeLyric.end - activeLyric.start) * 0.55;
+
+          if (curTime >= triggerTime && curTime < activeLyric.end) {
+            songVideo.pause();
+            triggerClozeChallenge(activeLyricIndex, activeLyric.cloze);
+          }
+        }
+      });
+    }
+
     function renderLyricSpans(lyric, lyricIndex) {
+      if (!songSubtitleWords || !lyric) return;
       songSubtitleWords.innerHTML = "";
-      if (!lyric) return;
       lyric.words.forEach(function(w, wi) {
         var span = document.createElement("span");
         span.className = "sub-word";
@@ -2101,396 +3078,126 @@
     }
 
     function updateKaraokeHighlight(lyric, curTime) {
-      if (!lyric || !lyric.words) return;
+      if (!lyric || !lyric.words || !songSubtitleWords) return;
       var wordSpans = songSubtitleWords.querySelectorAll(".sub-word");
-      var activeFound = false;
       lyric.words.forEach(function(w, wi) {
         var span = wordSpans[wi];
         if (!span) return;
         if (curTime >= w.startAt && curTime < w.endAt) {
-          // Currently active word
           span.classList.add("active");
           span.classList.remove("sung");
-          activeFound = true;
         } else if (curTime >= w.endAt) {
-          // Already sung
           span.classList.remove("active");
           span.classList.add("sung");
         } else {
-          // Not yet sung
           span.classList.remove("active", "sung");
         }
       });
     }
 
-    // Timeupdate listener for Karaoke Subtitles & Cloze Challenge Triggering
-    songVideo.addEventListener("timeupdate", function() {
-      var curTime = songVideo.currentTime;
-
-      // Reset on rewind
-      if (curTime < 1) {
-        clozeAnswered = {};
-        lastRenderedLyricIndex = -2;
-      }
-
-      // Find active lyric
-      var activeLyric = null;
-      var activeLyricIndex = -1;
-      for (var i = 0; i < songLyrics.length; i++) {
-        if (curTime >= songLyrics[i].start && curTime <= songLyrics[i].end) {
-          activeLyric = songLyrics[i];
-          activeLyricIndex = i;
-          break;
-        }
-      }
-
-      // Update subtitle display
-      if (!subtitlesEnabled) {
-        songSubtitleBox.style.opacity = "0";
-      } else if (activeLyric) {
-        songSubtitleBox.style.opacity = "1";
-        // Re-render spans only when lyric changes
-        if (activeLyricIndex !== lastRenderedLyricIndex) {
-          renderLyricSpans(activeLyric, activeLyricIndex);
-        }
-        updateKaraokeHighlight(activeLyric, curTime);
-      } else {
-        // Between lines — show gentle idle note
-        songSubtitleBox.style.opacity = "0.7";
-        if (lastRenderedLyricIndex !== -1) {
-          songSubtitleWords.innerHTML = '<span class="sub-word" style="color:rgba(200,210,240,0.6); font-size:1.1rem; transform:none;">The Berry-Scented Disguise</span>';
-          lastRenderedLyricIndex = -1;
-        }
-      }
-
-      // Check Cloze Pause Trigger in Cloze Mode
-      if (songMode === "cloze" && activeLyric && activeLyric.cloze && !clozeAnswered[activeLyricIndex]) {
-        // Pause at the cloze word's timing (when the blank word would be highlighted)
-        var clozeWordIdx = activeLyric.words ? activeLyric.words.findIndex(function(w) {
-          return w.word.toLowerCase() === activeLyric.cloze.blank.toLowerCase();
-        }) : -1;
-        var triggerTime = clozeWordIdx >= 0
-          ? activeLyric.words[clozeWordIdx].startAt - 0.15
-          : activeLyric.start + (activeLyric.end - activeLyric.start) * 0.55;
-
-        if (curTime >= triggerTime && curTime < activeLyric.end) {
-          songVideo.pause();
-          triggerClozeChallenge(activeLyricIndex, activeLyric.cloze);
-        }
-      }
-    });
-
     function triggerClozeChallenge(lyricIndex, clozeData) {
       currentClozeIndex = lyricIndex;
-      clozeFeedback.style.display = "none";
+      if (clozeFeedback) clozeFeedback.style.display = "none";
 
-      // Calculate cloze question number
       var clozeQuestions = songLyrics.filter(function(l) { return l.cloze; });
       var clozeCount = clozeQuestions.length;
       var clozeNum = songLyrics.slice(0, lyricIndex + 1).filter(function(l) { return l.cloze; }).length;
-      clozeProgress.innerText = "Word " + clozeNum + " of " + clozeCount;
+      if (clozeProgress) clozeProgress.innerText = "Word " + clozeNum + " of " + clozeCount;
 
-      // Format sentence with animated blank
       var parts = clozeData.prompt.split("____");
-      clozeSentence.innerHTML = parts[0] +
-        '<span class="blank-slot" style="animation: blankPulse 0.9s ease-in-out infinite;">_____</span>' +
-        (parts[1] || "");
-
-      // Render options with shuffle
-      clozeOptionsGrid.innerHTML = "";
-      var optionsCopy = clozeData.options.slice();
-      for (var o = 0; o < optionsCopy.length; o++) {
-        (function(optIdx) {
-          var btn = document.createElement("button");
-          btn.className = "cloze-opt-btn";
-          btn.type = "button";
-          btn.dataset.optIdx = optIdx;
-          btn.innerText = optionsCopy[optIdx];
-
-          btn.addEventListener("click", function(e) {
-            var idx = parseInt(e.currentTarget.dataset.optIdx);
-            handleClozeSelection(idx, clozeData.answer, lyricIndex, e.currentTarget);
-          });
-          clozeOptionsGrid.appendChild(btn);
-        })(o);
+      if (clozeSentence) {
+        clozeSentence.innerHTML = "";
+        clozeSentence.appendChild(document.createTextNode(parts[0]));
+        var blankSpan = document.createElement("span");
+        blankSpan.className = "blank-slot";
+        blankSpan.style.animation = "blankPulse 0.9s ease-in-out infinite";
+        blankSpan.textContent = "_____";
+        clozeSentence.appendChild(blankSpan);
+        if (parts[1]) clozeSentence.appendChild(document.createTextNode(parts[1]));
       }
 
-      clozeModal.style.display = "flex";
+      if (clozeOptionsGrid) {
+        clozeOptionsGrid.innerHTML = "";
+        var optionsCopy = clozeData.options.slice();
+        var correctOptionText = clozeData.options[clozeData.answer];
+        shuffleArray(optionsCopy);
+        var shuffledAnswerIndex = optionsCopy.indexOf(correctOptionText);
+
+        optionsCopy.forEach(function(optText, optIdx) {
+          var btn = document.createElement("button");
+          btn.className = "cloze-btn";
+          btn.type = "button";
+          btn.innerText = optText;
+          btn.addEventListener("click", function() {
+            handleClozeSelection(optIdx, shuffledAnswerIndex, lyricIndex, btn);
+          });
+          clozeOptionsGrid.appendChild(btn);
+        });
+      }
+
+      if (clozeModal) clozeModal.style.display = "flex";
     }
 
     function handleClozeSelection(selectedIdx, correctIdx, lyricIndex, btnEl) {
-      // Disable all buttons during feedback
-      var allBtns = clozeOptionsGrid.querySelectorAll(".cloze-opt-btn");
-      allBtns.forEach(function(b) { b.style.pointerEvents = "none"; });
+      var allBtns = clozeOptionsGrid.querySelectorAll(".cloze-btn");
+      allBtns.forEach(function(b) { b.disabled = true; });
 
       if (selectedIdx === correctIdx) {
         btnEl.classList.add("correct");
-        clozeAnswered[lyricIndex] = true;
-        clozeFeedback.style.display = "block";
-        clozeFeedback.style.background = "rgba(16, 185, 129, 0.2)";
-        clozeFeedback.style.color = "#34d399";
-        clozeFeedback.innerText = "🎉 That's right! Great job!";
-        triggerConfetti();
-        // Also reveal the correct word in the blank
-        var blankEl = clozeSentence.querySelector(".blank-slot");
-        if (blankEl) {
-          blankEl.textContent = songLyrics[lyricIndex].cloze.options[correctIdx];
-          blankEl.style.color = "#34d399";
-          blankEl.style.borderColor = "#34d399";
-          blankEl.style.animation = "none";
+        if (clozeFeedback) {
+          clozeFeedback.innerText = "🎉 Brilliant! Correct word!";
+          clozeFeedback.className = "cloze-feedback correct";
+          clozeFeedback.style.display = "block";
         }
+        triggerConfetti();
+        clozeAnswered[lyricIndex] = true;
 
         setTimeout(function() {
-          clozeModal.style.display = "none";
-          lastRenderedLyricIndex = -2; // force subtitle re-render
-          songVideo.play().catch(function() {});
-        }, 1500);
+          if (clozeModal) clozeModal.style.display = "none";
+          if (songVideo) songVideo.play().catch(function() {});
+        }, 1200);
       } else {
         btnEl.classList.add("incorrect");
-        clozeFeedback.style.display = "block";
-        clozeFeedback.style.background = "rgba(239, 68, 68, 0.2)";
-        clozeFeedback.style.color = "#fca5a5";
-        clozeFeedback.innerText = "❌ Not quite — try again!";
-        // Re-enable all buttons except the wrong one
+        if (allBtns[correctIdx]) {
+          allBtns[correctIdx].classList.add("correct");
+        }
+        if (clozeFeedback) {
+          clozeFeedback.innerText = "Nice try! Listen closely as the music continues!";
+          clozeFeedback.className = "cloze-feedback incorrect";
+          clozeFeedback.style.display = "block";
+        }
+        clozeAnswered[lyricIndex] = true;
+
         setTimeout(function() {
-          allBtns.forEach(function(b) {
-            if (b !== btnEl) b.style.pointerEvents = "auto";
-          });
-        }, 500);
+          if (clozeModal) clozeModal.style.display = "none";
+          if (songVideo) songVideo.play().catch(function() {});
+        }, 1800);
       }
     }
 
     /* ------------------------------------------------------------- */
-    /* READER VIEW LOGIC (Pan/Zoom/Touch) */
+    /* 8. FULLSCREEN TOGGLE                                          */
     /* ------------------------------------------------------------- */
-    function centerContent() {
-      if (contentHeight * scale <= (window.innerHeight - 52)) {
-        posY = ((window.innerHeight - 52) - contentHeight * scale) / 2;
-      } else {
-        posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * scale, posY));
-      }
-      posX = 0;
-      updateTransform();
+    if (fullscreenBtn) {
+      fullscreenBtn.addEventListener("click", function() {
+        var isFullscreen = document.fullscreenElement || 
+                           document.mozFullScreenElement || 
+                           document.webkitFullscreenElement || 
+                           document.msFullscreenElement;
+        if (isFullscreen) {
+          if (document.exitFullscreen) document.exitFullscreen();
+          else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+          else if (document.msExitFullscreen) document.msExitFullscreen();
+        } else {
+          var docElm = document.documentElement;
+          if (docElm.requestFullscreen) docElm.requestFullscreen();
+          else if (docElm.mozRequestFullScreen) docElm.mozRequestFullScreen();
+          else if (docElm.webkitRequestFullscreen) docElm.webkitRequestFullscreen();
+          else if (docElm.msRequestFullscreen) docElm.msRequestFullscreen();
+        }
+      });
     }
-
-    function updateTransform() {
-      container.style.transform = "translate(" + posX + "px, " + posY + "px) scale(" + scale + ")";
-    }
-
-    // Touch Event Handlers for PDF viewer
-    viewerContainer.addEventListener("touchstart", function(e) {
-      activeTouch = true;
-      if (e.touches.length === 2) {
-        isPinching = true;
-        initDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-        initMidX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-        initMidY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-        baseScale = scale;
-        basePosX = posX;
-        basePosY = posY;
-      } else if (e.touches.length === 1) {
-        isPinching = false;
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        basePosX = posX;
-        basePosY = posY;
-
-        touchStartTime = Date.now();
-        startTouchX = e.touches[0].clientX;
-        startTouchY = e.touches[0].clientY;
-        isGesture = false;
-      }
-    });
-
-    viewerContainer.addEventListener("touchmove", function(e) {
-      if (!activeTouch) return;
-      contentHeight = container.offsetHeight;
-
-      if (e.touches.length === 2 && isPinching) {
-        e.preventDefault();
-        var dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-        var midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-        var midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-
-        var factor = dist / initDist;
-        var newScale = baseScale * factor;
-        if (newScale < 1) newScale = 1;
-        if (newScale > 5) newScale = 5;
-
-        var newPosX = midX - window.innerWidth / 2 - (newScale / baseScale) * (initMidX - window.innerWidth / 2 - basePosX);
-        var newPosY = midY - (newScale / baseScale) * (initMidY - basePosY);
-
-        var maxPanX = (newScale - 1) * window.innerWidth / 2;
-        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
-
-        if (contentHeight * newScale <= (window.innerHeight - 52)) {
-          posY = ((window.innerHeight - 52) - contentHeight * newScale) / 2;
-        } else {
-          posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * newScale, newPosY));
-        }
-
-        scale = newScale;
-        updateTransform();
-      } else if (e.touches.length === 1) {
-        var dx = e.touches[0].clientX - startTouchX;
-        var dy = e.touches[0].clientY - startTouchY;
-        if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
-          isGesture = true;
-        }
-
-        if (scale > 1 || contentHeight * scale > (window.innerHeight - 52)) {
-          e.preventDefault();
-          var currentX = e.touches[0].clientX;
-          var currentY = e.touches[0].clientY;
-
-          var newPosX = basePosX + (currentX - startX);
-          var newPosY = basePosY + (currentY - startY);
-
-          var maxPanX = (scale - 1) * window.innerWidth / 2;
-          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
-
-          if (contentHeight * scale <= (window.innerHeight - 52)) {
-            posY = ((window.innerHeight - 52) - contentHeight * scale) / 2;
-          } else {
-            posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * scale, newPosY));
-          }
-          updateTransform();
-        }
-      }
-    });
-
-    viewerContainer.addEventListener("touchend", function(e) {
-      if (e.touches.length === 0) {
-        activeTouch = false;
-        isPinching = false;
-
-        var currentTime = Date.now();
-        var tapLength = currentTime - lastTap;
-        if (tapLength < 300 && tapLength > 0 && !isGesture) {
-          scale = 1;
-          centerContent();
-          e.preventDefault();
-        }
-        lastTap = currentTime;
-      } else if (e.touches.length === 1) {
-        isPinching = false;
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        basePosX = posX;
-        basePosY = posY;
-      }
-    });
-
-    // Mouse Wheel Scroll & Trackpad Zoom for Reader
-    viewerContainer.addEventListener("wheel", function(e) {
-      contentHeight = container.offsetHeight;
-      if (e.ctrlKey) {
-        e.preventDefault();
-        var factor = 1 - e.deltaY * 0.01;
-        var newScale = scale * factor;
-        if (newScale < 1) newScale = 1;
-        if (newScale > 5) newScale = 5;
-        
-        var mouseX = e.clientX;
-        var mouseY = e.clientY;
-        
-        var newPosX = mouseX - window.innerWidth / 2 - (newScale / scale) * (mouseX - window.innerWidth / 2 - posX);
-        var newPosY = mouseY - (newScale / scale) * (mouseY - posY);
-        
-        var maxPanX = (newScale - 1) * window.innerWidth / 2;
-        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
-        
-        if (contentHeight * newScale <= (window.innerHeight - 52)) {
-          posY = ((window.innerHeight - 52) - contentHeight * newScale) / 2;
-        } else {
-          posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * newScale, newPosY));
-        }
-        
-        scale = newScale;
-        updateTransform();
-      } else {
-        if (scale > 1 || contentHeight * scale > (window.innerHeight - 52)) {
-          e.preventDefault();
-          var newPosY = posY - e.deltaY;
-          var newPosX = posX - e.deltaX;
-          
-          var maxPanX = (scale - 1) * window.innerWidth / 2;
-          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
-          
-          if (contentHeight * scale <= (window.innerHeight - 52)) {
-            posY = ((window.innerHeight - 52) - contentHeight * scale) / 2;
-          } else {
-            posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * scale, newPosY));
-          }
-          updateTransform();
-        }
-      }
-    }, { passive: false });
-
-    // Mouse Click-and-Drag Panning
-    var isMouseDown = false;
-    var mouseStartX = 0, mouseStartY = 0;
-    viewerContainer.addEventListener("mousedown", function(e) {
-      if (e.button !== 0 || e.target.closest("#fullscreen-btn")) return;
-      isMouseDown = true;
-      mouseStartX = e.clientX;
-      mouseStartY = e.clientY;
-      basePosX = posX;
-      basePosY = posY;
-      document.body.style.cursor = "grabbing";
-    });
-
-    viewerContainer.addEventListener("mousemove", function(e) {
-      if (!isMouseDown) return;
-      contentHeight = container.offsetHeight;
-      if (scale > 1 || contentHeight * scale > (window.innerHeight - 52)) {
-        e.preventDefault();
-        var dx = e.clientX - mouseStartX;
-        var dy = e.clientY - mouseStartY;
-        
-        var newPosX = basePosX + dx;
-        var newPosY = basePosY + dy;
-        
-        var maxPanX = (scale - 1) * window.innerWidth / 2;
-        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
-        
-        if (contentHeight * scale <= (window.innerHeight - 52)) {
-          posY = ((window.innerHeight - 52) - contentHeight * scale) / 2;
-        } else {
-          posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * scale, newPosY));
-        }
-        updateTransform();
-      }
-    });
-
-    window.addEventListener("mouseup", function() {
-      isMouseDown = false;
-      document.body.style.cursor = "default";
-    });
-
-    // Fullscreen Toggle
-    var btn = document.getElementById("fullscreen-btn");
-    var enterIcon = document.getElementById("enter-icon");
-    var exitIcon = document.getElementById("exit-icon");
-
-    btn.addEventListener("click", function() {
-      var isFullscreen = document.fullscreenElement || 
-                         document.mozFullScreenElement || 
-                         document.webkitFullscreenElement || 
-                         document.msFullscreenElement;
-      if (isFullscreen) {
-        if (document.exitFullscreen) document.exitFullscreen();
-        else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
-        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-        else if (document.msExitFullscreen) document.msExitFullscreen();
-      } else {
-        var docElm = document.documentElement;
-        if (docElm.requestFullscreen) docElm.requestFullscreen();
-        else if (docElm.mozRequestFullScreen) docElm.mozRequestFullScreen();
-        else if (docElm.webkitRequestFullscreen) docElm.webkitRequestFullscreen();
-        else if (docElm.msRequestFullscreen) docElm.msRequestFullscreen();
-      }
-    });
 
     function updateFullscreenIcons() {
       var isFullscreen = document.fullscreenElement || 
@@ -2498,497 +3205,27 @@
                          document.webkitFullscreenElement || 
                          document.msFullscreenElement;
       if (isFullscreen) {
-        enterIcon.style.display = "none";
-        exitIcon.style.display = "block";
+        if (enterIcon) enterIcon.style.display = "none";
+        if (exitIcon) exitIcon.style.display = "block";
       } else {
-        enterIcon.style.display = "block";
-        exitIcon.style.display = "none";
+        if (enterIcon) enterIcon.style.display = "block";
+        if (exitIcon) exitIcon.style.display = "none";
       }
     }
-
     document.addEventListener("fullscreenchange", updateFullscreenIcons);
 
     /* ------------------------------------------------------------- */
-    /* SEQUENCING ACTIVITY GAME LOGIC */
+    /* 9. LIGHTWEIGHT CANVAS CONFETTI                                */
     /* ------------------------------------------------------------- */
-    var slotsGrid = document.getElementById("slots-grid");
-    var poolGrid = document.getElementById("pool-grid");
-    var feedbackBanner = document.getElementById("feedback-banner");
-    var feedbackMsg = document.getElementById("feedback-msg");
-    var placedCounter = document.getElementById("placed-counter");
-
-    function initActivityBoard() {
-      // Generate random letter assignments for each page
-      var lettersShuffled = alphabet.slice(0, totalPages);
-      shuffleArray(lettersShuffled);
-      pageLetters = [];
-      cardRotations = [];
-      for (var i = 0; i < totalPages; i++) {
-        pageLetters[i] = lettersShuffled[i];
-        // Organic physical photo tabletop rotation (-3.5deg to +3.5deg)
-        cardRotations[i] = (Math.random() * 7 - 3.5).toFixed(1) + "deg";
-      }
-
-      pool = [];
-      for (var i = 0; i < totalPages; i++) pool.push(i);
-      shuffleArray(pool);
-
-      slots = new Array(totalPages).fill(null);
-      selectedCard = null;
-      checkResults = null;
-      hideFeedback();
-
-      renderBoard();
-    }
-
-    function shuffleArray(arr) {
-      for (var i = arr.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-      }
-    }
-
-    function renderBoard() {
-      // 1. Render Tabletop Pool (Large 3D Physical Photo Cards)
-      poolGrid.innerHTML = "";
-      if (pool.length === 0) {
-        var emptyMsg = document.createElement("div");
-        emptyMsg.style.gridColumn = "1 / -1";
-        emptyMsg.style.textAlign = "center";
-        emptyMsg.style.padding = "20px";
-        emptyMsg.style.color = "var(--success)";
-        emptyMsg.style.fontSize = "0.95rem";
-        emptyMsg.style.fontWeight = "600";
-        emptyMsg.innerText = "✨ All scene photos placed on sequence line! Click 'Check Story' to verify.";
-        poolGrid.appendChild(emptyMsg);
-      } else {
-        for (var p = 0; p < pool.length; p++) {
-          var pPageIdx = pool[p];
-          var poolCard = createCardElement(pPageIdx, "pool", p);
-          poolGrid.appendChild(poolCard);
-        }
-      }
-      setupPoolDropEvents(poolGrid);
-
-      // 2. Render Target Sequence Line (Slots 1 to 13)
-      slotsGrid.innerHTML = "";
-      var placedCount = 0;
-
-      for (var s = 0; s < totalPages; s++) {
-        var slotDiv = document.createElement("div");
-        slotDiv.className = "slot";
-        slotDiv.dataset.slotIndex = s;
-
-        // Slot number badge
-        var numBadge = document.createElement("div");
-        numBadge.className = "slot-num-badge";
-        numBadge.innerText = (s + 1);
-        slotDiv.appendChild(numBadge);
-
-        if (checkResults) {
-          if (checkResults[s] === true) slotDiv.classList.add("correct");
-          else if (checkResults[s] === false) slotDiv.classList.add("incorrect");
-        }
-
-        var pageIdx = slots[s];
-        if (pageIdx !== null) {
-          placedCount++;
-          var card = createCardElement(pageIdx, "slot", s);
-          slotDiv.appendChild(card);
-
-          if (checkResults) {
-            var statusIcon = document.createElement("div");
-            statusIcon.className = "status-icon " + (checkResults[s] ? "correct" : "incorrect");
-            statusIcon.innerText = checkResults[s] ? "✓" : "✕";
-            slotDiv.appendChild(statusIcon);
-          }
-        } else {
-          var label = document.createElement("div");
-          label.className = "slot-label";
-          label.innerText = "Slot " + (s + 1);
-          slotDiv.appendChild(label);
-        }
-
-        setupSlotDropEvents(slotDiv);
-        slotsGrid.appendChild(slotDiv);
-      }
-
-      placedCounter.innerText = "Placed: " + placedCount + " / " + totalPages;
-    }
-
-    function createCardElement(pageIdx, locationType, locationIndex) {
-      var card = document.createElement("div");
-      card.className = "story-card";
-      card.draggable = true;
-      card.dataset.pageIndex = pageIdx;
-      card.dataset.locType = locationType;
-      card.dataset.locIndex = locationIndex;
-
-      // Apply organic physical tabletop tilt if in pool
-      if (locationType === "pool") {
-        card.style.transform = "rotate(" + cardRotations[pageIdx] + ")";
-      }
-
-      if (selectedCard === pageIdx) {
-        card.classList.add("selected");
-      }
-
-      // PROMINENT RANDOM LETTER BADGE FOR CLASSROOM DEMO
-      var letterBadge = document.createElement("div");
-      letterBadge.className = "card-letter-badge";
-      letterBadge.title = "Scene Letter " + pageLetters[pageIdx];
-      letterBadge.innerText = pageLetters[pageIdx];
-      card.appendChild(letterBadge);
-
-      // Thumbnail Container
-      var thumbWrap = document.createElement("div");
-      thumbWrap.className = "card-thumb-wrap";
-
-      var img = document.createElement("img");
-      img.className = "card-thumb";
-      img.src = pageThumbnails[pageIdx];
-      img.alt = "Scene " + pageLetters[pageIdx];
-      thumbWrap.appendChild(img);
-      card.appendChild(thumbWrap);
-
-      // Footer bar (Controls & Label)
-      var footer = document.createElement("div");
-      footer.className = "card-footer";
-
-      var label = document.createElement("div");
-      label.className = "card-label";
-      label.innerText = "Scene " + pageLetters[pageIdx];
-      footer.appendChild(label);
-
-      var controls = document.createElement("div");
-      controls.className = "card-controls";
-      
-      var zoomBtn = document.createElement("button");
-      zoomBtn.className = "card-btn";
-      zoomBtn.title = "Inspect Scene " + pageLetters[pageIdx];
-      zoomBtn.innerText = "🔍";
-      zoomBtn.addEventListener("click", function(e) {
-        e.stopPropagation();
-        openPreviewModal(pageIdx);
-      });
-      controls.appendChild(zoomBtn);
-      footer.appendChild(controls);
-      card.appendChild(footer);
-
-      // HTML5 Drag Events
-      card.addEventListener("dragstart", function(e) {
-        e.dataTransfer.setData("text/plain", JSON.stringify({
-          pageIdx: pageIdx,
-          locType: locationType,
-          locIndex: locationIndex
-        }));
-        card.classList.add("dragging");
-      });
-
-      card.addEventListener("dragend", function() {
-        card.classList.remove("dragging");
-      });
-
-      // CLICKING THE SCENE CARD AUTOMATICALLY OPENS HIGH-RES LIGHTBOX PREVIEW
-      card.addEventListener("click", function(e) {
-        e.stopPropagation();
-        openPreviewModal(pageIdx);
-      });
-
-      // Touch Drag Handler for Touch Devices
-      setupTouchDrag(card, pageIdx, locationType, locationIndex);
-
-      return card;
-    }
-
-    /* Slot and Pool Drop Handlers */
-    function moveCardToSlot(cardData, targetSlotIndex) {
-      var srcPageIdx = cardData.pageIdx;
-      var srcType = cardData.locType;
-      var srcIndex = cardData.locIndex;
-
-      var existingSlotPageIdx = slots[targetSlotIndex];
-
-      // Remove card from old location
-      if (srcType === "pool") {
-        var pIdx = pool.indexOf(srcPageIdx);
-        if (pIdx > -1) pool.splice(pIdx, 1);
-      } else if (srcType === "slot") {
-        slots[srcIndex] = null;
-      }
-
-      // If target slot had an existing card, swap locations
-      if (existingSlotPageIdx !== null) {
-        if (srcType === "slot") {
-          slots[srcIndex] = existingSlotPageIdx;
-        } else {
-          pool.push(existingSlotPageIdx);
-        }
-      }
-
-      slots[targetSlotIndex] = srcPageIdx;
-      selectedCard = null;
-      checkResults = null;
-      hideFeedback();
-      renderBoard();
-    }
-
-    function moveCardToPool(cardData) {
-      var srcPageIdx = cardData.pageIdx;
-      var srcType = cardData.locType;
-      var srcIndex = cardData.locIndex;
-
-      if (srcType === "slot") {
-        slots[srcIndex] = null;
-        if (pool.indexOf(srcPageIdx) === -1) {
-          pool.push(srcPageIdx);
-        }
-        selectedCard = null;
-        checkResults = null;
-        hideFeedback();
-        renderBoard();
-      }
-    }
-
-    function setupSlotDropEvents(slotEl) {
-      slotEl.addEventListener("dragover", function(e) {
-        e.preventDefault();
-        slotEl.classList.add("drag-over");
-      });
-
-      slotEl.addEventListener("dragleave", function() {
-        slotEl.classList.remove("drag-over");
-      });
-
-      slotEl.addEventListener("drop", function(e) {
-        e.preventDefault();
-        slotEl.classList.remove("drag-over");
-        try {
-          var data = JSON.parse(e.dataTransfer.getData("text/plain"));
-          var targetSlotIndex = parseInt(slotEl.dataset.slotIndex);
-          moveCardToSlot(data, targetSlotIndex);
-        } catch (err) {}
-      });
-    }
-
-    function setupPoolDropEvents(poolEl) {
-      poolEl.addEventListener("dragover", function(e) {
-        e.preventDefault();
-        poolEl.classList.add("drag-over");
-      });
-
-      poolEl.addEventListener("dragleave", function() {
-        poolEl.classList.remove("drag-over");
-      });
-
-      poolEl.addEventListener("drop", function(e) {
-        e.preventDefault();
-        poolEl.classList.remove("drag-over");
-        try {
-          var data = JSON.parse(e.dataTransfer.getData("text/plain"));
-          moveCardToPool(data);
-        } catch (err) {}
-      });
-    }
-
-    /* Custom Touch Drag Engine for Mobile */
-    var touchGhost = null;
-    function setupTouchDrag(cardEl, pageIdx, locType, locIndex) {
-      var touchStartPos = { x: 0, y: 0 };
-      var isTouchDragging = false;
-
-      cardEl.addEventListener("touchstart", function(e) {
-        if (e.target.closest(".card-btn")) return;
-        if (e.touches.length !== 1) return;
-
-        touchStartPos.x = e.touches[0].clientX;
-        touchStartPos.y = e.touches[0].clientY;
-        isTouchDragging = false;
-      }, { passive: true });
-
-      cardEl.addEventListener("touchmove", function(e) {
-        if (e.touches.length !== 1) return;
-        var touch = e.touches[0];
-        var dx = touch.clientX - touchStartPos.x;
-        var dy = touch.clientY - touchStartPos.y;
-
-        if (!isTouchDragging && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
-          isTouchDragging = true;
-          touchGhost = document.createElement("div");
-          touchGhost.className = "touch-ghost";
-          var img = document.createElement("img");
-          img.src = pageThumbnails[pageIdx];
-          touchGhost.appendChild(img);
-          document.body.appendChild(touchGhost);
-        }
-
-        if (isTouchDragging && touchGhost) {
-          e.preventDefault();
-          touchGhost.style.left = touch.clientX + "px";
-          touchGhost.style.top = touch.clientY + "px";
-
-          var elem = document.elementFromPoint(touch.clientX, touch.clientY);
-          var slot = elem ? elem.closest(".slot") : null;
-          document.querySelectorAll(".slot.drag-over").forEach(s => s.classList.remove("drag-over"));
-          if (slot) slot.classList.add("drag-over");
-        }
-      }, { passive: false });
-
-      cardEl.addEventListener("touchend", function(e) {
-        if (isTouchDragging && touchGhost) {
-          var touch = e.changedTouches[0];
-          var elem = document.elementFromPoint(touch.clientX, touch.clientY);
-          
-          if (touchGhost) {
-            touchGhost.remove();
-            touchGhost = null;
-          }
-          document.querySelectorAll(".slot.drag-over").forEach(s => s.classList.remove("drag-over"));
-
-          var targetSlot = elem ? elem.closest(".slot") : null;
-          var targetPool = elem ? elem.closest(".pool-grid") : null;
-
-          if (targetSlot) {
-            var targetSlotIndex = parseInt(targetSlot.dataset.slotIndex);
-            moveCardToSlot({
-              pageIdx: pageIdx,
-              locType: locType,
-              locIndex: locIndex
-            }, targetSlotIndex);
-          } else if (targetPool && locType === "slot") {
-            moveCardToPool({
-              pageIdx: pageIdx,
-              locType: locType,
-              locIndex: locIndex
-            });
-          }
-        }
-      });
-    }
-
-    /* Action Buttons */
-    document.getElementById("btn-check").addEventListener("click", function() {
-      var correctCount = 0;
-      checkResults = [];
-
-      for (var s = 0; s < totalPages; s++) {
-        if (slots[s] === s) {
-          checkResults[s] = true;
-          correctCount++;
-        } else {
-          checkResults[s] = false;
-        }
-      }
-
-      renderBoard();
-
-      if (correctCount === totalPages) {
-        showFeedback("🎉 Perfect! You arranged all 13 scenes in perfect narrative order!", "success");
-        triggerConfetti();
-      } else {
-        showFeedback("Score: " + correctCount + " / " + totalPages + " scenes in correct position. Check green/red indicators and keep going!", "warning");
-      }
-    });
-
-    document.getElementById("btn-hint").addEventListener("click", function() {
-      for (var s = 0; s < totalPages; s++) {
-        if (slots[s] !== s) {
-          var currentLocOfPageS = slots.indexOf(s);
-          if (currentLocOfPageS > -1) {
-            var temp = slots[s];
-            slots[s] = s;
-            slots[currentLocOfPageS] = temp;
-          } else {
-            var pIdx = pool.indexOf(s);
-            if (pIdx > -1) pool.splice(pIdx, 1);
-            if (slots[s] !== null) pool.push(slots[s]);
-            slots[s] = s;
-          }
-          showFeedback("💡 Hint: Placed Scene " + pageLetters[s] + " into Slot " + (s + 1) + "!", "info");
-          checkResults = null;
-          renderBoard();
-          return;
-        }
-      }
-      showFeedback("All scenes are already in correct order!", "success");
-    });
-
-    document.getElementById("btn-shuffle").addEventListener("click", function() {
-      initActivityBoard();
-      showFeedback("Board reshuffled with new random letter labels!", "info");
-    });
-
-    document.getElementById("btn-reveal").addEventListener("click", function() {
-      slots = [];
-      for (var i = 0; i < totalPages; i++) slots.push(i);
-      pool = [];
-      checkResults = new Array(totalPages).fill(true);
-      renderBoard();
-      showFeedback("Revealed correct narrative order (Slots 1 to 13).", "info");
-      triggerConfetti();
-    });
-
-    function showFeedback(msg, type) {
-      feedbackMsg.innerText = msg;
-      feedbackBanner.className = "feedback-banner " + (type || "info");
-      feedbackBanner.style.display = "flex";
-    }
-
-    function hideFeedback() {
-      feedbackBanner.style.display = "none";
-    }
-
-    /* Modal Preview Lightbox */
-    var modalOverlay = document.getElementById("preview-modal");
-    var modalImg = document.getElementById("modal-img");
-    var modalPageTitle = document.getElementById("modal-page-title");
-    var modalCloseBtn = document.getElementById("modal-close-btn");
-    var modalPrevBtn = document.getElementById("modal-prev-btn");
-    var modalNextBtn = document.getElementById("modal-next-btn");
-
-    function openPreviewModal(pageIdx) {
-      currentPreviewPageIndex = pageIdx;
-      updateModalContent();
-      modalOverlay.classList.add("active");
-    }
-
-    function updateModalContent() {
-      modalImg.src = pageThumbnails[currentPreviewPageIndex];
-      modalPageTitle.innerText = "Spread " + pageLetters[currentPreviewPageIndex] + " (Spread " + (currentPreviewPageIndex + 1) + " of " + totalPages + ")";
-    }
-
-    modalCloseBtn.addEventListener("click", function() {
-      modalOverlay.classList.remove("active");
-    });
-    modalOverlay.addEventListener("click", function(e) {
-      if (e.target === modalOverlay) modalOverlay.classList.remove("active");
-    });
-
-    modalPrevBtn.addEventListener("click", function() {
-      if (currentPreviewPageIndex > 0) {
-        currentPreviewPageIndex--;
-        updateModalContent();
-      }
-    });
-
-    modalNextBtn.addEventListener("click", function() {
-      if (currentPreviewPageIndex < totalPages - 1) {
-        currentPreviewPageIndex++;
-        updateModalContent();
-      }
-    });
-
-    /* Lightweight Canvas Confetti */
     function triggerConfetti() {
       var canvas = document.getElementById("confetti-canvas");
+      if (!canvas) return;
       var ctx = canvas.getContext("2d");
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
 
       var pieces = [];
-      var colors = ["#4f7ef8", "#10b981", "#f59e0b", "#ec4899", "#8b5cf6"];
+      var colors = ["#4f7ef8", "#10b981", "#f59e0b", "#ec4899", "#8b5cf6", "#38bdf8", "#fbbf24"];
 
       for (var i = 0; i < 100; i++) {
         pieces.push({
@@ -3032,13 +3269,11 @@
       requestAnimationFrame(frame);
     }
 
-    // Re-center reader on window resize
-    window.addEventListener("resize", function() {
-      if (tabRead.classList.contains("active")) {
-        contentHeight = container.offsetHeight;
-        centerContent();
-      }
-    });
-  </script>
+    /* ------------------------------------------------------------- */
+    /* 10. INITIAL STARTUP                                           */
+    /* ------------------------------------------------------------- */
+    loadReaderPerspective("mouse");
+    initActivityBoard();
+</script>
 </body>
 </html>
