@@ -1,0 +1,3031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>The Little Mouse, Red Ripe Strawberry &amp; Big Hungry Bear - Story &amp; Activity</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Load PDF.js from cdnjs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <style>
+    /* Global Reset & Design Tokens */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #090b10;
+      --surface: #121622;
+      --surface-hover: #1a2030;
+      --tabletop-bg: radial-gradient(circle at 50% 30%, #1c2333 0%, #0d111a 70%, #07090e 100%);
+      --border: #232a3c;
+      --accent: #4f7ef8;
+      --accent-hover: #3b6be8;
+      --accent-glow: rgba(79, 126, 248, 0.5);
+      --success: #10b981;
+      --success-glow: rgba(16, 185, 129, 0.5);
+      --error: #ef4444;
+      --error-glow: rgba(239, 68, 68, 0.5);
+      --warning: #f59e0b;
+      --text: #e8eaf0;
+      --text-muted: #8c97b0;
+      --radius-sm: 8px;
+      --radius: 14px;
+      --header-h: 52px;
+    }
+
+    body, html {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* App Header */
+    #app-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: var(--header-h);
+      background: rgba(18, 22, 34, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 10000;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .back-btn {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .back-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--accent);
+    }
+
+    .story-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .story-title span {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-left: 6px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 3px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      gap: 2px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover { color: var(--text); }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    /* PDF Reader Container */
+    #viewer-container {
+      position: absolute;
+      top: var(--header-h);
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - var(--header-h));
+      overflow: hidden;
+      background-color: #000000;
+      touch-action: none;
+    }
+
+    #pdf-container {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: center top;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #pdf-container canvas {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      background-color: #1a1a1a;
+    }
+
+    #fullscreen-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background-color: rgba(22, 26, 35, 0.85);
+      color: #ffffff;
+      border: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+      transition: all 0.2s ease;
+    }
+    #fullscreen-btn:hover {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    /* Loading overlay */
+    #loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 600;
+      z-index: 20000;
+      pointer-events: none;
+      background: rgba(22, 26, 35, 0.92);
+      padding: 14px 24px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: opacity 0.3s ease;
+    }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ------------------------------------------------------------- */
+    /* Fullscreen Video Song View & Interactive Cloze Game */
+    /* ------------------------------------------------------------- */
+    #song-container {
+      position: absolute;
+      top: var(--header-h);
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - var(--header-h));
+      overflow: hidden;
+      background: #000000;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px 12px;
+      gap: 6px;
+    }
+
+    .song-header-bar {
+      width: 100%;
+      max-width: 1920px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: rgba(18, 22, 34, 0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 6px 12px;
+      flex: 0 0 auto;
+    }
+
+    .song-mode-toggle {
+      display: flex;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 3px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      gap: 4px;
+    }
+
+    .song-mode-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .song-mode-btn:hover { color: var(--text); }
+    .song-mode-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    .sub-toggle-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .sub-toggle-btn.active {
+      border-color: var(--success);
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.15);
+    }
+
+    .song-wrapper {
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      max-width: 1920px;
+      max-height: 1080px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000000;
+      border-radius: var(--radius-sm);
+      overflow: visible; /* Must be visible so abs-positioned subtitle & overlays aren't clipped */
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    #song-video {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      outline: none;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Karaoke Subtitle Banner Overlay */
+    .song-subtitle-box {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(8, 11, 20, 0.92);
+      backdrop-filter: blur(14px);
+      border: 2px solid rgba(79, 126, 248, 0.5);
+      padding: 10px 28px 12px;
+      border-radius: 36px;
+      text-align: center;
+      z-index: 200;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(79,126,248,0.15);
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      max-width: 92%;
+      min-width: 220px;
+      opacity: 1; /* Always visible — JS controls content, not visibility */
+      white-space: nowrap;
+    }
+
+    /* Each word in the karaoke subtitle */
+    .sub-word {
+      display: inline-block;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: rgba(200, 210, 240, 0.75);
+      margin: 0 3px;
+      transition: color 0.12s ease, transform 0.12s ease, text-shadow 0.12s ease;
+      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      letter-spacing: 0.01em;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+      will-change: transform, color;
+    }
+
+    /* Active (currently spoken) word — karaoke highlight */
+    .sub-word.active {
+      color: #ffe86b;
+      transform: scale(1.18) translateY(-2px);
+      text-shadow: 0 0 18px rgba(255, 230, 80, 0.9), 0 0 36px rgba(255, 200, 40, 0.5), 0 3px 8px rgba(0,0,0,0.9);
+    }
+
+    /* Sung (already passed) word */
+    .sub-word.sung {
+      color: rgba(255, 255, 255, 0.92);
+      transform: scale(1);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+    }
+
+    /* Note icon in subtitle */
+    .sub-note {
+      font-size: 1.1rem;
+      color: var(--accent);
+      display: inline-block;
+      animation: subtlePulse 1.6s ease-in-out infinite;
+    }
+    @keyframes subtlePulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+
+    /* Celebration overlay (replaces alert) */
+    #celebration-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(8, 11, 20, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 600;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      text-align: center;
+      padding: 24px;
+    }
+    .celebration-emoji {
+      font-size: 5rem;
+      animation: celebBounce 0.6s ease-out;
+    }
+    @keyframes celebBounce {
+      0% { transform: scale(0.3); opacity: 0; }
+      70% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    .celebration-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #ffe86b;
+      text-shadow: 0 0 30px rgba(255, 220, 60, 0.7);
+      font-family: 'Nunito', sans-serif;
+    }
+    .celebration-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      max-width: 420px;
+    }
+    .celebration-btn {
+      margin-top: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 24px var(--accent-glow);
+      transition: all 0.2s ease;
+      font-family: 'Nunito', sans-serif;
+    }
+    .celebration-btn:hover {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+    }
+    .celebration-stars {
+      font-size: 2rem;
+      letter-spacing: 0.3em;
+      animation: starShimmer 1s ease infinite alternate;
+    }
+    @keyframes starShimmer {
+      from { text-shadow: none; }
+      to { text-shadow: 0 0 12px #ffe86b, 0 0 24px rgba(255,220,60,0.5); }
+    }
+
+    /* Cloze Challenge Modal Overlay */
+    .cloze-modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(9, 11, 16, 0.88);
+      backdrop-filter: blur(8px);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .cloze-card {
+      background: var(--surface);
+      border: 1.5px solid var(--accent);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px var(--accent-glow);
+      border-radius: var(--radius);
+      padding: 22px 26px;
+      width: 100%;
+      max-width: 620px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .cloze-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cloze-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      background: rgba(79, 126, 248, 0.15);
+      padding: 4px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(79, 126, 248, 0.3);
+    }
+
+    .cloze-progress {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .cloze-instruction {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .cloze-sentence {
+      font-size: 1.22rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.4;
+    }
+
+    .blank-slot {
+      color: var(--warning);
+      border-bottom: 2px dashed var(--warning);
+      padding: 0 8px;
+    }
+
+    .cloze-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .cloze-opt-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1.5px solid var(--border);
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .cloze-opt-btn:hover {
+      background: rgba(79, 126, 248, 0.2);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .cloze-opt-btn.correct {
+      background: rgba(16, 185, 129, 0.3) !important;
+      border-color: var(--success) !important;
+      color: #34d399 !important;
+      box-shadow: 0 0 16px var(--success-glow);
+    }
+
+    .cloze-opt-btn.incorrect {
+      background: rgba(239, 68, 68, 0.25) !important;
+      border-color: var(--error) !important;
+      color: #fca5a5 !important;
+    }
+
+    .cloze-feedback {
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 8px;
+      border-radius: 6px;
+    }
+
+    /* ------------------------------------------------------------- */
+    /* Sequencing Activity Workspace - MAXIMIZED PICTURE SIZE LAYOUT */
+    /* ------------------------------------------------------------- */
+    #activity-container {
+      position: absolute;
+      top: var(--header-h);
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - var(--header-h));
+      overflow: hidden; /* ZERO SCROLLING ON WIDESCREEN TV */
+      background: var(--bg);
+      padding: 8px 12px 10px;
+      display: none;
+    }
+
+    .activity-wrapper {
+      width: 100%;
+      height: 100%;
+      max-width: 1920px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* Top Controls Bar */
+    .activity-header {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+
+    .activity-info h2 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .activity-info p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .controls-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 4px 12px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--text-muted);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-muted);
+      border-color: var(--border);
+    }
+    .btn-outline:hover {
+      color: var(--text);
+      border-color: var(--text-muted);
+    }
+
+    /* Score Toast / Feedback Banner */
+    .feedback-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 600;
+      flex: 0 0 auto;
+      transition: all 0.3s ease;
+    }
+    .feedback-banner.success {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--success);
+      color: var(--success);
+    }
+    .feedback-banner.info {
+      background: rgba(79, 126, 248, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .feedback-banner.warning {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: var(--warning);
+      color: var(--warning);
+    }
+
+    /* 3D PHYSICAL TABLETOP STUDIO SURFACE */
+    .tabletop-section {
+      background: var(--tabletop-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 8px 12px;
+      flex: 1 1 62%;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.7), 0 4px 20px rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2px;
+      flex: 0 0 auto;
+    }
+
+    .section-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-hint-text {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .placed-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 12px;
+      background: rgba(79, 126, 248, 0.18);
+      color: var(--accent);
+      border: 1px solid rgba(79, 126, 248, 0.3);
+    }
+
+    /* Tabletop Pool Grid - MAXIMIZED PICTURE SIZE WITHOUT OUT-OF-FRAME CUTOFF */
+    .pool-grid {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(170px, 13vw), 1fr));
+      grid-auto-rows: min-content;
+      gap: 10px 12px;
+      padding: 18px 10px 10px 10px;
+      overflow-y: auto;
+      align-items: center;
+      justify-items: center;
+      align-content: center;
+      perspective: 1000px;
+    }
+
+    .pool-grid.drag-over {
+      background: rgba(79, 126, 248, 0.08);
+      border-radius: var(--radius-sm);
+    }
+
+    /* 3D REALISTIC PRINTED PHOTOGRAPH CARD */
+    .story-card {
+      width: 100%;
+      max-width: 250px;
+      aspect-ratio: 4 / 3.1;
+      background: #ffffff; /* Clean white photo paper frame */
+      padding: 4px;
+      border-radius: 7px;
+      border: 1.5px solid #cbd5e1;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer; /* Pointer cursor indicates click-to-zoom */
+      user-select: none;
+      touch-action: none;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+      will-change: transform;
+      margin: 0 auto;
+    }
+
+    /* 3D "HOLD UP / PICK UP" LIFT ELEVATION ON HOVER/SELECT */
+    .story-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-12px) scale(1.08) rotate(0deg) !important;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 18px var(--accent-glow);
+      z-index: 100;
+    }
+
+    .story-card:active, .story-card.dragging {
+      cursor: grabbing;
+      opacity: 0.85;
+      transform: scale(1.05) translateY(-8px) rotate(0deg) !important;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.75);
+      z-index: 100;
+    }
+
+    .story-card.selected {
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 22px var(--accent-glow), 0 18px 40px rgba(0, 0, 0, 0.85);
+      transform: translateY(-12px) scale(1.08) rotate(0deg) !important;
+      z-index: 120;
+    }
+
+    /* High Visibility Classroom Letter Badge */
+    .card-letter-badge {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      min-width: 26px;
+      height: 26px;
+      padding: 0 5px;
+      border-radius: 5px;
+      background: #f59e0b; /* Bright amber/yellow */
+      color: #0d0f14;
+      font-size: 0.95rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.65);
+      border: 1.5px solid #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .card-thumb-wrap {
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      background: #f8fafc; /* Crisp clean mat background - NO BLACK BARS! */
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* Full illustration rendered with zero distortion */
+      pointer-events: none;
+    }
+
+    .card-footer {
+      padding: 3px 4px 0 4px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex: 0 0 auto;
+    }
+
+    .card-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #334155;
+    }
+
+    .card-controls {
+      display: flex;
+      gap: 4px;
+    }
+
+    .card-btn {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .card-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .status-icon {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #fff;
+      z-index: 20;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+    }
+    .status-icon.correct { background: var(--success); }
+    .status-icon.incorrect { background: var(--error); }
+
+    /* DIGITAL PHOTO DOCK REEL (SLOTS 1 TO 13 IN 1 HORIZONTAL ROW) */
+    .sequence-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px 10px;
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .sequence-section .section-head {
+      margin-bottom: 2px;
+    }
+
+    .narrative-stages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .stage-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 6px;
+      text-align: center;
+    }
+    .stage-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+    .stage-desc {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(13, 1fr); /* Exactly 13 slots across 1 single row on widescreen! */
+      gap: 6px;
+    }
+
+    .slot {
+      aspect-ratio: 4/3;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1.5px dashed var(--border);
+      border-radius: 6px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2px;
+      transition: all 0.2s ease;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .slot-num-badge {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .slot-label {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .slot.drag-over {
+      border-color: var(--accent);
+      background: rgba(79, 126, 248, 0.25);
+      box-shadow: 0 0 14px var(--accent-glow);
+    }
+
+    .slot.correct {
+      border-style: solid;
+      border-color: var(--success);
+      box-shadow: 0 0 12px var(--success-glow);
+    }
+
+    .slot.incorrect {
+      border-style: solid;
+      border-color: var(--error);
+      box-shadow: 0 0 12px var(--error-glow);
+    }
+
+    /* Slot Card Adjustments (Flattened 0deg inside slot) */
+    .slot .story-card {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      aspect-ratio: unset;
+      border-radius: 4px;
+      padding: 2px;
+      box-shadow: none;
+      transform: rotate(0deg) !important;
+      margin: 0;
+    }
+    .slot .story-card:hover {
+      transform: rotate(0deg) !important;
+    }
+    .slot .card-thumb-wrap {
+      background: #000;
+    }
+    .slot .card-letter-badge {
+      min-width: 18px;
+      height: 18px;
+      font-size: 0.68rem;
+      top: 3px;
+      left: 3px;
+      border-width: 1px;
+      padding: 0 3px;
+    }
+    .slot .card-footer {
+      display: none;
+    }
+
+    /* 3D Floating Touch Drag Ghost */
+    .touch-ghost {
+      position: fixed;
+      pointer-events: none;
+      z-index: 30000;
+      width: 170px;
+      height: 130px;
+      opacity: 0.95;
+      transform: translate(-50%, -50%) scale(1.1) rotate(2deg);
+      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.85), 0 0 20px var(--accent-glow);
+      border-radius: 8px;
+      border: 3px solid var(--accent);
+      background: #fff;
+      padding: 4px;
+      overflow: hidden;
+    }
+    .touch-ghost img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+      border-radius: 4px;
+    }
+
+    /* Modal Lightbox for High-Res Page Preview */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(8px);
+      z-index: 25000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      max-width: 92vw;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    }
+
+    .modal-header {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .modal-close:hover { color: var(--text); background: rgba(255,255,255,0.1); }
+
+    .modal-body {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+    }
+
+    .modal-img {
+      max-width: 82vw;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #000;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    }
+
+    .modal-nav {
+      padding: 10px 18px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Canvas Confetti Layer */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 28000;
+    }
+
+    /* Responsive adjustments for narrow/vertical screens */
+    @media (max-width: 900px) {
+      #activity-container { overflow-y: auto; }
+      .slots-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+      .narrative-stages { grid-template-columns: 1fr; }
+      .story-title span { display: none; }
+      .cloze-options { grid-template-columns: 1fr; }
+    }
+    /* Pulsing blank animation for cloze */
+    @keyframes blankPulse {
+      0%, 100% { opacity: 1; border-color: var(--warning); }
+      50% { opacity: 0.5; border-color: rgba(245, 158, 11, 0.3); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- App Header Bar -->
+  <header id="app-header">
+    <div class="header-left">
+      <a href="../" class="back-btn" title="Back to All Stories">← Stories</a>
+      <h1 class="story-title">The Good Bird <span>by Peter Wezel</span></h1>
+    </div>
+    <div class="nav-tabs">
+      <button id="tab-read" class="tab-btn active"><span class="icon">📖</span> Read Story</button>
+      <button id="tab-activity" class="tab-btn"><span class="icon">🧩</span> Sequence Activity</button>
+      <button id="tab-song" class="tab-btn"><span class="icon">🎵</span> Song</button>
+    </div>
+  </header>
+
+  <!-- Loading Indicator -->
+  <div id="loading"><div class="spinner"></div> Loading Story Pages...</div>
+
+  <!-- 1. PDF Reader View -->
+  <div id="viewer-container">
+    <div id="pdf-container"></div>
+  </div>
+
+  <!-- Floating Fullscreen Button for Reader -->
+  <div id="fullscreen-btn" title="Toggle Fullscreen">
+    <svg id="enter-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+    </svg>
+    <svg id="exit-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+      <path d="M4 14h6v6m10-6h-6v6M4 10h6V4m10 6h-6V4"></path>
+    </svg>
+  </div>
+
+  <!-- 2. Fullscreen Video Song View & Interactive Cloze Game -->
+  <div id="song-container">
+    <div class="song-header-bar">
+      <div class="song-mode-toggle">
+        <button id="song-mode-sing" class="song-mode-btn active" type="button">
+          🎤 Sing Along
+        </button>
+        <button id="song-mode-cloze" class="song-mode-btn" type="button">
+          🎮 Cloze Game
+        </button>
+      </div>
+      <button id="song-sub-toggle" class="sub-toggle-btn active" type="button">
+        💬 Subtitles: ON
+      </button>
+    </div>
+
+    <div class="song-wrapper">
+      <video id="song-video" controls controlslist="nodownload" playsinline preload="auto">
+        <source src="The_Berry_Scented_Disguise.mp4" type="video/mp4">
+        Your browser does not support HTML5 video player.
+      </video>
+
+      <!-- Karaoke Subtitle Banner Overlay -->
+      <div id="song-subtitle-box" class="song-subtitle-box">
+        <span class="sub-note">♪</span>
+        <span id="song-subtitle-words"><span class="sub-word" style="color:rgba(200,210,240,0.6); font-size:1.1rem;">The Berry-Scented Disguise</span></span>
+        <span class="sub-note">♪</span>
+      </div>
+
+      <!-- Celebration Overlay (replaces alert) -->
+      <div id="celebration-overlay">
+        <div class="celebration-emoji">🎉</div>
+        <div class="celebration-stars">⭐ ⭐ ⭐</div>
+        <div class="celebration-title">Amazing Listening!</div>
+        <div class="celebration-sub">You listened to the whole song! Now let's play the Word Game — watch for the missing words!</div>
+        <button id="celebration-start-btn" class="celebration-btn">▶ Start the Word Game!</button>
+      </div>
+
+      <!-- Interactive Cloze Challenge Overlay -->
+      <div id="cloze-modal" class="cloze-modal-overlay" style="display: none;">
+        <div class="cloze-card">
+          <div class="cloze-header">
+            <span class="cloze-badge">🎮 WORD GAME</span>
+            <span id="cloze-progress" class="cloze-progress">Question 1 of 5</span>
+          </div>
+          <div class="cloze-prompt-box">
+            <p class="cloze-instruction">Fill in the missing word to continue the song:</p>
+            <h3 id="cloze-sentence" class="cloze-sentence">Inside the window swam a little <span class="blank-slot">_____</span> in a bowl.</h3>
+          </div>
+          <div id="cloze-options-grid" class="cloze-options">
+            <!-- Options dynamically rendered here -->
+          </div>
+          <div id="cloze-feedback" class="cloze-feedback" style="display: none;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Sequencing Activity Workspace -->
+  <div id="activity-container">
+    <div class="activity-wrapper">
+      
+      <!-- Controls Header -->
+      <div class="activity-header">
+        <div class="activity-info">
+          <h2>🧩 Narrative Sequencing Activity</h2>
+          <p>Double-Page Spread Activity: Click any double-page spread to inspect in full resolution, or drag &amp; drop spreads into the sequence line!</p>
+        </div>
+        <div class="controls-bar">
+          <button id="btn-intro-video" class="btn btn-secondary" style="background: rgba(147, 51, 234, 0.25); border-color: rgba(168, 85, 247, 0.5); color: #e9d5ff; font-weight: 700;">🎬 Intro Video</button>
+          <button id="btn-check" class="btn btn-primary">✓ Check Story</button>
+          <button id="btn-hint" class="btn btn-secondary">💡 Hint</button>
+          <button id="btn-shuffle" class="btn btn-secondary">🔀 Reshuffle</button>
+          <button id="btn-reveal" class="btn btn-outline">👁️ Reveal Answer</button>
+        </div>
+      </div>
+
+      <!-- Feedback / Status Toast Banner -->
+      <div id="feedback-banner" class="feedback-banner info" style="display: none;">
+        <span id="feedback-msg">Arrange the 13 double-page spreads below into correct story sequence.</span>
+      </div>
+
+      <!-- MAIN WORKSPACE: 3D Studio Photo Tabletop -->
+      <div class="tabletop-section">
+        <div class="section-head">
+          <div class="section-title">
+            <span>📖 Unsorted Story Spreads</span>
+          </div>
+          <span class="section-hint-text">Click any photo to zoom in • Drag &amp; drop photos into sequence slots below</span>
+        </div>
+        <div id="pool-grid" class="pool-grid"></div>
+      </div>
+
+      <!-- BOTTOM TARGET LINE: Compact Digital Photo Dock Reel (Slots 1 to 13) -->
+      <div class="sequence-section">
+        <div class="section-head">
+          <div class="section-title">
+            <span>📖 Story Sequence Line (Double-Page Spreads 1–13)</span>
+          </div>
+          <span id="placed-counter" class="placed-badge">Placed: 0 / 13</span>
+        </div>
+
+        <!-- Narrative Structure Stage Indicators -->
+        <div class="narrative-stages">
+          <div class="stage-pill">
+            <div class="stage-title">🌱 Beginning (1 – 3)</div>
+            <div class="stage-desc">Character &amp; Setting Introduction</div>
+          </div>
+          <div class="stage-pill">
+            <div class="stage-title">⚡ Middle (4 – 9)</div>
+            <div class="stage-desc">Action, Interaction &amp; Conflict</div>
+          </div>
+          <div class="stage-pill">
+            <div class="stage-title">✨ Ending (10 – 13)</div>
+            <div class="stage-desc">Climax &amp; Resolution</div>
+          </div>
+        </div>
+
+        <div id="slots-grid" class="slots-grid"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- High-Res Page Zoom Modal Lightbox -->
+  <div id="preview-modal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div id="modal-page-title" class="modal-title">Picture Preview</div>
+        <button id="modal-close-btn" class="modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <img id="modal-img" class="modal-img" src="" alt="Page Preview">
+      </div>
+      <div class="modal-nav">
+        <button id="modal-prev-btn" class="btn btn-secondary">← Previous</button>
+        <button id="modal-next-btn" class="btn btn-secondary">Next →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Story Structure Intro Video Modal -->
+  <div id="activity-intro-modal" class="modal-overlay" style="display: none; align-items: center; justify-content: center; z-index: 1000;">
+    <div class="modal-card" style="max-width: 900px; width: 92%; background: #0f1422; border: 2px solid rgba(168, 85, 247, 0.4); border-radius: 20px; padding: 0; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.85), 0 0 40px rgba(168, 85, 247, 0.25);">
+      
+      <!-- Modal Header -->
+      <div style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.95), rgba(30, 27, 75, 0.95)); padding: 18px 24px; border-bottom: 1px solid rgba(168, 85, 247, 0.3); display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(168, 85, 247, 0.3); color: #f3e8ff; font-size: 0.78rem; font-weight: 800; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px;">
+            🎬 LESSON INTRO
+          </div>
+          <h3 style="margin: 0; color: #ffffff; font-family: 'Nunito', var(--font-sans); font-size: 1.4rem; font-weight: 800;">The Secret Shape of Stories</h3>
+          <p style="margin: 3px 0 0 0; color: rgba(226, 232, 240, 0.85); font-size: 0.92rem;">Watch this quick lesson on story structure before starting your sequencing activity!</p>
+        </div>
+        <button id="intro-modal-close-btn" class="modal-close" style="background: rgba(255,255,255,0.12); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">✕</button>
+      </div>
+
+      <!-- Video Container -->
+      <div style="padding: 20px; background: #090d16; display: flex; flex-direction: column; align-items: center;">
+        <video id="activity-intro-video" controls preload="auto" playsinline src="secret_shape_of_stories.mp4" style="width: 100%; max-height: 55vh; border-radius: 12px; background: #000000; box-shadow: 0 10px 30px rgba(0,0,0,0.7); outline: none;">
+          <source src="secret_shape_of_stories.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+
+      <!-- Modal Footer -->
+      <div style="background: #0f1422; padding: 16px 24px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+        <div id="intro-video-status" style="color: #cbd5e1; font-size: 0.95rem; font-family: 'Nunito', var(--font-sans); font-weight: 600; display: flex; align-items: center; gap: 8px;">
+          <span>💡 Learn about Beginning, Middle &amp; End!</span>
+        </div>
+        <button id="btn-start-activity-from-video" class="btn btn-primary" style="background: linear-gradient(135deg, #a855f7, #7c3aed); border: none; font-family: 'Nunito', var(--font-sans); font-size: 1.05rem; font-weight: 800; padding: 12px 26px; border-radius: 30px; box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4); cursor: pointer; transition: all 0.2s ease;">
+          🧩 Start Sequencing Activity →
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    var pdfUrl = "mouse_strawberry_spreads.pdf";
+    var cacheBuster = "?v=" + Date.now();
+
+    var container = document.getElementById("pdf-container");
+    var loading = document.getElementById("loading");
+
+    // Reader state
+    var scale = 1;
+    var posX = 0;
+    var posY = 0;
+    var contentHeight = 0;
+
+    var initDist = 0;
+    var initMidX = 0, initMidY = 0;
+    var baseScale = 1;
+    var basePosX = 0, basePosY = 0;
+    var startX = 0, startY = 0;
+    var activeTouch = false;
+    var isPinching = false;
+
+    var touchStartTime = 0;
+    var startTouchX = 0, startTouchY = 0;
+    var isGesture = false;
+    var lastTap = 0;
+
+    // Activity state
+    var totalPages = 0;
+    var pageThumbnails = []; // High resolution Data URLs for cards
+    var pageLetters = []; // Mapping pageIndex -> assigned Letter string (e.g. 'A', 'F', 'B')
+    var cardRotations = []; // Organic 3D tabletop rotation angles per page
+    var slots = new Array(13).fill(null); // slots[i] = pageIndex (0-based) or null
+    var pool = []; // array of pageIndexes in pool
+    var selectedCard = null; // pageIndex currently selected via click
+    var checkResults = null; // array of booleans when checked
+    var currentPreviewPageIndex = 0;
+
+    // Available letters pool for random assignment
+    var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+    // Load PDF and render Reader + Activity thumbnails
+    pdfjsLib.getDocument(pdfUrl + cacheBuster).promise.then(async function(pdf) {
+      totalPages = pdf.numPages;
+      slots = new Array(totalPages).fill(null);
+      
+      for (var pageNum = 1; pageNum <= totalPages; pageNum++) {
+        var page = await pdf.getPage(pageNum);
+        
+        // 1. Render for Reader View
+        var viewport = page.getViewport({ scale: 1.0 });
+        var fitScale = window.innerWidth / viewport.width;
+        var pageViewport = page.getViewport({ scale: fitScale });
+
+        var canvas = document.createElement("canvas");
+        var ctx = canvas.getContext("2d");
+        var dpr = window.devicePixelRatio || 1;
+        
+        canvas.width = pageViewport.width * dpr;
+        canvas.height = pageViewport.height * dpr;
+        canvas.style.width = pageViewport.width + "px";
+        canvas.style.height = pageViewport.height + "px";
+
+        container.appendChild(canvas);
+
+        var renderContext = {
+          canvasContext: ctx,
+          viewport: pageViewport,
+          transform: [dpr, 0, 0, dpr, 0, 0]
+        };
+        await page.render(renderContext).promise;
+
+        // 2. Generate high-resolution thumbnail for Tabletop Cards (600px width render for extreme clarity)
+        var thumbScale = 600 / viewport.width;
+        var thumbViewport = page.getViewport({ scale: thumbScale });
+        var thumbCanvas = document.createElement("canvas");
+        thumbCanvas.width = thumbViewport.width;
+        thumbCanvas.height = thumbViewport.height;
+        var thumbCtx = thumbCanvas.getContext("2d");
+        
+        await page.render({
+          canvasContext: thumbCtx,
+          viewport: thumbViewport
+        }).promise;
+        
+        pageThumbnails.push(thumbCanvas.toDataURL("image/jpeg", 0.90));
+      }
+
+      // Hide loading spinner
+      loading.style.opacity = "0";
+      setTimeout(function() { loading.style.display = "none"; }, 300);
+      
+      // Update dimensions and initial centering for reader
+      contentHeight = container.offsetHeight;
+      centerContent();
+
+      // Init activity game board
+      initActivityBoard();
+    }).catch(function(err) {
+      console.error(err);
+      loading.innerText = "Error loading story.";
+    });
+
+    // Navigation Tabs logic
+    var tabRead = document.getElementById("tab-read");
+    var tabActivity = document.getElementById("tab-activity");
+    var tabSong = document.getElementById("tab-song");
+    var viewerContainer = document.getElementById("viewer-container");
+    var activityContainer = document.getElementById("activity-container");
+    var songContainer = document.getElementById("song-container");
+    var songVideo = document.getElementById("song-video");
+    var fullscreenBtn = document.getElementById("fullscreen-btn");
+
+    function pauseSongVideo() {
+      if (songVideo && !songVideo.paused) {
+        songVideo.pause();
+      }
+    }
+
+    tabRead.addEventListener("click", function() {
+      tabRead.classList.add("active");
+      tabActivity.classList.remove("active");
+      tabSong.classList.remove("active");
+      viewerContainer.style.display = "block";
+      activityContainer.style.display = "none";
+      songContainer.style.display = "none";
+      fullscreenBtn.style.display = "flex";
+      pauseSongVideo();
+      contentHeight = container.offsetHeight;
+      centerContent();
+    });
+
+    /* ------------------------------------------------------------- */
+    /* STORY STRUCTURE INTRO VIDEO MODAL LOGIC                        */
+    /* ------------------------------------------------------------- */
+    var activityIntroModal = document.getElementById("activity-intro-modal");
+    var activityIntroVideo = document.getElementById("activity-intro-video");
+    var btnIntroVideo = document.getElementById("btn-intro-video");
+    var btnStartActivityFromVideo = document.getElementById("btn-start-activity-from-video");
+    var introModalCloseBtn = document.getElementById("intro-modal-close-btn");
+    var introVideoStatus = document.getElementById("intro-video-status");
+    var hasSeenIntroVideo = false;
+
+    function openIntroVideoModal() {
+      if (!activityIntroModal) return;
+      activityIntroModal.style.display = "flex";
+      activityIntroModal.classList.add("active");
+      if (activityIntroVideo) {
+        if (!activityIntroVideo.src || activityIntroVideo.src === "") {
+          activityIntroVideo.src = "secret_shape_of_stories.mp4";
+        }
+        try {
+          activityIntroVideo.load();
+          activityIntroVideo.currentTime = 0;
+          activityIntroVideo.play().catch(function(err) {
+            console.log("Intro video playback note:", err);
+          });
+        } catch (e) {
+          console.log("Video load error:", e);
+        }
+      }
+    }
+
+    function closeIntroVideoModal() {
+      if (!activityIntroModal) return;
+      activityIntroModal.style.display = "none";
+      activityIntroModal.classList.remove("active");
+      if (activityIntroVideo) {
+        activityIntroVideo.pause();
+      }
+      hasSeenIntroVideo = true;
+    }
+
+    if (btnIntroVideo) {
+      btnIntroVideo.addEventListener("click", function() {
+        openIntroVideoModal();
+      });
+    }
+
+    if (btnStartActivityFromVideo) {
+      btnStartActivityFromVideo.addEventListener("click", function() {
+        closeIntroVideoModal();
+      });
+    }
+
+    if (introModalCloseBtn) {
+      introModalCloseBtn.addEventListener("click", function() {
+        closeIntroVideoModal();
+      });
+    }
+
+    if (activityIntroModal) {
+      activityIntroModal.addEventListener("click", function(e) {
+        if (e.target === activityIntroModal) {
+          closeIntroVideoModal();
+        }
+      });
+    }
+
+    if (activityIntroVideo) {
+      activityIntroVideo.addEventListener("ended", function() {
+        if (introVideoStatus) {
+          introVideoStatus.innerHTML = "🎉 <strong style='color:#4ade80;'>Awesome watching!</strong> Ready to start the activity!";
+        }
+        if (btnStartActivityFromVideo) {
+          btnStartActivityFromVideo.innerText = "▶ Begin Sequencing Activity!";
+          btnStartActivityFromVideo.style.boxShadow = "0 0 25px rgba(168, 85, 247, 0.8)";
+        }
+        triggerConfetti();
+      });
+    }
+
+    tabActivity.addEventListener("click", function() {
+      tabActivity.classList.add("active");
+      tabRead.classList.remove("active");
+      tabSong.classList.remove("active");
+      viewerContainer.style.display = "none";
+      activityContainer.style.display = "block";
+      songContainer.style.display = "none";
+      fullscreenBtn.style.display = "none";
+      pauseSongVideo();
+    });
+
+    tabSong.addEventListener("click", function() {
+      tabSong.classList.add("active");
+      tabRead.classList.remove("active");
+      tabActivity.classList.remove("active");
+      viewerContainer.style.display = "none";
+      activityContainer.style.display = "none";
+      songContainer.style.display = "flex";
+      fullscreenBtn.style.display = "none";
+      if (songVideo) {
+        songVideo.currentTime = 0;
+        songVideo.play().catch(function() {});
+      }
+    });
+
+    /* ------------------------------------------------------------- */
+    /* KARAOKE SUBTITLES & INTERACTIVE CLOZE CHALLENGE GAME LOGIC */
+    /* ------------------------------------------------------------- */
+
+    // ── Word timestamps from OpenAI Whisper (word_timestamps=True) ───
+    // Each lyric line has exact per-word startAt/endAt from the audio.
+    // The cloze pause fires when the blank word's startAt is reached.
+    // ─────────────────────────────────────────────────────────────────
+    var songLyrics = [
+      {
+        start: 10.9, end: 15.44,
+        text: "Hello little climber, on a yellow wooden stair,",
+        words: [
+          { word: "Hello", startAt: 10.9, endAt: 11.68 },
+          { word: "little", startAt: 11.68, endAt: 12.4 },
+          { word: "climber,", startAt: 12.4, endAt: 13.34 },
+          { word: "on", startAt: 13.38, endAt: 13.76 },
+          { word: "a", startAt: 13.76, endAt: 13.92 },
+          { word: "yellow", startAt: 13.92, endAt: 14.22 },
+          { word: "wooden", startAt: 14.22, endAt: 14.86 },
+          { word: "stair,", startAt: 14.86, endAt: 15.44 },
+        ],
+      },
+      {
+        start: 16.02, end: 20.08,
+        text: "Reaching for a ruby with a berry-scented flair.",
+        words: [
+          { word: "Reaching", startAt: 16.02, endAt: 16.64 },
+          { word: "for", startAt: 16.64, endAt: 17.04 },
+          { word: "a", startAt: 17.04, endAt: 17.36 },
+          { word: "ruby", startAt: 17.36, endAt: 18.02 },
+          { word: "with", startAt: 18.02, endAt: 18.34 },
+          { word: "a", startAt: 18.34, endAt: 18.56 },
+          { word: "berry", startAt: 18.56, endAt: 18.9 },
+          { word: "-scented", startAt: 18.9, endAt: 19.58 },
+          { word: "flair.", startAt: 19.58, endAt: 20.08 },
+        ],
+        cloze: { blank: "ruby", prompt: "Reaching for a ____ with a berry-scented flair.", options: ["apple", "ruby", "flower", "star"], answer: 1 }
+      },
+      {
+        start: 20.52, end: 24.58,
+        text: "But look over the bushes, can you hear a distant drum?",
+        words: [
+          { word: "But", startAt: 20.52, endAt: 20.82 },
+          { word: "look", startAt: 20.82, endAt: 21.0 },
+          { word: "over", startAt: 21.0, endAt: 21.5 },
+          { word: "the", startAt: 21.5, endAt: 21.76 },
+          { word: "bushes,", startAt: 21.76, endAt: 22.22 },
+          { word: "can", startAt: 22.8, endAt: 22.94 },
+          { word: "you", startAt: 22.94, endAt: 23.1 },
+          { word: "hear", startAt: 23.1, endAt: 23.46 },
+          { word: "a", startAt: 23.46, endAt: 23.72 },
+          { word: "distant", startAt: 23.72, endAt: 24.04 },
+          { word: "drum?", startAt: 24.04, endAt: 24.58 },
+        ],
+        cloze: { blank: "drum", prompt: "Can you hear a distant ____?", options: ["whistle", "bell", "drum", "song"], answer: 2 }
+      },
+      {
+        start: 29.58, end: 33.94,
+        text: "A big fuzzy rumble is starting to hum.",
+        words: [
+          { word: "A", startAt: 29.58, endAt: 30.0 },
+          { word: "big", startAt: 30.0, endAt: 30.38 },
+          { word: "fuzzy", startAt: 30.38, endAt: 31.04 },
+          { word: "rumble", startAt: 31.04, endAt: 31.86 },
+          { word: "is", startAt: 31.86, endAt: 32.3 },
+          { word: "starting", startAt: 32.3, endAt: 32.9 },
+          { word: "to", startAt: 32.9, endAt: 33.38 },
+          { word: "hum.", startAt: 33.38, endAt: 33.94 },
+        ],
+      },
+      {
+        start: 38.16, end: 42.88,
+        text: "Oh, the bear loves the red, he loves the sweet juice,",
+        words: [
+          { word: "Oh,", startAt: 38.16, endAt: 39.0 },
+          { word: "the", startAt: 39.1, endAt: 39.22 },
+          { word: "bear", startAt: 39.22, endAt: 39.56 },
+          { word: "loves", startAt: 39.56, endAt: 40.14 },
+          { word: "the", startAt: 40.14, endAt: 40.42 },
+          { word: "red,", startAt: 40.42, endAt: 40.94 },
+          { word: "he", startAt: 41.34, endAt: 41.52 },
+          { word: "loves", startAt: 41.52, endAt: 41.86 },
+          { word: "the", startAt: 41.86, endAt: 42.16 },
+          { word: "sweet", startAt: 42.16, endAt: 42.38 },
+          { word: "juice,", startAt: 42.38, endAt: 42.88 },
+        ],
+      },
+      {
+        start: 43.26, end: 47.46,
+        text: "And once he starts sniffing, he'll never turn loose.",
+        words: [
+          { word: "And", startAt: 43.26, endAt: 43.8 },
+          { word: "once", startAt: 43.8, endAt: 44.2 },
+          { word: "he", startAt: 44.2, endAt: 44.46 },
+          { word: "starts", startAt: 44.46, endAt: 44.88 },
+          { word: "sniffing,", startAt: 44.88, endAt: 45.62 },
+          { word: "he'll", startAt: 45.96, endAt: 46.12 },
+          { word: "never", startAt: 46.12, endAt: 46.5 },
+          { word: "turn", startAt: 46.5, endAt: 47.0 },
+          { word: "loose.", startAt: 47.0, endAt: 47.46 },
+        ],
+        cloze: { blank: "sniffing", prompt: "And once he starts ____, he'll never turn loose.", options: ["running", "sniffing", "sleeping", "jumping"], answer: 1 }
+      },
+      {
+        start: 48.26, end: 52.2,
+        text: "He's bigger than a wagon, he's faster than a breeze,",
+        words: [
+          { word: "He's", startAt: 48.26, endAt: 48.46 },
+          { word: "bigger", startAt: 48.46, endAt: 48.78 },
+          { word: "than", startAt: 48.78, endAt: 49.3 },
+          { word: "a", startAt: 49.3, endAt: 49.64 },
+          { word: "wagon,", startAt: 49.64, endAt: 50.06 },
+          { word: "he's", startAt: 50.58, endAt: 50.74 },
+          { word: "faster", startAt: 50.74, endAt: 51.2 },
+          { word: "than", startAt: 51.2, endAt: 51.58 },
+          { word: "a", startAt: 51.58, endAt: 51.78 },
+          { word: "breeze,", startAt: 51.78, endAt: 52.2 },
+        ],
+      },
+      {
+        start: 52.56, end: 56.76,
+        text: "And he'll sniff out that berry between the tall trees.",
+        words: [
+          { word: "And", startAt: 52.56, endAt: 52.8 },
+          { word: "he'll", startAt: 52.8, endAt: 53.0 },
+          { word: "sniff", startAt: 53.0, endAt: 53.22 },
+          { word: "out", startAt: 53.22, endAt: 53.7 },
+          { word: "that", startAt: 53.7, endAt: 54.12 },
+          { word: "berry", startAt: 54.12, endAt: 54.56 },
+          { word: "between", startAt: 54.56, endAt: 55.46 },
+          { word: "the", startAt: 55.46, endAt: 55.84 },
+          { word: "tall", startAt: 55.84, endAt: 56.26 },
+          { word: "trees.", startAt: 56.26, endAt: 56.76 },
+        ],
+      },
+      {
+        start: 56.98, end: 61.16,
+        text: "You can put it in a fortress, or a big metal chain,",
+        words: [
+          { word: "You", startAt: 56.98, endAt: 57.32 },
+          { word: "can", startAt: 57.32, endAt: 57.6 },
+          { word: "put", startAt: 57.6, endAt: 57.88 },
+          { word: "it", startAt: 57.88, endAt: 58.14 },
+          { word: "in", startAt: 58.14, endAt: 58.44 },
+          { word: "a", startAt: 58.44, endAt: 58.56 },
+          { word: "fortress,", startAt: 58.56, endAt: 59.06 },
+          { word: "or", startAt: 59.36, endAt: 59.8 },
+          { word: "a", startAt: 59.8, endAt: 59.96 },
+          { word: "big", startAt: 59.96, endAt: 60.2 },
+          { word: "metal", startAt: 60.2, endAt: 60.66 },
+          { word: "chain,", startAt: 60.66, endAt: 61.16 },
+        ],
+      },
+      {
+        start: 61.92, end: 65.92,
+        text: "You can hide it in a disguise through the sun and the rain,",
+        words: [
+          { word: "You", startAt: 61.92, endAt: 62.0 },
+          { word: "can", startAt: 62.0, endAt: 62.18 },
+          { word: "hide", startAt: 62.18, endAt: 62.58 },
+          { word: "it", startAt: 62.58, endAt: 62.84 },
+          { word: "in", startAt: 62.84, endAt: 63.04 },
+          { word: "a", startAt: 63.04, endAt: 63.18 },
+          { word: "disguise", startAt: 63.18, endAt: 63.64 },
+          { word: "through", startAt: 63.64, endAt: 64.22 },
+          { word: "the", startAt: 64.22, endAt: 64.46 },
+          { word: "sun", startAt: 64.46, endAt: 64.86 },
+          { word: "and", startAt: 64.86, endAt: 65.22 },
+          { word: "the", startAt: 65.22, endAt: 65.46 },
+          { word: "rain,", startAt: 65.46, endAt: 65.92 },
+        ],
+        cloze: { blank: "disguise", prompt: "You can hide it in a ____ through the sun and the rain.", options: ["box", "pocket", "disguise", "tree"], answer: 2 }
+      },
+      {
+        start: 66.36, end: 70.6,
+        text: "With a mustache and glasses, it still smells the same.",
+        words: [
+          { word: "With", startAt: 66.36, endAt: 66.62 },
+          { word: "a", startAt: 66.62, endAt: 66.8 },
+          { word: "mustache", startAt: 66.8, endAt: 67.2 },
+          { word: "and", startAt: 67.2, endAt: 67.78 },
+          { word: "glasses,", startAt: 67.78, endAt: 68.38 },
+          { word: "it", startAt: 68.9, endAt: 69.02 },
+          { word: "still", startAt: 69.02, endAt: 69.34 },
+          { word: "smells", startAt: 69.34, endAt: 69.82 },
+          { word: "the", startAt: 69.82, endAt: 70.08 },
+          { word: "same.", startAt: 70.08, endAt: 70.6 },
+        ],
+      },
+      {
+        start: 71.18, end: 75.22,
+        text: "A bear plays for keeps, and a bear has no shame.",
+        words: [
+          { word: "A", startAt: 71.18, endAt: 71.36 },
+          { word: "bear", startAt: 71.36, endAt: 71.6 },
+          { word: "plays", startAt: 71.6, endAt: 72.1 },
+          { word: "for", startAt: 72.1, endAt: 72.42 },
+          { word: "keeps,", startAt: 72.42, endAt: 72.84 },
+          { word: "and", startAt: 73.16, endAt: 73.48 },
+          { word: "a", startAt: 73.48, endAt: 73.62 },
+          { word: "bear", startAt: 73.62, endAt: 73.92 },
+          { word: "has", startAt: 73.92, endAt: 74.36 },
+          { word: "no", startAt: 74.36, endAt: 74.62 },
+          { word: "shame.", startAt: 74.62, endAt: 75.22 },
+        ],
+      },
+      {
+        start: 75.42, end: 79.48,
+        text: "Oh, the bear loves the red, he loves the sweet juice,",
+        words: [
+          { word: "Oh,", startAt: 75.42, endAt: 75.7 },
+          { word: "the", startAt: 75.76, endAt: 75.88 },
+          { word: "bear", startAt: 75.88, endAt: 76.28 },
+          { word: "loves", startAt: 76.28, endAt: 76.78 },
+          { word: "the", startAt: 76.78, endAt: 77.08 },
+          { word: "red,", startAt: 77.08, endAt: 77.44 },
+          { word: "he", startAt: 77.98, endAt: 78.16 },
+          { word: "loves", startAt: 78.16, endAt: 78.48 },
+          { word: "the", startAt: 78.48, endAt: 78.78 },
+          { word: "sweet", startAt: 78.78, endAt: 79.0 },
+          { word: "juice,", startAt: 79.0, endAt: 79.48 },
+        ],
+      },
+      {
+        start: 80.0, end: 84.06,
+        text: "And once he starts sniffing, he'll never turn loose.",
+        words: [
+          { word: "And", startAt: 80.0, endAt: 80.4 },
+          { word: "once", startAt: 80.4, endAt: 80.8 },
+          { word: "he", startAt: 80.8, endAt: 81.08 },
+          { word: "starts", startAt: 81.08, endAt: 81.46 },
+          { word: "sniffing,", startAt: 81.46, endAt: 82.2 },
+          { word: "he'll", startAt: 82.58, endAt: 82.74 },
+          { word: "never", startAt: 82.74, endAt: 83.14 },
+          { word: "turn", startAt: 83.14, endAt: 83.62 },
+          { word: "loose.", startAt: 83.62, endAt: 84.06 },
+        ],
+      },
+      {
+        start: 84.66, end: 88.8,
+        text: "He's bigger than a wagon, he's faster than a breeze,",
+        words: [
+          { word: "He's", startAt: 84.66, endAt: 85.06 },
+          { word: "bigger", startAt: 85.06, endAt: 85.38 },
+          { word: "than", startAt: 85.38, endAt: 85.96 },
+          { word: "a", startAt: 85.96, endAt: 86.24 },
+          { word: "wagon,", startAt: 86.24, endAt: 86.68 },
+          { word: "he's", startAt: 87.22, endAt: 87.36 },
+          { word: "faster", startAt: 87.36, endAt: 87.78 },
+          { word: "than", startAt: 87.78, endAt: 88.18 },
+          { word: "a", startAt: 88.18, endAt: 88.36 },
+          { word: "breeze,", startAt: 88.36, endAt: 88.8 },
+        ],
+      },
+      {
+        start: 89.14, end: 93.38,
+        text: "And he'll sniff out that berry between the tall trees.",
+        words: [
+          { word: "And", startAt: 89.14, endAt: 89.38 },
+          { word: "he'll", startAt: 89.38, endAt: 89.6 },
+          { word: "sniff", startAt: 89.6, endAt: 89.82 },
+          { word: "out", startAt: 89.82, endAt: 90.3 },
+          { word: "that", startAt: 90.3, endAt: 90.7 },
+          { word: "berry", startAt: 90.7, endAt: 91.16 },
+          { word: "between", startAt: 91.16, endAt: 92.06 },
+          { word: "the", startAt: 92.06, endAt: 92.46 },
+          { word: "tall", startAt: 92.46, endAt: 92.86 },
+          { word: "trees.", startAt: 92.86, endAt: 93.38 },
+        ],
+      },
+      {
+        start: 93.88, end: 97.84,
+        text: "One bite for you, and one bite for me.",
+        words: [
+          { word: "One", startAt: 93.88, endAt: 94.06 },
+          { word: "bite", startAt: 94.06, endAt: 94.46 },
+          { word: "for", startAt: 94.46, endAt: 94.9 },
+          { word: "you,", startAt: 94.9, endAt: 95.28 },
+          { word: "and", startAt: 95.68, endAt: 96.3 },
+          { word: "one", startAt: 96.3, endAt: 96.66 },
+          { word: "bite", startAt: 96.66, endAt: 97.12 },
+          { word: "for", startAt: 97.12, endAt: 97.48 },
+          { word: "me.", startAt: 97.48, endAt: 97.84 },
+        ],
+      },
+      {
+        start: 98.62, end: 102.48,
+        text: "The best way to win is to share it, you see.",
+        words: [
+          { word: "The", startAt: 98.62, endAt: 98.78 },
+          { word: "best", startAt: 98.78, endAt: 99.24 },
+          { word: "way", startAt: 99.24, endAt: 99.6 },
+          { word: "to", startAt: 99.6, endAt: 99.98 },
+          { word: "win", startAt: 99.98, endAt: 100.42 },
+          { word: "is", startAt: 100.42, endAt: 101.0 },
+          { word: "to", startAt: 101.0, endAt: 101.2 },
+          { word: "share", startAt: 101.2, endAt: 101.64 },
+          { word: "it,", startAt: 101.64, endAt: 101.9 },
+          { word: "you", startAt: 102.0, endAt: 102.06 },
+          { word: "see.", startAt: 102.06, endAt: 102.48 },
+        ],
+        cloze: { blank: "share", prompt: "The best way to win is to ____ it, you see.", options: ["hide", "share", "eat", "drop"], answer: 1 }
+      },
+      {
+        start: 104.14, end: 104.96,
+        text: "Bye-bye bear.",
+        words: [
+          { word: "Bye", startAt: 104.14, endAt: 104.44 },
+          { word: "-bye", startAt: 104.44, endAt: 104.68 },
+          { word: "bear.", startAt: 104.68, endAt: 104.96 },
+        ],
+      },
+    ];
+
+    // buildWordTimings: words are now baked-in from Whisper above.
+    // This is a no-op kept for safety in case any line is missing words.
+    (function buildWordTimings() {
+      songLyrics.forEach(function(line) {
+        if (line.words && line.words.length > 0) return; // already have Whisper data
+        var words = line.text.trim().split(/\s+/).filter(function(w) { return w.length > 0; });
+        var duration = line.end - line.start;
+        var perWord = duration / words.length;
+        line.words = words.map(function(word, idx) {
+          return { word: word, startAt: line.start + idx * perWord, endAt: line.start + (idx + 1) * perWord };
+        });
+      });
+    })();
+
+    var songMode = "sing"; // "sing" or "cloze"
+    var subtitlesEnabled = true;
+    var hasPlayedOnce = false;
+    var currentClozeIndex = -1;
+    var clozeAnswered = {};
+    var lastRenderedLyricIndex = -2; // track which lyric is currently rendered in DOM
+
+    var songSubtitleBox = document.getElementById("song-subtitle-box");
+    var songSubtitleWords = document.getElementById("song-subtitle-words");
+    var clozeModal = document.getElementById("cloze-modal");
+    var clozeSentence = document.getElementById("cloze-sentence");
+    var clozeOptionsGrid = document.getElementById("cloze-options-grid");
+    var clozeProgress = document.getElementById("cloze-progress");
+    var clozeFeedback = document.getElementById("cloze-feedback");
+    var songModeSing = document.getElementById("song-mode-sing");
+    var songModeCloze = document.getElementById("song-mode-cloze");
+    var songSubToggle = document.getElementById("song-sub-toggle");
+    var celebrationOverlay = document.getElementById("celebration-overlay");
+    var celebrationStartBtn = document.getElementById("celebration-start-btn");
+
+    // Load Nunito from Google Fonts for kid-friendly subtitle text
+    (function() {
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap";
+      document.head.appendChild(link);
+    })();
+
+    // Mode Toggle Events
+    songModeSing.addEventListener("click", function() {
+      setSongMode("sing");
+    });
+    songModeCloze.addEventListener("click", function() {
+      setSongMode("cloze");
+    });
+
+    songSubToggle.addEventListener("click", function() {
+      subtitlesEnabled = !subtitlesEnabled;
+      songSubToggle.classList.toggle("active", subtitlesEnabled);
+      songSubToggle.innerText = subtitlesEnabled ? "💬 Subtitles: ON" : "💬 Subtitles: OFF";
+      if (subtitlesEnabled) {
+        songSubtitleBox.style.opacity = "1";
+      } else {
+        songSubtitleBox.style.opacity = "0";
+      }
+    });
+
+    function setSongMode(mode) {
+      songMode = mode;
+      songModeSing.classList.toggle("active", mode === "sing");
+      songModeCloze.classList.toggle("active", mode === "cloze");
+      clozeAnswered = {};
+      clozeModal.style.display = "none";
+      lastRenderedLyricIndex = -2;
+      if (mode === "cloze" && songVideo.paused) {
+        songVideo.play().catch(function() {});
+      }
+    }
+
+    // Celebration overlay button starts Cloze mode
+    celebrationStartBtn.addEventListener("click", function() {
+      celebrationOverlay.style.display = "none";
+      setSongMode("cloze");
+      songVideo.currentTime = 0;
+      songVideo.play().catch(function() {});
+    });
+
+    // Video ended listener -> Show celebration overlay on first play, then auto-switch to Cloze
+    songVideo.addEventListener("ended", function() {
+      if (!hasPlayedOnce) {
+        hasPlayedOnce = true;
+        // Update mode buttons but don't start video yet
+        songModeSing.classList.remove("active");
+        songModeCloze.classList.add("active");
+        // Show celebration overlay instead of alert
+        celebrationOverlay.style.display = "flex";
+        triggerConfetti();
+        // Hide subtitle box during celebration
+        songSubtitleBox.style.opacity = "0";
+      }
+    });
+
+    // -------------------------------------------------------
+    // KARAOKE SUBTITLE ENGINE
+    // Renders word spans for the active lyric and highlights
+    // each word as the video reaches its timed window.
+    // -------------------------------------------------------
+    function renderLyricSpans(lyric, lyricIndex) {
+      songSubtitleWords.innerHTML = "";
+      if (!lyric) return;
+      lyric.words.forEach(function(w, wi) {
+        var span = document.createElement("span");
+        span.className = "sub-word";
+        span.dataset.wi = wi;
+        span.textContent = (w.display || w.word) + (wi < lyric.words.length - 1 ? " " : "");
+        songSubtitleWords.appendChild(span);
+      });
+      lastRenderedLyricIndex = lyricIndex;
+    }
+
+    function updateKaraokeHighlight(lyric, curTime) {
+      if (!lyric || !lyric.words) return;
+      var wordSpans = songSubtitleWords.querySelectorAll(".sub-word");
+      var activeFound = false;
+      lyric.words.forEach(function(w, wi) {
+        var span = wordSpans[wi];
+        if (!span) return;
+        if (curTime >= w.startAt && curTime < w.endAt) {
+          // Currently active word
+          span.classList.add("active");
+          span.classList.remove("sung");
+          activeFound = true;
+        } else if (curTime >= w.endAt) {
+          // Already sung
+          span.classList.remove("active");
+          span.classList.add("sung");
+        } else {
+          // Not yet sung
+          span.classList.remove("active", "sung");
+        }
+      });
+    }
+
+    // Timeupdate listener for Karaoke Subtitles & Cloze Challenge Triggering
+    songVideo.addEventListener("timeupdate", function() {
+      var curTime = songVideo.currentTime;
+
+      // Reset on rewind
+      if (curTime < 1) {
+        clozeAnswered = {};
+        lastRenderedLyricIndex = -2;
+      }
+
+      // Find active lyric
+      var activeLyric = null;
+      var activeLyricIndex = -1;
+      for (var i = 0; i < songLyrics.length; i++) {
+        if (curTime >= songLyrics[i].start && curTime <= songLyrics[i].end) {
+          activeLyric = songLyrics[i];
+          activeLyricIndex = i;
+          break;
+        }
+      }
+
+      // Update subtitle display
+      if (!subtitlesEnabled) {
+        songSubtitleBox.style.opacity = "0";
+      } else if (activeLyric) {
+        songSubtitleBox.style.opacity = "1";
+        // Re-render spans only when lyric changes
+        if (activeLyricIndex !== lastRenderedLyricIndex) {
+          renderLyricSpans(activeLyric, activeLyricIndex);
+        }
+        updateKaraokeHighlight(activeLyric, curTime);
+      } else {
+        // Between lines — show gentle idle note
+        songSubtitleBox.style.opacity = "0.7";
+        if (lastRenderedLyricIndex !== -1) {
+          songSubtitleWords.innerHTML = '<span class="sub-word" style="color:rgba(200,210,240,0.6); font-size:1.1rem; transform:none;">The Berry-Scented Disguise</span>';
+          lastRenderedLyricIndex = -1;
+        }
+      }
+
+      // Check Cloze Pause Trigger in Cloze Mode
+      if (songMode === "cloze" && activeLyric && activeLyric.cloze && !clozeAnswered[activeLyricIndex]) {
+        // Pause at the cloze word's timing (when the blank word would be highlighted)
+        var clozeWordIdx = activeLyric.words ? activeLyric.words.findIndex(function(w) {
+          return w.word.toLowerCase() === activeLyric.cloze.blank.toLowerCase();
+        }) : -1;
+        var triggerTime = clozeWordIdx >= 0
+          ? activeLyric.words[clozeWordIdx].startAt - 0.15
+          : activeLyric.start + (activeLyric.end - activeLyric.start) * 0.55;
+
+        if (curTime >= triggerTime && curTime < activeLyric.end) {
+          songVideo.pause();
+          triggerClozeChallenge(activeLyricIndex, activeLyric.cloze);
+        }
+      }
+    });
+
+    function triggerClozeChallenge(lyricIndex, clozeData) {
+      currentClozeIndex = lyricIndex;
+      clozeFeedback.style.display = "none";
+
+      // Calculate cloze question number
+      var clozeQuestions = songLyrics.filter(function(l) { return l.cloze; });
+      var clozeCount = clozeQuestions.length;
+      var clozeNum = songLyrics.slice(0, lyricIndex + 1).filter(function(l) { return l.cloze; }).length;
+      clozeProgress.innerText = "Word " + clozeNum + " of " + clozeCount;
+
+      // Format sentence with animated blank
+      var parts = clozeData.prompt.split("____");
+      clozeSentence.innerHTML = parts[0] +
+        '<span class="blank-slot" style="animation: blankPulse 0.9s ease-in-out infinite;">_____</span>' +
+        (parts[1] || "");
+
+      // Render options with shuffle
+      clozeOptionsGrid.innerHTML = "";
+      var optionsCopy = clozeData.options.slice();
+      for (var o = 0; o < optionsCopy.length; o++) {
+        (function(optIdx) {
+          var btn = document.createElement("button");
+          btn.className = "cloze-opt-btn";
+          btn.type = "button";
+          btn.dataset.optIdx = optIdx;
+          var letter = String.fromCharCode(65 + optIdx);
+          btn.innerHTML =
+            '<span style="color: var(--accent); font-weight: 900; font-size: 1.1rem;">' + letter + ')</span>  ' +
+            '<span style="font-size: 1.05rem;">' + optionsCopy[optIdx] + '</span>';
+
+          btn.addEventListener("click", function(e) {
+            var idx = parseInt(e.currentTarget.dataset.optIdx);
+            handleClozeSelection(idx, clozeData.answer, lyricIndex, e.currentTarget);
+          });
+          clozeOptionsGrid.appendChild(btn);
+        })(o);
+      }
+
+      clozeModal.style.display = "flex";
+    }
+
+    function handleClozeSelection(selectedIdx, correctIdx, lyricIndex, btnEl) {
+      // Disable all buttons during feedback
+      var allBtns = clozeOptionsGrid.querySelectorAll(".cloze-opt-btn");
+      allBtns.forEach(function(b) { b.style.pointerEvents = "none"; });
+
+      if (selectedIdx === correctIdx) {
+        btnEl.classList.add("correct");
+        clozeAnswered[lyricIndex] = true;
+        clozeFeedback.style.display = "block";
+        clozeFeedback.style.background = "rgba(16, 185, 129, 0.2)";
+        clozeFeedback.style.color = "#34d399";
+        clozeFeedback.innerText = "🎉 That's right! Great job!";
+        triggerConfetti();
+        // Also reveal the correct word in the blank
+        var blankEl = clozeSentence.querySelector(".blank-slot");
+        if (blankEl) {
+          blankEl.textContent = songLyrics[lyricIndex].cloze.options[correctIdx];
+          blankEl.style.color = "#34d399";
+          blankEl.style.borderColor = "#34d399";
+          blankEl.style.animation = "none";
+        }
+
+        setTimeout(function() {
+          clozeModal.style.display = "none";
+          lastRenderedLyricIndex = -2; // force subtitle re-render
+          songVideo.play().catch(function() {});
+        }, 1500);
+      } else {
+        btnEl.classList.add("incorrect");
+        clozeFeedback.style.display = "block";
+        clozeFeedback.style.background = "rgba(239, 68, 68, 0.2)";
+        clozeFeedback.style.color = "#fca5a5";
+        clozeFeedback.innerText = "❌ Not quite — try again!";
+        // Re-enable all buttons except the wrong one
+        setTimeout(function() {
+          allBtns.forEach(function(b) {
+            if (b !== btnEl) b.style.pointerEvents = "auto";
+          });
+        }, 500);
+      }
+    }
+
+    /* ------------------------------------------------------------- */
+    /* READER VIEW LOGIC (Pan/Zoom/Touch) */
+    /* ------------------------------------------------------------- */
+    function centerContent() {
+      if (contentHeight * scale <= (window.innerHeight - 52)) {
+        posY = ((window.innerHeight - 52) - contentHeight * scale) / 2;
+      } else {
+        posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * scale, posY));
+      }
+      posX = 0;
+      updateTransform();
+    }
+
+    function updateTransform() {
+      container.style.transform = "translate(" + posX + "px, " + posY + "px) scale(" + scale + ")";
+    }
+
+    // Touch Event Handlers for PDF viewer
+    viewerContainer.addEventListener("touchstart", function(e) {
+      activeTouch = true;
+      if (e.touches.length === 2) {
+        isPinching = true;
+        initDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+        initMidX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        initMidY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        baseScale = scale;
+        basePosX = posX;
+        basePosY = posY;
+      } else if (e.touches.length === 1) {
+        isPinching = false;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        basePosX = posX;
+        basePosY = posY;
+
+        touchStartTime = Date.now();
+        startTouchX = e.touches[0].clientX;
+        startTouchY = e.touches[0].clientY;
+        isGesture = false;
+      }
+    });
+
+    viewerContainer.addEventListener("touchmove", function(e) {
+      if (!activeTouch) return;
+      contentHeight = container.offsetHeight;
+
+      if (e.touches.length === 2 && isPinching) {
+        e.preventDefault();
+        var dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+        var midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        var midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+        var factor = dist / initDist;
+        var newScale = baseScale * factor;
+        if (newScale < 1) newScale = 1;
+        if (newScale > 5) newScale = 5;
+
+        var newPosX = midX - window.innerWidth / 2 - (newScale / baseScale) * (initMidX - window.innerWidth / 2 - basePosX);
+        var newPosY = midY - (newScale / baseScale) * (initMidY - basePosY);
+
+        var maxPanX = (newScale - 1) * window.innerWidth / 2;
+        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+
+        if (contentHeight * newScale <= (window.innerHeight - 52)) {
+          posY = ((window.innerHeight - 52) - contentHeight * newScale) / 2;
+        } else {
+          posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * newScale, newPosY));
+        }
+
+        scale = newScale;
+        updateTransform();
+      } else if (e.touches.length === 1) {
+        var dx = e.touches[0].clientX - startTouchX;
+        var dy = e.touches[0].clientY - startTouchY;
+        if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
+          isGesture = true;
+        }
+
+        if (scale > 1 || contentHeight * scale > (window.innerHeight - 52)) {
+          e.preventDefault();
+          var currentX = e.touches[0].clientX;
+          var currentY = e.touches[0].clientY;
+
+          var newPosX = basePosX + (currentX - startX);
+          var newPosY = basePosY + (currentY - startY);
+
+          var maxPanX = (scale - 1) * window.innerWidth / 2;
+          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+
+          if (contentHeight * scale <= (window.innerHeight - 52)) {
+            posY = ((window.innerHeight - 52) - contentHeight * scale) / 2;
+          } else {
+            posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * scale, newPosY));
+          }
+          updateTransform();
+        }
+      }
+    });
+
+    viewerContainer.addEventListener("touchend", function(e) {
+      if (e.touches.length === 0) {
+        activeTouch = false;
+        isPinching = false;
+
+        var currentTime = Date.now();
+        var tapLength = currentTime - lastTap;
+        if (tapLength < 300 && tapLength > 0 && !isGesture) {
+          scale = 1;
+          centerContent();
+          e.preventDefault();
+        }
+        lastTap = currentTime;
+      } else if (e.touches.length === 1) {
+        isPinching = false;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        basePosX = posX;
+        basePosY = posY;
+      }
+    });
+
+    // Mouse Wheel Scroll & Trackpad Zoom for Reader
+    viewerContainer.addEventListener("wheel", function(e) {
+      contentHeight = container.offsetHeight;
+      if (e.ctrlKey) {
+        e.preventDefault();
+        var factor = 1 - e.deltaY * 0.01;
+        var newScale = scale * factor;
+        if (newScale < 1) newScale = 1;
+        if (newScale > 5) newScale = 5;
+        
+        var mouseX = e.clientX;
+        var mouseY = e.clientY;
+        
+        var newPosX = mouseX - window.innerWidth / 2 - (newScale / scale) * (mouseX - window.innerWidth / 2 - posX);
+        var newPosY = mouseY - (newScale / scale) * (mouseY - posY);
+        
+        var maxPanX = (newScale - 1) * window.innerWidth / 2;
+        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+        
+        if (contentHeight * newScale <= (window.innerHeight - 52)) {
+          posY = ((window.innerHeight - 52) - contentHeight * newScale) / 2;
+        } else {
+          posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * newScale, newPosY));
+        }
+        
+        scale = newScale;
+        updateTransform();
+      } else {
+        if (scale > 1 || contentHeight * scale > (window.innerHeight - 52)) {
+          e.preventDefault();
+          var newPosY = posY - e.deltaY;
+          var newPosX = posX - e.deltaX;
+          
+          var maxPanX = (scale - 1) * window.innerWidth / 2;
+          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+          
+          if (contentHeight * scale <= (window.innerHeight - 52)) {
+            posY = ((window.innerHeight - 52) - contentHeight * scale) / 2;
+          } else {
+            posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * scale, newPosY));
+          }
+          updateTransform();
+        }
+      }
+    }, { passive: false });
+
+    // Mouse Click-and-Drag Panning
+    var isMouseDown = false;
+    var mouseStartX = 0, mouseStartY = 0;
+    viewerContainer.addEventListener("mousedown", function(e) {
+      if (e.button !== 0 || e.target.closest("#fullscreen-btn")) return;
+      isMouseDown = true;
+      mouseStartX = e.clientX;
+      mouseStartY = e.clientY;
+      basePosX = posX;
+      basePosY = posY;
+      document.body.style.cursor = "grabbing";
+    });
+
+    viewerContainer.addEventListener("mousemove", function(e) {
+      if (!isMouseDown) return;
+      contentHeight = container.offsetHeight;
+      if (scale > 1 || contentHeight * scale > (window.innerHeight - 52)) {
+        e.preventDefault();
+        var dx = e.clientX - mouseStartX;
+        var dy = e.clientY - mouseStartY;
+        
+        var newPosX = basePosX + dx;
+        var newPosY = basePosY + dy;
+        
+        var maxPanX = (scale - 1) * window.innerWidth / 2;
+        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+        
+        if (contentHeight * scale <= (window.innerHeight - 52)) {
+          posY = ((window.innerHeight - 52) - contentHeight * scale) / 2;
+        } else {
+          posY = Math.min(0, Math.max((window.innerHeight - 52) - contentHeight * scale, newPosY));
+        }
+        updateTransform();
+      }
+    });
+
+    window.addEventListener("mouseup", function() {
+      isMouseDown = false;
+      document.body.style.cursor = "default";
+    });
+
+    // Fullscreen Toggle
+    var btn = document.getElementById("fullscreen-btn");
+    var enterIcon = document.getElementById("enter-icon");
+    var exitIcon = document.getElementById("exit-icon");
+
+    btn.addEventListener("click", function() {
+      var isFullscreen = document.fullscreenElement || 
+                         document.mozFullScreenElement || 
+                         document.webkitFullscreenElement || 
+                         document.msFullscreenElement;
+      if (isFullscreen) {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        else if (document.msExitFullscreen) document.msExitFullscreen();
+      } else {
+        var docElm = document.documentElement;
+        if (docElm.requestFullscreen) docElm.requestFullscreen();
+        else if (docElm.mozRequestFullScreen) docElm.mozRequestFullScreen();
+        else if (docElm.webkitRequestFullscreen) docElm.webkitRequestFullscreen();
+        else if (docElm.msRequestFullscreen) docElm.msRequestFullscreen();
+      }
+    });
+
+    function updateFullscreenIcons() {
+      var isFullscreen = document.fullscreenElement || 
+                         document.mozFullScreenElement || 
+                         document.webkitFullscreenElement || 
+                         document.msFullscreenElement;
+      if (isFullscreen) {
+        enterIcon.style.display = "none";
+        exitIcon.style.display = "block";
+      } else {
+        enterIcon.style.display = "block";
+        exitIcon.style.display = "none";
+      }
+    }
+
+    document.addEventListener("fullscreenchange", updateFullscreenIcons);
+
+    /* ------------------------------------------------------------- */
+    /* SEQUENCING ACTIVITY GAME LOGIC */
+    /* ------------------------------------------------------------- */
+    var slotsGrid = document.getElementById("slots-grid");
+    var poolGrid = document.getElementById("pool-grid");
+    var feedbackBanner = document.getElementById("feedback-banner");
+    var feedbackMsg = document.getElementById("feedback-msg");
+    var placedCounter = document.getElementById("placed-counter");
+
+    function initActivityBoard() {
+      // Generate random letter assignments for each page
+      var lettersShuffled = alphabet.slice(0, totalPages);
+      shuffleArray(lettersShuffled);
+      pageLetters = [];
+      cardRotations = [];
+      for (var i = 0; i < totalPages; i++) {
+        pageLetters[i] = lettersShuffled[i];
+        // Organic physical photo tabletop rotation (-3.5deg to +3.5deg)
+        cardRotations[i] = (Math.random() * 7 - 3.5).toFixed(1) + "deg";
+      }
+
+      pool = [];
+      for (var i = 0; i < totalPages; i++) pool.push(i);
+      shuffleArray(pool);
+
+      slots = new Array(totalPages).fill(null);
+      selectedCard = null;
+      checkResults = null;
+      hideFeedback();
+
+      renderBoard();
+    }
+
+    function shuffleArray(arr) {
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+    }
+
+    function renderBoard() {
+      // 1. Render Tabletop Pool (Large 3D Physical Photo Cards)
+      poolGrid.innerHTML = "";
+      if (pool.length === 0) {
+        var emptyMsg = document.createElement("div");
+        emptyMsg.style.gridColumn = "1 / -1";
+        emptyMsg.style.textAlign = "center";
+        emptyMsg.style.padding = "20px";
+        emptyMsg.style.color = "var(--success)";
+        emptyMsg.style.fontSize = "0.95rem";
+        emptyMsg.style.fontWeight = "600";
+        emptyMsg.innerText = "✨ All scene photos placed on sequence line! Click 'Check Story' to verify.";
+        poolGrid.appendChild(emptyMsg);
+      } else {
+        for (var p = 0; p < pool.length; p++) {
+          var pPageIdx = pool[p];
+          var poolCard = createCardElement(pPageIdx, "pool", p);
+          poolGrid.appendChild(poolCard);
+        }
+      }
+      setupPoolDropEvents(poolGrid);
+
+      // 2. Render Target Sequence Line (Slots 1 to 13)
+      slotsGrid.innerHTML = "";
+      var placedCount = 0;
+
+      for (var s = 0; s < totalPages; s++) {
+        var slotDiv = document.createElement("div");
+        slotDiv.className = "slot";
+        slotDiv.dataset.slotIndex = s;
+
+        // Slot number badge
+        var numBadge = document.createElement("div");
+        numBadge.className = "slot-num-badge";
+        numBadge.innerText = (s + 1);
+        slotDiv.appendChild(numBadge);
+
+        if (checkResults) {
+          if (checkResults[s] === true) slotDiv.classList.add("correct");
+          else if (checkResults[s] === false) slotDiv.classList.add("incorrect");
+        }
+
+        var pageIdx = slots[s];
+        if (pageIdx !== null) {
+          placedCount++;
+          var card = createCardElement(pageIdx, "slot", s);
+          slotDiv.appendChild(card);
+
+          if (checkResults) {
+            var statusIcon = document.createElement("div");
+            statusIcon.className = "status-icon " + (checkResults[s] ? "correct" : "incorrect");
+            statusIcon.innerText = checkResults[s] ? "✓" : "✕";
+            slotDiv.appendChild(statusIcon);
+          }
+        } else {
+          var label = document.createElement("div");
+          label.className = "slot-label";
+          label.innerText = "Slot " + (s + 1);
+          slotDiv.appendChild(label);
+        }
+
+        setupSlotDropEvents(slotDiv);
+        slotsGrid.appendChild(slotDiv);
+      }
+
+      placedCounter.innerText = "Placed: " + placedCount + " / " + totalPages;
+    }
+
+    function createCardElement(pageIdx, locationType, locationIndex) {
+      var card = document.createElement("div");
+      card.className = "story-card";
+      card.draggable = true;
+      card.dataset.pageIndex = pageIdx;
+      card.dataset.locType = locationType;
+      card.dataset.locIndex = locationIndex;
+
+      // Apply organic physical tabletop tilt if in pool
+      if (locationType === "pool") {
+        card.style.transform = "rotate(" + cardRotations[pageIdx] + ")";
+      }
+
+      if (selectedCard === pageIdx) {
+        card.classList.add("selected");
+      }
+
+      // PROMINENT RANDOM LETTER BADGE FOR CLASSROOM DEMO
+      var letterBadge = document.createElement("div");
+      letterBadge.className = "card-letter-badge";
+      letterBadge.title = "Scene Letter " + pageLetters[pageIdx];
+      letterBadge.innerText = pageLetters[pageIdx];
+      card.appendChild(letterBadge);
+
+      // Thumbnail Container
+      var thumbWrap = document.createElement("div");
+      thumbWrap.className = "card-thumb-wrap";
+
+      var img = document.createElement("img");
+      img.className = "card-thumb";
+      img.src = pageThumbnails[pageIdx];
+      img.alt = "Scene " + pageLetters[pageIdx];
+      thumbWrap.appendChild(img);
+      card.appendChild(thumbWrap);
+
+      // Footer bar (Controls & Label)
+      var footer = document.createElement("div");
+      footer.className = "card-footer";
+
+      var label = document.createElement("div");
+      label.className = "card-label";
+      label.innerText = "Scene " + pageLetters[pageIdx];
+      footer.appendChild(label);
+
+      var controls = document.createElement("div");
+      controls.className = "card-controls";
+      
+      var zoomBtn = document.createElement("button");
+      zoomBtn.className = "card-btn";
+      zoomBtn.title = "Inspect Scene " + pageLetters[pageIdx];
+      zoomBtn.innerText = "🔍";
+      zoomBtn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        openPreviewModal(pageIdx);
+      });
+      controls.appendChild(zoomBtn);
+      footer.appendChild(controls);
+      card.appendChild(footer);
+
+      // HTML5 Drag Events
+      card.addEventListener("dragstart", function(e) {
+        e.dataTransfer.setData("text/plain", JSON.stringify({
+          pageIdx: pageIdx,
+          locType: locationType,
+          locIndex: locationIndex
+        }));
+        card.classList.add("dragging");
+      });
+
+      card.addEventListener("dragend", function() {
+        card.classList.remove("dragging");
+      });
+
+      // CLICKING THE SCENE CARD AUTOMATICALLY OPENS HIGH-RES LIGHTBOX PREVIEW
+      card.addEventListener("click", function(e) {
+        e.stopPropagation();
+        openPreviewModal(pageIdx);
+      });
+
+      // Touch Drag Handler for Touch Devices
+      setupTouchDrag(card, pageIdx, locationType, locationIndex);
+
+      return card;
+    }
+
+    /* Slot and Pool Drop Handlers */
+    function moveCardToSlot(cardData, targetSlotIndex) {
+      var srcPageIdx = cardData.pageIdx;
+      var srcType = cardData.locType;
+      var srcIndex = cardData.locIndex;
+
+      var existingSlotPageIdx = slots[targetSlotIndex];
+
+      // Remove card from old location
+      if (srcType === "pool") {
+        var pIdx = pool.indexOf(srcPageIdx);
+        if (pIdx > -1) pool.splice(pIdx, 1);
+      } else if (srcType === "slot") {
+        slots[srcIndex] = null;
+      }
+
+      // If target slot had an existing card, swap locations
+      if (existingSlotPageIdx !== null) {
+        if (srcType === "slot") {
+          slots[srcIndex] = existingSlotPageIdx;
+        } else {
+          pool.push(existingSlotPageIdx);
+        }
+      }
+
+      slots[targetSlotIndex] = srcPageIdx;
+      selectedCard = null;
+      checkResults = null;
+      hideFeedback();
+      renderBoard();
+    }
+
+    function moveCardToPool(cardData) {
+      var srcPageIdx = cardData.pageIdx;
+      var srcType = cardData.locType;
+      var srcIndex = cardData.locIndex;
+
+      if (srcType === "slot") {
+        slots[srcIndex] = null;
+        if (pool.indexOf(srcPageIdx) === -1) {
+          pool.push(srcPageIdx);
+        }
+        selectedCard = null;
+        checkResults = null;
+        hideFeedback();
+        renderBoard();
+      }
+    }
+
+    function setupSlotDropEvents(slotEl) {
+      slotEl.addEventListener("dragover", function(e) {
+        e.preventDefault();
+        slotEl.classList.add("drag-over");
+      });
+
+      slotEl.addEventListener("dragleave", function() {
+        slotEl.classList.remove("drag-over");
+      });
+
+      slotEl.addEventListener("drop", function(e) {
+        e.preventDefault();
+        slotEl.classList.remove("drag-over");
+        try {
+          var data = JSON.parse(e.dataTransfer.getData("text/plain"));
+          var targetSlotIndex = parseInt(slotEl.dataset.slotIndex);
+          moveCardToSlot(data, targetSlotIndex);
+        } catch (err) {}
+      });
+    }
+
+    function setupPoolDropEvents(poolEl) {
+      poolEl.addEventListener("dragover", function(e) {
+        e.preventDefault();
+        poolEl.classList.add("drag-over");
+      });
+
+      poolEl.addEventListener("dragleave", function() {
+        poolEl.classList.remove("drag-over");
+      });
+
+      poolEl.addEventListener("drop", function(e) {
+        e.preventDefault();
+        poolEl.classList.remove("drag-over");
+        try {
+          var data = JSON.parse(e.dataTransfer.getData("text/plain"));
+          moveCardToPool(data);
+        } catch (err) {}
+      });
+    }
+
+    /* Custom Touch Drag Engine for Mobile */
+    var touchGhost = null;
+    function setupTouchDrag(cardEl, pageIdx, locType, locIndex) {
+      var touchStartPos = { x: 0, y: 0 };
+      var isTouchDragging = false;
+
+      cardEl.addEventListener("touchstart", function(e) {
+        if (e.target.closest(".card-btn")) return;
+        if (e.touches.length !== 1) return;
+
+        touchStartPos.x = e.touches[0].clientX;
+        touchStartPos.y = e.touches[0].clientY;
+        isTouchDragging = false;
+      }, { passive: true });
+
+      cardEl.addEventListener("touchmove", function(e) {
+        if (e.touches.length !== 1) return;
+        var touch = e.touches[0];
+        var dx = touch.clientX - touchStartPos.x;
+        var dy = touch.clientY - touchStartPos.y;
+
+        if (!isTouchDragging && (Math.abs(dx) > 8 || Math.abs(dy) > 8)) {
+          isTouchDragging = true;
+          touchGhost = document.createElement("div");
+          touchGhost.className = "touch-ghost";
+          var img = document.createElement("img");
+          img.src = pageThumbnails[pageIdx];
+          touchGhost.appendChild(img);
+          document.body.appendChild(touchGhost);
+        }
+
+        if (isTouchDragging && touchGhost) {
+          e.preventDefault();
+          touchGhost.style.left = touch.clientX + "px";
+          touchGhost.style.top = touch.clientY + "px";
+
+          var elem = document.elementFromPoint(touch.clientX, touch.clientY);
+          var slot = elem ? elem.closest(".slot") : null;
+          document.querySelectorAll(".slot.drag-over").forEach(s => s.classList.remove("drag-over"));
+          if (slot) slot.classList.add("drag-over");
+        }
+      }, { passive: false });
+
+      cardEl.addEventListener("touchend", function(e) {
+        if (isTouchDragging && touchGhost) {
+          var touch = e.changedTouches[0];
+          var elem = document.elementFromPoint(touch.clientX, touch.clientY);
+          
+          if (touchGhost) {
+            touchGhost.remove();
+            touchGhost = null;
+          }
+          document.querySelectorAll(".slot.drag-over").forEach(s => s.classList.remove("drag-over"));
+
+          var targetSlot = elem ? elem.closest(".slot") : null;
+          var targetPool = elem ? elem.closest(".pool-grid") : null;
+
+          if (targetSlot) {
+            var targetSlotIndex = parseInt(targetSlot.dataset.slotIndex);
+            moveCardToSlot({
+              pageIdx: pageIdx,
+              locType: locType,
+              locIndex: locIndex
+            }, targetSlotIndex);
+          } else if (targetPool && locType === "slot") {
+            moveCardToPool({
+              pageIdx: pageIdx,
+              locType: locType,
+              locIndex: locIndex
+            });
+          }
+        }
+      });
+    }
+
+    /* Action Buttons */
+    document.getElementById("btn-check").addEventListener("click", function() {
+      var correctCount = 0;
+      checkResults = [];
+
+      for (var s = 0; s < totalPages; s++) {
+        if (slots[s] === s) {
+          checkResults[s] = true;
+          correctCount++;
+        } else {
+          checkResults[s] = false;
+        }
+      }
+
+      renderBoard();
+
+      if (correctCount === totalPages) {
+        showFeedback("🎉 Perfect! You arranged all 13 scenes in perfect narrative order!", "success");
+        triggerConfetti();
+      } else {
+        showFeedback("Score: " + correctCount + " / " + totalPages + " scenes in correct position. Check green/red indicators and keep going!", "warning");
+      }
+    });
+
+    document.getElementById("btn-hint").addEventListener("click", function() {
+      for (var s = 0; s < totalPages; s++) {
+        if (slots[s] !== s) {
+          var currentLocOfPageS = slots.indexOf(s);
+          if (currentLocOfPageS > -1) {
+            var temp = slots[s];
+            slots[s] = s;
+            slots[currentLocOfPageS] = temp;
+          } else {
+            var pIdx = pool.indexOf(s);
+            if (pIdx > -1) pool.splice(pIdx, 1);
+            if (slots[s] !== null) pool.push(slots[s]);
+            slots[s] = s;
+          }
+          showFeedback("💡 Hint: Placed Scene " + pageLetters[s] + " into Slot " + (s + 1) + "!", "info");
+          checkResults = null;
+          renderBoard();
+          return;
+        }
+      }
+      showFeedback("All scenes are already in correct order!", "success");
+    });
+
+    document.getElementById("btn-shuffle").addEventListener("click", function() {
+      initActivityBoard();
+      showFeedback("Board reshuffled with new random letter labels!", "info");
+    });
+
+    document.getElementById("btn-reveal").addEventListener("click", function() {
+      slots = [];
+      for (var i = 0; i < totalPages; i++) slots.push(i);
+      pool = [];
+      checkResults = new Array(totalPages).fill(true);
+      renderBoard();
+      showFeedback("Revealed correct narrative order (Slots 1 to 13).", "info");
+      triggerConfetti();
+    });
+
+    function showFeedback(msg, type) {
+      feedbackMsg.innerText = msg;
+      feedbackBanner.className = "feedback-banner " + (type || "info");
+      feedbackBanner.style.display = "flex";
+    }
+
+    function hideFeedback() {
+      feedbackBanner.style.display = "none";
+    }
+
+    /* Modal Preview Lightbox */
+    var modalOverlay = document.getElementById("preview-modal");
+    var modalImg = document.getElementById("modal-img");
+    var modalPageTitle = document.getElementById("modal-page-title");
+    var modalCloseBtn = document.getElementById("modal-close-btn");
+    var modalPrevBtn = document.getElementById("modal-prev-btn");
+    var modalNextBtn = document.getElementById("modal-next-btn");
+
+    function openPreviewModal(pageIdx) {
+      currentPreviewPageIndex = pageIdx;
+      updateModalContent();
+      modalOverlay.classList.add("active");
+    }
+
+    function updateModalContent() {
+      modalImg.src = pageThumbnails[currentPreviewPageIndex];
+      modalPageTitle.innerText = "Spread " + pageLetters[currentPreviewPageIndex] + " (Spread " + (currentPreviewPageIndex + 1) + " of " + totalPages + ")";
+    }
+
+    modalCloseBtn.addEventListener("click", function() {
+      modalOverlay.classList.remove("active");
+    });
+    modalOverlay.addEventListener("click", function(e) {
+      if (e.target === modalOverlay) modalOverlay.classList.remove("active");
+    });
+
+    modalPrevBtn.addEventListener("click", function() {
+      if (currentPreviewPageIndex > 0) {
+        currentPreviewPageIndex--;
+        updateModalContent();
+      }
+    });
+
+    modalNextBtn.addEventListener("click", function() {
+      if (currentPreviewPageIndex < totalPages - 1) {
+        currentPreviewPageIndex++;
+        updateModalContent();
+      }
+    });
+
+    /* Lightweight Canvas Confetti */
+    function triggerConfetti() {
+      var canvas = document.getElementById("confetti-canvas");
+      var ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      var pieces = [];
+      var colors = ["#4f7ef8", "#10b981", "#f59e0b", "#ec4899", "#8b5cf6"];
+
+      for (var i = 0; i < 100; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          speedY: Math.random() * 3 + 2,
+          speedX: Math.random() * 2 - 1,
+          rot: Math.random() * 360
+        });
+      }
+
+      var duration = 2.5 * 1000;
+      var start = Date.now();
+
+      function frame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        var elapsed = Date.now() - start;
+
+        for (var p = 0; p < pieces.length; p++) {
+          var item = pieces[p];
+          item.y += item.speedY;
+          item.x += item.speedX;
+          item.rot += 4;
+
+          ctx.save();
+          ctx.translate(item.x, item.y);
+          ctx.rotate((item.rot * Math.PI) / 180);
+          ctx.fillStyle = item.color;
+          ctx.fillRect(-item.size / 2, -item.size / 2, item.size, item.size);
+          ctx.restore();
+        }
+
+        if (elapsed < duration) {
+          requestAnimationFrame(frame);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+
+    // Re-center reader on window resize
+    window.addEventListener("resize", function() {
+      if (tabRead.classList.contains("active")) {
+        contentHeight = container.offsetHeight;
+        centerContent();
+      }
+    });
+  </script>
+</body>
+</html>
