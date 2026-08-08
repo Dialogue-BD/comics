@@ -1,0 +1,911 @@
+[
+  {
+    "file": "A01_NoodleSoup.jpg",
+    "code": "A01",
+    "title": "Noodle Soup",
+    "desc": "Eating at a noodle stall in Southeast Asia",
+    "category": "Everyday Life",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A02_ShoppingForTShirt.jpg",
+    "code": "A02",
+    "title": "Shopping for a T-Shirt",
+    "desc": "Buying clothes and bargaining at a market stall",
+    "category": "Everyday Life",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A04_RainySeason.jpg",
+    "code": "A04",
+    "title": "Rainy Season",
+    "desc": "Monsoon rain, umbrellas, and wet city streets",
+    "category": "Weather & Seasons",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A05_MotorcycleTaxi.jpg",
+    "code": "A05",
+    "title": "Motorcycle Taxi",
+    "desc": "Taking a motorbike taxi through city traffic",
+    "category": "Transportation",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A06_GoingToBed.jpg",
+    "code": "A06",
+    "title": "Going to Bed",
+    "desc": "Bedtime routine, bedroom, and settling in for sleep",
+    "category": "Daily Routine",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A07_CoffeeSoftDrink.jpg",
+    "code": "A07",
+    "title": "Coffee & Soft Drink",
+    "desc": "Cafe orders, iced coffee, drinks, and snacks",
+    "category": "Food & Drink",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A08_BreakingABowl.jpg",
+    "code": "A08",
+    "title": "Breaking a Bowl",
+    "desc": "Dropping a dish and cleaning up broken pieces",
+    "category": "Everyday Accidents",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A09_GrilledFish.jpg",
+    "code": "A09",
+    "title": "Grilled Fish",
+    "desc": "Preparing, grilling over coals, and enjoying fish",
+    "category": "Food & Cooking",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A10_CuttingFinger.jpg",
+    "code": "A10",
+    "title": "Cutting Finger",
+    "desc": "Kitchen knife mishap, bleeding, and first aid bandage",
+    "category": "Health & Safety",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A11_ATM.jpg",
+    "code": "A11",
+    "title": "Using the ATM",
+    "desc": "Inserting bank card, entering PIN, and withdrawing cash",
+    "category": "City & Services",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A13_GettingUpWork.jpg",
+    "code": "A13",
+    "title": "Getting Up for Work",
+    "desc": "Morning alarm, waking up, and morning routine",
+    "category": "Daily Routine",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A14_ColdSeason.jpg",
+    "code": "A14",
+    "title": "Cold Season",
+    "desc": "Cooler weather, jackets, warm clothes, and morning mist",
+    "category": "Weather & Seasons",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A15_FriedRice.jpg",
+    "code": "A15",
+    "title": "Fried Rice",
+    "desc": "Wok cooking, ingredients, and eating fried rice",
+    "category": "Food & Cooking",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A16_Pickpocket.jpg",
+    "code": "A16",
+    "title": "Pickpocket",
+    "desc": "Street thief snatching a wallet in a crowded place",
+    "category": "City Situations",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A17_Laundry.jpg",
+    "code": "A17",
+    "title": "Doing Laundry",
+    "desc": "Washing by hand or machine, rinsing, and hanging to dry",
+    "category": "Chores & Home",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A18_Tuktuk.jpg",
+    "code": "A18",
+    "title": "Taking a Tuk-Tuk",
+    "desc": "Hailing and riding a three-wheel auto rickshaw",
+    "category": "Transportation",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A19_Airplane.jpg",
+    "code": "A19",
+    "title": "Airplane Trip",
+    "desc": "Airport terminal, boarding gate, luggage, and flying",
+    "category": "Travel",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A20_FoodPoisoning.jpg",
+    "code": "A20",
+    "title": "Food Poisoning",
+    "desc": "Stomach ache after street food, nausea, and recovery",
+    "category": "Health & Illness",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A21_Cinema.jpg",
+    "code": "A21",
+    "title": "Going to the Cinema",
+    "desc": "Buying movie tickets, popcorn, and watching the film",
+    "category": "Entertainment",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A24_Haircut.jpg",
+    "code": "A24",
+    "title": "Getting a Haircut",
+    "desc": "Barbershop chair, scissors, cape, and styling",
+    "category": "Personal Care",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A25_Exercise.jpg",
+    "code": "A25",
+    "title": "Exercise & Workout",
+    "desc": "Jogging in the park, stretching, and staying active",
+    "category": "Sports & Health",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A26_HavingACold.jpg",
+    "code": "A26",
+    "title": "Having a Cold",
+    "desc": "Fever, thermometer, sneezing, tissues, and resting",
+    "category": "Health & Illness",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A27_NightTrain.jpg",
+    "code": "A27",
+    "title": "Night Train",
+    "desc": "Train platform, sleeper berths, ticket check, and journey",
+    "category": "Travel",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A31_Boats.jpg",
+    "code": "A31",
+    "title": "Boats & River Travel",
+    "desc": "River ferries, longtail boats, docks, and river life",
+    "category": "Transportation",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A33_DoingTheDishes.jpg",
+    "code": "A33",
+    "title": "Doing the Dishes",
+    "desc": "Dish soap, sponge, scrubbing plates, and drying rack",
+    "category": "Chores & Home",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A34_PersonalHygiene.jpg",
+    "code": "A34",
+    "title": "Personal Hygiene",
+    "desc": "Brushing teeth, washing face, bathing, and grooming",
+    "category": "Daily Routine",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A35_Accident.jpg",
+    "code": "A35",
+    "title": "Road Accident",
+    "desc": "Motorbike collision, bystanders helping, and traffic police",
+    "category": "Emergency & Safety",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A36_PostOffice.jpg",
+    "code": "A36",
+    "title": "Post Office",
+    "desc": "Mailing parcels, buying stamps, envelopes, and weighing",
+    "category": "City & Services",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A37_Rice.jpg",
+    "code": "A37",
+    "title": "Rice & Farming",
+    "desc": "Paddy fields, planting, harvesting, and threshing rice",
+    "category": "Agriculture & Food",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A38_School.jpg",
+    "code": "A38",
+    "title": "School & Classroom",
+    "desc": "Students at desks, teacher at blackboard, lessons",
+    "category": "Education",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A39_Phone.jpg",
+    "code": "A39",
+    "title": "Using the Phone",
+    "desc": "Dialing, talking, smartphone screen, texting, charging",
+    "category": "Communication",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A40_Doctor.jpg",
+    "code": "A40",
+    "title": "Doctor & Clinic",
+    "desc": "Clinic consultation, stethoscope checkup, prescription",
+    "category": "Health & Medicine",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A41_Cleaning.jpg",
+    "code": "A41",
+    "title": "Cleaning the House",
+    "desc": "Broom sweeping, mop, dustpan, and tidying up rooms",
+    "category": "Chores & Home",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A42_Taxi.jpg",
+    "code": "A42",
+    "title": "Taking a Taxi",
+    "desc": "Flagging a cab, meter rate, traffic, and paying driver",
+    "category": "Transportation",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A43_Dentist.jpg",
+    "code": "A43",
+    "title": "Visiting the Dentist",
+    "desc": "Dental clinic, dentist examination, drill, and care",
+    "category": "Health & Medicine",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A44_OverlandBus.jpg",
+    "code": "A44",
+    "title": "Overland Bus",
+    "desc": "Bus station, luggage compartment, highway journey",
+    "category": "Travel",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A45_Geography.jpg",
+    "code": "A45",
+    "title": "Geography & Maps",
+    "desc": "Maps of Southeast Asia, compass, rivers, and terrain",
+    "category": "Places & Geography",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A47_Hotel.jpg",
+    "code": "A47",
+    "title": "Hotel & Check-in",
+    "desc": "Reception counter, room keycard, bellhop, and hotel room",
+    "category": "Travel & Lodging",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A48_Animals.jpg",
+    "code": "A48",
+    "title": "Animals",
+    "desc": "Water buffalo, dogs, cats, birds, and farm animals",
+    "category": "Nature & Animals",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A49_Tools.jpg",
+    "code": "A49",
+    "title": "Tools & Hardware",
+    "desc": "Hammer, pliers, wrench, saw, screws, and workshop",
+    "category": "Tools & Craft",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "A50_Professions.jpg",
+    "code": "A50",
+    "title": "Professions & Jobs",
+    "desc": "Vendors, drivers, carpenters, nurses, farmers, police",
+    "category": "Work & Careers",
+    "series": "A",
+    "seriesName": "Series A: Everyday Situations"
+  },
+  {
+    "file": "B01.jpg",
+    "code": "B01",
+    "title": "Action Scene 01",
+    "desc": "Sequential action and dialogue scene 01",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B02.jpg",
+    "code": "B02",
+    "title": "Action Scene 02",
+    "desc": "Sequential action and dialogue scene 02",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B03.jpg",
+    "code": "B03",
+    "title": "Action Scene 03",
+    "desc": "Sequential action and dialogue scene 03",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B04.jpg",
+    "code": "B04",
+    "title": "Action Scene 04",
+    "desc": "Sequential action and dialogue scene 04",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B05.jpg",
+    "code": "B05",
+    "title": "Action Scene 05",
+    "desc": "Sequential action and dialogue scene 05",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B06.jpg",
+    "code": "B06",
+    "title": "Action Scene 06",
+    "desc": "Sequential action and dialogue scene 06",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B07.jpg",
+    "code": "B07",
+    "title": "Action Scene 07",
+    "desc": "Sequential action and dialogue scene 07",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B08.jpg",
+    "code": "B08",
+    "title": "Action Scene 08",
+    "desc": "Sequential action and dialogue scene 08",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B09.jpg",
+    "code": "B09",
+    "title": "Action Scene 09",
+    "desc": "Sequential action and dialogue scene 09",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B10.jpg",
+    "code": "B10",
+    "title": "Action Scene 10",
+    "desc": "Sequential action and dialogue scene 10",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B11.jpg",
+    "code": "B11",
+    "title": "Action Scene 11",
+    "desc": "Sequential action and dialogue scene 11",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B12.jpg",
+    "code": "B12",
+    "title": "Action Scene 12",
+    "desc": "Sequential action and dialogue scene 12",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B13.jpg",
+    "code": "B13",
+    "title": "Action Scene 13",
+    "desc": "Sequential action and dialogue scene 13",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B14.jpg",
+    "code": "B14",
+    "title": "Action Scene 14",
+    "desc": "Sequential action and dialogue scene 14",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B15.jpg",
+    "code": "B15",
+    "title": "Action Scene 15",
+    "desc": "Sequential action and dialogue scene 15",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B16.jpg",
+    "code": "B16",
+    "title": "Action Scene 16",
+    "desc": "Sequential action and dialogue scene 16",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B17.jpg",
+    "code": "B17",
+    "title": "Action Scene 17",
+    "desc": "Sequential action and dialogue scene 17",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B18.jpg",
+    "code": "B18",
+    "title": "Action Scene 18",
+    "desc": "Sequential action and dialogue scene 18",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B19.jpg",
+    "code": "B19",
+    "title": "Action Scene 19",
+    "desc": "Sequential action and dialogue scene 19",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B20.jpg",
+    "code": "B20",
+    "title": "Action Scene 20",
+    "desc": "Sequential action and dialogue scene 20",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B21.jpg",
+    "code": "B21",
+    "title": "Action Scene 21",
+    "desc": "Sequential action and dialogue scene 21",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B22.jpg",
+    "code": "B22",
+    "title": "Action Scene 22",
+    "desc": "Sequential action and dialogue scene 22",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B23.jpg",
+    "code": "B23",
+    "title": "Action Scene 23",
+    "desc": "Sequential action and dialogue scene 23",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B24.jpg",
+    "code": "B24",
+    "title": "Action Scene 24",
+    "desc": "Sequential action and dialogue scene 24",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B25.jpg",
+    "code": "B25",
+    "title": "Action Scene 25",
+    "desc": "Sequential action and dialogue scene 25",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B26.jpg",
+    "code": "B26",
+    "title": "Action Scene 26",
+    "desc": "Sequential action and dialogue scene 26",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B27.jpg",
+    "code": "B27",
+    "title": "Action Scene 27",
+    "desc": "Sequential action and dialogue scene 27",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B28.jpg",
+    "code": "B28",
+    "title": "Action Scene 28",
+    "desc": "Sequential action and dialogue scene 28",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B29.jpg",
+    "code": "B29",
+    "title": "Action Scene 29",
+    "desc": "Sequential action and dialogue scene 29",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B30.jpg",
+    "code": "B30",
+    "title": "Action Scene 30",
+    "desc": "Sequential action and dialogue scene 30",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B31.jpg",
+    "code": "B31",
+    "title": "Action Scene 31",
+    "desc": "Sequential action and dialogue scene 31",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B32.jpg",
+    "code": "B32",
+    "title": "Action Scene 32",
+    "desc": "Sequential action and dialogue scene 32",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B33.jpg",
+    "code": "B33",
+    "title": "Action Scene 33",
+    "desc": "Sequential action and dialogue scene 33",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B34.jpg",
+    "code": "B34",
+    "title": "Action Scene 34",
+    "desc": "Sequential action and dialogue scene 34",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B35.jpg",
+    "code": "B35",
+    "title": "Action Scene 35",
+    "desc": "Sequential action and dialogue scene 35",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B36.jpg",
+    "code": "B36",
+    "title": "Action Scene 36",
+    "desc": "Sequential action and dialogue scene 36",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B37.jpg",
+    "code": "B37",
+    "title": "Action Scene 37",
+    "desc": "Sequential action and dialogue scene 37",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B38.jpg",
+    "code": "B38",
+    "title": "Action Scene 38",
+    "desc": "Sequential action and dialogue scene 38",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B39.jpg",
+    "code": "B39",
+    "title": "Action Scene 39",
+    "desc": "Sequential action and dialogue scene 39",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "B40.jpg",
+    "code": "B40",
+    "title": "Action Scene 40",
+    "desc": "Sequential action and dialogue scene 40",
+    "category": "Action Stories",
+    "series": "B",
+    "seriesName": "Series B: Action Narratives"
+  },
+  {
+    "file": "C01-04.jpg",
+    "code": "C01-04",
+    "title": "4-Panel Sequence C01-04",
+    "desc": "Four-part action sequence C01-04",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C05-08.jpg",
+    "code": "C05-08",
+    "title": "4-Panel Sequence C05-08",
+    "desc": "Four-part action sequence C05-08",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C09-12.jpg",
+    "code": "C09-12",
+    "title": "4-Panel Sequence C09-12",
+    "desc": "Four-part action sequence C09-12",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C13-16.jpg",
+    "code": "C13-16",
+    "title": "4-Panel Sequence C13-16",
+    "desc": "Four-part action sequence C13-16",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C17-20.jpg",
+    "code": "C17-20",
+    "title": "4-Panel Sequence C17-20",
+    "desc": "Four-part action sequence C17-20",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C21-24.jpg",
+    "code": "C21-24",
+    "title": "4-Panel Sequence C21-24",
+    "desc": "Four-part action sequence C21-24",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C25-28.jpg",
+    "code": "C25-28",
+    "title": "4-Panel Sequence C25-28",
+    "desc": "Four-part action sequence C25-28",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C29-32.jpg",
+    "code": "C29-32",
+    "title": "4-Panel Sequence C29-32",
+    "desc": "Four-part action sequence C29-32",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C33-36.jpg",
+    "code": "C33-36",
+    "title": "4-Panel Sequence C33-36",
+    "desc": "Four-part action sequence C33-36",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C37-40.jpg",
+    "code": "C37-40",
+    "title": "4-Panel Sequence C37-40",
+    "desc": "Four-part action sequence C37-40",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C41-44.jpg",
+    "code": "C41-44",
+    "title": "4-Panel Sequence C41-44",
+    "desc": "Four-part action sequence C41-44",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C45-48.jpg",
+    "code": "C45-48",
+    "title": "4-Panel Sequence C45-48",
+    "desc": "Four-part action sequence C45-48",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C49-52.jpg",
+    "code": "C49-52",
+    "title": "4-Panel Sequence C49-52",
+    "desc": "Four-part action sequence C49-52",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C53-56.jpg",
+    "code": "C53-56",
+    "title": "4-Panel Sequence C53-56",
+    "desc": "Four-part action sequence C53-56",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C57-60.jpg",
+    "code": "C57-60",
+    "title": "4-Panel Sequence C57-60",
+    "desc": "Four-part action sequence C57-60",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C61-64.jpg",
+    "code": "C61-64",
+    "title": "4-Panel Sequence C61-64",
+    "desc": "Four-part action sequence C61-64",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C65-68.jpg",
+    "code": "C65-68",
+    "title": "4-Panel Sequence C65-68",
+    "desc": "Four-part action sequence C65-68",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C69-72.jpg",
+    "code": "C69-72",
+    "title": "4-Panel Sequence C69-72",
+    "desc": "Four-part action sequence C69-72",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C73-76.jpg",
+    "code": "C73-76",
+    "title": "4-Panel Sequence C73-76",
+    "desc": "Four-part action sequence C73-76",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  },
+  {
+    "file": "C77-80.jpg",
+    "code": "C77-80",
+    "title": "4-Panel Sequence C77-80",
+    "desc": "Four-part action sequence C77-80",
+    "category": "4-Panel Sequences",
+    "series": "C",
+    "seriesName": "Series C: 4-Panel Sequences"
+  }
+]

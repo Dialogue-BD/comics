@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <title>Action Pictures — Southeast Asian Language Learning Materials</title>
+  <meta name="description" content="101 color action pictures from Southeast Asia for language learning. A random picture pops up every time the page is refreshed. Features pinch-to-zoom, pan, and full gallery browser.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0d0f14">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --bg: #090b10;
+      --bg-canvas: #000000;
+      --surface: rgba(20, 24, 34, 0.88);
+      --surface-elevated: #1a202c;
+      --surface-hover: rgba(36, 43, 59, 0.95);
+      --border: rgba(255, 255, 255, 0.1);
+      --border-accent: rgba(79, 126, 248, 0.4);
+      --accent: #4f7ef8;
+      --accent-hover: #3b6ae4;
+      --accent-glow: rgba(79, 126, 248, 0.25);
+      --accent-dim: rgba(79, 126, 248, 0.15);
+      --text: #f0f3fa;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --danger: #ef4444;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --radius-pill: 9999px;
+      --shadow-lg: 0 16px 40px -8px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.08);
+      --shadow-pill: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      --safe-top: env(safe-area-inset-top, 16px);
+      --safe-bottom: env(safe-area-inset-bottom, 16px);
+      --safe-left: env(safe-area-inset-left, 16px);
+      --safe-right: env(safe-area-inset-right, 16px);
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* ── VIEWPORT / CANVAS ── */
+    #viewport-container {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.25) 0%, rgba(0, 0, 0, 0.95) 100%);
+      overflow: hidden;
+      cursor: grab;
+      z-index: 1;
+    }
+
+    #viewport-container.panning {
+      cursor: grabbing;
+    }
+
+    #image-stage {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      will-change: transform;
+      transform-origin: center center;
+    }
+
+    #action-img {
+      max-width: 100vw;
+      max-height: 100vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+      border-radius: 4px;
+      transition: opacity 0.25s ease-out;
+      pointer-events: none;
+    }
+
+    #action-img.loading {
+      opacity: 0.2;
+      filter: blur(8px);
+    }
+
+    /* ── LOADING SPINNER ── */
+    #loading-indicator {
+      position: absolute;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 24px;
+      background: rgba(13, 15, 20, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-size: 0.88rem;
+      pointer-events: none;
+      transition: opacity 0.2s ease, visibility 0.2s;
+    }
+
+    #loading-indicator.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .spinner {
+      width: 28px;
+      height: 28px;
+      border: 3px solid rgba(79, 126, 248, 0.2);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── HUD / OVERLAYS ── */
+    .hud {
+      position: fixed;
+      z-index: 50;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: auto;
+    }
+
+    body.hud-hidden .hud {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+    }
+
+    body.hud-hidden .hud-top {
+      transform: translateY(-10px);
+    }
+
+    /* ── TOP HEADER HUD ── */
+    .hud-top {
+      top: calc(var(--safe-top) + 12px);
+      left: calc(var(--safe-left) + 12px);
+      right: calc(var(--safe-right) + 12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .hud-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .glass-pill {
+      background: var(--surface);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-pill);
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      outline: none;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .btn-icon {
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border-radius: 50%;
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-pill);
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    .btn-icon:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-accent);
+      color: var(--accent);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f7ef8 0%, #3b6ae4 100%);
+      color: #ffffff !important;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 16px rgba(79, 126, 248, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #5b87f9 0%, #4875ec 100%);
+      box-shadow: 0 6px 20px rgba(79, 126, 248, 0.55);
+      transform: translateY(-1px);
+    }
+
+    .btn-dice {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-dice .dice-icon {
+      font-size: 1.15rem;
+      display: inline-block;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .btn-dice:hover .dice-icon,
+    .btn-dice:active .dice-icon {
+      transform: rotate(180deg) scale(1.15);
+    }
+
+    /* ── TITLE & BADGE IN TOP HUD ── */
+    .title-pill {
+      max-width: 480px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .badge-code {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(79, 126, 248, 0.3);
+      flex-shrink: 0;
+    }
+
+    .pic-title-text {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .pic-counter {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      margin-left: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── BOTTOM FLOATING TOOLBAR HUD ── */
+    .hud-bottom {
+      bottom: calc(var(--safe-bottom) + 16px);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 10px;
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-lg);
+    }
+
+    body.hud-hidden .hud-bottom {
+      transform: translateX(-50%) translateY(16px);
+    }
+
+    .divider {
+      width: 1px;
+      height: 22px;
+      background: var(--border);
+      margin: 0 2px;
+    }
+
+    .zoom-level-text {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      min-width: 44px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .zoom-level-text:hover {
+      color: var(--accent);
+    }
+
+    /* ── FLOATING NEXT / PREV FLANK BUTTONS ── */
+    .flank-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 64px;
+      border-radius: var(--radius);
+      background: rgba(20, 24, 34, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      cursor: pointer;
+      z-index: 40;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .flank-btn:hover {
+      background: var(--surface-hover);
+      color: #ffffff;
+      border-color: var(--border-accent);
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .flank-btn:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    .flank-prev {
+      left: calc(var(--safe-left) + 12px);
+    }
+
+    .flank-next {
+      right: calc(var(--safe-right) + 12px);
+    }
+
+    body.hud-hidden .flank-btn {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ── TOAST NOTIFICATION ── */
+    #toast {
+      position: fixed;
+      top: calc(var(--safe-top) + 70px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background: rgba(16, 20, 30, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--accent);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-glow);
+      color: var(--text);
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    #toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── FULL GALLERY MODAL / DRAWER ── */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, visibility 0.25s;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    @media (min-width: 768px) {
+      .modal-backdrop {
+        align-items: center;
+        padding: 24px;
+      }
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: #11141c;
+      border: 1px solid var(--border);
+      border-radius: 24px 24px 0 0;
+      width: 100%;
+      max-width: 1100px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(40px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .modal-card {
+        border-radius: 20px;
+        height: 85vh;
+        transform: translateY(20px) scale(0.98);
+      }
+    }
+
+    .modal-backdrop.open .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .modal-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-title span {
+      font-size: 0.8rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+    }
+
+    .modal-controls {
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.2);
+      flex-shrink: 0;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: #181d28;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.88rem;
+      padding: 8px 14px 8px 36px;
+      border-radius: var(--radius-pill);
+      outline: none;
+      transition: border-color 0.18s, box-shadow 0.18s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .search-box .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      pointer-events: none;
+    }
+
+    .filter-tabs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .filter-tab {
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .filter-tab:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+    }
+
+    .filter-tab.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 24px 32px;
+      touch-action: pan-y;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 18px;
+      }
+    }
+
+    .thumb-card {
+      background: #181d28;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .thumb-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .thumb-card.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent), 0 8px 24px var(--accent-glow);
+    }
+
+    .thumb-img-wrap {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #090b10;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thumb-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .thumb-card:hover .thumb-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .thumb-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: rgba(13, 15, 20, 0.85);
+      backdrop-filter: blur(8px);
+      color: var(--accent);
+      border: 1px solid rgba(79, 126, 248, 0.3);
+    }
+
+    .thumb-active-indicator {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: var(--accent);
+      color: #ffffff;
+      display: none;
+    }
+
+    .thumb-card.active .thumb-active-indicator {
+      display: block;
+    }
+
+    .thumb-info {
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .thumb-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .thumb-desc {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+
+    .no-results-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      opacity: 0.6;
+    }
+
+    /* ── HELP / SHORTCUTS MODAL ── */
+    .help-card {
+      max-width: 520px;
+    }
+
+    .help-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .help-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+
+    .help-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .kbd {
+      font-family: monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #1e2433;
+      color: var(--accent);
+      padding: 3px 7px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ── RESPONSIVE TWEAKS ── */
+    @media (max-width: 640px) {
+      .hud-top {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .hud-top-row1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .title-pill {
+        width: 100%;
+        justify-content: center;
+      }
+      .hud-bottom {
+        gap: 6px;
+        padding: 5px 8px;
+      }
+      .flank-btn {
+        width: 38px;
+        height: 52px;
+        font-size: 1.1rem;
+      }
+      .hide-mobile {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VIEWPORT / INTERACTIVE CANVAS -->
+  <div id="viewport-container">
+    <div id="image-stage">
+      <img id="action-img" src="" alt="Color Action Picture" class="loading">
+    </div>
+
+    <!-- SPINNER -->
+    <div id="loading-indicator">
+      <div class="spinner"></div>
+      <span id="loading-text">Loading Picture...</span>
+    </div>
+  </div>
+
+  <!-- TOP HEADER HUD -->
+  <header class="hud hud-top">
+    <div class="hud-top-row1">
+      <div class="hud-group">
+        <a href="/" class="btn glass-pill" title="Back to All Visual Stories &amp; Activities">
+          <span style="font-size:1.1rem;">←</span>
+          <span class="hide-mobile">Hub</span>
+        </a>
+        <button id="btn-gallery-top" class="btn glass-pill" title="Open full 101-picture gallery (G)">
+          <span>▦</span>
+          <span>Gallery</span>
+        </button>
+      </div>
+
+      <div class="hud-group">
+        <button id="btn-random-top" class="btn btn-primary btn-dice" title="Show random action picture (R or Refresh)">
+          <span class="dice-icon">🎲</span>
+          <span>Random Picture</span>
+        </button>
+        <button id="btn-info" class="btn btn-icon" title="Keyboard Shortcuts &amp; Info (?)">
+          ℹ
+        </button>
+      </div>
+    </div>
+
+    <div class="glass-pill title-pill" id="title-pill" title="Click to open gallery">
+      <span class="badge-code" id="pic-code">A01</span>
+      <span class="pic-title-text" id="pic-title">Noodle Soup</span>
+      <span class="pic-counter" id="pic-counter">(1 of 101)</span>
+    </div>
+  </header>
+
+  <!-- FLANKING PREV / NEXT BUTTONS -->
+  <button id="btn-prev-flank" class="flank-btn flank-prev" title="Previous Picture (← Arrow Left)">‹</button>
+  <button id="btn-next-flank" class="flank-btn flank-next" title="Next Picture (→ Arrow Right)">›</button>
+
+  <!-- BOTTOM FLOATING TOOLBAR HUD -->
+  <footer class="hud hud-bottom">
+    <button id="btn-prev" class="btn btn-icon" title="Previous Picture (←)">‹</button>
+    <button id="btn-random" class="btn btn-primary btn-dice" title="New Random Picture (R)">
+      <span class="dice-icon">🎲</span>
+      <span class="hide-mobile">Random</span>
+    </button>
+    <button id="btn-next" class="btn btn-icon" title="Next Picture (→)">›</button>
+
+    <div class="divider"></div>
+
+    <button id="btn-zoom-out" class="btn btn-icon" title="Zoom Out (-)">−</button>
+    <span id="zoom-level" class="zoom-level-text" title="Click to Reset Zoom (0)">100%</span>
+    <button id="btn-zoom-in" class="btn btn-icon" title="Zoom In (+)">+</button>
+
+    <div class="divider"></div>
+
+    <button id="btn-fullscreen" class="btn btn-icon" title="Toggle Fullscreen (F)">⛶</button>
+  </footer>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast">
+    <span id="toast-icon">🎲</span>
+    <span id="toast-message">Random Picture Selected</span>
+  </div>
+
+  <!-- FULL GALLERY MODAL -->
+  <div id="gallery-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">
+          🎬 Action Pictures
+          <span id="gallery-total-badge">101 Pictures</span>
+        </div>
+        <button id="modal-close" class="btn btn-icon" title="Close Gallery (Esc)">✕</button>
+      </div>
+
+      <div class="modal-controls">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="gallery-search" placeholder="Search by name, topic, or code (e.g. soup, taxi, B12)..." autocomplete="off">
+        </div>
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all">All (101)</button>
+          <button class="filter-tab" data-filter="A">Series A: Everyday (41)</button>
+          <button class="filter-tab" data-filter="B">Series B: Actions (40)</button>
+          <button class="filter-tab" data-filter="C">Series C: 4-Panel (20)</button>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div id="gallery-grid" class="gallery-grid">
+          <!-- Thumbnail cards rendered via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHORTCUTS & INFO MODAL -->
+  <div id="help-modal" class="modal-backdrop">
+    <div class="modal-card help-card">
+      <div class="modal-header">
+        <div class="modal-title">💡 Controls &amp; Gestures</div>
+        <button id="help-close" class="btn btn-icon" title="Close (Esc)">✕</button>
+      </div>
+      <div class="modal-body" style="padding-top:16px;">
+        <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5;">
+          A random picture is automatically loaded each time you refresh. Use the controls below to navigate, zoom, and inspect any scene.
+        </p>
+
+        <div class="help-grid">
+          <div class="help-item">
+            <span class="help-label">New Random Picture</span>
+            <span class="kbd">R</span>
+          </div>
+          <div class="help-item">
+            <span class="help-label">Next Picture</span>
+            <span class="kbd">→ / Space</span>
+          </div>
+          <div class="help-item">
+            <span class="help-label">Previous Picture</span>
+            <span class="kbd">←</span>
+          </div>
+          <div class="help-item">
+            <span class="help-label">Open Full Gallery</span>
+            <span class="kbd">G</span>
+          </div>
+          <div class="help-item">
+            <span class="help-label">Zoom In / Out</span>
+            <span class="kbd">+ / −</span>
+          </div>
+          <div class="help-item">
+            <span class="help-label">Reset Zoom</span>
+            <span class="kbd">0 / Esc</span>
+          </div>
+          <div class="help-item">
+            <span class="help-label">Toggle Fullscreen</span>
+            <span class="kbd">F</span>
+          </div>
+          <div class="help-item">
+            <span class="help-label">Pinch / Drag Zoom</span>
+            <span class="kbd">Touch / Wheel</span>
+          </div>
+          <div class="help-item">
+            <span class="help-label">Toggle Zoom (1x ↔ 2.5x)</span>
+            <span class="kbd">Double Tap</span>
+          </div>
+          <div class="help-item">
+            <span class="help-label">Hide / Show HUD</span>
+            <span class="kbd">Single Tap</span>
+          </div>
+        </div>
+
+        <div style="margin-top:20px; padding:12px; background:rgba(79,126,248,0.08); border-radius:var(--radius-sm); border:1px solid rgba(79,126,248,0.2);">
+          <div style="font-size:0.8rem; font-weight:700; color:var(--accent); margin-bottom:4px;">Language Learning Materials</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); line-height:1.45;">
+            Color action pictures set in Southeast Asia (Thailand, Cambodia, Laos, Vietnam), designed for language acquisition, story reconstruction, and communicative fluency.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── 101 ACTION PICTURE CATALOG ──
+    const CATALOG = [
+      {"file": "A01_NoodleSoup.jpg", "code": "A01", "title": "Noodle Soup", "desc": "Eating at a noodle stall in Southeast Asia", "category": "Everyday Life", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A02_ShoppingForTShirt.jpg", "code": "A02", "title": "Shopping for a T-Shirt", "desc": "Buying clothes and bargaining at a market stall", "category": "Everyday Life", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A04_RainySeason.jpg", "code": "A04", "title": "Rainy Season", "desc": "Monsoon rain, umbrellas, and wet city streets", "category": "Weather & Seasons", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A05_MotorcycleTaxi.jpg", "code": "A05", "title": "Motorcycle Taxi", "desc": "Taking a motorbike taxi through city traffic", "category": "Transportation", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A06_GoingToBed.jpg", "code": "A06", "title": "Going to Bed", "desc": "Bedtime routine, bedroom, and settling in for sleep", "category": "Daily Routine", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A07_CoffeeSoftDrink.jpg", "code": "A07", "title": "Coffee & Soft Drink", "desc": "Cafe orders, iced coffee, drinks, and snacks", "category": "Food & Drink", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A08_BreakingABowl.jpg", "code": "A08", "title": "Breaking a Bowl", "desc": "Dropping a dish and cleaning up broken pieces", "category": "Everyday Accidents", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A09_GrilledFish.jpg", "code": "A09", "title": "Grilled Fish", "desc": "Preparing, grilling over coals, and enjoying fish", "category": "Food & Cooking", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A10_CuttingFinger.jpg", "code": "A10", "title": "Cutting Finger", "desc": "Kitchen knife mishap, bleeding, and first aid bandage", "category": "Health & Safety", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A11_ATM.jpg", "code": "A11", "title": "Using the ATM", "desc": "Inserting bank card, entering PIN, and withdrawing cash", "category": "City & Services", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A13_GettingUpWork.jpg", "code": "A13", "title": "Getting Up for Work", "desc": "Morning alarm, waking up, and morning routine", "category": "Daily Routine", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A14_ColdSeason.jpg", "code": "A14", "title": "Cold Season", "desc": "Cooler weather, jackets, warm clothes, and morning mist", "category": "Weather & Seasons", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A15_FriedRice.jpg", "code": "A15", "title": "Fried Rice", "desc": "Wok cooking, ingredients, and eating fried rice", "category": "Food & Cooking", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A16_Pickpocket.jpg", "code": "A16", "title": "Pickpocket", "desc": "Street thief snatching a wallet in a crowded place", "category": "City Situations", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A17_Laundry.jpg", "code": "A17", "title": "Doing Laundry", "desc": "Washing by hand or machine, rinsing, and hanging to dry", "category": "Chores & Home", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A18_Tuktuk.jpg", "code": "A18", "title": "Taking a Tuk-Tuk", "desc": "Hailing and riding a three-wheel auto rickshaw", "category": "Transportation", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A19_Airplane.jpg", "code": "A19", "title": "Airplane Trip", "desc": "Airport terminal, boarding gate, luggage, and flying", "category": "Travel", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A20_FoodPoisoning.jpg", "code": "A20", "title": "Food Poisoning", "desc": "Stomach ache after street food, nausea, and recovery", "category": "Health & Illness", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A21_Cinema.jpg", "code": "A21", "title": "Going to the Cinema", "desc": "Buying movie tickets, popcorn, and watching the film", "category": "Entertainment", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A24_Haircut.jpg", "code": "A24", "title": "Getting a Haircut", "desc": "Barbershop chair, scissors, cape, and styling", "category": "Personal Care", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A25_Exercise.jpg", "code": "A25", "title": "Exercise & Workout", "desc": "Jogging in the park, stretching, and staying active", "category": "Sports & Health", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A26_HavingACold.jpg", "code": "A26", "title": "Having a Cold", "desc": "Fever, thermometer, sneezing, tissues, and resting", "category": "Health & Illness", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A27_NightTrain.jpg", "code": "A27", "title": "Night Train", "desc": "Train platform, sleeper berths, ticket check, and journey", "category": "Travel", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A31_Boats.jpg", "code": "A31", "title": "Boats & River Travel", "desc": "River ferries, longtail boats, docks, and river life", "category": "Transportation", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A33_DoingTheDishes.jpg", "code": "A33", "title": "Doing the Dishes", "desc": "Dish soap, sponge, scrubbing plates, and drying rack", "category": "Chores & Home", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A34_PersonalHygiene.jpg", "code": "A34", "title": "Personal Hygiene", "desc": "Brushing teeth, washing face, bathing, and grooming", "category": "Daily Routine", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A35_Accident.jpg", "code": "A35", "title": "Road Accident", "desc": "Motorbike collision, bystanders helping, and traffic police", "category": "Emergency & Safety", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A36_PostOffice.jpg", "code": "A36", "title": "Post Office", "desc": "Mailing parcels, buying stamps, envelopes, and weighing", "category": "City & Services", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A37_Rice.jpg", "code": "A37", "title": "Rice & Farming", "desc": "Paddy fields, planting, harvesting, and threshing rice", "category": "Agriculture & Food", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A38_School.jpg", "code": "A38", "title": "School & Classroom", "desc": "Students at desks, teacher at blackboard, lessons", "category": "Education", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A39_Phone.jpg", "code": "A39", "title": "Using the Phone", "desc": "Dialing, talking, smartphone screen, texting, charging", "category": "Communication", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A40_Doctor.jpg", "code": "A40", "title": "Doctor & Clinic", "desc": "Clinic consultation, stethoscope checkup, prescription", "category": "Health & Medicine", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A41_Cleaning.jpg", "code": "A41", "title": "Cleaning the House", "desc": "Broom sweeping, mop, dustpan, and tidying up rooms", "category": "Chores & Home", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A42_Taxi.jpg", "code": "A42", "title": "Taking a Taxi", "desc": "Flagging a cab, meter rate, traffic, and paying driver", "category": "Transportation", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A43_Dentist.jpg", "code": "A43", "title": "Visiting the Dentist", "desc": "Dental clinic, dentist examination, drill, and care", "category": "Health & Medicine", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A44_OverlandBus.jpg", "code": "A44", "title": "Overland Bus", "desc": "Bus station, luggage compartment, highway journey", "category": "Travel", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A45_Geography.jpg", "code": "A45", "title": "Geography & Maps", "desc": "Maps of Southeast Asia, compass, rivers, and terrain", "category": "Places & Geography", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A47_Hotel.jpg", "code": "A47", "title": "Hotel & Check-in", "desc": "Reception counter, room keycard, bellhop, and hotel room", "category": "Travel & Lodging", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A48_Animals.jpg", "code": "A48", "title": "Animals", "desc": "Water buffalo, dogs, cats, birds, and farm animals", "category": "Nature & Animals", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A49_Tools.jpg", "code": "A49", "title": "Tools & Hardware", "desc": "Hammer, pliers, wrench, saw, screws, and workshop", "category": "Tools & Craft", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "A50_Professions.jpg", "code": "A50", "title": "Professions & Jobs", "desc": "Vendors, drivers, carpenters, nurses, farmers, police", "category": "Work & Careers", "series": "A", "seriesName": "Series A: Everyday Situations"},
+      {"file": "B01.jpg", "code": "B01", "title": "Action Scene 01", "desc": "Sequential action and dialogue scene 01", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B02.jpg", "code": "B02", "title": "Action Scene 02", "desc": "Sequential action and dialogue scene 02", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B03.jpg", "code": "B03", "title": "Action Scene 03", "desc": "Sequential action and dialogue scene 03", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B04.jpg", "code": "B04", "title": "Action Scene 04", "desc": "Sequential action and dialogue scene 04", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B05.jpg", "code": "B05", "title": "Action Scene 05", "desc": "Sequential action and dialogue scene 05", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B06.jpg", "code": "B06", "title": "Action Scene 06", "desc": "Sequential action and dialogue scene 06", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B07.jpg", "code": "B07", "title": "Action Scene 07", "desc": "Sequential action and dialogue scene 07", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B08.jpg", "code": "B08", "title": "Action Scene 08", "desc": "Sequential action and dialogue scene 08", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B09.jpg", "code": "B09", "title": "Action Scene 09", "desc": "Sequential action and dialogue scene 09", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B10.jpg", "code": "B10", "title": "Action Scene 10", "desc": "Sequential action and dialogue scene 10", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B11.jpg", "code": "B11", "title": "Action Scene 11", "desc": "Sequential action and dialogue scene 11", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B12.jpg", "code": "B12", "title": "Action Scene 12", "desc": "Sequential action and dialogue scene 12", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B13.jpg", "code": "B13", "title": "Action Scene 13", "desc": "Sequential action and dialogue scene 13", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B14.jpg", "code": "B14", "title": "Action Scene 14", "desc": "Sequential action and dialogue scene 14", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B15.jpg", "code": "B15", "title": "Action Scene 15", "desc": "Sequential action and dialogue scene 15", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B16.jpg", "code": "B16", "title": "Action Scene 16", "desc": "Sequential action and dialogue scene 16", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B17.jpg", "code": "B17", "title": "Action Scene 17", "desc": "Sequential action and dialogue scene 17", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B18.jpg", "code": "B18", "title": "Action Scene 18", "desc": "Sequential action and dialogue scene 18", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B19.jpg", "code": "B19", "title": "Action Scene 19", "desc": "Sequential action and dialogue scene 19", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B20.jpg", "code": "B20", "title": "Action Scene 20", "desc": "Sequential action and dialogue scene 20", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B21.jpg", "code": "B21", "title": "Action Scene 21", "desc": "Sequential action and dialogue scene 21", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B22.jpg", "code": "B22", "title": "Action Scene 22", "desc": "Sequential action and dialogue scene 22", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B23.jpg", "code": "B23", "title": "Action Scene 23", "desc": "Sequential action and dialogue scene 23", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B24.jpg", "code": "B24", "title": "Action Scene 24", "desc": "Sequential action and dialogue scene 24", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B25.jpg", "code": "B25", "title": "Action Scene 25", "desc": "Sequential action and dialogue scene 25", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B26.jpg", "code": "B26", "title": "Action Scene 26", "desc": "Sequential action and dialogue scene 26", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B27.jpg", "code": "B27", "title": "Action Scene 27", "desc": "Sequential action and dialogue scene 27", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B28.jpg", "code": "B28", "title": "Action Scene 28", "desc": "Sequential action and dialogue scene 28", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B29.jpg", "code": "B29", "title": "Action Scene 29", "desc": "Sequential action and dialogue scene 29", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B30.jpg", "code": "B30", "title": "Action Scene 30", "desc": "Sequential action and dialogue scene 30", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B31.jpg", "code": "B31", "title": "Action Scene 31", "desc": "Sequential action and dialogue scene 31", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B32.jpg", "code": "B32", "title": "Action Scene 32", "desc": "Sequential action and dialogue scene 32", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B33.jpg", "code": "B33", "title": "Action Scene 33", "desc": "Sequential action and dialogue scene 33", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B34.jpg", "code": "B34", "title": "Action Scene 34", "desc": "Sequential action and dialogue scene 34", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B35.jpg", "code": "B35", "title": "Action Scene 35", "desc": "Sequential action and dialogue scene 35", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B36.jpg", "code": "B36", "title": "Action Scene 36", "desc": "Sequential action and dialogue scene 36", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B37.jpg", "code": "B37", "title": "Action Scene 37", "desc": "Sequential action and dialogue scene 37", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B38.jpg", "code": "B38", "title": "Action Scene 38", "desc": "Sequential action and dialogue scene 38", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B39.jpg", "code": "B39", "title": "Action Scene 39", "desc": "Sequential action and dialogue scene 39", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "B40.jpg", "code": "B40", "title": "Action Scene 40", "desc": "Sequential action and dialogue scene 40", "category": "Action Stories", "series": "B", "seriesName": "Series B: Action Narratives"},
+      {"file": "C01-04.jpg", "code": "C01-04", "title": "4-Panel Sequence C01-04", "desc": "Four-part action sequence C01-04", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C05-08.jpg", "code": "C05-08", "title": "4-Panel Sequence C05-08", "desc": "Four-part action sequence C05-08", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C09-12.jpg", "code": "C09-12", "title": "4-Panel Sequence C09-12", "desc": "Four-part action sequence C09-12", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C13-16.jpg", "code": "C13-16", "title": "4-Panel Sequence C13-16", "desc": "Four-part action sequence C13-16", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C17-20.jpg", "code": "C17-20", "title": "4-Panel Sequence C17-20", "desc": "Four-part action sequence C17-20", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C21-24.jpg", "code": "C21-24", "title": "4-Panel Sequence C21-24", "desc": "Four-part action sequence C21-24", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C25-28.jpg", "code": "C25-28", "title": "4-Panel Sequence C25-28", "desc": "Four-part action sequence C25-28", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C29-32.jpg", "code": "C29-32", "title": "4-Panel Sequence C29-32", "desc": "Four-part action sequence C29-32", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C33-36.jpg", "code": "C33-36", "title": "4-Panel Sequence C33-36", "desc": "Four-part action sequence C33-36", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C37-40.jpg", "code": "C37-40", "title": "4-Panel Sequence C37-40", "desc": "Four-part action sequence C37-40", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C41-44.jpg", "code": "C41-44", "title": "4-Panel Sequence C41-44", "desc": "Four-part action sequence C41-44", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C45-48.jpg", "code": "C45-48", "title": "4-Panel Sequence C45-48", "desc": "Four-part action sequence C45-48", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C49-52.jpg", "code": "C49-52", "title": "4-Panel Sequence C49-52", "desc": "Four-part action sequence C49-52", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C53-56.jpg", "code": "C53-56", "title": "4-Panel Sequence C53-56", "desc": "Four-part action sequence C53-56", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C57-60.jpg", "code": "C57-60", "title": "4-Panel Sequence C57-60", "desc": "Four-part action sequence C57-60", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C61-64.jpg", "code": "C61-64", "title": "4-Panel Sequence C61-64", "desc": "Four-part action sequence C61-64", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C65-68.jpg", "code": "C65-68", "title": "4-Panel Sequence C65-68", "desc": "Four-part action sequence C65-68", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C69-72.jpg", "code": "C69-72", "title": "4-Panel Sequence C69-72", "desc": "Four-part action sequence C69-72", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C73-76.jpg", "code": "C73-76", "title": "4-Panel Sequence C73-76", "desc": "Four-part action sequence C73-76", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"},
+      {"file": "C77-80.jpg", "code": "C77-80", "title": "4-Panel Sequence C77-80", "desc": "Four-part action sequence C77-80", "category": "4-Panel Sequences", "series": "C", "seriesName": "Series C: 4-Panel Sequences"}
+    ];
+
+    // ── STATE ──
+    let currentIndex = 0;
+    let scale = 1;
+    let posX = 0, posY = 0;
+    let baseScale = 1;
+    let basePosX = 0, basePosY = 0;
+    let isPinching = false;
+    let activeTouch = false;
+    let initDist = 0;
+    let initMidX = 0, initMidY = 0;
+    let startX = 0, startY = 0;
+    let isMouseDown = false;
+    let mouseStartX = 0, mouseStartY = 0;
+    let touchStartTime = 0;
+    let startTouchX = 0, startTouchY = 0;
+    let isGesture = false;
+    let lastTap = 0;
+    let activeFilter = 'all';
+    let currentSearchTerm = '';
+    let isHudVisible = true;
+    let toastTimeout = null;
+
+    // DOM Elements
+    const imgStage = document.getElementById('image-stage');
+    const actionImg = document.getElementById('action-img');
+    const loadingIndicator = document.getElementById('loading-indicator');
+    const picCode = document.getElementById('pic-code');
+    const picTitle = document.getElementById('pic-title');
+    const picCounter = document.getElementById('pic-counter');
+    const zoomLevelText = document.getElementById('zoom-level');
+    const viewportContainer = document.getElementById('viewport-container');
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-message');
+    const toastIcon = document.getElementById('toast-icon');
+
+    // Modals
+    const galleryModal = document.getElementById('gallery-modal');
+    const galleryGrid = document.getElementById('gallery-grid');
+    const gallerySearch = document.getElementById('gallery-search');
+    const helpModal = document.getElementById('help-modal');
+
+    // ── INITIALIZATION ──
+    function init() {
+      // Check URL parameters / hash for direct link
+      const urlParams = new URLSearchParams(window.location.search);
+      const requestedFile = urlParams.get('img') || window.location.hash.replace('#', '');
+      
+      let initialIndex = -1;
+      if (requestedFile) {
+        initialIndex = CATALOG.findIndex(item => 
+          item.file === requestedFile || 
+          item.code.toLowerCase() === requestedFile.toLowerCase() ||
+          item.file.toLowerCase().startsWith(requestedFile.toLowerCase())
+        );
+      }
+
+      // Default behavior: ALWAYS select a RANDOM picture on load/refresh!
+      if (initialIndex === -1) {
+        initialIndex = Math.floor(Math.random() * CATALOG.length);
+      }
+
+      loadPicture(initialIndex, false);
+      renderGallery();
+      setupEventListeners();
+    }
+
+    // ── LOAD PICTURE ──
+    function loadPicture(index, notifyUser = true) {
+      if (index < 0) index = CATALOG.length - 1;
+      if (index >= CATALOG.length) index = 0;
+
+      currentIndex = index;
+      const item = CATALOG[currentIndex];
+
+      // Show loader
+      loadingIndicator.classList.remove('hidden');
+      actionImg.classList.add('loading');
+
+      // Reset zoom
+      resetZoom(false);
+
+      // Preload image
+      const tempImg = new Image();
+      tempImg.onload = () => {
+        actionImg.src = `images/${item.file}`;
+        actionImg.classList.remove('loading');
+        loadingIndicator.classList.add('hidden');
+      };
+      tempImg.onerror = () => {
+        actionImg.src = `images/${item.file}`;
+        actionImg.classList.remove('loading');
+        loadingIndicator.classList.add('hidden');
+      };
+      tempImg.src = `images/${item.file}`;
+
+      // Update UI metadata
+      picCode.textContent = item.code;
+      picTitle.textContent = item.title;
+      picCounter.textContent = `(${currentIndex + 1} of ${CATALOG.length})`;
+      document.title = `${item.code}: ${item.title} — Action Pictures`;
+
+      // Update active state in gallery
+      updateActiveGalleryCard();
+
+      // Preload next and previous images
+      preloadAdjacentImages();
+
+      if (notifyUser) {
+        showToast('🎲', `${item.code}: ${item.title}`);
+      }
+    }
+
+    function preloadAdjacentImages() {
+      const nextIdx = (currentIndex + 1) % CATALOG.length;
+      const prevIdx = (currentIndex - 1 + CATALOG.length) % CATALOG.length;
+      const img1 = new Image();
+      img1.src = `images/${CATALOG[nextIdx].file}`;
+      const img2 = new Image();
+      img2.src = `images/${CATALOG[prevIdx].file}`;
+    }
+
+    function showRandomPicture() {
+      let nextIndex = Math.floor(Math.random() * CATALOG.length);
+      if (CATALOG.length > 1 && nextIndex === currentIndex) {
+        nextIndex = (nextIndex + 1) % CATALOG.length;
+      }
+      loadPicture(nextIndex, true);
+    }
+
+    function showToast(icon, message) {
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastIcon.textContent = icon;
+      toastMsg.textContent = message;
+      toast.classList.add('show');
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
+    // ── TRANSFORM / ZOOM LOGIC ──
+    function updateTransform() {
+      imgStage.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
+      zoomLevelText.textContent = `${Math.round(scale * 100)}%`;
+      if (scale > 1) {
+        viewportContainer.style.cursor = isMouseDown ? 'grabbing' : 'grab';
+      } else {
+        viewportContainer.style.cursor = 'default';
+      }
+    }
+
+    function resetZoom(animate = true) {
+      if (animate) {
+        imgStage.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+        setTimeout(() => { imgStage.style.transition = ''; }, 250);
+      }
+      scale = 1;
+      posX = 0;
+      posY = 0;
+      updateTransform();
+    }
+
+    function setZoom(newScale, targetX = window.innerWidth / 2, targetY = window.innerHeight / 2) {
+      newScale = Math.max(1, Math.min(5, newScale));
+      if (newScale === scale) return;
+
+      const newPosX = targetX - window.innerWidth / 2 - (newScale / scale) * (targetX - window.innerWidth / 2 - posX);
+      const newPosY = targetY - window.innerHeight / 2 - (newScale / scale) * (targetY - window.innerHeight / 2 - posY);
+
+      const maxPanX = (newScale - 1) * window.innerWidth / 2;
+      const maxPanY = (newScale - 1) * window.innerHeight / 2;
+
+      posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+      posY = Math.min(maxPanY, Math.max(-maxPanY, newPosY));
+      scale = newScale;
+
+      if (scale === 1) {
+        posX = 0;
+        posY = 0;
+      }
+      updateTransform();
+    }
+
+    function toggleZoom(clientX = window.innerWidth / 2, clientY = window.innerHeight / 2) {
+      imgStage.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+      setTimeout(() => { imgStage.style.transition = ''; }, 250);
+      if (scale > 1.2) {
+        resetZoom();
+      } else {
+        setZoom(2.4, clientX, clientY);
+      }
+    }
+
+    function toggleHUD() {
+      isHudVisible = !isHudVisible;
+      document.body.classList.toggle('hud-hidden', !isHudVisible);
+    }
+
+    function toggleFullscreen() {
+      const isFullscreen = document.fullscreenElement || 
+                           document.webkitFullscreenElement || 
+                           document.mozFullScreenElement || 
+                           document.msFullscreenElement;
+      if (isFullscreen) {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      } else {
+        const docElm = document.documentElement;
+        if (docElm.requestFullscreen) docElm.requestFullscreen();
+        else if (docElm.webkitRequestFullscreen) docElm.webkitRequestFullscreen();
+      }
+    }
+
+    // ── GALLERY RENDERING ──
+    function renderGallery() {
+      const filtered = CATALOG.filter(item => {
+        const matchesFilter = (activeFilter === 'all') || (item.series === activeFilter);
+        const term = currentSearchTerm.toLowerCase().trim();
+        const matchesSearch = !term || 
+          item.code.toLowerCase().includes(term) ||
+          item.title.toLowerCase().includes(term) ||
+          item.desc.toLowerCase().includes(term) ||
+          item.category.toLowerCase().includes(term);
+        return matchesFilter && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        galleryGrid.innerHTML = `
+          <div class="no-results">
+            <div class="no-results-icon">🔍</div>
+            <div style="font-weight:600; font-size:1rem; margin-bottom:4px;">No matching pictures</div>
+            <div style="font-size:0.8rem;">Try searching for another keyword or change the category filter.</div>
+          </div>
+        `;
+        return;
+      }
+
+      galleryGrid.innerHTML = filtered.map((item) => {
+        const isCurrent = item.file === CATALOG[currentIndex].file;
+        return `
+          <div class="thumb-card ${isCurrent ? 'active' : ''}" data-file="${item.file}">
+            <div class="thumb-img-wrap">
+              <img src="images/${item.file}" alt="${item.title}" loading="lazy">
+              <span class="thumb-badge">${item.code}</span>
+              <span class="thumb-active-indicator">CURRENT</span>
+            </div>
+            <div class="thumb-info">
+              <div class="thumb-title">${item.title}</div>
+              <div class="thumb-desc">${item.desc}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Attach click listeners to cards
+      galleryGrid.querySelectorAll('.thumb-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const file = card.getAttribute('data-file');
+          const idx = CATALOG.findIndex(it => it.file === file);
+          if (idx !== -1) {
+            loadPicture(idx, true);
+            closeGallery();
+          }
+        });
+      });
+    }
+
+    function updateActiveGalleryCard() {
+      const currentFile = CATALOG[currentIndex].file;
+      document.querySelectorAll('.thumb-card').forEach(card => {
+        if (card.getAttribute('data-file') === currentFile) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    }
+
+    function openGallery() {
+      galleryModal.classList.add('open');
+      gallerySearch.value = '';
+      currentSearchTerm = '';
+      renderGallery();
+      setTimeout(() => {
+        const activeCard = galleryGrid.querySelector('.thumb-card.active');
+        if (activeCard) {
+          activeCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+    }
+
+    function closeGallery() {
+      galleryModal.classList.remove('open');
+    }
+
+    function openHelp() {
+      helpModal.classList.add('open');
+    }
+
+    function closeHelp() {
+      helpModal.classList.remove('open');
+    }
+
+    // ── EVENT LISTENERS ──
+    function setupEventListeners() {
+      // 1. Buttons
+      document.getElementById('btn-random').addEventListener('click', showRandomPicture);
+      document.getElementById('btn-random-top').addEventListener('click', showRandomPicture);
+      
+      document.getElementById('btn-prev').addEventListener('click', () => loadPicture(currentIndex - 1, true));
+      document.getElementById('btn-prev-flank').addEventListener('click', () => loadPicture(currentIndex - 1, true));
+      
+      document.getElementById('btn-next').addEventListener('click', () => loadPicture(currentIndex + 1, true));
+      document.getElementById('btn-next-flank').addEventListener('click', () => loadPicture(currentIndex + 1, true));
+
+      document.getElementById('btn-zoom-in').addEventListener('click', () => setZoom(scale * 1.35));
+      document.getElementById('btn-zoom-out').addEventListener('click', () => setZoom(scale / 1.35));
+      zoomLevelText.addEventListener('click', () => resetZoom());
+
+      document.getElementById('btn-fullscreen').addEventListener('click', toggleFullscreen);
+
+      document.getElementById('btn-gallery-top').addEventListener('click', openGallery);
+      document.getElementById('title-pill').addEventListener('click', openGallery);
+      document.getElementById('modal-close').addEventListener('click', closeGallery);
+      galleryModal.addEventListener('click', (e) => {
+        if (e.target === galleryModal) closeGallery();
+      });
+
+      document.getElementById('btn-info').addEventListener('click', openHelp);
+      document.getElementById('help-close').addEventListener('click', closeHelp);
+      helpModal.addEventListener('click', (e) => {
+        if (e.target === helpModal) closeHelp();
+      });
+
+      // Filter tabs in gallery
+      document.querySelectorAll('.filter-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          activeFilter = tab.getAttribute('data-filter');
+          renderGallery();
+        });
+      });
+
+      // Search input in gallery
+      gallerySearch.addEventListener('input', (e) => {
+        currentSearchTerm = e.target.value;
+        renderGallery();
+      });
+
+      // 2. Keyboard shortcuts
+      window.addEventListener('keydown', (e) => {
+        // If typing in search box, ignore navigation keys
+        if (document.activeElement === gallerySearch) {
+          if (e.key === 'Escape') closeGallery();
+          return;
+        }
+
+        if (e.key === 'Escape') {
+          if (galleryModal.classList.contains('open')) closeGallery();
+          else if (helpModal.classList.contains('open')) closeHelp();
+          else resetZoom();
+        } else if (e.key === 'r' || e.key === 'R') {
+          showRandomPicture();
+        } else if (e.key === 'ArrowRight' || e.key === ' ') {
+          e.preventDefault();
+          loadPicture(currentIndex + 1, true);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          loadPicture(currentIndex - 1, true);
+        } else if (e.key === 'g' || e.key === 'G') {
+          if (galleryModal.classList.contains('open')) closeGallery();
+          else openGallery();
+        } else if (e.key === 'f' || e.key === 'F') {
+          toggleFullscreen();
+        } else if (e.key === '+' || e.key === '=') {
+          setZoom(scale * 1.3);
+        } else if (e.key === '-' || e.key === '_') {
+          setZoom(scale / 1.3);
+        } else if (e.key === '0') {
+          resetZoom();
+        } else if (e.key === '?' || e.key === 'h' || e.key === 'H' || e.key === 'i') {
+          if (helpModal.classList.contains('open')) closeHelp();
+          else openHelp();
+        }
+      });
+
+      // 3. Touch Gestures (Pinch to zoom, pan, tap, double tap)
+      document.body.addEventListener('touchstart', (e) => {
+        if (e.target.closest('.hud') || e.target.closest('.modal-backdrop') || e.target.closest('.flank-btn')) return;
+
+        activeTouch = true;
+        if (e.touches.length === 2) {
+          isPinching = true;
+          initDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+          initMidX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+          initMidY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+          baseScale = scale;
+          basePosX = posX;
+          basePosY = posY;
+        } else if (e.touches.length === 1) {
+          isPinching = false;
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+          basePosX = posX;
+          basePosY = posY;
+          touchStartTime = Date.now();
+          startTouchX = e.touches[0].clientX;
+          startTouchY = e.touches[0].clientY;
+          isGesture = false;
+        }
+      }, { passive: true });
+
+      document.body.addEventListener('touchmove', (e) => {
+        if (!activeTouch) return;
+        if (e.target.closest('.modal-body')) return;
+
+        if (e.touches.length === 2 && isPinching) {
+          e.preventDefault();
+          const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+          const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+          const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+          const factor = dist / initDist;
+          let newScale = baseScale * factor;
+          if (newScale < 1) newScale = 1;
+          if (newScale > 5) newScale = 5;
+
+          const newPosX = midX - window.innerWidth / 2 - (newScale / baseScale) * (initMidX - window.innerWidth / 2 - basePosX);
+          const newPosY = midY - window.innerHeight / 2 - (newScale / baseScale) * (initMidY - window.innerHeight / 2 - basePosY);
+
+          const maxPanX = (newScale - 1) * window.innerWidth / 2;
+          const maxPanY = (newScale - 1) * window.innerHeight / 2;
+
+          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+          posY = Math.min(maxPanY, Math.max(-maxPanY, newPosY));
+          scale = newScale;
+          updateTransform();
+        } else if (e.touches.length === 1) {
+          const dx = e.touches[0].clientX - startTouchX;
+          const dy = e.touches[0].clientY - startTouchY;
+          if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
+            isGesture = true;
+          }
+          if (scale > 1) {
+            e.preventDefault();
+            const currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            const newPosX = basePosX + (currentX - startX);
+            const newPosY = basePosY + (currentY - startY);
+
+            const maxPanX = (scale - 1) * window.innerWidth / 2;
+            const maxPanY = (scale - 1) * window.innerHeight / 2;
+
+            posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+            posY = Math.min(maxPanY, Math.max(-maxPanY, newPosY));
+            updateTransform();
+          }
+        }
+      }, { passive: false });
+
+      document.body.addEventListener('touchend', (e) => {
+        if (e.touches.length === 0) {
+          activeTouch = false;
+          isPinching = false;
+
+          const currentTime = Date.now();
+          const tapLength = currentTime - lastTap;
+
+          // Double-tap detection for zoom
+          if (tapLength < 300 && tapLength > 0 && !isGesture) {
+            e.preventDefault();
+            toggleZoom(startTouchX, startTouchY);
+          } else if (!isGesture && (Date.now() - touchStartTime < 250)) {
+            // Single tap: toggle HUD visibility
+            if (!e.target.closest('.hud') && !e.target.closest('.modal-backdrop') && !e.target.closest('.flank-btn')) {
+              toggleHUD();
+            }
+          }
+          lastTap = currentTime;
+        } else if (e.touches.length === 1) {
+          isPinching = false;
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+          basePosX = posX;
+          basePosY = posY;
+        }
+      });
+
+      // 4. Desktop Mouse Wheel & Drag Panning
+      document.body.addEventListener('wheel', (e) => {
+        if (e.target.closest('.modal-body')) return;
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.15 : 0.87;
+        setZoom(scale * factor, e.clientX, e.clientY);
+      }, { passive: false });
+
+      viewportContainer.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return;
+        isMouseDown = true;
+        mouseStartX = e.clientX;
+        mouseStartY = e.clientY;
+        basePosX = posX;
+        basePosY = posY;
+        viewportContainer.classList.add('panning');
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isMouseDown) return;
+        if (scale > 1) {
+          e.preventDefault();
+          const dx = e.clientX - mouseStartX;
+          const dy = e.clientY - mouseStartY;
+          const newPosX = basePosX + dx;
+          const newPosY = basePosY + dy;
+
+          const maxPanX = (scale - 1) * window.innerWidth / 2;
+          const maxPanY = (scale - 1) * window.innerHeight / 2;
+
+          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+          posY = Math.min(maxPanY, Math.max(-maxPanY, newPosY));
+          updateTransform();
+        }
+      });
+
+      window.addEventListener('mouseup', () => {
+        isMouseDown = false;
+        viewportContainer.classList.remove('panning');
+      });
+
+      // Double click on image to toggle zoom
+      viewportContainer.addEventListener('dblclick', (e) => {
+        if (e.target.closest('.hud') || e.target.closest('.flank-btn')) return;
+        toggleZoom(e.clientX, e.clientY);
+      });
+    }
+
+    // Run on ready
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
