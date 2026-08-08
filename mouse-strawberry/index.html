@@ -1332,133 +1332,7 @@
       pointer-events: none;
     }
   
-    /* Dual Fullscreen Compare Modal (Both scenes filling screen side-by-side) */
-    #dual-compare-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(4, 7, 16, 0.95);
-      backdrop-filter: blur(16px);
-      z-index: 30000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      box-sizing: border-box;
-      animation: fadeIn 0.25s ease-out;
-    }
-    #dual-compare-modal.active {
-      display: flex;
-    }
-    .dual-modal-card {
-      width: 96vw;
-      max-width: 1400px;
-      max-height: 94vh;
-      background: #0b0f19;
-      border: 2px solid rgba(99, 102, 241, 0.4);
-      border-radius: 24px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 40px rgba(99, 102, 241, 0.25);
-    }
-    .dual-modal-header {
-      background: linear-gradient(135deg, rgba(30, 27, 75, 0.95), rgba(15, 23, 42, 0.95));
-      border-bottom: 1.5px solid rgba(99, 102, 241, 0.3);
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    .dual-modal-title {
-      font-family: 'Nunito', sans-serif;
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #ffe86b;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .dual-modal-body {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      align-items: center;
-      background: #070a12;
-    }
-    .dual-scene-panel {
-      background: #0f1422;
-      border: 1.5px solid rgba(255, 255, 255, 0.1);
-      border-radius: 18px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-    .dual-scene-panel:hover {
-      border-color: #818cf8;
-      transform: translateY(-2px);
-    }
-    .dual-scene-header {
-      padding: 10px 16px;
-      font-weight: 800;
-      font-size: 0.88rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .dual-scene-header.mouse {
-      background: rgba(99, 102, 241, 0.25);
-      color: #a5b4fc;
-    }
-    .dual-scene-header.bear {
-      background: rgba(16, 185, 129, 0.25);
-      color: #6ee7b7;
-    }
-    .dual-scene-img {
-      width: 100%;
-      height: auto;
-      max-height: 52vh;
-      object-fit: contain;
-      background: #000;
-      display: block;
-      cursor: pointer;
-    }
-    .dual-scene-quote {
-      padding: 12px 18px;
-      font-size: 0.92rem;
-      color: #cbd5e1;
-      line-height: 1.45;
-      background: rgba(15, 23, 42, 0.9);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      font-style: italic;
-    }
-    .dual-modal-nav {
-      background: #0f1422;
-      padding: 12px 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-    @media (max-width: 900px) {
-      .dual-modal-body {
-        grid-template-columns: 1fr;
-      }
-      .dual-scene-img {
-        max-height: 35vh;
-      }
-    }
-
-  </style>
+    </style>
 </head>
 <body>
 
@@ -1471,7 +1345,6 @@
     <div class="nav-tabs">
       <button id="tab-read" class="tab-btn active"><span class="icon">📖</span> Read Story</button>
       <button id="tab-activity" class="tab-btn"><span class="icon">🧩</span> Sequence Activity</button>
-      <button id="tab-dual-match" class="tab-btn"><span class="icon">🔀</span> Dual Perspective Match</button>
       <button id="tab-song" class="tab-btn"><span class="icon">🎵</span> Song</button>
     </div>
   </header>
@@ -1623,45 +1496,7 @@
     </div>
   </div>
 
-  <!-- 4. Dual Perspective Matching Activity Workspace -->
-  <div id="dual-match-container">
-    <div class="dual-match-wrapper">
-      
-      <!-- Dual Match Header -->
-      <div class="activity-header">
-        <div class="activity-info">
-          <h2>🔀 Dual Perspective Matching</h2>
-          <p>Align parallel story beats: Match each Mouse scene to the corresponding scene told from the Bear's perspective!</p>
-        </div>
-        <div class="controls-bar">
-          <button id="btn-dual-check" class="btn btn-primary">✓ Check Alignment</button>
-          <button id="btn-dual-theater" class="btn btn-secondary">🎬 Compare All 8 Scenes</button>
-          <button id="btn-dual-hint" class="btn btn-secondary">💡 Hint</button>
-          <button id="btn-dual-shuffle" class="btn btn-secondary">🔀 Reshuffle</button>
-          <button id="btn-dual-reveal" class="btn btn-outline">👁️ Reveal Answer</button>
-        </div>
-      </div>
-
-      <!-- Dual Match Feedback Banner -->
-      <div id="dual-feedback-banner" class="feedback-banner info" style="display: none;">
-        <span id="dual-feedback-msg">Drag and drop Bear spread cards from the pool below into the matching perspective rows.</span>
-      </div>
-
-      <!-- Parallel Story Rows (5 Key Thematic Matches) -->
-      <div id="dual-match-rows" style="display: flex; flex-direction: column; gap: 14px;"></div>
-
-      <!-- Unsorted Bear Perspective Spreads Pool -->
-      <div class="tabletop-section" style="margin-top: 10px;">
-        <div class="section-head">
-          <div class="section-title">
-            <span>🐻 Unsorted Bear Perspective Spreads</span>
-          </div>
-          <span class="section-hint-text">Drag a Bear card into the corresponding row above</span>
-        </div>
-        <div id="dual-pool-grid" class="dual-pool-grid"></div>
-      </div>
-
-    </div>
+  
   </div>
 
   <!-- High-Res Page Zoom Modal Lightbox -->
@@ -1727,12 +1562,10 @@
     /* ------------------------------------------------------------- */
     var tabRead = document.getElementById("tab-read");
     var tabActivity = document.getElementById("tab-activity");
-    var tabDualMatch = document.getElementById("tab-dual-match");
     var tabSong = document.getElementById("tab-song");
 
     var viewerContainer = document.getElementById("viewer-container");
     var activityContainer = document.getElementById("activity-container");
-    var dualMatchContainer = document.getElementById("dual-match-container");
     var songContainer = document.getElementById("song-container");
 
     var imgContainer = document.getElementById("img-container");
@@ -1745,7 +1578,7 @@
     var btnPerspectiveBear = document.getElementById("btn-perspective-bear");
     var currentReaderPerspective = "mouse";
 
-    // Activity state for 13-page Sequencing
+    // Activity state for 13-spread narrative sequencing
     var totalPages = 13;
     var pageThumbnails = [];
     for (var m = 1; m <= 13; m++) {
@@ -1861,12 +1694,10 @@
       tabRead.addEventListener("click", function() {
         tabRead.classList.add("active");
         tabActivity.classList.remove("active");
-        tabDualMatch.classList.remove("active");
         tabSong.classList.remove("active");
 
         viewerContainer.style.display = "block";
         activityContainer.style.display = "none";
-        dualMatchContainer.style.display = "none";
         songContainer.style.display = "none";
         if (fullscreenBtn) fullscreenBtn.style.display = "flex";
         pauseSongVideo();
@@ -1877,35 +1708,13 @@
       tabActivity.addEventListener("click", function() {
         tabActivity.classList.add("active");
         tabRead.classList.remove("active");
-        tabDualMatch.classList.remove("active");
         tabSong.classList.remove("active");
 
         viewerContainer.style.display = "none";
         activityContainer.style.display = "block";
-        dualMatchContainer.style.display = "none";
         songContainer.style.display = "none";
         if (fullscreenBtn) fullscreenBtn.style.display = "none";
         pauseSongVideo();
-      });
-    }
-
-    if (tabDualMatch) {
-      tabDualMatch.addEventListener("click", function() {
-        tabDualMatch.classList.add("active");
-        tabRead.classList.remove("active");
-        tabActivity.classList.remove("active");
-        tabSong.classList.remove("active");
-
-        viewerContainer.style.display = "none";
-        activityContainer.style.display = "none";
-        dualMatchContainer.style.display = "block";
-        songContainer.style.display = "none";
-        if (fullscreenBtn) fullscreenBtn.style.display = "none";
-        pauseSongVideo();
-
-        if (dualSlots.every(function(s) { return s === null; })) {
-          initDualMatchBoard();
-        }
       });
     }
 
@@ -1914,11 +1723,9 @@
         tabSong.classList.add("active");
         tabRead.classList.remove("active");
         tabActivity.classList.remove("active");
-        tabDualMatch.classList.remove("active");
 
         viewerContainer.style.display = "none";
         activityContainer.style.display = "none";
-        dualMatchContainer.style.display = "none";
         songContainer.style.display = "flex";
         if (fullscreenBtn) fullscreenBtn.style.display = "none";
 
@@ -1931,554 +1738,7 @@
     }
 
     /* ------------------------------------------------------------- */
-    /* 3. COMPLETE 13-SPREAD DUAL PERSPECTIVE ALIGNMENT BOARD         */
-    /* ------------------------------------------------------------- */
-    var dualMatchRows = document.getElementById("dual-match-rows");
-    var dualPoolGrid = document.getElementById("dual-pool-grid");
-    var dualFeedbackBanner = document.getElementById("dual-feedback-banner");
-    var dualFeedbackMsg = document.getElementById("dual-feedback-msg");
-
-    // All 13 Mouse Spreads mapped against the 8 Bear Spreads
-    var allDualBeats = [
-      {
-        mouseSpreadNum: 1,
-        mouseSpread: "spreads/spread_01.jpg",
-        theme: "👋 The Greeting & Mission",
-        mouseQuote: "Hello, little Mouse! What are you doing with that ladder?",
-        isBearMatch: true,
-        correctBearIndex: 0,
-        bearSpreadNum: 1,
-        bearSpread: "bear_spreads/bear_spread_01.jpg",
-        bearQuote: "The big hungry Bear sniffs the sweet summer air, looking around the forest."
-      },
-      {
-        mouseSpreadNum: 2,
-        mouseSpread: "spreads/spread_02.jpg",
-        theme: "🍓 Fresh Picked Strawberry",
-        mouseQuote: "Oh, I see. Are you going to pick that red, ripe strawberry?",
-        isBearMatch: true,
-        correctBearIndex: 1,
-        bearSpreadNum: 2,
-        bearSpread: "bear_spreads/bear_spread_02.jpg",
-        bearQuote: "A sweet strawberry scent fills the forest—ripe, fresh, and ready to pick!"
-      },
-      {
-        mouseSpreadNum: 3,
-        mouseSpread: "spreads/spread_03.jpg",
-        theme: "😱 Haven't You Heard?",
-        mouseQuote: "But, little Mouse, haven't you heard about the big, hungry Bear?",
-        isBearMatch: false,
-        note: "Escalation beat: Mouse hears the rumor of the hungry bear."
-      },
-      {
-        mouseSpreadNum: 4,
-        mouseSpread: "spreads/spread_04.jpg",
-        theme: "❤️ How the Bear Loves Strawberries",
-        mouseQuote: "Oh, how that Bear LOVES red, ripe strawberries!",
-        isBearMatch: false,
-        note: "Escalation beat: Mouse runs clutching the berry in fear."
-      },
-      {
-        mouseSpreadNum: 5,
-        mouseSpread: "spreads/spread_05.jpg",
-        theme: "👃 Scent from a Mile Away",
-        mouseQuote: "The big, hungry Bear can smell a red, ripe strawberry a mile away...",
-        isBearMatch: false,
-        note: "Escalation beat: The aroma travels across the woods."
-      },
-      {
-        mouseSpreadNum: 6,
-        mouseSpread: "spreads/spread_06.jpg",
-        theme: "💥 BOOM! BOOM! Big Hungry Feet",
-        mouseQuote: "BOOM! BOOM! BOOM! The Bear will tromp through the forest on his big, hungry feet...",
-        isBearMatch: true,
-        correctBearIndex: 2,
-        bearSpreadNum: 3,
-        bearSpread: "bear_spreads/bear_spread_03.jpg",
-        bearQuote: "Tromp, tromp, tromp! The Bear stomps through the trees on his search."
-      },
-      {
-        mouseSpreadNum: 7,
-        mouseSpread: "spreads/spread_07.jpg",
-        theme: "🔒 Hidden Away",
-        mouseQuote: "Quick! Lie it down! Guard it! Lock it up!",
-        isBearMatch: true,
-        correctBearIndex: 3,
-        bearSpreadNum: 4,
-        bearSpread: "bear_spreads/bear_spread_04.jpg",
-        bearQuote: "The Bear searches behind bushes and tall trees for the hidden strawberry."
-      },
-      {
-        mouseSpreadNum: 8,
-        mouseSpread: "spreads/spread_08.jpg",
-        theme: "🛡️ Guarded with Heavy Chains",
-        mouseQuote: "Put heavy chains and a giant lock around the treasure!",
-        isBearMatch: true,
-        correctBearIndex: 4,
-        bearSpreadNum: 5,
-        bearSpread: "bear_spreads/bear_spread_05.jpg",
-        bearQuote: "The Bear finds locked doors and chains in the way of his sweet prize."
-      },
-      {
-        mouseSpreadNum: 9,
-        mouseSpread: "spreads/spread_09.jpg",
-        theme: "🥸 The Disguise: Mustache & Glasses",
-        mouseQuote: "With a mustache and glasses, it still smells the same!",
-        isBearMatch: true,
-        correctBearIndex: 5,
-        bearSpreadNum: 6,
-        bearSpread: "bear_spreads/bear_spread_06.jpg",
-        bearQuote: "The Bear stares at the funny disguised berry with mustache and glasses."
-      },
-      {
-        mouseSpreadNum: 10,
-        mouseSpread: "spreads/spread_10.jpg",
-        theme: "🔪 Only One Way to Save It!",
-        mouseQuote: "Quick! There's only one way in the whole wide world to save a red, ripe strawberry...",
-        isBearMatch: false,
-        note: "Climax setup: Mouse prepares the giant knife."
-      },
-      {
-        mouseSpreadNum: 11,
-        mouseSpread: "spreads/spread_11.jpg",
-        theme: "🍰 Cut it in Two!",
-        mouseQuote: "Cut it in two! Share half with me...",
-        isBearMatch: false,
-        note: "Resolution action: Slicing the strawberry to share."
-      },
-      {
-        mouseSpreadNum: 12,
-        mouseSpread: "spreads/spread_12.jpg",
-        theme: "🍽️ Split & Eaten / Empty Stem",
-        mouseQuote: "We'll both eat it all up. YUM! All that is left is the empty green stem!",
-        isBearMatch: true,
-        correctBearIndex: 6,
-        bearSpreadNum: 7,
-        bearSpread: "bear_spreads/bear_spread_07.jpg",
-        bearQuote: "The delicious strawberry is split and eaten—only the empty stem remains!"
-      },
-      {
-        mouseSpreadNum: 13,
-        mouseSpread: "spreads/spread_13.jpg",
-        theme: "😴 Final Scene: Full & Relaxed",
-        mouseQuote: "Now that's one strawberry the big hungry Bear will NEVER get! (Mouse in hammock)",
-        isBearMatch: true,
-        correctBearIndex: 7,
-        bearSpreadNum: 8,
-        bearSpread: "bear_spreads/bear_spread_08.jpg",
-        bearQuote: "Happy, satisfied, and full—resting peacefully after the berry adventure!"
-      }
-    ];
-
-    var dualSlots = new Array(allDualBeats.length).fill(null);
-    var dualPool = [0, 1, 2, 3, 4, 5, 6, 7];
-    var dualCheckResults = null;
-    var currentDualCompareIndex = 0;
-
-    // Direct list of the 8 canonical parallel pairs for theater modal navigation
-    var theaterPairs = allDualBeats.filter(function(b) { return b.isBearMatch; });
-
-    function initDualMatchBoard() {
-      dualPool = [0, 1, 2, 3, 4, 5, 6, 7];
-      shuffleArray(dualPool);
-      dualSlots = new Array(allDualBeats.length).fill(null);
-      dualCheckResults = null;
-      hideDualFeedback();
-      renderDualBoard();
-    }
-
-    function renderDualBoard() {
-      if (!dualMatchRows) return;
-      dualMatchRows.innerHTML = "";
-
-      for (var r = 0; r < allDualBeats.length; r++) {
-        var beat = allDualBeats[r];
-        var rowEl = document.createElement("div");
-        rowEl.className = "dual-row";
-
-        if (dualCheckResults) {
-          if (dualCheckResults[r] === true) {
-            rowEl.classList.add("correct");
-          } else if (dualCheckResults[r] === false) {
-            rowEl.classList.add("incorrect");
-          }
-        }
-
-        // LEFT CARD: Mouse Spread
-        var leftCard = document.createElement("div");
-        leftCard.style.cssText = "flex: 1; min-width: 200px; max-width: 280px; background: #0f1422; border-radius: 14px; overflow: hidden; border: 1.5px solid rgba(99, 102, 241, 0.4); text-align: center; position: relative; box-shadow: 0 6px 20px rgba(0,0,0,0.5);";
-
-        var mouseLabel = document.createElement("div");
-        mouseLabel.style.cssText = "padding: 6px 10px; background: rgba(99, 102, 241, 0.25); color: #a5b4fc; font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between;";
-        mouseLabel.innerHTML = "<span>🐭 MOUSE STORY</span><span>Spread " + beat.mouseSpreadNum + "</span>";
-        leftCard.appendChild(mouseLabel);
-
-        var mouseImg = document.createElement("img");
-        mouseImg.src = beat.mouseSpread;
-        mouseImg.style.cssText = "width: 100%; height: 120px; object-fit: cover; display: block; cursor: pointer;";
-        (function(src, title) {
-          mouseImg.addEventListener("click", function() {
-            openPreviewModalSrc(src, title + " (Mouse)");
-          });
-        }(beat.mouseSpread, beat.theme));
-        leftCard.appendChild(mouseImg);
-
-        var mouseQuoteEl = document.createElement("div");
-        mouseQuoteEl.style.cssText = "padding: 6px 10px; font-size: 0.75rem; color: #94a3b8; font-style: italic; background: #0b0f19; line-height: 1.3;";
-        mouseQuoteEl.textContent = beat.mouseQuote;
-        leftCard.appendChild(mouseQuoteEl);
-
-        // CENTER BADGE: Theme & Side-by-side Compare Button
-        var centerBadge = document.createElement("div");
-        centerBadge.style.cssText = "flex: 1; min-width: 180px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;";
-
-        var themeTitle = document.createElement("div");
-        themeTitle.style.cssText = "font-size: 1.15rem; font-weight: 800; color: #ffe86b;";
-        themeTitle.textContent = beat.theme;
-        centerBadge.appendChild(themeTitle);
-
-        var themeLink = document.createElement("div");
-        themeLink.style.cssText = "font-size: 0.8rem; color: #818cf8; font-weight: 700;";
-        themeLink.textContent = "Beat " + (r + 1) + " of " + allDualBeats.length + (beat.isBearMatch ? " (Key Parallel Match)" : " (Transitional Beat)");
-        centerBadge.appendChild(themeLink);
-
-        if (beat.isBearMatch) {
-          var compareBtn = document.createElement("button");
-          compareBtn.className = "btn btn-secondary";
-          compareBtn.type = "button";
-          compareBtn.style.cssText = "font-size: 0.75rem; padding: 4px 10px; border-radius: 14px; background: rgba(99, 102, 241, 0.2); border-color: rgba(99, 102, 241, 0.4); color: #c7d2fe; margin-top: 2px;";
-          compareBtn.innerHTML = "🎬 Compare Side-by-Side";
-          (function(beatItem) {
-            compareBtn.addEventListener("click", function(e) {
-              e.stopPropagation();
-              var theaterIdx = theaterPairs.indexOf(beatItem);
-              openDualCompareModal(theaterIdx >= 0 ? theaterIdx : 0);
-            });
-          }(beat));
-          centerBadge.appendChild(compareBtn);
-        } else {
-          var noteBadge = document.createElement("div");
-          noteBadge.style.cssText = "font-size: 0.74rem; color: #94a3b8; background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 12px; border: 1px dashed rgba(255,255,255,0.15); max-width: 220px;";
-          noteBadge.textContent = "📖 " + beat.note;
-          centerBadge.appendChild(noteBadge);
-        }
-
-        // RIGHT SLOT: Bear Target Droppable Slot
-        var rightSlot = document.createElement("div");
-        rightSlot.className = "dual-slot";
-        rightSlot.dataset.rowIndex = r;
-
-        var placedBearIdx = dualSlots[r];
-        if (placedBearIdx !== null) {
-          rightSlot.style.borderStyle = "solid";
-          rightSlot.style.borderColor = "rgba(16, 185, 129, 0.8)";
-
-          var bCard = document.createElement("div");
-          bCard.style.cssText = "width: 100%; height: 100%; text-align: center; overflow: hidden; border-radius: 12px; position: relative; background: #0f1422;";
-
-          var bearLabel = document.createElement("div");
-          bearLabel.style.cssText = "padding: 6px 10px; background: rgba(16, 185, 129, 0.25); color: #6ee7b7; font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between;";
-          bearLabel.innerHTML = "<span>🐻 BEAR STORY</span><span>Spread " + (placedBearIdx + 1) + "</span>";
-          bCard.appendChild(bearLabel);
-
-          var numStr = placedBearIdx < 9 ? "0" + (placedBearIdx + 1) : "" + (placedBearIdx + 1);
-          var bearSrc = "bear_spreads/bear_spread_" + numStr + ".jpg";
-          var bearImg = document.createElement("img");
-          bearImg.src = bearSrc;
-          bearImg.style.cssText = "width: 100%; height: 120px; object-fit: cover; display: block; cursor: pointer;";
-          (function(src, bNum) {
-            bearImg.addEventListener("click", function() {
-              openPreviewModalSrc(src, "Bear Spread " + bNum);
-            });
-          }(bearSrc, placedBearIdx + 1));
-          bCard.appendChild(bearImg);
-
-          var removeBtn = document.createElement("button");
-          removeBtn.type = "button";
-          removeBtn.style.cssText = "position: absolute; top: 4px; right: 4px; background: rgba(0,0,0,0.75); border: none; color: #fff; width: 22px; height: 22px; border-radius: 50%; cursor: pointer; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;";
-          removeBtn.textContent = "✕";
-          (function(rowIdx) {
-            removeBtn.addEventListener("click", function(e) {
-              e.stopPropagation();
-              removeDualSlot(rowIdx);
-            });
-          }(r));
-          bCard.appendChild(removeBtn);
-
-          rightSlot.appendChild(bCard);
-        } else {
-          var placeholder = document.createElement("div");
-          placeholder.style.cssText = "text-align: center; padding: 10px;";
-          if (beat.isBearMatch) {
-            placeholder.innerHTML = "<div style='font-size: 1.3rem; margin-bottom: 4px;'>🐻</div><span style='color: #818cf8; font-size: 0.85rem; font-weight: 700;'>Drop Matching Bear Spread " + beat.bearSpreadNum + "</span>";
-          } else {
-            placeholder.innerHTML = "<div style='font-size: 1.1rem; opacity: 0.5;'>🍃</div><span style='color: #64748b; font-size: 0.8rem;'>Transitional Mouse Story Beat</span>";
-          }
-          rightSlot.appendChild(placeholder);
-        }
-
-        setupDualSlotDrop(rightSlot, r);
-
-        rowEl.appendChild(leftCard);
-        rowEl.appendChild(centerBadge);
-        rowEl.appendChild(rightSlot);
-        dualMatchRows.appendChild(rowEl);
-      }
-
-      // Render pool of all 8 Bear Cards
-      dualPoolGrid.innerHTML = "";
-      if (dualPool.length === 0) {
-        var emptyMsg = document.createElement("div");
-        emptyMsg.style.cssText = "grid-column: 1/-1; text-align: center; color: var(--success); font-weight: 800; font-size: 1.05rem; padding: 16px;";
-        emptyMsg.textContent = "✨ All 8 Bear spreads placed! Click 'Check Alignment' to verify your matches.";
-        dualPoolGrid.appendChild(emptyMsg);
-      } else {
-        for (var b = 0; b < dualPool.length; b++) {
-          var bIdx = dualPool[b];
-          var card = document.createElement("div");
-          card.className = "dual-card";
-          card.draggable = true;
-          card.dataset.bearIdx = bIdx;
-
-          var poolLabel = document.createElement("div");
-          poolLabel.style.cssText = "padding: 4px 8px; background: rgba(99, 102, 241, 0.25); color: #818cf8; font-size: 0.75rem; font-weight: 800;";
-          poolLabel.textContent = "🐻 Bear Spread " + (bIdx + 1);
-          card.appendChild(poolLabel);
-
-          var numStr2 = bIdx < 9 ? "0" + (bIdx + 1) : "" + (bIdx + 1);
-          var poolImg = document.createElement("img");
-          poolImg.src = "bear_spreads/bear_spread_" + numStr2 + ".jpg";
-          card.appendChild(poolImg);
-
-          (function(cardEl, bearIdx) {
-            cardEl.addEventListener("dragstart", function(e) {
-              e.dataTransfer.setData("text/plain", "" + bearIdx);
-            });
-            cardEl.addEventListener("click", function() {
-              openPreviewModalSrc("bear_spreads/bear_spread_" + (bearIdx < 9 ? "0" + (bearIdx + 1) : (bearIdx + 1)) + ".jpg", "Bear Spread " + (bearIdx + 1));
-            });
-          }(card, bIdx));
-
-          dualPoolGrid.appendChild(card);
-        }
-      }
-    }
-
-    function setupDualSlotDrop(slotEl, rowIndex) {
-      slotEl.addEventListener("dragover", function(e) {
-        e.preventDefault();
-        slotEl.classList.add("drag-over");
-      });
-      slotEl.addEventListener("dragleave", function() {
-        slotEl.classList.remove("drag-over");
-      });
-      slotEl.addEventListener("drop", function(e) {
-        e.preventDefault();
-        slotEl.classList.remove("drag-over");
-        var bearIdxStr = e.dataTransfer.getData("text/plain");
-        if (bearIdxStr !== "") {
-          var bearIdx = parseInt(bearIdxStr);
-          placeDualCard(bearIdx, rowIndex);
-        }
-      });
-    }
-
-    function placeDualCard(bearIdx, targetRowIndex) {
-      var poolIdx = dualPool.indexOf(bearIdx);
-      if (poolIdx > -1) {
-        dualPool.splice(poolIdx, 1);
-      } else {
-        for (var i = 0; i < dualSlots.length; i++) {
-          if (dualSlots[i] === bearIdx) dualSlots[i] = null;
-        }
-      }
-
-      var existing = dualSlots[targetRowIndex];
-      if (existing !== null && dualPool.indexOf(existing) === -1) {
-        dualPool.push(existing);
-      }
-
-      dualSlots[targetRowIndex] = bearIdx;
-      dualCheckResults = null;
-      hideDualFeedback();
-      renderDualBoard();
-    }
-
-    function removeDualSlot(rowIndex) {
-      var existing = dualSlots[rowIndex];
-      if (existing !== null) {
-        dualSlots[rowIndex] = null;
-        if (dualPool.indexOf(existing) === -1) {
-          dualPool.push(existing);
-        }
-        dualCheckResults = null;
-        hideDualFeedback();
-        renderDualBoard();
-      }
-    }
-
-    // Dual match action buttons
-    var btnDualCheck = document.getElementById("btn-dual-check");
-    var btnDualHint = document.getElementById("btn-dual-hint");
-    var btnDualShuffle = document.getElementById("btn-dual-shuffle");
-    var btnDualReveal = document.getElementById("btn-dual-reveal");
-    var btnDualTheater = document.getElementById("btn-dual-theater");
-
-    if (btnDualTheater) {
-      btnDualTheater.addEventListener("click", function() {
-        openDualCompareModal(0);
-      });
-    }
-
-    if (btnDualCheck) {
-      btnDualCheck.addEventListener("click", function() {
-        var correctCount = 0;
-        var totalTargetMatches = theaterPairs.length; // 8 key parallel matches
-        dualCheckResults = [];
-
-        for (var r = 0; r < allDualBeats.length; r++) {
-          var beat = allDualBeats[r];
-          if (beat.isBearMatch) {
-            if (dualSlots[r] === beat.correctBearIndex) {
-              dualCheckResults[r] = true;
-              correctCount++;
-            } else {
-              dualCheckResults[r] = false;
-            }
-          } else {
-            dualCheckResults[r] = (dualSlots[r] === null) ? true : false;
-          }
-        }
-        renderDualBoard();
-
-        if (correctCount === totalTargetMatches) {
-          showDualFeedback("🎉 Perfect! You aligned all 8 Bear spreads with the full 13 Mouse story beats!", "success");
-          triggerConfetti();
-        } else {
-          showDualFeedback("Score: " + correctCount + " / " + totalTargetMatches + " key parallel alignments correct. Check highlights and adjust!", "warning");
-        }
-      });
-    }
-
-    if (btnDualHint) {
-      btnDualHint.addEventListener("click", function() {
-        for (var r = 0; r < allDualBeats.length; r++) {
-          var beat = allDualBeats[r];
-          if (beat.isBearMatch) {
-            if (dualSlots[r] !== beat.correctBearIndex) {
-              placeDualCard(beat.correctBearIndex, r);
-              showDualFeedback("💡 Hint: Aligned '" + beat.theme + "' with Bear Spread " + (beat.correctBearIndex + 1) + "!", "info");
-              return;
-            }
-          }
-        }
-        showDualFeedback("All parallel story spreads are already placed correctly!", "success");
-      });
-    }
-
-    if (btnDualShuffle) {
-      btnDualShuffle.addEventListener("click", function() {
-        initDualMatchBoard();
-        showDualFeedback("Dual perspective matching board reshuffled!", "info");
-      });
-    }
-
-    if (btnDualReveal) {
-      btnDualReveal.addEventListener("click", function() {
-        for (var r = 0; r < allDualBeats.length; r++) {
-          var beat = allDualBeats[r];
-          dualSlots[r] = beat.isBearMatch ? beat.correctBearIndex : null;
-        }
-        dualPool = [];
-        dualCheckResults = new Array(allDualBeats.length).fill(true);
-        renderDualBoard();
-        showDualFeedback("Revealed full 13-beat story alignment with all 8 Bear spreads!", "info");
-        triggerConfetti();
-      });
-    }
-
-    function showDualFeedback(msg, type) {
-      if (!dualFeedbackMsg || !dualFeedbackBanner) return;
-      dualFeedbackMsg.innerText = msg;
-      dualFeedbackBanner.className = "feedback-banner " + (type || "info");
-      dualFeedbackBanner.style.display = "flex";
-    }
-
-    function hideDualFeedback() {
-      if (dualFeedbackBanner) dualFeedbackBanner.style.display = "none";
-    }
-
-    /* ------------------------------------------------------------- */
-    /* 4. DUAL FULLSCREEN THEATER COMPARE MODAL                      */
-    /* ------------------------------------------------------------- */
-    var dualCompareModal = document.getElementById("dual-compare-modal");
-    var dualModalThemeBadge = document.getElementById("dual-modal-theme-badge");
-    var dualModalCloseBtn = document.getElementById("dual-modal-close-btn");
-    var dualModalMouseSpreadLabel = document.getElementById("dual-modal-mouse-spread-label");
-    var dualModalMouseImg = document.getElementById("dual-modal-mouse-img");
-    var dualModalMouseQuote = document.getElementById("dual-modal-mouse-quote");
-    var dualModalBearSpreadLabel = document.getElementById("dual-modal-bear-spread-label");
-    var dualModalBearImg = document.getElementById("dual-modal-bear-img");
-    var dualModalBearQuote = document.getElementById("dual-modal-bear-quote");
-    var dualModalPrevBtn = document.getElementById("dual-modal-prev-btn");
-    var dualModalNextBtn = document.getElementById("dual-modal-next-btn");
-    var dualModalCounter = document.getElementById("dual-modal-counter");
-
-    function openDualCompareModal(pairIndex) {
-      if (!dualCompareModal) return;
-      currentDualCompareIndex = pairIndex;
-      updateDualCompareModalContent();
-      dualCompareModal.classList.add("active");
-    }
-
-    function updateDualCompareModalContent() {
-      var pair = theaterPairs[currentDualCompareIndex];
-      if (!pair) return;
-
-      if (dualModalThemeBadge) dualModalThemeBadge.textContent = pair.theme;
-      if (dualModalMouseSpreadLabel) dualModalMouseSpreadLabel.textContent = "Spread " + pair.mouseSpreadNum;
-      if (dualModalMouseImg) dualModalMouseImg.src = pair.mouseSpread;
-      if (dualModalMouseQuote) dualModalMouseQuote.textContent = "“" + pair.mouseQuote + "”";
-
-      if (dualModalBearSpreadLabel) dualModalBearSpreadLabel.textContent = "Spread " + pair.bearSpreadNum;
-      if (dualModalBearImg) dualModalBearImg.src = pair.bearSpread;
-      if (dualModalBearQuote) dualModalBearQuote.textContent = "“" + pair.bearQuote + "”";
-
-      if (dualModalCounter) dualModalCounter.textContent = "Parallel Scene " + (currentDualCompareIndex + 1) + " of " + theaterPairs.length;
-    }
-
-    if (dualModalCloseBtn) {
-      dualModalCloseBtn.addEventListener("click", function() {
-        if (dualCompareModal) dualCompareModal.classList.remove("active");
-      });
-    }
-
-    if (dualCompareModal) {
-      dualCompareModal.addEventListener("click", function(e) {
-        if (e.target === dualCompareModal) dualCompareModal.classList.remove("active");
-      });
-    }
-
-    if (dualModalPrevBtn) {
-      dualModalPrevBtn.addEventListener("click", function() {
-        if (currentDualCompareIndex > 0) {
-          currentDualCompareIndex--;
-          updateDualCompareModalContent();
-        }
-      });
-    }
-
-    if (dualModalNextBtn) {
-      dualModalNextBtn.addEventListener("click", function() {
-        if (currentDualCompareIndex < theaterPairs.length - 1) {
-          currentDualCompareIndex++;
-          updateDualCompareModalContent();
-        }
-      });
-    }
-
-    /* ------------------------------------------------------------- */
-    /* 5. MODAL PREVIEW LIGHTBOX                                     */
+    /* 3. MODAL PREVIEW LIGHTBOX                                     */
     /* ------------------------------------------------------------- */
     function openPreviewModal(pageIdx) {
       currentPreviewPageIndex = pageIdx;
@@ -2528,7 +1788,7 @@
     }
 
     /* ------------------------------------------------------------- */
-    /* 6. SEQUENCING ACTIVITY GAME LOGIC                             */
+    /* 4. SEQUENCING ACTIVITY GAME LOGIC                             */
     /* ------------------------------------------------------------- */
     function initActivityBoard() {
       var lettersShuffled = alphabet.slice(0, totalPages);
@@ -2941,7 +2201,7 @@
     }
 
     /* ------------------------------------------------------------- */
-    /* 7. INTRO VIDEO MODAL LOGIC                                    */
+    /* 5. INTRO VIDEO MODAL LOGIC                                    */
     /* ------------------------------------------------------------- */
     function openIntroVideoModal() {
       if (!activityIntroModal) return;
@@ -2984,7 +2244,7 @@
     }
 
     /* ------------------------------------------------------------- */
-    /* 8. KARAOKE SUBTITLES & CLOZE CHALLENGE GAME LOGIC             */
+    /* 6. KARAOKE SUBTITLES & CLOZE CHALLENGE GAME LOGIC             */
     /* ------------------------------------------------------------- */
     var songLyrics = [
       {
@@ -3533,7 +2793,7 @@
     }
 
     /* ------------------------------------------------------------- */
-    /* 9. FULLSCREEN TOGGLE                                          */
+    /* 7. FULLSCREEN TOGGLE                                          */
     /* ------------------------------------------------------------- */
     if (fullscreenBtn) {
       fullscreenBtn.addEventListener("click", function() {
@@ -3572,7 +2832,7 @@
     document.addEventListener("fullscreenchange", updateFullscreenIcons);
 
     /* ------------------------------------------------------------- */
-    /* 10. LIGHTWEIGHT CANVAS CONFETTI                               */
+    /* 8. LIGHTWEIGHT CANVAS CONFETTI                                */
     /* ------------------------------------------------------------- */
     function triggerConfetti() {
       var canvas = document.getElementById("confetti-canvas");
@@ -3627,31 +2887,13 @@
     }
 
     /* ------------------------------------------------------------- */
-    /* 11. INITIAL STARTUP                                           */
+    /* 9. INITIAL STARTUP                                            */
     /* ------------------------------------------------------------- */
     loadReaderPerspective("mouse");
     initActivityBoard();
 </script>
 
-  <!-- Dual Fullscreen Theater Compare Modal (Both scenes filling screen side-by-side) -->
-  <div id="dual-compare-modal">
-    <div class="dual-modal-card">
-      <div class="dual-modal-header">
-        <div class="dual-modal-title">
-          <span id="dual-modal-theme-badge">🍓 Parallel Scene Comparison</span>
-        </div>
-        <button id="dual-modal-close-btn" class="modal-close" style="background: rgba(255,255,255,0.12); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center;">✕</button>
-      </div>
-      <div class="dual-modal-body">
-        <!-- Left: Mouse Perspective -->
-        <div class="dual-scene-panel">
-          <div class="dual-scene-header mouse">
-            <span>🐭 MOUSE PERSPECTIVE</span>
-            <span id="dual-modal-mouse-spread-label">Spread</span>
-          </div>
-          <img id="dual-modal-mouse-img" class="dual-scene-img" src="" alt="Mouse Perspective">
-          <div id="dual-modal-mouse-quote" class="dual-scene-quote"></div>
-        </div>
+  
         <!-- Right: Bear Perspective -->
         <div class="dual-scene-panel">
           <div class="dual-scene-header bear">
