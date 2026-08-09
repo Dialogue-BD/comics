@@ -1127,18 +1127,18 @@
     var productionOrigin = "https://twinhall.github.io/comics";
 
     function getAbsoluteUrl(relPath) {
-      var cleanRel = relPath.replace(/^\//, "");
+      var cleanRel = relPath.replace(/^\.?\//, "").replace(/^\//, "");
       var origin = window.location.origin;
       var pathname = window.location.pathname;
 
       // If running on local server or file protocol, default to live GitHub Pages
       if (!origin || origin.includes("localhost") || origin.includes("127.0.0.1") || origin === "null" || window.location.protocol === "file:") {
-        return productionOrigin + "/" + cleanRel;
+        return "https://dialogue-bd.github.io/comics/" + cleanRel;
       }
 
-      // Compute base path on current host
+      // Compute base path on current host (e.g. /comics/qr/ -> /comics)
       var basePath = pathname.replace(/\/qr\/?.*$/, "").replace(/\/+$/, "");
-      return origin + basePath + "/" + cleanRel;
+      return origin + (basePath ? basePath : "") + "/" + cleanRel;
     }
 
     /* ------------------------------------------------------------- */
@@ -1147,6 +1147,9 @@
     async function discoverActivities() {
       try {
         var response = await fetch("../index.html?v=" + Date.now());
+        if (!response.ok) {
+          response = await fetch("index.html?v=" + Date.now());
+        }
         if (!response.ok) {
           response = await fetch("/index.html?v=" + Date.now());
         }
@@ -1161,7 +1164,7 @@
             cards.forEach(function(card) {
               var href = card.getAttribute("href") || "";
               // Skip self link if present
-              if (href.includes("/qr/") || href === "qr.html") return;
+              if (href.includes("qr/") || href.includes("/qr/") || href === "qr.html" || href === "/qr.html") return;
 
               var iconEl = card.querySelector(".icon");
               var titleEl = card.querySelector(".title");
