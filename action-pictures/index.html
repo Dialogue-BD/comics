@@ -1662,9 +1662,16 @@
           }
         } else {
           // Hovering near top or bottom screen edge reveals menus smoothly
-          if (e.clientY < 60 || e.clientY > window.innerHeight - 60) {
+          if (e.clientY < 45 || e.clientY > window.innerHeight - 45) {
             if (!isHudVisible) {
               showHUD(3000);
+            }
+          } else {
+            // When mouse is in the main viewing area, ensure auto-fade timer is active
+            if (isHudVisible && !hudTimeout && !galleryModal.classList.contains('open') && !helpModal.classList.contains('open')) {
+              hudTimeout = setTimeout(() => {
+                hideHUD();
+              }, 2500);
             }
           }
         }
