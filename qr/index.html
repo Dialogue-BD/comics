@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Activity QR Codes &amp; Smart-TV Slideshow</title>
+  <meta name="description" content="Display activity links and QR codes on classroom Smart-TVs and projectors so students can instantly scan and join.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #07090e;
+      --surface: #0f1422;
+      --surface-card: #151b2d;
+      --surface-hover: #1c243c;
+      --border: #232d46;
+      --border-focus: #4f7ef8;
+      --accent: #4f7ef8;
+      --accent-hover: #3b6be8;
+      --accent-glow: rgba(79, 126, 248, 0.45);
+      --success: #10b981;
+      --warning: #f59e0b;
+      --purple: #8b5cf6;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --radius-sm: 8px;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --header-h: 58px;
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body, html {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── App Top Navigation Bar ── */
+    #app-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: var(--header-h);
+      background: rgba(15, 20, 34, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+
+    body.fullscreen-active #app-header {
+      transform: translateY(-100%);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .back-btn {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .back-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--accent);
+    }
+
+    .header-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-title .badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(79, 126, 248, 0.2);
+      color: #93c5fd;
+      border: 1px solid rgba(129, 140, 248, 0.35);
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .view-toggle-wrap {
+      display: flex;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 3px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      gap: 3px;
+    }
+
+    .view-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .view-btn:hover { color: var(--text); }
+    .view-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    .header-action-btn {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .header-action-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    /* ── Main App Views Wrapper ── */
+    #app-main {
+      position: absolute;
+      top: var(--header-h);
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - var(--header-h));
+      overflow: hidden;
+      transition: top 0.3s ease, height 0.3s ease;
+    }
+
+    body.fullscreen-active #app-main {
+      top: 0;
+      height: 100vh;
+    }
+
+    /* ═════════════════════════════════════════════════════════════ */
+    /* 1. SMART-TV SLIDESHOW PRESENTATION VIEW                       */
+    /* ═════════════════════════════════════════════════════════════ */
+    #slideshow-view {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background: radial-gradient(circle at 60% 40%, #151d30 0%, #0c101c 60%, #05070c 100%);
+      padding: 12px 24px 16px;
+      position: relative;
+    }
+
+    /* Slideshow Progress Bar */
+    .slide-progress-bar-wrap {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      flex: 0 0 auto;
+    }
+
+    .slide-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+      border-radius: 4px;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
+    }
+
+    /* Center Stage Slide Layout (16:9 optimized split card) */
+    .slide-stage {
+      flex: 1;
+      min-height: 0;
+      width: 100%;
+      max-width: 1700px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    /* Left Info Column */
+    .slide-info-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: rgba(21, 27, 45, 0.8);
+      backdrop-filter: blur(16px);
+      border: 2px solid rgba(79, 126, 248, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 36px 42px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(79, 126, 248, 0.15);
+      animation: slideInfoIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideInfoIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .slide-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .slide-counter-badge {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #93c5fd;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    .slide-category-pill {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .slide-title-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .slide-icon {
+      font-size: 3.6rem;
+      line-height: 1;
+      flex-shrink: 0;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.6));
+    }
+
+    .slide-title {
+      font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    }
+
+    .slide-desc {
+      font-size: clamp(1.02rem, 1.4vw, 1.25rem);
+      color: #cbd5e1;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .slide-badges-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .slide-feature-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .slide-url-box {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+    }
+
+    .slide-url-text {
+      font-family: monospace;
+      font-size: 0.95rem;
+      color: #60a5fa;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 600;
+    }
+
+    .slide-url-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .slide-action-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .slide-action-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* Right QR Code Column (Jumbo Smart-TV Card) */
+    .slide-qr-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: slideQrIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideQrIn {
+      from { opacity: 0; transform: scale(0.9) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .slide-qr-card {
+      background: #ffffff;
+      padding: 24px;
+      border-radius: 28px;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.95), 0 0 50px rgba(99, 102, 241, 0.4);
+      border: 6px solid #ffffff;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .slide-qr-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95), 0 0 60px rgba(99, 102, 241, 0.6);
+    }
+
+    .slide-qr-target {
+      width: clamp(240px, 24vw, 360px);
+      height: clamp(240px, 24vw, 360px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-qr-target canvas {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      border-radius: 6px;
+    }
+
+    .slide-qr-scan-badge {
+      margin-top: 16px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 800;
+      padding: 8px 24px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.02em;
+      box-shadow: 0 4px 18px rgba(99, 102, 241, 0.5);
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); box-shadow: 0 4px 18px rgba(99, 102, 241, 0.5); }
+      50% { transform: scale(1.04); box-shadow: 0 6px 26px rgba(99, 102, 241, 0.85); }
+    }
+
+    /* Floating Navigation Arrows */
+    .slide-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(18, 24, 38, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      font-size: 1.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.18s ease;
+      z-index: 50;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    }
+    .slide-nav-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 10px 30px var(--accent-glow);
+    }
+    .slide-nav-btn.prev { left: 16px; }
+    .slide-nav-btn.next { right: 16px; }
+
+    /* Bottom Slideshow Control Bar */
+    .slideshow-footer {
+      width: 100%;
+      max-width: 1700px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: rgba(18, 24, 38, 0.9);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 20px;
+      flex: 0 0 auto;
+      z-index: 60;
+    }
+
+    .slideshow-controls-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .play-pause-btn {
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      border: none;
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 800;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+    .play-pause-btn:hover {
+      transform: scale(1.04);
+      box-shadow: 0 6px 20px var(--accent-glow);
+    }
+
+    .timer-selector-group {
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 2px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      gap: 2px;
+    }
+
+    .timer-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .timer-btn:hover { color: var(--text); }
+    .timer-btn.active {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+
+    /* Thumbnail Dot Track */
+    .slideshow-dots-track {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      max-width: 45vw;
+      padding: 4px;
+    }
+
+    .slide-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .slide-dot:hover { background: rgba(255, 255, 255, 0.5); transform: scale(1.2); }
+    .slide-dot.active {
+      width: 26px;
+      border-radius: 10px;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .slideshow-controls-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .fs-toggle-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .fs-toggle-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    /* ═════════════════════════════════════════════════════════════ */
+    /* 2. ALL-IN-ONE INTERACTIVE QR DIRECTORY GRID                   */
+    /* ═════════════════════════════════════════════════════════════ */
+    #grid-view {
+      width: 100%;
+      height: 100%;
+      display: none;
+      flex-direction: column;
+      background: var(--bg);
+      padding: 16px 24px;
+      overflow-y: auto;
+    }
+
+    .grid-toolbar {
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .grid-search-wrap {
+      flex: 1;
+      max-width: 460px;
+      position: relative;
+    }
+
+    .grid-search-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.92rem;
+      padding: 9px 14px 9px 38px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .grid-search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+    .grid-search-icon {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .grid-count-badge {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .qr-cards-grid {
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 18px;
+      padding-bottom: 40px;
+    }
+
+    .qr-card-item {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .qr-card-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-glow);
+    }
+
+    .qr-card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .qr-card-icon {
+      font-size: 2rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .qr-card-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+
+    .qr-card-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .qr-card-preview-wrap {
+      background: #ffffff;
+      padding: 14px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      width: 160px;
+      height: 160px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .qr-card-preview-wrap canvas {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+
+    .qr-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .qr-card-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(79, 126, 248, 0.12);
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .qr-card-present-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .qr-card-present-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ── Responsive adjustments ── */
+    @media (max-width: 1000px) {
+      .slide-stage {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        overflow-y: auto;
+      }
+      .slide-info-card { padding: 22px 26px; }
+      .slideshow-footer { flex-wrap: wrap; justify-content: center; }
+      .slideshow-dots-track { max-width: 80vw; }
+      .slide-nav-btn { width: 44px; height: 44px; font-size: 1.4rem; }
+    }
+
+    /* ── Toast notification banner ── */
+    #toast-banner {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: rgba(16, 185, 129, 0.95);
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 800;
+      padding: 10px 24px;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 10000;
+    }
+    #toast-banner.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation Bar -->
+  <header id="app-header">
+    <div class="header-left">
+      <a href="../" class="back-btn" title="Back to All Stories">← All Activities</a>
+      <h1 class="header-title">
+        <span>📱 Activity QR Hub</span>
+        <span class="badge">Smart-TV Ready</span>
+      </h1>
+    </div>
+
+    <div class="header-right">
+      <!-- View Mode Switcher -->
+      <div class="view-toggle-wrap">
+        <button id="btn-view-slideshow" class="view-btn active" type="button">
+          🖥️ TV Slideshow
+        </button>
+        <button id="btn-view-grid" class="view-btn" type="button">
+          🔲 All QR Grid
+        </button>
+      </div>
+
+      <!-- Auto-Update Status / Rescan Button -->
+      <button id="btn-rescan" class="header-action-btn" type="button" title="Rescan homepage for new activities">
+        🔄 Refresh List
+      </button>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main id="app-main">
+
+    <!-- 1. SMART-TV SLIDESHOW PRESENTATION VIEW -->
+    <section id="slideshow-view">
+      <!-- Slide Progress Bar (Countdown to next slide) -->
+      <div class="slide-progress-bar-wrap">
+        <div id="slide-progress-bar" class="slide-progress-bar"></div>
+      </div>
+
+      <!-- Left / Right Floating Navigation Arrows -->
+      <button id="btn-slide-prev" class="slide-nav-btn prev" title="Previous Slide (←)">‹</button>
+      <button id="btn-slide-next" class="slide-nav-btn next" title="Next Slide (→)">›</button>
+
+      <!-- Center Presentation Stage -->
+      <div class="slide-stage">
+        
+        <!-- Left: Activity Info Card -->
+        <div class="slide-info-card">
+          <div class="slide-meta-row">
+            <span id="slide-counter-badge" class="slide-counter-badge">Activity 1 of 18</span>
+            <span id="slide-category-pill" class="slide-category-pill">Visual Story</span>
+          </div>
+
+          <div class="slide-title-wrap">
+            <div id="slide-icon" class="slide-icon">🐦</div>
+            <div>
+              <h2 id="slide-title" class="slide-title">The Good Bird</h2>
+              <div id="slide-badges-wrap" class="slide-badges-wrap"></div>
+            </div>
+          </div>
+
+          <p id="slide-desc" class="slide-desc">
+            Visual story inspired by Peter Wezel's wordless picture book. Features a size-maximized widescreen storyboard for classroom projection, interactive sorting activity, and karaoke song!
+          </p>
+
+          <div class="slide-url-box">
+            <span id="slide-url-text" class="slide-url-text">https://twinhall.github.io/comics/good-bird/</span>
+            <div class="slide-url-actions">
+              <button id="btn-copy-link" class="slide-action-btn" type="button">📋 Copy</button>
+              <a id="btn-open-link" class="slide-action-btn" href="#" target="_blank" rel="noopener">↗ Open</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Jumbo QR Code Card -->
+        <div class="slide-qr-column">
+          <div class="slide-qr-card">
+            <div id="slide-qr-target" class="slide-qr-target"></div>
+            <div class="slide-qr-scan-badge">
+              <span>📷 Point camera to join</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Slideshow Control Bar -->
+      <div class="slideshow-footer">
+        <div class="slideshow-controls-left">
+          <button id="btn-play-pause" class="play-pause-btn" type="button">
+            <span id="play-pause-icon">⏸️</span>
+            <span id="play-pause-text">Pause</span>
+          </button>
+
+          <div class="timer-selector-group" title="Auto-advance slide timer">
+            <button class="timer-btn" data-time="5">5s</button>
+            <button class="timer-btn active" data-time="8">8s</button>
+            <button class="timer-btn" data-time="12">12s</button>
+            <button class="timer-btn" data-time="20">20s</button>
+            <button class="timer-btn" data-time="0">Manual</button>
+          </div>
+        </div>
+
+        <!-- Slide Dots Reel -->
+        <div id="slide-dots-track" class="slideshow-dots-track"></div>
+
+        <div class="slideshow-controls-right">
+          <button id="btn-fullscreen" class="fs-toggle-btn" type="button" title="Toggle Fullscreen Smart-TV Presentation (F)">
+            ⛶ Fullscreen
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ALL-IN-ONE INTERACTIVE QR DIRECTORY GRID -->
+    <section id="grid-view">
+      <div class="grid-toolbar">
+        <div class="grid-search-wrap">
+          <span class="grid-search-icon">🔍</span>
+          <input id="grid-search-input" class="grid-search-input" type="text" placeholder="Search activities by title or category..." autocomplete="off">
+        </div>
+        <span id="grid-count-badge" class="grid-count-badge">Showing 18 activities</span>
+      </div>
+
+      <div id="qr-cards-grid" class="qr-cards-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification Banner -->
+  <div id="toast-banner">Link copied to clipboard!</div>
+
+  <!-- Standalone QR Code Generator Script -->
+  <script src="qrcode.js"></script>
+
+  <script>
+    /* ------------------------------------------------------------- */
+    /* DEFAULT FALLBACK ACTIVITIES LIST (18 CORE ACTIVITIES)          */
+    /* ------------------------------------------------------------- */
+    var defaultActivities = [
+      {
+        href: "/good-bird/",
+        icon: "🐦",
+        title: "The Good Bird",
+        desc: "Visual story inspired by Peter Wezel's wordless picture book. Features a size-maximized widescreen storyboard for classroom projection, interactive sorting activity, and karaoke song!",
+        badge: "Widescreen Story · Sorting Activity · Song",
+        category: "Visual Story"
+      },
+      {
+        href: "/comic.html",
+        icon: "🎲",
+        title: "Action Comic — Random Viewer",
+        desc: "Opens a random comic image in a full-screen viewer. Pinch to zoom, drag to pan. Tap to go fullscreen on mobile.",
+        badge: "Random · Viewer",
+        category: "Comics"
+      },
+      {
+        href: "/action-pictures/",
+        icon: "🎬",
+        title: "Action Pictures",
+        desc: "101 color action pictures from Southeast Asia. A random picture pops up every time the page is refreshed, with pinch-to-zoom, pan, and full gallery browser.",
+        badge: "Random · Gallery · 101 Pictures",
+        category: "Action Pictures"
+      },
+      {
+        href: "/mouse-strawberry/",
+        icon: "🍓",
+        title: "The Little Mouse & Red Ripe Strawberry",
+        desc: "Audrey & Don Wood's classic picture story! Features double-page spread reader, song with karaoke subtitles, and narrative structure sequencing activity.",
+        badge: "Picture Story · Spreads · Song & Activity",
+        category: "Picture Story"
+      },
+      {
+        href: "/narratives/",
+        icon: "📖",
+        title: "Action Narrative",
+        desc: "Swipeable sequential image narratives. Follow the story panel by panel.",
+        badge: "Gallery",
+        category: "Narrative"
+      },
+      {
+        href: "/busy-pictures/",
+        icon: "🔍",
+        title: "Busy Pictures",
+        desc: "Wimmelbook-style scenes with AI tap-to-speak. Tap objects to hear and learn vocabulary.",
+        badge: "AI · Audio",
+        category: "Vocabulary"
+      },
+      {
+        href: "/picture-this/",
+        icon: "🃏",
+        title: "Picture This!",
+        desc: "Illustrated conversation cards — describe the scene, tell the story, or discuss the topic.",
+        badge: "Speaking · Cards",
+        category: "Speaking"
+      },
+      {
+        href: "/emotions/",
+        icon: "😊",
+        title: "How Are You Feeling?",
+        desc: "An interactive emotions wheel for English Club daily check-ins. Choose a feeling and explore its vocabulary.",
+        badge: "Interactive · ESL",
+        category: "ESL"
+      },
+      {
+        href: "/reflecting-listening/",
+        icon: "🪞",
+        title: "Listen Like a Mirror",
+        desc: "A visual, levelled pair activity for practising reflective listening in English.",
+        badge: "ESL · Pair Activity",
+        category: "ESL Pair Activity"
+      },
+      {
+        href: "/ruorators/",
+        icon: "🎤",
+        title: "RU Orators",
+        desc: "Speaking and storytelling resources for oral communication practice.",
+        badge: "Speaking",
+        category: "Speaking"
+      },
+      {
+        href: "/american-fisherman/",
+        icon: "🎣",
+        title: "The American & The Fisherman",
+        desc: "A classic parable about ambition and contentment, illustrated with audio narration.",
+        badge: "Audio · PDF",
+        category: "Parable"
+      },
+      {
+        href: "/cross-cultural-coms/",
+        icon: "🌏",
+        title: "Cross-Cultural Communication",
+        desc: "Activities and scenarios for navigating communication across cultures.",
+        badge: "Activity",
+        category: "Culture"
+      },
+      {
+        href: "/ecclesiastes/",
+        icon: "📜",
+        title: "Ecclesiastes — হেদায়েতকারী",
+        desc: "Illustrated pages from Ecclesiastes with English audio for each section.",
+        badge: "Audio",
+        category: "Audio Story"
+      },
+      {
+        href: "/hingsha/",
+        icon: "⚖️",
+        title: "Hingsha",
+        desc: "A visual story exploring conflict and resolution.",
+        badge: "Visual Story",
+        category: "Visual Story"
+      },
+      {
+        href: "/kindness-repentence/",
+        icon: "🤝",
+        title: "Kindness & Repentence",
+        desc: "A picture story on themes of kindness, forgiveness, and change.",
+        badge: "Visual Story",
+        category: "Visual Story"
+      },
+      {
+        href: "/mezban/",
+        icon: "🍽️",
+        title: "Mezban",
+        desc: "A feast and community story illustrated in comic form.",
+        badge: "Visual Story",
+        category: "Visual Story"
+      },
+      {
+        href: "/north-end/",
+        icon: "🏙️",
+        title: "North End Story",
+        desc: "A neighbourhood picture narrative set in the North End.",
+        badge: "Visual Story",
+        category: "Visual Story"
+      },
+      {
+        href: "/stories/",
+        icon: "📚",
+        title: "Wordless Picture Stories",
+        desc: "A collection of stories told entirely through images — open any title as a PDF.",
+        badge: "PDF",
+        category: "Stories"
+      }
+    ];
+
+    var activities = [];
+    var currentIndex = 0;
+    var isPlaying = true;
+    var slideDuration = 8000; // 8 seconds default
+    var slideTimer = null;
+    var progressInterval = null;
+    var progressStart = 0;
+
+    // Production base URL fallback (for when running locally or on file://)
+    var productionOrigin = "https://twinhall.github.io/comics";
+
+    function getAbsoluteUrl(relPath) {
+      var cleanRel = relPath.replace(/^\//, "");
+      var origin = window.location.origin;
+      var pathname = window.location.pathname;
+
+      // If running on local server or file protocol, default to live GitHub Pages
+      if (!origin || origin.includes("localhost") || origin.includes("127.0.0.1") || origin === "null" || window.location.protocol === "file:") {
+        return productionOrigin + "/" + cleanRel;
+      }
+
+      // Compute base path on current host
+      var basePath = pathname.replace(/\/qr\/?.*$/, "").replace(/\/+$/, "");
+      return origin + basePath + "/" + cleanRel;
+    }
+
+    /* ------------------------------------------------------------- */
+    /* DYNAMIC AUTO-DISCOVERY ENGINE (AUTO-UPDATES FROM INDEX.HTML)   */
+    /* ------------------------------------------------------------- */
+    async function discoverActivities() {
+      try {
+        var response = await fetch("../index.html?v=" + Date.now());
+        if (!response.ok) {
+          response = await fetch("/index.html?v=" + Date.now());
+        }
+        if (response.ok) {
+          var htmlText = await response.text();
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(htmlText, "text/html");
+          
+          var cards = doc.querySelectorAll(".card-featured, .grid .card");
+          if (cards && cards.length > 0) {
+            var parsed = [];
+            cards.forEach(function(card) {
+              var href = card.getAttribute("href") || "";
+              // Skip self link if present
+              if (href.includes("/qr/") || href === "qr.html") return;
+
+              var iconEl = card.querySelector(".icon");
+              var titleEl = card.querySelector(".title");
+              var descEl = card.querySelector(".desc");
+              var badgeEl = card.querySelector(".badge");
+
+              var icon = iconEl ? iconEl.innerText.trim() : "📌";
+              var title = titleEl ? titleEl.innerText.trim() : "Activity";
+              var desc = descEl ? descEl.innerText.trim() : "";
+              var badge = badgeEl ? badgeEl.innerText.trim() : "Activity";
+
+              parsed.push({
+                href: href,
+                icon: icon,
+                title: title,
+                desc: desc,
+                badge: badge,
+                category: badge.split("·")[0].trim()
+              });
+            });
+
+            if (parsed.length > 0) {
+              activities = parsed;
+              console.log("Successfully auto-discovered " + activities.length + " activities from index.html!");
+              return;
+            }
+          }
+        }
+      } catch (e) {
+        console.warn("Auto-discovery note: falling back to bundled list", e);
+      }
+
+      // Fallback if fetch was blocked
+      activities = defaultActivities.slice();
+    }
+
+    /* ------------------------------------------------------------- */
+    /* SLIDESHOW LOGIC                                               */
+    /* ------------------------------------------------------------- */
+    var slideshowView = document.getElementById("slideshow-view");
+    var gridView = document.getElementById("grid-view");
+    var btnViewSlideshow = document.getElementById("btn-view-slideshow");
+    var btnViewGrid = document.getElementById("btn-view-grid");
+    var btnSlidePrev = document.getElementById("btn-slide-prev");
+    var btnSlideNext = document.getElementById("btn-slide-next");
+    var btnPlayPause = document.getElementById("btn-play-pause");
+    var playPauseIcon = document.getElementById("play-pause-icon");
+    var playPauseText = document.getElementById("play-pause-text");
+    var slideProgressBar = document.getElementById("slide-progress-bar");
+    var slideDotsTrack = document.getElementById("slide-dots-track");
+    var btnFullscreen = document.getElementById("btn-fullscreen");
+    var btnRescan = document.getElementById("btn-rescan");
+    var btnCopyLink = document.getElementById("btn-copy-link");
+    var btnOpenLink = document.getElementById("btn-open-link");
+    var toastBanner = document.getElementById("toast-banner");
+
+    function renderSlide(index) {
+      if (!activities || activities.length === 0) return;
+      currentIndex = (index + activities.length) % activities.length;
+      var act = activities[currentIndex];
+      var fullUrl = getAbsoluteUrl(act.href);
+
+      // Info Column
+      document.getElementById("slide-counter-badge").innerText = "Activity " + (currentIndex + 1) + " of " + activities.length;
+      document.getElementById("slide-category-pill").innerText = act.category || "Activity";
+      document.getElementById("slide-icon").innerText = act.icon;
+      document.getElementById("slide-title").innerText = act.title;
+      document.getElementById("slide-desc").innerText = act.desc;
+
+      // Badges
+      var badgesWrap = document.getElementById("slide-badges-wrap");
+      badgesWrap.innerHTML = "";
+      var badgeList = (act.badge || "").split("·").map(b => b.trim()).filter(Boolean);
+      badgeList.forEach(function(b) {
+        var pill = document.createElement("span");
+        pill.className = "slide-feature-badge";
+        pill.innerText = b;
+        badgesWrap.appendChild(pill);
+      });
+
+      // URL display & buttons
+      document.getElementById("slide-url-text").innerText = fullUrl;
+      btnOpenLink.href = fullUrl;
+
+      // QR Code Generation
+      var qrTarget = document.getElementById("slide-qr-target");
+      qrTarget.innerHTML = "";
+      new QRCode(qrTarget, {
+        text: fullUrl,
+        width: 320,
+        height: 320,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+
+      // Update dots
+      updateDots();
+
+      // Reset timer
+      resetSlideTimer();
+    }
+
+    function initDots() {
+      slideDotsTrack.innerHTML = "";
+      for (var i = 0; i < activities.length; i++) {
+        var dot = document.createElement("button");
+        dot.className = "slide-dot" + (i === currentIndex ? " active" : "");
+        dot.title = activities[i].title;
+        (function(idx) {
+          dot.addEventListener("click", function() {
+            renderSlide(idx);
+          });
+        })(i);
+        slideDotsTrack.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      var dots = slideDotsTrack.children;
+      for (var i = 0; i < dots.length; i++) {
+        if (i === currentIndex) dots[i].classList.add("active");
+        else dots[i].classList.remove("active");
+      }
+    }
+
+    function resetSlideTimer() {
+      if (slideTimer) clearTimeout(slideTimer);
+      if (progressInterval) clearInterval(progressInterval);
+      slideProgressBar.style.width = "0%";
+
+      if (!isPlaying || slideDuration === 0) return;
+
+      progressStart = Date.now();
+      progressInterval = setInterval(function() {
+        var elapsed = Date.now() - progressStart;
+        var pct = Math.min(100, (elapsed / slideDuration) * 100);
+        slideProgressBar.style.width = pct + "%";
+      }, 50);
+
+      slideTimer = setTimeout(function() {
+        renderSlide(currentIndex + 1);
+      }, slideDuration);
+    }
+
+    function togglePlayPause() {
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        playPauseIcon.innerText = "⏸️";
+        playPauseText.innerText = "Pause";
+        resetSlideTimer();
+      } else {
+        playPauseIcon.innerText = "▶️";
+        playPauseText.innerText = "Play";
+        if (slideTimer) clearTimeout(slideTimer);
+        if (progressInterval) clearInterval(progressInterval);
+        slideProgressBar.style.width = "0%";
+      }
+    }
+
+    btnPlayPause.addEventListener("click", togglePlayPause);
+
+    btnSlidePrev.addEventListener("click", function() {
+      renderSlide(currentIndex - 1);
+    });
+
+    btnSlideNext.addEventListener("click", function() {
+      renderSlide(currentIndex + 1);
+    });
+
+    // Timer selector buttons
+    document.querySelectorAll(".timer-btn").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        document.querySelectorAll(".timer-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        var sec = parseInt(btn.dataset.time);
+        slideDuration = sec * 1000;
+        if (slideDuration === 0) {
+          isPlaying = false;
+          playPauseIcon.innerText = "▶️";
+          playPauseText.innerText = "Play";
+          if (slideTimer) clearTimeout(slideTimer);
+          if (progressInterval) clearInterval(progressInterval);
+          slideProgressBar.style.width = "0%";
+        } else {
+          isPlaying = true;
+          playPauseIcon.innerText = "⏸️";
+          playPauseText.innerText = "Pause";
+          resetSlideTimer();
+        }
+      });
+    });
+
+    /* ------------------------------------------------------------- */
+    /* ALL-IN-ONE GRID LOGIC                                         */
+    /* ------------------------------------------------------------- */
+    var qrCardsGrid = document.getElementById("qr-cards-grid");
+    var gridSearchInput = document.getElementById("grid-search-input");
+    var gridCountBadge = document.getElementById("grid-count-badge");
+
+    function renderGrid(filterText) {
+      qrCardsGrid.innerHTML = "";
+      var filter = (filterText || "").toLowerCase().trim();
+      var count = 0;
+
+      activities.forEach(function(act, idx) {
+        if (filter) {
+          var matchTitle = act.title.toLowerCase().includes(filter);
+          var matchDesc = act.desc.toLowerCase().includes(filter);
+          var matchBadge = (act.badge || "").toLowerCase().includes(filter);
+          if (!matchTitle && !matchDesc && !matchBadge) return;
+        }
+
+        count++;
+        var fullUrl = getAbsoluteUrl(act.href);
+        var card = document.createElement("div");
+        card.className = "qr-card-item";
+
+        // Head
+        var head = document.createElement("div");
+        head.className = "qr-card-head";
+        head.innerHTML = `
+          <div class="qr-card-icon">${act.icon}</div>
+          <div>
+            <div class="qr-card-title">${act.title}</div>
+            <div class="qr-card-desc">${act.desc}</div>
+          </div>
+        `;
+        card.appendChild(head);
+
+        // QR Preview
+        var qrWrap = document.createElement("div");
+        qrWrap.className = "qr-card-preview-wrap";
+        new QRCode(qrWrap, {
+          text: fullUrl,
+          width: 130,
+          height: 130,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+        card.appendChild(qrWrap);
+
+        // Footer
+        var footer = document.createElement("div");
+        footer.className = "qr-card-footer";
+        footer.innerHTML = `
+          <span class="qr-card-badge">${act.badge.split("·")[0].trim()}</span>
+          <button class="qr-card-present-btn" type="button">▶ Present</button>
+        `;
+        card.appendChild(footer);
+
+        // Click to launch in TV Slideshow
+        card.addEventListener("click", function() {
+          switchToSlideshow();
+          renderSlide(idx);
+        });
+
+        qrCardsGrid.appendChild(card);
+      });
+
+      gridCountBadge.innerText = "Showing " + count + " of " + activities.length + " activities";
+    }
+
+    if (gridSearchInput) {
+      gridSearchInput.addEventListener("input", function() {
+        renderGrid(gridSearchInput.value);
+      });
+    }
+
+    /* ------------------------------------------------------------- */
+    /* VIEW SWITCHING & FULLSCREEN                                   */
+    /* ------------------------------------------------------------- */
+    function switchToSlideshow() {
+      btnViewSlideshow.classList.add("active");
+      btnViewGrid.classList.remove("active");
+      slideshowView.style.display = "flex";
+      gridView.style.display = "none";
+      resetSlideTimer();
+    }
+
+    function switchToGrid() {
+      btnViewGrid.classList.add("active");
+      btnViewSlideshow.classList.remove("active");
+      slideshowView.style.display = "none";
+      gridView.style.display = "flex";
+      if (slideTimer) clearTimeout(slideTimer);
+      if (progressInterval) clearInterval(progressInterval);
+      renderGrid(gridSearchInput ? gridSearchInput.value : "");
+    }
+
+    btnViewSlideshow.addEventListener("click", switchToSlideshow);
+    btnViewGrid.addEventListener("click", switchToGrid);
+
+    function toggleFullscreen() {
+      var isFs = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
+      if (isFs) {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      } else {
+        var el = document.documentElement;
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      }
+    }
+
+    btnFullscreen.addEventListener("click", toggleFullscreen);
+
+    function handleFsChange() {
+      var isFs = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
+      if (isFs) {
+        document.body.classList.add("fullscreen-active");
+        btnFullscreen.innerHTML = "⛶ Exit Fullscreen";
+      } else {
+        document.body.classList.remove("fullscreen-active");
+        btnFullscreen.innerHTML = "⛶ Fullscreen";
+      }
+    }
+
+    document.addEventListener("fullscreenchange", handleFsChange);
+    document.addEventListener("webkitfullscreenchange", handleFsChange);
+
+    /* Copy Link with Toast */
+    function showToast(msg) {
+      toastBanner.innerText = msg;
+      toastBanner.classList.add("show");
+      setTimeout(function() { toastBanner.classList.remove("show"); }, 2200);
+    }
+
+    btnCopyLink.addEventListener("click", function() {
+      var url = document.getElementById("slide-url-text").innerText;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(() => showToast("✓ Copied URL to clipboard!"));
+      } else {
+        showToast("✓ URL: " + url);
+      }
+    });
+
+    btnRescan.addEventListener("click", async function() {
+      btnRescan.innerText = "⏳ Scanning...";
+      await discoverActivities();
+      initDots();
+      renderSlide(0);
+      renderGrid();
+      btnRescan.innerText = "🔄 Refresh List";
+      showToast("✓ Refreshed! Discovered " + activities.length + " activities.");
+    });
+
+    /* Keyboard Shortcuts */
+    document.addEventListener("keydown", function(e) {
+      if (e.target.tagName === "INPUT") return;
+
+      if (e.key === "ArrowLeft") {
+        renderSlide(currentIndex - 1);
+      } else if (e.key === "ArrowRight") {
+        renderSlide(currentIndex + 1);
+      } else if (e.key === " ") {
+        e.preventDefault();
+        togglePlayPause();
+      } else if (e.key === "f" || e.key === "F") {
+        toggleFullscreen();
+      } else if (e.key === "g" || e.key === "G") {
+        if (slideshowView.style.display !== "none") switchToGrid();
+        else switchToSlideshow();
+      } else if (e.key >= "1" && e.key <= "9") {
+        var num = parseInt(e.key) - 1;
+        if (num < activities.length) renderSlide(num);
+      }
+    });
+
+    /* ------------------------------------------------------------- */
+    /* INIT APP                                                      */
+    /* ------------------------------------------------------------- */
+    async function init() {
+      await discoverActivities();
+      initDots();
+      renderSlide(0);
+      renderGrid();
+    }
+
+    init();
+  </script>
+</body>
+</html>
