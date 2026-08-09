@@ -1217,6 +1217,498 @@
       0%, 100% { opacity: 1; border-color: var(--warning); }
       50% { opacity: 0.5; border-color: rgba(245, 158, 11, 0.3); }
     }
+
+    /* ------------------------------------------------------------- */
+    /* 4. BIG WIDESCREEN STORYBOARD VIEW (SIZE-MAXIMIZED CLASSROOM DISPLAY) */
+    /* ------------------------------------------------------------- */
+    #widescreen-container {
+      position: absolute;
+      top: var(--header-h);
+      left: 0;
+      width: 100vw;
+      height: calc(100vh - var(--header-h));
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 35%, #182030 0%, #0d121c 65%, #06080d 100%);
+      display: none;
+      flex-direction: column;
+      padding: 8px 14px 10px;
+      gap: 6px;
+      user-select: none;
+    }
+
+    /* Fullscreen presentation mode overrides */
+    #widescreen-container.is-fullscreen {
+      top: 0;
+      height: 100vh;
+      padding: 6px 12px 8px;
+    }
+
+    .ws-header-bar {
+      width: 100%;
+      max-width: 2560px;
+      margin: 0 auto;
+      background: rgba(18, 22, 34, 0.94);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 6px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex: 0 0 auto;
+      z-index: 10;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .ws-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ws-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, rgba(79, 126, 248, 0.25), rgba(99, 102, 241, 0.25));
+      border: 1px solid rgba(129, 140, 248, 0.4);
+      color: #93c5fd;
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+
+    .ws-title-text {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ws-title-text span {
+      font-size: 0.76rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .ws-controls-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .ws-segmented-control {
+      display: flex;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      gap: 2px;
+    }
+
+    .ws-seg-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .ws-seg-btn:hover { color: #ffffff; }
+
+    .ws-seg-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 2px 6px var(--accent-glow);
+    }
+
+    .ws-tool-btn {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ws-tool-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .ws-tool-btn.primary {
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      border-color: #60a5fa;
+      color: #ffffff;
+    }
+    .ws-tool-btn.primary:hover {
+      box-shadow: 0 0 14px rgba(99, 102, 241, 0.6);
+      transform: translateY(-1px);
+    }
+
+    /* Widescreen Storyboard Viewport Area */
+    .ws-board-wrapper {
+      flex: 1;
+      width: 100%;
+      max-width: 2560px;
+      margin: 0 auto;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Dynamic Grid Container */
+    #widescreen-grid {
+      display: grid;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Individual Widescreen Story Card */
+    .ws-card {
+      position: relative;
+      background: #ffffff;
+      border-radius: 8px;
+      border: 2px solid #cbd5e1;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+      aspect-ratio: 1.414 / 1;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      margin: auto;
+    }
+
+    .ws-card:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), 0 0 20px rgba(99, 102, 241, 0.6);
+      border-color: #818cf8;
+      z-index: 50;
+    }
+
+    /* Narrative Stage Tint Borders on hover */
+    .ws-card.stage-beginning:hover {
+      border-color: #34d399;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), 0 0 20px rgba(16, 185, 129, 0.6);
+    }
+    .ws-card.stage-middle:hover {
+      border-color: #fbbf24;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), 0 0 20px rgba(245, 158, 11, 0.6);
+    }
+    .ws-card.stage-ending:hover {
+      border-color: #c084fc;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.85), 0 0 20px rgba(192, 132, 252, 0.6);
+    }
+
+    .ws-card-img-wrap {
+      width: 100%;
+      height: 100%;
+      flex: 1;
+      min-height: 0;
+      background: #f8fafc;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ws-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      display: block;
+    }
+
+    /* Prominent Number Badge */
+    .ws-card-badge {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      min-width: 26px;
+      height: 26px;
+      padding: 0 6px;
+      border-radius: 6px;
+      background: rgba(15, 23, 42, 0.9);
+      color: #ffffff;
+      font-size: 0.88rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+      letter-spacing: -0.02em;
+      transition: all 0.2s ease;
+    }
+
+    .ws-card.stage-beginning .ws-card-badge {
+      background: #059669;
+      border-color: #a7f3d0;
+    }
+    .ws-card.stage-middle .ws-card-badge {
+      background: #d97706;
+      border-color: #fde68a;
+    }
+    .ws-card.stage-ending .ws-card-badge {
+      background: #7c3aed;
+      border-color: #ddd6fe;
+    }
+
+    /* Stage Tag Indicator on bottom right of card */
+    .ws-card-stage-tag {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      z-index: 10;
+    }
+
+    .ws-card-stage-tag.beginning { color: #6ee7b7; border-color: rgba(52, 211, 153, 0.4); }
+    .ws-card-stage-tag.middle { color: #fde047; border-color: rgba(250, 204, 21, 0.4); }
+    .ws-card-stage-tag.ending { color: #d8b4fe; border-color: rgba(192, 132, 252, 0.4); }
+
+    /* Zoom Inspect Pill on Hover */
+    .ws-card-zoom-hint {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.85);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+    .ws-card:hover .ws-card-zoom-hint {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Clean Art Mode: Hides badges and tags */
+    .badges-mode-none .ws-card-badge,
+    .badges-mode-none .ws-card-stage-tag {
+      display: none !important;
+    }
+
+    .badges-mode-numbers .ws-card-stage-tag {
+      display: none !important;
+    }
+
+    /* ------------------------------------------------------------- */
+    /* SPOTLIGHT THEATER PROJECTOR MODAL (GIANT VIEW ON CLICK)       */
+    /* ------------------------------------------------------------- */
+    #widescreen-spotlight-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(4, 6, 12, 0.96);
+      backdrop-filter: blur(16px);
+      z-index: 30000;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      user-select: none;
+    }
+
+    #widescreen-spotlight-modal.active {
+      display: flex;
+    }
+
+    .ws-spotlight-box {
+      position: relative;
+      width: 95vw;
+      height: 92vh;
+      max-width: 1800px;
+      display: flex;
+      flex-direction: column;
+      background: #0f1422;
+      border: 2px solid rgba(129, 140, 248, 0.4);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.95), 0 0 50px rgba(99, 102, 241, 0.3);
+    }
+
+    .ws-spotlight-header {
+      padding: 10px 20px;
+      background: rgba(18, 22, 34, 0.95);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex: 0 0 auto;
+    }
+
+    .ws-spotlight-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ws-spotlight-badge {
+      font-size: 0.85rem;
+      font-weight: 900;
+      color: #ffe86b;
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .ws-spotlight-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .ws-spotlight-stage {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .ws-spotlight-close {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #ffffff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .ws-spotlight-close:hover {
+      background: #ef4444;
+      transform: scale(1.1);
+    }
+
+    .ws-spotlight-body {
+      flex: 1;
+      min-height: 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000000;
+      padding: 12px;
+    }
+
+    .ws-spotlight-img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+      background: #ffffff;
+    }
+
+    .ws-spotlight-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(18, 22, 34, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      font-size: 1.6rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      z-index: 10;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    }
+    .ws-spotlight-nav-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-50%) scale(1.1);
+    }
+    .ws-spotlight-nav-btn.prev { left: 16px; }
+    .ws-spotlight-nav-btn.next { right: 16px; }
+
+    .ws-spotlight-footer {
+      padding: 8px 20px;
+      background: rgba(18, 22, 34, 0.95);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .ws-header-bar { flex-direction: column; align-items: stretch; gap: 8px; }
+      .ws-controls-group { justify-content: center; }
+      .ws-spotlight-box { width: 98vw; height: 96vh; }
+      .ws-spotlight-title { font-size: 0.95rem; }
+    }
   </style>
 </head>
 <body>
@@ -1229,6 +1721,7 @@
     </div>
     <div class="nav-tabs">
       <button id="tab-read" class="tab-btn active"><span class="icon">📖</span> Read Story</button>
+      <button id="tab-widescreen" class="tab-btn"><span class="icon">🖥️</span> Big Widescreen View</button>
       <button id="tab-activity" class="tab-btn"><span class="icon">🧩</span> Sequence Activity</button>
       <button id="tab-song" class="tab-btn"><span class="icon">🎵</span> Song</button>
     </div>
@@ -1250,6 +1743,72 @@
     <svg id="exit-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
       <path d="M4 14h6v6m10-6h-6v6M4 10h6V4m10 6h-6V4"></path>
     </svg>
+  </div>
+
+  <!-- 2. BIG WIDESCREEN STORYBOARD VIEW (SIZE-MAXIMIZED FOR CLASSROOM PROJECTION) -->
+  <div id="widescreen-container">
+    <div class="ws-header-bar">
+      <div class="ws-title-group">
+        <span class="ws-badge">🖥️ Widescreen Storyboard</span>
+        <div class="ws-title-text">The Good Bird <span>• 13 Complete Scenes</span></div>
+      </div>
+      
+      <div class="ws-controls-group">
+        <!-- Layout Switcher -->
+        <div class="ws-segmented-control" title="Change Widescreen Grid Layout">
+          <button id="ws-layout-auto" class="ws-seg-btn active" type="button">⚡ Auto Max-Size</button>
+          <button id="ws-layout-3rows" class="ws-seg-btn" type="button">🔲 3 Rows (5-4-4)</button>
+          <button id="ws-layout-2rows" class="ws-seg-btn" type="button">🔳 2 Rows (7 &amp; 6)</button>
+          <button id="ws-layout-1row" class="ws-seg-btn" type="button">🎞️ 1 Row</button>
+          <button id="ws-layout-4rows" class="ws-seg-btn" type="button">🧱 4 Rows</button>
+        </div>
+
+        <!-- Badges & Labels Switcher -->
+        <div class="ws-segmented-control" title="Toggle Scene Labels and Badges">
+          <button id="ws-badges-num" class="ws-seg-btn active" type="button">🔢 Numbers</button>
+          <button id="ws-badges-stages" class="ws-seg-btn" type="button">🏷️ Stages</button>
+          <button id="ws-badges-clean" class="ws-seg-btn" type="button">✨ Clean Art</button>
+        </div>
+
+        <!-- Presentation Actions -->
+        <button id="btn-ws-spotlight-tour" class="ws-tool-btn primary" type="button" title="Start Scene Walkthrough">
+          🔍 Spotlight
+        </button>
+        <button id="btn-ws-fullscreen" class="ws-tool-btn" type="button" title="Toggle True Fullscreen Presentation (F)">
+          ⛶ Fullscreen
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Screen Viewport: Auto-Fitting Storyboard -->
+    <div id="ws-board-wrapper" class="ws-board-wrapper">
+      <div id="widescreen-grid" class="badges-mode-numbers"></div>
+    </div>
+  </div>
+
+  <!-- Big Widescreen Spotlight Theater Lightbox -->
+  <div id="widescreen-spotlight-modal">
+    <div class="ws-spotlight-box">
+      <div class="ws-spotlight-header">
+        <div class="ws-spotlight-info">
+          <span id="ws-spotlight-badge" class="ws-spotlight-badge">Scene 1 of 13</span>
+          <div>
+            <div id="ws-spotlight-title" class="ws-spotlight-title">Scene 1: Introduction</div>
+            <div id="ws-spotlight-stage" class="ws-spotlight-stage">🌱 Beginning Stage</div>
+          </div>
+        </div>
+        <button id="ws-spotlight-close" class="ws-spotlight-close" title="Close Spotlight (Esc)">✕</button>
+      </div>
+      <div class="ws-spotlight-body">
+        <button id="ws-spotlight-prev" class="ws-spotlight-nav-btn prev" title="Previous Scene (←)">‹</button>
+        <img id="ws-spotlight-img" class="ws-spotlight-img" src="" alt="Spotlight Scene">
+        <button id="ws-spotlight-next" class="ws-spotlight-nav-btn next" title="Next Scene (→ or Space)">›</button>
+      </div>
+      <div class="ws-spotlight-footer">
+        <span>💡 Controls: <strong>← / →</strong> (Navigate) • <strong>Space</strong> (Advance) • <strong>1–9</strong> (Jump) • <strong>Esc</strong> (Exit) • <strong>F</strong> (Fullscreen)</span>
+        <span>Click outside or press <strong>Esc</strong> to return to Storyboard</span>
+      </div>
+    </div>
   </div>
 
   <!-- 2. Fullscreen Video Song View & Interactive Cloze Game -->
@@ -1506,8 +2065,8 @@
         };
         await page.render(renderContext).promise;
 
-        // 2. Generate high-resolution thumbnail for Tabletop Cards (600px width render for extreme clarity)
-        var thumbScale = 600 / viewport.width;
+        // 2. Generate high-resolution thumbnail for Tabletop Cards & Widescreen Display (1400px+ width for extreme clarity)
+        var thumbScale = Math.max(1400, (window.innerWidth || 1920) * 1.2) / viewport.width;
         var thumbViewport = page.getViewport({ scale: thumbScale });
         var thumbCanvas = document.createElement("canvas");
         thumbCanvas.width = thumbViewport.width;
@@ -1519,7 +2078,7 @@
           viewport: thumbViewport
         }).promise;
         
-        pageThumbnails.push(thumbCanvas.toDataURL("image/jpeg", 0.90));
+        pageThumbnails.push(thumbCanvas.toDataURL("image/jpeg", 0.92));
       }
 
       // Hide loading spinner
@@ -1530,8 +2089,10 @@
       contentHeight = container.offsetHeight;
       centerContent();
 
-      // Init activity game board
+      // Init activity game board & widescreen storyboard
       initActivityBoard();
+      initWidescreenBoard();
+      checkUrlHash();
     }).catch(function(err) {
       console.error(err);
       loading.innerText = "Error loading story.";
@@ -1539,9 +2100,11 @@
 
     // Navigation Tabs logic
     var tabRead = document.getElementById("tab-read");
+    var tabWidescreen = document.getElementById("tab-widescreen");
     var tabActivity = document.getElementById("tab-activity");
     var tabSong = document.getElementById("tab-song");
     var viewerContainer = document.getElementById("viewer-container");
+    var widescreenContainer = document.getElementById("widescreen-container");
     var activityContainer = document.getElementById("activity-container");
     var songContainer = document.getElementById("song-container");
     var songVideo = document.getElementById("song-video");
@@ -1553,17 +2116,32 @@
       }
     }
 
-    tabRead.addEventListener("click", function() {
-      tabRead.classList.add("active");
-      tabActivity.classList.remove("active");
-      tabSong.classList.remove("active");
-      viewerContainer.style.display = "block";
+    function switchTab(activeTab) {
+      [tabRead, tabWidescreen, tabActivity, tabSong].forEach(function(t) {
+        if (t) t.classList.remove("active");
+      });
+      activeTab.classList.add("active");
+      
+      viewerContainer.style.display = "none";
+      widescreenContainer.style.display = "none";
       activityContainer.style.display = "none";
       songContainer.style.display = "none";
-      fullscreenBtn.style.display = "flex";
+      fullscreenBtn.style.display = "none";
       pauseSongVideo();
+    }
+
+    tabRead.addEventListener("click", function() {
+      switchTab(tabRead);
+      viewerContainer.style.display = "block";
+      fullscreenBtn.style.display = "flex";
       contentHeight = container.offsetHeight;
       centerContent();
+    });
+
+    tabWidescreen.addEventListener("click", function() {
+      switchTab(tabWidescreen);
+      widescreenContainer.style.display = "flex";
+      recalculateWidescreenLayout();
     });
 
     /* ------------------------------------------------------------- */
@@ -1647,24 +2225,13 @@
     }
 
     tabActivity.addEventListener("click", function() {
-      tabActivity.classList.add("active");
-      tabRead.classList.remove("active");
-      tabSong.classList.remove("active");
-      viewerContainer.style.display = "none";
+      switchTab(tabActivity);
       activityContainer.style.display = "block";
-      songContainer.style.display = "none";
-      fullscreenBtn.style.display = "none";
-      pauseSongVideo();
     });
 
     tabSong.addEventListener("click", function() {
-      tabSong.classList.add("active");
-      tabRead.classList.remove("active");
-      tabActivity.classList.remove("active");
-      viewerContainer.style.display = "none";
-      activityContainer.style.display = "none";
+      switchTab(tabSong);
       songContainer.style.display = "flex";
-      fullscreenBtn.style.display = "none";
       if (songVideo) {
         songVideo.currentTime = 0;
         songVideo.play().catch(function() {});
@@ -3052,11 +3619,370 @@
       requestAnimationFrame(frame);
     }
 
-    // Re-center reader on window resize
+    /* ------------------------------------------------------------- */
+    /* BIG WIDESCREEN STORYBOARD JAVASCRIPT ENGINE                  */
+    /* ------------------------------------------------------------- */
+    var widescreenGrid = document.getElementById("widescreen-grid");
+    var wsBoardWrapper = document.getElementById("ws-board-wrapper");
+    var wsSpotlightModal = document.getElementById("widescreen-spotlight-modal");
+    var wsSpotlightImg = document.getElementById("ws-spotlight-img");
+    var wsSpotlightBadge = document.getElementById("ws-spotlight-badge");
+    var wsSpotlightTitle = document.getElementById("ws-spotlight-title");
+    var wsSpotlightStage = document.getElementById("ws-spotlight-stage");
+    var wsSpotlightClose = document.getElementById("ws-spotlight-close");
+    var wsSpotlightPrev = document.getElementById("ws-spotlight-prev");
+    var wsSpotlightNext = document.getElementById("ws-spotlight-next");
+    var btnWsFullscreen = document.getElementById("btn-ws-fullscreen");
+    var btnWsSpotlightTour = document.getElementById("btn-ws-spotlight-tour");
+
+    var currentWsLayout = "auto"; // "auto", "3rows", "2rows", "1row", "4rows"
+    var currentWsBadgeMode = "numbers"; // "numbers", "stages", "none"
+    var currentSpotlightIndex = 0;
+
+    // Narrative Stage descriptions for The Good Bird
+    var wsStageInfo = [
+      { name: "Beginning", class: "stage-beginning", tag: "🌱 Beginning", desc: "A pink bird takes flight & meets an orange fish in a bowl" },
+      { name: "Beginning", class: "stage-beginning", tag: "🌱 Beginning", desc: "The bird perches on the windowsill to visit the fish" },
+      { name: "Beginning", class: "stage-beginning", tag: "🌱 Beginning", desc: "The lonely fish has no food and wishes for a treat" },
+      { name: "Middle", class: "stage-middle", tag: "⚡ Middle", desc: "The bird flies down to search the garden lawn" },
+      { name: "Middle", class: "stage-middle", tag: "⚡ Middle", desc: "The bird looks carefully for food in the grass" },
+      { name: "Middle", class: "stage-middle", tag: "⚡ Middle", desc: "The bird discovers an earthworm in the soil" },
+      { name: "Middle", class: "stage-middle", tag: "⚡ Middle", desc: "The bird catches the tasty worm with its beak" },
+      { name: "Middle", class: "stage-middle", tag: "⚡ Middle", desc: "The bird carries the worm through the air" },
+      { name: "Middle", class: "stage-middle", tag: "⚡ Middle", desc: "The bird arrives back at the windowsill" },
+      { name: "Ending", class: "stage-ending", tag: "✨ Ending", desc: "The bird drops the fresh worm into the fishbowl" },
+      { name: "Ending", class: "stage-ending", tag: "✨ Ending", desc: "The happy fish enjoys its delicious meal" },
+      { name: "Ending", class: "stage-ending", tag: "✨ Ending", desc: "The bird and fish share a warm friendship moment" },
+      { name: "Ending", class: "stage-ending", tag: "✨ Ending", desc: "A joyful celebration of kindness and friendship" }
+    ];
+
+    function getWsStageInfo(idx) {
+      if (idx < 3) return wsStageInfo[idx] || { name: "Beginning", class: "stage-beginning", tag: "🌱 Beginning", desc: "Beginning Scene" };
+      if (idx < 9) return wsStageInfo[idx] || { name: "Middle", class: "stage-middle", tag: "⚡ Middle", desc: "Middle Scene" };
+      return wsStageInfo[idx] || { name: "Ending", class: "stage-ending", tag: "✨ Ending", desc: "Ending Scene" };
+    }
+
+    function initWidescreenBoard() {
+      renderWidescreenCards();
+      recalculateWidescreenLayout();
+    }
+
+    function renderWidescreenCards() {
+      if (!widescreenGrid) return;
+      widescreenGrid.innerHTML = "";
+      widescreenGrid.className = "badges-mode-" + currentWsBadgeMode;
+
+      for (var i = 0; i < totalPages; i++) {
+        var stage = getWsStageInfo(i);
+        var card = document.createElement("div");
+        card.className = "ws-card " + stage.class;
+        card.dataset.pageIndex = i;
+        card.title = "Scene " + (i + 1) + ": " + stage.desc + " (Click to zoom)";
+
+        // Number Badge
+        var badge = document.createElement("div");
+        badge.className = "ws-card-badge";
+        badge.innerText = (i + 1);
+        card.appendChild(badge);
+
+        // Stage Tag
+        var stageTag = document.createElement("div");
+        stageTag.className = "ws-card-stage-tag " + stage.name.toLowerCase();
+        stageTag.innerText = stage.tag;
+        card.appendChild(stageTag);
+
+        // Zoom hint icon
+        var zoomHint = document.createElement("div");
+        zoomHint.className = "ws-card-zoom-hint";
+        zoomHint.innerText = "🔍";
+        card.appendChild(zoomHint);
+
+        // Image Wrap
+        var imgWrap = document.createElement("div");
+        imgWrap.className = "ws-card-img-wrap";
+
+        var img = document.createElement("img");
+        img.className = "ws-card-img";
+        img.src = pageThumbnails[i] || "";
+        img.alt = "Scene " + (i + 1);
+        imgWrap.appendChild(img);
+        card.appendChild(imgWrap);
+
+        // Click to open Spotlight
+        (function(index) {
+          card.addEventListener("click", function() {
+            openWsSpotlight(index);
+          });
+        })(i);
+
+        widescreenGrid.appendChild(card);
+      }
+    }
+
+    function recalculateWidescreenLayout() {
+      if (!widescreenContainer || widescreenContainer.style.display !== "flex") return;
+      if (!wsBoardWrapper || !widescreenGrid) return;
+
+      var wrapWidth = wsBoardWrapper.clientWidth;
+      var wrapHeight = wsBoardWrapper.clientHeight;
+      if (wrapWidth <= 0 || wrapHeight <= 0) return;
+
+      var gap = 8;
+      var cardRatio = 1.414; // A4 landscape width/height
+
+      var cols = 5;
+      var rows = 3;
+
+      if (currentWsLayout === "1row") {
+        cols = 13;
+        rows = 1;
+      } else if (currentWsLayout === "2rows") {
+        cols = 7;
+        rows = 2;
+      } else if (currentWsLayout === "3rows") {
+        cols = 5;
+        rows = 3;
+      } else if (currentWsLayout === "4rows") {
+        cols = 4;
+        rows = 4;
+      } else {
+        // "auto" mode: Mathematically find configuration that maximizes card area (w * h)
+        var candidates = [
+          { cols: 5, rows: 3 }, // 5 cols (5, 4, 4) - perfect for standard 16:9 widescreen!
+          { cols: 7, rows: 2 }, // 7 cols (7, 6)
+          { cols: 4, rows: 4 }, // 4 cols (4, 3, 3, 3)
+          { cols: 13, rows: 1 } // 13 cols (panorama)
+        ];
+
+        var bestArea = 0;
+        var bestConfig = candidates[0];
+
+        for (var c = 0; c < candidates.length; c++) {
+          var testCols = candidates[c].cols;
+          var testRows = candidates[c].rows;
+
+          var maxWByWidth = (wrapWidth - (testCols - 1) * gap) / testCols;
+          var maxHByHeight = (wrapHeight - (testRows - 1) * gap) / testRows;
+
+          var cardW = Math.min(maxWByWidth, maxHByHeight * cardRatio);
+          var cardH = cardW / cardRatio;
+
+          var area = cardW * cardH;
+          if (area > bestArea) {
+            bestArea = area;
+            bestConfig = candidates[c];
+          }
+        }
+
+        cols = bestConfig.cols;
+        rows = bestConfig.rows;
+      }
+
+      // Calculate maximum card dimensions that fit exactly in the wrapper without overflow
+      var maxCardWByWidth = (wrapWidth - (cols - 1) * gap) / cols;
+      var maxCardHByHeight = (wrapHeight - (rows - 1) * gap) / rows;
+
+      var finalCardW = Math.floor(Math.min(maxCardWByWidth, maxCardHByHeight * cardRatio));
+      var finalCardH = Math.floor(finalCardW / cardRatio);
+
+      // Clamp to sane minimums and maximums
+      finalCardW = Math.max(60, finalCardW);
+      finalCardH = Math.max(42, finalCardH);
+
+      // Apply CSS Grid template
+      widescreenGrid.style.gridTemplateColumns = "repeat(" + cols + ", " + finalCardW + "px)";
+      widescreenGrid.style.gridAutoRows = finalCardH + "px";
+      widescreenGrid.style.width = "auto";
+      widescreenGrid.style.height = "auto";
+      widescreenGrid.style.gap = gap + "px";
+    }
+
+    /* Layout Selection Handlers */
+    var layoutBtns = {
+      auto: document.getElementById("ws-layout-auto"),
+      "3rows": document.getElementById("ws-layout-3rows"),
+      "2rows": document.getElementById("ws-layout-2rows"),
+      "1row": document.getElementById("ws-layout-1row"),
+      "4rows": document.getElementById("ws-layout-4rows")
+    };
+
+    Object.keys(layoutBtns).forEach(function(key) {
+      var btn = layoutBtns[key];
+      if (btn) {
+        btn.addEventListener("click", function() {
+          Object.values(layoutBtns).forEach(function(b) { if (b) b.classList.remove("active"); });
+          btn.classList.add("active");
+          currentWsLayout = key;
+          recalculateWidescreenLayout();
+        });
+      }
+    });
+
+    /* Badge Mode Handlers */
+    var badgeBtns = {
+      numbers: document.getElementById("ws-badges-num"),
+      stages: document.getElementById("ws-badges-stages"),
+      none: document.getElementById("ws-badges-clean")
+    };
+
+    Object.keys(badgeBtns).forEach(function(key) {
+      var btn = badgeBtns[key];
+      if (btn) {
+        btn.addEventListener("click", function() {
+          Object.values(badgeBtns).forEach(function(b) { if (b) b.classList.remove("active"); });
+          btn.classList.add("active");
+          currentWsBadgeMode = key;
+          if (widescreenGrid) {
+            widescreenGrid.className = "badges-mode-" + currentWsBadgeMode;
+          }
+        });
+      }
+    });
+
+    /* Spotlight Modal Handlers */
+    function openWsSpotlight(index) {
+      currentSpotlightIndex = index;
+      updateWsSpotlightContent();
+      if (wsSpotlightModal) wsSpotlightModal.classList.add("active");
+    }
+
+    function updateWsSpotlightContent() {
+      if (!wsSpotlightModal || !pageThumbnails[currentSpotlightIndex]) return;
+      var stage = getWsStageInfo(currentSpotlightIndex);
+      wsSpotlightImg.src = pageThumbnails[currentSpotlightIndex];
+      wsSpotlightBadge.innerText = "Scene " + (currentSpotlightIndex + 1) + " of " + totalPages;
+      wsSpotlightTitle.innerText = "Scene " + (currentSpotlightIndex + 1) + ": " + stage.desc;
+      wsSpotlightStage.innerHTML = "<strong style='color:#ffffff;'>" + stage.tag + "</strong> (" + stage.name + " Stage)";
+      
+      wsSpotlightPrev.style.visibility = currentSpotlightIndex > 0 ? "visible" : "hidden";
+      wsSpotlightNext.style.visibility = currentSpotlightIndex < totalPages - 1 ? "visible" : "hidden";
+    }
+
+    function closeWsSpotlight() {
+      if (wsSpotlightModal) wsSpotlightModal.classList.remove("active");
+    }
+
+    if (wsSpotlightClose) {
+      wsSpotlightClose.addEventListener("click", closeWsSpotlight);
+    }
+    if (wsSpotlightModal) {
+      wsSpotlightModal.addEventListener("click", function(e) {
+        if (e.target === wsSpotlightModal) closeWsSpotlight();
+      });
+    }
+
+    if (wsSpotlightPrev) {
+      wsSpotlightPrev.addEventListener("click", function(e) {
+        e.stopPropagation();
+        if (currentSpotlightIndex > 0) {
+          currentSpotlightIndex--;
+          updateWsSpotlightContent();
+        }
+      });
+    }
+
+    if (wsSpotlightNext) {
+      wsSpotlightNext.addEventListener("click", function(e) {
+        e.stopPropagation();
+        if (currentSpotlightIndex < totalPages - 1) {
+          currentSpotlightIndex++;
+          updateWsSpotlightContent();
+        }
+      });
+    }
+
+    if (btnWsSpotlightTour) {
+      btnWsSpotlightTour.addEventListener("click", function() {
+        openWsSpotlight(0);
+      });
+    }
+
+    /* Fullscreen Mode for Widescreen Storyboard */
+    if (btnWsFullscreen) {
+      btnWsFullscreen.addEventListener("click", function() {
+        var isFs = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        if (isFs) {
+          if (document.exitFullscreen) document.exitFullscreen();
+          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        } else {
+          var el = document.documentElement;
+          if (el.requestFullscreen) el.requestFullscreen();
+          else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+        }
+      });
+    }
+
+    function handleFullscreenUi() {
+      var isFs = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+      if (widescreenContainer) {
+        if (isFs) {
+          widescreenContainer.classList.add("is-fullscreen");
+          if (btnWsFullscreen) btnWsFullscreen.innerHTML = "⛶ Exit Fullscreen";
+        } else {
+          widescreenContainer.classList.remove("is-fullscreen");
+          if (btnWsFullscreen) btnWsFullscreen.innerHTML = "⛶ Fullscreen";
+        }
+      }
+      setTimeout(recalculateWidescreenLayout, 100);
+    }
+
+    document.addEventListener("fullscreenchange", handleFullscreenUi);
+    document.addEventListener("webkitfullscreenchange", handleFullscreenUi);
+
+    /* Keyboard Shortcuts */
+    document.addEventListener("keydown", function(e) {
+      // Spotlight modal navigation
+      if (wsSpotlightModal && wsSpotlightModal.classList.contains("active")) {
+        if (e.key === "Escape") {
+          closeWsSpotlight();
+        } else if (e.key === "ArrowLeft") {
+          if (currentSpotlightIndex > 0) {
+            currentSpotlightIndex--;
+            updateWsSpotlightContent();
+          }
+        } else if (e.key === "ArrowRight" || e.key === " ") {
+          e.preventDefault();
+          if (currentSpotlightIndex < totalPages - 1) {
+            currentSpotlightIndex++;
+            updateWsSpotlightContent();
+          }
+        }
+        return;
+      }
+
+      // If widescreen view is active
+      if (widescreenContainer && widescreenContainer.style.display === "flex") {
+        if (e.key === "f" || e.key === "F") {
+          if (btnWsFullscreen) btnWsFullscreen.click();
+        } else if (e.key >= "1" && e.key <= "9") {
+          var sceneIdx = parseInt(e.key) - 1;
+          if (sceneIdx < totalPages) openWsSpotlight(sceneIdx);
+        } else if (e.key === "0") {
+          if (9 < totalPages) openWsSpotlight(9); // Scene 10
+        }
+      }
+    });
+
+    /* URL Hash routing helper */
+    function checkUrlHash() {
+      var hash = (window.location.hash || "").toLowerCase();
+      if (hash === "#widescreen" || hash === "#grid" || hash === "#board" || hash === "#all") {
+        if (tabWidescreen) tabWidescreen.click();
+      } else if (hash === "#activity" || hash === "#sequence") {
+        if (tabActivity) tabActivity.click();
+      } else if (hash === "#song" || hash === "#sing") {
+        if (tabSong) tabSong.click();
+      }
+    }
+    window.addEventListener("hashchange", checkUrlHash);
+
+    // Re-center reader or recalculate widescreen on window resize
     window.addEventListener("resize", function() {
       if (tabRead.classList.contains("active")) {
         contentHeight = container.offsetHeight;
         centerContent();
+      } else if (tabWidescreen.classList.contains("active")) {
+        recalculateWidescreenLayout();
       }
     });
   </script>
