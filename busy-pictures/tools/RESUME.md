@@ -29,7 +29,32 @@ can be corrected and the page re-merged without re-reading tiles.
 
 **Update this table after every page.**
 
-## Grammar: all 25 pages now carry the 7 `main_*` tenses — DONE
+## Grammar: all 25 pages now carry affirmative, negative, and question forms — DONE
+
+### Negative and question forms — 2026-08-09
+
+Every one of the 4,924 stored objects now has an explicit negative and an
+explicit question beside each of the seven live `main_*` tense answers:
+
+- 34,468 negative answers;
+- 34,468 question answers;
+- 68,936 new stored answers in total, with no runtime conjugation or negation.
+
+The viewer has a three-way **Affirmative / Negative / Question** selector. Its
+choice is remembered on the device, changes the Bengali instruction, formula,
+and example, and immediately refreshes the answer for the selected object.
+
+`tools/author_tense_forms.py` is the source pipeline. It uses hand-authored
+semantic contrasts by entity/action type instead of negating the visible fact:
+moving subjects contrast with staying still, fixed scenery with moving from its
+place, observers with looking away, vehicles with breaking down, wearables with
+wearing out, and so on. Visual actions and locations in object labels take
+priority over suspect legacy grammar. The two richest page-1 examples are
+authored line by line in `HAND_AUTHORED`. The script validates all 68,936 keys
+and writes both data copies. Re-run it after any label or main-tense rewrite.
+
+The active navigation still shows verified pictures 1–22. Pictures 23–25 keep
+all three grammar forms in the data but remain hidden pending box repair.
 
 ### Label correction batch — 2026-08-05
 
@@ -46,8 +71,9 @@ The viewer's prompt list maps all 7 grammar points to `main_simple_present`,
 
 - Pages 1–10 already had them (hand-authored, richest on page 1).
 - Pages 11–25 were generated: **2,344 objects**, 16,408 sentences.
-- Whole book: **4,524 objects × 7 = 31,668 sentences**, none missing.
-- `var images` now lists all 25 pages, so 11–25 are reachable in the app.
+- Whole book: **4,924 objects × 7 = 34,468 affirmative sentences**, none missing.
+- `var images` lists the 22 verified pages; 23–25 stay out of navigation until
+  their annotation boxes have been repaired.
 
 ### How the generation works
 
