@@ -382,5 +382,65 @@
     "title": "At the Police Station",
     "front": "pages/page_127.png",
     "back": "pages/page_128.png"
+  },
+  {
+    "id": "at-the-campsite",
+    "title": "At the Campsite",
+    "front": "pages/page_129.png",
+    "back": "pages/page_130.png"
+  },
+  {
+    "id": "board-games",
+    "title": "Board Games",
+    "front": "pages/page_131.png",
+    "back": "pages/page_132.png"
+  },
+  {
+    "id": "jewelry",
+    "title": "Jewelry",
+    "front": "pages/page_133.png",
+    "back": "pages/page_134.png"
+  },
+  {
+    "id": "computer-equipment",
+    "title": "Computer Equipment",
+    "front": "pages/page_135.png",
+    "back": "pages/page_136.png"
+  },
+  {
+    "id": "emergency-room",
+    "title": "Emergency Room",
+    "front": "pages/page_137.png",
+    "back": "pages/page_138.png"
+  },
+  {
+    "id": "car-parts",
+    "title": "Car Parts",
+    "front": "pages/page_139.png",
+    "back": "pages/page_140.png"
+  },
+  {
+    "id": "ancient-egypt",
+    "title": "Ancient Egypt",
+    "front": "pages/page_141.png",
+    "back": "pages/page_142.png"
+  },
+  {
+    "id": "flowers",
+    "title": "Flowers",
+    "front": "pages/page_143.png",
+    "back": "pages/page_144.png"
+  },
+  {
+    "id": "birds",
+    "title": "Birds",
+    "front": "pages/page_145.png",
+    "back": "pages/page_146.png"
+  },
+  {
+    "id": "kitchen-appliances",
+    "title": "Kitchen Appliances",
+    "front": "pages/page_147.png",
+    "back": "pages/page_148.png"
   }
 ]

@@ -9,7 +9,7 @@
     "kind": "pdf"
   },
   "cards_file": "cards.json",
-  "card_count": 64,
+  "card_count": 74,
   "pages": [
     {
       "id": "page_001",
@@ -778,6 +778,126 @@
       "image": "pages/page_128.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_129",
+      "image": "pages/page_129.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_130",
+      "image": "pages/page_130.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_131",
+      "image": "pages/page_131.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_132",
+      "image": "pages/page_132.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_133",
+      "image": "pages/page_133.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_134",
+      "image": "pages/page_134.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_135",
+      "image": "pages/page_135.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_136",
+      "image": "pages/page_136.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_137",
+      "image": "pages/page_137.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_138",
+      "image": "pages/page_138.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_139",
+      "image": "pages/page_139.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_140",
+      "image": "pages/page_140.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_141",
+      "image": "pages/page_141.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_142",
+      "image": "pages/page_142.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_143",
+      "image": "pages/page_143.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_144",
+      "image": "pages/page_144.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_145",
+      "image": "pages/page_145.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_146",
+      "image": "pages/page_146.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_147",
+      "image": "pages/page_147.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_148",
+      "image": "pages/page_148.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -979,6 +1099,56 @@
     {
       "id": "at-the-police-station",
       "title": "At the Police Station",
+      "band_color": "orange"
+    },
+    {
+      "id": "at-the-campsite",
+      "title": "At the Campsite",
+      "band_color": "green"
+    },
+    {
+      "id": "board-games",
+      "title": "Board Games",
+      "band_color": "orange"
+    },
+    {
+      "id": "jewelry",
+      "title": "Jewelry",
+      "band_color": "red"
+    },
+    {
+      "id": "computer-equipment",
+      "title": "Computer Equipment",
+      "band_color": "green"
+    },
+    {
+      "id": "emergency-room",
+      "title": "Emergency Room",
+      "band_color": "orange"
+    },
+    {
+      "id": "car-parts",
+      "title": "Car Parts",
+      "band_color": "red"
+    },
+    {
+      "id": "ancient-egypt",
+      "title": "Ancient Egypt",
+      "band_color": "blue"
+    },
+    {
+      "id": "flowers",
+      "title": "Flowers",
+      "band_color": "orange"
+    },
+    {
+      "id": "birds",
+      "title": "Birds",
+      "band_color": "blue"
+    },
+    {
+      "id": "kitchen-appliances",
+      "title": "Kitchen Appliances",
       "band_color": "orange"
     }
   ]
