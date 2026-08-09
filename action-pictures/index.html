@@ -148,18 +148,20 @@
     .hud {
       position: fixed;
       z-index: 50;
-      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
       pointer-events: auto;
+      visibility: visible;
     }
 
     body.hud-hidden .hud {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(10px);
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+      transform: translateY(16px) !important;
     }
 
     body.hud-hidden .hud-top {
-      transform: translateY(-10px);
+      transform: translateY(-24px) !important;
     }
 
     /* ── TOP HEADER HUD ── */
@@ -328,7 +330,7 @@
     }
 
     body.hud-hidden .hud-bottom {
-      transform: translateX(-50%) translateY(16px);
+      transform: translateX(-50%) translateY(28px) !important;
     }
 
     .divider {
@@ -370,7 +372,8 @@
       font-size: 1.3rem;
       cursor: pointer;
       z-index: 40;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
+      visibility: visible;
     }
 
     .flank-btn:hover {
@@ -393,8 +396,17 @@
     }
 
     body.hud-hidden .flank-btn {
-      opacity: 0;
-      pointer-events: none;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+    }
+
+    body.hud-hidden .flank-prev {
+      transform: translateY(-50%) translateX(-24px) !important;
+    }
+
+    body.hud-hidden .flank-next {
+      transform: translateY(-50%) translateX(24px) !important;
     }
 
     /* ── TOAST NOTIFICATION ── */
@@ -1137,6 +1149,7 @@
       loadPicture(initialIndex, false);
       renderGallery();
       setupEventListeners();
+      showHUD(3500);
     }
 
     // ── LOAD PICTURE ──
@@ -1265,9 +1278,39 @@
       }
     }
 
+    let hudTimeout = null;
+
+    function hideHUD() {
+      isHudVisible = false;
+      document.body.classList.add('hud-hidden');
+      if (hudTimeout) {
+        clearTimeout(hudTimeout);
+        hudTimeout = null;
+      }
+    }
+
+    function showHUD(autoHideAfter = 3500) {
+      isHudVisible = true;
+      document.body.classList.remove('hud-hidden');
+      if (hudTimeout) {
+        clearTimeout(hudTimeout);
+        hudTimeout = null;
+      }
+      if (autoHideAfter > 0) {
+        hudTimeout = setTimeout(() => {
+          if (!galleryModal.classList.contains('open') && !helpModal.classList.contains('open')) {
+            hideHUD();
+          }
+        }, autoHideAfter);
+      }
+    }
+
     function toggleHUD() {
-      isHudVisible = !isHudVisible;
-      document.body.classList.toggle('hud-hidden', !isHudVisible);
+      if (isHudVisible) {
+        hideHUD();
+      } else {
+        showHUD(3500);
+      }
     }
 
     function toggleFullscreen() {
@@ -1282,8 +1325,24 @@
         const docElm = document.documentElement;
         if (docElm.requestFullscreen) docElm.requestFullscreen();
         else if (docElm.webkitRequestFullscreen) docElm.webkitRequestFullscreen();
+        // Immediately fade away HUD on entering fullscreen
+        hideHUD();
       }
     }
+
+    function handleFullscreenChange() {
+      const isFullscreen = document.fullscreenElement || 
+                           document.webkitFullscreenElement || 
+                           document.mozFullScreenElement || 
+                           document.msFullscreenElement;
+      if (isFullscreen) {
+        hideHUD();
+      } else {
+        showHUD(3500);
+      }
+    }
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
 
     // ── GALLERY RENDERING ──
     function renderGallery() {
@@ -1568,35 +1627,60 @@
         setZoom(scale * factor, e.clientX, e.clientY);
       }, { passive: false });
 
+      let clickStartX = 0;
+      let clickStartY = 0;
+      let clickStartTime = 0;
+
       viewportContainer.addEventListener('mousedown', (e) => {
         if (e.button !== 0) return;
         isMouseDown = true;
         mouseStartX = e.clientX;
         mouseStartY = e.clientY;
+        clickStartX = e.clientX;
+        clickStartY = e.clientY;
+        clickStartTime = Date.now();
         basePosX = posX;
         basePosY = posY;
         viewportContainer.classList.add('panning');
       });
 
       window.addEventListener('mousemove', (e) => {
-        if (!isMouseDown) return;
-        if (scale > 1) {
-          e.preventDefault();
-          const dx = e.clientX - mouseStartX;
-          const dy = e.clientY - mouseStartY;
-          const newPosX = basePosX + dx;
-          const newPosY = basePosY + dy;
+        if (isMouseDown) {
+          if (scale > 1) {
+            e.preventDefault();
+            const dx = e.clientX - mouseStartX;
+            const dy = e.clientY - mouseStartY;
+            const newPosX = basePosX + dx;
+            const newPosY = basePosY + dy;
 
-          const maxPanX = (scale - 1) * window.innerWidth / 2;
-          const maxPanY = (scale - 1) * window.innerHeight / 2;
+            const maxPanX = (scale - 1) * window.innerWidth / 2;
+            const maxPanY = (scale - 1) * window.innerHeight / 2;
 
-          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
-          posY = Math.min(maxPanY, Math.max(-maxPanY, newPosY));
-          updateTransform();
+            posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
+            posY = Math.min(maxPanY, Math.max(-maxPanY, newPosY));
+            updateTransform();
+          }
+        } else {
+          // Hovering near top or bottom screen edge reveals menus smoothly
+          if (e.clientY < 60 || e.clientY > window.innerHeight - 60) {
+            if (!isHudVisible) {
+              showHUD(3000);
+            }
+          }
         }
       });
 
-      window.addEventListener('mouseup', () => {
+      window.addEventListener('mouseup', (e) => {
+        if (isMouseDown) {
+          const clickDist = Math.hypot(e.clientX - clickStartX, e.clientY - clickStartY);
+          const clickDuration = Date.now() - clickStartTime;
+          // Single click on picture / viewport background (no drag) toggles / hides HUD
+          if (clickDist < 6 && clickDuration < 350) {
+            if (!e.target.closest('.hud') && !e.target.closest('.modal-backdrop') && !e.target.closest('.flank-btn')) {
+              toggleHUD();
+            }
+          }
+        }
         isMouseDown = false;
         viewportContainer.classList.remove('panning');
       });
