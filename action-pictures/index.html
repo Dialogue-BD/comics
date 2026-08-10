@@ -810,7 +810,7 @@
   <!-- VIEWPORT / INTERACTIVE CANVAS -->
   <div id="viewport-container">
     <div id="image-stage">
-      <img id="action-img" src="" alt="Color Action Picture" class="loading">
+      <img id="action-img" src="" alt="Color Action Picture" class="loading" decoding="async" fetchpriority="high">
     </div>
 
     <!-- SPINNER -->
@@ -970,9 +970,9 @@
         </div>
 
         <div style="margin-top:20px; padding:12px; background:rgba(79,126,248,0.08); border-radius:var(--radius-sm); border:1px solid rgba(79,126,248,0.2);">
-          <div style="font-size:0.8rem; font-weight:700; color:var(--accent); margin-bottom:4px;">Language Learning Materials</div>
+          <div style="font-size:0.8rem; font-weight:700; color:var(--accent); margin-bottom:4px;">Low-data Language Learning Materials</div>
           <div style="font-size:0.75rem; color:var(--text-muted); line-height:1.45;">
-            Color action pictures set in Southeast Asia (Thailand, Cambodia, Laos, Vietnam), designed for language acquisition, story reconstruction, and communicative fluency.
+            Each visit loads one compressed picture at a time, and the gallery uses small thumbnails. The Southeast Asian scenes are designed for language acquisition, story reconstruction, and communicative fluency.
           </div>
         </div>
       </div>
@@ -1147,9 +1147,20 @@
       }
 
       loadPicture(initialIndex, false);
-      renderGallery();
       setupEventListeners();
       showHUD(3500);
+    }
+
+    function imageStem(file) {
+      return file.replace(/\.[^.]+$/, '');
+    }
+
+    function optimizedImagePath(item) {
+      return `webp/${imageStem(item.file)}.webp`;
+    }
+
+    function thumbnailPath(item) {
+      return `thumbs/${imageStem(item.file)}.webp`;
     }
 
     // ── LOAD PICTURE ──
@@ -1169,17 +1180,19 @@
 
       // Preload image
       const tempImg = new Image();
+      const optimizedSrc = optimizedImagePath(item);
       tempImg.onload = () => {
-        actionImg.src = `images/${item.file}`;
+        actionImg.src = optimizedSrc;
         actionImg.classList.remove('loading');
         loadingIndicator.classList.add('hidden');
       };
       tempImg.onerror = () => {
+        // Keep the original JPEG as a compatibility fallback.
         actionImg.src = `images/${item.file}`;
         actionImg.classList.remove('loading');
         loadingIndicator.classList.add('hidden');
       };
-      tempImg.src = `images/${item.file}`;
+      tempImg.src = optimizedSrc;
 
       // Update UI metadata
       picCode.textContent = item.code;
@@ -1190,21 +1203,9 @@
       // Update active state in gallery
       updateActiveGalleryCard();
 
-      // Preload next and previous images
-      preloadAdjacentImages();
-
       if (notifyUser) {
         showToast('🎲', `${item.code}: ${item.title}`);
       }
-    }
-
-    function preloadAdjacentImages() {
-      const nextIdx = (currentIndex + 1) % CATALOG.length;
-      const prevIdx = (currentIndex - 1 + CATALOG.length) % CATALOG.length;
-      const img1 = new Image();
-      img1.src = `images/${CATALOG[nextIdx].file}`;
-      const img2 = new Image();
-      img2.src = `images/${CATALOG[prevIdx].file}`;
     }
 
     function showRandomPicture() {
@@ -1373,7 +1374,7 @@
         return `
           <div class="thumb-card ${isCurrent ? 'active' : ''}" data-file="${item.file}">
             <div class="thumb-img-wrap">
-              <img src="images/${item.file}" alt="${item.title}" loading="lazy">
+              <img src="${thumbnailPath(item)}" alt="${item.title}" loading="lazy" decoding="async" fetchpriority="low">
               <span class="thumb-badge">${item.code}</span>
               <span class="thumb-active-indicator">CURRENT</span>
             </div>
