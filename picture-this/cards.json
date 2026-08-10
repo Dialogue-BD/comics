@@ -502,5 +502,107 @@
     "title": "At the Coffee Shop",
     "front": "pages/page_167.png",
     "back": "pages/page_168.png"
+  },
+  {
+    "id": "at-the-supermarket",
+    "title": "At the Supermarket",
+    "front": "pages/page_169.png",
+    "back": "pages/page_170.png"
+  },
+  {
+    "id": "tableware",
+    "title": "Tableware",
+    "front": "pages/page_171.png",
+    "back": "pages/page_172.png"
+  },
+  {
+    "id": "cooking-utensils",
+    "title": "Cooking Utensils",
+    "front": "pages/page_173.png",
+    "back": "pages/page_174.png"
+  },
+  {
+    "id": "fresh-fruit",
+    "title": "Fresh Fruit",
+    "front": "pages/page_175.png",
+    "back": "pages/page_176.png"
+  },
+  {
+    "id": "fresh-vegetables",
+    "title": "Fresh Vegetables",
+    "front": "pages/page_177.png",
+    "back": "pages/page_178.png"
+  },
+  {
+    "id": "pantry-basics",
+    "title": "Pantry Basics",
+    "front": "pages/page_179.png",
+    "back": "pages/page_180.png"
+  },
+  {
+    "id": "breakfast-foods",
+    "title": "Breakfast Foods",
+    "front": "pages/page_181.png",
+    "back": "pages/page_182.png"
+  },
+  {
+    "id": "home-entryway",
+    "title": "Home Entryway",
+    "front": "pages/page_183.png",
+    "back": "pages/page_184.png"
+  },
+  {
+    "id": "electrical-essentials",
+    "title": "Electrical Essentials",
+    "front": "pages/page_185.png",
+    "back": "pages/page_186.png"
+  },
+  {
+    "id": "personal-care",
+    "title": "Personal Care",
+    "front": "pages/page_187.png",
+    "back": "pages/page_188.png"
+  },
+  {
+    "id": "dishwashing",
+    "title": "Dishwashing",
+    "front": "pages/page_189.png",
+    "back": "pages/page_190.png"
+  },
+  {
+    "id": "food-storage",
+    "title": "Food Storage",
+    "front": "pages/page_191.png",
+    "back": "pages/page_192.png"
+  },
+  {
+    "id": "writing-supplies",
+    "title": "Writing Supplies",
+    "front": "pages/page_193.png",
+    "back": "pages/page_194.png"
+  },
+  {
+    "id": "bathroom-essentials",
+    "title": "Bathroom Essentials",
+    "front": "pages/page_195.png",
+    "back": "pages/page_196.png"
+  },
+  {
+    "id": "cleaning-extras",
+    "title": "Cleaning Extras",
+    "front": "pages/page_197.png",
+    "back": "pages/page_198.png"
+  },
+  {
+    "id": "parts-of-a-home",
+    "title": "Parts of a Home",
+    "front": "pages/page_199.png",
+    "back": "pages/page_200.png"
+  },
+  {
+    "id": "coffee-shop-drinks",
+    "title": "Coffee Shop Drinks",
+    "front": "pages/page_201.png",
+    "back": "pages/page_202.png"
   }
 ]

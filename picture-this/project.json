@@ -9,7 +9,7 @@
     "kind": "pdf"
   },
   "cards_file": "cards.json",
-  "card_count": 84,
+  "card_count": 101,
   "pages": [
     {
       "id": "page_001",
@@ -1018,6 +1018,210 @@
       "image": "pages/page_168.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_169",
+      "image": "pages/page_169.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_170",
+      "image": "pages/page_170.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_171",
+      "image": "pages/page_171.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_172",
+      "image": "pages/page_172.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_173",
+      "image": "pages/page_173.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_174",
+      "image": "pages/page_174.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_175",
+      "image": "pages/page_175.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_176",
+      "image": "pages/page_176.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_177",
+      "image": "pages/page_177.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_178",
+      "image": "pages/page_178.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_179",
+      "image": "pages/page_179.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_180",
+      "image": "pages/page_180.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_181",
+      "image": "pages/page_181.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_182",
+      "image": "pages/page_182.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_183",
+      "image": "pages/page_183.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_184",
+      "image": "pages/page_184.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_185",
+      "image": "pages/page_185.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_186",
+      "image": "pages/page_186.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_187",
+      "image": "pages/page_187.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_188",
+      "image": "pages/page_188.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_189",
+      "image": "pages/page_189.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_190",
+      "image": "pages/page_190.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_191",
+      "image": "pages/page_191.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_192",
+      "image": "pages/page_192.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_193",
+      "image": "pages/page_193.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_194",
+      "image": "pages/page_194.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_195",
+      "image": "pages/page_195.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_196",
+      "image": "pages/page_196.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_197",
+      "image": "pages/page_197.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_198",
+      "image": "pages/page_198.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_199",
+      "image": "pages/page_199.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_200",
+      "image": "pages/page_200.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_201",
+      "image": "pages/page_201.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_202",
+      "image": "pages/page_202.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -1320,6 +1524,91 @@
       "id": "at-the-coffee-shop",
       "title": "At the Coffee Shop",
       "band_color": "blue"
+    },
+    {
+      "id": "at-the-supermarket",
+      "title": "At the Supermarket",
+      "band_color": "green"
+    },
+    {
+      "id": "tableware",
+      "title": "Tableware",
+      "band_color": "orange"
+    },
+    {
+      "id": "cooking-utensils",
+      "title": "Cooking Utensils",
+      "band_color": "red"
+    },
+    {
+      "id": "fresh-fruit",
+      "title": "Fresh Fruit",
+      "band_color": "green"
+    },
+    {
+      "id": "fresh-vegetables",
+      "title": "Fresh Vegetables",
+      "band_color": "green"
+    },
+    {
+      "id": "pantry-basics",
+      "title": "Pantry Basics",
+      "band_color": "green"
+    },
+    {
+      "id": "breakfast-foods",
+      "title": "Breakfast Foods",
+      "band_color": "orange"
+    },
+    {
+      "id": "home-entryway",
+      "title": "Home Entryway",
+      "band_color": "blue"
+    },
+    {
+      "id": "electrical-essentials",
+      "title": "Electrical Essentials",
+      "band_color": "blue"
+    },
+    {
+      "id": "personal-care",
+      "title": "Personal Care",
+      "band_color": "red"
+    },
+    {
+      "id": "dishwashing",
+      "title": "Dishwashing",
+      "band_color": "red"
+    },
+    {
+      "id": "food-storage",
+      "title": "Food Storage",
+      "band_color": "orange"
+    },
+    {
+      "id": "writing-supplies",
+      "title": "Writing Supplies",
+      "band_color": "orange"
+    },
+    {
+      "id": "bathroom-essentials",
+      "title": "Bathroom Essentials",
+      "band_color": "blue"
+    },
+    {
+      "id": "cleaning-extras",
+      "title": "Cleaning Extras",
+      "band_color": "green"
+    },
+    {
+      "id": "parts-of-a-home",
+      "title": "Parts of a Home",
+      "band_color": "orange"
+    },
+    {
+      "id": "coffee-shop-drinks",
+      "title": "Coffee Shop Drinks",
+      "band_color": "red"
     }
   ]
 }
