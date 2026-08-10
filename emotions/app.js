@@ -2036,6 +2036,7 @@ function updateLesson(name, trail, color) {
   state.trail = [...trail];
   state.color = color;
   transcriptCard.style.setProperty("--lesson-color", color);
+  document.querySelector("#daily-poll").style.setProperty("--lesson-color", color);
   document.querySelector("#selected-emoji").textContent = emotionEmojis[name] || "🙂";
   document.querySelector("#selected-word").textContent = name;
   document.querySelector("#pronunciation").textContent = pronunciation[name.toLowerCase()] || "Tap Listen to hear the pronunciation";
@@ -2043,8 +2044,13 @@ function updateLesson(name, trail, color) {
   const primaryDefinition = primaryBangla[trail[0]];
   document.querySelector("#bangla-definition").textContent = `${trail[0]} · ${primaryDefinition.word} — ${primaryDefinition.definition}`;
   document.querySelector("#prompt-word").textContent = name.toLowerCase();
-  document.querySelector("#reason").value = "";
-  document.querySelector("#reason").placeholder = `I feel ${name.toLowerCase()} because…`;
+  const reasonInput = document.querySelector("#reason");
+  reasonInput.disabled = false;
+  reasonInput.value = "";
+  reasonInput.placeholder = `I feel ${name.toLowerCase()} because…`;
+  const pollButton = document.querySelector("#submit-poll");
+  pollButton.disabled = false;
+  pollButton.textContent = "Share anonymously";
 
   renderTranscript(name);
   renderDefinitionSection(name);
@@ -2700,6 +2706,14 @@ document.querySelector("#start-over").addEventListener("click", () => {
   if (definitionCard) definitionCard.hidden = true;
   const reflectionCard = document.querySelector("#reflection-card");
   if (reflectionCard) reflectionCard.hidden = true;
+  document.querySelector("#prompt-word").textContent = "…";
+  const reasonInput = document.querySelector("#reason");
+  reasonInput.value = "";
+  reasonInput.placeholder = "Choose a feeling from the wheel first.";
+  reasonInput.disabled = true;
+  submitPoll.textContent = "Choose a feeling to share";
+  submitPoll.disabled = true;
+  pollSubmitStatus.textContent = "";
   clearReflectionCycles();
   liveTranscript.replaceChildren();
   transcriptRows = [];
