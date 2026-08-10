@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dialogue Comics Practice</title>
+  <meta name="description" content="Practise English dialogue with illustrated comics and guided feedback for Bengali ESL learners.">
+  <meta name="theme-color" content="#143f55">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --navy: #143f55;
+      --navy-deep: #092838;
+      --blue: #3f718b;
+      --gold: #e2a93b;
+      --paper: #f6f8fa;
+      --ink: #152d3a;
+      --muted: #58717f;
+      --line: #d8e2e7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(63, 113, 139, 0.16), transparent 30rem),
+        linear-gradient(145deg, #ffffff 0%, #eef3f6 100%);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+
+    .topbar a {
+      color: var(--navy);
+      font-size: 0.9rem;
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .topbar a:hover, .topbar a:focus-visible { text-decoration: underline; }
+
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 56px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(420px, 1.14fr);
+      align-items: center;
+      gap: clamp(32px, 6vw, 72px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 16px;
+      color: var(--blue);
+      font-size: 0.76rem;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 26px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--gold);
+      content: "";
+    }
+
+    h1 {
+      max-width: 12ch;
+      margin: 0;
+      color: var(--navy-deep);
+      font-size: clamp(2.5rem, 7vw, 5.4rem);
+      line-height: 0.96;
+      letter-spacing: -0.055em;
+    }
+
+    .intro {
+      max-width: 40rem;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid var(--navy);
+      border-radius: 999px;
+      padding: 13px 22px;
+      color: #ffffff;
+      background: var(--navy);
+      box-shadow: 0 12px 28px rgba(9, 40, 56, 0.18);
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .button::after { content: "↗"; }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--navy-deep);
+      box-shadow: 0 16px 34px rgba(9, 40, 56, 0.24);
+    }
+
+    .button:focus-visible {
+      outline: 3px solid rgba(226, 169, 59, 0.55);
+      outline-offset: 4px;
+    }
+
+    .hint {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .hint strong { color: var(--navy); }
+
+    .poster-shell {
+      position: relative;
+      padding: 10px;
+      border: 1px solid rgba(20, 63, 85, 0.16);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 28px 70px rgba(20, 63, 85, 0.18);
+      transform: rotate(0.5deg);
+    }
+
+    .poster-shell::before {
+      position: absolute;
+      inset: 18px -12px -14px 18px;
+      z-index: -1;
+      border-radius: 24px;
+      background: var(--gold);
+      opacity: 0.3;
+      content: "";
+    }
+
+    .poster-shell img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+    }
+
+    .quick-start {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: clamp(52px, 8vw, 88px);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--line);
+      box-shadow: 0 16px 44px rgba(20, 63, 85, 0.08);
+    }
+
+    .step {
+      min-height: 138px;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    .step-number {
+      display: grid;
+      width: 32px;
+      height: 32px;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      color: #ffffff;
+      background: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 850;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .step strong { color: var(--ink); }
+
+    footer {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 0 0 28px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      main { padding-top: 18px; }
+      .hero { grid-template-columns: 1fr; }
+      h1 { max-width: none; }
+      .poster-shell { transform: none; }
+    }
+
+    @media (max-width: 620px) {
+      .topbar { padding: 16px 0; }
+      .topbar a:last-child { display: none; }
+      main { padding-bottom: 42px; }
+      .button { width: 100%; }
+      .quick-start { grid-template-columns: 1fr; }
+      .step { min-height: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="Activity navigation">
+    <a href="../">← All activities</a>
+    <a href="../qr/">Activity QR hub</a>
+  </nav>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Bengali ESL practice</p>
+        <h1 id="page-title">Dialogue Comics Practice</h1>
+        <p class="intro">Create an English dialogue comic, then analyse the picture and practise the conversation with guided support.</p>
+        <div class="actions">
+          <a class="button" href="https://chatgpt.com/g/g-69ff68aa600c8191bcdb26c84fc80375-dialogue-english-comics-for-bengali-esl" target="_blank" rel="noopener noreferrer">Open the practice GPT</a>
+        </div>
+        <p class="hint"><span aria-hidden="true">💬</span><span>Start by typing <strong>START</strong> in the prompt box.</span></p>
+      </div>
+
+      <div class="poster-shell">
+        <img src="instructions.png" alt="Dialogue Comics Practice instructions: follow the QR link, type START, long-press the picture, copy and paste it into the prompt box, then type ANALYZE and send.">
+      </div>
+    </section>
+
+    <section class="quick-start" aria-label="Quick start instructions">
+      <div class="step">
+        <span class="step-number">1</span>
+        <p><strong>Open the GPT</strong> using the button above and sign in to ChatGPT if asked.</p>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <p><strong>Type START</strong> and follow the prompts to create your dialogue comic.</p>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <p><strong>Paste the picture</strong>, type ANALYZE, and send it for guided practice.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>Dialogue English Comics for Bengali ESL</footer>
+</body>
+</html>
