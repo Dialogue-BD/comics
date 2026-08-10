@@ -457,6 +457,63 @@
       letter-spacing: .01em;
     }
 
+    @media (max-width: 700px) {
+      .stage {
+        padding-bottom: max(116px, calc(env(safe-area-inset-bottom) + 104px));
+      }
+
+      .deck {
+        width: min(calc(100vw - 32px), calc((100dvh - 182px) * var(--card-ratio)), 540px);
+      }
+
+      .footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .footer-left {
+        flex: 1 1 auto;
+        min-width: 0;
+        justify-content: space-between;
+        gap: 6px;
+      }
+
+      .footer-left .action {
+        min-width: 0;
+        padding-inline: 11px;
+      }
+
+      .fullscreen {
+        flex: 0 0 48px;
+      }
+
+      .instructions {
+        position: absolute;
+        left: 50%;
+        bottom: calc(max(14px, env(safe-area-inset-bottom)) + 58px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: max-content;
+        max-width: calc(100vw - 32px);
+        padding: 4px 11px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--glass);
+        white-space: nowrap;
+        transform: translateX(-50%);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      .instructions strong {
+        display: inline;
+        margin: 0;
+      }
+    }
+
     .sr-only {
       position: absolute;
       width: 1px;
@@ -481,7 +538,8 @@
     @media (max-width: 380px) {
       .action span { display: none; }
       .action { width: 48px; padding: 0; }
-      .footer { grid-template-columns: auto 1fr 48px; }
+      .footer { gap: 8px; }
+      #instructions-text { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
