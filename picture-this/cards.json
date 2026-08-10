@@ -442,5 +442,65 @@
     "title": "Kitchen Appliances",
     "front": "pages/page_147.png",
     "back": "pages/page_148.png"
+  },
+  {
+    "id": "art-supplies",
+    "title": "Art Supplies",
+    "front": "pages/page_149.png",
+    "back": "pages/page_150.png"
+  },
+  {
+    "id": "sports-equipment",
+    "title": "Sports Equipment",
+    "front": "pages/page_151.png",
+    "back": "pages/page_152.png"
+  },
+  {
+    "id": "at-the-pharmacy",
+    "title": "At the Pharmacy",
+    "front": "pages/page_153.png",
+    "back": "pages/page_154.png"
+  },
+  {
+    "id": "picnic-time",
+    "title": "Picnic Time",
+    "front": "pages/page_155.png",
+    "back": "pages/page_156.png"
+  },
+  {
+    "id": "spices",
+    "title": "Spices",
+    "front": "pages/page_157.png",
+    "back": "pages/page_158.png"
+  },
+  {
+    "id": "travel-accessories",
+    "title": "Travel Accessories",
+    "front": "pages/page_159.png",
+    "back": "pages/page_160.png"
+  },
+  {
+    "id": "weather-instruments",
+    "title": "Weather Instruments",
+    "front": "pages/page_161.png",
+    "back": "pages/page_162.png"
+  },
+  {
+    "id": "ways-to-travel",
+    "title": "Ways to Travel",
+    "front": "pages/page_163.png",
+    "back": "pages/page_164.png"
+  },
+  {
+    "id": "at-the-aquarium",
+    "title": "At the Aquarium",
+    "front": "pages/page_165.png",
+    "back": "pages/page_166.png"
+  },
+  {
+    "id": "at-the-coffee-shop",
+    "title": "At the Coffee Shop",
+    "front": "pages/page_167.png",
+    "back": "pages/page_168.png"
   }
 ]

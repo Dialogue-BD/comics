@@ -9,7 +9,7 @@
     "kind": "pdf"
   },
   "cards_file": "cards.json",
-  "card_count": 74,
+  "card_count": 84,
   "pages": [
     {
       "id": "page_001",
@@ -898,6 +898,126 @@
       "image": "pages/page_148.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_149",
+      "image": "pages/page_149.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_150",
+      "image": "pages/page_150.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_151",
+      "image": "pages/page_151.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_152",
+      "image": "pages/page_152.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_153",
+      "image": "pages/page_153.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_154",
+      "image": "pages/page_154.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_155",
+      "image": "pages/page_155.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_156",
+      "image": "pages/page_156.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_157",
+      "image": "pages/page_157.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_158",
+      "image": "pages/page_158.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_159",
+      "image": "pages/page_159.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_160",
+      "image": "pages/page_160.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_161",
+      "image": "pages/page_161.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_162",
+      "image": "pages/page_162.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_163",
+      "image": "pages/page_163.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_164",
+      "image": "pages/page_164.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_165",
+      "image": "pages/page_165.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_166",
+      "image": "pages/page_166.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_167",
+      "image": "pages/page_167.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_168",
+      "image": "pages/page_168.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -1150,6 +1270,56 @@
       "id": "kitchen-appliances",
       "title": "Kitchen Appliances",
       "band_color": "orange"
+    },
+    {
+      "id": "art-supplies",
+      "title": "Art Supplies",
+      "band_color": "orange"
+    },
+    {
+      "id": "sports-equipment",
+      "title": "Sports Equipment",
+      "band_color": "orange"
+    },
+    {
+      "id": "at-the-pharmacy",
+      "title": "At the Pharmacy",
+      "band_color": "orange"
+    },
+    {
+      "id": "picnic-time",
+      "title": "Picnic Time",
+      "band_color": "orange"
+    },
+    {
+      "id": "spices",
+      "title": "Spices",
+      "band_color": "orange"
+    },
+    {
+      "id": "travel-accessories",
+      "title": "Travel Accessories",
+      "band_color": "blue"
+    },
+    {
+      "id": "weather-instruments",
+      "title": "Weather Instruments",
+      "band_color": "blue"
+    },
+    {
+      "id": "ways-to-travel",
+      "title": "Ways to Travel",
+      "band_color": "blue"
+    },
+    {
+      "id": "at-the-aquarium",
+      "title": "At the Aquarium",
+      "band_color": "blue"
+    },
+    {
+      "id": "at-the-coffee-shop",
+      "title": "At the Coffee Shop",
+      "band_color": "blue"
     }
   ]
 }
