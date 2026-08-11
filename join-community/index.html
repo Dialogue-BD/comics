@@ -257,6 +257,14 @@
       color: var(--muted);
       line-height: 1.55;
     }
+    .location-address {
+      margin-top: 12px;
+      color: var(--text);
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 1.5;
+    }
     .maps-link {
       display: inline-flex;
       align-items: center;
@@ -279,11 +287,50 @@
       transform: translateY(-2px);
       outline: none;
     }
-    .map-frame {
-      width: 100%;
-      min-height: 280px;
-      border: 0;
+    .location-media {
+      position: relative;
+      min-height: 330px;
+      overflow: hidden;
       background: #d8e4dc;
+    }
+    .street-view-link {
+      position: absolute;
+      inset: 0;
+      display: block;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .street-view-link img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.35s ease;
+    }
+    .street-view-link:hover img,
+    .street-view-link:focus-visible img { transform: scale(1.025); }
+    .street-view-label {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(6, 18, 12, 0.78);
+      backdrop-filter: blur(8px);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+    }
+    .map-frame {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      width: min(38%, 210px);
+      height: 128px;
+      border: 0;
+      border-radius: 13px;
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45), 0 0 0 4px #ffffff;
     }
     @media (max-width: 780px) {
       .page-shell { padding-top: 18px; }
@@ -302,7 +349,8 @@
       .qr-panel { width: min(100%, 350px); }
       .location-card { grid-template-columns: 1fr; }
       .location-copy { align-items: center; text-align: center; padding: 26px 22px; }
-      .map-frame { min-height: 240px; }
+      .location-media { min-height: 270px; }
+      .map-frame { width: 145px; height: 96px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
@@ -345,9 +393,16 @@
           <span class="location-pin" aria-hidden="true">📍</span>
           <h2 id="location-title">Visit Dialogue</h2>
           <p>Find Dialogue English Language Center and get directions in Google Maps.</p>
-          <a class="maps-link" href="https://maps.app.goo.gl/VjfANHBwHAGKuZ5G9" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a>
+          <address class="location-address">Meghdut Building<br>Talaimari, Rajshahi</address>
+          <a class="maps-link" href="https://maps.app.goo.gl/WNZQaiSb32949oiq6" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a>
         </div>
-        <iframe class="map-frame" title="Map showing the location of Dialogue English Language Center" src="https://www.google.com/maps?q=24.362166,88.625506&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="location-media">
+          <a class="street-view-link" href="https://maps.app.goo.gl/WNZQaiSb32949oiq6" target="_blank" rel="noopener noreferrer" aria-label="Open Street View of Meghdut Building in Google Maps">
+            <img src="../attached_assets/dialogue-meghdut-street-view.jpg" alt="Street View of Meghdut Building, Talaimari, Rajshahi" loading="lazy">
+            <span class="street-view-label">Street View · Google Maps · May 2023</span>
+          </a>
+          <iframe class="map-frame" title="Map showing Meghdut Building in Talaimari, Rajshahi" src="https://www.google.com/maps?q=24.3621533,88.6258336&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
       </section>
     </main>
   </div>
