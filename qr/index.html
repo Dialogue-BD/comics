@@ -313,6 +313,17 @@
       text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
     }
 
+    .slide-brand-logo {
+      display: none;
+      width: min(310px, 68%);
+      max-height: 150px;
+      object-fit: contain;
+      object-position: left center;
+      margin: -2px 0 2px;
+    }
+
+    .slide-brand-logo.visible { display: block; }
+
     .slide-desc {
       font-size: clamp(1.02rem, 1.4vw, 1.25rem);
       color: #cbd5e1;
@@ -879,7 +890,7 @@
         <!-- Left: Activity Info Card -->
         <div class="slide-info-card">
           <div class="slide-meta-row">
-            <span id="slide-counter-badge" class="slide-counter-badge">Activity 1 of 19</span>
+            <span id="slide-counter-badge" class="slide-counter-badge">Activity 1 of 20</span>
             <span id="slide-category-pill" class="slide-category-pill">Visual Story</span>
           </div>
 
@@ -890,6 +901,8 @@
               <div id="slide-badges-wrap" class="slide-badges-wrap"></div>
             </div>
           </div>
+
+          <img id="slide-brand-logo" class="slide-brand-logo" src="" alt="">
 
           <p id="slide-desc" class="slide-desc">
             Visual story inspired by Peter Wezel's wordless picture book. Features a size-maximized widescreen storyboard for classroom projection, interactive sorting activity, and karaoke song!
@@ -951,7 +964,7 @@
           <span class="grid-search-icon">🔍</span>
           <input id="grid-search-input" class="grid-search-input" type="text" placeholder="Search activities by title or category..." autocomplete="off">
         </div>
-        <span id="grid-count-badge" class="grid-count-badge">Showing 19 activities</span>
+        <span id="grid-count-badge" class="grid-count-badge">Showing 20 activities</span>
       </div>
 
       <div id="qr-cards-grid" class="qr-cards-grid"></div>
@@ -967,7 +980,7 @@
 
   <script>
     /* ------------------------------------------------------------- */
-    /* DEFAULT FALLBACK ACTIVITIES LIST (19 CORE ACTIVITIES)          */
+    /* DEFAULT FALLBACK ACTIVITIES LIST                              */
     /* ------------------------------------------------------------- */
     var defaultActivities = [
       {
@@ -977,6 +990,16 @@
         desc: "Visual story inspired by Peter Wezel's wordless picture book. Features a size-maximized widescreen storyboard for classroom projection, interactive sorting activity, and karaoke song!",
         badge: "Widescreen Story · Sorting Activity · Song",
         category: "Visual Story"
+      },
+      {
+        href: "/join-community/",
+        qrUrl: "https://chat.whatsapp.com/DifdH7ya5cc5o7YMSzx1Lh?s=sh&p=i&ilr=0",
+        logo: "../attached_assets/Dialogue_Logo_Color_Transparent_BG_1785751524652.png",
+        icon: "💚",
+        title: "Join Our Community",
+        desc: "Join the Dialogue WhatsApp Community for the latest information about current courses and club offerings.",
+        badge: "WhatsApp · Courses · Clubs",
+        category: "Community"
       },
       {
         href: "/comic.html",
@@ -1184,9 +1207,13 @@
               var title = titleEl ? titleEl.innerText.trim() : "Activity";
               var desc = descEl ? descEl.innerText.trim() : "";
               var badge = badgeEl ? badgeEl.innerText.trim() : "Activity";
+              var qrUrl = card.getAttribute("data-qr-url") || "";
+              var logo = card.getAttribute("data-logo") || "";
 
               parsed.push({
                 href: href,
+                qrUrl: qrUrl,
+                logo: logo,
                 icon: icon,
                 title: title,
                 desc: desc,
@@ -1234,7 +1261,7 @@
       if (!activities || activities.length === 0) return;
       currentIndex = (index + activities.length) % activities.length;
       var act = activities[currentIndex];
-      var fullUrl = getAbsoluteUrl(act.href);
+      var fullUrl = act.qrUrl || getAbsoluteUrl(act.href);
 
       // Info Column
       document.getElementById("slide-counter-badge").innerText = "Activity " + (currentIndex + 1) + " of " + activities.length;
@@ -1242,6 +1269,18 @@
       document.getElementById("slide-icon").innerText = act.icon;
       document.getElementById("slide-title").innerText = act.title;
       document.getElementById("slide-desc").innerText = act.desc;
+
+      // Optional brand mark for special slides such as the community invite
+      var brandLogo = document.getElementById("slide-brand-logo");
+      if (act.logo) {
+        brandLogo.src = act.logo;
+        brandLogo.alt = "Dialogue English Language Center";
+        brandLogo.classList.add("visible");
+      } else {
+        brandLogo.removeAttribute("src");
+        brandLogo.alt = "";
+        brandLogo.classList.remove("visible");
+      }
 
       // Badges
       var badgesWrap = document.getElementById("slide-badges-wrap");
@@ -1388,7 +1427,7 @@
         }
 
         count++;
-        var fullUrl = getAbsoluteUrl(act.href);
+        var fullUrl = act.qrUrl || getAbsoluteUrl(act.href);
         var card = document.createElement("div");
         card.className = "qr-card-item";
 
