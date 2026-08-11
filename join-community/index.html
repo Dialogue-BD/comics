@@ -216,6 +216,75 @@
       font-weight: 800;
       overflow-wrap: anywhere;
     }
+    .location-card {
+      position: relative;
+      z-index: 1;
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+      align-items: stretch;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+    }
+    .location-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 28px;
+    }
+    .location-pin {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 16px;
+      border-radius: 50%;
+      background: rgba(37, 211, 102, 0.14);
+      color: var(--green);
+      font-size: 1.55rem;
+      box-shadow: inset 0 0 0 1px rgba(37, 211, 102, 0.3);
+    }
+    .location-card h2 {
+      margin: 0;
+      font-size: clamp(1.45rem, 2.4vw, 2rem);
+      letter-spacing: -0.025em;
+    }
+    .location-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .maps-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 46px;
+      margin-top: 20px;
+      padding: 11px 16px;
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      border-radius: 12px;
+      background: rgba(37, 211, 102, 0.12);
+      color: #b9f7cf;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 800;
+      transition: transform 0.18s ease, background 0.18s ease;
+    }
+    .maps-link:hover,
+    .maps-link:focus-visible {
+      background: rgba(37, 211, 102, 0.2);
+      transform: translateY(-2px);
+      outline: none;
+    }
+    .map-frame {
+      width: 100%;
+      min-height: 280px;
+      border: 0;
+      background: #d8e4dc;
+    }
     @media (max-width: 780px) {
       .page-shell { padding-top: 18px; }
       .topbar { margin-bottom: 18px; }
@@ -231,6 +300,9 @@
       .intro { margin-left: auto; margin-right: auto; }
       .benefits { justify-content: center; }
       .qr-panel { width: min(100%, 350px); }
+      .location-card { grid-template-columns: 1fr; }
+      .location-copy { align-items: center; text-align: center; padding: 26px 22px; }
+      .map-frame { min-height: 240px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
@@ -267,6 +339,16 @@
         <p class="scan-help">Open your phone camera and point it at the QR code.</p>
         <a class="direct-link" href="https://chat.whatsapp.com/DifdH7ya5cc5o7YMSzx1Lh?s=sh&amp;p=i&amp;ilr=0" target="_blank" rel="noopener noreferrer">Or tap this WhatsApp invite link</a>
       </aside>
+
+      <section class="location-card" aria-labelledby="location-title">
+        <div class="location-copy">
+          <span class="location-pin" aria-hidden="true">📍</span>
+          <h2 id="location-title">Visit Dialogue</h2>
+          <p>Find Dialogue English Language Center and get directions in Google Maps.</p>
+          <a class="maps-link" href="https://maps.app.goo.gl/VjfANHBwHAGKuZ5G9" target="_blank" rel="noopener noreferrer">Open in Google Maps ↗</a>
+        </div>
+        <iframe class="map-frame" title="Map showing the location of Dialogue English Language Center" src="https://www.google.com/maps?q=24.362166,88.625506&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </section>
     </main>
   </div>
 
