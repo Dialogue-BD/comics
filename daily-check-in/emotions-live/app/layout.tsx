@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "How Are You Feeling? · English Club",
   description: "An interactive emotions wheel and anonymous hourly check-in for English Club.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
