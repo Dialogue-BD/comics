@@ -940,12 +940,12 @@
           <button class="game-option" type="button" data-start-game="find-pair">
             <span class="game-option-icon" aria-hidden="true">2</span>
             <strong>Find the Pair</strong>
-            <span>One link word is shown. Students select the two pictures connected by it.</span>
+            <span>An unseen link is drawn from anywhere in the deck. Students select the two connected pictures.</span>
           </button>
           <button class="game-option" type="button" data-start-game="name-link">
             <span class="game-option-icon" aria-hidden="true">1</span>
             <strong>Name the Link</strong>
-            <span>Two pictures are highlighted. Students supply one word that connects them.</span>
+            <span>An unseen pair is drawn from anywhere in the deck. Students supply one word that connects them.</span>
           </button>
         </div>
       </div>
@@ -1625,8 +1625,11 @@
     let roundComplete = false;
     let foundItems = new Set();
     let linkPuzzle = null;
-    let linkPuzzlePosition = -1;
-    const linkPuzzlePositions = new Map();
+    let linkSessionExhausted = false;
+    let linkRoundTransitionPending = false;
+    let linkPuzzleSessionProgress = { used: 0, total: 0 };
+    const LINK_HISTORY_STORAGE_KEY = "picture-this-seen-link-puzzles-v1";
+    let seenLinkPuzzleKeys = loadSeenLinkPuzzleKeys();
     let selectedLinkItems = new Set();
     let pendingCreativeLink = "";
     let cardIndex = 0;
@@ -1677,21 +1680,70 @@
       return [...curated, ...generatedLinkPuzzles(cardId)];
     }
 
-    function linkCardIndexes() {
-      return cards.map((entry, index) => linkPuzzlesForCard(entry.id).length ? index : -1).filter(index => index >= 0);
+    function loadSeenLinkPuzzleKeys() {
+      try {
+        const stored = JSON.parse(sessionStorage.getItem(LINK_HISTORY_STORAGE_KEY) || "[]");
+        return new Set(Array.isArray(stored) ? stored.filter(key => typeof key === "string") : []);
+      } catch (_) {
+        return new Set();
+      }
     }
 
-    function nextLinkPuzzle(cardId, puzzles) {
-      if (!puzzles.length) {
-        linkPuzzlePosition = -1;
-        return null;
+    function saveSeenLinkPuzzleKeys() {
+      try { sessionStorage.setItem(LINK_HISTORY_STORAGE_KEY, JSON.stringify([...seenLinkPuzzleKeys])); } catch (_) {}
+    }
+
+    function linkPuzzleCandidates() {
+      return cards.flatMap((entry, entryIndex) => linkPuzzlesForCard(entry.id).map(puzzle => ({
+        key: `${entry.id}|${puzzle.word.toLowerCase()}|${[...puzzle.items].sort((a, b) => a - b).join("-")}`,
+        cardIndex: entryIndex,
+        puzzle
+      })));
+    }
+
+    function takeRandomUnseenLinkPuzzle() {
+      const candidates = linkPuzzleCandidates();
+      const validKeys = new Set(candidates.map(candidate => candidate.key));
+      seenLinkPuzzleKeys = new Set([...seenLinkPuzzleKeys].filter(key => validKeys.has(key)));
+      const unseen = candidates.filter(candidate => !seenLinkPuzzleKeys.has(candidate.key));
+      if (!unseen.length) {
+        saveSeenLinkPuzzleKeys();
+        return { selection: null, used: candidates.length, total: candidates.length };
       }
-      const previous = linkPuzzlePositions.get(cardId);
-      linkPuzzlePosition = Number.isInteger(previous)
-        ? (previous + 1) % puzzles.length
-        : secureRandomIndex(puzzles.length);
-      linkPuzzlePositions.set(cardId, linkPuzzlePosition);
-      return puzzles[linkPuzzlePosition];
+
+      const selection = unseen[secureRandomIndex(unseen.length)];
+      seenLinkPuzzleKeys.add(selection.key);
+      saveSeenLinkPuzzleKeys();
+      return {
+        selection,
+        used: candidates.length - unseen.length + 1,
+        total: candidates.length
+      };
+    }
+
+    function beginRandomLinkRound(animate = true) {
+      if (!isLinkMode() || linkRoundTransitionPending) return;
+      const { selection, used, total } = takeRandomUnseenLinkPuzzle();
+      linkPuzzleSessionProgress = { used, total };
+      linkSessionExhausted = !selection;
+
+      if (!selection) {
+        linkPuzzle = null;
+        resetGameRound();
+        updateSideUI(false);
+        status.textContent = `All ${total} link puzzles have been used in this browser session.`;
+        return;
+      }
+
+      linkPuzzle = selection.puzzle;
+      linkRoundTransitionPending = true;
+      const finish = () => { linkRoundTransitionPending = false; };
+      if (animate && selection.cardIndex !== cardIndex) {
+        transitionToCard(selection.cardIndex, finish);
+      } else {
+        showCard(selection.cardIndex, false);
+        finish();
+      }
     }
 
     function initialCardIndex() {
@@ -1864,7 +1916,7 @@
       if (announce) status.textContent = gameMode === "browse" ? `New card: ${current.title}.` : `New ${gameModeName().toLocaleLowerCase()} card: ${current.title}.`;
     }
 
-    function transitionToCard(nextIndex) {
+    function transitionToCard(nextIndex, onComplete = () => {}) {
       if (isDualView) {
         dualStage.style.opacity = "0.2";
         dualStage.style.transform = "scale(0.97)";
@@ -1872,21 +1924,21 @@
           showCard(nextIndex);
           dualStage.style.opacity = "1";
           dualStage.style.transform = "scale(1)";
+          onComplete();
         }, 130);
       } else {
         deck.classList.add("is-changing");
         setTimeout(() => {
           showCard(nextIndex);
           deck.classList.remove("is-changing");
+          onComplete();
         }, 165);
       }
     }
 
     function nextCard() {
       if (isLinkMode()) {
-        const pool = linkCardIndexes();
-        const position = pool.indexOf(cardIndex);
-        transitionToCard(pool[(position + 1 + pool.length) % pool.length]);
+        beginRandomLinkRound();
         return;
       }
       const next = (cardIndex + 1) % cards.length;
@@ -1895,9 +1947,7 @@
 
     function prevCard() {
       if (isLinkMode()) {
-        const pool = linkCardIndexes();
-        const position = pool.indexOf(cardIndex);
-        transitionToCard(pool[(position - 1 + pool.length) % pool.length]);
+        beginRandomLinkRound();
         return;
       }
       const prev = (cardIndex - 1 + cards.length) % cards.length;
@@ -1906,9 +1956,7 @@
 
     function newRandomCard() {
       if (isLinkMode()) {
-        const candidates = linkCardIndexes().filter(index => index !== cardIndex);
-        if (!candidates.length) return;
-        transitionToCard(candidates[secureRandomIndex(candidates.length)]);
+        beginRandomLinkRound();
         return;
       }
       let next = secureRandomIndex(cards.length - 1);
@@ -2294,11 +2342,15 @@
       foundItems = new Set();
       selectedLinkItems = new Set();
       pendingCreativeLink = "";
-      linkPuzzle = null;
+      if (!isLinkMode()) {
+        linkPuzzle = null;
+        linkSessionExhausted = false;
+      }
       roundComplete = false;
       guessInput.value = "";
       guessInput.disabled = false;
       guessSubmit.disabled = false;
+      newGameCardButton.disabled = false;
       guessForm.hidden = gameMode === "find-pair";
       linkWord.hidden = gameMode !== "find-pair";
       acceptCreativeLinkButton.hidden = true;
@@ -2310,7 +2362,7 @@
       itemGrid.classList.toggle("is-pair-word", gameMode === "name-link");
       itemGrid.classList.remove("is-locked");
       itemFooterMask.hidden = gameMode !== "items";
-      newGameCardButton.textContent = isLinkMode() ? "Next link →" : "New card →";
+      newGameCardButton.textContent = isLinkMode() ? "Random unseen link →" : "New card →";
 
       itemCells.forEach((cell, index) => {
         cell.classList.remove("is-revealed", "is-selected", "is-target", "is-correct", "is-wrong");
@@ -2344,12 +2396,23 @@
           setGameFeedback("This card is missing its item answer key.", "wrong");
         }
       } else {
-        const puzzles = linkPuzzlesForCard(current.id);
-        linkPuzzle = nextLinkPuzzle(current.id, puzzles);
         gameModeKicker.textContent = linkPuzzle
-          ? `${current.title} · Link ${linkPuzzlePosition + 1} of ${puzzles.length}`
+          ? `${current.title} · ${linkPuzzleSessionProgress.used} of ${linkPuzzleSessionProgress.total} this session`
           : current.title;
         gameProgress.hidden = true;
+
+        if (linkSessionExhausted) {
+          gamePanelTitle.textContent = gameMode === "find-pair" ? "Find the Pair" : "Name the Link";
+          gamePrompt.textContent = "You have completed every link puzzle in this browser session.";
+          linkWord.hidden = true;
+          guessInput.disabled = true;
+          guessSubmit.disabled = true;
+          revealGameAnswerButton.disabled = true;
+          newGameCardButton.disabled = true;
+          newGameCardButton.textContent = `All ${linkPuzzleSessionProgress.total} links used`;
+          setGameFeedback("Close this browser session to begin a fresh no-repeat run.", "correct");
+          return;
+        }
 
         if (!linkPuzzle || items.length !== 6) {
           guessInput.disabled = true;
@@ -2393,9 +2456,7 @@
         newRandomCard();
         return;
       }
-      resetGameRound();
-      updateSideUI(false);
-      status.textContent = `New link on ${cards[cardIndex].title}.`;
+      beginRandomLinkRound();
     }
 
     function openGamePicker() {
@@ -2409,6 +2470,7 @@
     }
 
     function startGame(mode) {
+      if (isDualView) setDualView(false);
       gameMode = mode;
       gamePoints = 0;
       gameScoreValue.textContent = "0";
@@ -2417,9 +2479,7 @@
       app.classList.add("game-active");
       card.setAttribute("role", "group");
       card.tabIndex = -1;
-      const supported = isLinkMode() ? linkCardIndexes() : [];
-      if (supported.length && !supported.includes(cardIndex)) cardIndex = supported[secureRandomIndex(supported.length)];
-      if (isDualView) setDualView(false);
+      if (isLinkMode()) beginRandomLinkRound(false);
       else showCard(cardIndex, false);
       status.textContent = `${gameModeName()} game started.`;
     }
@@ -2436,6 +2496,8 @@
       itemGrid.classList.remove("is-link-mode", "is-pair-word", "is-locked");
       itemFooterMask.hidden = true;
       linkWord.hidden = true;
+      linkPuzzle = null;
+      linkSessionExhausted = false;
       acceptCreativeLinkButton.hidden = true;
       guessForm.hidden = false;
       revealGameAnswerButton.disabled = false;

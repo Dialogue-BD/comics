@@ -1,6 +1,6 @@
 // Curated two-item links. Item indexes follow visual order:
 // top-left, top-right, middle-left, middle-right, bottom-left, bottom-right.
-// Each card may hold up to four puzzles; the two link games use them in either direction.
+// Each card holds three puzzles; both link games draw from the same no-repeat session pool.
 const pictureThisLink = (word, items, explanation, alternatives = []) => ({
   word,
   answers: [word, ...alternatives],
