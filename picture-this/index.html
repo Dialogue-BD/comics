@@ -553,6 +553,13 @@
        is always visible in its side-docked position, so these stay hidden. */
     .drawer-handle, .drawer-peek { display: none; }
 
+    /* Floating top controls (link-word clue, category/mode label, and — when
+       relocated there by JS — the guess-form input) are a mobile-only affordance;
+       see the max-width: 900px block below and the JS layoutGameControls()
+       function. On desktop everything stays inside the side-docked panel where it
+       already works well with a keyboard and mouse. */
+    .game-float-top[hidden] { display: none; }
+
     .game-panel-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
     .game-mode-kicker { display: block; color: hsl(var(--accent)); font-size: .67rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
     .game-panel h2 { margin: 5px 0 0; font-size: 1.65rem; line-height: 1; letter-spacing: -.035em; }
@@ -973,6 +980,83 @@
       .drawer-peek[hidden] { display: none; }
       .drawer-peek span:first-child { color: hsl(var(--accent)); flex-shrink: 0; }
       .drawer-peek span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+      /* Floating top controls: keeps the link-word clue, the category/mode label,
+         and (when a game mode needs typed answers) the real guess-form visible
+         near the top of the screen, above the card, instead of docked at the
+         bottom where an on-screen keyboard would cover them. Not inside .stage or
+         .game-panel — both have their own containing-block-creating properties
+         (perspective / transform) that would otherwise hijack position: fixed here
+         and tie it to their box instead of the viewport. */
+      .game-float-top {
+        position: fixed;
+        z-index: 47;
+        top: max(64px, calc(env(safe-area-inset-top) + 58px));
+        left: 12px;
+        right: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        pointer-events: none;
+      }
+      .game-float-top > * { pointer-events: auto; }
+
+      .game-float-linkword {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 8px;
+        padding: 9px 18px;
+        border-radius: 999px;
+        background: hsl(var(--accent));
+        color: #101218;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, .4);
+      }
+      .game-float-linkword[hidden] { display: none; }
+      .game-float-linkword span { font-size: .58rem; font-weight: 950; letter-spacing: .09em; text-transform: uppercase; opacity: .7; }
+      .game-float-linkword strong { font-size: 1.08rem; font-weight: 900; letter-spacing: -.02em; }
+
+      .game-float-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1px;
+        max-width: 100%;
+        padding: 7px 16px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: rgba(22, 25, 34, .88);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        text-align: center;
+      }
+      .game-float-kicker {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: hsl(var(--accent));
+        font-size: .62rem;
+        font-weight: 900;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+      .game-float-title { color: var(--ink); font-size: .84rem; font-weight: 800; }
+
+      /* When JS relocates the real .guess-form here (see layoutGameControls),
+         style it to match the floating pill treatment above it. */
+      .game-float-top .guess-form {
+        width: 100%;
+        max-width: 420px;
+        padding: 6px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgba(22, 25, 34, .88);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, .4);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      .game-float-top .guess-form input { background: rgba(0, 0, 0, .3); }
     }
 
     /* On phones, the deck previously had to shrink to make room for the permanently
@@ -1164,6 +1248,26 @@
       </div>
       <button class="game-end" id="end-game" type="button">End game and browse cards</button>
     </aside>
+
+    <!-- Mobile-only floating controls for class games: the link-word clue and the
+         category/mode label mirror their in-drawer counterparts (see JS), and the
+         real guess-form is relocated here (not duplicated) so a single input keeps
+         all its state. Placed as a sibling of .game-panel (not inside it), so
+         position: fixed here is relative to the viewport and unaffected by the
+         drawer's own transform/collapse animation — see the CSS note above
+         .game-float-top for why that matters. Floating near the top keeps the
+         input in view above the on-screen keyboard instead of it covering the
+         input the way it would if the field stayed docked at the bottom. -->
+    <div class="game-float-top" id="game-float-top" hidden>
+      <div class="game-float-linkword" id="game-float-linkword" hidden>
+        <span>Link word</span>
+        <strong id="game-float-linkword-value"></strong>
+      </div>
+      <div class="game-float-meta" id="game-float-meta">
+        <span class="game-float-kicker" id="game-float-kicker"></span>
+        <span class="game-float-title" id="game-float-title"></span>
+      </div>
+    </div>
 
     <section class="audio-match-board" id="audio-match-board" hidden aria-labelledby="audio-match-title">
       <button type="button" class="drawer-handle" id="audio-match-handle" aria-label="Collapse audio match board"><span class="drawer-handle-bar" aria-hidden="true"></span></button>
@@ -1965,6 +2069,12 @@
     const audioMatchHandle = document.querySelector("#audio-match-handle");
     const drawerPeek = document.querySelector("#drawer-peek");
     const drawerPeekLabel = document.querySelector("#drawer-peek-label");
+    const gameFloatTop = document.querySelector("#game-float-top");
+    const gameFloatLinkword = document.querySelector("#game-float-linkword");
+    const gameFloatLinkwordValue = document.querySelector("#game-float-linkword-value");
+    const gameFloatKicker = document.querySelector("#game-float-kicker");
+    const gameFloatTitle = document.querySelector("#game-float-title");
+    const mobileGameFloatQuery = window.matchMedia("(max-width: 900px)");
 
     let isDualView = false;
     let gameMode = "browse";
@@ -3047,6 +3157,7 @@
           setGameFeedback("Use one word. The teacher can accept a different creative link.");
         }
       }
+      layoutGameControls();
       if (gameMode !== "find-pair") window.setTimeout(() => guessInput.focus(), 180);
     }
 
@@ -3147,6 +3258,40 @@
     setupDrawerHandle(audioMatchHandle, audioMatchBoard);
     drawerPeek.addEventListener("click", () => setDrawerCollapsed(false));
 
+    // --- Mobile floating top controls (link-word clue / category label / input) ---
+    // The link-word and category/mode label are plain text, so they're mirrored
+    // (kept in sync from the real elements inside .game-panel) rather than moved.
+    // The guess-form has real interactive state — a typed value, focus, disabled
+    // state — so instead of duplicating it, layoutGameControls() physically
+    // relocates the single real element between its docked home inside
+    // .game-panel (desktop, or find-pair/audio-match modes with no text input) and
+    // the floating container near the top of the screen (mobile guessing modes).
+
+    function syncGameFloatMeta() {
+      gameFloatKicker.textContent = gameModeKicker.textContent;
+      gameFloatTitle.textContent = gamePanelTitle.textContent;
+      gameFloatLinkwordValue.textContent = linkWordValue.textContent;
+      gameFloatLinkword.hidden = linkWord.hidden;
+    }
+
+    function layoutGameControls() {
+      const mobile = mobileGameFloatQuery.matches;
+      const inClassGame = gameMode !== "browse" && gameMode !== "audio-match";
+      gameFloatTop.hidden = !(mobile && inClassGame);
+      if (inClassGame) syncGameFloatMeta();
+      // Always resolve where .guess-form belongs (not gated on inClassGame) so it
+      // gets moved back into .game-panel when a game ends, not just when a
+      // different in-game mode no longer wants it floating.
+      const wantsFloatingInput = mobile && inClassGame && !guessForm.hidden;
+      if (wantsFloatingInput && guessForm.parentElement !== gameFloatTop) {
+        gameFloatTop.appendChild(guessForm);
+      } else if (!wantsFloatingInput && guessForm.parentElement !== gamePanel) {
+        gamePanel.insertBefore(guessForm, gameFeedback);
+      }
+    }
+
+    mobileGameFloatQuery.addEventListener("change", layoutGameControls);
+
     function startGame(mode) {
       if (isDualView) setDualView(false);
       window.speechSynthesis?.cancel();
@@ -3166,12 +3311,14 @@
       else if (isLinkMode()) beginRandomLinkRound(false);
       else showCard(cardIndex, false);
       setDrawerCollapsed(false);
+      layoutGameControls();
       status.textContent = `${gameModeName()} game started.`;
     }
 
     function endGame() {
       window.speechSynthesis?.cancel();
       gameMode = "browse";
+      layoutGameControls();
       gamePanel.hidden = true;
       audioMatchBoard.hidden = true;
       gamePanel.classList.remove("is-collapsed");
