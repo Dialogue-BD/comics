@@ -1,331 +1,256 @@
-// Curated two-item links. Item indexes follow visual order:
+// Semantically audited two-item links. Item indexes follow visual order:
 // top-left, top-right, middle-left, middle-right, bottom-left, bottom-right.
-// Each card holds three puzzles; both link games draw from the same no-repeat session pool.
+// A clue is kept only when it naturally identifies exactly two of the six items.
+// Cards may have fewer than three puzzles; weak clues are never added to fill a quota.
 const pictureThisLink = (word, items, explanation, alternatives = []) => ({
   word,
   answers: [word, ...alternatives],
   items,
-  explanation
+  explanation,
+  audit: "exclusive-among-six-v1"
 });
 
 window.PICTURE_THIS_LINK_DATA = {
-  "weather": [pictureThisLink("wet", [0,4], "Stormy and rainy weather can both make things wet.")],
-  "vegetables": [pictureThisLink("clusters", [0,5], "Broccoli florets and peas both appear in small clusters.", ["clustered"])],
-  "zoo": [pictureThisLink("giants", [0,1], "The giraffe and elephant are the two giant animals shown on this card.", ["giant"])],
-  "feelings": [pictureThisLink("unpleasant", [2,4], "Sadness and anger are both unpleasant feelings.")],
-  "beverages": [pictureThisLink("caffeinated", [0,2], "Coffee and tea can both contain caffeine.", ["caffeine"])],
-  "play": [pictureThisLink("bouncing", [0,3], "A basketball and a tennis ball are both made to bounce.", ["bounce"])],
-  "school": [pictureThisLink("writing", [1,2], "A pencil and a notebook are both used for writing.", ["write"])],
-  "personal-items": [pictureThisLink("money", [2,5], "A wallet and a purse can both carry money.")],
-  "snack-time": [pictureThisLink("fruit", [1,2], "Grapes and an apple are both fruit.")],
-  "hobbies": [pictureThisLink("screens", [4,5], "Using the internet and watching movies both commonly involve screens.", ["screen"])],
-  "shapes": [pictureThisLink("four-sided", [0,4], "A square and a diamond both have four sides.", ["quadrilateral"])],
-  "bugs": [pictureThisLink("pests", [2,5], "Cockroaches and mosquitoes are both common household pests.", ["pest"])],
-  "tools": [pictureThisLink("gripping", [0,5], "Pliers and a wrench are both used to grip things.", ["grip"])],
-  "outdoor-places": [pictureThisLink("water", [3,5], "A waterfall and a lake both contain visible bodies of water.")],
-  "furniture": [pictureThisLink("seating", [0,4], "A chair and a sofa are both used for sitting.", ["sitting"])],
-  "communication-tools": [pictureThisLink("broadcast", [2,4], "Radio and television both broadcast information and entertainment.", ["broadcasting"])],
-  "transportation": [pictureThisLink("handlebars", [0,5], "A bicycle and a motorcycle are both steered with handlebars.", ["handlebar"])],
-  "great-outdoors": [pictureThisLink("boards", [1,3], "Skateboarding and surfing both use a board.", ["board"])],
-  "jobs": [pictureThisLink("protect", [2,4], "Doctors and police officers both work to protect people.", ["protection"])],
-  "everyday-foods": [pictureThisLink("legumes", [0,3], "Beans and peanuts are both legumes.", ["legume"])],
-  "musical-instruments": [pictureThisLink("strings", [0,3], "A guitar and a violin both make music with strings.", ["stringed"])],
-  "market": [pictureThisLink("produce", [0,3], "Fruit and vegetables are both fresh produce.")],
-  "outdoor-gear": [pictureThisLink("rain", [3,4], "Rain boots and an umbrella both help in rainy weather.", ["rainy"])],
-  "pets": [pictureThisLink("collars", [0,2], "Cats and dogs are both commonly given pet collars.", ["collar"])],
-  "at-the-beach": [pictureThisLink("sun", [1,3], "A sun hat and sunscreen both protect people from the sun.", ["sunny"])],
-  "in-the-kitchen": [pictureThisLink("mixing", [1,2], "A wooden spoon and a mixing bowl are both used for mixing ingredients.", ["mix"])],
-  "getting-dressed": [pictureThisLink("warmth", [3,4], "A jacket and a scarf both help keep a person warm.", ["warm"])],
-  "at-the-doctor": [pictureThisLink("support", [2,4], "A bandage and a crutch can both support an injury.", ["supportive"])],
-  "cleaning-day": [pictureThisLink("floors", [1,5], "A mop and a vacuum are both used to clean floors.", ["floor"])],
-  "in-the-garden": [pictureThisLink("watering", [0,5], "A watering can and a garden hose both water plants.", ["water"])],
-  "at-the-playground": [pictureThisLink("seats", [1,2], "A swing and a seesaw both have seats for children.", ["seat"])],
-  "on-the-farm": [pictureThisLink("transport", [0,4], "A tractor and a wheelbarrow both move things around a farm.", ["moving"])],
-  "baby-things": [pictureThisLink("feeding", [1,5], "A baby bottle and a high chair are both used at feeding time.", ["feed"])],
-  "party-time": [pictureThisLink("birthday", [1,4], "A birthday cake and a candle are both part of a birthday celebration.")],
-  "science-lab": [pictureThisLink("protective", [4,5], "Safety goggles and a lab coat are protective lab clothing.", ["protection", "safety"])],
-  "sewing-kit": [pictureThisLink("fastening", [4,5], "A zipper and a button are both fasteners.", ["fastener"])],
-  "winter-fun": [pictureThisLink("sliding", [0,2], "A sled and a snowboard both slide over snow.", ["slide"])],
-  "laundry-day": [pictureThisLink("hanging", [2,4], "A clothes hanger and a clothespin both help hang clothes.", ["hang"])],
-  "movie-night": [pictureThisLink("projection", [2,5], "A projector and a film reel work together to project a movie.", ["projecting", "project"])],
-  "space-travel": [pictureThisLink("orbit", [3,5], "A satellite can orbit planet Earth.", ["orbiting"])],
-  "hair-salon": [pictureThisLink("heat", [0,5], "A hair dryer and a curling iron both use heat.", ["heating", "hot"])],
-  "at-the-airport": [pictureThisLink("documents", [1,2], "A passport and a boarding pass are both travel documents.", ["document"])],
-  "at-the-office": [pictureThisLink("piercing", [0,3], "A stapler and a hole punch both pierce paper.", ["pierce", "puncturing"])],
-  "under-the-sea": [pictureThisLink("tentacles", [2,4], "An octopus and a jellyfish both have tentacles.", ["tentacle"])],
-  "at-the-library": [pictureThisLink("borrowing", [0,5], "A library card and a book return bin are both part of borrowing books.", ["borrow"])],
-  "at-the-harbor": [pictureThisLink("floating", [2,3], "A life buoy and a sailboat both float on water.", ["float"])],
-  "photography": [pictureThisLink("storage", [4,5], "A memory card and a photo album both store photographs.", ["storing", "store"])],
-  "fitness-equipment": [pictureThisLink("cardio", [2,4], "A treadmill and an exercise bike are both used for cardio exercise.", ["aerobic"])],
-  "at-the-museum": [pictureThisLink("ancient", [1,5], "An ancient vase and an Egyptian mask are both artifacts from long ago.", ["antique"])],
-  "city-street": [pictureThisLink("crossing", [0,4], "A traffic light and a crosswalk sign both help people cross a street.", ["cross"])],
-  "at-a-wedding": [pictureThisLink("bride", [1,2], "A bridal bouquet and a bridal veil are both worn or carried by a bride.", ["bridal"])],
-  "bathroom-fixtures": [pictureThisLink("water", [0,3], "A bathtub and a showerhead are both used with water for bathing.")],
-  "money-and-banking": [pictureThisLink("saving", [3,4], "A piggy bank and a safe can both hold savings.", ["savings", "save"])],
-  "houseplants": [pictureThisLink("succulents", [0,5], "A cactus and aloe vera are both succulent plants.", ["succulent"])],
-  "at-the-dentist": [pictureThisLink("cleaning", [1,2], "A toothbrush and toothpaste are both used for cleaning teeth.", ["clean"])],
-  "fire-station": [pictureThisLink("firefighting", [0,3], "A fire engine and a fire extinguisher are both used to fight fires.", ["firefighter"])],
-  "at-the-hotel": [pictureThisLink("wearing", [2,3], "A bathrobe and slippers are both things a hotel guest can wear.", ["wear", "clothing"])],
-  "at-the-post-office": [pictureThisLink("weighing", [3,5], "A parcel can be weighed on a postal scale.", ["weigh", "weight"])],
-  "construction-site": [pictureThisLink("safety", [2,5], "A construction helmet and a safety vest both protect a worker.", ["protective"])],
-  "at-the-theater": [pictureThisLink("amplification", [4,5], "A megaphone and a microphone both make a voice easier to hear.", ["amplify", "loud"])],
-  "at-the-restaurant": [pictureThisLink("serving", [1,5], "A serving tray and a soup tureen are both used to serve food.", ["serve"])],
-  "at-the-train-station": [pictureThisLink("tickets", [0,2], "A train ticket can be bought from a ticket machine.", ["ticket"])],
-  "at-the-bakery": [pictureThisLink("bread", [0,4], "A baguette is bread and a bread basket is made to hold bread.")],
-  "at-the-police-station": [pictureThisLink("uniform", [0,3], "A police badge and a police cap are both parts of a police uniform.")],
-  "at-the-campsite": [pictureThisLink("sleeping", [0,1], "A tent and a sleeping bag are both used for sleeping at a campsite.", ["sleep"])],
-  "board-games": [pictureThisLink("chance", [1,4], "Dice and playing cards can both introduce chance into a game.", ["random"])],
-  "jewelry": [pictureThisLink("clothing", [3,4], "A brooch and cufflinks are both pieces of jewelry worn on clothing.", ["clothes"])],
-  "computer-equipment": [pictureThisLink("input", [1,2], "A computer mouse and a keyboard are both input devices.", ["controls", "control"])],
-  "emergency-room": [pictureThisLink("mobility", [0,1], "An ambulance and a wheelchair both help move patients.", ["transport", "moving"])],
-  "car-parts": [pictureThisLink("control", [0,3], "A steering wheel and a gearshift both help control a car.", ["controlling"])],
-  "ancient-egypt": [pictureThisLink("symbols", [4,5], "A scarab amulet and an ankh are both ancient Egyptian symbols.", ["symbol"])],
-  "flowers": [pictureThisLink("petals", [0,2], "A rose and a tulip both have colorful petals.", ["petal"])],
-  "birds": [pictureThisLink("colorful", [4,5], "Toucans and peacocks are both known for colorful feathers.", ["colourful"])],
-  "kitchen-appliances": [pictureThisLink("heating", [1,2], "A toaster and a microwave oven both heat food.", ["heat", "hot"])],
-  "art-supplies": [pictureThisLink("painting", [0,1], "A paint palette and a paintbrush are both used for painting.", ["paint"])],
-  "sports-equipment": [pictureThisLink("red", [0,5], "The tennis racket and table tennis paddle are the two red items shown.", ["reddish"])],
-  "at-the-pharmacy": [pictureThisLink("dosing", [0,4], "A pill bottle and a measuring spoon both help provide a medicine dose.", ["dose"])],
-  "picnic-time": [pictureThisLink("insulated", [2,4], "A thermos flask and a cooler box both use insulation to control temperature.", ["insulation", "temperature"])],
-  "spices": [pictureThisLink("seeds", [3,4], "Cardamom pods and peppercorns both contain or are used as spice seeds.", ["seed"])],
-  "travel-accessories": [pictureThisLink("sleep", [0,2], "A neck pillow and an eye mask can both help a traveler sleep.", ["sleeping", "rest"])],
-  "weather-instruments": [pictureThisLink("wind", [0,4], "A weather vane and a wind sock both show wind direction.", ["direction"])],
-  "ways-to-travel": [pictureThisLink("roads", [2,5], "A rickshaw and a pickup truck both travel on roads.", ["road"])],
-  "at-the-aquarium": [pictureThisLink("shells", [1,3], "A hermit crab and a clam both have shells.", ["shell"])],
-  "at-the-coffee-shop": [pictureThisLink("brewing", [0,3], "An espresso machine and a coffee filter are both used for brewing coffee.", ["brew"])],
-  "at-the-supermarket": [pictureThisLink("carrying", [0,1], "A shopping cart and a hand basket both carry groceries.", ["carry"])],
-  "tableware": [pictureThisLink("cutlery", [2,3], "A fork and a table knife are both pieces of cutlery.", ["silverware"])],
-  "cooking-utensils": [pictureThisLink("stirring", [1,2], "A ladle and a whisk can both be used for stirring.", ["stir"])],
-  "fresh-fruit": [pictureThisLink("citrus", [0,5], "An orange and a lemon are both citrus fruits.")],
-  "fresh-vegetables": [pictureThisLink("leafy", [1,4], "Cabbage and spinach are both leafy vegetables.", ["leaves"])],
-  "pantry-basics": [pictureThisLink("dry", [0,1], "Pasta and lentils are both commonly stored as dry pantry foods.", ["dried"])],
-  "breakfast-foods": [pictureThisLink("spreading", [0,4], "Jam can be spread on toast.", ["spread"])],
-  "home-entryway": [pictureThisLink("security", [0,1], "A door key and a deadbolt both secure an entrance.", ["locking", "lock"])],
-  "electrical-essentials": [pictureThisLink("connection", [2,5], "A power plug and an extension cord both make an electrical connection.", ["connecting"])],
-  "personal-care": [pictureThisLink("blades", [3,5], "Nail clippers and a razor both use sharp blades for personal care.", ["blade"])],
-  "dishwashing": [pictureThisLink("scrubbing", [0,2], "Dish soap and a scrub brush are both used while scrubbing dishes.", ["scrub", "cleaning"])],
-  "food-storage": [pictureThisLink("wrapping", [4,5], "Wax paper and aluminum foil can both wrap food.", ["wrap", "covering"])],
-  "writing-supplies": [pictureThisLink("fastening", [4,5], "A glue stick and a paper clip can both fasten pieces of paper.", ["fasten", "attaching"])],
-  "bathroom-essentials": [pictureThisLink("toilet", [4,5], "A plunger and a toilet brush are both tools used with a toilet.")],
-  "cleaning-extras": [pictureThisLink("waste", [1,2], "A trash can and a garbage bag both hold waste.", ["trash", "rubbish"])],
-  "parts-of-a-home": [pictureThisLink("openings", [0,1], "A front door and a window are both openings in a home.", ["opening", "open"])],
-  "coffee-shop-drinks": [pictureThisLink("espresso", [1,5], "An Americano is made with espresso, and espresso is also served by itself.")]
+  "weather": [],
+  "vegetables": [pictureThisLink("underground", [1,4], "Carrots and onions are the only two vegetables shown whose edible parts grow underground.", ["soil"])],
+  "zoo": [],
+  "feelings": [],
+  "beverages": [pictureThisLink("brewed", [0,2], "Coffee and tea are the only two drinks shown that are normally made by brewing.", ["brewing", "brew"])],
+  "play": [pictureThisLink("small", [3,4], "The tennis ball and baseball are the only two hand-sized balls shown.", ["hand-sized"])],
+  "school": [pictureThisLink("pages", [2,4], "The notebook and book are the only two items shown that are made of bound pages.", ["paged"])],
+  "personal-items": [
+    pictureThisLink("time", [0,1], "The watch and mobile phone are the only two items shown that normally display the time.")
+  ],
+  "snack-time": [
+    pictureThisLink("bunches", [1,3], "Grapes and bananas are the only two foods shown that characteristically grow in bunches.", ["bunch"])
+  ],
+  "hobbies": [
+    pictureThisLink("active", [2,3], "Playing sports and riding a bike are the only two explicitly physical activities shown.", ["exercise"]),
+    pictureThisLink("stories", [0,5], "Reading books and watching movies are the only two activities shown that characteristically present stories.", ["story"])
+  ],
+  "shapes": [pictureThisLink("four-sided", [0,4], "The square and diamond are the only two shapes shown with four sides.", ["quadrilateral"])],
+  "bugs": [],
+  "tools": [pictureThisLink("jaws", [0,5], "Pliers and a wrench are the only two tools shown designed with gripping jaws.", ["jawed"])],
+  "outdoor-places": [
+    pictureThisLink("peaks", [0,1], "The mountain and volcano are the only two places shown whose defining form has a high peak.", ["peaked"]),
+    pictureThisLink("freshwater", [3,5], "The waterfall and lake are the only two places shown that are characteristically freshwater features.")
+  ],
+  "furniture": [pictureThisLink("seating", [0,4], "The chair and sofa are the only two pieces shown primarily made for seating.", ["sitting"])],
+  "communication-tools": [pictureThisLink("broadcast", [2,4], "Radio and television are the only two broadcast media shown.", ["broadcasting"])],
+  "transportation": [pictureThisLink("handlebars", [0,5], "The bicycle and motorcycle are the only two vehicles shown steered with handlebars.", ["handlebar"])],
+  "great-outdoors": [
+    pictureThisLink("boards", [1,3], "Skateboarding and surfing are the only two activities shown performed on boards.", ["board"]),
+    pictureThisLink("water", [3,4], "Surfing and fishing are the only two activities shown inherently performed on or beside water.", ["aquatic"])
+  ],
+  "jobs": [],
+  "everyday-foods": [
+    pictureThisLink("legumes", [0,3], "Beans and peanuts are the only two legumes shown.", ["legume"]),
+    pictureThisLink("underground", [3,4], "Peanuts and potatoes are the only two foods shown that develop underground.", ["soil"])
+  ],
+  "musical-instruments": [
+    pictureThisLink("strings", [0,3], "The guitar and violin are the only two string instruments shown.", ["stringed"]),
+    pictureThisLink("brass", [2,5], "The trumpet and saxophone are the only two brass-family instruments shown.", ["brassy"]),
+    pictureThisLink("keys", [4,5], "The piano and saxophone are the only two instruments shown played with keys.", ["keyed"])
+  ],
+  "market": [pictureThisLink("produce", [0,3], "Fruit and vegetables are the only two fresh-produce groups shown.")],
+  "outdoor-gear": [
+    pictureThisLink("waterproof", [3,4], "Rain boots and an umbrella are the only two items shown specifically designed as waterproof rain barriers.", ["rainproof"]),
+    pictureThisLink("sun", [1,5], "The hat and sunglasses are the only two items shown primarily used to shade the head or eyes from sun.", ["sunny"])
+  ],
+  "pets": [pictureThisLink("aquatic", [1,4], "The fish and turtle are the only two pets shown that characteristically live in water.", ["water"])],
+  "at-the-beach": [pictureThisLink("sun-protection", [1,3], "The sun hat and sunscreen are the only two items shown specifically designed to protect a person from the sun.")],
+  "in-the-kitchen": [pictureThisLink("mixing", [1,2], "The wooden spoon and mixing bowl are the only two items shown specifically named or designed for mixing.", ["mix"])],
+  "getting-dressed": [],
+  "at-the-doctor": [
+    pictureThisLink("checking", [0,1], "The stethoscope and thermometer are the only two diagnostic measuring tools shown.", ["examining"])
+  ],
+  "cleaning-day": [pictureThisLink("containers", [2,4], "The bucket and spray bottle are the only two openable containers shown for cleaning liquids.", ["container"])],
+  "in-the-garden": [pictureThisLink("watering", [0,5], "The watering can and garden hose are the only two tools shown specifically designed to water plants.", ["water"])],
+  "at-the-playground": [pictureThisLink("seats", [1,2], "The swing and seesaw are the only two pieces shown with dedicated seats for riders.", ["seat"])],
+  "on-the-farm": [pictureThisLink("wheels", [0,4], "The tractor and wheelbarrow are the only two wheeled items shown.", ["wheeled"])],
+  "baby-things": [
+    pictureThisLink("feeding", [1,5], "The baby bottle and high chair are the only two items shown specifically designed for feeding.", ["feed"])
+  ],
+  "party-time": [
+    pictureThisLink("blowing", [0,5], "Balloons and a party horn are the only two items shown that are used by blowing air.", ["blow"]),
+    pictureThisLink("candles", [1,4], "The birthday cake and candle are the only two items shown directly joined by birthday candles.", ["candle"])
+  ],
+  "science-lab": [pictureThisLink("protective", [4,5], "Safety goggles and a lab coat are the only two pieces of protective clothing shown.", ["protection", "safety"])],
+  "sewing-kit": [
+    pictureThisLink("fastening", [4,5], "The zipper and button are the only two garment fasteners shown.", ["fastener"]),
+    pictureThisLink("needle-safety", [2,3], "The thimble and pin cushion are the only two items shown specifically protecting a sewer from loose needles or pins.")
+  ],
+  "winter-fun": [pictureThisLink("feet", [1,2], "Ice skates and a snowboard are the only two items shown worn or fixed directly to both feet.", ["footwear"])],
+  "laundry-day": [
+    pictureThisLink("hanging", [2,4], "The clothes hanger and clothespin are the only two items shown specifically used to hang clothes.", ["hang"]),
+    pictureThisLink("washing", [0,5], "The washing machine and detergent are the only two items shown specifically responsible for washing clothes.", ["wash"]),
+    pictureThisLink("wrinkles", [2,3], "The hanger and iron are the only two items shown specifically used to prevent or remove wrinkles.", ["wrinkle"])
+  ],
+  "movie-night": [
+    pictureThisLink("projection", [2,5], "The projector and film reel are the only two items shown directly involved in film projection.", ["projecting", "project"]),
+    pictureThisLink("control", [2,3], "The projector and remote control are the only two items shown joined by remote operation.", ["remote"])
+  ],
+  "space-travel": [],
+  "hair-salon": [pictureThisLink("heat", [0,5], "The hair dryer and curling iron are the only two tools shown that style hair primarily with heat.", ["heating", "hot"])],
+  "at-the-airport": [
+    pictureThisLink("documents", [1,2], "The passport and boarding pass are the only two travel documents shown.", ["document"]),
+    pictureThisLink("screening", [0,5], "The suitcase and metal detector are the only two items shown directly joined in baggage screening.", ["security"]),
+    pictureThisLink("luggage", [0,3], "The suitcase and luggage cart are the only two items shown directly joined by luggage transport.", ["baggage"])
+  ],
+  "at-the-office": [pictureThisLink("piercing", [0,3], "The stapler and hole punch are the only two tools shown that pierce paper during normal use.", ["pierce", "puncturing"])],
+  "under-the-sea": [
+    pictureThisLink("tentacles", [2,4], "The octopus and jellyfish are the only two animals shown with tentacles.", ["tentacle"]),
+    pictureThisLink("spines", [3,5], "The seahorse and starfish are the only two animals shown with hard, visibly spiny body surfaces.", ["spiny"])
+  ],
+  "at-the-library": [],
+  "at-the-harbor": [
+    pictureThisLink("mooring", [1,5], "The anchor and dock bollard are the only two items shown specifically used to moor a boat.", ["moored"])
+  ],
+  "photography": [
+    pictureThisLink("storage", [4,5], "The memory card and photo album are the only two items shown specifically storing photographs.", ["storing", "store"]),
+    pictureThisLink("support", [0,1], "The camera and tripod are the only two items shown directly joined by physical support.", ["steady"]),
+    pictureThisLink("lighting", [0,3], "The camera and flash unit are the only two items shown directly joined by photographic lighting.", ["light"])
+  ],
+  "fitness-equipment": [
+    pictureThisLink("cardio", [2,4], "The treadmill and exercise bike are the only two dedicated cardio machines shown.", ["aerobic"]),
+    pictureThisLink("weights", [0,1], "The dumbbell and kettlebell are the only two handheld weights shown.", ["weight"]),
+    pictureThisLink("stretching", [3,5], "The yoga mat and resistance band are the only two items shown specifically associated with assisted stretching.", ["stretch"])
+  ],
+  "at-the-museum": [],
+  "city-street": [
+    pictureThisLink("crossing", [0,4], "The traffic light and crosswalk sign are the only two items shown specifically controlling a street crossing.", ["cross"]),
+    pictureThisLink("lights", [0,3], "The traffic light and streetlamp are the only two items shown that are themselves lights.", ["lighting"])
+  ],
+  "at-a-wedding": [
+    pictureThisLink("bride", [1,2], "The bridal bouquet and veil are the only two items shown specifically worn or carried by the bride.", ["bridal"]),
+    pictureThisLink("rings", [0,4], "The wedding rings and ring pillow are the only two items shown directly joined by the rings.", ["ring"])
+  ],
+  "bathroom-fixtures": [],
+  "money-and-banking": [],
+  "houseplants": [pictureThisLink("succulents", [0,5], "The cactus and aloe vera are the only two succulents shown.", ["succulent"])],
+  "at-the-dentist": [
+    pictureThisLink("cleaning", [1,2], "The toothbrush and toothpaste are the only two items shown specifically paired for cleaning teeth.", ["clean"]),
+    pictureThisLink("inspection", [0,4], "The dental chair and mouth mirror are the only two items shown directly joined during an oral inspection.", ["exam"]),
+    pictureThisLink("demonstration", [1,5], "The toothbrush and tooth model are the only two items shown directly paired for a brushing demonstration.", ["teaching"])
+  ],
+  "fire-station": [
+    pictureThisLink("pumping", [0,2], "The fire engine and coiled hose are the only two items shown directly joined in pumping firefighting water.", ["pump"])
+  ],
+  "at-the-hotel": [
+    pictureThisLink("wearing", [2,3], "The bathrobe and slippers are the only two wearable guest-comfort items shown.", ["wear", "clothing"]),
+    pictureThisLink("door", [0,5], "The key card and door hanger are the only two items shown specifically used on a hotel-room door.", ["entry"])
+  ],
+  "at-the-post-office": [
+    pictureThisLink("weighing", [3,5], "The parcel and postal scale are the only two items shown directly joined by weighing.", ["weigh", "weight"]),
+    pictureThisLink("postage", [1,2], "The envelope and stamp are the only two items shown directly joined by postage.", ["mailing"]),
+    pictureThisLink("carrying", [3,4], "The parcel and mailbag are the only two items shown directly joined by carrying parcels.", ["carry"])
+  ],
+  "construction-site": [],
+  "at-the-theater": [
+    pictureThisLink("amplification", [4,5], "The megaphone and stage microphone are the only two voice-amplification devices shown.", ["amplify"]),
+    pictureThisLink("costumes", [2,3], "The theater masks and prop crown are the only two wearable character props shown.", ["costume"])
+  ],
+  "at-the-restaurant": [pictureThisLink("condiments", [3,4], "The pepper grinder and sauce boat are the only two tabletop condiment servers shown.", ["seasonings"])],
+  "at-the-train-station": [
+    pictureThisLink("tickets", [0,2], "The train ticket and ticket machine are the only two items shown directly joined by ticket purchase.", ["ticket"]),
+    pictureThisLink("time", [0,1], "The train ticket and platform clock are the only two items shown that normally display departure time.", ["schedule"]),
+    pictureThisLink("signals", [3,5], "The track switch lever and conductor whistle are the only two operating signals shown.", ["signal"])
+  ],
+  "at-the-bakery": [
+    pictureThisLink("rolling", [1,3], "The rolling pin and flour sack are the only two items shown directly associated with rolling dough.", ["roll"]),
+    pictureThisLink("oven-tools", [2,5], "The baking tray and oven peel are the only two dedicated oven-handling tools shown.")
+  ],
+  "at-the-police-station": [
+    pictureThisLink("uniform", [0,3], "The police badge and cap are the only two parts of a police uniform shown."),
+    pictureThisLink("dispatch", [2,5], "The police radio and police car are the only two items shown directly joined by dispatch communication.", ["communication"])
+  ],
+  "at-the-campsite": [pictureThisLink("sleeping", [0,1], "The tent and sleeping bag are the only two items shown specifically designed for sleeping outdoors.", ["sleep"])],
+  "board-games": [],
+  "jewelry": [
+    pictureThisLink("garment-fasteners", [3,4], "The brooch and cufflinks are the only two pieces shown that fasten directly onto clothing."),
+    pictureThisLink("chains", [0,1], "The necklace and charm bracelet are the only two items shown characteristically formed from linked chains.", ["chain"]),
+    pictureThisLink("pins", [3,5], "The brooch and hairpin are the only two items shown secured with a pin.", ["pin"])
+  ],
+  "computer-equipment": [pictureThisLink("storage", [0,3], "The laptop and USB drive are the only two items shown primarily capable of storing user files.", ["files"])],
+  "emergency-room": [],
+  "car-parts": [
+    pictureThisLink("control", [0,3], "The steering wheel and gearshift are the only two driver-operated directional or drivetrain controls shown.", ["controlling"]),
+    pictureThisLink("electrical", [2,4], "The spark plug and car battery are the only two explicitly electrical power or ignition parts shown.", ["electricity", "electric"])
+  ],
+  "ancient-egypt": [pictureThisLink("amulets", [4,5], "The scarab amulet and ankh are the only two small protective symbols shown that were worn as amulets.", ["amulet"])],
+  "flowers": [pictureThisLink("disks", [1,4], "The sunflower and daisy are the only two composite flowers shown with prominent central disks.", ["centers"])],
+  "birds": [
+    pictureThisLink("aquatic", [2,3], "The penguin and flamingo are the only two birds shown characteristically living or feeding in water.", ["water"]),
+    pictureThisLink("raptors", [0,1], "The eagle and owl are the only two birds of prey shown.", ["predators"])
+  ],
+  "kitchen-appliances": [],
+  "art-supplies": [pictureThisLink("paint-holders", [0,1], "The paint palette and paintbrush are the only two items shown specifically designed to hold paint during painting.")],
+  "sports-equipment": [],
+  "at-the-pharmacy": [],
+  "picnic-time": [pictureThisLink("insulated", [2,4], "The thermos flask and cooler box are the only two insulated temperature-control containers shown.", ["insulation"] )],
+  "spices": [pictureThisLink("seeds", [3,4], "Cardamom pods and peppercorns are the only two spices shown that are botanically used as seeds.", ["seed"])],
+  "travel-accessories": [
+    pictureThisLink("sleep", [0,2], "The neck pillow and eye mask are the only two items shown specifically designed to help a traveler sleep.", ["sleeping", "rest"]),
+    pictureThisLink("luggage", [1,5], "The luggage tag and luggage scale are the only two items shown specifically attached to or used on luggage.", ["bags"])
+  ],
+  "weather-instruments": [pictureThisLink("direction", [0,4], "The weather vane and wind sock are the only two instruments shown specifically indicating wind direction.", ["wind-direction"])],
+  "ways-to-travel": [pictureThisLink("rails", [0,4], "The tram and cable car are the only two vehicles shown that characteristically travel on rails.", ["rail"] )],
+  "at-the-aquarium": [pictureThisLink("shells", [1,3], "The hermit crab and clam shell are the only two items shown whose identity centers on a shell.", ["shell"])],
+  "at-the-coffee-shop": [
+    pictureThisLink("brewing", [0,3], "The espresso machine and coffee filter are the only two items shown that directly perform coffee brewing.", ["brew"])
+  ],
+  "at-the-supermarket": [pictureThisLink("scanning", [2,3], "The checkout counter and barcode scanner are the only two items shown directly joined by checkout scanning.", ["scan"])],
+  "tableware": [
+    pictureThisLink("soup", [1,4], "The soup bowl and teaspoon are the only two items shown specifically named or sized for soup."),
+    pictureThisLink("gripping", [2,5], "The fork and chopsticks are the only two items shown primarily used to grip or spear bite-sized food.", ["grip"])
+  ],
+  "cooking-utensils": [pictureThisLink("turning", [0,3], "The spatula and kitchen tongs are the only two utensils shown specifically suited to turning solid food while it cooks.", ["turn"])],
+  "fresh-fruit": [
+    pictureThisLink("citrus", [0,5], "The orange and lemon are the only two citrus fruits shown."),
+    pictureThisLink("red", [2,3], "The strawberry and watermelon are the only two fruits shown with characteristically red edible flesh.", ["reddish"])
+  ],
+  "fresh-vegetables": [
+    pictureThisLink("leafy", [1,4], "Cabbage and spinach are the only two vegetables shown primarily eaten for their leaves.", ["leaves"]),
+    pictureThisLink("cruciferous", [1,3], "Cabbage and cauliflower are the only two cruciferous vegetables shown.", ["brassica"]),
+    pictureThisLink("vines", [0,5], "Cucumbers and pumpkins are the only two vegetables shown that characteristically grow on spreading vines.", ["vine"])
+  ],
+  "pantry-basics": [pictureThisLink("crystals", [3,4], "Salt and sugar are the only two crystalline seasonings shown.", ["crystal"])],
+  "breakfast-foods": [pictureThisLink("spreading", [0,4], "Toast and jam are the only two items shown directly joined by spreading jam on toast.", ["spread"])],
+  "home-entryway": [
+    pictureThisLink("locking", [0,1], "The door key and deadbolt are the only two items shown specifically made for mechanically locking the door.", ["lock"]),
+    pictureThisLink("outside", [2,3], "The doorbell and doormat are the only two items shown characteristically placed immediately outside the entrance.", ["exterior"]),
+    pictureThisLink("storage", [4,5], "The coat hook and shoe rack are the only two entryway storage fixtures shown.", ["organizing"])
+  ],
+  "electrical-essentials": [
+    pictureThisLink("switching", [0,4], "The light switch and bulb are the only two items shown directly joined by switching a light on or off.", ["switch"]),
+    pictureThisLink("wall-mounted", [0,1], "The light switch and wall outlet are the only two fixtures shown permanently mounted in a wall.", ["wall"])
+  ],
+  "personal-care": [
+    pictureThisLink("blades", [3,5], "Nail clippers and a razor are the only two bladed cutting tools shown.", ["blade"]),
+    pictureThisLink("hair", [4,5], "The hairbrush and razor are the only two items shown whose normal action directly manages or removes hair.", ["grooming"])
+  ],
+  "dishwashing": [
+    pictureThisLink("scrubbing", [0,2], "Dish soap and the scrub brush are the only two items shown that directly provide the cleaning action for scrubbing dishes.", ["scrub"]),
+    pictureThisLink("drying", [1,4], "The dish rack and dish towel are the only two items shown specifically used to dry dishes.", ["dry"])
+  ],
+  "food-storage": [pictureThisLink("wrapping", [4,5], "Wax paper and aluminum foil are the only two flexible wrapping materials shown.", ["wrap", "covering"])],
+  "writing-supplies": [
+    pictureThisLink("fastening", [4,5], "The glue stick and paper clip are the only two items shown specifically used to fasten paper.", ["fasten", "attaching"]),
+    pictureThisLink("cutting", [2,3], "The ruler and scissors are the only two items shown directly paired for guided straight cutting.", ["cut"]),
+    pictureThisLink("lines", [0,2], "The ballpoint pen and ruler are the only two items shown directly paired for drawing straight lines.", ["line"])
+  ],
+  "bathroom-essentials": [
+    pictureThisLink("tools", [4,5], "The plunger and toilet brush are the only two toilet-maintenance tools shown.", ["tool"]),
+    pictureThisLink("drying", [1,3], "The hand towel and bath mat are the only two items shown specifically placed to absorb water while a person dries.", ["dry"])
+  ],
+  "cleaning-extras": [
+    pictureThisLink("liners", [1,2], "The trash can and garbage bag are the only two items shown directly paired as bin and liner.", ["liner"]),
+    pictureThisLink("bins", [1,3], "The trash can and recycling bin are the only two rigid waste bins shown.", ["bin"]),
+    pictureThisLink("wiping", [4,5], "The squeegee and cleaning cloth are the only two items shown specifically used by wiping a surface.", ["wipe"])
+  ],
+  "parts-of-a-home": [
+    pictureThisLink("openings", [0,1], "The front door and window are the only two wall openings shown.", ["opening"]),
+    pictureThisLink("turning", [3,5], "The ceiling fan and door handle are the only two items shown whose characteristic action is turning.", ["turn"])
+  ],
+  "coffee-shop-drinks": [pictureThisLink("black", [1,5], "Americano and espresso are the only two drinks shown characteristically served without milk.", ["milkless"])]
 };
-
-// Phase 2: one distinct secondary puzzle for every card.
-const pictureThisSecondaryLinks = {
-  "weather": pictureThisLink("bright", [1,2], "Sunny and snowy scenes can both be very bright.", ["brightness"]),
-  "vegetables": pictureThisLink("seeds", [2,3], "Tomatoes and peppers both contain many seeds.", ["seed"]),
-  "zoo": pictureThisLink("claws", [3,4], "Lions and bears both have strong claws.", ["claw"]),
-  "feelings": pictureThisLink("energy", [0,5], "Happy and tired can describe opposite levels of energy.", ["energetic"]),
-  "beverages": pictureThisLink("sweet", [4,5], "Soda and juice are both commonly sweet drinks.", ["sugary"]),
-  "play": pictureThisLink("kicking", [1,5], "A soccer ball and a football are both used in kicking games.", ["kick"]),
-  "school": pictureThisLink("carrying", [3,4], "A backpack can carry a book.", ["carry"]),
-  "personal-items": pictureThisLink("time", [0,1], "A watch and a mobile phone can both show the time."),
-  "snack-time": pictureThisLink("sweet", [0,4], "Chocolate and donuts are both sweet snacks.", ["sugary"]),
-  "hobbies": pictureThisLink("active", [2,3], "Playing sports and riding a bike are both active hobbies.", ["exercise"]),
-  "shapes": pictureThisLink("pointed", [1,3], "A triangle and a star both have pointed corners.", ["points"]),
-  "bugs": pictureThisLink("crawling", [0,4], "Ants and worms both move by crawling.", ["crawl"]),
-  "tools": pictureThisLink("turning", [4,5], "A screwdriver and a wrench both turn fasteners.", ["turn"]),
-  "outdoor-places": pictureThisLink("elevated", [0,1], "Mountains and volcanoes are both elevated landforms.", ["high"]),
-  "furniture": pictureThisLink("reading", [1,5], "A bookshelf and a lamp can both support a reading area.", ["read"]),
-  "communication-tools": pictureThisLink("written", [0,3], "Mail and email are both forms of written communication.", ["writing"]),
-  "transportation": pictureThisLink("public", [1,4], "Trains and buses are both common forms of public transportation.", ["transit"]),
-  "great-outdoors": pictureThisLink("trails", [0,2], "Horseback riding and hiking can both take place on trails.", ["trail"]),
-  "jobs": pictureThisLink("uniforms", [1,4], "Chefs and police officers commonly wear recognizable uniforms.", ["uniform"]),
-  "everyday-foods": pictureThisLink("grains", [2,5], "Wheat and rice are both cereal grains.", ["grain"]),
-  "musical-instruments": pictureThisLink("metal", [2,5], "A trumpet and a saxophone are both commonly made from metal.", ["metallic"]),
-  "market": pictureThisLink("protein", [2,4], "Chicken and fish are both protein-rich foods."),
-  "outdoor-gear": pictureThisLink("warmth", [0,2], "A scarf and gloves both help keep a person warm.", ["warm"]),
-  "pets": pictureThisLink("cages", [3,5], "Parrots and rabbits are both sometimes kept in cages.", ["cage"]),
-  "at-the-beach": pictureThisLink("sand", [0,4], "A beach ball and a sandcastle are both used or seen on beach sand.", ["sandy"]),
-  "in-the-kitchen": pictureThisLink("heat", [0,5], "A frying pan gets hot, and an oven mitt protects a hand from that heat.", ["hot"]),
-  "getting-dressed": pictureThisLink("casual", [0,2], "A T-shirt and sneakers are both common casual clothing."),
-  "at-the-doctor": pictureThisLink("checking", [0,1], "A stethoscope and a thermometer both help check a person's health.", ["examining"]),
-  "cleaning-day": pictureThisLink("water", [2,3], "A bucket and a sponge are often used together with water.", ["wet"]),
-  "in-the-garden": pictureThisLink("potting", [1,3], "A hand trowel and a flowerpot are both used while potting a plant.", ["pot"]),
-  "at-the-playground": pictureThisLink("spinning", [3,5], "A jump rope and a frisbee both spin through the air.", ["spin"]),
-  "on-the-farm": pictureThisLink("storage", [1,2], "A barn can be used to store hay bales.", ["storing"]),
-  "baby-things": pictureThisLink("soothing", [2,4], "A pacifier and a rattle can both help soothe a baby.", ["soothe"]),
-  "party-time": pictureThisLink("blowing", [0,5], "Balloons and a party horn both involve blowing air.", ["blow"]),
-  "science-lab": pictureThisLink("holding", [1,2], "A test tube rack holds tubes, and a beaker holds liquids.", ["holds"]),
-  "sewing-kit": pictureThisLink("thread", [0,1], "A sewing machine and a thread spool both use thread.", ["threading"]),
-  "winter-fun": pictureThisLink("feet", [1,2], "Ice skates and a snowboard are both worn or controlled with the feet.", ["foot"]),
-  "laundry-day": pictureThisLink("washing", [0,5], "A washing machine and detergent are both used for washing clothes.", ["wash"]),
-  "movie-night": pictureThisLink("admission", [1,4], "A movie ticket gives admission to a cinema seat.", ["entry"]),
-  "space-travel": pictureThisLink("viewing", [2,5], "A telescope can be used for viewing planet Earth and other worlds.", ["view"]),
-  "hair-salon": pictureThisLink("electric", [0,3], "A hair dryer and hair clippers are both electric salon tools.", ["electrical"]),
-  "at-the-airport": pictureThisLink("screening", [0,5], "A suitcase may pass through a metal detector during airport screening.", ["security"]),
-  "at-the-office": pictureThisLink("fastening", [4,5], "A binder clip and tape can both fasten papers or materials.", ["fasten"]),
-  "under-the-sea": pictureThisLink("predators", [0,1], "Dolphins and sharks are both marine predators.", ["predator"]),
-  "at-the-library": pictureThisLink("organizing", [1,3], "A book cart and a card catalog both help organize library materials.", ["organize"]),
-  "at-the-harbor": pictureThisLink("mooring", [1,5], "An anchor and a dock bollard are both used to secure boats.", ["moored"]),
-  "photography": pictureThisLink("support", [0,1], "A tripod supports a camera while a photograph is taken.", ["steady"]),
-  "fitness-equipment": pictureThisLink("weights", [0,1], "A dumbbell and a kettlebell are both handheld weights.", ["weight"]),
-  "at-the-museum": pictureThisLink("display", [0,3], "A dinosaur fossil can be protected inside a museum display case.", ["exhibit"]),
-  "city-street": pictureThisLink("lighting", [0,3], "A traffic light and a streetlamp both produce light on a city street.", ["lights"]),
-  "at-a-wedding": pictureThisLink("rings", [0,4], "Wedding rings may be carried on a ring pillow.", ["ring"]),
-  "bathroom-fixtures": pictureThisLink("plumbing", [1,2], "A washbasin and a toilet are both connected to bathroom plumbing.", ["pipes"]),
-  "money-and-banking": pictureThisLink("payment", [0,2], "A banknote and a credit card can both be used for payment.", ["paying"]),
-  "houseplants": pictureThisLink("foliage", [3,4], "A fern and a snake plant are both grown for their decorative foliage.", ["leaves"]),
-  "at-the-dentist": pictureThisLink("inspection", [0,4], "A dental chair and a mouth mirror are both used during a dental inspection.", ["exam"]),
-  "fire-station": pictureThisLink("water", [0,2], "A fire engine supplies water through a fire hose.", ["hose"]),
-  "at-the-hotel": pictureThisLink("door", [0,5], "A key card and a door hanger are both used at a hotel-room door.", ["entry"]),
-  "at-the-post-office": pictureThisLink("postage", [1,2], "An envelope and a postage stamp are both needed for posted mail.", ["mailing"]),
-  "construction-site": pictureThisLink("building", [1,4], "A cement mixer and bricks are both used while building structures.", ["construction"]),
-  "at-the-theater": pictureThisLink("costumes", [2,3], "Theater masks and a prop crown can both be parts of stage costumes.", ["costume"]),
-  "at-the-restaurant": pictureThisLink("flavor", [3,4], "A pepper grinder and a sauce boat both add flavor to food.", ["flavour"]),
-  "at-the-train-station": pictureThisLink("time", [0,1], "A train ticket may show a departure time, and a platform clock shows the current time.", ["schedule"]),
-  "at-the-bakery": pictureThisLink("rolling", [1,3], "A rolling pin and flour are both used while rolling dough.", ["roll"]),
-  "at-the-police-station": pictureThisLink("restraint", [1,4], "Handcuffs and a traffic baton are both police control equipment.", ["control"]),
-  "at-the-campsite": pictureThisLink("portable", [2,4], "A camping lantern and a camp stove are both portable campsite devices.", ["camping"]),
-  "board-games": pictureThisLink("matching", [2,3], "Domino tiles and jigsaw pieces are both matched during play.", ["match"]),
-  "jewelry": pictureThisLink("chains", [0,1], "A pearl necklace and a charm bracelet can both be made with linked chains.", ["chain"]),
-  "computer-equipment": pictureThisLink("storage", [0,3], "A laptop and a USB drive can both store digital files.", ["files"]),
-  "emergency-room": pictureThisLink("support", [4,5], "A neck brace and a hospital bed both support a patient.", ["supportive"]),
-  "car-parts": pictureThisLink("electricity", [2,4], "A spark plug and a car battery are both parts of a car's electrical system.", ["electric"]),
-  "ancient-egypt": pictureThisLink("writing", [2,5], "A papyrus scroll could carry writing, including symbols such as the ankh.", ["script"]),
-  "flowers": pictureThisLink("disks", [1,4], "Sunflowers and daisies both have round central flower disks.", ["centers"]),
-  "birds": pictureThisLink("water", [2,3], "Penguins and flamingos both spend time in or near water.", ["aquatic"]),
-  "kitchen-appliances": pictureThisLink("countertop", [0,1], "A blender and a toaster are both common countertop appliances.", ["counter"]),
-  "art-supplies": pictureThisLink("drawing", [3,5], "Oil pastels and ink can both be used for drawing.", ["draw"]),
-  "sports-equipment": pictureThisLink("sticks", [1,3], "A cricket bat and a hockey stick are both long striking tools.", ["stick"]),
-  "at-the-pharmacy": pictureThisLink("liquids", [2,3], "Eye drops and nasal spray are both liquid medicines.", ["liquid"]),
-  "picnic-time": pictureThisLink("carrying", [0,4], "A picnic basket and a cooler box both carry food and drinks.", ["carry"]),
-  "spices": pictureThisLink("warm", [0,2], "Cinnamon and cloves are both often described as warm spices.", ["warming"]),
-  "travel-accessories": pictureThisLink("luggage", [1,5], "A luggage tag and a luggage scale are both used with luggage.", ["bags"]),
-  "weather-instruments": pictureThisLink("air", [1,3], "An anemometer measures moving air, and a weather balloon rises through the air."),
-  "ways-to-travel": pictureThisLink("public", [0,1], "A tram and a ferry are both forms of public transportation.", ["transit"]),
-  "at-the-aquarium": pictureThisLink("reef", [0,4], "Angelfish and coral can both be found around a reef.", ["coral"]),
-  "at-the-coffee-shop": pictureThisLink("grinding", [0,1], "A coffee grinder prepares beans for an espresso machine.", ["grind"]),
-  "at-the-supermarket": pictureThisLink("scanning", [2,3], "A barcode scanner is used at a checkout counter while scanning purchases.", ["scan"]),
-  "tableware": pictureThisLink("soup", [1,4], "A soup bowl and a teaspoon can both be used when eating soup."),
-  "cooking-utensils": pictureThisLink("liquids", [1,4], "A ladle carries liquid, while a colander drains liquid away.", ["liquid"]),
-  "fresh-fruit": pictureThisLink("tropical", [1,4], "Mangoes and pineapples are both tropical fruits.", ["tropics"]),
-  "fresh-vegetables": pictureThisLink("cruciferous", [1,3], "Cabbage and cauliflower are both cruciferous vegetables.", ["brassica"]),
-  "pantry-basics": pictureThisLink("crystals", [3,4], "Salt and sugar are both commonly sold as small crystals.", ["crystal"]),
-  "breakfast-foods": pictureThisLink("pairing", [3,5], "Yogurt and granola are often paired together for breakfast.", ["together"]),
-  "home-entryway": pictureThisLink("entrance", [2,3], "A doorbell and a doormat are both placed at an entrance.", ["entry"]),
-  "electrical-essentials": pictureThisLink("switching", [0,4], "A light switch controls a light bulb.", ["switch"]),
-  "personal-care": pictureThisLink("hair", [4,5], "A hairbrush and a razor are both used to manage hair.", ["grooming"]),
-  "dishwashing": pictureThisLink("drying", [1,4], "A dish rack and a dish towel both help dishes dry.", ["dry"]),
-  "food-storage": pictureThisLink("containers", [0,3], "A food container and a lunch box both hold food.", ["container"]),
-  "writing-supplies": pictureThisLink("cutting", [2,3], "A ruler can guide a straight line while scissors cut along it.", ["cut"]),
-  "bathroom-essentials": pictureThisLink("drying", [1,3], "A hand towel and a bath mat both absorb water while drying.", ["dry"]),
-  "cleaning-extras": pictureThisLink("recycling", [1,3], "A trash can and a recycling bin both collect discarded items.", ["bins"]),
-  "parts-of-a-home": pictureThisLink("coverings", [0,4], "A front door and a curtain both cover an opening in a home.", ["covering"]),
-  "coffee-shop-drinks": pictureThisLink("foamy", [2,3], "A latte and a cappuccino both commonly include foamed milk.", ["foam"])
-};
-
-Object.entries(pictureThisSecondaryLinks).forEach(([cardId, puzzle]) => {
-  window.PICTURE_THIS_LINK_DATA[cardId].push(puzzle);
-});
-
-// Phase 3: one distinct tertiary puzzle for every card.
-const pictureThisTertiaryLinks = {
-  "weather": pictureThisLink("wind", [0,3], "Stormy and windy weather both commonly involve strong wind.", ["windy"]),
-  "vegetables": pictureThisLink("underground", [1,4], "Carrots and onions both grow mainly underground.", ["soil"]),
-  "zoo": pictureThisLink("jumping", [2,5], "Monkeys and kangaroos are both strong jumpers.", ["jump"]),
-  "feelings": pictureThisLink("uncertainty", [1,3], "Surprise and confusion can both happen when a person is uncertain.", ["unsure"]),
-  "beverages": pictureThisLink("refreshing", [1,5], "Water and juice can both be refreshing drinks.", ["refreshment"]),
-  "play": pictureThisLink("net", [2,3], "Volleyball and tennis both use a net.", ["nets"]),
-  "school": pictureThisLink("classroom", [0,5], "A blackboard and a desk are both common classroom furniture or equipment.", ["class"]),
-  "personal-items": pictureThisLink("appearance", [3,4], "Glasses and a comb can both affect a person's appearance.", ["grooming"]),
-  "snack-time": pictureThisLink("crunchy", [2,5], "An apple and crackers can both be crunchy snacks.", ["crunch"]),
-  "hobbies": pictureThisLink("stories", [0,5], "Reading books and watching movies can both tell stories.", ["story"]),
-  "shapes": pictureThisLink("radial", [2,3], "A circle and a star both have forms that spread outward from a center.", ["centered"]),
-  "bugs": pictureThisLink("biting", [1,5], "Some spiders and mosquitoes can both bite.", ["bite"]),
-  "tools": pictureThisLink("fasteners", [1,4], "A hammer and a screwdriver are both used to drive fasteners.", ["fastener"]),
-  "outdoor-places": pictureThisLink("landforms", [0,2], "A mountain and an island are both natural landforms.", ["landform"]),
-  "furniture": pictureThisLink("bedside", [2,5], "A lamp is commonly placed beside a bed.", ["bedroom"]),
-  "communication-tools": pictureThisLink("voice", [1,2], "A telephone and a radio can both carry a person's voice.", ["audio"]),
-  "transportation": pictureThisLink("engines", [2,3], "Cars and airplanes both use engines for movement.", ["engine"]),
-  "great-outdoors": pictureThisLink("water", [3,4], "Surfing and fishing are both outdoor activities done on or beside water.", ["aquatic"]),
-  "jobs": pictureThisLink("knowledge", [0,2], "Teachers and doctors both need specialized knowledge to help people.", ["education"]),
-  "everyday-foods": pictureThisLink("underground", [3,4], "Peanuts and potatoes both develop underground.", ["soil"]),
-  "musical-instruments": pictureThisLink("keys", [4,5], "A piano and a saxophone both have keys that the player presses.", ["key"]),
-  "market": pictureThisLink("breakfast", [1,5], "Eggs and bread are both common breakfast foods.", ["morning"]),
-  "outdoor-gear": pictureThisLink("sun", [1,5], "A hat and sunglasses both protect a person from bright sun.", ["sunny"]),
-  "pets": pictureThisLink("aquatic", [1,4], "Fish and many pet turtles both live in water.", ["water"]),
-  "at-the-beach": pictureThisLink("wearable", [1,5], "A sun hat and flip-flops are both things a person can wear at the beach.", ["wearing"]),
-  "in-the-kitchen": pictureThisLink("preparation", [2,4], "A mixing bowl and a cutting board are both used while preparing food.", ["prep"]),
-  "getting-dressed": pictureThisLink("layers", [0,3], "A T-shirt and a jacket can be worn as different clothing layers.", ["layering"]),
-  "at-the-doctor": pictureThisLink("emergency", [4,5], "A crutch and a first-aid kit may both be needed after an emergency injury.", ["injury"]),
-  "cleaning-day": pictureThisLink("liquids", [2,4], "A bucket and a spray bottle can both hold cleaning liquids.", ["liquid"]),
-  "in-the-garden": pictureThisLink("pruning", [2,4], "Garden gloves and pruning shears are both useful while pruning plants.", ["prune"]),
-  "at-the-playground": pictureThisLink("balance", [2,3], "A seesaw and a jump rope both challenge balance and coordination.", ["balancing"]),
-  "on-the-farm": pictureThisLink("handles", [3,4], "A pitchfork and a wheelbarrow both have long handles for moving farm materials.", ["handle"]),
-  "baby-things": pictureThisLink("mouth", [1,2], "A baby bottle and a pacifier are both placed in a baby's mouth.", ["oral"]),
-  "party-time": pictureThisLink("decorations", [0,2], "Balloons and party hats can both decorate a birthday party.", ["decoration"]),
-  "science-lab": pictureThisLink("experiments", [0,3], "A microscope and a magnet are both used in science experiments.", ["experiment"]),
-  "sewing-kit": pictureThisLink("protection", [2,3], "A thimble and a pin cushion both protect the person sewing from sharp pins or needles.", ["safety"]),
-  "winter-fun": pictureThisLink("snow", [3,5], "A snow shovel and a snow tube are both designed for snowy conditions.", ["snowy"]),
-  "laundry-day": pictureThisLink("wrinkles", [2,3], "A clothes hanger can prevent wrinkles, and an iron can remove them.", ["wrinkle"]),
-  "movie-night": pictureThisLink("control", [2,3], "A remote control can operate a movie projector.", ["remote"]),
-  "space-travel": pictureThisLink("exploration", [1,4], "An astronaut helmet and a moon rover are both equipment for space exploration.", ["exploring"]),
-  "hair-salon": pictureThisLink("styling", [3,4], "Hair clippers and hair rollers are both used to create hairstyles.", ["style"]),
-  "at-the-airport": pictureThisLink("movement", [0,3], "A suitcase and a luggage cart move together through an airport.", ["moving"]),
-  "at-the-office": pictureThisLink("paper", [0,2], "A stapler and a file folder are both used with office papers.", ["documents"]),
-  "under-the-sea": pictureThisLink("spines", [3,5], "Seahorses and starfish both have hard or spiny body surfaces.", ["spiny"]),
-  "at-the-library": pictureThisLink("reading", [2,4], "A bookmark and a magazine rack both support reading materials.", ["read"]),
-  "at-the-harbor": pictureThisLink("fishing", [3,4], "A sailboat and a fishing net can both be used during fishing.", ["fish"]),
-  "photography": pictureThisLink("lighting", [0,3], "A flash unit provides lighting for a camera.", ["light"]),
-  "fitness-equipment": pictureThisLink("stretching", [3,5], "A yoga mat and a resistance band are both useful for stretching.", ["stretch"]),
-  "at-the-museum": pictureThisLink("faces", [2,5], "A marble statue and an Egyptian mask can both show a human face.", ["face"]),
-  "city-street": pictureThisLink("metal", [1,5], "A fire hydrant and a manhole cover are both heavy metal street fixtures.", ["metallic"]),
-  "at-a-wedding": pictureThisLink("ceremony", [0,5], "Wedding rings and a flower arch are both important parts of many wedding ceremonies.", ["wedding"]),
-  "bathroom-fixtures": pictureThisLink("washing", [1,4], "A washbasin and a faucet work together for washing hands.", ["wash"]),
-  "money-and-banking": pictureThisLink("cash", [1,5], "Coins are cash, and an ATM can provide cash.", ["money"]),
-  "houseplants": pictureThisLink("drought", [0,4], "Cacti and snake plants both tolerate dry, drought-like conditions.", ["dry"]),
-  "at-the-dentist": pictureThisLink("teaching", [1,5], "A toothbrush and a tooth model can both be used to teach good brushing.", ["demonstration"]),
-  "fire-station": pictureThisLink("alarm", [0,5], "An alarm bell alerts the crew, and a fire engine responds to the alarm.", ["warning"]),
-  "at-the-hotel": pictureThisLink("arrival", [1,4], "A guest may ring the hotel bell and place luggage on the rack after arrival.", ["check-in"]),
-  "at-the-post-office": pictureThisLink("carrying", [3,4], "A mailbag can carry a parcel.", ["carry"]),
-  "construction-site": pictureThisLink("visibility", [3,5], "A traffic cone and a safety vest use bright colors for visibility.", ["visible"]),
-  "at-the-theater": pictureThisLink("stage", [0,1], "A stage curtain and a spotlight are both essential parts of a theater stage.", ["staging"]),
-  "at-the-restaurant": pictureThisLink("table", [0,2], "A menu folder and a napkin ring are both commonly placed on a restaurant table.", ["dining"]),
-  "at-the-train-station": pictureThisLink("signals", [3,5], "A track switch lever and a conductor's whistle both help control or signal train movement.", ["signal"]),
-  "at-the-bakery": pictureThisLink("baking", [2,5], "A baking tray and an oven peel are both used around a baker's oven.", ["oven"]),
-  "at-the-police-station": pictureThisLink("dispatch", [2,5], "A police radio can dispatch information to a police car.", ["communication"]),
-  "at-the-campsite": pictureThisLink("night", [1,2], "A sleeping bag and a camping lantern are both especially useful at night.", ["nighttime"]),
-  "board-games": pictureThisLink("turns", [0,5], "A chess knight moves during a turn, and a sand timer can limit that turn.", ["turn"]),
-  "jewelry": pictureThisLink("pins", [3,5], "A brooch and a hairpin both use a pin to stay in place.", ["pin"]),
-  "computer-equipment": pictureThisLink("online", [4,5], "A Wi-Fi router and a webcam are both commonly used for online communication.", ["internet"]),
-  "emergency-room": pictureThisLink("treatment", [2,3], "An IV stand and a blood-pressure cuff are both used during patient treatment.", ["care"]),
-  "car-parts": pictureThisLink("driving", [1,5], "Car tires and side mirrors are both essential while driving.", ["drive"]),
-  "ancient-egypt": pictureThisLink("burial", [3,4], "Canopic jars and scarab amulets were both connected with ancient Egyptian burials.", ["tomb"]),
-  "flowers": pictureThisLink("fragrant", [0,5], "Roses and lilies are both well known for fragrant flowers.", ["scented"]),
-  "birds": pictureThisLink("predators", [0,1], "Eagles and owls are both birds of prey.", ["raptors"]),
-  "kitchen-appliances": pictureThisLink("cooking", [2,3], "A microwave oven and a rice cooker both cook food.", ["cook"]),
-  "art-supplies": pictureThisLink("canvas", [1,2], "A paintbrush works on the canvas held by an easel.", ["painting"]),
-  "sports-equipment": pictureThisLink("net", [0,4], "A tennis racket and a shuttlecock are both used in sports played across a net.", ["nets"]),
-  "at-the-pharmacy": pictureThisLink("relief", [3,5], "Nasal spray and a hot-water bottle can both provide symptom relief.", ["soothing"]),
-  "picnic-time": pictureThisLink("meal", [3,5], "A sandwich and a paper cup can both be part of a picnic meal.", ["lunch"]),
-  "spices": pictureThisLink("ground", [1,4], "Turmeric and peppercorns can both be ground into spice powder.", ["grinding"]),
-  "travel-accessories": pictureThisLink("packing", [3,4], "A travel adapter and a toiletry bag are both packed for a trip.", ["pack"]),
-  "weather-instruments": pictureThisLink("station", [0,5], "A weather vane and a Stevenson screen can both be part of a weather station.", ["meteorology"]),
-  "ways-to-travel": pictureThisLink("streets", [2,3], "Rickshaws and scooters both commonly travel on city streets.", ["street"]),
-  "at-the-aquarium": pictureThisLink("hiding", [1,5], "A hermit crab may hide in or near an aquarium castle.", ["hide"]),
-  "at-the-coffee-shop": pictureThisLink("containers", [4,5], "A sugar bowl and a takeaway cup are both containers used in a coffee shop.", ["container"]),
-  "at-the-supermarket": pictureThisLink("checkout", [4,5], "A receipt and a reusable bag are both commonly received or used at checkout.", ["purchase"]),
-  "tableware": pictureThisLink("gripping", [2,5], "A fork and chopsticks both grip pieces of food.", ["grip"]),
-  "cooking-utensils": pictureThisLink("turning", [0,3], "A spatula and kitchen tongs can both turn food while it cooks.", ["turn"]),
-  "fresh-fruit": pictureThisLink("red", [2,3], "A strawberry and the inside of a watermelon are both commonly red.", ["reddish"]),
-  "fresh-vegetables": pictureThisLink("vines", [0,5], "Cucumbers and pumpkins both grow on vines.", ["vine"]),
-  "pantry-basics": pictureThisLink("sweetening", [4,5], "Sugar can be used for sweetening oat flakes.", ["sweeten"]),
-  "breakfast-foods": pictureThisLink("grains", [1,2], "Pancakes and breakfast cereal are both commonly made from grains.", ["grain"]),
-  "home-entryway": pictureThisLink("storage", [4,5], "A coat hook and a shoe rack both store things near an entryway.", ["organizing"]),
-  "electrical-essentials": pictureThisLink("outlets", [1,3], "A wall outlet and a power strip both provide places to connect plugs.", ["outlet", "sockets"]),
-  "personal-care": pictureThisLink("hygiene", [0,2], "Bar soap and tissues are both everyday hygiene supplies.", ["cleanliness"]),
-  "dishwashing": pictureThisLink("sink", [0,5], "Dish soap and a sink strainer are both used at the kitchen sink.", ["washing"]),
-  "food-storage": pictureThisLink("cold", [0,2], "A food container and an ice tray can both hold food or water in cold storage.", ["freezing"]),
-  "writing-supplies": pictureThisLink("lines", [0,2], "A ballpoint pen and a ruler can be used together to draw straight lines.", ["line"]),
-  "bathroom-essentials": pictureThisLink("absorbent", [0,1], "Toilet paper and a hand towel are both absorbent paper or fabric products.", ["absorb"]),
-  "cleaning-extras": pictureThisLink("wiping", [4,5], "A squeegee and a cleaning cloth both wipe surfaces clean.", ["wipe"]),
-  "parts-of-a-home": pictureThisLink("turning", [3,5], "A ceiling fan and a door handle both turn during use.", ["turn"]),
-  "coffee-shop-drinks": pictureThisLink("milky", [0,4], "A macchiato and a mocha both commonly contain milk.", ["milk"])
-};
-
-Object.entries(pictureThisTertiaryLinks).forEach(([cardId, puzzle]) => {
-  window.PICTURE_THIS_LINK_DATA[cardId].push(puzzle);
-});

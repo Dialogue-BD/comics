@@ -1671,8 +1671,12 @@
         word: link.word,
         answers: Array.isArray(link.answers) && link.answers.length ? link.answers : [link.word],
         items: Array.isArray(link.items) ? link.items.map(item => Number.isInteger(item) ? item : itemIndexes.get(item)) : [],
-        explanation: link.explanation || ""
-      })).filter(link => link.word && link.items.length === 2 && link.items.every(Number.isInteger));
+        explanation: link.explanation || "",
+        audit: link.audit
+      })).filter(link => link.word
+        && link.items.length === 2
+        && link.items.every(Number.isInteger)
+        && link.audit === "exclusive-among-six-v1");
     }
 
     function linkPuzzlesForCard(cardId) {

@@ -14,12 +14,13 @@ const singleWord = /^[\p{L}\p{N}]+(?:[-’'][\p{L}\p{N}]+)*$/u;
 
 for (const cardId of Object.keys(cards)) {
   const puzzles = links[cardId];
-  if (!Array.isArray(puzzles) || puzzles.length !== 3) {
-    errors.push(`${cardId}: expected exactly 3 puzzles`);
+  if (!Array.isArray(puzzles) || puzzles.length > 3) {
+    errors.push(`${cardId}: expected an audited array of 0–3 puzzles`);
     continue;
   }
 
   const words = new Set();
+  const answers = new Set();
   const pairs = new Set();
   puzzles.forEach((puzzle, position) => {
     const prefix = `${cardId} puzzle ${position + 1}`;
@@ -32,6 +33,12 @@ for (const cardId of Object.keys(cards)) {
       errors.push(`${prefix}: answers must include the displayed word`);
     } else if (puzzle.answers.some(answer => !singleWord.test(answer))) {
       errors.push(`${prefix}: every accepted answer must be one word`);
+    } else {
+      puzzle.answers.forEach(answer => {
+        const answerKey = String(answer).toLocaleLowerCase();
+        if (answers.has(answerKey)) errors.push(`${prefix}: accepted answer is reused by another puzzle`);
+        answers.add(answerKey);
+      });
     }
 
     if (!Array.isArray(puzzle.items)
@@ -45,7 +52,12 @@ for (const cardId of Object.keys(cards)) {
       pairs.add(pairKey);
     }
 
-    if (!String(puzzle.explanation || "").trim()) errors.push(`${prefix}: missing explanation`);
+    if (!/only two/i.test(String(puzzle.explanation || ""))) {
+      errors.push(`${prefix}: explanation must state why these are the only two matching items`);
+    }
+    if (puzzle.audit !== "exclusive-among-six-v1") {
+      errors.push(`${prefix}: missing exclusive-among-six semantic audit marker`);
+    }
   });
 }
 
@@ -59,4 +71,6 @@ if (errors.length) {
 }
 
 const cardCount = Object.keys(cards).length;
-console.log(`PASS: ${cardCount} cards × 3 distinct link puzzles = ${cardCount * 3} puzzles.`);
+const puzzleCount = Object.values(links).reduce((total, puzzles) => total + puzzles.length, 0);
+const coveredCards = Object.values(links).filter(puzzles => puzzles.length).length;
+console.log(`PASS: ${puzzleCount} exclusive link puzzles across ${coveredCards} of ${cardCount} audited cards.`);
