@@ -461,10 +461,10 @@
     .game-options { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
     .game-option { min-height: 168px; padding: 20px; border: 1px solid var(--border); border-radius: 19px; color: var(--ink); background: rgba(255,255,255,.045); text-align: left; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
     .game-option:hover { transform: translateY(-2px); border-color: hsl(var(--accent) / .65); background: hsl(var(--accent) / .1); }
-    .game-option-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 15px; border-radius: 13px 13px 13px 4px; color: #11141b; background: hsl(var(--accent)); font-weight: 950; }
-    .game-option strong, .game-option span { display: block; }
+    .game-option-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 15px; border-radius: 13px 13px 13px 4px; color: #11141b; background: hsl(var(--accent)); font-size: 1.2rem; font-weight: 950; line-height: 1; }
+    .game-option strong { display: block; }
     .game-option strong { margin-bottom: 7px; font-size: 1.12rem; }
-    .game-option span { color: var(--muted); font-size: .8rem; line-height: 1.45; }
+    .game-option > span:not(.game-option-icon) { display: block; color: var(--muted); font-size: .8rem; line-height: 1.45; }
 
     .game-panel {
       position: fixed;
@@ -877,12 +877,12 @@
         <p>Project the card, invite answers from the whole class, and let the screen keep score. Both modes work with all 101 cards.</p>
         <div class="game-options">
           <button class="game-option" type="button" data-start-game="category">
-            <span class="game-option-icon">?</span>
+            <span class="game-option-icon" aria-hidden="true">?</span>
             <strong>Guess the Category</strong>
             <span>The title is blurred. Students use the six pictures and labels to identify the category.</span>
           </button>
           <button class="game-option" type="button" data-start-game="items">
-            <span class="game-option-icon">6</span>
+            <span class="game-option-icon" aria-hidden="true">6</span>
             <strong>Guess the Items</strong>
             <span>The category stays visible. Correct item guesses reveal the matching picture and label.</span>
           </button>
