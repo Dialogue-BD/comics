@@ -8,9 +8,30 @@ vm.runInNewContext(fs.readFileSync(new URL("game-data.js", root), "utf8"), sandb
 vm.runInNewContext(fs.readFileSync(new URL("link-data.js", root), "utf8"), sandbox);
 
 const cards = sandbox.window.PICTURE_THIS_GAME_DATA;
-const links = sandbox.window.PICTURE_THIS_LINK_DATA;
+const curatedLinks = sandbox.window.PICTURE_THIS_LINK_DATA;
+const gameMeta = sandbox.window.PICTURE_THIS_GAME_META?.cards || {};
 const errors = [];
 const singleWord = /^[\p{L}\p{N}]+$/u;
+
+function generatedLinks(cardId) {
+  const meta = gameMeta[cardId];
+  if (!meta || !Array.isArray(meta.items) || !Array.isArray(meta.links)) return [];
+  const itemIndexes = new Map(meta.items.map((item, index) => [item.id, index]));
+  return meta.links.map(link => ({
+    ...link,
+    items: Array.isArray(link.items)
+      ? link.items.map(item => Number.isInteger(item) ? item : itemIndexes.get(item))
+      : []
+  }));
+}
+
+const links = Object.fromEntries(Object.keys(cards).map(cardId => [
+  cardId,
+  [
+    ...(Array.isArray(curatedLinks[cardId]) ? curatedLinks[cardId] : []),
+    ...generatedLinks(cardId)
+  ]
+]));
 
 for (const cardId of Object.keys(cards)) {
   const puzzles = links[cardId];
@@ -61,7 +82,7 @@ for (const cardId of Object.keys(cards)) {
   });
 }
 
-for (const cardId of Object.keys(links)) {
+for (const cardId of Object.keys(curatedLinks)) {
   if (!cards[cardId]) errors.push(`${cardId}: link data has no matching card`);
 }
 

@@ -1693,6 +1693,66 @@
     "title": "Coffee Shop Drinks",
     "front": "pages/page_201.png",
     "back": "pages/page_202.png"
+  },
+  {
+    "id": "at-the-hardware-store",
+    "title": "At the Hardware Store",
+    "front": "pages/page_203.png",
+    "back": "pages/page_204.png"
+  },
+  {
+    "id": "at-the-orchestra",
+    "title": "At the Orchestra",
+    "front": "pages/page_205.png",
+    "back": "pages/page_206.png"
+  },
+  {
+    "id": "shoe-care",
+    "title": "Shoe Care",
+    "front": "pages/page_207.png",
+    "back": "pages/page_208.png"
+  },
+  {
+    "id": "camping-extras",
+    "title": "Camping Extras",
+    "front": "pages/page_209.png",
+    "back": "pages/page_210.png"
+  },
+  {
+    "id": "bicycle-components",
+    "title": "Bicycle Components",
+    "front": "pages/page_211.png",
+    "back": "pages/page_212.png"
+  },
+  {
+    "id": "yarn-crafts",
+    "title": "Yarn Crafts",
+    "front": "pages/page_213.png",
+    "back": "pages/page_214.png"
+  },
+  {
+    "id": "pottery-studio",
+    "title": "Pottery Studio",
+    "front": "pages/page_215.png",
+    "back": "pages/page_216.png"
+  },
+  {
+    "id": "at-the-observatory",
+    "title": "At the Observatory",
+    "front": "pages/page_217.png",
+    "back": "pages/page_218.png"
+  },
+  {
+    "id": "beekeeping",
+    "title": "Beekeeping",
+    "front": "pages/page_219.png",
+    "back": "pages/page_220.png"
+  },
+  {
+    "id": "sailing-gear",
+    "title": "Sailing Gear",
+    "front": "pages/page_221.png",
+    "back": "pages/page_222.png"
   }
 ];
     // PICTURE_THIS_CARDS_END
@@ -2652,16 +2712,17 @@
       return editDistance(left, right) <= allowance;
     }
 
-    function itemForms(answer) {
+    function itemForms(answer, itemIndex, cardId) {
       const direct = normalizedGuess(answer);
       const aliases = ITEM_ALIASES[direct] || ITEM_ALIASES[String(answer).toLocaleLowerCase().replace(/[^a-z0-9]+/g, " ").trim()] || [];
-      return new Set([direct, ...aliases.map(normalizedGuess)]);
+      const generatedAnswers = gameMeta[cardId]?.items?.[itemIndex]?.answers || [];
+      return new Set([direct, ...aliases.map(normalizedGuess), ...generatedAnswers.map(normalizedGuess)]);
     }
 
-    function matchingItemIndex(rawGuess, items, includeFound = false) {
+    function matchingItemIndex(rawGuess, items, cardId, includeFound = false) {
       const guess = normalizedGuess(rawGuess);
       if (!guess) return -1;
-      const available = items.map((answer, index) => ({ answer, index, forms: itemForms(answer) }))
+      const available = items.map((answer, index) => ({ answer, index, forms: itemForms(answer, index, cardId) }))
         .filter(entry => includeFound || !foundItems.has(entry.index));
       const exact = available.filter(entry => entry.forms.has(guess));
       if (exact.length === 1) return exact[0].index;
@@ -2676,7 +2737,7 @@
       return -1;
     }
 
-    function categoryMatches(rawGuess, title) {
+    function categoryMatches(rawGuess, title, cardId) {
       const guess = normalizedGuess(rawGuess);
       const guessCore = categoryCore(rawGuess);
       const full = normalizedGuess(title);
@@ -2688,7 +2749,8 @@
         .replace(/^let play$/, "play")
         .replace(/^eat your /, "");
       const aliases = CATEGORY_ALIASES[full] || CATEGORY_ALIASES[simplified] || [];
-      const forms = new Set([full, simplified, ...aliases.map(normalizedGuess)]);
+      const generatedAnswers = gameMeta[cardId]?.category_answers || [];
+      const forms = new Set([full, simplified, ...aliases.map(normalizedGuess), ...generatedAnswers.map(normalizedGuess)]);
       if (forms.has(guess)) return true;
       const coreForms = new Set([...forms].map(categoryCore).filter(Boolean));
       if (guessCore && coreForms.has(guessCore)) return true;
@@ -2757,7 +2819,7 @@
       });
 
       if (gameMode === "category") {
-        gameModeKicker.textContent = "101-card class game";
+        gameModeKicker.textContent = `${cards.length}-card class game`;
         gamePanelTitle.textContent = "Guess the Category";
         gamePrompt.textContent = "What category connects these six items?";
         guessInput.placeholder = "Type a category…";
@@ -2860,6 +2922,7 @@
       if (isDualView) setDualView(false);
       window.speechSynthesis?.cancel();
       gameMode = mode;
+      sidePill.textContent = gameModeName();
       gamePoints = 0;
       gameScoreValue.textContent = "0";
       gamePicker.hidden = true;
@@ -3012,7 +3075,7 @@
       }
 
       if (gameMode === "category") {
-        if (categoryMatches(rawGuess, cards[cardIndex].title)) {
+        if (categoryMatches(rawGuess, cards[cardIndex].title, cards[cardIndex].id)) {
           changeScore(1);
           roundComplete = true;
           categoryMask.classList.add("is-revealed");
@@ -3055,8 +3118,8 @@
       }
 
       const items = gameData[cards[cardIndex].id] || [];
-      const match = matchingItemIndex(rawGuess, items, false);
-      const anyMatch = matchingItemIndex(rawGuess, items, true);
+      const match = matchingItemIndex(rawGuess, items, cards[cardIndex].id, false);
+      const anyMatch = matchingItemIndex(rawGuess, items, cards[cardIndex].id, true);
       if (match >= 0) {
         foundItems.add(match);
         itemCells[match].classList.add("is-revealed");

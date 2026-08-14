@@ -29,7 +29,7 @@
       "audio-match"
     ]
   },
-  "card_count": 101,
+  "card_count": 111,
   "pages": [
     {
       "id": "page_001",
@@ -1242,6 +1242,126 @@
       "image": "pages/page_202.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_203",
+      "image": "pages/page_203.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_204",
+      "image": "pages/page_204.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_205",
+      "image": "pages/page_205.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_206",
+      "image": "pages/page_206.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_207",
+      "image": "pages/page_207.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_208",
+      "image": "pages/page_208.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_209",
+      "image": "pages/page_209.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_210",
+      "image": "pages/page_210.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_211",
+      "image": "pages/page_211.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_212",
+      "image": "pages/page_212.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_213",
+      "image": "pages/page_213.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_214",
+      "image": "pages/page_214.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_215",
+      "image": "pages/page_215.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_216",
+      "image": "pages/page_216.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_217",
+      "image": "pages/page_217.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_218",
+      "image": "pages/page_218.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_219",
+      "image": "pages/page_219.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_220",
+      "image": "pages/page_220.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_221",
+      "image": "pages/page_221.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_222",
+      "image": "pages/page_222.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -1629,6 +1749,107 @@
       "id": "coffee-shop-drinks",
       "title": "Coffee Shop Drinks",
       "band_color": "red"
+    },
+    {
+      "id": "at-the-hardware-store",
+      "title": "At the Hardware Store",
+      "band_color": "red",
+      "game_tags": [
+        "place",
+        "tools",
+        "home-repair"
+      ]
+    },
+    {
+      "id": "at-the-orchestra",
+      "title": "At the Orchestra",
+      "band_color": "blue",
+      "game_tags": [
+        "place",
+        "music",
+        "performance"
+      ]
+    },
+    {
+      "id": "shoe-care",
+      "title": "Shoe Care",
+      "band_color": "blue",
+      "game_tags": [
+        "clothing",
+        "care",
+        "accessories"
+      ]
+    },
+    {
+      "id": "camping-extras",
+      "title": "Camping Extras",
+      "band_color": "blue",
+      "game_tags": [
+        "outdoors",
+        "travel",
+        "equipment"
+      ]
+    },
+    {
+      "id": "bicycle-components",
+      "title": "Bicycle Components",
+      "band_color": "blue",
+      "game_tags": [
+        "transport",
+        "mechanics",
+        "cycling"
+      ]
+    },
+    {
+      "id": "yarn-crafts",
+      "title": "Yarn Crafts",
+      "band_color": "blue",
+      "game_tags": [
+        "crafts",
+        "textiles",
+        "hobbies"
+      ]
+    },
+    {
+      "id": "pottery-studio",
+      "title": "Pottery Studio",
+      "band_color": "green",
+      "game_tags": [
+        "crafts",
+        "art",
+        "ceramics"
+      ]
+    },
+    {
+      "id": "at-the-observatory",
+      "title": "At the Observatory",
+      "band_color": "orange",
+      "game_tags": [
+        "place",
+        "science",
+        "astronomy"
+      ]
+    },
+    {
+      "id": "beekeeping",
+      "title": "Beekeeping",
+      "band_color": "blue",
+      "game_tags": [
+        "occupation",
+        "farming",
+        "insects"
+      ]
+    },
+    {
+      "id": "sailing-gear",
+      "title": "Sailing Gear",
+      "band_color": "blue",
+      "game_tags": [
+        "transport",
+        "water",
+        "navigation"
+      ]
     }
-  ]
+  ],
+  "game_schema_version": 1
 }
