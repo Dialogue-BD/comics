@@ -4,13 +4,13 @@ Audit date: 2026-08-14
 
 ## Result
 
-- Starting database: 303 puzzles across 101 cards
-- Passing database: 135 puzzles across 84 cards
-- Rejected: 168 puzzles
-- Cards deliberately left without a link puzzle: 17
+- Passing database: 303 puzzles across 101 cards
+- Required coverage: exactly 3 puzzles on every card
+- Cards below the required coverage: 0
 
-The audit favors puzzle quality over equal coverage. A card may contain zero to three
-puzzles. No puzzle is added merely to reach a per-card quota.
+The first audit retained 135 existing puzzles and identified 168 missing or weak puzzle
+slots. Those slots were then authored or rewritten against the six pictured items. The
+deck is not considered complete unless all 101 cards pass with exactly three puzzles.
 
 ## Passing rule
 
@@ -29,13 +29,15 @@ For every clue, the audit asks:
 
 If question 2 is yes, or any other answer is doubtful, the puzzle fails.
 
-## Examples rejected by the audit
+## Common failure patterns checked by the audit
 
 - `fruit` for Grapes + Apple: Banana is also fruit.
 - `sweet` for Chocolate + Donuts: several pictured fruits can also be sweet.
-- `net` for Volleyball + Tennis Ball: a soccer ball can also be linked to a goal net.
+- a broad `net` clue for Volleyball + Tennis Ball: a soccer ball can also be linked to
+  a goal net; the final clue is narrowed to `net-divided`, which describes the court;
 - `money` for Wallet + Purse: a mobile phone can also be linked to payments and money.
-- `pips` for Game Die + Domino Tile: playing cards also use suit pips.
+- a broad `pips` clue for Game Die + Domino Tile: playing cards also use suit pips; the
+  final clue is narrowed to `number-pips`, which excludes suit symbols;
 - `water` for Bathtub + Showerhead: the washbasin, toilet, and faucet also use water.
 - `wearable` for Sun Hat + Flip-Flops: a towel or sunscreen can reasonably be described
   as worn, so the clue does not force one pair.
@@ -53,25 +55,17 @@ If question 2 is yes, or any other answer is doubtful, the puzzle fails.
 - `waterproof`: Rain Boots + Umbrella (narrowed from `rain`)
 - `locking`: Door Key + Deadbolt (narrowed from `security`)
 
-## Cards with no passing puzzle
-
-Weather, Zoo, Feelings, Bugs, Jobs, Getting Dressed, Space Travel, At the Library,
-At the Museum, Bathroom Fixtures, Money and Banking, Construction Site, Board Games,
-Emergency Room, Kitchen Appliances, Sports Equipment, and At the Pharmacy.
-
-These cards remain fully usable in browsing and guessing modes. The link games draw
-only from the audited global pool.
-
 ## Enforcement
 
 `scripts/validate-link-data.mjs` now requires:
 
-- an audited array of zero to three puzzles for every card;
+- exactly three audited puzzles for every card;
 - exactly two valid, distinct item indexes per puzzle;
 - distinct clue words, accepted answers, and item pairs within a card;
 - one-word or hyphenated-one-word clues and accepted answers;
 - the `exclusive-among-six-v1` semantic-audit marker; and
 - an explanation explicitly stating why the selected items are the only two matches.
 
-The validator enforces the audit record and structural boundaries. Semantic judgment
-still requires the adversarial six-item review described above.
+It also verifies a deck-wide total of three times the card count (currently 303). The
+validator enforces the audit record and structural boundaries. Semantic judgment still
+requires the adversarial six-item review described above.

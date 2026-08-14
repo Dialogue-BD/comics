@@ -14,8 +14,8 @@ const singleWord = /^[\p{L}\p{N}]+(?:[-’'][\p{L}\p{N}]+)*$/u;
 
 for (const cardId of Object.keys(cards)) {
   const puzzles = links[cardId];
-  if (!Array.isArray(puzzles) || puzzles.length > 3) {
-    errors.push(`${cardId}: expected an audited array of 0–3 puzzles`);
+  if (!Array.isArray(puzzles) || puzzles.length !== 3) {
+    errors.push(`${cardId}: expected exactly 3 audited puzzles`);
     continue;
   }
 
@@ -73,4 +73,8 @@ if (errors.length) {
 const cardCount = Object.keys(cards).length;
 const puzzleCount = Object.values(links).reduce((total, puzzles) => total + puzzles.length, 0);
 const coveredCards = Object.values(links).filter(puzzles => puzzles.length).length;
-console.log(`PASS: ${puzzleCount} exclusive link puzzles across ${coveredCards} of ${cardCount} audited cards.`);
+if (puzzleCount !== cardCount * 3) {
+  console.error(`Expected ${cardCount * 3} puzzles but found ${puzzleCount}.`);
+  process.exit(1);
+}
+console.log(`PASS: ${puzzleCount} exclusive link puzzles; exactly 3 on each of ${coveredCards} audited cards.`);

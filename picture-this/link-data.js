@@ -1,7 +1,7 @@
 // Semantically audited two-item links. Item indexes follow visual order:
 // top-left, top-right, middle-left, middle-right, bottom-left, bottom-right.
 // A clue is kept only when it naturally identifies exactly two of the six items.
-// Cards may have fewer than three puzzles; weak clues are never added to fill a quota.
+// Every card has exactly three puzzles; the six-item set must support all three.
 const pictureThisLink = (word, items, explanation, alternatives = []) => ({
   word,
   answers: [word, ...alternatives],
@@ -254,3 +254,306 @@ window.PICTURE_THIS_LINK_DATA = {
   ],
   "coffee-shop-drinks": [pictureThisLink("black", [1,5], "Americano and espresso are the only two drinks shown characteristically served without milk.", ["milkless"])]
 };
+
+// Every card must offer exactly three independently audited puzzles. These
+// additions complete cards whose first audit retained fewer than three.
+const auditedLinkAdditions = {
+  "weather": [
+    pictureThisLink("precipitation", [2,4], "Snowy and rainy are the only two conditions shown that name water falling from the sky."),
+    pictureThisLink("opposites", [1,5], "Sunny and cloudy are the only two conditions shown as standard opposites in sky cover."),
+    pictureThisLink("wind", [0,3], "Stormy and windy are the only two conditions shown that explicitly feature strong moving air.")
+  ],
+  "vegetables": [
+    pictureThisLink("nightshades", [2,3], "Tomato and pepper are the only two vegetables shown from the nightshade family."),
+    pictureThisLink("clusters", [0,5], "Broccoli and peas are the only two vegetables shown as clusters of many small green edible units.")
+  ],
+  "zoo": [
+    pictureThisLink("giants", [0,1], "Giraffe and elephant are the only two exceptionally tall or massive land giants shown."),
+    pictureThisLink("claws", [3,4], "Lion and bear are the only two large predators shown whose powerful claws are defining weapons."),
+    pictureThisLink("jumpers", [2,5], "Monkey and kangaroo are the only two animals shown especially known for traveling by large jumps or leaps.")
+  ],
+  "feelings": [
+    pictureThisLink("opposites", [0,2], "Happy and sad are the only two feelings shown that form a direct emotional opposite pair."),
+    pictureThisLink("raised-hands", [1,3], "Surprised and confused are the only two expressions shown with both hands raised."),
+    pictureThisLink("low-energy", [2,5], "Sad and tired are the only two feelings shown with characteristically lowered energy and posture.")
+  ],
+  "beverages": [
+    pictureThisLink("dark", [0,4], "Coffee and soda are the only two beverages shown as dark-colored liquids."),
+    pictureThisLink("plain", [1,3], "Water and milk are the only two unflavored everyday beverages shown.")
+  ],
+  "play": [
+    pictureThisLink("net-divided", [2,3], "Volleyball and tennis are the only two sports shown whose court is divided by a net."),
+    pictureThisLink("goal-scoring", [1,5], "Soccer and football are the only two sports shown centered on carrying or kicking a ball toward a goal area.")
+  ],
+  "school": [
+    pictureThisLink("writing-pair", [1,2], "Pencil and notebook are the only two items shown that directly form a writing tool and writing surface pair."),
+    pictureThisLink("carrying", [3,4], "Backpack and book are the only two items shown that directly form a school container and its typical contents pair.")
+  ],
+  "personal-items": [
+    pictureThisLink("cash-holders", [2,5], "Wallet and purse are the only two personal items shown designed to carry money."),
+    pictureThisLink("face-hair", [3,4], "Glasses and comb are the only two items shown worn or used directly above the neck.")
+  ],
+  "snack-time": [
+    pictureThisLink("baked", [4,5], "Donuts and crackers are the only two baked snack foods shown."),
+    pictureThisLink("sweet-treats", [0,4], "Chocolate and donuts are the only two sweet dessert treats shown.")
+  ],
+  "hobbies": [pictureThisLink("screen-based", [4,5], "Surfing the Internet and watching movies are the only two hobbies shown primarily done by viewing a screen.")],
+  "shapes": [
+    pictureThisLink("odd-points", [1,3], "Triangle and star are the only two shapes shown with an odd number of points or corners."),
+    pictureThisLink("roundlike", [2,5], "Circle and octagon are the only two shapes shown commonly used as progressively smoother wheel-like outlines.")
+  ],
+  "bugs": [
+    pictureThisLink("non-insects", [1,4], "Spider and worm are the only two bugs shown that are not insects."),
+    pictureThisLink("web-prey", [1,5], "Spider and mosquito are the only two bugs shown that form a familiar web hunter and flying prey pair."),
+    pictureThisLink("soil-tunnelers", [0,4], "Ant and worm are the only two bugs shown especially known for tunneling through soil.")
+  ],
+  "tools": [
+    pictureThisLink("measure-cut", [2,3], "Saw and tape measure are the only two tools shown that directly form a measure-before-cutting pair."),
+    pictureThisLink("nails-screws", [1,4], "Hammer and screwdriver are the only two tools shown made to drive the two standard pictured fastener types: nails and screws.")
+  ],
+  "outdoor-places": [pictureThisLink("shorelines", [2,5], "Island and lake are the only two places shown whose defining boundary is a shoreline around water.")],
+  "furniture": [
+    pictureThisLink("bedside", [2,5], "Bed and lamp are the only two furniture items shown that form a standard bedside pair."),
+    pictureThisLink("sleepable", [2,4], "Bed and sofa are the only two furniture items shown on which a person can normally lie down to sleep.")
+  ],
+  "communication-tools": [
+    pictureThisLink("paper", [0,5], "Mail and newspaper are the only two paper-based communication forms shown."),
+    pictureThisLink("audio-only", [1,2], "Telephone and radio are the only two communication media shown that can work through sound alone.")
+  ],
+  "transportation": [
+    pictureThisLink("four-wheeled", [2,4], "Car and bus are the only two road vehicles shown that characteristically have four or more wheels and enclosed passenger cabins."),
+    pictureThisLink("ground-transit", [1,4], "Train and bus are the only two high-capacity public ground-transit vehicles shown.")
+  ],
+  "great-outdoors": [pictureThisLink("trails", [0,2], "Horseback riding and hiking are the only two activities shown characteristically following land trails.")],
+  "jobs": [
+    pictureThisLink("white-uniforms", [1,2], "Chef and doctor are the only two workers shown wearing predominantly white professional uniforms."),
+    pictureThisLink("clipboards", [2,3], "Doctor and business person are the only two workers shown holding clipboards."),
+    pictureThisLink("community-safety", [2,4], "Doctor and police officer are the only two workers shown whose central role is protecting public health or safety.")
+  ],
+  "everyday-foods": [pictureThisLink("complete-protein", [0,5], "Beans and rice are the only two foods shown that form the familiar complementary-protein pair.")],
+  "market": [
+    pictureThisLink("meats", [2,4], "Chicken and fish are the only two animal meats shown."),
+    pictureThisLink("breakfast-pair", [1,5], "Eggs and bread are the only two foods shown that form a familiar toast-and-eggs breakfast pair.")
+  ],
+  "outdoor-gear": [pictureThisLink("head-neck", [0,1], "Scarf and hat are the only two gear items shown specifically worn on the head or neck.")],
+  "pets": [
+    pictureThisLink("companions", [0,2], "Cat and dog are the only two free-roaming household companion mammals shown."),
+    pictureThisLink("cage-pets", [3,5], "Parrot and rabbit are the only two pets shown commonly kept in cages or hutches.")
+  ],
+  "at-the-beach": [
+    pictureThisLink("sand-play", [0,4], "Beach ball and sandcastle are the only two items shown specifically used to play on the beach."),
+    pictureThisLink("sand-colored", [1,4], "Sun hat and sandcastle are the only two beach items shown predominantly sand-colored.")
+  ],
+  "in-the-kitchen": [
+    pictureThisLink("hot-handling", [0,5], "Frying pan and oven mitt are the only two items shown directly joined by safely handling hot cookware."),
+    pictureThisLink("wooden", [1,4], "Wooden spoon and cutting board are the only two kitchen items shown characteristically made of wood.")
+  ],
+  "getting-dressed": [
+    pictureThisLink("casual-basics", [0,1], "T-shirt and jeans are the only two garments shown that form the standard casual top-and-bottom basics pair."),
+    pictureThisLink("warm-layers", [3,4], "Jacket and scarf are the only two garments shown specifically added as warm outer layers."),
+    pictureThisLink("laces-straps", [2,5], "Sneakers and backpack are the only two items shown characteristically secured with laces or shoulder straps.")
+  ],
+  "at-the-doctor": [
+    pictureThisLink("injury-support", [2,4], "Bandage and crutch are the only two items shown specifically used to support an injury during healing."),
+    pictureThisLink("kit-contents", [2,5], "Bandage and first-aid kit are the only two items shown that form a direct medical container-and-contents pair.")
+  ],
+  "cleaning-day": [
+    pictureThisLink("dry-floor", [0,5], "Broom and vacuum are the only two supplies shown specifically used to clean a dry floor."),
+    pictureThisLink("absorbent", [1,3], "Mop and sponge are the only two absorbent cleaning tools shown.")
+  ],
+  "in-the-garden": [
+    pictureThisLink("hand-tools", [1,4], "Trowel and shears are the only two small hand-operated garden tools shown."),
+    pictureThisLink("potting-pair", [1,3], "Trowel and flowerpot are the only two items shown directly joined by potting a plant.")
+  ],
+  "at-the-playground": [
+    pictureThisLink("throwables", [4,5], "Soccer ball and Frisbee are the only two loose playground objects shown designed to be thrown between players."),
+    pictureThisLink("loops", [3,5], "Jump rope and Frisbee are the only two playground items shown with a prominent open loop or ring outline.")
+  ],
+  "on-the-farm": [
+    pictureThisLink("hay-handling", [2,3], "Hay bale and pitchfork are the only two items shown directly joined by moving hay."),
+    pictureThisLink("storage", [1,5], "Barn and milk can are the only two farm items shown primarily used to store farm products.")
+  ],
+  "baby-things": [
+    pictureThisLink("oral", [1,2], "Bottle and pacifier are the only two baby items shown placed in a baby's mouth."),
+    pictureThisLink("seated", [0,5], "Stroller and high chair are the only two items shown that seat and support a baby.")
+  ],
+  "party-time": [pictureThisLink("cone-shaped", [2,5], "Party hat and party horn are the only two party items shown with a prominent cone shape.")],
+  "science-lab": [
+    pictureThisLink("holders", [1,2], "Test-tube rack and beaker are the only two laboratory items shown primarily used to hold samples or liquids."),
+    pictureThisLink("lenses", [0,4], "Microscope and goggles are the only two laboratory items shown that a person looks through lenses to use.")
+  ],
+  "sewing-kit": [pictureThisLink("thread-supply", [0,1], "Sewing machine and thread spool are the only two items shown directly joined as machine and its thread supply.")],
+  "winter-fun": [
+    pictureThisLink("runners", [0,1], "Sled and ice skates are the only two winter items shown that glide on narrow runners or blades."),
+    pictureThisLink("sit-on", [0,5], "Sled and snow tube are the only two winter items shown ridden while sitting on top of them.")
+  ],
+  "movie-night": [pictureThisLink("circular", [0,5], "Popcorn tub and film reel are the only two movie items shown with dominant circular or cylindrical forms.")],
+  "space-travel": [
+    pictureThisLink("launch-payload", [0,3], "Rocket and satellite are the only two objects shown that form a launch vehicle and its orbital payload pair."),
+    pictureThisLink("lunar-gear", [1,4], "Helmet and moon rover are the only two items shown specifically designed for astronaut travel on the lunar surface."),
+    pictureThisLink("observation", [2,5], "Telescope and Earth are the only two items shown that form an observation instrument and its pictured distant target pair.")
+  ],
+  "hair-salon": [
+    pictureThisLink("curls", [4,5], "Hair rollers and curling iron are the only two salon tools shown specifically designed to create curls."),
+    pictureThisLink("washing-station", [1,2], "Shampoo and salon chair are the only two items shown directly joined at a salon hair-washing station.")
+  ],
+  "at-the-office": [
+    pictureThisLink("blue", [1,2], "Calculator and file folder are the only two office items shown predominantly blue."),
+    pictureThisLink("black", [3,4], "Hole punch and binder clip are the only two office items shown predominantly black.")
+  ],
+  "under-the-sea": [pictureThisLink("streamlined", [0,1], "Dolphin and shark are the only two large swimmers shown with strongly streamlined fish-like bodies.")],
+  "at-the-library": [
+    pictureThisLink("circulation", [0,5], "Library card and return bin are the only two items shown specifically used in borrowing and returning library materials."),
+    pictureThisLink("publication-holders", [1,4], "Book cart and magazine rack are the only two fixtures shown designed to hold publications."),
+    pictureThisLink("locators", [2,3], "Bookmark and card catalog are the only two items shown specifically used to locate a place within a book or collection.")
+  ],
+  "at-the-harbor": [
+    pictureThisLink("fishing", [3,4], "Sailboat and fishing net are the only two harbor items shown directly joined in fishing from a boat."),
+    pictureThisLink("life-saving", [0,2], "Lighthouse and life buoy are the only two harbor safety items shown specifically intended to prevent drowning or shipwreck.")
+  ],
+  "at-the-museum": [
+    pictureThisLink("encased", [0,3], "Dinosaur fossil and display case are the only two items shown that form a museum exhibit and its protective enclosure pair."),
+    pictureThisLink("human-faces", [2,5], "Marble statue and Egyptian mask are the only two exhibits shown depicting human faces."),
+    pictureThisLink("antiquities", [1,5], "Ancient vase and Egyptian mask are the only two portable artifacts shown from ancient civilizations.")
+  ],
+  "city-street": [pictureThisLink("underground-utilities", [1,5], "Fire hydrant and manhole cover are the only two street fixtures shown that provide access to underground utility systems.")],
+  "at-a-wedding": [pictureThisLink("formalwear", [2,3], "Veil and tuxedo are the only two wedding items shown worn as formal ceremony clothing.")],
+  "bathroom-fixtures": [
+    pictureThisLink("bathing", [0,3], "Bathtub and showerhead are the only two fixtures shown specifically used to bathe the whole body."),
+    pictureThisLink("handwashing", [1,4], "Washbasin and faucet are the only two fixtures shown that form the direct handwashing station pair."),
+    pictureThisLink("above-basin", [4,5], "Faucet and mirror are the only two fixtures shown characteristically positioned at or above a washbasin.")
+  ],
+  "money-and-banking": [
+    pictureThisLink("currency", [0,1], "Banknote and coins are the only two items shown that are currency themselves."),
+    pictureThisLink("saving", [3,4], "Piggy bank and safe are the only two containers shown specifically designed to protect saved valuables."),
+    pictureThisLink("withdrawal", [0,5], "Banknote and ATM are the only two items shown that form the cash-withdrawal output and machine pair.")
+  ],
+  "houseplants": [
+    pictureThisLink("strap-leaves", [4,5], "Snake plant and aloe are the only two plants shown with thick upright strap-shaped leaves."),
+    pictureThisLink("tropical", [1,3], "Orchid and fern are the only two humid-forest tropical plants shown.")
+  ],
+  "fire-station": [
+    pictureThisLink("alarm-response", [0,5], "Fire engine and alarm bell are the only two items shown that form an emergency alert and response-vehicle pair."),
+    pictureThisLink("handheld-tools", [3,4], "Extinguisher and fire axe are the only two handheld firefighting tools shown.")
+  ],
+  "at-the-hotel": [pictureThisLink("lobby", [1,4], "Bell and luggage rack are the only two items shown characteristically stationed in a hotel lobby.")],
+  "construction-site": [
+    pictureThisLink("machinery", [0,1], "Excavator and cement mixer are the only two large powered construction machines shown."),
+    pictureThisLink("protective-wear", [2,5], "Helmet and safety vest are the only two items shown worn as personal protective equipment."),
+    pictureThisLink("roadside-warning", [3,5], "Traffic cone and safety vest are the only two high-visibility warning items shown.")
+  ],
+  "at-the-theater": [pictureThisLink("stage-lighting", [0,1], "Curtain and spotlight are the only two items shown that frame and illuminate the stage performance area.")],
+  "at-the-restaurant": [
+    pictureThisLink("place-setting", [0,2], "Menu and napkin ring are the only two items shown placed at each diner's individual setting."),
+    pictureThisLink("soup-service", [1,5], "Serving tray and soup tureen are the only two items shown directly joined in carrying and serving soup.")
+  ],
+  "at-the-bakery": [pictureThisLink("bread-serving", [0,4], "Baguette and bread basket are the only two items shown that form a baked product and its serving container pair.")],
+  "at-the-police-station": [pictureThisLink("traffic-control", [4,5], "Baton and police car are the only two items shown routinely used by officers to direct or control road traffic.")],
+  "at-the-campsite": [
+    pictureThisLink("fuel-burning", [2,4], "Lantern and camp stove are the only two campsite devices shown that characteristically burn fuel."),
+    pictureThisLink("carry-essentials", [3,5], "Compass and canteen are the only two small personal essentials shown carried while traveling away from camp.")
+  ],
+  "board-games": [
+    pictureThisLink("number-pips", [1,2], "Die and domino are the only two pieces shown whose dots primarily represent numbers."),
+    pictureThisLink("interlocking-matching", [2,3], "Domino and jigsaw piece are the only two pieces shown joined by matching physical ends or edges."),
+    pictureThisLink("timed-strategy", [0,5], "Chess knight and sand timer are the only two items shown directly associated with timed strategy play.")
+  ],
+  "computer-equipment": [
+    pictureThisLink("controls", [1,2], "Mouse and keyboard are the only two dedicated computer input controls shown."),
+    pictureThisLink("video", [0,5], "Laptop and webcam are the only two items shown that directly form a computer video-call pair.")
+  ],
+  "emergency-room": [
+    pictureThisLink("patient-transport", [0,1], "Ambulance and wheelchair are the only two items shown primarily designed to transport a patient."),
+    pictureThisLink("monitoring-treatment", [2,3], "IV stand and blood-pressure cuff are the only two bedside devices shown used directly during medical monitoring or treatment."),
+    pictureThisLink("immobilization", [4,5], "Neck brace and hospital bed are the only two items shown that keep an injured patient supported and relatively still.")
+  ],
+  "car-parts": [pictureThisLink("rotation", [0,1], "Steering wheel and tire are the only two car parts shown whose normal operation visibly rotates around a central axis.")],
+  "ancient-egypt": [
+    pictureThisLink("burial-containers", [0,3], "Pyramid and canopic jar are the only two items shown specifically made to contain or preserve parts of a burial."),
+    pictureThisLink("hieroglyphs", [2,5], "Papyrus and ankh are the only two items shown directly associated with writing or displaying Egyptian hieroglyphic symbols.")
+  ],
+  "flowers": [
+    pictureThisLink("fragrant", [0,5], "Rose and lily are the only two flowers shown especially famous for strong fragrance."),
+    pictureThisLink("bulbs", [2,5], "Tulip and lily are the only two flowers shown that characteristically grow from true bulbs.")
+  ],
+  "birds": [pictureThisLink("multicolored", [4,5], "Toucan and peacock are the only two birds shown with prominently multicolored display plumage or bills.")],
+  "kitchen-appliances": [
+    pictureThisLink("rapid-heaters", [1,2], "Toaster and microwave are the only two appliances shown specifically designed for rapid reheating of a small serving."),
+    pictureThisLink("countertop-containers", [0,3], "Blender and rice cooker are the only two countertop appliances shown with deep food-holding vessels."),
+    pictureThisLink("major-appliances", [4,5], "Refrigerator and dishwasher are the only two full-size installed kitchen appliances shown.")
+  ],
+  "art-supplies": [
+    pictureThisLink("canvas-work", [1,2], "Paintbrush and easel are the only two supplies shown that directly form the tool-and-support pair for painting a canvas."),
+    pictureThisLink("drawing-media", [3,5], "Pastels and ink bottle are the only two supplies shown that provide drawing pigment without being paint in a pan.")
+  ],
+  "sports-equipment": [
+    pictureThisLink("red", [0,5], "Tennis racket and table-tennis paddle are the only two equipment items shown predominantly red."),
+    pictureThisLink("striking-sticks", [1,3], "Cricket bat and hockey stick are the only two long solid implements shown used to strike a ball or puck."),
+    pictureThisLink("overhead-net", [0,4], "Tennis racket and shuttlecock are the only two items shown belonging to sports played by striking a projectile over a raised net.")
+  ],
+  "at-the-pharmacy": [
+    pictureThisLink("dosing", [0,4], "Pill bottle and measuring spoon are the only two items shown directly joined in measuring a medicine dose."),
+    pictureThisLink("droplets", [2,3], "Eye drops and nasal spray are the only two medicines shown dispensed as targeted liquid droplets."),
+    pictureThisLink("medicine-packaging", [0,1], "Pill bottle and medicine box are the only two retail medicine packages shown.")
+  ],
+  "picnic-time": [
+    pictureThisLink("drinking", [2,5], "Thermos and cup are the only two items shown that form a beverage container and drinking vessel pair."),
+    pictureThisLink("food-carrying", [0,4], "Picnic basket and cooler are the only two large containers shown designed to carry picnic food.")
+  ],
+  "spices": [
+    pictureThisLink("bark-buds", [0,2], "Cinnamon and cloves are the only two seasonings shown harvested primarily as tree bark or flower buds."),
+    pictureThisLink("roots-leaves", [1,5], "Turmeric and bay leaves are the only two seasonings shown as recognizable plant root or whole leaves.")
+  ],
+  "travel-accessories": [pictureThisLink("straps", [1,2], "Luggage tag and eye mask are the only two items shown characteristically secured with narrow straps.")],
+  "weather-instruments": [
+    pictureThisLink("rotating", [0,1], "Weather vane and anemometer are the only two instruments shown with parts that rotate in the wind."),
+    pictureThisLink("pressure", [2,3], "Barometer and weather balloon are the only two instruments shown used to measure or profile atmospheric pressure.")
+  ],
+  "ways-to-travel": [
+    pictureThisLink("red", [0,3], "Tram and scooter are the only two vehicles shown predominantly red."),
+    pictureThisLink("blue", [2,5], "Rickshaw and pickup truck are the only two vehicles shown predominantly blue.")
+  ],
+  "at-the-aquarium": [
+    pictureThisLink("calcium", [3,4], "Clam shell and coral are the only two aquarium items shown built mainly from hard calcium carbonate."),
+    pictureThisLink("shelter", [1,5], "Hermit crab and aquarium castle are the only two items shown directly associated with an animal occupying a protective shelter.")
+  ],
+  "at-the-coffee-shop": [
+    pictureThisLink("paper", [3,5], "Coffee filter and paper cup are the only two paper-based coffee-shop items shown."),
+    pictureThisLink("bean-processing", [0,1], "Espresso machine and coffee grinder are the only two powered devices shown that directly process coffee beans into a drink.")
+  ],
+  "at-the-supermarket": [
+    pictureThisLink("handheld", [1,5], "Shopping basket and reusable bag are the only two handheld grocery carriers shown."),
+    pictureThisLink("post-checkout", [4,5], "Receipt and reusable bag are the only two items shown typically handed to or carried by the shopper after checkout.")
+  ],
+  "tableware": [pictureThisLink("dishes", [0,1], "Plate and soup bowl are the only two open dishes shown for holding a diner's food.")],
+  "cooking-utensils": [
+    pictureThisLink("mixing", [1,2], "Ladle and whisk are the only two long-handled tools shown used to mix liquids in a vessel."),
+    pictureThisLink("vegetable-prep", [4,5], "Colander and peeler are the only two tools shown specifically associated with preparing vegetables before cooking.")
+  ],
+  "fresh-fruit": [pictureThisLink("leafy-tops", [2,4], "Strawberry and pineapple are the only two fruits shown with prominent leafy crowns attached.")],
+  "pantry-basics": [
+    pictureThisLink("savory-basics", [2,3], "Cooking oil and salt are the only two foundational savory seasonings shown."),
+    pictureThisLink("boiled-staples", [0,1], "Pasta and lentils are the only two dry staples shown normally cooked by boiling in water.")
+  ],
+  "breakfast-foods": [
+    pictureThisLink("spoon-foods", [2,3], "Cereal and yogurt are the only two breakfast foods shown normally eaten from a bowl or cup with a spoon."),
+    pictureThisLink("handheld", [0,5], "Toast and granola bar are the only two breakfast foods shown normally eaten by hand without utensils.")
+  ],
+  "electrical-essentials": [pictureThisLink("extension", [3,5], "Power strip and extension cord are the only two electrical items shown specifically used to extend access to power.")],
+  "personal-care": [pictureThisLink("odor-control", [0,1], "Soap and deodorant are the only two personal-care products shown specifically used to control body odor.")],
+  "dishwashing": [pictureThisLink("hand-dryness", [3,4], "Rubber gloves and dish towel are the only two items shown specifically used to keep or make hands dry during dishwashing.")],
+  "food-storage": [
+    pictureThisLink("freezer-pair", [0,2], "Food container and ice tray are the only two rigid containers shown characteristically placed in a freezer."),
+    pictureThisLink("hinged-boxes", [1,3], "Bread box and lunch box are the only two rigid lidded boxes shown for storing food.")
+  ],
+  "bathroom-essentials": [pictureThisLink("sink-side", [1,2], "Hand towel and soap dish are the only two items shown characteristically kept beside a bathroom sink.")],
+  "parts-of-a-home": [pictureThisLink("access", [0,5], "Front door and door handle are the only two items shown that form the entrance barrier and its operating hardware pair.")],
+  "coffee-shop-drinks": [
+    pictureThisLink("glasses", [2,4], "Latte and mocha are the only two drinks shown served in clear glasses."),
+    pictureThisLink("square-cups", [0,5], "Macchiato and espresso are the only two drinks shown in small angular-sided cups.")
+  ]
+};
+
+Object.entries(auditedLinkAdditions).forEach(([cardId, puzzles]) => {
+  window.PICTURE_THIS_LINK_DATA[cardId].push(...puzzles);
+});
