@@ -1625,6 +1625,8 @@
     let roundComplete = false;
     let foundItems = new Set();
     let linkPuzzle = null;
+    let linkPuzzlePosition = -1;
+    const linkPuzzlePositions = new Map();
     let selectedLinkItems = new Set();
     let pendingCreativeLink = "";
     let cardIndex = 0;
@@ -1677,6 +1679,19 @@
 
     function linkCardIndexes() {
       return cards.map((entry, index) => linkPuzzlesForCard(entry.id).length ? index : -1).filter(index => index >= 0);
+    }
+
+    function nextLinkPuzzle(cardId, puzzles) {
+      if (!puzzles.length) {
+        linkPuzzlePosition = -1;
+        return null;
+      }
+      const previous = linkPuzzlePositions.get(cardId);
+      linkPuzzlePosition = Number.isInteger(previous)
+        ? (previous + 1) % puzzles.length
+        : secureRandomIndex(puzzles.length);
+      linkPuzzlePositions.set(cardId, linkPuzzlePosition);
+      return puzzles[linkPuzzlePosition];
     }
 
     function initialCardIndex() {
@@ -2295,7 +2310,7 @@
       itemGrid.classList.toggle("is-pair-word", gameMode === "name-link");
       itemGrid.classList.remove("is-locked");
       itemFooterMask.hidden = gameMode !== "items";
-      newGameCardButton.textContent = isLinkMode() ? "New link →" : "New card →";
+      newGameCardButton.textContent = isLinkMode() ? "Next link →" : "New card →";
 
       itemCells.forEach((cell, index) => {
         cell.classList.remove("is-revealed", "is-selected", "is-target", "is-correct", "is-wrong");
@@ -2330,8 +2345,10 @@
         }
       } else {
         const puzzles = linkPuzzlesForCard(current.id);
-        linkPuzzle = puzzles.length ? puzzles[secureRandomIndex(puzzles.length)] : null;
-        gameModeKicker.textContent = current.title;
+        linkPuzzle = nextLinkPuzzle(current.id, puzzles);
+        gameModeKicker.textContent = linkPuzzle
+          ? `${current.title} · Link ${linkPuzzlePosition + 1} of ${puzzles.length}`
+          : current.title;
         gameProgress.hidden = true;
 
         if (!linkPuzzle || items.length !== 6) {
@@ -2369,6 +2386,16 @@
         }
       }
       if (gameMode !== "find-pair") window.setTimeout(() => guessInput.focus(), 180);
+    }
+
+    function newGameRound() {
+      if (!isLinkMode()) {
+        newRandomCard();
+        return;
+      }
+      resetGameRound();
+      updateSideUI(false);
+      status.textContent = `New link on ${cards[cardIndex].title}.`;
     }
 
     function openGamePicker() {
@@ -2650,7 +2677,7 @@
       });
     });
     revealGameAnswerButton.addEventListener("click", revealGameAnswer);
-    newGameCardButton.addEventListener("click", newRandomCard);
+    newGameCardButton.addEventListener("click", newGameRound);
     endGameButton.addEventListener("click", endGame);
     prevCardButton.addEventListener("click", prevCard);
     nextCardButton.addEventListener("click", nextCard);
@@ -2666,7 +2693,7 @@
       }
       if (event.target.matches("input, textarea, select") || gamePicker.hidden === false) return;
       if (gameMode !== "browse") {
-        if (event.key.toLowerCase() === "n") newRandomCard();
+        if (event.key.toLowerCase() === "n") newGameRound();
         else if (event.key.toLowerCase() === "f") toggleFullscreen();
         else if (event.key === "Escape") endGame();
         return;
