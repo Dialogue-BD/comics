@@ -10,11 +10,23 @@
   },
   "cards_file": "cards.json",
   "game_data_file": "game-data.js",
+  "link_data_file": "link-data.js",
   "classroom_modes": [
     "browse",
     "guess-category",
-    "guess-items"
+    "guess-items",
+    "find-pair",
+    "name-link"
   ],
+  "game_compatibility": {
+    "schema_version": 1,
+    "modes": [
+      "guess-category",
+      "guess-items",
+      "find-pair",
+      "name-link"
+    ]
+  },
   "card_count": 101,
   "pages": [
     {

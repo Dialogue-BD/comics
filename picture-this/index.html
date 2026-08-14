@@ -378,6 +378,10 @@
         #faf9f5;
       box-shadow: 0 3px 13px rgba(22, 25, 33, .07) inset;
       transition: background .32s ease, border-color .32s ease, box-shadow .32s ease;
+      appearance: none;
+      padding: 0;
+      color: inherit;
+      font: inherit;
     }
 
     .item-cell:nth-child(1), .item-cell:nth-child(2) { top: 8%; }
@@ -425,6 +429,45 @@
     .item-cell.is-revealed .item-question { opacity: 0; transform: scale(.7); }
     .item-cell.is-revealed .item-label { opacity: 1; transform: translate(-50%, 0); }
 
+    .item-grid.is-link-mode { pointer-events: auto; }
+    .item-grid.is-link-mode .item-cell {
+      border: 2px solid transparent;
+      background: transparent;
+      box-shadow: none;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .item-grid.is-link-mode .item-cell:hover,
+    .item-grid.is-link-mode .item-cell:focus-visible {
+      border-color: hsl(var(--accent) / .65);
+      background: hsl(var(--accent) / .09);
+      outline: none;
+    }
+    .item-grid.is-link-mode .item-question,
+    .item-grid.is-link-mode .item-label { display: none; }
+    .item-grid.is-link-mode .item-cell.is-selected,
+    .item-grid.is-link-mode .item-cell.is-target {
+      border-color: hsl(var(--accent));
+      background: hsl(var(--accent) / .18);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.82) inset, 0 0 24px hsl(var(--accent) / .42);
+    }
+    .item-grid.is-link-mode .item-cell.is-correct {
+      border-color: #8ee55d;
+      background: rgba(126, 214, 76, .2);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.84) inset, 0 0 24px rgba(126, 214, 76,.5);
+    }
+    .item-grid.is-link-mode .item-cell.is-wrong {
+      border-color: #ff6f68;
+      background: rgba(255, 91, 83, .18);
+      animation: link-wrong .34s ease;
+    }
+    .item-grid.is-link-mode.is-pair-word .item-cell,
+    .item-grid.is-link-mode.is-locked .item-cell { pointer-events: none; }
+    @keyframes link-wrong {
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+
     .item-footer-mask {
       position: absolute;
       z-index: 6;
@@ -443,6 +486,7 @@
       background: rgba(7, 9, 14, .76);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+      overflow-y: auto;
     }
 
     .game-picker-card {
@@ -459,7 +503,7 @@
     .game-picker-card h2 { margin: 0; font-size: clamp(2rem, 7vw, 4.4rem); line-height: .95; letter-spacing: -.055em; }
     .game-picker-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 13px; color: var(--muted); background: rgba(255,255,255,.05); font-size: 1.3rem; cursor: pointer; }
     .game-options { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
-    .game-option { min-height: 168px; padding: 20px; border: 1px solid var(--border); border-radius: 19px; color: var(--ink); background: rgba(255,255,255,.045); text-align: left; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .game-option { min-height: 154px; padding: 20px; border: 1px solid var(--border); border-radius: 19px; color: var(--ink); background: rgba(255,255,255,.045); text-align: left; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
     .game-option:hover { transform: translateY(-2px); border-color: hsl(var(--accent) / .65); background: hsl(var(--accent) / .1); }
     .game-option-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 15px; border-radius: 13px 13px 13px 4px; color: #11141b; background: hsl(var(--accent)); font-size: 1.2rem; font-weight: 950; line-height: 1; }
     .game-option strong { display: block; }
@@ -495,6 +539,9 @@
     .game-score.pulse { animation: score-pop .28s ease; }
     @keyframes score-pop { 50% { transform: scale(1.12) rotate(-2deg); } }
     .game-prompt { margin: 21px 0 10px; color: var(--ink); font-size: 1rem; font-weight: 800; line-height: 1.45; }
+    .link-word { margin: 2px 0 16px; padding: 14px 16px; border: 1px solid hsl(var(--accent) / .42); border-radius: 15px; color: #101218; background: hsl(var(--accent)); text-align: center; }
+    .link-word span { display: block; font-size: .58rem; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .link-word strong { display: block; margin-top: 2px; font-size: clamp(1.45rem, 4vw, 2rem); line-height: 1; letter-spacing: -.025em; }
     .game-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; color: var(--muted); font-size: .73rem; font-weight: 800; }
     .game-progress-track { flex: 1; height: 6px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.09); }
     .game-progress-track i { display: block; width: 0; height: 100%; border-radius: inherit; background: hsl(var(--accent)); transition: width .3s ease; }
@@ -507,6 +554,7 @@
     .game-feedback { min-height: 59px; margin: 11px 0 4px; padding: 11px 13px; border: 1px solid transparent; border-radius: 13px; color: var(--muted); background: rgba(255,255,255,.035); font-size: .8rem; font-weight: 750; line-height: 1.4; }
     .game-feedback.correct { color: #d7ff9e; border-color: rgba(176, 235, 91, .3); background: rgba(126, 179, 47, .12); }
     .game-feedback.wrong { color: #ffc2bd; border-color: rgba(255, 110, 100, .28); background: rgba(255, 90, 80, .1); }
+    .creative-accept { width: 100%; min-height: 45px; margin: 5px 0 10px; padding: 9px 12px; border: 1px solid rgba(176,235,91,.35); border-radius: 13px; color: #d7ff9e; background: rgba(126,179,47,.13); font: inherit; font-size: .78rem; font-weight: 900; cursor: pointer; }
     .game-panel-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
     .game-panel-action { padding: 10px; color: var(--ink); background: rgba(255,255,255,.07); border: 1px solid var(--border); }
     .game-panel-action.primary { color: #101218; background: hsl(var(--accent)); border-color: transparent; }
@@ -653,6 +701,7 @@
     }
 
     @media (max-width: 700px) {
+      .game-picker { place-items: start center; }
       .stage {
         padding-bottom: max(116px, calc(env(safe-area-inset-bottom) + 104px));
       }
@@ -856,6 +905,7 @@
         <div class="game-score" id="game-score"><span>Score</span><strong id="game-score-value">0</strong></div>
       </div>
       <p class="game-prompt" id="game-prompt">What category connects these six items?</p>
+      <div class="link-word" id="link-word" hidden><span>Link word</span><strong id="link-word-value"></strong></div>
       <div class="game-progress" id="game-progress" hidden><span id="game-progress-label">0 of 6 found</span><span class="game-progress-track"><i id="game-progress-fill"></i></span></div>
       <form class="guess-form" id="guess-form" autocomplete="off">
         <label class="sr-only" for="guess-input">Your guess</label>
@@ -863,6 +913,7 @@
         <button id="guess-submit" type="submit">Check</button>
       </form>
       <div class="game-feedback" id="game-feedback" role="status" aria-live="polite">Correct answers earn 1 point. Incorrect answers lose 1 point.</div>
+      <button class="creative-accept" id="accept-creative-link" type="button" hidden>Accept creative link · +1</button>
       <div class="game-panel-actions">
         <button class="game-panel-action" id="reveal-game-answer" type="button">Reveal answer</button>
         <button class="game-panel-action primary" id="new-game-card" type="button">New card →</button>
@@ -874,7 +925,7 @@
       <div class="game-picker-card">
         <button class="game-picker-close" id="game-picker-close" type="button" aria-label="Close game chooser">×</button>
         <h2 id="game-picker-title">Choose a class game</h2>
-        <p>Project the card, invite answers from the whole class, and let the screen keep score. Both modes work with all 101 cards.</p>
+        <p>Project the card, invite answers from the whole class, and let the screen keep score. Choose a guessing or linking activity.</p>
         <div class="game-options">
           <button class="game-option" type="button" data-start-game="category">
             <span class="game-option-icon" aria-hidden="true">?</span>
@@ -886,6 +937,16 @@
             <strong>Guess the Items</strong>
             <span>The category stays visible. Correct item guesses reveal the matching picture and label.</span>
           </button>
+          <button class="game-option" type="button" data-start-game="find-pair">
+            <span class="game-option-icon" aria-hidden="true">2</span>
+            <strong>Find the Pair</strong>
+            <span>One link word is shown. Students select the two pictures connected by it.</span>
+          </button>
+          <button class="game-option" type="button" data-start-game="name-link">
+            <span class="game-option-icon" aria-hidden="true">1</span>
+            <strong>Name the Link</strong>
+            <span>Two pictures are highlighted. Students supply one word that connects them.</span>
+          </button>
         </div>
       </div>
     </div>
@@ -894,6 +955,7 @@
   </main>
 
   <script src="game-data.js"></script>
+  <script src="link-data.js"></script>
   <script>
     // Mirrors cards.json so the activity also works when opened directly from file://.
     // PICTURE_THIS_CARDS_START
@@ -1528,6 +1590,8 @@
     const enterFullscreenIcon = fullscreenButton.querySelector(".enter-fullscreen");
     const exitFullscreenIcon = fullscreenButton.querySelector(".exit-fullscreen");
     const gameData = window.PICTURE_THIS_GAME_DATA || {};
+    const gameMeta = window.PICTURE_THIS_GAME_META?.cards || {};
+    const curatedLinkData = window.PICTURE_THIS_LINK_DATA || {};
     const gameMenuButton = document.querySelector("#game-menu-button");
     const gamePicker = document.querySelector("#game-picker");
     const gamePickerClose = document.querySelector("#game-picker-close");
@@ -1551,12 +1615,18 @@
     const itemGrid = document.querySelector("#item-grid");
     const itemFooterMask = document.querySelector("#item-footer-mask");
     const itemCells = [...document.querySelectorAll(".item-cell")];
+    const linkWord = document.querySelector("#link-word");
+    const linkWordValue = document.querySelector("#link-word-value");
+    const acceptCreativeLinkButton = document.querySelector("#accept-creative-link");
 
     let isDualView = false;
     let gameMode = "browse";
     let gamePoints = 0;
     let roundComplete = false;
     let foundItems = new Set();
+    let linkPuzzle = null;
+    let selectedLinkItems = new Set();
+    let pendingCreativeLink = "";
     let cardIndex = 0;
     let angle = 0;
     let startAngle = 0;
@@ -1573,6 +1643,40 @@
         return Math.floor((values[0] / 4294967296) * max);
       }
       return Math.floor(Math.random() * max);
+    }
+
+    function isLinkMode() {
+      return gameMode === "find-pair" || gameMode === "name-link";
+    }
+
+    function gameModeName() {
+      return {
+        category: "Guess the category",
+        items: "Guess the items",
+        "find-pair": "Find the pair",
+        "name-link": "Name the link"
+      }[gameMode] || "Picture This!";
+    }
+
+    function generatedLinkPuzzles(cardId) {
+      const meta = gameMeta[cardId];
+      if (!meta || !Array.isArray(meta.items) || !Array.isArray(meta.links)) return [];
+      const itemIndexes = new Map(meta.items.map((item, index) => [item.id, index]));
+      return meta.links.map(link => ({
+        word: link.word,
+        answers: Array.isArray(link.answers) && link.answers.length ? link.answers : [link.word],
+        items: Array.isArray(link.items) ? link.items.map(item => Number.isInteger(item) ? item : itemIndexes.get(item)) : [],
+        explanation: link.explanation || ""
+      })).filter(link => link.word && link.items.length === 2 && link.items.every(Number.isInteger));
+    }
+
+    function linkPuzzlesForCard(cardId) {
+      const curated = Array.isArray(curatedLinkData[cardId]) ? curatedLinkData[cardId] : [];
+      return [...curated, ...generatedLinkPuzzles(cardId)];
+    }
+
+    function linkCardIndexes() {
+      return cards.map((entry, index) => linkPuzzlesForCard(entry.id).length ? index : -1).filter(index => index >= 0);
     }
 
     function initialCardIndex() {
@@ -1592,12 +1696,20 @@
 
     function updateSideUI(announce = true) {
       if (gameMode !== "browse") {
-        const categoryGame = gameMode === "category";
-        sidePill.textContent = categoryGame ? "Guess the category" : "Guess the items";
-        card.setAttribute("aria-label", categoryGame
-          ? "Mystery category picture card. Type a category guess in the game panel."
-          : `${cards[cardIndex].title}. Item guessing card. Type an item guess in the game panel.`);
-        if (announce) status.textContent = categoryGame ? "New mystery category card." : `New ${cards[cardIndex].title} item card.`;
+        const current = cards[cardIndex];
+        sidePill.textContent = gameModeName();
+        const labels = gameData[current.id] || [];
+        if (gameMode === "category") {
+          card.setAttribute("aria-label", "Mystery category picture card. Type a category guess in the game panel.");
+        } else if (gameMode === "items") {
+          card.setAttribute("aria-label", `${current.title}. Item guessing card. Type an item guess in the game panel.`);
+        } else if (gameMode === "find-pair") {
+          card.setAttribute("aria-label", `${current.title}. Select the two pictures linked by ${linkPuzzle?.word || "the displayed word"}.`);
+        } else {
+          const pair = linkPuzzle?.items?.map(index => labels[index]).filter(Boolean).join(" and ") || "the highlighted pair";
+          card.setAttribute("aria-label", `${current.title}. Type one word that links ${pair}.`);
+        }
+        if (announce) status.textContent = `New ${gameModeName().toLocaleLowerCase()} card: ${current.title}.`;
         return;
       }
       const questionSide = isQuestionSide();
@@ -1732,9 +1844,9 @@
       applyTransform(0, 0);
       if (gameMode !== "browse") resetGameRound();
       updateSideUI(false);
-      document.title = gameMode === "category" ? "Guess the Category — Picture This!" : `${current.title} — Picture This!`;
+      document.title = gameMode === "browse" ? `${current.title} — Picture This!` : `${gameModeName()} — Picture This!`;
       try { sessionStorage.setItem("picture-this-last-card", String(index)); } catch (_) {}
-      if (announce) status.textContent = gameMode === "category" ? "New mystery category card." : `New card: ${current.title}.`;
+      if (announce) status.textContent = gameMode === "browse" ? `New card: ${current.title}.` : `New ${gameModeName().toLocaleLowerCase()} card: ${current.title}.`;
     }
 
     function transitionToCard(nextIndex) {
@@ -1756,16 +1868,34 @@
     }
 
     function nextCard() {
+      if (isLinkMode()) {
+        const pool = linkCardIndexes();
+        const position = pool.indexOf(cardIndex);
+        transitionToCard(pool[(position + 1 + pool.length) % pool.length]);
+        return;
+      }
       const next = (cardIndex + 1) % cards.length;
       transitionToCard(next);
     }
 
     function prevCard() {
+      if (isLinkMode()) {
+        const pool = linkCardIndexes();
+        const position = pool.indexOf(cardIndex);
+        transitionToCard(pool[(position - 1 + pool.length) % pool.length]);
+        return;
+      }
       const prev = (cardIndex - 1 + cards.length) % cards.length;
       transitionToCard(prev);
     }
 
     function newRandomCard() {
+      if (isLinkMode()) {
+        const candidates = linkCardIndexes().filter(index => index !== cardIndex);
+        if (!candidates.length) return;
+        transitionToCard(candidates[secureRandomIndex(candidates.length)]);
+        return;
+      }
       let next = secureRandomIndex(cards.length - 1);
       if (next >= cardIndex) next += 1;
       transitionToCard(next);
@@ -2147,18 +2277,33 @@
       const current = cards[cardIndex];
       const items = gameData[current.id] || [];
       foundItems = new Set();
+      selectedLinkItems = new Set();
+      pendingCreativeLink = "";
+      linkPuzzle = null;
       roundComplete = false;
       guessInput.value = "";
       guessInput.disabled = false;
       guessSubmit.disabled = false;
+      guessForm.hidden = gameMode === "find-pair";
+      linkWord.hidden = gameMode !== "find-pair";
+      acceptCreativeLinkButton.hidden = true;
       categoryMask.hidden = gameMode !== "category";
       categoryMask.classList.remove("is-revealed");
-      itemGrid.hidden = gameMode !== "items";
+      itemGrid.hidden = gameMode !== "items" && !isLinkMode();
+      itemGrid.setAttribute("aria-hidden", isLinkMode() ? "false" : "true");
+      itemGrid.classList.toggle("is-link-mode", isLinkMode());
+      itemGrid.classList.toggle("is-pair-word", gameMode === "name-link");
+      itemGrid.classList.remove("is-locked");
       itemFooterMask.hidden = gameMode !== "items";
+      newGameCardButton.textContent = isLinkMode() ? "New link →" : "New card →";
 
       itemCells.forEach((cell, index) => {
-        cell.classList.remove("is-revealed");
+        cell.classList.remove("is-revealed", "is-selected", "is-target", "is-correct", "is-wrong");
         cell.querySelector(".item-label").textContent = items[index] || "";
+        cell.tabIndex = -1;
+        cell.removeAttribute("role");
+        cell.removeAttribute("aria-label");
+        cell.removeAttribute("aria-pressed");
       });
 
       if (gameMode === "category") {
@@ -2169,7 +2314,7 @@
         gameProgress.hidden = true;
         revealGameAnswerButton.textContent = "Reveal category";
         setGameFeedback("Correct: +1 point · Incorrect: −1 point");
-      } else {
+      } else if (gameMode === "items") {
         gameModeKicker.textContent = current.title;
         gamePanelTitle.textContent = "Guess the Items";
         gamePrompt.textContent = "Name something you think is hidden on this card.";
@@ -2183,8 +2328,47 @@
           guessSubmit.disabled = true;
           setGameFeedback("This card is missing its item answer key.", "wrong");
         }
+      } else {
+        const puzzles = linkPuzzlesForCard(current.id);
+        linkPuzzle = puzzles.length ? puzzles[secureRandomIndex(puzzles.length)] : null;
+        gameModeKicker.textContent = current.title;
+        gameProgress.hidden = true;
+
+        if (!linkPuzzle || items.length !== 6) {
+          guessInput.disabled = true;
+          guessSubmit.disabled = true;
+          revealGameAnswerButton.disabled = true;
+          setGameFeedback("This card is missing a complete link puzzle.", "wrong");
+          return;
+        }
+
+        revealGameAnswerButton.disabled = false;
+        if (gameMode === "find-pair") {
+          gamePanelTitle.textContent = "Find the Pair";
+          gamePrompt.textContent = "Which two pictures are linked by this word?";
+          linkWordValue.textContent = linkPuzzle.word;
+          revealGameAnswerButton.textContent = "Show the pair";
+          setGameFeedback("Select two pictures. Correct pair: +1 · Incorrect pair: −1.");
+          itemCells.forEach((cell, index) => {
+            cell.tabIndex = 0;
+            cell.setAttribute("role", "button");
+            cell.setAttribute("aria-label", `Select ${items[index]}`);
+            cell.setAttribute("aria-pressed", "false");
+          });
+        } else {
+          const [first, second] = linkPuzzle.items;
+          gamePanelTitle.textContent = "Name the Link";
+          gamePrompt.textContent = `What one word links ${items[first]} and ${items[second]}?`;
+          guessInput.placeholder = "Type one word…";
+          revealGameAnswerButton.textContent = "Reveal model word";
+          linkPuzzle.items.forEach(index => {
+            itemCells[index].classList.add("is-target");
+            itemCells[index].setAttribute("aria-label", `${items[index]}, highlighted`);
+          });
+          setGameFeedback("Use one word. The teacher can accept a different creative link.");
+        }
       }
-      window.setTimeout(() => guessInput.focus(), 180);
+      if (gameMode !== "find-pair") window.setTimeout(() => guessInput.focus(), 180);
     }
 
     function openGamePicker() {
@@ -2204,18 +2388,37 @@
       gamePicker.hidden = true;
       gamePanel.hidden = false;
       app.classList.add("game-active");
+      card.setAttribute("role", "group");
+      card.tabIndex = -1;
+      const supported = isLinkMode() ? linkCardIndexes() : [];
+      if (supported.length && !supported.includes(cardIndex)) cardIndex = supported[secureRandomIndex(supported.length)];
       if (isDualView) setDualView(false);
       else showCard(cardIndex, false);
-      status.textContent = mode === "category" ? "Guess the Category game started." : "Guess the Items game started.";
+      status.textContent = `${gameModeName()} game started.`;
     }
 
     function endGame() {
       gameMode = "browse";
       gamePanel.hidden = true;
       app.classList.remove("game-active");
+      card.setAttribute("role", "button");
+      card.tabIndex = 0;
       categoryMask.hidden = true;
       itemGrid.hidden = true;
+      itemGrid.setAttribute("aria-hidden", "true");
+      itemGrid.classList.remove("is-link-mode", "is-pair-word", "is-locked");
       itemFooterMask.hidden = true;
+      linkWord.hidden = true;
+      acceptCreativeLinkButton.hidden = true;
+      guessForm.hidden = false;
+      revealGameAnswerButton.disabled = false;
+      itemCells.forEach(cell => {
+        cell.classList.remove("is-selected", "is-target", "is-correct", "is-wrong");
+        cell.tabIndex = -1;
+        cell.removeAttribute("role");
+        cell.removeAttribute("aria-label");
+        cell.removeAttribute("aria-pressed");
+      });
       showCard(cardIndex, false);
       status.textContent = `Game ended with ${gamePoints} point${gamePoints === 1 ? "" : "s"}.`;
     }
@@ -2228,14 +2431,87 @@
       if (gameMode === "category") {
         categoryMask.classList.add("is-revealed");
         setGameFeedback(`The category is “${cards[cardIndex].title}.”`, "correct");
-      } else {
+      } else if (gameMode === "items") {
         itemCells.forEach((cell, index) => {
           foundItems.add(index);
           cell.classList.add("is-revealed");
         });
         updateItemProgress();
         setGameFeedback("All six answers are revealed. No points were added.");
+      } else if (linkPuzzle) {
+        itemGrid.classList.add("is-locked");
+        linkPuzzle.items.forEach(index => itemCells[index].classList.add("is-correct"));
+        const labels = linkPuzzle.items.map(index => (gameData[cards[cardIndex].id] || [])[index]);
+        if (gameMode === "find-pair") {
+          setGameFeedback(`${linkPuzzle.word} links ${labels.join(" and ")}. ${linkPuzzle.explanation}`, "correct");
+        } else {
+          setGameFeedback(`Model word: “${linkPuzzle.word}.” ${linkPuzzle.explanation}`, "correct");
+        }
       }
+    }
+
+    function handleLinkCellSelection(index) {
+      if (gameMode !== "find-pair" || roundComplete || !linkPuzzle) return;
+      if (selectedLinkItems.size >= 2) return;
+      const cell = itemCells[index];
+      if (selectedLinkItems.has(index)) {
+        selectedLinkItems.delete(index);
+        cell.classList.remove("is-selected");
+        cell.setAttribute("aria-pressed", "false");
+        return;
+      }
+
+      selectedLinkItems.add(index);
+      cell.classList.add("is-selected");
+      cell.setAttribute("aria-pressed", "true");
+      if (selectedLinkItems.size < 2) {
+        setGameFeedback("Choose one more picture.");
+        return;
+      }
+
+      const selected = [...selectedLinkItems].sort((a, b) => a - b);
+      const answer = [...linkPuzzle.items].sort((a, b) => a - b);
+      const correct = selected.every((value, position) => value === answer[position]);
+      if (correct) {
+        changeScore(1);
+        roundComplete = true;
+        itemGrid.classList.add("is-locked");
+        selected.forEach(itemIndex => itemCells[itemIndex].classList.add("is-correct"));
+        const labels = answer.map(itemIndex => (gameData[cards[cardIndex].id] || [])[itemIndex]);
+        setGameFeedback(`Correct—${labels.join(" and ")}! ${linkPuzzle.explanation} +1 point.`, "correct");
+        return;
+      }
+
+      changeScore(-1);
+      itemGrid.classList.add("is-locked");
+      selected.forEach(itemIndex => itemCells[itemIndex].classList.add("is-wrong"));
+      setGameFeedback("Those two are not the intended pair. −1 point. Try again.", "wrong");
+      const roundCard = cardIndex;
+      window.setTimeout(() => {
+        if (gameMode !== "find-pair" || roundComplete || cardIndex !== roundCard) return;
+        selected.forEach(itemIndex => {
+          itemCells[itemIndex].classList.remove("is-selected", "is-wrong");
+          itemCells[itemIndex].setAttribute("aria-pressed", "false");
+        });
+        selectedLinkItems = new Set();
+        itemGrid.classList.remove("is-locked");
+      }, 520);
+    }
+
+    function isSingleWord(value) {
+      return /^[\p{L}\p{N}]+(?:[-’'][\p{L}\p{N}]+)*$/u.test(value.trim());
+    }
+
+    function acceptCreativeLink() {
+      if (gameMode !== "name-link" || roundComplete || !pendingCreativeLink || !linkPuzzle) return;
+      changeScore(1);
+      roundComplete = true;
+      guessInput.disabled = true;
+      guessSubmit.disabled = true;
+      acceptCreativeLinkButton.hidden = true;
+      itemGrid.classList.add("is-locked");
+      linkPuzzle.items.forEach(index => itemCells[index].classList.add("is-correct"));
+      setGameFeedback(`Accepted: “${pendingCreativeLink}.” The model word was “${linkPuzzle.word}.” +1 point.`, "correct");
     }
 
     function handleGuess(event) {
@@ -2259,6 +2535,33 @@
         } else {
           changeScore(-1);
           setGameFeedback(`“${rawGuess}” is not the category. −1 point. Try again.`, "wrong");
+          guessInput.select();
+        }
+        return;
+      }
+
+      if (gameMode === "name-link") {
+        if (!isSingleWord(rawGuess)) {
+          setGameFeedback("Use a single word only—hyphenated words are okay.", "wrong");
+          guessInput.select();
+          return;
+        }
+        const guess = normalizedGuess(rawGuess);
+        const answers = new Set((linkPuzzle?.answers || [linkPuzzle?.word]).filter(Boolean).map(normalizedGuess));
+        if (answers.has(guess)) {
+          changeScore(1);
+          roundComplete = true;
+          guessInput.disabled = true;
+          guessSubmit.disabled = true;
+          acceptCreativeLinkButton.hidden = true;
+          itemGrid.classList.add("is-locked");
+          linkPuzzle.items.forEach(index => itemCells[index].classList.add("is-correct"));
+          setGameFeedback(`Yes—“${rawGuess}” links them. ${linkPuzzle.explanation} +1 point.`, "correct");
+        } else {
+          pendingCreativeLink = rawGuess;
+          acceptCreativeLinkButton.textContent = `Accept “${rawGuess}” · +1`;
+          acceptCreativeLinkButton.hidden = false;
+          setGameFeedback(`“${rawGuess}” is not the model word. If the class can explain the link, the teacher can accept it.`);
           guessInput.select();
         }
         return;
@@ -2332,6 +2635,20 @@
       else if (event.target === gamePicker) closeGamePicker();
     });
     guessForm.addEventListener("submit", handleGuess);
+    acceptCreativeLinkButton.addEventListener("click", acceptCreativeLink);
+    itemCells.forEach((cell, index) => {
+      cell.addEventListener("click", event => {
+        if (gameMode !== "find-pair") return;
+        event.stopPropagation();
+        handleLinkCellSelection(index);
+      });
+      cell.addEventListener("keydown", event => {
+        if (gameMode !== "find-pair" || (event.key !== "Enter" && event.key !== " ")) return;
+        event.preventDefault();
+        event.stopPropagation();
+        handleLinkCellSelection(index);
+      });
+    });
     revealGameAnswerButton.addEventListener("click", revealGameAnswer);
     newGameCardButton.addEventListener("click", newRandomCard);
     endGameButton.addEventListener("click", endGame);
