@@ -40,6 +40,8 @@
 
     button { font: inherit; }
 
+    [hidden] { display: none !important; }
+
     .app {
       position: fixed;
       inset: 0;
@@ -321,6 +323,198 @@
       box-shadow: 0 0 18px hsl(var(--accent) / .5);
     }
 
+    .game-menu-button {
+      background: hsl(var(--accent) / .16);
+      border-color: hsl(var(--accent) / .42);
+    }
+
+    .category-mask {
+      position: absolute;
+      z-index: 7;
+      top: 1.3%;
+      left: 5%;
+      width: 90%;
+      height: 9.2%;
+      overflow: hidden;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .58);
+      backdrop-filter: blur(15px) saturate(.25);
+      -webkit-backdrop-filter: blur(15px) saturate(.25);
+      transition: opacity .35s ease, transform .35s ease;
+      pointer-events: none;
+    }
+
+    .category-mask::after {
+      content: "Mystery category";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #4e5360;
+      font-size: clamp(.62rem, 2.2vw, .85rem);
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 5px white;
+    }
+
+    .category-mask.is-revealed { opacity: 0; transform: scale(1.04); }
+
+    .item-grid {
+      position: absolute;
+      z-index: 7;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .item-cell {
+      position: absolute;
+      width: 48%;
+      height: 24%;
+      border: 1px solid rgba(35, 39, 49, .1);
+      border-radius: 11px;
+      background:
+        radial-gradient(circle at 30% 25%, hsl(var(--accent) / .12), transparent 42%),
+        #faf9f5;
+      box-shadow: 0 3px 13px rgba(22, 25, 33, .07) inset;
+      transition: background .32s ease, border-color .32s ease, box-shadow .32s ease;
+    }
+
+    .item-cell:nth-child(1), .item-cell:nth-child(2) { top: 8%; }
+    .item-cell:nth-child(3), .item-cell:nth-child(4) { top: 32%; }
+    .item-cell:nth-child(5), .item-cell:nth-child(6) { top: 56%; }
+    .item-cell:nth-child(odd) { left: 1%; }
+    .item-cell:nth-child(even) { left: 51%; }
+
+    .item-question {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: hsl(var(--accent) / .72);
+      font-size: clamp(1.5rem, 7vw, 3.2rem);
+      font-weight: 950;
+      transition: opacity .2s ease, transform .25s ease;
+    }
+
+    .item-label {
+      position: absolute;
+      left: 50%;
+      bottom: 5px;
+      max-width: calc(100% - 12px);
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: #11141b;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, .18);
+      font-size: clamp(.52rem, 1.8vw, .76rem);
+      font-weight: 900;
+      line-height: 1.05;
+      text-align: center;
+      opacity: 0;
+      transform: translate(-50%, 7px);
+      transition: opacity .25s ease .08s, transform .25s ease .08s;
+    }
+
+    .item-cell.is-revealed {
+      border-color: transparent;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .item-cell.is-revealed .item-question { opacity: 0; transform: scale(.7); }
+    .item-cell.is-revealed .item-label { opacity: 1; transform: translate(-50%, 0); }
+
+    .item-footer-mask {
+      position: absolute;
+      z-index: 6;
+      inset: 80% 0 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.96), #eef8fb);
+      pointer-events: none;
+    }
+
+    .game-picker {
+      position: fixed;
+      z-index: 100;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background: rgba(7, 9, 14, .76);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .game-picker-card {
+      position: relative;
+      width: min(760px, 100%);
+      padding: clamp(24px, 5vw, 42px);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: #191c25;
+      box-shadow: 0 35px 110px rgba(0,0,0,.58);
+    }
+
+    .game-picker-card > p { max-width: 590px; margin: 8px 0 25px; color: var(--muted); line-height: 1.55; }
+    .game-picker-card h2 { margin: 0; font-size: clamp(2rem, 7vw, 4.4rem); line-height: .95; letter-spacing: -.055em; }
+    .game-picker-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 13px; color: var(--muted); background: rgba(255,255,255,.05); font-size: 1.3rem; cursor: pointer; }
+    .game-options { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    .game-option { min-height: 168px; padding: 20px; border: 1px solid var(--border); border-radius: 19px; color: var(--ink); background: rgba(255,255,255,.045); text-align: left; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .game-option:hover { transform: translateY(-2px); border-color: hsl(var(--accent) / .65); background: hsl(var(--accent) / .1); }
+    .game-option-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 15px; border-radius: 13px 13px 13px 4px; color: #11141b; background: hsl(var(--accent)); font-weight: 950; }
+    .game-option strong, .game-option span { display: block; }
+    .game-option strong { margin-bottom: 7px; font-size: 1.12rem; }
+    .game-option span { color: var(--muted); font-size: .8rem; line-height: 1.45; }
+
+    .game-panel {
+      position: fixed;
+      z-index: 45;
+      top: 72px;
+      right: 16px;
+      bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      width: min(350px, calc(100vw - 32px));
+      overflow: auto;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(22, 25, 34, .94);
+      box-shadow: 0 25px 75px rgba(0,0,0,.5);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .game-panel-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+    .game-mode-kicker { display: block; color: hsl(var(--accent)); font-size: .67rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+    .game-panel h2 { margin: 5px 0 0; font-size: 1.65rem; line-height: 1; letter-spacing: -.035em; }
+    .game-score { min-width: 70px; padding: 9px 10px; border-radius: 14px; color: #101218; background: hsl(var(--accent)); text-align: center; }
+    .game-score span, .game-score strong { display: block; }
+    .game-score span { font-size: .58rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .game-score strong { margin-top: 1px; font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+    .game-score.pulse { animation: score-pop .28s ease; }
+    @keyframes score-pop { 50% { transform: scale(1.12) rotate(-2deg); } }
+    .game-prompt { margin: 21px 0 10px; color: var(--ink); font-size: 1rem; font-weight: 800; line-height: 1.45; }
+    .game-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; color: var(--muted); font-size: .73rem; font-weight: 800; }
+    .game-progress-track { flex: 1; height: 6px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.09); }
+    .game-progress-track i { display: block; width: 0; height: 100%; border-radius: inherit; background: hsl(var(--accent)); transition: width .3s ease; }
+    .guess-form { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+    .guess-form input { min-width: 0; min-height: 49px; padding: 10px 13px; border: 1px solid var(--border); border-radius: 13px; outline: none; color: var(--ink); background: rgba(0,0,0,.2); font: inherit; }
+    .guess-form input:focus { border-color: hsl(var(--accent)); box-shadow: 0 0 0 3px hsl(var(--accent) / .15); }
+    .guess-form button, .game-panel-action { min-height: 49px; border: 0; border-radius: 13px; color: #101218; background: hsl(var(--accent)); font-weight: 900; cursor: pointer; }
+    .guess-form button { padding: 0 15px; }
+    .guess-form button:disabled, .guess-form input:disabled { opacity: .48; cursor: default; }
+    .game-feedback { min-height: 59px; margin: 11px 0 4px; padding: 11px 13px; border: 1px solid transparent; border-radius: 13px; color: var(--muted); background: rgba(255,255,255,.035); font-size: .8rem; font-weight: 750; line-height: 1.4; }
+    .game-feedback.correct { color: #d7ff9e; border-color: rgba(176, 235, 91, .3); background: rgba(126, 179, 47, .12); }
+    .game-feedback.wrong { color: #ffc2bd; border-color: rgba(255, 110, 100, .28); background: rgba(255, 90, 80, .1); }
+    .game-panel-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+    .game-panel-action { padding: 10px; color: var(--ink); background: rgba(255,255,255,.07); border: 1px solid var(--border); }
+    .game-panel-action.primary { color: #101218; background: hsl(var(--accent)); border-color: transparent; }
+    .game-end { width: 100%; margin-top: 9px; min-height: 42px; border: 0; color: var(--muted); background: transparent; font-size: .75rem; font-weight: 850; cursor: pointer; }
+    .app.game-active .stage { right: 374px; }
+    .app.game-active .footer { right: 374px; }
+    .app.game-active #view-toggle { display: none; }
+
     .dual-stage {
       display: flex;
       flex-direction: row;
@@ -513,6 +707,17 @@
         display: inline;
         margin: 0;
       }
+
+      .game-options { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      .game-panel { top: auto; left: 8px; right: 8px; bottom: 8px; width: auto; max-height: 39dvh; padding: 16px; border-radius: 20px; }
+      .app.game-active .stage { inset: 0 0 39dvh; padding-bottom: 16px; }
+      .app.game-active .footer { right: 0; bottom: 39dvh; }
+      .game-panel h2 { font-size: 1.3rem; }
+      .game-prompt { margin-top: 12px; }
+      .game-feedback { min-height: 45px; }
     }
 
     .sr-only {
@@ -554,6 +759,10 @@
     <header class="topbar">
       <div class="brand"><span class="brand-mark"></span><span>Picture This!</span></div>
       <div class="topbar-right">
+        <button class="view-toggle game-menu-button" id="game-menu-button" type="button" aria-label="Choose a Picture This game">
+          <span class="icon">🎯</span>
+          <span class="text">Games</span>
+        </button>
         <button class="view-toggle" id="view-toggle" type="button" aria-label="Toggle Side-by-Side View" title="Toggle Side-by-Side View (S)">
           <span class="icon">👥</span>
           <span class="text">Side by Side</span>
@@ -566,7 +775,19 @@
       <!-- 1. Single Flippable Card View -->
       <div class="deck" id="deck">
         <div class="card" id="card" role="button" tabindex="0" aria-label="Flip card to the question side">
-          <span class="face front"><img id="front-image" alt="" draggable="false"></span>
+          <span class="face front">
+            <img id="front-image" alt="" draggable="false">
+            <span class="category-mask" id="category-mask" hidden aria-hidden="true"></span>
+            <span class="item-footer-mask" id="item-footer-mask" hidden aria-hidden="true"></span>
+            <span class="item-grid" id="item-grid" hidden aria-hidden="true">
+              <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
+              <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
+              <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
+              <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
+              <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
+              <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
+            </span>
+          </span>
           <span class="face back"><img id="back-image" alt="" draggable="false"></span>
           <span class="shine" aria-hidden="true"></span>
         </div>
@@ -629,9 +850,50 @@
       </button>
     </footer>
 
+    <aside class="game-panel" id="game-panel" hidden aria-labelledby="game-panel-title">
+      <div class="game-panel-top">
+        <div><span class="game-mode-kicker" id="game-mode-kicker">Class game</span><h2 id="game-panel-title">Guess the Category</h2></div>
+        <div class="game-score" id="game-score"><span>Score</span><strong id="game-score-value">0</strong></div>
+      </div>
+      <p class="game-prompt" id="game-prompt">What category connects these six items?</p>
+      <div class="game-progress" id="game-progress" hidden><span id="game-progress-label">0 of 6 found</span><span class="game-progress-track"><i id="game-progress-fill"></i></span></div>
+      <form class="guess-form" id="guess-form" autocomplete="off">
+        <label class="sr-only" for="guess-input">Your guess</label>
+        <input id="guess-input" type="text" inputmode="text" enterkeyhint="go" spellcheck="false" placeholder="Type a category…">
+        <button id="guess-submit" type="submit">Check</button>
+      </form>
+      <div class="game-feedback" id="game-feedback" role="status" aria-live="polite">Correct answers earn 1 point. Incorrect answers lose 1 point.</div>
+      <div class="game-panel-actions">
+        <button class="game-panel-action" id="reveal-game-answer" type="button">Reveal answer</button>
+        <button class="game-panel-action primary" id="new-game-card" type="button">New card →</button>
+      </div>
+      <button class="game-end" id="end-game" type="button">End game and browse cards</button>
+    </aside>
+
+    <div class="game-picker" id="game-picker" hidden role="dialog" aria-modal="true" aria-labelledby="game-picker-title">
+      <div class="game-picker-card">
+        <button class="game-picker-close" id="game-picker-close" type="button" aria-label="Close game chooser">×</button>
+        <h2 id="game-picker-title">Choose a class game</h2>
+        <p>Project the card, invite answers from the whole class, and let the screen keep score. Both modes work with all 101 cards.</p>
+        <div class="game-options">
+          <button class="game-option" type="button" data-start-game="category">
+            <span class="game-option-icon">?</span>
+            <strong>Guess the Category</strong>
+            <span>The title is blurred. Students use the six pictures and labels to identify the category.</span>
+          </button>
+          <button class="game-option" type="button" data-start-game="items">
+            <span class="game-option-icon">6</span>
+            <strong>Guess the Items</strong>
+            <span>The category stays visible. Correct item guesses reveal the matching picture and label.</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <p class="sr-only" id="status" aria-live="polite"></p>
   </main>
 
+  <script src="game-data.js"></script>
   <script>
     // Mirrors cards.json so the activity also works when opened directly from file://.
     // PICTURE_THIS_CARDS_START
@@ -1265,8 +1527,36 @@
     const fullscreenButton = document.querySelector("#fullscreen");
     const enterFullscreenIcon = fullscreenButton.querySelector(".enter-fullscreen");
     const exitFullscreenIcon = fullscreenButton.querySelector(".exit-fullscreen");
+    const gameData = window.PICTURE_THIS_GAME_DATA || {};
+    const gameMenuButton = document.querySelector("#game-menu-button");
+    const gamePicker = document.querySelector("#game-picker");
+    const gamePickerClose = document.querySelector("#game-picker-close");
+    const gamePanel = document.querySelector("#game-panel");
+    const gameModeKicker = document.querySelector("#game-mode-kicker");
+    const gamePanelTitle = document.querySelector("#game-panel-title");
+    const gamePrompt = document.querySelector("#game-prompt");
+    const gameScore = document.querySelector("#game-score");
+    const gameScoreValue = document.querySelector("#game-score-value");
+    const gameProgress = document.querySelector("#game-progress");
+    const gameProgressLabel = document.querySelector("#game-progress-label");
+    const gameProgressFill = document.querySelector("#game-progress-fill");
+    const guessForm = document.querySelector("#guess-form");
+    const guessInput = document.querySelector("#guess-input");
+    const guessSubmit = document.querySelector("#guess-submit");
+    const gameFeedback = document.querySelector("#game-feedback");
+    const revealGameAnswerButton = document.querySelector("#reveal-game-answer");
+    const newGameCardButton = document.querySelector("#new-game-card");
+    const endGameButton = document.querySelector("#end-game");
+    const categoryMask = document.querySelector("#category-mask");
+    const itemGrid = document.querySelector("#item-grid");
+    const itemFooterMask = document.querySelector("#item-footer-mask");
+    const itemCells = [...document.querySelectorAll(".item-cell")];
 
     let isDualView = false;
+    let gameMode = "browse";
+    let gamePoints = 0;
+    let roundComplete = false;
+    let foundItems = new Set();
     let cardIndex = 0;
     let angle = 0;
     let startAngle = 0;
@@ -1301,6 +1591,15 @@
     }
 
     function updateSideUI(announce = true) {
+      if (gameMode !== "browse") {
+        const categoryGame = gameMode === "category";
+        sidePill.textContent = categoryGame ? "Guess the category" : "Guess the items";
+        card.setAttribute("aria-label", categoryGame
+          ? "Mystery category picture card. Type a category guess in the game panel."
+          : `${cards[cardIndex].title}. Item guessing card. Type an item guess in the game panel.`);
+        if (announce) status.textContent = categoryGame ? "New mystery category card." : `New ${cards[cardIndex].title} item card.`;
+        return;
+      }
       const questionSide = isQuestionSide();
       const current = cards[cardIndex];
       sidePill.textContent = questionSide ? "Question side" : "Picture side";
@@ -1329,6 +1628,7 @@
     }
 
     function flip(direction = 1) {
+      if (gameMode !== "browse") return;
       startAngle = angle;
       finishFlip(direction);
     }
@@ -1342,7 +1642,7 @@
     }
 
     function onPointerDown(event) {
-      if (isDualView) return;
+      if (isDualView || gameMode !== "browse") return;
       if (event.button !== undefined && event.button !== 0) return;
       dragging = true;
       startX = lastX = event.clientX;
@@ -1382,6 +1682,7 @@
     }
 
     function setDualView(active) {
+      if (active && gameMode !== "browse") return;
       isDualView = active;
       if (isDualView) {
         viewToggleButton.classList.add("active");
@@ -1416,7 +1717,7 @@
       const current = cards[index];
       
       frontImage.src = current.front;
-      frontImage.alt = `${current.title} picture card`;
+      frontImage.alt = gameMode === "category" ? "Mystery category picture card" : `${current.title} picture card`;
       backImage.src = current.back;
       backImage.alt = `${current.title} discussion questions`;
 
@@ -1429,10 +1730,11 @@
       app.style.setProperty("--accent", `${(188 + index * 17) % 360} 84% 64%`);
       app.style.setProperty("--accent-shifted", `${(260 + index * 17) % 360} 80% 64%`);
       applyTransform(0, 0);
+      if (gameMode !== "browse") resetGameRound();
       updateSideUI(false);
-      document.title = `${current.title} — Picture This!`;
+      document.title = gameMode === "category" ? "Guess the Category — Picture This!" : `${current.title} — Picture This!`;
       try { sessionStorage.setItem("picture-this-last-card", String(index)); } catch (_) {}
-      if (announce) status.textContent = `New card: ${current.title}.`;
+      if (announce) status.textContent = gameMode === "category" ? "New mystery category card." : `New card: ${current.title}.`;
     }
 
     function transitionToCard(nextIndex) {
@@ -1469,6 +1771,273 @@
       transitionToCard(next);
     }
 
+    const ITEM_ALIASES = {
+      "blackboard": ["chalkboard"],
+      "mobile phone": ["cell phone", "cellphone", "mobile", "phone"],
+      "soda": ["pop", "soft drink", "cola"],
+      "peas": ["pea"],
+      "soccer ball": ["soccer"],
+      "football": ["american football"],
+      "bookshelf": ["bookcase"],
+      "sofa": ["couch"],
+      "mail": ["letter"],
+      "airplane": ["plane", "aeroplane"],
+      "business person": ["businessman", "businesswoman", "office worker"],
+      "rain boots": ["rubber boots", "wellingtons", "wellies"],
+      "sunglasses": ["shades"],
+      "flip flops": ["sandals", "flipflops"],
+      "t shirt": ["tee shirt", "shirt"],
+      "sneakers": ["trainers", "tennis shoes"],
+      "first aid kit": ["medical kit"],
+      "film reel": ["movie reel"],
+      "cinema seat": ["movie seat", "theater seat"],
+      "remote control": ["remote"],
+      "hair clippers": ["clippers"],
+      "dslr camera": ["camera"],
+      "dumbbell": ["hand weight"],
+      "washbasin": ["sink", "bathroom sink"],
+      "atm": ["cash machine"],
+      "fire engine": ["fire truck"],
+      "stage microphone": ["microphone", "mic"],
+      "game die": ["dice", "die"],
+      "computer mouse": ["mouse"],
+      "iv stand": ["drip stand"],
+      "car tire": ["tyre", "car tyre"],
+      "rice cooker": ["rice pot"],
+      "pill bottle": ["medicine bottle"],
+      "wind sock": ["windsock"],
+      "pickup truck": ["pickup"],
+      "takeaway cup": ["to go cup", "coffee cup"],
+      "wi fi router": ["router", "wifi router"],
+      "bar soap": ["soap"],
+      "trash can": ["garbage can", "rubbish bin"],
+      "cleaning cloth": ["rag"],
+      "front door": ["door"]
+    };
+
+    function normalizedGuess(value) {
+      const words = String(value)
+        .toLocaleLowerCase()
+        .replaceAll("&", " and ")
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim()
+        .split(/\s+/)
+        .filter(word => word && !["a", "an", "the"].includes(word))
+        .map(word => {
+          if (word.length > 4 && word.endsWith("ies")) return `${word.slice(0, -3)}y`;
+          if (word.length > 4 && word.endsWith("es") && !word.endsWith("ses")) return word.slice(0, -2);
+          if (word.length > 3 && word.endsWith("s") && !word.endsWith("ss")) return word.slice(0, -1);
+          return word;
+        });
+      return words.join(" ");
+    }
+
+    function itemForms(answer) {
+      const direct = normalizedGuess(answer);
+      const aliases = ITEM_ALIASES[direct] || ITEM_ALIASES[String(answer).toLocaleLowerCase().replace(/[^a-z0-9]+/g, " ").trim()] || [];
+      return new Set([direct, ...aliases.map(normalizedGuess)]);
+    }
+
+    function matchingItemIndex(rawGuess, items, includeFound = false) {
+      const guess = normalizedGuess(rawGuess);
+      if (!guess) return -1;
+      const available = items.map((answer, index) => ({ answer, index, forms: itemForms(answer) }))
+        .filter(entry => includeFound || !foundItems.has(entry.index));
+      const exact = available.filter(entry => entry.forms.has(guess));
+      if (exact.length === 1) return exact[0].index;
+
+      if (guess.length >= 4) {
+        const partial = available.filter(entry => [...entry.forms].some(form => form.includes(guess) || guess.includes(form)));
+        if (partial.length === 1) return partial[0].index;
+      }
+      return -1;
+    }
+
+    function categoryMatches(rawGuess, title) {
+      const guess = normalizedGuess(rawGuess);
+      const full = normalizedGuess(title);
+      if (!guess) return false;
+      if (guess === full) return true;
+      const simplified = full
+        .replace(/^(at|in|on) /, "")
+        .replace(/^trip to /, "")
+        .replace(/^time for /, "")
+        .replace(/^let play$/, "play")
+        .replace(/^eat your /, "");
+      return guess === simplified || (guess.length >= 3 && (` ${full} `).includes(` ${guess} `));
+    }
+
+    function setGameFeedback(message, tone = "") {
+      gameFeedback.textContent = message;
+      gameFeedback.classList.toggle("correct", tone === "correct");
+      gameFeedback.classList.toggle("wrong", tone === "wrong");
+    }
+
+    function changeScore(delta) {
+      gamePoints += delta;
+      gameScoreValue.textContent = gamePoints > 0 ? `+${gamePoints}` : String(gamePoints);
+      gameScore.classList.remove("pulse");
+      void gameScore.offsetWidth;
+      gameScore.classList.add("pulse");
+    }
+
+    function updateItemProgress() {
+      const count = foundItems.size;
+      gameProgressLabel.textContent = `${count} of 6 found`;
+      gameProgressFill.style.width = `${(count / 6) * 100}%`;
+    }
+
+    function resetGameRound() {
+      if (gameMode === "browse") return;
+      const current = cards[cardIndex];
+      const items = gameData[current.id] || [];
+      foundItems = new Set();
+      roundComplete = false;
+      guessInput.value = "";
+      guessInput.disabled = false;
+      guessSubmit.disabled = false;
+      categoryMask.hidden = gameMode !== "category";
+      categoryMask.classList.remove("is-revealed");
+      itemGrid.hidden = gameMode !== "items";
+      itemFooterMask.hidden = gameMode !== "items";
+
+      itemCells.forEach((cell, index) => {
+        cell.classList.remove("is-revealed");
+        cell.querySelector(".item-label").textContent = items[index] || "";
+      });
+
+      if (gameMode === "category") {
+        gameModeKicker.textContent = "101-card class game";
+        gamePanelTitle.textContent = "Guess the Category";
+        gamePrompt.textContent = "What category connects these six items?";
+        guessInput.placeholder = "Type a category…";
+        gameProgress.hidden = true;
+        revealGameAnswerButton.textContent = "Reveal category";
+        setGameFeedback("Correct: +1 point · Incorrect: −1 point");
+      } else {
+        gameModeKicker.textContent = current.title;
+        gamePanelTitle.textContent = "Guess the Items";
+        gamePrompt.textContent = "Name something you think is hidden on this card.";
+        guessInput.placeholder = "Type an item…";
+        gameProgress.hidden = false;
+        revealGameAnswerButton.textContent = "Reveal all items";
+        updateItemProgress();
+        setGameFeedback("Each new correct item earns 1 point. Incorrect guesses lose 1 point.");
+        if (items.length !== 6) {
+          guessInput.disabled = true;
+          guessSubmit.disabled = true;
+          setGameFeedback("This card is missing its item answer key.", "wrong");
+        }
+      }
+      window.setTimeout(() => guessInput.focus(), 180);
+    }
+
+    function openGamePicker() {
+      gamePicker.hidden = false;
+      gamePicker.querySelector("[data-start-game]").focus();
+    }
+
+    function closeGamePicker() {
+      gamePicker.hidden = true;
+      gameMenuButton.focus();
+    }
+
+    function startGame(mode) {
+      gameMode = mode;
+      gamePoints = 0;
+      gameScoreValue.textContent = "0";
+      gamePicker.hidden = true;
+      gamePanel.hidden = false;
+      app.classList.add("game-active");
+      if (isDualView) setDualView(false);
+      else showCard(cardIndex, false);
+      status.textContent = mode === "category" ? "Guess the Category game started." : "Guess the Items game started.";
+    }
+
+    function endGame() {
+      gameMode = "browse";
+      gamePanel.hidden = true;
+      app.classList.remove("game-active");
+      categoryMask.hidden = true;
+      itemGrid.hidden = true;
+      itemFooterMask.hidden = true;
+      showCard(cardIndex, false);
+      status.textContent = `Game ended with ${gamePoints} point${gamePoints === 1 ? "" : "s"}.`;
+    }
+
+    function revealGameAnswer() {
+      if (roundComplete) return;
+      roundComplete = true;
+      guessInput.disabled = true;
+      guessSubmit.disabled = true;
+      if (gameMode === "category") {
+        categoryMask.classList.add("is-revealed");
+        setGameFeedback(`The category is “${cards[cardIndex].title}.”`, "correct");
+      } else {
+        itemCells.forEach((cell, index) => {
+          foundItems.add(index);
+          cell.classList.add("is-revealed");
+        });
+        updateItemProgress();
+        setGameFeedback("All six answers are revealed. No points were added.");
+      }
+    }
+
+    function handleGuess(event) {
+      event.preventDefault();
+      if (roundComplete) return;
+      const rawGuess = guessInput.value.trim();
+      if (!rawGuess) {
+        setGameFeedback("Type a guess first.");
+        guessInput.focus();
+        return;
+      }
+
+      if (gameMode === "category") {
+        if (categoryMatches(rawGuess, cards[cardIndex].title)) {
+          changeScore(1);
+          roundComplete = true;
+          categoryMask.classList.add("is-revealed");
+          guessInput.disabled = true;
+          guessSubmit.disabled = true;
+          setGameFeedback(`Correct! The category is “${cards[cardIndex].title}.” +1 point.`, "correct");
+        } else {
+          changeScore(-1);
+          setGameFeedback(`“${rawGuess}” is not the category. −1 point. Try again.`, "wrong");
+          guessInput.select();
+        }
+        return;
+      }
+
+      const items = gameData[cards[cardIndex].id] || [];
+      const match = matchingItemIndex(rawGuess, items, false);
+      const anyMatch = matchingItemIndex(rawGuess, items, true);
+      if (match >= 0) {
+        foundItems.add(match);
+        itemCells[match].classList.add("is-revealed");
+        changeScore(1);
+        updateItemProgress();
+        const answer = items[match];
+        guessInput.value = "";
+        if (foundItems.size === 6) {
+          roundComplete = true;
+          guessInput.disabled = true;
+          guessSubmit.disabled = true;
+          setGameFeedback(`All six found! “${answer}” completes the card.`, "correct");
+        } else {
+          setGameFeedback(`Yes—${answer}! +1 point. ${6 - foundItems.size} left.`, "correct");
+          guessInput.focus();
+        }
+      } else if (anyMatch >= 0 && foundItems.has(anyMatch)) {
+        setGameFeedback(`${items[anyMatch]} is already revealed. No score change.`);
+        guessInput.select();
+      } else {
+        changeScore(-1);
+        setGameFeedback(`“${rawGuess}” is not on this card. −1 point.`, "wrong");
+        guessInput.select();
+      }
+    }
+
     function fullscreenElement() {
       return document.fullscreenElement || document.webkitFullscreenElement;
     }
@@ -1500,6 +2069,17 @@
     stage.addEventListener("pointercancel", cancelDrag);
     
     viewToggleButton.addEventListener("click", toggleDualView);
+    gameMenuButton.addEventListener("click", openGamePicker);
+    gamePickerClose.addEventListener("click", closeGamePicker);
+    gamePicker.addEventListener("click", event => {
+      const option = event.target.closest("[data-start-game]");
+      if (option) startGame(option.dataset.startGame);
+      else if (event.target === gamePicker) closeGamePicker();
+    });
+    guessForm.addEventListener("submit", handleGuess);
+    revealGameAnswerButton.addEventListener("click", revealGameAnswer);
+    newGameCardButton.addEventListener("click", newRandomCard);
+    endGameButton.addEventListener("click", endGame);
     prevCardButton.addEventListener("click", prevCard);
     nextCardButton.addEventListener("click", nextCard);
     shuffleButton.addEventListener("click", newRandomCard);
@@ -1508,6 +2088,17 @@
     document.addEventListener("webkitfullscreenchange", updateFullscreenButton);
 
     document.addEventListener("keydown", event => {
+      if (!gamePicker.hidden && event.key === "Escape") {
+        closeGamePicker();
+        return;
+      }
+      if (event.target.matches("input, textarea, select") || gamePicker.hidden === false) return;
+      if (gameMode !== "browse") {
+        if (event.key.toLowerCase() === "n") newRandomCard();
+        else if (event.key.toLowerCase() === "f") toggleFullscreen();
+        else if (event.key === "Escape") endGame();
+        return;
+      }
       if (event.key === "s" || event.key === "S") {
         toggleDualView();
       } else if (event.key === "ArrowLeft" || event.key === "p" || event.key === "P") {

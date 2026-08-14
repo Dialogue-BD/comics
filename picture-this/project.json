@@ -9,6 +9,12 @@
     "kind": "pdf"
   },
   "cards_file": "cards.json",
+  "game_data_file": "game-data.js",
+  "classroom_modes": [
+    "browse",
+    "guess-category",
+    "guess-items"
+  ],
   "card_count": 101,
   "pages": [
     {
