@@ -553,11 +553,15 @@
        is always visible in its side-docked position, so these stay hidden. */
     .drawer-handle, .drawer-peek { display: none; }
 
-    /* Floating top controls (link-word clue, category/mode label, and — when
-       relocated there by JS — the guess-form input) are a mobile-only affordance;
-       see the max-width: 900px block below and the JS layoutGameControls()
-       function. On desktop everything stays inside the side-docked panel where it
-       already works well with a keyboard and mouse. */
+    /* Floating bubbles (clue / answer, with — when relocated there by JS — the
+       guess-form input) are a mobile-only affordance; see the max-width: 900px
+       block below and the JS layoutGameControls()/makeBubbleDraggable() functions.
+       On desktop everything stays inside the side-docked panel where it already
+       works well with a keyboard and mouse. display: contents means this wrapper
+       doesn't generate its own box or containing block, so each bubble's own
+       position: fixed continues to resolve against the viewport, letting the two
+       bubbles be dragged independently instead of moving together as a group. */
+    .game-float-top { display: contents; }
     .game-float-top[hidden] { display: none; }
 
     .game-panel-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
@@ -981,82 +985,121 @@
       .drawer-peek span:first-child { color: hsl(var(--accent)); flex-shrink: 0; }
       .drawer-peek span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 
-      /* Floating top controls: keeps the link-word clue, the category/mode label,
-         and (when a game mode needs typed answers) the real guess-form visible
-         near the top of the screen, above the card, instead of docked at the
-         bottom where an on-screen keyboard would cover them. Not inside .stage or
+      /* Floating bubbles carry the actual play loop (clue, then answer/feedback)
+         near the top of the screen, above the card, instead of requiring the
+         bottom drawer to be open. Each bubble is independently position: fixed
+         (not a flex child — see .game-float-top's display: contents above) so
+         they can be dragged apart via makeBubbleDraggable(). Not inside .stage or
          .game-panel — both have their own containing-block-creating properties
          (perspective / transform) that would otherwise hijack position: fixed here
          and tie it to their box instead of the viewport. */
-      .game-float-top {
+      .game-float-bubble {
         position: fixed;
         z-index: 47;
-        top: max(64px, calc(env(safe-area-inset-top) + 58px));
-        left: 12px;
-        right: 12px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        pointer-events: none;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        max-width: calc(100vw - 24px);
+        padding: 10px 16px 10px 34px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgba(22, 25, 34, .92);
+        box-shadow: 0 14px 38px rgba(0, 0, 0, .42);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
       }
-      .game-float-top > * { pointer-events: auto; }
+      .game-float-bubble.is-dragging { transition: none; box-shadow: 0 20px 50px rgba(0, 0, 0, .55); }
+
+      .float-grip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 30px;
+        border: 0;
+        background: none;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1;
+        cursor: grab;
+        touch-action: none;
+      }
+      .float-grip:active { cursor: grabbing; }
+
+      .game-float-clue { top: max(64px, calc(env(safe-area-inset-top) + 58px)); text-align: center; }
 
       .game-float-linkword {
         display: inline-flex;
         align-items: baseline;
         gap: 8px;
-        padding: 9px 18px;
+        margin-bottom: 6px;
+        padding: 7px 14px;
         border-radius: 999px;
         background: hsl(var(--accent));
         color: #101218;
-        box-shadow: 0 12px 32px rgba(0, 0, 0, .4);
+        box-shadow: 0 3px 0 rgba(0, 0, 0, .12) inset;
       }
       .game-float-linkword[hidden] { display: none; }
-      .game-float-linkword span { font-size: .58rem; font-weight: 950; letter-spacing: .09em; text-transform: uppercase; opacity: .7; }
-      .game-float-linkword strong { font-size: 1.08rem; font-weight: 900; letter-spacing: -.02em; }
+      .game-float-linkword span { font-size: .56rem; font-weight: 950; letter-spacing: .09em; text-transform: uppercase; opacity: .7; }
+      .game-float-linkword strong { font-size: 1.04rem; font-weight: 900; letter-spacing: -.02em; }
 
-      .game-float-meta {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1px;
-        max-width: 100%;
-        padding: 7px 16px;
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        background: rgba(22, 25, 34, .88);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        text-align: center;
-      }
       .game-float-kicker {
+        display: block;
         max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         color: hsl(var(--accent));
-        font-size: .62rem;
+        font-size: .6rem;
         font-weight: 900;
-        letter-spacing: .08em;
+        letter-spacing: .07em;
         text-transform: uppercase;
       }
-      .game-float-title { color: var(--ink); font-size: .84rem; font-weight: 800; }
+      .game-float-prompt { margin: 3px 0 0; color: var(--ink); font-size: .84rem; font-weight: 800; line-height: 1.35; }
+      .game-float-prompt:empty { display: none; }
+
+      /* Default position: below the clue bubble. If the user hasn't dragged this
+         bubble, JS keeps nudging its top down to clear the clue bubble's actual
+         (variable) height — see repositionAnswerBubble(). */
+      .game-float-answer { top: 160px; }
+
+      .game-float-answer-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        min-width: 180px;
+      }
+      .game-float-score { color: hsl(var(--accent)); font-size: .76rem; font-weight: 900; }
+      .game-float-next {
+        min-height: 30px;
+        padding: 0 12px;
+        border: 0;
+        border-radius: 999px;
+        color: #101218;
+        background: hsl(var(--accent));
+        font: inherit;
+        font-size: .74rem;
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .game-float-feedback {
+        max-width: 280px;
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: .76rem;
+        font-weight: 700;
+        line-height: 1.35;
+      }
+      .game-float-feedback:empty { display: none; }
+      .game-float-feedback.correct { color: #d7ff9e; }
+      .game-float-feedback.wrong { color: #ffc2bd; }
 
       /* When JS relocates the real .guess-form here (see layoutGameControls),
-         style it to match the floating pill treatment above it. */
-      .game-float-top .guess-form {
-        width: 100%;
-        max-width: 420px;
-        padding: 6px;
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        background: rgba(22, 25, 34, .88);
-        box-shadow: 0 12px 32px rgba(0, 0, 0, .4);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-      }
-      .game-float-top .guess-form input { background: rgba(0, 0, 0, .3); }
+         style it to sit naturally inside the answer bubble. */
+      .game-float-answer .guess-form { width: 100%; min-width: 240px; margin-top: 8px; }
+      .game-float-answer .guess-form input { background: rgba(0, 0, 0, .3); }
     }
 
     /* On phones, the deck previously had to shrink to make room for the permanently
@@ -1115,6 +1158,19 @@
       .brand, .side-pill { opacity: .86; }
       .footer { grid-template-columns: auto 1fr auto; }
       .instructions { visibility: hidden; }
+
+      /* Short/landscape phones have little vertical room, so the floating bubbles
+         need to be noticeably more compact — otherwise the default clue+answer
+         stack can run tall enough to reach the peek pill near the bottom. */
+      .game-float-clue { top: max(46px, calc(env(safe-area-inset-top) + 40px)); }
+      .game-float-bubble { padding: 6px 12px 6px 30px; max-height: 40vh; overflow-y: auto; }
+      .game-float-kicker { font-size: .56rem; }
+      .game-float-prompt { margin-top: 1px; font-size: .74rem; }
+      .game-float-linkword { margin-bottom: 3px; padding: 4px 11px; }
+      .game-float-linkword strong { font-size: .92rem; }
+      .game-float-answer-top { min-width: 0; }
+      .game-float-feedback { margin-top: 4px; font-size: .68rem; }
+      .game-float-answer .guess-form { margin-top: 5px; min-width: 0; }
     }
 
     @media (max-width: 380px) {
@@ -1249,23 +1305,31 @@
       <button class="game-end" id="end-game" type="button">End game and browse cards</button>
     </aside>
 
-    <!-- Mobile-only floating controls for class games: the link-word clue and the
-         category/mode label mirror their in-drawer counterparts (see JS), and the
-         real guess-form is relocated here (not duplicated) so a single input keeps
-         all its state. Placed as a sibling of .game-panel (not inside it), so
-         position: fixed here is relative to the viewport and unaffected by the
-         drawer's own transform/collapse animation — see the CSS note above
-         .game-float-top for why that matters. Floating near the top keeps the
-         input in view above the on-screen keyboard instead of it covering the
-         input the way it would if the field stayed docked at the bottom. -->
+    <!-- Mobile-only floating bubbles: these carry the actual class-game play loop
+         (clue → answer → feedback → next) so the bottom drawer can stay closed by
+         default. Text content mirrors the in-drawer elements (see JS); the real
+         guess-form is relocated into the answer bubble (not duplicated) so a
+         single input keeps all its state. Placed as a sibling of .game-panel (not
+         inside it), so position: fixed here is relative to the viewport, immune to
+         the drawer's own transform/collapse animation, and draggable independently
+         of it — see the CSS note above .game-float-top for why that matters. -->
     <div class="game-float-top" id="game-float-top" hidden>
-      <div class="game-float-linkword" id="game-float-linkword" hidden>
-        <span>Link word</span>
-        <strong id="game-float-linkword-value"></strong>
-      </div>
-      <div class="game-float-meta" id="game-float-meta">
+      <div class="game-float-bubble game-float-clue" id="game-float-clue">
+        <button type="button" class="float-grip" id="game-float-clue-grip" aria-label="Move this bubble">⠿</button>
+        <div class="game-float-linkword" id="game-float-linkword" hidden>
+          <span>Link word</span>
+          <strong id="game-float-linkword-value"></strong>
+        </div>
         <span class="game-float-kicker" id="game-float-kicker"></span>
-        <span class="game-float-title" id="game-float-title"></span>
+        <p class="game-float-prompt" id="game-float-prompt"></p>
+      </div>
+      <div class="game-float-bubble game-float-answer" id="game-float-answer">
+        <button type="button" class="float-grip" id="game-float-answer-grip" aria-label="Move this bubble">⠿</button>
+        <div class="game-float-answer-top">
+          <span class="game-float-score" id="game-float-score">Score 0</span>
+          <button type="button" class="game-float-next" id="game-float-next">Next →</button>
+        </div>
+        <p class="game-float-feedback" id="game-float-feedback" role="status" aria-live="polite"></p>
       </div>
     </div>
 
@@ -2070,10 +2134,17 @@
     const drawerPeek = document.querySelector("#drawer-peek");
     const drawerPeekLabel = document.querySelector("#drawer-peek-label");
     const gameFloatTop = document.querySelector("#game-float-top");
+    const gameFloatClue = document.querySelector("#game-float-clue");
+    const gameFloatClueGrip = document.querySelector("#game-float-clue-grip");
     const gameFloatLinkword = document.querySelector("#game-float-linkword");
     const gameFloatLinkwordValue = document.querySelector("#game-float-linkword-value");
     const gameFloatKicker = document.querySelector("#game-float-kicker");
-    const gameFloatTitle = document.querySelector("#game-float-title");
+    const gameFloatPrompt = document.querySelector("#game-float-prompt");
+    const gameFloatAnswer = document.querySelector("#game-float-answer");
+    const gameFloatAnswerGrip = document.querySelector("#game-float-answer-grip");
+    const gameFloatScore = document.querySelector("#game-float-score");
+    const gameFloatNext = document.querySelector("#game-float-next");
+    const gameFloatFeedback = document.querySelector("#game-float-feedback");
     const mobileGameFloatQuery = window.matchMedia("(max-width: 900px)");
 
     let isDualView = false;
@@ -3028,6 +3099,9 @@
       gameFeedback.textContent = message;
       gameFeedback.classList.toggle("correct", tone === "correct");
       gameFeedback.classList.toggle("wrong", tone === "wrong");
+      gameFloatFeedback.textContent = message;
+      gameFloatFeedback.classList.toggle("correct", tone === "correct");
+      gameFloatFeedback.classList.toggle("wrong", tone === "wrong");
     }
 
     function changeScore(delta) {
@@ -3036,6 +3110,7 @@
       gameScore.classList.remove("pulse");
       void gameScore.offsetWidth;
       gameScore.classList.add("pulse");
+      gameFloatScore.textContent = `Score ${gameScoreValue.textContent}`;
     }
 
     function updateItemProgress() {
@@ -3258,39 +3333,118 @@
     setupDrawerHandle(audioMatchHandle, audioMatchBoard);
     drawerPeek.addEventListener("click", () => setDrawerCollapsed(false));
 
-    // --- Mobile floating top controls (link-word clue / category label / input) ---
-    // The link-word and category/mode label are plain text, so they're mirrored
-    // (kept in sync from the real elements inside .game-panel) rather than moved.
-    // The guess-form has real interactive state — a typed value, focus, disabled
-    // state — so instead of duplicating it, layoutGameControls() physically
-    // relocates the single real element between its docked home inside
-    // .game-panel (desktop, or find-pair/audio-match modes with no text input) and
-    // the floating container near the top of the screen (mobile guessing modes).
+    // --- Mobile floating bubbles (clue / answer) ------------------------------
+    // These carry the actual play loop — see the clue, respond, see feedback,
+    // move on — so the bottom drawer can default to closed and still leave the
+    // game fully playable. The link-word/kicker/prompt/score/feedback text is
+    // mirrored (kept in sync from the real elements inside .game-panel) rather
+    // than duplicated as separate state. The guess-form has real interactive
+    // state — a typed value, focus, disabled state — so instead of duplicating
+    // it, layoutGameControls() physically relocates the single real element
+    // between its docked home inside .game-panel (desktop, or find-pair/
+    // audio-match modes with no text input) and the answer bubble (mobile
+    // guessing modes).
 
     function syncGameFloatMeta() {
-      gameFloatKicker.textContent = gameModeKicker.textContent;
-      gameFloatTitle.textContent = gamePanelTitle.textContent;
+      gameFloatKicker.textContent = gamePanelTitle.textContent
+        ? `${gameModeKicker.textContent} · ${gamePanelTitle.textContent}`
+        : gameModeKicker.textContent;
+      gameFloatPrompt.textContent = gamePrompt.textContent;
       gameFloatLinkwordValue.textContent = linkWordValue.textContent;
       gameFloatLinkword.hidden = linkWord.hidden;
+      gameFloatScore.textContent = `Score ${gameScoreValue.textContent}`;
+    }
+
+    // The clue bubble's height varies with content (a long category name, a
+    // two-line prompt). Keep the answer bubble docked just below it by default,
+    // but only until the player drags the answer bubble themselves — once they
+    // pick a spot, respect it instead of yanking it back on every content change.
+    function repositionAnswerBubble() {
+      if (gameFloatAnswer.dataset.userPositioned === "true") return;
+      const clueRect = gameFloatClue.getBoundingClientRect();
+      const desiredTop = clueRect.bottom + 10;
+      // Safety clamp for short/landscape viewports: never push the answer bubble
+      // so low it collides with the peek pill / footer near the bottom of the
+      // screen (the max-height: 560px CSS above shrinks the bubbles too, but this
+      // covers content that's still tall even at that reduced size).
+      const maxTop = Math.max(clueRect.top, window.innerHeight - gameFloatAnswer.offsetHeight - 96);
+      gameFloatAnswer.style.top = `${Math.round(Math.min(desiredTop, maxTop))}px`;
     }
 
     function layoutGameControls() {
       const mobile = mobileGameFloatQuery.matches;
       const inClassGame = gameMode !== "browse" && gameMode !== "audio-match";
       gameFloatTop.hidden = !(mobile && inClassGame);
-      if (inClassGame) syncGameFloatMeta();
+      if (inClassGame) {
+        syncGameFloatMeta();
+        requestAnimationFrame(repositionAnswerBubble);
+      }
       // Always resolve where .guess-form belongs (not gated on inClassGame) so it
       // gets moved back into .game-panel when a game ends, not just when a
       // different in-game mode no longer wants it floating.
       const wantsFloatingInput = mobile && inClassGame && !guessForm.hidden;
-      if (wantsFloatingInput && guessForm.parentElement !== gameFloatTop) {
-        gameFloatTop.appendChild(guessForm);
+      if (wantsFloatingInput && guessForm.parentElement !== gameFloatAnswer) {
+        gameFloatAnswer.insertBefore(guessForm, gameFloatFeedback);
+        requestAnimationFrame(repositionAnswerBubble);
       } else if (!wantsFloatingInput && guessForm.parentElement !== gamePanel) {
         gamePanel.insertBefore(guessForm, gameFeedback);
       }
     }
 
     mobileGameFloatQuery.addEventListener("change", layoutGameControls);
+    gameFloatNext.addEventListener("click", () => newGameRound());
+
+    // Drag-and-drop for the floating bubbles: only the small grip button starts a
+    // drag (the bubble body still needs plain taps/typing to reach the input,
+    // Check, and Next controls without triggering a move). Mirrors the pointer-
+    // capture pattern already used for the card swipe and the drawer handle.
+    function makeBubbleDraggable(bubbleEl, gripEl) {
+      let dragging = false;
+      let startX = 0;
+      let startY = 0;
+      let startLeft = 0;
+      let startTop = 0;
+
+      function onDown(event) {
+        dragging = true;
+        const rect = bubbleEl.getBoundingClientRect();
+        startX = event.clientX;
+        startY = event.clientY;
+        startLeft = rect.left;
+        startTop = rect.top;
+        bubbleEl.style.left = `${startLeft}px`;
+        bubbleEl.style.top = `${startTop}px`;
+        bubbleEl.style.transform = "none";
+        bubbleEl.classList.add("is-dragging");
+        gripEl.setPointerCapture?.(event.pointerId);
+      }
+
+      function onMove(event) {
+        if (!dragging) return;
+        const dx = event.clientX - startX;
+        const dy = event.clientY - startY;
+        const maxLeft = Math.max(8, window.innerWidth - bubbleEl.offsetWidth - 8);
+        const maxTop = Math.max(8, window.innerHeight - bubbleEl.offsetHeight - 8);
+        bubbleEl.style.left = `${Math.min(Math.max(8, startLeft + dx), maxLeft)}px`;
+        bubbleEl.style.top = `${Math.min(Math.max(8, startTop + dy), maxTop)}px`;
+      }
+
+      function finishDrag() {
+        if (!dragging) return;
+        dragging = false;
+        bubbleEl.classList.remove("is-dragging");
+        bubbleEl.dataset.userPositioned = "true";
+      }
+
+      gripEl.addEventListener("pointerdown", onDown);
+      gripEl.addEventListener("pointermove", onMove);
+      gripEl.addEventListener("pointerup", finishDrag);
+      gripEl.addEventListener("pointercancel", finishDrag);
+    }
+
+    makeBubbleDraggable(gameFloatClue, gameFloatClueGrip);
+    makeBubbleDraggable(gameFloatAnswer, gameFloatAnswerGrip);
+    window.addEventListener("resize", () => requestAnimationFrame(repositionAnswerBubble));
 
     function startGame(mode) {
       if (isDualView) setDualView(false);
@@ -3310,7 +3464,10 @@
       if (audioMode) startAudioMatchRound();
       else if (isLinkMode()) beginRandomLinkRound(false);
       else showCard(cardIndex, false);
-      setDrawerCollapsed(false);
+      // Class games play through the floating bubbles now, so the drawer starts
+      // closed and out of the way. Audio Match has no floating equivalent — its
+      // "drawer" is the whole game board — so it still opens by default.
+      setDrawerCollapsed(!audioMode);
       layoutGameControls();
       status.textContent = `${gameModeName()} game started.`;
     }
