@@ -1772,47 +1772,254 @@
     }
 
     const ITEM_ALIASES = {
+      "airplane": ["plane", "aeroplane", "aircraft"],
+      "aluminum foil": ["aluminium foil", "tin foil"],
+      "ambulance": ["emergency vehicle"],
+      "atm": ["cash machine", "cashpoint", "bank machine"],
+      "baby bottle": ["feeding bottle"],
+      "backpack": ["rucksack", "school bag"],
+      "bandage": ["band aid", "bandaid", "plaster"],
+      "banknote": ["bank note", "paper money", "bill"],
+      "bar soap": ["soap", "soap bar"],
+      "bathrobe": ["dressing gown", "robe"],
+      "bell pepper": ["capsicum", "sweet pepper"],
+      "bicycle": ["bike", "cycle"],
+      "binder clip": ["bulldog clip", "foldback clip"],
       "blackboard": ["chalkboard"],
-      "mobile phone": ["cell phone", "cellphone", "mobile", "phone"],
-      "soda": ["pop", "soft drink", "cola"],
-      "peas": ["pea"],
-      "soccer ball": ["soccer"],
-      "football": ["american football"],
-      "bookshelf": ["bookcase"],
-      "sofa": ["couch"],
-      "mail": ["letter"],
-      "airplane": ["plane", "aeroplane"],
-      "business person": ["businessman", "businesswoman", "office worker"],
-      "rain boots": ["rubber boots", "wellingtons", "wellies"],
-      "sunglasses": ["shades"],
-      "flip flops": ["sandals", "flipflops"],
-      "t shirt": ["tee shirt", "shirt"],
-      "sneakers": ["trainers", "tennis shoes"],
-      "first aid kit": ["medical kit"],
-      "film reel": ["movie reel"],
-      "cinema seat": ["movie seat", "theater seat"],
-      "remote control": ["remote"],
-      "hair clippers": ["clippers"],
-      "dslr camera": ["camera"],
-      "dumbbell": ["hand weight"],
-      "washbasin": ["sink", "bathroom sink"],
-      "atm": ["cash machine"],
-      "fire engine": ["fire truck"],
-      "stage microphone": ["microphone", "mic"],
-      "game die": ["dice", "die"],
+      "book cart": ["book trolley", "library trolley"],
+      "bookshelf": ["bookcase", "book shelf"],
+      "business person": ["businessman", "businesswoman", "office worker", "business worker"],
+      "canteen": ["water bottle", "flask"],
+      "car tire": ["tire", "tyre", "car tyre"],
+      "cell phone": ["mobile phone", "cellphone", "mobile", "phone"],
+      "checkered blanket": ["checked blanket", "picnic blanket"],
+      "cinema seat": ["movie seat", "theater seat", "theatre seat"],
+      "cleaning cloth": ["rag", "cleaning rag", "duster"],
+      "clothes hanger": ["coat hanger", "hanger"],
+      "clothes iron": ["iron"],
+      "clothespin": ["clothes peg", "peg"],
+      "coiled fire hose": ["fire hose", "hose"],
       "computer mouse": ["mouse"],
-      "iv stand": ["drip stand"],
-      "car tire": ["tyre", "car tyre"],
+      "construction helmet": ["hard hat", "safety helmet"],
+      "cooler box": ["cool box", "ice box", "cooler"],
+      "credit card": ["bank card", "payment card"],
+      "crutch": ["walking crutch", "walking aid"],
+      "cutting board": ["chopping board"],
+      "diaper": ["nappy"],
+      "dish soap": ["washing up liquid", "dishwashing liquid"],
+      "dome tent": ["tent", "camping tent"],
+      "door key": ["key", "house key"],
+      "dslr camera": ["camera", "digital camera"],
+      "dumbbell": ["hand weight", "free weight"],
+      "eggplant": ["aubergine", "brinjal"],
+      "eraser": ["rubber", "pencil eraser"],
+      "exercise bike": ["stationary bike", "exercise bicycle"],
+      "face mask": ["mask", "medical mask", "surgical mask"],
+      "faucet": ["tap", "water tap"],
+      "file folder": ["folder", "document folder"],
+      "film reel": ["movie reel", "reel"],
+      "fire engine": ["fire truck", "firetruck"],
+      "first aid kit": ["medical kit", "emergency kit"],
+      "flip flops": ["sandals", "flipflops", "thongs"],
+      "food container": ["storage container", "tupperware"],
+      "football": ["american football", "gridiron ball"],
+      "front door": ["door", "house door"],
+      "frying pan": ["frypan", "skillet"],
+      "game die": ["dice", "die"],
+      "garbage bag": ["trash bag", "bin bag", "rubbish bag"],
+      "garbage can": ["trash can", "rubbish bin", "dustbin"],
+      "garden hose": ["hose", "water hose"],
+      "garden gloves": ["gardening gloves"],
+      "gearshift": ["gear stick", "gear lever", "shifter"],
+      "glasses": ["eyeglasses", "spectacles"],
+      "hair clippers": ["clippers", "electric clippers"],
+      "hair dryer": ["blow dryer", "blowdryer"],
+      "hand basket": ["shopping basket", "grocery basket"],
+      "hand trowel": ["garden trowel", "trowel"],
+      "hot water bottle": ["hot water bag"],
+      "iv stand": ["drip stand", "iv pole", "drip pole"],
+      "jump rope": ["skipping rope"],
+      "kettle": ["tea kettle"],
+      "laptop": ["notebook computer", "portable computer"],
+      "life buoy": ["lifebuoy", "life ring", "life preserver"],
+      "light bulb": ["lightbulb", "bulb"],
+      "mail": ["letter", "post"],
+      "mailbox": ["postbox", "letter box"],
+      "manhole cover": ["drain cover", "sewer cover"],
+      "measuring spoon": ["medicine spoon"],
+      "megaphone": ["loudhailer", "bullhorn"],
+      "microwave oven": ["microwave"],
+      "mobile phone": ["cell phone", "cellphone", "mobile", "phone", "smartphone"],
+      "modeling clay": ["modelling clay", "play dough", "playdough"],
+      "motorcycle": ["motorbike", "bike"],
+      "movie ticket": ["cinema ticket", "theater ticket", "theatre ticket"],
+      "napkin ring": ["serviette ring"],
+      "pacifier": ["dummy", "soother"],
+      "parking meter": ["car park meter"],
+      "pearl necklace": ["necklace", "pearls"],
+      "peas": ["pea", "green peas"],
+      "pepper": ["bell pepper", "capsicum", "sweet pepper"],
+      "pickup truck": ["pickup", "pick up truck", "ute"],
+      "pill bottle": ["medicine bottle", "tablet bottle"],
+      "police cap": ["police hat"],
+      "police officer": ["policeman", "policewoman", "cop"],
+      "popcorn tub": ["popcorn bucket", "popcorn"],
+      "postage stamp": ["stamp"],
+      "power outlet": ["wall outlet", "socket", "power socket"],
+      "power plug": ["electric plug", "electrical plug", "plug"],
+      "power strip": ["extension strip", "multi plug", "multiplug"],
+      "pruning shears": ["garden shears", "secateurs", "pruners"],
+      "purse": ["handbag"],
+      "rain boots": ["rubber boots", "wellingtons", "wellies", "gumboots"],
+      "refrigerator": ["fridge"],
+      "remote control": ["remote", "clicker"],
       "rice cooker": ["rice pot"],
-      "pill bottle": ["medicine bottle"],
+      "rickshaw": ["tuk tuk", "tuktuk", "auto rickshaw"],
+      "rubber gloves": ["washing up gloves", "dishwashing gloves"],
+      "safety goggles": ["protective goggles", "lab goggles"],
+      "sand timer": ["hourglass", "egg timer"],
+      "shopping cart": ["shopping trolley", "grocery cart", "trolley"],
+      "side mirror": ["wing mirror", "car mirror"],
+      "sneakers": ["trainers", "tennis shoes", "running shoes"],
+      "soccer ball": ["soccer", "association football"],
+      "soda": ["pop", "soft drink", "fizzy drink", "cola"],
+      "sofa": ["couch", "settee"],
+      "spark plug": ["sparkplug"],
+      "stage microphone": ["microphone", "mic"],
+      "stroller": ["pushchair", "pram", "baby carriage", "buggy"],
+      "sunglasses": ["shades", "sun glasses"],
+      "t shirt": ["tee shirt", "tee", "shirt"],
+      "table tennis paddle": ["ping pong paddle", "table tennis bat", "ping pong bat"],
+      "takeaway cup": ["to go cup", "takeout cup", "coffee cup"],
+      "tape measure": ["measuring tape"],
+      "telephone": ["landline", "landline phone", "phone"],
+      "thermos flask": ["thermos", "vacuum flask"],
+      "tissue box": ["kleenex box", "box of tissues"],
+      "toilet": ["loo", "commode"],
+      "trash can": ["garbage can", "rubbish bin", "dustbin", "bin"],
+      "usb drive": ["flash drive", "thumb drive", "memory stick", "pen drive"],
+      "vacuum": ["vacuum cleaner", "hoover"],
+      "wall outlet": ["power outlet", "socket", "power socket"],
+      "washbasin": ["sink", "bathroom sink", "basin"],
+      "wi fi router": ["router", "wifi router", "wireless router"],
       "wind sock": ["windsock"],
-      "pickup truck": ["pickup"],
-      "takeaway cup": ["to go cup", "coffee cup"],
-      "wi fi router": ["router", "wifi router"],
-      "bar soap": ["soap"],
-      "trash can": ["garbage can", "rubbish bin"],
-      "cleaning cloth": ["rag"],
-      "front door": ["door"]
+      "wooden spoon": ["wood spoon"],
+      "wrench": ["spanner"]
+    };
+
+    const CATEGORY_ALIASES = {
+      "weather": ["weather conditions", "kinds of weather"],
+      "vegetable": ["veggies", "vegetable food"],
+      "zoo": ["zoo animals", "animals at zoo", "wild animals"],
+      "feeling": ["emotions", "moods", "emotional states"],
+      "beverage": ["drinks", "things to drink"],
+      "play": ["sports", "ball sports", "sports balls"],
+      "school": ["school supplies", "classroom things", "classroom supplies"],
+      "personal item": ["personal belongings", "everyday items", "things you carry"],
+      "snack time": ["snacks", "snack foods"],
+      "hobby": ["free time activities", "leisure activities", "pastimes"],
+      "shape": ["geometric shapes"],
+      "bug": ["insects", "creepy crawlies"],
+      "tool": ["hand tools", "workshop tools"],
+      "outdoor place": ["places in nature", "natural places", "nature"],
+      "furniture": ["household furniture", "home furniture"],
+      "communication tool": ["ways to communicate", "communication methods", "media"],
+      "transportation": ["transport", "vehicles", "ways of traveling"],
+      "great outdoor": ["outdoor activities", "adventure activities", "outdoor sports"],
+      "job": ["occupations", "professions", "careers"],
+      "everyday food": ["staple foods", "basic foods", "common foods"],
+      "musical instrument": ["instruments", "music instruments"],
+      "market": ["market foods", "food market", "grocery market"],
+      "outdoor gear": ["weather gear", "outdoor clothing", "things for outside"],
+      "pet": ["pet animals", "domestic animals"],
+      "at beach": ["beach", "beach items", "things at beach"],
+      "in kitchen": ["kitchen", "kitchen items", "things in kitchen"],
+      "getting dressed": ["clothes", "clothing", "things you wear"],
+      "at doctor": ["doctor", "doctor office", "medical equipment"],
+      "cleaning day": ["cleaning", "cleaning supplies", "house cleaning"],
+      "in garden": ["garden", "gardening", "gardening tools"],
+      "at playground": ["playground", "playground equipment", "playground activities"],
+      "on farm": ["farm", "farm things", "farming"],
+      "baby thing": ["baby items", "baby supplies", "things for babies"],
+      "party time": ["party", "party supplies", "birthday party"],
+      "science lab": ["laboratory", "lab equipment", "science equipment"],
+      "sewing kit": ["sewing", "sewing supplies", "sewing tools"],
+      "winter fun": ["winter activities", "snow activities", "winter sports"],
+      "laundry day": ["laundry", "washing clothes", "laundry items"],
+      "movie night": ["movies", "cinema", "movie theater"],
+      "space travel": ["space", "outer space", "space exploration"],
+      "hair salon": ["hairdresser", "hairdressing", "barber shop"],
+      "at airport": ["airport", "air travel", "airport items"],
+      "at office": ["office", "office supplies", "office equipment"],
+      "under sea": ["ocean animals", "sea life", "marine life"],
+      "at library": ["library", "library items", "library equipment"],
+      "at harbor": ["harbor", "harbour", "port", "things at port"],
+      "photography": ["camera equipment", "photo equipment", "taking photos"],
+      "fitness equipment": ["gym equipment", "exercise equipment", "workout equipment"],
+      "at museum": ["museum", "museum exhibits", "things in museum"],
+      "city street": ["street furniture", "things on street", "urban street"],
+      "at wedding": ["wedding", "wedding items", "wedding things"],
+      "bathroom fixture": ["bathroom", "bathroom fittings", "bathroom equipment"],
+      "money and banking": ["banking", "money", "bank items"],
+      "houseplant": ["indoor plants", "potted plants", "home plants"],
+      "at dentist": ["dentist", "dental equipment", "dentist office"],
+      "fire station": ["firefighting", "firefighter equipment", "fire service"],
+      "at hotel": ["hotel", "hotel items", "hotel room"],
+      "at post office": ["post office", "mail service", "postal service"],
+      "construction site": ["construction", "building site", "construction equipment"],
+      "at theater": ["theater", "theatre", "stage equipment"],
+      "at restaurant": ["restaurant", "restaurant items", "dining out"],
+      "at train station": ["train station", "railway station", "rail station"],
+      "at bakery": ["bakery", "baking", "bakery items"],
+      "at police station": ["police station", "police equipment", "law enforcement"],
+      "at campsite": ["camping", "campsite", "camping equipment"],
+      "board game": ["tabletop games", "game pieces", "games"],
+      "jewelry": ["jewellery", "accessories", "jewels"],
+      "computer equipment": ["computer accessories", "computer hardware", "tech equipment"],
+      "emergency room": ["hospital", "er", "hospital equipment"],
+      "car part": ["auto parts", "automobile parts", "vehicle parts"],
+      "ancient egypt": ["egypt", "egyptian history", "egyptian objects"],
+      "flower": ["flowers and plants", "blooms"],
+      "bird": ["types of birds"],
+      "kitchen appliance": ["appliances", "cooking appliances"],
+      "art supply": ["art materials", "craft supplies", "artist tools"],
+      "sport equipment": ["sporting goods", "sports gear", "game equipment"],
+      "at pharmacy": ["pharmacy", "chemist", "medicine"],
+      "picnic time": ["picnic", "picnic items", "picnic supplies"],
+      "spice": ["seasonings", "cooking spices"],
+      "travel accessory": ["travel gear", "travel items", "luggage accessories"],
+      "weather instrument": ["weather tools", "meteorological instruments", "measuring weather"],
+      "way to travel": ["transport", "modes of transport", "ways of traveling"],
+      "at aquarium": ["aquarium", "aquarium life", "sea creatures"],
+      "at coffee shop": ["coffee shop", "cafe", "coffee making"],
+      "at supermarket": ["supermarket", "grocery store", "shopping"],
+      "tableware": ["dinnerware", "things on table", "eating utensils"],
+      "cooking utensil": ["kitchen utensils", "cooking tools", "kitchen tools"],
+      "fresh fruit": ["fruit", "fruits"],
+      "fresh vegetable": ["vegetables", "veggies", "fresh produce"],
+      "pantry basic": ["pantry staples", "store cupboard basics", "dry goods"],
+      "breakfast food": ["breakfast", "morning foods"],
+      "home entryway": ["front entrance", "entrance hall", "house entrance"],
+      "electrical essential": ["electrical items", "electric supplies", "home electrics"],
+      "personal care": ["hygiene", "toiletries", "grooming items"],
+      "dishwashing": ["washing dishes", "dish cleaning", "dishwashing supplies"],
+      "food storage": ["storing food", "food containers", "kitchen storage"],
+      "writing supply": ["stationery", "school stationery", "writing tools"],
+      "bathroom essential": ["bathroom supplies", "bathroom items", "toiletries"],
+      "cleaning extra": ["cleaning supplies", "cleaning equipment", "household cleaning"],
+      "part of home": ["parts of house", "house parts", "home features"],
+      "coffee shop drink": ["coffee drinks", "types of coffee", "cafe drinks"]
+    };
+
+    const WORD_NORMALIZATIONS = {
+      "knives": "knife",
+      "leaves": "leaf",
+      "scarves": "scarf",
+      "shelves": "shelf",
+      "buses": "bus",
+      "teeth": "tooth",
+      "women": "woman",
+      "men": "man"
     };
 
     function normalizedGuess(value) {
@@ -1822,14 +2029,55 @@
         .replace(/[^a-z0-9]+/g, " ")
         .trim()
         .split(/\s+/)
-        .filter(word => word && !["a", "an", "the"].includes(word))
+        .filter(word => word && ![
+          "a", "an", "the", "i", "think", "it", "its", "s", "is", "maybe", "probably",
+          "could", "might", "be", "looks", "like", "this", "that", "these", "those", "they",
+          "are", "my", "guess", "answer"
+        ].includes(word))
         .map(word => {
+          if (WORD_NORMALIZATIONS[word]) return WORD_NORMALIZATIONS[word];
           if (word.length > 4 && word.endsWith("ies")) return `${word.slice(0, -3)}y`;
-          if (word.length > 4 && word.endsWith("es") && !word.endsWith("ses")) return word.slice(0, -2);
+          if (word.length > 4 && /(ches|shes|sses|xes|zes|oes)$/.test(word)) return word.slice(0, -2);
           if (word.length > 3 && word.endsWith("s") && !word.endsWith("ss")) return word.slice(0, -1);
           return word;
         });
       return words.join(" ");
+    }
+
+    function categoryCore(value) {
+      const filler = new Set([
+        "all", "category", "group", "kind", "type", "thing", "item", "object", "stuff",
+        "picture", "shown", "related", "you", "we", "would", "find", "found", "see", "use", "have", "from"
+      ]);
+      return normalizedGuess(value).split(" ").filter(word => word && !filler.has(word)).join(" ");
+    }
+
+    function editDistance(left, right) {
+      if (left === right) return 0;
+      const previous = Array.from({ length: right.length + 1 }, (_, index) => index);
+      for (let row = 1; row <= left.length; row += 1) {
+        let diagonal = previous[0];
+        previous[0] = row;
+        for (let column = 1; column <= right.length; column += 1) {
+          const above = previous[column];
+          const cost = left[row - 1] === right[column - 1] ? 0 : 1;
+          previous[column] = Math.min(
+            previous[column] + 1,
+            previous[column - 1] + 1,
+            diagonal + cost
+          );
+          diagonal = above;
+        }
+      }
+      return previous[right.length];
+    }
+
+    function closeSpellingMatch(left, right) {
+      const shorter = Math.min(left.length, right.length);
+      const longer = Math.max(left.length, right.length);
+      if (shorter < 4 || Math.abs(left.length - right.length) > 3) return false;
+      const allowance = longer >= 12 ? 3 : longer >= 7 ? 2 : 1;
+      return editDistance(left, right) <= allowance;
     }
 
     function itemForms(answer) {
@@ -1850,21 +2098,32 @@
         const partial = available.filter(entry => [...entry.forms].some(form => form.includes(guess) || guess.includes(form)));
         if (partial.length === 1) return partial[0].index;
       }
+
+      const close = available.filter(entry => [...entry.forms].some(form => closeSpellingMatch(guess, form)));
+      if (close.length === 1) return close[0].index;
       return -1;
     }
 
     function categoryMatches(rawGuess, title) {
       const guess = normalizedGuess(rawGuess);
+      const guessCore = categoryCore(rawGuess);
       const full = normalizedGuess(title);
       if (!guess) return false;
-      if (guess === full) return true;
       const simplified = full
         .replace(/^(at|in|on) /, "")
         .replace(/^trip to /, "")
         .replace(/^time for /, "")
         .replace(/^let play$/, "play")
         .replace(/^eat your /, "");
-      return guess === simplified || (guess.length >= 3 && (` ${full} `).includes(` ${guess} `));
+      const aliases = CATEGORY_ALIASES[full] || CATEGORY_ALIASES[simplified] || [];
+      const forms = new Set([full, simplified, ...aliases.map(normalizedGuess)]);
+      if (forms.has(guess)) return true;
+      const coreForms = new Set([...forms].map(categoryCore).filter(Boolean));
+      if (guessCore && coreForms.has(guessCore)) return true;
+      if (guess.length >= 3 && [...forms].some(form => (` ${form} `).includes(` ${guess} `) || (` ${guess} `).includes(` ${form} `))) return true;
+      if (guessCore.length >= 3 && [...coreForms].some(form => (` ${form} `).includes(` ${guessCore} `) || (` ${guessCore} `).includes(` ${form} `))) return true;
+      return [...forms].some(form => closeSpellingMatch(guess, form))
+        || [...coreForms].some(form => closeSpellingMatch(guessCore, form));
     }
 
     function setGameFeedback(message, tone = "") {
