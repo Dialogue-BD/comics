@@ -428,8 +428,8 @@
     .item-footer-mask {
       position: absolute;
       z-index: 6;
-      inset: 80% 0 0;
-      background: linear-gradient(180deg, rgba(255,255,255,.96), #eef8fb);
+      inset: 79% -1px -1px;
+      background: #f3f6f8;
       pointer-events: none;
     }
 
@@ -2029,11 +2029,7 @@
         .replace(/[^a-z0-9]+/g, " ")
         .trim()
         .split(/\s+/)
-        .filter(word => word && ![
-          "a", "an", "the", "i", "think", "it", "its", "s", "is", "maybe", "probably",
-          "could", "might", "be", "looks", "like", "this", "that", "these", "those", "they",
-          "are", "my", "guess", "answer"
-        ].includes(word))
+        .filter(word => word && !["a", "an", "the"].includes(word))
         .map(word => {
           if (WORD_NORMALIZATIONS[word]) return WORD_NORMALIZATIONS[word];
           if (word.length > 4 && word.endsWith("ies")) return `${word.slice(0, -3)}y`;
@@ -2095,7 +2091,7 @@
       if (exact.length === 1) return exact[0].index;
 
       if (guess.length >= 4) {
-        const partial = available.filter(entry => [...entry.forms].some(form => form.includes(guess) || guess.includes(form)));
+        const partial = available.filter(entry => [...entry.forms].some(form => form.includes(guess)));
         if (partial.length === 1) return partial[0].index;
       }
 
@@ -2120,8 +2116,8 @@
       if (forms.has(guess)) return true;
       const coreForms = new Set([...forms].map(categoryCore).filter(Boolean));
       if (guessCore && coreForms.has(guessCore)) return true;
-      if (guess.length >= 3 && [...forms].some(form => (` ${form} `).includes(` ${guess} `) || (` ${guess} `).includes(` ${form} `))) return true;
-      if (guessCore.length >= 3 && [...coreForms].some(form => (` ${form} `).includes(` ${guessCore} `) || (` ${guessCore} `).includes(` ${form} `))) return true;
+      if (guess.length >= 3 && [...forms].some(form => (` ${form} `).includes(` ${guess} `))) return true;
+      if (guessCore.length >= 3 && [...coreForms].some(form => (` ${form} `).includes(` ${guessCore} `))) return true;
       return [...forms].some(form => closeSpellingMatch(guess, form))
         || [...coreForms].some(form => closeSpellingMatch(guessCore, form));
     }
