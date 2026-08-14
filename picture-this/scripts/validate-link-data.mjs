@@ -10,7 +10,7 @@ vm.runInNewContext(fs.readFileSync(new URL("link-data.js", root), "utf8"), sandb
 const cards = sandbox.window.PICTURE_THIS_GAME_DATA;
 const links = sandbox.window.PICTURE_THIS_LINK_DATA;
 const errors = [];
-const singleWord = /^[\p{L}\p{N}]+(?:[-’'][\p{L}\p{N}]+)*$/u;
+const singleWord = /^[\p{L}\p{N}]+$/u;
 
 for (const cardId of Object.keys(cards)) {
   const puzzles = links[cardId];
@@ -24,7 +24,7 @@ for (const cardId of Object.keys(cards)) {
   const pairs = new Set();
   puzzles.forEach((puzzle, position) => {
     const prefix = `${cardId} puzzle ${position + 1}`;
-    if (!singleWord.test(puzzle.word || "")) errors.push(`${prefix}: invalid one-word link`);
+    if (!singleWord.test(puzzle.word || "")) errors.push(`${prefix}: link must be one uninterrupted word; punctuation is not allowed`);
     const wordKey = String(puzzle.word).toLocaleLowerCase();
     if (words.has(wordKey)) errors.push(`${prefix}: repeated displayed word`);
     words.add(wordKey);
@@ -32,7 +32,7 @@ for (const cardId of Object.keys(cards)) {
     if (!Array.isArray(puzzle.answers) || !puzzle.answers.includes(puzzle.word)) {
       errors.push(`${prefix}: answers must include the displayed word`);
     } else if (puzzle.answers.some(answer => !singleWord.test(answer))) {
-      errors.push(`${prefix}: every accepted answer must be one word`);
+      errors.push(`${prefix}: every accepted answer must be one uninterrupted word without punctuation`);
     } else {
       puzzle.answers.forEach(answer => {
         const answerKey = String(answer).toLocaleLowerCase();

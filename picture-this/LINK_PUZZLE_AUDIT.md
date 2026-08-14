@@ -34,23 +34,25 @@ If question 2 is yes, or any other answer is doubtful, the puzzle fails.
 - `fruit` for Grapes + Apple: Banana is also fruit.
 - `sweet` for Chocolate + Donuts: several pictured fruits can also be sweet.
 - a broad `net` clue for Volleyball + Tennis Ball: a soccer ball can also be linked to
-  a goal net; the final clue is narrowed to `net-divided`, which describes the court;
+  a goal net; the final clue is `courts`, which selects the two court sports shown;
 - `money` for Wallet + Purse: a mobile phone can also be linked to payments and money.
 - a broad `pips` clue for Game Die + Domino Tile: playing cards also use suit pips; the
-  final clue is narrowed to `number-pips`, which excludes suit symbols;
+  final clue is `dots`, which excludes the playing cards' suit symbols;
+- any hyphenated pseudo-word such as `sun-protection` or `goal-scoring`: punctuation
+  cannot be used to disguise a phrase as the required single word;
 - `water` for Bathtub + Showerhead: the washbasin, toilet, and faucet also use water.
 - `wearable` for Sun Hat + Flip-Flops: a towel or sunscreen can reasonably be described
   as worn, so the clue does not force one pair.
 
 ## Examples retained or narrowed
 
-- `four-sided`: Square + Diamond
+- `quadrilaterals`: Square + Diamond
 - `handlebars`: Bicycle + Motorcycle
 - `legumes`: Beans + Peanuts
 - `tentacles`: Octopus + Jellyfish
 - `cardio`: Treadmill + Exercise Bike
 - `cruciferous`: Cabbage + Cauliflower
-- `sun-protection`: Sun Hat + Sunscreen (narrowed from `sun`)
+- `ultraviolet`: Sun Hat + Sunscreen (replaces the over-broad `sun`)
 - `jaws`: Pliers + Wrench (narrowed from `gripping`)
 - `waterproof`: Rain Boots + Umbrella (narrowed from `rain`)
 - `locking`: Door Key + Deadbolt (narrowed from `security`)
@@ -62,7 +64,7 @@ If question 2 is yes, or any other answer is doubtful, the puzzle fails.
 - exactly three audited puzzles for every card;
 - exactly two valid, distinct item indexes per puzzle;
 - distinct clue words, accepted answers, and item pairs within a card;
-- one-word or hyphenated-one-word clues and accepted answers;
+- uninterrupted one-word clues and accepted answers containing no punctuation;
 - the `exclusive-among-six-v1` semantic-audit marker; and
 - an explanation explicitly stating why the selected items are the only two matches.
 
