@@ -142,6 +142,16 @@
 
     .stage.is-dragging { cursor: grabbing; }
 
+    /* Side-by-side view scrolls its own content (see .dual-stage overflow-y below).
+       touch-action is not simply inherited: a browser computes the allowed touch
+       behavior for a touch point as the intersection of the touch-action values of
+       the target element AND all of its ancestors — so .stage's "none" (needed to
+       stop the browser from panning/zooming while the card is being drag-flipped)
+       silently blocks touch-scrolling in any descendant even when that descendant
+       itself declares touch-action: auto. Relax it back to vertical panning only
+       while dual view is active so the stacked cards can be scrolled by touch. */
+    .stage.is-dual { touch-action: pan-y; }
+
     .deck {
       position: relative;
       width: min(calc(100vw - 32px), calc((100dvh - 157px) * var(--card-ratio)), 540px);
@@ -538,6 +548,11 @@
       -webkit-backdrop-filter: blur(20px);
     }
 
+    /* Drag handle + floating "peek" reopen pill are only used by the mobile floating-
+       drawer treatment (see the max-width: 900px block below). On desktop the panel
+       is always visible in its side-docked position, so these stay hidden. */
+    .drawer-handle, .drawer-peek { display: none; }
+
     .game-panel-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
     .game-mode-kicker { display: block; color: hsl(var(--accent)); font-size: .67rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
     .game-panel h2 { margin: 5px 0 0; font-size: 1.65rem; line-height: 1; letter-spacing: -.035em; }
@@ -759,6 +774,19 @@
         overflow-y: auto;
         padding-top: 10px;
         padding-bottom: 20px;
+        /* .dual-stage's justify-content: center above centers along the FLEX MAIN
+           AXIS, which flips from horizontal to vertical here since flex-direction
+           becomes column. When the stacked cards are taller than the visible area,
+           centered flex/grid overflow is clipped equally on both ends, and many
+           browsers (notably iOS Safari) won't let you scroll into the clipped-off
+           top portion at all — the classic "can't scroll to the start of centered
+           overflow" bug. "safe center" keeps the centered look while content fits,
+           but falls back to start-alignment (fully scrollable) once it overflows.
+           The flex-start line above it is a fallback for browsers that don't
+           understand the "safe" keyword yet (invalid values are ignored, so the
+           last valid declaration wins). */
+        justify-content: flex-start;
+        justify-content: safe center;
       }
       .dual-card-wrap {
         max-height: none;
@@ -845,27 +873,112 @@
       .game-options { grid-template-columns: 1fr; }
     }
 
+    /* Mobile floating-drawer redesign: on phones/small tablets, the game panel and
+       audio-match board no longer permanently dock along the bottom and shrink the
+       card down to coexist with them. Instead they float OVER the card as a
+       bottom-sheet drawer (see .is-collapsed / .drawer-handle / .drawer-peek below)
+       that can be swiped or tapped away, so the card keeps its normal full
+       browse-mode size and stays front-and-center. Resetting the game-active stage
+       and footer overrides back to their base (non-shifted) positions here undoes
+       the desktop side-docked layout rules above, which don't make sense once the
+       panel is a floating overlay instead of a fixed sidebar. */
     @media (max-width: 900px) {
-      .game-panel { top: auto; left: 8px; right: 8px; bottom: 8px; width: auto; max-height: 39dvh; padding: 16px; border-radius: 20px; }
-      .app.game-active .stage { inset: 0 0 39dvh; padding-bottom: 16px; }
-      .app.game-active .footer { right: 0; bottom: 39dvh; }
+      .app.game-active .stage { inset: 0; }
+      .app.game-active .footer { right: 0; bottom: 0; }
+
+      .game-panel,
+      .audio-match-board {
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        width: auto;
+        border-radius: 22px;
+        z-index: 46;
+        transform: translateY(0);
+        transition: transform .34s cubic-bezier(.16, 1, .3, 1);
+      }
+      /* Guessing/linking games: the card stays visible behind the drawer, so it's
+         capped to a bottom-sheet height rather than filling the screen. */
+      .game-panel { top: auto; max-height: min(70dvh, 620px); padding: 10px 16px 16px; }
       .game-panel h2 { font-size: 1.3rem; }
       .game-prompt { margin-top: 12px; }
       .game-feedback { min-height: 45px; }
-      .audio-match-board { inset: 66px 8px 8px; width: auto; padding: 14px; border-radius: 20px; }
+      /* Audio Match has no card behind it (the stage is hidden entirely in this
+         mode — see .app.audio-match-active .stage above), so its drawer keeps
+         filling the screen below the topbar like before rather than being capped
+         to a short bottom-sheet; it can still be swiped away via the handle to
+         reveal a clear screen when it's not needed. */
+      .audio-match-board { top: 66px; padding: 8px 14px 14px; }
       .audio-match-grid { grid-template-columns: repeat(4, minmax(78px, 1fr)); align-content: start; }
+
+      /* Slide the whole drawer off the bottom of the screen when collapsed. Using a
+         percentage keeps this correct regardless of the panel's actual content
+         height (which varies by game mode). */
+      .game-panel.is-collapsed,
+      .audio-match-board.is-collapsed {
+        transform: translateY(calc(100% + 24px));
+      }
+
+      /* Drag handle: a small grab bar at the top of the drawer. Tapping it toggles
+         open/closed; dragging it down past a threshold (or with enough velocity)
+         collapses the drawer, mirroring the swipe-to-flip gesture already used on
+         the card itself. touch-action: none stops the browser's own scroll/pan
+         gesture from fighting the drag. */
+      .drawer-handle {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        margin: -2px 0 6px;
+        padding: 8px 0 4px;
+        border: 0;
+        background: none;
+        cursor: grab;
+        touch-action: none;
+      }
+      .drawer-handle:active { cursor: grabbing; }
+      .drawer-handle-bar {
+        width: 38px;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, .3);
+      }
+
+      /* Floating pill that reappears once the drawer is swiped/tapped away, so the
+         game stays reachable without permanently occupying screen space. */
+      .drawer-peek {
+        display: inline-flex;
+        position: fixed;
+        left: 50%;
+        bottom: max(88px, calc(env(safe-area-inset-bottom) + 82px));
+        max-width: calc(100vw - 32px);
+        transform: translateX(-50%);
+        z-index: 45;
+        align-items: center;
+        gap: 8px;
+        min-height: 44px;
+        padding: 0 18px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--ink);
+        background: rgba(22, 25, 34, .94);
+        box-shadow: 0 14px 40px rgba(0, 0, 0, .45);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        font: inherit;
+        font-size: .82rem;
+        font-weight: 800;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .drawer-peek[hidden] { display: none; }
+      .drawer-peek span:first-child { color: hsl(var(--accent)); flex-shrink: 0; }
+      .drawer-peek span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
     }
 
-    /* On phones, the game panel docks along the bottom (see rule above) instead of the
-       side-docked desktop layout, which leaves much less vertical room for the card.
-       Without this, the card keeps its full desktop-derived size and visually spills
-       over the footer nav and the game panel underneath it. Scoped to min-height so
-       short/landscape phones (handled below) aren't affected. */
-    @media (max-width: 900px) and (min-height: 500px) {
-      .app.game-active .deck {
-        width: min(calc(100vw - 32px), calc((61dvh - 215px) * var(--card-ratio)), 420px);
-      }
-    }
+    /* On phones, the deck previously had to shrink to make room for the permanently
+       docked game panel. Now that the panel floats over the card instead, the card
+       can use its normal browse-mode sizing at all times — so no .app.game-active
+       .deck override is needed here any more. */
 
     @media (max-width: 560px) {
       .topbar { gap: 8px; }
@@ -918,12 +1031,6 @@
       .brand, .side-pill { opacity: .86; }
       .footer { grid-template-columns: auto 1fr auto; }
       .instructions { visibility: hidden; }
-      /* Short/landscape phones: the bottom-docked game panel (39dvh) plus the footer
-         nav leave very little vertical room, so the card needs a tighter cap than the
-         portrait formula above provides. */
-      .app.game-active .deck {
-        width: min(calc(100vw - 170px), calc((61dvh - 152px) * var(--card-ratio)), 420px);
-      }
     }
 
     @media (max-width: 380px) {
@@ -1036,6 +1143,7 @@
     </footer>
 
     <aside class="game-panel" id="game-panel" hidden aria-labelledby="game-panel-title">
+      <button type="button" class="drawer-handle" id="game-panel-handle" aria-label="Collapse game panel"><span class="drawer-handle-bar" aria-hidden="true"></span></button>
       <div class="game-panel-top">
         <div><span class="game-mode-kicker" id="game-mode-kicker">Class game</span><h2 id="game-panel-title">Guess the Category</h2></div>
         <div class="game-score" id="game-score"><span>Score</span><strong id="game-score-value">0</strong></div>
@@ -1058,6 +1166,7 @@
     </aside>
 
     <section class="audio-match-board" id="audio-match-board" hidden aria-labelledby="audio-match-title">
+      <button type="button" class="drawer-handle" id="audio-match-handle" aria-label="Collapse audio match board"><span class="drawer-handle-bar" aria-hidden="true"></span></button>
       <header class="audio-match-header">
         <div class="audio-match-title-wrap">
           <span id="audio-match-session">Whole-deck listening game</span>
@@ -1076,6 +1185,11 @@
         <button class="primary" id="new-audio-match" type="button">New six words →</button>
       </div>
     </section>
+
+    <button type="button" class="drawer-peek" id="drawer-peek" hidden>
+      <span aria-hidden="true">▲</span>
+      <span id="drawer-peek-label">Game</span>
+    </button>
 
     <div class="game-picker" id="game-picker" hidden role="dialog" aria-modal="true" aria-labelledby="game-picker-title">
       <div class="game-picker-card">
@@ -1847,9 +1961,14 @@
     const audioMatchFeedback = document.querySelector("#audio-match-feedback");
     const newAudioMatchButton = document.querySelector("#new-audio-match");
     const endAudioMatchButton = document.querySelector("#end-audio-match");
+    const gamePanelHandle = document.querySelector("#game-panel-handle");
+    const audioMatchHandle = document.querySelector("#audio-match-handle");
+    const drawerPeek = document.querySelector("#drawer-peek");
+    const drawerPeekLabel = document.querySelector("#drawer-peek-label");
 
     let isDualView = false;
     let gameMode = "browse";
+    let drawerCollapsed = false;
     let gamePoints = 0;
     let roundComplete = false;
     let foundItems = new Set();
@@ -2348,6 +2467,7 @@
         sidePill.style.display = "none";
         instructionsText.textContent = "Side-by-Side View · 'N' for next card";
         stage.style.cursor = "default";
+        stage.classList.add("is-dual");
       } else {
         viewToggleButton.classList.remove("active");
         viewToggleButton.querySelector(".text").textContent = "Side by Side";
@@ -2357,6 +2477,7 @@
         sidePill.style.display = "inline-flex";
         instructionsText.textContent = "Swipe or tap to flip";
         stage.style.cursor = "grab";
+        stage.classList.remove("is-dual");
       }
       showCard(cardIndex, false);
     }
@@ -2951,6 +3072,81 @@
       gameMenuButton.focus();
     }
 
+    // --- Mobile floating drawer (game panel / audio-match board) -----------------
+    // On phones the game panel and audio-match board float over the card as a
+    // dismissible bottom-sheet instead of permanently docking and shrinking it (see
+    // the max-width: 900px CSS above). These helpers track whether that drawer is
+    // collapsed and keep the reopen "peek" pill in sync.
+
+    function activeDrawerPanel() {
+      if (!gamePanel.hidden) return gamePanel;
+      if (!audioMatchBoard.hidden) return audioMatchBoard;
+      return null;
+    }
+
+    function updateDrawerPeekLabel() {
+      const points = `${gamePoints} pt${gamePoints === 1 ? "" : "s"}`;
+      drawerPeekLabel.textContent = gameMode === "audio-match"
+        ? `Audio Match · ${points}`
+        : `${gameModeName()} · ${points}`;
+    }
+
+    function setDrawerCollapsed(collapsed) {
+      const panel = activeDrawerPanel();
+      drawerCollapsed = collapsed && !!panel;
+      if (panel) panel.classList.toggle("is-collapsed", drawerCollapsed);
+      updateDrawerPeekLabel();
+      drawerPeek.hidden = !drawerCollapsed;
+    }
+
+    function toggleDrawerCollapsed() {
+      setDrawerCollapsed(!drawerCollapsed);
+    }
+
+    function setupDrawerHandle(handleEl, panelEl) {
+      let dragging = false;
+      let startY = 0;
+      let dragDy = 0;
+      let startTime = 0;
+
+      function onDown(event) {
+        dragging = true;
+        startY = event.clientY;
+        dragDy = 0;
+        startTime = performance.now();
+        panelEl.style.transition = "none";
+        handleEl.setPointerCapture?.(event.pointerId);
+      }
+
+      function onMove(event) {
+        if (!dragging) return;
+        dragDy = Math.max(0, event.clientY - startY);
+        panelEl.style.transform = `translateY(${dragDy}px)`;
+      }
+
+      function finishDrag() {
+        if (!dragging) return;
+        dragging = false;
+        panelEl.style.transition = "";
+        panelEl.style.transform = "";
+        const elapsed = Math.max(1, performance.now() - startTime);
+        const velocity = dragDy / elapsed;
+        const wasTap = dragDy < 6;
+        const committed = dragDy > 70 || velocity > 0.5;
+        if (wasTap) toggleDrawerCollapsed();
+        else setDrawerCollapsed(committed);
+      }
+
+      handleEl.addEventListener("pointerdown", onDown);
+      handleEl.addEventListener("pointermove", onMove);
+      handleEl.addEventListener("pointerup", finishDrag);
+      handleEl.addEventListener("pointercancel", finishDrag);
+    }
+
+    setupDrawerHandle(gamePanelHandle, gamePanel);
+    setupDrawerHandle(audioMatchHandle, audioMatchBoard);
+    drawerPeek.addEventListener("click", () => setDrawerCollapsed(false));
+
     function startGame(mode) {
       if (isDualView) setDualView(false);
       window.speechSynthesis?.cancel();
@@ -2969,6 +3165,7 @@
       if (audioMode) startAudioMatchRound();
       else if (isLinkMode()) beginRandomLinkRound(false);
       else showCard(cardIndex, false);
+      setDrawerCollapsed(false);
       status.textContent = `${gameModeName()} game started.`;
     }
 
@@ -2977,6 +3174,10 @@
       gameMode = "browse";
       gamePanel.hidden = true;
       audioMatchBoard.hidden = true;
+      gamePanel.classList.remove("is-collapsed");
+      audioMatchBoard.classList.remove("is-collapsed");
+      drawerCollapsed = false;
+      drawerPeek.hidden = true;
       app.classList.remove("game-active");
       app.classList.remove("audio-match-active");
       card.setAttribute("role", "button");
