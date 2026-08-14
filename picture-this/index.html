@@ -85,9 +85,17 @@
       align-items: center;
       gap: 10px;
       min-width: 0;
+      flex: 1 1 auto;
       letter-spacing: -.02em;
       font-size: clamp(.95rem, 3.7vw, 1.08rem);
       font-weight: 760;
+    }
+
+    .brand > span:last-child {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .brand-mark {
@@ -848,6 +856,25 @@
       .audio-match-grid { grid-template-columns: repeat(4, minmax(78px, 1fr)); align-content: start; }
     }
 
+    /* On phones, the game panel docks along the bottom (see rule above) instead of the
+       side-docked desktop layout, which leaves much less vertical room for the card.
+       Without this, the card keeps its full desktop-derived size and visually spills
+       over the footer nav and the game panel underneath it. Scoped to min-height so
+       short/landscape phones (handled below) aren't affected. */
+    @media (max-width: 900px) and (min-height: 500px) {
+      .app.game-active .deck {
+        width: min(calc(100vw - 32px), calc((61dvh - 215px) * var(--card-ratio)), 420px);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar { gap: 8px; }
+      .topbar-right { gap: 6px; }
+      .view-toggle .text { display: none; }
+      .view-toggle { min-width: 34px; padding: 0 9px; }
+      .side-pill { display: none; }
+    }
+
     @media (max-width: 600px) {
       .game-option[data-start-game="audio-match"] { grid-column: auto; }
       .audio-match-board { gap: 10px; }
@@ -891,6 +918,12 @@
       .brand, .side-pill { opacity: .86; }
       .footer { grid-template-columns: auto 1fr auto; }
       .instructions { visibility: hidden; }
+      /* Short/landscape phones: the bottom-docked game panel (39dvh) plus the footer
+         nav leave very little vertical room, so the card needs a tighter cap than the
+         portrait formula above provides. */
+      .app.game-active .deck {
+        width: min(calc(100vw - 170px), calc((61dvh - 152px) * var(--card-ratio)), 420px);
+      }
     }
 
     @media (max-width: 380px) {
