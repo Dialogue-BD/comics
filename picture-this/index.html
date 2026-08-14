@@ -509,6 +509,7 @@
     .game-option strong { display: block; }
     .game-option strong { margin-bottom: 7px; font-size: 1.12rem; }
     .game-option > span:not(.game-option-icon) { display: block; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+    .game-option[data-start-game="audio-match"] { grid-column: 1 / -1; min-height: 132px; }
 
     .game-panel {
       position: fixed;
@@ -562,6 +563,82 @@
     .app.game-active .stage { right: 374px; }
     .app.game-active .footer { right: 374px; }
     .app.game-active #view-toggle { display: none; }
+
+    .audio-match-board {
+      position: fixed;
+      z-index: 44;
+      inset: 72px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: clamp(14px, 2.2vw, 24px);
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background: rgba(22, 25, 34, .97);
+      box-shadow: 0 25px 85px rgba(0,0,0,.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .audio-match-board[hidden] { display: none; }
+    .app.audio-match-active .stage,
+    .app.audio-match-active .footer,
+    .app.audio-match-active #view-toggle { display: none; }
+    .audio-match-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .audio-match-title-wrap span { display: block; color: hsl(var(--accent)); font-size: .68rem; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
+    .audio-match-title-wrap h2 { margin: 3px 0 0; font-size: clamp(1.55rem, 4vw, 2.5rem); line-height: 1; letter-spacing: -.04em; }
+    .audio-match-stats { display: flex; gap: 8px; }
+    .audio-match-stat { min-width: 72px; padding: 8px 11px; border-radius: 14px; color: #101218; background: hsl(var(--accent)); text-align: center; }
+    .audio-match-stat span, .audio-match-stat strong { display: block; }
+    .audio-match-stat span { font-size: .56rem; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
+    .audio-match-stat strong { margin-top: 1px; font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+    .audio-match-instructions { margin: 0; color: var(--muted); font-size: clamp(.78rem, 1.8vw, .96rem); font-weight: 750; line-height: 1.4; }
+    .audio-match-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(90px, 1fr));
+      gap: clamp(8px, 1.2vw, 14px);
+      align-content: center;
+      min-height: 0;
+    }
+    .audio-match-tile {
+      position: relative;
+      min-width: 0;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      padding: 0;
+      border: 2px solid rgba(255,255,255,.12);
+      border-radius: clamp(14px, 2vw, 20px);
+      color: var(--ink);
+      background: rgba(255,255,255,.055);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease, opacity .2s ease;
+    }
+    .audio-match-tile:hover { transform: translateY(-2px); border-color: hsl(var(--accent) / .55); }
+    .audio-match-tile:focus-visible { outline: 3px solid hsl(var(--accent)); outline-offset: 2px; }
+    .audio-match-tile.is-selected { border-color: hsl(var(--accent)); background: hsl(var(--accent) / .18); box-shadow: 0 0 0 3px hsl(var(--accent) / .18), 0 12px 28px rgba(0,0,0,.28); }
+    .audio-match-tile.is-wrong { border-color: #ff716a; background: rgba(255, 90, 80, .14); animation: link-wrong .34s ease; }
+    .audio-match-tile.is-matched { border-color: #8ee55d; background: rgba(126, 214, 76, .13); cursor: default; }
+    .audio-match-tile.is-matched:hover { transform: none; }
+    .audio-match-picture { position: absolute; inset: 0; background-color: #fff; background-repeat: no-repeat; background-size: 208.334% 416.667%; background-position: var(--crop-x) var(--crop-y); }
+    .audio-match-audio { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 35% 28%, hsl(var(--accent) / .3), transparent 40%), linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); }
+    .audio-match-speaker { width: 45%; max-width: 72px; color: hsl(var(--accent)); filter: drop-shadow(0 5px 12px rgba(0,0,0,.28)); }
+    .audio-match-speaker path { fill: currentColor; }
+    .audio-match-speaker .waves { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+    .audio-match-type { position: absolute; top: 8px; left: 8px; z-index: 2; padding: 4px 7px; border-radius: 999px; color: #11141b; background: rgba(255,255,255,.9); font-size: .55rem; font-weight: 950; letter-spacing: .06em; text-transform: uppercase; }
+    .audio-match-label { position: absolute; z-index: 3; left: 7px; right: 7px; bottom: 7px; padding: 6px 7px; border-radius: 10px; color: #11141b; background: rgba(255,255,255,.94); box-shadow: 0 4px 14px rgba(0,0,0,.2); font-size: clamp(.58rem, 1.4vw, .78rem); font-weight: 950; line-height: 1.05; text-align: center; opacity: 0; transform: translateY(5px); transition: opacity .2s ease, transform .2s ease; }
+    .audio-match-tile.is-matched .audio-match-label { opacity: 1; transform: none; }
+    .audio-match-feedback { min-height: 43px; margin: 0; padding: 9px 12px; border: 1px solid transparent; border-radius: 12px; color: var(--muted); background: rgba(255,255,255,.04); font-size: .78rem; font-weight: 800; line-height: 1.35; }
+    .audio-match-feedback.correct { color: #d7ff9e; border-color: rgba(176,235,91,.3); background: rgba(126,179,47,.12); }
+    .audio-match-feedback.wrong { color: #ffc2bd; border-color: rgba(255,110,100,.28); background: rgba(255,90,80,.1); }
+    .audio-match-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .audio-match-actions button { min-height: 46px; padding: 9px 13px; border: 1px solid var(--border); border-radius: 13px; color: var(--ink); background: rgba(255,255,255,.07); font: inherit; font-size: .78rem; font-weight: 900; cursor: pointer; }
+    .audio-match-actions .primary { color: #101218; border-color: transparent; background: hsl(var(--accent)); }
 
     .dual-stage {
       display: flex;
@@ -767,6 +844,32 @@
       .game-panel h2 { font-size: 1.3rem; }
       .game-prompt { margin-top: 12px; }
       .game-feedback { min-height: 45px; }
+      .audio-match-board { inset: 66px 8px 8px; width: auto; padding: 14px; border-radius: 20px; }
+      .audio-match-grid { grid-template-columns: repeat(4, minmax(78px, 1fr)); align-content: start; }
+    }
+
+    @media (max-width: 600px) {
+      .game-option[data-start-game="audio-match"] { grid-column: auto; }
+      .audio-match-board { gap: 10px; }
+      .audio-match-header { align-items: flex-start; }
+      .audio-match-title-wrap h2 { font-size: 1.45rem; }
+      .audio-match-stats { gap: 5px; }
+      .audio-match-stat { min-width: 58px; padding: 6px 7px; border-radius: 11px; }
+      .audio-match-stat strong { font-size: 1.05rem; }
+      .audio-match-instructions { font-size: .72rem; }
+      .audio-match-grid { grid-template-columns: repeat(3, minmax(72px, 1fr)); gap: 7px; }
+      .audio-match-type { top: 5px; left: 5px; padding: 3px 5px; font-size: .48rem; }
+      .audio-match-label { left: 4px; right: 4px; bottom: 4px; padding: 5px 4px; font-size: .56rem; }
+      .audio-match-feedback { min-height: 38px; padding: 7px 9px; font-size: .69rem; }
+      .audio-match-actions button { min-height: 42px; font-size: .72rem; }
+    }
+
+    @media (max-height: 620px) and (min-width: 700px) {
+      .audio-match-board { top: 62px; gap: 8px; padding: 12px; }
+      .audio-match-grid { grid-template-columns: repeat(6, minmax(72px, 1fr)); }
+      .audio-match-instructions { font-size: .72rem; }
+      .audio-match-feedback { min-height: 34px; padding: 6px 9px; }
+      .audio-match-actions button { min-height: 38px; }
     }
 
     .sr-only {
@@ -921,11 +1024,31 @@
       <button class="game-end" id="end-game" type="button">End game and browse cards</button>
     </aside>
 
+    <section class="audio-match-board" id="audio-match-board" hidden aria-labelledby="audio-match-title">
+      <header class="audio-match-header">
+        <div class="audio-match-title-wrap">
+          <span id="audio-match-session">Whole-deck listening game</span>
+          <h2 id="audio-match-title">Audio Match</h2>
+        </div>
+        <div class="audio-match-stats" aria-label="Round score">
+          <div class="audio-match-stat"><span>Pairs</span><strong id="audio-match-pairs">0/6</strong></div>
+          <div class="audio-match-stat"><span>Score</span><strong id="audio-match-score">0</strong></div>
+        </div>
+      </header>
+      <p class="audio-match-instructions">Tap an audio tile to hear a word, then match it to the correct picture. Labels appear after a successful match.</p>
+      <div class="audio-match-grid" id="audio-match-grid" role="group" aria-label="Six picture tiles and six audio tiles"></div>
+      <p class="audio-match-feedback" id="audio-match-feedback" role="status" aria-live="polite">Choose an audio tile and a picture tile.</p>
+      <div class="audio-match-actions">
+        <button id="end-audio-match" type="button">End game</button>
+        <button class="primary" id="new-audio-match" type="button">New six words →</button>
+      </div>
+    </section>
+
     <div class="game-picker" id="game-picker" hidden role="dialog" aria-modal="true" aria-labelledby="game-picker-title">
       <div class="game-picker-card">
         <button class="game-picker-close" id="game-picker-close" type="button" aria-label="Close game chooser">×</button>
         <h2 id="game-picker-title">Choose a class game</h2>
-        <p>Project the card, invite answers from the whole class, and let the screen keep score. Choose a guessing or linking activity.</p>
+        <p>Project the activity, invite answers from the whole class, and let the screen keep score. Choose a guessing, linking, or matching activity.</p>
         <div class="game-options">
           <button class="game-option" type="button" data-start-game="category">
             <span class="game-option-icon" aria-hidden="true">?</span>
@@ -946,6 +1069,11 @@
             <span class="game-option-icon" aria-hidden="true">1</span>
             <strong>Name the Link</strong>
             <span>An unseen pair is drawn from anywhere in the deck. Students supply one word that connects them.</span>
+          </button>
+          <button class="game-option" type="button" data-start-game="audio-match">
+            <span class="game-option-icon" aria-hidden="true">Aa</span>
+            <strong>Audio Match</strong>
+            <span>Match six spoken vocabulary labels with six pictures drawn from across the whole deck.</span>
           </button>
         </div>
       </div>
@@ -1618,6 +1746,14 @@
     const linkWord = document.querySelector("#link-word");
     const linkWordValue = document.querySelector("#link-word-value");
     const acceptCreativeLinkButton = document.querySelector("#accept-creative-link");
+    const audioMatchBoard = document.querySelector("#audio-match-board");
+    const audioMatchGrid = document.querySelector("#audio-match-grid");
+    const audioMatchSession = document.querySelector("#audio-match-session");
+    const audioMatchPairs = document.querySelector("#audio-match-pairs");
+    const audioMatchScore = document.querySelector("#audio-match-score");
+    const audioMatchFeedback = document.querySelector("#audio-match-feedback");
+    const newAudioMatchButton = document.querySelector("#new-audio-match");
+    const endAudioMatchButton = document.querySelector("#end-audio-match");
 
     let isDualView = false;
     let gameMode = "browse";
@@ -1632,6 +1768,13 @@
     let seenLinkPuzzleKeys = loadSeenLinkPuzzleKeys();
     let selectedLinkItems = new Set();
     let pendingCreativeLink = "";
+    const AUDIO_MATCH_HISTORY_STORAGE_KEY = "picture-this-audio-match-items-v1";
+    let seenAudioMatchKeys = loadSeenAudioMatchKeys();
+    let audioMatchRound = [];
+    let selectedAudioTile = null;
+    let selectedPictureTile = null;
+    let audioMatchPairsFound = 0;
+    let audioMatchLocked = false;
     let cardIndex = 0;
     let angle = 0;
     let startAngle = 0;
@@ -1659,7 +1802,8 @@
         category: "Guess the category",
         items: "Guess the items",
         "find-pair": "Find the pair",
-        "name-link": "Name the link"
+        "name-link": "Name the link",
+        "audio-match": "Audio match"
       }[gameMode] || "Picture This!";
     }
 
@@ -1723,6 +1867,241 @@
         used: candidates.length - unseen.length + 1,
         total: candidates.length
       };
+    }
+
+    function loadSeenAudioMatchKeys() {
+      try {
+        const stored = JSON.parse(sessionStorage.getItem(AUDIO_MATCH_HISTORY_STORAGE_KEY) || "[]");
+        return new Set(Array.isArray(stored) ? stored.filter(key => typeof key === "string") : []);
+      } catch (_) {
+        return new Set();
+      }
+    }
+
+    function saveSeenAudioMatchKeys() {
+      try { sessionStorage.setItem(AUDIO_MATCH_HISTORY_STORAGE_KEY, JSON.stringify([...seenAudioMatchKeys])); } catch (_) {}
+    }
+
+    function audioMatchPool() {
+      return cards.flatMap((entry, entryIndex) => (gameData[entry.id] || []).map((label, itemIndex) => ({
+        key: `${entry.id}|${itemIndex}`,
+        cardId: entry.id,
+        cardIndex: entryIndex,
+        itemIndex,
+        label,
+        front: entry.front
+      }))).filter(item => typeof item.label === "string" && item.label.trim());
+    }
+
+    function shuffledCopy(values) {
+      const shuffled = [...values];
+      for (let index = shuffled.length - 1; index > 0; index -= 1) {
+        const other = secureRandomIndex(index + 1);
+        [shuffled[index], shuffled[other]] = [shuffled[other], shuffled[index]];
+      }
+      return shuffled;
+    }
+
+    function chooseSixUniqueLabels(candidates) {
+      const labels = new Set();
+      const selected = [];
+      for (const item of shuffledCopy(candidates)) {
+        const labelKey = item.label.trim().toLocaleLowerCase();
+        if (labels.has(labelKey)) continue;
+        labels.add(labelKey);
+        selected.push(item);
+        if (selected.length === 6) break;
+      }
+      return selected;
+    }
+
+    function takeAudioMatchRound() {
+      const pool = audioMatchPool();
+      const validKeys = new Set(pool.map(item => item.key));
+      seenAudioMatchKeys = new Set([...seenAudioMatchKeys].filter(key => validKeys.has(key)));
+      let selected = chooseSixUniqueLabels(pool.filter(item => !seenAudioMatchKeys.has(item.key)));
+
+      if (selected.length < 6) {
+        seenAudioMatchKeys = new Set();
+        selected = chooseSixUniqueLabels(pool);
+      }
+
+      selected.forEach(item => seenAudioMatchKeys.add(item.key));
+      saveSeenAudioMatchKeys();
+      return { selected, used: seenAudioMatchKeys.size, total: pool.length };
+    }
+
+    function setAudioMatchFeedback(message, tone = "") {
+      audioMatchFeedback.textContent = message;
+      audioMatchFeedback.classList.toggle("correct", tone === "correct");
+      audioMatchFeedback.classList.toggle("wrong", tone === "wrong");
+    }
+
+    function updateAudioMatchScore(delta = 0) {
+      gamePoints += delta;
+      audioMatchScore.textContent = gamePoints > 0 ? `+${gamePoints}` : String(gamePoints);
+      audioMatchPairs.textContent = `${audioMatchPairsFound}/6`;
+    }
+
+    function speakAudioMatchWord(label) {
+      if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        setAudioMatchFeedback("Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.", "wrong");
+        return false;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(label);
+      utterance.lang = "en-US";
+      utterance.rate = .86;
+      utterance.pitch = 1;
+      window.speechSynthesis.speak(utterance);
+      status.textContent = "Audio vocabulary label played.";
+      return true;
+    }
+
+    function audioMatchCropPosition(itemIndex) {
+      return {
+        x: itemIndex % 2 === 0 ? "1.923%" : "98.077%",
+        y: ["10.526%", "42.105%", "73.684%"][Math.floor(itemIndex / 2)]
+      };
+    }
+
+    function makeAudioMatchTile(item, kind) {
+      const tile = document.createElement("button");
+      tile.type = "button";
+      tile.className = "audio-match-tile";
+      tile.dataset.kind = kind;
+      tile.dataset.pairKey = item.key;
+      tile.dataset.label = item.label;
+
+      const type = document.createElement("span");
+      type.className = "audio-match-type";
+      type.textContent = kind === "audio" ? "Listen" : "Picture";
+      tile.append(type);
+
+      if (kind === "audio") {
+        const audio = document.createElement("span");
+        audio.className = "audio-match-audio";
+        audio.innerHTML = `<svg class="audio-match-speaker" viewBox="0 0 64 64" aria-hidden="true"><path d="M9 25h12l15-12v38L21 39H9z"></path><path class="waves" d="M43 23c5 5 5 13 0 18M49 17c9 9 9 21 0 30"></path></svg>`;
+        tile.append(audio);
+        tile.setAttribute("aria-label", "Audio tile. Activate to hear the vocabulary word.");
+      } else {
+        const picture = document.createElement("span");
+        const crop = audioMatchCropPosition(item.itemIndex);
+        picture.className = "audio-match-picture";
+        picture.style.backgroundImage = `url("${item.front}")`;
+        picture.style.setProperty("--crop-x", crop.x);
+        picture.style.setProperty("--crop-y", crop.y);
+        tile.append(picture);
+        tile.setAttribute("aria-label", `Picture: ${item.label}`);
+      }
+
+      const label = document.createElement("span");
+      label.className = "audio-match-label";
+      label.textContent = kind === "audio" ? "" : item.label;
+      label.setAttribute("aria-hidden", "true");
+      tile.append(label);
+      return tile;
+    }
+
+    function startAudioMatchRound() {
+      if (gameMode !== "audio-match") return;
+      window.speechSynthesis?.cancel();
+      const { selected, used, total } = takeAudioMatchRound();
+      audioMatchRound = selected;
+      selectedAudioTile = null;
+      selectedPictureTile = null;
+      audioMatchPairsFound = 0;
+      audioMatchLocked = false;
+      roundComplete = false;
+      audioMatchGrid.replaceChildren();
+      updateAudioMatchScore(0);
+      newAudioMatchButton.textContent = "New six words →";
+      audioMatchSession.textContent = `Whole deck · ${used} of ${total} vocabulary items used this session`;
+
+      if (selected.length !== 6) {
+        setAudioMatchFeedback("The deck does not contain six usable vocabulary items.", "wrong");
+        return;
+      }
+
+      const tiles = shuffledCopy(selected.flatMap(item => [
+        { item, kind: "picture" },
+        { item, kind: "audio" }
+      ]));
+      tiles.forEach(({ item, kind }) => audioMatchGrid.append(makeAudioMatchTile(item, kind)));
+      setAudioMatchFeedback("Choose an audio tile and a picture tile.");
+      audioMatchGrid.querySelector("button")?.focus();
+      status.textContent = "New Audio Match round with six vocabulary pairs.";
+    }
+
+    function clearAudioMatchSelection() {
+      selectedAudioTile?.classList.remove("is-selected", "is-wrong");
+      selectedPictureTile?.classList.remove("is-selected", "is-wrong");
+      selectedAudioTile = null;
+      selectedPictureTile = null;
+    }
+
+    function checkAudioMatchSelection() {
+      if (!selectedAudioTile || !selectedPictureTile || audioMatchLocked) return;
+      const correct = selectedAudioTile.dataset.pairKey === selectedPictureTile.dataset.pairKey;
+      if (correct) {
+        const label = selectedAudioTile.dataset.label;
+        selectedAudioTile.classList.remove("is-selected");
+        selectedPictureTile.classList.remove("is-selected");
+        selectedAudioTile.classList.add("is-matched");
+        selectedPictureTile.classList.add("is-matched");
+        selectedAudioTile.disabled = true;
+        selectedPictureTile.disabled = true;
+        selectedAudioTile.setAttribute("aria-label", `Matched audio: ${label}`);
+        selectedPictureTile.setAttribute("aria-label", `Matched picture: ${label}`);
+        selectedAudioTile.querySelector(".audio-match-label").textContent = label;
+        selectedPictureTile.querySelector(".audio-match-label").textContent = label;
+        selectedAudioTile.querySelector(".audio-match-label")?.setAttribute("aria-hidden", "false");
+        selectedPictureTile.querySelector(".audio-match-label")?.setAttribute("aria-hidden", "false");
+        selectedAudioTile = null;
+        selectedPictureTile = null;
+        audioMatchPairsFound += 1;
+        updateAudioMatchScore(1);
+        if (audioMatchPairsFound === 6) {
+          roundComplete = true;
+          newAudioMatchButton.textContent = "Play another six →";
+          setAudioMatchFeedback(`Round complete! You matched all six pairs with ${gamePoints} total point${gamePoints === 1 ? "" : "s"}.`, "correct");
+        } else {
+          setAudioMatchFeedback(`Correct—${label}! Choose another audio and picture. +1 point.`, "correct");
+        }
+        return;
+      }
+
+      audioMatchLocked = true;
+      selectedAudioTile.classList.add("is-wrong");
+      selectedPictureTile.classList.add("is-wrong");
+      updateAudioMatchScore(-1);
+      setAudioMatchFeedback("Those tiles do not match. −1 point. Listen and try again.", "wrong");
+      window.setTimeout(() => {
+        if (gameMode !== "audio-match") return;
+        clearAudioMatchSelection();
+        audioMatchLocked = false;
+      }, 520);
+    }
+
+    function handleAudioMatchTile(tile) {
+      if (gameMode !== "audio-match" || audioMatchLocked || tile.disabled) return;
+      const kind = tile.dataset.kind;
+      if (kind === "audio") {
+        speakAudioMatchWord(tile.dataset.label);
+        if (selectedAudioTile === tile) return;
+        selectedAudioTile?.classList.remove("is-selected");
+        selectedAudioTile = tile;
+      } else {
+        if (selectedPictureTile === tile) {
+          selectedPictureTile.classList.remove("is-selected");
+          selectedPictureTile = null;
+          return;
+        }
+        selectedPictureTile?.classList.remove("is-selected");
+        selectedPictureTile = tile;
+      }
+      tile.classList.add("is-selected");
+      checkAudioMatchSelection();
     }
 
     function beginRandomLinkRound(animate = true) {
@@ -2456,6 +2835,10 @@
     }
 
     function newGameRound() {
+      if (gameMode === "audio-match") {
+        startAudioMatchRound();
+        return;
+      }
       if (!isLinkMode()) {
         newRandomCard();
         return;
@@ -2475,23 +2858,31 @@
 
     function startGame(mode) {
       if (isDualView) setDualView(false);
+      window.speechSynthesis?.cancel();
       gameMode = mode;
       gamePoints = 0;
       gameScoreValue.textContent = "0";
       gamePicker.hidden = true;
-      gamePanel.hidden = false;
-      app.classList.add("game-active");
+      const audioMode = gameMode === "audio-match";
+      gamePanel.hidden = audioMode;
+      audioMatchBoard.hidden = !audioMode;
+      app.classList.toggle("game-active", !audioMode);
+      app.classList.toggle("audio-match-active", audioMode);
       card.setAttribute("role", "group");
       card.tabIndex = -1;
-      if (isLinkMode()) beginRandomLinkRound(false);
+      if (audioMode) startAudioMatchRound();
+      else if (isLinkMode()) beginRandomLinkRound(false);
       else showCard(cardIndex, false);
       status.textContent = `${gameModeName()} game started.`;
     }
 
     function endGame() {
+      window.speechSynthesis?.cancel();
       gameMode = "browse";
       gamePanel.hidden = true;
+      audioMatchBoard.hidden = true;
       app.classList.remove("game-active");
+      app.classList.remove("audio-match-active");
       card.setAttribute("role", "button");
       card.tabIndex = 0;
       categoryMask.hidden = true;
@@ -2503,6 +2894,9 @@
       linkPuzzle = null;
       linkSessionExhausted = false;
       acceptCreativeLinkButton.hidden = true;
+      audioMatchLocked = false;
+      selectedAudioTile = null;
+      selectedPictureTile = null;
       guessForm.hidden = false;
       revealGameAnswerButton.disabled = false;
       itemCells.forEach(cell => {
@@ -2592,7 +2986,7 @@
     }
 
     function isSingleWord(value) {
-      return /^[\p{L}\p{N}]+(?:[-’'][\p{L}\p{N}]+)*$/u.test(value.trim());
+      return /^[\p{L}\p{N}]+$/u.test(value.trim());
     }
 
     function acceptCreativeLink() {
@@ -2635,7 +3029,7 @@
 
       if (gameMode === "name-link") {
         if (!isSingleWord(rawGuess)) {
-          setGameFeedback("Use a single word only—hyphenated words are okay.", "wrong");
+          setGameFeedback("Use one uninterrupted word. Spaces, hyphens, and punctuation are not allowed.", "wrong");
           guessInput.select();
           return;
         }
@@ -2729,6 +3123,12 @@
     });
     guessForm.addEventListener("submit", handleGuess);
     acceptCreativeLinkButton.addEventListener("click", acceptCreativeLink);
+    audioMatchGrid.addEventListener("click", event => {
+      const tile = event.target.closest(".audio-match-tile");
+      if (tile) handleAudioMatchTile(tile);
+    });
+    newAudioMatchButton.addEventListener("click", startAudioMatchRound);
+    endAudioMatchButton.addEventListener("click", endGame);
     itemCells.forEach((cell, index) => {
       cell.addEventListener("click", event => {
         if (gameMode !== "find-pair") return;
