@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#151b2b">
+  <meta name="description" content="Projector-ready Guess What classroom games for mixed-age ESL teams.">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <title>Guess What? — Classroom Play</title>
+</head>
+<body>
+  <main class="app" id="app">
+    <header class="topbar">
+      <a class="home-link" href="../" aria-label="Back to all activities">
+        <span aria-hidden="true">←</span>
+        <span>Activities</span>
+      </a>
+      <button class="brand" id="brand-home" type="button" aria-label="Return to Guess What setup">
+        <span class="brand-mark" aria-hidden="true">?</span>
+        <span>Guess What!</span>
+      </button>
+      <div class="top-actions">
+        <button class="icon-button" id="sound-button" type="button" aria-label="Turn sound off" title="Sound on/off (M)">♪</button>
+        <button class="icon-button" id="help-button" type="button" aria-label="Open teacher help" title="Teacher help (?)">?</button>
+        <button class="icon-button" id="fullscreen-button" type="button" aria-label="Enter fullscreen" title="Fullscreen (F)">⛶</button>
+      </div>
+    </header>
+
+    <section class="setup-view" id="setup-view" aria-labelledby="setup-title">
+      <div class="hero">
+        <div class="eyebrow"><span class="live-dot"></span> Projector-ready class play</div>
+        <h1 id="setup-title">One screen.<br><em>Every team thinking.</em></h1>
+        <p>Fast vocabulary games for four mixed-age teams. No student devices or preparation needed.</p>
+        <button class="deck-button" id="deck-button" type="button"><span>Browse the complete deck</span><strong>48 card sides</strong><span aria-hidden="true">→</span></button>
+      </div>
+
+      <div class="setup-grid">
+        <section class="quick-session panel selected" data-mode-card="session" tabindex="0" role="button" aria-pressed="true">
+          <div class="mode-icon coral" aria-hidden="true">25</div>
+          <div class="mode-copy">
+            <div class="recommended">Recommended for today</div>
+            <h2>Guided Class Session</h2>
+            <p>Warm-up, five Guess the Topic rounds, four Guess the Words rounds, and a double-points finale.</p>
+            <div class="lesson-line" aria-label="Lesson phases">
+              <span>Demo</span><i></i><span>Topic</span><i></i><span>Words</span><i></i><span>Finale</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="mode-options" aria-label="Other game modes">
+          <button class="mode-card" type="button" data-mode-card="topic" aria-pressed="false">
+            <span class="mode-icon lime" aria-hidden="true">?</span>
+            <span><strong>Guess the Topic</strong><small>Reveal clues one by one</small></span>
+          </button>
+          <button class="mode-card" type="button" data-mode-card="words" aria-pressed="false">
+            <span class="mode-icon blue" aria-hidden="true">6</span>
+            <span><strong>Guess the Words</strong><small>One-minute team brainstorm</small></span>
+          </button>
+        </section>
+
+        <section class="settings panel" aria-labelledby="settings-title">
+          <div class="panel-heading">
+            <div>
+              <span class="step-number">Setup</span>
+              <h2 id="settings-title">Your class</h2>
+            </div>
+            <span class="class-summary" id="class-summary">4 teams × 5 speakers</span>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <label>Teams</label>
+              <p>Mixed-age teams work best.</p>
+            </div>
+            <div class="segmented" id="team-count-control" aria-label="Number of teams">
+              <button type="button" data-value="2">2</button>
+              <button type="button" data-value="3">3</button>
+              <button class="active" type="button" data-value="4">4</button>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <label>Students per team</label>
+              <p>Used for the speaker rotation.</p>
+            </div>
+            <div class="stepper" aria-label="Students per team">
+              <button type="button" id="team-size-minus" aria-label="Fewer students per team">−</button>
+              <output id="team-size-output">5</output>
+              <button type="button" id="team-size-plus" aria-label="More students per team">+</button>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <label>Session length</label>
+              <p>Adjusts the number of rounds.</p>
+            </div>
+            <div class="segmented" id="duration-control" aria-label="Session length">
+              <button type="button" data-value="20">20</button>
+              <button class="active" type="button" data-value="25">25</button>
+              <button type="button" data-value="30">30</button>
+            </div>
+          </div>
+
+          <div class="setting-row">
+            <div>
+              <label>Vocabulary mix</label>
+              <p>Basic (+), challenge (++), or both.</p>
+            </div>
+            <div class="segmented level-control" id="level-control" aria-label="Vocabulary level">
+              <button type="button" data-value="basic">+</button>
+              <button class="active" type="button" data-value="mixed">Mix</button>
+              <button type="button" data-value="challenge">++</button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="start-dock">
+        <div>
+          <strong id="start-summary">25-minute guided session</strong>
+          <span id="round-summary">11 rounds · 48 official cards</span>
+        </div>
+        <button class="primary-button" id="start-button" type="button">
+          <span>Start class</span><span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="game-view" id="game-view" hidden aria-label="Classroom game">
+      <div class="game-status">
+        <div class="round-block">
+          <span id="phase-label">Warm-up</span>
+          <strong id="round-label">Round 1 of 11</strong>
+        </div>
+        <div class="progress-track" aria-hidden="true"><span id="progress-fill"></span></div>
+        <button class="quit-button" id="quit-button" type="button">End session</button>
+      </div>
+
+      <div class="game-layout">
+        <section class="play-column">
+          <div class="speaker-banner">
+            <div class="speaker-avatar" id="speaker-avatar">1</div>
+            <div>
+              <span>Every team chooses</span>
+              <strong id="speaker-label">Speaker 1 of 5</strong>
+            </div>
+            <p id="age-support">Younger: guess a word · Older: explain the connection</p>
+          </div>
+
+          <article class="challenge-card" id="challenge-card">
+            <div class="card-topline">
+              <span class="level-badge" id="level-badge">Basic +</span>
+              <span class="mode-badge" id="mode-badge">Guess the Topic</span>
+            </div>
+
+            <div class="topic-prompt" id="topic-prompt">
+              <span>What topic connects these words?</span>
+              <h2 id="topic-display" class="concealed">Mystery topic</h2>
+            </div>
+
+            <div class="word-grid" id="word-grid" aria-live="polite"></div>
+
+            <div class="timer-row">
+              <div class="timer" id="timer" aria-label="Timer">
+                <span class="timer-ring" id="timer-ring"><i></i></span>
+                <div><small id="timer-state">Ready</small><strong id="timer-display">0:15</strong></div>
+              </div>
+              <div class="round-value">
+                <small id="round-value-label">Worth now</small>
+                <strong id="round-value">6 points</strong>
+              </div>
+            </div>
+          </article>
+
+          <div class="game-controls">
+            <button class="secondary-button" id="timer-button" type="button">Start timer</button>
+            <button class="primary-button action-button" id="action-button" type="button">Reveal first clue</button>
+            <button class="secondary-button" id="answer-button" type="button">Reveal topic</button>
+            <button class="primary-button next-button" id="next-button" type="button" hidden>Next round →</button>
+          </div>
+
+          <div class="teacher-tip" id="teacher-tip">
+            <strong>Teacher cue</strong>
+            <span>Teams write one answer. Reveal another clue if nobody is correct.</span>
+          </div>
+        </section>
+
+        <aside class="score-column" aria-labelledby="score-title">
+          <div class="score-heading">
+            <div><span>Live scores</span><h2 id="score-title">Teams</h2></div>
+            <button id="reset-scores-button" type="button">Reset</button>
+          </div>
+          <div class="teams" id="teams"></div>
+          <div class="shortcut-card">
+            <strong>Quick keys</strong>
+            <span><kbd>Space</kbd> timer</span>
+            <span><kbd>Enter</kbd> main action</span>
+            <span><kbd>1–4</kbd> award teams</span>
+            <span><kbd>F</kbd> fullscreen</span>
+          </div>
+        </aside>
+      </div>
+
+      <div class="phase-overlay" id="phase-overlay" hidden>
+        <div class="phase-card">
+          <span class="phase-kicker" id="phase-kicker">Phase 1</span>
+          <h2 id="phase-title">Guess the Topic</h2>
+          <p id="phase-description">Reveal one clue at a time. Teams discuss quietly and write one topic guess.</p>
+          <div class="phase-rules" id="phase-rules"></div>
+          <button class="primary-button" id="begin-phase-button" type="button">Begin phase →</button>
+        </div>
+      </div>
+
+      <div class="session-complete" id="session-complete" hidden>
+        <div class="complete-card">
+          <span class="complete-mark" aria-hidden="true">★</span>
+          <p>Class complete</p>
+          <h2>Great teamwork!</h2>
+          <div class="final-ranking" id="final-ranking"></div>
+          <div class="complete-actions">
+            <button class="secondary-button" id="play-again-button" type="button">Play again</button>
+            <button class="primary-button" id="new-setup-button" type="button">Change setup</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="help-dialog" id="help-dialog">
+      <form method="dialog">
+        <button class="dialog-close" aria-label="Close help">×</button>
+        <span class="dialog-kicker">Teacher guide</span>
+        <h2>Keep all 20 students involved</h2>
+        <ol>
+          <li><strong>Make four mixed-age teams.</strong> Give students numbers 1–5.</li>
+          <li><strong>Use quiet huddles.</strong> Teams discuss before their numbered speaker answers.</li>
+          <li><strong>Protect younger voices.</strong> Let them suggest concrete words; older students explain or use them in sentences.</li>
+          <li><strong>Rotate every round.</strong> The screen tells you which speaker should answer.</li>
+          <li><strong>Stop shouting.</strong> Only the current numbered speaker can give the final answer.</li>
+        </ol>
+        <div class="keyboard-help">
+          <span><kbd>Space</kbd> Start/pause timer</span>
+          <span><kbd>Enter</kbd> Reveal clue/answer or continue</span>
+          <span><kbd>1–4</kbd> Award the corresponding team</span>
+          <span><kbd>M</kbd> Sound</span>
+          <span><kbd>F</kbd> Fullscreen</span>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="deck-dialog" id="deck-dialog">
+      <form method="dialog">
+        <button class="dialog-close" aria-label="Close card deck">×</button>
+        <div class="deck-dialog-heading">
+          <div>
+            <span class="dialog-kicker">Official card collection</span>
+            <h2>Guess What? deck</h2>
+            <p>Each card has one topic and six related words. Use + for younger learners and ++ for an extra challenge.</p>
+          </div>
+          <div class="deck-tools">
+            <div class="segmented" id="deck-filter" aria-label="Filter card deck">
+              <button type="button" data-value="basic">+</button>
+              <button class="active" type="button" data-value="all">All</button>
+              <button type="button" data-value="challenge">++</button>
+            </div>
+            <label class="deck-search"><span class="sr-only">Search cards</span><input id="deck-search" type="search" placeholder="Search topics or words…"></label>
+          </div>
+        </div>
+        <div class="deck-results" id="deck-results"></div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+
+  <script src="cards.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
