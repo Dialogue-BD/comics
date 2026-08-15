@@ -149,8 +149,14 @@
       inset: 0;
       display: grid;
       place-items: center;
+      /* --game-header-h is measured live by updateGameHeaderReserve() from the
+         actual rendered height of #game-strip (see the JS) and defaults to 0px
+         whenever the strip is hidden (desktop, browse mode, audio match). This
+         reserves exactly as much extra top padding as the strip needs, so the
+         centered card shrinks slightly to sit below it instead of the strip
+         floating over — and cropping — the top of the card. */
       padding:
-        max(65px, calc(env(safe-area-inset-top) + 56px))
+        calc(max(65px, calc(env(safe-area-inset-top) + 56px)) + var(--game-header-h, 0px))
         max(16px, env(safe-area-inset-right))
         max(92px, calc(env(safe-area-inset-bottom) + 76px))
         max(16px, env(safe-area-inset-left));
@@ -173,7 +179,7 @@
 
     .deck {
       position: relative;
-      width: min(calc(100vw - 32px), calc((100dvh - 157px) * var(--card-ratio)), 540px);
+      width: min(calc(100vw - 32px), calc((100dvh - 157px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px);
       aspect-ratio: 198 / 306;
       transform-style: preserve-3d;
       transition: opacity .16s ease, scale .16s ease, filter .16s ease;
@@ -846,7 +852,7 @@
       }
 
       .deck {
-        width: min(calc(100vw - 32px), calc((100dvh - 182px) * var(--card-ratio)), 540px);
+        width: min(calc(100vw - 32px), calc((100dvh - 182px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px);
       }
 
       .footer {
@@ -911,7 +917,36 @@
     @media (max-width: 900px) {
       .app.game-active .stage { inset: 0; }
       .app.game-active .footer { right: 0; bottom: 0; }
+    }
 
+    /* The drawer-peek pill floats above the footer (see .drawer-peek below),
+       which was fine back when the docked panel shrank the card — but now
+       that the card fills the available height, it can grow tall enough to
+       sit underneath the pill. Reserve room for it explicitly. Short/
+       landscape phones handle this differently (min-height gate below docks
+       the pill down into the footer's own band instead, since there isn't
+       enough height here to spare 140px), so this only applies at normal
+       mobile heights. */
+    @media (max-width: 900px) and (min-height: 561px) {
+      .app.game-active .stage { padding-bottom: max(140px, calc(env(safe-area-inset-bottom) + 134px)); }
+
+      /* The deck's own width/height formula (which drives its size via
+         aspect-ratio) has to reserve the same amount of vertical space the
+         padding above just reserved, or its intrinsic size will simply
+         overflow past that padding — the same category of bug fixed for
+         .stage padding-top / --game-header-h above. Mirrors the padding
+         terms exactly instead of a separate guessed constant, so the two
+         can't drift out of sync. */
+      .app.game-active .deck {
+        width: min(
+          calc(100vw - 32px),
+          calc((100dvh - max(65px, calc(env(safe-area-inset-top) + 56px)) - var(--game-header-h, 0px) - max(140px, calc(env(safe-area-inset-bottom) + 134px))) * var(--card-ratio)),
+          540px
+        );
+      }
+    }
+
+    @media (max-width: 900px) {
       .game-panel,
       .audio-match-board {
         left: 8px;
@@ -1044,25 +1079,50 @@
         box-shadow: 0 3px 0 rgba(0, 0, 0, .12) inset;
       }
       .game-strip-linkword[hidden] { display: none; }
-      .game-strip-linkword span { font-size: .56rem; font-weight: 950; letter-spacing: .09em; text-transform: uppercase; opacity: .7; }
-      .game-strip-linkword strong { font-size: 1.04rem; font-weight: 900; letter-spacing: -.02em; }
+      .game-strip-linkword span { font-size: .58rem; font-weight: 950; letter-spacing: .09em; text-transform: uppercase; opacity: .7; }
+      .game-strip-linkword strong { font-size: 1.28rem; font-weight: 900; letter-spacing: -.02em; }
 
-      .game-strip-prompt { margin: 0; color: var(--ink); font-size: .8rem; font-weight: 800; line-height: 1.32; text-align: center; }
+      /* The question itself is the thing a player needs to read every round —
+         it should read as a headline, not a caption dwarfed by the input box
+         below it. */
+      .game-strip-prompt { margin: 0; color: var(--ink); font-size: 1.02rem; font-weight: 900; line-height: 1.28; text-align: center; }
       .game-strip-prompt:empty { display: none; }
 
       /* When JS relocates the real .guess-form here (see layoutGameControls),
-         style it to sit naturally inside the strip. */
+         style it to sit naturally inside the strip. The docked desktop panel's
+         input/button are sized for a mouse (49px tall) — deliberately smaller
+         here since answering is secondary to reading the question, and a
+         shorter control leaves more of the card visible. */
       .game-strip .guess-form { width: 100%; margin-top: 2px; }
-      .game-strip .guess-form input { background: rgba(0, 0, 0, .3); }
+      .game-strip .guess-form input {
+        min-height: 38px;
+        padding: 0 11px;
+        border-radius: 10px;
+        font-size: .8rem;
+        background: rgba(0, 0, 0, .3);
+      }
+      .game-strip .guess-form button {
+        min-height: 38px;
+        padding: 0 13px;
+        border-radius: 10px;
+        font-size: .78rem;
+      }
 
+      /* One line, ellipsized, everywhere — not just the short/landscape case
+         below. Feedback here is secondary to the question above it (the full
+         scoring-rules text is still readable in the drawer's docked panel),
+         and every line it doesn't need is a line the card gets back. */
       .game-strip-feedback {
         max-width: 100%;
         margin: 0;
+        overflow: hidden;
         color: var(--muted);
         font-size: .72rem;
         font-weight: 700;
         line-height: 1.32;
         text-align: center;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
       .game-strip-feedback:empty { display: none; }
       .game-strip-feedback.correct { color: #d7ff9e; }
@@ -1128,8 +1188,8 @@
          both. Reserve enough on each side to clear them (with a small gap),
          and shrink the deck's own height formula to match so it doesn't
          outgrow the space that padding just reserved for it. */
-      .stage { padding-top: max(60px, calc(env(safe-area-inset-top) + 54px)); padding-bottom: max(78px, calc(env(safe-area-inset-bottom) + 70px)); }
-      .deck { width: min(calc(100vw - 170px), calc((100dvh - 140px) * var(--card-ratio)), 540px); }
+      .stage { padding-top: calc(max(60px, calc(env(safe-area-inset-top) + 54px)) + var(--game-header-h, 0px)); padding-bottom: max(78px, calc(env(safe-area-inset-bottom) + 70px)); }
+      .deck { width: min(calc(100vw - 170px), calc((100dvh - 140px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px); }
       .topbar { padding-top: max(10px, env(safe-area-inset-top)); }
       .brand, .side-pill { opacity: .86; }
       .footer { grid-template-columns: auto 1fr auto; }
@@ -1139,12 +1199,28 @@
          needs to be noticeably more compact — otherwise it can run tall enough
          to reach the peek pill near the bottom. Also nudged down slightly from
          the topbar's actual ~54px height so it doesn't overlap it either. */
-      .game-strip { top: max(56px, calc(env(safe-area-inset-top) + 50px)); padding: 7px 12px; gap: 4px; max-height: 36vh; overflow-y: auto; }
-      .game-strip-prompt { font-size: .72rem; }
+      .game-strip { top: max(56px, calc(env(safe-area-inset-top) + 50px)); padding: 6px 12px; gap: 3px; max-height: 36vh; overflow-y: auto; }
+      .game-strip-prompt { font-size: .82rem; }
       .game-strip-linkword { padding: 4px 11px; }
-      .game-strip-linkword strong { font-size: .92rem; }
-      .game-strip-feedback { font-size: .66rem; }
+      .game-strip-linkword strong { font-size: 1.02rem; }
+      /* The reserved space above the card is the scarcest resource on a short/
+         landscape phone, so the (often two-sentence) instructional feedback
+         line — "Each new correct item earns 1 point..." — is clipped to one
+         line here instead of wrapping and eating a second line's worth of
+         height. Short transient "Correct!"/"Not quite" messages still show in
+         full since they're a few words. */
+      .game-strip-feedback { font-size: .66rem; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
       .game-strip .guess-form { margin-top: 1px; min-width: 0; }
+      .game-strip .guess-form input, .game-strip .guess-form button { min-height: 32px; font-size: .74rem; }
+
+      /* The peek pill's portrait bottom offset (max(88px, ...)) floats it well
+         above the footer, which is fine when the card is short enough not to
+         reach that high — but on a short/landscape phone the card now fills
+         nearly the whole available height and the pill lands right on top of
+         it. Dock it down into the footer's own band instead — the (hidden)
+         .instructions element already reserves that centered space, so
+         nothing else is there to collide with. */
+      .drawer-peek { bottom: max(18px, calc(env(safe-area-inset-bottom) + 12px)); min-height: 36px; padding: 0 14px; font-size: .7rem; }
     }
 
     @media (max-width: 380px) {
@@ -3062,6 +3138,9 @@
       gameStripFeedback.textContent = message;
       gameStripFeedback.classList.toggle("correct", tone === "correct");
       gameStripFeedback.classList.toggle("wrong", tone === "wrong");
+      // Feedback text appearing/disappearing (or wrapping to another line)
+      // changes the strip's real height mid-round, not just at round start.
+      requestAnimationFrame(updateGameHeaderReserve);
     }
 
     // Score is persistent app-chrome state (topbar badge), and for Guess the
@@ -3334,6 +3413,24 @@
       updateScoreChip();
     }
 
+    // The strip is fixed-position (so it never scrolls away), which means it
+    // doesn't push the card down on its own — CSS can't see its height. Measure
+    // it after each layout pass and feed that height back in as --game-header-h
+    // (see .stage/.deck above), so the card is reserved exactly the room the
+    // strip actually needs instead of either overlapping it or over-reserving
+    // with a guessed constant. Re-measured on every content change (round
+    // start, feedback text appearing, a category name wrapping to two lines)
+    // and on resize, since a rotation can change wrapping without crossing the
+    // mobile/desktop breakpoint that layoutGameControls() already listens for.
+    function updateGameHeaderReserve() {
+      if (gameStrip.hidden) {
+        stage.style.removeProperty("--game-header-h");
+        return;
+      }
+      const height = Math.ceil(gameStrip.getBoundingClientRect().height);
+      stage.style.setProperty("--game-header-h", `${height + 10}px`);
+    }
+
     function layoutGameControls() {
       const mobile = mobileGameStripQuery.matches;
       const inClassGame = gameMode !== "browse" && gameMode !== "audio-match";
@@ -3349,9 +3446,11 @@
       } else if (!wantsFloatingInput && guessForm.parentElement !== gamePanel) {
         gamePanel.insertBefore(guessForm, gameFeedback);
       }
+      requestAnimationFrame(updateGameHeaderReserve);
     }
 
     mobileGameStripQuery.addEventListener("change", layoutGameControls);
+    window.addEventListener("resize", () => requestAnimationFrame(updateGameHeaderReserve));
 
     function startGame(mode) {
       if (isDualView) setDualView(false);
