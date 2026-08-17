@@ -246,6 +246,286 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── Mode Switcher Control in Header ── */
+    .mode-switch-wrap {
+      display: inline-flex;
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 3px;
+      gap: 4px;
+    }
+
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-main);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .mode-btn:hover {
+      color: var(--text);
+    }
+
+    .mode-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    /* ── Student Speaker Toolkit Container ── */
+    .student-toolkit-container {
+      display: none;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    .student-toolkit-container.active {
+      display: block;
+    }
+
+    .role-hub-hero {
+      background: linear-gradient(135deg, rgba(79, 126, 248, 0.12), rgba(16, 185, 129, 0.08));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+
+    .role-claim-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .role-claim-card:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .role-claim-card.selected {
+      border-color: var(--accent);
+      background: rgba(79, 126, 248, 0.12);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .role-claim-card.govt { border-top: 3px solid var(--govt); }
+    .role-claim-card.opp { border-top: 3px solid var(--opp); }
+
+    .role-card-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .role-card-badge.govt { background: var(--govt-dim); color: var(--govt); }
+    .role-card-badge.opp { background: var(--opp-dim); color: var(--opp); }
+
+    .role-card-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .role-card-duty {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .role-claimed-tag {
+      font-size: 0.72rem;
+      color: #93c5fd;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Active Speaker Workspace on Phone */
+    .speaker-dashboard-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .speaker-dashboard-card.govt { border-top: 4px solid var(--govt); }
+    .speaker-dashboard-card.opp { border-top: 4px solid var(--opp); }
+
+    .podium-alert-banner {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.15));
+      border: 1px solid var(--warning);
+      border-radius: var(--radius);
+      padding: 12px 18px;
+      margin-bottom: 18px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      animation: pulseAlert 1.5s infinite;
+    }
+
+    .podium-alert-banner.active { display: flex; }
+
+    /* Scaffolded Sentence Starters Drawer */
+    .scaffolding-box {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+
+    .scaffolding-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .starter-category-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .starter-category-pill.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .starter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+
+    .starter-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.82rem;
+      line-height: 1.4;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .starter-item:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+    }
+
+    .starter-item .btn-insert-starter {
+      background: rgba(79, 126, 248, 0.2);
+      border: 1px solid rgba(79, 126, 248, 0.4);
+      color: #93c5fd;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .starter-item .btn-insert-starter:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Personal Speech Notepad Tabs */
+    .speech-pad-nav {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      margin-bottom: 12px;
+      scrollbar-width: none;
+    }
+
+    .speech-pad-nav::-webkit-scrollbar { display: none; }
+
+    .speech-pad-tab-btn {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .speech-pad-tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .speech-pad-textarea {
+      width: 100%;
+      height: 180px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: var(--font-main);
+      padding: 12px;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      resize: vertical;
+    }
+
+    .speech-pad-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
     /* ── Cards & Panels ── */
     .card {
       background: var(--surface);
@@ -1249,13 +1529,21 @@
       </div>
     </div>
     <div class="nav-right">
+      <div class="mode-switch-wrap">
+        <button class="mode-btn active" id="btn-mode-master" onclick="switchAppMode('master')">
+          <span>📺 Master Stage</span>
+        </button>
+        <button class="mode-btn" id="btn-mode-toolkit" onclick="switchAppMode('toolkit')">
+          <span>🎙️ Speaker Toolkit</span>
+        </button>
+      </div>
       <button class="header-btn" id="btn-rules" onclick="openRulesModal()">
         <span>📜</span>
-        <span>Debate Rules &amp; Rubric</span>
+        <span>Rules</span>
       </button>
       <button class="header-btn" id="btn-fullscreen" onclick="toggleFullScreen()">
         <span>⛶</span>
-        <span>Projector Mode</span>
+        <span>Projector</span>
       </button>
     </div>
   </header>
@@ -1748,6 +2036,119 @@
         <button class="btn-action" onclick="resetEntireDebate()">
           <span>Start New Debate Activity 🎲</span>
         </button>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- STUDENT SPEAKER TOOLKIT VIEW                               -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <section class="student-toolkit-container" id="student-toolkit-section">
+      
+      <!-- Hub View: Claim Role if not claimed -->
+      <div id="toolkit-claim-hub">
+        <div class="role-hub-hero">
+          <span class="motion-badge" style="background: rgba(79, 126, 248, 0.2); border-color: rgba(79, 126, 248, 0.4);">
+            Student Debater Hub
+          </span>
+          <h2 style="font-size: 1.4rem; font-weight: 900; margin: 8px 0 6px; color: #fff;">Claim Your Debating Role</h2>
+          <p style="font-size: 0.85rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 16px;">
+            Select your side and position below to unlock role duties, scaffolded sentence starters, and your personal speech builder notepad.
+          </p>
+
+          <div style="max-width: 320px; margin: 0 auto 16px;">
+            <input type="text" class="speaker-name-input" id="student-my-name" placeholder="Enter your full name..." style="width: 100%; font-size: 0.95rem; text-align: center; padding: 10px;">
+          </div>
+        </div>
+
+        <h3 style="font-size: 1rem; font-weight: 800; margin-bottom: 10px; color: #93c5fd;">1. Government Team Positions (পক্ষ দল):</h3>
+        <div class="role-grid" id="govt-roles-grid">
+          <!-- Populated dynamically -->
+        </div>
+
+        <h3 style="font-size: 1rem; font-weight: 800; margin: 24px 0 10px; color: #fca5a5;">2. Opposition Team Positions (বিপক্ষ দল):</h3>
+        <div class="role-grid" id="opp-roles-grid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Active Claimed Speaker Dashboard -->
+      <div id="toolkit-active-dashboard" style="display: none;">
+        
+        <!-- Active Role Header -->
+        <div class="speaker-dashboard-card" id="speaker-role-card-banner">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap;">
+            <div>
+              <span class="role-card-badge" id="toolkit-side-badge">Government Team</span>
+              <h2 style="font-size: 1.35rem; font-weight: 900; color: #fff;" id="toolkit-speaker-title">Prime Minister (দলনেতা)</h2>
+              <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;" id="toolkit-speaker-duty-desc">
+                Role: Define motion, establish model, and present primary arguments.
+              </div>
+            </div>
+            <button class="btn-secondary" style="font-size: 0.75rem; padding: 5px 10px;" onclick="unclaimRole()">
+              <span>🔄 Switch Role</span>
+            </button>
+          </div>
+
+          <!-- Podium Live Turn Alert -->
+          <div class="podium-alert-banner" id="podium-turn-alert" style="margin-top: 16px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.4rem;">🎙️</span>
+              <div>
+                <div style="font-weight: 800; font-size: 0.9rem; color: #fff;">YOU ARE ON STAGE!</div>
+                <div style="font-size: 0.78rem; color: #fef08a;" id="podium-turn-sub">Your speech is currently live on the master projector clock.</div>
+              </div>
+            </div>
+            <span style="font-size: 1.2rem; font-weight: 900; color: #fff; font-variant-numeric: tabular-nums;" id="podium-timer-val">04:00</span>
+          </div>
+        </div>
+
+        <!-- ESL Scaffolded Debate Phrasing Accordion -->
+        <div class="scaffolding-box">
+          <div class="scaffolding-title">
+            <span>🗣️ Formal Debate Sentence Starters</span>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">Tap "Insert" to append to your speech pad</span>
+          </div>
+
+          <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;" id="starter-cat-pills">
+            <button class="starter-category-pill active" id="btn-scaff-opening" onclick="switchStarterCategory('opening')">Formal Opening</button>
+            <button class="starter-category-pill" id="btn-scaff-problem" onclick="switchStarterCategory('problem')">Definition &amp; Problem</button>
+            <button class="starter-category-pill" id="btn-scaff-arei" onclick="switchStarterCategory('arei')">A-R-E-I Argument</button>
+            <button class="starter-category-pill" id="btn-scaff-rebuttal" onclick="switchStarterCategory('rebuttal')">Clash &amp; Rebuttal</button>
+            <button class="starter-category-pill" id="btn-scaff-poi" onclick="switchStarterCategory('poi')">POI Formulas</button>
+            <button class="starter-category-pill" id="btn-scaff-closing" onclick="switchStarterCategory('closing')">Conclusion</button>
+          </div>
+
+          <div class="starter-list" id="starters-container">
+            <!-- Dynamic Sentence Starters -->
+          </div>
+        </div>
+
+        <!-- Personal Speech Builder Notepad -->
+        <div class="card" style="padding: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <h3 style="font-size: 1rem; font-weight: 800;">📝 My Speech Builder Notepad</h3>
+            <span style="font-size: 0.72rem; color: #10b981; font-weight: 700;">● Saved automatically</span>
+          </div>
+
+          <div class="speech-pad-nav">
+            <button class="speech-pad-tab-btn active" id="pad-tab-intro" onclick="switchPadTab('intro')">Intro &amp; Definition</button>
+            <button class="speech-pad-tab-btn" id="pad-tab-arg1" onclick="switchPadTab('arg1')">Argument 1</button>
+            <button class="speech-pad-tab-btn" id="pad-tab-arg2" onclick="switchPadTab('arg2')">Argument 2</button>
+            <button class="speech-pad-tab-btn" id="pad-tab-rebuttal" onclick="switchPadTab('rebuttal')">Live Rebuttals</button>
+            <button class="speech-pad-tab-btn" id="pad-tab-pois" onclick="switchPadTab('pois')">Ready POIs</button>
+          </div>
+
+          <textarea class="speech-pad-textarea" id="speech-pad-box" placeholder="Start typing or insert sentence starters from above..." oninput="saveActivePadContent()"></textarea>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+            <button class="btn-secondary" style="font-size: 0.75rem; padding: 6px 12px;" onclick="copyActivePadContent()">
+              📋 Copy My Speech Notes
+            </button>
+            <span style="font-size: 0.75rem; color: var(--text-dim);" id="pad-word-count">0 words</span>
+          </div>
+        </div>
+
       </div>
 
     </section>
@@ -2607,6 +3008,8 @@
           poiIndicator.innerHTML = "<span>🚨 Overtime Grace Period</span>";
         }
       }
+
+      checkPodiumTurnAlert();
     }
 
     function toggleSpeechTimer() {
@@ -3118,7 +3521,326 @@
       } catch (e) {}
     }
 
-    /* ── Fullscreen & Keyboard Shortcuts ── */
+    /* ───────────────────────────────────────────────────────────
+       STUDENT SPEAKER TOOLKIT & ESL SCAFFOLDING ENGINE
+       ─────────────────────────────────────────────────────────── */
+    var myClaimedSpeakerIdx = null; // null if not claimed, 0-7 if claimed
+    var activePadTabKey = 'intro';
+    var activeStarterCategory = 'opening';
+
+    const SCAFFOLDING_STARTERS = {
+      opening: [
+        { en: "Madam Speaker, esteemed adjudicators, and fellow members of the House, good day.", bn: "মাননীয় স্পিকার, বিজ্ঞ বিচারকমণ্ডলী এবং উপস্থিত সুধীবৃন্দ, আসসালামু আলাইকুম।" },
+        { en: "This House stands firmly and proudly in support of the motion that...", bn: "এই সংসদ দ্ব্যর্থহীন কণ্ঠে প্রস্তাবটির পক্ষে দৃঢ় অবস্থান গ্রহণ করছে যে..." },
+        { en: "Madam Speaker, we stand here today to vehemently oppose the proposition that...", bn: "মাননীয় স্পিকার, আমরা বিপক্ষ দল দৃঢ়তার সাথে প্রস্তাবটির বিরোধিতা করছি যে..." },
+        { en: "As the first speaker for the Government, my duty is to define the context, establish our model, and present our core contentions.", bn: "সরকার দলের প্রথম বক্তা হিসেবে আমার দায়িত্ব হলো প্রেক্ষাপট সংজ্ঞায়িত করা, আমাদের মডেল উপস্থাপন করা এবং মূল যুক্তিগুলো তুলে ধরা।" },
+        { en: "As the Leader of the Opposition, I will first expose the fundamental flaws in the Government's case and then present our counter-framework.", bn: "বিরোধী দলনেতা হিসেবে আমি প্রথমে সরকারি দলের বক্তব্যের মূল ফাঁকগুলো তুলে ধরব এবং অতঃপর আমাদের বিকল্প কাঠামো উপস্থাপন করব।" }
+      ],
+      problem: [
+        { en: "To ensure absolute clarity, this House defines the key terms of the motion as follows...", bn: "বিতর্কের স্পষ্টতার স্বার্থে এই সংসদ প্রস্তাবের মূল শব্দগুলোকে এভাবে সংজ্ঞায়িত করছে..." },
+        { en: "The core problem that demands immediate government intervention in Rajshahi and Bangladesh is...", bn: "রাজশাহী তথা বাংলাদেশের প্রেক্ষাপটে যে মূল সমস্যাটির আশু সমাধান প্রয়োজন তা হলো..." },
+        { en: "Under our policy model, we propose a three-step practical mechanism:", bn: "আমাদের প্রস্তাবিত নীতিতে আমরা তিনটি বাস্তবসম্মত পদক্ষেপ বাস্তবায়ন করব:" },
+        { en: "The current status quo is unsustainable because students are currently facing...", bn: "বর্তমান ব্যবস্থাটি অকার্যকর কারণ শিক্ষার্থীরা বর্তমানে যে সংকটের মুখোমুখি হচ্ছে..." },
+        { en: "Our policy directly targets the root cause rather than merely addressing surface symptoms.", bn: "আমাদের গৃহীত পদক্ষেপ কেবল বাহ্যিক উপসর্গের নয়, সমস্যার মূল কারণের সমাধান করবে।" }
+      ],
+      arei: [
+        { en: "Our primary contention is that [Assertion]. The fundamental reason is [Reason]. For instance, in Rajshahi [Evidence]. Consequently, [Impact].", bn: "আমাদের প্রথম মূল যুক্তি হলো [দাবি]। এর পেছনের কারণ হলো [যুক্তি]। উদাহরণস্বরূপ রাজশাহীতে [উপাত্ত]। যার চূড়ান্ত প্রভাব হলো [ফলাফল]।" },
+        { en: "To substantiate our second argument, we must examine the real socio-economic reality of students...", bn: "আমাদের দ্বিতীয় যুক্তি প্রমাণের জন্য আমাদের শিক্ষার্থীদের বাস্তব আর্থ-সামাজিক অবস্থা পর্যালোচনা করা প্রয়োজন..." },
+        { en: "Empirical evidence from local institutions demonstrates that...", bn: "স্থানীয় শিক্ষা প্রতিষ্ঠানগুলোর বাস্তব তথ্য-উপাত্ত প্রমাণ করে যে..." },
+        { en: "The long-term tangible benefit of this policy for North Bengal youth will be...", bn: "উত্তরবঙ্গের তরুণ প্রজন্মের জন্য এই নীতির দীর্ঘমেয়াদী সুফল হবে..." },
+        { en: "We must prioritize student welfare and academic integrity over short-term commercial interests.", bn: "স্বল্পমেয়াদী বাণিজ্যিক স্বার্থের চেয়ে শিক্ষার্থীদের সার্বিক কল্যাণ ও নৈতিক শিক্ষাকে প্রাধান্য দেওয়া উচিত।" }
+      ],
+      rebuttal: [
+        { en: "The honorable previous speaker argued that [X]; however, this argument collapses under close scrutiny because...", bn: "পূর্ববর্তী সম্মানিত বক্তা দাবি করেছেন যে [X]; কিন্তু গভীর বিশ্লেষণে এই যুক্তিটি ধোপে টেকে না কারণ..." },
+        { en: "First, the opposition has completely overlooked the practical feasibility in tier-2 cities like Rajshahi.", bn: "প্রথমত, রাজশাহীর মতো বিভাগীয় শহরে বাস্তব প্রয়োগের দিকটি বিরোধী দল সম্পূর্ণ উপেক্ষা করেছে।" },
+        { en: "Even if we accept their premise for the sake of argument, the resulting harm far outweighs any supposed benefit.", bn: "তর্কের খাতিরে তাদের বক্তব্য মেনে নিলেও, এর ক্ষতিকর প্রভাব সম্ভাব্য সুফলের চেয়ে অনেক বেশি।" },
+        { en: "The opposition has identified a problem, but their stance offers zero actionable solutions.", bn: "বিরোধী দল সমস্যা চিহ্নিত করলেও কোনো কার্যকর সমাধান দিতে সম্পূর্ণ ব্যর্থ হয়েছে।" },
+        { en: "Allow me to draw your attention to the central clash of today's debate...", bn: "আজকের বিতর্কের প্রধান দ্বন্দ্বের জায়গাটায় আমি সবার দৃষ্টি আকর্ষণ করতে চাই..." }
+      ],
+      poi: [
+        { en: "On that exact point, Madam Speaker: how does the honorable speaker account for the lack of resources in local colleges?", bn: "মাননীয় স্পিকার, ওই সুনির্দিষ্ট পয়েন্টে: স্থানীয় কলেজগুলোতে প্রয়োজনীয় সম্পদের ঘাটতি বক্তা কীভাবে সমাধান করবেন?" },
+        { en: "Will the speaker acknowledge that empirical data in North Bengal directly contradicts their claim?", bn: "বক্তা কি স্বীকার করবেন যে উত্তরবঙ্গের বাস্তব পরিসংখ্যান তাদের দাবির সম্পূর্ণ বিপরীত?" },
+        { en: "Madam Speaker, isn't it true that their proposed policy will disproportionately harm underprivileged students?", bn: "মাননীয় স্পিকার, এটা কি সত্য নয় যে তাদের প্রস্তাবিত নীতি সুবিধাবঞ্চিত শিক্ষার্থীদের সবচেয়ে বেশি ক্ষতিগ্রস্ত করবে?" },
+        { en: "If your model is so effective, why has it consistently failed in similar regional contexts?", bn: "আপনার মডেলটি যদি এতটাই কার্যকর হয়, তবে অনুরূপ আঞ্চলিক প্রেক্ষাপটে এটি কেন ব্যর্থ হয়েছিল?" }
+      ],
+      closing: [
+        { en: "In summary, our case stands logically unassailable, practically enforceable, and morally necessary.", bn: "সংক্ষেপে, আমাদের যুক্তিগুলো যৌক্তিকভাবে অকাট্য, প্রয়োগযোগ্য এবং নৈতিকভাবে অপরিহার্য।" },
+        { en: "We have proven beyond doubt that the benefits far outweigh the alternative.", bn: "আমরা সন্দেহাতীতভাবে প্রমাণ করেছি যে বিকল্পের চেয়ে আমাদের প্রস্তাবের সুফল অনেক বেশি।" },
+        { en: "For all these compelling reasons, Madam Speaker, we strongly and proudly beg to propose / oppose the motion. Thank you.", bn: "এই সকল জোরালো যুক্তির ভিত্তিতে, মাননীয় স্পিকার, আমরা প্রস্তাবের পক্ষে/বিপক্ষে দৃঢ় অবস্থান নিচ্ছি। ধন্যবাদ।" }
+      ]
+    };
+
+    function switchAppMode(mode) {
+      var btnMaster = document.getElementById('btn-mode-master');
+      var btnToolkit = document.getElementById('btn-mode-toolkit');
+      var stepper = document.querySelector('.stepper-bar');
+      var phaseViews = document.querySelectorAll('.phase-view');
+      var toolkitView = document.getElementById('student-toolkit-section');
+
+      if (mode === 'toolkit') {
+        btnMaster.classList.remove('active');
+        btnToolkit.classList.add('active');
+        stepper.style.display = 'none';
+        phaseViews.forEach(function(v) { v.style.display = 'none'; });
+        toolkitView.classList.add('active');
+        
+        loadClaimedRoleState();
+      } else {
+        btnToolkit.classList.remove('active');
+        btnMaster.classList.add('active');
+        stepper.style.display = 'flex';
+        toolkitView.classList.remove('active');
+        switchPhase(appState.currentPhase);
+      }
+    }
+
+    function renderClaimHubRoles() {
+      var govtGrid = document.getElementById('govt-roles-grid');
+      var oppGrid = document.getElementById('opp-roles-grid');
+      if (!govtGrid || !oppGrid) return;
+
+      govtGrid.innerHTML = '';
+      oppGrid.innerHTML = '';
+
+      var savedName = localStorage.getItem('my_debater_name') || '';
+      if (savedName && document.getElementById('student-my-name')) {
+        document.getElementById('student-my-name').value = savedName;
+      }
+
+      appState.speakers.forEach(function(spk, idx) {
+        var card = document.createElement('div');
+        card.className = 'role-claim-card ' + spk.side + (myClaimedSpeakerIdx === idx ? ' selected' : '');
+        card.onclick = function() { claimRole(idx); };
+
+        var sideBadge = '<span class="role-card-badge ' + spk.side + '">' + (spk.side === 'govt' ? 'Government' : 'Opposition') + '</span>';
+        var isCurrentClaimed = spk.name && spk.name !== spk.defaultRole;
+        var claimedLabel = isCurrentClaimed ? '<div class="role-claimed-tag">👤 ' + spk.name + '</div>' : '<div style="font-size:0.72rem; color:var(--text-dim);">Tap to claim this role</div>';
+
+        card.innerHTML = 
+          sideBadge +
+          '<div class="role-card-title">' + spk.title + '</div>' +
+          '<div class="role-card-duty">' + spk.defaultRole + '</div>' +
+          claimedLabel;
+
+        if (spk.side === 'govt') {
+          govtGrid.appendChild(card);
+        } else {
+          oppGrid.appendChild(card);
+        }
+      });
+    }
+
+    function claimRole(speakerIdx) {
+      var nameInput = document.getElementById('student-my-name');
+      var name = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : (localStorage.getItem('my_debater_name') || appState.speakers[speakerIdx].name);
+
+      if (!name || name === appState.speakers[speakerIdx].defaultRole) {
+        name = prompt("Please enter your full name for this role:", "Debater " + (speakerIdx + 1));
+        if (!name) return;
+        if (nameInput) nameInput.value = name;
+      }
+
+      myClaimedSpeakerIdx = speakerIdx;
+      localStorage.setItem('my_claimed_role_idx', speakerIdx.toString());
+      localStorage.setItem('my_debater_name', name);
+
+      // Sync name to team roster
+      appState.speakers[speakerIdx].name = name;
+      syncSpeakerInputsFromState();
+      lockInActiveSession();
+
+      loadClaimedRoleState();
+    }
+
+    function syncSpeakerInputsFromState() {
+      var idMap = ['spk-g1', 'spk-o1', 'spk-g2', 'spk-o2', 'spk-g3', 'spk-o3', 'spk-or', 'spk-gr'];
+      appState.speakers.forEach(function(spk, idx) {
+        var input = document.getElementById(idMap[idx]);
+        if (input && spk.name) input.value = spk.name;
+      });
+    }
+
+    function unclaimRole() {
+      if (confirm("Switch your debating position or select another team?")) {
+        myClaimedSpeakerIdx = null;
+        localStorage.removeItem('my_claimed_role_idx');
+        loadClaimedRoleState();
+      }
+    }
+
+    function loadClaimedRoleState() {
+      var savedIdx = localStorage.getItem('my_claimed_role_idx');
+      if (savedIdx !== null && !isNaN(parseInt(savedIdx, 10))) {
+        myClaimedSpeakerIdx = parseInt(savedIdx, 10);
+      }
+
+      var hub = document.getElementById('toolkit-claim-hub');
+      var dashboard = document.getElementById('toolkit-active-dashboard');
+
+      if (myClaimedSpeakerIdx === null || myClaimedSpeakerIdx < 0 || myClaimedSpeakerIdx >= appState.speakers.length) {
+        if (hub) hub.style.display = 'block';
+        if (dashboard) dashboard.style.display = 'none';
+        renderClaimHubRoles();
+      } else {
+        if (hub) hub.style.display = 'none';
+        if (dashboard) dashboard.style.display = 'block';
+        renderClaimedSpeakerDashboard();
+      }
+    }
+
+    function renderClaimedSpeakerDashboard() {
+      var spk = appState.speakers[myClaimedSpeakerIdx];
+      if (!spk) return;
+
+      var bannerCard = document.getElementById('speaker-role-card-banner');
+      var badge = document.getElementById('toolkit-side-badge');
+      var title = document.getElementById('toolkit-speaker-title');
+      var desc = document.getElementById('toolkit-speaker-duty-desc');
+
+      bannerCard.className = 'speaker-dashboard-card ' + spk.side;
+      badge.className = 'role-card-badge ' + spk.side;
+      badge.innerText = spk.side === 'govt' ? appState.govtTeamName : appState.oppTeamName;
+      title.innerText = spk.name + " · " + spk.title;
+      desc.innerText = "Parliamentary Responsibility: " + spk.defaultRole + " | Match Time: " + (spk.isReply ? (appState.replyTotalSec/60) : (appState.speechTotalSec/60)) + " min";
+
+      renderSentenceStarters();
+      loadActivePadTabContent();
+      checkPodiumTurnAlert();
+    }
+
+    function switchStarterCategory(catKey) {
+      activeStarterCategory = catKey;
+      var pills = document.querySelectorAll('.starter-category-pill');
+      pills.forEach(function(p) { p.classList.remove('active'); });
+      var activePill = document.getElementById('btn-scaff-' + catKey);
+      if (activePill) activePill.classList.add('active');
+
+      renderSentenceStarters();
+    }
+
+    function renderSentenceStarters() {
+      var container = document.getElementById('starters-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      var list = SCAFFOLDING_STARTERS[activeStarterCategory] || SCAFFOLDING_STARTERS.opening;
+      list.forEach(function(item) {
+        var row = document.createElement('div');
+        row.className = 'starter-item';
+        row.innerHTML = 
+          '<div>' +
+            '<div style="font-weight:700; color:#fff; margin-bottom:2px;">' + item.en + '</div>' +
+            '<div style="font-family:var(--font-bn); color:var(--text-muted); font-size:0.78rem;">' + item.bn + '</div>' +
+          '</div>' +
+          '<button class="btn-insert-starter">＋ Insert</button>';
+
+        row.querySelector('.btn-insert-starter').onclick = function(e) {
+          e.stopPropagation();
+          insertStarterText(item.en);
+        };
+        row.onclick = function() {
+          insertStarterText(item.en);
+        };
+
+        container.appendChild(row);
+      });
+    }
+
+    function switchPadTab(tabKey) {
+      saveActivePadContent();
+      activePadTabKey = tabKey;
+
+      var tabBtns = document.querySelectorAll('.speech-pad-tab-btn');
+      tabBtns.forEach(function(b) { b.classList.remove('active'); });
+      var currentBtn = document.getElementById('pad-tab-' + tabKey);
+      if (currentBtn) currentBtn.classList.add('active');
+
+      loadActivePadTabContent();
+    }
+
+    function getPadStorageKey() {
+      var roleKey = myClaimedSpeakerIdx !== null ? myClaimedSpeakerIdx : 'guest';
+      return 'debate_speech_notes_role_' + roleKey + '_tab_' + activePadTabKey;
+    }
+
+    function loadActivePadTabContent() {
+      var box = document.getElementById('speech-pad-box');
+      if (!box) return;
+
+      var saved = localStorage.getItem(getPadStorageKey()) || '';
+      box.value = saved;
+      updatePadWordCount();
+    }
+
+    function saveActivePadContent() {
+      var box = document.getElementById('speech-pad-box');
+      if (!box) return;
+      localStorage.setItem(getPadStorageKey(), box.value);
+      updatePadWordCount();
+    }
+
+    function updatePadWordCount() {
+      var box = document.getElementById('speech-pad-box');
+      var lbl = document.getElementById('pad-word-count');
+      if (!box || !lbl) return;
+
+      var text = box.value.trim();
+      var words = text ? text.split(/\s+/).length : 0;
+      lbl.innerText = words + " words";
+    }
+
+    function insertStarterText(text) {
+      var box = document.getElementById('speech-pad-box');
+      if (!box) return;
+
+      if (box.value && !box.value.endsWith('\n')) {
+        box.value += '\n\n';
+      }
+      box.value += text + ' ';
+      saveActivePadContent();
+      box.focus();
+
+      // Gentle toast feedback
+      var lbl = document.getElementById('pad-word-count');
+      if (lbl) {
+        var prev = lbl.innerText;
+        lbl.innerText = "✓ Inserted into pad!";
+        setTimeout(function() { lbl.innerText = prev; }, 1500);
+      }
+    }
+
+    function copyActivePadContent() {
+      var box = document.getElementById('speech-pad-box');
+      if (!box || !box.value.trim()) {
+        alert("Your notepad is currently empty. Type or insert arguments above first!");
+        return;
+      }
+      navigator.clipboard.writeText(box.value).then(function() {
+        alert("Speech notes copied to clipboard! Ready for your speech at the podium.");
+      });
+    }
+
+    function checkPodiumTurnAlert() {
+      var alertBox = document.getElementById('podium-turn-alert');
+      var timerVal = document.getElementById('podium-timer-val');
+      if (!alertBox || !timerVal) return;
+
+      if (appState.currentPhase === 3 && myClaimedSpeakerIdx === appState.currentSpeakerIndex) {
+        alertBox.classList.add('active');
+        var remaining = appState.speechTotalForCurrent - appState.speechElapsedSec;
+        timerVal.innerText = formatTimeMMSS(Math.max(0, remaining));
+      } else {
+        alertBox.classList.remove('active');
+      }
+    }
+
+    // Auto-detect mobile devices on load to recommend Toolkit mode
+    function autoDetectMobileRecommendation() {
+      if (window.innerWidth <= 768 && !localStorage.getItem('mode_manually_chosen')) {
+        // Default to Toolkit view on mobile phones
+        switchAppMode('toolkit');
+      }
+    }
     function toggleFullScreen() {
       if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(function(err) {
@@ -3166,6 +3888,8 @@
     window.addEventListener('DOMContentLoaded', async function() {
       displayTopic(0);
       updatePrepTimerUI();
+      loadClaimedRoleState();
+      autoDetectMobileRecommendation();
       
       // Auto-check for active locked session
       await checkAndSyncLockedSession();
