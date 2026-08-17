@@ -5,7 +5,7 @@
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Classroom Debate — Bangladesh Parliamentary Format</title>
-  <meta name="description" content="Administer a structured classroom debate using Bangladesh parliamentary rules, POI timers, prep room, isolated team rooms, and 50 Rajshahi student topics.">
+  <meta name="description" content="Administer a structured 45–60 min classroom debate using Bangladesh 3v3 parliamentary rules, POI timers, prep room, adjudicator scoring, and 50 Rajshahi student topics.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   
@@ -68,7 +68,7 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 10px 18px;
+      padding: 12px 20px;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -88,13 +88,13 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 7px 12px;
+      padding: 8px 14px;
       background: var(--surface-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       color: var(--text);
       text-decoration: none;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 600;
       transition: all 0.15s ease;
     }
@@ -110,7 +110,7 @@
     }
 
     .brand-title h1 {
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       font-weight: 800;
       letter-spacing: -0.01em;
       display: flex;
@@ -119,7 +119,7 @@
     }
 
     .brand-title .badge-fmt {
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       font-weight: 700;
       background: rgba(79, 126, 248, 0.2);
       color: #93c5fd;
@@ -131,72 +131,23 @@
     }
 
     .brand-title span.sub {
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
     }
 
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    /* Door / Room Switcher in Header */
-    .room-selector-wrap {
-      display: inline-flex;
-      background: var(--surface-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 3px;
-      gap: 3px;
-    }
-
-    .room-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-family: var(--font-main);
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 6px 11px;
-      border-radius: 6px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.15s ease;
-    }
-
-    .room-btn:hover {
-      color: var(--text);
-    }
-
-    .room-btn.active.master {
-      background: var(--accent);
-      color: #ffffff;
-      box-shadow: 0 2px 8px var(--accent-glow);
-    }
-
-    .room-btn.active.govt {
-      background: var(--govt);
-      color: #ffffff;
-      box-shadow: 0 2px 8px var(--govt-glow);
-    }
-
-    .room-btn.active.opp {
-      background: var(--opp);
-      color: #ffffff;
-      box-shadow: 0 2px 8px var(--opp-glow);
+      gap: 10px;
     }
 
     .header-btn {
       background: var(--surface-card);
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 7px 12px;
+      padding: 8px 14px;
       border-radius: var(--radius-sm);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
@@ -210,12 +161,12 @@
       border-color: var(--accent);
     }
 
-    /* ── Stepper Navigation Tabs (Master Stage only) ── */
+    /* ── 4-Phase Stepper Tabs ── */
     .stepper-bar {
       display: flex;
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 0 16px;
+      padding: 0 20px;
       overflow-x: auto;
       scrollbar-width: none;
     }
@@ -225,8 +176,8 @@
     .step-tab {
       flex: 1;
       min-width: 140px;
-      max-width: 280px;
-      padding: 14px 16px;
+      max-width: 300px;
+      padding: 16px 20px;
       text-align: center;
       background: transparent;
       border: none;
@@ -234,7 +185,7 @@
       color: var(--text-muted);
       cursor: pointer;
       font-family: var(--font-main);
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -255,15 +206,15 @@
     }
 
     .step-num {
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       background: var(--surface-card);
       border: 1px solid var(--border);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
     }
 
     .step-tab.active .step-num {
@@ -281,15 +232,6 @@
       padding: 24px 20px 80px;
     }
 
-    .door-view {
-      display: none;
-      animation: fadeIn 0.25s ease-out;
-    }
-
-    .door-view.active {
-      display: block;
-    }
-
     .phase-view {
       display: none;
       animation: fadeIn 0.25s ease-out;
@@ -304,102 +246,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── 3-Door Entry Selection Screen ── */
-    .portal-hero {
-      text-align: center;
-      padding: 30px 16px 20px;
-      max-width: 780px;
-      margin: 0 auto;
-    }
-
-    .portal-hero h2 {
-      font-size: clamp(1.6rem, 4vw, 2.3rem);
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      margin-bottom: 10px;
-    }
-
-    .portal-hero p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.55;
-    }
-
-    .doors-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin: 28px 0;
-    }
-
-    .door-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px 24px;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.2s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .door-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-    }
-
-    .door-card.master:hover { border-color: var(--accent); }
-    .door-card.govt:hover { border-color: var(--govt); }
-    .door-card.opp:hover { border-color: var(--opp); }
-
-    .door-card.master { border-top: 5px solid var(--accent); }
-    .door-card.govt { border-top: 5px solid var(--govt); }
-    .door-card.opp { border-top: 5px solid var(--opp); }
-
-    .door-icon { font-size: 2.6rem; margin-bottom: 14px; }
-    .door-title { font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
-    .door-badge {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .door-badge.master { background: rgba(79, 126, 248, 0.2); color: #93c5fd; }
-    .door-badge.govt { background: var(--govt-dim); color: var(--govt); }
-    .door-badge.opp { background: var(--opp-dim); color: var(--opp); }
-
-    .door-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px; flex: 1; }
-    .door-features { font-size: 0.78rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 20px; }
-    .door-features li { margin-bottom: 4px; list-style: none; display: flex; align-items: center; gap: 6px; }
-
-    .btn-door-enter {
-      width: 100%;
-      padding: 12px;
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      font-weight: 800;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      color: #fff;
-    }
-
-    .door-card.master .btn-door-enter { background: var(--accent); }
-    .door-card.govt .btn-door-enter { background: var(--govt); }
-    .door-card.opp .btn-door-enter { background: var(--opp); }
-
-    /* ── Common Cards & Panels ── */
+    /* ── Cards & Panels ── */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -425,24 +272,14 @@
       margin-bottom: 18px;
     }
 
-    /* ── Topic Display in All Rooms ── */
+    /* ── Topic Display Hero ── */
     .topic-hero {
       background: linear-gradient(135deg, rgba(79, 126, 248, 0.12), rgba(139, 92, 246, 0.08));
       border: 1px solid rgba(79, 126, 248, 0.35);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: 28px;
       margin-bottom: 24px;
       position: relative;
-    }
-
-    .topic-hero.govt-tint {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(79, 126, 248, 0.06));
-      border-color: rgba(16, 185, 129, 0.35);
-    }
-
-    .topic-hero.opp-tint {
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(139, 92, 246, 0.06));
-      border-color: rgba(239, 68, 68, 0.35);
     }
 
     .motion-badge {
@@ -469,21 +306,27 @@
     }
 
     .motion-title-en {
-      font-size: clamp(1.15rem, 3vw, 1.55rem);
+      font-size: clamp(1.25rem, 3.5vw, 1.7rem);
       font-weight: 800;
       line-height: 1.35;
       color: #ffffff;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .motion-title-bn {
       font-family: var(--font-bn);
-      font-size: clamp(1rem, 2.4vw, 1.25rem);
+      font-size: clamp(1.05rem, 2.8vw, 1.35rem);
       color: #cbd5e1;
       line-height: 1.5;
-      margin-bottom: 16px;
-      padding-left: 12px;
+      margin-bottom: 20px;
+      padding-left: 14px;
       border-left: 3px solid var(--accent);
+    }
+
+    .topic-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     .btn-action {
@@ -527,6 +370,152 @@
       border-color: var(--accent);
     }
 
+    /* ── Teams Grid ── */
+    .teams-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .teams-grid { grid-template-columns: 1fr; }
+    }
+
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .team-card.govt { border-top: 4px solid var(--govt); }
+    .team-card.opp { border-top: 4px solid var(--opp); }
+
+    .team-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .team-name-input {
+      background: transparent;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      border-bottom: 1px dashed var(--border);
+      padding: 2px 4px;
+      width: 80%;
+    }
+
+    .speaker-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      gap: 10px;
+    }
+
+    .speaker-row:last-child { border-bottom: none; }
+
+    .speaker-role-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      width: 140px;
+      flex-shrink: 0;
+    }
+
+    .speaker-name-input {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.85rem;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      width: 100%;
+    }
+
+    /* ── Format Selector ── */
+    .timing-toggle-group {
+      display: flex;
+      gap: 8px;
+      background: var(--surface-card);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+
+    .timing-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .timing-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* ── Prep Room Schedule & Format Matrix ── */
+    .schedule-matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .schedule-turn-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      position: relative;
+    }
+
+    .schedule-turn-card.govt { border-left: 3px solid var(--govt); }
+    .schedule-turn-card.opp { border-left: 3px solid var(--opp); }
+
+    .turn-num-tag {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .turn-speaker-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .turn-timing-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.06);
+      color: #93c5fd;
+      margin-bottom: 6px;
+    }
+
+    .turn-role-desc {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
     /* ── Live Stage Master Styles ── */
     .stage-container {
       display: grid;
@@ -543,12 +532,12 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 28px;
-      position: relative;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
     .stage-main.govt-active {
@@ -641,9 +630,9 @@
     .btn-big-play {
       background: var(--govt);
       color: #fff;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 800;
-      padding: 12px 28px;
+      padding: 12px 26px;
       border-radius: var(--radius);
       border: none;
       cursor: pointer;
@@ -654,30 +643,12 @@
       transition: all 0.15s ease;
     }
 
-    .btn-big-play:hover { transform: translateY(-2px); filter: brightness(1.1); }
-
-    .btn-big-pause {
-      background: var(--warning);
-      color: #000;
-      font-size: 1.1rem;
-      font-weight: 800;
-      padding: 12px 28px;
-      border-radius: var(--radius);
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.35);
-      transition: all 0.15s ease;
-    }
-
     .btn-poi {
       background: #0284c7;
       color: #ffffff;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 700;
-      padding: 12px 20px;
+      padding: 12px 18px;
       border-radius: var(--radius);
       border: none;
       cursor: pointer;
@@ -733,158 +704,6 @@
     .queue-item-side.govt { background: var(--govt); }
     .queue-item-side.opp { background: var(--opp); }
 
-    /* ── Team Isolated Room Styles (Govt / Opp) ── */
-    .team-room-header {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 22px;
-      margin-bottom: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .team-room-header.govt { border-top: 4px solid var(--govt); }
-    .team-room-header.opp { border-top: 4px solid var(--opp); }
-
-    .team-privacy-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .team-privacy-pill.govt { background: var(--govt-dim); color: var(--govt); border: 1px solid var(--govt); }
-    .team-privacy-pill.opp { background: var(--opp-dim); color: var(--opp); border: 1px solid var(--opp); }
-
-    /* Team Argument Board */
-    .argument-board-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    .arg-card {
-      background: var(--surface-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    .arg-card.govt-border { border-left: 3px solid var(--govt); }
-    .arg-card.opp-border { border-left: 3px solid var(--opp); }
-
-    .arg-card-claim { font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
-    .arg-card-evidence { font-size: 0.82rem; color: #cbd5e1; line-height: 1.45; margin-bottom: 8px; }
-    .arg-card-impact { font-size: 0.78rem; color: #93c5fd; line-height: 1.4; margin-bottom: 12px; }
-    .arg-card-footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: var(--text-dim); }
-
-    .btn-delete-card { background: none; border: none; color: var(--opp); cursor: pointer; font-size: 0.75rem; }
-
-    /* Add Argument Modal/Drawer in Team Room */
-    .add-arg-form {
-      background: var(--surface-card);
-      border: 1px dashed var(--border);
-      border-radius: var(--radius);
-      padding: 18px;
-      margin-bottom: 20px;
-    }
-
-    .add-arg-form input,
-    .add-arg-form textarea,
-    .add-arg-form select {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      color: var(--text);
-      font-family: var(--font-main);
-      padding: 9px 12px;
-      font-size: 0.85rem;
-      margin-bottom: 10px;
-    }
-
-    /* Turn-by-Turn Scaffolding Coach */
-    .coach-tabs {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      margin-bottom: 14px;
-      scrollbar-width: none;
-    }
-
-    .coach-tab-btn {
-      background: var(--surface-card);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 8px 14px;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .coach-tab-btn.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
-    }
-
-    .coach-turn-advice {
-      background: var(--surface-card);
-      border-left: 3px solid var(--accent);
-      padding: 12px 16px;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      line-height: 1.5;
-      margin-bottom: 14px;
-    }
-
-    /* Speech Builder Notepad */
-    .notepad-textarea {
-      width: 100%;
-      height: 160px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      color: var(--text);
-      font-family: var(--font-main);
-      padding: 12px;
-      font-size: 0.88rem;
-      line-height: 1.55;
-      resize: vertical;
-    }
-
-    /* Podium Alert Banner */
-    .podium-turn-banner {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.15));
-      border: 1px solid var(--warning);
-      border-radius: var(--radius);
-      padding: 14px 18px;
-      margin-bottom: 18px;
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      animation: pulseAlert 1.5s infinite;
-    }
-
-    .podium-turn-banner.active { display: flex; }
-
     /* Modals & Popups */
     .modal-backdrop {
       position: fixed;
@@ -923,11 +742,10 @@
     .modal-body { padding: 24px; overflow-y: auto; line-height: 1.6; font-size: 0.9rem; }
     .btn-close { background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; }
 
-    /* Print styling */
     @media print {
       body { background: #fff; color: #000; }
-      header.app-header, .stepper-bar, .room-selector-wrap, .stage-controls, .btn-action, .btn-secondary { display: none !important; }
-      .card, .results-hero, .score-matrix-table { border: 1px solid #ccc; background: #fff; color: #000; }
+      header.app-header, .stepper-bar, .stage-controls, .btn-action, .btn-secondary { display: none !important; }
+      .card { border: 1px solid #ccc; background: #fff; color: #000; }
     }
   </style>
 </head>
@@ -938,610 +756,472 @@
     <div class="nav-left">
       <a href="../index.html" class="btn-back">
         <span>←</span>
-        <span>Activities</span>
+        <span>All Activities</span>
       </a>
       <div class="brand-title">
         <h1>
           <span>🇧🇩 Bangladesh Classroom Debate</span>
           <span class="badge-fmt">3v3 Parliamentary</span>
         </h1>
-        <span class="sub" id="header-sub-label">45–60 Min Session · Rajshahi Topics · POI Bells</span>
+        <span class="sub">45–60 Min Session · Rajshahi Topics · POI Bells</span>
       </div>
     </div>
     
     <div class="nav-right">
-      <!-- 3-Door Room Switcher -->
-      <div class="room-selector-wrap" title="Switch Between Public Stage & Team Rooms">
-        <button class="room-btn active master" id="btn-room-master" onclick="enterDoor('master')">
-          <span>📺 Master Stage</span>
-        </button>
-        <button class="room-btn govt" id="btn-room-govt" onclick="enterDoor('govt')">
-          <span>🏛️ Govt Room</span>
-        </button>
-        <button class="room-btn opp" id="btn-room-opp" onclick="enterDoor('opp')">
-          <span>🛡️ Opp Room</span>
-        </button>
-      </div>
-
       <button class="header-btn" onclick="openRulesModal()">
         <span>📜</span>
-        <span>Rules</span>
+        <span>Debate Rules &amp; Rubric</span>
       </button>
       <button class="header-btn" onclick="toggleFullScreen()">
         <span>⛶</span>
-        <span>Projector</span>
+        <span>Projector Mode</span>
       </button>
     </div>
   </header>
+
+  <!-- ── 4-Phase Stepper Navigation ── -->
+  <nav class="stepper-bar">
+    <button class="step-tab active" id="tab-step-1" onclick="switchPhase(1)">
+      <span class="step-num">1</span>
+      <span>Topic &amp; Teams</span>
+    </button>
+    <button class="step-tab" id="tab-step-2" onclick="switchPhase(2)">
+      <span class="step-num">2</span>
+      <span>Prep Room (10-15m)</span>
+    </button>
+    <button class="step-tab" id="tab-step-3" onclick="switchPhase(3)">
+      <span class="step-num">3</span>
+      <span>Live Debate Stage</span>
+    </button>
+    <button class="step-tab" id="tab-step-4" onclick="switchPhase(4)">
+      <span class="step-num">4</span>
+      <span>Adjudication &amp; Results</span>
+    </button>
+  </nav>
 
   <!-- ── Main Workspace ── -->
   <main class="main-content">
 
     <!-- ══════════════════════════════════════════════════════════ -->
-    <!-- DOOR 0: 3-DOOR ENTRY PORTAL SCREEN                         -->
+    <!-- PHASE 1: TOPIC & TEAMS SETUP                               -->
     <!-- ══════════════════════════════════════════════════════════ -->
-    <section class="door-view" id="door-portal-screen">
-      <div class="portal-hero">
-        <span class="motion-badge">Classroom Debate Portal</span>
-        <h2>Choose Your Debate Room</h2>
-        <p>
-          Students: Join your assigned team room below to claim roles, build private arguments, and use the turn-by-turn conversation coach. Your team's notes are 100% private to prevent cheating.
-        </p>
-      </div>
-
-      <div class="doors-grid">
-        
-        <!-- Door 1: Live Classroom Master View -->
-        <div class="door-card master" onclick="enterDoor('master')">
-          <div>
-            <div class="door-icon">📺</div>
-            <span class="door-badge master">Master Screen / Audience</span>
-            <h3 class="door-title">Live Classroom View</h3>
-            <p class="door-desc">
-              The public front-of-class stage. Displays the motion, master speech countdowns, POI window cues, and official adjudicator mark sheets.
-            </p>
-            <ul class="door-features">
-              <li>✓ Projector &amp; Smart-TV optimized</li>
-              <li>✓ Acoustic debate bells (1:00, 3:00, 4:00)</li>
-              <li>🔒 Zero private notes exposed</li>
-            </ul>
-          </div>
-          <button class="btn-door-enter">Open Master Stage →</button>
-        </div>
-
-        <!-- Door 2: Government Team Room -->
-        <div class="door-card govt" onclick="enterDoor('govt')">
-          <div>
-            <div class="door-icon">🏛️</div>
-            <span class="door-badge govt">Treasury Team (পক্ষ দল)</span>
-            <h3 class="door-title">Government Room</h3>
-            <p class="door-desc">
-              Private strategy room for Government debaters to assign roles, build constructive arguments, and draft speeches.
-            </p>
-            <ul class="door-features">
-              <li>✓ Private team argument card board</li>
-              <li>✓ Turn-by-turn scaffolding coach</li>
-              <li>🔒 100% hidden from Opposition &amp; Projector</li>
-            </ul>
-          </div>
-          <button class="btn-door-enter">Enter Government Room →</button>
-        </div>
-
-        <!-- Door 3: Opposition Team Room -->
-        <div class="door-card opp" onclick="enterDoor('opp')">
-          <div>
-            <div class="door-icon">🛡️</div>
-            <span class="door-badge opp">Opposition Team (বিপক্ষ দল)</span>
-            <h3 class="door-title">Opposition Room</h3>
-            <p class="door-desc">
-              Private strategy room for Opposition debaters to assign roles, prepare counter-models, and draft POIs.
-            </p>
-            <ul class="door-features">
-              <li>✓ Private team rebuttal board &amp; POI bank</li>
-              <li>✓ Turn-by-turn scaffolding coach</li>
-              <li>🔒 100% hidden from Government &amp; Projector</li>
-            </ul>
-          </div>
-          <button class="btn-door-enter">Enter Opposition Room →</button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <!-- DOOR 1: MASTER STAGE (PROJECTOR & AUDIENCE VIEW)          -->
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <section class="door-view active" id="door-master-view">
+    <section class="phase-view active" id="phase-1">
       
-      <!-- Stepper Tabs for Master Stage -->
-      <nav class="stepper-bar" style="margin-bottom: 20px; border-radius: var(--radius);">
-        <button class="step-tab active" id="tab-step-1" onclick="switchPhase(1)">
-          <span class="step-num">1</span>
-          <span>Topic &amp; Format</span>
-        </button>
-        <button class="step-tab" id="tab-step-2" onclick="switchPhase(2)">
-          <span class="step-num">2</span>
-          <span>Team Prep (10-15m)</span>
-        </button>
-        <button class="step-tab" id="tab-step-3" onclick="switchPhase(3)">
-          <span class="step-num">3</span>
-          <span>Live Debate Stage</span>
-        </button>
-        <button class="step-tab" id="tab-step-4" onclick="switchPhase(4)">
-          <span class="step-num">4</span>
-          <span>Official Verdict</span>
-        </button>
-      </nav>
-
-      <!-- PHASE 1: TOPIC SETUP (MASTER) -->
-      <div class="phase-view active" id="phase-1">
-        <div class="topic-hero">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div>
-              <span class="motion-badge">Selected Debate Motion</span>
-              <span class="motion-category-tag" id="current-motion-cat">Rajshahi Education &amp; Student Life</span>
-            </div>
-            <span style="font-size: 0.75rem; color: var(--text-muted);" id="motion-index-label">Topic 1 of 50</span>
+      <!-- Topic Selection Hero -->
+      <div class="topic-hero">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div>
+            <span class="motion-badge">Classroom Debate Motion</span>
+            <span class="motion-category-tag" id="current-motion-cat">Rajshahi Education &amp; Student Life</span>
           </div>
-
-          <h2 class="motion-title-en" id="current-motion-en">
-            This House would ban private coaching centers in Rajshahi to revive classroom attendance and school engagement.
-          </h2>
-
-          <div class="motion-title-bn" id="current-motion-bn">
-            এই সংসদ শ্রেণিকক্ষের উপস্থিতি ও সক্রিয়তা বাড়াতে রাজশাহীতে প্রাইভেট কোচিং সেন্টার নিষিদ্ধ করবে।
-          </div>
-
-          <div class="topic-actions" style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <button class="btn-action" onclick="generateRandomTopic()">
-              <span>🎲 Random Motion</span>
-            </button>
-            <button class="btn-secondary" onclick="openTopicBrowserModal()">
-              <span>📚 Browse 50 Topics</span>
-            </button>
-            <button class="btn-secondary" onclick="toggleCustomTopicInput()">
-              <span>✏️ Teacher Custom Topic</span>
-            </button>
-          </div>
-
-          <!-- Custom Topic Input (Collapsible) -->
-          <div id="custom-topic-box" style="display: none; margin-top: 14px; background: var(--surface-card); padding: 14px; border-radius: var(--radius-sm);">
-            <input type="text" id="custom-topic-en" placeholder="Teacher's custom motion in English..." style="width: 100%; background: var(--bg); border: 1px solid var(--border); padding: 8px; color: #fff; margin-bottom: 8px;">
-            <input type="text" id="custom-topic-bn" placeholder="Bengali translation (এই সংসদ মনে করে যে...)" style="width: 100%; background: var(--bg); border: 1px solid var(--border); padding: 8px; color: #fff; margin-bottom: 8px;">
-            <button class="btn-action" onclick="applyCustomTopic()" style="padding: 6px 14px; font-size: 0.82rem;">Apply Custom Motion</button>
-          </div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);" id="motion-index-label">Topic 1 of 50</span>
         </div>
 
-        <!-- Format Selector -->
-        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="font-weight: 800; font-size: 0.88rem;">Format:</span>
+        <h2 class="motion-title-en" id="current-motion-en">
+          This House would ban private coaching centers in Rajshahi to revive classroom attendance and school engagement.
+        </h2>
+
+        <div class="motion-title-bn" id="current-motion-bn">
+          এই সংসদ শ্রেণিকক্ষের উপস্থিতি ও সক্রিয়তা বাড়াতে রাজশাহীতে প্রাইভেট কোচিং সেন্টার নিষিদ্ধ করবে।
+        </div>
+
+        <div class="topic-actions">
+          <button class="btn-action" onclick="generateRandomTopic()">
+            <span>🎲 Random Topic (50 Topics)</span>
+          </button>
+          <button class="btn-secondary" onclick="openTopicBrowserModal()">
+            <span>📚 Browse Topics by Category</span>
+          </button>
+          <button class="btn-secondary" onclick="toggleCustomTopicInput()">
+            <span>✏️ Input Custom Motion</span>
+          </button>
+        </div>
+
+        <!-- Custom Motion Input (Collapsible) -->
+        <div id="custom-topic-box" style="display: none; margin-top: 16px; background: var(--surface-card); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+          <div style="font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; color: #93c5fd;">Teacher's Custom Debate Motion:</div>
+          <input type="text" id="custom-topic-en" placeholder="Enter motion in English (e.g. This House would mandate solar panels in Rajshahi)..." style="width: 100%; background: var(--bg); border: 1px solid var(--border); padding: 9px 12px; color: #fff; margin-bottom: 8px; border-radius: var(--radius-sm); font-size: 0.88rem;">
+          <input type="text" id="custom-topic-bn" placeholder="Bengali translation (ঐচ্ছিক - এই সংসদ মনে করে যে...)" style="width: 100%; background: var(--bg); border: 1px solid var(--border); padding: 9px 12px; color: #fff; margin-bottom: 12px; border-radius: var(--radius-sm); font-size: 0.88rem;">
+          <button class="btn-action" onclick="applyCustomTopic()" style="padding: 8px 16px; font-size: 0.85rem;">Apply Custom Motion 🚀</button>
+        </div>
+      </div>
+
+      <!-- Format & Teams Configuration -->
+      <div class="card">
+        <div class="card-title">
+          <span>⚙️ Match Settings &amp; Speaking Timers</span>
+          <div class="timing-toggle-group">
             <button class="timing-btn active" id="btn-fmt-standard" onclick="setTimingFormat('standard')">Standard (45–60m)</button>
             <button class="timing-btn" id="btn-fmt-express" onclick="setTimingFormat('express')">Express (30–35m)</button>
           </div>
+        </div>
+        <p class="card-desc">Standard Bangladesh parliamentary timing gives 4:00 min for main substantive speeches (POI allowed 1:00–3:00) and 2:30 min for reply speeches.</p>
+
+        <!-- Teams Roster -->
+        <div class="teams-grid">
+          
+          <!-- Government Team -->
+          <div class="team-card govt">
+            <div class="team-header">
+              <span style="font-weight: 800; font-size: 0.95rem; color: var(--govt);">🏛️ Government (পক্ষ দল)</span>
+              <input type="text" class="team-name-input" id="team-name-govt" value="Government Team (পক্ষ দল)" style="width: 60%; font-size: 0.88rem;">
+            </div>
+
+            <div class="speaker-row">
+              <span class="speaker-role-label">1st: Prime Minister</span>
+              <input type="text" class="speaker-name-input" id="spk-g1" value="Prime Minister">
+            </div>
+            <div class="speaker-row">
+              <span class="speaker-role-label">2nd: Minister</span>
+              <input type="text" class="speaker-name-input" id="spk-g2" value="Deputy Speaker">
+            </div>
+            <div class="speaker-row">
+              <span class="speaker-role-label">3rd: Govt Whip</span>
+              <input type="text" class="speaker-name-input" id="spk-g3" value="Government Whip">
+            </div>
+            <div class="speaker-row">
+              <span class="speaker-role-label">Reply Speaker</span>
+              <input type="text" class="speaker-name-input" id="spk-gr" value="Prime Minister / 2nd Speaker">
+            </div>
+          </div>
+
+          <!-- Opposition Team -->
+          <div class="team-card opp">
+            <div class="team-header">
+              <span style="font-weight: 800; font-size: 0.95rem; color: var(--opp);">🛡️ Opposition (বিপক্ষ দল)</span>
+              <input type="text" class="team-name-input" id="team-name-opp" value="Opposition Team (বিপক্ষ দল)" style="width: 60%; font-size: 0.88rem;">
+            </div>
+
+            <div class="speaker-row">
+              <span class="speaker-role-label">1st: Leader of Opp</span>
+              <input type="text" class="speaker-name-input" id="spk-o1" value="Leader of Opposition">
+            </div>
+            <div class="speaker-row">
+              <span class="speaker-role-label">2nd: Deputy Leader</span>
+              <input type="text" class="speaker-name-input" id="spk-o2" value="Deputy Leader of Opp">
+            </div>
+            <div class="speaker-row">
+              <span class="speaker-role-label">3rd: Opp Whip</span>
+              <input type="text" class="speaker-name-input" id="spk-o3" value="Opposition Whip">
+            </div>
+            <div class="speaker-row">
+              <span class="speaker-role-label">Reply Speaker</span>
+              <input type="text" class="speaker-name-input" id="spk-or" value="Leader of Opp / 2nd Speaker">
+            </div>
+          </div>
+
+        </div>
+
+        <div style="display: flex; justify-content: flex-end;">
           <button class="btn-action" onclick="startPrepPhase()" style="padding: 12px 24px;">
-            <span>Start Team Prep Time (12m) →</span>
+            <span>Start Team Prep Time (12 Min) →</span>
           </button>
         </div>
       </div>
 
-      <!-- PHASE 2: TEAM PREP TIME (MASTER - NO SECRET NOTES) -->
-      <div class="phase-view" id="phase-2">
-        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 24px; text-align: center; margin-bottom: 20px;">
-          <span class="motion-badge">Team Preparation Phase (12 Minutes)</span>
-          <h2 style="font-size: 1.25rem; font-weight: 800; margin: 10px 0 16px;" id="prep-motion-banner"></h2>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- PHASE 2: TEAM PREPARATION ROOM (CLEAN - NO SCRATCHPAD)     -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <section class="phase-view" id="phase-2">
+      
+      <!-- Big Prep Timer Card -->
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 30px 24px; text-align: center; margin-bottom: 24px;">
+        <span class="motion-badge">Phase 2 · Team Preparation Room</span>
+        <h2 style="font-size: 1.25rem; font-weight: 800; margin: 10px 0 14px; color: #fff;" id="prep-motion-banner">...</h2>
+        
+        <div class="stage-timer-display" id="prep-timer-display" style="font-size: 5.5rem; margin: 6px 0 16px;">12:00</div>
+        
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <button class="btn-big-play" id="btn-prep-toggle" onclick="togglePrepTimer()">
+            <span id="prep-play-icon">▶</span>
+            <span id="prep-play-text">Start Prep Timer</span>
+          </button>
+          <button class="btn-secondary" onclick="resetPrepTimer()">↺ Reset (12m)</button>
+          <button class="btn-secondary" onclick="addPrepTime(120)">+2 Minutes</button>
+        </div>
+      </div>
+
+      <!-- Debate Format & Speaking Order Schedule with Exact Timings -->
+      <div class="card">
+        <div class="card-title">
+          <span>📋 Debate Speaking Order &amp; Timing Schedule</span>
+          <span style="font-size: 0.75rem; color: #93c5fd; font-weight: 700;">8 Total Speeches · Bangladesh 3v3 Rules</span>
+        </div>
+        <p class="card-desc">
+          Debaters: Review your speaking sequence, allocated speech durations, and POI windows below so your team can plan your arguments and rebuttal strategy.
+        </p>
+
+        <div class="schedule-matrix-grid">
           
-          <div class="stage-timer-display" id="prep-timer-display" style="font-size: 5.5rem;">12:00</div>
-          
-          <div style="display: flex; justify-content: center; gap: 12px; margin-top: 10px;">
-            <button class="btn-big-play" id="btn-prep-toggle" onclick="togglePrepTimer()">
-              <span id="prep-play-icon">▶</span>
-              <span id="prep-play-text">Start Prep Timer</span>
+          <!-- Turn 1 -->
+          <div class="schedule-turn-card govt">
+            <div class="turn-num-tag">Turn 1 · Government</div>
+            <div class="turn-speaker-title">1st Speaker: Prime Minister</div>
+            <span class="turn-timing-badge" id="sched-time-1">4:00 min (POIs: 1:00–3:00)</span>
+            <div class="turn-role-desc">
+              Define the motion terms, outline the problem context in Rajshahi, establish the 3-step policy model, and present Arguments 1 &amp; 2.
+            </div>
+          </div>
+
+          <!-- Turn 2 -->
+          <div class="schedule-turn-card opp">
+            <div class="turn-num-tag">Turn 2 · Opposition</div>
+            <div class="turn-speaker-title">1st Speaker: Leader of Opposition</div>
+            <span class="turn-timing-badge" id="sched-time-2">4:00 min (POIs: 1:00–3:00)</span>
+            <div class="turn-role-desc">
+              Challenge definitions if flawed, rebut the PM's model, lay out the Opposition's counter-framework, and present Opp Arguments 1 &amp; 2.
+            </div>
+          </div>
+
+          <!-- Turn 3 -->
+          <div class="schedule-turn-card govt">
+            <div class="turn-num-tag">Turn 3 · Government</div>
+            <div class="turn-speaker-title">2nd Speaker: Minister</div>
+            <span class="turn-timing-badge" id="sched-time-3">4:00 min (POIs: 1:00–3:00)</span>
+            <div class="turn-role-desc">
+              Systematically rebut the Leader of Opposition, defend the PM's policy, and deliver Argument 3 with deep real-world evidence.
+            </div>
+          </div>
+
+          <!-- Turn 4 -->
+          <div class="schedule-turn-card opp">
+            <div class="turn-num-tag">Turn 4 · Opposition</div>
+            <div class="turn-speaker-title">2nd Speaker: Deputy Leader</div>
+            <span class="turn-timing-badge" id="sched-time-4">4:00 min (POIs: 1:00–3:00)</span>
+            <div class="turn-role-desc">
+              Rebut the Government Minister, reinforce the Opposition stance with local statistics, and introduce Opp Argument 3.
+            </div>
+          </div>
+
+          <!-- Turn 5 -->
+          <div class="schedule-turn-card govt">
+            <div class="turn-num-tag">Turn 5 · Government</div>
+            <div class="turn-speaker-title">3rd Speaker: Government Whip</div>
+            <span class="turn-timing-badge" id="sched-time-5">4:00 min (POIs: 1:00–3:00)</span>
+            <div class="turn-role-desc">
+              Break down the 3 core clashes of the debate. Demolish opposition claims and summarize why Government won (No new arguments permitted).
+            </div>
+          </div>
+
+          <!-- Turn 6 -->
+          <div class="schedule-turn-card opp">
+            <div class="turn-num-tag">Turn 6 · Opposition</div>
+            <div class="turn-speaker-title">3rd Speaker: Opposition Whip</div>
+            <span class="turn-timing-badge" id="sched-time-6">4:00 min (POIs: 1:00–3:00)</span>
+            <div class="turn-role-desc">
+              Highlight the main points of clash, answer all Government attacks, and prove why the proposition fails (No new arguments permitted).
+            </div>
+          </div>
+
+          <!-- Turn 7 -->
+          <div class="schedule-turn-card opp">
+            <div class="turn-num-tag">Turn 7 · Opposition (Reply)</div>
+            <div class="turn-speaker-title">Opposition Reply Speech</div>
+            <span class="turn-timing-badge" id="sched-time-7">2:30 min (No POIs Allowed)</span>
+            <div class="turn-role-desc">
+              Opposition speaks first in reply speeches. Deliver a holistic 'Two Worlds' comparison showing why the Opposition counter-model prevails.
+            </div>
+          </div>
+
+          <!-- Turn 8 -->
+          <div class="schedule-turn-card govt">
+            <div class="turn-num-tag">Turn 8 · Government (Reply)</div>
+            <div class="turn-speaker-title">Government Reply Speech</div>
+            <span class="turn-timing-badge" id="sched-time-8">2:30 min (No POIs Allowed)</span>
+            <div class="turn-role-desc">
+              Government delivers the final speech of the debate. Re-anchor the core principle and make the final closing appeal to the adjudicator.
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Practical Case Preparation Guide -->
+        <div style="background: var(--surface-card); border-radius: var(--radius); padding: 18px; margin-top: 14px;">
+          <div style="font-weight: 800; color: #93c5fd; margin-bottom: 8px; font-size: 0.9rem;">💡 Quick Case-Building Checklist for Teams:</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; font-size: 0.82rem; color: var(--text-muted);">
+            <div><strong>1. A-R-E-I Method:</strong><br>Assertion (দাবি) $\rightarrow$ Reasoning (যুক্তি) $\rightarrow$ Evidence in Rajshahi (উপাত্ত) $\rightarrow$ Impact (ফলাফল).</div>
+            <div><strong>2. Protected POI Window:</strong><br>First 1 min &amp; last 1 min are protected (Bell rings). POIs allowed between 1:00 and 3:00.</div>
+            <div><strong>3. Reply Speeches:</strong><br>Delivered by 1st or 2nd speaker only. No new arguments allowed in reply turns.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 24px;">
+        <button class="btn-secondary" onclick="switchPhase(1)">← Back to Topic Setup</button>
+        <button class="btn-action" onclick="startLiveStagePhase()" style="padding: 12px 24px;">
+          <span>Enter Live Debate Stage 🎙️ →</span>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- PHASE 3: LIVE DEBATE STAGE                                 -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <section class="phase-view" id="phase-3">
+      
+      <!-- Motion Banner -->
+      <div style="background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+        <div style="font-size: 0.92rem; font-weight: 700; color: #fff;" id="stage-motion-banner">Motion: ...</div>
+        <button class="btn-secondary" style="padding: 5px 12px; font-size: 0.78rem;" onclick="playBellSound(1)">🔔 Ring Bell</button>
+      </div>
+
+      <div class="stage-container">
+        
+        <!-- Live Center Stage -->
+        <div class="stage-main" id="stage-main-box">
+          <div class="current-speaker-badge govt" id="stage-speaker-badge">
+            <span id="stage-side-dot">●</span>
+            <span id="stage-speaker-num">1st Speaker</span>
+          </div>
+
+          <h2 class="current-speaker-name" id="stage-speaker-name">Prime Minister</h2>
+          <div class="current-speaker-role" id="stage-speaker-role">Government Team · 1st Speaker (4:00 min)</div>
+
+          <div class="stage-timer-display protected" id="stage-timer-clock">04:00</div>
+
+          <div class="poi-status-indicator closed" id="stage-poi-indicator">
+            <span>🔒 First Minute Protected (No POIs)</span>
+          </div>
+
+          <div class="stage-controls">
+            <button class="btn-big-play" id="btn-speech-toggle" onclick="toggleSpeechTimer()">
+              <span id="speech-play-icon">▶</span>
+              <span id="speech-play-text">Start Speech</span>
             </button>
-            <button class="btn-secondary" onclick="resetPrepTimer()">↺ Reset</button>
-            <button class="btn-secondary" onclick="addPrepTime(120)">+2 Min</button>
+            <button class="btn-poi" onclick="triggerPOI()">
+              <span>✋ Point of Information (POI)</span>
+            </button>
+            <button class="btn-secondary" onclick="resetCurrentSpeechTimer()">↺ Reset</button>
+            <button class="btn-secondary" onclick="nextSpeaker()">Next Speaker →</button>
           </div>
 
-          <div style="background: var(--surface-card); border-radius: var(--radius); padding: 16px; max-width: 700px; margin: 24px auto 0; text-align: left; font-size: 0.85rem; color: var(--text-muted);">
-            <div style="font-weight: 800; color: #93c5fd; margin-bottom: 6px;">📢 Student Instructions:</div>
-            <div>Debaters: Open your phones and enter <strong>🏛️ Government Room</strong> or <strong>🛡️ Opposition Room</strong> to assign your team roles, share argument cards, and prepare your speeches.</div>
+          <div class="poi-active-overlay" id="poi-active-box">
+            <span style="font-weight: 800; font-size: 0.85rem; color: #38bdf8;">POI Stopwatch:</span>
+            <div class="poi-clock" id="poi-clock-num">15s</div>
+            <button class="btn-secondary" style="padding: 4px 10px; font-size: 0.78rem;" onclick="dismissPOI()">✕ Close</button>
           </div>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <button class="btn-secondary" onclick="switchPhase(1)">← Back to Setup</button>
-          <button class="btn-action" onclick="startLiveStagePhase()" style="padding: 12px 24px;">
-            <span>Enter Live Debate Stage 🎙️ →</span>
-          </button>
+        <!-- Speaking Queue & Adjudicator Rubric -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          
+          <div class="speech-queue-card">
+            <div style="font-size: 0.95rem; font-weight: 800; margin-bottom: 12px; display: flex; justify-content: space-between;">
+              <span>Speaking Order</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted);" id="queue-progress-lbl">1 / 8</span>
+            </div>
+            <div id="speech-queue-list"></div>
+          </div>
+
+          <!-- Adjudicator Rubric Sliders -->
+          <div class="card" style="padding: 18px; margin-bottom: 0;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+              <h4 style="font-size: 0.9rem; font-weight: 800;">⚖️ Adjudicator Rubric</h4>
+              <span style="font-size: 0.8rem; font-weight: 800; color: #fff;" id="current-score-total">Score: 75/100</span>
+            </div>
+
+            <div style="font-size: 0.8rem; display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; justify-content: space-between; gap: 8px;">
+                <span>Logic &amp; Analysis (35):</span>
+                <input type="range" min="15" max="35" value="26" id="rubric-logic" oninput="updateCurrentSpeakerScore()">
+                <span id="lbl-rubric-logic" style="width: 25px; text-align: right; font-weight: 700; color: var(--accent);">26</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; gap: 8px;">
+                <span>Evidence &amp; Context (20):</span>
+                <input type="range" min="8" max="20" value="15" id="rubric-facts" oninput="updateCurrentSpeakerScore()">
+                <span id="lbl-rubric-facts" style="width: 25px; text-align: right; font-weight: 700; color: var(--accent);">15</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; gap: 8px;">
+                <span>Delivery &amp; Style (20):</span>
+                <input type="range" min="8" max="20" value="15" id="rubric-delivery" oninput="updateCurrentSpeakerScore()">
+                <span id="lbl-rubric-delivery" style="width: 25px; text-align: right; font-weight: 700; color: var(--accent);">15</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; gap: 8px;">
+                <span>Rebuttal &amp; POI (15):</span>
+                <input type="range" min="5" max="15" value="11" id="rubric-rebuttal" oninput="updateCurrentSpeakerScore()">
+                <span id="lbl-rubric-rebuttal" style="width: 25px; text-align: right; font-weight: 700; color: var(--accent);">11</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; gap: 8px;">
+                <span>Team Strategy (10):</span>
+                <input type="range" min="4" max="10" value="8" id="rubric-team" oninput="updateCurrentSpeakerScore()">
+                <span id="lbl-rubric-team" style="width: 25px; text-align: right; font-weight: 700; color: var(--accent);">8</span>
+              </div>
+            </div>
+          </div>
+
         </div>
+
       </div>
 
-      <!-- PHASE 3: LIVE DEBATE STAGE (MASTER) -->
-      <div class="phase-view" id="phase-3">
-        <div style="background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
-          <div style="font-size: 0.92rem; font-weight: 700; color: #fff;" id="stage-motion-banner">Motion: ...</div>
-          <button class="btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="playBellSound(1)">🔔 Bell</button>
-        </div>
-
-        <div class="stage-container">
-          <div class="stage-main" id="stage-main-box">
-            <div class="current-speaker-badge govt" id="stage-speaker-badge">
-              <span id="stage-side-dot">●</span>
-              <span id="stage-speaker-num">1st Speaker</span>
-            </div>
-
-            <h2 class="current-speaker-name" id="stage-speaker-name">Prime Minister</h2>
-            <div class="current-speaker-role" id="stage-speaker-role">Government Team · 1st Speaker (4:00 min)</div>
-
-            <div class="stage-timer-display protected" id="stage-timer-clock">04:00</div>
-
-            <div class="poi-status-indicator closed" id="stage-poi-indicator">
-              <span>🔒 First Minute Protected (No POIs)</span>
-            </div>
-
-            <div class="stage-controls">
-              <button class="btn-big-play" id="btn-speech-toggle" onclick="toggleSpeechTimer()">
-                <span id="speech-play-icon">▶</span>
-                <span id="speech-play-text">Start Speech</span>
-              </button>
-              <button class="btn-poi" onclick="triggerPOI()">
-                <span>✋ Point of Information (POI)</span>
-              </button>
-              <button class="btn-secondary" onclick="resetCurrentSpeechTimer()">↺ Reset</button>
-              <button class="btn-secondary" onclick="nextSpeaker()">Next Speaker →</button>
-            </div>
-
-            <div class="poi-active-overlay" id="poi-active-box">
-              <span style="font-weight: 800; font-size: 0.85rem; color: #38bdf8;">POI Time:</span>
-              <div class="poi-clock" id="poi-clock-num">15s</div>
-              <button class="btn-secondary" style="padding: 4px 10px; font-size: 0.78rem;" onclick="dismissPOI()">✕ Close</button>
-            </div>
-          </div>
-
-          <!-- Queue & Adjudication -->
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div class="speech-queue-card">
-              <div style="font-size: 0.95rem; font-weight: 800; margin-bottom: 12px; display: flex; justify-content: space-between;">
-                <span>Speaking Order</span>
-                <span style="font-size: 0.75rem; color: var(--text-muted);" id="queue-progress-lbl">1 / 8</span>
-              </div>
-              <div id="speech-queue-list"></div>
-            </div>
-
-            <!-- Adjudicator Rubric -->
-            <div class="card" style="padding: 18px; margin-bottom: 0;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                <h4 style="font-size: 0.9rem; font-weight: 800;">⚖️ Adjudicator Rubric</h4>
-                <span style="font-size: 0.8rem; font-weight: 800; color: #fff;" id="current-score-total">Score: 75/100</span>
-              </div>
-
-              <div style="font-size: 0.8rem; display: flex; flex-direction: column; gap: 8px;">
-                <div style="display: flex; justify-content: space-between; gap: 8px;">
-                  <span>Logic (35):</span>
-                  <input type="range" min="15" max="35" value="26" id="rubric-logic" oninput="updateCurrentSpeakerScore()">
-                  <span id="lbl-rubric-logic" style="width: 25px; text-align: right; font-weight: 700; color: var(--accent);">26</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; gap: 8px;">
-                  <span>Evidence (20):</span>
-                  <input type="range" min="8" max="20" value="15" id="rubric-facts" oninput="updateCurrentSpeakerScore()">
-                  <span id="lbl-rubric-facts" style="width: 25px; text-align: right; font-weight: 700; color: var(--accent);">15</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; gap: 8px;">
-                  <span>Delivery (20):</span>
-                  <input type="range" min="8" max="20" value="15" id="rubric-delivery" oninput="updateCurrentSpeakerScore()">
-                  <span id="lbl-rubric-delivery" style="width: 25px; text-align: right; font-weight: 700; color: var(--accent);">15</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; gap: 8px;">
-                  <span>Rebuttal (15):</span>
-                  <input type="range" min="5" max="15" value="11" id="rubric-rebuttal" oninput="updateCurrentSpeakerScore()">
-                  <span id="lbl-rubric-rebuttal" style="width: 25px; text-align: right; font-weight: 700; color: var(--accent);">11</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; gap: 8px;">
-                  <span>Team (10):</span>
-                  <input type="range" min="4" max="10" value="8" id="rubric-team" oninput="updateCurrentSpeakerScore()">
-                  <span id="lbl-rubric-team" style="width: 25px; text-align: right; font-weight: 700; color: var(--accent);">8</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top: 24px; display: flex; justify-content: space-between;">
-          <button class="btn-secondary" onclick="switchPhase(2)">← Back to Prep Room</button>
-          <button class="btn-action" onclick="finishDebateAndShowResults()" style="padding: 12px 24px;">
-            <span>Finish Debate &amp; Results 🏆 →</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- PHASE 4: OFFICIAL RESULTS (MASTER) -->
-      <div class="phase-view" id="phase-4">
-        <div class="card" style="text-align: center; padding: 32px 20px; border-color: var(--govt);" id="results-hero-box">
-          <span class="motion-badge">Official Adjudicator Verdict</span>
-          <h2 class="current-speaker-name" id="verdict-winner-name" style="margin: 10px 0 6px;">Government Team Wins!</h2>
-          <div style="font-size: 1rem; color: var(--text-muted); margin-bottom: 16px;" id="verdict-margin-desc">Victory margin: 8.5 Points</div>
-
-          <div style="display: inline-flex; align-items: center; gap: 10px; background: var(--surface-card); padding: 8px 16px; border-radius: var(--radius);">
-            <span>🌟 Best Speaker (শ্রেষ্ঠ বক্তা):</span>
-            <span style="font-weight: 800; color: #fff;" id="verdict-best-speaker">Leader of Opposition</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-title">
-            <span>📊 Official Scorecard Breakdown</span>
-            <button class="btn-secondary" onclick="window.print()">🖨️ Print / Save</button>
-          </div>
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;">
-            <thead>
-              <tr style="border-bottom: 1px solid var(--border); text-align: left; color: var(--text-muted);">
-                <th style="padding: 8px;">Side</th>
-                <th>Role</th>
-                <th>Speaker</th>
-                <th>Logic</th>
-                <th>Evidence</th>
-                <th>Delivery</th>
-                <th>Rebuttal</th>
-                <th>Team</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody id="scorecard-table-body"></tbody>
-            <tfoot>
-              <tr style="font-weight: 800; border-top: 1px solid var(--border);">
-                <td colspan="3" style="color: var(--govt); padding: 10px 8px;">Government Total:</td>
-                <td colspan="5"></td>
-                <td id="govt-grand-total" style="color: var(--govt);">0</td>
-              </tr>
-              <tr style="font-weight: 800; border-top: 1px solid var(--border);">
-                <td colspan="3" style="color: var(--opp); padding: 10px 8px;">Opposition Total:</td>
-                <td colspan="5"></td>
-                <td id="opp-grand-total" style="color: var(--opp);">0</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-
-        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-          <button class="btn-secondary" onclick="switchPhase(3)">← Back to Stage</button>
-          <button class="btn-action" onclick="resetEntireDebate()">Start New Debate 🎲</button>
-        </div>
+      <div style="margin-top: 24px; display: flex; justify-content: space-between;">
+        <button class="btn-secondary" onclick="switchPhase(2)">← Back to Prep Room</button>
+        <button class="btn-action" onclick="finishDebateAndShowResults()" style="padding: 12px 24px;">
+          <span>Finish Debate &amp; Results 🏆 →</span>
+        </button>
       </div>
 
     </section>
 
     <!-- ══════════════════════════════════════════════════════════ -->
-    <!-- DOOR 2: GOVERNMENT TEAM PRIVATE ROOM                       -->
+    <!-- PHASE 4: OFFICIAL ADJUDICATION & RESULTS                   -->
     <!-- ══════════════════════════════════════════════════════════ -->
-    <section class="door-view" id="door-govt-view">
+    <section class="phase-view" id="phase-4">
       
-      <!-- Govt Room Header -->
-      <div class="team-room-header govt">
-        <div>
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 1.4rem;">🏛️</span>
-            <h2 style="font-size: 1.35rem; font-weight: 900; color: #fff;">Government Team Room (পক্ষ দল)</h2>
-          </div>
-          <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">
-            Private workspace for Treasury members. Your notes and argument cards are strictly invisible to the Opposition.
-          </div>
+      <!-- Winner Hero -->
+      <div class="card" style="text-align: center; padding: 32px 20px; border-color: var(--govt);" id="results-hero-box">
+        <span class="motion-badge">Official Adjudicator Verdict</span>
+        <h2 class="current-speaker-name" id="verdict-winner-name" style="margin: 10px 0 6px;">Government Team Wins!</h2>
+        <div style="font-size: 1rem; color: var(--text-muted); margin-bottom: 16px;" id="verdict-margin-desc">Victory margin: 8.5 Points</div>
+
+        <div style="display: inline-flex; align-items: center; gap: 10px; background: var(--surface-card); padding: 8px 16px; border-radius: var(--radius);">
+          <span>🌟 Best Speaker (শ্রেষ্ঠ বক্তা):</span>
+          <span style="font-weight: 800; color: #fff;" id="verdict-best-speaker">Leader of Opposition</span>
         </div>
-        <span class="team-privacy-pill govt">🔒 100% Private to Govt</span>
       </div>
 
-      <!-- Active Motion Card (Govt Tint) -->
-      <div class="topic-hero govt-tint">
-        <span class="motion-badge" style="background: var(--govt-dim); color: var(--govt); border-color: var(--govt);">
-          Active Debate Motion
-        </span>
-        <h3 class="motion-title-en" id="govt-view-motion-en">...</h3>
-        <div class="motion-title-bn" id="govt-view-motion-bn" style="border-left-color: var(--govt);">...</div>
-      </div>
-
-      <!-- Podium Alert on Phone -->
-      <div class="podium-turn-banner" id="govt-podium-alert">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 1.4rem;">🎙️</span>
-          <div>
-            <div style="font-weight: 800; font-size: 0.9rem; color: #fff;">GOVERNMENT IS ON STAGE!</div>
-            <div style="font-size: 0.78rem; color: #fef08a;">Your speech is live on the master screen. Speak with confidence!</div>
-          </div>
-        </div>
-        <span style="font-size: 1.2rem; font-weight: 900; color: #fff;" id="govt-podium-clock">04:00</span>
-      </div>
-
-      <!-- Government Role Assignment Hub -->
+      <!-- Score Breakdown Table -->
       <div class="card">
         <div class="card-title">
-          <span>👥 Assign Government Roles</span>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">Tap a position to claim it for this debate</span>
+          <span>📊 Official Scorecard Breakdown</span>
+          <button class="btn-secondary" onclick="window.print()">🖨️ Print / Save</button>
         </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 12px;" id="govt-roles-container">
-          <!-- Rendered dynamically -->
-        </div>
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border); text-align: left; color: var(--text-muted);">
+              <th style="padding: 8px;">Side</th>
+              <th>Role</th>
+              <th>Speaker</th>
+              <th>Logic</th>
+              <th>Evidence</th>
+              <th>Delivery</th>
+              <th>Rebuttal</th>
+              <th>Team</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="scorecard-table-body"></tbody>
+          <tfoot>
+            <tr style="font-weight: 800; border-top: 1px solid var(--border);">
+              <td colspan="3" style="color: var(--govt); padding: 10px 8px;">Government Total:</td>
+              <td colspan="5"></td>
+              <td id="govt-grand-total" style="color: var(--govt);">0</td>
+            </tr>
+            <tr style="font-weight: 800; border-top: 1px solid var(--border);">
+              <td colspan="3" style="color: var(--opp); padding: 10px 8px;">Opposition Total:</td>
+              <td colspan="5"></td>
+              <td id="opp-grand-total" style="color: var(--opp);">0</td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
 
-      <!-- Government Shared Argument Board -->
-      <div class="card">
-        <div class="card-title">
-          <span>📌 Government Argument Board</span>
-          <button class="btn-secondary" style="font-size: 0.78rem; padding: 5px 10px;" onclick="toggleAddArgForm('govt')">
-            ＋ Add Argument Card
-          </button>
-        </div>
-        <p class="card-desc">Collaborate on constructive arguments, local Rajshahi examples, and anticipated counter-attacks.</p>
-
-        <!-- Add Argument Form -->
-        <div class="add-arg-form" id="govt-add-arg-box" style="display: none;">
-          <h4 style="font-size: 0.9rem; font-weight: 800; margin-bottom: 8px; color: var(--govt);">New Argument Card:</h4>
-          <input type="text" id="govt-new-claim" placeholder="Core Claim / Assertion (e.g. Mandatory solar panels reduce school power cuts)...">
-          <textarea id="govt-new-evidence" placeholder="Rajshahi Context / Real-World Evidence (e.g. In Rajshahi's intense sun, school rooftops have ideal solar exposure)..." style="height: 70px;"></textarea>
-          <input type="text" id="govt-new-impact" placeholder="Community Impact (e.g. Saves 40% electricity costs, funds computer labs)...">
-          <select id="govt-new-assign">
-            <option value="1st Speaker (PM)">Assign to 1st Speaker (Prime Minister)</option>
-            <option value="2nd Speaker">Assign to 2nd Speaker (Minister)</option>
-            <option value="3rd Speaker (Whip)">Assign to 3rd Speaker (Whip)</option>
-          </select>
-          <div style="display: flex; gap: 8px;">
-            <button class="btn-action" style="background: var(--govt); font-size: 0.8rem; padding: 7px 14px;" onclick="saveTeamArgCard('govt')">Save Card</button>
-            <button class="btn-secondary" style="font-size: 0.8rem; padding: 7px 14px;" onclick="toggleAddArgForm('govt')">Cancel</button>
-          </div>
-        </div>
-
-        <div class="argument-board-grid" id="govt-cards-grid">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
-
-      <!-- Turn-by-Turn Scaffolding Coach (Govt) -->
-      <div class="card">
-        <div class="card-title">
-          <span>🗣️ Turn-by-Turn Scaffolding &amp; Sentence Starters</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted);">Tap "＋ Insert" to add to your speech pad</span>
-        </div>
-
-        <div class="coach-tabs">
-          <button class="coach-tab-btn active" onclick="switchCoachTab('govt', 'pm')">1st Turn: Prime Minister</button>
-          <button class="coach-tab-btn" onclick="switchCoachTab('govt', 'minister')">2nd Turn: Minister</button>
-          <button class="coach-tab-btn" onclick="switchCoachTab('govt', 'whip')">3rd Turn: Govt Whip</button>
-          <button class="coach-tab-btn" onclick="switchCoachTab('govt', 'reply')">4th Turn: Govt Reply</button>
-          <button class="coach-tab-btn" onclick="switchCoachTab('govt', 'poi')">Govt POI Questions</button>
-        </div>
-
-        <div class="coach-turn-advice" id="govt-coach-advice">...</div>
-        <div class="starter-list" id="govt-coach-starters"></div>
-      </div>
-
-      <!-- Private Speech Notepad (Govt) -->
-      <div class="card">
-        <div class="card-title">
-          <span>📝 Private Speech Pad</span>
-          <span style="font-size: 0.72rem; color: var(--govt); font-weight: 700;">● Auto-saved locally</span>
-        </div>
-        <textarea class="notepad-textarea" id="govt-speech-notepad" placeholder="Type your personal speech notes or insert sentence starters from above..." oninput="saveTeamNotepad('govt')"></textarea>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
-          <button class="btn-secondary" style="font-size: 0.75rem; padding: 5px 10px;" onclick="copyTeamNotepad('govt')">📋 Copy Notes</button>
-          <span style="font-size: 0.75rem; color: var(--text-dim);" id="govt-pad-count">0 words</span>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <!-- DOOR 3: OPPOSITION TEAM PRIVATE ROOM                       -->
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <section class="door-view" id="door-opp-view">
-      
-      <!-- Opp Room Header -->
-      <div class="team-room-header opp">
-        <div>
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 1.4rem;">🛡️</span>
-            <h2 style="font-size: 1.35rem; font-weight: 900; color: #fff;">Opposition Team Room (বিপক্ষ দল)</h2>
-          </div>
-          <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">
-            Private workspace for Opposition members. Your notes and argument cards are strictly invisible to the Government.
-          </div>
-        </div>
-        <span class="team-privacy-pill opp">🔒 100% Private to Opp</span>
-      </div>
-
-      <!-- Active Motion Card (Opp Tint) -->
-      <div class="topic-hero opp-tint">
-        <span class="motion-badge" style="background: var(--opp-dim); color: var(--opp); border-color: var(--opp);">
-          Active Debate Motion
-        </span>
-        <h3 class="motion-title-en" id="opp-view-motion-en">...</h3>
-        <div class="motion-title-bn" id="opp-view-motion-bn" style="border-left-color: var(--opp);">...</div>
-      </div>
-
-      <!-- Podium Alert on Phone -->
-      <div class="podium-turn-banner" id="opp-podium-alert">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 1.4rem;">🎙️</span>
-          <div>
-            <div style="font-weight: 800; font-size: 0.9rem; color: #fff;">OPPOSITION IS ON STAGE!</div>
-            <div style="font-size: 0.78rem; color: #fef08a;">Your speech is live on the master screen. Speak with confidence!</div>
-          </div>
-        </div>
-        <span style="font-size: 1.2rem; font-weight: 900; color: #fff;" id="opp-podium-clock">04:00</span>
-      </div>
-
-      <!-- Opposition Role Assignment Hub -->
-      <div class="card">
-        <div class="card-title">
-          <span>👥 Assign Opposition Roles</span>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">Tap a position to claim it for this debate</span>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 12px;" id="opp-roles-container">
-          <!-- Rendered dynamically -->
-        </div>
-      </div>
-
-      <!-- Opposition Shared Argument Board -->
-      <div class="card">
-        <div class="card-title">
-          <span>📌 Opposition Rebuttal &amp; Strategy Board</span>
-          <button class="btn-secondary" style="font-size: 0.78rem; padding: 5px 10px;" onclick="toggleAddArgForm('opp')">
-            ＋ Add Rebuttal / Counter Card
-          </button>
-        </div>
-        <p class="card-desc">Collaborate on attacking Government assumptions, establishing counter-models, and drafting POIs.</p>
-
-        <!-- Add Argument Form -->
-        <div class="add-arg-form" id="opp-add-arg-box" style="display: none;">
-          <h4 style="font-size: 0.9rem; font-weight: 800; margin-bottom: 8px; color: var(--opp);">New Opposition Card:</h4>
-          <input type="text" id="opp-new-claim" placeholder="Core Counter-Argument (e.g. Banning easy-bikes cuts off affordable student commutes)...">
-          <textarea id="opp-new-evidence" placeholder="Why Govt's Plan Fails / Rajshahi Evidence (e.g. 70% of RU students rely on easy-bikes from Talaimari)..." style="height: 70px;"></textarea>
-          <input type="text" id="opp-new-impact" placeholder="Harm of Govt Policy (e.g. Fare spikes, delays getting to exams)...">
-          <select id="opp-new-assign">
-            <option value="1st Speaker (LO)">Assign to 1st Speaker (Leader of Opp)</option>
-            <option value="2nd Speaker">Assign to 2nd Speaker (Deputy Leader)</option>
-            <option value="3rd Speaker (Whip)">Assign to 3rd Speaker (Whip)</option>
-          </select>
-          <div style="display: flex; gap: 8px;">
-            <button class="btn-action" style="background: var(--opp); font-size: 0.8rem; padding: 7px 14px;" onclick="saveTeamArgCard('opp')">Save Card</button>
-            <button class="btn-secondary" style="font-size: 0.8rem; padding: 7px 14px;" onclick="toggleAddArgForm('opp')">Cancel</button>
-          </div>
-        </div>
-
-        <div class="argument-board-grid" id="opp-cards-grid">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
-
-      <!-- Turn-by-Turn Scaffolding Coach (Opp) -->
-      <div class="card">
-        <div class="card-title">
-          <span>🗣️ Turn-by-Turn Scaffolding &amp; Sentence Starters</span>
-          <span style="font-size: 0.72rem; color: var(--text-muted);">Tap "＋ Insert" to add to your speech pad</span>
-        </div>
-
-        <div class="coach-tabs">
-          <button class="coach-tab-btn active" onclick="switchCoachTab('opp', 'lo')">1st Turn: Leader of Opp</button>
-          <button class="coach-tab-btn" onclick="switchCoachTab('opp', 'deputy')">2nd Turn: Deputy Leader</button>
-          <button class="coach-tab-btn" onclick="switchCoachTab('opp', 'whip')">3rd Turn: Opp Whip</button>
-          <button class="coach-tab-btn" onclick="switchCoachTab('opp', 'reply')">4th Turn: Opp Reply</button>
-          <button class="coach-tab-btn" onclick="switchCoachTab('opp', 'poi')">Opp POI Questions</button>
-        </div>
-
-        <div class="coach-turn-advice" id="opp-coach-advice">...</div>
-        <div class="starter-list" id="opp-coach-starters"></div>
-      </div>
-
-      <!-- Private Speech Notepad (Opp) -->
-      <div class="card">
-        <div class="card-title">
-          <span>📝 Private Speech Pad</span>
-          <span style="font-size: 0.72rem; color: var(--opp); font-weight: 700;">● Auto-saved locally</span>
-        </div>
-        <textarea class="notepad-textarea" id="opp-speech-notepad" placeholder="Type your personal speech notes or insert sentence starters from above..." oninput="saveTeamNotepad('opp')"></textarea>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
-          <button class="btn-secondary" style="font-size: 0.75rem; padding: 5px 10px;" onclick="copyTeamNotepad('opp')">📋 Copy Notes</button>
-          <span style="font-size: 0.75rem; color: var(--text-dim);" id="opp-pad-count">0 words</span>
-        </div>
+      <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <button class="btn-secondary" onclick="switchPhase(3)">← Back to Stage</button>
+        <button class="btn-action" onclick="resetEntireDebate()">Start New Debate 🎲</button>
       </div>
 
     </section>
@@ -1558,8 +1238,8 @@
         <button class="btn-close" onclick="closeTopicBrowserModal()">✕</button>
       </div>
       <div class="modal-body">
-        <input type="text" class="topic-search-input" id="topic-search-box" placeholder="Search topics (e.g. Rajshahi, AI, university, coaching, heatwave)..." oninput="filterTopicList()" style="width: 100%; padding: 10px; background: var(--surface-card); border: 1px solid var(--border); color: #fff; margin-bottom: 14px; border-radius: var(--radius-sm);">
-        <div class="modal-topic-list" id="modal-topic-items"></div>
+        <input type="text" id="topic-search-box" placeholder="Search topics by keyword (e.g. Rajshahi, AI, university, coaching, heatwave)..." oninput="filterTopicList()" style="width: 100%; padding: 10px; background: var(--surface-card); border: 1px solid var(--border); color: #fff; margin-bottom: 14px; border-radius: var(--radius-sm);">
+        <div id="modal-topic-items"></div>
       </div>
     </div>
   </div>
@@ -1590,7 +1270,7 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════════════ -->
-  <!-- JAVASCRIPT APPLICATION ENGINE                              -->
+  <!-- JAVASCRIPT APPLICATION LOGIC                               -->
   <!-- ══════════════════════════════════════════════════════════ -->
   <script>
     /* 50 Curated Rajshahi Debate Topics */
@@ -1647,90 +1327,7 @@
       { id: 50, category: "Society, Culture & Ethics", en: "This House believes that ethical leadership, integrity, and empathy should be evaluated alongside academic test scores.", bn: "এই সংসদ মনে করে যে কেবল পরীক্ষার নম্বরের ভিত্তিতে নয়, নৈতিক নেতৃত্ব ও সততার গুণাবলিরও মূল্যায়ন হওয়া উচিত।" }
     ];
 
-    /* Turn-by-Turn Coaching Content */
-    const COACHING_DATA = {
-      govt: {
-        pm: {
-          advice: "As the Prime Minister (1st Speaker), your mission is to define the context, clarify key definitions, lay out your 3-step practical model, and present Arguments 1 & 2.",
-          starters: [
-            { en: "Madam Speaker, esteemed adjudicators, this House defines the terms as...", bn: "মাননীয় স্পিকার, বিজ্ঞ বিচারকমণ্ডলী, এই সংসদ প্রস্তাবের মূল শব্দগুলোকে এভাবে সংজ্ঞায়িত করছে..." },
-            { en: "The critical problem in Rajshahi that demands immediate government intervention is...", bn: "রাজশাহীর প্রেক্ষাপটে যে মূল সমস্যাটির জরুরি সমাধান প্রয়োজন তা হলো..." },
-            { en: "Under our policy model, we implement a practical 3-step mechanism: First...", bn: "আমাদের নীতিমালায় আমরা তিনটি বাস্তবসম্মত পদক্ষেপ নিচ্ছি: প্রথমত..." },
-            { en: "Our first core contention rests on the principle that...", bn: "আমাদের প্রথম মূল যুক্তিটি এই নীতির ওপর প্রতিষ্ঠিত যে..." }
-          ]
-        },
-        minister: {
-          advice: "As the Minister (2nd Speaker), your mission is to systematically rebut the Leader of Opposition, defend the PM's model, and present strong new evidence for Arguments 2 & 3.",
-          starters: [
-            { en: "The Leader of the Opposition claimed that [X], but this fails because...", bn: "বিরোধী দলনেতা দাবি করেছেন যে [X], কিন্তু এটি ধোপে টেকে না কারণ..." },
-            { en: "Empirical evidence from local institutions in North Bengal demonstrates that...", bn: "উত্তরবঙ্গের স্থানীয় শিক্ষা প্রতিষ্ঠানগুলোর তথ্য-উপাত্ত প্রমাণ করে যে..." },
-            { en: "Our second contention highlights the direct economic impact on students...", bn: "আমাদের দ্বিতীয় যুক্তি শিক্ষার্থীদের ওপর প্রত্যক্ষ অর্থনৈতিক প্রভাব তুলে ধরে..." }
-          ]
-        },
-        whip: {
-          advice: "As the Government Whip (3rd Speaker), do NOT introduce new arguments. Your mission is to break down the 3 major clashes of the debate, demolish opposition rebuttals, and summarize why Govt won.",
-          starters: [
-            { en: "Madam Speaker, today's debate comes down to three fundamental clashes...", bn: "মাননীয় স্পিকার, আজকের বিতর্কের মূল তিনটি দ্বন্দ্বের জায়গা হলো..." },
-            { en: "On the clash of feasibility, the opposition failed to provide a single working alternative.", bn: "বাস্তবায়নযোগ্যতার প্রশ্নে বিরোধী দল একটিও কার্যকর বিকল্প উপস্থাপন করতে পারেনি।" },
-            { en: "Even if we accept their premise, the net benefit of our model overwhelmingly wins.", bn: "তর্কের খাতিরে তাদের যুক্তি মেনে নিলেও, আমাদের মডেলের সার্বিক সুফল অনেক বেশি।" }
-          ]
-        },
-        reply: {
-          advice: "As the Government Reply Speaker (2.5 min), take a step back. Contrast the 'Two Worlds': the world of the Opposition vs the world under Government policy.",
-          starters: [
-            { en: "Madam Speaker, at the end of this debate, two distinct worlds emerge...", bn: "মাননীয় স্পিকার, এই বিতর্কের শেষে দুটি ভিন্ন দৃশ্যপট স্পষ্ট হয়ে উঠেছে..." },
-            { en: "In the Opposition's world, the problem is ignored; in our world, youth are empowered.", bn: "বিরোধী দলের জগতে সমস্যাটিকে এড়িয়ে যাওয়া হয়েছে; আমাদের জগতে তরুণদের ক্ষমতায়ন হয়েছে।" }
-          ]
-        },
-        poi: {
-          advice: "Keep POIs under 15 seconds. Deliver questions that force the Opposition to defend an unsustainable stance.",
-          starters: [
-            { en: "On that point, Madam Speaker: how can you justify the harm to underprivileged students?", bn: "ওই পয়েন্টে: সুবিধাবঞ্চিত শিক্ষার্থীদের যে ক্ষতি হচ্ছে তার দায় আপনারা কীভাবে নেবেন?" },
-            { en: "If your policy works, why has it failed in similar regional cities?", bn: "আপনার নীতি যদি কাজ করে, তবে সমমানের আঞ্চলিক শহরে এটি ব্যর্থ হয়েছিল কেন?" }
-          ]
-        }
-      },
-      opp: {
-        lo: {
-          advice: "As the Leader of Opposition (1st Speaker), attack the PM's definition if flawed, establish the Opposition's core counter-framework, and deliver Arguments 1 & 2.",
-          starters: [
-            { en: "Madam Speaker, the Government has painted an unrealistic picture because...", bn: "মাননীয় স্পিকার, সরকারি দল একটি অবাস্তব চিত্র তুলে ধরেছে কারণ..." },
-            { en: "The Opposition stands for a balanced approach that protects student freedom and...", bn: "বিরোধী দল এমন একটি ভারসাম্যপূর্ণ নীতির পক্ষে যা শিক্ষার্থীদের স্বাধীনতা রক্ষা করে..." },
-            { en: "Our first contention proves that the Government's policy creates severe unintended harm...", bn: "আমাদের প্রথম যুক্তি প্রমাণ করে যে সরকারি নীতি মারাত্মক অনিচ্ছাকৃত ক্ষতি বয়ে আনবে..." }
-          ]
-        },
-        deputy: {
-          advice: "As the Deputy Leader of Opposition (2nd Speaker), rebut the 2nd Government Minister, defend the LO's arguments, and present Argument 3 with deep real-world evidence.",
-          starters: [
-            { en: "The Minister tried to defend their flawed model, but overlooked the fact that...", bn: "মন্ত্রী তাদের দুর্বল মডেলটি বাঁচানোর চেষ্টা করলেও এই সত্যটি এড়িয়ে গেছেন যে..." },
-            { en: "In the context of Rajshahi students today, the real-world consequence will be...", bn: "আজকের রাজশাহীর শিক্ষার্থীদের বাস্তব প্রেক্ষাপটে এর পরিণতি হবে..." }
-          ]
-        },
-        whip: {
-          advice: "As the Opposition Whip (3rd Speaker), do NOT bring new points. Identify the core points of clash, rebut Govt speakers 1 & 2, and defend the Opposition framework.",
-          starters: [
-            { en: "Allow me to draw your attention to the central clash of today's debate...", bn: "আজকের বিতর্কের প্রধান দ্বন্দ্বের জায়গাটায় আমি দৃষ্টি আকর্ষণ করতে চাই..." },
-            { en: "The Government's entire case collapses because their primary assumption is false.", bn: "সরকারি দলের পুরো বক্তব্য ভেঙে পড়ে কারণ তাদের মূল ধারণাই ত্রুটিপূর্ণ।" }
-          ]
-        },
-        reply: {
-          advice: "As the Opposition Reply Speaker (2.5 min), Opposition speaks FIRST in reply speeches. Highlight the fundamental flaws in Government's logic and make your final winning appeal.",
-          starters: [
-            { en: "Madam Speaker, the Government brought good intentions, but a disastrous policy.", bn: "মাননীয় স্পিকার, সরকারি দলের সদিচ্ছা থাকলেও তাদের প্রস্তাবিত নীতিটি ধ্বংসাত্মক।" },
-            { en: "Because our counter-framework is practical and just, we proudly beg to oppose.", bn: "আমাদের বিকল্প প্রস্তাবটি বাস্তবসম্মত ও ন্যায়সঙ্গত বলেই আমরা প্রস্তাবটি প্রত্যাখ্যানের আহ্বান জানাচ্ছি।" }
-          ]
-        },
-        poi: {
-          advice: "Deliver sharp questions that attack the Government's mechanism and economic feasibility.",
-          starters: [
-            { en: "Madam Speaker, isn't it true that this ban will create a black market for services?", bn: "মাননীয় স্পিকার, এটা কি সত্য নয় যে এই নিষেধাজ্ঞার ফলে অবৈধ সিন্ডিকেট তৈরি হবে?" },
-            { en: "Who will pay for the massive enforcement costs in tier-2 cities?", bn: "বিভাগীয় শহরগুলোতে এই বিপুল নজরদারি ব্যয়ের অর্থ কে বহন করবে?" }
-          ]
-        }
-      }
-    };
-
-    /* Web Audio API Sound Engine */
+    /* Sound Engine */
     var audioCtx = null;
     function getAudioContext() {
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -1777,9 +1374,8 @@
       } catch (e) {}
     }
 
-    /* Application State */
+    /* State */
     var appState = {
-      activeDoor: 'master', // 'master', 'govt', 'opp', or 'portal'
       currentPhase: 1,
       currentTopicIndex: 0,
       timingFormat: 'standard',
@@ -1813,55 +1409,6 @@
       ]
     };
 
-    /* Isolated Team Room Local Storage */
-    var teamData = {
-      govt: {
-        cards: [
-          { id: 1, claim: "Classroom attendance directly increases teacher accountability", evidence: "When students are present, teachers deliver full syllabus without deferring to private centers.", impact: "Saves families substantial monthly tuition expenses in Rajshahi.", assign: "1st Speaker (PM)" }
-        ],
-        roles: { 0: "Prime Minister", 2: "Minister", 4: "Govt Whip", 7: "Govt Reply" }
-      },
-      opp: {
-        cards: [
-          { id: 1, claim: "Coaching bans push tutoring underground and raise costs", evidence: "In previous crackdowns, private tutors increased fees for informal home sessions.", impact: "Disproportionately hurts underprivileged students seeking exam guidance.", assign: "1st Speaker (LO)" }
-        ],
-        roles: { 1: "Leader of Opposition", 3: "Deputy Leader", 5: "Opp Whip", 6: "Opp Reply" }
-      }
-    };
-
-    /* ── Door Switching Logic ── */
-    function enterDoor(doorKey) {
-      appState.activeDoor = doorKey;
-      localStorage.setItem('my_chosen_door', doorKey);
-
-      // Update Header Room Buttons
-      document.getElementById('btn-room-master').className = 'room-btn' + (doorKey === 'master' ? ' active master' : '');
-      document.getElementById('btn-room-govt').className = 'room-btn' + (doorKey === 'govt' ? ' active govt' : '');
-      document.getElementById('btn-room-opp').className = 'room-btn' + (doorKey === 'opp' ? ' active opp' : '');
-
-      // Hide all doors
-      document.querySelectorAll('.door-view').forEach(function(v) { v.classList.remove('active'); });
-
-      if (doorKey === 'master') {
-        document.getElementById('door-master-view').classList.add('active');
-        document.querySelector('.stepper-bar').style.display = 'flex';
-        switchPhase(appState.currentPhase);
-      } else if (doorKey === 'govt') {
-        document.getElementById('door-govt-view').classList.add('active');
-        document.querySelector('.stepper-bar').style.display = 'none';
-        renderTeamRoom('govt');
-      } else if (doorKey === 'opp') {
-        document.getElementById('door-opp-view').classList.add('active');
-        document.querySelector('.stepper-bar').style.display = 'none';
-        renderTeamRoom('opp');
-      } else if (doorKey === 'portal') {
-        document.getElementById('door-portal-screen').classList.add('active');
-        document.querySelector('.stepper-bar').style.display = 'none';
-      }
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
     function switchPhase(phaseNum) {
       appState.currentPhase = phaseNum;
       for (var i = 1; i <= 4; i++) {
@@ -1887,32 +1434,24 @@
       } else if (phaseNum === 4) {
         calculateAndRenderScorecard();
       }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    /* ── Topic Management ── */
     function displayTopic(index) {
       if (index < 0) index = 0;
       if (index >= DEBATE_TOPICS.length) index = DEBATE_TOPICS.length - 1;
       appState.currentTopicIndex = index;
       var topic = DEBATE_TOPICS[index];
 
-      // Update Master Stage
       document.getElementById('current-motion-cat').innerText = topic.category;
       document.getElementById('current-motion-en').innerText = topic.en;
       document.getElementById('current-motion-bn').innerText = topic.bn;
       document.getElementById('motion-index-label').innerText = "Topic " + (index + 1) + " of " + DEBATE_TOPICS.length;
-
-      // Update Team Rooms
-      document.getElementById('govt-view-motion-en').innerText = topic.en;
-      document.getElementById('govt-view-motion-bn').innerText = topic.bn;
-      document.getElementById('opp-view-motion-en').innerText = topic.en;
-      document.getElementById('opp-view-motion-bn').innerText = topic.bn;
     }
 
     function generateRandomTopic() {
       var nextIdx = Math.floor(Math.random() * DEBATE_TOPICS.length);
       displayTopic(nextIdx);
-      savePublicMasterSession();
     }
 
     function toggleCustomTopicInput() {
@@ -1929,7 +1468,6 @@
       DEBATE_TOPICS.unshift(custom);
       displayTopic(0);
       document.getElementById('custom-topic-box').style.display = 'none';
-      savePublicMasterSession();
     }
 
     function setTimingFormat(fmt) {
@@ -1944,30 +1482,56 @@
         appState.replyTotalSec = 150;
         appState.poiStartSec = 60;
         appState.poiEndSec = 180;
+
+        for (var i = 1; i <= 6; i++) {
+          var el = document.getElementById('sched-time-' + i);
+          if (el) el.innerText = "4:00 min (POIs: 1:00–3:00)";
+        }
+        document.getElementById('sched-time-7').innerText = "2:30 min (No POIs Allowed)";
+        document.getElementById('sched-time-8').innerText = "2:30 min (No POIs Allowed)";
       } else {
         appState.prepTotalSec = 480; // 8m
         appState.speechTotalSec = 150; // 2.5m
         appState.replyTotalSec = 90;
         appState.poiStartSec = 30;
         appState.poiEndSec = 120;
+
+        for (var i = 1; i <= 6; i++) {
+          var el = document.getElementById('sched-time-' + i);
+          if (el) el.innerText = "2:30 min (POIs: 0:30–2:00)";
+        }
+        document.getElementById('sched-time-7').innerText = "1:30 min (No POIs Allowed)";
+        document.getElementById('sched-time-8').innerText = "1:30 min (No POIs Allowed)";
       }
       appState.prepRemainingSec = appState.prepTotalSec;
       updatePrepTimerUI();
-      savePublicMasterSession();
+    }
+
+    function syncTeamRosterFromInputs() {
+      var gName = document.getElementById('team-name-govt').value.trim();
+      var oName = document.getElementById('team-name-opp').value.trim();
+      if (gName) appState.govtTeamName = gName;
+      if (oName) appState.oppTeamName = oName;
+
+      var idMap = ['spk-g1', 'spk-o1', 'spk-g2', 'spk-o2', 'spk-g3', 'spk-o3', 'spk-or', 'spk-gr'];
+      appState.speakers.forEach(function(spk, idx) {
+        var input = document.getElementById(idMap[idx]);
+        if (input && input.value.trim()) spk.name = input.value.trim();
+      });
     }
 
     function startPrepPhase() {
-      savePublicMasterSession();
+      syncTeamRosterFromInputs();
       switchPhase(2);
     }
 
     function startLiveStagePhase() {
       pausePrepTimer();
-      savePublicMasterSession();
+      syncTeamRosterFromInputs();
       switchPhase(3);
     }
 
-    /* ── Prep Timer (Master) ── */
+    /* Prep Timer */
     function formatTimeMMSS(sec) {
       var m = Math.floor(sec / 60);
       var s = sec % 60;
@@ -2021,7 +1585,7 @@
       updatePrepTimerUI();
     }
 
-    /* ── Live Stage Speech Timer (Master) ── */
+    /* Live Speech Timer */
     function renderSpeechQueue() {
       var list = document.getElementById('speech-queue-list');
       if (!list) return;
@@ -2059,6 +1623,14 @@
       appState.speechElapsedSec = 0;
       updateSpeechTimerUI();
       renderSpeechQueue();
+
+      // Load speaker's saved rubric sliders
+      document.getElementById('rubric-logic').value = spk.scores.logic;
+      document.getElementById('rubric-facts').value = spk.scores.facts;
+      document.getElementById('rubric-delivery').value = spk.scores.delivery;
+      document.getElementById('rubric-rebuttal').value = spk.scores.rebuttal;
+      document.getElementById('rubric-team').value = spk.scores.team;
+      updateCurrentSpeakerScore();
     }
 
     function updateSpeechTimerUI() {
@@ -2091,30 +1663,6 @@
           poiIndicator.className = "poi-status-indicator closed";
           poiIndicator.innerHTML = "<span>🚨 Overtime Grace Period</span>";
         }
-      }
-
-      // Check Team Room Podium Alerts
-      updatePodiumAlerts(remaining);
-    }
-
-    function updatePodiumAlerts(remaining) {
-      var spk = appState.speakers[appState.currentSpeakerIndex];
-      var govtAlert = document.getElementById('govt-podium-alert');
-      var oppAlert = document.getElementById('opp-podium-alert');
-
-      if (appState.currentPhase === 3 && spk.side === 'govt') {
-        if (govtAlert) govtAlert.classList.add('active');
-        if (oppAlert) oppAlert.classList.remove('active');
-        var gClock = document.getElementById('govt-podium-clock');
-        if (gClock) gClock.innerText = formatTimeMMSS(Math.max(0, remaining));
-      } else if (appState.currentPhase === 3 && spk.side === 'opp') {
-        if (oppAlert) oppAlert.classList.add('active');
-        if (govtAlert) govtAlert.classList.remove('active');
-        var oClock = document.getElementById('opp-podium-clock');
-        if (oClock) oClock.innerText = formatTimeMMSS(Math.max(0, remaining));
-      } else {
-        if (govtAlert) govtAlert.classList.remove('active');
-        if (oppAlert) oppAlert.classList.remove('active');
       }
     }
 
@@ -2240,7 +1788,7 @@
 
       document.getElementById('govt-grand-total').innerText = govtTotal + " pts";
       document.getElementById('opp-grand-total').innerText = oppTotal + " pts";
-      document.getElementById('verdict-winner-name').innerText = govtTotal > oppTotal ? "🏆 Government Team Wins!" : (oppTotal > govtTotal ? "🏆 Opposition Team Wins!" : "🤝 Draw / Tie!");
+      document.getElementById('verdict-winner-name').innerText = govtTotal > oppTotal ? "🏆 " + appState.govtTeamName + " Wins!" : (oppTotal > govtTotal ? "🏆 " + appState.oppTeamName + " Wins!" : "🤝 Draw / Tie!");
       document.getElementById('verdict-margin-desc').innerText = "Victory Margin: " + Math.abs(govtTotal - oppTotal) + " Points";
       document.getElementById('verdict-best-speaker').innerText = best || "Prime Minister";
     }
@@ -2254,227 +1802,7 @@
       }
     }
 
-    /* ───────────────────────────────────────────────────────────
-       ISOLATED TEAM ROOM LOGIC & ARGUMENT BOARDS
-       ─────────────────────────────────────────────────────────── */
-    function renderTeamRoom(side) {
-      // 1. Roles Grid
-      var rolesContainer = document.getElementById(side + '-roles-container');
-      if (rolesContainer) {
-        rolesContainer.innerHTML = '';
-        appState.speakers.filter(function(s) { return s.side === side; }).forEach(function(spk) {
-          var card = document.createElement('div');
-          card.className = 'role-claim-card ' + side;
-          card.onclick = function() { claimTeamRole(side, spk.id); };
-          card.innerHTML = '<div style="font-size:0.7rem; font-weight:800; color:' + (side === 'govt' ? 'var(--govt)' : 'var(--opp)') + ';">' + spk.title + '</div><div style="font-size:0.95rem; font-weight:800; color:#fff; margin-top:2px;">' + spk.name + '</div><div style="font-size:0.72rem; color:var(--text-dim); margin-top:4px;">Tap to claim</div>';
-          rolesContainer.appendChild(card);
-        });
-      }
-
-      // 2. Argument Cards Grid
-      renderTeamArgCards(side);
-
-      // 3. Coach Tab
-      switchCoachTab(side, side === 'govt' ? 'pm' : 'lo');
-
-      // 4. Load Saved Notepad
-      loadTeamNotepad(side);
-    }
-
-    function claimTeamRole(side, speakerId) {
-      var spk = appState.speakers.find(function(s) { return s.id === speakerId; });
-      if (!spk) return;
-      var name = prompt("Enter your name for " + spk.title + ":", spk.name);
-      if (!name) return;
-
-      spk.name = name;
-      renderTeamRoom(side);
-      saveTeamRoomData(side);
-    }
-
-    function toggleAddArgForm(side) {
-      var box = document.getElementById(side + '-add-arg-box');
-      box.style.display = box.style.display === 'none' ? 'block' : 'none';
-    }
-
-    function saveTeamArgCard(side) {
-      var claim = document.getElementById(side + '-new-claim').value.trim();
-      var evidence = document.getElementById(side + '-new-evidence').value.trim();
-      var impact = document.getElementById(side + '-new-impact').value.trim();
-      var assign = document.getElementById(side + '-new-assign').value;
-
-      if (!claim) return alert("Please enter the argument claim.");
-
-      var newCard = {
-        id: Date.now(),
-        claim: claim,
-        evidence: evidence,
-        impact: impact,
-        assign: assign
-      };
-
-      teamData[side].cards.unshift(newCard);
-      document.getElementById(side + '-new-claim').value = '';
-      document.getElementById(side + '-new-evidence').value = '';
-      document.getElementById(side + '-new-impact').value = '';
-      toggleAddArgForm(side);
-
-      renderTeamArgCards(side);
-      saveTeamRoomData(side);
-    }
-
-    function renderTeamArgCards(side) {
-      var grid = document.getElementById(side + '-cards-grid');
-      if (!grid) return;
-      grid.innerHTML = '';
-
-      var cards = teamData[side].cards || [];
-      if (cards.length === 0) {
-        grid.innerHTML = '<div style="font-size:0.82rem; color:var(--text-dim); padding:10px;">No argument cards created yet. Click "＋ Add Argument Card" above to brainstorm!</div>';
-        return;
-      }
-
-      cards.forEach(function(card) {
-        var el = document.createElement('div');
-        el.className = 'arg-card ' + side + '-border';
-        el.innerHTML = 
-          '<div>' +
-            '<div class="arg-card-claim">📌 ' + card.claim + '</div>' +
-            (card.evidence ? '<div class="arg-card-evidence"><strong>Evidence / Rajshahi:</strong> ' + card.evidence + '</div>' : '') +
-            (card.impact ? '<div class="arg-card-impact"><strong>Impact:</strong> ' + card.impact + '</div>' : '') +
-          '</div>' +
-          '<div class="arg-card-footer">' +
-            '<span>🎯 ' + card.assign + '</span>' +
-            '<button class="btn-delete-card" onclick="deleteTeamArgCard(\'' + side + '\', ' + card.id + ')">✕ Remove</button>' +
-          '</div>';
-        grid.appendChild(el);
-      });
-    }
-
-    function deleteTeamArgCard(side, id) {
-      teamData[side].cards = teamData[side].cards.filter(function(c) { return c.id !== id; });
-      renderTeamArgCards(side);
-      saveTeamRoomData(side);
-    }
-
-    function switchCoachTab(side, turnKey) {
-      var adviceBox = document.getElementById(side + '-coach-advice');
-      var startersList = document.getElementById(side + '-coach-starters');
-      var coach = COACHING_DATA[side][turnKey] || COACHING_DATA[side].pm || COACHING_DATA[side].lo;
-
-      adviceBox.innerText = coach.advice;
-      startersList.innerHTML = '';
-
-      coach.starters.forEach(function(item) {
-        var row = document.createElement('div');
-        row.className = 'starter-item';
-        row.innerHTML = '<div><div style="font-weight:700; color:#fff;">' + item.en + '</div><div style="font-family:var(--font-bn); color:var(--text-muted); font-size:0.78rem;">' + item.bn + '</div></div><button class="btn-insert-starter">＋ Insert</button>';
-        row.querySelector('.btn-insert-starter').onclick = function() { insertIntoTeamNotepad(side, item.en); };
-        startersList.appendChild(row);
-      });
-    }
-
-    function insertIntoTeamNotepad(side, text) {
-      var pad = document.getElementById(side + '-speech-notepad');
-      if (!pad) return;
-      if (pad.value && !pad.value.endsWith('\n')) pad.value += '\n\n';
-      pad.value += text + ' ';
-      saveTeamNotepad(side);
-      pad.focus();
-    }
-
-    function saveTeamNotepad(side) {
-      var pad = document.getElementById(side + '-speech-notepad');
-      if (!pad) return;
-      localStorage.setItem('debate_notepad_' + side, pad.value);
-      var words = pad.value.trim() ? pad.value.trim().split(/\s+/).length : 0;
-      var countEl = document.getElementById(side + '-pad-count');
-      if (countEl) countEl.innerText = words + " words";
-    }
-
-    function loadTeamNotepad(side) {
-      var pad = document.getElementById(side + '-speech-notepad');
-      if (!pad) return;
-      pad.value = localStorage.getItem('debate_notepad_' + side) || '';
-      saveTeamNotepad(side);
-    }
-
-    function copyTeamNotepad(side) {
-      var pad = document.getElementById(side + '-speech-notepad');
-      if (!pad || !pad.value.trim()) return alert("Notepad is empty.");
-      navigator.clipboard.writeText(pad.value).then(function() { alert("Speech notes copied to clipboard!"); });
-    }
-
-    /* ── Backend Sync & Anti-Cheating Privacy Partitioning ── */
-    function savePublicMasterSession() {
-      var payload = {
-        active: true,
-        topicIndex: appState.currentTopicIndex,
-        customTopic: DEBATE_TOPICS[appState.currentTopicIndex],
-        timingFormat: appState.timingFormat,
-        prepTotalSec: appState.prepTotalSec,
-        speechTotalSec: appState.speechTotalSec,
-        replyTotalSec: appState.replyTotalSec,
-        phase: appState.currentPhase,
-        speakers: appState.speakers
-      };
-
-      try {
-        fetch('/api/debate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ channel: 'public', ...payload })
-        }).catch(function() {});
-        localStorage.setItem('debate_public_session', JSON.stringify(payload));
-      } catch (e) {}
-    }
-
-    function saveTeamRoomData(side) {
-      var payload = {
-        cards: teamData[side].cards,
-        speakers: appState.speakers.filter(function(s) { return s.side === side; })
-      };
-
-      try {
-        fetch('/api/debate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ channel: side, payload: payload })
-        }).catch(function() {});
-        localStorage.setItem('debate_room_' + side, JSON.stringify(payload));
-      } catch (e) {}
-    }
-
-    async function syncActiveRooms() {
-      var currentRoom = appState.activeDoor === 'govt' ? 'govt' : (appState.activeDoor === 'opp' ? 'opp' : 'public');
-
-      try {
-        var res = await fetch('/api/debate?room=' + currentRoom + '&t=' + Date.now(), { cache: 'no-store' });
-        if (res.ok) {
-          var data = await res.json();
-          if (data && data.active) {
-            // Apply public data
-            if (data.topicIndex !== undefined && data.topicIndex !== appState.currentTopicIndex) {
-              displayTopic(data.topicIndex);
-            }
-            if (data.speakers) {
-              appState.speakers = data.speakers;
-            }
-
-            // Apply private room data
-            if (currentRoom === 'govt' && data.govt_room && data.govt_room.cards) {
-              teamData.govt.cards = data.govt_room.cards;
-              renderTeamArgCards('govt');
-            } else if (currentRoom === 'opp' && data.opp_room && data.opp_room.cards) {
-              teamData.opp.cards = data.opp_room.cards;
-              renderTeamArgCards('opp');
-            }
-          }
-        }
-      } catch (e) {}
-    }
-
-    /* ── Modals & Fullscreen ── */
+    /* Topic Modals & Fullscreen */
     function openTopicBrowserModal() {
       document.getElementById('modal-topics').classList.add('open');
       renderTopicList();
@@ -2489,13 +1817,13 @@
       list.innerHTML = '';
       DEBATE_TOPICS.filter(function(t) { return !q || t.en.toLowerCase().includes(q) || t.bn.toLowerCase().includes(q); }).forEach(function(t, idx) {
         var el = document.createElement('div');
-        el.style.padding = '10px';
+        el.style.padding = '12px';
         el.style.background = 'var(--surface-card)';
         el.style.marginBottom = '8px';
-        el.style.borderRadius = '6px';
+        el.style.borderRadius = '8px';
         el.style.cursor = 'pointer';
-        el.innerHTML = '<div style="font-size:0.7rem; color:#93c5fd; font-weight:700;">' + t.category + '</div><div style="font-weight:700; color:#fff; font-size:0.88rem;">' + t.en + '</div><div style="font-family:var(--font-bn); color:var(--text-muted); font-size:0.8rem;">' + t.bn + '</div>';
-        el.onclick = function() { displayTopic(DEBATE_TOPICS.indexOf(t)); closeTopicBrowserModal(); savePublicMasterSession(); };
+        el.innerHTML = '<div style="font-size:0.7rem; color:#93c5fd; font-weight:700; text-transform:uppercase; margin-bottom:2px;">' + t.category + '</div><div style="font-weight:700; color:#fff; font-size:0.9rem;">' + t.en + '</div><div style="font-family:var(--font-bn); color:var(--text-muted); font-size:0.82rem;">' + t.bn + '</div>';
+        el.onclick = function() { displayTopic(DEBATE_TOPICS.indexOf(t)); closeTopicBrowserModal(); };
         list.appendChild(el);
       });
     }
@@ -2507,27 +1835,28 @@
       else if (document.exitFullscreen) document.exitFullscreen();
     }
 
-    // Initialize application on load
-    window.addEventListener('DOMContentLoaded', async function() {
+    // Keyboard Shortcuts
+    document.addEventListener('keydown', function(e) {
+      if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        if (appState.currentPhase === 2) togglePrepTimer();
+        if (appState.currentPhase === 3) toggleSpeechTimer();
+      }
+      if ((e.key === 'p' || e.key === 'P') && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+        if (appState.currentPhase === 3) triggerPOI();
+      }
+      if ((e.key === 'n' || e.key === 'N') && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+        if (appState.currentPhase === 3) nextSpeaker();
+      }
+      if (e.key === 'Escape') {
+        closeTopicBrowserModal();
+        closeRulesModal();
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
       displayTopic(0);
       updatePrepTimerUI();
-
-      // Check if user came from QR or selected room
-      var savedDoor = localStorage.getItem('my_chosen_door');
-      if (window.location.hash === '#govt') {
-        enterDoor('govt');
-      } else if (window.location.hash === '#opp') {
-        enterDoor('opp');
-      } else if (window.location.hash === '#master') {
-        enterDoor('master');
-      } else if (window.innerWidth <= 768 && !savedDoor) {
-        enterDoor('portal');
-      } else {
-        enterDoor(savedDoor || 'master');
-      }
-
-      await syncActiveRooms();
-      setInterval(syncActiveRooms, 3500);
     });
   </script>
 </body>
