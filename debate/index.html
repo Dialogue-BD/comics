@@ -1283,6 +1283,27 @@
   <!-- ── Main Workspace ── -->
   <main class="main-content">
 
+    <!-- ── Live Session Lock Indicator Banner ── -->
+    <div id="session-lock-banner" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(79, 126, 248, 0.1)); border: 1px solid var(--govt); border-radius: var(--radius); padding: 14px 20px; margin-bottom: 22px; display: none; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 1.4rem;">🔒</span>
+        <div>
+          <div style="font-size: 0.88rem; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;">
+            <span>Classroom Session Locked</span>
+            <span style="background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.4); padding: 2px 6px; border-radius: 4px; font-size: 0.68rem; color: #a7f3d0;">Live Sync Active</span>
+          </div>
+          <div style="font-size: 0.82rem; color: #cbd5e1; margin-top: 2px;" id="lock-banner-desc">
+            All devices accessing this page are locked into this active debate topic and speaking roster.
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <button class="btn-secondary" style="font-size: 0.8rem; padding: 7px 14px; border-color: rgba(255,255,255,0.25);" onclick="unlockAndResetSession()">
+          <span>🔓 Unlock / Start New Debate</span>
+        </button>
+      </div>
+    </div>
+
     <!-- ══════════════════════════════════════════════════════════ -->
     <!-- PHASE 1: TOPIC & ROSTER SETUP                             -->
     <!-- ══════════════════════════════════════════════════════════ -->
@@ -2392,6 +2413,7 @@
 
     function startPrepPhase() {
       syncRosterFromInputs();
+      lockInActiveSession();
       switchPhase(2);
     }
 
@@ -2474,6 +2496,7 @@
     function startLiveStagePhase() {
       pausePrepTimer();
       syncRosterFromInputs();
+      lockInActiveSession();
       switchPhase(3);
     }
 
@@ -2889,6 +2912,212 @@
       renderTopicList();
     }
 
+    /* ───────────────────────────────────────────────────────────
+       SESSION LOCKING & LIVE MULTI-DEVICE SYNCHRONIZATION
+       ─────────────────────────────────────────────────────────── */
+    var isApplyingRemoteSync = false;
+
+    function lockInActiveSession() {
+      if (isApplyingRemoteSync) return;
+      
+      syncRosterFromInputs();
+      var currentTopic = DEBATE_TOPICS[appState.currentTopicIndex] || DEBATE_TOPICS[0];
+
+      var sessionPayload = {
+        active: true,
+        lockedAt: Date.now(),
+        topicIndex: appState.currentTopicIndex,
+        customTopic: currentTopic,
+        timingFormat: appState.timingFormat,
+        prepTotalSec: appState.prepTotalSec,
+        speechTotalSec: appState.speechTotalSec,
+        replyTotalSec: appState.replyTotalSec,
+        govtTeamName: appState.govtTeamName,
+        oppTeamName: appState.oppTeamName,
+        speakers: appState.speakers,
+        govtNotes: document.getElementById('govt-prep-notes') ? document.getElementById('govt-prep-notes').value : '',
+        oppNotes: document.getElementById('opp-prep-notes') ? document.getElementById('opp-prep-notes').value : '',
+        phase: appState.currentPhase
+      };
+
+      // 1. Post to backend server API if running
+      try {
+        fetch('/api/debate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(sessionPayload)
+        }).catch(function() {});
+      } catch (e) {}
+
+      // 2. Persist in localStorage for instant retrieval
+      try {
+        localStorage.setItem('debate_locked_session', JSON.stringify(sessionPayload));
+      } catch (e) {}
+
+      // 3. Broadcast to all open tabs on same device/browser
+      if (window.BroadcastChannel) {
+        try {
+          var bc = new BroadcastChannel('debate_channel');
+          bc.postMessage({ type: 'SESSION_LOCKED', payload: sessionPayload });
+        } catch (e) {}
+      }
+
+      updateLockBannerUI(true, currentTopic.en);
+    }
+
+    function applyLockedSessionData(data) {
+      if (!data || !data.active) return;
+      isApplyingRemoteSync = true;
+
+      try {
+        // Restore Topic
+        if (data.customTopic) {
+          var existingIdx = DEBATE_TOPICS.findIndex(function(t) { return t.en === data.customTopic.en; });
+          if (existingIdx !== -1) {
+            appState.currentTopicIndex = existingIdx;
+          } else {
+            DEBATE_TOPICS.unshift(data.customTopic);
+            appState.currentTopicIndex = 0;
+          }
+          displayTopic(appState.currentTopicIndex);
+        }
+
+        // Restore Format
+        if (data.timingFormat) {
+          appState.timingFormat = data.timingFormat;
+          appState.prepTotalSec = data.prepTotalSec || appState.prepTotalSec;
+          appState.speechTotalSec = data.speechTotalSec || appState.speechTotalSec;
+          appState.replyTotalSec = data.replyTotalSec || appState.replyTotalSec;
+        }
+
+        // Restore Teams & Speakers
+        if (data.govtTeamName) {
+          appState.govtTeamName = data.govtTeamName;
+          document.getElementById('team-govt-name').value = data.govtTeamName;
+        }
+        if (data.oppTeamName) {
+          appState.oppTeamName = data.oppTeamName;
+          document.getElementById('team-opp-name').value = data.oppTeamName;
+        }
+
+        if (data.speakers && data.speakers.length) {
+          appState.speakers = data.speakers;
+          document.getElementById('spk-g1').value = data.speakers[0].name;
+          document.getElementById('spk-o1').value = data.speakers[1].name;
+          document.getElementById('spk-g2').value = data.speakers[2].name;
+          document.getElementById('spk-o2').value = data.speakers[3].name;
+          document.getElementById('spk-g3').value = data.speakers[4].name;
+          document.getElementById('spk-o3').value = data.speakers[5].name;
+          document.getElementById('spk-or').value = data.speakers[6].name;
+          document.getElementById('spk-gr').value = data.speakers[7].name;
+        }
+
+        // Restore Notes if present
+        if (data.govtNotes && document.getElementById('govt-prep-notes')) {
+          if (!document.getElementById('govt-prep-notes').value) {
+            document.getElementById('govt-prep-notes').value = data.govtNotes;
+          }
+        }
+        if (data.oppNotes && document.getElementById('opp-prep-notes')) {
+          if (!document.getElementById('opp-prep-notes').value) {
+            document.getElementById('opp-prep-notes').value = data.oppNotes;
+          }
+        }
+
+        var topicTitle = (data.customTopic && data.customTopic.en) ? data.customTopic.en : "Selected Motion";
+        updateLockBannerUI(true, topicTitle);
+
+        // Auto-navigate to phase if requested and not on it
+        if (data.phase && data.phase > 1 && appState.currentPhase === 1) {
+          switchPhase(data.phase);
+        }
+      } catch (err) {
+        console.log("Error applying remote session:", err);
+      } finally {
+        isApplyingRemoteSync = false;
+      }
+    }
+
+    async function checkAndSyncLockedSession() {
+      // 1. Try server API
+      try {
+        var response = await fetch('/api/debate?t=' + Date.now(), { cache: 'no-store' });
+        if (response.ok) {
+          var serverData = await response.json();
+          if (serverData && serverData.active) {
+            applyLockedSessionData(serverData);
+            return;
+          }
+        }
+      } catch (e) {}
+
+      // 2. Try localStorage
+      try {
+        var localStr = localStorage.getItem('debate_locked_session');
+        if (localStr) {
+          var localData = JSON.parse(localStr);
+          if (localData && localData.active) {
+            applyLockedSessionData(localData);
+          }
+        }
+      } catch (e) {}
+    }
+
+    function updateLockBannerUI(isLocked, topicText) {
+      var banner = document.getElementById('session-lock-banner');
+      if (!banner) return;
+      if (isLocked) {
+        banner.style.display = 'flex';
+        document.getElementById('lock-banner-desc').innerText = 
+          'Locked Motion: "' + (topicText || 'Active Debate') + '" · All devices accessing this page share this live classroom debate.';
+      } else {
+        banner.style.display = 'none';
+      }
+    }
+
+    function unlockAndResetSession() {
+      if (confirm("Unlock active classroom session and start fresh for a new topic?")) {
+        // Clear server
+        try {
+          fetch('/api/debate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ active: false })
+          }).catch(function() {});
+        } catch (e) {}
+
+        // Clear local storage
+        try {
+          localStorage.removeItem('debate_locked_session');
+        } catch (e) {}
+
+        // Broadcast unlock
+        if (window.BroadcastChannel) {
+          try {
+            var bc = new BroadcastChannel('debate_channel');
+            bc.postMessage({ type: 'SESSION_UNLOCKED' });
+          } catch (e) {}
+        }
+
+        updateLockBannerUI(false);
+        resetEntireDebate();
+      }
+    }
+
+    // Listen for cross-tab broadcasts
+    if (window.BroadcastChannel) {
+      try {
+        var channel = new BroadcastChannel('debate_channel');
+        channel.onmessage = function(ev) {
+          if (ev.data && ev.data.type === 'SESSION_LOCKED') {
+            applyLockedSessionData(ev.data.payload);
+          } else if (ev.data && ev.data.type === 'SESSION_UNLOCKED') {
+            updateLockBannerUI(false);
+          }
+        };
+      } catch (e) {}
+    }
+
     /* ── Fullscreen & Keyboard Shortcuts ── */
     function toggleFullScreen() {
       if (!document.fullscreenElement) {
@@ -2934,9 +3163,15 @@
     });
 
     // Initialize application on load
-    window.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('DOMContentLoaded', async function() {
       displayTopic(0);
       updatePrepTimerUI();
+      
+      // Auto-check for active locked session
+      await checkAndSyncLockedSession();
+
+      // Poll periodically (every 4 seconds) to keep student devices synchronized
+      setInterval(checkAndSyncLockedSession, 4000);
     });
   </script>
 </body>

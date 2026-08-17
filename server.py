@@ -45,6 +45,11 @@ def _get_db() -> sqlite3.Connection:
                 UNIQUE(window, response_token)
             );
             CREATE INDEX IF NOT EXISTS idx_pr_window ON poll_responses(window);
+            CREATE TABLE IF NOT EXISTS debate_active_session (
+                id             TEXT    PRIMARY KEY DEFAULT 'current',
+                session_data   TEXT    NOT NULL,
+                updated_at     INTEGER DEFAULT (strftime('%s','now'))
+            );
         """)
         conn.commit()
         _local.conn = conn
@@ -118,7 +123,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.end_headers()
 
-    # ── GET /api/poll ────────────────────────────────────────────────────────
+    # ── GET /api/poll and /api/debate ─────────────────────────────────────────
     def do_GET(self):
         parsed = urlparse(self.path)
         if parsed.path == "/api/poll":
@@ -129,11 +134,44 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 return
             _json_response(self, 200, _poll_data(window))
             return
+        elif parsed.path == "/api/debate":
+            try:
+                db = _get_db()
+                row = db.execute("SELECT session_data FROM debate_active_session WHERE id = 'current'").fetchone()
+                if row and row["session_data"]:
+                    _json_response(self, 200, json.loads(row["session_data"]))
+                else:
+                    _json_response(self, 200, {"active": False})
+            except Exception as e:
+                _json_response(self, 200, {"active": False, "error": str(e)})
+            return
         super().do_GET()
 
-    # ── POST /api/poll ───────────────────────────────────────────────────────
+    # ── POST /api/poll and /api/debate ────────────────────────────────────────
     def do_POST(self):
         parsed = urlparse(self.path)
+        if parsed.path == "/api/debate":
+            length = int(self.headers.get("Content-Length", 0))
+            try:
+                body = json.loads(self.rfile.read(length))
+            except (json.JSONDecodeError, ValueError):
+                _json_response(self, 400, {"error": "Invalid JSON"})
+                return
+            try:
+                db = _get_db()
+                db.execute("""
+                    INSERT INTO debate_active_session (id, session_data, updated_at)
+                    VALUES ('current', ?, strftime('%s','now'))
+                    ON CONFLICT(id) DO UPDATE SET
+                        session_data = excluded.session_data,
+                        updated_at = strftime('%s','now')
+                """, (json.dumps(body),))
+                db.commit()
+                _json_response(self, 200, {"success": True, "session": body})
+            except Exception as exc:
+                _json_response(self, 500, {"error": str(exc)})
+            return
+
         if parsed.path != "/api/poll":
             self.send_response(404)
             self.end_headers()
