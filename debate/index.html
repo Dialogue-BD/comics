@@ -790,10 +790,9 @@
       display: flex;
       flex-direction: column;
       overflow-y: auto;
-      padding: clamp(24px, 4vh, 48px) clamp(24px, 6vw, 80px);
-      max-width: 1440px;
+      padding: clamp(16px, 3vh, 32px) clamp(20px, 4vw, 48px);
       width: 100%;
-      margin: 0 auto;
+      box-sizing: border-box;
     }
 
     .slideshow-slide {
@@ -811,57 +810,172 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .slide-step-badge {
       background: rgba(79, 126, 248, 0.25);
       color: #93c5fd;
       border: 1.5px solid rgba(79, 126, 248, 0.5);
-      padding: 6px 16px;
+      padding: 6px 18px;
       border-radius: 20px;
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
 
     .slide-heading-en {
-      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
       font-weight: 900;
       letter-spacing: -0.02em;
       color: #ffffff;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .slide-heading-bn {
       font-family: var(--font-bn);
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-size: clamp(1.5rem, 2.4vw, 2.1rem);
       color: #93c5fd;
-      margin-bottom: 24px;
+      margin-bottom: 18px;
       padding-left: 18px;
       border-left: 5px solid var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── Widescreen 2-Column Turn Layout ── */
+    .turn-split-layout {
+      display: grid;
+      grid-template-columns: minmax(320px, 380px) 1fr;
+      gap: 22px;
+      flex: 1;
+      align-items: stretch;
+      margin-bottom: 8px;
+    }
+
+    .turn-persona-card {
+      background: var(--surface-card);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .turn-persona-card.govt {
+      border-color: rgba(16, 185, 129, 0.6);
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.15) 0%, rgba(18, 23, 35, 0.95) 100%);
+    }
+    .turn-persona-card.opp {
+      border-color: rgba(239, 68, 68, 0.6);
+      background: linear-gradient(180deg, rgba(239, 68, 68, 0.15) 0%, rgba(18, 23, 35, 0.95) 100%);
+    }
+    .turn-persona-card.accent {
+      border-color: rgba(79, 126, 248, 0.6);
+      background: linear-gradient(180deg, rgba(79, 126, 248, 0.15) 0%, rgba(18, 23, 35, 0.95) 100%);
+    }
+    .turn-persona-card.warning {
+      border-color: rgba(245, 158, 11, 0.6);
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.15) 0%, rgba(18, 23, 35, 0.95) 100%);
+    }
+
+    .turn-action-column {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .turn-action-card {
+      background: var(--surface-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      flex: 1;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .turn-action-card.govt-card { border-left: 5px solid var(--govt); }
+    .turn-action-card.opp-card { border-left: 5px solid var(--opp); }
+    .turn-action-card.accent-card { border-left: 5px solid var(--accent); }
+    .turn-action-card.warning-card { border-left: 5px solid var(--warning); }
+    .turn-action-card.alert-card { border-left: 5px solid #ef4444; background: rgba(239, 68, 68, 0.12); }
+
+    .turn-action-num {
+      font-size: 2.2rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .turn-action-body {
+      flex: 1;
+    }
+
+    .turn-action-title-en {
+      font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .turn-action-title-bn {
+      font-family: var(--font-bn);
+      font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+      color: #93c5fd;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .turn-action-desc-en {
+      font-size: clamp(1.02rem, 1.2vw, 1.2rem);
+      color: #cbd5e1;
+      line-height: 1.4;
+      margin-bottom: 2px;
+    }
+
+    .turn-action-desc-bn {
+      font-family: var(--font-bn);
+      font-size: clamp(0.98rem, 1.15vw, 1.15rem);
+      color: #94a3b8;
+      line-height: 1.35;
+    }
+
+    .slide-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      flex: 1;
     }
 
     .slide-grid-3 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      flex: 1;
     }
 
     .slide-grid-2 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 22px;
-      margin-bottom: 20px;
+      gap: 20px;
+      margin-bottom: 16px;
+      flex: 1;
     }
 
     .slide-feature-card {
       background: var(--surface-card);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 22px 26px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .slide-feature-card.govt { border-top: 5px solid var(--govt); }
@@ -869,7 +983,7 @@
     .slide-feature-card.accent { border-top: 5px solid var(--accent); }
 
     .slide-card-title {
-      font-size: 1.3rem;
+      font-size: 1.45rem;
       font-weight: 800;
       color: #fff;
       margin-bottom: 6px;
@@ -880,38 +994,25 @@
 
     .slide-card-bn {
       font-family: var(--font-bn);
-      font-size: 1.12rem;
+      font-size: 1.25rem;
       color: #cbd5e1;
       margin-bottom: 10px;
+      font-weight: 700;
     }
 
     .slide-card-desc {
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       color: var(--text-muted);
       line-height: 1.55;
     }
 
-    .checklist-box {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 24px 30px;
-      margin-bottom: 18px;
-    }
-
-    .checklist-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 14px;
-      font-size: 1.15rem;
-    }
-    .checklist-item:last-child { margin-bottom: 0; }
-
-    .checklist-icon {
-      font-size: 1.6rem;
-      flex-shrink: 0;
-      margin-top: 2px;
+    @media (max-width: 900px) {
+      .turn-split-layout {
+        grid-template-columns: 1fr;
+      }
+      .slide-grid-4 {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     .slideshow-nav-bar {
@@ -1527,43 +1628,52 @@
         <div class="slideshow-slide active" id="slide-1">
           <div class="slide-badge-row">
             <span class="slide-step-badge">Slide 1 of 10 · The Teams (দলসমূহ)</span>
-            <span style="font-size: 0.9rem; color: #94a3b8; font-weight: 700;">⏱️ 45–60 Min Match</span>
+            <span style="font-size: 1.05rem; color: #94a3b8; font-weight: 800;">⏱️ 45–60 Min Total Match · 8 Speeches</span>
           </div>
           <h2 class="slide-heading-en">🏛️ The Two Teams in Parliament</h2>
-          <div class="slide-heading-bn">সংসদের দুই দল: পক্ষ দল বনাম বিপক্ষ দল</div>
+          <div class="slide-heading-bn">সংসদের দুই দল: সরকারি পক্ষ দল বনাম বিরোধী বিপক্ষ দল</div>
 
-          <div class="slide-grid-2" style="margin-bottom: 16px;">
-            <div class="slide-feature-card govt" style="background: rgba(16, 185, 129, 0.1); padding: 20px 24px;">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                <div class="slide-card-title" style="color: #34d399; font-size: 1.3rem;">🏛️ Government (পক্ষ দল)</div>
-                <span style="background: var(--govt-dim); color: #34d399; font-size: 0.8rem; font-weight: 800; padding: 4px 10px; border-radius: 6px;">PRO-MOTION</span>
+          <div class="slide-grid-2" style="gap: 24px; margin-bottom: 16px;">
+            <div class="slide-feature-card govt" style="background: linear-gradient(180deg, rgba(16, 185, 129, 0.18) 0%, rgba(18, 23, 35, 0.95) 100%); border-color: rgba(16, 185, 129, 0.5);">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <div class="slide-card-title" style="color: #34d399; font-size: 1.65rem;">🏛️ Government (পক্ষ দল)</div>
+                  <span style="background: var(--govt); color: #000; font-size: 0.85rem; font-weight: 900; padding: 4px 12px; border-radius: 6px; letter-spacing: 0.05em;">PRO-MOTION</span>
+                </div>
+                <div style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 2px;">"We Agree! Change is Urgently Needed in Rajshahi."</div>
+                <div style="font-family: var(--font-bn); font-size: 1.15rem; color: #6ee7b7; font-weight: 700; margin-bottom: 14px;">"আমরা প্রস্তাবের পক্ষে! বাস্তব সংস্কার ও পরিবর্তন আবশ্যক।"</div>
               </div>
-              <div style="font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 4px;">"We Agree! Change is Needed."</div>
-              <div style="font-family: var(--font-bn); font-size: 1.05rem; color: #cbd5e1; margin-bottom: 12px;">"আমরা প্রস্তাবের পক্ষে! বাস্তব পরিবর্তন দরকার।"</div>
-              <div style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.5;">
-                🏗️ <strong>Mandatory Job:</strong> Define the key terms, explain the problem in Rajshahi, and propose a practical 3-step policy model.
+
+              <div style="display: flex; flex-direction: column; gap: 10px; background: rgba(0,0,0,0.3); padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid rgba(16, 185, 129, 0.2);">
+                <div style="font-size: 1.05rem; color: #f1f5f9;"><strong>🏗️ ১st Speaker (Prime Minister):</strong> Define terms &amp; propose 3-step model.</div>
+                <div style="font-size: 1.05rem; color: #f1f5f9;"><strong>🧱 ২nd Speaker (Minister):</strong> Rebut LO &amp; add deep local evidence.</div>
+                <div style="font-size: 1.05rem; color: #f1f5f9;"><strong>⚖️ ৩rd Speaker (Govt Whip):</strong> Win 3 core clashes (No new args).</div>
+                <div style="font-size: 1.05rem; color: #34d399; font-weight: 700;"><strong>🔮 Reply Speech (Turn 8):</strong> Final closing summary of the debate.</div>
               </div>
             </div>
 
-            <div class="slide-feature-card opp" style="background: rgba(239, 68, 68, 0.1); padding: 20px 24px;">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                <div class="slide-card-title" style="color: #f87171; font-size: 1.3rem;">🛡️ Opposition (বিপক্ষ দল)</div>
-                <span style="background: var(--opp-dim); color: #f87171; font-size: 0.8rem; font-weight: 800; padding: 4px 10px; border-radius: 6px;">AGAINST</span>
+            <div class="slide-feature-card opp" style="background: linear-gradient(180deg, rgba(239, 68, 68, 0.18) 0%, rgba(18, 23, 35, 0.95) 100%); border-color: rgba(239, 68, 68, 0.5);">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <div class="slide-card-title" style="color: #f87171; font-size: 1.65rem;">🛡️ Opposition (বিপক্ষ দল)</div>
+                  <span style="background: var(--opp); color: #fff; font-size: 0.85rem; font-weight: 900; padding: 4px 12px; border-radius: 6px; letter-spacing: 0.05em;">AGAINST</span>
+                </div>
+                <div style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 2px;">"We Disagree! This Proposal is Flawed &amp; Harmful."</div>
+                <div style="font-family: var(--font-bn); font-size: 1.15rem; color: #fca5a5; font-weight: 700; margin-bottom: 14px;">"আমরা প্রস্তাবের বিপক্ষে! এই পরিকল্পনা অবাস্তব ও ক্ষতিকর।"</div>
               </div>
-              <div style="font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 4px;">"We Disagree! This Plan is Dangerous."</div>
-              <div style="font-family: var(--font-bn); font-size: 1.05rem; color: #cbd5e1; margin-bottom: 12px;">"আমরা প্রস্তাবের বিপক্ষে! এই পরিকল্পনা অবাস্তব ও ক্ষতিকর।"</div>
-              <div style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.5;">
-                🔨 <strong>Mandatory Job:</strong> Expose fatal flaws in the Govt plan and defend the existing system or better alternatives.
+
+              <div style="display: flex; flex-direction: column; gap: 10px; background: rgba(0,0,0,0.3); padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid rgba(239, 68, 68, 0.2);">
+                <div style="font-size: 1.05rem; color: #f1f5f9;"><strong>🔨 ১st Speaker (Leader of Opp):</strong> Attack model &amp; establish counter-stance.</div>
+                <div style="font-size: 1.05rem; color: #f1f5f9;"><strong>🛡️ ২nd Speaker (Deputy Leader):</strong> Expose real-world damages in Rajshahi.</div>
+                <div style="font-size: 1.05rem; color: #f1f5f9;"><strong>⚖️ ৩rd Speaker (Opp Whip):</strong> Collapse Govt arguments (No new args).</div>
+                <div style="font-size: 1.05rem; color: #f87171; font-weight: 700;"><strong>🔮 Reply Speech (Turn 7):</strong> ⚠️ Opposition speaks FIRST in reply!</div>
               </div>
             </div>
           </div>
 
-          <div style="background: var(--surface-card); border-radius: var(--radius); padding: 14px 20px; font-size: 0.95rem; color: #cbd5e1; display: flex; align-items: center; gap: 14px; border-left: 4px solid var(--accent);">
-            <span style="font-size: 1.6rem;">👥</span>
-            <div>
-              <strong>Squad Breakdown:</strong> 3 Main Speakers on each side + 1 Reply Speech = <strong>8 Speeches Total</strong>.
-              <span style="font-family: var(--font-bn); color: #93c5fd; display: block; font-size: 0.9rem; margin-top: 2px;">প্রতি দলে ৩ জন বক্তা + ১টি সমাপনী বক্তব্য = মোট ৮টি বক্তব্য।</span>
-            </div>
+          <div style="background: var(--surface-card); border-radius: var(--radius); padding: 14px 24px; font-size: 1.05rem; color: #cbd5e1; display: flex; align-items: center; justify-content: space-between; border-left: 5px solid var(--accent);">
+            <div><strong>👥 Format Summary:</strong> 3 Main Speakers per bench (4:00m each) + 1 Reply Speech (2:30m) = <strong>8 Speeches Total</strong>.</div>
+            <div style="font-family: var(--font-bn); color: #93c5fd; font-weight: 700; font-size: 1.05rem;">প্রতি দলে ৩ জন বক্তা + ১টি সমাপনী বক্তব্য = মোট ৮টি বক্তব্য।</div>
           </div>
         </div>
 
@@ -1571,34 +1681,54 @@
         <div class="slideshow-slide" id="slide-2">
           <div class="slide-badge-row">
             <span class="slide-step-badge">Slide 2 of 10 · Activity Roadmap (ধাপসমূহ)</span>
-            <span style="font-size: 0.9rem; color: #94a3b8; font-weight: 700;">4 Quick Steps</span>
+            <span style="font-size: 1.05rem; color: #94a3b8; font-weight: 800;">4 Quick Class Phases</span>
           </div>
           <h2 class="slide-heading-en">🗺️ The 4 Stages of Today's Class</h2>
-          <div class="slide-heading-bn">আজকের ক্লাসের ৪টি সহজ পর্যায় ও সময়সূচি</div>
+          <div class="slide-heading-bn">আজকের বিতর্কের ৪টি সহজ পর্যায় ও সম্পূর্ণ সময়সূচি</div>
 
-          <div class="slide-grid-2" style="gap: 14px;">
-            <div class="slide-feature-card accent" style="padding: 16px 20px;">
-              <div style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 2px;">1️⃣ Topic &amp; Teams (৩ মিনিট)</div>
-              <div style="font-family: var(--font-bn); font-size: 0.95rem; color: #93c5fd; margin-bottom: 6px;">বিষয় নির্বাচন ও দল গঠন</div>
-              <div style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.45;">Teacher reveals 1 of 50 local Rajshahi motions. The classroom splits into Left Bench (Govt) and Right Bench (Opp).</div>
+          <div class="slide-grid-4" style="gap: 16px;">
+            <div class="slide-feature-card accent" style="padding: 20px 22px;">
+              <div>
+                <span style="background: rgba(79,126,248,0.25); color: #93c5fd; font-weight: 900; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem;">STAGE 1 · 3 MIN</span>
+                <div style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 10px 0 4px;">🎯 Topic &amp; Teams</div>
+                <div style="font-family: var(--font-bn); font-size: 1.1rem; color: #93c5fd; font-weight: 700; margin-bottom: 12px;">বিষয় নির্বাচন ও দল গঠন</div>
+                <div style="font-size: 1rem; color: #cbd5e1; line-height: 1.5;">
+                  Teacher spins 1 of 50 local Rajshahi motions. Classroom splits into <strong>Government Bench (Left)</strong> &amp; <strong>Opposition Bench (Right)</strong>.
+                </div>
+              </div>
             </div>
 
-            <div class="slide-feature-card accent" style="padding: 16px 20px;">
-              <div style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 2px;">2️⃣ Team Prep Caucus (১২ মিনিট)</div>
-              <div style="font-family: var(--font-bn); font-size: 0.95rem; color: #93c5fd; margin-bottom: 6px;">দলের প্রস্তুতি ও যুক্তি তৈরি</div>
-              <div style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.45;">Turn desks together. Build A-R-E-I arguments, prepare evidence, and draft sharp 15s Points of Information (POIs).</div>
+            <div class="slide-feature-card accent" style="padding: 20px 22px;">
+              <div>
+                <span style="background: rgba(16,185,129,0.25); color: #34d399; font-weight: 900; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem;">STAGE 2 · 12 MIN</span>
+                <div style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 10px 0 4px;">📝 Prep Caucus</div>
+                <div style="font-family: var(--font-bn); font-size: 1.1rem; color: #34d399; font-weight: 700; margin-bottom: 12px;">দলের কৌশল ও প্রস্তুতি</div>
+                <div style="font-size: 1rem; color: #cbd5e1; line-height: 1.5;">
+                  Turn desks together. Build <strong>A-R-E-I</strong> arguments, gather Rajshahi evidence, assign speaking turns, and draft 15-second POI questions.
+                </div>
+              </div>
             </div>
 
-            <div class="slide-feature-card accent" style="padding: 16px 20px;">
-              <div style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 2px;">3️⃣ Live Debate Stage (৩০ মিনিট)</div>
-              <div style="font-family: var(--font-bn); font-size: 0.95rem; color: #93c5fd; margin-bottom: 6px;">মঞ্চে মূল বিতর্ক ও বেলের নিয়ম</div>
-              <div style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.45;">Debaters take the podium. Follow automated bell chimes (1:00, 3:00, 4:00) &amp; accept live 15-second POI interruptions.</div>
+            <div class="slide-feature-card accent" style="padding: 20px 22px;">
+              <div>
+                <span style="background: rgba(245,158,11,0.25); color: #fbbf24; font-weight: 900; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem;">STAGE 3 · 30 MIN</span>
+                <div style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 10px 0 4px;">🎙️ Live Debate Stage</div>
+                <div style="font-family: var(--font-bn); font-size: 1.1rem; color: #fbbf24; font-weight: 700; margin-bottom: 12px;">মঞ্চে সরাসরি বিতর্ক</div>
+                <div style="font-size: 1rem; color: #cbd5e1; line-height: 1.5;">
+                  Debaters step to podium. Master timer rings automated bells (1:00, 3:00, 4:00). Stand up for <strong>15-second POI interruptions</strong>.
+                </div>
+              </div>
             </div>
 
-            <div class="slide-feature-card accent" style="padding: 16px 20px;">
-              <div style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 2px;">4️⃣ Verdict &amp; Awards (৫ মিনিট)</div>
-              <div style="font-family: var(--font-bn); font-size: 0.95rem; color: #93c5fd; margin-bottom: 6px;">ফলাফল ও শ্রেষ্ঠ বক্তা ঘোষণা</div>
-              <div style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.45;">Scorecard calculated across 5 criteria. Winning team announced with the official Best Speaker trophy! 🏆</div>
+            <div class="slide-feature-card accent" style="padding: 20px 22px;">
+              <div>
+                <span style="background: rgba(139,92,246,0.25); color: #c084fc; font-weight: 900; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem;">STAGE 4 · 5 MIN</span>
+                <div style="font-size: 1.3rem; font-weight: 800; color: #fff; margin: 10px 0 4px;">🏆 Verdict &amp; Awards</div>
+                <div style="font-family: var(--font-bn); font-size: 1.1rem; color: #c084fc; font-weight: 700; margin-bottom: 12px;">ফলাফল ও ট্রফি বিতরণ</div>
+                <div style="font-size: 1rem; color: #cbd5e1; line-height: 1.5;">
+                  Adjudicator submits 100-pt rubric scores. Instant winner celebration &amp; official <strong>Best Speaker (শ্রেষ্ঠ বক্তা)</strong> crowned! 🌟
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1607,38 +1737,60 @@
         <div class="slideshow-slide" id="slide-3">
           <div class="slide-badge-row">
             <span class="slide-step-badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border-color: #34d399;">Turn 1 of 8 · Government (পক্ষ দল)</span>
-            <span style="font-size: 0.9rem; color: #34d399; font-weight: 800;">⏱️ 4:00 Min (POIs: 1:00–3:00)</span>
+            <span style="font-size: 1.05rem; color: #34d399; font-weight: 800;">⏱️ 4:00 Min (POIs Open: 1:00–3:00)</span>
           </div>
           <h2 class="slide-heading-en">🏗️ Turn 1: Prime Minister (প্রধানমন্ত্রী)</h2>
-          <div class="slide-heading-bn">১ম সরকারি বক্তা: ভিত্তি স্থাপন ও প্রস্তাবিত নীতি উপস্থাপন</div>
+          <div class="slide-heading-bn">১ম সরকারি বক্তা: ভিত্তি স্থাপন ও ৩-ধাপের নীতি মডেল প্রণয়ন</div>
 
-          <div class="checklist-box" style="border-left: 5px solid var(--govt);">
-            <div style="font-size: 1.1rem; font-weight: 800; color: #34d399; margin-bottom: 12px;">📋 Prime Minister's 3 Mandatory Tasks (প্রধানমন্ত্রীর ৩টি আবশ্যক কাজ):</div>
-            
-            <div class="checklist-item">
-              <span class="checklist-icon">1️⃣</span>
+          <div class="turn-split-layout">
+            <div class="turn-persona-card govt">
               <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Define the Context &amp; Problem (সমস্যার পটভূমি):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Explain what key words mean and why this is an urgent crisis in Rajshahi.</div>
-                <div style="color: #93c5fd; font-family: var(--font-bn); font-size: 0.88rem;">প্রস্তাবের মূল শব্দগুলোর স্পষ্ট সংজ্ঞা দিন এবং রাজশাহীতে সমস্যাটির তীব্রতা তুলে ধরুন।</div>
+                <div style="font-size: 3.5rem; line-height: 1; margin-bottom: 12px;">🏗️</div>
+                <div style="font-size: 1.55rem; font-weight: 900; color: #34d399; margin-bottom: 2px;">Prime Minister</div>
+                <div style="font-family: var(--font-bn); font-size: 1.3rem; color: #fff; font-weight: 700; margin-bottom: 14px;">১ম বক্তা · প্রধানমন্ত্রী</div>
+                <div style="background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; font-weight: 800; color: #34d399; margin-bottom: 14px; text-transform: uppercase;">
+                  Role: The Foundation Builder
+                </div>
+                <div style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.45;">
+                  You set the battlefield. If you don't define the model clearly, your whole team will struggle!
+                </div>
+              </div>
+
+              <div style="background: rgba(0,0,0,0.4); padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-top: 14px;">
+                <div style="font-size: 0.85rem; color: #94a3b8; font-weight: 700;">SPEECH TIMING:</div>
+                <div style="font-size: 1.15rem; font-weight: 800; color: #fff;">0:00–1:00 (🔒) → 1:00–3:00 (✋ POI) → 3:00–4:00 (🔒)</div>
               </div>
             </div>
 
-            <div class="checklist-item">
-              <span class="checklist-icon">2️⃣</span>
-              <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Present a 3-Step Policy Model (৩টি পদক্ষেপের মডেল):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">How will your team execute this in reality? (Who enforces it? Who funds it? What are the rules?).</div>
-                <div style="color: #93c5fd; font-family: var(--font-bn); font-size: 0.88rem;">বাস্তবায়নের ৩টি সুনির্দিষ্ট ধাপ বলুন (কে করবে, কীভাবে চলবে, খরচ কোথা থেকে আসবে)।</div>
+            <div class="turn-action-column">
+              <div class="turn-action-card govt-card">
+                <span class="turn-action-num">1️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Define the Motion &amp; Context in Rajshahi</div>
+                  <div class="turn-action-title-bn">প্রস্তাবের সংজ্ঞা ও রাজশাহীর পটভূমি তুলে ধরুন</div>
+                  <div class="turn-action-desc-en">Clarify what key motion words mean. Explain why this issue is an urgent, unsolved problem in Rajshahi schools and community.</div>
+                  <div class="turn-action-desc-bn">প্রস্তাবের মূল শব্দগুলোর অর্থ স্পষ্ট করুন এবং রাজশাহীর বাস্তব জীবনের সংকটের চিত্র তুলে ধরুন।</div>
+                </div>
               </div>
-            </div>
 
-            <div class="checklist-item">
-              <span class="checklist-icon">3️⃣</span>
-              <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Deliver Arguments 1 &amp; 2 (১ম ও ২য় যুক্তি):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Use the <strong>A-R-E-I</strong> formula with real Rajshahi evidence.</div>
-                <div style="color: #93c5fd; font-family: var(--font-bn); font-size: 0.88rem;">বাস্তব প্রমাণ ও যুক্তি দিয়ে সরকারি দলের প্রথম দুটি মূল দাবি প্রমাণ করুন।</div>
+              <div class="turn-action-card govt-card">
+                <span class="turn-action-num">2️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Present a 3-Step Practical Policy Model</div>
+                  <div class="turn-action-title-bn">বাস্তবায়নের ৩টি স্পষ্ট ধাপ উপস্থাপন করুন</div>
+                  <div class="turn-action-desc-en">How will this work in the real world? State: 1) Who enforces it? 2) Where does the funding come from? 3) What happens to violators?</div>
+                  <div class="turn-action-desc-bn">বাস্তবে কীভাবে চলবে? (কারা পরিচালনা করবে, খরচ কোথা থেকে আসবে এবং আইন অমান্য করলে কী হবে)।</div>
+                </div>
+              </div>
+
+              <div class="turn-action-card govt-card">
+                <span class="turn-action-num">3️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Deliver Arguments 1 &amp; 2 using A-R-E-I</div>
+                  <div class="turn-action-title-bn">A-R-E-I পদ্ধতিতে ১ম ও ২য় মূল যুক্তি প্রমাণ করুন</div>
+                  <div class="turn-action-desc-en">Use <strong>Assertion → Reasoning → Evidence in Rajshahi → Impact</strong> to prove why the Government stance is superior.</div>
+                  <div class="turn-action-desc-bn">রাজশাহীর নির্ভরযোগ্য তথ্য ও বাস্তব প্রমাণ দিয়ে সরকারি দলের প্রথম দুটি প্রধান দাবি প্রতিষ্ঠিত করুন।</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1648,38 +1800,60 @@
         <div class="slideshow-slide" id="slide-4">
           <div class="slide-badge-row">
             <span class="slide-step-badge" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border-color: #f87171;">Turn 2 of 8 · Opposition (বিপক্ষ দল)</span>
-            <span style="font-size: 0.9rem; color: #f87171; font-weight: 800;">⏱️ 4:00 Min (POIs: 1:00–3:00)</span>
+            <span style="font-size: 1.05rem; color: #f87171; font-weight: 800;">⏱️ 4:00 Min (POIs Open: 1:00–3:00)</span>
           </div>
           <h2 class="slide-heading-en">🔨 Turn 2: Leader of Opposition (বিরোধীদলীয় নেতা)</h2>
-          <div class="slide-heading-bn">১ম বিরোধী বক্তা: মডেল ভাঙা ও পাল্টা অবস্থান স্পষ্টকরণ</div>
+          <div class="slide-heading-bn">১ম বিরোধী বক্তা: সরকারি মডেল ভাঙা ও পাল্টা দর্শন প্রতিষ্ঠা</div>
 
-          <div class="checklist-box" style="border-left: 5px solid var(--opp);">
-            <div style="font-size: 1.1rem; font-weight: 800; color: #f87171; margin-bottom: 12px;">📋 Leader of Opposition's 3 Mandatory Tasks (বিরোধীদলীয় নেতার ৩টি আবশ্যক কাজ):</div>
-            
-            <div class="checklist-item">
-              <span class="checklist-icon">1️⃣</span>
+          <div class="turn-split-layout">
+            <div class="turn-persona-card opp">
               <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Rebut the Prime Minister (প্রধানমন্ত্রীর যুক্তি খণ্ডন):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Attack the PM's problem framing and expose flaws in their 3-step model.</div>
-                <div style="color: #fca5a5; font-family: var(--font-bn); font-size: 0.88rem;">প্রধানমন্ত্রীর প্রস্তাবিত মডেল কেন অবাস্তব ও ক্ষতিকর তা প্রমাণ করুন।</div>
+                <div style="font-size: 3.5rem; line-height: 1; margin-bottom: 12px;">🔨</div>
+                <div style="font-size: 1.55rem; font-weight: 900; color: #f87171; margin-bottom: 2px;">Leader of Opposition</div>
+                <div style="font-family: var(--font-bn); font-size: 1.3rem; color: #fff; font-weight: 700; margin-bottom: 14px;">১ম বক্তা · বিরোধীদলীয় নেতা</div>
+                <div style="background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; font-weight: 800; color: #f87171; margin-bottom: 14px; text-transform: uppercase;">
+                  Role: The Policy Smasher
+                </div>
+                <div style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.45;">
+                  You shatter the Prime Minister's illusion and show the judge why their plan creates more danger than good!
+                </div>
+              </div>
+
+              <div style="background: rgba(0,0,0,0.4); padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-top: 14px;">
+                <div style="font-size: 0.85rem; color: #94a3b8; font-weight: 700;">SPEECH TIMING:</div>
+                <div style="font-size: 1.15rem; font-weight: 800; color: #fff;">0:00–1:00 (🔒) → 1:00–3:00 (✋ POI) → 3:00–4:00 (🔒)</div>
               </div>
             </div>
 
-            <div class="checklist-item">
-              <span class="checklist-icon">2️⃣</span>
-              <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Establish the Opposition Counter-Stance (বিপক্ষ দলের পাল্টা অবস্থান):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">What does your side defend instead? (Defend the current system or offer a smarter alternative).</div>
-                <div style="color: #fca5a5; font-family: var(--font-bn); font-size: 0.88rem;">বিপক্ষ দলের সুনির্দিষ্ট বিকল্প দর্শন বা সমাধান স্পষ্টভাবে ঘোষণা করুন।</div>
+            <div class="turn-action-column">
+              <div class="turn-action-card opp-card">
+                <span class="turn-action-num">1️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Rebut the Prime Minister &amp; Expose Flaws in Model</div>
+                  <div class="turn-action-title-bn">প্রধানমন্ত্রীর যুক্তি খণ্ডন ও মডেলের ফাঁকফোকর উন্মোচন</div>
+                  <div class="turn-action-desc-en">Attack the PM's framing. Prove why their 3-step policy is impractical, impossible to enforce, or wildly too expensive for Rajshahi.</div>
+                  <div class="turn-action-desc-bn">প্রধানমন্ত্রীর প্রস্তাবিত মডেল কেন অবাস্তব, ব্যয়বহুল এবং পরিচালনা করা অসম্ভব তা প্রমাণ করুন।</div>
+                </div>
               </div>
-            </div>
 
-            <div class="checklist-item">
-              <span class="checklist-icon">3️⃣</span>
-              <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Deliver Opp Arguments 1 &amp; 2 (বিপক্ষ দলের ১ম ও ২য় যুক্তি):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Prove the severe negative impacts and harms that the Govt policy will cause.</div>
-                <div style="color: #fca5a5; font-family: var(--font-bn); font-size: 0.88rem;">সরকারি প্রস্তাব পাস হলে কী কী ক্ষতি হবে তা স্পষ্ট যুক্তি দিয়ে দেখান।</div>
+              <div class="turn-action-card opp-card">
+                <span class="turn-action-num">2️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Establish the Opposition Counter-Stance (বিকল্প দর্শন)</div>
+                  <div class="turn-action-title-bn">বিপক্ষ দলের সুনির্দিষ্ট বিকল্প অবস্থান ঘোষণা করুন</div>
+                  <div class="turn-action-desc-en">What does your side stand for instead? Defend the status quo or provide a safer, smarter, fairer alternative solution.</div>
+                  <div class="turn-action-desc-bn">বর্তমান ব্যবস্থার গুণাবলি তুলে ধরুন অথবা সরকারের চেয়ে অনেক ভালো ও বাস্তবমুখী বিকল্প প্রস্তাব দিন।</div>
+                </div>
+              </div>
+
+              <div class="turn-action-card opp-card">
+                <span class="turn-action-num">3️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Deliver Opposition Arguments 1 &amp; 2 (Severe Harms)</div>
+                  <div class="turn-action-title-bn">মারাত্মক কুফল ও ক্ষতি প্রমাণ করে ১ম ও ২য় যুক্তি পেশ করুন</div>
+                  <div class="turn-action-desc-en">Use <strong>A-R-E-I</strong> to prove the catastrophic negative consequences this motion will inflict on citizens and students.</div>
+                  <div class="turn-action-desc-bn">সরকারি প্রস্তাব পাস হলে শিক্ষার্থী ও সাধারণ মানুষের কী অপরিমেয় ক্ষতি হবে তা অকাট্য যুক্তি দিয়ে দেখান।</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1689,38 +1863,60 @@
         <div class="slideshow-slide" id="slide-5">
           <div class="slide-badge-row">
             <span class="slide-step-badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border-color: #34d399;">Turn 3 of 8 · Government (পক্ষ দল)</span>
-            <span style="font-size: 0.9rem; color: #34d399; font-weight: 800;">⏱️ 4:00 Min (POIs: 1:00–3:00)</span>
+            <span style="font-size: 1.05rem; color: #34d399; font-weight: 800;">⏱️ 4:00 Min (POIs Open: 1:00–3:00)</span>
           </div>
           <h2 class="slide-heading-en">🧱 Turn 3: Minister (২য় সরকারি বক্তা)</h2>
-          <div class="slide-heading-bn">যুক্তি সুরক্ষা ও স্থানীয় বাস্তব উপাত্ত দিয়ে শক্তি বৃদ্ধি</div>
+          <div class="slide-heading-bn">যুক্তি সুরক্ষা, পাল্টা আক্রমণ ও রাজশাহীর গভীর বাস্তব প্রমাণ</div>
 
-          <div class="checklist-box" style="border-left: 5px solid var(--govt);">
-            <div style="font-size: 1.1rem; font-weight: 800; color: #34d399; margin-bottom: 12px;">📋 2nd Government Speaker's 3 Mandatory Tasks (২য় সরকারি বক্তার কাজ):</div>
-            
-            <div class="checklist-item">
-              <span class="checklist-icon">1️⃣</span>
+          <div class="turn-split-layout">
+            <div class="turn-persona-card govt">
               <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Rebut the Leader of Opposition (বিরোধীদলীয় নেতার পাল্টা জবাব):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Disprove the attacks made against your Prime Minister's policy model.</div>
-                <div style="color: #93c5fd; font-family: var(--font-bn); font-size: 0.88rem;">বিরোধী দল যেসব অভিযোগ তুলেছে তা যুক্তি দিয়ে নাকচ করুন।</div>
+                <div style="font-size: 3.5rem; line-height: 1; margin-bottom: 12px;">🧱</div>
+                <div style="font-size: 1.55rem; font-weight: 900; color: #34d399; margin-bottom: 2px;">Minister (2nd Govt)</div>
+                <div style="font-family: var(--font-bn); font-size: 1.3rem; color: #fff; font-weight: 700; margin-bottom: 14px;">২য় বক্তা · মন্ত্রী</div>
+                <div style="background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; font-weight: 800; color: #34d399; margin-bottom: 14px; text-transform: uppercase;">
+                  Role: The Reinforcer
+                </div>
+                <div style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.45;">
+                  You repair any damage done by the Leader of Opposition and bring decisive new evidence to seal the Government case!
+                </div>
+              </div>
+
+              <div style="background: rgba(0,0,0,0.4); padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-top: 14px;">
+                <div style="font-size: 0.85rem; color: #94a3b8; font-weight: 700;">SPEECH TIMING:</div>
+                <div style="font-size: 1.15rem; font-weight: 800; color: #fff;">0:00–1:00 (🔒) → 1:00–3:00 (✋ POI) → 3:00–4:00 (🔒)</div>
               </div>
             </div>
 
-            <div class="checklist-item">
-              <span class="checklist-icon">2️⃣</span>
-              <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Rebuild the Government Case (সরকারি যুক্তি মজবুত করা):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Re-strengthen Arguments 1 &amp; 2 by adding deeper explanations.</div>
-                <div style="color: #93c5fd; font-family: var(--font-bn); font-size: 0.88rem;">প্রধানমন্ত্রীর যুক্তিগুলোতে নতুন গভীরতা যোগ করে অবস্থান সংহত করুন।</div>
+            <div class="turn-action-column">
+              <div class="turn-action-card govt-card">
+                <span class="turn-action-num">1️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Direct Rebuttal to the Leader of Opposition</div>
+                  <div class="turn-action-title-bn">বিরোধীদলীয় নেতার বক্তব্যের দাঁতভাঙা জবাব</div>
+                  <div class="turn-action-desc-en">Systematically dismantle the counter-arguments made by LO. Show why their criticisms of the PM's model are completely invalid.</div>
+                  <div class="turn-action-desc-bn">বিরোধী দলনেতার উত্থাপিত প্রতিটি যুক্তি খণ্ডন করুন এবং দেখান কেন তাদের আশঙ্কা ভিত্তিহীন।</div>
+                </div>
               </div>
-            </div>
 
-            <div class="checklist-item">
-              <span class="checklist-icon">3️⃣</span>
-              <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Deliver Argument 3 with Local Evidence (৩য় মূল যুক্তি ও প্রমাণ):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Bring fresh statistical or economic evidence from Rajshahi to seal the team case.</div>
-                <div style="color: #93c5fd; font-family: var(--font-bn); font-size: 0.88rem;">রাজশাহীর বাস্তব তথ্য ও পরিসংখ্যান দিয়ে ৩য় শক্ত যুক্তিটি উপস্থাপন করুন।</div>
+              <div class="turn-action-card govt-card">
+                <span class="turn-action-num">2️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Rebuild &amp; Fortify the Government Case</div>
+                  <div class="turn-action-title-bn">প্রধানমন্ত্রীর যুক্তি মজবুত ও সুরক্ষিত করা</div>
+                  <div class="turn-action-desc-en">Defend PM Arguments 1 &amp; 2 by adding deeper logical layers, ethical explanations, and institutional support.</div>
+                  <div class="turn-action-desc-bn">প্রধানমন্ত্রীর দেওয়া যুক্তিগুলোতে নতুন মাত্রা যোগ করে সরকারি অবস্থান অটুট করুন।</div>
+                </div>
+              </div>
+
+              <div class="turn-action-card govt-card">
+                <span class="turn-action-num">3️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Deliver Government Argument 3 with Local Evidence</div>
+                  <div class="turn-action-title-bn">রাজশাহীর গভীর উপাত্ত দিয়ে ৩য় মূল যুক্তি পেশ করুন</div>
+                  <div class="turn-action-desc-en">Introduce the final major argument for your side with concrete statistics and real local facts from Rajshahi.</div>
+                  <div class="turn-action-desc-bn">রাজশাহীর বাস্তব পরিসংখ্যান ও অর্থনীতি বিশ্লেষণ করে সরকারি দলের ৩য় ও শেষ মূল যুক্তিটি তুলে ধরুন।</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1730,38 +1926,60 @@
         <div class="slideshow-slide" id="slide-6">
           <div class="slide-badge-row">
             <span class="slide-step-badge" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border-color: #f87171;">Turn 4 of 8 · Opposition (বিপক্ষ দল)</span>
-            <span style="font-size: 0.9rem; color: #f87171; font-weight: 800;">⏱️ 4:00 Min (POIs: 1:00–3:00)</span>
+            <span style="font-size: 1.05rem; color: #f87171; font-weight: 800;">⏱️ 4:00 Min (POIs Open: 1:00–3:00)</span>
           </div>
           <h2 class="slide-heading-en">🛡️ Turn 4: Deputy Leader of Opp (২য় বিরোধী বক্তা)</h2>
-          <div class="slide-heading-bn">পাল্টা আক্রমণ ও বাস্তব ক্ষতির চূড়ান্ত চিত্র উপস্থাপন</div>
+          <div class="slide-heading-bn">পাল্টা আক্রমণ, উপাত্ত খণ্ডন ও দীর্ঘমেয়াদি ক্ষতির চিত্র</div>
 
-          <div class="checklist-box" style="border-left: 5px solid var(--opp);">
-            <div style="font-size: 1.1rem; font-weight: 800; color: #f87171; margin-bottom: 12px;">📋 Deputy Leader's 3 Mandatory Tasks (২য় বিরোধী বক্তার কাজ):</div>
-            
-            <div class="checklist-item">
-              <span class="checklist-icon">1️⃣</span>
+          <div class="turn-split-layout">
+            <div class="turn-persona-card opp">
               <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Rebut the Govt Minister (সরকারি মন্ত্রীর যুক্তি খণ্ডন):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Directly dismantle the new evidence and claims brought by Speaker 3.</div>
-                <div style="color: #fca5a5; font-family: var(--font-bn); font-size: 0.88rem;">সরকারি দলের ২য় বক্তা যেসব উপাত্ত দিয়েছেন সেগুলোর দুর্বলতা ধরিয়ে দিন।</div>
+                <div style="font-size: 3.5rem; line-height: 1; margin-bottom: 12px;">🛡️</div>
+                <div style="font-size: 1.55rem; font-weight: 900; color: #f87171; margin-bottom: 2px;">Deputy Leader</div>
+                <div style="font-family: var(--font-bn); font-size: 1.3rem; color: #fff; font-weight: 700; margin-bottom: 14px;">২য় বক্তা · উপনেতা</div>
+                <div style="background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; font-weight: 800; color: #f87171; margin-bottom: 14px; text-transform: uppercase;">
+                  Role: The Castle Defender
+                </div>
+                <div style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.45;">
+                  You strike back against the Minister's claims and deliver the final crushing argument for the Opposition!
+                </div>
+              </div>
+
+              <div style="background: rgba(0,0,0,0.4); padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); margin-top: 14px;">
+                <div style="font-size: 0.85rem; color: #94a3b8; font-weight: 700;">SPEECH TIMING:</div>
+                <div style="font-size: 1.15rem; font-weight: 800; color: #fff;">0:00–1:00 (🔒) → 1:00–3:00 (✋ POI) → 3:00–4:00 (🔒)</div>
               </div>
             </div>
 
-            <div class="checklist-item">
-              <span class="checklist-icon">2️⃣</span>
-              <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Reinforce the Opposition Philosophy (বিরোধী দলের যুক্তি রক্ষা):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Show why the Opposition alternative is safer, fairer, and more practical.</div>
-                <div style="color: #fca5a5; font-family: var(--font-bn); font-size: 0.88rem;">বিপক্ষ দলের সমাধান কেন অধিকতর বাস্তবসম্মত তা আবার তুলে ধরুন।</div>
+            <div class="turn-action-column">
+              <div class="turn-action-card opp-card">
+                <span class="turn-action-num">1️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Rebut the Government Minister's New Claims</div>
+                  <div class="turn-action-title-bn">সরকারি মন্ত্রীর নতুন যুক্তির দুর্বলতা ফাঁস করা</div>
+                  <div class="turn-action-desc-en">Expose flaws in the Minister's statistics. Show why their defense fails to solve the core dangers pointed out by your Leader.</div>
+                  <div class="turn-action-desc-bn">২য় সরকারি বক্তা যেসব তথ্য দিয়েছেন তা খণ্ডন করে প্রমাণ করুন যে তাদের নীতি কোনো সমাধান দিতে পারবে না।</div>
+                </div>
               </div>
-            </div>
 
-            <div class="checklist-item">
-              <span class="checklist-icon">3️⃣</span>
-              <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Deliver Opp Argument 3 (বিপক্ষ দলের ৩য় মূল যুক্তি):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Present the final major argument showing unmanageable long-term damage.</div>
-                <div style="color: #fca5a5; font-family: var(--font-bn); font-size: 0.88rem;">সরকারি প্রস্তাবের দীর্ঘমেয়াদি মারাত্মক কুফল প্রমাণ করে ৩য় যুক্তি পেশ করুন।</div>
+              <div class="turn-action-card opp-card">
+                <span class="turn-action-num">2️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Reinforce the Opposition Alternative Vision</div>
+                  <div class="turn-action-title-bn">বিপক্ষ দলের বিকল্প দর্শন আরও জোরালো করা</div>
+                  <div class="turn-action-desc-en">Show why the Opposition path protects Rajshahi families and avoids bureaucratic corruption and student harm.</div>
+                  <div class="turn-action-desc-bn">বিপক্ষ দলের প্রস্তাবিত পথ কেন শিক্ষার্থীদের জন্য অনেক বেশি নিরাপদ ও ফলপ্রসূ তা তুলে ধরুন।</div>
+                </div>
+              </div>
+
+              <div class="turn-action-card opp-card">
+                <span class="turn-action-num">3️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Deliver Opposition Argument 3 (Irreversible Harms)</div>
+                  <div class="turn-action-title-bn">৩য় মূল যুক্তি পেশ: অপূরণীয় ক্ষতির চূড়ান্ত চিত্র</div>
+                  <div class="turn-action-desc-en">Present the team's final major argument proving long-term societal, academic, or financial breakdown.</div>
+                  <div class="turn-action-desc-bn">সরকারি প্রস্তাব পাস হলে সুদূরপ্রসারী যে বিপর্যয় দেখা দেবে তা সুস্পষ্ট যুক্তি দিয়ে শেষ বারের মতো প্রমাণ করুন।</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1771,38 +1989,60 @@
         <div class="slideshow-slide" id="slide-7">
           <div class="slide-badge-row">
             <span class="slide-step-badge" style="background: rgba(79, 126, 248, 0.25); color: #93c5fd; border-color: #93c5fd;">Turns 5 &amp; 6 · 3rd Speakers (৩য় বক্তা - হুইপ)</span>
-            <span style="font-size: 0.9rem; color: #93c5fd; font-weight: 800;">⏱️ 4:00 Min Each</span>
+            <span style="font-size: 1.05rem; color: #93c5fd; font-weight: 800;">⏱️ 4:00 Min Each</span>
           </div>
           <h2 class="slide-heading-en">⚖️ Turns 5 &amp; 6: The Whips (দলীয় হুইপ)</h2>
-          <div class="slide-heading-bn">দ্বন্দ্ব মীমাংসা ও বিচার · The Cleaners / Clash Masters</div>
+          <div class="slide-heading-bn">দ্বন্দ্ব মীমাংসা, প্রতিপক্ষের যুক্তি চূর্ণ ও বিচার · The Clash Masters</div>
 
-          <div class="checklist-box" style="border-left: 5px solid var(--accent);">
-            <div style="font-size: 1.1rem; font-weight: 800; color: #93c5fd; margin-bottom: 12px;">📋 The 3rd Speaker's Crucial Rules (হুইপের দায়িত্ব ও বিশেষ নিয়ম):</div>
-            
-            <div class="checklist-item">
-              <span class="checklist-icon">1️⃣</span>
+          <div class="turn-split-layout">
+            <div class="turn-persona-card accent">
               <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Break Down the 3 Core Clashes (বিতর্কের ৩টি মূল দ্বন্দ্ব বিচার):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Divide the debate into 3 themes (e.g. 1. Economic Cost, 2. Student Welfare, 3. Feasibility) and prove your side won each clash.</div>
-                <div style="color: #93c5fd; font-family: var(--font-bn); font-size: 0.88rem;">বিতর্ককে ৩টি মূল বিষয়ের দ্বন্দ্বে ভাগ করে দেখান কেন আপনার দল জিতেছে।</div>
+                <div style="font-size: 3.5rem; line-height: 1; margin-bottom: 12px;">⚖️</div>
+                <div style="font-size: 1.55rem; font-weight: 900; color: #93c5fd; margin-bottom: 2px;">The Team Whips</div>
+                <div style="font-family: var(--font-bn); font-size: 1.3rem; color: #fff; font-weight: 700; margin-bottom: 14px;">৩য় বক্তা · সরকারি ও বিরোধী হুইপ</div>
+                <div style="background: rgba(79, 126, 248, 0.2); border: 1px solid rgba(79, 126, 248, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; font-weight: 800; color: #93c5fd; margin-bottom: 14px; text-transform: uppercase;">
+                  Role: The Clash Masters
+                </div>
+                <div style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.45;">
+                  You do not give new arguments. Your job is to act like a judge and prove your bench won all 3 major clashes!
+                </div>
+              </div>
+
+              <div style="background: rgba(239, 68, 68, 0.15); border: 1.5px solid rgba(239, 68, 68, 0.5); padding: 12px 14px; border-radius: 8px; margin-top: 14px;">
+                <div style="font-size: 0.95rem; font-weight: 900; color: #f87171;">🚫 STRICT RULE:</div>
+                <div style="font-size: 0.95rem; color: #fff;">NO NEW ARGUMENTS! (নতুন যুক্তি দেওয়া সম্পূর্ণ নিষিদ্ধ!)</div>
               </div>
             </div>
 
-            <div class="checklist-item">
-              <span class="checklist-icon">2️⃣</span>
-              <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Demolish Opponent Rebuttals (প্রতিপক্ষের অবশিষ্ট যুক্তি চূর্ণ করা):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Answer all major attacks from the other bench and defend your teammates.</div>
-                <div style="color: #93c5fd; font-family: var(--font-bn); font-size: 0.88rem;">প্রতিপক্ষের আক্রমণের দাঁতভাঙা জবাব দিয়ে নিজ দলের বক্তব্য রক্ষা করুন।</div>
+            <div class="turn-action-column">
+              <div class="turn-action-card accent-card">
+                <span class="turn-action-num">1️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Break Down the Debate into 3 Core Clashes</div>
+                  <div class="turn-action-title-bn">বিতর্ককে ৩টি মূল দ্বন্দ্বে ভাগ করে বিচার করুন</div>
+                  <div class="turn-action-desc-en">Divide the whole debate into 3 thematic battles: <strong>1) Student Welfare</strong>, <strong>2) Financial Cost</strong>, <strong>3) Feasibility</strong>. Prove your side won all 3.</div>
+                  <div class="turn-action-desc-bn">পুরো বিতর্ককে ৩টি মূল দ্বন্দ্বে ভাগ করে বিচারককে বুঝিয়ে দিন কেন প্রতিটি বিষয়ে আপনাদের যুক্তি জিতেছে।</div>
+                </div>
               </div>
-            </div>
 
-            <div class="checklist-item" style="background: rgba(239, 68, 68, 0.15); padding: 10px; border-radius: 6px; border: 1px solid rgba(239, 68, 68, 0.4);">
-              <span class="checklist-icon">🚫</span>
-              <div>
-                <strong style="color: #f87171; font-size: 1.05rem;">GOLDEN RULE: NO NEW ARGUMENTS! (নতুন যুক্তি নিষেধ!):</strong>
-                <div style="color: #fca5a5; font-size: 0.92rem;">Whips must ONLY analyze existing points. Introducing brand-new arguments will lose marks!</div>
-                <div style="color: #fff; font-family: var(--font-bn); font-size: 0.88rem;">হুইপ কোনো নতুন যুক্তি দিতে পারবেন না। কেবল পূর্বের যুক্তিগুলোর বিশ্লেষণ করবেন।</div>
+              <div class="turn-action-card accent-card">
+                <span class="turn-action-num">2️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Demolish Remaining Opponent Arguments</div>
+                  <div class="turn-action-title-bn">প্রতিপক্ষের অবশিষ্ট সব আক্রমণ চূর্ণ করুন</div>
+                  <div class="turn-action-desc-en">Clean up any loose claims left unanswered. Defend your teammates and expose the contradictions in the other bench's case.</div>
+                  <div class="turn-action-desc-bn">প্রতিপক্ষের যুক্তির স্ববিরোধীতা ধরিয়ে দিয়ে নিজ দলের অবস্থান নিশ্ছিদ্র করুন।</div>
+                </div>
+              </div>
+
+              <div class="turn-action-card alert-card">
+                <span class="turn-action-num">🚫</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en" style="color: #f87171;">NO NEW ARGUMENTS RULE (নতুন যুক্তি দেওয়া নিষেধ!)</div>
+                  <div class="turn-action-title-bn" style="color: #fca5a5;">হুইপ কেবল পূর্বের যুক্তির বিশ্লেষণ ও বিচার করবেন</div>
+                  <div class="turn-action-desc-en">If a Whip introduces a brand-new point, adjudicators will award 0 points for it. Only deeper analysis of existing points is allowed!</div>
+                  <div class="turn-action-desc-bn">হুইপের কাজ শুধুই বিচার ও সমন্বয়। নতুন যুক্তি আনলে বিচারক নম্বর কেটে দেবেন।</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1812,38 +2052,60 @@
         <div class="slideshow-slide" id="slide-8">
           <div class="slide-badge-row">
             <span class="slide-step-badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border-color: #fbbf24;">Turns 7 &amp; 8 · Reply Speeches (সমাপনী বক্তব্য)</span>
-            <span style="font-size: 0.9rem; color: #fbbf24; font-weight: 800;">⏱️ 2:30 Min Each (NO POIs)</span>
+            <span style="font-size: 1.05rem; color: #fbbf24; font-weight: 800;">⏱️ 2:30 Min Each (NO POIs ALLOWED)</span>
           </div>
           <h2 class="slide-heading-en">🔮 Turns 7 &amp; 8: Reply Speeches (সমাপনী বক্তব্য)</h2>
-          <div class="slide-heading-bn">দুই জগতের তুলনা ও চূড়ান্ত আবেদন · Two Worlds Comparison</div>
+          <div class="slide-heading-bn">দুই জগতের তুলনা ও চূড়ান্ত বিজয়ী আবেদন · Two Worlds Comparison</div>
 
-          <div class="checklist-box" style="border-left: 5px solid #f59e0b;">
-            <div style="font-size: 1.1rem; font-weight: 800; color: #fbbf24; margin-bottom: 12px;">📋 Reply Speech Rules &amp; Structure (সমাপনী বক্তব্যের নিয়ম):</div>
-            
-            <div class="checklist-item" style="background: rgba(245, 158, 11, 0.12); padding: 10px; border-radius: 6px; border: 1px solid rgba(245, 158, 11, 0.3);">
-              <span class="checklist-icon">⚠️</span>
+          <div class="turn-split-layout">
+            <div class="turn-persona-card warning">
               <div>
-                <strong style="color: #fbbf24; font-size: 1.05rem;">Turn 7: Opposition Replies FIRST! (বিরোধী দল আগে বলবে!):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Opposition speaks first in reply (Turn 7), followed by Government's final closing word (Turn 8).</div>
-                <div style="color: #fde68a; font-family: var(--font-bn); font-size: 0.88rem;">বাংলাদেশ সংসদীয় নিয়মে বিরোধী দলের সমাপনী বক্তব্য আগে শুরু হয়!</div>
+                <div style="font-size: 3.5rem; line-height: 1; margin-bottom: 12px;">🔮</div>
+                <div style="font-size: 1.55rem; font-weight: 900; color: #fbbf24; margin-bottom: 2px;">Reply Speakers</div>
+                <div style="font-family: var(--font-bn); font-size: 1.3rem; color: #fff; font-weight: 700; margin-bottom: 14px;">সমাপনী বক্তা (১ম বা ২য় বক্তা)</div>
+                <div style="background: rgba(245, 158, 11, 0.2); border: 1px solid rgba(245, 158, 11, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 0.95rem; font-weight: 800; color: #fbbf24; margin-bottom: 14px; text-transform: uppercase;">
+                  Role: The Final Visionary
+                </div>
+                <div style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.45;">
+                  Step back from individual details. Give a bird's-eye view comparing the two worlds created by this debate.
+                </div>
+              </div>
+
+              <div style="background: rgba(245, 158, 11, 0.15); border: 1.5px solid rgba(245, 158, 11, 0.5); padding: 12px 14px; border-radius: 8px; margin-top: 14px;">
+                <div style="font-size: 0.95rem; font-weight: 900; color: #fbbf24;">⚠️ KEY PROCEDURE:</div>
+                <div style="font-size: 0.95rem; color: #fff;">Turn 7: Opposition replies FIRST!<br>Turn 8: Government closes last.</div>
               </div>
             </div>
 
-            <div class="checklist-item">
-              <span class="checklist-icon">🌍</span>
-              <div>
-                <strong style="color: #fff; font-size: 1.05rem;">The "Two Worlds" Comparison (দুই জগতের ফলাফল তুলনা):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">Compare what Rajshahi looks like in their world vs what it looks like in your world.</div>
-                <div style="color: #93c5fd; font-family: var(--font-bn); font-size: 0.88rem;">বিচারককে দেখান প্রতিপক্ষের বিশ্বে কী ক্ষতি হবে এবং আপনাদের বিশ্বে কী উন্নয়ন ঘটবে।</div>
+            <div class="turn-action-column">
+              <div class="turn-action-card warning-card">
+                <span class="turn-action-num">1️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Speaking Order: Opposition Speaks First! (বিপক্ষ দল আগে বলবে)</div>
+                  <div class="turn-action-title-bn">টার্ন ৭: বিপক্ষ দল সমাপনী শুরু করবে, টার্ন ৮: সরকারের চূড়ান্ত সমাপ্তি</div>
+                  <div class="turn-action-desc-en">In parliamentary rules, the Opposition gets the advantage of speaking first in reply, followed immediately by Government's closing word.</div>
+                  <div class="turn-action-desc-bn">বাংলাদেশ সংসদীয় নিয়মে বিরোধী দলের সমাপনী বক্তব্য আগে শুরু হয়, তারপর সরকারি দলের চূড়ান্ত সমাপনী হয়।</div>
+                </div>
               </div>
-            </div>
 
-            <div class="checklist-item">
-              <span class="checklist-icon">🔒</span>
-              <div>
-                <strong style="color: #fff; font-size: 1.05rem;">Delivered by Speaker 1 or 2 (১ম বা ২য় বক্তা বলবেন):</strong>
-                <div style="color: #cbd5e1; font-size: 0.92rem;">3rd Speakers (Whips) cannot give the reply speech. <strong>Zero POIs allowed.</strong></div>
-                <div style="color: #93c5fd; font-family: var(--font-bn); font-size: 0.88rem;">সমাপনী বক্তব্যে কোনো পিওআই (POI) বা প্রশ্ন করা যায় না। সম্পূর্ণ সময় নিরাপদ।</div>
+              <div class="turn-action-card warning-card">
+                <span class="turn-action-num">2️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">The "Two Worlds" Holistic Comparison (দুই জগতের তুলনা)</div>
+                  <div class="turn-action-title-bn">বিচারককে দেখান কোন জগতে রাজশাহীর কল্যাণ বেশি</div>
+                  <div class="turn-action-desc-en">Paint two vivid pictures for the adjudicator: <strong>World A (Their World)</strong> full of harms vs <strong>World B (Our World)</strong> full of progress and safety.</div>
+                  <div class="turn-action-desc-bn">প্রতিপক্ষের বিশ্ব কেন বিশৃঙ্খলা ও ব্যর্থতায় ভরা এবং আপনাদের বিশ্ব কেন বাস্তবসম্মত তা স্পষ্ট করুন।</div>
+                </div>
+              </div>
+
+              <div class="turn-action-card warning-card">
+                <span class="turn-action-num">3️⃣</span>
+                <div class="turn-action-body">
+                  <div class="turn-action-title-en">Delivered by Speaker 1 or 2 · Zero POIs Allowed (🔒 সম্পূর্ণ নিরাপদ)</div>
+                  <div class="turn-action-title-bn">১ম বা ২য় বক্তা বলবেন · কোনো প্রশ্ন বা পিওআই নেওয়া যাবে না</div>
+                  <div class="turn-action-desc-en">3rd Speakers (Whips) cannot give reply. No questions or interruptions are permitted. The speaker has the floor uninterrupted for 2:30 minutes.</div>
+                  <div class="turn-action-desc-bn">হুইপ সমাপনী বক্তব্য দিতে পারবেন না। পুরো আড়াই মিনিট বক্তার নিজস্ব সময়।</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1853,46 +2115,54 @@
         <div class="slideshow-slide" id="slide-9">
           <div class="slide-badge-row">
             <span class="slide-step-badge">Slide 9 of 10 · Argument Formula (যুক্তি গঠন)</span>
-            <span style="font-size: 0.9rem; color: #94a3b8; font-weight: 700;">A-R-E-I Method</span>
+            <span style="font-size: 1.05rem; color: #94a3b8; font-weight: 800;">A-R-E-I Method</span>
           </div>
-          <h2 class="slide-heading-en">💡 How to Make a Point: A-R-E-I</h2>
-          <div class="slide-heading-bn">যুক্তি দেওয়ার ৪টি সহজ ধাপ (দাবি → কারণ → প্রমাণ → প্রভাব)</div>
+          <h2 class="slide-heading-en">💡 How to Build an Argument: A-R-E-I</h2>
+          <div class="slide-heading-bn">যুক্তি দেওয়ার ৪টি আবশ্যক ধাপ (দাবি → কারণ → বাস্তব প্রমাণ → ফলাফল)</div>
 
-          <div class="slide-grid-2" style="gap: 14px;">
-            <div class="slide-feature-card" style="border-left: 5px solid #3b82f6; padding: 14px 18px;">
-              <div style="display: flex; align-items: center; gap: 10px; font-weight: 800; color: #93c5fd; font-size: 1.15rem;">
-                <span>🎯 A · Assertion</span>
-                <span style="font-family: var(--font-bn); color: #cbd5e1; font-size: 1rem;">(মূল দাবি)</span>
+          <div class="slide-grid-2" style="gap: 20px; flex: 1;">
+            <div class="slide-feature-card" style="border-left: 6px solid #3b82f6; padding: 20px 24px; background: rgba(59, 130, 246, 0.08);">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <div style="font-size: 1.5rem; font-weight: 900; color: #93c5fd;">🎯 A · Assertion (দাবি)</div>
+                  <span style="background: rgba(59, 130, 246, 0.25); color: #93c5fd; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 800;">STEP 1</span>
+                </div>
+                <div style="font-size: 1.15rem; color: #fff; font-weight: 800; margin-bottom: 4px;">"Private coaching centers cause extreme financial strain on middle-class families."</div>
+                <div style="font-family: var(--font-bn); font-size: 1.05rem; color: #93c5fd; line-height: 1.4;">"কোচিং সেন্টারের অতিরিক্ত ফিতে মধ্যবিত্ত পরিবারের বাজেট ভেঙে পড়ছে।"</div>
               </div>
-              <div style="font-size: 0.95rem; color: #fff; margin-top: 6px; font-weight: 700;">"Coaching centers cost too much money for families."</div>
-              <div style="font-family: var(--font-bn); font-size: 0.9rem; color: #94a3b8; margin-top: 2px;">"কোচিং সেন্টারে পড়ার অতিরিক্ত খরচে পরিবার হিমশিম খাচ্ছে।"</div>
             </div>
 
-            <div class="slide-feature-card" style="border-left: 5px solid #10b981; padding: 14px 18px;">
-              <div style="display: flex; align-items: center; gap: 10px; font-weight: 800; color: #34d399; font-size: 1.15rem;">
-                <span>🧠 R · Reasoning</span>
-                <span style="font-family: var(--font-bn); color: #cbd5e1; font-size: 1rem;">(কারণ ও যুক্তি)</span>
+            <div class="slide-feature-card" style="border-left: 6px solid #10b981; padding: 20px 24px; background: rgba(16, 185, 129, 0.08);">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <div style="font-size: 1.5rem; font-weight: 900; color: #34d399;">🧠 R · Reasoning (কারণ ও যুক্তি)</div>
+                  <span style="background: rgba(16, 185, 129, 0.25); color: #34d399; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 800;">STEP 2</span>
+                </div>
+                <div style="font-size: 1.15rem; color: #fff; font-weight: 800; margin-bottom: 4px;">"Because teachers withhold quality lectures in school to force students into paid evening batches."</div>
+                <div style="font-family: var(--font-bn); font-size: 1.05rem; color: #34d399; line-height: 1.4;">"কারণ কিছু শিক্ষক ক্লাসে পুরো সিলেবাস না পড়িয়ে শিক্ষার্থীদের প্রাইভেট ব্যাচে বাধ্য করেন।"</div>
               </div>
-              <div style="font-size: 0.95rem; color: #fff; margin-top: 6px; font-weight: 700;">"Because parents pay 5,000 Tk every month for private tutors."</div>
-              <div style="font-family: var(--font-bn); font-size: 0.9rem; color: #94a3b8; margin-top: 2px;">"কারণ প্রতি মাসে গড়ে ৫,০০০ টাকা টিউশন ফি দিতে হয়।"</div>
             </div>
 
-            <div class="slide-feature-card" style="border-left: 5px solid #f59e0b; padding: 14px 18px;">
-              <div style="display: flex; align-items: center; gap: 10px; font-weight: 800; color: #fbbf24; font-size: 1.15rem;">
-                <span>📍 E · Evidence</span>
-                <span style="font-family: var(--font-bn); color: #cbd5e1; font-size: 1rem;">(রাজশাহীর বাস্তব প্রমাণ)</span>
+            <div class="slide-feature-card" style="border-left: 6px solid #f59e0b; padding: 20px 24px; background: rgba(245, 158, 11, 0.08);">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <div style="font-size: 1.5rem; font-weight: 900; color: #fbbf24;">📍 E · Evidence in Rajshahi (উপাত্ত)</div>
+                  <span style="background: rgba(245, 158, 11, 0.25); color: #fbbf24; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 800;">STEP 3</span>
+                </div>
+                <div style="font-size: 1.15rem; color: #fff; font-weight: 800; margin-bottom: 4px;">"In Rajshahi sadar, surveys show 78% of SSC students spend 5,000–8,000 Tk monthly on coaching."</div>
+                <div style="font-family: var(--font-bn); font-size: 1.05rem; color: #fbbf24; line-height: 1.4;">"রাজশাহীতে সমীক্ষায় দেখা গেছে ৭৮% শিক্ষার্থী মাসে ৫,০০০-৮,০০০ টাকা কোচিং ফি দিতে বাধ্য হয়।"</div>
               </div>
-              <div style="font-size: 0.95rem; color: #fff; margin-top: 6px; font-weight: 700;">"In Rajshahi, 80% of students skip school to attend coaching."</div>
-              <div style="font-family: var(--font-bn); font-size: 0.9rem; color: #94a3b8; margin-top: 2px;">"রাজশাহীতে ৮০% শিক্ষার্থী স্কুল বাদ দিয়ে কোচিংয়ে যায়।"</div>
             </div>
 
-            <div class="slide-feature-card" style="border-left: 5px solid #8b5cf6; padding: 14px 18px;">
-              <div style="display: flex; align-items: center; gap: 10px; font-weight: 800; color: #c084fc; font-size: 1.15rem;">
-                <span>💥 I · Impact</span>
-                <span style="font-family: var(--font-bn); color: #cbd5e1; font-size: 1rem;">(চূড়ান্ত ফলাফল)</span>
+            <div class="slide-feature-card" style="border-left: 6px solid #8b5cf6; padding: 20px 24px; background: rgba(139, 92, 246, 0.08);">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                  <div style="font-size: 1.5rem; font-weight: 900; color: #c084fc;">💥 I · Impact (চূড়ান্ত ফলাফল)</div>
+                  <span style="background: rgba(139, 92, 246, 0.25); color: #c084fc; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 800;">STEP 4</span>
+                </div>
+                <div style="font-size: 1.15rem; color: #fff; font-weight: 800; margin-bottom: 4px;">"Banning coaching saves billions in family funds and restores teacher accountability in schools."</div>
+                <div style="font-family: var(--font-bn); font-size: 1.05rem; color: #c084fc; line-height: 1.4;">"কোচিং নিষিদ্ধ করলে পরিবারের অর্থ বাঁচবে এবং স্কুলের ক্লাসরুমে শিক্ষার মান ফিরে আসবে।"</div>
               </div>
-              <div style="font-size: 0.95rem; color: #fff; margin-top: 6px; font-weight: 700;">"Banning coaching saves family funds &amp; revives school classrooms!"</div>
-              <div style="font-family: var(--font-bn); font-size: 0.9rem; color: #94a3b8; margin-top: 2px;">"টাকা বাঁচে এবং শ্রেণিকক্ষের শিক্ষার পরিবেশ ফিরে আসে!"</div>
             </div>
           </div>
         </div>
@@ -1901,58 +2171,58 @@
         <div class="slideshow-slide" id="slide-10">
           <div class="slide-badge-row">
             <span class="slide-step-badge">Slide 10 of 10 · Interruptions &amp; Bells (বেলের নিয়ম)</span>
-            <span style="font-size: 0.9rem; color: #94a3b8; font-weight: 700;">15-Second Rule</span>
+            <span style="font-size: 1.05rem; color: #94a3b8; font-weight: 800;">15-Second POI Rule</span>
           </div>
           <h2 class="slide-heading-en">✋ POIs &amp; The Speech Bell Timeline</h2>
-          <div class="slide-heading-bn">পিওআই (তথ্য জানতে চাওয়া) এবং বেলের সময়সূচি</div>
+          <div class="slide-heading-bn">পিওআই (তথ্য জানতে চাওয়া) ও স্বয়ংক্রিয় বেলের সময়সূচি</div>
 
           <!-- Graphic Timeline -->
-          <div style="background: var(--surface-card); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 16px;">
-            <div style="display: grid; grid-template-columns: 1fr 2fr 1fr 0.8fr; text-align: center; font-size: 0.82rem; font-weight: 800; margin-bottom: 8px; gap: 6px;">
-              <div style="color: #94a3b8; background: rgba(148, 163, 184, 0.12); padding: 6px; border-radius: 6px;">
+          <div style="background: var(--surface-card); border-radius: var(--radius); padding: 20px 26px; margin-bottom: 20px; border: 1.5px solid var(--border);">
+            <div style="display: grid; grid-template-columns: 1fr 2fr 1fr 0.8fr; text-align: center; font-size: 1rem; font-weight: 800; margin-bottom: 10px; gap: 10px;">
+              <div style="color: #94a3b8; background: rgba(148, 163, 184, 0.15); padding: 10px; border-radius: 8px;">
                 0:00 – 1:00<br>🔒 Protected (নিরাপদ)
               </div>
-              <div style="color: #38bdf8; background: rgba(56, 189, 248, 0.18); padding: 6px; border-radius: 6px; border: 1.5px solid rgba(56, 189, 248, 0.5);">
+              <div style="color: #38bdf8; background: rgba(56, 189, 248, 0.2); padding: 10px; border-radius: 8px; border: 2px solid rgba(56, 189, 248, 0.6); box-shadow: 0 0 20px rgba(56,189,248,0.2);">
                 1:00 – 3:00 ✋<br>POI WINDOW OPEN (প্রশ্ন করুন)
               </div>
-              <div style="color: var(--warning); background: rgba(245, 158, 11, 0.12); padding: 6px; border-radius: 6px;">
+              <div style="color: var(--warning); background: rgba(245, 158, 11, 0.15); padding: 10px; border-radius: 8px;">
                 3:00 – 4:00<br>🔒 Warning (সমাপনী)
               </div>
-              <div style="color: var(--opp); background: rgba(239, 68, 68, 0.12); padding: 6px; border-radius: 6px;">
+              <div style="color: var(--opp); background: rgba(239, 68, 68, 0.15); padding: 10px; border-radius: 8px;">
                 4:00+<br>🚨 Overtime
               </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 2fr 1fr 0.8fr; gap: 6px; height: 10px;">
+            <div style="display: grid; grid-template-columns: 1fr 2fr 1fr 0.8fr; gap: 10px; height: 12px;">
               <div style="background: #64748b; border-radius: 6px;"></div>
-              <div style="background: #38bdf8; border-radius: 6px;"></div>
+              <div style="background: #38bdf8; border-radius: 6px; box-shadow: 0 0 10px #38bdf8;"></div>
               <div style="background: var(--warning); border-radius: 6px;"></div>
               <div style="background: var(--opp); border-radius: 6px;"></div>
             </div>
 
-            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #cbd5e1; margin-top: 8px; font-weight: 700;">
-              <span>🔔 1:00 (1st Bell: POI Open)</span>
-              <span>🔔 3:00 (2nd Bell: POI Closed)</span>
-              <span>🔔🔔 4:00 (Double Bell: Stop!)</span>
+            <div style="display: flex; justify-content: space-between; font-size: 0.95rem; color: #cbd5e1; margin-top: 12px; font-weight: 700;">
+              <span>🔔 1:00 (1st Bell: POIs Open)</span>
+              <span>🔔 3:00 (2nd Bell: POIs Closed)</span>
+              <span>🔔🔔 4:00 (Double Bell: Stop Speaking!)</span>
             </div>
           </div>
 
-          <div class="slide-grid-2" style="gap: 14px; margin-bottom: 14px;">
-            <div class="slide-feature-card" style="padding: 14px 18px;">
-              <div style="font-weight: 800; color: #fff; font-size: 1.05rem; margin-bottom: 4px;">🙋‍♂️ How to Ask a POI (প্রশ্ন করা):</div>
-              <div style="font-size: 0.92rem; color: #cbd5e1;">Stand up &amp; say: <em>"On that point, Madam Speaker!"</em> Ask a sharp question under <strong>15 seconds</strong>.</div>
-              <div style="font-family: var(--font-bn); font-size: 0.88rem; color: #94a3b8; margin-top: 4px;">দাঁড়িয়ে ভদ্রভাবে ১৫ সেকেন্ডের মধ্যে পয়েন্ট জানতে চান।</div>
+          <div class="slide-grid-2" style="gap: 20px; margin-bottom: 20px; flex: 1;">
+            <div class="slide-feature-card" style="padding: 20px 24px;">
+              <div style="font-weight: 900; color: #fff; font-size: 1.35rem; margin-bottom: 6px;">🙋‍♂️ How to Ask a POI (প্রশ্ন করা):</div>
+              <div style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.45;">Stand up, place one hand on head or raise hand, and say: <em>"On that point, Sir/Madam!"</em> You have maximum <strong>15 seconds</strong> to deliver a sharp, destructive question.</div>
+              <div style="font-family: var(--font-bn); font-size: 1.02rem; color: #93c5fd; margin-top: 8px; font-weight: 700;">দাঁড়িয়ে হাত তুলে বিনয়ের সাথে ১৫ সেকেন্ডের মধ্যে পয়েন্ট জানতে চান।</div>
             </div>
 
-            <div class="slide-feature-card" style="padding: 14px 18px;">
-              <div style="font-weight: 800; color: #fff; font-size: 1.05rem; margin-bottom: 4px;">🎙️ The Speaker Decides (বক্তার সিদ্ধান্ত):</div>
-              <div style="font-size: 0.92rem; color: #cbd5e1;">Speaker has 100% control: say ✅ <em>"Yes, please"</em> OR wave down saying ❌ <em>"No, thank you"</em>.</div>
-              <div style="font-family: var(--font-bn); font-size: 0.88rem; color: #94a3b8; margin-top: 4px;">বক্তা চাইলে প্রশ্ন গ্রহণ করবেন অথবা বিনয়ের সাথে না বলবেন।</div>
+            <div class="slide-feature-card" style="padding: 20px 24px;">
+              <div style="font-weight: 900; color: #fff; font-size: 1.35rem; margin-bottom: 6px;">🎙️ The Speaker Decides (বক্তার সিদ্ধান্ত):</div>
+              <div style="font-size: 1.05rem; color: #cbd5e1; line-height: 1.45;">The speaker on stage has 100% control: say ✅ <em>"Yes, please"</em> to accept, OR firmly wave down saying ❌ <em>"No, thank you"</em> to decline.</div>
+              <div style="font-family: var(--font-bn); font-size: 1.02rem; color: #93c5fd; margin-top: 8px; font-weight: 700;">মঞ্চের বক্তা চাইলে প্রশ্ন গ্রহণ করবেন অথবা বিনয়ের সাথে না বলে নিজ বক্তব্য চালিয়ে যাবেন।</div>
             </div>
           </div>
 
-          <div style="text-align: center;">
-            <button class="btn-action" onclick="closeSlideshowModal()" style="padding: 12px 32px; font-size: 1.05rem; box-shadow: 0 4px 25px var(--accent-glow);">
+          <div style="text-align: center; margin-top: 8px;">
+            <button class="btn-action" onclick="closeSlideshowModal()" style="padding: 14px 40px; font-size: 1.15rem; box-shadow: 0 6px 30px var(--accent-glow);">
               <span>Start Debate Activity (বিতর্ক শুরু করুন) 🚀</span>
             </button>
           </div>
