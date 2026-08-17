@@ -739,14 +739,50 @@
       justify-content: space-between;
     }
 
+    /* ── Fullscreen Projector Slideshow ── */
+    #modal-slideshow {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #070a12 !important;
+      backdrop-filter: none !important;
+      z-index: 9999;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: none;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+
+    #modal-slideshow.open {
+      display: flex !important;
+    }
+
     .modal-dialog.slideshow-dialog {
-      max-width: 1180px;
-      width: 96vw;
-      min-height: 640px;
-      max-height: 94vh;
-      background: #0b0f19;
-      border: 2px solid rgba(79, 126, 248, 0.5);
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9), 0 0 60px rgba(79, 126, 248, 0.25);
+      width: 100vw !important;
+      max-width: 100vw !important;
+      height: 100vh !important;
+      max-height: 100vh !important;
+      min-height: 100vh !important;
+      background: #070a12 !important;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      display: flex;
+      flex-direction: column;
+      margin: 0 !important;
+      overflow: hidden;
+    }
+
+    .slideshow-header-bar {
+      padding: 16px 36px;
+      background: rgba(14, 19, 32, 0.98);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
     }
 
     .slideshow-content {
@@ -754,14 +790,17 @@
       display: flex;
       flex-direction: column;
       overflow-y: auto;
-      padding: 26px 36px;
+      padding: clamp(24px, 4vh, 48px) clamp(24px, 6vw, 80px);
+      max-width: 1440px;
+      width: 100%;
+      margin: 0 auto;
     }
 
     .slideshow-slide {
       display: none;
       flex-direction: column;
       flex: 1;
-      animation: fadeIn 0.25s ease-out;
+      animation: fadeIn 0.2s ease-out;
     }
 
     .slideshow-slide.active {
@@ -772,139 +811,140 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .slide-step-badge {
       background: rgba(79, 126, 248, 0.25);
       color: #93c5fd;
       border: 1.5px solid rgba(79, 126, 248, 0.5);
-      padding: 5px 14px;
+      padding: 6px 16px;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
 
     .slide-heading-en {
-      font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+      font-size: clamp(2rem, 3.8vw, 3rem);
       font-weight: 900;
       letter-spacing: -0.02em;
       color: #ffffff;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .slide-heading-bn {
       font-family: var(--font-bn);
-      font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
       color: #93c5fd;
-      margin-bottom: 18px;
-      padding-left: 14px;
-      border-left: 4px solid var(--accent);
+      margin-bottom: 24px;
+      padding-left: 18px;
+      border-left: 5px solid var(--accent);
     }
 
     .slide-grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-bottom: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 20px;
     }
 
     .slide-grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 18px;
-      margin-bottom: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 22px;
+      margin-bottom: 20px;
     }
 
     .slide-feature-card {
       background: var(--surface-card);
       border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 22px;
+      border-radius: var(--radius-lg);
+      padding: 22px 26px;
     }
 
-    .slide-feature-card.govt { border-top: 4px solid var(--govt); }
-    .slide-feature-card.opp { border-top: 4px solid var(--opp); }
-    .slide-feature-card.accent { border-top: 4px solid var(--accent); }
+    .slide-feature-card.govt { border-top: 5px solid var(--govt); }
+    .slide-feature-card.opp { border-top: 5px solid var(--opp); }
+    .slide-feature-card.accent { border-top: 5px solid var(--accent); }
 
     .slide-card-title {
-      font-size: 1.15rem;
+      font-size: 1.3rem;
       font-weight: 800;
       color: #fff;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .slide-card-bn {
       font-family: var(--font-bn);
-      font-size: 1.02rem;
+      font-size: 1.12rem;
       color: #cbd5e1;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .slide-card-desc {
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .checklist-box {
       background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      margin-bottom: 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 30px;
+      margin-bottom: 18px;
     }
 
     .checklist-item {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 10px;
-      font-size: 1rem;
+      gap: 16px;
+      margin-bottom: 14px;
+      font-size: 1.15rem;
     }
     .checklist-item:last-child { margin-bottom: 0; }
 
     .checklist-icon {
-      font-size: 1.3rem;
+      font-size: 1.6rem;
       flex-shrink: 0;
       margin-top: 2px;
     }
 
     .slideshow-nav-bar {
-      padding: 16px 28px;
-      border-top: 1px solid var(--border);
-      background: rgba(18, 23, 34, 0.95);
+      padding: 18px 40px;
+      border-top: 1.5px solid var(--border);
+      background: #0a0e1a;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 20px;
+      flex-shrink: 0;
     }
 
     .slide-dots {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .slide-dot {
-      width: 10px;
-      height: 10px;
+      width: 13px;
+      height: 13px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.25);
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
     .slide-dot.active {
-      width: 28px;
+      width: 36px;
       border-radius: 10px;
       background: var(--accent);
-      box-shadow: 0 0 10px var(--accent-glow);
+      box-shadow: 0 0 14px var(--accent-glow);
     }
 
     @media print {
@@ -1463,15 +1503,21 @@
     <div class="modal-dialog slideshow-dialog">
       
       <!-- Slideshow Header -->
-      <div class="modal-header" style="background: rgba(18, 23, 34, 0.95); padding: 14px 24px;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span style="font-size: 1.6rem;">🎬</span>
+      <div class="slideshow-header-bar">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span style="font-size: 1.8rem;">🎬</span>
           <div>
-            <h3 style="font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0;">Bangladesh Parliamentary Debate · সংসদীয় বিতর্ক নির্দেশিকা</h3>
-            <span style="font-size: 0.8rem; color: #93c5fd; font-family: var(--font-bn);">বড় পর্দার স্লাইডশো · Large Classroom Projector Guide</span>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin: 0;">Bangladesh Parliamentary Debate · সংসদীয় বিতর্ক নির্দেশিকা</h3>
+            <span style="font-size: 0.85rem; color: #93c5fd; font-family: var(--font-bn);">বড় পর্দার ফুলস্ক্রিন স্লাইডশো · Fullscreen Classroom Projector Mode</span>
           </div>
         </div>
-        <button class="btn-close" onclick="closeSlideshowModal()" style="font-size: 1.6rem;">✕</button>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 0.85rem; color: #94a3b8; font-weight: 600;">⌨️ Left/Right Arrow Keys to navigate</span>
+          <button class="btn-secondary" onclick="closeSlideshowModal()" style="display: flex; align-items: center; gap: 8px; font-size: 0.95rem; padding: 8px 18px; border-radius: 20px; border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.08); color: #fff;">
+            <span>✕</span>
+            <span>Exit Fullscreen (Esc)</span>
+          </button>
+        </div>
       </div>
 
       <!-- Slideshow Body -->
