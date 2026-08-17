@@ -136,10 +136,27 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return
         elif parsed.path == "/api/debate":
             try:
+                params = parse_qs(parsed.query)
+                requested_room = params.get("room", ["public"])[0].strip()
                 db = _get_db()
                 row = db.execute("SELECT session_data FROM debate_active_session WHERE id = 'current'").fetchone()
                 if row and row["session_data"]:
-                    _json_response(self, 200, json.loads(row["session_data"]))
+                    full_data = json.loads(row["session_data"])
+                    if not full_data.get("active"):
+                        _json_response(self, 200, {"active": False})
+                        return
+
+                    # Build sanitized response based on requested room (prevents cross-team snooping)
+                    public_payload = {k: v for k, v in full_data.items() if k not in ["govt_room", "opp_room"]}
+                    
+                    if requested_room == "govt":
+                        res = {**public_payload, "govt_room": full_data.get("govt_room", {})}
+                    elif requested_room == "opp":
+                        res = {**public_payload, "opp_room": full_data.get("opp_room", {})}
+                    else:
+                        # Public / master / spectator view: strictly NO private notes
+                        res = public_payload
+                    _json_response(self, 200, res)
                 else:
                     _json_response(self, 200, {"active": False})
             except Exception as e:
@@ -159,15 +176,30 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 return
             try:
                 db = _get_db()
+                row = db.execute("SELECT session_data FROM debate_active_session WHERE id = 'current'").fetchone()
+                current_data = json.loads(row["session_data"]) if row and row["session_data"] else {}
+
+                # Channel specific updates
+                channel = body.get("channel")
+                if channel == "govt":
+                    current_data["govt_room"] = body.get("payload", {})
+                elif channel == "opp":
+                    current_data["opp_room"] = body.get("payload", {})
+                else:
+                    # Update master state while preserving existing isolated rooms
+                    govt_room = current_data.get("govt_room", {})
+                    opp_room = current_data.get("opp_room", {})
+                    current_data = {**body, "govt_room": govt_room, "opp_room": opp_room}
+
                 db.execute("""
                     INSERT INTO debate_active_session (id, session_data, updated_at)
                     VALUES ('current', ?, strftime('%s','now'))
                     ON CONFLICT(id) DO UPDATE SET
                         session_data = excluded.session_data,
                         updated_at = strftime('%s','now')
-                """, (json.dumps(body),))
+                """, (json.dumps(current_data),))
                 db.commit()
-                _json_response(self, 200, {"success": True, "session": body})
+                _json_response(self, 200, {"success": True})
             except Exception as exc:
                 _json_response(self, 500, {"error": str(exc)})
             return
