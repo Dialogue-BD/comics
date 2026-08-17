@@ -47,8 +47,8 @@
       --radius: 14px;
       --radius-lg: 20px;
       
-      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-bn: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
+      --font-main: 'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-bn: 'Hind Siliguri', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     body {
@@ -1095,19 +1095,19 @@
             </div>
 
             <div class="speaker-row">
-              <span class="speaker-role-label">1st: Prime Minister</span>
+              <span class="speaker-role-label">১ম: Prime Minister</span>
               <input type="text" class="speaker-name-input" id="spk-g1" value="Prime Minister">
             </div>
             <div class="speaker-row">
-              <span class="speaker-role-label">2nd: Minister</span>
+              <span class="speaker-role-label">২য়: Minister</span>
               <input type="text" class="speaker-name-input" id="spk-g2" value="Deputy Speaker">
             </div>
             <div class="speaker-row">
-              <span class="speaker-role-label">3rd: Govt Whip</span>
+              <span class="speaker-role-label">৩য়: Govt Whip</span>
               <input type="text" class="speaker-name-input" id="spk-g3" value="Government Whip">
             </div>
             <div class="speaker-row">
-              <span class="speaker-role-label">Reply Speaker</span>
+              <span class="speaker-role-label">সমাপনী: Reply Speaker</span>
               <input type="text" class="speaker-name-input" id="spk-gr" value="Prime Minister / 2nd Speaker">
             </div>
           </div>
@@ -1120,19 +1120,19 @@
             </div>
 
             <div class="speaker-row">
-              <span class="speaker-role-label">1st: Leader of Opp</span>
+              <span class="speaker-role-label">১ম: Leader of Opp</span>
               <input type="text" class="speaker-name-input" id="spk-o1" value="Leader of Opposition">
             </div>
             <div class="speaker-row">
-              <span class="speaker-role-label">2nd: Deputy Leader</span>
+              <span class="speaker-role-label">২য়: Deputy Leader</span>
               <input type="text" class="speaker-name-input" id="spk-o2" value="Deputy Leader of Opp">
             </div>
             <div class="speaker-row">
-              <span class="speaker-role-label">3rd: Opp Whip</span>
+              <span class="speaker-role-label">৩য়: Opp Whip</span>
               <input type="text" class="speaker-name-input" id="spk-o3" value="Opposition Whip">
             </div>
             <div class="speaker-row">
-              <span class="speaker-role-label">Reply Speaker</span>
+              <span class="speaker-role-label">সমাপনী: Reply Speaker</span>
               <input type="text" class="speaker-name-input" id="spk-or" value="Leader of Opp / 2nd Speaker">
             </div>
           </div>
@@ -2116,14 +2116,14 @@
       govtTeamName: "Government Team (পক্ষ দল)",
       oppTeamName: "Opposition Team (বিপক্ষ দল)",
       speakers: [
-        { id: 0, side: 'govt', title: '1st Speaker (PM)', defaultRole: 'Prime Minister (দলনেতা)', name: 'Prime Minister', isReply: false, scores: { logic: 26, facts: 15, delivery: 15, rebuttal: 11, team: 8 } },
-        { id: 1, side: 'opp', title: '1st Speaker (LO)', defaultRole: 'Leader of Opposition (বিরোধী দলনেতা)', name: 'Leader of Opposition', isReply: false, scores: { logic: 26, facts: 15, delivery: 15, rebuttal: 11, team: 8 } },
-        { id: 2, side: 'govt', title: '2nd Speaker (Minister)', defaultRole: 'Minister (দ্বিতীয় বক্তা)', name: 'Deputy Speaker', isReply: false, scores: { logic: 26, facts: 15, delivery: 15, rebuttal: 11, team: 8 } },
-        { id: 3, side: 'opp', title: '2nd Speaker (Deputy)', defaultRole: 'Deputy Leader (দ্বিতীয় বক্তা)', name: 'Deputy Leader of Opp', isReply: false, scores: { logic: 26, facts: 15, delivery: 15, rebuttal: 11, team: 8 } },
-        { id: 4, side: 'govt', title: '3rd Speaker (Whip)', defaultRole: 'Govt Whip (তৃতীয় বক্তা)', name: 'Government Whip', isReply: false, scores: { logic: 26, facts: 15, delivery: 15, rebuttal: 11, team: 8 } },
-        { id: 5, side: 'opp', title: '3rd Speaker (Whip)', defaultRole: 'Opp Whip (তৃতীয় বক্তা)', name: 'Opposition Whip', isReply: false, scores: { logic: 26, facts: 15, delivery: 15, rebuttal: 11, team: 8 } },
-        { id: 6, side: 'opp', title: 'Opp Reply Speech', defaultRole: 'Opp Reply Speaker', name: 'Leader of Opp / 2nd Speaker', isReply: true, scores: { logic: 27, facts: 16, delivery: 16, rebuttal: 12, team: 8 } },
-        { id: 7, side: 'govt', title: 'Govt Reply Speech', defaultRole: 'Govt Reply Speaker', name: 'Prime Minister / 2nd Speaker', isReply: true, scores: { logic: 27, facts: 16, delivery: 16, rebuttal: 12, team: 8 } }
+        { id: 0, side: 'govt', title: '1st Speaker (PM)', defaultRole: '১ম বক্তা · প্রধানমন্ত্রী (Prime Minister)', name: 'Prime Minister', isReply: false, scores: { logic: 26, facts: 15, delivery: 15, rebuttal: 11, team: 8 } },
+        { id: 1, side: 'opp', title: '1st Speaker (LO)', defaultRole: '১ম বক্তা · বিরোধীদলীয় নেতা (Leader of Opp)', name: 'Leader of Opposition', isReply: false, scores: { logic: 26, facts: 15, delivery: 15, rebuttal: 11, team: 8 } },
+        { id: 2, side: 'govt', title: '2nd Speaker (Minister)', defaultRole: '২য় বক্তা · মন্ত্রী (Minister)', name: 'Deputy Speaker', isReply: false, scores: { logic: 26, facts: 15, delivery: 15, rebuttal: 11, team: 8 } },
+        { id: 3, side: 'opp', title: '2nd Speaker (Deputy)', defaultRole: '২য় বক্তা · উপনেতা (Deputy Leader)', name: 'Deputy Leader of Opp', isReply: false, scores: { logic: 26, facts: 15, delivery: 15, rebuttal: 11, team: 8 } },
+        { id: 4, side: 'govt', title: '3rd Speaker (Whip)', defaultRole: '৩য় বক্তা · সরকারি হুইপ (Govt Whip)', name: 'Government Whip', isReply: false, scores: { logic: 26, facts: 15, delivery: 15, rebuttal: 11, team: 8 } },
+        { id: 5, side: 'opp', title: '3rd Speaker (Whip)', defaultRole: '৩য় বক্তা · বিরোধী হুইপ (Opp Whip)', name: 'Opposition Whip', isReply: false, scores: { logic: 26, facts: 15, delivery: 15, rebuttal: 11, team: 8 } },
+        { id: 6, side: 'opp', title: 'Opp Reply Speech', defaultRole: 'সমাপনী বক্তা (বিরোধী দল)', name: 'Leader of Opp / 2nd Speaker', isReply: true, scores: { logic: 27, facts: 16, delivery: 16, rebuttal: 12, team: 8 } },
+        { id: 7, side: 'govt', title: 'Govt Reply Speech', defaultRole: 'সমাপনী বক্তা (সরকারি দল)', name: 'Prime Minister / 2nd Speaker', isReply: true, scores: { logic: 27, facts: 16, delivery: 16, rebuttal: 12, team: 8 } }
       ]
     };
 
