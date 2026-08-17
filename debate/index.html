@@ -739,8 +739,150 @@
       justify-content: space-between;
     }
 
-    .modal-body { padding: 24px; overflow-y: auto; line-height: 1.6; font-size: 0.9rem; }
-    .btn-close { background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer; }
+    .modal-dialog.slideshow-dialog {
+      max-width: 900px;
+      width: 95%;
+      min-height: 540px;
+      max-height: 90vh;
+      background: #0f1422;
+      border: 1px solid rgba(79, 126, 248, 0.4);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px var(--accent-glow);
+    }
+
+    .slideshow-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 24px 28px;
+    }
+
+    .slideshow-slide {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    .slideshow-slide.active {
+      display: flex;
+    }
+
+    .slide-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .slide-step-badge {
+      background: rgba(79, 126, 248, 0.2);
+      color: #93c5fd;
+      border: 1px solid rgba(79, 126, 248, 0.4);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .slide-heading-en {
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .slide-heading-bn {
+      font-family: var(--font-bn);
+      font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+      color: #93c5fd;
+      margin-bottom: 20px;
+      padding-left: 12px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .slide-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .slide-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .slide-feature-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+    }
+
+    .slide-feature-card.govt { border-top: 3px solid var(--govt); }
+    .slide-feature-card.opp { border-top: 3px solid var(--opp); }
+    .slide-feature-card.accent { border-top: 3px solid var(--accent); }
+
+    .slide-card-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-card-bn {
+      font-family: var(--font-bn);
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    .slide-card-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .slideshow-nav-bar {
+      padding: 16px 28px;
+      border-top: 1px solid var(--border);
+      background: rgba(18, 23, 34, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .slide-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slide-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .slide-dot.active {
+      width: 28px;
+      border-radius: 10px;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
 
     @media print {
       body { background: #fff; color: #000; }
@@ -768,6 +910,10 @@
     </div>
     
     <div class="nav-right">
+      <button class="header-btn" onclick="openSlideshowModal()" style="background: rgba(79, 126, 248, 0.18); border-color: rgba(79, 126, 248, 0.4); color: #93c5fd;">
+        <span>🎬</span>
+        <span>Format Slideshow</span>
+      </button>
       <a href="Bangladesh_Classroom_Debate_Teachers_Guide.pdf" target="_blank" class="header-btn" style="text-decoration: none;">
         <span>📖</span>
         <span>Teacher's Guide (PDF)</span>
@@ -811,6 +957,20 @@
     <!-- ══════════════════════════════════════════════════════════ -->
     <section class="phase-view active" id="phase-1">
       
+      <!-- Classroom Introduction Slideshow Callout Banner -->
+      <div style="background: linear-gradient(135deg, rgba(79, 126, 248, 0.15), rgba(139, 92, 246, 0.1)); border: 1px solid rgba(79, 126, 248, 0.35); border-radius: var(--radius); padding: 14px 20px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 1.6rem;">🎬</span>
+          <div>
+            <div style="font-size: 0.95rem; font-weight: 800; color: #fff;">Classroom Debate Format Slideshow (সহজ পরিচিতি স্লাইডশো)</div>
+            <div style="font-size: 0.78rem; color: #cbd5e1;">Project this 2-minute bilingual visual walkthrough to introduce the rules, POIs, speaking turns, and stages to your students.</div>
+          </div>
+        </div>
+        <button class="btn-action" onclick="openSlideshowModal()" style="padding: 8px 16px; font-size: 0.82rem;">
+          <span>Play Slideshow (স্লাইডশো চালু করুন) →</span>
+        </button>
+      </div>
+
       <!-- Topic Selection Hero -->
       <div class="topic-hero">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -1270,6 +1430,277 @@
           <li>Logic &amp; Analysis (35) · Evidence &amp; Context (20) · Delivery (20) · Rebuttal &amp; POI (15) · Team Strategy (10).</li>
         </ul>
       </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!-- MODAL: 6-SLIDE BILINGUAL FORMAT WALKTHROUGH SLIDESHOW      -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <div class="modal-backdrop" id="modal-slideshow">
+    <div class="modal-dialog slideshow-dialog">
+      
+      <!-- Slideshow Header -->
+      <div class="modal-header" style="background: rgba(18, 23, 34, 0.9);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 1.3rem;">🎬</span>
+          <div>
+            <h3 style="font-size: 1rem; font-weight: 800; color: #fff;">Classroom Debate Introduction Slideshow</h3>
+            <span style="font-size: 0.72rem; color: #94a3b8;">বাংলাদেশ সংসদীয় বিতর্ক পরিচিতি · Visual Student Guide</span>
+          </div>
+        </div>
+        <button class="btn-close" onclick="closeSlideshowModal()">✕</button>
+      </div>
+
+      <!-- Slideshow Body -->
+      <div class="slideshow-content">
+        
+        <!-- SLIDE 1: THE BASICS -->
+        <div class="slideshow-slide active" id="slide-1">
+          <div class="slide-badge-row">
+            <span class="slide-step-badge">Slide 1 of 6 · The Core Basics</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">⏱️ 45–60 Min Session</span>
+          </div>
+          <h2 class="slide-heading-en">What is a 3v3 Parliamentary Debate?</h2>
+          <div class="slide-heading-bn">বাংলাদেশ সংসদীয় বিতর্ক কী এবং কীভাবে পরিচালিত হয়?</div>
+
+          <div class="slide-grid-2">
+            <div class="slide-feature-card govt">
+              <div class="slide-card-title"><span>🏛️</span> Government Team (পক্ষ দল)</div>
+              <div class="slide-card-bn">প্রস্তাবের পক্ষে অবস্থান গ্রহণকারী দল</div>
+              <div class="slide-card-desc">
+                Believes the motion <strong>SHOULD</strong> happen. Their job is to define the terms, identify the problem in Rajshahi, and propose a practical 3-step solution model.
+              </div>
+            </div>
+
+            <div class="slide-feature-card opp">
+              <div class="slide-card-title"><span>🛡️</span> Opposition Team (বিপক্ষ দল)</div>
+              <div class="slide-card-bn">প্রস্তাবের বিপক্ষে অবস্থান গ্রহণকারী দল</div>
+              <div class="slide-card-desc">
+                Believes the motion <strong>SHOULD NOT</strong> happen. Their job is to expose the flaws in the Government's plan and defend the status quo or better alternatives.
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--surface-card); border-radius: var(--radius-sm); padding: 12px 16px; font-size: 0.82rem; color: #cbd5e1; border-left: 3px solid var(--accent);">
+            <strong>📌 Format Overview:</strong> 3 primary speakers per team + 1 short summary ("reply") speech = <strong>8 Speeches Total</strong>. The team with the strongest logic and evidence wins!
+          </div>
+        </div>
+
+        <!-- SLIDE 2: 4 STAGES OF THE ACTIVITY -->
+        <div class="slideshow-slide" id="slide-2">
+          <div class="slide-badge-row">
+            <span class="slide-step-badge">Slide 2 of 6 · Class Workflow</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Guided Stepper</span>
+          </div>
+          <h2 class="slide-heading-en">The 4 Stages of Today's Activity</h2>
+          <div class="slide-heading-bn">আজকের ক্লাসের ৪টি প্রধান ধাপ ও সময় বণ্টন</div>
+
+          <div class="slide-grid-2">
+            <div class="slide-feature-card accent">
+              <div class="slide-card-title">1. Topic &amp; Teams Setup (3–5m)</div>
+              <div class="slide-card-bn">বিষয় নির্বাচন ও দল গঠন</div>
+              <div class="slide-card-desc">The teacher reveals a motion from 50 Rajshahi topics. The class forms Government (Left) and Opposition (Right) benches.</div>
+            </div>
+
+            <div class="slide-feature-card accent">
+              <div class="slide-card-title">2. Team Prep Caucus (10–12m)</div>
+              <div class="slide-card-bn">দলের প্রস্তুতি ও যুক্তি তৈরি</div>
+              <div class="slide-card-desc">Teams turn desks together to brainstorm A-R-E-I arguments, anticipate clashes, and draft 15s Points of Information (POIs).</div>
+            </div>
+
+            <div class="slide-feature-card accent">
+              <div class="slide-card-title">3. Live Debate Stage (25–35m)</div>
+              <div class="slide-card-bn">মঞ্চে মূল বিতর্ক ও বেলের নিয়ম</div>
+              <div class="slide-card-desc">8 podium speeches with automated bell chimes (1:00, 3:00, 4:00) and live 15-second POI interruptions.</div>
+            </div>
+
+            <div class="slide-feature-card accent">
+              <div class="slide-card-title">4. Verdict &amp; Feedback (5–8m)</div>
+              <div class="slide-card-bn">ফলাফল ঘোষণা ও শ্রেষ্ঠ বক্তা নির্বাচন</div>
+              <div class="slide-card-desc">Official 100-point BDC rubric calculation, team point margin announcement, Best Speaker award, and constructive teacher feedback.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3: 8 SPEAKING TURNS & ROLES -->
+        <div class="slideshow-slide" id="slide-3">
+          <div class="slide-badge-row">
+            <span class="slide-step-badge">Slide 3 of 6 · Speaking Order</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">8 Speeches Total</span>
+          </div>
+          <h2 class="slide-heading-en">The 8 Speaking Turns &amp; Specific Roles</h2>
+          <div class="slide-heading-bn">বক্তাদের ক্রম এবং নির্দিষ্ট দায়িত্বসমূহ</div>
+
+          <div class="slide-grid-2" style="font-size: 0.8rem;">
+            <div style="background: var(--surface-card); padding: 10px 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--govt);">
+              <strong style="color: var(--govt);">Turn 1: Prime Minister (PM) — 4:00m</strong>
+              <p style="color: var(--text-muted); margin-top: 2px;">Defines the terms, frames the problem in Rajshahi, sets the policy model, delivers Arguments 1 &amp; 2.</p>
+            </div>
+            <div style="background: var(--surface-card); padding: 10px 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--opp);">
+              <strong style="color: var(--opp);">Turn 2: Leader of Opp (LO) — 4:00m</strong>
+              <p style="color: var(--text-muted); margin-top: 2px;">Rebuts PM, challenges unfair definitions, establishes Opp counter-stance, delivers Opp Arguments 1 &amp; 2.</p>
+            </div>
+            <div style="background: var(--surface-card); padding: 10px 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--govt);">
+              <strong style="color: var(--govt);">Turn 3: Minister (2nd Govt) — 4:00m</strong>
+              <p style="color: var(--text-muted); margin-top: 2px;">Rebuts Leader of Opp, defends PM's model, and presents Argument 3 with deep real-world evidence.</p>
+            </div>
+            <div style="background: var(--surface-card); padding: 10px 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--opp);">
+              <strong style="color: var(--opp);">Turn 4: Deputy Leader (2nd Opp) — 4:00m</strong>
+              <p style="color: var(--text-muted); margin-top: 2px;">Rebuts Govt Minister, defends Opp case, and presents Opp Argument 3 with local statistics.</p>
+            </div>
+            <div style="background: var(--surface-card); padding: 10px 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--govt);">
+              <strong style="color: var(--govt);">Turn 5: Govt Whip (3rd Govt) — 4:00m</strong>
+              <p style="color: var(--text-muted); margin-top: 2px;">Breaks down the 3 core clashes of the debate. Destroys Opp arguments. <em>(No new arguments allowed).</em></p>
+            </div>
+            <div style="background: var(--surface-card); padding: 10px 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--opp);">
+              <strong style="color: var(--opp);">Turn 6: Opp Whip (3rd Opp) — 4:00m</strong>
+              <p style="color: var(--text-muted); margin-top: 2px;">Answers all Govt attacks, reinforces the Opposition stance, and concludes why Govt lost. <em>(No new arguments).</em></p>
+            </div>
+            <div style="background: var(--surface-card); padding: 10px 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--opp);">
+              <strong style="color: var(--opp);">Turn 7: Opp Reply Speech — 2:30m</strong>
+              <p style="color: var(--text-muted); margin-top: 2px;"><em>Opp goes first in reply!</em> 'Two Worlds' comparison showing why Opp counter-model is superior.</p>
+            </div>
+            <div style="background: var(--surface-card); padding: 10px 14px; border-radius: var(--radius-sm); border-left: 3px solid var(--govt);">
+              <strong style="color: var(--govt);">Turn 8: Govt Reply Speech — 2:30m</strong>
+              <p style="color: var(--text-muted); margin-top: 2px;">Final speech of the debate. Re-anchors the core moral principle and makes the final closing appeal.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4: THE A-R-E-I ARGUMENT METHOD -->
+        <div class="slideshow-slide" id="slide-4">
+          <div class="slide-badge-row">
+            <span class="slide-step-badge">Slide 4 of 6 · Argument Formula</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Case Building</span>
+          </div>
+          <h2 class="slide-heading-en">How to Build Strong Arguments: A-R-E-I</h2>
+          <div class="slide-heading-bn">যুক্তি গঠনের ৪টি অপরিহার্য স্তর (দাবি → যুক্তি → প্রমাণ → ফলাফল)</div>
+
+          <div class="slide-grid-2">
+            <div class="slide-feature-card">
+              <div class="slide-card-title"><span style="color: #3b82f6;">A</span> Assertion (দাবি)</div>
+              <div class="slide-card-desc">State your claim clearly in one strong headline sentence (e.g. <em>"Banning coaching centers revitalizes school attendance."</em>).</div>
+            </div>
+
+            <div class="slide-feature-card">
+              <div class="slide-card-title"><span style="color: #10b981;">R</span> Reasoning (যুক্তি ও কারণ)</div>
+              <div class="slide-card-desc">Explain the step-by-step logic of <strong>WHY</strong> and <strong>HOW</strong> this happens in reality.</div>
+            </div>
+
+            <div class="slide-feature-card">
+              <div class="slide-card-title"><span style="color: #f59e0b;">E</span> Evidence in Rajshahi (বাস্তব উপাত্ত)</div>
+              <div class="slide-card-desc">Back it up with local facts, campus statistics (RU, colleges, river Padma), or real student experiences in Bangladesh.</div>
+            </div>
+
+            <div class="slide-feature-card">
+              <div class="slide-card-title"><span style="color: #8b5cf6;">I</span> Impact (চূড়ান্ত প্রভাব)</div>
+              <div class="slide-card-desc">Prove why this outcome matters for students, families, or society. Why does your side win on balance?</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5: POI & BELL SYSTEM -->
+        <div class="slideshow-slide" id="slide-5">
+          <div class="slide-badge-row">
+            <span class="slide-step-badge">Slide 5 of 6 · Interruptions &amp; Bells</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Points of Information</span>
+          </div>
+          <h2 class="slide-heading-en">Points of Information (POI) &amp; Bells</h2>
+          <div class="slide-heading-bn">তথ্য জানতে চাওয়া (POI) এবং বেলের সময়সূচি</div>
+
+          <div style="background: var(--surface-card); border-radius: var(--radius); padding: 16px; margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; text-align: center; font-size: 0.75rem; font-weight: 800; margin-bottom: 8px;">
+              <div style="color: #94a3b8; flex: 1;">0:00 – 1:00<br>🔒 Protected (No POIs)</div>
+              <div style="color: #38bdf8; flex: 2; border-left: 2px solid var(--border); border-right: 2px solid var(--border);">1:00 – 3:00<br>✋ POI WINDOW OPEN (15s Max)</div>
+              <div style="color: var(--warning); flex: 1;">3:00 – 4:00<br>🔒 Protected Warning</div>
+              <div style="color: var(--opp); flex: 1; border-left: 2px solid var(--border);">4:00+<br>🚨 Overtime</div>
+            </div>
+
+            <div style="display: flex; gap: 4px; height: 10px; border-radius: 5px; overflow: hidden;">
+              <div style="flex: 1; background: #64748b;"></div>
+              <div style="flex: 2; background: #38bdf8;"></div>
+              <div style="flex: 1; background: var(--warning);"></div>
+              <div style="flex: 0.8; background: var(--opp);"></div>
+            </div>
+          </div>
+
+          <div class="slide-grid-2" style="font-size: 0.82rem;">
+            <div class="slide-feature-card">
+              <strong style="color: #fff;">How to Offer a POI:</strong>
+              <p style="color: var(--text-muted); margin-top: 4px;">Stand up politely and say: <em>"On that point, Madam Speaker!"</em> Keep your question under <strong>15 seconds</strong>.</p>
+            </div>
+            <div class="slide-feature-card">
+              <strong style="color: #fff;">How the Speaker Responds:</strong>
+              <p style="color: var(--text-muted); margin-top: 4px;">Speaker has total control: say <em>"Yes, please"</em> to accept or wave hand down saying <em>"No, thank you"</em>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6: HOW TO WIN & ADJUDICATION -->
+        <div class="slideshow-slide" id="slide-6">
+          <div class="slide-badge-row">
+            <span class="slide-step-badge">Slide 6 of 6 · Official Scoring</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">BDC 100-Pt Rubric</span>
+          </div>
+          <h2 class="slide-heading-en">How the Debate is Scored &amp; Won</h2>
+          <div class="slide-heading-bn">বিচারকার্য ও ১০০ পয়েন্টের মূল্যায়ন পদ্ধতি</div>
+
+          <div class="slide-grid-3" style="font-size: 0.8rem;">
+            <div class="slide-feature-card">
+              <div class="slide-card-title">🧠 Logic &amp; Analysis (35)</div>
+              <div class="slide-card-desc">Soundness and depth of core arguments. Did the reasoning hold up under pressure?</div>
+            </div>
+            <div class="slide-feature-card">
+              <div class="slide-card-title">📊 Evidence &amp; Context (20)</div>
+              <div class="slide-card-desc">Real-world data and Rajshahi relevance. Concrete examples rather than vague claims.</div>
+            </div>
+            <div class="slide-feature-card">
+              <div class="slide-card-title">🗣️ Delivery &amp; Style (20)</div>
+              <div class="slide-card-desc">Clarity of voice, eye contact, persuasive posture, and time management.</div>
+            </div>
+            <div class="slide-feature-card">
+              <div class="slide-card-title">🛡️ Rebuttal &amp; POIs (15)</div>
+              <div class="slide-card-desc">Attacking opponent flaws and confidently taking/answering 1–2 POIs.</div>
+            </div>
+            <div class="slide-feature-card">
+              <div class="slide-card-title">🤝 Team Strategy (10)</div>
+              <div class="slide-card-desc">Consistency and cohesion across all 3 speakers without contradicting teammates.</div>
+            </div>
+            <div class="slide-feature-card" style="background: rgba(16, 185, 129, 0.1); border-color: var(--govt);">
+              <div class="slide-card-title" style="color: var(--govt);">🏆 Best Speaker Award</div>
+              <div class="slide-card-desc">Awarded to the single highest-scoring substantive speaker across both benches!</div>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 6px;">
+            <button class="btn-action" onclick="closeSlideshowModal()" style="padding: 10px 24px; font-size: 0.9rem;">
+              <span>Start Debate Activity (বিতর্ক শুরু করুন) 🚀</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Slideshow Navigation Footer -->
+      <div class="slideshow-nav-bar">
+        <button class="btn-secondary" id="btn-slide-prev" onclick="prevSlide()">
+          <span>← Previous</span>
+        </button>
+
+        <div class="slide-dots" id="slideshow-dots-container">
+          <div class="slide-dot active" onclick="goToSlide(1)"></div>
+          <div class="slide-dot" onclick="goToSlide(2)"></div>
+          <div class="slide-dot" onclick="goToSlide(3)"></div>
+          <div class="slide-dot" onclick="goToSlide(4)"></div>
+          <div class="slide-dot" onclick="goToSlide(5)"></div>
+          <div class="slide-dot" onclick="goToSlide(6)"></div>
+        </div>
+
+        <button class="btn-action" id="btn-slide-next" onclick="nextSlide()">
+          <span>Next Slide →</span>
+        </button>
+      </div>
+
     </div>
   </div>
 
@@ -1806,6 +2237,63 @@
       }
     }
 
+    /* ── Bilingual Format Slideshow Controller ── */
+    var currentSlideIndex = 1;
+    const TOTAL_SLIDES = 6;
+
+    function openSlideshowModal() {
+      document.getElementById('modal-slideshow').classList.add('open');
+      goToSlide(1);
+    }
+
+    function closeSlideshowModal() {
+      document.getElementById('modal-slideshow').classList.remove('open');
+    }
+
+    function goToSlide(slideNum) {
+      if (slideNum < 1) slideNum = 1;
+      if (slideNum > TOTAL_SLIDES) slideNum = TOTAL_SLIDES;
+      currentSlideIndex = slideNum;
+
+      for (var i = 1; i <= TOTAL_SLIDES; i++) {
+        var slide = document.getElementById('slide-' + i);
+        if (slide) {
+          if (i === slideNum) slide.classList.add('active');
+          else slide.classList.remove('active');
+        }
+      }
+
+      // Update dots
+      var dots = document.querySelectorAll('#slideshow-dots-container .slide-dot');
+      dots.forEach(function(dot, idx) {
+        if (idx + 1 === slideNum) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+
+      // Update buttons
+      var btnPrev = document.getElementById('btn-slide-prev');
+      var btnNext = document.getElementById('btn-slide-next');
+      if (btnPrev) btnPrev.style.visibility = (slideNum === 1) ? 'hidden' : 'visible';
+      if (btnNext) {
+        if (slideNum === TOTAL_SLIDES) {
+          btnNext.innerHTML = '<span>Start Activity 🚀</span>';
+          btnNext.onclick = closeSlideshowModal;
+        } else {
+          btnNext.innerHTML = '<span>Next Slide →</span>';
+          btnNext.onclick = nextSlide;
+        }
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlideIndex < TOTAL_SLIDES) goToSlide(currentSlideIndex + 1);
+      else closeSlideshowModal();
+    }
+
+    function prevSlide() {
+      if (currentSlideIndex > 1) goToSlide(currentSlideIndex - 1);
+    }
+
     /* Topic Modals & Fullscreen */
     function openTopicBrowserModal() {
       document.getElementById('modal-topics').classList.add('open');
@@ -1841,6 +2329,13 @@
 
     // Keyboard Shortcuts
     document.addEventListener('keydown', function(e) {
+      // Slideshow arrow keys
+      var slideshowOpen = document.getElementById('modal-slideshow').classList.contains('open');
+      if (slideshowOpen) {
+        if (e.key === 'ArrowRight') { nextSlide(); return; }
+        if (e.key === 'ArrowLeft') { prevSlide(); return; }
+      }
+
       if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
         e.preventDefault();
         if (appState.currentPhase === 2) togglePrepTimer();
@@ -1855,6 +2350,7 @@
       if (e.key === 'Escape') {
         closeTopicBrowserModal();
         closeRulesModal();
+        closeSlideshowModal();
       }
     });
 
