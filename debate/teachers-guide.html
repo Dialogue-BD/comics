@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Teacher's Facilitation Guide — Bangladesh Classroom Debate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 14mm 12mm 14mm 12mm;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      line-height: 1.45;
+      font-size: 9.5pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .guide-container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* ── Header Banner ── */
+    .header-banner {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #ffffff;
+      padding: 16px 20px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-banner h1 {
+      font-size: 16pt;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-banner .tagline {
+      font-size: 8.5pt;
+      color: #94a3b8;
+    }
+
+    .meta-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .meta-badge {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 7.5pt;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    /* ── Grid Layouts ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    /* ── Cards & Callouts ── */
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+
+    .card-header {
+      font-size: 10.5pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 4px;
+    }
+
+    .govt-card { border-left: 4px solid #10b981; }
+    .opp-card { border-left: 4px solid #ef4444; }
+    .alert-card { border-left: 4px solid #f59e0b; background: #fffbeb; }
+
+    /* ── Phase Steps ── */
+    .phase-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .phase-box {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+
+    .phase-box.active-step {
+      background: #eff6ff;
+      border-color: #3b82f6;
+    }
+
+    .phase-num {
+      font-size: 7.5pt;
+      font-weight: 800;
+      color: #3b82f6;
+      text-transform: uppercase;
+    }
+
+    .phase-title {
+      font-size: 9pt;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 2px 0 3px;
+    }
+
+    .phase-time {
+      font-size: 7.5pt;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* ── Tables ── */
+    table.guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8pt;
+      margin: 6px 0 10px;
+    }
+
+    table.guide-table th {
+      background: #e2e8f0;
+      color: #0f172a;
+      font-weight: 800;
+      text-align: left;
+      padding: 6px 8px;
+      border: 1px solid #cbd5e1;
+    }
+
+    table.guide-table td {
+      padding: 5px 8px;
+      border: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+
+    table.guide-table tr:nth-child(even) { background: #f8fafc; }
+
+    /* ── Floorplan Diagram ── */
+    .floorplan-diagram {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      margin: 8px 0;
+      font-size: 8pt;
+    }
+
+    .seating-row {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 6px 0;
+    }
+
+    .seating-pod {
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 7.5pt;
+    }
+
+    .pod-govt { background: #d1fae5; color: #065f46; border: 1px solid #34d399; }
+    .pod-opp { background: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
+    .pod-aud { background: #e0f2fe; color: #075985; border: 1px solid #38bdf8; }
+    .pod-stage { background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; }
+
+    /* ── Friction Points List ── */
+    .friction-item {
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+
+    .friction-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .friction-title {
+      font-weight: 800;
+      color: #b45309;
+      font-size: 8.5pt;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .friction-desc {
+      font-size: 8pt;
+      color: #334155;
+      margin-top: 2px;
+    }
+
+    .friction-fix {
+      font-size: 8pt;
+      color: #047857;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .page-break {
+      page-break-before: always;
+      padding-top: 8px;
+    }
+
+    .action-badge {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 7pt;
+      text-transform: uppercase;
+    }
+    .action-badge.blue { background: #dbeafe; color: #1e40af; }
+    .action-badge.green { background: #d1fae5; color: #065f46; }
+    .action-badge.red { background: #fee2e2; color: #991b1b; }
+    .action-badge.amber { background: #fef3c7; color: #92400e; }
+  </style>
+</head>
+<body>
+
+  <div class="guide-container">
+
+    <!-- ═════════════════════════════════════════════════════════ -->
+    <!-- PAGE 1: FACILITATION PLAYBOOK & LARGE CLASSROOM DESIGN   -->
+    <!-- ═════════════════════════════════════════════════════════ -->
+
+    <div class="header-banner">
+      <div>
+        <h1>🇧🇩 Bangladesh Parliamentary Debate</h1>
+        <div class="tagline">Teacher's Large-Classroom Facilitation Playbook · 45–60 Min Session</div>
+      </div>
+      <div class="meta-badges">
+        <span class="meta-badge">👥 25–45+ Students</span>
+        <span class="meta-badge">⏱️ 45–60 Minutes</span>
+        <span class="meta-badge">🏛️ 3v3 BDC Format</span>
+        <span class="meta-badge">📍 Rajshahi Topics</span>
+      </div>
+    </div>
+
+    <!-- 4-Phase Stepper Overview -->
+    <div class="phase-timeline">
+      <div class="phase-box">
+        <div class="phase-num">Phase 1 (3–5 Min)</div>
+        <div class="phase-title">Topic &amp; Roster</div>
+        <div class="phase-time">Random / Browse 50 Motions</div>
+      </div>
+      <div class="phase-box active-step">
+        <div class="phase-num">Phase 2 (10–12 Min)</div>
+        <div class="phase-title">Team Caucus Prep</div>
+        <div class="phase-time">A-R-E-I Case Building</div>
+      </div>
+      <div class="phase-box">
+        <div class="phase-num">Phase 3 (25–30 Min)</div>
+        <div class="phase-title">Live Debate Stage</div>
+        <div class="phase-time">8 Speeches + POI Bells</div>
+      </div>
+      <div class="phase-box">
+        <div class="phase-num">Phase 4 (5–8 Min)</div>
+        <div class="phase-title">Adjudication &amp; Verdict</div>
+        <div class="phase-time">BDC Rubric &amp; Feedback</div>
+      </div>
+    </div>
+
+    <!-- Section 1: Large Classroom Architecture -->
+    <div class="card">
+      <div class="card-header">🏛️ Large Group Architecture: Solving the "Spectator Problem"</div>
+      <p style="margin-bottom: 8px; color: #475569; font-size: 8.5pt;">
+        In a standard debate, 6 debaters speak while 30+ students sit passively. To ensure <strong>100% active participation</strong> across a large class, structure the room into 3 functional tiers:
+      </p>
+
+      <div class="three-col" style="margin-bottom: 8px;">
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px;">
+          <strong style="color: #10b981; font-size: 8.5pt;">1. Stage Debaters (6–8 Students)</strong>
+          <p style="font-size: 7.5pt; color: #64748b; margin-top: 2px;">
+            3 Govt (PM, Minister, Whip) &amp; 3 Opp (LO, Deputy, Whip). Deliver the speeches at the podium facing the room.
+          </p>
+        </div>
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px;">
+          <strong style="color: #3b82f6; font-size: 8.5pt;">2. Bench Caucus Pods (8–14 Students)</strong>
+          <p style="font-size: 7.5pt; color: #64748b; margin-top: 2px;">
+            Research and strategy caucus. Each bench supports their speakers with Rajshahi evidence and drafts 15s POIs.
+          </p>
+        </div>
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px;">
+          <strong style="color: #8b5cf6; font-size: 8.5pt;">3. Student Jury &amp; Adjudicators (All Others)</strong>
+          <p style="font-size: 7.5pt; color: #64748b; margin-top: 2px;">
+            Audience jury members track clashes on paper and take a before/after shift vote on who won the motion.
+          </p>
+        </div>
+      </div>
+
+      <!-- Floorplan Diagram -->
+      <div class="floorplan-diagram">
+        <div style="font-weight: 800; margin-bottom: 4px; color: #0f172a;">Classroom Physical Layout (Smart-TV / Projector Front)</div>
+        <div class="seating-row">
+          <div class="seating-pod pod-stage">📺 SMART-TV / PROJECTOR SCREEN (Master Clock &amp; Bells)</div>
+        </div>
+        <div class="seating-row">
+          <div class="seating-pod pod-govt">🏛️ GOVERNMENT BENCH (PM, Minister, Whip + Caucus)</div>
+          <div class="seating-pod pod-stage" style="padding: 4px 8px;">🎙️ PODIUM</div>
+          <div class="seating-pod pod-opp">🛡️ OPPOSITION BENCH (LO, Deputy, Whip + Caucus)</div>
+        </div>
+        <div class="seating-row">
+          <div class="seating-pod pod-aud">👥 AUDIENCE JURY (Peer Scoring, Clash Tracking &amp; Audience POI Poll)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Phase-by-Phase Facilitator Checklist -->
+    <div class="two-col">
+      
+      <!-- Phase 1 & 2 -->
+      <div class="card govt-card">
+        <div class="card-header">⏱️ Phases 1 &amp; 2: Setup &amp; Team Caucus (15m)</div>
+        <ul style="padding-left: 14px; font-size: 8pt; line-height: 1.5; color: #334155;">
+          <li><strong>Select Topic (2m)</strong>: Click <em>"🎲 Random Topic"</em> or browse categories. Read the motion aloud in English and Bengali.</li>
+          <li><strong>Form Benches (2m)</strong>: Split room down the middle (Left = Government, Right = Opposition). Have each side pick their 3 primary speakers.</li>
+          <li><strong>Start 12-Min Prep Timer</strong>: Press <em>"Start Prep Timer"</em> on the front screen. The schedule matrix displays all 8 speaking turns.</li>
+          <li><strong>Guide the A-R-E-I Method</strong>:
+            <ul style="padding-left: 10px; color: #475569;">
+              <li><strong>Assertion</strong>: What is your team's core claim?</li>
+              <li><strong>Reasoning</strong>: Why is this logically true?</li>
+              <li><strong>Evidence</strong>: Real Rajshahi context (e.g. RU, Padma, easy-bikes, mango farming).</li>
+              <li><strong>Impact</strong>: How does this help/harm students?</li>
+            </ul>
+          </li>
+          <li><strong>Bell at 2:00 Remaining</strong>: Chime warns teams to finalize speaker handoffs.</li>
+        </ul>
+      </div>
+
+      <!-- Phase 3 & 4 -->
+      <div class="card opp-card">
+        <div class="card-header">🎙️ Phases 3 &amp; 4: Live Stage &amp; Scoring (35m)</div>
+        <ul style="padding-left: 14px; font-size: 8pt; line-height: 1.5; color: #334155;">
+          <li><strong>Order of Speeches</strong>:
+            1. PM (Govt) → 2. LO (Opp) → 3. Minister (Govt) → 4. Deputy (Opp) → 5. Govt Whip → 6. Opp Whip → 7. Opp Reply → 8. Govt Reply.
+          </li>
+          <li><strong>Bells &amp; POI Discipline</strong>:
+            <ul style="padding-left: 10px; color: #475569;">
+              <li><strong>0:00–1:00</strong>: Protected time (No POIs). Single bell at 1:00.</li>
+              <li><strong>1:00–3:00</strong>: POI Window OPEN! Opponents stand and say <em>"On that point, Madam Speaker"</em>. Max 15s.</li>
+              <li><strong>3:00–4:00</strong>: Final min protected. Single bell at 3:00.</li>
+              <li><strong>4:00</strong>: Double bell (Time up! 20s grace period).</li>
+            </ul>
+          </li>
+          <li><strong>Live Rubric Scoring (Teacher)</strong>: Adjust the 5 sliders (Logic 35, Evidence 20, Delivery 20, Rebuttal 15, Team 10) during each speech.</li>
+          <li><strong>Announce Winner &amp; Best Speaker</strong>: Reveal Phase 4 scorecard and deliver 3 minutes of constructive feedback.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ═════════════════════════════════════════════════════════ -->
+    <!-- PAGE 2: ESL PHRASING GUIDE & UI FRICTION POINT AUDIT    -->
+    <!-- ═════════════════════════════════════════════════════════ -->
+    <div class="page-break"></div>
+
+    <div class="header-banner" style="margin-top: 0;">
+      <div>
+        <h2 style="font-size: 14pt; font-weight: 900;">Bilingual Scaffolding &amp; Classroom Friction Audit</h2>
+        <div class="tagline">Debate Sentence Starters &amp; Teacher UI Optimization Guide</div>
+      </div>
+      <span class="meta-badge">ESL Support Sheet</span>
+    </div>
+
+    <!-- Section 3: Bilingual ESL Sentence Starters -->
+    <div class="card">
+      <div class="card-header">🗣️ Student Scaffolding: Formal Debate Sentence Starters (Bengali &amp; English)</div>
+      
+      <table class="guide-table">
+        <thead>
+          <tr>
+            <th style="width: 25%;">Speaking Function</th>
+            <th style="width: 45%;">English Formula (Say this at the podium)</th>
+            <th style="width: 30%;">Bengali Equivalent (বাংলা)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Formal Opening</strong></td>
+            <td>"Madam Speaker, esteemed adjudicators, and fellow members of the House, good day."</td>
+            <td style="font-family:'Hind Siliguri';">মাননীয় স্পিকার, বিজ্ঞ বিচারকমণ্ডলী এবং উপস্থিত সুধীবৃন্দ...</td>
+          </tr>
+          <tr>
+            <td><strong>Definition &amp; Context</strong></td>
+            <td>"To ensure clarity, this House defines the key problem in Rajshahi as..."</td>
+            <td style="font-family:'Hind Siliguri';">বিতর্কের স্পষ্টতার স্বার্থে আমরা সংজ্ঞায়িত করছি...</td>
+          </tr>
+          <tr>
+            <td><strong>Presenting Policy Model</strong></td>
+            <td>"Under our policy model, we implement a practical 3-step mechanism: First..."</td>
+            <td style="font-family:'Hind Siliguri';">আমাদের প্রস্তাবিত নীতিতে তিনটি পদক্ষেপ রয়েছে...</td>
+          </tr>
+          <tr>
+            <td><strong>Argument &amp; Evidence (AREI)</strong></td>
+            <td>"Our primary contention is [Claim]. In Rajshahi, local evidence proves [Evidence], leading to [Impact]."</td>
+            <td style="font-family:'Hind Siliguri';">আমাদের মূল দাবি হলো... স্থানীয় বাস্তব উপাত্ত প্রমাণ করে...</td>
+          </tr>
+          <tr>
+            <td><strong>Direct Rebuttal</strong></td>
+            <td>"The honorable previous speaker argued that [X]; however, this collapses because..."</td>
+            <td style="font-family:'Hind Siliguri';">পূর্ববর্তী সম্মানিত বক্তার যুক্তিটি ধোপে টেকে না কারণ...</td>
+          </tr>
+          <tr>
+            <td><strong>Point of Information (POI)</strong></td>
+            <td>"On that exact point: How can you justify the severe cost burden on local students?"</td>
+            <td style="font-family:'Hind Siliguri';">সুনির্দিষ্ট ওই পয়েন্টে: শিক্ষার্থীদের ক্ষতির দায় কে নেবে?</td>
+          </tr>
+          <tr>
+            <td><strong>Reply Speech Comparison</strong></td>
+            <td>"Madam Speaker, this debate comes down to two worlds: in their world... but in ours..."</td>
+            <td style="font-family:'Hind Siliguri';">এই বিতর্কের শেষে দুটি ভিন্ন দৃশ্যপট স্পষ্ট হয়ে উঠেছে...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 4: Friction Points & UX Audit Encountered During Design -->
+    <div class="card alert-card">
+      <div class="card-header" style="color: #92400e; border-bottom-color: #fde68a;">
+        ⚠️ Classroom Friction Points Encountered &amp; Teacher Mitigations
+      </div>
+      <p style="font-size: 8pt; color: #78350f; margin-bottom: 8px;">
+        During the iterative design of this application, several practical friction points arose between digital UI features and real-world classroom dynamics. Below are the key findings and how the streamlined UI resolves them:
+      </p>
+
+      <!-- Friction 1 -->
+      <div class="friction-item">
+        <div class="friction-title">1. Multi-Device Login / Room Friction vs Single Smart-TV</div>
+        <div class="friction-desc">
+          <strong>The Problem:</strong> When requiring all 35 students to scan a QR code, join isolated rooms, and log into phone workspaces, ~5–10 minutes of class time were lost to Wi-Fi connectivity, phone battery issues, and students getting lost across tabs.
+        </div>
+        <div class="friction-fix">
+          <strong>The Solution:</strong> Reverted to the <em>Single-Master Screen Projector Model</em>. The front screen runs the entire structure (timings, bells, queue). Students turn their desks and collaborate face-to-face with pens, physical placards, and eye contact.
+        </div>
+      </div>
+
+      <!-- Friction 2 -->
+      <div class="friction-item">
+        <div class="friction-title">2. On-Screen Scratchpads &amp; Anti-Cheating Insecurity</div>
+        <div class="friction-desc">
+          <strong>The Problem:</strong> When digital textboxes or scratchpads were projected on the front screen during prep time, teams worried the opposing side would read their arguments or that typing distracted from vocal debate prep.
+        </div>
+        <div class="friction-fix">
+          <strong>The Solution:</strong> Scratchpads were <em>completely removed</em> from the main screen. Instead, the Prep Room displays the <em>Full 8-Turn Speaking Order Matrix &amp; Exact Durations</em>, giving students a high-level roadmap to structure their own physical notes.
+        </div>
+      </div>
+
+      <!-- Friction 3 -->
+      <div class="friction-item">
+        <div class="friction-title">3. Sound Output &amp; Speaker Bell Audibility in Noisy Classrooms</div>
+        <div class="friction-desc">
+          <strong>The Problem:</strong> Web Audio API bells playing through laptop speakers are often drowned out by excited students arguing during POI windows.
+        </div>
+        <div class="friction-fix">
+          <strong>The Solution:</strong> Connect the classroom laptop/Smart-TV to the room PA speaker. If audio is quiet, the UI provides high-contrast visual cues: the stage clock turns cyan during open POIs and pulses yellow/red at the 1-minute warning.
+        </div>
+      </div>
+
+      <!-- Friction 4 -->
+      <div class="friction-item">
+        <div class="friction-title">4. Adjudication Slowness Between Back-to-Back Speeches</div>
+        <div class="friction-desc">
+          <strong>The Problem:</strong> Teachers who wait until after the speech to score struggle to recall specific point breakdowns while introducing the next debater.
+        </div>
+        <div class="friction-fix">
+          <strong>The Solution:</strong> Sliders are built directly on the live stage view. The teacher adjusts sliders in real-time during the speech. Tapping <em>"Next Speaker"</em> automatically archives the current score and loads the next speaker without page reloads.
+        </div>
+      </div>
+
+      <!-- Friction 5 -->
+      <div class="friction-item">
+        <div class="friction-title">5. Reply Speech Order Confusion</div>
+        <div class="friction-desc">
+          <strong>The Problem:</strong> Students often mistakenly assume Government speaks first in reply speeches because they spoke first in substantive turns.
+        </div>
+        <div class="friction-fix">
+          <strong>The Solution:</strong> The UI enforces authentic Bangladesh parliamentary rules: Turn 7 is automatically locked to Opposition Reply, followed by Turn 8 Government Reply, preventing order mistakes.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Printable Footer -->
+    <div style="text-align: center; font-size: 7.5pt; color: #94a3b8; margin-top: 10px; border-top: 1px solid #e2e8f0; padding-top: 6px;">
+      Dialogue English Language &amp; Debate Club · Meghdut Building, Talaimari, Rajshahi · classroom app: <code>/debate/</code>
+    </div>
+
+  </div>
+
+</body>
+</html>
