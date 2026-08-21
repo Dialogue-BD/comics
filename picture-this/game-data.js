@@ -887,6 +887,86 @@ window.PICTURE_THIS_GAME_DATA = {
     "Reefing Cringle",
     "Dock Line",
     "Marine Fender"
+  ],
+  "clothing-actions": [
+    "Button Up",
+    "Unbutton",
+    "Zip Up",
+    "Unzip",
+    "Tie Laces",
+    "Untie Laces"
+  ],
+  "communication-actions": [
+    "Whisper",
+    "Shout",
+    "Ask",
+    "Answer",
+    "Agree",
+    "Disagree"
+  ],
+  "device-actions": [
+    "Plug In",
+    "Unplug",
+    "Turn On",
+    "Turn Off",
+    "Log In",
+    "Log Out"
+  ],
+  "eating-and-senses": [
+    "Bite",
+    "Chew",
+    "Taste",
+    "Lick",
+    "Smell",
+    "Sniff"
+  ],
+  "everyday-problems": [
+    "Borrow",
+    "Lend",
+    "Lose",
+    "Find",
+    "Break",
+    "Fix"
+  ],
+  "family-members": [
+    "Mother",
+    "Father",
+    "Sister",
+    "Brother",
+    "Grandmother",
+    "Grandfather"
+  ],
+  "kitchen-actions": [
+    "Boil",
+    "Fry",
+    "Measure",
+    "Weigh",
+    "Wash",
+    "Dry"
+  ],
+  "moving-objects": [
+    "Push",
+    "Pull",
+    "Lift",
+    "Drop",
+    "Carry",
+    "Drag"
+  ],
+  "parts-of-the-body": [
+    "Finger",
+    "Toe",
+    "Eye",
+    "Ear",
+    "Arm",
+    "Leg"
+  ],
+  "travel-actions": [
+    "Pack",
+    "Unpack",
+    "Take Off",
+    "Land",
+    "Get On",
+    "Get Off"
   ]
 };
 
@@ -1903,6 +1983,997 @@ window.PICTURE_THIS_GAME_META = {
             "marine-fender"
           ],
           "explanation": "The dock line and marine fender are the only two items shown specifically used while mooring a boat beside a dock.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "clothing-actions": {
+      "title": "Clothing Actions",
+      "category_answers": [
+        "Clothing Actions",
+        "Getting Dressed Actions",
+        "Clothing Verbs",
+        "Fastening Clothes"
+      ],
+      "tags": [
+        "actions",
+        "clothing",
+        "daily-routine"
+      ],
+      "items": [
+        {
+          "id": "button-up",
+          "label": "Button Up",
+          "answers": [
+            "Button Up",
+            "Fasten Buttons"
+          ]
+        },
+        {
+          "id": "unbutton",
+          "label": "Unbutton",
+          "answers": [
+            "Unbutton",
+            "Undo Buttons"
+          ]
+        },
+        {
+          "id": "zip-up",
+          "label": "Zip Up",
+          "answers": [
+            "Zip Up",
+            "Fasten Zipper"
+          ]
+        },
+        {
+          "id": "unzip",
+          "label": "Unzip",
+          "answers": [
+            "Unzip",
+            "Open Zipper"
+          ]
+        },
+        {
+          "id": "tie-laces",
+          "label": "Tie Laces",
+          "answers": [
+            "Tie Laces",
+            "Lace Up"
+          ]
+        },
+        {
+          "id": "untie-laces",
+          "label": "Untie Laces",
+          "answers": [
+            "Untie Laces",
+            "Undo Laces"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "buttons",
+          "answers": [
+            "buttons"
+          ],
+          "items": [
+            "button-up",
+            "unbutton"
+          ],
+          "explanation": "Button up and unbutton are the only two actions shown performed with buttons.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "zipper",
+          "answers": [
+            "zipper"
+          ],
+          "items": [
+            "zip-up",
+            "unzip"
+          ],
+          "explanation": "Zip up and unzip are the only two actions shown performed with a zipper.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "laces",
+          "answers": [
+            "laces"
+          ],
+          "items": [
+            "tie-laces",
+            "untie-laces"
+          ],
+          "explanation": "Tie laces and untie laces are the only two actions shown performed with shoelaces.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "communication-actions": {
+      "title": "Communication Actions",
+      "category_answers": [
+        "Communication Actions",
+        "Ways to Communicate",
+        "Speaking and Gestures",
+        "Communication Verbs"
+      ],
+      "tags": [
+        "actions",
+        "communication",
+        "classroom"
+      ],
+      "items": [
+        {
+          "id": "whisper",
+          "label": "Whisper",
+          "answers": [
+            "Whisper"
+          ]
+        },
+        {
+          "id": "shout",
+          "label": "Shout",
+          "answers": [
+            "Shout",
+            "Yell"
+          ]
+        },
+        {
+          "id": "ask",
+          "label": "Ask",
+          "answers": [
+            "Ask"
+          ]
+        },
+        {
+          "id": "answer",
+          "label": "Answer",
+          "answers": [
+            "Answer"
+          ]
+        },
+        {
+          "id": "agree",
+          "label": "Agree",
+          "answers": [
+            "Agree"
+          ]
+        },
+        {
+          "id": "disagree",
+          "label": "Disagree",
+          "answers": [
+            "Disagree"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "volume",
+          "answers": [
+            "volume"
+          ],
+          "items": [
+            "whisper",
+            "shout"
+          ],
+          "explanation": "Whisper and shout are the only two actions shown that contrast speaking volume.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "question",
+          "answers": [
+            "question"
+          ],
+          "items": [
+            "ask",
+            "answer"
+          ],
+          "explanation": "Ask and answer are the only two actions shown that form the two sides of a question.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "opinion",
+          "answers": [
+            "opinion"
+          ],
+          "items": [
+            "agree",
+            "disagree"
+          ],
+          "explanation": "Agree and disagree are the only two actions shown that express a response to an opinion.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "device-actions": {
+      "title": "Device Actions",
+      "category_answers": [
+        "Device Actions",
+        "Technology Actions",
+        "Using Devices",
+        "Computer and Power Actions"
+      ],
+      "tags": [
+        "actions",
+        "technology",
+        "daily-life"
+      ],
+      "items": [
+        {
+          "id": "plug-in",
+          "label": "Plug In",
+          "answers": [
+            "Plug In"
+          ]
+        },
+        {
+          "id": "unplug",
+          "label": "Unplug",
+          "answers": [
+            "Unplug"
+          ]
+        },
+        {
+          "id": "turn-on",
+          "label": "Turn On",
+          "answers": [
+            "Turn On",
+            "Switch On"
+          ]
+        },
+        {
+          "id": "turn-off",
+          "label": "Turn Off",
+          "answers": [
+            "Turn Off",
+            "Switch Off"
+          ]
+        },
+        {
+          "id": "log-in",
+          "label": "Log In",
+          "answers": [
+            "Log In",
+            "Sign In"
+          ]
+        },
+        {
+          "id": "log-out",
+          "label": "Log Out",
+          "answers": [
+            "Log Out",
+            "Sign Out"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "outlet",
+          "answers": [
+            "outlet"
+          ],
+          "items": [
+            "plug-in",
+            "unplug"
+          ],
+          "explanation": "Plug in and unplug are the only two actions shown performed at a wall outlet.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "switch",
+          "answers": [
+            "switch"
+          ],
+          "items": [
+            "turn-on",
+            "turn-off"
+          ],
+          "explanation": "Turn on and turn off are the only two actions shown performed with a power switch.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "account",
+          "answers": [
+            "account"
+          ],
+          "items": [
+            "log-in",
+            "log-out"
+          ],
+          "explanation": "Log in and log out are the only two actions shown that enter and leave an online account.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "eating-and-senses": {
+      "title": "Eating and Senses",
+      "category_answers": [
+        "Eating and Senses",
+        "Food and Senses",
+        "Eating Actions",
+        "Using the Senses"
+      ],
+      "tags": [
+        "actions",
+        "food",
+        "body"
+      ],
+      "items": [
+        {
+          "id": "bite",
+          "label": "Bite",
+          "answers": [
+            "Bite",
+            "Take a Bite"
+          ]
+        },
+        {
+          "id": "chew",
+          "label": "Chew",
+          "answers": [
+            "Chew"
+          ]
+        },
+        {
+          "id": "taste",
+          "label": "Taste",
+          "answers": [
+            "Taste",
+            "Sample"
+          ]
+        },
+        {
+          "id": "lick",
+          "label": "Lick",
+          "answers": [
+            "Lick"
+          ]
+        },
+        {
+          "id": "smell",
+          "label": "Smell",
+          "answers": [
+            "Smell"
+          ]
+        },
+        {
+          "id": "sniff",
+          "label": "Sniff",
+          "answers": [
+            "Sniff"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "teeth",
+          "answers": [
+            "teeth"
+          ],
+          "items": [
+            "bite",
+            "chew"
+          ],
+          "explanation": "Bite and chew are the only two actions shown whose defining work is done with the teeth.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "tongue",
+          "answers": [
+            "tongue"
+          ],
+          "items": [
+            "taste",
+            "lick"
+          ],
+          "explanation": "Taste and lick are the only two actions shown whose defining work is done with the tongue.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "nose",
+          "answers": [
+            "nose"
+          ],
+          "items": [
+            "smell",
+            "sniff"
+          ],
+          "explanation": "Smell and sniff are the only two actions shown whose defining work is done with the nose.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "everyday-problems": {
+      "title": "Everyday Problems",
+      "category_answers": [
+        "Everyday Problems",
+        "Common Problems",
+        "Daily Problems",
+        "Problem Actions"
+      ],
+      "tags": [
+        "actions",
+        "problems",
+        "daily-life"
+      ],
+      "items": [
+        {
+          "id": "borrow",
+          "label": "Borrow",
+          "answers": [
+            "Borrow"
+          ]
+        },
+        {
+          "id": "lend",
+          "label": "Lend",
+          "answers": [
+            "Lend",
+            "Loan"
+          ]
+        },
+        {
+          "id": "lose",
+          "label": "Lose",
+          "answers": [
+            "Lose",
+            "Misplace"
+          ]
+        },
+        {
+          "id": "find",
+          "label": "Find",
+          "answers": [
+            "Find",
+            "Locate"
+          ]
+        },
+        {
+          "id": "break",
+          "label": "Break",
+          "answers": [
+            "Break",
+            "Damage"
+          ]
+        },
+        {
+          "id": "fix",
+          "label": "Fix",
+          "answers": [
+            "Fix",
+            "Repair"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "loan",
+          "answers": [
+            "loan"
+          ],
+          "items": [
+            "borrow",
+            "lend"
+          ],
+          "explanation": "Borrow and lend are the only two actions shown that describe opposite sides of a loan.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "missing",
+          "answers": [
+            "missing"
+          ],
+          "items": [
+            "lose",
+            "find"
+          ],
+          "explanation": "Lose and find are the only two actions shown that describe an item becoming missing and being recovered.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "damage",
+          "answers": [
+            "damage"
+          ],
+          "items": [
+            "break",
+            "fix"
+          ],
+          "explanation": "Break and fix are the only two actions shown that create and repair damage.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "family-members": {
+      "title": "Family Members",
+      "category_answers": [
+        "Family Members",
+        "Family",
+        "People in a Family",
+        "Members of a Family"
+      ],
+      "tags": [
+        "people",
+        "family",
+        "relationships"
+      ],
+      "items": [
+        {
+          "id": "mother",
+          "label": "Mother",
+          "answers": [
+            "Mother",
+            "Mom",
+            "Mum"
+          ]
+        },
+        {
+          "id": "father",
+          "label": "Father",
+          "answers": [
+            "Father",
+            "Dad"
+          ]
+        },
+        {
+          "id": "sister",
+          "label": "Sister",
+          "answers": [
+            "Sister"
+          ]
+        },
+        {
+          "id": "brother",
+          "label": "Brother",
+          "answers": [
+            "Brother"
+          ]
+        },
+        {
+          "id": "grandmother",
+          "label": "Grandmother",
+          "answers": [
+            "Grandmother",
+            "Grandma"
+          ]
+        },
+        {
+          "id": "grandfather",
+          "label": "Grandfather",
+          "answers": [
+            "Grandfather",
+            "Grandpa"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "parents",
+          "answers": [
+            "parents"
+          ],
+          "items": [
+            "mother",
+            "father"
+          ],
+          "explanation": "Mother and father are the only two family members shown who are parents.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "siblings",
+          "answers": [
+            "siblings"
+          ],
+          "items": [
+            "sister",
+            "brother"
+          ],
+          "explanation": "Sister and brother are the only two family members shown who are siblings.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "grandparents",
+          "answers": [
+            "grandparents"
+          ],
+          "items": [
+            "grandmother",
+            "grandfather"
+          ],
+          "explanation": "Grandmother and grandfather are the only two family members shown who are grandparents.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "kitchen-actions": {
+      "title": "Kitchen Actions",
+      "category_answers": [
+        "Kitchen Actions",
+        "Cooking Actions",
+        "Kitchen Verbs",
+        "Food Preparation Actions"
+      ],
+      "tags": [
+        "actions",
+        "food",
+        "home"
+      ],
+      "items": [
+        {
+          "id": "boil",
+          "label": "Boil",
+          "answers": [
+            "Boil"
+          ]
+        },
+        {
+          "id": "fry",
+          "label": "Fry",
+          "answers": [
+            "Fry"
+          ]
+        },
+        {
+          "id": "measure",
+          "label": "Measure",
+          "answers": [
+            "Measure",
+            "Measure Amount"
+          ]
+        },
+        {
+          "id": "weigh",
+          "label": "Weigh",
+          "answers": [
+            "Weigh",
+            "Check Weight"
+          ]
+        },
+        {
+          "id": "wash",
+          "label": "Wash",
+          "answers": [
+            "Wash"
+          ]
+        },
+        {
+          "id": "dry",
+          "label": "Dry",
+          "answers": [
+            "Dry"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "heat",
+          "answers": [
+            "heat"
+          ],
+          "items": [
+            "boil",
+            "fry"
+          ],
+          "explanation": "Boil and fry are the only two actions shown that cook food directly with heat.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "amount",
+          "answers": [
+            "amount"
+          ],
+          "items": [
+            "measure",
+            "weigh"
+          ],
+          "explanation": "Measure and weigh are the only two actions shown that determine an amount.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "dishes",
+          "answers": [
+            "dishes"
+          ],
+          "items": [
+            "wash",
+            "dry"
+          ],
+          "explanation": "Wash and dry are the only two actions shown performed on dishes.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "moving-objects": {
+      "title": "Moving Objects",
+      "category_answers": [
+        "Moving Objects",
+        "Moving Things",
+        "Object Movement",
+        "Ways to Move Things"
+      ],
+      "tags": [
+        "actions",
+        "movement",
+        "daily-life"
+      ],
+      "items": [
+        {
+          "id": "push",
+          "label": "Push",
+          "answers": [
+            "Push"
+          ]
+        },
+        {
+          "id": "pull",
+          "label": "Pull",
+          "answers": [
+            "Pull"
+          ]
+        },
+        {
+          "id": "lift",
+          "label": "Lift",
+          "answers": [
+            "Lift",
+            "Raise"
+          ]
+        },
+        {
+          "id": "drop",
+          "label": "Drop",
+          "answers": [
+            "Drop",
+            "Let Go"
+          ]
+        },
+        {
+          "id": "carry",
+          "label": "Carry",
+          "answers": [
+            "Carry"
+          ]
+        },
+        {
+          "id": "drag",
+          "label": "Drag",
+          "answers": [
+            "Drag"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "door",
+          "answers": [
+            "door"
+          ],
+          "items": [
+            "push",
+            "pull"
+          ],
+          "explanation": "Push and pull are the only two actions shown being performed on a door.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "box",
+          "answers": [
+            "box"
+          ],
+          "items": [
+            "lift",
+            "drop"
+          ],
+          "explanation": "Lift and drop are the only two actions shown being performed with a box.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "bag",
+          "answers": [
+            "bag"
+          ],
+          "items": [
+            "carry",
+            "drag"
+          ],
+          "explanation": "Carry and drag are the only two actions shown being performed with a bag.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "parts-of-the-body": {
+      "title": "Parts of the Body",
+      "category_answers": [
+        "Parts of the Body",
+        "Body Parts",
+        "Human Body Parts",
+        "The Human Body"
+      ],
+      "tags": [
+        "body",
+        "health",
+        "people"
+      ],
+      "items": [
+        {
+          "id": "finger",
+          "label": "Finger",
+          "answers": [
+            "Finger"
+          ]
+        },
+        {
+          "id": "toe",
+          "label": "Toe",
+          "answers": [
+            "Toe"
+          ]
+        },
+        {
+          "id": "eye",
+          "label": "Eye",
+          "answers": [
+            "Eye"
+          ]
+        },
+        {
+          "id": "ear",
+          "label": "Ear",
+          "answers": [
+            "Ear"
+          ]
+        },
+        {
+          "id": "arm",
+          "label": "Arm",
+          "answers": [
+            "Arm"
+          ]
+        },
+        {
+          "id": "leg",
+          "label": "Leg",
+          "answers": [
+            "Leg"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "digits",
+          "answers": [
+            "digits"
+          ],
+          "items": [
+            "finger",
+            "toe"
+          ],
+          "explanation": "Finger and toe are the only two digits shown.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "senses",
+          "answers": [
+            "senses"
+          ],
+          "items": [
+            "eye",
+            "ear"
+          ],
+          "explanation": "Eye and ear are the only two body parts shown that are primary sense organs.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "limbs",
+          "answers": [
+            "limbs"
+          ],
+          "items": [
+            "arm",
+            "leg"
+          ],
+          "explanation": "Arm and leg are the only two major limbs shown.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "travel-actions": {
+      "title": "Travel Actions",
+      "category_answers": [
+        "Travel Actions",
+        "Travel Verbs",
+        "Actions for Travel",
+        "On a Journey"
+      ],
+      "tags": [
+        "actions",
+        "travel",
+        "transport"
+      ],
+      "items": [
+        {
+          "id": "pack",
+          "label": "Pack",
+          "answers": [
+            "Pack"
+          ]
+        },
+        {
+          "id": "unpack",
+          "label": "Unpack",
+          "answers": [
+            "Unpack"
+          ]
+        },
+        {
+          "id": "take-off",
+          "label": "Take Off",
+          "answers": [
+            "Take Off",
+            "Lift Off"
+          ]
+        },
+        {
+          "id": "land",
+          "label": "Land",
+          "answers": [
+            "Land",
+            "Touch Down"
+          ]
+        },
+        {
+          "id": "get-on",
+          "label": "Get On",
+          "answers": [
+            "Get On",
+            "Board"
+          ]
+        },
+        {
+          "id": "get-off",
+          "label": "Get Off",
+          "answers": [
+            "Get Off",
+            "Exit"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "luggage",
+          "answers": [
+            "luggage"
+          ],
+          "items": [
+            "pack",
+            "unpack"
+          ],
+          "explanation": "Pack and unpack are the only two actions shown being performed with luggage.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "airplane",
+          "answers": [
+            "airplane"
+          ],
+          "items": [
+            "take-off",
+            "land"
+          ],
+          "explanation": "Take off and land are the only two actions shown being performed by an airplane.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "bus",
+          "answers": [
+            "bus"
+          ],
+          "items": [
+            "get-on",
+            "get-off"
+          ],
+          "explanation": "Get on and get off are the only two actions shown being performed at a bus door.",
           "audit": "exclusive-among-six-v1"
         }
       ]

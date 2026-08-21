@@ -29,7 +29,7 @@
       "audio-match"
     ]
   },
-  "card_count": 111,
+  "card_count": 121,
   "pages": [
     {
       "id": "page_001",
@@ -1362,6 +1362,126 @@
       "image": "pages/page_222.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_223",
+      "image": "pages/page_223.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_224",
+      "image": "pages/page_224.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_225",
+      "image": "pages/page_225.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_226",
+      "image": "pages/page_226.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_227",
+      "image": "pages/page_227.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_228",
+      "image": "pages/page_228.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_229",
+      "image": "pages/page_229.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_230",
+      "image": "pages/page_230.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_231",
+      "image": "pages/page_231.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_232",
+      "image": "pages/page_232.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_233",
+      "image": "pages/page_233.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_234",
+      "image": "pages/page_234.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_235",
+      "image": "pages/page_235.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_236",
+      "image": "pages/page_236.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_237",
+      "image": "pages/page_237.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_238",
+      "image": "pages/page_238.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_239",
+      "image": "pages/page_239.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_240",
+      "image": "pages/page_240.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_241",
+      "image": "pages/page_241.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_242",
+      "image": "pages/page_242.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -1848,6 +1968,106 @@
         "transport",
         "water",
         "navigation"
+      ]
+    },
+    {
+      "id": "clothing-actions",
+      "title": "Clothing Actions",
+      "band_color": "orange",
+      "game_tags": [
+        "actions",
+        "clothing",
+        "daily-routine"
+      ]
+    },
+    {
+      "id": "communication-actions",
+      "title": "Communication Actions",
+      "band_color": "green",
+      "game_tags": [
+        "actions",
+        "communication",
+        "classroom"
+      ]
+    },
+    {
+      "id": "device-actions",
+      "title": "Device Actions",
+      "band_color": "red",
+      "game_tags": [
+        "actions",
+        "technology",
+        "daily-life"
+      ]
+    },
+    {
+      "id": "eating-and-senses",
+      "title": "Eating and Senses",
+      "band_color": "orange",
+      "game_tags": [
+        "actions",
+        "food",
+        "body"
+      ]
+    },
+    {
+      "id": "everyday-problems",
+      "title": "Everyday Problems",
+      "band_color": "orange",
+      "game_tags": [
+        "actions",
+        "problems",
+        "daily-life"
+      ]
+    },
+    {
+      "id": "family-members",
+      "title": "Family Members",
+      "band_color": "green",
+      "game_tags": [
+        "people",
+        "family",
+        "relationships"
+      ]
+    },
+    {
+      "id": "kitchen-actions",
+      "title": "Kitchen Actions",
+      "band_color": "orange",
+      "game_tags": [
+        "actions",
+        "food",
+        "home"
+      ]
+    },
+    {
+      "id": "moving-objects",
+      "title": "Moving Objects",
+      "band_color": "blue",
+      "game_tags": [
+        "actions",
+        "movement",
+        "daily-life"
+      ]
+    },
+    {
+      "id": "parts-of-the-body",
+      "title": "Parts of the Body",
+      "band_color": "orange",
+      "game_tags": [
+        "body",
+        "health",
+        "people"
+      ]
+    },
+    {
+      "id": "travel-actions",
+      "title": "Travel Actions",
+      "band_color": "orange",
+      "game_tags": [
+        "actions",
+        "travel",
+        "transport"
       ]
     }
   ],
