@@ -634,6 +634,102 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 .gauge-label b.ground { color: var(--alt-ground); }
 .gauge-label b.all    { color: var(--text-muted); }
 
+.mc-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin-bottom: 18px; }
+.mc-table th {
+  text-align: left; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--text-dim); padding: 6px 9px; border-bottom: 1px solid var(--border);
+}
+.mc-table td { padding: 7px 9px; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+.mc-table td:first-child { font-weight: 700; white-space: nowrap; }
+.mc-table td.yes { color: var(--good); font-weight: 800; }
+.mc-table td.no  { color: var(--bad); font-weight: 800; }
+@media print { .mc-table td, .mc-table th { color: #111 !important; border-color: #bbb !important; } }
+@media (max-width: 640px) { .mc-table td:first-child { white-space: normal; } }
+
+/* ══════════ SUMMARY COMPLETION ══════════ */
+.scmp-locate {
+  background: var(--surface-2); border: 1px solid var(--kw-idea); border-radius: var(--r);
+  padding: 14px 17px; margin-bottom: 16px;
+}
+.scmp-body { display: none; }
+.scmp-body.on { display: block; }
+.scmp-bank { font-size: 0.85rem; margin-bottom: 14px; }
+.scmp-bank span {
+  display: inline-block; background: var(--kw-concrete-dim); color: var(--kw-concrete);
+  border: 1px solid var(--kw-concrete); border-radius: 999px;
+  padding: 3px 11px; margin: 3px 5px 3px 0; font-weight: 700; font-size: 0.82rem;
+}
+.scmp-text { font-family: var(--serif); font-size: 1.02rem; line-height: 2.1; }
+.scmp-gap {
+  display: inline-block; min-width: 130px; border-bottom: 2px solid var(--border);
+  vertical-align: baseline;
+}
+.scmp-gap select {
+  font-family: var(--sans); font-size: 0.86rem; width: 100%;
+  background: var(--surface-3); color: var(--text);
+  border: 1px solid var(--border); border-radius: var(--r-sm); padding: 5px 8px;
+}
+.scmp-gap select.correct { border-color: var(--good); background: var(--good-dim); }
+.scmp-gap select.wrong { border-color: var(--bad); background: var(--bad-dim); }
+
+/* ══════════ PARAPHRASE BANK ══════════ */
+.pb-stage {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 22px; text-align: center; min-height: 190px;
+}
+.pb-prompt { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; margin-bottom: 18px; color: var(--text); }
+.pb-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 9px; max-width: 640px; margin: 0 auto; }
+.pb-opts .opt { text-align: center; font-size: 0.92rem; padding: 13px 12px; }
+.pb-feedback { font-size: 0.85rem; font-weight: 700; margin: 14px 0 0; min-height: 1.3em; }
+.pb-feedback.ok { color: var(--good); }
+.pb-feedback.no { color: var(--bad); }
+.pb-result { display: none; margin-top: 16px; }
+.pb-result.show { display: block; }
+.pb-missed { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 8px; margin-top: 10px; }
+.pb-missed div {
+  background: var(--bad-dim); border: 1px solid var(--bad); border-radius: var(--r-sm);
+  padding: 8px 12px; font-size: 0.82rem;
+}
+.pb-missed b { color: var(--bad); }
+
+/* ══════════ THINK-ALOUD ══════════
+   The dot shows where the eyes go. This shows what is going on behind them,
+   which is the part students cannot infer by watching. */
+.think {
+  display: none; margin-top: 14px; background: var(--kw-idea-dim);
+  border: 1px solid var(--kw-idea); border-radius: var(--r); padding: 13px 16px;
+}
+.method.thinking .think { display: block; }
+.think-h {
+  font-size: 0.65rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--kw-idea); margin-bottom: 5px;
+}
+.think-body { font-family: var(--serif); font-size: 0.98rem; font-style: italic; color: var(--text); margin: 0; }
+
+/* ══════════ FALSE vs NOT GIVEN ══════════ */
+.fng-rule {
+  background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--bad);
+  border-radius: var(--r-sm); padding: 13px 16px; margin-bottom: 16px; font-size: 0.88rem; line-height: 1.55;
+}
+.fng-item { display: grid; gap: 9px; padding: 13px 0; border-top: 1px solid var(--border-soft); }
+.fng-item:first-child { border-top: none; }
+.fng-claim { font-family: var(--serif); font-size: 0.98rem; }
+.fng-claim .n { font-family: var(--sans); font-weight: 800; color: var(--accent); font-size: 0.8rem; margin-right: 7px; }
+
+/* ══════════ ERROR BREAKDOWN ══════════ */
+.err-grid { display: grid; gap: 6px; }
+.err-row {
+  position: relative; display: flex; align-items: center; gap: 10px;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-sm);
+  padding: 9px 13px; overflow: hidden;
+}
+.err-bar { position: absolute; inset: 0 auto 0 0; background: var(--bad-dim); transition: width .5s; }
+.err-label { position: relative; font-size: 0.85rem; font-weight: 700; }
+.err-n {
+  position: relative; margin-left: auto; font-family: var(--mono); font-weight: 800;
+  font-size: 0.85rem; color: var(--bad);
+}
+
 /* ══════════ TRIPTYCH ══════════
    The same paragraph read three ways, side by side. This replaces the card
    that used to *explain* the colours: if the system needs explaining, it has
@@ -1318,6 +1414,11 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         <p style="margin:0; font-size:0.9rem">The passage says more hives can <b style="color:var(--bad)">harm</b> wild bee populations. The question says they <b style="color:var(--bad)">increase</b> them. Same topic, same paragraph, same keywords — opposite direction. A student who scans for "wild bee populations", sees it, and answers TRUE has done four steps out of six correctly and still lost the mark.</p>
       </div>
 
+      <div class="think" id="mThink">
+        <div class="think-h">🗣 What the reader is thinking</div>
+        <p class="think-body" id="mThinkBody">—</p>
+      </div>
+
       <p class="method-caption" id="mCaption">Step 1 of 6 — press "▶ Play step 1" to begin. Use ← and → to move between steps.</p>
     </div>
 
@@ -1488,7 +1589,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
   <div class="wrap">
     <div class="station-head">
       <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag pairs">👥 Pairs</span><span class="tag screen">🖥️ Big screen</span><span class="gauge" role="img" aria-label="Altitude trained here: Flight plan"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Flight plan</b></span></span></div>
-      <div class="station-num">Station 4 · 12 minutes</div>
+      <div class="station-num">Station 4 · 16 minutes</div>
       <h2>Keyword Lab</h2>
       <p class="station-sub">A keyword is not "an important word" — it is <em>a word you can physically search for</em>. And the passage will not use yours; it will use a disguise of it.</p>
     </div>
@@ -1516,6 +1617,24 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div id="paraList"></div>
       <div class="answer-key print-only"><b>Answer key:</b> 1–b, 2–c, 3–a, 4–c, 5–b.</div>
     </div>
+
+    <div class="card mobile-card" id="pbCard">
+      <div class="card-label">⚡ Part C — The paraphrase bank</div>
+      <div class="card-title">Forty pairs the exam reuses. Sixty seconds.</div>
+      <p class="card-intro">IELTS does not invent a new disguise every time — it recycles a small set. Tap the phrase that means the same. Speed matters: recognition has to be automatic by exam day, not worked out.</p>
+      <div class="btn-row no-print" style="margin-bottom:14px">
+        <button class="btn" id="pbStart">▶ Start 60s</button>
+        <button class="btn ghost sm" id="pbReset">Reset</button>
+        <span class="score-pill" id="pbScore" aria-live="polite">0 correct</span>
+        <span class="timer" id="pbTimer" style="margin-left:auto">1:00</span>
+      </div>
+      <div class="pb-stage" id="pbStage">
+        <p class="pb-prompt" id="pbPrompt">Press Start.</p>
+        <div class="pb-opts" id="pbOpts"></div>
+        <p class="pb-feedback" id="pbFeedback"></p>
+      </div>
+      <div class="pb-result" id="pbResult"></div>
+    </div>
   </div>
 </section>
 
@@ -1524,9 +1643,9 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
   <div class="wrap">
     <div class="station-head">
       <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag pairs">👥 Pairs</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: Attack run"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack on"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="attack">Attack run</b></span></span></div>
-      <div class="station-num">Station 5 · 12 minutes</div>
+      <div class="station-num">Station 5 · 18 minutes</div>
       <h2>Scan Sprint</h2>
-      <p class="station-sub">Scanning is <em>dense</em> reading over a <em>small</em> area. The speed comes from the small area — never from moving your eyes faster.</p>
+      <p class="station-sub">Scanning is <em>dense</em> reading over a <em>small</em> area. The speed comes from the small area — never from moving your eyes faster. Three question types live here, all won or lost on where you look.</p>
     </div>
 
     <div class="tnote">
@@ -1581,6 +1700,68 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div id="raceList"></div>
       <div class="answer-key print-only"><b>Answer key:</b> 1–£11.50, 2–Wednesday, 3–Over-60s Circuit Training, 4–Riverside Centre, 5–four hours, 6–Tuesday &amp; Thursday.</div>
     </div>
+
+    <div class="card mobile-card" id="mfCard">
+      <div class="card-label">🔠 Matching features — the purest scanning task on the paper</div>
+      <div class="card-title">Match each claim to the person who made it</div>
+      <p class="card-intro">Names are <b>capitalised</b>, so your eye catches them at speed without reading a word around them. Find all four names first, mark them, and only then read what sits beside each one. One name matches nothing.</p>
+
+      <div class="passage-box" style="margin-bottom:16px">
+        <div class="passage" id="mfPassage" style="font-size:0.98rem">
+          <p>Cities are measurably louder than they were fifty years ago, but researchers disagree about what has actually changed. <b>Dr Elena Roth</b>, an acoustic engineer, points to the surfaces themselves: the glass and polished concrete of modern buildings reflect sound, where the brick, timber and planting of older streets absorbed a good deal of it. On her account the volume of noise produced has risen far less than the amount that bounces back.</p>
+          <p><b>Professor Sam Ibori</b> considers this beside the point. The significant change, he argues, is not loudness but continuity: cities once fell quiet for several hours each night, and almost none now do. It is the loss of the quiet period, rather than the peak level, that he links to disturbed sleep.</p>
+          <p><b>Dr Mariko Tanaka</b> disputes the measurements on which both arguments rest. Averaged decibel readings, she notes, smooth away the brief sharp peaks — a siren, a slammed door — that appear to do most of the harm. A street can post a reassuring average and still be damaging.</p>
+          <p>The dataset all three draw on was compiled by <b>Professor Alan Beck</b>, whose survey covered forty cities over a decade.</p>
+        </div>
+      </div>
+
+      <div class="btn-row no-print" style="margin-bottom:14px">
+        <span class="score-pill" id="mfScore" aria-live="polite">0 / 5</span>
+        <button class="btn ghost sm" id="mfReset">Reset</button>
+      </div>
+      <div id="mfList"></div>
+      <div class="answer-key"><b>Answer key:</b> 1–A, 2–B, 3–C, 4–A, 5–B. (D, Beck, matches nothing — he compiled the data but makes no claim.)</div>
+    </div>
+
+    <div class="card mobile-card" id="scmpCard">
+      <div class="card-label">📝 Summary completion — find the section first</div>
+      <div class="card-title">Complete the summary using the word bank</div>
+      <p class="card-intro">The trap here is not the gaps. It is that a summary covers <b>one section</b> of the passage, not all of it — and the gaps follow the order of that section. Work out where the summary starts and stops <em>before</em> you fill anything in.</p>
+
+      <div class="scmp-locate" id="scmpLocate">
+        <p style="font-weight:700; font-size:0.9rem; margin-bottom:9px">First: which part of <b>Reading the Ice</b> (Station 3) does this summary cover?</p>
+        <div class="opts">
+          <button class="opt" data-v="AC">Paragraphs A–C</button>
+          <button class="opt" data-v="CE">Paragraphs C–E</button>
+          <button class="opt" data-v="ALL">The whole passage</button>
+          <button class="opt" data-v="DE">Paragraphs D–E</button>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="scmp-body" id="scmpBody">
+        <p class="scmp-bank"><b>Word bank:</b>
+          <span>ash</span><span>bubbles</span><span>oxygen isotopes</span><span>tree rings</span>
+          <span>seawater</span><span>bedrock</span><span>cylinders</span>
+        </p>
+        <p class="scmp-text">
+          Ice cores are drilled from polar plateaus, where each year's snow is buried and compressed into dense glacial ice. Air trapped inside the
+          <span class="scmp-gap" data-n="1"></span>
+          preserves a physical sample of the ancient atmosphere, while the ratio of
+          <span class="scmp-gap" data-n="2"></span>
+          in the frozen water indicates the temperature at which it condensed. Dating is done by counting annual layers, but deeper in the core these become too thin to separate by eye, so researchers instead match chemical signals such as volcanic
+          <span class="scmp-gap" data-n="3"></span>
+          against events already dated elsewhere.
+        </p>
+        <div class="btn-row no-print">
+          <button class="btn sm sec" id="scmpCheck">Check</button>
+          <button class="btn ghost sm" id="scmpReset">Reset</button>
+          <span class="score-pill" id="scmpScore" aria-live="polite">0 / 3</span>
+        </div>
+        <div class="feedback" id="scmpFeedback"></div>
+      </div>
+      <div class="answer-key"><b>Answer key:</b> section A–C · 1–bubbles, 2–oxygen isotopes, 3–ash.</div>
+    </div>
   </div>
 </section>
 
@@ -1589,9 +1770,9 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
   <div class="wrap">
     <div class="station-head">
       <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag mobile">📱 Phone</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: Attack run"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack on"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="attack">Attack run</b></span></span></div>
-      <div class="station-num">Station 6 · 14 minutes</div>
+      <div class="station-num">Station 6 · 18 minutes</div>
       <h2>Trap Detector</h2>
-      <p class="station-sub">Finding the sentence is not answering the question. False and Not Given options are built to sound right to a fast reader. Here is the check to run on every sentence you find.</p>
+      <p class="station-sub">Finding the sentence is not answering the question. False and Not Given options are built to sound right to a fast reader. Here is the check to run on every sentence you find — and then the hardest call in the paper, on its own.</p>
     </div>
 
     <div class="card">
@@ -1618,6 +1799,21 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         <div class="trap-card"><div class="tt">🗺️ Scope Shift</div><div class="td">Something true of one place, group or period is stretched to cover everything.</div><div class="te">text: <b>in London</b> → claim: <b>worldwide</b></div></div>
         <div class="trap-card"><div class="tt">🔁 Reversed Cause</div><div class="td">A and B are both present and both correct — but the arrow between them is turned around.</div><div class="te">text: <b>A causes B</b> → claim: <b>B causes A</b></div></div>
       </div>
+    </div>
+
+    <div class="card" id="fngCard">
+      <div class="card-label">⚖️ The hardest call in the paper</div>
+      <div class="card-title">FALSE or NOT GIVEN? Ten statements, two options.</div>
+      <p class="card-intro">All ten are about <b>Reading the Ice</b> in Station 3. TRUE is not an option here — that is deliberate. The only question is whether the passage <em>contradicts</em> the claim or simply never mentions it.</p>
+      <div class="fng-rule">
+        <b>The test is physical, not a feeling.</b> Can you put your finger on a sentence that says the opposite? Then it is <b style="color:var(--bad)">FALSE</b>. Can you not find any sentence on that point at all? Then it is <b style="color:var(--text-muted)">NOT GIVEN</b>. Being unsure is not evidence.
+      </div>
+      <div class="btn-row no-print" style="margin-bottom:14px">
+        <span class="score-pill" id="fngScore" aria-live="polite">0 / 10</span>
+        <button class="btn ghost sm" id="fngReset">Reset</button>
+      </div>
+      <div id="fngList"></div>
+      <div class="answer-key"><b>Answer key:</b> 1–F, 2–NG, 3–F, 4–NG, 5–F, 6–NG, 7–F, 8–NG, 9–F, 10–NG.</div>
     </div>
 
     <div class="card mobile-card" id="trapCard">
@@ -1751,6 +1947,10 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="card-title" id="scHead">Nothing scored yet</div>
       <p class="card-intro">Work through the drills above and this fills in as you go. A grey bar just means you have not tried that skill yet.</p>
       <div class="sc-grid" id="scGrid" aria-live="polite"></div>
+      <div id="scErrors" style="display:none; margin-top:18px">
+        <p class="mc-band"><span style="color:var(--bad)">Where the marks actually went</span><i></i></p>
+        <div class="err-grid" id="errGrid"></div>
+      </div>
       <div class="sc-verdict" id="scVerdict" style="display:none">
         <h4 id="scVerdictHead">—</h4>
         <div id="scVerdictBody"></div>
@@ -1826,6 +2026,21 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         <div class="mc-check"><div class="q">Same scope?</div><div class="a">True in one city is not true everywhere.</div></div>
       </div>
 
+      <p class="mc-band"><span style="color:var(--alt-attack)">Which question type — and does it follow the passage order?</span><i></i></p>
+      <table class="mc-table">
+        <thead><tr><th>Question type</th><th>In passage order?</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr><td>Matching headings</td><td class="no">No</td><td>Do these <b>last</b>. First and last sentence of each paragraph.</td></tr>
+          <tr><td>Which paragraph contains…</td><td class="no">No</td><td>Do these <b>last</b> too — by then you have read most of the text anyway.</td></tr>
+          <tr><td>True / False / Not Given</td><td class="yes">Yes</td><td>Answers march downwards. Each one you find shrinks the search for the next.</td></tr>
+          <tr><td>Yes / No / Not Given</td><td class="yes">Yes</td><td>Same, but about the <b>writer's opinion</b>, not the facts.</td></tr>
+          <tr><td>Sentence completion</td><td class="yes">Yes</td><td>Copy the words exactly. Count them against the limit.</td></tr>
+          <tr><td>Summary completion</td><td class="yes">Yes*</td><td>*Within its section. Find which part of the passage the summary covers first.</td></tr>
+          <tr><td>Matching features (names)</td><td class="no">No</td><td>Scan for capital letters. The purest scanning task on the paper.</td></tr>
+          <tr><td>Multiple choice</td><td class="yes">Yes</td><td>Read every option. The distractor usually repeats the passage's exact words.</td></tr>
+        </tbody>
+      </table>
+
       <div class="mc-rule">⏱ Ninety seconds on one question is your limit. Flag it, write your best guess, move on — and never leave a blank, because a wrong answer costs you nothing.</div>
 
       <div class="btn-row no-print" style="margin-top:16px"><button class="btn sm sec" data-print="methodCard">🖨️ Print the student card</button></div>
@@ -1895,6 +2110,327 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 </footer>
 
 <script>
+/* ═══════════════════════════════════════════════════════════════════════
+   CONTENT PACK
+   Every passage question set on this page lives here, and nowhere else.
+   To run the lesson with new material next term, edit this block only —
+   nothing below it needs to change. Answer keys printed on the worksheets
+   are generated from these same arrays, so they can never fall out of step.
+   ═══════════════════════════════════════════════════════════════════════ */
+var CONTENT = {
+
+  /* ── Station 0 · comprehension gate after the speed test ── */
+  gistCheck: [
+    { q: 'From memory: what is the passage mainly about?',
+      opts: ['How LED lighting technology has improved',
+             'Why vertical farming suits some crops but not the ones that feed people',
+             'The environmental damage caused by conventional agriculture',
+             'A history of farming from ancient times to today'], a: 1,
+      why: 'The passage runs appeal → obstacle → verdict, and lands on "a narrow supplement, not a replacement". That is the gist.' },
+    { q: 'What does the passage give as the central obstacle?',
+      opts: ['The price of electricity', 'A shortage of water', 'Pests and disease', 'The distance to market'], a: 0,
+      why: 'Paragraph 3 opens "The difficulty is electricity." Every other option is something the passage lists as an advantage.' }
+  ],
+
+  /* ── Station 3 · which-paragraph questions ── */
+  locate: [
+    { q: 'A reference to a natural event used as a dating marker.', a: 'C', why: 'Paragraph C: "the ash from a known volcanic eruption". A volcanic eruption is the natural event; ash is the marker.' },
+    { q: 'The physical width of a drilled sample.', a: 'A', why: 'Paragraph A: "cylindrical sections roughly ten centimetres across". Concrete number — the easiest kind of thing to scan for.' },
+    { q: 'A comparison between modern levels and the distant past.', a: 'D', why: 'Paragraph D: twentieth-century concentrations "lay far outside the range of that entire period".' },
+    { q: 'How past temperatures are estimated without any written record.', a: 'B', why: 'Paragraph B: oxygen isotope ratios vary with the temperature at which the water condensed.' },
+    { q: 'A reason why the very deepest ice may be unusable.', a: 'E', why: 'Paragraph E: ice flows downhill, so near bedrock the record is "scrambled beyond use".' },
+    { q: 'The greatest depth reached by drilling so far.', a: 'A', why: 'Paragraph A: "more than three kilometres below the surface". Two questions pointing at the same paragraph is normal — that is why the map pays off.' }
+  ],
+
+  /* ── Station 4A · keyword marking statements ── */
+  keywordPicker: [
+    {
+      tokens: [['The',''],['deepest','i'],['ice',''],['cores',''],['have',''],['been',''],['drilled',''],['to',''],['over',''],['three','c'],['kilometres.','c']],
+      note: 'Two words do all the work. <b>three kilometres</b> is concrete — a number, almost impossible to paraphrase, so your eyes hunt for the shape of it. <b>deepest</b> is the idea word you check once you arrive. "ice cores" is in every paragraph, so it locates nothing.'
+    },
+    {
+      tokens: [['Volcanic','c'],['ash','c'],['allows',''],['researchers',''],['to',''],['date','i'],['the',''],['deeper',''],['layers.','']],
+      note: '<b>Volcanic ash</b> is a rare, specific noun phrase — perfect to scan for. <b>date</b> is the idea word, and note the passage never uses it: it says "match chemical signals against dated events". That is the paraphrase problem, which Part B drills.'
+    },
+    {
+      tokens: [['Ice',''],['more',''],['than',''],['one','c'],['million','c'],['years','c'],['old',''],['has',''],['already','i'],['been',''],['recovered.','']],
+      note: '<b>one million years</b> is your search target. But the mark is won by <b>already</b> — the passage says teams "are now drilling in the hope of recovering it", which means it has <i>not</i> been recovered. Scanning finds the sentence; the idea word decides the answer. (This statement is FALSE.)'
+    }
+  ],
+
+  /* ── Station 4B · paraphrase multiple choice ── */
+  paraphraseMcq: [
+    { q: 'estimate temperatures from the distant past', opts: [
+        'counted downwards, much as tree rings are',
+        'allowing past temperatures to be reconstructed',
+        'the temperature at which it condensed',
+        'temperature had risen and fallen together' ], a: 1,
+      why: 'Option c is the closest single phrase but it describes the mechanism, not the outcome. "Reconstructed" is the paraphrase of "estimate".' },
+    { q: 'a naturally occurring event that helps with dating', opts: [
+        'individual years can be distinguished visually',
+        'match chemical signals against dated events',
+        'the ash from a known volcanic eruption',
+        'the layers thin under pressure' ], a: 2,
+      why: 'A volcanic eruption is the natural event. Option b sounds close because it contains the word "dated" — that is exactly the kind of surface match that costs marks.' },
+    { q: 'samples are brought up gradually', opts: [
+        'raising them to the surface metre by metre',
+        'extract this ice in cylindrical sections',
+        'buried and compressed by the snow that follows',
+        'the deepest such projects have reached' ], a: 0,
+      why: '"Metre by metre" is the paraphrase of "gradually". Option b is about the shape of the sample, not the pace of the work.' },
+    { q: 'very old ice exists in only a few locations', opts: [
+        'ice flows slowly downhill',
+        'several international teams are now drilling',
+        'only a handful of sites are thought to preserve',
+        'near the bedrock the record can be scrambled' ], a: 2,
+      why: '"A handful of sites" paraphrases "only a few locations". Notice the passage never uses the word "few".' },
+    { q: 'recent levels were unlike anything in the record', opts: [
+        'risen and fallen together across eight glacial cycles',
+        'lay far outside the range of that entire period',
+        'spanning roughly 800,000 years',
+        'the results reshaped climate science' ], a: 1,
+      why: '"Far outside the range" paraphrases "unlike anything". Options a and c are true statements from the same paragraph — but they answer a different question.' }
+  ],
+
+  /* ── Station 5 · find-it-fast prompts ── */
+  scanFind: [
+    { p: 'How wide is a single core?', find: ['ten', 1], span: 2 },
+    { p: 'What depth has drilling reached?', find: ['three', 1], span: 2 },
+    { p: 'Which site was drilled after Vostok?', find: ['Dome', 1], span: 2 },
+    { p: 'How many glacial cycles do the cores cover?', find: ['eight', 1], span: 2 },
+    { p: 'How many years do the cores span?', find: ['800,000', 1], span: 2 },
+    { p: 'Where are teams drilling for the oldest ice?', find: ['East', 1], span: 2 }
+  ],
+
+  /* ── Station 5 · timetable scanning race ── */
+  noticeRace: [
+    { q: 'How much does one hour of badminton cost?', opts: ['£4.20', '£5.50', '£7.00', '£11.50'], a: 3 },
+    { q: 'On which day is Beginners\' Yoga held?', opts: ['Monday', 'Wednesday', 'Thursday', 'Saturday'], a: 1 },
+    { q: 'Which activity costs nothing?', opts: ['Lane Swimming', 'Early Swim', 'Over-60s Circuit Training', 'Junior Football'], a: 2 },
+    { q: 'Where do badminton bookings move during the closure?', opts: ['Studio 2', 'Northgate sports hall', 'Riverside Centre', 'They are cancelled'], a: 2 },
+    { q: 'How much notice avoids a cancellation charge?', opts: ['One hour', 'Four hours', 'Twenty-four hours', 'Two days'], a: 1 },
+    { q: 'On which days does Parent & Toddler Splash run?', opts: ['Mon & Wed', 'Tue & Thu', 'Wed & Fri', 'Sat & Sun'], a: 1 }
+  ],
+
+  /* ── Station 8 · end-of-lesson retrieval questions ── */
+  recall: [
+    { q: 'What is the actual <b>output</b> of a good skim?',
+      opts: ['A summary of the passage in your head',
+             'A map of which paragraph holds which topic',
+             'The answers to the first few questions',
+             'A list of the words you did not understand'],
+      a: 1,
+      why: 'A skim is not fast comprehension — it is reconnaissance. If you finish a skim able to summarise the text, you read it. If you finish able to say "numbers, then the case for, then the case against", you skimmed it.' },
+
+    { q: 'Scanning is best described as…',
+      opts: ['Reading quickly across the whole passage',
+             'Reading the first line of every paragraph',
+             'Reading every word, but only in one small area',
+             'Looking only at numbers and names'],
+      a: 2,
+      why: 'This is the one most students get backwards. Scanning is slow, dense, word-by-word reading — the speed comes entirely from the fact that the map already told you which paragraph to do it in.' },
+
+    { q: 'Which of these makes the <b>best</b> keyword to scan for?',
+      opts: ['significantly improved', '1,600 hives', 'researchers believe', 'is thought to be'],
+      a: 1,
+      why: 'Concrete beats abstract every time. A number has a shape your eye catches at speed and the passage almost never paraphrases it. "Significantly improved" will appear as something else entirely.' },
+
+    { q: 'You find the sentence, and it clearly contradicts the statement. The answer is…',
+      opts: ['NOT GIVEN, because you are not certain',
+             'TRUE, because you found the keywords',
+             'FALSE, because the text says the opposite',
+             'You should skip it and come back'],
+      a: 2,
+      why: 'FALSE means the text contradicts the claim. NOT GIVEN means the text never addresses it. If you can point at a sentence and say "this says the opposite", that is FALSE — feeling unsure is not evidence of absence.' },
+
+    { q: 'A question has taken you ninety seconds. What should you do?',
+      opts: ['Flag it, put down your best guess, and move on',
+             'Keep going — you are close',
+             'Leave it blank and come back at the end',
+             'Re-read the whole paragraph carefully'],
+      a: 0,
+      why: 'Flag and move, always — and never leave it blank, because there is no penalty for a wrong answer in IELTS Reading. A blank is the only genuinely worthless thing on the paper. One question that runs long is what costs you the last three.' },
+
+    { q: 'Why does the passage almost never contain the exact words of the question?',
+      opts: ['To keep the passage shorter',
+             'Because the test is partly checking whether you recognise paraphrase',
+             'Because the questions are written by different people',
+             'It usually does contain them'],
+      a: 1,
+      why: 'Paraphrase recognition is deliberately part of what the paper measures. That is why you search with the concrete keyword and then check the idea words against what the sentence actually means, not what it says word for word.' }
+  ],
+
+  /* ── Station 5 · matching-features name list ── */
+  mfPeople: [['A','Dr Elena Roth'],['B','Professor Sam Ibori'],['C','Dr Mariko Tanaka'],['D','Professor Alan Beck']],
+
+  /* ── Station 5 · matching-features statements ── */
+  mfItems: [
+    { q: 'Modern building surfaces send sound back rather than soaking it up.', a: 'A',
+      why: 'Roth: glass and polished concrete "reflect sound, where the brick, timber and planting of older streets absorbed" it.' },
+    { q: 'The disappearance of quiet hours matters more than how loud cities get.', a: 'B',
+      why: 'Ibori: "not loudness but continuity" — the loss of the quiet period is what he links to disturbed sleep.' },
+    { q: 'The way noise is measured conceals the damage it does.', a: 'C',
+      why: 'Tanaka: averaged readings "smooth away the brief sharp peaks… that appear to do most of the harm".' },
+    { q: 'Older construction materials dampened noise more effectively.', a: 'A',
+      why: 'Roth again. Two statements can match the same person — that is normal, and it is why you should never cross a name off after using it once.' },
+    { q: 'Night-time in cities has changed more than daytime.', a: 'B',
+      why: 'Ibori: cities "once fell quiet for several hours each night, and almost none now do".' }
+  ],
+
+  /* ── Station 4C · paraphrase families ── */
+  paraphraseBank: [
+    ['increased',       'rose'],        ['decreased',      'fell'],
+    ['a large rise',    'a surge'],      ['a small rise',   'a slight increase'],
+    ['caused',          'led to'],       ['was caused by',  'resulted from'],
+    ['stopped',         'halted'],       ['reduced',        'cut back'],
+    ['limited',         'restricted'],   ['allowed',        'permitted'],
+    ['difficult',       'challenging'],  ['easy',           'straightforward'],
+    ['important',       'significant'],  ['unimportant',    'trivial'],
+    ['common',          'widespread'],   ['rare',           'uncommon'],
+    ['quickly',         'rapidly'],      ['slowly',         'gradually'],
+    ['nearly all',      'the vast majority'], ['very few',   'a handful'],
+    ['began',           'was established'],   ['ended',      'was discontinued'],
+    ['proved',          'demonstrated'],      ['suggested',  'indicated'],
+    ['said publicly',   'announced'],         ['said privately','confided'],
+    ['money for research', 'funding'],        ['people who take part', 'participants'],
+    ['a problem',       'a drawback'],        ['a benefit',  'an advantage'],
+    ['made better',     'improved'],          ['made worse', 'worsened'],
+    ['expensive',       'costly'],            ['cheap',      'inexpensive'],
+    ['the whole world', 'globally'],          ['one area',   'locally'],
+    ['a long time ago', 'centuries earlier'], ['recently',   'in the last few years'],
+    ['not certain',     'inconclusive'],      ['certain',    'conclusive']
+  ],
+
+  /* ── Station 6 · False vs Not Given statements ── */
+  fngItems: [
+    { c: 'Almost all the snow that falls on these plateaus melts again each summer.', a: 'FALSE',
+      why: 'Point at it: "almost none of it melts". Direct contradiction, so FALSE.' },
+    { c: 'Extracting cores from Greenland costs more than extracting them from Antarctica.', a: 'NOT GIVEN',
+      why: 'Both places are named, but the passage never compares their cost — or mentions cost at all. Nothing to point at.' },
+    { c: 'The cylindrical sections are roughly one metre across.', a: 'FALSE',
+      why: '"roughly ten centimetres across". The number is stated and it is a different number.' },
+    { c: 'The drilling equipment used today was developed in the 1960s.', a: 'NOT GIVEN',
+      why: 'The passage describes what the equipment does, never when it was designed.' },
+    { c: 'The air trapped in the bubbles has been contaminated and can no longer be analysed.', a: 'FALSE',
+      why: '"each bubble is a physical sample of the air that existed when the snow fell" — the opposite claim.' },
+    { c: 'Oxygen isotope analysis is cheaper than other methods of dating ice.', a: 'NOT GIVEN',
+      why: 'The method is explained; no comparison of cost with any other method appears.' },
+    { c: 'In regions of heavy snowfall, individual years cannot be seen in the ice.', a: 'FALSE',
+      why: '"individual years can be distinguished visually, much as tree rings are". Reversed.' },
+    { c: 'Volcanic eruptions happen more often than researchers had expected.', a: 'NOT GIVEN',
+      why: 'A volcanic eruption is mentioned as a dating marker. Its frequency, and anyone’s expectations about it, are never discussed.' },
+    { c: 'Twentieth-century carbon dioxide levels sat comfortably within the range of the previous 800,000 years.', a: 'FALSE',
+      why: '"lay far outside the range of that entire period". Same topic, opposite direction — the classic trap.' },
+    { c: 'The teams drilling in East Antarctica expect to finish within five years.', a: 'NOT GIVEN',
+      why: 'We are told they are drilling and why. No timescale for finishing is given anywhere.' }
+  ],
+
+  /* ── Station 7 · the mock paper ── */
+  fullRun: [
+    /* 1–4 · matching information (does NOT follow passage order) */
+    { type: 'para', skill: 'locate', label: 'Which paragraph?',
+      text: 'a reason why the ancient method cannot simply be adopted today', a: 'F',
+      why: 'Paragraph F lists every obstacle: weak in tension, slow to set, cannot take steel, ash unavailable.' },
+    { type: 'para', skill: 'locate', label: 'Which paragraph?',
+      text: 'the naming of a specific mineral', a: 'D',
+      why: 'Paragraph D names aluminous tobermorite. A single unusual noun like that is the easiest thing on the page to scan for.' },
+    { type: 'para', skill: 'locate', label: 'Which paragraph?',
+      text: 'an estimate of an industry’s contribution to global emissions', a: 'G',
+      why: 'Paragraph G: "around eight per cent of global carbon dioxide emissions". Scan for the digit shape, not the words.' },
+    { type: 'para', skill: 'locate', label: 'Which paragraph?',
+      text: 'a written record of the original method that has survived', a: 'B',
+      why: 'Paragraph B: Vitruvius "set down proportions… and his account survived".' },
+
+    /* 5–9 · TFNG (follows passage order) */
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'The dome of the Pantheon was built without steel reinforcement.', a: 'TRUE',
+      why: 'Paragraph A states plainly that it "contains no steel". Same direction, same scope — TRUE.' },
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'Vitruvius’s written account of the Roman mixtures has been lost.', a: 'FALSE',
+      why: 'A negation flip. The passage says "his account survived" — the exact opposite of the claim.' },
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'Salt water causes modern concrete to deteriorate.', a: 'TRUE',
+      why: 'Paragraph C: "Salt water is ruinous to modern concrete… corrodes the steel… splits the material apart". "Ruinous" paraphrases "causes to deteriorate".' },
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'Aluminous tobermorite can be produced easily in laboratory conditions.', a: 'FALSE',
+      why: 'Paragraph D says it is "extremely difficult to manufacture under laboratory conditions". Direction reversed — FALSE, not Not Given.' },
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'The MIT team’s explanation is now accepted by all specialists in the field.', a: 'NOT GIVEN',
+      why: 'The passage reports what Masic’s group argued, but never says how other specialists responded. You cannot point at a contradicting sentence, so it is NOT GIVEN — and note the tempting absolute "all", which usually signals FALSE. Here it signals nothing, because the topic is simply absent.' },
+
+    /* 10–13 · sentence completion, NO MORE THAN TWO WORDS */
+    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
+      text: 'For structures built in the sea, Roman builders mixed the ingredients with ______ rather than fresh water.',
+      a: ['seawater', 'sea water'], display: 'seawater',
+      why: 'Paragraph B. The answer is one word, lifted straight from the text — completion answers almost always are.' },
+    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
+      text: 'The volcanic ash used by the Romans takes its name from the town of ______.',
+      a: ['pozzuoli'], display: 'Pozzuoli',
+      why: 'Paragraph B. A proper noun — the single easiest target type to scan for, because capital letters stand out even at speed.' },
+    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
+      text: 'Lime clasts are produced by a technique known as ______.',
+      a: ['hot mixing', 'hot-mixing', 'hotmixing'], display: 'hot mixing',
+      why: 'Paragraph E. Two words, so it fits the limit exactly. Writing "a technique called hot mixing" would be three words and would score zero even though you found the right place.' },
+    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
+      text: 'Roman concrete cannot be reinforced with ______, because the chemistry that protects it attacks that material.',
+      a: ['steel'], display: 'steel',
+      why: 'Paragraph F. Note that the same word appears in paragraphs A and C — order matters: this question sits between Q9 and the end, so the answer is in the later part of the text.' }
+  ],
+
+  /* ── Station 6 · trap-detector rounds (two banks) ── */
+  trapBanks: [[
+    { text: 'Deeper in the core, the layers thin under pressure until they can no longer be separated by eye.',
+      claim: 'Layers deeper in the core become easier to tell apart.',
+      a: 'FALSE', trap: '🔄 Negation Flip',
+      why: 'Every keyword matches — deeper, layers, telling apart. Only the direction is reversed: the text says they can no longer be separated, the claim says easier. Check 2 fails.' },
+    { text: 'As snow compacts, it seals off pockets of the atmosphere, so each bubble is a physical sample of the air that existed when the snow fell.',
+      claim: 'Bubbles in the ice preserve air from the time the snow fell.',
+      a: 'TRUE', trap: null,
+      why: 'A clean paraphrase: "seals off pockets of the atmosphere" and "a physical sample of the air" both survive all four checks. Same subject, same direction, same strength, same scope.' },
+    { text: 'Only a handful of sites are thought to preserve continuous ice older than a million years.',
+      claim: 'All Antarctic sites contain ice more than a million years old.',
+      a: 'FALSE', trap: '⚖️ Qualifier Swap',
+      why: '"Only a handful" versus "all". The topic is identical and the sentence is easy to find — which is exactly why the trap works. Check 3 fails.' },
+    { text: 'Drilling teams extract this ice in cylindrical sections roughly ten centimetres across, raising them to the surface metre by metre.',
+      claim: 'Extracting a complete core takes several months of work.',
+      a: 'NOT GIVEN', trap: null,
+      why: 'The passage describes how cores are extracted but never says how long it takes. You cannot point to a sentence that contradicts this — so it is NOT GIVEN, not FALSE. Not knowing is not the same as being contradicted.' },
+    { text: 'The ratio of oxygen isotopes in the frozen water varies with the temperature at which it condensed.',
+      claim: 'Changes in oxygen isotopes cause the temperature to vary.',
+      a: 'FALSE', trap: '🔁 Reversed Cause',
+      why: 'Both elements are correct and both are in the sentence — only the arrow is turned around. Temperature determines the isotope ratio, not the reverse. Read for what causes what, not just for which words appear.' },
+    { text: 'Several international teams are now drilling in East Antarctica in the hope of recovering it.',
+      claim: 'The East Antarctic drilling projects are funded by private companies.',
+      a: 'NOT GIVEN', trap: null,
+      why: 'The passage mentions who is drilling and where, but says nothing at all about funding. There is no contradicting sentence to point at.' }
+  ], [
+    { text: 'Rooftop hives have appeared on buildings ranging from the Paris Opera House to hotels in New York.',
+      claim: 'Hives have been placed on buildings in more than one country.',
+      a: 'TRUE', trap: null,
+      why: 'Paris and New York are in different countries. The passage never writes the phrase "more than one country" — but naming two places in two countries states it. Inference from named facts is still TRUE; it is not NOT GIVEN.' },
+    { text: 'Critics warn that packing too many hives into a small area can actually harm wild bee populations.',
+      claim: 'Critics say that a high density of hives may damage wild bees.',
+      a: 'TRUE', trap: null,
+      why: '"Packing too many into a small area" = high density; "harm" = damage; "can" = may. Four paraphrases in one sentence, and all four keep the same direction and strength.' },
+    { text: 'Some ecologists now recommend planting more flowers before adding more hives.',
+      claim: 'Ecologists are unanimous that no new hives should ever be installed.',
+      a: 'FALSE', trap: '⚖️ Qualifier Swap',
+      why: 'Two upgrades in one claim: "some" becomes "unanimous", and "before planting more flowers" becomes "never". The passage recommends an order of actions, not a ban.' },
+    { text: 'In London alone, the number of registered hives rose from around 1,600 in 2008 to more than 7,400 by 2020.',
+      claim: 'Hive numbers rose faster in London than in any other European city.',
+      a: 'NOT GIVEN', trap: null,
+      why: 'A scope trap that looks like a comparison. The passage gives London figures and no other city’s, so no comparison is possible. Nothing here contradicts the claim — it simply is not addressed.' },
+    { text: 'Urban bees benefit from a longer flowering season, since parks, gardens and even balconies bloom at different times across a city.',
+      claim: 'A longer flowering season in cities is caused by the presence of urban bees.',
+      a: 'FALSE', trap: '🔁 Reversed Cause',
+      why: 'The staggered blooming causes the longer season, which benefits the bees. The claim makes the bees the cause. Same two elements, arrow reversed.' },
+    { text: 'Beekeeping has quietly moved from the countryside into cities over the last two decades.',
+      claim: 'Rural beekeeping has now completely disappeared.',
+      a: 'FALSE', trap: '⚖️ Qualifier Swap',
+      why: '"Moved into cities" does not mean "vanished from the countryside", and "completely disappeared" is an absolute the passage never supports. Watch every total word: all, none, never, completely, only.' }
+  ]]
+};
+
 /* ═══════════════════ SHARED HELPERS ═══════════════════ */
 function $(s, r) { return (r || document).querySelector(s); }
 function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
@@ -2005,6 +2541,81 @@ var Progress = (function () {
   };
 })();
 
+/* ═══════════════════ ERROR REGISTRY ═══════════════════
+   A score says what you got wrong. This says WHY, which is the only part a
+   student can act on. Every wrong answer is classified, and the dominant
+   error type drives the prescription in Station 8.                        */
+var Errors = (function () {
+  var TYPES = {
+    missedLocation: {
+      label: 'You could not find it',
+      detail: 'You answered NOT GIVEN on statements the passage does answer. That is a locating failure, not a judgement one — the information was there and your search did not reach it.',
+      fix: 'Redo <b>Station 3</b>. Build the map first and name the paragraph out loud before you hunt for words.'
+    },
+    overRead: {
+      label: 'You read in what was not there',
+      detail: 'You answered TRUE or FALSE on statements the passage never addresses. You found a sentence on the same topic and treated topic overlap as evidence.',
+      fix: 'Redo <b>Station 6</b>. The test for NOT GIVEN is physical: if you cannot put your finger on a sentence that confirms or contradicts it, it is NOT GIVEN.'
+    },
+    direction: {
+      label: 'You missed a reversal',
+      detail: 'You found the right sentence and then answered the wrong way round — the classic trap. Every keyword matched; only the direction, strength or scope did not.',
+      fix: 'Redo <b>Station 6</b> and run all four checks aloud before every answer. Most of your lost marks are check 2, direction.'
+    },
+    paraphrase: {
+      label: 'You searched for the word, not the meaning',
+      detail: 'On completion questions you were in the right area but did not produce the wording the passage uses.',
+      fix: 'Redo <b>Station 4 Part B</b> and the paraphrase bank. The passage will not repeat your keyword — it will disguise it.'
+    },
+    wordLimit: {
+      label: 'You broke the word limit',
+      detail: 'You found the answer and still scored zero because you wrote more words than the instruction allows. This is the cheapest mark on the paper to lose.',
+      fix: 'Copy the words from the passage exactly, change nothing, add nothing, and count them before you move on.'
+    },
+    wrongParagraph: {
+      label: 'You looked in the wrong place',
+      detail: 'On which-paragraph questions you chose a paragraph that does not hold the information.',
+      fix: 'Redo <b>Station 3 Part A</b>. If the map is vague the locating cannot be sharp.'
+    },
+    blank: {
+      label: 'You left it blank',
+      detail: 'A blank scores zero and there is no penalty for a wrong guess in IELTS Reading. A blank is the only genuinely worthless thing on the paper.',
+      fix: 'In the last minute of any paper, fill every empty box with a plausible guess. It costs nothing and it sometimes scores.'
+    }
+  };
+  var tally = {}, listeners = [];
+  return {
+    TYPES: TYPES,
+    add: function (t) {
+      if (!TYPES[t]) return;
+      tally[t] = (tally[t] || 0) + 1;
+      listeners.forEach(function (f) { try { f(); } catch (e) {} });
+    },
+    /* Work out the error type from what was asked and what was given. */
+    classify: function (kind, correct, given, opts) {
+      opts = opts || {};
+      if (given === null || given === undefined || given === '') return 'blank';
+      if (kind === 'tfng') {
+        if (given === 'NOT GIVEN') return 'missedLocation';
+        if (correct === 'NOT GIVEN') return 'overRead';
+        return 'direction';
+      }
+      if (kind === 'para') return 'wrongParagraph';
+      if (kind === 'gap') return opts.overLimit ? 'wordLimit' : 'paraphrase';
+      return null;
+    },
+    tally: function () { return tally; },
+    total: function () { var n = 0; for (var k in tally) n += tally[k]; return n; },
+    top: function () {
+      var best = null;
+      for (var k in tally) if (!best || tally[k] > tally[best]) best = k;
+      return best;
+    },
+    reset: function () { tally = {}; listeners.forEach(function (f) { try { f(); } catch (e) {} }); },
+    onChange: function (f) { listeners.push(f); }
+  };
+})();
+
 /* Every drill registers a reset handler here so one button clears the room. */
 var Resettable = [];
 
@@ -2042,6 +2653,7 @@ var Resettable = [];
     RESET_BUTTONS.forEach(function (sel) { var b = $(sel); if (b) b.click(); });
     Resettable.forEach(function (fn) { try { fn(); } catch (e) {} });
     Progress.reset();
+    Errors.reset();
     document.getElementById('crisis').scrollIntoView({ block: 'start' });
   });
 
@@ -2136,17 +2748,7 @@ var Resettable = [];
   Resettable.push(fullReset);
 
   /* ── Comprehension gate: did the timed read actually go in? ── */
-  var GIST = [
-    { q: 'From memory: what is the passage mainly about?',
-      opts: ['How LED lighting technology has improved',
-             'Why vertical farming suits some crops but not the ones that feed people',
-             'The environmental damage caused by conventional agriculture',
-             'A history of farming from ancient times to today'], a: 1,
-      why: 'The passage runs appeal → obstacle → verdict, and lands on "a narrow supplement, not a replacement". That is the gist.' },
-    { q: 'What does the passage give as the central obstacle?',
-      opts: ['The price of electricity', 'A shortage of water', 'Pests and disease', 'The distance to market'], a: 0,
-      why: 'Paragraph 3 opens "The difficulty is electricity." Every other option is something the passage lists as an advantage.' }
-  ];
+  var GIST = CONTENT.gistCheck;
   var checkDone = 0, checkRight = 0;
   var checkHost = $('#spCheckList');
   GIST.forEach(function (item, i) {
@@ -2328,6 +2930,24 @@ var Resettable = [];
     })();
   }
 
+  /* What an expert is actually saying to themselves at each step. Students can
+     watch where the eyes go; they cannot infer this without being told. */
+  var THINK = {
+    1: 'Bees… cities… numbers… supporters… critics. Fine. I do not know what this passage argues yet and I am not trying to. I am looking for the shape.',
+    2: 'Three chunks: numbers, for, against. I will not remember the details and I do not need to — I only need to know which chunk to come back to.',
+    3: 'Critics… hives… bee populations… going up. Right, it is a claim about direction. That is usually where the trap is.',
+    4: '"wild bee populations" is a thing — I can hunt for that. "always" and "increases" are judgements — I will not find them, I will have to weigh them.',
+    5: 'Critics were paragraph three. I am not reading one word of the first two. Now: Critics — however — warn — packing — too — many… there it is, "wild bee populations".',
+    6: 'Careful. It says harm. The question says increases. And it says "some ecologists", not "always". Two of my four checks just failed — this is FALSE, and I nearly said TRUE.'
+  };
+
+  var thinkBody = $('#mThinkBody');
+  function setThink(n) {
+    if (!thinkBody) return;
+    lab.classList.toggle('thinking', !!THINK[n]);
+    if (THINK[n]) thinkBody.textContent = THINK[n];
+  }
+
   var steps = {
     1: function () {
       clearPassage(); countEl.textContent = '0';
@@ -2403,6 +3023,7 @@ var Resettable = [];
 
   function paint() {
     lab.dataset.step = step;
+    if (!started) lab.classList.remove('thinking');
     lab.classList.toggle('map-on', step >= 2);
     lab.classList.toggle('q-on', step >= 3);
     lab.classList.toggle('kw-on', step >= 4);
@@ -2428,6 +3049,7 @@ var Resettable = [];
     qWords.forEach(function (w) { w.classList.remove('hop'); });
     countEl.textContent = '0';
     paint();
+    setThink(step);
     steps[step]();
   }
 
@@ -2438,7 +3060,7 @@ var Resettable = [];
   restartB.addEventListener('click', function () { started = false; go(1); started = true; paint(); });
 
   bonusB.addEventListener('click', function () {
-    clearTimeout(timer); clearPassage(); lab.classList.remove('focus3'); dotOff();
+    clearTimeout(timer); clearPassage(); lab.classList.remove('focus3', 'thinking'); dotOff();
     caption.textContent = 'Ground level: every single word, left to right — the way most students read under exam pressure.';
     var n = 0;
     play(seqRead, words, {
@@ -2834,6 +3456,25 @@ var Resettable = [];
     var modeBtns = $$('.alt-mode', $('#altModes'));
     var timer = null, mode = null, SEC_PER_WORD = 0.5;
 
+    /* Commit-before-reveal: the guess is locked in before the skim runs, then
+       measured against what a skim actually touches. (Re-wired after the scene
+       was rebuilt around a rendered page — the widget had been left orphaned.) */
+    var altPredict = makePrediction('altPredict', 'altPredictOpts', 'altPredictResult',
+      function (guess, actual) {
+        var near = Math.abs(guess - actual) <= 20;
+        var pct = Math.round(actual / words.length * 100);
+        return {
+          near: near,
+          text: near
+            ? '<b>Close.</b> A skim landed on <b>' + actual + ' of ' + words.length + ' words — ' + pct +
+              '%.</b> You already had the right instinct; most people guess three or four times too high, because reading every word feels like the only way to know what a text says.'
+            : '<b>You guessed ' + guess + '. It was ' + actual + ' — ' + pct + '% of the page.</b> That gap is the lesson. ' +
+              (guess > actual
+                ? 'Skimming touches far less than it feels like it should, and it is still enough to say what each paragraph is about.'
+                : 'Even a skim needs a few landing points — but only a few, and always at the start of paragraphs.')
+        };
+      });
+
     function reset() {
       marks = {}; veiled = []; paintPage();
       labels.forEach(function (l) { l.classList.remove('show'); });
@@ -2896,6 +3537,7 @@ var Resettable = [];
             lookGoal.set(0, 0, pos.z * 0.3 + 0.3);
           },
           done: function (n) {
+            altPredict.show(n);
             capEl.textContent = n + ' words, ' + Math.round(n / words.length * 100) + '% of the page, ' + fmtClock(n * SEC_PER_WORD) + ' — and now each paragraph has a name. That is your map.';
             statCost.textContent = fmtClock(n * SEC_PER_WORD);
             ring.material.opacity = 0;
@@ -3049,14 +3691,7 @@ function makeClock(el, opts) {
   });
 
   /* ── Part B: locate the paragraph ── */
-  var LOCATE = [
-    { q: 'A reference to a natural event used as a dating marker.', a: 'C', why: 'Paragraph C: "the ash from a known volcanic eruption". A volcanic eruption is the natural event; ash is the marker.' },
-    { q: 'The physical width of a drilled sample.', a: 'A', why: 'Paragraph A: "cylindrical sections roughly ten centimetres across". Concrete number — the easiest kind of thing to scan for.' },
-    { q: 'A comparison between modern levels and the distant past.', a: 'D', why: 'Paragraph D: twentieth-century concentrations "lay far outside the range of that entire period".' },
-    { q: 'How past temperatures are estimated without any written record.', a: 'B', why: 'Paragraph B: oxygen isotope ratios vary with the temperature at which the water condensed.' },
-    { q: 'A reason why the very deepest ice may be unusable.', a: 'E', why: 'Paragraph E: ice flows downhill, so near bedrock the record is "scrambled beyond use".' },
-    { q: 'The greatest depth reached by drilling so far.', a: 'A', why: 'Paragraph A: "more than three kilometres below the surface". Two questions pointing at the same paragraph is normal — that is why the map pays off.' }
-  ];
+  var LOCATE = CONTENT.locate;
   var list = $('#locateList'), score = 0, answered = 0;
   var locClock = makeClock($('#locTimer'), {});
 
@@ -3078,6 +3713,7 @@ function makeClock(el, opts) {
         b.classList.add(ok ? 'correct' : 'wrong');
         if (!ok) opts.forEach(function (o) { if (o.dataset.v === item.a) o.classList.add('correct'); });
         if (ok) score++;
+        else Errors.add('wrongParagraph');
         answered++;
         Progress.hit('locate', ok);
         f.className = 'feedback show ' + (ok ? 'ok' : 'no');
@@ -3104,20 +3740,7 @@ function makeClock(el, opts) {
 
 /* ═══════════════════ STATION 4 — KEYWORD LAB ═══════════════════ */
 (function () {
-  var KW = [
-    {
-      tokens: [['The',''],['deepest','i'],['ice',''],['cores',''],['have',''],['been',''],['drilled',''],['to',''],['over',''],['three','c'],['kilometres.','c']],
-      note: 'Two words do all the work. <b>three kilometres</b> is concrete — a number, almost impossible to paraphrase, so your eyes hunt for the shape of it. <b>deepest</b> is the idea word you check once you arrive. "ice cores" is in every paragraph, so it locates nothing.'
-    },
-    {
-      tokens: [['Volcanic','c'],['ash','c'],['allows',''],['researchers',''],['to',''],['date','i'],['the',''],['deeper',''],['layers.','']],
-      note: '<b>Volcanic ash</b> is a rare, specific noun phrase — perfect to scan for. <b>date</b> is the idea word, and note the passage never uses it: it says "match chemical signals against dated events". That is the paraphrase problem, which Part B drills.'
-    },
-    {
-      tokens: [['Ice',''],['more',''],['than',''],['one','c'],['million','c'],['years','c'],['old',''],['has',''],['already','i'],['been',''],['recovered.','']],
-      note: '<b>one million years</b> is your search target. But the mark is won by <b>already</b> — the passage says teams "are now drilling in the hope of recovering it", which means it has <i>not</i> been recovered. Scanning finds the sentence; the idea word decides the answer. (This statement is FALSE.)'
-    }
-  ];
+  var KW = CONTENT.keywordPicker;
 
   var host = $('#kwList');
   KW.forEach(function (item, n) {
@@ -3181,38 +3804,7 @@ function makeClock(el, opts) {
   });
 
   /* ── Part B: paraphrase matching ── */
-  var PARA = [
-    { q: 'estimate temperatures from the distant past', opts: [
-        'counted downwards, much as tree rings are',
-        'allowing past temperatures to be reconstructed',
-        'the temperature at which it condensed',
-        'temperature had risen and fallen together' ], a: 1,
-      why: 'Option c is the closest single phrase but it describes the mechanism, not the outcome. "Reconstructed" is the paraphrase of "estimate".' },
-    { q: 'a naturally occurring event that helps with dating', opts: [
-        'individual years can be distinguished visually',
-        'match chemical signals against dated events',
-        'the ash from a known volcanic eruption',
-        'the layers thin under pressure' ], a: 2,
-      why: 'A volcanic eruption is the natural event. Option b sounds close because it contains the word "dated" — that is exactly the kind of surface match that costs marks.' },
-    { q: 'samples are brought up gradually', opts: [
-        'raising them to the surface metre by metre',
-        'extract this ice in cylindrical sections',
-        'buried and compressed by the snow that follows',
-        'the deepest such projects have reached' ], a: 0,
-      why: '"Metre by metre" is the paraphrase of "gradually". Option b is about the shape of the sample, not the pace of the work.' },
-    { q: 'very old ice exists in only a few locations', opts: [
-        'ice flows slowly downhill',
-        'several international teams are now drilling',
-        'only a handful of sites are thought to preserve',
-        'near the bedrock the record can be scrambled' ], a: 2,
-      why: '"A handful of sites" paraphrases "only a few locations". Notice the passage never uses the word "few".' },
-    { q: 'recent levels were unlike anything in the record', opts: [
-        'risen and fallen together across eight glacial cycles',
-        'lay far outside the range of that entire period',
-        'spanning roughly 800,000 years',
-        'the results reshaped climate science' ], a: 1,
-      why: '"Far outside the range" paraphrases "unlike anything". Options a and c are true statements from the same paragraph — but they answer a different question.' }
-  ];
+  var PARA = CONTENT.paraphraseMcq;
 
   var pHost = $('#paraList'), pScore = 0, pDone = 0;
   PARA.forEach(function (item, i) {
@@ -3233,6 +3825,7 @@ function makeClock(el, opts) {
         b.classList.add(ok ? 'correct' : 'wrong');
         if (!ok) opts[item.a].classList.add('correct');
         if (ok) pScore++;
+        else Errors.add('paraphrase');
         pDone++;
         Progress.hit('paraphrase', ok);
         $('#paraScore').textContent = pScore + ' / 5';
@@ -3254,14 +3847,7 @@ function makeClock(el, opts) {
   if (!passage) return;
   var words = wrapWords(passage);
 
-  var FIND = [
-    { p: 'How wide is a single core?', find: ['ten', 1], span: 2 },
-    { p: 'What depth has drilling reached?', find: ['three', 1], span: 2 },
-    { p: 'Which site was drilled after Vostok?', find: ['Dome', 1], span: 2 },
-    { p: 'How many glacial cycles do the cores cover?', find: ['eight', 1], span: 2 },
-    { p: 'How many years do the cores span?', find: ['800,000', 1], span: 2 },
-    { p: 'Where are teams drilling for the oldest ice?', find: ['East', 1], span: 2 }
-  ];
+  var FIND = CONTENT.scanFind;
 
   var i = 0, best = null;
   var promptEl = $('#scanPrompt'), logEl = $('#scanLog');
@@ -3306,14 +3892,7 @@ function makeClock(el, opts) {
   });
 
   /* ── Pair race ── */
-  var RACE = [
-    { q: 'How much does one hour of badminton cost?', opts: ['£4.20', '£5.50', '£7.00', '£11.50'], a: 3 },
-    { q: 'On which day is Beginners\' Yoga held?', opts: ['Monday', 'Wednesday', 'Thursday', 'Saturday'], a: 1 },
-    { q: 'Which activity costs nothing?', opts: ['Lane Swimming', 'Early Swim', 'Over-60s Circuit Training', 'Junior Football'], a: 2 },
-    { q: 'Where do badminton bookings move during the closure?', opts: ['Studio 2', 'Northgate sports hall', 'Riverside Centre', 'They are cancelled'], a: 2 },
-    { q: 'How much notice avoids a cancellation charge?', opts: ['One hour', 'Four hours', 'Twenty-four hours', 'Two days'], a: 1 },
-    { q: 'On which days does Parent & Toddler Splash run?', opts: ['Mon & Wed', 'Tue & Thu', 'Wed & Fri', 'Sat & Sun'], a: 1 }
-  ];
+  var RACE = CONTENT.noticeRace;
   var rHost = $('#raceList'), rScore = 0;
   var raceClock = makeClock($('#raceTimer'), {});
   var rDone = 0;
@@ -3404,52 +3983,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
   var host = $('#recallList');
   if (!host) return;
 
-  var Q = [
-    { q: 'What is the actual <b>output</b> of a good skim?',
-      opts: ['A summary of the passage in your head',
-             'A map of which paragraph holds which topic',
-             'The answers to the first few questions',
-             'A list of the words you did not understand'],
-      a: 1,
-      why: 'A skim is not fast comprehension — it is reconnaissance. If you finish a skim able to summarise the text, you read it. If you finish able to say "numbers, then the case for, then the case against", you skimmed it.' },
-
-    { q: 'Scanning is best described as…',
-      opts: ['Reading quickly across the whole passage',
-             'Reading the first line of every paragraph',
-             'Reading every word, but only in one small area',
-             'Looking only at numbers and names'],
-      a: 2,
-      why: 'This is the one most students get backwards. Scanning is slow, dense, word-by-word reading — the speed comes entirely from the fact that the map already told you which paragraph to do it in.' },
-
-    { q: 'Which of these makes the <b>best</b> keyword to scan for?',
-      opts: ['significantly improved', '1,600 hives', 'researchers believe', 'is thought to be'],
-      a: 1,
-      why: 'Concrete beats abstract every time. A number has a shape your eye catches at speed and the passage almost never paraphrases it. "Significantly improved" will appear as something else entirely.' },
-
-    { q: 'You find the sentence, and it clearly contradicts the statement. The answer is…',
-      opts: ['NOT GIVEN, because you are not certain',
-             'TRUE, because you found the keywords',
-             'FALSE, because the text says the opposite',
-             'You should skip it and come back'],
-      a: 2,
-      why: 'FALSE means the text contradicts the claim. NOT GIVEN means the text never addresses it. If you can point at a sentence and say "this says the opposite", that is FALSE — feeling unsure is not evidence of absence.' },
-
-    { q: 'A question has taken you ninety seconds. What should you do?',
-      opts: ['Flag it, put down your best guess, and move on',
-             'Keep going — you are close',
-             'Leave it blank and come back at the end',
-             'Re-read the whole paragraph carefully'],
-      a: 0,
-      why: 'Flag and move, always — and never leave it blank, because there is no penalty for a wrong answer in IELTS Reading. A blank is the only genuinely worthless thing on the paper. One question that runs long is what costs you the last three.' },
-
-    { q: 'Why does the passage almost never contain the exact words of the question?',
-      opts: ['To keep the passage shorter',
-             'Because the test is partly checking whether you recognise paraphrase',
-             'Because the questions are written by different people',
-             'It usually does contain them'],
-      a: 1,
-      why: 'Paraphrase recognition is deliberately part of what the paper measures. That is why you search with the concrete keyword and then check the idea words against what the sentence actually means, not what it says word for word.' }
-  ];
+  var Q = CONTENT.recall;
 
   var score = 0;
   function build() {
@@ -3533,6 +4067,21 @@ function makePrediction(boxId, optsId, resultId, judge) {
         '</div>';
     }).join('');
 
+    /* ── Error breakdown ── */
+    var eBox = $('#scErrors'), eGrid = $('#errGrid'), tal = Errors.tally(), tot = Errors.total();
+    if (tot) {
+      eBox.style.display = 'block';
+      /* NB: named errRows, not rows — `var` is function-scoped and the outer
+         `rows` holds the skill data the diagnosis below depends on. */
+      var errRows = Object.keys(tal).sort(function (a, b) { return tal[b] - tal[a]; });
+      eGrid.innerHTML = errRows.map(function (k) {
+        var pct = Math.round(tal[k] / tot * 100);
+        return '<div class="err-row"><div class="err-bar" style="width:' + pct + '%"></div>' +
+          '<span class="err-label">' + Errors.TYPES[k].label + '</span>' +
+          '<span class="err-n">' + tal[k] + '</span></div>';
+      }).join('');
+    } else { eBox.style.display = 'none'; }
+
     /* ── Diagnosis: find the ONE thing worth fixing first ── */
     var done = rows.filter(function (r) { return r.v.attempted && r.v.total >= 2; });
     if (done.length < 2) {
@@ -3547,6 +4096,21 @@ function makePrediction(boxId, optsId, resultId, judge) {
     var pace = Progress.getNote('frPace');
 
     var parts = [];
+
+    /* The sharpest thing we can tell a student is not which skill scored
+       lowest, but which mistake they keep making. Lead with that. */
+    var topErr = Errors.top(), errN = Errors.total();
+    if (topErr && errN >= 2) {
+      var E = Errors.TYPES[topErr], count = Errors.tally()[topErr];
+      parts.push('<p style="font-size:0.95rem"><b>Your commonest mistake, ' + count + ' time' + (count > 1 ? 's' : '') +
+        ': ' + E.label.toLowerCase() + '.</b> ' + E.detail + '</p>');
+      parts.push('<p><span class="rx">Do this:</span> ' + E.fix + '</p>');
+      var others = [];
+      for (var k in Errors.tally()) if (k !== topErr) others.push(Errors.TYPES[k].label.toLowerCase() + ' (' + Errors.tally()[k] + ')');
+      if (others.length) parts.push('<p class="dim" style="font-size:0.83rem">Also seen: ' + others.join(', ') + '.</p>');
+      parts.push('<hr style="border:none;border-top:1px solid var(--border);margin:14px 0">');
+    }
+
     if (worst.pct >= 0.8) {
       vh.textContent = 'No single bottleneck — you are strong across the board.';
       parts.push('<p>Every skill you attempted is at 80% or better, which means technique is no longer what is limiting you. Your next gain comes from <span class="rx">volume and stamina</span>: three passages back to back, on the clock, not one.</p>');
@@ -3581,8 +4145,250 @@ function makePrediction(boxId, optsId, resultId, judge) {
   }
 
   Progress.onChange(render);
-  $('#scReset').addEventListener('click', function () { Progress.reset(); });
+  Errors.onChange(render);
+  $('#scReset').addEventListener('click', function () { Progress.reset(); Errors.reset(); });
   render();
+})();
+
+/* ═══════════════════ MATCHING FEATURES ═══════════════════
+   Names are capitalised, which makes them the fastest thing on any page to
+   scan for. One option deliberately matches nothing.                      */
+(function () {
+  var host = $('#mfList');
+  if (!host) return;
+  var PEOPLE = CONTENT.mfPeople;
+  var ITEMS = CONTENT.mfItems;
+  var score = 0;
+  function build() {
+    host.innerHTML = ''; score = 0;
+    $('#mfScore').textContent = '0 / 5';
+    ITEMS.forEach(function (it, i) {
+      var d = document.createElement('div');
+      d.className = 'q-block';
+      d.innerHTML = '<div class="q-text"><span class="q-num">' + (i + 1) + '</span>' + it.q + '</div>' +
+        '<div class="opts">' + PEOPLE.map(function (pp) {
+          return '<button class="opt" data-v="' + pp[0] + '"><b>' + pp[0] + '</b> ' + pp[1] + '</button>';
+        }).join('') + '</div><div class="feedback"></div>';
+      host.appendChild(d);
+      var opts = $$('.opt', d), f = $('.feedback', d);
+      opts.forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (b.disabled) return;
+          opts.forEach(function (o) { o.disabled = true; });
+          var ok = b.dataset.v === it.a;
+          b.classList.add(ok ? 'correct' : 'wrong');
+          if (!ok) opts.forEach(function (o) { if (o.dataset.v === it.a) o.classList.add('correct'); });
+          if (ok) score++; else Errors.add('wrongParagraph');
+          Progress.hit('scan', ok);
+          $('#mfScore').textContent = score + ' / 5';
+          f.className = 'feedback show ' + (ok ? 'ok' : 'no');
+          f.textContent = (ok ? '✓ ' : '✗ ' + it.a + '. ') + it.why;
+        });
+      });
+    });
+  }
+  $('#mfReset').addEventListener('click', build);
+  Resettable.push(build);
+  build();
+})();
+
+/* ═══════════════════ SUMMARY COMPLETION ═══════════════════
+   Gated: you cannot fill the gaps until you have identified which section
+   of the passage the summary covers, because that is the actual skill.    */
+(function () {
+  var loc = $('#scmpLocate');
+  if (!loc) return;
+  var body = $('#scmpBody'), fb = $('#scmpFeedback');
+  var BANK = ['ash','bubbles','oxygen isotopes','tree rings','seawater','bedrock','cylinders'];
+  var ANS = { 1: 'bubbles', 2: 'oxygen isotopes', 3: 'ash' };
+  var WHY = {
+    1: 'Paragraph B: "each bubble is a physical sample of the air".',
+    2: 'Paragraph B: "the ratio of oxygen isotopes in the frozen water varies with the temperature".',
+    3: 'Paragraph C: "the ash from a known volcanic eruption". Note the summary says "volcanic ___" — the word before the gap tells you the grammar you need.'
+  };
+
+  (function () {
+    var opts = $$('.opt', loc), f = $('.feedback', loc);
+    opts.forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (b.disabled) return;
+        var ok = b.dataset.v === 'AC';
+        if (!ok) {
+          b.classList.add('wrong'); b.disabled = true;
+          f.className = 'feedback show no';
+          f.textContent = 'Not that section. The summary talks about drilling, trapped air and dating layers — where does the passage stop doing that and start on results?';
+          return;
+        }
+        opts.forEach(function (o) { o.disabled = true; });
+        b.classList.add('correct');
+        f.className = 'feedback show ok';
+        f.textContent = '✓ A–C. Paragraph D is about what the cores revealed and E is about limits — neither appears in the summary. You have just cut your search area by 40% before writing a single word.';
+        body.classList.add('on');
+        body.scrollIntoView({ block: 'center' });
+      });
+    });
+  })();
+
+  function fill() {
+    $$('.scmp-gap', body).forEach(function (g) {
+      g.innerHTML = '<select><option value="">choose…</option>' +
+        BANK.map(function (w) { return '<option value="' + w + '">' + w + '</option>'; }).join('') + '</select>';
+    });
+    fb.className = 'feedback';
+    $('#scmpScore').textContent = '0 / 3';
+  }
+
+  $('#scmpCheck').addEventListener('click', function () {
+    var right = 0, notes = [];
+    $$('.scmp-gap', body).forEach(function (g) {
+      var sel = $('select', g), n = g.dataset.n;
+      sel.classList.remove('correct', 'wrong');
+      if (!sel.value) return;
+      if (sel.value === ANS[n]) { sel.classList.add('correct'); right++; }
+      else { sel.classList.add('wrong'); notes.push('<b>' + n + '</b> — ' + WHY[n]); Errors.add('paraphrase'); }
+      Progress.hit('scan', sel.value === ANS[n]);
+    });
+    $('#scmpScore').textContent = right + ' / 3';
+    fb.className = 'feedback show ' + (right === 3 ? 'ok' : 'no');
+    fb.innerHTML = right === 3
+      ? '✓ All three, and every answer is lifted straight from paragraphs B and C without changing a letter. That is what summary completion always wants.'
+      : notes.join('<br>');
+  });
+  $('#scmpReset').addEventListener('click', function () {
+    fill(); body.classList.remove('on');
+    $$('.opt', loc).forEach(function (o) { o.disabled = false; o.classList.remove('correct', 'wrong'); });
+    $('.feedback', loc).className = 'feedback';
+  });
+  Resettable.push(function () { $('#scmpReset').click(); });
+  fill();
+})();
+
+/* ═══════════════════ PARAPHRASE BANK ═══════════════════
+   Recognition has to be automatic, not worked out — so this is fast and
+   scored on volume, not accuracy alone. Forty families the exam reuses.   */
+(function () {
+  var stage = $('#pbStage');
+  if (!stage) return;
+
+  var PAIRS = CONTENT.paraphraseBank;
+
+  var promptEl = $('#pbPrompt'), optsEl = $('#pbOpts'), fbEl = $('#pbFeedback');
+  var scoreEl = $('#pbScore'), resultEl = $('#pbResult');
+  var clock = makeClock($('#pbTimer'), { countdown: true, from: 60, onEnd: finish });
+  var order = [], idx = 0, right = 0, wrong = 0, missed = [], running = false;
+
+  function shuffled(a) {
+    var r = a.slice();
+    for (var i = r.length - 1; i > 0; i--) {
+      var j = (i * 7919 + right * 31 + idx * 17) % (i + 1);   /* deterministic, no Math.random */
+      var t = r[i]; r[i] = r[j]; r[j] = t;
+    }
+    return r;
+  }
+
+  function next() {
+    if (!running) return;
+    if (idx >= order.length) { finish(); return; }
+    var pair = order[idx];
+    promptEl.textContent = pair[0];
+    var distractors = shuffled(PAIRS.filter(function (q) { return q !== pair; })).slice(0, 3).map(function (q) { return q[1]; });
+    var choices = shuffled(distractors.concat([pair[1]]));
+    optsEl.innerHTML = choices.map(function (c) {
+      return '<button class="opt" data-v="' + c.replace(/"/g, '&quot;') + '">' + c + '</button>';
+    }).join('');
+    $$('.opt', optsEl).forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (!running) return;
+        var ok = b.dataset.v === pair[1];
+        if (ok) { right++; fbEl.className = 'pb-feedback ok'; fbEl.textContent = '✓'; }
+        else {
+          wrong++; missed.push(pair);
+          fbEl.className = 'pb-feedback no';
+          fbEl.textContent = '✗  ' + pair[0] + ' = ' + pair[1];
+        }
+        Progress.hit('paraphrase', ok);
+        if (!ok) Errors.add('paraphrase');
+        scoreEl.textContent = right + ' correct';
+        idx++;
+        setTimeout(next, ok ? 180 : 900);
+      });
+    });
+  }
+
+  function finish() {
+    if (!running) return;
+    running = false;
+    clock.stop();
+    promptEl.textContent = right + ' in sixty seconds.';
+    optsEl.innerHTML = '';
+    fbEl.textContent = '';
+    var verdict = right >= 20 ? 'That is automatic recognition — exactly what you need under time.'
+                : right >= 12 ? 'Solid. Push for twenty: at that speed you stop translating and start recognising.'
+                : 'Under twelve means you are working each one out. Run it again — this is the cheapest band gain on the page.';
+    resultEl.className = 'pb-result show';
+    resultEl.innerHTML = '<p style="font-size:0.9rem"><b>' + verdict + '</b></p>' +
+      (missed.length ? '<p class="dim" style="font-size:0.8rem;margin-top:10px">Worth learning:</p><div class="pb-missed">' +
+        missed.slice(0, 8).map(function (m) { return '<div><b>' + m[0] + '</b> = ' + m[1] + '</div>'; }).join('') + '</div>' : '');
+  }
+
+  function reset() {
+    clock.reset(); running = false;
+    idx = 0; right = 0; wrong = 0; missed = [];
+    order = shuffled(PAIRS);
+    scoreEl.textContent = '0 correct';
+    promptEl.textContent = 'Press Start.';
+    optsEl.innerHTML = ''; fbEl.textContent = '';
+    resultEl.className = 'pb-result';
+  }
+
+  $('#pbStart').addEventListener('click', function () {
+    reset(); running = true; clock.reset(); clock.start(); next();
+  });
+  $('#pbReset').addEventListener('click', reset);
+  Resettable.push(reset);
+  reset();
+})();
+
+/* ═══════════════════ FALSE vs NOT GIVEN ═══════════════════
+   The densest single source of lost marks in Academic Reading. Binary on
+   purpose: removing TRUE forces the only judgement that actually matters. */
+(function () {
+  var host = $('#fngList');
+  if (!host) return;
+  var ITEMS = CONTENT.fngItems;
+  var score = 0;
+  function build() {
+    host.innerHTML = ''; score = 0;
+    $('#fngScore').textContent = '0 / 10';
+    ITEMS.forEach(function (it, i) {
+      var d = document.createElement('div');
+      d.className = 'fng-item';
+      d.innerHTML = '<div class="fng-claim"><span class="n">' + (i + 1) + '</span>' + it.c + '</div>' +
+        '<div class="opts">' +
+          '<button class="opt" data-v="FALSE">FALSE — I can point at the contradiction</button>' +
+          '<button class="opt" data-v="NOT GIVEN">NOT GIVEN — there is nothing to point at</button>' +
+        '</div><div class="feedback"></div>';
+      host.appendChild(d);
+      var opts = $$('.opt', d), f = $('.feedback', d);
+      opts.forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (b.disabled) return;
+          opts.forEach(function (o) { o.disabled = true; });
+          var ok = b.dataset.v === it.a;
+          b.classList.add(ok ? 'correct' : 'wrong');
+          if (!ok) opts.forEach(function (o) { if (o.dataset.v === it.a) o.classList.add('correct'); });
+          if (ok) score++;
+          else Errors.add(it.a === 'NOT GIVEN' ? 'overRead' : 'missedLocation');
+          Progress.hit('traps', ok);
+          $('#fngScore').textContent = score + ' / 10';
+          f.className = 'feedback show ' + (ok ? 'ok' : 'no');
+          f.innerHTML = (ok ? '✓ ' : '✗ ' + it.a + '. ') + it.why;
+        });
+      });
+    });
+  }
+  $('#fngReset').addEventListener('click', build);
+  build();
 })();
 
 /* ═══════════════════ STATION 7 — THE FULL RUN ═══════════════════ */
@@ -3593,56 +4399,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
   var DURATION = 20 * 60;
   var PARA_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
-  var QUESTIONS = [
-    /* 1–4 · matching information (does NOT follow passage order) */
-    { type: 'para', skill: 'locate', label: 'Which paragraph?',
-      text: 'a reason why the ancient method cannot simply be adopted today', a: 'F',
-      why: 'Paragraph F lists every obstacle: weak in tension, slow to set, cannot take steel, ash unavailable.' },
-    { type: 'para', skill: 'locate', label: 'Which paragraph?',
-      text: 'the naming of a specific mineral', a: 'D',
-      why: 'Paragraph D names aluminous tobermorite. A single unusual noun like that is the easiest thing on the page to scan for.' },
-    { type: 'para', skill: 'locate', label: 'Which paragraph?',
-      text: 'an estimate of an industry’s contribution to global emissions', a: 'G',
-      why: 'Paragraph G: "around eight per cent of global carbon dioxide emissions". Scan for the digit shape, not the words.' },
-    { type: 'para', skill: 'locate', label: 'Which paragraph?',
-      text: 'a written record of the original method that has survived', a: 'B',
-      why: 'Paragraph B: Vitruvius "set down proportions… and his account survived".' },
-
-    /* 5–9 · TFNG (follows passage order) */
-    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
-      text: 'The dome of the Pantheon was built without steel reinforcement.', a: 'TRUE',
-      why: 'Paragraph A states plainly that it "contains no steel". Same direction, same scope — TRUE.' },
-    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
-      text: 'Vitruvius’s written account of the Roman mixtures has been lost.', a: 'FALSE',
-      why: 'A negation flip. The passage says "his account survived" — the exact opposite of the claim.' },
-    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
-      text: 'Salt water causes modern concrete to deteriorate.', a: 'TRUE',
-      why: 'Paragraph C: "Salt water is ruinous to modern concrete… corrodes the steel… splits the material apart". "Ruinous" paraphrases "causes to deteriorate".' },
-    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
-      text: 'Aluminous tobermorite can be produced easily in laboratory conditions.', a: 'FALSE',
-      why: 'Paragraph D says it is "extremely difficult to manufacture under laboratory conditions". Direction reversed — FALSE, not Not Given.' },
-    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
-      text: 'The MIT team’s explanation is now accepted by all specialists in the field.', a: 'NOT GIVEN',
-      why: 'The passage reports what Masic’s group argued, but never says how other specialists responded. You cannot point at a contradicting sentence, so it is NOT GIVEN — and note the tempting absolute "all", which usually signals FALSE. Here it signals nothing, because the topic is simply absent.' },
-
-    /* 10–13 · sentence completion, NO MORE THAN TWO WORDS */
-    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
-      text: 'For structures built in the sea, Roman builders mixed the ingredients with ______ rather than fresh water.',
-      a: ['seawater', 'sea water'], display: 'seawater',
-      why: 'Paragraph B. The answer is one word, lifted straight from the text — completion answers almost always are.' },
-    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
-      text: 'The volcanic ash used by the Romans takes its name from the town of ______.',
-      a: ['pozzuoli'], display: 'Pozzuoli',
-      why: 'Paragraph B. A proper noun — the single easiest target type to scan for, because capital letters stand out even at speed.' },
-    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
-      text: 'Lime clasts are produced by a technique known as ______.',
-      a: ['hot mixing', 'hot-mixing', 'hotmixing'], display: 'hot mixing',
-      why: 'Paragraph E. Two words, so it fits the limit exactly. Writing "a technique called hot mixing" would be three words and would score zero even though you found the right place.' },
-    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
-      text: 'Roman concrete cannot be reinforced with ______, because the chemistry that protects it attacks that material.',
-      a: ['steel'], display: 'steel',
-      why: 'Paragraph F. Note that the same word appears in paragraphs A and C — order matters: this question sits between Q9 and the end, so the answer is in the later part of the text.' }
-  ];
+  var QUESTIONS = CONTENT.fullRun;
 
   /* ── Build the question list ── */
   var state = QUESTIONS.map(function () { return { answer: null, flagged: false, seconds: 0 }; });
@@ -3799,9 +4556,14 @@ function makePrediction(boxId, optsId, resultId, judge) {
         var input = $('.fr-gap', d);
         input.disabled = true;
         input.classList.add(ok ? 'correct' : 'wrong');
-        if (!ok) note = 'Your answer was ' + v.reason + '. The answer is ';
+        if (!ok) {
+          note = 'Your answer was ' + v.reason + '. The answer is ';
+          Errors.add(Errors.classify('gap', q.a, state[i].answer,
+                     { overLimit: /word limit/.test(v.reason) }));
+        }
       } else {
         ok = state[i].answer === q.a;
+        if (!ok) Errors.add(Errors.classify(q.type, q.a, state[i].answer));
         $$('.opt', d).forEach(function (o) {
           o.disabled = true;
           o.style.borderColor = '';
@@ -3947,57 +4709,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
 
 /* ═══════════════════ STATION 6 — TRAP DETECTOR ═══════════════════ */
 (function () {
-  var BANKS = [[
-    { text: 'Deeper in the core, the layers thin under pressure until they can no longer be separated by eye.',
-      claim: 'Layers deeper in the core become easier to tell apart.',
-      a: 'FALSE', trap: '🔄 Negation Flip',
-      why: 'Every keyword matches — deeper, layers, telling apart. Only the direction is reversed: the text says they can no longer be separated, the claim says easier. Check 2 fails.' },
-    { text: 'As snow compacts, it seals off pockets of the atmosphere, so each bubble is a physical sample of the air that existed when the snow fell.',
-      claim: 'Bubbles in the ice preserve air from the time the snow fell.',
-      a: 'TRUE', trap: null,
-      why: 'A clean paraphrase: "seals off pockets of the atmosphere" and "a physical sample of the air" both survive all four checks. Same subject, same direction, same strength, same scope.' },
-    { text: 'Only a handful of sites are thought to preserve continuous ice older than a million years.',
-      claim: 'All Antarctic sites contain ice more than a million years old.',
-      a: 'FALSE', trap: '⚖️ Qualifier Swap',
-      why: '"Only a handful" versus "all". The topic is identical and the sentence is easy to find — which is exactly why the trap works. Check 3 fails.' },
-    { text: 'Drilling teams extract this ice in cylindrical sections roughly ten centimetres across, raising them to the surface metre by metre.',
-      claim: 'Extracting a complete core takes several months of work.',
-      a: 'NOT GIVEN', trap: null,
-      why: 'The passage describes how cores are extracted but never says how long it takes. You cannot point to a sentence that contradicts this — so it is NOT GIVEN, not FALSE. Not knowing is not the same as being contradicted.' },
-    { text: 'The ratio of oxygen isotopes in the frozen water varies with the temperature at which it condensed.',
-      claim: 'Changes in oxygen isotopes cause the temperature to vary.',
-      a: 'FALSE', trap: '🔁 Reversed Cause',
-      why: 'Both elements are correct and both are in the sentence — only the arrow is turned around. Temperature determines the isotope ratio, not the reverse. Read for what causes what, not just for which words appear.' },
-    { text: 'Several international teams are now drilling in East Antarctica in the hope of recovering it.',
-      claim: 'The East Antarctic drilling projects are funded by private companies.',
-      a: 'NOT GIVEN', trap: null,
-      why: 'The passage mentions who is drilling and where, but says nothing at all about funding. There is no contradicting sentence to point at.' }
-  ], [
-    { text: 'Rooftop hives have appeared on buildings ranging from the Paris Opera House to hotels in New York.',
-      claim: 'Hives have been placed on buildings in more than one country.',
-      a: 'TRUE', trap: null,
-      why: 'Paris and New York are in different countries. The passage never writes the phrase "more than one country" — but naming two places in two countries states it. Inference from named facts is still TRUE; it is not NOT GIVEN.' },
-    { text: 'Critics warn that packing too many hives into a small area can actually harm wild bee populations.',
-      claim: 'Critics say that a high density of hives may damage wild bees.',
-      a: 'TRUE', trap: null,
-      why: '"Packing too many into a small area" = high density; "harm" = damage; "can" = may. Four paraphrases in one sentence, and all four keep the same direction and strength.' },
-    { text: 'Some ecologists now recommend planting more flowers before adding more hives.',
-      claim: 'Ecologists are unanimous that no new hives should ever be installed.',
-      a: 'FALSE', trap: '⚖️ Qualifier Swap',
-      why: 'Two upgrades in one claim: "some" becomes "unanimous", and "before planting more flowers" becomes "never". The passage recommends an order of actions, not a ban.' },
-    { text: 'In London alone, the number of registered hives rose from around 1,600 in 2008 to more than 7,400 by 2020.',
-      claim: 'Hive numbers rose faster in London than in any other European city.',
-      a: 'NOT GIVEN', trap: null,
-      why: 'A scope trap that looks like a comparison. The passage gives London figures and no other city’s, so no comparison is possible. Nothing here contradicts the claim — it simply is not addressed.' },
-    { text: 'Urban bees benefit from a longer flowering season, since parks, gardens and even balconies bloom at different times across a city.',
-      claim: 'A longer flowering season in cities is caused by the presence of urban bees.',
-      a: 'FALSE', trap: '🔁 Reversed Cause',
-      why: 'The staggered blooming causes the longer season, which benefits the bees. The claim makes the bees the cause. Same two elements, arrow reversed.' },
-    { text: 'Beekeeping has quietly moved from the countryside into cities over the last two decades.',
-      claim: 'Rural beekeeping has now completely disappeared.',
-      a: 'FALSE', trap: '⚖️ Qualifier Swap',
-      why: '"Moved into cities" does not mean "vanished from the countryside", and "completely disappeared" is an absolute the passage never supports. Watch every total word: all, none, never, completely, only.' }
-  ]];
+  var BANKS = CONTENT.trapBanks;
 
   var host = $('#trapList'), score = 0, bank = 0;
   var pill = $('#trapScore'), roundBtn = $('#trapRound');
@@ -4026,6 +4738,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
           b.classList.add(ok ? 'correct' : 'wrong');
           if (!ok) opts.forEach(function (o) { if (o.dataset.v === item.a) o.classList.add('correct'); });
           if (ok) score++;
+          else Errors.add(Errors.classify('tfng', item.a, b.dataset.v));
           Progress.hit('traps', ok);
           pill.textContent = score + ' / 6';
           f.className = 'feedback show ' + (ok ? 'ok' : 'no');
