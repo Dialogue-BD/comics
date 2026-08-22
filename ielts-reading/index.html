@@ -657,6 +657,140 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 .fr-papers button.on { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
 .fr-papers button.on small { color: var(--accent); }
 
+/* ══════════ MOBILE ══════════ */
+.alt-optin {
+  position: absolute; inset: 0; display: none; align-items: center; justify-content: center;
+  flex-direction: column; gap: 8px; text-align: center; padding: 26px; color: var(--text-muted);
+}
+.alt-stage.optin .alt-optin { display: flex; }
+.alt-stage.optin .alt-hud,
+.alt-stage.optin .alt-caption,
+.alt-stage.optin .alt-loading,
+.alt-stage.optin .alt-label { display: none; }
+
+/* Every tap target reaches 44px on a touch screen. Desktop keeps its tighter
+   spacing — this is scoped to pointer:coarse, not to width. */
+@media (pointer: coarse) {
+  .btn, .opt, .toggle-btn, .step-pill, .eye-step,
+  .fr-flag, .alt-mode, .fr-papers button, .speed-ctl button, .home-link {
+    min-height: 44px;
+  }
+  .btn, .opt, .fr-papers button { padding-top: 11px; padding-bottom: 11px; }
+  .btn.sm, .toggle-btn, .speed-ctl button { padding-top: 10px; padding-bottom: 10px; }
+  .opt { padding-left: 16px; padding-right: 16px; }
+  .btn-row { gap: 10px; }
+  .opts { gap: 10px; }
+  /* Word chips are WCAG 2.5.5's inline exception. Forcing them to 44px broke
+     the sentence into a word list, and reading it AS a sentence is the whole
+     drill — so padding gives a ~40px target and the sentence survives. */
+  .kwchip { padding: 9px 5px; }
+  .kw-sentence { gap: 3px 2px; line-height: 2.0; font-size: 1.02rem; }
+  select.pick, .fr-gap, .scmp-gap select, #wpmInput { min-height: 44px; }
+  /* 16px is the threshold below which Safari zooms the whole page on focus */
+  input, select, textarea { font-size: 16px !important; }
+}
+
+/* The Full Run toolbar is sticky, so on a phone every pixel of it is a pixel
+   of passage the student cannot see. Below 760px it collapses to one line:
+   clock, pace bar, submit. Paper choice and reset move out of the sticky area. */
+@media (max-width: 760px) {
+  /* Explicit grid rather than flex-wrap: with four controls the wrap was
+     unpredictable and the bar grew to 40% of the screen. Two columns, fixed
+     row order, and the paper switcher disappears once the clock starts. */
+  .fr-toolbar {
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 6px 10px; padding: 8px 12px; align-items: center;
+  }
+  .fr-toolbar.sticky { top: 56px; }
+  .fr-toolbar > div:first-child { grid-column: 1; }
+  .fr-clock { font-size: 1.5rem; }
+  .fr-toolbar > div:first-child .dim { display: none; }
+  .fr-pace { grid-column: 2; min-width: 0; }
+  .fr-pace-track { height: 14px; }
+  .fr-pace-label { font-size: 0.66rem; margin-top: 2px; line-height: 1.25; }
+  .fr-toolbar .btn-row { grid-column: 1 / -1; gap: 8px; }
+  .fr-toolbar .btn-row .btn { flex: 1; justify-content: center; white-space: nowrap; padding-left: 8px; padding-right: 8px; }
+  .fr-papers { grid-column: 1 / -1; }
+  .fr-papers button { flex: 1; font-size: 0.72rem; padding: 9px; text-align: center; min-height: 40px; }
+  .fr-papers button small { display: none; }
+  #frReset { display: none; }              /* "Reset all" in the nav covers this */
+  .fr-toolbar .btn:disabled { display: none; }   /* Begin vanishes once running */
+  .fr-q { padding: 12px 13px; }
+  .fr-q-text { font-size: 1rem; }
+  .fr-passage { font-size: 1.02rem; }
+  .nav-brand { min-height: 44px; display: flex; align-items: center; }
+}
+
+/* ══════════ STATION JUMP (phones) ══════════
+   The page is roughly 54 phone-screens tall. When a teacher says "go to
+   Station 5", scrolling there is not an acceptable answer. */
+.jump-fab {
+  display: none; position: fixed; right: 14px; bottom: 14px; z-index: 70;
+  font-family: inherit; font-size: 0.82rem; font-weight: 800; cursor: pointer;
+  background: var(--accent); color: var(--on-accent); border: none;
+  border-radius: 999px; padding: 13px 20px; min-height: 48px;
+  box-shadow: 0 6px 20px -6px rgba(0,0,0,0.45);
+}
+.jump-sheet {
+  display: none; position: fixed; inset: 0; z-index: 80;
+  background: rgba(0,0,0,0.45); align-items: flex-end;
+}
+.jump-sheet.open { display: flex; }
+.jump-panel {
+  background: var(--surface); width: 100%; max-height: 82vh; overflow-y: auto;
+  border-radius: var(--r-lg) var(--r-lg) 0 0; padding: 8px 12px 22px;
+  border-top: 1px solid var(--border);
+}
+.jump-head {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.72rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--text-dim); padding: 10px 6px 8px;
+  position: sticky; top: 0; background: var(--surface);
+}
+.jump-close {
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+  border-radius: 50%; width: 36px; height: 36px; font-size: 0.9rem; cursor: pointer;
+}
+.jump-list { display: grid; gap: 6px; }
+.jump-list a {
+  display: flex; align-items: center; gap: 12px; min-height: 52px;
+  padding: 10px 14px; border-radius: var(--r); text-decoration: none;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+  font-size: 0.92rem; font-weight: 700;
+}
+.jump-list a b {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent-dim); color: var(--accent);
+  display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem;
+}
+.jump-list a span { font-size: 0.74rem; font-weight: 600; color: var(--text-dim); display: block; }
+.jump-list a.student b { background: var(--good-dim); color: var(--good); }
+@media (max-width: 760px) { .jump-fab { display: block; } }
+
+@media (max-width: 760px) {
+  /* The horizontal pill nav is redundant now that the jump sheet exists, and it
+     was costing 20px of permanently sticky height plus a row of 34px targets. */
+  .nav-links { display: none; }
+  nav.top .bar { padding: 6px 14px; justify-content: space-between; }
+  .nav-brand { display: block; font-size: 0.8rem; }
+  .fr-toolbar.sticky { top: 56px; }
+  .fr-tabs button { min-height: 46px; }
+  .skip-link { min-height: 44px; display: flex; align-items: center; }
+  .speed-ctl button { min-width: 46px; }
+}
+
+#frPeek { display: none; }
+@media (max-width: 760px) {
+  /* The tab strip scrolls away under the sticky bar, which left students
+     answering questions with no way back to the passage. The toggle lives in
+     the sticky bar instead, so it can never be scrolled out of reach. */
+  .fr-tabs { display: none; }
+  #frPeek { display: inline-flex; }
+  #frPeek.on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  /* nothing should sit underneath the floating jump button */
+  body { padding-bottom: 78px; }
+}
+
 /* ══════════ SUMMARY COMPLETION ══════════ */
 .scmp-locate {
   background: var(--surface-2); border: 1px solid var(--kw-idea); border-radius: var(--r);
@@ -1013,7 +1147,6 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
   .card { padding: 19px; }
   header.hero { padding: 44px 0 30px; }
   section.station { padding: 34px 0; }
-  .nav-brand { display: none; }
 }
 
 /* ══════════ PRINT ══════════ */
@@ -1117,6 +1250,16 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
     </div>
   </div>
 </nav>
+
+<button class="jump-fab no-print" id="jumpFab" aria-label="Jump to a station" aria-expanded="false">
+  <span aria-hidden="true">☰</span> Stations
+</button>
+<div class="jump-sheet no-print" id="jumpSheet" role="dialog" aria-label="Jump to a station" aria-modal="true">
+  <div class="jump-panel">
+    <div class="jump-head">Jump to…<button class="jump-close" id="jumpClose" aria-label="Close">✕</button></div>
+    <nav class="jump-list" id="jumpList"></nav>
+  </div>
+</div>
 
 <header class="hero">
   <div class="wrap">
@@ -1293,6 +1436,20 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
           <div class="hud-block"><div class="k">Exam clock burned</div><div class="v warn" id="hudTime">0:00</div></div>
         </div>
         <div class="alt-caption" id="altCaption">Choose an altitude above. It is the same page every time — only the height you read it from changes.</div>
+        <div class="alt-optin">
+          <div style="font-size:2rem">✈️</div>
+          <p style="max-width:400px; font-size:0.9rem; margin-bottom:4px">
+            Your teacher is running this flight on the big screen. It needs a
+            <b>590&nbsp;KB</b> download, so on a phone it is your choice.
+          </p>
+          <p class="dim" style="font-size:0.82rem; max-width:400px">
+            You do not need it: the three panels just below show the same thing, and cost nothing.
+          </p>
+          <div class="btn-row" style="justify-content:center; margin-top:6px">
+            <button class="btn sm" id="altOptIn">Load it anyway (590 KB)</button>
+            <a class="btn sec sm" href="#triCard">Show me the panels instead</a>
+          </div>
+        </div>
         <div class="alt-fallback">
           <div style="font-size:2rem">🗺️</div>
           <p style="max-width:420px; font-size:0.9rem">The 3D flight needs a graphics library that didn't load — most likely there's no internet on this device right now.<br><br><b>Everything still works:</b> Station 2 below teaches exactly the same idea step by step, in plain text, with no 3D required.</p>
@@ -1880,6 +2037,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         <div class="fr-papers no-print" id="frPapers" role="group" aria-label="Choose a paper"></div>
         <div class="btn-row">
           <button class="btn" id="frStart">▶ Begin</button>
+          <button class="btn sec sm" id="frPeek" aria-pressed="false">📄 Passage</button>
           <button class="btn warn sm" id="frSubmit" disabled>Submit</button>
           <button class="btn ghost sm" id="frReset">Reset</button>
         </div>
@@ -2754,6 +2912,38 @@ var Resettable = [];
   });
 })();
 
+/* ═══════════════════ STATION JUMP (phones) ═══════════════════ */
+(function () {
+  var fab = $('#jumpFab'), sheet = $('#jumpSheet'), list = $('#jumpList');
+  if (!fab) return;
+  /* "you" marks the stations a student actually works through on their own phone */
+  var STATIONS = [
+    ['#crisis', '0', 'The Time Crisis', 'How fast do you really read?', true],
+    ['#altitude', '1', 'Reading Altitude', 'Big screen — watch with your teacher', false],
+    ['#method', '2', 'The Six-Step Method', 'Watch, then try it yourself', true],
+    ['#mapping', '3', 'Map Drill', 'Build a map, then use it', true],
+    ['#keywords', '4', 'Keyword Lab', 'Keywords and paraphrase', true],
+    ['#scanning', '5', 'Scan Sprint', 'Scanning, names and summaries', true],
+    ['#traps', '6', 'Trap Detector', 'True / False / Not Given', true],
+    ['#fullrun', '7', 'The Full Run', '20-minute mock paper', true],
+    ['#scorecard', '8', 'Scorecard', 'Your diagnosis and recall quiz', true],
+    ['#worksheets', '9', 'Worksheets', 'Printable — mostly for your teacher', false]
+  ];
+  list.innerHTML = STATIONS.map(function (st) {
+    return '<a href="' + st[0] + '" class="' + (st[4] ? 'student' : '') + '">' +
+           '<b>' + st[1] + '</b><span style="flex:1">' + st[2] +
+           '<span>' + st[3] + '</span></span></a>';
+  }).join('');
+
+  function open() { sheet.classList.add('open'); fab.setAttribute('aria-expanded', 'true'); }
+  function close() { sheet.classList.remove('open'); fab.setAttribute('aria-expanded', 'false'); }
+  fab.addEventListener('click', open);
+  $('#jumpClose').addEventListener('click', close);
+  sheet.addEventListener('click', function (e) { if (e.target === sheet) close(); });
+  $$('a', list).forEach(function (a) { a.addEventListener('click', close); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+
 /* ═══════════════════ STATION 0 — THE TIME CRISIS ═══════════════════ */
 (function () {
   var passage = $('#spPassage'), startB = $('#spStart'), stopB = $('#spStop'), resetB = $('#spReset');
@@ -3315,7 +3505,25 @@ var Resettable = [];
     sc.onerror = function () { clearTimeout(killer); fail(); };
     document.head.appendChild(sc);
   }
-  if ('IntersectionObserver' in window) {
+  /* The 3D flight is a projector demo. Auto-loading it costs a student on a
+     phone ~590 KB of mobile data for something their teacher is running at the
+     front of the room — so below tablet width, or when the phone asks for
+     reduced data, it becomes an explicit opt-in. The triptych below teaches
+     the same idea for nothing. */
+  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  var saveData = !!(conn && conn.saveData);
+  var smallScreen = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
+
+  if (smallScreen || saveData) {
+    stage.classList.add('optin');
+    var btn = $('#altOptIn');
+    if (btn) btn.addEventListener('click', function () {
+      stage.classList.remove('optin');
+      var l = $('#altLoading');
+      if (l) l.textContent = 'Loading the 3D flight…';
+      load();
+    });
+  } else if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (es, o) {
       es.forEach(function (e) { if (e.isIntersecting) { load(); o.disconnect(); } });
     }, { rootMargin: '300px' }).observe(stage);
@@ -4595,9 +4803,10 @@ function makePrediction(boxId, optsId, resultId, judge) {
     markEl.style.left = (frac * 100) + '%';
     var should = Math.min(QUESTIONS.length, Math.floor(elapsed / (DURATION / QUESTIONS.length)) + 1);
     var delta = n - should;
+    /* kept short so it never wraps to two lines inside a sticky phone toolbar */
     tgtEl.textContent = delta >= 0
-      ? 'Pace: on track (target ' + should + ')'
-      : 'Pace: ' + Math.abs(delta) + ' behind (should be on ' + should + ')';
+      ? '✓ on pace · target ' + should
+      : '⚠ ' + Math.abs(delta) + ' behind · target ' + should;
     tgtEl.style.color = delta >= 0 ? 'var(--good)' : 'var(--bad)';
   }
 
@@ -4615,10 +4824,12 @@ function makePrediction(boxId, optsId, resultId, judge) {
     startedAt = Date.now(); lastAnswerAt = startedAt;
     $('#frStart').disabled = true;
     $('#frSubmit').disabled = false;
+    $('#frPapers').style.display = 'none';   /* reclaim the space once the clock is running */
     tick = setInterval(paintClock, 250);
     paintClock();
     $('#frSplit').classList.remove('tab-p'); $('#frSplit').classList.add('tab-q');
     $$('#frTabs button').forEach(function (b) { b.classList.toggle('on', b.dataset.tab === 'q'); });
+    var pk = $('#frPeek'); if (pk) { pk.textContent = '📄 Passage'; pk.classList.remove('on'); }
   });
 
   $('#frSubmit').addEventListener('click', function () { submit(false); });
@@ -4764,6 +4975,24 @@ function makePrediction(boxId, optsId, resultId, judge) {
     $('#frReview').scrollIntoView({ block: 'start' });
   }
 
+  /* ── Passage toggle in the sticky bar (mobile) ── */
+  (function () {
+    var peek = $('#frPeek');
+    if (!peek) return;
+    peek.addEventListener('click', function () {
+      var showingPassage = $('#frSplit').classList.contains('tab-p');
+      $('#frSplit').classList.toggle('tab-p', !showingPassage);
+      $('#frSplit').classList.toggle('tab-q', showingPassage);
+      peek.classList.toggle('on', !showingPassage);
+      peek.setAttribute('aria-pressed', String(!showingPassage));
+      /* the label names what the NEXT tap will show, not the current view */
+      peek.textContent = showingPassage ? '📄 Passage' : '✎ Questions';
+      $$('#frTabs button').forEach(function (b) {
+        b.classList.toggle('on', b.dataset.tab === (showingPassage ? 'p' : 'q'));
+      });
+    });
+  })();
+
   /* ── Tabs (mobile) ── */
   $$('#frTabs button').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -4783,6 +5012,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
     clockEl.textContent = fmtClock(DURATION);
     clockEl.className = 'fr-clock';
     $('#frStart').disabled = false; $('#frSubmit').disabled = true;
+    $('#frPapers').style.display = '';
     $('#frReview').classList.remove('show');
     fillEl.style.width = '0%'; markEl.style.left = '0%';
     youEl.textContent = 'You: 0 of 13 answered';
@@ -4800,6 +5030,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
     });
     $('#frSplit').classList.add('tab-p'); $('#frSplit').classList.remove('tab-q');
     $$('#frTabs button').forEach(function (b) { b.classList.toggle('on', b.dataset.tab === 'p'); });
+    var pk2 = $('#frPeek'); if (pk2) { pk2.textContent = '✎ Questions'; pk2.classList.add('on'); }
   }
   $('#frReset').addEventListener('click', reset);
   Resettable.push(function () { loadPaper(paperIdx); });
