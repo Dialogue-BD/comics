@@ -18,7 +18,7 @@
 
   --text: #e9ecf5;
   --text-muted: #9aa3ba;
-  --text-dim: #6b7490;
+  --text-dim: #8892b0;
 
   --accent: #5b8cff;
   --accent-dim: rgba(91,140,255,0.13);
@@ -488,6 +488,173 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 @media print { .answer-key { display: block !important; margin-top: 14px; padding-top: 10px; border-top: 1px dashed #999; font-size: 9pt; color: #333 !important; } }
 .blank-line { display: inline-block; border-bottom: 1px solid #666; min-width: 120px; height: 1.1em; }
 
+/* ══════════ ACCESSIBILITY ══════════ */
+:where(button, select, a, input, [tabindex]):focus-visible {
+  outline: 3px solid var(--warn);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--accent); color: #fff; padding: 10px 18px; border-radius: 0 0 var(--r-sm) 0;
+  font-weight: 700; font-size: 0.85rem; text-decoration: none;
+}
+.skip-link:focus { left: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .eye-dot { transition: opacity .2s !important; }
+}
+
+/* ══════════ TEACHER: ON-SCREEN ANSWER KEYS ══════════ */
+body.show-keys .answer-key {
+  display: block !important;
+  margin-top: 14px; padding: 11px 14px;
+  background: var(--warn-dim); border: 1px dashed var(--warn); border-radius: var(--r-sm);
+  font-size: 0.83rem; color: #f5e7bf;
+}
+body.show-keys .answer-key b { color: var(--warn); }
+
+/* ══════════ SPEED CONTROL ══════════ */
+.speed-ctl { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; }
+.speed-ctl .lbl2 { font-size: 0.72rem; color: var(--text-dim); font-weight: 700; }
+.speed-ctl button {
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 700; cursor: pointer;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-muted);
+  padding: 4px 9px; border-radius: 6px;
+}
+.speed-ctl button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ══════════ GUIDED PRACTICE (you-do) ══════════ */
+.gp-step {
+  border: 1px solid var(--border); border-radius: var(--r); padding: 16px 18px;
+  background: var(--surface-2); margin-bottom: 12px; opacity: 0.4; pointer-events: none;
+  transition: opacity .3s;
+}
+.gp-step.live { opacity: 1; pointer-events: auto; border-color: var(--accent); }
+.gp-step.done { opacity: 1; border-color: var(--good); background: var(--good-dim); }
+.gp-step .gp-h {
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 7px; display: flex; align-items: center; gap: 8px;
+}
+.gp-step.done .gp-h { color: var(--good); }
+.gp-step .gp-h .tick { display: none; }
+.gp-step.done .gp-h .tick { display: inline; }
+.gp-q { font-family: var(--serif); font-size: 1rem; margin-bottom: 11px; color: var(--text); }
+
+/* ══════════ FULL RUN (exam simulation) ══════════ */
+.fr-toolbar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 13px 17px; margin-bottom: 16px;
+}
+.fr-toolbar.sticky { position: sticky; top: 58px; z-index: 30; box-shadow: var(--shadow); }
+.fr-clock { font-family: var(--mono); font-size: 1.7rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--good); line-height: 1; }
+.fr-clock.warn { color: var(--warn); }
+.fr-clock.urgent { color: var(--bad); }
+.fr-pace { flex: 1 1 240px; min-width: 200px; }
+.fr-pace-track { position: relative; height: 22px; border-radius: 6px; background: var(--surface-3); border: 1px solid var(--border); overflow: hidden; }
+.fr-pace-fill { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width .35s; }
+.fr-pace-marker { position: absolute; top: -3px; bottom: -3px; width: 3px; background: var(--warn); box-shadow: 0 0 7px var(--warn); transition: left .35s; }
+.fr-pace-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 5px; display: flex; justify-content: space-between; gap: 10px; }
+
+.fr-tabs { display: none; gap: 6px; margin-bottom: 12px; }
+.fr-tabs button {
+  flex: 1; font-family: inherit; font-size: 0.84rem; font-weight: 700; cursor: pointer;
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-muted);
+  padding: 10px; border-radius: var(--r-sm);
+}
+.fr-tabs button.on { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+
+.fr-split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+.fr-passage-col { position: sticky; top: 140px; max-height: calc(100vh - 165px); overflow-y: auto; }
+.fr-passage { font-family: var(--serif); font-size: 1rem; line-height: 1.8; color: #cdd3e4; }
+.fr-passage h4 { font-family: var(--sans); font-size: 1.08rem; margin-bottom: 10px; color: var(--text); }
+.fr-passage p { margin-bottom: 13px; }
+.fr-passage .pl {
+  display: inline-block; font-family: var(--sans); font-weight: 800; font-size: 0.78rem;
+  color: var(--accent); background: var(--accent-dim); border-radius: 5px;
+  padding: 1px 7px; margin-right: 8px;
+}
+.fr-qcol { display: flex; flex-direction: column; gap: 14px; }
+
+.fr-q {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 14px 16px; transition: border-color .2s, background .2s;
+}
+.fr-q.flagged { border-color: var(--warn); background: var(--warn-dim); }
+.fr-q.answered { border-color: var(--good); }
+.fr-q-head { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; }
+.fr-q-num { font-size: 0.74rem; font-weight: 800; color: var(--accent); font-family: var(--mono); }
+.fr-q-type { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-dim); background: var(--surface-3); padding: 2px 8px; border-radius: 999px; }
+.fr-flag {
+  margin-left: auto; font-family: inherit; font-size: 0.7rem; font-weight: 700; cursor: pointer;
+  background: transparent; border: 1px solid var(--border); color: var(--text-dim);
+  padding: 3px 9px; border-radius: 999px;
+}
+.fr-flag:hover { border-color: var(--warn); color: var(--warn); }
+.fr-flag.on { background: var(--warn); border-color: var(--warn); color: #241a02; }
+.fr-q-text { font-family: var(--serif); font-size: 0.98rem; margin-bottom: 10px; color: var(--text); }
+.fr-gap {
+  font-family: var(--mono); font-size: 0.92rem; width: 190px;
+  background: var(--surface-3); border: 1px solid var(--border); color: var(--text);
+  border-radius: var(--r-sm); padding: 8px 11px;
+}
+.fr-gap.correct { border-color: var(--good); background: var(--good-dim); }
+.fr-gap.wrong { border-color: var(--bad); background: var(--bad-dim); }
+.fr-limit { font-size: 0.72rem; color: var(--warn); font-weight: 700; margin-top: 6px; }
+
+.fr-review { display: none; }
+.fr-review.show { display: block; }
+.fr-timeline { display: flex; gap: 3px; align-items: flex-end; height: 96px; margin: 14px 0 6px; }
+.fr-bar { flex: 1; background: var(--accent); border-radius: 3px 3px 0 0; min-height: 4px; position: relative; transition: height .4s; }
+.fr-bar.slow { background: var(--bad); }
+.fr-bar.miss { opacity: 0.35; }
+.fr-bar span {
+  position: absolute; bottom: -19px; left: 0; right: 0; text-align: center;
+  font-size: 0.6rem; color: var(--text-dim); font-family: var(--mono);
+}
+.fr-timeline-wrap { padding-bottom: 20px; }
+
+/* ══════════ SCORECARD ══════════ */
+.sc-grid { display: grid; gap: 12px; }
+.sc-row {
+  display: grid; grid-template-columns: 1fr; gap: 6px;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r); padding: 13px 16px;
+}
+.sc-row.weak { border-color: var(--bad); }
+.sc-row.strong { border-color: var(--good); }
+.sc-top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.sc-name { font-weight: 700; font-size: 0.95rem; }
+.sc-sub { font-size: 0.76rem; color: var(--text-dim); }
+.sc-val { margin-left: auto; font-family: var(--mono); font-weight: 800; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.sc-track { height: 9px; border-radius: 999px; background: var(--surface-3); overflow: hidden; }
+.sc-fill { height: 100%; border-radius: 999px; background: var(--good); transition: width .5s; }
+.sc-fill.mid { background: var(--warn); }
+.sc-fill.low { background: var(--bad); }
+.sc-fill.none { background: var(--surface-3); }
+.sc-verdict {
+  margin-top: 18px; padding: 18px 20px; border-radius: var(--r);
+  border: 1px solid var(--accent); background: var(--accent-dim);
+}
+.sc-verdict h4 { font-size: 1.08rem; margin-bottom: 8px; color: var(--accent); }
+.sc-verdict p { font-size: 0.92rem; color: var(--text); margin-bottom: 9px; }
+.sc-verdict p:last-child { margin-bottom: 0; }
+.sc-verdict .rx { color: var(--warn); font-weight: 700; }
+
+@media (max-width: 900px) {
+  .fr-split { grid-template-columns: 1fr; }
+  .fr-passage-col { position: static; max-height: none; }
+  .fr-tabs { display: flex; }
+  .fr-split.tab-q .fr-passage-col { display: none; }
+  .fr-split.tab-p .fr-qcol { display: none; }
+  .fr-toolbar.sticky { top: 52px; }
+}
+
 /* ══════════ FOOTER ══════════ */
 footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); font-size: 0.82rem; border-top: 1px solid var(--border-soft); margin-top: 30px; }
 
@@ -531,6 +698,28 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
   .kwchip { border: 1px dashed #999 !important; }
 
   /* worksheets are for writing on: replace live controls with blanks */
+  /* The Full Run prints as a two-side mock paper: passage, then questions. */
+  .fr-split { display: block !important; }
+  .fr-passage-col { position: static !important; max-height: none !important; overflow: visible !important; margin-bottom: 14px; }
+  .fr-passage, .fr-q, .fr-gap { background: #fff !important; color: #111 !important; border-color: #999 !important; }
+  .fr-passage h4, .fr-q-text, .fr-q-num, .fr-q-type, .fr-passage .pl { color: #111 !important; }
+  .fr-passage .pl { background: #eee !important; }
+  .fr-qcol { display: block !important; }
+  .fr-q { page-break-inside: avoid; margin-bottom: 10px; }
+  .fr-flag, .fr-review, .fr-tabs, .fr-toolbar { display: none !important; }
+  .fr-limit { color: #111 !important; font-style: italic; }
+  .fr-q-type {
+    background: #fff !important; border: 1px solid #999 !important;
+    color: #333 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .fr-q-num { color: #111 !important; }
+  /* the answer box becomes a writable rule, not a UI control */
+  .fr-gap {
+    border: none !important; border-bottom: 1px solid #333 !important;
+    border-radius: 0 !important; width: 240px; padding-left: 2px;
+  }
+  .fr-gap::placeholder { color: transparent !important; }
+
   .ws-passage { font-family: var(--serif); font-size: 10pt; line-height: 1.5; margin-bottom: 12px; }
   .ws-passage p { margin-bottom: 7px; }
   .ws-passage h4 { font-family: var(--sans); font-size: 11pt; }
@@ -556,6 +745,8 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 </head>
 <body>
 
+<a class="skip-link" href="#crisis">Skip to the first station</a>
+
 <nav class="top">
   <div class="bar">
     <a class="nav-brand" href="../">Dialogue <span>· IELTS</span></a>
@@ -567,11 +758,15 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <a href="#keywords"><i>4</i> Keyword Lab</a>
       <a href="#scanning"><i>5</i> Scan Sprint</a>
       <a href="#traps"><i>6</i> Trap Detector</a>
-      <a href="#worksheets"><i>7</i> Worksheets</a>
+      <a href="#fullrun"><i>7</i> The Full Run</a>
+      <a href="#scorecard"><i>8</i> Scorecard</a>
+      <a href="#worksheets"><i>9</i> Worksheets</a>
     </div>
     <div class="nav-tools no-print">
       <button class="toggle-btn" id="btnProjector" title="Larger type for the big screen">🖥️ Projector</button>
       <button class="toggle-btn" id="btnNotes" title="Show facilitation notes">📋 Notes</button>
+      <button class="toggle-btn" id="btnKeys" title="Reveal all answer keys on screen">🔑 Keys</button>
+      <button class="toggle-btn" id="btnResetAll" title="Clear every drill for the next class">↺ Reset all</button>
     </div>
   </div>
 </nav>
@@ -580,7 +775,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
   <div class="wrap">
     <div class="eyebrow">Dialogue Language Center · IELTS Reading</div>
     <h1>Reading Altitude</h1>
-    <p class="lede">Students fail IELTS Reading on the clock, not on the vocabulary. This is an eight-station system for teaching them to change altitude on purpose — fly high to map a text, drop low to scan for one fact, and never read every word again.</p>
+    <p class="lede">Students fail IELTS Reading on the clock, not on the vocabulary. This is a ten-station system for teaching them to change altitude on purpose — fly high to map a text, drop low to scan for one fact, and never read every word again.</p>
     <div class="hero-meta">
       <span class="chip">🖥️ Big-screen demos</span>
       <span class="chip">📱 Phone drills</span>
@@ -627,6 +822,12 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         </div>
       </div>
       <p class="dim" style="font-size:0.78rem; margin-top:10px">Passage length: <b id="spWordCount">–</b> words · original text written for this exercise</p>
+
+      <div id="spCheck" style="display:none; margin-top:20px; padding-top:18px; border-top:1px solid var(--border-soft)">
+        <div class="card-label">🧠 Before we trust that number</div>
+        <p class="card-intro">A reading speed only counts if you actually took the passage in. Two questions, from memory — no looking back.</p>
+        <div id="spCheckList" aria-live="polite"></div>
+      </div>
     </div>
 
     <div class="card">
@@ -786,6 +987,12 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         <button class="btn sec sm" id="mReplay">↻ Replay</button>
         <button class="btn ghost sm" id="mRestart">Restart</button>
         <button class="btn ghost sm hide-on-projector" id="mBonus">🐌 Compare: read every word</button>
+        <span class="speed-ctl" role="group" aria-label="Animation speed">
+          <span class="lbl2">Speed</span>
+          <button data-sp="2" title="Half speed">0.5×</button>
+          <button data-sp="1" class="on" title="Normal speed">1×</button>
+          <button data-sp="0.5" title="Double speed">2×</button>
+        </span>
       </div>
 
       <div class="qbox" id="mQbox">
@@ -810,6 +1017,65 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       </div>
 
       <p class="method-caption" id="mCaption">Step 1 of 6 — press "▶ Play step 1" to begin. Use ← and → to move between steps.</p>
+    </div>
+
+    <div class="tnote">
+      <div class="tnote-h">Do not skip the next card</div>
+      Watching a method is not learning it. The card below is the <b>you-do</b> rung: same passage, new question, and the page stops animating and starts asking. Run it in pairs with one phone, and make them say each answer out loud before they tap. If a pair gets step 1 wrong, send them back to the map rather than telling them the paragraph.
+    </div>
+
+    <div class="card pairs-card" id="gpCard">
+      <div class="card-label">👥 Now you try — same passage, new question</div>
+      <div class="card-title">Run the six steps yourself. The page will not do it for you.</div>
+      <p class="card-intro">Each step unlocks the next only when you get it right, so you cannot skip ahead to the answer.</p>
+
+      <div class="qbox" style="display:block">
+        <div class="card-label">The question · True, False or Not Given?</div>
+        <p class="q-line">Rooftop hives have been installed on well-known buildings in more than one country.</p>
+      </div>
+
+      <div class="gp-step live" id="gp1">
+        <div class="gp-h">Step 1 — 2 · Use your map <span class="tick">✓</span></div>
+        <p class="gp-q">You already skimmed this passage and labelled it. Which paragraph will hold the answer?</p>
+        <div class="opts">
+          <button class="opt" data-v="1">¶1 · growth &amp; numbers</button>
+          <button class="opt" data-v="2">¶2 · the case for</button>
+          <button class="opt" data-v="3">¶3 · the case against</button>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="gp-step" id="gp2">
+        <div class="gp-h">Step 3 — 4 · Mark the keywords <span class="tick">✓</span></div>
+        <p class="gp-q">Tap the <b>two</b> words in the question you would physically scan for. Concrete nouns only — not the idea words.</p>
+        <div class="kw-sentence" id="gpKw"></div>
+        <div class="btn-row"><button class="btn sm sec" id="gpKwCheck">Check</button></div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="gp-step" id="gp3">
+        <div class="gp-h">Step 5 · Scan that paragraph <span class="tick">✓</span></div>
+        <p class="gp-q">Scan ¶2 only. Which sentence did your keywords land you on?</p>
+        <div class="opts" style="flex-direction:column; align-items:stretch">
+          <button class="opt" data-v="a">Supporters argue that urban bees benefit from a longer flowering season…</button>
+          <button class="opt" data-v="b">Rooftop hives have appeared on buildings ranging from the Paris Opera House to hotels in New York.</button>
+          <button class="opt" data-v="c">…parks, gardens and even balconies bloom at different times across a city.</button>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="gp-step" id="gp4">
+        <div class="gp-h">Step 6 · Run the four-point check <span class="tick">✓</span></div>
+        <p class="gp-q">Read that whole sentence. Same subject? Same direction? Same strength? Same scope? Now decide.</p>
+        <div class="opts">
+          <button class="opt" data-v="TRUE">TRUE</button>
+          <button class="opt" data-v="FALSE">FALSE</button>
+          <button class="opt" data-v="NOT GIVEN">NOT GIVEN</button>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div class="btn-row no-print"><button class="btn ghost sm" id="gpReset">Start over</button></div>
     </div>
   </div>
 </section>
@@ -896,7 +1162,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="btn-row no-print" style="margin-bottom:16px">
         <button class="btn" id="locStart">▶ Start timer</button>
         <button class="btn ghost sm" id="locReset">Reset</button>
-        <span class="score-pill" id="locScore">0 / 6</span>
+        <span class="score-pill" id="locScore" aria-live="polite">0 / 6</span>
         <span class="timer" id="locTimer" style="margin-left:auto">0:00</span>
       </div>
 
@@ -942,7 +1208,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="card-title">Your keyword will not be in the text. Its disguise will.</div>
       <p class="card-intro">For each question phrase, find the wording the passage actually uses. This is the single highest-value habit in IELTS Reading — scanning fails when students search for the exact word instead of its meaning.</p>
       <div class="btn-row no-print" style="margin-bottom:14px">
-        <span class="score-pill" id="paraScore">0 / 5</span>
+        <span class="score-pill" id="paraScore" aria-live="polite">0 / 5</span>
         <button class="btn ghost sm" id="paraReset">Reset</button>
       </div>
       <div id="paraList"></div>
@@ -993,7 +1259,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="btn-row no-print" style="margin-bottom:16px">
         <button class="btn" id="raceStart">▶ Start race</button>
         <button class="btn ghost sm" id="raceReset">Reset</button>
-        <span class="score-pill" id="raceScore">0 / 6</span>
+        <span class="score-pill" id="raceScore" aria-live="polite">0 / 6</span>
         <span class="timer" id="raceTimer" style="margin-left:auto">0:00</span>
       </div>
 
@@ -1057,7 +1323,8 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="card-title">Six located sentences. Run the four-point check on each.</div>
       <p class="card-intro">The sentence has already been found for you — that part is done. Your only job is the check.</p>
       <div class="btn-row no-print" style="margin-bottom:16px">
-        <span class="score-pill" id="trapScore">0 / 6</span>
+        <span class="score-pill" id="trapScore" aria-live="polite">0 / 6</span>
+        <button class="btn sec sm" id="trapRound">🔄 Round 2 — new items</button>
         <button class="btn ghost sm" id="trapReset">Reset</button>
       </div>
       <div id="trapList"></div>
@@ -1067,11 +1334,138 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 </section>
 
 <!-- ══════════ STATION 7 ══════════ -->
+<section class="station" id="fullrun">
+  <div class="wrap">
+    <div class="station-head">
+      <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag screen">🖥️ Big screen</span><span class="tag print">🖨️ Printable</span></div>
+      <div class="station-num">Station 7 · 20 minutes + 8 to review</div>
+      <h2>The Full Run</h2>
+      <p class="station-sub">Six skills are not a strategy until they run together against a clock. One passage, thirteen questions, three question types, twenty minutes — the same question-per-minute rate as the real exam, in the same split-screen layout as computer-delivered IELTS. The page watches your pace and, afterwards, tells you <em>exactly which question cost you the paper</em>.</p>
+    </div>
+
+    <div class="tnote">
+      <div class="tnote-h">How to run it</div>
+      Silent, individual, phones out, no talking — this is the only station that should feel like an exam. Two things to say before you start the clock: <b>"the pace marker is your opponent, not the questions"</b>, and <b>"if a question passes ninety seconds, flag it and move on."</b> Then say nothing for twenty minutes. The debrief afterwards is where the teaching happens: go straight to the timing chart and find the tall red bar. That single question is almost always the reason a student runs out of time, and they will not have noticed it themselves.
+    </div>
+    <div class="tnote">
+      <div class="tnote-h">The tactic almost nobody teaches</div>
+      <b>Questions 5–13 follow the order of the passage. Questions 1–4 do not.</b> True/False/Not Given and sentence completion march downwards through the text, so the answer to Q7 is always below the answer to Q6 — which means every answer you find shrinks the search area for the next one. Matching-information questions (1–4) jump around, so save them for last, when you have already read most of the passage looking for everything else.
+    </div>
+
+    <div class="card" id="fullrunCard">
+      <div class="fr-toolbar sticky no-print" id="frBar">
+        <div>
+          <div class="fr-clock" id="frClock">20:00</div>
+          <div class="dim" style="font-size:0.7rem; margin-top:2px">time remaining</div>
+        </div>
+        <div class="fr-pace">
+          <div class="fr-pace-track">
+            <div class="fr-pace-fill" id="frFill" style="width:0%"></div>
+            <div class="fr-pace-marker" id="frMarker" style="left:0%"></div>
+          </div>
+          <div class="fr-pace-label">
+            <span id="frPaceYou">You: 0 of 13 answered</span>
+            <span id="frPaceTarget">Pace: not started</span>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn" id="frStart">▶ Begin</button>
+          <button class="btn warn sm" id="frSubmit" disabled>Submit</button>
+          <button class="btn ghost sm" id="frReset">Reset</button>
+        </div>
+      </div>
+
+      <div class="fr-tabs no-print" id="frTabs" role="tablist">
+        <button class="on" data-tab="p" role="tab">📄 Passage</button>
+        <button data-tab="q" role="tab">✎ Questions</button>
+      </div>
+
+      <div class="fr-split tab-p" id="frSplit">
+        <div class="fr-passage-col">
+          <div class="passage-box">
+            <div class="fr-passage" id="frPassage">
+              <h4>The Rediscovery of Roman Concrete</h4>
+              <p><span class="pl">A</span>The dome of the Pantheon in Rome has stood for almost two thousand years. It contains no steel, spans forty-three metres, and remains the largest unreinforced concrete dome ever built. Roman harbour walls, poured directly into the sea two millennia ago, are still standing in the Bay of Naples. Modern reinforced concrete, by contrast, is frequently scheduled for major repair within fifty to a hundred years. That contrast has puzzled engineers for generations, and only in the last decade have laboratories begun to explain it.</p>
+              <p><span class="pl">B</span>The Roman recipe was not concrete as we understand the word. Instead of the finely ground Portland cement used today, Roman builders combined lime with pozzolana — a volcanic ash named after the town of Pozzuoli, near Naples — and, for structures built in the sea, mixed it with seawater rather than fresh water. The architect Vitruvius set down proportions for these mixtures in the first century BC, and his account survived, which is why the ingredients themselves were never really a mystery. What was mysterious was why they lasted so long.</p>
+              <p><span class="pl">C</span>The seawater turned out to be the first clue. Salt water is ruinous to modern concrete: it corrodes the steel embedded inside and splits the material apart from within, which is why coastal structures are among the most expensive to maintain. Roman marine concrete behaves in the opposite way. Analysis of cores drilled from ancient breakwaters showed that seawater percolating through the material had, over centuries, dissolved parts of the volcanic ash and allowed rare crystals to grow in the spaces left behind. The structures were not merely surviving the sea; they were being strengthened by it.</p>
+              <p><span class="pl">D</span>Marie Jackson, a geologist at the University of Utah, identified the crystal responsible as aluminous tobermorite, a mineral that is extremely difficult to manufacture under laboratory conditions and yet had formed slowly and unaided inside Roman piers. Her work established that the reaction was still continuing long after the concrete had set — in some cases for two thousand years, a timescale no modern building material is designed around.</p>
+              <p><span class="pl">E</span>A second explanation arrived from a different direction. A team led by Admir Masic at the Massachusetts Institute of Technology examined the small white lumps, known as lime clasts, scattered through Roman samples. These had long been dismissed as evidence of careless mixing. Masic's group argued instead that they were deliberate, produced by a technique called hot mixing in which highly reactive quicklime is added directly to the mixture. When the researchers deliberately cracked laboratory samples made this way and ran water through them, the cracks sealed themselves within two weeks. Identical samples made without the clasts never sealed at all.</p>
+              <p><span class="pl">F</span>None of this means the industry can simply revert to ancient practice. Roman concrete is weak in tension, sets far more slowly than modern mixes, and could not carry the loads that a contemporary bridge or tower demands. It cannot be reinforced with steel, because the very chemistry that protects the concrete is the chemistry that attacks the metal. Volcanic ash of the right composition is not available in most of the world either, and shipping it across oceans would cancel out much of the environmental argument for using it.</p>
+              <p><span class="pl">G</span>What is genuinely being taken from the Romans is narrower and more useful: the principle that a material can be designed to repair itself, and that durability may matter more than initial strength. Cement production is estimated to account for around eight per cent of global carbon dioxide emissions, and a substantial share of that is spent replacing structures that failed early. A concrete that lasted three hundred years instead of eighty would reduce those emissions without a single change to the way cement is burned. Measured that way, the Pantheon is not a curiosity. It is a specification.</p>
+            </div>
+          </div>
+          <p class="dim" style="font-size:0.76rem; margin-top:9px">Original text written for this exercise · <span id="frWords">–</span> words · the science described is real and current</p>
+        </div>
+
+        <div class="fr-qcol" id="frQuestions"></div>
+      </div>
+
+      <div class="fr-review" id="frReview">
+        <div style="border-top:1px solid var(--border); margin-top:22px; padding-top:22px">
+          <div class="card-label">📊 Debrief</div>
+          <div class="card-title" id="frVerdictHead">—</div>
+          <div class="grid-3" style="margin:16px 0">
+            <div class="stat-tile accent"><div class="val" id="frScore">–</div><div class="lbl">Score</div></div>
+            <div class="stat-tile"><div class="val" id="frTime">–</div><div class="lbl">Time used</div></div>
+            <div class="stat-tile warn"><div class="val" id="frSlowest">–</div><div class="lbl">Longest single question</div></div>
+          </div>
+
+          <p style="font-size:0.86rem; font-weight:700; margin-bottom:2px">Where your twenty minutes went</p>
+          <p class="dim" style="font-size:0.78rem; margin-bottom:0">Each bar is one question. Red bars ran over 90 seconds — in the real exam those are the ones to flag and come back to.</p>
+          <div class="fr-timeline-wrap"><div class="fr-timeline" id="frTimeline"></div></div>
+
+          <div id="frCoach"></div>
+
+          <div class="grid-3" style="margin-top:18px">
+            <div class="check-card"><div class="cn">Questions 1–4</div><div class="ct" id="frSec1">–</div><div class="cd">Matching information — locating with the map</div></div>
+            <div class="check-card"><div class="cn">Questions 5–9</div><div class="ct" id="frSec2">–</div><div class="cd">True / False / Not Given — the trap check</div></div>
+            <div class="check-card"><div class="cn">Questions 10–13</div><div class="ct" id="frSec3">–</div><div class="cd">Sentence completion — scanning with a word limit</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="answer-key"><b>Answer key:</b> 1–F, 2–D, 3–G, 4–B, 5–TRUE, 6–FALSE, 7–TRUE, 8–FALSE, 9–NOT GIVEN, 10–seawater, 11–Pozzuoli, 12–hot mixing, 13–steel.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STATION 8 ══════════ -->
+<section class="station" id="scorecard">
+  <div class="wrap">
+    <div class="station-head">
+      <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag screen">🖥️ Big screen</span></div>
+      <div class="station-num">Station 8 · 5 minutes</div>
+      <h2>Scorecard &amp; Diagnosis</h2>
+      <p class="station-sub">Everything scored on this page feeds into here. It is not a total — a total tells a student nothing they can act on. It finds the <em>one</em> sub-skill that is holding their reading band down and tells them what to do about it on Monday.</p>
+    </div>
+
+    <div class="tnote">
+      <div class="tnote-h">How to run it</div>
+      Last five minutes of the lesson. Ask every student to scroll here and read their diagnosis aloud to their partner in one sentence: <b>"my bottleneck is ___."</b> Then have them screenshot it — that screenshot is their homework brief, and it is different for every student in the room. Nothing else on this page individualises practice as cheaply as this.
+    </div>
+
+    <div class="card mobile-card">
+      <div class="card-label">📈 This session</div>
+      <div class="card-title" id="scHead">Nothing scored yet</div>
+      <p class="card-intro">Work through the drills above and this fills in live. Bars are grey until you attempt that skill.</p>
+      <div class="sc-grid" id="scGrid" aria-live="polite"></div>
+      <div class="sc-verdict" id="scVerdict" style="display:none">
+        <h4 id="scVerdictHead">—</h4>
+        <div id="scVerdictBody"></div>
+      </div>
+      <div class="btn-row no-print" style="margin-top:18px">
+        <button class="btn ghost sm" id="scReset">Clear my results</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STATION 9 ══════════ -->
 <section class="station" id="worksheets">
   <div class="wrap">
     <div class="station-head">
       <div class="tags"><span class="tag print">🖨️ Printable</span><span class="tag pairs">👥 Pairs</span></div>
-      <div class="station-num">Station 7</div>
+      <div class="station-num">Station 9</div>
       <h2>Worksheets &amp; Lesson Plan</h2>
       <p class="station-sub">For students without a phone or without data, and for the teacher who wants the whole hour on one page. Each button prints a single clean worksheet with the answer key at the foot — cut it off before handing out, or keep it for marking.</p>
     </div>
@@ -1096,26 +1490,36 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         </div>
         <div class="ws-card">
           <h4>Trap Detector</h4>
-          <p>Six True / False / Not Given items with the four-point check. The best homework on this page.</p>
+          <p>Six True / False / Not Given items with the four-point check. Press "Round 2" first to print the alternative set.</p>
           <button class="btn sm sec" data-print="trapCard">Print worksheet</button>
+        </div>
+        <div class="ws-card">
+          <h4>The Full Run · mock</h4>
+          <p>The complete 13-question paper on <i>Roman Concrete</i>, with the passage. Two sides — a genuine 20-minute mock to set as homework or a mid-term check.</p>
+          <button class="btn sm sec" data-print="fullrunCard">Print mock paper</button>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-label">📋 The 60-minute lesson</div>
-      <div class="card-title">Suggested sequence</div>
+      <div class="card-label">📋 The lesson</div>
+      <div class="card-title">A 90-minute sequence, and how to cut it down</div>
+      <p class="card-intro">The arc is deliberate: create the need, name the concept, show the method, drill the parts, then assemble under pressure and diagnose. Skipping the last two rungs is the commonest way this kind of lesson fails.</p>
       <div class="para-map" style="margin-top:14px">
-        <div class="para-slot"><div class="para-key">8′</div><div><div class="para-text"><b>Station 0 — The Time Crisis.</b> Whole class read, measure WPM, project the arithmetic. Do not teach yet; just let the numbers land.</div></div></div>
+        <div class="para-slot"><div class="para-key">8′</div><div><div class="para-text"><b>Station 0 — The Time Crisis.</b> Whole class read, measure WPM, then the comprehension check. Do not teach yet; let the numbers land.</div></div></div>
         <div class="para-slot"><div class="para-key">10′</div><div><div class="para-text"><b>Station 1 — Reading Altitude.</b> Three flights on the projector. Introduce the phrase you will reuse all lesson: <i>what altitude are you at?</i></div></div></div>
-        <div class="para-slot"><div class="para-key">12′</div><div><div class="para-text"><b>Station 2 — The Six-Step Method.</b> Walk the steps with the arrow keys. Take a class vote before step 6 and let them fall into the trap.</div></div></div>
-        <div class="para-slot"><div class="para-key">12′</div><div><div class="para-text"><b>Station 3 — Map Drill.</b> Pairs, phones, 90 seconds for Part A. Then Part B individually and silently, timed.</div></div></div>
-        <div class="para-slot"><div class="para-key">12′</div><div><div class="para-text"><b>Station 4 — Keyword Lab.</b> First item together on the screen, over-marking deliberately. Then pairs. Part B is the band-7 skill.</div></div></div>
-        <div class="para-slot"><div class="para-key">6′</div><div><div class="para-text"><b>Station 5 or 6 — Scan Sprint or Trap Detector.</b> Pick one for the last stretch; set the other as homework from the printed worksheet.</div></div></div>
+        <div class="para-slot"><div class="para-key">12′</div><div><div class="para-text"><b>Station 2 — The Method + Now You Try.</b> Walk the six steps with the arrow keys, take a class vote before step 6, then send pairs into the guided card. This is the I-do / we-do / you-do rung — do not cut it.</div></div></div>
+        <div class="para-slot"><div class="para-key">12′</div><div><div class="para-text"><b>Station 3 — Map Drill.</b> Pairs, phones, 90 seconds for Part A. Part B individually, silently, timed.</div></div></div>
+        <div class="para-slot"><div class="para-key">12′</div><div><div class="para-text"><b>Station 4 — Keyword Lab.</b> First item together on screen, over-marking deliberately. Part B is the band-7 skill.</div></div></div>
+        <div class="para-slot"><div class="para-key">8′</div><div><div class="para-text"><b>Station 5 or 6 — Scan Sprint or Trap Detector.</b> Pick one; set the other as printed homework.</div></div></div>
+        <div class="para-slot"><div class="para-key">20′</div><div><div class="para-text"><b>Station 7 — The Full Run.</b> Silent, individual, no talking. Say the ninety-second rule, start the clock, then say nothing at all.</div></div></div>
+        <div class="para-slot"><div class="para-key">8′</div><div><div class="para-text"><b>Debrief + Station 8 — Scorecard.</b> Go to the timing chart first and find the tall red bar. Then every student reads their diagnosis to a partner in one sentence and screenshots it.</div></div></div>
       </div>
       <div class="tnote" style="display:block; margin-top:18px">
         <div class="tnote-h">If you only have 20 minutes</div>
         Station 0 (8′) → Station 1 (6′) → Station 3 Part B (6′). The diagnostic creates the need, the flight names the concept, and the locate drill proves it works. Everything else can be homework.
+        <br><br><b>If you have 45:</b> Station 0 → Station 1 → Station 2 including the you-do card → Station 7. Cut every isolated drill before you cut the Full Run — assembling the skills matters more than polishing any one of them.
+        <br><br><b>Second lesson on the same class:</b> skip Stations 0–2 entirely, open on Station 7 cold, then send each student to whichever drill their scorecard named. Press <b>Round 2</b> on the Trap Detector so the items are new.
       </div>
     </div>
   </div>
@@ -1187,6 +1591,55 @@ function dotTo(span, quick) {
 }
 function dotOff() { eyeDot.classList.remove('on', 'quick'); }
 
+/* ═══════════════════ PROGRESS REGISTRY ═══════════════════
+   Every scored drill reports into this so Station 8 can diagnose which
+   sub-skill is actually broken, rather than just tallying a score.
+   Deliberately in-memory only: a class session, not a stored record.      */
+var Progress = (function () {
+  var SKILLS = [
+    { key: 'map',        name: 'Mapping',    sub: 'Turning a skim into a paragraph map',        station: '#mapping'  },
+    { key: 'locate',     name: 'Locating',   sub: 'Choosing the right paragraph before reading', station: '#mapping'  },
+    { key: 'keywords',   name: 'Keywords',   sub: 'Marking only what you can search for',        station: '#keywords' },
+    { key: 'paraphrase', name: 'Paraphrase', sub: 'Recognising the wording the text really uses', station: '#keywords' },
+    { key: 'scan',       name: 'Scanning',   sub: 'Finding a stated fact under time pressure',   station: '#scanning' },
+    { key: 'traps',      name: 'Trap check', sub: 'True / False / Not Given discrimination',     station: '#traps'    },
+    { key: 'fullrun',    name: 'Full Run',   sub: 'All six steps together, on the clock',        station: '#fullrun'  }
+  ];
+  var data = {}, listeners = [];
+  SKILLS.forEach(function (s) { data[s.key] = { correct: 0, total: 0, attempted: false }; });
+  var extra = {};
+  function emit() { listeners.forEach(function (f) { try { f(); } catch (e) {} }); }
+  return {
+    SKILLS: SKILLS,
+    /* record one answered item */
+    hit: function (key, ok) {
+      if (!data[key]) return;
+      data[key].total++; data[key].attempted = true;
+      if (ok) data[key].correct++;
+      emit();
+    },
+    /* overwrite a whole skill at once (used by the Full Run) */
+    set: function (key, correct, total) {
+      if (!data[key]) return;
+      data[key] = { correct: correct, total: total, attempted: total > 0 };
+      emit();
+    },
+    note: function (k, v) { extra[k] = v; emit(); },
+    getNote: function (k) { return extra[k]; },
+    get: function (key) { return data[key]; },
+    all: function () { return data; },
+    reset: function () {
+      SKILLS.forEach(function (s) { data[s.key] = { correct: 0, total: 0, attempted: false }; });
+      extra = {};
+      emit();
+    },
+    onChange: function (f) { listeners.push(f); }
+  };
+})();
+
+/* Every drill registers a reset handler here so one button clears the room. */
+var Resettable = [];
+
 /* ═══════════════════ SHELL: nav, projector mode, notes, print ═══════════════════ */
 (function () {
   var proj = $('#btnProjector'), notes = $('#btnNotes');
@@ -1197,6 +1650,22 @@ function dotOff() { eyeDot.classList.remove('on', 'quick'); }
   notes.addEventListener('click', function () {
     document.body.classList.toggle('show-notes');
     notes.classList.toggle('on', document.body.classList.contains('show-notes'));
+  });
+
+  var keys = $('#btnKeys');
+  keys.addEventListener('click', function () {
+    document.body.classList.toggle('show-keys');
+    keys.classList.toggle('on', document.body.classList.contains('show-keys'));
+  });
+
+  /* One button to clear the room between back-to-back classes. */
+  var RESET_BUTTONS = ['#spReset', '#mapReset', '#locReset', '#paraReset', '#scanReset',
+                       '#raceReset', '#trapReset', '#frReset', '#gpReset', '#mRestart'];
+  $('#btnResetAll').addEventListener('click', function () {
+    RESET_BUTTONS.forEach(function (sel) { var b = $(sel); if (b) b.click(); });
+    Resettable.forEach(function (fn) { try { fn(); } catch (e) {} });
+    Progress.reset();
+    document.getElementById('crisis').scrollIntoView({ block: 'start' });
   });
 
   var links = $$('#navLinks a');
@@ -1272,14 +1741,75 @@ function dotOff() { eyeDot.classList.remove('on', 'quick'); }
     }
     input.value = Math.min(500, Math.max(40, wpm));
     calc(wpm);
+    $('#spCheck').style.display = 'block';
   });
 
-  resetB.addEventListener('click', function () {
+  function fullReset() {
     clearInterval(tick); t0 = null;
     passage.classList.add('blur');
     startB.disabled = false; stopB.disabled = true;
     showTime(0);
+    $('#spCheck').style.display = 'none';
+    $$('#spCheckList .opt').forEach(function (o) { o.disabled = false; o.classList.remove('correct', 'wrong'); });
+    $$('#spCheckList .feedback').forEach(function (f) { f.className = 'feedback'; });
+    checkDone = 0; checkRight = 0;
+    $('#spVerdict').classList.remove('show');
+  }
+  resetB.addEventListener('click', fullReset);
+  Resettable.push(fullReset);
+
+  /* ── Comprehension gate: did the timed read actually go in? ── */
+  var GIST = [
+    { q: 'From memory: what is the passage mainly about?',
+      opts: ['How LED lighting technology has improved',
+             'Why vertical farming suits some crops but not the ones that feed people',
+             'The environmental damage caused by conventional agriculture',
+             'A history of farming from ancient times to today'], a: 1,
+      why: 'The passage runs appeal → obstacle → verdict, and lands on "a narrow supplement, not a replacement". That is the gist.' },
+    { q: 'What does the passage give as the central obstacle?',
+      opts: ['The price of electricity', 'A shortage of water', 'Pests and disease', 'The distance to market'], a: 0,
+      why: 'Paragraph 3 opens "The difficulty is electricity." Every other option is something the passage lists as an advantage.' }
+  ];
+  var checkDone = 0, checkRight = 0;
+  var checkHost = $('#spCheckList');
+  GIST.forEach(function (item, i) {
+    var d = document.createElement('div');
+    d.className = 'q-block';
+    d.innerHTML = '<div class="q-text"><span class="q-num">' + (i + 1) + '</span>' + item.q + '</div>' +
+      '<div class="opts" style="flex-direction:column; align-items:stretch">' +
+      item.opts.map(function (o, k) { return '<button class="opt" data-k="' + k + '">' + o + '</button>'; }).join('') +
+      '</div><div class="feedback"></div>';
+    checkHost.appendChild(d);
+    var opts = $$('.opt', d), f = $('.feedback', d);
+    opts.forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (b.disabled) return;
+        opts.forEach(function (o) { o.disabled = true; });
+        var ok = Number(b.dataset.k) === item.a;
+        b.classList.add(ok ? 'correct' : 'wrong');
+        if (!ok) opts[item.a].classList.add('correct');
+        if (ok) checkRight++;
+        checkDone++;
+        f.className = 'feedback show ' + (ok ? 'ok' : 'no');
+        f.textContent = (ok ? '✓ ' : '✗ ') + item.why;
+        if (checkDone === GIST.length) gistVerdict();
+      });
+    });
   });
+
+  function gistVerdict() {
+    var box = $('#spVerdict'), body = $('#spVerdictBody');
+    var extra;
+    if (checkRight === 2) {
+      extra = ' You also got both comprehension questions right, so that speed is real — this is genuinely how fast you read with understanding.';
+    } else if (checkRight === 1) {
+      extra = ' You only held on to half of it, which means your true reading speed — reading well enough to answer questions — is slower than the number above. The gap between those two speeds is where marks disappear.';
+    } else {
+      extra = ' You missed both comprehension questions, so that number is not a reading speed at all: your eyes moved over the words without taking them in. That is the most expensive habit in the exam — full time cost, no information gained.';
+    }
+    body.textContent = body.textContent + extra;
+    box.classList.add('show');
+  }
 
   applyB.addEventListener('click', function () { calc(Number(input.value)); });
   input.addEventListener('keydown', function (e) { if (e.key === 'Enter') calc(Number(input.value)); });
@@ -1381,6 +1911,7 @@ function dotOff() { eyeDot.classList.remove('on', 'quick'); }
   for (var j = hitFrom; j <= scanTo; j++) hits[j] = true;
 
   var timer = null, step = 1, started = false;
+  var speed = 1;   /* dwell multiplier: 2 = half speed, 0.5 = double speed */
 
   function clearPassage() {
     words.forEach(function (w) { w.classList.remove('f-read', 'f-skim', 'f-scan', 'f-hit'); });
@@ -1399,7 +1930,7 @@ function dotOff() { eyeDot.classList.remove('on', 'quick'); }
       dotTo(span, quick);
       (opts.classFn ? opts.classFn(idx) : []).forEach(function (c) { span.classList.add(c); });
       if (opts.onWord) opts.onWord(idx, i);
-      var d = opts.dwellFn ? opts.dwellFn(idx) : 150;
+      var d = (opts.dwellFn ? opts.dwellFn(idx) : 150) * speed;
       i++;
       timer = setTimeout(next, d);
     })();
@@ -1538,7 +2069,141 @@ function dotOff() { eyeDot.classList.remove('on', 'quick'); }
     if (e.key === 'ArrowLeft') { e.preventDefault(); if (step > 1) go(step - 1); }
   });
 
+  $$('.speed-ctl button', lab).forEach(function (b) {
+    b.addEventListener('click', function () {
+      speed = Number(b.dataset.sp);
+      $$('.speed-ctl button', lab).forEach(function (o) { o.classList.toggle('on', o === b); });
+    });
+  });
+
+  Resettable.push(function () { started = false; go(1); started = false; paint(); });
+
   paint();
+})();
+
+/* ═══════════════════ STATION 2b — GUIDED PRACTICE (you-do) ═══════════════════ */
+(function () {
+  var card = $('#gpCard');
+  if (!card) return;
+  var s1 = $('#gp1'), s2 = $('#gp2'), s3 = $('#gp3'), s4 = $('#gp4');
+
+  function unlock(el) { el.classList.add('live'); el.scrollIntoView({ block: 'center' }); }
+  function complete(el) { el.classList.remove('live'); el.classList.add('done'); }
+
+  /* Step 1 — which paragraph */
+  (function () {
+    var opts = $$('.opt', s1), f = $('.feedback', s1);
+    opts.forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (b.disabled) return;
+        var ok = b.dataset.v === '2';
+        if (!ok) {
+          b.classList.add('wrong'); b.disabled = true;
+          f.className = 'feedback show no';
+          f.textContent = 'Not that one. Go back to your map: which paragraph was about the case FOR urban hives — rooftops, parks, famous buildings?';
+          return;
+        }
+        opts.forEach(function (o) { o.disabled = true; });
+        b.classList.add('correct');
+        f.className = 'feedback show ok';
+        f.textContent = '✓ ¶2 is the case for urban hives, and rooftop buildings sit inside that argument. You have narrowed 120 words to about 45 without reading any of them.';
+        complete(s1); unlock(s2);
+      });
+    });
+  })();
+
+  /* Step 2 — keyword picking */
+  (function () {
+    var TOKENS = ['Rooftop','hives','have','been','installed','on','well-known','buildings','in','more','than','one','country.'];
+    var KEYS = [0, 1];              /* "Rooftop hives" — the concrete, searchable noun phrase */
+    var host = $('#gpKw'), f = $('.feedback', s2);
+    var chips = TOKENS.map(function (t, i) {
+      var b = document.createElement('button');
+      b.className = 'kwchip'; b.type = 'button'; b.textContent = t;
+      b.addEventListener('click', function () {
+        if (b.disabled) return;
+        b.classList.toggle('picked');
+      });
+      host.appendChild(b);
+      return b;
+    });
+    $('#gpKwCheck').addEventListener('click', function () {
+      var picked = [];
+      chips.forEach(function (c, i) { if (c.classList.contains('picked')) picked.push(i); });
+      var missed = KEYS.filter(function (i) { return picked.indexOf(i) < 0; });
+      var over = picked.filter(function (i) { return KEYS.indexOf(i) < 0; });
+      if (missed.length || over.length > 1) {
+        f.className = 'feedback show no';
+        f.textContent = over.length > 1
+          ? 'Too many. "installed", "well-known" and "more than one country" are idea words — the passage will paraphrase every one of them, so they are useless for searching. Pick the noun phrase your eyes can actually hunt for.'
+          : 'You are missing the searchable part. Which two words name a physical thing that the passage is likely to repeat word for word?';
+        return;
+      }
+      chips.forEach(function (c, i) {
+        c.disabled = true; c.classList.remove('picked');
+        if (KEYS.indexOf(i) >= 0) c.classList.add('reveal-key');
+      });
+      f.className = 'feedback show ok';
+      f.textContent = '✓ "Rooftop hives" is the search target. Everything else in that question is an idea you will check afterwards — including "more than one country", which the passage never says in those words at all.';
+      complete(s2); unlock(s3);
+    });
+  })();
+
+  /* Step 3 — locate the sentence */
+  (function () {
+    var opts = $$('.opt', s3), f = $('.feedback', s3);
+    opts.forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (b.disabled) return;
+        var ok = b.dataset.v === 'b';
+        if (!ok) {
+          b.classList.add('wrong'); b.disabled = true;
+          f.className = 'feedback show no';
+          f.textContent = 'That sentence is about flowering seasons, not buildings. Scan ¶2 again for your keyword.';
+          return;
+        }
+        opts.forEach(function (o) { o.disabled = true; });
+        b.classList.add('correct');
+        f.className = 'feedback show ok';
+        f.textContent = '✓ Found. Now the hard part — that sentence does not contain the words "well-known" or "country" anywhere.';
+        complete(s3); unlock(s4);
+      });
+    });
+  })();
+
+  /* Step 4 — the verdict */
+  (function () {
+    var opts = $$('.opt', s4), f = $('.feedback', s4);
+    var answered = false;
+    opts.forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (answered) return;
+        answered = true;
+        opts.forEach(function (o) { o.disabled = true; });
+        var ok = b.dataset.v === 'TRUE';
+        b.classList.add(ok ? 'correct' : 'wrong');
+        if (!ok) opts.forEach(function (o) { if (o.dataset.v === 'TRUE') o.classList.add('correct'); });
+        f.className = 'feedback show ' + (ok ? 'ok' : 'no');
+        f.innerHTML = (ok ? '✓ TRUE. ' : '✗ TRUE. ') +
+          'The Paris Opera House and hotels in New York are both well-known buildings, and Paris and New York are in different countries — so "more than one country" is supported even though the passage never uses that phrase. ' +
+          '<b>This is what NOT GIVEN is not.</b> The information is there; it just needed one step of inference from named places. Reserve NOT GIVEN for claims the passage genuinely never addresses.';
+        complete(s4);
+        Progress.hit('traps', ok);
+      });
+    });
+  })();
+
+  function reset() {
+    [s1, s2, s3, s4].forEach(function (el, i) {
+      el.classList.toggle('live', i === 0);
+      el.classList.remove('done');
+      $$('.opt', el).forEach(function (o) { o.disabled = false; o.classList.remove('correct', 'wrong'); });
+      $$('.kwchip', el).forEach(function (c) { c.disabled = false; c.classList.remove('picked', 'reveal-key'); });
+      $('.feedback', el).className = 'feedback';
+    });
+  }
+  $('#gpReset').addEventListener('click', reset);
+  Resettable.push(reset);
 })();
 
 /* ═══════════════════ STATION 1 — READING ALTITUDE (three.js) ═══════════════════ */
@@ -1708,6 +2373,7 @@ function dotOff() { eyeDot.classList.remove('on', 'quick'); }
     var lookGoal = new T.Vector3(0, 0, 0);
     var lookNow = new T.Vector3(0, 0, 0);
     var camEase = 0.05;
+    var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     var hudAlt = $('#hudAlt'), hudWords = $('#hudWords'), hudTime = $('#hudTime');
     var capEl = $('#altCaption');
@@ -1744,6 +2410,7 @@ function dotOff() { eyeDot.classList.remove('on', 'quick'); }
 
     function runSequence(seq, opts) {
       var i = 0, n = 0;
+      var scale = REDUCED ? 0.35 : 1;
       (function next() {
         if (i >= seq.length) { opts.done && opts.done(n); return; }
         var idx = seq[i], m = wordMeshes[idx];
@@ -1753,7 +2420,7 @@ function dotOff() { eyeDot.classList.remove('on', 'quick'); }
         opts.cam(m, idx);
         n++; setHud(n);
         i++;
-        timer = setTimeout(next, opts.dwellFn(idx));
+        timer = setTimeout(next, opts.dwellFn(idx) * scale);
       })();
     }
 
@@ -1865,8 +2532,8 @@ function dotOff() { eyeDot.classList.remove('on', 'quick'); }
     function tick() {
       requestAnimationFrame(tick);
       if (!visible) return;
-      camera.position.lerp(camGoal, camEase);
-      lookNow.lerp(lookGoal, camEase);
+      camera.position.lerp(camGoal, REDUCED ? 1 : camEase);
+      lookNow.lerp(lookGoal, REDUCED ? 1 : camEase);
       camera.lookAt(lookNow);
       eyeLight.intensity *= 0.94;
 
@@ -1946,6 +2613,7 @@ function makeClock(el, opts) {
       if (s.value === s.dataset.answer) { s.classList.add('correct'); right++; }
       else s.classList.add('wrong');
     });
+    Progress.set('map', right, picks.length);
     fb.className = 'feedback show ' + (right === picks.length ? 'ok' : 'no');
     fb.textContent = right === picks.length
       ? 'All five. That is a complete map, built without reading a single paragraph properly — now go and use it in Part B.'
@@ -1988,6 +2656,7 @@ function makeClock(el, opts) {
         if (!ok) opts.forEach(function (o) { if (o.dataset.v === item.a) o.classList.add('correct'); });
         if (ok) score++;
         answered++;
+        Progress.hit('locate', ok);
         f.className = 'feedback show ' + (ok ? 'ok' : 'no');
         f.textContent = (ok ? '✓ ' : '✗ Paragraph ' + item.a + '. ') + item.why;
         $('#locScore').textContent = score + ' / 6';
@@ -2076,6 +2745,7 @@ function makeClock(el, opts) {
       else if (missed.length) msg = '✗ You missed ' + missed.length + '. ';
       else msg = '✗ Close — ' + over.length + ' word(s) too many. ';
 
+      Progress.hit('keywords', !missed.length && !over.length);
       f.className = 'feedback show ' + (!missed.length && !over.length ? 'ok' : 'no');
       f.innerHTML = msg + '<br><br>' + item.note;
     });
@@ -2141,6 +2811,7 @@ function makeClock(el, opts) {
         if (!ok) opts[item.a].classList.add('correct');
         if (ok) pScore++;
         pDone++;
+        Progress.hit('paraphrase', ok);
         $('#paraScore').textContent = pScore + ' / 5';
         f.className = 'feedback show ' + (ok ? 'ok' : 'no');
         f.textContent = (ok ? '✓ ' : '✗ The answer is ' + 'abcd'[item.a] + '. ') + item.why;
@@ -2241,6 +2912,7 @@ function makeClock(el, opts) {
         if (!ok) opts[item.a].classList.add('correct');
         if (ok) rScore++;
         rDone++;
+        Progress.hit('scan', ok);
         $('#raceScore').textContent = rScore + ' / 6';
         f.className = 'feedback show ' + (ok ? 'ok' : 'no');
         f.textContent = ok ? '✓' : '✗ The answer is ' + item.opts[item.a] + '.';
@@ -2259,9 +2931,470 @@ function makeClock(el, opts) {
   });
 })();
 
+/* ═══════════════════ STATION 8 — DIAGNOSTIC SCORECARD ═══════════════════ */
+(function () {
+  var grid = $('#scGrid');
+  if (!grid) return;
+  var head = $('#scHead'), vbox = $('#scVerdict'), vh = $('#scVerdictHead'), vb = $('#scVerdictBody');
+
+  /* What to actually do about each weakness — the whole point of the station. */
+  var RX = {
+    map:        { label: 'building the map',
+                  fix: 'You are reading paragraphs instead of labelling them. Go back to <b>Station 3, Part A</b> and do it again with a hard rule: read only the first sentence and the last sentence of each paragraph, then choose. If you find yourself reading the middle, you have dropped to ground level.' },
+    locate:     { label: 'locating the answer',
+                  fix: 'You can skim, but you are not using what the skim gave you — you are hunting the whole passage for every question. Redo <b>Station 3, Part B</b> and force yourself to name the paragraph out loud <i>before</i> you start looking for words.' },
+    keywords:   { label: 'choosing keywords',
+                  fix: 'You are marking too much, or marking the wrong kind of word. Redo <b>Station 4, Part A</b>. The test for a keyword is not "is this important?" but "could my eyes physically find this on the page?" Numbers and names pass; verbs and adjectives almost never do.' },
+    paraphrase: { label: 'recognising paraphrase',
+                  fix: 'This is the single most valuable thing on this page for your band score. You are searching for the question’s words instead of its meaning, so you either miss the answer or pick a distractor that repeats the wording. Redo <b>Station 4, Part B</b>, and when you next read anything in English, stop at one sentence and say it a different way.' },
+    scan:       { label: 'scanning accurately',
+                  fix: 'You are finding roughly the right place but not the exact answer — or you are breaking the word limit. Redo <b>Station 5</b>, and on completion questions copy the words from the passage exactly, changing nothing and adding nothing.' },
+    traps:      { label: 'the trap check',
+                  fix: 'You are finding the sentence and then answering from memory of the question rather than from the sentence in front of you. Redo <b>Station 6</b> and run all four checks out loud — subject, direction, strength, scope — before every single answer. Most of your lost marks are the second one.' },
+    fullrun:    { label: 'putting it together under time',
+                  fix: 'Your individual skills are better than your exam score, which means the problem is pacing and nerve rather than reading. Redo <b>Station 7</b> and treat the ninety-second rule as absolute: flag and move, every time, no exceptions.' }
+  };
+
+  function render() {
+    var d = Progress.all(), rows = [], attempted = 0, totC = 0, totT = 0;
+    Progress.SKILLS.forEach(function (sk) {
+      var v = d[sk.key];
+      var pct = v.total ? v.correct / v.total : 0;
+      if (v.attempted) { attempted++; totC += v.correct; totT += v.total; }
+      rows.push({ sk: sk, v: v, pct: pct });
+    });
+
+    head.textContent = attempted === 0
+      ? 'Nothing scored yet'
+      : totC + ' of ' + totT + ' correct across ' + attempted + ' skill' + (attempted > 1 ? 's' : '');
+
+    grid.innerHTML = rows.map(function (r) {
+      var pctTxt = r.v.attempted ? Math.round(r.pct * 100) + '%' : '—';
+      var cls = !r.v.attempted ? 'none' : r.pct >= 0.8 ? '' : r.pct >= 0.5 ? 'mid' : 'low';
+      var rowCls = !r.v.attempted ? '' : r.pct >= 0.8 ? ' strong' : r.pct < 0.5 ? ' weak' : '';
+      return '<div class="sc-row' + rowCls + '">' +
+        '<div class="sc-top"><span class="sc-name">' + r.sk.name + '</span>' +
+        '<span class="sc-sub">' + r.sk.sub + '</span>' +
+        '<span class="sc-val">' + (r.v.attempted ? r.v.correct + '/' + r.v.total : 'not attempted') + ' · ' + pctTxt + '</span></div>' +
+        '<div class="sc-track"><div class="sc-fill ' + cls + '" style="width:' + (r.v.attempted ? r.pct * 100 : 0) + '%"></div></div>' +
+        '</div>';
+    }).join('');
+
+    /* ── Diagnosis: find the ONE thing worth fixing first ── */
+    var done = rows.filter(function (r) { return r.v.attempted && r.v.total >= 2; });
+    if (done.length < 2) {
+      vbox.style.display = 'none';
+      return;
+    }
+    vbox.style.display = 'block';
+
+    done.sort(function (a, b) { return a.pct - b.pct; });
+    var worst = done[0], best = done[done.length - 1];
+    var avg = done.reduce(function (a, r) { return a + r.pct; }, 0) / done.length;
+    var pace = Progress.getNote('frPace');
+
+    var parts = [];
+    if (worst.pct >= 0.8) {
+      vh.textContent = 'No single bottleneck — you are strong across the board.';
+      parts.push('<p>Every skill you attempted is at 80% or better, which means technique is no longer what is limiting you. Your next gain comes from <span class="rx">volume and stamina</span>: three passages back to back, on the clock, not one.</p>');
+    } else {
+      var rx = RX[worst.sk.key];
+      vh.textContent = 'Your bottleneck is ' + rx.label + '.';
+      parts.push('<p>You scored <b>' + Math.round(worst.pct * 100) + '%</b> on ' + worst.sk.name.toLowerCase() +
+        ', against <b>' + Math.round(best.pct * 100) + '%</b> on ' + best.sk.name.toLowerCase() +
+        '. That gap is the useful number here — it says the problem is a specific technique, not your English in general.</p>');
+      parts.push('<p><b>What to do about it:</b> ' + rx.fix + '</p>');
+      var second = done[1];
+      if (second && second.pct < 0.6 && second.sk.key !== worst.sk.key) {
+        parts.push('<p class="dim" style="font-size:0.85rem">Second weakest: <b>' + second.sk.name + '</b> at ' +
+          Math.round(second.pct * 100) + '%. Fix the first one before you touch this — chasing two at once fixes neither.</p>');
+      }
+    }
+
+    if (pace) {
+      if (pace.auto) {
+        parts.push('<p>You also <span class="rx">ran out of time on the Full Run</span>. Whatever your accuracy, that is the first thing to fix: an unanswered question scores zero, and there is no penalty for guessing in IELTS Reading.</p>');
+      } else if (pace.flagged === 0) {
+        parts.push('<p>You finished the Full Run in ' + fmtClock(pace.used) + ' without flagging anything. Try the next one flagging at least two questions — the habit is what saves you when a passage is harder than this one.</p>');
+      } else {
+        parts.push('<p>You finished the Full Run in ' + fmtClock(pace.used) + ' and flagged ' + pace.flagged + '. That is exam behaviour, and it will hold up under pressure.</p>');
+      }
+    } else {
+      parts.push('<p class="dim" style="font-size:0.85rem">You have not done <b>Station 7, the Full Run</b> yet. Until you do, this diagnosis covers your skills but not your pacing — and pacing is what most candidates actually lose marks to.</p>');
+    }
+
+    parts.push('<p class="dim" style="font-size:0.8rem; margin-top:12px">Screenshot this. It is your homework brief, and it is different from everyone else’s in the room.</p>');
+    vb.innerHTML = parts.join('');
+  }
+
+  Progress.onChange(render);
+  $('#scReset').addEventListener('click', function () { Progress.reset(); });
+  render();
+})();
+
+/* ═══════════════════ STATION 7 — THE FULL RUN ═══════════════════ */
+(function () {
+  var host = $('#frQuestions');
+  if (!host) return;
+
+  var DURATION = 20 * 60;
+  var PARA_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+
+  var QUESTIONS = [
+    /* 1–4 · matching information (does NOT follow passage order) */
+    { type: 'para', skill: 'locate', label: 'Which paragraph?',
+      text: 'a reason why the ancient method cannot simply be adopted today', a: 'F',
+      why: 'Paragraph F lists every obstacle: weak in tension, slow to set, cannot take steel, ash unavailable.' },
+    { type: 'para', skill: 'locate', label: 'Which paragraph?',
+      text: 'the naming of a specific mineral', a: 'D',
+      why: 'Paragraph D names aluminous tobermorite. A single unusual noun like that is the easiest thing on the page to scan for.' },
+    { type: 'para', skill: 'locate', label: 'Which paragraph?',
+      text: 'an estimate of an industry’s contribution to global emissions', a: 'G',
+      why: 'Paragraph G: "around eight per cent of global carbon dioxide emissions". Scan for the digit shape, not the words.' },
+    { type: 'para', skill: 'locate', label: 'Which paragraph?',
+      text: 'a written record of the original method that has survived', a: 'B',
+      why: 'Paragraph B: Vitruvius "set down proportions… and his account survived".' },
+
+    /* 5–9 · TFNG (follows passage order) */
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'The dome of the Pantheon was built without steel reinforcement.', a: 'TRUE',
+      why: 'Paragraph A states plainly that it "contains no steel". Same direction, same scope — TRUE.' },
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'Vitruvius’s written account of the Roman mixtures has been lost.', a: 'FALSE',
+      why: 'A negation flip. The passage says "his account survived" — the exact opposite of the claim.' },
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'Salt water causes modern concrete to deteriorate.', a: 'TRUE',
+      why: 'Paragraph C: "Salt water is ruinous to modern concrete… corrodes the steel… splits the material apart". "Ruinous" paraphrases "causes to deteriorate".' },
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'Aluminous tobermorite can be produced easily in laboratory conditions.', a: 'FALSE',
+      why: 'Paragraph D says it is "extremely difficult to manufacture under laboratory conditions". Direction reversed — FALSE, not Not Given.' },
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'The MIT team’s explanation is now accepted by all specialists in the field.', a: 'NOT GIVEN',
+      why: 'The passage reports what Masic’s group argued, but never says how other specialists responded. You cannot point at a contradicting sentence, so it is NOT GIVEN — and note the tempting absolute "all", which usually signals FALSE. Here it signals nothing, because the topic is simply absent.' },
+
+    /* 10–13 · sentence completion, NO MORE THAN TWO WORDS */
+    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
+      text: 'For structures built in the sea, Roman builders mixed the ingredients with ______ rather than fresh water.',
+      a: ['seawater', 'sea water'], display: 'seawater',
+      why: 'Paragraph B. The answer is one word, lifted straight from the text — completion answers almost always are.' },
+    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
+      text: 'The volcanic ash used by the Romans takes its name from the town of ______.',
+      a: ['pozzuoli'], display: 'Pozzuoli',
+      why: 'Paragraph B. A proper noun — the single easiest target type to scan for, because capital letters stand out even at speed.' },
+    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
+      text: 'Lime clasts are produced by a technique known as ______.',
+      a: ['hot mixing', 'hot-mixing', 'hotmixing'], display: 'hot mixing',
+      why: 'Paragraph E. Two words, so it fits the limit exactly. Writing "a technique called hot mixing" would be three words and would score zero even though you found the right place.' },
+    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
+      text: 'Roman concrete cannot be reinforced with ______, because the chemistry that protects it attacks that material.',
+      a: ['steel'], display: 'steel',
+      why: 'Paragraph F. Note that the same word appears in paragraphs A and C — order matters: this question sits between Q9 and the end, so the answer is in the later part of the text.' }
+  ];
+
+  /* ── Build the question list ── */
+  var state = QUESTIONS.map(function () { return { answer: null, flagged: false, seconds: 0 }; });
+  var running = false, submitted = false, startedAt = null, lastAnswerAt = null, tick = null;
+
+  QUESTIONS.forEach(function (q, i) {
+    var d = document.createElement('div');
+    d.className = 'fr-q';
+    d.id = 'frq' + i;
+
+    var body;
+    if (q.type === 'para') {
+      body = '<div class="opts">' + PARA_LETTERS.map(function (L) {
+        return '<button class="opt" data-v="' + L + '">' + L + '</button>';
+      }).join('') + '</div>';
+    } else if (q.type === 'tfng') {
+      body = '<div class="opts">' + ['TRUE', 'FALSE', 'NOT GIVEN'].map(function (v) {
+        return '<button class="opt" data-v="' + v + '">' + v + '</button>';
+      }).join('') + '</div>';
+    } else {
+      body = '<input class="fr-gap" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" ' +
+             'aria-label="Answer for question ' + (i + 1) + '" placeholder="type your answer">' +
+             '<div class="fr-limit">NO MORE THAN TWO WORDS from the passage</div>';
+    }
+
+    d.innerHTML =
+      '<div class="fr-q-head">' +
+        '<span class="fr-q-num">Q' + (i + 1) + '</span>' +
+        '<span class="fr-q-type">' + q.label + '</span>' +
+        '<button class="fr-flag" title="Flag and come back to this one">⚑ Flag</button>' +
+      '</div>' +
+      '<div class="fr-q-text">' + q.text + '</div>' +
+      body +
+      '<div class="feedback"></div>';
+    host.appendChild(d);
+
+    /* flag */
+    var flagBtn = $('.fr-flag', d);
+    flagBtn.addEventListener('click', function () {
+      state[i].flagged = !state[i].flagged;
+      flagBtn.classList.toggle('on', state[i].flagged);
+      d.classList.toggle('flagged', state[i].flagged);
+    });
+
+    function stamp() {
+      if (!running) return;
+      var now = Date.now();
+      state[i].seconds = (now - (lastAnswerAt || startedAt)) / 1000;
+      lastAnswerAt = now;
+    }
+
+    if (q.type === 'gap') {
+      var input = $('.fr-gap', d);
+      input.addEventListener('change', function () {
+        if (!running || submitted) return;
+        var had = state[i].answer !== null;
+        state[i].answer = input.value.trim();
+        if (!had && state[i].answer) stamp();
+        d.classList.toggle('answered', !!state[i].answer);
+        paintPace();
+      });
+    } else {
+      $$('.opt', d).forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (!running || submitted) return;
+          var had = state[i].answer !== null;
+          $$('.opt', d).forEach(function (o) { o.classList.remove('correct'); o.style.borderColor = ''; });
+          $$('.opt', d).forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+          b.style.borderColor = 'var(--accent)';
+          state[i].answer = b.dataset.v;
+          if (!had) stamp();
+          d.classList.add('answered');
+          paintPace();
+        });
+      });
+    }
+  });
+
+  $('#frWords').textContent = countWords($('#frPassage'));
+
+  /* ── Clock and pacing ── */
+  var clockEl = $('#frClock'), fillEl = $('#frFill'), markEl = $('#frMarker');
+  var youEl = $('#frPaceYou'), tgtEl = $('#frPaceTarget');
+
+  function answeredCount() {
+    return state.filter(function (x) { return x.answer !== null && x.answer !== ''; }).length;
+  }
+  function paintPace() {
+    var n = answeredCount();
+    fillEl.style.width = (n / QUESTIONS.length * 100) + '%';
+    youEl.textContent = 'You: ' + n + ' of ' + QUESTIONS.length + ' answered';
+    if (!running && !submitted) { tgtEl.textContent = 'Pace: not started'; return; }
+    var elapsed = startedAt ? (Date.now() - startedAt) / 1000 : 0;
+    var frac = Math.min(1, elapsed / DURATION);
+    markEl.style.left = (frac * 100) + '%';
+    var should = Math.min(QUESTIONS.length, Math.floor(elapsed / (DURATION / QUESTIONS.length)) + 1);
+    var delta = n - should;
+    tgtEl.textContent = delta >= 0
+      ? 'Pace: on track (target ' + should + ')'
+      : 'Pace: ' + Math.abs(delta) + ' behind (should be on ' + should + ')';
+    tgtEl.style.color = delta >= 0 ? 'var(--good)' : 'var(--bad)';
+  }
+
+  function paintClock() {
+    var left = DURATION - (Date.now() - startedAt) / 1000;
+    if (left <= 0) { clockEl.textContent = '0:00'; submit(true); return; }
+    clockEl.textContent = fmtClock(left);
+    clockEl.className = 'fr-clock' + (left < 120 ? ' urgent' : left < 300 ? ' warn' : '');
+    paintPace();
+  }
+
+  $('#frStart').addEventListener('click', function () {
+    if (running) return;
+    running = true; submitted = false;
+    startedAt = Date.now(); lastAnswerAt = startedAt;
+    $('#frStart').disabled = true;
+    $('#frSubmit').disabled = false;
+    tick = setInterval(paintClock, 250);
+    paintClock();
+    $('#frSplit').classList.remove('tab-p'); $('#frSplit').classList.add('tab-q');
+    $$('#frTabs button').forEach(function (b) { b.classList.toggle('on', b.dataset.tab === 'q'); });
+  });
+
+  $('#frSubmit').addEventListener('click', function () { submit(false); });
+
+  /* ── Grading ── */
+  function normalise(v) {
+    return String(v || '').toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, ' ').trim();
+  }
+  function gapVerdict(q, given) {
+    var g = normalise(given);
+    if (!g) return { ok: false, reason: 'left blank' };
+    var words = g.split(' ').filter(Boolean);
+    if (words.length > q.limit) return { ok: false, reason: 'over the word limit (' + words.length + ' words)' };
+    var ok = q.a.some(function (acc) { return normalise(acc) === g; });
+    return { ok: ok, reason: ok ? '' : 'not the wording the passage uses' };
+  }
+
+  function submit(auto) {
+    if (submitted) return;
+    submitted = true; running = false;
+    clearInterval(tick);
+    $('#frSubmit').disabled = true;
+    /* the paper is over — stop the toolbar hovering over the debrief */
+    $('#frBar').classList.remove('sticky');
+    var used = Math.min(DURATION, (Date.now() - startedAt) / 1000);
+
+    var right = 0, sec = [0, 0, 0], secTot = [4, 5, 4];
+    QUESTIONS.forEach(function (q, i) {
+      var d = $('#frq' + i), f = $('.feedback', d), ok, note = 'The answer is ';
+      if (q.type === 'gap') {
+        var v = gapVerdict(q, state[i].answer);
+        ok = v.ok;
+        var input = $('.fr-gap', d);
+        input.disabled = true;
+        input.classList.add(ok ? 'correct' : 'wrong');
+        if (!ok) note = 'Your answer was ' + v.reason + '. The answer is ';
+      } else {
+        ok = state[i].answer === q.a;
+        $$('.opt', d).forEach(function (o) {
+          o.disabled = true;
+          o.style.borderColor = '';
+          if (o.dataset.v === q.a) o.classList.add('correct');
+          else if (o.dataset.v === state[i].answer) o.classList.add('wrong');
+        });
+      }
+      if (ok) right++;
+      var band = i < 4 ? 0 : i < 9 ? 1 : 2;
+      if (ok) sec[band]++;
+      f.className = 'feedback show ' + (ok ? 'ok' : 'no');
+      f.innerHTML = (ok ? '✓ ' : '✗ ' + note + '<b>' + (q.display || q.a) + '</b>. ') + q.why;
+      d.classList.remove('answered', 'flagged');
+    });
+
+    /* time attribution: whatever is still unstamped ran to the end */
+    var accounted = state.reduce(function (a, x) { return a + x.seconds; }, 0);
+    var unanswered = state.filter(function (x) { return !x.seconds; });
+    if (unanswered.length) {
+      var rest = Math.max(0, used - accounted) / unanswered.length;
+      unanswered.forEach(function (x) { x.seconds = rest; });
+    }
+
+    render(right, used, sec, secTot, auto);
+    Progress.set('fullrun', right, QUESTIONS.length);
+    Progress.set('locate', sec[0], 4);
+    Progress.hit; /* no-op guard */
+    Progress.note('frPace', { used: used, auto: auto, flagged: state.filter(function (x) { return x.flagged; }).length });
+    /* fold the section results into the matching sub-skills too */
+    ['traps', 'scan'].forEach(function (k, j) {
+      var prev = Progress.get(k);
+      Progress.set(k, prev.correct + sec[j + 1], prev.total + secTot[j + 1]);
+    });
+  }
+
+  function render(right, used, sec, secTot, auto) {
+    $('#frReview').classList.add('show');
+    $('#frScore').textContent = right + '/13';
+    $('#frTime').textContent = fmtClock(used);
+    $('#frSec1').textContent = sec[0] + ' / 4';
+    $('#frSec2').textContent = sec[1] + ' / 5';
+    $('#frSec3').textContent = sec[2] + ' / 4';
+
+    var slowIdx = 0;
+    state.forEach(function (x, i) { if (x.seconds > state[slowIdx].seconds) slowIdx = i; });
+    $('#frSlowest').textContent = 'Q' + (slowIdx + 1) + ' · ' + Math.round(state[slowIdx].seconds) + 's';
+
+    /* timing chart */
+    var tl = $('#frTimeline'); tl.innerHTML = '';
+    var max = Math.max.apply(null, state.map(function (x) { return x.seconds; })) || 1;
+    state.forEach(function (x, i) {
+      var b = document.createElement('div');
+      b.className = 'fr-bar' + (x.seconds > 90 ? ' slow' : '') +
+                    ((state[i].answer === null || state[i].answer === '') ? ' miss' : '');
+      b.style.height = Math.max(4, x.seconds / max * 92) + 'px';
+      b.title = 'Q' + (i + 1) + ' — ' + Math.round(x.seconds) + 's';
+      b.innerHTML = '<span>' + (i + 1) + '</span>';
+      tl.appendChild(b);
+    });
+
+    var over = state.map(function (x, i) { return x.seconds > 90 ? i + 1 : null; }).filter(Boolean);
+    var blanks = state.filter(function (x) { return x.answer === null || x.answer === ''; }).length;
+    var flags = state.filter(function (x) { return x.flagged; }).length;
+
+    var head, coach = [];
+    if (auto) {
+      head = 'The clock beat you — ' + right + '/13 with ' + blanks + ' unanswered.';
+      coach.push('You ran out of time, which in the real exam means those ' + blanks + ' blanks score zero even if you knew them. <span class="rx">Never leave a blank:</span> in the last minute, guess every empty box. There is no penalty for a wrong answer in IELTS Reading, so a blank is the only genuinely worthless thing on the paper.');
+    } else if (right >= 11) {
+      head = 'Strong — ' + right + '/13 in ' + fmtClock(used) + '.';
+      coach.push('That is around band 7 territory on this question mix. Your limiter now is not accuracy but consistency under a full three-passage load.');
+    } else if (right >= 8) {
+      head = right + '/13 in ' + fmtClock(used) + ' — the method is working, the edges are not.';
+      coach.push('You are locating well enough. The marks you lost are the ones the drills above target directly, so use the scorecard below to pick which one.');
+    } else {
+      head = right + '/13 in ' + fmtClock(used) + '.';
+      coach.push('Do not read this as "my English is not good enough". Look at the section boxes: if one is far weaker than the others, that is a technique problem with a specific fix, not a vocabulary problem.');
+    }
+
+    if (over.length) {
+      coach.push('<b>Question ' + over.join(', Q') + '</b> ran past ninety seconds' + (over.length > 1 ? ' each' : '') +
+        '. In a real paper that single overrun is usually what costs you the last three questions of the passage. ' +
+        '<span class="rx">The fix is behavioural, not linguistic:</span> when a question passes ninety seconds, flag it, put any plausible answer in, and move. You can come back — but only if there is time left, and there only will be if you moved.');
+    } else {
+      coach.push('No question ran past ninety seconds — your pacing discipline is genuinely good, which is rarer than a high score.');
+    }
+
+    if (flags === 0 && (over.length || blanks)) {
+      coach.push('You flagged nothing. The flag button is not decoration: students who mark and move outscore students who grind, because grinding spends time you have not got on a question you may still get wrong.');
+    } else if (flags) {
+      coach.push('You flagged ' + flags + ' question' + (flags > 1 ? 's' : '') + ' — good habit. Practise it until it is automatic, because under real pressure nobody invents a new strategy.');
+    }
+
+    if (sec[2] < secTot[2]) {
+      coach.push('On sentence completion, check the two commonest zero-mark causes before you blame your reading: <span class="rx">exceeding the word limit</span>, and <span class="rx">changing the word</span>. The answer must be lifted from the passage exactly as written.');
+    }
+
+    $('#frVerdictHead').textContent = head;
+    $('#frCoach').innerHTML = coach.map(function (c) { return '<p style="font-size:0.89rem; margin-bottom:9px">' + c + '</p>'; }).join('');
+    $('#frReview').scrollIntoView({ block: 'start' });
+  }
+
+  /* ── Tabs (mobile) ── */
+  $$('#frTabs button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = b.dataset.tab;
+      $('#frSplit').classList.toggle('tab-p', t === 'p');
+      $('#frSplit').classList.toggle('tab-q', t === 'q');
+      $$('#frTabs button').forEach(function (o) { o.classList.toggle('on', o === b); });
+    });
+  });
+
+  function reset() {
+    clearInterval(tick);
+    running = false; submitted = false; startedAt = null; lastAnswerAt = null;
+    $('#frBar').classList.add('sticky');
+    state = QUESTIONS.map(function () { return { answer: null, flagged: false, seconds: 0 }; });
+    clockEl.textContent = fmtClock(DURATION);
+    clockEl.className = 'fr-clock';
+    $('#frStart').disabled = false; $('#frSubmit').disabled = true;
+    $('#frReview').classList.remove('show');
+    fillEl.style.width = '0%'; markEl.style.left = '0%';
+    youEl.textContent = 'You: 0 of 13 answered';
+    tgtEl.textContent = 'Pace: not started'; tgtEl.style.color = '';
+    QUESTIONS.forEach(function (q, i) {
+      var d = $('#frq' + i);
+      d.className = 'fr-q';
+      $('.feedback', d).className = 'feedback';
+      $('.fr-flag', d).classList.remove('on');
+      if (q.type === 'gap') {
+        var inp = $('.fr-gap', d); inp.value = ''; inp.disabled = false; inp.classList.remove('correct', 'wrong');
+      } else {
+        $$('.opt', d).forEach(function (o) { o.disabled = false; o.classList.remove('correct', 'wrong'); o.style.borderColor = ''; });
+      }
+    });
+    $('#frSplit').classList.add('tab-p'); $('#frSplit').classList.remove('tab-q');
+    $$('#frTabs button').forEach(function (b) { b.classList.toggle('on', b.dataset.tab === 'p'); });
+  }
+  $('#frReset').addEventListener('click', reset);
+  Resettable.push(reset);
+  reset();
+})();
+
 /* ═══════════════════ STATION 6 — TRAP DETECTOR ═══════════════════ */
 (function () {
-  var ITEMS = [
+  var BANKS = [[
     { text: 'Deeper in the core, the layers thin under pressure until they can no longer be separated by eye.',
       claim: 'Layers deeper in the core become easier to tell apart.',
       a: 'FALSE', trap: '🔄 Negation Flip',
@@ -2286,41 +3419,85 @@ function makeClock(el, opts) {
       claim: 'The East Antarctic drilling projects are funded by private companies.',
       a: 'NOT GIVEN', trap: null,
       why: 'The passage mentions who is drilling and where, but says nothing at all about funding. There is no contradicting sentence to point at.' }
-  ];
+  ], [
+    { text: 'Rooftop hives have appeared on buildings ranging from the Paris Opera House to hotels in New York.',
+      claim: 'Hives have been placed on buildings in more than one country.',
+      a: 'TRUE', trap: null,
+      why: 'Paris and New York are in different countries. The passage never writes the phrase "more than one country" — but naming two places in two countries states it. Inference from named facts is still TRUE; it is not NOT GIVEN.' },
+    { text: 'Critics warn that packing too many hives into a small area can actually harm wild bee populations.',
+      claim: 'Critics say that a high density of hives may damage wild bees.',
+      a: 'TRUE', trap: null,
+      why: '"Packing too many into a small area" = high density; "harm" = damage; "can" = may. Four paraphrases in one sentence, and all four keep the same direction and strength.' },
+    { text: 'Some ecologists now recommend planting more flowers before adding more hives.',
+      claim: 'Ecologists are unanimous that no new hives should ever be installed.',
+      a: 'FALSE', trap: '⚖️ Qualifier Swap',
+      why: 'Two upgrades in one claim: "some" becomes "unanimous", and "before planting more flowers" becomes "never". The passage recommends an order of actions, not a ban.' },
+    { text: 'In London alone, the number of registered hives rose from around 1,600 in 2008 to more than 7,400 by 2020.',
+      claim: 'Hive numbers rose faster in London than in any other European city.',
+      a: 'NOT GIVEN', trap: null,
+      why: 'A scope trap that looks like a comparison. The passage gives London figures and no other city’s, so no comparison is possible. Nothing here contradicts the claim — it simply is not addressed.' },
+    { text: 'Urban bees benefit from a longer flowering season, since parks, gardens and even balconies bloom at different times across a city.',
+      claim: 'A longer flowering season in cities is caused by the presence of urban bees.',
+      a: 'FALSE', trap: '🔁 Reversed Cause',
+      why: 'The staggered blooming causes the longer season, which benefits the bees. The claim makes the bees the cause. Same two elements, arrow reversed.' },
+    { text: 'Beekeeping has quietly moved from the countryside into cities over the last two decades.',
+      claim: 'Rural beekeeping has now completely disappeared.',
+      a: 'FALSE', trap: '⚖️ Qualifier Swap',
+      why: '"Moved into cities" does not mean "vanished from the countryside", and "completely disappeared" is an absolute the passage never supports. Watch every total word: all, none, never, completely, only.' }
+  ]];
 
-  var host = $('#trapList'), score = 0;
-  ITEMS.forEach(function (item, n) {
-    var d = document.createElement('div');
-    d.className = 'q-block';
-    d.innerHTML =
-      '<div class="extract"><span class="lbl">Passage says</span>' + item.text + '</div>' +
-      '<div class="extract claim"><span class="lbl">Claim ' + (n + 1) + '</span>' + item.claim + '</div>' +
-      '<div class="opts">' + ['TRUE', 'FALSE', 'NOT GIVEN'].map(function (v) {
-        return '<button class="opt" data-v="' + v + '">' + v + '</button>';
-      }).join('') + '</div><div class="feedback"></div>';
-    host.appendChild(d);
+  var host = $('#trapList'), score = 0, bank = 0;
+  var pill = $('#trapScore'), roundBtn = $('#trapRound');
 
-    var opts = $$('.opt', d), f = $('.feedback', d);
-    opts.forEach(function (b) {
-      b.addEventListener('click', function () {
-        if (b.disabled) return;
-        opts.forEach(function (o) { o.disabled = true; });
-        var ok = b.dataset.v === item.a;
-        b.classList.add(ok ? 'correct' : 'wrong');
-        if (!ok) opts.forEach(function (o) { if (o.dataset.v === item.a) o.classList.add('correct'); });
-        if (ok) score++;
-        $('#trapScore').textContent = score + ' / 6';
-        f.className = 'feedback show ' + (ok ? 'ok' : 'no');
-        f.innerHTML = (ok ? '✓ ' : '✗ ' + item.a + '. ') + (item.trap ? '<b>' + item.trap + '</b> — ' : '') + item.why;
+  function build() {
+    host.innerHTML = '';
+    score = 0;
+    pill.textContent = '0 / 6';
+    BANKS[bank].forEach(function (item, n) {
+      var d = document.createElement('div');
+      d.className = 'q-block';
+      d.innerHTML =
+        '<div class="extract"><span class="lbl">Passage says</span>' + item.text + '</div>' +
+        '<div class="extract claim"><span class="lbl">Claim ' + (n + 1) + '</span>' + item.claim + '</div>' +
+        '<div class="opts">' + ['TRUE', 'FALSE', 'NOT GIVEN'].map(function (v) {
+          return '<button class="opt" data-v="' + v + '">' + v + '</button>';
+        }).join('') + '</div><div class="feedback"></div>';
+      host.appendChild(d);
+
+      var opts = $$('.opt', d), f = $('.feedback', d);
+      opts.forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (b.disabled) return;
+          opts.forEach(function (o) { o.disabled = true; });
+          var ok = b.dataset.v === item.a;
+          b.classList.add(ok ? 'correct' : 'wrong');
+          if (!ok) opts.forEach(function (o) { if (o.dataset.v === item.a) o.classList.add('correct'); });
+          if (ok) score++;
+          Progress.hit('traps', ok);
+          pill.textContent = score + ' / 6';
+          f.className = 'feedback show ' + (ok ? 'ok' : 'no');
+          f.innerHTML = (ok ? '✓ ' : '✗ ' + item.a + '. ') + (item.trap ? '<b>' + item.trap + '</b> — ' : '') + item.why;
+        });
       });
     });
+    /* keep the printed key in step with the visible round */
+    var key = $('#trapCard .answer-key');
+    if (key) {
+      key.innerHTML = '<b>Answer key (Round ' + (bank + 1) + '):</b> ' +
+        BANKS[bank].map(function (it, i) {
+          return (i + 1) + '–' + it.a + (it.trap ? ' (' + it.trap.replace(/^\S+\s/, '').toLowerCase() + ')' : '');
+        }).join(', ') + '.';
+    }
+  }
+
+  roundBtn.addEventListener('click', function () {
+    bank = (bank + 1) % BANKS.length;
+    roundBtn.textContent = bank === 0 ? '🔄 Round 2 — new items' : '🔄 Round 1 — original items';
+    build();
   });
 
-  $('#trapReset').addEventListener('click', function () {
-    score = 0; $('#trapScore').textContent = '0 / 6';
-    $$('.opt', host).forEach(function (o) { o.disabled = false; o.classList.remove('correct', 'wrong'); });
-    $$('.feedback', host).forEach(function (f) { f.className = 'feedback'; });
-  });
+  $('#trapReset').addEventListener('click', build);
+  build();
 })();
 </script>
 </body>
