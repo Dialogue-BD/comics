@@ -967,6 +967,86 @@ window.PICTURE_THIS_GAME_DATA = {
     "Land",
     "Get On",
     "Get Off"
+  ],
+  "common-descriptions": [
+    "Cheap",
+    "Expensive",
+    "New",
+    "Old",
+    "Strong",
+    "Weak"
+  ],
+  "digital-actions": [
+    "Call",
+    "Text",
+    "Click",
+    "Scroll",
+    "Print",
+    "Scan"
+  ],
+  "everyday-opposites": [
+    "Open",
+    "Close",
+    "Lock",
+    "Unlock",
+    "Fill",
+    "Empty"
+  ],
+  "hand-actions": [
+    "Give",
+    "Take",
+    "Throw",
+    "Catch",
+    "Hide",
+    "Reveal"
+  ],
+  "health-symptoms": [
+    "Cough",
+    "Sneeze",
+    "Fever",
+    "Chills",
+    "Rash",
+    "Itch"
+  ],
+  "how-people-behave": [
+    "Polite",
+    "Rude",
+    "Honest",
+    "Dishonest",
+    "Careful",
+    "Careless"
+  ],
+  "location-words": [
+    "Above",
+    "Below",
+    "Inside",
+    "Outside",
+    "Between",
+    "Behind"
+  ],
+  "more-jobs": [
+    "Nurse",
+    "Dentist",
+    "Driver",
+    "Pilot",
+    "Cashier",
+    "Shopkeeper"
+  ],
+  "size-words": [
+    "Big",
+    "Small",
+    "Tall",
+    "Short",
+    "Wide",
+    "Narrow"
+  ],
+  "social-actions": [
+    "Meet",
+    "Greet",
+    "Invite",
+    "Visit",
+    "Apologize",
+    "Forgive"
   ]
 };
 
@@ -2974,6 +3054,1018 @@ window.PICTURE_THIS_GAME_META = {
             "get-off"
           ],
           "explanation": "Get on and get off are the only two actions shown being performed at a bus door.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "common-descriptions": {
+      "title": "Common Descriptions",
+      "category_answers": [
+        "Common Descriptions",
+        "Describing Things",
+        "Useful Adjectives",
+        "Everyday Adjectives"
+      ],
+      "tags": [
+        "descriptions",
+        "adjectives",
+        "comparisons"
+      ],
+      "items": [
+        {
+          "id": "cheap",
+          "label": "Cheap",
+          "answers": [
+            "Cheap",
+            "Inexpensive"
+          ]
+        },
+        {
+          "id": "expensive",
+          "label": "Expensive",
+          "answers": [
+            "Expensive",
+            "Costly"
+          ]
+        },
+        {
+          "id": "new",
+          "label": "New",
+          "answers": [
+            "New",
+            "Brand New"
+          ]
+        },
+        {
+          "id": "old",
+          "label": "Old",
+          "answers": [
+            "Old",
+            "Aged"
+          ]
+        },
+        {
+          "id": "strong",
+          "label": "Strong",
+          "answers": [
+            "Strong",
+            "Powerful"
+          ]
+        },
+        {
+          "id": "weak",
+          "label": "Weak",
+          "answers": [
+            "Weak",
+            "Feeble"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "price",
+          "answers": [
+            "price"
+          ],
+          "items": [
+            "cheap",
+            "expensive"
+          ],
+          "explanation": "Cheap and expensive are the only two words shown specifically describing price.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "age",
+          "answers": [
+            "age"
+          ],
+          "items": [
+            "new",
+            "old"
+          ],
+          "explanation": "New and old are the only two words shown specifically describing age or condition over time.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "strength",
+          "answers": [
+            "strength"
+          ],
+          "items": [
+            "strong",
+            "weak"
+          ],
+          "explanation": "Strong and weak are the only two words shown specifically describing physical strength.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "digital-actions": {
+      "title": "Digital Actions",
+      "category_answers": [
+        "Digital Actions",
+        "Technology Actions",
+        "Using Devices",
+        "Computer and Phone Actions"
+      ],
+      "tags": [
+        "technology",
+        "actions",
+        "communication"
+      ],
+      "items": [
+        {
+          "id": "call",
+          "label": "Call",
+          "answers": [
+            "Call",
+            "Phone Call"
+          ]
+        },
+        {
+          "id": "text",
+          "label": "Text",
+          "answers": [
+            "Text",
+            "Send a Message"
+          ]
+        },
+        {
+          "id": "click",
+          "label": "Click",
+          "answers": [
+            "Click",
+            "Mouse Click"
+          ]
+        },
+        {
+          "id": "scroll",
+          "label": "Scroll",
+          "answers": [
+            "Scroll",
+            "Scroll Down"
+          ]
+        },
+        {
+          "id": "print",
+          "label": "Print",
+          "answers": [
+            "Print",
+            "Print Out"
+          ]
+        },
+        {
+          "id": "scan",
+          "label": "Scan",
+          "answers": [
+            "Scan",
+            "Digitize"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "cellular",
+          "answers": [
+            "cellular"
+          ],
+          "items": [
+            "call",
+            "text"
+          ],
+          "explanation": "Call and text are the only two actions shown specifically using cellular communication.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "navigation",
+          "answers": [
+            "navigation"
+          ],
+          "items": [
+            "click",
+            "scroll"
+          ],
+          "explanation": "Click and scroll are the only two actions shown specifically navigating a computer interface.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "paper",
+          "answers": [
+            "paper"
+          ],
+          "items": [
+            "print",
+            "scan"
+          ],
+          "explanation": "Print and scan are the only two actions shown directly moving information between paper and a device.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "everyday-opposites": {
+      "title": "Everyday Opposites",
+      "category_answers": [
+        "Everyday Opposites",
+        "Opposite Actions",
+        "Common Opposites",
+        "Action Opposites"
+      ],
+      "tags": [
+        "actions",
+        "opposites",
+        "routines"
+      ],
+      "items": [
+        {
+          "id": "open",
+          "label": "Open",
+          "answers": [
+            "Open",
+            "Open Up"
+          ]
+        },
+        {
+          "id": "close",
+          "label": "Close",
+          "answers": [
+            "Close",
+            "Shut"
+          ]
+        },
+        {
+          "id": "lock",
+          "label": "Lock",
+          "answers": [
+            "Lock",
+            "Secure"
+          ]
+        },
+        {
+          "id": "unlock",
+          "label": "Unlock",
+          "answers": [
+            "Unlock",
+            "Open Lock"
+          ]
+        },
+        {
+          "id": "fill",
+          "label": "Fill",
+          "answers": [
+            "Fill",
+            "Fill Up"
+          ]
+        },
+        {
+          "id": "empty",
+          "label": "Empty",
+          "answers": [
+            "Empty",
+            "Clear Out"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "hinge",
+          "answers": [
+            "hinge"
+          ],
+          "items": [
+            "open",
+            "close"
+          ],
+          "explanation": "Open and close are the only two actions shown specifically moving a door on its hinge.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "key",
+          "answers": [
+            "key"
+          ],
+          "items": [
+            "lock",
+            "unlock"
+          ],
+          "explanation": "Lock and unlock are the only two actions shown specifically performed with a key.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "container",
+          "answers": [
+            "container"
+          ],
+          "items": [
+            "fill",
+            "empty"
+          ],
+          "explanation": "Fill and empty are the only two actions shown specifically changing what is inside a container.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "hand-actions": {
+      "title": "Hand Actions",
+      "category_answers": [
+        "Hand Actions",
+        "Actions with Hands",
+        "Common Hand Movements",
+        "Hand Verbs"
+      ],
+      "tags": [
+        "actions",
+        "hands",
+        "movement"
+      ],
+      "items": [
+        {
+          "id": "give",
+          "label": "Give",
+          "answers": [
+            "Give",
+            "Hand Over"
+          ]
+        },
+        {
+          "id": "take",
+          "label": "Take",
+          "answers": [
+            "Take",
+            "Receive"
+          ]
+        },
+        {
+          "id": "throw",
+          "label": "Throw",
+          "answers": [
+            "Throw",
+            "Toss"
+          ]
+        },
+        {
+          "id": "catch",
+          "label": "Catch",
+          "answers": [
+            "Catch",
+            "Grab"
+          ]
+        },
+        {
+          "id": "hide",
+          "label": "Hide",
+          "answers": [
+            "Hide",
+            "Conceal"
+          ]
+        },
+        {
+          "id": "reveal",
+          "label": "Reveal",
+          "answers": [
+            "Reveal",
+            "Uncover"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "exchange",
+          "answers": [
+            "exchange"
+          ],
+          "items": [
+            "give",
+            "take"
+          ],
+          "explanation": "Give and take are the only two actions shown specifically transferring an object between people.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "ball",
+          "answers": [
+            "ball"
+          ],
+          "items": [
+            "throw",
+            "catch"
+          ],
+          "explanation": "Throw and catch are the only two actions shown specifically moving a ball through the air.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "secret",
+          "answers": [
+            "secret"
+          ],
+          "items": [
+            "hide",
+            "reveal"
+          ],
+          "explanation": "Hide and reveal are the only two actions shown specifically concealing or exposing a secret object.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "health-symptoms": {
+      "title": "Health Symptoms",
+      "category_answers": [
+        "Health Symptoms",
+        "Common Symptoms",
+        "Feeling Unwell",
+        "Signs of Illness"
+      ],
+      "tags": [
+        "health",
+        "symptoms",
+        "body"
+      ],
+      "items": [
+        {
+          "id": "cough",
+          "label": "Cough",
+          "answers": [
+            "Cough",
+            "Coughing"
+          ]
+        },
+        {
+          "id": "sneeze",
+          "label": "Sneeze",
+          "answers": [
+            "Sneeze",
+            "Sneezing"
+          ]
+        },
+        {
+          "id": "fever",
+          "label": "Fever",
+          "answers": [
+            "Fever",
+            "High Temperature"
+          ]
+        },
+        {
+          "id": "chills",
+          "label": "Chills",
+          "answers": [
+            "Chills",
+            "Shivering"
+          ]
+        },
+        {
+          "id": "rash",
+          "label": "Rash",
+          "answers": [
+            "Rash",
+            "Skin Rash"
+          ]
+        },
+        {
+          "id": "itch",
+          "label": "Itch",
+          "answers": [
+            "Itch",
+            "Itching"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "respiratory",
+          "answers": [
+            "respiratory"
+          ],
+          "items": [
+            "cough",
+            "sneeze"
+          ],
+          "explanation": "Cough and sneeze are the only two symptoms shown specifically involving the respiratory tract.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "temperature",
+          "answers": [
+            "temperature"
+          ],
+          "items": [
+            "fever",
+            "chills"
+          ],
+          "explanation": "Fever and chills are the only two symptoms shown specifically involving body temperature.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "skin",
+          "answers": [
+            "skin"
+          ],
+          "items": [
+            "rash",
+            "itch"
+          ],
+          "explanation": "Rash and itch are the only two symptoms shown specifically on the skin.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "how-people-behave": {
+      "title": "How People Behave",
+      "category_answers": [
+        "How People Behave",
+        "Behavior Words",
+        "Personal Behavior",
+        "Ways People Behave"
+      ],
+      "tags": [
+        "behavior",
+        "descriptions",
+        "relationships"
+      ],
+      "items": [
+        {
+          "id": "polite",
+          "label": "Polite",
+          "answers": [
+            "Polite",
+            "Courteous"
+          ]
+        },
+        {
+          "id": "rude",
+          "label": "Rude",
+          "answers": [
+            "Rude",
+            "Impolite"
+          ]
+        },
+        {
+          "id": "honest",
+          "label": "Honest",
+          "answers": [
+            "Honest",
+            "Truthful"
+          ]
+        },
+        {
+          "id": "dishonest",
+          "label": "Dishonest",
+          "answers": [
+            "Dishonest",
+            "Untruthful"
+          ]
+        },
+        {
+          "id": "careful",
+          "label": "Careful",
+          "answers": [
+            "Careful",
+            "Cautious"
+          ]
+        },
+        {
+          "id": "careless",
+          "label": "Careless",
+          "answers": [
+            "Careless"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "manners",
+          "answers": [
+            "manners"
+          ],
+          "items": [
+            "polite",
+            "rude"
+          ],
+          "explanation": "Polite and rude are the only two words shown specifically contrasting manners.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "truth",
+          "answers": [
+            "truth"
+          ],
+          "items": [
+            "honest",
+            "dishonest"
+          ],
+          "explanation": "Honest and dishonest are the only two words shown specifically contrasting truthfulness.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "caution",
+          "answers": [
+            "caution"
+          ],
+          "items": [
+            "careful",
+            "careless"
+          ],
+          "explanation": "Careful and careless are the only two words shown specifically contrasting caution.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "location-words": {
+      "title": "Location Words",
+      "category_answers": [
+        "Location Words",
+        "Position Words",
+        "Where Things Are",
+        "Place Words"
+      ],
+      "tags": [
+        "locations",
+        "prepositions",
+        "descriptions"
+      ],
+      "items": [
+        {
+          "id": "above",
+          "label": "Above",
+          "answers": [
+            "Above",
+            "Over"
+          ]
+        },
+        {
+          "id": "below",
+          "label": "Below",
+          "answers": [
+            "Below",
+            "Under"
+          ]
+        },
+        {
+          "id": "inside",
+          "label": "Inside",
+          "answers": [
+            "Inside",
+            "In"
+          ]
+        },
+        {
+          "id": "outside",
+          "label": "Outside",
+          "answers": [
+            "Outside",
+            "Out"
+          ]
+        },
+        {
+          "id": "between",
+          "label": "Between",
+          "answers": [
+            "Between",
+            "In the Middle"
+          ]
+        },
+        {
+          "id": "behind",
+          "label": "Behind",
+          "answers": [
+            "Behind",
+            "At the Back"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "vertical",
+          "answers": [
+            "vertical"
+          ],
+          "items": [
+            "above",
+            "below"
+          ],
+          "explanation": "Above and below are the only two locations shown specifically contrasting vertical direction.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "boundary",
+          "answers": [
+            "boundary"
+          ],
+          "items": [
+            "inside",
+            "outside"
+          ],
+          "explanation": "Inside and outside are the only two locations shown specifically contrasting a boundary.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "lineup",
+          "answers": [
+            "lineup"
+          ],
+          "items": [
+            "between",
+            "behind"
+          ],
+          "explanation": "Between and behind are the only two locations shown specifically describing order within a lineup.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "more-jobs": {
+      "title": "More Jobs",
+      "category_answers": [
+        "More Jobs",
+        "Common Jobs",
+        "Everyday Workers",
+        "Occupations"
+      ],
+      "tags": [
+        "jobs",
+        "people",
+        "community"
+      ],
+      "items": [
+        {
+          "id": "nurse",
+          "label": "Nurse",
+          "answers": [
+            "Nurse"
+          ]
+        },
+        {
+          "id": "dentist",
+          "label": "Dentist",
+          "answers": [
+            "Dentist"
+          ]
+        },
+        {
+          "id": "driver",
+          "label": "Driver",
+          "answers": [
+            "Driver",
+            "Vehicle Driver"
+          ]
+        },
+        {
+          "id": "pilot",
+          "label": "Pilot",
+          "answers": [
+            "Pilot",
+            "Airplane Pilot"
+          ]
+        },
+        {
+          "id": "cashier",
+          "label": "Cashier",
+          "answers": [
+            "Cashier",
+            "Checkout Clerk"
+          ]
+        },
+        {
+          "id": "shopkeeper",
+          "label": "Shopkeeper",
+          "answers": [
+            "Shopkeeper",
+            "Store Owner"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "healthcare",
+          "answers": [
+            "healthcare"
+          ],
+          "items": [
+            "nurse",
+            "dentist"
+          ],
+          "explanation": "Nurse and dentist are the only two jobs shown specifically providing healthcare.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "transport",
+          "answers": [
+            "transport"
+          ],
+          "items": [
+            "driver",
+            "pilot"
+          ],
+          "explanation": "Driver and pilot are the only two jobs shown specifically operating transport.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "retail",
+          "answers": [
+            "retail"
+          ],
+          "items": [
+            "cashier",
+            "shopkeeper"
+          ],
+          "explanation": "Cashier and shopkeeper are the only two jobs shown specifically working in retail.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "size-words": {
+      "title": "Size Words",
+      "category_answers": [
+        "Size Words",
+        "Sizes",
+        "Size Descriptions",
+        "Describing Size"
+      ],
+      "tags": [
+        "descriptions",
+        "size",
+        "adjectives"
+      ],
+      "items": [
+        {
+          "id": "big",
+          "label": "Big",
+          "answers": [
+            "Big",
+            "Large"
+          ]
+        },
+        {
+          "id": "small",
+          "label": "Small",
+          "answers": [
+            "Small",
+            "Little"
+          ]
+        },
+        {
+          "id": "tall",
+          "label": "Tall",
+          "answers": [
+            "Tall"
+          ]
+        },
+        {
+          "id": "short",
+          "label": "Short",
+          "answers": [
+            "Short"
+          ]
+        },
+        {
+          "id": "wide",
+          "label": "Wide",
+          "answers": [
+            "Wide",
+            "Broad"
+          ]
+        },
+        {
+          "id": "narrow",
+          "label": "Narrow",
+          "answers": [
+            "Narrow"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "volume",
+          "answers": [
+            "volume"
+          ],
+          "items": [
+            "big",
+            "small"
+          ],
+          "explanation": "Big and small are the only two words shown describing overall three-dimensional volume.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "height",
+          "answers": [
+            "height"
+          ],
+          "items": [
+            "tall",
+            "short"
+          ],
+          "explanation": "Tall and short are the only two words shown describing vertical height.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "width",
+          "answers": [
+            "width"
+          ],
+          "items": [
+            "wide",
+            "narrow"
+          ],
+          "explanation": "Wide and narrow are the only two words shown describing side-to-side width.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "social-actions": {
+      "title": "Social Actions",
+      "category_answers": [
+        "Social Actions",
+        "Meeting People",
+        "Social Verbs",
+        "Actions with Others"
+      ],
+      "tags": [
+        "relationships",
+        "actions",
+        "communication"
+      ],
+      "items": [
+        {
+          "id": "meet",
+          "label": "Meet",
+          "answers": [
+            "Meet",
+            "Meet Someone"
+          ]
+        },
+        {
+          "id": "greet",
+          "label": "Greet",
+          "answers": [
+            "Greet",
+            "Say Hello"
+          ]
+        },
+        {
+          "id": "invite",
+          "label": "Invite",
+          "answers": [
+            "Invite"
+          ]
+        },
+        {
+          "id": "visit",
+          "label": "Visit",
+          "answers": [
+            "Visit"
+          ]
+        },
+        {
+          "id": "apologize",
+          "label": "Apologize",
+          "answers": [
+            "Apologize",
+            "Say Sorry"
+          ]
+        },
+        {
+          "id": "forgive",
+          "label": "Forgive",
+          "answers": [
+            "Forgive",
+            "Pardon"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "introduction",
+          "answers": [
+            "introduction"
+          ],
+          "items": [
+            "meet",
+            "greet"
+          ],
+          "explanation": "Meet and greet are the only two actions shown specifically beginning an introduction.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "invitation",
+          "answers": [
+            "invitation"
+          ],
+          "items": [
+            "invite",
+            "visit"
+          ],
+          "explanation": "Invite and visit are the only two actions shown specifically beginning and accepting an invitation.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "reconciliation",
+          "answers": [
+            "reconciliation"
+          ],
+          "items": [
+            "apologize",
+            "forgive"
+          ],
+          "explanation": "Apologize and forgive are the only two actions shown specifically repairing a disagreement.",
           "audit": "exclusive-among-six-v1"
         }
       ]

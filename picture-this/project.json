@@ -29,7 +29,7 @@
       "audio-match"
     ]
   },
-  "card_count": 121,
+  "card_count": 131,
   "pages": [
     {
       "id": "page_001",
@@ -1482,6 +1482,126 @@
       "image": "pages/page_242.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_243",
+      "image": "pages/page_243.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_244",
+      "image": "pages/page_244.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_245",
+      "image": "pages/page_245.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_246",
+      "image": "pages/page_246.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_247",
+      "image": "pages/page_247.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_248",
+      "image": "pages/page_248.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_249",
+      "image": "pages/page_249.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_250",
+      "image": "pages/page_250.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_251",
+      "image": "pages/page_251.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_252",
+      "image": "pages/page_252.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_253",
+      "image": "pages/page_253.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_254",
+      "image": "pages/page_254.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_255",
+      "image": "pages/page_255.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_256",
+      "image": "pages/page_256.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_257",
+      "image": "pages/page_257.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_258",
+      "image": "pages/page_258.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_259",
+      "image": "pages/page_259.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_260",
+      "image": "pages/page_260.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_261",
+      "image": "pages/page_261.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_262",
+      "image": "pages/page_262.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -2068,6 +2188,106 @@
         "actions",
         "travel",
         "transport"
+      ]
+    },
+    {
+      "id": "common-descriptions",
+      "title": "Common Descriptions",
+      "band_color": "red",
+      "game_tags": [
+        "descriptions",
+        "adjectives",
+        "comparisons"
+      ]
+    },
+    {
+      "id": "digital-actions",
+      "title": "Digital Actions",
+      "band_color": "orange",
+      "game_tags": [
+        "technology",
+        "actions",
+        "communication"
+      ]
+    },
+    {
+      "id": "everyday-opposites",
+      "title": "Everyday Opposites",
+      "band_color": "green",
+      "game_tags": [
+        "actions",
+        "opposites",
+        "routines"
+      ]
+    },
+    {
+      "id": "hand-actions",
+      "title": "Hand Actions",
+      "band_color": "blue",
+      "game_tags": [
+        "actions",
+        "hands",
+        "movement"
+      ]
+    },
+    {
+      "id": "health-symptoms",
+      "title": "Health Symptoms",
+      "band_color": "orange",
+      "game_tags": [
+        "health",
+        "symptoms",
+        "body"
+      ]
+    },
+    {
+      "id": "how-people-behave",
+      "title": "How People Behave",
+      "band_color": "orange",
+      "game_tags": [
+        "behavior",
+        "descriptions",
+        "relationships"
+      ]
+    },
+    {
+      "id": "location-words",
+      "title": "Location Words",
+      "band_color": "red",
+      "game_tags": [
+        "locations",
+        "prepositions",
+        "descriptions"
+      ]
+    },
+    {
+      "id": "more-jobs",
+      "title": "More Jobs",
+      "band_color": "orange",
+      "game_tags": [
+        "jobs",
+        "people",
+        "community"
+      ]
+    },
+    {
+      "id": "size-words",
+      "title": "Size Words",
+      "band_color": "orange",
+      "game_tags": [
+        "descriptions",
+        "size",
+        "adjectives"
+      ]
+    },
+    {
+      "id": "social-actions",
+      "title": "Social Actions",
+      "band_color": "orange",
+      "game_tags": [
+        "relationships",
+        "actions",
+        "communication"
       ]
     }
   ],
