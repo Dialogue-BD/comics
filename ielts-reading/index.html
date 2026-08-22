@@ -646,6 +646,17 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 @media print { .mc-table td, .mc-table th { color: #111 !important; border-color: #bbb !important; } }
 @media (max-width: 640px) { .mc-table td:first-child { white-space: normal; } }
 
+.fr-papers { display: flex; gap: 6px; flex-wrap: wrap; }
+.fr-papers button {
+  font-family: inherit; font-size: 0.76rem; font-weight: 700; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border); color: var(--text-muted);
+  padding: 7px 13px; border-radius: 999px; text-align: left; line-height: 1.3;
+}
+.fr-papers button small { display: block; font-size: 0.66rem; font-weight: 600; color: var(--text-dim); }
+.fr-papers button:hover { border-color: var(--accent); color: var(--text); }
+.fr-papers button.on { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+.fr-papers button.on small { color: var(--accent); }
+
 /* ══════════ SUMMARY COMPLETION ══════════ */
 .scmp-locate {
   background: var(--surface-2); border: 1px solid var(--kw-idea); border-radius: var(--r);
@@ -1836,9 +1847,9 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
   <div class="wrap">
     <div class="station-head">
       <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag screen">🖥️ Big screen</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: All three"><span class="gauge-stack"><span class="gauge-band cruise on"></span><span class="gauge-band attack on"></span><span class="gauge-band ground on"></span></span><span class="gauge-label">Altitude<b class="all">All three</b></span></span></div>
-      <div class="station-num">Station 7 · 20 minutes + 8 to review</div>
+      <div class="station-num">Station 7 · 20 minutes + 8 to review · two papers</div>
       <h2>The Full Run</h2>
-      <p class="station-sub">One passage, thirteen questions, twenty minutes — real exam pace, real exam layout. Afterwards it shows you <em>exactly which question cost you the paper</em>.</p>
+      <p class="station-sub">Two papers, thirteen questions each, twenty minutes — real exam pace, real exam layout. Afterwards it shows you <em>exactly which question cost you the paper</em>.</p>
     </div>
 
     <div class="tnote">
@@ -1866,6 +1877,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
             <span id="frPaceTarget">Pace: not started</span>
           </div>
         </div>
+        <div class="fr-papers no-print" id="frPapers" role="group" aria-label="Choose a paper"></div>
         <div class="btn-row">
           <button class="btn" id="frStart">▶ Begin</button>
           <button class="btn warn sm" id="frSubmit" disabled>Submit</button>
@@ -1881,16 +1893,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="fr-split tab-p" id="frSplit">
         <div class="fr-passage-col">
           <div class="passage-box">
-            <div class="fr-passage" id="frPassage">
-              <h4>The Rediscovery of Roman Concrete</h4>
-              <p><span class="pl">A</span>The dome of the Pantheon in Rome has stood for almost two thousand years. It contains no steel, spans forty-three metres, and remains the largest unreinforced concrete dome ever built. Roman harbour walls, poured directly into the sea two millennia ago, are still standing in the Bay of Naples. Modern reinforced concrete, by contrast, is frequently scheduled for major repair within fifty to a hundred years. That contrast has puzzled engineers for generations, and only in the last decade have laboratories begun to explain it.</p>
-              <p><span class="pl">B</span>The Roman recipe was not concrete as we understand the word. Instead of the finely ground Portland cement used today, Roman builders combined lime with pozzolana — a volcanic ash named after the town of Pozzuoli, near Naples — and, for structures built in the sea, mixed it with seawater rather than fresh water. The architect Vitruvius set down proportions for these mixtures in the first century BC, and his account survived, which is why the ingredients themselves were never really a mystery. What was mysterious was why they lasted so long.</p>
-              <p><span class="pl">C</span>The seawater turned out to be the first clue. Salt water is ruinous to modern concrete: it corrodes the steel embedded inside and splits the material apart from within, which is why coastal structures are among the most expensive to maintain. Roman marine concrete behaves in the opposite way. Analysis of cores drilled from ancient breakwaters showed that seawater percolating through the material had, over centuries, dissolved parts of the volcanic ash and allowed rare crystals to grow in the spaces left behind. The structures were not merely surviving the sea; they were being strengthened by it.</p>
-              <p><span class="pl">D</span>Marie Jackson, a geologist at the University of Utah, identified the crystal responsible as aluminous tobermorite, a mineral that is extremely difficult to manufacture under laboratory conditions and yet had formed slowly and unaided inside Roman piers. Her work established that the reaction was still continuing long after the concrete had set — in some cases for two thousand years, a timescale no modern building material is designed around.</p>
-              <p><span class="pl">E</span>A second explanation arrived from a different direction. A team led by Admir Masic at the Massachusetts Institute of Technology examined the small white lumps, known as lime clasts, scattered through Roman samples. These had long been dismissed as evidence of careless mixing. Masic's group argued instead that they were deliberate, produced by a technique called hot mixing in which highly reactive quicklime is added directly to the mixture. When the researchers deliberately cracked laboratory samples made this way and ran water through them, the cracks sealed themselves within two weeks. Identical samples made without the clasts never sealed at all.</p>
-              <p><span class="pl">F</span>None of this means the industry can simply revert to ancient practice. Roman concrete is weak in tension, sets far more slowly than modern mixes, and could not carry the loads that a contemporary bridge or tower demands. It cannot be reinforced with steel, because the very chemistry that protects the concrete is the chemistry that attacks the metal. Volcanic ash of the right composition is not available in most of the world either, and shipping it across oceans would cancel out much of the environmental argument for using it.</p>
-              <p><span class="pl">G</span>What is genuinely being taken from the Romans is narrower and more useful: the principle that a material can be designed to repair itself, and that durability may matter more than initial strength. Cement production is estimated to account for around eight per cent of global carbon dioxide emissions, and a substantial share of that is spent replacing structures that failed early. A concrete that lasted three hundred years instead of eighty would reduce those emissions without a single change to the way cement is burned. Measured that way, the Pantheon is not a curiosity. It is a specification.</p>
-            </div>
+            <div class="fr-passage" id="frPassage"></div>
           </div>
           <p class="dim" style="font-size:0.76rem; margin-top:9px">Original text written for this exercise · <span id="frWords">–</span> words · the science described is real and current</p>
         </div>
@@ -1922,7 +1925,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         </div>
       </div>
 
-      <div class="answer-key"><b>Answer key:</b> 1–F, 2–D, 3–G, 4–B, 5–TRUE, 6–FALSE, 7–TRUE, 8–FALSE, 9–NOT GIVEN, 10–seawater, 11–Pozzuoli, 12–hot mixing, 13–steel.</div>
+      <div class="answer-key" id="frKey"></div>
     </div>
   </div>
 </section>
@@ -2071,7 +2074,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         </div>
         <div class="ws-card">
           <h4>The Full Run · mock</h4>
-          <p>The complete 13-question paper on <i>Roman Concrete</i>, with the passage. Two sides — a genuine 20-minute mock to set as homework or a mid-term check.</p>
+          <p>The complete 13-question paper, with its passage. Whichever paper is selected in Station 7 is the one that prints — so you can set one in class and the other as homework.</p>
           <button class="btn sm sec" data-print="fullrunCard">Print mock paper</button>
         </div>
       </div>
@@ -2326,7 +2329,13 @@ var CONTENT = {
   ],
 
   /* ── Station 7 · the mock paper ── */
-  fullRun: [
+  papers: [
+    {
+      id: 'concrete',
+      title: 'The Rediscovery of Roman Concrete',
+      blurb: 'Materials science',
+      passage: '<h4>The Rediscovery of Roman Concrete</h4>\n              <p><span class="pl">A</span>The dome of the Pantheon in Rome has stood for almost two thousand years. It contains no steel, spans forty-three metres, and remains the largest unreinforced concrete dome ever built. Roman harbour walls, poured directly into the sea two millennia ago, are still standing in the Bay of Naples. Modern reinforced concrete, by contrast, is frequently scheduled for major repair within fifty to a hundred years. That contrast has puzzled engineers for generations, and only in the last decade have laboratories begun to explain it.</p>\n              <p><span class="pl">B</span>The Roman recipe was not concrete as we understand the word. Instead of the finely ground Portland cement used today, Roman builders combined lime with pozzolana — a volcanic ash named after the town of Pozzuoli, near Naples — and, for structures built in the sea, mixed it with seawater rather than fresh water. The architect Vitruvius set down proportions for these mixtures in the first century BC, and his account survived, which is why the ingredients themselves were never really a mystery. What was mysterious was why they lasted so long.</p>\n              <p><span class="pl">C</span>The seawater turned out to be the first clue. Salt water is ruinous to modern concrete: it corrodes the steel embedded inside and splits the material apart from within, which is why coastal structures are among the most expensive to maintain. Roman marine concrete behaves in the opposite way. Analysis of cores drilled from ancient breakwaters showed that seawater percolating through the material had, over centuries, dissolved parts of the volcanic ash and allowed rare crystals to grow in the spaces left behind. The structures were not merely surviving the sea; they were being strengthened by it.</p>\n              <p><span class="pl">D</span>Marie Jackson, a geologist at the University of Utah, identified the crystal responsible as aluminous tobermorite, a mineral that is extremely difficult to manufacture under laboratory conditions and yet had formed slowly and unaided inside Roman piers. Her work established that the reaction was still continuing long after the concrete had set — in some cases for two thousand years, a timescale no modern building material is designed around.</p>\n              <p><span class="pl">E</span>A second explanation arrived from a different direction. A team led by Admir Masic at the Massachusetts Institute of Technology examined the small white lumps, known as lime clasts, scattered through Roman samples. These had long been dismissed as evidence of careless mixing. Masic\'s group argued instead that they were deliberate, produced by a technique called hot mixing in which highly reactive quicklime is added directly to the mixture. When the researchers deliberately cracked laboratory samples made this way and ran water through them, the cracks sealed themselves within two weeks. Identical samples made without the clasts never sealed at all.</p>\n              <p><span class="pl">F</span>None of this means the industry can simply revert to ancient practice. Roman concrete is weak in tension, sets far more slowly than modern mixes, and could not carry the loads that a contemporary bridge or tower demands. It cannot be reinforced with steel, because the very chemistry that protects the concrete is the chemistry that attacks the metal. Volcanic ash of the right composition is not available in most of the world either, and shipping it across oceans would cancel out much of the environmental argument for using it.</p>\n              <p><span class="pl">G</span>What is genuinely being taken from the Romans is narrower and more useful: the principle that a material can be designed to repair itself, and that durability may matter more than initial strength. Cement production is estimated to account for around eight per cent of global carbon dioxide emissions, and a substantial share of that is spent replacing structures that failed early. A concrete that lasted three hundred years instead of eighty would reduce those emissions without a single change to the way cement is burned. Measured that way, the Pantheon is not a curiosity. It is a specification.</p>',
+      questions: [
     /* 1–4 · matching information (does NOT follow passage order) */
     { type: 'para', skill: 'locate', label: 'Which paragraph?',
       text: 'a reason why the ancient method cannot simply be adopted today', a: 'F',
@@ -2375,6 +2384,61 @@ var CONTENT = {
       text: 'Roman concrete cannot be reinforced with ______, because the chemistry that protects it attacks that material.',
       a: ['steel'], display: 'steel',
       why: 'Paragraph F. Note that the same word appears in paragraphs A and C — order matters: this question sits between Q9 and the end, so the answer is in the later part of the text.' }
+  ]
+    },
+    {
+      id: 'rivers',
+      title: 'Bringing Buried Rivers Back',
+      blurb: 'Urban environment',
+      passage: '<h4>Bringing Buried Rivers Back</h4>\n              <p><span class="pl">A</span>Almost every old city is built over water it can no longer see. During the nineteenth and early twentieth centuries, the small rivers and streams that towns had originally grown up beside were progressively enclosed in brick culverts and paved over. The reasons were rarely sentimental: open watercourses in a crowded city carried sewage and disease, and the land above a covered river could be sold, built on, or turned into a road. In London, Manchester, Boston and Tokyo alike, dozens of named streams disappeared from the map within a couple of generations.</p>\n              <p><span class="pl">B</span>Reopening one of these enclosed watercourses is called daylighting. The idea is straightforward — remove the culvert, excavate down to the original bed, and let the water run in the open again — but the engineering rarely is, because a century of building has usually been placed directly on top. Foundations, gas mains and underground railways all have to be worked around, and the water itself has to be clean enough to sit beside a public footpath before anyone will approve the scheme.</p>\n              <p><span class="pl">C</span>The project that made the case internationally was in Seoul. The Cheonggyecheon had been covered in the 1950s and later carried an elevated expressway along its length. Between 2003 and 2005 the deck and the expressway above it were demolished and a 5.84-kilometre channel was reopened through the centre of the city. The work cost in the region of 380 million dollars, a figure that was fiercely contested at the time.</p>\n              <p><span class="pl">D</span>The measured effects were larger than most of its supporters had promised. Air beside the restored stream was recorded between 3.3 and 5.9 degrees Celsius cooler than air on a parallel road only a few blocks away. Concentrations of small-particle pollution fell by roughly 35 per cent. Wildlife returned quickly: surveys taken five years apart found the number of bird species along the corridor had risen from six to thirty-six, and fish species from four to twenty-five.</p>\n              <p><span class="pl">E</span>The strongest objection had been about traffic. Removing an expressway used by well over a hundred thousand vehicles a day was widely predicted to paralyse central Seoul, and it did not. Journeys that planners assumed were fixed simply did not take place, or took place differently: bus use across the city rose by around fifteen per cent in the years that followed, and subway use rose more modestly. The episode is now routinely cited in transport planning as evidence that road capacity shapes demand rather than merely meeting it. Similar removals in San Francisco and Portland had pointed the same way, but Seoul was the first at a scale nobody could dismiss as a special case.</p>\n              <p><span class="pl">F</span>None of this makes daylighting a general remedy. Most buried watercourses in older cities were long ago connected into the combined sewer network and now carry foul water as well as rainfall, so reopening them means separating the two systems first — frequently the largest single cost. Space is the other constraint: a stream needs banks, and in a dense district the land either side is already owned and built upon. Several schemes have been abandoned at the survey stage for that reason alone, long before any cost was published.</p>\n              <p><span class="pl">G</span>What is spreading instead is something more modest. Short stretches are being reopened where a road is being rebuilt anyway, and partial schemes bring water to the surface for a few hundred metres before returning it underground. The argument has shifted, too. Daylighting is now proposed less as landscape improvement than as drainage: an open channel takes a sudden downpour that a Victorian pipe cannot, which in a warming climate is an increasingly practical reason to dig one up.</p>',
+      questions: [
+    { type: 'para', skill: 'locate', label: 'Which paragraph?',
+      text: 'a figure for the total cost of a project', a: 'C',
+      why: 'Paragraph C: "in the region of 380 million dollars". Scan for the shape of a number, not for the word "cost".' },
+    { type: 'para', skill: 'locate', label: 'Which paragraph?',
+      text: 'reasons why the approach cannot be used everywhere', a: 'F',
+      why: 'Paragraph F gives both obstacles: combined sewers, and no room for banks.' },
+    { type: 'para', skill: 'locate', label: 'Which paragraph?',
+      text: 'an explanation of why rivers were covered over originally', a: 'A',
+      why: 'Paragraph A: sewage and disease, plus land that could be sold or built on.' },
+    { type: 'para', skill: 'locate', label: 'Which paragraph?',
+      text: 'measurements showing cleaner air', a: 'D',
+      why: 'Paragraph D: small-particle pollution down about 35 per cent. Note C also contains numbers — same shape, wrong topic.' },
+
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'Many old cities have watercourses running beneath them that are no longer visible.', a: 'TRUE',
+      why: 'Paragraph A: "Almost every old city is built over water it can no longer see", with four cities named.' },
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'The term "daylighting" was invented by the engineers working in Seoul.', a: 'NOT GIVEN',
+      why: 'The passage defines daylighting and separately describes Seoul, but never says where the word came from. Two facts sitting near each other are not a link.' },
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'The Cheonggyecheon project cost less than one hundred million dollars.', a: 'FALSE',
+      why: 'The figure given is around 380 million. Same topic, contradicting number — you can point at it, so FALSE not NOT GIVEN.' },
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'More bird species were recorded along the stream after the restoration than before it.', a: 'TRUE',
+      why: 'Paragraph D: "from six to thirty-six". A clean paraphrase of a stated increase.' },
+    { type: 'tfng', skill: 'traps', label: 'True / False / Not Given',
+      text: 'Removing the expressway produced the severe congestion that had been predicted.', a: 'FALSE',
+      why: 'Paragraph E: it "was widely predicted to paralyse central Seoul, and it did not". The prediction is in the passage; so is its failure. Reading only the first half of that sentence is exactly the trap.' },
+
+    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
+      text: 'Reopening a watercourse that has been enclosed underground is known as ______.',
+      a: ['daylighting'], display: 'daylighting',
+      why: 'Paragraph B, first sentence. Definitions are almost always signposted with "is called" or "is known as" — scan for that phrase.' },
+    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
+      text: 'The channel reopened in Seoul is ______ kilometres long.',
+      a: ['5.84'], display: '5.84',
+      why: 'Paragraph C. Copy the figure exactly as printed — 5.84, not "about 6" and not "5.84 km", which would break the limit.' },
+    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
+      text: 'Air beside the restored stream was measured as several degrees ______ than air on a nearby road.',
+      a: ['cooler'], display: 'cooler', 
+      why: 'Paragraph D. The comparative form is already there in the passage — do not convert it to "cold" or "cooler temperature".' },
+    { type: 'gap', skill: 'scan', label: 'No more than two words', limit: 2,
+      text: 'Most buried watercourses now also carry ______, which must be separated out before they can be reopened.',
+      a: ['foul water'], display: 'foul water',
+      why: 'Paragraph F: they "now carry foul water as well as rainfall". "Sewage" appears in paragraph A but describes the nineteenth century, not the present — right word, wrong place.' }
+  ]
+    }
   ],
 
   /* ── Station 6 · trap-detector rounds (two banks) ── */
@@ -4399,12 +4463,18 @@ function makePrediction(boxId, optsId, resultId, judge) {
   var DURATION = 20 * 60;
   var PARA_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
-  var QUESTIONS = CONTENT.fullRun;
+  /* Two mock papers, swappable. Everything below is rendered from data so a
+     third paper needs no code — only another entry in CONTENT.papers. */
+  var PAPERS = CONTENT.papers;
+  var paperIdx = 0;
+  var QUESTIONS = PAPERS[0].questions;
 
   /* ── Build the question list ── */
   var state = QUESTIONS.map(function () { return { answer: null, flagged: false, seconds: 0 }; });
   var running = false, submitted = false, startedAt = null, lastAnswerAt = null, tick = null;
 
+  function buildQuestions() {
+  host.innerHTML = '';
   QUESTIONS.forEach(function (q, i) {
     var d = document.createElement('div');
     d.className = 'fr-q';
@@ -4477,8 +4547,36 @@ function makePrediction(boxId, optsId, resultId, judge) {
       });
     }
   });
+  }
 
-  $('#frWords').textContent = countWords($('#frPassage'));
+  /* ── Paper switching ── */
+  function loadPaper(n) {
+    paperIdx = n;
+    QUESTIONS = PAPERS[n].questions;
+    $('#frPassage').innerHTML = PAPERS[n].passage;
+    buildQuestions();
+    $('#frWords').textContent = countWords($('#frPassage'));
+    $$('#frPapers button').forEach(function (b, k) { b.classList.toggle('on', k === n); });
+    /* the printed key is generated, so it can never drift from the questions */
+    $('#frKey').innerHTML = '<b>Answer key · ' + PAPERS[n].title + ':</b> ' +
+      QUESTIONS.map(function (q, i) { return (i + 1) + '–' + (q.display || q.a); }).join(', ') + '.';
+    reset();
+  }
+
+  /* Word counts are measured from the passage itself, never typed in — a
+     hand-written count is wrong the moment anyone edits a sentence. */
+  $('#frPapers').innerHTML = PAPERS.map(function (pp, k) {
+    var tmp = document.createElement('div');
+    tmp.innerHTML = pp.passage;
+    return '<button data-i="' + k + '">' + pp.title +
+           '<small>' + pp.blurb + ' · ' + countWords(tmp) + ' words</small></button>';
+  }).join('');
+  $$('#frPapers button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (running && !submitted && !window.confirm('Switch papers? This will clear the paper you have started.')) return;
+      loadPaper(Number(b.dataset.i));
+    });
+  });
 
   /* ── Clock and pacing ── */
   var clockEl = $('#frClock'), fillEl = $('#frFill'), markEl = $('#frMarker');
@@ -4681,6 +4779,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
     running = false; submitted = false; startedAt = null; lastAnswerAt = null;
     $('#frBar').classList.add('sticky');
     state = QUESTIONS.map(function () { return { answer: null, flagged: false, seconds: 0 }; });
+    $('#frScore').textContent = '–';
     clockEl.textContent = fmtClock(DURATION);
     clockEl.className = 'fr-clock';
     $('#frStart').disabled = false; $('#frSubmit').disabled = true;
@@ -4703,8 +4802,8 @@ function makePrediction(boxId, optsId, resultId, judge) {
     $$('#frTabs button').forEach(function (b) { b.classList.toggle('on', b.dataset.tab === 'p'); });
   }
   $('#frReset').addEventListener('click', reset);
-  Resettable.push(reset);
-  reset();
+  Resettable.push(function () { loadPaper(paperIdx); });
+  loadPaper(0);
 })();
 
 /* ═══════════════════ STATION 6 — TRAP DETECTOR ═══════════════════ */
