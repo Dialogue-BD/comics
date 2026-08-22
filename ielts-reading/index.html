@@ -657,6 +657,63 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 .fr-papers button.on { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
 .fr-papers button.on small { color: var(--accent); }
 
+.jump-list a.here { border-color: var(--accent); background: var(--accent-dim); }
+.jump-list a.done b { background: var(--good); color: var(--on-good); }
+.jump-list a .tick { margin-left: auto; color: var(--good); font-weight: 800; font-size: 1rem; }
+
+/* ══════════ SCREENSHOT CARD ══════════
+   The page tells students to screenshot their diagnosis. A tall scorecard does
+   not fit one phone screen, so this is the same information in a block that does. */
+.shot-card {
+  display: none; margin-top: 18px; border: 2px solid var(--accent); border-radius: var(--r);
+  background: var(--surface); padding: 16px 18px;
+}
+.shot-card.show { display: block; }
+.shot-head {
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 10px;
+}
+.shot-row {
+  display: flex; gap: 12px; align-items: baseline;
+  padding: 6px 0; border-bottom: 1px solid var(--border-soft);
+}
+.shot-k { font-size: 0.78rem; color: var(--text-dim); font-weight: 700; flex-shrink: 0; }
+.shot-v { margin-left: auto; text-align: right; font-size: 0.9rem; font-weight: 800; }
+.shot-v.bad { color: var(--bad); }
+.shot-fix { margin-top: 11px; font-size: 0.84rem; line-height: 1.5; color: var(--text); }
+.shot-fix b { color: var(--warn); }
+
+/* ══════════ QUESTION NAVIGATOR ══════════
+   Real computer-delivered IELTS gives candidates a review row showing which
+   questions are answered and which are flagged. On a phone it is the only
+   practical way to find your three unanswered questions in the last minute. */
+.fr-nav { display: none; gap: 4px; flex-wrap: wrap; }
+.fr-toolbar.running .fr-nav { display: flex; }
+.fr-nav button {
+  flex: 1 1 0; min-width: 22px; font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+  cursor: pointer; background: var(--surface-2); color: var(--text-dim);
+  border: 1px solid var(--border); border-radius: 5px; padding: 5px 0; line-height: 1.2;
+}
+.fr-nav button.done { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+.fr-nav button.flag { background: var(--warn-dim); border-color: var(--warn); color: var(--warn); }
+.fr-nav button.flag.done { background: var(--warn); color: var(--on-warn); border-color: var(--warn); }
+.fr-nav button.here { outline: 2px solid var(--text); outline-offset: 1px; }
+
+/* ══════════ TOUCH RESPONSIVENESS ══════════
+   No hover on a phone, so every tappable needs an immediate pressed state,
+   and touch-action kills both the 300ms click delay and double-tap zoom. */
+button, a, select, input, .kwchip, .opt, .jump-list a { touch-action: manipulation; }
+button, a, .opt, .kwchip { -webkit-tap-highlight-color: transparent; }
+@media (pointer: coarse) {
+  .btn:active:not(:disabled), .opt:active:not(:disabled), .kwchip:active:not(:disabled),
+  .toggle-btn:active, .step-pill:active, .alt-mode:active, .fr-flag:active,
+  .fr-papers button:active, .fr-nav button:active, .jump-list a:active, .jump-fab:active {
+    transform: scale(0.96);
+    filter: brightness(0.94);
+  }
+  .opt, .kwchip, .fr-nav button, .jump-list a { transition: transform .06s, filter .06s, background .16s, border-color .16s; }
+}
+
 /* ══════════ MOBILE ══════════ */
 .alt-optin {
   position: absolute; inset: 0; display: none; align-items: center; justify-content: center;
@@ -2035,6 +2092,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
           </div>
         </div>
         <div class="fr-papers no-print" id="frPapers" role="group" aria-label="Choose a paper"></div>
+        <div class="fr-nav no-print" id="frNav" role="group" aria-label="Jump to a question"></div>
         <div class="btn-row">
           <button class="btn" id="frStart">▶ Begin</button>
           <button class="btn sec sm" id="frPeek" aria-pressed="false">📄 Passage</button>
@@ -2111,6 +2169,14 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div id="scErrors" style="display:none; margin-top:18px">
         <p class="mc-band"><span style="color:var(--bad)">Where the marks actually went</span><i></i></p>
         <div class="err-grid" id="errGrid"></div>
+      </div>
+      <div class="shot-card" id="shotCard">
+        <div class="shot-head">Reading Altitude · my result</div>
+        <div class="shot-row"><span class="shot-k">Score</span><span class="shot-v" id="shotScore">–</span></div>
+        <div class="shot-row"><span class="shot-k">Strongest</span><span class="shot-v" id="shotBest">–</span></div>
+        <div class="shot-row"><span class="shot-k">Weakest</span><span class="shot-v bad" id="shotWorst">–</span></div>
+        <div class="shot-row"><span class="shot-k">Commonest mistake</span><span class="shot-v bad" id="shotErr">–</span></div>
+        <div class="shot-fix" id="shotFix">–</div>
       </div>
       <div class="sc-verdict" id="scVerdict" style="display:none">
         <h4 id="scVerdictHead">—</h4>
@@ -2935,7 +3001,34 @@ var Resettable = [];
            '<span>' + st[3] + '</span></span></a>';
   }).join('');
 
-  function open() { sheet.classList.add('open'); fab.setAttribute('aria-expanded', 'true'); }
+  /* Which stations feed which sub-skill, so the sheet can show a tick for work
+     already done — orientation matters when the page is 57 screens tall. */
+  var FEEDS = {
+    '#mapping': ['map', 'locate'], '#keywords': ['keywords', 'paraphrase'],
+    '#scanning': ['scan'], '#traps': ['traps'], '#fullrun': ['fullrun']
+  };
+  function markProgress() {
+    var y = window.scrollY + window.innerHeight * 0.35, here = null;
+    STATIONS.forEach(function (st) {
+      var el = document.querySelector(st[0]);
+      if (el && el.offsetTop <= y) here = st[0];
+    });
+    $$('a', list).forEach(function (a) {
+      var href = a.getAttribute('href');
+      a.classList.toggle('here', href === here);
+      var keys = FEEDS[href];
+      var done = keys && keys.some(function (k) { var v = Progress.get(k); return v && v.attempted; });
+      a.classList.toggle('done', !!done);
+      var tick = $('.tick', a);
+      if (done && !tick) {
+        var t = document.createElement('span');
+        t.className = 'tick'; t.textContent = '✓';
+        a.appendChild(t);
+      } else if (!done && tick) { tick.remove(); }
+    });
+  }
+
+  function open() { markProgress(); sheet.classList.add('open'); fab.setAttribute('aria-expanded', 'true'); }
   function close() { sheet.classList.remove('open'); fab.setAttribute('aria-expanded', 'false'); }
   fab.addEventListener('click', open);
   $('#jumpClose').addEventListener('click', close);
@@ -4358,6 +4451,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
     var done = rows.filter(function (r) { return r.v.attempted && r.v.total >= 2; });
     if (done.length < 2) {
       vbox.style.display = 'none';
+      $('#shotCard').classList.remove('show');
       return;
     }
     vbox.style.display = 'block';
@@ -4412,8 +4506,19 @@ function makePrediction(boxId, optsId, resultId, judge) {
       parts.push('<p class="dim" style="font-size:0.85rem">You have not done <b>Station 7, the Full Run</b> yet. Until you do, this diagnosis covers your skills but not your pacing — and pacing is what most candidates actually lose marks to.</p>');
     }
 
-    parts.push('<p class="dim" style="font-size:0.8rem; margin-top:12px">Screenshot this. It is your homework brief, and it is different from everyone else’s in the room.</p>');
     vb.innerHTML = parts.join('');
+
+    /* ── the one-screen version, for the screenshot we actually ask them to take ── */
+    var shot = $('#shotCard');
+    shot.classList.add('show');
+    $('#shotScore').textContent = totC + ' / ' + totT + '  (' + Math.round(totC / totT * 100) + '%)';
+    $('#shotBest').textContent = best.sk.name + ' · ' + Math.round(best.pct * 100) + '%';
+    $('#shotWorst').textContent = worst.sk.name + ' · ' + Math.round(worst.pct * 100) + '%';
+    var te = Errors.top();
+    $('#shotErr').textContent = te ? Errors.TYPES[te].label : 'none yet';
+    $('#shotFix').innerHTML = '<b>Next:</b> ' +
+      (te ? Errors.TYPES[te].fix : (worst.pct < 0.8 ? RX[worst.sk.key].fix : 'Three passages back to back, on the clock.'))
+        .replace(/<\/?b>/g, '');
   }
 
   Progress.onChange(render);
@@ -4699,6 +4804,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
       }).join('') + '</div>';
     } else {
       body = '<input class="fr-gap" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" ' +
+             'inputmode="text" enterkeyhint="next" ' +
              'aria-label="Answer for question ' + (i + 1) + '" placeholder="type your answer">' +
              '<div class="fr-limit">NO MORE THAN TWO WORDS from the passage</div>';
     }
@@ -4720,6 +4826,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
       state[i].flagged = !state[i].flagged;
       flagBtn.classList.toggle('on', state[i].flagged);
       d.classList.toggle('flagged', state[i].flagged);
+      paintNav();
     });
 
     function stamp() {
@@ -4731,6 +4838,14 @@ function makePrediction(boxId, optsId, resultId, judge) {
 
     if (q.type === 'gap') {
       var input = $('.fr-gap', d);
+      /* Enter jumps to the next gap rather than dismissing the keyboard */
+      input.addEventListener('keydown', function (ev) {
+        if (ev.key !== 'Enter') return;
+        ev.preventDefault();
+        input.blur();
+        var nxt = $('#frq' + (i + 1) + ' .fr-gap');
+        if (nxt) { nxt.focus(); nxt.scrollIntoView({ block: 'center' }); }
+      });
       input.addEventListener('change', function () {
         if (!running || submitted) return;
         var had = state[i].answer !== null;
@@ -4763,6 +4878,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
     QUESTIONS = PAPERS[n].questions;
     $('#frPassage').innerHTML = PAPERS[n].passage;
     buildQuestions();
+    buildNav();
     $('#frWords').textContent = countWords($('#frPassage'));
     $$('#frPapers button').forEach(function (b, k) { b.classList.toggle('on', k === n); });
     /* the printed key is generated, so it can never drift from the questions */
@@ -4790,10 +4906,42 @@ function makePrediction(boxId, optsId, resultId, judge) {
   var clockEl = $('#frClock'), fillEl = $('#frFill'), markEl = $('#frMarker');
   var youEl = $('#frPaceYou'), tgtEl = $('#frPaceTarget');
 
+  /* ── Question navigator ── */
+  function buildNav() {
+    $('#frNav').innerHTML = QUESTIONS.map(function (_, i) {
+      return '<button data-q="' + i + '" aria-label="Question ' + (i + 1) + '">' + (i + 1) + '</button>';
+    }).join('');
+    $$('#frNav button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var el = $('#frq' + b.dataset.q);
+        if (!el) return;
+        /* if the passage is showing on a phone, flip back to the questions first */
+        if ($('#frSplit').classList.contains('tab-p') && window.innerWidth <= 900) {
+          var pk = $('#frPeek'); if (pk) pk.click();
+        }
+        /* Jump instantly. A review row is for the last minute of a paper — a
+           600ms smooth scroll is the wrong answer when the clock is running. */
+        var root = document.documentElement, prev = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';
+        el.scrollIntoView({ block: 'center' });
+        root.style.scrollBehavior = prev;
+        $$('#frNav button').forEach(function (o) { o.classList.toggle('here', o === b); });
+      });
+    });
+  }
+  function paintNav() {
+    $$('#frNav button').forEach(function (b, i) {
+      var st = state[i];
+      b.classList.toggle('done', st.answer !== null && st.answer !== '');
+      b.classList.toggle('flag', !!st.flagged);
+    });
+  }
+
   function answeredCount() {
     return state.filter(function (x) { return x.answer !== null && x.answer !== ''; }).length;
   }
   function paintPace() {
+    paintNav();
     var n = answeredCount();
     fillEl.style.width = (n / QUESTIONS.length * 100) + '%';
     youEl.textContent = 'You: ' + n + ' of ' + QUESTIONS.length + ' answered';
@@ -4825,6 +4973,8 @@ function makePrediction(boxId, optsId, resultId, judge) {
     $('#frStart').disabled = true;
     $('#frSubmit').disabled = false;
     $('#frPapers').style.display = 'none';   /* reclaim the space once the clock is running */
+    $('#frBar').classList.add('running');
+    paintNav();
     tick = setInterval(paintClock, 250);
     paintClock();
     $('#frSplit').classList.remove('tab-p'); $('#frSplit').classList.add('tab-q');
@@ -4833,6 +4983,12 @@ function makePrediction(boxId, optsId, resultId, judge) {
   });
 
   $('#frSubmit').addEventListener('click', function () { submit(false); });
+
+  /* Nothing is saved anywhere, so leaving mid-run loses the paper. On a phone
+     that is one mis-swipe away, and twenty minutes is a lot to lose. */
+  window.addEventListener('beforeunload', function (e) {
+    if (running && !submitted) { e.preventDefault(); e.returnValue = ''; return ''; }
+  });
 
   /* ── Grading ── */
   function normalise(v) {
@@ -4853,7 +5009,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
     clearInterval(tick);
     $('#frSubmit').disabled = true;
     /* the paper is over — stop the toolbar hovering over the debrief */
-    $('#frBar').classList.remove('sticky');
+    $('#frBar').classList.remove('sticky', 'running');
     var used = Math.min(DURATION, (Date.now() - startedAt) / 1000);
 
     var right = 0, sec = [0, 0, 0], secTot = [4, 5, 4];
@@ -5013,6 +5169,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
     clockEl.className = 'fr-clock';
     $('#frStart').disabled = false; $('#frSubmit').disabled = true;
     $('#frPapers').style.display = '';
+    $('#frBar').classList.remove('running');
     $('#frReview').classList.remove('show');
     fillEl.style.width = '0%'; markEl.style.left = '0%';
     youEl.textContent = 'You: 0 of 13 answered';
