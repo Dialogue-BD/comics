@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Skim &amp; Scan — IELTS Reading Skills | Dialogue</title>
+<meta name="description" content="An interactive classroom tool for teaching IELTS skimming and scanning: an eye-tracking demo, timed skim/scan sprints, a keyword detective drill, and a trap-detector trainer, with printable pair-work worksheets.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f14;
+    --surface: #161a23;
+    --surface-hover: #1e2330;
+    --surface-2: #1b202c;
+    --border: #252b3b;
+    --accent: #4f7ef8;
+    --accent-dim: rgba(79,126,248,0.12);
+    --accent2: #8b5cf6;
+    --accent2-dim: rgba(139,92,246,0.14);
+    --text: #e8eaf0;
+    --text-muted: #8892a8;
+    --text-dim: #5b6478;
+    --good: #22c55e;
+    --good-dim: rgba(34,197,94,0.14);
+    --bad: #ef4444;
+    --bad-dim: rgba(239,68,68,0.14);
+    --warn: #f59e0b;
+    --warn-dim: rgba(245,158,11,0.14);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    padding-bottom: 80px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a { color: inherit; }
+
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  /* ── Header ── */
+  header.page-head {
+    text-align: center;
+    padding: 44px 20px 28px;
+  }
+
+  header.page-head .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  header.page-head h1 {
+    font-size: clamp(1.7rem, 5vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  header.page-head p {
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    transition: border-color .15s, color .15s;
+  }
+  .home-link:hover { border-color: var(--accent); color: var(--text); }
+
+  /* ── Station jump-nav ── */
+  nav.station-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(13,15,20,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+  }
+
+  nav.station-nav .wrap {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  nav.station-nav .wrap::-webkit-scrollbar { display: none; }
+
+  nav.station-nav a {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 7px 13px;
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  nav.station-nav a:hover { background: var(--surface-hover); color: var(--text); border-color: var(--accent); }
+  nav.station-nav a .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-size: 0.65rem;
+    font-weight: 800;
+  }
+
+  /* ── Stations ── */
+  section.station {
+    padding: 56px 20px 8px;
+    scroll-margin-top: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  section.station:last-of-type { border-bottom: none; }
+
+  .station-head { max-width: 760px; margin: 0 auto 28px; }
+
+  .station-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 6px;
+    padding: 4px 9px;
+  }
+  .tag.whole-class { background: var(--accent-dim); color: var(--accent); }
+  .tag.pair-work { background: var(--accent2-dim); color: var(--accent2); }
+  .tag.print { background: var(--warn-dim); color: var(--warn); }
+
+  .station-head .station-num {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  .station-head h2 {
+    font-size: clamp(1.35rem, 3.6vw, 1.8rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .station-head .station-sub {
+    margin-top: 10px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-size: 0.95rem;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+    max-width: 760px;
+    margin: 0 auto 18px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: filter .15s, transform .1s;
+  }
+  .btn:hover { filter: brightness(1.1); }
+  .btn:active { transform: scale(0.97); }
+  .btn.secondary { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+  .btn.ghost { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+  .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+  .btn.small { font-size: 0.76rem; padding: 7px 13px; }
+
+  /* ── Station 1: Eye-Tracking Lab ── */
+  .mode-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .mode-buttons .btn.active { background: var(--good); }
+  .mode-buttons .btn.secondary.active { background: var(--good); color: #fff; border-color: var(--good); }
+
+  .eye-stats {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+  .eye-stats strong { color: var(--text); }
+
+  .passage-wrap {
+    position: relative;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 20px 22px;
+  }
+
+  .eye-dot {
+    position: absolute;
+    left: -100px; top: -100px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--good);
+    box-shadow: 0 0 0 5px rgba(34,197,94,0.25), 0 0 18px 4px rgba(34,197,94,0.5);
+    transform: translate(-50%, -50%);
+    transition: left 0.28s cubic-bezier(.4,0,.2,1), top 0.28s cubic-bezier(.4,0,.2,1), opacity .2s;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 5;
+  }
+  .eye-dot.visible { opacity: 1; }
+
+  .passage {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #c7cbd8;
+  }
+  .passage p { margin-bottom: 14px; }
+  .passage p:last-child { margin-bottom: 0; }
+  .passage .w {
+    border-radius: 3px;
+    padding: 1px 1px;
+    transition: background .2s, color .2s, font-weight .2s;
+  }
+  .passage .w.fixated-read { background: rgba(79,126,248,0.22); color: #fff; }
+  .passage .w.fixated-skim { background: rgba(139,92,246,0.28); color: #fff; font-weight: 700; }
+  .passage .w.fixated-scan { background: rgba(34,197,94,0.32); color: #fff; font-weight: 700; }
+
+  .eye-caption {
+    margin-top: 14px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-style: italic;
+    min-height: 2.6em;
+  }
+
+  /* ── Shared card bits ── */
+  .card-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+  }
+
+  /* ── Station 2: Skim Sprint ── */
+  .demo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+  .timer-display {
+    font-family: var(--sans);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--good);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 4px 16px;
+    min-width: 64px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    transition: color .2s;
+  }
+  .timer-display.urgent { color: var(--bad); }
+
+  .passage-lock {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+  }
+  .skim-demo .passage-wrap { min-height: 90px; }
+  .skim-demo .passage { visibility: hidden; }
+  .skim-demo .passage-wrap.revealed .passage-lock { display: none; }
+  .skim-demo .passage-wrap.revealed .passage { visibility: visible; }
+
+  .gist-quiz { margin-top: 20px; }
+  .gist-quiz.hidden { display: none; }
+  .quiz-q { font-weight: 700; margin-bottom: 12px; font-size: 0.98rem; }
+  .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-opt {
+    text-align: left;
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: var(--text);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 11px 14px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .quiz-opt:hover { border-color: var(--accent); }
+  .quiz-options.answered .quiz-opt { cursor: default; pointer-events: none; }
+  .quiz-opt.correct { background: var(--good-dim); border-color: var(--good); }
+  .quiz-opt.incorrect { background: var(--bad-dim); border-color: var(--bad); }
+  .quiz-feedback { margin-top: 12px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.55; }
+
+  /* ── Pair-work cards (shared: heading hunt / info race / trap sort) ── */
+  .pair-card { border-color: var(--accent2); }
+  .pair-instructions { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px; line-height: 1.6; }
+
+  .heading-bank {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 12px;
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+  }
+  .heading-chip {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 5px 12px;
+  }
+  .heading-chip b { color: var(--accent2); margin-right: 5px; }
+
+  .match-item {
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 12px;
+  }
+  .match-item:first-of-type { border-top: none; }
+  .match-num {
+    grid-row: 1 / 3;
+    font-weight: 800;
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    width: 22px;
+  }
+  .match-text { font-size: 0.9rem; line-height: 1.6; color: #c7cbd8; }
+  .match-select {
+    font-family: inherit;
+    font-size: 0.85rem;
+    color: var(--text);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 7px 10px;
+    width: fit-content;
+  }
+  .match-result { font-size: 0.85rem; font-weight: 700; margin-left: 4px; }
+  .match-result.correct { color: var(--good); }
+  .match-result.incorrect { color: var(--bad); }
+
+  .pair-card-actions { display: flex; align-items: center; gap: 14px; margin-top: 18px; flex-wrap: wrap; }
+  .pair-score { font-size: 0.88rem; font-weight: 700; color: var(--text-muted); }
+
+  /* ── Station 3: Scan Sprint ── */
+  .find-fast-prompt {
+    background: var(--warn-dim);
+    border: 1px solid var(--warn);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-size: 0.92rem;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .find-fast-prompt strong { color: var(--warn); }
+  .passage .w.scan-found { background: var(--warn); color: #1a1300; font-weight: 800; outline: 2px solid var(--warn); }
+
+  .race-questions { margin-top: 18px; display: flex; flex-direction: column; gap: 16px; }
+  .race-q-text { font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
+  .race-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .race-opt {
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .race-opt:hover { border-color: var(--accent2); }
+  .race-opt.selected { border-color: var(--accent2); background: var(--accent2-dim); }
+  .race-q.checked .race-opt { pointer-events: none; }
+  .race-opt.correct { background: var(--good-dim); border-color: var(--good); color: var(--good); }
+  .race-opt.incorrect { background: var(--bad-dim); border-color: var(--bad); color: var(--bad); }
+
+  /* ── Station 4: Keyword Detective ── */
+  .kw-legend { border-radius: 3px; padding: 0 4px; font-weight: 700; }
+  .kw-legend.concrete { background: var(--accent-dim); color: var(--accent); }
+  .kw-legend.idea { background: var(--accent2-dim); color: var(--accent2); }
+
+  .try-it-label {
+    max-width: 760px;
+    margin: 8px auto 18px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent2);
+  }
+
+  .kw-demo { border-color: var(--border); }
+  .kw-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .kw-statement p { font-size: 1.02rem; line-height: 1.7; }
+  .kw-word { border-radius: 3px; padding: 0 2px; transition: background .25s, color .25s; }
+  .kw-demo[data-step="1"] .kw-word { background: none; color: inherit; font-weight: inherit; }
+  .kw-demo:not([data-step="1"]) .kw-word.concrete { background: var(--accent-dim); color: var(--accent); font-weight: 700; }
+  .kw-demo:not([data-step="1"]) .kw-word.idea { background: var(--accent2-dim); color: var(--accent2); font-weight: 700; }
+
+  .kw-lock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--surface-2);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-sm);
+    padding: 22px;
+    margin-top: 16px;
+    color: var(--text-muted);
+    font-size: 0.86rem;
+  }
+  .kw-demo:not([data-step="1"]) .kw-lock { display: none; }
+  .kw-passage-wrap { display: none; margin-top: 16px; }
+  .kw-demo:not([data-step="1"]) .kw-passage-wrap { display: block; }
+  .kw-passage-wrap .passage { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px 20px; font-family: var(--serif); font-size: 1.02rem; line-height: 1.85; color: #c7cbd8; }
+  .kw-passage-wrap .para-break { display: block; height: 12px; }
+  .sentence { transition: opacity .3s; }
+  .kw-demo[data-step="2"] .sentence:not(.target-sentence) { opacity: 0.32; }
+  .kw-demo[data-step="2"] .sentence.target-sentence,
+  .kw-demo[data-step="3"] .sentence.target-sentence {
+    background: var(--good-dim);
+    border-radius: 4px;
+    padding: 0 2px;
+    color: #fff;
+    font-weight: 600;
+  }
+  .kw-demo[data-step="3"] .sentence:not(.target-sentence) { display: none; }
+  .kw-demo[data-step="3"] .kw-passage-wrap .passage { font-size: 1.12rem; }
+
+  .kw-verdict { margin-top: 18px; opacity: 0.35; pointer-events: none; transition: opacity .3s; }
+  .kw-demo[data-step="3"] .kw-verdict { opacity: 1; pointer-events: auto; }
+  .kw-verdict .quiz-options { flex-direction: row; flex-wrap: wrap; }
+  .kw-verdict .quiz-opt { flex: 1 1 100px; text-align: center; font-weight: 700; }
+
+  .kw-controls { display: flex; align-items: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .kw-step-label { font-size: 0.78rem; color: var(--text-dim); margin-right: auto; }
+
+  /* ── Station 5: Trap Detector ── */
+  .trap-glossary {
+    max-width: 760px;
+    margin: 0 auto 22px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .trap-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+  }
+  .trap-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 6px; }
+  .trap-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 8px; }
+  .trap-example { font-size: 0.78rem; color: var(--text-dim); }
+  .trap-example em { color: var(--warn); font-style: normal; font-weight: 700; }
+
+  .trap-score-row { margin-bottom: 16px; }
+  .trap-quiz-list { display: flex; flex-direction: column; }
+  .trap-item { padding: 18px 0; border-top: 1px solid var(--border); }
+  .trap-item:first-child { border-top: none; padding-top: 4px; }
+  .trap-label-inline {
+    display: inline-block;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .trap-extract { font-size: 0.9rem; line-height: 1.6; color: #c7cbd8; margin-bottom: 8px; }
+  .trap-statement { font-size: 0.9rem; line-height: 1.6; font-weight: 600; margin-bottom: 12px; }
+  .trap-item .quiz-options, .kw-verdict .quiz-options { flex-direction: row; flex-wrap: wrap; }
+  .trap-item .quiz-opt { flex: 1 1 100px; text-align: center; font-weight: 700; }
+
+  @media (max-width: 640px) {
+    .trap-glossary { grid-template-columns: 1fr; }
+  }
+
+  /* ── Station 6: Printable Worksheets ── */
+  .worksheet-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .print-blank { display: none; }
+  .answer-key-print { display: none; }
+
+  footer.page-foot {
+    text-align: center;
+    margin-top: 60px;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    padding: 0 20px;
+  }
+
+  /* ============ PRINT ============ */
+  @media print {
+    * { box-shadow: none !important; text-shadow: none !important; }
+    body {
+      background: #fff !important;
+      color: #111 !important;
+      padding: 0;
+    }
+    nav.station-nav, header.page-head, footer.page-foot,
+    .no-print { display: none !important; }
+
+    section.station { border: none; padding: 0 0 24px; }
+
+    .card, .trap-card {
+      background: #fff !important;
+      border: 1px solid #999 !important;
+      color: #111 !important;
+      box-shadow: none !important;
+    }
+    .passage, .kw-passage-wrap .passage, .passage-wrap { color: #111 !important; background: #fff !important; border-color: #999 !important; }
+    .match-text, .race-q-text, .trap-extract, .trap-statement, .quiz-q, .station-sub, .pair-instructions, .card-label { color: #111 !important; }
+    .heading-bank { background: #f5f5f5 !important; border: 1px solid #999 !important; }
+    .heading-chip { background: #fff !important; border: 1px solid #999 !important; color: #111 !important; }
+    .heading-chip b { color: #111 !important; }
+
+    /* Neutralise all interactive colouring so printed choices look blank */
+    .quiz-opt, .race-opt {
+      background: #fff !important;
+      border: 1px solid #333 !important;
+      color: #111 !important;
+      font-weight: 600 !important;
+    }
+    .quiz-feedback, .match-result, .trap-score-row, .eye-stats, .eye-caption { display: none !important; }
+    .match-select { display: none !important; }
+    .print-blank { display: inline !important; color: #111; font-size: 0.85rem; margin-left: 4px; }
+    .answer-key-print {
+      display: block !important;
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px dashed #333;
+      font-size: 0.8rem;
+      color: #111 !important;
+    }
+
+    /* Isolate exactly one printable card when printOnly() is used */
+    body.print-single > *:not(.print-target-section) { display: none !important; }
+    body.print-single .print-target-section > *:not(.print-active) { display: none !important; }
+    body.print-single .print-target-section { padding: 0; border: none; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="station-nav">
+    <div class="wrap">
+      <a href="#eye-tracking"><span class="num">1</span> Eye-Tracking Lab</a>
+      <a href="#skim-sprint"><span class="num">2</span> Skim Sprint</a>
+      <a href="#scan-sprint"><span class="num">3</span> Scan Sprint</a>
+      <a href="#keyword-detective"><span class="num">4</span> Keyword Detective</a>
+      <a href="#trap-detector"><span class="num">5</span> Trap Detector</a>
+      <a href="#worksheets"><span class="num">6</span> Worksheets</a>
+    </div>
+  </nav>
+
+  <header class="page-head">
+    <div class="eyebrow">Dialogue Language Center · IELTS Reading</div>
+    <h1>Skim &amp; Scan</h1>
+    <p>Six stations for teaching students to stop reading every word — for the big screen, for pairs, and for printing when phones aren't an option.</p>
+    <a class="home-link" href="../">← All activities</a>
+  </header>
+
+  <!-- STATION 1 -->
+  <section class="station" id="eye-tracking">
+    <div class="station-head">
+      <div class="station-tags"><span class="tag whole-class">🖥️ Whole class</span></div>
+      <div class="station-num">Station 1</div>
+      <h2>The Eye-Tracking Lab</h2>
+      <p class="station-sub">The same paragraph, read three different ways. Press a mode and project it — a live dot shows exactly where a reader's eyes would land. Ask the class to guess, before you press Scan, how many words they think it will actually touch.</p>
+    </div>
+    <div class="card eye-lab">
+      <div class="mode-buttons no-print">
+        <button class="btn" data-mode="read">📖 Read Every Word</button>
+        <button class="btn secondary" data-mode="skim">⚡ Skim</button>
+        <button class="btn secondary" data-mode="scan">🎯 Scan</button>
+        <button class="btn ghost small" id="eyeReset">Reset</button>
+      </div>
+      <div class="eye-stats">Words fixated: <strong id="eyeCount">0</strong> / <strong id="eyeTotal">–</strong></div>
+      <div class="passage-wrap" id="eyePassageWrap">
+        <div class="eye-dot" id="eyeDot"></div>
+        <div class="passage" id="eyePassage">
+          <p>Beekeeping has quietly moved from the countryside into cities over the last two decades. In London alone, the number of registered hives rose from around 1,600 in 2008 to more than 7,400 by 2020, according to the London Beekeepers Association.</p>
+          <p>Supporters argue that urban bees benefit from a longer flowering season, since parks, gardens and even balconies bloom at different times across a city. Rooftop hives have appeared on buildings ranging from the Paris Opera House to hotels in New York.</p>
+          <p>Critics, however, warn that packing too many hives into a small area can actually harm wild bee populations by forcing them to compete for the same limited flowers. Some ecologists now recommend planting more flowers before adding more hives.</p>
+        </div>
+      </div>
+      <p class="eye-caption" id="eyeCaption">Choose a mode above to watch the eye move.</p>
+    </div>
+  </section>
+
+  <!-- STATION 2 -->
+  <section class="station" id="skim-sprint">
+    <div class="station-head">
+      <div class="station-tags"><span class="tag whole-class">🖥️ Whole class</span><span class="tag pair-work">👥 Pair work</span></div>
+      <div class="station-num">Station 2</div>
+      <h2>Skim Sprint</h2>
+      <p class="station-sub">First, prove the point on the big screen: 60 seconds, one passage, no going back — then only gist questions. Afterwards, pairs practise the same skill with a heading-matching race.</p>
+    </div>
+
+    <div class="card skim-demo">
+      <p class="card-label">🖥️ Whole-class demo</p>
+      <div class="demo-row no-print">
+        <button class="btn" id="skimStart">▶ Start 60-Second Skim</button>
+        <div class="timer-display" id="skimTimer">60</div>
+      </div>
+      <div class="passage-wrap" id="skimPassageWrap">
+        <div class="passage-lock" id="skimLock"><span>🔒 Press Start — the passage appears the instant the clock begins, and disappears the instant it ends.</span></div>
+        <div class="passage" id="skimPassage">
+          <p>Tea is often associated with Britain, but the drink actually originated in China more than 4,000 years ago. According to legend, Emperor Shen Nung discovered it by accident when tea leaves blew into a pot of boiling water he was preparing.</p>
+          <p>The drink did not reach Europe until the seventeenth century, when Dutch traders began importing it from Asia. It was expensive at first, and only wealthy households could afford to serve it. Prices fell sharply once large-scale plantations were established in India during the nineteenth century.</p>
+          <p>Today tea is the second most consumed beverage in the world after water. More than three billion cups are drunk every day, and production methods vary enormously between regions, from the delicate hand-picked leaves of Darjeeling to the machine-harvested tea used in most tea bags.</p>
+        </div>
+      </div>
+      <div class="gist-quiz hidden" id="skimQuiz">
+        <p class="quiz-q">No peeking — from memory: what is this passage <em>mainly</em> about?</p>
+        <div class="quiz-options" id="skimOptions">
+          <button class="quiz-opt" data-correct="false" data-note="A real detail from paragraph 2 — but only one part of the story, not the whole point.">How tea plantations in India lowered prices</button>
+          <button class="quiz-opt" data-correct="true" data-note="Correct — every paragraph is a stop on the same journey: origin, spread, and how it's produced today.">The history and spread of tea around the world</button>
+          <button class="quiz-opt" data-correct="false" data-note="A detail from paragraph 1 — a fact, not the gist of the whole passage.">Why Emperor Shen Nung became famous</button>
+          <button class="quiz-opt" data-correct="false" data-note="Never mentioned anywhere in the passage — a pure distractor.">The health benefits of drinking tea</button>
+        </div>
+        <p class="quiz-feedback" id="skimFeedback"></p>
+      </div>
+    </div>
+
+    <div class="card pair-card" id="headingHuntCard">
+      <p class="card-label">👥 Pair work — Heading Hunt</p>
+      <p class="pair-instructions">Skim each excerpt for 20–30 seconds each — not a full read. Pick the heading that captures its <em>main idea</em>. One heading matches nothing.</p>
+      <div class="heading-bank" id="headingBank">
+        <span class="heading-chip"><b>A</b> A surprisingly clever creature without a skeleton</span>
+        <span class="heading-chip"><b>B</b> How rising temperatures threaten reefs</span>
+        <span class="heading-chip"><b>C</b> Why a good night's rest helps you learn</span>
+        <span class="heading-chip"><b>D</b> An epic journey guided by nature's compass</span>
+        <span class="heading-chip"><b>E</b> The economic cost of coral tourism</span>
+      </div>
+      <div class="match-item" data-correct="A">
+        <p class="match-num">1</p>
+        <p class="match-text">Octopuses have no bones at all, which allows them to squeeze through gaps barely wider than their eyeball. Researchers have also watched them open jars, solve mazes, and even use coconut shells as portable armour — behaviour rarely seen outside primates and birds.</p>
+        <select class="match-select"><option value="">Choose a heading…</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select>
+        <span class="print-blank">Heading: _____</span>
+        <span class="match-result"></span>
+      </div>
+      <div class="match-item" data-correct="B">
+        <p class="match-num">2</p>
+        <p class="match-text">When ocean temperatures rise even slightly above normal for several weeks, corals expel the colourful algae living in their tissues. Without these algae the coral turns white and, if warm conditions continue for too long, it can starve to death.</p>
+        <select class="match-select"><option value="">Choose a heading…</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select>
+        <span class="print-blank">Heading: _____</span>
+        <span class="match-result"></span>
+      </div>
+      <div class="match-item" data-correct="C">
+        <p class="match-num">3</p>
+        <p class="match-text">During deep sleep the brain replays the day's events at high speed, strengthening the connections between neurons that store new information. Students who sleep well after studying consistently outperform those who pull an all-nighter before a test.</p>
+        <select class="match-select"><option value="">Choose a heading…</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select>
+        <span class="print-blank">Heading: _____</span>
+        <span class="match-result"></span>
+      </div>
+      <div class="match-item" data-correct="D">
+        <p class="match-num">4</p>
+        <p class="match-text">Some Arctic terns fly more than 70,000 kilometres a year, chasing summer between the North and South Poles. Scientists believe the birds navigate using a combination of the sun's position, the Earth's magnetic field, and even the pattern of polarised light in the sky.</p>
+        <select class="match-select"><option value="">Choose a heading…</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select>
+        <span class="print-blank">Heading: _____</span>
+        <span class="match-result"></span>
+      </div>
+      <div class="pair-card-actions no-print">
+        <button class="btn secondary" id="headingCheck">Check My Answers</button>
+        <span class="pair-score" id="headingScore"></span>
+      </div>
+      <p class="answer-key-print">Answer key — 1: A · 2: B · 3: C · 4: D · (E unused)</p>
+    </div>
+  </section>
+
+  <!-- STATION 3 -->
+  <section class="station" id="scan-sprint">
+    <div class="station-head">
+      <div class="station-tags"><span class="tag whole-class">🖥️ Whole class</span><span class="tag pair-work">👥 Pair work</span></div>
+      <div class="station-num">Station 3</div>
+      <h2>Scan Sprint</h2>
+      <p class="station-sub">Scanning targets a <em>shape</em> — a number, a name, a time — not a sentence. Read the prompt out loud first, before revealing the text, so students know exactly what shape they're hunting for.</p>
+    </div>
+
+    <div class="card scan-demo">
+      <p class="card-label">🖥️ Whole-class demo — Find It Fast</p>
+      <div class="find-fast-prompt" id="findPrompt">Prompt: <strong>What time does the pottery class start?</strong></div>
+      <div class="demo-row no-print">
+        <button class="btn" id="findTimerBtn">▶ Start 10s</button>
+        <div class="timer-display" id="findTimer">10</div>
+        <button class="btn secondary" id="findReveal">Reveal Answer</button>
+        <button class="btn ghost small" id="findNext">Next Prompt →</button>
+      </div>
+      <div class="passage-wrap"><div class="passage" id="findPassage">
+        <p>RIVERSIDE COMMUNITY CENTRE — WEEKLY PROGRAMME. Open Monday to Saturday, 8:00 am to 9:00 pm. Pottery classes run every Tuesday and Thursday, starting at 6:30 pm in Studio 2 (£12 per session, all materials included). Beginners are welcome, but please arrive 15 minutes early to collect an apron. Yoga sessions take place every morning at 7:15 am except Sundays, led by instructor Maria Santos. The centre café serves lunch from 12:00 to 2:00 pm and is closed on public holidays. For membership enquiries call 01865 772 341 or visit the front desk between 9:00 am and 5:00 pm. Annual membership costs £85 for adults and £45 for students, and includes free entry to all Saturday workshops.</p>
+      </div></div>
+    </div>
+
+    <div class="card pair-card" id="infoRaceCard">
+      <p class="card-label">👥 Pair work — Info Race</p>
+      <p class="pair-instructions">Scan — do not read start to finish. Whoever's finger lands on the fact first calls it out, then agree on an answer together.</p>
+      <div class="passage-wrap"><div class="passage" id="racePassage">
+        <p>LAKESIDE SPORTS CLUB — SUMMER SCHEDULE. The club is open daily from 6:00 am to 10:00 pm, except Wednesdays when it closes early at 4:00 pm for staff training. Swimming lessons for children begin at 9:30 am on Saturdays and cost £8 per child, with a qualified lifeguard, Tom Reyes, supervising every session. The tennis courts can be booked in advance by calling 01904 556 210, and non-members pay £15 per hour compared with £6 for members. A new junior football league starts on the first Monday of July, and registration closes on 20 June. Annual family membership is priced at £210 and includes unlimited use of the gym, pool, and courts for up to two adults and three children.</p>
+      </div></div>
+      <div class="race-questions">
+        <div class="race-q">
+          <p class="race-q-text">1. What time does the club close on Wednesdays?</p>
+          <div class="race-opts">
+            <button class="race-opt" data-correct="false">10:00 pm</button>
+            <button class="race-opt" data-correct="true">4:00 pm</button>
+            <button class="race-opt" data-correct="false">6:00 pm</button>
+          </div>
+        </div>
+        <div class="race-q">
+          <p class="race-q-text">2. Who supervises the children's swimming lessons?</p>
+          <div class="race-opts">
+            <button class="race-opt" data-correct="true">Tom Reyes</button>
+            <button class="race-opt" data-correct="false">Maria Santos</button>
+            <button class="race-opt" data-correct="false">Not stated</button>
+          </div>
+        </div>
+        <div class="race-q">
+          <p class="race-q-text">3. What do non-members pay for court booking, per hour?</p>
+          <div class="race-opts">
+            <button class="race-opt" data-correct="false">£6</button>
+            <button class="race-opt" data-correct="false">£8</button>
+            <button class="race-opt" data-correct="true">£15</button>
+          </div>
+        </div>
+        <div class="race-q">
+          <p class="race-q-text">4. When does football league registration close?</p>
+          <div class="race-opts">
+            <button class="race-opt" data-correct="false">1 July</button>
+            <button class="race-opt" data-correct="true">20 June</button>
+            <button class="race-opt" data-correct="false">4 July</button>
+          </div>
+        </div>
+        <div class="race-q">
+          <p class="race-q-text">5. What is the phone number for court bookings?</p>
+          <div class="race-opts">
+            <button class="race-opt" data-correct="true">01904 556 210</button>
+            <button class="race-opt" data-correct="false">01865 772 341</button>
+            <button class="race-opt" data-correct="false">Not given</button>
+          </div>
+        </div>
+        <div class="race-q">
+          <p class="race-q-text">6. How many children can be on a family membership?</p>
+          <div class="race-opts">
+            <button class="race-opt" data-correct="false">Two</button>
+            <button class="race-opt" data-correct="true">Three</button>
+            <button class="race-opt" data-correct="false">Five</button>
+          </div>
+        </div>
+      </div>
+      <div class="pair-card-actions no-print">
+        <button class="btn secondary" id="raceCheck">Check My Answers</button>
+        <span class="pair-score" id="raceScore"></span>
+      </div>
+      <p class="answer-key-print">Answer key — 1: 4:00 pm · 2: Tom Reyes · 3: £15 · 4: 20 June · 5: 01904 556 210 · 6: Three</p>
+    </div>
+  </section>
+
+  <!-- STATION 4 -->
+  <section class="station" id="keyword-detective">
+    <div class="station-head">
+      <div class="station-tags"><span class="tag whole-class">🖥️ Whole class</span><span class="tag pair-work">👥 Pair work</span></div>
+      <div class="station-num">Station 4</div>
+      <h2>Keyword Detective</h2>
+      <p class="station-sub">Before scanning, mark the keywords in the question. There are two kinds: <span class="kw-legend concrete">concrete keywords</span> — numbers, names, dates — which usually appear unchanged, and <span class="kw-legend idea">idea keywords</span> — verbs and adjectives — which the passage will almost always paraphrase. Step through each example below.</p>
+    </div>
+
+    <div class="kw-demo card" data-step="1" id="kw1">
+      <p class="card-label">🖥️ Worked example</p>
+      <div class="kw-statement">
+        <span class="kw-tag">Statement</span>
+        <p>The world's <span class="kw-word idea">first</span> <span class="kw-word idea">public lending library</span> that allowed anyone to <span class="kw-word idea">borrow books for free</span> opened in the <span class="kw-word concrete">1850s</span>.</p>
+      </div>
+      <div class="kw-lock"><span>Press "Find the Sentence" to reveal the passage.</span></div>
+      <div class="kw-passage-wrap"><div class="passage">
+        <span class="sentence">Libraries have existed for thousands of years, but for most of that time they were reserved for scholars, priests, or the wealthy.</span> <span class="sentence">Ordinary people were rarely permitted to borrow a book, let alone take one home.</span>
+        <span class="para-break"></span>
+        <span class="sentence">That changed in Manchester, England, where the Manchester Free Library opened its doors in 1852.</span> <span class="sentence target-sentence">It was the first library in the country to let any member of the public borrow books at no charge, a model that libraries across Europe and North America gradually copied over the following decades.</span>
+      </div></div>
+      <div class="kw-verdict">
+        <p class="quiz-q">Does the passage agree with the statement?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="true" data-note="Correct — TRUE. &lsquo;at no charge&rsquo; paraphrases &lsquo;for free&rsquo;, and 1852 falls inside &lsquo;the 1850s&rsquo;. Same idea, different words.">TRUE</button>
+          <button class="quiz-opt" data-correct="false" data-note="Look again — once you match the paraphrase, the sentence actually confirms the statement.">FALSE</button>
+          <button class="quiz-opt" data-correct="false" data-note="Not this time — the matching sentence is right there, so it can be answered.">NOT GIVEN</button>
+        </div>
+        <p class="quiz-feedback"></p>
+      </div>
+      <div class="kw-controls no-print">
+        <span class="kw-step-label" data-step-label></span>
+        <button class="btn secondary small kw-next">Next step →</button>
+        <button class="btn ghost small kw-reset">Reset</button>
+      </div>
+    </div>
+
+    <p class="try-it-label">👥 Now pairs try it themselves — no big screen needed, work through each on your phone.</p>
+
+    <div class="kw-demo card" data-step="1" id="kw2">
+      <div class="kw-statement">
+        <span class="kw-tag">Statement</span>
+        <p>Rainfall in the city has been <span class="kw-word idea">measured accurately</span> since the <span class="kw-word concrete">middle of the nineteenth century</span>.</p>
+      </div>
+      <div class="kw-lock"><span>Press "Find the Sentence" to reveal the passage.</span></div>
+      <div class="kw-passage-wrap"><div class="passage">
+        <span class="sentence target-sentence">Rainfall records for the city go back to 1861, but they only became fully reliable after modern measuring equipment was installed in 1920.</span> <span class="sentence">Since then, meteorologists agree the wettest year on record was 1954, when more than 1,400 millimetres of rain fell — almost twice the yearly average.</span>
+      </div></div>
+      <div class="kw-verdict">
+        <p class="quiz-q">Does the passage agree with the statement?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" data-note="Not quite — records do exist from 1861, but that's not what the statement claims.">TRUE</button>
+          <button class="quiz-opt" data-correct="true" data-note="Correct — FALSE. Records exist from 1861, but the text says they weren't reliable until 1920 — almost 70 years later. The statement quietly swaps &lsquo;records exist&rsquo; for &lsquo;measured accurately&rsquo;.">FALSE</button>
+          <button class="quiz-opt" data-correct="false" data-note="Not this time — the passage directly addresses when measurement became reliable, so it can be answered.">NOT GIVEN</button>
+        </div>
+        <p class="quiz-feedback"></p>
+      </div>
+      <div class="kw-controls no-print">
+        <span class="kw-step-label" data-step-label></span>
+        <button class="btn secondary small kw-next">Next step →</button>
+        <button class="btn ghost small kw-reset">Reset</button>
+      </div>
+    </div>
+
+    <div class="kw-demo card" data-step="1" id="kw3">
+      <div class="kw-statement">
+        <span class="kw-tag">Statement</span>
+        <p>The Northbridge Observatory is the <span class="kw-word idea">largest public observatory</span> in the <span class="kw-word concrete">country</span>.</p>
+      </div>
+      <div class="kw-lock"><span>Press "Find the Sentence" to reveal the passage.</span></div>
+      <div class="kw-passage-wrap"><div class="passage">
+        <span class="sentence target-sentence">The Northbridge Observatory was built in 1932 and remains open to the public every weekend.</span> <span class="sentence">Its main telescope, upgraded in 2005, is now sensitive enough to detect faint galaxies more than ten million light years away.</span>
+      </div></div>
+      <div class="kw-verdict">
+        <p class="quiz-q">Does the passage agree with the statement?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt" data-correct="false" data-note="Careful — size compared to other observatories is never mentioned at all.">TRUE</button>
+          <button class="quiz-opt" data-correct="false" data-note="Careful — this would mean the text says the opposite. It doesn't say anything about size at all.">FALSE</button>
+          <button class="quiz-opt" data-correct="true" data-note="Correct — NOT GIVEN. The passage never compares this observatory's size to any other. Nothing here confirms or denies the claim.">NOT GIVEN</button>
+        </div>
+        <p class="quiz-feedback"></p>
+      </div>
+      <div class="kw-controls no-print">
+        <span class="kw-step-label" data-step-label></span>
+        <button class="btn secondary small kw-next">Next step →</button>
+        <button class="btn ghost small kw-reset">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATION 5 -->
+  <section class="station" id="trap-detector">
+    <div class="station-head">
+      <div class="station-tags"><span class="tag whole-class">🖥️ Whole class</span><span class="tag pair-work">👥 Pair work</span></div>
+      <div class="station-num">Station 5</div>
+      <h2>Trap Detector</h2>
+      <p class="station-sub">Finding the right sentence is only half the job. Examiners write False and Not Given answers to <em>sound</em> right to a fast reader. Here are the four tricks to watch for, then a scored round to test them.</p>
+    </div>
+
+    <div class="trap-glossary">
+      <div class="trap-card">
+        <p class="trap-title">🔄 Negation Flip</p>
+        <p class="trap-desc">The question states the exact opposite of what the passage says.</p>
+        <p class="trap-example">Text: <em>"increased"</em> → Question: <em>"decreased"</em></p>
+      </div>
+      <div class="trap-card">
+        <p class="trap-title">⚖️ Qualifier Swap</p>
+        <p class="trap-desc">A word like "some" or "most" is quietly swapped for "all" or "none".</p>
+        <p class="trap-example">Text: <em>"most"</em> → Question: <em>"all"</em></p>
+      </div>
+      <div class="trap-card">
+        <p class="trap-title">🗺️ Scope Shift</p>
+        <p class="trap-desc">A claim true for one group or place gets stretched to cover everyone, everywhere.</p>
+        <p class="trap-example">Text: <em>"in coastal areas"</em> → Question: <em>"everywhere"</em></p>
+      </div>
+      <div class="trap-card">
+        <p class="trap-title">🔁 Reversed Cause &amp; Effect</p>
+        <p class="trap-desc">A and B are swapped, so the claim reverses what actually causes what.</p>
+        <p class="trap-example">Text: <em>"A causes B"</em> → Question: <em>"B causes A"</em></p>
+      </div>
+    </div>
+
+    <div class="card pair-card" id="trapQuizCard">
+      <p class="card-label">👥 Pair work — Trap or True?</p>
+      <p class="pair-instructions">For each pair, find the matching idea, decide the verdict, then check. If you're wrong, the trap type is named for you.</p>
+      <div class="trap-score-row no-print"><span class="pair-score" id="trapScore">Score: 0 / 0 answered</span></div>
+      <div class="trap-quiz-list">
+        <div class="trap-item">
+          <p class="trap-extract"><span class="trap-label-inline">Text</span> Scientists confirmed that the glacier's rate of melting has increased significantly since 2010, largely due to warmer ocean currents.</p>
+          <p class="trap-statement"><span class="trap-label-inline">Question</span> The glacier has been melting more slowly since 2010.</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-correct="false" data-note="Careful — the text says melting increased, the question says it slowed down. That's a Negation Flip.">TRUE</button>
+            <button class="quiz-opt" data-correct="true" data-note="Correct — FALSE, and it's a Negation Flip: the text says melting increased, the question claims the opposite.">FALSE</button>
+            <button class="quiz-opt" data-correct="false" data-note="It can be answered — the text directly states the rate of melting, just in the opposite direction.">NOT GIVEN</button>
+          </div>
+          <p class="quiz-feedback"></p>
+        </div>
+        <div class="trap-item">
+          <p class="trap-extract"><span class="trap-label-inline">Text</span> Although most participants reported feeling less stressed after the programme, a small number said they noticed no difference at all.</p>
+          <p class="trap-statement"><span class="trap-label-inline">Question</span> All participants felt less stressed after the programme.</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-correct="false" data-note="Careful — a small number noticed no difference, so &lsquo;all&rsquo; goes too far. That's a Qualifier Swap.">TRUE</button>
+            <button class="quiz-opt" data-correct="true" data-note="Correct — FALSE, and it's a Qualifier Swap: the text says &lsquo;most&rsquo;, the question quietly upgrades it to &lsquo;all&rsquo;.">FALSE</button>
+            <button class="quiz-opt" data-correct="false" data-note="It can be answered — the text tells you directly that not everyone felt the same.">NOT GIVEN</button>
+          </div>
+          <p class="quiz-feedback"></p>
+        </div>
+        <div class="trap-item">
+          <p class="trap-extract"><span class="trap-label-inline">Text</span> In the coastal regions surveyed, plastic waste on beaches has fallen by 40 percent since the ban on single-use bags.</p>
+          <p class="trap-statement"><span class="trap-label-inline">Question</span> Plastic waste has fallen by 40 percent across the entire country.</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-correct="false" data-note="Careful — the study only covers coastal regions. The rest of the country is never mentioned. That's a Scope Shift.">TRUE</button>
+            <button class="quiz-opt" data-correct="false" data-note="Not quite — the text doesn't say the opposite happened elsewhere, it simply never mentions the rest of the country.">FALSE</button>
+            <button class="quiz-opt" data-correct="true" data-note="Correct — NOT GIVEN, and it's a Scope Shift: the 40 percent figure is only for &lsquo;coastal regions surveyed&rsquo;, never the whole country.">NOT GIVEN</button>
+          </div>
+          <p class="quiz-feedback"></p>
+        </div>
+        <div class="trap-item">
+          <p class="trap-extract"><span class="trap-label-inline">Text</span> Poor sleep has been shown to increase the risk of poor concentration the following day, according to the study's authors.</p>
+          <p class="trap-statement"><span class="trap-label-inline">Question</span> Poor concentration causes poor sleep, according to the study.</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-correct="false" data-note="Careful — the study says sleep affects concentration, not the other way round. That's Reversed Cause &amp; Effect.">TRUE</button>
+            <button class="quiz-opt" data-correct="true" data-note="Correct — FALSE, and it's Reversed Cause &amp; Effect: the study says poor sleep causes poor concentration, not the reverse.">FALSE</button>
+            <button class="quiz-opt" data-correct="false" data-note="It can be answered — the study states the direction of the effect directly.">NOT GIVEN</button>
+          </div>
+          <p class="quiz-feedback"></p>
+        </div>
+        <div class="trap-item">
+          <p class="trap-extract"><span class="trap-label-inline">Text</span> The bridge, completed in 1937, was at the time the longest suspension bridge in the world, a record it held for nearly three decades.</p>
+          <p class="trap-statement"><span class="trap-label-inline">Question</span> The bridge held the record for the longest suspension bridge for almost 30 years.</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-correct="true" data-note="Correct — TRUE. &lsquo;Nearly three decades&rsquo; and &lsquo;almost 30 years&rsquo; are the same paraphrase — no trap here.">TRUE</button>
+            <button class="quiz-opt" data-correct="false" data-note="Look again — this is a straight paraphrase, not a trap. &lsquo;Nearly three decades&rsquo; = &lsquo;almost 30 years&rsquo;.">FALSE</button>
+            <button class="quiz-opt" data-correct="false" data-note="It can be answered — the exact figure is right there in the text, just paraphrased.">NOT GIVEN</button>
+          </div>
+          <p class="quiz-feedback"></p>
+        </div>
+        <div class="trap-item">
+          <p class="trap-extract"><span class="trap-label-inline">Text</span> The museum's new wing, funded entirely by private donations, will house a permanent collection of twentieth-century sculpture.</p>
+          <p class="trap-statement"><span class="trap-label-inline">Question</span> The museum's new wing was more expensive to build than the original building.</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-correct="false" data-note="Careful — cost of the original building is never mentioned at all, so this can't be confirmed.">TRUE</button>
+            <button class="quiz-opt" data-correct="false" data-note="Careful — this would mean the text states the opposite. It says nothing about cost comparisons.">FALSE</button>
+            <button class="quiz-opt" data-correct="true" data-note="Correct — NOT GIVEN. Funding source is mentioned, but a cost comparison with the original building never appears.">NOT GIVEN</button>
+          </div>
+          <p class="quiz-feedback"></p>
+        </div>
+      </div>
+      <p class="answer-key-print">Answer key — 1: FALSE (Negation Flip) · 2: FALSE (Qualifier Swap) · 3: NOT GIVEN (Scope Shift) · 4: FALSE (Reversed Cause &amp; Effect) · 5: TRUE · 6: NOT GIVEN</p>
+    </div>
+  </section>
+
+  <!-- STATION 6 -->
+  <section class="station" id="worksheets">
+    <div class="station-head">
+      <div class="station-tags"><span class="tag print">🖨️ Printable</span></div>
+      <div class="station-num">Station 6</div>
+      <h2>Printable Worksheets</h2>
+      <p class="station-sub">No phone, no data, no problem. Each pair-work activity above prints as a clean, dark-theme-free worksheet — dropdowns become blank lines to fill in, and an answer key is added at the bottom for you to check against.</p>
+    </div>
+    <div class="card worksheet-links no-print">
+      <button class="btn secondary" onclick="printOnly('headingHuntCard')">🖨️ Print Heading Hunt</button>
+      <button class="btn secondary" onclick="printOnly('infoRaceCard')">🖨️ Print Info Race</button>
+      <button class="btn secondary" onclick="printOnly('trapQuizCard')">🖨️ Print Trap or True?</button>
+    </div>
+  </section>
+
+  <footer class="page-foot">Dialogue Language Center — IELTS Reading Skills</footer>
+
+<script>
+'use strict';
+/* Shared helpers */
+function wrapWords(container) {
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  let n;
+  while (n = walker.nextNode()) textNodes.push(n);
+  let idx = 0;
+  const words = [];
+  textNodes.forEach(node => {
+    const parts = node.textContent.split(/(\s+)/);
+    const frag = document.createDocumentFragment();
+    parts.forEach(part => {
+      if (part.trim() === '') {
+        frag.appendChild(document.createTextNode(part));
+      } else {
+        const span = document.createElement('span');
+        span.className = 'w';
+        span.textContent = part;
+        span.dataset.i = idx;
+        words.push(span);
+        idx++;
+        frag.appendChild(span);
+      }
+    });
+    node.parentNode.replaceChild(frag, node);
+  });
+  return words;
+}
+function wireSingleAnswerQuiz(container) {
+  if (container.dataset.wired) return;
+  container.dataset.wired = '1';
+  const feedbackTarget = container.parentElement.querySelector('.quiz-feedback');
+  container.querySelectorAll('.quiz-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      if (container.classList.contains('answered')) return;
+      container.classList.add('answered');
+      container.querySelectorAll('.quiz-opt').forEach(b => { if (b.dataset.correct === 'true') b.classList.add('correct'); });
+      if (opt.dataset.correct !== 'true') opt.classList.add('incorrect');
+      if (feedbackTarget) feedbackTarget.textContent = opt.dataset.note || '';
+    });
+  });
+}
+function idxOf(words, text, occurrence) {
+  occurrence = occurrence || 1;
+  const target = text.replace(/[^\w']/g, '').toLowerCase();
+  let count = 0;
+  for (let i = 0; i < words.length; i++) {
+    const w = words[i].textContent.replace(/[^\w']/g, '').toLowerCase();
+    if (w === target) {
+      count++;
+      if (count === occurrence) return i;
+    }
+  }
+  return -1;
+}
+
+/* ---------- Station 1: Eye-Tracking Lab ---------- */
+(function () {
+  const passageEl = document.getElementById('eyePassage');
+  const wrapEl = document.getElementById('eyePassageWrap');
+  const dot = document.getElementById('eyeDot');
+  const caption = document.getElementById('eyeCaption');
+  const countEl = document.getElementById('eyeCount');
+  const totalEl = document.getElementById('eyeTotal');
+  const buttons = document.querySelectorAll('.eye-lab .mode-buttons [data-mode]');
+  const resetBtn = document.getElementById('eyeReset');
+  if (!passageEl) return;
+
+  const words = wrapWords(passageEl);
+  totalEl.textContent = words.length;
+
+  const seqRead = words.map((w, i) => i);
+
+  const skimTargets = [
+    ['Beekeeping', 1], ['has', 1], ['quietly', 1], ['moved', 1],
+    ['Supporters', 1], ['argue', 1], ['that', 3], ['urban', 1],
+    ['Critics', 1], ['however', 1], ['warn', 1], ['that', 5]
+  ];
+  const seqSkim = skimTargets.map(([t, occ]) => idxOf(words, t, occ)).filter(i => i >= 0);
+
+  const scanTargets = [
+    ['1,600', 1], ['2008', 1], ['7,400', 1], ['2020', 1],
+    ['London', 1], ['Paris', 1], ['New', 1]
+  ];
+  const seqScan = scanTargets.map(([t, occ]) => idxOf(words, t, occ)).filter(i => i >= 0);
+
+  const dwell = { read: 90, skim: 260, scan: 520 };
+  const captions = {
+    read: {
+      start: 'Reading every single word, left to right — the way most students default to under exam pressure.',
+      end: (n, total) => `Fixated on all ${total} words to get through one short paragraph. At that pace, 40 questions in 60 minutes is a real problem.`
+    },
+    skim: {
+      start: 'Skimming: landing only on the opening words of each paragraph, hunting for the general topic — not the details.',
+      end: (n, total) => `Fixated on just ${n} of ${total} words (${Math.round(n / total * 100)}%) — already enough to answer "what is this mainly about?"`
+    },
+    scan: {
+      start: 'Scanning: ignoring sentence order completely and jumping straight to numbers and names — the exact shape of the answer.',
+      end: (n, total) => `Found ${n} facts while touching only ${n} of ${total} words (${Math.round(n / total * 100)}%). That is how scanning saves time on exam day.`
+    }
+  };
+  const sequences = { read: seqRead, skim: seqSkim, scan: seqScan };
+
+  let timer = null;
+
+  function clearHighlights() {
+    words.forEach(w => w.classList.remove('fixated-read', 'fixated-skim', 'fixated-scan'));
+  }
+
+  function moveDotTo(span) {
+    const wrapRect = wrapEl.getBoundingClientRect();
+    const spanRect = span.getBoundingClientRect();
+    dot.style.left = (spanRect.left - wrapRect.left + spanRect.width / 2) + 'px';
+    dot.style.top = (spanRect.top - wrapRect.top + spanRect.height / 2) + 'px';
+    dot.classList.add('visible');
+  }
+
+  function run(mode) {
+    clearTimeout(timer);
+    clearHighlights();
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+    countEl.textContent = '0';
+    caption.textContent = captions[mode].start;
+    const seq = sequences[mode];
+    let i = 0;
+    function step() {
+      if (i >= seq.length) {
+        caption.textContent = captions[mode].end(seq.length, words.length);
+        return;
+      }
+      const span = words[seq[i]];
+      moveDotTo(span);
+      span.classList.add('fixated-' + mode);
+      countEl.textContent = String(i + 1);
+      i++;
+      timer = setTimeout(step, dwell[mode]);
+    }
+    step();
+  }
+
+  buttons.forEach(btn => btn.addEventListener('click', () => run(btn.dataset.mode)));
+  resetBtn.addEventListener('click', () => {
+    clearTimeout(timer);
+    clearHighlights();
+    buttons.forEach(b => b.classList.remove('active'));
+    dot.classList.remove('visible');
+    countEl.textContent = '0';
+    caption.textContent = 'Choose a mode above to watch the eye move.';
+  });
+})();
+
+/* ---------- Station 2: Skim Sprint ---------- */
+(function () {
+  const startBtn = document.getElementById('skimStart');
+  const timerEl = document.getElementById('skimTimer');
+  const wrapEl = document.getElementById('skimPassageWrap');
+  const lockEl = document.getElementById('skimLock');
+  const quizEl = document.getElementById('skimQuiz');
+  const feedbackEl = document.getElementById('skimFeedback');
+  if (!startBtn) return;
+
+  let seconds = 60;
+  let interval = null;
+
+  startBtn.addEventListener('click', () => {
+    startBtn.disabled = true;
+    quizEl.classList.add('hidden');
+    document.querySelectorAll('#skimOptions .quiz-opt').forEach(b => b.classList.remove('correct', 'incorrect'));
+    document.getElementById('skimOptions').classList.remove('answered');
+    feedbackEl.textContent = '';
+    seconds = 60;
+    timerEl.textContent = seconds;
+    timerEl.classList.remove('urgent');
+    wrapEl.classList.add('revealed');
+    lockEl.querySelector('span').textContent = '🔒 Press Start — the passage appears the instant the clock begins, and disappears the instant it ends.';
+    interval = setInterval(() => {
+      seconds--;
+      timerEl.textContent = seconds;
+      if (seconds <= 10) timerEl.classList.add('urgent');
+      if (seconds <= 0) {
+        clearInterval(interval);
+        wrapEl.classList.remove('revealed');
+        lockEl.querySelector('span').textContent = "⏱ Time's up — no peeking! Answer from memory below.";
+        quizEl.classList.remove('hidden');
+        startBtn.disabled = false;
+      }
+    }, 1000);
+  });
+
+})();
+
+/* ---------- Heading Hunt (pair work) ---------- */
+(function () {
+  const checkBtn = document.getElementById('headingCheck');
+  const scoreEl = document.getElementById('headingScore');
+  if (!checkBtn) return;
+  const headingText = {};
+  document.querySelectorAll('#headingBank .heading-chip').forEach(chip => {
+    const letter = chip.querySelector('b').textContent;
+    headingText[letter] = chip.textContent.trim().slice(1).trim();
+  });
+  checkBtn.addEventListener('click', () => {
+    let correct = 0;
+    const items = document.querySelectorAll('.pair-card .match-item');
+    items.forEach(item => {
+      const select = item.querySelector('.match-select');
+      const result = item.querySelector('.match-result');
+      const answer = item.dataset.correct;
+      if (!select.value) { result.textContent = 'No answer selected'; result.className = 'match-result incorrect'; return; }
+      if (select.value === answer) {
+        correct++;
+        result.textContent = '✓ Correct';
+        result.className = 'match-result correct';
+      } else {
+        result.textContent = '✗ Should be ' + answer;
+        result.className = 'match-result incorrect';
+      }
+    });
+    scoreEl.textContent = correct + ' / ' + items.length + ' correct';
+  });
+})();
+
+/* ---------- Station 3: Find It Fast ---------- */
+(function () {
+  const passage = document.getElementById('findPassage');
+  const promptEl = document.getElementById('findPrompt');
+  const timerBtn = document.getElementById('findTimerBtn');
+  const timerEl = document.getElementById('findTimer');
+  const revealBtn = document.getElementById('findReveal');
+  const nextBtn = document.getElementById('findNext');
+  if (!passage) return;
+
+  const words = wrapWords(passage);
+  const prompts = [
+    { q: 'What time does the pottery class start?', target: '6:30' },
+    { q: 'How much does student membership cost per year?', target: '£45' },
+    { q: 'Who leads the yoga sessions?', target: 'Santos' },
+    { q: "What is the phone number for membership enquiries?", target: '01865' },
+    { q: 'What time does the café stop serving lunch?', target: '2:00' }
+  ];
+  let idx = 0;
+  let interval = null;
+
+  function clearFound() { words.forEach(w => w.classList.remove('scan-found')); }
+
+  function showPrompt(i) {
+    clearFound();
+    clearInterval(interval);
+    promptEl.innerHTML = 'Prompt: <strong>' + prompts[i].q + '</strong>';
+    timerEl.textContent = '10';
+    timerEl.classList.remove('urgent');
+  }
+
+  timerBtn.addEventListener('click', () => {
+    let s = 10;
+    timerEl.textContent = s;
+    timerEl.classList.remove('urgent');
+    clearInterval(interval);
+    interval = setInterval(() => {
+      s--;
+      timerEl.textContent = s;
+      if (s <= 3) timerEl.classList.add('urgent');
+      if (s <= 0) clearInterval(interval);
+    }, 1000);
+  });
+
+  revealBtn.addEventListener('click', () => {
+    clearFound();
+    const p = prompts[idx];
+    const wi = idxOf(words, p.target, 1);
+    if (wi >= 0) {
+      words[wi].classList.add('scan-found');
+      words[wi].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    idx = (idx + 1) % prompts.length;
+    showPrompt(idx);
+  });
+})();
+
+/* ---------- Info Race (pair work) ---------- */
+(function () {
+  const checkBtn = document.getElementById('raceCheck');
+  const scoreEl = document.getElementById('raceScore');
+  if (!checkBtn) return;
+
+  document.querySelectorAll('.race-q').forEach(q => {
+    q.querySelectorAll('.race-opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (q.classList.contains('checked')) return;
+        q.querySelectorAll('.race-opt').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+      });
+    });
+  });
+
+  checkBtn.addEventListener('click', () => {
+    let correct = 0, total = 0;
+    document.querySelectorAll('.race-q').forEach(q => {
+      total++;
+      q.classList.add('checked');
+      const selected = q.querySelector('.race-opt.selected');
+      q.querySelectorAll('.race-opt').forEach(b => { if (b.dataset.correct === 'true') b.classList.add('correct'); });
+      if (selected && selected.dataset.correct === 'true') correct++;
+      else if (selected) selected.classList.add('incorrect');
+    });
+    scoreEl.textContent = correct + ' / ' + total + ' correct';
+  });
+})();
+
+/* ---------- Station 4: Keyword Detective ---------- */
+(function () {
+  const stepLabels = {
+    1: 'Step 1 of 3 — read the statement. Which words are worth hunting for?',
+    2: 'Step 2 of 3 — the matching sentence is highlighted, the rest fades away.',
+    3: 'Step 3 of 3 — zoom in, read intensively, then give your verdict.'
+  };
+  document.querySelectorAll('.kw-demo').forEach(demo => {
+    const label = demo.querySelector('[data-step-label]');
+    const nextBtn = demo.querySelector('.kw-next');
+    const resetBtn = demo.querySelector('.kw-reset');
+    function render() {
+      const step = demo.dataset.step;
+      if (label) label.textContent = stepLabels[step] || '';
+      if (nextBtn) nextBtn.textContent = step === '3' ? 'Done ✓' : 'Next step →';
+      if (nextBtn) nextBtn.disabled = step === '3';
+    }
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+      const step = Math.min(3, parseInt(demo.dataset.step, 10) + 1);
+      demo.dataset.step = String(step);
+      render();
+    });
+    if (resetBtn) resetBtn.addEventListener('click', () => {
+      demo.dataset.step = '1';
+      demo.querySelectorAll('.kw-verdict .quiz-options').forEach(q => {
+        q.classList.remove('answered');
+        q.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('correct', 'incorrect'));
+      });
+      const fb = demo.querySelector('.kw-verdict .quiz-feedback');
+      if (fb) fb.textContent = '';
+      render();
+    });
+    render();
+  });
+})();
+
+/* ---------- Station 5: Trap Detector (scored) ---------- */
+(function () {
+  const scoreEl = document.getElementById('trapScore');
+  const card = document.getElementById('trapQuizCard');
+  if (!scoreEl || !card) return;
+  const groups = card.querySelectorAll('.trap-item .quiz-options');
+
+  function updateScore() {
+    let answered = 0, correct = 0;
+    groups.forEach(g => {
+      if (g.classList.contains('answered')) {
+        answered++;
+        if (!g.querySelector('.incorrect')) correct++;
+      }
+    });
+    scoreEl.textContent = 'Score: ' + correct + ' / ' + answered + ' answered (' + groups.length + ' total)';
+  }
+
+  groups.forEach(g => {
+    wireSingleAnswerQuiz(g);
+    g.querySelectorAll('.quiz-opt').forEach(btn => btn.addEventListener('click', updateScore));
+  });
+})();
+
+/* ---------- Station 6: Printable Worksheets ---------- */
+function printOnly(cardId) {
+  const card = document.getElementById(cardId);
+  if (!card) { window.print(); return; }
+  const section = card.closest('section.station');
+  document.querySelectorAll('.print-target-section').forEach(el => el.classList.remove('print-target-section'));
+  document.querySelectorAll('.print-active').forEach(el => el.classList.remove('print-active'));
+  if (section) section.classList.add('print-target-section');
+  card.classList.add('print-active');
+  document.body.classList.add('print-single');
+  window.print();
+}
+window.addEventListener('afterprint', () => {
+  document.body.classList.remove('print-single');
+  document.querySelectorAll('.print-target-section').forEach(el => el.classList.remove('print-target-section'));
+  document.querySelectorAll('.print-active').forEach(el => el.classList.remove('print-active'));
+});
+
+/* Wire up every single-answer quiz block on the page (skim gist quiz, keyword-detective verdicts, etc.) */
+document.querySelectorAll('.quiz-options').forEach(wireSingleAnswerQuiz);
+</script>
+</body>
+</html>
