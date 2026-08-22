@@ -257,6 +257,7 @@
     z-index: 5;
   }
   .eye-dot.visible { opacity: 1; }
+  .eye-dot.fast { transition-duration: 0.05s; transition-timing-function: linear; }
 
   .passage {
     font-family: var(--serif);
@@ -274,6 +275,7 @@
   .passage .w.fixated-read { background: rgba(79,126,248,0.22); color: #fff; }
   .passage .w.fixated-skim { background: rgba(139,92,246,0.28); color: #fff; font-weight: 700; }
   .passage .w.fixated-scan { background: rgba(34,197,94,0.32); color: #fff; font-weight: 700; }
+  .passage .w.swept-scan { background: rgba(34,197,94,0.09); }
 
   .eye-caption {
     margin-top: 14px;
@@ -641,7 +643,7 @@
       <div class="station-tags"><span class="tag whole-class">🖥️ Whole class</span></div>
       <div class="station-num">Station 1</div>
       <h2>The Eye-Tracking Lab</h2>
-      <p class="station-sub">The same paragraph, read three different ways. Press a mode and project it — a live dot shows exactly where a reader's eyes would land. Ask the class to guess, before you press Scan, how many words they think it will actually touch.</p>
+      <p class="station-sub">The same paragraph, read three different ways. Press a mode and project it — a live dot shows exactly where a reader's eyes would land. Watch Scan closely: it sweeps past almost every word, fast — ask the class to guess, before it finishes, how many words it will actually stop on.</p>
     </div>
     <div class="card eye-lab">
       <div class="mode-buttons no-print">
@@ -1122,13 +1124,20 @@ function idxOf(words, text, occurrence) {
   ];
   const seqSkim = skimTargets.map(([t, occ]) => idxOf(words, t, occ)).filter(i => i >= 0);
 
+  // Scanning does not teleport to the answer — it sweeps across almost every word at high
+  // speed, barely pausing, until a word matching the target's *shape* (a number, a name)
+  // stops the eye. So the scan sequence covers the whole passage in order; only the words
+  // below earn a real, long fixation. Everything else gets the briefest possible glance.
   const scanTargets = [
     ['1,600', 1], ['2008', 1], ['7,400', 1], ['2020', 1],
     ['London', 1], ['Paris', 1], ['New', 1]
   ];
-  const seqScan = scanTargets.map(([t, occ]) => idxOf(words, t, occ)).filter(i => i >= 0);
+  const scanTargetIdx = new Set(scanTargets.map(([t, occ]) => idxOf(words, t, occ)).filter(i => i >= 0));
+  const seqScan = words.map((w, i) => i);
 
-  const dwell = { read: 90, skim: 260, scan: 520 };
+  const dwell = { read: 90, skim: 260 };
+  const SCAN_SWEEP_DWELL = 32;
+  const SCAN_FIXATION_DWELL = 480;
   const captions = {
     read: {
       start: 'Reading every single word, left to right — the way most students default to under exam pressure.',
@@ -1139,8 +1148,8 @@ function idxOf(words, text, occurrence) {
       end: (n, total) => `Fixated on just ${n} of ${total} words (${Math.round(n / total * 100)}%) — already enough to answer "what is this mainly about?"`
     },
     scan: {
-      start: 'Scanning: ignoring sentence order completely and jumping straight to numbers and names — the exact shape of the answer.',
-      end: (n, total) => `Found ${n} facts while touching only ${n} of ${total} words (${Math.round(n / total * 100)}%). That is how scanning saves time on exam day.`
+      start: 'Scanning: sweeping across almost every word at high speed, barely pausing — until the shape of a number or name stops the eye cold.',
+      end: (n, total) => `Swept across all ${total} words, but only truly stopped — fixated — on ${n} of them: the ones shaped like a name or number. That is how scanning saves time on exam day.`
     }
   };
   const sequences = { read: seqRead, skim: seqSkim, scan: seqScan };
@@ -1148,7 +1157,7 @@ function idxOf(words, text, occurrence) {
   let timer = null;
 
   function clearHighlights() {
-    words.forEach(w => w.classList.remove('fixated-read', 'fixated-skim', 'fixated-scan'));
+    words.forEach(w => w.classList.remove('fixated-read', 'fixated-skim', 'fixated-scan', 'swept-scan'));
   }
 
   function moveDotTo(span) {
@@ -1162,22 +1171,44 @@ function idxOf(words, text, occurrence) {
   function run(mode) {
     clearTimeout(timer);
     clearHighlights();
+    dot.classList.remove('fast');
     buttons.forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
     countEl.textContent = '0';
     caption.textContent = captions[mode].start;
     const seq = sequences[mode];
     let i = 0;
+    let fixations = 0;
     function step() {
       if (i >= seq.length) {
-        caption.textContent = captions[mode].end(seq.length, words.length);
+        const shown = mode === 'scan' ? fixations : seq.length;
+        caption.textContent = captions[mode].end(shown, words.length);
         return;
       }
-      const span = words[seq[i]];
-      moveDotTo(span);
-      span.classList.add('fixated-' + mode);
-      countEl.textContent = String(i + 1);
+      const wordIndex = seq[i];
+      const span = words[wordIndex];
+      let stepDwell;
+
+      if (mode === 'scan') {
+        const isTarget = scanTargetIdx.has(wordIndex);
+        dot.classList.toggle('fast', !isTarget);
+        moveDotTo(span);
+        if (isTarget) {
+          span.classList.add('fixated-scan');
+          fixations++;
+          countEl.textContent = String(fixations);
+          stepDwell = SCAN_FIXATION_DWELL;
+        } else {
+          span.classList.add('swept-scan');
+          stepDwell = SCAN_SWEEP_DWELL;
+        }
+      } else {
+        moveDotTo(span);
+        span.classList.add('fixated-' + mode);
+        countEl.textContent = String(i + 1);
+        stepDwell = dwell[mode];
+      }
       i++;
-      timer = setTimeout(step, dwell[mode]);
+      timer = setTimeout(step, stepDwell);
     }
     step();
   }
@@ -1186,6 +1217,7 @@ function idxOf(words, text, occurrence) {
   resetBtn.addEventListener('click', () => {
     clearTimeout(timer);
     clearHighlights();
+    dot.classList.remove('fast');
     buttons.forEach(b => b.classList.remove('active'));
     dot.classList.remove('visible');
     countEl.textContent = '0';
