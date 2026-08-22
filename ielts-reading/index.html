@@ -7,44 +7,62 @@
 <meta name="description" content="A classroom system for teaching IELTS skimming and scanning: a 3D reading-altitude demo for the projector, a six-step method walkthrough, and timed drills students run on their phones or on paper.">
 <style>
 :root {
-  --bg: #0b0d13;
-  --bg-2: #0f1219;
-  --surface: #151925;
-  --surface-2: #1b2030;
-  --surface-3: #232939;
-  --surface-hover: #262d40;
-  --border: #2a3143;
-  --border-soft: #212736;
+  color-scheme: light;
 
-  --text: #e9ecf5;
-  --text-muted: #9aa3ba;
-  --text-dim: #8892b0;
+  /* ── PAPER ── the page should look like the thing it teaches you to read ── */
+  --bg: #f7f6f3;
+  --bg-2: #fdfcfa;
+  --surface: #ffffff;
+  --surface-2: #f4f2ee;
+  --surface-3: #eae7e1;
+  --surface-hover: #ece9e3;
+  --border: #ddd8d0;
+  --border-soft: #e8e4dd;
+  --nav-bg: rgba(247,246,243,0.94);
+  --scene-bg: #eef1f5;
 
-  --accent: #5b8cff;
-  --accent-dim: rgba(91,140,255,0.13);
-  --accent-glow: rgba(91,140,255,0.35);
-  --accent2: #a78bfa;
-  --accent2-dim: rgba(167,139,250,0.15);
-  /* -- ALTITUDE SCALE -- the page's one metaphor, as colour.
-     High to low: sky -> gold -> ground. Nothing else may use these. -- */
-  --alt-cruise: #38bdf8;   /* skimming - high, airy, shape not detail */
-  --alt-cruise-dim: rgba(56,189,248,0.26);
-  --alt-attack: #fbbf24;   /* scanning - low, hot, targeted */
-  --alt-attack-dim: rgba(251,191,36,0.20);
-  --alt-ground: #94a3b8;   /* reading every word - heavy, dull, expensive */
-  --alt-ground-dim: rgba(148,163,184,0.22);
+  --text: #1c1e24;
+  --text-muted: #55596a;
+  --text-dim: #5f6478;
+  --text-passage: #2a2d36;
+  --on-solid: #ffffff;
+  /* Ink to place on top of a SOLID semantic fill. Flips with the theme. */
+  --on-accent: #ffffff;
+  --on-good: #ffffff;
+  --on-bad: #ffffff;
+  --on-warn: #ffffff;
 
-  /* -- KEYWORD TYPE -- blue = you search for it, purple = you check it -- */
-  --kw-concrete: #5b8cff;
-  --kw-idea: #a78bfa;
+  --accent: #1d4ed8;
+  --accent-dim: rgba(29,78,216,0.10);
+  --accent2: #7c3aed;
+  --accent2-dim: rgba(124,58,237,0.11);
 
-  /* -- CORRECTNESS -- reserved. Green and red mean right and wrong, nowhere else. -- */
-  --good: #34d399;
-  --good-dim: rgba(52,211,153,0.14);
-  --bad: #fb7185;
-  --bad-dim: rgba(251,113,133,0.14);
-  --warn: #fbbf24;
-  --warn-dim: rgba(251,191,36,0.14);
+  /* ── CORRECTNESS ── reserved: green and red mean right and wrong, nowhere else ── */
+  --good: #036b4d;
+  --good-dim: rgba(3,107,77,0.10);
+  --good-text: #04503a;
+  --bad: #c81e1e;
+  --bad-dim: rgba(200,30,30,0.09);
+  --bad-text: #8f1515;
+  --warn: #a1490a;
+  --warn-dim: rgba(161,73,10,0.10);
+  --warn-text: #7a3707;
+
+  /* ── ALTITUDE SCALE ── the page's one metaphor, as colour. Sky → gold → ground ── */
+  --alt-cruise: #0369a1;
+  --alt-cruise-dim: rgba(3,105,161,0.15);
+  --alt-attack: #a1490a;
+  --alt-attack-dim: rgba(161,73,10,0.15);
+  --alt-hit: #f5b301;
+  --alt-hit-ink: #2b1f02;
+  --alt-ground: #576274;
+  --alt-ground-dim: rgba(87,98,116,0.15);
+
+  /* ── KEYWORD TYPE ── blue = you search for it, purple = you check it ── */
+  --kw-concrete: #1d4ed8;
+  --kw-concrete-dim: rgba(29,78,216,0.11);
+  --kw-idea: #6d28d9;
+  --kw-idea-dim: rgba(109,40,217,0.11);
 
   --serif: ui-serif, Georgia, 'Iowan Old Style', 'Times New Roman', serif;
   --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -54,10 +72,66 @@
   --r: 13px;
   --r-sm: 9px;
 
-  --shadow: 0 18px 50px -20px rgba(0,0,0,0.85);
+  --shadow: 0 1px 2px rgba(28,30,36,0.05), 0 8px 24px -12px rgba(28,30,36,0.18);
   --maxw: 1160px;
 
   --fs-scale: 1;
+}
+
+/* ── DARK ── for rooms you can actually dim. Same meanings, different paper. ── */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f1117;
+  --bg-2: #12151d;
+  --surface: #171b26;
+  --surface-2: #1d2230;
+  --surface-3: #252b3b;
+  --surface-hover: #313a50;
+  --border: #2e3547;
+  --border-soft: #252b3a;
+  --nav-bg: rgba(15,17,23,0.94);
+  --scene-bg: #10131a;
+
+  --text: #eceff7;
+  --text-muted: #a3abc0;
+  --text-dim: #8892b0;
+  --text-passage: #cfd5e4;
+  --on-solid: #ffffff;
+  --on-accent: #0c1322;
+  --on-good: #04231a;
+  --on-bad: #2a0710;
+  --on-warn: #241a02;
+
+  --accent: #6b9aff;
+  --accent-dim: rgba(107,154,255,0.14);
+  --accent2: #b39bfb;
+  --accent2-dim: rgba(179,155,251,0.15);
+
+  --good: #34d399;
+  --good-dim: rgba(52,211,153,0.14);
+  --good-text: #a9f2d7;
+  --bad: #fb7185;
+  --bad-dim: rgba(251,113,133,0.14);
+  --bad-text: #ffcbd3;
+  --warn: #fbbf24;
+  --warn-dim: rgba(251,191,36,0.14);
+  --warn-text: #f5e7bf;
+
+  --alt-cruise: #56c7f5;
+  --alt-cruise-dim: rgba(86,199,245,0.24);
+  --alt-attack: #f0ab2e;
+  --alt-attack-dim: rgba(240,171,46,0.20);
+  --alt-hit: #fbbf24;
+  --alt-hit-ink: #241a02;
+  --alt-ground: #9aa6b9;
+  --alt-ground-dim: rgba(154,166,185,0.22);
+
+  --kw-concrete: #7ba6ff;
+  --kw-concrete-dim: rgba(123,166,255,0.16);
+  --kw-idea: #b79bfc;
+  --kw-idea-dim: rgba(183,155,252,0.18);
+
+  --shadow: 0 18px 50px -20px rgba(0,0,0,0.85);
 }
 
 * { box-sizing: border-box; }
@@ -65,8 +139,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 78px; }
 body {
   margin: 0;
   background:
-    radial-gradient(1100px 620px at 12% -8%, rgba(91,140,255,0.10), transparent 62%),
-    radial-gradient(900px 520px at 92% 4%, rgba(167,139,250,0.09), transparent 60%),
+    radial-gradient(1100px 620px at 12% -8%, rgba(29,78,216,0.05), transparent 62%),
+    radial-gradient(900px 520px at 92% 4%, rgba(124,58,237,0.05), transparent 60%),
     var(--bg);
   color: var(--text);
   font-family: var(--sans);
@@ -84,7 +158,7 @@ p:last-child { margin-bottom: 0; }
 /* ══════════ NAV ══════════ */
 nav.top {
   position: sticky; top: 0; z-index: 60;
-  background: rgba(11,13,19,0.95);
+  background: var(--nav-bg);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-soft);
 }
@@ -109,7 +183,7 @@ nav.top .bar { max-width: var(--maxw); margin: 0 auto; padding: 9px 22px; displa
   padding: 6px 11px; border-radius: 999px; transition: .18s; white-space: nowrap;
 }
 .toggle-btn:hover { color: var(--text); border-color: var(--accent); }
-.toggle-btn.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.toggle-btn.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 
 /* ══════════ HERO ══════════ */
 header.hero { padding: 66px 0 44px; text-align: center; }
@@ -119,7 +193,7 @@ header.hero { padding: 66px 0 44px; text-align: center; }
 }
 header.hero h1 {
   font-size: clamp(2.5rem, 7vw, 4.4rem); font-weight: 800;
-  background: linear-gradient(120deg, #fff 15%, var(--accent) 58%, var(--accent2) 95%);
+  background: linear-gradient(120deg, var(--text) 8%, var(--accent) 62%, var(--accent2) 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   margin-bottom: 18px;
 }
@@ -176,7 +250,7 @@ section.station + section.station { border-top: 1px solid var(--border-soft); }
 /* ══════════ BUTTONS ══════════ */
 .btn {
   font-family: inherit; font-size: 0.85rem; font-weight: 700; cursor: pointer;
-  background: var(--accent); color: #fff; border: 1px solid transparent;
+  background: var(--accent); color: var(--on-accent); border: 1px solid transparent;
   padding: 10px 18px; border-radius: var(--r-sm); transition: .18s;
   display: inline-flex; align-items: center; gap: 7px;
 }
@@ -187,8 +261,8 @@ section.station + section.station { border-top: 1px solid var(--border-soft); }
 .btn.ghost { background: transparent; color: var(--text-muted); border-color: var(--border); }
 .btn.ghost:hover:not(:disabled) { color: var(--text); border-color: var(--accent); }
 .btn.sm { font-size: 0.76rem; padding: 7px 13px; }
-.btn.good { background: var(--good); color: #04231a; }
-.btn.warn { background: var(--warn); color: #241a02; }
+.btn.good { background: var(--good); color: var(--on-good); }
+.btn.warn { background: var(--warn); color: var(--on-warn); }
 .btn-row { display: flex; flex-wrap: wrap; gap: 9px; }
 
 /* ══════════ TEACHER NOTES ══════════ */
@@ -197,7 +271,7 @@ section.station + section.station { border-top: 1px solid var(--border-soft); }
   background: var(--warn-dim); border: 1px solid rgba(251,191,36,0.32);
   border-left: 3px solid var(--warn);
   border-radius: var(--r-sm); padding: 13px 16px; margin: 16px 0;
-  font-size: 0.87rem; color: #f3e3bd;
+  font-size: 0.87rem; color: var(--warn-text);
 }
 body.show-notes .tnote { display: block; }
 .tnote b { color: var(--warn); }
@@ -213,7 +287,7 @@ body.projector .hide-on-projector { display: none !important; }
 
 /* ══════════ PASSAGE TYPOGRAPHY ══════════ */
 .passage {
-  font-family: var(--serif); font-size: 1.06rem; line-height: 1.9; color: #cdd3e4;
+  font-family: var(--serif); font-size: 1.06rem; line-height: 1.9; color: var(--text-passage);
 }
 .passage p { margin-bottom: 15px; }
 .passage .w { border-radius: 3px; padding: 0 1px; transition: background .18s, color .18s; }
@@ -265,16 +339,16 @@ body.projector .hide-on-projector { display: none !important; }
   padding: 9px 15px; border-radius: var(--r-sm); transition: .16s;
 }
 .opt:hover:not(:disabled) { border-color: var(--accent); background: var(--surface-hover); }
-.opt.correct { background: var(--good-dim); border-color: var(--good); color: #a9f2d7; }
-.opt.wrong { background: var(--bad-dim); border-color: var(--bad); color: #ffc4cd; }
+.opt.correct { background: var(--good-dim); border-color: var(--good); color: var(--good-text); }
+.opt.wrong { background: var(--bad-dim); border-color: var(--bad); color: var(--bad-text); }
 .opt:disabled { cursor: default; }
 .feedback {
   margin-top: 10px; font-size: 0.85rem; padding: 10px 13px; border-radius: var(--r-sm);
   display: none; line-height: 1.55;
 }
 .feedback.show { display: block; }
-.feedback.ok { background: var(--good-dim); border: 1px solid rgba(52,211,153,0.3); color: #b6f0dc; }
-.feedback.no { background: var(--bad-dim); border: 1px solid rgba(251,113,133,0.3); color: #ffcbd3; }
+.feedback.ok { background: var(--good-dim); border: 1px solid rgba(52,211,153,0.3); color: var(--good-text); }
+.feedback.no { background: var(--bad-dim); border: 1px solid rgba(251,113,133,0.3); color: var(--bad-text); }
 
 /* ══════════ S0: TIME CRISIS ══════════ */
 .speed-stage { display: grid; grid-template-columns: 1fr; gap: 18px; }
@@ -283,9 +357,9 @@ body.projector .hide-on-projector { display: none !important; }
 .speed-readout { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 .wpm-scale { margin-top: 4px; }
 .bar-track { height: 30px; border-radius: 6px; background: var(--surface-3); overflow: hidden; display: flex; border: 1px solid var(--border); }
-.bar-seg { display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; color: #06121b; transition: flex-grow .9s cubic-bezier(.4,0,.2,1); overflow: hidden; white-space: nowrap; }
-.bar-seg.reading { background: var(--bad); color: #2a0710; }
-.bar-seg.answering { background: var(--good); color: #04231a; }
+.bar-seg { display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; color: var(--on-solid); transition: flex-grow .9s cubic-bezier(.4,0,.2,1); overflow: hidden; white-space: nowrap; }
+.bar-seg.reading { background: var(--bad); color: var(--on-bad); }
+.bar-seg.answering { background: var(--good); color: var(--on-good); }
 .bar-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.76rem; color: var(--text-muted); margin-top: 8px; }
 .bar-legend span { display: inline-flex; align-items: center; gap: 6px; }
 .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
@@ -307,7 +381,7 @@ body.projector .hide-on-projector { display: none !important; }
 /* ══════════ S1: READING ALTITUDE (three.js) ══════════ */
 .alt-stage {
   position: relative; border-radius: var(--r); overflow: hidden;
-  border: 1px solid var(--border); background: #05070d;
+  border: 1px solid var(--border); background: var(--scene-bg);
   height: clamp(360px, 52vh, 560px);
 }
 .alt-stage canvas { display: block; width: 100%; height: 100%; }
@@ -316,7 +390,7 @@ body.projector .hide-on-projector { display: none !important; }
   display: flex; justify-content: space-between; gap: 12px; padding: 14px 16px;
   pointer-events: none; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.03em;
 }
-.hud-block { background: rgba(5,7,13,0.62); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 7px 12px; backdrop-filter: blur(6px); }
+.hud-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 7px 12px; box-shadow: var(--shadow); }
 .hud-block .k { color: var(--text-dim); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.1em; }
 .hud-block .v { color: var(--text); font-size: 1.05rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 .hud-block .v.accent { color: var(--accent); }
@@ -324,16 +398,16 @@ body.projector .hide-on-projector { display: none !important; }
 .hud-block .v.warn { color: var(--warn); }
 .alt-label {
   position: absolute; transform: translate(-50%, -50%);
-  background: rgba(5,7,13,0.82); border: 1px solid var(--accent);
-  color: var(--accent); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em;
+  background: var(--surface); border: 1px solid var(--alt-cruise);
+  color: var(--alt-cruise); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.05em;
   padding: 4px 10px; border-radius: 999px; white-space: nowrap; pointer-events: none;
-  opacity: 0; transition: opacity .5s; text-transform: uppercase;
+  opacity: 0; transition: opacity .5s; text-transform: uppercase; box-shadow: var(--shadow);
 }
 .alt-label.show { opacity: 1; }
 .alt-caption {
   position: absolute; left: 16px; right: 16px; bottom: 14px;
-  background: rgba(5,7,13,0.78); border: 1px solid var(--border); border-radius: var(--r-sm);
-  padding: 11px 15px; font-size: 0.87rem; color: var(--text); backdrop-filter: blur(6px);
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm);
+  padding: 11px 15px; font-size: 0.87rem; color: var(--text); box-shadow: var(--shadow);
   line-height: 1.5; pointer-events: none;
 }
 .alt-fallback {
@@ -378,12 +452,12 @@ body.projector .hide-on-projector { display: none !important; }
 }
 .step-pill:hover { border-color: var(--accent); color: var(--text); }
 .step-pill.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
-.step-pill.active .n { background: var(--accent); color: #fff; }
-.step-pill.done .n { background: var(--good); color: #04231a; }
+.step-pill.active .n { background: var(--accent); color: var(--on-accent); }
+.step-pill.done .n { background: var(--good); color: var(--on-good); }
 
 .eye-dot {
   position: fixed; left: -200px; top: -200px; width: 15px; height: 15px; border-radius: 50%;
-  background: #fff; box-shadow: 0 0 0 5px rgba(255,255,255,0.18), 0 0 20px 6px rgba(255,255,255,0.42);
+  background: var(--accent); box-shadow: 0 0 0 5px rgba(29,78,216,0.18), 0 0 18px 5px rgba(29,78,216,0.35);
   transform: translate(-50%,-50%); pointer-events: none; opacity: 0; z-index: 55;
   transition: left .26s cubic-bezier(.4,0,.2,1), top .26s cubic-bezier(.4,0,.2,1), opacity .2s;
 }
@@ -395,11 +469,11 @@ body.projector .hide-on-projector { display: none !important; }
   padding: 15px 19px; margin-bottom: 16px; display: none;
 }
 .method.q-on .qbox { display: block; }
-.qbox .q-line { font-family: var(--serif); font-size: 1.05rem; color: #cdd3e4; margin: 0; }
+.qbox .q-line { font-family: var(--serif); font-size: 1.05rem; color: var(--text-passage); margin: 0; }
 .qbox .w { border-radius: 3px; padding: 0 2px; transition: background .2s, color .2s; }
-.qbox .w.hop { background: var(--alt-cruise-dim); color: #cbeafd; font-weight: 700; }
-.method.kw-on .qbox .w.k-concrete { background: rgba(91,140,255,0.16); color: var(--kw-concrete); font-weight: 800; }
-.method.kw-on .qbox .w.k-idea { background: rgba(167,139,250,0.18); color: var(--kw-idea); font-weight: 800; }
+.qbox .w.hop { background: var(--alt-cruise-dim); color: var(--alt-cruise); font-weight: 700; }
+.method.kw-on .qbox .w.k-concrete { background: var(--kw-concrete-dim); color: var(--kw-concrete); font-weight: 800; }
+.method.kw-on .qbox .w.k-idea { background: var(--kw-idea-dim); color: var(--kw-idea); font-weight: 800; }
 .method.trap-on .qbox .w.k-idea.flag { background: var(--bad-dim); color: var(--bad); }
 .qverdict { margin: 11px 0 0; font-size: 0.85rem; font-weight: 800; color: var(--bad); display: none; }
 .method.trap-on .qverdict { display: block; }
@@ -414,10 +488,10 @@ body.projector .hide-on-projector { display: none !important; }
 }
 .method.map-on .ptag { opacity: 1; transform: none; }
 /* Font weight is a second, redundant channel so these never rely on colour alone. */
-.passage .w.f-read { background: var(--alt-ground-dim); color: #e4e9f2; font-weight: 400; }
-.passage .w.f-skim { background: var(--alt-cruise-dim); color: #fff; font-weight: 700; }
-.passage .w.f-scan { background: var(--alt-attack-dim); color: #f4e9d0; font-weight: 400; }
-.passage .w.f-hit  { background: var(--alt-attack); color: #241a02; font-weight: 800; }
+.passage .w.f-read { background: var(--alt-ground-dim); color: var(--text-passage); font-weight: 400; }
+.passage .w.f-skim { background: var(--alt-cruise-dim); color: var(--text); font-weight: 700; }
+.passage .w.f-scan { background: var(--alt-attack-dim); color: var(--text-passage); font-weight: 400; }
+.passage .w.f-hit  { background: var(--alt-hit); color: var(--alt-hit-ink); font-weight: 800; }
 .trap-panel {
   display: none; margin-top: 16px; background: var(--bad-dim); border: 1px solid var(--bad);
   border-radius: var(--r); padding: 15px 18px;
@@ -433,7 +507,7 @@ body.projector .hide-on-projector { display: none !important; }
   background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 16px;
 }
 .para-key { font-size: 0.8rem; font-weight: 800; color: var(--accent); font-family: var(--mono); padding-top: 3px; }
-.para-text { font-family: var(--serif); font-size: 0.95rem; line-height: 1.75; color: #c3cade; }
+.para-text { font-family: var(--serif); font-size: 0.95rem; line-height: 1.75; color: var(--text-passage); }
 .para-pick { margin-top: 10px; }
 select.pick {
   font-family: inherit; font-size: 0.82rem; background: var(--surface-3); color: var(--text);
@@ -453,20 +527,20 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 .kw-sentence { display: flex; flex-wrap: wrap; gap: 5px; font-family: var(--serif); font-size: 1.08rem; margin-bottom: 14px; }
 .kwchip {
   font-family: inherit; font-size: inherit; cursor: pointer;
-  background: transparent; border: 1px dashed transparent; color: #cdd3e4;
+  background: transparent; border: 1px dashed transparent; color: var(--text-passage);
   border-radius: 5px; padding: 2px 5px; transition: .15s;
 }
 .kwchip:hover:not(:disabled) { border-color: var(--text-dim); }
 .kwchip.picked { background: var(--warn-dim); border-color: var(--warn); border-style: solid; color: var(--warn); font-weight: 700; }
-.kwchip.reveal-key { background: rgba(91,140,255,0.16); border-color: var(--kw-concrete); border-style: solid; color: var(--kw-concrete); font-weight: 800; }
+.kwchip.reveal-key { background: var(--kw-concrete-dim); border-color: var(--kw-concrete); border-style: solid; color: var(--kw-concrete); font-weight: 800; }
 .kwchip.reveal-over { background: var(--bad-dim); border-color: var(--bad); border-style: solid; color: var(--bad); text-decoration: line-through; }
 .kwchip:disabled { cursor: default; }
 .kw-counter { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 12px; font-family: var(--mono); }
 .kw-key-list { display: grid; gap: 8px; margin-top: 12px; }
 .kw-key-item { display: flex; gap: 10px; align-items: flex-start; font-size: 0.86rem; }
 .kw-badge { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; flex-shrink: 0; margin-top: 2px; }
-.kw-badge.concrete { background: rgba(91,140,255,0.16); color: var(--kw-concrete); }
-.kw-badge.idea { background: rgba(167,139,250,0.18); color: var(--kw-idea); }
+.kw-badge.concrete { background: var(--kw-concrete-dim); color: var(--kw-concrete); }
+.kw-badge.idea { background: var(--kw-idea-dim); color: var(--kw-idea); }
 .kw-badge.skip { background: var(--surface-3); color: var(--text-dim); }
 
 /* ══════════ S5: SCAN SPRINT ══════════ */
@@ -477,12 +551,12 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 .scan-target b { color: var(--warn); }
 .notice-doc {
   font-family: var(--serif); background: var(--surface-2); border: 1px solid var(--border);
-  border-radius: var(--r); padding: 20px 22px; line-height: 1.85; color: #c8cfe2;
+  border-radius: var(--r); padding: 20px 22px; line-height: 1.85; color: var(--text-passage);
 }
 .notice-doc h4 { font-family: var(--sans); font-size: 1rem; margin-bottom: 4px; color: var(--text); }
 .notice-doc .sched-row { display: flex; justify-content: space-between; gap: 14px; padding: 3px 0; border-bottom: 1px dotted var(--border); }
 .notice-doc .sched-row span:last-child { color: var(--text-muted); white-space: nowrap; }
-.notice-doc .w.f-hit { background: var(--warn); color: #241a02; font-weight: 800; }
+.notice-doc .w.f-hit { background: var(--alt-hit); color: var(--alt-hit-ink); font-weight: 800; }
 
 /* ══════════ S6: TRAPS ══════════ */
 .check4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); gap: 12px; margin-bottom: 18px; }
@@ -498,7 +572,7 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 .trap-card .te b { color: var(--warn); }
 .extract {
   font-family: var(--serif); background: var(--surface-3); border-left: 3px solid var(--accent);
-  border-radius: 0 var(--r-sm) var(--r-sm) 0; padding: 11px 15px; margin-bottom: 10px; font-size: 0.97rem; color: #c8cfe2;
+  border-radius: 0 var(--r-sm) var(--r-sm) 0; padding: 11px 15px; margin-bottom: 10px; font-size: 0.97rem; color: var(--text-passage);
 }
 .extract .lbl { display: block; font-family: var(--sans); font-size: 0.63rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 3px; }
 .extract.claim { border-left-color: var(--warn); }
@@ -531,8 +605,8 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
   border-radius: var(--r-sm); line-height: 1.55;
 }
 .predict-result.show { display: block; }
-.predict-result.near { background: var(--good-dim); border: 1px solid rgba(52,211,153,0.35); color: #b6f0dc; }
-.predict-result.far  { background: var(--bad-dim); border: 1px solid rgba(251,113,133,0.35); color: #ffcbd3; }
+.predict-result.near { background: var(--good-dim); border: 1px solid rgba(52,211,153,0.35); color: var(--good-text); }
+.predict-result.far  { background: var(--bad-dim); border: 1px solid rgba(251,113,133,0.35); color: var(--bad-text); }
 
 /* ══════════ ALTITUDE GAUGE ══════════
    Three stacked bands. Position carries the meaning as much as colour,
@@ -568,14 +642,14 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
   display: flex; align-items: center; justify-content: center;
   font-family: var(--serif); font-size: 0.8rem; color: #fff;
 }
-.legend-swatch.ground { background: var(--alt-ground-dim); color: #e4e9f2; font-weight: 400; }
-.legend-swatch.cruise { background: var(--alt-cruise-dim); color: #fff; font-weight: 700; }
-.legend-swatch.attack { background: var(--alt-attack-dim); color: #f4e9d0; font-weight: 400; }
-.legend-swatch.hit    { background: var(--alt-attack); color: #241a02; font-weight: 800; }
-.legend-swatch.conc   { background: rgba(91,140,255,0.16); color: var(--kw-concrete); font-weight: 800; }
-.legend-swatch.idea   { background: rgba(167,139,250,0.18); color: var(--kw-idea); font-weight: 800; }
-.legend-swatch.ok     { background: var(--good-dim); color: var(--good); font-weight: 800; }
-.legend-swatch.no     { background: var(--bad-dim); color: var(--bad); font-weight: 800; }
+.legend-swatch.ground { background: var(--alt-ground-dim); color: var(--text); font-weight: 400; }
+.legend-swatch.cruise { background: var(--alt-cruise-dim); color: var(--text); font-weight: 700; }
+.legend-swatch.attack { background: var(--alt-attack-dim); color: var(--text); font-weight: 400; }
+.legend-swatch.hit    { background: var(--alt-hit); color: var(--alt-hit-ink); font-weight: 800; }
+.legend-swatch.conc   { background: var(--kw-concrete-dim); color: var(--kw-concrete); font-weight: 800; }
+.legend-swatch.idea   { background: var(--kw-idea-dim); color: var(--kw-idea); font-weight: 800; }
+.legend-swatch.ok     { background: var(--good-dim); color: var(--good-text); font-weight: 800; }
+.legend-swatch.no     { background: var(--bad-dim); color: var(--bad-text); font-weight: 800; }
 .legend-text { font-size: 0.8rem; line-height: 1.5; }
 .legend-text b { display: block; font-size: 0.86rem; margin-bottom: 1px; }
 .legend-text span { color: var(--text-muted); }
@@ -607,7 +681,7 @@ body.show-keys .answer-key {
   display: block !important;
   margin-top: 14px; padding: 11px 14px;
   background: var(--warn-dim); border: 1px dashed var(--warn); border-radius: var(--r-sm);
-  font-size: 0.83rem; color: #f5e7bf;
+  font-size: 0.83rem; color: var(--warn-text);
 }
 body.show-keys .answer-key b { color: var(--warn); }
 
@@ -619,7 +693,7 @@ body.show-keys .answer-key b { color: var(--warn); }
   background: var(--surface-2); border: 1px solid var(--border); color: var(--text-muted);
   padding: 4px 9px; border-radius: 6px;
 }
-.speed-ctl button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.speed-ctl button.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 
 /* ══════════ GUIDED PRACTICE (you-do) ══════════ */
 .gp-step {
@@ -664,7 +738,7 @@ body.show-keys .answer-key b { color: var(--warn); }
 
 .fr-split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
 .fr-passage-col { position: sticky; top: 140px; max-height: calc(100vh - 165px); overflow-y: auto; }
-.fr-passage { font-family: var(--serif); font-size: 1rem; line-height: 1.8; color: #cdd3e4; }
+.fr-passage { font-family: var(--serif); font-size: 1rem; line-height: 1.8; color: var(--text-passage); }
 .fr-passage h4 { font-family: var(--sans); font-size: 1.08rem; margin-bottom: 10px; color: var(--text); }
 .fr-passage p { margin-bottom: 13px; }
 .fr-passage .pl {
@@ -689,7 +763,7 @@ body.show-keys .answer-key b { color: var(--warn); }
   padding: 3px 9px; border-radius: 999px;
 }
 .fr-flag:hover { border-color: var(--warn); color: var(--warn); }
-.fr-flag.on { background: var(--warn); border-color: var(--warn); color: #241a02; }
+.fr-flag.on { background: var(--warn); border-color: var(--warn); color: var(--on-warn); }
 .fr-q-text { font-family: var(--serif); font-size: 0.98rem; margin-bottom: 10px; color: var(--text); }
 .fr-gap {
   font-family: var(--mono); font-size: 0.92rem; width: 190px;
@@ -750,6 +824,11 @@ body.show-keys .answer-key b { color: var(--warn); }
 /* ══════════ FOOTER ══════════ */
 footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); font-size: 0.82rem; border-top: 1px solid var(--border-soft); margin-top: 30px; }
 
+@media (max-width: 760px) {
+  /* Projector, notes, keys and reset are teacher controls — a student on a phone
+     never needs them, and they overflow the bar. Only the theme toggle stays. */
+  .nav-tools .teacher-only { display: none; }
+}
 @media (max-width: 620px) {
   /* the timetable's nowrap right-hand column overflows narrow phones — stack it instead */
   .notice-doc .sched-row { flex-direction: column; gap: 0; padding: 6px 0; }
@@ -855,10 +934,11 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <a href="#worksheets"><i>9</i> Worksheets</a>
     </div>
     <div class="nav-tools no-print">
-      <button class="toggle-btn" id="btnProjector" title="Larger type for the big screen">🖥️ Projector</button>
-      <button class="toggle-btn" id="btnNotes" title="Show facilitation notes">📋 Notes</button>
-      <button class="toggle-btn" id="btnKeys" title="Reveal all answer keys on screen">🔑 Keys</button>
-      <button class="toggle-btn" id="btnResetAll" title="Clear every drill for the next class">↺ Reset all</button>
+      <button class="toggle-btn" id="btnTheme" title="Switch to dark, for a room you can dim">🌙 Dark</button>
+      <button class="toggle-btn teacher-only" id="btnProjector" title="Larger type for the big screen">🖥️ Projector</button>
+      <button class="toggle-btn teacher-only" id="btnNotes" title="Show facilitation notes">📋 Notes</button>
+      <button class="toggle-btn teacher-only" id="btnKeys" title="Reveal all answer keys on screen">🔑 Keys</button>
+      <button class="toggle-btn teacher-only" id="btnResetAll" title="Clear every drill for the next class">↺ Reset all</button>
     </div>
   </div>
 </nav>
@@ -885,7 +965,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag mobile">📱 Phone</span><span class="gauge" role="img" aria-label="Altitude trained here: Before you fly"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Before you fly</b></span></span></div>
       <div class="station-num">Station 0 · 8 minutes</div>
       <h2>The Time Crisis</h2>
-      <p class="station-sub">Never argue that students read too slowly — <em>show them their own number.</em> They read one real passage, the page measures their speed, and then does the exam arithmetic in front of them. This is the moment the rest of the lesson becomes worth their attention.</p>
+      <p class="station-sub">You are about to find out how fast you <em>actually</em> read — not how fast you think you read. Read one real passage at your normal pace, and this page will work out exactly what that speed costs you in a 60-minute exam. Most people are surprised, and not pleasantly.</p>
     </div>
 
     <div class="tnote">
@@ -990,7 +1070,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="gauge" role="img" aria-label="Altitude trained here: All three"><span class="gauge-stack"><span class="gauge-band cruise on"></span><span class="gauge-band attack on"></span><span class="gauge-band ground on"></span></span><span class="gauge-label">Altitude<b class="all">All three</b></span></span></div>
       <div class="station-num">Station 1 · 10 minutes</div>
       <h2>The Reading Altitude</h2>
-      <p class="station-sub">Here the passage becomes a landscape. Every word is a block; every paragraph is a plateau. The only thing that changes between the three modes is <em>how high the camera flies</em> — and that single idea, altitude, is the whole of skimming and scanning. Fly high and you see the shape but not the words. Drop to ground level and you see every word but nothing else.</p>
+      <p class="station-sub">This is a real page of text, and the only thing that changes between the three modes is <em>how high you are flying over it</em>. That single idea — altitude — is the whole of skimming and scanning. Fly high and you can see the shape of the page but genuinely cannot read it. Drop to ground level and you can read every word, but you will pay for every one.</p>
     </div>
 
     <div class="tnote">
@@ -1002,7 +1082,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="alt-modes no-print" id="altModes">
         <button class="alt-mode" data-mode="read">
           <span class="m-title">🐌 Ground level</span>
-          <span class="m-sub">Read every word · the default students arrive with</span>
+          <span class="m-sub">Read every word · what you probably do now</span>
         </button>
         <button class="alt-mode" data-mode="skim">
           <span class="m-title">✈️ Cruising altitude</span>
@@ -1037,7 +1117,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
           <div class="hud-block"><div class="k">Words your eyes touched</div><div class="v" id="hudWords">0</div></div>
           <div class="hud-block"><div class="k">Exam clock burned</div><div class="v warn" id="hudTime">0:00</div></div>
         </div>
-        <div class="alt-caption" id="altCaption">Pick a mode above. The same 120-word passage is rendered as terrain: each block is one word, each plateau one paragraph.</div>
+        <div class="alt-caption" id="altCaption">Choose an altitude above. It is the same page every time — only the height you read it from changes.</div>
         <div class="alt-fallback">
           <div style="font-size:2rem">🗺️</div>
           <p style="max-width:420px; font-size:0.9rem">The 3D flight needs a graphics library that didn't load — most likely there's no internet on this device right now.<br><br><b>Everything still works:</b> Station 2 below teaches exactly the same idea step by step, in plain text, with no 3D required.</p>
@@ -1055,7 +1135,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
     <div class="card" id="legendCard" style="margin-top:20px">
       <div class="card-label">🎨 The colour contract</div>
       <div class="card-title">Every colour on this page means one thing, everywhere</div>
-      <p class="card-intro">Learn these six and you can read any station without instructions. They never change meaning — that is the point.</p>
+      <p class="card-intro">Learn these and you can read every station below without being told what anything means. A colour never changes its meaning on this page — that is the whole point of it.</p>
       <div class="legend-grid">
         <div class="legend-item">
           <span class="legend-swatch ground">word</span>
@@ -1123,7 +1203,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag pairs">👥 Pairs</span><span class="gauge" role="img" aria-label="Altitude trained here: Cruise → attack"><span class="gauge-stack"><span class="gauge-band cruise on"></span><span class="gauge-band attack on"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Cruise → attack</b></span></span></div>
       <div class="station-num">Station 2 · 12 minutes</div>
       <h2>The Six-Step Method</h2>
-      <p class="station-sub">Same passage as the flight, now on the ground and slowed down. Six steps, one real True/False/Not Given question, and a moving dot showing precisely where a trained reader's eyes go — and, just as importantly, where they never go.</p>
+      <p class="station-sub">The same passage as the flight, now slowed right down. Six steps, one real True/False/Not Given question, and a moving dot showing you exactly where a trained reader's eyes go — and, just as importantly, where they never go.</p>
     </div>
 
     <div class="tnote">
@@ -1247,7 +1327,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag pairs">👥 Pairs</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: Cruising"><span class="gauge-stack"><span class="gauge-band cruise on"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="cruise">Cruising</b></span></span></div>
       <div class="station-num">Station 3 · 12 minutes</div>
       <h2>Map Drill — build it, then use it</h2>
-      <p class="station-sub">Skimming is only worth doing if it produces something. That something is a map. Part A trains students to <em>build</em> the map in under two minutes; Part B proves the map works by making them locate six answers without reading a single full paragraph.</p>
+      <p class="station-sub">Skimming is only worth doing if it produces something, and that something is a map. In Part A you build one in ninety seconds. In Part B you prove it works by finding six answers <em>without reading a single full paragraph.</em></p>
     </div>
 
     <div class="tnote">
@@ -1348,7 +1428,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag pairs">👥 Pairs</span><span class="tag screen">🖥️ Big screen</span><span class="gauge" role="img" aria-label="Altitude trained here: Flight plan"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Flight plan</b></span></span></div>
       <div class="station-num">Station 4 · 12 minutes</div>
       <h2>Keyword Lab</h2>
-      <p class="station-sub">Students underline half the question and then wonder why scanning takes forever. A keyword is not "an important word" — it is <em>a word you can physically search for</em>. Part A cures over-marking. Part B fixes the deeper problem: the passage almost never uses your keyword, it uses a paraphrase of it.</p>
+      <p class="station-sub">Underline half the question and scanning will take forever. A keyword is not "an important word" — it is <em>a word you can physically search for</em>. Part A cures over-marking. Part B fixes the deeper problem: the passage almost never uses your keyword, it uses a disguise of it.</p>
     </div>
 
     <div class="tnote">
@@ -1366,7 +1446,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
     <div class="card mobile-card">
       <div class="card-label">🔁 Part B — The paraphrase problem</div>
       <div class="card-title">Your keyword will not be in the text. Its disguise will.</div>
-      <p class="card-intro">For each question phrase, find the wording the passage actually uses. This is the single highest-value habit in IELTS Reading — scanning fails when students search for the exact word instead of its meaning.</p>
+      <p class="card-intro">For each question phrase, find the wording the passage actually uses. This is the single highest-value habit in IELTS Reading: scanning fails when you search for the exact word instead of its meaning.</p>
       <div class="btn-row no-print" style="margin-bottom:14px">
         <span class="score-pill" id="paraScore" aria-live="polite">0 / 5</span>
         <button class="btn ghost sm" id="paraReset">Reset</button>
@@ -1449,7 +1529,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag mobile">📱 Phone</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: Attack run"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack on"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="attack">Attack run</b></span></span></div>
       <div class="station-num">Station 6 · 14 minutes</div>
       <h2>Trap Detector</h2>
-      <p class="station-sub">Finding the sentence is not the same as answering the question. Examiners build False and Not Given options to reward exactly the student who scans well and then stops thinking. This station gives them a four-point check to run on every located sentence — and then punishes them for skipping it.</p>
+      <p class="station-sub">Finding the sentence is not the same as answering the question. Examiners write False and Not Given options to <em>sound</em> right to a fast reader — they are aimed at exactly the person who scans well and then stops thinking. Here is the four-point check to run on every sentence you find, and six chances to get caught skipping it.</p>
     </div>
 
     <div class="card">
@@ -1596,7 +1676,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag screen">🖥️ Big screen</span><span class="gauge" role="img" aria-label="Altitude trained here: Debrief"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Debrief</b></span></span></div>
       <div class="station-num">Station 8 · 5 minutes</div>
       <h2>Scorecard &amp; Diagnosis</h2>
-      <p class="station-sub">Everything scored on this page feeds into here. It is not a total — a total tells a student nothing they can act on. It finds the <em>one</em> sub-skill that is holding their reading band down and tells them what to do about it on Monday.</p>
+      <p class="station-sub">Everything you score on this page feeds in here. A total would tell you nothing you can act on, so this does something more useful: it finds the <em>one</em> sub-skill holding your reading band down, and tells you what to do about it.</p>
     </div>
 
     <div class="tnote">
@@ -1607,7 +1687,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
     <div class="card mobile-card">
       <div class="card-label">📈 This session</div>
       <div class="card-title" id="scHead">Nothing scored yet</div>
-      <p class="card-intro">Work through the drills above and this fills in live. Bars are grey until you attempt that skill.</p>
+      <p class="card-intro">Work through the drills above and this fills in as you go. A grey bar just means you have not tried that skill yet.</p>
       <div class="sc-grid" id="scGrid" aria-live="polite"></div>
       <div class="sc-verdict" id="scVerdict" style="display:none">
         <h4 id="scVerdictHead">—</h4>
@@ -1644,7 +1724,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag print">🖨️ Printable</span><span class="tag pairs">👥 Pairs</span></div>
       <div class="station-num">Station 9</div>
       <h2>Worksheets &amp; Lesson Plan</h2>
-      <p class="station-sub">For students without a phone or without data, and for the teacher who wants the whole hour on one page. Each button prints a single clean worksheet with the answer key at the foot — cut it off before handing out, or keep it for marking.</p>
+      <p class="station-sub">Paper versions of every pair activity, for when there is no phone or no data in the room. Each button prints one clean worksheet with the answer key at the foot — cut it off before handing out, or keep it for marking.</p>
     </div>
 
     <div class="card">
@@ -1827,6 +1907,15 @@ var Resettable = [];
   notes.addEventListener('click', function () {
     document.body.classList.toggle('show-notes');
     notes.classList.toggle('on', document.body.classList.contains('show-notes'));
+  });
+
+  var theme = $('#btnTheme');
+  theme.addEventListener('click', function () {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    theme.textContent = dark ? '🌙 Dark' : '☀️ Light';
+    theme.classList.toggle('on', !dark);
+    window.dispatchEvent(new Event('themechange'));
   });
 
   var keys = $('#btnKeys');
@@ -2398,11 +2487,15 @@ var Resettable = [];
   Resettable.push(reset);
 })();
 
-/* ═══════════════════ STATION 1 — READING ALTITUDE (three.js) ═══════════════════ */
+/* ═══════════════════ STATION 1 — READING ALTITUDE (three.js) ═══════════════════
+   The passage is rendered as an actual page of type on a canvas texture, not as
+   abstract blocks. That matters pedagogically: from cruising altitude the words
+   are genuinely too small to read, which is the entire point being taught.      */
 (function () {
   var stage = $('#altStage'), loadingEl = $('#altLoading');
   if (!stage) return;
 
+  var TITLE = 'Urban beekeeping';
   var PARAS = [
     "Beekeeping has quietly moved from the countryside into cities over the last two decades. In London alone, the number of registered hives rose from around 1,600 in 2008 to more than 7,400 by 2020, according to the London Beekeepers Association.",
     "Supporters argue that urban bees benefit from a longer flowering season, since parks, gardens and even balconies bloom at different times across a city. Rooftop hives have appeared on buildings ranging from the Paris Opera House to hotels in New York.",
@@ -2411,31 +2504,23 @@ var Resettable = [];
   var PARA_LABELS = ['¶1 — growth & numbers', '¶2 — the case for', '¶3 — the case against'];
 
   var loaded = false, failed = false;
+  function fail() { if (!failed) { failed = true; stage.classList.add('failed'); } }
 
-  function fail() {
-    if (failed) return;
-    failed = true;
-    stage.classList.add('failed');
-  }
-
-  /* Only fetch the 3D library once the teacher actually scrolls to this station. */
   function load() {
     if (loaded || failed) return;
     loaded = true;
     if (!window.WebGLRenderingContext) { fail(); return; }
-    /* Served from this folder, not a CDN — the classroom stays working on bad wifi. */
-    var s = document.createElement('script');
-    s.src = 'three.min.js';
-    s.async = true;
+    var sc = document.createElement('script');
+    sc.src = 'three.min.js';
+    sc.async = true;
     var killer = setTimeout(fail, 15000);
-    s.onload = function () { clearTimeout(killer); try { build(); } catch (err) { fail(); } };
-    s.onerror = function () { clearTimeout(killer); fail(); };
-    document.head.appendChild(s);
+    sc.onload = function () { clearTimeout(killer); try { build(); } catch (e) { fail(); } };
+    sc.onerror = function () { clearTimeout(killer); fail(); };
+    document.head.appendChild(sc);
   }
-
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries, o) {
-      entries.forEach(function (e) { if (e.isIntersecting) { load(); o.disconnect(); } });
+    new IntersectionObserver(function (es, o) {
+      es.forEach(function (e) { if (e.isIntersecting) { load(); o.disconnect(); } });
     }, { rootMargin: '300px' }).observe(stage);
   } else { load(); }
 
@@ -2443,333 +2528,349 @@ var Resettable = [];
     var T = window.THREE;
     if (!T) { fail(); return; }
 
+    /* ─────────── 1. Typeset the passage onto a canvas ─────────── */
+    var CW = 1700, CH = 980;              // landscape, to suit a 16:9 projector
+    var MARGIN = 110, LEAD = 64, FS = 38;
+    var PAPER = '#fbf8f1', INK = '#23262e';
+
+    var textCv = document.createElement('canvas');
+    textCv.width = CW; textCv.height = CH;
+    var tx = textCv.getContext('2d');
+
+    var words = [];        // { text, x, y, w, h, para, cx, cy }
+    (function typeset() {
+      tx.clearRect(0, 0, CW, CH);
+      tx.textBaseline = 'alphabetic';
+      tx.fillStyle = INK;
+
+      tx.font = '600 46px Georgia, ui-serif, serif';
+      tx.fillText(TITLE, MARGIN, MARGIN + 40);
+      var y = MARGIN + 40 + LEAD * 1.5;
+
+      tx.font = FS + 'px Georgia, ui-serif, serif';
+      var maxX = CW - MARGIN;
+      PARAS.forEach(function (para, pi) {
+        var toks = para.split(/\s+/), x = MARGIN;
+        toks.forEach(function (tok) {
+          var w = tx.measureText(tok + ' ').width;
+          if (x + w > maxX) { x = MARGIN; y += LEAD; }
+          tx.fillText(tok, x, y);
+          words.push({
+            text: tok, para: pi,
+            x: x - 4, y: y - FS + 2,
+            w: tx.measureText(tok).width + 8, h: FS + 12,
+            cx: x + tx.measureText(tok).width / 2, cy: y - FS / 2
+          });
+          x += w;
+        });
+        y += LEAD * 0.55;
+      });
+    })();
+
+    /* working canvas: paper → highlights → type on top, so marks sit behind the ink */
+    var workCv = document.createElement('canvas');
+    workCv.width = CW; workCv.height = CH;
+    var wx = workCv.getContext('2d');
+    var marks = {};                       // wordIndex -> style key
+    var veiled = [];                      // paragraph indices to fade out
+
+    var paraBox = [0, 1, 2].map(function (pi) {
+      var ws = words.filter(function (w) { return w.para === pi; });
+      var top = Math.min.apply(null, ws.map(function (w) { return w.y; }));
+      var bot = Math.max.apply(null, ws.map(function (w) { return w.y + w.h; }));
+      return { top: top - 6, bot: bot + 6 };
+    });
+
+    var STYLE = {
+      read:   'rgba(120,134,158,0.30)',
+      skim:   'rgba(3,145,205,0.32)',
+      scan:   'rgba(200,124,26,0.26)',
+      hit:    'rgba(245,179,1,0.92)'
+    };
+    function paintPage() {
+      wx.fillStyle = PAPER; wx.fillRect(0, 0, CW, CH);
+      for (var i in marks) {
+        var w = words[i];
+        wx.fillStyle = STYLE[marks[i]] || STYLE.read;
+        var r = 5;
+        wx.beginPath();
+        wx.moveTo(w.x + r, w.y);
+        wx.arcTo(w.x + w.w, w.y, w.x + w.w, w.y + w.h, r);
+        wx.arcTo(w.x + w.w, w.y + w.h, w.x, w.y + w.h, r);
+        wx.arcTo(w.x, w.y + w.h, w.x, w.y, r);
+        wx.arcTo(w.x, w.y, w.x + w.w, w.y, r);
+        wx.fill();
+      }
+      wx.drawImage(textCv, 0, 0);
+      /* Paragraphs the strategy tells you to skip literally fade off the page. */
+      if (veiled.length) {
+        wx.fillStyle = 'rgba(251,248,241,0.82)';
+        words.forEach(function (w) {
+          if (veiled.indexOf(w.para) < 0) return;
+          wx.fillRect(w.x - 2, w.y + 3, w.w + 4, w.h - 6);
+        });
+      }
+      tex.needsUpdate = true;
+    }
+
+    /* ─────────── 2. Scene ─────────── */
     var renderer;
-    try {
-      renderer = new T.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
-    } catch (err) { fail(); return; }
+    try { renderer = new T.WebGLRenderer({ antialias: true }); } catch (e) { fail(); return; }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(stage.clientWidth, stage.clientHeight);
     stage.insertBefore(renderer.domElement, stage.firstChild);
 
     var scene = new T.Scene();
-    scene.background = new T.Color(0x05070d);
-    scene.fog = new T.Fog(0x05070d, 24, 62);
+    function bg() {
+      var c = getComputedStyle(document.documentElement).getPropertyValue('--scene-bg').trim() || '#eef1f5';
+      scene.background = new T.Color(c);
+    }
+    bg();
+    window.addEventListener('themechange', bg);
 
-    var camera = new T.PerspectiveCamera(50, stage.clientWidth / stage.clientHeight, 0.1, 220);
-    camera.position.set(0, 16, 20);
+    var camera = new T.PerspectiveCamera(42, stage.clientWidth / stage.clientHeight, 0.1, 400);
 
-    scene.add(new T.AmbientLight(0x5a6486, 0.85));
-    var key = new T.DirectionalLight(0xbcd0ff, 0.75);
-    key.position.set(-9, 18, 10);
+    scene.add(new T.AmbientLight(0xffffff, 0.72));
+    var key = new T.DirectionalLight(0xfff6e8, 0.65);
+    key.position.set(-8, 22, 6);
     scene.add(key);
-    var eyeLight = new T.PointLight(0x9fd8ff, 0, 14);
-    scene.add(eyeLight);
+    var fillL = new T.DirectionalLight(0xdce8ff, 0.30);
+    fillL.position.set(10, 12, -8);
+    scene.add(fillL);
 
-    /* ── Build the terrain: one block per word, grouped into paragraph plateaus ── */
-    var MAT = {
-      base:    new T.MeshStandardMaterial({ color: 0x323c56, roughness: 0.85, metalness: 0.1 }),
-      dimmed:  new T.MeshStandardMaterial({ color: 0x1a2030, roughness: 0.95, metalness: 0.0 }),
-      read:    new T.MeshStandardMaterial({ color: 0x94a3b8, emissive: 0x2f3947, roughness: 0.75 }),
-      skim:    new T.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0b4c6e, roughness: 0.45 }),
-      /* scan and hit share a hue: brightness and height say "found", not a new colour */
-      scan:    new T.MeshStandardMaterial({ color: 0xa87c12, emissive: 0x3d2c02, roughness: 0.6 }),
-      hit:     new T.MeshStandardMaterial({ color: 0xfbbf24, emissive: 0x8a5f04, roughness: 0.3 })
-    };
-    var boxGeo = new T.BoxGeometry(1, 1, 1);
+    var tex = new T.CanvasTexture(workCv);
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 1;
+    tex.minFilter = T.LinearMipMapLinearFilter;
 
-    var CH = 0.145, GAP = 0.13, ROW_MAX = 15.5, ROW_STEP = 0.78, PARA_GAP = 2.0, DEPTH = 0.44, BASE_H = 0.16;
+    var PW = 15, PH = PW * (CH / CW);      // page size in world units
+    var page = new T.Mesh(
+      new T.PlaneGeometry(PW, PH),
+      new T.MeshLambertMaterial({ map: tex })
+    );
+    page.rotation.x = -Math.PI / 2;
+    scene.add(page);
 
-    var terrain = new T.Group();
-    scene.add(terrain);
+    /* a soft drop shadow so the page reads as a physical sheet */
+    var shadowCv = document.createElement('canvas');
+    shadowCv.width = shadowCv.height = 256;
+    var sx = shadowCv.getContext('2d');
+    var grd = sx.createRadialGradient(128, 128, 40, 128, 128, 128);
+    grd.addColorStop(0, 'rgba(0,0,0,0.30)');
+    grd.addColorStop(1, 'rgba(0,0,0,0)');
+    sx.fillStyle = grd; sx.fillRect(0, 0, 256, 256);
+    var shadow = new T.Mesh(
+      new T.PlaneGeometry(PW * 1.5, PH * 1.25),
+      new T.MeshBasicMaterial({ map: new T.CanvasTexture(shadowCv), transparent: true, depthWrite: false })
+    );
+    shadow.rotation.x = -Math.PI / 2;
+    shadow.position.y = -0.35;
+    scene.add(shadow);
 
-    var wordMeshes = [];       // flat list, in reading order
-    var paraRanges = [];       // {from, to, zMid}
-    var zCursor = 0;
+    /* gaze ring — where the eye is right now */
+    var ring = new T.Mesh(
+      new T.RingGeometry(0.20, 0.30, 40),
+      new T.MeshBasicMaterial({ color: 0x1d4ed8, transparent: true, opacity: 0, depthTest: false })
+    );
+    ring.rotation.x = -Math.PI / 2;
+    ring.position.y = 0.04;
+    scene.add(ring);
 
-    PARAS.forEach(function (text, pIdx) {
-      var tokens = text.split(/\s+/);
-      var rows = [], row = [], rowW = 0;
-      tokens.forEach(function (tok) {
-        var w = Math.max(0.3, tok.length * CH);
-        if (rowW + w > ROW_MAX && row.length) { rows.push({ items: row, width: rowW }); row = []; rowW = 0; }
-        row.push({ text: tok, w: w });
-        rowW += w + GAP;
-      });
-      if (row.length) rows.push({ items: row, width: rowW });
+    /* canvas pixel → world position on the page */
+    function worldOf(w) {
+      return new T.Vector3((w.cx / CW - 0.5) * PW, 0, (w.cy / CH - 0.5) * PH);
+    }
+    var paraWords = [[], [], []];
+    words.forEach(function (w, i) { paraWords[w.para].push(i); });
+    function paraMidZ(p) {
+      var list = paraWords[p];
+      return ((words[list[0]].cy + words[list[list.length - 1]].cy) / 2 / CH - 0.5) * PH;
+    }
 
-      var from = wordMeshes.length;
-      var zStart = zCursor;
-
-      rows.forEach(function (r, rIdx) {
-        var x = -r.width / 2;
-        r.items.forEach(function (item) {
-          var m = new T.Mesh(boxGeo, MAT.base);
-          m.scale.set(item.w, BASE_H, DEPTH);
-          m.position.set(x + item.w / 2, BASE_H / 2, zCursor + rIdx * ROW_STEP);
-          m.userData = { pIdx: pIdx, baseH: BASE_H, text: item.text };
-          terrain.add(m);
-          wordMeshes.push(m);
-          x += item.w + GAP;
-        });
-      });
-
-      var zEnd = zCursor + (rows.length - 1) * ROW_STEP;
-
-      /* plateau slab under this paragraph */
-      var slab = new T.Mesh(boxGeo, new T.MeshStandardMaterial({ color: 0x111726, roughness: 1 }));
-      slab.scale.set(ROW_MAX + 1.6, 0.09, (zEnd - zStart) + 1.5);
-      slab.position.set(0, -0.06, (zStart + zEnd) / 2);
-      terrain.add(slab);
-
-      paraRanges.push({ from: from, to: wordMeshes.length - 1, zMid: (zStart + zEnd) / 2, zStart: zStart, zEnd: zEnd });
-      zCursor = zEnd + PARA_GAP;
-    });
-
-    /* centre the whole terrain on the origin */
-    var zTotal = zCursor - PARA_GAP;
-    terrain.position.z = -zTotal / 2;
-
-    var grid = new T.GridHelper(80, 40, 0x1d2436, 0x151b28);
-    grid.position.y = -0.16;
-    scene.add(grid);
-
-    /* ── HTML labels projected onto the paragraph plateaus ── */
-    var labels = paraRanges.map(function (_, i) {
+    /* ─────────── 3. Labels ─────────── */
+    var labels = PARA_LABELS.map(function (t) {
       var d = document.createElement('div');
-      d.className = 'alt-label';
-      d.textContent = PARA_LABELS[i];
-      stage.appendChild(d);
-      return d;
+      d.className = 'alt-label'; d.textContent = t;
+      stage.appendChild(d); return d;
     });
-    var labelAnchor = paraRanges.map(function (p) { return new T.Vector3(-ROW_MAX / 2 - 0.4, 1.3, p.zMid - zTotal / 2); });
+    var labelAnchor = [0, 1, 2].map(function (p) {
+      return new T.Vector3(-PW / 2 - 1.6, 0.6, paraMidZ(p));
+    });
 
-    /* ── Word sequences ── */
-    function findWord(text, occ) {
+    /* ─────────── 4. Sequences ─────────── */
+    function findWord(t, occ) {
       occ = occ || 1;
-      var t = text.replace(/[^\w']/g, '').toLowerCase(), c = 0;
-      for (var i = 0; i < wordMeshes.length; i++) {
-        if (wordMeshes[i].userData.text.replace(/[^\w']/g, '').toLowerCase() === t) { c++; if (c === occ) return i; }
+      var target = t.replace(/[^\w']/g, '').toLowerCase(), c = 0;
+      for (var i = 0; i < words.length; i++) {
+        if (words[i].text.replace(/[^\w']/g, '').toLowerCase() === target) { c++; if (c === occ) return i; }
       }
       return -1;
     }
-    var seqRead = wordMeshes.map(function (_, i) { return i; });
-    var seqSkim = [['Beekeeping',1],['quietly',1],['moved',1],['countryside',1],['Supporters',1],['argue',1],['urban',1],['benefit',1],['Critics',1],['however',1],['warn',1],['packing',1]]
+    var seqRead = words.map(function (_, i) { return i; });
+    var seqSkim = [['Beekeeping',1],['quietly',1],['moved',1],['countryside',1],['Supporters',1],['argue',1],
+                   ['urban',1],['benefit',1],['Critics',1],['however',1],['warn',1],['packing',1]]
       .map(function (a) { return findWord(a[0], a[1]); }).filter(function (i) { return i >= 0; });
-    var p3 = paraRanges[2];
-    var scanEnd = findWord('populations', 1);
-    var hitStart = findWord('harm', 1);
+    var scanEnd = findWord('populations', 1), hitStart = findWord('harm', 1);
     var seqScan = [];
-    for (var si = p3.from; si <= (scanEnd >= 0 ? scanEnd : p3.to); si++) seqScan.push(si);
+    for (var si = paraWords[2][0]; si <= (scanEnd >= 0 ? scanEnd : paraWords[2][paraWords[2].length - 1]); si++) seqScan.push(si);
 
-    /* ── Camera control ── */
-    var camGoal = new T.Vector3(0, 16, 20);
-    var lookGoal = new T.Vector3(0, 0, 0);
-    var lookNow = new T.Vector3(0, 0, 0);
+    /* ─────────── 5. Camera ─────────── */
+    var camGoal = new T.Vector3(0, 14, 8), lookGoal = new T.Vector3(0, 0, 0), lookNow = new T.Vector3(0, 0, 0);
     var camEase = 0.05;
     var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    var hudAlt = $('#hudAlt'), hudWords = $('#hudWords'), hudTime = $('#hudTime');
-    var capEl = $('#altCaption');
+    var hudAlt = $('#hudAlt'), hudWords = $('#hudWords'), hudTime = $('#hudTime'), capEl = $('#altCaption');
     var statCov = $('#altStatCoverage'), statFound = $('#altStatFound'), statCost = $('#altStatCost');
     var modeBtns = $$('.alt-mode', $('#altModes'));
+    var timer = null, mode = null, SEC_PER_WORD = 0.5;
 
-    var timer = null, touched = 0, mode = null;
-    var SEC_PER_WORD = 0.5; // 120 wpm
-
-    /* Prediction: how much of the text does a skim actually touch? */
-    var altPredict = makePrediction('altPredict', 'altPredictOpts', 'altPredictResult',
-      function (guess, actual) {
-        var near = Math.abs(guess - actual) <= 20;
-        var pct = Math.round(actual / wordMeshes.length * 100);
-        return {
-          near: near,
-          text: near
-            ? '<b>Close.</b> A skim landed on <b>' + actual + ' of ' + wordMeshes.length + ' words — ' + pct +
-              '%.</b> You already had the right instinct; most students guess three or four times too high, because reading every word feels like the only way to know what a text says.'
-            : '<b>You guessed ' + guess + '. It was ' + actual + ' — ' + pct + '% of the text.</b> That gap is the lesson. ' +
-              (guess > actual
-                ? 'Skimming touches far less than it feels like it should, and it is still enough to say what each paragraph is about.'
-                : 'Even a skim needs a few landing points — but only a few, and always at the start of paragraphs.')
-        };
-      });
-
-    function resetWords() {
-      wordMeshes.forEach(function (m) {
-        m.material = MAT.base;
-        m.scale.y = m.userData.baseH;
-        m.position.y = m.userData.baseH / 2;
-      });
+    function reset() {
+      marks = {}; veiled = []; paintPage();
       labels.forEach(function (l) { l.classList.remove('show'); });
-    }
-    function light(m, mat, h) {
-      m.material = mat;
-      m.scale.y = h;
-      m.position.y = h / 2;
+      ring.material.opacity = 0;
     }
     function setHud(n) {
-      touched = n;
       hudWords.textContent = n;
       hudTime.textContent = fmtClock(n * SEC_PER_WORD);
-      statCov.textContent = Math.round(n / wordMeshes.length * 100) + '%';
+      statCov.textContent = Math.round(n / words.length * 100) + '%';
     }
+    function stop() { clearTimeout(timer); timer = null; }
 
-    function stop() {
-      clearTimeout(timer);
-      timer = null;
-    }
-
-    function runSequence(seq, opts) {
-      var i = 0, n = 0;
-      var scale = REDUCED ? 0.35 : 1;
+    function run(seq, opt) {
+      var i = 0, n = 0, scale = REDUCED ? 0.35 : 1;
       (function next() {
-        if (i >= seq.length) { opts.done && opts.done(n); return; }
-        var idx = seq[i], m = wordMeshes[idx];
-        light(m, opts.matFn(idx), opts.hFn ? opts.hFn(idx) : 0.55);
-        eyeLight.position.set(m.position.x, 1.6, m.position.z + terrain.position.z);
-        eyeLight.intensity = 1.4;
-        opts.cam(m, idx);
+        if (i >= seq.length) { opt.done && opt.done(n); return; }
+        var idx = seq[i], w = words[idx];
+        marks[idx] = opt.styleFn(idx);
+        paintPage();
+        var pos = worldOf(w);
+        ring.position.set(pos.x, 0.04, pos.z);
+        ring.material.opacity = 0.85;
+        opt.cam(pos, idx);
         n++; setHud(n);
         i++;
-        timer = setTimeout(next, opts.dwellFn(idx) * scale);
+        timer = setTimeout(next, opt.dwellFn(idx) * scale);
       })();
     }
 
     var MODES = {
       read: function () {
-        camEase = 0.10;
-        hudAlt.textContent = '0.9 m';
-        hudAlt.className = 'v ground';
-        capEl.textContent = 'Ground level. Every block lights up, in order, one at a time. Nothing is skipped — and nothing is understood any better for it.';
-        statFound.textContent = 'Eventually';
-        statCost.textContent = '—';
-        runSequence(seqRead, {
-          dwellFn: function () { return 78; },
-          matFn: function () { return MAT.read; },
-          hFn: function () { return 0.5; },
-          cam: function (m) {
-            camGoal.set(m.position.x * 0.4, 1.15, m.position.z + terrain.position.z + 3.0);
-            lookGoal.set(m.position.x, 0.25, m.position.z + terrain.position.z - 1.2);
+        camEase = 0.11;
+        hudAlt.textContent = '0.9 m'; hudAlt.className = 'v ground';
+        capEl.textContent = 'Ground level. You are close enough to read every word — and that is exactly the problem, because you have to touch all of them.';
+        statFound.textContent = 'Eventually'; statCost.textContent = '—';
+        run(seqRead, {
+          dwellFn: function () { return 74; },
+          styleFn: function () { return 'read'; },
+          cam: function (pos) {
+            camGoal.set(pos.x * 0.45, 3.0, pos.z + 3.6);
+            lookGoal.set(pos.x * 0.6, 0, pos.z - 0.3);
           },
           done: function (n) {
-            capEl.textContent = 'All ' + n + ' words, ' + fmtClock(n * SEC_PER_WORD) + ' of exam clock — for one short passage, and you still have not looked at a single question.';
+            capEl.textContent = 'All ' + n + ' words, ' + fmtClock(n * SEC_PER_WORD) + ' of your exam clock — and you have not looked at a single question yet.';
             statCost.textContent = fmtClock(n * SEC_PER_WORD);
-            eyeLight.intensity = 0;
+            ring.material.opacity = 0;
           }
         });
       },
       skim: function () {
-        camEase = 0.035;
-        hudAlt.textContent = '14 m';
-        hudAlt.className = 'v cruise';
-        capEl.textContent = 'Cruising altitude. From up here you physically cannot read the words — and that is the point. You are looking for shape, not content.';
-        statFound.textContent = 'No — but you know where';
-        statCost.textContent = '—';
-        runSequence(seqSkim, {
-          dwellFn: function () { return 300; },
-          matFn: function () { return MAT.skim; },
-          hFn: function () { return 1.15; },
-          cam: function (m) {
-            camGoal.set(0, 14, m.position.z + terrain.position.z + 9);
-            lookGoal.set(0, 0, m.position.z + terrain.position.z);
+        camEase = 0.04;
+        hudAlt.textContent = '14 m'; hudAlt.className = 'v cruise';
+        capEl.textContent = 'Cruising altitude. Notice you cannot read the words from up here — you are not meant to. You are looking for shape.';
+        statFound.textContent = 'No — but you know where'; statCost.textContent = '—';
+        run(seqSkim, {
+          dwellFn: function () { return 290; },
+          styleFn: function () { return 'skim'; },
+          cam: function (pos) {
+            camGoal.set(0, 13.5, pos.z * 0.4 + 7.5);
+            lookGoal.set(0, 0, pos.z * 0.35);
           },
           done: function (n) {
-            altPredict.show(n);
-            capEl.textContent = n + ' blocks lit, ' + Math.round(n / wordMeshes.length * 100) + '% of the text, ' + fmtClock(n * SEC_PER_WORD) + ' spent — and the three plateaus now have names. That is a map.';
+            capEl.textContent = n + ' words, ' + Math.round(n / words.length * 100) + '% of the page, ' + fmtClock(n * SEC_PER_WORD) + ' — and now each paragraph has a name. That is your map.';
             statCost.textContent = fmtClock(n * SEC_PER_WORD);
-            eyeLight.intensity = 0;
-            camGoal.set(0, 17, 15);
-            lookGoal.set(0, 0, 0);
-            labels.forEach(function (l, i) { setTimeout(function () { l.classList.add('show'); }, 260 * i); });
+            ring.material.opacity = 0;
+            camGoal.set(0, 14.5, 8); lookGoal.set(0, 0, 0);
+            labels.forEach(function (l, i) { setTimeout(function () { l.classList.add('show'); }, 250 * i); });
           }
         });
       },
       scan: function () {
         camEase = 0.06;
-        hudAlt.textContent = '4 m';
-        hudAlt.className = 'v attack';
-        capEl.textContent = 'Attack run. The map already chose ¶3, so the other two plateaus go dark — you will not read one word of them.';
-        statFound.textContent = 'Yes';
-        statCost.textContent = '—';
-        wordMeshes.forEach(function (m) { if (m.userData.pIdx !== 2) m.material = MAT.dimmed; });
-        camGoal.set(0, 4.6, p3.zMid - zTotal / 2 + 8);
-        lookGoal.set(0, 0, p3.zMid - zTotal / 2);
+        hudAlt.textContent = '4 m'; hudAlt.className = 'v attack';
+        capEl.textContent = 'Attack run. Your map already chose ¶3, so you drop straight in — and you will not read a word of ¶1 or ¶2.';
+        statFound.textContent = 'Yes'; statCost.textContent = '—';
+        var z3 = paraMidZ(2);
+        veiled = [0, 1]; paintPage();
+        camGoal.set(0, 9.8, z3 + 7.4); lookGoal.set(0, 0, z3);
         setTimeout(function () {
           if (mode !== 'scan') return;
-          capEl.textContent = 'Now every single word of ¶3, in order, at speed — dense, slow, thorough reading over a tiny area. Speed comes from the small area, never from fast eyes.';
-          runSequence(seqScan, {
-            dwellFn: function (idx) { return (hitStart >= 0 && idx >= hitStart) ? 380 : 92; },
-            matFn: function (idx) { return (hitStart >= 0 && idx >= hitStart) ? MAT.hit : MAT.scan; },
-            hFn: function (idx) { return (hitStart >= 0 && idx >= hitStart) ? 1.5 : 0.6; },
-            cam: function (m) {
-              camGoal.set(m.position.x * 0.3, 4.4, p3.zMid - zTotal / 2 + 7.5);
-              lookGoal.set(m.position.x * 0.6, 0.4, m.position.z + terrain.position.z);
+          capEl.textContent = 'Now every word of ¶3, in order. Dense and slow — the speed comes from the small area, never from moving your eyes faster.';
+          run(seqScan, {
+            dwellFn: function (idx) { return (hitStart >= 0 && idx >= hitStart) ? 360 : 88; },
+            styleFn: function (idx) { return (hitStart >= 0 && idx >= hitStart) ? 'hit' : 'scan'; },
+            cam: function (pos) {
+              camGoal.set(0, 9.4, z3 + 7.0);
+              lookGoal.set(0, 0, z3);
             },
             done: function (n) {
-              capEl.textContent = 'Answer located in ' + n + ' words — ' + fmtClock(n * SEC_PER_WORD) + ' — instead of ' + fmtClock(wordMeshes.length * SEC_PER_WORD) + '. The gold blocks are "harm wild bee populations". Everything grey was never read at all.';
+              capEl.textContent = 'Found it in ' + n + ' words — ' + fmtClock(n * SEC_PER_WORD) + ' instead of ' + fmtClock(words.length * SEC_PER_WORD) + '. The gold is "harm wild bee populations". The rest of the page you never read.';
               statCost.textContent = fmtClock(n * SEC_PER_WORD);
-              eyeLight.intensity = 0;
+              ring.material.opacity = 0;
             }
           });
-        }, 1100);
+        }, 1000);
       }
     };
 
     function setMode(name) {
-      stop();
-      resetWords();
-      setHud(0);
-      eyeLight.intensity = 0;
+      stop(); reset(); setHud(0);
       modeBtns.forEach(function (b) { b.classList.toggle('active', b.dataset.mode === name); });
       mode = name;
       if (name === 'stop' || !MODES[name]) {
         mode = null;
         hudAlt.textContent = '—'; hudAlt.className = 'v';
         statCov.textContent = '–'; statFound.textContent = '–'; statCost.textContent = '–';
-        capEl.textContent = 'Pick a mode above. The same 120-word passage is rendered as terrain: each block is one word, each plateau one paragraph.';
-        camGoal.set(0, 16, 20); lookGoal.set(0, 0, 0); camEase = 0.05;
+        capEl.textContent = 'Choose an altitude above. It is the same page every time — only the height you read it from changes.';
+        camGoal.set(0, 14, 8); lookGoal.set(0, 0, 0); camEase = 0.05;
         return;
       }
       MODES[name]();
     }
     modeBtns.forEach(function (b) { b.addEventListener('click', function () { setMode(b.dataset.mode); }); });
+    Resettable.push(function () { setMode('stop'); });
 
-    /* ── Render loop (paused while the station is off-screen) ── */
+    /* ─────────── 6. Loop ─────────── */
     var visible = true;
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) { es.forEach(function (e) { visible = e.isIntersecting; }); }, { rootMargin: '120px' }).observe(stage);
+      new IntersectionObserver(function (es) { es.forEach(function (e) { visible = e.isIntersecting; }); },
+        { rootMargin: '120px' }).observe(stage);
     }
-
-    var projected = new T.Vector3();
-    function tick() {
+    var proj = new T.Vector3();
+    (function tick() {
       requestAnimationFrame(tick);
       if (!visible) return;
       camera.position.lerp(camGoal, REDUCED ? 1 : camEase);
       lookNow.lerp(lookGoal, REDUCED ? 1 : camEase);
       camera.lookAt(lookNow);
-      eyeLight.intensity *= 0.94;
+      if (ring.material.opacity > 0) ring.material.opacity = Math.max(0, ring.material.opacity - 0.006);
 
       var rect = renderer.domElement.getBoundingClientRect();
       labels.forEach(function (l, i) {
-        projected.copy(labelAnchor[i]).project(camera);
-        var vis = projected.z < 1;
-        l.style.left = ((projected.x * 0.5 + 0.5) * rect.width) + 'px';
-        l.style.top = ((-projected.y * 0.5 + 0.5) * rect.height) + 'px';
-        if (!vis) l.classList.remove('show');
+        proj.copy(labelAnchor[i]).project(camera);
+        l.style.left = ((proj.x * 0.5 + 0.5) * rect.width) + 'px';
+        l.style.top = ((-proj.y * 0.5 + 0.5) * rect.height) + 'px';
+        if (proj.z >= 1) l.classList.remove('show');
       });
-
       renderer.render(scene, camera);
-    }
-    tick();
+    })();
 
-    function resize() {
+    window.addEventListener('resize', function () {
       var w = stage.clientWidth, h = stage.clientHeight;
       if (!w || !h) return;
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h);
-    }
-    window.addEventListener('resize', resize);
+      camera.aspect = w / h; camera.updateProjectionMatrix(); renderer.setSize(w, h);
+    });
 
+    paintPage();
+    setMode('stop');
     stage.classList.add('ready');
     if (loadingEl) loadingEl.remove();
   }
@@ -3160,7 +3261,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
       api.value = Number(b.dataset.v);
       opts.forEach(function (o) { o.disabled = true; });
       b.style.borderColor = 'var(--kw-idea)';
-      b.style.background = 'rgba(167,139,250,0.18)';
+      b.style.background = 'var(--kw-idea-dim)';
       box.classList.add('locked');
       $('.predict-h', box).textContent = '⬦ You committed to: ' + b.textContent.trim();
       if (api.reveal) api.reveal();
