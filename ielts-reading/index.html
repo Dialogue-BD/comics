@@ -25,6 +25,20 @@
   --accent-glow: rgba(91,140,255,0.35);
   --accent2: #a78bfa;
   --accent2-dim: rgba(167,139,250,0.15);
+  /* -- ALTITUDE SCALE -- the page's one metaphor, as colour.
+     High to low: sky -> gold -> ground. Nothing else may use these. -- */
+  --alt-cruise: #38bdf8;   /* skimming - high, airy, shape not detail */
+  --alt-cruise-dim: rgba(56,189,248,0.26);
+  --alt-attack: #fbbf24;   /* scanning - low, hot, targeted */
+  --alt-attack-dim: rgba(251,191,36,0.20);
+  --alt-ground: #94a3b8;   /* reading every word - heavy, dull, expensive */
+  --alt-ground-dim: rgba(148,163,184,0.22);
+
+  /* -- KEYWORD TYPE -- blue = you search for it, purple = you check it -- */
+  --kw-concrete: #5b8cff;
+  --kw-idea: #a78bfa;
+
+  /* -- CORRECTNESS -- reserved. Green and red mean right and wrong, nowhere else. -- */
   --good: #34d399;
   --good-dim: rgba(52,211,153,0.14);
   --bad: #fb7185;
@@ -127,7 +141,8 @@ header.hero .lede { font-size: clamp(1rem, 2vw, 1.16rem); color: var(--text-mute
 section.station { padding: 46px 0; scroll-margin-top: 76px; }
 section.station + section.station { border-top: 1px solid var(--border-soft); }
 .station-head { margin-bottom: 26px; max-width: 800px; }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.tags { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 14px; }
+.tags .gauge { margin-left: auto; }
 .tag {
   font-size: 0.67rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
   padding: 4px 10px; border-radius: 999px;
@@ -338,8 +353,16 @@ body.projector .hide-on-projector { display: none !important; }
 .alt-mode:hover { border-color: var(--accent); color: var(--text); }
 .alt-mode .m-title { font-size: 0.88rem; font-weight: 800; display: block; color: var(--text); }
 .alt-mode .m-sub { font-size: 0.72rem; color: var(--text-dim); display: block; margin-top: 2px; }
-.alt-mode.active { background: var(--accent-dim); border-color: var(--accent); }
-.alt-mode.active .m-title { color: var(--accent); }
+.alt-mode.active[data-mode="read"] { background: var(--alt-ground-dim); border-color: var(--alt-ground); }
+.alt-mode.active[data-mode="read"] .m-title { color: var(--alt-ground); }
+.alt-mode.active[data-mode="skim"] { background: var(--alt-cruise-dim); border-color: var(--alt-cruise); }
+.alt-mode.active[data-mode="skim"] .m-title { color: var(--alt-cruise); }
+.alt-mode.active[data-mode="scan"] { background: var(--alt-attack-dim); border-color: var(--alt-attack); }
+.alt-mode.active[data-mode="scan"] .m-title { color: var(--alt-attack); }
+.alt-mode.active[data-mode="stop"] { background: var(--surface-3); border-color: var(--text-dim); }
+.hud-block .v.ground { color: var(--alt-ground); }
+.hud-block .v.cruise { color: var(--alt-cruise); }
+.hud-block .v.attack { color: var(--alt-attack); }
 .alt-readout { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 16px; }
 
 /* ══════════ S2: THE METHOD ══════════ */
@@ -360,7 +383,7 @@ body.projector .hide-on-projector { display: none !important; }
 
 .eye-dot {
   position: fixed; left: -200px; top: -200px; width: 15px; height: 15px; border-radius: 50%;
-  background: var(--good); box-shadow: 0 0 0 5px rgba(52,211,153,0.22), 0 0 20px 5px rgba(52,211,153,0.5);
+  background: #fff; box-shadow: 0 0 0 5px rgba(255,255,255,0.18), 0 0 20px 6px rgba(255,255,255,0.42);
   transform: translate(-50%,-50%); pointer-events: none; opacity: 0; z-index: 55;
   transition: left .26s cubic-bezier(.4,0,.2,1), top .26s cubic-bezier(.4,0,.2,1), opacity .2s;
 }
@@ -374,9 +397,9 @@ body.projector .hide-on-projector { display: none !important; }
 .method.q-on .qbox { display: block; }
 .qbox .q-line { font-family: var(--serif); font-size: 1.05rem; color: #cdd3e4; margin: 0; }
 .qbox .w { border-radius: 3px; padding: 0 2px; transition: background .2s, color .2s; }
-.qbox .w.hop { background: var(--accent2-dim); color: #d6c9ff; font-weight: 700; }
-.method.kw-on .qbox .w.k-concrete { background: var(--accent-dim); color: var(--accent); font-weight: 800; }
-.method.kw-on .qbox .w.k-idea { background: var(--accent2-dim); color: var(--accent2); font-weight: 800; }
+.qbox .w.hop { background: var(--alt-cruise-dim); color: #cbeafd; font-weight: 700; }
+.method.kw-on .qbox .w.k-concrete { background: rgba(91,140,255,0.16); color: var(--kw-concrete); font-weight: 800; }
+.method.kw-on .qbox .w.k-idea { background: rgba(167,139,250,0.18); color: var(--kw-idea); font-weight: 800; }
 .method.trap-on .qbox .w.k-idea.flag { background: var(--bad-dim); color: var(--bad); }
 .qverdict { margin: 11px 0 0; font-size: 0.85rem; font-weight: 800; color: var(--bad); display: none; }
 .method.trap-on .qverdict { display: block; }
@@ -390,10 +413,11 @@ body.projector .hide-on-projector { display: none !important; }
   opacity: 0; transform: translateY(-3px); transition: .45s;
 }
 .method.map-on .ptag { opacity: 1; transform: none; }
-.passage .w.f-read { background: rgba(91,140,255,0.24); color: #fff; }
-.passage .w.f-skim { background: rgba(167,139,250,0.3); color: #fff; font-weight: 700; }
-.passage .w.f-scan { background: rgba(52,211,153,0.26); color: #fff; }
-.passage .w.f-hit  { background: var(--warn); color: #241a02; font-weight: 800; }
+/* Font weight is a second, redundant channel so these never rely on colour alone. */
+.passage .w.f-read { background: var(--alt-ground-dim); color: #e4e9f2; font-weight: 400; }
+.passage .w.f-skim { background: var(--alt-cruise-dim); color: #fff; font-weight: 700; }
+.passage .w.f-scan { background: var(--alt-attack-dim); color: #f4e9d0; font-weight: 400; }
+.passage .w.f-hit  { background: var(--alt-attack); color: #241a02; font-weight: 800; }
 .trap-panel {
   display: none; margin-top: 16px; background: var(--bad-dim); border: 1px solid var(--bad);
   border-radius: var(--r); padding: 15px 18px;
@@ -434,15 +458,15 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 }
 .kwchip:hover:not(:disabled) { border-color: var(--text-dim); }
 .kwchip.picked { background: var(--warn-dim); border-color: var(--warn); border-style: solid; color: var(--warn); font-weight: 700; }
-.kwchip.reveal-key { background: var(--accent-dim); border-color: var(--accent); border-style: solid; color: var(--accent); font-weight: 800; }
+.kwchip.reveal-key { background: rgba(91,140,255,0.16); border-color: var(--kw-concrete); border-style: solid; color: var(--kw-concrete); font-weight: 800; }
 .kwchip.reveal-over { background: var(--bad-dim); border-color: var(--bad); border-style: solid; color: var(--bad); text-decoration: line-through; }
 .kwchip:disabled { cursor: default; }
 .kw-counter { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 12px; font-family: var(--mono); }
 .kw-key-list { display: grid; gap: 8px; margin-top: 12px; }
 .kw-key-item { display: flex; gap: 10px; align-items: flex-start; font-size: 0.86rem; }
 .kw-badge { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; flex-shrink: 0; margin-top: 2px; }
-.kw-badge.concrete { background: var(--accent-dim); color: var(--accent); }
-.kw-badge.idea { background: var(--accent2-dim); color: var(--accent2); }
+.kw-badge.concrete { background: rgba(91,140,255,0.16); color: var(--kw-concrete); }
+.kw-badge.idea { background: rgba(167,139,250,0.18); color: var(--kw-idea); }
 .kw-badge.skip { background: var(--surface-3); color: var(--text-dim); }
 
 /* ══════════ S5: SCAN SPRINT ══════════ */
@@ -487,6 +511,74 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 .answer-key { display: none; }
 @media print { .answer-key { display: block !important; margin-top: 14px; padding-top: 10px; border-top: 1px dashed #999; font-size: 9pt; color: #333 !important; } }
 .blank-line { display: inline-block; border-bottom: 1px solid #666; min-width: 120px; height: 1.1em; }
+
+/* ══════════ COMMIT-BEFORE-REVEAL ══════════
+   Students guess before the answer appears. A wrong guess that has been
+   committed to out loud is worth more than a right answer they were shown. */
+.predict {
+  background: var(--surface-2); border: 1px solid var(--kw-idea); border-radius: var(--r);
+  padding: 15px 18px; margin-bottom: 16px;
+}
+.predict.locked { border-color: var(--border); }
+.predict-h {
+  font-size: 0.68rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--kw-idea); margin-bottom: 7px;
+}
+.predict.locked .predict-h { color: var(--text-dim); }
+.predict-q { font-size: 0.97rem; margin-bottom: 11px; }
+.predict-result {
+  display: none; margin-top: 11px; font-size: 0.88rem; padding: 11px 14px;
+  border-radius: var(--r-sm); line-height: 1.55;
+}
+.predict-result.show { display: block; }
+.predict-result.near { background: var(--good-dim); border: 1px solid rgba(52,211,153,0.35); color: #b6f0dc; }
+.predict-result.far  { background: var(--bad-dim); border: 1px solid rgba(251,113,133,0.35); color: #ffcbd3; }
+
+/* ══════════ ALTITUDE GAUGE ══════════
+   Three stacked bands. Position carries the meaning as much as colour,
+   so it still reads correctly in greyscale or with colour vision deficiency. */
+.gauge { display: inline-flex; align-items: center; gap: 9px; vertical-align: middle; }
+.gauge-stack { display: flex; flex-direction: column; gap: 2px; }
+.gauge-band {
+  width: 26px; height: 5px; border-radius: 2px; background: var(--surface-3);
+  border: 1px solid var(--border-soft); transition: background .3s, box-shadow .3s;
+}
+.gauge-band.on { border-color: transparent; }
+.gauge-band.cruise.on { background: var(--alt-cruise); box-shadow: 0 0 8px rgba(56,189,248,0.55); }
+.gauge-band.attack.on { background: var(--alt-attack); box-shadow: 0 0 8px rgba(251,191,36,0.55); }
+.gauge-band.ground.on { background: var(--alt-ground); box-shadow: 0 0 8px rgba(148,163,184,0.45); }
+.gauge-label {
+  font-size: 0.66rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-dim); line-height: 1.35;
+}
+.gauge-label b { display: block; font-weight: 800; }
+.gauge-label b.cruise { color: var(--alt-cruise); }
+.gauge-label b.attack { color: var(--alt-attack); }
+.gauge-label b.ground { color: var(--alt-ground); }
+.gauge-label b.all    { color: var(--text-muted); }
+
+/* ══════════ COLOUR CONTRACT LEGEND ══════════ */
+.legend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 11px; }
+.legend-item {
+  display: flex; align-items: flex-start; gap: 11px;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r); padding: 12px 14px;
+}
+.legend-swatch {
+  flex-shrink: 0; width: 34px; height: 26px; border-radius: 5px; margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 0.8rem; color: #fff;
+}
+.legend-swatch.ground { background: var(--alt-ground-dim); color: #e4e9f2; font-weight: 400; }
+.legend-swatch.cruise { background: var(--alt-cruise-dim); color: #fff; font-weight: 700; }
+.legend-swatch.attack { background: var(--alt-attack-dim); color: #f4e9d0; font-weight: 400; }
+.legend-swatch.hit    { background: var(--alt-attack); color: #241a02; font-weight: 800; }
+.legend-swatch.conc   { background: rgba(91,140,255,0.16); color: var(--kw-concrete); font-weight: 800; }
+.legend-swatch.idea   { background: rgba(167,139,250,0.18); color: var(--kw-idea); font-weight: 800; }
+.legend-swatch.ok     { background: var(--good-dim); color: var(--good); font-weight: 800; }
+.legend-swatch.no     { background: var(--bad-dim); color: var(--bad); font-weight: 800; }
+.legend-text { font-size: 0.8rem; line-height: 1.5; }
+.legend-text b { display: block; font-size: 0.86rem; margin-bottom: 1px; }
+.legend-text span { color: var(--text-muted); }
 
 /* ══════════ ACCESSIBILITY ══════════ */
 :where(button, select, a, input, [tabindex]):focus-visible {
@@ -790,7 +882,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 <section class="station" id="crisis">
   <div class="wrap">
     <div class="station-head">
-      <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag mobile">📱 Phone</span></div>
+      <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag mobile">📱 Phone</span><span class="gauge" role="img" aria-label="Altitude trained here: Before you fly"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Before you fly</b></span></span></div>
       <div class="station-num">Station 0 · 8 minutes</div>
       <h2>The Time Crisis</h2>
       <p class="station-sub">Never argue that students read too slowly — <em>show them their own number.</em> They read one real passage, the page measures their speed, and then does the exam arithmetic in front of them. This is the moment the rest of the lesson becomes worth their attention.</p>
@@ -834,6 +926,18 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="card-label">📉 Step 2 — The arithmetic</div>
       <div class="card-title">What that speed costs you in the real exam</div>
       <p class="card-intro">IELTS Academic Reading gives you <b>3 passages, 2,150–2,750 words, 40 questions — in 60 minutes, with no extra time to copy answers across.</b> Here is where your minutes actually go.</p>
+
+      <div class="predict no-print" id="crisisPredict">
+        <div class="predict-h">⬦ Guess first, then look</div>
+        <p class="predict-q">The Reading paper is <b>60 minutes</b> long. At the speed you just recorded, how many of those 60 minutes do you think you would spend <b>only moving your eyes across the text</b> — before answering a single question?</p>
+        <div class="opts" id="crisisPredictOpts">
+          <button class="opt" data-v="5">About 5 minutes</button>
+          <button class="opt" data-v="12">About 12 minutes</button>
+          <button class="opt" data-v="22">About 22 minutes</button>
+          <button class="opt" data-v="40">About 40 minutes</button>
+        </div>
+        <div class="predict-result" id="crisisPredictResult"></div>
+      </div>
 
       <div class="wpm-input-row no-print" style="margin-bottom:18px">
         <span>Your reading speed:</span>
@@ -883,7 +987,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 <section class="station" id="altitude">
   <div class="wrap">
     <div class="station-head">
-      <div class="tags"><span class="tag screen">🖥️ Big screen</span></div>
+      <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="gauge" role="img" aria-label="Altitude trained here: All three"><span class="gauge-stack"><span class="gauge-band cruise on"></span><span class="gauge-band attack on"></span><span class="gauge-band ground on"></span></span><span class="gauge-label">Altitude<b class="all">All three</b></span></span></div>
       <div class="station-num">Station 1 · 10 minutes</div>
       <h2>The Reading Altitude</h2>
       <p class="station-sub">Here the passage becomes a landscape. Every word is a block; every paragraph is a plateau. The only thing that changes between the three modes is <em>how high the camera flies</em> — and that single idea, altitude, is the whole of skimming and scanning. Fly high and you see the shape but not the words. Drop to ground level and you see every word but nothing else.</p>
@@ -914,6 +1018,18 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         </button>
       </div>
 
+      <div class="predict no-print" id="altPredict">
+        <div class="predict-h">⬦ Before you press anything — commit</div>
+        <p class="predict-q">The passage below is <b>120 words</b>. When you <b>skim</b> it to find out what it is about, how many of those 120 words do you think your eyes will actually land on?</p>
+        <div class="opts" id="altPredictOpts">
+          <button class="opt" data-v="90">About 90 — nearly all of them</button>
+          <button class="opt" data-v="60">About 60 — half</button>
+          <button class="opt" data-v="30">About 30 — a quarter</button>
+          <button class="opt" data-v="12">About 12 — one in ten</button>
+        </div>
+        <div class="predict-result" id="altPredictResult"></div>
+      </div>
+
       <div class="alt-stage" id="altStage">
         <div class="alt-loading" id="altLoading">Loading the 3D scene…</div>
         <div class="alt-hud">
@@ -936,19 +1052,63 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       </div>
     </div>
 
+    <div class="card" id="legendCard" style="margin-top:20px">
+      <div class="card-label">🎨 The colour contract</div>
+      <div class="card-title">Every colour on this page means one thing, everywhere</div>
+      <p class="card-intro">Learn these six and you can read any station without instructions. They never change meaning — that is the point.</p>
+      <div class="legend-grid">
+        <div class="legend-item">
+          <span class="legend-swatch ground">word</span>
+          <span class="legend-text"><b>Ground level</b><span>Your eyes read this word. Slow and expensive.</span></span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch cruise">word</span>
+          <span class="legend-text"><b>Cruising · skim</b><span>Your eyes bounced off this word to get the shape.</span></span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch attack">word</span>
+          <span class="legend-text"><b>Attack run · scan</b><span>Your eyes swept this word hunting for a target.</span></span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch hit">word</span>
+          <span class="legend-text"><b>Found it</b><span>The target. Same gold as scanning, but bright — you stopped.</span></span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch conc">word</span>
+          <span class="legend-text"><b>Concrete keyword</b><span>A name, number or thing. You <b style="display:inline">search</b> for blue.</span></span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch idea">word</span>
+          <span class="legend-text"><b>Idea keyword</b><span>A verb or adjective. You <b style="display:inline">check</b> purple after you arrive.</span></span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch ok">✓</span>
+          <span class="legend-text"><b>Correct</b><span>Green only ever means right. Never a reading mode.</span></span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch no">✗</span>
+          <span class="legend-text"><b>Wrong, or a trap</b><span>Red only ever means a lost mark.</span></span>
+        </div>
+      </div>
+      <div class="tnote">
+        <div class="tnote-h">Why this matters more than it looks</div>
+        Project this for thirty seconds and make the class say the three altitudes out loud. From here on, <b>you never have to explain a highlight again</b> — you point at the colour and ask "what altitude is that?" Students who can read the colours can self-correct without you, which is the whole reason to teach with a consistent visual system rather than a prettier one.
+      </div>
+    </div>
+
     <div class="grid-3" style="margin-top:20px">
       <div class="check-card">
-        <div class="cn">Ground level</div>
+        <div class="cn" style="color:var(--alt-ground)">Ground level</div>
         <div class="ct">Every word, in order</div>
         <div class="cd">Total comprehension, catastrophic speed. Correct for the one sentence that holds the answer — and for nothing else in the exam.</div>
       </div>
       <div class="check-card">
-        <div class="cn">Cruising · Skim</div>
+        <div class="cn" style="color:var(--alt-cruise)">Cruising · Skim</div>
         <div class="ct">Shape, not content</div>
         <div class="cd">You deliberately give up detail to buy structure. The output of a skim is not understanding — it is a <b>map</b>: which paragraph holds which topic.</div>
       </div>
       <div class="check-card">
-        <div class="cn">Attack run · Scan</div>
+        <div class="cn" style="color:var(--alt-attack)">Attack run · Scan</div>
         <div class="ct">Every word, one paragraph</div>
         <div class="cd">Scanning is <b>not</b> fast skimming. It is slow, dense, word-by-word searching — but performed over a tiny area that the map already chose for you.</div>
       </div>
@@ -960,7 +1120,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 <section class="station" id="method">
   <div class="wrap">
     <div class="station-head">
-      <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag pairs">👥 Pairs</span></div>
+      <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag pairs">👥 Pairs</span><span class="gauge" role="img" aria-label="Altitude trained here: Cruise → attack"><span class="gauge-stack"><span class="gauge-band cruise on"></span><span class="gauge-band attack on"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Cruise → attack</b></span></span></div>
       <div class="station-num">Station 2 · 12 minutes</div>
       <h2>The Six-Step Method</h2>
       <p class="station-sub">Same passage as the flight, now on the ground and slowed down. Six steps, one real True/False/Not Given question, and a moving dot showing precisely where a trained reader's eyes go — and, just as importantly, where they never go.</p>
@@ -1084,7 +1244,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 <section class="station" id="mapping">
   <div class="wrap">
     <div class="station-head">
-      <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag pairs">👥 Pairs</span><span class="tag print">🖨️ Printable</span></div>
+      <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag pairs">👥 Pairs</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: Cruising"><span class="gauge-stack"><span class="gauge-band cruise on"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="cruise">Cruising</b></span></span></div>
       <div class="station-num">Station 3 · 12 minutes</div>
       <h2>Map Drill — build it, then use it</h2>
       <p class="station-sub">Skimming is only worth doing if it produces something. That something is a map. Part A trains students to <em>build</em> the map in under two minutes; Part B proves the map works by making them locate six answers without reading a single full paragraph.</p>
@@ -1185,7 +1345,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 <section class="station" id="keywords">
   <div class="wrap">
     <div class="station-head">
-      <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag pairs">👥 Pairs</span><span class="tag screen">🖥️ Big screen</span></div>
+      <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag pairs">👥 Pairs</span><span class="tag screen">🖥️ Big screen</span><span class="gauge" role="img" aria-label="Altitude trained here: Flight plan"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Flight plan</b></span></span></div>
       <div class="station-num">Station 4 · 12 minutes</div>
       <h2>Keyword Lab</h2>
       <p class="station-sub">Students underline half the question and then wonder why scanning takes forever. A keyword is not "an important word" — it is <em>a word you can physically search for</em>. Part A cures over-marking. Part B fixes the deeper problem: the passage almost never uses your keyword, it uses a paraphrase of it.</p>
@@ -1221,7 +1381,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 <section class="station" id="scanning">
   <div class="wrap">
     <div class="station-head">
-      <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag pairs">👥 Pairs</span><span class="tag print">🖨️ Printable</span></div>
+      <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag pairs">👥 Pairs</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: Attack run"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack on"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="attack">Attack run</b></span></span></div>
       <div class="station-num">Station 5 · 12 minutes</div>
       <h2>Scan Sprint</h2>
       <p class="station-sub">Now the narrow skill on its own, under a clock. Scanning is <em>dense</em> reading over a <em>small</em> area — your eyes move slowly across every word, but only inside the paragraph the map already chose. Speed comes from the small area, never from moving your eyes faster.</p>
@@ -1286,7 +1446,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 <section class="station" id="traps">
   <div class="wrap">
     <div class="station-head">
-      <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag mobile">📱 Phone</span><span class="tag print">🖨️ Printable</span></div>
+      <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag mobile">📱 Phone</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: Attack run"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack on"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="attack">Attack run</b></span></span></div>
       <div class="station-num">Station 6 · 14 minutes</div>
       <h2>Trap Detector</h2>
       <p class="station-sub">Finding the sentence is not the same as answering the question. Examiners build False and Not Given options to reward exactly the student who scans well and then stops thinking. This station gives them a four-point check to run on every located sentence — and then punishes them for skipping it.</p>
@@ -1337,7 +1497,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 <section class="station" id="fullrun">
   <div class="wrap">
     <div class="station-head">
-      <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag screen">🖥️ Big screen</span><span class="tag print">🖨️ Printable</span></div>
+      <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag screen">🖥️ Big screen</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: All three"><span class="gauge-stack"><span class="gauge-band cruise on"></span><span class="gauge-band attack on"></span><span class="gauge-band ground on"></span></span><span class="gauge-label">Altitude<b class="all">All three</b></span></span></div>
       <div class="station-num">Station 7 · 20 minutes + 8 to review</div>
       <h2>The Full Run</h2>
       <p class="station-sub">Six skills are not a strategy until they run together against a clock. One passage, thirteen questions, three question types, twenty minutes — the same question-per-minute rate as the real exam, in the same split-screen layout as computer-delivered IELTS. The page watches your pace and, afterwards, tells you <em>exactly which question cost you the paper</em>.</p>
@@ -1433,7 +1593,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 <section class="station" id="scorecard">
   <div class="wrap">
     <div class="station-head">
-      <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag screen">🖥️ Big screen</span></div>
+      <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag screen">🖥️ Big screen</span><span class="gauge" role="img" aria-label="Altitude trained here: Debrief"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Debrief</b></span></span></div>
       <div class="station-num">Station 8 · 5 minutes</div>
       <h2>Scorecard &amp; Diagnosis</h2>
       <p class="station-sub">Everything scored on this page feeds into here. It is not a total — a total tells a student nothing they can act on. It finds the <em>one</em> sub-skill that is holding their reading band down and tells them what to do about it on Monday.</p>
@@ -1456,6 +1616,23 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="btn-row no-print" style="margin-top:18px">
         <button class="btn ghost sm" id="scReset">Clear my results</button>
       </div>
+    </div>
+
+    <div class="tnote">
+      <div class="tnote-h">Why there is a quiz at the end of a skills lesson</div>
+      Students who have just <i>done</i> something feel they have learned it. They usually have not — a skill practised once and never recalled decays within days. The round below is <b>retrieval practice</b>: no passage, no looking back, just pulling the ideas out of memory cold. That act of pulling is what makes them stick, and it costs three minutes. Run it at the very end, and again as the first thing you do next lesson.
+    </div>
+
+    <div class="card" id="recallCard">
+      <div class="card-label">🧠 Three-minute recall — close everything else</div>
+      <div class="card-title">Six questions on what you just learned. No looking back.</div>
+      <p class="card-intro">These are not about the passages. They are about the method — which is the part you have to carry into the exam.</p>
+      <div class="btn-row no-print" style="margin-bottom:16px">
+        <span class="score-pill" id="recallScore" aria-live="polite">0 / 6</span>
+        <button class="btn ghost sm" id="recallReset">Reset</button>
+      </div>
+      <div id="recallList"></div>
+      <div class="answer-key"><b>Answer key:</b> 1–b, 2–c, 3–b, 4–c, 5–a, 6–b.</div>
     </div>
   </div>
 </section>
@@ -1660,7 +1837,7 @@ var Resettable = [];
 
   /* One button to clear the room between back-to-back classes. */
   var RESET_BUTTONS = ['#spReset', '#mapReset', '#locReset', '#paraReset', '#scanReset',
-                       '#raceReset', '#trapReset', '#frReset', '#gpReset', '#mRestart'];
+                       '#raceReset', '#trapReset', '#frReset', '#gpReset', '#mRestart', '#recallReset'];
   $('#btnResetAll').addEventListener('click', function () {
     RESET_BUTTONS.forEach(function (sel) { var b = $(sel); if (b) b.click(); });
     Resettable.forEach(function (fn) { try { fn(); } catch (e) {} });
@@ -1811,6 +1988,20 @@ var Resettable = [];
     box.classList.add('show');
   }
 
+  var crisisPredict = makePrediction('crisisPredict', 'crisisPredictOpts', 'crisisPredictResult',
+    function (guess, actual) {
+      var near = Math.abs(guess - actual) <= 6;
+      return {
+        near: near,
+        text: near
+          ? '<b>Well judged — it is ' + Math.round(actual) + ' minutes.</b> Knowing the cost is half the battle; the next seven stations are about not paying it.'
+          : '<b>You guessed ' + guess + ' minutes. It is ' + Math.round(actual) + '.</b> ' +
+            (guess < actual
+              ? 'Almost everyone underestimates this, because reading does not feel like it takes long — until it is measured against a clock you cannot stop.'
+              : 'You over-estimated, which is rarer and more useful: you already suspect that reading is the expensive part.')
+      };
+    });
+
   applyB.addEventListener('click', function () { calc(Number(input.value)); });
   input.addEventListener('keydown', function (e) { if (e.key === 'Enter') calc(Number(input.value)); });
 
@@ -1830,6 +2021,7 @@ var Resettable = [];
     var perQBest = (EXAM_MIN - readMin) * 60 / EXAM_Q;
     var perQReal = (EXAM_MIN - realMin) * 60 / EXAM_Q;
 
+    crisisPredict.show(readMin);
     $('#statWpm').textContent = Math.round(wpm);
     $('#statReadMin').textContent = readMin.toFixed(0);
     var tile = $('#tileSec');
@@ -2277,10 +2469,11 @@ var Resettable = [];
     var MAT = {
       base:    new T.MeshStandardMaterial({ color: 0x323c56, roughness: 0.85, metalness: 0.1 }),
       dimmed:  new T.MeshStandardMaterial({ color: 0x1a2030, roughness: 0.95, metalness: 0.0 }),
-      read:    new T.MeshStandardMaterial({ color: 0x5b8cff, emissive: 0x1c3d8f, roughness: 0.5 }),
-      skim:    new T.MeshStandardMaterial({ color: 0xa78bfa, emissive: 0x4a2f9c, roughness: 0.45 }),
-      scan:    new T.MeshStandardMaterial({ color: 0x34d399, emissive: 0x12674c, roughness: 0.5 }),
-      hit:     new T.MeshStandardMaterial({ color: 0xfbbf24, emissive: 0x8a5f04, roughness: 0.35 })
+      read:    new T.MeshStandardMaterial({ color: 0x94a3b8, emissive: 0x2f3947, roughness: 0.75 }),
+      skim:    new T.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0b4c6e, roughness: 0.45 }),
+      /* scan and hit share a hue: brightness and height say "found", not a new colour */
+      scan:    new T.MeshStandardMaterial({ color: 0xa87c12, emissive: 0x3d2c02, roughness: 0.6 }),
+      hit:     new T.MeshStandardMaterial({ color: 0xfbbf24, emissive: 0x8a5f04, roughness: 0.3 })
     };
     var boxGeo = new T.BoxGeometry(1, 1, 1);
 
@@ -2383,6 +2576,23 @@ var Resettable = [];
     var timer = null, touched = 0, mode = null;
     var SEC_PER_WORD = 0.5; // 120 wpm
 
+    /* Prediction: how much of the text does a skim actually touch? */
+    var altPredict = makePrediction('altPredict', 'altPredictOpts', 'altPredictResult',
+      function (guess, actual) {
+        var near = Math.abs(guess - actual) <= 20;
+        var pct = Math.round(actual / wordMeshes.length * 100);
+        return {
+          near: near,
+          text: near
+            ? '<b>Close.</b> A skim landed on <b>' + actual + ' of ' + wordMeshes.length + ' words — ' + pct +
+              '%.</b> You already had the right instinct; most students guess three or four times too high, because reading every word feels like the only way to know what a text says.'
+            : '<b>You guessed ' + guess + '. It was ' + actual + ' — ' + pct + '% of the text.</b> That gap is the lesson. ' +
+              (guess > actual
+                ? 'Skimming touches far less than it feels like it should, and it is still enough to say what each paragraph is about.'
+                : 'Even a skim needs a few landing points — but only a few, and always at the start of paragraphs.')
+        };
+      });
+
     function resetWords() {
       wordMeshes.forEach(function (m) {
         m.material = MAT.base;
@@ -2428,7 +2638,7 @@ var Resettable = [];
       read: function () {
         camEase = 0.10;
         hudAlt.textContent = '0.9 m';
-        hudAlt.className = 'v warn';
+        hudAlt.className = 'v ground';
         capEl.textContent = 'Ground level. Every block lights up, in order, one at a time. Nothing is skipped — and nothing is understood any better for it.';
         statFound.textContent = 'Eventually';
         statCost.textContent = '—';
@@ -2450,7 +2660,7 @@ var Resettable = [];
       skim: function () {
         camEase = 0.035;
         hudAlt.textContent = '14 m';
-        hudAlt.className = 'v accent';
+        hudAlt.className = 'v cruise';
         capEl.textContent = 'Cruising altitude. From up here you physically cannot read the words — and that is the point. You are looking for shape, not content.';
         statFound.textContent = 'No — but you know where';
         statCost.textContent = '—';
@@ -2463,6 +2673,7 @@ var Resettable = [];
             lookGoal.set(0, 0, m.position.z + terrain.position.z);
           },
           done: function (n) {
+            altPredict.show(n);
             capEl.textContent = n + ' blocks lit, ' + Math.round(n / wordMeshes.length * 100) + '% of the text, ' + fmtClock(n * SEC_PER_WORD) + ' spent — and the three plateaus now have names. That is a map.';
             statCost.textContent = fmtClock(n * SEC_PER_WORD);
             eyeLight.intensity = 0;
@@ -2475,7 +2686,7 @@ var Resettable = [];
       scan: function () {
         camEase = 0.06;
         hudAlt.textContent = '4 m';
-        hudAlt.className = 'v good';
+        hudAlt.className = 'v attack';
         capEl.textContent = 'Attack run. The map already chose ¶3, so the other two plateaus go dark — you will not read one word of them.';
         statFound.textContent = 'Yes';
         statCost.textContent = '—';
@@ -2512,7 +2723,7 @@ var Resettable = [];
       mode = name;
       if (name === 'stop' || !MODES[name]) {
         mode = null;
-        hudAlt.textContent = '—'; hudAlt.className = 'v accent';
+        hudAlt.textContent = '—'; hudAlt.className = 'v';
         statCov.textContent = '–'; statFound.textContent = '–'; statCost.textContent = '–';
         capEl.textContent = 'Pick a mode above. The same 120-word passage is rendered as terrain: each block is one word, each plateau one paragraph.';
         camGoal.set(0, 16, 20); lookGoal.set(0, 0, 0); camEase = 0.05;
@@ -2929,6 +3140,136 @@ function makeClock(el, opts) {
     $$('.opt', rHost).forEach(function (o) { o.disabled = false; o.classList.remove('correct', 'wrong'); });
     $$('.feedback', rHost).forEach(function (f) { f.className = 'feedback'; });
   });
+})();
+
+/* ═══════════════════ COMMIT-BEFORE-REVEAL ═══════════════════
+   The generation effect: a guess a student has committed to sticks far
+   better than an answer they were simply shown — even when the guess is wrong.
+   These lock on first click so nobody quietly revises after the reveal.      */
+function makePrediction(boxId, optsId, resultId, judge) {
+  var box = document.getElementById(boxId);
+  if (!box) return { value: null, answered: false };
+  var opts = $$('.opt', document.getElementById(optsId));
+  var out = document.getElementById(resultId);
+  var api = { value: null, answered: false, reveal: null };
+
+  opts.forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (api.answered) return;
+      api.answered = true;
+      api.value = Number(b.dataset.v);
+      opts.forEach(function (o) { o.disabled = true; });
+      b.style.borderColor = 'var(--kw-idea)';
+      b.style.background = 'rgba(167,139,250,0.18)';
+      box.classList.add('locked');
+      $('.predict-h', box).textContent = '⬦ You committed to: ' + b.textContent.trim();
+      if (api.reveal) api.reveal();
+    });
+  });
+
+  api.show = function (actual) {
+    if (!api.answered) return;
+    var v = judge(api.value, actual);
+    out.className = 'predict-result show ' + (v.near ? 'near' : 'far');
+    out.innerHTML = v.text;
+  };
+  Resettable.push(function () {
+    api.answered = false; api.value = null;
+    opts.forEach(function (o) {
+      o.disabled = false; o.style.borderColor = ''; o.style.background = '';
+    });
+    box.classList.remove('locked');
+    out.className = 'predict-result';
+  });
+  return api;
+}
+
+/* ═══════════════════ RETRIEVAL ROUND ═══════════════════
+   Concept-level, passage-free, deliberately at the end. Retrieval beats
+   re-reading for retention, and this is the only part of the page that
+   asks students to recall rather than recognise.                          */
+(function () {
+  var host = $('#recallList');
+  if (!host) return;
+
+  var Q = [
+    { q: 'What is the actual <b>output</b> of a good skim?',
+      opts: ['A summary of the passage in your head',
+             'A map of which paragraph holds which topic',
+             'The answers to the first few questions',
+             'A list of the words you did not understand'],
+      a: 1,
+      why: 'A skim is not fast comprehension — it is reconnaissance. If you finish a skim able to summarise the text, you read it. If you finish able to say "numbers, then the case for, then the case against", you skimmed it.' },
+
+    { q: 'Scanning is best described as…',
+      opts: ['Reading quickly across the whole passage',
+             'Reading the first line of every paragraph',
+             'Reading every word, but only in one small area',
+             'Looking only at numbers and names'],
+      a: 2,
+      why: 'This is the one most students get backwards. Scanning is slow, dense, word-by-word reading — the speed comes entirely from the fact that the map already told you which paragraph to do it in.' },
+
+    { q: 'Which of these makes the <b>best</b> keyword to scan for?',
+      opts: ['significantly improved', '1,600 hives', 'researchers believe', 'is thought to be'],
+      a: 1,
+      why: 'Concrete beats abstract every time. A number has a shape your eye catches at speed and the passage almost never paraphrases it. "Significantly improved" will appear as something else entirely.' },
+
+    { q: 'You find the sentence, and it clearly contradicts the statement. The answer is…',
+      opts: ['NOT GIVEN, because you are not certain',
+             'TRUE, because you found the keywords',
+             'FALSE, because the text says the opposite',
+             'You should skip it and come back'],
+      a: 2,
+      why: 'FALSE means the text contradicts the claim. NOT GIVEN means the text never addresses it. If you can point at a sentence and say "this says the opposite", that is FALSE — feeling unsure is not evidence of absence.' },
+
+    { q: 'A question has taken you ninety seconds. What should you do?',
+      opts: ['Flag it, put down your best guess, and move on',
+             'Keep going — you are close',
+             'Leave it blank and come back at the end',
+             'Re-read the whole paragraph carefully'],
+      a: 0,
+      why: 'Flag and move, always — and never leave it blank, because there is no penalty for a wrong answer in IELTS Reading. A blank is the only genuinely worthless thing on the paper. One question that runs long is what costs you the last three.' },
+
+    { q: 'Why does the passage almost never contain the exact words of the question?',
+      opts: ['To keep the passage shorter',
+             'Because the test is partly checking whether you recognise paraphrase',
+             'Because the questions are written by different people',
+             'It usually does contain them'],
+      a: 1,
+      why: 'Paraphrase recognition is deliberately part of what the paper measures. That is why you search with the concrete keyword and then check the idea words against what the sentence actually means, not what it says word for word.' }
+  ];
+
+  var score = 0;
+  function build() {
+    host.innerHTML = ''; score = 0;
+    $('#recallScore').textContent = '0 / 6';
+    Q.forEach(function (item, i) {
+      var d = document.createElement('div');
+      d.className = 'q-block';
+      d.innerHTML = '<div class="q-text"><span class="q-num">' + (i + 1) + '</span>' + item.q + '</div>' +
+        '<div class="opts" style="flex-direction:column; align-items:stretch">' +
+        item.opts.map(function (o, k) {
+          return '<button class="opt" data-k="' + k + '"><b class="dim">' + 'abcd'[k] + '</b>&nbsp; ' + o + '</button>';
+        }).join('') + '</div><div class="feedback"></div>';
+      host.appendChild(d);
+      var opts = $$('.opt', d), f = $('.feedback', d);
+      opts.forEach(function (b) {
+        b.addEventListener('click', function () {
+          if (b.disabled) return;
+          opts.forEach(function (o) { o.disabled = true; });
+          var ok = Number(b.dataset.k) === item.a;
+          b.classList.add(ok ? 'correct' : 'wrong');
+          if (!ok) opts[item.a].classList.add('correct');
+          if (ok) score++;
+          $('#recallScore').textContent = score + ' / 6';
+          f.className = 'feedback show ' + (ok ? 'ok' : 'no');
+          f.innerHTML = (ok ? '✓ ' : '✗ The answer is ' + 'abcd'[item.a] + '. ') + item.why;
+        });
+      });
+    });
+  }
+  $('#recallReset').addEventListener('click', build);
+  build();
 })();
 
 /* ═══════════════════ STATION 8 — DIAGNOSTIC SCORECARD ═══════════════════ */
