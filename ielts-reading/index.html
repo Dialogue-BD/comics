@@ -239,6 +239,7 @@ section.station + section.station { border-top: 1px solid var(--border-soft); }
 }
 .card + .card { margin-top: 20px; }
 .card.pairs-card { border-color: rgba(167,139,250,0.35); }
+.card { position: relative; }
 .card.mobile-card { border-color: rgba(52,211,153,0.28); }
 .card-label {
   font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
@@ -456,9 +457,9 @@ body.projector .hide-on-projector { display: none !important; }
 .step-pill.done .n { background: var(--good); color: var(--on-good); }
 
 .eye-dot {
-  position: fixed; left: -200px; top: -200px; width: 15px; height: 15px; border-radius: 50%;
+  position: absolute; left: -200px; top: -200px; width: 15px; height: 15px; border-radius: 50%;
   background: var(--accent); box-shadow: 0 0 0 5px rgba(29,78,216,0.18), 0 0 18px 5px rgba(29,78,216,0.35);
-  transform: translate(-50%,-50%); pointer-events: none; opacity: 0; z-index: 55;
+  transform: translate(-50%,-50%); pointer-events: none; opacity: 0; z-index: 4;
   transition: left .26s cubic-bezier(.4,0,.2,1), top .26s cubic-bezier(.4,0,.2,1), opacity .2s;
 }
 .eye-dot.on { opacity: 1; }
@@ -487,11 +488,13 @@ body.projector .hide-on-projector { display: none !important; }
   opacity: 0; transform: translateY(-3px); transition: .45s;
 }
 .method.map-on .ptag { opacity: 1; transform: none; }
-/* Font weight is a second, redundant channel so these never rely on colour alone. */
-.passage .w.f-read { background: var(--alt-ground-dim); color: var(--text-passage); font-weight: 400; }
-.passage .w.f-skim { background: var(--alt-cruise-dim); color: var(--text); font-weight: 700; }
-.passage .w.f-scan { background: var(--alt-attack-dim); color: var(--text-passage); font-weight: 400; }
-.passage .w.f-hit  { background: var(--alt-hit); color: var(--alt-hit-ink); font-weight: 800; }
+/* The fixation styles are GLOBAL, not scoped to one component — a colour that
+   means one thing everywhere has to be defined once, everywhere.
+   Font weight is a second, redundant channel so they never rely on colour alone. */
+.w.f-read { background: var(--alt-ground-dim); color: var(--text-passage); font-weight: 400; }
+.w.f-skim { background: var(--alt-cruise-dim); color: var(--text); font-weight: 700; }
+.w.f-scan { background: var(--alt-attack-dim); color: var(--text-passage); font-weight: 400; }
+.w.f-hit  { background: var(--alt-hit); color: var(--alt-hit-ink); font-weight: 800; }
 .trap-panel {
   display: none; margin-top: 16px; background: var(--bad-dim); border: 1px solid var(--bad);
   border-radius: var(--r); padding: 15px 18px;
@@ -556,7 +559,7 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 .notice-doc h4 { font-family: var(--sans); font-size: 1rem; margin-bottom: 4px; color: var(--text); }
 .notice-doc .sched-row { display: flex; justify-content: space-between; gap: 14px; padding: 3px 0; border-bottom: 1px dotted var(--border); }
 .notice-doc .sched-row span:last-child { color: var(--text-muted); white-space: nowrap; }
-.notice-doc .w.f-hit { background: var(--alt-hit); color: var(--alt-hit-ink); font-weight: 800; }
+
 
 /* ══════════ S6: TRAPS ══════════ */
 .check4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px,1fr)); gap: 12px; margin-bottom: 18px; }
@@ -631,28 +634,93 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 .gauge-label b.ground { color: var(--alt-ground); }
 .gauge-label b.all    { color: var(--text-muted); }
 
-/* ══════════ COLOUR CONTRACT LEGEND ══════════ */
-.legend-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 11px; }
-.legend-item {
-  display: flex; align-items: flex-start; gap: 11px;
-  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r); padding: 12px 14px;
+/* ══════════ TRIPTYCH ══════════
+   The same paragraph read three ways, side by side. This replaces the card
+   that used to *explain* the colours: if the system needs explaining, it has
+   already failed. Shown, not stated — and it prints. */
+.tri { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.tri-panel {
+  border: 1px solid var(--border); border-radius: var(--r); overflow: hidden;
+  background: var(--surface); display: flex; flex-direction: column;
 }
-.legend-swatch {
-  flex-shrink: 0; width: 34px; height: 26px; border-radius: 5px; margin-top: 1px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif); font-size: 0.8rem; color: #fff;
+.tri-panel.ground { border-top: 4px solid var(--alt-ground); }
+.tri-panel.cruise { border-top: 4px solid var(--alt-cruise); }
+.tri-panel.attack { border-top: 4px solid var(--alt-attack); }
+.tri-head { padding: 11px 14px 8px; }
+.tri-name { font-size: 0.9rem; font-weight: 800; }
+.tri-panel.ground .tri-name { color: var(--alt-ground); }
+.tri-panel.cruise .tri-name { color: var(--alt-cruise); }
+.tri-panel.attack .tri-name { color: var(--alt-attack); }
+.tri-body {
+  flex: 1; padding: 4px 14px 12px;
+  font-family: var(--serif); font-size: 0.82rem; line-height: 1.75; color: var(--text-passage);
 }
-.legend-swatch.ground { background: var(--alt-ground-dim); color: var(--text); font-weight: 400; }
-.legend-swatch.cruise { background: var(--alt-cruise-dim); color: var(--text); font-weight: 700; }
-.legend-swatch.attack { background: var(--alt-attack-dim); color: var(--text); font-weight: 400; }
-.legend-swatch.hit    { background: var(--alt-hit); color: var(--alt-hit-ink); font-weight: 800; }
-.legend-swatch.conc   { background: var(--kw-concrete-dim); color: var(--kw-concrete); font-weight: 800; }
-.legend-swatch.idea   { background: var(--kw-idea-dim); color: var(--kw-idea); font-weight: 800; }
-.legend-swatch.ok     { background: var(--good-dim); color: var(--good-text); font-weight: 800; }
-.legend-swatch.no     { background: var(--bad-dim); color: var(--bad-text); font-weight: 800; }
-.legend-text { font-size: 0.8rem; line-height: 1.5; }
-.legend-text b { display: block; font-size: 0.86rem; margin-bottom: 1px; }
-.legend-text span { color: var(--text-muted); }
+.tri-body .w { border-radius: 3px; padding: 0 1px; }
+.tri-body .fade { opacity: 0.18; }
+.tri-foot {
+  display: flex; gap: 10px; border-top: 1px solid var(--border-soft);
+  padding: 9px 14px; background: var(--surface-2);
+}
+.tri-stat { flex: 1; }
+.tri-stat .n { display: block; font-size: 1.15rem; font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tri-stat .k { display: block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-dim); margin-top: 2px; }
+.tri-panel.ground .tri-stat .n { color: var(--alt-ground); }
+.tri-panel.cruise .tri-stat .n { color: var(--alt-cruise); }
+.tri-panel.attack .tri-stat .n { color: var(--alt-attack); }
+.tri-verdict {
+  padding: 9px 14px; font-size: 0.78rem; font-weight: 700;
+  border-top: 1px solid var(--border-soft); color: var(--text);
+}
+@media (max-width: 820px) { .tri { grid-template-columns: 1fr; } }
+
+/* ══════════ STUDENT METHOD CARD ══════════
+   One side of A4 the student keeps. Almost wordless — the visual system
+   does the explaining, which is the point. */
+.mc-flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 18px; }
+.mc-step {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 12px 11px; position: relative;
+}
+.mc-step .n {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%; font-size: 0.72rem; font-weight: 800;
+  margin-bottom: 7px;
+}
+.mc-step.cruise .n { background: var(--alt-cruise); color: var(--on-accent); }
+.mc-step.attack .n { background: var(--alt-attack); color: var(--on-warn); }
+.mc-step.check  .n { background: var(--bad); color: var(--on-bad); }
+.mc-step .t { font-size: 0.83rem; font-weight: 800; line-height: 1.25; margin-bottom: 4px; }
+.mc-step .d { font-size: 0.73rem; color: var(--text-muted); line-height: 1.4; }
+.mc-band {
+  font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  margin: 0 0 7px; display: flex; align-items: center; gap: 7px;
+}
+.mc-band i { flex: 1; height: 1px; background: var(--border); font-style: normal; }
+.mc-two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.mc-kw { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r); padding: 13px 15px; }
+.mc-kw .h { font-size: 0.86rem; font-weight: 800; margin-bottom: 5px; }
+.mc-kw .h.c { color: var(--kw-concrete); }
+.mc-kw .h.i { color: var(--kw-idea); }
+.mc-kw .d { font-size: 0.77rem; color: var(--text-muted); line-height: 1.5; }
+.mc-kw .eg { font-family: var(--serif); font-size: 0.82rem; margin-top: 7px; }
+.mc-checks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.mc-check { background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--bad); border-radius: var(--r-sm); padding: 10px 12px; }
+.mc-check .q { font-size: 0.8rem; font-weight: 800; margin-bottom: 3px; }
+.mc-check .a { font-size: 0.72rem; color: var(--text-muted); line-height: 1.4; }
+.mc-rule {
+  margin-top: 16px; background: var(--warn-dim); border: 1px solid var(--warn);
+  border-radius: var(--r); padding: 13px 16px; font-size: 0.87rem; font-weight: 700; color: var(--text);
+}
+@media (max-width: 900px) {
+  .mc-flow { grid-template-columns: repeat(2, 1fr); }
+  .mc-checks { grid-template-columns: repeat(2, 1fr); }
+  .mc-two { grid-template-columns: 1fr; }
+}
+@media print {
+  .mc-flow { grid-template-columns: repeat(3, 1fr); }
+  .mc-step, .mc-kw, .mc-check, .mc-rule { background: #fff !important; border-color: #999 !important; }
+  .mc-step .t, .mc-step .d, .mc-kw .d, .mc-check .q, .mc-check .a, .mc-rule { color: #111 !important; }
+}
 
 /* ══════════ ACCESSIBILITY ══════════ */
 :where(button, select, a, input, [tabindex]):focus-visible {
@@ -965,7 +1033,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag mobile">📱 Phone</span><span class="gauge" role="img" aria-label="Altitude trained here: Before you fly"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Before you fly</b></span></span></div>
       <div class="station-num">Station 0 · 8 minutes</div>
       <h2>The Time Crisis</h2>
-      <p class="station-sub">You are about to find out how fast you <em>actually</em> read — not how fast you think you read. Read one real passage at your normal pace, and this page will work out exactly what that speed costs you in a 60-minute exam. Most people are surprised, and not pleasantly.</p>
+      <p class="station-sub">Find out how fast you <em>actually</em> read — then see what that speed costs you in a 60-minute exam.</p>
     </div>
 
     <div class="tnote">
@@ -1070,7 +1138,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="gauge" role="img" aria-label="Altitude trained here: All three"><span class="gauge-stack"><span class="gauge-band cruise on"></span><span class="gauge-band attack on"></span><span class="gauge-band ground on"></span></span><span class="gauge-label">Altitude<b class="all">All three</b></span></span></div>
       <div class="station-num">Station 1 · 10 minutes</div>
       <h2>The Reading Altitude</h2>
-      <p class="station-sub">This is a real page of text, and the only thing that changes between the three modes is <em>how high you are flying over it</em>. That single idea — altitude — is the whole of skimming and scanning. Fly high and you can see the shape of the page but genuinely cannot read it. Drop to ground level and you can read every word, but you will pay for every one.</p>
+      <p class="station-sub">One real page, three heights. Fly high and you can see its shape but cannot read it. Drop low and you can read every word — and you pay for every one.</p>
     </div>
 
     <div class="tnote">
@@ -1132,47 +1200,41 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       </div>
     </div>
 
-    <div class="card" id="legendCard" style="margin-top:20px">
-      <div class="card-label">🎨 The colour contract</div>
-      <div class="card-title">Every colour on this page means one thing, everywhere</div>
-      <p class="card-intro">Learn these and you can read every station below without being told what anything means. A colour never changes its meaning on this page — that is the whole point of it.</p>
-      <div class="legend-grid">
-        <div class="legend-item">
-          <span class="legend-swatch ground">word</span>
-          <span class="legend-text"><b>Ground level</b><span>Your eyes read this word. Slow and expensive.</span></span>
+    <div class="card" id="triCard" style="margin-top:20px">
+      <div class="card-label">👁 The same paragraph, three ways</div>
+      <div class="card-title">This is the whole lesson in one picture</div>
+      <div class="tri">
+        <div class="tri-panel ground">
+          <div class="tri-head"><div class="tri-name">🐌 Ground level</div></div>
+          <div class="tri-body"><span class="w f-read">Critics,</span> <span class="w f-read">however,</span> <span class="w f-read">warn</span> <span class="w f-read">that</span> <span class="w f-read">packing</span> <span class="w f-read">too</span> <span class="w f-read">many</span> <span class="w f-read">hives</span> <span class="w f-read">into</span> <span class="w f-read">a</span> <span class="w f-read">small</span> <span class="w f-read">area</span> <span class="w f-read">can</span> <span class="w f-read">actually</span> <span class="w f-read">harm</span> <span class="w f-read">wild</span> <span class="w f-read">bee</span> <span class="w f-read">populations</span> <span class="w f-read">by</span> <span class="w f-read">forcing</span> <span class="w f-read">them</span> <span class="w f-read">to</span> <span class="w f-read">compete</span> <span class="w f-read">for</span> <span class="w f-read">the</span> <span class="w f-read">same</span> <span class="w f-read">limited</span> <span class="w f-read">flowers.</span></div>
+          <div class="tri-foot">
+            <div class="tri-stat"><span class="n">120</span><span class="k">words touched</span></div>
+            <div class="tri-stat"><span class="n">1:00</span><span class="k">exam clock</span></div>
+          </div>
+          <div class="tri-verdict">You understand everything, and you have no time left.</div>
         </div>
-        <div class="legend-item">
-          <span class="legend-swatch cruise">word</span>
-          <span class="legend-text"><b>Cruising · skim</b><span>Your eyes bounced off this word to get the shape.</span></span>
+        <div class="tri-panel cruise">
+          <div class="tri-head"><div class="tri-name">✈️ Cruising · skim</div></div>
+          <div class="tri-body">
+            <span class="w f-skim">Beekeeping has quietly moved</span> <span class="w fade">from the countryside into cities over the last two decades. In London alone, the number of registered hives rose…</span><br><br>
+            <span class="w f-skim">Supporters argue that urban</span> <span class="w fade">bees benefit from a longer flowering season, since parks, gardens and even balconies bloom at different times…</span><br><br>
+            <span class="w f-skim">Critics, however, warn that</span> <span class="w fade">packing too many hives into a small area can actually harm wild bee populations by forcing them to compete…</span>
+          </div>
+          <div class="tri-foot">
+            <div class="tri-stat"><span class="n">12</span><span class="k">words touched</span></div>
+            <div class="tri-stat"><span class="n">0:06</span><span class="k">exam clock</span></div>
+          </div>
+          <div class="tri-verdict">You cannot answer anything yet — but you know where everything lives.</div>
         </div>
-        <div class="legend-item">
-          <span class="legend-swatch attack">word</span>
-          <span class="legend-text"><b>Attack run · scan</b><span>Your eyes swept this word hunting for a target.</span></span>
+        <div class="tri-panel attack">
+          <div class="tri-head"><div class="tri-name">🎯 Attack run · scan</div></div>
+          <div class="tri-body"><span class="w fade">¶1 Beekeeping has quietly moved from the countryside into cities…</span> <span class="w fade">¶2 Supporters argue that urban bees benefit from a longer flowering season…</span><br><br><span class="w f-scan">Critics,</span> <span class="w f-scan">however,</span> <span class="w f-scan">warn</span> <span class="w f-scan">that</span> <span class="w f-scan">packing</span> <span class="w f-scan">too</span> <span class="w f-scan">many</span> <span class="w f-scan">hives</span> <span class="w f-scan">into</span> <span class="w f-scan">a</span> <span class="w f-scan">small</span> <span class="w f-scan">area</span> <span class="w f-scan">can</span> <span class="w f-scan">actually</span> <span class="w f-hit">harm</span> <span class="w f-hit">wild</span> <span class="w f-hit">bee</span> <span class="w f-hit">populations</span> <span class="w f-scan">by</span> <span class="w f-scan">forcing</span> <span class="w f-scan">them</span> <span class="w f-scan">to</span> <span class="w f-scan">compete</span> <span class="w f-scan">for</span> <span class="w f-scan">the</span> <span class="w f-scan">same</span> <span class="w f-scan">limited</span> <span class="w f-scan">flowers.</span></div>
+          <div class="tri-foot">
+            <div class="tri-stat"><span class="n">18</span><span class="k">words touched</span></div>
+            <div class="tri-stat"><span class="n">0:09</span><span class="k">exam clock</span></div>
+          </div>
+          <div class="tri-verdict">You have the answer, and you never read two thirds of the page.</div>
         </div>
-        <div class="legend-item">
-          <span class="legend-swatch hit">word</span>
-          <span class="legend-text"><b>Found it</b><span>The target. Same gold as scanning, but bright — you stopped.</span></span>
-        </div>
-        <div class="legend-item">
-          <span class="legend-swatch conc">word</span>
-          <span class="legend-text"><b>Concrete keyword</b><span>A name, number or thing. You <b style="display:inline">search</b> for blue.</span></span>
-        </div>
-        <div class="legend-item">
-          <span class="legend-swatch idea">word</span>
-          <span class="legend-text"><b>Idea keyword</b><span>A verb or adjective. You <b style="display:inline">check</b> purple after you arrive.</span></span>
-        </div>
-        <div class="legend-item">
-          <span class="legend-swatch ok">✓</span>
-          <span class="legend-text"><b>Correct</b><span>Green only ever means right. Never a reading mode.</span></span>
-        </div>
-        <div class="legend-item">
-          <span class="legend-swatch no">✗</span>
-          <span class="legend-text"><b>Wrong, or a trap</b><span>Red only ever means a lost mark.</span></span>
-        </div>
-      </div>
-      <div class="tnote">
-        <div class="tnote-h">Why this matters more than it looks</div>
-        Project this for thirty seconds and make the class say the three altitudes out loud. From here on, <b>you never have to explain a highlight again</b> — you point at the colour and ask "what altitude is that?" Students who can read the colours can self-correct without you, which is the whole reason to teach with a consistent visual system rather than a prettier one.
       </div>
     </div>
 
@@ -1203,7 +1265,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag pairs">👥 Pairs</span><span class="gauge" role="img" aria-label="Altitude trained here: Cruise → attack"><span class="gauge-stack"><span class="gauge-band cruise on"></span><span class="gauge-band attack on"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Cruise → attack</b></span></span></div>
       <div class="station-num">Station 2 · 12 minutes</div>
       <h2>The Six-Step Method</h2>
-      <p class="station-sub">The same passage as the flight, now slowed right down. Six steps, one real True/False/Not Given question, and a moving dot showing you exactly where a trained reader's eyes go — and, just as importantly, where they never go.</p>
+      <p class="station-sub">The same passage, slowed right down. Six steps, one real question, and a dot showing where a trained reader's eyes go — and where they never go.</p>
     </div>
 
     <div class="tnote">
@@ -1327,7 +1389,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag pairs">👥 Pairs</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: Cruising"><span class="gauge-stack"><span class="gauge-band cruise on"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="cruise">Cruising</b></span></span></div>
       <div class="station-num">Station 3 · 12 minutes</div>
       <h2>Map Drill — build it, then use it</h2>
-      <p class="station-sub">Skimming is only worth doing if it produces something, and that something is a map. In Part A you build one in ninety seconds. In Part B you prove it works by finding six answers <em>without reading a single full paragraph.</em></p>
+      <p class="station-sub">A skim is only worth doing if it leaves you a map. Build one in ninety seconds, then use it to find six answers <em>without reading a single full paragraph.</em></p>
     </div>
 
     <div class="tnote">
@@ -1353,7 +1415,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
     <div class="card pairs-card" id="headingCard">
       <div class="card-label">👥 Part A — Build the map</div>
       <div class="card-title">Give each paragraph its heading — 90 seconds</div>
-      <p class="card-intro">Two of the seven headings match nothing. Do not read for detail: read the first sentence of each paragraph, then the last, and choose.</p>
+      <p class="card-intro">Two headings match nothing. First sentence, last sentence, choose — do not read the middle.</p>
 
       <div class="btn-row no-print" style="margin-bottom:16px">
         <button class="btn" id="mapStart">▶ Start 90s</button>
@@ -1397,7 +1459,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
     <div class="card mobile-card" id="locateCard">
       <div class="card-label">📱 Part B — Use the map</div>
       <div class="card-title">Which paragraph holds the answer? Letter only — don't answer the question</div>
-      <p class="card-intro">This is the real exam skill behind Matching Information questions. You are not being asked what the answer is, only <b>where it lives</b>. Aim for under 15 seconds each.</p>
+      <p class="card-intro">Not what the answer is — only <b>where it lives</b>. Under 15 seconds each.</p>
 
       <div class="btn-row no-print" style="margin-bottom:16px">
         <button class="btn" id="locStart">▶ Start timer</button>
@@ -1428,7 +1490,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag pairs">👥 Pairs</span><span class="tag screen">🖥️ Big screen</span><span class="gauge" role="img" aria-label="Altitude trained here: Flight plan"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Flight plan</b></span></span></div>
       <div class="station-num">Station 4 · 12 minutes</div>
       <h2>Keyword Lab</h2>
-      <p class="station-sub">Underline half the question and scanning will take forever. A keyword is not "an important word" — it is <em>a word you can physically search for</em>. Part A cures over-marking. Part B fixes the deeper problem: the passage almost never uses your keyword, it uses a disguise of it.</p>
+      <p class="station-sub">A keyword is not "an important word" — it is <em>a word you can physically search for</em>. And the passage will not use yours; it will use a disguise of it.</p>
     </div>
 
     <div class="tnote">
@@ -1446,7 +1508,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
     <div class="card mobile-card">
       <div class="card-label">🔁 Part B — The paraphrase problem</div>
       <div class="card-title">Your keyword will not be in the text. Its disguise will.</div>
-      <p class="card-intro">For each question phrase, find the wording the passage actually uses. This is the single highest-value habit in IELTS Reading: scanning fails when you search for the exact word instead of its meaning.</p>
+      <p class="card-intro">Find the wording the passage actually uses. Scanning fails when you search for the word instead of the meaning.</p>
       <div class="btn-row no-print" style="margin-bottom:14px">
         <span class="score-pill" id="paraScore" aria-live="polite">0 / 5</span>
         <button class="btn ghost sm" id="paraReset">Reset</button>
@@ -1464,7 +1526,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag pairs">👥 Pairs</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: Attack run"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack on"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="attack">Attack run</b></span></span></div>
       <div class="station-num">Station 5 · 12 minutes</div>
       <h2>Scan Sprint</h2>
-      <p class="station-sub">Now the narrow skill on its own, under a clock. Scanning is <em>dense</em> reading over a <em>small</em> area — your eyes move slowly across every word, but only inside the paragraph the map already chose. Speed comes from the small area, never from moving your eyes faster.</p>
+      <p class="station-sub">Scanning is <em>dense</em> reading over a <em>small</em> area. The speed comes from the small area — never from moving your eyes faster.</p>
     </div>
 
     <div class="tnote">
@@ -1495,7 +1557,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
     <div class="card pairs-card" id="raceCard">
       <div class="card-label">👥 Pair race — Information Hunt</div>
       <div class="card-title">Northgate Community Sports Centre</div>
-      <p class="card-intro">Everyday scanning: timetables, notices and forms. Answer all six as fast as you can — accuracy first, then speed.</p>
+      <p class="card-intro">Everyday scanning. All six, as fast as you can — accuracy first, then speed.</p>
       <div class="btn-row no-print" style="margin-bottom:16px">
         <button class="btn" id="raceStart">▶ Start race</button>
         <button class="btn ghost sm" id="raceReset">Reset</button>
@@ -1529,13 +1591,13 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag screen">🖥️ Big screen</span><span class="tag mobile">📱 Phone</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: Attack run"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack on"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="attack">Attack run</b></span></span></div>
       <div class="station-num">Station 6 · 14 minutes</div>
       <h2>Trap Detector</h2>
-      <p class="station-sub">Finding the sentence is not the same as answering the question. Examiners write False and Not Given options to <em>sound</em> right to a fast reader — they are aimed at exactly the person who scans well and then stops thinking. Here is the four-point check to run on every sentence you find, and six chances to get caught skipping it.</p>
+      <p class="station-sub">Finding the sentence is not answering the question. False and Not Given options are built to sound right to a fast reader. Here is the check to run on every sentence you find.</p>
     </div>
 
     <div class="card">
       <div class="card-label">✅ The four-point check</div>
       <div class="card-title">Run this on the sentence you found — every time, in this order</div>
-      <p class="card-intro">Read the <b>whole</b> sentence, not just the keyword. Then compare it to the claim on four axes. If any one fails, the answer is not TRUE.</p>
+      <p class="card-intro">Read the <b>whole</b> sentence. Compare it to the claim on four axes. If one fails, it is not TRUE.</p>
       <div class="check4">
         <div class="check-card"><div class="cn">Check 1</div><div class="ct">Same subject?</div><div class="cd">Is the text talking about the same people, place or thing the claim names — or a different group that merely sounds similar?</div></div>
         <div class="check-card"><div class="cn">Check 2</div><div class="ct">Same direction?</div><div class="cd">Rose or fell? Helped or harmed? Encouraged or discouraged? This is where most marks are lost.</div></div>
@@ -1580,7 +1642,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag screen">🖥️ Big screen</span><span class="tag print">🖨️ Printable</span><span class="gauge" role="img" aria-label="Altitude trained here: All three"><span class="gauge-stack"><span class="gauge-band cruise on"></span><span class="gauge-band attack on"></span><span class="gauge-band ground on"></span></span><span class="gauge-label">Altitude<b class="all">All three</b></span></span></div>
       <div class="station-num">Station 7 · 20 minutes + 8 to review</div>
       <h2>The Full Run</h2>
-      <p class="station-sub">Six skills are not a strategy until they run together against a clock. One passage, thirteen questions, three question types, twenty minutes — the same question-per-minute rate as the real exam, in the same split-screen layout as computer-delivered IELTS. The page watches your pace and, afterwards, tells you <em>exactly which question cost you the paper</em>.</p>
+      <p class="station-sub">One passage, thirteen questions, twenty minutes — real exam pace, real exam layout. Afterwards it shows you <em>exactly which question cost you the paper</em>.</p>
     </div>
 
     <div class="tnote">
@@ -1676,7 +1738,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag screen">🖥️ Big screen</span><span class="gauge" role="img" aria-label="Altitude trained here: Debrief"><span class="gauge-stack"><span class="gauge-band cruise"></span><span class="gauge-band attack"></span><span class="gauge-band ground"></span></span><span class="gauge-label">Altitude<b class="all">Debrief</b></span></span></div>
       <div class="station-num">Station 8 · 5 minutes</div>
       <h2>Scorecard &amp; Diagnosis</h2>
-      <p class="station-sub">Everything you score on this page feeds in here. A total would tell you nothing you can act on, so this does something more useful: it finds the <em>one</em> sub-skill holding your reading band down, and tells you what to do about it.</p>
+      <p class="station-sub">Everything you score feeds in here — not as a total, but to find the <em>one</em> sub-skill holding your band down.</p>
     </div>
 
     <div class="tnote">
@@ -1724,7 +1786,49 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="tags"><span class="tag print">🖨️ Printable</span><span class="tag pairs">👥 Pairs</span></div>
       <div class="station-num">Station 9</div>
       <h2>Worksheets &amp; Lesson Plan</h2>
-      <p class="station-sub">Paper versions of every pair activity, for when there is no phone or no data in the room. Each button prints one clean worksheet with the answer key at the foot — cut it off before handing out, or keep it for marking.</p>
+      <p class="station-sub">Paper versions of everything, for when there is no phone or no data. Answer key at the foot of each — cut it off before handing out.</p>
+    </div>
+
+    <div class="card" id="methodCard">
+      <div class="card-label">🪪 Keep this — the whole method on one page</div>
+      <div class="card-title">Reading Altitude · student card</div>
+      <p class="card-intro">Print one each. It is the only thing on this page worth carrying into the exam.</p>
+
+      <p class="mc-band"><span style="color:var(--alt-cruise)">✈️ Cruising</span><i></i></p>
+      <div class="mc-flow">
+        <div class="mc-step cruise"><span class="n">1</span><div class="t">Skim the text</div><div class="d">First and last sentence of each paragraph. Do not read the middle.</div></div>
+        <div class="mc-step cruise"><span class="n">2</span><div class="t">Name each paragraph</div><div class="d">Three or four words each. This is your map.</div></div>
+        <div class="mc-step cruise"><span class="n">3</span><div class="t">Skim the question</div><div class="d">Catch the shape of the claim.</div></div>
+        <div class="mc-step cruise"><span class="n">4</span><div class="t">Mark 2 keywords</div><div class="d">Two. Not six.</div></div>
+        <div class="mc-step attack"><span class="n">5</span><div class="t">Scan one paragraph</div><div class="d">The one your map chose. Every word of it, none of the others.</div></div>
+        <div class="mc-step check"><span class="n">6</span><div class="t">Check the trap</div><div class="d">Read the whole sentence before you answer.</div></div>
+      </div>
+
+      <p class="mc-band"><span style="color:var(--kw-concrete)">Two kinds of keyword</span><i></i></p>
+      <div class="mc-two" style="margin-bottom:18px">
+        <div class="mc-kw">
+          <div class="h c">Concrete — you SEARCH for it</div>
+          <div class="d">Names, numbers, dates, places. The passage repeats them almost unchanged, and your eye catches their shape at speed.</div>
+          <div class="eg"><span class="w f-hit">1,600 hives</span> · <span class="w f-hit">Pozzuoli</span> · <span class="w f-hit">2008</span></div>
+        </div>
+        <div class="mc-kw">
+          <div class="h i">Idea — you CHECK it afterwards</div>
+          <div class="d">Verbs, adjectives, quantifiers. The passage will paraphrase them, weaken them, or reverse them. Never search for these.</div>
+          <div class="eg">increased · always · most · helps</div>
+        </div>
+      </div>
+
+      <p class="mc-band"><span style="color:var(--bad)">The four-point check</span><i></i></p>
+      <div class="mc-checks">
+        <div class="mc-check"><div class="q">Same subject?</div><div class="a">Same people, place or thing — or one that merely sounds similar?</div></div>
+        <div class="mc-check"><div class="q">Same direction?</div><div class="a">Rose or fell? Helped or harmed? Most marks are lost here.</div></div>
+        <div class="mc-check"><div class="q">Same strength?</div><div class="a">"Some" is not "all". "May" is not "will".</div></div>
+        <div class="mc-check"><div class="q">Same scope?</div><div class="a">True in one city is not true everywhere.</div></div>
+      </div>
+
+      <div class="mc-rule">⏱ Ninety seconds on one question is your limit. Flag it, write your best guess, move on — and never leave a blank, because a wrong answer costs you nothing.</div>
+
+      <div class="btn-row no-print" style="margin-top:16px"><button class="btn sm sec" data-print="methodCard">🖨️ Print the student card</button></div>
     </div>
 
     <div class="card">
@@ -1836,14 +1940,21 @@ function countWords(el) {
 }
 
 /* Shared floating eye dot used by the method walkthrough. */
+/* The gaze dot lives INSIDE the method card and is positioned relative to it,
+   so it scrolls with the passage instead of floating loose over the viewport. */
 var eyeDot = document.createElement('div');
 eyeDot.className = 'eye-dot';
-document.body.appendChild(eyeDot);
+var eyeHost = null;
 function dotTo(span, quick) {
-  var r = span.getBoundingClientRect();
+  if (!eyeHost) {
+    eyeHost = document.getElementById('methodLab');
+    if (!eyeHost) return;
+    eyeHost.appendChild(eyeDot);
+  }
+  var r = span.getBoundingClientRect(), c = eyeHost.getBoundingClientRect();
   eyeDot.classList.toggle('quick', !!quick);
-  eyeDot.style.left = (r.left + r.width / 2) + 'px';
-  eyeDot.style.top = (r.top + r.height / 2) + 'px';
+  eyeDot.style.left = (r.left - c.left + r.width / 2) + 'px';
+  eyeDot.style.top = (r.top - c.top + r.height / 2) + 'px';
   eyeDot.classList.add('on');
 }
 function dotOff() { eyeDot.classList.remove('on', 'quick'); }
@@ -2529,7 +2640,7 @@ var Resettable = [];
     if (!T) { fail(); return; }
 
     /* ─────────── 1. Typeset the passage onto a canvas ─────────── */
-    var CW = 1700, CH = 980;              // landscape, to suit a 16:9 projector
+    var CW = 1700, CH = 1090;              // landscape, to suit a 16:9 projector
     var MARGIN = 110, LEAD = 64, FS = 38;
     var PAPER = '#fbf8f1', INK = '#23262e';
 
@@ -2563,7 +2674,7 @@ var Resettable = [];
           });
           x += w;
         });
-        y += LEAD * 0.55;
+        y += LEAD * 1.15;   // a clear blank line: this is what you SEE from cruising altitude
       });
     })();
 
@@ -2642,7 +2753,7 @@ var Resettable = [];
     tex.anisotropy = renderer.capabilities.getMaxAnisotropy ? renderer.capabilities.getMaxAnisotropy() : 1;
     tex.minFilter = T.LinearMipMapLinearFilter;
 
-    var PW = 15, PH = PW * (CH / CW);      // page size in world units
+    var PW = 16, PH = PW * (CH / CW);      // page size in world units
     var page = new T.Mesh(
       new T.PlaneGeometry(PW, PH),
       new T.MeshLambertMaterial({ map: tex })
@@ -2781,14 +2892,14 @@ var Resettable = [];
           dwellFn: function () { return 290; },
           styleFn: function () { return 'skim'; },
           cam: function (pos) {
-            camGoal.set(0, 13.5, pos.z * 0.4 + 7.5);
-            lookGoal.set(0, 0, pos.z * 0.35);
+            camGoal.set(0, 12.4, pos.z * 0.3 + 6.6);
+            lookGoal.set(0, 0, pos.z * 0.3 + 0.3);
           },
           done: function (n) {
             capEl.textContent = n + ' words, ' + Math.round(n / words.length * 100) + '% of the page, ' + fmtClock(n * SEC_PER_WORD) + ' — and now each paragraph has a name. That is your map.';
             statCost.textContent = fmtClock(n * SEC_PER_WORD);
             ring.material.opacity = 0;
-            camGoal.set(0, 14.5, 8); lookGoal.set(0, 0, 0);
+            camGoal.set(0, 12.4, 6.6); lookGoal.set(0, 0, 0.3);
             labels.forEach(function (l, i) { setTimeout(function () { l.classList.add('show'); }, 250 * i); });
           }
         });
