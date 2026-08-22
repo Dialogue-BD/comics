@@ -224,9 +224,40 @@
   .btn.small { font-size: 0.76rem; padding: 7px 13px; }
 
   /* ── Station 1: Eye-Tracking Lab ── */
-  .mode-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-  .mode-buttons .btn.active { background: var(--good); }
-  .mode-buttons .btn.secondary.active { background: var(--good); color: #fff; border-color: var(--good); }
+  .eye-stepper { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .eye-step {
+    display: flex; align-items: center; gap: 7px;
+    background: var(--surface-2); border: 1px solid var(--border); color: var(--text-muted);
+    border-radius: 999px; padding: 5px 12px 5px 5px; font-size: 0.78rem; font-weight: 600;
+    font-family: inherit; cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .eye-step-num {
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    width: 20px; height: 20px; border-radius: 50%; background: var(--surface); color: var(--text-muted);
+    font-size: 0.72rem; font-weight: 800;
+  }
+  .eye-step:hover { border-color: var(--accent); color: var(--text); }
+  .eye-step.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+  .eye-step.active .eye-step-num { background: var(--accent); color: #fff; }
+  .eye-step.done .eye-step-num { background: var(--good); color: #fff; }
+
+  .eye-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+
+  .eye-question-wrap {
+    position: relative;
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 14px 18px; margin-bottom: 16px; display: none;
+  }
+  .eye-lab.question-shown .eye-question-wrap { display: block; }
+  .eye-question { font-family: var(--serif); font-size: 1.02rem; line-height: 1.7; color: #c7cbd8; margin: 0; }
+  .eye-question .w { border-radius: 3px; padding: 1px 1px; transition: background .2s, color .2s, font-weight .2s; }
+  .eye-question .w.fixated-skim { background: rgba(139,92,246,0.28); color: #fff; font-weight: 700; }
+  .eye-lab.keywords-shown .eye-question .w.kw-concrete { background: var(--accent-dim); color: var(--accent); font-weight: 700; }
+  .eye-lab.keywords-shown .eye-question .w.kw-idea { background: var(--accent2-dim); color: var(--accent2); font-weight: 700; }
+  .eye-lab.trap-shown .eye-question .w.kw-idea.trap-flag { background: var(--bad-dim); color: var(--bad); }
+  .eye-verdict { margin: 10px 0 0; font-size: 0.84rem; font-weight: 700; color: var(--bad); display: none; }
+  .eye-lab.trap-shown .eye-verdict { display: block; }
 
   .eye-stats {
     font-size: 0.82rem;
@@ -244,7 +275,7 @@
   }
 
   .eye-dot {
-    position: absolute;
+    position: fixed;
     left: -100px; top: -100px;
     width: 16px; height: 16px;
     border-radius: 50%;
@@ -254,7 +285,7 @@
     transition: left 0.28s cubic-bezier(.4,0,.2,1), top 0.28s cubic-bezier(.4,0,.2,1), opacity .2s;
     pointer-events: none;
     opacity: 0;
-    z-index: 5;
+    z-index: 50;
   }
   .eye-dot.visible { opacity: 1; }
   .eye-dot.fast { transition-duration: 0.05s; transition-timing-function: linear; }
@@ -265,8 +296,9 @@
     line-height: 1.85;
     color: #c7cbd8;
   }
-  .passage p { margin-bottom: 14px; }
+  .passage p { margin-bottom: 14px; transition: opacity .35s; }
   .passage p:last-child { margin-bottom: 0; }
+  .eye-lab.scan-focus .passage p:not([data-para="3"]) { opacity: 0.25; }
   .passage .w {
     border-radius: 3px;
     padding: 1px 1px;
@@ -276,6 +308,23 @@
   .passage .w.fixated-skim { background: rgba(139,92,246,0.28); color: #fff; font-weight: 700; }
   .passage .w.fixated-scan { background: rgba(34,197,94,0.32); color: #fff; font-weight: 700; }
   .passage .w.swept-scan { background: rgba(34,197,94,0.09); }
+
+  .para-tag {
+    display: inline-block; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text-dim);
+    border-radius: 4px; padding: 2px 7px; margin-right: 8px; opacity: 0; transform: translateY(-2px);
+    transition: opacity .4s, transform .4s; vertical-align: middle;
+  }
+  .eye-lab.map-shown .para-tag { opacity: 1; transform: translateY(0); }
+
+  .eye-trap-panel {
+    display: none; margin-top: 14px; background: var(--bad-dim); border: 1px solid var(--bad);
+    border-radius: var(--radius-sm); padding: 14px 16px;
+  }
+  .eye-lab.trap-shown .eye-trap-panel { display: block; }
+  .eye-trap-panel .trap-title { color: var(--bad); margin: 0 0 6px; }
+  .eye-trap-panel .trap-desc { margin: 0; color: var(--text); }
+  .eye-trap-panel .trap-desc em { color: var(--bad); font-style: normal; font-weight: 700; }
 
   .eye-caption {
     margin-top: 14px;
@@ -643,25 +692,49 @@
       <div class="station-tags"><span class="tag whole-class">🖥️ Whole class</span></div>
       <div class="station-num">Station 1</div>
       <h2>The Eye-Tracking Lab</h2>
-      <p class="station-sub">The same paragraph, read three different ways. Press a mode and project it — a live dot shows exactly where a reader's eyes would land. Watch Scan closely: it sweeps past almost every word, fast — ask the class to guess, before it finishes, how many words it will actually stop on.</p>
+      <p class="station-sub">One passage, one real question, six steps — a live dot shows exactly what a fast reader's eyes do: skim the whole text to build a rough map, skim the question, spot its keywords, then scan <em>only</em> the paragraph the map points to, word by word, until the keyword turns up. Last step: check it isn't a trap before answering.</p>
     </div>
-    <div class="card eye-lab">
-      <div class="mode-buttons no-print">
-        <button class="btn" data-mode="read">📖 Read Every Word</button>
-        <button class="btn secondary" data-mode="skim">⚡ Skim</button>
-        <button class="btn secondary" data-mode="scan">🎯 Scan</button>
-        <button class="btn ghost small" id="eyeReset">Reset</button>
+    <div class="card eye-lab" id="eyeLab" data-step="1">
+      <div class="eye-stepper no-print" id="eyeStepper">
+        <button class="eye-step" data-step="1"><span class="eye-step-num">1</span><span class="eye-step-label">Skim the text</span></button>
+        <button class="eye-step" data-step="2"><span class="eye-step-num">2</span><span class="eye-step-label">Build the map</span></button>
+        <button class="eye-step" data-step="3"><span class="eye-step-num">3</span><span class="eye-step-label">Skim the question</span></button>
+        <button class="eye-step" data-step="4"><span class="eye-step-num">4</span><span class="eye-step-label">Spot the keywords</span></button>
+        <button class="eye-step" data-step="5"><span class="eye-step-num">5</span><span class="eye-step-label">Scan that paragraph</span></button>
+        <button class="eye-step" data-step="6"><span class="eye-step-num">6</span><span class="eye-step-label">Check for a trap</span></button>
       </div>
-      <div class="eye-stats">Words fixated: <strong id="eyeCount">0</strong> / <strong id="eyeTotal">–</strong></div>
+
+      <div class="eye-controls no-print">
+        <button class="btn ghost small" id="eyePrev">← Back</button>
+        <button class="btn secondary small" id="eyeReplay">↻ Replay this step</button>
+        <button class="btn small" id="eyeNext">▶ Play step 1</button>
+        <button class="btn ghost small" id="eyeRestart">Restart</button>
+        <button class="btn ghost small" id="eyeBonusRead">😵 Bonus: read every word instead</button>
+      </div>
+
+      <div class="eye-question-wrap" id="eyeQuestionWrap">
+        <p class="card-label">The question</p>
+        <p class="eye-question" id="eyeQuestion">Critics believe that packing in more hives always boosts wild bee populations.</p>
+        <p class="eye-verdict" id="eyeVerdict">Verdict: FALSE — the passage says the opposite.</p>
+      </div>
+
+      <div class="eye-stats no-print">Words fixated: <strong id="eyeCount">0</strong> / <strong id="eyeTotal">–</strong></div>
+
       <div class="passage-wrap" id="eyePassageWrap">
         <div class="eye-dot" id="eyeDot"></div>
         <div class="passage" id="eyePassage">
-          <p>Beekeeping has quietly moved from the countryside into cities over the last two decades. In London alone, the number of registered hives rose from around 1,600 in 2008 to more than 7,400 by 2020, according to the London Beekeepers Association.</p>
-          <p>Supporters argue that urban bees benefit from a longer flowering season, since parks, gardens and even balconies bloom at different times across a city. Rooftop hives have appeared on buildings ranging from the Paris Opera House to hotels in New York.</p>
-          <p>Critics, however, warn that packing too many hives into a small area can actually harm wild bee populations by forcing them to compete for the same limited flowers. Some ecologists now recommend planting more flowers before adding more hives.</p>
+          <p data-para="1">Beekeeping has quietly moved from the countryside into cities over the last two decades. In London alone, the number of registered hives rose from around 1,600 in 2008 to more than 7,400 by 2020, according to the London Beekeepers Association.</p>
+          <p data-para="2">Supporters argue that urban bees benefit from a longer flowering season, since parks, gardens and even balconies bloom at different times across a city. Rooftop hives have appeared on buildings ranging from the Paris Opera House to hotels in New York.</p>
+          <p data-para="3">Critics, however, warn that packing too many hives into a small area can actually harm wild bee populations by forcing them to compete for the same limited flowers. Some ecologists now recommend planting more flowers before adding more hives.</p>
         </div>
       </div>
-      <p class="eye-caption" id="eyeCaption">Choose a mode above to watch the eye move.</p>
+
+      <div class="eye-trap-panel" id="eyeTrapPanel">
+        <p class="trap-title">🔄 Negation Flip detected</p>
+        <p class="trap-desc">The passage says packing in more hives can <em>harm</em> wild bee populations. The question claims they always <em>boost</em> them — the exact opposite claim. That's the trap: the correct answer is <strong>FALSE</strong>, not TRUE.</p>
+      </div>
+
+      <p class="eye-caption" id="eyeCaption">Step 1 of 6 — press "▶ Play step 1" to begin.</p>
     </div>
   </section>
 
@@ -1108,15 +1181,35 @@ function idxOf(words, text, occurrence) {
   const caption = document.getElementById('eyeCaption');
   const countEl = document.getElementById('eyeCount');
   const totalEl = document.getElementById('eyeTotal');
-  const buttons = document.querySelectorAll('.eye-lab .mode-buttons [data-mode]');
-  const resetBtn = document.getElementById('eyeReset');
-  if (!passageEl) return;
+  const lab = document.getElementById('eyeLab');
+  const stepBtns = document.querySelectorAll('.eye-step');
+  const prevBtn = document.getElementById('eyePrev');
+  const nextBtn = document.getElementById('eyeNext');
+  const replayBtn = document.getElementById('eyeReplay');
+  const restartBtn = document.getElementById('eyeRestart');
+  const bonusBtn = document.getElementById('eyeBonusRead');
+  const questionEl = document.getElementById('eyeQuestion');
+  if (!passageEl || !questionEl) return;
 
   const words = wrapWords(passageEl);
   totalEl.textContent = words.length;
 
-  const seqRead = words.map((w, i) => i);
+  // Tag every paragraph with a short label once it's been "mapped" (step 2) — inserted
+  // after wrapWords runs, so it never gets swallowed into the word-fixation sequences.
+  const paraLabels = ['¶1 · Growth & numbers', '¶2 · The case for hives', '¶3 · The case against'];
+  const paraFirstWord = ['Beekeeping', 'Supporters', 'Critics'];
+  const paragraphs = Array.from(passageEl.querySelectorAll('p'));
+  paragraphs.forEach((p, i) => {
+    const tag = document.createElement('span');
+    tag.className = 'para-tag';
+    tag.textContent = paraLabels[i];
+    p.insertBefore(tag, p.firstChild);
+  });
+  const paraStartIdx = paraFirstWord.map(w => idxOf(words, w, 1));
 
+  const qWords = wrapWords(questionEl);
+
+  // ---- Step 1: skim the whole passage — a pebble skipping across the whole pond ----
   const skimTargets = [
     ['Beekeeping', 1], ['has', 1], ['quietly', 1], ['moved', 1],
     ['Supporters', 1], ['argue', 1], ['that', 3], ['urban', 1],
@@ -1124,105 +1217,205 @@ function idxOf(words, text, occurrence) {
   ];
   const seqSkim = skimTargets.map(([t, occ]) => idxOf(words, t, occ)).filter(i => i >= 0);
 
-  // Scanning does not teleport to the answer — it sweeps across almost every word at high
-  // speed, barely pausing, until a word matching the target's *shape* (a number, a name)
-  // stops the eye. So the scan sequence covers the whole passage in order; only the words
-  // below earn a real, long fixation. Everything else gets the briefest possible glance.
-  const scanTargets = [
-    ['1,600', 1], ['2008', 1], ['7,400', 1], ['2020', 1],
-    ['London', 1], ['Paris', 1], ['New', 1]
-  ];
-  const scanTargetIdx = new Set(scanTargets.map(([t, occ]) => idxOf(words, t, occ)).filter(i => i >= 0));
-  const seqScan = words.map((w, i) => i);
+  // ---- Bonus: read every single word, the exam-pressure default ----
+  const seqRead = words.map((w, i) => i);
 
-  const dwell = { read: 90, skim: 260 };
-  const SCAN_SWEEP_DWELL = 32;
-  const SCAN_FIXATION_DWELL = 480;
-  const captions = {
-    read: {
-      start: 'Reading every single word, left to right — the way most students default to under exam pressure.',
-      end: (n, total) => `Fixated on all ${total} words to get through one short paragraph. At that pace, 40 questions in 60 minutes is a real problem.`
-    },
-    skim: {
-      start: 'Skimming: landing only on the opening words of each paragraph, hunting for the general topic — not the details.',
-      end: (n, total) => `Fixated on just ${n} of ${total} words (${Math.round(n / total * 100)}%) — already enough to answer "what is this mainly about?"`
-    },
-    scan: {
-      start: 'Scanning: sweeping across almost every word at high speed, barely pausing — until the shape of a number or name stops the eye cold.',
-      end: (n, total) => `Swept across all ${total} words, but only truly stopped — fixated — on ${n} of them: the ones shaped like a name or number. That is how scanning saves time on exam day.`
-    }
-  };
-  const sequences = { read: seqRead, skim: seqSkim, scan: seqScan };
+  // ---- Step 3: skim the question the same way — a couple of hops, not a read ----
+  const qSkimTargets = [
+    ['Critics', 1], ['packing', 1], ['hives', 1], ['boosts', 1], ['populations', 1]
+  ];
+  const seqQSkim = qSkimTargets.map(([t, occ]) => idxOf(qWords, t, occ)).filter(i => i >= 0);
+
+  // ---- Step 4: the question's two keywords ----
+  const qConcreteIdx = ['wild', 'bee', 'populations'].map(t => idxOf(qWords, t, 1)).filter(i => i >= 0);
+  const qIdeaIdx = [idxOf(qWords, 'boosts', 1)].filter(i => i >= 0);
+
+  // ---- Step 5: scan paragraph 3 only — every word, in order, until the keyword turns up ----
+  // Real scanning does not sweep the whole passage. The map from step 2 already says which
+  // paragraph to check, so the eye jumps straight there in one move, then reads every single
+  // word of THAT paragraph, in order, until the keyword appears — then stops immediately.
+  // Paragraphs 1 and 2 are never touched.
+  const para3StartIdx = paraStartIdx[2];
+  const harmIdx = idxOf(words, 'harm', 1);
+  const populationsIdx = idxOf(words, 'populations', 1);
+  const seqScanPara = [];
+  for (let i = para3StartIdx; i <= populationsIdx; i++) seqScanPara.push(i);
+  const scanFoundIdx = new Set();
+  for (let i = harmIdx; i <= populationsIdx; i++) scanFoundIdx.add(i);
+
+  const dwell = { read: 90, skim: 260, qskim: 300, scanPass: 100, scanFound: 460 };
 
   let timer = null;
+  let currentStep = 1;
+  let started = false;
 
-  function clearHighlights() {
-    words.forEach(w => w.classList.remove('fixated-read', 'fixated-skim', 'fixated-scan', 'swept-scan'));
+  function clearPassageHighlights() {
+    words.forEach(w => w.classList.remove('fixated-read', 'fixated-skim', 'fixated-scan', 'swept-scan', 'scan-found'));
   }
+  function clearQuestionHighlights() {
+    qWords.forEach(w => w.classList.remove('fixated-skim', 'kw-concrete', 'kw-idea', 'trap-flag'));
+  }
+  function hideDot() { dot.classList.remove('visible', 'fast'); }
 
   function moveDotTo(span) {
-    const wrapRect = wrapEl.getBoundingClientRect();
-    const spanRect = span.getBoundingClientRect();
-    dot.style.left = (spanRect.left - wrapRect.left + spanRect.width / 2) + 'px';
-    dot.style.top = (spanRect.top - wrapRect.top + spanRect.height / 2) + 'px';
+    const r = span.getBoundingClientRect();
+    dot.style.left = (r.left + r.width / 2) + 'px';
+    dot.style.top = (r.top + r.height / 2) + 'px';
     dot.classList.add('visible');
   }
 
-  function run(mode) {
+  // Plays a sequence of word indices with per-step timing/classes, then calls onDone.
+  function playSequence(seq, spans, opts, onDone) {
     clearTimeout(timer);
-    clearHighlights();
-    dot.classList.remove('fast');
-    buttons.forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
-    countEl.textContent = '0';
-    caption.textContent = captions[mode].start;
-    const seq = sequences[mode];
     let i = 0;
-    let fixations = 0;
     function step() {
-      if (i >= seq.length) {
-        const shown = mode === 'scan' ? fixations : seq.length;
-        caption.textContent = captions[mode].end(shown, words.length);
-        return;
-      }
-      const wordIndex = seq[i];
-      const span = words[wordIndex];
-      let stepDwell;
-
-      if (mode === 'scan') {
-        const isTarget = scanTargetIdx.has(wordIndex);
-        dot.classList.toggle('fast', !isTarget);
-        moveDotTo(span);
-        if (isTarget) {
-          span.classList.add('fixated-scan');
-          fixations++;
-          countEl.textContent = String(fixations);
-          stepDwell = SCAN_FIXATION_DWELL;
-        } else {
-          span.classList.add('swept-scan');
-          stepDwell = SCAN_SWEEP_DWELL;
-        }
-      } else {
-        moveDotTo(span);
-        span.classList.add('fixated-' + mode);
-        countEl.textContent = String(i + 1);
-        stepDwell = dwell[mode];
-      }
+      if (i >= seq.length) { onDone && onDone(); return; }
+      const idx = seq[i];
+      const span = spans[idx];
+      moveDotTo(span);
+      (opts.classFn ? opts.classFn(idx, i) : []).forEach(c => span.classList.add(c));
+      if (opts.onWord) opts.onWord(idx, i);
+      const d = opts.dwellFn ? opts.dwellFn(idx, i) : 150;
       i++;
-      timer = setTimeout(step, stepDwell);
+      timer = setTimeout(step, d);
     }
     step();
   }
 
-  buttons.forEach(btn => btn.addEventListener('click', () => run(btn.dataset.mode)));
-  resetBtn.addEventListener('click', () => {
-    clearTimeout(timer);
-    clearHighlights();
-    dot.classList.remove('fast');
-    buttons.forEach(b => b.classList.remove('active'));
-    dot.classList.remove('visible');
+  function runStep1Skim() {
+    clearPassageHighlights();
+    hideDot();
+    caption.textContent = 'Skim the whole passage first — like a flat pebble skipping across a pond. Don\'t stop to read anything: just let your eyes bounce across the surface.';
+    let n = 0;
+    playSequence(seqSkim, words, {
+      dwellFn: () => dwell.skim,
+      classFn: () => ['fixated-skim'],
+      onWord: () => { n++; countEl.textContent = String(n); }
+    }, () => {
+      caption.textContent = 'Fixated on just ' + n + ' of ' + words.length + ' words (' + Math.round(n / words.length * 100) + '%) — enough to sense this passage moves from numbers, to supporters, to critics, without reading one full sentence.';
+    });
+  }
+
+  function runStep2Map() {
+    clearPassageHighlights();
+    hideDot();
     countEl.textContent = '0';
-    caption.textContent = 'Choose a mode above to watch the eye move.';
+    caption.textContent = 'That skim is enough to label each paragraph in your head — building a rough map of where things are before you\'ve even seen a question.';
+    playSequence([0, 1, 2], paraStartIdx.map(i => words[i]), {
+      dwellFn: () => 550,
+      classFn: () => ['fixated-skim']
+    }, () => {
+      caption.textContent = 'Map built: ¶1 is growth & numbers, ¶2 is the case for hives, ¶3 is the case against. Now you know roughly where to look before you\'ve read a single question.';
+    });
+  }
+
+  function runStep3QuestionSkim() {
+    clearQuestionHighlights();
+    caption.textContent = 'Skim the question the same way — a couple of hops is enough to catch the shape of the claim before you hunt for keywords.';
+    playSequence(seqQSkim, qWords, {
+      dwellFn: () => dwell.qskim,
+      classFn: () => ['fixated-skim']
+    }, () => {
+      caption.textContent = 'Question skimmed. You have the rough shape of the claim — now pull out exactly what has to match the passage.';
+    });
+  }
+
+  function runStep4Keywords() {
+    hideDot();
+    caption.textContent = 'Two keywords matter here — and they are not the same kind.';
+    qConcreteIdx.forEach(i => qWords[i].classList.add('kw-concrete'));
+    qIdeaIdx.forEach(i => qWords[i].classList.add('kw-idea'));
+    setTimeout(() => {
+      caption.textContent = '"wild bee populations" is a concrete keyword — it will reappear in the passage almost unchanged, so that is what you scan for. "boosts" is an idea keyword — the passage will very likely paraphrase it, or even reverse it, so don\'t trust it yet.';
+    }, 350);
+  }
+
+  function runStep5Scan() {
+    clearPassageHighlights();
+    lab.classList.add('scan-focus');
+    caption.textContent = 'Your map already says ¶3 is the critics\' case — the only paragraph that could discuss harm to wild bee populations. Jump straight there.';
+    moveDotTo(words[para3StartIdx]);
+    setTimeout(() => {
+      caption.textContent = 'Scanning ¶3 only — every single word, left to right, at speed — because the map already told you this is the right paragraph. ¶1 and ¶2 are skipped completely.';
+      let n = 0;
+      playSequence(seqScanPara, words, {
+        dwellFn: idx => scanFoundIdx.has(idx) ? dwell.scanFound : dwell.scanPass,
+        classFn: idx => scanFoundIdx.has(idx) ? ['fixated-scan', 'scan-found'] : ['fixated-scan'],
+        onWord: () => { n++; countEl.textContent = String(n); }
+      }, () => {
+        caption.textContent = 'Found it after ' + seqScanPara.length + ' words of ¶3: "harm wild bee populations." That matches your concrete keyword — scanning stops the instant it\'s found. ¶1 and ¶2 were never touched.';
+      });
+    }, 550);
+  }
+
+  function runStep6Trap() {
+    caption.textContent = 'Before you answer, always re-read the sentence around the word you found — checking it isn\'t reversed.';
+    qIdeaIdx.forEach(i => qWords[i].classList.add('trap-flag'));
+    setTimeout(() => {
+      caption.textContent = 'The passage says hives can actually harm wild bee populations. The question claims they always boost them — the exact opposite claim. That\'s a Negation Flip trap: the correct answer is FALSE, not TRUE.';
+    }, 500);
+  }
+
+  const stepRunners = { 1: runStep1Skim, 2: runStep2Map, 3: runStep3QuestionSkim, 4: runStep4Keywords, 5: runStep5Scan, 6: runStep6Trap };
+
+  function updateStepUI() {
+    lab.dataset.step = String(currentStep);
+    lab.classList.toggle('map-shown', currentStep >= 2);
+    lab.classList.toggle('question-shown', currentStep >= 3);
+    lab.classList.toggle('keywords-shown', currentStep >= 4);
+    lab.classList.toggle('scan-focus', currentStep >= 5);
+    lab.classList.toggle('trap-shown', currentStep >= 6);
+    stepBtns.forEach(b => {
+      const s = Number(b.dataset.step);
+      b.classList.toggle('active', s === currentStep);
+      b.classList.toggle('done', s < currentStep);
+    });
+    prevBtn.disabled = currentStep === 1;
+    nextBtn.disabled = started && currentStep === 6;
+    nextBtn.textContent = !started ? '▶ Play step 1' : (currentStep === 6 ? 'Finished ✓' : 'Next step →');
+  }
+
+  function goToStep(n) {
+    n = Math.max(1, Math.min(6, n));
+    currentStep = n;
+    started = true;
+    clearTimeout(timer);
+    hideDot();
+    if (n < 4) { qConcreteIdx.forEach(i => qWords[i].classList.remove('kw-concrete')); qIdeaIdx.forEach(i => qWords[i].classList.remove('kw-idea')); }
+    if (n < 6) qIdeaIdx.forEach(i => qWords[i].classList.remove('trap-flag'));
+    qWords.forEach(w => w.classList.remove('fixated-skim'));
+    countEl.textContent = '0';
+    updateStepUI();
+    const runner = stepRunners[n];
+    if (runner) runner();
+  }
+
+  stepBtns.forEach(btn => btn.addEventListener('click', () => goToStep(Number(btn.dataset.step))));
+  nextBtn.addEventListener('click', () => {
+    if (!started) { goToStep(1); return; }
+    if (currentStep < 6) goToStep(currentStep + 1);
   });
+  prevBtn.addEventListener('click', () => { if (currentStep > 1) goToStep(currentStep - 1); });
+  replayBtn.addEventListener('click', () => goToStep(currentStep));
+  restartBtn.addEventListener('click', () => goToStep(1));
+
+  bonusBtn.addEventListener('click', () => {
+    clearTimeout(timer);
+    clearPassageHighlights();
+    lab.classList.remove('scan-focus');
+    hideDot();
+    caption.textContent = 'Reading every single word, left to right — the way most students default to under exam pressure.';
+    let n = 0;
+    playSequence(seqRead, words, {
+      dwellFn: () => dwell.read,
+      classFn: () => ['fixated-read'],
+      onWord: () => { n++; countEl.textContent = String(n); }
+    }, () => {
+      caption.textContent = 'Fixated on all ' + words.length + ' words to get through one short paragraph. At that pace, 40 questions in 60 minutes is a real problem — press "Restart" to see the six-step alternative.';
+    });
+  });
+
+  updateStepUI();
 })();
 
 /* ---------- Station 2: Skim Sprint ---------- */
