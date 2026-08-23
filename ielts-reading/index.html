@@ -683,6 +683,27 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 .shot-fix { margin-top: 11px; font-size: 0.84rem; line-height: 1.5; color: var(--text); }
 .shot-fix b { color: var(--warn); }
 
+/* ══════════ BILINGUAL ══════════
+   Instructions switch to Bangla; the exam material never does. Passages,
+   questions, options and the paraphrase bank stay English because reading
+   English IS the skill being tested — only the scaffolding around it moves. */
+.lang-btn { font-weight: 800; }
+.lang-btn.on { background: var(--good); border-color: var(--good); color: var(--on-good); }
+[lang="bn"], body[data-lang="bn"] .station-sub, body[data-lang="bn"] .card-intro,
+body[data-lang="bn"] .card-title, body[data-lang="bn"] .card-label,
+body[data-lang="bn"] .station-head h2, body[data-lang="bn"] .btn,
+body[data-lang="bn"] .jump-list a, body[data-lang="bn"] .sc-name,
+body[data-lang="bn"] .sc-sub, body[data-lang="bn"] .err-label,
+body[data-lang="bn"] .shot-k, body[data-lang="bn"] .shot-fix,
+body[data-lang="bn"] .mc-band, body[data-lang="bn"] .jump-head {
+  font-family: 'Noto Sans Bengali', 'Hind Siliguri', 'Kohinoor Bangla',
+               'Bangla MN', 'Shonar Bangla', var(--sans);
+  line-height: 1.75;
+}
+/* Bangla glyphs sit taller, so anything with a fixed height needs a little room */
+body[data-lang="bn"] .btn, body[data-lang="bn"] .toggle-btn { line-height: 1.5; }
+.exam-en { font-family: var(--serif); }
+
 /* ══════════ QUESTION NAVIGATOR ══════════
    Real computer-delivered IELTS gives candidates a review row showing which
    questions are answered and which are flagged. On a phone it is the only
@@ -1299,6 +1320,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <a href="#worksheets"><i>9</i> Worksheets</a>
     </div>
     <div class="nav-tools no-print">
+      <button class="toggle-btn lang-btn" id="btnLang" title="ভাষা / Language" lang="bn">বাংলা</button>
       <button class="toggle-btn" id="btnTheme" title="Switch to dark, for a room you can dim">🌙 Dark</button>
       <button class="toggle-btn teacher-only" id="btnProjector" title="Larger type for the big screen">🖥️ Projector</button>
       <button class="toggle-btn teacher-only" id="btnNotes" title="Show facilitation notes">📋 Notes</button>
@@ -2172,10 +2194,10 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       </div>
       <div class="shot-card" id="shotCard">
         <div class="shot-head">Reading Altitude · my result</div>
-        <div class="shot-row"><span class="shot-k">Score</span><span class="shot-v" id="shotScore">–</span></div>
-        <div class="shot-row"><span class="shot-k">Strongest</span><span class="shot-v" id="shotBest">–</span></div>
-        <div class="shot-row"><span class="shot-k">Weakest</span><span class="shot-v bad" id="shotWorst">–</span></div>
-        <div class="shot-row"><span class="shot-k">Commonest mistake</span><span class="shot-v bad" id="shotErr">–</span></div>
+        <div class="shot-row"><span class="shot-k" data-t="1">Score</span><span class="shot-v" id="shotScore">–</span></div>
+        <div class="shot-row"><span class="shot-k" data-t="1">Strongest</span><span class="shot-v" id="shotBest">–</span></div>
+        <div class="shot-row"><span class="shot-k" data-t="1">Weakest</span><span class="shot-v bad" id="shotWorst">–</span></div>
+        <div class="shot-row"><span class="shot-k" data-t="1">Commonest mistake</span><span class="shot-v bad" id="shotErr">–</span></div>
         <div class="shot-fix" id="shotFix">–</div>
       </div>
       <div class="sc-verdict" id="scVerdict" style="display:none">
@@ -2719,6 +2741,319 @@ var CONTENT = {
   ]]
 };
 
+/* ═══════════════════════════════════════════════════════════════════════
+   BILINGUAL SCAFFOLDING
+   Instructions in Bangla, exam material in English — always. Passages,
+   questions, answer options and the paraphrase bank are deliberately absent
+   from this dictionary: reading those in English IS the skill being tested,
+   and translating them would remove the exercise. Everything here is the
+   scaffolding around that.
+
+   Keyed by the English source string, so the same map serves both the DOM
+   and strings built in JavaScript, and every entry is self-documenting.
+   ═══════════════════════════════════════════════════════════════════════ */
+var BN = {
+  "The Time Crisis": "সময়ের সংকট",
+  "The Reading Altitude": "পড়ার উচ্চতা",
+  "The Six-Step Method": "ছয় ধাপের পদ্ধতি",
+  "Map Drill — build it, then use it": "ম্যাপ ড্রিল — তৈরি করুন, তারপর কাজে লাগান",
+  "Keyword Lab": "কী-ওয়ার্ড ল্যাব",
+  "Scan Sprint": "স্ক্যান স্প্রিন্ট",
+  "Trap Detector": "ফাঁদ শনাক্তকরণ",
+  "The Full Run": "পূর্ণ পরীক্ষা",
+  "Scorecard &amp; Diagnosis": "স্কোরকার্ড ও দুর্বলতা নির্ণয়",
+  "Scorecard & Diagnosis": "স্কোরকার্ড ও দুর্বলতা নির্ণয়",
+  "Worksheets &amp; Lesson Plan": "ওয়ার্কশিট ও পাঠ পরিকল্পনা",
+  "Worksheets & Lesson Plan": "ওয়ার্কশিট ও পাঠ পরিকল্পনা",
+  "Find out how fast you actually read — then see what that speed costs you in a 60-minute exam.": "আপনি আসলে কত দ্রুত পড়েন তা জেনে নিন — তারপর দেখুন ৬০ মিনিটের পরীক্ষায় সেই গতির দাম কত।",
+  "One real page, three heights. Fly high and you can see its shape but cannot read it. Drop low and you can read every word — and you pay for every one.": "একই পৃষ্ঠা, তিনটি উচ্চতা থেকে। অনেক উপর থেকে লেখার গঠন দেখা যায়, কিন্তু পড়া যায় না। একদম নিচে নামলে প্রতিটি শব্দ পড়া যায় — আর প্রতিটি শব্দের জন্য সময় দিতে হয়।",
+  "The same passage, slowed right down. Six steps, one real question, and a dot showing where a trained reader's eyes go — and where they never go.": "একই প্যাসেজ, এবার ধীরে ধীরে। ছয়টি ধাপ, একটি সত্যিকারের প্রশ্ন, আর একটি বিন্দু দেখাবে দক্ষ পাঠকের চোখ কোথায় যায় — এবং কোথায় কখনও যায় না।",
+  "A skim is only worth doing if it leaves you a map. Build one in ninety seconds, then use it to find six answers without reading a single full paragraph.": "স্কিম করার মানে তখনই আছে যখন তা আপনাকে একটি ম্যাপ দেয়। নব্বই সেকেন্ডে সেই ম্যাপ তৈরি করুন, তারপর একটিও পুরো অনুচ্ছেদ না পড়ে ছয়টি উত্তর খুঁজে বের করুন।",
+  "A keyword is not \"an important word\" — it is a word you can physically search for. And the passage will not use yours; it will use a disguise of it.": "কী-ওয়ার্ড মানে “গুরুত্বপূর্ণ শব্দ” নয় — এটি এমন শব্দ যা চোখ দিয়ে সত্যিই খুঁজে পাওয়া যায়। আর প্যাসেজে আপনার শব্দটি থাকবে না; থাকবে তার ছদ্মবেশ।",
+  "Scanning is dense reading over a small area. The speed comes from the small area — never from moving your eyes faster. Three question types live here, all won or lost on where you look.": "স্ক্যানিং মানে ছোট একটি অংশে খুব মনোযোগ দিয়ে পড়া। গতি আসে ছোট অংশ থেকে — চোখ দ্রুত নাড়ানো থেকে নয়। এখানে তিন ধরনের প্রশ্ন আছে, তিনটিরই ফল নির্ভর করে আপনি কোথায় তাকাচ্ছেন তার উপর।",
+  "Finding the sentence is not answering the question. False and Not Given options are built to sound right to a fast reader. Here is the check to run on every sentence you find — and then the hardest call in the paper, on its own.": "বাক্যটি খুঁজে পাওয়া আর প্রশ্নের উত্তর দেওয়া এক নয়। FALSE আর NOT GIVEN অপশনগুলো এমনভাবে লেখা হয় যাতে দ্রুত পাঠকের কাছে সেগুলো ঠিক মনে হয়। প্রতিটি খুঁজে পাওয়া বাক্যে যে যাচাই চালাতে হবে তা এখানে — এবং তারপর পরীক্ষার সবচেয়ে কঠিন সিদ্ধান্তটি, আলাদাভাবে।",
+  "Two papers, thirteen questions each, twenty minutes — real exam pace, real exam layout. Afterwards it shows you exactly which question cost you the paper.": "দুটি পেপার, প্রতিটিতে তেরোটি প্রশ্ন, বিশ মিনিট — আসল পরীক্ষার গতি, আসল পরীক্ষার সাজ। শেষে দেখানো হবে ঠিক কোন প্রশ্নটি আপনার পেপারের ক্ষতি করেছে।",
+  "Everything you score feeds in here — not as a total, but to find the one sub-skill holding your band down.": "আপনার সব স্কোর এখানে জমা হয় — মোট নম্বর দেখানোর জন্য নয়, বরং কোন একটি দক্ষতা আপনার ব্যান্ড আটকে রেখেছে তা বের করার জন্য।",
+  "Paper versions of everything, for when there is no phone or no data. Answer key at the foot of each — cut it off before handing out.": "সবকিছুর কাগজে ছাপা সংস্করণ, যখন ফোন বা ডেটা নেই। প্রতিটির নিচে উত্তরপত্র আছে — বিতরণের আগে কেটে ফেলুন।",
+  "Read this passage at your normal, careful pace": "স্বাভাবিক, মনোযোগী গতিতে এই প্যাসেজটি পড়ুন",
+  "What that speed costs you in the real exam": "আসল পরীক্ষায় সেই গতির দাম কত",
+  "This is the whole lesson in one picture": "একটি ছবিতে পুরো পাঠ",
+  "Run the six steps yourself. The page will not do it for you.": "ছয়টি ধাপ নিজে চালান। পেজ আপনার হয়ে করে দেবে না।",
+  "Give each paragraph its heading — 90 seconds": "প্রতিটি অনুচ্ছেদের শিরোনাম বাছুন — ৯০ সেকেন্ড",
+  "Which paragraph holds the answer? Letter only — don't answer the question": "উত্তরটি কোন অনুচ্ছেদে আছে? শুধু অক্ষর — প্রশ্নের উত্তর দেবেন না",
+  "Tap the keywords. Two or three, no more.": "কী-ওয়ার্ডে ট্যাপ করুন। দুই বা তিনটি, বেশি নয়।",
+  "Your keyword will not be in the text. Its disguise will.": "আপনার কী-ওয়ার্ড লেখায় থাকবে না। থাকবে তার ছদ্মবেশ।",
+  "Forty pairs the exam reuses. Sixty seconds.": "পরীক্ষায় বারবার আসা চল্লিশটি জোড়া। ষাট সেকেন্ড।",
+  "Match each claim to the person who made it": "প্রতিটি বক্তব্য কে বলেছেন তার সাথে মেলান",
+  "Complete the summary using the word bank": "ওয়ার্ড ব্যাংক ব্যবহার করে সারসংক্ষেপ পূরণ করুন",
+  "Run this on the sentence you found — every time, in this order": "খুঁজে পাওয়া বাক্যে এটি চালান — প্রতিবার, এই ক্রমে",
+  "FALSE or NOT GIVEN? Ten statements, two options.": "FALSE নাকি NOT GIVEN? দশটি বাক্য, দুটি অপশন।",
+  "Six located sentences. Run the four-point check on each.": "ছয়টি খুঁজে পাওয়া বাক্য। প্রতিটিতে চার-দফা যাচাই চালান।",
+  "Six questions on what you just learned. No looking back.": "এইমাত্র যা শিখলেন তার উপর ছয়টি প্রশ্ন। পিছনে দেখা যাবে না।",
+  "Reading Altitude · student card": "পড়ার উচ্চতা · শিক্ষার্থী কার্ড",
+  "A 90-minute sequence, and how to cut it down": "৯০ মিনিটের ক্রম, এবং কীভাবে ছোট করবেন",
+  "Read it the way you would read an exam passage — properly, so that you understand it. Press Stop the moment you reach the end.": "পরীক্ষার প্যাসেজ যেভাবে পড়তেন সেভাবেই পড়ুন — ভালোভাবে, যাতে বুঝতে পারেন। শেষে পৌঁছানোর সঙ্গে সঙ্গে Stop চাপুন।",
+  "A reading speed only counts if you actually took the passage in. Two questions, from memory — no looking back.": "পড়ার গতির মানে তখনই আছে যখন আপনি প্যাসেজটি সত্যিই বুঝেছেন। স্মৃতি থেকে দুটি প্রশ্ন — পিছনে দেখা যাবে না।",
+  "IELTS Academic Reading gives you 3 passages, 2,150–2,750 words, 40 questions — in 60 minutes, with no extra time to copy answers across. Here is where your minutes actually go.": "IELTS Academic Reading-এ থাকে ৩টি প্যাসেজ, ২,১৫০–২,৭৫০ শব্দ, ৪০টি প্রশ্ন — ৬০ মিনিটে, উত্তর সরিয়ে লেখার জন্য বাড়তি সময় নেই। আপনার মিনিটগুলো আসলে কোথায় যায় দেখুন।",
+  "Each step unlocks the next only when you get it right, so you cannot skip ahead to the answer.": "প্রতিটি ধাপ সঠিক হলে তবেই পরেরটি খুলবে, তাই উত্তরে লাফিয়ে যাওয়া যাবে না।",
+  "Two headings match nothing. First sentence, last sentence, choose — do not read the middle.": "দুটি শিরোনাম কোনোটির সাথেই মেলে না। প্রথম বাক্য, শেষ বাক্য, তারপর বাছুন — মাঝখানটা পড়বেন না।",
+  "Not what the answer is — only where it lives. Under 15 seconds each.": "উত্তর কী তা নয় — শুধু কোথায় আছে। প্রতিটিতে ১৫ সেকেন্ডের কম।",
+  "Each statement refers to the Reading the Ice passage in Station 3.": "প্রতিটি বাক্য Station 3-এর “Reading the Ice” প্যাসেজ নিয়ে।",
+  "Find the wording the passage actually uses. Scanning fails when you search for the word instead of the meaning.": "প্যাসেজে আসলে যে শব্দগুলো আছে সেগুলো খুঁজুন। অর্থ না খুঁজে শব্দ খুঁজলে স্ক্যানিং ব্যর্থ হয়।",
+  "IELTS does not invent a new disguise every time — it recycles a small set. Tap the phrase that means the same. Speed matters: recognition has to be automatic by exam day, not worked out.": "IELTS প্রতিবার নতুন ছদ্মবেশ বানায় না — অল্প কয়েকটি বারবার ব্যবহার করে। একই অর্থের শব্দগুচ্ছে ট্যাপ করুন। গতি জরুরি: পরীক্ষার দিন চেনাটা স্বয়ংক্রিয় হতে হবে, ভেবে বের করার মতো নয়।",
+  "Everyday scanning. All six, as fast as you can — accuracy first, then speed.": "প্রতিদিনের স্ক্যানিং। ছয়টিই যত দ্রুত পারেন — আগে নির্ভুলতা, তারপর গতি।",
+  "Names are capitalised, so your eye catches them at speed without reading a word around them. Find all four names first, mark them, and only then read what sits beside each one. One name matches nothing.": "নামগুলো বড় হাতের অক্ষরে, তাই আশপাশের কিছু না পড়েই চোখ দ্রুত ধরে ফেলে। আগে চারটি নাম খুঁজে চিহ্নিত করুন, তারপরই পাশের লেখা পড়ুন। একটি নামের সাথে কিছুই মেলে না।",
+  "The trap here is not the gaps. It is that a summary covers one section of the passage, not all of it — and the gaps follow the order of that section. Work out where the summary starts and stops before you fill anything in.": "এখানে ফাঁদ শূন্যস্থানে নয়। ফাঁদ হলো — সারসংক্ষেপটি প্যাসেজের একটি অংশ নিয়ে লেখা, পুরোটা নিয়ে নয়, আর শূন্যস্থানগুলো সেই অংশের ক্রম মেনে চলে। কিছু লেখার আগে বের করুন সারসংক্ষেপটি কোথায় শুরু আর কোথায় শেষ।",
+  "Read the whole sentence. Compare it to the claim on four axes. If one fails, it is not TRUE.": "পুরো বাক্যটি পড়ুন। চারটি দিক থেকে দাবির সাথে মিলিয়ে দেখুন। একটিও না মিললে উত্তর TRUE নয়।",
+  "All ten are about Reading the Ice in Station 3. TRUE is not an option here — that is deliberate. The only question is whether the passage contradicts the claim or simply never mentions it.": "দশটিই Station 3-এর “Reading the Ice” নিয়ে। এখানে TRUE অপশন নেই — এটি ইচ্ছাকৃত। প্রশ্ন একটাই: প্যাসেজ কি দাবিটির বিপরীত কথা বলছে, নাকি বিষয়টি একেবারেই বলেনি।",
+  "The sentence has already been found for you — that part is done. Your only job is the check.": "বাক্যটি আপনার জন্য আগেই খুঁজে দেওয়া হয়েছে — ওই কাজ শেষ। আপনার কাজ শুধু যাচাই করা।",
+  "Work through the drills above and this fills in as you go. A grey bar just means you have not tried that skill yet.": "উপরের ড্রিলগুলো করতে থাকুন, এটি নিজে থেকেই পূরণ হবে। ধূসর বার মানে ওই দক্ষতাটি এখনও চেষ্টা করেননি।",
+  "These are not about the passages. They are about the method — which is the part you have to carry into the exam.": "এগুলো প্যাসেজ নিয়ে নয়, পদ্ধতি নিয়ে — যেটুকু আপনাকে পরীক্ষায় সঙ্গে নিয়ে যেতে হবে।",
+  "Print one each. It is the only thing on this page worth carrying into the exam.": "প্রত্যেকের জন্য একটি করে প্রিন্ট করুন। এই পেজে এটিই একমাত্র জিনিস যা পরীক্ষায় সঙ্গে নেওয়ার মতো।",
+  "The arc is deliberate: create the need, name the concept, show the method, drill the parts, then assemble under pressure and diagnose. Skipping the last two rungs is the commonest way this kind of lesson fails.": "ক্রমটি ইচ্ছাকৃত: প্রয়োজন তৈরি করা, ধারণার নাম দেওয়া, পদ্ধতি দেখানো, অংশগুলো অনুশীলন করা, তারপর চাপের মধ্যে সব একসাথে করা ও দুর্বলতা নির্ণয়। শেষ দুই ধাপ বাদ দিলেই এ ধরনের পাঠ সবচেয়ে বেশি ব্যর্থ হয়।",
+  "⏱️ Step 1 — Measure": "⏱️ ধাপ ১ — মাপুন",
+  "🧠 Before we trust that number": "🧠 ওই সংখ্যাটি বিশ্বাস করার আগে",
+  "📉 Step 2 — The arithmetic": "📉 ধাপ ২ — হিসাব",
+  "👁 The same paragraph, three ways": "👁 একই অনুচ্ছেদ, তিনভাবে",
+  "The question · True, False or Not Given?": "প্রশ্ন · True, False নাকি Not Given?",
+  "👥 Now you try — same passage, new question": "👥 এবার আপনি করুন — একই প্যাসেজ, নতুন প্রশ্ন",
+  "📄 The passage — read at cruising altitude only": "📄 প্যাসেজ — শুধু উপর থেকে চোখ বুলান",
+  "👥 Part A — Build the map": "👥 পর্ব ক — ম্যাপ তৈরি করুন",
+  "📱 Part B — Use the map": "📱 পর্ব খ — ম্যাপ কাজে লাগান",
+  "🎯 Part A — Mark only what you can search for": "🎯 পর্ব ক — যা খুঁজে পাওয়া যায় শুধু তাই চিহ্নিত করুন",
+  "🔁 Part B — The paraphrase problem": "🔁 পর্ব খ — ছদ্মবেশের সমস্যা",
+  "⚡ Part C — The paraphrase bank": "⚡ পর্ব গ — ছদ্মবেশ ব্যাংক",
+  "🖥️ Demo — Find it fast": "🖥️ ডেমো — দ্রুত খুঁজুন",
+  "👥 Pair race — Information Hunt": "👥 জোড়ায় প্রতিযোগিতা — তথ্য খোঁজা",
+  "🔠 Matching features — the purest scanning task on the paper": "🔠 Matching features — পরীক্ষার সবচেয়ে খাঁটি স্ক্যানিং কাজ",
+  "📝 Summary completion — find the section first": "📝 Summary completion — আগে অংশটি খুঁজুন",
+  "✅ The four-point check": "✅ চার-দফা যাচাই",
+  "🪤 The four traps": "🪤 চারটি ফাঁদ",
+  "⚖️ The hardest call in the paper": "⚖️ পরীক্ষার সবচেয়ে কঠিন সিদ্ধান্ত",
+  "📱 Scored round — Trap or True?": "📱 নম্বরসহ রাউন্ড — ফাঁদ নাকি সত্য?",
+  "📊 Debrief": "📊 পর্যালোচনা",
+  "📈 This session": "📈 এই সেশন",
+  "🧠 Three-minute recall — close everything else": "🧠 তিন মিনিটের স্মরণ — বাকি সব বন্ধ করুন",
+  "🪪 Keep this — the whole method on one page": "🪪 এটি রেখে দিন — এক পৃষ্ঠায় পুরো পদ্ধতি",
+  "🖨️ One-page worksheets": "🖨️ এক পৃষ্ঠার ওয়ার্কশিট",
+  "📋 The lesson": "📋 পাঠ",
+  "🌙 Dark": "🌙 ডার্ক",
+  "☀️ Light": "☀️ লাইট",
+  "🖥️ Projector": "🖥️ প্রজেক্টর",
+  "📋 Notes": "📋 নোট",
+  "🔑 Keys": "🔑 উত্তর",
+  "↺ Reset all": "↺ সব রিসেট",
+  "▶ Start reading": "▶ পড়া শুরু",
+  "■ Stop — I've finished": "■ থামুন — শেষ",
+  "Reset": "রিসেট",
+  "Recalculate": "আবার হিসাব",
+  "Load it anyway (590 KB)": "তবুও লোড করুন (৫৯০ KB)",
+  "← Back": "← পিছনে",
+  "▶ Play step 1": "▶ ধাপ ১ চালান",
+  "↻ Replay": "↻ আবার",
+  "Restart": "শুরু থেকে",
+  "🐌 Compare: read every word": "🐌 তুলনা: প্রতিটি শব্দ পড়া",
+  "Check": "যাচাই",
+  "Start over": "আবার শুরু",
+  "▶ Start 90s": "▶ ৯০ সে. শুরু",
+  "Check answers": "উত্তর যাচাই",
+  "▶ Start timer": "▶ সময় শুরু",
+  "▶ Start 60s": "▶ ৬০ সে. শুরু",
+  "▶ Start": "▶ শুরু",
+  "👁 Reveal it": "👁 দেখান",
+  "Next →": "পরবর্তী →",
+  "▶ Start race": "▶ প্রতিযোগিতা শুরু",
+  "🔄 Round 2 — new items": "🔄 রাউন্ড ২ — নতুন প্রশ্ন",
+  "🔄 Round 1 — original items": "🔄 রাউন্ড ১ — আগের প্রশ্ন",
+  "▶ Begin": "▶ শুরু করুন",
+  "📄 Passage": "📄 প্যাসেজ",
+  "✎ Questions": "✎ প্রশ্ন",
+  "Submit": "জমা দিন",
+  "Finished ✓": "শেষ ✓",
+  "Next step →": "পরের ধাপ →",
+  "Clear my results": "আমার ফলাফল মুছুন",
+  "🖨️ Print the student card": "🖨️ শিক্ষার্থী কার্ড প্রিন্ট",
+  "Print worksheet": "ওয়ার্কশিট প্রিন্ট",
+  "Print mock paper": "মক পেপার প্রিন্ট",
+  "Check my keywords": "আমার কী-ওয়ার্ড যাচাই",
+  "Clear": "মুছুন",
+  "Show me the panels instead": "বরং প্যানেলগুলো দেখান",
+  "You could not find it": "আপনি খুঁজে পাননি",
+  "You read in what was not there": "যা লেখা নেই তা ধরে নিয়েছেন",
+  "You missed a reversal": "উল্টো অর্থ ধরতে পারেননি",
+  "You searched for the word, not the meaning": "অর্থ নয়, শব্দ খুঁজেছেন",
+  "You broke the word limit": "শব্দসীমা ভেঙেছেন",
+  "You looked in the wrong place": "ভুল জায়গায় খুঁজেছেন",
+  "You left it blank": "খালি রেখেছেন",
+  "Mapping": "ম্যাপ তৈরি",
+  "Locating": "অবস্থান খোঁজা",
+  "Keywords": "কী-ওয়ার্ড",
+  "Paraphrase": "ছদ্মবেশ চেনা",
+  "Scanning": "স্ক্যানিং",
+  "Trap check": "ফাঁদ যাচাই",
+  "Full Run": "পূর্ণ পরীক্ষা",
+  "Turning a skim into a paragraph map": "স্কিম থেকে অনুচ্ছেদের ম্যাপ বানানো",
+  "Choosing the right paragraph before reading": "পড়ার আগে সঠিক অনুচ্ছেদ বাছা",
+  "Marking only what you can search for": "যা খুঁজে পাওয়া যায় শুধু তাই চিহ্নিত করা",
+  "Recognising the wording the text really uses": "লেখায় আসলে যে শব্দ আছে তা চেনা",
+  "Finding a stated fact under time pressure": "সময়ের চাপে লেখা তথ্য খুঁজে বের করা",
+  "True / False / Not Given discrimination": "True / False / Not Given আলাদা করা",
+  "All six steps together, on the clock": "ঘড়ি ধরে ছয়টি ধাপ একসাথে",
+  "Reading Altitude · my result": "পড়ার উচ্চতা · আমার ফলাফল",
+  "Score": "স্কোর",
+  "Strongest": "সবচেয়ে ভালো",
+  "Weakest": "সবচেয়ে দুর্বল",
+  "Commonest mistake": "সবচেয়ে বেশি যে ভুল",
+  "Nothing scored yet": "এখনও কোনো স্কোর নেই",
+  "Jump to…": "যান…",
+  "How fast do you really read?": "আপনি আসলে কত দ্রুত পড়েন?",
+  "Big screen — watch with your teacher": "বড় পর্দা — শিক্ষকের সাথে দেখুন",
+  "Watch, then try it yourself": "দেখুন, তারপর নিজে করুন",
+  "Build a map, then use it": "ম্যাপ বানান, তারপর কাজে লাগান",
+  "Keywords and paraphrase": "কী-ওয়ার্ড ও ছদ্মবেশ",
+  "Scanning, names and summaries": "স্ক্যানিং, নাম ও সারসংক্ষেপ",
+  "True / False / Not Given": "True / False / Not Given",
+  "20-minute mock paper": "২০ মিনিটের মক পেপার",
+  "Your diagnosis and recall quiz": "আপনার দুর্বলতা ও স্মরণ কুইজ",
+  "Printable — mostly for your teacher": "প্রিন্টযোগ্য — মূলত শিক্ষকের জন্য",
+  "Do this:": "এটি করুন:",
+  "none yet": "এখনও নেই",
+  "You answered NOT GIVEN on statements the passage does answer. That is a locating failure, not a judgement one — the information was there and your search did not reach it.": "যেসব বাক্যের উত্তর প্যাসেজে আছে, সেগুলোতে আপনি NOT GIVEN দিয়েছেন। এটি বিচারের ভুল নয়, খুঁজে না পাওয়ার ভুল — তথ্যটি ছিল, আপনার খোঁজ সেখানে পৌঁছায়নি।",
+  "Redo <b>Station 3</b>. Build the map first and name the paragraph out loud before you hunt for words.": "<b>Station 3</b> আবার করুন। আগে ম্যাপ বানান, আর শব্দ খোঁজার আগে অনুচ্ছেদের নাম মুখে বলুন।",
+  "You answered TRUE or FALSE on statements the passage never addresses. You found a sentence on the same topic and treated topic overlap as evidence.": "প্যাসেজ যেসব বিষয়ে কিছুই বলেনি, সেগুলোতে আপনি TRUE বা FALSE দিয়েছেন। একই বিষয়ের একটি বাক্য পেয়ে সেটিকেই প্রমাণ ধরে নিয়েছেন।",
+  "Redo <b>Station 6</b>. The test for NOT GIVEN is physical: if you cannot put your finger on a sentence that confirms or contradicts it, it is NOT GIVEN.": "<b>Station 6</b> আবার করুন। NOT GIVEN-এর পরীক্ষাটি হাতে-কলমে: যদি সমর্থন বা বিরোধিতা করে এমন একটি বাক্যে আঙুল রাখতে না পারেন, তবে উত্তর NOT GIVEN।",
+  "You found the right sentence and then answered the wrong way round — the classic trap. Every keyword matched; only the direction, strength or scope did not.": "সঠিক বাক্যটি পেয়েও উল্টো উত্তর দিয়েছেন — চিরচেনা ফাঁদ। সব কী-ওয়ার্ড মিলেছিল; মেলেনি শুধু দিক, মাত্রা বা পরিধি।",
+  "Redo <b>Station 6</b> and run all four checks aloud before every answer. Most of your lost marks are check 2, direction.": "<b>Station 6</b> আবার করুন এবং প্রতিটি উত্তরের আগে চারটি যাচাই মুখে বলুন। আপনার হারানো নম্বরের বেশিরভাগই ২ নম্বর যাচাই — দিক।",
+  "On completion questions you were in the right area but did not produce the wording the passage uses.": "Completion প্রশ্নে আপনি সঠিক জায়গাতেই ছিলেন, কিন্তু প্যাসেজে ব্যবহৃত শব্দগুলো লিখতে পারেননি।",
+  "Redo <b>Station 4 Part B</b> and the paraphrase bank. The passage will not repeat your keyword — it will disguise it.": "<b>Station 4 পর্ব খ</b> ও ছদ্মবেশ ব্যাংক আবার করুন। প্যাসেজ আপনার কী-ওয়ার্ড হুবহু লিখবে না — ছদ্মবেশ দেবে।",
+  "You found the answer and still scored zero because you wrote more words than the instruction allows. This is the cheapest mark on the paper to lose.": "উত্তর পেয়েও শূন্য পেয়েছেন, কারণ নির্দেশনার চেয়ে বেশি শব্দ লিখেছেন। এটি পরীক্ষার সবচেয়ে সহজে হারানো নম্বর।",
+  "Copy the words from the passage exactly, change nothing, add nothing, and count them before you move on.": "প্যাসেজ থেকে শব্দগুলো হুবহু তুলুন, কিছু বদলাবেন না, কিছু যোগ করবেন না, আর এগোনোর আগে গুনে নিন।",
+  "On which-paragraph questions you chose a paragraph that does not hold the information.": "কোন-অনুচ্ছেদ প্রশ্নে আপনি এমন অনুচ্ছেদ বেছেছেন যেখানে তথ্যটি নেই।",
+  "Redo <b>Station 3 Part A</b>. If the map is vague the locating cannot be sharp.": "<b>Station 3 পর্ব ক</b> আবার করুন। ম্যাপ অস্পষ্ট হলে অবস্থান খোঁজাও নিখুঁত হবে না।",
+  "A blank scores zero and there is no penalty for a wrong guess in IELTS Reading. A blank is the only genuinely worthless thing on the paper.": "খালি ঘর মানে শূন্য, আর IELTS Reading-এ ভুল উত্তরের জন্য কোনো নম্বর কাটা যায় না। খালি ঘরই পরীক্ষার একমাত্র সম্পূর্ণ অকেজো জিনিস।",
+  "In the last minute of any paper, fill every empty box with a plausible guess. It costs nothing and it sometimes scores.": "যেকোনো পেপারের শেষ মিনিটে প্রতিটি খালি ঘরে যুক্তিসঙ্গত একটি অনুমান লিখে দিন। এতে কিছু হারায় না, কখনও কখনও নম্বর আসে।",
+  "Press Start.": "শুরু চাপুন।",
+  "correct": "সঠিক",
+  "building the map": "ম্যাপ তৈরি করা",
+  "locating the answer": "উত্তরের অবস্থান খোঁজা",
+  "choosing keywords": "কী-ওয়ার্ড বাছা",
+  "recognising paraphrase": "ছদ্মবেশ চেনা",
+  "scanning accurately": "নিখুঁতভাবে স্ক্যান করা",
+  "the trap check": "ফাঁদ যাচাই",
+  "putting it together under time": "সময়ের চাপে সব একসাথে করা",
+  "Three passages back to back, on the clock.": "ঘড়ি ধরে পরপর তিনটি প্যাসেজ।",
+  "You are reading paragraphs instead of labelling them. Go back to <b>Station 3, Part A</b> and do it again with a hard rule: read only the first sentence and the last sentence of each paragraph, then choose. If you find yourself reading the middle, you have dropped to ground level.": "আপনি অনুচ্ছেদগুলোর নাম না দিয়ে সেগুলো পড়ছেন। <b>Station 3, পর্ব ক</b>-এ ফিরে গিয়ে কড়া নিয়মে আবার করুন: প্রতিটি অনুচ্ছেদের শুধু প্রথম ও শেষ বাক্য পড়ুন, তারপর বাছুন। মাঝখানটা পড়তে শুরু করলেই বুঝবেন আপনি নিচে নেমে গেছেন।",
+  "You can skim, but you are not using what the skim gave you — you are hunting the whole passage for every question. Redo <b>Station 3, Part B</b> and force yourself to name the paragraph out loud <i>before</i> you start looking for words.": "আপনি স্কিম করতে পারেন, কিন্তু স্কিম থেকে যা পেলেন তা কাজে লাগাচ্ছেন না — প্রতিটি প্রশ্নের জন্য পুরো প্যাসেজ খুঁজছেন। <b>Station 3, পর্ব খ</b> আবার করুন এবং শব্দ খোঁজা শুরুর <i>আগে</i> অনুচ্ছেদের নাম মুখে বলুন।",
+  "You are marking too much, or marking the wrong kind of word. Redo <b>Station 4, Part A</b>. The test for a keyword is not \"is this important?\" but \"could my eyes physically find this on the page?\" Numbers and names pass; verbs and adjectives almost never do.": "আপনি খুব বেশি চিহ্নিত করছেন, অথবা ভুল ধরনের শব্দ চিহ্নিত করছেন। <b>Station 4, পর্ব ক</b> আবার করুন। কী-ওয়ার্ডের পরীক্ষা “এটি কি গুরুত্বপূর্ণ?” নয়, বরং “আমার চোখ কি পৃষ্ঠায় এটি সত্যিই খুঁজে পাবে?” সংখ্যা ও নাম উতরে যায়; ক্রিয়া ও বিশেষণ প্রায় কখনোই নয়।",
+  "This is the single most valuable thing on this page for your band score. You are searching for the question’s words instead of its meaning, so you either miss the answer or pick a distractor that repeats the wording. Redo <b>Station 4, Part B</b>, and when you next read anything in English, stop at one sentence and say it a different way.": "আপনার ব্যান্ড স্কোরের জন্য এই পেজের সবচেয়ে মূল্যবান জিনিস এটি। আপনি প্রশ্নের অর্থ নয়, শব্দ খুঁজছেন — তাই হয় উত্তর মিস করছেন, নয়তো একই শব্দওয়ালা ফাঁদে পা দিচ্ছেন। <b>Station 4, পর্ব খ</b> আবার করুন, আর পরেরবার ইংরেজিতে কিছু পড়ার সময় একটি বাক্যে থেমে সেটি অন্যভাবে বলুন।",
+  "You are finding roughly the right place but not the exact answer — or you are breaking the word limit. Redo <b>Station 5</b>, and on completion questions copy the words from the passage exactly, changing nothing and adding nothing.": "আপনি মোটামুটি সঠিক জায়গা পাচ্ছেন কিন্তু নির্দিষ্ট উত্তরটি নয় — অথবা শব্দসীমা ভাঙছেন। <b>Station 5</b> আবার করুন, আর completion প্রশ্নে প্যাসেজ থেকে শব্দগুলো হুবহু তুলুন, কিছু বদলাবেন না, কিছু যোগ করবেন না।",
+  "You are finding the sentence and then answering from memory of the question rather than from the sentence in front of you. Redo <b>Station 6</b> and run all four checks out loud — subject, direction, strength, scope — before every single answer. Most of your lost marks are the second one.": "আপনি বাক্যটি খুঁজে পাচ্ছেন, তারপর সামনের বাক্য নয়, প্রশ্নের স্মৃতি থেকে উত্তর দিচ্ছেন। <b>Station 6</b> আবার করুন এবং প্রতিটি উত্তরের আগে চারটি যাচাই মুখে বলুন — কর্তা, দিক, মাত্রা, পরিধি। আপনার হারানো নম্বরের বেশিরভাগই দ্বিতীয়টি।",
+  "Your individual skills are better than your exam score, which means the problem is pacing and nerve rather than reading. Redo <b>Station 7</b> and treat the ninety-second rule as absolute: flag and move, every time, no exceptions.": "আপনার আলাদা আলাদা দক্ষতা পরীক্ষার স্কোরের চেয়ে ভালো, অর্থাৎ সমস্যা পড়ায় নয় — সময় ব্যবস্থাপনা ও স্নায়ুতে। <b>Station 7</b> আবার করুন এবং নব্বই সেকেন্ডের নিয়মটি কঠোরভাবে মানুন: চিহ্নিত করুন আর এগিয়ে যান, প্রতিবার, ব্যতিক্রম ছাড়া।",
+  "Every word, in order": "প্রতিটি শব্দ, ক্রম অনুসারে",
+  "Shape, not content": "গঠন, বিষয়বস্তু নয়",
+  "Every word, one paragraph": "প্রতিটি শব্দ, একটি অনুচ্ছেদ",
+  "Same subject?": "একই কর্তা?",
+  "Same direction?": "একই দিক?",
+  "Same strength?": "একই মাত্রা?",
+  "Same scope?": "একই পরিধি?",
+  "Total comprehension, catastrophic speed. Correct for the one sentence that holds the answer — and for nothing else in the exam.": "পুরো বোঝা যায়, কিন্তু গতি ভয়াবহ ধীর। যে একটি বাক্যে উত্তর আছে শুধু তার জন্য ঠিক — পরীক্ষার আর কিছুর জন্য নয়।",
+  "You deliberately give up detail to buy structure. The output of a skim is not understanding — it is a map: which paragraph holds which topic.": "আপনি ইচ্ছা করে বিস্তারিত ছেড়ে দিয়ে গঠনটা নেন। স্কিমের ফল বোঝা নয় — একটি ম্যাপ: কোন অনুচ্ছেদে কোন বিষয়।",
+  "Scanning is not fast skimming. It is slow, dense, word-by-word searching — but performed over a tiny area that the map already chose for you.": "স্ক্যানিং দ্রুত স্কিমিং নয়। এটি ধীর, ঘন, শব্দে-শব্দে খোঁজা — তবে খুব ছোট একটি অংশে, যেটি ম্যাপ আগেই বেছে দিয়েছে।",
+  "Is the text talking about the same people, place or thing the claim names — or a different group that merely sounds similar?": "লেখাটি কি দাবিতে বলা একই মানুষ, স্থান বা বিষয় নিয়ে — নাকি শুধু শুনতে একরকম অন্য কিছু নিয়ে?",
+  "Rose or fell? Helped or harmed? Encouraged or discouraged? This is where most marks are lost.": "বেড়েছে না কমেছে? উপকার না ক্ষতি? উৎসাহ না নিরুৎসাহ? সবচেয়ে বেশি নম্বর এখানেই হারায়।",
+  "\"Some\" is not \"all\". \"May\" is not \"will\". \"Suggests\" is not \"proves\". A claim that is too strong is FALSE.": "“Some” মানে “all” নয়। “May” মানে “will” নয়। “Suggests” মানে “proves” নয়। দাবি বেশি জোরালো হলে উত্তর FALSE।",
+  "True in one city is not true everywhere. True in 2020 is not true always. Watch for silently widened boundaries.": "এক শহরে সত্য মানে সব জায়গায় সত্য নয়। ২০২০-তে সত্য মানে সবসময় সত্য নয়। চুপিসারে সীমা বাড়ানো হচ্ছে কি না খেয়াল রাখুন।",
+  "Matching information — locating with the map": "Matching information — ম্যাপ দিয়ে অবস্থান খোঁজা",
+  "True / False / Not Given — the trap check": "True / False / Not Given — ফাঁদ যাচাই",
+  "Sentence completion — scanning with a word limit": "Sentence completion — শব্দসীমা মেনে স্ক্যানিং",
+  "🔄 Negation Flip": "🔄 উল্টো অর্থ",
+  "⚖️ Qualifier Swap": "⚖️ মাত্রা বদল",
+  "🗺️ Scope Shift": "🗺️ পরিধি বদল",
+  "🔁 Reversed Cause": "🔁 কারণ উল্টানো",
+  "The claim states the exact opposite of the text, using the same keywords so it scans as a match.": "দাবিটি লেখার ঠিক উল্টো কথা বলে, কিন্তু একই কী-ওয়ার্ড ব্যবহার করে — তাই স্ক্যান করলে মিলে যাওয়া মনে হয়।",
+  "A hedge is quietly upgraded to an absolute. The topic matches perfectly; the strength does not.": "সতর্ক শব্দকে চুপচাপ চূড়ান্ত করে দেওয়া হয়। বিষয় হুবহু মেলে; মাত্রা মেলে না।",
+  "Something true of one place, group or period is stretched to cover everything.": "এক জায়গা, এক দল বা এক সময়ের সত্যকে টেনে সবকিছুর উপর বসানো হয়।",
+  "A and B are both present and both correct — but the arrow between them is turned around.": "A আর B দুটোই আছে, দুটোই ঠিক — কিন্তু তাদের মধ্যেকার তীরটি উল্টে দেওয়া হয়েছে।",
+  "Skim the text": "লেখা স্কিম করুন",
+  "Name each paragraph": "প্রতিটি অনুচ্ছেদের নাম দিন",
+  "Skim the question": "প্রশ্ন স্কিম করুন",
+  "Mark 2 keywords": "২টি কী-ওয়ার্ড চিহ্নিত করুন",
+  "Scan one paragraph": "একটি অনুচ্ছেদ স্ক্যান করুন",
+  "Check the trap": "ফাঁদ যাচাই করুন",
+  "First and last sentence of each paragraph. Do not read the middle.": "প্রতিটি অনুচ্ছেদের প্রথম ও শেষ বাক্য। মাঝখানটা পড়বেন না।",
+  "Three or four words each. This is your map.": "প্রতিটির জন্য তিন-চারটি শব্দ। এটিই আপনার ম্যাপ।",
+  "Catch the shape of the claim.": "দাবিটির গঠন ধরুন।",
+  "Two. Not six.": "দুটি। ছয়টি নয়।",
+  "The one your map chose. Every word of it, none of the others.": "ম্যাপ যেটি বেছেছে সেটি। তার প্রতিটি শব্দ, বাকিগুলোর একটিও নয়।",
+  "Read the whole sentence before you answer.": "উত্তর দেওয়ার আগে পুরো বাক্যটি পড়ুন।",
+  "Names, numbers, dates, places. The passage repeats them almost unchanged, and your eye catches their shape at speed.": "নাম, সংখ্যা, তারিখ, স্থান। প্যাসেজ এগুলো প্রায় অবিকল রাখে, আর দ্রুত পড়াতেও চোখ এদের গড়ন ধরে ফেলে।",
+  "Verbs, adjectives, quantifiers. The passage will paraphrase them, weaken them, or reverse them. Never search for these.": "ক্রিয়া, বিশেষণ, পরিমাণবাচক শব্দ। প্যাসেজ এগুলো ঘুরিয়ে বলবে, দুর্বল করবে, বা উল্টে দেবে। এগুলো কখনও খুঁজবেন না।",
+  "Concrete — you SEARCH for it": "বাস্তব — এটি আপনি খোঁজেন",
+  "Idea — you CHECK it afterwards": "ভাব — এটি আপনি পরে যাচাই করেন",
+  "Same people, place or thing — or one that merely sounds similar?": "একই মানুষ, স্থান বা বিষয় — নাকি শুধু শুনতে একরকম?",
+  "Rose or fell? Helped or harmed? Most marks are lost here.": "বেড়েছে না কমেছে? উপকার না ক্ষতি? সবচেয়ে বেশি নম্বর এখানেই হারায়।",
+  "\"Some\" is not \"all\". \"May\" is not \"will\".": "“Some” মানে “all” নয়। “May” মানে “will” নয়।",
+  "True in one city is not true everywhere.": "এক শহরে সত্য মানে সব জায়গায় সত্য নয়।",
+  "🐌 Ground level": "🐌 মাটির স্তর",
+  "✈️ Cruising · skim": "✈️ উঁচুতে · স্কিম",
+  "🎯 Attack run · scan": "🎯 নিচে নেমে · স্ক্যান",
+  "words touched": "যত শব্দে চোখ পড়ল",
+  "exam clock": "পরীক্ষার ঘড়ি",
+  "You understand everything, and you have no time left.": "সব বুঝলেন, কিন্তু সময় আর নেই।",
+  "You cannot answer anything yet — but you know where everything lives.": "এখনও কিছুর উত্তর দিতে পারবেন না — কিন্তু কোথায় কী আছে জানেন।",
+  "You have the answer, and you never read two thirds of the page.": "উত্তর পেয়ে গেছেন, আর পৃষ্ঠার দুই-তৃতীয়াংশ পড়েনইনি।",
+  "⬦ Guess first, then look": "⬦ আগে অনুমান করুন, তারপর দেখুন",
+  "⬦ Before you press anything — commit": "⬦ কিছু চাপার আগে — সিদ্ধান্ত নিন",
+  "FALSE — I can point at the contradiction": "FALSE — বিরোধী বাক্যে আঙুল রাখতে পারি",
+  "NOT GIVEN — there is nothing to point at": "NOT GIVEN — দেখানোর মতো কিছুই নেই"
+};
+
+var LANG = 'en';
+function tnorm(x) { return String(x).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(); }
+
+/* Keys are normalised once at startup. Several dictionary entries contain <b>
+   markup because the English source does; without this the lookup silently
+   missed every one of them. */
+var BN_N = {};
+(function () { for (var k in BN) BN_N[tnorm(k)] = BN[k]; })();
+
+/* t() wraps any English string that should follow the language toggle. */
+function t(x) {
+  if (LANG !== 'bn') return x;
+  return BN_N[tnorm(x)] || x;
+}
+/* Bangla numerals, for digits sitting inside Bangla prose. */
+function bnum(n) {
+  if (LANG !== 'bn') return String(n);
+  return String(n).replace(/[0-9]/g, function (d) { return '০১২৩৪৫৬৭৮৯'[+d]; });
+}
+
+/* Elements whose visible text is instruction, not exam material. */
+var I18N_SEL = [
+  '.station-head h2', '.station-sub', '.card-title', '.card-intro', '.card-label',
+  '.btn', '.toggle-btn', '.jump-head', '.shot-head', '.tri-verdict', '.shot-k',
+  '.check-card .ct', '.check-card .cd', '.trap-card .tt', '.trap-card .td',
+  '.mc-step .t', '.mc-step .d', '.mc-kw .h', '.mc-kw .d', '.mc-check .q', '.mc-check .a',
+  '.tri-name', '.tri-stat .k', '.predict-h', '.predict-q'
+].join(',');
+
+function applyLang(l) {
+  LANG = l;
+  document.documentElement.lang = (l === 'bn' ? 'bn' : 'en');
+  document.body.dataset.lang = l;
+  $$(I18N_SEL).forEach(function (el) {
+    if (el.dataset.en === undefined) el.dataset.en = el.innerHTML;
+    if (l === 'bn') {
+      var v = BN_N[tnorm(el.dataset.en)];
+      if (v) el.innerHTML = v;
+    } else {
+      el.innerHTML = el.dataset.en;
+    }
+  });
+  /* anything rendered from data has to be asked to redraw */
+  window.dispatchEvent(new Event('langchange'));
+}
+
 /* ═══════════════════ SHARED HELPERS ═══════════════════ */
 function $(s, r) { return (r || document).querySelector(s); }
 function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
@@ -2919,6 +3254,15 @@ var Resettable = [];
     notes.classList.toggle('on', document.body.classList.contains('show-notes'));
   });
 
+  var lang = $('#btnLang');
+  lang.addEventListener('click', function () {
+    var toBn = LANG !== 'bn';
+    applyLang(toBn ? 'bn' : 'en');
+    lang.textContent = toBn ? 'English' : 'বাংলা';
+    lang.setAttribute('lang', toBn ? 'en' : 'bn');
+    lang.classList.toggle('on', toBn);
+  });
+
   var theme = $('#btnTheme');
   theme.addEventListener('click', function () {
     var dark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -2995,11 +3339,16 @@ var Resettable = [];
     ['#scorecard', '8', 'Scorecard', 'Your diagnosis and recall quiz', true],
     ['#worksheets', '9', 'Worksheets', 'Printable — mostly for your teacher', false]
   ];
-  list.innerHTML = STATIONS.map(function (st) {
-    return '<a href="' + st[0] + '" class="' + (st[4] ? 'student' : '') + '">' +
-           '<b>' + st[1] + '</b><span style="flex:1">' + st[2] +
-           '<span>' + st[3] + '</span></span></a>';
-  }).join('');
+  function renderList() {
+    list.innerHTML = STATIONS.map(function (st) {
+      return '<a href="' + st[0] + '" class="' + (st[4] ? 'student' : '') + '">' +
+             '<b>' + st[1] + '</b><span style="flex:1">' + t(st[2]) +
+             '<span>' + t(st[3]) + '</span></span></a>';
+    }).join('');
+    $$('a', list).forEach(function (a) { a.addEventListener('click', close); });
+  }
+  renderList();
+  window.addEventListener('langchange', renderList);
 
   /* Which stations feed which sub-skill, so the sheet can show a tick for work
      already done — orientation matters when the page is 57 screens tall. */
@@ -3033,7 +3382,6 @@ var Resettable = [];
   fab.addEventListener('click', open);
   $('#jumpClose').addEventListener('click', close);
   sheet.addEventListener('click', function (e) { if (e.target === sheet) close(); });
-  $$('a', list).forEach(function (a) { a.addEventListener('click', close); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 })();
 
@@ -4417,7 +4765,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
     });
 
     head.textContent = attempted === 0
-      ? 'Nothing scored yet'
+      ? t('Nothing scored yet')
       : totC + ' of ' + totT + ' correct across ' + attempted + ' skill' + (attempted > 1 ? 's' : '');
 
     grid.innerHTML = rows.map(function (r) {
@@ -4425,8 +4773,8 @@ function makePrediction(boxId, optsId, resultId, judge) {
       var cls = !r.v.attempted ? 'none' : r.pct >= 0.8 ? '' : r.pct >= 0.5 ? 'mid' : 'low';
       var rowCls = !r.v.attempted ? '' : r.pct >= 0.8 ? ' strong' : r.pct < 0.5 ? ' weak' : '';
       return '<div class="sc-row' + rowCls + '">' +
-        '<div class="sc-top"><span class="sc-name">' + r.sk.name + '</span>' +
-        '<span class="sc-sub">' + r.sk.sub + '</span>' +
+        '<div class="sc-top"><span class="sc-name">' + t(r.sk.name) + '</span>' +
+        '<span class="sc-sub">' + t(r.sk.sub) + '</span>' +
         '<span class="sc-val">' + (r.v.attempted ? r.v.correct + '/' + r.v.total : 'not attempted') + ' · ' + pctTxt + '</span></div>' +
         '<div class="sc-track"><div class="sc-fill ' + cls + '" style="width:' + (r.v.attempted ? r.pct * 100 : 0) + '%"></div></div>' +
         '</div>';
@@ -4442,7 +4790,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
       eGrid.innerHTML = errRows.map(function (k) {
         var pct = Math.round(tal[k] / tot * 100);
         return '<div class="err-row"><div class="err-bar" style="width:' + pct + '%"></div>' +
-          '<span class="err-label">' + Errors.TYPES[k].label + '</span>' +
+          '<span class="err-label">' + t(Errors.TYPES[k].label) + '</span>' +
           '<span class="err-n">' + tal[k] + '</span></div>';
       }).join('');
     } else { eBox.style.display = 'none'; }
@@ -4468,12 +4816,21 @@ function makePrediction(boxId, optsId, resultId, judge) {
     var topErr = Errors.top(), errN = Errors.total();
     if (topErr && errN >= 2) {
       var E = Errors.TYPES[topErr], count = Errors.tally()[topErr];
-      parts.push('<p style="font-size:0.95rem"><b>Your commonest mistake, ' + count + ' time' + (count > 1 ? 's' : '') +
-        ': ' + E.label.toLowerCase() + '.</b> ' + E.detail + '</p>');
-      parts.push('<p><span class="rx">Do this:</span> ' + E.fix + '</p>');
+      /* Composed separately per language — splicing translated fragments into an
+         English frame produced half-Bangla sentences, which read worse than either. */
+      if (LANG === 'bn') {
+        parts.push('<p style="font-size:0.95rem"><b>সবচেয়ে বেশি যে ভুল করেছেন (' + bnum(count) +
+          ' বার): ' + t(E.label) + '।</b> ' + t(E.detail) + '</p>');
+        parts.push('<p><span class="rx">এটি করুন:</span> ' + t(E.fix) + '</p>');
+      } else {
+        parts.push('<p style="font-size:0.95rem"><b>Your commonest mistake, ' + count + ' time' + (count > 1 ? 's' : '') +
+          ': ' + E.label.toLowerCase() + '.</b> ' + E.detail + '</p>');
+        parts.push('<p><span class="rx">Do this:</span> ' + E.fix + '</p>');
+      }
       var others = [];
-      for (var k in Errors.tally()) if (k !== topErr) others.push(Errors.TYPES[k].label.toLowerCase() + ' (' + Errors.tally()[k] + ')');
-      if (others.length) parts.push('<p class="dim" style="font-size:0.83rem">Also seen: ' + others.join(', ') + '.</p>');
+      for (var k in Errors.tally()) if (k !== topErr) others.push(t(Errors.TYPES[k].label) + ' (' + Errors.tally()[k] + ')');
+      if (others.length) parts.push('<p class="dim" style="font-size:0.83rem">' +
+        (LANG === 'bn' ? 'এছাড়াও: ' : 'Also seen: ') + others.join(', ') + '</p>');
       parts.push('<hr style="border:none;border-top:1px solid var(--border);margin:14px 0">');
     }
 
@@ -4482,11 +4839,18 @@ function makePrediction(boxId, optsId, resultId, judge) {
       parts.push('<p>Every skill you attempted is at 80% or better, which means technique is no longer what is limiting you. Your next gain comes from <span class="rx">volume and stamina</span>: three passages back to back, on the clock, not one.</p>');
     } else {
       var rx = RX[worst.sk.key];
-      vh.textContent = 'Your bottleneck is ' + rx.label + '.';
-      parts.push('<p>You scored <b>' + Math.round(worst.pct * 100) + '%</b> on ' + worst.sk.name.toLowerCase() +
-        ', against <b>' + Math.round(best.pct * 100) + '%</b> on ' + best.sk.name.toLowerCase() +
-        '. That gap is the useful number here — it says the problem is a specific technique, not your English in general.</p>');
-      parts.push('<p><b>What to do about it:</b> ' + rx.fix + '</p>');
+      if (LANG === 'bn') {
+        vh.textContent = 'আপনার প্রধান দুর্বলতা: ' + t(rx.label) + '।';
+        parts.push('<p>' + t(worst.sk.name) + '-এ পেয়েছেন <b>' + Math.round(worst.pct * 100) + '%</b>, আর ' +
+          t(best.sk.name) + '-এ <b>' + Math.round(best.pct * 100) + '%</b>। এই পার্থক্যটিই আসল তথ্য — সমস্যাটি একটি নির্দিষ্ট কৌশলে, আপনার ইংরেজিতে নয়।</p>');
+        parts.push('<p><b>যা করতে হবে:</b> ' + t(rx.fix) + '</p>');
+      } else {
+        vh.textContent = 'Your bottleneck is ' + rx.label + '.';
+        parts.push('<p>You scored <b>' + Math.round(worst.pct * 100) + '%</b> on ' + worst.sk.name.toLowerCase() +
+          ', against <b>' + Math.round(best.pct * 100) + '%</b> on ' + best.sk.name.toLowerCase() +
+          '. That gap is the useful number here — it says the problem is a specific technique, not your English in general.</p>');
+        parts.push('<p><b>What to do about it:</b> ' + rx.fix + '</p>');
+      }
       var second = done[1];
       if (second && second.pct < 0.6 && second.sk.key !== worst.sk.key) {
         parts.push('<p class="dim" style="font-size:0.85rem">Second weakest: <b>' + second.sk.name + '</b> at ' +
@@ -4512,17 +4876,19 @@ function makePrediction(boxId, optsId, resultId, judge) {
     var shot = $('#shotCard');
     shot.classList.add('show');
     $('#shotScore').textContent = totC + ' / ' + totT + '  (' + Math.round(totC / totT * 100) + '%)';
-    $('#shotBest').textContent = best.sk.name + ' · ' + Math.round(best.pct * 100) + '%';
-    $('#shotWorst').textContent = worst.sk.name + ' · ' + Math.round(worst.pct * 100) + '%';
+    $('#shotBest').textContent = t(best.sk.name) + ' · ' + Math.round(best.pct * 100) + '%';
+    $('#shotWorst').textContent = t(worst.sk.name) + ' · ' + Math.round(worst.pct * 100) + '%';
     var te = Errors.top();
-    $('#shotErr').textContent = te ? Errors.TYPES[te].label : 'none yet';
-    $('#shotFix').innerHTML = '<b>Next:</b> ' +
-      (te ? Errors.TYPES[te].fix : (worst.pct < 0.8 ? RX[worst.sk.key].fix : 'Three passages back to back, on the clock.'))
+    $('#shotErr').textContent = te ? t(Errors.TYPES[te].label) : t('none yet');
+    $('#shotFix').innerHTML = '<b>' + (LANG === 'bn' ? 'পরবর্তী:' : 'Next:') + '</b> ' +
+      t(te ? Errors.TYPES[te].fix
+           : (worst.pct < 0.8 ? RX[worst.sk.key].fix : 'Three passages back to back, on the clock.'))
         .replace(/<\/?b>/g, '');
   }
 
   Progress.onChange(render);
   Errors.onChange(render);
+  window.addEventListener('langchange', render);
   $('#scReset').addEventListener('click', function () { Progress.reset(); Errors.reset(); });
   render();
 })();
@@ -4685,7 +5051,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
         }
         Progress.hit('paraphrase', ok);
         if (!ok) Errors.add('paraphrase');
-        scoreEl.textContent = right + ' correct';
+        scoreEl.textContent = right + ' ' + t('correct');
         idx++;
         setTimeout(next, ok ? 180 : 900);
       });
@@ -4712,8 +5078,8 @@ function makePrediction(boxId, optsId, resultId, judge) {
     clock.reset(); running = false;
     idx = 0; right = 0; wrong = 0; missed = [];
     order = shuffled(PAIRS);
-    scoreEl.textContent = '0 correct';
-    promptEl.textContent = 'Press Start.';
+    scoreEl.textContent = '0 ' + t('correct');
+    promptEl.textContent = t('Press Start.');
     optsEl.innerHTML = ''; fbEl.textContent = '';
     resultEl.className = 'pb-result';
   }
@@ -4723,6 +5089,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
   });
   $('#pbReset').addEventListener('click', reset);
   Resettable.push(reset);
+  window.addEventListener('langchange', function () { if (!running) reset(); });
   reset();
 })();
 
@@ -4742,8 +5109,8 @@ function makePrediction(boxId, optsId, resultId, judge) {
       d.className = 'fng-item';
       d.innerHTML = '<div class="fng-claim"><span class="n">' + (i + 1) + '</span>' + it.c + '</div>' +
         '<div class="opts">' +
-          '<button class="opt" data-v="FALSE">FALSE — I can point at the contradiction</button>' +
-          '<button class="opt" data-v="NOT GIVEN">NOT GIVEN — there is nothing to point at</button>' +
+          '<button class="opt" data-v="FALSE">' + t('FALSE — I can point at the contradiction') + '</button>' +
+          '<button class="opt" data-v="NOT GIVEN">' + t('NOT GIVEN — there is nothing to point at') + '</button>' +
         '</div><div class="feedback"></div>';
       host.appendChild(d);
       var opts = $$('.opt', d), f = $('.feedback', d);
@@ -4765,6 +5132,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
     });
   }
   $('#fngReset').addEventListener('click', build);
+  window.addEventListener('langchange', build);
   build();
 })();
 
