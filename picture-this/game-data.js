@@ -1047,6 +1047,86 @@ window.PICTURE_THIS_GAME_DATA = {
     "Visit",
     "Apologize",
     "Forgive"
+  ],
+  "clothing-care-actions": [
+    "Fold",
+    "Hang",
+    "Iron",
+    "Steam",
+    "Sew",
+    "Mend"
+  ],
+  "common-food-groups": [
+    "Butter",
+    "Cheese",
+    "Beef",
+    "Pork",
+    "Lettuce",
+    "Celery"
+  ],
+  "everyday-basics": [
+    "Eat",
+    "Drink",
+    "Sit",
+    "Stand",
+    "Sleep",
+    "Wake Up"
+  ],
+  "everyday-states": [
+    "Hungry",
+    "Full",
+    "Sick",
+    "Healthy",
+    "Busy",
+    "Free"
+  ],
+  "food-preparation-actions": [
+    "Slice",
+    "Dice",
+    "Stir",
+    "Knead",
+    "Bake",
+    "Roast"
+  ],
+  "more-fresh-fruit": [
+    "Cherry",
+    "Peach",
+    "Blueberry",
+    "Raspberry",
+    "Kiwi",
+    "Avocado"
+  ],
+  "personal-qualities": [
+    "Kind",
+    "Mean",
+    "Brave",
+    "Afraid",
+    "Patient",
+    "Impatient"
+  ],
+  "places-in-town": [
+    "Pharmacy",
+    "Hospital",
+    "Library",
+    "Bookstore",
+    "Supermarket",
+    "Restaurant"
+  ],
+  "small-body-actions": [
+    "Blink",
+    "Wink",
+    "Nod",
+    "Shake Head",
+    "Clap",
+    "Snap Fingers"
+  ],
+  "sound-actions": [
+    "Hum",
+    "Sing",
+    "Laugh",
+    "Cry",
+    "Knock",
+    "Ring"
   ]
 };
 
@@ -4066,6 +4146,1012 @@ window.PICTURE_THIS_GAME_META = {
             "forgive"
           ],
           "explanation": "Apologize and forgive are the only two actions shown specifically repairing a disagreement.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "clothing-care-actions": {
+      "title": "Clothing Care",
+      "category_answers": [
+        "Clothing Care",
+        "Caring for Clothes",
+        "Laundry Actions",
+        "Clothes Care"
+      ],
+      "tags": [
+        "actions",
+        "clothing",
+        "home"
+      ],
+      "items": [
+        {
+          "id": "fold",
+          "label": "Fold",
+          "answers": [
+            "Fold",
+            "Fold Clothes"
+          ]
+        },
+        {
+          "id": "hang",
+          "label": "Hang",
+          "answers": [
+            "Hang",
+            "Hang Clothes"
+          ]
+        },
+        {
+          "id": "iron",
+          "label": "Iron",
+          "answers": [
+            "Iron",
+            "Iron Clothes"
+          ]
+        },
+        {
+          "id": "steam",
+          "label": "Steam",
+          "answers": [
+            "Steam",
+            "Steam Clothes"
+          ]
+        },
+        {
+          "id": "sew",
+          "label": "Sew",
+          "answers": [
+            "Sew",
+            "Stitch"
+          ]
+        },
+        {
+          "id": "mend",
+          "label": "Mend",
+          "answers": [
+            "Mend",
+            "Patch"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "storage",
+          "answers": [
+            "storage"
+          ],
+          "items": [
+            "fold",
+            "hang"
+          ],
+          "explanation": "Fold and hang are the only two actions shown specifically preparing clothes for storage.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "wrinkles",
+          "answers": [
+            "wrinkles"
+          ],
+          "items": [
+            "iron",
+            "steam"
+          ],
+          "explanation": "Iron and steam are the only two actions shown specifically removing wrinkles.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "repair",
+          "answers": [
+            "repair"
+          ],
+          "items": [
+            "sew",
+            "mend"
+          ],
+          "explanation": "Sew and mend are the only two actions shown specifically joining fabric with needle and thread.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "common-food-groups": {
+      "title": "Common Foods",
+      "category_answers": [
+        "Common Foods",
+        "Everyday Foods",
+        "Basic Foods",
+        "Food Groups"
+      ],
+      "tags": [
+        "food",
+        "shopping",
+        "meals"
+      ],
+      "items": [
+        {
+          "id": "butter",
+          "label": "Butter",
+          "answers": [
+            "Butter"
+          ]
+        },
+        {
+          "id": "cheese",
+          "label": "Cheese",
+          "answers": [
+            "Cheese"
+          ]
+        },
+        {
+          "id": "beef",
+          "label": "Beef",
+          "answers": [
+            "Beef",
+            "Cow Meat"
+          ]
+        },
+        {
+          "id": "pork",
+          "label": "Pork",
+          "answers": [
+            "Pork",
+            "Pig Meat"
+          ]
+        },
+        {
+          "id": "lettuce",
+          "label": "Lettuce",
+          "answers": [
+            "Lettuce"
+          ]
+        },
+        {
+          "id": "celery",
+          "label": "Celery",
+          "answers": [
+            "Celery"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "dairy",
+          "answers": [
+            "dairy"
+          ],
+          "items": [
+            "butter",
+            "cheese"
+          ],
+          "explanation": "Butter and cheese are the only two foods shown specifically made from dairy.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "meat",
+          "answers": [
+            "meat"
+          ],
+          "items": [
+            "beef",
+            "pork"
+          ],
+          "explanation": "Beef and pork are the only two foods shown that are meat.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "salad",
+          "answers": [
+            "salad"
+          ],
+          "items": [
+            "lettuce",
+            "celery"
+          ],
+          "explanation": "Lettuce and celery are the only two foods shown commonly eaten raw in salad.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "everyday-basics": {
+      "title": "Everyday Basics",
+      "category_answers": [
+        "Everyday Basics",
+        "Basic Daily Actions",
+        "Everyday Verbs",
+        "Daily Basics"
+      ],
+      "tags": [
+        "actions",
+        "routines",
+        "daily-life"
+      ],
+      "items": [
+        {
+          "id": "eat",
+          "label": "Eat",
+          "answers": [
+            "Eat",
+            "Have Food"
+          ]
+        },
+        {
+          "id": "drink",
+          "label": "Drink",
+          "answers": [
+            "Drink",
+            "Have a Drink"
+          ]
+        },
+        {
+          "id": "sit",
+          "label": "Sit",
+          "answers": [
+            "Sit",
+            "Sit Down"
+          ]
+        },
+        {
+          "id": "stand",
+          "label": "Stand",
+          "answers": [
+            "Stand",
+            "Stand Up"
+          ]
+        },
+        {
+          "id": "sleep",
+          "label": "Sleep",
+          "answers": [
+            "Sleep",
+            "Go to Sleep"
+          ]
+        },
+        {
+          "id": "wake-up",
+          "label": "Wake Up",
+          "answers": [
+            "Wake Up",
+            "Wake"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "consume",
+          "answers": [
+            "consume"
+          ],
+          "items": [
+            "eat",
+            "drink"
+          ],
+          "explanation": "Eat and drink are the only two actions shown specifically consuming food or liquid.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "posture",
+          "answers": [
+            "posture"
+          ],
+          "items": [
+            "sit",
+            "stand"
+          ],
+          "explanation": "Sit and stand are the only two actions shown specifically changing upright body posture around a chair.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "bed",
+          "answers": [
+            "bed"
+          ],
+          "items": [
+            "sleep",
+            "wake-up"
+          ],
+          "explanation": "Sleep and wake up are the only two actions shown specifically happening in bed.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "everyday-states": {
+      "title": "Everyday States",
+      "category_answers": [
+        "Everyday States",
+        "Common States",
+        "How Someone Is",
+        "Daily Conditions"
+      ],
+      "tags": [
+        "descriptions",
+        "health",
+        "daily-life"
+      ],
+      "items": [
+        {
+          "id": "hungry",
+          "label": "Hungry",
+          "answers": [
+            "Hungry",
+            "Starving"
+          ]
+        },
+        {
+          "id": "full",
+          "label": "Full",
+          "answers": [
+            "Full",
+            "Satisfied"
+          ]
+        },
+        {
+          "id": "sick",
+          "label": "Sick",
+          "answers": [
+            "Sick",
+            "Ill"
+          ]
+        },
+        {
+          "id": "healthy",
+          "label": "Healthy",
+          "answers": [
+            "Healthy",
+            "Well"
+          ]
+        },
+        {
+          "id": "busy",
+          "label": "Busy",
+          "answers": [
+            "Busy",
+            "Occupied"
+          ]
+        },
+        {
+          "id": "free",
+          "label": "Free",
+          "answers": [
+            "Free",
+            "Available"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "appetite",
+          "answers": [
+            "appetite"
+          ],
+          "items": [
+            "hungry",
+            "full"
+          ],
+          "explanation": "Hungry and full are the only two states shown specifically contrasting appetite after food.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "wellness",
+          "answers": [
+            "wellness"
+          ],
+          "items": [
+            "sick",
+            "healthy"
+          ],
+          "explanation": "Sick and healthy are the only two states shown specifically contrasting wellness.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "schedule",
+          "answers": [
+            "schedule"
+          ],
+          "items": [
+            "busy",
+            "free"
+          ],
+          "explanation": "Busy and free are the only two states shown specifically contrasting schedule availability.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "food-preparation-actions": {
+      "title": "Food Preparation",
+      "category_answers": [
+        "Food Preparation",
+        "Preparing Food",
+        "Food Prep Verbs",
+        "Cooking Verbs"
+      ],
+      "tags": [
+        "actions",
+        "food",
+        "kitchen"
+      ],
+      "items": [
+        {
+          "id": "slice",
+          "label": "Slice",
+          "answers": [
+            "Slice",
+            "Cut Slices"
+          ]
+        },
+        {
+          "id": "dice",
+          "label": "Dice",
+          "answers": [
+            "Dice",
+            "Cut into Cubes"
+          ]
+        },
+        {
+          "id": "stir",
+          "label": "Stir",
+          "answers": [
+            "Stir",
+            "Mix"
+          ]
+        },
+        {
+          "id": "knead",
+          "label": "Knead",
+          "answers": [
+            "Knead",
+            "Work Dough"
+          ]
+        },
+        {
+          "id": "bake",
+          "label": "Bake",
+          "answers": [
+            "Bake"
+          ]
+        },
+        {
+          "id": "roast",
+          "label": "Roast",
+          "answers": [
+            "Roast"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "knife",
+          "answers": [
+            "knife"
+          ],
+          "items": [
+            "slice",
+            "dice"
+          ],
+          "explanation": "Slice and dice are the only two actions shown specifically using a knife.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "mixing",
+          "answers": [
+            "mixing"
+          ],
+          "items": [
+            "stir",
+            "knead"
+          ],
+          "explanation": "Stir and knead are the only two actions shown specifically mixing ingredients together.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "oven",
+          "answers": [
+            "oven"
+          ],
+          "items": [
+            "bake",
+            "roast"
+          ],
+          "explanation": "Bake and roast are the only two actions shown specifically using an oven.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "more-fresh-fruit": {
+      "title": "More Fresh Fruit",
+      "category_answers": [
+        "More Fresh Fruit",
+        "More Fruit",
+        "Fresh Fruits",
+        "Everyday Fruit"
+      ],
+      "tags": [
+        "food",
+        "fruit",
+        "shopping"
+      ],
+      "items": [
+        {
+          "id": "cherry",
+          "label": "Cherry",
+          "answers": [
+            "Cherry"
+          ]
+        },
+        {
+          "id": "peach",
+          "label": "Peach",
+          "answers": [
+            "Peach"
+          ]
+        },
+        {
+          "id": "blueberry",
+          "label": "Blueberry",
+          "answers": [
+            "Blueberry"
+          ]
+        },
+        {
+          "id": "raspberry",
+          "label": "Raspberry",
+          "answers": [
+            "Raspberry"
+          ]
+        },
+        {
+          "id": "kiwi",
+          "label": "Kiwi",
+          "answers": [
+            "Kiwi",
+            "Kiwifruit"
+          ]
+        },
+        {
+          "id": "avocado",
+          "label": "Avocado",
+          "answers": [
+            "Avocado"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "stone",
+          "answers": [
+            "stone"
+          ],
+          "items": [
+            "cherry",
+            "peach"
+          ],
+          "explanation": "Cherry and peach are the only two fruits shown that are stone fruits.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "berry",
+          "answers": [
+            "berry"
+          ],
+          "items": [
+            "blueberry",
+            "raspberry"
+          ],
+          "explanation": "Blueberry and raspberry are the only two fruits shown and named as berries.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "green",
+          "answers": [
+            "green"
+          ],
+          "items": [
+            "kiwi",
+            "avocado"
+          ],
+          "explanation": "Kiwi and avocado are the only two fruits shown with clearly green flesh.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "personal-qualities": {
+      "title": "Personal Qualities",
+      "category_answers": [
+        "Personal Qualities",
+        "Character Qualities",
+        "Describing Character",
+        "Personality Words"
+      ],
+      "tags": [
+        "descriptions",
+        "people",
+        "relationships"
+      ],
+      "items": [
+        {
+          "id": "kind",
+          "label": "Kind",
+          "answers": [
+            "Kind",
+            "Caring"
+          ]
+        },
+        {
+          "id": "mean",
+          "label": "Mean",
+          "answers": [
+            "Mean",
+            "Unkind"
+          ]
+        },
+        {
+          "id": "brave",
+          "label": "Brave",
+          "answers": [
+            "Brave",
+            "Courageous"
+          ]
+        },
+        {
+          "id": "afraid",
+          "label": "Afraid",
+          "answers": [
+            "Afraid",
+            "Scared"
+          ]
+        },
+        {
+          "id": "patient",
+          "label": "Patient",
+          "answers": [
+            "Patient",
+            "Calmly Waiting"
+          ]
+        },
+        {
+          "id": "impatient",
+          "label": "Impatient",
+          "answers": [
+            "Impatient",
+            "Restless"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "kindness",
+          "answers": [
+            "kindness"
+          ],
+          "items": [
+            "kind",
+            "mean"
+          ],
+          "explanation": "Kind and mean are the only two qualities shown specifically contrasting kindness.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "courage",
+          "answers": [
+            "courage"
+          ],
+          "items": [
+            "brave",
+            "afraid"
+          ],
+          "explanation": "Brave and afraid are the only two qualities shown specifically contrasting courage in the same situation.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "patience",
+          "answers": [
+            "patience"
+          ],
+          "items": [
+            "patient",
+            "impatient"
+          ],
+          "explanation": "Patient and impatient are the only two qualities shown specifically contrasting patience while waiting.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "places-in-town": {
+      "title": "Places in Town",
+      "category_answers": [
+        "Places in Town",
+        "Town Places",
+        "Community Places",
+        "Places Around Town"
+      ],
+      "tags": [
+        "places",
+        "community",
+        "daily-life"
+      ],
+      "items": [
+        {
+          "id": "pharmacy",
+          "label": "Pharmacy",
+          "answers": [
+            "Pharmacy",
+            "Drugstore",
+            "Chemist"
+          ]
+        },
+        {
+          "id": "hospital",
+          "label": "Hospital",
+          "answers": [
+            "Hospital"
+          ]
+        },
+        {
+          "id": "library",
+          "label": "Library",
+          "answers": [
+            "Library"
+          ]
+        },
+        {
+          "id": "bookstore",
+          "label": "Bookstore",
+          "answers": [
+            "Bookstore",
+            "Bookshop"
+          ]
+        },
+        {
+          "id": "supermarket",
+          "label": "Supermarket",
+          "answers": [
+            "Supermarket",
+            "Grocery Store"
+          ]
+        },
+        {
+          "id": "restaurant",
+          "label": "Restaurant",
+          "answers": [
+            "Restaurant",
+            "Dining Place"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "health",
+          "answers": [
+            "health"
+          ],
+          "items": [
+            "pharmacy",
+            "hospital"
+          ],
+          "explanation": "Pharmacy and hospital are the only two places shown specifically used for health needs.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "books",
+          "answers": [
+            "books"
+          ],
+          "items": [
+            "library",
+            "bookstore"
+          ],
+          "explanation": "Library and bookstore are the only two places shown specifically centered on books.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "food",
+          "answers": [
+            "food"
+          ],
+          "items": [
+            "supermarket",
+            "restaurant"
+          ],
+          "explanation": "Supermarket and restaurant are the only two places shown specifically centered on food.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "small-body-actions": {
+      "title": "Small Body Actions",
+      "category_answers": [
+        "Small Body Actions",
+        "Body Movements",
+        "Quick Body Actions",
+        "Simple Gestures"
+      ],
+      "tags": [
+        "actions",
+        "body",
+        "communication"
+      ],
+      "items": [
+        {
+          "id": "blink",
+          "label": "Blink",
+          "answers": [
+            "Blink"
+          ]
+        },
+        {
+          "id": "wink",
+          "label": "Wink",
+          "answers": [
+            "Wink"
+          ]
+        },
+        {
+          "id": "nod",
+          "label": "Nod",
+          "answers": [
+            "Nod",
+            "Nod Head"
+          ]
+        },
+        {
+          "id": "shake-head",
+          "label": "Shake Head",
+          "answers": [
+            "Shake Head",
+            "Shake",
+            "Shake No"
+          ]
+        },
+        {
+          "id": "clap",
+          "label": "Clap",
+          "answers": [
+            "Clap",
+            "Applaud"
+          ]
+        },
+        {
+          "id": "snap-fingers",
+          "label": "Snap Fingers",
+          "answers": [
+            "Snap Fingers",
+            "Finger Snap",
+            "Snap"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "eyelids",
+          "answers": [
+            "eyelids"
+          ],
+          "items": [
+            "blink",
+            "wink"
+          ],
+          "explanation": "Blink and wink are the only two actions shown specifically moving the eyelids.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "neck",
+          "answers": [
+            "neck"
+          ],
+          "items": [
+            "nod",
+            "shake-head"
+          ],
+          "explanation": "Nod and shake head are the only two actions shown specifically moving the head through the neck.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "hands",
+          "answers": [
+            "hands"
+          ],
+          "items": [
+            "clap",
+            "snap-fingers"
+          ],
+          "explanation": "Clap and snap fingers are the only two actions shown specifically making a quick gesture with the hands.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "sound-actions": {
+      "title": "Sound Actions",
+      "category_answers": [
+        "Sound Actions",
+        "Making Sounds",
+        "Common Sound Verbs",
+        "Sounds People Make"
+      ],
+      "tags": [
+        "actions",
+        "sounds",
+        "communication"
+      ],
+      "items": [
+        {
+          "id": "hum",
+          "label": "Hum",
+          "answers": [
+            "Hum"
+          ]
+        },
+        {
+          "id": "sing",
+          "label": "Sing",
+          "answers": [
+            "Sing"
+          ]
+        },
+        {
+          "id": "laugh",
+          "label": "Laugh",
+          "answers": [
+            "Laugh",
+            "Laughter"
+          ]
+        },
+        {
+          "id": "cry",
+          "label": "Cry",
+          "answers": [
+            "Cry",
+            "Weep"
+          ]
+        },
+        {
+          "id": "knock",
+          "label": "Knock",
+          "answers": [
+            "Knock",
+            "Knock Door"
+          ]
+        },
+        {
+          "id": "ring",
+          "label": "Ring",
+          "answers": [
+            "Ring",
+            "Ring Bell"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "melody",
+          "answers": [
+            "melody"
+          ],
+          "items": [
+            "hum",
+            "sing"
+          ],
+          "explanation": "Hum and sing are the only two actions shown specifically making a melody.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "emotion",
+          "answers": [
+            "emotion"
+          ],
+          "items": [
+            "laugh",
+            "cry"
+          ],
+          "explanation": "Laugh and cry are the only two actions shown specifically expressing a strong emotion through sound.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "door",
+          "answers": [
+            "door"
+          ],
+          "items": [
+            "knock",
+            "ring"
+          ],
+          "explanation": "Knock and ring are the only two actions shown specifically used at a door.",
           "audit": "exclusive-among-six-v1"
         }
       ]

@@ -784,5 +784,65 @@
     "title": "Social Actions",
     "front": "pages/page_261.png",
     "back": "pages/page_262.png"
+  },
+  {
+    "id": "clothing-care-actions",
+    "title": "Clothing Care",
+    "front": "pages/page_263.png",
+    "back": "pages/page_264.png"
+  },
+  {
+    "id": "common-food-groups",
+    "title": "Common Foods",
+    "front": "pages/page_265.png",
+    "back": "pages/page_266.png"
+  },
+  {
+    "id": "everyday-basics",
+    "title": "Everyday Basics",
+    "front": "pages/page_267.png",
+    "back": "pages/page_268.png"
+  },
+  {
+    "id": "everyday-states",
+    "title": "Everyday States",
+    "front": "pages/page_269.png",
+    "back": "pages/page_270.png"
+  },
+  {
+    "id": "food-preparation-actions",
+    "title": "Food Preparation",
+    "front": "pages/page_271.png",
+    "back": "pages/page_272.png"
+  },
+  {
+    "id": "more-fresh-fruit",
+    "title": "More Fresh Fruit",
+    "front": "pages/page_273.png",
+    "back": "pages/page_274.png"
+  },
+  {
+    "id": "personal-qualities",
+    "title": "Personal Qualities",
+    "front": "pages/page_275.png",
+    "back": "pages/page_276.png"
+  },
+  {
+    "id": "places-in-town",
+    "title": "Places in Town",
+    "front": "pages/page_277.png",
+    "back": "pages/page_278.png"
+  },
+  {
+    "id": "small-body-actions",
+    "title": "Small Body Actions",
+    "front": "pages/page_279.png",
+    "back": "pages/page_280.png"
+  },
+  {
+    "id": "sound-actions",
+    "title": "Sound Actions",
+    "front": "pages/page_281.png",
+    "back": "pages/page_282.png"
   }
 ]

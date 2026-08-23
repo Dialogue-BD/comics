@@ -29,7 +29,7 @@
       "audio-match"
     ]
   },
-  "card_count": 131,
+  "card_count": 141,
   "pages": [
     {
       "id": "page_001",
@@ -1602,6 +1602,126 @@
       "image": "pages/page_262.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_263",
+      "image": "pages/page_263.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_264",
+      "image": "pages/page_264.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_265",
+      "image": "pages/page_265.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_266",
+      "image": "pages/page_266.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_267",
+      "image": "pages/page_267.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_268",
+      "image": "pages/page_268.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_269",
+      "image": "pages/page_269.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_270",
+      "image": "pages/page_270.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_271",
+      "image": "pages/page_271.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_272",
+      "image": "pages/page_272.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_273",
+      "image": "pages/page_273.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_274",
+      "image": "pages/page_274.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_275",
+      "image": "pages/page_275.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_276",
+      "image": "pages/page_276.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_277",
+      "image": "pages/page_277.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_278",
+      "image": "pages/page_278.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_279",
+      "image": "pages/page_279.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_280",
+      "image": "pages/page_280.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_281",
+      "image": "pages/page_281.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_282",
+      "image": "pages/page_282.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -2287,6 +2407,106 @@
       "game_tags": [
         "relationships",
         "actions",
+        "communication"
+      ]
+    },
+    {
+      "id": "clothing-care-actions",
+      "title": "Clothing Care",
+      "band_color": "blue",
+      "game_tags": [
+        "actions",
+        "clothing",
+        "home"
+      ]
+    },
+    {
+      "id": "common-food-groups",
+      "title": "Common Foods",
+      "band_color": "green",
+      "game_tags": [
+        "food",
+        "shopping",
+        "meals"
+      ]
+    },
+    {
+      "id": "everyday-basics",
+      "title": "Everyday Basics",
+      "band_color": "orange",
+      "game_tags": [
+        "actions",
+        "routines",
+        "daily-life"
+      ]
+    },
+    {
+      "id": "everyday-states",
+      "title": "Everyday States",
+      "band_color": "green",
+      "game_tags": [
+        "descriptions",
+        "health",
+        "daily-life"
+      ]
+    },
+    {
+      "id": "food-preparation-actions",
+      "title": "Food Preparation",
+      "band_color": "green",
+      "game_tags": [
+        "actions",
+        "food",
+        "kitchen"
+      ]
+    },
+    {
+      "id": "more-fresh-fruit",
+      "title": "More Fresh Fruit",
+      "band_color": "red",
+      "game_tags": [
+        "food",
+        "fruit",
+        "shopping"
+      ]
+    },
+    {
+      "id": "personal-qualities",
+      "title": "Personal Qualities",
+      "band_color": "green",
+      "game_tags": [
+        "descriptions",
+        "people",
+        "relationships"
+      ]
+    },
+    {
+      "id": "places-in-town",
+      "title": "Places in Town",
+      "band_color": "green",
+      "game_tags": [
+        "places",
+        "community",
+        "daily-life"
+      ]
+    },
+    {
+      "id": "small-body-actions",
+      "title": "Small Body Actions",
+      "band_color": "orange",
+      "game_tags": [
+        "actions",
+        "body",
+        "communication"
+      ]
+    },
+    {
+      "id": "sound-actions",
+      "title": "Sound Actions",
+      "band_color": "green",
+      "game_tags": [
+        "actions",
+        "sounds",
         "communication"
       ]
     }
