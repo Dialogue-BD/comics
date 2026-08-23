@@ -1,0 +1,1 @@
+- [Cloudflare worker binding types](cloudflare-worker-bindings.md) — Worker binding declarations must augment `Cloudflare.Env` for `cloudflare:workers` imports.
