@@ -5165,27 +5165,49 @@ function makePrediction(boxId, optsId, resultId, judge) {
     if (!running) return;
     if (idx >= order.length) { finish(); return; }
     var pair = order[idx];
+    /* Clear the previous item's feedback as the new word appears — leaving it up
+       made the correction look as though it belonged to the word now on screen. */
+    fbEl.className = 'pb-feedback';
+    fbEl.textContent = '';
     promptEl.textContent = pair[0];
     var distractors = shuffled(PAIRS.filter(function (q) { return q !== pair; })).slice(0, 3).map(function (q) { return q[1]; });
     var choices = shuffled(distractors.concat([pair[1]]));
     optsEl.innerHTML = choices.map(function (c) {
       return '<button class="opt" data-v="' + c.replace(/"/g, '&quot;') + '">' + c + '</button>';
     }).join('');
+
+    var answered = false;           /* the options stay on screen during the pause,
+                                       and without this a double-tap scored twice */
     $$('.opt', optsEl).forEach(function (b) {
       b.addEventListener('click', function () {
-        if (!running) return;
+        if (!running || answered) return;
+        answered = true;
         var ok = b.dataset.v === pair[1];
-        if (ok) { right++; fbEl.className = 'pb-feedback ok'; fbEl.textContent = '✓'; }
-        else {
+
+        /* Mark the buttons, not just the caption — the student needs to see which
+           one they hit and which one was right, at the place they were looking. */
+        $$('.opt', optsEl).forEach(function (o) {
+          o.disabled = true;
+          if (o.dataset.v === pair[1]) o.classList.add('correct');
+          else if (o === b) o.classList.add('wrong');
+        });
+
+        if (ok) {
+          right++;
+          fbEl.className = 'pb-feedback ok';
+          fbEl.textContent = '✓';
+        } else {
           wrong++; missed.push(pair);
           fbEl.className = 'pb-feedback no';
-          fbEl.textContent = '✗  ' + pair[0] + ' = ' + pair[1];
+          fbEl.textContent = '✗  ' + pair[0] + '  =  ' + pair[1];
         }
         Progress.hit('paraphrase', ok);
         if (!ok) Errors.add('paraphrase');
         scoreEl.textContent = right + ' ' + t('correct');
         idx++;
-        setTimeout(next, ok ? 180 : 900);
+        /* A wrong answer is the moment the learning happens, so hold it long
+           enough to actually read the pair. A right one moves straight on. */
+        setTimeout(next, ok ? 200 : 1400);
       });
     });
   }
@@ -5194,7 +5216,9 @@ function makePrediction(boxId, optsId, resultId, judge) {
     if (!running) return;
     running = false;
     clock.stop();
-    promptEl.textContent = right + ' in sixty seconds.';
+    promptEl.textContent = LANG === 'bn'
+      ? 'ষাট সেকেন্ডে ' + bnum(right) + 'টি সঠিক।'
+      : right + ' in sixty seconds.';
     optsEl.innerHTML = '';
     fbEl.textContent = '';
     var verdict = right >= 20 ? 'That is automatic recognition — exactly what you need under time.'
