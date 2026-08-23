@@ -704,6 +704,83 @@ body[data-lang="bn"] .mc-band, body[data-lang="bn"] .jump-head {
 body[data-lang="bn"] .btn, body[data-lang="bn"] .toggle-btn { line-height: 1.5; }
 .exam-en { font-family: var(--serif); }
 
+/* ══════════ BANGLA SIZING ══════════
+   Bangla sits smaller than Latin at the same px — its glyphs occupy less of
+   the em box — so text that reads fine in English is genuinely hard to read
+   in Bangla at the same size. Everything instructional is bumped, with a
+   ~13px floor on the micro-labels. Letter-spacing is removed because it pulls
+   Bangla conjuncts apart, and uppercase does nothing for the script. */
+body[data-lang="bn"] .card-label,
+body[data-lang="bn"] .mc-band,
+body[data-lang="bn"] .tri-stat .k,
+body[data-lang="bn"] .gauge-label,
+body[data-lang="bn"] .predict-h,
+body[data-lang="bn"] .shot-head,
+body[data-lang="bn"] .jump-head,
+body[data-lang="bn"] .check-card .cn,
+body[data-lang="bn"] .station-num,
+body[data-lang="bn"] .tag,
+body[data-lang="bn"] .extract .lbl,
+body[data-lang="bn"] .kw-badge,
+body[data-lang="bn"] .fr-q-type {
+  font-size: 0.84rem;
+  letter-spacing: normal;
+  text-transform: none;
+}
+body[data-lang="bn"] .card-intro,
+body[data-lang="bn"] .check-card .cd,
+body[data-lang="bn"] .trap-card .td,
+body[data-lang="bn"] .trap-card .te,
+body[data-lang="bn"] .mc-step .d,
+body[data-lang="bn"] .mc-kw .d,
+body[data-lang="bn"] .mc-check .a,
+body[data-lang="bn"] .sc-sub,
+body[data-lang="bn"] .jump-list a span span,
+body[data-lang="bn"] .tri-verdict,
+body[data-lang="bn"] .predict-q,
+body[data-lang="bn"] .method-caption,
+body[data-lang="bn"] .fng-rule,
+body[data-lang="bn"] .shot-fix,
+body[data-lang="bn"] .err-label,
+body[data-lang="bn"] .mc-table td,
+body[data-lang="bn"] .mc-rule,
+body[data-lang="bn"] .feedback,
+body[data-lang="bn"] .pair-instructions {
+  font-size: 0.99rem;
+  line-height: 1.8;
+}
+body[data-lang="bn"] .check-card .ct,
+body[data-lang="bn"] .trap-card .tt,
+body[data-lang="bn"] .mc-step .t,
+body[data-lang="bn"] .mc-check .q,
+body[data-lang="bn"] .mc-kw .h,
+body[data-lang="bn"] .sc-name,
+body[data-lang="bn"] .tri-name,
+body[data-lang="bn"] .jump-list a { font-size: 1.02rem; }
+body[data-lang="bn"] .btn,
+body[data-lang="bn"] .toggle-btn,
+body[data-lang="bn"] .opt { font-size: 0.94rem; letter-spacing: normal; }
+body[data-lang="bn"] .btn.sm,
+body[data-lang="bn"] .toggle-btn { font-size: 0.86rem; }
+body[data-lang="bn"] .station-sub { font-size: 1.08rem; }
+body[data-lang="bn"] .card-title { font-size: 1.22rem; }
+body[data-lang="bn"] .mc-table th { font-size: 0.86rem; letter-spacing: normal; text-transform: none; }
+body[data-lang="bn"] .score-pill { font-size: 0.9rem; }
+
+/* ══════════ TOAST ══════════
+   Several nav toggles change things thousands of pixels away — "Keys" reveals
+   answer keys whose nearest instance is 8,000px down the page, so from the
+   toolbar it looked broken. This says what actually happened. */
+.toast {
+  position: fixed; left: 50%; bottom: 88px; transform: translateX(-50%) translateY(12px);
+  background: var(--text); color: var(--bg); font-size: 0.86rem; font-weight: 700;
+  padding: 11px 20px; border-radius: 999px; z-index: 90;
+  box-shadow: 0 8px 24px -8px rgba(0,0,0,0.5);
+  opacity: 0; pointer-events: none; transition: opacity .18s, transform .18s;
+  max-width: min(92vw, 460px); text-align: center;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
 /* ══════════ QUESTION NAVIGATOR ══════════
    Real computer-delivered IELTS gives candidates a review row showing which
    questions are answered and which are flagged. On a phone it is the only
@@ -3005,7 +3082,31 @@ var BN = {
   "⬦ Guess first, then look": "⬦ আগে অনুমান করুন, তারপর দেখুন",
   "⬦ Before you press anything — commit": "⬦ কিছু চাপার আগে — সিদ্ধান্ত নিন",
   "FALSE — I can point at the contradiction": "FALSE — বিরোধী বাক্যে আঙুল রাখতে পারি",
-  "NOT GIVEN — there is nothing to point at": "NOT GIVEN — দেখানোর মতো কিছুই নেই"
+  "NOT GIVEN — there is nothing to point at": "NOT GIVEN — দেখানোর মতো কিছুই নেই",
+  "Question type": "প্রশ্নের ধরন",
+  "In passage order?": "প্যাসেজের ক্রমে?",
+  "What to do": "কী করবেন",
+  "Yes": "হ্যাঁ",
+  "No": "না",
+  "Yes*": "হ্যাঁ*",
+  "Do these last. First and last sentence of each paragraph.": "এগুলো সবার শেষে করুন। প্রতিটি অনুচ্ছেদের প্রথম ও শেষ বাক্য।",
+  "Do these last too — by then you have read most of the passage anyway.": "এগুলোও শেষে — ততক্ষণে প্যাসেজের বেশিরভাগ এমনিতেই পড়া হয়ে যাবে।",
+  "Answers march downwards. Each one you find shrinks the search for the next.": "উত্তরগুলো উপর থেকে নিচে সাজানো। একটি পেলেই পরেরটির খোঁজার জায়গা ছোট হয়।",
+  "Same, but about the writer's opinion, not the facts.": "একই, তবে তথ্য নয় — লেখকের মতামত নিয়ে।",
+  "Copy the words exactly. Count them against the limit.": "শব্দগুলো হুবহু তুলুন। সীমার সাথে মিলিয়ে গুনে নিন।",
+  "*Within its section. Find which part of the passage the summary covers first.": "*তার নিজের অংশের মধ্যে। আগে বের করুন সারসংক্ষেপটি প্যাসেজের কোন অংশ নিয়ে।",
+  "Scan for capital letters. The purest scanning task on the paper.": "বড় হাতের অক্ষর খুঁজুন। পরীক্ষার সবচেয়ে খাঁটি স্ক্যানিং কাজ।",
+  "Read every option. The distractor usually repeats the passage's exact words.": "প্রতিটি অপশন পড়ুন। ফাঁদ অপশনটি সাধারণত প্যাসেজের হুবহু শব্দ ব্যবহার করে।",
+  "Map Drill": "ম্যাপ ড্রিল",
+  "Locate Drill": "অবস্থান ড্রিল",
+  "Information Hunt": "তথ্য খোঁজা",
+  "The Full Run · mock": "পূর্ণ পরীক্ষা · মক",
+  "Paragraph-to-heading matching on Reading the Ice, plus the six locate-the-paragraph questions.": "“Reading the Ice”-এ অনুচ্ছেদ ও শিরোনাম মেলানো, সাথে ছয়টি অনুচ্ছেদ-খোঁজার প্রশ্ন।",
+  "Six \"which paragraph holds the answer?\" questions. Fast to mark, easy to repeat with any passage.": "ছয়টি “উত্তর কোন অনুচ্ছেদে?” প্রশ্ন। দ্রুত দেখা যায়, যেকোনো প্যাসেজে আবার ব্যবহার করা যায়।",
+  "The Northgate timetable and its six scanning questions — the pair race, on paper.": "Northgate টাইমটেবিল ও তার ছয়টি স্ক্যানিং প্রশ্ন — জোড়ায় প্রতিযোগিতা, কাগজে।",
+  "Six True / False / Not Given items with the four-point check. Press \"Round 2\" first to print the alternative set.": "চার-দফা যাচাইসহ ছয়টি True / False / Not Given প্রশ্ন। বিকল্প সেট প্রিন্ট করতে আগে “রাউন্ড ২” চাপুন।",
+  "The complete 13-question paper, with its passage. Whichever paper is selected in Station 7 is the one that prints — so you can set one in class and the other as homework.": "প্যাসেজসহ সম্পূর্ণ ১৩-প্রশ্নের পেপার। Station 7-এ যে পেপারটি বাছা আছে সেটিই প্রিন্ট হবে — একটি ক্লাসে, অন্যটি বাড়ির কাজে দিতে পারেন।",
+  "⏱ Ninety seconds on one question is your limit. Flag it, write your best guess, move on — and never leave a blank, because a wrong answer costs you nothing.": "⏱ একটি প্রশ্নে নব্বই সেকেন্ডই আপনার সীমা। চিহ্নিত করুন, সবচেয়ে সম্ভাব্য উত্তরটি লিখুন, এগিয়ে যান — আর কখনও খালি রাখবেন না, কারণ ভুল উত্তরে কিছু হারায় না।"
 };
 
 var LANG = 'en';
@@ -3034,7 +3135,8 @@ var I18N_SEL = [
   '.btn', '.toggle-btn', '.jump-head', '.shot-head', '.tri-verdict', '.shot-k',
   '.check-card .ct', '.check-card .cd', '.trap-card .tt', '.trap-card .td',
   '.mc-step .t', '.mc-step .d', '.mc-kw .h', '.mc-kw .d', '.mc-check .q', '.mc-check .a',
-  '.tri-name', '.tri-stat .k', '.predict-h', '.predict-q'
+  '.tri-name', '.tri-stat .k', '.predict-h', '.predict-q',
+  '.mc-table th', '.mc-table td', '.mc-rule', '.ws-card h4', '.ws-card p'
 ].join(',');
 
 function applyLang(l) {
@@ -3247,12 +3349,33 @@ var Resettable = [];
   var proj = $('#btnProjector'), notes = $('#btnNotes');
   proj.addEventListener('click', function () {
     document.body.classList.toggle('projector');
-    proj.classList.toggle('on', document.body.classList.contains('projector'));
+    var on = document.body.classList.contains('projector');
+    proj.classList.toggle('on', on);
+    toast(on ? '🖥️ Projector mode — type enlarged for the back of the room'
+             : '🖥️ Projector mode off');
   });
   notes.addEventListener('click', function () {
     document.body.classList.toggle('show-notes');
-    notes.classList.toggle('on', document.body.classList.contains('show-notes'));
+    var on = document.body.classList.contains('show-notes');
+    notes.classList.toggle('on', on);
+    toast(on
+      ? '📋 ' + $$('.tnote').length + ' teaching notes shown — one under each station heading'
+      : '📋 Teaching notes hidden');
   });
+
+  /* Toggles in the toolbar act on content far down the page. Say what happened. */
+  var toastEl = document.createElement('div');
+  toastEl.className = 'toast';
+  toastEl.setAttribute('role', 'status');
+  toastEl.setAttribute('aria-live', 'polite');
+  document.body.appendChild(toastEl);
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.innerHTML = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2600);
+  }
 
   var lang = $('#btnLang');
   lang.addEventListener('click', function () {
@@ -3261,6 +3384,9 @@ var Resettable = [];
     lang.textContent = toBn ? 'English' : 'বাংলা';
     lang.setAttribute('lang', toBn ? 'en' : 'bn');
     lang.classList.toggle('on', toBn);
+    toast(toBn
+      ? 'নির্দেশনা এখন বাংলায় · পরীক্ষার লেখা ইংরেজিতেই থাকবে'
+      : 'Instructions back in English');
   });
 
   var theme = $('#btnTheme');
@@ -3275,7 +3401,12 @@ var Resettable = [];
   var keys = $('#btnKeys');
   keys.addEventListener('click', function () {
     document.body.classList.toggle('show-keys');
-    keys.classList.toggle('on', document.body.classList.contains('show-keys'));
+    var on = document.body.classList.contains('show-keys');
+    keys.classList.toggle('on', on);
+    var n = $$('.answer-key').length;
+    toast(on
+      ? '🔑 ' + n + ' answer keys revealed — they sit at the foot of each drill card below'
+      : '🔑 Answer keys hidden again');
   });
 
   /* One button to clear the room between back-to-back classes. */
@@ -3286,6 +3417,7 @@ var Resettable = [];
     Resettable.forEach(function (fn) { try { fn(); } catch (e) {} });
     Progress.reset();
     Errors.reset();
+    toast('↺ Every drill cleared and ready for the next class');
     document.getElementById('crisis').scrollIntoView({ block: 'start' });
   });
 
