@@ -704,6 +704,29 @@ body[data-lang="bn"] .mc-band, body[data-lang="bn"] .jump-head {
 body[data-lang="bn"] .btn, body[data-lang="bn"] .toggle-btn { line-height: 1.5; }
 .exam-en { font-family: var(--serif); }
 
+/* ══════════ TEACHER CARDS ON A PHONE ══════════
+   Measured: Station 9 alone was 5,805px — about seven phone screens — of
+   printing and lesson planning that no student will ever use, and the
+   whole-class scan demo adds more. Folded away rather than deleted, because a
+   teacher may well be holding a phone. The student method card is deliberately
+   NOT folded: it is the one thing in that station a student should keep. */
+.fold-note { display: none; }
+@media (max-width: 760px) {
+  .teacher-card > *:not(.fold-note) { display: none; }
+  .teacher-card { padding: 0; border-style: dashed; background: var(--surface-2); }
+  .teacher-card.open { padding: 19px; border-style: solid; background: var(--surface); }
+  .teacher-card.open > * { display: revert; }
+  .teacher-card.open .fold-note { display: none; }
+  .fold-note {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    background: none; border: none; font-family: inherit; text-align: left;
+    padding: 15px 17px; cursor: pointer; color: var(--text-muted); font-size: 0.88rem;
+    min-height: 56px;
+  }
+  .fold-note b { color: var(--text); font-weight: 700; }
+  .fold-note .chev { margin-left: auto; color: var(--accent); font-weight: 800; white-space: nowrap; }
+}
+
 /* ══════════ BANGLA SIZING ══════════
    Bangla sits smaller than Latin at the same px — its glyphs occupy less of
    the em box — so text that reads fine in English is genuinely hard to read
@@ -1727,7 +1750,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 
       <div class="passage-box">
         <div class="passage" id="mPassage">
-          <p data-p="1">Beekeeping has quietly moved from the countryside into cities over the last two decades. In London alone, the number of registered hives rose from around 1,600 in 2008 to more than 7,400 by 2020, according to the London Beekeepers Association.</p>
+          <p data-p="1">Beekeeping has quietly moved from the countryside into cities over the last two decades. In London alone, the number of registered hives rose from around 1,600 in 2008 to more than 7,400 by 2020, according to figures collected by the city's beekeeping associations.</p>
           <p data-p="2">Supporters argue that urban bees benefit from a longer flowering season, since parks, gardens and even balconies bloom at different times across a city. Rooftop hives have appeared on buildings ranging from the Paris Opera House to hotels in New York.</p>
           <p data-p="3">Critics, however, warn that packing too many hives into a small area can actually harm wild bee populations by forcing them to compete for the same limited flowers. Some ecologists now recommend planting more flowers before adding more hives.</p>
         </div>
@@ -1742,6 +1765,8 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         <div class="think-h">🗣 What the reader is thinking</div>
         <p class="think-body" id="mThinkBody">—</p>
       </div>
+
+      <p class="dim" style="font-size:0.78rem; margin-top:10px">Original text written for this exercise · 120 words · the figures are illustrative, not sourced</p>
 
       <p class="method-caption" id="mCaption">Step 1 of 6 — press "▶ Play step 1" to begin. Use ← and → to move between steps.</p>
     </div>
@@ -1831,7 +1856,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
           <p data-para="B"><b class="para-key">B</b> What makes the ice valuable is what is trapped inside it. As snow compacts, it seals off pockets of the atmosphere, so each bubble is a physical sample of the air that existed when the snow fell. The ice itself carries further information: the ratio of oxygen isotopes in the frozen water varies with the temperature at which it condensed, allowing past temperatures to be reconstructed without any written record.</p>
           <p data-para="C"><b class="para-key">C</b> Reading the sequence depends on counting layers. In regions with heavy snowfall, individual years can be distinguished visually, much as tree rings are, and counted downwards. Deeper in the core, the layers thin under pressure until they can no longer be separated by eye, and researchers must instead match chemical signals — the ash from a known volcanic eruption, for instance — against dated events elsewhere.</p>
           <p data-para="D"><b class="para-key">D</b> The results reshaped climate science. Cores drilled at Vostok, and later at Dome C, showed that carbon dioxide concentrations and temperature had risen and fallen together across eight glacial cycles, spanning roughly 800,000 years. Crucially, they also showed that the concentrations reached during the twentieth century lay far outside the range of that entire period.</p>
-          <p data-para="E"><b class="para-key">E</b> The method has limits. Ice flows slowly downhill, so the deepest layers are stretched and folded, and near the bedrock the record can be scrambled beyond use. Nor is old ice evenly distributed: only a handful of sites are thought to preserve continuous ice older than a million years. Several international teams are now drilling in East Antarctica in the hope of recovering it.</p>
+          <p data-para="E"><b class="para-key">E</b> The method has limits. Ice flows slowly downhill, so the deepest layers are stretched and folded, and near the bedrock the record can be scrambled beyond use. Nor is old ice evenly distributed: only a handful of sites are thought to preserve continuous ice older than a million years. At one of these, Little Dome C in East Antarctica, an international team reached bedrock in 2025 and brought up ice believed to be at least 1.2 million years old.</p>
         </div>
       </div>
       <p class="dim" style="font-size:0.78rem; margin-top:10px">Original text written for this exercise · 5 paragraphs · <span id="iceWords">–</span> words</p>
@@ -1855,7 +1880,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         <p><b>B</b> &nbsp;What makes the ice valuable is what is trapped inside it. As snow compacts, it seals off pockets of the atmosphere, so each bubble is a physical sample of the air that existed when the snow fell. The ice itself carries further information: the ratio of oxygen isotopes in the frozen water varies with the temperature at which it condensed, allowing past temperatures to be reconstructed without any written record.</p>
         <p><b>C</b> &nbsp;Reading the sequence depends on counting layers. In regions with heavy snowfall, individual years can be distinguished visually, much as tree rings are, and counted downwards. Deeper in the core, the layers thin under pressure until they can no longer be separated by eye, and researchers must instead match chemical signals — the ash from a known volcanic eruption, for instance — against dated events elsewhere.</p>
         <p><b>D</b> &nbsp;The results reshaped climate science. Cores drilled at Vostok, and later at Dome C, showed that carbon dioxide concentrations and temperature had risen and fallen together across eight glacial cycles, spanning roughly 800,000 years. Crucially, they also showed that the concentrations reached during the twentieth century lay far outside the range of that entire period.</p>
-        <p><b>E</b> &nbsp;The method has limits. Ice flows slowly downhill, so the deepest layers are stretched and folded, and near the bedrock the record can be scrambled beyond use. Nor is old ice evenly distributed: only a handful of sites are thought to preserve continuous ice older than a million years. Several international teams are now drilling in East Antarctica in the hope of recovering it.</p>
+        <p><b>E</b> &nbsp;The method has limits. Ice flows slowly downhill, so the deepest layers are stretched and folded, and near the bedrock the record can be scrambled beyond use. Nor is old ice evenly distributed: only a handful of sites are thought to preserve continuous ice older than a million years. At one of these, Little Dome C in East Antarctica, an international team reached bedrock in 2025 and brought up ice believed to be at least 1.2 million years old.</p>
       </div>
 
       <div class="passage-box" style="margin-bottom:16px; background:var(--surface-3)">
@@ -1899,7 +1924,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         <p><b>B</b> &nbsp;What makes the ice valuable is what is trapped inside it. As snow compacts, it seals off pockets of the atmosphere, so each bubble is a physical sample of the air that existed when the snow fell. The ice itself carries further information: the ratio of oxygen isotopes in the frozen water varies with the temperature at which it condensed, allowing past temperatures to be reconstructed without any written record.</p>
         <p><b>C</b> &nbsp;Reading the sequence depends on counting layers. In regions with heavy snowfall, individual years can be distinguished visually, much as tree rings are, and counted downwards. Deeper in the core, the layers thin under pressure until they can no longer be separated by eye, and researchers must instead match chemical signals — the ash from a known volcanic eruption, for instance — against dated events elsewhere.</p>
         <p><b>D</b> &nbsp;The results reshaped climate science. Cores drilled at Vostok, and later at Dome C, showed that carbon dioxide concentrations and temperature had risen and fallen together across eight glacial cycles, spanning roughly 800,000 years. Crucially, they also showed that the concentrations reached during the twentieth century lay far outside the range of that entire period.</p>
-        <p><b>E</b> &nbsp;The method has limits. Ice flows slowly downhill, so the deepest layers are stretched and folded, and near the bedrock the record can be scrambled beyond use. Nor is old ice evenly distributed: only a handful of sites are thought to preserve continuous ice older than a million years. Several international teams are now drilling in East Antarctica in the hope of recovering it.</p>
+        <p><b>E</b> &nbsp;The method has limits. Ice flows slowly downhill, so the deepest layers are stretched and folded, and near the bedrock the record can be scrambled beyond use. Nor is old ice evenly distributed: only a handful of sites are thought to preserve continuous ice older than a million years. At one of these, Little Dome C in East Antarctica, an international team reached bedrock in 2025 and brought up ice believed to be at least 1.2 million years old.</p>
       </div>
 
       <div id="locateList"></div>
@@ -1977,7 +2002,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       Demo first on the big screen: read the prompt aloud, then say <b>"which paragraph — shout it"</b> before anyone hunts. Only then reveal. Insist on the two-move habit: <i>choose the paragraph, then scan it</i>. Students who skip straight to hunting will beat the class on question one and lose badly by question five. For the pair race, one student holds the phone and reads prompts aloud while the other searches, then they swap.
     </div>
 
-    <div class="card">
+    <div class="card teacher-card" data-fold="A whole-class demo your teacher runs on the big screen">
       <div class="card-label">🖥️ Demo — Find it fast</div>
       <div class="card-title">Six facts hidden in <i>Reading the Ice</i></div>
       <div class="scan-target" id="scanPrompt">Press <b>Start</b> to reveal the first thing to find.</div>
@@ -2282,6 +2307,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         <div id="scVerdictBody"></div>
       </div>
       <div class="btn-row no-print" style="margin-top:18px">
+        <a class="btn sec sm" href="#methodCard">🪪 Get the method card</a>
         <button class="btn ghost sm" id="scReset">Clear my results</button>
       </div>
     </div>
@@ -2309,7 +2335,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 <section class="station" id="worksheets">
   <div class="wrap">
     <div class="station-head">
-      <div class="tags"><span class="tag print">🖨️ Printable</span><span class="tag pairs">👥 Pairs</span></div>
+      <div class="tags"><span class="tag print">🖨️ Printable</span><span class="tag pairs">👥 Pairs</span><span class="tag" style="background:var(--surface-3); color:var(--text-dim)">Mostly for your teacher</span></div>
       <div class="station-num">Station 9</div>
       <h2>Worksheets &amp; Lesson Plan</h2>
       <p class="station-sub">Paper versions of everything, for when there is no phone or no data. Answer key at the foot of each — cut it off before handing out.</p>
@@ -2372,7 +2398,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="btn-row no-print" style="margin-top:16px"><button class="btn sm sec" data-print="methodCard">🖨️ Print the student card</button></div>
     </div>
 
-    <div class="card">
+    <div class="card teacher-card" data-fold="Printing — for your teacher, on a computer">
       <div class="card-label">🖨️ One-page worksheets</div>
       <div class="ws-grid">
         <div class="ws-card">
@@ -2403,7 +2429,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       </div>
     </div>
 
-    <div class="card">
+    <div class="card teacher-card" data-fold="The lesson plan — for your teacher">
       <div class="card-label">📋 The lesson</div>
       <div class="card-title">A 90-minute sequence, and how to cut it down</div>
       <p class="card-intro">The arc is deliberate: create the need, name the concept, show the method, drill the parts, then assemble under pressure and diagnose. Skipping the last two rungs is the commonest way this kind of lesson fails.</p>
@@ -2479,8 +2505,8 @@ var CONTENT = {
       note: '<b>Volcanic ash</b> is a rare, specific noun phrase — perfect to scan for. <b>date</b> is the idea word, and note the passage never uses it: it says "match chemical signals against dated events". That is the paraphrase problem, which Part B drills.'
     },
     {
-      tokens: [['Ice',''],['more',''],['than',''],['one','c'],['million','c'],['years','c'],['old',''],['has',''],['already','i'],['been',''],['recovered.','']],
-      note: '<b>one million years</b> is your search target. But the mark is won by <b>already</b> — the passage says teams "are now drilling in the hope of recovering it", which means it has <i>not</i> been recovered. Scanning finds the sentence; the idea word decides the answer. (This statement is FALSE.)'
+      tokens: [['Ice',''],['more',''],['than',''],['one','c'],['million','c'],['years','c'],['old',''],['has',''],['still','i'],['not','i'],['been',''],['recovered.','']],
+      note: '<b>one million years</b> is your search target. But the mark is won by <b>still not</b> — the passage says a team reached bedrock at Little Dome C in 2025 and brought up ice at least 1.2 million years old. It <i>has</i> been recovered, so the statement is FALSE. Scanning finds the sentence; the idea words decide the answer.'
     }
   ],
 
@@ -2647,8 +2673,8 @@ var CONTENT = {
       why: 'A volcanic eruption is mentioned as a dating marker. Its frequency, and anyone’s expectations about it, are never discussed.' },
     { c: 'Twentieth-century carbon dioxide levels sat comfortably within the range of the previous 800,000 years.', a: 'FALSE',
       why: '"lay far outside the range of that entire period". Same topic, opposite direction — the classic trap.' },
-    { c: 'The teams drilling in East Antarctica expect to finish within five years.', a: 'NOT GIVEN',
-      why: 'We are told they are drilling and why. No timescale for finishing is given anywhere.' }
+    { c: 'The Little Dome C core cost more to obtain than any earlier Antarctic drilling project.', a: 'NOT GIVEN',
+      why: 'The site, the year, the depth reached and the age of the ice are all given. Cost is never mentioned, so there is nothing to compare against.' }
   ],
 
   /* ── Station 7 · the mock paper ── */
@@ -2778,7 +2804,7 @@ var CONTENT = {
       claim: 'All Antarctic sites contain ice more than a million years old.',
       a: 'FALSE', trap: '⚖️ Qualifier Swap',
       why: '"Only a handful" versus "all". The topic is identical and the sentence is easy to find — which is exactly why the trap works. Check 3 fails.' },
-    { text: 'Drilling teams extract this ice in cylindrical sections roughly ten centimetres across, raising them to the surface metre by metre.',
+    { text: 'Drilling teams extract this ice in cylindrical sections roughly ten centimetres across, called cores, raising them to the surface metre by metre.',
       claim: 'Extracting a complete core takes several months of work.',
       a: 'NOT GIVEN', trap: null,
       why: 'The passage describes how cores are extracted but never says how long it takes. You cannot point to a sentence that contradicts this — so it is NOT GIVEN, not FALSE. Not knowing is not the same as being contradicted.' },
@@ -2786,10 +2812,10 @@ var CONTENT = {
       claim: 'Changes in oxygen isotopes cause the temperature to vary.',
       a: 'FALSE', trap: '🔁 Reversed Cause',
       why: 'Both elements are correct and both are in the sentence — only the arrow is turned around. Temperature determines the isotope ratio, not the reverse. Read for what causes what, not just for which words appear.' },
-    { text: 'Several international teams are now drilling in East Antarctica in the hope of recovering it.',
-      claim: 'The East Antarctic drilling projects are funded by private companies.',
+    { text: 'At one of these, Little Dome C in East Antarctica, an international team reached bedrock in 2025 and brought up ice believed to be at least 1.2 million years old.',
+      claim: 'The Little Dome C project was funded by private companies.',
       a: 'NOT GIVEN', trap: null,
-      why: 'The passage mentions who is drilling and where, but says nothing at all about funding. There is no contradicting sentence to point at.' }
+      why: 'The passage gives the site, the year, who reached it and the age of the ice — and says nothing whatever about funding. There is no contradicting sentence to point at.' }
   ], [
     { text: 'Rooftop hives have appeared on buildings ranging from the Paris Opera House to hotels in New York.',
       claim: 'Hives have been placed on buildings in more than one country.',
@@ -3106,7 +3132,13 @@ var BN = {
   "The Northgate timetable and its six scanning questions — the pair race, on paper.": "Northgate টাইমটেবিল ও তার ছয়টি স্ক্যানিং প্রশ্ন — জোড়ায় প্রতিযোগিতা, কাগজে।",
   "Six True / False / Not Given items with the four-point check. Press \"Round 2\" first to print the alternative set.": "চার-দফা যাচাইসহ ছয়টি True / False / Not Given প্রশ্ন। বিকল্প সেট প্রিন্ট করতে আগে “রাউন্ড ২” চাপুন।",
   "The complete 13-question paper, with its passage. Whichever paper is selected in Station 7 is the one that prints — so you can set one in class and the other as homework.": "প্যাসেজসহ সম্পূর্ণ ১৩-প্রশ্নের পেপার। Station 7-এ যে পেপারটি বাছা আছে সেটিই প্রিন্ট হবে — একটি ক্লাসে, অন্যটি বাড়ির কাজে দিতে পারেন।",
-  "⏱ Ninety seconds on one question is your limit. Flag it, write your best guess, move on — and never leave a blank, because a wrong answer costs you nothing.": "⏱ একটি প্রশ্নে নব্বই সেকেন্ডই আপনার সীমা। চিহ্নিত করুন, সবচেয়ে সম্ভাব্য উত্তরটি লিখুন, এগিয়ে যান — আর কখনও খালি রাখবেন না, কারণ ভুল উত্তরে কিছু হারায় না।"
+  "⏱ Ninety seconds on one question is your limit. Flag it, write your best guess, move on — and never leave a blank, because a wrong answer costs you nothing.": "⏱ একটি প্রশ্নে নব্বই সেকেন্ডই আপনার সীমা। চিহ্নিত করুন, সবচেয়ে সম্ভাব্য উত্তরটি লিখুন, এগিয়ে যান — আর কখনও খালি রাখবেন না, কারণ ভুল উত্তরে কিছু হারায় না।",
+  "Show": "দেখুন",
+  "Mostly for your teacher": "মূলত শিক্ষকের জন্য",
+  "🪪 Get the method card": "🪪 মেথড কার্ড নিন",
+  "A whole-class demo your teacher runs on the big screen": "বড় পর্দায় শিক্ষকের চালানো ডেমো",
+  "Printing — for your teacher, on a computer": "প্রিন্ট — শিক্ষকের জন্য, কম্পিউটারে",
+  "The lesson plan — for your teacher": "পাঠ পরিকল্পনা — শিক্ষকের জন্য"
 };
 
 var LANG = 'en';
@@ -3451,6 +3483,19 @@ var Resettable = [];
     document.body.classList.remove('print-one');
     $$('.print-section').forEach(function (e) { e.classList.remove('print-section'); });
     $$('.print-card').forEach(function (e) { e.classList.remove('print-card'); });
+  });
+})();
+
+/* ═══════════════════ TEACHER CARDS ON A PHONE ═══════════════════ */
+(function () {
+  $$('.teacher-card').forEach(function (card) {
+    var btn = document.createElement('button');
+    btn.className = 'fold-note';
+    btn.type = 'button';
+    btn.innerHTML = '<span><b>' + card.dataset.fold + '</b></span>' +
+                    '<span class="chev">' + t('Show') + ' ›</span>';
+    btn.addEventListener('click', function () { card.classList.add('open'); });
+    card.insertBefore(btn, card.firstChild);
   });
 })();
 
@@ -3947,7 +3992,7 @@ var Resettable = [];
         opts.forEach(function (o) { o.disabled = true; });
         b.classList.add('correct');
         f.className = 'feedback show ok';
-        f.textContent = '✓ ¶2 is the case for urban hives, and rooftop buildings sit inside that argument. You have narrowed 120 words to about 45 without reading any of them.';
+        f.textContent = '✓ ¶2 is the case for urban hives, and rooftop buildings sit inside that argument. You have narrowed 120 words to about 40 without reading any of them.';
         complete(s1); unlock(s2);
       });
     });
@@ -4057,7 +4102,7 @@ var Resettable = [];
 
   var TITLE = 'Urban beekeeping';
   var PARAS = [
-    "Beekeeping has quietly moved from the countryside into cities over the last two decades. In London alone, the number of registered hives rose from around 1,600 in 2008 to more than 7,400 by 2020, according to the London Beekeepers Association.",
+    "Beekeeping has quietly moved from the countryside into cities over the last two decades. In London alone, the number of registered hives rose from around 1,600 in 2008 to more than 7,400 by 2020, according to figures collected by the city's beekeeping associations.",
     "Supporters argue that urban bees benefit from a longer flowering season, since parks, gardens and even balconies bloom at different times across a city. Rooftop hives have appeared on buildings ranging from the Paris Opera House to hotels in New York.",
     "Critics, however, warn that packing too many hives into a small area can actually harm wild bee populations by forcing them to compete for the same limited flowers. Some ecologists now recommend planting more flowers before adding more hives."
   ];
