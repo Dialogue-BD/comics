@@ -552,7 +552,7 @@
     $("#student-phase-label").textContent = phase.label;
     $("#student-phase-short").textContent = phase.short;
     if (state.lastPhaseId !== session.status) {
-      $("#phase-compass").open = false;
+      $("#phase-compass").open = ["report", "reflect", "ended"].includes(session.status);
       state.lastPhaseId = session.status;
     }
     $("#student-topic-category").textContent = topic.category;
@@ -567,7 +567,7 @@
     renderPrompt(topic);
     renderCompass(topic);
 
-    const reportVisible = ["report", "reflect", "ended"].includes(session.status);
+    const reportVisible = session.status === "report";
     $("#group-report").hidden = !reportVisible;
     $("#reflection-card").hidden = !["reflect", "ended"].includes(session.status);
     if (reportVisible) {
@@ -670,7 +670,6 @@
       }
     }
     if (joinCode) {
-      $("#join-code").value = joinCode;
       const token = localStorage.getItem(participantStorageKey(joinCode));
       if (token) {
         try {
@@ -694,14 +693,8 @@
   }
 
   function bindEvents() {
-    $("#join-code").addEventListener("input", (event) => { event.target.value = event.target.value.replace(/[^a-z0-9]/gi, "").toUpperCase().slice(0, 5); });
-    $("#join-lookup-form").addEventListener("submit", async (event) => {
-      event.preventDefault();
-      try { await lookupSession($("#join-code").value); } catch (error) { showToast(error.message); }
-    });
     $("#create-session-form").addEventListener("submit", createSession);
     $("#join-session-form").addEventListener("submit", joinRoom);
-    $("#picker-back").addEventListener("click", () => { state.mode = "landing"; clearInterval(state.pollTimer); updateUrl(); showView("landing-view"); });
     $("#copy-join-link").addEventListener("click", async () => {
       try { await navigator.clipboard.writeText(makeJoinUrl()); showToast("Join link copied"); } catch (_) { showToast(makeJoinUrl()); }
     });

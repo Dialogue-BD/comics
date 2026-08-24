@@ -27,28 +27,13 @@
       <div class="hero">
         <p class="eyebrow">Small groups · real voices · useful English</p>
         <h1>Give every group the<br><em>language to take part.</em></h1>
-        <p class="hero-copy">Join a teacher-led discussion room. Your phone supplies the words, sentence patterns, and prompts—the conversation stays face to face.</p>
+        <p class="hero-copy">Open one teacher-led session, then let each group use a shared phone for language support while the conversation stays face to face.</p>
         <div class="hero-path" aria-label="Activity flow">
-          <span><b>1</b> Scan</span><i></i><span><b>2</b> Choose a room</span><i></i><span><b>3</b> Discuss</span><i></i><span><b>4</b> Report</span>
+          <span><b>1</b> Create rooms</span><i></i><span><b>2</b> Students scan</span><i></i><span><b>3</b> Discuss</span><i></i><span><b>4</b> Report</span>
         </div>
       </div>
 
       <div class="entry-grid">
-        <section class="entry-card join-card" aria-labelledby="join-heading">
-          <div class="entry-icon join-icon" aria-hidden="true">→</div>
-          <p class="card-kicker">Student entrance</p>
-          <h2 id="join-heading">Join your discussion</h2>
-          <p class="muted">Enter the five-character code on the classroom screen.</p>
-          <form id="join-lookup-form" class="stack-form">
-            <label for="join-code">Session code</label>
-            <div class="code-entry">
-              <input id="join-code" name="code" inputmode="text" autocomplete="off" maxlength="5" placeholder="ABCDE" aria-describedby="join-code-help" required>
-              <button class="primary-button" type="submit">Find rooms</button>
-            </div>
-            <small id="join-code-help">Letters and numbers · no spaces</small>
-          </form>
-        </section>
-
         <section class="entry-card teacher-card" aria-labelledby="teacher-heading">
           <div class="entry-icon teacher-icon" aria-hidden="true">✦</div>
           <p class="card-kicker">Teacher console</p>
@@ -99,7 +84,6 @@
 
     <section class="view picker-view" id="picker-view" aria-labelledby="picker-heading">
       <div class="narrow-shell">
-        <button class="text-button" id="picker-back" type="button">← Enter a different code</button>
         <div class="section-heading">
           <p class="eyebrow">Session <strong id="picker-code">—</strong></p>
           <h1 id="picker-heading">Choose your room</h1>
@@ -205,6 +189,39 @@
                 <div><span>Has everyone had a genuine chance to speak?</span><span>Did someone ask why or how?</span><span>Did you test a different view?</span></div>
               </div>
               <button class="secondary-button wide" id="next-room-card" type="button" hidden>Another inquiry question →</button>
+
+              <section class="group-report" id="group-report" hidden>
+                <div class="report-heading"><p class="eyebrow">Room report</p><h2>What did your group discover?</h2><p>Use any available phone to draft this together. Preserve important disagreement rather than forcing consensus.</p></div>
+                <form id="report-form">
+                  <label>Where did the group finish?
+                    <select id="report-position">
+                      <option value="Broad agreement">Broad agreement</option>
+                      <option value="Mixed views" selected>Mixed views</option>
+                      <option value="Strong disagreement">Strong disagreement</option>
+                      <option value="More questions than answers">More questions than answers</option>
+                    </select>
+                  </label>
+                  <label>Strongest insight<textarea id="report-insight" maxlength="420" placeholder="The most important thing we noticed was…"></textarea></label>
+                  <label>What we agreed about<textarea id="report-agreement" maxlength="420" placeholder="Most of us agreed that…"></textarea></label>
+                  <label>An unresolved or minority view<textarea id="report-unresolved" maxlength="420" placeholder="We could not agree about…"></textarea></label>
+                  <label>Our recommendation<textarea id="report-recommendation" maxlength="420" placeholder="We recommend…"></textarea></label>
+                  <button class="primary-button wide" type="submit">Save our room report</button>
+                  <p class="save-status" id="report-status" role="status"></p>
+                </form>
+              </section>
+
+              <section class="reflection-card" id="reflection-card" hidden>
+                <p class="eyebrow">Optional room reflection</p>
+                <h2>What strengthened the discussion?</h2>
+                <form id="reflection-form">
+                  <label>Which idea changed or complicated the group’s thinking?<textarea id="reflection-teammate" maxlength="280" placeholder="We reconsidered… when someone pointed out…"></textarea></label>
+                  <label>What helped more people participate?<textarea id="reflection-teamwork" maxlength="280" placeholder="The discussion improved when we…"></textarea></label>
+                  <input id="reflection-phrase" type="hidden">
+                  <input id="reflection-next" type="hidden">
+                  <button class="primary-button wide" type="submit">Save room reflection</button>
+                  <p class="save-status" id="reflection-status" role="status"></p>
+                </form>
+              </section>
             </div>
           </details>
 
@@ -233,38 +250,6 @@
             <section class="scaffold-panel" id="panel-questions"><p class="support-note">Use these only when the conversation needs a new direction.</p><div class="prompt-card" id="live-prompt-card"></div><button class="secondary-button wide" id="next-prompt" type="button">Another inquiry question →</button><div class="socratic-bank" id="socratic-bank"></div><div class="perspective-box" id="perspective-box"></div></section>
           </div>
 
-          <section class="group-report" id="group-report" hidden>
-            <div class="report-heading"><p class="eyebrow">Room report</p><h2>What did your group discover?</h2><p>Use any available phone to draft this together. Preserve important disagreement rather than forcing consensus.</p></div>
-            <form id="report-form">
-              <label>Where did the group finish?
-                <select id="report-position">
-                  <option value="Broad agreement">Broad agreement</option>
-                  <option value="Mixed views" selected>Mixed views</option>
-                  <option value="Strong disagreement">Strong disagreement</option>
-                  <option value="More questions than answers">More questions than answers</option>
-                </select>
-              </label>
-              <label>Strongest insight<textarea id="report-insight" maxlength="420" placeholder="The most important thing we noticed was…"></textarea></label>
-              <label>What we agreed about<textarea id="report-agreement" maxlength="420" placeholder="Most of us agreed that…"></textarea></label>
-              <label>An unresolved or minority view<textarea id="report-unresolved" maxlength="420" placeholder="We could not agree about…"></textarea></label>
-              <label>Our recommendation<textarea id="report-recommendation" maxlength="420" placeholder="We recommend…"></textarea></label>
-              <button class="primary-button wide" type="submit">Save our room report</button>
-              <p class="save-status" id="report-status" role="status"></p>
-            </form>
-          </section>
-
-          <section class="reflection-card" id="reflection-card" hidden>
-            <p class="eyebrow">Optional room reflection</p>
-            <h2>What strengthened the discussion?</h2>
-            <form id="reflection-form">
-              <label>Which idea changed or complicated the group’s thinking?<textarea id="reflection-teammate" maxlength="280" placeholder="We reconsidered… when someone pointed out…"></textarea></label>
-              <label>What helped more people participate?<textarea id="reflection-teamwork" maxlength="280" placeholder="The discussion improved when we…"></textarea></label>
-              <input id="reflection-phrase" type="hidden">
-              <input id="reflection-next" type="hidden">
-              <button class="primary-button wide" type="submit">Save room reflection</button>
-              <p class="save-status" id="reflection-status" role="status"></p>
-            </form>
-          </section>
         </div>
       </div>
     </section>
