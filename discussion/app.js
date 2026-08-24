@@ -24,7 +24,6 @@
     perspectiveIndex: 0,
     lastTopicId: null,
     lastSupportLevel: null,
-    editingTargets: false,
     clockOffsetMs: 0,
     pollTimer: null,
     clockTimer: null,
@@ -61,7 +60,11 @@
     });
     let payload = {};
     try { payload = await response.json(); } catch (_) { /* handled below */ }
-    if (!response.ok) throw new Error(payload.error || "The classroom server did not respond.");
+    if (!response.ok) {
+      const error = new Error(payload.error || "The classroom server did not respond.");
+      error.status = response.status;
+      throw error;
+    }
     return payload;
   }
 
@@ -75,6 +78,19 @@
     url.search = "";
     Object.entries(params).forEach(([key, value]) => value && url.searchParams.set(key, value));
     history.replaceState({}, "", url);
+  }
+
+  function makeTeacherControlUrl() {
+    const url = new URL("./", window.location.href);
+    url.search = "";
+    url.hash = "";
+    url.searchParams.set("teacher", state.code);
+    url.hash = new URLSearchParams({ control: state.teacherToken }).toString();
+    return url.toString();
+  }
+
+  function setTeacherControlUrl() {
+    history.replaceState({}, "", makeTeacherControlUrl());
   }
 
   function participantStorageKey(code) { return `fgd-participant:${code}`; }
@@ -155,6 +171,27 @@
       if (state.mode === "student") renderStudent();
       if (state.mode === "picker") renderRoomPicker();
     } catch (error) {
+      if ([403, 404].includes(error.status) && state.mode === "teacher") {
+        localStorage.removeItem(teacherStorageKey(state.code));
+        clearInterval(state.pollTimer);
+        state.mode = "landing";
+        updateUrl();
+        showView("landing-view");
+      } else if ([403, 404].includes(error.status) && state.mode === "student") {
+        const roomCode = state.code;
+        localStorage.removeItem(participantStorageKey(state.code));
+        clearInterval(state.pollTimer);
+        state.mode = "landing";
+        updateUrl({ code: roomCode });
+        showView("landing-view");
+        if (error.status === 403) {
+          try {
+            await lookupSession(roomCode);
+            showToast("Choose your room and enter the same name to rejoin.");
+            return;
+          } catch (_) { /* show the original actionable error below */ }
+        }
+      }
       if (state.mode !== "picker") showToast(error.message);
     }
   }
@@ -163,7 +200,7 @@
     const normalized = String(code || "").replace(/\s+/g, "").toUpperCase().slice(0, 5);
     if (normalized.length !== 5) throw new Error("Enter the five-character session code.");
     const session = await api(`../api/fgd/session?code=${encodeURIComponent(normalized)}`);
-    if (session.status !== "lobby") throw new Error("This session has already started. Ask your teacher for help.");
+    if (session.status === "ended") throw new Error("This discussion has finished. Ask your teacher for the current code.");
     state.code = normalized;
     state.session = session;
     state.mode = "picker";
@@ -182,10 +219,6 @@
 
   function renderRoomPicker() {
     if (!state.session) return;
-    if (state.session.status !== "lobby") {
-      showToast("The teacher has started. Ask for help if you have not joined.");
-      return;
-    }
     const grid = $("#room-picker-grid");
     grid.innerHTML = state.session.rooms.map((room) => {
       const full = room.participantCount >= room.capacity;
@@ -233,7 +266,7 @@
       state.mode = "teacher";
       localStorage.setItem(teacherStorageKey(state.code), state.teacherToken);
       setClock(state.session);
-      updateUrl({ teacher: state.code });
+      setTeacherControlUrl();
       renderTeacher(true);
       showView("teacher-view");
       startPolling();
@@ -269,6 +302,7 @@
       showView("student-view");
       startPolling();
       startClock();
+      if (result.rejoined) showToast("Welcome back—your room has been restored");
     } catch (error) {
       showToast(error.message);
       await refreshSession();
@@ -348,19 +382,17 @@
     $("#teacher-room-grid").innerHTML = session.rooms.map((room) => {
       const topic = topicById(room.topicId);
       const participantHtml = room.participants?.length
-        ? room.participants.map((person) => `<span class="participant-chip"><b>${escapeHtml(person.name)}</b> · ${escapeHtml(person.role)} · ${person.contributions} move${person.contributions === 1 ? "" : "s"}${person.hasTargets ? " · 🎯" : ""}</span>`).join("")
+        ? room.participants.map((person) => `<span class="participant-chip"><b>${escapeHtml(person.name)}</b> · ${escapeHtml(person.role)}</span>`).join("")
         : `<span class="participant-chip">Waiting for students</span>`;
       const report = room.report || {};
       const reportHtml = report.strongestInsight || report.recommendation
         ? `<div class="report-preview"><strong>${escapeHtml(report.position || "Room report")}</strong>${escapeHtml(report.strongestInsight || report.recommendation)}</div>`
         : "";
-      const moveHtml = Object.entries(room.moveCounts || {}).filter(([, count]) => count > 0).map(([move, count]) => `<span>${escapeHtml(FGD_EVIDENCE_MOVES[move]?.label || move)} · ${count}</span>`).join("");
       return `<article class="teacher-room-card ${room.helpRequested ? "needs-help" : ""}">
         <div class="room-card-head"><span class="room-number-badge"><i></i> Room ${room.number}</span><span class="occupancy">${room.participantCount}/${room.capacity}</span></div>
         <h3 class="${lobby ? "topic-secret" : ""}">${lobby ? "Topic waiting under wraps" : escapeHtml(topic?.title || "Discussion topic")}</h3>
         <div class="participant-chips">${participantHtml}</div>
-        <div class="room-stats"><span>🎯 ${room.targetCount || 0}/${room.participantCount} targets</span><span>✓ ${room.contributionCount || 0} talk moves</span><span>☑ ${room.approvalCount || 0} report approvals</span><span>🌱 ${room.exitCount || 0} reflections</span></div>
-        ${moveHtml ? `<div class="move-evidence">${moveHtml}</div>` : ""}
+        <div class="room-stats"><span>☑ ${room.approvalCount || 0} report approvals</span><span>🌱 ${room.exitCount || 0} optional reflections</span></div>
         ${room.helpRequested ? `<div class="help-banner"><span>Room ${room.number} is asking for help</span><button type="button" data-clear-help="${room.number}">Clear</button></div>` : ""}
         ${reportHtml}
         ${observationMarkup(room)}
@@ -412,8 +444,8 @@
     const role = FGD_ROLES[roleName];
     if (!target || !role) return;
     target.innerHTML = compact
-      ? `<span style="font-size:1.5rem">${role.icon}</span><p style="margin:0 0 0 10px"><small style="color:var(--ink-soft)">Your discussion role</small><strong style="display:block">${escapeHtml(roleName)}</strong></p>`
-      : `<span class="role-icon">${role.icon}</span><p class="eyebrow" style="color:#9fd1c8;margin-top:10px">Your discussion role</p><h2>${escapeHtml(roleName)}</h2><p>${escapeHtml(role.job)}</p><ul>${role.phrases.map((phrase) => `<li>${escapeHtml(phrase)}</li>`).join("")}</ul>`;
+      ? `<span style="font-size:1.5rem">${role.icon}</span><p style="margin:0 0 0 10px"><small style="color:var(--ink-soft)">Your shared responsibility</small><strong style="display:block">${escapeHtml(roleName)}</strong></p>`
+      : `<span class="role-icon">${role.icon}</span><p class="eyebrow" style="color:#9fd1c8;margin-top:10px">Your shared responsibility</p><h2>${escapeHtml(roleName)}</h2><p>${escapeHtml(role.job)}</p><p><strong>This role gives you responsibility, not authority.</strong></p><ul>${role.phrases.map((phrase) => `<li>${escapeHtml(phrase)}</li>`).join("")}</ul>`;
     if (compact) target.style.display = "flex";
   }
 
@@ -421,9 +453,9 @@
     const room = currentRoom();
     const phase = state.session.status;
     if (phase === "understand") return {
-      label: "Prepare individually, then check together",
-      text: "Read the topic below and pin one word, phrase, pattern, and teamwork behavior.",
-      detail: "Your targets are personal. The room begins when everyone can explain the question in their own words."
+      label: "Clarify the question together",
+      text: "What does the question mean, and which words or assumptions need clarification?",
+      detail: "Open the English support only if someone needs it. The goal is shared understanding, not completing an app task."
     };
     if (phase === "first-voices") return {
       label: "One uninterrupted first turn each",
@@ -449,53 +481,16 @@
       detail: "Name shared ground, a realistic recommendation, and one concern the group could not resolve."
     };
     if (phase === "report") return {
-      label: "Draft → review → approve",
-      text: "The Reporter drafts the room summary. Every member checks whether it represents the conversation fairly.",
+      label: "Draft → review → revise",
+      text: "The Reporter may lead the draft; everyone can help make the room summary accurate and fair.",
       detail: "A fair report preserves both the strongest agreement and an unresolved or minority view."
     };
     if (phase === "reflect" || phase === "ended") return {
-      label: "Personal evidence",
-      text: "Recall what you actually said and did before evaluating your performance.",
-      detail: "Save one English expression, one teammate connection, one teamwork moment, and one next step."
+      label: "Optional closing reflection",
+      text: "What changed or strengthened because different people contributed?",
+      detail: "Reflect if it is useful. No individual tracking is required."
     };
     return { label: "Room task", text: phaseById(phase).prompt, detail: "" };
-  }
-
-  function prepareTargetOptions(topic, level) {
-    const targets = state.session.participant.targets || {};
-    const setOptions = (selector, values, selected) => {
-      const select = $(selector);
-      select.innerHTML = values.map(([value, label]) => `<option value="${escapeHtml(value)}" ${selectedOption(value, selected)}>${escapeHtml(label)}</option>`).join("");
-    };
-    setOptions("#target-word", topic.vocabulary.map(([word, bn]) => [word, `${word} — ${bn}`]), targets.word);
-    setOptions("#target-phrase", FGD_PHRASE_BANK[level].map((item) => [item.phrase, `${item.intent}: ${item.phrase}`]), targets.phrase);
-    setOptions("#target-pattern", topic.grammar.map(([name, pattern]) => [pattern, `${name}: ${pattern}`]), targets.pattern);
-    setOptions("#target-teamwork", FGD_TEAMWORK_TARGETS.map((item) => [item, item]), targets.teamwork);
-  }
-
-  function renderTargetState(topic) {
-    const targets = state.session.participant.targets || {};
-    const hasTargets = Boolean(targets.word || targets.phrase || targets.pattern || targets.teamwork);
-    const form = $("#target-form");
-    const summary = $("#target-summary");
-    form.hidden = hasTargets && !state.editingTargets;
-    summary.hidden = !hasTargets || state.editingTargets;
-    if (!hasTargets || state.editingTargets) {
-      if (!form.contains(document.activeElement)) prepareTargetOptions(topic, state.session.participant.level);
-      return;
-    }
-    summary.innerHTML = `<div class="target-summary-head"><strong>🎯 My targets</strong><button type="button" id="edit-targets">Edit</button></div><ul>
-      <li><b>Word:</b> ${escapeHtml(targets.word)}</li>
-      <li><b>Phrase:</b> ${escapeHtml(targets.phrase)}</li>
-      <li><b>Pattern:</b> ${escapeHtml(targets.pattern)}</li>
-      <li><b>Teamwork:</b> ${escapeHtml(targets.teamwork)}</li>
-    </ul>`;
-    $("#edit-targets").addEventListener("click", () => {
-      state.editingTargets = true;
-      prepareTargetOptions(topic, state.session.participant.level);
-      form.hidden = false;
-      summary.hidden = true;
-    });
   }
 
   function renderNowCard(topic) {
@@ -508,9 +503,8 @@
     $("#now-card-label").textContent = content.label;
     $("#now-card-text").textContent = content.text;
     $("#now-card-detail").textContent = content.detail;
-    $("#card-controller-label").textContent = `${room.controllerRole} controls shared cards`;
-    const canAdvance = ["explore", "challenge"].includes(state.session.status) && participant.role === room.controllerRole;
-    $("#next-room-card").hidden = !canAdvance;
+    $("#card-controller-label").textContent = "A guide, not a script";
+    $("#next-room-card").hidden = !["explore", "challenge"].includes(state.session.status);
     const role = FGD_ROLES[participant.role];
     const mission = FGD_ROLE_MISSIONS[participant.role]?.[state.session.status] || [role.job, role.phrases[0]];
     $("#mission-role-icon").textContent = role.icon;
@@ -520,7 +514,6 @@
     const protocol = FGD_TEAMWORK_PROTOCOLS[state.session.status] || FGD_TEAMWORK_PROTOCOLS.reflect;
     $("#protocol-name").textContent = protocol.name;
     $("#protocol-text").textContent = protocol.text;
-    renderTargetState(topic);
   }
 
   function renderScaffolds(topic, level) {
@@ -534,6 +527,7 @@
     $("#collocation-list").innerHTML = `<h3>Words that travel together</h3><div class="chip-wrap">${topic.collocations.map((item) => `<span class="language-chip">${escapeHtml(item)}</span>`).join("")}</div>`;
     $("#grammar-list").innerHTML = topic.grammar.map(([name, pattern, example]) => `<article class="grammar-item"><h3>${escapeHtml(name)}</h3><code>${escapeHtml(pattern)}</code><p>${escapeHtml(example)}</p></article>`).join("");
     renderPrompt(topic);
+    $("#socratic-bank").innerHTML = `<h3>Socratic questions for the group</h3><div>${FGD_SOCRATIC_QUESTIONS.map((item) => `<article><strong>${escapeHtml(item.label)}</strong><p>${escapeHtml(item.question)}</p></article>`).join("")}</div>`;
     $("#perspective-box").innerHTML = `<h3>Change the lens</h3><ol>${topic.perspectives.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol><p><strong>Final group task:</strong> ${escapeHtml(topic.finalTask)}</p>`;
     renderRole($("#student-role-card"));
   }
@@ -545,8 +539,7 @@
       ? `Imagine you are ${topic.perspectives[room.perspectiveIndex % topic.perspectives.length].toLowerCase()}. How might your view be different?`
       : topic.questions[room.promptIndex % topic.questions.length];
     $("#live-prompt-card").textContent = prompt;
-    const canAdvance = ["explore", "challenge"].includes(state.session.status) && state.session.participant.role === room.controllerRole;
-    $("#next-prompt").hidden = !canAdvance;
+    $("#next-prompt").hidden = !["explore", "challenge"].includes(state.session.status);
   }
 
   function speak(text) {
@@ -566,7 +559,6 @@
     $("#student-session-code").textContent = `Session ${session.code}`;
     $("#student-name-label").textContent = participant.name;
     $("#student-level-label").textContent = `${participant.level} support`;
-    $("#contribution-label").textContent = participant.contributions ? `${participant.contributions} contribution${participant.contributions === 1 ? "" : "s"} marked` : "Tap after you speak";
     const room = currentRoom();
     $("#help-button").classList.toggle("is-active", Boolean(room?.helpRequested));
     $("#help-button strong").textContent = room?.helpRequested ? "Teacher notified" : "Ask the teacher";
@@ -603,17 +595,16 @@
     $("#reflection-card").hidden = !["reflect", "ended"].includes(session.status);
     if (reportVisible) {
       hydrateReport(room.report || {});
-      const canEditReport = participant.role === room.reporterRole;
-      $$("input, select, textarea, button[type='submit']", $("#report-form")).forEach((field) => { field.disabled = !canEditReport; });
-      $("#report-status").textContent = canEditReport
-        ? (room.report?.updatedBy ? `Last saved by ${room.report.updatedBy}` : "You are the Reporter—draft, then ask everyone to review.")
-        : `${room.reporterRole} edits this report. Read it, then approve it below.`;
+      $$("input, select, textarea, button[type='submit']", $("#report-form")).forEach((field) => { field.disabled = false; });
+      $("#report-status").textContent = room.report?.updatedBy
+        ? `Last saved by ${room.report.updatedBy}`
+        : (participant.role === room.reporterRole ? "You can lead the draft; invite everyone to improve it." : `${room.reporterRole} can lead, and you may also help draft or revise.`);
       $("#approval-count").textContent = `${room.approvalCount || 0} of ${room.participantCount} members approved`;
       $("#approve-report").classList.toggle("is-approved", Boolean(room.participantApproved));
       $("#approve-report").textContent = room.participantApproved ? "✓ Approved" : "Approve report";
     }
-    if (participant.exit?.phrase && !$("#reflection-phrase").value) {
-      $("#reflection-phrase").value = participant.exit.phrase;
+    if ((participant.exit?.teammateIdea || participant.exit?.teamworkMoment || participant.exit?.confidence) && !$("#reflection-teammate").value) {
+      $("#reflection-phrase").value = participant.exit.phrase || "";
       $("#reflection-teammate").value = participant.exit.teammateIdea || "";
       $("#reflection-teamwork").value = participant.exit.teamworkMoment || "";
       $("#reflection-next").value = participant.exit.nextStep || "";
@@ -657,34 +648,6 @@
     $("#confidence-scale").innerHTML = emoji.map((face, index) => `<label><input id="confidence-${index + 1}" type="radio" name="confidence" value="${index + 1}" ${index === 2 ? "checked" : ""}><span title="${index + 1} out of 5">${face}</span></label>`).join("");
   }
 
-  function buildEvidenceGrid() {
-    $("#evidence-grid").innerHTML = Object.entries(FGD_EVIDENCE_MOVES).map(([move, item]) => `<button class="evidence-option" type="button" data-evidence-move="${move}"><span>${escapeHtml(item.icon)}</span><p><strong>${escapeHtml(item.label)}</strong><small>${escapeHtml(item.description)}</small></p></button>`).join("");
-    $$('[data-evidence-move]').forEach((button) => button.addEventListener("click", async () => {
-      const saved = await participantAction("evidence", { move: button.dataset.evidenceMove });
-      if (saved) {
-        $("#contribution-dialog").close();
-        showToast("Talk move noticed and saved");
-      }
-    }));
-  }
-
-  async function submitTargets(event) {
-    event.preventDefault();
-    const targets = {
-      word: $("#target-word").value,
-      phrase: $("#target-phrase").value,
-      pattern: $("#target-pattern").value,
-      teamwork: $("#target-teamwork").value
-    };
-    state.editingTargets = false;
-    const saved = await participantAction("targets", { targets });
-    if (saved) {
-      showToast("Learning targets pinned");
-    } else {
-      state.editingTargets = true;
-    }
-  }
-
   async function submitReport(event) {
     event.preventDefault();
     const report = {
@@ -711,10 +674,11 @@
 
   async function restoreFromUrl() {
     const params = new URLSearchParams(location.search);
+    const privateParams = new URLSearchParams(location.hash.replace(/^#/, ""));
     const teacherCode = (params.get("teacher") || "").toUpperCase();
     const joinCode = (params.get("code") || "").toUpperCase();
     if (teacherCode) {
-      const token = localStorage.getItem(teacherStorageKey(teacherCode));
+      const token = privateParams.get("control") || localStorage.getItem(teacherStorageKey(teacherCode));
       if (token) {
         state.code = teacherCode;
         state.teacherToken = token;
@@ -726,8 +690,16 @@
           showView("teacher-view");
           startPolling();
           startClock();
+          localStorage.setItem(teacherStorageKey(teacherCode), token);
+          setTeacherControlUrl();
           return;
-        } catch (error) { showToast(error.message); }
+        } catch (error) {
+          localStorage.removeItem(teacherStorageKey(teacherCode));
+          state.mode = "landing";
+          showToast(error.message);
+        }
+      } else {
+        showToast("Open the private teacher control link, or create a new session.");
       }
     }
     if (joinCode) {
@@ -766,13 +738,16 @@
     $("#copy-join-link").addEventListener("click", async () => {
       try { await navigator.clipboard.writeText(makeJoinUrl()); showToast("Join link copied"); } catch (_) { showToast(makeJoinUrl()); }
     });
+    $("#copy-control-link").addEventListener("click", async () => {
+      const controlUrl = makeTeacherControlUrl();
+      try { await navigator.clipboard.writeText(controlUrl); showToast("Private teacher link copied—keep it private"); } catch (_) { showToast("Copy the private URL from your browser address bar."); }
+    });
     $("#next-phase").addEventListener("click", nextTeacherPhase);
     $("#previous-phase").addEventListener("click", previousTeacherPhase);
     $("#extend-phase").addEventListener("click", () => teacherAction("extendPhase", { seconds: 120 }));
     $("#end-session").addEventListener("click", () => {
       if (window.confirm("End this discussion session for every room?")) setTeacherPhase("ended");
     });
-    $("#contributed-button").addEventListener("click", () => $("#contribution-dialog").showModal());
     $("#help-button").addEventListener("click", () => participantAction("help", { requested: !currentRoom()?.helpRequested }));
     $("#toggle-bangla").addEventListener("click", (event) => {
       const pressed = event.currentTarget.getAttribute("aria-pressed") === "true";
@@ -785,7 +760,6 @@
     }));
     $("#next-prompt").addEventListener("click", () => participantAction("advanceCard"));
     $("#next-room-card").addEventListener("click", () => participantAction("advanceCard"));
-    $("#target-form").addEventListener("submit", submitTargets);
     $("#report-form").addEventListener("submit", submitReport);
     $("#approve-report").addEventListener("click", () => participantAction("approveReport", { approved: !currentRoom()?.participantApproved }));
     $("#reflection-form").addEventListener("submit", submitReflection);
@@ -793,15 +767,11 @@
     $("#install-help").addEventListener("click", () => dialog.showModal());
     $(".dialog-close", dialog).addEventListener("click", () => dialog.close());
     dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
-    const contributionDialog = $("#contribution-dialog");
-    $(".dialog-close", contributionDialog).addEventListener("click", () => contributionDialog.close());
-    contributionDialog.addEventListener("click", (event) => { if (event.target === contributionDialog) contributionDialog.close(); });
   }
 
   document.addEventListener("DOMContentLoaded", () => {
     bindEvents();
     buildConfidenceScale();
-    buildEvidenceGrid();
     restoreFromUrl();
   });
 })();

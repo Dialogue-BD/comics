@@ -15,6 +15,7 @@ Everything else is served as static files from the same directory.
 """
 
 import http.server
+import hashlib
 import json
 import os
 import re
@@ -69,6 +70,10 @@ FGD_EVIDENCE_MOVES = {
     "summarize",
     "rethink",
 }
+
+# A session may be prepared before class and reopened from the private teacher
+# link. Authenticated activity renews this window; public code lookups do not.
+FGD_SESSION_LIFETIME = 7 * 24 * 60 * 60
 
 # ---------------------------------------------------------------------------
 # Database helpers – one connection per thread (SQLite is not thread-safe to share)
@@ -246,6 +251,24 @@ def _fgd_controller_role(db: sqlite3.Connection, code: str, room_number: int, ph
     return roles[0] if roles else preferred
 
 
+def _fgd_role_order(session, room_number: int) -> list[str]:
+    """Create a private, stable role order with the Facilitator in seats 1–5.
+
+    This keeps the role assignment random from the students' perspective while
+    avoiding the cultural signal that the first/oldest/most assertive member is
+    automatically entitled to lead.
+    """
+    seed = f'{session["teacher_token"]}:{room_number}'
+    other_roles = [role for role in FGD_ROLES if role != "Facilitator"]
+    other_roles.sort(key=lambda role: hashlib.sha256(f"{seed}:{role}".encode()).digest())
+    facilitator_range = min(5, session["room_capacity"])
+    facilitator_index = int.from_bytes(
+        hashlib.sha256(f"{seed}:facilitator-seat".encode()).digest()[:4], "big"
+    ) % facilitator_range
+    other_roles.insert(facilitator_index, "Facilitator")
+    return other_roles
+
+
 def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "") -> dict | None:
     db = _get_db()
     session = _fgd_session_row(db, code)
@@ -265,6 +288,15 @@ def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "
                 (int(time.time()), participant_token),
             )
             db.commit()
+
+    # Keep an actively used classroom session available without allowing an
+    # unauthenticated code lookup to keep abandoned sessions alive forever.
+    if is_teacher or participant:
+        db.execute(
+            "UPDATE fgd_sessions SET expires_at = ? WHERE code = ?",
+            (int(time.time()) + FGD_SESSION_LIFETIME, code),
+        )
+        db.commit()
 
     rooms = db.execute(
         """
@@ -453,10 +485,23 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             if not code:
                 _json_response(self, 400, {"error": "Missing session code"})
                 return
-            snapshot = _fgd_snapshot(code, participant_token, teacher_token)
-            if not snapshot:
-                _json_response(self, 404, {"error": "Session not found or expired"})
+            db = _get_db()
+            session = _fgd_session_row(db, code)
+            if not session:
+                _json_response(self, 404, {"error": "This session is no longer available. Ask the teacher for the current code."})
                 return
+            if teacher_token and not secrets.compare_digest(teacher_token, session["teacher_token"]):
+                _json_response(self, 403, {"error": "This is not the private teacher control link for this session."})
+                return
+            if participant_token:
+                participant_exists = db.execute(
+                    "SELECT 1 FROM fgd_participants WHERE token = ? AND session_code = ?",
+                    (participant_token, code),
+                ).fetchone()
+                if not participant_exists:
+                    _json_response(self, 403, {"error": "Your saved room pass is no longer available. Please join the room again."})
+                    return
+            snapshot = _fgd_snapshot(code, participant_token, teacher_token)
             _json_response(self, 200, snapshot)
             return
         elif parsed.path == "/api/debate":
@@ -655,7 +700,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                     support_level,
                     json.dumps(default_durations),
                     now,
-                    now + (8 * 60 * 60),
+                    now + FGD_SESSION_LIFETIME,
                 ),
             )
             db.executemany(
@@ -699,13 +744,27 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 db.rollback()
                 _json_response(self, 404, {"error": "Session not found or expired"})
                 return
-            if session["status"] != "lobby":
+            if session["status"] == "ended":
                 db.rollback()
-                _json_response(self, 409, {"error": "This discussion has already started"})
+                _json_response(self, 409, {"error": "This discussion has finished"})
                 return
             if room_number < 1 or room_number > session["room_count"]:
                 db.rollback()
                 _json_response(self, 400, {"error": "Choose an available room"})
+                return
+            existing = db.execute(
+                """SELECT token FROM fgd_participants
+                   WHERE session_code = ? AND room_number = ? AND lower(display_name) = lower(?)
+                   ORDER BY joined_at LIMIT 1""",
+                (code, room_number, name),
+            ).fetchone()
+            if existing:
+                db.commit()
+                _json_response(self, 200, {
+                    "participantToken": existing["token"],
+                    "session": _fgd_snapshot(code, participant_token=existing["token"]),
+                    "rejoined": True,
+                })
                 return
             count = db.execute(
                 "SELECT COUNT(*) AS total FROM fgd_participants WHERE session_code = ? AND room_number = ?",
@@ -716,14 +775,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 _json_response(self, 409, {"error": "That room has just filled up. Please choose another."})
                 return
 
-            role_counts = {role: 0 for role in FGD_ROLES}
-            for row in db.execute(
-                "SELECT role, COUNT(*) AS total FROM fgd_participants WHERE session_code = ? AND room_number = ? GROUP BY role",
-                (code, room_number),
-            ).fetchall():
-                role_counts[row["role"]] = row["total"]
-            least_used = min(role_counts.values())
-            role = next(role for role in FGD_ROLES if role_counts[role] == least_used)
+            role = _fgd_role_order(session, room_number)[count % len(FGD_ROLES)]
             participant_token = secrets.token_urlsafe(32)
             db.execute(
                 """INSERT INTO fgd_participants
@@ -766,10 +818,6 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 (int(time.time()), token),
             )
         elif action == "advanceCard":
-            controller_role = _fgd_controller_role(db, code, participant["room_number"], session["status"])
-            if participant["role"] != controller_role:
-                _json_response(self, 403, {"error": f"The {controller_role} controls the shared room card in this phase"})
-                return
             field = "perspective_index" if session["status"] == "challenge" else "prompt_index"
             db.execute(
                 """INSERT INTO fgd_room_state (session_code, room_number, prompt_index, perspective_index)
@@ -826,10 +874,6 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 (requested, code, participant["room_number"]),
             )
         elif action == "report":
-            reporter_role = _fgd_controller_role(db, code, participant["room_number"], "report")
-            if participant["role"] != reporter_role:
-                _json_response(self, 403, {"error": f"The {reporter_role} edits the shared report; everyone else reviews it"})
-                return
             report = body.get("report", {})
             if not isinstance(report, dict):
                 _json_response(self, 400, {"error": "Invalid report"})
@@ -896,8 +940,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         action = _clean_text(body.get("action"), 24)
         db = _get_db()
         session = _fgd_session_row(db, code)
-        if not session or not secrets.compare_digest(token, session["teacher_token"]):
-            _json_response(self, 403, {"error": "Teacher control token is invalid"})
+        if not session:
+            _json_response(self, 404, {"error": "This session is no longer available. Create a new session for the class."})
+            return
+        if not secrets.compare_digest(token, session["teacher_token"]):
+            _json_response(self, 403, {"error": "Open the private teacher control link created with this session."})
             return
 
         if action == "setPhase":

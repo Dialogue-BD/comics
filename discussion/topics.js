@@ -1,19 +1,19 @@
 window.FGD_PHASES = [
   { id: "lobby", label: "Join", short: "Join your room", prompt: "Meet your group and read your role. Your topic will appear when the teacher starts.", icon: "👋" },
-  { id: "understand", label: "Understand", short: "Preview the language", prompt: "Read the topic, learn the essential words, and choose one phrase you want to use.", icon: "🔎" },
+  { id: "understand", label: "Understand", short: "Clarify the question", prompt: "Agree on what the question means. Open the language guide only when someone needs support.", icon: "🔎" },
   { id: "first-voices", label: "First voices", short: "Everyone speaks", prompt: "Go around the group. Each person shares an initial view and one reason.", icon: "🗣️" },
   { id: "explore", label: "Explore", short: "Go deeper", prompt: "Discuss causes, effects, examples, and the people affected. Ask follow-up questions.", icon: "🧭" },
   { id: "challenge", label: "Challenge", short: "Change the lens", prompt: "Consider the perspective card. Respectfully test your group’s assumptions.", icon: "🔄" },
   { id: "decide", label: "Decide", short: "Find the group view", prompt: "Identify agreements, disagreements, and the most realistic recommendation.", icon: "🤝" },
   { id: "report", label: "Report", short: "Capture the discussion", prompt: "The reporter completes the group summary. Everyone checks that it is fair.", icon: "📝" },
-  { id: "reflect", label: "Reflect", short: "Keep one phrase", prompt: "Save one useful English expression and rate your speaking confidence today.", icon: "🌱" },
+  { id: "reflect", label: "Reflect", short: "Notice what helped", prompt: "Optionally notice an idea that changed and a facilitation move that helped more people contribute.", icon: "🌱" },
   { id: "ended", label: "Finished", short: "Session complete", prompt: "Thank your group. Your teacher has ended this discussion.", icon: "✓" }
 ];
 
 window.FGD_ROLES = {
   "Facilitator": {
     icon: "🧭",
-    job: "Keep the group on the question and move to the next prompt when needed.",
+    job: "Help the group share airtime, stay curious, and move forward. You coordinate; you do not control the group.",
     phrases: ["Let’s begin with the main question.", "Can we connect that idea to our topic?", "Let’s hear one final view before we move on."]
   },
   "Reporter": {
@@ -53,35 +53,26 @@ window.FGD_ROLES = {
   }
 };
 
+window.FGD_SOCRATIC_QUESTIONS = [
+  { label: "Clarify", question: "What exactly do we mean by that claim or key word?" },
+  { label: "Reasons", question: "Why do we think that, and which reason is strongest?" },
+  { label: "Evidence", question: "What example or evidence supports it? What evidence would change our minds?" },
+  { label: "Assumptions", question: "What are we taking for granted? Is that always true?" },
+  { label: "Perspectives", question: "Who might experience this differently, and why?" },
+  { label: "Consequences", question: "If we acted on this view, what might happen next—including unintended effects?" },
+  { label: "Alternatives", question: "What is the strongest reasonable objection or alternative explanation?" },
+  { label: "Synthesis", question: "What conclusion is justified, under what conditions, and what remains uncertain?" }
+];
+
 window.FGD_TEAMWORK_PROTOCOLS = {
   understand: { name: "Choose a useful risk", text: "Pick language that stretches you slightly—not language so difficult that it stops you speaking." },
-  "first-voices": { name: "Step up, step back", text: "If you often speak, create space. If you speak less often, take one manageable turn. Nobody speaks twice before everyone is invited." },
+  "first-voices": { name: "Step up, step back", text: "Status, age, and gender do not determine the speaking order. Nobody speaks twice before everyone is invited; anyone may decline and be invited again later." },
   explore: { name: "Listen → Link → Ask", text: "Show that you heard the previous idea, connect your response to it, then ask a genuine follow-up question." },
   challenge: { name: "Paraphrase before disagreement", text: "First say what you understood. Let the speaker confirm. Then challenge the idea—not the person." },
   decide: { name: "Consent, not forced agreement", text: "Name the shared ground and preserve an important minority concern. A fair decision does not erase disagreement." },
   report: { name: "Represent every voice fairly", text: "The report must include the group’s strongest agreement and one unresolved or minority view." },
   reflect: { name: "Evidence before evaluation", text: "Describe one thing you actually said or did before deciding how well the discussion went." }
 };
-
-window.FGD_EVIDENCE_MOVES = {
-  opinion: { icon: "💬", label: "Shared a view", description: "I stated an opinion and gave a reason." },
-  example: { icon: "💡", label: "Gave an example", description: "I connected an idea to a real or local example." },
-  question: { icon: "?", label: "Asked a question", description: "I asked a genuine follow-up or clarification question." },
-  build: { icon: "+", label: "Built on an idea", description: "I linked my contribution to something a teammate said." },
-  disagree: { icon: "↔", label: "Disagreed respectfully", description: "I paraphrased or acknowledged before challenging an idea." },
-  invite: { icon: "○", label: "Invited a voice", description: "I helped another member enter the conversation." },
-  summarize: { icon: "≡", label: "Summarized", description: "I captured agreement, disagreement, or the direction of the talk." },
-  rethink: { icon: "↻", label: "Rethought my view", description: "I qualified or changed my position because of the discussion." }
-};
-
-window.FGD_TEAMWORK_TARGETS = [
-  "Invite a quieter member without pressuring them",
-  "Paraphrase before I disagree",
-  "Ask a genuine follow-up question",
-  "Build directly on a teammate’s idea",
-  "Give space before speaking a second time",
-  "Help the group name a minority view"
-];
 
 window.FGD_ROLE_MISSIONS = {
   "Facilitator": {
@@ -139,22 +130,22 @@ window.FGD_ROLE_MISSIONS = {
     reflect: ["Name one moment when disagreement improved rather than harmed the conversation.", "Our disagreement became constructive when…"]
   },
   "Language Monitor": {
-    understand: ["Help each member choose one useful word, phrase, pattern, and teamwork target.", "Choose language you can realistically use today."],
+    understand: ["Help with English when someone asks or gets stuck; avoid correcting every error.", "Would a word or sentence starter help here?"],
     "first-voices": ["Listen for successful English and quietly point to a helpful phrase if someone gets stuck.", "A useful starter here is ‘From my perspective…’"],
     explore: ["Encourage the group to reuse topic vocabulary naturally, without correcting every error.", "That was a clear use of our topic word."],
     challenge: ["Offer a respectful disagreement or hedging phrase before the group responds.", "Try ‘I see your point; however…’"],
     decide: ["Help the group use precise language for agreement, qualification, and recommendation.", "Do we mean ‘must,’ ‘should,’ or ‘could’?"],
     report: ["Help the reporter improve clarity while preserving the group’s meaning.", "Could we combine these ideas using ‘although’?"],
-    reflect: ["Invite members to recall their target phrase without opening the language list.", "Which expression can you now use from memory?" ]
+    reflect: ["If the group reflects, notice useful language without turning it into a test.", "Which expression helped someone communicate a difficult idea?" ]
   },
   "Timekeeper": {
-    understand: ["Give a one-minute warning so everyone saves learning targets before discussion begins.", "One minute left—please save your targets."],
+    understand: ["Protect enough time to clarify the topic, but do not delay the conversation for app tasks.", "Shall we begin, or does anyone still need the question clarified?"],
     "first-voices": ["Protect equal first turns and give a halfway time signal.", "We are halfway through; two people still need a first turn."],
     explore: ["Warn the group two minutes before the phase ends and ask whether to keep or change the card.", "Two minutes left—do we need another prompt?"],
     challenge: ["Reserve the final minute for connecting the perspective back to the original question.", "Let’s connect this lens back to our main topic."],
     decide: ["Protect enough time for both a recommendation and an unresolved concern.", "We need one minute for the minority view."],
     report: ["Announce review time before the phase ends; do not let drafting consume all the time.", "Please read and approve the report now."],
-    reflect: ["Give the group quiet time to complete evidence-based reflections.", "Take one quiet minute to remember what you actually did." ]
+    reflect: ["Offer a brief quiet pause for optional reflection, then help the group close on time.", "Take a quiet minute if reflection would be useful." ]
   }
 };
 
