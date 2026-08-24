@@ -745,11 +745,18 @@ body[data-lang="bn"] .station-num,
 body[data-lang="bn"] .tag,
 body[data-lang="bn"] .extract .lbl,
 body[data-lang="bn"] .kw-badge,
-body[data-lang="bn"] .fr-q-type {
+body[data-lang="bn"] .fr-q-type,
+body[data-lang="bn"] .stat-tile .lbl,
+body[data-lang="bn"] .hud-block .k,
+body[data-lang="bn"] .step-pill,
+body[data-lang="bn"] .gp-h {
   font-size: 0.84rem;
   letter-spacing: normal;
   text-transform: none;
 }
+body[data-lang="bn"] .bar-legend { font-size: 0.86rem; }
+body[data-lang="bn"] .wpm-input-row .dim,
+body[data-lang="bn"] .wpm-scale .dim { font-size: 0.86rem !important; }
 body[data-lang="bn"] .card-intro,
 body[data-lang="bn"] .check-card .cd,
 body[data-lang="bn"] .trap-card .td,
@@ -3257,7 +3264,86 @@ var BN = {
   "🔄 Negation Flip": "🔄 উল্টো অর্থ",
   "⚖️ Qualifier Swap": "⚖️ মাত্রা বদল",
   "🗺️ Scope Shift": "🗺️ পরিধি বদল",
-  "🔁 Reversed Cause": "🔁 কারণ উল্টানো"
+  "🔁 Reversed Cause": "🔁 কারণ উল্টানো",
+
+  /* ── Second pass: stat labels, HUD, and step chrome that were left in
+     English the first time round — everything here is UI/instruction,
+     never exam content. ── */
+  "Words / minute": "শব্দ / মিনিট",
+  "Minutes just to read": "শুধু পড়তেই সময় লাগে",
+  "Seconds per question, best case": "প্রতি প্রশ্নে সময় (সেরা অবস্থায়)",
+  "Of the text touched": "লেখার যতটুকু ছোঁয়া হয়েছে",
+  "Answer located?": "উত্তর খুঁজে পাওয়া গেছে?",
+  "Exam time spent @120 wpm": "১২০ wpm গতিতে ব্যয়িত পরীক্ষার সময়",
+  "Time used": "ব্যবহৃত সময়",
+  "Longest single question": "সবচেয়ে বেশি সময় নেওয়া প্রশ্ন",
+  "Altitude": "উচ্চতা",
+  "Words your eyes touched": "যতগুলো শব্দে চোখ পড়েছে",
+  "Exam clock burned": "খরচ হওয়া পরীক্ষার সময়",
+  "Your reading speed:": "আপনার পড়ার গতি:",
+  "words per minute": "শব্দ প্রতি মিনিট",
+  "(filled in automatically after the timed read — or type a number to model any student)":
+    "(টাইম করা পাঠের পর নিজে থেকেই বসে যাবে — অথবা যেকোনো শিক্ষার্থীর অবস্থা দেখতে নিজে একটি সংখ্যা লিখুন)",
+  "Time spent moving your eyes over text": "লেখা জুড়ে চোখ চালাতে ব্যয় হওয়া সময়",
+  "Time left for actually answering questions": "প্রশ্নের উত্তর দেওয়ার জন্য বাকি থাকা সময়",
+  "A · Reading every word, one single pass": "A · প্রতিটি শব্দ পড়া, একবারে",
+  "B · Reading every word, then hunting back through the text for each answer — what most students actually do":
+    "B · প্রতিটি শব্দ পড়া, তারপর প্রতিটি উত্তরের জন্য লেখায় ফিরে গিয়ে খোঁজা — বেশিরভাগ শিক্ষার্থী আসলে যা করে",
+  "C · Skim for the map, then scan only the right paragraph — what this lesson teaches":
+    "C · ম্যাপের জন্য স্কিম করা, তারপর শুধু সঠিক অনুচ্ছেদ স্ক্যান করা — এই পাঠ যা শেখায়",
+  "Bars A and B are calculated from your measured speed against a 2,450-word test. Bar C is an instructional estimate, not a measurement — it assumes one fast skim plus targeted scanning instead of full re-reads.":
+    "বার A ও B আপনার মাপা গতি অনুযায়ী ২,৪৫০ শব্দের একটি পরীক্ষার ভিত্তিতে হিসাব করা। বার C একটি শিক্ষামূলক আন্দাজ, পরিমাপ নয় — এটি ধরে নেয় একটি দ্রুত স্কিম আর লক্ষ্যভিত্তিক স্ক্যানিং, পুরোপুরি আবার পড়ার বদলে।",
+  "Your teacher is running this flight on the big screen. It needs a 590 KB download, so on a phone it is your choice.":
+    "আপনার শিক্ষক বড় স্ক্রিনে এই ফ্লাইট চালাচ্ছেন। এতে ৫৯০ KB ডাউনলোড লাগে, তাই ফোনে এটা আপনার ইচ্ছা।",
+  "You do not need it: the three panels just below show the same thing, and cost nothing.":
+    "এটা আপনার দরকার নেই: ঠিক নিচের তিনটি প্যানেলেই একই জিনিস দেখা যায়, আর কোনো খরচ নেই।",
+  "The 3D flight needs a graphics library that didn't load — most likely there's no internet on this device right now.<br><br><b>Everything still works:</b> Station 2 below teaches exactly the same idea step by step, in plain text, with no 3D required.":
+    "৩ডি ফ্লাইট চালাতে একটি গ্রাফিক্স লাইব্রেরি লাগে, যেটা লোড হয়নি — সম্ভবত এই ডিভাইসে এখন ইন্টারনেট নেই।<br><br><b>সবকিছু তবু কাজ করে:</b> নিচের Station 2 ঠিক একই ধারণা ধাপে ধাপে শেখায়, সাধারণ লেখায়, কোনো ৩ডি ছাড়াই।",
+  "Loading the 3D flight…": "৩ডি ফ্লাইট লোড হচ্ছে…",
+  "⬦ You committed to:": "⬦ আপনি বেছে নিয়েছেন:",
+  "Eventually": "শেষ পর্যন্ত",
+  "No — but you know where": "না — তবে জানেন কোথায়",
+  "1Skim the text": "1লেখাটি স্কিম করুন",
+  "2Build the map": "2ম্যাপ তৈরি করুন",
+  "3Skim the question": "3প্রশ্নটি স্কিম করুন",
+  "4Mark the keywords": "4কী-ওয়ার্ড চিহ্নিত করুন",
+  "5Scan that paragraph": "5ওই অনুচ্ছেদ স্ক্যান করুন",
+  "6Check for the trap": "6ফাঁদ যাচাই করুন",
+  "Too many. \"installed\", \"well-known\" and \"more than one country\" are idea words — the passage will paraphrase every one of them, so they are useless for searching. Pick the noun phrase your eyes can actually hunt for.":
+    "অনেক বেশি। “installed”, “well-known” আর “more than one country” হলো ভাব-শব্দ — প্যাসেজ এগুলোর প্রতিটিই ঘুরিয়ে বলবে, তাই খোঁজার জন্য এগুলো অকেজো। এমন বিশেষ্যগুচ্ছ বাছুন যা আপনার চোখ সত্যিই খুঁজে পেতে পারে।",
+  "You are missing the searchable part. Which two words name a physical thing that the passage is likely to repeat word for word?":
+    "খোঁজার মতো অংশটাই বাদ পড়েছে। কোন দুটি শব্দ এমন একটি বাস্তব জিনিসের নাম, যা প্যাসেজ হুবহু আবার লিখতে পারে?",
+  "Step 1 — 2 · Use your map ✓": "ধাপ ১–২ · আপনার ম্যাপ ব্যবহার করুন <span class=\"tick\">✓</span>",
+  "Step 3 — 4 · Mark the keywords ✓": "ধাপ ৩–৪ · কী-ওয়ার্ড চিহ্নিত করুন <span class=\"tick\">✓</span>",
+  "Step 5 · Scan that paragraph ✓": "ধাপ ৫ · ওই অনুচ্ছেদ স্ক্যান করুন <span class=\"tick\">✓</span>",
+  "Step 6 · Run the four-point check ✓": "ধাপ ৬ · চার-দফা যাচাই চালান <span class=\"tick\">✓</span>",
+  "You already skimmed this passage and labelled it. Which paragraph will hold the answer?":
+    "আপনি এই প্যাসেজটি আগেই স্কিম করে লেবেল দিয়েছেন। কোন অনুচ্ছেদে উত্তর থাকবে?",
+  "Tap the two words in the question you would physically scan for. Concrete nouns only — not the idea words.":
+    "প্রশ্নের যে দুটি শব্দ আপনি সত্যিই খুঁজে বেড়াবেন সেগুলোতে ট্যাপ করুন। শুধু বাস্তব বিশেষ্য — ভাব-শব্দ নয়।",
+  "Scan ¶2 only. Which sentence did your keywords land you on?":
+    "শুধু ¶২ স্ক্যান করুন। আপনার কী-ওয়ার্ড কোন বাক্যে নিয়ে গেল?",
+  "Read that whole sentence. Same subject? Same direction? Same strength? Same scope? Now decide.":
+    "পুরো বাক্যটি পড়ুন। একই কর্তা? একই দিক? একই মাত্রা? একই পরিধি? এবার সিদ্ধান্ত নিন।",
+  "Time. Lock in what you have — in the exam the clock does not wait for certainty.":
+    "সময় শেষ। যা আছে তা-ই রেখে দিন — পরীক্ষায় ঘড়ি নিশ্চিততার জন্য অপেক্ষা করে না।",
+  "Statement": "বিবৃতি",
+  "Selected:": "নির্বাচিত:",
+  "aim for": "লক্ষ্য",
+  "Which wording does the passage actually use for": "প্যাসেজ আসলে কোন শব্দগুচ্ছ ব্যবহার করে",
+  "Find:": "খুঁজুন:",
+  "<b>All six found.</b> Ask the class: for how many of those did you decide which paragraph <i>before</i> you started hunting? That decision is the whole skill.":
+    "<b>ছয়টিই পাওয়া গেছে।</b> ক্লাসকে জিজ্ঞেস করুন: কতগুলোর জন্য খোঁজা শুরুর <i>আগেই</i> ঠিক করেছিলেন কোন অনুচ্ছেদে যাবেন? ওই সিদ্ধান্তটাই আসল দক্ষতা।",
+  "Press <b>Start</b> to reveal the first thing to find.": "প্রথম যা খুঁজতে হবে তা দেখতে <b>Start</b> চাপুন।",
+  "Fastest find this session: —": "এই সেশনে সবচেয়ে দ্রুত: —",
+  "Worth learning:": "শেখার মতো:",
+  "Passage says": "প্যাসেজ বলছে",
+  "Claim": "দাবি",
+  "Switch papers? This will clear the paper you have started.": "পেপার বদলাবেন? আপনি যেটা শুরু করেছেন সেটা মুছে যাবে।",
+  "You: 0 of 13 answered": "আপনি: ১৩-এর মধ্যে ০টি উত্তর দিয়েছেন",
+  "Pace: not started": "গতি: শুরু হয়নি",
+  "You have not done <b>Station 7, the Full Run</b> yet. Until you do, this diagnosis covers your skills but not your pacing — and pacing is what most candidates actually lose marks to.":
+    "আপনি এখনও <b>Station 7, Full Run</b> করেননি। যতক্ষণ না করছেন, এই রোগনির্ণয় আপনার দক্ষতা দেখায়, সময় ব্যবস্থাপনা নয় — অথচ বেশিরভাগ পরীক্ষার্থী আসলে সময়ের কারণেই নম্বর হারায়।"
 };
 
 var LANG = 'en';
@@ -3287,7 +3373,9 @@ var I18N_SEL = [
   '.check-card .ct', '.check-card .cd', '.trap-card .tt', '.trap-card .td',
   '.mc-step .t', '.mc-step .d', '.mc-kw .h', '.mc-kw .d', '.mc-check .q', '.mc-check .a',
   '.tri-name', '.tri-stat .k', '.predict-h', '.predict-q',
-  '.mc-table th', '.mc-table td', '.mc-rule', '.ws-card h4', '.ws-card p'
+  '.mc-table th', '.mc-table td', '.mc-rule', '.ws-card h4', '.ws-card p',
+  '.stat-tile .lbl', '.hud-block .k', '.wpm-input-row span', '.bar-legend span',
+  '.wpm-scale p', '.alt-optin p', '.alt-fallback p', '.step-pill', '.gp-h', '.gp-q'
 ].join(',');
 
 function applyLang(l) {
@@ -3715,8 +3803,13 @@ var Resettable = [];
     if (secs < 20 || wpm > 600) {
       var box = $('#spVerdict');
       box.className = 'verdict-box show alarm';
-      $('#spVerdictHead').textContent = 'That was ' + secs.toFixed(1) + ' seconds — too fast to be a real read.';
-      $('#spVerdictBody').textContent = 'Press Reset and go again, reading properly this time. Or type a speed into the box below to model any student.';
+      if (LANG === 'bn') {
+        $('#spVerdictHead').textContent = 'মাত্র ' + bnum(secs.toFixed(1)) + ' সেকেন্ড — এটা প্রকৃত পড়া হতে পারে না।';
+        $('#spVerdictBody').textContent = 'Reset চাপুন আর আবার করুন, এবার ঠিকঠাক পড়ুন। অথবা নিচের বাক্সে একটি গতি টাইপ করে যেকোনো শিক্ষার্থীর অবস্থা দেখুন।';
+      } else {
+        $('#spVerdictHead').textContent = 'That was ' + secs.toFixed(1) + ' seconds — too fast to be a real read.';
+        $('#spVerdictBody').textContent = 'Press Reset and go again, reading properly this time. Or type a speed into the box below to model any student.';
+      }
       return;
     }
     input.value = Math.min(500, Math.max(40, wpm));
@@ -3770,12 +3863,22 @@ var Resettable = [];
   function gistVerdict() {
     var box = $('#spVerdict'), body = $('#spVerdictBody');
     var extra;
-    if (checkRight === 2) {
-      extra = ' You also got both comprehension questions right, so that speed is real — this is genuinely how fast you read with understanding.';
-    } else if (checkRight === 1) {
-      extra = ' You only held on to half of it, which means your true reading speed — reading well enough to answer questions — is slower than the number above. The gap between those two speeds is where marks disappear.';
+    if (LANG === 'bn') {
+      if (checkRight === 2) {
+        extra = ' দুটো বোধগম্যতা প্রশ্নই ঠিক দিয়েছেন, তাই গতিটা আসল — বুঝে পড়লে আপনি সত্যিই এই গতিতে পড়েন।';
+      } else if (checkRight === 1) {
+        extra = ' অর্ধেকটা ধরে রাখতে পেরেছেন, অর্থাৎ আপনার আসল পড়ার গতি — প্রশ্নের উত্তর দেওয়ার মতো বুঝে পড়া — উপরের সংখ্যাটির চেয়ে ধীর। এই দুই গতির ফারাকেই নম্বর হারিয়ে যায়।';
+      } else {
+        extra = ' দুটো বোধগম্যতা প্রশ্নই ভুল হয়েছে, তাই ওই সংখ্যাটি আদৌ পড়ার গতি নয়: আপনার চোখ শব্দের উপর দিয়ে গেছে, কিছু গ্রহণ না করেই। পরীক্ষায় এটাই সবচেয়ে ব্যয়বহুল অভ্যাস — পুরো সময় খরচ, কোনো তথ্য অর্জন নেই।';
+      }
     } else {
-      extra = ' You missed both comprehension questions, so that number is not a reading speed at all: your eyes moved over the words without taking them in. That is the most expensive habit in the exam — full time cost, no information gained.';
+      if (checkRight === 2) {
+        extra = ' You also got both comprehension questions right, so that speed is real — this is genuinely how fast you read with understanding.';
+      } else if (checkRight === 1) {
+        extra = ' You only held on to half of it, which means your true reading speed — reading well enough to answer questions — is slower than the number above. The gap between those two speeds is where marks disappear.';
+      } else {
+        extra = ' You missed both comprehension questions, so that number is not a reading speed at all: your eyes moved over the words without taking them in. That is the most expensive habit in the exam — full time cost, no information gained.';
+      }
     }
     body.textContent = body.textContent + extra;
     box.classList.add('show');
@@ -3784,6 +3887,17 @@ var Resettable = [];
   var crisisPredict = makePrediction('crisisPredict', 'crisisPredictOpts', 'crisisPredictResult',
     function (guess, actual) {
       var near = Math.abs(guess - actual) <= 6;
+      if (LANG === 'bn') {
+        return {
+          near: near,
+          text: near
+            ? '<b>ভালো আন্দাজ — এটা ' + bnum(Math.round(actual)) + ' মিনিট।</b> খরচটা জানাই অর্ধেক লড়াই; বাকি সাতটি স্টেশন এই খরচ এড়ানো নিয়েই।'
+            : '<b>আপনি আন্দাজ করেছিলেন ' + bnum(guess) + ' মিনিট। আসলে এটা ' + bnum(Math.round(actual)) + '।</b> ' +
+              (guess < actual
+                ? 'প্রায় সবাই এটা কম আন্দাজ করে, কারণ পড়তে বেশি সময় লাগছে বলে মনে হয় না — যতক্ষণ না একটা ঘড়ি দিয়ে মাপা হয় যা থামানো যায় না।'
+                : 'আপনি বেশি আন্দাজ করেছেন, যা কম দেখা যায় এবং বেশি কাজের: আপনি আগে থেকেই সন্দেহ করছিলেন যে পড়াটাই সবচেয়ে বেশি সময় খায়।')
+        };
+      }
       return {
         near: near,
         text: near
@@ -3829,25 +3943,48 @@ var Resettable = [];
 
     var box = $('#spVerdict'), head = $('#spVerdictHead'), body = $('#spVerdictBody');
     box.classList.add('show');
-    if (perQBest <= 0) {
-      box.className = 'verdict-box show alarm';
-      head.textContent = 'At ' + Math.round(wpm) + ' wpm you never reach the last question.';
-      body.textContent = 'Reading all three passages once, at your speed, takes about ' + readMin.toFixed(0) +
-        ' minutes — more than the whole exam. You would run out of time having answered almost nothing, however good your English is. Comprehension is not the problem here. The problem is that most of those words hold no answer, and you are reading them anyway.';
-    } else if (perQReal < 1) {
-      box.className = 'verdict-box show alarm';
-      head.textContent = 'One pass fits. The way you actually read does not.';
-      body.textContent = 'A single clean pass costs you ' + readMin.toFixed(0) + ' minutes and leaves ' + Math.round(perQBest) +
-        ' seconds per question — survivable. But almost nobody answers 40 questions from one pass: you go back and hunt, and that is bar B, which runs past the full 60 minutes before you finish. The fix is not to read faster. It is to stop re-reading.';
-    } else if (perQReal < 35) {
-      box.className = 'verdict-box show alarm';
-      head.textContent = 'Best case ' + Math.round(perQBest) + 's per question. Realistically, ' + Math.round(perQReal) + 's.';
-      body.textContent = 'One clean pass costs ' + readMin.toFixed(0) + ' of your 60 minutes. But bar B is where most candidates actually live — read it once, then hunt back through it for every question — and that leaves you ' +
-        Math.round(perQReal) + ' seconds to read a question, locate its answer, and check it is not a trap. That is the gap the next six stations close.';
+    if (LANG === 'bn') {
+      if (perQBest <= 0) {
+        box.className = 'verdict-box show alarm';
+        head.textContent = 'প্রতি মিনিটে ' + bnum(Math.round(wpm)) + ' শব্দ গতিতে আপনি শেষ প্রশ্ন পর্যন্ত পৌঁছান না।';
+        body.textContent = 'তিনটি প্যাসেজ একবার পড়তে, আপনার গতিতে, লাগবে প্রায় ' + bnum(readMin.toFixed(0)) +
+          ' মিনিট — পুরো পরীক্ষার চেয়েও বেশি। আপনার ইংরেজি যতই ভালো হোক, প্রায় কিছুই উত্তর না দিয়েই সময় শেষ হয়ে যাবে। সমস্যাটা বোঝায় নয়। সমস্যা হলো, বেশিরভাগ শব্দেই কোনো উত্তর নেই, তবু আপনি সেগুলো পড়ছেন।';
+      } else if (perQReal < 1) {
+        box.className = 'verdict-box show alarm';
+        head.textContent = 'একবার পড়লে সময়ে কুলিয়ে যায়। কিন্তু আপনি আসলে যেভাবে পড়েন, তাতে কুলোয় না।';
+        body.textContent = 'একবার পরিষ্কার পড়তে খরচ হয় ' + bnum(readMin.toFixed(0)) + ' মিনিট, বাকি থাকে প্রতি প্রশ্নে ' + bnum(Math.round(perQBest)) +
+          ' সেকেন্ড — চলনসই। কিন্তু প্রায় কেউই একবার পড়ে ৪০টি প্রশ্নের উত্তর দেয় না: আপনি ফিরে গিয়ে খোঁজেন, আর সেটাই বার B, যা পুরো ৬০ মিনিট পার করে দেয়। সমাধান দ্রুত পড়া নয়। সমাধান হলো বারবার পড়া বন্ধ করা।';
+      } else if (perQReal < 35) {
+        box.className = 'verdict-box show alarm';
+        head.textContent = 'সর্বোত্তম অবস্থায় প্রতি প্রশ্নে ' + bnum(Math.round(perQBest)) + ' সেকেন্ড। বাস্তবে, ' + bnum(Math.round(perQReal)) + ' সেকেন্ড।';
+        body.textContent = 'একবার পরিষ্কার পড়তেই আপনার ৬০ মিনিটের মধ্যে ' + bnum(readMin.toFixed(0)) + ' মিনিট চলে যায়। কিন্তু বেশিরভাগ পরীক্ষার্থী আসলে বার B-তে থাকে — একবার পড়ে, তারপর প্রতিটি প্রশ্নের জন্য আবার খোঁজে — আর তাতে বাকি থাকে প্রতি প্রশ্নে ' +
+          bnum(Math.round(perQReal)) + ' সেকেন্ড, প্রশ্ন পড়া, উত্তর খোঁজা আর সেটা ফাঁদ কিনা যাচাই করার জন্য। এই ফাঁকটাই পরের ছয়টি স্টেশন বন্ধ করে।';
+      } else {
+        box.className = 'verdict-box show ok';
+        head.textContent = 'আপনার গতি আছে — বার B-তেও প্রতি প্রশ্নে ' + bnum(Math.round(perQReal)) + ' সেকেন্ড।';
+        body.textContent = 'আপনি এত দ্রুত পড়েন যে একবার পুরো পড়েও পরে খুঁজতে পারেন। বেশিরভাগ পরীক্ষার্থী পারে না। আপনার ঝুঁকিটা আলাদা: দ্রুত পাঠকরা ম্যাপ বানানোর বদলে বারবার পড়ার উপর ভরসা করে, তাই ঘড়ির চেয়ে ফাঁদেই বেশি নম্বর হারায়। স্টেশন ৪ আর ৬ আপনার ব্যান্ড স্কোর বাড়াবে সবচেয়ে বেশি।';
+      }
     } else {
-      box.className = 'verdict-box show ok';
-      head.textContent = 'You have the speed — ' + Math.round(perQReal) + 's per question even on bar B.';
-      body.textContent = 'You read quickly enough to survive one full pass and still hunt afterwards. Most candidates cannot. Your risk is different: fast readers trust re-reading instead of building a map, so they lose marks on traps rather than on the clock. Stations 4 and 6 are the ones that will move your band score.';
+      if (perQBest <= 0) {
+        box.className = 'verdict-box show alarm';
+        head.textContent = 'At ' + Math.round(wpm) + ' wpm you never reach the last question.';
+        body.textContent = 'Reading all three passages once, at your speed, takes about ' + readMin.toFixed(0) +
+          ' minutes — more than the whole exam. You would run out of time having answered almost nothing, however good your English is. Comprehension is not the problem here. The problem is that most of those words hold no answer, and you are reading them anyway.';
+      } else if (perQReal < 1) {
+        box.className = 'verdict-box show alarm';
+        head.textContent = 'One pass fits. The way you actually read does not.';
+        body.textContent = 'A single clean pass costs you ' + readMin.toFixed(0) + ' minutes and leaves ' + Math.round(perQBest) +
+          ' seconds per question — survivable. But almost nobody answers 40 questions from one pass: you go back and hunt, and that is bar B, which runs past the full 60 minutes before you finish. The fix is not to read faster. It is to stop re-reading.';
+      } else if (perQReal < 35) {
+        box.className = 'verdict-box show alarm';
+        head.textContent = 'Best case ' + Math.round(perQBest) + 's per question. Realistically, ' + Math.round(perQReal) + 's.';
+        body.textContent = 'One clean pass costs ' + readMin.toFixed(0) + ' of your 60 minutes. But bar B is where most candidates actually live — read it once, then hunt back through it for every question — and that leaves you ' +
+          Math.round(perQReal) + ' seconds to read a question, locate its answer, and check it is not a trap. That is the gap the next six stations close.';
+      } else {
+        box.className = 'verdict-box show ok';
+        head.textContent = 'You have the speed — ' + Math.round(perQReal) + 's per question even on bar B.';
+        body.textContent = 'You read quickly enough to survive one full pass and still hunt afterwards. Most candidates cannot. Your risk is different: fast readers trust re-reading instead of building a map, so they lose marks on traps rather than on the clock. Stations 4 and 6 are the ones that will move your band score.';
+      }
     }
   }
 
@@ -3949,8 +4086,11 @@ var Resettable = [];
         classFn: function () { return ['f-skim']; },
         onWord: function () { n++; countEl.textContent = n; }
       }, function () {
-        caption.textContent = n + ' words out of ' + words.length + ' — about ' + Math.round(n / words.length * 100) +
-          '% of the text. You cannot say what the passage argues, but you can already feel it move from numbers, to supporters, to critics.';
+        caption.textContent = LANG === 'bn'
+          ? bnum(words.length) + '-এর মধ্যে ' + bnum(n) + 'টি শব্দ — প্রায় ' + bnum(Math.round(n / words.length * 100)) +
+            '% লেখা। প্যাসেজ কী বলছে তা এখনও বলতে পারবেন না, কিন্তু এতটুকু অনুভব করতে পারছেন যে এটা সংখ্যা থেকে সমর্থকদের দিকে, তারপর সমালোচকদের দিকে সরে যাচ্ছে।'
+          : n + ' words out of ' + words.length + ' — about ' + Math.round(n / words.length * 100) +
+            '% of the text. You cannot say what the passage argues, but you can already feel it move from numbers, to supporters, to critics.';
       });
     },
     2: function () {
@@ -3997,8 +4137,11 @@ var Resettable = [];
           classFn: function (idx) { return hits[idx] ? ['f-hit'] : ['f-scan']; },
           onWord: function () { n++; countEl.textContent = n; }
         }, function () {
-          caption.textContent = 'Found, after ' + seqScan.length + ' words: "harm wild bee populations". Your concrete keyword matched, so scanning stops immediately. ¶1 and ¶2 were never touched — ' +
-            (words.length - seqScan.length) + ' words you never had to read.';
+          caption.textContent = LANG === 'bn'
+            ? bnum(seqScan.length) + 'টি শব্দ পরে পাওয়া গেল: "harm wild bee populations"। আপনার বাস্তব কী-ওয়ার্ড মিলে গেছে, তাই স্ক্যানিং সঙ্গে সঙ্গে থেমে যায়। ¶১ আর ¶২ কখনও ছোঁয়াই হয়নি — ' +
+              bnum(words.length - seqScan.length) + 'টি শব্দ কখনও পড়া লাগেনি।'
+            : 'Found, after ' + seqScan.length + ' words: "harm wild bee populations". Your concrete keyword matched, so scanning stops immediately. ¶1 and ¶2 were never touched — ' +
+              (words.length - seqScan.length) + ' words you never had to read.';
         });
       }, 700);
     },
@@ -4027,7 +4170,7 @@ var Resettable = [];
     });
     prevB.disabled = !started || step === 1;
     nextB.disabled = started && step === 6;
-    nextB.textContent = !started ? '▶ Play step 1' : (step === 6 ? 'Finished ✓' : 'Next step →');
+    nextB.textContent = !started ? t('▶ Play step 1') : (step === 6 ? t('Finished ✓') : t('Next step →'));
   }
 
   function go(n) {
@@ -4060,7 +4203,9 @@ var Resettable = [];
       classFn: function () { return ['f-read']; },
       onWord: function () { n++; countEl.textContent = n; }
     }, function () {
-      caption.textContent = 'All ' + words.length + ' words, for one short paragraph — and you still have to go back and find the answer. Press Restart to see the six-step alternative again.';
+      caption.textContent = LANG === 'bn'
+        ? 'মোট ' + bnum(words.length) + 'টি শব্দ, একটিমাত্র ছোট অনুচ্ছেদের জন্য — আর তারপরও ফিরে গিয়ে উত্তর খুঁজতে হচ্ছে। ছয়-ধাপের বিকল্পটি আবার দেখতে Restart চাপুন।'
+        : 'All ' + words.length + ' words, for one short paragraph — and you still have to go back and find the answer. Press Restart to see the six-step alternative again.';
     });
   });
 
@@ -4082,6 +4227,7 @@ var Resettable = [];
   });
 
   Resettable.push(function () { started = false; go(1); started = false; paint(); });
+  window.addEventListener('langchange', function () { paint(); if (started) setThink(step); });
 
   paint();
 })();
@@ -4140,8 +4286,8 @@ var Resettable = [];
       if (missed.length || over.length > 1) {
         f.className = 'feedback show no';
         f.textContent = over.length > 1
-          ? 'Too many. "installed", "well-known" and "more than one country" are idea words — the passage will paraphrase every one of them, so they are useless for searching. Pick the noun phrase your eyes can actually hunt for.'
-          : 'You are missing the searchable part. Which two words name a physical thing that the passage is likely to repeat word for word?';
+          ? t('Too many. "installed", "well-known" and "more than one country" are idea words — the passage will paraphrase every one of them, so they are useless for searching. Pick the noun phrase your eyes can actually hunt for.')
+          : t('You are missing the searchable part. Which two words name a physical thing that the passage is likely to repeat word for word?');
         return;
       }
       chips.forEach(function (c, i) {
@@ -4189,9 +4335,11 @@ var Resettable = [];
         b.classList.add(ok ? 'correct' : 'wrong');
         if (!ok) opts.forEach(function (o) { if (o.dataset.v === 'TRUE') o.classList.add('correct'); });
         f.className = 'feedback show ' + (ok ? 'ok' : 'no');
-        f.innerHTML = (ok ? '✓ TRUE. ' : '✗ TRUE. ') +
-          'The Paris Opera House and hotels in New York are both well-known buildings, and Paris and New York are in different countries — so "more than one country" is supported even though the passage never uses that phrase. ' +
-          '<b>This is what NOT GIVEN is not.</b> The information is there; it just needed one step of inference from named places. Reserve NOT GIVEN for claims the passage genuinely never addresses.';
+        f.innerHTML = (ok ? '✓ TRUE. ' : '✗ TRUE. ') + (LANG === 'bn'
+          ? 'প্যারিস অপেরা হাউস আর নিউ ইয়র্কের হোটেল দুটোই সুপরিচিত ভবন, আর প্যারিস ও নিউ ইয়র্ক ভিন্ন দেশে — তাই "more than one country" সমর্থিত, যদিও প্যাসেজ কখনও ওই শব্দগুচ্ছ ব্যবহার করেনি। ' +
+            '<b>NOT GIVEN আসলে এটা নয়।</b> তথ্যটি সেখানে আছে; শুধু নাম-করা জায়গা থেকে এক ধাপ অনুমান লাগে। NOT GIVEN রাখুন সেসব দাবির জন্য যা প্যাসেজ সত্যিই কখনও স্পর্শ করেনি।'
+          : 'The Paris Opera House and hotels in New York are both well-known buildings, and Paris and New York are in different countries — so "more than one country" is supported even though the passage never uses that phrase. ' +
+            '<b>This is what NOT GIVEN is not.</b> The information is there; it just needed one step of inference from named places. Reserve NOT GIVEN for claims the passage genuinely never addresses.');
         complete(s4);
         Progress.hit('traps', ok);
       });
@@ -4257,7 +4405,7 @@ var Resettable = [];
     if (btn) btn.addEventListener('click', function () {
       stage.classList.remove('optin');
       var l = $('#altLoading');
-      if (l) l.textContent = 'Loading the 3D flight…';
+      if (l) l.textContent = t('Loading the 3D flight…');
       load();
     });
   } else if ('IntersectionObserver' in window) {
@@ -4472,6 +4620,18 @@ var Resettable = [];
       function (guess, actual) {
         var near = Math.abs(guess - actual) <= 20;
         var pct = Math.round(actual / words.length * 100);
+        if (LANG === 'bn') {
+          return {
+            near: near,
+            text: near
+              ? '<b>কাছাকাছি।</b> স্কিমে চোখ পড়েছিল <b>' + bnum(words.length) + '-এর মধ্যে ' + bnum(actual) + 'টি শব্দে — ' + bnum(pct) +
+                '%।</b> আপনার আন্দাজ আগে থেকেই ঠিক দিকে ছিল; বেশিরভাগ মানুষ তিন-চার গুণ বেশি আন্দাজ করে, কারণ প্রতিটি শব্দ পড়াই একটি লেখা বোঝার একমাত্র উপায় বলে মনে হয়।'
+              : '<b>আপনি আন্দাজ করেছিলেন ' + bnum(guess) + '। আসলে ছিল ' + bnum(actual) + ' — পৃষ্ঠার ' + bnum(pct) + '%।</b> এই ফাঁকটাই শিক্ষা। ' +
+                (guess > actual
+                  ? 'স্কিম করলে যতটা মনে হয় তার চেয়ে অনেক কম শব্দে চোখ পড়ে, আর তাতেও প্রতিটি অনুচ্ছেদ কী নিয়ে তা বলে দেওয়ার জন্য যথেষ্ট।'
+                  : 'স্কিমেও কয়েকটি জায়গায় চোখ থামাতে হয় — কিন্তু মাত্র কয়েকটি, আর সবসময় অনুচ্ছেদের শুরুতে।')
+          };
+        }
         return {
           near: near,
           text: near
@@ -4518,7 +4678,7 @@ var Resettable = [];
         camEase = 0.11;
         hudAlt.textContent = '0.9 m'; hudAlt.className = 'v ground';
         capEl.textContent = t('Ground level. You are close enough to read every word — and that is exactly the problem, because you have to touch all of them.');
-        statFound.textContent = 'Eventually'; statCost.textContent = '—';
+        statFound.textContent = t('Eventually'); statCost.textContent = '—';
         run(seqRead, {
           dwellFn: function () { return 74; },
           styleFn: function () { return 'read'; },
@@ -4527,7 +4687,9 @@ var Resettable = [];
             lookGoal.set(pos.x * 0.6, 0, pos.z - 0.3);
           },
           done: function (n) {
-            capEl.textContent = 'All ' + n + ' words, ' + fmtClock(n * SEC_PER_WORD) + ' of your exam clock — and you have not looked at a single question yet.';
+            capEl.textContent = LANG === 'bn'
+              ? 'মোট ' + bnum(n) + 'টি শব্দ, আপনার পরীক্ষার সময়ের ' + fmtClock(n * SEC_PER_WORD) + ' — অথচ এখনও একটি প্রশ্নও দেখেননি।'
+              : 'All ' + n + ' words, ' + fmtClock(n * SEC_PER_WORD) + ' of your exam clock — and you have not looked at a single question yet.';
             statCost.textContent = fmtClock(n * SEC_PER_WORD);
             ring.material.opacity = 0;
           }
@@ -4537,7 +4699,7 @@ var Resettable = [];
         camEase = 0.04;
         hudAlt.textContent = '14 m'; hudAlt.className = 'v cruise';
         capEl.textContent = t('Cruising altitude. Notice you cannot read the words from up here — you are not meant to. You are looking for shape.');
-        statFound.textContent = 'No — but you know where'; statCost.textContent = '—';
+        statFound.textContent = t('No — but you know where'); statCost.textContent = '—';
         run(seqSkim, {
           dwellFn: function () { return 290; },
           styleFn: function () { return 'skim'; },
@@ -4547,7 +4709,9 @@ var Resettable = [];
           },
           done: function (n) {
             altPredict.show(n);
-            capEl.textContent = n + ' words, ' + Math.round(n / words.length * 100) + '% of the page, ' + fmtClock(n * SEC_PER_WORD) + ' — and now each paragraph has a name. That is your map.';
+            capEl.textContent = LANG === 'bn'
+              ? bnum(n) + 'টি শব্দ, পৃষ্ঠার ' + bnum(Math.round(n / words.length * 100)) + '%, ' + fmtClock(n * SEC_PER_WORD) + ' — আর এখন প্রতিটি অনুচ্ছেদের একটি নাম আছে। এটাই আপনার ম্যাপ।'
+              : n + ' words, ' + Math.round(n / words.length * 100) + '% of the page, ' + fmtClock(n * SEC_PER_WORD) + ' — and now each paragraph has a name. That is your map.';
             statCost.textContent = fmtClock(n * SEC_PER_WORD);
             ring.material.opacity = 0;
             camGoal.set(0, 12.4, 6.6); lookGoal.set(0, 0, 0.3);
@@ -4559,7 +4723,7 @@ var Resettable = [];
         camEase = 0.06;
         hudAlt.textContent = '4 m'; hudAlt.className = 'v attack';
         capEl.textContent = t('Attack run. Your map already chose ¶3, so you drop straight in — and you will not read a word of ¶1 or ¶2.');
-        statFound.textContent = 'Yes'; statCost.textContent = '—';
+        statFound.textContent = t('Yes'); statCost.textContent = '—';
         var z3 = paraMidZ(2);
         veiled = [0, 1]; paintPage();
         camGoal.set(0, 9.8, z3 + 7.4); lookGoal.set(0, 0, z3);
@@ -4574,7 +4738,9 @@ var Resettable = [];
               lookGoal.set(0, 0, z3);
             },
             done: function (n) {
-              capEl.textContent = 'Found it in ' + n + ' words — ' + fmtClock(n * SEC_PER_WORD) + ' instead of ' + fmtClock(words.length * SEC_PER_WORD) + '. The gold is "harm wild bee populations". The rest of the page you never read.';
+              capEl.textContent = LANG === 'bn'
+                ? bnum(n) + 'টি শব্দে পাওয়া গেছে — ' + fmtClock(n * SEC_PER_WORD) + ', ' + fmtClock(words.length * SEC_PER_WORD) + '-এর বদলে। সোনালি অংশ হলো "harm wild bee populations"। পৃষ্ঠার বাকিটা কখনও পড়া লাগেনি।'
+                : 'Found it in ' + n + ' words — ' + fmtClock(n * SEC_PER_WORD) + ' instead of ' + fmtClock(words.length * SEC_PER_WORD) + '. The gold is "harm wild bee populations". The rest of the page you never read.';
               statCost.textContent = fmtClock(n * SEC_PER_WORD);
               ring.material.opacity = 0;
             }
@@ -4675,7 +4841,7 @@ function makeClock(el, opts) {
   var picks = $$('#paraMap .pick'), fb = $('#mapFeedback');
   var mapClock = makeClock($('#mapTimer'), { countdown: true, from: 90, onEnd: function () {
     fb.className = 'feedback show no';
-    fb.textContent = "Time. Lock in what you have — in the exam the clock does not wait for certainty.";
+    fb.textContent = t("Time. Lock in what you have — in the exam the clock does not wait for certainty.");
   }});
   $('#mapStart').addEventListener('click', function () { mapClock.reset(); mapClock.start(); });
   $('#mapCheck').addEventListener('click', function () {
@@ -4736,7 +4902,9 @@ function makeClock(el, opts) {
           var secs = locClock.stop();
           if (secs > 1) {
             var per = secs / LOCATE.length;
-            f.textContent += '  ·  Finished all six in ' + fmtClock(secs) + ' — ' + per.toFixed(0) + 's per question. Under 15s each is exam pace.';
+            f.textContent += LANG === 'bn'
+              ? '  ·  ছয়টিই শেষ হলো ' + fmtClock(secs) + '-এ — প্রতি প্রশ্নে ' + bnum(per.toFixed(0)) + ' সেকেন্ড। প্রতিটি ১৫ সেকেন্ডের নিচে হলো পরীক্ষার গতি।'
+              : '  ·  Finished all six in ' + fmtClock(secs) + ' — ' + per.toFixed(0) + 's per question. Under 15s each is exam pace.';
           }
         }
       });
@@ -4762,9 +4930,9 @@ function makeClock(el, opts) {
 
     var block = document.createElement('div');
     block.className = 'q-block';
-    block.innerHTML = '<div class="card-label" style="margin-bottom:8px">Statement ' + (n + 1) + '</div>' +
+    block.innerHTML = '<div class="card-label" style="margin-bottom:8px">' + t('Statement') + ' ' + bnum(n + 1) + '</div>' +
       '<div class="kw-sentence"></div>' +
-      '<div class="kw-counter">Selected: <b class="cnt">0</b> · aim for ' + keys.length + '</div>' +
+      '<div class="kw-counter">' + t('Selected:') + ' <b class="cnt">0</b> · ' + t('aim for') + ' ' + bnum(keys.length) + '</div>' +
       '<div class="btn-row"><button class="btn sm sec check">Check my keywords</button><button class="btn sm ghost again">Clear</button></div>' +
       '<div class="feedback"></div>';
     host.appendChild(block);
@@ -4778,7 +4946,7 @@ function makeClock(el, opts) {
       b.addEventListener('click', function () {
         if (b.disabled) return;
         b.classList.toggle('picked');
-        cnt.textContent = $$('.kwchip.picked', sent).length;
+        cnt.textContent = bnum($$('.kwchip.picked', sent).length);
       });
       sent.appendChild(b);
       return b;
@@ -4830,7 +4998,7 @@ function makeClock(el, opts) {
   PARA.forEach(function (item, i) {
     var d = document.createElement('div');
     d.className = 'q-block';
-    d.innerHTML = '<div class="q-text"><span class="q-num">' + (i + 1) + '</span>Which wording does the passage actually use for <b style="color:var(--accent2)">"' + item.q + '"</b>?</div>' +
+    d.innerHTML = '<div class="q-text"><span class="q-num">' + (i + 1) + '</span>' + t('Which wording does the passage actually use for') + ' <b style="color:var(--accent2)">"' + item.q + '"</b>?</div>' +
       '<div class="opts" style="flex-direction:column; align-items:stretch">' +
       item.opts.map(function (o, k) { return '<button class="opt" data-k="' + k + '"><b class="dim">' + 'abcd'[k] + '</b>&nbsp; ' + o + '</button>'; }).join('') +
       '</div><div class="feedback"></div>';
@@ -4880,7 +5048,7 @@ function makeClock(el, opts) {
   function show(n) {
     clearHl();
     i = n;
-    promptEl.innerHTML = '<b>' + (n + 1) + ' / ' + FIND.length + '</b> — Find: <b>' + FIND[n].p + '</b>';
+    promptEl.innerHTML = '<b>' + (n + 1) + ' / ' + FIND.length + '</b> — ' + t('Find:') + ' <b>' + FIND[n].p + '</b>';
     $('#scanTimer').textContent = '0:00';
     clock.reset(); clock.start();
     running = true;
@@ -4897,18 +5065,20 @@ function makeClock(el, opts) {
     var idx = idxOf(words, item.find[0], item.find[1]);
     if (idx >= 0) for (var k = idx; k < Math.min(words.length, idx + item.span); k++) words[k].classList.add('f-hit');
     if (best === null || secs < best) best = secs;
-    logEl.textContent = 'Found in ' + secs.toFixed(1) + 's · fastest this session: ' + best.toFixed(1) + 's';
+    logEl.textContent = LANG === 'bn'
+      ? bnum(secs.toFixed(1)) + ' সেকেন্ডে পাওয়া গেছে · এই সেশনে সবচেয়ে দ্রুত: ' + bnum(best.toFixed(1)) + ' সেকেন্ড'
+      : 'Found in ' + secs.toFixed(1) + 's · fastest this session: ' + best.toFixed(1) + 's';
     revealB.disabled = true;
     nextB.disabled = i >= FIND.length - 1;
-    if (i >= FIND.length - 1) promptEl.innerHTML = '<b>All six found.</b> Ask the class: for how many of those did you decide which paragraph <i>before</i> you started hunting? That decision is the whole skill.';
+    if (i >= FIND.length - 1) promptEl.innerHTML = t('<b>All six found.</b> Ask the class: for how many of those did you decide which paragraph <i>before</i> you started hunting? That decision is the whole skill.');
   });
 
   nextB.addEventListener('click', function () { if (i < FIND.length - 1) show(i + 1); });
   resetB.addEventListener('click', function () {
     clock.reset(); clearHl(); running = false; i = 0; best = null;
     startB.disabled = false; revealB.disabled = true; nextB.disabled = true;
-    promptEl.innerHTML = 'Press <b>Start</b> to reveal the first thing to find.';
-    logEl.textContent = 'Fastest find this session: —';
+    promptEl.innerHTML = t('Press <b>Start</b> to reveal the first thing to find.');
+    logEl.textContent = t('Fastest find this session: —');
   });
 
   /* ── Pair race ── */
@@ -4937,10 +5107,12 @@ function makeClock(el, opts) {
         Progress.hit('scan', ok);
         $('#raceScore').textContent = rScore + ' / 6';
         f.className = 'feedback show ' + (ok ? 'ok' : 'no');
-        f.textContent = ok ? '✓' : '✗ The answer is ' + item.opts[item.a] + '.';
+        f.textContent = ok ? '✓' : '✗ ' + t('The answer is') + ' ' + item.opts[item.a] + '.';
         if (rDone === RACE.length) {
           var s = raceClock.stop();
-          if (s > 1) f.textContent += '  ·  Race finished in ' + fmtClock(s) + ' with ' + rScore + '/6.';
+          if (s > 1) f.textContent += LANG === 'bn'
+            ? '  ·  রেস শেষ হলো ' + fmtClock(s) + '-এ, স্কোর ' + bnum(rScore) + '/৬।'
+            : '  ·  Race finished in ' + fmtClock(s) + ' with ' + rScore + '/6.';
         }
       });
     });
@@ -4973,7 +5145,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
       b.style.borderColor = 'var(--kw-idea)';
       b.style.background = 'var(--kw-idea-dim)';
       box.classList.add('locked');
-      $('.predict-h', box).textContent = '⬦ You committed to: ' + b.textContent.trim();
+      $('.predict-h', box).textContent = t('⬦ You committed to:') + ' ' + b.textContent.trim();
       if (api.reveal) api.reveal();
     });
   });
@@ -5073,7 +5245,9 @@ function makePrediction(boxId, optsId, resultId, judge) {
 
     head.textContent = attempted === 0
       ? t('Nothing scored yet')
-      : totC + ' of ' + totT + ' correct across ' + attempted + ' skill' + (attempted > 1 ? 's' : '');
+      : (LANG === 'bn'
+          ? bnum(attempted) + 'টি দক্ষতায় ' + bnum(totT) + '-এর মধ্যে ' + bnum(totC) + 'টি সঠিক'
+          : totC + ' of ' + totT + ' correct across ' + attempted + ' skill' + (attempted > 1 ? 's' : ''));
 
     grid.innerHTML = rows.map(function (r) {
       var pctTxt = r.v.attempted ? Math.round(r.pct * 100) + '%' : '—';
@@ -5160,21 +5334,32 @@ function makePrediction(boxId, optsId, resultId, judge) {
       }
       var second = done[1];
       if (second && second.pct < 0.6 && second.sk.key !== worst.sk.key) {
-        parts.push('<p class="dim" style="font-size:0.85rem">Second weakest: <b>' + second.sk.name + '</b> at ' +
-          Math.round(second.pct * 100) + '%. Fix the first one before you touch this — chasing two at once fixes neither.</p>');
+        parts.push('<p class="dim" style="font-size:0.85rem">' + (LANG === 'bn'
+          ? 'দ্বিতীয় দুর্বল জায়গা: <b>' + t(second.sk.name) + '</b>, ' + bnum(Math.round(second.pct * 100)) + '%। এটার আগে প্রথমটা ঠিক করুন — একসাথে দুটোর পেছনে ছুটলে কোনোটাই ঠিক হয় না।'
+          : 'Second weakest: <b>' + second.sk.name + '</b> at ' + Math.round(second.pct * 100) + '%. Fix the first one before you touch this — chasing two at once fixes neither.') + '</p>');
       }
     }
 
     if (pace) {
-      if (pace.auto) {
-        parts.push('<p>You also <span class="rx">ran out of time on the Full Run</span>. Whatever your accuracy, that is the first thing to fix: an unanswered question scores zero, and there is no penalty for guessing in IELTS Reading.</p>');
-      } else if (pace.flagged === 0) {
-        parts.push('<p>You finished the Full Run in ' + fmtClock(pace.used) + ' without flagging anything. Try the next one flagging at least two questions — the habit is what saves you when a passage is harder than this one.</p>');
+      if (LANG === 'bn') {
+        if (pace.auto) {
+          parts.push('<p>আপনি <span class="rx">Full Run-এ সময়ও শেষ করে ফেলেছিলেন</span>। নির্ভুলতা যাই হোক, এটাই আগে ঠিক করার বিষয়: অনুত্তরিত প্রশ্ন শূন্য নম্বর পায়, আর IELTS Reading-এ আন্দাজ করার জন্য কোনো শাস্তি নেই।</p>');
+        } else if (pace.flagged === 0) {
+          parts.push('<p>আপনি Full Run শেষ করেছেন ' + fmtClock(pace.used) + '-এ, কিছুই চিহ্নিত না করে। পরের বার অন্তত দুটি প্রশ্ন চিহ্নিত করে দেখুন — এই অভ্যাসই আপনাকে বাঁচায় যখন কোনো প্যাসেজ এটার চেয়ে কঠিন হয়।</p>');
+        } else {
+          parts.push('<p>আপনি Full Run শেষ করেছেন ' + fmtClock(pace.used) + '-এ, আর ' + bnum(pace.flagged) + 'টি চিহ্নিত করেছেন। এটাই পরীক্ষার আচরণ, আর চাপের মধ্যেও এটা টিকে থাকবে।</p>');
+        }
       } else {
-        parts.push('<p>You finished the Full Run in ' + fmtClock(pace.used) + ' and flagged ' + pace.flagged + '. That is exam behaviour, and it will hold up under pressure.</p>');
+        if (pace.auto) {
+          parts.push('<p>You also <span class="rx">ran out of time on the Full Run</span>. Whatever your accuracy, that is the first thing to fix: an unanswered question scores zero, and there is no penalty for guessing in IELTS Reading.</p>');
+        } else if (pace.flagged === 0) {
+          parts.push('<p>You finished the Full Run in ' + fmtClock(pace.used) + ' without flagging anything. Try the next one flagging at least two questions — the habit is what saves you when a passage is harder than this one.</p>');
+        } else {
+          parts.push('<p>You finished the Full Run in ' + fmtClock(pace.used) + ' and flagged ' + pace.flagged + '. That is exam behaviour, and it will hold up under pressure.</p>');
+        }
       }
     } else {
-      parts.push('<p class="dim" style="font-size:0.85rem">You have not done <b>Station 7, the Full Run</b> yet. Until you do, this diagnosis covers your skills but not your pacing — and pacing is what most candidates actually lose marks to.</p>');
+      parts.push('<p class="dim" style="font-size:0.85rem">' + t('You have not done <b>Station 7, the Full Run</b> yet. Until you do, this diagnosis covers your skills but not your pacing — and pacing is what most candidates actually lose marks to.') + '</p>');
     }
 
     vb.innerHTML = parts.join('');
@@ -5398,12 +5583,16 @@ function makePrediction(boxId, optsId, resultId, judge) {
       : right + ' in sixty seconds.';
     optsEl.innerHTML = '';
     fbEl.textContent = '';
-    var verdict = right >= 20 ? 'That is automatic recognition — exactly what you need under time.'
-                : right >= 12 ? 'Solid. Push for twenty: at that speed you stop translating and start recognising.'
-                : 'Under twelve means you are working each one out. Run it again — this is the cheapest band gain on the page.';
+    var verdict = LANG === 'bn'
+      ? (right >= 20 ? 'এটাই স্বয়ংক্রিয় চেনা — সময়ের চাপে ঠিক এটাই দরকার।'
+        : right >= 12 ? 'ভালো। বিশের জন্য চেষ্টা করুন: ওই গতিতে আপনি অনুবাদ করা বন্ধ করে চেনা শুরু করেন।'
+        : 'বারোর নিচে মানে প্রতিটি বের করতে হচ্ছে ভেবে। আবার করুন — এই পেজে এটাই সবচেয়ে সস্তায় ব্যান্ড বাড়ানোর উপায়।')
+      : (right >= 20 ? 'That is automatic recognition — exactly what you need under time.'
+        : right >= 12 ? 'Solid. Push for twenty: at that speed you stop translating and start recognising.'
+        : 'Under twelve means you are working each one out. Run it again — this is the cheapest band gain on the page.');
     resultEl.className = 'pb-result show';
     resultEl.innerHTML = '<p style="font-size:0.9rem"><b>' + verdict + '</b></p>' +
-      (missed.length ? '<p class="dim" style="font-size:0.8rem;margin-top:10px">Worth learning:</p><div class="pb-missed">' +
+      (missed.length ? '<p class="dim" style="font-size:0.8rem;margin-top:10px">' + t('Worth learning:') + '</p><div class="pb-missed">' +
         missed.slice(0, 8).map(function (m) { return '<div><b>' + m[0] + '</b> = ' + m[1] + '</div>'; }).join('') + '</div>' : '');
   }
 
@@ -5598,7 +5787,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
   }).join('');
   $$('#frPapers button').forEach(function (b) {
     b.addEventListener('click', function () {
-      if (running && !submitted && !window.confirm('Switch papers? This will clear the paper you have started.')) return;
+      if (running && !submitted && !window.confirm(t('Switch papers? This will clear the paper you have started.'))) return;
       loadPaper(Number(b.dataset.i));
     });
   });
@@ -5645,17 +5834,19 @@ function makePrediction(boxId, optsId, resultId, judge) {
     paintNav();
     var n = answeredCount();
     fillEl.style.width = (n / QUESTIONS.length * 100) + '%';
-    youEl.textContent = 'You: ' + n + ' of ' + QUESTIONS.length + ' answered';
-    if (!running && !submitted) { tgtEl.textContent = 'Pace: not started'; return; }
+    youEl.textContent = LANG === 'bn'
+      ? 'আপনি: ' + bnum(QUESTIONS.length) + '-এর মধ্যে ' + bnum(n) + 'টি উত্তর দিয়েছেন'
+      : 'You: ' + n + ' of ' + QUESTIONS.length + ' answered';
+    if (!running && !submitted) { tgtEl.textContent = t('Pace: not started'); return; }
     var elapsed = startedAt ? (Date.now() - startedAt) / 1000 : 0;
     var frac = Math.min(1, elapsed / DURATION);
     markEl.style.left = (frac * 100) + '%';
     var should = Math.min(QUESTIONS.length, Math.floor(elapsed / (DURATION / QUESTIONS.length)) + 1);
     var delta = n - should;
     /* kept short so it never wraps to two lines inside a sticky phone toolbar */
-    tgtEl.textContent = delta >= 0
-      ? '✓ on pace · target ' + should
-      : '⚠ ' + Math.abs(delta) + ' behind · target ' + should;
+    tgtEl.textContent = LANG === 'bn'
+      ? (delta >= 0 ? '✓ গতি ঠিক আছে · লক্ষ্য ' + bnum(should) : '⚠ ' + bnum(Math.abs(delta)) + ' পিছিয়ে · লক্ষ্য ' + bnum(should))
+      : (delta >= 0 ? '✓ on pace · target ' + should : '⚠ ' + Math.abs(delta) + ' behind · target ' + should);
     tgtEl.style.color = delta >= 0 ? 'var(--good)' : 'var(--bad)';
   }
 
@@ -5697,11 +5888,21 @@ function makePrediction(boxId, optsId, resultId, judge) {
   }
   function gapVerdict(q, given) {
     var g = normalise(given);
-    if (!g) return { ok: false, reason: 'left blank' };
+    if (!g) return { ok: false, reasonKey: 'blank' };
     var words = g.split(' ').filter(Boolean);
-    if (words.length > q.limit) return { ok: false, reason: 'over the word limit (' + words.length + ' words)' };
+    if (words.length > q.limit) return { ok: false, reasonKey: 'limit', n: words.length };
     var ok = q.a.some(function (acc) { return normalise(acc) === g; });
-    return { ok: ok, reason: ok ? '' : 'not the wording the passage uses' };
+    return { ok: ok, reasonKey: ok ? '' : 'wording' };
+  }
+  function reasonText(v) {
+    if (LANG === 'bn') {
+      if (v.reasonKey === 'blank') return 'খালি রাখা হয়েছে';
+      if (v.reasonKey === 'limit') return 'শব্দসীমার বাইরে (' + bnum(v.n) + 'টি শব্দ)';
+      return 'প্যাসেজে ব্যবহৃত শব্দ নয়';
+    }
+    if (v.reasonKey === 'blank') return 'left blank';
+    if (v.reasonKey === 'limit') return 'over the word limit (' + v.n + ' words)';
+    return 'not the wording the passage uses';
   }
 
   function submit(auto) {
@@ -5723,9 +5924,11 @@ function makePrediction(boxId, optsId, resultId, judge) {
         input.disabled = true;
         input.classList.add(ok ? 'correct' : 'wrong');
         if (!ok) {
-          note = 'Your answer was ' + v.reason + '. The answer is ';
+          note = LANG === 'bn'
+            ? 'আপনার উত্তর ছিল ' + reasonText(v) + '। সঠিক উত্তর: '
+            : 'Your answer was ' + reasonText(v) + '. The answer is ';
           Errors.add(Errors.classify('gap', q.a, state[i].answer,
-                     { overLimit: /word limit/.test(v.reason) }));
+                     { overLimit: v.reasonKey === 'limit' }));
         }
       } else {
         ok = state[i].answer === q.a;
@@ -5795,36 +5998,70 @@ function makePrediction(boxId, optsId, resultId, judge) {
     var flags = state.filter(function (x) { return x.flagged; }).length;
 
     var head, coach = [];
-    if (auto) {
-      head = 'The clock beat you — ' + right + '/13 with ' + blanks + ' unanswered.';
-      coach.push('You ran out of time, which in the real exam means those ' + blanks + ' blanks score zero even if you knew them. <span class="rx">Never leave a blank:</span> in the last minute, guess every empty box. There is no penalty for a wrong answer in IELTS Reading, so a blank is the only genuinely worthless thing on the paper.');
-    } else if (right >= 11) {
-      head = 'Strong — ' + right + '/13 in ' + fmtClock(used) + '.';
-      coach.push('That is around band 7 territory on this question mix. Your limiter now is not accuracy but consistency under a full three-passage load.');
-    } else if (right >= 8) {
-      head = right + '/13 in ' + fmtClock(used) + ' — the method is working, the edges are not.';
-      coach.push('You are locating well enough. The marks you lost are the ones the drills above target directly, so use the scorecard below to pick which one.');
+    if (LANG === 'bn') {
+      if (auto) {
+        head = 'সময় শেষ হয়ে গেছে — ' + bnum(right) + '/১৩, ' + bnum(blanks) + 'টি অনুত্তরিত।';
+        coach.push('সময় শেষ হয়ে গেছে, আর আসল পরীক্ষায় এর মানে ওই ' + bnum(blanks) + 'টি খালি জায়গা শূন্য নম্বর পাবে, জানা থাকলেও। <span class="rx">কখনও খালি রাখবেন না:</span> শেষ মিনিটে প্রতিটি খালি বাক্সে একটি আন্দাজ লিখুন। IELTS Reading-এ ভুল উত্তরের জন্য কোনো শাস্তি নেই, তাই খালি রাখাটাই একমাত্র সত্যিকারের মূল্যহীন কাজ।');
+      } else if (right >= 11) {
+        head = 'দারুণ — ' + bnum(right) + '/১৩, ' + fmtClock(used) + '-এ।';
+        coach.push('এই প্রশ্ন-মিশ্রণে এটা প্রায় ব্যান্ড ৭-এর কাছাকাছি। এখন আপনার সীমাবদ্ধতা নির্ভুলতা নয়, বরং পুরো তিনটি প্যাসেজের চাপে ধারাবাহিকতা।');
+      } else if (right >= 8) {
+        head = bnum(right) + '/১৩, ' + fmtClock(used) + ' — পদ্ধতি কাজ করছে, খুঁটিনাটি এখনও নয়।';
+        coach.push('আপনি মোটামুটি ভালোভাবে জায়গা খুঁজে পাচ্ছেন। যেসব নম্বর হারিয়েছেন সেগুলোই উপরের ড্রিলগুলো সরাসরি ধরে, তাই নিচের স্কোরকার্ড দেখে কোনটা বেছে নিন।');
+      } else {
+        head = bnum(right) + '/১৩, ' + fmtClock(used) + '।';
+        coach.push('এটাকে "আমার ইংরেজি যথেষ্ট ভালো নয়" ভাববেন না। বিভাগের বাক্সগুলো দেখুন: একটা যদি বাকিগুলোর চেয়ে অনেক দুর্বল হয়, সেটা কৌশলের সমস্যা, নির্দিষ্ট সমাধান আছে — শব্দভাণ্ডারের সমস্যা নয়।');
+      }
+
+      if (over.length) {
+        coach.push('<b>প্রশ্ন ' + over.join(', Q') + '</b>-এ নব্বই সেকেন্ডের বেশি সময় লেগেছে' + (over.length > 1 ? ' প্রতিটিতে' : '') +
+          '। আসল পরীক্ষায় এই একটি বাড়তি সময়ই সাধারণত প্যাসেজের শেষ তিনটি প্রশ্নের নম্বর কেড়ে নেয়। ' +
+          '<span class="rx">সমাধান আচরণগত, ভাষাগত নয়:</span> কোনো প্রশ্নে নব্বই সেকেন্ড পার হলে, চিহ্নিত করুন, একটা সম্ভাব্য উত্তর দিয়ে এগিয়ে যান। পরে ফিরে আসতে পারবেন — কিন্তু শুধু সময় বাকি থাকলে, আর সেটা তখনই থাকবে যদি আপনি এগিয়ে গিয়ে থাকেন।');
+      } else {
+        coach.push('কোনো প্রশ্নেই নব্বই সেকেন্ডের বেশি লাগেনি — আপনার গতি-শৃঙ্খলা সত্যিই ভালো, যা উঁচু স্কোরের চেয়েও কম দেখা যায়।');
+      }
+
+      if (flags === 0 && (over.length || blanks)) {
+        coach.push('আপনি কিছুই চিহ্নিত করেননি। ফ্ল্যাগ বোতামটি সাজসজ্জা নয়: যারা চিহ্নিত করে এগিয়ে যায় তারা যারা আটকে থাকে তাদের চেয়ে বেশি নম্বর পায়, কারণ আটকে থাকা মানে এমন একটি প্রশ্নে সময় খরচ করা যা তবুও ভুল হতে পারে।');
+      } else if (flags) {
+        coach.push('আপনি ' + bnum(flags) + 'টি প্রশ্ন চিহ্নিত করেছেন — ভালো অভ্যাস। এটা এতটাই অভ্যাসে পরিণত করুন যে বাস্তব চাপেও কেউ নতুন কৌশল বানাতে বসে না।');
+      }
+
+      if (sec[2] < secTot[2]) {
+        coach.push('sentence completion-এ, পড়া দোষারোপ করার আগে শূন্য-নম্বরের দুটি সবচেয়ে সাধারণ কারণ দেখুন: <span class="rx">শব্দসীমা পার হওয়া</span>, আর <span class="rx">শব্দ বদলে ফেলা</span>। উত্তরটি প্যাসেজ থেকে হুবহু তুলতে হবে।');
+      }
     } else {
-      head = right + '/13 in ' + fmtClock(used) + '.';
-      coach.push('Do not read this as "my English is not good enough". Look at the section boxes: if one is far weaker than the others, that is a technique problem with a specific fix, not a vocabulary problem.');
-    }
+      if (auto) {
+        head = 'The clock beat you — ' + right + '/13 with ' + blanks + ' unanswered.';
+        coach.push('You ran out of time, which in the real exam means those ' + blanks + ' blanks score zero even if you knew them. <span class="rx">Never leave a blank:</span> in the last minute, guess every empty box. There is no penalty for a wrong answer in IELTS Reading, so a blank is the only genuinely worthless thing on the paper.');
+      } else if (right >= 11) {
+        head = 'Strong — ' + right + '/13 in ' + fmtClock(used) + '.';
+        coach.push('That is around band 7 territory on this question mix. Your limiter now is not accuracy but consistency under a full three-passage load.');
+      } else if (right >= 8) {
+        head = right + '/13 in ' + fmtClock(used) + ' — the method is working, the edges are not.';
+        coach.push('You are locating well enough. The marks you lost are the ones the drills above target directly, so use the scorecard below to pick which one.');
+      } else {
+        head = right + '/13 in ' + fmtClock(used) + '.';
+        coach.push('Do not read this as "my English is not good enough". Look at the section boxes: if one is far weaker than the others, that is a technique problem with a specific fix, not a vocabulary problem.');
+      }
 
-    if (over.length) {
-      coach.push('<b>Question ' + over.join(', Q') + '</b> ran past ninety seconds' + (over.length > 1 ? ' each' : '') +
-        '. In a real paper that single overrun is usually what costs you the last three questions of the passage. ' +
-        '<span class="rx">The fix is behavioural, not linguistic:</span> when a question passes ninety seconds, flag it, put any plausible answer in, and move. You can come back — but only if there is time left, and there only will be if you moved.');
-    } else {
-      coach.push('No question ran past ninety seconds — your pacing discipline is genuinely good, which is rarer than a high score.');
-    }
+      if (over.length) {
+        coach.push('<b>Question ' + over.join(', Q') + '</b> ran past ninety seconds' + (over.length > 1 ? ' each' : '') +
+          '. In a real paper that single overrun is usually what costs you the last three questions of the passage. ' +
+          '<span class="rx">The fix is behavioural, not linguistic:</span> when a question passes ninety seconds, flag it, put any plausible answer in, and move. You can come back — but only if there is time left, and there only will be if you moved.');
+      } else {
+        coach.push('No question ran past ninety seconds — your pacing discipline is genuinely good, which is rarer than a high score.');
+      }
 
-    if (flags === 0 && (over.length || blanks)) {
-      coach.push('You flagged nothing. The flag button is not decoration: students who mark and move outscore students who grind, because grinding spends time you have not got on a question you may still get wrong.');
-    } else if (flags) {
-      coach.push('You flagged ' + flags + ' question' + (flags > 1 ? 's' : '') + ' — good habit. Practise it until it is automatic, because under real pressure nobody invents a new strategy.');
-    }
+      if (flags === 0 && (over.length || blanks)) {
+        coach.push('You flagged nothing. The flag button is not decoration: students who mark and move outscore students who grind, because grinding spends time you have not got on a question you may still get wrong.');
+      } else if (flags) {
+        coach.push('You flagged ' + flags + ' question' + (flags > 1 ? 's' : '') + ' — good habit. Practise it until it is automatic, because under real pressure nobody invents a new strategy.');
+      }
 
-    if (sec[2] < secTot[2]) {
-      coach.push('On sentence completion, check the two commonest zero-mark causes before you blame your reading: <span class="rx">exceeding the word limit</span>, and <span class="rx">changing the word</span>. The answer must be lifted from the passage exactly as written.');
+      if (sec[2] < secTot[2]) {
+        coach.push('On sentence completion, check the two commonest zero-mark causes before you blame your reading: <span class="rx">exceeding the word limit</span>, and <span class="rx">changing the word</span>. The answer must be lifted from the passage exactly as written.');
+      }
     }
 
     $('#frVerdictHead').textContent = head;
@@ -5873,8 +6110,8 @@ function makePrediction(boxId, optsId, resultId, judge) {
     $('#frBar').classList.remove('running');
     $('#frReview').classList.remove('show');
     fillEl.style.width = '0%'; markEl.style.left = '0%';
-    youEl.textContent = 'You: 0 of 13 answered';
-    tgtEl.textContent = 'Pace: not started'; tgtEl.style.color = '';
+    youEl.textContent = t('You: 0 of 13 answered');
+    tgtEl.textContent = t('Pace: not started'); tgtEl.style.color = '';
     QUESTIONS.forEach(function (q, i) {
       var d = $('#frq' + i);
       d.className = 'fr-q';
@@ -5910,8 +6147,8 @@ function makePrediction(boxId, optsId, resultId, judge) {
       var d = document.createElement('div');
       d.className = 'q-block';
       d.innerHTML =
-        '<div class="extract"><span class="lbl">Passage says</span>' + item.text + '</div>' +
-        '<div class="extract claim"><span class="lbl">Claim ' + (n + 1) + '</span>' + item.claim + '</div>' +
+        '<div class="extract"><span class="lbl">' + t('Passage says') + '</span>' + item.text + '</div>' +
+        '<div class="extract claim"><span class="lbl">' + t('Claim') + ' ' + bnum(n + 1) + '</span>' + item.claim + '</div>' +
         '<div class="opts">' + ['TRUE', 'FALSE', 'NOT GIVEN'].map(function (v) {
           return '<button class="opt" data-v="' + v + '">' + v + '</button>';
         }).join('') + '</div><div class="feedback"></div>';
@@ -5946,11 +6183,15 @@ function makePrediction(boxId, optsId, resultId, judge) {
 
   roundBtn.addEventListener('click', function () {
     bank = (bank + 1) % BANKS.length;
-    roundBtn.textContent = bank === 0 ? '🔄 Round 2 — new items' : '🔄 Round 1 — original items';
+    roundBtn.textContent = bank === 0 ? t('🔄 Round 2 — new items') : t('🔄 Round 1 — original items');
     build();
   });
 
   $('#trapReset').addEventListener('click', build);
+  window.addEventListener('langchange', function () {
+    roundBtn.textContent = bank === 0 ? t('🔄 Round 2 — new items') : t('🔄 Round 1 — original items');
+    build();
+  });
   build();
 })();
 </script>
