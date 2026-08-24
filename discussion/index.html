@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Discussion Rooms — Focus Group English</title>
+  <meta name="description" content="Teacher-led small-group discussions with live rooms, local topics, and mobile English scaffolding.">
+  <meta name="theme-color" content="#f4f0e8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="back-link" href="../index.html" aria-label="Back to all activities">← <span>Activities</span></a>
+    <a class="wordmark" href="./" aria-label="Discussion Rooms home">
+      <span class="wordmark-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><strong>Discussion Rooms</strong><small>Focus Group English</small></span>
+    </a>
+    <button class="icon-button" id="install-help" type="button" aria-label="About this activity">?</button>
+  </header>
+
+  <main>
+    <section class="landing view is-active" id="landing-view">
+      <div class="hero">
+        <p class="eyebrow">Small groups · real voices · useful English</p>
+        <h1>Give every group the<br><em>language to take part.</em></h1>
+        <p class="hero-copy">Join a teacher-led discussion room. Your phone supplies the words, sentence patterns, and prompts—the conversation stays face to face.</p>
+        <div class="hero-path" aria-label="Activity flow">
+          <span><b>1</b> Scan</span><i></i><span><b>2</b> Choose a room</span><i></i><span><b>3</b> Discuss</span><i></i><span><b>4</b> Report</span>
+        </div>
+      </div>
+
+      <div class="entry-grid">
+        <section class="entry-card join-card" aria-labelledby="join-heading">
+          <div class="entry-icon join-icon" aria-hidden="true">→</div>
+          <p class="card-kicker">Student entrance</p>
+          <h2 id="join-heading">Join your discussion</h2>
+          <p class="muted">Enter the five-character code on the classroom screen.</p>
+          <form id="join-lookup-form" class="stack-form">
+            <label for="join-code">Session code</label>
+            <div class="code-entry">
+              <input id="join-code" name="code" inputmode="text" autocomplete="off" maxlength="5" placeholder="ABCDE" aria-describedby="join-code-help" required>
+              <button class="primary-button" type="submit">Find rooms</button>
+            </div>
+            <small id="join-code-help">Letters and numbers · no spaces</small>
+          </form>
+        </section>
+
+        <section class="entry-card teacher-card" aria-labelledby="teacher-heading">
+          <div class="entry-icon teacher-icon" aria-hidden="true">✦</div>
+          <p class="card-kicker">Teacher console</p>
+          <h2 id="teacher-heading">Open a new session</h2>
+          <p class="muted">Choose the room shape now. Topics and roles are assigned automatically.</p>
+          <form id="create-session-form" class="teacher-form">
+            <div class="two-fields">
+              <label>Rooms
+                <select id="room-count">
+                  <option value="3">3 rooms</option>
+                  <option value="4" selected>4 rooms</option>
+                  <option value="5">5 rooms</option>
+                  <option value="6">6 rooms</option>
+                  <option value="7">7 rooms</option>
+                  <option value="8">8 rooms</option>
+                </select>
+              </label>
+              <label>Students per room
+                <select id="room-capacity">
+                  <option value="5">Up to 5</option>
+                  <option value="6" selected>Up to 6</option>
+                  <option value="7">Up to 7</option>
+                  <option value="8">Up to 8</option>
+                </select>
+              </label>
+            </div>
+            <label>English support
+              <select id="support-level">
+                <option value="student-choice" selected>Students choose their level</option>
+                <option value="basic">Basic support for everyone</option>
+                <option value="developing">Developing support for everyone</option>
+                <option value="confident">Confident support for everyone</option>
+              </select>
+            </label>
+            <fieldset class="duration-fieldset">
+              <legend>Session pace</legend>
+              <div class="segmented">
+                <label><input type="radio" name="duration" value="25"><span>25 min<small>Quick</small></span></label>
+                <label><input type="radio" name="duration" value="35" checked><span>35 min<small>Standard</small></span></label>
+                <label><input type="radio" name="duration" value="45"><span>45 min<small>Deep</small></span></label>
+              </div>
+            </fieldset>
+            <button class="teacher-button" type="submit"><span>Create rooms</span><span>→</span></button>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <section class="view picker-view" id="picker-view" aria-labelledby="picker-heading">
+      <div class="narrow-shell">
+        <button class="text-button" id="picker-back" type="button">← Enter a different code</button>
+        <div class="section-heading">
+          <p class="eyebrow">Session <strong id="picker-code">—</strong></p>
+          <h1 id="picker-heading">Choose your room</h1>
+          <p>Topics stay secret until the teacher begins.</p>
+        </div>
+        <form id="join-session-form">
+          <div class="profile-fields">
+            <label>Your first name or nickname
+              <input id="student-name" maxlength="36" autocomplete="name" placeholder="e.g. Sumi" required>
+            </label>
+            <label>Your English support
+              <select id="student-level">
+                <option value="basic">Basic — more sentence frames</option>
+                <option value="developing" selected>Developing — useful phrase chunks</option>
+                <option value="confident">Confident — nuance and challenge</option>
+              </select>
+            </label>
+          </div>
+          <div class="room-picker-grid" id="room-picker-grid"></div>
+          <input id="selected-room" type="hidden" required>
+          <div class="sticky-join">
+            <div><small>Your choice</small><strong id="selected-room-label">Select an available room</strong></div>
+            <button class="primary-button" id="join-room-button" type="submit" disabled>Join room →</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="view teacher-console" id="teacher-view" aria-labelledby="console-heading">
+      <div class="console-shell">
+        <div class="console-topline">
+          <div>
+            <p class="eyebrow">Teacher console</p>
+            <h1 id="console-heading">Discussion session <span id="teacher-code">—</span></h1>
+          </div>
+          <div class="console-actions">
+            <button class="secondary-button" id="copy-join-link" type="button">Copy join link</button>
+            <button class="danger-text-button" id="end-session" type="button">End session</button>
+          </div>
+        </div>
+
+        <div class="teacher-hero-grid">
+          <section class="join-display">
+            <div class="qr-frame"><div id="session-qr"></div></div>
+            <div class="join-display-copy">
+              <span>Students scan or visit this page</span>
+              <strong id="projector-code">—</strong>
+              <small>Topics appear only after you start.</small>
+            </div>
+          </section>
+          <section class="phase-control-card">
+            <div class="phase-live-label"><span id="phase-status-dot"></span><span id="teacher-phase-kicker">Lobby open</span></div>
+            <h2 id="teacher-phase-title">Students are choosing rooms</h2>
+            <p id="teacher-phase-prompt">Wait until the groups are ready, then reveal the topics.</p>
+            <div class="teacher-timer" id="teacher-timer">—:—</div>
+            <div class="phase-buttons">
+              <button class="secondary-button" id="previous-phase" type="button">← Back</button>
+              <button class="secondary-button" id="extend-phase" type="button">+2 min</button>
+              <button class="teacher-button compact" id="next-phase" type="button">Reveal topics →</button>
+            </div>
+          </section>
+        </div>
+
+        <nav class="phase-track" id="teacher-phase-track" aria-label="Discussion phases"></nav>
+
+        <div class="dashboard-heading">
+          <div><h2>Room pulse</h2><p id="class-count">0 students joined</p></div>
+          <p class="dashboard-key"><span class="help-dot"></span> A group is asking for help</p>
+        </div>
+        <div class="teacher-room-grid" id="teacher-room-grid"></div>
+      </div>
+    </section>
+
+    <section class="view student-room" id="student-view" aria-labelledby="student-topic-title">
+      <div class="student-shell">
+        <div class="student-topline">
+          <div class="room-identity"><span id="student-room-number">Room —</span><small id="student-session-code">Session —</small></div>
+          <div class="student-name"><span id="student-name-label">—</span><small id="student-level-label">— support</small></div>
+        </div>
+
+        <section class="waiting-card" id="waiting-card">
+          <div class="waiting-orbit" aria-hidden="true"><span></span><i></i><b></b></div>
+          <p class="eyebrow">You’re in</p>
+          <h1>Your topic is still under wraps.</h1>
+          <p>Put your phones in the center, meet your group, and read your role while the teacher fills the rooms.</p>
+          <div class="role-preview" id="waiting-role"></div>
+        </section>
+
+        <div id="active-room-content" hidden>
+          <div class="phase-strip">
+            <div><span id="student-phase-icon">🔎</span><p><small id="student-phase-label">Understand</small><strong id="student-phase-short">Preview the language</strong></p></div>
+            <time id="student-timer">03:00</time>
+          </div>
+
+          <section class="topic-card">
+            <div class="topic-meta"><span id="student-topic-category">Category</span><button id="toggle-bangla" type="button" aria-pressed="false">বাংলা</button></div>
+            <h1 id="student-topic-title">Discussion topic</h1>
+            <p class="bangla-question" id="student-topic-bangla" lang="bn" hidden></p>
+            <p class="topic-context" id="student-topic-context"></p>
+            <div class="phase-prompt"><span aria-hidden="true">→</span><p><small>Do this now</small><strong id="student-phase-prompt"></strong></p></div>
+          </section>
+
+          <section class="quick-actions" aria-label="Discussion participation tools">
+            <button id="contributed-button" type="button"><span class="action-icon">✓</span><span><strong>I contributed</strong><small id="contribution-label">Tap after you speak</small></span></button>
+            <button id="help-button" type="button"><span class="action-icon">?</span><span><strong>Ask the teacher</strong><small>Quiet room signal</small></span></button>
+          </section>
+
+          <nav class="scaffold-tabs" id="scaffold-tabs" aria-label="English support">
+            <button class="is-active" data-panel="say" type="button">Say it</button>
+            <button data-panel="words" type="button">Words</button>
+            <button data-panel="grammar" type="button">Patterns</button>
+            <button data-panel="questions" type="button">Prompts</button>
+            <button data-panel="role" type="button">My role</button>
+          </nav>
+
+          <div class="scaffold-panels">
+            <section class="scaffold-panel is-active" id="panel-say"><div id="phrase-list" class="phrase-list"></div><div class="topic-language" id="topic-chunks"></div></section>
+            <section class="scaffold-panel" id="panel-words"><div class="vocab-list" id="vocab-list"></div><div class="collocation-box" id="collocation-list"></div></section>
+            <section class="scaffold-panel" id="panel-grammar"><div class="grammar-list" id="grammar-list"></div></section>
+            <section class="scaffold-panel" id="panel-questions"><div class="prompt-card" id="live-prompt-card"></div><button class="secondary-button wide" id="next-prompt" type="button">Another prompt →</button><div class="perspective-box" id="perspective-box"></div></section>
+            <section class="scaffold-panel" id="panel-role"><div class="role-card" id="student-role-card"></div></section>
+          </div>
+
+          <section class="group-report" id="group-report" hidden>
+            <div class="report-heading"><p class="eyebrow">Room report</p><h2>What did your group discover?</h2><p>The reporter submits; everyone checks that the summary represents the conversation.</p></div>
+            <form id="report-form">
+              <label>Where did the group finish?
+                <select id="report-position">
+                  <option value="Broad agreement">Broad agreement</option>
+                  <option value="Mixed views" selected>Mixed views</option>
+                  <option value="Strong disagreement">Strong disagreement</option>
+                  <option value="More questions than answers">More questions than answers</option>
+                </select>
+              </label>
+              <label>Strongest insight<textarea id="report-insight" maxlength="420" placeholder="The most important thing we noticed was…"></textarea></label>
+              <label>What we agreed about<textarea id="report-agreement" maxlength="420" placeholder="Most of us agreed that…"></textarea></label>
+              <label>An unresolved or minority view<textarea id="report-unresolved" maxlength="420" placeholder="We could not agree about…"></textarea></label>
+              <label>Our recommendation<textarea id="report-recommendation" maxlength="420" placeholder="We recommend…"></textarea></label>
+              <button class="primary-button wide" type="submit">Save room report</button>
+              <p class="save-status" id="report-status" role="status"></p>
+            </form>
+          </section>
+
+          <section class="reflection-card" id="reflection-card" hidden>
+            <p class="eyebrow">Personal exit ticket</p>
+            <h2>Take one expression with you.</h2>
+            <form id="reflection-form">
+              <label>One English phrase I want to use again<input id="reflection-phrase" maxlength="180" placeholder="e.g. I see your point; however…" required></label>
+              <fieldset><legend>How confident did you feel speaking today?</legend><div class="confidence-scale" id="confidence-scale"></div></fieldset>
+              <button class="primary-button wide" type="submit">Save reflection</button>
+              <p class="save-status" id="reflection-status" role="status"></p>
+            </form>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="about-dialog">
+    <button class="dialog-close" type="button" aria-label="Close">×</button>
+    <p class="eyebrow">How this works</p>
+    <h2>The phone supports the talk. It does not replace it.</h2>
+    <p>Students choose a room, receive a local discussion topic and role, and use the language guide whenever they get stuck. The teacher moves every room through the same discussion phases.</p>
+    <ul><li>No account is needed.</li><li>No audio is recorded.</li><li>Names and room work expire with the classroom session.</li></ul>
+  </dialog>
+
+  <script src="../qr/qrcode.js"></script>
+  <script src="topics.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
