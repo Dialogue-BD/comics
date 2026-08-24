@@ -1,57 +1,14 @@
 window.FGD_PHASES = [
-  { id: "lobby", label: "Join", short: "Join your room", prompt: "Meet your group and read your role. Your topic will appear when the teacher starts.", icon: "👋" },
+  { id: "lobby", label: "Join", short: "Join your room", prompt: "Meet your group and place any available phone where everyone can see it. Your topic appears when the teacher starts.", icon: "👋" },
   { id: "understand", label: "Understand", short: "Clarify the question", prompt: "Agree on what the question means. Open the language guide only when someone needs support.", icon: "🔎" },
   { id: "first-voices", label: "First voices", short: "Everyone speaks", prompt: "Go around the group. Each person shares an initial view and one reason.", icon: "🗣️" },
   { id: "explore", label: "Explore", short: "Go deeper", prompt: "Discuss causes, effects, examples, and the people affected. Ask follow-up questions.", icon: "🧭" },
   { id: "challenge", label: "Challenge", short: "Change the lens", prompt: "Consider the perspective card. Respectfully test your group’s assumptions.", icon: "🔄" },
   { id: "decide", label: "Decide", short: "Find the group view", prompt: "Identify agreements, disagreements, and the most realistic recommendation.", icon: "🤝" },
-  { id: "report", label: "Report", short: "Capture the discussion", prompt: "The reporter completes the group summary. Everyone checks that it is fair.", icon: "📝" },
+  { id: "report", label: "Report", short: "Capture the discussion", prompt: "Draft the group summary together, read it aloud, and check that it represents the discussion fairly.", icon: "📝" },
   { id: "reflect", label: "Reflect", short: "Notice what helped", prompt: "Optionally notice an idea that changed and a facilitation move that helped more people contribute.", icon: "🌱" },
   { id: "ended", label: "Finished", short: "Session complete", prompt: "Thank your group. Your teacher has ended this discussion.", icon: "✓" }
 ];
-
-window.FGD_ROLES = {
-  "Facilitator": {
-    icon: "🧭",
-    job: "Help the group share airtime, stay curious, and move forward. You coordinate; you do not control the group.",
-    phrases: ["Let’s begin with the main question.", "Can we connect that idea to our topic?", "Let’s hear one final view before we move on."]
-  },
-  "Reporter": {
-    icon: "📝",
-    job: "Listen for the group’s strongest ideas and submit a fair summary.",
-    phrases: ["What should I record as our main insight?", "Is this a fair summary of our view?", "We agreed that…, but we disagreed about…"]
-  },
-  "Participation Encourager": {
-    icon: "🌱",
-    job: "Notice who has not spoken and make space for every voice.",
-    phrases: ["We haven’t heard from you yet. What do you think?", "Would anyone like to add a different experience?", "Take your time—we’d like to hear your view."]
-  },
-  "Clarifier": {
-    icon: "🔎",
-    job: "Ask speakers to explain unclear words, reasons, and connections.",
-    phrases: ["What do you mean by…?", "Could you explain that in another way?", "How is that connected to the question?"]
-  },
-  "Example Finder": {
-    icon: "💡",
-    job: "Ask for concrete examples from student life and the local community.",
-    phrases: ["Can you give a real example?", "Have we seen this in Rajshahi?", "What might this look like in practice?"]
-  },
-  "Respectful Challenger": {
-    icon: "🔄",
-    job: "Test ideas kindly and introduce another possible perspective.",
-    phrases: ["I see your point, but could the opposite also be true?", "What might be an unintended consequence?", "How would someone affected by this respond?"]
-  },
-  "Language Monitor": {
-    icon: "🧩",
-    job: "Encourage English and help the group reuse useful expressions from the guide.",
-    phrases: ["Could we try saying that in English?", "A useful phrase here is…", "Let’s each use one expression from the phrase bank."]
-  },
-  "Timekeeper": {
-    icon: "⏱️",
-    job: "Watch the phase timer and help the group finish each task.",
-    phrases: ["We have two minutes left.", "Let’s move to our final question.", "We need to choose our strongest recommendation now."]
-  }
-};
 
 window.FGD_SOCRATIC_QUESTIONS = [
   { label: "Clarify", question: "What exactly do we mean by that claim or key word?" },
@@ -71,82 +28,7 @@ window.FGD_TEAMWORK_PROTOCOLS = {
   challenge: { name: "Paraphrase before disagreement", text: "First say what you understood. Let the speaker confirm. Then challenge the idea—not the person." },
   decide: { name: "Consent, not forced agreement", text: "Name the shared ground and preserve an important minority concern. A fair decision does not erase disagreement." },
   report: { name: "Represent every voice fairly", text: "The report must include the group’s strongest agreement and one unresolved or minority view." },
-  reflect: { name: "Evidence before evaluation", text: "Describe one thing you actually said or did before deciding how well the discussion went." }
-};
-
-window.FGD_ROLE_MISSIONS = {
-  "Facilitator": {
-    understand: ["Make sure everyone knows the topic, their role, and where to find language help.", "Does anyone need a word explained before we begin?"],
-    "first-voices": ["Lead one complete round: nobody speaks twice before everyone is invited.", "Let’s hear one initial view from each person."],
-    explore: ["Keep the talk connected to the shared room card and ask the controller when the group is ready to move on.", "How does that connect to our current question?"],
-    challenge: ["Ask the group to paraphrase the perspective before responding to it.", "What would this person most want us to understand?"],
-    decide: ["Name shared ground without forcing agreement; ask whether any important concern is missing.", "Can everyone live with this summary, even if it is not their first choice?"],
-    report: ["Invite every member to check that the report represents the conversation fairly.", "Whose view is not represented yet?"],
-    reflect: ["Close with one specific appreciation about how the group worked together.", "One thing our group did well was…"]
-  },
-  "Reporter": {
-    understand: ["Prepare to capture ideas, not every sentence. Create three headings: agreement, disagreement, recommendation.", "I’ll listen for our strongest shared and minority views."],
-    "first-voices": ["Record the range of initial positions without attaching names.", "I’m hearing at least two different starting points…"],
-    explore: ["Capture one strong reason and one concrete example.", "Which example best explains this point?"],
-    challenge: ["Record how the new perspective changes or complicates the discussion.", "What should we add after considering this perspective?"],
-    decide: ["Read back the emerging agreement and unresolved concern before writing.", "Is this an accurate summary of where we finished?"],
-    report: ["Draft the shared report, then revise it after every member reviews it.", "Please check whether this is fair before you approve it."],
-    reflect: ["Name one idea from another person that improved the report.", "Our report became stronger when…"]
-  },
-  "Participation Encourager": {
-    understand: ["Learn everyone’s name and notice who may need more processing time.", "Take your time—we want every voice in this room."],
-    "first-voices": ["Invite members who have not spoken and protect their turn from interruption.", "We haven’t heard from you yet. Would you like to share?"],
-    explore: ["Notice the participation balance. Encourage frequent speakers to ask rather than add.", "Could someone who has spoken less build on that?"],
-    challenge: ["Make it safe to express an unpopular or uncertain view.", "A different view is useful here, even if you are not completely sure."],
-    decide: ["Ask whether quieter members can accept the proposed conclusion.", "Is there any concern we have not made space for?"],
-    report: ["Check that the minority view is included respectfully.", "Does this report leave anyone’s important idea out?"],
-    reflect: ["Invite each person to name one contribution they valued from someone else.", "I appreciated when you…"]
-  },
-  "Clarifier": {
-    understand: ["Identify one key word or phrase that the group should define together.", "What do we mean by this key term?"],
-    "first-voices": ["Ask one speaker to explain the reason behind their initial view.", "Could you explain why that matters to you?"],
-    explore: ["Paraphrase one complex idea and ask the speaker to confirm your understanding.", "If I understand correctly, you mean… Is that right?"],
-    challenge: ["Separate the perspective’s needs, assumptions, and proposed solution.", "Is this person challenging our goal or our method?"],
-    decide: ["Test vague words in the group’s recommendation.", "What would ‘fair’ look like in practice?"],
-    report: ["Check the report for unclear claims or words that could be misunderstood.", "Can we make this sentence more precise?"],
-    reflect: ["Name one clarification that changed the quality of the discussion.", "Understanding became clearer when…"]
-  },
-  "Example Finder": {
-    understand: ["Think of one local, school, family, or personal example connected to the topic.", "Where might we see this in real life?"],
-    "first-voices": ["Ask the group for one brief example after the first round.", "Can someone connect a view to a real experience?"],
-    explore: ["Control the shared question card. Move on only after the group has examined an example or consequence.", "What might this look like in Rajshahi?"],
-    challenge: ["Find an example that supports the perspective and one that complicates it.", "When might this perspective be especially true?"],
-    decide: ["Test whether the proposed recommendation would work in a realistic case.", "How would this recommendation work on an ordinary school day?"],
-    report: ["Make sure the strongest insight is supported by a concrete example.", "Which example should our reporter preserve?"],
-    reflect: ["Choose the example that helped the group reason most carefully.", "The example that changed our discussion was…"]
-  },
-  "Respectful Challenger": {
-    understand: ["Prepare to test ideas while protecting psychological safety. Challenge claims, never people.", "I may test our ideas so that we can make them stronger."],
-    "first-voices": ["Listen for an assumption to revisit later; do not interrupt the first round.", "I noticed an assumption we can explore after everyone speaks."],
-    explore: ["Ask about one trade-off or unintended consequence.", "What might we gain, and what might we lose?"],
-    challenge: ["Control the shared perspective card. Paraphrase each lens before inviting responses.", "If I understand this perspective correctly… What are we missing?"],
-    decide: ["Test the group’s recommendation against its strongest objection.", "Would our recommendation still work if…?"],
-    report: ["Check that the report does not make the issue sound simpler than it was.", "Should we qualify this claim with ‘may’ or ‘in some cases’?"],
-    reflect: ["Name one moment when disagreement improved rather than harmed the conversation.", "Our disagreement became constructive when…"]
-  },
-  "Language Monitor": {
-    understand: ["Help with English when someone asks or gets stuck; avoid correcting every error.", "Would a word or sentence starter help here?"],
-    "first-voices": ["Listen for successful English and quietly point to a helpful phrase if someone gets stuck.", "A useful starter here is ‘From my perspective…’"],
-    explore: ["Encourage the group to reuse topic vocabulary naturally, without correcting every error.", "That was a clear use of our topic word."],
-    challenge: ["Offer a respectful disagreement or hedging phrase before the group responds.", "Try ‘I see your point; however…’"],
-    decide: ["Help the group use precise language for agreement, qualification, and recommendation.", "Do we mean ‘must,’ ‘should,’ or ‘could’?"],
-    report: ["Help the reporter improve clarity while preserving the group’s meaning.", "Could we combine these ideas using ‘although’?"],
-    reflect: ["If the group reflects, notice useful language without turning it into a test.", "Which expression helped someone communicate a difficult idea?" ]
-  },
-  "Timekeeper": {
-    understand: ["Protect enough time to clarify the topic, but do not delay the conversation for app tasks.", "Shall we begin, or does anyone still need the question clarified?"],
-    "first-voices": ["Protect equal first turns and give a halfway time signal.", "We are halfway through; two people still need a first turn."],
-    explore: ["Warn the group two minutes before the phase ends and ask whether to keep or change the card.", "Two minutes left—do we need another prompt?"],
-    challenge: ["Reserve the final minute for connecting the perspective back to the original question.", "Let’s connect this lens back to our main topic."],
-    decide: ["Protect enough time for both a recommendation and an unresolved concern.", "We need one minute for the minority view."],
-    report: ["Announce review time before the phase ends; do not let drafting consume all the time.", "Please read and approve the report now."],
-    reflect: ["Offer a brief quiet pause for optional reflection, then help the group close on time.", "Take a quiet minute if reflection would be useful." ]
-  }
+  reflect: { name: "Notice what helped", text: "Name one specific moment when an idea or facilitation move made the group’s thinking stronger." }
 };
 
 window.FGD_PHRASE_BANK = {

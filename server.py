@@ -15,7 +15,6 @@ Everything else is served as static files from the same directory.
 """
 
 import http.server
-import hashlib
 import json
 import os
 import re
@@ -41,25 +40,6 @@ FGD_PHASES = [
     "reflect",
     "ended",
 ]
-FGD_ROLES = [
-    "Facilitator",
-    "Reporter",
-    "Participation Encourager",
-    "Clarifier",
-    "Example Finder",
-    "Respectful Challenger",
-    "Language Monitor",
-    "Timekeeper",
-]
-FGD_CONTROLLER_ROLES = {
-    "understand": "Language Monitor",
-    "first-voices": "Facilitator",
-    "explore": "Example Finder",
-    "challenge": "Respectful Challenger",
-    "decide": "Facilitator",
-    "report": "Reporter",
-    "reflect": "Facilitator",
-}
 FGD_EVIDENCE_MOVES = {
     "opinion",
     "example",
@@ -235,40 +215,6 @@ def _fgd_session_row(db: sqlite3.Connection, code: str):
     ).fetchone()
 
 
-def _fgd_controller_role(db: sqlite3.Connection, code: str, room_number: int, phase: str) -> str:
-    roles = [
-        row["role"]
-        for row in db.execute(
-            "SELECT role FROM fgd_participants WHERE session_code = ? AND room_number = ? ORDER BY joined_at",
-            (code, room_number),
-        ).fetchall()
-    ]
-    preferred = FGD_CONTROLLER_ROLES.get(phase, "Facilitator")
-    if preferred in roles:
-        return preferred
-    if "Facilitator" in roles:
-        return "Facilitator"
-    return roles[0] if roles else preferred
-
-
-def _fgd_role_order(session, room_number: int) -> list[str]:
-    """Create a private, stable role order with the Facilitator in seats 1–5.
-
-    This keeps the role assignment random from the students' perspective while
-    avoiding the cultural signal that the first/oldest/most assertive member is
-    automatically entitled to lead.
-    """
-    seed = f'{session["teacher_token"]}:{room_number}'
-    other_roles = [role for role in FGD_ROLES if role != "Facilitator"]
-    other_roles.sort(key=lambda role: hashlib.sha256(f"{seed}:{role}".encode()).digest())
-    facilitator_range = min(5, session["room_capacity"])
-    facilitator_index = int.from_bytes(
-        hashlib.sha256(f"{seed}:facilitator-seat".encode()).digest()[:4], "big"
-    ) % facilitator_range
-    other_roles.insert(facilitator_index, "Facilitator")
-    return other_roles
-
-
 def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "") -> dict | None:
     db = _get_db()
     session = _fgd_session_row(db, code)
@@ -304,8 +250,6 @@ def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "
                COALESCE(rs.prompt_index, 0) AS prompt_index,
                COALESCE(rs.perspective_index, 0) AS perspective_index,
                COALESCE(rs.observation_data, '{}') AS observation_data,
-               (SELECT COUNT(*) FROM fgd_report_approvals a
-                 WHERE a.session_code = r.session_code AND a.room_number = r.room_number) AS approval_count,
                COUNT(p.token) AS participant_count,
                COALESCE(SUM(p.contributions), 0) AS contribution_count,
                COALESCE(SUM(CASE WHEN p.exit_data != '{}' THEN 1 ELSE 0 END), 0) AS exit_count
@@ -334,29 +278,14 @@ def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "
         )
         if reveal_topic:
             item["topicId"] = room["topic_id"]
-        controller_role = _fgd_controller_role(db, code, room["room_number"], session["status"])
-        reporter_role = _fgd_controller_role(db, code, room["room_number"], "report")
         if is_teacher:
             participant_rows = db.execute(
-                """SELECT p.display_name, p.role, p.support_level, p.contributions, p.exit_data,
-                          COALESCE(l.targets_data, '{}') AS targets_data,
-                          COALESCE(l.evidence_data, '{}') AS evidence_data
+                """SELECT p.display_name
                    FROM fgd_participants p
-                   LEFT JOIN fgd_learning l ON l.participant_token = p.token
                    WHERE p.session_code = ? AND p.room_number = ?
                    ORDER BY p.joined_at""",
                 (code, room["room_number"]),
             ).fetchall()
-            move_counts = {}
-            target_count = 0
-            for person in participant_rows:
-                targets = _json_object(person["targets_data"])
-                evidence = _json_object(person["evidence_data"])
-                if targets:
-                    target_count += 1
-                for move, count in evidence.items():
-                    if move in FGD_EVIDENCE_MOVES:
-                        move_counts[move] = move_counts.get(move, 0) + int(count or 0)
             item.update({
                 "topicId": room["topic_id"],
                 "helpRequested": bool(room["help_requested"]),
@@ -365,41 +294,16 @@ def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "
                 "exitCount": room["exit_count"],
                 "promptIndex": room["prompt_index"],
                 "perspectiveIndex": room["perspective_index"],
-                "controllerRole": controller_role,
-                "reporterRole": reporter_role,
-                "approvalCount": room["approval_count"],
-                "targetCount": target_count,
-                "moveCounts": move_counts,
                 "observation": _json_object(room["observation_data"]),
-                "participants": [
-                    {
-                        "name": p["display_name"],
-                        "role": p["role"],
-                        "level": p["support_level"],
-                        "contributions": p["contributions"],
-                        "hasExit": p["exit_data"] != "{}",
-                        "hasTargets": bool(_json_object(p["targets_data"])),
-                        "evidence": _json_object(p["evidence_data"]),
-                    }
-                    for p in participant_rows
-                ],
+                "participants": [{"name": p["display_name"]} for p in participant_rows],
             })
         elif participant and participant["room_number"] == room["room_number"]:
-            approved = db.execute(
-                """SELECT 1 FROM fgd_report_approvals
-                   WHERE session_code = ? AND room_number = ? AND participant_token = ?""",
-                (code, room["room_number"], participant_token),
-            ).fetchone()
             item.update({
                 "helpRequested": bool(room["help_requested"]),
                 "report": _json_object(room["report_data"]),
                 "contributionCount": room["contribution_count"],
                 "promptIndex": room["prompt_index"],
                 "perspectiveIndex": room["perspective_index"],
-                "controllerRole": controller_role,
-                "reporterRole": reporter_role,
-                "approvalCount": room["approval_count"],
-                "participantApproved": bool(approved),
             })
         public_rooms.append(item)
 
@@ -417,19 +321,11 @@ def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "
         "isTeacher": is_teacher,
     }
     if participant:
-        learning = db.execute(
-            "SELECT targets_data, evidence_data FROM fgd_learning WHERE participant_token = ?",
-            (participant_token,),
-        ).fetchone()
         payload["participant"] = {
             "name": participant["display_name"],
             "roomNumber": participant["room_number"],
             "level": participant["support_level"],
-            "role": participant["role"],
-            "contributions": participant["contributions"],
             "exit": _json_object(participant["exit_data"]),
-            "targets": _json_object(learning["targets_data"]) if learning else {},
-            "evidence": _json_object(learning["evidence_data"]) if learning else {},
         }
     return payload
 
@@ -775,13 +671,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 _json_response(self, 409, {"error": "That room has just filled up. Please choose another."})
                 return
 
-            role = _fgd_role_order(session, room_number)[count % len(FGD_ROLES)]
             participant_token = secrets.token_urlsafe(32)
             db.execute(
                 """INSERT INTO fgd_participants
                    (token, session_code, room_number, display_name, support_level, role, joined_at, last_seen)
                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
-                (participant_token, code, room_number, name, level, role, now, now),
+                (participant_token, code, room_number, name, level, "Member", now, now),
             )
             db.execute(
                 "INSERT INTO fgd_learning (participant_token) VALUES (?)",

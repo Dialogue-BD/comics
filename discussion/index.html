@@ -53,7 +53,7 @@
           <div class="entry-icon teacher-icon" aria-hidden="true">✦</div>
           <p class="card-kicker">Teacher console</p>
           <h2 id="teacher-heading">Open a new session</h2>
-          <p class="muted">Choose the room shape now. Topics and roles are assigned automatically.</p>
+          <p class="muted">Choose the room shape now. Each room receives a discussion topic automatically.</p>
           <form id="create-session-form" class="teacher-form">
             <div class="two-fields">
               <label>Rooms
@@ -107,8 +107,9 @@
         </div>
         <form id="join-session-form">
           <div class="profile-fields">
-            <label>Your first name or nickname
+            <label>Name for this phone
               <input id="student-name" maxlength="36" autocomplete="name" placeholder="e.g. Sumi" required>
+              <small>Use one student’s name or a short group nickname.</small>
             </label>
             <label>Your English support
               <select id="student-level">
@@ -167,7 +168,7 @@
         <nav class="phase-track" id="teacher-phase-track" aria-label="Discussion phases"></nav>
 
         <div class="dashboard-heading">
-          <div><h2>Room pulse</h2><p id="class-count">0 students joined</p></div>
+          <div><h2>Room pulse</h2><p id="class-count">0 phones connected</p></div>
           <p class="dashboard-key"><span class="help-dot"></span> A group is asking for help</p>
         </div>
         <div class="teacher-room-grid" id="teacher-room-grid"></div>
@@ -185,46 +186,33 @@
           <div class="waiting-orbit" aria-hidden="true"><span></span><i></i><b></b></div>
           <p class="eyebrow">You’re in</p>
           <h1>Your topic is still under wraps.</h1>
-          <p>Put your phones in the center, meet your group, and read your role while the teacher fills the rooms.</p>
-          <div class="role-preview" id="waiting-role"></div>
+          <p>Meet your group and place any available phone where everyone can see it. One phone can support the whole group.</p>
         </section>
 
         <div id="active-room-content" hidden>
-          <div class="phase-strip">
-            <div><span id="student-phase-icon">🔎</span><p><small id="student-phase-label">Understand</small><strong id="student-phase-short">Preview the language</strong></p></div>
-            <time id="student-timer">03:00</time>
-          </div>
-
-          <section class="now-card" id="now-card">
-            <div class="now-card-head">
-              <p><small>Discussion compass</small><strong id="now-card-phase">Where the group is now</strong></p>
-              <span id="card-controller-label">A guide, not a script</span>
-            </div>
-            <div class="now-card-content">
-              <span class="now-card-icon" id="now-card-icon">→</span>
-              <div><p class="now-card-label" id="now-card-label">Room task</p><h2 id="now-card-text"></h2><p id="now-card-detail"></p></div>
-            </div>
-            <div class="inquiry-check" id="inquiry-check">
-              <small>Before moving on, consider</small>
-              <div><span>Has everyone had a genuine chance to speak?</span><span>Did someone ask why or how?</span><span>Did you test a different view?</span></div>
-            </div>
-            <button class="secondary-button wide" id="next-room-card" type="button" hidden>Another inquiry question →</button>
-
-            <details class="role-coach">
-              <summary><span id="mission-role-icon">🧭</span><span><small>Optional role support</small><strong id="mission-role-name">Facilitator</strong></span><b>Open if useful</b></summary>
-              <p class="role-principle">Your role is a responsibility, not authority over other members.</p>
-              <p id="mission-text"></p>
-              <blockquote id="mission-talk-move"></blockquote>
+          <details class="phase-strip" id="phase-compass">
+            <summary>
+              <div class="phase-summary-main"><span id="student-phase-icon">🔎</span><p><small id="student-phase-label">Understand</small><strong id="student-phase-short">Clarify the question</strong></p></div>
+              <div class="phase-summary-side"><time id="student-timer">03:00</time><span>Compass</span></div>
+            </summary>
+            <div class="phase-compass-body">
+              <p class="compass-kicker" id="now-card-label">Current task</p>
+              <h2 id="now-card-text"></h2>
+              <p class="compass-detail" id="now-card-detail"></p>
               <div class="sel-protocol"><span>Inclusive practice</span><div><strong id="protocol-name"></strong><p id="protocol-text"></p></div></div>
-            </details>
-          </section>
+              <div class="inquiry-check" id="inquiry-check">
+                <small>Before moving on, consider</small>
+                <div><span>Has everyone had a genuine chance to speak?</span><span>Did someone ask why or how?</span><span>Did you test a different view?</span></div>
+              </div>
+              <button class="secondary-button wide" id="next-room-card" type="button" hidden>Another inquiry question →</button>
+            </div>
+          </details>
 
           <section class="topic-card">
             <div class="topic-meta"><span id="student-topic-category">Category</span><button id="toggle-bangla" type="button" aria-pressed="false">বাংলা</button></div>
             <h1 id="student-topic-title">Discussion topic</h1>
             <p class="bangla-question" id="student-topic-bangla" lang="bn" hidden></p>
             <p class="topic-context" id="student-topic-context"></p>
-            <div class="phase-prompt"><span aria-hidden="true">→</span><p><small>Do this now</small><strong id="student-phase-prompt"></strong></p></div>
           </section>
 
           <section class="quick-actions single-action" aria-label="Discussion support tools">
@@ -236,7 +224,6 @@
             <button data-panel="words" type="button">Words</button>
             <button data-panel="grammar" type="button">Patterns</button>
             <button data-panel="questions" type="button">Think deeper</button>
-            <button data-panel="role" type="button">My role</button>
           </nav>
 
           <div class="scaffold-panels">
@@ -244,11 +231,10 @@
             <section class="scaffold-panel" id="panel-words"><div class="vocab-list" id="vocab-list"></div><div class="collocation-box" id="collocation-list"></div></section>
             <section class="scaffold-panel" id="panel-grammar"><div class="grammar-list" id="grammar-list"></div></section>
             <section class="scaffold-panel" id="panel-questions"><p class="support-note">Use these only when the conversation needs a new direction.</p><div class="prompt-card" id="live-prompt-card"></div><button class="secondary-button wide" id="next-prompt" type="button">Another inquiry question →</button><div class="socratic-bank" id="socratic-bank"></div><div class="perspective-box" id="perspective-box"></div></section>
-            <section class="scaffold-panel" id="panel-role"><div class="role-card" id="student-role-card"></div></section>
           </div>
 
           <section class="group-report" id="group-report" hidden>
-            <div class="report-heading"><p class="eyebrow">Room report</p><h2>What did your group discover?</h2><p>The Reporter can lead the drafting, but anyone may improve it. Preserve important disagreement rather than forcing consensus.</p></div>
+            <div class="report-heading"><p class="eyebrow">Room report</p><h2>What did your group discover?</h2><p>Use any available phone to draft this together. Preserve important disagreement rather than forcing consensus.</p></div>
             <form id="report-form">
               <label>Where did the group finish?
                 <select id="report-position">
@@ -265,22 +251,17 @@
               <button class="primary-button wide" type="submit">Save our room report</button>
               <p class="save-status" id="report-status" role="status"></p>
             </form>
-            <div class="report-approval">
-              <div><strong>Does this represent the group fairly?</strong><small id="approval-count">0 members have approved</small></div>
-              <button class="secondary-button" id="approve-report" type="button">Approve report</button>
-            </div>
           </section>
 
           <section class="reflection-card" id="reflection-card" hidden>
-            <p class="eyebrow">Optional reflection</p>
+            <p class="eyebrow">Optional room reflection</p>
             <h2>What strengthened the discussion?</h2>
             <form id="reflection-form">
-              <label>One idea from another person that affected my thinking<textarea id="reflection-teammate" maxlength="280" placeholder="I reconsidered… when someone pointed out…"></textarea></label>
-              <label>One facilitation move that helped more people contribute<textarea id="reflection-teamwork" maxlength="280" placeholder="The discussion improved when we…"></textarea></label>
+              <label>Which idea changed or complicated the group’s thinking?<textarea id="reflection-teammate" maxlength="280" placeholder="We reconsidered… when someone pointed out…"></textarea></label>
+              <label>What helped more people participate?<textarea id="reflection-teamwork" maxlength="280" placeholder="The discussion improved when we…"></textarea></label>
               <input id="reflection-phrase" type="hidden">
               <input id="reflection-next" type="hidden">
-              <fieldset><legend>How confident did you feel speaking today?</legend><div class="confidence-scale" id="confidence-scale"></div></fieldset>
-              <button class="primary-button wide" type="submit">Save reflection</button>
+              <button class="primary-button wide" type="submit">Save room reflection</button>
               <p class="save-status" id="reflection-status" role="status"></p>
             </form>
           </section>
@@ -294,7 +275,7 @@
     <button class="dialog-close" type="button" aria-label="Close">×</button>
     <p class="eyebrow">How this works</p>
     <h2>The phone supports the talk. It does not replace it.</h2>
-    <p>Students choose a room, receive a local discussion topic and a shared responsibility, and open the language or inquiry support only when it helps. The teacher sets the broad pace; students facilitate the conversation themselves.</p>
+    <p>Students choose a room, receive a local discussion topic, and open the language or inquiry support only when it helps. One shared phone is enough. The teacher sets the broad pace; students facilitate the conversation themselves.</p>
     <ul><li>No account is needed.</li><li>No audio is recorded.</li><li>Names and room work expire with the classroom session.</li></ul>
   </dialog>
 
