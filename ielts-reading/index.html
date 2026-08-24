@@ -1410,8 +1410,9 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
   body.print-one .station-head { display: none !important; }
   .print-only { display: block !important; }
 
-  /* The four skill worksheets each occupy one portrait A4 page. The full
-     passage mock deliberately remains multi-page so its type stays realistic. */
+  /* The four skill worksheets can be printed two-up: two complete A5-landscape
+     copies on one portrait A4 sheet. The full passage mock deliberately remains
+     multi-page so its type stays realistic. */
   body.print-one { font-size: 9pt; }
   body.print-one section.station.print-section { page-break-after: auto !important; }
   body.print-one section.station.print-section > .wrap { width: auto; max-width: none; padding: 0; }
@@ -1485,8 +1486,109 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
   .exam-answer-grid > div > span { background: #fff !important; }
   body.print-one :is(#headingCard, #locateCard, #raceCard, #trapCard) .answer-key { margin-top: 2mm; padding-top: 1.5mm; font-size: 7pt; line-height: 1.2; }
   body.print-one :is(#headingCard, #locateCard, #raceCard, #trapCard)::after { content: "Dialogue IELTS Academic Reading Practice - not an official IELTS test paper"; display: block; margin-top: 1.5mm; color: #555; text-align: right; font-size: 6.5pt; }
+
+  /* Two identical student copies, stacked for one straight cut across A4. */
+  body.print-half { margin: 0 !important; }
+  body.print-half > :not(.half-sheet-print) { display: none !important; }
+  body.print-half .half-sheet-print {
+    display: block !important; position: relative; width: 100%; height: 136.5mm;
+    margin: 0; padding: 0; overflow: visible;
+  }
+  body.print-half .half-sheet-print::after {
+    content: "✂"; position: absolute; z-index: 2; top: 138.5mm; left: -4mm; right: -4mm;
+    height: 0; border-top: 1px dashed #777; color: #555; font-size: 8pt;
+    line-height: 0; text-indent: 1mm;
+  }
+  body.print-half .half-sheet-copy {
+    position: relative; height: 136.5mm; overflow: hidden; padding: 0 1mm;
+    break-inside: auto; page-break-inside: auto;
+  }
+  body.print-half .half-sheet-copy-headingCard {
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  body.print-half .half-sheet-copy:last-child {
+    position: absolute; top: 0; left: 0; right: 0; margin: 0;
+    transform: translateY(140.5mm);
+  }
+  body.print-half .half-sheet-copy .card.print-card {
+    display: block !important; width: 100%; margin: 0 !important; padding: 0 !important;
+    border: 0 !important; border-radius: 0 !important; page-break-inside: auto !important;
+  }
+  body.print-half .half-sheet-copy .answer-key { display: none !important; }
+  body.print-half .half-sheet-copy .exam-print-head { margin-bottom: 1.3mm; }
+  body.print-half .half-sheet-copy .exam-print-brand { padding: 1mm 2mm; border-top-width: 3px; }
+  body.print-half .half-sheet-copy .exam-print-brand strong { font-size: 10.5pt; }
+  body.print-half .half-sheet-copy .exam-print-brand span { font-size: 6.7pt; }
+  body.print-half .half-sheet-copy .exam-candidate { margin: 1mm 0 1.2mm; font-size: 7pt; }
+  body.print-half .half-sheet-copy .exam-candidate {
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  body.print-half .half-sheet-copy .exam-candidate span:last-child { text-align: right; }
+  body.print-half .half-sheet-copy .exam-print-head p { margin: .55mm 0; font-size: 7.5pt; line-height: 1.14; }
+  body.print-half .half-sheet-copy .exam-print-head p:first-of-type { margin-top: 1mm; font-size: 8.5pt; }
+  body.print-half .half-sheet-copy .exam-tfng-key {
+    grid-template-columns: 18mm 1fr; gap: .25mm 2mm; margin: .7mm 0;
+    padding-left: 6mm; font-size: 7.2pt; line-height: 1.08;
+  }
+  body.print-half .half-sheet-copy :is(#headingCard, #locateCard) .ws-passage {
+    columns: 3; column-gap: 4mm; font-size: 7.35pt; line-height: 1.18;
+    margin-bottom: 1.4mm; text-align: left;
+  }
+  body.print-half .half-sheet-copy :is(#headingCard, #locateCard) .ws-passage h4 {
+    margin-bottom: .8mm !important; padding-bottom: .5mm; font-size: 8.5pt;
+  }
+  body.print-half .half-sheet-copy :is(#headingCard, #locateCard) .ws-passage p { margin-bottom: .7mm; }
+  body.print-half .half-sheet-copy #locateCard .ws-passage {
+    columns: 5; column-gap: 2.2mm; font-size: 7.05pt; line-height: 1.13;
+    margin-bottom: 1mm;
+  }
+  body.print-half .half-sheet-copy #locateCard .ws-passage p { margin-bottom: .45mm; }
+  body.print-half .half-sheet-copy #headingCard .heading-list {
+    margin-bottom: 1mm !important; padding: 1mm 1.5mm; font-size: 7.1pt; line-height: 1.2 !important;
+  }
+  body.print-half .half-sheet-copy #headingCard .heading-list > div { line-height: 1.2 !important; }
+  body.print-half .half-sheet-copy #headingCard .para-map {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 2mm; margin: .5mm 0;
+  }
+  body.print-half .half-sheet-copy #headingCard .para-slot {
+    display: block; padding: .5mm 0; border-bottom: 1px solid #999 !important;
+  }
+  body.print-half .half-sheet-copy #headingCard .para-slot:last-child { grid-column: auto; width: auto; }
+  body.print-half .half-sheet-copy #headingCard .para-key { min-width: 0; font-size: 7.3pt; }
+  body.print-half .half-sheet-copy #headingCard .para-pick { display: none !important; }
+  body.print-half .half-sheet-copy #locateCard #locateList {
+    display: grid; grid-template-columns: 1fr 1fr; column-gap: 5mm;
+  }
+  body.print-half .half-sheet-copy #locateCard .locate-q { padding: .65mm 0; }
+  body.print-half .half-sheet-copy #locateCard .locate-prompt { font-size: 7.35pt; line-height: 1.18; }
+  body.print-half .half-sheet-copy #raceCard .notice-doc {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0 5mm;
+    margin-bottom: 1.2mm !important; padding: 1.5mm 2mm; font-size: 7.25pt; line-height: 1.15;
+  }
+  body.print-half .half-sheet-copy #raceCard .notice-doc > :is(h4, p) { grid-column: 1 / -1; }
+  body.print-half .half-sheet-copy #raceCard .notice-doc h4 { font-size: 8.6pt; }
+  body.print-half .half-sheet-copy #raceCard .notice-doc .dim { margin-bottom: .7mm !important; font-size: 6.8pt !important; }
+  body.print-half .half-sheet-copy #raceCard .notice-doc .sched-row { padding: .3mm 0; gap: 2mm; }
+  body.print-half .half-sheet-copy #raceCard .notice-doc > p:last-child { margin-top: .8mm !important; font-size: 7pt !important; }
+  body.print-half .half-sheet-copy #raceCard #raceList .q-block { padding: .55mm 0; }
+  body.print-half .half-sheet-copy #raceCard #raceList .q-text { font-size: 7.25pt; line-height: 1.18; }
+  body.print-half .half-sheet-copy #trapCard #trapList { gap: .6mm 4mm; }
+  body.print-half .half-sheet-copy #trapCard #trapList .extract {
+    margin-bottom: .3mm; padding: .7mm 1mm; font-size: 6.9pt; line-height: 1.12;
+  }
+  body.print-half .half-sheet-copy #trapCard #trapList .extract .lbl { margin-bottom: .15mm; font-size: 5.8pt; }
+  body.print-half .half-sheet-copy .exam-answer-sheet { margin-top: 1mm; border-width: 1.5px; }
+  body.print-half .half-sheet-copy .exam-answer-title { padding: .65mm 1.2mm; }
+  body.print-half .half-sheet-copy .exam-answer-title strong { font-size: 7.2pt; }
+  body.print-half .half-sheet-copy .exam-answer-title span { font-size: 5.8pt; }
+  body.print-half .half-sheet-copy .exam-answer-grid > div { grid-template-columns: 6mm 1fr; min-height: 6.5mm; }
+  body.print-half .half-sheet-copy .exam-answer-grid > div > b { font-size: 7.2pt; }
+  body.print-half .half-sheet-copy :is(#headingCard, #locateCard, #raceCard, #trapCard)::after {
+    margin-top: .7mm; font-size: 5.5pt;
+  }
 }
 .print-only { display: none; }
+.half-sheet-print { display: none; }
 </style>
 </head>
 <body>
@@ -2540,27 +2642,28 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
     </div>
 
     <div class="card teacher-card" data-fold="Printing — for your teacher, on a computer">
-      <div class="card-label">🖨️ Single-page skill worksheets</div>
+      <div class="card-label">🖨️ Half-page skill worksheets · two copies per sheet</div>
+      <p class="card-intro">Print on A4 portrait at 100%. Each sheet contains two identical A5-landscape student copies with a centre cut line.</p>
       <div class="ws-grid">
         <div class="ws-card">
           <h4>Map Drill</h4>
           <p>Paragraph-to-heading matching on <i>Reading the Ice</i>, plus the six locate-the-paragraph questions.</p>
-          <button class="btn sm sec" data-print="headingCard">Print worksheet</button>
+          <button class="btn sm sec" data-print="headingCard">Print 2-up worksheet</button>
         </div>
         <div class="ws-card">
           <h4>Locate Drill</h4>
           <p>Six "which paragraph holds the answer?" questions. Fast to mark, easy to repeat with any passage.</p>
-          <button class="btn sm sec" data-print="locateCard">Print worksheet</button>
+          <button class="btn sm sec" data-print="locateCard">Print 2-up worksheet</button>
         </div>
         <div class="ws-card">
           <h4>Information Hunt</h4>
           <p>The Northgate timetable and its six scanning questions — the pair race, on paper.</p>
-          <button class="btn sm sec" data-print="raceCard">Print worksheet</button>
+          <button class="btn sm sec" data-print="raceCard">Print 2-up worksheet</button>
         </div>
         <div class="ws-card">
           <h4>Trap Detector</h4>
           <p>Six True / False / Not Given items with the four-point check. Press "Round 2" first to print the alternative set.</p>
-          <button class="btn sm sec" data-print="trapCard">Print worksheet</button>
+          <button class="btn sm sec" data-print="trapCard">Print 2-up worksheet</button>
         </div>
         <div class="ws-card">
           <h4>The Full Run · mock</h4>
@@ -3808,11 +3911,38 @@ var Resettable = [];
     sections.forEach(function (s) { obs.observe(s); });
   }
 
-  /* Print exactly one worksheet card. */
+  /* Print the four student worksheets as two identical A5-landscape copies on
+     one A4 sheet. Larger teacher cards and the mock keep their normal format. */
+  var HALF_PAGE_PRINTS = ['headingCard', 'locateCard', 'raceCard', 'trapCard'];
+  function removeHalfSheet() {
+    var oldSheet = document.querySelector('.half-sheet-print');
+    if (oldSheet) oldSheet.remove();
+  }
+  function buildHalfSheet(card) {
+    removeHalfSheet();
+    var sheet = document.createElement('div');
+    sheet.className = 'half-sheet-print';
+    sheet.setAttribute('aria-hidden', 'true');
+    for (var i = 0; i < 2; i++) {
+      var copy = document.createElement('div');
+      copy.className = 'half-sheet-copy half-sheet-copy-' + card.id;
+      var clonedCard = card.cloneNode(true);
+      clonedCard.classList.add('print-card');
+      copy.appendChild(clonedCard);
+      sheet.appendChild(copy);
+    }
+    document.body.appendChild(sheet);
+  }
   $$('[data-print]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var card = document.getElementById(btn.dataset.print);
       if (!card) return;
+      if (HALF_PAGE_PRINTS.indexOf(card.id) >= 0) {
+        buildHalfSheet(card);
+        document.body.classList.add('print-one', 'print-half');
+        window.print();
+        return;
+      }
       var section = card.closest('section.station');
       $$('.print-section').forEach(function (e) { e.classList.remove('print-section'); });
       $$('.print-card').forEach(function (e) { e.classList.remove('print-card'); });
@@ -3823,7 +3953,8 @@ var Resettable = [];
     });
   });
   window.addEventListener('afterprint', function () {
-    document.body.classList.remove('print-one');
+    document.body.classList.remove('print-one', 'print-half');
+    removeHalfSheet();
     $$('.print-section').forEach(function (e) { e.classList.remove('print-section'); });
     $$('.print-card').forEach(function (e) { e.classList.remove('print-card'); });
   });
