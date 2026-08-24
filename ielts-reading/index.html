@@ -981,8 +981,6 @@ button, a, .opt, .kwchip { -webkit-tap-highlight-color: transparent; }
   background: var(--surface-2); border: 1px solid var(--kw-idea); border-radius: var(--r);
   padding: 14px 17px; margin-bottom: 16px;
 }
-.scmp-body { display: none; }
-.scmp-body.on { display: block; }
 .scmp-bank { font-size: 0.85rem; margin-bottom: 14px; }
 .scmp-bank span {
   display: inline-block; background: var(--kw-concrete-dim); color: var(--kw-concrete);
@@ -999,8 +997,15 @@ button, a, .opt, .kwchip { -webkit-tap-highlight-color: transparent; }
   background: var(--surface-3); color: var(--text);
   border: 1px solid var(--border); border-radius: var(--r-sm); padding: 5px 8px;
 }
+.scmp-gap select:disabled { opacity: 0.55; cursor: not-allowed; }
 .scmp-gap select.correct { border-color: var(--good); background: var(--good-dim); }
 .scmp-gap select.wrong { border-color: var(--bad); background: var(--bad-dim); }
+/* The fill controls stay locked until the section question is answered —
+   but the summary text and word bank above them are always visible, since
+   you cannot answer "which section?" about a summary you cannot read. */
+.scmp-fill { display: none; margin-top: 14px; }
+.scmp-fill.on { display: block; }
+.scmp-locked-note { font-size: 0.83rem; color: var(--text-muted); margin-top: 14px; }
 
 /* ══════════ PARAPHRASE BANK ══════════ */
 .pb-stage {
@@ -2109,12 +2114,15 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
           <span class="scmp-gap" data-n="3"></span>
           against events already dated elsewhere.
         </p>
-        <div class="btn-row no-print">
-          <button class="btn sm sec" id="scmpCheck">Check</button>
-          <button class="btn ghost sm" id="scmpReset">Reset</button>
-          <span class="score-pill" id="scmpScore" aria-live="polite">0 / 3</span>
+        <p class="scmp-locked-note no-print" id="scmpLockedNote">🔒 Answer the section question above to unlock the dropdowns.</p>
+        <div class="scmp-fill" id="scmpFill">
+          <div class="btn-row no-print">
+            <button class="btn sm sec" id="scmpCheck">Check</button>
+            <button class="btn ghost sm" id="scmpReset">Reset</button>
+            <span class="score-pill" id="scmpScore" aria-live="polite">0 / 3</span>
+          </div>
+          <div class="feedback" id="scmpFeedback"></div>
         </div>
-        <div class="feedback" id="scmpFeedback"></div>
       </div>
       <div class="answer-key"><b>Answer key:</b> section A–C · 1–bubbles, 2–oxygen isotopes, 3–ash.</div>
     </div>
@@ -3343,7 +3351,8 @@ var BN = {
   "You: 0 of 13 answered": "আপনি: ১৩-এর মধ্যে ০টি উত্তর দিয়েছেন",
   "Pace: not started": "গতি: শুরু হয়নি",
   "You have not done <b>Station 7, the Full Run</b> yet. Until you do, this diagnosis covers your skills but not your pacing — and pacing is what most candidates actually lose marks to.":
-    "আপনি এখনও <b>Station 7, Full Run</b> করেননি। যতক্ষণ না করছেন, এই রোগনির্ণয় আপনার দক্ষতা দেখায়, সময় ব্যবস্থাপনা নয় — অথচ বেশিরভাগ পরীক্ষার্থী আসলে সময়ের কারণেই নম্বর হারায়।"
+    "আপনি এখনও <b>Station 7, Full Run</b> করেননি। যতক্ষণ না করছেন, এই রোগনির্ণয় আপনার দক্ষতা দেখায়, সময় ব্যবস্থাপনা নয় — অথচ বেশিরভাগ পরীক্ষার্থী আসলে সময়ের কারণেই নম্বর হারায়।",
+  "🔒 Answer the section question above to unlock the dropdowns.": "🔒 ড্রপডাউন খুলতে উপরের বিভাগ-প্রশ্নের উত্তর দিন।"
 };
 
 var LANG = 'en';
@@ -3375,7 +3384,8 @@ var I18N_SEL = [
   '.tri-name', '.tri-stat .k', '.predict-h', '.predict-q',
   '.mc-table th', '.mc-table td', '.mc-rule', '.ws-card h4', '.ws-card p',
   '.stat-tile .lbl', '.hud-block .k', '.wpm-input-row span', '.bar-legend span',
-  '.wpm-scale p', '.alt-optin p', '.alt-fallback p', '.step-pill', '.gp-h', '.gp-q'
+  '.wpm-scale p', '.alt-optin p', '.alt-fallback p', '.step-pill', '.gp-h', '.gp-q',
+  '.scmp-locked-note'
 ].join(',');
 
 function applyLang(l) {
@@ -5434,6 +5444,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
   var loc = $('#scmpLocate');
   if (!loc) return;
   var body = $('#scmpBody'), fb = $('#scmpFeedback');
+  var fillBox = $('#scmpFill'), lockedNote = $('#scmpLockedNote');
   var BANK = ['ash','bubbles','oxygen isotopes','tree rings','seawater','bedrock','cylinders'];
   var ANS = { 1: 'bubbles', 2: 'oxygen isotopes', 3: 'ash' };
   var WHY = {
@@ -5458,15 +5469,17 @@ function makePrediction(boxId, optsId, resultId, judge) {
         b.classList.add('correct');
         f.className = 'feedback show ok';
         f.textContent = t('✓ A–C. Paragraph D is about what the cores revealed and E is about limits — neither appears in the summary. You have just cut your search area by 40% before writing a single word.');
-        body.classList.add('on');
-        body.scrollIntoView({ block: 'center' });
+        fillBox.classList.add('on');
+        lockedNote.style.display = 'none';
+        $$('.scmp-gap select', body).forEach(function (s) { s.disabled = false; });
+        fillBox.scrollIntoView({ block: 'center' });
       });
     });
   })();
 
   function fill() {
     $$('.scmp-gap', body).forEach(function (g) {
-      g.innerHTML = '<select><option value="">choose…</option>' +
+      g.innerHTML = '<select disabled><option value="">choose…</option>' +
         BANK.map(function (w) { return '<option value="' + w + '">' + w + '</option>'; }).join('') + '</select>';
     });
     fb.className = 'feedback';
@@ -5492,7 +5505,8 @@ function makePrediction(boxId, optsId, resultId, judge) {
       : notes.join('<br>');
   });
   $('#scmpReset').addEventListener('click', function () {
-    fill(); body.classList.remove('on');
+    fill(); fillBox.classList.remove('on');
+    lockedNote.style.display = '';
     $$('.opt', loc).forEach(function (o) { o.disabled = false; o.classList.remove('correct', 'wrong'); });
     $('.feedback', loc).className = 'feedback';
   });
