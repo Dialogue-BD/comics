@@ -1214,8 +1214,13 @@
         return "https://dialogue-bd.github.io/comics/" + cleanRel;
       }
 
-      // Compute base path on current host (e.g. /comics/qr/ -> /comics)
-      var basePath = pathname.replace(/\/qr\/?.*$/, "").replace(/\/+$/, "");
+      // Compute base path on current host. Strip a trailing filename
+      // (e.g. /qr/index.html -> /qr), then any legacy /qr subpath
+      // (e.g. /comics/qr/ -> /comics), then a trailing slash.
+      var basePath = pathname
+        .replace(/\/[^\/]*\.[a-zA-Z0-9]+$/, "")
+        .replace(/\/qr\/?.*$/, "")
+        .replace(/\/+$/, "");
       return origin + (basePath ? basePath : "") + "/" + cleanRel;
     }
 
