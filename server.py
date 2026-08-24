@@ -50,6 +50,25 @@ FGD_ROLES = [
     "Language Monitor",
     "Timekeeper",
 ]
+FGD_CONTROLLER_ROLES = {
+    "understand": "Language Monitor",
+    "first-voices": "Facilitator",
+    "explore": "Example Finder",
+    "challenge": "Respectful Challenger",
+    "decide": "Facilitator",
+    "report": "Reporter",
+    "reflect": "Facilitator",
+}
+FGD_EVIDENCE_MOVES = {
+    "opinion",
+    "example",
+    "question",
+    "build",
+    "disagree",
+    "invite",
+    "summarize",
+    "rethink",
+}
 
 # ---------------------------------------------------------------------------
 # Database helpers – one connection per thread (SQLite is not thread-safe to share)
@@ -116,6 +135,25 @@ def _get_db() -> sqlite3.Connection:
             );
             CREATE INDEX IF NOT EXISTS idx_fgd_participants_room
                 ON fgd_participants(session_code, room_number);
+            CREATE TABLE IF NOT EXISTS fgd_room_state (
+                session_code      TEXT    NOT NULL,
+                room_number       INTEGER NOT NULL,
+                prompt_index      INTEGER NOT NULL DEFAULT 0,
+                perspective_index INTEGER NOT NULL DEFAULT 0,
+                observation_data  TEXT    NOT NULL DEFAULT '{}',
+                PRIMARY KEY (session_code, room_number)
+            );
+            CREATE TABLE IF NOT EXISTS fgd_learning (
+                participant_token TEXT    PRIMARY KEY,
+                targets_data      TEXT    NOT NULL DEFAULT '{}',
+                evidence_data     TEXT    NOT NULL DEFAULT '{}'
+            );
+            CREATE TABLE IF NOT EXISTS fgd_report_approvals (
+                session_code      TEXT    NOT NULL,
+                room_number       INTEGER NOT NULL,
+                participant_token TEXT    NOT NULL,
+                PRIMARY KEY (session_code, room_number, participant_token)
+            );
         """)
         conn.commit()
         _local.conn = conn
@@ -192,6 +230,22 @@ def _fgd_session_row(db: sqlite3.Connection, code: str):
     ).fetchone()
 
 
+def _fgd_controller_role(db: sqlite3.Connection, code: str, room_number: int, phase: str) -> str:
+    roles = [
+        row["role"]
+        for row in db.execute(
+            "SELECT role FROM fgd_participants WHERE session_code = ? AND room_number = ? ORDER BY joined_at",
+            (code, room_number),
+        ).fetchall()
+    ]
+    preferred = FGD_CONTROLLER_ROLES.get(phase, "Facilitator")
+    if preferred in roles:
+        return preferred
+    if "Facilitator" in roles:
+        return "Facilitator"
+    return roles[0] if roles else preferred
+
+
 def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "") -> dict | None:
     db = _get_db()
     session = _fgd_session_row(db, code)
@@ -215,14 +269,22 @@ def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "
     rooms = db.execute(
         """
         SELECT r.room_number, r.topic_id, r.help_requested, r.report_data,
+               COALESCE(rs.prompt_index, 0) AS prompt_index,
+               COALESCE(rs.perspective_index, 0) AS perspective_index,
+               COALESCE(rs.observation_data, '{}') AS observation_data,
+               (SELECT COUNT(*) FROM fgd_report_approvals a
+                 WHERE a.session_code = r.session_code AND a.room_number = r.room_number) AS approval_count,
                COUNT(p.token) AS participant_count,
                COALESCE(SUM(p.contributions), 0) AS contribution_count,
                COALESCE(SUM(CASE WHEN p.exit_data != '{}' THEN 1 ELSE 0 END), 0) AS exit_count
         FROM fgd_rooms r
         LEFT JOIN fgd_participants p
           ON p.session_code = r.session_code AND p.room_number = r.room_number
+        LEFT JOIN fgd_room_state rs
+          ON rs.session_code = r.session_code AND rs.room_number = r.room_number
         WHERE r.session_code = ?
-        GROUP BY r.room_number, r.topic_id, r.help_requested, r.report_data
+        GROUP BY r.room_number, r.topic_id, r.help_requested, r.report_data,
+                 rs.prompt_index, rs.perspective_index, rs.observation_data
         ORDER BY r.room_number
         """,
         (code,),
@@ -240,13 +302,43 @@ def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "
         )
         if reveal_topic:
             item["topicId"] = room["topic_id"]
+        controller_role = _fgd_controller_role(db, code, room["room_number"], session["status"])
+        reporter_role = _fgd_controller_role(db, code, room["room_number"], "report")
         if is_teacher:
+            participant_rows = db.execute(
+                """SELECT p.display_name, p.role, p.support_level, p.contributions, p.exit_data,
+                          COALESCE(l.targets_data, '{}') AS targets_data,
+                          COALESCE(l.evidence_data, '{}') AS evidence_data
+                   FROM fgd_participants p
+                   LEFT JOIN fgd_learning l ON l.participant_token = p.token
+                   WHERE p.session_code = ? AND p.room_number = ?
+                   ORDER BY p.joined_at""",
+                (code, room["room_number"]),
+            ).fetchall()
+            move_counts = {}
+            target_count = 0
+            for person in participant_rows:
+                targets = _json_object(person["targets_data"])
+                evidence = _json_object(person["evidence_data"])
+                if targets:
+                    target_count += 1
+                for move, count in evidence.items():
+                    if move in FGD_EVIDENCE_MOVES:
+                        move_counts[move] = move_counts.get(move, 0) + int(count or 0)
             item.update({
                 "topicId": room["topic_id"],
                 "helpRequested": bool(room["help_requested"]),
                 "report": _json_object(room["report_data"]),
                 "contributionCount": room["contribution_count"],
                 "exitCount": room["exit_count"],
+                "promptIndex": room["prompt_index"],
+                "perspectiveIndex": room["perspective_index"],
+                "controllerRole": controller_role,
+                "reporterRole": reporter_role,
+                "approvalCount": room["approval_count"],
+                "targetCount": target_count,
+                "moveCounts": move_counts,
+                "observation": _json_object(room["observation_data"]),
                 "participants": [
                     {
                         "name": p["display_name"],
@@ -254,21 +346,28 @@ def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "
                         "level": p["support_level"],
                         "contributions": p["contributions"],
                         "hasExit": p["exit_data"] != "{}",
+                        "hasTargets": bool(_json_object(p["targets_data"])),
+                        "evidence": _json_object(p["evidence_data"]),
                     }
-                    for p in db.execute(
-                        """SELECT display_name, role, support_level, contributions, exit_data
-                           FROM fgd_participants
-                           WHERE session_code = ? AND room_number = ?
-                           ORDER BY joined_at""",
-                        (code, room["room_number"]),
-                    ).fetchall()
+                    for p in participant_rows
                 ],
             })
         elif participant and participant["room_number"] == room["room_number"]:
+            approved = db.execute(
+                """SELECT 1 FROM fgd_report_approvals
+                   WHERE session_code = ? AND room_number = ? AND participant_token = ?""",
+                (code, room["room_number"], participant_token),
+            ).fetchone()
             item.update({
                 "helpRequested": bool(room["help_requested"]),
                 "report": _json_object(room["report_data"]),
                 "contributionCount": room["contribution_count"],
+                "promptIndex": room["prompt_index"],
+                "perspectiveIndex": room["perspective_index"],
+                "controllerRole": controller_role,
+                "reporterRole": reporter_role,
+                "approvalCount": room["approval_count"],
+                "participantApproved": bool(approved),
             })
         public_rooms.append(item)
 
@@ -286,6 +385,10 @@ def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "
         "isTeacher": is_teacher,
     }
     if participant:
+        learning = db.execute(
+            "SELECT targets_data, evidence_data FROM fgd_learning WHERE participant_token = ?",
+            (participant_token,),
+        ).fetchone()
         payload["participant"] = {
             "name": participant["display_name"],
             "roomNumber": participant["room_number"],
@@ -293,6 +396,8 @@ def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "
             "role": participant["role"],
             "contributions": participant["contributions"],
             "exit": _json_object(participant["exit_data"]),
+            "targets": _json_object(learning["targets_data"]) if learning else {},
+            "evidence": _json_object(learning["evidence_data"]) if learning else {},
         }
     return payload
 
@@ -557,6 +662,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 "INSERT INTO fgd_rooms (session_code, room_number, topic_id) VALUES (?, ?, ?)",
                 [(code, index + 1, topic_ids[index]) for index in range(room_count)],
             )
+            db.executemany(
+                "INSERT INTO fgd_room_state (session_code, room_number) VALUES (?, ?)",
+                [(code, index + 1) for index in range(room_count)],
+            )
             db.commit()
         except Exception as exc:
             db.rollback()
@@ -622,6 +731,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
                 (participant_token, code, room_number, name, level, role, now, now),
             )
+            db.execute(
+                "INSERT INTO fgd_learning (participant_token) VALUES (?)",
+                (participant_token,),
+            )
             db.commit()
         except Exception as exc:
             db.rollback()
@@ -652,6 +765,60 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 "UPDATE fgd_participants SET contributions = MIN(contributions + 1, 99), last_seen = ? WHERE token = ?",
                 (int(time.time()), token),
             )
+        elif action == "advanceCard":
+            controller_role = _fgd_controller_role(db, code, participant["room_number"], session["status"])
+            if participant["role"] != controller_role:
+                _json_response(self, 403, {"error": f"The {controller_role} controls the shared room card in this phase"})
+                return
+            field = "perspective_index" if session["status"] == "challenge" else "prompt_index"
+            db.execute(
+                """INSERT INTO fgd_room_state (session_code, room_number, prompt_index, perspective_index)
+                   VALUES (?, ?, 0, 0)
+                   ON CONFLICT(session_code, room_number) DO NOTHING""",
+                (code, participant["room_number"]),
+            )
+            db.execute(
+                f"UPDATE fgd_room_state SET {field} = {field} + 1 WHERE session_code = ? AND room_number = ?",
+                (code, participant["room_number"]),
+            )
+        elif action == "targets":
+            targets = body.get("targets", {})
+            if not isinstance(targets, dict):
+                _json_response(self, 400, {"error": "Invalid learning targets"})
+                return
+            cleaned = {
+                "word": _clean_text(targets.get("word"), 80),
+                "phrase": _clean_text(targets.get("phrase"), 180),
+                "pattern": _clean_text(targets.get("pattern"), 180),
+                "teamwork": _clean_text(targets.get("teamwork"), 180),
+            }
+            db.execute(
+                """INSERT INTO fgd_learning (participant_token, targets_data, evidence_data)
+                   VALUES (?, ?, '{}')
+                   ON CONFLICT(participant_token) DO UPDATE SET targets_data = excluded.targets_data""",
+                (token, json.dumps(cleaned)),
+            )
+        elif action == "evidence":
+            move = _clean_text(body.get("move"), 24)
+            if move not in FGD_EVIDENCE_MOVES:
+                _json_response(self, 400, {"error": "Choose the discussion move you used"})
+                return
+            learning = db.execute(
+                "SELECT evidence_data FROM fgd_learning WHERE participant_token = ?",
+                (token,),
+            ).fetchone()
+            evidence = _json_object(learning["evidence_data"]) if learning else {}
+            evidence[move] = min(99, int(evidence.get(move, 0) or 0) + 1)
+            db.execute(
+                """INSERT INTO fgd_learning (participant_token, targets_data, evidence_data)
+                   VALUES (?, '{}', ?)
+                   ON CONFLICT(participant_token) DO UPDATE SET evidence_data = excluded.evidence_data""",
+                (token, json.dumps(evidence)),
+            )
+            db.execute(
+                "UPDATE fgd_participants SET contributions = MIN(contributions + 1, 99), last_seen = ? WHERE token = ?",
+                (int(time.time()), token),
+            )
         elif action == "help":
             requested = 1 if body.get("requested", True) else 0
             db.execute(
@@ -659,6 +826,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 (requested, code, participant["room_number"]),
             )
         elif action == "report":
+            reporter_role = _fgd_controller_role(db, code, participant["room_number"], "report")
+            if participant["role"] != reporter_role:
+                _json_response(self, 403, {"error": f"The {reporter_role} edits the shared report; everyone else reviews it"})
+                return
             report = body.get("report", {})
             if not isinstance(report, dict):
                 _json_response(self, 400, {"error": "Invalid report"})
@@ -676,6 +847,23 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 "UPDATE fgd_rooms SET report_data = ? WHERE session_code = ? AND room_number = ?",
                 (json.dumps(cleaned), code, participant["room_number"]),
             )
+            db.execute(
+                "DELETE FROM fgd_report_approvals WHERE session_code = ? AND room_number = ?",
+                (code, participant["room_number"]),
+            )
+        elif action == "approveReport":
+            if body.get("approved", True):
+                db.execute(
+                    """INSERT OR IGNORE INTO fgd_report_approvals
+                       (session_code, room_number, participant_token) VALUES (?, ?, ?)""",
+                    (code, participant["room_number"], token),
+                )
+            else:
+                db.execute(
+                    """DELETE FROM fgd_report_approvals
+                       WHERE session_code = ? AND room_number = ? AND participant_token = ?""",
+                    (code, participant["room_number"], token),
+                )
         elif action == "exit":
             exit_data = body.get("exit", {})
             if not isinstance(exit_data, dict):
@@ -688,6 +876,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             cleaned = {
                 "phrase": _clean_text(exit_data.get("phrase"), 180),
                 "confidence": confidence,
+                "teammateIdea": _clean_text(exit_data.get("teammateIdea"), 280),
+                "teamworkMoment": _clean_text(exit_data.get("teamworkMoment"), 280),
+                "nextStep": _clean_text(exit_data.get("nextStep"), 280),
             }
             db.execute(
                 "UPDATE fgd_participants SET exit_data = ?, last_seen = ? WHERE token = ?",
@@ -738,6 +929,28 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                     "UPDATE fgd_sessions SET phase_started_at = phase_started_at + ? WHERE code = ?",
                     (seconds, code),
                 )
+        elif action == "observe":
+            try:
+                room_number = int(body.get("roomNumber", 0))
+            except (TypeError, ValueError):
+                room_number = 0
+            observation = body.get("observation", {})
+            if room_number < 1 or room_number > session["room_count"] or not isinstance(observation, dict):
+                _json_response(self, 400, {"error": "Invalid room observation"})
+                return
+            cleaned = {}
+            for dimension in ("language", "interaction", "perspective", "teamwork"):
+                value = _clean_text(observation.get(dimension), 16)
+                cleaned[dimension] = value if value in {"", "emerging", "developing", "strong"} else ""
+            cleaned["note"] = _clean_text(observation.get("note"), 300)
+            cleaned["updatedAt"] = int(time.time())
+            db.execute(
+                """INSERT INTO fgd_room_state (session_code, room_number, observation_data)
+                   VALUES (?, ?, ?)
+                   ON CONFLICT(session_code, room_number)
+                   DO UPDATE SET observation_data = excluded.observation_data""",
+                (code, room_number, json.dumps(cleaned)),
+            )
         else:
             _json_response(self, 400, {"error": "Unknown teacher action"})
             return
