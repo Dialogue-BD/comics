@@ -1340,6 +1340,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 }
 
 /* ══════════ PRINT ══════════ */
+@page { size: A4 portrait; margin: 8mm; }
 @media print {
   body { background: #fff !important; color: #111 !important; font-size: 11pt; }
   nav.top, header.hero, footer.foot, .no-print, .tnote { display: none !important; }
@@ -1408,6 +1409,82 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
   body.print-one .card.print-card { display: block !important; }
   body.print-one .station-head { display: none !important; }
   .print-only { display: block !important; }
+
+  /* The four skill worksheets each occupy one portrait A4 page. The full
+     passage mock deliberately remains multi-page so its type stays realistic. */
+  body.print-one { font-size: 9pt; }
+  body.print-one section.station.print-section { page-break-after: auto !important; }
+  body.print-one section.station.print-section > .wrap { width: auto; max-width: none; padding: 0; }
+  body.print-one .card.print-card { margin: 0 !important; padding: 0 !important; border: 0 !important; border-radius: 0 !important; page-break-inside: auto !important; break-inside: auto !important; }
+  body.print-one :is(#headingCard, #locateCard, #raceCard, #trapCard) > :is(.card-label, .card-title, .card-intro) { display: none !important; }
+
+  .exam-print-head { margin-bottom: 3mm; color: #111 !important; font-family: Arial, Helvetica, sans-serif; }
+  .exam-print-brand { display: flex; align-items: baseline; justify-content: space-between; gap: 8mm; padding: 2.4mm 3mm; border-top: 5px solid #222; border-bottom: 1px solid #222; }
+  .exam-print-brand strong { font-size: 13pt; letter-spacing: .01em; }
+  .exam-print-brand span { font-size: 8pt; font-weight: 700; white-space: nowrap; }
+  .exam-candidate { display: flex; justify-content: space-between; gap: 8mm; margin: 2.2mm 0 3mm; font-size: 8.5pt; }
+  .exam-print-head p { margin: 1.2mm 0; font-size: 9.2pt; line-height: 1.3; }
+  .exam-print-head p:first-of-type { margin-top: 2.5mm; font-size: 10.5pt; }
+  .exam-tfng-key { display: grid; grid-template-columns: 24mm 1fr; gap: .7mm 3mm; margin: 2mm 0; padding-left: 10mm; font-size: 8.8pt; line-height: 1.25; }
+
+  body.print-one :is(#headingCard, #locateCard) .ws-passage { columns: 2; column-gap: 6mm; column-rule: 1px solid #ccc; font-size: 8.35pt; line-height: 1.28; margin: 0 0 3mm; text-align: justify; }
+  body.print-one :is(#headingCard, #locateCard) .ws-passage h4 { column-span: all; margin: 0 0 1.5mm !important; padding-bottom: 1mm; border-bottom: 1px solid #333; font-size: 10pt; }
+  body.print-one :is(#headingCard, #locateCard) .ws-passage p { margin: 0 0 1.3mm; break-inside: avoid; }
+
+  body.print-one #headingCard .heading-list { margin: 0 0 2.5mm !important; padding: 2.5mm 3mm; border-radius: 0; font-size: 8.6pt; line-height: 1.45 !important; }
+  body.print-one #headingCard .heading-list > div { line-height: 1.45 !important; }
+  body.print-one #headingCard .para-map { counter-reset: heading-question; display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; margin-top: 1mm; }
+  body.print-one #headingCard .para-slot { counter-increment: heading-question; display: flex; align-items: baseline; gap: 3mm; padding: 1mm 0; border: 0 !important; border-bottom: 1px solid #bbb !important; border-radius: 0; }
+  body.print-one #headingCard .para-slot:last-child { grid-column: 1 / -1; width: calc(50% - 4mm); }
+  body.print-one #headingCard .para-key { min-width: 31mm; padding: 0; color: #111 !important; font-family: Arial, Helvetica, sans-serif; font-size: 9pt; }
+  body.print-one #headingCard .para-key::before { content: counter(heading-question) "  Section "; font-weight: 700; }
+  body.print-one #headingCard .para-pick { margin: 0; }
+  body.print-one #headingCard .para-pick::after { content: ""; display: inline-block; width: 24mm; height: 4mm; border: 1px solid #333; vertical-align: middle; }
+
+  body.print-one #locateCard .locate-q { margin: 0; padding: 1.2mm 0; border: 0 !important; border-bottom: 1px solid #bbb !important; border-radius: 0; }
+  body.print-one #locateCard .locate-prompt { margin: 0; font-size: 9pt; line-height: 1.35; }
+  body.print-one #locateCard .locate-opts,
+  body.print-one #raceCard #raceList .opts,
+  body.print-one #trapCard #trapList .opts { display: none !important; }
+
+  body.print-one #raceCard .notice-doc { margin: 0 0 3mm !important; padding: 3mm 4mm; border-radius: 0; font-size: 8.7pt; line-height: 1.35; }
+  body.print-one #raceCard .notice-doc h4 { font-size: 10pt; }
+  body.print-one #raceCard .notice-doc .dim { margin-bottom: 1.5mm !important; font-size: 8pt !important; }
+  body.print-one #raceCard .notice-doc .sched-row { padding: .65mm 0; }
+  body.print-one #raceCard .notice-doc > p:last-child { margin-top: 2mm !important; font-size: 8.5pt !important; }
+  body.print-one #raceCard #raceList { display: grid; grid-template-columns: 1fr 1fr; gap: 0 7mm; }
+  body.print-one #raceCard #raceList .q-block { padding: 1.2mm 0; margin: 0; border-top: 0; border-bottom: 1px solid #bbb; }
+  body.print-one #raceCard #raceList .q-text { margin: 0; font-size: 8.9pt; line-height: 1.35; }
+
+  body.print-one #trapCard #trapList { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm 5mm; }
+  body.print-one #trapCard #trapList .q-block { margin: 0; padding: 0; border: 0; break-inside: avoid; }
+  body.print-one #trapCard #trapList .extract { margin: 0 0 1mm; padding: 1.5mm 2mm; border-left-width: 2px !important; border-radius: 0; font-size: 7.9pt; line-height: 1.3; }
+  body.print-one #trapCard #trapList .extract .lbl { margin-bottom: .5mm; font-size: 6.6pt; }
+  body.print-one #trapCard .exam-print-head { margin-bottom: 2mm; }
+  body.print-one #trapCard .exam-print-brand { padding: 1.5mm 2.5mm; }
+  body.print-one #trapCard .exam-candidate { margin: 1.2mm 0 1.5mm; }
+  body.print-one #trapCard .exam-print-head p { margin: .8mm 0; font-size: 8.8pt; }
+  body.print-one #trapCard .exam-print-head p:first-of-type { margin-top: 1.5mm; font-size: 10pt; }
+  body.print-one #trapCard .exam-tfng-key { margin: 1mm 0; font-size: 8.4pt; line-height: 1.15; }
+  body.print-one #trapCard #trapList { gap: 1mm 5mm; }
+  body.print-one #trapCard #trapList .extract { margin-bottom: .6mm; padding: 1mm 1.5mm; font-size: 7.5pt; line-height: 1.2; }
+  body.print-one #trapCard #trapList .extract .lbl { margin-bottom: .3mm; font-size: 6.2pt; }
+  body.print-one #trapCard .exam-answer-sheet { margin-top: 2mm; }
+  body.print-one #trapCard .exam-answer-grid > div { min-height: 8mm; }
+
+  .exam-answer-sheet { margin-top: 3mm; border: 2px solid #222; font-family: Arial, Helvetica, sans-serif; break-inside: avoid; }
+  .exam-answer-title { display: flex; justify-content: space-between; align-items: baseline; gap: 5mm; padding: 1.2mm 2mm; background: #222 !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .exam-answer-title strong { font-size: 9pt; text-transform: uppercase; letter-spacing: .06em; }
+  .exam-answer-title span { font-size: 7.2pt; }
+  .exam-answer-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .exam-answer-grid.five { grid-template-columns: repeat(5, 1fr); }
+  .exam-answer-grid > div { display: grid; grid-template-columns: 8mm 1fr; min-height: 9mm; border-right: 1px solid #222; border-top: 1px solid #222; }
+  .exam-answer-grid > div:nth-child(3n), .exam-answer-grid.five > div:last-child { border-right: 0; }
+  .exam-answer-grid.five > div:nth-child(3n) { border-right: 1px solid #222; }
+  .exam-answer-grid > div > b { display: grid; place-items: center; background: #222 !important; color: #fff !important; font-size: 9pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .exam-answer-grid > div > span { background: #fff !important; }
+  body.print-one :is(#headingCard, #locateCard, #raceCard, #trapCard) .answer-key { margin-top: 2mm; padding-top: 1.5mm; font-size: 7pt; line-height: 1.2; }
+  body.print-one :is(#headingCard, #locateCard, #raceCard, #trapCard)::after { content: "Dialogue IELTS Academic Reading Practice - not an official IELTS test paper"; display: block; margin-top: 1.5mm; color: #555; text-align: right; font-size: 6.5pt; }
 }
 .print-only { display: none; }
 </style>
@@ -1878,6 +1955,14 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="card-label">👥 Part A — Build the map</div>
       <div class="card-title">Give each paragraph its heading — 90 seconds</div>
       <p class="card-intro">Two headings match nothing. First sentence, last sentence, choose — do not read the middle.</p>
+      <div class="exam-print-head print-only">
+        <div class="exam-print-brand"><strong>IELTS Academic Reading Practice</strong><span>Matching Headings · suggested time: 8 minutes</span></div>
+        <div class="exam-candidate"><span>Name: __________________________________</span><span>Date: __________________</span></div>
+        <p><em>Questions 1–5</em></p>
+        <p>Reading Passage 1 has five sections, <strong>A–E</strong>.</p>
+        <p>Choose the correct heading for each section from the list of headings below.</p>
+        <p><em>Write the correct number, <strong>i–vii</strong>, in boxes 1–5 on your practice answer sheet.</em></p>
+      </div>
 
       <div class="btn-row no-print" style="margin-bottom:16px">
         <button class="btn" id="mapStart">▶ Start 90s</button>
@@ -1895,7 +1980,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         <p><b>E</b> &nbsp;The method has limits. Ice flows slowly downhill, so the deepest layers are stretched and folded, and near the bedrock the record can be scrambled beyond use. Nor is old ice evenly distributed: only a handful of sites are thought to preserve continuous ice older than a million years. At one of these, Little Dome C in East Antarctica, an international team reached bedrock in 2025 and brought up ice believed to be at least 1.2 million years old.</p>
       </div>
 
-      <div class="passage-box" style="margin-bottom:16px; background:var(--surface-3)">
+      <div class="passage-box heading-list" style="margin-bottom:16px; background:var(--surface-3)">
         <div style="font-size:0.86rem; line-height:2">
           <b>i.</b> How the samples are obtained &nbsp;·&nbsp;
           <b>ii.</b> The information sealed inside &nbsp;·&nbsp;
@@ -1915,13 +2000,26 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         <div class="para-slot"><div class="para-key">E</div><div><div class="para-text">Flowing ice scrambles the deepest layers, and very old ice is rare.</div><div class="para-pick"><select class="pick" data-answer="v"><option value="">Choose a heading…</option><option value="i">i. How the samples are obtained</option><option value="ii">ii. The information sealed inside</option><option value="iii">iii. Putting a date on each layer</option><option value="iv">iv. What the cores revealed</option><option value="v">v. Where the method breaks down</option><option value="vi">vi. The rising cost of polar expeditions</option><option value="vii">vii. Training the next generation of drillers</option></select></div></div></div>
       </div>
       <div class="feedback" id="mapFeedback"></div>
-      <div class="answer-key print-only"><b>Answer key:</b> A–i, B–ii, C–iii, D–iv, E–v. Unused: vi, vii.</div>
+      <div class="exam-answer-sheet print-only" aria-label="Practice answer sheet for questions 1 to 5">
+        <div class="exam-answer-title"><strong>Practice Answer Sheet</strong><span>Write one answer in each numbered box.</span></div>
+        <div class="exam-answer-grid five"><div><b>1</b><span></span></div><div><b>2</b><span></span></div><div><b>3</b><span></span></div><div><b>4</b><span></span></div><div><b>5</b><span></span></div></div>
+      </div>
+      <div class="answer-key print-only"><b>Answer key:</b> 1–i, 2–ii, 3–iii, 4–iv, 5–v. Unused: vi, vii.</div>
     </div>
 
     <div class="card mobile-card" id="locateCard">
       <div class="card-label">📱 Part B — Use the map</div>
       <div class="card-title">Which paragraph holds the answer? Letter only — don't answer the question</div>
       <p class="card-intro">Not what the answer is — only <b>where it lives</b>. Under 15 seconds each.</p>
+      <div class="exam-print-head print-only">
+        <div class="exam-print-brand"><strong>IELTS Academic Reading Practice</strong><span>Matching Information · suggested time: 7 minutes</span></div>
+        <div class="exam-candidate"><span>Name: __________________________________</span><span>Date: __________________</span></div>
+        <p><em>Questions 1–6</em></p>
+        <p>Reading Passage 1 has five paragraphs, <strong>A–E</strong>.</p>
+        <p>Which paragraph contains the following information?</p>
+        <p><em>Write the correct letter, <strong>A–E</strong>, in boxes 1–6 on your practice answer sheet.</em></p>
+        <p><strong>NB</strong> You may use any letter more than once.</p>
+      </div>
 
       <div class="btn-row no-print" style="margin-bottom:16px">
         <button class="btn" id="locStart">▶ Start timer</button>
@@ -1940,6 +2038,10 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       </div>
 
       <div id="locateList"></div>
+      <div class="exam-answer-sheet print-only" aria-label="Practice answer sheet for questions 1 to 6">
+        <div class="exam-answer-title"><strong>Practice Answer Sheet</strong><span>Write one answer in each numbered box.</span></div>
+        <div class="exam-answer-grid"><div><b>1</b><span></span></div><div><b>2</b><span></span></div><div><b>3</b><span></span></div><div><b>4</b><span></span></div><div><b>5</b><span></span></div><div><b>6</b><span></span></div></div>
+      </div>
       <div class="answer-key print-only"><b>Answer key:</b> 1–C, 2–A, 3–D, 4–B, 5–E, 6–A.</div>
     </div>
   </div>
@@ -2038,6 +2140,14 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="card-label">👥 Pair race — Information Hunt</div>
       <div class="card-title">Northgate Community Sports Centre</div>
       <p class="card-intro">Everyday scanning. All six, as fast as you can — accuracy first, then speed.</p>
+      <div class="exam-print-head print-only">
+        <div class="exam-print-brand"><strong>IELTS Academic Reading Practice</strong><span>Short-answer Questions · suggested time: 7 minutes</span></div>
+        <div class="exam-candidate"><span>Name: __________________________________</span><span>Date: __________________</span></div>
+        <p><em>Questions 1–6</em></p>
+        <p>Answer the questions below.</p>
+        <p>Choose <strong>NO MORE THAN FOUR WORDS AND/OR A NUMBER</strong> from the notice for each answer.</p>
+        <p><em>Write your answers in boxes 1–6 on your practice answer sheet.</em></p>
+      </div>
       <div class="btn-row no-print" style="margin-bottom:16px">
         <button class="btn" id="raceStart">▶ Start race</button>
         <button class="btn ghost sm" id="raceReset">Reset</button>
@@ -2059,6 +2169,10 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       </div>
 
       <div id="raceList"></div>
+      <div class="exam-answer-sheet print-only" aria-label="Practice answer sheet for questions 1 to 6">
+        <div class="exam-answer-title"><strong>Practice Answer Sheet</strong><span>Spelling and the stated word limit count.</span></div>
+        <div class="exam-answer-grid"><div><b>1</b><span></span></div><div><b>2</b><span></span></div><div><b>3</b><span></span></div><div><b>4</b><span></span></div><div><b>5</b><span></span></div><div><b>6</b><span></span></div></div>
+      </div>
       <div class="answer-key print-only"><b>Answer key:</b> 1–£11.50, 2–Wednesday, 3–Over-60s Circuit Training, 4–Riverside Centre, 5–four hours, 6–Tuesday &amp; Thursday.</div>
     </div>
 
@@ -2184,12 +2298,24 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       <div class="card-label">📱 Scored round — Trap or True?</div>
       <div class="card-title">Six located sentences. Run the four-point check on each.</div>
       <p class="card-intro">The sentence has already been found for you — that part is done. Your only job is the check.</p>
+      <div class="exam-print-head print-only">
+        <div class="exam-print-brand"><strong>IELTS Academic Reading Practice</strong><span>True / False / Not Given · suggested time: 8 minutes</span></div>
+        <div class="exam-candidate"><span>Name: __________________________________</span><span>Date: __________________</span></div>
+        <p><em>Questions 1–6</em></p>
+        <p>Do the following statements agree with the information in the located passage sentences?</p>
+        <div class="exam-tfng-key"><b>TRUE</b><span>if the statement agrees with the information</span><b>FALSE</b><span>if the statement contradicts the information</span><b>NOT GIVEN</b><span>if there is no information on this</span></div>
+        <p><em>Write <strong>TRUE</strong>, <strong>FALSE</strong> or <strong>NOT GIVEN</strong> in boxes 1–6 on your practice answer sheet.</em></p>
+      </div>
       <div class="btn-row no-print" style="margin-bottom:16px">
         <span class="score-pill" id="trapScore" aria-live="polite">0 / 6</span>
         <button class="btn sec sm" id="trapRound">🔄 Round 2 — new items</button>
         <button class="btn ghost sm" id="trapReset">Reset</button>
       </div>
       <div id="trapList"></div>
+      <div class="exam-answer-sheet print-only" aria-label="Practice answer sheet for questions 1 to 6">
+        <div class="exam-answer-title"><strong>Practice Answer Sheet</strong><span>Write one answer in each numbered box.</span></div>
+        <div class="exam-answer-grid"><div><b>1</b><span></span></div><div><b>2</b><span></span></div><div><b>3</b><span></span></div><div><b>4</b><span></span></div><div><b>5</b><span></span></div><div><b>6</b><span></span></div></div>
+      </div>
       <div class="answer-key print-only"><b>Answer key:</b> 1–FALSE (negation flip), 2–TRUE, 3–FALSE (qualifier swap), 4–NOT GIVEN, 5–FALSE (reversed cause), 6–NOT GIVEN.</div>
     </div>
   </div>
@@ -2414,7 +2540,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
     </div>
 
     <div class="card teacher-card" data-fold="Printing — for your teacher, on a computer">
-      <div class="card-label">🖨️ One-page worksheets</div>
+      <div class="card-label">🖨️ Single-page skill worksheets</div>
       <div class="ws-grid">
         <div class="ws-card">
           <h4>Map Drill</h4>
@@ -2438,7 +2564,7 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
         </div>
         <div class="ws-card">
           <h4>The Full Run · mock</h4>
-          <p>The complete 13-question paper, with its passage. Whichever paper is selected in Station 7 is the one that prints — so you can set one in class and the other as homework.</p>
+          <p>The complete 13-question paper, with its passage. This remains a multi-page mock so the passage and questions stay at a realistic, readable size.</p>
           <button class="btn sm sec" data-print="fullrunCard">Print mock paper</button>
         </div>
       </div>
