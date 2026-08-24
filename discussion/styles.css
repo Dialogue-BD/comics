@@ -174,8 +174,9 @@ textarea { min-height: 92px; resize: vertical; line-height: 1.5; }
 .phase-live-label > span:first-child.is-live { background: var(--teal); box-shadow: 0 0 0 5px var(--teal-soft); }
 .phase-control-card h2 { position: relative; z-index: 1; margin: 12px 0 7px; font-family: var(--font-display); font-size: 1.6rem; letter-spacing: -.03em; }
 .phase-control-card p { margin: 0; max-width: 590px; color: var(--ink-soft); line-height: 1.5; }
-.teacher-timer { margin: 14px 0; font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.teacher-timer { margin: 14px 0 2px; font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; font-variant-numeric: tabular-nums; }
 .teacher-timer.is-overtime, .phase-strip time.is-overtime { color: var(--danger); }
+.teacher-timer-note { display: block; margin-bottom: 14px; color: var(--ink-soft); font-size: .72rem; font-weight: 700; }
 .phase-buttons { display: flex; gap: 8px; }
 .phase-track { display: flex; margin: 20px 0 35px; padding: 8px; gap: 4px; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,253,248,.68); overflow-x: auto; }
 .phase-track button { flex: 1; min-width: 105px; padding: 10px; border: 0; border-radius: 10px; background: transparent; color: var(--ink-soft); cursor: pointer; font-size: .72rem; font-weight: 700; }

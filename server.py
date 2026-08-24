@@ -215,9 +215,44 @@ def _fgd_session_row(db: sqlite3.Connection, code: str):
     ).fetchone()
 
 
+def _auto_advance_fgd_phase(db: sqlite3.Connection, session, now: int | None = None):
+    """Advance one timed phase atomically when its clock has expired."""
+    if not session or session["status"] in {"lobby", "ended"} or not session["phase_started_at"]:
+        return session
+    try:
+        durations = json.loads(session["phase_durations"])
+        duration = int(durations.get(session["status"], 0))
+    except (json.JSONDecodeError, TypeError, ValueError):
+        return session
+    now = int(time.time()) if now is None else int(now)
+    if duration <= 0 or now < session["phase_started_at"] + duration:
+        return session
+
+    phase_index = FGD_PHASES.index(session["status"])
+    next_phase = FGD_PHASES[min(phase_index + 1, len(FGD_PHASES) - 1)]
+    next_started_at = None if next_phase == "ended" else now
+    db.execute(
+        """UPDATE fgd_sessions
+           SET status = ?, phase_started_at = ?
+           WHERE code = ? AND status = ? AND phase_started_at = ?""",
+        (
+            next_phase,
+            next_started_at,
+            session["code"],
+            session["status"],
+            session["phase_started_at"],
+        ),
+    )
+    db.commit()
+    return _fgd_session_row(db, session["code"])
+
+
 def _fgd_snapshot(code: str, participant_token: str = "", teacher_token: str = "") -> dict | None:
     db = _get_db()
     session = _fgd_session_row(db, code)
+    if not session:
+        return None
+    session = _auto_advance_fgd_phase(db, session)
     if not session:
         return None
 

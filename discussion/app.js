@@ -28,6 +28,7 @@
     clockOffsetMs: 0,
     pollTimer: null,
     clockTimer: null,
+    deadlineRefreshPhase: null,
     toastTimer: null
   };
 
@@ -142,10 +143,14 @@
         display.textContent = "—:—";
         display.classList.remove("is-overtime");
       } else {
-        display.textContent = formatTime(remaining, remaining < 0);
-        display.classList.toggle("is-overtime", remaining < 0);
+        display.textContent = formatTime(Math.max(0, remaining));
+        display.classList.toggle("is-overtime", remaining <= 0);
       }
     });
+    if (remaining !== null && remaining <= 0 && ["teacher", "student"].includes(state.mode) && state.deadlineRefreshPhase !== state.session.status) {
+      state.deadlineRefreshPhase = state.session.status;
+      refreshSession();
+    }
   }
 
   function startClock() {
@@ -168,6 +173,7 @@
       const session = await api(`../api/fgd/session?${params}`);
       state.session = session;
       setClock(session);
+      if (state.deadlineRefreshPhase !== session.status || phaseTime() > 0) state.deadlineRefreshPhase = null;
       if (state.mode === "teacher") renderTeacher();
       if (state.mode === "student") renderStudent();
       if (state.mode === "picker") renderRoomPicker();
@@ -371,8 +377,9 @@
     $("#teacher-phase-title").textContent = lobby ? "Students are choosing rooms" : phase.short;
     $("#teacher-phase-prompt").textContent = phase.prompt;
     const index = activePhaseIds.indexOf(session.status);
-    $("#previous-phase").disabled = index <= 0 || session.status === "ended";
+    $("#previous-phase").disabled = index <= 0;
     $("#extend-phase").hidden = lobby || session.status === "ended";
+    $("#teacher-timer-note").hidden = lobby || session.status === "ended";
     const nextButton = $("#next-phase");
     nextButton.hidden = session.status === "ended";
     nextButton.textContent = lobby ? "Reveal topics →" : session.status === "reflect" ? "Finish session →" : `Next: ${phaseById(activePhaseIds[index + 1]).label} →`;
@@ -418,6 +425,7 @@
         body: JSON.stringify({ code: state.code, teacherToken: state.teacherToken, action, ...extra })
       });
       setClock(state.session);
+      if (state.deadlineRefreshPhase !== state.session.status || phaseTime() > 0) state.deadlineRefreshPhase = null;
       renderTeacher();
     } catch (error) { showToast(error.message); }
   }
