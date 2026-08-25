@@ -1131,9 +1131,9 @@ window.PICTURE_THIS_GAME_DATA = {
   "quantity-words": [
     "More",
     "Less",
-    "Many",
-    "Few",
-    "Some",
+    "Half",
+    "Double",
+    "All",
     "None"
   ],
   "texture-words": [
@@ -5316,25 +5316,27 @@ window.PICTURE_THIS_GAME_META = {
           ]
         },
         {
-          "id": "many",
-          "label": "Many",
+          "id": "half",
+          "label": "Half",
           "answers": [
-            "Many",
-            "Numerous"
+            "Half",
+            "One Half"
           ]
         },
         {
-          "id": "few",
-          "label": "Few",
+          "id": "double",
+          "label": "Double",
           "answers": [
-            "Few"
+            "Double",
+            "Twice"
           ]
         },
         {
-          "id": "some",
-          "label": "Some",
+          "id": "all",
+          "label": "All",
           "answers": [
-            "Some"
+            "All",
+            "Everything"
           ]
         },
         {
@@ -5348,39 +5350,39 @@ window.PICTURE_THIS_GAME_META = {
       ],
       "links": [
         {
-          "word": "than",
+          "word": "comparative",
           "answers": [
-            "than"
+            "comparative"
           ],
           "items": [
             "more",
             "less"
           ],
-          "explanation": "More and less are the only two words shown that combine directly with “than” to compare quantities.",
+          "explanation": "More and less are the only two comparative quantity words shown.",
           "audit": "exclusive-among-six-v1"
         },
         {
-          "word": "abundance",
+          "word": "multiplier",
           "answers": [
-            "abundance"
+            "multiplier"
           ],
           "items": [
-            "many",
-            "few"
+            "half",
+            "double"
           ],
-          "explanation": "Many and few are the only two words shown specifically describing whether a count is large or small.",
+          "explanation": "Half and double are the only two words shown that multiply an original amount by a fixed factor.",
           "audit": "exclusive-among-six-v1"
         },
         {
-          "word": "presence",
+          "word": "absolute",
           "answers": [
-            "presence"
+            "absolute"
           ],
           "items": [
-            "some",
+            "all",
             "none"
           ],
-          "explanation": "Some and none are the only two words shown specifically describing whether any amount is present.",
+          "explanation": "All and none are the only two absolute quantity words shown, meaning the complete set or zero of the set.",
           "audit": "exclusive-among-six-v1"
         }
       ]

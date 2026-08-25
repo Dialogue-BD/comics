@@ -1439,8 +1439,13 @@
     <p class="sr-only" id="status" aria-live="polite"></p>
   </main>
 
-  <script src="game-data.js"></script>
-  <script src="link-data.js"></script>
+  <script>
+    // The deck grows frequently. A fresh query key prevents a host or browser
+    // from pairing the newest card list with an older, cached answer key.
+    const pictureThisDataRevision = Date.now();
+    document.write(`<script src="game-data.js?v=${pictureThisDataRevision}"><\/script>`);
+    document.write(`<script src="link-data.js?v=${pictureThisDataRevision}"><\/script>`);
+  </script>
   <script>
     // Mirrors cards.json so the activity also works when opened directly from file://.
     // PICTURE_THIS_CARDS_START
@@ -3389,6 +3394,7 @@
       guessInput.value = "";
       guessInput.disabled = false;
       guessSubmit.disabled = false;
+      revealGameAnswerButton.disabled = false;
       newGameCardButton.disabled = false;
       guessForm.hidden = gameMode === "find-pair";
       linkWord.hidden = gameMode !== "find-pair";
@@ -3396,7 +3402,7 @@
       categoryMask.hidden = gameMode !== "category";
       categoryMask.classList.remove("is-revealed");
       itemGrid.hidden = gameMode !== "items" && !isLinkMode();
-      itemGrid.setAttribute("aria-hidden", isLinkMode() ? "false" : "true");
+      itemGrid.setAttribute("aria-hidden", gameMode === "items" || isLinkMode() ? "false" : "true");
       itemGrid.classList.toggle("is-link-mode", isLinkMode());
       itemGrid.classList.toggle("is-pair-word", gameMode === "name-link");
       itemGrid.classList.remove("is-locked");
@@ -3432,6 +3438,7 @@
         if (items.length !== 6) {
           guessInput.disabled = true;
           guessSubmit.disabled = true;
+          revealGameAnswerButton.disabled = true;
           setGameFeedback("This card is missing its item answer key.", "wrong");
         }
       } else {
@@ -3730,9 +3737,17 @@
         categoryMask.classList.add("is-revealed");
         setGameFeedback(`The category is “${cards[cardIndex].title}.”`, "correct");
       } else if (gameMode === "items") {
+        const answers = gameData[cards[cardIndex].id] || [];
+        if (answers.length !== 6) {
+          roundComplete = false;
+          revealGameAnswerButton.disabled = true;
+          setGameFeedback("The answer key did not load. Refresh the page to reload the deck data.", "wrong");
+          return;
+        }
         itemCells.forEach((cell, index) => {
           foundItems.add(index);
           cell.classList.add("is-revealed");
+          cell.setAttribute("aria-label", `${answers[index]}, revealed`);
         });
         updateItemProgress();
         setGameFeedback("All six answers are revealed. No points were added.");
