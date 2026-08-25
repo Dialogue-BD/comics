@@ -29,7 +29,7 @@
       "audio-match"
     ]
   },
-  "card_count": 141,
+  "card_count": 151,
   "pages": [
     {
       "id": "page_001",
@@ -1722,6 +1722,126 @@
       "image": "pages/page_282.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_283",
+      "image": "pages/page_283.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_284",
+      "image": "pages/page_284.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_285",
+      "image": "pages/page_285.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_286",
+      "image": "pages/page_286.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_287",
+      "image": "pages/page_287.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_288",
+      "image": "pages/page_288.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_289",
+      "image": "pages/page_289.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_290",
+      "image": "pages/page_290.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_291",
+      "image": "pages/page_291.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_292",
+      "image": "pages/page_292.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_293",
+      "image": "pages/page_293.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_294",
+      "image": "pages/page_294.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_295",
+      "image": "pages/page_295.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_296",
+      "image": "pages/page_296.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_297",
+      "image": "pages/page_297.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_298",
+      "image": "pages/page_298.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_299",
+      "image": "pages/page_299.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_300",
+      "image": "pages/page_300.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_301",
+      "image": "pages/page_301.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_302",
+      "image": "pages/page_302.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -2508,6 +2628,106 @@
         "actions",
         "sounds",
         "communication"
+      ]
+    },
+    {
+      "id": "common-changes",
+      "title": "Common Changes",
+      "band_color": "green",
+      "game_tags": [
+        "verbs",
+        "changes",
+        "descriptions"
+      ]
+    },
+    {
+      "id": "common-contrasts",
+      "title": "Common Contrasts",
+      "band_color": "green",
+      "game_tags": [
+        "adjectives",
+        "contrasts",
+        "descriptions"
+      ]
+    },
+    {
+      "id": "everyday-conditions",
+      "title": "Everyday Conditions",
+      "band_color": "blue",
+      "game_tags": [
+        "adjectives",
+        "conditions",
+        "daily-life"
+      ]
+    },
+    {
+      "id": "people-at-home",
+      "title": "People at Home",
+      "band_color": "green",
+      "game_tags": [
+        "people",
+        "relationships",
+        "home"
+      ]
+    },
+    {
+      "id": "people-we-meet",
+      "title": "People We Meet",
+      "band_color": "orange",
+      "game_tags": [
+        "people",
+        "community",
+        "relationships"
+      ]
+    },
+    {
+      "id": "position-words",
+      "title": "Position and Direction",
+      "band_color": "red",
+      "game_tags": [
+        "positions",
+        "directions",
+        "descriptions"
+      ]
+    },
+    {
+      "id": "quantity-words",
+      "title": "Quantity Words",
+      "band_color": "red",
+      "game_tags": [
+        "numbers",
+        "amounts",
+        "descriptions"
+      ]
+    },
+    {
+      "id": "texture-words",
+      "title": "Texture Words",
+      "band_color": "green",
+      "game_tags": [
+        "adjectives",
+        "descriptions",
+        "touch"
+      ]
+    },
+    {
+      "id": "thinking-actions",
+      "title": "Thinking Actions",
+      "band_color": "orange",
+      "game_tags": [
+        "verbs",
+        "thinking",
+        "learning"
+      ]
+    },
+    {
+      "id": "ways-to-move",
+      "title": "Ways to Move",
+      "band_color": "blue",
+      "game_tags": [
+        "verbs",
+        "movement",
+        "actions"
       ]
     }
   ],
