@@ -193,7 +193,6 @@ window.PICTURE_THIS_LINK_DATA = {
     pictureThisLink("sleep", [0,2], "The neck pillow and eye mask are the only two items shown specifically designed to help a traveler sleep.", ["sleeping", "rest"]),
     pictureThisLink("luggage", [1,5], "The luggage tag and luggage scale are the only two items shown specifically attached to or used on luggage.", ["bags"])
   ],
-  "weather-instruments": [pictureThisLink("direction", [0,4], "The weather vane and wind sock are the only two instruments shown specifically indicating wind direction.")],
   "ways-to-travel": [pictureThisLink("rails", [0,4], "The tram and cable car are the only two vehicles shown that characteristically travel on rails.", ["rail"] )],
   "at-the-aquarium": [pictureThisLink("shells", [1,3], "The hermit crab and clam shell are the only two items shown whose identity centers on a shell.", ["shell"])],
   "at-the-coffee-shop": [
@@ -505,10 +504,6 @@ const auditedLinkAdditions = {
     pictureThisLink("bundled", [0,5], "Cinnamon and bay leaves are the only two spices shown tied into bundles.")
   ],
   "travel-accessories": [pictureThisLink("straps", [1,2], "Luggage tag and eye mask are the only two items shown characteristically secured with narrow straps.")],
-  "weather-instruments": [
-    pictureThisLink("rotating", [0,1], "Weather vane and anemometer are the only two instruments shown with parts that rotate in the wind."),
-    pictureThisLink("pressure", [2,3], "Barometer and weather balloon are the only two instruments shown used to measure or profile atmospheric pressure.")
-  ],
   "ways-to-travel": [
     pictureThisLink("red", [0,3], "Tram and scooter are the only two vehicles shown predominantly red."),
     pictureThisLink("blue", [2,5], "Rickshaw and pickup truck are the only two vehicles shown predominantly blue.")

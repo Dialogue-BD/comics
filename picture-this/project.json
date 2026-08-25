@@ -29,7 +29,7 @@
       "audio-match"
     ]
   },
-  "card_count": 141,
+  "card_count": 145,
   "pages": [
     {
       "id": "page_001",
@@ -992,18 +992,6 @@
       "height": 1275
     },
     {
-      "id": "page_161",
-      "image": "pages/page_161.png",
-      "width": 825,
-      "height": 1275
-    },
-    {
-      "id": "page_162",
-      "image": "pages/page_162.png",
-      "width": 825,
-      "height": 1275
-    },
-    {
       "id": "page_163",
       "image": "pages/page_163.png",
       "width": 825,
@@ -1300,66 +1288,6 @@
     {
       "id": "page_212",
       "image": "pages/page_212.png",
-      "width": 825,
-      "height": 1275
-    },
-    {
-      "id": "page_213",
-      "image": "pages/page_213.png",
-      "width": 825,
-      "height": 1275
-    },
-    {
-      "id": "page_214",
-      "image": "pages/page_214.png",
-      "width": 825,
-      "height": 1275
-    },
-    {
-      "id": "page_215",
-      "image": "pages/page_215.png",
-      "width": 825,
-      "height": 1275
-    },
-    {
-      "id": "page_216",
-      "image": "pages/page_216.png",
-      "width": 825,
-      "height": 1275
-    },
-    {
-      "id": "page_217",
-      "image": "pages/page_217.png",
-      "width": 825,
-      "height": 1275
-    },
-    {
-      "id": "page_218",
-      "image": "pages/page_218.png",
-      "width": 825,
-      "height": 1275
-    },
-    {
-      "id": "page_219",
-      "image": "pages/page_219.png",
-      "width": 825,
-      "height": 1275
-    },
-    {
-      "id": "page_220",
-      "image": "pages/page_220.png",
-      "width": 825,
-      "height": 1275
-    },
-    {
-      "id": "page_221",
-      "image": "pages/page_221.png",
-      "width": 825,
-      "height": 1275
-    },
-    {
-      "id": "page_222",
-      "image": "pages/page_222.png",
       "width": 825,
       "height": 1275
     },
@@ -1722,6 +1650,126 @@
       "image": "pages/page_282.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_283",
+      "image": "pages/page_283.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_284",
+      "image": "pages/page_284.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_285",
+      "image": "pages/page_285.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_286",
+      "image": "pages/page_286.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_287",
+      "image": "pages/page_287.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_288",
+      "image": "pages/page_288.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_289",
+      "image": "pages/page_289.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_290",
+      "image": "pages/page_290.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_291",
+      "image": "pages/page_291.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_292",
+      "image": "pages/page_292.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_293",
+      "image": "pages/page_293.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_294",
+      "image": "pages/page_294.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_295",
+      "image": "pages/page_295.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_296",
+      "image": "pages/page_296.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_297",
+      "image": "pages/page_297.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_298",
+      "image": "pages/page_298.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_299",
+      "image": "pages/page_299.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_300",
+      "image": "pages/page_300.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_301",
+      "image": "pages/page_301.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_302",
+      "image": "pages/page_302.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -2006,11 +2054,6 @@
       "band_color": "blue"
     },
     {
-      "id": "weather-instruments",
-      "title": "Weather Instruments",
-      "band_color": "blue"
-    },
-    {
       "id": "ways-to-travel",
       "title": "Ways to Travel",
       "band_color": "blue"
@@ -2158,56 +2201,6 @@
         "transport",
         "mechanics",
         "cycling"
-      ]
-    },
-    {
-      "id": "yarn-crafts",
-      "title": "Yarn Crafts",
-      "band_color": "blue",
-      "game_tags": [
-        "crafts",
-        "textiles",
-        "hobbies"
-      ]
-    },
-    {
-      "id": "pottery-studio",
-      "title": "Pottery Studio",
-      "band_color": "green",
-      "game_tags": [
-        "crafts",
-        "art",
-        "ceramics"
-      ]
-    },
-    {
-      "id": "at-the-observatory",
-      "title": "At the Observatory",
-      "band_color": "orange",
-      "game_tags": [
-        "place",
-        "science",
-        "astronomy"
-      ]
-    },
-    {
-      "id": "beekeeping",
-      "title": "Beekeeping",
-      "band_color": "blue",
-      "game_tags": [
-        "occupation",
-        "farming",
-        "insects"
-      ]
-    },
-    {
-      "id": "sailing-gear",
-      "title": "Sailing Gear",
-      "band_color": "blue",
-      "game_tags": [
-        "transport",
-        "water",
-        "navigation"
       ]
     },
     {
@@ -2508,6 +2501,106 @@
         "actions",
         "sounds",
         "communication"
+      ]
+    },
+    {
+      "id": "common-changes",
+      "title": "Common Changes",
+      "band_color": "green",
+      "game_tags": [
+        "verbs",
+        "changes",
+        "descriptions"
+      ]
+    },
+    {
+      "id": "common-contrasts",
+      "title": "Common Contrasts",
+      "band_color": "green",
+      "game_tags": [
+        "adjectives",
+        "contrasts",
+        "descriptions"
+      ]
+    },
+    {
+      "id": "everyday-conditions",
+      "title": "Everyday Conditions",
+      "band_color": "blue",
+      "game_tags": [
+        "adjectives",
+        "conditions",
+        "daily-life"
+      ]
+    },
+    {
+      "id": "people-at-home",
+      "title": "People at Home",
+      "band_color": "green",
+      "game_tags": [
+        "people",
+        "relationships",
+        "home"
+      ]
+    },
+    {
+      "id": "people-we-meet",
+      "title": "People We Meet",
+      "band_color": "orange",
+      "game_tags": [
+        "people",
+        "community",
+        "relationships"
+      ]
+    },
+    {
+      "id": "position-words",
+      "title": "Position and Direction",
+      "band_color": "red",
+      "game_tags": [
+        "positions",
+        "directions",
+        "descriptions"
+      ]
+    },
+    {
+      "id": "quantity-words",
+      "title": "Quantity Words",
+      "band_color": "red",
+      "game_tags": [
+        "numbers",
+        "amounts",
+        "descriptions"
+      ]
+    },
+    {
+      "id": "texture-words",
+      "title": "Texture Words",
+      "band_color": "green",
+      "game_tags": [
+        "adjectives",
+        "descriptions",
+        "touch"
+      ]
+    },
+    {
+      "id": "thinking-actions",
+      "title": "Thinking Actions",
+      "band_color": "orange",
+      "game_tags": [
+        "verbs",
+        "thinking",
+        "learning"
+      ]
+    },
+    {
+      "id": "ways-to-move",
+      "title": "Ways to Move",
+      "band_color": "blue",
+      "game_tags": [
+        "verbs",
+        "movement",
+        "actions"
       ]
     }
   ],

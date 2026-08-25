@@ -640,14 +640,6 @@ window.PICTURE_THIS_GAME_DATA = {
     "Toiletry Bag",
     "Luggage Scale"
   ],
-  "weather-instruments": [
-    "Weather Vane",
-    "Anemometer",
-    "Barometer",
-    "Weather Balloon",
-    "Wind Sock",
-    "Stevenson Screen"
-  ],
   "ways-to-travel": [
     "Tram",
     "Ferry",
@@ -847,46 +839,6 @@ window.PICTURE_THIS_GAME_DATA = {
     "Floor Pump",
     "Chainring",
     "Bicycle Chain"
-  ],
-  "yarn-crafts": [
-    "Yarn Swift",
-    "Ball Winder",
-    "Blocking Mat",
-    "Blocking Pin",
-    "Darning Egg",
-    "Darning Needle"
-  ],
-  "pottery-studio": [
-    "Potter's Wheel",
-    "Splash Pan",
-    "Pottery Kiln",
-    "Pyrometric Cone",
-    "Slip Trailer",
-    "Pottery Comb"
-  ],
-  "at-the-observatory": [
-    "Equatorial Mount",
-    "Counterweight",
-    "Star Chart",
-    "Planisphere",
-    "Telescope Eyepiece",
-    "Barlow Lens"
-  ],
-  "beekeeping": [
-    "Beekeeper Veil",
-    "Bee Suit",
-    "Hive Tool",
-    "Frame Grip",
-    "Honey Extractor",
-    "Extractor Stand"
-  ],
-  "sailing-gear": [
-    "Sextant",
-    "Nautical Chart",
-    "Reefing Hook",
-    "Reefing Cringle",
-    "Dock Line",
-    "Marine Fender"
   ],
   "clothing-actions": [
     "Button Up",
@@ -1127,6 +1079,86 @@ window.PICTURE_THIS_GAME_DATA = {
     "Cry",
     "Knock",
     "Ring"
+  ],
+  "common-changes": [
+    "Grow",
+    "Shrink",
+    "Appear",
+    "Disappear",
+    "Improve",
+    "Worsen"
+  ],
+  "common-contrasts": [
+    "Fast",
+    "Slow",
+    "Loud",
+    "Quiet",
+    "Deep",
+    "Shallow"
+  ],
+  "everyday-conditions": [
+    "Clean",
+    "Dirty",
+    "Hot",
+    "Cold",
+    "Heavy",
+    "Light"
+  ],
+  "people-at-home": [
+    "Parent",
+    "Child",
+    "Husband",
+    "Wife",
+    "Guest",
+    "Host"
+  ],
+  "people-we-meet": [
+    "Friend",
+    "Stranger",
+    "Customer",
+    "Clerk",
+    "Coach",
+    "Player"
+  ],
+  "position-words": [
+    "Front",
+    "Back",
+    "Near",
+    "Far",
+    "Left",
+    "Right"
+  ],
+  "quantity-words": [
+    "More",
+    "Less",
+    "Many",
+    "Few",
+    "Some",
+    "None"
+  ],
+  "texture-words": [
+    "Smooth",
+    "Rough",
+    "Soft",
+    "Hard",
+    "Sharp",
+    "Dull"
+  ],
+  "thinking-actions": [
+    "Remember",
+    "Forget",
+    "Know",
+    "Guess",
+    "Decide",
+    "Change Mind"
+  ],
+  "ways-to-move": [
+    "Run",
+    "Walk",
+    "Swim",
+    "Float",
+    "Jump",
+    "Climb"
   ]
 };
 
@@ -1635,514 +1667,6 @@ window.PICTURE_THIS_GAME_META = {
             "bicycle-chain"
           ],
           "explanation": "The chainring and bicycle chain are the only two items shown that directly form part of the bicycle drivetrain.",
-          "audit": "exclusive-among-six-v1"
-        }
-      ]
-    },
-    "yarn-crafts": {
-      "title": "Yarn Crafts",
-      "category_answers": [
-        "Yarn Crafts",
-        "Yarn Craft Tools",
-        "Knitting Accessories",
-        "Fiber Craft Tools"
-      ],
-      "tags": [
-        "crafts",
-        "textiles",
-        "hobbies"
-      ],
-      "items": [
-        {
-          "id": "yarn-swift",
-          "label": "Yarn Swift",
-          "answers": [
-            "Yarn Swift",
-            "Umbrella Swift"
-          ]
-        },
-        {
-          "id": "ball-winder",
-          "label": "Ball Winder",
-          "answers": [
-            "Ball Winder",
-            "Yarn Winder"
-          ]
-        },
-        {
-          "id": "blocking-mat",
-          "label": "Blocking Mat",
-          "answers": [
-            "Blocking Mat",
-            "Knitting Mat"
-          ]
-        },
-        {
-          "id": "blocking-pin",
-          "label": "Blocking Pin",
-          "answers": [
-            "Blocking Pin",
-            "Knit Blocker"
-          ]
-        },
-        {
-          "id": "darning-egg",
-          "label": "Darning Egg",
-          "answers": [
-            "Darning Egg",
-            "Mending Egg"
-          ]
-        },
-        {
-          "id": "darning-needle",
-          "label": "Darning Needle",
-          "answers": [
-            "Darning Needle",
-            "Yarn Needle"
-          ]
-        }
-      ],
-      "links": [
-        {
-          "word": "winding",
-          "answers": [
-            "winding"
-          ],
-          "items": [
-            "yarn-swift",
-            "ball-winder"
-          ],
-          "explanation": "The yarn swift and ball winder are the only two items shown that work together to wind yarn into a neat ball.",
-          "audit": "exclusive-among-six-v1"
-        },
-        {
-          "word": "blocking",
-          "answers": [
-            "blocking"
-          ],
-          "items": [
-            "blocking-mat",
-            "blocking-pin"
-          ],
-          "explanation": "The blocking mat and blocking pin are the only two items shown specifically used together to block and shape finished yarn work.",
-          "audit": "exclusive-among-six-v1"
-        },
-        {
-          "word": "darning",
-          "answers": [
-            "darning"
-          ],
-          "items": [
-            "darning-egg",
-            "darning-needle"
-          ],
-          "explanation": "The darning egg and darning needle are the only two items shown specifically used together to repair holes in knitted fabric.",
-          "audit": "exclusive-among-six-v1"
-        }
-      ]
-    },
-    "pottery-studio": {
-      "title": "Pottery Studio",
-      "category_answers": [
-        "Pottery Studio",
-        "At the Pottery Studio",
-        "Pottery Equipment",
-        "Ceramics Studio"
-      ],
-      "tags": [
-        "crafts",
-        "art",
-        "ceramics"
-      ],
-      "items": [
-        {
-          "id": "potters-wheel",
-          "label": "Potter's Wheel",
-          "answers": [
-            "Potter's Wheel",
-            "Pottery Wheel"
-          ]
-        },
-        {
-          "id": "splash-pan",
-          "label": "Splash Pan",
-          "answers": [
-            "Splash Pan",
-            "Wheel Splash Pan"
-          ]
-        },
-        {
-          "id": "pottery-kiln",
-          "label": "Pottery Kiln",
-          "answers": [
-            "Pottery Kiln",
-            "Ceramic Kiln"
-          ]
-        },
-        {
-          "id": "pyrometric-cone",
-          "label": "Pyrometric Cone",
-          "answers": [
-            "Pyrometric Cone",
-            "Firing Cone"
-          ]
-        },
-        {
-          "id": "slip-trailer",
-          "label": "Slip Trailer",
-          "answers": [
-            "Slip Trailer",
-            "Slip Applicator"
-          ]
-        },
-        {
-          "id": "pottery-comb",
-          "label": "Pottery Comb",
-          "answers": [
-            "Pottery Comb",
-            "Clay Comb"
-          ]
-        }
-      ],
-      "links": [
-        {
-          "word": "throwing",
-          "answers": [
-            "throwing"
-          ],
-          "items": [
-            "potters-wheel",
-            "splash-pan"
-          ],
-          "explanation": "The potter's wheel and splash pan are the only two items shown directly used together when throwing clay on a wheel.",
-          "audit": "exclusive-among-six-v1"
-        },
-        {
-          "word": "firing",
-          "answers": [
-            "firing"
-          ],
-          "items": [
-            "pottery-kiln",
-            "pyrometric-cone"
-          ],
-          "explanation": "The pottery kiln and pyrometric cone are the only two items shown directly used together to control a ceramic firing.",
-          "audit": "exclusive-among-six-v1"
-        },
-        {
-          "word": "decoration",
-          "answers": [
-            "decoration"
-          ],
-          "items": [
-            "slip-trailer",
-            "pottery-comb"
-          ],
-          "explanation": "The slip trailer and pottery comb are the only two items shown specifically designed to add decorative lines or patterns to clay.",
-          "audit": "exclusive-among-six-v1"
-        }
-      ]
-    },
-    "at-the-observatory": {
-      "title": "At the Observatory",
-      "category_answers": [
-        "At the Observatory",
-        "Observatory Equipment",
-        "Astronomy Tools",
-        "Stargazing Equipment"
-      ],
-      "tags": [
-        "place",
-        "science",
-        "astronomy"
-      ],
-      "items": [
-        {
-          "id": "equatorial-mount",
-          "label": "Equatorial Mount",
-          "answers": [
-            "Equatorial Mount",
-            "Telescope Mount"
-          ]
-        },
-        {
-          "id": "counterweight",
-          "label": "Counterweight",
-          "answers": [
-            "Counterweight",
-            "Balance Weight"
-          ]
-        },
-        {
-          "id": "star-chart",
-          "label": "Star Chart",
-          "answers": [
-            "Star Chart",
-            "Sky Map"
-          ]
-        },
-        {
-          "id": "planisphere",
-          "label": "Planisphere",
-          "answers": [
-            "Planisphere",
-            "Star Wheel"
-          ]
-        },
-        {
-          "id": "telescope-eyepiece",
-          "label": "Telescope Eyepiece",
-          "answers": [
-            "Telescope Eyepiece",
-            "Ocular Lens"
-          ]
-        },
-        {
-          "id": "barlow-lens",
-          "label": "Barlow Lens",
-          "answers": [
-            "Barlow Lens",
-            "Telescope Amplifier"
-          ]
-        }
-      ],
-      "links": [
-        {
-          "word": "balancing",
-          "answers": [
-            "balancing"
-          ],
-          "items": [
-            "equatorial-mount",
-            "counterweight"
-          ],
-          "explanation": "The equatorial mount and counterweight are the only two items shown specifically designed to work together when balancing a telescope.",
-          "audit": "exclusive-among-six-v1"
-        },
-        {
-          "word": "mapping",
-          "answers": [
-            "mapping"
-          ],
-          "items": [
-            "star-chart",
-            "planisphere"
-          ],
-          "explanation": "The star chart and planisphere are the only two items shown that map the positions of stars across the night sky.",
-          "audit": "exclusive-among-six-v1"
-        },
-        {
-          "word": "magnification",
-          "answers": [
-            "magnification"
-          ],
-          "items": [
-            "telescope-eyepiece",
-            "barlow-lens"
-          ],
-          "explanation": "The telescope eyepiece and Barlow lens are the only two optical items shown specifically used together to increase magnification.",
-          "audit": "exclusive-among-six-v1"
-        }
-      ]
-    },
-    "beekeeping": {
-      "title": "Beekeeping",
-      "category_answers": [
-        "Beekeeping",
-        "Beekeeping Equipment",
-        "Apiary Tools",
-        "Keeping Bees"
-      ],
-      "tags": [
-        "occupation",
-        "farming",
-        "insects"
-      ],
-      "items": [
-        {
-          "id": "beekeeper-veil",
-          "label": "Beekeeper Veil",
-          "answers": [
-            "Beekeeper Veil",
-            "Bee Veil"
-          ]
-        },
-        {
-          "id": "bee-suit",
-          "label": "Bee Suit",
-          "answers": [
-            "Bee Suit",
-            "Beekeeping Suit"
-          ]
-        },
-        {
-          "id": "hive-tool",
-          "label": "Hive Tool",
-          "answers": [
-            "Hive Tool",
-            "Beehive Tool"
-          ]
-        },
-        {
-          "id": "frame-grip",
-          "label": "Frame Grip",
-          "answers": [
-            "Frame Grip",
-            "Hive Frame Lifter"
-          ]
-        },
-        {
-          "id": "honey-extractor",
-          "label": "Honey Extractor",
-          "answers": [
-            "Honey Extractor"
-          ]
-        },
-        {
-          "id": "extractor-stand",
-          "label": "Extractor Stand",
-          "answers": [
-            "Extractor Stand",
-            "Honey Extractor Stand"
-          ]
-        }
-      ],
-      "links": [
-        {
-          "word": "protective",
-          "answers": [
-            "protective"
-          ],
-          "items": [
-            "beekeeper-veil",
-            "bee-suit"
-          ],
-          "explanation": "The beekeeper veil and bee suit are the only two wearable items shown specifically designed to protect a beekeeper from stings.",
-          "audit": "exclusive-among-six-v1"
-        },
-        {
-          "word": "lifting",
-          "answers": [
-            "lifting"
-          ],
-          "items": [
-            "hive-tool",
-            "frame-grip"
-          ],
-          "explanation": "The hive tool and frame grip are the only two hand tools shown specifically designed for loosening and lifting hive frames.",
-          "audit": "exclusive-among-six-v1"
-        },
-        {
-          "word": "extraction",
-          "answers": [
-            "extraction"
-          ],
-          "items": [
-            "honey-extractor",
-            "extractor-stand"
-          ],
-          "explanation": "The honey extractor and extractor stand are the only two items shown specifically designed to work together during centrifugal honey extraction.",
-          "audit": "exclusive-among-six-v1"
-        }
-      ]
-    },
-    "sailing-gear": {
-      "title": "Sailing Gear",
-      "category_answers": [
-        "Sailing Gear",
-        "Sailboat Gear",
-        "Sailing Equipment",
-        "On a Sailboat"
-      ],
-      "tags": [
-        "transport",
-        "water",
-        "navigation"
-      ],
-      "items": [
-        {
-          "id": "sextant",
-          "label": "Sextant",
-          "answers": [
-            "Sextant"
-          ]
-        },
-        {
-          "id": "nautical-chart",
-          "label": "Nautical Chart",
-          "answers": [
-            "Nautical Chart",
-            "Marine Chart"
-          ]
-        },
-        {
-          "id": "reefing-hook",
-          "label": "Reefing Hook",
-          "answers": [
-            "Reefing Hook",
-            "Reef Hook"
-          ]
-        },
-        {
-          "id": "reefing-cringle",
-          "label": "Reefing Cringle",
-          "answers": [
-            "Reefing Cringle",
-            "Reef Cringle"
-          ]
-        },
-        {
-          "id": "dock-line",
-          "label": "Dock Line",
-          "answers": [
-            "Dock Line",
-            "Mooring Line"
-          ]
-        },
-        {
-          "id": "marine-fender",
-          "label": "Marine Fender",
-          "answers": [
-            "Marine Fender",
-            "Boat Fender"
-          ]
-        }
-      ],
-      "links": [
-        {
-          "word": "navigation",
-          "answers": [
-            "navigation"
-          ],
-          "items": [
-            "sextant",
-            "nautical-chart"
-          ],
-          "explanation": "The sextant and nautical chart are the only two items shown specifically used together for traditional marine navigation.",
-          "audit": "exclusive-among-six-v1"
-        },
-        {
-          "word": "reefing",
-          "answers": [
-            "reefing"
-          ],
-          "items": [
-            "reefing-hook",
-            "reefing-cringle"
-          ],
-          "explanation": "The reefing hook and reefing cringle are the only two items shown specifically designed to work together when reefing a sail.",
-          "audit": "exclusive-among-six-v1"
-        },
-        {
-          "word": "mooring",
-          "answers": [
-            "mooring"
-          ],
-          "items": [
-            "dock-line",
-            "marine-fender"
-          ],
-          "explanation": "The dock line and marine fender are the only two items shown specifically used while mooring a boat beside a dock.",
           "audit": "exclusive-among-six-v1"
         }
       ]
@@ -5152,6 +4676,1015 @@ window.PICTURE_THIS_GAME_META = {
             "ring"
           ],
           "explanation": "Knock and ring are the only two actions shown specifically used at a door.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "common-changes": {
+      "title": "Common Changes",
+      "category_answers": [
+        "Common Changes",
+        "Changes",
+        "Change Verbs",
+        "Ways Things Change"
+      ],
+      "tags": [
+        "verbs",
+        "changes",
+        "descriptions"
+      ],
+      "items": [
+        {
+          "id": "grow",
+          "label": "Grow",
+          "answers": [
+            "Grow",
+            "Get Bigger"
+          ]
+        },
+        {
+          "id": "shrink",
+          "label": "Shrink",
+          "answers": [
+            "Shrink",
+            "Get Smaller"
+          ]
+        },
+        {
+          "id": "appear",
+          "label": "Appear",
+          "answers": [
+            "Appear",
+            "Show Up"
+          ]
+        },
+        {
+          "id": "disappear",
+          "label": "Disappear",
+          "answers": [
+            "Disappear",
+            "Vanish"
+          ]
+        },
+        {
+          "id": "improve",
+          "label": "Improve",
+          "answers": [
+            "Improve",
+            "Get Better"
+          ]
+        },
+        {
+          "id": "worsen",
+          "label": "Worsen",
+          "answers": [
+            "Worsen",
+            "Get Worse"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "size",
+          "answers": [
+            "size"
+          ],
+          "items": [
+            "grow",
+            "shrink"
+          ],
+          "explanation": "Grow and shrink are the only two changes shown specifically affecting size.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "visibility",
+          "answers": [
+            "visibility"
+          ],
+          "items": [
+            "appear",
+            "disappear"
+          ],
+          "explanation": "Appear and disappear are the only two changes shown specifically affecting visibility.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "quality",
+          "answers": [
+            "quality"
+          ],
+          "items": [
+            "improve",
+            "worsen"
+          ],
+          "explanation": "Improve and worsen are the only two changes shown specifically affecting overall quality.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "common-contrasts": {
+      "title": "Common Contrasts",
+      "category_answers": [
+        "Common Contrasts",
+        "Everyday Contrasts",
+        "Opposite Descriptions",
+        "Common Adjectives"
+      ],
+      "tags": [
+        "adjectives",
+        "contrasts",
+        "descriptions"
+      ],
+      "items": [
+        {
+          "id": "fast",
+          "label": "Fast",
+          "answers": [
+            "Fast",
+            "Quick"
+          ]
+        },
+        {
+          "id": "slow",
+          "label": "Slow",
+          "answers": [
+            "Slow"
+          ]
+        },
+        {
+          "id": "loud",
+          "label": "Loud",
+          "answers": [
+            "Loud",
+            "Noisy"
+          ]
+        },
+        {
+          "id": "quiet",
+          "label": "Quiet",
+          "answers": [
+            "Quiet",
+            "Silent"
+          ]
+        },
+        {
+          "id": "deep",
+          "label": "Deep",
+          "answers": [
+            "Deep"
+          ]
+        },
+        {
+          "id": "shallow",
+          "label": "Shallow",
+          "answers": [
+            "Shallow"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "speed",
+          "answers": [
+            "speed"
+          ],
+          "items": [
+            "fast",
+            "slow"
+          ],
+          "explanation": "Fast and slow are the only two words shown specifically describing speed.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "volume",
+          "answers": [
+            "volume"
+          ],
+          "items": [
+            "loud",
+            "quiet"
+          ],
+          "explanation": "Loud and quiet are the only two words shown specifically describing sound volume.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "depth",
+          "answers": [
+            "depth"
+          ],
+          "items": [
+            "deep",
+            "shallow"
+          ],
+          "explanation": "Deep and shallow are the only two words shown specifically describing depth.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "everyday-conditions": {
+      "title": "Everyday Conditions",
+      "category_answers": [
+        "Everyday Conditions",
+        "Condition Words",
+        "Everyday Item Conditions",
+        "Common Conditions"
+      ],
+      "tags": [
+        "adjectives",
+        "conditions",
+        "daily-life"
+      ],
+      "items": [
+        {
+          "id": "clean",
+          "label": "Clean",
+          "answers": [
+            "Clean"
+          ]
+        },
+        {
+          "id": "dirty",
+          "label": "Dirty",
+          "answers": [
+            "Dirty",
+            "Messy"
+          ]
+        },
+        {
+          "id": "hot",
+          "label": "Hot",
+          "answers": [
+            "Hot"
+          ]
+        },
+        {
+          "id": "cold",
+          "label": "Cold",
+          "answers": [
+            "Cold",
+            "Chilly"
+          ]
+        },
+        {
+          "id": "heavy",
+          "label": "Heavy",
+          "answers": [
+            "Heavy",
+            "Weighty"
+          ]
+        },
+        {
+          "id": "light",
+          "label": "Light",
+          "answers": [
+            "Light",
+            "Lightweight"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "cleanliness",
+          "answers": [
+            "cleanliness"
+          ],
+          "items": [
+            "clean",
+            "dirty"
+          ],
+          "explanation": "Clean and dirty are the only two words shown specifically describing cleanliness.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "temperature",
+          "answers": [
+            "temperature"
+          ],
+          "items": [
+            "hot",
+            "cold"
+          ],
+          "explanation": "Hot and cold are the only two words shown specifically describing temperature.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "weight",
+          "answers": [
+            "weight"
+          ],
+          "items": [
+            "heavy",
+            "light"
+          ],
+          "explanation": "Heavy and light are the only two words shown specifically describing weight.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "people-at-home": {
+      "title": "People at Home",
+      "category_answers": [
+        "People at Home",
+        "Home Roles",
+        "Family and Visitors",
+        "People in a Home"
+      ],
+      "tags": [
+        "people",
+        "relationships",
+        "home"
+      ],
+      "items": [
+        {
+          "id": "parent",
+          "label": "Parent",
+          "answers": [
+            "Parent"
+          ]
+        },
+        {
+          "id": "child",
+          "label": "Child",
+          "answers": [
+            "Child",
+            "Kid"
+          ]
+        },
+        {
+          "id": "husband",
+          "label": "Husband",
+          "answers": [
+            "Husband",
+            "Married Man"
+          ]
+        },
+        {
+          "id": "wife",
+          "label": "Wife",
+          "answers": [
+            "Wife",
+            "Married Woman"
+          ]
+        },
+        {
+          "id": "guest",
+          "label": "Guest",
+          "answers": [
+            "Guest",
+            "Visitor"
+          ]
+        },
+        {
+          "id": "host",
+          "label": "Host",
+          "answers": [
+            "Host"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "generation",
+          "answers": [
+            "generation"
+          ],
+          "items": [
+            "parent",
+            "child"
+          ],
+          "explanation": "Parent and child are the only two roles shown specifically contrasting family generations.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "marriage",
+          "answers": [
+            "marriage"
+          ],
+          "items": [
+            "husband",
+            "wife"
+          ],
+          "explanation": "Husband and wife are the only two roles shown specifically connected by marriage.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "hospitality",
+          "answers": [
+            "hospitality"
+          ],
+          "items": [
+            "guest",
+            "host"
+          ],
+          "explanation": "Guest and host are the only two roles shown specifically connected by hospitality.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "people-we-meet": {
+      "title": "People We Meet",
+      "category_answers": [
+        "People We Meet",
+        "Everyday People",
+        "People Around Us",
+        "Common Social Roles"
+      ],
+      "tags": [
+        "people",
+        "community",
+        "relationships"
+      ],
+      "items": [
+        {
+          "id": "friend",
+          "label": "Friend",
+          "answers": [
+            "Friend",
+            "Companion"
+          ]
+        },
+        {
+          "id": "stranger",
+          "label": "Stranger",
+          "answers": [
+            "Stranger",
+            "Unknown Person"
+          ]
+        },
+        {
+          "id": "customer",
+          "label": "Customer",
+          "answers": [
+            "Customer",
+            "Shopper"
+          ]
+        },
+        {
+          "id": "clerk",
+          "label": "Clerk",
+          "answers": [
+            "Clerk",
+            "Store Clerk"
+          ]
+        },
+        {
+          "id": "coach",
+          "label": "Coach",
+          "answers": [
+            "Coach",
+            "Sports Coach"
+          ]
+        },
+        {
+          "id": "player",
+          "label": "Player",
+          "answers": [
+            "Player",
+            "Team Player"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "familiarity",
+          "answers": [
+            "familiarity"
+          ],
+          "items": [
+            "friend",
+            "stranger"
+          ],
+          "explanation": "Friend and stranger are the only two roles shown specifically contrasting familiarity with unfamiliarity.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "checkout",
+          "answers": [
+            "checkout"
+          ],
+          "items": [
+            "customer",
+            "clerk"
+          ],
+          "explanation": "Customer and clerk are the only two roles shown specifically interacting at a checkout.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "sports",
+          "answers": [
+            "sports"
+          ],
+          "items": [
+            "coach",
+            "player"
+          ],
+          "explanation": "Coach and player are the only two roles shown specifically participating in organized sports.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "position-words": {
+      "title": "Position and Direction",
+      "category_answers": [
+        "Position and Direction",
+        "Basic Positions",
+        "Direction Words",
+        "Position Basics"
+      ],
+      "tags": [
+        "positions",
+        "directions",
+        "descriptions"
+      ],
+      "items": [
+        {
+          "id": "front",
+          "label": "Front",
+          "answers": [
+            "Front",
+            "Front Side"
+          ]
+        },
+        {
+          "id": "back",
+          "label": "Back",
+          "answers": [
+            "Back",
+            "Back Side"
+          ]
+        },
+        {
+          "id": "near",
+          "label": "Near",
+          "answers": [
+            "Near",
+            "Close By"
+          ]
+        },
+        {
+          "id": "far",
+          "label": "Far",
+          "answers": [
+            "Far",
+            "Far Away"
+          ]
+        },
+        {
+          "id": "left",
+          "label": "Left",
+          "answers": [
+            "Left",
+            "Left Side"
+          ]
+        },
+        {
+          "id": "right",
+          "label": "Right",
+          "answers": [
+            "Right",
+            "Right Side"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "facing",
+          "answers": [
+            "facing"
+          ],
+          "items": [
+            "front",
+            "back"
+          ],
+          "explanation": "Front and back are the only two words shown specifically describing which way a person is facing.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "distance",
+          "answers": [
+            "distance"
+          ],
+          "items": [
+            "near",
+            "far"
+          ],
+          "explanation": "Near and far are the only two words shown specifically describing distance.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "lateral",
+          "answers": [
+            "lateral"
+          ],
+          "items": [
+            "left",
+            "right"
+          ],
+          "explanation": "Left and right are the only two words shown specifically describing opposing lateral directions.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "quantity-words": {
+      "title": "Quantity Words",
+      "category_answers": [
+        "Quantity Words",
+        "Amounts",
+        "Amount Words",
+        "Quantity Descriptions"
+      ],
+      "tags": [
+        "numbers",
+        "amounts",
+        "descriptions"
+      ],
+      "items": [
+        {
+          "id": "more",
+          "label": "More",
+          "answers": [
+            "More",
+            "Additional"
+          ]
+        },
+        {
+          "id": "less",
+          "label": "Less",
+          "answers": [
+            "Less",
+            "Fewer"
+          ]
+        },
+        {
+          "id": "many",
+          "label": "Many",
+          "answers": [
+            "Many",
+            "Numerous"
+          ]
+        },
+        {
+          "id": "few",
+          "label": "Few",
+          "answers": [
+            "Few"
+          ]
+        },
+        {
+          "id": "some",
+          "label": "Some",
+          "answers": [
+            "Some"
+          ]
+        },
+        {
+          "id": "none",
+          "label": "None",
+          "answers": [
+            "None",
+            "Zero"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "than",
+          "answers": [
+            "than"
+          ],
+          "items": [
+            "more",
+            "less"
+          ],
+          "explanation": "More and less are the only two words shown that combine directly with “than” to compare quantities.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "abundance",
+          "answers": [
+            "abundance"
+          ],
+          "items": [
+            "many",
+            "few"
+          ],
+          "explanation": "Many and few are the only two words shown specifically describing whether a count is large or small.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "presence",
+          "answers": [
+            "presence"
+          ],
+          "items": [
+            "some",
+            "none"
+          ],
+          "explanation": "Some and none are the only two words shown specifically describing whether any amount is present.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "texture-words": {
+      "title": "Texture Words",
+      "category_answers": [
+        "Texture Words",
+        "Textures",
+        "Touch Words",
+        "Surface Descriptions"
+      ],
+      "tags": [
+        "adjectives",
+        "descriptions",
+        "touch"
+      ],
+      "items": [
+        {
+          "id": "smooth",
+          "label": "Smooth",
+          "answers": [
+            "Smooth"
+          ]
+        },
+        {
+          "id": "rough",
+          "label": "Rough",
+          "answers": [
+            "Rough",
+            "Bumpy"
+          ]
+        },
+        {
+          "id": "soft",
+          "label": "Soft",
+          "answers": [
+            "Soft",
+            "Squishy"
+          ]
+        },
+        {
+          "id": "hard",
+          "label": "Hard",
+          "answers": [
+            "Hard",
+            "Firm"
+          ]
+        },
+        {
+          "id": "sharp",
+          "label": "Sharp",
+          "answers": [
+            "Sharp",
+            "Pointed"
+          ]
+        },
+        {
+          "id": "dull",
+          "label": "Dull",
+          "answers": [
+            "Dull",
+            "Blunt"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "friction",
+          "answers": [
+            "friction"
+          ],
+          "items": [
+            "smooth",
+            "rough"
+          ],
+          "explanation": "Smooth and rough are the only two words shown specifically describing how much a surface resists a sliding hand.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "firmness",
+          "answers": [
+            "firmness"
+          ],
+          "items": [
+            "soft",
+            "hard"
+          ],
+          "explanation": "Soft and hard are the only two words shown specifically describing whether a material yields when pressed.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "cutting",
+          "answers": [
+            "cutting"
+          ],
+          "items": [
+            "sharp",
+            "dull"
+          ],
+          "explanation": "Sharp and dull are the only two words shown specifically describing how well an edge cuts.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "thinking-actions": {
+      "title": "Thinking Actions",
+      "category_answers": [
+        "Thinking Actions",
+        "Thinking Verbs",
+        "Mental Actions",
+        "Thought Actions"
+      ],
+      "tags": [
+        "verbs",
+        "thinking",
+        "learning"
+      ],
+      "items": [
+        {
+          "id": "remember",
+          "label": "Remember",
+          "answers": [
+            "Remember",
+            "Recall"
+          ]
+        },
+        {
+          "id": "forget",
+          "label": "Forget",
+          "answers": [
+            "Forget"
+          ]
+        },
+        {
+          "id": "know",
+          "label": "Know",
+          "answers": [
+            "Know",
+            "Be Sure"
+          ]
+        },
+        {
+          "id": "guess",
+          "label": "Guess",
+          "answers": [
+            "Guess",
+            "Make a Guess"
+          ]
+        },
+        {
+          "id": "decide",
+          "label": "Decide",
+          "answers": [
+            "Decide",
+            "Choose"
+          ]
+        },
+        {
+          "id": "change-mind",
+          "label": "Change Mind",
+          "answers": [
+            "Change Mind",
+            "Reconsider"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "memory",
+          "answers": [
+            "memory"
+          ],
+          "items": [
+            "remember",
+            "forget"
+          ],
+          "explanation": "Remember and forget are the only two actions shown specifically involving memory.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "certainty",
+          "answers": [
+            "certainty"
+          ],
+          "items": [
+            "know",
+            "guess"
+          ],
+          "explanation": "Know and guess are the only two actions shown specifically contrasting certainty with uncertainty.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "decision",
+          "answers": [
+            "decision"
+          ],
+          "items": [
+            "decide",
+            "change-mind"
+          ],
+          "explanation": "Decide and change mind are the only two actions shown specifically making or revising a decision.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "ways-to-move": {
+      "title": "Ways to Move",
+      "category_answers": [
+        "Ways to Move",
+        "Movement Verbs",
+        "Moving Around",
+        "Common Movements"
+      ],
+      "tags": [
+        "verbs",
+        "movement",
+        "actions"
+      ],
+      "items": [
+        {
+          "id": "run",
+          "label": "Run",
+          "answers": [
+            "Run",
+            "Jog"
+          ]
+        },
+        {
+          "id": "walk",
+          "label": "Walk",
+          "answers": [
+            "Walk",
+            "Stroll"
+          ]
+        },
+        {
+          "id": "swim",
+          "label": "Swim",
+          "answers": [
+            "Swim",
+            "Go Swimming"
+          ]
+        },
+        {
+          "id": "float",
+          "label": "Float",
+          "answers": [
+            "Float",
+            "Stay Afloat"
+          ]
+        },
+        {
+          "id": "jump",
+          "label": "Jump",
+          "answers": [
+            "Jump",
+            "Leap"
+          ]
+        },
+        {
+          "id": "climb",
+          "label": "Climb",
+          "answers": [
+            "Climb",
+            "Go Up"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "gait",
+          "answers": [
+            "gait"
+          ],
+          "items": [
+            "run",
+            "walk"
+          ],
+          "explanation": "Run and walk are the only two movements shown specifically as repeated human gaits.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "water",
+          "answers": [
+            "water"
+          ],
+          "items": [
+            "swim",
+            "float"
+          ],
+          "explanation": "Swim and float are the only two movements shown specifically happening in water.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "height",
+          "answers": [
+            "height"
+          ],
+          "items": [
+            "jump",
+            "climb"
+          ],
+          "explanation": "Jump and climb are the only two movements shown specifically gaining height.",
           "audit": "exclusive-among-six-v1"
         }
       ]
