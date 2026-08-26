@@ -29,7 +29,7 @@
       "audio-match"
     ]
   },
-  "card_count": 145,
+  "card_count": 155,
   "pages": [
     {
       "id": "page_001",
@@ -1770,6 +1770,126 @@
       "image": "pages/page_302.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_303",
+      "image": "pages/page_303.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_304",
+      "image": "pages/page_304.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_305",
+      "image": "pages/page_305.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_306",
+      "image": "pages/page_306.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_307",
+      "image": "pages/page_307.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_308",
+      "image": "pages/page_308.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_309",
+      "image": "pages/page_309.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_310",
+      "image": "pages/page_310.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_311",
+      "image": "pages/page_311.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_312",
+      "image": "pages/page_312.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_313",
+      "image": "pages/page_313.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_314",
+      "image": "pages/page_314.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_315",
+      "image": "pages/page_315.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_316",
+      "image": "pages/page_316.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_317",
+      "image": "pages/page_317.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_318",
+      "image": "pages/page_318.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_319",
+      "image": "pages/page_319.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_320",
+      "image": "pages/page_320.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_321",
+      "image": "pages/page_321.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_322",
+      "image": "pages/page_322.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -2601,6 +2721,106 @@
         "verbs",
         "movement",
         "actions"
+      ]
+    },
+    {
+      "id": "basic-colors",
+      "title": "Basic Colors",
+      "band_color": "orange",
+      "game_tags": [
+        "colors",
+        "descriptions",
+        "basics"
+      ]
+    },
+    {
+      "id": "basic-directions",
+      "title": "Basic Directions",
+      "band_color": "blue",
+      "game_tags": [
+        "directions",
+        "navigation",
+        "position"
+      ]
+    },
+    {
+      "id": "basic-judgments",
+      "title": "Basic Judgments",
+      "band_color": "green",
+      "game_tags": [
+        "descriptions",
+        "thinking",
+        "school"
+      ]
+    },
+    {
+      "id": "common-health-problems",
+      "title": "Common Health Problems",
+      "band_color": "green",
+      "game_tags": [
+        "health",
+        "symptoms",
+        "daily-life"
+      ]
+    },
+    {
+      "id": "everyday-clothes",
+      "title": "Everyday Clothes",
+      "band_color": "orange",
+      "game_tags": [
+        "clothing",
+        "daily-life",
+        "personal"
+      ]
+    },
+    {
+      "id": "file-actions",
+      "title": "File Actions",
+      "band_color": "green",
+      "game_tags": [
+        "digital",
+        "computers",
+        "actions"
+      ]
+    },
+    {
+      "id": "household-problems",
+      "title": "Household Problems",
+      "band_color": "green",
+      "game_tags": [
+        "home",
+        "problems",
+        "repairs"
+      ]
+    },
+    {
+      "id": "more-body-parts",
+      "title": "More Body Parts",
+      "band_color": "blue",
+      "game_tags": [
+        "body",
+        "health",
+        "basics"
+      ]
+    },
+    {
+      "id": "school-subjects",
+      "title": "School Subjects",
+      "band_color": "orange",
+      "game_tags": [
+        "school",
+        "learning",
+        "education"
+      ]
+    },
+    {
+      "id": "useful-rooms",
+      "title": "Useful Rooms",
+      "band_color": "green",
+      "game_tags": [
+        "home",
+        "places",
+        "daily-life"
       ]
     }
   ],

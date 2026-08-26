@@ -868,5 +868,65 @@
     "title": "Ways to Move",
     "front": "pages/page_301.png",
     "back": "pages/page_302.png"
+  },
+  {
+    "id": "basic-colors",
+    "title": "Basic Colors",
+    "front": "pages/page_303.png",
+    "back": "pages/page_304.png"
+  },
+  {
+    "id": "basic-directions",
+    "title": "Basic Directions",
+    "front": "pages/page_305.png",
+    "back": "pages/page_306.png"
+  },
+  {
+    "id": "basic-judgments",
+    "title": "Basic Judgments",
+    "front": "pages/page_307.png",
+    "back": "pages/page_308.png"
+  },
+  {
+    "id": "common-health-problems",
+    "title": "Common Health Problems",
+    "front": "pages/page_309.png",
+    "back": "pages/page_310.png"
+  },
+  {
+    "id": "everyday-clothes",
+    "title": "Everyday Clothes",
+    "front": "pages/page_311.png",
+    "back": "pages/page_312.png"
+  },
+  {
+    "id": "file-actions",
+    "title": "File Actions",
+    "front": "pages/page_313.png",
+    "back": "pages/page_314.png"
+  },
+  {
+    "id": "household-problems",
+    "title": "Household Problems",
+    "front": "pages/page_315.png",
+    "back": "pages/page_316.png"
+  },
+  {
+    "id": "more-body-parts",
+    "title": "More Body Parts",
+    "front": "pages/page_317.png",
+    "back": "pages/page_318.png"
+  },
+  {
+    "id": "school-subjects",
+    "title": "School Subjects",
+    "front": "pages/page_319.png",
+    "back": "pages/page_320.png"
+  },
+  {
+    "id": "useful-rooms",
+    "title": "Useful Rooms",
+    "front": "pages/page_321.png",
+    "back": "pages/page_322.png"
   }
 ]

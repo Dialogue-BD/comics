@@ -1159,6 +1159,86 @@ window.PICTURE_THIS_GAME_DATA = {
     "Float",
     "Jump",
     "Climb"
+  ],
+  "basic-colors": [
+    "Red",
+    "Blue",
+    "Green",
+    "Yellow",
+    "Black",
+    "White"
+  ],
+  "basic-directions": [
+    "North",
+    "South",
+    "East",
+    "West",
+    "Up",
+    "Down"
+  ],
+  "basic-judgments": [
+    "Same",
+    "Different",
+    "True",
+    "False",
+    "Correct",
+    "Incorrect"
+  ],
+  "common-health-problems": [
+    "Toothache",
+    "Cavity",
+    "Stomachache",
+    "Nausea",
+    "Sore Throat",
+    "Runny Nose"
+  ],
+  "everyday-clothes": [
+    "Shirt",
+    "Sweater",
+    "Skirt",
+    "Shorts",
+    "Socks",
+    "Sandals"
+  ],
+  "file-actions": [
+    "Copy",
+    "Paste",
+    "Save",
+    "Delete",
+    "Upload",
+    "Download"
+  ],
+  "household-problems": [
+    "Leak",
+    "Clog",
+    "Stain",
+    "Mold",
+    "Crack",
+    "Dent"
+  ],
+  "more-body-parts": [
+    "Hand",
+    "Foot",
+    "Elbow",
+    "Knee",
+    "Wrist",
+    "Ankle"
+  ],
+  "school-subjects": [
+    "Math",
+    "Statistics",
+    "History",
+    "Geography",
+    "Biology",
+    "Chemistry"
+  ],
+  "useful-rooms": [
+    "Kitchen",
+    "Dining Room",
+    "Bedroom",
+    "Nursery",
+    "Garage",
+    "Workshop"
   ]
 };
 
@@ -5687,6 +5767,1024 @@ window.PICTURE_THIS_GAME_META = {
             "climb"
           ],
           "explanation": "Jump and climb are the only two movements shown specifically gaining height.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "basic-colors": {
+      "title": "Basic Colors",
+      "category_answers": [
+        "Basic Colors",
+        "Colors",
+        "Colour Words",
+        "Color Words"
+      ],
+      "tags": [
+        "colors",
+        "descriptions",
+        "basics"
+      ],
+      "items": [
+        {
+          "id": "red",
+          "label": "Red",
+          "answers": [
+            "Red"
+          ]
+        },
+        {
+          "id": "blue",
+          "label": "Blue",
+          "answers": [
+            "Blue"
+          ]
+        },
+        {
+          "id": "green",
+          "label": "Green",
+          "answers": [
+            "Green"
+          ]
+        },
+        {
+          "id": "yellow",
+          "label": "Yellow",
+          "answers": [
+            "Yellow"
+          ]
+        },
+        {
+          "id": "black",
+          "label": "Black",
+          "answers": [
+            "Black"
+          ]
+        },
+        {
+          "id": "white",
+          "label": "White",
+          "answers": [
+            "White"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "purple",
+          "answers": [
+            "purple",
+            "violet"
+          ],
+          "items": [
+            "red",
+            "blue"
+          ],
+          "explanation": "Red and blue are the only two colors shown that mix to make purple paint.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "orange",
+          "answers": [
+            "orange"
+          ],
+          "items": [
+            "red",
+            "yellow"
+          ],
+          "explanation": "Red and yellow are the only two colors shown that mix to make orange paint.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "gray",
+          "answers": [
+            "gray",
+            "grey"
+          ],
+          "items": [
+            "black",
+            "white"
+          ],
+          "explanation": "Black and white are the only two colors shown that mix to make gray paint.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "basic-directions": {
+      "title": "Basic Directions",
+      "category_answers": [
+        "Basic Directions",
+        "Directions",
+        "Cardinal Directions",
+        "Direction Words"
+      ],
+      "tags": [
+        "directions",
+        "navigation",
+        "position"
+      ],
+      "items": [
+        {
+          "id": "north",
+          "label": "North",
+          "answers": [
+            "North",
+            "Northward"
+          ]
+        },
+        {
+          "id": "south",
+          "label": "South",
+          "answers": [
+            "South",
+            "Southward"
+          ]
+        },
+        {
+          "id": "east",
+          "label": "East",
+          "answers": [
+            "East",
+            "Eastward"
+          ]
+        },
+        {
+          "id": "west",
+          "label": "West",
+          "answers": [
+            "West",
+            "Westward"
+          ]
+        },
+        {
+          "id": "up",
+          "label": "Up",
+          "answers": [
+            "Up",
+            "Upward"
+          ]
+        },
+        {
+          "id": "down",
+          "label": "Down",
+          "answers": [
+            "Down",
+            "Downward"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "latitude",
+          "answers": [
+            "latitude"
+          ],
+          "items": [
+            "north",
+            "south"
+          ],
+          "explanation": "North and south are the only two directions shown that latitude measures toward the poles.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "longitude",
+          "answers": [
+            "longitude"
+          ],
+          "items": [
+            "east",
+            "west"
+          ],
+          "explanation": "East and west are the only two directions shown that longitude measures around the globe.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "gravity",
+          "answers": [
+            "gravity"
+          ],
+          "items": [
+            "up",
+            "down"
+          ],
+          "explanation": "Up and down are the only two directions shown defined directly in relation to gravity.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "basic-judgments": {
+      "title": "Basic Judgments",
+      "category_answers": [
+        "Basic Judgments",
+        "Judgment Words",
+        "Evaluation Words",
+        "Basic Evaluations"
+      ],
+      "tags": [
+        "descriptions",
+        "thinking",
+        "school"
+      ],
+      "items": [
+        {
+          "id": "same",
+          "label": "Same",
+          "answers": [
+            "Same",
+            "Identical"
+          ]
+        },
+        {
+          "id": "different",
+          "label": "Different",
+          "answers": [
+            "Different",
+            "Not Alike"
+          ]
+        },
+        {
+          "id": "true",
+          "label": "True",
+          "answers": [
+            "True"
+          ]
+        },
+        {
+          "id": "false",
+          "label": "False",
+          "answers": [
+            "False",
+            "Untrue"
+          ]
+        },
+        {
+          "id": "correct",
+          "label": "Correct",
+          "answers": [
+            "Correct",
+            "Right Answer"
+          ]
+        },
+        {
+          "id": "incorrect",
+          "label": "Incorrect",
+          "answers": [
+            "Incorrect",
+            "Wrong Answer"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "comparison",
+          "answers": [
+            "comparison",
+            "comparing"
+          ],
+          "items": [
+            "same",
+            "different"
+          ],
+          "explanation": "Same and different are the only two words shown that directly state the result of a comparison.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "truth",
+          "answers": [
+            "truth"
+          ],
+          "items": [
+            "true",
+            "false"
+          ],
+          "explanation": "True and false are the only two words shown that directly judge whether a statement matches the truth.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "accuracy",
+          "answers": [
+            "accuracy",
+            "accurate"
+          ],
+          "items": [
+            "correct",
+            "incorrect"
+          ],
+          "explanation": "Correct and incorrect are the only two words shown that directly judge the accuracy of an answer or action.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "common-health-problems": {
+      "title": "Common Health Problems",
+      "category_answers": [
+        "Common Health Problems",
+        "Health Problems",
+        "Common Ailments",
+        "Everyday Health Problems"
+      ],
+      "tags": [
+        "health",
+        "symptoms",
+        "daily-life"
+      ],
+      "items": [
+        {
+          "id": "toothache",
+          "label": "Toothache",
+          "answers": [
+            "Toothache",
+            "Tooth Pain"
+          ]
+        },
+        {
+          "id": "cavity",
+          "label": "Cavity",
+          "answers": [
+            "Cavity",
+            "Tooth Decay"
+          ]
+        },
+        {
+          "id": "stomachache",
+          "label": "Stomachache",
+          "answers": [
+            "Stomachache",
+            "Stomach Pain"
+          ]
+        },
+        {
+          "id": "nausea",
+          "label": "Nausea",
+          "answers": [
+            "Nausea",
+            "Queasiness"
+          ]
+        },
+        {
+          "id": "sore-throat",
+          "label": "Sore Throat",
+          "answers": [
+            "Sore Throat",
+            "Throat Pain"
+          ]
+        },
+        {
+          "id": "runny-nose",
+          "label": "Runny Nose",
+          "answers": [
+            "Runny Nose",
+            "Nasal Discharge"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "dental",
+          "answers": [
+            "dental"
+          ],
+          "items": [
+            "toothache",
+            "cavity"
+          ],
+          "explanation": "Toothache and cavity are the only two problems shown specifically affecting a tooth.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "digestive",
+          "answers": [
+            "digestive",
+            "digestion"
+          ],
+          "items": [
+            "stomachache",
+            "nausea"
+          ],
+          "explanation": "Stomachache and nausea are the only two problems shown specifically involving digestion and the stomach.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "respiratory",
+          "answers": [
+            "respiratory",
+            "breathing"
+          ],
+          "items": [
+            "sore-throat",
+            "runny-nose"
+          ],
+          "explanation": "Sore throat and runny nose are the only two problems shown specifically affecting the upper breathing passages.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "everyday-clothes": {
+      "title": "Everyday Clothes",
+      "category_answers": [
+        "Everyday Clothes",
+        "Clothes",
+        "Clothing",
+        "Common Clothes"
+      ],
+      "tags": [
+        "clothing",
+        "daily-life",
+        "personal"
+      ],
+      "items": [
+        {
+          "id": "shirt",
+          "label": "Shirt",
+          "answers": [
+            "Shirt",
+            "Button Shirt"
+          ]
+        },
+        {
+          "id": "sweater",
+          "label": "Sweater",
+          "answers": [
+            "Sweater",
+            "Jumper"
+          ]
+        },
+        {
+          "id": "skirt",
+          "label": "Skirt",
+          "answers": [
+            "Skirt"
+          ]
+        },
+        {
+          "id": "shorts",
+          "label": "Shorts",
+          "answers": [
+            "Shorts",
+            "Short Pants"
+          ]
+        },
+        {
+          "id": "socks",
+          "label": "Socks",
+          "answers": [
+            "Socks"
+          ]
+        },
+        {
+          "id": "sandals",
+          "label": "Sandals",
+          "answers": [
+            "Sandals"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "sleeves",
+          "answers": [
+            "sleeves",
+            "sleeved"
+          ],
+          "items": [
+            "shirt",
+            "sweater"
+          ],
+          "explanation": "The shirt and sweater are the only two garments shown whose defining form includes sleeves.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "waistbands",
+          "answers": [
+            "waistbands",
+            "waistband"
+          ],
+          "items": [
+            "skirt",
+            "shorts"
+          ],
+          "explanation": "The skirt and shorts are the only two garments shown worn from a visible waistband.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "feet",
+          "answers": [
+            "feet",
+            "footwear"
+          ],
+          "items": [
+            "socks",
+            "sandals"
+          ],
+          "explanation": "Socks and sandals are the only two items shown specifically worn on the feet.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "file-actions": {
+      "title": "File Actions",
+      "category_answers": [
+        "File Actions",
+        "Computer File Actions",
+        "Digital File Actions",
+        "File Commands"
+      ],
+      "tags": [
+        "digital",
+        "computers",
+        "actions"
+      ],
+      "items": [
+        {
+          "id": "copy",
+          "label": "Copy",
+          "answers": [
+            "Copy",
+            "Duplicate"
+          ]
+        },
+        {
+          "id": "paste",
+          "label": "Paste",
+          "answers": [
+            "Paste",
+            "Insert"
+          ]
+        },
+        {
+          "id": "save",
+          "label": "Save",
+          "answers": [
+            "Save",
+            "Store"
+          ]
+        },
+        {
+          "id": "delete",
+          "label": "Delete",
+          "answers": [
+            "Delete",
+            "Erase"
+          ]
+        },
+        {
+          "id": "upload",
+          "label": "Upload",
+          "answers": [
+            "Upload",
+            "Send File"
+          ]
+        },
+        {
+          "id": "download",
+          "label": "Download",
+          "answers": [
+            "Download",
+            "Get File"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "clipboard",
+          "answers": [
+            "clipboard"
+          ],
+          "items": [
+            "copy",
+            "paste"
+          ],
+          "explanation": "Copy and paste are the only two actions shown that directly use a digital clipboard.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "storage",
+          "answers": [
+            "storage"
+          ],
+          "items": [
+            "save",
+            "delete"
+          ],
+          "explanation": "Save and delete are the only two actions shown that directly keep or remove a file from storage.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "internet",
+          "answers": [
+            "internet",
+            "online"
+          ],
+          "items": [
+            "upload",
+            "download"
+          ],
+          "explanation": "Upload and download are the only two actions shown that move a file to or from an online service.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "household-problems": {
+      "title": "Household Problems",
+      "category_answers": [
+        "Household Problems",
+        "Home Problems",
+        "Problems at Home",
+        "House Problems"
+      ],
+      "tags": [
+        "home",
+        "problems",
+        "repairs"
+      ],
+      "items": [
+        {
+          "id": "leak",
+          "label": "Leak",
+          "answers": [
+            "Leak",
+            "Drip"
+          ]
+        },
+        {
+          "id": "clog",
+          "label": "Clog",
+          "answers": [
+            "Clog",
+            "Blockage"
+          ]
+        },
+        {
+          "id": "stain",
+          "label": "Stain",
+          "answers": [
+            "Stain",
+            "Mark"
+          ]
+        },
+        {
+          "id": "mold",
+          "label": "Mold",
+          "answers": [
+            "Mold",
+            "Mildew"
+          ]
+        },
+        {
+          "id": "crack",
+          "label": "Crack",
+          "answers": [
+            "Crack",
+            "Split"
+          ]
+        },
+        {
+          "id": "dent",
+          "label": "Dent",
+          "answers": [
+            "Dent",
+            "Ding"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "plumbing",
+          "answers": [
+            "plumbing",
+            "pipes"
+          ],
+          "items": [
+            "leak",
+            "clog"
+          ],
+          "explanation": "Leak and clog are the only two problems shown specifically occurring in household plumbing.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "patches",
+          "answers": [
+            "patches",
+            "patch"
+          ],
+          "items": [
+            "stain",
+            "mold"
+          ],
+          "explanation": "Stain and mold are the only two problems shown as spreading discolored patches on a surface.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "impact",
+          "answers": [
+            "impact"
+          ],
+          "items": [
+            "crack",
+            "dent"
+          ],
+          "explanation": "Crack and dent are the only two problems shown as structural damage commonly caused by impact.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "more-body-parts": {
+      "title": "More Body Parts",
+      "category_answers": [
+        "More Body Parts",
+        "Body Parts",
+        "Joints and Limbs",
+        "Human Body Parts"
+      ],
+      "tags": [
+        "body",
+        "health",
+        "basics"
+      ],
+      "items": [
+        {
+          "id": "hand",
+          "label": "Hand",
+          "answers": [
+            "Hand"
+          ]
+        },
+        {
+          "id": "foot",
+          "label": "Foot",
+          "answers": [
+            "Foot"
+          ]
+        },
+        {
+          "id": "elbow",
+          "label": "Elbow",
+          "answers": [
+            "Elbow"
+          ]
+        },
+        {
+          "id": "knee",
+          "label": "Knee",
+          "answers": [
+            "Knee"
+          ]
+        },
+        {
+          "id": "wrist",
+          "label": "Wrist",
+          "answers": [
+            "Wrist"
+          ]
+        },
+        {
+          "id": "ankle",
+          "label": "Ankle",
+          "answers": [
+            "Ankle"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "digits",
+          "answers": [
+            "digits"
+          ],
+          "items": [
+            "hand",
+            "foot"
+          ],
+          "explanation": "The hand and foot are the only two parts shown that end in five digits.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "hinges",
+          "answers": [
+            "hinges",
+            "hinge"
+          ],
+          "items": [
+            "elbow",
+            "knee"
+          ],
+          "explanation": "The elbow and knee are the only two joints shown that primarily bend like hinges.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "cuffs",
+          "answers": [
+            "cuffs",
+            "cuff"
+          ],
+          "items": [
+            "wrist",
+            "ankle"
+          ],
+          "explanation": "The wrist and ankle are the only two parts shown where clothing or support cuffs commonly sit.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "school-subjects": {
+      "title": "School Subjects",
+      "category_answers": [
+        "School Subjects",
+        "Subjects",
+        "Academic Subjects",
+        "Classes"
+      ],
+      "tags": [
+        "school",
+        "learning",
+        "education"
+      ],
+      "items": [
+        {
+          "id": "math",
+          "label": "Math",
+          "answers": [
+            "Math",
+            "Mathematics"
+          ]
+        },
+        {
+          "id": "statistics",
+          "label": "Statistics",
+          "answers": [
+            "Statistics",
+            "Stats"
+          ]
+        },
+        {
+          "id": "history",
+          "label": "History",
+          "answers": [
+            "History"
+          ]
+        },
+        {
+          "id": "geography",
+          "label": "Geography",
+          "answers": [
+            "Geography"
+          ]
+        },
+        {
+          "id": "biology",
+          "label": "Biology",
+          "answers": [
+            "Biology",
+            "Life Science"
+          ]
+        },
+        {
+          "id": "chemistry",
+          "label": "Chemistry",
+          "answers": [
+            "Chemistry"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "numbers",
+          "answers": [
+            "numbers",
+            "numerical"
+          ],
+          "items": [
+            "math",
+            "statistics"
+          ],
+          "explanation": "Math and statistics are the only two subjects shown whose central work is numerical calculation.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "humanities",
+          "answers": [
+            "humanities"
+          ],
+          "items": [
+            "history",
+            "geography"
+          ],
+          "explanation": "History and geography are the only two humanities subjects shown about human places and societies.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "laboratory",
+          "answers": [
+            "laboratory",
+            "lab"
+          ],
+          "items": [
+            "biology",
+            "chemistry"
+          ],
+          "explanation": "Biology and chemistry are the only two subjects shown through hands-on laboratory investigation.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "useful-rooms": {
+      "title": "Useful Rooms",
+      "category_answers": [
+        "Useful Rooms",
+        "Rooms",
+        "Rooms at Home",
+        "Home Rooms"
+      ],
+      "tags": [
+        "home",
+        "places",
+        "daily-life"
+      ],
+      "items": [
+        {
+          "id": "kitchen",
+          "label": "Kitchen",
+          "answers": [
+            "Kitchen",
+            "Cooking Area"
+          ]
+        },
+        {
+          "id": "dining-room",
+          "label": "Dining Room",
+          "answers": [
+            "Dining Room",
+            "Dining Area"
+          ]
+        },
+        {
+          "id": "bedroom",
+          "label": "Bedroom",
+          "answers": [
+            "Bedroom"
+          ]
+        },
+        {
+          "id": "nursery",
+          "label": "Nursery",
+          "answers": [
+            "Nursery",
+            "Baby Room"
+          ]
+        },
+        {
+          "id": "garage",
+          "label": "Garage",
+          "answers": [
+            "Garage"
+          ]
+        },
+        {
+          "id": "workshop",
+          "label": "Workshop",
+          "answers": [
+            "Workshop",
+            "Work Room"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "sleeping",
+          "answers": [
+            "sleeping",
+            "sleep"
+          ],
+          "items": [
+            "bedroom",
+            "nursery"
+          ],
+          "explanation": "The bedroom and nursery are the only two rooms shown primarily arranged for sleeping.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "meals",
+          "answers": [
+            "meals",
+            "dining"
+          ],
+          "items": [
+            "kitchen",
+            "dining-room"
+          ],
+          "explanation": "The kitchen and dining room are the only two rooms shown primarily used to prepare or eat meals.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "repairs",
+          "answers": [
+            "repairs",
+            "repairing"
+          ],
+          "items": [
+            "garage",
+            "workshop"
+          ],
+          "explanation": "The garage and workshop are the only two rooms shown with dedicated space for repair work.",
           "audit": "exclusive-among-six-v1"
         }
       ]
