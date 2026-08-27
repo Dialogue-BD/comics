@@ -519,6 +519,150 @@
       pointer-events: none;
     }
 
+    .item-listen-grid {
+      position: absolute;
+      z-index: 8;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .item-listen-button {
+      position: absolute;
+      width: 48%;
+      height: 24%;
+      padding: 0;
+      border: 2px dashed hsl(var(--accent) / .72);
+      border-radius: 13px;
+      color: #11141b;
+      background: hsl(var(--accent) / .08);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, .68) inset;
+      cursor: pointer;
+      pointer-events: auto;
+      touch-action: manipulation;
+      transition: background .18s ease, border-color .18s ease, transform .18s ease;
+    }
+
+    .item-listen-button:nth-child(1), .item-listen-button:nth-child(2) { top: 8%; }
+    .item-listen-button:nth-child(3), .item-listen-button:nth-child(4) { top: 32%; }
+    .item-listen-button:nth-child(5), .item-listen-button:nth-child(6) { top: 56%; }
+    .item-listen-button:nth-child(odd) { left: 1%; }
+    .item-listen-button:nth-child(even) { left: 51%; }
+
+    .item-listen-button span {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      color: #101218;
+      background: hsl(var(--accent));
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .24);
+      font-size: 1rem;
+    }
+
+    .item-listen-button:hover,
+    .item-listen-button:focus-visible,
+    .item-listen-button.is-speaking {
+      border-color: hsl(var(--accent));
+      outline: none;
+      background: hsl(var(--accent) / .2);
+      transform: scale(.985);
+    }
+
+    .deck.has-question-audio {
+      width: min(calc(100vw - 96px), calc((100dvh - 157px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px);
+      transform: translateX(-10px);
+    }
+
+    .question-listen-layer {
+      position: absolute;
+      z-index: 9;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .question-listen-button {
+      position: absolute;
+      right: -54px;
+      top: var(--question-y);
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid hsl(var(--accent) / .48);
+      border-radius: 50%;
+      color: #101218;
+      background: hsl(var(--accent));
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .34);
+      cursor: pointer;
+      pointer-events: auto;
+      touch-action: manipulation;
+      transform: translateY(-50%);
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+
+    .question-listen-button:hover,
+    .question-listen-button:focus-visible,
+    .question-listen-button.is-speaking {
+      outline: 3px solid rgba(255, 255, 255, .82);
+      outline-offset: 2px;
+      box-shadow: 0 8px 28px hsl(var(--accent) / .48);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .question-listen-button .speaker { font-size: 1rem; line-height: 1; }
+    .question-listen-button .number {
+      position: absolute;
+      right: -3px;
+      bottom: -3px;
+      display: grid;
+      place-items: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      color: #fff;
+      background: #171a22;
+      font-size: .58rem;
+      font-weight: 950;
+    }
+
+    .dual-question-tools {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      min-height: 36px;
+    }
+
+    .dual-question-tools button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      min-width: 42px;
+      min-height: 36px;
+      padding: 0 8px;
+      border: 1px solid hsl(var(--accent) / .38);
+      border-radius: 999px;
+      color: var(--ink);
+      background: hsl(var(--accent) / .13);
+      font-size: .7rem;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .dual-question-tools button:hover,
+    .dual-question-tools button:focus-visible,
+    .dual-question-tools button.is-speaking {
+      outline: none;
+      border-color: hsl(var(--accent));
+      background: hsl(var(--accent) / .28);
+    }
+
     .game-picker {
       position: fixed;
       z-index: 100;
@@ -617,7 +761,8 @@
     .game-end { width: 100%; margin-top: 9px; min-height: 42px; border: 0; color: var(--muted); background: transparent; font-size: .75rem; font-weight: 850; cursor: pointer; }
     .app.game-active .stage { right: 374px; }
     .app.game-active .footer { right: 374px; }
-    .app.game-active #view-toggle { display: none; }
+    .app.game-active #view-toggle,
+    .app.game-active #hint-button { display: none; }
 
     .audio-match-board {
       position: fixed;
@@ -640,7 +785,8 @@
     .audio-match-board[hidden] { display: none; }
     .app.audio-match-active .stage,
     .app.audio-match-active .footer,
-    .app.audio-match-active #view-toggle { display: none; }
+    .app.audio-match-active #view-toggle,
+    .app.audio-match-active #hint-button { display: none; }
     .audio-match-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .audio-match-title-wrap span { display: block; color: hsl(var(--accent)); font-size: .68rem; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
     .audio-match-title-wrap h2 { margin: 3px 0 0; font-size: clamp(1.55rem, 4vw, 2.5rem); line-height: 1; letter-spacing: -.04em; }
@@ -784,7 +930,7 @@
       display: block;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       pointer-events: none;
       -webkit-user-drag: none;
     }
@@ -853,6 +999,10 @@
 
       .deck {
         width: min(calc(100vw - 32px), calc((100dvh - 182px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px);
+      }
+
+      .deck.has-question-audio {
+        width: min(calc(100vw - 96px), calc((100dvh - 182px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px);
       }
 
       .footer {
@@ -1245,6 +1395,10 @@
           <span class="icon">🎯</span>
           <span class="text">Games</span>
         </button>
+        <button class="view-toggle" id="hint-button" type="button" aria-label="Turn on listening hints" aria-pressed="false" title="Listening hints (H)">
+          <span class="icon" aria-hidden="true">?</span>
+          <span class="text">Hint</span>
+        </button>
         <button class="view-toggle" id="view-toggle" type="button" aria-label="Toggle Side-by-Side View" title="Toggle Side-by-Side View (S)">
           <span class="icon">👥</span>
           <span class="text">Side by Side</span>
@@ -1270,10 +1424,19 @@
               <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
               <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
             </span>
+            <span class="item-listen-grid" id="item-listen-grid" hidden aria-label="Listening hints">
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+            </span>
           </span>
           <span class="face back"><img id="back-image" alt="" draggable="false"></span>
           <span class="shine" aria-hidden="true"></span>
         </div>
+        <div class="question-listen-layer" id="question-listen-layer" hidden aria-label="Listen to a discussion question"></div>
       </div>
 
       <!-- 2. Dual Side-by-Side Presentation View -->
@@ -1282,10 +1445,19 @@
           <div class="dual-label-pill"><span class="badge-dot"></span> 🖼️ Picture Side</div>
           <div class="dual-card">
             <img id="dual-front-image" alt="Picture side of card" draggable="false">
+            <span class="item-listen-grid" id="dual-item-listen-grid" hidden aria-label="Listening hints">
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+            </span>
           </div>
         </div>
         <div class="dual-card-wrap">
           <div class="dual-label-pill"><span class="badge-dot question"></span> 💬 Questions Side</div>
+          <div class="dual-question-tools" id="dual-question-tools" aria-label="Listen to a discussion question"></div>
           <div class="dual-card">
             <img id="dual-back-image" alt="Question side of card" draggable="false">
           </div>
@@ -1445,6 +1617,7 @@
     const pictureThisDataRevision = Date.now();
     document.write(`<script src="game-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="link-data.js?v=${pictureThisDataRevision}"><\/script>`);
+    document.write(`<script src="question-data.js?v=${pictureThisDataRevision}"><\/script>`);
   </script>
   <script>
     // Mirrors cards.json so the activity also works when opened directly from file://.
@@ -2406,7 +2579,15 @@
     const gameData = window.PICTURE_THIS_GAME_DATA || {};
     const gameMeta = window.PICTURE_THIS_GAME_META?.cards || {};
     const curatedLinkData = window.PICTURE_THIS_LINK_DATA || {};
+    const questionData = window.PICTURE_THIS_QUESTION_DATA || {};
     const gameMenuButton = document.querySelector("#game-menu-button");
+    const hintButton = document.querySelector("#hint-button");
+    const itemListenGrid = document.querySelector("#item-listen-grid");
+    const itemListenButtons = [...itemListenGrid.querySelectorAll(".item-listen-button")];
+    const dualItemListenGrid = document.querySelector("#dual-item-listen-grid");
+    const dualItemListenButtons = [...dualItemListenGrid.querySelectorAll(".item-listen-button")];
+    const questionListenLayer = document.querySelector("#question-listen-layer");
+    const dualQuestionTools = document.querySelector("#dual-question-tools");
     const gamePicker = document.querySelector("#game-picker");
     const gamePickerClose = document.querySelector("#game-picker-close");
     const gamePanel = document.querySelector("#game-panel");
@@ -2473,6 +2654,8 @@
     let selectedPictureTile = null;
     let audioMatchPairsFound = 0;
     let audioMatchLocked = false;
+    let listeningHintsActive = false;
+    let speakingControl = null;
     let cardIndex = 0;
     let angle = 0;
     let startAngle = 0;
@@ -2641,19 +2824,41 @@
       audioMatchPairs.textContent = `${audioMatchPairsFound}/6`;
     }
 
-    function speakAudioMatchWord(label) {
+    function stopSpeech() {
+      window.speechSynthesis?.cancel();
+      speakingControl?.classList.remove("is-speaking");
+      speakingControl = null;
+    }
+
+    function speakText(text, control = null, announcement = "Audio played.") {
       if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-        setAudioMatchFeedback("Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.", "wrong");
+        status.textContent = "Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.";
         return false;
       }
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(label);
+      stopSpeech();
+      const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "en-US";
       utterance.rate = .86;
       utterance.pitch = 1;
+      if (control) {
+        speakingControl = control;
+        control.classList.add("is-speaking");
+      }
+      const clearSpeakingControl = () => {
+        control?.classList.remove("is-speaking");
+        if (speakingControl === control) speakingControl = null;
+      };
+      utterance.onend = clearSpeakingControl;
+      utterance.onerror = clearSpeakingControl;
       window.speechSynthesis.speak(utterance);
-      status.textContent = "Audio vocabulary label played.";
+      status.textContent = announcement;
       return true;
+    }
+
+    function speakAudioMatchWord(label) {
+      const played = speakText(label, null, "Audio vocabulary label played.");
+      if (!played) setAudioMatchFeedback("Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.", "wrong");
+      return played;
     }
 
     function audioMatchCropPosition(itemIndex) {
@@ -2842,6 +3047,89 @@
       return Math.abs(Math.round(angle / 180)) % 2 === 1;
     }
 
+    function currentQuestionRecord() {
+      const record = questionData[cards[cardIndex]?.id];
+      return record && Array.isArray(record.questions) && record.questions.length === 6 ? record : null;
+    }
+
+    function updateListeningHintButtons() {
+      const labels = gameData[cards[cardIndex]?.id] || [];
+      [itemListenButtons, dualItemListenButtons].forEach(buttons => {
+        buttons.forEach((button, index) => {
+          const label = labels[index] || "";
+          button.dataset.label = label;
+          button.disabled = !label;
+          button.setAttribute("aria-label", label ? `Hear ${label}` : "Vocabulary label unavailable");
+          button.setAttribute("title", label ? `Hear “${label}”` : "Vocabulary label unavailable");
+        });
+      });
+      hintButton.disabled = labels.length !== 6;
+    }
+
+    function makeQuestionListenButton(question, index, position = null, compact = false) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = compact ? "" : "question-listen-button";
+      button.setAttribute("aria-label", `Listen to question ${index + 1}: ${question}`);
+      button.setAttribute("title", `Listen to question ${index + 1}`);
+      if (position !== null) button.style.setProperty("--question-y", `${position}%`);
+      button.innerHTML = compact
+        ? `<span aria-hidden="true">🔊</span><span>${index + 1}</span>`
+        : `<span class="speaker" aria-hidden="true">🔊</span><span class="number" aria-hidden="true">${index + 1}</span>`;
+      button.addEventListener("pointerdown", event => event.stopPropagation());
+      button.addEventListener("click", event => {
+        event.stopPropagation();
+        speakText(question, button, `Question ${index + 1} played.`);
+      });
+      return button;
+    }
+
+    function renderQuestionControls() {
+      const record = currentQuestionRecord();
+      questionListenLayer.replaceChildren();
+      dualQuestionTools.replaceChildren();
+      if (!record) return;
+      record.questions.forEach((question, index) => {
+        const position = Array.isArray(record.positions) && Number.isFinite(record.positions[index])
+          ? record.positions[index]
+          : 15 + index * 13;
+        questionListenLayer.append(makeQuestionListenButton(question, index, position, false));
+        dualQuestionTools.append(makeQuestionListenButton(question, index, null, true));
+      });
+    }
+
+    function syncListeningSurfaces() {
+      const browsing = gameMode === "browse";
+      const questionSide = browsing && !isDualView && isQuestionSide();
+      const hasQuestions = Boolean(currentQuestionRecord());
+      itemListenGrid.hidden = !(browsing && listeningHintsActive && !isDualView && !questionSide);
+      dualItemListenGrid.hidden = !(browsing && listeningHintsActive && isDualView);
+      questionListenLayer.hidden = !(questionSide && hasQuestions);
+      dualQuestionTools.hidden = !(browsing && isDualView && hasQuestions);
+      deck.classList.toggle("has-question-audio", questionSide && hasQuestions);
+      hintButton.classList.toggle("active", listeningHintsActive);
+      hintButton.setAttribute("aria-pressed", String(listeningHintsActive));
+      hintButton.setAttribute("aria-label", listeningHintsActive ? "Turn off listening hints" : "Turn on listening hints");
+    }
+
+    function setListeningHintsActive(active) {
+      if (gameMode !== "browse") active = false;
+      listeningHintsActive = active;
+      stopSpeech();
+      if (active && !isDualView && isQuestionSide()) {
+        flip(1);
+        return;
+      }
+      syncListeningSurfaces();
+      status.textContent = active
+        ? "Listening hints on. Select any picture to hear its vocabulary label."
+        : "Listening hints off.";
+    }
+
+    function toggleListeningHints() {
+      setListeningHintsActive(!listeningHintsActive);
+    }
+
     function updateSideUI(announce = true) {
       if (gameMode !== "browse") {
         const current = cards[cardIndex];
@@ -2857,6 +3145,7 @@
           const pair = linkPuzzle?.items?.map(index => labels[index]).filter(Boolean).join(" and ") || "the highlighted pair";
           card.setAttribute("aria-label", `${current.title}. Type one word that links ${pair}.`);
         }
+        syncListeningSurfaces();
         if (announce) status.textContent = `New ${gameModeName().toLocaleLowerCase()} card: ${current.title}.`;
         return;
       }
@@ -2866,6 +3155,7 @@
       card.setAttribute("aria-label", questionSide
         ? `${current.title}. Question side. Flip to the picture side.`
         : `${current.title}. Picture side. Flip to the question side.`);
+      syncListeningSurfaces();
       if (announce) status.textContent = `${current.title}: ${questionSide ? "question side" : "picture side"}.`;
     }
 
@@ -2973,6 +3263,7 @@
     }
 
     function showCard(index, announce = true) {
+      stopSpeech();
       cardIndex = index;
       angle = 0;
       startAngle = 0;
@@ -2987,6 +3278,9 @@
       dualFrontImage.alt = `${current.title} picture card`;
       dualBackImage.src = current.back;
       dualBackImage.alt = `${current.title} discussion questions`;
+
+      updateListeningHintButtons();
+      renderQuestionControls();
 
       cardCount.textContent = `Card ${index + 1} of ${cards.length}`;
       app.style.setProperty("--accent", `${(188 + index * 17) % 360} 84% 64%`);
@@ -3725,7 +4019,8 @@
 
     function startGame(mode) {
       if (isDualView) setDualView(false);
-      window.speechSynthesis?.cancel();
+      setListeningHintsActive(false);
+      stopSpeech();
       gameMode = mode;
       sidePill.textContent = gameModeName();
       gamePoints = 0;
@@ -3750,7 +4045,7 @@
     }
 
     function endGame() {
-      window.speechSynthesis?.cancel();
+      stopSpeech();
       gameMode = "browse";
       layoutGameControls();
       gamePanel.hidden = true;
@@ -4000,6 +4295,7 @@
     stage.addEventListener("pointercancel", cancelDrag);
     
     viewToggleButton.addEventListener("click", toggleDualView);
+    hintButton.addEventListener("click", toggleListeningHints);
     gameMenuButton.addEventListener("click", openGamePicker);
     gamePickerClose.addEventListener("click", closeGamePicker);
     gamePicker.addEventListener("click", event => {
@@ -4028,6 +4324,16 @@
         handleLinkCellSelection(index);
       });
     });
+    [itemListenButtons, dualItemListenButtons].forEach(buttons => {
+      buttons.forEach(button => {
+        button.addEventListener("pointerdown", event => event.stopPropagation());
+        button.addEventListener("click", event => {
+          event.stopPropagation();
+          const label = button.dataset.label;
+          if (label) speakText(label, button, `${label} played.`);
+        });
+      });
+    });
     revealGameAnswerButton.addEventListener("click", revealGameAnswer);
     newGameCardButton.addEventListener("click", newGameRound);
     endGameButton.addEventListener("click", endGame);
@@ -4043,14 +4349,16 @@
         closeGamePicker();
         return;
       }
-      if (event.target.matches("input, textarea, select") || gamePicker.hidden === false) return;
+      if (event.target.matches("input, textarea, select, button") || gamePicker.hidden === false) return;
       if (gameMode !== "browse") {
         if (event.key.toLowerCase() === "n") newGameRound();
         else if (event.key.toLowerCase() === "f") toggleFullscreen();
         else if (event.key === "Escape") endGame();
         return;
       }
-      if (event.key === "s" || event.key === "S") {
+      if (event.key === "h" || event.key === "H") {
+        toggleListeningHints();
+      } else if (event.key === "s" || event.key === "S") {
         toggleDualView();
       } else if (event.key === "ArrowLeft" || event.key === "p" || event.key === "P") {
         if (isDualView) prevCard();

@@ -11,6 +11,7 @@
   "cards_file": "cards.json",
   "game_data_file": "game-data.js",
   "link_data_file": "link-data.js",
+  "question_data_file": "question-data.js",
   "classroom_modes": [
     "browse",
     "guess-category",
