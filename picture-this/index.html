@@ -340,8 +340,8 @@
       font-weight: 760;
       gap: 6px;
       background: var(--glass);
-      border: 1px solid var(--border);
-      color: var(--ink);
+      border: 1px solid hsl(var(--accent) / .42);
+      color: hsl(var(--accent));
       border-radius: 999px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
       cursor: pointer;
@@ -353,7 +353,7 @@
     }
 
     .view-toggle:hover {
-      background: rgba(45, 52, 68, .9);
+      background: hsl(var(--accent) / .2);
       border-color: hsl(var(--accent));
       color: #ffffff;
       transform: translateY(-1px);
@@ -638,8 +638,8 @@
     .game-picker-card h2 { margin: 0; font-size: clamp(2rem, 7vw, 4.4rem); line-height: .95; letter-spacing: -.055em; }
     .game-picker-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 13px; color: var(--muted); background: rgba(255,255,255,.05); font-size: 1.3rem; cursor: pointer; }
     .game-options { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
-    .game-option { min-height: 154px; padding: 20px; border: 1px solid var(--border); border-radius: 19px; color: var(--ink); background: rgba(255,255,255,.045); text-align: left; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
-    .game-option:hover { transform: translateY(-2px); border-color: hsl(var(--accent) / .65); background: hsl(var(--accent) / .1); }
+    .game-option { min-height: 154px; padding: 20px; border: 1px solid hsl(var(--accent) / .28); border-radius: 19px; color: var(--ink); background: hsl(var(--accent) / .045); text-align: left; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .game-option:hover { transform: translateY(-2px); border-color: hsl(var(--accent) / .75); background: hsl(var(--accent) / .14); }
     .game-option-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 15px; border-radius: 13px 13px 13px 4px; color: #11141b; background: hsl(var(--accent)); font-size: 1.2rem; font-weight: 950; line-height: 1; }
     .game-option strong { display: block; }
     .game-option strong { margin-bottom: 7px; font-size: 1.12rem; }
@@ -3266,10 +3266,10 @@
     }
 
     function setAccentFromCardGradient(image) {
-      const source = image.currentSrc || image.src;
+      const source = image.src;
 
       function applyAccent() {
-        if ((image.currentSrc || image.src) !== source || !image.naturalWidth || !image.naturalHeight) return;
+        if (image.src !== source || !image.naturalWidth || !image.naturalHeight) return;
 
         try {
           const swatch = document.createElement("canvas");
