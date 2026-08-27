@@ -3243,6 +3243,69 @@
       setDualView(!isDualView);
     }
 
+    function rgbToHsl(red, green, blue) {
+      const r = red / 255;
+      const g = green / 255;
+      const b = blue / 255;
+      const maximum = Math.max(r, g, b);
+      const minimum = Math.min(r, g, b);
+      const delta = maximum - minimum;
+      const lightness = (maximum + minimum) / 2;
+      let hue = 0;
+
+      if (delta) {
+        if (maximum === r) hue = ((g - b) / delta) % 6;
+        else if (maximum === g) hue = (b - r) / delta + 2;
+        else hue = (r - g) / delta + 4;
+        hue *= 60;
+        if (hue < 0) hue += 360;
+      }
+
+      const saturation = delta ? delta / (1 - Math.abs(2 * lightness - 1)) : 0;
+      return { hue, saturation, lightness };
+    }
+
+    function setAccentFromCardGradient(image) {
+      const source = image.currentSrc || image.src;
+
+      function applyAccent() {
+        if ((image.currentSrc || image.src) !== source || !image.naturalWidth || !image.naturalHeight) return;
+
+        try {
+          const swatch = document.createElement("canvas");
+          swatch.width = 1;
+          swatch.height = 1;
+          const context = swatch.getContext("2d", { willReadFrequently: true });
+          const sampleTop = Math.round(image.naturalHeight * .96);
+          const sampleHeight = Math.max(1, Math.round(image.naturalHeight * .035));
+          context.drawImage(
+            image,
+            0,
+            sampleTop,
+            image.naturalWidth,
+            sampleHeight,
+            0,
+            0,
+            1,
+            1
+          );
+
+          const [red, green, blue] = context.getImageData(0, 0, 1, 1).data;
+          const { hue, saturation } = rgbToHsl(red, green, blue);
+          if (saturation < .06) return;
+
+          const roundedHue = Math.round(hue);
+          app.style.setProperty("--accent", `${roundedHue} 84% 64%`);
+          app.style.setProperty("--accent-shifted", `${(roundedHue + 22) % 360} 74% 60%`);
+        } catch (_) {
+          // If an image cannot be sampled, retain the current accessible accent.
+        }
+      }
+
+      if (image.complete) applyAccent();
+      else image.addEventListener("load", applyAccent, { once: true });
+    }
+
     function showCard(index, announce = true) {
       stopSpeech();
       cardIndex = index;
@@ -3264,8 +3327,7 @@
       renderQuestionControls();
 
       cardCount.textContent = `Card ${index + 1} of ${cards.length}`;
-      app.style.setProperty("--accent", `${(188 + index * 17) % 360} 84% 64%`);
-      app.style.setProperty("--accent-shifted", `${(260 + index * 17) % 360} 80% 64%`);
+      setAccentFromCardGradient(frontImage);
       applyTransform(0, 0);
       if (gameMode !== "browse") resetGameRound();
       updateSideUI(false);
