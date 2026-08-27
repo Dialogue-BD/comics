@@ -572,96 +572,44 @@
       transform: scale(.985);
     }
 
-    .deck.has-question-audio {
-      width: min(calc(100vw - 96px), calc((100dvh - 157px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px);
-      transform: translateX(-10px);
-    }
-
     .question-listen-layer {
       position: absolute;
       z-index: 9;
       inset: 0;
-      pointer-events: none;
+      pointer-events: auto;
     }
 
     .question-listen-button {
       position: absolute;
-      right: -54px;
+      left: var(--question-x);
       top: var(--question-y);
       display: grid;
       place-items: center;
-      width: 44px;
-      height: 44px;
+      width: 30px;
+      height: 28px;
       padding: 0;
-      border: 1px solid hsl(var(--accent) / .48);
-      border-radius: 50%;
-      color: #101218;
-      background: hsl(var(--accent));
-      box-shadow: 0 8px 24px rgba(0, 0, 0, .34);
+      border: 0;
+      border-radius: 4px;
+      color: #242122;
+      background: transparent;
       cursor: pointer;
       pointer-events: auto;
       touch-action: manipulation;
       transform: translateY(-50%);
-      transition: transform .16s ease, box-shadow .16s ease;
+      transition: color .14s ease, background .14s ease, transform .14s ease;
     }
 
     .question-listen-button:hover,
     .question-listen-button:focus-visible,
     .question-listen-button.is-speaking {
-      outline: 3px solid rgba(255, 255, 255, .82);
-      outline-offset: 2px;
-      box-shadow: 0 8px 28px hsl(var(--accent) / .48);
-      transform: translateY(-50%) scale(1.08);
+      color: #8a5600;
+      outline: 2px solid rgba(138, 86, 0, .62);
+      outline-offset: 1px;
+      background: rgba(251, 191, 36, .22);
+      transform: translateY(-50%) scale(1.04);
     }
 
-    .question-listen-button .speaker { font-size: 1rem; line-height: 1; }
-    .question-listen-button .number {
-      position: absolute;
-      right: -3px;
-      bottom: -3px;
-      display: grid;
-      place-items: center;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      color: #fff;
-      background: #171a22;
-      font-size: .58rem;
-      font-weight: 950;
-    }
-
-    .dual-question-tools {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 6px;
-      min-height: 36px;
-    }
-
-    .dual-question-tools button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      min-width: 42px;
-      min-height: 36px;
-      padding: 0 8px;
-      border: 1px solid hsl(var(--accent) / .38);
-      border-radius: 999px;
-      color: var(--ink);
-      background: hsl(var(--accent) / .13);
-      font-size: .7rem;
-      font-weight: 900;
-      cursor: pointer;
-    }
-
-    .dual-question-tools button:hover,
-    .dual-question-tools button:focus-visible,
-    .dual-question-tools button.is-speaking {
-      outline: none;
-      border-color: hsl(var(--accent));
-      background: hsl(var(--accent) / .28);
-    }
+    .question-listen-button .speaker-glyph { width: 18px; height: 18px; }
 
     .game-picker {
       position: fixed;
@@ -999,10 +947,6 @@
 
       .deck {
         width: min(calc(100vw - 32px), calc((100dvh - 182px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px);
-      }
-
-      .deck.has-question-audio {
-        width: min(calc(100vw - 96px), calc((100dvh - 182px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px);
       }
 
       .footer {
@@ -1457,9 +1401,9 @@
         </div>
         <div class="dual-card-wrap">
           <div class="dual-label-pill"><span class="badge-dot question"></span> 💬 Questions Side</div>
-          <div class="dual-question-tools" id="dual-question-tools" aria-label="Listen to a discussion question"></div>
           <div class="dual-card">
             <img id="dual-back-image" alt="Question side of card" draggable="false">
+            <div class="question-listen-layer" id="dual-question-listen-layer" hidden aria-label="Listen to a discussion question"></div>
           </div>
         </div>
       </div>
@@ -2587,7 +2531,7 @@
     const dualItemListenGrid = document.querySelector("#dual-item-listen-grid");
     const dualItemListenButtons = [...dualItemListenGrid.querySelectorAll(".item-listen-button")];
     const questionListenLayer = document.querySelector("#question-listen-layer");
-    const dualQuestionTools = document.querySelector("#dual-question-tools");
+    const dualQuestionListenLayer = document.querySelector("#dual-question-listen-layer");
     const gamePicker = document.querySelector("#game-picker");
     const gamePickerClose = document.querySelector("#game-picker-close");
     const gamePanel = document.querySelector("#game-panel");
@@ -2664,6 +2608,7 @@
     let lastX = 0;
     let startTime = 0;
     let dragging = false;
+    let pendingQuestionControl = null;
 
     function secureRandomIndex(max) {
       if (window.crypto && window.crypto.getRandomValues) {
@@ -3066,17 +3011,20 @@
       hintButton.disabled = labels.length !== 6;
     }
 
-    function makeQuestionListenButton(question, index, position = null, compact = false) {
+    function makeQuestionListenButton(question, index, endpoint) {
       const button = document.createElement("button");
       button.type = "button";
-      button.className = compact ? "" : "question-listen-button";
+      button.className = "question-listen-button";
       button.setAttribute("aria-label", `Listen to question ${index + 1}: ${question}`);
       button.setAttribute("title", `Listen to question ${index + 1}`);
-      if (position !== null) button.style.setProperty("--question-y", `${position}%`);
-      button.innerHTML = compact
-        ? `<span aria-hidden="true">🔊</span><span>${index + 1}</span>`
-        : `<span class="speaker" aria-hidden="true">🔊</span><span class="number" aria-hidden="true">${index + 1}</span>`;
+      button.style.setProperty("--question-x", `${endpoint.x}%`);
+      button.style.setProperty("--question-y", `${endpoint.y}%`);
+      button.innerHTML = `<svg class="speaker-glyph" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 10v4h4l5 4V6l-5 4H4Z" fill="currentColor"></path>
+        <path d="M16 9c1 .8 1.5 1.8 1.5 3S17 14.2 16 15m2.6-8c1.7 1.4 2.6 3 2.6 5s-.9 3.6-2.6 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+      </svg>`;
       button.addEventListener("pointerdown", event => event.stopPropagation());
+      button.addEventListener("pointerup", event => event.stopPropagation());
       button.addEventListener("click", event => {
         event.stopPropagation();
         speakText(question, button, `Question ${index + 1} played.`);
@@ -3087,14 +3035,18 @@
     function renderQuestionControls() {
       const record = currentQuestionRecord();
       questionListenLayer.replaceChildren();
-      dualQuestionTools.replaceChildren();
+      dualQuestionListenLayer.replaceChildren();
       if (!record) return;
       record.questions.forEach((question, index) => {
+        const endpoint = record.endpoints?.[index];
         const position = Array.isArray(record.positions) && Number.isFinite(record.positions[index])
           ? record.positions[index]
           : 15 + index * 13;
-        questionListenLayer.append(makeQuestionListenButton(question, index, position, false));
-        dualQuestionTools.append(makeQuestionListenButton(question, index, null, true));
+        const placement = Number.isFinite(endpoint?.x) && Number.isFinite(endpoint?.y)
+          ? endpoint
+          : { x: 89, y: position };
+        questionListenLayer.append(makeQuestionListenButton(question, index, placement));
+        dualQuestionListenLayer.append(makeQuestionListenButton(question, index, placement));
       });
     }
 
@@ -3105,8 +3057,7 @@
       itemListenGrid.hidden = !(browsing && listeningHintsActive && !isDualView && !questionSide);
       dualItemListenGrid.hidden = !(browsing && listeningHintsActive && isDualView);
       questionListenLayer.hidden = !(questionSide && hasQuestions);
-      dualQuestionTools.hidden = !(browsing && isDualView && hasQuestions);
-      deck.classList.toggle("has-question-audio", questionSide && hasQuestions);
+      dualQuestionListenLayer.hidden = !(browsing && isDualView && hasQuestions);
       hintButton.classList.toggle("active", listeningHintsActive);
       hintButton.setAttribute("aria-pressed", String(listeningHintsActive));
       hintButton.setAttribute("aria-label", listeningHintsActive ? "Turn off listening hints" : "Turn on listening hints");
@@ -3185,14 +3136,32 @@
 
     function cancelDrag() {
       dragging = false;
+      pendingQuestionControl = null;
       card.classList.remove("is-dragging");
       stage.classList.remove("is-dragging");
       applyTransform(startAngle, 0);
       angle = startAngle;
     }
 
+    function questionControlFromPoint(clientX, clientY) {
+      const layers = [questionListenLayer, dualQuestionListenLayer];
+      for (const layer of layers) {
+        if (layer.hidden) continue;
+        for (const button of layer.querySelectorAll(".question-listen-button")) {
+          const bounds = button.getBoundingClientRect();
+          if (clientX >= bounds.left && clientX <= bounds.right && clientY >= bounds.top && clientY <= bounds.bottom) {
+            return button;
+          }
+        }
+      }
+      return null;
+    }
+
     function onPointerDown(event) {
       if (isDualView || gameMode !== "browse") return;
+      if (event.target.closest?.(".question-listen-button, .item-listen-button")) return;
+      pendingQuestionControl = questionControlFromPoint(event.clientX, event.clientY);
+      if (pendingQuestionControl) return;
       if (event.button !== undefined && event.button !== 0) return;
       dragging = true;
       startX = lastX = event.clientX;
@@ -3213,6 +3182,18 @@
     }
 
     function onPointerUp(event) {
+      if (pendingQuestionControl) {
+        const control = pendingQuestionControl;
+        pendingQuestionControl = null;
+        control.click();
+        return;
+      }
+      if (event.target.closest?.(".question-listen-button, .item-listen-button")) {
+        dragging = false;
+        card.classList.remove("is-dragging");
+        stage.classList.remove("is-dragging");
+        return;
+      }
       if (!dragging || isDualView) return;
       dragging = false;
       const dx = event.clientX - startX;
@@ -4293,6 +4274,10 @@
     stage.addEventListener("pointermove", onPointerMove);
     stage.addEventListener("pointerup", onPointerUp);
     stage.addEventListener("pointercancel", cancelDrag);
+    stage.addEventListener("click", event => {
+      if (!isDualView || event.target.closest?.(".question-listen-button")) return;
+      questionControlFromPoint(event.clientX, event.clientY)?.click();
+    });
     
     viewToggleButton.addEventListener("click", toggleDualView);
     hintButton.addEventListener("click", toggleListeningHints);
