@@ -30,7 +30,7 @@
       "audio-match"
     ]
   },
-  "card_count": 155,
+  "card_count": 165,
   "pages": [
     {
       "id": "page_001",
@@ -1891,6 +1891,126 @@
       "image": "pages/page_322.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_323",
+      "image": "pages/page_323.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_324",
+      "image": "pages/page_324.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_325",
+      "image": "pages/page_325.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_326",
+      "image": "pages/page_326.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_327",
+      "image": "pages/page_327.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_328",
+      "image": "pages/page_328.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_329",
+      "image": "pages/page_329.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_330",
+      "image": "pages/page_330.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_331",
+      "image": "pages/page_331.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_332",
+      "image": "pages/page_332.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_333",
+      "image": "pages/page_333.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_334",
+      "image": "pages/page_334.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_335",
+      "image": "pages/page_335.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_336",
+      "image": "pages/page_336.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_337",
+      "image": "pages/page_337.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_338",
+      "image": "pages/page_338.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_339",
+      "image": "pages/page_339.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_340",
+      "image": "pages/page_340.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_341",
+      "image": "pages/page_341.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_342",
+      "image": "pages/page_342.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -2822,6 +2942,106 @@
         "home",
         "places",
         "daily-life"
+      ]
+    },
+    {
+      "id": "animal-actions",
+      "title": "Animal Actions",
+      "band_color": "red",
+      "game_tags": [
+        "animals",
+        "actions",
+        "sounds"
+      ]
+    },
+    {
+      "id": "body-motions",
+      "title": "Body Motions",
+      "band_color": "blue",
+      "game_tags": [
+        "body",
+        "movement",
+        "actions"
+      ]
+    },
+    {
+      "id": "everyday-character",
+      "title": "Everyday Character",
+      "band_color": "red",
+      "game_tags": [
+        "character",
+        "personality",
+        "behavior"
+      ]
+    },
+    {
+      "id": "facial-reactions",
+      "title": "Facial Reactions",
+      "band_color": "orange",
+      "game_tags": [
+        "reactions",
+        "faces",
+        "communication"
+      ]
+    },
+    {
+      "id": "inner-feelings",
+      "title": "Inner Feelings",
+      "band_color": "red",
+      "game_tags": [
+        "feelings",
+        "emotions",
+        "reactions"
+      ]
+    },
+    {
+      "id": "joining-and-separating",
+      "title": "Joining and Separating",
+      "band_color": "red",
+      "game_tags": [
+        "actions",
+        "connections",
+        "groups"
+      ]
+    },
+    {
+      "id": "learning-actions",
+      "title": "Learning Actions",
+      "band_color": "red",
+      "game_tags": [
+        "learning",
+        "school",
+        "actions"
+      ]
+    },
+    {
+      "id": "money-actions",
+      "title": "Money Actions",
+      "band_color": "red",
+      "game_tags": [
+        "money",
+        "shopping",
+        "actions"
+      ]
+    },
+    {
+      "id": "more-common-descriptions",
+      "title": "More Common Descriptions",
+      "band_color": "green",
+      "game_tags": [
+        "descriptions",
+        "adjectives",
+        "appearance"
+      ]
+    },
+    {
+      "id": "thoughts-and-beliefs",
+      "title": "Thoughts and Beliefs",
+      "band_color": "orange",
+      "game_tags": [
+        "thinking",
+        "beliefs",
+        "feelings"
       ]
     }
   ],

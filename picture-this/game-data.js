@@ -1239,6 +1239,86 @@ window.PICTURE_THIS_GAME_DATA = {
     "Nursery",
     "Garage",
     "Workshop"
+  ],
+  "animal-actions": [
+    "Bark",
+    "Fetch",
+    "Meow",
+    "Purr",
+    "Quack",
+    "Waddle"
+  ],
+  "body-motions": [
+    "Breathe",
+    "Hold Breath",
+    "Stretch",
+    "Bend",
+    "Point",
+    "Wave"
+  ],
+  "everyday-character": [
+    "Friendly",
+    "Unfriendly",
+    "Generous",
+    "Selfish",
+    "Responsible",
+    "Lazy"
+  ],
+  "facial-reactions": [
+    "Smile",
+    "Frown",
+    "Yawn",
+    "Sigh",
+    "Cheer",
+    "Boo"
+  ],
+  "inner-feelings": [
+    "Proud",
+    "Ashamed",
+    "Excited",
+    "Bored",
+    "Calm",
+    "Nervous"
+  ],
+  "joining-and-separating": [
+    "Attach",
+    "Detach",
+    "Combine",
+    "Separate",
+    "Include",
+    "Exclude"
+  ],
+  "learning-actions": [
+    "Learn",
+    "Teach",
+    "Study",
+    "Practice",
+    "Pass",
+    "Fail"
+  ],
+  "money-actions": [
+    "Buy",
+    "Sell",
+    "Pay",
+    "Owe",
+    "Earn",
+    "Spend"
+  ],
+  "more-common-descriptions": [
+    "Easy",
+    "Difficult",
+    "Beautiful",
+    "Ugly",
+    "Plain",
+    "Fancy"
+  ],
+  "thoughts-and-beliefs": [
+    "Understand",
+    "Misunderstand",
+    "Believe",
+    "Doubt",
+    "Hope",
+    "Worry"
   ]
 };
 
@@ -6785,6 +6865,1032 @@ window.PICTURE_THIS_GAME_META = {
             "workshop"
           ],
           "explanation": "The garage and workshop are the only two rooms shown with dedicated space for repair work.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "animal-actions": {
+      "title": "Animal Actions",
+      "category_answers": [
+        "Animal Actions",
+        "Animal Behaviors",
+        "What Animals Do",
+        "Pet and Duck Actions"
+      ],
+      "tags": [
+        "animals",
+        "actions",
+        "sounds"
+      ],
+      "items": [
+        {
+          "id": "bark",
+          "label": "Bark",
+          "answers": [
+            "Bark",
+            "Woof"
+          ]
+        },
+        {
+          "id": "fetch",
+          "label": "Fetch",
+          "answers": [
+            "Fetch",
+            "Retrieve"
+          ]
+        },
+        {
+          "id": "meow",
+          "label": "Meow",
+          "answers": [
+            "Meow",
+            "Mew"
+          ]
+        },
+        {
+          "id": "purr",
+          "label": "Purr",
+          "answers": [
+            "Purr"
+          ]
+        },
+        {
+          "id": "quack",
+          "label": "Quack",
+          "answers": [
+            "Quack"
+          ]
+        },
+        {
+          "id": "waddle",
+          "label": "Waddle",
+          "answers": [
+            "Waddle"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "dog",
+          "answers": [
+            "dog"
+          ],
+          "items": [
+            "bark",
+            "fetch"
+          ],
+          "explanation": "Bark and Fetch are the only two actions shown being performed by a dog.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "cat",
+          "answers": [
+            "cat"
+          ],
+          "items": [
+            "meow",
+            "purr"
+          ],
+          "explanation": "Meow and Purr are the only two actions shown being performed by a cat.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "duck",
+          "answers": [
+            "duck"
+          ],
+          "items": [
+            "quack",
+            "waddle"
+          ],
+          "explanation": "Quack and Waddle are the only two actions shown being performed by a duck.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "body-motions": {
+      "title": "Body Motions",
+      "category_answers": [
+        "Body Motions",
+        "Ways the Body Moves",
+        "Physical Motions",
+        "Body Actions"
+      ],
+      "tags": [
+        "body",
+        "movement",
+        "actions"
+      ],
+      "items": [
+        {
+          "id": "breathe",
+          "label": "Breathe",
+          "answers": [
+            "Breathe"
+          ]
+        },
+        {
+          "id": "hold-breath",
+          "label": "Hold Breath",
+          "answers": [
+            "Hold Breath"
+          ]
+        },
+        {
+          "id": "stretch",
+          "label": "Stretch",
+          "answers": [
+            "Stretch"
+          ]
+        },
+        {
+          "id": "bend",
+          "label": "Bend",
+          "answers": [
+            "Bend",
+            "Curve"
+          ]
+        },
+        {
+          "id": "point",
+          "label": "Point",
+          "answers": [
+            "Point",
+            "Indicate"
+          ]
+        },
+        {
+          "id": "wave",
+          "label": "Wave",
+          "answers": [
+            "Wave",
+            "Wave Hello"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "respiration",
+          "answers": [
+            "respiration",
+            "breathing"
+          ],
+          "items": [
+            "breathe",
+            "hold-breath"
+          ],
+          "explanation": "Breathe and Hold Breath are the only two actions on the card that directly control respiration.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "flexibility",
+          "answers": [
+            "flexibility"
+          ],
+          "items": [
+            "stretch",
+            "bend"
+          ],
+          "explanation": "Stretch and Bend are the only two actions that directly demonstrate flexibility of the body.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "gesture",
+          "answers": [
+            "gesture",
+            "signal"
+          ],
+          "items": [
+            "point",
+            "wave"
+          ],
+          "explanation": "Point and Wave are the only two hand actions used as a deliberate gesture to another person.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "everyday-character": {
+      "title": "Everyday Character",
+      "category_answers": [
+        "Everyday Character",
+        "Personality in Action",
+        "Character Traits",
+        "Everyday Personality"
+      ],
+      "tags": [
+        "character",
+        "personality",
+        "behavior"
+      ],
+      "items": [
+        {
+          "id": "friendly",
+          "label": "Friendly",
+          "answers": [
+            "Friendly",
+            "Sociable"
+          ]
+        },
+        {
+          "id": "unfriendly",
+          "label": "Unfriendly",
+          "answers": [
+            "Unfriendly",
+            "Unsociable"
+          ]
+        },
+        {
+          "id": "generous",
+          "label": "Generous",
+          "answers": [
+            "Generous",
+            "Giving"
+          ]
+        },
+        {
+          "id": "selfish",
+          "label": "Selfish",
+          "answers": [
+            "Selfish",
+            "Self-Centered"
+          ]
+        },
+        {
+          "id": "responsible",
+          "label": "Responsible",
+          "answers": [
+            "Responsible",
+            "Dependable"
+          ]
+        },
+        {
+          "id": "lazy",
+          "label": "Lazy",
+          "answers": [
+            "Lazy",
+            "Idle"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "sociability",
+          "answers": [
+            "sociability",
+            "social"
+          ],
+          "items": [
+            "friendly",
+            "unfriendly"
+          ],
+          "explanation": "Friendly and Unfriendly are the only two traits on the card that directly contrast sociability toward other people.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "sharing",
+          "answers": [
+            "sharing",
+            "share"
+          ],
+          "items": [
+            "generous",
+            "selfish"
+          ],
+          "explanation": "Generous and Selfish are the only two traits defined here by willingness or unwillingness to share.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "duty",
+          "answers": [
+            "duty",
+            "responsibility"
+          ],
+          "items": [
+            "responsible",
+            "lazy"
+          ],
+          "explanation": "Responsible and Lazy are the only two traits contrasted by whether a person completes a necessary duty.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "facial-reactions": {
+      "title": "Facial Reactions",
+      "category_answers": [
+        "Facial Reactions",
+        "Face and Voice Reactions",
+        "Human Reactions",
+        "Ways People React"
+      ],
+      "tags": [
+        "reactions",
+        "faces",
+        "communication"
+      ],
+      "items": [
+        {
+          "id": "smile",
+          "label": "Smile",
+          "answers": [
+            "Smile",
+            "Grin"
+          ]
+        },
+        {
+          "id": "frown",
+          "label": "Frown",
+          "answers": [
+            "Frown",
+            "Scowl"
+          ]
+        },
+        {
+          "id": "yawn",
+          "label": "Yawn",
+          "answers": [
+            "Yawn"
+          ]
+        },
+        {
+          "id": "sigh",
+          "label": "Sigh",
+          "answers": [
+            "Sigh"
+          ]
+        },
+        {
+          "id": "cheer",
+          "label": "Cheer",
+          "answers": [
+            "Cheer",
+            "Root For"
+          ]
+        },
+        {
+          "id": "boo",
+          "label": "Boo",
+          "answers": [
+            "Boo",
+            "Jeer"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "corners",
+          "answers": [
+            "corners",
+            "mouth"
+          ],
+          "items": [
+            "smile",
+            "frown"
+          ],
+          "explanation": "Smile and Frown are the only two reactions defined by the corners of the mouth turning up or down.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "weariness",
+          "answers": [
+            "weariness",
+            "tiredness"
+          ],
+          "items": [
+            "yawn",
+            "sigh"
+          ],
+          "explanation": "Yawn and Sigh are the only two reactions on the card that naturally express weariness.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "spectator",
+          "answers": [
+            "spectator",
+            "audience"
+          ],
+          "items": [
+            "cheer",
+            "boo"
+          ],
+          "explanation": "Cheer and Boo are the only two reactions typically made by a spectator or audience.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "inner-feelings": {
+      "title": "Inner Feelings",
+      "category_answers": [
+        "Inner Feelings",
+        "Personal Feelings",
+        "Emotional States",
+        "How People Feel Inside"
+      ],
+      "tags": [
+        "feelings",
+        "emotions",
+        "reactions"
+      ],
+      "items": [
+        {
+          "id": "proud",
+          "label": "Proud",
+          "answers": [
+            "Proud",
+            "Pleased with Yourself"
+          ]
+        },
+        {
+          "id": "ashamed",
+          "label": "Ashamed",
+          "answers": [
+            "Ashamed",
+            "Embarrassed"
+          ]
+        },
+        {
+          "id": "excited",
+          "label": "Excited",
+          "answers": [
+            "Excited",
+            "Thrilled"
+          ]
+        },
+        {
+          "id": "bored",
+          "label": "Bored",
+          "answers": [
+            "Bored",
+            "Uninterested"
+          ]
+        },
+        {
+          "id": "calm",
+          "label": "Calm",
+          "answers": [
+            "Calm",
+            "Relaxed"
+          ]
+        },
+        {
+          "id": "nervous",
+          "label": "Nervous",
+          "answers": [
+            "Nervous",
+            "Anxious"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "selfesteem",
+          "answers": [
+            "selfesteem"
+          ],
+          "items": [
+            "proud",
+            "ashamed"
+          ],
+          "explanation": "Proud and Ashamed are the only two feelings on the card that directly raise or lower selfesteem after one's own action.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "stimulation",
+          "answers": [
+            "stimulation",
+            "interest"
+          ],
+          "items": [
+            "excited",
+            "bored"
+          ],
+          "explanation": "Excited and Bored are the only two feelings contrasted by having strong stimulation or too little stimulation.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "composure",
+          "answers": [
+            "composure",
+            "nerves"
+          ],
+          "items": [
+            "calm",
+            "nervous"
+          ],
+          "explanation": "Calm and Nervous are the only two feelings that directly contrast a person's composure under pressure.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "joining-and-separating": {
+      "title": "Joining and Separating",
+      "category_answers": [
+        "Joining and Separating",
+        "Putting Together and Taking Apart",
+        "Group Changes",
+        "Connection Actions"
+      ],
+      "tags": [
+        "actions",
+        "connections",
+        "groups"
+      ],
+      "items": [
+        {
+          "id": "attach",
+          "label": "Attach",
+          "answers": [
+            "Attach",
+            "Connect"
+          ]
+        },
+        {
+          "id": "detach",
+          "label": "Detach",
+          "answers": [
+            "Detach",
+            "Disconnect"
+          ]
+        },
+        {
+          "id": "combine",
+          "label": "Combine",
+          "answers": [
+            "Combine",
+            "Join Together"
+          ]
+        },
+        {
+          "id": "separate",
+          "label": "Separate",
+          "answers": [
+            "Separate",
+            "Split Apart"
+          ]
+        },
+        {
+          "id": "include",
+          "label": "Include",
+          "answers": [
+            "Include",
+            "Count In"
+          ]
+        },
+        {
+          "id": "exclude",
+          "label": "Exclude",
+          "answers": [
+            "Exclude",
+            "Leave Out"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "fastener",
+          "answers": [
+            "fastener",
+            "clip"
+          ],
+          "items": [
+            "attach",
+            "detach"
+          ],
+          "explanation": "Attach and Detach are the only two actions shown using the same fastener to connect or disconnect two straps.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "mixture",
+          "answers": [
+            "mixture",
+            "mix"
+          ],
+          "items": [
+            "combine",
+            "separate"
+          ],
+          "explanation": "Combine and Separate are the only two actions that create or divide a mixture of colored beads.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "membership",
+          "answers": [
+            "membership",
+            "group"
+          ],
+          "items": [
+            "include",
+            "exclude"
+          ],
+          "explanation": "Include and Exclude are the only two actions that change membership in a group.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "learning-actions": {
+      "title": "Learning Actions",
+      "category_answers": [
+        "Learning Actions",
+        "Ways of Learning",
+        "School Learning",
+        "Study Actions"
+      ],
+      "tags": [
+        "learning",
+        "school",
+        "actions"
+      ],
+      "items": [
+        {
+          "id": "learn",
+          "label": "Learn",
+          "answers": [
+            "Learn",
+            "Gain Knowledge"
+          ]
+        },
+        {
+          "id": "teach",
+          "label": "Teach",
+          "answers": [
+            "Teach",
+            "Give Lessons"
+          ]
+        },
+        {
+          "id": "study",
+          "label": "Study",
+          "answers": [
+            "Study",
+            "Revise"
+          ]
+        },
+        {
+          "id": "practice",
+          "label": "Practice",
+          "answers": [
+            "Practice",
+            "Rehearse"
+          ]
+        },
+        {
+          "id": "pass",
+          "label": "Pass",
+          "answers": [
+            "Pass",
+            "Succeed"
+          ]
+        },
+        {
+          "id": "fail",
+          "label": "Fail",
+          "answers": [
+            "Fail",
+            "Not Pass"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "instruction",
+          "answers": [
+            "instruction"
+          ],
+          "items": [
+            "learn",
+            "teach"
+          ],
+          "explanation": "Learn and Teach are the only two actions directly involving instruction from one person to another.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "revision",
+          "answers": [
+            "revision"
+          ],
+          "items": [
+            "study",
+            "practice"
+          ],
+          "explanation": "Study and Practice are the only two actions that repeat material or a skill as revision.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "exam",
+          "answers": [
+            "exam",
+            "test"
+          ],
+          "items": [
+            "pass",
+            "fail"
+          ],
+          "explanation": "Pass and Fail are the only two possible exam results shown on this card.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "money-actions": {
+      "title": "Money Actions",
+      "category_answers": [
+        "Money Actions",
+        "Using Money",
+        "Everyday Money Verbs",
+        "Buying and Paying"
+      ],
+      "tags": [
+        "money",
+        "shopping",
+        "actions"
+      ],
+      "items": [
+        {
+          "id": "buy",
+          "label": "Buy",
+          "answers": [
+            "Buy",
+            "Purchase"
+          ]
+        },
+        {
+          "id": "sell",
+          "label": "Sell",
+          "answers": [
+            "Sell"
+          ]
+        },
+        {
+          "id": "pay",
+          "label": "Pay",
+          "answers": [
+            "Pay",
+            "Make Payment"
+          ]
+        },
+        {
+          "id": "owe",
+          "label": "Owe",
+          "answers": [
+            "Owe",
+            "Be in Debt"
+          ]
+        },
+        {
+          "id": "earn",
+          "label": "Earn",
+          "answers": [
+            "Earn",
+            "Make Money"
+          ]
+        },
+        {
+          "id": "spend",
+          "label": "Spend",
+          "answers": [
+            "Spend",
+            "Use Money"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "trade",
+          "answers": [
+            "trade"
+          ],
+          "items": [
+            "buy",
+            "sell"
+          ],
+          "explanation": "Buy and Sell are the only two actions that form the two sides of a trade.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "debt",
+          "answers": [
+            "debt"
+          ],
+          "items": [
+            "pay",
+            "owe"
+          ],
+          "explanation": "Pay and Owe are the only two actions shown directly connected to a debt.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "income",
+          "answers": [
+            "income"
+          ],
+          "items": [
+            "earn",
+            "spend"
+          ],
+          "explanation": "Earn and Spend are the only two actions shown describing money coming in as income and then being used.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "more-common-descriptions": {
+      "title": "More Common Descriptions",
+      "category_answers": [
+        "More Common Descriptions",
+        "Describing Looks and Tasks",
+        "Looks and Difficulty",
+        "Everyday Descriptions Two"
+      ],
+      "tags": [
+        "descriptions",
+        "adjectives",
+        "appearance"
+      ],
+      "items": [
+        {
+          "id": "easy",
+          "label": "Easy",
+          "answers": [
+            "Easy",
+            "Simple"
+          ]
+        },
+        {
+          "id": "difficult",
+          "label": "Difficult",
+          "answers": [
+            "Difficult",
+            "Challenging"
+          ]
+        },
+        {
+          "id": "beautiful",
+          "label": "Beautiful",
+          "answers": [
+            "Beautiful",
+            "Pretty"
+          ]
+        },
+        {
+          "id": "ugly",
+          "label": "Ugly",
+          "answers": [
+            "Ugly",
+            "Unattractive"
+          ]
+        },
+        {
+          "id": "plain",
+          "label": "Plain",
+          "answers": [
+            "Plain"
+          ]
+        },
+        {
+          "id": "fancy",
+          "label": "Fancy",
+          "answers": [
+            "Fancy",
+            "Elaborate"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "task",
+          "answers": [
+            "task"
+          ],
+          "items": [
+            "easy",
+            "difficult"
+          ],
+          "explanation": "Easy and Difficult are the only two words shown judging how hard a task is.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "attractiveness",
+          "answers": [
+            "attractiveness"
+          ],
+          "items": [
+            "beautiful",
+            "ugly"
+          ],
+          "explanation": "Beautiful and Ugly are the only two words shown judging attractiveness.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "decoration",
+          "answers": [
+            "decoration"
+          ],
+          "items": [
+            "plain",
+            "fancy"
+          ],
+          "explanation": "Plain and Fancy are the only two words shown comparing the amount of decoration.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "thoughts-and-beliefs": {
+      "title": "Thoughts and Beliefs",
+      "category_answers": [
+        "Thoughts and Beliefs",
+        "Ways of Thinking",
+        "Mental States",
+        "Beliefs and Expectations"
+      ],
+      "tags": [
+        "thinking",
+        "beliefs",
+        "feelings"
+      ],
+      "items": [
+        {
+          "id": "understand",
+          "label": "Understand",
+          "answers": [
+            "Understand",
+            "Comprehend"
+          ]
+        },
+        {
+          "id": "misunderstand",
+          "label": "Misunderstand",
+          "answers": [
+            "Misunderstand",
+            "Get Wrong"
+          ]
+        },
+        {
+          "id": "believe",
+          "label": "Believe",
+          "answers": [
+            "Believe",
+            "Trust"
+          ]
+        },
+        {
+          "id": "doubt",
+          "label": "Doubt",
+          "answers": [
+            "Doubt",
+            "Question"
+          ]
+        },
+        {
+          "id": "hope",
+          "label": "Hope",
+          "answers": [
+            "Hope",
+            "Wish"
+          ]
+        },
+        {
+          "id": "worry",
+          "label": "Worry",
+          "answers": [
+            "Worry",
+            "Be Concerned"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "comprehension",
+          "answers": [
+            "comprehension",
+            "meaning"
+          ],
+          "items": [
+            "understand",
+            "misunderstand"
+          ],
+          "explanation": "Understand and Misunderstand are the only two states concerned with comprehension of a meaning.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "certainty",
+          "answers": [
+            "certainty",
+            "confidence"
+          ],
+          "items": [
+            "believe",
+            "doubt"
+          ],
+          "explanation": "Believe and Doubt are the only two states that directly contrast certainty about whether something is true.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "future",
+          "answers": [
+            "future"
+          ],
+          "items": [
+            "hope",
+            "worry"
+          ],
+          "explanation": "Hope and Worry are the only two feelings on the card directed primarily toward the future.",
           "audit": "exclusive-among-six-v1"
         }
       ]
