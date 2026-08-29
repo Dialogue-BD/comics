@@ -30,7 +30,7 @@
       "audio-match"
     ]
   },
-  "card_count": 165,
+  "card_count": 175,
   "pages": [
     {
       "id": "page_001",
@@ -2011,6 +2011,126 @@
       "image": "pages/page_342.png",
       "width": 825,
       "height": 1275
+    },
+    {
+      "id": "page_343",
+      "image": "pages/page_343.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_344",
+      "image": "pages/page_344.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_345",
+      "image": "pages/page_345.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_346",
+      "image": "pages/page_346.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_347",
+      "image": "pages/page_347.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_348",
+      "image": "pages/page_348.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_349",
+      "image": "pages/page_349.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_350",
+      "image": "pages/page_350.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_351",
+      "image": "pages/page_351.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_352",
+      "image": "pages/page_352.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_353",
+      "image": "pages/page_353.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_354",
+      "image": "pages/page_354.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_355",
+      "image": "pages/page_355.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_356",
+      "image": "pages/page_356.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_357",
+      "image": "pages/page_357.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_358",
+      "image": "pages/page_358.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_359",
+      "image": "pages/page_359.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_360",
+      "image": "pages/page_360.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_361",
+      "image": "pages/page_361.png",
+      "width": 825,
+      "height": 1275
+    },
+    {
+      "id": "page_362",
+      "image": "pages/page_362.png",
+      "width": 825,
+      "height": 1275
     }
   ],
   "generated_cards": [
@@ -3042,6 +3162,106 @@
         "thinking",
         "beliefs",
         "feelings"
+      ]
+    },
+    {
+      "id": "action-contrasts",
+      "title": "Action Contrasts",
+      "band_color": "blue",
+      "game_tags": [
+        "actions",
+        "verbs",
+        "contrasts"
+      ]
+    },
+    {
+      "id": "communication-skills",
+      "title": "Communication Skills",
+      "band_color": "red",
+      "game_tags": [
+        "communication",
+        "language",
+        "actions"
+      ]
+    },
+    {
+      "id": "choices-and-rules",
+      "title": "Choices and Rules",
+      "band_color": "blue",
+      "game_tags": [
+        "actions",
+        "rules",
+        "decisions"
+      ]
+    },
+    {
+      "id": "making-and-changing",
+      "title": "Making and Changing",
+      "band_color": "green",
+      "game_tags": [
+        "actions",
+        "change",
+        "making"
+      ]
+    },
+    {
+      "id": "processes-and-plans",
+      "title": "Processes and Plans",
+      "band_color": "orange",
+      "game_tags": [
+        "actions",
+        "planning",
+        "process"
+      ]
+    },
+    {
+      "id": "moving-and-waiting",
+      "title": "Moving and Waiting",
+      "band_color": "blue",
+      "game_tags": [
+        "actions",
+        "movement",
+        "timing"
+      ]
+    },
+    {
+      "id": "more-food-actions",
+      "title": "More Food Actions",
+      "band_color": "blue",
+      "game_tags": [
+        "food",
+        "actions",
+        "kitchen"
+      ]
+    },
+    {
+      "id": "social-feelings-actions",
+      "title": "Social Feelings and Actions",
+      "band_color": "green",
+      "game_tags": [
+        "feelings",
+        "social",
+        "actions"
+      ]
+    },
+    {
+      "id": "useful-descriptions",
+      "title": "Useful Descriptions",
+      "band_color": "orange",
+      "game_tags": [
+        "descriptions",
+        "adjectives",
+        "contrasts"
+      ]
+    },
+    {
+      "id": "food-conditions",
+      "title": "Food Conditions",
+      "band_color": "blue",
+      "game_tags": [
+        "food",
+        "descriptions",
+        "conditions"
       ]
     }
   ],

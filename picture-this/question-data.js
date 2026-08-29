@@ -7260,5 +7260,445 @@ window.PICTURE_THIS_QUESTION_DATA = {
         "y": 68.75
       }
     ]
+  },
+  "action-contrasts": {
+    "questions": [
+      "Which actions make something closer, longer, or larger?",
+      "Which action in each pair means the opposite of the other?",
+      "When have you had to begin, finish, approach, or retreat?",
+      "How can a person increase or decrease the time needed for a task?",
+      "What other pairs of opposite actions can you name?",
+      "Which action would be hardest to show without using words? Why?"
+    ],
+    "positions": [
+      12.43,
+      22.75,
+      33.1,
+      43.45,
+      58.16,
+      68.47
+    ],
+    "endpoints": [
+      {
+        "x": 71.64,
+        "y": 16.98
+      },
+      {
+        "x": 76.0,
+        "y": 27.29
+      },
+      {
+        "x": 80.36,
+        "y": 37.65
+      },
+      {
+        "x": 26.55,
+        "y": 52.0
+      },
+      {
+        "x": 67.88,
+        "y": 62.71
+      },
+      {
+        "x": 27.03,
+        "y": 77.37
+      }
+    ]
+  },
+  "communication-skills": {
+    "questions": [
+      "Which actions involve speaking, listening, reading, or writing?",
+      "Which skills are easiest to practise alone, and which need another person?",
+      "Which communication skill do you most want to improve?",
+      "How can someone explain a difficult idea clearly?",
+      "What can cause a message to confuse the listener or reader?",
+      "Which two skills would you choose for learning a new language?"
+    ],
+    "positions": [
+      12.43,
+      22.75,
+      37.41,
+      47.76,
+      58.16,
+      68.47
+    ],
+    "endpoints": [
+      {
+        "x": 84.97,
+        "y": 16.98
+      },
+      {
+        "x": 52.24,
+        "y": 31.65
+      },
+      {
+        "x": 78.55,
+        "y": 42.0
+      },
+      {
+        "x": 64.0,
+        "y": 52.31
+      },
+      {
+        "x": 86.06,
+        "y": 62.31
+      },
+      {
+        "x": 37.82,
+        "y": 77.37
+      }
+    ]
+  },
+  "choices-and-rules": {
+    "questions": [
+      "Which actions respond to offers, permission, or danger?",
+      "Which actions are polite choices, and which can cause conflict?",
+      "When have you accepted or refused an invitation or offer?",
+      "Why do schools and communities allow some actions but forbid others?",
+      "What things or people might need protection?",
+      "Which rule would you create to make a classroom safer or kinder?"
+    ],
+    "positions": [
+      12.43,
+      22.75,
+      33.1,
+      43.45,
+      58.16,
+      68.47
+    ],
+    "endpoints": [
+      {
+        "x": 67.64,
+        "y": 16.98
+      },
+      {
+        "x": 84.97,
+        "y": 26.94
+      },
+      {
+        "x": 85.09,
+        "y": 37.29
+      },
+      {
+        "x": 31.52,
+        "y": 52.0
+      },
+      {
+        "x": 53.94,
+        "y": 62.71
+      },
+      {
+        "x": 31.88,
+        "y": 77.02
+      }
+    ]
+  },
+  "making-and-changing": {
+    "questions": [
+      "Which actions make something, remove something, or change an amount?",
+      "Which actions usually take more time than their opposites?",
+      "What have you built or created with your hands?",
+      "How do adding and subtracting change a group of objects?",
+      "What other actions can change an object or place?",
+      "Would you rather create something new or rebuild something old? Why?"
+    ],
+    "positions": [
+      12.43,
+      27.06,
+      37.41,
+      47.76,
+      58.16,
+      68.47
+    ],
+    "endpoints": [
+      {
+        "x": 34.67,
+        "y": 20.94
+      },
+      {
+        "x": 76.48,
+        "y": 31.65
+      },
+      {
+        "x": 55.27,
+        "y": 42.0
+      },
+      {
+        "x": 77.21,
+        "y": 52.31
+      },
+      {
+        "x": 58.55,
+        "y": 62.71
+      },
+      {
+        "x": 64.61,
+        "y": 77.37
+      }
+    ]
+  },
+  "processes-and-plans": {
+    "questions": [
+      "Which actions control media, appointments, or deliveries?",
+      "Which actions begin a process, and which delay or end one?",
+      "When have you scheduled, cancelled, ordered, or delivered something?",
+      "Why might someone pause an activity and continue it later?",
+      "What other plans or processes do people manage every day?",
+      "Which action would be most useful when organizing a class event?"
+    ],
+    "positions": [
+      12.43,
+      22.75,
+      33.1,
+      47.76,
+      58.16,
+      68.47
+    ],
+    "endpoints": [
+      {
+        "x": 80.85,
+        "y": 16.98
+      },
+      {
+        "x": 82.18,
+        "y": 27.33
+      },
+      {
+        "x": 41.33,
+        "y": 42.0
+      },
+      {
+        "x": 84.97,
+        "y": 52.35
+      },
+      {
+        "x": 75.76,
+        "y": 62.71
+      },
+      {
+        "x": 29.82,
+        "y": 77.02
+      }
+    ]
+  },
+  "moving-and-waiting": {
+    "questions": [
+      "Which actions involve guiding, timing, or driving?",
+      "Which actions are usually calm, and which need quick movement?",
+      "When do you usually follow, lead, wait, or hurry?",
+      "How can a driver park and reverse safely?",
+      "What other movement actions do people use every day?",
+      "Would you rather lead a group or follow a good guide? Why?"
+    ],
+    "positions": [
+      12.43,
+      22.75,
+      37.41,
+      47.76,
+      58.16,
+      68.47
+    ],
+    "endpoints": [
+      {
+        "x": 58.67,
+        "y": 16.98
+      },
+      {
+        "x": 41.09,
+        "y": 31.29
+      },
+      {
+        "x": 62.42,
+        "y": 42.0
+      },
+      {
+        "x": 48.36,
+        "y": 52.31
+      },
+      {
+        "x": 65.7,
+        "y": 62.71
+      },
+      {
+        "x": 77.21,
+        "y": 73.02
+      }
+    ]
+  },
+  "more-food-actions": {
+    "questions": [
+      "Which actions change vegetables, liquids, or toppings?",
+      "Which actions need a tool, and which can be done by hand?",
+      "Which of these food actions have you done before?",
+      "How would you peel, grate, pour, or drain something safely?",
+      "What foods can people spread or sprinkle on other foods?",
+      "Which action would you most like to practise while cooking?"
+    ],
+    "positions": [
+      12.43,
+      22.75,
+      33.1,
+      43.45,
+      53.84,
+      64.16
+    ],
+    "endpoints": [
+      {
+        "x": 90.3,
+        "y": 16.98
+      },
+      {
+        "x": 81.58,
+        "y": 27.33
+      },
+      {
+        "x": 54.67,
+        "y": 37.65
+      },
+      {
+        "x": 76.73,
+        "y": 48.0
+      },
+      {
+        "x": 71.64,
+        "y": 58.35
+      },
+      {
+        "x": 86.3,
+        "y": 68.75
+      }
+    ]
+  },
+  "social-feelings-actions": {
+    "questions": [
+      "Which items are feelings, and which are actions toward another person?",
+      "Which actions build confidence, and which can reduce it?",
+      "When has someone helped or encouraged you?",
+      "How can people disagree without hurting one another?",
+      "What other actions show care or support?",
+      "What would you say to encourage someone facing a difficult task?"
+    ],
+    "positions": [
+      12.43,
+      27.06,
+      37.41,
+      47.76,
+      58.16,
+      68.47
+    ],
+    "endpoints": [
+      {
+        "x": 52.24,
+        "y": 21.29
+      },
+      {
+        "x": 73.45,
+        "y": 31.29
+      },
+      {
+        "x": 53.82,
+        "y": 42.0
+      },
+      {
+        "x": 64.61,
+        "y": 52.35
+      },
+      {
+        "x": 34.67,
+        "y": 62.71
+      },
+      {
+        "x": 47.03,
+        "y": 76.98
+      }
+    ]
+  },
+  "useful-descriptions": {
+    "questions": [
+      "Which descriptions relate to money, light, or clothing?",
+      "Which picture in each pair shows more, less, or a better fit?",
+      "When do you prefer a bright or dark room and loose or tight clothing?",
+      "How can the same person or place become richer, poorer, brighter, or darker?",
+      "What other useful opposite descriptions can you name?",
+      "Which description would be easiest to show in a photograph?"
+    ],
+    "positions": [
+      12.43,
+      22.75,
+      33.1,
+      47.76,
+      62.47,
+      72.78
+    ],
+    "endpoints": [
+      {
+        "x": 76.24,
+        "y": 16.98
+      },
+      {
+        "x": 75.39,
+        "y": 27.14
+      },
+      {
+        "x": 36.36,
+        "y": 42.0
+      },
+      {
+        "x": 60.24,
+        "y": 56.67
+      },
+      {
+        "x": 79.39,
+        "y": 67.02
+      },
+      {
+        "x": 92.0,
+        "y": 77.37
+      }
+    ]
+  },
+  "food-conditions": {
+    "questions": [
+      "Which foods are raw, cooked, ripe, unripe, fresh, or stale?",
+      "Which conditions are safe or pleasant for different foods?",
+      "How do you check whether fruit or bread is ready to eat?",
+      "What changes when food is cooked or left for several days?",
+      "What other foods can be described with these words?",
+      "Which food condition would be hardest to judge from a picture alone?"
+    ],
+    "positions": [
+      12.43,
+      22.75,
+      33.1,
+      43.45,
+      53.84,
+      64.16
+    ],
+    "endpoints": [
+      {
+        "x": 80.12,
+        "y": 16.94
+      },
+      {
+        "x": 80.85,
+        "y": 27.29
+      },
+      {
+        "x": 71.27,
+        "y": 37.69
+      },
+      {
+        "x": 87.39,
+        "y": 48.0
+      },
+      {
+        "x": 80.36,
+        "y": 58.04
+      },
+      {
+        "x": 29.45,
+        "y": 72.71
+      }
+    ]
   }
 };

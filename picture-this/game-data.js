@@ -1319,6 +1319,86 @@ window.PICTURE_THIS_GAME_DATA = {
     "Doubt",
     "Hope",
     "Worry"
+  ],
+  "action-contrasts": [
+    "Approach",
+    "Retreat",
+    "Begin",
+    "Finish",
+    "Increase",
+    "Decrease"
+  ],
+  "communication-skills": [
+    "Speak",
+    "Listen",
+    "Read",
+    "Write",
+    "Explain",
+    "Confuse"
+  ],
+  "choices-and-rules": [
+    "Accept",
+    "Refuse",
+    "Allow",
+    "Forbid",
+    "Protect",
+    "Attack"
+  ],
+  "making-and-changing": [
+    "Build",
+    "Demolish",
+    "Create",
+    "Destroy",
+    "Add",
+    "Subtract"
+  ],
+  "processes-and-plans": [
+    "Continue",
+    "Pause",
+    "Schedule",
+    "Cancel",
+    "Order",
+    "Deliver"
+  ],
+  "moving-and-waiting": [
+    "Follow",
+    "Lead",
+    "Wait",
+    "Hurry",
+    "Park",
+    "Reverse"
+  ],
+  "more-food-actions": [
+    "Peel",
+    "Grate",
+    "Pour",
+    "Drain",
+    "Spread",
+    "Sprinkle"
+  ],
+  "social-feelings-actions": [
+    "Love",
+    "Hate",
+    "Help",
+    "Hurt",
+    "Encourage",
+    "Discourage"
+  ],
+  "useful-descriptions": [
+    "Rich",
+    "Poor",
+    "Bright",
+    "Dark",
+    "Loose",
+    "Tight"
+  ],
+  "food-conditions": [
+    "Raw",
+    "Cooked",
+    "Ripe",
+    "Unripe",
+    "Fresh",
+    "Stale"
   ]
 };
 
@@ -7891,6 +7971,999 @@ window.PICTURE_THIS_GAME_META = {
             "worry"
           ],
           "explanation": "Hope and Worry are the only two feelings on the card directed primarily toward the future.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "action-contrasts": {
+      "title": "Action Contrasts",
+      "category_answers": [
+        "Action Contrasts",
+        "Contrasting Actions",
+        "Action Pair Practice"
+      ],
+      "tags": [
+        "actions",
+        "verbs",
+        "contrasts"
+      ],
+      "items": [
+        {
+          "id": "approach",
+          "label": "Approach",
+          "answers": [
+            "Approach",
+            "Come Near"
+          ]
+        },
+        {
+          "id": "retreat",
+          "label": "Retreat",
+          "answers": [
+            "Retreat",
+            "Move Back"
+          ]
+        },
+        {
+          "id": "begin",
+          "label": "Begin",
+          "answers": [
+            "Begin",
+            "Commence"
+          ]
+        },
+        {
+          "id": "finish",
+          "label": "Finish",
+          "answers": [
+            "Finish",
+            "Complete"
+          ]
+        },
+        {
+          "id": "increase",
+          "label": "Increase",
+          "answers": [
+            "Increase",
+            "Become More"
+          ]
+        },
+        {
+          "id": "decrease",
+          "label": "Decrease",
+          "answers": [
+            "Decrease",
+            "Reduce"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "proximity",
+          "answers": [
+            "proximity"
+          ],
+          "items": [
+            "approach",
+            "retreat"
+          ],
+          "explanation": "Approach and retreat are the only two actions that directly change how near someone is to a point.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "event",
+          "answers": [
+            "event"
+          ],
+          "items": [
+            "begin",
+            "finish"
+          ],
+          "explanation": "Begin and finish are the only two actions that mark the two ends of an event.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "quantity",
+          "answers": [
+            "quantity"
+          ],
+          "items": [
+            "increase",
+            "decrease"
+          ],
+          "explanation": "Increase and decrease are the only two actions that directly change a quantity up or down.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "communication-skills": {
+      "title": "Communication Skills",
+      "category_answers": [
+        "Communication Skills",
+        "Speaking and Language",
+        "Language Skills"
+      ],
+      "tags": [
+        "communication",
+        "language",
+        "actions"
+      ],
+      "items": [
+        {
+          "id": "speak",
+          "label": "Speak",
+          "answers": [
+            "Speak",
+            "Talk"
+          ]
+        },
+        {
+          "id": "listen",
+          "label": "Listen",
+          "answers": [
+            "Listen",
+            "Hear"
+          ]
+        },
+        {
+          "id": "read",
+          "label": "Read",
+          "answers": [
+            "Read"
+          ]
+        },
+        {
+          "id": "write",
+          "label": "Write",
+          "answers": [
+            "Write"
+          ]
+        },
+        {
+          "id": "explain",
+          "label": "Explain",
+          "answers": [
+            "Explain",
+            "Clarify"
+          ]
+        },
+        {
+          "id": "confuse",
+          "label": "Confuse",
+          "answers": [
+            "Confuse"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "conversation",
+          "answers": [
+            "conversation"
+          ],
+          "items": [
+            "speak",
+            "listen"
+          ],
+          "explanation": "Speak and listen are the only two actions that form the two sides of a spoken conversation.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "literacy",
+          "answers": [
+            "literacy"
+          ],
+          "items": [
+            "read",
+            "write"
+          ],
+          "explanation": "Read and write are the only two actions that directly form literacy.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "ambiguity",
+          "answers": [
+            "ambiguity"
+          ],
+          "items": [
+            "explain",
+            "confuse"
+          ],
+          "explanation": "Explain and confuse are the only two actions that directly resolve or create ambiguity for another person.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "choices-and-rules": {
+      "title": "Choices and Rules",
+      "category_answers": [
+        "Choices and Rules",
+        "Rules and Decisions",
+        "Permission and Choice"
+      ],
+      "tags": [
+        "actions",
+        "rules",
+        "decisions"
+      ],
+      "items": [
+        {
+          "id": "accept",
+          "label": "Accept",
+          "answers": [
+            "Accept"
+          ]
+        },
+        {
+          "id": "refuse",
+          "label": "Refuse",
+          "answers": [
+            "Refuse",
+            "Decline"
+          ]
+        },
+        {
+          "id": "allow",
+          "label": "Allow",
+          "answers": [
+            "Allow",
+            "Permit"
+          ]
+        },
+        {
+          "id": "forbid",
+          "label": "Forbid",
+          "answers": [
+            "Forbid",
+            "Ban"
+          ]
+        },
+        {
+          "id": "protect",
+          "label": "Protect",
+          "answers": [
+            "Protect",
+            "Defend"
+          ]
+        },
+        {
+          "id": "attack",
+          "label": "Attack",
+          "answers": [
+            "Attack"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "offer",
+          "answers": [
+            "offer"
+          ],
+          "items": [
+            "accept",
+            "refuse"
+          ],
+          "explanation": "Accept and refuse are the only two actions that show opposite responses to an offer.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "permission",
+          "answers": [
+            "permission"
+          ],
+          "items": [
+            "allow",
+            "forbid"
+          ],
+          "explanation": "Allow and forbid are the only two actions that directly grant or deny permission.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "conflict",
+          "answers": [
+            "conflict"
+          ],
+          "items": [
+            "protect",
+            "attack"
+          ],
+          "explanation": "Protect and attack are the only two actions that form defensive and aggressive sides of a conflict.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "making-and-changing": {
+      "title": "Making and Changing",
+      "category_answers": [
+        "Making and Changing",
+        "Creation and Change",
+        "Transformation Actions"
+      ],
+      "tags": [
+        "actions",
+        "change",
+        "making"
+      ],
+      "items": [
+        {
+          "id": "build",
+          "label": "Build",
+          "answers": [
+            "Build",
+            "Construct"
+          ]
+        },
+        {
+          "id": "demolish",
+          "label": "Demolish",
+          "answers": [
+            "Demolish",
+            "Tear Down"
+          ]
+        },
+        {
+          "id": "create",
+          "label": "Create",
+          "answers": [
+            "Create",
+            "Make"
+          ]
+        },
+        {
+          "id": "destroy",
+          "label": "Destroy",
+          "answers": [
+            "Destroy",
+            "Ruin"
+          ]
+        },
+        {
+          "id": "add",
+          "label": "Add",
+          "answers": [
+            "Add",
+            "Plus"
+          ]
+        },
+        {
+          "id": "subtract",
+          "label": "Subtract",
+          "answers": [
+            "Subtract",
+            "Take Away"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "construction",
+          "answers": [
+            "construction"
+          ],
+          "items": [
+            "build",
+            "demolish"
+          ],
+          "explanation": "Build and demolish are the only two actions that directly create or remove a structure.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "existence",
+          "answers": [
+            "existence"
+          ],
+          "items": [
+            "create",
+            "destroy"
+          ],
+          "explanation": "Create and destroy are the only two actions that directly bring something into or remove it from existence.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "arithmetic",
+          "answers": [
+            "arithmetic"
+          ],
+          "items": [
+            "add",
+            "subtract"
+          ],
+          "explanation": "Add and subtract are the only two actions that directly change a number in arithmetic.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "processes-and-plans": {
+      "title": "Processes and Plans",
+      "category_answers": [
+        "Processes and Plans",
+        "Planning Actions",
+        "Managing Activities"
+      ],
+      "tags": [
+        "actions",
+        "planning",
+        "process"
+      ],
+      "items": [
+        {
+          "id": "continue",
+          "label": "Continue",
+          "answers": [
+            "Continue",
+            "Keep Going"
+          ]
+        },
+        {
+          "id": "pause",
+          "label": "Pause",
+          "answers": [
+            "Pause",
+            "Stop Briefly"
+          ]
+        },
+        {
+          "id": "schedule",
+          "label": "Schedule",
+          "answers": [
+            "Schedule",
+            "Arrange"
+          ]
+        },
+        {
+          "id": "cancel",
+          "label": "Cancel",
+          "answers": [
+            "Cancel",
+            "Call Off"
+          ]
+        },
+        {
+          "id": "order",
+          "label": "Order",
+          "answers": [
+            "Order",
+            "Request"
+          ]
+        },
+        {
+          "id": "deliver",
+          "label": "Deliver",
+          "answers": [
+            "Deliver",
+            "Drop Off"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "playback",
+          "answers": [
+            "playback"
+          ],
+          "items": [
+            "continue",
+            "pause"
+          ],
+          "explanation": "Continue and pause are the only two actions that directly control ongoing playback.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "appointment",
+          "answers": [
+            "appointment"
+          ],
+          "items": [
+            "schedule",
+            "cancel"
+          ],
+          "explanation": "Schedule and cancel are the only two actions that directly create or remove an appointment.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "fulfillment",
+          "answers": [
+            "fulfillment"
+          ],
+          "items": [
+            "order",
+            "deliver"
+          ],
+          "explanation": "Order and deliver are the only two actions that directly begin and complete customer fulfillment.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "moving-and-waiting": {
+      "title": "Moving and Waiting",
+      "category_answers": [
+        "Moving and Waiting",
+        "Movement Choices",
+        "Everyday Movement Actions"
+      ],
+      "tags": [
+        "actions",
+        "movement",
+        "timing"
+      ],
+      "items": [
+        {
+          "id": "follow",
+          "label": "Follow",
+          "answers": [
+            "Follow"
+          ]
+        },
+        {
+          "id": "lead",
+          "label": "Lead",
+          "answers": [
+            "Lead",
+            "Guide"
+          ]
+        },
+        {
+          "id": "wait",
+          "label": "Wait",
+          "answers": [
+            "Wait"
+          ]
+        },
+        {
+          "id": "hurry",
+          "label": "Hurry",
+          "answers": [
+            "Hurry",
+            "Rush"
+          ]
+        },
+        {
+          "id": "park",
+          "label": "Park",
+          "answers": [
+            "Park"
+          ]
+        },
+        {
+          "id": "reverse",
+          "label": "Reverse",
+          "answers": [
+            "Reverse",
+            "Back Up"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "guidance",
+          "answers": [
+            "guidance"
+          ],
+          "items": [
+            "follow",
+            "lead"
+          ],
+          "explanation": "Follow and lead are the only two actions that show opposite positions in guiding a group.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "timing",
+          "answers": [
+            "timing"
+          ],
+          "items": [
+            "wait",
+            "hurry"
+          ],
+          "explanation": "Wait and hurry are the only two actions that directly slow down or speed up a person because of time.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "gear",
+          "answers": [
+            "gear"
+          ],
+          "items": [
+            "park",
+            "reverse"
+          ],
+          "explanation": "Park and reverse are the only two actions that are also familiar car gear positions.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "more-food-actions": {
+      "title": "More Food Actions",
+      "category_answers": [
+        "More Food Actions",
+        "Food Preparation Verbs",
+        "Kitchen Action Words"
+      ],
+      "tags": [
+        "food",
+        "actions",
+        "kitchen"
+      ],
+      "items": [
+        {
+          "id": "peel",
+          "label": "Peel",
+          "answers": [
+            "Peel"
+          ]
+        },
+        {
+          "id": "grate",
+          "label": "Grate",
+          "answers": [
+            "Grate",
+            "Shred"
+          ]
+        },
+        {
+          "id": "pour",
+          "label": "Pour",
+          "answers": [
+            "Pour"
+          ]
+        },
+        {
+          "id": "drain",
+          "label": "Drain",
+          "answers": [
+            "Drain"
+          ]
+        },
+        {
+          "id": "spread",
+          "label": "Spread",
+          "answers": [
+            "Spread"
+          ]
+        },
+        {
+          "id": "sprinkle",
+          "label": "Sprinkle",
+          "answers": [
+            "Sprinkle"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "carrot",
+          "answers": [
+            "carrot"
+          ],
+          "items": [
+            "peel",
+            "grate"
+          ],
+          "explanation": "Peel and grate are the only two actions shown being performed on a carrot.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "liquid",
+          "answers": [
+            "liquid"
+          ],
+          "items": [
+            "pour",
+            "drain"
+          ],
+          "explanation": "Pour and drain are the only two actions that directly move liquid into or out of a container.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "topping",
+          "answers": [
+            "topping"
+          ],
+          "items": [
+            "spread",
+            "sprinkle"
+          ],
+          "explanation": "Spread and sprinkle are the only two actions that directly place a topping across food.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "social-feelings-actions": {
+      "title": "Social Feelings and Actions",
+      "category_answers": [
+        "Social Feelings and Actions",
+        "Feelings Toward Others",
+        "Helping and Motivation"
+      ],
+      "tags": [
+        "feelings",
+        "social",
+        "actions"
+      ],
+      "items": [
+        {
+          "id": "love",
+          "label": "Love",
+          "answers": [
+            "Love",
+            "Adore"
+          ]
+        },
+        {
+          "id": "hate",
+          "label": "Hate",
+          "answers": [
+            "Hate",
+            "Dislike"
+          ]
+        },
+        {
+          "id": "help",
+          "label": "Help",
+          "answers": [
+            "Help",
+            "Assist"
+          ]
+        },
+        {
+          "id": "hurt",
+          "label": "Hurt",
+          "answers": [
+            "Hurt",
+            "Injure"
+          ]
+        },
+        {
+          "id": "encourage",
+          "label": "Encourage",
+          "answers": [
+            "Encourage",
+            "Motivate"
+          ]
+        },
+        {
+          "id": "discourage",
+          "label": "Discourage",
+          "answers": [
+            "Discourage",
+            "Deter"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "affection",
+          "answers": [
+            "affection"
+          ],
+          "items": [
+            "love",
+            "hate"
+          ],
+          "explanation": "Love and hate are the only two items that show opposite feelings of strong affection and rejection.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "pain",
+          "answers": [
+            "pain"
+          ],
+          "items": [
+            "help",
+            "hurt"
+          ],
+          "explanation": "Help and hurt are the only two actions shown directly responding to or causing pain.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "motivation",
+          "answers": [
+            "motivation"
+          ],
+          "items": [
+            "encourage",
+            "discourage"
+          ],
+          "explanation": "Encourage and discourage are the only two actions that directly raise or lower another person’s motivation.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "useful-descriptions": {
+      "title": "Useful Descriptions",
+      "category_answers": [
+        "Useful Descriptions",
+        "Common Describing Words",
+        "Practical Describing Words"
+      ],
+      "tags": [
+        "descriptions",
+        "adjectives",
+        "contrasts"
+      ],
+      "items": [
+        {
+          "id": "rich",
+          "label": "Rich",
+          "answers": [
+            "Rich",
+            "Wealthy"
+          ]
+        },
+        {
+          "id": "poor",
+          "label": "Poor",
+          "answers": [
+            "Poor"
+          ]
+        },
+        {
+          "id": "bright",
+          "label": "Bright",
+          "answers": [
+            "Bright",
+            "Well Lit"
+          ]
+        },
+        {
+          "id": "dark",
+          "label": "Dark",
+          "answers": [
+            "Dark",
+            "Dim"
+          ]
+        },
+        {
+          "id": "loose",
+          "label": "Loose",
+          "answers": [
+            "Loose"
+          ]
+        },
+        {
+          "id": "tight",
+          "label": "Tight",
+          "answers": [
+            "Tight"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "wealth",
+          "answers": [
+            "wealth"
+          ],
+          "items": [
+            "rich",
+            "poor"
+          ],
+          "explanation": "Rich and poor are the only two descriptions that directly contrast levels of wealth.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "light",
+          "answers": [
+            "light"
+          ],
+          "items": [
+            "bright",
+            "dark"
+          ],
+          "explanation": "Bright and dark are the only two descriptions that directly contrast the amount of light.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "fit",
+          "answers": [
+            "fit"
+          ],
+          "items": [
+            "loose",
+            "tight"
+          ],
+          "explanation": "Loose and tight are the only two descriptions that directly contrast how clothing fits.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
+    "food-conditions": {
+      "title": "Food Conditions",
+      "category_answers": [
+        "Food Conditions",
+        "Food States",
+        "Describing Food"
+      ],
+      "tags": [
+        "food",
+        "descriptions",
+        "conditions"
+      ],
+      "items": [
+        {
+          "id": "raw",
+          "label": "Raw",
+          "answers": [
+            "Raw",
+            "Uncooked"
+          ]
+        },
+        {
+          "id": "cooked",
+          "label": "Cooked",
+          "answers": [
+            "Cooked"
+          ]
+        },
+        {
+          "id": "ripe",
+          "label": "Ripe",
+          "answers": [
+            "Ripe",
+            "Mature"
+          ]
+        },
+        {
+          "id": "unripe",
+          "label": "Unripe",
+          "answers": [
+            "Unripe",
+            "Not Ripe"
+          ]
+        },
+        {
+          "id": "fresh",
+          "label": "Fresh",
+          "answers": [
+            "Fresh",
+            "Newly Made"
+          ]
+        },
+        {
+          "id": "stale",
+          "label": "Stale",
+          "answers": [
+            "Stale",
+            "Not Fresh"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "word": "heat",
+          "answers": [
+            "heat"
+          ],
+          "items": [
+            "raw",
+            "cooked"
+          ],
+          "explanation": "Raw and cooked are the only two conditions that directly contrast whether food has been heated enough to cook.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "maturity",
+          "answers": [
+            "maturity"
+          ],
+          "items": [
+            "ripe",
+            "unripe"
+          ],
+          "explanation": "Ripe and unripe are the only two conditions that directly contrast a fruit’s maturity.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "age",
+          "answers": [
+            "age"
+          ],
+          "items": [
+            "fresh",
+            "stale"
+          ],
+          "explanation": "Fresh and stale are the only two conditions that directly contrast how age affects prepared food.",
           "audit": "exclusive-among-six-v1"
         }
       ]
