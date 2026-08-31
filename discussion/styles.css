@@ -91,12 +91,16 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .hero-path span { white-space: nowrap; }
 .hero-path b { display: inline-grid; place-items: center; width: 20px; height: 20px; margin-right: 3px; border-radius: 50%; background: var(--teal-soft); color: var(--teal); }
 .hero-path i { display: block; width: 34px; height: 1px; background: var(--line); }
-.onboarding-launch { display: inline-flex; align-items: center; gap: 12px; margin: 24px auto 0; padding: 11px 16px 11px 11px; border: 1px solid rgba(23,107,97,.25); border-radius: 15px; background: rgba(255,253,248,.82); color: var(--ink); box-shadow: 0 8px 24px rgba(38,50,46,.06); text-align: left; cursor: pointer; }
+.hero-secondary-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.onboarding-launch, .recovery-launch { display: inline-flex; align-items: center; gap: 12px; margin: 0; padding: 11px 16px 11px 11px; border: 1px solid rgba(23,107,97,.25); border-radius: 15px; background: rgba(255,253,248,.82); color: var(--ink); box-shadow: 0 8px 24px rgba(38,50,46,.06); text-align: left; cursor: pointer; }
 .onboarding-launch:hover { border-color: var(--teal); transform: translateY(-1px); }
 .onboarding-launch-icon { display: grid; place-items: center; flex: 0 0 auto; width: 38px; height: 38px; border-radius: 11px; background: var(--teal); color: #fff; font-size: .78rem; }
-.onboarding-launch > span:last-child { display: flex; flex-direction: column; }
-.onboarding-launch strong { font-size: .82rem; }
-.onboarding-launch small { margin-top: 2px; color: var(--ink-soft); font-size: .68rem; }
+.onboarding-launch > span:last-child, .recovery-launch > span:last-child { display: flex; flex-direction: column; }
+.onboarding-launch strong, .recovery-launch strong { font-size: .82rem; }
+.onboarding-launch small, .recovery-launch small { margin-top: 2px; color: var(--ink-soft); font-size: .68rem; }
+.recovery-launch { border-color: rgba(214,106,79,.3); }
+.recovery-launch:hover { border-color: var(--coral); transform: translateY(-1px); }
+.recovery-launch-icon { display: grid; place-items: center; flex: 0 0 auto; width: 38px; height: 38px; border-radius: 11px; background: var(--coral); color: #fff; font-size: 1.2rem; font-weight: 800; }
 
 .entry-grid { max-width: 640px; margin: 0 auto; }
 .entry-card { position: relative; padding: clamp(24px, 4vw, 38px); border: 1px solid var(--line); border-radius: 24px; background: rgba(255,253,248,.86); box-shadow: var(--shadow); overflow: hidden; }
@@ -327,6 +331,23 @@ dialog::backdrop { background: rgba(23,51,47,.45); backdrop-filter: blur(3px); }
 dialog h2 { font-family: var(--font-display); letter-spacing: -.03em; }
 dialog p, dialog li { color: var(--ink-soft); line-height: 1.55; }
 .dialog-close { float: right; width: 34px; height: 34px; border: 0; border-radius: 50%; background: var(--paper-deep); cursor: pointer; font-size: 1.2rem; }
+.recovery-dialog { width: min(600px, calc(100% - 24px)); max-height: calc(100dvh - 24px); overflow-y: auto; }
+.recovery-dialog h2 { max-width: 470px; margin: 10px 0 12px; font-size: clamp(1.65rem, 5vw, 2.2rem); line-height: 1.12; }
+.recovery-intro { margin: 0; }
+.recovery-saved { display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, 1fr); gap: 18px; align-items: start; margin-top: 24px; padding: 18px; border-radius: 15px; background: var(--teal-soft); }
+.recovery-saved h3 { margin: 0 0 4px; font-family: var(--font-display); font-size: .95rem; }
+.recovery-saved small, .recovery-form small { display: block; color: var(--ink-soft); font-size: .7rem; line-height: 1.45; }
+.recovery-saved-list { display: grid; gap: 7px; }
+.recovery-saved-list > p { margin: 0; font-size: .74rem; }
+.recovery-session-button { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 12px; border: 1px solid rgba(23,107,97,.18); border-radius: 10px; background: var(--card); color: var(--ink); cursor: pointer; font-weight: 800; }
+.recovery-session-button small { color: var(--teal); font-weight: 800; }
+.recovery-divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: var(--ink-soft); font-size: .68rem; font-weight: 800; text-transform: uppercase; }
+.recovery-divider::before, .recovery-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.recovery-form { display: grid; gap: 9px; }
+.recovery-form > label { font-size: .76rem; font-weight: 800; }
+.recovery-form input { width: 100%; }
+.recovery-form .teacher-button { margin-top: 5px; }
+.recovery-status { min-height: 1.2em; margin: 0; color: var(--danger); font-size: .72rem; font-weight: 700; }
 .onboarding-dialog { width: min(780px, calc(100% - 24px)); max-height: min(760px, calc(100dvh - 24px)); padding: 0; overflow: hidden; }
 .onboarding-close { position: absolute; z-index: 3; top: 17px; right: 17px; float: none; }
 .onboarding-shell { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; min-height: min(610px, calc(100dvh - 26px)); }
@@ -380,7 +401,8 @@ dialog p, dialog li { color: var(--ink-soft); line-height: 1.55; }
   .hero h1 br { display: none; }
   .hero-path { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .hero-path i { display: none; }
-  .onboarding-launch { width: 100%; max-width: 390px; }
+  .hero-secondary-actions { display: grid; width: 100%; max-width: 390px; margin-right: auto; margin-left: auto; }
+  .onboarding-launch, .recovery-launch { width: 100%; }
   .entry-card { padding: 23px; }
   .two-fields, .profile-fields { grid-template-columns: 1fr; }
   .room-picker-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
@@ -404,6 +426,8 @@ dialog p, dialog li { color: var(--ink-soft); line-height: 1.55; }
   .phrase-item { flex-direction: column; gap: 4px; }
   .phrase-item span { min-width: 0; }
   .scaffold-panel { padding: 13px; }
+  .recovery-dialog { width: calc(100% - 14px); padding: 22px 18px; }
+  .recovery-saved { grid-template-columns: 1fr; gap: 12px; padding: 14px; }
   .onboarding-dialog { width: calc(100% - 14px); max-height: calc(100dvh - 14px); }
   .onboarding-shell { min-height: calc(100dvh - 16px); }
   .onboarding-header { padding: 20px 54px 13px 18px; }

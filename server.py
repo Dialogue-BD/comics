@@ -7,6 +7,7 @@ GET  /api/poll?window=<key>   – fetch current vote counts for a time window
 POST /api/poll                – submit / update a vote (upserts by responseToken)
 GET  /api/fgd/session         – fetch a public, participant, or teacher session view
 POST /api/fgd/sessions        – create a focus-group discussion session
+POST /api/fgd/recover         – reopen a session with its private teacher token
 POST /api/fgd/join            – join a selected discussion room
 POST /api/fgd/action          – submit a participant contribution, report, or reflection
 POST /api/fgd/teacher         – advance phases and manage the room dashboard
@@ -54,6 +55,7 @@ FGD_EVIDENCE_MOVES = {
 # A session may be prepared before class and reopened from the private teacher
 # link. Authenticated activity renews this window; public code lookups do not.
 FGD_SESSION_LIFETIME = 7 * 24 * 60 * 60
+FGD_RECOVERY_GRACE = 30 * 24 * 60 * 60
 
 # ---------------------------------------------------------------------------
 # Database helpers – one connection per thread (SQLite is not thread-safe to share)
@@ -212,6 +214,14 @@ def _fgd_session_row(db: sqlite3.Connection, code: str):
     return db.execute(
         "SELECT * FROM fgd_sessions WHERE code = ? AND expires_at > ?",
         (code, int(time.time())),
+    ).fetchone()
+
+
+def _fgd_session_row_any_age(db: sqlite3.Connection, code: str):
+    """Fetch a session for authenticated recovery, including expired rows."""
+    return db.execute(
+        "SELECT * FROM fgd_sessions WHERE code = ?",
+        (code,),
     ).fetchone()
 
 
@@ -481,6 +491,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             if parsed.path == "/api/fgd/sessions":
                 self._create_fgd_session(body)
                 return
+            if parsed.path == "/api/fgd/recover":
+                self._recover_fgd_session(body)
+                return
             if parsed.path == "/api/fgd/join":
                 self._join_fgd_session(body)
                 return
@@ -570,6 +583,41 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return
 
         _json_response(self, 200, _poll_data(window))
+
+    def _recover_fgd_session(self, body: dict) -> None:
+        code = _clean_text(body.get("code"), 5).upper()
+        token = _clean_text(body.get("teacherToken"), 96)
+        db = _get_db()
+        session = _fgd_session_row_any_age(db, code)
+        if not session:
+            _json_response(self, 404, {"error": "No saved session remains for this private teacher link."})
+            return
+        if not token or not secrets.compare_digest(token, session["teacher_token"]):
+            _json_response(self, 403, {"error": "Use the private teacher control link created with this session."})
+            return
+        if session["expires_at"] + FGD_RECOVERY_GRACE <= int(time.time()):
+            _json_response(self, 410, {"error": "The 30-day recovery window for this session has ended."})
+            return
+        if session["status"] == "ended":
+            _json_response(self, 409, {"error": "This session was intentionally ended. Create a new session to begin again."})
+            return
+
+        now = int(time.time())
+        expired = session["expires_at"] <= now
+        phase_started_at = session["phase_started_at"]
+        if session["status"] not in {"lobby", "ended"}:
+            # Continue at the saved stage with a fresh clock instead of
+            # auto-advancing while the class was away.
+            phase_started_at = now
+        db.execute(
+            "UPDATE fgd_sessions SET expires_at = ?, phase_started_at = ? WHERE code = ?",
+            (now + FGD_SESSION_LIFETIME, phase_started_at, code),
+        )
+        db.commit()
+        _json_response(self, 200, {
+            "recovered": expired,
+            "session": _fgd_snapshot(code, teacher_token=token),
+        })
 
     def _create_fgd_session(self, body: dict) -> None:
         try:

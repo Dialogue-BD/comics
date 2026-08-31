@@ -31,10 +31,16 @@
         <div class="hero-path" aria-label="Activity flow">
           <span><b>1</b> Create rooms</span><i></i><span><b>2</b> Students scan</span><i></i><span><b>3</b> Discuss</span><i></i><span><b>4</b> Report</span>
         </div>
-        <button class="onboarding-launch" type="button" data-open-onboarding>
-          <span class="onboarding-launch-icon" aria-hidden="true">▶</span>
-          <span><strong>Preview the seven discussion stages</strong><small>A two-minute visual tour for teachers and students</small></span>
-        </button>
+        <div class="hero-secondary-actions">
+          <button class="onboarding-launch" type="button" data-open-onboarding>
+            <span class="onboarding-launch-icon" aria-hidden="true">▶</span>
+            <span><strong>Preview the seven discussion stages</strong><small>A two-minute visual tour for teachers and students</small></span>
+          </button>
+          <button class="recovery-launch" id="open-recovery" type="button">
+            <span class="recovery-launch-icon" aria-hidden="true">↻</span>
+            <span><strong>Recover previous session</strong><small>Restore rooms, topics, reports, and the saved stage</small></span>
+          </button>
+        </div>
       </div>
 
       <div class="entry-grid">
@@ -263,12 +269,36 @@
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="recovery-dialog" class="recovery-dialog" aria-labelledby="recovery-title">
+    <button class="dialog-close" type="button" aria-label="Close session recovery">×</button>
+    <p class="eyebrow">Teacher recovery</p>
+    <h2 id="recovery-title">Continue where the class stopped.</h2>
+    <p class="recovery-intro">For up to 30 days after expiry, a private teacher link can restore the rooms, topics, student entries, reports, observations, and saved discussion stage. The timer restarts at that stage.</p>
+
+    <section class="recovery-saved" aria-labelledby="saved-session-heading">
+      <div>
+        <h3 id="saved-session-heading">Saved on this device</h3>
+        <small>Sessions created or opened in this browser appear here.</small>
+      </div>
+      <div class="recovery-saved-list" id="recovery-saved-list"></div>
+    </section>
+
+    <div class="recovery-divider"><span>or</span></div>
+
+    <form id="recovery-form" class="recovery-form">
+      <label for="recovery-link">Paste the private teacher control link</label>
+      <input id="recovery-link" type="url" inputmode="url" autocomplete="off" placeholder="https://…/discussion/?teacher=ABCDE#control=…" required>
+      <small>The private link is used only to verify that you control this session. Never project or share it with students.</small>
+      <button class="teacher-button" id="recover-session-button" type="submit"><span>Recover session</span><span>→</span></button>
+      <p class="recovery-status" id="recovery-status" role="status" aria-live="polite"></p>
+    </form>
+  </dialog>
   <dialog id="onboarding-dialog" class="onboarding-dialog" aria-labelledby="onboarding-title">
     <button class="dialog-close onboarding-close" type="button" aria-label="Close the tour">×</button>
     <div class="onboarding-shell">
       <header class="onboarding-header">
         <div>
-        <p class="eyebrow">Discussion roadmap</p>
+          <p class="eyebrow">Discussion roadmap</p>
           <p class="onboarding-counter" id="onboarding-counter">Overview</p>
         </div>
         <div class="onboarding-stage-track" id="onboarding-stage-track" aria-label="Tour progress"></div>
@@ -286,7 +316,7 @@
     <p class="eyebrow">How this works</p>
     <h2>The phone supports the talk. It does not replace it.</h2>
     <p>Students choose a room, receive a local discussion topic, and open the language or inquiry support only when it helps. One shared phone is enough. The teacher sets the broad pace; students facilitate the conversation themselves.</p>
-    <ul><li>No account is needed.</li><li>No audio is recorded.</li><li>Names and room work expire with the classroom session.</li></ul>
+    <ul><li>No account is needed.</li><li>No audio is recorded.</li><li>Names and room work require the private teacher link after expiry and remain recoverable for 30 days.</li></ul>
   </dialog>
 
   <script src="../qr/qrcode.js"></script>

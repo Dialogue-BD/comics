@@ -154,7 +154,7 @@
   }
 
   function maybeOpenOnboarding() {
-    if (!onboardingWasSeen() && ["landing", "picker"].includes(state.mode)) {
+    if (!onboardingWasSeen() && !$("#recovery-dialog")?.open && ["landing", "picker"].includes(state.mode)) {
       window.setTimeout(openOnboarding, 250);
     }
   }
@@ -172,6 +172,95 @@
       throw error;
     }
     return payload;
+  }
+
+  function savedTeacherCredentials() {
+    const saved = [];
+    try {
+      for (let index = 0; index < localStorage.length; index += 1) {
+        const key = localStorage.key(index) || "";
+        if (!key.startsWith("fgd-teacher:")) continue;
+        const code = key.slice("fgd-teacher:".length).toUpperCase();
+        const token = localStorage.getItem(key) || "";
+        if (code.length === 5 && token) saved.push({ code, token });
+      }
+    } catch (_) { /* storage can be unavailable in private browsing */ }
+    return saved.sort((a, b) => a.code.localeCompare(b.code));
+  }
+
+  function teacherCredentialsFromLink(value) {
+    let url;
+    try { url = new URL(String(value || "").trim(), window.location.href); } catch (_) {
+      throw new Error("Paste the complete private teacher control link.");
+    }
+    const code = (url.searchParams.get("teacher") || "").replace(/\s+/g, "").toUpperCase().slice(0, 5);
+    const token = new URLSearchParams(url.hash.replace(/^#/, "")).get("control") || "";
+    if (code.length !== 5 || !token) throw new Error("That link is missing its teacher code or private control key.");
+    return { code, token };
+  }
+
+  function enterTeacherSession(session, code, token) {
+    state.code = code;
+    state.teacherToken = token;
+    state.session = session;
+    state.mode = "teacher";
+    state.deadlineRefreshPhase = null;
+    try { localStorage.setItem(teacherStorageKey(code), token); } catch (_) { /* recovery still works for this visit */ }
+    setClock(session);
+    setTeacherControlUrl();
+    renderTeacher(true);
+    showView("teacher-view");
+    startPolling();
+    startClock();
+  }
+
+  async function recoverTeacherSession(code, token) {
+    const result = await api("../api/fgd/recover", {
+      method: "POST",
+      body: JSON.stringify({ code, teacherToken: token })
+    });
+    enterTeacherSession(result.session, code, token);
+    const dialog = $("#recovery-dialog");
+    if (dialog.open) dialog.close();
+    showToast(result.recovered ? "Previous session recovered—timer restarted at the saved stage" : "Saved session reopened");
+  }
+
+  function renderSavedTeacherSessions() {
+    const target = $("#recovery-saved-list");
+    const saved = savedTeacherCredentials();
+    if (!saved.length) {
+      target.innerHTML = "<p>No private teacher sessions are saved in this browser yet.</p>";
+      return;
+    }
+    target.innerHTML = saved.map(({ code }) => `
+      <button class="recovery-session-button" type="button" data-recover-code="${escapeHtml(code)}">
+        <span>Session ${escapeHtml(code)}</span><small>Open →</small>
+      </button>`).join("");
+    $$('[data-recover-code]', target).forEach((button) => button.addEventListener("click", async () => {
+      const credentials = saved.find((item) => item.code === button.dataset.recoverCode);
+      if (!credentials) return;
+      button.disabled = true;
+      $("#recovery-status").textContent = "Checking the saved session…";
+      try {
+        await recoverTeacherSession(credentials.code, credentials.token);
+      } catch (error) {
+        $("#recovery-status").textContent = error.message;
+        if ([403, 404, 410].includes(error.status)) {
+          try { localStorage.removeItem(teacherStorageKey(credentials.code)); } catch (_) { /* ignore */ }
+          renderSavedTeacherSessions();
+        }
+      } finally {
+        button.disabled = false;
+      }
+    }));
+  }
+
+  function openRecovery(prefill = "") {
+    $("#recovery-status").textContent = "";
+    $("#recovery-link").value = prefill;
+    renderSavedTeacherSessions();
+    const dialog = $("#recovery-dialog");
+    if (!dialog.open) dialog.showModal();
   }
 
   function showView(id) {
@@ -283,11 +372,13 @@
       if (state.mode === "picker") renderRoomPicker();
     } catch (error) {
       if ([403, 404].includes(error.status) && state.mode === "teacher") {
-        localStorage.removeItem(teacherStorageKey(state.code));
+        const recoveryLink = error.status === 404 ? makeTeacherControlUrl() : "";
+        if (error.status === 403) localStorage.removeItem(teacherStorageKey(state.code));
         clearInterval(state.pollTimer);
         state.mode = "landing";
         updateUrl();
         showView("landing-view");
+        if (recoveryLink) openRecovery(recoveryLink);
       } else if ([403, 404].includes(error.status) && state.mode === "student") {
         const roomCode = state.code;
         localStorage.removeItem(participantStorageKey(state.code));
@@ -371,17 +462,7 @@
         method: "POST",
         body: JSON.stringify({ roomCount, roomCapacity, supportLevel, topicIds, phaseDurations: paceDurations[pace] })
       });
-      state.code = result.code;
-      state.teacherToken = result.teacherToken;
-      state.session = result.session;
-      state.mode = "teacher";
-      localStorage.setItem(teacherStorageKey(state.code), state.teacherToken);
-      setClock(state.session);
-      setTeacherControlUrl();
-      renderTeacher(true);
-      showView("teacher-view");
-      startPolling();
-      startClock();
+      enterTeacherSession(result.session, result.code, result.teacherToken);
     } catch (error) {
       showToast(error.message);
     } finally {
@@ -763,19 +844,23 @@
         state.teacherToken = token;
         state.mode = "teacher";
         try {
-          state.session = await api(`../api/fgd/session?code=${encodeURIComponent(teacherCode)}&teacherToken=${encodeURIComponent(token)}`);
-          setClock(state.session);
-          renderTeacher(true);
-          showView("teacher-view");
-          startPolling();
-          startClock();
-          localStorage.setItem(teacherStorageKey(teacherCode), token);
-          setTeacherControlUrl();
+          const session = await api(`../api/fgd/session?code=${encodeURIComponent(teacherCode)}&teacherToken=${encodeURIComponent(token)}`);
+          enterTeacherSession(session, teacherCode, token);
           return;
         } catch (error) {
-          localStorage.removeItem(teacherStorageKey(teacherCode));
+          if (error.status === 404) {
+            try {
+              await recoverTeacherSession(teacherCode, token);
+              return;
+            } catch (recoveryError) {
+              showToast(recoveryError.message);
+              openRecovery(window.location.href);
+            }
+          } else {
+            localStorage.removeItem(teacherStorageKey(teacherCode));
+            showToast(error.message);
+          }
           state.mode = "landing";
-          showToast(error.message);
         }
       } else {
         showToast("Open the private teacher control link, or create a new session.");
@@ -805,6 +890,26 @@
   }
 
   function bindEvents() {
+    const recoveryDialog = $("#recovery-dialog");
+    $("#open-recovery").addEventListener("click", () => openRecovery());
+    $(".dialog-close", recoveryDialog).addEventListener("click", () => recoveryDialog.close());
+    recoveryDialog.addEventListener("click", (event) => { if (event.target === recoveryDialog) recoveryDialog.close(); });
+    $("#recovery-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const button = $("#recover-session-button");
+      button.disabled = true;
+      button.firstElementChild.textContent = "Recovering…";
+      $("#recovery-status").textContent = "Checking the private teacher link…";
+      try {
+        const credentials = teacherCredentialsFromLink($("#recovery-link").value);
+        await recoverTeacherSession(credentials.code, credentials.token);
+      } catch (error) {
+        $("#recovery-status").textContent = error.message;
+      } finally {
+        button.disabled = false;
+        button.firstElementChild.textContent = "Recover session";
+      }
+    });
     $$('[data-open-onboarding]').forEach((button) => button.addEventListener("click", openOnboarding));
     const onboardingDialog = $("#onboarding-dialog");
     $(".onboarding-close", onboardingDialog).addEventListener("click", () => onboardingDialog.close());
