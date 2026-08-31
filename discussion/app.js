@@ -29,7 +29,8 @@
     pollTimer: null,
     clockTimer: null,
     deadlineRefreshPhase: null,
-    toastTimer: null
+    toastTimer: null,
+    onboardingIndex: 0
   };
 
   const paceDurations = {
@@ -37,6 +38,60 @@
     35: { understand: 180, "first-voices": 300, explore: 420, challenge: 300, decide: 240, report: 120, reflect: 90 },
     45: { understand: 240, "first-voices": 360, explore: 600, challenge: 420, decide: 360, report: 180, reflect: 120 }
   };
+
+  const ONBOARDING_SEEN_KEY = "fgd-onboarding-seen-v1";
+  const onboardingStageCopy = {
+    understand: {
+      group: "Say the question in your own words. Clarify any key term before debating an answer.",
+      phone: "Shows the topic, short context, and optional English support if someone cannot express an idea."
+    },
+    "first-voices": {
+      group: "Invite every person to give an initial view and one reason. Nobody speaks twice before everyone is invited.",
+      phone: "The timer and Compass remind the group that this round is for hearing every voice—not winning the argument."
+    },
+    explore: {
+      group: "Ask why, how, and for examples. Build on earlier ideas and examine causes, effects, and who is affected.",
+      phone: "Offers inquiry questions and language frames only when the conversation needs help moving deeper."
+    },
+    challenge: {
+      group: "Paraphrase an idea before disagreeing. Test assumptions and consider someone who may experience the issue differently.",
+      phone: "Offers a different perspective and respectful disagreement language; it does not choose a side."
+    },
+    decide: {
+      group: "Name shared ground, preserve important disagreement, and form the most realistic recommendation you can justify.",
+      phone: "Keeps the final task visible and reminds the group that a fair conclusion can include a minority view."
+    },
+    report: {
+      group: "Draft one group report together. Read it aloud and check that it represents the actual discussion fairly.",
+      phone: "Opens the report inside the Compass, including space for agreement, insight, recommendation, and an unresolved view."
+    },
+    reflect: {
+      group: "Optionally notice one idea that changed the group’s thinking and one move that helped more people participate.",
+      phone: "Provides a brief reflection form. This is about improving the next discussion, not grading personalities."
+    }
+  };
+  const onboardingSlides = [
+    {
+      icon: "🧭",
+      number: "Two-minute overview",
+      title: "One question. Seven deliberate moves.",
+      summary: "The group keeps talking face to face while the teacher moves the whole class through a clear sequence. The stage banner and timer always show what comes next.",
+      group: "Keep the shared phone where everyone can see it. Talk to one another—not to the screen.",
+      phone: "Open the Compass for the current task. Open language or inquiry support only when the group needs it.",
+      teacher: "The teacher controls the pace, can add time, and can move the class backwards when a stage needs more work."
+    },
+    ...["understand", "first-voices", "explore", "challenge", "decide", "report", "reflect"].map((id, index) => {
+      const phase = phaseById(id);
+      return {
+        icon: phase.icon,
+        number: `Stage ${index + 1} of 7 · ${phase.label}`,
+        title: phase.short,
+        summary: phase.prompt,
+        group: onboardingStageCopy[id].group,
+        phone: onboardingStageCopy[id].phone
+      };
+    })
+  ];
 
   function escapeHtml(value) {
     return String(value ?? "")
@@ -53,6 +108,55 @@
     toast.classList.add("is-visible");
     clearTimeout(state.toastTimer);
     state.toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 2800);
+  }
+
+  function onboardingWasSeen() {
+    try { return localStorage.getItem(ONBOARDING_SEEN_KEY) === "yes"; } catch (_) { return false; }
+  }
+
+  function markOnboardingSeen() {
+    try { localStorage.setItem(ONBOARDING_SEEN_KEY, "yes"); } catch (_) { /* private browsing can reject storage */ }
+  }
+
+  function renderOnboarding() {
+    const slide = onboardingSlides[state.onboardingIndex];
+    const finalSlide = state.onboardingIndex === onboardingSlides.length - 1;
+    $("#onboarding-counter").textContent = state.onboardingIndex === 0 ? "Overview · then seven stages" : slide.number;
+    $("#onboarding-slide").innerHTML = `
+      <div class="onboarding-stage-heading">
+        <div class="onboarding-stage-icon" aria-hidden="true">${escapeHtml(slide.icon)}</div>
+        <div><p class="onboarding-stage-number">${escapeHtml(slide.number)}</p><h2 id="onboarding-title">${escapeHtml(slide.title)}</h2></div>
+      </div>
+      <p class="onboarding-summary">${escapeHtml(slide.summary)}</p>
+      <div class="onboarding-roles">
+        <article class="onboarding-role"><span>The group does</span><p>${escapeHtml(slide.group)}</p></article>
+        <article class="onboarding-role phone"><span>The phone helps</span><p>${escapeHtml(slide.phone)}</p></article>
+      </div>
+      ${slide.teacher ? `<div class="onboarding-teacher-note"><b>Teacher freedom</b><span>${escapeHtml(slide.teacher)}</span></div>` : ""}`;
+    $("#onboarding-stage-track").innerHTML = onboardingSlides.map((item, index) => {
+      const cls = index === state.onboardingIndex ? "is-current" : index < state.onboardingIndex ? "is-past" : "";
+      const label = index === 0 ? "Overview" : item.number;
+      return `<button type="button" class="${cls}" data-onboarding-slide="${index}" aria-label="${escapeHtml(label)}" aria-current="${index === state.onboardingIndex ? "step" : "false"}"></button>`;
+    }).join("");
+    $$('[data-onboarding-slide]', $("#onboarding-stage-track")).forEach((button) => button.addEventListener("click", () => {
+      state.onboardingIndex = Number(button.dataset.onboardingSlide);
+      renderOnboarding();
+    }));
+    $("#onboarding-back").disabled = state.onboardingIndex === 0;
+    $("#onboarding-next").textContent = finalSlide ? "Got it—ready to discuss ✓" : state.onboardingIndex === 0 ? "Begin the tour →" : "Next stage →";
+  }
+
+  function openOnboarding() {
+    state.onboardingIndex = 0;
+    renderOnboarding();
+    const dialog = $("#onboarding-dialog");
+    if (!dialog.open) dialog.showModal();
+  }
+
+  function maybeOpenOnboarding() {
+    if (!onboardingWasSeen() && ["landing", "picker"].includes(state.mode)) {
+      window.setTimeout(openOnboarding, 250);
+    }
   }
 
   async function api(path, options = {}) {
@@ -701,6 +805,29 @@
   }
 
   function bindEvents() {
+    $$('[data-open-onboarding]').forEach((button) => button.addEventListener("click", openOnboarding));
+    const onboardingDialog = $("#onboarding-dialog");
+    $(".onboarding-close", onboardingDialog).addEventListener("click", () => onboardingDialog.close());
+    $("#onboarding-back").addEventListener("click", () => {
+      if (state.onboardingIndex > 0) {
+        state.onboardingIndex -= 1;
+        renderOnboarding();
+      }
+    });
+    $("#onboarding-next").addEventListener("click", () => {
+      if (state.onboardingIndex < onboardingSlides.length - 1) {
+        state.onboardingIndex += 1;
+        renderOnboarding();
+      } else {
+        onboardingDialog.close();
+      }
+    });
+    onboardingDialog.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") $("#onboarding-next").click();
+      if (event.key === "ArrowLeft" && state.onboardingIndex > 0) $("#onboarding-back").click();
+    });
+    onboardingDialog.addEventListener("click", (event) => { if (event.target === onboardingDialog) onboardingDialog.close(); });
+    onboardingDialog.addEventListener("close", markOnboardingSeen);
     $("#create-session-form").addEventListener("submit", createSession);
     $("#join-session-form").addEventListener("submit", joinRoom);
     $("#copy-join-link").addEventListener("click", async () => {
@@ -736,8 +863,9 @@
     dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", async () => {
     bindEvents();
-    restoreFromUrl();
+    await restoreFromUrl();
+    maybeOpenOnboarding();
   });
 })();

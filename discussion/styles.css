@@ -91,6 +91,12 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .hero-path span { white-space: nowrap; }
 .hero-path b { display: inline-grid; place-items: center; width: 20px; height: 20px; margin-right: 3px; border-radius: 50%; background: var(--teal-soft); color: var(--teal); }
 .hero-path i { display: block; width: 34px; height: 1px; background: var(--line); }
+.onboarding-launch { display: inline-flex; align-items: center; gap: 12px; margin: 24px auto 0; padding: 11px 16px 11px 11px; border: 1px solid rgba(23,107,97,.25); border-radius: 15px; background: rgba(255,253,248,.82); color: var(--ink); box-shadow: 0 8px 24px rgba(38,50,46,.06); text-align: left; cursor: pointer; }
+.onboarding-launch:hover { border-color: var(--teal); transform: translateY(-1px); }
+.onboarding-launch-icon { display: grid; place-items: center; flex: 0 0 auto; width: 38px; height: 38px; border-radius: 11px; background: var(--teal); color: #fff; font-size: .78rem; }
+.onboarding-launch > span:last-child { display: flex; flex-direction: column; }
+.onboarding-launch strong { font-size: .82rem; }
+.onboarding-launch small { margin-top: 2px; color: var(--ink-soft); font-size: .68rem; }
 
 .entry-grid { max-width: 640px; margin: 0 auto; }
 .entry-card { position: relative; padding: clamp(24px, 4vw, 38px); border: 1px solid var(--line); border-radius: 24px; background: rgba(255,253,248,.86); box-shadow: var(--shadow); overflow: hidden; }
@@ -135,6 +141,7 @@ textarea { min-height: 92px; resize: vertical; line-height: 1.5; }
 .section-heading { margin: 32px 0 28px; }
 .section-heading h1 { font-size: clamp(2rem, 6vw, 3.5rem); }
 .section-heading > p:last-child { color: var(--ink-soft); }
+.onboarding-inline { margin-top: 4px; padding: 5px 0; border: 0; background: transparent; color: var(--teal); font-size: .78rem; font-weight: 800; cursor: pointer; }
 .profile-fields { margin-bottom: 26px; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
 .room-picker-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
 .room-choice { min-height: 148px; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); text-align: left; cursor: pointer; transition: .16s ease; }
@@ -220,6 +227,7 @@ textarea { min-height: 92px; resize: vertical; line-height: 1.5; }
 @keyframes slowspin { to { transform: rotate(360deg); } }
 .waiting-card h1 { margin: 6px auto 15px; max-width: 520px; font-size: clamp(2rem, 7vw, 3.2rem); }
 .waiting-card > p:not(.eyebrow) { max-width: 470px; margin: 0 auto; color: var(--ink-soft); line-height: 1.6; }
+.onboarding-waiting-button { margin-top: 24px; padding: 10px 14px; border: 1px solid var(--teal); border-radius: 11px; background: var(--teal-soft); color: var(--teal-dark); font-size: .78rem; font-weight: 800; cursor: pointer; }
 .phase-strip { position: sticky; top: 78px; z-index: 20; margin-bottom: 12px; border: 1px solid rgba(23,107,97,.22); border-radius: 15px; background: rgba(217,235,230,.96); backdrop-filter: blur(14px); overflow: hidden; }
 .phase-strip > summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 62px; padding: 13px 16px; cursor: pointer; }
 .phase-strip > summary::-webkit-details-marker { display: none; }
@@ -319,6 +327,34 @@ dialog::backdrop { background: rgba(23,51,47,.45); backdrop-filter: blur(3px); }
 dialog h2 { font-family: var(--font-display); letter-spacing: -.03em; }
 dialog p, dialog li { color: var(--ink-soft); line-height: 1.55; }
 .dialog-close { float: right; width: 34px; height: 34px; border: 0; border-radius: 50%; background: var(--paper-deep); cursor: pointer; font-size: 1.2rem; }
+.onboarding-dialog { width: min(780px, calc(100% - 24px)); max-height: min(760px, calc(100dvh - 24px)); padding: 0; overflow: hidden; }
+.onboarding-close { position: absolute; z-index: 3; top: 17px; right: 17px; float: none; }
+.onboarding-shell { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; min-height: min(610px, calc(100dvh - 26px)); }
+.onboarding-header { padding: 24px 64px 15px 26px; border-bottom: 1px solid var(--line); background: rgba(244,240,232,.72); }
+.onboarding-header > div:first-child { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.onboarding-header .eyebrow { margin-bottom: 0; }
+.onboarding-counter { margin: 0; color: var(--ink-soft); font-size: .72rem; font-weight: 800; }
+.onboarding-stage-track { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; margin-top: 14px; }
+.onboarding-stage-track button { min-width: 0; height: 7px; padding: 0; border: 0; border-radius: 999px; background: var(--line); cursor: pointer; transition: background .16s ease, transform .16s ease; }
+.onboarding-stage-track button.is-past { background: #8bbab3; }
+.onboarding-stage-track button.is-current { background: var(--coral); transform: scaleY(1.5); }
+.onboarding-slide { display: grid; align-content: center; padding: clamp(24px, 5vw, 48px); overflow-y: auto; }
+.onboarding-stage-heading { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 18px; }
+.onboarding-stage-icon { display: grid; place-items: center; width: 72px; height: 72px; border-radius: 22px; background: var(--teal-soft); font-size: 2rem; }
+.onboarding-stage-number { margin: 0 0 4px; color: var(--coral); font-size: .7rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.onboarding-slide h2 { margin: 0; color: var(--ink); font-size: clamp(1.75rem, 5vw, 2.7rem); line-height: 1.06; }
+.onboarding-summary { max-width: 650px; margin: 20px 0 0; color: var(--ink-soft); font-size: clamp(.95rem, 2vw, 1.08rem); line-height: 1.65; }
+.onboarding-roles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+.onboarding-role { padding: 17px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
+.onboarding-role.phone { background: var(--blue-soft); border-color: rgba(65,106,148,.18); }
+.onboarding-role span { display: block; margin-bottom: 7px; color: var(--teal); font-size: .66rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+.onboarding-role.phone span { color: var(--blue); }
+.onboarding-role p { margin: 0; color: var(--ink); font-size: .86rem; line-height: 1.5; }
+.onboarding-teacher-note { display: flex; gap: 10px; margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: var(--gold-soft); color: #65430f; font-size: .78rem; line-height: 1.45; }
+.onboarding-teacher-note b { flex: 0 0 auto; }
+.onboarding-controls { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; padding: 14px 18px; border-top: 1px solid var(--line); background: var(--card); }
+.onboarding-controls > span { color: var(--ink-soft); text-align: center; font-size: .68rem; }
+.onboarding-controls .primary-button, .onboarding-controls .secondary-button { min-width: 115px; }
 .observation-panel { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; }
 .observation-panel summary { cursor: pointer; color: var(--teal); font-size: .72rem; font-weight: 800; }
 .observation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
@@ -344,6 +380,7 @@ dialog p, dialog li { color: var(--ink-soft); line-height: 1.55; }
   .hero h1 br { display: none; }
   .hero-path { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .hero-path i { display: none; }
+  .onboarding-launch { width: 100%; max-width: 390px; }
   .entry-card { padding: 23px; }
   .two-fields, .profile-fields { grid-template-columns: 1fr; }
   .room-picker-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
@@ -367,6 +404,23 @@ dialog p, dialog li { color: var(--ink-soft); line-height: 1.55; }
   .phrase-item { flex-direction: column; gap: 4px; }
   .phrase-item span { min-width: 0; }
   .scaffold-panel { padding: 13px; }
+  .onboarding-dialog { width: calc(100% - 14px); max-height: calc(100dvh - 14px); }
+  .onboarding-shell { min-height: calc(100dvh - 16px); }
+  .onboarding-header { padding: 20px 54px 13px 18px; }
+  .onboarding-header > div:first-child { display: block; }
+  .onboarding-counter { margin-top: 5px; }
+  .onboarding-slide { align-content: start; padding: 24px 18px; }
+  .onboarding-stage-heading { grid-template-columns: 56px 1fr; gap: 13px; }
+  .onboarding-stage-icon { width: 56px; height: 56px; border-radius: 17px; font-size: 1.55rem; }
+  .onboarding-slide h2 { font-size: 1.65rem; }
+  .onboarding-summary { margin-top: 15px; font-size: .92rem; line-height: 1.55; }
+  .onboarding-roles { grid-template-columns: 1fr; gap: 8px; margin-top: 16px; }
+  .onboarding-role { padding: 12px 13px; }
+  .onboarding-role p { font-size: .8rem; }
+  .onboarding-teacher-note { font-size: .72rem; }
+  .onboarding-controls { grid-template-columns: 1fr 1fr; gap: 9px; padding: 11px; }
+  .onboarding-controls > span { display: none; }
+  .onboarding-controls button { width: 100%; min-width: 0 !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {

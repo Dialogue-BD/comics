@@ -31,6 +31,10 @@
         <div class="hero-path" aria-label="Activity flow">
           <span><b>1</b> Create rooms</span><i></i><span><b>2</b> Students scan</span><i></i><span><b>3</b> Discuss</span><i></i><span><b>4</b> Report</span>
         </div>
+        <button class="onboarding-launch" type="button" data-open-onboarding>
+          <span class="onboarding-launch-icon" aria-hidden="true">▶</span>
+          <span><strong>Preview the seven discussion stages</strong><small>A two-minute visual tour for teachers and students</small></span>
+        </button>
       </div>
 
       <div class="entry-grid">
@@ -88,6 +92,7 @@
           <p class="eyebrow">Session <strong id="picker-code">—</strong></p>
           <h1 id="picker-heading">Choose your room</h1>
           <p>Topics stay secret until the teacher begins.</p>
+          <button class="onboarding-inline" type="button" data-open-onboarding>See how the discussion will progress →</button>
         </div>
         <form id="join-session-form">
           <div class="profile-fields">
@@ -172,6 +177,7 @@
           <p class="eyebrow">You’re in</p>
           <h1>Your topic is still under wraps.</h1>
           <p>Meet your group and place any available phone where everyone can see it. One phone can support the whole group.</p>
+          <button class="onboarding-waiting-button" type="button" data-open-onboarding>Preview the seven stages</button>
         </section>
 
         <div id="active-room-content" hidden>
@@ -257,6 +263,24 @@
   </main>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="onboarding-dialog" class="onboarding-dialog" aria-labelledby="onboarding-title">
+    <button class="dialog-close onboarding-close" type="button" aria-label="Close the tour">×</button>
+    <div class="onboarding-shell">
+      <header class="onboarding-header">
+        <div>
+        <p class="eyebrow">Discussion roadmap</p>
+          <p class="onboarding-counter" id="onboarding-counter">Overview</p>
+        </div>
+        <div class="onboarding-stage-track" id="onboarding-stage-track" aria-label="Tour progress"></div>
+      </header>
+      <section class="onboarding-slide" id="onboarding-slide" aria-live="polite"></section>
+      <footer class="onboarding-controls">
+        <button class="secondary-button" id="onboarding-back" type="button">← Back</button>
+        <span>Use the phone only when it helps the conversation.</span>
+        <button class="primary-button" id="onboarding-next" type="button">Begin the tour →</button>
+      </footer>
+    </div>
+  </dialog>
   <dialog id="about-dialog">
     <button class="dialog-close" type="button" aria-label="Close">×</button>
     <p class="eyebrow">How this works</p>
