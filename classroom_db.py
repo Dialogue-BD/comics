@@ -93,7 +93,7 @@ class ClassroomDatabase:
             except ImportError as exc:  # pragma: no cover - depends on deployment package install
                 raise RuntimeError(
                     "DATABASE_URL is configured, but psycopg is not installed. "
-                    "Install dependencies from requirements.txt before publishing."
+                    "Add psycopg to the project dependencies before publishing."
                 ) from exc
             self._connection = psycopg.connect(database_url, row_factory=dict_row)
         else:
