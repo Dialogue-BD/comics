@@ -82,7 +82,7 @@ def _get_db() -> ClassroomDatabase:
 def _poll_data(window: str) -> dict:
     """Build the response payload the JS renderPoll() function expects."""
     rows = _get_db().execute(
-        "SELECT primary_emotion, emotion, reason FROM poll_responses WHERE window = ?",
+        'SELECT primary_emotion, emotion, reason FROM poll_responses WHERE "window" = ?',
         (window,)
     ).fetchall()
 
@@ -509,9 +509,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             db = _get_db()
             db.execute("""
                 INSERT INTO poll_responses
-                    (window, response_token, primary_emotion, emotion, reason, created_at)
+                    ("window", response_token, primary_emotion, emotion, reason, created_at)
                 VALUES (?, ?, ?, ?, ?, ?)
-                ON CONFLICT(window, response_token) DO UPDATE SET
+                ON CONFLICT("window", response_token) DO UPDATE SET
                     primary_emotion = excluded.primary_emotion,
                     emotion         = excluded.emotion,
                     reason          = excluded.reason,

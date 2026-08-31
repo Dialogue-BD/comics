@@ -9,15 +9,15 @@ from typing import Any, Iterable
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS poll_responses (
     id             __POLL_ID__,
-    window         TEXT    NOT NULL,
+    "window"       TEXT    NOT NULL,
     response_token TEXT    NOT NULL,
     primary_emotion TEXT   NOT NULL,
     emotion        TEXT    NOT NULL,
     reason         TEXT,
     created_at     BIGINT  DEFAULT __NOW__,
-    UNIQUE(window, response_token)
+    UNIQUE("window", response_token)
 );
-CREATE INDEX IF NOT EXISTS idx_pr_window ON poll_responses(window);
+CREATE INDEX IF NOT EXISTS idx_pr_window ON poll_responses("window");
 CREATE TABLE IF NOT EXISTS debate_active_session (
     id             TEXT    PRIMARY KEY DEFAULT 'current',
     session_data   TEXT    NOT NULL,
