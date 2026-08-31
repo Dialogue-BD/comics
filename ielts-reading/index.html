@@ -573,6 +573,127 @@ select.pick.wrong { border-color: var(--bad); background: var(--bad-dim); }
 .trap-card .td { font-size: 0.79rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 7px; }
 .trap-card .te { font-size: 0.75rem; color: var(--text-dim); font-family: var(--mono); }
 .trap-card .te b { color: var(--warn); }
+
+/* The trap lab makes the semantic change visible. Matching vocabulary recedes;
+   the one altered relationship stays in focus. */
+.trap-lab { overflow: hidden; }
+.trap-tabs {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;
+  margin: 18px 0 16px;
+}
+.trap-tab {
+  min-width: 0; border: 1px solid var(--border); border-radius: var(--r-sm);
+  background: var(--surface-2); color: var(--text-muted); cursor: pointer;
+  padding: 10px 8px; font: 750 0.78rem/1.25 var(--sans); transition: .18s;
+}
+.trap-tab:hover { border-color: var(--accent); color: var(--text); transform: translateY(-1px); }
+.trap-tab[aria-selected="true"] {
+  border-color: var(--accent); background: var(--accent-dim); color: var(--accent);
+  box-shadow: inset 0 -3px 0 var(--accent);
+}
+.trap-tab .tab-no { display: block; font: 700 0.62rem/1 var(--mono); opacity: .65; margin-bottom: 5px; }
+.trap-lesson { display: none; }
+.trap-lesson.active { display: block; animation: trap-in .28s ease-out; }
+@keyframes trap-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.trap-lesson-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 13px; }
+.trap-icon {
+  width: 44px; height: 44px; flex: 0 0 44px; border-radius: 12px;
+  display: grid; place-items: center; background: var(--bad-dim); font-size: 1.35rem;
+}
+.trap-lesson-head h4 { font-size: 1.12rem; margin-bottom: 4px; }
+.trap-lesson-head p { color: var(--text-muted); font-size: .88rem; line-height: 1.55; }
+.trap-stage-controls { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 12px; }
+.trap-stage-btn {
+  border: 1px solid var(--border); background: var(--surface); color: var(--text-muted);
+  border-radius: 999px; padding: 7px 11px; cursor: pointer; font: 750 .72rem/1 var(--sans);
+}
+.trap-stage-btn[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.trap-stage-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(245px, .75fr); gap: 14px; }
+.trap-xray, .trap-coach, .trap-try {
+  border: 1px solid var(--border); border-radius: var(--r); background: var(--surface-2);
+}
+.trap-xray { padding: 16px; min-width: 0; }
+.xray-kicker {
+  color: var(--text-dim); font: 800 .64rem/1 var(--sans); letter-spacing: .09em;
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.xray-row {
+  display: grid; grid-template-columns: 76px 1fr; gap: 10px; align-items: start;
+  padding: 10px 0; border-top: 1px solid var(--border-soft);
+}
+.xray-row:first-of-type { border-top: 0; }
+.xray-label { font: 800 .64rem/1.5 var(--sans); letter-spacing: .07em; text-transform: uppercase; color: var(--text-dim); }
+.xray-sentence { font: 1rem/1.65 var(--serif); color: var(--text-passage); }
+.xray-match, .xray-shift { border-radius: 5px; padding: 1px 3px; transition: .35s; }
+.trap-lesson[data-stage="scan"] .xray-match,
+.trap-lesson[data-stage="scan"] .xray-shift {
+  background: var(--accent-dim); color: var(--accent); box-shadow: 0 0 0 1px rgba(29,78,216,.16);
+}
+.trap-lesson[data-stage="xray"] .xray-match,
+.trap-lesson[data-stage="verdict"] .xray-match { opacity: .28; filter: grayscale(.7); }
+.trap-lesson[data-stage="xray"] .xray-shift,
+.trap-lesson[data-stage="verdict"] .xray-shift {
+  background: var(--bad-dim); color: var(--bad); box-shadow: 0 0 0 2px var(--bad);
+  font-weight: 800;
+}
+.trap-lesson[data-stage="xray"] .xray-shift { animation: trap-pulse 1.15s ease-in-out 1; }
+@keyframes trap-pulse { 50% { box-shadow: 0 0 0 6px var(--bad-dim); } }
+.trap-diagram {
+  min-height: 96px; margin-top: 12px; border-radius: var(--r-sm); border: 1px dashed var(--border);
+  background: var(--surface); padding: 12px; display: grid; place-items: center; transition: .3s;
+}
+.trap-lesson[data-stage="scan"] .trap-diagram { opacity: .3; filter: grayscale(1); }
+.trap-lesson[data-stage="xray"] .trap-diagram,
+.trap-lesson[data-stage="verdict"] .trap-diagram { border-color: var(--bad); }
+.direction-map { width: 100%; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 9px; text-align: center; }
+.direction-word { padding: 8px; border-radius: 8px; background: var(--surface-3); font-weight: 800; font-size: .78rem; }
+.direction-arrow { font-size: 1.5rem; color: var(--bad); font-weight: 900; }
+.qualifier-scale { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; position: relative; gap: 5px; }
+.qualifier-scale::before { content: ''; position: absolute; left: 8%; right: 8%; top: 17px; height: 3px; background: var(--border); }
+.qualifier-scale span { position: relative; z-index: 1; padding-top: 30px; text-align: center; font: 700 .67rem/1.2 var(--sans); color: var(--text-dim); }
+.qualifier-scale span::before { content: ''; position: absolute; width: 12px; height: 12px; border: 3px solid var(--surface); border-radius: 50%; background: var(--border); top: 11px; left: calc(50% - 6px); }
+.qualifier-scale .from::before { background: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+.qualifier-scale .to::before { background: var(--bad); box-shadow: 0 0 0 2px var(--bad); }
+.scope-map { position: relative; width: 230px; max-width: 100%; height: 92px; }
+.scope-ring { position: absolute; border: 2px solid var(--border); border-radius: 999px; inset-block: 0; display: grid; place-items: center; font: 750 .65rem/1 var(--sans); color: var(--text-dim); }
+.scope-ring.world { inset-inline: 0; place-items: start center; padding-top: 4px; }
+.scope-ring.city { inset: 15px 42px; border-color: var(--bad); color: var(--bad); place-items: start center; padding-top: 3px; }
+.scope-ring.group { inset: 29px 79px; border-color: var(--accent); background: var(--accent-dim); color: var(--accent); white-space: nowrap; }
+.cause-map { display: grid; grid-template-columns: 1fr 70px 1fr; gap: 8px; align-items: center; width: 100%; }
+.cause-node { text-align: center; padding: 9px 7px; border-radius: 8px; background: var(--surface-3); font-weight: 800; font-size: .75rem; }
+.cause-arrow { height: 3px; background: var(--bad); position: relative; }
+.cause-arrow::after { content: ''; position: absolute; right: -1px; top: -5px; border-left: 10px solid var(--bad); border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
+.cause-map.claim .cause-arrow { transform: rotate(180deg); }
+.cause-caption { grid-column: 1 / -1; text-align: center; font: 700 .66rem/1.3 var(--sans); color: var(--text-dim); }
+.trap-verdict {
+  opacity: 0; transform: translateY(5px); transition: .28s; margin-top: 11px;
+  padding: 9px 11px; border-radius: var(--r-sm); background: var(--bad-dim); color: var(--bad-text);
+  font-size: .8rem; font-weight: 700;
+}
+.trap-lesson[data-stage="verdict"] .trap-verdict { opacity: 1; transform: none; }
+.trap-coach { padding: 15px; display: grid; align-content: start; gap: 10px; }
+.coach-step { display: grid; grid-template-columns: 26px 1fr; gap: 9px; align-items: start; }
+.coach-step .n { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-dim); color: var(--accent); font: 800 .68rem/1 var(--mono); }
+.coach-step b { display: block; font-size: .78rem; margin-bottom: 2px; }
+.coach-step p { color: var(--text-muted); font-size: .75rem; line-height: 1.45; }
+.trap-mantra { margin-top: 2px; border-left: 3px solid var(--warn); background: var(--warn-dim); padding: 9px 11px; border-radius: 0 7px 7px 0; color: var(--warn-text); font-size: .76rem; line-height: 1.45; }
+.trap-try { margin-top: 14px; padding: 14px 16px; }
+.trap-try h5 { margin: 0 0 5px; font-size: .8rem; }
+.trap-try-source { font: .88rem/1.55 var(--serif); color: var(--text-muted); margin-bottom: 8px; }
+.trap-choice { width: 100%; text-align: left; margin-top: 7px; padding: 9px 11px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); cursor: pointer; font: .84rem/1.4 var(--serif); }
+.trap-choice:hover:not(:disabled) { border-color: var(--accent); }
+.trap-choice.correct { border-color: var(--good); background: var(--good-dim); }
+.trap-choice.wrong { border-color: var(--bad); background: var(--bad-dim); }
+.trap-try-feedback { display: none; margin-top: 9px; font-size: .78rem; line-height: 1.45; }
+.trap-try-feedback.show { display: block; }
+.trap-try-feedback.ok { color: var(--good-text); }
+.trap-try-feedback.no { color: var(--bad-text); }
+@media (max-width: 760px) {
+  .trap-tabs { grid-template-columns: 1fr 1fr; }
+  .trap-stage-grid { grid-template-columns: 1fr; }
+  .trap-tab { font-size: .74rem; }
+  .xray-row { grid-template-columns: 60px 1fr; }
+}
 .extract {
   font-family: var(--serif); background: var(--surface-3); border-left: 3px solid var(--accent);
   border-radius: 0 var(--r-sm) var(--r-sm) 0; padding: 11px 15px; margin-bottom: 10px; font-size: 0.97rem; color: var(--text-passage);
@@ -1353,18 +1474,27 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
 
   /* every panel that carries a dark surface in the app must go white on paper */
   .notice-doc, .extract, .para-slot, .locate-q, .check-card, .trap-card,
+  .trap-xray, .trap-coach, .trap-try, .trap-diagram,
   .kw-sentence, .stat-tile, .ws-card, .qbox {
     background: #fff !important; color: #111 !important; border-color: #999 !important;
   }
   .notice-doc h4, .notice-doc .sched-row span, .notice-doc .dim, .notice-doc b,
   .extract .lbl, .card-label, .q-num, .para-key, .para-text, .locate-prompt,
   .kwchip, .kw-counter, .check-card .cn, .check-card .ct, .check-card .cd,
-  .trap-card .tt, .trap-card .td, .trap-card .te, .trap-card .te b, .q-text b {
+  .trap-card .tt, .trap-card .td, .trap-card .te, .trap-card .te b, .q-text b,
+  .trap-lesson-head h4, .trap-lesson-head p, .xray-kicker, .xray-label,
+  .xray-sentence, .coach-step b, .coach-step p, .trap-mantra, .trap-verdict {
     color: #111 !important;
   }
   .notice-doc .sched-row { border-bottom: 1px dotted #999 !important; }
   .extract { border-left: 3px solid #666 !important; }
   .trap-card { border-left: 3px solid #666 !important; }
+  .trap-tabs, .trap-stage-controls, .trap-try { display: none !important; }
+  .trap-lesson { display: block !important; page-break-inside: avoid; margin-bottom: 7mm; }
+  .trap-lesson[hidden] { display: block !important; }
+  .trap-lesson .xray-match { opacity: .45 !important; filter: none !important; }
+  .trap-lesson .xray-shift { color: #111 !important; box-shadow: 0 0 0 1px #111 !important; background: #eee !important; }
+  .trap-verdict { opacity: 1 !important; transform: none !important; background: #eee !important; }
   .kwchip { border: 1px dashed #999 !important; }
 
   /* worksheets are for writing on: replace live controls with blanks */
@@ -2371,14 +2501,109 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-label">🪤 The four traps</div>
-      <div class="trap-glossary">
-        <div class="trap-card"><div class="tt">🔄 Negation Flip</div><div class="td">The claim states the exact opposite of the text, using the same keywords so it scans as a match.</div><div class="te">text: <b>harm</b> → claim: <b>increase</b></div></div>
-        <div class="trap-card"><div class="tt">⚖️ Qualifier Swap</div><div class="td">A hedge is quietly upgraded to an absolute. The topic matches perfectly; the strength does not.</div><div class="te">text: <b>some</b> → claim: <b>all</b></div></div>
-        <div class="trap-card"><div class="tt">🗺️ Scope Shift</div><div class="td">Something true of one place, group or period is stretched to cover everything.</div><div class="te">text: <b>in London</b> → claim: <b>worldwide</b></div></div>
-        <div class="trap-card"><div class="tt">🔁 Reversed Cause</div><div class="td">A and B are both present and both correct — but the arrow between them is turned around.</div><div class="te">text: <b>A causes B</b> → claim: <b>B causes A</b></div></div>
+    <div class="card trap-lab" id="trapLab">
+      <div class="card-label">🪤 Trap X-ray lab · 8-minute visual lesson</div>
+      <div class="card-title">Same keywords. One changed relationship.</div>
+      <p class="card-intro">Tap through each trap. First see why a hurried eye accepts it; then fade the matching vocabulary away and expose the small change that reverses the answer.</p>
+
+      <div class="trap-tabs" role="tablist" aria-label="Four IELTS reading trap types">
+        <button class="trap-tab" id="trapTab-negation" role="tab" aria-controls="trapPanel-negation" aria-selected="true" data-trap="negation"><span class="tab-no">TRAP 01</span>🔄 Negation flip</button>
+        <button class="trap-tab" id="trapTab-qualifier" role="tab" aria-controls="trapPanel-qualifier" aria-selected="false" data-trap="qualifier" tabindex="-1"><span class="tab-no">TRAP 02</span>⚖️ Qualifier swap</button>
+        <button class="trap-tab" id="trapTab-scope" role="tab" aria-controls="trapPanel-scope" aria-selected="false" data-trap="scope" tabindex="-1"><span class="tab-no">TRAP 03</span>🗺️ Scope shift</button>
+        <button class="trap-tab" id="trapTab-cause" role="tab" aria-controls="trapPanel-cause" aria-selected="false" data-trap="cause" tabindex="-1"><span class="tab-no">TRAP 04</span>🔁 Reversed cause</button>
       </div>
+
+      <article class="trap-lesson active" id="trapPanel-negation" role="tabpanel" aria-labelledby="trapTab-negation" data-trap="negation" data-stage="scan">
+        <div class="trap-lesson-head"><div class="trap-icon">🔄</div><div><h4>Negation flip</h4><p>The nouns stay still while the action turns around. Your eye sees the topic match; your answer must follow the direction.</p></div></div>
+        <div class="trap-stage-controls" aria-label="Negation flip demonstration stages">
+          <button class="trap-stage-btn" data-stage="scan" aria-pressed="true">1 · Hurried scan</button><button class="trap-stage-btn" data-stage="xray" aria-pressed="false">2 · X-ray the change</button><button class="trap-stage-btn" data-stage="verdict" aria-pressed="false">3 · Make the call</button>
+        </div>
+        <div class="trap-stage-grid">
+          <div class="trap-xray">
+            <div class="xray-kicker">Watch the meaning change</div>
+            <div class="xray-row"><div class="xray-label">Text</div><div class="xray-sentence"><span class="xray-match">The new timetable</span> <span class="xray-shift">reduced</span> <span class="xray-match">average waiting times.</span></div></div>
+            <div class="xray-row"><div class="xray-label">Claim</div><div class="xray-sentence"><span class="xray-match">The new timetable</span> <span class="xray-shift">increased</span> <span class="xray-match">average waiting times.</span></div></div>
+            <div class="trap-diagram"><div class="direction-map"><span class="direction-word">reduced ↓</span><span class="direction-arrow">≠</span><span class="direction-word">increased ↑</span></div></div>
+            <div class="trap-verdict">FALSE · The passage directly says the opposite. This is not NOT GIVEN because the evidence is on the page.</div>
+          </div>
+          <aside class="trap-coach">
+            <div class="coach-step"><span class="n">1</span><div><b>Box the subject</b><p>Both sentences concern the same timetable and the same waiting times.</p></div></div>
+            <div class="coach-step"><span class="n">2</span><div><b>Circle the direction word</b><p>Reduced and increased point in opposite directions.</p></div></div>
+            <div class="coach-step"><span class="n">3</span><div><b>Say the relationship aloud</b><p>“The text says down; the claim says up.” That physical contrast makes FALSE obvious.</p></div></div>
+            <div class="trap-mantra"><b>Fast test:</b> replace the verbs with ↑ and ↓. If the arrows disagree, stop: FALSE.</div>
+          </aside>
+        </div>
+        <div class="trap-try" data-answer="A" data-why="‘Declined’ and ‘became less common’ both point down. Option B flips the direction to up."><h5>One-breath check · Which claim keeps the meaning?</h5><div class="trap-try-source">Text: “Car use declined after the cycle lane opened.”</div><button class="trap-choice" data-v="A">A · Car use became less common after the cycle lane opened.</button><button class="trap-choice" data-v="B">B · Car use grew after the cycle lane opened.</button><div class="trap-try-feedback" aria-live="polite"></div></div>
+      </article>
+
+      <article class="trap-lesson" id="trapPanel-qualifier" role="tabpanel" aria-labelledby="trapTab-qualifier" data-trap="qualifier" data-stage="scan" hidden>
+        <div class="trap-lesson-head"><div class="trap-icon">⚖️</div><div><h4>Qualifier swap</h4><p>The claim quietly turns a cautious statement into a certainty. The topic survives; the strength does not.</p></div></div>
+        <div class="trap-stage-controls" aria-label="Qualifier swap demonstration stages">
+          <button class="trap-stage-btn" data-stage="scan" aria-pressed="true">1 · Hurried scan</button><button class="trap-stage-btn" data-stage="xray" aria-pressed="false">2 · X-ray the change</button><button class="trap-stage-btn" data-stage="verdict" aria-pressed="false">3 · Make the call</button>
+        </div>
+        <div class="trap-stage-grid">
+          <div class="trap-xray">
+            <div class="xray-kicker">Watch certainty get inflated</div>
+            <div class="xray-row"><div class="xray-label">Text</div><div class="xray-sentence"><span class="xray-shift">Some</span> <span class="xray-match">participants reported better sleep.</span></div></div>
+            <div class="xray-row"><div class="xray-label">Claim</div><div class="xray-sentence"><span class="xray-shift">All</span> <span class="xray-match">participants reported better sleep.</span></div></div>
+            <div class="trap-diagram"><div class="qualifier-scale"><span class="from">some</span><span>many</span><span>most</span><span class="to">all</span></div></div>
+            <div class="trap-verdict">FALSE · “Some” proves at least one, not every one. The claim is stronger than the evidence.</div>
+          </div>
+          <aside class="trap-coach">
+            <div class="coach-step"><span class="n">1</span><div><b>Underline the tiny words</b><p>Some, may, can, often and suggests carry the writer’s level of certainty.</p></div></div>
+            <div class="coach-step"><span class="n">2</span><div><b>Put both on a scale</b><p>Some → many → most → all. A move to the right needs new evidence.</p></div></div>
+            <div class="coach-step"><span class="n">3</span><div><b>Watch “total” words</b><p>All, only, always, never, completely and proves are danger signals.</p></div></div>
+            <div class="trap-mantra"><b>Fast test:</b> ask “Could the text be true while the claim is false?” Some people can improve while all people do not.</div>
+          </aside>
+        </div>
+        <div class="trap-try" data-answer="A" data-why="‘May’ and ‘could’ express the same uncertainty. ‘Will’ upgrades a possibility to a certainty."><h5>One-breath check · Which claim keeps the meaning?</h5><div class="trap-try-source">Text: “The policy may reduce household waste.”</div><button class="trap-choice" data-v="A">A · The policy could reduce household waste.</button><button class="trap-choice" data-v="B">B · The policy will reduce household waste.</button><div class="trap-try-feedback" aria-live="polite"></div></div>
+      </article>
+
+      <article class="trap-lesson" id="trapPanel-scope" role="tabpanel" aria-labelledby="trapTab-scope" data-trap="scope" data-stage="scan" hidden>
+        <div class="trap-lesson-head"><div class="trap-icon">🗺️</div><div><h4>Scope shift</h4><p>A result from one group, place or time is stretched beyond its border. Always draw the border the writer actually gives you.</p></div></div>
+        <div class="trap-stage-controls" aria-label="Scope shift demonstration stages">
+          <button class="trap-stage-btn" data-stage="scan" aria-pressed="true">1 · Hurried scan</button><button class="trap-stage-btn" data-stage="xray" aria-pressed="false">2 · X-ray the change</button><button class="trap-stage-btn" data-stage="verdict" aria-pressed="false">3 · Make the call</button>
+        </div>
+        <div class="trap-stage-grid">
+          <div class="trap-xray">
+            <div class="xray-kicker">Watch the border expand</div>
+            <div class="xray-row"><div class="xray-label">Text</div><div class="xray-sentence"><span class="xray-shift">In one coastal district,</span> <span class="xray-match">cycling doubled in five years.</span></div></div>
+            <div class="xray-row"><div class="xray-label">Claim</div><div class="xray-sentence"><span class="xray-shift">Across the country,</span> <span class="xray-match">cycling doubled in five years.</span></div></div>
+            <div class="trap-diagram"><div class="scope-map"><div class="scope-ring world">country</div><div class="scope-ring city">city</div><div class="scope-ring group">one district</div></div></div>
+            <div class="trap-verdict">FALSE · The result is tied to one district. The claim crosses a boundary the passage never crosses.</div>
+          </div>
+          <aside class="trap-coach">
+            <div class="coach-step"><span class="n">1</span><div><b>Draw a box around the boundary</b><p>Look for place, population and time: where, who, and when?</p></div></div>
+            <div class="coach-step"><span class="n">2</span><div><b>Compare the size of the boxes</b><p>District ≠ country. Children ≠ adults. One decade ≠ always.</p></div></div>
+            <div class="coach-step"><span class="n">3</span><div><b>Do not invent the missing bridge</b><p>A local result may be nationally true, but this passage has not proved it.</p></div></div>
+            <div class="trap-mantra"><b>Fast test:</b> finish this sentence: “The result is true for ___, in ___, during ___.” Compare every blank.</div>
+          </aside>
+        </div>
+        <div class="trap-try" data-answer="B" data-why="Option B keeps the study inside its real boundary: first-year students at one university. Option A silently expands the group."><h5>One-breath check · Which claim keeps the meaning?</h5><div class="trap-try-source">Text: “First-year students at one university used the library more after midnight.”</div><button class="trap-choice" data-v="A">A · University students everywhere used libraries more after midnight.</button><button class="trap-choice" data-v="B">B · The study’s first-year students increased their late-night library use.</button><div class="trap-try-feedback" aria-live="polite"></div></div>
+      </article>
+
+      <article class="trap-lesson" id="trapPanel-cause" role="tabpanel" aria-labelledby="trapTab-cause" data-trap="cause" data-stage="scan" hidden>
+        <div class="trap-lesson-head"><div class="trap-icon">🔁</div><div><h4>Reversed cause</h4><p>Both facts appear in both sentences, so keyword matching cannot save you. Only the arrow between them decides the answer.</p></div></div>
+        <div class="trap-stage-controls" aria-label="Reversed cause demonstration stages">
+          <button class="trap-stage-btn" data-stage="scan" aria-pressed="true">1 · Hurried scan</button><button class="trap-stage-btn" data-stage="xray" aria-pressed="false">2 · X-ray the change</button><button class="trap-stage-btn" data-stage="verdict" aria-pressed="false">3 · Make the call</button>
+        </div>
+        <div class="trap-stage-grid">
+          <div class="trap-xray">
+            <div class="xray-kicker">Watch the arrow turn around</div>
+            <div class="xray-row"><div class="xray-label">Text</div><div class="xray-sentence"><span class="xray-shift">Warmer springs caused</span> <span class="xray-match">the trees to flower earlier.</span></div></div>
+            <div class="xray-row"><div class="xray-label">Claim</div><div class="xray-sentence"><span class="xray-match">Earlier flowering</span> <span class="xray-shift">caused warmer springs.</span></div></div>
+            <div class="trap-diagram"><div style="width:100%"><div class="cause-map"><span class="cause-node">warmer spring</span><span class="cause-arrow"></span><span class="cause-node">earlier flowers</span><span class="cause-caption">TEXT · cause → result</span></div><div class="cause-map claim" style="margin-top:10px"><span class="cause-node">warmer spring</span><span class="cause-arrow"></span><span class="cause-node">earlier flowers</span><span class="cause-caption">CLAIM · result → cause</span></div></div></div>
+            <div class="trap-verdict">FALSE · The same two facts are connected in the opposite causal direction.</div>
+          </div>
+          <aside class="trap-coach">
+            <div class="coach-step"><span class="n">1</span><div><b>Name A and B</b><p>A = warmer spring. B = earlier flowering. Ignore the surrounding nouns.</p></div></div>
+            <div class="coach-step"><span class="n">2</span><div><b>Draw the text’s arrow</b><p>The passage says A → B. Words such as because, leads to and results from reveal it.</p></div></div>
+            <div class="coach-step"><span class="n">3</span><div><b>Draw the claim’s arrow</b><p>If the claim says B → A, it is FALSE even though every keyword matches.</p></div></div>
+            <div class="trap-mantra"><b>Fast test:</b> never compare the two nouns alone. Write A → B twice and check which side each noun occupies.</div>
+          </aside>
+        </div>
+        <div class="trap-try" data-answer="B" data-why="The text says insulation is the cause and lower energy use is the result. Option A reverses that arrow."><h5>One-breath check · Which claim keeps the meaning?</h5><div class="trap-try-source">Text: “Better insulation led households to use less energy.”</div><button class="trap-choice" data-v="A">A · Lower energy use led households to improve insulation.</button><button class="trap-choice" data-v="B">B · Improved insulation caused household energy use to fall.</button><div class="trap-try-feedback" aria-live="polite"></div></div>
+      </article>
     </div>
 
     <div class="card" id="fngCard">
@@ -6414,6 +6639,88 @@ function makePrediction(boxId, optsId, resultId, judge) {
 
 /* ═══════════════════ STATION 6 — TRAP DETECTOR ═══════════════════ */
 (function () {
+  var lab = $('#trapLab');
+  if (lab) {
+    var tabs = $$('.trap-tab', lab);
+    var lessons = $$('.trap-lesson', lab);
+
+    function openTrap(name, focusTab) {
+      tabs.forEach(function (tab) {
+        var on = tab.dataset.trap === name;
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.tabIndex = on ? 0 : -1;
+        if (on && focusTab) tab.focus();
+      });
+      lessons.forEach(function (lesson) {
+        var on = lesson.dataset.trap === name;
+        lesson.classList.toggle('active', on);
+        lesson.hidden = !on;
+      });
+    }
+
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener('click', function () { openTrap(tab.dataset.trap, false); });
+      tab.addEventListener('keydown', function (e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'Home' && e.key !== 'End') return;
+        e.preventDefault();
+        var next = index;
+        if (e.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        if (e.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+        if (e.key === 'Home') next = 0;
+        if (e.key === 'End') next = tabs.length - 1;
+        openTrap(tabs[next].dataset.trap, true);
+      });
+    });
+
+    $$('.trap-stage-btn', lab).forEach(function (button) {
+      button.addEventListener('click', function () {
+        var lesson = button.closest('.trap-lesson');
+        lesson.dataset.stage = button.dataset.stage;
+        $$('.trap-stage-btn', lesson).forEach(function (b) {
+          b.setAttribute('aria-pressed', b === button ? 'true' : 'false');
+        });
+      });
+    });
+
+    $$('.trap-try', lab).forEach(function (quiz) {
+      var buttons = $$('.trap-choice', quiz);
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          if (button.disabled) return;
+          var ok = button.dataset.v === quiz.dataset.answer;
+          buttons.forEach(function (b) {
+            b.disabled = true;
+            if (b.dataset.v === quiz.dataset.answer) b.classList.add('correct');
+          });
+          if (!ok) button.classList.add('wrong');
+          var feedback = $('.trap-try-feedback', quiz);
+          feedback.className = 'trap-try-feedback show ' + (ok ? 'ok' : 'no');
+          feedback.innerHTML = (ok ? '✓ Meaning preserved. ' : '✗ That option changes the relationship. ') + quiz.dataset.why;
+          Progress.hit('traps', ok);
+        });
+      });
+    });
+
+    Resettable.push(function () {
+      openTrap('negation', false);
+      lessons.forEach(function (lesson) {
+        lesson.dataset.stage = 'scan';
+        $$('.trap-stage-btn', lesson).forEach(function (button) {
+          button.setAttribute('aria-pressed', button.dataset.stage === 'scan' ? 'true' : 'false');
+        });
+      });
+      $$('.trap-try', lab).forEach(function (quiz) {
+        $$('.trap-choice', quiz).forEach(function (button) {
+          button.disabled = false;
+          button.classList.remove('correct', 'wrong');
+        });
+        var feedback = $('.trap-try-feedback', quiz);
+        feedback.className = 'trap-try-feedback';
+        feedback.innerHTML = '';
+      });
+    });
+  }
+
   var BANKS = CONTENT.trapBanks;
 
   var host = $('#trapList'), score = 0, bank = 0;
