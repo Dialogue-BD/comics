@@ -1,2 +1,2 @@
 - [Cloudflare worker binding types](cloudflare-worker-bindings.md) — Worker binding declarations must augment `Cloudflare.Env` for `cloudflare:workers` imports.
-- [Replit Python user-site installs](replit-python-user-site.md) — This workspace loads packages from `.pythonlibs`; avoid targeting immutable system Python.
+- [Replit Python dependencies](replit-python-user-site.md) — Use `.pythonlibs` locally and Nix for publishing; pip cannot modify immutable system Python.
