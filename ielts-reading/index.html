@@ -5784,14 +5784,22 @@ function makePrediction(boxId, optsId, resultId, judge) {
   var scoreEl = $('#pbScore'), resultEl = $('#pbResult');
   var clock = makeClock($('#pbTimer'), { countdown: true, from: 60, onEnd: finish });
   var order = [], idx = 0, right = 0, wrong = 0, missed = [], running = false;
+  var answerSlots = [];
 
   function shuffled(a) {
     var r = a.slice();
     for (var i = r.length - 1; i > 0; i--) {
-      var j = (i * 7919 + right * 31 + idx * 17) % (i + 1);   /* deterministic, no Math.random */
+      var j = Math.floor(Math.random() * (i + 1));
       var t = r[i]; r[i] = r[j]; r[j] = t;
     }
     return r;
+  }
+
+  function nextAnswerSlot() {
+    /* Deal the four positions like a shuffled pack. This keeps the correct
+       answer unpredictable while guaranteeing it is not always in one slot. */
+    if (!answerSlots.length) answerSlots = shuffled([0, 1, 2, 3]);
+    return answerSlots.shift();
   }
 
   function next() {
@@ -5804,7 +5812,8 @@ function makePrediction(boxId, optsId, resultId, judge) {
     fbEl.textContent = '';
     promptEl.textContent = pair[0];
     var distractors = shuffled(PAIRS.filter(function (q) { return q !== pair; })).slice(0, 3).map(function (q) { return q[1]; });
-    var choices = shuffled(distractors.concat([pair[1]]));
+    var choices = shuffled(distractors);
+    choices.splice(nextAnswerSlot(), 0, pair[1]);
     optsEl.innerHTML = choices.map(function (c) {
       return '<button class="opt" data-v="' + c.replace(/"/g, '&quot;') + '">' + c + '</button>';
     }).join('');
@@ -5869,7 +5878,7 @@ function makePrediction(boxId, optsId, resultId, judge) {
 
   function reset() {
     clock.reset(); running = false;
-    idx = 0; right = 0; wrong = 0; missed = [];
+    idx = 0; right = 0; wrong = 0; missed = []; answerSlots = [];
     order = shuffled(PAIRS);
     scoreEl.textContent = '0 ' + t('correct');
     promptEl.textContent = t('Press Start.');
