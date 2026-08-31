@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Static file server with classroom APIs backed by SQLite.
+"""Static file server with durable classroom APIs.
 
 Endpoints
 ---------
 GET  /api/poll?window=<key>   – fetch current vote counts for a time window
+GET  /api/health              – report backend and durable-storage readiness
 POST /api/poll                – submit / update a vote (upserts by responseToken)
 GET  /api/fgd/session         – fetch a public, participant, or teacher session view
 POST /api/fgd/sessions        – create a focus-group discussion session
@@ -20,15 +21,24 @@ import json
 import os
 import re
 import secrets
-import sqlite3
 import socketserver
 import threading
 import time
 from urllib.parse import parse_qs, urlparse
 
+from classroom_db import ClassroomDatabase
+
 PORT = int(os.environ.get("PORT", "5000"))
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.environ.get("DIALOGUE_DB_PATH", os.path.join(DIRECTORY, "poll.db"))
+DATABASE_URL = os.environ.get("DATABASE_URL", "").strip()
+IS_DEPLOYMENT = os.environ.get("REPLIT_DEPLOYMENT") == "1"
+
+if IS_DEPLOYMENT and not DATABASE_URL:
+    raise RuntimeError(
+        "Published classroom data requires Replit Database. "
+        "Add Database to the Replit project so DATABASE_URL is available, then publish again."
+    )
 
 FGD_PHASES = [
     "lobby",
@@ -58,92 +68,14 @@ FGD_SESSION_LIFETIME = 7 * 24 * 60 * 60
 FGD_RECOVERY_GRACE = 30 * 24 * 60 * 60
 
 # ---------------------------------------------------------------------------
-# Database helpers – one connection per thread (SQLite is not thread-safe to share)
+# Database helpers – one connection per request thread
 # ---------------------------------------------------------------------------
 _local = threading.local()
 
 
-def _get_db() -> sqlite3.Connection:
+def _get_db() -> ClassroomDatabase:
     if not hasattr(_local, "conn"):
-        conn = sqlite3.connect(DB_PATH, check_same_thread=False)
-        conn.row_factory = sqlite3.Row
-        conn.execute("PRAGMA journal_mode=WAL")   # concurrent reads + writes
-        conn.execute("PRAGMA synchronous=NORMAL")
-        conn.executescript("""
-            CREATE TABLE IF NOT EXISTS poll_responses (
-                id             INTEGER PRIMARY KEY AUTOINCREMENT,
-                window         TEXT    NOT NULL,
-                response_token TEXT    NOT NULL,
-                primary_emotion TEXT   NOT NULL,
-                emotion        TEXT    NOT NULL,
-                reason         TEXT,
-                created_at     INTEGER DEFAULT (strftime('%s','now')),
-                UNIQUE(window, response_token)
-            );
-            CREATE INDEX IF NOT EXISTS idx_pr_window ON poll_responses(window);
-            CREATE TABLE IF NOT EXISTS debate_active_session (
-                id             TEXT    PRIMARY KEY DEFAULT 'current',
-                session_data   TEXT    NOT NULL,
-                updated_at     INTEGER DEFAULT (strftime('%s','now'))
-            );
-            CREATE TABLE IF NOT EXISTS fgd_sessions (
-                code             TEXT    PRIMARY KEY,
-                teacher_token    TEXT    NOT NULL,
-                status           TEXT    NOT NULL DEFAULT 'lobby',
-                room_count       INTEGER NOT NULL,
-                room_capacity    INTEGER NOT NULL,
-                support_level    TEXT    NOT NULL DEFAULT 'student-choice',
-                phase_durations  TEXT    NOT NULL,
-                phase_started_at INTEGER,
-                created_at       INTEGER NOT NULL,
-                expires_at       INTEGER NOT NULL
-            );
-            CREATE TABLE IF NOT EXISTS fgd_rooms (
-                session_code     TEXT    NOT NULL,
-                room_number      INTEGER NOT NULL,
-                topic_id         INTEGER NOT NULL,
-                help_requested   INTEGER NOT NULL DEFAULT 0,
-                report_data      TEXT    NOT NULL DEFAULT '{}',
-                PRIMARY KEY (session_code, room_number),
-                FOREIGN KEY (session_code) REFERENCES fgd_sessions(code) ON DELETE CASCADE
-            );
-            CREATE TABLE IF NOT EXISTS fgd_participants (
-                token             TEXT    PRIMARY KEY,
-                session_code      TEXT    NOT NULL,
-                room_number       INTEGER NOT NULL,
-                display_name      TEXT    NOT NULL,
-                support_level     TEXT    NOT NULL,
-                role              TEXT    NOT NULL,
-                contributions     INTEGER NOT NULL DEFAULT 0,
-                exit_data         TEXT    NOT NULL DEFAULT '{}',
-                joined_at         INTEGER NOT NULL,
-                last_seen         INTEGER NOT NULL,
-                FOREIGN KEY (session_code) REFERENCES fgd_sessions(code) ON DELETE CASCADE
-            );
-            CREATE INDEX IF NOT EXISTS idx_fgd_participants_room
-                ON fgd_participants(session_code, room_number);
-            CREATE TABLE IF NOT EXISTS fgd_room_state (
-                session_code      TEXT    NOT NULL,
-                room_number       INTEGER NOT NULL,
-                prompt_index      INTEGER NOT NULL DEFAULT 0,
-                perspective_index INTEGER NOT NULL DEFAULT 0,
-                observation_data  TEXT    NOT NULL DEFAULT '{}',
-                PRIMARY KEY (session_code, room_number)
-            );
-            CREATE TABLE IF NOT EXISTS fgd_learning (
-                participant_token TEXT    PRIMARY KEY,
-                targets_data      TEXT    NOT NULL DEFAULT '{}',
-                evidence_data     TEXT    NOT NULL DEFAULT '{}'
-            );
-            CREATE TABLE IF NOT EXISTS fgd_report_approvals (
-                session_code      TEXT    NOT NULL,
-                room_number       INTEGER NOT NULL,
-                participant_token TEXT    NOT NULL,
-                PRIMARY KEY (session_code, room_number, participant_token)
-            );
-        """)
-        conn.commit()
-        _local.conn = conn
+        _local.conn = ClassroomDatabase(database_url=DATABASE_URL, sqlite_path=DB_PATH)
     return _local.conn
 
 
@@ -200,7 +132,7 @@ def _json_object(raw: str) -> dict:
         return {}
 
 
-def _new_fgd_code(db: sqlite3.Connection) -> str:
+def _new_fgd_code(db: ClassroomDatabase) -> str:
     alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
     for _ in range(30):
         code = "".join(secrets.choice(alphabet) for _ in range(5))
@@ -210,14 +142,14 @@ def _new_fgd_code(db: sqlite3.Connection) -> str:
     raise RuntimeError("Could not allocate a unique session code")
 
 
-def _fgd_session_row(db: sqlite3.Connection, code: str):
+def _fgd_session_row(db: ClassroomDatabase, code: str):
     return db.execute(
         "SELECT * FROM fgd_sessions WHERE code = ? AND expires_at > ?",
         (code, int(time.time())),
     ).fetchone()
 
 
-def _fgd_session_row_any_age(db: sqlite3.Connection, code: str):
+def _fgd_session_row_any_age(db: ClassroomDatabase, code: str):
     """Fetch a session for authenticated recovery, including expired rows."""
     return db.execute(
         "SELECT * FROM fgd_sessions WHERE code = ?",
@@ -225,7 +157,7 @@ def _fgd_session_row_any_age(db: sqlite3.Connection, code: str):
     ).fetchone()
 
 
-def _auto_advance_fgd_phase(db: sqlite3.Connection, session, now: int | None = None):
+def _auto_advance_fgd_phase(db: ClassroomDatabase, session, now: int | None = None):
     """Advance one timed phase atomically when its clock has expired."""
     if not session or session["status"] in {"lobby", "ended"} or not session["phase_started_at"]:
         return session
@@ -410,6 +342,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     # ── GET classroom APIs ────────────────────────────────────────────────────
     def do_GET(self):
         parsed = urlparse(self.path)
+        if parsed.path == "/api/health":
+            database = _get_db()
+            _json_response(self, 200, {
+                "ok": True,
+                "database": database.backend_name,
+                "durable": database.dialect == "postgres",
+            })
+            return
         if parsed.path == "/api/poll":
             params = parse_qs(parsed.query)
             window = params.get("window", [""])[0].strip()
@@ -532,11 +472,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
                 db.execute("""
                     INSERT INTO debate_active_session (id, session_data, updated_at)
-                    VALUES ('current', ?, strftime('%s','now'))
+                    VALUES ('current', ?, ?)
                     ON CONFLICT(id) DO UPDATE SET
                         session_data = excluded.session_data,
-                        updated_at = strftime('%s','now')
-                """, (json.dumps(current_data),))
+                        updated_at = excluded.updated_at
+                """, (json.dumps(current_data), int(time.time())))
                 db.commit()
                 _json_response(self, 200, {"success": True})
             except Exception as exc:
@@ -569,14 +509,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             db = _get_db()
             db.execute("""
                 INSERT INTO poll_responses
-                    (window, response_token, primary_emotion, emotion, reason)
-                VALUES (?, ?, ?, ?, ?)
+                    (window, response_token, primary_emotion, emotion, reason, created_at)
+                VALUES (?, ?, ?, ?, ?, ?)
                 ON CONFLICT(window, response_token) DO UPDATE SET
                     primary_emotion = excluded.primary_emotion,
                     emotion         = excluded.emotion,
                     reason          = excluded.reason,
-                    created_at      = strftime('%s','now')
-            """, (window, response_token, primary_emotion, emotion, reason))
+                    created_at      = excluded.created_at
+            """, (window, response_token, primary_emotion, emotion, reason, int(time.time())))
             db.commit()
         except Exception as exc:
             _json_response(self, 500, {"error": str(exc)})
@@ -792,7 +732,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
         if action == "contribute":
             db.execute(
-                "UPDATE fgd_participants SET contributions = MIN(contributions + 1, 99), last_seen = ? WHERE token = ?",
+                """UPDATE fgd_participants
+                   SET contributions = CASE WHEN contributions < 99 THEN contributions + 1 ELSE 99 END,
+                       last_seen = ?
+                   WHERE token = ?""",
                 (int(time.time()), token),
             )
         elif action == "advanceCard":
@@ -842,7 +785,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 (token, json.dumps(evidence)),
             )
             db.execute(
-                "UPDATE fgd_participants SET contributions = MIN(contributions + 1, 99), last_seen = ? WHERE token = ?",
+                """UPDATE fgd_participants
+                   SET contributions = CASE WHEN contributions < 99 THEN contributions + 1 ELSE 99 END,
+                       last_seen = ?
+                   WHERE token = ?""",
                 (int(time.time()), token),
             )
         elif action == "help":
@@ -876,8 +822,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         elif action == "approveReport":
             if body.get("approved", True):
                 db.execute(
-                    """INSERT OR IGNORE INTO fgd_report_approvals
-                       (session_code, room_number, participant_token) VALUES (?, ?, ?)""",
+                    """INSERT INTO fgd_report_approvals
+                       (session_code, room_number, participant_token) VALUES (?, ?, ?)
+                       ON CONFLICT(session_code, room_number, participant_token) DO NOTHING""",
                     (code, participant["room_number"], token),
                 )
             else:
@@ -993,8 +940,8 @@ class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
 if __name__ == "__main__":
     # Warm up the DB on the main thread before accepting connections
-    _get_db()
-    print(f"Poll DB: {DB_PATH}")
+    database = _get_db()
+    print(f"Classroom database: {database.backend_name}")
     with ThreadedTCPServer(("0.0.0.0", PORT), Handler) as httpd:
         print(f"Serving on port {PORT}")
         httpd.serve_forever()
