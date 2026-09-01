@@ -448,11 +448,7 @@ const auditedLinkAdditions = {
     pictureThisLink("flames", [2,4], "Lantern and camp stove are the only two campsite devices shown that characteristically burn fuel."),
     pictureThisLink("red", [1,2], "Sleeping bag and camping lantern are the only two campsite items shown predominantly red.")
   ],
-  "board-games": [
-    pictureThisLink("dots", [1,2], "Die and domino are the only two pieces shown whose dots primarily represent numbers."),
-    pictureThisLink("matching", [2,3], "Domino and jigsaw piece are the only two pieces shown joined by matching physical ends or edges."),
-    pictureThisLink("chess", [0,5], "Chess knight and sand timer are the only two items shown directly associated with timed strategy play.")
-  ],
+  "board-games": [],
   "computer-equipment": [
     pictureThisLink("controls", [1,2], "Mouse and keyboard are the only two dedicated computer input controls shown."),
     pictureThisLink("video", [0,5], "Laptop and webcam are the only two items shown that directly form a computer video-call pair.")

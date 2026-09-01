@@ -525,8 +525,8 @@ window.PICTURE_THIS_GAME_DATA = {
     "Game Die",
     "Domino Tile",
     "Jigsaw Piece",
-    "Playing Cards",
-    "Sand Timer"
+    "Chess Rook",
+    "Game Spinner"
   ],
   "jewelry": [
     "Pearl Necklace",
@@ -1406,6 +1406,75 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "board-games": {
+      "title": "Tabletop Games",
+      "category_answers": [
+        "Tabletop Games",
+        "Board Games",
+        "Game Pieces",
+        "Table Games"
+      ],
+      "tags": [
+        "games",
+        "leisure",
+        "tabletop"
+      ],
+      "items": [
+        {
+          "id": "chess-knight",
+          "label": "Chess Knight",
+          "answers": ["Chess Knight", "Knight"]
+        },
+        {
+          "id": "game-die",
+          "label": "Game Die",
+          "answers": ["Game Die", "Die"]
+        },
+        {
+          "id": "domino-tile",
+          "label": "Domino Tile",
+          "answers": ["Domino Tile", "Domino"]
+        },
+        {
+          "id": "jigsaw-piece",
+          "label": "Jigsaw Piece",
+          "answers": ["Jigsaw Piece", "Puzzle Piece"]
+        },
+        {
+          "id": "chess-rook",
+          "label": "Chess Rook",
+          "answers": ["Chess Rook", "Rook", "Chess Castle"]
+        },
+        {
+          "id": "game-spinner",
+          "label": "Game Spinner",
+          "answers": ["Game Spinner", "Spinner"]
+        }
+      ],
+      "links": [
+        {
+          "word": "chess",
+          "answers": ["chess"],
+          "items": ["chess-knight", "chess-rook"],
+          "explanation": "The chess knight and chess rook are the only two pieces shown that belong specifically to chess.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "chance",
+          "answers": ["chance", "random"],
+          "items": ["game-die", "game-spinner"],
+          "explanation": "The game die and game spinner are the only two items shown designed specifically to produce a random result.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "matching",
+          "answers": ["matching", "match"],
+          "items": ["domino-tile", "jigsaw-piece"],
+          "explanation": "The domino tile and jigsaw piece are the only two pieces shown whose play centers on matching one edge to another.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "jewelry": {
       "title": "Jewelry and Accessories",
       "category_answers": [
