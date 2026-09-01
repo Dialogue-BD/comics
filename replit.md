@@ -17,7 +17,7 @@ Serves on port 5000.
 - `narratives/` — narrative image sets
 - `stories/` — PDF story collection
 - `ecclesiastes/` — audio + image pages
-- `american-fisherman/`, `busy-pictures/`, `cross-cultural-coms/`, `ecclesiastes/`, `good-bird/`, `hingsha/`, `kindness-repentence/`, `mezban/`, `north-end/`, `reflecting-listening/`, `ruorators/` — additional subpages
+- `american-fisherman/`, `busy-pictures/`, `cross-cultural-coms/`, `ecclesiastes/`, `good-bird/`, `hingsha/`, `kindness-repentence/`, `mezban/`, `north-end/`, `reflecting-listening/`, `whos-this/` — additional subpages
 
 ## Custom Domain
 To connect your own domain, publish the Replit app (Deploy) and configure the custom domain in the deployment settings.
