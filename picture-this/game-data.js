@@ -338,11 +338,11 @@ window.PICTURE_THIS_GAME_DATA = {
   ],
   "at-the-office": [
     "Stapler",
-    "Calculator",
+    "Filing Cabinet",
     "File Folder",
-    "Hole Punch",
+    "Paper Shredder",
     "Binder Clip",
-    "Tape Dispenser"
+    "Label Maker"
   ],
   "under-the-sea": [
     "Dolphin",
@@ -1406,6 +1406,74 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "at-the-office": {
+      "title": "At the Office",
+      "category_answers": [
+        "At the Office",
+        "Office Equipment",
+        "Office Supplies"
+      ],
+      "tags": [
+        "office",
+        "work",
+        "paper"
+      ],
+      "items": [
+        {
+          "id": "stapler",
+          "label": "Stapler",
+          "answers": ["Stapler"]
+        },
+        {
+          "id": "filing-cabinet",
+          "label": "Filing Cabinet",
+          "answers": ["Filing Cabinet", "File Cabinet"]
+        },
+        {
+          "id": "file-folder",
+          "label": "File Folder",
+          "answers": ["File Folder", "Folder"]
+        },
+        {
+          "id": "paper-shredder",
+          "label": "Paper Shredder",
+          "answers": ["Paper Shredder", "Shredder"]
+        },
+        {
+          "id": "binder-clip",
+          "label": "Binder Clip",
+          "answers": ["Binder Clip"]
+        },
+        {
+          "id": "label-maker",
+          "label": "Label Maker",
+          "answers": ["Label Maker", "Labelling Machine", "Labeling Machine"]
+        }
+      ],
+      "links": [
+        {
+          "word": "fasteners",
+          "answers": ["fasteners", "fastener", "fastening"],
+          "items": ["stapler", "binder-clip"],
+          "explanation": "The stapler and binder clip are the only two office items shown specifically made to fasten sheets of paper together.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "filing",
+          "answers": ["filing", "file"],
+          "items": ["filing-cabinet", "file-folder"],
+          "explanation": "The filing cabinet and file folder are the only two items shown specifically made for filing documents.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "electric",
+          "answers": ["electric", "powered"],
+          "items": ["paper-shredder", "label-maker"],
+          "explanation": "The paper shredder and label maker are the only two electrically powered office machines shown.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "houseplants": {
       "title": "Houseplants",
       "category_answers": [

@@ -97,7 +97,7 @@ window.PICTURE_THIS_LINK_DATA = {
     pictureThisLink("screening", [0,5], "The suitcase and metal detector are the only two items shown directly joined in baggage screening.", ["security"]),
     pictureThisLink("luggage", [0,3], "The suitcase and luggage cart are the only two items shown directly joined by luggage transport.", ["baggage"])
   ],
-  "at-the-office": [pictureThisLink("piercing", [0,3], "The stapler and hole punch are the only two tools shown that pierce paper during normal use.", ["pierce", "puncturing"])],
+  "at-the-office": [],
   "under-the-sea": [
     pictureThisLink("tentacles", [2,4], "The octopus and jellyfish are the only two animals shown with tentacles.", ["tentacle"]),
     pictureThisLink("spines", [3,5], "The seahorse and starfish are the only two animals shown with hard, visibly spiny body surfaces.", ["spiny"])
@@ -392,10 +392,7 @@ const auditedLinkAdditions = {
     pictureThisLink("curls", [4,5], "Hair rollers and curling iron are the only two salon tools shown specifically designed to create curls."),
     pictureThisLink("washing", [1,2], "Shampoo and salon chair are the only two items shown directly joined at a salon hair-washing station.")
   ],
-  "at-the-office": [
-    pictureThisLink("blue", [1,2], "Calculator and file folder are the only two office items shown predominantly blue."),
-    pictureThisLink("black", [3,4], "Hole punch and binder clip are the only two office items shown predominantly black.")
-  ],
+  "at-the-office": [],
   "under-the-sea": [pictureThisLink("streamlined", [0,1], "Dolphin and shark are the only two large swimmers shown with strongly streamlined fish-like bodies.")],
   "at-the-library": [
     pictureThisLink("circulation", [0,5], "Library card and return bin are the only two items shown specifically used in borrowing and returning library materials."),

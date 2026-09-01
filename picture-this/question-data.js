@@ -1851,12 +1851,12 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "at-the-office": {
     "questions": [
-      "Which items help organize papers?",
-      "Which item can help with numbers? What can it calculate?",
-      "Which of these items have you used at school or work?",
-      "How could you use a stapler and a file folder together?",
-      "What other objects are useful in an office?",
-      "Imagine you are setting up a new office. Which supplies would you buy first?"
+      "Which items fasten, store, destroy, or label paper?",
+      "Which item is tallest? Which is smallest?",
+      "Which of these office items have you used?",
+      "How could the file folder and filing cabinet be used together?",
+      "What other equipment is useful in an office?",
+      "If you were setting up an office, which three items would you buy first? Why?"
     ],
     "positions": [
       12.43,
@@ -1868,28 +1868,28 @@ window.PICTURE_THIS_QUESTION_DATA = {
     ],
     "endpoints": [
       {
-        "x": 31.52,
+        "x": 69.45,
         "y": 16.98
       },
       {
-        "x": 90.06,
+        "x": 35.76,
         "y": 26.98
       },
       {
-        "x": 69.58,
-        "y": 37.33
+        "x": 37.82,
+        "y": 37.69
       },
       {
-        "x": 65.09,
-        "y": 48.04
+        "x": 89.09,
+        "y": 48.0
       },
       {
-        "x": 36.85,
+        "x": 43.64,
         "y": 58.0
       },
       {
-        "x": 46.67,
-        "y": 72.67
+        "x": 51.03,
+        "y": 73.02
       }
     ]
   },
