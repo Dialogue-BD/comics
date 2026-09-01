@@ -22,13 +22,15 @@
     --glass:rgba(22,26,32,.66);
     --border:rgba(255,255,255,.14);
     /* on-paper inks for the card face */
-    --paper:#f7f6f1;
-    --paper-2:#eceae2;
-    --pink:#12262a;
-    --pink-soft:rgba(18,38,42,.60);
-    --pink-faint:rgba(18,38,42,.34);
-    --pink-rule:rgba(18,38,42,.16);
-    --seal:#0a6a5b;
+    --paper:#fffaf0;
+    --paper-2:#eee6d6;
+    --pink:#12343a;
+    --pink-soft:rgba(18,52,58,.68);
+    --pink-faint:rgba(18,52,58,.42);
+    --pink-rule:rgba(18,52,58,.14);
+    --seal:#087d6c;
+    --seal-deep:#075a52;
+    --gold:#e7b85b;
     --sans:"Archivo", ui-rounded, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --mono:"Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   }
@@ -47,10 +49,10 @@
     position:fixed;inset:0;isolation:isolate;overflow:hidden;
     display:flex;flex-direction:column;
     background:
-      radial-gradient(circle at 50% 26%, hsl(var(--accent) / .17), transparent 46%),
-      radial-gradient(circle at 86% 3%, hsl(var(--warm) / .10), transparent 34%),
-      radial-gradient(circle at 8% 96%, hsl(var(--accent) / .09), transparent 40%),
-      linear-gradient(150deg,#161a20 0%,#0b0d12 58%,#12151c 100%);
+      radial-gradient(circle at 50% 22%, hsl(var(--accent) / .20), transparent 44%),
+      radial-gradient(circle at 88% 4%, hsl(var(--warm) / .15), transparent 33%),
+      radial-gradient(circle at 6% 96%, hsl(var(--accent) / .12), transparent 40%),
+      linear-gradient(150deg,#172126 0%,#090d12 58%,#111a22 100%);
     padding:max(12px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right))
             max(12px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
   }
@@ -117,15 +119,22 @@
     position:absolute;inset:0;transform-style:preserve-3d;
     transform:rotateY(var(--flip,0deg));
     transition:transform .68s cubic-bezier(.2,.84,.24,1);
-    border-radius:clamp(14px,4vw,22px);
-    box-shadow:0 3px 2px rgba(255,255,255,.2) inset, 0 24px 70px rgba(0,0,0,.56), 0 6px 16px rgba(0,0,0,.36);
+    border-radius:clamp(18px,5vw,26px);
+    box-shadow:
+      0 2px 0 rgba(255,255,255,.55) inset,
+      0 0 0 1px rgba(231,184,91,.28),
+      0 28px 74px rgba(0,0,0,.58),
+      0 8px 22px rgba(0,0,0,.34);
   }
   .card.is-dealing{animation:deal .5s cubic-bezier(.2,.85,.3,1)}
   @keyframes deal{from{opacity:0;transform:translateY(18px) rotateZ(-1.4deg) scale(.96)}to{opacity:1}}
   .face{
     position:absolute;inset:0;overflow:hidden;border-radius:inherit;
-    border:1px solid rgba(255,255,255,.34);
-    background:var(--paper);color:var(--pink);text-align:left;
+    border:1px solid rgba(255,255,255,.62);
+    background:
+      linear-gradient(145deg,rgba(255,255,255,.72),transparent 30%),
+      linear-gradient(180deg,var(--paper),#f7f0e3 72%,#eee3cf);
+    color:var(--pink);text-align:left;
     backface-visibility:hidden;-webkit-backface-visibility:hidden;
     display:flex;flex-direction:column;
   }
@@ -136,14 +145,16 @@
   .card.is-flipped .face--front{pointer-events:none}
   .card.is-flipped .face--back{pointer-events:auto}
   .face::after{
-    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
-    background:repeating-radial-gradient(circle at 84% 16%, transparent 0 8px, var(--pink-rule) 8px 8.7px);
-    mask-image:radial-gradient(circle at 84% 16%, #000, transparent 60%);
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.58;
+    background:
+      repeating-radial-gradient(circle at 91% 12%, transparent 0 9px, rgba(8,125,108,.13) 9px 9.8px),
+      linear-gradient(115deg,transparent 0 72%,rgba(231,184,91,.09) 72% 73%,transparent 73%);
+    mask-image:linear-gradient(#000,transparent 74%);
   }
   .foil{
-    position:absolute;right:5%;top:15%;width:15%;aspect-ratio:1;border-radius:50%;pointer-events:none;
+    position:absolute;right:5%;top:12%;width:18%;aspect-ratio:1;border-radius:50%;pointer-events:none;
     background:conic-gradient(from 210deg,#7ee8d0,#b8d8ff,#ffd9a8,#f7b6d2,#9ff0dd,#7ee8d0);
-    opacity:.24;mix-blend-mode:multiply;filter:blur(.3px);
+    opacity:.30;mix-blend-mode:multiply;filter:blur(.3px);
   }
   .foil::after{
     content:"";position:absolute;inset:22%;border-radius:50%;
@@ -153,38 +164,38 @@
   .band{
     display:flex;align-items:center;justify-content:space-between;gap:8px;flex:none;
     padding:clamp(7px,2.2vw,11px) clamp(11px,3.4vw,17px);
-    background:var(--paper-2);border-bottom:1px solid var(--pink-rule);
+    color:#fff;background:linear-gradient(110deg,var(--seal-deep),var(--seal) 64%,#14927d);
+    border-bottom:1px solid rgba(4,65,58,.5);
+    box-shadow:0 5px 18px rgba(7,90,82,.18);
     position:relative;z-index:2;
   }
-  .band .lab{color:var(--pink-faint)}
+  .band::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;background:linear-gradient(90deg,var(--gold),#f4d894 45%,transparent 82%)}
+  .band .lab{color:rgba(255,255,255,.86)}
+  .band .lab:last-child{color:#ffe4a6;font-weight:700}
   .lab{font-family:var(--mono);font-size:clamp(7.6px,2.1vw,10px);font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--pink-faint)}
 
   .front__body{flex:1;min-height:0;display:flex;flex-direction:column;position:relative;z-index:2}
-  .front__top{display:flex;gap:clamp(11px,3.4vw,16px);padding:clamp(11px,3.4vw,17px)}
+  .front__top{display:flex;gap:clamp(13px,3.8vw,19px);padding:clamp(14px,4vw,20px) clamp(13px,3.8vw,19px) clamp(11px,3vw,15px)}
   .rows{
     flex:1;min-height:0;display:flex;flex-direction:column;justify-content:space-evenly;
-    border-top:1px solid var(--pink-rule);
+    padding:0 clamp(11px,3.2vw,16px) clamp(10px,3vw,14px);gap:clamp(5px,1.5vw,8px);
   }
-  .row{padding:clamp(6px,2vw,10px) clamp(11px,3.4vw,17px);display:flex;gap:clamp(10px,3.2vw,16px)}
-  .row + .row{border-top:1px solid var(--pink-rule)}
+  .row{
+    padding:clamp(7px,2vw,10px) clamp(10px,3vw,15px);display:flex;gap:clamp(10px,3.2vw,16px);
+    border:1px solid rgba(18,52,58,.10);border-radius:clamp(9px,2.7vw,13px);
+    background:rgba(255,255,255,.46);box-shadow:0 1px 0 rgba(255,255,255,.72) inset;
+  }
+  .row + .row{border-top:1px solid rgba(18,52,58,.10)}
   .row .f{flex:1;min-width:0}
   .window{
-    width:37%;flex:none;aspect-ratio:3/4;align-self:flex-start;
-    border:1px solid var(--pink-rule);border-radius:4px;background:var(--paper-2);
+    width:42%;flex:none;aspect-ratio:3/4;align-self:flex-start;
+    border:4px solid rgba(255,255,255,.92);border-radius:clamp(12px,3.4vw,17px);background:var(--paper-2);
     display:grid;place-items:center;overflow:hidden;position:relative;
+    box-shadow:0 0 0 1px rgba(18,52,58,.13),0 11px 24px rgba(18,52,58,.18);
   }
-  .window img{width:100%;height:100%;object-fit:cover;display:block}
+  .window img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.035) contrast(1.025)}
   .window::before{content:"";position:absolute;inset:5px;border:1px dashed var(--pink-rule);border-radius:2px;pointer-events:none}
   .window.has-photo::before{display:none}
-  .emblem{
-    position:absolute;left:0;top:0;z-index:3;
-    width:30%;height:21%;display:grid;place-items:center;
-    background:rgba(250,250,247,.95);
-    border-right:1px solid var(--pink-rule);border-bottom:1px solid var(--pink-rule);
-    border-bottom-right-radius:9px;
-    box-shadow:1px 1px 7px rgba(18,38,42,.16);
-    font-size:clamp(11px,3.4vw,17px);line-height:1;
-  }
   .window__ph{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;padding:5px}
   .window__ph .job{font-size:clamp(22px,7.4vw,34px);line-height:1}
   .window__ph .txt{font-family:var(--mono);font-size:clamp(6.5px,1.8vw,8.5px);letter-spacing:.16em;color:var(--pink-faint)}
@@ -193,6 +204,7 @@
   .ident__name{
     margin:0;font-size:clamp(19px,6.4vw,30px);font-weight:900;letter-spacing:-.035em;
     line-height:1.02;text-wrap:balance;
+    color:var(--seal-deep);text-shadow:0 1px 0 #fff;
   }
   .f{display:flex;flex-direction:column;gap:1px;min-width:0}
   .f__v{font-size:clamp(13px,4vw,18px);font-weight:700;letter-spacing:-.015em;line-height:1.2}
@@ -200,14 +212,18 @@
   .f__v .adj{color:var(--seal)}
   .mrz{
     flex:none;padding:clamp(5px,1.7vw,8px) clamp(11px,3.4vw,17px) clamp(6px,2vw,9px);
-    border-top:1px solid var(--pink-rule);background:var(--paper-2);
-    font-family:var(--mono);font-size:clamp(6.5px,1.95vw,9.5px);color:var(--pink-faint);
+    border-top:1px solid rgba(5,75,68,.46);background:linear-gradient(90deg,#083f3b,var(--seal-deep));
+    font-family:var(--mono);font-size:clamp(6.5px,1.95vw,9.5px);color:rgba(255,255,255,.63);
     white-space:nowrap;overflow:hidden;position:relative;z-index:2;
   }
 
   /* answer key face */
   .key{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;justify-content:space-evenly;padding:clamp(10px,3.2vw,16px);gap:clamp(4px,1.4vw,8px);position:relative;z-index:2}
-  .kq{display:flex;gap:clamp(7px,2.2vw,11px);align-items:flex-start}
+  .kq{
+    display:flex;gap:clamp(7px,2.2vw,11px);align-items:flex-start;
+    padding:clamp(5px,1.5vw,8px);border:1px solid rgba(18,52,58,.09);
+    border-radius:clamp(8px,2.3vw,12px);background:rgba(255,255,255,.38);
+  }
   .kq__n{
     font-family:var(--mono);font-size:clamp(8px,2.2vw,10px);font-weight:700;color:var(--pink-faint);
     flex:none;width:clamp(15px,4.6vw,20px);height:clamp(15px,4.6vw,20px);border-radius:50%;
@@ -221,6 +237,7 @@
     font-family:var(--mono);font-weight:500;font-size:.8em;
     color:var(--pink-faint);white-space:nowrap;
   }
+  .kq.is-active{background:rgba(8,125,108,.09);border-color:rgba(8,125,108,.22);box-shadow:0 6px 18px rgba(8,125,108,.08)}
   .kq.is-active .kq__n{background:var(--seal);border-color:var(--seal);color:var(--paper)}
   .kq.is-active .kq__a{text-decoration:underline;text-decoration-color:hsl(164 72% 40% / .45);text-underline-offset:3px}
 
@@ -300,6 +317,15 @@
   .finish p{margin:0;color:var(--muted);max-width:34ch;font-size:.95rem}
   .finish .footer{width:100%;max-width:330px}
 
+  /* Keep all five answers clear of the machine-readable strip on short phones. */
+  @media (max-height:720px){
+    .key{padding:6px 8px;gap:3px}
+    .kq{padding:3px 5px;gap:6px;border-radius:8px}
+    .kq__n{margin-top:0}
+    .kq__q{font-size:clamp(9px,2.8vw,12px);line-height:1.12}
+    .kq__a{font-size:clamp(11px,3.3vw,14px);line-height:1.16}
+    .tts--key{width:22px;height:22px}
+  }
   @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
   }
@@ -412,9 +438,11 @@
 /* ══════════════════════════════════════════════════════════════════
    PHOTOS
    Each person's portrait is looked up at, relative to this file:
-       whos-this/photos/<name-slug>.jpg      e.g. photos/maria-silva.jpg
-   Drop files in with those exact names and they appear in the card's
-   photo window automatically. Portrait crop, 3:4, ~600×800px is plenty.
+       whos-this/photos/high-res/<name-slug>.webp
+       e.g. photos/high-res/maria-silva.webp
+   The optimized high-resolution 3:4 portraits appear in the card's photo
+   window automatically. The original JPG set remains in photos/ as a
+   compact source reference and fallback.
    Missing files just show the dashed placeholder with the job icon —
    nothing breaks, so they can be added a few at a time.
    photos/README.md lists all thirty filenames.
@@ -456,7 +484,7 @@ const PEOPLE = [
 ];
 
 const slug = n => n.toLowerCase().replace(/[^a-z]+/g,"-");
-PEOPLE.forEach(p => { p.photo = "photos/" + slug(p.name) + ".jpg"; });
+PEOPLE.forEach(p => { p.photo = "photos/high-res/" + slug(p.name) + ".webp"; });
 
 /* ── grammar ─────────────────────────────────────────────────────── */
 const He    = p => p.g === "f" ? "She" : "He";
@@ -554,15 +582,12 @@ function render(){
   // photo window
   const win = $("window");
   win.className = "window";
-  win.innerHTML = `<div class="window__ph"><span class="job">${p.icon}</span><span class="txt">PHOTO</span></div><span class="emblem" aria-hidden="true">${p.flag}</span>`;
+  win.innerHTML = `<div class="window__ph"><span class="job">${p.icon}</span><span class="txt">PHOTO</span></div>`;
   const img = new Image();
   img.alt = p.name;
   img.addEventListener("load", () => {
     if (deck[idx] !== p) return;
     win.classList.add("has-photo"); win.innerHTML = ""; win.appendChild(img);
-    const em = document.createElement("span");
-    em.className = "emblem"; em.setAttribute("aria-hidden","true"); em.textContent = p.flag;
-    win.appendChild(em);
   });
   img.src = p.photo;
 

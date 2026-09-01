@@ -1,14 +1,12 @@
 # Photos for Who's This?
 
-Drop portrait files here with these exact names. Portrait crop, 3:4 ratio,
-~600x800px. Missing files just show the dashed placeholder with the job icon —
-nothing breaks, so you can add them a few at a time.
+The cards use the web-optimized, high-resolution WebP portraits in `high-res/`
+(approximately 1086x1448px, 3:4 ratio). The original 324x432px JPG portraits
+remain in this directory as compact source references and fallbacks.
 
-**Note on the corner:** the card draws a small country-flag tab flush in the
-top-left corner of the photo window, covering roughly the first 30% x 21%.
-The current placeholder crops were cut from the source slides and have a
-retouching smudge under there. Replacement portraits don't need to allow for
-it — just keep the subject's face out of that corner.
+Missing portrait files show the job-icon placeholder without breaking the
+activity. Country flags appear with the country and nationality information,
+not over the portrait.
 
 | file | person | prompt hint |
 |---|---|---|
