@@ -49,7 +49,7 @@ window.PICTURE_THIS_LINK_DATA = {
   ],
   "musical-instruments": [
     pictureThisLink("strings", [0,3], "The guitar and violin are the only two string instruments shown.", ["stringed"]),
-    pictureThisLink("brass", [2,5], "The trumpet and saxophone are the only two brass-family instruments shown.", ["brassy"]),
+    pictureThisLink("wind", [2,5], "The trumpet and saxophone are the only two wind instruments shown whose sound begins with the player's breath.", ["blown"]),
     pictureThisLink("keys", [4,5], "The piano and saxophone are the only two instruments shown played with keys.", ["keyed"])
   ],
   "market": [pictureThisLink("produce", [0,3], "Fruit and vegetables are the only two fresh-produce groups shown.")],
@@ -127,7 +127,7 @@ window.PICTURE_THIS_LINK_DATA = {
   ],
   "bathroom-fixtures": [],
   "money-and-banking": [],
-  "houseplants": [pictureThisLink("succulents", [0,5], "The cactus and aloe vera are the only two succulents shown.", ["succulent"])],
+  "houseplants": [],
   "at-the-dentist": [
     pictureThisLink("cleaning", [1,2], "The toothbrush and toothpaste are the only two items shown specifically paired for cleaning teeth.", ["clean"]),
     pictureThisLink("inspection", [0,4], "The dental chair and mouth mirror are the only two items shown directly joined during an oral inspection.", ["exam"]),
@@ -217,7 +217,7 @@ window.PICTURE_THIS_LINK_DATA = {
     pictureThisLink("storage", [4,5], "The coat hook and shoe rack are the only two entryway storage fixtures shown.", ["organizing"])
   ],
   "electrical-essentials": [
-    pictureThisLink("switching", [0,4], "The light switch and bulb are the only two items shown directly joined by switching a light on or off.", ["switch"]),
+    pictureThisLink("light", [0,4], "Light switch and light bulb are the only two items shown whose names and primary function are specifically about light.", ["lighting"]),
     pictureThisLink("wall", [0,1], "The light switch and wall outlet are the only two fixtures shown permanently mounted in a wall.")
   ],
   "personal-care": [
@@ -303,7 +303,7 @@ const auditedLinkAdditions = {
     pictureThisLink("burrowers", [0,4], "Ant and worm are the only two bugs shown especially known for tunneling through soil.")
   ],
   "tools": [
-    pictureThisLink("cutting", [2,3], "Saw and tape measure are the only two tools shown that directly form a measure-before-cutting pair."),
+    pictureThisLink("teeth", [0,2], "Pliers and saw are the only two tools shown with rows of functional metal teeth."),
     pictureThisLink("driving", [1,4], "Hammer and screwdriver are the only two tools shown made to drive the two standard pictured fastener types: nails and screws.")
   ],
   "outdoor-places": [pictureThisLink("shorelines", [2,5], "Island and lake are the only two places shown whose defining boundary is a shoreline around water.")],
@@ -357,7 +357,7 @@ const auditedLinkAdditions = {
     pictureThisLink("absorbent", [1,3], "Mop and sponge are the only two absorbent cleaning tools shown.")
   ],
   "in-the-garden": [
-    pictureThisLink("blades", [1,4], "Trowel and shears are the only two small hand-operated garden tools shown."),
+    pictureThisLink("blades", [1,4], "The hand trowel and pruning shears are the only two garden tools shown that cut or dig with exposed metal blades."),
     pictureThisLink("potting", [1,3], "Trowel and flowerpot are the only two items shown directly joined by potting a plant.")
   ],
   "at-the-playground": [
@@ -423,10 +423,7 @@ const auditedLinkAdditions = {
     pictureThisLink("saving", [3,4], "Piggy bank and safe are the only two containers shown specifically designed to protect saved valuables."),
     pictureThisLink("withdrawal", [0,5], "Banknote and ATM are the only two items shown that form the cash-withdrawal output and machine pair.")
   ],
-  "houseplants": [
-    pictureThisLink("blades", [4,5], "Snake plant and aloe are the only two plants shown with thick upright strap-shaped leaves."),
-    pictureThisLink("tropical", [1,3], "Orchid and fern are the only two humid-forest tropical plants shown.")
-  ],
+  "houseplants": [],
   "fire-station": [
     pictureThisLink("dispatch", [0,5], "Fire engine and alarm bell are the only two items shown that form an emergency alert and response-vehicle pair."),
     pictureThisLink("handles", [3,4], "Extinguisher and fire axe are the only two handheld firefighting tools shown.")

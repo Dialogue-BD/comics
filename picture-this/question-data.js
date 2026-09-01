@@ -2335,8 +2335,8 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "houseplants": {
     "questions": [
-      "Which plants have flowers, spines, or long leaves?",
-      "Which plant looks tallest? Which looks most compact?",
+      "Which plants have flowers, spines, spores, or thick leaves?",
+      "Which plant looks tallest? Which looks softest?",
       "What plants do you grow at home, school, or work?",
       "What do houseplants need in order to stay healthy?",
       "What other plants can people grow indoors?",
@@ -2352,27 +2352,27 @@ window.PICTURE_THIS_QUESTION_DATA = {
     ],
     "endpoints": [
       {
-        "x": 66.91,
-        "y": 16.63
+        "x": 87.03,
+        "y": 16.98
       },
       {
-        "x": 62.79,
-        "y": 27.33
+        "x": 46.42,
+        "y": 26.94
       },
       {
-        "x": 68.73,
-        "y": 37.33
+        "x": 69.09,
+        "y": 37.53
       },
       {
-        "x": 65.94,
+        "x": 66.3,
         "y": 48.04
       },
       {
-        "x": 46.79,
-        "y": 58.04
+        "x": 47.15,
+        "y": 58.39
       },
       {
-        "x": 72.73,
+        "x": 73.09,
         "y": 73.06
       }
     ]

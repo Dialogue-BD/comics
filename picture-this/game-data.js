@@ -427,9 +427,9 @@ window.PICTURE_THIS_GAME_DATA = {
   "houseplants": [
     "Cactus",
     "Orchid",
-    "Bonsai Tree",
+    "Moss",
     "Fern",
-    "Snake Plant",
+    "Jasmine Plant",
     "Aloe Vera"
   ],
   "at-the-dentist": [
@@ -1406,6 +1406,75 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "houseplants": {
+      "title": "Houseplants",
+      "category_answers": [
+        "Houseplants",
+        "Indoor Plants",
+        "Potted Plants",
+        "Plants at Home"
+      ],
+      "tags": [
+        "home",
+        "plants",
+        "nature"
+      ],
+      "items": [
+        {
+          "id": "cactus",
+          "label": "Cactus",
+          "answers": ["Cactus"]
+        },
+        {
+          "id": "orchid",
+          "label": "Orchid",
+          "answers": ["Orchid", "Orchid Plant"]
+        },
+        {
+          "id": "moss",
+          "label": "Moss",
+          "answers": ["Moss", "Moss Plant"]
+        },
+        {
+          "id": "fern",
+          "label": "Fern",
+          "answers": ["Fern", "Fern Plant"]
+        },
+        {
+          "id": "jasmine-plant",
+          "label": "Jasmine Plant",
+          "answers": ["Jasmine Plant", "Jasmine"]
+        },
+        {
+          "id": "aloe-vera",
+          "label": "Aloe Vera",
+          "answers": ["Aloe Vera", "Aloe"]
+        }
+      ],
+      "links": [
+        {
+          "word": "succulents",
+          "answers": ["succulents", "succulent"],
+          "items": ["cactus", "aloe-vera"],
+          "explanation": "Cactus and aloe vera are the only two succulent plants shown with thick water-storing tissue.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "spores",
+          "answers": ["spores", "spore"],
+          "items": ["moss", "fern"],
+          "explanation": "Moss and fern are the only two plants shown that reproduce with spores rather than flowers and seeds.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "fragrant",
+          "answers": ["fragrant"],
+          "items": ["orchid", "jasmine-plant"],
+          "explanation": "Orchid and jasmine plant are the only two houseplants shown especially grown for fragrant flowers.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "board-games": {
       "title": "Tabletop Games",
       "category_answers": [
