@@ -1406,6 +1406,75 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "jewelry": {
+      "title": "Jewelry and Accessories",
+      "category_answers": [
+        "Jewelry and Accessories",
+        "Jewelry",
+        "Personal Accessories",
+        "Decorative Accessories"
+      ],
+      "tags": [
+        "clothing",
+        "accessories",
+        "personal-items"
+      ],
+      "items": [
+        {
+          "id": "pearl-necklace",
+          "label": "Pearl Necklace",
+          "answers": ["Pearl Necklace", "Necklace"]
+        },
+        {
+          "id": "charm-bracelet",
+          "label": "Charm Bracelet",
+          "answers": ["Charm Bracelet", "Bracelet"]
+        },
+        {
+          "id": "hoop-earrings",
+          "label": "Hoop Earrings",
+          "answers": ["Hoop Earrings", "Earrings"]
+        },
+        {
+          "id": "brooch",
+          "label": "Brooch",
+          "answers": ["Brooch", "Decorative Pin"]
+        },
+        {
+          "id": "cufflinks",
+          "label": "Cufflinks",
+          "answers": ["Cufflinks", "Cuff Links"]
+        },
+        {
+          "id": "hairpin",
+          "label": "Hairpin",
+          "answers": ["Hairpin", "Hair Pin"]
+        }
+      ],
+      "links": [
+        {
+          "word": "chains",
+          "answers": ["chains", "chain"],
+          "items": ["pearl-necklace", "charm-bracelet"],
+          "explanation": "The pearl necklace and charm bracelet are the only two items shown built around flexible linked chains.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "pairs",
+          "answers": ["pairs", "pair"],
+          "items": ["hoop-earrings", "cufflinks"],
+          "explanation": "Hoop earrings and cufflinks are the only two items shown normally worn as a matching pair.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "pins",
+          "answers": ["pins", "pin"],
+          "items": ["brooch", "hairpin"],
+          "explanation": "The brooch and hairpin are the only two items shown whose names and fastening forms center on a pin.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "at-the-hardware-store": {
       "title": "At the Hardware Store",
       "category_answers": [
@@ -6118,15 +6187,15 @@ window.PICTURE_THIS_GAME_META = {
           "audit": "exclusive-among-six-v1"
         },
         {
-          "word": "gravity",
+          "word": "vertical",
           "answers": [
-            "gravity"
+            "vertical"
           ],
           "items": [
             "up",
             "down"
           ],
-          "explanation": "Up and down are the only two directions shown defined directly in relation to gravity.",
+          "explanation": "Up and down are the only two directions shown that form the vertical direction pair.",
           "audit": "exclusive-among-six-v1"
         }
       ]
@@ -6517,15 +6586,15 @@ window.PICTURE_THIS_GAME_META = {
           "audit": "exclusive-among-six-v1"
         },
         {
-          "word": "storage",
+          "word": "retention",
           "answers": [
-            "storage"
+            "retention"
           ],
           "items": [
             "save",
             "delete"
           ],
-          "explanation": "Save and delete are the only two actions shown that directly keep or remove a file from storage.",
+          "explanation": "Save and delete are the only two actions shown that directly determine whether a file is retained or removed.",
           "audit": "exclusive-among-six-v1"
         },
         {
@@ -6706,15 +6775,15 @@ window.PICTURE_THIS_GAME_META = {
       ],
       "links": [
         {
-          "word": "digits",
+          "word": "five",
           "answers": [
-            "digits"
+            "five"
           ],
           "items": [
             "hand",
             "foot"
           ],
-          "explanation": "The hand and foot are the only two parts shown that end in five digits.",
+          "explanation": "The hand and foot are the only two parts shown that normally end in five digits.",
           "audit": "exclusive-among-six-v1"
         },
         {
@@ -7762,10 +7831,10 @@ window.PICTURE_THIS_GAME_META = {
             "income"
           ],
           "items": [
-            "earn",
-            "spend"
+            "sell",
+            "earn"
           ],
-          "explanation": "Earn and Spend are the only two actions shown describing money coming in as income and then being used.",
+          "explanation": "Sell and earn are the only two actions shown that characteristically bring income to a person or business.",
           "audit": "exclusive-among-six-v1"
         }
       ]
@@ -8077,8 +8146,9 @@ window.PICTURE_THIS_GAME_META = {
       ]
     },
     "communication-skills": {
-      "title": "Communication Skills",
+      "title": "Language Actions",
       "category_answers": [
+        "Language Actions",
         "Communication Skills",
         "Speaking and Language",
         "Language Skills"
@@ -8175,8 +8245,9 @@ window.PICTURE_THIS_GAME_META = {
       ]
     },
     "choices-and-rules": {
-      "title": "Choices and Rules",
+      "title": "Action Opposites",
       "category_answers": [
+        "Action Opposites",
         "Choices and Rules",
         "Rules and Decisions",
         "Permission and Choice"
@@ -8375,8 +8446,9 @@ window.PICTURE_THIS_GAME_META = {
       ]
     },
     "processes-and-plans": {
-      "title": "Processes and Plans",
+      "title": "Everyday Processes",
       "category_answers": [
+        "Everyday Processes",
         "Processes and Plans",
         "Planning Actions",
         "Managing Activities"
@@ -8670,8 +8742,9 @@ window.PICTURE_THIS_GAME_META = {
       ]
     },
     "social-feelings-actions": {
-      "title": "Social Feelings and Actions",
+      "title": "Social Interactions",
       "category_answers": [
+        "Social Interactions",
         "Social Feelings and Actions",
         "Feelings Toward Others",
         "Helping and Motivation"
@@ -8745,15 +8818,16 @@ window.PICTURE_THIS_GAME_META = {
           "audit": "exclusive-among-six-v1"
         },
         {
-          "word": "pain",
+          "word": "support",
           "answers": [
-            "pain"
+            "support",
+            "supportive"
           ],
           "items": [
             "help",
-            "hurt"
+            "encourage"
           ],
-          "explanation": "Help and hurt are the only two actions shown directly responding to or causing pain.",
+          "explanation": "Help and encourage are the only two actions shown that directly give another person support.",
           "audit": "exclusive-among-six-v1"
         },
         {
