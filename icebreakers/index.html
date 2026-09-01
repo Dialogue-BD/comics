@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0e1016">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>Discussion Question Icebreakers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;700&display=swap">
+<style>
+  :root{
+    color-scheme: dark;
+    --accent: 164 72% 56%;
+    --ink:#f6f7f5;
+    --muted:rgba(246,247,245,.80);
+    --faint:rgba(246,247,245,.56);
+    --glass:rgba(22,26,32,.66);
+    --border:rgba(255,255,255,.13);
+    --panel:rgba(255,255,255,.035);
+    --rule:rgba(255,255,255,.13);
+    --a2:150 62% 58%;
+    --b1:196 82% 64%;
+    --b2:40 92% 64%;
+    --c1:288 72% 74%;
+    --sans:"Archivo", ui-rounded, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono:"Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{width:100%;height:100%;margin:0;background:#0e1016}
+  body{
+    color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.4;
+    overscroll-behavior:none;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;
+  }
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  [hidden]{display:none !important}
+  :focus-visible{outline:3px solid hsl(var(--accent));outline-offset:3px}
+
+  .app{
+    position:fixed;inset:0;isolation:isolate;overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:background .6s ease;
+    background:
+      radial-gradient(circle at 50% -4%, hsl(var(--accent) / .20), transparent 46%),
+      radial-gradient(circle at 92% 4%, hsl(var(--accent) / .09), transparent 32%),
+      radial-gradient(circle at 4% 98%, hsl(var(--accent) / .10), transparent 40%),
+      linear-gradient(150deg,#161a20 0%,#0b0d12 58%,#12151c 100%);
+    padding:max(10px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+            max(10px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  }
+  .app::before{
+    content:"";position:absolute;inset:0;z-index:-1;opacity:.17;pointer-events:none;
+    mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  }
+  .inner{width:100%;max-width:2400px;margin:0 auto;flex:1;min-height:0;display:flex;flex-direction:column}
+
+  /* ── chrome ─────────────────────────────────────────── */
+  .topbar{display:flex;align-items:center;gap:10px;padding:0 2px 7px;flex:none;flex-wrap:wrap}
+  .topbar-right{display:flex;align-items:center;gap:8px}
+  .brand{display:flex;align-items:center;gap:9px;min-width:0;font-size:.98rem;font-weight:800;letter-spacing:-.02em}
+  .brand-mark{
+    width:10px;height:10px;flex:none;border-radius:50%;background:hsl(var(--accent));
+    box-shadow:0 0 0 5px hsl(var(--accent) / .14), 0 0 22px hsl(var(--accent) / .7);
+    transition:background .6s ease, box-shadow .6s ease;
+  }
+  .spacer{flex:1}
+  .pill{
+    display:inline-flex;align-items:center;gap:6px;min-height:31px;padding:0 11px;
+    border:1px solid var(--border);border-radius:999px;background:var(--glass);
+    color:var(--muted);font-family:var(--mono);font-size:.665rem;font-weight:500;
+    letter-spacing:.11em;text-transform:uppercase;white-space:nowrap;
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    transition:border-color .18s, color .18s, background .18s;
+  }
+  button.pill:hover{border-color:hsl(var(--accent) / .5);color:var(--ink)}
+  .pill--count{font-variant-numeric:tabular-nums;letter-spacing:.06em}
+  .pill.is-on{background:hsl(var(--accent) / .17);border-color:hsl(var(--accent) / .55);color:hsl(var(--accent))}
+  .pill svg{width:14px;height:14px}
+
+  .filters{display:flex;gap:6px;flex-wrap:wrap}
+  .filters .pill{padding:0 10px;min-height:29px;font-size:.62rem}
+
+  /* ── question band ──────────────────────────────────── */
+  .qband{
+    flex:none;display:flex;gap:clamp(12px,1.6vw,22px);align-items:flex-start;
+    padding:clamp(9px,1.2vh,15px) clamp(14px,1.8vw,26px);
+    border:1px solid var(--border);border-radius:clamp(14px,1.5vw,22px);
+    background:linear-gradient(180deg, hsl(var(--accent) / .10), rgba(255,255,255,.028));
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    box-shadow:0 18px 50px rgba(0,0,0,.28);
+    transition:background .6s ease;
+  }
+  .qband.is-changing{opacity:0;transform:translateY(8px)}
+  .qband{transition:opacity .17s ease, transform .17s ease, background .6s ease}
+  .qmark{
+    flex:none;width:clamp(42px,3.4vw,62px);height:clamp(42px,3.4vw,62px);border-radius:16px;
+    display:grid;place-items:center;font-size:clamp(20px,1.9vw,30px);line-height:1;
+    background:hsl(var(--accent) / .14);border:1px solid hsl(var(--accent) / .32);
+  }
+  .qtext{flex:1;min-width:0}
+  .qmeta{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:clamp(4px,.7vh,9px)}
+  .lab{
+    font-family:var(--mono);font-size:clamp(9px,.72vw,14px);font-weight:600;
+    letter-spacing:.15em;text-transform:uppercase;color:hsl(var(--accent) / .95);
+  }
+  .lab--dim{color:var(--faint)}
+  .q{
+    margin:0;font-weight:900;letter-spacing:-.035em;line-height:1.06;text-wrap:balance;
+    font-size:var(--qf, clamp(1.35rem, 2.85vw, 3.1rem));
+  }
+  .note{
+    margin:clamp(6px,.9vh,11px) 0 0;color:var(--muted);
+    font-size:var(--nf, clamp(.76rem,.92vw,1.06rem));line-height:1.35;
+  }
+  .note b{color:hsl(var(--accent));font-weight:700}
+  .note i{font-style:italic;color:var(--faint)}
+  .note s{color:rgba(255,140,140,.7)}
+  .note::before{
+    content:"PATTERN";font-family:var(--mono);font-size:.62em;font-weight:700;letter-spacing:.16em;
+    color:var(--faint);border:1px solid var(--rule);border-radius:5px;
+    padding:2px 6px;margin-right:9px;vertical-align:2px;
+  }
+  .tts{
+    flex:none;display:grid;place-items:center;border-radius:50%;
+    width:clamp(38px,2.9vw,52px);height:clamp(38px,2.9vw,52px);
+    border:1px solid var(--border);background:var(--glass);color:var(--muted);
+    transition:color .16s, border-color .16s, background .16s, transform .16s;
+  }
+  .tts svg{width:58%;height:58%}
+  .tts:hover{color:hsl(var(--accent));border-color:hsl(var(--accent) / .5)}
+  .tts.is-speaking{color:hsl(var(--accent));border-color:hsl(var(--accent));background:hsl(var(--accent) / .18);animation:pulse 1s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+
+  /* ── panels ─────────────────────────────────────────── */
+  .panels{
+    --u:20px;
+    flex:1;min-height:0;display:grid;gap:clamp(9px,1vw,16px);
+    grid-template-columns:repeat(3,1fr);
+    padding-top:clamp(8px,.9vh,12px);
+  }
+  .panels.is-hidden{display:none}
+  .panel{
+    min-height:0;display:flex;flex-direction:column;
+    border:1px solid var(--border);border-radius:clamp(13px,1.3vw,20px);
+    background:var(--panel);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    overflow:hidden;
+  }
+  .panel__head{
+    flex:none;display:flex;align-items:center;gap:8px;
+    padding:calc(var(--u)*.30) clamp(11px,1.1vw,18px);
+    border-bottom:1px solid var(--rule);background:rgba(255,255,255,.028);
+  }
+  .panel__head .ico{font-size:calc(var(--u)*.8);line-height:1}
+  .panel__body{
+    flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+    padding:calc(var(--u)*.22) clamp(9px,1vw,15px) calc(var(--u)*.34);
+    display:flex;flex-direction:column;
+  }
+  /* auto margins centre the list when there's room to spare and collapse to
+     zero when there isn't, so a long list still scrolls from the top. */
+  .rows{margin:auto 0;width:100%}
+  .panel__body::-webkit-scrollbar{width:5px}
+  .panel__body::-webkit-scrollbar-thumb{background:var(--rule);border-radius:9px}
+
+  /* vocab */
+  .v{display:flex;align-items:baseline;gap:calc(var(--u)*.36);padding:calc(var(--u)*.30) 0;border-top:1px solid var(--rule)}
+  .v:first-child{border-top:0}
+  .v__w{font-weight:800;letter-spacing:-.02em;font-size:calc(var(--u)*1.08);white-space:nowrap}
+  .v__g{flex:1;min-width:0;color:var(--muted);font-size:calc(var(--u)*.95);line-height:1.24}
+  .lvl{
+    flex:none;font-family:var(--mono);font-size:calc(var(--u)*.46);font-weight:700;letter-spacing:.06em;
+    padding:1px .45em;border-radius:5px;border:1px solid currentColor;opacity:.95;align-self:center;
+  }
+  .lvl.A2{color:hsl(var(--a2))} .lvl.B1{color:hsl(var(--b1))}
+  .lvl.B2{color:hsl(var(--b2))} .lvl.C1{color:hsl(var(--c1))}
+
+  /* chunks */
+  .c{
+    padding:calc(var(--u)*.34) 0;border-top:1px solid var(--rule);
+    font-size:calc(var(--u)*1.02);font-weight:600;letter-spacing:-.018em;line-height:1.24;
+  }
+  .c:first-child{border-top:0}
+  .c::before{content:"▸";color:hsl(var(--accent) / .7);margin-right:8px;font-size:.85em}
+
+  /* frames */
+  .f{
+    padding:calc(var(--u)*.34) 0;border-top:1px solid var(--rule);
+    font-size:calc(var(--u)*1.02);font-weight:600;letter-spacing:-.018em;line-height:1.28;
+  }
+  .f:first-child{border-top:0}
+  .bl{
+    display:inline-block;min-width:calc(var(--u)*3.4);
+    border-bottom:3px solid hsl(var(--accent) / .72);
+    vertical-align:2px;height:.85em;margin:0 2px;
+  }
+  .hint{
+    font-family:var(--mono);font-style:normal;font-size:.62em;font-weight:500;
+    letter-spacing:.04em;color:var(--faint);white-space:nowrap;
+    border:1px solid var(--rule);border-radius:5px;padding:1px 5px;margin-left:5px;
+  }
+
+  /* ── footer ─────────────────────────────────────────── */
+  .footer{display:flex;align-items:center;gap:9px;flex:none;padding-top:clamp(8px,.9vh,12px)}
+  .action{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    min-height:clamp(42px,3.9vh,50px);
+    border:1px solid var(--border);border-radius:999px;background:var(--glass);color:var(--ink);
+    padding:0 clamp(15px,1.4vw,24px);font-size:clamp(.8rem,.92vw,1.02rem);font-weight:700;letter-spacing:-.012em;
+    box-shadow:0 10px 30px rgba(0,0,0,.22);
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    transition:transform .16s, background .18s, border-color .18s;
+  }
+  .action:hover{border-color:rgba(255,255,255,.26);background:rgba(37,42,50,.8)}
+  .action:active{transform:scale(.97)}
+  .action--next{
+    flex:1;background:hsl(var(--accent));color:#08201b;border-color:transparent;
+    box-shadow:0 8px 30px hsl(var(--accent) / .28);transition:background .6s ease, transform .16s;
+  }
+  .action--next:hover{background:hsl(var(--accent) / .92);border-color:transparent}
+  .action--next .sub{font-family:var(--mono);font-size:.66em;font-weight:500;letter-spacing:.13em;text-transform:uppercase;opacity:.62}
+  .action svg{width:18px;height:18px;flex:none}
+  .kbd{
+    display:none;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;color:var(--faint);
+    text-transform:uppercase;padding-left:6px;
+  }
+
+  /* ── narrow / portrait ──────────────────────────────── */
+  @media (max-width:900px), (orientation:portrait) and (max-width:1100px){
+    html,body{height:auto}
+    .app{position:static;min-height:100dvh;overflow:visible}
+    .inner{max-width:720px}
+    .panels{grid-template-columns:1fr;overflow:visible}
+    .panel{overflow:visible}
+    .panel__body{overflow:visible;display:block}
+    .rows{margin:0}
+    .panels{--u:20px}
+    .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -2px;padding:0 2px}
+    .filters::-webkit-scrollbar{display:none}
+    .topbar{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"brand . right" "filters filters filters";gap:8px}
+    .brand{grid-area:brand} .filters{grid-area:filters} .spacer{display:none}
+    .topbar-right{display:flex;gap:6px;grid-area:right;justify-self:end}
+    .panels{padding-bottom:clamp(56px,9vh,74px)}
+    .qband{align-items:flex-start}
+    .footer{position:sticky;bottom:0;padding-bottom:max(8px, env(safe-area-inset-bottom));
+            background:linear-gradient(180deg,transparent,#0d1015 42%);margin:0 -4px;padding-left:4px;padding-right:4px}
+    .q{font-size:clamp(1.3rem,5.6vw,2rem)}
+    .note{font-size:clamp(.82rem,3.3vw,.98rem)}
+  }
+  @media (min-width:1200px){ .kbd{display:inline} }
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="inner">
+
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>Icebreakers</span></div>
+      <div class="filters" id="filters"></div>
+      <span class="spacer"></span>
+      <div class="topbar-right">
+      <span class="pill pill--count" id="count">01 / 50</span>
+      <button class="pill" id="supportBtn" aria-pressed="false">Hide support</button>
+      <button class="pill" id="fsBtn" aria-label="Full screen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+        <span>Screen</span>
+      </button>
+      </div>
+    </header>
+
+    <section class="qband" id="qband">
+      <div class="qmark" id="qmark" aria-hidden="true">🌱</div>
+      <div class="qtext">
+        <div class="qmeta">
+          <span class="lab" id="catLab">Life, Purpose &amp; Legacy</span>
+          <span class="lab lab--dim" id="qno">Q1</span>
+        </div>
+        <h1 class="q" id="q">&nbsp;</h1>
+        <p class="note" id="note"></p>
+      </div>
+      <button class="tts" id="sayQ" aria-label="Listen to the question">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Z" fill="currentColor"></path><path d="M16 9c1 .8 1.5 1.8 1.5 3S17 14.2 16 15m2.6-8c1.7 1.4 2.6 3 2.6 5s-.9 3.6-2.6 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
+      </button>
+    </section>
+
+    <div class="panels" id="panels">
+      <section class="panel">
+        <div class="panel__head"><span class="ico" aria-hidden="true">📚</span><span class="lab">Vocabulary</span></div>
+        <div class="panel__body" id="pVocab"></div>
+      </section>
+      <section class="panel">
+        <div class="panel__head"><span class="ico" aria-hidden="true">🧩</span><span class="lab">Phrase chunks &amp; collocations</span></div>
+        <div class="panel__body" id="pChunks"></div>
+      </section>
+      <section class="panel">
+        <div class="panel__head"><span class="ico" aria-hidden="true">🪜</span><span class="lab">Sentence scaffolds</span></div>
+        <div class="panel__body" id="pFrames"></div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <button class="action" id="shuffleBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+        <span>Reshuffle</span>
+      </button>
+      <button class="action action--next" id="next">
+        <span>Next question</span>
+        <span class="sub" id="nextSub">random draw</span>
+        <span class="kbd">→</span>
+      </button>
+    </footer>
+
+  </div>
+</div>
+
+<script src="questions.js"></script>
+<script>
+/* ══════════════════════════════════════════════════════════════════
+   Deals from a shuffled deck so no question repeats until the deck
+   is exhausted; then it reshuffles itself. Filtering by theme
+   rebuilds the deck from that theme only.
+   ══════════════════════════════════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const shuffle = a => { for(let i=a.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+/* ___ becomes a blank line, «…» becomes a small grammar hint chip */
+const fill = s => esc(s)
+  .replace(/___/g, '<i class="bl"></i>')
+  .replace(/«([^»]+)»/g, '<em class="hint">$1</em>');
+/* what the voice should read: blanks become a pause, hints are dropped */
+const speakable = s => s.replace(/«[^»]+»/g, "").replace(/___/g, " ... ").replace(/\s+/g," ").trim();
+
+let deck = [], idx = 0, filter = "all";
+
+/* ── speech ─────────────────────────────────────────────────────── */
+let speaking = null;
+function stopSpeech(){
+  try { window.speechSynthesis?.cancel(); } catch(e){}
+  speaking?.classList.remove("is-speaking"); speaking = null;
+}
+function say(text, control){
+  if (!("speechSynthesis" in window)) return;
+  const again = speaking === control;
+  stopSpeech();
+  if (again) return;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US"; u.rate = .84;
+  if (control){ speaking = control; control.classList.add("is-speaking"); }
+  const clear = () => { control?.classList.remove("is-speaking"); if (speaking === control) speaking = null; };
+  u.onend = clear; u.onerror = clear;
+  window.speechSynthesis.speak(u);
+}
+
+/* ── filters ────────────────────────────────────────────────────── */
+function buildFilters(){
+  const keys = ["all", ...Object.keys(CATEGORIES)];
+  $("filters").innerHTML = keys.map(k => {
+    const c = CATEGORIES[k];
+    return `<button class="pill${k===filter?" is-on":""}" data-cat="${k}">${c ? c.icon+" "+c.short : "All themes"}</button>`;
+  }).join("");
+}
+$("filters").addEventListener("click", e => {
+  const b = e.target.closest("[data-cat]");
+  if (!b || b.dataset.cat === filter) return;
+  filter = b.dataset.cat;
+  buildFilters();
+  build();
+});
+
+/* ── deck ───────────────────────────────────────────────────────── */
+function build(){
+  const pool = filter === "all" ? QUESTIONS : QUESTIONS.filter(q => q.cat === filter);
+  deck = shuffle(pool.slice());
+  idx = 0;
+  render();
+}
+
+function render(){
+  stopSpeech();
+  const item = deck[idx], cat = CATEGORIES[item.cat];
+
+  $("app").style.setProperty("--accent", cat.hue);
+  $("qmark").textContent = cat.icon;
+  $("catLab").textContent = cat.label;
+  $("qno").textContent = "Q" + item.id;
+  $("q").textContent = item.q;
+  $("note").innerHTML = item.note;
+  $("count").textContent = String(idx+1).padStart(2,"0") + " / " + String(deck.length).padStart(2,"0");
+  $("nextSub").textContent = idx === deck.length - 1 ? "reshuffles" : "random draw";
+
+  const rows = html => `<div class="rows">${html}</div>`;
+  $("pVocab").innerHTML = rows(item.vocab.map(([w,g,l]) =>
+    `<div class="v"><span class="v__w">${esc(w)}</span><span class="lvl ${l}">${l}</span><span class="v__g">${esc(g)}</span></div>`).join(""));
+  $("pChunks").innerHTML = rows(item.chunks.map(c => `<div class="c">${fill(c)}</div>`).join(""));
+  $("pFrames").innerHTML = rows(item.frames.map(f => `<div class="f">${fill(f)}</div>`).join(""));
+
+  $("qband").classList.remove("is-changing");
+  autofit();
+}
+
+/* ── fit to the room ──────────────────────────────────────────────
+   Type is sized to fill the space actually available rather than to a
+   fixed scale, so the back row gets the largest text each question can
+   afford. The question is fitted first, because it decides how much
+   room is left; then ONE shared unit is found for all three panels, so
+   a dense panel and a sparse one still look like the same screen.   */
+const NARROW = "(max-width:900px), (orientation:portrait) and (max-width:1100px)";
+const isNarrow = () => matchMedia(NARROW).matches;
+
+function autofit(){
+  const panels = $("panels"), qEl = $("q"), note = $("note"), band = $("qband");
+  if (isNarrow()){
+    panels.querySelectorAll(".panel").forEach(c => c.style.removeProperty("--u"));
+    panels.style.removeProperty("--u");
+    qEl.style.removeProperty("--qf");
+    note.style.removeProperty("--nf");
+    return;
+  }
+  const setQ = px => {
+    qEl.style.setProperty("--qf", px + "px");
+    note.style.setProperty("--nf", Math.max(15, px * .30) + "px");
+  };
+
+  // 1. the question, as big as it goes before it starts eating the panels
+  const maxBand = Math.round(innerHeight * .26);
+  let lo = 30, hi = 86, best = 30;
+  for (let i = 0; i < 8; i++){
+    const mid = (lo + hi) / 2;
+    setQ(mid);
+    if (band.offsetHeight <= maxBand){ best = mid; lo = mid; } else hi = mid;
+  }
+  setQ(best);
+
+  // 2. each panel fills its own column, so a sparse panel isn't held down
+  //    to a dense one's size — but capped to 1.35x the tightest, or the
+  //    three columns stop looking like one screen.
+  if (panels.classList.contains("is-hidden")) return;
+  const cols = [...panels.querySelectorAll(".panel")];
+  const fitOne = col => {
+    const body = col.querySelector(".panel__body");
+    let a = 12, z = 60, keep = 12;
+    for (let i = 0; i < 10; i++){
+      const mid = (a + z) / 2;
+      col.style.setProperty("--u", mid + "px");
+      if (body.scrollHeight <= body.clientHeight + 1){ keep = mid; a = mid; } else z = mid;
+    }
+    return keep;
+  };
+  const us = cols.map(fitOne);
+  const cap = Math.min(...us) * 1.35;
+  cols.forEach((c, i) => c.style.setProperty("--u", Math.min(us[i], cap) + "px"));
+}
+
+function advance(){
+  $("qband").classList.add("is-changing");
+  setTimeout(() => {
+    if (idx < deck.length - 1) { idx++; render(); }
+    else build();
+  }, 170);
+}
+
+/* ── controls ───────────────────────────────────────────────────── */
+$("next").addEventListener("click", advance);
+$("shuffleBtn").addEventListener("click", () => { $("qband").classList.add("is-changing"); setTimeout(build, 170); });
+$("sayQ").addEventListener("click", () => say(deck[idx].q, $("sayQ")));
+
+$("supportBtn").addEventListener("click", () => {
+  const on = $("panels").classList.toggle("is-hidden");
+  $("supportBtn").classList.toggle("is-on", on);
+  $("supportBtn").setAttribute("aria-pressed", String(on));
+  $("supportBtn").textContent = on ? "Show support" : "Hide support";
+  if (!on) autofit();
+});
+
+$("fsBtn").addEventListener("click", () => {
+  if (document.fullscreenElement) document.exitFullscreen?.();
+  else document.documentElement.requestFullscreen?.().catch(()=>{});
+});
+
+document.addEventListener("keydown", e => {
+  if (e.target.closest("button") && (e.key === " " || e.key === "Enter")) return;
+  if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); advance(); }
+  if (e.key === "ArrowLeft" && idx > 0) { idx--; render(); }
+  const k = e.key.toLowerCase();
+  if (k === "s") $("sayQ").click();
+  if (k === "f") $("fsBtn").click();
+  if (k === "h") $("supportBtn").click();
+  if (k === "r") $("shuffleBtn").click();
+});
+
+buildFilters();
+build();
+
+let refit;
+addEventListener("resize", () => { clearTimeout(refit); refit = setTimeout(autofit, 120); });
+addEventListener("orientationchange", () => setTimeout(autofit, 260));
+document.addEventListener("fullscreenchange", () => setTimeout(autofit, 120));
+document.fonts?.ready.then(autofit);   // metrics shift once Archivo lands
+</script>
+</body>
+</html>
