@@ -1,10 +1,10 @@
 ---
-name: Replit Python user-site installs
-description: How to recover when Python dependency installation targets Replit's immutable system interpreter.
+name: Replit Python dependencies
+description: How local and published Python dependencies must avoid Replit's immutable system interpreter.
 ---
 
-This workspace's wrapped Python includes the project-local `.pythonlibs/lib/python3.13/site-packages` directory on `sys.path`. If the package helper fails with an externally managed environment error, install the already-declared requirement into that user-site target rather than creating a virtual environment or changing application imports.
+This workspace's wrapped Python includes the project-local `.pythonlibs/lib/python3.13/site-packages` directory on `sys.path`. Local dependency recovery can target that user-site path. Published dependencies must be declared through Nix when a requirements manifest would make the publish builder invoke pip against immutable system Python.
 
-**Why:** Replit's system Python is immutable, and a package helper may invoke its system `pip` even though the workflow loads project packages from `.pythonlibs`.
+**Why:** Replit's system Python is immutable. Local workflows can load `.pythonlibs`, but that directory is not the durable declaration used to assemble a fresh publish image.
 
-**How to apply:** Confirm the dependency is declared first, inspect Python's user-site path, then use the available package tooling to populate that exact project-local site-packages directory. Verify the import with the same `python` command used by the workflow.
+**How to apply:** For local recovery, populate the configured user-site path and verify with the workflow's `python`. For publishing, declare the matching Nix package and avoid a pip manifest that reproduces the externally managed environment failure.
