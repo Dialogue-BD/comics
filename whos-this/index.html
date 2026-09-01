@@ -213,7 +213,6 @@
     flex:none;width:clamp(15px,4.6vw,20px);height:clamp(15px,4.6vw,20px);border-radius:50%;
     border:1px solid var(--pink-rule);display:grid;place-items:center;margin-top:2px;
   }
-  .kq--bonus .kq__n{border-style:dashed}
   .kq__body{flex:1;min-width:0;display:flex;flex-direction:column}
   .kq__q{display:block;font-size:clamp(10.5px,3.1vw,14px);font-weight:600;color:var(--pink-soft);letter-spacing:-.01em}
   .kq__a{display:block;font-size:clamp(12.5px,3.75vw,17px);font-weight:700;letter-spacing:-.02em;line-height:1.24;margin-top:1px}
@@ -468,7 +467,7 @@ const QUESTIONS = [
   {wh:"What",     q:p => `What does ${heShe(p)} do?`,            a:p => `${hes(p)} ${an(p.job)} <span class="hi">${p.job}</span>.`},
   {wh:"Where",    q:p => `Where's ${heShe(p)} from?`,            a:p => `${hes(p)} from <span class="hi">${p.country}</span>. ${hes(p)} <span class="hi">${p.adj}</span>.`},
   {wh:"How much", q:p => `How much does ${heShe(p)} earn?`,      a:p => `${He(p)} earns <span class="hi">${money(p.pay)}</span> a month.`},
-  {wh:"How old",  q:p => `How old is ${heShe(p)}?`, bonus:true,  a:p => `${hes(p)} <span class="hi">${p.age}</span> years old.`}
+  {wh:"How old",  q:p => `How old is ${heShe(p)}?`,              a:p => `${hes(p)} <span class="hi">${p.age}</span> years old.`}
 ];
 
 /* ── speech ──────────────────────────────────────────────────────
@@ -508,8 +507,8 @@ function start(){
   idx = 0;
 
   $("rail").innerHTML = QUESTIONS.map((Q,i) => `
-    <button class="wh${Q.bonus ? " wh--bonus" : ""}" data-q="${i}">
-      <span class="n">${Q.bonus ? "+" : i+1}</span><span>${Q.wh}</span>
+    <button class="wh" data-q="${i}">
+      <span class="n">${i+1}</span><span>${Q.wh}</span>
     </button>`).join("");
 
   $("finish").hidden = true; $("play").hidden = false;
@@ -556,8 +555,8 @@ function render(){
   // back
   $("keyName").textContent = p.name;
   $("key").innerHTML = QUESTIONS.map((Q,i) => `
-    <div class="kq${Q.bonus ? " kq--bonus" : ""}" data-k="${i}">
-      <span class="kq__n">${Q.bonus ? "+" : i+1}</span>
+    <div class="kq" data-k="${i}">
+      <span class="kq__n">${i+1}</span>
       <span class="kq__body"><span class="kq__q">${Q.q(p)}</span><span class="kq__a">${Q.a(p)}</span></span>
       <button class="tts tts--key" data-say="${i}" aria-label="Listen to answer ${i+1}">${SPEAKER}</button>
     </div>`).join("");
@@ -628,7 +627,7 @@ $("next").addEventListener("click", () => {
   $("play").hidden = true; $("finish").hidden = false;
   $("deckBtn").hidden = true; $("count").hidden = true;
   $("doneTitle").textContent = `${deck.length} cards done`;
-  $("doneLine").textContent = `That\u2019s ${deck.length*4} questions asked and answered between you.`;
+  $("doneLine").textContent = `That\u2019s ${deck.length*5} questions asked and answered between you.`;
 });
 
 [$("again"), $("deckBtn")].forEach(b => b.addEventListener("click", start));
