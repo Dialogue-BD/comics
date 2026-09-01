@@ -265,7 +265,7 @@
       <div class="filters" id="filters"></div>
       <span class="spacer"></span>
       <div class="topbar-right">
-      <span class="pill pill--count" id="count">01 / 50</span>
+      <span class="pill pill--count" id="count">001 / 100</span>
       <button class="pill" id="supportBtn" aria-pressed="false">Hide support</button>
       <button class="pill" id="fsBtn" aria-label="Full screen">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
@@ -392,7 +392,8 @@ function render(){
   $("qno").textContent = "Q" + item.id;
   $("q").textContent = item.q;
   $("note").innerHTML = item.note;
-  $("count").textContent = String(idx+1).padStart(2,"0") + " / " + String(deck.length).padStart(2,"0");
+  const countWidth = String(deck.length).length;
+  $("count").textContent = String(idx+1).padStart(countWidth,"0") + " / " + String(deck.length).padStart(countWidth,"0");
   $("nextSub").textContent = idx === deck.length - 1 ? "reshuffles" : "random draw";
 
   const rows = html => `<div class="rows">${html}</div>`;

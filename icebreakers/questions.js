@@ -344,6 +344,326 @@ const QUESTIONS = [
     "When I'm not there, I hope people feel ___"
   ]
 },
+{
+  id:3, cat:"life",
+  q:"How do you find peace or meaning when something completely unexpected happens in your life?",
+  note:"find meaning <b>in</b> + noun / -ing — <i>I try to find meaning in what happened</i>",
+  vocab:[
+    ["unexpected","not planned or thought likely to happen","B1"],
+    ["cope","manage a difficult situation","B2"],
+    ["meaning","a reason or importance behind something","B1"],
+    ["acceptance","recognising reality without fighting it","B2"],
+    ["perspective","a particular way of seeing a situation","B2"],
+    ["uncertainty","the state of not knowing what will happen","B2"],
+    ["ground yourself","bring your attention back to the present","C1"],
+    ["make sense of","understand something confusing or painful","B2"]
+  ],
+  chunks:[
+    "come out of nowhere",
+    "make sense of what happened",
+    "take things one day at a time",
+    "focus on what I can control",
+    "find meaning in ___",
+    "lean on my faith / family",
+    "eventually come to accept ___"
+  ],
+  frames:[
+    "When something unexpected happens, I first ___",
+    "I find peace by ___ «-ing»",
+    "It helps me to focus on ___",
+    "At first I may feel ___, but later ___",
+    "I try to make sense of it by ___",
+    "One unexpected event that changed me was ___"
+  ]
+},
+{
+  id:6, cat:"life",
+  q:"What is something you believe is true, even if you cannot prove it?",
+  note:"believe <b>that</b> + clause — <i>I believe that kindness comes back to us</i>",
+  vocab:[
+    ["believe","accept that something is true","A2"],
+    ["prove","show with evidence that something is true","B1"],
+    ["evidence","facts or signs that support an idea","B1"],
+    ["intuition","a feeling of knowing without conscious reasoning","C1"],
+    ["faith","strong trust without complete proof","B2"],
+    ["conviction","a firmly held belief","C1"],
+    ["assumption","something accepted as true without proof","B2"],
+    ["doubt","a feeling that something may not be true","B1"]
+  ],
+  chunks:[
+    "believe deep down",
+    "can't prove it scientifically",
+    "have faith that ___",
+    "based on personal experience",
+    "trust my intuition",
+    "leave room for doubt",
+    "feel true to me"
+  ],
+  frames:[
+    "I believe that ___, even though I can't prove it",
+    "My belief comes from ___",
+    "There is no clear evidence, but ___",
+    "Some people might disagree because ___",
+    "I would change my mind if ___",
+    "For me, faith begins where ___"
+  ]
+},
+{
+  id:7, cat:"life",
+  q:"Who is the wisest person you know, and why?",
+  note:"the wisest person <b>I know</b> — the relative pronoun can be omitted after a superlative noun phrase",
+  vocab:[
+    ["wise","able to make good decisions from experience","B1"],
+    ["wisdom","deep practical understanding of life","B2"],
+    ["experienced","having learned through doing something","B1"],
+    ["judgement","the ability to make sensible decisions","B2"],
+    ["patient","able to wait or listen calmly","A2"],
+    ["insight","a clear and deep understanding","C1"],
+    ["humble","not believing you are better than others","B2"],
+    ["level-headed","calm and sensible in difficult situations","C1"]
+  ],
+  chunks:[
+    "give thoughtful advice",
+    "learn from experience",
+    "see both sides",
+    "think before speaking",
+    "never rush to judge",
+    "words of wisdom",
+    "look up to someone"
+  ],
+  frames:[
+    "The wisest person I know is ___",
+    "I consider them wise because ___",
+    "Whenever I need advice, they ___",
+    "They taught me that ___",
+    "Unlike many people, they never ___",
+    "One wise thing they once said was ___"
+  ]
+},
+{
+  id:10, cat:"life",
+  q:"What brings you the most true joy?",
+  note:"bring someone joy — <i>spending time with family brings me joy</i>",
+  vocab:[
+    ["joy","a strong feeling of deep happiness","B1"],
+    ["pleasure","enjoyment or satisfaction","B1"],
+    ["contentment","quiet happiness with what you have","C1"],
+    ["fulfilment","happiness from doing something meaningful","C1"],
+    ["delight","great pleasure or happiness","B2"],
+    ["fleeting","lasting only a short time","C1"],
+    ["savour","slow down and fully enjoy a moment","C1"],
+    ["uplift","make someone feel happier and more hopeful","B2"]
+  ],
+  chunks:[
+    "bring me real joy",
+    "the simple pleasure of ___",
+    "light up my day",
+    "lose track of time",
+    "feel deeply content",
+    "money can't replace ___",
+    "savour the moment"
+  ],
+  frames:[
+    "What brings me the most joy is ___",
+    "I feel happiest when ___",
+    "It may sound simple, but ___",
+    "The difference between pleasure and joy is ___",
+    "A recent moment of true joy was ___",
+    "I make more room for joy by ___ «-ing»"
+  ]
+},
+{
+  id:11, cat:"life",
+  q:"Do you think people are born with a specific purpose?",
+  note:"be born <b>with</b> + noun / be meant <b>to</b> + base verb",
+  vocab:[
+    ["purpose","the reason why someone exists or does something","B1"],
+    ["destiny","events believed to be decided in advance","B2"],
+    ["calling","a strong feeling that a certain life or job is right for you","C1"],
+    ["talent","a natural ability to do something well","B1"],
+    ["discover","find something for the first time","A2"],
+    ["shape","influence how something develops","B2"],
+    ["predetermined","decided before it happens","C1"],
+    ["evolve","develop gradually over time","C1"]
+  ],
+  chunks:[
+    "be born with a purpose",
+    "find your calling",
+    "be meant to ___",
+    "discover along the way",
+    "use your gifts to ___",
+    "create your own meaning",
+    "change over a lifetime"
+  ],
+  frames:[
+    "I think people are / aren't born with ___",
+    "Perhaps we are meant to ___",
+    "Our purpose may come from ___",
+    "Some people discover their purpose when ___",
+    "My sense of purpose has changed because ___",
+    "Even without one specific purpose, we can ___"
+  ]
+},
+{
+  id:13, cat:"life",
+  q:"If you had only one year left to live, how would you change your life today?",
+  note:"second conditional — <b>If</b> + past simple, <b>would</b> + base verb",
+  vocab:[
+    ["priority","something more important than other things","B1"],
+    ["regret","sadness about something you did or did not do","B2"],
+    ["postpone","delay something until later","B1"],
+    ["cherish","love and value someone or something deeply","C1"],
+    ["urgent","needing immediate attention","B1"],
+    ["reconcile","repair a broken relationship","C1"],
+    ["bucket list","experiences you want to have during your life","B2"],
+    ["make the most of","use something as fully as possible","B2"]
+  ],
+  chunks:[
+    "have one year left",
+    "change my priorities",
+    "stop putting off ___",
+    "spend quality time with ___",
+    "make peace with someone",
+    "live without regret",
+    "make every day count"
+  ],
+  frames:[
+    "If I had one year left, I would ___",
+    "I would stop ___ «-ing» and start ___ «-ing»",
+    "The person I'd spend more time with is ___",
+    "One thing I would finally do is ___",
+    "I would want to make peace with ___",
+    "Thinking about this makes me want to ___ today"
+  ]
+},
+{
+  id:14, cat:"life",
+  q:"What do you think makes a human life valuable?",
+  note:"make + object + adjective — <i>relationships make life valuable</i>",
+  vocab:[
+    ["valuable","important and deserving care or respect","B1"],
+    ["dignity","the value and respect every person deserves","C1"],
+    ["inherent","existing as a natural and permanent quality","C1"],
+    ["contribution","something useful that you give or do","B2"],
+    ["potential","the ability to develop or achieve something","B2"],
+    ["worth","the value or importance of someone or something","B2"],
+    ["compassion","concern for someone who is suffering","C1"],
+    ["unique","unlike anyone or anything else","B1"]
+  ],
+  chunks:[
+    "have value simply because ___",
+    "contribute to society",
+    "treat every person with dignity",
+    "measure someone's worth by ___",
+    "reach their full potential",
+    "touch other people's lives",
+    "no life is worth more than another"
+  ],
+  frames:[
+    "I believe every human life is valuable because ___",
+    "A person's worth should not depend on ___",
+    "What gives life meaning is ___",
+    "Even someone who cannot ___ can still ___",
+    "Society sometimes values people by ___, but ___",
+    "To respect human life, we should ___"
+  ]
+},
+{
+  id:15, cat:"life",
+  q:"How do you decide what is most important in your life?",
+  note:"decide <b>what to</b> + base verb — <i>I decide what to prioritise by asking…</i>",
+  vocab:[
+    ["priority","something that matters more than other things","B1"],
+    ["value","a belief that guides your choices","B1"],
+    ["balance","a healthy amount of different activities","B1"],
+    ["evaluate","judge the importance or quality of something","B2"],
+    ["trade-off","a choice where gaining one thing means losing another","C1"],
+    ["align","bring things into agreement with each other","C1"],
+    ["essential","completely necessary or extremely important","B2"],
+    ["reflect","think carefully and deeply","B2"]
+  ],
+  chunks:[
+    "set my priorities",
+    "make time for what matters",
+    "weigh one thing against another",
+    "say no to ___",
+    "align my choices with my values",
+    "look at the long term",
+    "ask myself whether ___"
+  ],
+  frames:[
+    "I decide what matters by ___ «-ing»",
+    "My top priority is ___ because ___",
+    "When two important things conflict, I ___",
+    "I know something is important if ___",
+    "I sometimes have to say no to ___ in order to ___",
+    "My priorities have changed since ___"
+  ]
+},
+{
+  id:17, cat:"life",
+  q:"Do you think it is harder to be a good person today than in the past?",
+  note:"comparative + <b>than</b> — <i>it is harder today than it was in the past</i>",
+  vocab:[
+    ["temptation","a strong desire to do something you should not","B2"],
+    ["pressure","a strong influence that pushes you to act","B1"],
+    ["standard","an expected level of behaviour","B1"],
+    ["community","people who live together or share something","B1"],
+    ["accountability","being responsible for your choices","C1"],
+    ["self-interest","concern mainly for your own advantage","C1"],
+    ["compassion","care for people who are suffering","C1"],
+    ["generation","people born during the same period","B1"]
+  ],
+  chunks:[
+    "harder than it used to be",
+    "face new kinds of pressure",
+    "people haven't really changed",
+    "be held accountable",
+    "look out for yourself",
+    "a stronger sense of community",
+    "every generation faces ___"
+  ],
+  frames:[
+    "I think being good is ___ today than in the past",
+    "People today face ___, whereas people before ___",
+    "On the other hand, we now have more ___",
+    "Human nature hasn't changed because ___",
+    "It may seem harder when ___",
+    "In any period, being good requires ___"
+  ]
+},
+{
+  id:18, cat:"life",
+  q:"What is something you used to care a lot about, but don't anymore?",
+  note:"used <b>to</b> + base verb for a past state that is no longer true",
+  vocab:[
+    ["care about","consider something important","A2"],
+    ["outgrow","stop enjoying or needing something as you mature","C1"],
+    ["approval","the feeling that others accept or like something","B2"],
+    ["trend","a style or behaviour popular for a period","B1"],
+    ["perspective","a way of understanding a situation","B2"],
+    ["mature","develop emotionally and mentally","B2"],
+    ["obsess over","think about something far too much","C1"],
+    ["let go of","stop being attached to something","B2"]
+  ],
+  chunks:[
+    "used to care deeply about ___",
+    "worry about what people thought",
+    "grow out of ___",
+    "doesn't matter to me anymore",
+    "put things in perspective",
+    "let go of the need to ___",
+    "my priorities changed"
+  ],
+  frames:[
+    "I used to care a lot about ___",
+    "At the time, I thought ___ was extremely important",
+    "I stopped caring when ___",
+    "Now I realise that ___",
+    "Instead, I care more about ___",
+    "Letting go of it has made me ___"
+  ]
+},
 
 /* ── MORALITY, CHARACTER & CHOICES ──────────────────────────────── */
 {
@@ -664,6 +984,326 @@ const QUESTIONS = [
     "A lie can feel easier at first, but ___",
     "I find it difficult to admit that ___",
     "Telling the truth becomes easier if ___"
+  ]
+},
+{
+  id:23, cat:"moral",
+  q:"Have you ever done the right thing, even when it was very difficult?",
+  note:"present perfect for experience, then past simple for details — <i>I've done it once. It happened when…</i>",
+  vocab:[
+    ["right","morally good or correct","A2"],
+    ["difficult","needing effort, courage, or skill","A2"],
+    ["principle","a belief that guides how you behave","B2"],
+    ["pressure","influence that tries to make you act a certain way","B1"],
+    ["consequence","a result of an action or decision","B2"],
+    ["integrity","doing what is right even when it costs you","C1"],
+    ["stand your ground","refuse to change a decision you believe is right","C1"],
+    ["compromise","accept less than you wanted to reach agreement","B2"]
+  ],
+  chunks:[
+    "do the right thing",
+    "stand up for what I believed",
+    "go against the group",
+    "pay a price for ___",
+    "stay true to my principles",
+    "be tempted to stay silent",
+    "look back without regret"
+  ],
+  frames:[
+    "Yes, once I had to ___ even though ___",
+    "The situation began when ___",
+    "I knew the right thing was to ___",
+    "It was difficult because ___",
+    "In the end, I decided to ___",
+    "Looking back, I feel ___ about my choice"
+  ]
+},
+{
+  id:24, cat:"moral",
+  q:"Who taught you the difference between right and wrong?",
+  note:"teach someone <b>the difference between</b> A <b>and</b> B",
+  vocab:[
+    ["right and wrong","morally good and morally bad behaviour","A2"],
+    ["upbringing","the way a child is raised","B2"],
+    ["discipline","training that teaches rules and self-control","B2"],
+    ["example","a person or action that shows what to do","A2"],
+    ["conscience","your inner sense of right and wrong","C1"],
+    ["influence","the power to shape someone's ideas or actions","B2"],
+    ["instil","gradually put a belief or value into someone","C1"],
+    ["role model","someone whose behaviour you try to copy","B1"]
+  ],
+  chunks:[
+    "teach right from wrong",
+    "lead by example",
+    "set clear boundaries",
+    "explain the reason behind a rule",
+    "learn through consequences",
+    "shape my conscience",
+    "values passed down to me"
+  ],
+  frames:[
+    "___ taught me most about right and wrong",
+    "They taught me by ___ «-ing»",
+    "One rule they always emphasised was ___",
+    "I learned from their example that ___",
+    "As I grew older, I began to question ___",
+    "Today, my sense of right and wrong comes from ___"
+  ]
+},
+{
+  id:25, cat:"moral",
+  q:"Do you think human beings are naturally good or naturally bad?",
+  note:"be born + adjective / learn <b>to</b> + base verb — <i>we are born selfish but learn to share</i>",
+  vocab:[
+    ["naturally","in a way that comes from birth rather than learning","B1"],
+    ["human nature","the basic qualities shared by people","B2"],
+    ["selfish","caring mainly about yourself","B1"],
+    ["compassionate","wanting to help those who suffer","C1"],
+    ["instinct","a natural way of behaving without learning","B2"],
+    ["environment","the conditions and people around someone","B1"],
+    ["nurture","the care and influence given while someone grows","C1"],
+    ["capacity","the ability or potential to do something","B2"]
+  ],
+  chunks:[
+    "good by nature",
+    "born with the capacity for both",
+    "shaped by our environment",
+    "act out of self-interest",
+    "show natural compassion",
+    "learn right from wrong",
+    "bring out the best / worst in us"
+  ],
+  frames:[
+    "I think human beings are naturally ___",
+    "We may be born with ___, but we learn ___",
+    "Children show that people ___",
+    "Our environment shapes us by ___ «-ing»",
+    "The same person can be ___ when ___ and ___ when ___",
+    "Perhaps human nature contains both ___ and ___"
+  ]
+},
+{
+  id:27, cat:"moral",
+  q:"Have you ever forgiven someone who did not apologize?",
+  note:"forgive someone <b>for</b> + noun / -ing — <i>I forgave him for hurting me</i>",
+  vocab:[
+    ["forgive","stop holding anger against someone","B1"],
+    ["apologize","say that you are sorry for doing wrong","B1"],
+    ["closure","a feeling that a painful experience is finally finished","C1"],
+    ["resentment","lasting anger about unfair treatment","C1"],
+    ["release","allow a feeling or person to become free","B2"],
+    ["acknowledge","accept that something happened or was wrong","C1"],
+    ["accountability","responsibility for the results of your actions","C1"],
+    ["reconcile","restore a relationship after conflict","C1"]
+  ],
+  chunks:[
+    "forgive without an apology",
+    "wait for someone to say sorry",
+    "let go for my own peace",
+    "take responsibility for ___",
+    "move on without closure",
+    "rebuild the relationship",
+    "forgiveness doesn't excuse ___"
+  ],
+  frames:[
+    "I have / haven't forgiven someone who ___",
+    "They never apologised for ___ «-ing»",
+    "I chose to forgive because ___",
+    "Forgiving them did not mean that ___",
+    "I could move on, but I couldn't ___",
+    "An apology would have helped by ___ «-ing»"
+  ]
+},
+{
+  id:28, cat:"moral",
+  q:"What does it mean to be truly free?",
+  note:"be free <b>to</b> + base verb / free <b>from</b> + noun",
+  vocab:[
+    ["freedom","the ability to choose how you live and act","B1"],
+    ["choice","the act or possibility of deciding","A2"],
+    ["responsibility","a duty to deal with the results of your actions","B1"],
+    ["restriction","a rule or limit on what you can do","B2"],
+    ["oppression","cruel control that denies people freedom","C1"],
+    ["autonomy","the ability to make your own decisions","C1"],
+    ["liberation","the process of becoming free","C1"],
+    ["self-control","the ability to manage your own behaviour","B2"]
+  ],
+  chunks:[
+    "free to make my own choices",
+    "free from fear",
+    "come with responsibility",
+    "do whatever you want",
+    "respect other people's freedom",
+    "control your own life",
+    "inner freedom"
+  ],
+  frames:[
+    "To be truly free means being able to ___",
+    "Freedom is not simply ___; it also requires ___",
+    "A person can be physically free but still ___",
+    "My freedom should end when ___",
+    "I feel most free when ___",
+    "Without responsibility, freedom can become ___"
+  ]
+},
+{
+  id:31, cat:"moral",
+  q:"How do you feel when you see someone helping a stranger?",
+  note:"see someone + <b>-ing</b> focuses on an action in progress — <i>I saw her helping a stranger</i>",
+  vocab:[
+    ["stranger","someone you do not know","A2"],
+    ["kindness","friendly and helpful behaviour","B1"],
+    ["generous","willing to give time, money, or help","B1"],
+    ["inspired","made to want to do something positive","B1"],
+    ["uplifted","made happier and more hopeful","C1"],
+    ["compassion","care for someone who is suffering","C1"],
+    ["selfless","putting another person's needs before your own","C1"],
+    ["restore","bring back a feeling or condition that was lost","C1"]
+  ],
+  chunks:[
+    "lend a hand to a stranger",
+    "expect nothing in return",
+    "restore my faith in people",
+    "make me want to help too",
+    "a small act of kindness",
+    "brighten someone's day",
+    "pass the kindness on"
+  ],
+  frames:[
+    "When I see someone helping a stranger, I feel ___",
+    "It reminds me that people can ___",
+    "Even a small act like ___ can ___",
+    "I once saw someone ___ «-ing»",
+    "That moment inspired me to ___",
+    "I think kindness spreads when ___"
+  ]
+},
+{
+  id:32, cat:"moral",
+  q:"Have you ever felt guilty about something? How did you fix it?",
+  note:"feel guilty <b>about</b> + noun / -ing; make up <b>for</b> + noun / -ing",
+  vocab:[
+    ["guilty","feeling bad because you did something wrong","B1"],
+    ["regret","feel sorry about a past action","B1"],
+    ["admit","say that you did something wrong","B1"],
+    ["apologize","tell someone you are sorry","B1"],
+    ["repair","fix damage or harm","B1"],
+    ["make amends","do something to correct a wrong","C1"],
+    ["conscience","your inner sense of right and wrong","C1"],
+    ["take responsibility","accept that an outcome was your fault","B2"]
+  ],
+  chunks:[
+    "feel guilty about ___",
+    "own up to what I did",
+    "offer a sincere apology",
+    "make up for ___",
+    "put things right",
+    "learn from the mistake",
+    "clear my conscience"
+  ],
+  frames:[
+    "I once felt guilty because I ___",
+    "At first, I tried to ___, but then ___",
+    "I admitted that ___",
+    "To make amends, I ___",
+    "The other person responded by ___ «-ing»",
+    "That experience taught me to ___"
+  ]
+},
+{
+  id:33, cat:"moral",
+  q:"Why do you think there is so much suffering in the world?",
+  note:"suffer <b>from</b> + illness/problem; suffer <b>because of</b> + cause",
+  vocab:[
+    ["suffering","physical or emotional pain","B2"],
+    ["injustice","a situation that is unfair or morally wrong","B2"],
+    ["poverty","the condition of having very little money","B1"],
+    ["conflict","serious disagreement or fighting","B2"],
+    ["greed","a selfish desire for more than you need","C1"],
+    ["inequality","an unfair difference between groups","C1"],
+    ["free will","the ability to choose your own actions","C1"],
+    ["alleviate","make pain or a problem less severe","C1"]
+  ],
+  chunks:[
+    "suffer because of ___",
+    "beyond anyone's control",
+    "caused by human choices",
+    "an unfair distribution of ___",
+    "look away from suffering",
+    "ease someone else's pain",
+    "do what is within our power"
+  ],
+  frames:[
+    "I think much suffering comes from ___",
+    "Some suffering is caused by ___, while some ___",
+    "It is difficult to understand why ___",
+    "We may not be able to prevent ___, but we can ___",
+    "People respond to suffering by ___ «-ing»",
+    "The question makes me think about ___"
+  ]
+},
+{
+  id:37, cat:"moral",
+  q:"Do you believe justice always wins in the end?",
+  note:"believe <b>that</b> + clause / believe <b>in</b> + noun — <i>I believe in justice</i>",
+  vocab:[
+    ["justice","fair treatment according to what is right","B1"],
+    ["fairness","the quality of treating people equally","B1"],
+    ["accountability","being held responsible for your actions","C1"],
+    ["corruption","dishonest use of power for personal gain","B2"],
+    ["consequence","a result of an action","B2"],
+    ["prevail","succeed after a struggle","C1"],
+    ["impunity","freedom from punishment for wrongdoing","C1"],
+    ["restore","bring back something that was lost","C1"]
+  ],
+  chunks:[
+    "justice wins in the end",
+    "get away with wrongdoing",
+    "be held accountable",
+    "the truth eventually comes out",
+    "a fair outcome",
+    "fight for justice",
+    "lose faith in the system"
+  ],
+  frames:[
+    "I do / don't believe justice always wins because ___",
+    "In the short term, ___ may ___, but eventually ___",
+    "One example that gives me hope is ___",
+    "Sometimes people get away with ___",
+    "Justice is more likely to prevail when ___",
+    "Even when justice fails, we should ___"
+  ]
+},
+{
+  id:39, cat:"moral",
+  q:"How do you know inside when you have made the right decision?",
+  note:"know <b>that</b> + clause / feel + adjective — <i>I feel certain that I chose well</i>",
+  vocab:[
+    ["decision","a choice made after thinking","A2"],
+    ["instinct","an immediate feeling that guides you","B2"],
+    ["conscience","your inner sense of right and wrong","C1"],
+    ["relief","the feeling when worry or difficulty ends","B1"],
+    ["certainty","the state of being completely sure","B2"],
+    ["uneasy","slightly worried because something feels wrong","B2"],
+    ["align","match or agree with something","C1"],
+    ["second-guess","doubt a decision after making it","C1"]
+  ],
+  chunks:[
+    "feel right inside",
+    "listen to my conscience",
+    "sleep well at night",
+    "match my values",
+    "have no guarantee",
+    "second-guess my choice",
+    "accept the consequences"
+  ],
+  frames:[
+    "I know a decision is right when ___",
+    "Usually I feel ___ after choosing well",
+    "I ask myself whether the choice ___",
+    "Even a right decision can feel difficult because ___",
+    "If my conscience feels uneasy, I ___",
+    "Sometimes I only know it was right after ___"
   ]
 },
 
@@ -988,6 +1628,326 @@ const QUESTIONS = [
     "Since then, I have thought differently about ___"
   ]
 },
+{
+  id:45, cat:"nature",
+  q:"Have you ever seen something in nature that left you speechless?",
+  note:"leave someone + adjective — <i>the view left me speechless</i>",
+  vocab:[
+    ["speechless","so surprised or moved that you cannot speak","B2"],
+    ["awe","deep wonder mixed with respect","C1"],
+    ["spectacular","extremely impressive to look at","B2"],
+    ["witness","see an important or unusual event happen","B2"],
+    ["overwhelming","so powerful that it is difficult to process","B2"],
+    ["majestic","beautiful, powerful, and impressive","C1"],
+    ["glimpse","a brief look at something","C1"],
+    ["take in","fully notice and understand what you see","B2"]
+  ],
+  chunks:[
+    "leave me completely speechless",
+    "take my breath away",
+    "stand there in silence",
+    "a once-in-a-lifetime sight",
+    "struggle to take it all in",
+    "photos couldn't capture it",
+    "stay with me forever"
+  ],
+  frames:[
+    "I was left speechless when I saw ___",
+    "It happened while I was ___ «-ing»",
+    "At first, I couldn't believe ___",
+    "The sight was so ___ that ___",
+    "No photograph could show ___",
+    "That moment made me feel ___"
+  ]
+},
+{
+  id:47, cat:"nature",
+  q:"What is your favorite time of day, and what do you like about it?",
+  note:"what I like <b>about</b> it is + noun / that-clause",
+  vocab:[
+    ["dawn","the time when daylight first appears","B2"],
+    ["sunrise","the time when the sun comes up","A2"],
+    ["dusk","the fading light just after sunset","C1"],
+    ["atmosphere","the feeling or mood of a place or time","B2"],
+    ["peaceful","quiet and calm","A2"],
+    ["unwind","relax after work or effort","B2"],
+    ["productive","able to complete a lot of useful work","B1"],
+    ["stillness","complete calm with little movement or sound","C1"]
+  ],
+  chunks:[
+    "first thing in the morning",
+    "just before sunset",
+    "the world feels quiet",
+    "have the day ahead of me",
+    "wind down after ___",
+    "the golden light",
+    "my favourite part of the day"
+  ],
+  frames:[
+    "My favourite time of day is ___",
+    "What I like about it is ___",
+    "At that time, the light / air feels ___",
+    "I usually spend it ___ «-ing»",
+    "It gives me a chance to ___",
+    "If I miss that time, I feel ___"
+  ]
+},
+{
+  id:49, cat:"nature",
+  q:"How do you explain the beauty of a sunset? Is it just science?",
+  note:"explain something <b>as</b> / explain something <b>through</b> — <i>science explains it through light</i>",
+  vocab:[
+    ["sunset","the time when the sun disappears below the horizon","A2"],
+    ["horizon","the line where land or sea appears to meet the sky","B1"],
+    ["wavelength","the distance between waves of light or sound","C1"],
+    ["scatter","send light in many different directions","C1"],
+    ["beauty","the quality of giving pleasure to the senses or mind","A2"],
+    ["explanation","a reason that makes something understandable","B1"],
+    ["wonder","a feeling of amazement and curiosity","B2"],
+    ["reduce","make something seem smaller or less important","B2"]
+  ],
+  chunks:[
+    "light scattering through the atmosphere",
+    "paint the sky with colour",
+    "explain how but not why",
+    "more than a scientific process",
+    "fill us with wonder",
+    "see beauty in ___",
+    "two explanations can both be true"
+  ],
+  frames:[
+    "Science explains a sunset by ___ «-ing»",
+    "That explanation does / doesn't reduce its beauty because ___",
+    "Knowing how it works makes me ___",
+    "A sunset is more than ___; it is also ___",
+    "Beauty may come from the way we ___",
+    "For me, science and wonder ___"
+  ]
+},
+{
+  id:50, cat:"nature",
+  q:"Have you ever experienced a miracle or something you couldn't explain?",
+  note:"something <b>that</b> I couldn't explain — a defining relative clause",
+  vocab:[
+    ["miracle","an extraordinary event believed to have divine cause","B2"],
+    ["explain","give a reason for how or why something happened","A2"],
+    ["coincidence","two surprising events happening together by chance","B2"],
+    ["unlikely","not expected to happen","B1"],
+    ["mysterious","difficult or impossible to understand","B2"],
+    ["divine","connected with God or a god","C1"],
+    ["intervention","action taken to change what is happening","C1"],
+    ["skeptical","not easily convinced that something is true","C1"]
+  ],
+  chunks:[
+    "against all the odds",
+    "have no explanation for ___",
+    "more than a coincidence",
+    "happen at exactly the right moment",
+    "change what I believed",
+    "remain skeptical about ___",
+    "leave the question open"
+  ],
+  frames:[
+    "I once experienced something that ___",
+    "It seemed impossible because ___",
+    "Some people would call it ___, but I ___",
+    "I couldn't explain how ___",
+    "The experience made me believe / wonder that ___",
+    "Even now, I still don't know whether ___"
+  ]
+},
+{
+  id:51, cat:"nature",
+  q:"Why do you think people are naturally drawn to the ocean?",
+  note:"be drawn <b>to</b> + noun — <i>people are drawn to the sound of waves</i>",
+  vocab:[
+    ["ocean","the enormous body of salt water covering much of Earth","A2"],
+    ["shore","the land along the edge of the sea","B1"],
+    ["tide","the regular rise and fall of the sea","B2"],
+    ["vast","extremely large and open","C1"],
+    ["horizon","the distant line where sea and sky seem to meet","B1"],
+    ["rhythmic","having a regular repeated pattern or sound","C1"],
+    ["drawn to","strongly attracted or interested in","B2"],
+    ["primordial","existing from the earliest time","C1"]
+  ],
+  chunks:[
+    "be drawn to the ocean",
+    "waves rolling onto the shore",
+    "as far as the eye can see",
+    "feel small beside it",
+    "a sense of freedom",
+    "the rhythm of the waves",
+    "both calming and frightening"
+  ],
+  frames:[
+    "I think people are drawn to the ocean because ___",
+    "The sound of the waves makes us ___",
+    "Standing beside something so vast can ___",
+    "For me, the ocean represents ___",
+    "It is calming, but it can also ___",
+    "My strongest memory of the ocean is ___"
+  ]
+},
+{
+  id:52, cat:"nature",
+  q:"Do you think art and beauty are important for human survival?",
+  note:"important <b>for</b> + noun / important <b>to</b> + person — <i>art is important for well-being</i>",
+  vocab:[
+    ["survival","the state of continuing to live or exist","B1"],
+    ["beauty","a quality that brings pleasure or wonder","A2"],
+    ["art","creative work such as painting, music, or poetry","A2"],
+    ["essential","completely necessary","B2"],
+    ["well-being","physical and emotional health","B2"],
+    ["expression","the act of showing a thought or feeling","B2"],
+    ["resilience","the ability to recover from difficulty","C1"],
+    ["nourish","support the growth or health of body or mind","C1"]
+  ],
+  chunks:[
+    "more than a luxury",
+    "meet a basic human need",
+    "help people survive hardship",
+    "express what words cannot",
+    "nourish the human spirit",
+    "a world without art",
+    "survive physically but not emotionally"
+  ],
+  frames:[
+    "I think art is / isn't essential because ___",
+    "Humans can survive without ___, but they may not ___",
+    "During difficult times, art helps people ___",
+    "Beauty contributes to our well-being by ___ «-ing»",
+    "A world without art would feel ___",
+    "For me, the strongest example is ___"
+  ]
+},
+{
+  id:55, cat:"nature",
+  q:"Do you think animals have souls?",
+  note:"think <b>that</b> + clause / believe <b>in</b> + noun — <i>I believe that animals have inner lives</i>",
+  vocab:[
+    ["soul","the spiritual part of a living being","B2"],
+    ["consciousness","awareness of yourself and the world","C1"],
+    ["emotion","a feeling such as joy, fear, or love","B1"],
+    ["instinct","natural behaviour that is not learned","B2"],
+    ["bond","a strong emotional connection","B2"],
+    ["sentient","able to experience feelings and sensations","C1"],
+    ["spiritual","connected with the soul or sacred things","B2"],
+    ["afterlife","a life believed to continue after death","B2"]
+  ],
+  chunks:[
+    "have an inner life",
+    "form deep bonds",
+    "show love and grief",
+    "act on instinct",
+    "be aware of themselves",
+    "deserve moral consideration",
+    "continue after death"
+  ],
+  frames:[
+    "I do / don't think animals have souls because ___",
+    "When animals ___, it suggests that they ___",
+    "A soul might mean ___",
+    "Humans and animals are similar in that both ___",
+    "We may never be able to prove ___",
+    "Whatever we believe, animals should ___"
+  ]
+},
+{
+  id:56, cat:"nature",
+  q:"What does the word \"peace\" feel like to you?",
+  note:"feel <b>like</b> + noun / -ing — <i>peace feels like breathing freely</i>",
+  vocab:[
+    ["peace","calm without conflict, fear, or worry","A2"],
+    ["calm","a quiet and relaxed state","A2"],
+    ["stillness","complete quiet and lack of movement","C1"],
+    ["relief","the feeling when worry or pain ends","B1"],
+    ["security","the feeling of being safe and protected","B2"],
+    ["harmony","a peaceful and balanced relationship","B2"],
+    ["serenity","a deeply calm and untroubled state","C1"],
+    ["tension","a feeling of worry or tightness","B2"]
+  ],
+  chunks:[
+    "feel at peace",
+    "breathe without fear",
+    "quiet inside my mind",
+    "let go of tension",
+    "be safe with the people I love",
+    "a moment of complete stillness",
+    "peace within / peace around us"
+  ],
+  frames:[
+    "To me, peace feels like ___",
+    "If peace had a sound, it would be ___",
+    "I feel at peace when ___",
+    "Peace is not only the absence of ___; it is also ___",
+    "The place where I feel most peaceful is ___",
+    "I create peace in my daily life by ___ «-ing»"
+  ]
+},
+{
+  id:58, cat:"nature",
+  q:"If you could perfectly paint one memory, what would it be?",
+  note:"second conditional — <b>If</b> you could…, what <b>would</b> it be?",
+  vocab:[
+    ["memory","something you remember from the past","A2"],
+    ["capture","record or express a moment successfully","B2"],
+    ["detail","a small part of a scene or experience","A2"],
+    ["vivid","clear, bright, and detailed in the mind","C1"],
+    ["nostalgic","feeling warm sadness about the past","C1"],
+    ["scene","a view or moment that could be pictured","B1"],
+    ["preserve","keep something safe and unchanged","B2"],
+    ["palette","the range of colours used by an artist","C1"]
+  ],
+  chunks:[
+    "capture a memory on canvas",
+    "remember every detail",
+    "bring the moment back to life",
+    "use warm / bright colours",
+    "freeze one moment in time",
+    "show the feeling of ___",
+    "keep the memory alive"
+  ],
+  frames:[
+    "If I could paint one memory, it would be ___",
+    "The scene would show ___",
+    "I would use ___ colours to express ___",
+    "The most important detail would be ___",
+    "I chose this memory because ___",
+    "Looking at the painting would make me feel ___"
+  ]
+},
+{
+  id:59, cat:"nature",
+  q:"Why do you think flowers make people happy?",
+  note:"make + person + adjective — <i>flowers make a room feel cheerful</i>",
+  vocab:[
+    ["flower","the colourful part of a plant","A1"],
+    ["bloom","open into a flower","B2"],
+    ["fragrance","a pleasant smell","B2"],
+    ["colourful","having many bright colours","A2"],
+    ["cheerful","noticeably happy and positive","B1"],
+    ["symbolise","represent an idea or feeling","C1"],
+    ["gesture","a small action that expresses a feeling","B2"],
+    ["brighten","make a place or person feel happier","B2"]
+  ],
+  chunks:[
+    "brighten up a room",
+    "give someone flowers",
+    "a sign of love / care",
+    "fresh colours and scents",
+    "mark a special occasion",
+    "remind us of new life",
+    "lift someone's mood"
+  ],
+  frames:[
+    "I think flowers make people happy because ___",
+    "Their colours / fragrance can ___",
+    "Giving flowers is a way of ___ «-ing»",
+    "Flowers often symbolise ___",
+    "The flower I like most is ___ because ___",
+    "A room feels different when ___"
+  ]
+},
 
 /* ── PEACE, COMFORT & HUMAN CONNECTION ──────────────────────────── */
 {
@@ -1310,6 +2270,326 @@ const QUESTIONS = [
     "Sometimes helping others also helps me to ___"
   ]
 },
+{
+  id:63, cat:"people",
+  q:"Have you ever felt completely alone, even in a crowded room?",
+  note:"feel alone <b>even when</b> + clause — <i>I felt alone even when people surrounded me</i>",
+  vocab:[
+    ["alone","without connection or support from others","A2"],
+    ["lonely","sad because you feel disconnected from people","A2"],
+    ["crowded","full of many people","A2"],
+    ["isolated","separated from other people","B2"],
+    ["belong","feel accepted as part of a group","B1"],
+    ["disconnected","not feeling emotionally linked to others","B2"],
+    ["invisible","feeling unnoticed or unimportant","B2"],
+    ["alienated","made to feel that you do not belong","C1"]
+  ],
+  chunks:[
+    "feel alone in a crowd",
+    "have no one to talk to",
+    "feel like an outsider",
+    "be surrounded by people",
+    "hide how I really feel",
+    "reach out to someone",
+    "find a sense of belonging"
+  ],
+  frames:[
+    "I felt completely alone when ___",
+    "Even though I was surrounded by ___, I ___",
+    "What made me feel disconnected was ___",
+    "I wished someone would ___",
+    "The feeling began to change when ___",
+    "Now, when someone seems alone, I ___"
+  ]
+},
+{
+  id:65, cat:"people",
+  q:"Do you think we need other people to be truly happy?",
+  note:"need someone <b>to</b> + base verb / need + noun — <i>we need people to support us</i>",
+  vocab:[
+    ["happiness","the state of feeling happy and satisfied","A2"],
+    ["companionship","a friendly relationship that prevents loneliness","C1"],
+    ["independent","able to live without relying heavily on others","B1"],
+    ["connection","a close relationship or shared feeling","B1"],
+    ["belonging","the feeling of being accepted in a group","B2"],
+    ["solitude","time spent alone, often peacefully","C1"],
+    ["depend on","need someone or something for support","B1"],
+    ["self-sufficient","able to provide what you need by yourself","C1"]
+  ],
+  chunks:[
+    "need other people around us",
+    "be happy on my own",
+    "share life with someone",
+    "a sense of belonging",
+    "depend too much on others",
+    "enjoy my own company",
+    "balance connection and solitude"
+  ],
+  frames:[
+    "I think we do / don't need others to be happy because ___",
+    "People give us ___ that we cannot give ourselves",
+    "I can enjoy being alone, but ___",
+    "Too much dependence on others can ___",
+    "The relationship that adds most to my happiness is ___",
+    "True happiness may require both ___ and ___"
+  ]
+},
+{
+  id:67, cat:"people",
+  q:"Have you ever sacrificed something important for another person?",
+  note:"sacrifice something <b>for</b> someone / give up something <b>to</b> + base verb",
+  vocab:[
+    ["sacrifice","give up something valuable for a greater reason","B2"],
+    ["give up","stop having or doing something","B1"],
+    ["selfless","putting another person's needs before your own","C1"],
+    ["commitment","a promise or duty that you continue to honour","B2"],
+    ["compromise","accept less in order to reach agreement","B2"],
+    ["resent","feel angry about something unfair","C1"],
+    ["worthwhile","valuable enough to justify the effort or cost","B2"],
+    ["put first","treat someone or something as the top priority","B1"]
+  ],
+  chunks:[
+    "give up ___ for someone",
+    "put their needs first",
+    "make a difficult sacrifice",
+    "be worth the cost",
+    "have mixed feelings about ___",
+    "do it without expecting repayment",
+    "look back with no regret"
+  ],
+  frames:[
+    "I once sacrificed ___ for ___",
+    "I gave it up so that they could ___",
+    "The decision was difficult because ___",
+    "At the time, I felt ___",
+    "It was / wasn't worth it because ___",
+    "The experience changed our relationship by ___ «-ing»"
+  ]
+},
+{
+  id:69, cat:"people",
+  q:"Do you think true, unconditional love exists?",
+  note:"love someone <b>despite</b> + noun / -ing — <i>love them despite their faults</i>",
+  vocab:[
+    ["unconditional","given without limits or requirements","C1"],
+    ["condition","something that must happen before another thing can happen","B1"],
+    ["acceptance","welcoming someone as they are","B2"],
+    ["devotion","deep love and loyalty","C1"],
+    ["boundary","a limit that protects safety and respect","B2"],
+    ["flaw","a weakness or fault in someone's character","B2"],
+    ["endure","continue through a difficult period","C1"],
+    ["reciprocal","given and received by both sides","C1"]
+  ],
+  chunks:[
+    "love someone no matter what",
+    "accept someone as they are",
+    "love without conditions",
+    "set healthy boundaries",
+    "stand by someone through ___",
+    "expect love in return",
+    "separate love from approval"
+  ],
+  frames:[
+    "I believe unconditional love does / doesn't exist because ___",
+    "To love someone unconditionally means ___",
+    "You can love someone and still ___",
+    "Healthy love needs boundaries when ___",
+    "The closest example I know is ___",
+    "Perhaps all human love has the condition that ___"
+  ]
+},
+{
+  id:71, cat:"people",
+  q:"Have you ever felt completely misunderstood by the people around you?",
+  note:"be misunderstood <b>by</b> someone — passive voice focuses on the person affected",
+  vocab:[
+    ["misunderstood","not understood correctly by others","B2"],
+    ["assumption","a belief formed without enough evidence","B2"],
+    ["explain","make an idea clear to someone","A2"],
+    ["express","communicate a thought or feeling","B1"],
+    ["frustrated","annoyed because you cannot change or explain something","B1"],
+    ["misinterpret","understand something in the wrong way","C1"],
+    ["clarify","make something easier to understand","B2"],
+    ["validate","show that someone's feelings make sense","C1"]
+  ],
+  chunks:[
+    "feel completely misunderstood",
+    "jump to the wrong conclusion",
+    "put my feelings into words",
+    "see things from my point of view",
+    "explain myself clearly",
+    "feel heard at last",
+    "clear up the misunderstanding"
+  ],
+  frames:[
+    "I felt misunderstood when ___",
+    "The people around me thought ___, but actually ___",
+    "I tried to explain that ___",
+    "What I needed them to understand was ___",
+    "The misunderstanding was resolved when ___",
+    "That experience taught me to ___"
+  ]
+},
+{
+  id:74, cat:"people",
+  q:"When was the last time someone showed you mercy (did not punish you when you deserved it)?",
+  note:"show someone mercy / have mercy <b>on</b> someone",
+  vocab:[
+    ["mercy","kind treatment instead of deserved punishment","B2"],
+    ["punish","make someone suffer a consequence for wrongdoing","B1"],
+    ["deserve","be worthy of a result because of your actions","B1"],
+    ["lenient","less strict than expected","C1"],
+    ["compassion","kind concern for someone in difficulty","C1"],
+    ["consequence","a result of an action","B2"],
+    ["spare","choose not to cause someone pain or punishment","C1"],
+    ["second chance","an opportunity to try again after failure","B1"]
+  ],
+  chunks:[
+    "show mercy to someone",
+    "deserve a punishment",
+    "let me off with a warning",
+    "give me a second chance",
+    "learn without being punished",
+    "be grateful for their kindness",
+    "show the same mercy to others"
+  ],
+  frames:[
+    "Someone showed me mercy when I ___",
+    "I expected them to ___, but instead they ___",
+    "I probably deserved ___ because ___",
+    "Their mercy made me feel ___",
+    "I responded by ___ «-ing»",
+    "Since then, I have tried to ___"
+  ]
+},
+{
+  id:75, cat:"people",
+  q:"Do you think it is possible to love your enemies?",
+  note:"possible <b>to</b> + base verb / treat someone <b>with</b> + noun",
+  vocab:[
+    ["enemy","someone who opposes or wants to harm you","B1"],
+    ["love","deep care for another person's good","A2"],
+    ["forgive","stop holding anger against someone","B1"],
+    ["compassion","care for another person's suffering","C1"],
+    ["reconcile","restore a friendly relationship after conflict","C1"],
+    ["resentment","lasting anger caused by unfair treatment","C1"],
+    ["humanise","see someone as a full human being","C1"],
+    ["boundary","a limit that protects safety and respect","B2"]
+  ],
+  chunks:[
+    "love your enemies",
+    "wish someone well",
+    "refuse to seek revenge",
+    "see their humanity",
+    "protect yourself with boundaries",
+    "forgive without trusting again",
+    "break the cycle of hatred"
+  ],
+  frames:[
+    "I think loving an enemy means ___",
+    "It may be possible to ___ without ___ «-ing»",
+    "Forgiving someone doesn't require ___",
+    "The hardest part would be ___",
+    "Love could begin by ___ «-ing»",
+    "If more people chose this, ___ might ___"
+  ]
+},
+{
+  id:77, cat:"people",
+  q:"What do you think happens when a community stops caring for each other?",
+  note:"stop <b>caring</b> — <i>stop + -ing</i> means an activity ends",
+  vocab:[
+    ["community","people connected by a place or shared identity","B1"],
+    ["care","give attention and help to someone","A2"],
+    ["trust","belief that people will act honestly and reliably","B1"],
+    ["cooperation","working together toward a shared result","B2"],
+    ["isolation","separation from other people","B2"],
+    ["neglect","failure to give needed care or attention","C1"],
+    ["fragment","break into separate disconnected parts","C1"],
+    ["solidarity","unity and support within a group","C1"]
+  ],
+  chunks:[
+    "look out for one another",
+    "lose trust in each other",
+    "fall through the cracks",
+    "become isolated from ___",
+    "a breakdown in community",
+    "share responsibility for ___",
+    "rebuild a sense of belonging"
+  ],
+  frames:[
+    "When a community stops caring, ___ begins to ___",
+    "People may feel ___ because ___",
+    "The first thing that disappears is ___",
+    "Those most affected are ___",
+    "A caring community should ___",
+    "We can rebuild connection by ___ «-ing»"
+  ]
+},
+{
+  id:78, cat:"people",
+  q:"Who has been the greatest source of strength in your life?",
+  note:"a source <b>of</b> + noun — <i>my family has been a source of strength</i>",
+  vocab:[
+    ["strength","the ability to face difficulty","B1"],
+    ["support","help and encouragement","B1"],
+    ["encourage","give someone confidence or hope","B1"],
+    ["rely on","trust someone to help when needed","B1"],
+    ["resilient","able to recover after hardship","C1"],
+    ["steadfast","loyal and dependable through difficulty","C1"],
+    ["mentor","an experienced person who guides someone","B2"],
+    ["inspiration","someone or something that gives you ideas and courage","B2"]
+  ],
+  chunks:[
+    "a source of strength",
+    "stand by me through ___",
+    "believe in me when ___",
+    "keep me going",
+    "lend me their strength",
+    "teach me to be resilient",
+    "know I can rely on ___"
+  ],
+  frames:[
+    "My greatest source of strength has been ___",
+    "They supported me when ___",
+    "What makes them strong is ___",
+    "Whenever I wanted to give up, they ___",
+    "Because of them, I learned to ___",
+    "I try to pass that strength on by ___ «-ing»"
+  ]
+},
+{
+  id:79, cat:"people",
+  q:"If you could heal one broken relationship in the world, what would it be?",
+  note:"relationship <b>between</b> A <b>and</b> B — use parallel nouns on both sides",
+  vocab:[
+    ["relationship","the connection between people or groups","A2"],
+    ["broken","badly damaged and no longer working well","A2"],
+    ["heal","become healthy or peaceful again","B2"],
+    ["reconcile","restore a relationship after conflict","C1"],
+    ["division","serious disagreement between groups","B2"],
+    ["hostility","strong unfriendliness or opposition","C1"],
+    ["dialogue","serious conversation aimed at understanding","B2"],
+    ["common ground","beliefs or interests shared by opposing sides","B2"]
+  ],
+  chunks:[
+    "heal the relationship between ___ and ___",
+    "end years of hostility",
+    "open an honest dialogue",
+    "listen to each other's pain",
+    "find common ground",
+    "rebuild trust slowly",
+    "create peace for future generations"
+  ],
+  frames:[
+    "I would heal the relationship between ___ and ___",
+    "It became broken because ___",
+    "Both sides have suffered from ___",
+    "Healing would need to begin with ___",
+    "The greatest obstacle is ___",
+    "If they reconciled, the world would ___"
+  ]
+},
 
 /* ── THE UNKNOWN, HOPE & THE FUTURE ─────────────────────────────── */
 {
@@ -1630,6 +2910,326 @@ const QUESTIONS = [
     "I would want them to know that ___",
     "I haven't said it enough, but ___",
     "Because of them, I have become ___"
+  ]
+},
+{
+  id:83, cat:"future",
+  q:"Do you believe in things you cannot see? (For example: wind, love, gravity?)",
+  note:"believe <b>in</b> + noun means accept that it exists or has value",
+  vocab:[
+    ["invisible","unable to be seen","B1"],
+    ["evidence","facts or signs showing that something is true","B1"],
+    ["effect","a change caused by something else","B1"],
+    ["gravity","the force that pulls objects toward Earth","B1"],
+    ["faith","trust in something not fully seen or proved","B2"],
+    ["detect","discover something that is difficult to notice","B2"],
+    ["abstract","existing as an idea rather than a physical object","C1"],
+    ["tangible","clear or real enough to touch or notice","C1"]
+  ],
+  chunks:[
+    "believe in something unseen",
+    "see its effects",
+    "feel it even if ___",
+    "evidence of its existence",
+    "not visible to the eye",
+    "measure it scientifically",
+    "know something through experience"
+  ],
+  frames:[
+    "I believe in ___ even though I can't see it",
+    "I know it exists because ___",
+    "We cannot see ___, but we can observe ___",
+    "For me, experience is / isn't enough evidence because ___",
+    "Some invisible things can be measured, while ___",
+    "Not seeing something doesn't necessarily mean ___"
+  ]
+},
+{
+  id:84, cat:"future",
+  q:"What is your greatest hope for your children or future children?",
+  note:"hope <b>that</b> + clause / hope <b>for</b> + noun — <i>I hope that they find meaningful work</i>",
+  vocab:[
+    ["future","the time that has not happened yet","A2"],
+    ["hope","something good you want to happen","A2"],
+    ["opportunity","a chance to do or achieve something","B1"],
+    ["secure","safe and protected from danger or worry","B1"],
+    ["fulfilment","the feeling that your life is meaningful","C1"],
+    ["resilient","able to recover from difficulty","C1"],
+    ["compassionate","kind and concerned about others","C1"],
+    ["flourish","grow and live successfully","C1"]
+  ],
+  chunks:[
+    "my greatest hope for them",
+    "grow up to be ___",
+    "have opportunities I didn't have",
+    "find their own path",
+    "feel safe and loved",
+    "make a positive difference",
+    "live a meaningful life"
+  ],
+  frames:[
+    "My greatest hope is that they ___",
+    "More than success, I want them to ___",
+    "I hope they have the courage to ___",
+    "Even when life is difficult, I hope ___",
+    "I would try to give them ___",
+    "Ultimately, their life should be ___"
+  ]
+},
+{
+  id:86, cat:"future",
+  q:"How does your belief in eternity change the way you make decisions in your daily life?",
+  note:"change the way + clause — <i>it changes the way I use my time</i>",
+  vocab:[
+    ["eternity","time without beginning or end","B2"],
+    ["belief","an idea accepted as true","B1"],
+    ["temporary","lasting for only a limited time","B1"],
+    ["consequence","a result of a choice or action","B2"],
+    ["perspective","a way of understanding what matters","B2"],
+    ["accountable","responsible for your actions","C1"],
+    ["lasting","continuing for a long time","B2"],
+    ["eternal","existing forever","B2"]
+  ],
+  chunks:[
+    "believe in eternity",
+    "see life from a longer perspective",
+    "focus on what lasts",
+    "think about the consequences",
+    "hold temporary things lightly",
+    "be accountable for my choices",
+    "change how I treat people"
+  ],
+  frames:[
+    "Believing in eternity changes the way I ___",
+    "It reminds me that ___ is temporary",
+    "Before making a decision, I consider ___",
+    "I try to invest more in ___ than in ___",
+    "Without this belief, I might ___",
+    "In daily life, this means ___ «-ing»"
+  ]
+},
+{
+  id:89, cat:"future",
+  q:"What is something amazing in the world that you think science will never be able to fully explain?",
+  note:"be able <b>to</b> + base verb — future: <i>science will be able to explain…</i>",
+  vocab:[
+    ["science","the study of the world through observation and testing","A2"],
+    ["explain","make clear how or why something happens","A2"],
+    ["mystery","something difficult or impossible to understand","B1"],
+    ["consciousness","awareness of yourself and the world","C1"],
+    ["limit","the point beyond which something cannot go","B1"],
+    ["subjective","based on personal feelings or experience","C1"],
+    ["phenomenon","an event or fact that can be observed","C1"],
+    ["comprehend","understand something fully","C1"]
+  ],
+  chunks:[
+    "fully explain how ___",
+    "remain a mystery",
+    "reach the limits of science",
+    "measure the physical process",
+    "capture the human experience",
+    "discover more in the future",
+    "explain how but not what it means"
+  ],
+  frames:[
+    "I don't think science will ever fully explain ___",
+    "Scientists may understand how ___, but not why ___",
+    "The difficult part to measure is ___",
+    "Perhaps future discoveries will ___",
+    "I could change my mind if ___",
+    "For me, the mystery makes ___ more amazing"
+  ]
+},
+{
+  id:91, cat:"future",
+  q:"Do you think humanity is moving toward something better?",
+  note:"move <b>toward</b> + noun / -ing — <i>we are moving toward greater equality</i>",
+  vocab:[
+    ["humanity","all human beings considered together","B2"],
+    ["progress","change toward a better condition","B1"],
+    ["decline","a gradual movement toward something worse","B2"],
+    ["advance","a development or improvement","B2"],
+    ["inequality","unfair differences between people or groups","C1"],
+    ["cooperate","work together toward a shared goal","B1"],
+    ["optimistic","expecting the future to be good","B2"],
+    ["trajectory","the direction in which something develops","C1"]
+  ],
+  chunks:[
+    "move toward a better future",
+    "make progress in ___",
+    "repeat the same mistakes",
+    "take one step forward and two back",
+    "solve problems together",
+    "judge by the long-term trend",
+    "have reason for hope"
+  ],
+  frames:[
+    "I think humanity is moving toward ___",
+    "We have made progress in ___, but ___",
+    "Compared with the past, people today ___",
+    "The greatest threat to progress is ___",
+    "I feel optimistic / pessimistic because ___",
+    "A better future depends on our ability to ___"
+  ]
+},
+{
+  id:92, cat:"future",
+  q:"Have you ever had a dream (while sleeping) that felt like a message?",
+  note:"a dream <b>that</b> felt like ___ — a defining relative clause",
+  vocab:[
+    ["dream","images and events experienced while sleeping","A2"],
+    ["message","an idea communicated to someone","A2"],
+    ["vivid","extremely clear and detailed","C1"],
+    ["symbol","an object or image representing an idea","B1"],
+    ["subconscious","the part of the mind outside conscious awareness","C1"],
+    ["interpret","decide what something means","B2"],
+    ["premonition","a feeling that something will happen in the future","C1"],
+    ["linger","remain in your mind for a long time","C1"]
+  ],
+  chunks:[
+    "have a vivid dream",
+    "feel like a message",
+    "wake up with a strong feeling",
+    "try to interpret the symbols",
+    "stay with me all day",
+    "come true later",
+    "my subconscious processing ___"
+  ],
+  frames:[
+    "I once had a dream in which ___",
+    "It felt like a message because ___",
+    "When I woke up, I felt ___",
+    "I interpreted the dream as ___",
+    "It may simply have been my mind ___ «-ing»",
+    "The dream still stays with me because ___"
+  ]
+},
+{
+  id:93, cat:"future",
+  q:"What does the word \"eternity\" make you think of?",
+  note:"make someone <b>think of</b> + noun / -ing — <i>it makes me think of endless time</i>",
+  vocab:[
+    ["eternity","time that never ends","B2"],
+    ["infinite","having no end or limit","B2"],
+    ["timeless","not affected by the passage of time","C1"],
+    ["forever","for all future time","A2"],
+    ["afterlife","life believed to continue after death","B2"],
+    ["endless","continuing without stopping","B1"],
+    ["comprehend","understand something fully","C1"],
+    ["vastness","the quality of being extremely large","C1"]
+  ],
+  chunks:[
+    "time without end",
+    "go on forever",
+    "beyond human understanding",
+    "the vastness of the universe",
+    "life after death",
+    "both comforting and frightening",
+    "difficult to imagine"
+  ],
+  frames:[
+    "The word eternity makes me think of ___",
+    "I imagine it as ___",
+    "The idea feels ___ because ___",
+    "It is difficult for the human mind to ___",
+    "If time never ended, ___",
+    "For me, eternity is connected with ___"
+  ]
+},
+{
+  id:94, cat:"future",
+  q:"How does thinking about the next life bring you comfort in difficult times?",
+  note:"bring someone comfort <b>by</b> + -ing — <i>it comforts me by giving suffering a limit</i>",
+  vocab:[
+    ["next life","an existence believed to follow this life","B2"],
+    ["comfort","a feeling of calm during sadness or pain","B1"],
+    ["eternal","lasting forever","B2"],
+    ["reunion","meeting loved ones again after separation","B2"],
+    ["temporary","lasting only for a limited time","B1"],
+    ["suffering","physical or emotional pain","B2"],
+    ["assurance","a confident promise or sense of certainty","C1"],
+    ["perspective","a way of understanding what matters","B2"]
+  ],
+  chunks:[
+    "believe in the next life",
+    "know that suffering is temporary",
+    "hope to be reunited with ___",
+    "put present pain in perspective",
+    "look beyond this life",
+    "hold on during hard times",
+    "find comfort in the promise of ___"
+  ],
+  frames:[
+    "Thinking about the next life comforts me because ___",
+    "It reminds me that ___ is temporary",
+    "I find hope in the idea that ___",
+    "When I lose someone, I ___",
+    "This belief helps me face ___",
+    "Even when I have questions, I hold on to ___"
+  ]
+},
+{
+  id:97, cat:"future",
+  q:"What is a story from your childhood that taught you about hope?",
+  note:"teach someone <b>about</b> + noun / teach someone <b>to</b> + base verb",
+  vocab:[
+    ["childhood","the period when you were a child","A2"],
+    ["story","a description of real or imaginary events","A1"],
+    ["hope","belief that something good may happen","A2"],
+    ["lesson","something useful learned through a story or experience","B1"],
+    ["character","a person in a story","A2"],
+    ["overcome","succeed in dealing with a problem","B2"],
+    ["persevere","continue despite difficulty","C1"],
+    ["inspire","give someone hope or motivation","B1"]
+  ],
+  chunks:[
+    "a story I heard as a child",
+    "face an impossible situation",
+    "refuse to give up",
+    "hope against the odds",
+    "stay with me as I grew up",
+    "teach me that ___",
+    "remember it when life is hard"
+  ],
+  frames:[
+    "A childhood story that taught me hope was ___",
+    "It was about someone who ___",
+    "At first, the character ___, but then ___",
+    "The hopeful part was when ___",
+    "It taught me that ___",
+    "I still remember this story whenever ___"
+  ]
+},
+{
+  id:98, cat:"future",
+  q:"Do you think perfect justice is possible in this world?",
+  note:"possible <b>to</b> + base verb / possible <b>for</b> + person + to + base verb",
+  vocab:[
+    ["justice","fair treatment based on what is right","B1"],
+    ["perfect","completely correct and without fault","A2"],
+    ["fair","treating people equally and reasonably","A2"],
+    ["bias","an unfair preference for or against someone","B2"],
+    ["evidence","facts used to decide what is true","B1"],
+    ["impartial","not favouring either side","C1"],
+    ["accountability","responsibility for actions and consequences","C1"],
+    ["ideal","a perfect standard that may be difficult to achieve","B2"]
+  ],
+  chunks:[
+    "achieve perfect justice",
+    "treat every case fairly",
+    "remove all bias",
+    "know the complete truth",
+    "hold powerful people accountable",
+    "work toward an ideal",
+    "better than accepting injustice"
+  ],
+  frames:[
+    "I think perfect justice is / isn't possible because ___",
+    "A perfectly just system would need to ___",
+    "Human judgement is limited by ___",
+    "Even when we cannot reach perfection, we should ___",
+    "Justice improves when ___",
+    "For me, the most important part of justice is ___"
   ]
 }
 
