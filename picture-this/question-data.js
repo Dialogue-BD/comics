@@ -2863,45 +2863,45 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "board-games": {
     "questions": [
-      "Which items are pieces, and which help players measure chance or time?",
+      "Which items are game pieces, and which two produce a chance result?",
       "Which item has the most curved edges? Which has the most corners?",
-      "What board or card games do you enjoy playing?",
-      "How are the die, playing cards, and sand timer used in games?",
+      "What tabletop or card games do you enjoy playing?",
+      "How are the die, spinner, and different game pieces used in games?",
       "What other game pieces or rules can you name?",
-      "If you invented a board game, what would players need to do to win?"
+      "If you invented a tabletop game, what would players need to do to win?"
     ],
     "positions": [
       12.43,
       27.06,
       41.73,
       52.08,
-      62.47,
-      72.78
+      66.78,
+      77.1
     ],
     "endpoints": [
       {
-        "x": 51.27,
+        "x": 30.18,
         "y": 20.94
       },
       {
-        "x": 33.45,
+        "x": 33.82,
         "y": 35.61
       },
       {
-        "x": 48.36,
+        "x": 59.03,
         "y": 46.31
       },
       {
-        "x": 86.42,
-        "y": 56.67
+        "x": 31.15,
+        "y": 60.98
       },
       {
-        "x": 49.09,
-        "y": 66.67
+        "x": 49.45,
+        "y": 71.33
       },
       {
-        "x": 31.52,
-        "y": 81.33
+        "x": 31.88,
+        "y": 85.65
       }
     ]
   },
@@ -2924,28 +2924,28 @@ window.PICTURE_THIS_QUESTION_DATA = {
     ],
     "endpoints": [
       {
-        "x": 36.0,
+        "x": 36.36,
         "y": 21.29
       },
       {
-        "x": 77.82,
+        "x": 78.18,
         "y": 31.29
       },
       {
-        "x": 40.73,
+        "x": 41.09,
         "y": 41.96
       },
       {
-        "x": 59.03,
-        "y": 51.96
+        "x": 59.39,
+        "y": 52.31
       },
       {
-        "x": 88.24,
-        "y": 62.35
+        "x": 88.61,
+        "y": 62.67
       },
       {
-        "x": 91.27,
-        "y": 72.71
+        "x": 91.64,
+        "y": 73.06
       }
     ]
   },

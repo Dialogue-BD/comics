@@ -58,7 +58,7 @@ window.PICTURE_THIS_LINK_DATA = {
     pictureThisLink("sun", [1,5], "The hat and sunglasses are the only two items shown primarily used to shade the head or eyes from sun.", ["sunny"])
   ],
   "pets": [pictureThisLink("aquatic", [1,4], "The fish and turtle are the only two pets shown that characteristically live in water.", ["water"])],
-  "at-the-beach": [pictureThisLink("ultraviolet", [1,3], "The sun hat and sunscreen are the only two items shown specifically designed to protect a person from the sun.")],
+  "at-the-beach": [pictureThisLink("sunburn", [1,3], "The sun hat and sunscreen are the only two items shown specifically used to prevent sunburn.")],
   "in-the-kitchen": [pictureThisLink("mixing", [1,2], "The wooden spoon and mixing bowl are the only two items shown specifically named or designed for mixing.", ["mix"])],
   "getting-dressed": [],
   "at-the-doctor": [
@@ -166,11 +166,7 @@ window.PICTURE_THIS_LINK_DATA = {
   ],
   "at-the-campsite": [pictureThisLink("sleeping", [0,1], "The tent and sleeping bag are the only two items shown specifically designed for sleeping outdoors.", ["sleep"])],
   "board-games": [],
-  "jewelry": [
-    pictureThisLink("fasteners", [3,4], "The brooch and cufflinks are the only two pieces shown that fasten directly onto clothing."),
-    pictureThisLink("chains", [0,1], "The necklace and charm bracelet are the only two items shown characteristically formed from linked chains.", ["chain"]),
-    pictureThisLink("pins", [3,5], "The brooch and hairpin are the only two items shown secured with a pin.", ["pin"])
-  ],
+  "jewelry": [],
   "computer-equipment": [pictureThisLink("storage", [0,3], "The laptop and USB drive are the only two items shown primarily capable of storing user files.", ["files"])],
   "emergency-room": [],
   "car-parts": [
@@ -268,8 +264,8 @@ const auditedLinkAdditions = {
   ],
   "zoo": [
     pictureThisLink("giants", [0,1], "Giraffe and elephant are the only two exceptionally tall or massive land giants shown."),
-    pictureThisLink("claws", [3,4], "Lion and bear are the only two large predators shown whose powerful claws are defining weapons."),
-    pictureThisLink("jumpers", [2,5], "Monkey and kangaroo are the only two animals shown especially known for traveling by large jumps or leaps.")
+    pictureThisLink("omnivores", [2,4], "Monkey and bear are the only two animals shown that characteristically eat both plants and animals.", ["omnivore"]),
+    pictureThisLink("manes", [0,3], "Giraffe and lion are the only two animals shown whose species characteristically have visible manes.", ["mane"])
   ],
   "feelings": [
     pictureThisLink("opposites", [0,2], "Happy and sad are the only two feelings shown that form a direct emotional opposite pair."),
@@ -290,7 +286,7 @@ const auditedLinkAdditions = {
   ],
   "personal-items": [
     pictureThisLink("containers", [2,5], "Wallet and purse are the only two personal items shown designed to carry money."),
-    pictureThisLink("vanity", [3,4], "Glasses and comb are the only two items shown worn or used directly above the neck.")
+    pictureThisLink("wearables", [0,3], "Watch and glasses are the only two items shown designed to be worn directly on the body.", ["wearable"])
   ],
   "snack-time": [
     pictureThisLink("baked", [4,5], "Donuts and crackers are the only two baked snack foods shown."),
@@ -302,7 +298,7 @@ const auditedLinkAdditions = {
     pictureThisLink("roundlike", [2,5], "Circle and octagon are the only two shapes shown commonly used as progressively smoother wheel-like outlines.")
   ],
   "bugs": [
-    pictureThisLink("outsiders", [1,4], "Spider and worm are the only two bugs shown that are not insects."),
+    pictureThisLink("noninsects", [1,4], "Spider and worm are the only two animals shown on this card that are not insects.", ["noninsect"]),
     pictureThisLink("web", [1,5], "Spider and mosquito are the only two bugs shown that form a familiar web hunter and flying prey pair."),
     pictureThisLink("burrowers", [0,4], "Ant and worm are the only two bugs shown especially known for tunneling through soil.")
   ],
@@ -354,7 +350,7 @@ const auditedLinkAdditions = {
   ],
   "at-the-doctor": [
     pictureThisLink("supports", [2,4], "Bandage and crutch are the only two items shown specifically used to support an injury during healing."),
-    pictureThisLink("red", [1,5], "Thermometer and first-aid kit are the only two items shown with prominent red coloring.")
+    pictureThisLink("fabric", [2,3], "Bandage and face mask are the only two items shown primarily made from flexible medical fabric.", ["cloth"])
   ],
   "cleaning-day": [
     pictureThisLink("dry", [0,5], "Broom and vacuum are the only two supplies shown specifically used to clean a dry floor."),
@@ -452,11 +448,7 @@ const auditedLinkAdditions = {
     pictureThisLink("flames", [2,4], "Lantern and camp stove are the only two campsite devices shown that characteristically burn fuel."),
     pictureThisLink("red", [1,2], "Sleeping bag and camping lantern are the only two campsite items shown predominantly red.")
   ],
-  "board-games": [
-    pictureThisLink("dots", [1,2], "Die and domino are the only two pieces shown whose dots primarily represent numbers."),
-    pictureThisLink("matching", [2,3], "Domino and jigsaw piece are the only two pieces shown joined by matching physical ends or edges."),
-    pictureThisLink("chess", [0,5], "Chess knight and sand timer are the only two items shown directly associated with timed strategy play.")
-  ],
+  "board-games": [],
   "computer-equipment": [
     pictureThisLink("controls", [1,2], "Mouse and keyboard are the only two dedicated computer input controls shown."),
     pictureThisLink("video", [0,5], "Laptop and webcam are the only two items shown that directly form a computer video-call pair.")
@@ -525,7 +517,7 @@ const auditedLinkAdditions = {
     pictureThisLink("mixing", [1,2], "Ladle and whisk are the only two long-handled tools shown used to mix liquids in a vessel."),
     pictureThisLink("vegetables", [4,5], "Colander and peeler are the only two tools shown specifically associated with preparing vegetables before cooking.")
   ],
-  "fresh-fruit": [pictureThisLink("leaves", [2,4], "Strawberry and pineapple are the only two fruits shown with prominent leafy crowns attached.")],
+  "fresh-fruit": [pictureThisLink("tropical", [1,4], "Mango and pineapple are the only two fruits shown that are characteristically classified as tropical fruits.")],
   "pantry-basics": [
     pictureThisLink("condiments", [2,3], "Cooking oil and salt are the only two foundational savory seasonings shown."),
     pictureThisLink("boiled", [0,1], "Pasta and lentils are the only two dry staples shown normally cooked by boiling in water.")

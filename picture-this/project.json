@@ -2146,7 +2146,7 @@
     },
     {
       "id": "getting-dressed",
-      "title": "Getting Dressed",
+      "title": "Clothes and Accessories",
       "band_color": "orange"
     },
     {
@@ -2211,7 +2211,7 @@
     },
     {
       "id": "space-travel",
-      "title": "Space Travel",
+      "title": "Space and Astronomy",
       "band_color": "green"
     },
     {
@@ -2341,12 +2341,12 @@
     },
     {
       "id": "board-games",
-      "title": "Board Games",
+      "title": "Tabletop Games",
       "band_color": "orange"
     },
     {
       "id": "jewelry",
-      "title": "Jewelry",
+      "title": "Jewelry and Accessories",
       "band_color": "red"
     },
     {
@@ -2491,7 +2491,7 @@
     },
     {
       "id": "writing-supplies",
-      "title": "Writing Supplies",
+      "title": "Stationery",
       "band_color": "orange"
     },
     {
@@ -3176,7 +3176,7 @@
     },
     {
       "id": "communication-skills",
-      "title": "Communication Skills",
+      "title": "Language Actions",
       "band_color": "red",
       "game_tags": [
         "communication",
@@ -3186,7 +3186,7 @@
     },
     {
       "id": "choices-and-rules",
-      "title": "Choices and Rules",
+      "title": "Action Opposites",
       "band_color": "blue",
       "game_tags": [
         "actions",
@@ -3206,7 +3206,7 @@
     },
     {
       "id": "processes-and-plans",
-      "title": "Processes and Plans",
+      "title": "Everyday Processes",
       "band_color": "orange",
       "game_tags": [
         "actions",
@@ -3236,7 +3236,7 @@
     },
     {
       "id": "social-feelings-actions",
-      "title": "Social Feelings and Actions",
+      "title": "Social Interactions",
       "band_color": "green",
       "game_tags": [
         "feelings",
