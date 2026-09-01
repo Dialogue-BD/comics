@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0e1016">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>Who's This?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;700&display=swap">
+<style>
+  :root{
+    color-scheme: dark;
+    --accent: 164 72% 56%;      /* permit mint */
+    --warm:   36 94% 62%;       /* the asker's light */
+    --ink:#f6f7f5;
+    --muted:rgba(246,247,245,.66);
+    --faint:rgba(246,247,245,.40);
+    --glass:rgba(22,26,32,.66);
+    --border:rgba(255,255,255,.14);
+    /* on-paper inks for the card face */
+    --paper:#f7f6f1;
+    --paper-2:#eceae2;
+    --pink:#12262a;
+    --pink-soft:rgba(18,38,42,.60);
+    --pink-faint:rgba(18,38,42,.34);
+    --pink-rule:rgba(18,38,42,.16);
+    --seal:#0a6a5b;
+    --sans:"Archivo", ui-rounded, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono:"Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#0e1016}
+  body{
+    color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.4;
+    overscroll-behavior:none;-webkit-tap-highlight-color:transparent;
+    -webkit-user-select:none;user-select:none;-webkit-text-size-adjust:100%;
+  }
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  [hidden]{display:none !important}
+  :focus-visible{outline:3px solid hsl(var(--accent));outline-offset:3px}
+
+  .app{
+    position:fixed;inset:0;isolation:isolate;overflow:hidden;
+    display:flex;flex-direction:column;
+    background:
+      radial-gradient(circle at 50% 26%, hsl(var(--accent) / .17), transparent 46%),
+      radial-gradient(circle at 86% 3%, hsl(var(--warm) / .10), transparent 34%),
+      radial-gradient(circle at 8% 96%, hsl(var(--accent) / .09), transparent 40%),
+      linear-gradient(150deg,#161a20 0%,#0b0d12 58%,#12151c 100%);
+    padding:max(12px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right))
+            max(12px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+  }
+  .app::before{
+    content:"";position:absolute;inset:0;z-index:-1;opacity:.18;pointer-events:none;
+    mix-blend-mode:soft-light;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  }
+  .inner{width:100%;max-width:560px;margin:0 auto;flex:1;min-height:0;display:flex;flex-direction:column}
+
+  /* ── chrome ─────────────────────────────────────────── */
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 2px 12px;flex:none}
+  .brand{display:flex;align-items:center;gap:10px;min-width:0;font-size:1.02rem;font-weight:800;letter-spacing:-.02em}
+  .brand-mark{
+    width:11px;height:11px;flex:none;border-radius:50%;background:hsl(var(--accent));
+    box-shadow:0 0 0 5px hsl(var(--accent) / .14), 0 0 22px hsl(var(--accent) / .7);
+  }
+  .topbar-right{display:flex;align-items:center;gap:8px}
+  .pill{
+    display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 12px;
+    border:1px solid var(--border);border-radius:999px;background:var(--glass);
+    color:var(--muted);font-family:var(--mono);font-size:.7rem;font-weight:500;
+    letter-spacing:.11em;text-transform:uppercase;white-space:nowrap;
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  }
+  button.pill{transition:border-color .18s, color .18s}
+  button.pill:hover{border-color:hsl(var(--accent) / .5);color:var(--ink)}
+  .pill--count{font-variant-numeric:tabular-nums;letter-spacing:.06em}
+
+
+  /* ── roles ──────────────────────────────────────────── */
+  .roles{display:flex;align-items:center;gap:8px;flex:none;padding-bottom:12px}
+  .rolechip{
+    flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;
+    padding:7px 13px;border-radius:14px;border:1px solid var(--border);background:var(--glass);
+    transition:border-color .35s, background .35s, box-shadow .35s;
+  }
+  .rolechip--b{text-align:right}
+  .rolechip__job{font-family:var(--mono);font-size:.6rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--faint);transition:color .35s}
+  .rolechip__name{font-weight:700;font-size:.95rem;letter-spacing:-.015em;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .35s}
+  .rolechip.is-asking{
+    border-color:hsl(var(--warm) / .5);background:hsl(var(--warm) / .12);
+    box-shadow:0 0 22px hsl(var(--warm) / .16);
+  }
+  .rolechip.is-asking .rolechip__job{color:hsl(var(--warm))}
+  .rolechip.is-asking .rolechip__name{color:var(--ink)}
+  .roles__pass{
+    flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    border:1px dashed var(--border);color:var(--faint);font-size:.85rem;
+    transition:transform .45s cubic-bezier(.2,.85,.3,1)}
+  .roles__pass.is-flipped{transform:rotate(180deg)}
+
+  /* ── stage + card ───────────────────────────────────── */
+  .stage{flex:1;min-height:0;display:grid;place-items:center;perspective:1600px;padding:2px 0}
+  .cardwrap{
+    position:relative;
+    width:min(var(--stage-w, 100%), calc(var(--stage-h, 999px) * 5 / 7));
+    aspect-ratio:5/7;
+    transform-style:preserve-3d;
+    transition:opacity .18s ease, scale .18s ease, filter .18s ease;
+  }
+  .cardwrap.is-changing{opacity:0;scale:.94;filter:blur(6px)}
+  .card{
+    position:absolute;inset:0;transform-style:preserve-3d;
+    transform:rotateY(var(--flip,0deg));
+    transition:transform .68s cubic-bezier(.2,.84,.24,1);
+    border-radius:clamp(14px,4vw,22px);
+    box-shadow:0 3px 2px rgba(255,255,255,.2) inset, 0 24px 70px rgba(0,0,0,.56), 0 6px 16px rgba(0,0,0,.36);
+  }
+  .card.is-dealing{animation:deal .5s cubic-bezier(.2,.85,.3,1)}
+  @keyframes deal{from{opacity:0;transform:translateY(18px) rotateZ(-1.4deg) scale(.96)}to{opacity:1}}
+  .face{
+    position:absolute;inset:0;overflow:hidden;border-radius:inherit;
+    border:1px solid rgba(255,255,255,.34);
+    background:var(--paper);color:var(--pink);text-align:left;
+    backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    display:flex;flex-direction:column;
+  }
+  .face--back{transform:rotateY(180deg)}
+  /* backface-visibility hides a face but does NOT stop it receiving taps,
+     so the face that is turned away must be switched off explicitly. */
+  .face--back{pointer-events:none}
+  .card.is-flipped .face--front{pointer-events:none}
+  .card.is-flipped .face--back{pointer-events:auto}
+  .face::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background:repeating-radial-gradient(circle at 84% 16%, transparent 0 8px, var(--pink-rule) 8px 8.7px);
+    mask-image:radial-gradient(circle at 84% 16%, #000, transparent 60%);
+  }
+  .foil{
+    position:absolute;right:5%;top:15%;width:15%;aspect-ratio:1;border-radius:50%;pointer-events:none;
+    background:conic-gradient(from 210deg,#7ee8d0,#b8d8ff,#ffd9a8,#f7b6d2,#9ff0dd,#7ee8d0);
+    opacity:.24;mix-blend-mode:multiply;filter:blur(.3px);
+  }
+  .foil::after{
+    content:"";position:absolute;inset:22%;border-radius:50%;
+    border:1px solid rgba(18,38,42,.28);
+  }
+
+  .band{
+    display:flex;align-items:center;justify-content:space-between;gap:8px;flex:none;
+    padding:clamp(7px,2.2vw,11px) clamp(11px,3.4vw,17px);
+    background:var(--paper-2);border-bottom:1px solid var(--pink-rule);
+    position:relative;z-index:2;
+  }
+  .band .lab{color:var(--pink-faint)}
+  .lab{font-family:var(--mono);font-size:clamp(7.6px,2.1vw,10px);font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--pink-faint)}
+
+  .front__body{flex:1;min-height:0;display:flex;flex-direction:column;position:relative;z-index:2}
+  .front__top{display:flex;gap:clamp(11px,3.4vw,16px);padding:clamp(11px,3.4vw,17px)}
+  .rows{
+    flex:1;min-height:0;display:flex;flex-direction:column;justify-content:space-evenly;
+    border-top:1px solid var(--pink-rule);
+  }
+  .row{padding:clamp(6px,2vw,10px) clamp(11px,3.4vw,17px);display:flex;gap:clamp(10px,3.2vw,16px)}
+  .row + .row{border-top:1px solid var(--pink-rule)}
+  .row .f{flex:1;min-width:0}
+  .window{
+    width:37%;flex:none;aspect-ratio:3/4;align-self:flex-start;
+    border:1px solid var(--pink-rule);border-radius:4px;background:var(--paper-2);
+    display:grid;place-items:center;overflow:hidden;position:relative;
+  }
+  .window img{width:100%;height:100%;object-fit:cover;display:block}
+  .window::before{content:"";position:absolute;inset:5px;border:1px dashed var(--pink-rule);border-radius:2px;pointer-events:none}
+  .window.has-photo::before{display:none}
+  .emblem{
+    position:absolute;left:0;top:0;z-index:3;
+    width:30%;height:21%;display:grid;place-items:center;
+    background:rgba(250,250,247,.95);
+    border-right:1px solid var(--pink-rule);border-bottom:1px solid var(--pink-rule);
+    border-bottom-right-radius:9px;
+    box-shadow:1px 1px 7px rgba(18,38,42,.16);
+    font-size:clamp(11px,3.4vw,17px);line-height:1;
+  }
+  .window__ph{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;padding:5px}
+  .window__ph .job{font-size:clamp(22px,7.4vw,34px);line-height:1}
+  .window__ph .txt{font-family:var(--mono);font-size:clamp(6.5px,1.8vw,8.5px);letter-spacing:.16em;color:var(--pink-faint)}
+
+  .ident{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;padding-bottom:2px}
+  .ident__name{
+    margin:0;font-size:clamp(19px,6.4vw,30px);font-weight:900;letter-spacing:-.035em;
+    line-height:1.02;text-wrap:balance;
+  }
+  .f{display:flex;flex-direction:column;gap:1px;min-width:0}
+  .f__v{font-size:clamp(13px,4vw,18px);font-weight:700;letter-spacing:-.015em;line-height:1.2}
+  .f__v .num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+  .f__v .adj{color:var(--seal)}
+  .mrz{
+    flex:none;padding:clamp(5px,1.7vw,8px) clamp(11px,3.4vw,17px) clamp(6px,2vw,9px);
+    border-top:1px solid var(--pink-rule);background:var(--paper-2);
+    font-family:var(--mono);font-size:clamp(6.5px,1.95vw,9.5px);color:var(--pink-faint);
+    white-space:nowrap;overflow:hidden;position:relative;z-index:2;
+  }
+
+  /* answer key face */
+  .key{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;justify-content:space-evenly;padding:clamp(10px,3.2vw,16px);gap:clamp(4px,1.4vw,8px);position:relative;z-index:2}
+  .kq{display:flex;gap:clamp(7px,2.2vw,11px);align-items:flex-start}
+  .kq__n{
+    font-family:var(--mono);font-size:clamp(8px,2.2vw,10px);font-weight:700;color:var(--pink-faint);
+    flex:none;width:clamp(15px,4.6vw,20px);height:clamp(15px,4.6vw,20px);border-radius:50%;
+    border:1px solid var(--pink-rule);display:grid;place-items:center;margin-top:2px;
+  }
+  .kq--bonus .kq__n{border-style:dashed}
+  .kq__body{flex:1;min-width:0;display:flex;flex-direction:column}
+  .kq__q{display:block;font-size:clamp(10.5px,3.1vw,14px);font-weight:600;color:var(--pink-soft);letter-spacing:-.01em}
+  .kq__a{display:block;font-size:clamp(12.5px,3.75vw,17px);font-weight:700;letter-spacing:-.02em;line-height:1.24;margin-top:1px}
+  .kq__a .hi{color:var(--seal)}
+  .kq.is-active .kq__n{background:var(--seal);border-color:var(--seal);color:var(--paper)}
+  .kq.is-active .kq__a{text-decoration:underline;text-decoration-color:hsl(164 72% 40% / .45);text-underline-offset:3px}
+
+  /* ── speak buttons ──────────────────────────────────── */
+  .tts{
+    flex:none;display:grid;place-items:center;border-radius:50%;
+    border:1px solid var(--border);background:var(--glass);color:var(--muted);
+    transition:color .16s, border-color .16s, background .16s, transform .16s;
+  }
+  .tts svg{width:60%;height:60%}
+  .tts:hover{color:hsl(var(--accent));border-color:hsl(var(--accent) / .5)}
+  .tts.is-speaking{
+    color:hsl(var(--accent));border-color:hsl(var(--accent));
+    background:hsl(var(--accent) / .18);animation:pulse 1s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+  .tts--prompt{width:38px;height:38px}
+  .tts--key{
+    width:clamp(22px,6.2vw,28px);height:clamp(22px,6.2vw,28px);align-self:center;
+    border-color:rgba(10,106,91,.32);background:rgba(10,106,91,.07);color:var(--seal);
+  }
+  .tts--key:hover{background:rgba(10,106,91,.16);border-color:var(--seal)}
+  .tts--key.is-speaking{color:var(--paper);background:var(--seal);border-color:var(--seal)}
+
+  /* ── prompt + rail ──────────────────────────────────── */
+  .prompt{
+    flex:none;padding:12px 4px 9px;min-height:2.4em;
+    display:flex;align-items:center;justify-content:center;gap:11px;
+    font-size:clamp(1.15rem,5.4vw,1.5rem);font-weight:800;letter-spacing:-.03em;
+    text-wrap:balance;text-align:center;
+  }
+  .prompt span.q{display:inline-block;animation:rise .32s cubic-bezier(.2,.85,.3,1)}
+  @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+  .rail{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;flex:none}
+  .wh{
+    min-width:0;min-height:40px;padding:0 4px;border-radius:12px;
+    border:1px solid var(--border);background:var(--glass);color:var(--muted);
+    font-size:clamp(.66rem,3vw,.84rem);font-weight:700;letter-spacing:-.02em;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;
+    transition:border-color .2s, background .2s, color .2s;
+  }
+  .wh .n{font-family:var(--mono);font-size:.56rem;font-weight:500;letter-spacing:.06em;color:var(--faint);margin-bottom:1px}
+  .wh.is-on{background:hsl(var(--accent) / .16);border-color:hsl(var(--accent) / .55);color:hsl(var(--accent))}
+  .wh.is-on .n{color:hsl(var(--accent) / .8)}
+
+  /* ── footer ─────────────────────────────────────────── */
+  .footer{display:flex;align-items:center;gap:9px;flex:none;padding-top:11px}
+  .action{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;
+    border:1px solid var(--border);border-radius:999px;background:var(--glass);color:var(--ink);
+    padding:0 17px;font-size:.86rem;font-weight:700;letter-spacing:-.01em;
+    box-shadow:0 10px 30px rgba(0,0,0,.24);
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    transition:transform .18s, background .18s, border-color .18s;
+  }
+  .action:hover{border-color:rgba(255,255,255,.26);background:rgba(37,42,50,.8)}
+  .action:active{transform:scale(.96)}
+  .action--check{flex:none}
+  .action--check.is-on{background:hsl(var(--accent) / .18);border-color:hsl(var(--accent) / .5);color:hsl(var(--accent))}
+  .action--next{
+    flex:1;background:hsl(var(--accent));color:#08201b;border-color:transparent;
+    box-shadow:0 8px 30px hsl(var(--accent) / .3);
+  }
+  .action--next:hover{background:hsl(var(--accent) / .92);border-color:transparent}
+  .action--next .sub{font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;opacity:.66}
+  .action svg{width:19px;height:19px;flex:none}
+
+  /* ── finish ─────────────────────────────────────────── */
+  .finish{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:10px}
+  .seal{
+    width:126px;height:126px;border-radius:50%;display:grid;place-items:center;transform:rotate(-7deg);
+    border:2px solid hsl(var(--accent) / .85);color:hsl(var(--accent));
+    background:hsl(var(--accent) / .08);box-shadow:inset 0 0 0 5px rgba(14,16,22,0), inset 0 0 0 6px hsl(var(--accent) / .5), 0 0 40px hsl(var(--accent) / .18);
+    font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.14em;line-height:1.7;
+  }
+  .finish h2{margin:0;font-size:clamp(1.5rem,6.6vw,2rem);font-weight:900;letter-spacing:-.035em}
+  .finish p{margin:0;color:var(--muted);max-width:34ch;font-size:.95rem}
+  .finish .footer{width:100%;max-width:330px}
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  }
+  @media (min-height:820px){ .prompt{padding:18px 4px 13px} .action{min-height:54px} }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="inner">
+
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>Who&rsquo;s This?</span></div>
+      <div class="topbar-right">
+        <button class="pill" id="deckBtn" hidden>Restart</button>
+        <span class="pill pill--count" id="count" hidden>01/30</span>
+      </div>
+    </header>
+
+    <!-- PLAY ────────────────────────────────────────── -->
+    <main class="play" id="play" style="flex:1;min-height:0;display:flex;flex-direction:column">
+      <div class="roles">
+        <div class="rolechip" id="roleA">
+          <span class="rolechip__job" id="jobA">Asking</span>
+          <span class="rolechip__name">Student 1</span>
+        </div>
+        <span class="roles__pass" id="pass" aria-hidden="true">→</span>
+        <div class="rolechip rolechip--b" id="roleB">
+          <span class="rolechip__job" id="jobB">Answering</span>
+          <span class="rolechip__name">Student 2</span>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="cardwrap" id="wrap">
+          <div class="card" id="card" role="button" tabindex="0" aria-label="Identity card — tap to check the answers">
+
+            <div class="face face--front">
+              <div class="foil" aria-hidden="true"></div>
+              <div class="band">
+                <span class="lab">Identity Card</span>
+                <span class="lab" id="permitNo">No. 001</span>
+              </div>
+              <div class="front__body">
+                <div class="front__top">
+                  <div class="window" id="window"></div>
+                  <div class="ident">
+                    <span class="lab">Full name</span>
+                    <h2 class="ident__name" id="pName">—</h2>
+                    <div class="f" style="margin-top:auto"><span class="lab">Age</span><span class="f__v"><span class="num" id="pAge">—</span></span></div>
+                  </div>
+                </div>
+                <div class="rows">
+                  <div class="row"><div class="f"><span class="lab">Profession</span><span class="f__v" id="pJob">—</span></div></div>
+                  <div class="row"><div class="f"><span class="lab">Country / Nationality</span><span class="f__v" id="pFrom">—</span></div></div>
+                  <div class="row">
+                    <div class="f"><span class="lab">Salary</span><span class="f__v"><span class="num" id="pPay">—</span> <span style="font-weight:500;color:var(--pink-faint);font-size:.72em">/ month</span></span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="mrz" id="mrz"></div>
+            </div>
+
+            <div class="face face--back">
+              <div class="band">
+                <span class="lab">Answer Key</span>
+                <span class="lab" id="keyName">—</span>
+              </div>
+              <div class="key" id="key"></div>
+              <div class="mrz" id="mrz2"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt">
+        <span id="prompt"></span>
+        <button class="tts tts--prompt" id="sayQ" aria-label="Listen to the question">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Z" fill="currentColor"></path><path d="M16 9c1 .8 1.5 1.8 1.5 3S17 14.2 16 15m2.6-8c1.7 1.4 2.6 3 2.6 5s-.9 3.6-2.6 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
+        </button>
+      </div>
+      <div class="rail" id="rail"></div>
+
+      <footer class="footer">
+        <button class="action action--check" id="check" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+          <span id="checkTxt">Check</span>
+        </button>
+        <button class="action action--next" id="next">
+          <span id="nextTxt">Next person</span>
+          <span class="sub" id="nextSub">pass the phone</span>
+        </button>
+      </footer>
+    </main>
+
+    <!-- FINISH ──────────────────────────────────────── -->
+    <section class="finish" id="finish" hidden>
+      <div class="seal" aria-hidden="true">DECK<br>COMPLETE</div>
+      <h2 id="doneTitle">All permits checked</h2>
+      <p id="doneLine"></p>
+      <div class="footer" style="justify-content:center">
+        <button class="action action--next" id="again" style="flex:0 1 260px"><span>Play again</span><span class="sub">new order</span></button>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════
+   PHOTOS
+   Each person's portrait is looked up at, relative to this file:
+       whos-this/photos/<name-slug>.jpg      e.g. photos/maria-silva.jpg
+   Drop files in with those exact names and they appear in the card's
+   photo window automatically. Portrait crop, 3:4, ~600×800px is plenty.
+   Missing files just show the dashed placeholder with the job icon —
+   nothing breaks, so they can be added a few at a time.
+   photos/README.md lists all thirty filenames.
+   ══════════════════════════════════════════════════════════════════ */
+
+const PEOPLE = [
+  // ── Set 1 ──────────────────────────────────────────────────────
+  {set:1, name:"Maria Silva",     g:"f", age:28, country:"Brazil",         cc:"BRA", adj:"Brazilian",     flag:"🇧🇷", job:"nurse",              icon:"🩺", pay:2800},
+  {set:1, name:"Ahmed Hassan",    g:"m", age:41, country:"Egypt",          cc:"EGY", adj:"Egyptian",      flag:"🇪🇬", job:"taxi driver",        icon:"🚕", pay:1200},
+  {set:1, name:"Yuki Tanaka",     g:"m", age:35, country:"Japan",          cc:"JPN", adj:"Japanese",      flag:"🇯🇵", job:"software engineer",  icon:"💻", pay:5600},
+  {set:1, name:"Sophie Martin",   g:"f", age:23, country:"France",         cc:"FRA", adj:"French",        flag:"🇫🇷", job:"baker",              icon:"🥐", pay:2100},
+  {set:1, name:"Daniel Kim",      g:"m", age:31, country:"South Korea",    cc:"KOR", adj:"Korean",        flag:"🇰🇷", job:"photographer",       icon:"📷", pay:3000},
+  {set:1, name:"Amina Yusuf",     g:"f", age:46, country:"Kenya",          cc:"KEN", adj:"Kenyan",        flag:"🇰🇪", job:"teacher",            icon:"🧑‍🏫", pay:1500},
+  {set:1, name:"Carlos Rivera",   g:"m", age:52, country:"Mexico",         cc:"MEX", adj:"Mexican",       flag:"🇲🇽", job:"mechanic",           icon:"🔧", pay:2400},
+  {set:1, name:"Olivia Brown",    g:"f", age:27, country:"Australia",      cc:"AUS", adj:"Australian",    flag:"🇦🇺", job:"graphic designer",   icon:"🎨", pay:3700},
+  {set:1, name:"Priya Sharma",    g:"f", age:39, country:"India",          cc:"IND", adj:"Indian",        flag:"🇮🇳", job:"doctor",             icon:"⚕️", pay:6500},
+  {set:1, name:"Lukas Weber",     g:"m", age:33, country:"Germany",        cc:"DEU", adj:"German",        flag:"🇩🇪", job:"architect",          icon:"📐", pay:4800},
+  {set:1, name:"Fatima Benali",   g:"f", age:29, country:"Morocco",        cc:"MAR", adj:"Moroccan",      flag:"🇲🇦", job:"chef",               icon:"👩‍🍳", pay:2600},
+  {set:1, name:"Noah Johnson",    g:"m", age:24, country:"Canada",         cc:"CAN", adj:"Canadian",      flag:"🇨🇦", job:"shop assistant",     icon:"🛒", pay:1900},
+  {set:1, name:"Elena Petrova",   g:"f", age:44, country:"Ukraine",        cc:"UKR", adj:"Ukrainian",     flag:"🇺🇦", job:"accountant",         icon:"🧮", pay:3400},
+  {set:1, name:"Samuel Okoro",    g:"m", age:37, country:"Nigeria",        cc:"NGA", adj:"Nigerian",      flag:"🇳🇬", job:"police officer",     icon:"👮", pay:2200},
+  {set:1, name:"Mei Lin",         g:"f", age:55, country:"China",          cc:"CHN", adj:"Chinese",       flag:"🇨🇳", job:"farmer",             icon:"🌾", pay:1100},
+  // ── Set 2 ──────────────────────────────────────────────────────
+  {set:2, name:"Isabella Rossi",  g:"f", age:26, country:"Italy",          cc:"ITA", adj:"Italian",       flag:"🇮🇹", job:"flight attendant",   icon:"✈️", pay:2900},
+  {set:2, name:"Omar Khalid",     g:"m", age:38, country:"Jordan",         cc:"JOR", adj:"Jordanian",     flag:"🇯🇴", job:"electrician",        icon:"⚡", pay:2300},
+  {set:2, name:"Grace Ndlovu",    g:"f", age:42, country:"South Africa",   cc:"ZAF", adj:"South African", flag:"🇿🇦", job:"journalist",         icon:"🎤", pay:2700},
+  {set:2, name:"Minh Tran",       g:"m", age:30, country:"Vietnam",        cc:"VNM", adj:"Vietnamese",    flag:"🇻🇳", job:"dentist",            icon:"🦷", pay:5900},
+  {set:2, name:"Sofia Alvarez",   g:"f", age:24, country:"Argentina",      cc:"ARG", adj:"Argentinian",   flag:"🇦🇷", job:"florist",            icon:"💐", pay:1800},
+  {set:2, name:"Peter Novak",     g:"m", age:47, country:"Czech Republic", cc:"CZE", adj:"Czech",         flag:"🇨🇿", job:"firefighter",        icon:"🚒", pay:2600},
+  {set:2, name:"Hana Sato",       g:"f", age:34, country:"Japan",          cc:"JPN", adj:"Japanese",      flag:"🇯🇵", job:"librarian",          icon:"📚", pay:2400},
+  {set:2, name:"David Miller",    g:"m", age:29, country:"United States",  cc:"USA", adj:"American",      flag:"🇺🇸", job:"civil engineer",     icon:"🏗️", pay:2200},
+  {set:2, name:"Rina Das",        g:"f", age:31, country:"Bangladesh",     cc:"BGD", adj:"Bangladeshi",   flag:"🇧🇩", job:"fashion designer",   icon:"👗", pay:2500},
+  {set:2, name:"Musa Ibrahim",    g:"m", age:50, country:"Ghana",          cc:"GHA", adj:"Ghanaian",      flag:"🇬🇭", job:"farmer",             icon:"🌾", pay:1400},
+  {set:2, name:"Claire Dubois",   g:"f", age:37, country:"Belgium",        cc:"BEL", adj:"Belgian",       flag:"🇧🇪", job:"veterinarian",       icon:"🐕", pay:4700},
+  {set:2, name:"Chen Wei",        g:"m", age:27, country:"China",          cc:"CHN", adj:"Chinese",       flag:"🇨🇳", job:"hotel receptionist", icon:"🛎️", pay:2000},
+  {set:2, name:"Lucia Ferreira",  g:"f", age:45, country:"Portugal",       cc:"PRT", adj:"Portuguese",    flag:"🇵🇹", job:"music teacher",      icon:"🎸", pay:2800},
+  {set:2, name:"Arjun Patel",     g:"m", age:33, country:"India",          cc:"IND", adj:"Indian",        flag:"🇮🇳", job:"bus driver",         icon:"🚌", pay:1900},
+  {set:2, name:"Elena Popescu",   g:"f", age:55, country:"Romania",        cc:"ROU", adj:"Romanian",      flag:"🇷🇴", job:"tailor",             icon:"🧵", pay:1700}
+];
+
+const slug = n => n.toLowerCase().replace(/[^a-z]+/g,"-");
+PEOPLE.forEach(p => { p.photo = "photos/" + slug(p.name) + ".jpg"; });
+
+/* ── grammar ─────────────────────────────────────────────────────── */
+const He    = p => p.g === "f" ? "She" : "He";
+const hes   = p => p.g === "f" ? "She's" : "He's";
+const heShe = p => p.g === "f" ? "she" : "he";
+const an    = w => /^[aeiou]/i.test(w) ? "an" : "a";
+const money = n => "$" + n.toLocaleString("en-US");
+const title = s => s.replace(/\b\w/g, c => c.toUpperCase());
+
+const QUESTIONS = [
+  {wh:"Who",      q:p => "Who's this?",                          a:p => `That's <span class="hi">${p.name}</span>.`},
+  {wh:"What",     q:p => `What does ${heShe(p)} do?`,            a:p => `${hes(p)} ${an(p.job)} <span class="hi">${p.job}</span>.`},
+  {wh:"Where",    q:p => `Where's ${heShe(p)} from?`,            a:p => `${hes(p)} from <span class="hi">${p.country}</span>. ${hes(p)} <span class="hi">${p.adj}</span>.`},
+  {wh:"How much", q:p => `How much does ${heShe(p)} earn?`,      a:p => `${He(p)} earns <span class="hi">${money(p.pay)}</span> a month.`},
+  {wh:"How old",  q:p => `How old is ${heShe(p)}?`, bonus:true,  a:p => `${hes(p)} <span class="hi">${p.age}</span> years old.`}
+];
+
+/* ── speech ──────────────────────────────────────────────────────
+   Same approach as the Picture This deck: the browser's built-in
+   speechSynthesis voice, slowed a little for beginners.            */
+let speaking = null;
+const SPEAKER = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Z" fill="currentColor"></path><path d="M16 9c1 .8 1.5 1.8 1.5 3S17 14.2 16 15m2.6-8c1.7 1.4 2.6 3 2.6 5s-.9 3.6-2.6 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>`;
+
+function stopSpeech(){
+  try { window.speechSynthesis?.cancel(); } catch(e){}
+  speaking?.classList.remove("is-speaking");
+  speaking = null;
+}
+function say(text, control){
+  if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) return;
+  const again = speaking === control;
+  stopSpeech();
+  if (again) return;                       // tapping the same button stops it
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US"; u.rate = .84; u.pitch = 1;
+  if (control){ speaking = control; control.classList.add("is-speaking"); }
+  const clear = () => { control?.classList.remove("is-speaking"); if (speaking === control) speaking = null; };
+  u.onend = clear; u.onerror = clear;
+  window.speechSynthesis.speak(u);
+}
+const plain = html => html.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+
+/* ── state ───────────────────────────────────────────────────────── */
+let deck = [], idx = 0, qi = 0, flipped = false;
+const $ = id => document.getElementById(id);
+
+
+const shuffle = a => { for(let i=a.length-1;i>0;i--){const j=(Math.random()*(i+1))|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
+
+function start(){
+  deck = shuffle(PEOPLE.slice());
+  idx = 0;
+
+  $("rail").innerHTML = QUESTIONS.map((Q,i) => `
+    <button class="wh${Q.bonus ? " wh--bonus" : ""}" data-q="${i}">
+      <span class="n">${Q.bonus ? "+" : i+1}</span><span>${Q.wh}</span>
+    </button>`).join("");
+
+  $("finish").hidden = true; $("play").hidden = false;
+  $("deckBtn").hidden = false; $("count").hidden = false;
+  render();
+}
+
+/* ── round ───────────────────────────────────────────────────────── */
+function render(){
+  stopSpeech();
+  const p = deck[idx], askerIsA = idx % 2 === 0;
+
+  $("roleA").classList.toggle("is-asking", askerIsA);
+  $("roleB").classList.toggle("is-asking", !askerIsA);
+  $("jobA").textContent = askerIsA ? "Asking" : "Answering";
+  $("jobB").textContent = askerIsA ? "Answering" : "Asking";
+  $("pass").classList.toggle("is-flipped", !askerIsA);
+  $("count").textContent = String(idx+1).padStart(2,"0") + " / " + String(deck.length).padStart(2,"0");
+
+  // photo window
+  const win = $("window");
+  win.className = "window";
+  win.innerHTML = `<div class="window__ph"><span class="job">${p.icon}</span><span class="txt">PHOTO</span></div><span class="emblem" aria-hidden="true">${p.flag}</span>`;
+  const img = new Image();
+  img.alt = p.name;
+  img.addEventListener("load", () => {
+    if (deck[idx] !== p) return;
+    win.classList.add("has-photo"); win.innerHTML = ""; win.appendChild(img);
+    const em = document.createElement("span");
+    em.className = "emblem"; em.setAttribute("aria-hidden","true"); em.textContent = p.flag;
+    win.appendChild(em);
+  });
+  img.src = p.photo;
+
+  // front
+  $("permitNo").textContent = "No. " + String(PEOPLE.indexOf(p)+1).padStart(3,"0");
+  $("pName").textContent = p.name;
+  $("pJob").textContent  = title(p.job);
+  $("pFrom").innerHTML   = `${p.flag} ${p.country} · <span class="adj">${p.adj}</span>`;
+  $("pAge").textContent  = p.age;
+  $("pPay").textContent  = money(p.pay);
+  $("mrz").textContent = $("mrz2").textContent = mrz(p);
+
+  // back
+  $("keyName").textContent = p.name;
+  $("key").innerHTML = QUESTIONS.map((Q,i) => `
+    <div class="kq${Q.bonus ? " kq--bonus" : ""}" data-k="${i}">
+      <span class="kq__n">${Q.bonus ? "+" : i+1}</span>
+      <span class="kq__body"><span class="kq__q">${Q.q(p)}</span><span class="kq__a">${Q.a(p)}</span></span>
+      <button class="tts tts--key" data-say="${i}" aria-label="Listen to answer ${i+1}">${SPEAKER}</button>
+    </div>`).join("");
+
+  setFlip(false);
+  setQ(0);
+
+  const wrap = $("wrap"), card = $("card");
+  wrap.classList.remove("is-changing");
+  card.classList.remove("is-dealing"); void card.offsetWidth; card.classList.add("is-dealing");
+
+  const last = idx === deck.length - 1;
+  $("nextTxt").textContent = last ? "Finish" : "Next person";
+  $("nextSub").textContent = last ? "last one" : "pass the phone";
+}
+
+function mrz(p){
+  const [first, ...rest] = p.name.toUpperCase().split(" ");
+  const line = `P<${p.cc}${rest.join("<")}<<${first}`.replace(/[^A-Z<]/g,"<");
+  return (line + "<".repeat(46)).slice(0,46);
+}
+
+function setQ(i){
+  stopSpeech();
+  qi = i;
+  const p = deck[idx];
+  $("prompt").innerHTML = `<span>${QUESTIONS[i].q(p)}</span>`;
+  [...$("rail").children].forEach((el,n) => el.classList.toggle("is-on", n === i));
+  [...$("key").children].forEach((el,n) => el.classList.toggle("is-active", n === i));
+}
+
+function setFlip(on){
+  flipped = on;
+  $("card").style.setProperty("--flip", on ? "180deg" : "0deg");
+  $("card").classList.toggle("is-flipped", on);
+  $("check").classList.toggle("is-on", on);
+  $("check").setAttribute("aria-pressed", String(on));
+  $("checkTxt").textContent = on ? "Card" : "Check";
+}
+
+$("rail").addEventListener("click", e => {
+  const b = e.target.closest("[data-q]");
+  if (b) setQ(+b.dataset.q);
+});
+$("sayQ").addEventListener("click", () => say(QUESTIONS[qi].q(deck[idx]), $("sayQ")));
+
+$("key").addEventListener("click", e => {
+  const b = e.target.closest("[data-say]");
+  if (!b) return;
+  e.stopPropagation();
+  const i = +b.dataset.say, p = deck[idx];
+  setQ(i);
+  say(plain(QUESTIONS[i].a(p)), b);
+});
+
+$("card").addEventListener("click", () => setFlip(!flipped));
+$("card").addEventListener("keydown", e => {
+  if (e.key === "Enter" || e.key === " "){ e.preventDefault(); setFlip(!flipped); }
+});
+$("check").addEventListener("click", () => setFlip(!flipped));
+
+$("next").addEventListener("click", () => {
+  if (idx < deck.length - 1){
+    $("wrap").classList.add("is-changing");
+    setTimeout(() => { idx++; render(); }, 190);
+    return;
+  }
+  $("play").hidden = true; $("finish").hidden = false;
+  $("deckBtn").hidden = true; $("count").hidden = true;
+  $("doneTitle").textContent = `${deck.length} cards done`;
+  $("doneLine").textContent = `That\u2019s ${deck.length*4} questions asked and answered between you.`;
+});
+
+[$("again"), $("deckBtn")].forEach(b => b.addEventListener("click", start));
+
+start();
+
+const stage = document.querySelector(".stage");
+const measure = () => {
+  document.documentElement.style.setProperty("--stage-w", stage.clientWidth + "px");
+  document.documentElement.style.setProperty("--stage-h", stage.clientHeight + "px");
+};
+new ResizeObserver(measure).observe(stage);
+window.addEventListener("orientationchange", () => setTimeout(measure, 250));
+measure();
+
+document.addEventListener("keydown", e => {
+  if ($("play").hidden) return;
+  if (e.key === "ArrowRight") $("next").click();
+  if (e.key === " " || e.key === "Enter") { }
+  if (/^[1-5]$/.test(e.key)) setQ(+e.key - 1);
+  if (e.key.toLowerCase() === "s") $("sayQ").click();
+});
+</script>
+</body>
+</html>
