@@ -317,11 +317,7 @@ const auditedLinkAdditions = {
     pictureThisLink("transit", [1,4], "Train and bus are the only two high-capacity public ground-transit vehicles shown.")
   ],
   "great-outdoors": [pictureThisLink("trails", [0,2], "Horseback riding and hiking are the only two activities shown characteristically following land trails.")],
-  "jobs": [
-    pictureThisLink("white", [1,2], "Chef and doctor are the only two workers shown wearing predominantly white professional uniforms."),
-    pictureThisLink("clipboards", [2,3], "Doctor and business person are the only two workers shown holding clipboards."),
-    pictureThisLink("protectors", [2,4], "Doctor and police officer are the only two workers shown whose central role is protecting public health or safety.")
-  ],
+  "jobs": [],
   "everyday-foods": [pictureThisLink("complements", [0,5], "Beans and rice are the only two foods shown that form the familiar complementary-protein pair.")],
   "market": [
     pictureThisLink("meats", [2,4], "Chicken and fish are the only two animal meats shown."),

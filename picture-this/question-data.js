@@ -795,45 +795,45 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "jobs": {
     "questions": [
-      "Which jobs on the card are interesting to you? Why?",
-      "Where does each person on the card work?",
-      "Which job requires the most education? Why?",
-      "Which of the jobs on the card makes the most money? Why?",
-      "Choose two of the jobs on the card. What do these people wear to work?",
-      "What other jobs do you know? What job would you like to have in the future?"
+      "Which people work at a school, in a kitchen, or in medical care?",
+      "What tools or clothing help you recognize each job?",
+      "Which of these jobs have you seen people doing in your community?",
+      "What skills does each person need to do their job well?",
+      "Which two jobs would you most like to try? Why?",
+      "Imagine these six people are helping at a community event. What could each person do?"
     ],
     "positions": [
-      13.14,
-      23.18,
-      33.29,
-      43.41,
-      53.53,
-      63.57
+      12.43,
+      22.75,
+      33.1,
+      47.76,
+      58.16,
+      68.47
     ],
     "endpoints": [
       {
-        "x": 68.36,
-        "y": 17.69
+        "x": 90.55,
+        "y": 16.82
       },
       {
-        "x": 27.03,
-        "y": 27.37
+        "x": 60.24,
+        "y": 27.33
       },
       {
-        "x": 50.91,
-        "y": 37.84
+        "x": 43.15,
+        "y": 42.0
       },
       {
-        "x": 64.24,
-        "y": 47.96
+        "x": 74.91,
+        "y": 52.35
       },
       {
-        "x": 92.61,
-        "y": 57.73
+        "x": 54.79,
+        "y": 62.71
       },
       {
-        "x": 29.94,
-        "y": 72.08
+        "x": 80.24,
+        "y": 77.37
       }
     ]
   },

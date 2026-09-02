@@ -146,11 +146,11 @@ window.PICTURE_THIS_GAME_DATA = {
   ],
   "jobs": [
     "Teacher",
+    "Principal",
     "Chef",
+    "Baker",
     "Doctor",
-    "Business Person",
-    "Police Officer",
-    "Construction Worker"
+    "Paramedic"
   ],
   "everyday-foods": [
     "Beans",
@@ -1406,6 +1406,42 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "jobs": {
+      "title": "Jobs",
+      "category_answers": ["Jobs", "Occupations", "People at Work", "Careers"],
+      "tags": ["jobs", "work", "occupations", "people"],
+      "items": [
+        {"id": "teacher", "label": "Teacher", "answers": ["Teacher", "School Teacher", "Educator"]},
+        {"id": "principal", "label": "Principal", "answers": ["Principal", "School Principal", "Headteacher", "Head Teacher"]},
+        {"id": "chef", "label": "Chef", "answers": ["Chef", "Professional Chef"]},
+        {"id": "baker", "label": "Baker", "answers": ["Baker", "Bread Baker"]},
+        {"id": "doctor", "label": "Doctor", "answers": ["Doctor", "Physician", "Medical Doctor"]},
+        {"id": "paramedic", "label": "Paramedic", "answers": ["Paramedic", "Emergency Paramedic", "Emergency Medic"]}
+      ],
+      "links": [
+        {
+          "word": "school",
+          "answers": ["school", "education"],
+          "items": ["teacher", "principal"],
+          "explanation": "The teacher and principal are the only two people shown whose jobs are specifically based in a school.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "kitchen",
+          "answers": ["kitchen", "cooking"],
+          "items": ["chef", "baker"],
+          "explanation": "The chef and baker are the only two people shown whose jobs center on preparing food in a professional kitchen.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "medical",
+          "answers": ["medical", "medicine", "healthcare"],
+          "items": ["doctor", "paramedic"],
+          "explanation": "The doctor and paramedic are the only two people shown who provide medical care.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "space-travel": {
       "title": "Space Exploration",
       "category_answers": ["Space Exploration", "Space Travel", "Space and Astronomy", "Exploring Space"],
