@@ -2731,8 +2731,8 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "at-the-bakery": {
     "questions": [
-      "Which items are foods, and which are tools used by a baker?",
-      "Which item is longest? Which could hold several pieces of bread?",
+      "Which items are raw dough, baked bread, or tools?",
+      "Which item is longest? Which item is softest?",
       "What bakery foods do you enjoy eating or making?",
       "How might a baker use a rolling pin, baking tray, and oven peel?",
       "What other foods, smells, or tools might you find in a bakery?",
@@ -2741,35 +2741,35 @@ window.PICTURE_THIS_QUESTION_DATA = {
     "positions": [
       12.43,
       22.75,
-      37.41,
-      47.76,
-      58.16,
-      72.78
+      33.1,
+      43.45,
+      53.84,
+      68.47
     ],
     "endpoints": [
       {
-        "x": 90.67,
-        "y": 16.63
+        "x": 66.18,
+        "y": 16.82
       },
       {
-        "x": 29.21,
-        "y": 31.29
+        "x": 50.06,
+        "y": 26.94
       },
       {
-        "x": 56.48,
-        "y": 42.0
+        "x": 56.85,
+        "y": 37.69
       },
       {
-        "x": 90.42,
-        "y": 52.35
+        "x": 90.79,
+        "y": 48.04
       },
       {
-        "x": 32.0,
-        "y": 67.02
+        "x": 32.36,
+        "y": 62.71
       },
       {
-        "x": 82.55,
-        "y": 77.02
+        "x": 82.91,
+        "y": 72.9
       }
     ]
   },

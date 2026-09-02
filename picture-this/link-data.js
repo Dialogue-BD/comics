@@ -156,10 +156,7 @@ window.PICTURE_THIS_LINK_DATA = {
     pictureThisLink("time", [0,1], "The train ticket and platform clock are the only two items shown that normally display departure time.", ["schedule"]),
     pictureThisLink("signals", [3,5], "The track switch lever and conductor whistle are the only two operating signals shown.", ["signal"])
   ],
-  "at-the-bakery": [
-    pictureThisLink("rolling", [1,3], "The rolling pin and flour sack are the only two items shown directly associated with rolling dough.", ["roll"]),
-    pictureThisLink("loading", [2,5], "The baking tray and oven peel are the only two dedicated oven-handling tools shown.")
-  ],
+  "at-the-bakery": [],
   "at-the-police-station": [
     pictureThisLink("uniform", [0,3], "The police badge and cap are the only two parts of a police uniform shown."),
     pictureThisLink("dispatch", [2,5], "The police radio and police car are the only two items shown directly joined by dispatch communication.", ["communication"])
@@ -436,7 +433,7 @@ const auditedLinkAdditions = {
     pictureThisLink("brown", [0,3], "Menu folder and pepper grinder are the only two items shown predominantly brown."),
     pictureThisLink("silver", [1,2], "Serving tray and napkin ring are the only two items shown predominantly silver.")
   ],
-  "at-the-bakery": [pictureThisLink("bread", [0,4], "Baguette and bread basket are the only two items shown that form a baked product and its serving container pair.")],
+  "at-the-bakery": [],
   "at-the-police-station": [pictureThisLink("traffic", [4,5], "Baton and police car are the only two items shown routinely used by officers to direct or control road traffic.")],
   "at-the-campsite": [
     pictureThisLink("flames", [2,4], "Lantern and camp stove are the only two campsite devices shown that characteristically burn fuel."),

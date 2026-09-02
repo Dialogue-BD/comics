@@ -500,7 +500,7 @@ window.PICTURE_THIS_GAME_DATA = {
     "Baguette",
     "Rolling Pin",
     "Baking Tray",
-    "Flour Sack",
+    "Dough Ball",
     "Bread Basket",
     "Oven Peel"
   ],
@@ -1406,6 +1406,46 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "at-the-bakery": {
+      "title": "At the Bakery",
+      "category_answers": [
+        "At the Bakery",
+        "Bakery Items",
+        "Bakery Food and Tools"
+      ],
+      "tags": ["bakery", "bread", "baking", "food"],
+      "items": [
+        {"id": "baguette", "label": "Baguette", "answers": ["Baguette", "French Bread"]},
+        {"id": "rolling-pin", "label": "Rolling Pin", "answers": ["Rolling Pin"]},
+        {"id": "baking-tray", "label": "Baking Tray", "answers": ["Baking Tray", "Baking Sheet"]},
+        {"id": "dough-ball", "label": "Dough Ball", "answers": ["Dough Ball", "Dough", "Raw Dough"]},
+        {"id": "bread-basket", "label": "Bread Basket", "answers": ["Bread Basket"]},
+        {"id": "oven-peel", "label": "Oven Peel", "answers": ["Oven Peel", "Baker's Peel", "Pizza Peel"]}
+      ],
+      "links": [
+        {
+          "word": "baked",
+          "answers": ["baked", "baking"],
+          "items": ["baguette", "bread-basket"],
+          "explanation": "The baguette and bread basket are the only two items shown that contain finished baked bread.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "rolling",
+          "answers": ["rolling", "roll"],
+          "items": ["rolling-pin", "dough-ball"],
+          "explanation": "The rolling pin and dough ball are the only two items shown directly joined when a baker rolls dough.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "oven",
+          "answers": ["oven"],
+          "items": ["baking-tray", "oven-peel"],
+          "explanation": "The baking tray and oven peel are the only two tools shown specifically used to put food into or take food out of an oven.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "at-the-office": {
       "title": "At the Office",
       "category_answers": [
