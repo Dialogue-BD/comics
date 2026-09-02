@@ -315,10 +315,10 @@ window.PICTURE_THIS_GAME_DATA = {
   "space-travel": [
     "Rocket",
     "Astronaut Helmet",
-    "Telescope",
+    "Space Suit",
     "Satellite",
     "Moon Rover",
-    "Planet Earth"
+    "Moon Rock"
   ],
   "hair-salon": [
     "Hair Dryer",
@@ -1406,6 +1406,42 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "space-travel": {
+      "title": "Space Exploration",
+      "category_answers": ["Space Exploration", "Space Travel", "Space and Astronomy", "Exploring Space"],
+      "tags": ["space", "exploration", "astronauts", "moon"],
+      "items": [
+        {"id": "rocket", "label": "Rocket", "answers": ["Rocket", "Space Rocket"]},
+        {"id": "astronaut-helmet", "label": "Astronaut Helmet", "answers": ["Astronaut Helmet", "Space Helmet"]},
+        {"id": "space-suit", "label": "Space Suit", "answers": ["Space Suit", "Spacesuit", "Astronaut Suit"]},
+        {"id": "satellite", "label": "Satellite", "answers": ["Satellite", "Space Satellite"]},
+        {"id": "moon-rover", "label": "Moon Rover", "answers": ["Moon Rover", "Lunar Rover"]},
+        {"id": "moon-rock", "label": "Moon Rock", "answers": ["Moon Rock", "Lunar Rock"]}
+      ],
+      "links": [
+        {
+          "word": "launch",
+          "answers": ["launch", "launching"],
+          "items": ["rocket", "satellite"],
+          "explanation": "The rocket and satellite are the only two items shown directly joined when a rocket launches a satellite into space.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "worn",
+          "answers": ["worn", "wear", "wearable"],
+          "items": ["astronaut-helmet", "space-suit"],
+          "explanation": "The astronaut helmet and space suit are the only two items shown that an astronaut wears.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "moon",
+          "answers": ["moon", "lunar"],
+          "items": ["moon-rover", "moon-rock"],
+          "explanation": "The moon rover and moon rock are the only two items shown whose names and purpose are specifically connected to the Moon.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "at-the-bakery": {
       "title": "At the Bakery",
       "category_answers": [

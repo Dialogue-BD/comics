@@ -1719,11 +1719,11 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "space-travel": {
     "questions": [
-      "Which items can travel through space?",
-      "Which item helps people look at distant objects?",
+      "Which items launch, protect astronauts, or explore the Moon?",
+      "Which item looks largest? Which looks smallest?",
       "What have you learned about space or the Moon?",
-      "How would a rocket and a moon rover be used on the same mission?",
-      "What might be difficult about living in space?",
+      "How could a rocket, satellite, and moon rover be used on one mission?",
+      "What might be difficult about living or working in space?",
       "Imagine you could visit another world. Where would you go and what would you explore?"
     ],
     "positions": [
@@ -1736,27 +1736,27 @@ window.PICTURE_THIS_QUESTION_DATA = {
     ],
     "endpoints": [
       {
-        "x": 29.09,
+        "x": 92.0,
         "y": 16.98
       },
       {
-        "x": 51.03,
-        "y": 27.33
+        "x": 49.7,
+        "y": 26.98
       },
       {
-        "x": 59.27,
-        "y": 37.33
+        "x": 59.64,
+        "y": 37.69
       },
       {
-        "x": 34.18,
+        "x": 34.55,
         "y": 52.0
       },
       {
-        "x": 50.55,
+        "x": 77.94,
         "y": 62.71
       },
       {
-        "x": 72.85,
+        "x": 73.21,
         "y": 77.37
       }
     ]

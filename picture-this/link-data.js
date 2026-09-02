@@ -380,11 +380,7 @@ const auditedLinkAdditions = {
     pictureThisLink("seated", [0,5], "Sled and snow tube are the only two winter items shown ridden while sitting on top of them.")
   ],
   "movie-night": [pictureThisLink("circular", [0,5], "Popcorn tub and film reel are the only two movie items shown with dominant circular or cylindrical forms.")],
-  "space-travel": [
-    pictureThisLink("orbit", [0,3], "Rocket and satellite are the only two objects shown that form a launch vehicle and its orbital payload pair."),
-    pictureThisLink("lunar", [1,4], "Helmet and moon rover are the only two items shown specifically designed for astronaut travel on the lunar surface."),
-    pictureThisLink("observation", [2,5], "Telescope and Earth are the only two items shown that form an observation instrument and its pictured distant target pair.")
-  ],
+  "space-travel": [],
   "hair-salon": [
     pictureThisLink("curls", [4,5], "Hair rollers and curling iron are the only two salon tools shown specifically designed to create curls."),
     pictureThisLink("washing", [1,2], "Shampoo and salon chair are the only two items shown directly joined at a salon hair-washing station.")
