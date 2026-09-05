@@ -26,7 +26,7 @@ window.PICTURE_THIS_LINK_DATA = {
     pictureThisLink("active", [2,3], "Playing sports and riding a bike are the only two explicitly physical activities shown.", ["exercise"]),
     pictureThisLink("stories", [0,5], "Reading books and watching movies are the only two activities shown that characteristically present stories.", ["story"])
   ],
-  "shapes": [pictureThisLink("quadrilaterals", [0,4], "The square and diamond are the only two shapes shown with four sides.", ["quadrilateral"])],
+  "shapes": [],
   "bugs": [],
   "tools": [pictureThisLink("jaws", [0,5], "Pliers and a wrench are the only two tools shown designed with gripping jaws.", ["jawed"])],
   "outdoor-places": [
@@ -279,10 +279,7 @@ const auditedLinkAdditions = {
     pictureThisLink("sweets", [0,4], "Chocolate and donuts are the only two sweet dessert treats shown.")
   ],
   "hobbies": [pictureThisLink("screens", [4,5], "Surfing the Internet and watching movies are the only two hobbies shown primarily done by viewing a screen.")],
-  "shapes": [
-    pictureThisLink("odd", [1,3], "Triangle and star are the only two shapes shown with an odd number of points or corners."),
-    pictureThisLink("roundlike", [2,5], "Circle and octagon are the only two shapes shown commonly used as progressively smoother wheel-like outlines.")
-  ],
+  "shapes": [],
   "bugs": [],
   "tools": [
     pictureThisLink("teeth", [0,2], "Pliers and saw are the only two tools shown with rows of functional metal teeth."),

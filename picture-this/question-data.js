@@ -443,45 +443,45 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "shapes": {
     "questions": [
-      "Which shapes on the card have sides? How many sides does each one have?",
-      "What things in this room look like the shapes on the card?",
-      "What three things outside of the classroom have these shapes?",
-      "What shapes are used for traffic signs? What do the signs mean?",
-      "What is the same about an octagon and an octopus?",
-      "In which school subjects do you study shapes? Do you like to study shapes?"
+      "Which shapes have four sides, rounded edges, or five points or sides?",
+      "How is a square different from a rectangle?",
+      "How is a circle different from an oval?",
+      "What has five sides, and what has five points?",
+      "Which shape is easiest or hardest for you to draw? Why?",
+      "Imagine you design a sign. Which three shapes would you use?"
     ],
     "positions": [
-      13.14,
-      27.49,
-      37.61,
-      47.73,
-      57.84,
-      67.88
+      12.43,
+      27.06,
+      37.41,
+      47.76,
+      58.16,
+      68.47
     ],
     "endpoints": [
       {
-        "x": 36.12,
-        "y": 21.65
+        "x": 28.24,
+        "y": 20.94
       },
       {
-        "x": 66.06,
-        "y": 31.69
+        "x": 38.42,
+        "y": 31.65
       },
       {
-        "x": 79.52,
-        "y": 42.16
+        "x": 26.42,
+        "y": 41.65
       },
       {
-        "x": 83.52,
-        "y": 51.96
+        "x": 51.39,
+        "y": 52.31
       },
       {
-        "x": 49.94,
-        "y": 62.43
+        "x": 67.39,
+        "y": 62.67
       },
       {
-        "x": 31.64,
-        "y": 76.75
+        "x": 24.61,
+        "y": 77.02
       }
     ]
   },

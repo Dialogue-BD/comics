@@ -82,11 +82,11 @@ window.PICTURE_THIS_GAME_DATA = {
   ],
   "shapes": [
     "Square",
-    "Triangle",
+    "Rectangle",
     "Circle",
+    "Oval",
     "Star",
-    "Diamond",
-    "Octagon"
+    "Pentagon"
   ],
   "bugs": [
     "Ant",
@@ -1406,6 +1406,42 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "shapes": {
+      "title": "Shapes",
+      "category_answers": ["Shapes", "Basic Shapes", "Geometric Shapes", "Shape Symbols"],
+      "tags": ["shapes", "geometry", "symbols", "school"],
+      "items": [
+        {"id": "square", "label": "Square", "answers": ["Square", "Square Shape"]},
+        {"id": "rectangle", "label": "Rectangle", "answers": ["Rectangle", "Rectangular Shape"]},
+        {"id": "circle", "label": "Circle", "answers": ["Circle", "Round Circle"]},
+        {"id": "oval", "label": "Oval", "answers": ["Oval", "Oval Shape"]},
+        {"id": "star", "label": "Star", "answers": ["Star", "Star Shape", "Five Point Star"]},
+        {"id": "pentagon", "label": "Pentagon", "answers": ["Pentagon", "Five Sided Shape", "Five Sided Polygon"]}
+      ],
+      "links": [
+        {
+          "word": "four",
+          "answers": ["four", "quadrilateral", "quadrilaterals"],
+          "items": ["square", "rectangle"],
+          "explanation": "The square and rectangle are the only two shapes shown with four straight sides.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "round",
+          "answers": ["round", "rounded"],
+          "items": ["circle", "oval"],
+          "explanation": "The circle and oval are the only two fully rounded shapes shown without points or corners.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "five",
+          "answers": ["five"],
+          "items": ["star", "pentagon"],
+          "explanation": "The five-point star and five-sided pentagon are the only two shapes shown defined by the number five.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "personal-items": {
       "title": "Personal Items",
       "category_answers": ["Personal Items", "Personal Belongings", "Everyday Personal Items", "Things You Carry"],
