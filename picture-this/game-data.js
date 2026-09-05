@@ -60,9 +60,9 @@ window.PICTURE_THIS_GAME_DATA = {
     "Watch",
     "Mobile Phone",
     "Wallet",
+    "Purse",
     "Glasses",
-    "Comb",
-    "Purse"
+    "Earbuds"
   ],
   "snack-time": [
     "Chocolate",
@@ -1406,6 +1406,42 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "personal-items": {
+      "title": "Personal Items",
+      "category_answers": ["Personal Items", "Personal Belongings", "Everyday Personal Items", "Things You Carry"],
+      "tags": ["personal-items", "belongings", "everyday", "carry"],
+      "items": [
+        {"id": "watch", "label": "Watch", "answers": ["Watch", "Wristwatch", "Wrist Watch"]},
+        {"id": "mobile-phone", "label": "Mobile Phone", "answers": ["Mobile Phone", "Cell Phone", "Cellphone"]},
+        {"id": "wallet", "label": "Wallet", "answers": ["Wallet", "Billfold"]},
+        {"id": "purse", "label": "Purse", "answers": ["Purse", "Handbag"]},
+        {"id": "glasses", "label": "Glasses", "answers": ["Glasses", "Eyeglasses", "Spectacles"]},
+        {"id": "earbuds", "label": "Earbuds", "answers": ["Earbuds", "Earphones", "In Ear Headphones"]}
+      ],
+      "links": [
+        {
+          "word": "time",
+          "answers": ["time", "clock"],
+          "items": ["watch", "mobile-phone"],
+          "explanation": "The watch and mobile phone are the only two items shown that normally display the time.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "money",
+          "answers": ["money", "cash"],
+          "items": ["wallet", "purse"],
+          "explanation": "The wallet and purse are the only two items shown specifically used to carry money.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "head",
+          "answers": ["head", "face", "worn"],
+          "items": ["glasses", "earbuds"],
+          "explanation": "The glasses and earbuds are the only two items shown that are characteristically worn on the head or face.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "beverages": {
       "title": "Beverages",
       "category_answers": ["Beverages", "Drinks", "Everyday Beverages", "Common Drinks"],

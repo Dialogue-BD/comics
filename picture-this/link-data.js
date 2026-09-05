@@ -18,9 +18,7 @@ window.PICTURE_THIS_LINK_DATA = {
   "beverages": [],
   "play": [pictureThisLink("small", [3,4], "The tennis ball and baseball are the only two hand-sized balls shown.")],
   "school": [pictureThisLink("pages", [2,4], "The notebook and book are the only two items shown that are made of bound pages.", ["paged"])],
-  "personal-items": [
-    pictureThisLink("time", [0,1], "The watch and mobile phone are the only two items shown that normally display the time.")
-  ],
+  "personal-items": [],
   "snack-time": [
     pictureThisLink("bunches", [1,3], "Grapes and bananas are the only two foods shown that characteristically grow in bunches.", ["bunch"])
   ],
@@ -275,10 +273,7 @@ const auditedLinkAdditions = {
     pictureThisLink("stationery", [1,2], "Pencil and notebook are the only two items shown that directly form a writing tool and writing surface pair."),
     pictureThisLink("carrying", [3,4], "Backpack and book are the only two items shown that directly form a school container and its typical contents pair.")
   ],
-  "personal-items": [
-    pictureThisLink("containers", [2,5], "Wallet and purse are the only two personal items shown designed to carry money."),
-    pictureThisLink("wearables", [0,3], "Watch and glasses are the only two items shown designed to be worn directly on the body.", ["wearable"])
-  ],
+  "personal-items": [],
   "snack-time": [
     pictureThisLink("baked", [4,5], "Donuts and crackers are the only two baked snack foods shown."),
     pictureThisLink("sweets", [0,4], "Chocolate and donuts are the only two sweet dessert treats shown.")

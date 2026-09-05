@@ -311,45 +311,45 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "personal-items": {
     "questions": [
-      "Which item on the card is the most useful? Why?",
-      "Which items on the card do you wear? Which ones do you carry? Where do you carry them?",
-      "What are some other personal items that you carry and wear?",
-      "Which item do you use the most? Why?",
-      "What do people put in a purse? Why?",
-      "What personal item would you like to buy? Why?"
+      "Which items tell time, carry money, or are used on the head?",
+      "How can a watch or mobile phone help you manage time?",
+      "What do people keep in a wallet or purse?",
+      "How do glasses and earbuds help people?",
+      "Which of these personal items do you use most often? Why?",
+      "Imagine you leave home for the day. Which three items would you bring?"
     ],
     "positions": [
-      13.14,
-      23.18,
-      37.61,
-      47.73,
-      57.84,
-      67.88
+      12.43,
+      22.75,
+      33.1,
+      43.45,
+      53.84,
+      64.16
     ],
     "endpoints": [
       {
-        "x": 42.42,
-        "y": 17.69
+        "x": 91.52,
+        "y": 16.98
       },
       {
-        "x": 70.91,
-        "y": 31.69
+        "x": 85.21,
+        "y": 27.33
       },
       {
-        "x": 68.12,
-        "y": 41.84
+        "x": 35.88,
+        "y": 37.69
       },
       {
-        "x": 25.58,
-        "y": 52.27
+        "x": 32.12,
+        "y": 48.04
       },
       {
-        "x": 25.58,
-        "y": 62.39
+        "x": 76.24,
+        "y": 58.35
       },
       {
-        "x": 42.79,
-        "y": 72.43
+        "x": 39.39,
+        "y": 73.06
       }
     ]
   },
