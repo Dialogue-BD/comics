@@ -1015,45 +1015,45 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "pets": {
     "questions": [
-      "How big are the pets on the card? Which pet is the biggest? Which is the smallest?",
-      "Choose two of the pets. What do these pets eat?",
-      "Which pets on the card are fun to play with? Why?",
-      "Choose one of the pets. How do you take care of it?",
-      "Choose two of the pets. What do they feel like when you touch them?",
-      "What pet would you like to have? Why?"
+      "Which pets are mammals, aquatic animals, or birds?",
+      "How are a cat and dog alike? How are they different?",
+      "What does a goldfish or turtle need in its home?",
+      "How can you tell a parakeet from a canary?",
+      "Which of these pets would be easiest or hardest to care for? Why?",
+      "Imagine you choose one of these pets. How would you care for it each day?"
     ],
     "positions": [
-      13.14,
-      27.49,
-      37.61,
-      47.73,
-      57.84,
-      67.88
+      12.43,
+      22.75,
+      33.1,
+      43.45,
+      53.84,
+      68.47
     ],
     "endpoints": [
       {
-        "x": 43.27,
-        "y": 21.65
+        "x": 55.88,
+        "y": 16.82
       },
       {
-        "x": 47.27,
-        "y": 31.73
+        "x": 70.06,
+        "y": 27.29
       },
       {
-        "x": 48.97,
-        "y": 42.16
+        "x": 56.36,
+        "y": 37.33
       },
       {
-        "x": 46.42,
-        "y": 51.92
+        "x": 36.48,
+        "y": 48.04
       },
       {
-        "x": 92.97,
-        "y": 62.04
+        "x": 27.03,
+        "y": 62.71
       },
       {
-        "x": 25.58,
-        "y": 72.43
+        "x": 37.45,
+        "y": 77.37
       }
     ]
   },

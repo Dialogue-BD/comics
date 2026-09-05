@@ -186,11 +186,11 @@ window.PICTURE_THIS_GAME_DATA = {
   ],
   "pets": [
     "Cat",
-    "Fish",
     "Dog",
-    "Parrot",
+    "Goldfish",
     "Turtle",
-    "Rabbit"
+    "Parakeet",
+    "Canary"
   ],
   "at-the-beach": [
     "Surfboard",
@@ -1406,6 +1406,42 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "pets": {
+      "title": "Pets",
+      "category_answers": ["Pets", "Pet Animals", "Household Pets", "Common Pets"],
+      "tags": ["pets", "animals", "home", "care"],
+      "items": [
+        {"id": "cat", "label": "Cat", "answers": ["Cat", "House Cat", "Pet Cat"]},
+        {"id": "dog", "label": "Dog", "answers": ["Dog", "Pet Dog", "House Dog"]},
+        {"id": "goldfish", "label": "Goldfish", "answers": ["Goldfish", "Gold Fish", "Pet Goldfish"]},
+        {"id": "turtle", "label": "Turtle", "answers": ["Turtle", "Pet Turtle", "Water Turtle"]},
+        {"id": "parakeet", "label": "Parakeet", "answers": ["Parakeet", "Budgie", "Budgerigar", "Pet Parakeet"]},
+        {"id": "canary", "label": "Canary", "answers": ["Canary", "Yellow Canary", "Pet Canary"]}
+      ],
+      "links": [
+        {
+          "word": "mammals",
+          "answers": ["mammals", "mammal"],
+          "items": ["cat", "dog"],
+          "explanation": "The cat and dog are the only two mammals shown on this pet card.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "aquatic",
+          "answers": ["aquatic", "water", "swimming"],
+          "items": ["goldfish", "turtle"],
+          "explanation": "The goldfish and turtle are the only two pets shown that characteristically live or spend most of their time in water.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "birds",
+          "answers": ["birds", "bird", "feathers", "feathered"],
+          "items": ["parakeet", "canary"],
+          "explanation": "The parakeet and canary are the only two birds shown on this pet card.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "at-the-beach": {
       "title": "At the Beach",
       "category_answers": ["At the Beach", "Beach Items", "Things at the Beach", "Beach Gear and Finds"],

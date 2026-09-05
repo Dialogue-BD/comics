@@ -54,7 +54,7 @@ window.PICTURE_THIS_LINK_DATA = {
   ],
   "market": [pictureThisLink("produce", [0,3], "Fruit and vegetables are the only two fresh-produce groups shown.")],
   "outdoor-gear": [],
-  "pets": [pictureThisLink("aquatic", [1,4], "The fish and turtle are the only two pets shown that characteristically live in water.", ["water"])],
+  "pets": [],
   "at-the-beach": [],
   "in-the-kitchen": [pictureThisLink("mixing", [1,2], "The wooden spoon and mixing bowl are the only two items shown specifically named or designed for mixing.", ["mix"])],
   "getting-dressed": [],
@@ -317,10 +317,7 @@ const auditedLinkAdditions = {
     pictureThisLink("poultry", [1,2], "Eggs and chicken are the only two foods shown that are poultry products.")
   ],
   "outdoor-gear": [],
-  "pets": [
-    pictureThisLink("companions", [0,2], "Cat and dog are the only two free-roaming household companion mammals shown."),
-    pictureThisLink("caged", [3,5], "Parrot and rabbit are the only two pets shown commonly kept in cages or hutches.")
-  ],
+  "pets": [],
   "at-the-beach": [],
   "in-the-kitchen": [
     pictureThisLink("heatproof", [0,5], "Frying pan and oven mitt are the only two items shown directly joined by safely handling hot cookware."),
