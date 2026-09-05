@@ -1059,45 +1059,45 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "at-the-beach": {
     "questions": [
-      "Which items on the card would you take to the beach? Why?",
-      "Which item is the most useful on a hot day? Why?",
-      "Which of these items have you used before? Where did you use them?",
-      "How do people use each item at the beach?",
-      "What are three more things people might bring to the beach?",
-      "Imagine you are planning a beach day. Which three items would you pack first? Why?"
+      "Which objects help you ride waves, snorkel, or explore the shore?",
+      "How is a surfboard different from a bodyboard?",
+      "How do a snorkel and flippers help a swimmer?",
+      "How are seaweed and driftwood different from the other four items?",
+      "Which of these things have you seen or used at a beach?",
+      "Imagine a day at the beach. Which two items would you choose, and what would you do?"
     ],
     "positions": [
       12.43,
-      22.75,
-      33.1,
+      27.06,
+      37.41,
       47.76,
-      58.16,
-      68.47
+      62.47,
+      72.78
     ],
     "endpoints": [
       {
-        "x": 82.3,
-        "y": 16.98
+        "x": 29.45,
+        "y": 20.94
       },
       {
-        "x": 52.97,
-        "y": 27.33
+        "x": 45.33,
+        "y": 31.65
       },
       {
-        "x": 28.48,
-        "y": 41.65
+        "x": 53.45,
+        "y": 42.0
       },
       {
-        "x": 39.39,
-        "y": 52.0
+        "x": 29.45,
+        "y": 56.31
       },
       {
-        "x": 92.36,
-        "y": 62.35
+        "x": 71.76,
+        "y": 66.67
       },
       {
-        "x": 78.91,
-        "y": 77.37
+        "x": 91.39,
+        "y": 81.69
       }
     ]
   },

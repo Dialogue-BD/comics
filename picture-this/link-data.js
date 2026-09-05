@@ -55,7 +55,7 @@ window.PICTURE_THIS_LINK_DATA = {
   "market": [pictureThisLink("produce", [0,3], "Fruit and vegetables are the only two fresh-produce groups shown.")],
   "outdoor-gear": [],
   "pets": [pictureThisLink("aquatic", [1,4], "The fish and turtle are the only two pets shown that characteristically live in water.", ["water"])],
-  "at-the-beach": [pictureThisLink("sunburn", [1,3], "The sun hat and sunscreen are the only two items shown specifically used to prevent sunburn.")],
+  "at-the-beach": [],
   "in-the-kitchen": [pictureThisLink("mixing", [1,2], "The wooden spoon and mixing bowl are the only two items shown specifically named or designed for mixing.", ["mix"])],
   "getting-dressed": [],
   "at-the-doctor": [
@@ -321,10 +321,7 @@ const auditedLinkAdditions = {
     pictureThisLink("companions", [0,2], "Cat and dog are the only two free-roaming household companion mammals shown."),
     pictureThisLink("caged", [3,5], "Parrot and rabbit are the only two pets shown commonly kept in cages or hutches.")
   ],
-  "at-the-beach": [
-    pictureThisLink("striped", [0,2], "Beach ball and beach towel are the only two items shown with broad multicolored stripes."),
-    pictureThisLink("sandy", [1,4], "Sun hat and sandcastle are the only two beach items shown predominantly sand-colored.")
-  ],
+  "at-the-beach": [],
   "in-the-kitchen": [
     pictureThisLink("heatproof", [0,5], "Frying pan and oven mitt are the only two items shown directly joined by safely handling hot cookware."),
     pictureThisLink("wooden", [1,4], "Wooden spoon and cutting board are the only two kitchen items shown characteristically made of wood.")

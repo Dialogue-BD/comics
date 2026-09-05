@@ -193,12 +193,12 @@ window.PICTURE_THIS_GAME_DATA = {
     "Rabbit"
   ],
   "at-the-beach": [
-    "Beach Ball",
-    "Sun Hat",
-    "Beach Towel",
-    "Sunscreen",
-    "Sandcastle",
-    "Flip-Flops"
+    "Surfboard",
+    "Bodyboard",
+    "Snorkel",
+    "Flippers",
+    "Seaweed",
+    "Driftwood"
   ],
   "in-the-kitchen": [
     "Frying Pan",
@@ -1406,6 +1406,42 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "at-the-beach": {
+      "title": "At the Beach",
+      "category_answers": ["At the Beach", "Beach Items", "Things at the Beach", "Beach Gear and Finds"],
+      "tags": ["beach", "ocean", "water", "outdoors", "nature"],
+      "items": [
+        {"id": "surfboard", "label": "Surfboard", "answers": ["Surfboard", "Surf Board", "Surfing Board"]},
+        {"id": "bodyboard", "label": "Bodyboard", "answers": ["Bodyboard", "Body Board", "Boogie Board"]},
+        {"id": "snorkel", "label": "Snorkel", "answers": ["Snorkel", "Snorkeling Tube", "Breathing Tube"]},
+        {"id": "flippers", "label": "Flippers", "answers": ["Flippers", "Swim Fins", "Swimming Fins"]},
+        {"id": "seaweed", "label": "Seaweed", "answers": ["Seaweed", "Sea Weed", "Kelp"]},
+        {"id": "driftwood", "label": "Driftwood", "answers": ["Driftwood", "Drift Wood", "Beach Wood"]}
+      ],
+      "links": [
+        {
+          "word": "waves",
+          "answers": ["waves", "wave", "surfing"],
+          "items": ["surfboard", "bodyboard"],
+          "explanation": "The surfboard and bodyboard are the only two items shown specifically designed for riding waves.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "snorkeling",
+          "answers": ["snorkeling", "snorkel"],
+          "items": ["snorkel", "flippers"],
+          "explanation": "The snorkel and flippers are the only two pieces of gear shown specifically used together for snorkeling.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "natural",
+          "answers": ["natural", "nature"],
+          "items": ["seaweed", "driftwood"],
+          "explanation": "The seaweed and driftwood are the only two naturally occurring beach finds shown; the other four items are manufactured gear.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "outdoor-gear": {
       "title": "Weather Accessories",
       "category_answers": ["Weather Accessories", "Weather Gear", "Outdoor Weather Gear", "Things for the Weather"],
