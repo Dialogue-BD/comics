@@ -53,10 +53,7 @@ window.PICTURE_THIS_LINK_DATA = {
     pictureThisLink("keys", [4,5], "The piano and saxophone are the only two instruments shown played with keys.", ["keyed"])
   ],
   "market": [pictureThisLink("produce", [0,3], "Fruit and vegetables are the only two fresh-produce groups shown.")],
-  "outdoor-gear": [
-    pictureThisLink("waterproof", [3,4], "Rain boots and an umbrella are the only two items shown specifically designed as waterproof rain barriers.", ["rainproof"]),
-    pictureThisLink("sun", [1,5], "The hat and sunglasses are the only two items shown primarily used to shade the head or eyes from sun.", ["sunny"])
-  ],
+  "outdoor-gear": [],
   "pets": [pictureThisLink("aquatic", [1,4], "The fish and turtle are the only two pets shown that characteristically live in water.", ["water"])],
   "at-the-beach": [pictureThisLink("sunburn", [1,3], "The sun hat and sunscreen are the only two items shown specifically used to prevent sunburn.")],
   "in-the-kitchen": [pictureThisLink("mixing", [1,2], "The wooden spoon and mixing bowl are the only two items shown specifically named or designed for mixing.", ["mix"])],
@@ -319,7 +316,7 @@ const auditedLinkAdditions = {
     pictureThisLink("meats", [2,4], "Chicken and fish are the only two animal meats shown."),
     pictureThisLink("poultry", [1,2], "Eggs and chicken are the only two foods shown that are poultry products.")
   ],
-  "outdoor-gear": [pictureThisLink("winterwear", [0,1], "Scarf and hat are the only two gear items shown specifically worn on the head or neck.")],
+  "outdoor-gear": [],
   "pets": [
     pictureThisLink("companions", [0,2], "Cat and dog are the only two free-roaming household companion mammals shown."),
     pictureThisLink("caged", [3,5], "Parrot and rabbit are the only two pets shown commonly kept in cages or hutches.")

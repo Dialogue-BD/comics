@@ -971,45 +971,45 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "outdoor-gear": {
     "questions": [
-      "Which items on the card do you wear when it is sunny? Why?",
-      "Which items on the card do you wear when it is cold? Why?",
-      "Which items on the card do you use when it is rainy? Why?",
-      "What other things do you wear outside? Why?",
-      "During what parts of the year do you need special items to wear outside? Why?",
-      "Imagine you are going on vacation to the beach. What items would you take? Why?"
+      "Which items protect you from rain, cold, or bright sunlight?",
+      "How do the beanie and gloves help in different ways?",
+      "Why might you carry both rain boots and an umbrella?",
+      "How do a baseball cap and sunglasses reduce glare?",
+      "Which items would you choose for today's weather? Why?",
+      "Imagine the weather changes during a trip. Which three items would you pack?"
     ],
     "positions": [
-      13.14,
-      23.18,
-      33.29,
-      43.41,
-      53.53,
-      67.88
+      12.43,
+      22.75,
+      33.1,
+      43.45,
+      53.84,
+      64.16
     ],
     "endpoints": [
       {
-        "x": 75.64,
-        "y": 17.69
+        "x": 84.48,
+        "y": 16.98
       },
       {
-        "x": 71.88,
-        "y": 27.73
+        "x": 68.48,
+        "y": 27.29
       },
       {
-        "x": 62.3,
-        "y": 37.84
+        "x": 69.09,
+        "y": 37.33
       },
       {
-        "x": 45.45,
-        "y": 47.96
+        "x": 71.39,
+        "y": 48.04
       },
       {
-        "x": 45.45,
-        "y": 62.39
+        "x": 75.88,
+        "y": 58.35
       },
       {
-        "x": 38.67,
-        "y": 76.75
+        "x": 53.7,
+        "y": 73.06
       }
     ]
   },

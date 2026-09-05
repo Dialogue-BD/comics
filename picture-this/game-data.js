@@ -177,8 +177,8 @@ window.PICTURE_THIS_GAME_DATA = {
     "Bread"
   ],
   "outdoor-gear": [
-    "Scarf",
-    "Hat",
+    "Beanie",
+    "Baseball Cap",
     "Gloves",
     "Rain Boots",
     "Umbrella",
@@ -1406,6 +1406,42 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "outdoor-gear": {
+      "title": "Weather Accessories",
+      "category_answers": ["Weather Accessories", "Weather Gear", "Outdoor Weather Gear", "Things for the Weather"],
+      "tags": ["weather", "outdoors", "clothing", "accessories"],
+      "items": [
+        {"id": "beanie", "label": "Beanie", "answers": ["Beanie", "Knit Cap", "Knitted Cap", "Winter Hat"]},
+        {"id": "baseball-cap", "label": "Baseball Cap", "answers": ["Baseball Cap", "Cap", "Baseball Hat", "Sun Cap"]},
+        {"id": "gloves", "label": "Gloves", "answers": ["Gloves", "Winter Gloves", "Warm Gloves"]},
+        {"id": "rain-boots", "label": "Rain Boots", "answers": ["Rain Boots", "Wellies", "Wellington Boots", "Rubber Boots"]},
+        {"id": "umbrella", "label": "Umbrella", "answers": ["Umbrella", "Rain Umbrella"]},
+        {"id": "sunglasses", "label": "Sunglasses", "answers": ["Sunglasses", "Sun Glasses", "Shades"]}
+      ],
+      "links": [
+        {
+          "word": "warmth",
+          "answers": ["warmth", "warm", "warming"],
+          "items": ["beanie", "gloves"],
+          "explanation": "The beanie and gloves are the only two items shown whose main purpose is keeping exposed body parts warm.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "rain",
+          "answers": ["rain", "rainy", "waterproof"],
+          "items": ["rain-boots", "umbrella"],
+          "explanation": "The rain boots and umbrella are the only two items shown specifically designed for rainy weather.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "glare",
+          "answers": ["glare", "sunlight"],
+          "items": ["baseball-cap", "sunglasses"],
+          "explanation": "The baseball cap and sunglasses are the only two items shown that directly shield the eyes from bright overhead glare.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "bugs": {
       "title": "Insects",
       "category_answers": ["Insects", "Bugs", "Common Insects", "Types of Insects"],
