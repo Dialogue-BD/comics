@@ -90,11 +90,11 @@ window.PICTURE_THIS_GAME_DATA = {
   ],
   "bugs": [
     "Ant",
-    "Spider",
-    "Cockroach",
-    "Grasshopper",
-    "Worm",
-    "Mosquito"
+    "Termite",
+    "Butterfly",
+    "Moth",
+    "Mosquito",
+    "Flea"
   ],
   "tools": [
     "Pliers",
@@ -1406,6 +1406,42 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "bugs": {
+      "title": "Insects",
+      "category_answers": ["Insects", "Bugs", "Common Insects", "Types of Insects"],
+      "tags": ["insects", "bugs", "animals", "nature"],
+      "items": [
+        {"id": "ant", "label": "Ant", "answers": ["Ant", "Garden Ant"]},
+        {"id": "termite", "label": "Termite", "answers": ["Termite", "Worker Termite"]},
+        {"id": "butterfly", "label": "Butterfly", "answers": ["Butterfly", "Monarch Butterfly"]},
+        {"id": "moth", "label": "Moth", "answers": ["Moth", "Brown Moth"]},
+        {"id": "mosquito", "label": "Mosquito", "answers": ["Mosquito", "Mosquito Insect"]},
+        {"id": "flea", "label": "Flea", "answers": ["Flea", "Common Flea"]}
+      ],
+      "links": [
+        {
+          "word": "colonies",
+          "answers": ["colonies", "colony", "social"],
+          "items": ["ant", "termite"],
+          "explanation": "The ant and termite are the only two insects shown that characteristically live in organized social colonies.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "flutter",
+          "answers": ["flutter", "fluttering"],
+          "items": ["butterfly", "moth"],
+          "explanation": "The butterfly and moth are the only two broad-winged insects shown that characteristically flutter from place to place.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "blood",
+          "answers": ["blood", "bloodsucking", "parasites"],
+          "items": ["mosquito", "flea"],
+          "explanation": "The mosquito and flea are the only two insects shown whose familiar bites feed on blood.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "jobs": {
       "title": "Jobs",
       "category_answers": ["Jobs", "Occupations", "People at Work", "Careers"],

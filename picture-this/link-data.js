@@ -294,11 +294,7 @@ const auditedLinkAdditions = {
     pictureThisLink("odd", [1,3], "Triangle and star are the only two shapes shown with an odd number of points or corners."),
     pictureThisLink("roundlike", [2,5], "Circle and octagon are the only two shapes shown commonly used as progressively smoother wheel-like outlines.")
   ],
-  "bugs": [
-    pictureThisLink("noninsects", [1,4], "Spider and worm are the only two animals shown on this card that are not insects.", ["noninsect"]),
-    pictureThisLink("web", [1,5], "Spider and mosquito are the only two bugs shown that form a familiar web hunter and flying prey pair."),
-    pictureThisLink("burrowers", [0,4], "Ant and worm are the only two bugs shown especially known for tunneling through soil.")
-  ],
+  "bugs": [],
   "tools": [
     pictureThisLink("teeth", [0,2], "Pliers and saw are the only two tools shown with rows of functional metal teeth."),
     pictureThisLink("driving", [1,4], "Hammer and screwdriver are the only two tools shown made to drive the two standard pictured fastener types: nails and screws.")

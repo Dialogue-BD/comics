@@ -487,45 +487,45 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "bugs": {
     "questions": [
-      "Which bugs on the card are familiar to you?",
-      "Where do people usually find bugs?",
-      "Have you ever seen one of the bugs on the card? What happened?",
-      "How do people protect themselves from bugs?",
-      "Which of the bugs are you most afraid of? Why?",
-      "If you saw a bug in your food, what would you do?"
+      "Which insects live in colonies, flutter, or feed on blood?",
+      "How can you tell the ant from the termite and the butterfly from the moth?",
+      "Where might you see each of these insects?",
+      "Which insects can fly? Which cannot fly?",
+      "Which insects can bother people, homes, or pets? How?",
+      "Imagine you are observing these insects safely. What would you like to learn about them?"
     ],
     "positions": [
-      13.14,
-      23.18,
-      28.98,
-      39.1,
-      49.22,
-      59.25
+      12.43,
+      22.75,
+      37.41,
+      47.76,
+      58.16,
+      68.47
     ],
     "endpoints": [
       {
-        "x": 30.18,
-        "y": 17.73
+        "x": 73.7,
+        "y": 16.78
       },
       {
-        "x": 90.91,
-        "y": 23.41
+        "x": 51.03,
+        "y": 31.25
       },
       {
-        "x": 78.91,
-        "y": 33.53
+        "x": 47.15,
+        "y": 41.65
       },
       {
-        "x": 38.42,
-        "y": 43.65
+        "x": 40.85,
+        "y": 52.31
       },
       {
-        "x": 47.52,
-        "y": 53.76
+        "x": 65.58,
+        "y": 62.71
       },
       {
-        "x": 45.45,
-        "y": 63.45
+        "x": 74.06,
+        "y": 77.02
       }
     ]
   },
