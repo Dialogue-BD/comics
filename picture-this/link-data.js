@@ -15,7 +15,7 @@ window.PICTURE_THIS_LINK_DATA = {
   "vegetables": [pictureThisLink("underground", [1,4], "Carrots and onions are the only two vegetables shown whose edible parts grow underground.", ["soil"])],
   "zoo": [],
   "feelings": [],
-  "beverages": [pictureThisLink("brewed", [0,2], "Coffee and tea are the only two drinks shown that are normally made by brewing.", ["brewing", "brew"])],
+  "beverages": [],
   "play": [pictureThisLink("small", [3,4], "The tennis ball and baseball are the only two hand-sized balls shown.")],
   "school": [pictureThisLink("pages", [2,4], "The notebook and book are the only two items shown that are made of bound pages.", ["paged"])],
   "personal-items": [
@@ -266,10 +266,7 @@ const auditedLinkAdditions = {
     pictureThisLink("gestures", [1,3], "Surprised and confused are the only two expressions shown with both hands raised."),
     pictureThisLink("drooping", [2,5], "Sad and tired are the only two feelings shown with characteristically lowered energy and posture.")
   ],
-  "beverages": [
-    pictureThisLink("dark", [0,4], "Coffee and soda are the only two beverages shown as dark-colored liquids."),
-    pictureThisLink("plain", [1,3], "Water and milk are the only two unflavored everyday beverages shown.")
-  ],
+  "beverages": [],
   "play": [
     pictureThisLink("courts", [2,3], "Volleyball and tennis are the only two sports shown whose court is divided by a net."),
     pictureThisLink("goals", [1,5], "Soccer and football are the only two sports shown centered on carrying or kicking a ball toward a goal area.")

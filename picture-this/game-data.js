@@ -34,11 +34,11 @@ window.PICTURE_THIS_GAME_DATA = {
   ],
   "beverages": [
     "Coffee",
-    "Water",
     "Tea",
-    "Milk",
     "Soda",
-    "Juice"
+    "Sparkling Water",
+    "Juice",
+    "Smoothie"
   ],
   "play": [
     "Basketball",
@@ -1406,6 +1406,42 @@ window.PICTURE_THIS_GAME_DATA = {
 window.PICTURE_THIS_GAME_META = {
   "schema_version": 1,
   "cards": {
+    "beverages": {
+      "title": "Beverages",
+      "category_answers": ["Beverages", "Drinks", "Everyday Beverages", "Common Drinks"],
+      "tags": ["beverages", "drinks", "refreshments", "food"],
+      "items": [
+        {"id": "coffee", "label": "Coffee", "answers": ["Coffee", "Cup of Coffee", "Black Coffee"]},
+        {"id": "tea", "label": "Tea", "answers": ["Tea", "Cup of Tea", "Hot Tea"]},
+        {"id": "soda", "label": "Soda", "answers": ["Soda", "Soft Drink", "Pop", "Cola"]},
+        {"id": "sparkling-water", "label": "Sparkling Water", "answers": ["Sparkling Water", "Carbonated Water", "Fizzy Water", "Seltzer"]},
+        {"id": "juice", "label": "Juice", "answers": ["Juice", "Fruit Juice", "Orange Juice"]},
+        {"id": "smoothie", "label": "Smoothie", "answers": ["Smoothie", "Fruit Smoothie", "Blended Fruit Drink"]}
+      ],
+      "links": [
+        {
+          "word": "brewed",
+          "answers": ["brewed", "brewing", "brew"],
+          "items": ["coffee", "tea"],
+          "explanation": "Coffee and tea are the only two beverages shown that are normally made by brewing.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "fizzy",
+          "answers": ["fizzy", "carbonated", "bubbly"],
+          "items": ["soda", "sparkling-water"],
+          "explanation": "Soda and sparkling water are the only two carbonated beverages shown.",
+          "audit": "exclusive-among-six-v1"
+        },
+        {
+          "word": "fruit",
+          "answers": ["fruit", "fruity"],
+          "items": ["juice", "smoothie"],
+          "explanation": "Juice and smoothie are the only two beverages shown made primarily from fruit.",
+          "audit": "exclusive-among-six-v1"
+        }
+      ]
+    },
     "pets": {
       "title": "Pets",
       "category_answers": ["Pets", "Pet Animals", "Household Pets", "Common Pets"],

@@ -179,45 +179,45 @@ window.PICTURE_THIS_QUESTION_DATA = {
   },
   "beverages": {
     "questions": [
-      "Which drink on the card is the healthiest? Why?",
-      "Where do the drinks on the card come from? Where do you get these drinks?",
-      "What do you drink at breakfast? What do you drink at lunch? Why?",
-      "What is your favorite drink? What is your second favorite?",
-      "Why do you drink hot drinks out of a mug? Why do you drink cold drinks out of a glass?",
-      "Imagine you are in a hot desert. Which drink would you want to have? Why?"
+      "Which beverages are brewed, fizzy, or made from fruit?",
+      "How are coffee and tea prepared? How are they different?",
+      "What makes soda and sparkling water fizzy?",
+      "What fruits can people use to make juice or a smoothie?",
+      "Which of these beverages do you drink most often? Why?",
+      "Imagine you are serving drinks to friends. Which beverages would you choose?"
     ],
     "positions": [
-      13.14,
-      23.18,
-      37.61,
-      47.73,
-      57.84,
-      72.2
+      12.43,
+      22.75,
+      33.1,
+      43.45,
+      53.84,
+      64.16
     ],
     "endpoints": [
       {
-        "x": 51.39,
-        "y": 17.69
+        "x": 74.55,
+        "y": 16.94
       },
       {
-        "x": 30.42,
-        "y": 31.69
+        "x": 70.06,
+        "y": 27.29
       },
       {
-        "x": 87.76,
-        "y": 42.16
+        "x": 42.42,
+        "y": 37.65
       },
       {
-        "x": 61.45,
-        "y": 51.92
+        "x": 75.64,
+        "y": 48.04
       },
       {
-        "x": 45.45,
-        "y": 66.71
+        "x": 70.67,
+        "y": 58.35
       },
       {
-        "x": 39.39,
-        "y": 81.06
+        "x": 58.79,
+        "y": 73.06
       }
     ]
   },
