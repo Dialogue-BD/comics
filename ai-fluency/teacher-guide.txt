@@ -1,0 +1,983 @@
+AI FLUENCY LAB — TEACHER GUIDE AND ANSWER KEY
+Six 45-minute workshops · B1–B2 · optional Bangla support
+
+Use one complete workflow per lesson. Six workshops total 4.5 hours.
+All students, organisations, opportunities, notices and events in these cases are fictional.
+
+RUNNING ORDER
+1. Meet the task: 4 minutes
+2. Divide the work: 5 minutes
+3. Build the brief: 6 minutes
+4. Inspect the draft: 7 minutes
+5. Repair & refine: 5 minutes
+6. Own the result: 4 minutes
+7. Transfer the skills: 10 minutes
+8. Exit ticket: 4 minutes
+
+TEACHING ROUTINE
+Partners read separate role cards, exchange missing information, negotiate decisions, write a brief and a follow-up, check evidence, improve a sentence, and report. Require reasons and actual language production, not only selected answers. Reveal worked solutions after discussion. Alternatives are acceptable when justified against the brief.
+
+On one phone: A privately opens role A, closes it, then passes to B for role B. Partners exchange the information orally. Swap driver/checker at each station. In Classroom mode, project one station at a time and use teacher cues; ask for predictions before revealing. Navigation is not synchronised across phones. Printed role cards can be handed out separately.
+
+For B1, offer frames, vocabulary, brief Bangla clarification and rehearsal. Require the final reason in English. For B2, remove frames, ask for counterarguments and require a defensible alternative. Correct language after understanding meaning; have the learner use the improved form again.
+
+TWO SEPARATE RUBRICS
+Each criterion: 0 = not yet demonstrated; 1 = with support; 2 = independently with concrete evidence.
+AI judgement / 8: justified delegation; specific description; evidence-based discernment and revision; responsibility before use.
+English / 8: task vocabulary; connected reasons; useful questions and responses; meaningful revision preserving facts.
+Assess spoken explanations and created messages. Multiple-choice feedback is practice, not a certificate or automatic writing assessment.
+
+FRAMEWORK
+Delegation: Decide the goal, choose a tool, and divide the work.
+কাজের লক্ষ্য ঠিক করো। কোন কাজ নিজে করবে আর কোনটিতে AI-এর সাহায্য নেবে, তা বেছে নাও।
+
+Description: Explain the result, the process, and how AI should help.
+কী ফল চাও, কীভাবে কাজ হবে, আর AI কীভাবে সাহায্য করবে—তা স্পষ্ট করো।
+
+Discernment: Check the result and how the collaboration is working.
+উত্তর এবং একসঙ্গে কাজ করার পদ্ধতি যাচাই করো।
+
+Diligence: Protect information, be transparent, and own the result.
+তথ্য সুরক্ষিত রাখো, AI-এর সাহায্যের কথা সৎভাবে জানাও, আর ফলের দায়িত্ব নাও।
+
+Delegation: problem, platform and task awareness. Description: product, process and performance. Discernment: product, process and performance. Diligence: creation, transparency and deployment. Delegation–Diligence frames the collaboration; Description–Discernment is a repeated conversation. All four recur through each case.
+
+SIMULATIONS
+ChatGPT-, Claude-, and Gemini-style views use the same authored examples; these are not real responses or claims about model quality. Saving a learner message does not generate a reply. No microphone or real file access. The corrected calculator is local authored code. Learner input is never executed as code. In a real new chat or product, re-establish the goal, relevant evidence and decisions; context does not transfer automatically.
+
+TRANSFER ROUTINE
+2 minutes plan, 4 minutes create, 2 minutes challenge, 2 minutes revise and report. Every pair writes: (1) division of work with reasons; (2) actual prompt or mini-output; (3) two evidence checks or test cases; (4) responsibilities before use; (5) one revised sentence after peer feedback.
+
+EXIT ROUTINE
+Each student gives a 45-second pitch: Our goal was ___. We gave AI ___ and kept ___. We noticed ___ because ___. We changed ___. Before use, we would ___. Partner gives one strength and one specific next step. Download the learning record before closing the tab.
+
+WORKFLOW: BUILD AN HONEST CV
+Nusrat · University of Rajshahi
+English goal: Describe achievements accurately
+
+PARTNER A — HAND OUT SEPARATELY
+You are Nusrat. You want a Programme Assistant internship in Rajshahi. You worry that your experience looks too small. Ask your partner which experiences match the job. Do not invent qualifications.
+
+PARTNER B — HAND OUT SEPARATELY
+You are the careers adviser. The fictional advert asks for event registration, student communication, and simple documents. It requests a one-page English CV. AI editing is permitted; every claim must be true. Ask Nusrat what she actually did.
+
+SUCCESS CRITERION
+A one-page CV that is relevant, accurate, readable, and easy to explain in an interview.
+
+CASE EVIDENCE
+English degree at University of Rajshahi; third year; expected graduation 2027.
+Tutored 3 school students in English, January–June 2026.
+Checked in 45 attendees at one campus reading event in March 2026.
+Made a 6-slide course presentation with 3 classmates.
+Basic Google Docs and Canva. No Excel experience recorded.
+Bangla and intermediate English. No IELTS result. Use [email] and [phone] in the AI draft.
+
+VOCABULARY
+relevant: connected to the task | relevant experience | প্রাসঙ্গিক
+coordinate: organise different parts of an activity | coordinate an event | সমন্বয় করা
+verify: check whether something is true | verify a claim | যাচাই করা
+overstate: make something sound bigger than it is | overstate your role | বাড়িয়ে বলা
+
+SPEAKING FRAMES
+“Which experience would show that I can ___?”
+“You could include ___ because the role requires ___.”
+“That sounds stronger, but the evidence only says ___.”
+
+DELEGATION DECISIONS AND KEY
+Who should confirm Nusrat’s experience?
+A. AI can infer it from her university.
+B. Nusrat checks her own records.
+C. Copy a similar student’s CV.
+Worked answer: Nusrat checks her own records.
+Why: Her real experience is the source. AI cannot infer her qualifications from a university name.
+
+Who should draft clearer bullet points?
+A. AI drafts from facts; Nusrat checks the meaning.
+B. Nusrat must never accept AI wording.
+C. AI writes and submits the CV independently.
+Worked answer: AI drafts from facts; Nusrat checks the meaning.
+Why: Drafting can be delegated while the student keeps control of meaning and final use.
+
+What should happen to private contact details?
+A. Upload her national ID for authenticity.
+B. Ask AI to find her details online.
+C. Use placeholders; add verified details in the final document.
+Worked answer: Use placeholders; add verified details in the final document.
+Why: The drafting task needs experience, not an identity document or private contact details.
+
+BRIEF COMPONENTS
+product: A one-page English CV for the Programme Assistant internship, using plain language and relevant evidence.
+process: First ask about missing dates or facts. Then draft from the evidence. Mark gaps instead of guessing.
+performance: Be a supportive, honest careers editor. Challenge exaggeration and explain wording I cannot easily say.
+
+WORKED FIRST MESSAGE
+Help me draft a one-page English CV for a Programme Assistant internship in Rajshahi. The role involves registration, student communication, and simple documents. Use only my fact sheet. Ask about missing facts before drafting; never invent skills, grades, or numbers. Use clear English I can explain in an interview. Act as a supportive but honest editor and flag exaggeration. Use [email] and [phone].
+
+AI CLARIFICATION
+Before drafting: when do you expect to graduate, and do you have a measured result from your tutoring?
+
+HUMAN ANSWER
+I expect to graduate in 2027. I do not have measured results from tutoring. Please describe what I did without claiming improved scores.
+
+INTENTIONALLY FLAWED DRAFT
+NUSRAT JAHAN
+Award-winning English graduate with fluent English and advanced Excel skills.
+• Led a team of 45 volunteers at a major university event.
+• Tutored 3 school students in English from January to June 2026.
+• Increased exam scores by 40%.
+I used stronger wording to maximise your chances. This CV is ready to submit.
+
+AUDIT QUESTIONS AND KEY
+Which line can we keep?
+A. Award-winning English graduate.
+B. Tutored 3 school students, January–June 2026.
+C. Increased exam scores by 40%.
+Worked answer: Tutored 3 school students, January–June 2026.
+Why: The tutoring line matches the fact sheet. Discernment includes recognising useful work as well as finding errors.
+
+What happened to “45 attendees”?
+A. The AI made a harmless style change.
+B. The AI confirmed a leadership role.
+C. The AI changed attendees into volunteers she led.
+Worked answer: The AI changed attendees into volunteers she led.
+Why: Checking people in is not the same as leading them. Both the role and the relationship changed.
+
+Did the AI follow the agreed process and role?
+A. No. It ignored the clarification and rewarded exaggeration.
+B. Yes. Confident wording proves it understood.
+C. Yes. Asking one question guarantees the final result.
+Worked answer: No. It ignored the clarification and rewarded exaggeration.
+Why: The AI asked about evidence, then invented a measured result anyway. A good process must affect the output.
+
+WORKED FOLLOW-UP
+Keep the accurate tutoring line. I am still a student, not a graduate. Remove awards, fluent English, advanced Excel, and the 40% claim. I checked in attendees; I did not lead volunteers. Rewrite using only the fact sheet. Show each revised bullet beside its supporting fact, and ask if anything is missing.
+
+REVISED OUTPUT
+NUSRAT JAHAN
+Rajshahi · [email] · [phone]
+
+PROFILE
+Third-year English student with experience tutoring school students and supporting event registration. Interested in a Programme Assistant internship.
+
+EDUCATION
+University of Rajshahi — English degree in progress
+Expected graduation: 2027
+
+EXPERIENCE & PROJECTS
+• Tutored 3 school students in English, January–June 2026.
+• Checked in 45 attendees at a campus reading event, March 2026.
+• Created a 6-slide course presentation with 3 classmates.
+
+SKILLS
+Basic Google Docs and Canva; Bangla; intermediate English.
+
+WHY IT IMPROVED
+“Checked in 45 attendees” ← registration record in the fact sheet. “Created a 6-slide presentation” ← course project. No claims about leadership or improved marks remain.
+
+LANGUAGE NOTICING AND PRACTICE
+Before: Led 45 volunteers.
+After: Checked in 45 attendees at a campus reading event.
+Choose a precise past-tense verb + object + context. A stronger sentence gives clearer evidence, not a bigger achievement.
+সঠিক অতীতকালের ক্রিয়া ব্যবহার করো। কাজটি বড় করে নয়, স্পষ্ট করে বলো।
+Practice: Rewrite “I was doing teaching for some students” using Nusrat’s facts.
+One natural version: Tutored 3 school students in English from January to June 2026.
+
+RELEASE REVIEW
+[ ] Explain how: Match every date, skill, and number to the fact sheet.
+[ ] Explain how: Remove draft placeholders and add correct contact details by hand.
+[ ] Explain how: Check the exported one-page document and read it on a phone.
+[ ] Explain how: Keep a record of AI editing; follow the application’s disclosure instructions and own each claim.
+
+
+SAMPLE AI PROCESS NOTE
+AI helped organise and edit my CV. I verified each claim against my own experience and chose the final wording.
+
+NEW TRANSFER TASK
+Nusrat now considers a fictional international summer programme. Its brief values collaboration and asks for a 70-word profile, not a full CV. AI editing is allowed. Use the same facts. Decide what to keep, write a new brief, and say how you would check the result.
+
+ONE DEFENSIBLE APPROACH
+I would confirm the programme requirements myself and ask AI to suggest a 70-word profile using only the fact sheet. I would highlight the group presentation and tutoring, check that “collaborated” does not become “led,” and keep a record of editing. I would not add an IELTS score.
+
+EXIT QUESTION AND KEY
+The AI changes “helped at one event” to “managed a programme.” What is the best next action?
+A. Keep it because it sounds professional.
+B. Ask for a precise rewrite that preserves the actual role.
+C. Replace the student’s evidence with the AI version.
+Worked answer: Ask for a precise rewrite that preserves the actual role.
+Why: Preserve meaning when improving style. The person must be able to stand behind the sentence.
+
+============================================================
+
+WORKFLOW: COMPARE REAL OPPORTUNITIES
+Rafi · Varendra University
+English goal: Distinguish evidence, inference, and uncertainty
+
+PARTNER A — HAND OUT SEPARATELY
+You are Rafi, a second-year business student. You can spend at most BDT 8,000 and cannot miss exams from 10–20 June. You want experience that develops teamwork. Ask which options fit your constraints.
+
+PARTNER B — HAND OUT SEPARATELY
+You are the research partner. You have two fictional notices. Riverside internship: Rajshahi, 1–30 July, no fee, travel not reimbursed, second-year students eligible. Global summer workshop: abroad, 15–28 June, fee waived, travel support “subject to selection”; third-year students and above eligible. No accommodation information is given.
+
+SUCCESS CRITERION
+An evidence-based comparison with a sensible next step, not a promise of funding or admission.
+
+CASE EVIDENCE
+Rafi: second-year business student at Varendra University.
+Budget BDT 8,000; exams 10–20 June; wants teamwork experience.
+Notice A: Riverside internship, Rajshahi, 1–30 July. No fee. Travel not reimbursed. Second-year students eligible.
+Notice B: Global summer workshop abroad, 15–28 June. Fee waived. Travel support subject to selection. Third-year students and above eligible.
+Neither notice gives accommodation costs or selection probabilities.
+These are invented source extracts for classroom analysis, not live offers.
+
+VOCABULARY
+eligible: allowed to apply under the rules | eligible to apply | আবেদনের যোগ্য
+waived: not required to be paid | the fee is waived | ফি মওকুফ
+subject to: dependent on a condition | subject to selection | শর্তসাপেক্ষ
+confirm: establish a fact before acting | confirm the cost | নিশ্চিত করা
+
+SPEAKING FRAMES
+“According to notice ___, ___.”
+“It may cover ___, but we still need to confirm ___.”
+“I would choose ___ if ___.”
+
+DELEGATION DECISIONS AND KEY
+Which task is useful to give AI?
+A. Decide what Rafi can afford without his input.
+B. Compare the supplied notices against a list of criteria.
+C. Predict his chance of admission as an exact percentage.
+Worked answer: Compare the supplied notices against a list of criteria.
+Why: AI can structure a comparison. Rafi sets his priorities and checks the evidence.
+
+Who should establish current eligibility before applying?
+A. Rafi checks the official organiser’s current page or contacts them.
+B. AI assumes a notice from last year still applies.
+C. A social media comment settles the question.
+Worked answer: Rafi checks the official organiser’s current page or contacts them.
+Why: A model summary is not the application authority. Requirements must be verified at the original source.
+
+Which tool choice is sensible for this classroom task?
+A. Pay for the tool that sounds most confident.
+B. Use image generation to produce an official-looking notice.
+C. Use a text assistant with the supplied extracts; verify live claims separately.
+Worked answer: Use a text assistant with the supplied extracts; verify live claims separately.
+Why: Choose the tool for the task and available evidence. No live search or paid plan is needed to compare these extracts.
+
+BRIEF COMPONENTS
+product: A short comparison table: eligibility, dates, known costs, unknown costs, and next action.
+process: Use only the supplied extracts; separate explicit evidence from inference and unknowns. Ask about constraints first.
+performance: Act as a careful research assistant. Say when information is missing; challenge a poor fit.
+
+WORKED FIRST MESSAGE
+Compare the two supplied opportunity notices for Rafi. Ask about his constraints first. Then make a table with eligibility, dates, costs, unknowns, and next steps. Use only the extracts, label each statement with A or B, and write “not stated” for missing information. Be a careful research assistant: distinguish evidence from inference and challenge options that do not fit.
+
+AI CLARIFICATION
+What is Rafi’s year of study, spending limit, and availability?
+
+HUMAN ANSWER
+Second year; BDT 8,000 maximum; exams 10–20 June. I want teamwork experience. Please do not assume “fee waived” means all expenses are paid.
+
+INTENTIONALLY FLAWED DRAFT
+Best option: Global summer workshop (B). It is fully funded, including flights and accommodation. Second-year students can apply, and the dates will not affect exams. Rafi has an 85% chance of selection.
+Riverside (A) runs 1–30 July and has no participation fee.
+I chose the international option because going abroad is always better for your career.
+
+AUDIT QUESTIONS AND KEY
+Which claim is supported?
+A. B covers all accommodation.
+B. Rafi has an 85% chance.
+C. A has no participation fee and runs in July.
+Worked answer: A has no participation fee and runs in July.
+Why: Both details appear in A. The probability and accommodation claim appear in neither extract.
+
+What does “travel support subject to selection” mean?
+A. Travel support is conditional; it is not guaranteed.
+B. Everyone receives a free flight.
+C. It means the same as accommodation included.
+Worked answer: Travel support is conditional; it is not guaranteed.
+Why: Keep the condition. Fee waivers, travel support, and accommodation are different costs.
+
+What did the comparison process miss?
+A. Only the tone needs changing.
+B. Rafi is ineligible under B’s stated year rule and its dates overlap exams.
+C. No constraints were supplied.
+Worked answer: Rafi is ineligible under B’s stated year rule and its dates overlap exams.
+Why: The assistant ignored the student’s year and exam dates. It also introduced a value judgement that abroad is always better.
+
+WORKED FOLLOW-UP
+Correct B: it requires third-year students or above and overlaps my exams. Replace “fully funded” with the exact funding conditions and mark accommodation as not stated. Remove the 85% estimate. Compare both notices against my constraints. Recommend a next verification step, not an admission outcome.
+
+REVISED OUTPUT
+A — RIVERSIDE INTERNSHIP
+Eligibility: fits the stated second-year rule (A).
+Dates: 1–30 July; no overlap with 10–20 June exams (A + Rafi’s dates).
+Costs: no fee; travel not reimbursed (A). Total cost unknown.
+Next step: confirm travel costs, duties, and current application instructions.
+
+B — GLOBAL SUMMER WORKSHOP
+Eligibility: Rafi does not meet the stated third-year rule (B).
+Dates: 15–28 June; overlaps his exams.
+Costs: fee waived; travel support conditional (B). Accommodation not stated.
+Next step: do not plan an application under these stated rules; check a future eligible round.
+
+Recommendation: investigate A further. Budget fit and teamwork opportunities still need confirmation.
+
+WHY IT IMPROVED
+“Fits the second-year rule” is direct evidence plus Rafi’s profile. “No exam overlap” is an inference from two date ranges. “Total cost unknown” preserves a gap instead of filling it.
+
+LANGUAGE NOTICING AND PRACTICE
+Before: The programme will pay all my costs.
+After: The fee is waived, but travel support is subject to selection.
+Use “according to” for attribution, “may” for possibility, and “not stated” for missing evidence. Do not hedge a clear rule: B explicitly requires third year.
+প্রমাণের উৎস বলো। সম্ভাবনা আর নিশ্চিত তথ্য আলাদা করো। স্পষ্ট শর্তকে অস্পষ্ট করে বলো না।
+Practice: Rewrite “A is completely free” using the cost information in notice A.
+One natural version: According to notice A, there is no participation fee, but travel is not reimbursed.
+
+RELEASE REVIEW
+[ ] Explain how: Check current details on the original organiser’s page before a real application.
+[ ] Explain how: Separate direct evidence, reasonable inference, and information not stated.
+[ ] Explain how: Estimate the full cost using verified amounts before committing money.
+[ ] Explain how: Record sources and checking dates; let Rafi decide based on his priorities.
+
+
+SAMPLE AI PROCESS NOTE
+AI helped structure the comparison. I checked claims against the supplied extracts and marked missing information. These classroom cases are fictional.
+
+NEW TRANSFER TASK
+A new fictional notice says: “Online teamwork project, 5–25 July; all university years eligible; BDT 2,000 participation fee; internet access required.” Rafi has BDT 8,000 but an unreliable connection. Compare it with A. Write one cautious recommendation and two questions to verify.
+
+ONE DEFENSIBLE APPROACH
+The online project meets the stated year rule and does not overlap exams. The BDT 2,000 fee is within the budget, but the total cost and connection requirements need checking. I would ask whether meetings are live and whether mobile data is enough. I would compare teamwork duties with A before recommending one.
+
+EXIT QUESTION AND KEY
+A search assistant gives a link that does not contain its funding claim. What should you do?
+A. Keep the claim because a link is present.
+B. Repeat the search until another AI agrees.
+C. Mark the claim unverified and check the original organiser’s evidence.
+Worked answer: Mark the claim unverified and check the original organiser’s evidence.
+Why: A citation only helps when its content supports the specific claim. Agreement between models is not independent verification.
+
+============================================================
+
+WORKFLOW: WRITE AN EMAIL THAT EARNS A REPLY
+Mehedi · University of Rajshahi
+English goal: Make specific, polite requests
+
+PARTNER A — HAND OUT SEPARATELY
+You are Mehedi, a third-year sociology student. You completed a class project interviewing 6 classmates about commuting. You want to learn how researchers design interviews. You can join a remote placement for 4 hours a week in July. Ask your partner what the recipient needs to know.
+
+PARTNER B — HAND OUT SEPARATELY
+You are an adviser reading a fictional placement notice. Dr Maya Sen’s team studies student commuting. The notice invites a short email asking about remote student placements. Applicants should mention one relevant experience and availability. No publication or professor’s personal email address is supplied.
+
+SUCCESS CRITERION
+A concise, respectful enquiry with a truthful connection, a clear request, and realistic availability.
+
+CASE EVIDENCE
+Mehedi: third-year sociology student, University of Rajshahi.
+Class project: interviewed 6 classmates about commuting; no publication.
+Wants to learn interview design; can offer 4 hours per week in July remotely.
+Fictional notice: Dr Maya Sen’s team studies student commuting and invites short placement enquiries.
+The notice asks for relevant experience and availability; it does not promise acceptance or funding.
+Use [recipient address] until the official address is verified. No attachments requested in the first enquiry.
+
+VOCABULARY
+enquiry: a request for information | a placement enquiry | তথ্য জানতে চাওয়া
+available: able to take part at a time | available in July | সময় দিতে পারা
+relevant: connected to the purpose | relevant project experience | প্রাসঙ্গিক
+consider: think about a possibility | consider my application | বিবেচনা করা
+
+SPEAKING FRAMES
+“Could you let me know whether ___?”
+“My experience in ___ may be relevant to ___.”
+“I would be available for ___.”
+
+DELEGATION DECISIONS AND KEY
+What should Mehedi decide himself?
+A. His true interests and realistic availability.
+B. The recipient’s hidden preferences.
+C. Which achievements to invent.
+Worked answer: His true interests and realistic availability.
+Why: Only Mehedi can commit his time and explain his interests. AI can help him articulate them.
+
+What can AI help with?
+A. Send messages to dozens of guessed addresses.
+B. Suggest a concise structure and edit the tone.
+C. Pretend it has read the researcher’s papers.
+Worked answer: Suggest a concise structure and edit the tone.
+Why: AI can improve structure and tone using supplied information. Specific claims about papers need actual evidence.
+
+What belongs in this first prompt?
+A. A passport scan to prove identity.
+B. Private messages from a classmate.
+C. A summary of the notice and relevant project facts.
+Worked answer: A summary of the notice and relevant project facts.
+Why: Give task-relevant context while keeping unnecessary personal and third-party information out.
+
+BRIEF COMPONENTS
+product: An 80–110-word placement enquiry with a useful subject, relevant experience, availability, and one clear question.
+process: Ask about missing information. Use the supplied notice only; do not invent publications or familiarity. Draft before any sending.
+performance: Be a respectful writing coach. Keep my voice natural and explain overly formal or pushy phrases.
+
+WORKED FIRST MESSAGE
+Help me draft an 80–110-word email to enquire about the remote research placement in the supplied notice. Include a specific subject, one relevant experience, my availability, and one clear question. Ask for missing facts before drafting. Do not invent papers, publications, or a personal relationship. Be a respectful writing coach; use natural English I can explain. Do not send anything.
+
+AI CLARIFICATION
+Have you read a specific paper by this researcher, and how much time can you commit?
+
+HUMAN ANSWER
+I only have the placement notice. I have not read a paper by Dr Sen. I can offer 4 hours per week in July. I interviewed 6 classmates for a course project, not published research.
+
+INTENTIONALLY FLAWED DRAFT
+Subject: Urgent acceptance required
+Respected world-famous Professor,
+I have deeply admired all your published works for many years. As a published expert on commuting, I am the ideal candidate for your team. I interviewed 6 classmates for a course project. Kindly confirm my fully funded position immediately. I can work full-time from next week.
+Yours most obediently,
+Mehedi
+
+AUDIT QUESTIONS AND KEY
+Which sentence supplies a truthful connection?
+A. I am a published expert.
+B. I interviewed 6 classmates for a course project.
+C. I have admired all your works for many years.
+Worked answer: I interviewed 6 classmates for a course project.
+Why: This sentence connects his actual experience to the team’s topic without claiming expertise or familiarity.
+
+What is wrong with the request?
+A. All polite emails must be longer.
+B. “Kindly” makes every request appropriate.
+C. It demands acceptance and funding that the notice never promised.
+Worked answer: It demands acceptance and funding that the notice never promised.
+Why: Politeness depends on the whole request, not one formal word. This is an enquiry, not a confirmed offer.
+
+What did the assistant ignore?
+A. The supplied availability and the instruction not to invent publications.
+B. Mehedi asked it to exaggerate.
+C. The notice asked for a passport.
+Worked answer: The supplied availability and the instruction not to invent publications.
+Why: The assistant had explicit corrections, but still invented a publication and a full-time commitment.
+
+WORKED FOLLOW-UP
+Keep the course-project detail. Remove invented publications and claims that I have read Dr Sen’s work. Replace the demand with one polite question about whether July remote placements are available. State 4 hours per week. Use a specific subject and natural greeting. Explain one tone change without sending the email.
+
+REVISED OUTPUT
+Subject: July remote placement enquiry — student commuting
+
+Dear Dr Sen,
+
+I am a third-year sociology student at the University of Rajshahi. Your placement notice about student commuting interested me because I recently interviewed six classmates about their journeys to campus for a course project.
+
+I would like to develop my interview-design skills and learn how your team carries out research. I would be available remotely for four hours a week in July. Could you let me know whether you are considering students for a placement during that period?
+
+Thank you for your time.
+
+Best regards,
+Mehedi
+
+WHY IT IMPROVED
+The topic connection comes from the notice, the project comes from Mehedi, and the availability matches his answer. “Could you let me know whether…” requests information without presuming an offer.
+
+LANGUAGE NOTICING AND PRACTICE
+Before: Confirm my position immediately.
+After: Could you let me know whether you are considering students for a placement in July?
+Use could + subject + verb for a polite request. In the indirect question, use “whether you are,” not “whether are you.” Specificity helps the reader reply.
+পরোক্ষ প্রশ্নে “whether you are” বলো, “whether are you” নয়। অনুরোধটি নির্দিষ্ট করো।
+Practice: Turn “Do you accept remote students?” into a polite indirect question.
+One natural version: Could you let me know whether you accept remote students?
+
+RELEASE REVIEW
+[ ] Explain how: Verify the recipient’s name, title, official address, and current placement instructions.
+[ ] Explain how: Read the email aloud; replace any phrase Mehedi cannot explain.
+[ ] Explain how: Confirm the availability, remove placeholders, and avoid unnecessary attachments.
+[ ] Explain how: Keep an honest record of AI editing, follow relevant disclosure rules, and review before sending yourself.
+
+
+SAMPLE AI PROCESS NOTE
+AI helped me organise and edit this enquiry. I checked the details and selected wording that reflects my experience and intentions.
+
+NEW TRANSFER TASK
+Mehedi now writes to a fictional Rajshahi NGO offering a local research internship. Its notice asks applicants to explain why they can communicate with local participants. His interview project was conducted in Bangla. Write a 3-sentence enquiry that connects that fact to the role without claiming professional research experience.
+
+ONE DEFENSIBLE APPROACH
+I am a third-year sociology student at the University of Rajshahi. For a course project, I interviewed six classmates in Bangla about commuting, and I would like to develop these skills in your local research team. Could you let me know what availability you require for the internship?
+
+EXIT QUESTION AND KEY
+Which request is both polite and grammatically natural?
+A. Could you tell me whether are places available?
+B. You must offer me a place because I am hardworking.
+C. Could you tell me whether places are available in July?
+Worked answer: Could you tell me whether places are available in July?
+Why: An indirect question uses statement word order. It also asks for information instead of assuming acceptance.
+
+============================================================
+
+WORKFLOW: MAKE A DOCUMENT PEOPLE CAN USE
+Tania · Varendra University
+English goal: Give clear, ordered instructions
+
+PARTNER A — HAND OUT SEPARATELY
+You are Tania, coordinating a fictional campus skills workshop. Volunteers will read your briefing on phones and as a black-and-white A4 printout. You need a clear sequence, not a decorative brochure. Ask your partner for the exact logistics.
+
+PARTNER B — HAND OUT SEPARATELY
+You have the organiser’s confirmed notes: 12 October, Room 204, volunteers arrive at 9:30, doors open at 10:00. Two volunteers check names, one guides attendees to seats. Never photograph the registration list. If a name is missing, ask the organiser rather than refusing entry. The workshop ends at 12:00.
+
+SUCCESS CRITERION
+An accurate one-page volunteer brief with a clear order, readable headings, and a safe plan for problems.
+
+CASE EVIDENCE
+Audience: student volunteers; read on phones and on black-and-white A4 paper.
+Date: 12 October. Venue: Room 204. Arrival 9:30; doors open 10:00; finish 12:00.
+Two volunteers check names; one guides attendees to seats.
+If a name is missing, ask the organiser. Do not refuse entry yourself.
+Do not photograph or share the registration list.
+No room change, food arrangements, contact number, or emergency procedure has been supplied.
+
+VOCABULARY
+briefing: short information needed before a task | a volunteer briefing | কাজের নির্দেশনা
+legible: clear enough to read | legible text | পাঠযোগ্য
+sequence: the order of steps | a clear sequence | কাজের ক্রম
+escalate: pass an issue to the right person | escalate an issue | দায়িত্বপ্রাপ্ত ব্যক্তিকে জানানো
+
+SPEAKING FRAMES
+“First ___; then ___.”
+“If ___, ask ___ before ___.”
+“The reader needs to find ___ quickly.”
+
+DELEGATION DECISIONS AND KEY
+Who confirms times, venue, and procedures?
+A. AI chooses details that sound plausible.
+B. Tania checks them with the organiser.
+C. The prettiest draft becomes the source.
+Worked answer: Tania checks them with the organiser.
+Why: Operational facts must come from the organiser. AI can structure them but cannot authorise changes.
+
+Which task can AI draft usefully?
+A. A concise sequence and alternative headings from confirmed notes.
+B. A fabricated emergency number.
+C. A replacement policy for missing names.
+Worked answer: A concise sequence and alternative headings from confirmed notes.
+Why: AI can help organise existing information. Missing policies and contact details need confirmation.
+
+Who owns the final layout check?
+A. AI’s statement “A4 ready” is enough.
+B. No one needs to open the file.
+C. Tania checks the actual export on a phone and on paper.
+Worked answer: Tania checks the actual export on a phone and on paper.
+Why: A chat response or file-generation claim does not establish page fit or readability. Check the actual output.
+
+BRIEF COMPONENTS
+product: A one-page volunteer briefing, short headings, simple English, numbered instructions, suitable for a phone and black-and-white A4.
+process: Check missing logistics first. Use only the notes. Draft content, then suggest a layout. Mark any unconfirmed item.
+performance: Be a practical editor. Flag contradictions and prioritise readability over decoration.
+
+WORKED FIRST MESSAGE
+Create a one-page volunteer briefing from the supplied organiser notes. It must work on a phone and a black-and-white A4 printout. Use clear headings, simple English, and numbered steps. First ask about missing operational details; never invent them. Draft the content before suggesting a layout. Be a practical editor who flags contradictions and puts readability first.
+
+AI CLARIFICATION
+Do you have an organiser contact number and an agreed emergency procedure to include?
+
+HUMAN ANSWER
+Neither has been provided. Do not invent them. Mark these for me to confirm before circulation. Keep the missing-name instruction exactly in meaning.
+
+INTENTIONALLY FLAWED DRAFT
+VOLUNTEER GALA — ULTIMATE SUCCESS BLUEPRINT
+Arrive at Room 402 at 10:00. Doors open 10:00.
+Two volunteers check names; one helps attendees find seats.
+If someone is not on the list, refuse entry immediately.
+Photograph the list and share it in the volunteer group.
+Design: tiny grey text, four columns, pale colour-coded headings. All details confirmed and ready to print.
+
+AUDIT QUESTIONS AND KEY
+What is accurate and worth keeping?
+A. Room 402.
+B. Photograph the list.
+C. Two volunteers check names; one guides attendees.
+Worked answer: Two volunteers check names; one guides attendees.
+Why: The division of roles matches the notes. Other operational claims must be checked individually.
+
+Which instruction changes the organiser’s policy?
+A. Refuse entry if the name is missing.
+B. Use short headings.
+C. Use a numbered sequence.
+Worked answer: Refuse entry if the name is missing.
+Why: The organiser said to ask them. AI must not replace a policy while polishing instructions.
+
+Why is this process not complete?
+A. It has a title, so the file is ready.
+B. Missing details were treated as confirmed, and the proposed layout undermines readability.
+C. A volunteer brief must always have four columns.
+Worked answer: Missing details were treated as confirmed, and the proposed layout undermines readability.
+Why: The assistant concealed open questions and ignored the reading conditions. “Ready to print” is a claim to test.
+
+WORKED FOLLOW-UP
+Restore Room 204 and the 9:30 volunteer arrival. Keep the correct role split. Say to ask the organiser about missing names, and prohibit photographing or sharing the list. Use a single column with short headings and numbered steps. Clearly mark the contact and emergency procedure as still unconfirmed. Show content first; I will check the export.
+
+REVISED OUTPUT
+VOLUNTEER BRIEF — CAMPUS SKILLS WORKSHOP
+12 October · Room 204
+
+TIMES
+Volunteer arrival: 9:30
+Doors open: 10:00
+Finish: 12:00
+
+BEFORE DOORS OPEN
+1. Arrive at Room 204 at 9:30.
+2. Confirm your role with the organiser. Two volunteers check names; one guides attendees to seats.
+
+DURING REGISTRATION
+3. Check names carefully. If a name is missing, ask the organiser before taking action.
+4. Do not photograph or share the registration list.
+
+CONFIRM BEFORE CIRCULATION
+Organiser contact: [confirm]
+Emergency procedure: [confirm with organiser]
+
+Draft for review — not ready to circulate until these details are confirmed.
+
+WHY IT IMPROVED
+The times, room, role split, and missing-name instruction match the organiser’s notes. The corrected draft keeps two unknowns visible. Human layout work should preserve those meanings.
+
+LANGUAGE NOTICING AND PRACTICE
+Before: In the eventuality of absence from the list, rejection should be undertaken.
+After: If a name is missing, ask the organiser before taking action.
+Use an if-clause for the condition and an imperative for the action. Name the person who should act. Short instructions reduce ambiguity.
+শর্তের জন্য “if” ব্যবহার করো। তারপর স্পষ্ট করে বলো কে কী করবে।
+Practice: Rewrite “It is requested that arrival should take place by volunteers at 9:30” as a direct instruction.
+One natural version: Arrive at Room 204 at 9:30.
+
+RELEASE REVIEW
+[ ] Explain how: Confirm the organiser contact and emergency procedure before circulating.
+[ ] Explain how: Check every room, time, and instruction against the organiser’s notes.
+[ ] Explain how: Open the exported file on a small phone and check an A4 black-and-white print preview.
+[ ] Explain how: Ask one volunteer to explain the sequence; record AI drafting and keep responsibility with the organiser.
+Correct readiness decision: NOT READY until the organiser confirms the missing contact and emergency procedure.
+
+SAMPLE AI PROCESS NOTE
+AI helped organise the confirmed notes and suggest wording. The organiser must verify remaining details and approve the final document before circulation.
+
+NEW TRANSFER TASK
+A fictional local employer asks Tania for a one-page new-intern checklist. Confirmed facts: report to reception at 9:00; bring a notebook; ask the supervisor before accessing client files. No dress code or software instructions are supplied. Draft three steps and mark two questions for the supervisor. Explain which work belongs to AI and which to Tania.
+
+ONE DEFENSIBLE APPROACH
+AI can draft a short checklist from these facts. Tania must confirm the workplace rules and test the final document. Steps: arrive at reception at 9:00; bring a notebook; ask your supervisor before accessing client files. Questions: is there a dress code, and which software or accounts will I need?
+
+EXIT QUESTION AND KEY
+AI produces an attractive document with the wrong date. What should guide the next decision?
+A. Accuracy and usability against the brief.
+B. The number of colours.
+C. The AI’s confidence that it is professional.
+Worked answer: Accuracy and usability against the brief.
+Why: A useful document supports the reader’s actions with correct information. Appearance cannot compensate for wrong instructions.
+
+============================================================
+
+WORKFLOW: CREATE AN IMAGE WITH A PURPOSE
+Sadia · University of Rajshahi
+English goal: Describe visual choices and justify them
+
+PARTNER A — HAND OUT SEPARATELY
+You are Sadia, the student designer. Your classmates will see a square poster on WhatsApp, mainly on small phones. The event is about comparing local and overseas opportunities. You want the image to feel relevant and welcoming. Ask your partner what must appear accurately.
+
+PARTNER B — HAND OUT SEPARATELY
+You are the event organiser. Confirmed fictional details: “Career Steps”; 18 November; 3:00–4:30 pm; Room 105; free peer-led workshop. No scholarships, jobs, visas, or certificates are promised. Do not use real students’ photographs without permission. No university logo is authorised.
+
+SUCCESS CRITERION
+A readable, inclusive square poster that communicates the event honestly, with factual text added and checked separately.
+
+CASE EVIDENCE
+Audience: Bengali university students viewing a square poster on WhatsApp.
+Title: Career Steps. Date: 18 November. Time: 3:00–4:30 pm. Place: Room 105.
+Free peer-led workshop on comparing local and overseas opportunities.
+No promise of scholarships, jobs, visas, or certificates.
+No permission to use a university logo or real students’ photographs.
+Use a fictional illustration. Add and verify the title, date, time, venue, and disclosure separately.
+
+VOCABULARY
+composition: how parts are arranged in an image | a balanced composition | ছবির উপাদানের বিন্যাস
+contrast: a clear visual difference | strong text contrast | স্পষ্ট রঙের পার্থক্য
+misleading: likely to create a false impression | a misleading promise | বিভ্রান্তিকর
+depict: show in a picture | depict students collaborating | ছবিতে দেখানো
+
+SPEAKING FRAMES
+“Place ___ in the foreground so that ___.”
+“The image suggests ___, but the event only offers ___.”
+“I would change ___ because viewers need to ___.”
+
+DELEGATION DECISIONS AND KEY
+What is a good task for image AI?
+A. Invent the event’s official university logo.
+B. Generate a fictional illustration of students collaborating.
+C. Create a photo of real classmates without permission.
+Worked answer: Generate a fictional illustration of students collaborating.
+Why: An original fictional illustration can fit this brief without implying real attendance or unauthorised endorsement.
+
+Who should enter and check event details?
+A. A person adds verified text in an editable design tool and checks the export.
+B. Let generated image text become the source of truth.
+C. Leave the venue to AI’s imagination.
+Worked answer: A person adds verified text in an editable design tool and checks the export.
+Why: Separating factual text from artwork makes corrections and proofreading easier. Generated text also needs checking.
+
+What should guide tool choice?
+A. Always buy the most expensive subscription.
+B. Use a text chatbot even if it cannot create images in the current account.
+C. Check image capability, editing control, cost, and privacy; use a simpler design if needed.
+Worked answer: Check image capability, editing control, cost, and privacy; use a simpler design if needed.
+Why: Capabilities and access vary. Match the tool to the job rather than relying on a brand name.
+
+BRIEF COMPONENTS
+product: A square editorial illustration for a student career-workshop poster, with room for separately typeset event details.
+process: Create artwork without words, logos, or QR codes. Then a person adds verified text and tests the small-phone export.
+performance: Follow the constraints, depict participants as active collaborators, and flag choices that imply false promises.
+
+WORKED FIRST MESSAGE
+Create a square editorial illustration for a peer-led career-workshop poster in Rajshahi. Show four fictional adult South Asian university students of mixed genders collaborating around a table with notebooks and one shared phone. Use an uncluttered composition and warm green, cream, and terracotta colours. Everyone should have an active role. No text, logos, real identifiable people, airplanes, money, graduation gowns, or QR codes. I will add verified event text separately. Avoid imagery suggesting guaranteed overseas success.
+
+AI CLARIFICATION
+Should this show a real event or fictional people? Should I include the date and any university branding inside the image?
+
+HUMAN ANSWER
+Fictional people only. No university branding or embedded words. I will add the verified text and label the artwork as an AI-generated illustration.
+
+INTENTIONALLY FLAWED DRAFT
+Proposed poster copy:
+CAREER STEPS
+Guaranteed overseas jobs & visas!
+18 November · 3:00–4:30 pm · Room 105
+Official university recruitment event
+
+The AI-generated illustration shows fictional students collaborating. The designer added the event copy afterwards. The assistant says: “The copy is persuasive, so you can publish without checking the organiser’s notes.”
+
+AUDIT QUESTIONS AND KEY
+Which element matches the organiser’s brief?
+A. Guaranteed visas.
+B. Official university recruitment event.
+C. 18 November, 3:00–4:30 pm, Room 105.
+Worked answer: 18 November, 3:00–4:30 pm, Room 105.
+Why: Those event details match. The guarantees and official status do not.
+
+What should a visual review check as well as text?
+A. Whether people, hands, objects, and implied roles look coherent and fit the audience.
+B. Only whether the image looks expensive.
+C. Whether it includes as many flags as possible.
+Worked answer: Whether people, hands, objects, and implied roles look coherent and fit the audience.
+Why: A visual can mislead through implied relationships and symbolism. Also inspect generated details instead of assuming they are coherent.
+
+Did the workflow preserve human control?
+A. Yes, AI enthusiasm is enough approval.
+B. No. The final copy still needs evidence checks and organiser approval.
+C. Yes, fictional artwork makes every statement true.
+Worked answer: No. The final copy still needs evidence checks and organiser approval.
+Why: Fictional artwork does not validate added text. Diligence applies to the whole final composition.
+
+WORKED FOLLOW-UP
+Keep the fictional collaborative illustration and the correct date, time, and room. Remove guarantees and claims of official university recruitment. Add “Free peer-led workshop: compare local and overseas opportunities.” Use high-contrast editable text and label the artwork “AI-generated illustration; fictional people.” I will check the small-phone export with the organiser before sharing.
+
+REVISED OUTPUT
+CAREER STEPS
+Compare local and overseas opportunities
+
+18 November
+3:00–4:30 pm · Room 105
+Free peer-led workshop
+
+Bring your questions. Discuss your next step.
+
+AI-generated illustration; fictional people.
+Classroom sample — fictional event.
+
+WHY IT IMPROVED
+The final copy uses the supplied event details and makes no promises of jobs or visas. The illustration is labelled. Test whether the exported text is readable at WhatsApp size before real sharing.
+
+LANGUAGE NOTICING AND PRACTICE
+Before: Make it attractive and professional.
+After: Use a simple background and high-contrast text so that students can read the event details on a small phone.
+Describe observable features, their position, and their purpose. “So that” connects a design choice to what the audience needs.
+কেমন দেখাবে এবং কেন—দুটিই বলো। “so that” দিয়ে নকশার উদ্দেশ্য বোঝাও।
+Practice: Replace “Make the people better” with a precise visual instruction about participation.
+One natural version: Show each student contributing to the discussion so that the workshop feels collaborative.
+
+RELEASE REVIEW
+[ ] Explain how: Check visual coherence and representation; do not imply real attendance or endorsement.
+[ ] Explain how: Match the title, date, time, venue, and offer to the organiser’s notes.
+[ ] Explain how: Check legibility on a small phone and ensure the final image has no untested QR code.
+[ ] Explain how: Label the fictional AI illustration, check asset permissions, and get organiser approval before real sharing.
+
+
+SAMPLE AI PROCESS NOTE
+The poster artwork is AI-generated and depicts fictional people. Event copy was added separately and must be checked by the organiser.
+
+NEW TRANSFER TASK
+A fictional Rajshahi café wants a social image for a student conversation evening. It has permission to use its own logo but no permission to use customers’ faces. Confirmed details: Friday, 5 pm, free conversation practice; drinks sold separately. Write an image brief and accurate overlay text. Explain what you will create by hand and how you will check the final image.
+
+ONE DEFENSIBLE APPROACH
+Ask image AI for a fictional café conversation illustration without faces copied from real customers, logos, or text. Add the café’s authorised logo and verified text in a design tool: “Student conversation evening · Friday, 5 pm · Free conversation practice · Drinks sold separately.” Check phone readability and avoid suggesting free drinks.
+
+EXIT QUESTION AND KEY
+What is the clearest prompt revision?
+A. Make it more premium.
+B. Move the date beneath the title and increase contrast so it is easy to read on a phone.
+C. Make it 100% successful.
+Worked answer: Move the date beneath the title and increase contrast so it is easy to read on a phone.
+Why: A precise instruction names an observable change and explains its purpose.
+
+============================================================
+
+WORKFLOW: VIBE-CODE A TOOL YOU CAN TEST
+Arif · Varendra University
+English goal: Specify behaviour with if–then conditions
+
+PARTNER A — HAND OUT SEPARATELY
+You are Arif. You organise a student workshop and want a phone-friendly calculator for the contribution per attendee. Costs are room hire plus materials. You want to test it before using it for a real event. Ask your partner for the examples and constraints.
+
+PARTNER B — HAND OUT SEPARATELY
+You are the tester. Test facts: room BDT 600, materials BDT 400, 5 attendees must give BDT 200 each. With 0 attendees, show “Enter at least 1 attendee.” Costs cannot be negative; attendee count must be a whole number. Round each contribution up to a whole taka. No personal data, accounts, or payments are needed.
+
+SUCCESS CRITERION
+A small calculator with explicit rules, useful error messages, and observable tests. It estimates a contribution; it does not collect money.
+
+CASE EVIDENCE
+Formula: contribution = (room cost + material cost) ÷ attendees, rounded up to a whole taka.
+Example: (600 + 400) ÷ 5 = BDT 200 per attendee.
+Example: (600 + 400) ÷ 3 rounds up to BDT 334 per attendee.
+Zero or blank attendees: show a helpful message, not Infinity or NaN.
+Costs must be non-negative numbers; attendees must be a positive whole number.
+Phone-friendly, labelled inputs; no personal data, network requests, accounts, or payment system.
+
+VOCABULARY
+input: information entered into a tool | validate an input | দেওয়া তথ্য
+expected: what should happen | the expected result | প্রত্যাশিত
+actual: what really happens | the actual result | বাস্তবে পাওয়া
+edge case: an unusual input that may expose an error | test an edge case | ব্যতিক্রমী পরীক্ষার পরিস্থিতি
+
+SPEAKING FRAMES
+“If the user enters ___, the tool should ___.”
+“We expected ___, but the actual result was ___.”
+“Please fix ___ while keeping ___ unchanged.”
+
+DELEGATION DECISIONS AND KEY
+What must Arif decide before asking for code?
+A. The purpose, formula, constraints, and examples of correct behaviour.
+B. A programming-language ranking.
+C. A claim that every possible bug is impossible.
+Worked answer: The purpose, formula, constraints, and examples of correct behaviour.
+Why: People specify what useful and correct behaviour means. AI can then help implement a bounded tool.
+
+What can AI do?
+A. Guarantee the app is secure by saying so.
+B. Draft the calculator and propose tests for Arif to run.
+C. Take payments without discussing the need.
+Worked answer: Draft the calculator and propose tests for Arif to run.
+Why: AI can generate code and tests. Observable behaviour and human review still matter.
+
+Which is the right scope for this task?
+A. A full student account database.
+B. A payment service and contact collector.
+C. A local calculator with only the inputs needed for the formula.
+Worked answer: A local calculator with only the inputs needed for the formula.
+Why: Avoid extra features that add complexity and data responsibility without serving the current task.
+
+BRIEF COMPONENTS
+product: A mobile-friendly calculator for per-attendee costs with labelled inputs and clear error messages.
+process: Confirm the formula and test cases first. Build a small version; test normal, rounding, and invalid-input cases before release.
+performance: Act as a patient coding partner. Explain assumptions in plain English and report limitations instead of claiming perfection.
+
+WORKED FIRST MESSAGE
+Build a small mobile-friendly workshop-cost calculator. Inputs: room cost, material cost, and attendee count. Contribution is total cost divided by attendees, rounded up to a whole taka. Confirm the formula and test cases first. Use labelled inputs and clear errors for blanks, negative costs, zero attendees, or non-whole attendee counts. No accounts, personal data, network requests, or payments. Explain assumptions plainly and give tests I can run. Do not claim the code is correct just because it runs.
+
+AI CLARIFICATION
+Should I round to the nearest taka or always round up? What should happen when no one is attending?
+
+HUMAN ANSWER
+Always round up. With zero attendees, show “Enter at least 1 attendee.” Blank fields must produce a clear instruction. Test 600 + 400 with 5 attendees and with 3 attendees.
+
+INTENTIONALLY FLAWED DRAFT
+I built the calculator and it is perfect.
+Formula used: room cost + material cost / attendees
+With room 600, materials 400, and 5 attendees: BDT 680 per attendee.
+I included labelled inputs.
+With 0 attendees: Infinity.
+No further testing is needed.
+
+AUDIT QUESTIONS AND KEY
+Which part is a useful start?
+A. The “perfect” claim.
+B. Labelled inputs.
+C. Infinity as a contribution.
+Worked answer: Labelled inputs.
+Why: Labels help people understand inputs. Keep that useful feature while fixing behaviour.
+
+Why does the example return 680?
+A. The whole total was divided correctly.
+B. Rounding always changes 200 to 680.
+C. Only 400 is divided by 5, then 600 is added.
+Worked answer: Only 400 is divided by 5, then 600 is added.
+Why: The intended grouping is (600 + 400) ÷ 5. Plain-language examples can expose formula errors.
+
+What should happen after the AI says “no testing needed”?
+A. Run the agreed tests, including zero, blanks, and rounding.
+B. Accept the confidence as test evidence.
+C. Add payments to make the tool more professional.
+Worked answer: Run the agreed tests, including zero, blanks, and rounding.
+Why: A working screen is not proof of correct behaviour. The person still checks the specified cases.
+
+WORKED FOLLOW-UP
+The example is wrong: expected (600 + 400) / 5 = 200, actual 680. Divide the whole sum by attendees, then round up. Reject blank fields, negative costs, zero attendees, and fractional attendee counts with clear messages. Keep the labelled mobile inputs and no-network scope. Show normal, rounding, and invalid-input test results.
+
+REVISED OUTPUT
+REVISED BEHAVIOUR
+Total cost = room cost + material cost.
+Contribution = total ÷ attendees, rounded up to a whole taka.
+
+600 + 400, 5 attendees → BDT 200 each.
+600 + 400, 3 attendees → BDT 334 each.
+0 attendees → “Enter at least 1 attendee.”
+Blank field → “Complete all three fields.”
+Negative cost → “Costs cannot be negative.”
+2.5 attendees → “Enter a whole number of attendees.”
+
+Rounding up can collect a small surplus; explain this before collecting contributions. No money is collected by this demo.
+
+WHY IT IMPROVED
+Tests compare observed outputs to independently calculated expectations. The repaired demo below runs local, authored JavaScript; it is not code executed from a live AI reply.
+
+LANGUAGE NOTICING AND PRACTICE
+Before: It does not work. Fix everything.
+After: If I enter 600, 400, and 5, the result should be 200, but the calculator shows 680.
+A useful bug report gives inputs, expected behaviour, and actual behaviour. “If …, should …” describes a requirement; “but …” pinpoints the mismatch.
+কী দিয়েছ, কী হওয়ার কথা, আর কী হয়েছে—তিনটি তথ্যই বলো।
+Practice: Write a bug report for a calculator that shows “Infinity” when attendee count is 0.
+One natural version: If I enter 0 attendees, the calculator should ask for at least 1 attendee, but it shows Infinity.
+
+RELEASE REVIEW
+[ ] Explain how: Run normal, rounding, blank, zero, negative, and fractional-input tests.
+[ ] Explain how: Try the controls on a phone and with a keyboard; check labels and understandable errors.
+[ ] Explain how: Explain rounding surplus and verify there are no payments, accounts, or data collection.
+[ ] Explain how: Keep the test record and AI assistance note; ask a competent reviewer before adding sensitive or payment features.
+
+
+SAMPLE AI PROCESS NOTE
+AI assisted with a draft and test ideas. I checked the formula and test cases. This local classroom demo estimates contributions and does not collect money.
+
+NEW TRANSFER TASK
+Arif now wants a study-planning tool. It divides available minutes equally between tasks. Confirmed rules: 90 minutes and 3 tasks gives 30 minutes per task; 0 tasks must show an error; time cannot be negative. Keep it local with no login. Write a plain-English specification and three test cases. Decide who should approve it before classmates rely on it.
+
+ONE DEFENSIBLE APPROACH
+AI can draft the tool after we confirm the rules. If the user enters 90 minutes and 3 tasks, show 30 minutes per task. With 0 tasks, ask for at least 1 task. With negative minutes, ask for a non-negative number. The student should test the cases and check phone usability before sharing. Ask how to handle fractional minutes before deciding a rounding rule.
+
+EXIT QUESTION AND KEY
+Which test adds useful new evidence after 600 + 400 with 5 works?
+A. Run exactly the same inputs ten times.
+B. Try 0 attendees and check for a helpful error.
+C. Ask another AI whether the app looks trustworthy.
+Worked answer: Try 0 attendees and check for a helpful error.
+Why: An edge case can reveal a different failure. Repeating a passed example does not test a new condition.
+
+SOURCES AND CREDITS
+Framework and course: Rick Dakan, Joseph Feller, and Anthropic (2025).
+https://www.anthropic.com/ai-fluency/overview
+Source course materials: CC BY-NC-SA 4.0. Original course-based lesson adaptation © 2026 Dialogue, CC BY-NC-SA 4.0. The older practical overview PDF was consulted but is not reproduced or modified. No endorsement by product vendors or universities is implied.
+Product references consulted 7 September 2026:
+https://learn.chatgpt.com/docs/use-chatgpt
+https://support.claude.com/en/articles/8241126-upload-files-to-claude
+https://support.google.com/gemini/answer/14903178
+Illustration generated with built-in imagegen; fictional people. Prompt recorded in assets/illustration-prompt.txt.

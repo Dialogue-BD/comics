@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="Six AI workflow lessons for Bengali university students: careers, CVs, email, documents, images, and vibe coding. Practise English and human judgement through the 4Ds.">
+  <title>AI Fluency Lab · Dialogue</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="content.js" defer></script>
+  <script src="workflows.js" defer></script>
+  <script src="core.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#lesson">Skip to exercise</a>
+  <header class="topbar">
+    <a class="brand" href="../">Dialogue<span>AI Fluency Lab</span></a>
+    <div class="tools">
+      <label class="mode-label">Mode <select id="mode"><option value="pair">Pair work</option><option value="class">Classroom</option></select></label>
+      <button id="bangla" aria-pressed="false" lang="bn">বাংলা সহায়তা</button>
+      <button id="guide">Teacher guide</button>
+    </div>
+  </header>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="eyebrow">ONE PHONE · TWO THINKERS</div>
+      <h1>Good work.<br>Human judgement.</h1>
+      <p class="muted intro">Real decisions. Useful English. Six ways to work with AI.</p>
+      <label class="workflow-label" for="workflow">Choose a workflow</label>
+      <select id="workflow"></select>
+      <nav id="stations" aria-label="Lesson stations"></nav>
+      <div class="sidebar-note">B1–B2 · 45 minutes per workflow<br>No AI account needed</div>
+    </aside>
+    <main id="lesson" tabindex="-1">
+      <div class="lesson-meta"><span id="position"></span><div class="timer"><output id="time" aria-label="Discussion time remaining">04:00</output><button id="timer-toggle">Start timer</button><button id="timer-reset" aria-label="Reset station timer">↺</button></div></div>
+      <div id="stage"></div>
+      <div class="lesson-nav"><button id="prev">← Back</button><span id="progress-label"></span><button id="next" class="primary">Next →</button></div>
+    </main>
+  </div>
+  <footer class="site-foot">An independent teaching exercise based on the AI Fluency framework by Rick Dakan, Joseph Feller, and Anthropic. <button id="sources">Sources &amp; credits</button></footer>
+  <dialog id="info"><div class="dialog-head"><h2 id="info-title"></h2><button id="close-info" aria-label="Close dialog">✕</button></div><div id="info-body"></div></dialog>
+  <div id="announcement" class="sr-only" role="status"></div>
+  <noscript>This exercise needs JavaScript. Enable it in your browser, then reload.</noscript>
+</body>
+</html>

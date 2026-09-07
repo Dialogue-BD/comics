@@ -1,0 +1,9 @@
+Tool: built-in imagegen. Generated once, original output copied unchanged.
+
+Use case: illustration-story
+Asset type: Square editorial artwork inside a teaching example event poster. The poster text will be added separately.
+Primary request: A fictional peer-led career planning workshop in Rajshahi, Bangladesh. Exactly four adult South Asian university students of mixed genders sit around a table with notebooks and one shared phone. One student wears a hijab naturally; all wear everyday campus clothes. All four are active collaborators with equal positions, engaged in a friendly planning discussion.
+Style/medium: Contemporary flat editorial illustration with subtle paper texture.
+Composition/framing: Square composition, a clear group scene with believable hands and objects, uncluttered background.
+Color palette: Warm muted forest green, cream, and terracotta.
+Constraints: No text, no letters, no logos, no QR codes, no watermark. No graduation gowns, airplanes, money, foreign flags, or stereotypical poverty. No real identifiable people. Show exactly four adult students and exactly one shared phone.
