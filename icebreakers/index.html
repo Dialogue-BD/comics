@@ -154,11 +154,36 @@
   .question-qr__text{font-size:clamp(.62rem,.62vw,.78rem);font-weight:700;line-height:1.16;color:#4b5563}
   .pill--locked{color:hsl(var(--accent));border-color:hsl(var(--accent) / .55);background:hsl(var(--accent) / .14)}
 
+  .qr-zoom{
+    position:fixed;inset:0;z-index:1000;display:grid;place-items:center;
+    padding:clamp(18px,3vmin,42px);background:rgba(4,6,10,.92);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .18s ease,visibility .18s ease;
+  }
+  .qr-zoom__card{
+    width:min(80vmin,760px);padding:clamp(14px,2vmin,24px);
+    display:flex;flex-direction:column;align-items:center;gap:clamp(10px,1.5vmin,18px);
+    color:#111827;text-align:center;background:#fff;
+    border:clamp(5px,.7vmin,9px) solid hsl(var(--accent));border-radius:clamp(22px,3vmin,38px);
+    box-shadow:0 0 0 10px hsl(var(--accent) / .16),0 30px 100px rgba(0,0,0,.65);
+    transform:scale(.94);transition:transform .18s ease,border-color .6s ease,box-shadow .6s ease;
+  }
+  .qr-zoom__code{width:min(68vmin,650px);aspect-ratio:1;overflow:hidden;background:#fff}
+  .qr-zoom__code canvas{display:block;width:100% !important;height:auto !important}
+  .qr-zoom__eyebrow{
+    font-family:var(--mono);font-size:clamp(1rem,2.2vmin,1.6rem);font-weight:900;
+    line-height:1;letter-spacing:.18em;text-transform:uppercase;color:#111827;
+  }
+  .qr-zoom__text{font-size:clamp(.9rem,1.8vmin,1.3rem);font-weight:700;line-height:1.15;color:#4b5563}
+  body.is-qr-zoomed .qr-zoom{opacity:1;visibility:visible}
+  body.is-qr-zoomed .qr-zoom__card{transform:scale(1)}
+
   body.is-locked .filters,
   body.is-locked .pill--count,
   body.is-locked #fsBtn,
   body.is-locked .footer,
-  body.is-locked .question-qr{display:none}
+  body.is-locked .question-qr,
+  body.is-locked .qr-zoom{display:none}
 
   /* ── panels ─────────────────────────────────────────── */
   .panels{
@@ -353,6 +378,14 @@
   </div>
 </div>
 
+<div class="qr-zoom" id="qrZoom" aria-hidden="true">
+  <div class="qr-zoom__card">
+    <div class="qr-zoom__code" id="qrZoomCode"></div>
+    <strong class="qr-zoom__eyebrow">Scan to open</strong>
+    <span class="qr-zoom__text" id="qrZoomText">Open this question + support</span>
+  </div>
+</div>
+
 <script src="../qr/qrcode.js"></script>
 <script src="questions.js"></script>
 <script>
@@ -404,10 +437,19 @@ function renderQuestionQr(item){
   $("questionQr").href = shareUrl;
   $("questionQr").setAttribute("aria-label", `Open question ${item.id} and its language support on a phone`);
   $("questionQrText").textContent = `Open Q${item.id} + support`;
+  $("qrZoomText").textContent = `Open Q${item.id} + language support`;
   new QRCode($("questionQrCode"), {
     text: shareUrl,
     width: 240,
     height: 240,
+    colorDark: "#111827",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+  new QRCode($("qrZoomCode"), {
+    text: shareUrl,
+    width: 900,
+    height: 900,
     colorDark: "#111827",
     colorLight: "#ffffff",
     correctLevel: QRCode.CorrectLevel.M
@@ -560,6 +602,21 @@ $("shuffleBtn").addEventListener("click", () => {
 });
 $("sayQ").addEventListener("click", () => say(deck[idx].q, $("sayQ")));
 
+const questionQrTrigger = $("questionQr");
+function setQrZoom(open){
+  if (isLockedView) return;
+  document.body.classList.toggle("is-qr-zoomed", open);
+  $("qrZoom").setAttribute("aria-hidden", String(!open));
+}
+questionQrTrigger.addEventListener("pointerenter", () => setQrZoom(true));
+questionQrTrigger.addEventListener("pointerleave", () => {
+  if (document.activeElement !== questionQrTrigger) setQrZoom(false);
+});
+questionQrTrigger.addEventListener("focus", () => setQrZoom(true));
+questionQrTrigger.addEventListener("blur", () => {
+  if (!questionQrTrigger.matches(":hover")) setQrZoom(false);
+});
+
 $("supportBtn").addEventListener("click", () => {
   const on = $("panels").classList.toggle("is-hidden");
   $("supportBtn").classList.toggle("is-on", on);
@@ -574,6 +631,11 @@ $("fsBtn").addEventListener("click", () => {
 });
 
 document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && document.body.classList.contains("is-qr-zoomed")){
+    questionQrTrigger.blur();
+    setQrZoom(false);
+    return;
+  }
   if (e.target.closest("button") && (e.key === " " || e.key === "Enter")) return;
   if (!isLockedView && (e.key === "ArrowRight" || e.key === " ")) { e.preventDefault(); advance(); }
   if (!isLockedView && e.key === "ArrowLeft" && idx > 0) { idx--; render(); }
