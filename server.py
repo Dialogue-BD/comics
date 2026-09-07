@@ -326,6 +326,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
+    def end_headers(self):
+        # The Replit preview iframe may otherwise retain stale static files
+        # across workflow restarts based on their Last-Modified timestamp.
+        self.send_header("Cache-Control", "no-store, no-cache, must-revalidate")
+        self.send_header("Pragma", "no-cache")
+        self.send_header("Expires", "0")
+        super().end_headers()
+
     def copyfile(self, source, outputfile):
         try:
             super().copyfile(source, outputfile)
