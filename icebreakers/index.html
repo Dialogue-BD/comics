@@ -135,6 +135,31 @@
   .tts.is-speaking{color:hsl(var(--accent));border-color:hsl(var(--accent));background:hsl(var(--accent) / .18);animation:pulse 1s ease-in-out infinite}
   @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 
+  /* Per-question handoff from the projector to students' phones. */
+  .question-qr{
+    flex:none;align-self:center;width:clamp(132px,10vw,176px);padding:8px;
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    color:#111827;text-decoration:none;text-align:center;background:#fff;
+    border:3px solid hsl(var(--accent));border-radius:clamp(14px,1.2vw,20px);
+    box-shadow:0 0 0 5px hsl(var(--accent) / .12),0 14px 34px rgba(0,0,0,.34);
+    transition:border-color .6s ease,box-shadow .6s ease,transform .16s ease;
+  }
+  .question-qr:hover{transform:translateY(-2px)}
+  .question-qr__code{width:clamp(108px,8vw,144px);aspect-ratio:1;overflow:hidden;background:#fff}
+  .question-qr__code canvas{display:block;width:100% !important;height:auto !important}
+  .question-qr__eyebrow{
+    font-family:var(--mono);font-size:clamp(.54rem,.54vw,.68rem);font-weight:800;
+    line-height:1;letter-spacing:.15em;text-transform:uppercase;color:#111827;
+  }
+  .question-qr__text{font-size:clamp(.62rem,.62vw,.78rem);font-weight:700;line-height:1.16;color:#4b5563}
+  .pill--locked{color:hsl(var(--accent));border-color:hsl(var(--accent) / .55);background:hsl(var(--accent) / .14)}
+
+  body.is-locked .filters,
+  body.is-locked .pill--count,
+  body.is-locked #fsBtn,
+  body.is-locked .footer,
+  body.is-locked .question-qr{display:none}
+
   /* ── panels ─────────────────────────────────────────── */
   .panels{
     --u:20px;
@@ -245,10 +270,14 @@
     .topbar-right{display:flex;gap:6px;grid-area:right;justify-self:end}
     .panels{padding-bottom:clamp(56px,9vh,74px)}
     .qband{align-items:flex-start}
+    .question-qr{display:none}
     .footer{position:sticky;bottom:0;padding-bottom:max(8px, env(safe-area-inset-bottom));
             background:linear-gradient(180deg,transparent,#0d1015 42%);margin:0 -4px;padding-left:4px;padding-right:4px}
     .q{font-size:clamp(1.3rem,5.6vw,2rem)}
     .note{font-size:clamp(.82rem,3.3vw,.98rem)}
+    body.is-locked .topbar{display:flex;flex-wrap:wrap;gap:8px}
+    body.is-locked .topbar-right{margin-left:auto}
+    body.is-locked .panels{padding-bottom:0}
   }
   @media (min-width:1200px){ .kbd{display:inline} }
   @media (prefers-reduced-motion: reduce){
@@ -264,7 +293,7 @@
       <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>Icebreakers</span></div>
       <div class="filters" id="filters"></div>
       <span class="spacer"></span>
-      <div class="topbar-right">
+      <div class="topbar-right" id="topbar-right">
       <span class="pill pill--count" id="count">001 / 100</span>
       <button class="pill" id="supportBtn" aria-pressed="false">Hide support</button>
       <button class="pill" id="fsBtn" aria-label="Full screen">
@@ -287,6 +316,11 @@
       <button class="tts" id="sayQ" aria-label="Listen to the question">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Z" fill="currentColor"></path><path d="M16 9c1 .8 1.5 1.8 1.5 3S17 14.2 16 15m2.6-8c1.7 1.4 2.6 3 2.6 5s-.9 3.6-2.6 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>
       </button>
+      <a class="question-qr" id="questionQr" href="#" target="_blank" rel="noopener" aria-label="Open this question on a phone">
+        <span class="question-qr__code" id="questionQrCode" aria-hidden="true"></span>
+        <strong class="question-qr__eyebrow">Scan to open</strong>
+        <span class="question-qr__text" id="questionQrText">This question + support</span>
+      </a>
     </section>
 
     <div class="panels" id="panels">
@@ -319,6 +353,7 @@
   </div>
 </div>
 
+<script src="../qr/qrcode.js"></script>
 <script src="questions.js"></script>
 <script>
 /* ══════════════════════════════════════════════════════════════════
@@ -338,6 +373,46 @@ const fill = s => esc(s)
 const speakable = s => s.replace(/«[^»]+»/g, "").replace(/___/g, " ... ").replace(/\s+/g," ").trim();
 
 let deck = [], idx = 0, filter = "all";
+const requestedQuestionId = Number(new URLSearchParams(location.search).get("question"));
+const lockedQuestion = Number.isInteger(requestedQuestionId)
+  ? QUESTIONS.find(item => item.id === requestedQuestionId)
+  : null;
+const isLockedView = Boolean(lockedQuestion);
+
+if (isLockedView){
+  document.body.classList.add("is-locked");
+  document.title = `Q${lockedQuestion.id} · Discussion Icebreakers`;
+  const lockedBadge = document.createElement("span");
+  lockedBadge.className = "pill pill--locked";
+  lockedBadge.textContent = `Shared question · Q${lockedQuestion.id}`;
+  $("topbar-right").prepend(lockedBadge);
+}
+
+function questionShareUrl(id){
+  const localHost = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  if (localHost) return `https://dialogue-bd.github.io/comics/icebreakers/?question=${id}`;
+  const url = new URL(location.href);
+  url.search = "";
+  url.hash = "";
+  url.searchParams.set("question", String(id));
+  return url.href;
+}
+
+function renderQuestionQr(item){
+  if (isLockedView) return;
+  const shareUrl = questionShareUrl(item.id);
+  $("questionQr").href = shareUrl;
+  $("questionQr").setAttribute("aria-label", `Open question ${item.id} and its language support on a phone`);
+  $("questionQrText").textContent = `Open Q${item.id} + support`;
+  new QRCode($("questionQrCode"), {
+    text: shareUrl,
+    width: 240,
+    height: 240,
+    colorDark: "#111827",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.M
+  });
+}
 
 /* ── speech ─────────────────────────────────────────────────────── */
 let speaking = null;
@@ -360,6 +435,10 @@ function say(text, control){
 
 /* ── filters ────────────────────────────────────────────────────── */
 function buildFilters(){
+  if (isLockedView){
+    $("filters").innerHTML = "";
+    return;
+  }
   const keys = ["all", ...Object.keys(CATEGORIES)];
   $("filters").innerHTML = keys.map(k => {
     const c = CATEGORIES[k];
@@ -367,6 +446,7 @@ function buildFilters(){
   }).join("");
 }
 $("filters").addEventListener("click", e => {
+  if (isLockedView) return;
   const b = e.target.closest("[data-cat]");
   if (!b || b.dataset.cat === filter) return;
   filter = b.dataset.cat;
@@ -376,7 +456,9 @@ $("filters").addEventListener("click", e => {
 
 /* ── deck ───────────────────────────────────────────────────────── */
 function build(){
-  const pool = filter === "all" ? QUESTIONS : QUESTIONS.filter(q => q.cat === filter);
+  const pool = isLockedView
+    ? [lockedQuestion]
+    : filter === "all" ? QUESTIONS : QUESTIONS.filter(q => q.cat === filter);
   deck = shuffle(pool.slice());
   idx = 0;
   render();
@@ -401,6 +483,7 @@ function render(){
     `<div class="v"><span class="v__w">${esc(w)}</span><span class="lvl ${l}">${l}</span><span class="v__g">${esc(g)}</span></div>`).join(""));
   $("pChunks").innerHTML = rows(item.chunks.map(c => `<div class="c">${fill(c)}</div>`).join(""));
   $("pFrames").innerHTML = rows(item.frames.map(f => `<div class="f">${fill(f)}</div>`).join(""));
+  renderQuestionQr(item);
 
   $("qband").classList.remove("is-changing");
   autofit();
@@ -460,6 +543,7 @@ function autofit(){
 }
 
 function advance(){
+  if (isLockedView) return;
   $("qband").classList.add("is-changing");
   setTimeout(() => {
     if (idx < deck.length - 1) { idx++; render(); }
@@ -469,7 +553,11 @@ function advance(){
 
 /* ── controls ───────────────────────────────────────────────────── */
 $("next").addEventListener("click", advance);
-$("shuffleBtn").addEventListener("click", () => { $("qband").classList.add("is-changing"); setTimeout(build, 170); });
+$("shuffleBtn").addEventListener("click", () => {
+  if (isLockedView) return;
+  $("qband").classList.add("is-changing");
+  setTimeout(build, 170);
+});
 $("sayQ").addEventListener("click", () => say(deck[idx].q, $("sayQ")));
 
 $("supportBtn").addEventListener("click", () => {
@@ -487,13 +575,13 @@ $("fsBtn").addEventListener("click", () => {
 
 document.addEventListener("keydown", e => {
   if (e.target.closest("button") && (e.key === " " || e.key === "Enter")) return;
-  if (e.key === "ArrowRight" || e.key === " ") { e.preventDefault(); advance(); }
-  if (e.key === "ArrowLeft" && idx > 0) { idx--; render(); }
+  if (!isLockedView && (e.key === "ArrowRight" || e.key === " ")) { e.preventDefault(); advance(); }
+  if (!isLockedView && e.key === "ArrowLeft" && idx > 0) { idx--; render(); }
   const k = e.key.toLowerCase();
   if (k === "s") $("sayQ").click();
   if (k === "f") $("fsBtn").click();
   if (k === "h") $("supportBtn").click();
-  if (k === "r") $("shuffleBtn").click();
+  if (!isLockedView && k === "r") $("shuffleBtn").click();
 });
 
 buildFilters();
