@@ -749,6 +749,35 @@ body[data-dialogue-page="home"] #app-header .view-btn.active {
   color: #20180a !important;
   background: #d2b978 !important;
 }
+body[data-dialogue-page="home"] :where(.play-pause-btn, #btn-play-pause),
+body[data-dialogue-page="qr"] :where(.play-pause-btn, #btn-play-pause) {
+  color: #f4f1e6 !important;
+  background: #103d21 !important;
+  border: 1px solid #b9924f !important;
+  box-shadow: 0 6px 18px rgba(16, 61, 33, .2) !important;
+}
+body[data-dialogue-page="home"] .timer-selector-group,
+body[data-dialogue-page="qr"] .timer-selector-group {
+  color: #314034 !important;
+  background: #e3ead9 !important;
+  border-color: #9aae90 !important;
+}
+body[data-dialogue-page="home"] .timer-btn,
+body[data-dialogue-page="qr"] .timer-btn { color: #314034 !important; }
+body[data-dialogue-page="home"] .timer-btn.active,
+body[data-dialogue-page="qr"] .timer-btn.active {
+  color: #f4f1e6 !important;
+  background: #31583e !important;
+}
+body[data-dialogue-page="home"] .slide-action-btn,
+body[data-dialogue-page="qr"] .slide-action-btn {
+  box-sizing: border-box;
+  width: 78px;
+  min-height: 42px;
+  padding: 8px 12px !important;
+  justify-content: center;
+  line-height: 1;
+}
 body[data-dialogue-page="home"] .qr-card-present-btn {
   min-height: 44px;
   color: var(--dialogue-forest) !important;
@@ -780,6 +809,64 @@ body[data-dialogue-page="action-pictures"] :where(.btn-primary, .btn-dice) {
   color: #20180a !important;
   background: #d2b978 !important;
   border-color: #d2b978 !important;
+}
+body[data-dialogue-page="action-pictures"] #viewport-container {
+  background-color: #0c3319 !important;
+  background-image: radial-gradient(circle at 50% 45%, rgba(86, 125, 91, .28), rgba(5, 32, 13, .98) 76%) !important;
+}
+body[data-dialogue-page="action-pictures"] :where(.modal-backdrop, #gallery-modal) {
+  background: rgba(5, 32, 13, .74) !important;
+}
+body[data-dialogue-page="action-pictures"] #gallery-modal .modal-card {
+  color: #1d211c !important;
+  background: #f4f1e6 !important;
+  border-color: #b8b29f !important;
+}
+body[data-dialogue-page="action-pictures"] #gallery-modal :where(.modal-header, .modal-controls) {
+  color: #1d211c !important;
+  background: #fffdf7 !important;
+  border-color: #d8d3c2 !important;
+}
+body[data-dialogue-page="action-pictures"] #gallery-modal .modal-controls { background: #e9e4d6 !important; }
+body[data-dialogue-page="action-pictures"] #gallery-modal .modal-body { background: #f4f1e6 !important; }
+body[data-dialogue-page="action-pictures"] #gallery-modal :where(.modal-title, .thumb-title) { color: #1d211c !important; }
+body[data-dialogue-page="action-pictures"] #gallery-modal :where(.modal-title span, .thumb-desc) { color: #4f5a4d !important; }
+body[data-dialogue-page="action-pictures"] #gallery-modal .search-box input {
+  color: #1d211c !important;
+  background: #fffdf7 !important;
+  border-color: #9aae90 !important;
+}
+body[data-dialogue-page="action-pictures"] #gallery-modal .filter-tab {
+  color: #314034 !important;
+  background: #e3ead9 !important;
+  border-color: #b8c6af !important;
+}
+body[data-dialogue-page="action-pictures"] #gallery-modal .filter-tab.active {
+  color: #20180a !important;
+  background: #d2b978 !important;
+  border-color: #b9924f !important;
+}
+body[data-dialogue-page="action-pictures"] #gallery-modal .thumb-card {
+  color: #1d211c !important;
+  background: #fffdf7 !important;
+  border-color: #d8d3c2 !important;
+}
+body[data-dialogue-page="action-pictures"] #gallery-modal .thumb-badge {
+  color: #f4f1e6 !important;
+  background: rgba(16, 61, 33, .94) !important;
+  border-color: #b9924f !important;
+}
+body[data-dialogue-page="action-pictures"] #gallery-modal .thumb-active-indicator {
+  color: #20180a !important;
+  background: #d2b978 !important;
+}
+body[data-dialogue-page="action-pictures"] :where(#toast, #loading-indicator) {
+  background: rgba(12, 51, 25, .95) !important;
+  border-color: #b9924f !important;
+}
+body[data-dialogue-page="action-pictures"] .spinner {
+  border-color: rgba(210, 185, 120, .25) !important;
+  border-top-color: #d2b978 !important;
 }
 body[data-dialogue-page="action-pictures"] :where(.hud-btn:hover, .hud-btn.primary, .flank-btn:hover) {
   color: #20180a !important;
@@ -852,7 +939,27 @@ body[data-dialogue-page="busy-pictures"] :where(.tour-btn, .close-panel) {
   background: #103d21 !important;
   border-color: #103d21 !important;
 }
+body[data-dialogue-page="busy-pictures"] .close-panel {
+  width: 44px !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  padding: 0 !important;
+  display: inline-grid !important;
+  place-items: center;
+  border-radius: 10px !important;
+  line-height: 1 !important;
+}
 body[data-dialogue-page="busy-pictures"] :where(.voice-summary, .filter-label) { color: #3f5044 !important; }
+body[data-dialogue-page="busy-pictures"] :where(.hint-container, #example-box) {
+  color: #1d211c !important;
+  background: #edf3e9 !important;
+  border-left-color: #31583e !important;
+  box-shadow: inset 0 0 0 1px rgba(49, 88, 62, .12);
+}
+body[data-dialogue-page="busy-pictures"] :where(.hint-title, .hint-text, #hint-text, #example-text) {
+  color: #314034 !important;
+}
+body[data-dialogue-page="busy-pictures"] .hint-title { color: #6d5624 !important; }
 body[data-dialogue-page="busy-pictures"] :where(.mode-btn.active-grammar, .mode-btn.active-vocab, .form-btn.active, .action-btn.primary) {
   color: #f4f1e6 !important;
   background: #103d21 !important;
@@ -970,6 +1077,31 @@ body[data-dialogue-page="dialogue-comics-practice"] :where(.eyebrow, .hint stron
 body[data-dialogue-page="dialogue-comics-practice"] :where(.step-card p, .quick-start .step p) { color: #405762 !important; }
 
 /* 09 · Discussion Rooms — gold is an accent, not a white-text button fill. */
+body[data-dialogue-page="discussion"] {
+  --ink: #1d211c;
+  --ink-soft: #4f5a4d;
+  --paper: #f4f1e6;
+  --paper-deep: #e9e4d6;
+  --card: #fffdf7;
+  --line: #d8d3c2;
+  --teal: #174629;
+  --teal-dark: #103d21;
+  --teal-soft: #e3ead9;
+  --coral: #b9924f;
+  --coral-soft: #f0e6cd;
+  --gold: #b9924f;
+  --gold-soft: #f0e6cd;
+  --blue: #31583e;
+  --blue-soft: #e3ead9;
+  --danger: #a14331;
+}
+body[data-dialogue-page="discussion"] .wordmark-mark { background: #b9924f !important; }
+body[data-dialogue-page="discussion"] :where(.onboarding-role.phone, .move-evidence span, .speak-word) {
+  color: #174629 !important;
+  background: #e3ead9 !important;
+  border-color: rgba(23, 70, 41, .22) !important;
+}
+body[data-dialogue-page="discussion"] :where(.onboarding-close, .modal-close) { border-color: #b9924f !important; }
 body[data-dialogue-page="discussion"] :where(.teacher-icon, .recovery-launch-icon) { color: #20180a !important; }
 body[data-dialogue-page="discussion"] :where(.primary-button, .entry-action, .btn-primary) {
   color: #f4f1e6 !important;
@@ -1051,6 +1183,29 @@ body[data-dialogue-page="mouse-strawberry"] :where(.modal-close, #modal-prev-btn
   border-color: #b9924f !important;
 }
 body[data-dialogue-page="mouse-strawberry"] #dual-modal-counter { color: #4f5a4d !important; }
+body[data-dialogue-page="mouse-strawberry"] #perspective-switcher {
+  color: #f4f1e6 !important;
+  background: rgba(12, 51, 25, .97) !important;
+  border-bottom-color: #b9924f !important;
+}
+body[data-dialogue-page="mouse-strawberry"] #perspective-switcher > span { color: #f0e6cd !important; }
+body[data-dialogue-page="mouse-strawberry"] .perspective-btn {
+  min-height: 40px;
+  padding: 7px 16px;
+  border: 1.5px solid rgba(210, 185, 120, .58);
+  border-radius: 999px;
+  color: #f4f1e6;
+  background: rgba(244, 241, 230, .1);
+  font-weight: 800;
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+}
+body[data-dialogue-page="mouse-strawberry"] .perspective-btn:hover { transform: translateY(-1px); }
+body[data-dialogue-page="mouse-strawberry"] .perspective-btn.active {
+  color: #20180a;
+  background: #d2b978;
+  border-color: #d2b978;
+}
 
 /* 13 · Guess What — forest projector stage with dark ink on gold controls. */
 body[data-dialogue-page="guess-what"] :where(.brand-mark, .mode-icon, button.active) {
@@ -1065,13 +1220,48 @@ body[data-dialogue-page="guess-what"] #start-button :where(span, strong),
 body[data-dialogue-page="guess-what"] .deck-button strong { color: #17351f !important; }
 
 /* 15 · Icebreakers — question and language support must read on forest. */
-body[data-dialogue-page="icebreakers"] :where(#q, #note, #catLab, #qno, .panel, .panel__head, .panel__body) {
-  color: #f4f1e6 !important;
+body[data-dialogue-page="icebreakers"] {
+  --ink: #1d211c !important;
+  --muted: rgba(29, 33, 28, .82) !important;
+  --faint: rgba(29, 33, 28, .62) !important;
+  --glass: rgba(255, 253, 247, .92) !important;
+  --border: rgba(23, 70, 41, .22) !important;
+  --panel: rgba(255, 253, 247, .88) !important;
+  --rule: rgba(23, 70, 41, .17) !important;
 }
-body[data-dialogue-page="icebreakers"] :where(#note b, #catLab) { color: #f0cf78 !important; }
-body[data-dialogue-page="icebreakers"] .pill.is-on { color: #f4f1e6 !important; border-color: #d2b978 !important; }
+body[data-dialogue-page="icebreakers"] #app {
+  --accent: 140 38% 30% !important;
+  background: radial-gradient(circle at 50% -4%, rgba(185, 146, 79, .15), transparent 44%), linear-gradient(150deg, #fffdf7 0%, #f4f1e6 58%, #e9e4d6 100%) !important;
+}
+body[data-dialogue-page="icebreakers"] .app::before { opacity: .08; }
+body[data-dialogue-page="icebreakers"] .topbar {
+  margin: -10px -16px 0;
+  padding: 10px 16px 10px 56px;
+  color: #f4f1e6 !important;
+  background: #103d21 !important;
+}
+body[data-dialogue-page="icebreakers"] .topbar :where(.brand, .pill:not(.is-on)) { color: #f4f1e6 !important; }
+body[data-dialogue-page="icebreakers"] .topbar .pill:not(.is-on) { background: rgba(244, 241, 230, .1) !important; }
+body[data-dialogue-page="icebreakers"] .topbar .pill.is-on { color: #20180a !important; background: #d2b978 !important; }
+body[data-dialogue-page="icebreakers"] :where(.qband, .panel, .panel__head, .panel__body, .footer) {
+  color: #1d211c !important;
+  background-color: #fffdf7 !important;
+  border-color: rgba(23, 70, 41, .22) !important;
+}
+body[data-dialogue-page="icebreakers"] .qband {
+  background: linear-gradient(180deg, #fffdf7, #edf3e9) !important;
+  box-shadow: 0 16px 36px rgba(16, 61, 33, .12) !important;
+}
+body[data-dialogue-page="icebreakers"] :where(.panel__head, .panel__body) { color: #1d211c !important; }
+body[data-dialogue-page="icebreakers"] :where(#q, #note, #catLab, #qno, .panel, .panel__head, .panel__body) {
+  color: #1d211c !important;
+}
+body[data-dialogue-page="icebreakers"] .panel :where(.v, .v span, .v b, .c, .wh, .wh span, .lab) { color: #1d211c !important; }
+body[data-dialogue-page="icebreakers"] .panel .lab { color: #31583e !important; }
+body[data-dialogue-page="icebreakers"] :where(#note b, #catLab) { color: #31583e !important; }
+body[data-dialogue-page="icebreakers"] .pill.is-on { border-color: #b9924f !important; }
 body[data-dialogue-page="icebreakers"] .action--next :where(span, .sub, .kbd) { color: #20180a !important; }
-body[data-dialogue-page="icebreakers"] .action:not(.action--next) :where(span, .sub) { color: #f4f1e6 !important; }
+body[data-dialogue-page="icebreakers"] .action:not(.action--next) :where(span, .sub) { color: #1d211c !important; }
 
 /* 16 · IELTS Reading — restrained academic palette and stronger metadata. */
 body[data-dialogue-page="ielts-reading"] :where(.eyebrow, .station-kicker) { color: #6d5624 !important; }

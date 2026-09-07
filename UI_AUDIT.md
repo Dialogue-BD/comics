@@ -53,3 +53,7 @@ The review targeted readable foreground/background pairs, visible keyboard focus
 ## Practical follow-up
 
 Text embedded in source illustrations is outside CSS contrast testing. A short projector check in the actual classroom and a VoiceOver or NVDA pass would complement this visual production audit before calling the collection formally WCAG conformant.
+
+## Follow-up corrections
+
+The post-review pass also corrected the Busy Pictures close control and teaching callouts; the home/QR slideshow play, timing, copy, and open controls; the Icebreakers light theme; the full Action Pictures gallery and canvas chrome; the Discussion Rooms token palette; and the Red Ripe Strawberry perspective selector. These six affected routes were rechecked at mobile and desktop widths with no horizontal document overflow.
