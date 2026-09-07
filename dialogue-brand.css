@@ -695,3 +695,545 @@ body.fullscreen-active .dialogue-brandbar {
   .dialogue-activity-shell nav.top .bar { padding-left: 50px; }
   .dialogue-activity-shell #story-spread-toggle { left: 50px; top: 8px; }
 }
+
+/* --------------------------------------------------------------------------
+ * Page-aware production pass · September 2026
+ *
+ * dialogue-brand.js gives every route a stable data-dialogue-page value. This
+ * keeps the collection recognisably Dialogue without flattening twenty-seven
+ * very different teaching tools into one generic theme.
+ * -------------------------------------------------------------------------- */
+
+body[data-dialogue-page] {
+  --page-accent: var(--dialogue-gold);
+  --page-tint: var(--dialogue-gold-soft);
+  --page-shadow: rgba(16, 61, 33, .16);
+}
+body[data-dialogue-page="action-pictures"],
+body[data-dialogue-page="busy-pictures"],
+body[data-dialogue-page="picture-this"],
+body[data-dialogue-page="whos-this"] { --page-accent: #86a87a; --page-tint: #e3ead9; }
+body[data-dialogue-page="debate"],
+body[data-dialogue-page="discussion"],
+body[data-dialogue-page="cross-cultural-coms"] { --page-accent: #b9924f; --page-tint: #f0e6cd; }
+body[data-dialogue-page="emotions"],
+body[data-dialogue-page="reflecting-listening"],
+body[data-dialogue-page="kindness-repentence"] { --page-accent: #b0563a; --page-tint: #f2ded5; }
+body[data-dialogue-page="good-bird"],
+body[data-dialogue-page="mouse-strawberry"],
+body[data-dialogue-page="american-fisherman"],
+body[data-dialogue-page="hingsha"],
+body[data-dialogue-page="mezban"],
+body[data-dialogue-page="north-end"],
+body[data-dialogue-page="stories"],
+body[data-dialogue-page="narratives"] { --page-accent: #d2b978; --page-tint: #f0e6cd; }
+
+body[data-dialogue-page] .dialogue-brandbar {
+  width: 44px;
+  height: 44px;
+  border-color: var(--page-accent);
+  box-shadow: 0 8px 24px var(--page-shadow);
+}
+body[data-dialogue-page] .dialogue-brandbar img { width: 36px; height: 36px; flex-basis: 36px; }
+body[data-dialogue-page] .dialogue-brandbar:hover,
+body[data-dialogue-page] .dialogue-brandbar:focus-visible { width: 184px; }
+body[data-dialogue-page] :where(button, a[role="button"], .btn, .action) { min-height: 44px; }
+
+/* 01 · Collection home — directory stays quiet; controls meet touch contrast. */
+body[data-dialogue-page="home"] #app-header :where(button, .view-btn) {
+  min-height: 44px;
+  color: var(--dialogue-paper) !important;
+  border-color: rgba(244, 241, 230, .35) !important;
+}
+body[data-dialogue-page="home"] #app-header .view-btn.active {
+  color: #20180a !important;
+  background: #d2b978 !important;
+}
+body[data-dialogue-page="home"] .qr-card-present-btn {
+  min-height: 44px;
+  color: var(--dialogue-forest) !important;
+}
+
+/* 02 · Action Pictures — immersive canvas, forest HUD, legible loading state. */
+body[data-dialogue-page="action-pictures"] {
+  --text: #f4f1e6 !important;
+  --text-muted: #d5dfd1 !important;
+  --text-dim: #aebfac !important;
+  --accent: #d2b978 !important;
+  --accent-hover: #ead8a5 !important;
+  --surface: rgba(12, 51, 25, .93) !important;
+  --surface-elevated: #174629 !important;
+  --surface-hover: #205536 !important;
+  --border: rgba(216, 211, 194, .34) !important;
+}
+body[data-dialogue-page="action-pictures"] :where(.hud-pill, .hud-btn, .flank-btn, #loading-indicator) {
+  color: #f4f1e6 !important;
+  background: rgba(12, 51, 25, .94) !important;
+  border-color: rgba(210, 185, 120, .62) !important;
+}
+body[data-dialogue-page="action-pictures"] :where(.glass-pill, .btn-icon, .flank-btn) {
+  color: #f4f1e6 !important;
+  background: rgba(12, 51, 25, .94) !important;
+  border-color: rgba(210, 185, 120, .62) !important;
+}
+body[data-dialogue-page="action-pictures"] :where(.btn-primary, .btn-dice) {
+  color: #20180a !important;
+  background: #d2b978 !important;
+  border-color: #d2b978 !important;
+}
+body[data-dialogue-page="action-pictures"] :where(.hud-btn:hover, .hud-btn.primary, .flank-btn:hover) {
+  color: #20180a !important;
+  background: #d2b978 !important;
+}
+body[data-dialogue-page="action-pictures"] #loading-text { color: #f4f1e6 !important; }
+
+/* 03 · AI Fluency — its component owns layout; shared focus uses the brand. */
+body[data-dialogue-page="ai-fluency"] :focus-visible { outline-color: #b9924f; }
+
+/* 04, 10, 14, 18, 19, 22, 26 · image and PDF readers — retain an immersive
+   stage while replacing neutral black chrome with forest and gold. */
+body[data-dialogue-page="american-fisherman"],
+body[data-dialogue-page="ecclesiastes"],
+body[data-dialogue-page="hingsha"],
+body[data-dialogue-page="kindness-repentence"],
+body[data-dialogue-page="mezban"],
+body[data-dialogue-page="north-end"],
+body[data-dialogue-page="stories"] {
+  background: #0c3319 !important;
+  color: #f4f1e6 !important;
+}
+body[data-dialogue-page="american-fisherman"] :where(#loading, .controls, .nav-button),
+body[data-dialogue-page="ecclesiastes"] :where(#loading, .controls, .nav-button),
+body[data-dialogue-page="hingsha"] :where(#loading, .controls, .nav-button),
+body[data-dialogue-page="kindness-repentence"] :where(#loading, .controls, .nav-button),
+body[data-dialogue-page="mezban"] :where(#loading, .controls, .nav-button),
+body[data-dialogue-page="north-end"] :where(#loading, .controls, .nav-button),
+body[data-dialogue-page="stories"] :where(#loading, .controls, .nav-button) {
+  color: #f4f1e6 !important;
+  background-color: rgba(12, 51, 25, .92) !important;
+  border-color: rgba(210, 185, 120, .58) !important;
+}
+
+/* 05 · Busy Pictures — cream learning panel with forest actions, over the art. */
+body[data-dialogue-page="busy-pictures"] {
+  --dialogue-busy-ink: #1d211c;
+  background: #e9e4d6 !important;
+  color: var(--dialogue-busy-ink) !important;
+}
+body[data-dialogue-page="busy-pictures"] #viewer-container { background: #e9e4d6 !important; }
+body[data-dialogue-page="busy-pictures"] :where(#page-nav-bar, #prompt-panel, #tour-controls) {
+  color: var(--dialogue-busy-ink) !important;
+  background: rgba(255, 253, 247, .96) !important;
+  border-color: #c9c3af !important;
+  box-shadow: 0 14px 34px rgba(16, 61, 33, .2) !important;
+}
+body[data-dialogue-page="busy-pictures"] #speech-toast {
+  color: #f4f1e6 !important;
+  background: rgba(12, 51, 25, .96) !important;
+  border-color: #b9924f !important;
+}
+body[data-dialogue-page="busy-pictures"] :where(.panel-title, .panel-section-title, .grammar-point, .prompt-text, .vocab-focus-title, .form-toggle-label) {
+  color: #1d211c !important;
+}
+body[data-dialogue-page="busy-pictures"] :where(.panel-subtitle, .instruction-text, .formula-label, .example-label, .vocab-focus-desc) {
+  color: #4f5a4d !important;
+}
+body[data-dialogue-page="busy-pictures"] :where(.mode-toggle-card, .form-toggle-card, .grammar-card, .output-card, .vocab-focus-banner) {
+  background: #f4f1e6 !important;
+  border-color: #d8d3c2 !important;
+}
+body[data-dialogue-page="busy-pictures"] :where(.nav-btn, .mode-btn, .form-btn, .action-btn, #tour-launch, #mute-btn, #toggle-btn, #fullscreen-btn) {
+  color: #103d21 !important;
+  background: #e3ead9 !important;
+  border-color: #9aae90 !important;
+}
+body[data-dialogue-page="busy-pictures"] :where(.tour-btn, .close-panel) {
+  color: #f4f1e6 !important;
+  background: #103d21 !important;
+  border-color: #103d21 !important;
+}
+body[data-dialogue-page="busy-pictures"] :where(.voice-summary, .filter-label) { color: #3f5044 !important; }
+body[data-dialogue-page="busy-pictures"] :where(.mode-btn.active-grammar, .mode-btn.active-vocab, .form-btn.active, .action-btn.primary) {
+  color: #f4f1e6 !important;
+  background: #103d21 !important;
+  border-color: #103d21 !important;
+}
+body[data-dialogue-page="busy-pictures"] :where(#page-indicator, #speech-toast .toast-title) { color: #8a6d2c !important; }
+body[data-dialogue-page="busy-pictures"] .flooding-banner {
+  color: #493611 !important;
+  background: #f0e6cd !important;
+  border-color: #b9924f !important;
+}
+body[data-dialogue-page="busy-pictures"] .dialogue-brandbar { display: none; }
+body[data-dialogue-page="busy-pictures"] #page-nav-bar { left: 16px !important; }
+
+/* 06 · Cross-cultural communication — editorial paper and a gold cue line. */
+body[data-dialogue-page="cross-cultural-coms"] :where(.card, .scenario-card, .activity-card) {
+  background: #fffdf7;
+  border-color: #d8d3c2;
+}
+body[data-dialogue-page="cross-cultural-coms"] :where(.btn-primary, .primary-button) {
+  color: #f4f1e6 !important;
+  background: #103d21 !important;
+}
+
+/* 07 · Debate — light working canvas; semantic teams stay green and red. */
+body[data-dialogue-page="debate"] {
+  --govt: #176b46 !important;
+  --opp: #a93636 !important;
+  --text: #1d211c !important;
+  --text-muted: #4f5a4d !important;
+  --text-dim: #687268 !important;
+}
+body[data-dialogue-page="debate"] header.app-header :where(.brand-title h1, .brand-title span.sub) {
+  color: #f4f1e6 !important;
+}
+body[data-dialogue-page="debate"] header.app-header .badge-fmt {
+  color: #f0e6cd !important;
+  background: rgba(185, 146, 79, .2) !important;
+  border-color: #b9924f !important;
+}
+body[data-dialogue-page="debate"] header.app-header :where(.header-btn, .btn-back) {
+  color: #1d211c !important;
+  background: #fffdf7 !important;
+  border-color: #d8d3c2 !important;
+}
+body[data-dialogue-page="debate"] .step-tab:not(.active) :where(.step-num, span) { color: #4f5a4d !important; }
+body[data-dialogue-page="debate"] :where(.btn-action, .btn-primary) {
+  color: #f4f1e6 !important;
+  background: #103d21 !important;
+  border-color: #103d21 !important;
+}
+body[data-dialogue-page="debate"] :where(.btn-secondary, .timing-btn) {
+  color: #314034 !important;
+  background: #f4f1e6 !important;
+  border-color: #c9c3af !important;
+}
+body[data-dialogue-page="debate"] .timing-btn.active { color: #f4f1e6 !important; background: #31583e !important; }
+body[data-dialogue-page="debate"] #modal-slideshow :where(.slide-step-badge, .slide-badge-row > span) {
+  color: #38543b !important;
+  background: #f0e6cd !important;
+  border-color: #b9924f !important;
+}
+body[data-dialogue-page="debate"] #modal-slideshow :where(.slide-card-title, .slide-card-bn, .slide-card-desc, .turn-action-title-en, .turn-action-title-bn, .turn-action-desc-en, .turn-action-desc-bn) {
+  color: #1d211c !important;
+}
+body[data-dialogue-page="debate"] #slide-1 .slide-feature-card > div > div[style*="font-size: 1.45rem"],
+body[data-dialogue-page="debate"] #slide-1 .slide-feature-card > div > div[style*="font-size: 1.35rem"] {
+  color: #1d211c !important;
+}
+body[data-dialogue-page="debate"] #modal-slideshow .slideshow-content :where(
+  [style*="color: #fff"],
+  [style*="color: #f1f5f9"],
+  [style*="color: #e2e8f0"],
+  [style*="color: #cbd5e1"],
+  [style*="color: #94a3b8"]
+) { color: #1d211c !important; }
+body[data-dialogue-page="debate"] #modal-slideshow .slideshow-content [style*="color: #34d399"] { color: #176b46 !important; }
+body[data-dialogue-page="debate"] #modal-slideshow .slideshow-content :where([style*="color: #f87171"], [style*="color: #fca5a5"]) { color: #922f2f !important; }
+body[data-dialogue-page="debate"] #modal-slideshow .slideshow-content [style*="color: #93c5fd"] { color: #38543b !important; }
+body[data-dialogue-page="debate"] #modal-slideshow .slideshow-content [style*="color: #c084fc"] { color: #6a3d7a !important; }
+body[data-dialogue-page="debate"] #modal-slideshow .slideshow-content [style*="color: #fbbf24"] { color: #765300 !important; }
+body[data-dialogue-page="debate"] #slide-1 .slide-feature-card > div:last-child {
+  color: #1d211c !important;
+  background: rgba(255, 253, 247, .86) !important;
+  border-color: currentColor !important;
+}
+body[data-dialogue-page="debate"] #modal-slideshow .slideshow-header-bar [style*="color: #93c5fd"] {
+  color: #f0e6cd !important;
+}
+body[data-dialogue-page="debate"] #modal-slideshow :where(.turn-persona-card.govt, .slide-feature-card.govt) {
+  background: linear-gradient(180deg, #dbeadf 0%, #fffdf7 100%) !important;
+  border-color: #4e8c6d !important;
+}
+body[data-dialogue-page="debate"] #modal-slideshow :where(.turn-persona-card.opp, .slide-feature-card.opp) {
+  background: linear-gradient(180deg, #f1d8d2 0%, #fffdf7 100%) !important;
+  border-color: #b85b50 !important;
+}
+body[data-dialogue-page="debate"] #modal-slideshow :where(.turn-persona-card.accent, .turn-persona-card.warning, .slide-feature-card) {
+  background-color: #fffdf7 !important;
+}
+body[data-dialogue-page="debate"] #modal-slideshow .slideshow-nav-bar :where(.btn-secondary, button) {
+  color: #f4f1e6 !important;
+  background-color: #174629 !important;
+  border-color: #b9924f !important;
+}
+body[data-dialogue-page="debate"] #modal-slideshow .slide-dot { background: #809184 !important; }
+body[data-dialogue-page="debate"] #modal-slideshow .slide-dot.active { background: #d2b978 !important; }
+
+/* 08 · Dialogue Comics — preserve its illustrative voice, repair header links. */
+body[data-dialogue-page="dialogue-comics-practice"] :where(header, nav.topbar) :where(a, .nav-link) {
+  color: #f4f1e6 !important;
+  text-decoration-color: #d2b978;
+}
+body[data-dialogue-page="dialogue-comics-practice"] :where(.eyebrow, .hint strong) { color: #6d5624 !important; }
+body[data-dialogue-page="dialogue-comics-practice"] :where(.step-card p, .quick-start .step p) { color: #405762 !important; }
+
+/* 09 · Discussion Rooms — gold is an accent, not a white-text button fill. */
+body[data-dialogue-page="discussion"] :where(.teacher-icon, .recovery-launch-icon) { color: #20180a !important; }
+body[data-dialogue-page="discussion"] :where(.primary-button, .entry-action, .btn-primary) {
+  color: #f4f1e6 !important;
+  background: #103d21 !important;
+}
+body[data-dialogue-page="discussion"] .intro em { color: #6d5624 !important; }
+body[data-dialogue-page="discussion"] :where(.hero h1 em, h1 em) { color: #6d5624 !important; }
+body[data-dialogue-page="discussion"] .eyebrow { color: #71591f !important; }
+body[data-dialogue-page="discussion"] .onboarding-stage-number { color: #71591f !important; }
+
+/* 11 · Emotions — a composed masthead and readable three-step pathway. */
+body[data-dialogue-page="emotions"] .dialogue-brandbar { display: none; }
+body[data-dialogue-page="emotions"] .page-shell { padding-inline: clamp(16px, 3vw, 34px); }
+body[data-dialogue-page="emotions"] .site-header {
+  min-height: 82px;
+  margin: 0 calc(clamp(16px, 3vw, 34px) * -1);
+  padding: 14px clamp(18px, 3.4vw, 46px) !important;
+  background: linear-gradient(110deg, #0c3319 0%, #174629 70%, #285b3c 100%) !important;
+  border-bottom: 3px solid #b9924f !important;
+  box-shadow: 0 10px 30px rgba(16,61,33,.14);
+}
+body[data-dialogue-page="emotions"] .site-logo {
+  min-height: 48px;
+  padding: 5px 12px;
+  background: #fffdf7;
+  border: 1px solid #d2b978;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(5,32,13,.25);
+}
+body[data-dialogue-page="emotions"] .site-logo__img { height: 38px; max-height: 38px; }
+body[data-dialogue-page="emotions"] .date-chip {
+  color: #f4f1e6 !important;
+  background: rgba(244,241,230,.12) !important;
+  border-color: rgba(244,241,230,.4) !important;
+}
+body[data-dialogue-page="emotions"] .sticky-bar-container {
+  border: 1px solid #d8d3c2;
+  border-top: 0;
+  background: rgba(255,253,247,.96);
+  box-shadow: 0 12px 28px rgba(16,61,33,.1);
+}
+body[data-dialogue-page="emotions"] :where(.step, .step span, .step strong) { color: #59665c; }
+body[data-dialogue-page="emotions"] .step.is-active span { color: #fffdf7 !important; }
+body[data-dialogue-page="emotions"] .step.is-active strong { color: #1d211c !important; }
+body[data-dialogue-page="emotions"] :where(.quiet-button, .rotation-buttons button, .show-more-clues) {
+  min-height: 44px;
+  color: #314034 !important;
+}
+body[data-dialogue-page="emotions"] .intro h1 em { color: #a14331 !important; }
+body[data-dialogue-page="emotions"] .intro__copy { color: #4f5a4d !important; }
+body[data-dialogue-page="emotions"] .cefr-btn--a { color: #f4f1e6 !important; background: #176b46 !important; }
+body[data-dialogue-page="emotions"] .cefr-btn--a :where(strong, span) { color: #f4f1e6 !important; }
+body[data-dialogue-page="emotions"] .eyebrow { color: #71591f !important; }
+
+/* 12 + 20 · Good Bird and Red Ripe Strawberry — cream labels on the forest
+   tabletop; modal navigation returns to dark ink on cream. */
+body[data-dialogue-page="good-bird"] :where(.activity-header h2, .activity-header p, .section-title, .section-hint-text, .feedback-banner, .sequence-section .section-head, .sequence-section .section-title),
+body[data-dialogue-page="mouse-strawberry"] :where(.activity-header h2, .activity-header p, .section-title, .section-hint-text, .feedback-banner, .sequence-section .section-head, .sequence-section .section-title) {
+  color: #f4f1e6 !important;
+}
+body[data-dialogue-page="good-bird"] :where(.sequence-section .phase-label, .sequence-section .phase-description, .slot-label),
+body[data-dialogue-page="mouse-strawberry"] :where(.sequence-section .phase-label, .sequence-section .phase-description, .slot-label) {
+  color: #e3ead9 !important;
+}
+body[data-dialogue-page="good-bird"] .narrative-stages :where(.stage-title, .stage-desc),
+body[data-dialogue-page="mouse-strawberry"] .narrative-stages :where(.stage-title, .stage-desc) {
+  color: #f4f1e6 !important;
+}
+body[data-dialogue-page="good-bird"] :where(.modal-card, .modal-header, .modal-body, .modal-nav),
+body[data-dialogue-page="mouse-strawberry"] :where(.modal-card, .modal-header, .modal-body, .modal-nav, .dual-modal-content, .dual-modal-nav) {
+  color: #1d211c !important;
+  background: #fffdf7 !important;
+  border-color: #d8d3c2 !important;
+}
+body[data-dialogue-page="good-bird"] :where(.modal-close, #modal-prev-btn, #modal-next-btn),
+body[data-dialogue-page="mouse-strawberry"] :where(.modal-close, #modal-prev-btn, #modal-next-btn, #dual-modal-prev-btn, #dual-modal-next-btn) {
+  color: #f4f1e6 !important;
+  background: #103d21 !important;
+  border-color: #b9924f !important;
+}
+body[data-dialogue-page="mouse-strawberry"] #dual-modal-counter { color: #4f5a4d !important; }
+
+/* 13 · Guess What — forest projector stage with dark ink on gold controls. */
+body[data-dialogue-page="guess-what"] :where(.brand-mark, .mode-icon, button.active) {
+  color: #20180a !important;
+}
+body[data-dialogue-page="guess-what"] .eyebrow { color: #dec78f !important; }
+body[data-dialogue-page="guess-what"] :where(.primary-button, .start-button, .start-dock button) {
+  color: #20180a !important;
+  background: #d2b978 !important;
+}
+body[data-dialogue-page="guess-what"] #start-button :where(span, strong),
+body[data-dialogue-page="guess-what"] .deck-button strong { color: #17351f !important; }
+
+/* 15 · Icebreakers — question and language support must read on forest. */
+body[data-dialogue-page="icebreakers"] :where(#q, #note, #catLab, #qno, .panel, .panel__head, .panel__body) {
+  color: #f4f1e6 !important;
+}
+body[data-dialogue-page="icebreakers"] :where(#note b, #catLab) { color: #f0cf78 !important; }
+body[data-dialogue-page="icebreakers"] .pill.is-on { color: #f4f1e6 !important; border-color: #d2b978 !important; }
+body[data-dialogue-page="icebreakers"] .action--next :where(span, .sub, .kbd) { color: #20180a !important; }
+body[data-dialogue-page="icebreakers"] .action:not(.action--next) :where(span, .sub) { color: #f4f1e6 !important; }
+
+/* 16 · IELTS Reading — restrained academic palette and stronger metadata. */
+body[data-dialogue-page="ielts-reading"] :where(.eyebrow, .station-kicker) { color: #6d5624 !important; }
+body[data-dialogue-page="ielts-reading"] :where(.tag.pairs, .tag.classroom) {
+  color: #513d7c !important;
+  background: #eee7f1 !important;
+}
+body[data-dialogue-page="ielts-reading"] :where(.primary, .btn-primary) { color: #f4f1e6 !important; background: #103d21 !important; }
+
+/* 17 · Community — keep the welcoming dark card instead of paper-washing it. */
+body[data-dialogue-page="join-community"] {
+  background: radial-gradient(circle at 18% 12%, rgba(111,143,98,.22), transparent 34rem), #08250f !important;
+  color: #f4f1e6 !important;
+}
+body[data-dialogue-page="join-community"] main { background: linear-gradient(145deg, #174629, #0c3319) !important; }
+body[data-dialogue-page="join-community"] :where(h1, .intro, .benefits li, .content p) { color: #eef3e9 !important; }
+body[data-dialogue-page="join-community"] :where(.direct-link, .maps-link) {
+  min-height: 44px;
+  color: #17351f !important;
+  background: #f0e6cd !important;
+  border-color: #d2b978 !important;
+}
+body[data-dialogue-page="join-community"] .eyebrow { color: #ead8a5 !important; }
+
+/* 21 · Action Narratives — editorial controls around full-bleed imagery. */
+body[data-dialogue-page="narratives"] :where(.nav, .controls, .story-header) {
+  color: #f4f1e6;
+  background: rgba(12,51,25,.94);
+  border-color: rgba(210,185,120,.58);
+}
+
+/* 23 · Picture This — paper card details stay inked inside a forest theatre. */
+body[data-dialogue-page="picture-this"] :where(#card-count, #instructions-text) { color: #314034 !important; }
+body[data-dialogue-page="picture-this"] .app { background: radial-gradient(circle at 50% 42%, rgba(111,143,98,.25), transparent 42%), linear-gradient(145deg,#174629,#08250f) !important; }
+body[data-dialogue-page="picture-this"] :where(.topbar, .game-strip, .action) { color: #f4f1e6; }
+
+/* 24 · QR presentation — strong controls on the dark slideshow surround. */
+body[data-dialogue-page="qr"] :where(.timer-btn, #btn-fullscreen) {
+  min-height: 44px;
+  color: #f4f1e6 !important;
+  background: #174629 !important;
+  border-color: #b9924f !important;
+}
+body[data-dialogue-page="qr"] .timer-btn.active { color: #20180a !important; background: #d2b978 !important; }
+
+/* 25 · Reflective Listening — preserve the lime signal, use dark readable ink. */
+body[data-dialogue-page="reflecting-listening"] .shareButton {
+  min-height: 44px;
+  color: #17351f !important;
+  background: #d2b978 !important;
+  border-color: #8a6d2c !important;
+}
+body[data-dialogue-page="reflecting-listening"] :where(.lead, .quiet) { color: #4f5a4d !important; }
+
+/* 27 · Who's This — restore the physical card face while the room stays forest. */
+body[data-dialogue-page="whos-this"] {
+  --ink: #f6f7f5 !important;
+  --muted: #d8e2d5 !important;
+  --faint: #aebfac !important;
+  --glass: rgba(8,37,15,.72) !important;
+  --border: rgba(216,211,194,.28) !important;
+}
+body[data-dialogue-page="whos-this"] .app { background: radial-gradient(circle at 50% 22%, rgba(111,143,98,.25), transparent 44%), linear-gradient(150deg,#174629,#08250f) !important; }
+body[data-dialogue-page="whos-this"] :where(.card__face, .cardface, .face--front, .face--back) {
+  color: #12343a !important;
+  background: #fffaf0 !important;
+}
+body[data-dialogue-page="whos-this"] :where(.card__face .lab, .cardface .lab, .face--front .lab) { color: #455c56 !important; }
+body[data-dialogue-page="whos-this"] :where(#pName, #pAge, #pJob, #pFrom, #pPay, .adj) { color: #12343a !important; }
+body[data-dialogue-page="whos-this"] :where(.prompt, .footer, .action, .rail, .rolechip, .kq) { color: #f4f1e6 !important; }
+body[data-dialogue-page="whos-this"] .action--next { color: #17351f !important; background: #d2b978 !important; }
+
+@media (max-width: 600px) {
+  body[data-dialogue-page] .dialogue-brandbar { width: 44px; height: 44px; }
+  body[data-dialogue-page] .dialogue-brandbar img { width: 36px; height: 36px; }
+  body[data-dialogue-page="action-pictures"] :where(.hud-btn, .flank-btn, .gallery-nav-btn, #info-btn) { min-width: 44px; }
+  body[data-dialogue-page="busy-pictures"] :where(.nav-btn, .panel-close, #close-panel, #toggle-btn, #fullscreen-btn) { min-width: 44px; min-height: 44px; }
+  body[data-dialogue-page="dialogue-comics-practice"] nav.topbar a { min-height: 44px; display: inline-flex; align-items: center; }
+  body[data-dialogue-page="discussion"] :where(.back-link, .icon-button) { min-width: 44px; min-height: 44px; }
+  body[data-dialogue-page="good-bird"] .modal-close,
+  body[data-dialogue-page="mouse-strawberry"] .modal-close { min-width: 44px; min-height: 44px; }
+  body[data-dialogue-page="guess-what"] :where(.icon-button, .brand) { min-width: 44px; }
+  body[data-dialogue-page="icebreakers"] :where(.pill, .speak, .action) { min-height: 44px; }
+  body[data-dialogue-page="picture-this"] :where(.topbar button, .icon-button) { min-width: 44px; min-height: 44px; }
+  body[data-dialogue-page="qr"] :where(.timer-btn, .slide-nav-btn, #btn-open-current) { min-width: 44px; min-height: 44px; }
+  body[data-dialogue-page="whos-this"] :where(.speak, .answer-audio, .icon-button) { min-width: 44px; min-height: 44px; }
+  body[data-dialogue-page="emotions"] .site-header { min-height: 70px; padding-block: 10px !important; }
+
+  /* Give the illustrated readers a second toolbar row on phones. Long labels
+     were technically in-bounds but visually clipped and hard to distinguish. */
+  body[data-dialogue-page="good-bird"],
+  body[data-dialogue-page="mouse-strawberry"] { --header-h: 104px; }
+  body[data-dialogue-page="good-bird"] #app-header,
+  body[data-dialogue-page="mouse-strawberry"] #app-header {
+    height: var(--header-h);
+    padding: 5px 8px 7px 50px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 42px 48px;
+    gap: 2px;
+  }
+  body[data-dialogue-page="good-bird"] #app-header .header-left,
+  body[data-dialogue-page="mouse-strawberry"] #app-header .header-left { min-width: 0; gap: 8px; }
+  body[data-dialogue-page="good-bird"] #app-header .back-btn,
+  body[data-dialogue-page="mouse-strawberry"] #app-header .back-btn {
+    min-width: 78px;
+    min-height: 38px;
+    justify-content: center;
+  }
+  body[data-dialogue-page="good-bird"] #app-header .story-title,
+  body[data-dialogue-page="mouse-strawberry"] #app-header .story-title { min-width: 0; }
+  body[data-dialogue-page="good-bird"] #app-header .story-title span,
+  body[data-dialogue-page="mouse-strawberry"] #app-header .story-title span { display: none; }
+  body[data-dialogue-page="good-bird"] #app-header .nav-tabs,
+  body[data-dialogue-page="mouse-strawberry"] #app-header .nav-tabs {
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+  }
+  body[data-dialogue-page="good-bird"] #app-header .tab-btn,
+  body[data-dialogue-page="mouse-strawberry"] #app-header .tab-btn {
+    min-width: 0;
+    min-height: 42px;
+    padding: 4px 2px;
+    justify-content: center;
+    gap: 3px;
+    font-size: 0;
+  }
+  body[data-dialogue-page="good-bird"] #app-header .tab-btn .icon,
+  body[data-dialogue-page="mouse-strawberry"] #app-header .tab-btn .icon { font-size: 1.05rem; }
+  body[data-dialogue-page="good-bird"] #tab-read::after,
+  body[data-dialogue-page="mouse-strawberry"] #tab-read::after { content: "Read"; font-size: .68rem; }
+  body[data-dialogue-page="good-bird"] #tab-widescreen::after { content: "Board"; font-size: .68rem; }
+  body[data-dialogue-page="good-bird"] #tab-activity::after,
+  body[data-dialogue-page="mouse-strawberry"] #tab-activity::after { content: "Order"; font-size: .68rem; }
+  body[data-dialogue-page="good-bird"] #tab-song::after,
+  body[data-dialogue-page="mouse-strawberry"] #tab-song::after { content: "Song"; font-size: .68rem; }
+
+  body[data-dialogue-page="emotions"] .site-logo { min-height: 42px; }
+  body[data-dialogue-page="emotions"] .site-logo__img { height: 32px; }
+  body[data-dialogue-page="emotions"] .sticky-bar__left { width: 100%; min-width: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); }
+  body[data-dialogue-page="emotions"] .audio-tune-inline { width: 100%; min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) 68px; }
+  body[data-dialogue-page="emotions"] .tune-select { width: 100%; min-width: 0; }
+  body[data-dialogue-page="debate"] #modal-slideshow .slideshow-content { padding: 14px 16px; }
+  body[data-dialogue-page="debate"] header.app-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+    gap: 9px;
+    padding: 9px 10px 9px 60px !important;
+  }
+  body[data-dialogue-page="debate"] .nav-left { min-width: 0; width: 100%; }
+  body[data-dialogue-page="debate"] .btn-back { min-width: 44px; width: 44px; padding: 8px; justify-content: center; }
+  body[data-dialogue-page="debate"] .btn-back span:last-child,
+  body[data-dialogue-page="debate"] .badge-fmt { display: none !important; }
+  body[data-dialogue-page="debate"] .brand-title { min-width: 0; }
+  body[data-dialogue-page="debate"] .brand-title h1 { font-size: .98rem; line-height: 1.15; }
+  body[data-dialogue-page="debate"] .brand-title span.sub { font-size: .66rem; white-space: normal; }
+  body[data-dialogue-page="debate"] .nav-right { width: 100%; min-width: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+  body[data-dialogue-page="debate"] .nav-right .header-btn { min-width: 0; min-height: 44px; justify-content: center; padding: 6px 3px; font-size: .64rem; line-height: 1.15; text-align: center; }
+  body[data-dialogue-page="debate"] .stepper-bar { width: 100%; max-width: 100vw; padding-inline: 0; }
+  body[data-dialogue-page="debate"] .step-tab { flex: 0 0 140px; }
+}

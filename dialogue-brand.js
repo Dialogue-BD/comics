@@ -1,4 +1,6 @@
 (function () {
+  var route = location.pathname.replace(/\/+$/, '').split('/').filter(Boolean).pop() || 'home';
+  document.body.dataset.dialoguePage = route;
   if (document.querySelector('.dialogue-brandbar')) return;
   var prefix = location.pathname.split('/').filter(Boolean).length ? '../' : '';
   document.body.classList.add(prefix ? 'dialogue-activity-shell' : 'dialogue-home');
