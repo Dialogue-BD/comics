@@ -11,10 +11,444 @@
   --dialogue-moss: #6f8f62;
   --dialogue-clay: #b0563a;
   --dialogue-focus: #1f7a47;
+  --dialogue-gold-soft: #f0e6cd;
+  --dialogue-moss-soft: #e3ead9;
+  --dialogue-forest-rgb: 16,61,33;
+  --dialogue-ink-soft: #5f6a5c;
 }
 
 html { font-family: 'Public Sans', system-ui, sans-serif; }
 body { background: var(--dialogue-paper); }
+
+/*
+ * Dialogue shared activity layer
+ * ------------------------------
+ * This file is deliberately a skin, not a layout reset. Each activity keeps
+ * its own illustrations, game states, and semantic colors; this layer only
+ * harmonises the surfaces that frame them.
+ */
+body.dialogue-activity-shell {
+  --bg: var(--dialogue-paper);
+  --surface: var(--dialogue-card);
+  --surface-card: var(--dialogue-card);
+  --surface-hover: var(--dialogue-moss-soft);
+  --border: var(--dialogue-line);
+  --border-focus: var(--dialogue-focus);
+  --accent: var(--dialogue-forest);
+  --accent-hover: var(--dialogue-deep);
+  --accent-glow: rgba(185, 146, 79, .22);
+  --text: var(--dialogue-ink);
+  --text-muted: var(--dialogue-ink-soft);
+  color: var(--dialogue-ink);
+  background: var(--dialogue-paper);
+  font-family: 'Public Sans', system-ui, sans-serif;
+}
+
+body.dialogue-home {
+  --bg: #eae7dc;
+  --surface: var(--dialogue-paper);
+  --surface-card: var(--dialogue-card);
+  --surface-hover: var(--dialogue-moss-soft);
+  --border: var(--dialogue-line);
+  --accent: var(--dialogue-forest);
+  --accent-hover: var(--dialogue-deep);
+  --accent-glow: rgba(185, 146, 79, .22);
+  --text: var(--dialogue-ink);
+  --text-muted: var(--dialogue-ink-soft);
+  color: var(--dialogue-ink);
+  background: #eae7dc;
+  font-family: 'Public Sans', system-ui, sans-serif;
+}
+
+/* Dark-first activities keep their interaction contrast, but inherit the
+   Dialogue forest rather than an unrelated navy product shell. */
+body.dialogue-activity-shell:has(.setup-view) {
+  --bg: var(--dialogue-deep);
+  --surface: #174629;
+  --surface-2: #205536;
+  --paper: var(--dialogue-card);
+  --text: var(--dialogue-paper);
+  --muted: #c4d0c0;
+  --line: rgba(216, 211, 194, .24);
+  --lime: #d2b978;
+  --yellow: #d2b978;
+  --blue: #9bb695;
+  --coral: #c67a5d;
+  background: var(--dialogue-deep);
+}
+body.dialogue-activity-shell:has(.setup-view) :where(.topbar, .panel, .mode-card, .score-column, .phase-card, .complete-card, .help-dialog, .deck-dialog) {
+  background-color: #174629;
+  border-color: rgba(216, 211, 194, .24);
+}
+body.dialogue-activity-shell:has(.setup-view) :where(.challenge-card, .deck-card) {
+  color: var(--dialogue-ink);
+}
+body.dialogue-activity-shell:where(:has(.setup-view), :has(.qband), :has(.cardwrap)) {
+  --border: rgba(216, 211, 194, .22);
+  --glass: rgba(8, 37, 15, .72);
+  --ink: var(--dialogue-paper);
+  --muted: #c4d0c0;
+}
+body.dialogue-activity-shell:where(:has(.setup-view), :has(.qband), :has(.cardwrap)) :where(.game-panel, .audio-match-board, .game-picker-card) {
+  background: rgba(12, 51, 25, .96);
+  border-color: rgba(185, 146, 79, .45);
+}
+body.dialogue-activity-shell:where(:has(.setup-view), :has(.qband), :has(.cardwrap)) :where(.action, .view-toggle, .game-menu-button) {
+  background: rgba(244, 241, 230, .1);
+  border-color: rgba(216, 211, 194, .28);
+}
+
+/* Good Bird's tabletop is intentionally dark and immersive, not blue. */
+body.dialogue-activity-shell:has(#viewer-container) {
+  --bg: #0c3319;
+  --surface: #174629;
+  --border: rgba(216, 211, 194, .24);
+  --accent: var(--dialogue-gold);
+  --accent-hover: #d2b978;
+  --text: var(--dialogue-paper);
+  --text-muted: #c4d0c0;
+}
+body.dialogue-activity-shell:has(#viewer-container) :where(#app-header, .activity-header, .sequence-section, .feedback-banner) {
+  background: rgba(16, 61, 33, .97);
+}
+
+/* Shared chrome on the older single-file activities. */
+.dialogue-activity-shell :where(#app-header, .site-header, .topbar, .activity-header) {
+  background: rgba(16, 61, 33, .97);
+  color: var(--dialogue-paper);
+  border-color: rgba(185, 146, 79, .55);
+}
+.dialogue-activity-shell :where(#app-header a, #app-header button, .site-header a, .topbar button, .activity-header button) {
+  color: var(--dialogue-paper);
+}
+.dialogue-activity-shell :where(.back-btn, .header-action-btn, .icon-button, .sub-toggle-btn, .btn-secondary, .btn-outline) {
+  background: rgba(244, 241, 230, .1);
+  border-color: rgba(244, 241, 230, .28);
+  color: var(--dialogue-paper);
+}
+.dialogue-activity-shell :where(.back-btn:hover, .header-action-btn:hover, .icon-button:hover, .sub-toggle-btn:hover, .btn-secondary:hover, .btn-outline:hover) {
+  background: rgba(244, 241, 230, .18);
+  border-color: var(--dialogue-gold);
+}
+.dialogue-activity-shell :where(.tab-btn.active, .view-btn.active, .song-mode-btn.active, .btn-primary, .primary-button) {
+  background: var(--dialogue-gold);
+  border-color: var(--dialogue-gold);
+  color: #20180a;
+  box-shadow: none;
+}
+.dialogue-activity-shell :where(.tab-btn:hover, .view-btn:hover, .song-mode-btn:hover) {
+  color: var(--dialogue-gold-soft);
+}
+.dialogue-activity-shell :where(input, select, textarea) {
+  background: var(--dialogue-card);
+  color: var(--dialogue-ink);
+  border-color: var(--dialogue-line);
+}
+.dialogue-activity-shell :where(input:focus, select:focus, textarea:focus) {
+  border-color: var(--dialogue-focus);
+  box-shadow: 0 0 0 3px rgba(31, 122, 71, .14);
+}
+.dialogue-activity-shell :where(.card, .panel, .modal, .dialog, .activity-header, .sequence-section, .feedback-banner, .game-picker-card, .game-panel, .audio-match-board) {
+  border-color: var(--dialogue-line);
+}
+
+/* Light tools: warm paper surrounds the content, with deep green actions. */
+.dialogue-activity-shell :where(.entry-card, .phase-control-card, .topic-card, .wheel-card, .transcript-card, .definition-card, .clues-card, .reflection-card, .group-report, .waiting-card, .qr-card-item, .slide-info-card) {
+  background: var(--dialogue-card);
+  border-color: var(--dialogue-line);
+  box-shadow: 0 18px 50px rgba(16, 61, 33, .09);
+}
+.dialogue-activity-shell :where(.section-kicker, .eyebrow, .card-kicker, .dialog-kicker, .phase-kicker) {
+  color: #8a6d2c;
+}
+
+/* Immersive readers retain a forest-tinted stage instead of a paper canvas. */
+.dialogue-activity-shell :where(#viewer-container, #song-container, .song-wrapper, .tabletop-section, .stage) {
+  background-color: var(--dialogue-deep);
+}
+.dialogue-activity-shell :where(.tabletop-section) {
+  background-image:
+    radial-gradient(circle at 50% 35%, rgba(111, 143, 98, .16), transparent 48%),
+    linear-gradient(145deg, #174629 0%, #0c3319 62%, #08250f 100%);
+}
+/* Explicit projector stages; never darken an unrelated light .app. */
+body.dialogue-activity-shell:has(.setup-view) .app,
+body.dialogue-activity-shell:has(.qband) .app,
+body.dialogue-activity-shell:has(.cardwrap) .app {
+  background-color: var(--dialogue-deep);
+  background-image:
+    radial-gradient(circle at 50% -4%, rgba(111, 143, 98, .2), transparent 46%),
+    radial-gradient(circle at 92% 4%, rgba(185, 146, 79, .1), transparent 32%),
+    linear-gradient(150deg, #174629 0%, #0c3319 58%, #08250f 100%);
+}
+.dialogue-activity-shell :where(.game-picker, .phase-overlay, .session-complete, .cloze-modal-overlay, #celebration-overlay) {
+  background: rgba(8, 37, 15, .86);
+}
+.dialogue-activity-shell :where(.game-picker-card, .phase-card, .complete-card, .cloze-card) {
+  background: var(--dialogue-card);
+  color: var(--dialogue-ink);
+  border-color: var(--dialogue-gold);
+  box-shadow: 0 28px 90px rgba(5, 32, 13, .34);
+}
+
+/* Do not recolour illustrations or semantic game states. Gold is chrome only. */
+.dialogue-activity-shell :where(.qr-card-preview-wrap, .slide-qr-card, .qr-frame) {
+  background: #fffdf7;
+  border-color: #fffdf7;
+}
+.dialogue-activity-shell :where(.slide-nav-btn, .fullscreen, #fullscreen-btn) {
+  background: var(--dialogue-forest);
+  border-color: var(--dialogue-gold);
+  color: var(--dialogue-paper);
+}
+.dialogue-activity-shell :where(.slide-nav-btn:hover, .fullscreen:hover, #fullscreen-btn:hover) {
+  background: var(--dialogue-deep);
+}
+
+/* Homepage directory and presentation views. */
+.dialogue-home :where(#app-header) { background: rgba(16, 61, 33, .97); border-color: rgba(185, 146, 79, .55); }
+.dialogue-home :where(#grid-view) { background: #eae7dc; }
+.dialogue-home :where(.qr-card-item, .slide-info-card, .slideshow-footer) {
+  background: var(--dialogue-card);
+  border-color: var(--dialogue-line);
+  box-shadow: 0 16px 38px rgba(16, 61, 33, .1);
+}
+.dialogue-home :where(#slideshow-view) {
+  background: radial-gradient(circle at 60% 35%, #1b4d2c 0%, #0c3319 62%, #08250f 100%);
+}
+.dialogue-home :where(.slide-title, .qr-card-title) { color: var(--dialogue-ink); text-shadow: none; }
+.dialogue-home :where(.slide-desc, .qr-card-desc) { color: var(--dialogue-ink-soft); }
+.dialogue-home :where(.slide-url-box) { background: #f0ede3; border-color: var(--dialogue-line); }
+.dialogue-home :where(.slide-url-text) { color: var(--dialogue-forest); }
+.dialogue-home :where(.slide-action-btn, .fs-toggle-btn, .qr-card-present-btn) {
+  color: var(--dialogue-ink);
+  background: var(--dialogue-moss-soft);
+  border-color: #b9c8af;
+}
+.dialogue-home :where(.play-pause-btn, .slide-qr-scan-badge) { background: var(--dialogue-forest); box-shadow: none; }
+.dialogue-home :where(.grid-search-input) { background: var(--dialogue-card); color: var(--dialogue-ink); border-color: var(--dialogue-line); }
+
+/* QR hub is an activity route, so its body receives dialogue-activity-shell
+   rather than dialogue-home. */
+body.dialogue-activity-shell:has(#slideshow-view) #app-header {
+  background: rgba(16, 61, 33, .98);
+}
+body.dialogue-activity-shell:has(#slideshow-view) #slideshow-view {
+  background: radial-gradient(circle at 58% 34%, #1b4d2c 0%, #0c3319 62%, #08250f 100%);
+}
+body.dialogue-activity-shell:has(#slideshow-view) .slide-info-card {
+  color: var(--dialogue-ink);
+  background: var(--dialogue-card);
+  border-color: var(--dialogue-line);
+}
+body.dialogue-activity-shell:has(#slideshow-view) .slide-info-card :where(.slide-title, .slide-desc, .slide-feature-badge, .slide-url-text) {
+  color: var(--dialogue-ink);
+}
+body.dialogue-activity-shell:has(#slideshow-view) .slide-info-card :where(.slide-counter-badge, .slide-category-pill) {
+  color: #5c451c;
+  background: var(--dialogue-gold-soft);
+  border-color: #d2b978;
+}
+body.dialogue-activity-shell:has(#slideshow-view) .slide-info-card .slide-url-box {
+  background: #f0ede3;
+  border-color: var(--dialogue-line);
+}
+body.dialogue-activity-shell:has(#slideshow-view) .slide-info-card :where(.slide-action-btn, .fs-toggle-btn) {
+  color: var(--dialogue-ink);
+  background: var(--dialogue-moss-soft);
+  border-color: #b9c8af;
+}
+body.dialogue-activity-shell:has(#slideshow-view) .slide-qr-card {
+  background: #fff;
+  border-color: #fff;
+}
+body.dialogue-activity-shell:has(#slideshow-view) :where(.slide-progress-bar, .play-pause-btn, .slide-qr-scan-badge) {
+  background: var(--dialogue-forest);
+  box-shadow: none;
+}
+
+/* Busy Pictures receives this layer at runtime because its bundled HTML is too
+   large to patch safely. Replace its navy utility chrome, not its illustration
+   or semantic grammar/vocabulary feedback colors. */
+body.dialogue-activity-shell:has(#prompt-panel) #page-nav-bar,
+body.dialogue-activity-shell:has(#prompt-panel) #speech-toast,
+body.dialogue-activity-shell:has(#prompt-panel) #prompt-panel,
+body.dialogue-activity-shell:has(#prompt-panel) #tour-controls {
+  color: var(--dialogue-paper);
+  background: rgba(12, 51, 25, .94);
+  border-color: rgba(185, 146, 79, .58);
+  box-shadow: 0 12px 34px rgba(5, 32, 13, .34);
+}
+body.dialogue-activity-shell:has(#prompt-panel) #page-indicator,
+body.dialogue-activity-shell:has(#prompt-panel) #speech-toast .toast-title {
+  color: #dec78f;
+}
+body.dialogue-activity-shell:has(#prompt-panel) .nav-btn,
+body.dialogue-activity-shell:has(#prompt-panel) #tour-launch,
+body.dialogue-activity-shell:has(#prompt-panel) #mute-btn,
+body.dialogue-activity-shell:has(#prompt-panel) #toggle-btn,
+body.dialogue-activity-shell:has(#prompt-panel) #fullscreen-btn {
+  color: var(--dialogue-paper);
+  background: rgba(16, 61, 33, .96);
+  border-color: rgba(185, 146, 79, .65);
+}
+body.dialogue-activity-shell:has(#prompt-panel) .nav-btn:hover,
+body.dialogue-activity-shell:has(#prompt-panel) #tour-launch:hover,
+body.dialogue-activity-shell:has(#prompt-panel) #mute-btn:hover,
+body.dialogue-activity-shell:has(#prompt-panel) #toggle-btn:hover,
+body.dialogue-activity-shell:has(#prompt-panel) #fullscreen-btn:hover {
+  color: #20180a;
+  background: var(--dialogue-gold);
+}
+body.dialogue-activity-shell:has(#prompt-panel) .action-btn.primary {
+  color: #20180a;
+  background: var(--dialogue-gold);
+  border-color: var(--dialogue-gold);
+}
+body.dialogue-activity-shell:has(#prompt-panel) .action-btn.primary:hover {
+  color: var(--dialogue-paper);
+  background: var(--dialogue-forest);
+  border-color: var(--dialogue-gold);
+}
+
+/* Debate presentation cards use the light paper treatment, so restore ink
+   explicitly without touching government/opposition semantic accents. */
+body.dialogue-activity-shell:has(#modal-slideshow) #modal-slideshow {
+  background: #0c3319 !important;
+}
+body.dialogue-activity-shell:has(#modal-slideshow) #modal-slideshow .modal-dialog.slideshow-dialog {
+  background: var(--dialogue-paper) !important;
+  color: var(--dialogue-ink);
+}
+body.dialogue-activity-shell:has(#modal-slideshow) #modal-slideshow .slideshow-header-bar {
+  background: var(--dialogue-forest);
+  color: var(--dialogue-paper);
+  border-color: rgba(185, 146, 79, .55);
+}
+body.dialogue-activity-shell:has(#modal-slideshow) #modal-slideshow .slideshow-content {
+  background: var(--dialogue-paper);
+  color: var(--dialogue-ink);
+}
+body.dialogue-activity-shell:has(#modal-slideshow) #modal-slideshow :where(.slideshow-slide, .turn-persona-card, .turn-action-card, .speech-queue-card, .card) {
+  color: var(--dialogue-ink);
+}
+body.dialogue-activity-shell:has(#modal-slideshow) #modal-slideshow :where(.slide-heading-en, .turn-action-title-en, .card-title, .card-desc) {
+  color: var(--dialogue-ink);
+  text-shadow: none;
+}
+body.dialogue-activity-shell:has(#modal-slideshow) #modal-slideshow :where(.slide-heading-bn, .turn-action-title-bn, .turn-speaker-title) {
+  color: #38543b;
+}
+body.dialogue-activity-shell:has(#modal-slideshow) #modal-slideshow :where(.turn-persona-card, .turn-action-card, .speech-queue-card, .card) {
+  background: var(--dialogue-card);
+  border-color: var(--dialogue-line);
+  box-shadow: 0 12px 28px rgba(16, 61, 33, .1);
+}
+
+/* Debate's regular motion hero is a light card too; its legacy hard-coded
+   white type otherwise disappears after the paper reskin. */
+body.dialogue-activity-shell:has(.topic-hero) header.app-header {
+  background: rgba(16, 61, 33, .98);
+  border-color: rgba(185, 146, 79, .55);
+}
+body.dialogue-activity-shell:has(.topic-hero) :where(.topic-hero, .card) {
+  color: var(--dialogue-ink);
+}
+body.dialogue-activity-shell:has(.topic-hero) .topic-hero {
+  background: var(--dialogue-card);
+  border-color: var(--dialogue-line);
+  box-shadow: 0 16px 38px rgba(16, 61, 33, .1);
+}
+body.dialogue-activity-shell:has(.topic-hero) :where(.motion-title-en, .motion-title-bn, .card-title, .card-desc) {
+  color: var(--dialogue-ink);
+  text-shadow: none;
+}
+body.dialogue-activity-shell:has(.topic-hero) .card-desc {
+  color: var(--dialogue-ink-soft);
+}
+body.dialogue-activity-shell:has(.topic-hero) :where(.motion-badge, .motion-category-tag) {
+  color: #5c451c;
+  background: var(--dialogue-gold-soft);
+  border-color: #d2b978;
+}
+body.dialogue-activity-shell:has(.topic-hero) main.main-content > div[style*="linear-gradient"] {
+  background: var(--dialogue-card) !important;
+  border-color: var(--dialogue-line) !important;
+  color: var(--dialogue-ink);
+}
+body.dialogue-activity-shell:has(.topic-hero) main.main-content > div[style*="linear-gradient"] :where(div[style*="font-weight: 800"], div[style*="font-size: 0.78rem"]) {
+  color: var(--dialogue-ink) !important;
+}
+
+/* Guess What: cream type remains legible on its forest presentation surfaces. */
+body.dialogue-activity-shell:has(.setup-view) {
+  color: var(--dialogue-paper);
+}
+body.dialogue-activity-shell:has(.setup-view) :where(.hero h1, .mode-copy h2, .mode-card strong, .settings h2, .score-heading h2, .phase-card h2, .complete-card h2, .topic-prompt h2, .score-column, .shortcut-card, .start-dock) {
+  color: var(--dialogue-paper);
+}
+body.dialogue-activity-shell:has(.setup-view) :where(.mode-copy p, .mode-card small, .hero p, .setting-row p, .class-summary, .speaker-banner p, .score-heading span, .team-meta span, .phase-card > p, .complete-card > p) {
+  color: #c4d0c0;
+}
+body.dialogue-activity-shell:has(.setup-view) .start-dock :where(strong, span) {
+  color: var(--dialogue-paper);
+}
+
+/* Icebreakers: lift question, support panels, chunks and action tray. */
+body.dialogue-activity-shell:has(.qband) {
+  --ink: var(--dialogue-paper);
+  --muted: #d0d9ca;
+  --faint: #a9bba5;
+}
+body.dialogue-activity-shell:has(.qband) :where(.qband, .q, .note, .panel, .panel__head, .panel__body, .c, .footer, .action, .wh) {
+  color: var(--dialogue-paper);
+}
+body.dialogue-activity-shell:has(.qband) :where(.note, .panel__body, .c, .wh .n, .action .sub) {
+  color: #c4d0c0;
+}
+body.dialogue-activity-shell:has(.qband) :where(.panel, .panel__head, .panel__body) {
+  background-color: rgba(23, 70, 41, .86);
+  border-color: rgba(216, 211, 194, .24);
+}
+body.dialogue-activity-shell:has(.qband) .action {
+  background: rgba(244, 241, 230, .1);
+  color: var(--dialogue-paper);
+  border-color: rgba(216, 211, 194, .28);
+}
+body.dialogue-activity-shell:has(.qband) .action--next {
+  background: var(--dialogue-gold);
+  color: #20180a;
+}
+
+/* Who's This: forest prompt, answer rail and action tray; identity card
+   typography stays owned by the card's own light theme. */
+body.dialogue-activity-shell:has(.cardwrap) :where(.prompt, .prompt span.q, .footer, .action, .rail, .wh, .kq__a) {
+  color: var(--dialogue-paper);
+}
+body.dialogue-activity-shell:has(.cardwrap) :where(.prompt, .footer, .action, .wh) {
+  background-color: rgba(23, 70, 41, .86);
+  border-color: rgba(216, 211, 194, .24);
+}
+body.dialogue-activity-shell:has(.cardwrap) .action--next {
+  background: var(--dialogue-gold);
+  color: #20180a;
+}
+body.dialogue-activity-shell:has(.cardwrap) .action--check {
+  background: rgba(244, 241, 230, .1);
+  color: var(--dialogue-paper);
+}
+
+/* Fullscreen owns the whole viewport: no shared shell over the lesson. */
+:fullscreen .dialogue-brandbar,
+:-webkit-full-screen .dialogue-brandbar,
+body.fullscreen-active .dialogue-brandbar,
+:fullscreen .dialogue-home #app-header,
+:fullscreen .dialogue-activity-shell #app-header,
+:-webkit-full-screen #app-header {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
 
 .dialogue-brandbar {
   position: fixed;
@@ -41,7 +475,7 @@ body { background: var(--dialogue-paper); }
 .dialogue-brandbar span { display: block; font-size: 9px; letter-spacing: .13em; text-transform: uppercase; color: #dec78f; }
 
 :where(button, a, input, select, textarea, [tabindex]):focus-visible {
-  outline: 3px solid #d2aa61 !important;
+  outline: 3px solid #d2aa61;
   outline-offset: 3px;
 }
 
