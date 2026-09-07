@@ -7,5 +7,6 @@
   bar.href = prefix + 'index.html';
   bar.setAttribute('aria-label', 'Back to Dialogue activities');
   bar.innerHTML = '<img src="' + prefix + 'ai-fluency/assets/dialogue-logo.png" alt=""><span><strong>Dialogue</strong><span>Learning collection</span></span>';
+  bar.setAttribute('title', 'Dialogue Learning collection · Back to activities');
   document.body.prepend(bar);
 }());

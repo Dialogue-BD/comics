@@ -453,26 +453,31 @@ body.fullscreen-active .dialogue-brandbar,
 .dialogue-brandbar {
   position: fixed;
   z-index: 15000;
-  top: 10px;
-  left: 14px;
+  top: 8px;
+  left: 10px;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  min-height: 42px;
-  padding: 5px 12px 5px 6px;
+  gap: 0;
+  width: 38px;
+  height: 38px;
+  padding: 3px;
   color: var(--dialogue-paper);
   background: rgba(16,61,33,.94);
   border: 1px solid rgba(185,146,79,.65);
-  border-radius: 999px;
+  border-radius: 12px;
   box-shadow: 0 8px 24px rgba(16,61,33,.18);
   text-decoration: none;
   backdrop-filter: blur(12px);
-  transition: transform .2s ease, background .2s ease;
+  transition: width .2s ease, transform .2s ease, background .2s ease;
+  overflow: hidden;
 }
-.dialogue-brandbar:hover { color: var(--dialogue-paper); background: var(--dialogue-deep); transform: translateY(-1px); }
-.dialogue-brandbar img { width: 30px; height: 30px; object-fit: contain; background: var(--dialogue-paper); border-radius: 50%; }
-.dialogue-brandbar strong { font-size: 12px; letter-spacing: .04em; }
-.dialogue-brandbar span { display: block; font-size: 9px; letter-spacing: .13em; text-transform: uppercase; color: #dec78f; }
+.dialogue-brandbar:hover, .dialogue-brandbar:focus-visible { color: var(--dialogue-paper); background: var(--dialogue-deep); transform: translateY(-1px); }
+.dialogue-brandbar:hover, .dialogue-brandbar:focus-visible { width: 174px; gap: 9px; padding-right: 11px; }
+.dialogue-brandbar img { width: 30px; height: 30px; flex: 0 0 30px; object-fit: contain; background: var(--dialogue-paper); border-radius: 50%; }
+.dialogue-brandbar > span { min-width: 122px; opacity: 0; transform: translateX(-5px); transition: opacity .15s ease, transform .15s ease; }
+.dialogue-brandbar:hover > span, .dialogue-brandbar:focus-visible > span { opacity: 1; transform: none; }
+.dialogue-brandbar strong { display: block; font-size: 12px; letter-spacing: .04em; }
+.dialogue-brandbar span span { display: block; font-size: 9px; letter-spacing: .13em; text-transform: uppercase; color: #dec78f; }
 
 :where(button, a, input, select, textarea, [tabindex]):focus-visible {
   outline: 3px solid #d2aa61;
@@ -480,11 +485,196 @@ body.fullscreen-active .dialogue-brandbar,
 }
 
 /* Keep the shared home control clear of each activity's own chrome. */
-.dialogue-home #app-header { padding-left: 190px; }
-.dialogue-activity-shell #app-header { padding-left: 210px; }
-.dialogue-activity-shell .site-header { padding-left: 210px; }
-.dialogue-activity-shell .topbar { padding-left: max(210px, env(safe-area-inset-left)); }
-.dialogue-activity-shell #page-nav-bar { left: 210px; }
+/* Reserve only the compact mark's footprint in shared top chrome. The old
+   190–210px gutter made the injected bar cover lesson controls on projectors. */
+.dialogue-home #app-header { padding-left: 60px; }
+.dialogue-activity-shell #app-header { padding-left: 60px; }
+.dialogue-activity-shell .site-header { padding-left: 60px; }
+.dialogue-activity-shell header.app-header { padding-left: 60px; }
+.dialogue-activity-shell .topbar { padding-left: max(60px, env(safe-area-inset-left)); }
+.dialogue-activity-shell #page-nav-bar { left: 60px; }
+
+/* Reading pages have their own sticky navigation; keep its first link clear
+   without shifting the passage or creating a second overlay layer. */
+.dialogue-activity-shell nav.top .bar { padding-left: 60px; }
+
+/* The optional two-page story control used to sit exactly underneath the
+   injected mark. Keep both controls visible in projector view. */
+.dialogue-activity-shell #story-spread-toggle { left: 60px; top: 8px; }
+
+/* Good Bird: cream cards and a forest tabletop replace the inherited navy
+   surfaces while leaving semantic feedback colours and artwork untouched. */
+body.dialogue-activity-shell:has(#viewer-container) {
+  --bg: #f4f1e6 !important;
+  --surface: #fffdf7 !important;
+  --surface-hover: #e3ead9 !important;
+  --tabletop-bg: radial-gradient(circle at 50% 30%, #285b3c 0%, #174629 64%, #0c3319 100%) !important;
+  --border: #d8d3c2 !important;
+  --accent: #103d21 !important;
+  --accent-hover: #0c3319 !important;
+  --text: #f4f1e6 !important;
+  --text-muted: #c4d0c0 !important;
+}
+body.dialogue-activity-shell:has(#viewer-container) :where(.activity-header, .sequence-section, .song-header-bar) {
+  background: rgba(16,61,33,.97) !important;
+  border-color: rgba(185,146,79,.55) !important;
+}
+body.dialogue-activity-shell:has(#viewer-container) :where(#viewer-container, #song-container, .song-wrapper) {
+  background: #174629 !important;
+}
+body.dialogue-activity-shell:has(#viewer-container) .tabletop-section {
+  background: var(--tabletop-bg) !important;
+  border-color: rgba(216,211,194,.3) !important;
+}
+
+/* Debate's light content surfaces use ink, while government/opposition remain
+   meaningful and distinct. */
+body.dialogue-activity-shell:has(.topic-hero) {
+  --bg: #eae7dc !important;
+  --surface: #f4f1e6 !important;
+  --surface-card: #fffdf7 !important;
+  --surface-hover: #e3ead9 !important;
+  --border: #d8d3c2 !important;
+  --accent: #103d21 !important;
+  --text: #1d211c !important;
+  --text-muted: #5f6a5c !important;
+}
+body.dialogue-activity-shell:has(.topic-hero) :where(.stepper-bar, .card, .team-card, .schedule-turn-card, .stage-main, .speech-queue-card, .modal-dialog) {
+  background: #fffdf7 !important;
+  color: #1d211c !important;
+  border-color: #d8d3c2 !important;
+}
+body.dialogue-activity-shell:has(.topic-hero) :where(.team-name-input, .current-speaker-name, .stage-timer-display, .turn-speaker-title, .slide-card-title, .turn-action-title-en) {
+  color: #1d211c !important;
+}
+body.dialogue-activity-shell:has(.topic-hero) .step-tab.active {
+  background: var(--dialogue-forest) !important;
+  border-bottom-color: var(--dialogue-gold) !important;
+  color: var(--dialogue-paper) !important;
+}
+body.dialogue-activity-shell:has(.topic-hero) .step-tab:not(.active) {
+  color: #5f6a5c !important;
+}
+body.dialogue-activity-shell:has(.topic-hero) .step-tab:not(.active):hover {
+  color: var(--dialogue-forest) !important;
+  background: var(--dialogue-moss-soft) !important;
+}
+
+/* Good Bird widescreen is a projector surface in its own right. These
+   explicit selectors win over the activity's legacy navy rules without
+   recolouring the photographic story cards. */
+body.dialogue-activity-shell:has(#widescreen-container) #widescreen-container {
+  --bg: #0c3319;
+  background: radial-gradient(circle at 50% 28%, #285b3c 0%, #174629 58%, #0c3319 100%) !important;
+  color: var(--dialogue-paper);
+}
+body.dialogue-activity-shell:has(#widescreen-container) .ws-board-wrapper {
+  background: rgba(8,37,15,.28);
+  border: 1px solid rgba(216,211,194,.2);
+  border-radius: 12px;
+}
+body.dialogue-activity-shell:has(#widescreen-container) :where(.ws-card, .ws-card-img-wrap) {
+  background: var(--dialogue-card);
+}
+body.dialogue-activity-shell:has(#widescreen-container) .ws-card {
+  border-color: #d8d3c2;
+  box-shadow: 0 8px 22px rgba(5,32,13,.35);
+}
+body.dialogue-activity-shell:has(#widescreen-container) .ws-card:hover {
+  border-color: var(--dialogue-gold);
+  box-shadow: 0 16px 36px rgba(5,32,13,.5);
+}
+body.dialogue-activity-shell:has(#widescreen-container) .ws-card-stage-tag {
+  background: rgba(16,61,33,.92);
+  color: var(--dialogue-paper);
+  border-color: rgba(185,146,79,.65);
+}
+body.dialogue-activity-shell:has(#widescreen-container) :where(.ws-header-bar, .ws-spotlight-header, .ws-spotlight-footer) {
+  background: rgba(16,61,33,.97) !important;
+  border-color: rgba(185,146,79,.55) !important;
+  color: var(--dialogue-paper);
+}
+body.dialogue-activity-shell:has(#widescreen-container) :where(.ws-title-text, .ws-title-text span) {
+  color: var(--dialogue-paper) !important;
+}
+body.dialogue-activity-shell:has(#widescreen-container) .ws-badge,
+body.dialogue-activity-shell:has(#widescreen-container) .ws-card-badge,
+body.dialogue-activity-shell:has(#widescreen-container) .ws-spotlight-badge {
+  background: var(--dialogue-gold-soft) !important;
+  border-color: var(--dialogue-gold) !important;
+  color: #5c451c !important;
+}
+body.dialogue-activity-shell:has(#widescreen-container) :where(.ws-segmented-control, .ws-seg-btn, .ws-tool-btn) {
+  border-color: rgba(216,211,194,.32);
+}
+body.dialogue-activity-shell:has(#widescreen-container) .ws-segmented-control {
+  background: rgba(8,37,15,.72);
+}
+body.dialogue-activity-shell:has(#widescreen-container) :where(.ws-seg-btn, .ws-tool-btn) {
+  color: var(--dialogue-paper);
+  background: rgba(244,241,230,.1);
+}
+body.dialogue-activity-shell:has(#widescreen-container) .ws-seg-btn.active,
+body.dialogue-activity-shell:has(#widescreen-container) .ws-tool-btn.primary {
+  background: var(--dialogue-gold) !important;
+  border-color: var(--dialogue-gold) !important;
+  color: #20180a !important;
+  box-shadow: none !important;
+}
+body.dialogue-activity-shell:has(#widescreen-container) :where(.ws-seg-btn:hover, .ws-tool-btn:hover) {
+  background: rgba(185,146,79,.28);
+  border-color: var(--dialogue-gold);
+  color: var(--dialogue-paper);
+}
+body.dialogue-activity-shell:has(#widescreen-container) #widescreen-spotlight-modal {
+  background: rgba(8,37,15,.92) !important;
+}
+body.dialogue-activity-shell:has(#widescreen-container) .ws-spotlight-box {
+  background: var(--dialogue-card) !important;
+  border-color: var(--dialogue-gold) !important;
+  box-shadow: 0 25px 80px rgba(5,32,13,.5);
+}
+body.dialogue-activity-shell:has(#widescreen-container) :where(.ws-spotlight-title, .ws-spotlight-stage) {
+  color: var(--dialogue-ink) !important;
+}
+body.dialogue-activity-shell:has(#widescreen-container) .ws-spotlight-stage {
+  color: var(--dialogue-ink-soft) !important;
+}
+body.dialogue-activity-shell:has(#widescreen-container) :where(.ws-spotlight-nav-btn, .ws-spotlight-close) {
+  background: var(--dialogue-forest);
+  border-color: var(--dialogue-gold);
+  color: var(--dialogue-paper);
+}
+
+/* Discussion Rooms keeps red reserved for actual danger/error states; its
+   previous teal/coral tokens now speak the shared forest, cream and gold UI. */
+body.dialogue-activity-shell:has(.teacher-card) {
+  --teal: var(--dialogue-forest) !important;
+  --teal-dark: var(--dialogue-deep) !important;
+  --teal-soft: var(--dialogue-moss-soft) !important;
+  --coral: var(--dialogue-gold) !important;
+  --coral-soft: var(--dialogue-gold-soft) !important;
+  --gold: var(--dialogue-gold) !important;
+  --gold-soft: var(--dialogue-gold-soft) !important;
+  --blue: var(--dialogue-moss) !important;
+}
+body.dialogue-activity-shell:has(.teacher-card) .site-header {
+  background: rgba(16,61,33,.97);
+  border-color: rgba(185,146,79,.55);
+}
+body.dialogue-activity-shell:has(.teacher-card) :where(.back-link, .wordmark, .wordmark small, .icon-button) {
+  color: var(--dialogue-paper);
+}
+body.dialogue-activity-shell:has(.teacher-card) .wordmark-mark {
+  background: var(--dialogue-gold);
+}
+body.dialogue-activity-shell:has(.topic-hero) #modal-slideshow {
+  background: #103d21 !important;
+}
+body.dialogue-activity-shell:has(.topic-hero) #modal-slideshow .slideshow-nav-bar {
+  background: #0c3319 !important;
+  border-color: rgba(185,146,79,.6) !important;
+}
 
 /* Full-screen activities should remain completely immersive. */
 :fullscreen .dialogue-brandbar,
@@ -496,13 +686,12 @@ body.fullscreen-active .dialogue-brandbar {
 }
 
 @media (max-width: 600px) {
-  .dialogue-brandbar { top: 8px; left: 8px; min-height: 38px; padding-right: 9px; }
+  .dialogue-brandbar { top: 8px; left: 8px; width: 34px; height: 34px; }
   .dialogue-brandbar img { width: 26px; height: 26px; }
-  .dialogue-brandbar strong { font-size: 11px; }
-  .dialogue-brandbar span { font-size: 8px; }
-  .dialogue-home #app-header { padding-left: 120px; }
-  .dialogue-activity-shell #app-header { padding-left: 132px; }
-  .dialogue-activity-shell .site-header { padding-left: 132px; }
-  .dialogue-activity-shell .topbar { padding-left: 132px; }
-  .dialogue-activity-shell #page-nav-bar { left: 132px; }
+  .dialogue-brandbar:hover { width: 150px; }
+  .dialogue-home #app-header, .dialogue-activity-shell #app-header { padding-left: 50px; }
+  .dialogue-activity-shell .site-header, .dialogue-activity-shell header.app-header, .dialogue-activity-shell .topbar { padding-left: 50px; }
+  .dialogue-activity-shell #page-nav-bar { left: 50px; }
+  .dialogue-activity-shell nav.top .bar { padding-left: 50px; }
+  .dialogue-activity-shell #story-spread-toggle { left: 50px; top: 8px; }
 }

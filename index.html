@@ -848,7 +848,7 @@
     :root{--bg:#eae7dc;--surface:#f4f1e6;--surface-card:#fffdf7;--surface-hover:#e3ead9;--border:#d8d3c2;--accent:#103d21;--accent-hover:#0c3319;--accent-glow:rgba(185,146,79,.24);--text:#1d211c;--text-muted:#5f6a5c;--font-main:'Public Sans',system-ui,sans-serif}
     #app-header{background:rgba(16,61,33,.97);border-color:rgba(185,146,79,.5)}
     .header-title{font-family:'Source Serif 4',Georgia,serif;color:#f4f1e6}.header-title .badge{color:#dec78f;background:rgba(185,146,79,.18);border-color:rgba(185,146,79,.5)}
-    #grid-view{background:var(--bg)}.qr-card-item,.slide-info-card,.slideshow-footer{background:var(--surface-card);border-color:var(--border);box-shadow:0 12px 30px rgba(16,61,33,.08)}
+    #grid-view{background:var(--bg)}#slideshow-view{background:radial-gradient(circle at 60% 38%,#285b3c 0%,#174629 58%,#0c3319 100%)}.slideshow-progress-bar{background:#b9924f}.qr-card-item,.slide-info-card,.slideshow-footer{background:var(--surface-card);border-color:var(--border);box-shadow:0 12px 30px rgba(16,61,33,.08)}
     .qr-card-title,.slide-title{color:var(--text);text-shadow:none}.qr-card-desc,.slide-desc{color:var(--text-muted)}
     .slide-category-pill,.slide-counter-badge,.qr-card-badge{color:#6f531c;background:#f0e6cd;border-color:#d2b978}.slide-url-box{background:#f0ede3;border-color:var(--border)}.slide-url-text{color:#103d21}
     .slide-qr-card{box-shadow:0 20px 55px rgba(16,61,33,.16)}.slide-qr-scan-badge{background:#103d21;box-shadow:none}
@@ -944,16 +944,16 @@
       <div class="slideshow-footer">
         <div class="slideshow-controls-left">
           <button id="btn-play-pause" class="play-pause-btn" type="button">
-            <span id="play-pause-icon">⏸️</span>
-            <span id="play-pause-text">Pause</span>
+            <span id="play-pause-icon">▶️</span>
+            <span id="play-pause-text">Play</span>
           </button>
 
           <div class="timer-selector-group" title="Auto-advance slide timer">
             <button class="timer-btn" data-time="5">5s</button>
-            <button class="timer-btn active" data-time="8">8s</button>
+            <button class="timer-btn" data-time="8">8s</button>
             <button class="timer-btn" data-time="12">12s</button>
             <button class="timer-btn" data-time="20">20s</button>
-            <button class="timer-btn" data-time="0">Manual</button>
+            <button class="timer-btn active" data-time="0">Manual</button>
           </div>
         </div>
 
@@ -1218,8 +1218,10 @@
 
     var activities = [];
     var currentIndex = 0;
-    var isPlaying = true;
-    var slideDuration = 8000; // 8 seconds default
+    // Projection is a shared-learning space: never move the lesson without an
+    // explicit teacher action. Autoplay is opt-in via a timer button.
+    var isPlaying = false;
+    var slideDuration = 0; // Manual default
     var slideTimer = null;
     var progressInterval = null;
     var progressStart = 0;
@@ -1378,6 +1380,16 @@
     }
 
     function togglePlayPause() {
+      // Manual mode is intentionally inert. A teacher must choose an explicit
+      // duration before autoplay can begin; never show a misleading Pause
+      // state for a timer that cannot advance.
+      if (slideDuration === 0) {
+        isPlaying = false;
+        playPauseIcon.innerText = "▶️";
+        playPauseText.innerText = "Play";
+        if (typeof showToast === "function") showToast("Manual mode · choose a timer to autoplay");
+        return;
+      }
       isPlaying = !isPlaying;
       if (isPlaying) {
         playPauseIcon.innerText = "⏸️";
