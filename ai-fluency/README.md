@@ -13,31 +13,38 @@ Six modular 45-minute lessons for B1–B2 Bengali university students, designed 
 | Image creation | Observable visual descriptions and purpose clauses | Illustrated poster with accurate editable overlay text |
 | Vibe coding | Input / expected / actual bug reports | Flawed and corrected interactive calculators |
 
-Each lesson: information gap (4m), delegation decisions (5m), product/process/performance brief (6m), draft audit (7m), revision and language noticing (5m), diligence (4m), changed-context transfer (10m), exit pitch and peer feedback (4m). Total 45 minutes. Six workshops total 4.5 hours, with optional extension to real tools.
+Each lesson starts with a five-minute, six-slide in-page introduction, followed by 40 minutes of guided activities. The deck demonstrates objectives, deliverables, the four Ds, the three Ps, and the pair routine using the selected case. It is an interactive teaching deck, not a downloadable PowerPoint.
 
-## Pedagogy
+## Visual learning sequence
 
-The English work is part of the decision-making: partners exchange missing information, negotiate, author a brief and follow-up, cite evidence, reformulate a sentence, apply the skill to a changed situation, and deliver a 45-second decision pitch. Separate AI and English rubrics avoid confusing language proficiency with judgement. Frames and Bangla glosses support B1; B2 pairs can hide scaffolding and defend alternatives. Worked answers are examples, not the only acceptable wording.
+1. See the goal (3m): choose between visible document examples and build three success criteria.
+2. Place the jobs (4m): tap Human, AI draft, or Human + AI; each job moves into the work plan.
+3. Build the brief (5m): Product (what to make), Process (how to work), and Performance (how AI behaves), with short contextual choices and a live message preview.
+4. Compare evidence (7m): a replayable perspective/attention demonstration connects skimming, scanning, and close comparison. The learner taps an output phrase and chooses Supported, Changed meaning, or No evidence. Matched highlights show the specific evidence. Alternative valid error locations are accepted.
+5. Repair and say it (5m): select a factual correction, then assemble four sentence chunks and practise aloud.
+6. Check before use (3m): resolve privacy, transparency, and release decisions. An unfinished document stays on HOLD.
+7. New situation (8m): guided transfer first; optional editable wording after success.
+8. Your results (5m): the learner uses the built speaking support, points to evidence, and downloads a learning record.
 
-Delegation includes goal, platform, and task awareness. Description and Discernment both address product, process, and performance. Diligence includes creation, transparency, and deployment, revisited throughout rather than only at the end. Automation, augmentation, and agency are distinguished, with augmentation as the principal practice mode.
+The first six activity screens have no open-ended writing task. Short instructions, worked examples, input choices, visual feedback, built sentences, and optional device speech precede independent language production. Stamps show completed actions; they do not certify proficiency. Spoken-practice buttons are explicitly self-report. Teacher assessment keeps AI judgement and English separate.
 
-## Interaction and limitations
+## Interface and state
 
-- ChatGPT, Claude, and Gemini styles are labelled teaching simulations, with identical scripted content. They illustrate familiar chat, attachment, and follow-up patterns; they are not pixel-exact reproductions or model-performance evidence.
-- Saving learner writing never generates a model reply. The actual authored conversation is separately revealed. No real files or microphone access are requested.
-- Practice is stored in sessionStorage per workflow and browser tab when available. Download the learning record before closing the tab. Teachers do not receive submissions automatically.
-- Classroom mode enlarges the view and shows teacher cues. Arrow keys navigate when focus is outside a form control. Navigation is not synchronised across devices.
-- Links such as `/ai-fluency/#image/4` and `/ai-fluency/#code/5` open a particular workflow and station.
-- The corrected calculator is authored local code. Learner input is never executed as code. The flawed calculator is deliberately wrong and labelled accordingly.
-- Core interactions have no network dependency after assets load. A fresh visit still requires the static files; no service worker promises offline availability.
-- Generated artwork appears only in the image case and is loaded lazily. Text and UI use system fonts.
-- Downloaded outputs are UTF-8 text files. The poster and calculator are interactive page artifacts; no editable Word or image export is claimed.
+- Start here opens the onboarding deck; `/ai-fluency/#cv/start` opens it directly. For an activity use a link such as `#cv/4` or `#image/4`.
+- Familiar ChatGPT, Claude, and Gemini styles show the same scripted conversation. There is no live AI generation, microphone recording, or real file upload.
+- The scanning demo uses CSS perspective and animated attention over real, selectable HTML evidence. Manual step controls, pause/replay, and reduced-motion support provide the same teaching content without animation. No WebGL dependency is required.
+- Keyboard-accessible buttons work on phones without drag-and-drop. Desktop/classroom layouts place source and output together; narrow screens stack them closely.
+- Learning state is stored per workflow in tab-local sessionStorage when available. Switching workflows preserves work. Restart affects only the selected workflow.
+- Listen uses device speech synthesis if available. It sends no app-generated network request; voice availability depends on the device/browser. A visible sentence remains available without audio.
+- The coding case retains intentionally flawed and corrected local calculators. No student text is executed as code.
+- Classroom navigation is not synchronised with student devices. Core interactions need no network after static assets load; a fresh visit still requires the files.
+- The teacher guide and learning records are UTF-8 text. Poster/code outputs are page artifacts; no Word or image export is claimed.
 
-## Maintenance
+## Maintenance and checks
 
-`workflows.js` holds the six complete cases. `app.js` renders a shared eight-station engine. `core.js` holds safe calculation and text escaping. `content.js` holds the common framework definitions and sources. `style.css` handles responsive and classroom layouts.
+`visual-data.js` contains six compact visual cases and exact comparison anchors. `visual-lessons.js` provides the guided activity engine and onboarding deck. `app.js` owns navigation, shared chat/artifact helpers, timers, storage, and downloads. `core.js` owns escaped text and the calculator. `workflows.js` retains the full original cases and revised artifacts as reference/extension material. `visual.css` defines the visual teaching surfaces.
 
-Run `node ai-fluency/build-guide.cjs` after content edits to regenerate the downloadable teacher guide. Run `node ai-fluency/validate.cjs` for content, arithmetic, and non-browser interaction checks. No build step is needed to serve the page.
+Run `node ai-fluency/build-guide.cjs` after content edits, then `node ai-fluency/validate.cjs`. The latter executes the event handlers in a non-browser harness; it checks all teaching slides/activity views, state, scoring, alternatives, sentence construction, data escaping, and calculator edge cases. It does not constitute browser visual QA or classroom learner testing. The page is static and needs no build dependencies.
 
 ## Sources and attribution
 

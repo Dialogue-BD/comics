@@ -1,129 +1,98 @@
 const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const ctx={window:{}};vm.createContext(ctx);
-for(const f of ['content.js','workflows.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,f),'utf8'),ctx);
+for(const f of ['content.js','workflows.js','visual-data.js'])vm.runInContext(fs.readFileSync(path.join(__dirname,f),'utf8'),ctx);
 const W=ctx.window.WORKFLOWS,D=ctx.window.FLUENCY;
 const key=qs=>qs.map(q=>`${q[0]}\n${q[1].map((o,i)=>`${String.fromCharCode(65+i)}. ${o}`).join('\n')}\nWorked answer: ${q[1][q[2]]}\nWhy: ${q[3]}`).join('\n\n');
-const text=`AI FLUENCY LAB — TEACHER GUIDE AND ANSWER KEY
-Six 45-minute workshops · B1–B2 · optional Bangla support
+const V=ctx.window.VISUAL_CASES;
+const text=`AI FLUENCY LAB — VISUAL TEACHING GUIDE
+B1–B2 · one 45-minute workflow per lesson · optional Bangla support
 
-Use one complete workflow per lesson. Six workshops total 4.5 hours.
-All students, organisations, opportunities, notices and events in these cases are fictional.
+TEACH FIRST: 5 MINUTES
+Open Start here. Six short slides show:
+1. The deliverable: an unchecked and a better example.
+2. Delegation: Human / AI draft / Human + AI.
+3. Description: Product = what to make; Process = how to work; Performance = how AI behaves as a collaborator.
+4. Discernment: skim headings, scan for a detail, then compare the whole claim.
+5. Diligence: protect information, explain assistance, check before use.
+6. Deliverables: a clear target, a better AI message, and a spoken explanation.
 
-RUNNING ORDER
-${D.stages.map((s,i)=>`${i+1}. ${s.short}: ${s.mins} minutes`).join('\n')}
+THE READING DEMONSTRATION
+Press Watch the steps. The document view changes depth; attention moves from headings to a detail and then to the source/output mismatch. Pause, replay, or choose each step manually. Reduced-motion users get the same steps without camera motion. Skimming and scanning locate evidence; they do not verify meaning on their own. Read the action, condition, relationship, and surrounding meaning closely.
 
-TEACHING ROUTINE
-Partners read separate role cards, exchange missing information, negotiate decisions, write a brief and a follow-up, check evidence, improve a sentence, and report. Require reasons and actual language production, not only selected answers. Reveal worked solutions after discussion. Alternatives are acceptable when justified against the brief.
+GUIDED ACTIVITIES: 40 MINUTES
+1. See the goal (3m): choose a visible output, then build three success criteria. No blank writing box.
+2. Place the jobs (4m): put a short task under Human, AI draft, or Human + AI. Feedback explains the division.
+3. Build the brief (5m): choose Product, Process, and Performance instructions. The three-part message appears in the simulated chat. Explore all three interface styles.
+4. Compare evidence (7m): skim, scan, tap an output phrase, and classify it as supported, changed meaning, or no evidence. Correct checks expose the exact contrast and build a spoken explanation.
+5. Repair and say it (5m): choose a factual correction; arrange four sentence chunks; listen and say the result.
+6. Check before use (3m): resolve a privacy, transparency, and release decision. The document case stays on HOLD until missing details are confirmed.
+7. New situation (8m): guided choices build a new brief. An optional editable sentence appears only after successful practice.
+8. Your results (5m): use the built explanation, point to evidence, swap speakers, and download the learning record.
 
-On one phone: A privately opens role A, closes it, then passes to B for role B. Partners exchange the information orally. Swap driver/checker at each station. In Classroom mode, project one station at a time and use teacher cues; ask for predictions before revealing. Navigation is not synchronised across phones. Printed role cards can be handed out separately.
+PAIR ROUTINE
+A points and chooses. B checks and says why. Swap roles at the next station. Begin with pointing and selection, then rehearse the visible sentence, then try saying it while looking away. Avoid requiring an open-ended written explanation before the learner has enough language and a concrete example.
 
-For B1, offer frames, vocabulary, brief Bangla clarification and rehearsal. Require the final reason in English. For B2, remove frames, ask for counterarguments and require a defensible alternative. Correct language after understanding meaning; have the learner use the improved form again.
+FEEDBACK
+An activity stamp records completion, not proficiency. Wrong choices give a brief retry cue; they do not deduct points. Spoken-practice buttons are self-report. Device speech is optional and may be unavailable. No microphone recording or automatic speaking assessment occurs. Supported claims may be checked at any matching phrase; changed claims accept alternative valid error locations.
 
-TWO SEPARATE RUBRICS
-Each criterion: 0 = not yet demonstrated; 1 = with support; 2 = independently with concrete evidence.
-AI judgement / 8: justified delegation; specific description; evidence-based discernment and revision; responsibility before use.
-English / 8: task vocabulary; connected reasons; useful questions and responses; meaningful revision preserving facts.
-Assess spoken explanations and created messages. Multiple-choice feedback is practice, not a certificate or automatic writing assessment.
+ASSESS TWO THINGS SEPARATELY
+Each criterion: 0 not demonstrated; 1 with support; 2 independently with evidence.
+AI /8: sensible division; clear brief; evidence-based checking/revision; responsibility before use.
+English /8: accurate vocabulary; connected reason; useful question/response; a revision preserving meaning.
+Use observed speech and the visible result. Do not equate activity completion with mastery.
 
-FRAMEWORK
-${D.ds.map(d=>`${d[0]}: ${d[1]}\n${d[2]}`).join('\n\n')}
+CLASSROOM USE
+Classroom mode enlarges teaching content. The onboarding deck and activity steps are controllable rather than timed slides. The teacher can pause and ask learners to point, predict, compare, and explain. One workflow per lesson. Use a station URL to direct phones; there is no live synchronisation.
 
-Delegation: problem, platform and task awareness. Description: product, process and performance. Discernment: product, process and performance. Diligence: creation, transparency and deployment. Delegation–Diligence frames the collaboration; Description–Discernment is a repeated conversation. All four recur through each case.
+${W.map(w=>{const d=V[w.id];return `WORKFLOW: ${w.title.toUpperCase()}
+Goal: ${d.noun} for ${d.audience}.
+English: ${w.focus}
 
-SIMULATIONS
-ChatGPT-, Claude-, and Gemini-style views use the same authored examples; these are not real responses or claims about model quality. Saving a learner message does not generate a reply. No microphone or real file access. The corrected calculator is local authored code. Learner input is never executed as code. In a real new chat or product, re-establish the goal, relevant evidence and decisions; context does not transfer automatically.
+VISIBLE EXAMPLES
+Unchecked: ${d.bad.join(' | ')}
+Better: ${d.good.join(' | ')}
 
-TRANSFER ROUTINE
-2 minutes plan, 4 minutes create, 2 minutes challenge, 2 minutes revise and report. Every pair writes: (1) division of work with reasons; (2) actual prompt or mini-output; (3) two evidence checks or test cases; (4) responsibilities before use; (5) one revised sentence after peer feedback.
+GOOD RESULT — THREE CRITERIA
+${d.qualities.map(x=>x.join(': ')).join('\n')}
 
-EXIT ROUTINE
-Each student gives a 45-second pitch: Our goal was ___. We gave AI ___ and kept ___. We noticed ___ because ___. We changed ___. Before use, we would ___. Partner gives one strength and one specific next step. Download the learning record before closing the tab.
+DELEGATION KEY
+${d.sort.map(x=>`${x[0]} → ${x[1]}. ${x[2]}`).join('\n')}
 
-${W.map(w=>`WORKFLOW: ${w.title.toUpperCase()}
-${w.student}
-English goal: ${w.focus}
+THREE-P BRIEF
+${['Product','Process','Performance'].map((p,i)=>`${p}: ${d.parts[i][0]}`).join('\n')}
 
-PARTNER A — HAND OUT SEPARATELY
-${w.roleA}
+EVIDENCE PRACTICE
+${d.compare.map((c,i)=>`${i+1}. ${c.heading}\nSource: ${c.source.join(' ')}\nOutput: ${c.output.join(' ')}\nCheck: ${c.verdict} — ${c.label}\nAcceptable anchors: ${c.verdict==='same'?'any matching phrase':(c.targets||[c.target]).map(n=>c.output[n]).join('; ')}\nCorrection: ${c.repair}`).join('\n\n')}
 
-PARTNER B — HAND OUT SEPARATELY
-${w.roleB}
+SENTENCE TO BUILD
+${d.sentence.join(' ')}
+Teacher language note: ${w.language.notice}
 
-SUCCESS CRITERION
-${w.goal}
+DILIGENCE KEY
+${d.gates.map(g=>`${g[0]} → ${g[1]}`).join('\n')}
 
-CASE EVIDENCE
-${w.facts.join('\n')}
+TRANSFER
+${d.transfer.brief}
+Target: ${d.transfer.next}
+Include: ${d.transfer.keep}
+Avoid: ${d.transfer.avoid}
+Check: ${d.transfer.check[0]}
+Built sentence: ${d.transfer.sentence}
 
-VOCABULARY
-${w.words.map(v=>`${v[0]}: ${v[1]} | ${v[2]} | ${v[3]}`).join('\n')}
+OPTIONAL LESS-SUPPORTED EXTENSION
+${w.transfer}
+One defensible approach: ${w.transferModel}
 
-SPEAKING FRAMES
-${w.frames.join('\n')}
-
-DELEGATION DECISIONS AND KEY
-${key(w.delegation)}
-
-BRIEF COMPONENTS
-${Object.entries(w.brief).map(([k,v])=>`${k}: ${v}`).join('\n')}
-
-WORKED FIRST MESSAGE
-${w.prompt}
-
-AI CLARIFICATION
-${w.clarification}
-
-HUMAN ANSWER
-${w.humanReply}
-
-INTENTIONALLY FLAWED DRAFT
-${w.draft}
-
-AUDIT QUESTIONS AND KEY
-${key(w.audits)}
-
-WORKED FOLLOW-UP
-${w.repair}
-
-REVISED OUTPUT
+COMPLETE REVISED OUTPUT
 ${w.improved}
 
-WHY IT IMPROVED
-${w.evidence}
+PROCESS NOTE
+${w.disclosure}`}).join('\n\n============================================================\n\n')}
 
-LANGUAGE NOTICING AND PRACTICE
-Before: ${w.language.before}
-After: ${w.language.after}
-${w.language.notice}
-${w.language.bn}
-Practice: ${w.language.task}
-One natural version: ${w.language.model}
-
-RELEASE REVIEW
-${w.release.map(t=>`[ ] Explain how: ${t}`).join('\n')}
-${w.id==='document'?'Correct readiness decision: NOT READY until the organiser confirms the missing contact and emergency procedure.':''}
-
-SAMPLE AI PROCESS NOTE
-${w.disclosure}
-
-NEW TRANSFER TASK
-${w.transfer}
-
-ONE DEFENSIBLE APPROACH
-${w.transferModel}
-
-EXIT QUESTION AND KEY
-${key([w.exit])}`).join('\n\n============================================================\n\n')}
-
-SOURCES AND CREDITS
-Framework and course: Rick Dakan, Joseph Feller, and Anthropic (2025).
+SOURCES AND LICENSE
+Framework: Rick Dakan, Joseph Feller, and Anthropic (2025).
 https://www.anthropic.com/ai-fluency/overview
-Source course materials: CC BY-NC-SA 4.0. Original course-based lesson adaptation © 2026 Dialogue, CC BY-NC-SA 4.0. The older practical overview PDF was consulted but is not reproduced or modified. No endorsement by product vendors or universities is implied.
-Product references consulted 7 September 2026:
-https://learn.chatgpt.com/docs/use-chatgpt
-https://support.claude.com/en/articles/8241126-upload-files-to-claude
-https://support.google.com/gemini/answer/14903178
-Illustration generated with built-in imagegen; fictional people. Prompt recorded in assets/illustration-prompt.txt.
+Course-based lesson adaptation © 2026 Dialogue, CC BY-NC-SA 4.0. All cases are fictional. Product styles are teaching simulations, not actual model replies or evidence of vendor performance. Real new chats need the relevant context again. The older practical overview was consulted but is not reproduced or modified.
 `;
 fs.writeFileSync(path.join(__dirname,'teacher-guide.txt'),text);
-console.log(`Teacher guide generated: ${W.length} complete workflows.`);
+console.log(`Visual teacher guide generated: ${W.length} workflows.`);

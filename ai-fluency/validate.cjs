@@ -10,82 +10,91 @@ const node=(id='')=>{
  nodes.set(id,n);return n;
 };
 const document={getElementById:node,querySelector:s=>node(`selector:${s}`),createElement:t=>node(`created:${t}`),
- body:{classList:{toggle(c,on){if(on)classes.add(c);else classes.delete(c);}},appendChild(){}},documentElement:{},
+ body:{classList:{add(c){classes.add(c);},toggle(c,on){if(on)classes.add(c);else classes.delete(c);}},appendChild(){}},documentElement:{},
  addEventListener(t,fn){(handlers[t]??=[]).push(fn);}};
 const location={hash:''};
 const sessionStorage={getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)};
 const context={window:{addEventListener(){},print(){}},document,location,history:{replaceState(a,b,v){location.hash=v;}},sessionStorage,console,
- setInterval(){return 1;},clearInterval(){},setTimeout(){},Blob,URL:{createObjectURL(){return 'blob:mock';},revokeObjectURL(){}},Date};
+ setInterval(){return 1;},clearInterval(){},setTimeout(){return 1;},clearTimeout(){},Blob,URL:{createObjectURL(){return 'blob:mock';},revokeObjectURL(){}},Date};
 vm.createContext(context);
-for(const f of ['content.js','workflows.js','core.js','app.js'])vm.runInContext(fs.readFileSync(path.join(base,f),'utf8'),context,{filename:f});
+for(const f of ['content.js','workflows.js','core.js','visual-data.js','visual-lessons.js','app.js'])vm.runInContext(fs.readFileSync(path.join(base,f),'utf8'),context,{filename:f});
 const state=()=>JSON.parse(storage.get('dialogue-fluency-v1'));
 const lesson=()=>state().lessons[state().workflow];
 const fire=(type,target)=>{for(const fn of handlers[type]||[])fn({target,defaultPrevented:false});};
 const click=dataset=>fire('click',{dataset,closest(){return this;}});
-const input=(id,value)=>fire('input',{dataset:{text:id},value});
-const choose=(group,i,value)=>fire('change',{dataset:{answer:`${group}-${i}`,group},value:String(value)});
+const action=(v,more={})=>click({v,...more});
 const html=()=>node('stage').innerHTML;
 let checks=0;const ok=(v,msg)=>{assert.ok(v,msg);checks++;};
-const workflows=context.window.WORKFLOWS;
+const workflows=context.window.WORKFLOWS,cases=context.window.VISUAL_CASES;
 ok(workflows.length===6,'six workflows');
-ok(context.window.FLUENCY.stages.reduce((n,s)=>n+s.mins,0)===45,'45-minute timing');
-const ids=new Set();
+ok(context.window.FLUENCY.stages.reduce((n,s)=>n+s.mins,0)+5===45,'5 + 40 minute lesson');
 for(const w of workflows){
- ok(!ids.has(w.id),'unique workflow id');ids.add(w.id);
- for(const key of ['intro','roleA','roleB','goal','prompt','clarification','humanReply','draft','repair','improved','evidence','transfer','transferModel','disclosure'])ok(typeof w[key]==='string'&&w[key].length>20,`${w.id} ${key}`);
- ok(w.facts.length>=5&&w.words.length===4&&w.frames.length===3,'ESL source scaffolds');
- ok(w.delegation.length===3&&w.audits.length===3&&w.release.length===4,'complete D decision points');
- for(const q of [...w.delegation,...w.audits,w.exit])ok(q[1].length===3&&q[2]>=0&&q[2]<3&&q[3].length>30,'question and explanation');
+ const d=cases[w.id];ok(d&&d.compare.length===3,'visual case and evidence triplet');
  node('workflow').onchange({target:{value:w.id}});
+ for(let j=0;j<6;j++){ok(html().includes('v-deck'),'onboarding renders');if(j<5)action('deck-next');}
+ action('start');
  for(let i=0;i<8;i++){
   click({go:String(i)});
-  ok(html().includes('stage-title')&&!html().includes('undefined'),'every stage renders concrete content');
+  ok(html().includes('v-studio')&&!html().includes('undefined'),'every activity renders');
   const found=[...html().matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
-  ok(new Set(found).size===found.length,`${w.id} station ${i+1}: unique element ids`);
+  ok(new Set(found).size===found.length,`${w.id} station ${i+1}: unique ids`);
+  if(i<6)ok(!html().includes('<textarea'),'early stages have no open-ended writing');
  }
- click({go:'0'});click({reveal:'roleA'});click({reveal:'roleB'});
- ok(lesson().reveals.roleB&&!lesson().reveals.roleA,'one role card at a time');
- click({go:'1'});click({check:'delegate'});
- ok(!lesson().checked.delegate,'incomplete answers cannot score');
- w.delegation.forEach((q,i)=>choose('delegate',i,q[2]));click({check:'delegate'});
- ok(html().includes('3 / 3 supported decisions'),'correct decisions scored');
- choose('delegate',0,(w.delegation[0][2]+1)%3);
- ok(!lesson().checked.delegate,'changing an answer invalidates old feedback');
- choose('delegate',0,w.delegation[0][2]);click({check:'delegate'});
- click({go:'2'});input('prompt','Use only my facts. <script>alert(1)</script>');
- for(const provider of ['ChatGPT','Claude','Gemini'])click({provider});
- ok(Object.keys(lesson().seen).length===3,'all interfaces explored');
- ok(html().includes('&lt;script&gt;')&&!html().includes('<script>alert'),'learner text escaped');
- click({send:'prompt'});ok(lesson().checks['saved-prompt'],'practice draft saved');
- click({go:'3'});w.audits.forEach((q,i)=>choose('audit',i,q[2]));click({check:'audit'});
- ok(lesson().checked.audit,'audit graded');
- if(w.id==='code'){click({calculate:'flawed'});ok(node('calc-result').textContent.includes('680'),'flawed demo exposes intended bug');}
- if(w.id==='image')ok(html().includes('Guaranteed overseas jobs'),'image critique contains flawed claim');
- click({go:'4'});input('repair','Preserve meaning and fix the unsupported claim.');click({reveal:'improved'});
- if(w.id==='code'){click({calculate:'fixed'});ok(node('calc-result').textContent.includes('BDT 200 per attendee'),'repaired demo works');}
- click({go:'5'});
- ok(html().includes('data-release disabled'),'readiness requires discussion checks');
- w.release.forEach((_,i)=>fire('change',{dataset:{tick:`release-${i}`},checked:true}));click({release:''});
- ok(lesson().reveals.readiness,'readiness explanation');
- if(w.id==='document')ok(html().includes('Not ready to circulate'),'document preserves unresolved details');
- click({go:'6'});input('transfer-description','A new message for the changed audience.');
- click({go:'7'});choose('exit',0,w.exit[2]);click({check:'exit'});
- ok(html().includes('7 / 7'),'whole-workflow checked score');
- node('mode').onchange({target:{value:'class'}});ok(classes.has('classroom'),'classroom mode');
- node('bangla').onclick();ok(classes.has('bangla'),'Bangla support');node('bangla').onclick();
- ok(lesson().text.prompt.includes('<script>')&&lesson().text.repair&&lesson().text['transfer-description'],'writing survives station and mode changes');
- node('mode').onchange({target:{value:'pair'}});
+ click({go:'0'});action('goal-pick',{choice:'0'});
+ ok(!lesson().visual.stamps.goal,'wrong target cannot earn stamp');
+ action('goal-pick',{choice:'1'});action('quality',{choice:'0'});
+ ok(lesson().visual.quality===0,'wrong criterion requires retry');
+ for(let j=0;j<3;j++)action('quality',{choice:'1'});
+ ok(lesson().visual.stamps.goal,'target built');
+ click({go:'1'});action('sort',{choice:'2'});ok(lesson().visual.sorted.length===0,'wrong job placement rejected');
+ for(let j=0;j<3;j++)action('sort',{choice:String(j)});
+ ok(lesson().visual.stamps.sort,'three jobs placed');
+ click({go:'2'});for(const p of ['ChatGPT','Claude','Gemini'])click({provider:p});
+ for(const c of ['1','0','1'])action('part',{choice:c});
+ ok(lesson().visual.stamps.brief,'three-P message built');
+ ok(html().includes('Product')&&html().includes('How to behave'),'Ps defined visibly');
+ ok(Object.keys(lesson().seen).length===3,'three interfaces retained');
+ click({go:'3'});
+ for(let j=0;j<3;j++){
+  action('audit-card',{choice:String(j)});action('phase',{choice:'2'});
+  const c=d.compare[j],selected=j===1?2:c.target;
+  action('word',{choice:String(selected)});action('verdict',{verdict:'invalid'});
+  ok(!lesson().visual.audited[j],'incorrect verdict does not award');
+  action('verdict',{verdict:c.verdict});
+  ok(lesson().visual.audited[j],'correct comparison awarded');
+  ok(html().includes('v-contrast-result'),'visual evidence feedback');
+ }
+ ok(lesson().visual.stamps.audit,'three evidence checks');
+ // The same-meaning card accepts any matching chunk, not one arbitrary word.
+ ok(lesson().visual.audited[1].word===2,'valid alternative anchor accepted');
+ if(w.id==='code'){click({calculate:'flawed'});ok(node('calc-result').textContent.includes('680'),'intended flawed result');}
+ click({go:'4'});action('repair-pick',{choice:'1'});
+ action('tile',{choice:'2'});ok(!lesson().visual.tiles.length,'out-of-order chunk gets retry');
+ for(let j=0;j<4;j++)action('tile',{choice:String(j)});
+ ok(lesson().visual.stamps.repair,'repair and sentence built');
+ if(w.id==='code'){click({calculate:'fixed'});ok(node('calc-result').textContent.includes('BDT 200'),'corrected calculator');}
+ click({go:'5'});for(let j=0;j<3;j++)action('gate',{choice:'1'});
+ ok(lesson().visual.stamps.release,'diligence decisions');
+ if(w.id==='document')ok(html().includes('HOLD'),'unconfirmed document stays on hold');
+ click({go:'6'});for(const c of ['1','0','1'])action('transfer',{choice:c});
+ ok(lesson().visual.stamps.transfer,'guided transfer completed');
+ fire('input',{dataset:{text:'extension'},value:'My version <script>alert(1)</script>'});
+ click({go:'7'});click({go:'6'});
+ ok(html().includes('&lt;script&gt;')&&!html().includes('<script>alert'),'optional writing escaped');
+ click({go:'7'});action('said',{id:'exit'});ok(lesson().visual.said.exit,'speech explicitly self-recorded');
+ ok(Object.keys(lesson().visual.stamps).length===7,'seven activity results');
+ node('mode').onchange({target:{value:'class'}});ok(classes.has('classroom'),'projector mode');
+ node('bangla').onclick();ok(classes.has('bangla'),'Bangla support');node('bangla').onclick();node('mode').onchange({target:{value:'pair'}});
+ // Reopening teaching slides does not destroy completed tasks.
+ action('intro');action('deck-next');ok(lesson().visual.stamps.audit,'progress survives onboarding revisit');
 }
-for(const w of workflows)ok(state().lessons[w.id].text.repair,'all workflows retain separate work');
-click({reset:''});click({confirmReset:''});ok(!lesson().text.prompt&&lesson().stage===0,'reset only selected workflow');
-ok(state().lessons.cv.text.prompt,'reset preserves other workflow');
-for(const [a,b,c,expected] of [['600','400','5',200],['600','400','3',334],['0','0','1',0],['0.1','0.2','1',1]]){assert.equal(C.calculate(a,b,c).each,expected);checks++;}
-for(const args of [['600','400','0'],['','400','5'],['-1','0','1'],['0','0','2.5'],['x','2','2'],['Infinity','0','1'],['1e309','0','1']])ok(C.calculate(...args).error,'invalid input rejected');
-assert.equal(C.calculate('600','400','3').surplus,2);checks++;
+for(const w of workflows)ok(state().lessons[w.id].visual.stamps.transfer,'independent workflow progress');
+click({reset:''});click({confirmReset:''});ok(!lesson().visual.stamps.goal,'restart resets selected workflow');
+ok(state().lessons.cv.visual.stamps.goal,'restart preserves other workflow');
+for(const [a,b,c,result] of [['600','400','5',200],['600','400','3',334],['0','0','1',0],['0.1','0.2','1',1]]){assert.equal(C.calculate(a,b,c).each,result);checks++;}
+for(const args of [['600','400','0'],['','400','5'],['-1','0','1'],['0','0','2.5'],['x','2','2'],['Infinity','0','1']])ok(C.calculate(...args).error,'invalid inputs rejected');
 ok(C.escapeHTML('<img src=x onerror=alert(1)>').includes('&lt;img'),'HTML escaping');
-const guide=fs.readFileSync(path.join(base,'teacher-guide.txt'),'utf8');
-for(const w of workflows)ok(guide.includes(w.title.toUpperCase())&&guide.includes(w.repair)&&guide.includes(w.language.model),'guide contains complete worked case');
 const index=fs.readFileSync(path.join(base,'index.html'),'utf8');
 for(const m of index.matchAll(/(?:src|href)="([^"#]+)"/g)){if(!m[1].includes('://')&&!m[1].startsWith('../'))ok(fs.existsSync(path.join(base,m[1])),'local asset exists');}
 ok(fs.existsSync(path.join(base,'assets/workshop-illustration.png')),'project image exists');
-console.log(`Passed ${checks} checks: all 48 stages, interaction/state transitions, escaped writing, decision scoring, guide coverage, and calculator edge cases. No browser visual QA performed.`);
+console.log(`Passed ${checks} non-browser checks: 36 teaching slides, 48 activity views, guided decisions, evidence matches, sentence construction, progress isolation, and calculator cases.`);

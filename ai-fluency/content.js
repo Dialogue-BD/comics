@@ -1,14 +1,14 @@
 /* Original fictional cases; framework terminology credited in the teacher guide. */
 window.FLUENCY = {
   stages: [
-    {title:'Meet the task',short:'Meet the task',mins:4,ds:['Delegation','Diligence']},
-    {title:'Who should do what?',short:'Divide the work',mins:5,ds:['Delegation','Diligence']},
-    {title:'Give AI a useful brief',short:'Build the brief',mins:6,ds:['Description']},
-    {title:'A polished CV. But is it true?',short:'Inspect the draft',mins:7,ds:['Discernment']},
-    {title:'Make the next message count',short:'Repair & refine',mins:5,ds:['Description','Discernment']},
-    {title:'Would you put your name on it?',short:'Own the result',mins:4,ds:['Diligence']},
-    {title:'Your turn: design a useful document',short:'Transfer the skills',mins:10,ds:['Delegation','Description','Discernment','Diligence']},
-    {title:'Show your judgement',short:'Exit ticket',mins:4,ds:['All four Ds']}
+    {title:'Meet the task',short:'See the goal',mins:3,ds:['Delegation','Diligence']},
+    {title:'Who should do what?',short:'Place the jobs',mins:4,ds:['Delegation','Diligence']},
+    {title:'Give AI a useful brief',short:'Build the brief',mins:5,ds:['Description']},
+    {title:'A polished CV. But is it true?',short:'Compare evidence',mins:7,ds:['Discernment']},
+    {title:'Make the next message count',short:'Repair & say it',mins:5,ds:['Description','Discernment']},
+    {title:'Would you put your name on it?',short:'Check before use',mins:3,ds:['Diligence']},
+    {title:'Your turn: design a useful document',short:'New situation',mins:8,ds:['Delegation','Description','Discernment','Diligence']},
+    {title:'Show your judgement',short:'Your results',mins:5,ds:['All four Ds']}
   ],
   facts: `<div class="profile card"><div class="eyebrow">FICTIONAL STUDENT · VERIFIED CASE FACTS</div><div class="name">Nusrat Jahan</div><p class="muted">Third-year English student · University of Rajshahi<br>Expected graduation: 2027</p><ul class="fact-list"><li><strong>Tutoring:</strong> helped 3 school students with English, January–June 2026.</li><li><strong>Volunteer:</strong> checked in 45 attendees at one campus reading event in March 2026.</li><li><strong>Course project:</strong> made a 6-slide presentation with 3 classmates.</li><li><strong>Tools:</strong> basic Google Docs and Canva. No Excel experience recorded.</li><li><strong>Languages:</strong> Bangla; intermediate English. No IELTS result.</li><li><strong>Privacy:</strong> use [email] and [phone] in the AI draft.</li></ul><p class="small">All people, opportunities, dates, and requirements in the cases are invented for practice.</p></div>`,
   opportunity: `<div class="card"><div class="eyebrow">FICTIONAL OPPORTUNITY</div><h3>Programme Assistant Intern</h3><p>A Rajshahi education organisation needs help with event registration, student communication, and simple documents.</p><p><strong>The brief:</strong> one-page English CV; show relevant experience and basic digital skills. This practice advert permits AI editing, but all claims must be true.</p><p class="small">Success = relevant, readable, accurate, and easy for Nusrat to explain in an interview.</p></div>`,
