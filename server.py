@@ -326,6 +326,37 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
 
+    def copyfile(self, source, outputfile):
+        try:
+            super().copyfile(source, outputfile)
+        except (BrokenPipeError, ConnectionResetError):
+            pass
+
+    def _serve_branded_busy_pictures(self) -> None:
+        """Serve the large bundled viewer with the shared brand shell injected."""
+        path = os.path.join(DIRECTORY, "busy-pictures", "index.html")
+        with open(path, "rb") as source:
+            body = source.read()
+        body = body.replace(
+            b"</head>",
+            b'<link rel="stylesheet" href="../dialogue-brand.css">\n</head>',
+            1,
+        )
+        body = body.replace(
+            b"</body>",
+            b'<script src="../dialogue-brand.js"></script>\n</body>',
+            1,
+        )
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-cache")
+        self.end_headers()
+        try:
+            self.wfile.write(body)
+        except (BrokenPipeError, ConnectionResetError):
+            pass
+
     def log_message(self, format, *args):
         # Suppress routine access logs; keep 4xx/5xx
         if args and len(args) >= 2 and str(args[1]).startswith(("4", "5")):
@@ -342,6 +373,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     # ── GET classroom APIs ────────────────────────────────────────────────────
     def do_GET(self):
         parsed = urlparse(self.path)
+        if parsed.path in {"/busy-pictures/", "/busy-pictures/index.html"}:
+            self._serve_branded_busy_pictures()
+            return
         if parsed.path == "/api/health":
             database = _get_db()
             _json_response(self, 200, {

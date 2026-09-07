@@ -309,6 +309,7 @@
     *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
   }
 </style>
+  <link rel="stylesheet" href="../dialogue-brand.css">
 </head>
 <body>
 <div class="app" id="app">
@@ -655,5 +656,6 @@ addEventListener("orientationchange", () => setTimeout(autofit, 260));
 document.addEventListener("fullscreenchange", () => setTimeout(autofit, 120));
 document.fonts?.ready.then(autofit);   // metrics shift once Archivo lands
 </script>
+  <script src="../dialogue-brand.js"></script>
 </body>
 </html>

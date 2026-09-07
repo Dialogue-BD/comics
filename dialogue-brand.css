@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap');
+
+:root {
+  --dialogue-forest: #103d21;
+  --dialogue-deep: #0c3319;
+  --dialogue-ink: #1d211c;
+  --dialogue-paper: #f4f1e6;
+  --dialogue-card: #fffdf7;
+  --dialogue-line: #d8d3c2;
+  --dialogue-gold: #b9924f;
+  --dialogue-moss: #6f8f62;
+  --dialogue-clay: #b0563a;
+  --dialogue-focus: #1f7a47;
+}
+
+html { font-family: 'Public Sans', system-ui, sans-serif; }
+body { background: var(--dialogue-paper); }
+
+.dialogue-brandbar {
+  position: fixed;
+  z-index: 15000;
+  top: 10px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  padding: 5px 12px 5px 6px;
+  color: var(--dialogue-paper);
+  background: rgba(16,61,33,.94);
+  border: 1px solid rgba(185,146,79,.65);
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(16,61,33,.18);
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  transition: transform .2s ease, background .2s ease;
+}
+.dialogue-brandbar:hover { color: var(--dialogue-paper); background: var(--dialogue-deep); transform: translateY(-1px); }
+.dialogue-brandbar img { width: 30px; height: 30px; object-fit: contain; background: var(--dialogue-paper); border-radius: 50%; }
+.dialogue-brandbar strong { font-size: 12px; letter-spacing: .04em; }
+.dialogue-brandbar span { display: block; font-size: 9px; letter-spacing: .13em; text-transform: uppercase; color: #dec78f; }
+
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid #d2aa61 !important;
+  outline-offset: 3px;
+}
+
+/* Keep the shared home control clear of each activity's own chrome. */
+.dialogue-home #app-header { padding-left: 190px; }
+.dialogue-activity-shell #app-header { padding-left: 210px; }
+.dialogue-activity-shell .site-header { padding-left: 210px; }
+.dialogue-activity-shell .topbar { padding-left: max(210px, env(safe-area-inset-left)); }
+.dialogue-activity-shell #page-nav-bar { left: 210px; }
+
+/* Full-screen activities should remain completely immersive. */
+:fullscreen .dialogue-brandbar,
+:-webkit-full-screen .dialogue-brandbar,
+body.fullscreen-active .dialogue-brandbar {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .dialogue-brandbar { top: 8px; left: 8px; min-height: 38px; padding-right: 9px; }
+  .dialogue-brandbar img { width: 26px; height: 26px; }
+  .dialogue-brandbar strong { font-size: 11px; }
+  .dialogue-brandbar span { font-size: 8px; }
+  .dialogue-home #app-header { padding-left: 120px; }
+  .dialogue-activity-shell #app-header { padding-left: 132px; }
+  .dialogue-activity-shell .site-header { padding-left: 132px; }
+  .dialogue-activity-shell .topbar { padding-left: 132px; }
+  .dialogue-activity-shell #page-nav-bar { left: 132px; }
+}

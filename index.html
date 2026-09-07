@@ -4,13 +4,14 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Visual Stories &amp; Activities</title>
+  <title>Dialogue · Classroom Learning Collection</title>
   <meta name="description" content="Interactive comics, picture stories, and language learning activities — browse or scan a QR code to join any activity instantly.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dialogue-brand.css">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -843,6 +844,18 @@
       transform: translateX(-50%) translateY(0);
     }
   </style>
+  <style>
+    :root{--bg:#eae7dc;--surface:#f4f1e6;--surface-card:#fffdf7;--surface-hover:#e3ead9;--border:#d8d3c2;--accent:#103d21;--accent-hover:#0c3319;--accent-glow:rgba(185,146,79,.24);--text:#1d211c;--text-muted:#5f6a5c;--font-main:'Public Sans',system-ui,sans-serif}
+    #app-header{background:rgba(16,61,33,.97);border-color:rgba(185,146,79,.5)}
+    .header-title{font-family:'Source Serif 4',Georgia,serif;color:#f4f1e6}.header-title .badge{color:#dec78f;background:rgba(185,146,79,.18);border-color:rgba(185,146,79,.5)}
+    #grid-view{background:var(--bg)}.qr-card-item,.slide-info-card,.slideshow-footer{background:var(--surface-card);border-color:var(--border);box-shadow:0 12px 30px rgba(16,61,33,.08)}
+    .qr-card-title,.slide-title{color:var(--text);text-shadow:none}.qr-card-desc,.slide-desc{color:var(--text-muted)}
+    .slide-category-pill,.slide-counter-badge,.qr-card-badge{color:#6f531c;background:#f0e6cd;border-color:#d2b978}.slide-url-box{background:#f0ede3;border-color:var(--border)}.slide-url-text{color:#103d21}
+    .slide-qr-card{box-shadow:0 20px 55px rgba(16,61,33,.16)}.slide-qr-scan-badge{background:#103d21;box-shadow:none}
+    .slide-action-btn,.fs-toggle-btn,.qr-card-present-btn{color:var(--text);background:#e3ead9;border-color:#b9c8af}.grid-search-input{color:var(--text);background:var(--surface-card)}
+    .slide-nav-btn{color:#f4f1e6;background:#103d21;border-color:#b9924f}
+    @media(max-width:600px){#app-header{padding-left:120px}.header-title{font-size:.9rem}.view-btn{padding-inline:8px}}
+  </style>
 </head>
 <body>
 
@@ -1591,5 +1604,6 @@
 
     init();
   </script>
+  <script src="dialogue-brand.js"></script>
 </body>
 </html>
