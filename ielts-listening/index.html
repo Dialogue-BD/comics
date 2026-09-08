@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f3ed">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <title>Listening Focus — IELTS Listening Lab | Dialogue Language Center</title>
+  <meta name="description" content="A ten-station IELTS Listening course with supplied audio, 89 source-aligned questions, two full 40-question runs, mobile practice, projector controls, diagnosis, and printable two-up worksheets.">
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+  <a class="skip-link" href="#diagnostic" data-i18n="skip">Skip to the first station</a>
+
+  <nav class="top no-print" aria-label="Lesson navigation">
+    <div class="nav-bar">
+      <a class="brand" href="/" aria-label="Dialogue English Language Center">
+        <img src="assets/images/dialogue-logo.png" alt="Dialogue English Language Center">
+        <span class="brand-product">IELTS Listening</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#diagnostic"><i>0</i> Diagnose</a>
+        <a href="#paper"><i>1</i> Paper</a>
+        <a href="#method"><i>2</i> Method</a>
+        <a href="#precision"><i>3</i> Precision</a>
+        <a href="#section1"><i>4</i> Part 1</a>
+        <a href="#section2"><i>5</i> Part 2</a>
+        <a href="#section3"><i>6</i> Part 3</a>
+        <a href="#section4"><i>7</i> Part 4</a>
+        <a href="#fullrun"><i>8</i> Full run</a>
+        <a href="#scorecard"><i>9</i> Results</a>
+      </div>
+      <div class="nav-tools">
+        <button class="tool-btn" id="langBtn" type="button" title="ভাষা / Language">বাংলা</button>
+        <button class="tool-btn" id="themeBtn" type="button" title="Switch colour theme">🌙 Dark</button>
+        <button class="tool-btn teacher-only" id="projectorBtn" type="button">🖥 Projector</button>
+        <button class="tool-btn teacher-only" id="notesBtn" type="button">📋 Notes</button>
+        <button class="tool-btn teacher-only" id="keysBtn" type="button">🔑 Keys</button>
+        <button class="tool-btn teacher-only" id="resetBtn" type="button">↺ Reset</button>
+      </div>
+    </div>
+  </nav>
+
+  <button class="jump-fab no-print" id="jumpBtn" type="button" aria-label="Jump to a station" aria-expanded="false">☰ <span>Stations</span></button>
+  <div class="jump-sheet no-print" id="jumpSheet" role="dialog" aria-modal="true" aria-label="Jump to a station">
+    <div class="jump-panel">
+      <div class="jump-head"><strong>Jump to…</strong><button id="jumpClose" type="button" aria-label="Close">×</button></div>
+      <div id="jumpList" class="jump-list"></div>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="eyebrow">IELTS listening · one play, four parts</p>
+      <h1>Listening <span>Focus</span></h1>
+      <p class="lede" data-i18n="lede">You do not need to catch every word. You need to know what is coming, stay with the question, survive the distractor, and write exactly what earns the mark.</p>
+      <div class="hero-chips">
+        <span>🎧 10 supplied recordings</span><span>✓ 89 unique questions</span><span>🧪 Two 40-question runs</span><span>📱 Phone-ready</span><span>🖨 Two-up worksheets</span>
+      </div>
+      <a class="home-link" href="/">← All activities</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="station" id="diagnostic">
+      <div class="wrap">
+        <div class="station-head">
+          <div class="tags"><span class="tag screen">🖥 Big screen</span><span class="tag mobile">📱 Phone</span><span class="skill-gauge"><b>LISTEN</b> Notice the problem</span></div>
+          <p class="station-num">Station 0 · 8 minutes</p>
+          <h2 data-i18n="s0h">What breaks when you listen?</h2>
+          <p class="station-sub" data-i18n="s0s">Name the failure before you practise. “I’m bad at listening” is not a diagnosis.</p>
+        </div>
+        <aside class="teacher-note"><b>How to run it</b> Students choose privately first, then compare in pairs. Put the class tally on the projector. Do not solve anything yet; Station 9 will show whether their self-diagnosis matched their scores.</aside>
+
+        <div class="card mobile-card">
+          <div class="card-label">1 · Self-diagnosis</div>
+          <h3>Tap every statement that feels true.</h3>
+          <p class="card-intro">Your choices stay on this device. They are compared with your scored work at the end.</p>
+          <div class="problem-grid" id="problemGrid"></div>
+          <div class="diagnosis" id="problemDiagnosis" aria-live="polite">Choose at least one statement.</div>
+        </div>
+
+        <div class="card sound-card">
+          <div class="card-label">2 · Sound check</div>
+          <h3>Make the equipment disappear.</h3>
+          <p class="card-intro">Headphones on. Play ten seconds, set a comfortable volume, then stop. On a phone, keep the page open and the screen awake.</p>
+          <button class="listen-btn" type="button" data-track="harper" data-start="0" data-title="Harper Holiday Job Agency · sound check"><span class="play-mark">▶</span><span><b>Play the sound check</b><small>Part 1 · two speakers · British accents</small></span></button>
+          <div class="sound-confirm no-print">
+            <label><input type="checkbox" id="soundReady"> I can hear both voices clearly.</label>
+            <label><input type="checkbox" id="onePlayReady"> I understand: in practice mode I may replay; in test mode I get one play.</label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="station" id="paper">
+      <div class="wrap">
+        <div class="station-head">
+          <div class="tags"><span class="tag screen">🖥 Big screen</span><span class="tag pairs">👥 Pairs</span><span class="skill-gauge"><b>MAP</b> Know what is coming</span></div>
+          <p class="station-num">Station 1 · 10 minutes</p>
+          <h2 data-i18n="s1h">Four parts. Four different listening jobs.</h2>
+          <p class="station-sub" data-i18n="s1s">Difficulty rises, but the structure is predictable. Use it before the recording uses you.</p>
+        </div>
+        <aside class="teacher-note"><b>Ask before revealing:</b> Which part has one speaker? Which part is academic? Which two ask for attitude? Students tap a card to predict, then reveal the answer.</aside>
+
+        <div class="part-grid" id="partGrid"></div>
+
+        <div class="card">
+          <div class="card-label">Answer-type radar</div>
+          <h3>Predict the shape, not the word.</h3>
+          <p class="card-intro">Before listening, each blank already tells you something. Tap the most likely answer type.</p>
+          <div id="predictionQuiz" class="quiz-list"></div>
+          <div class="button-row"><button class="btn secondary" type="button" id="predictionReset">Reset radar</button><span class="score-pill" id="predictionScore">0 / 6</span></div>
+          <div class="answer-key"><b>Key:</b> 1 surname, 2 date, 3 month, 4 place, 5 number, 6 noun phrase.</div>
+        </div>
+
+        <div class="paper-note">
+          <strong>Current format check</strong>
+          <span>40 questions · four parts · recording played once. Paper testing gives 10 transfer minutes; computer testing uses a short checking period instead. The listening content is the same for Academic and General Training. <a href="https://takeielts.britishcouncil.org/what-is-ielts/how-it-works/test-format/listening" target="_blank" rel="noopener">Official format ↗</a></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="station" id="method">
+      <div class="wrap">
+        <div class="station-head">
+          <div class="tags"><span class="tag screen">🖥 Big screen</span><span class="tag mobile">📱 Phone</span><span class="skill-gauge"><b>PACE</b> Stay one question ahead</span></div>
+          <p class="station-num">Station 2 · 12 minutes</p>
+          <h2 data-i18n="s2h">The six-move listening loop</h2>
+          <p class="station-sub" data-i18n="s2s">The work begins before Play. Repeat the loop at every pause and every new question block.</p>
+        </div>
+        <aside class="teacher-note"><b>Projector:</b> advance one move at a time. Hide the final move until students have named what they should check. Then print the method card from Station 9.</aside>
+
+        <div class="card method-card">
+          <div class="method-rail" id="methodRail"></div>
+          <div class="method-stage" id="methodStage" aria-live="polite"></div>
+          <div class="button-row no-print">
+            <button class="btn ghost" type="button" id="methodPrev">← Back</button>
+            <button class="btn" type="button" id="methodNext">Next move →</button>
+            <button class="btn secondary" type="button" id="methodRestart">Restart</button>
+          </div>
+        </div>
+
+        <div class="card pairs-card">
+          <div class="card-label">You do · 30-second preview</div>
+          <h3>Prepare the Harper form before you hear it.</h3>
+          <p class="card-intro">Mark the expected answer type. Then start the preview timer and say the five types aloud with a partner.</p>
+          <div class="preview-form compact-form">
+            <label>Surname <select data-preview-answer="name"><option value="">Type?</option><option>name</option><option>number</option><option>place</option></select></label>
+            <label>Date of birth <select data-preview-answer="number"><option value="">Type?</option><option>name</option><option>number</option><option>place</option></select></label>
+            <label>June to ___ <select data-preview-answer="number"><option value="">Type?</option><option>name</option><option>number</option><option>place</option></select></label>
+            <label>Work in ___ <select data-preview-answer="place"><option value="">Type?</option><option>name</option><option>number</option><option>place</option></select></label>
+          </div>
+          <div class="button-row no-print"><button class="btn" id="previewStart" type="button">Start 30 seconds</button><button class="btn secondary" id="previewCheck" type="button">Check types</button><span class="timer" id="previewTimer">0:30</span></div>
+          <div class="feedback" id="previewFeedback"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Distractor anatomy</div>
+          <h3>The first answer you hear is often bait.</h3>
+          <div class="distractor-demo">
+            <div class="speech wrong"><span>Agency</span>“June to <b>September</b>, is it? That’s what most people want.”</div>
+            <div class="speech right"><span>Lily</span>“I don’t want to go on till September. I’d prefer to finish in <b>August</b>.”</div>
+          </div>
+          <p class="rule"><b>Rule:</b> Hold a possible answer lightly. Keep listening until the speaker confirms, corrects, or replaces it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="station" id="precision">
+      <div class="wrap">
+        <div class="station-head">
+          <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag pairs">👥 Pairs</span><span class="tag print">🖨 2-up</span><span class="skill-gauge"><b>PRECISION</b> Spell what you hear</span></div>
+          <p class="station-num">Station 3 · 14 minutes</p>
+          <h2 data-i18n="s3h">Names, dates, corrections</h2>
+          <p class="station-sub" data-i18n="s3s">Part 1 marks are factual. They are also easy to lose through spelling, format, and answering too early.</p>
+        </div>
+        <aside class="teacher-note"><b>One-play round:</b> students preview for 30 seconds, then play the 2:04 recording once. Replay only after everyone has checked. Ask them to circle where the September/August correction happened.</aside>
+        <div class="exercise-card card" data-set-card="harper">
+          <div class="exercise-head">
+            <div><div class="card-label">Part 1 · form completion</div><h3>Harper Holiday Job Agency</h3><p>5 questions · no more than three words and/or a number</p></div>
+            <button class="listen-btn small" type="button" data-track="harper" data-title="Harper Holiday Job Agency"><span class="play-mark">▶</span><span><b>Play once</b><small>2:04</small></span></button>
+          </div>
+          <div class="exercise-slot" data-exercise="harper"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="station" id="section1">
+      <div class="wrap">
+        <div class="station-head">
+          <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag print">🖨 2-up</span><span class="skill-gauge"><b>PART 1</b> Social conversation</span></div>
+          <p class="station-num">Station 4 · 20 minutes</p>
+          <h2 data-i18n="s4h">Part 1 · facts under correction</h2>
+          <p class="station-sub" data-i18n="s4s">Two complete practice sets. Preview the form, follow the order, and wait through corrections.</p>
+        </div>
+        <aside class="teacher-note"><b>Choose one in class; print the other for homework.</b> The travel-agent audio has a two-minute lead-in, so the player starts at 2:00 automatically.</aside>
+        <div class="set-tabs no-print" role="tablist" aria-label="Part 1 practice set"><button class="active" data-tab-group="s1" data-tab-target="tour" type="button">London tour</button><button data-tab-group="s1" data-tab-target="travel" type="button">Travel agent</button></div>
+        <div class="tab-panel active" data-tab-panel="s1" data-panel="tour">
+          <div class="exercise-card card" data-set-card="tour"><div class="exercise-head"><div><div class="card-label">Part 1 · mixed tasks</div><h3>Booking a London tour</h3><p>10 questions · form, choose three, multiple choice</p></div><button class="listen-btn small" type="button" data-track="tour" data-title="Booking a London tour"><span class="play-mark">▶</span><span><b>Play</b><small>4:29</small></span></button></div><div class="exercise-slot" data-exercise="tour"></div></div>
+        </div>
+        <div class="tab-panel" data-tab-panel="s1" data-panel="travel">
+          <div class="exercise-card card" data-set-card="travel"><div class="exercise-head"><div><div class="card-label">Part 1 · mixed tasks</div><h3>The Travel Depot</h3><p>10 questions · multiple choice, form, sentence completion</p></div><button class="listen-btn small" type="button" data-track="travel" data-start="120" data-title="The Travel Depot"><span class="play-mark">▶</span><span><b>Play from 2:00</b><small>5:26 practice segment</small></span></button></div><div class="exercise-slot" data-exercise="travel"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="station" id="section2">
+      <div class="wrap">
+        <div class="station-head">
+          <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag print">🖨 2-up</span><span class="skill-gauge"><b>PART 2</b> Social monologue</span></div>
+          <p class="station-num">Station 5 · 20 minutes</p>
+          <h2 data-i18n="s5h">Part 2 · follow one speaker’s route</h2>
+          <p class="station-sub" data-i18n="s5s">A monologue offers no second voice to reset your attention. Headings and layout become your signposts.</p>
+        </div>
+        <aside class="teacher-note"><b>Prediction challenge:</b> give 45 seconds before Play. Students underline units (km, hours), plural clues, and the instruction allowing X. Award one bonus point for correctly predicting a number/name/adjective before hearing it.</aside>
+        <div class="set-tabs no-print" role="tablist" aria-label="Part 2 practice set"><button class="active" data-tab-group="s2" data-tab-target="trains" type="button">Story of trains</button><button data-tab-group="s2" data-tab-target="property" type="button">Property talk</button></div>
+        <div class="tab-panel active" data-tab-panel="s2" data-panel="trains"><div class="exercise-card card" data-set-card="trains"><div class="exercise-head"><div><div class="card-label">Part 2 · table + summary</div><h3>A Story of Trains</h3><p>10 questions · use X when information is not given</p></div><button class="listen-btn small" type="button" data-track="trains" data-title="A Story of Trains"><span class="play-mark">▶</span><span><b>Play</b><small>6:44</small></span></button></div><div class="exercise-slot" data-exercise="trains"></div></div></div>
+        <div class="tab-panel" data-tab-panel="s2" data-panel="property"><div class="exercise-card card" data-set-card="property"><div class="exercise-head"><div><div class="card-label">Part 2 · MCQ + short answer</div><h3>Property investment talk</h3><p>10 questions · choose precisely, then write briefly</p></div><button class="listen-btn small" type="button" data-track="property" data-title="Property investment talk"><span class="play-mark">▶</span><span><b>Play</b><small>5:40</small></span></button></div><div class="exercise-slot" data-exercise="property"></div></div></div>
+      </div>
+    </section>
+
+    <section class="station" id="section3">
+      <div class="wrap">
+        <div class="station-head">
+          <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag pairs">👥 Pairs</span><span class="tag print">🖨 2-up</span><span class="skill-gauge"><b>PART 3</b> Track speakers</span></div>
+          <p class="station-num">Station 6 · 24 minutes</p>
+          <h2 data-i18n="s6h">Part 3 · who thinks what?</h2>
+          <p class="station-sub" data-i18n="s6s">Academic discussions hide answers inside agreement, hesitation, correction, and changed decisions.</p>
+        </div>
+        <aside class="teacher-note"><b>Start with Alice and Tom.</b> It is only 70 seconds and makes the core trap visible: a speaker proposes one plan, then both agree to a different one. Continue with one full set.</aside>
+
+        <div class="exercise-card card accent-card" data-set-card="alice"><div class="exercise-head"><div><div class="card-label">Micro-lab · matching speakers</div><h3>Alice and Tom divide the tasks</h3><p>4 questions · A Alice · B Tom · C Both</p></div><button class="listen-btn small" type="button" data-track="alice" data-title="Alice and Tom divide the tasks"><span class="play-mark">▶</span><span><b>Play</b><small>1:10</small></span></button></div><div class="exercise-slot" data-exercise="alice"></div></div>
+
+        <div class="set-tabs no-print" role="tablist" aria-label="Part 3 full practice set"><button class="active" data-tab-group="s3" data-tab-target="vegetarian" type="button">Vegetarian research</button><button data-tab-group="s3" data-tab-target="solar" type="button">Solar presentation</button></div>
+        <div class="tab-panel active" data-tab-panel="s3" data-panel="vegetarian"><div class="exercise-card card" data-set-card="vegetarian"><div class="exercise-head"><div><div class="card-label">Part 3 · MCQ + completion + diagram</div><h3>Helen the Vegetarian</h3><p>10 questions · listen for viewpoint and data</p></div><button class="listen-btn small" type="button" data-track="vegetarian" data-title="Helen the Vegetarian"><span class="play-mark">▶</span><span><b>Play</b><small>6:25</small></span></button></div><div class="exercise-slot" data-exercise="vegetarian"></div></div></div>
+        <div class="tab-panel" data-tab-panel="s3" data-panel="solar"><div class="exercise-card card" data-set-card="solar"><div class="exercise-head"><div><div class="card-label">Part 3 · MCQ + graph + diagram</div><h3>Solar power presentation</h3><p>10 questions · use the visuals before Play</p></div><button class="listen-btn small" type="button" data-track="solar" data-title="Solar power presentation"><span class="play-mark">▶</span><span><b>Play</b><small>7:21</small></span></button></div><div class="exercise-slot" data-exercise="solar"></div></div></div>
+      </div>
+    </section>
+
+    <section class="station" id="section4">
+      <div class="wrap">
+        <div class="station-head">
+          <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag print">🖨 2-up</span><span class="skill-gauge"><b>PART 4</b> Follow the lecture</span></div>
+          <p class="station-num">Station 7 · 24 minutes</p>
+          <h2 data-i18n="s7h">Part 4 · structure is your lifeline</h2>
+          <p class="station-sub" data-i18n="s7s">Unknown vocabulary is not the emergency. Losing the lecture’s headings is.</p>
+        </div>
+        <aside class="teacher-note"><b>Before Play:</b> students read only headings and words around the gaps. Ask them to predict grammar: noun, plural noun, percentage, person. Play once; replay with keys only after scoring.</aside>
+        <div class="set-tabs no-print" role="tablist" aria-label="Part 4 practice set"><button class="active" data-tab-group="s4" data-tab-target="dolphins" type="button">Dolphin behaviour</button><button data-tab-group="s4" data-tab-target="osteopathy" type="button">Osteopathy</button></div>
+        <div class="tab-panel active" data-tab-panel="s4" data-panel="dolphins"><div class="exercise-card card" data-set-card="dolphins"><div class="exercise-head"><div><div class="card-label">Part 4 · note completion</div><h3>Behaviour of Dolphins</h3><p>10 questions · headings hold your place</p></div><button class="listen-btn small" type="button" data-track="dolphins" data-title="Behaviour of Dolphins"><span class="play-mark">▶</span><span><b>Play</b><small>5:09</small></span></button></div><div class="exercise-slot" data-exercise="dolphins"></div></div></div>
+        <div class="tab-panel" data-tab-panel="s4" data-panel="osteopathy"><div class="exercise-card card" data-set-card="osteopathy"><div class="exercise-head"><div><div class="card-label">Part 4 · completion + MCQ</div><h3>Discussion about Osteopathy</h3><p>10 questions · precise short answers and opinions</p></div><button class="listen-btn small" type="button" data-track="osteopathy" data-title="Discussion about Osteopathy"><span class="play-mark">▶</span><span><b>Play</b><small>6:12</small></span></button></div><div class="exercise-slot" data-exercise="osteopathy"></div></div></div>
+      </div>
+    </section>
+
+    <section class="station" id="fullrun">
+      <div class="wrap wide-wrap">
+        <div class="station-head">
+          <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag screen">🖥 Big screen</span><span class="tag print">🖨 Full paper</span><span class="skill-gauge"><b>ASSEMBLE</b> 40 questions</span></div>
+          <p class="station-num">Station 8 · 30 minutes</p>
+          <h2 data-i18n="s8h">The full run · four parts, no reset</h2>
+          <p class="station-sub" data-i18n="s8s">Choose Test A or B. The player advances through four recordings; your only job is to stay with the next question.</p>
+        </div>
+        <aside class="teacher-note"><b>Exam conditions:</b> one play, individual, no phones switching apps. Use practice mode first if needed. Test A and B use different source sets so one can be classwork and the other a later retest.</aside>
+
+        <div class="mock-shell">
+          <div class="mock-toolbar no-print">
+            <div class="segmented"><button class="active" type="button" data-mock="A">Test A</button><button type="button" data-mock="B">Test B</button></div>
+            <label class="mode-switch"><input type="checkbox" id="examMode"> <span>Exam mode · lock replay and speed</span></label>
+            <button class="btn" type="button" id="mockStart">Start Test A</button>
+            <button class="btn secondary" type="button" id="mockCheck">Finish &amp; score</button>
+            <button class="btn ghost" type="button" id="mockReset">Reset test</button>
+          </div>
+          <div class="mock-status no-print">
+            <div><span>Part</span><strong id="mockPart">—</strong></div>
+            <div><span>Clock</span><strong id="mockClock">30:00</strong></div>
+            <div><span>Answered</span><strong id="mockAnswered">0 / 40</strong></div>
+            <div><span>Score</span><strong id="mockScore">—</strong></div>
+          </div>
+          <div class="mock-parts" id="mockParts"></div>
+          <div class="mock-result" id="mockResult" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="station" id="scorecard">
+      <div class="wrap">
+        <div class="station-head">
+          <div class="tags"><span class="tag mobile">📱 Phone</span><span class="tag screen">🖥 Big screen</span><span class="tag print">🖨 Worksheets</span><span class="skill-gauge"><b>DEBRIEF</b> Fix the bottleneck</span></div>
+          <p class="station-num">Station 9 · 10 minutes</p>
+          <h2 data-i18n="s9h">Scorecard, recall &amp; print library</h2>
+          <p class="station-sub" data-i18n="s9s">A total score tells you how you did. This tells you what to practise next.</p>
+        </div>
+        <aside class="teacher-note"><b>Exit ticket:</b> every student reads the diagnosis aloud to a partner: “My listening bottleneck is ___; I will redo ___.” Then they screenshot the card. The print library follows for homework and no-device classes.</aside>
+
+        <div class="card mobile-card">
+          <div class="card-label">This device · live scorecard</div>
+          <h3 id="scoreHeadline">Nothing scored yet</h3>
+          <p class="card-intro">Every checked practice set feeds this chart. A grey bar means “not attempted,” not “weak.”</p>
+          <div class="score-grid" id="scoreGrid"></div>
+          <div class="diagnosis-card" id="scoreDiagnosis">Complete and check one exercise to receive a diagnosis.</div>
+          <div class="shot-card" id="shotCard">
+            <div class="shot-title">Listening Focus · my result</div>
+            <div><span>Accuracy</span><strong id="shotAccuracy">—</strong></div>
+            <div><span>Strongest</span><strong id="shotStrong">—</strong></div>
+            <div><span>Bottleneck</span><strong id="shotWeak">—</strong></div>
+            <p id="shotFix">Complete a set above.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Three-minute retrieval</div>
+          <h3>Close the other stations. Can you still run the method?</h3>
+          <div id="recallQuiz" class="quiz-list"></div>
+          <div class="button-row"><button class="btn secondary" type="button" id="recallReset">Reset recall</button><span class="score-pill" id="recallScore">0 / 6</span></div>
+          <div class="answer-key"><b>Key:</b> 1 preview, 2 wait, 3 question, 4 signposts, 5 exact wording, 6 guess.</div>
+        </div>
+
+        <div class="card teacher-card">
+          <div class="card-label">Printable · two identical student copies per A4 sheet</div>
+          <h3>Worksheet library</h3>
+          <p class="card-intro">Choose a set to open a ready-to-print PDF with two clean half-page copies and a centre cut line. Answer keys stay on screen, not on the student sheet.</p>
+          <div class="worksheet-grid" id="worksheetGrid"></div>
+        </div>
+
+        <div class="card teacher-card">
+          <div class="card-label">Printable · one page each</div>
+          <h3>Method card and full mock papers</h3>
+          <div class="worksheet-grid">
+            <a class="worksheet-option" href="assets/worksheets/listening-six-move-method-2up.pdf"><b>Six-move method card</b><span>Two identical cards per A4 sheet</span><em>Open 2-up PDF →</em></a>
+            <a class="worksheet-option" href="assets/worksheets/listening-full-test-a.pdf"><b>Full Test A · 40 questions</b><span>Four-part question paper</span><em>Open paper PDF →</em></a>
+            <a class="worksheet-option" href="assets/worksheets/listening-full-test-b.pdf"><b>Full Test B · 40 questions</b><span>Four-part question paper</span><em>Open paper PDF →</em></a>
+          </div>
+        </div>
+
+        <div class="card teacher-card">
+          <div class="card-label">Teacher route</div>
+          <h3>A 90-minute core lesson, then independent practice</h3>
+          <div class="lesson-route">
+            <div><b>8′</b><span>Station 0 · identify the listening failure and complete the sound check.</span></div>
+            <div><b>10′</b><span>Station 1 · map the four parts and predict six answer types.</span></div>
+            <div><b>12′</b><span>Station 2 · teach the six-move loop and expose the correction trap.</span></div>
+            <div><b>14′</b><span>Station 3 · one-play Harper precision round.</span></div>
+            <div><b>20′</b><span>Choose one full practice set from Stations 4–7.</span></div>
+            <div><b>20′</b><span>Station 8 · run one part of a full test, or assign the complete run.</span></div>
+            <div><b>6′</b><span>Station 9 · scorecard, recall, screenshot the next step.</span></div>
+          </div>
+          <p class="rule"><b>If you only have 45 minutes:</b> Stations 0 → 2 → 3 → one selected part → Scorecard. Keep the one-play practice; cut the explanation before you cut the scored listening.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap"><p>Dialogue Language Center · IELTS Listening Focus</p><p>Course activities and recordings adapted from the supplied IELTS Preparation Course materials. Current format note checked against <a href="https://ielts.org/take-a-test/test-types/ielts-academic-test/ielts-academic-format-listening" target="_blank" rel="noopener">IELTS</a> and <a href="https://takeielts.britishcouncil.org/what-is-ielts/how-it-works/test-format/listening" target="_blank" rel="noopener">British Council</a> guidance.</p></div>
+  </footer>
+
+  <div class="audio-dock no-print" id="audioDock" aria-label="Listening player">
+    <button class="dock-play" id="dockPlay" type="button" aria-label="Play or pause">▶</button>
+    <div class="dock-main">
+      <div class="dock-title"><strong id="dockTitle">Choose a recording</strong><span id="dockTime">0:00 / 0:00</span></div>
+      <input id="dockSeek" type="range" min="0" max="1000" value="0" aria-label="Audio position">
+    </div>
+    <button class="dock-skip" id="back5" type="button" aria-label="Back five seconds">−5</button>
+    <button class="dock-skip" id="forward5" type="button" aria-label="Forward five seconds">+5</button>
+    <select id="speedSelect" aria-label="Playback speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select>
+    <audio id="audio" preload="metadata"></audio>
+  </div>
+
+  <div id="toast" class="toast no-print" role="status" aria-live="polite"></div>
+  <div id="printRoot" aria-hidden="true"></div>
+  <script src="app.js"></script>
+</body>
+</html>
