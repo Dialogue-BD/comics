@@ -838,6 +838,70 @@ body[data-dialogue-page="qr"] .slide-action-btn {
   justify-content: center;
   line-height: 1;
 }
+body[data-dialogue-page="home"] .slide-qr-card {
+  cursor: zoom-in;
+  outline-offset: 5px;
+}
+body[data-dialogue-page="home"] .slide-qr-card:focus-visible {
+  outline: 4px solid #d2b978;
+}
+body[data-dialogue-page="home"] .qr-hover-zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  display: grid;
+  place-items: center;
+  padding: clamp(18px, 3vmin, 40px);
+  background: rgba(5, 32, 13, .95);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .16s ease, visibility .16s ease;
+}
+body[data-dialogue-page="home"] .qr-hover-zoom.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+body[data-dialogue-page="home"] .qr-hover-zoom__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: calc(100vw - 36px);
+  max-height: calc(100dvh - 36px);
+  padding: clamp(15px, 2.2vmin, 26px);
+  color: #1d211c;
+  background: #fffdf7;
+  border: clamp(4px, .55vmin, 7px) solid #b9924f;
+  border-radius: clamp(20px, 3vmin, 34px);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, .56);
+  transform: scale(.94);
+  transition: transform .16s ease;
+}
+body[data-dialogue-page="home"] .qr-hover-zoom.is-visible .qr-hover-zoom__card { transform: scale(1); }
+body[data-dialogue-page="home"] .qr-hover-zoom__image {
+  display: block;
+  width: min(80vmin, 880px);
+  max-width: 100%;
+  max-height: calc(100dvh - 150px);
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 12px;
+  image-rendering: pixelated;
+}
+body[data-dialogue-page="home"] .qr-hover-zoom__card p {
+  margin: 12px 0 2px;
+  color: #17351f;
+  font-size: clamp(1rem, 2.2vmin, 1.45rem);
+  font-weight: 700;
+  text-align: center;
+}
+body[data-dialogue-page="home"] .qr-hover-zoom__card strong { color: #6d5624; }
+body[data-dialogue-page="home"] .qr-hover-zoom__card small {
+  color: #4f5a4d;
+  font-size: clamp(.72rem, 1.4vmin, .95rem);
+}
 body[data-dialogue-page="home"] .qr-card-present-btn {
   min-height: 44px;
   color: var(--dialogue-forest) !important;

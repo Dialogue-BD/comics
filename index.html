@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="dialogue-brand.css?v=20260908-3">
+  <link rel="stylesheet" href="dialogue-brand.css?v=20260908-4">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -930,7 +930,7 @@
 
         <!-- Right: Jumbo QR Code Card -->
         <div class="slide-qr-column">
-          <div class="slide-qr-card">
+          <div id="slide-qr-card" class="slide-qr-card" tabindex="0" aria-label="Enlarge this QR code while hovered or focused">
             <div id="slide-qr-target" class="slide-qr-target"></div>
             <div class="slide-qr-scan-badge">
               <span>📷 Point camera to join</span>
@@ -938,6 +938,14 @@
           </div>
         </div>
 
+      </div>
+
+      <div id="qr-hover-zoom" class="qr-hover-zoom" aria-hidden="true">
+        <div class="qr-hover-zoom__card">
+          <img id="qr-hover-image" class="qr-hover-zoom__image" alt="">
+          <p>Scan to open <strong id="qr-hover-title">this activity</strong></p>
+          <small>Move the pointer away or press Tab to close</small>
+        </div>
       </div>
 
       <!-- Bottom Slideshow Control Bar -->
@@ -1277,6 +1285,29 @@
     var btnCopyLink = document.getElementById("btn-copy-link");
     var btnOpenLink = document.getElementById("btn-open-link");
     var toastBanner = document.getElementById("toast-banner");
+    var slideQrCard = document.getElementById("slide-qr-card");
+    var qrHoverZoom = document.getElementById("qr-hover-zoom");
+    var qrHoverImage = document.getElementById("qr-hover-image");
+    var qrHoverTitle = document.getElementById("qr-hover-title");
+
+    function showQrHoverZoom() {
+      var sourceCanvas = document.querySelector("#slide-qr-target canvas");
+      var sourceImage = document.querySelector("#slide-qr-target img");
+      if (sourceCanvas) qrHoverImage.src = sourceCanvas.toDataURL("image/png");
+      else if (sourceImage) qrHoverImage.src = sourceImage.src;
+      else return;
+      qrHoverTitle.innerText = document.getElementById("slide-title").innerText;
+      qrHoverZoom.classList.add("is-visible");
+    }
+
+    function hideQrHoverZoom() {
+      qrHoverZoom.classList.remove("is-visible");
+    }
+
+    slideQrCard.addEventListener("pointerenter", showQrHoverZoom);
+    slideQrCard.addEventListener("pointerleave", hideQrHoverZoom);
+    slideQrCard.addEventListener("focus", showQrHoverZoom);
+    slideQrCard.addEventListener("blur", hideQrHoverZoom);
 
     function renderSlide(index) {
       if (!activities || activities.length === 0) return;
@@ -1329,6 +1360,7 @@
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.M
       });
+      if (qrHoverZoom.classList.contains("is-visible")) showQrHoverZoom();
 
       // Update dots
       updateDots();
@@ -1601,6 +1633,9 @@
       } else if (e.key >= "1" && e.key <= "9") {
         var num = parseInt(e.key) - 1;
         if (num < activities.length) renderSlide(num);
+      } else if (e.key === "Escape") {
+        hideQrHoverZoom();
+        slideQrCard.blur();
       }
     });
 
