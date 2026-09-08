@@ -1297,6 +1297,14 @@ body[data-dialogue-page="narratives"] :where(.nav, .controls, .story-header) {
 body[data-dialogue-page="picture-this"] :where(#card-count, #instructions-text) { color: #314034 !important; }
 body[data-dialogue-page="picture-this"] .app { background: radial-gradient(circle at 50% 42%, rgba(111,143,98,.25), transparent 42%), linear-gradient(145deg,#174629,#08250f) !important; }
 body[data-dialogue-page="picture-this"] :where(.topbar, .game-strip, .action) { color: #f4f1e6; }
+@media (min-width: 700px) {
+  body[data-dialogue-page="picture-this"] .stage {
+    padding-top: calc(80px + var(--game-header-h, 0px));
+  }
+  body[data-dialogue-page="picture-this"] .deck {
+    width: min(calc(100vw - 32px), calc((100dvh - 172px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px);
+  }
+}
 
 /* 24 · QR presentation — strong controls on the dark slideshow surround. */
 body[data-dialogue-page="qr"] :where(.timer-btn, #btn-fullscreen) {
