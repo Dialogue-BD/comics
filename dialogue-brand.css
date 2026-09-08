@@ -838,14 +838,14 @@ body[data-dialogue-page="qr"] .slide-action-btn {
   justify-content: center;
   line-height: 1;
 }
-body[data-dialogue-page="home"] .slide-qr-card {
+body.dialogue-home .slide-qr-card {
   cursor: zoom-in;
   outline-offset: 5px;
 }
-body[data-dialogue-page="home"] .slide-qr-card:focus-visible {
+body.dialogue-home .slide-qr-card:focus-visible {
   outline: 4px solid #d2b978;
 }
-body[data-dialogue-page="home"] .qr-hover-zoom {
+body.dialogue-home .qr-zoom-overlay {
   position: fixed;
   inset: 0;
   z-index: 12000;
@@ -857,13 +857,16 @@ body[data-dialogue-page="home"] .qr-hover-zoom {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  cursor: zoom-out;
   transition: opacity .16s ease, visibility .16s ease;
 }
-body[data-dialogue-page="home"] .qr-hover-zoom.is-visible {
+body.dialogue-home .qr-zoom-overlay.is-visible {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
-body[data-dialogue-page="home"] .qr-hover-zoom__card {
+body.dialogue-home .qr-zoom-overlay__card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -878,8 +881,8 @@ body[data-dialogue-page="home"] .qr-hover-zoom__card {
   transform: scale(.94);
   transition: transform .16s ease;
 }
-body[data-dialogue-page="home"] .qr-hover-zoom.is-visible .qr-hover-zoom__card { transform: scale(1); }
-body[data-dialogue-page="home"] .qr-hover-zoom__image {
+body.dialogue-home .qr-zoom-overlay.is-visible .qr-zoom-overlay__card { transform: scale(1); }
+body.dialogue-home .qr-zoom-overlay__image {
   display: block;
   width: min(80vmin, 880px);
   max-width: 100%;
@@ -890,19 +893,41 @@ body[data-dialogue-page="home"] .qr-hover-zoom__image {
   border-radius: 12px;
   image-rendering: pixelated;
 }
-body[data-dialogue-page="home"] .qr-hover-zoom__card p {
+body.dialogue-home .qr-zoom-overlay__card p {
   margin: 12px 0 2px;
   color: #17351f;
   font-size: clamp(1rem, 2.2vmin, 1.45rem);
   font-weight: 700;
   text-align: center;
 }
-body[data-dialogue-page="home"] .qr-hover-zoom__card strong { color: #6d5624; }
-body[data-dialogue-page="home"] .qr-hover-zoom__card small {
+body.dialogue-home .qr-zoom-overlay__card strong { color: #6d5624; }
+body.dialogue-home .qr-zoom-overlay__card small {
   color: #4f5a4d;
   font-size: clamp(.72rem, 1.4vmin, .95rem);
 }
-body[data-dialogue-page="home"] .qr-card-present-btn {
+body.dialogue-home .qr-zoom-overlay__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  min-height: 48px;
+  padding: 0;
+  color: #f4f1e6;
+  background: #103d21;
+  border: 2px solid #b9924f;
+  border-radius: 50%;
+  box-shadow: 0 5px 18px rgba(5, 32, 13, .24);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+body.dialogue-home .qr-zoom-overlay__close:hover { color: #20180a; background: #d2b978; }
+body.dialogue-home .qr-card-present-btn {
   min-height: 44px;
   color: var(--dialogue-forest) !important;
 }
@@ -1466,9 +1491,81 @@ body[data-dialogue-page="whos-this"] :where(#pName, #pAge, #pJob, #pFrom, #pPay,
 body[data-dialogue-page="whos-this"] :where(.prompt, .footer, .action, .rail, .rolechip, .kq) { color: #f4f1e6 !important; }
 body[data-dialogue-page="whos-this"] .action--next { color: #17351f !important; background: #d2b978 !important; }
 
+/* The answer key is printed on the cream identity card. Keep every layer of
+   its type in the card's dark ink instead of inheriting the forest-stage type. */
+body[data-dialogue-page="whos-this"] .face--back .kq {
+  color: #17351f !important;
+  background: rgba(255, 253, 247, .84) !important;
+  border-color: #d8d3c2 !important;
+  box-shadow: none;
+}
+body[data-dialogue-page="whos-this"] .face--back .kq.is-active {
+  background: #e3ead9 !important;
+  border-color: #86a87a !important;
+  box-shadow: inset 4px 0 0 #b9924f;
+}
+body[data-dialogue-page="whos-this"] .face--back :where(.kq__q, .kq__a, .kq__a .hi, .kq__a .fig) {
+  opacity: 1;
+  text-shadow: none;
+}
+body[data-dialogue-page="whos-this"] .face--back .kq__q { color: #3f5149 !important; }
+body[data-dialogue-page="whos-this"] .face--back .kq__a { color: #17351f !important; }
+body[data-dialogue-page="whos-this"] .face--back .kq__a .hi { color: #087457 !important; }
+body[data-dialogue-page="whos-this"] .face--back .kq__a .fig { color: #536158 !important; }
+body[data-dialogue-page="whos-this"] .face--back .kq__n {
+  color: #31583e !important;
+  background: #f0e6cd;
+  border-color: #b9924f;
+}
+body[data-dialogue-page="whos-this"] .face--back .kq.is-active .kq__n {
+  color: #f4f1e6 !important;
+  background: #103d21;
+  border-color: #103d21;
+}
+
+/* Stable circles and full-size speaker glyphs replace the squeezed oval
+   controls produced when the shared 44px button rule met the card layout. */
+body[data-dialogue-page="whos-this"] .tts { padding: 0; }
+body[data-dialogue-page="whos-this"] .tts--prompt {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  color: #f4f1e6;
+  background: #103d21;
+  border: 2px solid #b9924f;
+}
+body[data-dialogue-page="whos-this"] .tts--prompt:hover,
+body[data-dialogue-page="whos-this"] .tts--prompt.is-speaking {
+  color: #17351f;
+  background: #d2b978;
+  border-color: #d2b978;
+}
+body[data-dialogue-page="whos-this"] .tts--key {
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  min-height: 34px;
+  color: #f4f1e6;
+  background: #174629;
+  border: 2px solid #b9924f;
+  box-shadow: 0 2px 5px rgba(16, 61, 33, .14);
+}
+body[data-dialogue-page="whos-this"] .tts--key svg {
+  width: 18px;
+  height: 18px;
+}
+body[data-dialogue-page="whos-this"] .tts--key:hover,
+body[data-dialogue-page="whos-this"] .tts--key.is-speaking {
+  color: #17351f;
+  background: #d2b978;
+  border-color: #8a6d2c;
+}
+
 @media (max-width: 600px) {
   body[data-dialogue-page] .dialogue-brandbar { width: 44px; height: 44px; }
   body[data-dialogue-page] .dialogue-brandbar img { width: 36px; height: 36px; }
+  body[data-dialogue-page="whos-this"] .topbar { padding-left: 58px; }
   body[data-dialogue-page="action-pictures"] :where(.hud-btn, .flank-btn, .gallery-nav-btn, #info-btn) { min-width: 44px; }
   body[data-dialogue-page="busy-pictures"] :where(.nav-btn, .panel-close, #close-panel, #toggle-btn, #fullscreen-btn) { min-width: 44px; min-height: 44px; }
   body[data-dialogue-page="dialogue-comics-practice"] nav.topbar a { min-height: 44px; display: inline-flex; align-items: center; }

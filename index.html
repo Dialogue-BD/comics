@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="dialogue-brand.css?v=20260908-4">
+  <link rel="stylesheet" href="dialogue-brand.css?v=20260908-5">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -930,7 +930,7 @@
 
         <!-- Right: Jumbo QR Code Card -->
         <div class="slide-qr-column">
-          <div id="slide-qr-card" class="slide-qr-card" tabindex="0" aria-label="Enlarge this QR code while hovered or focused">
+          <div id="slide-qr-card" class="slide-qr-card" role="button" tabindex="0" aria-label="Click to enlarge this QR code">
             <div id="slide-qr-target" class="slide-qr-target"></div>
             <div class="slide-qr-scan-badge">
               <span>📷 Point camera to join</span>
@@ -940,11 +940,12 @@
 
       </div>
 
-      <div id="qr-hover-zoom" class="qr-hover-zoom" aria-hidden="true">
-        <div class="qr-hover-zoom__card">
-          <img id="qr-hover-image" class="qr-hover-zoom__image" alt="">
-          <p>Scan to open <strong id="qr-hover-title">this activity</strong></p>
-          <small>Move the pointer away or press Tab to close</small>
+      <div id="qr-zoom-overlay" class="qr-zoom-overlay" role="dialog" aria-modal="true" aria-labelledby="qr-zoom-copy" aria-hidden="true">
+        <div class="qr-zoom-overlay__card">
+          <button id="qr-zoom-close" class="qr-zoom-overlay__close" type="button" aria-label="Close enlarged QR code">×</button>
+          <img id="qr-zoom-image" class="qr-zoom-overlay__image" alt="">
+          <p id="qr-zoom-copy">Scan to open <strong id="qr-zoom-title">this activity</strong></p>
+          <small>Tap outside the card or press Esc to close</small>
         </div>
       </div>
 
@@ -1286,28 +1287,47 @@
     var btnOpenLink = document.getElementById("btn-open-link");
     var toastBanner = document.getElementById("toast-banner");
     var slideQrCard = document.getElementById("slide-qr-card");
-    var qrHoverZoom = document.getElementById("qr-hover-zoom");
-    var qrHoverImage = document.getElementById("qr-hover-image");
-    var qrHoverTitle = document.getElementById("qr-hover-title");
+    var qrZoomOverlay = document.getElementById("qr-zoom-overlay");
+    var qrZoomImage = document.getElementById("qr-zoom-image");
+    var qrZoomTitle = document.getElementById("qr-zoom-title");
+    var qrZoomClose = document.getElementById("qr-zoom-close");
+    var qrZoomReturnFocus = null;
 
-    function showQrHoverZoom() {
+    function showQrZoom() {
       var sourceCanvas = document.querySelector("#slide-qr-target canvas");
       var sourceImage = document.querySelector("#slide-qr-target img");
-      if (sourceCanvas) qrHoverImage.src = sourceCanvas.toDataURL("image/png");
-      else if (sourceImage) qrHoverImage.src = sourceImage.src;
+      if (sourceCanvas) qrZoomImage.src = sourceCanvas.toDataURL("image/png");
+      else if (sourceImage) qrZoomImage.src = sourceImage.src;
       else return;
-      qrHoverTitle.innerText = document.getElementById("slide-title").innerText;
-      qrHoverZoom.classList.add("is-visible");
+      qrZoomTitle.innerText = document.getElementById("slide-title").innerText;
+      qrZoomImage.alt = "QR code for " + qrZoomTitle.innerText;
+      qrZoomReturnFocus = document.activeElement;
+      qrZoomOverlay.classList.add("is-visible");
+      qrZoomOverlay.setAttribute("aria-hidden", "false");
+      qrZoomClose.focus();
     }
 
-    function hideQrHoverZoom() {
-      qrHoverZoom.classList.remove("is-visible");
+    function hideQrZoom() {
+      if (!qrZoomOverlay.classList.contains("is-visible")) return;
+      qrZoomOverlay.classList.remove("is-visible");
+      qrZoomOverlay.setAttribute("aria-hidden", "true");
+      if (qrZoomReturnFocus && typeof qrZoomReturnFocus.focus === "function") qrZoomReturnFocus.focus();
     }
 
-    slideQrCard.addEventListener("pointerenter", showQrHoverZoom);
-    slideQrCard.addEventListener("pointerleave", hideQrHoverZoom);
-    slideQrCard.addEventListener("focus", showQrHoverZoom);
-    slideQrCard.addEventListener("blur", hideQrHoverZoom);
+    slideQrCard.addEventListener("click", showQrZoom);
+    slideQrCard.addEventListener("keydown", function(event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        showQrZoom();
+      }
+    });
+    qrZoomClose.addEventListener("click", hideQrZoom);
+    qrZoomOverlay.addEventListener("click", function(event) {
+      if (event.target === qrZoomOverlay) hideQrZoom();
+    });
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") hideQrZoom();
+    });
 
     function renderSlide(index) {
       if (!activities || activities.length === 0) return;
