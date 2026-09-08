@@ -769,6 +769,66 @@ body[data-dialogue-page="qr"] .timer-btn.active {
   color: #f4f1e6 !important;
   background: #31583e !important;
 }
+body[data-dialogue-page="home"] .slideshow-dots-track,
+body[data-dialogue-page="qr"] .slideshow-dots-track {
+  min-height: 46px;
+  padding: 0 9px;
+  gap: 2px;
+  background: #edf3e9;
+  border: 1px solid #9aae90;
+  border-radius: 999px;
+  scrollbar-color: #31583e transparent;
+}
+body[data-dialogue-page="home"] .slide-dot,
+body[data-dialogue-page="qr"] .slide-dot {
+  position: relative;
+  width: 18px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+body[data-dialogue-page="home"] .slide-dot::before,
+body[data-dialogue-page="qr"] .slide-dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  box-sizing: border-box;
+  border: 2px solid #31583e;
+  border-radius: 50%;
+  background: #fffdf7;
+  transform: translate(-50%, -50%);
+  transition: width .18s ease, background .18s ease, border-color .18s ease, transform .18s ease;
+}
+body[data-dialogue-page="home"] .slide-dot:hover::before,
+body[data-dialogue-page="qr"] .slide-dot:hover::before {
+  background: #d2b978 !important;
+  border-color: #6d5624 !important;
+  transform: translate(-50%, -50%) scale(1.14);
+}
+body[data-dialogue-page="home"] .slide-dot.active,
+body[data-dialogue-page="qr"] .slide-dot.active {
+  width: 34px;
+}
+body[data-dialogue-page="home"] .slide-dot.active::before,
+body[data-dialogue-page="qr"] .slide-dot.active::before {
+  width: 28px;
+  height: 13px;
+  border-radius: 999px;
+  background: #103d21 !important;
+  border-color: #b9924f !important;
+  box-shadow: 0 0 0 2px rgba(185, 146, 79, .2) !important;
+}
+body[data-dialogue-page="home"] .slide-dot:focus-visible,
+body[data-dialogue-page="qr"] .slide-dot:focus-visible {
+  outline: 3px solid #b9924f;
+  outline-offset: 2px;
+}
 body[data-dialogue-page="home"] .slide-action-btn,
 body[data-dialogue-page="qr"] .slide-action-btn {
   box-sizing: border-box;
