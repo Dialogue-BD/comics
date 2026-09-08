@@ -218,6 +218,11 @@ body.dialogue-activity-shell:has(.cardwrap) .app {
 }
 .dialogue-home :where(.slide-title, .qr-card-title) { color: var(--dialogue-ink); text-shadow: none; }
 .dialogue-home :where(.slide-desc, .qr-card-desc) { color: var(--dialogue-ink-soft); }
+.dialogue-home .slide-feature-badge {
+  color: #38543b;
+  background: var(--dialogue-moss-soft);
+  border-color: #b9c8af;
+}
 .dialogue-home :where(.slide-url-box) { background: #f0ede3; border-color: var(--dialogue-line); }
 .dialogue-home :where(.slide-url-text) { color: var(--dialogue-forest); }
 .dialogue-home :where(.slide-action-btn, .fs-toggle-btn, .qr-card-present-btn) {
