@@ -6,3 +6,6 @@
 - Mobile inspection led to moving pair-speaking guidance after the phone workspace and reducing simultaneous prompt choices. Keyboard users can activate tiles without dragging. Reduced-motion preferences disable entry animation.
 
 These are authored practice simulations, not live model integrations or generated private reasoning. The booking simulation demonstrates expected behavior conceptually; it is not a load test of a real backend. Teaching timings include discussion and independent oral explanations, not just tapping. Completion marks record supported practice decisions, not validated mastery. Classroom learner testing remains the next source of pedagogical evidence.
+
+## Codex supervision workflows · 9 September 2026
+Replaced the booking and hidden-error stop quizzes with a Codex-style project workspace. Browser-verified: allow a weak patch to complete, challenge its easy test, send weak steering and reproduce failure, send cause-focused steering and obtain different code/test outcomes, interrupt before completion in the outage case, accept only the tested scope, and preserve the result after reload. At 390px, no horizontal overflow or captured console errors. Work updates and terminal results are explicitly authored simulations; no real backend runs. Each workflow remains within its existing lesson timing.
