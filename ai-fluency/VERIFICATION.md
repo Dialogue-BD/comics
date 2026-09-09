@@ -9,3 +9,10 @@ These are authored practice simulations, not live model integrations or generate
 
 ## Codex supervision workflows · 9 September 2026
 Replaced the booking and hidden-error stop quizzes with a Codex-style project workspace. Browser-verified: allow a weak patch to complete, challenge its easy test, send weak steering and reproduce failure, send cause-focused steering and obtain different code/test outcomes, interrupt before completion in the outage case, accept only the tested scope, and preserve the result after reload. At 390px, no horizontal overflow or captured console errors. Work updates and terminal results are explicitly authored simulations; no real backend runs. Each workflow remains within its existing lesson timing.
+
+## Android-style workflow replacement · 9 September 2026
+The homepage now opens three complete fictional phone journeys: opportunity planning (Gemini), learning with an AI tutor (ChatGPT), and an event poster/announcement (Claude). Each includes a 3-minute introduction and 42 minutes of eight decisions/discussion, covering delegation, description, discernment and diligence. Previous URLs remain available but are no longer the main lesson entry.
+
+Verified all 24 decisions through the browser, reaching each saved result. Tested source-app return, Home, Back, recent apps, notifications, progressive prompt selection, pointer drag placement, result persistence, and explicit reset of test attempts. Checked 390px and 320px widths with no horizontal overflow; no captured console errors. `node ai-fluency/phone-check.cjs` checks timings, 4D coverage, source and answer references, and all 24 initial phone decision screens. The earlier suite remains green.
+
+Interfaces, AI text, image and app transitions are authored teaching simulations; there is no real Android runtime, AI connection, application submission, upload or publication. Learner comprehension and classroom pacing still require user/classroom review.
