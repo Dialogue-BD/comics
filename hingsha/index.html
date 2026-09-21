@@ -108,7 +108,25 @@
   <script>
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-    var pdfUrl = "hingsha.pdf";
+    function isMobileViewer() {
+      var override = new URLSearchParams(window.location.search).get("layout");
+      if (override === "mobile") return true;
+      if (override === "widescreen") return false;
+
+      var userAgentDataMobile = navigator.userAgentData && navigator.userAgentData.mobile;
+      var mobileUserAgent = /Android|iPhone|iPod|IEMobile|Opera Mini|Mobile/i.test(navigator.userAgent);
+      var narrowTouchViewport = window.matchMedia("(max-width: 767px) and (pointer: coarse)").matches;
+      return Boolean(userAgentDataMobile || mobileUserAgent || narrowTouchViewport);
+    }
+
+    var mobileViewer = isMobileViewer();
+    var pdfUrl = mobileViewer
+      ? "hingsha-mobile-9x16.pdf"
+      : "hingsha-widescreen-16x9.pdf";
+    document.body.dataset.storyLayout = mobileViewer ? "mobile" : "widescreen";
+    document.getElementById("loading").innerText = mobileViewer
+      ? "Loading Mobile Story..."
+      : "Loading Widescreen Story...";
     var cacheBuster = "?v=" + Date.now();
 
     var container = document.getElementById("pdf-container");
