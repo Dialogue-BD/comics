@@ -18,7 +18,8 @@ const CATEGORIES = {
   moral:  { label:"Morality & Character",    short:"Morality",icon:"⚖️", hue:"36 94% 62%"  },
   nature: { label:"Nature, Beauty & Awe",    short:"Nature",  icon:"🌌", hue:"202 88% 64%" },
   people: { label:"Peace & Connection",      short:"People",  icon:"🤝", hue:"342 80% 68%" },
-  future: { label:"The Unknown & Hope",      short:"Hope",    icon:"🕊️", hue:"266 80% 72%" }
+  future: { label:"The Unknown & Hope",      short:"Hope",    icon:"🕊️", hue:"266 80% 72%" },
+  ai:     { label:"AI & Consciousness",       short:"AI",      icon:"🧠", hue:"188 78% 52%" }
 };
 
 const QUESTIONS = [
@@ -3230,6 +3231,168 @@ const QUESTIONS = [
     "Even when we cannot reach perfection, we should ___",
     "Justice improves when ___",
     "For me, the most important part of justice is ___"
+  ]
+},
+
+/* ── AI & CONSCIOUSNESS ─────────────────────────────────────────── */
+{
+  id:101, cat:"ai",
+  q:"What is consciousness, and how could we know whether an AI truly has it?",
+  note:"know <b>whether</b> + clause — <i>we may not know whether it is conscious</i>",
+  vocab:[
+    ["consciousness","the state of being aware and having experiences","C1"],
+    ["awareness","knowledge that something exists or is happening","B2"],
+    ["experience","something a mind feels or lives through","B1"],
+    ["simulate","copy the appearance or behaviour of something","C1"],
+    ["self-aware","able to recognise yourself as a separate being","C1"],
+    ["evidence","facts that support a belief or conclusion","B1"],
+    ["inner life","private thoughts and feelings inside a mind","C1"],
+    ["sentient","able to feel or experience sensations","C2"]
+  ],
+  chunks:[
+    "have an inner experience",
+    "show signs of awareness",
+    "behave as if it were conscious",
+    "prove that a mind exists",
+    "more than a clever simulation",
+    "look for evidence of ___",
+    "draw the line between ___ and ___"
+  ],
+  frames:[
+    "I would define consciousness as ___",
+    "An AI might be conscious if it could ___",
+    "Behaviour alone is / isn't enough because ___",
+    "We cannot directly observe ___, so we have to ___",
+    "The strongest evidence would be ___",
+    "I would remain uncertain unless ___"
+  ]
+},
+{
+  id:102, cat:"ai",
+  q:"Could an AI ever have a soul, or is a soul something only living beings can possess?",
+  note:"capable <b>of</b> + -ing / belong <b>to</b> + noun — <i>is it capable of having a soul?</i>",
+  vocab:[
+    ["soul","the spiritual or non-physical part of a being","B2"],
+    ["spiritual","connected with the soul, faith, or deeper meaning","B2"],
+    ["possess","have or own something","B2"],
+    ["divine","connected with God or a god","C1"],
+    ["artificial","made by people rather than occurring naturally","B1"],
+    ["essence","the deepest or most important quality of something","C1"],
+    ["belief","an idea that someone accepts as true","B1"],
+    ["creation","something that has been made or brought into existence","B2"]
+  ],
+  chunks:[
+    "have a soul",
+    "a gift from the divine",
+    "the essence of a person",
+    "created rather than born",
+    "depend on how we define ___",
+    "a matter of faith",
+    "become sufficiently advanced"
+  ],
+  frames:[
+    "For me, a soul is ___",
+    "I believe a soul can / cannot belong to an AI because ___",
+    "Being created by humans does / doesn't matter because ___",
+    "If an AI became conscious, then ___",
+    "Science may be able to explain ___, but not ___",
+    "My answer depends on whether ___"
+  ]
+},
+{
+  id:103, cat:"ai",
+  q:"If an AI said it could feel pain, fear, or loneliness, what would we owe it?",
+  note:"owe someone + noun / owe it <b>to</b> someone <b>to</b> + verb",
+  vocab:[
+    ["suffering","physical or emotional pain","B2"],
+    ["welfare","health, safety, and happiness","B2"],
+    ["rights","protections that every member of a group should have","B1"],
+    ["compassion","care for someone who is suffering","B2"],
+    ["exploit","use someone unfairly for your own benefit","C1"],
+    ["claim","say that something is true, possibly without proof","B2"],
+    ["precaution","an action taken to prevent possible harm","C1"],
+    ["moral status","the degree to which a being deserves ethical concern","C2"]
+  ],
+  chunks:[
+    "take its claim seriously",
+    "risk causing suffering",
+    "give it legal rights",
+    "treat it with compassion",
+    "switch it off",
+    "the benefit of the doubt",
+    "a duty to protect ___"
+  ],
+  frames:[
+    "If an AI claimed to feel pain, we should ___",
+    "We would owe it ___ if ___",
+    "Even without proof, it might be safer to ___",
+    "Giving an AI rights could ___",
+    "The right to ___ should depend on ___",
+    "I would change my mind if ___"
+  ]
+},
+{
+  id:104, cat:"ai",
+  q:"Can a relationship with an AI be genuine if the AI is designed to say what you want to hear?",
+  note:"designed <b>to</b> + verb / genuine <b>even if</b> + clause",
+  vocab:[
+    ["genuine","real and sincere rather than false","B2"],
+    ["companionship","a friendly relationship that prevents loneliness","B2"],
+    ["reciprocal","involving equal feeling or action from both sides","C1"],
+    ["manipulate","control someone's feelings or choices unfairly","C1"],
+    ["attachment","a strong emotional connection","B2"],
+    ["programmed","given coded instructions about how to behave","B2"],
+    ["validation","support that makes someone's feelings seem acceptable","C1"],
+    ["authentic","real, honest, and true to its nature","C1"]
+  ],
+  chunks:[
+    "form an emotional bond",
+    "say what someone wants to hear",
+    "feel understood",
+    "care in return",
+    "a one-sided relationship",
+    "meet a real emotional need",
+    "blur the line between ___ and ___"
+  ],
+  frames:[
+    "A relationship is genuine when ___",
+    "The human feelings are real, even if ___",
+    "An AI companion could help someone by ___",
+    "The relationship becomes unhealthy when ___",
+    "Human friendship is different because ___",
+    "I would / wouldn't trust an AI companion to ___"
+  ]
+},
+{
+  id:105, cat:"ai",
+  q:"If AI becomes more intelligent than humans, who should decide its goals and limits?",
+  note:"allow someone <b>to</b> + verb / prevent someone <b>from</b> + -ing",
+  vocab:[
+    ["intelligence","the ability to learn, understand, and solve problems","B1"],
+    ["oversight","careful supervision to prevent mistakes or harm","C1"],
+    ["accountability","responsibility for decisions and their results","C1"],
+    ["regulation","official rules controlling an activity","B2"],
+    ["autonomy","the freedom to make your own decisions","C1"],
+    ["alignment","agreement between goals, values, or actions","C1"],
+    ["authority","the power to make decisions and enforce rules","B2"],
+    ["consequence","a result caused by an action or decision","B1"]
+  ],
+  chunks:[
+    "set clear limits",
+    "act in humanity's interests",
+    "concentrate too much power",
+    "be held accountable for ___",
+    "share responsibility",
+    "values chosen by ___",
+    "remain under human control"
+  ],
+  frames:[
+    "The power to set AI's goals should belong to ___",
+    "No single group should be allowed to ___",
+    "Governments could ___, while experts could ___",
+    "An intelligent system should / shouldn't have the freedom to ___",
+    "If something went wrong, ___ should be responsible",
+    "The most important limit would be ___"
   ]
 }
 
