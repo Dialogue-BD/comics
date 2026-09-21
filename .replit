@@ -2,7 +2,7 @@ modules = ["web", "python-base-3.13", "nodejs-24"]
 
 [nix]
 channel = "stable-25_05"
-packages = ["freetype", "gumbo", "harfbuzz", "jbig2dec", "libjpeg_turbo", "mupdf", "openjpeg", "python313Packages.psycopg", "swig", "xcbuild"]
+packages = ["python313Packages.psycopg"]
 
 [agent]
 expertMode = true
