@@ -3394,6 +3394,286 @@ const QUESTIONS = [
     "If something went wrong, ___ should be responsible",
     "The most important limit would be ___"
   ]
+},
+{
+  id:106, cat:"ai",
+  q:"Can AI be truly creative, or does creativity require a human life and personal experience?",
+  note:"require + noun / require someone <b>to</b> + verb — <i>creativity may require us to feel</i>",
+  vocab:[
+    ["creativity","the ability to produce original and valuable ideas","B2"],
+    ["original","new and not copied from something else","B1"],
+    ["inspiration","an idea or feeling that helps someone create","B2"],
+    ["imitation","a copy of another person's style or action","B2"],
+    ["expression","the communication of thoughts or feelings","B2"],
+    ["intent","the purpose behind an action","C1"]
+  ],
+  chunks:[
+    "create something original",
+    "draw on past experience",
+    "express a genuine feeling",
+    "combine existing ideas",
+    "judge art by its origin",
+    "move an audience"
+  ],
+  frames:[
+    "I think creativity requires ___",
+    "An AI can / cannot be creative because ___",
+    "Human artists draw on ___, while AI draws on ___",
+    "If a work moves us, it does / doesn't matter whether ___",
+    "I would call AI-generated art original if ___"
+  ]
+},
+{
+  id:107, cat:"ai",
+  q:"If a perfect digital copy of your mind were created, would it still be you?",
+  note:"the same <b>as</b> / a copy <b>of</b> — <i>would the copy be the same as you?</i>",
+  vocab:[
+    ["identity","the qualities that make someone who they are","B2"],
+    ["memory","something remembered from the past","A2"],
+    ["continuity","the state of continuing without interruption","C1"],
+    ["duplicate","an exact copy of something","B2"],
+    ["personality","the particular character of a person","B1"],
+    ["self","the person you understand yourself to be","B2"]
+  ],
+  chunks:[
+    "copy every memory",
+    "have the same personality",
+    "continue my identity",
+    "be a separate person",
+    "wake up in a machine",
+    "exist at the same time"
+  ],
+  frames:[
+    "The copy would / wouldn't be me because ___",
+    "Personal identity depends on ___",
+    "If both versions existed, then ___",
+    "Having my memories is not enough unless ___",
+    "I would treat the copy as ___"
+  ]
+},
+{
+  id:108, cat:"ai",
+  q:"When AI can create convincing false images, voices, and stories, how will we decide what is real?",
+  note:"make it + adjective <b>to</b> + verb — <i>AI makes it harder to know what is real</i>",
+  vocab:[
+    ["authentic","real and not copied or invented","C1"],
+    ["fabricate","invent false information or evidence","C1"],
+    ["verify","check that something is true or accurate","B2"],
+    ["deception","the act of making someone believe something false","C1"],
+    ["evidence","facts or objects that help prove something","B1"],
+    ["trustworthy","deserving to be believed","B2"]
+  ],
+  chunks:[
+    "tell fact from fiction",
+    "verify the source",
+    "believe our own eyes",
+    "manufacture false evidence",
+    "lose trust in everything",
+    "prove that something is real"
+  ],
+  frames:[
+    "I usually decide something is real by ___",
+    "AI makes that method less reliable because ___",
+    "People should verify ___ before ___",
+    "The greater danger is ___",
+    "Trust could be protected if ___"
+  ]
+},
+{
+  id:109, cat:"ai",
+  q:"If we depend on AI for answers, could we slowly lose the ability to think deeply for ourselves?",
+  note:"depend <b>on</b> + noun / lose the ability <b>to</b> + verb",
+  vocab:[
+    ["dependence","the state of needing someone or something","B2"],
+    ["critical thinking","careful judgement about whether ideas are true","B2"],
+    ["convenience","the quality of being easy and useful","B1"],
+    ["judgement","the ability to make sensible decisions","B2"],
+    ["outsource","pay or ask another party to perform a task","C1"],
+    ["skill","an ability developed through practice","A2"]
+  ],
+  chunks:[
+    "think for ourselves",
+    "accept an answer without question",
+    "weaken a mental skill",
+    "use AI as a tool",
+    "challenge its conclusions",
+    "trade ability for convenience"
+  ],
+  frames:[
+    "Relying on AI could weaken our ability to ___",
+    "The same concern once existed about ___",
+    "AI supports thinking when ___",
+    "It replaces thinking when ___",
+    "A healthy limit would be ___"
+  ]
+},
+{
+  id:110, cat:"ai",
+  q:"Will AI reduce inequality by giving everyone expert help, or increase it by giving more power to those who own it?",
+  note:"give someone access <b>to</b> / prevent someone <b>from</b> + -ing",
+  vocab:[
+    ["inequality","an unfair difference in wealth, power, or opportunity","B2"],
+    ["access","the opportunity or right to use something","B1"],
+    ["privilege","an advantage available only to some people","C1"],
+    ["ownership","the state of legally possessing something","B2"],
+    ["opportunity","a situation that makes something possible","B1"],
+    ["concentrate","bring power or resources into one place","B2"]
+  ],
+  chunks:[
+    "give everyone access to ___",
+    "widen the gap",
+    "concentrate wealth and power",
+    "level the playing field",
+    "leave some communities behind",
+    "share the benefits fairly"
+  ],
+  frames:[
+    "AI could reduce inequality by ___",
+    "However, it could increase inequality if ___",
+    "The greatest benefits may go to ___",
+    "Everyone should have access to ___",
+    "A fair system would require ___"
+  ]
+},
+{
+  id:111, cat:"ai",
+  q:"If an AI could recreate a person who had died, would speaking with it help us grieve or prevent us from letting go?",
+  note:"help someone <b>to</b> + verb / prevent someone <b>from</b> + -ing",
+  vocab:[
+    ["grieve","feel deep sadness after someone dies","B2"],
+    ["recreate","make a new version of something from the past","B2"],
+    ["closure","a feeling that a painful experience has ended","C1"],
+    ["likeness","a strong similarity in appearance or character","C1"],
+    ["consent","permission freely given for something to happen","B2"],
+    ["legacy","what remains of a person's life after they are gone","B2"]
+  ],
+  chunks:[
+    "keep someone's memory alive",
+    "sound exactly like them",
+    "find comfort in ___",
+    "struggle to let go",
+    "respect the person's wishes",
+    "confuse a copy with the person"
+  ],
+  frames:[
+    "A digital recreation might comfort someone by ___",
+    "It could become harmful if ___",
+    "The person should have consented before ___",
+    "A copy could never replace ___",
+    "I would / wouldn't want my family to ___"
+  ]
+},
+{
+  id:112, cat:"ai",
+  q:"Should AI ever make life-and-death decisions if it is more accurate than a human?",
+  note:"be allowed <b>to</b> + verb / responsible <b>for</b> + noun or -ing",
+  vocab:[
+    ["accuracy","the quality of being correct","B2"],
+    ["dilemma","a difficult choice between competing options","C1"],
+    ["responsibility","the duty to deal with the results of a decision","B1"],
+    ["compassion","care for another person's suffering","B2"],
+    ["appeal","a request to change an official decision","B2"],
+    ["irreversible","impossible to change back","C1"]
+  ],
+  chunks:[
+    "make a life-and-death decision",
+    "reduce human error",
+    "consider individual circumstances",
+    "keep a human in the loop",
+    "challenge a decision",
+    "carry moral responsibility"
+  ],
+  frames:[
+    "AI should / shouldn't decide because ___",
+    "Greater accuracy matters most when ___",
+    "A human must remain responsible for ___",
+    "People should be able to appeal if ___",
+    "I would trust the decision only if ___"
+  ]
+},
+{
+  id:113, cat:"ai",
+  q:"If AI does most human work, where will people find purpose, dignity, and a sense of being needed?",
+  note:"find meaning <b>in</b> + noun or -ing — <i>people find meaning in contributing</i>",
+  vocab:[
+    ["purpose","a reason for living or doing something","B1"],
+    ["dignity","the sense that every person has value and deserves respect","B2"],
+    ["contribution","something you give or do to help","B2"],
+    ["leisure","time free from work and duties","B1"],
+    ["fulfilment","deep satisfaction from doing something meaningful","C1"],
+    ["obsolete","no longer needed because something newer exists","C1"]
+  ],
+  chunks:[
+    "earn a living",
+    "feel useful to others",
+    "find meaning outside work",
+    "have more time for ___",
+    "lose a sense of purpose",
+    "value people for more than productivity"
+  ],
+  frames:[
+    "Work gives many people ___",
+    "Without jobs, people could find purpose through ___",
+    "Society often connects dignity with ___",
+    "More leisure would be positive if ___",
+    "Human value should never depend on ___"
+  ]
+},
+{
+  id:114, cat:"ai",
+  q:"Could an AI have free will, or would every choice ultimately come from its programming?",
+  note:"come <b>from</b> / be determined <b>by</b> — <i>are its choices determined by code?</i>",
+  vocab:[
+    ["free will","the ability to choose actions independently","B2"],
+    ["programming","coded instructions that tell a computer what to do","B1"],
+    ["determine","cause or control a particular result","B2"],
+    ["choice","an act of selecting between possibilities","A2"],
+    ["predictable","able to be known before it happens","B2"],
+    ["agency","the ability to act and make independent choices","C1"]
+  ],
+  chunks:[
+    "make an independent choice",
+    "follow its programming",
+    "act against its instructions",
+    "be shaped by past experience",
+    "choose between alternatives",
+    "be responsible for its actions"
+  ],
+  frames:[
+    "I understand free will as ___",
+    "An AI would have free will if ___",
+    "Human choices are also shaped by ___",
+    "Acting unpredictably does / doesn't prove ___",
+    "Responsibility requires the ability to ___"
+  ]
+},
+{
+  id:115, cat:"ai",
+  q:"What would be more dangerous: AI becoming too independent, or humans becoming too dependent on AI?",
+  note:"more + adjective <b>than</b> / depend <b>on</b> — <i>which danger is more serious?</i>",
+  vocab:[
+    ["independent","able to act without control or help","B1"],
+    ["dependent","needing someone or something in order to function","B2"],
+    ["control","the power to direct how something behaves","B1"],
+    ["vulnerability","weakness that makes harm more likely","C1"],
+    ["infrastructure","basic systems a society needs to operate","C1"],
+    ["resilience","the ability to recover after difficulty or damage","C1"]
+  ],
+  chunks:[
+    "act beyond human control",
+    "rely on AI for everything",
+    "lose essential skills",
+    "shut down a vital system",
+    "keep a human alternative",
+    "prepare for both risks"
+  ],
+  frames:[
+    "The greater danger is ___ because ___",
+    "AI independence becomes dangerous when ___",
+    "Human dependence becomes dangerous when ___",
+    "We could reduce both risks by ___",
+    "The one ability humans must preserve is ___"
+  ]
 }
 
 ];
