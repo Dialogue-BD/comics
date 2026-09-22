@@ -470,7 +470,8 @@ h1,h2,h3{margin:0}
 .cw.missed{border-style:dashed;border-color:var(--gold);color:var(--tx-muted)}
 .cw[disabled]{cursor:default}
 .catch-foot{
-  margin-top:var(--s3);font-size:calc(.88rem*var(--ui));line-height:1.5;color:var(--tx-muted);
+  margin-top:var(--s3);display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap;
+  font-size:calc(.88rem*var(--ui));line-height:1.5;color:var(--tx-muted);
 }
 .catch-foot b{color:var(--tx);font-weight:700}
 .catch-score{
@@ -1652,7 +1653,7 @@ function newScenario(keepLesson){
   if (!keepLesson) lesson = false;
   sc = draw();
   step = 0;
-  state = { qDone: false, passes: [0, 0, 0], tOpen: false,
+  state = { qDone: false, passes: [0, 0, 0], catchScores: [[], [], []], tOpen: false,
             claimsDone: false, picked: new Set(), placed: {}, mapDone: false,
             chosenQ: null };
   /* The brand layer does not recolour per theme — the badge carries the theme. */
@@ -1960,6 +1961,17 @@ function catchHead(i, label){
   return bar;
 }
 
+function catchResults(i){
+  const foot = el('div', 'catch-foot');
+  (state.catchScores[i] || []).forEach((score, pass) => {
+    foot.appendChild(el('span', 'catch-score',
+      'Listen ' + (pass + 1) + ': ' + score.caught + ' / ' + score.targets + ' words'));
+  });
+  foot.appendChild(document.createTextNode(
+    state.passes[i] < 3 ? '↻ replay for different words' : 'Three listens done — open the transcript.'));
+  return foot;
+}
+
 function catchStart(c, i){
   const box = catchNode(i);
   if (!box) return;
@@ -2021,19 +2033,17 @@ function catchEnd(c, i){
   const r = c.round;
   c.round = null;
   state.passes[i] = Math.min(3, (state.passes[i] || 0) + 1);
+  state.catchScores[i].push({ caught: r.caught, targets: r.targets });
   syncNext();
   refreshGists();
   refreshCard(i);        /* the card reopens with its words available */
   const box = catchNode(i);
   if (!box) return;
 
+  box.hidden = false;
   box.innerHTML = '';
   box.appendChild(catchHead(i, 'Listen ' + state.passes[i] + ' of 3'));
-  const foot = el('div', 'catch-foot');
-  foot.appendChild(el('span', 'catch-score', r.caught + ' / ' + r.targets));
-  foot.appendChild(document.createTextNode(
-    state.passes[i] < 3 ? '↻ for different words' : 'Three listens done — open the transcript.'));
-  box.appendChild(foot);
+  box.appendChild(catchResults(i));
 }
 
 /* rebuild one informant card in place — after a listen it has a transcript it
@@ -2705,7 +2715,13 @@ function informantCard(s, i){
     tr.hidden = !state.tOpen;
     bub.appendChild(tr);
   }
-  const catchBox = el('div', 'catch'); catchBox.hidden = true;
+  const catchBox = el('div', 'catch');
+  const hasScores = Boolean(state.catchScores[i] && state.catchScores[i].length);
+  catchBox.hidden = !hasScores;
+  if (hasScores){
+    catchBox.appendChild(catchHead(i, 'Your listening scores'));
+    catchBox.appendChild(catchResults(i));
+  }
   bub.appendChild(catchBox);
   bub.appendChild(el('p', 'bubble-idle', heard
     ? 'Play it again and the words follow along.'
