@@ -297,6 +297,12 @@ h1,h2,h3{margin:0}
 }
 .tag-bad{background:rgba(176,86,58,.16);color:var(--clay)}
 .tag-good{background:var(--forest);color:var(--paper)}
+.opt-reason{
+  display:block;margin-top:var(--s2);padding-top:var(--s2);border-top:1px solid rgba(176,86,58,.22);
+  font-size:calc(.84rem*var(--ui));line-height:1.45;color:var(--tx);text-align:left;
+}
+.opt-reason b{color:var(--clay)}
+.opt-reason .fix{display:block;margin-top:var(--s1);color:var(--tx-muted)}
 
 .coach{
   margin-top:var(--s3);padding:var(--s4);border-left:4px solid var(--clay);
@@ -2595,6 +2601,7 @@ function stepAsk(){
     const q = sc.questions[i];
     const b = el('button', 'opt');
     b.type = 'button';
+    b.questionData = q;
     b.appendChild(document.createTextNode('“' + q.q + '”'));
     b.onclick = () => chooseQ(b, q, list);
     list.appendChild(b);
@@ -2602,6 +2609,28 @@ function stepAsk(){
   c.appendChild(list);
   p.appendChild(c);
   wrap.appendChild(p);
+}
+
+function markWrongQuestion(btn, q, showReason){
+  const f = FLAWS[q.flaw];
+  if (!btn.classList.contains('is-wrong')){
+    btn.classList.add('is-wrong');
+    btn.appendChild(el('br'));
+    const tb = el('span', 'opt-tag tag-bad');
+    tb.appendChild(icon('cross'));
+    tb.appendChild(document.createTextNode(f.label + ' · ' + f.short));
+    btn.appendChild(tb);
+  }
+  if (showReason && !btn.querySelector('.opt-reason')){
+    const reason = el('span', 'opt-reason');
+    const why = el('span');
+    why.appendChild(el('b', null, 'Why it closes the interview: '));
+    why.appendChild(document.createTextNode(f.coach));
+    reason.appendChild(why);
+    reason.appendChild(el('span', 'fix', 'Better approach: ' + f.fix));
+    btn.appendChild(reason);
+  }
+  return f;
 }
 
 function chooseQ(btn, q, list){
@@ -2620,18 +2649,15 @@ function chooseQ(btn, q, list){
     co.appendChild(el('b', null, 'That is the one.'));
     co.appendChild(document.createTextNode(q.why));
     list.appendChild(co);
-    list.querySelectorAll('.opt').forEach(o => o.disabled = true);
+    list.querySelectorAll('.opt').forEach(o => {
+      if (o !== btn) markWrongQuestion(o, o.questionData, true);
+      o.disabled = true;
+    });
     state.qDone = true;
     state.chosenQ = q.q;          /* carried to the top of the listening screen */
     syncNext();
   } else {
-    const f = FLAWS[q.flaw];
-    btn.classList.add('is-wrong');
-    btn.appendChild(el('br'));
-    const tb = el('span', 'opt-tag tag-bad');
-    tb.appendChild(icon('cross'));
-    tb.appendChild(document.createTextNode(f.label + ' · ' + f.short));
-    btn.appendChild(tb);
+    const f = markWrongQuestion(btn, q, false);
     const co = el('div', 'coach');
     co.appendChild(el('b', null, f.label));
     co.appendChild(document.createTextNode(f.coach));
