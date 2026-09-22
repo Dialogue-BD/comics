@@ -1171,53 +1171,121 @@ h1,h2,h3{margin:0}
    pull-quote band, the contact band, and a footer on every page.
    Square, flat, no shadows.
    =========================================================================== */
-#fieldsheet{display:none}
-@media print{
-  @page{margin:14mm 13mm}
-  .app,.toast,.scrim,.sheet{display:none !important}
-  html,body{overflow:visible;height:auto;background:#fff;color:#1D211C}
-  #fieldsheet{display:block;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  #fieldsheet .print-sheet{display:block}
-  #fieldsheet .print-sheet + .print-sheet{break-before:page;page-break-before:always}
-  body[data-print-selection="interview"] #print-rings{display:none}
-  body[data-print-selection="rings"] #print-interview{display:none}
-  body[data-print-selection="rings"] #print-rings{break-before:auto;page-break-before:auto}
+#printsheet{display:none}
 
-  .fs-head{display:flex;justify-content:space-between;font-family:'Public Sans',sans-serif;
-    font-size:7.5pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#134219}
-  .fs-mast{margin-top:6pt;padding-bottom:6pt;border-bottom:4pt solid #134219}
-  .fs-mast .prog{font-family:'Public Sans',sans-serif;font-size:7.5pt;font-weight:700;
-    letter-spacing:.13em;text-transform:uppercase;color:#8A6D2C;margin:0 0 3pt}
-  #fieldsheet h1{font-family:'Spectral',Georgia,serif;font-weight:600;font-size:21pt;color:#134219;margin:0}
-  #fieldsheet .tagline{font-family:'Spectral',Georgia,serif;font-style:italic;font-size:10pt;
-    color:#5F6A5C;margin:3pt 0 0}
-  #fieldsheet h2{font-family:'Spectral',Georgia,serif;font-weight:600;font-size:12.5pt;
-    color:#134219;margin:15pt 0 5pt}
-  #fieldsheet p,#fieldsheet li,#fieldsheet div{font-family:'Public Sans',sans-serif;font-size:9.5pt;line-height:1.5}
-  .fs-panel{background:#F4F6F0;border-left:4pt solid #B9924F;padding:8pt 10pt;margin-top:8pt}
-  .fs-panel p{margin:0}
-  .fs-bullets{margin:5pt 0 0;padding:0;list-style:none}
-  .fs-bullets li{position:relative;padding-left:14pt;margin-top:3pt}
-  .fs-bullets li::before{content:"";position:absolute;left:0;top:3.6pt;width:6pt;height:6pt;background:#B9924F}
-  .cap{font-family:'Public Sans',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:.12em;
-    text-transform:uppercase;color:#5F6A5C;margin:0}
-  .lines{border:.75pt solid #9aa39a;height:62pt;margin-top:4pt}
-  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8pt}
-  .grid3 .lines{height:120pt}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:6pt 16pt;margin-top:5pt}
-  .layer-print{border:.75pt solid #1D211C;padding:6pt 8pt;margin-top:6pt}
-  .layer-print .cap{color:#134219;margin-bottom:3pt}
-  .layer-print .q{font-family:'Spectral',Georgia,serif;font-style:italic;font-weight:400;
-    text-transform:none;letter-spacing:0;color:#5F6A5C;font-size:9pt}
-  .layer-print .blank{border-bottom:.5pt solid #b6bdb6;height:15pt;margin-top:4pt}
-  .fs-band{background:#134219;color:#fff;padding:9pt 11pt;margin-top:14pt;
-    font-family:'Spectral',Georgia,serif;font-style:italic;font-size:10pt;line-height:1.5}
-  .fs-contact{background:#134219;color:#fff;padding:10pt 11pt;margin-top:10pt}
-  .fs-contact .cap{color:#D2B978;margin-bottom:4pt}
-  .fs-contact p{margin:0;font-size:8.5pt;color:#fff}
-  .fs-foot{margin-top:10pt;padding-top:5pt;border-top:.75pt solid #b6bdb6;
-    display:flex;justify-content:space-between;font-family:'Public Sans',sans-serif;
-    font-size:7.5pt;color:#5F6A5C}
+@media print{
+  @page{size:A4;margin:11mm 10mm}
+  .app,.toast,.scrim,.sheet,.glossbox{display:none !important}
+  html,body{overflow:visible;height:auto;background:#fff;color:#1D211C}
+  #printsheet{display:block;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #printsheet *{box-sizing:border-box}
+
+  /* ---- shared furniture ---- */
+  .ps{font-family:'Public Sans',sans-serif;font-size:8.6pt;line-height:1.42;color:#1D211C}
+  .ps-head{display:flex;justify-content:space-between;align-items:baseline;
+    font-size:6.8pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#134219}
+  .ps-mast{margin-top:4pt;padding-bottom:4pt;border-bottom:3pt solid #134219}
+  .ps-prog{font-size:6.8pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+    color:#795E20;margin:0 0 2pt}
+  .ps h1{font-family:'Spectral',Georgia,serif;font-weight:600;font-size:17pt;color:#134219;margin:0}
+  .ps-tag{font-family:'Spectral',Georgia,serif;font-style:italic;font-size:8.8pt;color:#5F6A5C;margin:2pt 0 0}
+  .ps h2{font-family:'Public Sans',sans-serif;font-weight:700;font-size:7pt;letter-spacing:.14em;
+    text-transform:uppercase;color:#795E20;margin:9pt 0 3pt;
+    border-bottom:.5pt solid #d6d0bd;padding-bottom:2pt}
+  .ps h2:first-child{margin-top:0}
+  .ps p{margin:0 0 3pt}
+  .ps-foot{margin-top:7pt;padding-top:3pt;border-top:.75pt solid #b6bdb6;
+    display:flex;justify-content:space-between;font-size:6.6pt;color:#5F6A5C}
+  .ps-band{background:#134219;color:#fff;padding:6pt 8pt;margin-top:6pt;
+    font-family:'Spectral',Georgia,serif;font-style:italic;font-size:9pt;line-height:1.4}
+  .ps-note{background:#F4F6F0;border-left:3pt solid #B9924F;padding:5pt 7pt;margin-top:5pt;font-size:8pt}
+  .ps-2{display:grid;grid-template-columns:1fr 1fr;gap:5pt 12pt}
+  .ps-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5pt 9pt}
+  .ps-cap{font-size:6.6pt;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#5F6A5C;margin:0 0 2pt}
+  .ps-bul{margin:2pt 0 0;padding:0;list-style:none}
+  .ps-bul li{position:relative;padding-left:10pt;margin-top:2pt}
+  .ps-bul li::before{content:"";position:absolute;left:0;top:3pt;width:4.5pt;height:4.5pt;background:#B9924F}
+
+  /* layer ink — the same four identities as the screen */
+  #printsheet .ps .L-behavior {color:#8A5610}
+  #printsheet .ps .L-value    {color:#0A6A62}
+  #printsheet .ps .L-belief   {color:#3F4FA8}
+  #printsheet .ps .L-worldview{color:#A8322A}
+  #printsheet .ps .B-behavior {border-left-color:#8A5610}
+  #printsheet .ps .B-value    {border-left-color:#0A6A62}
+  #printsheet .ps .B-belief   {border-left-color:#3F4FA8}
+  #printsheet .ps .B-worldview{border-left-color:#A8322A}
+
+  /* ---- which sheets ----
+     Only the sheets asked for are ever built, so everything in the container
+     prints, and a set of several breaks one to a side. */
+  #printsheet .ps + .ps{break-before:page;page-break-before:always}
+
+  /* ---- A · the blank field sheet ---- */
+  .ps-k-field .pp-lines{border:.6pt solid #9aa39a;height:44pt;margin-top:3pt}
+  .ps-k-field .pp-lines.pp-tall{height:62pt}
+  .ps-k-field .pp-rule{border-bottom:.5pt solid #b6bdb6;height:15pt;margin-top:3pt}
+  .ps-k-field .pp-box{border:.6pt solid #1D211C;padding:4pt 5pt;margin-top:4pt}
+  .ps-k-field .pp-box .ps-cap{color:#134219}
+  .ps-k-field .pp-q{font-family:'Spectral',Georgia,serif;font-style:italic;font-weight:400;
+    text-transform:none;letter-spacing:0;color:#5F6A5C;font-size:7.6pt}
+  .ps-k-field .pp-idbar{background:#F4F6F0;border-left:3pt solid #B9924F;padding:4pt 7pt;margin-top:5pt;font-size:8pt}
+
+  /* ---- B · one scenario, taught from paper ---- */
+  .ps-k-scenario{font-size:7.6pt;line-height:1.36}
+  .ps-k-scenario h2{margin:7pt 0 3pt}
+  .ps-k-scenario .pp-beats{display:grid;grid-template-columns:repeat(3,1fr);gap:6pt;margin-top:4pt}
+  .ps-k-scenario .pp-beat{border:.6pt solid #d6d0bd;background:#FBF9F1;padding:4pt 5pt}
+  .ps-k-scenario .pp-beat b{display:block;font-size:6.4pt;letter-spacing:.1em;color:#795E20}
+  .ps-k-scenario .pp-qgrid{display:grid;grid-template-columns:1fr 1fr;gap:3pt 9pt;margin-top:3pt}
+  .ps-k-scenario .pp-qq{border-left:2.5pt solid #d6d0bd;padding-left:5pt}
+  .ps-k-scenario .pp-qq.pp-ok{border-left-color:#134219;background:#F4F6F0;padding:3pt 5pt}
+  .ps-k-scenario .pp-qq .pp-tag{font-size:6.2pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5F6A5C}
+  .ps-k-scenario .pp-qq.pp-ok .pp-tag{color:#134219}
+  .ps-k-scenario .pp-spk{border-top:1.5pt solid #134219;padding-top:3pt}
+  .ps-k-scenario .pp-spk .pp-who{font-weight:700;font-size:8pt;color:#134219}
+  .ps-k-scenario .pp-spk .pp-meta{font-size:6.4pt;color:#5F6A5C;margin-bottom:2pt}
+  .ps-k-scenario .pp-spk .pp-say{font-size:7pt;line-height:1.32;text-align:justify;hyphens:auto}
+  .ps-k-scenario .pp-rings{width:100%;border-collapse:collapse;margin-top:3pt}
+  .ps-k-scenario .pp-rings th{font-size:6.4pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    text-align:left;padding:2pt 4pt;border-bottom:.75pt solid #b6bdb6}
+  .ps-k-scenario .pp-rings th.pp-w{color:#1D4E89}
+  .ps-k-scenario .pp-rings th.pp-e{color:#A8322A}
+  .ps-k-scenario .pp-rings td{vertical-align:top;padding:3pt 4pt;border-bottom:.4pt solid #e2ded0;font-size:7pt;line-height:1.3}
+  .ps-k-scenario .pp-rings td.pp-k{width:62pt;font-size:6.4pt;font-weight:700;letter-spacing:.09em;
+    text-transform:uppercase;border-left:2.5pt solid}
+  .ps-k-scenario .pp-rings td.pp-wv{width:calc((100% - 62pt)/2);background:#F2F5F9}
+  .ps-k-scenario .pp-rings td.pp-ev{width:calc((100% - 62pt)/2);background:#FBF1EF}
+  .ps-k-scenario .pp-chain{display:grid;grid-template-columns:repeat(4,1fr);gap:4pt;margin-top:3pt}
+  .ps-k-scenario .pp-chain div{border:.6pt solid;padding:3pt 4pt;font-size:6.8pt;line-height:1.25}
+  .ps-k-scenario .pp-chain b{display:block;font-size:6.2pt;letter-spacing:.1em;text-transform:uppercase}
+
+  /* ---- C · the lesson, on one side ---- */
+  .ps-k-lesson .pp-rank{display:grid;grid-template-columns:1fr 1fr;gap:9pt;margin-top:4pt}
+  .ps-k-lesson .pp-rank .pp-col{border-top:2.5pt solid;padding-top:3pt}
+  .ps-k-lesson .pp-rank .pp-col.pp-w{border-color:#1D4E89}
+  .ps-k-lesson .pp-rank .pp-col.pp-e{border-color:#A8322A}
+  .ps-k-lesson .pp-rank h3{margin:0 0 3pt;font-size:6.8pt;font-weight:700;letter-spacing:.11em;text-transform:uppercase}
+  .ps-k-lesson .pp-rank .pp-col.pp-w h3{color:#1D4E89}
+  .ps-k-lesson .pp-rank .pp-col.pp-e h3{color:#A8322A}
+  .ps-k-lesson .pp-rank ol{margin:0;padding-left:13pt;font-size:8.2pt;line-height:1.5}
+  .ps-k-lesson .pp-rank li:first-child{font-weight:700}
+  .ps-k-lesson .pp-chain{display:grid;grid-template-columns:repeat(4,1fr);gap:5pt;margin-top:4pt}
+  .ps-k-lesson .pp-chain div{border:.75pt solid;padding:4pt 5pt;font-size:7.4pt;line-height:1.3}
+  .ps-k-lesson .pp-chain b{display:block;font-size:6.4pt;letter-spacing:.1em;text-transform:uppercase}
+  .ps-k-lesson .pp-four{display:grid;grid-template-columns:auto 1fr;gap:10pt;align-items:center;margin-top:4pt}
+  .ps-k-lesson .pp-four > svg{width:152pt;height:152pt}
+  .ps-k-lesson .pp-four .ring-ico{display:none}   /* the key rows name every ring already */
+  .ps-k-lesson .pp-keyrow{border-left:3pt solid;padding:2pt 0 2pt 6pt;margin-bottom:4pt}
+  .ps-k-lesson .pp-keyrow b{font-size:7.4pt;letter-spacing:.09em;text-transform:uppercase}
+  .ps-k-lesson .pp-keyrow i{font-family:'Spectral',Georgia,serif;color:#5F6A5C;font-size:8pt}
+  .ps-k-lesson .pp-keyrow span{display:block;font-size:7.6pt;color:#1D211C}
+  .ps-k-lesson .pp-why{display:grid;grid-template-columns:1fr 1fr;gap:10pt;margin-top:4pt}
+  .ps-k-lesson .pp-why h3{margin:0 0 2pt;font-size:6.8pt;font-weight:700;letter-spacing:.11em;
+    text-transform:uppercase;color:#134219}
+  .ps-k-lesson .pp-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6pt;margin-top:4pt}
+  .ps-k-lesson .pp-steps div{border-top:2pt solid #134219;padding-top:3pt;font-size:7.2pt;line-height:1.3}
+  .ps-k-lesson .pp-steps b{display:block;font-size:6.6pt;letter-spacing:.1em;text-transform:uppercase;color:#134219}
 }
 </style>
 </head>
@@ -1278,20 +1346,7 @@ h1,h2,h3{margin:0}
   <div class="print-picker">
     <button class="print-picker__toggle" id="m-print-toggle" type="button"
             aria-expanded="false" aria-controls="print-options">Printable sheets</button>
-    <div class="print-picker__options" id="print-options" hidden>
-      <button class="print-option" type="button" data-print-sheet="interview">
-        <span class="print-option__icon">📝</span>
-        <span><strong>Ethnographic Interview</strong><small>One-page observe, ask, listen, and triangulate field sheet</small></span>
-      </button>
-      <button class="print-option" type="button" data-print-sheet="rings">
-        <span class="print-option__icon">🎯</span>
-        <span><strong>Fill the Rings</strong><small>One-page culture comparison and reflection sheet</small></span>
-      </button>
-      <button class="print-option" type="button" data-print-sheet="all">
-        <span class="print-option__icon">📚</span>
-        <span><strong>All printable sheets</strong><small>Both one-page sheets in one print or Save to PDF job</small></span>
-      </button>
-    </div>
+    <div class="print-picker__options" id="print-options" hidden></div>
   </div>
 
   <div class="sheet-row">
@@ -1303,104 +1358,7 @@ h1,h2,h3{margin:0}
 </div>
 
 <!-- ============ PRINTABLE FIELD SHEET · blank, for real interviews ============ -->
-<div id="fieldsheet">
-  <section class="print-sheet" id="print-interview">
-  <div class="fs-head"><span>Dialogue · Professional Skills Development Center</span><span>Field Sheet · Rajshahi</span></div>
-  <div class="fs-mast">
-    <p class="prog">Applied Professional English · Cross-Cultural Judgment</p>
-    <h1>Ethnographic Interview</h1>
-    <p class="tagline">Watch what is done, ask one good question, listen to three people, then open the layers.</p>
-  </div>
-
-  <div class="fs-panel">
-    <p class="cap" style="margin-bottom:4pt">Before you start</p>
-    <p>Name ________________________  Date ________________  Where ________________________</p>
-  </div>
-
-  <h2>1 · Observe — what is done?</h2>
-  <p class="cap">The behaviour I saw. Only what a camera would record — no explanation yet.</p>
-  <div class="lines"></div>
-  <p class="cap" style="margin-top:7pt">Why it surprised me</p>
-  <div class="lines"></div>
-
-  <h2>2 · Ask — my research question</h2>
-  <div class="grid2">
-    <div>&#9744; Cannot be answered yes / no</div>
-    <div>&#9744; No judgment hidden inside it</div>
-    <div>&#9744; About one person and one event</div>
-    <div>&#9744; Asks for a story, not a theory</div>
-  </div>
-  <ul class="fs-bullets">
-    <li>Tell me about the last time you&hellip;</li>
-    <li>Walk me through it, from start to finish.</li>
-    <li>What did you do first?</li>
-    <li>Think of someone you respected — what did you actually see them do?</li>
-  </ul>
-  <p class="cap" style="margin-top:7pt">My question</p>
-  <div class="lines"></div>
-
-  <h2>3 · Listen — three people, three answers</h2>
-  <div class="grid3">
-    <div><p class="cap">Person 1 ____________</p><div class="lines"></div></div>
-    <div><p class="cap">Person 2 ____________</p><div class="lines"></div></div>
-    <div><p class="cap">Person 3 ____________</p><div class="lines"></div></div>
-  </div>
-
-  <h2>4 · Triangulate</h2>
-  <p class="cap">Said by all three — this is the cultural pattern</p>
-  <div class="lines"></div>
-  <p class="cap" style="margin-top:7pt">Said by only one — personal, set it aside</p>
-  <div class="lines"></div>
-
-  <div class="fs-foot"><span>Dialogue · Professional Skills Development Center, Rajshahi</span><span>dialogue-bd.com</span></div>
-  </section>
-
-  <section class="print-sheet" id="print-rings">
-  <div class="fs-head"><span>Dialogue · Professional Skills Development Center</span><span>Field Sheet · Rajshahi</span></div>
-  <div class="fs-mast">
-    <p class="prog">Step 5</p>
-    <h1>Fill the Rings</h1>
-    <p class="tagline">One ring at a time. Never jump from the outside straight to the centre.</p>
-  </div>
-
-  <h2>Their rings</h2>
-  <div class="layer-print"><p class="cap">1 · Behaviour — the outside ring <span class="q">what is done?</span></p>
-    <div class="blank"></div></div>
-  <div class="layer-print"><p class="cap">2 · Values <span class="q">what is good or best?</span></p>
-    <div class="blank"></div><div class="blank"></div></div>
-  <div class="layer-print"><p class="cap">3 · Beliefs <span class="q">what is true?</span></p>
-    <div class="blank"></div><div class="blank"></div></div>
-  <div class="layer-print"><p class="cap">4 · Worldview — the centre <span class="q">what is real?</span></p>
-    <div class="blank"></div><div class="blank"></div></div>
-
-  <h2>Your rings, same situation</h2>
-  <div class="layer-print"><p class="cap">1 · Behaviour — the outside ring <span class="q">what is done?</span></p>
-    <div class="blank"></div></div>
-  <div class="layer-print"><p class="cap">2 · Values <span class="q">what is good or best?</span></p>
-    <div class="blank"></div><div class="blank"></div></div>
-  <div class="layer-print"><p class="cap">3 · Beliefs <span class="q">what is true?</span></p>
-    <div class="blank"></div><div class="blank"></div></div>
-  <div class="layer-print"><p class="cap">4 · Worldview — the centre <span class="q">what is real?</span></p>
-    <div class="blank"></div><div class="blank"></div></div>
-
-  <h2>Three traps</h2>
-  <ul class="fs-bullets">
-    <li><b>Restatement</b> — you renamed the behaviour and called it a value. Nothing was explained.</li>
-    <li><b>Judgment</b> — you wrote how you feel about them, not what they rank highest.</li>
-    <li><b>Stereotype</b> — it explains everything, predicts nothing, and no interview can check it.</li>
-  </ul>
-
-  <div class="fs-band">Write both sets of rings so that a person from that culture would read yours and say:
-    yes — that is what I was doing.</div>
-
-  <div class="fs-contact">
-    <p class="cap">Dialogue · English &amp; Skills Center</p>
-    <p>Ward No. 26, Rajshahi City Corporation, Rajshahi · dialogue.english.bd@gmail.com · dialogue-bd.com</p>
-  </div>
-
-  <div class="fs-foot"><span>Dialogue · Professional Skills Development Center, Rajshahi</span><span>dialogue-bd.com</span></div>
-  </section>
-</div>
+<div id="printsheet"></div>
 
 <script src="glossary.js"></script>
 <script src="timings.js"></script>
@@ -3340,6 +3298,335 @@ function compareRings(){
   return box;
 }
 
+/* ========================================================== the printables
+   Three cheat sheets, one A4 side each. The sheet is built at print time so
+   the scenario sheet always carries whichever scenario is on screen, and so
+   none of this markup sits in the page the rest of the time.
+
+   Everything a class needs is on the sheet it belongs to: the field sheet is
+   blank and has no answers in it, the scenario sheet has all of them and is
+   the teacher's, and the lesson sheet is the four opening panels. */
+const psRoot = $('#printsheet');
+
+function psHead(right){
+  const h = el('div', 'ps-head');
+  h.appendChild(el('span', null, 'Dialogue · Professional Skills Development Center'));
+  h.appendChild(el('span', null, right));
+  return h;
+}
+function psMast(prog, title, tag){
+  const m = el('div', 'ps-mast');
+  m.appendChild(el('p', 'ps-prog', prog));
+  m.appendChild(el('h1', null, title));
+  if (tag) m.appendChild(el('p', 'ps-tag', tag));
+  return m;
+}
+function psFoot(){
+  const f = el('div', 'ps-foot');
+  f.appendChild(el('span', null, 'Dialogue · Professional Skills Development Center, Rajshahi'));
+  f.appendChild(el('span', null, 'dialogue-bd.com'));
+  return f;
+}
+function psSection(box, title){ box.appendChild(el('h2', null, title)); }
+
+/* ---- A · the blank field sheet, for a real interview outside the room ---- */
+function psField(){
+  const s = el('div', 'ps ps-k-field');
+  s.appendChild(psHead('Field Sheet'));
+  s.appendChild(psMast('Applied Professional English · Cultural Intelligence',
+    'Culture Circles · Field Sheet',
+    'Watch what is done, ask one good question, listen to three people, then work inwards.'));
+
+  const id = el('div', 'pp-idbar');
+  id.textContent = 'Name ______________________   Date ____________   Where ______________________';
+  s.appendChild(id);
+
+  const two = el('div', 'ps-2'); two.style.marginTop = '6pt';
+
+  const c1 = el('div');
+  psSection(c1, '1 · Watch — what is done?');
+  c1.appendChild(el('p', 'ps-cap', 'Only what a camera would record. No explanation yet.'));
+  c1.appendChild(el('div', 'pp-lines pp-tall'));
+  c1.appendChild(el('p', 'ps-cap', 'Why it surprised me'));
+  c1.appendChild(el('div', 'pp-lines'));
+
+  psSection(c1, '2 · Ask — my research question');
+  const chk = el('div', 'ps-2');
+  ['Cannot be answered yes / no', 'No judgment hidden inside it',
+   'About one person, one event', 'Asks for a story, not a theory']
+    .forEach(t => chk.appendChild(el('div', null, '☐ ' + t)));
+  c1.appendChild(chk);
+  const ul = el('ul', 'ps-bul');
+  ['Tell me about the last time you…', 'Walk me through it, start to finish.',
+   'What did you do first?'].forEach(t => ul.appendChild(el('li', null, t)));
+  c1.appendChild(ul);
+  c1.appendChild(el('p', 'ps-cap', 'My question'));
+  c1.appendChild(el('div', 'pp-lines'));
+  two.appendChild(c1);
+
+  const c2 = el('div');
+  psSection(c2, '3 · Listen — three people, three answers');
+  [1, 2, 3].forEach(i => {
+    c2.appendChild(el('p', 'ps-cap', 'Person ' + i + '  ______________________'));
+    c2.appendChild(el('div', 'pp-lines'));
+  });
+  psSection(c2, '4 · Triangulate');
+  c2.appendChild(el('p', 'ps-cap', 'Said by all three — the cultural pattern'));
+  c2.appendChild(el('div', 'pp-lines'));
+  c2.appendChild(el('p', 'ps-cap', 'Said by only one — personal, set it aside'));
+  c2.appendChild(el('div', 'pp-rule'));
+  two.appendChild(c2);
+  s.appendChild(two);
+
+  psSection(s, '5 · Fill the rings — both sets, same situation');
+  const grid = el('div', 'ps-2');
+  [['Their rings', 'them'], ['My own rings', 'me']].forEach(side => {
+    const col = el('div');
+    col.appendChild(el('p', 'ps-cap', side[0]));
+    RINGS.forEach(R => {
+      const b = el('div', 'pp-box B-' + R.key);
+      b.style.borderLeftWidth = '2.5pt';
+      const cap = el('p', 'ps-cap L-' + R.key);
+      cap.textContent = R.name + ' ';
+      cap.appendChild(el('span', 'pp-q', R.q));
+      b.appendChild(cap);
+      b.appendChild(el('div', 'pp-rule'));
+      col.appendChild(b);
+    });
+    grid.appendChild(col);
+  });
+  s.appendChild(grid);
+
+  const traps = el('div', 'ps-note');
+  traps.appendChild(el('p', 'ps-cap', 'Three traps'));
+  const tl = el('ul', 'ps-bul');
+  [['Restatement', 'you renamed the behaviour and called it a value. Nothing was explained.'],
+   ['Judgment', 'you wrote how you feel about them, not what they rank highest.'],
+   ['Stereotype', 'it explains everything, predicts nothing, and no interview can check it.']]
+   .forEach(t => { const li = el('li');
+     const b = el('b', null, t[0]); li.appendChild(b);
+     li.appendChild(document.createTextNode(' — ' + t[1])); tl.appendChild(li); });
+  traps.appendChild(tl);
+  s.appendChild(traps);
+
+  s.appendChild(psFoot());
+  return s;
+}
+/* ---- B · one scenario, everything a class needs to run it off paper ---- */
+function psScenario(sx){
+  const s = el('div', 'ps ps-k-scenario');
+  const th = THEMES[sx.theme];
+  const n = SCENARIOS.indexOf(sx) + 1;
+  s.appendChild(psHead('Scenario ' + n + ' of ' + SCENARIOS.length + ' · ' + th.label));
+  s.appendChild(psMast('Culture Circles · Teaching Sheet', sx.title, sx.setting));
+
+  const beats = el('div', 'pp-beats');
+  sx.beats.forEach((b, i) => {
+    const t = el('div', 'pp-beat');
+    t.appendChild(el('b', null, String(i + 1)));
+    t.appendChild(document.createTextNode(b.ico + '  ' + b.t));
+    beats.appendChild(t);
+  });
+  s.appendChild(beats);
+  s.appendChild(el('p', null, sx.observation)).style.marginTop = '4pt';
+  const band = el('div', 'ps-note', sx.noticing);
+  s.appendChild(band);
+
+  psSection(s, '2 · Ask — one question opens it, three close it');
+  const qg = el('div', 'pp-qgrid');
+  sx.questions.forEach(q => {
+    const d = el('div', 'pp-qq' + (q.ok ? ' pp-ok' : ''));
+    d.appendChild(el('span', 'pp-tag', q.ok ? '✓ use this one' : (FLAWS[q.flaw] || {}).short || 'closes it'));
+    d.appendChild(el('div', null, '“' + q.q + '”'));
+    if (q.ok) d.appendChild(el('div', null, q.why));
+    qg.appendChild(d);
+  });
+  s.appendChild(qg);
+
+  psSection(s, '3 · Listen — read each answer aloud, or let three students read');
+  const three = el('div', 'ps-3');
+  sx.speakers.forEach(sp => {
+    const c = el('div', 'pp-spk');
+    c.appendChild(el('div', 'pp-who', sp.name));
+    c.appendChild(el('div', 'pp-meta', sp.age + ' · ' + sp.job + ' · ' + sp.city));
+    c.appendChild(el('div', 'pp-say', sp.script));
+    three.appendChild(c);
+  });
+  s.appendChild(three);
+
+  psSection(s, '4 · Triangulate');
+  const tri = el('div', 'ps-2');
+  [['Said by all three — the pattern', true], ['Said by one only — personal', false]].forEach(side => {
+    const col = el('div');
+    col.appendChild(el('p', 'ps-cap', side[0]));
+    const ul = el('ul', 'ps-bul');
+    sx.claims.filter(c => !!c.shared === side[1]).forEach(c => ul.appendChild(el('li', null, c.text)));
+    col.appendChild(ul);
+    tri.appendChild(col);
+  });
+  s.appendChild(tri);
+
+  psSection(s, '5 · Two sets of rings, same situation');
+  const tbl = el('table', 'pp-rings');
+  const hr = el('tr');
+  hr.appendChild(el('th', null, ''));
+  hr.appendChild(el('th', 'pp-w', 'Western'));
+  hr.appendChild(el('th', 'pp-e', 'Bengali'));
+  tbl.appendChild(hr);
+  RINGS.forEach(R => {
+    const tr = el('tr');
+    const k = el('td', 'pp-k L-' + R.key + ' B-' + R.key, R.name);
+    tr.appendChild(k);
+    tr.appendChild(el('td', 'pp-wv', sx.rings[R.key]));
+    tr.appendChild(el('td', 'pp-ev', sx.contrast[R.key]));
+    tbl.appendChild(tr);
+  });
+  s.appendChild(tbl);
+
+  const ch = el('div', 'pp-chain');
+  ['worldview', 'belief', 'value', 'behavior'].forEach((k, i) => {
+    const R = RINGS.find(x => x.key === k);
+    const d = el('div', 'L-' + k + ' B-' + k);
+    d.appendChild(el('b', null, R.name));
+    d.appendChild(document.createTextNode(sx.chain[i]));
+    ch.appendChild(d);
+  });
+  s.appendChild(ch);
+  s.appendChild(el('div', 'ps-band', sx.punch + ' ' + sx.contrast.note));
+  s.appendChild(psFoot());
+  return s;
+}
+
+const RING_WHY = {
+  behavior:  'You can watch this one. It is the only ring you can see.',
+  value:     'Invisible. Ask what they put first when two good things collide.',
+  belief:    'Invisible. Ask what has to be true for that value to make sense.',
+  worldview: 'Invisible. Ask what shape of world those beliefs assume.'
+};
+
+/* ---- C · the four opening panels, on one side ---- */
+function psLesson(){
+  const s = el('div', 'ps ps-k-lesson');
+  s.appendChild(psHead('Lesson Sheet'));
+  s.appendChild(psMast('Culture Circles · Before You Start', 'What Is Culture?',
+    'A group of people who answer four questions the same way. Only the first can be seen.'));
+
+  const four = el('div', 'pp-four');
+  const fig = ringDiagram(false);
+  fig.removeAttribute('class'); fig.setAttribute('class', 'rings');
+  four.appendChild(fig);
+  const keys = el('div');
+  RINGS.forEach(R => {
+    const r = el('div', 'pp-keyrow B-' + R.key);
+    const b = el('b', 'L-' + R.key, R.name);
+    r.appendChild(b);
+    r.appendChild(document.createTextNode(' '));
+    r.appendChild(el('i', null, R.q));
+    r.appendChild(el('span', null, RING_WHY[R.key]));
+    keys.appendChild(r);
+  });
+  four.appendChild(keys);
+  s.appendChild(four);
+
+  psSection(s, 'No culture is better — the same values, in a different order');
+  const rank = el('div', 'pp-rank');
+  [['west', 'A Western office'], ['east', 'A Rajshahi office']].forEach(side => {
+    const col = el('div', 'pp-col ' + (side[0] === 'west' ? 'pp-w' : 'pp-e'));
+    col.appendChild(el('h3', null, side[1]));
+    const ol = el('ol');
+    RANKINGS[side[0]].forEach(v => ol.appendChild(el('li', null, v)));
+    col.appendChild(ol);
+    rank.appendChild(col);
+  });
+  s.appendChild(rank);
+  s.appendChild(el('p', 'ps-cap', 'Both lists hold all three. Read the top line of each, then imagine the same meeting in both rooms.'));
+
+  psSection(s, 'Where the order comes from — the centre decides the edge');
+  const ch = el('div', 'pp-chain');
+  [['worldview', 'how the world is'], ['belief', 'what is therefore true'],
+   ['value', 'what is therefore best'], ['behavior', 'what is therefore done']].forEach(L => {
+    const R = RINGS.find(x => x.key === L[0]);
+    const d = el('div', 'L-' + L[0] + ' B-' + L[0]);
+    d.appendChild(el('b', null, R.name));
+    d.appendChild(document.createTextNode(L[1]));
+    ch.appendChild(d);
+  });
+  s.appendChild(ch);
+  s.appendChild(el('p', 'ps-cap', 'You will walk this backwards: start at the behaviour, and work in.'));
+
+  psSection(s, 'Why interview anyone?');
+  const why = el('div', 'pp-why');
+  [['About them', ['What they actually do, not what you assume', 'Which value they put first',
+                   'Why a strange habit is obvious to them']],
+   ['In English', ['Real speech at natural speed', 'The idioms nobody puts in a textbook',
+                   'Asking a question that opens somebody up']]].forEach(col => {
+    const c = el('div');
+    c.appendChild(el('h3', null, col[0]));
+    const ul = el('ul', 'ps-bul');
+    col[1].forEach(t => ul.appendChild(el('li', null, t)));
+    c.appendChild(ul);
+    why.appendChild(c);
+  });
+  s.appendChild(why);
+  psSection(s, 'The four steps');
+  const steps = el('div', 'pp-steps');
+  [['Watch', 'A behaviour that makes no sense to you. Describe it as a camera would.'],
+   ['Ask', 'One question that cannot be answered in a word, and hides no judgment.'],
+   ['Listen', 'Three people, three answers. One answer is a story, not a culture.'],
+   ['Map', 'What all three share is the pattern. Work in: values, beliefs, worldview.']
+  ].forEach((st, i) => {
+    const d = el('div');
+    d.appendChild(el('b', null, (i + 1) + ' · ' + st[0]));
+    d.appendChild(document.createTextNode(st[1]));
+    steps.appendChild(d);
+  });
+  s.appendChild(steps);
+
+  s.appendChild(el('div', 'ps-band',
+    'You cannot see a value. You have to ask — and then check the answer against other people. ' +
+    'That is an ethnographic interview, and it is real listening practice at the same time.'));
+  s.appendChild(psFoot());
+  return s;
+}
+
+/* Build exactly the sheets asked for, print, then take them back out of the
+   page. A set prints one sheet to a side — no duplex, no stapling. */
+const SHEETS = {
+  field:  psField,
+  lesson: psLesson
+};
+function printSheet(what){
+  const list = Array.isArray(what) ? what : [what];
+  psRoot.innerHTML = '';
+  list.forEach(k => {
+    if (SHEETS[k]) { psRoot.appendChild(SHEETS[k]()); return; }
+    const id = k === 'scenario' ? sc.id : k.replace(/^sc:/, '');
+    const found = SCENARIOS.find(x => x.id === id);
+    if (found) psRoot.appendChild(psScenario(found));
+  });
+  if (!psRoot.children.length) return;
+  document.documentElement.setAttribute('data-print', 'on');
+  const clear = () => { document.documentElement.removeAttribute('data-print'); psRoot.innerHTML = ''; };
+  window.addEventListener('afterprint', clear, { once: true });
+  setTimeout(() => window.print(), 60);
+}
+
+/* the menu's printable list, built from the scenario bank so a new scenario
+   appears here without anybody remembering to add it */
+function printMenu(){
+  const rows = [
+    ['field',  '📝', 'Field sheet',  'Blank. For running a real interview outside the room.'],
+    ['lesson', '🧭', 'Lesson sheet', 'What culture is, the two rankings, and the four steps.']
+  ];
+  SCENARIOS.forEach(x => rows.push(['sc:' + x.id, THEMES[x.theme].icon, x.title,
+    x.setting + ' · transcripts, answer key, both sets of rings']));
+  rows.push([SCENARIOS.map(x => 'sc:' + x.id), '📚', 'All ' + SCENARIOS.length + ' scenario sheets',
+             'One page each, in one print job.']);
+  rows.push([['field', 'lesson'].concat(SCENARIOS.map(x => 'sc:' + x.id)), '📦',
+             'Everything', 'All ' + (SCENARIOS.length + 2) + ' sheets, one page each.']);
+  return rows;
+}
+
 /* -------------------------------------------------------------- navigation */
 function advance(){
   if (btnNext.disabled) return;
@@ -3371,23 +3658,27 @@ $('#m-lesson').onclick = () => { closeSheet(); lesson = true; lstep = 0; stopAud
 $('#m-projector').onclick = () => { closeSheet(); toggleStage(); };
 
 const printToggle = $('#m-print-toggle'), printOptions = $('#print-options');
+printMenu().forEach(row => {
+  const b = el('button', 'print-option');
+  b.type = 'button';
+  b.appendChild(el('span', 'print-option__icon', row[1]));
+  const txt = el('span');
+  txt.appendChild(el('strong', null, row[2]));
+  txt.appendChild(el('small', null, row[3]));
+  b.appendChild(txt);
+  b.onclick = () => {
+    printToggle.setAttribute('aria-expanded', 'false');
+    printOptions.hidden = true;
+    closeSheet();
+    setTimeout(() => printSheet(row[0]), 180);
+  };
+  printOptions.appendChild(b);
+});
 printToggle.onclick = () => {
   const open = printToggle.getAttribute('aria-expanded') === 'true';
   printToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
   printOptions.hidden = open;
 };
-printOptions.addEventListener('click', e => {
-  const option = e.target.closest('[data-print-sheet]');
-  if (!option) return;
-  document.body.dataset.printSelection = option.dataset.printSheet;
-  printToggle.setAttribute('aria-expanded', 'false');
-  printOptions.hidden = true;
-  closeSheet();
-  setTimeout(() => window.print(), 180);
-});
-window.addEventListener('afterprint', () => {
-  delete document.body.dataset.printSelection;
-});
 
 /* Paper by day, the forest Stage on the projector. */
 function toggleStage(){
