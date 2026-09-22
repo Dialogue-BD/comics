@@ -24,7 +24,7 @@
   --paper:#F4F1E6;   --card:#FFFDF7;          --mist:#F4F6F0;
   --ink:#1D211C;     --ink-muted:#5F6A5C;
   --moss:#6F8F62;    --moss-soft:#E3EAD9;
-  --clay:#B0563A;
+  --clay:#B0563A;  --clay-ink:#8E402B;
 
   /* --- game colours (not brand; the brand layer leaves these alone) --- */
   --west:#1B4F9C;  --west-tint:rgba(27,79,156,.08);
@@ -155,12 +155,17 @@ button{font:inherit;color:inherit}
 .brand-g{font-size:1.05em;line-height:1;flex:0 0 auto}
 /* on a phone the activity's own name outranks the logo and the theme word */
 @media (max-width:540px){
-  .logo-chip img{width:calc(58px*var(--ui))}
+  .logo-chip{padding:calc(4px*var(--ui)) calc(6px*var(--ui))}
+  .logo-chip img{width:76px}          /* the mark stops scaling with --ui here */
   .pill-lab{display:none}
+  /* the language switch now needs the room the theme badge was taking, and the
+     scenario's theme is already a chip on the first screen */
+  #theme-pill{display:none}
+  .langsw button{padding:0 calc(8px*var(--ui))}
 }
 @media (max-width:360px){
-  .logo-chip{display:none}
-  .brand-name{font-size:calc(1.08rem*var(--ui))}
+  .logo-chip img{width:66px}
+  .brand-name{font-size:calc(1.02rem*var(--ui))}
 }
 .badge{
   display:inline-flex;align-items:center;gap:var(--s1);flex:0 0 auto;
@@ -1090,64 +1095,59 @@ body.bangla .bn-inline{display:inline}
 .why p{margin:0;font-size:calc(.92rem*var(--ui));line-height:1.45;color:var(--tx-muted)}
 .why[hidden]{display:none}
 
-/* ---------- the wordless demo ----------
-   No sentences at all. A thumb taps play, words appear, a word is tapped and
-   its meaning opens. The medium is new to the room before the language is. */
-.demo{
-  position:fixed;inset:0;z-index:80;display:none;
-  align-items:center;justify-content:center;padding:var(--s5);
-  background:rgba(12,32,18,.62);backdrop-filter:blur(3px);
+/* ---------- coach marks: a ring round the real control ---------- */
+.tipmark{position:fixed;inset:0;z-index:70;pointer-events:none;opacity:0;transition:opacity .28s ease}
+.tipmark.show{opacity:1}
+.tip-ring{
+  position:fixed;border:3px solid var(--gold);border-radius:var(--radius-md);
+  box-shadow:0 0 0 9999px rgba(12,32,18,.52);
+  animation:tipPulse 1.6s ease-in-out infinite;
 }
-.demo.show{display:flex}
-.demo-card{
-  width:min(100%,360px);background:var(--surface-card);border-radius:var(--radius-md);
-  box-shadow:var(--shadow-dialog);padding:var(--s5);text-align:center;
+@keyframes tipPulse{0%,100%{border-color:var(--gold)}50%{border-color:var(--gold-light)}}
+.tip-bub{
+  position:fixed;max-width:250px;padding:var(--s3) var(--s4);
+  border-radius:var(--radius-sm);background:var(--surface-card);
+  box-shadow:var(--shadow-dialog);border-left:4px solid var(--gold);
 }
-.demo-stage{
-  position:relative;height:238px;margin:0 auto;width:min(100%,250px);
-  border:2px solid var(--rule-strong);border-radius:22px;background:var(--panel);
-  overflow:hidden;
+.tip-en{margin:0;font-weight:700;font-size:calc(.95rem*var(--ui));line-height:1.35;color:var(--ink)}
+.tip-bub .bn{color:var(--ink);opacity:.8}
+@media (prefers-reduced-motion:reduce){ .tip-ring{animation:none} }
+
+/* ---------- the language switch, where a student can find it ---------- */
+.langsw{
+  display:inline-flex;flex:0 0 auto;align-items:stretch;overflow:hidden;
+  border:1px solid var(--rule-strong);border-radius:var(--radius-pill);background:var(--surface-card);
 }
-.demo-row{
-  position:absolute;left:14px;right:14px;display:flex;align-items:center;gap:9px;
-  opacity:0;transition:opacity .35s ease;
+.langsw button{
+  border:0;background:transparent;cursor:pointer;color:var(--tx-muted);
+  padding:0 calc(10px*var(--ui));min-height:calc(30px*var(--ui));
+  font-family:var(--font-ui);font-size:calc(.76rem*var(--ui));font-weight:700;letter-spacing:.04em;
 }
-.demo-row.on{opacity:1}
-.demo-play{
-  width:46px;height:46px;border-radius:999px;background:var(--accent);color:var(--on-accent);
-  display:flex;align-items:center;justify-content:center;flex:0 0 auto;
-}
-.demo-play .ico{width:20px;height:20px}
-.demo-play.hit{animation:demoHit .5s ease}
-@keyframes demoHit{0%,100%{transform:scale(1)}45%{transform:scale(.86)}}
-.demo-face{width:46px;height:46px;border-radius:10px;background:var(--rule);flex:0 0 auto}
-.demo-chip{
-  padding:5px 11px;border-radius:var(--radius-pill);border:1px solid var(--rule-strong);
-  background:var(--surface-card);font-size:.8rem;color:var(--tx);
-}
-.demo-chip.got{background:var(--gold-soft);border-color:var(--gold);font-weight:700}
-.demo-word{border-bottom:2px dotted var(--kicker);padding:0 2px}
-.demo-word.hit{background:var(--gold-soft)}
-.demo-pop{
-  position:absolute;left:18px;right:18px;padding:8px 10px;border-radius:var(--radius-sm);
-  background:var(--forest-print);color:#fff;font-size:.78rem;text-align:left;
-  opacity:0;transform:translateY(5px);transition:opacity .3s ease,transform .3s ease;
-}
-.demo-pop.on{opacity:1;transform:none}
-.demo-thumb{
-  position:absolute;width:30px;height:30px;border-radius:999px;
-  border:2px solid var(--forest-print);background:rgba(255,255,255,.55);
-  pointer-events:none;opacity:0;transition:all .55s cubic-bezier(.4,0,.2,1);
-}
-.demo-thumb.on{opacity:1}
-.demo-dots{display:flex;gap:6px;justify-content:center;margin-top:var(--s4)}
-.demo-dot{width:7px;height:7px;border-radius:999px;background:var(--rule-strong);opacity:.4}
-.demo-dot.on{opacity:1;background:var(--accent)}
-.demo-row{transition:opacity .35s ease}
-@media (prefers-reduced-motion:reduce){
-  .demo-thumb,.demo-row,.demo-pop{transition:none}
-  .demo-play.hit{animation:none}
-}
+.langsw button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.langsw button[lang="bn"]{font-family:'Noto Sans Bengali','Hind Siliguri',sans-serif;letter-spacing:0}
+
+/* the projector's own Next carries one language; two lines crush it */
+.stage-next .bn{display:none !important}
+
+/* ---------- what makes a question good ---------- */
+.qrules{display:grid;grid-template-columns:1fr;gap:var(--s3);margin-top:var(--s4)}
+@media (min-width:640px){ .qrules{grid-template-columns:1fr 1fr} }
+.qrule{border:1px solid var(--rule);border-radius:var(--radius-md);padding:var(--s3) var(--s4)}
+.qrule.ok{border-left:4px solid var(--forest);background:var(--moss-soft)}
+.qrule.no{border-left:4px solid var(--clay);background:rgba(176,86,58,.08)}
+.qrule-h{display:flex;align-items:flex-start;gap:var(--s2)}
+.qrule-ico{width:calc(1.1rem*var(--ui));height:calc(1.1rem*var(--ui));flex:0 0 auto;margin-top:calc(2px*var(--ui))}
+.qrule.ok .qrule-ico{color:var(--forest-print)}
+.qrule.no .qrule-ico{color:var(--clay-ink)}
+.qrule-t{font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.qrule.ok .qrule-t{color:var(--forest-print)}
+.qrule.no .qrule-t{color:var(--clay-ink)}
+.qrule-list{margin:var(--s2) 0 0;padding:0;list-style:none}
+.qrule-list li{position:relative;padding-left:var(--s4);margin-top:calc(5px*var(--ui));
+  font-size:calc(.9rem*var(--ui));line-height:1.4}
+.qrule-list li::before{content:"";position:absolute;left:0;top:calc(7px*var(--ui));
+  width:calc(6px*var(--ui));height:calc(6px*var(--ui));background:var(--gold)}
+.qrule .bn{margin-top:calc(2px*var(--ui))}
 
 /* ---------- action bar ---------- */
 .actionbar{
@@ -1404,8 +1404,12 @@ body.bangla .bn-inline{display:inline}
 <div class="app">
   <div class="appbar" id="appbar">
     <header class="topbar">
-      <span class="logo-chip"><img src="../ai-fluency/assets/dialogue-logo.png" alt="Dialogue English &amp; Skills Center"></span>
+      <span class="logo-chip"><img src="../brand/dialogue-logo.png" alt="Dialogue English &amp; Skills Center"></span>
       <span class="brand-name" id="brand-text"><span class="brand-g">🎯</span>Culture Circles</span>
+      <span class="langsw" role="group" aria-label="Language">
+        <button type="button" id="lang-en" aria-pressed="true">EN</button>
+        <button type="button" id="lang-bn" lang="bn" aria-pressed="false">বাংলা</button>
+      </span>
       <span class="badge" id="theme-pill">Time</span>
       <button class="stage-next" id="btn-next-stage">Continue</button>
       <button class="icon-btn" id="btn-menu" title="Menu" aria-label="Menu">☰</button>
@@ -1423,29 +1427,9 @@ body.bangla .bn-inline{display:inline}
 
 <div class="toast" id="toast"></div>
 <div class="glossbox" id="glossbox" role="dialog" aria-live="polite"></div>
-<div class="demo" id="demo" role="dialog" aria-label="How this works">
-  <div class="demo-card">
-    <div class="demo-stage">
-      <div class="demo-row r-play" style="top:22px">
-        <span class="demo-face"></span>
-        <span class="demo-play"></span>
-      </div>
-      <div class="demo-row r-chips" style="top:96px;flex-wrap:wrap">
-        <span class="demo-chip">house</span>
-        <span class="demo-chip">dinner</span>
-        <span class="demo-chip">eight</span>
-      </div>
-      <div class="demo-row r-text" style="top:152px;display:block">
-        <span style="font-size:.82rem;line-height:1.5">I had to <span class="demo-word">push</span> everyone out by eight.</span>
-      </div>
-      <div class="demo-pop" style="top:196px">push out&nbsp;·&nbsp;ask people to leave</div>
-      <span class="demo-thumb"></span>
-    </div>
-    <div class="demo-dots"><span class="demo-dot on"></span><span class="demo-dot"></span><span class="demo-dot"></span></div>
-    <div class="tbar" style="justify-content:center;margin-top:var(--s4)">
-      <button class="btn" id="demo-go" type="button"></button>
-    </div>
-  </div>
+<div class="tipmark" id="tipmark" aria-hidden="true">
+  <div class="tip-ring"></div>
+  <div class="tip-bub"></div>
 </div>
 <div class="scrim" id="scrim"></div>
 
@@ -1484,10 +1468,9 @@ body.bangla .bn-inline{display:inline}
   </div>
 
   <div class="sheet-row">
-    <button class="mini" id="m-bangla" aria-pressed="false" lang="bn">বাংলা</button>
-    <button class="mini" id="m-demo">How it works</button>
+    <button class="mini" id="m-demo">Show the tips again</button>
     <button class="mini" id="m-projector">Present on TV</button>
-    <button class="mini" id="m-teacher" aria-pressed="false">Teacher mode</button>
+    <button class="mini" id="m-teacher" aria-pressed="false">All 5 steps</button>
     <button class="mini" id="m-lesson">Show the lesson</button>
     <button class="mini" id="m-shuffle">New scenario</button>
     <button class="mini" id="m-close">Close</button>
@@ -1541,8 +1524,9 @@ function setBangla(on){
   bnOn = on;
   document.body.classList.toggle('bangla', bnOn);
   try { localStorage.setItem('ei-bn', bnOn ? '1' : '0'); } catch (e) {}
-  const b = $('#m-bangla');
-  if (b){ b.classList.toggle('on', bnOn); b.setAttribute('aria-pressed', String(bnOn)); }
+  const en = $('#lang-en'), bnb = $('#lang-bn');
+  if (en)  en.setAttribute('aria-pressed', String(!bnOn));
+  if (bnb) bnb.setAttribute('aria-pressed', String(bnOn));
 }
 
 /* the strings the page says in its own voice. T.x is English, T.x_bn Bangla. */
@@ -1662,7 +1646,9 @@ function setTeacher(on){
   try { localStorage.setItem('ei-teacher', on ? '1' : '0'); } catch (e) {}
   const b = $('#m-teacher');
   if (b){ b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); }
-  step = 0; lesson = false;
+  /* the full lesson opens with the concept panels, so a class meets the idea
+     before it meets the method; listening-only never shows them */
+  step = 0; lstep = 0; lesson = on;
   if (sc) render();          /* at boot there is no scenario yet */
 }
 
@@ -1968,9 +1954,10 @@ function syncNext(){
 
   if (lesson){
     btnNext.disabled = false;
-    setBtnLabel(btnNext, lstep === LESSON.length - 1 ? 'nx_start' : 'nx_next');
+    const k = lstep === LESSON.length - 1 ? 'nx_start' : 'nx_next';
+    setBtnLabel(btnNext, k);
     btnNextStage.disabled = false;
-    btnNextStage.textContent = btnNext.textContent;
+    btnNextStage.textContent = t(k);
     return;
   }
 
@@ -1981,11 +1968,14 @@ function syncNext(){
   const why   = { Ask: 'why_question', Listen: 'why_listen',
                   Check: 'why_check',  Map: 'why_rings' }[here];
 
+  const key = nxt ? { Ask:'nx_ask', Listen:'nx_listen',
+                      Check:'nx_check', Map:'nx_rings' }[nxt[0]] : 'nx_new';
   btnNext.disabled = !ready;
-  setBtnLabel(btnNext, nxt ? { Ask:'nx_ask', Listen:'nx_listen',
-                               Check:'nx_check', Map:'nx_rings' }[nxt[0]] : 'nx_new');
+  setBtnLabel(btnNext, key);
   btnNextStage.disabled = btnNext.disabled;
-  btnNextStage.textContent = btnNext.textContent;
+  /* the projector's own Next is one line of English — copying textContent from
+     the bilingual button ran the two languages together */
+  btnNextStage.textContent = t(key);
 
   /* a closed door that will not say why is its own small cruelty, and a toast
      has gone by the time a beginner has finished reading it */
@@ -2320,6 +2310,7 @@ function catchShow(c, i, n){
     set.appendChild(b);
   });
   grid.appendChild(set);
+  if (!coachSeen.chips) setTimeout(() => coachAt('chips', set.firstChild), 260);
 }
 
 /* how much of the current sentence is left, 1 down to 0 */
@@ -2899,13 +2890,60 @@ function openPredict(box){
 }
 
 /* ---- 2. ASK ---- */
+/* What makes a question good, said before anybody has to pick one. The four
+   ticks and the four traps are the same ones on the printed field sheet, so a
+   class working from paper and a class working from the screen are being
+   taught the same thing in the same words. */
+const GOODQ = [
+  ['Cannot be answered yes or no',  'হ্যাঁ বা না দিয়ে উত্তর দেওয়া যায় না'],
+  ['No judgment hidden inside it',  'ভেতরে কোনো বিচার লুকানো নেই'],
+  ['About one person, one event',   'একজন মানুষ, একটি ঘটনা নিয়ে'],
+  ['Asks for a story, not a theory','তত্ত্ব নয়, ঘটনার বর্ণনা চায়']
+];
+const BADQ = [
+  ['closed',       'Yes / no',            'হ্যাঁ / না প্রশ্ন'],
+  ['leading',      'Answer built in',     'উত্তর আগেই বলে দেওয়া'],
+  ['generalizing', 'A whole culture',     'গোটা সংস্কৃতি নিয়ে'],
+  ['abstract',     'Asks for a theory',   'তত্ত্ব চাওয়া']
+];
+
+function questionRules(){
+  const box = el('div', 'qrules');
+  [['ok', 'A good question', 'ভালো প্রশ্ন', 'tick', GOODQ.map(x => [x[0], x[1]])],
+   ['no', 'These close it',  'যেগুলো কথা থামিয়ে দেয়', 'cross',
+    BADQ.map(x => [x[1], x[2]])]].forEach(col => {
+    const c = el('div', 'qrule ' + col[0]);
+    const h = el('div', 'qrule-h');
+    h.appendChild(icon(col[3], 'qrule-ico'));
+    const ht = el('div');
+    ht.appendChild(el('span', 'qrule-t', col[1]));
+    ht.appendChild(bn(col[2]));
+    h.appendChild(ht);
+    c.appendChild(h);
+    const ul = el('ul', 'qrule-list');
+    col[4].forEach(row => {
+      const li = el('li');
+      li.appendChild(el('span', null, row[0]));
+      li.appendChild(bn(row[1]));
+      ul.appendChild(li);
+    });
+    c.appendChild(ul);
+    box.appendChild(c);
+  });
+  return box;
+}
+
 function stepAsk(){
   const p = el('div', 'panel p-ask');
   p.appendChild(taskStrip(stepNo(), 'ask', 'task_ask'));
   const c = el('div', 'card raised');
   c.appendChild(el('p', 'kicker', stepKicker()));
   c.appendChild(el('h2', 'h-title', 'Which question gets you inside?'));
-  c.appendChild(el('p', 'hint', 'Three of these four close the conversation. One opens it.'));
+  c.appendChild(bn('কোন প্রশ্নটি ভেতরে ঢোকার পথ খুলে দেয়?'));
+  c.appendChild(questionRules());
+  const pick = el('p', 'hint', 'Three of these four close the conversation. One opens it.');
+  c.appendChild(pick);
+  c.appendChild(bn('এই চারটির মধ্যে তিনটি কথা থামিয়ে দেয়। একটি কথা শুরু করায়।'));
 
   const list = el('div', 'opts');
   const opts = state.qOrder || (state.qOrder = shuffle(sc.questions.map((_, i) => i)));
@@ -3108,9 +3146,15 @@ function stepListen(){
     tBtn.classList.toggle('on', state.tOpen);
     tBtn.textContent = state.tOpen ? t('fulltext_on') : t('fulltext');
     const th = document.getElementById('tap-hint'); if (th) th.hidden = !state.tOpen;
-    if (!state.tOpen) hideGloss(); };
+    if (!state.tOpen) hideGloss();
+    if (state.tOpen) setTimeout(() =>
+      coachAt('word', document.querySelector('.transcript:not([hidden]) button.w')), 220); };
   bar.appendChild(tBtn);
   c.appendChild(bar);
+
+  /* the ring goes round the first real play button once the screen is up */
+  if (!state.passes.some(x => x > 0))
+    setTimeout(() => coachAt('play', document.querySelector('.spk[data-i="0"] .play')), 480);
 
   const tip = el('div', 'tap-hint');
   tip.appendChild(el('span', null, t('taphint')));
@@ -3956,73 +4000,69 @@ function printMenu(){
   return rows;
 }
 
-/* ------------------------------------------------------------- the demo
-   A phone-based share-work lesson is a new genre before it is a new
-   language, so the first thing the app teaches is the medium. No sentences
-   at all: a thumb taps play, words appear, a word is tapped and its meaning
-   opens. Three beats, about twenty seconds, skippable, and in the menu
-   afterwards for anyone who wants it again. */
-const demoEl = $('#demo');
-let demoT = [], demoStep = 0;
+/* ---------------------------------------------------------- coach marks
+   The first attempt at this was an animated mock-up of the interface in a
+   little grey phone — abstract shapes standing in for the real controls. In
+   front of a class it taught nothing: a beginner has to work out what the
+   drawing represents before they can learn what it does, which is two
+   puzzles instead of none.
 
-function demoStop(){
-  demoT.forEach(clearTimeout); demoT = [];
-  demoEl.classList.remove('show');
+   So the tips point at the real thing, at the moment it matters: a ring
+   around the actual play button the first time the listening screen opens, a
+   line of text beside it in both languages, and it is gone as soon as the
+   button is pressed. Each one is shown once and remembered. */
+const COACH = {
+  play:  ['Tap here to listen.',                    'শুনতে এখানে চাপ দিন।'],
+  chips: ['Tap the words you hear.',                'যে শব্দগুলো শুনতে পাচ্ছেন, সেগুলোতে চাপ দিন।'],
+  word:  ['Tap an underlined word to see what it means.',
+          'দাগ দেওয়া শব্দে চাপ দিলে তার অর্থ দেখা যাবে।']
+};
+let coachSeen = {};
+try { coachSeen = JSON.parse(localStorage.getItem('ei-coach') || '{}'); } catch (e) {}
+
+const coachEl = $('#tipmark');
+let coachT = null;
+
+function coachHide(){
+  clearTimeout(coachT);
+  coachEl.classList.remove('show');
 }
-function demoAt(ms, fn){ demoT.push(setTimeout(fn, ms)); }
+function coachDone(key){
+  coachSeen[key] = 1;
+  try { localStorage.setItem('ei-coach', JSON.stringify(coachSeen)); } catch (e) {}
+}
+/* put a ring round a real control and a line of text beside it */
+function coachAt(key, target){
+  if (!target || coachSeen[key] || !COACH[key]) return;
+  const r = target.getBoundingClientRect();
+  if (!r.width) return;
+  coachDone(key);
 
-function showDemo(){
-  demoStop();
-  const pb = demoEl.querySelector('.demo-play');
-  if (!pb.querySelector('.ico')) pb.appendChild(icon('playmark'));
-  demoEl.classList.add('show');
-  const q = sel => demoEl.querySelector(sel);
-  const all = sel => [...demoEl.querySelectorAll(sel)];
-  const thumb = q('.demo-thumb');
-  const reset = () => {
-    all('.demo-row').forEach(r => r.classList.remove('on'));
-    all('.demo-chip').forEach(c => c.classList.remove('got'));
-    q('.demo-pop').classList.remove('on');
-    q('.demo-word').classList.remove('hit');
-    q('.demo-play').classList.remove('hit');
-    thumb.classList.remove('on');
-    all('.demo-dot').forEach((d, i) => d.classList.toggle('on', i === demoStep));
-  };
-  const moveTo = n => {
-    const r = n.getBoundingClientRect(), s = demoEl.querySelector('.demo-stage').getBoundingClientRect();
-    thumb.style.left = (r.left - s.left + r.width / 2 - 15) + 'px';
-    thumb.style.top  = (r.top  - s.top  + r.height / 2 - 15) + 'px';
-  };
+  const ring = coachEl.querySelector('.tip-ring');
+  const pad = 8;
+  ring.style.left   = (r.left - pad) + 'px';
+  ring.style.top    = (r.top  - pad) + 'px';
+  ring.style.width  = (r.width  + pad * 2) + 'px';
+  ring.style.height = (r.height + pad * 2) + 'px';
 
-  /* beat 1 — tap play */
-  const beat1 = () => {
-    demoStep = 0; reset();
-    q('.demo-row.r-play').classList.add('on');
-    demoAt(450, () => { thumb.classList.add('on'); moveTo(q('.demo-play')); });
-    demoAt(1250, () => q('.demo-play').classList.add('hit'));
-    demoAt(1900, beat2);
-  };
-  /* beat 2 — words appear, tap the one you heard */
-  const beat2 = () => {
-    demoStep = 1;
-    all('.demo-dot').forEach((d, i) => d.classList.toggle('on', i === 1));
-    q('.demo-row.r-chips').classList.add('on');
-    const chip = all('.demo-chip')[1];
-    demoAt(500, () => moveTo(chip));
-    demoAt(1150, () => chip.classList.add('got'));
-    demoAt(1900, beat3);
-  };
-  /* beat 3 — tap a word, meaning opens */
-  const beat3 = () => {
-    demoStep = 2;
-    all('.demo-dot').forEach((d, i) => d.classList.toggle('on', i === 2));
-    q('.demo-row.r-text').classList.add('on');
-    const w = q('.demo-word');
-    demoAt(500, () => moveTo(w));
-    demoAt(1150, () => { w.classList.add('hit'); q('.demo-pop').classList.add('on'); });
-    demoAt(2600, beat1);          /* loops until it is dismissed */
-  };
-  requestAnimationFrame(beat1);
+  const bub = coachEl.querySelector('.tip-bub');
+  bub.innerHTML = '';
+  bub.appendChild(el('p', 'tip-en', COACH[key][0]));
+  bub.appendChild(bn(COACH[key][1]));
+  /* sit under the control unless that would fall off the screen */
+  const below = r.bottom + 12;
+  const room = window.innerHeight - below;
+  bub.style.left = Math.max(12, Math.min(r.left, window.innerWidth - 260)) + 'px';
+  if (room > 120){ bub.style.top = below + 'px'; bub.style.bottom = 'auto'; }
+  else { bub.style.top = 'auto'; bub.style.bottom = (window.innerHeight - r.top + 12) + 'px'; }
+
+  coachEl.classList.add('show');
+  clearTimeout(coachT);
+  coachT = setTimeout(coachHide, 7000);
+}
+function coachReset(){
+  coachSeen = {};
+  try { localStorage.removeItem('ei-coach'); } catch (e) {}
 }
 
 /* -------------------------------------------------------------- navigation */
@@ -4052,9 +4092,14 @@ $('#btn-menu').onclick = openSheet;
 scrim.onclick = closeSheet;
 $('#m-close').onclick = closeSheet;
 $('#m-shuffle').onclick = () => { closeSheet(); newScenario(); };
-$('#m-bangla').onclick  = () => { setBangla(!bnOn); render(); };
-$('#m-demo').onclick    = () => { closeSheet(); showDemo(); };
+$('#m-demo').onclick    = () => { closeSheet(); coachReset(); render(); };
 $('#m-teacher').onclick = () => { closeSheet(); setTeacher(!teacher); };
+$('#lang-en').onclick   = () => { setBangla(false); render(); };
+$('#lang-bn').onclick   = () => { setBangla(true);  render(); };
+document.addEventListener('click', e => {
+  if (coachEl.classList.contains('show') && !e.target.closest('.tipmark')) coachHide();
+}, true);
+stage.addEventListener('scroll', coachHide, { passive: true });
 $('#m-lesson').onclick = () => { closeSheet(); lesson = true; lstep = 0; stopAudio(); render(); };
 $('#m-projector').onclick = () => { closeSheet(); toggleStage(); };
 
@@ -4121,10 +4166,7 @@ window.addEventListener('pagehide', stopAudio);
 /* ------------------------------------------------------------------- boot */
 setBangla(bnOn);
 setTeacher(teacher);
-$('#demo-go').onclick = () => { demoStop(); try { localStorage.setItem('ei-demo-seen', '1'); } catch (e) {} };
-setBtnLabel($('#demo-go'), 'nx_got_it');
 newScenario(true);
-try { if (localStorage.getItem('ei-demo-seen') !== '1') showDemo(); } catch (e) { showDemo(); }
 measureHeader();
 const logo = document.querySelector('.logo-chip img');
 if (logo && !logo.complete) logo.addEventListener('load', measureHeader);
