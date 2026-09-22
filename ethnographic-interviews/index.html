@@ -384,15 +384,16 @@ h1,h2,h3{margin:0}
 
 .spk-ctl{display:flex;align-items:center;gap:var(--s2);padding:0 var(--s4) var(--s3)}
 .play{
-  flex:1 1 auto;min-height:calc(52px*var(--ui));border-radius:var(--radius-sm);
+  flex:0 0 auto;min-height:calc(44px*var(--ui));padding:0 calc(16px*var(--ui));
+  border-radius:var(--radius-pill);
   cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);
-  display:inline-flex;align-items:center;justify-content:center;gap:var(--s2);
-  font-size:calc(1rem*var(--ui));font-weight:700;transition:background .18s ease;
+  display:inline-flex;align-items:center;justify-content:center;gap:calc(7px*var(--ui));
+  font-size:calc(.88rem*var(--ui));font-weight:700;transition:background .18s ease;
 }
-.play-ico{width:calc(1.15rem*var(--ui));height:calc(1.15rem*var(--ui))}
+.play-ico{width:calc(1rem*var(--ui));height:calc(1rem*var(--ui))}
 .play:hover{background:var(--forest-deep)}
 .replay{
-  width:calc(52px*var(--ui));height:calc(52px*var(--ui));border-radius:var(--radius-sm);flex:0 0 auto;
+  width:calc(44px*var(--ui));height:calc(44px*var(--ui));border-radius:var(--radius-pill);flex:0 0 auto;
   cursor:pointer;border:1px solid var(--rule);background:var(--surface-card);color:var(--tx);
   display:grid;place-items:center;font-size:calc(1.1rem*var(--ui));
   transition:border-color .18s ease,background .18s ease;
@@ -420,12 +421,12 @@ h1,h2,h3{margin:0}
   font-size:calc(.94rem*var(--ui));color:var(--tx-muted)}
 .spk.is-playing .bubble-idle{display:none}
 .caption{
-  font-size:calc(1.04rem*var(--ui));line-height:1.6;color:var(--tx);
+  font-size:calc(1.14rem*var(--ui));line-height:1.8;color:var(--tx);
   -webkit-user-select:text;user-select:text;
 }
 .caption ~ .bubble-idle,.transcript:not([hidden]) ~ .bubble-idle{display:none}
 .transcript{
-  font-size:calc(.98rem*var(--ui));line-height:1.65;color:var(--tx);
+  font-size:calc(1.14rem*var(--ui));line-height:1.85;color:var(--tx);
   -webkit-user-select:text;user-select:text;
 }
 .tbar{display:flex;gap:var(--s2);flex-wrap:wrap;margin-top:var(--s4);align-items:center}
@@ -475,10 +476,11 @@ h1,h2,h3{margin:0}
   min-height:calc(76px*var(--ui));align-content:flex-start;
 }
 .cw{
-  padding:calc(9px*var(--ui)) calc(14px*var(--ui));
-  border:1px solid var(--rule);border-radius:var(--radius-pill);
+  padding:calc(13px*var(--ui)) calc(19px*var(--ui));
+  min-height:calc(52px*var(--ui));display:inline-flex;align-items:center;
+  border:1.5px solid var(--rule-strong);border-radius:var(--radius-pill);
   background:var(--surface-card);color:var(--tx);
-  font-size:calc(.92rem*var(--ui));font-weight:600;cursor:pointer;
+  font-size:calc(1.16rem*var(--ui));font-weight:700;cursor:pointer;
   animation:fade .2s ease both;
   transition:background .15s ease,border-color .15s ease,color .15s ease;
 }
@@ -508,7 +510,9 @@ h1,h2,h3{margin:0}
   /* text-decoration, not a border: it hugs the letters and survives a line
      break, where a border-bottom sits at the foot of the whole line box */
   text-decoration:underline dotted var(--gold);
-  text-decoration-thickness:2px;text-underline-offset:3px;
+  text-decoration-thickness:2.5px;text-underline-offset:4px;
+  /* a tap target you can actually hit with a thumb */
+  padding:calc(2px*var(--ui)) calc(1px*var(--ui));
 }
 .transcript .w[data-k="idiom"],
 .transcript .w[data-k="phrasal"],
@@ -1632,7 +1636,12 @@ const T = {
   q_opens:       ['Opens',              'কথা খোলে'],
   q_closes:      ['Closes',             'কথা থামায়'],
   q_good:        ['Yes — this one asks for a story.',
-                  'হ্যাঁ — এটি একটি ঘটনার বর্ণনা চায়।']
+                  'হ্যাঁ — এটি একটি ঘটনার বর্ণনা চায়।'],
+  q_thats_it:    ['That is the one.',   'এটিই সেই প্রশ্ন।'],
+  q_why_closes:  ['Why it closes the interview: ',
+                  'কেন এটি কথা থামিয়ে দেয়: '],
+  q_better:      ['Better approach: ',  'বরং এভাবে: '],
+  q_fixit:       ['Fix it: ',           'ঠিক করুন: ']
 };
 const t  = k => T[k][0];
 const tb = k => T[k][1];
@@ -3200,15 +3209,18 @@ function markWrongQuestion(btn, q, showReason){
     const tb = el('span', 'opt-tag tag-bad');
     tb.appendChild(icon('cross'));
     tb.appendChild(document.createTextNode(f.label + ' · ' + f.short));
+    if (f.label_bn) tb.appendChild(bn(f.label_bn + ' · ' + f.short_bn));
     btn.appendChild(tb);
   }
   if (showReason && !btn.querySelector('.opt-reason')){
     const reason = el('span', 'opt-reason');
     const why = el('span');
-    why.appendChild(el('b', null, 'Why it closes the interview: '));
+    why.appendChild(el('b', null, t('q_why_closes')));
     why.appendChild(document.createTextNode(f.coach));
     reason.appendChild(why);
-    reason.appendChild(el('span', 'fix', 'Better approach: ' + f.fix));
+    if (f.coach_bn) reason.appendChild(bn(tb('q_why_closes') + f.coach_bn));
+    reason.appendChild(el('span', 'fix', t('q_better') + f.fix));
+    if (f.fix_bn) reason.appendChild(bn(tb('q_better') + f.fix_bn));
     btn.appendChild(reason);
   }
   return f;
@@ -3225,10 +3237,12 @@ function chooseQ(btn, q, list){
     const tg = el('span', 'opt-tag tag-good');
     tg.appendChild(icon('tick'));
     tg.appendChild(document.createTextNode(QTYPES[q.type] || 'Good question'));
+    if (typeof QTYPES_BN !== 'undefined' && QTYPES_BN[q.type]) tg.appendChild(bn(QTYPES_BN[q.type]));
     btn.appendChild(tg);
     const co = el('div', 'coach good');
-    co.appendChild(el('b', null, 'That is the one.'));
+    co.appendChild(el('b', null, t('q_thats_it')));
     co.appendChild(document.createTextNode(q.why));
+    if (q.why_bn) co.appendChild(bn(tb('q_thats_it') + ' ' + q.why_bn));
     list.appendChild(co);
     list.querySelectorAll('.opt').forEach(o => {
       if (o !== btn) markWrongQuestion(o, o.questionData, true);
@@ -3242,7 +3256,9 @@ function chooseQ(btn, q, list){
     const co = el('div', 'coach');
     co.appendChild(el('b', null, f.label));
     co.appendChild(document.createTextNode(f.coach));
-    co.appendChild(el('span', 'fix', 'Fix it: ' + f.fix));
+    if (f.coach_bn) co.appendChild(bn(f.label_bn + ' ' + f.coach_bn));
+    co.appendChild(el('span', 'fix', t('q_fixit') + f.fix));
+    if (f.fix_bn) co.appendChild(bn(tb('q_fixit') + f.fix_bn));
     list.appendChild(co);
   }
 }
@@ -4249,7 +4265,7 @@ const COACH = {
           'দাগ দেওয়া শব্দে চাপ দিলে তার অর্থ দেখা যাবে।']
 };
 let coachSeen = {};
-try { coachSeen = JSON.parse(localStorage.getItem('ei-coach') || '{}'); } catch (e) {}
+try { coachSeen = JSON.parse(localStorage.getItem('ei-coach2') || '{}'); } catch (e) {}
 
 const coachEl = $('#tipmark');
 let coachT = null;
@@ -4260,7 +4276,7 @@ function coachHide(){
 }
 function coachDone(key){
   coachSeen[key] = 1;
-  try { localStorage.setItem('ei-coach', JSON.stringify(coachSeen)); } catch (e) {}
+  try { localStorage.setItem('ei-coach2', JSON.stringify(coachSeen)); } catch (e) {}
 }
 /* Put a ring round a real control and a line of text beside it.
 
@@ -4317,7 +4333,7 @@ function coachShow(key, target){
 }
 function coachReset(){
   coachSeen = {};
-  try { localStorage.removeItem('ei-coach'); } catch (e) {}
+  try { localStorage.removeItem('ei-coach2'); } catch (e) {}
 }
 
 /* -------------------------------------------------------------- navigation */

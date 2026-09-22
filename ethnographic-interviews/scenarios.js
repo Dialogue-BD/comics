@@ -33,21 +33,36 @@ const FLAWS = {
     coach: 'This one can be answered with a single word — “Yes.” “Sometimes.” Then the interview ' +
            'is over and you have learned nothing. An ethnographic question has to be impossible ' +
            'to answer in one word.',
-    fix: 'Trade “Do you…?” for “Tell me about a time you…” or “Walk me through…”.'
+    fix: 'Trade “Do you…?” for “Tell me about a time you…” or “Walk me through…”.',
+    label_bn: 'বন্ধ প্রশ্ন',
+    short_bn: 'হ্যাঁ / না',
+    coach_bn:
+      'এই প্রশ্নের উত্তর এক কথাতেই দেওয়া যায় — “হ্যাঁ।” “মাঝে মাঝে।” তারপর কথা শেষ, আর আপনি কিছুই জানলেন না। নৃতাত্ত্বিক প্রশ্ন এমন হতে হবে যার উত্তর এক কথায় দেওয়া অসম্ভব।',
+    fix_bn: '“আপনি কি…?” বাদ দিয়ে বলুন “এমন একটা সময়ের কথা বলুন যখন…” বা “শুরু থেকে শেষ পর্যন্ত বলুন…”।'
   },
   leading: {
     label: 'Leading question',
     short: 'Answer built in',
     coach: 'You have hidden your own conclusion inside the question, so the person can only agree ' +
            'with you or fight you. Either way you get your own opinion back, not theirs.',
-    fix: 'Take the judgment out. Ask what happened, not whether it was bad.'
+    fix: 'Take the judgment out. Ask what happened, not whether it was bad.',
+    label_bn: 'ইঙ্গিতবাহী প্রশ্ন',
+    short_bn: 'উত্তর আগেই বলা',
+    coach_bn:
+      'আপনি নিজের সিদ্ধান্তটাই প্রশ্নের ভেতরে লুকিয়ে রেখেছেন, তাই তিনি হয় আপনার সঙ্গে একমত হবেন, নয় তর্ক করবেন। দুই ক্ষেত্রেই আপনি নিজের মতটাই ফেরত পাবেন, তাঁর মত নয়।',
+    fix_bn: 'বিচারটা সরিয়ে ফেলুন। জিজ্ঞেস করুন কী ঘটেছিল, সেটা খারাপ ছিল কি না তা নয়।'
   },
   generalizing: {
     label: 'Generalizing question',
     short: 'Asks about a whole culture',
     coach: 'Nobody is an expert on 340 million people. Ask a person about a whole culture and they ' +
            'will guess, joke, or repeat a stereotype back to you.',
-    fix: 'Shrink it to one person and one event: “the last time YOU…”.'
+    fix: 'Shrink it to one person and one event: “the last time YOU…”.',
+    label_bn: 'ঢালাও প্রশ্ন',
+    short_bn: 'গোটা সংস্কৃতি নিয়ে',
+    coach_bn:
+      '৩৪ কোটি মানুষ সম্পর্কে কেউই বিশেষজ্ঞ নন। কাউকে গোটা একটা সংস্কৃতি নিয়ে জিজ্ঞেস করলে তিনি আন্দাজ করবেন, ঠাট্টা করবেন, নয়তো চেনা একটা ধারণা আপনাকে ফিরিয়ে দেবেন।',
+    fix_bn: 'ছোট করে আনুন — একজন মানুষ, একটি ঘটনা: “শেষবার আপনি নিজে যখন…”।'
   },
   abstract: {
     label: 'Abstract question',
@@ -55,11 +70,17 @@ const FLAWS = {
     coach: 'This asks for a philosophy, not an experience. People are unreliable narrators of their ' +
            'own values — but they are excellent narrators of what they actually did last Tuesday. ' +
            'Start with the behaviour; the value comes out on its own.',
-    fix: 'Ask for a story first. You can ask “why” after they have told it.'
+    fix: 'Ask for a story first. You can ask “why” after they have told it.',
+    label_bn: 'বিমূর্ত প্রশ্ন',
+    short_bn: 'তত্ত্ব চায়',
+    coach_bn:
+      'এটি অভিজ্ঞতা নয়, দর্শন চায়। নিজের মূল্যবোধ নিয়ে মানুষ খুব নির্ভরযোগ্য বক্তা নন — কিন্তু গত মঙ্গলবার তাঁরা আসলে কী করেছিলেন, তা তাঁরা চমৎকার বলতে পারেন। আচরণ দিয়ে শুরু করুন; মূল্যবোধ নিজেই বেরিয়ে আসবে।',
+    fix_bn: 'আগে ঘটনাটা শুনতে চান। “কেন” জিজ্ঞেস করবেন তিনি বলা শেষ করার পরে।'
   }
 };
 
 /* Spradley's descriptive question types — the label on a GOOD question. */
+const QTYPES_BN = {'grand': 'বড় পরিসরের প্রশ্ন', 'mini': 'ছোট পরিসরের প্রশ্ন', 'example': 'উদাহরণ চাওয়া প্রশ্ন', 'experience': 'অভিজ্ঞতার প্রশ্ন', 'native': 'তাঁদের নিজস্ব শব্দের প্রশ্ন'};
 const QTYPES = {
   grand:      'Grand-tour question',
   mini:       'Mini-tour question',
@@ -73,7 +94,12 @@ const CHIP_FAULTS = {
   restatement: {
     label: 'That is the behaviour again',
     coach: 'You have taken the visible action and given it a new name. Nothing has been explained. ' +
-           'Ask: what would a person have to CARE about for this to feel normal?'
+           'Ask: what would a person have to CARE about for this to feel normal?',
+    label_bn: 'বিমূর্ত প্রশ্ন',
+    short_bn: 'তত্ত্ব চায়',
+    coach_bn:
+      'এটি অভিজ্ঞতা নয়, দর্শন চায়। নিজের মূল্যবোধ নিয়ে মানুষ খুব নির্ভরযোগ্য বক্তা নন — কিন্তু গত মঙ্গলবার তাঁরা আসলে কী করেছিলেন, তা তাঁরা চমৎকার বলতে পারেন। আচরণ দিয়ে শুরু করুন; মূল্যবোধ নিজেই বেরিয়ে আসবে।',
+    fix_bn: 'আগে ঘটনাটা শুনতে চান। “কেন” জিজ্ঞেস করবেন তিনি বলা শেষ করার পরে।'
   },
   judgment: {
     label: 'That is a judgment, not a value',
@@ -132,7 +158,9 @@ const SCENARIOS = [
     { q: 'Tell me about the last dinner you hosted. Walk me through it, from the invitation to the last guest.',
       ok: true, type: 'grand',
       why: 'It cannot be answered in one word, it asks for one real evening rather than a theory, and ' +
-           'the end time will come up inside the story — where you can ask about it without making him defend it.' },
+           'the end time will come up inside the story — where you can ask about it without making him defend it.' ,
+      why_bn:
+        'এর উত্তর এক কথায় দেওয়া যায় না, এটি তত্ত্ব নয় — একটি সত্যিকারের সন্ধ্যার কথা জানতে চায়, আর শেষ হওয়ার সময়টা গল্পের ভেতরেই চলে আসবে, যেখানে তাঁকে আত্মপক্ষ সমর্থন করতে না দিয়েই আপনি জিজ্ঞেস করতে পারবেন।' },
     { q: 'Do Americans always end their parties at a fixed time? Is that something everybody here does?', flaw: 'closed' },
     { q: 'Why do Americans care more about their schedule than about their guests? Does the clock always win?', flaw: 'leading' },
     { q: 'What does time mean in Western civilisation? How would you describe the Western idea of a day?', flaw: 'abstract' }
@@ -245,7 +273,9 @@ const SCENARIOS = [
     { q: 'Think about the last time you ate out with friends. Take me through what happened with the bill.',
       ok: true, type: 'experience',
       why: 'One meal, one memory, one person. He will describe the small moves — the phones, the app, ' +
-           'who spoke first — and those details are the data.' },
+           'who spoke first — and those details are the data.' ,
+      why_bn:
+        'একটি খাওয়া, একটি স্মৃতি, একজন মানুষ। তিনি ছোট ছোট নড়াচড়াগুলো বলবেন — ফোন, অ্যাপ, কে আগে কথা বলল — আর ওই খুঁটিনাটিই আপনার তথ্য।' },
     { q: 'Why do Americans keep money so separate from friends? Does nobody here want to owe anyone?', flaw: 'leading' },
     { q: 'Do you usually split the bill when you eat out with friends? Does everyone pay their own share?', flaw: 'closed' },
     { q: 'Why do Western people never pay for each other? What is the money rule across your culture?', flaw: 'generalizing' }
@@ -360,7 +390,9 @@ const SCENARIOS = [
     { q: 'Tell me about a time you disagreed with your manager in front of others. What happened afterwards?',
       ok: true, type: 'experience',
       why: 'It asks for one remembered event with an ending. The “what happened afterwards” is the best ' +
-           'part — consequences are where a culture shows its real rules.' },
+           'part — consequences are where a culture shows its real rules.' ,
+      why_bn:
+        'এটি এমন একটি মনে থাকা ঘটনা চায় যার একটি শেষ আছে। “তারপর কী হলো” অংশটাই সবচেয়ে দামি — পরিণতির ভেতরেই একটি সংস্কৃতির আসল নিয়ম ধরা পড়ে।' },
     { q: 'Do you disagree with your boss often? Is that something people here are comfortable doing?', flaw: 'closed' },
     { q: 'Why do Americans have no respect for seniority? Is age just worth nothing in an office here?', flaw: 'leading' },
     { q: 'Is honesty more important than harmony? Which one should a good organisation choose in the end?', flaw: 'abstract' }
@@ -475,7 +507,9 @@ const SCENARIOS = [
     { q: 'Think of a manager you really respected. Tell me about something you actually saw them do.',
       ok: true, type: 'example',
       why: 'Asking for a concrete example beats asking for a definition. “Something you saw them do” ' +
-           'forces a scene, and the scene tells you what respect is made of here.' },
+           'forces a scene, and the scene tells you what respect is made of here.' ,
+      why_bn:
+        'সংজ্ঞা চাওয়ার চেয়ে একটি বাস্তব উদাহরণ চাওয়া ভালো। “আপনি তাঁকে যা করতে দেখেছেন” — এটি একটি দৃশ্য টেনে আনে, আর ওই দৃশ্যই বলে দেয় এখানে সম্মান জিনিসটা কী দিয়ে তৈরি।' },
     { q: 'Do you respect your boss? Would you say the managers here are people you look up to?', flaw: 'closed' },
     { q: 'Why do Western bosses pretend to be equal to their staff? Is the whole thing a performance?', flaw: 'leading' },
     { q: 'Is hierarchy good or bad for an organisation? What is the right distance between ranks?', flaw: 'abstract' }
@@ -588,7 +622,9 @@ const SCENARIOS = [
     { q: 'When you ask a class ‘what do you think’, what are you hoping will happen in the next minute?',
       ok: true, type: 'grand',
       why: 'It asks the insider to describe his own intention in his own words — and you have not told ' +
-           'him what the right answer is. Ask it, then stay quiet and let him fill the silence.' },
+           'him what the right answer is. Ask it, then stay quiet and let him fill the silence.' ,
+      why_bn:
+        'এটি ভেতরের মানুষটিকে তাঁর নিজের উদ্দেশ্য নিজের ভাষায় বলতে বলে — আর সঠিক উত্তরটা কী, তা আপনি তাঁকে বলে দেননি। প্রশ্নটি করে চুপ করে থাকুন, নীরবতাটা তাঁকেই ভরতে দিন।' },
     { q: 'Do you like it when students give their opinions? Is that a normal thing to want in a class?', flaw: 'closed' },
     { q: 'Why do Americans think their opinion matters so much? What does your culture teach about that?', flaw: 'generalizing' },
     { q: 'Is student-centred teaching better than teacher-centred teaching? Which one is truly correct?', flaw: 'abstract' }
@@ -703,7 +739,9 @@ const SCENARIOS = [
     { q: 'Tell me about the last small problem you had with a neighbour. Walk me through what you did first.',
       ok: true, type: 'mini',
       why: 'A mini-tour question: one narrow, ordinary event rather than a life philosophy. “What did you ' +
-           'do FIRST” is the whole prize — the first move is where the cultural rule lives.' },
+           'do FIRST” is the whole prize — the first move is where the cultural rule lives.' ,
+      why_bn:
+        'ছোট পরিসরের প্রশ্ন: জীবনদর্শন নয়, একটি সরু সাধারণ ঘটনা। “আপনি প্রথমে কী করলেন” — এটাই আসল প্রাপ্তি, কারণ প্রথম পদক্ষেপের ভেতরেই সাংস্কৃতিক নিয়মটি বাস করে।' },
     { q: 'Do you talk to your neighbours much? Is knocking on someone’s door a normal thing to do here?', flaw: 'closed' },
     { q: 'Why are Americans so aggressive about tiny things? Do a few leaves really need a conversation?', flaw: 'leading' },
     { q: 'Should people avoid conflict whenever possible? What is the best way to handle disagreement?', flaw: 'abstract' }
