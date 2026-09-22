@@ -385,7 +385,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             self.send_response(302)
             self.send_header(
                 "Location",
-                "/attached_assets/ChatGPT_Image_Sep_22,_2026,_11_41_10_AM_1790055737761.png",
+                "/favicon.png",
             )
             self.end_headers()
             return
