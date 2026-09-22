@@ -381,6 +381,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     # ── GET classroom APIs ────────────────────────────────────────────────────
     def do_GET(self):
         parsed = urlparse(self.path)
+        if parsed.path == "/favicon.svg":
+            self.send_response(302)
+            self.send_header(
+                "Location",
+                "/attached_assets/ChatGPT_Image_Sep_22,_2026,_11_41_10_AM_1790055737761.png",
+            )
+            self.end_headers()
+            return
         if parsed.path in {"/busy-pictures/", "/busy-pictures/index.html"}:
             self._serve_branded_busy_pictures()
             return
