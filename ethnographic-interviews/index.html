@@ -9,7 +9,7 @@
 <title>Culture Circles — Listening for Cultural Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ===========================================================================
    Dialogue Brand Book · Edition 1 · September 2026
@@ -1041,6 +1041,114 @@ h1,h2,h3{margin:0}
 .cmp2-count{font-size:calc(.8rem*var(--ui));color:var(--tx-muted)}
 .cmp2.is-done .cmp2-count{color:var(--l-value);font-weight:700}
 
+/* ---------- the task strip ----------
+   Every screen opens the same way, in the same place: one pictogram, one
+   short imperative, and the Bangla underneath it when the toggle is on. A
+   student who cannot read the card yet can still tell what to do. */
+.task{
+  display:flex;align-items:flex-start;gap:var(--s3);
+  padding:var(--s3) var(--s4);margin-bottom:var(--s4);
+  border-left:5px solid var(--accent);border-radius:var(--radius-sm);
+  background:var(--accent-quiet);
+}
+.task-ico{width:calc(1.45rem*var(--ui));height:calc(1.45rem*var(--ui));
+  flex:0 0 auto;margin-top:calc(1px*var(--ui));color:var(--accent)}
+.task-t{min-width:0}
+.task-en{margin:0;font-weight:700;font-size:calc(1.02rem*var(--ui));line-height:1.35;color:var(--tx)}
+.task-n{
+  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+  width:calc(1.5rem*var(--ui));height:calc(1.5rem*var(--ui));border-radius:var(--radius-pill);
+  background:var(--accent);color:var(--on-accent);
+  font-size:calc(.78rem*var(--ui));font-weight:700;
+}
+
+/* Bangla, on the /ai-fluency/ pattern: additive, never a replacement, so the
+   English stays on the page and keeps being read. */
+.bn{
+  display:none;margin-top:calc(5px*var(--ui));color:var(--tx-muted);
+  font-family:'Noto Sans Bengali','Hind Siliguri','Bangla Sangam MN',sans-serif;
+  font-size:.94em;line-height:1.75;font-weight:400;
+}
+body.bangla .bn{display:block}
+.bn-inline{display:none}
+body.bangla .bn-inline{display:inline}
+.task .bn{color:var(--tx)}
+/* on a dark ground the muted ink disappears, so those inherit instead */
+.band .bn,.btn .bn,.ps-band .bn{color:inherit;opacity:.84}
+.btn .bn{font-size:.8em;margin-top:calc(2px*var(--ui))}
+.claim .bn,.opt .bn{color:var(--tx-muted)}
+
+/* why the button will not let you through — said in place, not in a toast
+   that has gone by the time anybody reads it */
+.why{
+  display:flex;align-items:flex-start;gap:var(--s2);margin-top:var(--s4);
+  padding:var(--s3) var(--s4);border-radius:var(--radius-sm);
+  border:1px dashed var(--rule-strong);background:var(--panel);
+}
+.why-ico{width:calc(1.1rem*var(--ui));height:calc(1.1rem*var(--ui));flex:0 0 auto;
+  margin-top:calc(2px*var(--ui));color:var(--kicker)}
+.why p{margin:0;font-size:calc(.92rem*var(--ui));line-height:1.45;color:var(--tx-muted)}
+.why[hidden]{display:none}
+
+/* ---------- the wordless demo ----------
+   No sentences at all. A thumb taps play, words appear, a word is tapped and
+   its meaning opens. The medium is new to the room before the language is. */
+.demo{
+  position:fixed;inset:0;z-index:80;display:none;
+  align-items:center;justify-content:center;padding:var(--s5);
+  background:rgba(12,32,18,.62);backdrop-filter:blur(3px);
+}
+.demo.show{display:flex}
+.demo-card{
+  width:min(100%,360px);background:var(--surface-card);border-radius:var(--radius-md);
+  box-shadow:var(--shadow-dialog);padding:var(--s5);text-align:center;
+}
+.demo-stage{
+  position:relative;height:238px;margin:0 auto;width:min(100%,250px);
+  border:2px solid var(--rule-strong);border-radius:22px;background:var(--panel);
+  overflow:hidden;
+}
+.demo-row{
+  position:absolute;left:14px;right:14px;display:flex;align-items:center;gap:9px;
+  opacity:0;transition:opacity .35s ease;
+}
+.demo-row.on{opacity:1}
+.demo-play{
+  width:46px;height:46px;border-radius:999px;background:var(--accent);color:var(--on-accent);
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+}
+.demo-play .ico{width:20px;height:20px}
+.demo-play.hit{animation:demoHit .5s ease}
+@keyframes demoHit{0%,100%{transform:scale(1)}45%{transform:scale(.86)}}
+.demo-face{width:46px;height:46px;border-radius:10px;background:var(--rule);flex:0 0 auto}
+.demo-chip{
+  padding:5px 11px;border-radius:var(--radius-pill);border:1px solid var(--rule-strong);
+  background:var(--surface-card);font-size:.8rem;color:var(--tx);
+}
+.demo-chip.got{background:var(--gold-soft);border-color:var(--gold);font-weight:700}
+.demo-word{border-bottom:2px dotted var(--kicker);padding:0 2px}
+.demo-word.hit{background:var(--gold-soft)}
+.demo-pop{
+  position:absolute;left:18px;right:18px;padding:8px 10px;border-radius:var(--radius-sm);
+  background:var(--forest-print);color:#fff;font-size:.78rem;text-align:left;
+  opacity:0;transform:translateY(5px);transition:opacity .3s ease,transform .3s ease;
+}
+.demo-pop.on{opacity:1;transform:none}
+.demo-thumb{
+  position:absolute;width:30px;height:30px;border-radius:999px;
+  border:2px solid var(--forest-print);background:rgba(255,255,255,.55);
+  pointer-events:none;opacity:0;transition:all .55s cubic-bezier(.4,0,.2,1);
+}
+.demo-thumb.on{opacity:1}
+.demo-dots{display:flex;gap:6px;justify-content:center;margin-top:var(--s4)}
+.demo-dot{width:7px;height:7px;border-radius:999px;background:var(--rule-strong);opacity:.4}
+.demo-dot.on{opacity:1;background:var(--accent)}
+.demo-row{transition:opacity .35s ease}
+@media (prefers-reduced-motion:reduce){
+  .demo-thumb,.demo-row,.demo-pop{transition:none}
+  .demo-play.hit{animation:none}
+}
+
 /* ---------- action bar ---------- */
 .actionbar{
   position:absolute;z-index:30;left:0;right:0;bottom:0;display:flex;align-items:center;gap:var(--s3);
@@ -1049,7 +1157,9 @@ h1,h2,h3{margin:0}
   background:var(--surface);border-top:1px solid var(--rule);
 }
 .btn{
-  flex:1 1 auto;min-height:calc(52px*var(--ui));padding:0 var(--s5);border-radius:var(--radius-sm);
+  flex:1 1 auto;min-height:calc(52px*var(--ui));padding:calc(6px*var(--ui)) var(--s5);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-radius:var(--radius-sm);
   cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);
   font-size:calc(1.02rem*var(--ui));font-weight:700;transition:background .18s ease;
 }
@@ -1313,6 +1423,30 @@ h1,h2,h3{margin:0}
 
 <div class="toast" id="toast"></div>
 <div class="glossbox" id="glossbox" role="dialog" aria-live="polite"></div>
+<div class="demo" id="demo" role="dialog" aria-label="How this works">
+  <div class="demo-card">
+    <div class="demo-stage">
+      <div class="demo-row r-play" style="top:22px">
+        <span class="demo-face"></span>
+        <span class="demo-play"></span>
+      </div>
+      <div class="demo-row r-chips" style="top:96px;flex-wrap:wrap">
+        <span class="demo-chip">house</span>
+        <span class="demo-chip">dinner</span>
+        <span class="demo-chip">eight</span>
+      </div>
+      <div class="demo-row r-text" style="top:152px;display:block">
+        <span style="font-size:.82rem;line-height:1.5">I had to <span class="demo-word">push</span> everyone out by eight.</span>
+      </div>
+      <div class="demo-pop" style="top:196px">push out&nbsp;·&nbsp;ask people to leave</div>
+      <span class="demo-thumb"></span>
+    </div>
+    <div class="demo-dots"><span class="demo-dot on"></span><span class="demo-dot"></span><span class="demo-dot"></span></div>
+    <div class="tbar" style="justify-content:center;margin-top:var(--s4)">
+      <button class="btn" id="demo-go" type="button"></button>
+    </div>
+  </div>
+</div>
 <div class="scrim" id="scrim"></div>
 
 <div class="sheet" id="sheet">
@@ -1350,7 +1484,10 @@ h1,h2,h3{margin:0}
   </div>
 
   <div class="sheet-row">
+    <button class="mini" id="m-bangla" aria-pressed="false" lang="bn">বাংলা</button>
+    <button class="mini" id="m-demo">How it works</button>
     <button class="mini" id="m-projector">Present on TV</button>
+    <button class="mini" id="m-teacher" aria-pressed="false">Teacher mode</button>
     <button class="mini" id="m-lesson">Show the lesson</button>
     <button class="mini" id="m-shuffle">New scenario</button>
     <button class="mini" id="m-close">Close</button>
@@ -1374,6 +1511,113 @@ const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) 
 const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) {
   const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
+/* ---------------------------------------------------------------- Bangla
+   The pattern is /ai-fluency/'s: a body class, and .bn blocks that appear
+   UNDER the English rather than instead of it. Additive, so the English stays
+   on the page and keeps being read.
+
+   What is never translated: the interview audio, the transcripts, and the
+   word-catch chips. That is the language being acquired — a Bangla transcript
+   would delete the exercise. Everything that is scaffolding around it —
+   instructions, buttons, the reason a button is closed, the names of the four
+   rings, the scenario prose and the claims — has Bangla available. */
+let bnOn = false;
+try { bnOn = localStorage.getItem('ei-bn') === '1'; } catch (e) {}
+
+/* A Bangla line, for hanging under an English one. */
+function bn(text){
+  const d = el('div', 'bn', text);
+  d.lang = 'bn';
+  return d;
+}
+/* English node with its Bangla underneath, as one block. */
+function bi(tag, cls, en, bnText){
+  const box = el('div', cls ? cls + '-bi' : null);
+  box.appendChild(el(tag, cls, en));
+  if (bnText) box.appendChild(bn(bnText));
+  return box;
+}
+function setBangla(on){
+  bnOn = on;
+  document.body.classList.toggle('bangla', bnOn);
+  try { localStorage.setItem('ei-bn', bnOn ? '1' : '0'); } catch (e) {}
+  const b = $('#m-bangla');
+  if (b){ b.classList.toggle('on', bnOn); b.setAttribute('aria-pressed', String(bnOn)); }
+}
+
+/* the strings the page says in its own voice. T.x is English, T.x_bn Bangla. */
+const T = {
+  task_watch:    ['Look at the pictures. Read the story.',
+                  'ছবিগুলো দেখুন। তারপর গল্পটি পড়ুন।'],
+  task_ask:      ['Choose the question that opens the conversation.',
+                  'যে প্রশ্নটি কথা বলতে উৎসাহ দেয়, সেটি বেছে নিন।'],
+  task_listen:   ['Listen to three people. Tap ▶ on each one.',
+                  'তিনজন মানুষের কথা শুনুন। প্রত্যেকের ▶ বোতামে চাপ দিন।'],
+  task_check:    ['Choose the 3 things that ALL THREE people said.',
+                  'তিনজনই বলেছেন — এমন ৩টি কথা বেছে নিন।'],
+  task_map:      ['Put each sentence in its ring.',
+                  'প্রতিটি বাক্য তার নিজের বৃত্তে বসান।'],
+
+  why_listen:    ['Listen to all three people first.',
+                  'আগে তিনজনেরই কথা শুনুন।'],
+  why_question:  ['Choose a question first.',
+                  'আগে একটি প্রশ্ন বেছে নিন।'],
+  why_check:     ['Choose exactly 3, then check them.',
+                  'ঠিক ৩টি বেছে নিন, তারপর মিলিয়ে দেখুন।'],
+  why_rings:     ['Put all three sentences in their rings.',
+                  'তিনটি বাক্যই তাদের বৃত্তে বসান।'],
+
+  nx_ask:        ['Ask a question',      'প্রশ্ন করুন'],
+  nx_listen:     ['Listen to three people', 'তিনজনের কথা শুনুন'],
+  nx_check:      ['Check what they share', 'মিল কোথায় দেখুন'],
+  nx_rings:      ['Fill the rings',       'বৃত্তগুলো পূরণ করুন'],
+  nx_new:        ['Next scenario',        'পরের পরিস্থিতি'],
+
+  playall:       ['Play all three',   'তিনজনের কথাই বাজান'],
+  fulltext:      ['Show full text',   'সম্পূর্ণ লেখা দেখুন'],
+  fulltext_on:   ['Full text on',     'সম্পূর্ণ লেখা চালু'],
+  checkmine:     ['Check my three',   'আমার ৩টি মিলিয়ে দেখুন'],
+  taphint:       ['Tap any underlined word for its meaning.',
+                  'দাগ দেওয়া যেকোনো শব্দে চাপ দিলে তার অর্থ দেখা যাবে।'],
+  guess_q:       ['Now picture the same scene at home. Would it go the same way?',
+                  'এবার ভাবুন, একই ঘটনা আপনার দেশে ঘটলে কী হতো? একইরকম হতো কি?'],
+  guess_yes:     ['Yes, much the same', 'হ্যাঁ, প্রায় একইরকম'],
+  guess_no:      ['No, quite different', 'না, বেশ আলাদা'],
+  listen_first:  ['Listen first — the words come after.',
+                  'আগে শুনুন — লেখাটি পরে আসবে।'],
+  listen_again:  ['Play it again and the words follow along.',
+                  'আবার বাজান, লেখাটি সঙ্গে সঙ্গে চলবে।'],
+  nx_next:       ['Next',               'পরেরটি'],
+  nx_start:      ['Start the activity', 'শুরু করুন'],
+  nx_got_it:     ['Got it',             'বুঝেছি']
+};
+const t  = k => T[k][0];
+const tb = k => T[k][1];
+
+/* the task strip: the same shape, in the same place, on every screen */
+function taskStrip(n, ico, key){
+  const s = el('div', 'task');
+  s.appendChild(el('span', 'task-n', String(n)));
+  s.appendChild(icon(ico, 'task-ico'));
+  const box = el('div', 'task-t');
+  box.appendChild(el('p', 'task-en', t(key)));
+  box.appendChild(bn(tb(key)));
+  s.appendChild(box);
+  return s;
+}
+
+/* why the Continue button is closed, said where the eye already is */
+function whyBox(key){
+  const w = el('div', 'why');
+  w.id = 'why';
+  w.appendChild(icon('ask', 'why-ico'));
+  const box = el('div');
+  box.appendChild(el('p', null, t(key)));
+  box.appendChild(bn(tb(key)));
+  w.appendChild(box);
+  return w;
+}
+
 const stage = $('#stage'), wrap = $('#wrap'), railEl = $('#rail');
 
 /* The bar's height changes with the theme (--ui) and with the logo, so measure
@@ -1387,7 +1631,40 @@ window.addEventListener('load', measureHeader);
 const btnNext = $('#btn-next'), btnNextStage = $('#btn-next-stage'),
       btnBack = $('#btn-back'), toastEl = $('#toast');
 
-const STEPS = [['Watch', 'eye'], ['Ask', 'ask'], ['Listen', 'ear'], ['Map', 'target']];
+/* ------------------------------------------------------------------ modes
+   The activity was trying to teach listening, vocabulary, research-question
+   design, inference and the anthropology of values all at once, in a second
+   language, on a first encounter with the medium. It does not survive that.
+
+   So the student app is listening: watch a scene, hear three people, find
+   what they share. The question step and the ring mapping — which are method
+   and theory rather than language — sit behind a teacher toggle, for the
+   projector and for a class that has the idea already. Nothing is lost; it
+   moves to where it can be said comprehensibly. */
+let teacher = false;
+try { teacher = localStorage.getItem('ei-teacher') === '1'; } catch (e) {}
+
+const STEP_SET = {
+  student: [['Watch',  'eye',    'task_watch',  () => stepObserve()],
+            ['Listen', 'ear',    'task_listen', () => stepListen()],
+            ['Check',  'tick',   'task_check',  () => stepCheck()]],
+  full:    [['Watch',  'eye',    'task_watch',  () => stepObserve()],
+            ['Ask',    'ask',    'task_ask',    () => stepAsk()],
+            ['Listen', 'ear',    'task_listen', () => stepListen()],
+            ['Check',  'tick',   'task_check',  () => stepCheck()],
+            ['Map',    'target', 'task_map',    () => stepMap()]]
+};
+const steps = () => STEP_SET[teacher ? 'full' : 'student'];
+const stepName = () => (steps()[step] || steps()[0])[0];
+
+function setTeacher(on){
+  teacher = on;
+  try { localStorage.setItem('ei-teacher', on ? '1' : '0'); } catch (e) {}
+  const b = $('#m-teacher');
+  if (b){ b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); }
+  step = 0; lesson = false;
+  if (sc) render();          /* at boot there is no scenario yet */
+}
 
 let deck = [], sc = null, step = 0, state = null;
 
@@ -1645,7 +1922,7 @@ function toast(title, msg){
 function renderRail(){
   railEl.innerHTML = '';
   requestAnimationFrame(measureHeader);
-  const names = lesson ? LESSON.map(l => [l.rail, l.ico]) : STEPS;
+  const names = lesson ? LESSON.map(l => [l.rail, l.ico]) : steps().map(x => [x[0], x[1]]);
   const at = lesson ? lstep : step;
   names.forEach((s, i) => {
     const n = el('div', 'rail-step' + (i === at ? ' is-active' : i < at ? ' is-done' : ''));
@@ -1680,30 +1957,48 @@ function render(){
   wrap.innerHTML = '';
   stage.scrollTop = 0;
   if (lesson){ stepLesson(); btnBack.disabled = (lstep === 0); syncNext(); return; }
-  [stepObserve, stepAsk, stepListen, stepMap][step]();
+  steps()[step][3]();
   btnBack.disabled = (step === 0);
   syncNext();
 }
 
 function syncNext(){
+  const old = document.getElementById('why');
+  if (old) old.remove();
+
   if (lesson){
     btnNext.disabled = false;
-    btnNext.textContent = (lstep === LESSON.length - 1) ? 'Start the activity' : 'Next';
-    btnNextStage.disabled = btnNext.disabled;
+    setBtnLabel(btnNext, lstep === LESSON.length - 1 ? 'nx_start' : 'nx_next');
+    btnNextStage.disabled = false;
     btnNextStage.textContent = btnNext.textContent;
     return;
   }
-  /* step 3 asks for one full listen to each speaker before it will let go;
-     opening the transcripts is the way out for anyone who cannot get there */
+
+  const S = steps(), here = S[step][0], nxt = S[step + 1];
   const listened = state.passes.every(n => n >= 1);
-  const ready = [true, state.qDone, state.claimsDone && listened, state.mapDone][step];
+  const ready = { Watch: true, Ask: state.qDone, Listen: listened,
+                  Check: state.claimsDone, Map: state.mapDone }[here];
+  const why   = { Ask: 'why_question', Listen: 'why_listen',
+                  Check: 'why_check',  Map: 'why_rings' }[here];
+
   btnNext.disabled = !ready;
-  /* a disabled button that will not say why is its own small cruelty */
-  btnNext.textContent = ['Ask a question', 'Listen to three people',
-                         listened ? 'Fill the rings' : 'Listen to all three first',
-                         'Next scenario'][step];
+  setBtnLabel(btnNext, nxt ? { Ask:'nx_ask', Listen:'nx_listen',
+                               Check:'nx_check', Map:'nx_rings' }[nxt[0]] : 'nx_new');
   btnNextStage.disabled = btnNext.disabled;
   btnNextStage.textContent = btnNext.textContent;
+
+  /* a closed door that will not say why is its own small cruelty, and a toast
+     has gone by the time a beginner has finished reading it */
+  if (!ready && why){
+    const panel = wrap.querySelector('.panel');
+    if (panel) panel.appendChild(whyBox(why));
+  }
+}
+
+function setBtnLabel(b, key){
+  b.innerHTML = '';
+  b.appendChild(el('span', null, t(key)));
+  b.appendChild(bn(tb(key)));
 }
 
 /* ---------------------------------------------------------- word timings
@@ -2345,8 +2640,7 @@ function ringFigure(live){
    exercise in cross-cultural judgment if they arrive believing one of the two
    cultures is simply wrong. */
 
-let lesson = true, lstep = 0;
-try { if (localStorage.getItem('ei-lesson-seen') === '1') lesson = false; } catch (e) {}
+let lesson = false, lstep = 0;   /* the four theory panels are teacher mode only */
 
 const LESSON = [
   { rail: 'Culture', ico: 'target', kicker: 'What Is Culture?',
@@ -2499,34 +2793,43 @@ function stepLesson(){
 
 function endLesson(){
   lesson = false; lstep = 0;
-  try { localStorage.setItem('ei-lesson-seen', '1'); } catch (e) {}
   newScenario();
 }
 
 /* ---- 1. WATCH ----
-   The scene arrives as three pictures before it arrives as a paragraph. A
-   student who has read the strip already knows what happened; the paragraph
-   is then reading practice rather than the only way in. And the contrast is
-   held back behind a guess, because a prediction you have committed to is
-   worth more than a sentence you were handed. */
+   The scene arrives as three pictures before it arrives as a paragraph, and
+   the contrast is held behind a guess, because a prediction you have
+   committed to is worth more than a sentence you were handed.
+
+   The four rings used to be on this screen. They are theory, and theory at
+   minute zero — before anything concrete has happened — is what made this
+   unteachable. They live in teacher mode now. */
 function stepObserve(){
   const p = el('div', 'panel p-observe');
+  p.appendChild(taskStrip(stepNo(), 'eye', 'task_watch'));
+
   const c = el('div', 'card raised lead');
-  c.appendChild(el('p', 'kicker', 'Step 1 · Watch'));
+  c.appendChild(el('p', 'kicker', stepKicker()));
   c.appendChild(el('h1', 'h-title', sc.title));
+  if (sc.title_bn) c.appendChild(bn(sc.title_bn));
   c.appendChild(settingChips());
   c.appendChild(sceneStrip());
   c.appendChild(el('p', 'body', sc.observation));
+  if (sc.observation_bn) c.appendChild(bn(sc.observation_bn));
   c.appendChild(predictBand());
   p.appendChild(c);
 
-  const o = el('div', 'card raised');
-  o.appendChild(el('p', 'kicker', 'Four Rings'));
-  o.appendChild(ringFigure(false));
-  p.appendChild(o);
-
+  if (teacher){
+    const o = el('div', 'card raised');
+    o.appendChild(el('p', 'kicker', 'Four Rings'));
+    o.appendChild(ringFigure(false));
+    p.appendChild(o);
+  }
   wrap.appendChild(p);
 }
+
+const stepNo = () => step + 1;
+const stepKicker = () => 'Step ' + (step + 1) + ' · ' + stepName();
 
 /* where, who with, and which of the six themes — three glances, no sentence */
 function settingChips(){
@@ -2566,12 +2869,15 @@ function predictBand(){
   const box = el('div', 'predict');
   const q = el('p', 'predict-q');
   q.appendChild(el('span', 'predict-g', '🤔'));
-  q.appendChild(document.createTextNode('Now picture the same scene at home. Would it go the same way?'));
+  q.appendChild(document.createTextNode(t('guess_q')));
   box.appendChild(q);
+  box.appendChild(bn(tb('guess_q')));
 
   const row = el('div', 'predict-btns');
-  ['Yes, much the same', 'No, quite different'].forEach(label => {
-    const b = el('button', 'predict-b', label);
+  ['guess_yes', 'guess_no'].forEach(key => {
+    const b = el('button', 'predict-b');
+    b.appendChild(el('span', null, t(key)));
+    b.appendChild(bn(tb(key)));
     b.type = 'button';
     b.onclick = () => openPredict(box);
     row.appendChild(b);
@@ -2585,15 +2891,19 @@ function openPredict(box){
   box.querySelectorAll('.predict-b').forEach(b => { b.disabled = true; });
   const band = el('div', 'band band-ill');
   band.appendChild(icon('glasses', 'band-ico'));
-  band.appendChild(el('p', 'band-t', sc.noticing));
+  const bt = el('div', 'band-t');
+  bt.appendChild(el('p', null, sc.noticing));
+  if (sc.noticing_bn) bt.appendChild(bn(sc.noticing_bn));
+  band.appendChild(bt);
   box.appendChild(band);
 }
 
 /* ---- 2. ASK ---- */
 function stepAsk(){
   const p = el('div', 'panel p-ask');
+  p.appendChild(taskStrip(stepNo(), 'ask', 'task_ask'));
   const c = el('div', 'card raised');
-  c.appendChild(el('p', 'kicker', 'Step 2 · Ask'));
+  c.appendChild(el('p', 'kicker', stepKicker()));
   c.appendChild(el('h2', 'h-title', 'Which question gets you inside?'));
   c.appendChild(el('p', 'hint', 'Three of these four close the conversation. One opens it.'));
 
@@ -2751,9 +3061,10 @@ function informantCard(s, i){
     catchBox.appendChild(catchResults(i));
   }
   bub.appendChild(catchBox);
-  bub.appendChild(el('p', 'bubble-idle', heard
-    ? 'Play it again and the words follow along.'
-    : 'Listen first — the words come after.'));
+  const idle = el('p', 'bubble-idle');
+  idle.appendChild(el('span', null, t(heard ? 'listen_again' : 'listen_first')));
+  idle.appendChild(bn(tb(heard ? 'listen_again' : 'listen_first')));
+  bub.appendChild(idle);
   row.appendChild(bub);
 
   if (heard) row.classList.add('is-heard');
@@ -2762,72 +3073,89 @@ function informantCard(s, i){
 
 function stepListen(){
   const p = el('div', 'panel p-listen');
+  p.appendChild(taskStrip(stepNo(), 'ear', 'task_listen'));
 
   const c = el('div', 'card raised');
-  c.appendChild(el('p', 'kicker', 'Step 3 · Listen'));
+  c.appendChild(el('p', 'kicker', stepKicker()));
   c.appendChild(el('h2', 'h-title', 'Three people answer'));
+  c.appendChild(bn('তিনজন মানুষ উত্তর দিচ্ছেন'));
 
   const pin = el('div', 'qpin');
-  pin.appendChild(el('span', 'cap', 'You asked'));
+  pin.appendChild(el('span', 'cap', teacher ? 'You asked' : 'They were asked'));
   const qq = el('q'); qq.textContent = state.chosenQ || sc.questions.find(x => x.ok).q;
   pin.appendChild(qq);
   c.appendChild(pin);
 
   const sp = el('div', 'speakers');
-  sc.speakers.forEach((s, i) => sp.appendChild(informantCard(s, i)));
+  sc.speakers.forEach((s2, i) => sp.appendChild(informantCard(s2, i)));
   c.appendChild(sp);
 
   const bar = el('div', 'tbar');
-  const allBtn = el('button', 'mini', 'Play all three');
+  const allBtn = el('button', 'mini', t('playall'));
   allBtn.type = 'button';
   allBtn.onclick = playAll;
   bar.appendChild(allBtn);
-  const anyHeard = state.passes.some(n => n > 0);
+  const anyHeard = state.passes.some(x => x > 0);
   const tBtn = el('button', 'mini' + (state.tOpen ? ' on' : ''),
-                  state.tOpen ? 'Full text on' : 'Show full text');
+                  state.tOpen ? t('fulltext_on') : t('fulltext'));
   tBtn.type = 'button';
   tBtn.id = 'btn-transcripts';
   tBtn.disabled = !anyHeard;
   tBtn.title = anyHeard ? '' : 'Listen to somebody first';
   tBtn.onclick = () => { state.tOpen = !state.tOpen;
-    document.querySelectorAll('.transcript').forEach(t => t.hidden = !state.tOpen);
-    if (state.tOpen) document.querySelectorAll('.caption').forEach(n => n.remove());
+    document.querySelectorAll('.transcript').forEach(x => x.hidden = !state.tOpen);
+    if (state.tOpen) document.querySelectorAll('.caption').forEach(x => x.remove());
     tBtn.classList.toggle('on', state.tOpen);
-    tBtn.textContent = state.tOpen ? 'Full text on' : 'Show full text';
+    tBtn.textContent = state.tOpen ? t('fulltext_on') : t('fulltext');
     const th = document.getElementById('tap-hint'); if (th) th.hidden = !state.tOpen;
     if (!state.tOpen) hideGloss(); };
   bar.appendChild(tBtn);
   c.appendChild(bar);
 
   const tip = el('div', 'tap-hint');
-  tip.appendChild(document.createTextNode('Tap any '));
-  tip.appendChild(el('b', null, 'underlined'));
-  tip.appendChild(document.createTextNode(' word for its meaning.'));
+  tip.appendChild(el('span', null, t('taphint')));
+  tip.appendChild(bn(tb('taphint')));
   tip.hidden = !state.tOpen;
   tip.id = 'tap-hint';
   c.appendChild(tip);
   p.appendChild(c);
+  wrap.appendChild(p);
+}
 
-  const t = el('div', 'card raised');
-  t.appendChild(el('p', 'kicker', 'Triangulate'));
-  t.appendChild(el('h2', 'h-title', 'What did all three say?'));
-  t.appendChild(vennMark());
-  /* the three answers, side by side, so the comparison is on the page */
+/* ---- 4. CHECK ----
+   This was the bottom half of the listening screen, which meant that screen
+   asked a student to meet a dozen new affordances at once. One screen, one
+   task: hear them, then find the overlap. */
+function stepCheck(){
+  const p = el('div', 'panel p-check');
+  p.appendChild(taskStrip(stepNo(), 'tick', 'task_check'));
+
+  const t2 = el('div', 'card raised');
+  t2.appendChild(el('p', 'kicker', stepKicker()));
+  t2.appendChild(el('h2', 'h-title', 'What did all three say?'));
+  t2.appendChild(bn('তিনজনই কী বলেছেন?'));
+  t2.appendChild(vennMark());
+
   const board = gistBoard();
   board.id = 'gist-board';
-  t.appendChild(board);
-  t.appendChild(el('p', 'hint',
+  t2.appendChild(board);
+  t2.appendChild(el('p', 'hint',
     'Three of these six came up in every answer. The other three are true about one person only.'));
+  t2.appendChild(bn('এই ছয়টির মধ্যে তিনটি প্রত্যেকের উত্তরেই এসেছে। বাকি তিনটি কেবল একজনের ক্ষেত্রে সত্য।'));
 
   const cl = el('div', 'claims');
   const order = state.cOrder || (state.cOrder = shuffle(sc.claims.map((_, i) => i)));
+  let chk;
   order.forEach(i => {
     const cm = sc.claims[i];
     const b = el('button', 'claim' + (state.picked.has(i) ? ' sel' : ''));
     b.type = 'button'; b.dataset.i = i;
     const box = el('span', 'box', state.picked.has(i) ? '✓' : '');
     b.appendChild(box);
-    b.appendChild(el('span', null, cm.text));
+    const txt = el('span');
+    txt.appendChild(el('span', null, cm.text));
+    if (cm.text_bn) txt.appendChild(bn(cm.text_bn));
+    b.appendChild(txt);
     b.onclick = () => {
       if (state.claimsDone) return;
       if (state.picked.has(i)) state.picked.delete(i); else state.picked.add(i);
@@ -2837,17 +3165,17 @@ function stepListen(){
     };
     cl.appendChild(b);
   });
-  t.appendChild(cl);
+  t2.appendChild(cl);
 
   const bar2 = el('div', 'tbar');
-  const chk = el('button', 'mini on', 'Check my three');
+  chk = el('button', 'mini on', t('checkmine'));
   chk.type = 'button'; chk.id = 'btn-check'; chk.disabled = state.picked.size !== 3;
-  chk.onclick = () => checkClaims(cl, chk, t);
+  chk.onclick = () => checkClaims(cl, chk, t2);
   bar2.appendChild(chk);
-  t.appendChild(bar2);
+  t2.appendChild(bar2);
 
   if (state.claimsDone) { markClaims(cl); chk.remove(); }
-  p.appendChild(t);
+  p.appendChild(t2);
   wrap.appendChild(p);
 }
 
@@ -3020,8 +3348,9 @@ function checkClaims(cl, chk, card){
 /* ---- 4. FILL THE RINGS ---- */
 function stepMap(){
   const p = el('div', 'panel p-map');
+  p.appendChild(taskStrip(stepNo(), 'target', 'task_map'));
   const c = el('div', 'card raised');
-  c.appendChild(el('p', 'kicker', 'Step 4 · Fill the Rings'));
+  c.appendChild(el('p', 'kicker', stepKicker()));
   c.appendChild(el('h2', 'h-title', 'From what they did to what they think is real'));
   /* the evidence comes with you. Naming a value is otherwise a guess dressed
      up as a conclusion, and the jump from step 3 to here was the sharpest
@@ -3627,6 +3956,75 @@ function printMenu(){
   return rows;
 }
 
+/* ------------------------------------------------------------- the demo
+   A phone-based share-work lesson is a new genre before it is a new
+   language, so the first thing the app teaches is the medium. No sentences
+   at all: a thumb taps play, words appear, a word is tapped and its meaning
+   opens. Three beats, about twenty seconds, skippable, and in the menu
+   afterwards for anyone who wants it again. */
+const demoEl = $('#demo');
+let demoT = [], demoStep = 0;
+
+function demoStop(){
+  demoT.forEach(clearTimeout); demoT = [];
+  demoEl.classList.remove('show');
+}
+function demoAt(ms, fn){ demoT.push(setTimeout(fn, ms)); }
+
+function showDemo(){
+  demoStop();
+  const pb = demoEl.querySelector('.demo-play');
+  if (!pb.querySelector('.ico')) pb.appendChild(icon('playmark'));
+  demoEl.classList.add('show');
+  const q = sel => demoEl.querySelector(sel);
+  const all = sel => [...demoEl.querySelectorAll(sel)];
+  const thumb = q('.demo-thumb');
+  const reset = () => {
+    all('.demo-row').forEach(r => r.classList.remove('on'));
+    all('.demo-chip').forEach(c => c.classList.remove('got'));
+    q('.demo-pop').classList.remove('on');
+    q('.demo-word').classList.remove('hit');
+    q('.demo-play').classList.remove('hit');
+    thumb.classList.remove('on');
+    all('.demo-dot').forEach((d, i) => d.classList.toggle('on', i === demoStep));
+  };
+  const moveTo = n => {
+    const r = n.getBoundingClientRect(), s = demoEl.querySelector('.demo-stage').getBoundingClientRect();
+    thumb.style.left = (r.left - s.left + r.width / 2 - 15) + 'px';
+    thumb.style.top  = (r.top  - s.top  + r.height / 2 - 15) + 'px';
+  };
+
+  /* beat 1 — tap play */
+  const beat1 = () => {
+    demoStep = 0; reset();
+    q('.demo-row.r-play').classList.add('on');
+    demoAt(450, () => { thumb.classList.add('on'); moveTo(q('.demo-play')); });
+    demoAt(1250, () => q('.demo-play').classList.add('hit'));
+    demoAt(1900, beat2);
+  };
+  /* beat 2 — words appear, tap the one you heard */
+  const beat2 = () => {
+    demoStep = 1;
+    all('.demo-dot').forEach((d, i) => d.classList.toggle('on', i === 1));
+    q('.demo-row.r-chips').classList.add('on');
+    const chip = all('.demo-chip')[1];
+    demoAt(500, () => moveTo(chip));
+    demoAt(1150, () => chip.classList.add('got'));
+    demoAt(1900, beat3);
+  };
+  /* beat 3 — tap a word, meaning opens */
+  const beat3 = () => {
+    demoStep = 2;
+    all('.demo-dot').forEach((d, i) => d.classList.toggle('on', i === 2));
+    q('.demo-row.r-text').classList.add('on');
+    const w = q('.demo-word');
+    demoAt(500, () => moveTo(w));
+    demoAt(1150, () => { w.classList.add('hit'); q('.demo-pop').classList.add('on'); });
+    demoAt(2600, beat1);          /* loops until it is dismissed */
+  };
+  requestAnimationFrame(beat1);
+}
+
 /* -------------------------------------------------------------- navigation */
 function advance(){
   if (btnNext.disabled) return;
@@ -3635,7 +4033,7 @@ function advance(){
     if (lstep === LESSON.length - 1){ endLesson(); return; }
     lstep++; render(); return;
   }
-  if (step === 3){ newScenario(); return; }
+  if (step === steps().length - 1){ newScenario(); return; }
   step++; render();
 }
 btnNext.onclick = advance;
@@ -3654,6 +4052,9 @@ $('#btn-menu').onclick = openSheet;
 scrim.onclick = closeSheet;
 $('#m-close').onclick = closeSheet;
 $('#m-shuffle').onclick = () => { closeSheet(); newScenario(); };
+$('#m-bangla').onclick  = () => { setBangla(!bnOn); render(); };
+$('#m-demo').onclick    = () => { closeSheet(); showDemo(); };
+$('#m-teacher').onclick = () => { closeSheet(); setTeacher(!teacher); };
 $('#m-lesson').onclick = () => { closeSheet(); lesson = true; lstep = 0; stopAudio(); render(); };
 $('#m-projector').onclick = () => { closeSheet(); toggleStage(); };
 
@@ -3718,7 +4119,12 @@ document.addEventListener('keydown', e => {
 window.addEventListener('pagehide', stopAudio);
 
 /* ------------------------------------------------------------------- boot */
-newScenario(true);      /* a scenario is ready behind the lesson, if there is one */
+setBangla(bnOn);
+setTeacher(teacher);
+$('#demo-go').onclick = () => { demoStop(); try { localStorage.setItem('ei-demo-seen', '1'); } catch (e) {} };
+setBtnLabel($('#demo-go'), 'nx_got_it');
+newScenario(true);
+try { if (localStorage.getItem('ei-demo-seen') !== '1') showDemo(); } catch (e) { showDemo(); }
 measureHeader();
 const logo = document.querySelector('.logo-chip img');
 if (logo && !logo.complete) logo.addEventListener('load', measureHeader);

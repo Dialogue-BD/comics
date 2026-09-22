@@ -104,6 +104,15 @@ const SCENARIOS = [
     'written in the invitation — and taken as a kindness.',
 
 
+  /* Bangla for the parts a student has to read. The transcripts and the
+     word-catch chips are never translated — that is the language being
+     learned; these are the scaffolding around it. */
+  title_bn: 'যে নিমন্ত্রণ আটটায় শেষ হয়',
+  observation_bn:
+    'আপনার আমেরিকান সহকর্মী আপনাকে রাতের খাবারে ডাকলেন। বার্তায় লেখা: “ছয়টায় আসবেন — আটটার মধ্যে সবাইকে বিদায় দিতে হবে, কাল আমাকে খুব সকালে উঠতে হবে।” আটটা বেজে পাঁচ মিনিটে তিনি উঠে দাঁড়ালেন, সবাইকে ধন্যবাদ দিলেন, আর অতিথিদের দরজা পর্যন্ত এগিয়ে দিলেন। সবাই হাসছে। কেউ মনে কষ্ট পায়নি।',
+  noticing_bn:
+    'রাজশাহীতে অতিথিকে আগেই বলে দেওয়া যে কখন তাকে যেতে হবে — সেটি অপমান। এখানে কথাটি নিমন্ত্রণেই লেখা ছিল, আর সবাই সেটিকে ভদ্রতা হিসেবেই নিয়েছে।',
+
   /* three tiles: the scene as a picture, before the paragraph */
   beats: [
     { ico: '📩', t: '“Come at six”' },
@@ -157,12 +166,12 @@ const SCENARIOS = [
   ],
 
   claims: [
-    { text: 'An end time lets the guest plan the rest of their own evening.', shared: true },
-    { text: 'Saying it out loud in advance is felt as honesty, not rejection.', shared: true },
-    { text: 'Each person’s evening is treated as theirs to give — and to keep.', shared: true },
-    { text: 'They have to get up at five o’clock to go running.', shared: false, who: 'Mark' },
-    { text: 'Their parents come from India and did it the opposite way.', shared: false, who: 'Priya' },
-    { text: 'Their sister hosts parties with no ending at all.', shared: false, who: 'Dana' }
+    { text: 'An end time lets the guest plan the rest of their own evening.', shared: true, text_bn: 'শেষ হওয়ার সময় জানা থাকলে অতিথি নিজের বাকি সন্ধ্যাটা গুছিয়ে নিতে পারেন।' },
+    { text: 'Saying it out loud in advance is felt as honesty, not rejection.', shared: true, text_bn: 'আগেই মুখে বলে দেওয়াকে এখানে সততা মনে করা হয়, প্রত্যাখ্যান নয়।' },
+    { text: 'Each person’s evening is treated as theirs to give — and to keep.', shared: true, text_bn: 'প্রত্যেকের সন্ধ্যা তার নিজের — সে চাইলে দেবে, না চাইলে রেখে দেবে।' },
+    { text: 'They have to get up at five o’clock to go running.', shared: false, text_bn: 'তাঁদের দৌড়াতে যাওয়ার জন্য ভোর পাঁচটায় উঠতে হয়।', who: 'Mark' },
+    { text: 'Their parents come from India and did it the opposite way.', shared: false, text_bn: 'তাঁদের বাবা-মা ভারত থেকে এসেছেন এবং ঠিক উল্টোটা করতেন।', who: 'Priya' },
+    { text: 'Their sister hosts parties with no ending at all.', shared: false, text_bn: 'তাঁদের বোনের বাড়ির দাওয়াত কখন শেষ হয় তার ঠিক নেই।', who: 'Dana' }
   ],
 
   rings: {
@@ -207,6 +216,15 @@ const SCENARIOS = [
   noticing:
     'At home, the fight to pay is half the pleasure of the meal. Here nobody even reached.',
 
+
+  /* Bangla for the parts a student has to read. The transcripts and the
+     word-catch chips are never translated — that is the language being
+     learned; these are the scaffolding around it. */
+  title_bn: 'ছয় বন্ধু, ছয়টি বিল',
+  observation_bn:
+    'ছয়জন আমেরিকান বন্ধু খাওয়া শেষ করলেন। একটি বিল এলো। প্রত্যেকে ফোন বের করে হিসাব করলেন কে কী খেয়েছেন, আর নিজের অংশটুকু দিলেন — যিনি রেস্তোরাঁটির কথা বলেছিলেন, তিনিও। কে দেবে তা নিয়ে কোনো তর্ক হলো না। বিলটি কেউ হাতে তুলেই নিলেন না।',
+  noticing_bn:
+    'আমাদের এখানে বিল দেওয়ার জন্য কাড়াকাড়িটাই খাওয়ার অর্ধেক আনন্দ। এখানে কেউ হাতই বাড়াল না।',
 
   /* three tiles: the scene as a picture, before the paragraph */
   beats: [
@@ -261,12 +279,12 @@ const SCENARIOS = [
   ],
 
   claims: [
-    { text: 'Being paid for creates a debt that has to be carried and remembered.', shared: true },
-    { text: 'Paying for someone puts you, quietly, a step above them.', shared: true },
-    { text: 'Friends should stand level with each other, and splitting keeps them level.', shared: true },
-    { text: 'They are a student with very little money.', shared: false, who: 'Trevor' },
-    { text: 'Their uncle would be insulted by a split bill.', shared: false, who: 'Alicia' },
-    { text: 'They would rather give a gift deliberately than by accident.', shared: false, who: 'Greg' }
+    { text: 'Being paid for creates a debt that has to be carried and remembered.', shared: true, text_bn: 'কেউ আপনার হয়ে দিলে একটি ঋণ তৈরি হয়, যা মনে রাখতে হয় ও বয়ে বেড়াতে হয়।' },
+    { text: 'Paying for someone puts you, quietly, a step above them.', shared: true, text_bn: 'কারও হয়ে টাকা দিলে আপনি নিঃশব্দে তার এক ধাপ উপরে উঠে যান।' },
+    { text: 'Friends should stand level with each other, and splitting keeps them level.', shared: true, text_bn: 'বন্ধুরা সমান থাকবে — আর ভাগ করে দিলে সেই সমতাটুকু থাকে।' },
+    { text: 'They are a student with very little money.', shared: false, text_bn: 'তিনি ছাত্র, হাতে টাকা খুবই কম।', who: 'Trevor' },
+    { text: 'Their uncle would be insulted by a split bill.', shared: false, text_bn: 'বিল ভাগ করলে তাঁর চাচা অপমানিত বোধ করতেন।', who: 'Alicia' },
+    { text: 'They would rather give a gift deliberately than by accident.', shared: false, text_bn: 'তিনি বরং ভেবেচিন্তে উপহার দেবেন, হঠাৎ করে নয়।', who: 'Greg' }
   ],
 
   rings: {
@@ -313,6 +331,15 @@ const SCENARIOS = [
     'Everything you know says that young man has just damaged himself, his boss, and the room. ' +
     'Apparently not one of them thinks so.',
 
+
+  /* Bangla for the parts a student has to read. The transcripts and the
+     word-catch chips are never translated — that is the language being
+     learned; these are the scaffolding around it. */
+  title_bn: 'যে জুনিয়র “না” বলেছিল',
+  observation_bn:
+    'পরিচালক তাঁর পরিকল্পনা উপস্থাপন শেষ করলেন। ছাব্বিশ বছরের এক কর্মী, যিনি দু’বছর ধরে কাজ করছেন, আট জনের সামনে বললেন: “সত্যি বলতে, আমার মনে হয় না এটা কাজ করবে — কেন, বলছি।” তিনি তিনটি কারণ দিলেন। পরিচালক শুনলেন, কিছু একটা লিখে নিলেন, আর বললেন, “ভালো বলেছ। ধন্যবাদ।” সভা চলতে থাকল। কাউকে অস্বস্তিতে দেখা গেল না।',
+  noticing_bn:
+    'আপনার জানা সব কিছু বলছে, ওই তরুণ নিজের, তার বসের আর পুরো ঘরের ক্ষতি করে ফেলেছেন। অথচ ওখানে কেউ তা মনে করছে না।',
 
   /* three tiles: the scene as a picture, before the paragraph */
   beats: [
@@ -367,12 +394,12 @@ const SCENARIOS = [
   ],
 
   claims: [
-    { text: 'The proposal and the person who made it are treated as two separate things.', shared: true },
-    { text: 'Silence is read as a risk being hidden, not as respect being shown.', shared: true },
-    { text: 'An idea is meant to be tested out loud, and whoever holds the best argument wins.', shared: true },
-    { text: 'They once worked for a boss who punished people for speaking up.', shared: false, who: 'Wes' },
-    { text: 'They sit on the manager’s side of the table and have to make the decision.', shared: false, who: 'Nadia' },
-    { text: 'They are worried about being blamed if the problem appears later.', shared: false, who: 'Caleb' }
+    { text: 'The proposal and the person who made it are treated as two separate things.', shared: true, text_bn: 'প্রস্তাব আর প্রস্তাবদাতা — এই দুটিকে আলাদা জিনিস ধরা হয়।' },
+    { text: 'Silence is read as a risk being hidden, not as respect being shown.', shared: true, text_bn: 'চুপ থাকাকে সম্মান নয়, বরং সমস্যা লুকানো হিসেবে ধরা হয়।' },
+    { text: 'An idea is meant to be tested out loud, and whoever holds the best argument wins.', shared: true, text_bn: 'মতামত প্রকাশ্যে যাচাই হওয়ার কথা, আর যার যুক্তি সবচেয়ে ভালো তারই জেতার কথা।' },
+    { text: 'They once worked for a boss who punished people for speaking up.', shared: false, text_bn: 'তিনি একসময় এমন বসের অধীনে কাজ করেছেন যিনি মুখ খুললে শাস্তি দিতেন।', who: 'Wes' },
+    { text: 'They sit on the manager’s side of the table and have to make the decision.', shared: false, text_bn: 'তিনি টেবিলের ম্যানেজারের পাশে বসেন এবং সিদ্ধান্ত তাঁকেই নিতে হয়।', who: 'Nadia' },
+    { text: 'They are worried about being blamed if the problem appears later.', shared: false, text_bn: 'পরে সমস্যা দেখা দিলে দোষ তাঁর ঘাড়ে পড়বে — এই ভয় তাঁর আছে।', who: 'Caleb' }
   ],
 
   rings: {
@@ -419,6 +446,15 @@ const SCENARIOS = [
   noticing:
     'Where is his distance? A man with that position should not be visible carrying anything.',
 
+
+  /* Bangla for the parts a student has to read. The transcripts and the
+     word-catch chips are never translated — that is the language being
+     learned; these are the scaffolding around it. */
+  title_bn: 'পরিচালক চেয়ার গোছাচ্ছেন',
+  observation_bn:
+    'অনুষ্ঠান শেষ হলো। কান্ট্রি ডিরেক্টর — ভবনের সবচেয়ে বড় পদের মানুষ — সবচেয়ে নতুন ইন্টার্নের পাশে দাঁড়িয়ে চেয়ার গোছাচ্ছেন আর বাক্স বয়ে গাড়িতে তুলছেন। ইন্টার্ন তাঁকে “স্যার” ডাকলেন। তিনি হেসে বললেন, “আমি ডেভ।” পরে যাঁরা পরিষ্কার করছিলেন, তিনি তাঁদের জন্য চা বানালেন।',
+  noticing_bn:
+    'তাঁর দূরত্বটা কোথায়? ওই পদের একজন মানুষকে তো কিছু বয়ে নিতে দেখাই যাওয়ার কথা নয়।',
 
   /* three tiles: the scene as a picture, before the paragraph */
   beats: [
@@ -473,12 +509,12 @@ const SCENARIOS = [
   ],
 
   claims: [
-    { text: 'Authority is treated as a function you perform, not a status you carry.', shared: true },
-    { text: 'Respect has to be earned by visible contribution, and it can be lost.', shared: true },
-    { text: 'Standing apart from the work is read as arrogance, not as dignity.', shared: true },
-    { text: 'They still drive the forklift with their own team.', shared: false, who: 'Roberto' },
-    { text: 'They felt uncomfortable when someone called them “sir”.', shared: false, who: 'Dave' },
-    { text: 'They come from a place where you would never use a manager’s first name.', shared: false, who: 'Kim' }
+    { text: 'Authority is treated as a function you perform, not a status you carry.', shared: true, text_bn: 'কর্তৃত্বকে একটি দায়িত্ব হিসেবে দেখা হয়, বহন করার মর্যাদা হিসেবে নয়।' },
+    { text: 'Respect has to be earned by visible contribution, and it can be lost.', shared: true, text_bn: 'সম্মান চোখে দেখা যায় এমন কাজ দিয়ে অর্জন করতে হয়, আর তা হারানোও যায়।' },
+    { text: 'Standing apart from the work is read as arrogance, not as dignity.', shared: true, text_bn: 'কাজ থেকে দূরে দাঁড়িয়ে থাকাকে মর্যাদা নয়, অহংকার হিসেবে পড়া হয়।' },
+    { text: 'They still drive the forklift with their own team.', shared: false, text_bn: 'তিনি এখনো নিজের দলের সঙ্গে ফর্কলিফট চালান।', who: 'Roberto' },
+    { text: 'They felt uncomfortable when someone called them “sir”.', shared: false, text_bn: 'কেউ তাঁকে “স্যার” ডাকলে তাঁর অস্বস্তি লাগে।', who: 'Dave' },
+    { text: 'They come from a place where you would never use a manager’s first name.', shared: false, text_bn: 'তিনি এমন জায়গা থেকে এসেছেন যেখানে ম্যানেজারকে নাম ধরে ডাকা যায় না।', who: 'Kim' }
   ],
 
   rings: {
@@ -523,6 +559,15 @@ const SCENARIOS = [
   noticing:
     'He is grading them for speaking before they have been taught the answer. What is he measuring?',
 
+
+  /* Bangla for the parts a student has to read. The transcripts and the
+     word-catch chips are never translated — that is the language being
+     learned; these are the scaffolding around it. */
+  title_bn: '“তোমার কী মনে হয়?”',
+  observation_bn:
+    'শিক্ষক পড়া শেষ করে জিজ্ঞেস করলেন, “তো — তোমাদের কী মনে হয়?” নীরবতা। তিনি অপেক্ষা করলেন। আরও দশ সেকেন্ড। তিনি ফাঁকটা নিজে ভরলেন না। তারপর বললেন, “কোনো সঠিক উত্তর নেই, আমি সত্যিই তোমাদের মতামত জানতে চাই।” সেমিস্টারের শেষে নম্বরের বিশ শতাংশ আসে ক্লাসে কথা বলা থেকে।',
+  noticing_bn:
+    'উত্তর শেখানোর আগেই তিনি কথা বলার জন্য নম্বর দিচ্ছেন। তিনি আসলে কী মাপছেন?',
 
   /* three tiles: the scene as a picture, before the paragraph */
   beats: [
@@ -577,12 +622,12 @@ const SCENARIOS = [
   ],
 
   claims: [
-    { text: 'Speaking is treated as the evidence that thinking is happening.', shared: true },
-    { text: 'Being wrong out loud is treated as useful, not as a loss of face.', shared: true },
-    { text: 'The student, not the teacher, is expected to own the knowledge.', shared: true },
-    { text: 'They were trained in a system where students copied the lecture.', shared: false, who: 'Tomás' },
-    { text: 'They were frightened during their first week of class.', shared: false, who: 'Beth' },
-    { text: 'They could simply read out their own notes instead.', shared: false, who: 'Professor Hale' }
+    { text: 'Speaking is treated as the evidence that thinking is happening.', shared: true, text_bn: 'কথা বলাকেই প্রমাণ ধরা হয় যে চিন্তা চলছে।' },
+    { text: 'Being wrong out loud is treated as useful, not as a loss of face.', shared: true, text_bn: 'প্রকাশ্যে ভুল বলাকে কাজে লাগার মতো জিনিস ধরা হয়, মান হারানো নয়।' },
+    { text: 'The student, not the teacher, is expected to own the knowledge.', shared: true, text_bn: 'জ্ঞানটা শিক্ষকের নয়, শিক্ষার্থীরই নিজের করে নেওয়ার কথা।' },
+    { text: 'They were trained in a system where students copied the lecture.', shared: false, text_bn: 'তিনি এমন ব্যবস্থায় পড়েছেন যেখানে শিক্ষার্থীরা বক্তৃতা টুকে নিত।', who: 'Tomás' },
+    { text: 'They were frightened during their first week of class.', shared: false, text_bn: 'ক্লাসের প্রথম সপ্তাহে তিনি ভয় পেয়েছিলেন।', who: 'Beth' },
+    { text: 'They could simply read out their own notes instead.', shared: false, text_bn: 'তিনি বরং নিজের নোট থেকেই পড়ে শোনাতে পারতেন।', who: 'Professor Hale' }
   ],
 
   rings: {
@@ -629,6 +674,15 @@ const SCENARIOS = [
   noticing:
     'He went straight to the man’s door. No relative, no mutual friend, no waiting. And the friendship survived.',
 
+
+  /* Bangla for the parts a student has to read. The transcripts and the
+     word-catch chips are never translated — that is the language being
+     learned; these are the scaffolding around it. */
+  title_bn: 'প্রতিবেশীর গাছ',
+  observation_bn:
+    'প্রতিবেশীর ম্যাপল গাছের পাতা বারবার এক আমেরিকান লোকের ছাদের নালা বন্ধ করে দিচ্ছে। তিনি পাশের বাড়িতে গিয়ে দরজায় টোকা দিলেন, আর হেসে বললেন: “শোনো — তোমার ম্যাপলের পাতায় আমার নালা ভরে যাচ্ছে। কিছু একটা করা যায়?” তাঁরা চার মিনিট কথা বললেন। হাত মেলালেন। এরপর কেউ আর কথাটা তোলেননি, আর পরদিন সকালে দু’জনেই হাত নেড়ে শুভেচ্ছা জানালেন।',
+  noticing_bn:
+    'তিনি সোজা লোকটির দরজায় গেলেন। কোনো আত্মীয় নয়, পরিচিত কেউ নয়, অপেক্ষাও নয়। আর বন্ধুত্বটাও টিকে গেল।',
 
   /* three tiles: the scene as a picture, before the paragraph */
   beats: [
@@ -683,12 +737,12 @@ const SCENARIOS = [
   ],
 
   claims: [
-    { text: 'Naming a problem early is believed to keep it small.', shared: true },
-    { text: 'Going directly is felt as respectful; going around a person is felt as damaging.', shared: true },
-    { text: 'The problem is handled as a thing, separate from the relationship.', shared: true },
-    { text: 'Their mother would have sent food first and waited three weeks.', shared: false, who: 'Ade' },
-    { text: 'They refuse to discuss it with the other neighbours first.', shared: false, who: 'Michelle' },
-    { text: 'They are retired and have lived on the street a long time.', shared: false, who: 'Hank' }
+    { text: 'Naming a problem early is believed to keep it small.', shared: true, text_bn: 'সমস্যা তাড়াতাড়ি বলে দিলে সেটি ছোট থাকে — এখানে এমনটাই বিশ্বাস।' },
+    { text: 'Going directly is felt as respectful; going around a person is felt as damaging.', shared: true, text_bn: 'সরাসরি বলাকে সম্মানজনক ধরা হয়; ঘুরপথে গেলে সেটিকে ক্ষতিকর মনে করা হয়।' },
+    { text: 'The problem is handled as a thing, separate from the relationship.', shared: true, text_bn: 'সমস্যাটিকে একটি আলাদা বিষয় হিসেবে সামলানো হয়, সম্পর্ক থেকে আলাদা করে।' },
+    { text: 'Their mother would have sent food first and waited three weeks.', shared: false, text_bn: 'তাঁর মা হলে আগে খাবার পাঠাতেন আর তিন সপ্তাহ অপেক্ষা করতেন।', who: 'Ade' },
+    { text: 'They refuse to discuss it with the other neighbours first.', shared: false, text_bn: 'তিনি আগে অন্য প্রতিবেশীদের সঙ্গে বিষয়টি নিয়ে কথা বলতে রাজি নন।', who: 'Michelle' },
+    { text: 'They are retired and have lived on the street a long time.', shared: false, text_bn: 'তিনি অবসরপ্রাপ্ত এবং বহুদিন ধরে এই রাস্তায় থাকেন।', who: 'Hank' }
   ],
 
   rings: {
