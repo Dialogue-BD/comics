@@ -1,0 +1,21 @@
+# (component, dB relative to the file's own speech level)
+SCENES = {
+"dinner-ends-at-eight-1": [("air",-30),("mains",-44),("babble",-41),("presence",-54)],
+"dinner-ends-at-eight-2": [("air",-32),("fluoro",-42),("door",-40),("presence",-54)],
+"dinner-ends-at-eight-3": [("fluoro",-36),("air",-33),("mains",-40),("presence",-54)],
+"splitting-the-bill-1":   [("wind",-33),("babble",-37),("rumble",-38),("clatter",-42,4)],
+"splitting-the-bill-2":   [("dish",-33),("air",-38),("presence",-54)],
+"splitting-the-bill-3":   [("babble",-32),("air",-36),("clatter",-43,3)],
+"disagreeing-in-the-meeting-1":[("air",-34),("babble",-40),("presence",-54)],
+"disagreeing-in-the-meeting-2":[("air",-34),("keys",-41),("presence",-54)],
+"disagreeing-in-the-meeting-3":[("air",-32),("radio",-42),("clatter",-40,5)],
+"the-boss-stacks-chairs-1":[("wind",-34),("rumble",-37),("presence",-54)],
+"the-boss-stacks-chairs-2":[("babble",-31),("clatter",-38,10),("air",-36)],
+"the-boss-stacks-chairs-3":[("fan",-30,9.0),("air",-35),("rumble",-39)],
+"what-do-you-think-1":    [("air",-36),("clatter",-45,6),("presence",-54)],
+"what-do-you-think-2":    [("presence",-50),("air",-43),("clatter",-48,2)],
+"what-do-you-think-3":    [("air",-34),("clatter",-41,5),("presence",-54)],
+"the-neighbours-tree-1":  [("birds",-41),("wind",-36),("rumble",-39)],
+"the-neighbours-tree-2":  [("air",-39),("presence",-52)],
+"the-neighbours-tree-3":  [("air",-35),("door",-45),("presence",-54)],
+}

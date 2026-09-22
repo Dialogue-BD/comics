@@ -1,0 +1,3292 @@
+<!doctype html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#F4F1E6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Culture Circles — Listening for Cultural Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================================
+   Dialogue Brand Book · Edition 1 · September 2026
+   Classroom register: warm Paper by day, the forest Stage on the projector.
+   The brand layer frames the activity; it never recolours the activity's own
+   game colours — here, the blue Western / red Bengali rings.
+   =========================================================================== */
+:root{
+  /* --- palette ------------------------------------------------------- */
+  --forest:#103D21;  --forest-print:#134219;  --forest-deep:#0C3319;  --stage-green:#174629;
+  --gold:#B9924F;    --gold-light:#D2B978;    --gold-soft:#F0E6CD;
+  --paper:#F4F1E6;   --card:#FFFDF7;          --mist:#F4F6F0;
+  --ink:#1D211C;     --ink-muted:#5F6A5C;
+  --moss:#6F8F62;    --moss-soft:#E3EAD9;
+  --clay:#B0563A;
+
+  /* --- game colours (not brand; the brand layer leaves these alone) --- */
+  --west:#1B4F9C;  --west-tint:rgba(27,79,156,.08);
+  --east:#B5231F;  --east-tint:rgba(181,35,31,.08);
+
+  /* --- the four layers ---------------------------------------------
+     Each one carries a colour AND a symbol AND its name, everywhere it
+     appears, so no meaning ever rests on colour alone: teal and red sit
+     within 1.03:1 of each other in luminance, which is invisible to some
+     readers. Every colour below clears 4.5:1 on the ground it sits on. */
+  --l-behavior:#8A5610;   --l-behavior-t:#F6EBD7;
+  --l-value:#0A6A62;      --l-value-t:#DDEFEC;
+  --l-belief:#3F4FA8;     --l-belief-t:#E4E7F7;
+  --l-worldview:#A8322A;  --l-worldview-t:#F7E3E1;
+
+  /* --- shape & spacing ----------------------------------------------- */
+  --radius-print:0; --radius-sm:7px; --radius-md:12px; --radius-pill:999px;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
+
+  --font-display:'Spectral','Source Serif 4',Georgia,serif;
+  --font-ui:'Public Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --ui:1;
+}
+
+/* PAPER — the everyday web look */
+:root,:root[data-theme="paper"]{
+  color-scheme:light;
+  --surface:var(--paper);
+  --surface-card:var(--card);
+  --tx:var(--ink);
+  --tx-muted:var(--ink-muted);
+  --heading:var(--forest-print);
+  --accent:var(--forest);
+  --on-accent:var(--paper);
+  --accent-quiet:var(--moss-soft);
+  --kicker:#795E20;
+  --rule:rgba(16,61,33,.16);
+  --rule-strong:rgba(16,61,33,.34);
+  --panel:var(--mist);
+  --band:var(--forest-print);
+  --on-band:#ffffff;
+  --focus:#1F7A47;
+  --shadow-card:0 1px 2px rgba(16,61,33,.06),0 6px 16px rgba(16,61,33,.07);
+  --shadow-raised:0 2px 4px rgba(16,61,33,.07),0 14px 34px rgba(16,61,33,.11);
+  --shadow-dialog:0 26px 68px rgba(12,51,25,.32);
+}
+
+/* STAGE — projectors and smart TVs.
+   Two wrong turns before this one. First the whole field was forest green,
+   which a projector's poor black level turns to mud. Then the field went
+   near-black, which fixed the contrast ratio and lost the room: a dark screen
+   in a lit classroom is a mirror, the beam has nothing to push against, and
+   everything reads thin.
+
+   So Stage is Paper — the same warm ground, the same ink — with the type set
+   large, the rules drawn heavier, and the layout opened out sideways to use
+   the width a 16:9 screen actually has. Contrast is where it was on paper
+   (ink on card is 15.8:1) and a projector is at its best pushing dark ink
+   onto a bright field. The ground sits a shade deeper than Paper's so a card
+   still lifts off it after the beam has washed everything half a stop up.
+   ------------------------------------------------------------------------- */
+:root[data-theme="stage"]{
+  color-scheme:light;
+  --surface:#E6E0CB;            /* deeper than Paper: the beam flattens the gap */
+  --surface-card:#FFFDF6;
+  --tx:#0E1210;                 /* near-black, not grey — projector gamma eats mid tones */
+  --tx-muted:#3A463A;
+  --heading:var(--forest-print);
+  --accent:var(--forest-print);
+  --on-accent:#ffffff;
+  --accent-quiet:var(--moss-soft);
+  --kicker:#6B5116;             /* a darker gold than Paper's: small caps at 20m */
+  --rule:rgba(16,61,33,.32);    /* borders carry at distance; fills do not */
+  --rule-strong:rgba(16,61,33,.6);
+  --panel:#F1ECDB;
+  --band:var(--forest-print);
+  --on-band:#ffffff;
+  --focus:#14603A;
+  --shadow-card:none;           /* a shadow is invisible on a projector */
+  --shadow-raised:none;
+  --shadow-dialog:0 26px 68px rgba(12,51,25,.34);
+  --ui:1.42;
+}
+
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--surface)}
+body{
+  color:var(--tx);font-family:var(--font-ui);overscroll-behavior:none;
+  -webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;
+}
+button{font:inherit;color:inherit}
+[hidden]{display:none !important}
+/* Focus is always a solid 2 px ring with a 2 px offset. */
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:var(--radius-sm)}
+
+.app{position:fixed;inset:0;min-height:100dvh;overflow:hidden;background:var(--surface)}
+
+/* ---------- brand bar ---------- */
+/* One opaque bar holds the brand row and the step rail. The stage scrolls
+   underneath it, so it needs a solid ground, not a gradient — and its real
+   height is measured into --header-h so nothing is ever hidden behind it. */
+.appbar{
+  position:absolute;z-index:30;top:0;left:0;right:0;
+  background:var(--surface);border-bottom:1px solid var(--rule);
+}
+.topbar{
+  display:flex;align-items:center;gap:var(--s3);
+  padding:max(var(--s3),env(safe-area-inset-top)) max(var(--s4),env(safe-area-inset-right))
+          var(--s2) max(var(--s4),env(safe-area-inset-left));
+}
+/* The colour logo sits on white or paper only — never on forest. On the Stage
+   theme it keeps its own paper chip, which doubles as its clear space. */
+.logo-chip{
+  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+  padding:calc(6px*var(--ui)) calc(10px*var(--ui));
+  background:var(--paper);border-radius:var(--radius-sm);
+}
+/* At least 90 px wide on screen, with clear space around it. */
+.logo-chip img{width:calc(96px*var(--ui));height:auto;display:block}
+/* On a narrow phone the logo and the theme badge win; the activity name goes. */
+.brand-name{
+  display:flex;align-items:center;gap:calc(7px*var(--ui));
+  min-width:0;flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-family:var(--font-display);font-weight:600;
+  font-size:calc(clamp(1.08rem,4.4vw,1.42rem)*var(--ui));letter-spacing:-.01em;color:var(--tx);
+}
+.brand-g{font-size:1.05em;line-height:1;flex:0 0 auto}
+/* on a phone the activity's own name outranks the logo and the theme word */
+@media (max-width:540px){
+  .logo-chip img{width:calc(58px*var(--ui))}
+  .pill-lab{display:none}
+}
+@media (max-width:360px){
+  .logo-chip{display:none}
+  .brand-name{font-size:calc(1.08rem*var(--ui))}
+}
+.badge{
+  display:inline-flex;align-items:center;gap:var(--s1);flex:0 0 auto;
+  min-height:calc(28px*var(--ui));padding:calc(4px*var(--ui)) calc(11px*var(--ui));
+  border-radius:var(--radius-pill);background:var(--moss-soft);color:var(--forest-print);
+  font-size:calc(.72rem*var(--ui));font-weight:600;white-space:nowrap;
+}
+.icon-btn{
+  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+  width:calc(38px*var(--ui));height:calc(38px*var(--ui));
+  border:1px solid var(--rule);border-radius:var(--radius-sm);
+  background:var(--surface-card);cursor:pointer;font-size:calc(1rem*var(--ui));
+  transition:background .18s ease,border-color .18s ease;
+}
+.icon-btn:hover{border-color:var(--rule-strong)}
+
+/* ---------- step rail (kickers under a rule) ---------- */
+.rail{
+  display:flex;justify-content:center;
+  padding:0 max(var(--s4),env(safe-area-inset-left)) var(--s2) max(var(--s4),env(safe-area-inset-right));
+  pointer-events:none;
+}
+.rail-inner{
+  display:flex;align-items:stretch;max-width:100%;border-top:2px solid var(--rule);
+  /* a clipped rail silently loses its last step on a 320px phone, so let it
+     slide instead — the bar itself never shows a scrollbar */
+  overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;
+}
+.rail-inner::-webkit-scrollbar{display:none}
+.rail-step{
+  display:inline-flex;align-items:center;gap:calc(5px*var(--ui));
+  padding:var(--s2) calc(12px*var(--ui)) 0;white-space:nowrap;
+  font-size:calc(.7rem*var(--ui));font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--tx-muted);border-top:2px solid transparent;margin-top:-2px;
+  transition:color .25s ease,border-color .25s ease;
+}
+.rail-step.is-done{color:var(--tx)}
+.rail-step.is-active{color:var(--kicker);border-top-color:var(--gold)}
+.rail-ico{width:calc(.95rem*var(--ui));height:calc(.95rem*var(--ui));opacity:.75}
+.rail-step.is-active .rail-ico{opacity:1}
+/* squeeze the rail rather than drop its words: 390px is the commonest phone
+   width, and a step named only by a symbol is a step an ESL reader has to
+   decode twice */
+@media (max-width:430px){
+  .rail-step{padding-left:calc(7px*var(--ui));padding-right:calc(7px*var(--ui));letter-spacing:.07em}
+  .rail-ico{width:.86rem;height:.86rem}
+}
+
+/* ---------- scrolling stage ---------- */
+.stage{
+  position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
+  padding:calc(var(--header-h,124px) + var(--s4))
+          max(var(--s4),env(safe-area-inset-right))
+          max(104px,calc(env(safe-area-inset-bottom) + 92px))
+          max(var(--s4),env(safe-area-inset-left));
+  scrollbar-width:thin;scrollbar-color:var(--rule) transparent;
+}
+.stage::-webkit-scrollbar{width:8px}
+.stage::-webkit-scrollbar-thumb{background:var(--rule);border-radius:var(--radius-pill)}
+.wrap{width:min(100%,calc(720px*var(--ui)));margin:0 auto;display:flex;flex-direction:column;gap:var(--s4)}
+/* Motion is minimal: panels cross-fade, nothing bounces. */
+.panel{animation:fade .3s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+.card{
+  border:1px solid var(--rule);border-radius:var(--radius-md);background:var(--surface-card);
+  box-shadow:var(--shadow-card);padding:calc(var(--s5)*var(--ui));
+}
+.card.raised{box-shadow:var(--shadow-raised)}
+.card.lead{border-left:4px solid var(--gold)}
+
+.kicker{
+  font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--kicker);margin:0 0 var(--s3);
+}
+h1,h2,h3{margin:0}
+.h-title{
+  font-family:var(--font-display);font-weight:600;color:var(--heading);
+  font-size:calc(clamp(1.42rem,5.6vw,1.86rem)*var(--ui));line-height:1.22;
+}
+.h-sub{
+  margin-top:var(--s2);font-family:var(--font-display);font-style:italic;font-weight:400;
+  font-size:calc(1rem*var(--ui));color:var(--tx-muted);
+}
+.body{margin:var(--s4) 0 0;font-size:calc(clamp(1rem,3.7vw,1.06rem)*var(--ui));line-height:1.62;color:var(--tx)}
+.hint{margin:var(--s3) 0 0;font-size:calc(.88rem*var(--ui));line-height:1.55;color:var(--tx-muted)}
+/* One conviction per view. */
+.band{
+  margin-top:var(--s4);padding:var(--s4) var(--s5);border-radius:var(--radius-print);
+  background:var(--band);color:var(--on-band);
+  font-family:var(--font-display);font-style:italic;font-size:calc(1.02rem*var(--ui));line-height:1.55;
+}
+.callout{
+  margin-top:var(--s4);padding:var(--s4);border-left:4px solid var(--gold);
+  background:var(--gold-soft);color:var(--ink);
+  font-size:calc(.95rem*var(--ui));line-height:1.55;
+}
+
+/* square gold bullets — never ticks or round dots */
+.bullets{margin:var(--s3) 0 0;padding:0;list-style:none}
+.bullets li{position:relative;padding-left:var(--s5);margin-top:var(--s2);
+  font-size:calc(.94rem*var(--ui));line-height:1.55;color:var(--tx)}
+.bullets li::before{content:"";position:absolute;left:0;top:calc(.55em - 3px);
+  width:8px;height:8px;background:var(--gold)}
+
+/* ---------- questions ---------- */
+.opts{display:flex;flex-direction:column;gap:var(--s3);margin-top:var(--s4)}
+.opt{
+  width:100%;text-align:left;display:block;padding:var(--s4);cursor:pointer;line-height:1.5;
+  border:1px solid var(--rule);border-radius:var(--radius-sm);background:var(--panel);
+  font-size:calc(1rem*var(--ui));color:var(--tx);
+  transition:background .18s ease,border-color .18s ease;
+}
+.opt:hover{border-color:var(--rule-strong)}
+.opt.is-wrong{border-color:var(--clay);background:rgba(176,86,58,.08);color:var(--tx-muted);cursor:default}
+.opt.is-right{border-color:var(--forest);background:var(--moss-soft);color:var(--ink);cursor:default}
+.opt[disabled]{cursor:default}
+.opt-tag{
+  display:inline-flex;align-items:center;gap:calc(5px*var(--ui));
+  margin-top:var(--s2);padding:3px 10px;border-radius:var(--radius-pill);
+  font-size:calc(.68rem*var(--ui));font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+}
+.tag-bad{background:rgba(176,86,58,.16);color:var(--clay)}
+.tag-good{background:var(--forest);color:var(--paper)}
+
+.coach{
+  margin-top:var(--s3);padding:var(--s4);border-left:4px solid var(--clay);
+  background:rgba(176,86,58,.07);font-size:calc(.94rem*var(--ui));line-height:1.55;color:var(--tx);
+  animation:fade .22s ease both;
+}
+.coach.good{border-left-color:var(--forest);background:var(--moss-soft);color:var(--ink)}
+.coach b{display:block;margin-bottom:var(--s1);font-weight:700}
+.coach .fix{display:block;margin-top:var(--s2);color:var(--tx-muted);font-size:calc(.88rem*var(--ui))}
+
+/* ---------- the informant cards ----------
+   Built the way /whos-this/ builds its identity cards: a framed photograph
+   beside a short dossier of labelled fields. Somebody with a face, an age, a
+   job and a city is a person you are talking to; a name on a row is a
+   question on a test. Same structure, the Brand Book's colours.
+
+   The first listen is pure listening, so the bubble holds nothing to read
+   until that person has been heard through. */
+.speakers{display:flex;flex-direction:column;gap:var(--s5);margin-top:var(--s4)}
+.spk{
+  border:1px solid var(--rule);border-radius:var(--radius-md);background:var(--surface-card);
+  overflow:hidden;box-shadow:var(--shadow-card);
+  transition:border-color .25s ease,box-shadow .25s ease;
+}
+.spk.is-playing{border-color:var(--gold);box-shadow:var(--shadow-raised)}
+
+.spk-band{
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s2);
+  padding:calc(7px*var(--ui)) calc(16px*var(--ui));
+  background:var(--band);color:var(--on-band);
+}
+.spk-band .lab{color:rgba(255,255,255,.82)}
+.spk-band .lab:last-child{color:var(--gold-light);font-weight:700}
+.spk.is-heard .spk-band{background:var(--forest-print)}
+.lab{
+  font-size:calc(.64rem*var(--ui));font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--tx-muted);
+}
+
+.spk-top{display:flex;gap:var(--s4);padding:var(--s4) var(--s4) var(--s3)}
+.window{
+  width:38%;max-width:calc(170px*var(--ui));flex:none;aspect-ratio:3/4;align-self:flex-start;
+  border:4px solid var(--card);border-radius:var(--radius-sm);background:var(--panel);
+  display:grid;place-items:center;overflow:hidden;position:relative;
+  box-shadow:0 0 0 1px var(--rule),var(--shadow-card);
+  transition:box-shadow .25s ease;
+}
+.window img{width:100%;height:100%;object-fit:cover;display:block;transition:filter .45s ease}
+/* somebody you have not met yet is not in colour yet */
+.spk:not(.is-heard) .window img{filter:grayscale(.8)}
+.spk.is-playing .window{box-shadow:0 0 0 3px var(--gold),var(--shadow-raised)}
+.window-ph{font-family:var(--font-display);font-weight:600;
+  font-size:calc(2.4rem*var(--ui));color:var(--tx-muted)}
+
+.ident{flex:1;min-width:0;display:flex;flex-direction:column}
+.ident-name{
+  margin:2px 0 var(--s3);font-family:var(--font-display);font-weight:600;
+  font-size:calc(clamp(1.4rem,6vw,1.75rem)*var(--ui));line-height:1.1;color:var(--heading);
+}
+.frows{display:flex;flex-direction:column;gap:var(--s2);margin-top:auto}
+.frow{
+  display:flex;flex-direction:column;gap:1px;
+  padding:calc(6px*var(--ui)) calc(11px*var(--ui));
+  border:1px solid var(--rule);border-radius:var(--radius-sm);background:var(--panel);
+}
+.fval{font-size:calc(.98rem*var(--ui));font-weight:600;line-height:1.25;color:var(--tx)}
+
+.spk-ctl{display:flex;align-items:center;gap:var(--s2);padding:0 var(--s4) var(--s3)}
+.play{
+  flex:1 1 auto;min-height:calc(52px*var(--ui));border-radius:var(--radius-sm);
+  cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);
+  display:inline-flex;align-items:center;justify-content:center;gap:var(--s2);
+  font-size:calc(1rem*var(--ui));font-weight:700;transition:background .18s ease;
+}
+.play-ico{width:calc(1.15rem*var(--ui));height:calc(1.15rem*var(--ui))}
+.play:hover{background:var(--forest-deep)}
+.replay{
+  width:calc(52px*var(--ui));height:calc(52px*var(--ui));border-radius:var(--radius-sm);flex:0 0 auto;
+  cursor:pointer;border:1px solid var(--rule);background:var(--surface-card);color:var(--tx);
+  display:grid;place-items:center;font-size:calc(1.1rem*var(--ui));
+  transition:border-color .18s ease,background .18s ease;
+}
+.replay:hover{border-color:var(--rule-strong);background:var(--panel)}
+.replay:disabled{background:var(--panel);color:var(--tx-muted);cursor:not-allowed;border-color:var(--rule)}
+
+/* a level meter, not decoration: it moves only while this person is talking */
+.eq{display:flex;align-items:flex-end;gap:3px;height:calc(20px*var(--ui));
+  flex:0 0 auto;opacity:0;transition:opacity .25s ease}
+.eq i{display:block;width:calc(3px*var(--ui));height:30%;border-radius:2px;background:var(--gold)}
+.spk.is-playing .eq{opacity:1}
+.spk.is-playing .eq i{animation:eq 1.1s ease-in-out infinite}
+.spk.is-playing .eq i:nth-child(2){animation-delay:.18s}
+.spk.is-playing .eq i:nth-child(3){animation-delay:.36s}
+@keyframes eq{0%,100%{height:28%}50%{height:100%}}
+@media (prefers-reduced-motion:reduce){ .spk.is-playing .eq i{animation:none;height:62%} }
+
+.spk-prog{height:3px;background:var(--rule);overflow:hidden}
+.spk-prog i{display:block;height:100%;width:0;background:var(--gold);transition:width .2s linear}
+.spk.is-paused .spk-prog i{background:var(--tx-muted)}
+
+.bubble{padding:var(--s4);background:var(--panel);border-top:1px solid var(--rule)}
+.bubble-idle{margin:0;font-family:var(--font-display);font-style:italic;
+  font-size:calc(.94rem*var(--ui));color:var(--tx-muted)}
+.spk.is-playing .bubble-idle{display:none}
+.caption{
+  font-size:calc(1.04rem*var(--ui));line-height:1.6;color:var(--tx);
+  -webkit-user-select:text;user-select:text;
+}
+.caption ~ .bubble-idle,.transcript:not([hidden]) ~ .bubble-idle{display:none}
+.transcript{
+  font-size:calc(.98rem*var(--ui));line-height:1.65;color:var(--tx);
+  -webkit-user-select:text;user-select:text;
+}
+.tbar{display:flex;gap:var(--s2);flex-wrap:wrap;margin-top:var(--s4);align-items:center}
+.mini{
+  padding:calc(9px*var(--ui)) calc(15px*var(--ui));border-radius:var(--radius-sm);
+  border:1px solid var(--rule);background:var(--accent-quiet);color:var(--tx);
+  font-size:calc(.82rem*var(--ui));font-weight:600;cursor:pointer;
+  transition:border-color .18s ease,background .18s ease;
+}
+.mini:hover{border-color:var(--rule-strong)}
+.mini:disabled{background:var(--panel);color:var(--tx-muted);cursor:not-allowed}
+.mini.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+
+/* ---------- catch the words ----------
+   A small field of words appears for each sentence while the interview
+   plays. Tap the ones you hear. Two of them are really in that sentence and
+   the rest are not, so guessing costs you — but a miss costs nothing you
+   cannot fix by listening again, which is the point. */
+.catch{grid-column:1/-1;margin-top:var(--s3)}
+.catch-bar{
+  display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap;
+  font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--kicker);
+}
+.dots{display:inline-flex;gap:5px;align-items:center}
+.dots i{
+  width:calc(8px*var(--ui));height:calc(8px*var(--ui));border-radius:var(--radius-pill);
+  background:transparent;border:1.5px solid var(--rule-strong);display:block;
+}
+.dots i.on{background:var(--gold);border-color:var(--gold)}
+/* the sentence is running out — a bar that empties, then turns clay for the
+   last fifth, so the field changing is something you saw coming */
+.catch-cd{
+  height:4px;border-radius:var(--radius-pill);background:var(--rule);
+  overflow:hidden;margin-top:var(--s2);
+}
+.catch-cd i{display:block;height:100%;width:100%;background:var(--gold);
+  transition:width .25s linear,background .25s ease}
+.catch-cd.is-closing i{background:var(--clay)}
+.cw-set{display:contents}
+/* the outgoing words dim but stay tappable for a moment, so a tap already on
+   its way is never punished for landing late */
+.cw-set.is-leaving .cw{opacity:.4}
+.cw-set.is-leaving .cw.got,.cw-set.is-leaving .cw.no{opacity:.75}
+.catch-grid{
+  display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s2);
+  min-height:calc(76px*var(--ui));align-content:flex-start;
+}
+.cw{
+  padding:calc(9px*var(--ui)) calc(14px*var(--ui));
+  border:1px solid var(--rule);border-radius:var(--radius-pill);
+  background:var(--surface-card);color:var(--tx);
+  font-size:calc(.92rem*var(--ui));font-weight:600;cursor:pointer;
+  animation:fade .2s ease both;
+  transition:background .15s ease,border-color .15s ease,color .15s ease;
+}
+.cw:hover{border-color:var(--rule-strong)}
+.cw.got{background:var(--moss-soft);border-color:var(--forest);color:var(--ink);cursor:default}
+.cw.no{background:rgba(176,86,58,.09);border-color:var(--clay);color:var(--tx-muted);cursor:default}
+.cw.missed{border-style:dashed;border-color:var(--gold);color:var(--tx-muted)}
+.cw[disabled]{cursor:default}
+.catch-foot{
+  margin-top:var(--s3);font-size:calc(.88rem*var(--ui));line-height:1.5;color:var(--tx-muted);
+}
+.catch-foot b{color:var(--tx);font-weight:700}
+.catch-score{
+  display:inline-block;margin-right:var(--s2);padding:3px 11px;border-radius:var(--radius-pill);
+  background:var(--accent-quiet);color:var(--tx);font-weight:700;font-size:calc(.82rem*var(--ui));
+}
+
+/* ---------- word help ----------
+   Only the words the glossary actually covers are marked, so a marked word
+   is a promise that tapping it will tell you something. One dot-underline
+   for a single word, a dash for an idiom, a phrasal verb or a grammar point
+   — enough of a difference to notice, not enough to make the page busy. */
+.transcript .w{
+  font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;
+  cursor:pointer;border-radius:0;transition:background .15s ease;
+  /* text-decoration, not a border: it hugs the letters and survives a line
+     break, where a border-bottom sits at the foot of the whole line box */
+  text-decoration:underline dotted var(--gold);
+  text-decoration-thickness:2px;text-underline-offset:3px;
+}
+.transcript .w[data-k="idiom"],
+.transcript .w[data-k="phrasal"],
+.transcript .w[data-k="grammar"]{text-decoration-style:dashed}
+/* An ordinary word you can look up is worth less of the reader's attention
+   than an idiom that makes the sentence unreadable, so it is marked quietly.
+   Without this, a dense transcript underlines one word in four and the page
+   costs more to read than the audio does to hear. */
+/* karaoke: the word being said right now */
+.tw{border-radius:3px;transition:background .12s ease,color .12s ease}
+.tw.is-now{background:var(--gold);color:var(--ink);text-decoration-color:transparent}
+.transcript .w[data-k="word"]{
+  text-decoration-color:var(--rule-strong);text-decoration-thickness:1px;
+}
+.transcript .w:hover{background:var(--gold-soft)}
+.transcript .w.is-open{background:var(--gold-soft);color:var(--ink)}
+.tap-hint{
+  margin:var(--s2) 0 0;font-size:calc(.8rem*var(--ui));color:var(--tx-muted);
+  display:flex;align-items:center;gap:var(--s2);
+}
+.tap-hint b{font-weight:400;color:var(--tx);
+  text-decoration:underline dotted var(--gold);
+  text-decoration-thickness:2px;text-underline-offset:3px}
+
+.glossbox{
+  position:fixed;z-index:130;left:50%;transform:translateX(-50%);
+  bottom:calc(env(safe-area-inset-bottom) + 92px);
+  width:min(94vw,520px);padding:var(--s4) var(--s5);
+  border:1px solid var(--rule);border-left:4px solid var(--gold);
+  background:var(--surface-card);box-shadow:var(--shadow-dialog);
+  opacity:0;pointer-events:none;transition:opacity .18s ease;
+}
+.glossbox.show{opacity:1;pointer-events:auto}
+.gloss-head{display:flex;align-items:baseline;gap:var(--s3);flex-wrap:wrap;padding-right:var(--s5)}
+.gloss-word{
+  font-family:var(--font-display);font-weight:600;
+  font-size:calc(1.14rem*var(--ui));color:var(--heading);
+}
+.gloss-kind{
+  font-size:calc(.64rem*var(--ui));font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--kicker);
+}
+.gloss-def{margin:var(--s2) 0 0;font-size:calc(.98rem*var(--ui));line-height:1.55;color:var(--tx)}
+.gloss-note{
+  margin:var(--s3) 0 0;padding-top:var(--s3);border-top:1px solid var(--rule);
+  font-size:calc(.88rem*var(--ui));line-height:1.5;color:var(--tx-muted);
+}
+.gloss-x{
+  position:absolute;top:var(--s2);right:var(--s2);
+  width:calc(30px*var(--ui));height:calc(30px*var(--ui));
+  border:0;background:none;color:var(--tx-muted);cursor:pointer;
+  font-size:calc(1.1rem*var(--ui));line-height:1;
+}
+.gloss-x:hover{color:var(--tx)}
+
+/* the research question, carried from the Ask step and pinned above the voices */
+.qpin{
+  margin-top:var(--s4);padding:var(--s4) var(--s5);
+  border:1px solid var(--rule);border-left:4px solid var(--gold);border-radius:var(--radius-sm);
+  background:var(--gold-soft);color:var(--ink);
+}
+.qpin .cap{
+  display:block;font-size:calc(.66rem*var(--ui));font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--kicker);margin-bottom:var(--s1);
+}
+.qpin q{
+  display:block;font-family:var(--font-display);font-style:italic;
+  font-size:calc(1.04rem*var(--ui));line-height:1.45;
+}
+
+/* triangulation, drawn instead of described */
+.venn{display:block;margin:var(--s4) auto 0;width:calc(200px*var(--ui));height:auto}
+.venn-disc{fill:var(--panel);transition:fill .4s ease}
+.venn-disc.is-heard{fill:var(--moss-soft)}
+.venn-ring{fill:none;stroke:var(--rule-strong);stroke-width:2;transition:stroke .4s ease}
+.venn-ring.is-heard{stroke:var(--forest);stroke-width:2.5}
+.venn-core{fill:transparent;transition:fill .45s ease}
+.venn-core.is-on{fill:var(--gold)}
+.venn-cap{font-family:var(--font-ui);font-size:11px;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;fill:var(--tx-muted)}
+.venn-cap.is-on{fill:var(--kicker)}
+
+.tbar{display:flex;gap:var(--s2);flex-wrap:wrap;margin-top:var(--s4);align-items:center}
+.mini{
+  padding:calc(9px*var(--ui)) calc(15px*var(--ui));border-radius:var(--radius-sm);
+  border:1px solid var(--rule);background:var(--accent-quiet);color:var(--tx);
+  font-size:calc(.82rem*var(--ui));font-weight:600;cursor:pointer;
+  transition:border-color .18s ease,background .18s ease;
+}
+.mini:hover{border-color:var(--rule-strong)}
+.mini:disabled{opacity:.45;cursor:not-allowed}
+.mini.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+
+/* ---------- triangulation ---------- */
+.claims{display:flex;flex-direction:column;gap:var(--s2);margin-top:var(--s4)}
+.claim{
+  display:flex;gap:var(--s3);align-items:flex-start;padding:var(--s3) var(--s4);
+  border:1px solid var(--rule);border-radius:var(--radius-sm);background:var(--panel);
+  cursor:pointer;text-align:left;color:var(--tx);
+  font-size:calc(.96rem*var(--ui));line-height:1.5;transition:background .18s,border-color .18s;
+}
+.claim:hover{border-color:var(--rule-strong)}
+.claim .box{
+  width:19px;height:19px;flex:0 0 auto;margin-top:2px;border:2px solid var(--tx-muted);
+  display:grid;place-items:center;font-size:.72rem;transition:background .16s ease,border-color .16s ease;
+}
+.claim.sel{border-color:var(--accent);background:var(--accent-quiet)}
+.claim.sel .box{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.claim.mark-ok{border-color:var(--forest);background:var(--moss-soft);color:var(--ink)}
+.claim.mark-no{border-color:var(--clay);background:rgba(176,86,58,.07)}
+.claim .who{display:block;margin-top:var(--s1);font-size:calc(.72rem*var(--ui));color:var(--clay);
+  letter-spacing:.09em;text-transform:uppercase;font-weight:700}
+
+/* ---------- step 1: the scene before the sentence ----------
+   Three tiles, an emoji apiece, read left to right. On a phone they stack
+   and the arrows turn to point down, the same way the causal chain does. */
+.fcts{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s3)}
+.fct{
+  display:inline-flex;align-items:center;gap:calc(6px*var(--ui));
+  padding:calc(4px*var(--ui)) var(--s3);border:1px solid var(--rule);
+  border-radius:var(--radius-pill);background:var(--panel);
+  font-size:calc(.82rem*var(--ui));color:var(--tx-muted);
+}
+.fct-g{font-size:calc(.98rem*var(--ui));line-height:1}
+
+.strip{display:flex;flex-direction:column;align-items:stretch;gap:var(--s2);margin-top:var(--s5)}
+@media (min-width:640px){ .strip{flex-direction:row;align-items:stretch} }
+.beat{
+  position:relative;flex:1 1 0;min-width:0;
+  padding:var(--s3) var(--s3) var(--s3) calc(var(--s5) + var(--s2));
+  border:1px solid var(--rule);
+  border-radius:var(--radius-md);background:var(--panel);
+  display:flex;align-items:center;gap:var(--s3);
+  animation:beatIn .34s ease both;
+}
+@media (min-width:640px){
+  .beat{
+    flex-direction:column;text-align:center;justify-content:flex-start;
+    padding:var(--s4) var(--s3) var(--s3);gap:calc(6px*var(--ui));
+  }
+}
+.beat-n{
+  position:absolute;top:calc(7px*var(--ui));left:calc(8px*var(--ui));
+  font-family:var(--font-ui);font-weight:700;font-size:calc(.64rem*var(--ui));
+  letter-spacing:.1em;color:var(--kicker);
+}
+.beat-g{font-size:calc(2.1rem*var(--ui));line-height:1.1}
+.beat-t{margin:0;font-size:calc(.95rem*var(--ui));line-height:1.35;color:var(--tx)}
+@media (min-width:640px){ .beat-t{font-size:calc(.9rem*var(--ui));line-height:1.4} }
+.strip-arrow{
+  align-self:center;color:var(--kicker);font-size:calc(1.1rem*var(--ui));
+  transform:rotate(90deg);flex:0 0 auto;
+}
+@media (min-width:640px){ .strip-arrow{transform:none} }
+@keyframes beatIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){ .beat{animation:none} }
+
+/* guess, then read */
+.predict{margin-top:var(--s5)}
+.predict-q{
+  margin:0;display:flex;align-items:center;gap:var(--s2);
+  font-family:var(--font-display);font-style:italic;
+  font-size:calc(1rem*var(--ui));line-height:1.45;color:var(--tx);
+}
+.predict-g{font-style:normal;font-size:calc(1.3rem*var(--ui));line-height:1}
+.predict-btns{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s3)}
+.predict-b{
+  flex:1 1 150px;min-height:calc(44px*var(--ui));padding:0 var(--s4);
+  border:1px solid var(--rule-strong);border-radius:var(--radius-sm);
+  background:var(--surface-card);color:var(--tx);cursor:pointer;
+  font-family:var(--font-ui);font-size:calc(.92rem*var(--ui));
+  transition:background .18s ease,border-color .18s ease;
+}
+.predict-b:hover:not(:disabled){border-color:var(--gold);background:var(--gold-soft)}
+.predict.is-open .predict-btns{display:none}
+.band-ill{display:flex;align-items:flex-start;gap:var(--s3)}
+.band-ico{width:calc(1.4rem*var(--ui));height:calc(1.4rem*var(--ui));margin-top:calc(2px*var(--ui));opacity:.9}
+.band-t{margin:0}
+
+/* ---------- concentric rings ----------
+   Four rings, drawn largest first so each one's visible band is its own hit
+   area. A ring nobody has opened yet is hatched and unlit; opening it fills
+   it. The sentences live in the rows underneath, colour-keyed to the ring,
+   because a sentence written inside a ring is a sentence nobody can read. */
+.rings-wrap{margin-top:var(--s5)}
+.rings{display:block;margin:0 auto;width:min(100%,calc(300px*var(--ui)));height:auto}
+
+.ico{width:1em;height:1em;flex:0 0 auto;vertical-align:-.14em}
+.ring-ico{overflow:visible;opacity:.5;transition:opacity .3s ease,color .3s ease}
+.ring.is-open .ring-ico{opacity:1}
+
+.ring-face{
+  fill:var(--panel);stroke:var(--rule-strong);stroke-width:1.5;
+  transition:fill .3s ease,stroke .3s ease,stroke-width .2s ease;
+}
+.ring .ring-name{
+  font-family:var(--font-ui);font-weight:700;letter-spacing:.07em;
+  fill:var(--tx-muted);transition:fill .3s ease;
+}
+/* each ring has a colour and a symbol of its own; the colour never carries a
+   meaning on its own, because the name and the symbol are always beside it */
+.ring.r-behavior  .ring-ico{color:var(--l-behavior)}
+.ring.r-value     .ring-ico{color:var(--l-value)}
+.ring.r-belief    .ring-ico{color:var(--l-belief)}
+.ring.r-worldview .ring-ico{color:var(--l-worldview)}
+.ring.is-open.r-behavior  .ring-face{fill:var(--l-behavior-t); stroke:var(--l-behavior)}
+.ring.is-open.r-value     .ring-face{fill:var(--l-value-t);    stroke:var(--l-value)}
+.ring.is-open.r-belief    .ring-face{fill:var(--l-belief-t);   stroke:var(--l-belief)}
+.ring.is-open.r-worldview .ring-face{fill:var(--l-worldview-t);stroke:var(--l-worldview)}
+.ring.is-open.r-behavior  .ring-name{fill:var(--l-behavior)}
+.ring.is-open.r-value     .ring-name{fill:var(--l-value)}
+.ring.is-open.r-belief    .ring-name{fill:var(--l-belief)}
+.ring.is-open.r-worldview .ring-name{fill:var(--l-worldview)}
+.ring.is-open .ring-face{stroke-width:2.5}
+
+.rings.is-live .ring:not(.is-open) .ring-face{cursor:pointer}
+.rings.is-live .ring.is-target .ring-face{fill:var(--gold-soft);stroke:var(--gold);stroke-width:3}
+.rings.is-live .ring.is-target .ring-ico{opacity:1}
+
+/* ---------- the three answers, side by side ----------
+   Each interview hands back a one-line summary once it has been heard, and
+   the three stay on screen while the claims are sorted — so the comparing is
+   done with the eyes rather than held in the head in a second language. */
+.gists{display:grid;grid-template-columns:1fr;gap:var(--s2);margin-top:var(--s4)}
+@media (min-width:760px){ .gists{grid-template-columns:repeat(3,1fr)} }
+.gist{
+  padding:var(--s3);border:1px solid var(--rule);border-radius:var(--radius-sm);
+  background:var(--panel);transition:background .25s ease,border-color .25s ease;
+}
+.gist.is-heard{background:var(--surface-card);border-color:var(--rule-strong)}
+.gist-head{display:flex;align-items:center;gap:var(--s2)}
+.gist-face{
+  position:relative;width:calc(30px*var(--ui));height:calc(30px*var(--ui));
+  flex:0 0 auto;border-radius:var(--radius-sm);overflow:hidden;display:grid;place-items:center;
+  background:var(--moss-soft);color:var(--forest-print);border:1px solid var(--rule);
+  font-family:var(--font-display);font-weight:600;font-size:calc(.86rem*var(--ui));
+}
+.gist-face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gist-name{font-weight:700;font-size:calc(.92rem*var(--ui))}
+.gist-text{margin:var(--s2) 0 0;font-size:calc(.9rem*var(--ui));line-height:1.5;color:var(--tx)}
+.gist-text.empty{color:var(--tx-muted);font-family:var(--font-display);font-style:italic}
+
+.claim .who{display:flex;align-items:center;gap:var(--s2)}
+.who-face{
+  width:calc(22px*var(--ui));height:calc(22px*var(--ui));flex:0 0 auto;
+  border-radius:var(--radius-pill);overflow:hidden;background:var(--panel);
+}
+.who-face img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ---------- the evidence, carried into the mapping ---------- */
+.evid{
+  margin-top:var(--s4);padding:var(--s4) var(--s5);
+  border:1px solid var(--rule);border-left:4px solid var(--forest);border-radius:var(--radius-sm);
+  background:var(--moss-soft);color:var(--ink);
+}
+.evid-cap{
+  display:block;font-size:calc(.66rem*var(--ui));font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--forest-print);margin-bottom:var(--s2);
+}
+.evid-sub{margin:0 0 var(--s2);font-size:calc(.84rem*var(--ui));color:var(--tx-muted)}
+.evid-list{margin:0;padding:0;list-style:none}
+.evid-list li{
+  position:relative;padding-left:var(--s5);margin-top:var(--s2);
+  font-size:calc(.92rem*var(--ui));line-height:1.5;
+}
+.evid-list li::before{content:"";position:absolute;left:0;top:calc(.52em - 3px);
+  width:7px;height:7px;background:var(--gold)}
+
+/* ---------- the lesson ----------
+   Panel one names the four rings; panel two is the one that has to land, so
+   it gets the strongest picture on the page: the same three values, ranked
+   two ways, side by side. */
+.rkey{display:flex;flex-direction:column;gap:var(--s2);margin-top:var(--s4)}
+.rkey-row{
+  display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap;
+  padding:var(--s2) var(--s3);border-left:3px solid var(--rule-strong);background:var(--panel);
+}
+.rkey-ico{width:calc(1.1rem*var(--ui));height:calc(1.1rem*var(--ui))}
+.rkey-row.r-behavior {border-left-color:var(--l-behavior)}
+.rkey-row.r-value    {border-left-color:var(--l-value)}
+.rkey-row.r-belief   {border-left-color:var(--l-belief)}
+.rkey-row.r-worldview{border-left-color:var(--l-worldview)}
+.rkey-row.r-behavior  .rkey-ico,.rkey-row.r-behavior  .rkey-name{color:var(--l-behavior)}
+.rkey-row.r-value     .rkey-ico,.rkey-row.r-value     .rkey-name{color:var(--l-value)}
+.rkey-row.r-belief    .rkey-ico,.rkey-row.r-belief    .rkey-name{color:var(--l-belief)}
+.rkey-row.r-worldview .rkey-ico,.rkey-row.r-worldview .rkey-name{color:var(--l-worldview)}
+.rkey-name{font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--kicker)}
+.rkey-q{font-family:var(--font-display);font-style:italic;
+  font-size:calc(.86rem*var(--ui));color:var(--tx-muted)}
+.rkey-note{margin-left:auto;font-size:calc(.72rem*var(--ui));color:var(--tx-muted)}
+
+.rank{display:grid;grid-template-columns:1fr;gap:var(--s3);margin-top:var(--s4)}
+@media (min-width:640px){ .rank{grid-template-columns:1fr 1fr} }
+.rank-col{padding:var(--s4);border:1px solid var(--rule);border-radius:var(--radius-md)}
+.rank-col.west{border-top:4px solid var(--west);background:var(--west-tint)}
+.rank-col.east{border-top:4px solid var(--east);background:var(--east-tint)}
+.rank-head{font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:var(--s3)}
+.rank-col.west .rank-head{color:var(--west)}
+.rank-col.east .rank-head{color:var(--east)}
+.rank-item{
+  display:flex;gap:var(--s3);align-items:baseline;margin-top:var(--s2);
+  padding:var(--s2) var(--s3);background:var(--surface-card);border-radius:var(--radius-sm);
+  font-size:calc(.94rem*var(--ui));line-height:1.45;color:var(--tx);
+}
+.rank-item.is-top{box-shadow:inset 3px 0 0 var(--gold);font-weight:600}
+.rank-n{font-family:var(--font-display);font-weight:600;font-size:calc(1.1rem*var(--ui));
+  color:var(--tx-muted);min-width:1.1em}
+.rank-note{margin:var(--s4) 0 0;font-size:calc(.9rem*var(--ui));line-height:1.55;color:var(--tx-muted)}
+
+/* Wrapped onto two lines the arrows end up pointing off the end of a row and
+   back in at the start of the next, which reads as a zig-zag rather than a
+   chain. On a phone it stacks and the arrows turn to point down. */
+.chain{display:flex;align-items:stretch;gap:var(--s2);margin-top:var(--s4);flex-direction:column}
+@media (min-width:720px){ .chain{flex-direction:row;align-items:stretch} }
+.chain-link{
+  /* stacked, a link hugs its text; in a row they share the width equally */
+  flex:0 0 auto;padding:var(--s3);border:1px solid var(--rule);border-radius:var(--radius-sm);
+  background:var(--panel);display:flex;flex-direction:column;gap:2px;
+}
+@media (min-width:720px){ .chain-link{flex:1 1 130px} }
+.chain-link.r-behavior {border-color:var(--l-behavior); background:var(--l-behavior-t)}
+.chain-link.r-value    {border-color:var(--l-value);    background:var(--l-value-t)}
+.chain-link.r-belief   {border-color:var(--l-belief);   background:var(--l-belief-t)}
+.chain-link.r-worldview{border-color:var(--l-worldview);background:var(--l-worldview-t)}
+.chain-ico{width:calc(1rem*var(--ui));height:calc(1rem*var(--ui))}
+.chain-name{display:flex;align-items:center;gap:calc(5px*var(--ui));
+  font-size:calc(.74rem*var(--ui));font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--kicker)}
+.chain-link.r-behavior  .chain-name{color:var(--l-behavior)}
+.chain-link.r-value     .chain-name{color:var(--l-value)}
+.chain-link.r-belief    .chain-name{color:var(--l-belief)}
+.chain-link.r-worldview .chain-name{color:var(--l-worldview)}
+.chain-sub{font-size:calc(.86rem*var(--ui));line-height:1.4;color:var(--tx)}
+.chain-arrow{
+  align-self:center;color:var(--tx-muted);font-size:calc(1.2rem*var(--ui));
+  line-height:1;transform:rotate(90deg);
+}
+@media (min-width:720px){ .chain-arrow{transform:none} }
+
+.payoff{display:grid;grid-template-columns:1fr;gap:var(--s3);margin-top:var(--s4)}
+@media (min-width:640px){ .payoff{grid-template-columns:1fr 1fr} }
+.payoff-col{padding:var(--s4);border:1px solid var(--rule);border-radius:var(--radius-md);background:var(--panel)}
+.payoff-col h3{font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--kicker)}
+
+/* ---------- the rows under the rings ---------- */
+.rrows{display:flex;flex-direction:column;gap:var(--s2);margin-top:var(--s5)}
+.rrow{
+  padding:var(--s3) var(--s4);border:1px solid var(--rule);border-radius:var(--radius-sm);
+  background:var(--panel);border-left:4px solid var(--rule-strong);
+  transition:background .25s ease,border-color .25s ease;
+}
+.rrow-head{display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap}
+.rrow-ico{width:calc(1.15rem*var(--ui));height:calc(1.15rem*var(--ui))}
+.rrow-name{
+  font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--kicker);
+}
+.rrow.r-behavior  {border-left-color:var(--l-behavior)}
+.rrow.r-value     {border-left-color:var(--l-value)}
+.rrow.r-belief    {border-left-color:var(--l-belief)}
+.rrow.r-worldview {border-left-color:var(--l-worldview)}
+.rrow.r-behavior  .rrow-ico,.rrow.r-behavior  .rrow-name{color:var(--l-behavior)}
+.rrow.r-value     .rrow-ico,.rrow.r-value     .rrow-name{color:var(--l-value)}
+.rrow.r-belief    .rrow-ico,.rrow.r-belief    .rrow-name{color:var(--l-belief)}
+.rrow.r-worldview .rrow-ico,.rrow.r-worldview .rrow-name{color:var(--l-worldview)}
+.rrow.r-behavior.is-set  {background:var(--l-behavior-t)}
+.rrow.r-value.is-set     {background:var(--l-value-t)}
+.rrow.r-belief.is-set    {background:var(--l-belief-t)}
+.rrow.r-worldview.is-set {background:var(--l-worldview-t)}
+.rrow-q{font-family:var(--font-display);font-style:italic;
+  font-size:calc(.86rem*var(--ui));color:var(--tx-muted)}
+.rrow-text{margin:var(--s2) 0 0;font-size:calc(.95rem*var(--ui));line-height:1.5;color:var(--tx)}
+.rrow-text.empty{
+  display:inline-block;padding:calc(5px*var(--ui)) calc(14px*var(--ui));
+  border:1px dashed var(--rule-strong);border-radius:var(--radius-pill);
+  background:var(--surface-card);color:var(--tx-muted);
+  font-size:calc(.74rem*var(--ui));font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+}
+.rrow.is-set{border-color:var(--rule-strong)}
+.rrow.is-set .rrow-text{color:var(--tx)}
+.rrow.is-target{border-color:var(--gold);border-left-color:var(--gold);background:var(--gold-soft);cursor:pointer}
+
+.tray{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s4)}
+.chip{
+  padding:var(--s3) var(--s4);border:1px solid var(--rule);border-radius:var(--radius-sm);
+  background:var(--surface-card);color:var(--tx);box-shadow:var(--shadow-card);
+  font-size:calc(.92rem*var(--ui));line-height:1.45;cursor:pointer;max-width:100%;
+  transition:border-color .18s ease,background .18s ease,opacity .2s ease;
+}
+.chip:hover{border-color:var(--rule-strong)}
+.chip.sel{border-color:var(--gold);background:var(--gold-soft);color:var(--ink);box-shadow:var(--shadow-raised)}
+.chip.used{opacity:.3;pointer-events:none;box-shadow:none}
+/* nothing bounces — a refused placement flashes clay instead of shaking */
+.chip.is-refused,.claim.is-refused{border-color:var(--clay);background:rgba(176,86,58,.12);animation:clay .52s ease both}
+@keyframes clay{0%,72%{border-color:var(--clay)}100%{border-color:var(--rule)}}
+
+/* ---------- reveal ----------
+   The two cultures used to sit in two columns, which meant comparing their
+   values was a job of scanning down one list and back up the other. Layer by
+   layer instead: one heading, then the two answers to that same question,
+   side by side on a wide screen and stacked on a phone. It also stops every
+   label being printed twice. */
+.reveal{margin-top:var(--s4);animation:fade .32s ease both}
+.cmp{margin-top:var(--s4);display:flex;flex-direction:column;gap:var(--s3)}
+.cmp-row{
+  border:1px solid var(--rule);border-radius:var(--radius-md);
+  overflow:hidden;background:var(--surface-card);
+}
+.cmp-head{
+  padding:var(--s2) var(--s4);background:var(--panel);border-bottom:1px solid var(--rule);
+  display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap;
+}
+.cmp-ico{width:calc(1.1rem*var(--ui));height:calc(1.1rem*var(--ui))}
+.cmp-row.r-behavior  .cmp-ico,.cmp-row.r-behavior  .cmp-name{color:var(--l-behavior)}
+.cmp-row.r-value     .cmp-ico,.cmp-row.r-value     .cmp-name{color:var(--l-value)}
+.cmp-row.r-belief    .cmp-ico,.cmp-row.r-belief    .cmp-name{color:var(--l-belief)}
+.cmp-row.r-worldview .cmp-ico,.cmp-row.r-worldview .cmp-name{color:var(--l-worldview)}
+.cmp-name{
+  font-size:calc(.7rem*var(--ui));font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--kicker);
+}
+.cmp-q{font-family:var(--font-display);font-style:italic;
+  font-size:calc(.86rem*var(--ui));color:var(--tx-muted)}
+.cmp-pair{display:grid;grid-template-columns:1fr}
+@media (min-width:720px){ .cmp-pair{grid-template-columns:1fr 1fr} }
+.cmp-side{padding:var(--s3) var(--s4);border-top:3px solid transparent}
+.cmp-side.west{border-top-color:var(--west);background:var(--west-tint)}
+.cmp-side.east{border-top-color:var(--east);background:var(--east-tint)}
+.cmp-tag{
+  display:block;margin-bottom:2px;
+  font-size:calc(.64rem*var(--ui));font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+}
+.cmp-side.west .cmp-tag{color:var(--west)}
+.cmp-side.east .cmp-tag{color:var(--east)}
+.cmp-side p{margin:0;font-size:calc(.94rem*var(--ui));line-height:1.52;color:var(--tx)}
+/* behaviour is the row the other three explain, so it is the one that is lit */
+.cmp-row.skin-row{border-color:var(--rule-strong);box-shadow:var(--shadow-card)}
+
+/* ---------- the finding: one line, one picture, the essay folded away ---- */
+.punch{
+  display:flex;align-items:flex-start;gap:var(--s3);margin-top:var(--s4);
+  padding:var(--s4);border-left:4px solid var(--gold);background:var(--gold-soft);
+}
+.punch-g{font-size:calc(1.6rem*var(--ui));line-height:1.1;flex:0 0 auto}
+.punch-t{
+  margin:0;font-family:var(--font-display);
+  font-size:calc(clamp(1.14rem,4.4vw,1.34rem)*var(--ui));line-height:1.34;
+  color:var(--ink);
+}
+.more{margin-top:var(--s5);border-top:1px solid var(--rule);padding-top:var(--s3)}
+.more-sum{
+  cursor:pointer;list-style:none;
+  font-family:var(--font-ui);font-size:calc(.8rem*var(--ui));font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--kicker);
+}
+.more-sum::-webkit-details-marker{display:none}
+.more-sum::after{content:' ▾';font-size:.9em}
+.more[open] .more-sum::after{content:' ▴'}
+.more .body{margin-top:var(--s3)}
+
+/* ---------- two sets of rings, one layer at a time ---------- */
+.cmp2{margin-top:var(--s4)}
+.dials{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);align-items:start}
+.dial{text-align:center}
+.dial .rings.dialring{width:min(100%,168px)}
+.dial-tag{
+  display:block;margin-bottom:var(--s2);
+  font-size:calc(.66rem*var(--ui));font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+}
+.dial.west .dial-tag{color:var(--west)}
+.dial.east .dial-tag{color:var(--east)}
+.dial .ring .ring-face{cursor:pointer}
+/* every band keeps a trace of its own colour, so an unlit one is still
+   identifiable — and the symbol inside it is what actually names it */
+.dial .ring.is-open .ring-face{stroke-width:5}
+.dial .ring-ico{stroke-width:1.9}
+.dial .ring.r-behavior  .ring-face{fill:color-mix(in srgb,var(--l-behavior) 15%, var(--panel))}
+.dial .ring.r-value     .ring-face{fill:color-mix(in srgb,var(--l-value) 15%, var(--panel))}
+.dial .ring.r-belief    .ring-face{fill:color-mix(in srgb,var(--l-belief) 15%, var(--panel))}
+.dial .ring.r-worldview .ring-face{fill:color-mix(in srgb,var(--l-worldview) 15%, var(--panel))}
+.dial .ring.is-open.r-behavior  .ring-face{fill:var(--l-behavior-t)}
+.dial .ring.is-open.r-value     .ring-face{fill:var(--l-value-t)}
+.dial .ring.is-open.r-belief    .ring-face{fill:var(--l-belief-t)}
+.dial .ring.is-open.r-worldview .ring-face{fill:var(--l-worldview-t)}
+.dial .ring-ico{opacity:.72;width:34px;height:34px}   /* 34 user units — see DIAL_ICO */
+.dial .ring.is-open .ring-ico{opacity:1}
+.dial.west .ring.is-open .ring-face{stroke:var(--west)}
+.dial.east .ring.is-open .ring-face{stroke:var(--east)}
+
+.cmp2-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s2);margin-top:var(--s4)}
+@media (min-width:760px){ .cmp2-tabs{grid-template-columns:repeat(4,minmax(0,1fr))} }
+.cmp2-tab{
+  min-width:0;display:flex;align-items:center;justify-content:center;
+  gap:calc(6px*var(--ui));min-height:calc(42px*var(--ui));padding:0 var(--s3);
+  border:1px solid var(--rule);border-radius:var(--radius-sm);
+  background:var(--surface-card);cursor:pointer;color:var(--tx-muted);
+  font-family:var(--font-ui);font-size:calc(.8rem*var(--ui));font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  transition:background .18s ease,border-color .18s ease,color .18s ease;
+}
+.cmp2-ico{width:calc(1.05rem*var(--ui));height:calc(1.05rem*var(--ui))}
+.cmp2-tick{width:calc(.8rem*var(--ui));height:calc(.8rem*var(--ui));opacity:0;transition:opacity .2s ease}
+.cmp2-tab.seen .cmp2-tick{opacity:.55}
+.cmp2-tab.r-behavior {border-left:4px solid var(--l-behavior)}
+.cmp2-tab.r-value    {border-left:4px solid var(--l-value)}
+.cmp2-tab.r-belief   {border-left:4px solid var(--l-belief)}
+.cmp2-tab.r-worldview{border-left:4px solid var(--l-worldview)}
+.cmp2-tab.on{color:var(--tx);border-color:var(--rule-strong);box-shadow:var(--shadow-card)}
+.cmp2-tab.on.r-behavior {background:var(--l-behavior-t)}
+.cmp2-tab.on.r-value    {background:var(--l-value-t)}
+.cmp2-tab.on.r-belief   {background:var(--l-belief-t)}
+.cmp2-tab.on.r-worldview{background:var(--l-worldview-t)}
+.cmp2-tab.on.r-behavior  .cmp2-ico{color:var(--l-behavior)}
+.cmp2-tab.on.r-value     .cmp2-ico{color:var(--l-value)}
+.cmp2-tab.on.r-belief    .cmp2-ico{color:var(--l-belief)}
+.cmp2-tab.on.r-worldview .cmp2-ico{color:var(--l-worldview)}
+
+.cmp2-body{
+  margin-top:var(--s3);border:1px solid var(--rule);border-radius:var(--radius-md);overflow:hidden;
+}
+.cmp2-body.fade{animation:cmpIn .26s ease both}
+@keyframes cmpIn{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){ .cmp2-body.fade{animation:none} }
+.cmp-head.r-behavior  .cmp-ico,.cmp-head.r-behavior  .cmp-name{color:var(--l-behavior)}
+.cmp-head.r-value     .cmp-ico,.cmp-head.r-value     .cmp-name{color:var(--l-value)}
+.cmp-head.r-belief    .cmp-ico,.cmp-head.r-belief    .cmp-name{color:var(--l-belief)}
+.cmp-head.r-worldview .cmp-ico,.cmp-head.r-worldview .cmp-name{color:var(--l-worldview)}
+.cmp2-foot{
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s3);
+  margin-top:var(--s3);flex-wrap:wrap;
+}
+.cmp2-count{font-size:calc(.8rem*var(--ui));color:var(--tx-muted)}
+.cmp2.is-done .cmp2-count{color:var(--l-value);font-weight:700}
+
+/* ---------- action bar ---------- */
+.actionbar{
+  position:absolute;z-index:30;left:0;right:0;bottom:0;display:flex;align-items:center;gap:var(--s3);
+  padding:var(--s3) max(var(--s4),env(safe-area-inset-right))
+          max(var(--s4),calc(env(safe-area-inset-bottom) + var(--s2))) max(var(--s4),env(safe-area-inset-left));
+  background:var(--surface);border-top:1px solid var(--rule);
+}
+.btn{
+  flex:1 1 auto;min-height:calc(52px*var(--ui));padding:0 var(--s5);border-radius:var(--radius-sm);
+  cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--on-accent);
+  font-size:calc(1.02rem*var(--ui));font-weight:700;transition:background .18s ease;
+}
+.btn:hover{background:var(--forest-deep)}
+.btn[disabled]{background:var(--panel);border-color:var(--rule);color:var(--tx-muted);cursor:not-allowed}
+.btn[disabled]:hover{background:var(--panel)}
+.btn.quiet{flex:0 0 auto;min-width:calc(52px*var(--ui));padding:0 var(--s4);
+  background:var(--surface-card);color:var(--tx);border-color:var(--rule)}
+.btn.quiet:hover{background:var(--panel)}
+
+/* ---------- toast ---------- */
+.toast{
+  /* left:50% alone caps the width at half the screen, because that is all the
+     room a fixed box has to grow into. Give it a width of its own. */
+  position:fixed;z-index:120;left:50%;bottom:calc(env(safe-area-inset-bottom) + 96px);
+  transform:translateX(-50%);width:min(92vw,520px);
+  padding:var(--s4);border-left:4px solid var(--clay);background:var(--surface-card);
+  box-shadow:var(--shadow-dialog);font-size:calc(.94rem*var(--ui));line-height:1.55;color:var(--tx);
+  opacity:0;pointer-events:none;transition:opacity .22s ease;
+}
+.toast.show{opacity:1}
+.toast b{display:block;margin-bottom:var(--s1);color:var(--clay);font-weight:700}
+
+/* ---------- dialog ---------- */
+.scrim{position:fixed;inset:0;z-index:90;background:rgba(12,51,25,.62);
+  opacity:0;pointer-events:none;transition:opacity .24s ease}
+.scrim.show{opacity:1;pointer-events:auto}
+.sheet{
+  position:fixed;z-index:100;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(92vw,560px);max-height:82dvh;overflow-y:auto;padding:var(--s5);
+  border:1px solid var(--rule);border-radius:var(--radius-md);background:var(--surface-card);
+  box-shadow:var(--shadow-dialog);opacity:0;pointer-events:none;transition:opacity .24s ease;
+}
+.sheet.show{opacity:1;pointer-events:auto}
+.sheet h2{font-family:var(--font-display);font-weight:600;color:var(--heading);font-size:calc(1.32rem*var(--ui))}
+.sheet p{font-size:calc(.95rem*var(--ui));line-height:1.6;color:var(--tx);margin:var(--s3) 0 0}
+.sheet kbd{display:inline-block;padding:1px 7px;border-radius:var(--radius-sm);
+  border:1px solid var(--rule);background:var(--panel);font-family:var(--font-ui);font-size:.82em;font-weight:600}
+.sheet-row{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+/* the teacher's half of the menu, fenced off from the student's half */
+.sheet h2.tnote{
+  margin-top:var(--s5);padding-top:var(--s4);border-top:1px solid var(--rule);
+  font-size:calc(.72rem*var(--ui));font-family:var(--font-ui);font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--kicker);
+}
+.sheet h2.tnote + p,.sheet h2.tnote ~ p{font-size:calc(.88rem*var(--ui));color:var(--tx-muted)}
+
+/* ---------- the Stage is also the projector size ----------
+   A hint is written to one person at arm's length, so it goes; a room reads
+   the headline. At distance a panel is read from its edge rather than from a
+   fill a shade off the ground, so every card gets a real border. */
+:root[data-theme="stage"] .hint{display:none}
+:root[data-theme="stage"] .card{border-width:1.5px;border-color:var(--rule)}
+:root[data-theme="stage"] .card.lead{border-left-color:var(--gold);border-left-width:6px}
+:root[data-theme="stage"] .kicker{letter-spacing:.16em}
+:root[data-theme="stage"] .band{font-style:normal}
+
+/* A classroom screen is short and wide, and scrolling loses the back row, so
+   on the projector the page stops being one tall column and opens sideways.
+   Below this width Stage behaves exactly like Paper, only larger. */
+@media (min-width:1000px){
+  :root[data-theme="stage"] .wrap{width:min(100%,1460px)}
+
+  /* step 1 — the scene on the left, the model on the right, both at once */
+  :root[data-theme="stage"] .p-observe{
+    display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);
+    gap:var(--s4);align-items:start;
+  }
+  /* step 4 — the rings get the room they deserve, the sentences sit beside */
+  :root[data-theme="stage"] .p-map .rings-wrap{
+    display:grid;grid-template-columns:auto minmax(0,1fr);
+    gap:var(--s6);align-items:center;margin-top:var(--s5);
+  }
+  :root[data-theme="stage"] .p-map .rings{width:360px}
+  /* the model is a reference on step 1, not the subject: it keeps its rows
+     on screen rather than filling the column */
+  :root[data-theme="stage"] .p-observe .rings{width:min(100%,300px)}
+  :root[data-theme="stage"] .p-map .rrows{margin-top:0}
+
+  /* the comparison — both sets of rings on the left, the layer on the right */
+  :root[data-theme="stage"] .cmp2{
+    display:grid;grid-template-columns:auto minmax(0,1fr);
+    gap:var(--s6);align-items:start;
+  }
+  :root[data-theme="stage"] .cmp2 .dials{grid-row:1 / span 3;gap:var(--s4)}
+  :root[data-theme="stage"] .cmp2 .dial .rings.dialring{width:190px}
+  /* the right column is not four tab-widths wide, and WORLDVIEW does not
+     abbreviate, so the tabs go two-up beside the pictures */
+  :root[data-theme="stage"] .cmp2-tabs{margin-top:0;grid-template-columns:repeat(2,minmax(0,1fr))}
+  :root[data-theme="stage"] .cmp2-foot,
+  :root[data-theme="stage"] .cmp2-body{grid-column:2}
+
+  /* the lesson panels read better wide than tall */
+  :root[data-theme="stage"] .rank{gap:var(--s6)}
+}
+
+/* ===========================================================================
+   PRINT · the blank field sheet, built to the Project Profile document anatomy:
+   running header, forest rule, fact panel on mist, gold square bullets, a
+   pull-quote band, the contact band, and a footer on every page.
+   Square, flat, no shadows.
+   =========================================================================== */
+#fieldsheet{display:none}
+@media print{
+  @page{margin:14mm 13mm}
+  .app,.toast,.scrim,.sheet{display:none !important}
+  html,body{overflow:visible;height:auto;background:#fff;color:#1D211C}
+  #fieldsheet{display:block;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+  .fs-head{display:flex;justify-content:space-between;font-family:'Public Sans',sans-serif;
+    font-size:7.5pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#134219}
+  .fs-mast{margin-top:6pt;padding-bottom:6pt;border-bottom:4pt solid #134219}
+  .fs-mast .prog{font-family:'Public Sans',sans-serif;font-size:7.5pt;font-weight:700;
+    letter-spacing:.13em;text-transform:uppercase;color:#8A6D2C;margin:0 0 3pt}
+  #fieldsheet h1{font-family:'Spectral',Georgia,serif;font-weight:600;font-size:21pt;color:#134219;margin:0}
+  #fieldsheet .tagline{font-family:'Spectral',Georgia,serif;font-style:italic;font-size:10pt;
+    color:#5F6A5C;margin:3pt 0 0}
+  #fieldsheet h2{font-family:'Spectral',Georgia,serif;font-weight:600;font-size:12.5pt;
+    color:#134219;margin:15pt 0 5pt}
+  #fieldsheet p,#fieldsheet li,#fieldsheet div{font-family:'Public Sans',sans-serif;font-size:9.5pt;line-height:1.5}
+  .fs-panel{background:#F4F6F0;border-left:4pt solid #B9924F;padding:8pt 10pt;margin-top:8pt}
+  .fs-panel p{margin:0}
+  .fs-bullets{margin:5pt 0 0;padding:0;list-style:none}
+  .fs-bullets li{position:relative;padding-left:14pt;margin-top:3pt}
+  .fs-bullets li::before{content:"";position:absolute;left:0;top:3.6pt;width:6pt;height:6pt;background:#B9924F}
+  .cap{font-family:'Public Sans',sans-serif;font-size:7.5pt;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:#5F6A5C;margin:0}
+  .lines{border:.75pt solid #9aa39a;height:62pt;margin-top:4pt}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8pt}
+  .grid3 .lines{height:120pt}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:6pt 16pt;margin-top:5pt}
+  .layer-print{border:.75pt solid #1D211C;padding:6pt 8pt;margin-top:6pt}
+  .layer-print .cap{color:#134219;margin-bottom:3pt}
+  .layer-print .q{font-family:'Spectral',Georgia,serif;font-style:italic;font-weight:400;
+    text-transform:none;letter-spacing:0;color:#5F6A5C;font-size:9pt}
+  .layer-print .blank{border-bottom:.5pt solid #b6bdb6;height:15pt;margin-top:4pt}
+  .fs-band{background:#134219;color:#fff;padding:9pt 11pt;margin-top:14pt;
+    font-family:'Spectral',Georgia,serif;font-style:italic;font-size:10pt;line-height:1.5}
+  .fs-contact{background:#134219;color:#fff;padding:10pt 11pt;margin-top:10pt}
+  .fs-contact .cap{color:#D2B978;margin-bottom:4pt}
+  .fs-contact p{margin:0;font-size:8.5pt;color:#fff}
+  .fs-foot{margin-top:10pt;padding-top:5pt;border-top:.75pt solid #b6bdb6;
+    display:flex;justify-content:space-between;font-family:'Public Sans',sans-serif;
+    font-size:7.5pt;color:#5F6A5C}
+  .pb{page-break-before:always}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="appbar" id="appbar">
+    <header class="topbar">
+      <span class="logo-chip"><img src="../brand/dialogue-logo.png" alt="Dialogue"></span>
+      <span class="brand-name" id="brand-text"><span class="brand-g">🎯</span>Culture Circles</span>
+      <span class="badge" id="theme-pill">Time</span>
+      <button class="icon-btn" id="btn-menu" title="Menu" aria-label="Menu">☰</button>
+    </header>
+    <nav class="rail"><div class="rail-inner" id="rail"></div></nav>
+  </div>
+
+  <main class="stage" id="stage"><div class="wrap" id="wrap"></div></main>
+
+  <footer class="actionbar">
+    <button class="btn quiet" id="btn-back" title="Back" aria-label="Back">←</button>
+    <button class="btn" id="btn-next">Continue</button>
+  </footer>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="glossbox" id="glossbox" role="dialog" aria-live="polite"></div>
+<div class="scrim" id="scrim"></div>
+
+<div class="sheet" id="sheet">
+  <h2>Culture in four rings</h2>
+  <p>You can only <em>see</em> the outside ring. Every ring inside it has to be asked for — and then
+     checked against three people, because one person’s answer is a story, not a culture.</p>
+  <ul class="bullets">
+    <li><b>Behaviour</b> — <i>what is done?</i> The outside ring, and the only one you can watch.</li>
+    <li><b>Values</b> — <i>what is good or best?</i> What they put first.</li>
+    <li><b>Beliefs</b> — <i>what is true?</i> What has to be true for that value to make sense.</li>
+    <li><b>Worldview</b> — <i>what is real?</i> The shape of the world those beliefs assume.</li>
+  </ul>
+  <p><b>Keys</b> — <kbd>→</kbd> continue · <kbd>←</kbd> back · <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> play or
+     pause a speaker · <kbd>T</kbd> transcripts · <kbd>R</kbd> new scenario · <kbd>P</kbd> present on TV ·
+     <kbd>F</kbd> fullscreen · <kbd>Esc</kbd> stop the audio</p>
+
+  <h2 class="tnote">For the teacher</h2>
+  <p>A four-panel lesson, then four steps: about 35 minutes. The lesson is shown once and the browser
+     remembers; “Show the lesson” brings it back for a new class. Its second panel is the one that
+     matters — the same three values ranked two ways — and it is worth stopping on.</p>
+  <p>Pairs work well: one student runs the audio, the other keeps notes on the printed field sheet.
+     The three wrong sentences in step 4 are the three traps — restatement, judgment and stereotype —
+     and they are worth more discussion than the three right ones.</p>
+  <p>Step 3 is the language work. Each interview can be heard three times and the word field changes
+     every time, so a second listen is not the first one with the answers known; step 3 will not release
+     the class until all three have been heard once. Opening the transcripts releases it — use that for
+     a weaker group, and note that every underlined word there can be tapped for its meaning.</p>
+  <p>Print the field sheet and the class can run a real interview outside the room with the same four
+     steps. The paper version has no answers in it.</p>
+
+  <div class="sheet-row">
+    <button class="mini" id="m-projector">Present on TV</button>
+    <button class="mini" id="m-print">Print field sheet</button>
+    <button class="mini" id="m-lesson">Show the lesson</button>
+    <button class="mini" id="m-shuffle">New scenario</button>
+    <button class="mini" id="m-close">Close</button>
+  </div>
+</div>
+
+<!-- ============ PRINTABLE FIELD SHEET · blank, for real interviews ============ -->
+<div id="fieldsheet">
+  <div class="fs-head"><span>Dialogue · Professional Skills Development Center</span><span>Field Sheet · Rajshahi</span></div>
+  <div class="fs-mast">
+    <p class="prog">Applied Professional English · Cross-Cultural Judgment</p>
+    <h1>Ethnographic Interview</h1>
+    <p class="tagline">Watch what is done, ask one good question, listen to three people, then open the layers.</p>
+  </div>
+
+  <div class="fs-panel">
+    <p class="cap" style="margin-bottom:4pt">Before you start</p>
+    <p>Name ________________________  Date ________________  Where ________________________</p>
+  </div>
+
+  <h2>1 · Observe — what is done?</h2>
+  <p class="cap">The behaviour I saw. Only what a camera would record — no explanation yet.</p>
+  <div class="lines"></div>
+  <p class="cap" style="margin-top:7pt">Why it surprised me</p>
+  <div class="lines"></div>
+
+  <h2>2 · Ask — my research question</h2>
+  <div class="grid2">
+    <div>&#9744; Cannot be answered yes / no</div>
+    <div>&#9744; No judgment hidden inside it</div>
+    <div>&#9744; About one person and one event</div>
+    <div>&#9744; Asks for a story, not a theory</div>
+  </div>
+  <ul class="fs-bullets">
+    <li>Tell me about the last time you&hellip;</li>
+    <li>Walk me through it, from start to finish.</li>
+    <li>What did you do first?</li>
+    <li>Think of someone you respected — what did you actually see them do?</li>
+  </ul>
+  <p class="cap" style="margin-top:7pt">My question</p>
+  <div class="lines"></div>
+
+  <h2>3 · Listen — three people, three answers</h2>
+  <div class="grid3">
+    <div><p class="cap">Person 1 ____________</p><div class="lines"></div></div>
+    <div><p class="cap">Person 2 ____________</p><div class="lines"></div></div>
+    <div><p class="cap">Person 3 ____________</p><div class="lines"></div></div>
+  </div>
+
+  <h2>4 · Triangulate</h2>
+  <p class="cap">Said by all three — this is the cultural pattern</p>
+  <div class="lines"></div>
+  <p class="cap" style="margin-top:7pt">Said by only one — personal, set it aside</p>
+  <div class="lines"></div>
+
+  <div class="fs-foot"><span>Dialogue · Professional Skills Development Center, Rajshahi</span><span>dialogue-bd.com</span></div>
+
+  <div class="pb"></div>
+  <div class="fs-head"><span>Dialogue · Professional Skills Development Center</span><span>Field Sheet · Rajshahi</span></div>
+  <div class="fs-mast">
+    <p class="prog">Step 5</p>
+    <h1>Fill the Rings</h1>
+    <p class="tagline">One ring at a time. Never jump from the outside straight to the centre.</p>
+  </div>
+
+  <h2>Their rings</h2>
+  <div class="layer-print"><p class="cap">1 · Behaviour — the outside ring <span class="q">what is done?</span></p>
+    <div class="blank"></div></div>
+  <div class="layer-print"><p class="cap">2 · Values <span class="q">what is good or best?</span></p>
+    <div class="blank"></div><div class="blank"></div></div>
+  <div class="layer-print"><p class="cap">3 · Beliefs <span class="q">what is true?</span></p>
+    <div class="blank"></div><div class="blank"></div></div>
+  <div class="layer-print"><p class="cap">4 · Worldview — the centre <span class="q">what is real?</span></p>
+    <div class="blank"></div><div class="blank"></div></div>
+
+  <h2>Your rings, same situation</h2>
+  <div class="layer-print"><p class="cap">1 · Behaviour — the outside ring <span class="q">what is done?</span></p>
+    <div class="blank"></div></div>
+  <div class="layer-print"><p class="cap">2 · Values <span class="q">what is good or best?</span></p>
+    <div class="blank"></div><div class="blank"></div></div>
+  <div class="layer-print"><p class="cap">3 · Beliefs <span class="q">what is true?</span></p>
+    <div class="blank"></div><div class="blank"></div></div>
+  <div class="layer-print"><p class="cap">4 · Worldview — the centre <span class="q">what is real?</span></p>
+    <div class="blank"></div><div class="blank"></div></div>
+
+  <h2>Three traps</h2>
+  <ul class="fs-bullets">
+    <li><b>Restatement</b> — you renamed the behaviour and called it a value. Nothing was explained.</li>
+    <li><b>Judgment</b> — you wrote how you feel about them, not what they rank highest.</li>
+    <li><b>Stereotype</b> — it explains everything, predicts nothing, and no interview can check it.</li>
+  </ul>
+
+  <div class="fs-band">Write both sets of rings so that a person from that culture would read yours and say:
+    yes — that is what I was doing.</div>
+
+  <div class="fs-contact">
+    <p class="cap">Dialogue · English &amp; Skills Center</p>
+    <p>Ward No. 26, Rajshahi City Corporation, Rajshahi · dialogue.english.bd@gmail.com · dialogue-bd.com</p>
+  </div>
+
+  <div class="fs-foot"><span>Dialogue · Professional Skills Development Center, Rajshahi</span><span>dialogue-bd.com</span></div>
+</div>
+
+<script src="glossary.js"></script>
+<script src="timings.js"></script>
+<script src="scenarios.js"></script>
+<script>
+(function(){
+'use strict';
+
+/* ------------------------------------------------------------------ utils */
+const $ = s => document.querySelector(s);
+const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) n.className = cls;
+  if (txt != null) n.textContent = txt; return n; };
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+const stage = $('#stage'), wrap = $('#wrap'), railEl = $('#rail');
+
+/* The bar's height changes with the theme (--ui) and with the logo, so measure
+   it rather than guessing a padding that a projector would break. */
+function measureHeader(){
+  const h = $('#appbar').getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--header-h', Math.round(h) + 'px');
+}
+window.addEventListener('resize', measureHeader);
+window.addEventListener('load', measureHeader);
+const btnNext = $('#btn-next'), btnBack = $('#btn-back'), toastEl = $('#toast');
+
+const STEPS = [['Watch', 'eye'], ['Ask', 'ask'], ['Listen', 'ear'], ['Map', 'target']];
+
+let deck = [], sc = null, step = 0, state = null;
+
+function draw(){
+  if (!deck.length) deck = shuffle(SCENARIOS.map((_, i) => i));
+  return SCENARIOS[deck.pop()];
+}
+
+/* ------------------------------------------------------------------ audio
+   One voice at a time, always. `cur` is the only interview that owns the
+   speakers; anything that starts an interview first tears `cur` down, so two
+   can never overlap. The play button pauses and resumes the interview it
+   started, and the replay button starts that same interview again from zero.
+   Both paths — a recorded mp3 and the browser's own speech engine — go
+   through the same four calls, so the buttons behave identically either way. */
+let voices = [];
+function loadVoices(){ voices = window.speechSynthesis ? speechSynthesis.getVoices() : []; }
+if (window.speechSynthesis){ loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+
+const FEM = /female|zira|samantha|victoria|karen|moira|tessa|fiona|serena|allison|ava|susan|joanna|aria|jenny|michelle|sonia|libby/i;
+const MAL = /male|david|mark|alex|daniel|fred|tom|george|guy|ryan|brian|aaron|eric|thomas|oliver|arthur/i;
+
+function pickVoice(gender, seed){
+  if (!voices.length) return null;
+  const en = voices.filter(v => /^en/i.test(v.lang));
+  const pool = en.length ? en : voices;
+  const want = gender === 'female' ? FEM : MAL;
+  const avoid = gender === 'female' ? MAL : FEM;
+  let m = pool.filter(v => want.test(v.name));
+  if (!m.length) m = pool.filter(v => !avoid.test(v.name));
+  if (!m.length) m = pool;
+  return m[seed % m.length];
+}
+
+function ttsAvailable(){ return !!(window.speechSynthesis && window.SpeechSynthesisUtterance); }
+
+/* Chrome silently stops a long utterance after ~15s unless it is nudged, so
+   speak sentence by sentence and run a keep-alive ticker for the whole run. */
+function sentences(text){
+  const parts = text.match(/[^.!?…]+[.!?…]*\s*/g) || [text];
+  const out = [];
+  parts.forEach(s => {
+    s = s.trim(); if (!s) return;
+    const last = out[out.length - 1];
+    if (last && (last.length + s.length) < 170) out[out.length - 1] = last + ' ' + s;
+    else out.push(s);
+  });
+  return out;
+}
+
+let cur = null;      /* the interview that owns the speakers right now */
+let queue = false;   /* true only while Play all is walking the three */
+
+const rowOf = i => document.querySelector('.spk[data-i="' + i + '"]');
+
+function paintRow(i, st, pct){
+  const row = rowOf(i); if (!row) return;
+  row.classList.toggle('is-playing', st === 'play');
+  row.classList.toggle('is-paused',  st === 'pause');
+  const b = row.querySelector('.play');
+  if (b){
+    /* the button keeps its word: a bare glyph is one more thing to decode */
+    b.innerHTML = '';
+    b.appendChild(icon(st === 'play' ? 'pausemark' : 'playmark', 'play-ico'));
+    b.appendChild(el('span', 'play-word', st === 'play' ? 'Pause' : 'Play'));
+    b.setAttribute('aria-label', (st === 'play' ? 'Pause ' : 'Play ') + sc.speakers[i].name);
+  }
+  const rp = row.querySelector('.replay'); if (rp) rp.disabled = !canReplay(i);
+  const bar = row.querySelector('.spk-prog i');
+  if (bar){
+    if (st === 'idle') bar.style.width = '0';
+    else if (pct != null) bar.style.width = Math.max(0, Math.min(100, pct)) + '%';
+  }
+}
+
+/* Replay stays available once a speaker has been heard through — that button
+   is how you reach listens two and three, so switching it off at the end of a
+   listen closes the door on the whole point of the exercise. */
+function canReplay(i){
+  return (state.passes[i] || 0) > 0 || (cur && cur.i === i);
+}
+
+function clearRows(){
+  document.querySelectorAll('.spk').forEach(r => {
+    r.classList.remove('is-playing', 'is-paused');
+    const b = r.querySelector('.play');
+    if (b){ b.innerHTML = '';
+            b.appendChild(icon('playmark', 'play-ico'));
+            b.appendChild(el('span', 'play-word', 'Play'));
+            b.setAttribute('aria-label', 'Play interview'); }
+    const rp = r.querySelector('.replay'); if (rp) rp.disabled = !canReplay(+r.dataset.i);
+    const bar = r.querySelector('.spk-prog i'); if (bar) bar.style.width = '0';
+  });
+}
+
+/* keepQueue is set only by the player itself, when one interview hands over
+   to the next. Every other caller — a tap, a key, leaving the step — means
+   the sequence is over too. */
+function stopAudio(keepQueue){
+  if (!keepQueue) queue = false;
+  if (cur){
+    const c = cur; cur = null;
+    /* a round still open here means the student stopped part-way: it does not
+       count as a listen, and the half-finished field goes away with it */
+    if (c.round){ c.round = null; catchClear(c.i); }
+    clearCaption(c.i);
+    clearInterval(c.keepAlive); clearInterval(c.tick); clearTimeout(c.watchdog);
+    if (c.audio){
+      c.audio.onended = null; c.audio.onerror = null; c.audio.ontimeupdate = null;
+      try { c.audio.pause(); } catch (e) {}
+    }
+    clearKaraoke(c.i);
+  }
+  if (window.speechSynthesis) speechSynthesis.cancel();
+  clearRows();
+}
+
+function startSpeaker(i){
+  stopAudio(true);
+  const sp = sc.speakers[i];
+  /* is-heard means heard through, not touched: it is set when the listen
+     lands, by refreshCard. Setting it here turned the portrait to colour the
+     moment play was pressed, against a band still reading "not yet heard". */
+  catchClear(i);            /* a fourth listen must not sit under listen three's score */
+
+  const c = { i: i, paused: false, audio: null, fellBack: false,
+              keepAlive: null, tick: null, watchdog: null,
+              chunks: null, ci: 0, spoken: 0, est: 1, t0: 0,
+              times: (wordTimes(i) || {}).w || null, kw: 0 };
+  cur = c;
+
+  const finish = () => {
+    if (cur !== c) return;
+    catchEnd(c, i);               /* the listen only counts if it reached the end */
+    stopAudio(true);
+    if (queue) handOver(i);
+  };
+
+  const speak = () => {
+    if (cur !== c || c.fellBack) return;
+    c.fellBack = true; c.audio = null;
+    if (!ttsAvailable() || !voices.length){
+      stopAudio(false);
+      openTranscripts();
+      toast('No voices on this device',
+        'The transcripts are open instead. Recorded audio put in the audio folder plays automatically.');
+      return;
+    }
+    const v = pickVoice(sp.voice.gender, i + sc.id.length);
+    const words = sp.script.split(/\s+/).length;
+    if (state.passes[i] < 3 && !c.round) catchStart(c, i);
+    c.chunks = (c.round && c.round.sents.length) ? c.round.sents : sentences(sp.script);
+    c.ci = 0;
+    c.est = (words / 2.4) * 1000;
+    c.t0 = Date.now(); c.spoken = 0;
+
+    const next = () => {
+      if (cur !== c) return;
+      if (c.ci >= c.chunks.length){ finish(); return; }
+      catchShow(c, i, c.ci);
+      catchCountdown(i, 1, false);   /* no alignment behind the speech engine */
+      const u = new SpeechSynthesisUtterance(c.chunks[c.ci++]);
+      if (v) u.voice = v;
+      u.rate = sp.voice.rate; u.pitch = sp.voice.pitch; u.lang = (v && v.lang) || 'en-US';
+      u.onend = next;
+      u.onerror = () => { if (c.ci >= c.chunks.length) finish(); else next(); };
+      speechSynthesis.speak(u);
+    };
+    /* the nudge must not un-pause an interview the student paused on purpose */
+    c.keepAlive = setInterval(() => {
+      if (cur !== c || c.paused || !speechSynthesis.speaking) return;
+      speechSynthesis.pause(); speechSynthesis.resume();
+    }, 9000);
+    c.tick = setInterval(() => {
+      if (cur !== c) return;
+      if (!c.paused) c.spoken = Date.now() - c.t0;
+      paintRow(i, c.paused ? 'pause' : 'play', c.spoken / c.est * 100);
+    }, 250);
+    c.watchdog = setTimeout(() => {
+      if (cur === c && !speechSynthesis.speaking) finish();
+    }, (words / 2.2 + 16) * 1000);
+
+    paintRow(i, 'play', 0);
+    next();
+  };
+
+  const a = new Audio('audio/' + sc.id + '-' + (i + 1) + '.mp3');
+  c.audio = a;
+  a.ontimeupdate = () => {
+    if (cur !== c || !a.duration) return;
+    const t = a.currentTime;
+    paintRow(i, c.paused ? 'pause' : 'play', t / a.duration * 100);
+    catchTick(c, i, t, a.duration);
+    if (c.times){ c.kw = wordAt(t, c.times, c.kw); paintKaraoke(i, c.kw); }
+  };
+  a.onended = finish;
+  a.onerror = speak;
+  paintRow(i, 'play', 0);
+  if (state.passes[i] < 3) catchStart(c, i);
+  a.play().catch(speak);
+}
+
+function pauseCur(){
+  if (!cur || cur.paused) return;
+  cur.paused = true;
+  if (cur.audio){ try { cur.audio.pause(); } catch (e) {} }
+  else if (window.speechSynthesis) speechSynthesis.pause();
+  paintRow(cur.i, 'pause', null);
+}
+
+function resumeCur(){
+  if (!cur || !cur.paused) return;
+  cur.paused = false;
+  if (cur.audio) cur.audio.play().catch(() => {});
+  else if (window.speechSynthesis){ speechSynthesis.resume(); cur.t0 = Date.now() - cur.spoken; }
+  paintRow(cur.i, 'play', null);
+}
+
+/* the play button: pause and resume the one it started, switch to any other */
+function togglePlay(i){
+  if (cur && cur.i === i){ cur.paused ? resumeCur() : pauseCur(); return; }
+  queue = false;
+  startSpeaker(i);
+}
+
+function replaySpeaker(i){ queue = false; startSpeaker(i); }
+
+function playAll(){ queue = true; startSpeaker(0); }
+
+function handOver(justFinished){
+  const n = justFinished + 1;
+  if (!queue) return;
+  if (n >= sc.speakers.length){ queue = false; return; }
+  setTimeout(() => { if (queue) startSpeaker(n); }, 450);
+}
+
+function openTranscripts(){
+  if (state.tOpen) return;
+  const b = document.getElementById('btn-transcripts');
+  if (b) b.click();
+}
+
+/* ------------------------------------------------------------------ toast */
+let toastT = null;
+function toast(title, msg){
+  toastEl.innerHTML = '';
+  toastEl.appendChild(el('b', null, title));
+  toastEl.appendChild(document.createTextNode(msg));
+  toastEl.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => toastEl.classList.remove('show'), 5200);
+}
+
+/* ------------------------------------------------------------------- rail */
+function renderRail(){
+  railEl.innerHTML = '';
+  requestAnimationFrame(measureHeader);
+  const names = lesson ? LESSON.map(l => [l.rail, l.ico]) : STEPS;
+  const at = lesson ? lstep : step;
+  names.forEach((s, i) => {
+    const n = el('div', 'rail-step' + (i === at ? ' is-active' : i < at ? ' is-done' : ''));
+    n.appendChild(icon(s[1], 'rail-ico'));
+    n.appendChild(el('span', null, s[0]));
+    railEl.appendChild(n);
+  });
+}
+
+/* --------------------------------------------------------------- scenario */
+function newScenario(keepLesson){
+  stopAudio();
+  if (!keepLesson) lesson = false;
+  sc = draw();
+  step = 0;
+  state = { qDone: false, passes: [0, 0, 0], tOpen: false,
+            claimsDone: false, picked: new Set(), placed: {}, mapDone: false,
+            chosenQ: null };
+  /* The brand layer does not recolour per theme — the badge carries the theme. */
+  const th = THEMES[sc.theme];
+  const pill = $('#theme-pill');
+  pill.innerHTML = '';
+  pill.appendChild(el('span', 'pill-g', th.icon));
+  pill.appendChild(el('span', 'pill-lab', th.label));
+  render();
+}
+
+/* ------------------------------------------------------------------ steps */
+function render(){
+  hideGloss();
+  renderRail();
+  wrap.innerHTML = '';
+  stage.scrollTop = 0;
+  if (lesson){ stepLesson(); btnBack.disabled = (lstep === 0); syncNext(); return; }
+  [stepObserve, stepAsk, stepListen, stepMap][step]();
+  btnBack.disabled = (step === 0);
+  syncNext();
+}
+
+function syncNext(){
+  if (lesson){
+    btnNext.disabled = false;
+    btnNext.textContent = (lstep === LESSON.length - 1) ? 'Start the activity' : 'Next';
+    return;
+  }
+  /* step 3 asks for one full listen to each speaker before it will let go;
+     opening the transcripts is the way out for anyone who cannot get there */
+  const listened = state.passes.every(n => n >= 1);
+  const ready = [true, state.qDone, state.claimsDone && listened, state.mapDone][step];
+  btnNext.disabled = !ready;
+  /* a disabled button that will not say why is its own small cruelty */
+  btnNext.textContent = ['Ask a question', 'Listen to three people',
+                         listened ? 'Fill the rings' : 'Listen to all three first',
+                         'Next scenario'][step];
+}
+
+/* ---------------------------------------------------------- word timings
+   timings.js carries one [start, end] pair per transcript word, produced by
+   forced alignment (tools/align.py). Everything that needs to know where in a
+   recording a word falls — the karaoke highlight, the word-catch windows —
+   reads it from here rather than estimating from character counts, which was
+   always a guess and drifted whenever a speaker paused.
+
+   There is nothing to fall back on for the speech engine, which invents its
+   own pacing; that path keeps the per-utterance scheme it already used. */
+function wordTimes(i){
+  const key = sc.id + '-' + (i + 1);
+  return (typeof TIMINGS !== 'undefined' && TIMINGS[key]) ? TIMINGS[key] : null;
+}
+
+/* which word is being said at time t — a walk forward from the last answer,
+   because this is called four times a second and the index only ever grows */
+function wordAt(t, w, from){
+  let i = Math.max(0, from | 0);
+  if (i >= w.length || w[i][0] > t) i = 0;
+  while (i + 1 < w.length && w[i + 1][0] <= t) i++;
+  return (t >= w[i][0] - 0.02) ? i : -1;
+}
+
+/* ---------------------------------------------------------- live captions
+   With the transcripts closed the reply bubble used to be empty, which made
+   the whole screen read as a test with the answers hidden. It now shows the
+   line being spoken, one window at a time, with the same word-by-word
+   highlight — the student is reading along with a person, not waiting to be
+   marked. Opening the transcripts swaps the line for the whole answer. */
+function captionWords(i, lo, hi){
+  const sp = sc.speakers[i];
+  const parts = sp.script.match(/[A-Za-z’'-]+|[^A-Za-z’'-]+/g) || [];
+  const isW = p => /[A-Za-z]/.test(p);
+  const box = el('div', 'caption');
+  let w = -1;
+  parts.forEach(p => {
+    if (!isW(p)){ if (w >= lo && w <= hi) box.appendChild(document.createTextNode(p)); return; }
+    w++;
+    if (w < lo || w > hi) return;
+    const n = el('span', 'tw', p);
+    n.dataset.lo = w; n.dataset.hi = w;
+    box.appendChild(n);
+  });
+  return box;
+}
+
+function showCaption(c, i, n){
+  /* nothing to read on the first pass: that one is pure listening */
+  if ((state.passes[i] || 0) < 1) return;
+  if (state.tOpen || !c.round || !c.round.bounds[n]) return;
+  const row = rowOf(i); if (!row) return;
+  const bub = row.querySelector('.bubble'); if (!bub) return;
+  const b = c.round.bounds[n];
+  const fresh = captionWords(i, b[0], b[1]);
+  const old = bub.querySelector('.caption');
+  if (old) old.replaceWith(fresh); else bub.insertBefore(fresh, bub.firstChild);
+}
+
+function clearCaption(i){
+  const row = rowOf(i); if (!row) return;
+  const cap = row.querySelector('.caption');
+  if (cap) cap.remove();
+}
+
+/* --------------------------------------------------------------- karaoke
+   The transcript is rebuilt with one span per word, so a highlight can move
+   through it while the interview plays. A glossed phrase is one button that
+   owns several words, and it lights up for the whole phrase. */
+function paintKaraoke(i, wi){
+  const row = rowOf(i); if (!row) return;
+  const tr = row.querySelector('.caption:not([hidden])') ||
+             row.querySelector('.transcript:not([hidden])');
+  if (!tr) return;
+  if (tr.karaokeAt === wi) return;
+  tr.karaokeAt = wi;
+  const was = tr.querySelector('.tw.is-now');
+  if (was) was.classList.remove('is-now');
+  if (wi < 0) return;
+  const now = tr.querySelector('.tw[data-lo="' + wi + '"]') ||
+              [...tr.querySelectorAll('.tw')].find(n =>
+                wi >= +n.dataset.lo && wi <= +n.dataset.hi);
+  if (!now) return;
+  now.classList.add('is-now');
+  /* keep the spoken line in view, but only when the transcript is scrollable
+     on its own — otherwise this fights the student scrolling the page */
+  if (tr.scrollHeight > tr.clientHeight + 4){
+    const b = now.getBoundingClientRect(), p = tr.getBoundingClientRect();
+    if (b.top < p.top + 8 || b.bottom > p.bottom - 8)
+      tr.scrollTop += (b.top - p.top) - tr.clientHeight * 0.4;
+  }
+}
+
+function clearKaraoke(i){
+  const row = rowOf(i); if (!row) return;
+  row.querySelectorAll('.caption, .transcript').forEach(tr => {
+    tr.karaokeAt = undefined;
+    const was = tr.querySelector('.tw.is-now');
+    if (was) was.classList.remove('is-now');
+  });
+}
+
+/* ------------------------------------------------------- catch the words
+   Comprehensible input, made into something to do with your hands. While an
+   interview plays, each sentence puts a handful of words on screen: two are
+   really in it, the rest are not. Tap what you hear.
+
+   Three listens per speaker, and each listen rotates to different words in
+   the same sentences — so the second time through is not the first time
+   through with the answers already known.
+
+   The sentence list is shared by both audio paths. A recorded mp3 gets time
+   windows proportional to sentence length, which is rough but generous; the
+   speech engine speaks one sentence per utterance, so its windows are exact. */
+
+const CATCH_STOP = new Set(('a an the and or but if so then that this these those there here ' +
+  'to of in on at for with from by as into out up down over under about ' +
+  'is am are was were be been being do does did done have has had will would could should can cannot ' +
+  'i you he she it we they me him her them us my your his their our its ' +
+  'not no yes very just too also only even still more most much many some any ' +
+  'what when where who how why which while because than then now never ever ' +
+  'one two three four five six seven eight nine ten').split(/\s+/));
+
+function catchSentences(text){
+  const raw = (text.match(/[^.!?…]+[.!?…]*/g) || [text])
+    .map(s => s.trim()).filter(Boolean);
+  /* a two-word sentence has nothing to catch, so it rides along with the next */
+  const out = [];
+  raw.forEach(s => {
+    if (out.length && catchWords(out[out.length - 1]).length < 2) out[out.length - 1] += ' ' + s;
+    else out.push(s);
+  });
+  while (out.length > 1 && catchWords(out[out.length - 1]).length < 2){
+    const tail = out.pop(); out[out.length - 1] += ' ' + tail;
+  }
+  return out;
+}
+
+function catchWords(sentence){
+  const seen = [];
+  (sentence.match(/[A-Za-z’'-]+/g) || []).forEach(w => {
+    const c = w.replace(/^[’'-]+|[’'-]+$/g, '').toLowerCase();
+    if (c.length >= 4 && !CATCH_STOP.has(c) && seen.indexOf(c) < 0) seen.push(c);
+  });
+  return seen;
+}
+
+/* every content word anywhere in the activity — the decoys come from here,
+   so a wrong answer is always a real English word, never nonsense */
+let CATCH_POOL = null;
+function catchPool(){
+  if (CATCH_POOL) return CATCH_POOL;
+  const all = [];
+  SCENARIOS.forEach(s => s.speakers.forEach(sp =>
+    catchWords(sp.script).forEach(w => { if (all.indexOf(w) < 0) all.push(w); })));
+  CATCH_POOL = all;
+  return all;
+}
+
+/* Windows of roughly even length, each boundary moved to the nearest real
+   pause so it does not cut a phrase in half.
+
+   The first version cut on sentences, which sounds tidy and plays terribly:
+   across the eighteen recordings that gave windows from 0.8s to 8.9s, a third
+   of them under two and a half seconds. Five words flashing up for 0.8s is
+   unreadable and five words sitting there for 8.9s is dead air — which is
+   exactly what it felt like. Even windows run 3.2s to 8.8s with a median of
+   6.3s, and the number of words follows the length, so a student always gets
+   about a second and a half per word to find it. */
+const CATCH_WINDOW = 6.5;
+function evenWindows(w, dur){
+  const n = Math.max(2, Math.round(dur / CATCH_WINDOW));
+  const cuts = [0];
+  for (let k = 1; k < n; k++){
+    const want = dur * k / n;
+    let best = -1, score = -1;
+    for (let i = 1; i < w.length; i++){
+      const d = Math.abs(w[i][0] - want);
+      if (d > 1.6) continue;
+      const gap = w[i][0] - w[i - 1][1];        /* the breath before this word */
+      const s = gap * 2 - d * 0.35;
+      if (s > score){ score = s; best = i; }
+    }
+    if (best > cuts[cuts.length - 1]) cuts.push(best);
+  }
+  cuts.push(w.length);
+  const out = [];
+  for (let i = 0; i < cuts.length - 1; i++) out.push([cuts[i], cuts[i + 1] - 1]);
+  return out;
+}
+
+/* one window's worth of words, at about a second and a half each */
+function chipCount(secs){ return Math.max(3, Math.min(6, Math.round(secs / 1.5))); }
+
+function contentOf(words){
+  const seen = [];
+  words.forEach(w => {
+    const c = w.replace(/^[’'-]+|[’'-]+$/g, '').toLowerCase();
+    if (c.length >= 4 && !CATCH_STOP.has(c) && seen.indexOf(c) < 0) seen.push(c);
+  });
+  return seen;
+}
+
+/* one round: the windows, and the word field for each of them */
+function catchRound(i, pass){
+  const sp = sc.speakers[i];
+  const t = wordTimes(i);
+  const toks = sp.script.match(/[A-Za-z’'-]+/g) || [];
+  const sents = catchSentences(sp.script);      /* the speech engine speaks these */
+
+  let bounds;
+  if (t && t.w.length === toks.length){
+    bounds = evenWindows(t.w, t.dur);
+  } else {
+    bounds = []; let at = 0;
+    sents.forEach(sen => {
+      const n = (sen.match(/[A-Za-z’'-]+/g) || []).length;
+      bounds.push([at, at + n - 1]); at += n;
+    });
+  }
+
+  const mine = {};
+  contentOf(toks).forEach(w => mine[w] = 1);
+  const bag = shuffle(catchPool().filter(w => !mine[w]));
+  let d = 0;
+
+  const sets = bounds.map(b => {
+    const secs = t ? (t.w[b[1]][1] - t.w[b[0]][0]) : CATCH_WINDOW;
+    const chips = chipCount(secs);
+    const want = Math.max(1, Math.min(3, Math.round(chips * 0.4)));
+
+    const cw = contentOf(toks.slice(b[0], b[1] + 1));
+    /* rotate by the pass number so listen two asks for different words */
+    const off = cw.length ? (pass * want) % cw.length : 0;
+    const rot = cw.slice(off).concat(cw.slice(0, off));
+    const targets = rot.slice(0, Math.min(want, cw.length));
+    const decoys = [];
+    while (decoys.length < chips - targets.length && d < bag.length) decoys.push(bag[d++]);
+    return shuffle(targets.map(w => ({ w: w, ok: true }))
+                          .concat(decoys.map(w => ({ w: w, ok: false }))));
+  });
+
+  return { sents: sents, sets: sets, bounds: bounds, idx: -1, caught: 0,
+           targets: sets.reduce((n, s) => n + s.filter(x => x.ok).length, 0) };
+}
+
+function catchNode(i){
+  const row = rowOf(i);
+  return row ? row.querySelector('.catch') : null;
+}
+
+function passDots(i){
+  const d = el('span', 'dots');
+  for (let k = 0; k < 3; k++) d.appendChild(el('i', k < (state.passes[i] || 0) ? 'on' : ''));
+  return d;
+}
+
+function catchHead(i, label){
+  const bar = el('div', 'catch-bar');
+  bar.appendChild(el('span', null, label));
+  bar.appendChild(passDots(i));
+  return bar;
+}
+
+function catchStart(c, i){
+  const box = catchNode(i);
+  if (!box) return;
+  c.round = catchRound(i, state.passes[i] || 0);
+  box.hidden = false;
+  box.innerHTML = '';
+  box.appendChild(catchHead(i, 'Listen ' + ((state.passes[i] || 0) + 1) + ' of 3 · tap the words you hear'));
+  /* the countdown is the whole point: the field used to change with no warning
+     and a tap already on its way landed on whatever took the old word's place */
+  const cd = el('div', 'catch-cd'); cd.appendChild(el('i'));
+  box.appendChild(cd);
+  box.appendChild(el('div', 'catch-grid'));
+}
+
+/* Show the field for sentence n. The outgoing set does not vanish — it dims
+   and stays tappable for a moment while the new one arrives, so a tap in
+   flight is never punished for being late. */
+const CATCH_GRACE = 1500;
+function catchShow(c, i, n){
+  if (!c.round || n === c.round.idx || n >= c.round.sets.length) return;
+  c.round.idx = n;
+  const box = catchNode(i); if (!box) return;
+  const grid = box.querySelector('.catch-grid'); if (!grid) return;
+
+  [...grid.querySelectorAll('.cw-set')].forEach(old => {
+    if (old.classList.contains('is-leaving')) { old.remove(); return; }
+    old.classList.add('is-leaving');
+    setTimeout(() => old.remove(), CATCH_GRACE);
+  });
+
+  showCaption(c, i, n);
+
+  const set = el('div', 'cw-set');
+  c.round.sets[n].forEach(item => {
+    const b = el('button', 'cw', item.w);
+    b.type = 'button';
+    b.onclick = () => {
+      if (b.disabled) return;
+      b.disabled = true;
+      if (item.ok){ b.classList.add('got'); c.round.caught++; }
+      else b.classList.add('no');
+    };
+    set.appendChild(b);
+  });
+  grid.appendChild(set);
+}
+
+/* how much of the current sentence is left, 1 down to 0 */
+function catchCountdown(i, frac, closing){
+  const box = catchNode(i); if (!box) return;
+  const bar = box.querySelector('.catch-cd'); if (!bar) return;
+  bar.classList.toggle('is-closing', !!closing);
+  bar.firstChild.style.width = Math.max(0, Math.min(1, frac)) * 100 + '%';
+}
+
+/* the round is over: score it, show what was missed, bank the listen */
+function catchEnd(c, i){
+  if (!c.round) return;
+  const r = c.round;
+  c.round = null;
+  state.passes[i] = Math.min(3, (state.passes[i] || 0) + 1);
+  syncNext();
+  refreshGists();
+  refreshCard(i);        /* the card reopens with its words available */
+  const box = catchNode(i);
+  if (!box) return;
+
+  box.innerHTML = '';
+  box.appendChild(catchHead(i, 'Listen ' + state.passes[i] + ' of 3'));
+  const foot = el('div', 'catch-foot');
+  foot.appendChild(el('span', 'catch-score', r.caught + ' / ' + r.targets));
+  foot.appendChild(document.createTextNode(
+    state.passes[i] < 3 ? '↻ for different words' : 'Three listens done — open the transcript.'));
+  box.appendChild(foot);
+}
+
+/* rebuild one informant card in place — after a listen it has a transcript it
+   did not have before, and its band no longer says "not yet heard" */
+function refreshCard(i){
+  const old = rowOf(i);
+  if (!old) return;
+  old.replaceWith(informantCard(sc.speakers[i], i));
+  const t = document.getElementById('btn-transcripts');
+  if (t && state.passes.some(n => n > 0)){ t.disabled = false; t.title = ''; }
+}
+
+function catchClear(i){
+  const box = catchNode(i);
+  if (box){ box.hidden = true; box.innerHTML = ''; }
+}
+
+/* Where are we, in sentences? With real word timings this is exact; without
+   them — the speech-engine path — the caller advances by utterance instead. */
+function catchTick(c, i, t, dur){
+  const w = c.times;
+  if (!c.round || !w) return;
+  const b = c.round.bounds;
+  let n = 0;
+  for (let k = 0; k < b.length; k++){
+    if (t >= w[b[k][0]][0] - 0.15) n = k; else break;
+  }
+  catchShow(c, i, n);
+  const from = w[b[n][0]][0], to = w[b[n][1]][1];
+  const left = (to - from) > 0.2 ? (to - t) / (to - from) : 0;
+  catchCountdown(i, left, left < 0.22);
+}
+
+/* ------------------------------------------------------------- word help
+   The transcript is rebuilt token by token so the original text survives
+   exactly — spacing, punctuation, the lot — and only the runs the glossary
+   knows about become buttons. A phrase swallows its own words, so "figure
+   out" is one button rather than two. */
+const KIND_LABEL = { idiom: 'Idiom', phrasal: 'Phrasal verb', grammar: 'Grammar',
+                     discourse: 'Conversation word', word: 'Word' };
+
+function glossedTranscript(text){
+  const box = el('div', 'transcript');
+  const parts = text.match(/[A-Za-z’'-]+|[^A-Za-z’'-]+/g) || [];
+  const isW = p => /[A-Za-z]/.test(p);
+  const words = [], at = [];
+  parts.forEach((p, i) => { if (isW(p)){ words.push(p); at.push(i); } });
+
+  let p = 0, w = 0;
+  while (p < parts.length){
+    if (!isW(parts[p])){ box.appendChild(document.createTextNode(parts[p])); p++; continue; }
+    const hit = (typeof glossAt === 'function') ? glossAt(words, w) : null;
+    if (hit){
+      const last = at[w + hit.len - 1];
+      const b = el('button', 'w tw', parts.slice(p, last + 1).join(''));
+      b.type = 'button';
+      b.dataset.k = hit.entry.k;
+      b.dataset.lo = w; b.dataset.hi = w + hit.len - 1;
+      b.gloss = hit.entry;
+      box.appendChild(b);
+      w += hit.len; p = last + 1;
+    } else {
+      /* a plain word still gets a span: the karaoke highlight has to have
+         something to land on, and the glossed runs cover only a quarter */
+      const n = el('span', 'tw', parts[p]);
+      n.dataset.lo = w; n.dataset.hi = w;
+      box.appendChild(n);
+      w++; p++;
+    }
+  }
+  return box;
+}
+
+const glossBox = $('#glossbox');
+let glossOpen = null;
+
+function showGloss(btn){
+  const e = btn.gloss;
+  if (!e) return;
+  if (glossOpen === btn){ hideGloss(); return; }
+  hideGloss();
+  toastEl.classList.remove('show');          /* the two share the same corner */
+  glossBox.innerHTML = '';
+
+  const x = el('button', 'gloss-x', '×');
+  x.type = 'button'; x.setAttribute('aria-label', 'Close');
+  x.onclick = hideGloss;
+  glossBox.appendChild(x);
+
+  const head = el('div', 'gloss-head');
+  head.appendChild(el('span', 'gloss-word', btn.textContent));
+  head.appendChild(el('span', 'gloss-kind', KIND_LABEL[e.k] || 'Word'));
+  glossBox.appendChild(head);
+
+  glossBox.appendChild(el('p', 'gloss-def', e.d));
+  if (e.n) glossBox.appendChild(el('p', 'gloss-note', e.n));
+
+  glossBox.classList.add('show');
+  btn.classList.add('is-open');
+  glossOpen = btn;
+}
+
+function hideGloss(){
+  glossBox.classList.remove('show');
+  if (glossOpen) glossOpen.classList.remove('is-open');
+  glossOpen = null;
+}
+
+/* one listener for the whole page — transcripts are rebuilt on every render */
+document.addEventListener('click', e => {
+  const w = e.target.closest('.transcript .w');
+  if (w){ showGloss(w); return; }
+  if (!e.target.closest('#glossbox')) hideGloss();
+});
+
+const NS = 'http://www.w3.org/2000/svg';
+function svg(view, cls){
+  const n = document.createElementNS(NS, 'svg');
+  n.setAttribute('viewBox', view); n.setAttribute('aria-hidden', 'true');
+  if (cls) n.setAttribute('class', cls);
+  return n;
+}
+function shape(tag, attrs){
+  const n = document.createElementNS(NS, tag);
+  Object.keys(attrs).forEach(k => n.setAttribute(k, attrs[k]));
+  return n;
+}
+
+/* ------------------------------------------------------------- the symbols
+   A layer is recognised before it is read: an eye for what can be watched,
+   a ranking for what is put first, a seal for what is held true, and a pair
+   of glasses for the thing you see the whole world through. The glasses are
+   the point of the third lesson panel, so they are worth a picture. */
+const ICONS = {
+  eye: s => {
+    s.appendChild(shape('path', ST({ d: 'M1.2 8S3.9 3.9 8 3.9 14.8 8 14.8 8 12.1 12.1 8 12.1 1.2 8 1.2 8Z' })));
+    s.appendChild(shape('circle', { cx: 8, cy: 8, r: 1.9, fill: 'currentColor' }));
+  },
+  rank: s => {
+    [[2.6, 3.4], [6.6, 6.2], [10.6, 8.6]].forEach(b =>
+      s.appendChild(shape('rect', { x: b[0], y: b[1], width: 2.8, height: 13.4 - b[1],
+                                    rx: .6, fill: 'currentColor' })));
+  },
+  seal: s => {
+    s.appendChild(shape('path', ST({ d: 'M8 1.6 13.2 3.7v4.1c0 3-2.2 5.4-5.2 6.6-3-1.2-5.2-3.6-5.2-6.6V3.7Z' })));
+    s.appendChild(shape('path', ST({ d: 'M5.6 7.8 7.3 9.5l3.2-3.3' })));
+  },
+  glasses: s => {
+    s.appendChild(shape('circle', ST({ cx: 4.3, cy: 9.2, r: 2.7 })));
+    s.appendChild(shape('circle', ST({ cx: 11.7, cy: 9.2, r: 2.7 })));
+    s.appendChild(shape('path', ST({ d: 'M7 9.2h2M1.6 9.2 2.9 5.4a1.6 1.6 0 0 1 1.5-1.1M14.4 9.2 13.1 5.4a1.6 1.6 0 0 0-1.5-1.1' })));
+  },
+  ask: s => {
+    s.appendChild(shape('path', ST({ d: 'M13.8 9.6a1.7 1.7 0 0 1-1.7 1.7H6.3L3.1 14V4.1a1.7 1.7 0 0 1 1.7-1.7h7.3a1.7 1.7 0 0 1 1.7 1.7Z' })));
+    s.appendChild(shape('path', ST({ d: 'M6.7 5.9a1.8 1.8 0 0 1 3.5.6c0 1.2-1.8 1.8-1.8 1.8' })));
+    s.appendChild(shape('circle', { cx: 8.4, cy: 10, r: .8, fill: 'currentColor' }));
+  },
+  /* sound coming out of a speaker: an ear drawn at 14px is a squiggle */
+  ear: s => {
+    s.appendChild(shape('path', ST({ d: 'M2 6.2h2.4L7.6 3.4v9.2L4.4 9.8H2Z' })));
+    s.appendChild(shape('path', ST({ d: 'M10.2 6a2.8 2.8 0 0 1 0 4' })));
+    s.appendChild(shape('path', ST({ d: 'M12.4 3.9a5.8 5.8 0 0 1 0 8.2' })));
+  },
+  target: s => {
+    [6.4, 3.6, 1.2].forEach((r, i) => s.appendChild(i === 2
+      ? shape('circle', { cx: 8, cy: 8, r: r, fill: 'currentColor' })
+      : shape('circle', ST({ cx: 8, cy: 8, r: r }))));
+  },
+  playmark: s => s.appendChild(shape('path', { d: 'M4.4 2.9 13 8l-8.6 5.1Z', fill: 'currentColor' })),
+  pausemark: s => {
+    s.appendChild(shape('rect', { x: 4.6, y: 3.2, width: 2.6, height: 9.6, rx: .7, fill: 'currentColor' }));
+    s.appendChild(shape('rect', { x: 8.8, y: 3.2, width: 2.6, height: 9.6, rx: .7, fill: 'currentColor' }));
+  },
+  tick: s => s.appendChild(shape('path', ST({ d: 'M2.8 8.4 6.3 12l7-8' }))),
+  cross: s => s.appendChild(shape('path', ST({ d: 'M3.6 3.6l8.8 8.8M12.4 3.6l-8.8 8.8' })))
+};
+function ST(a){
+  return Object.assign({ fill: 'none', stroke: 'currentColor', 'stroke-width': 1.5,
+                         'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, a);
+}
+function icon(kind, cls){
+  const s = svg('0 0 16 16', 'ico' + (cls ? ' ' + cls : ''));
+  (ICONS[kind] || ICONS.eye)(s);
+  return s;
+}
+const LAYER_ICON = { behavior: 'eye', value: 'rank', belief: 'seal', worldview: 'glasses' };
+
+/* ------------------------------------------------------- concentric rings
+   Culture in four rings: behaviour on the outside, where anyone can watch it,
+   and worldview at the centre, where nobody can. The rings are drawn largest
+   first, so each one's visible band is exactly its own hit area and a tap
+   lands where the eye says it should.
+
+   The picture carries the structure; the sentences live in the rows beneath
+   it, because a sentence crammed into a ring is a sentence nobody can read. */
+const RINGS = [
+  { key: 'behavior',  name: 'Behaviour', q: 'what is done?',         r: 143, fs: 12.5, seen: true },
+  { key: 'value',     name: 'Values',    q: 'what is good or best?', r: 108, fs: 12 },
+  { key: 'belief',    name: 'Beliefs',   q: 'what is true?',         r: 75,  fs: 11 },
+  { key: 'worldview', name: 'Worldview', q: 'what is real?',         r: 46,  fs: 9 }
+];
+
+function ringDiagram(live){
+  const s = svg('0 0 300 300', 'rings' + (live ? ' is-live' : ''));
+  s.removeAttribute('aria-hidden');
+  s.setAttribute('role', 'img');
+  s.setAttribute('aria-label', 'Four concentric rings: behaviour, values, beliefs, worldview');
+
+  RINGS.forEach((R, i) => {
+    const open = R.seen || (live && state.placed[R.key]);
+    const g = shape('g', { class: 'ring r-' + R.key + (open ? ' is-open' : '') });
+    g.dataset.slot = R.key;
+    g.appendChild(shape('circle', { cx: 150, cy: 150, r: R.r, class: 'ring-face' }));
+
+    const inner = RINGS[i + 1] ? RINGS[i + 1].r : 0;
+    const mid = (R.r + inner) / 2;
+    /* each ring inward has less room, so the label shrinks to fit inside it */
+    const label = shape('text', { x: 150, y: 150 - mid + R.fs * 0.35,
+                                  'text-anchor': 'middle', class: 'ring-name',
+                                  style: 'font-size:' + R.fs + 'px' });
+    label.textContent = R.name.toUpperCase();
+    g.appendChild(label);
+
+    /* the band's other half was empty; the symbol lives there */
+    const sz = Math.max(13, R.fs * 1.5);
+    const mark = icon(LAYER_ICON[R.key]);
+    mark.setAttribute('class', 'ico ring-ico');
+    mark.setAttribute('x', 150 - sz / 2);
+    mark.setAttribute('y', 150 + mid - sz / 2);
+    mark.setAttribute('width', sz); mark.setAttribute('height', sz);
+    g.appendChild(mark);
+    s.appendChild(g);
+  });
+  return s;
+}
+
+/* one row per ring, colour-keyed to it: the label, the question, the sentence */
+function ringRows(live){
+  const box = el('div', 'rrows');
+  RINGS.forEach(R => {
+    const row = el('div', 'rrow r-' + R.key);
+    row.dataset.slot = R.key;
+
+    const head = el('div', 'rrow-head');
+    head.appendChild(icon(LAYER_ICON[R.key], 'rrow-ico'));
+    head.appendChild(el('span', 'rrow-name', R.name));
+    head.appendChild(el('span', 'rrow-q', R.q));
+    row.appendChild(head);
+
+    let text;
+    if (R.key === 'behavior'){ text = sc.rings.behavior; row.classList.add('is-set', 'is-given'); }
+    else if (live && state.placed[R.key]){ text = state.placed[R.key]; row.classList.add('is-set'); }
+    else text = live ? 'tap here' : '';
+    const p = el('p', 'rrow-text', text);
+    if (!row.classList.contains('is-set')) p.classList.add('empty');
+    row.appendChild(p);
+    box.appendChild(row);
+  });
+  return box;
+}
+
+function ringFigure(live){
+  const w = el('div', 'rings-wrap');
+  w.appendChild(ringDiagram(live));
+  w.appendChild(ringRows(live));
+  return w;
+}
+
+/* ================================================================ the lesson
+   Four panels before the activity, because the activity assumes an idea the
+   student has not been given yet: that a culture is not a list of odd habits
+   but four rings, and that the odd habit on the outside is the last link of a
+   chain that starts at the centre.
+
+   The load-bearing sentence is panel two. Nobody learns anything from an
+   exercise in cross-cultural judgment if they arrive believing one of the two
+   cultures is simply wrong. */
+
+let lesson = true, lstep = 0;
+try { if (localStorage.getItem('ei-lesson-seen') === '1') lesson = false; } catch (e) {}
+
+const LESSON = [
+  { rail: 'Culture', ico: 'target', kicker: 'What Is Culture?',
+    title: 'Four rings, from the outside in',
+    body: 'A culture is a group of people who answer four questions the same way. ' +
+          'What is done. What is good or best. What is true. What is real. ' +
+          'Only the first one can be seen.',
+    build: () => ringFigureStill() },
+
+  { rail: 'Ranking', ico: 'rank', kicker: 'No Culture Is Better',
+    title: 'The same values, in a different order',
+    body: 'Every culture has all of these. No culture throws one away. ' +
+          'What changes is which one goes first — and that order is where different behaviour comes from.',
+    build: () => rankingPicture() },
+
+  { rail: 'Order', ico: 'glasses', kicker: 'Where the Order Comes From',
+    title: 'The centre decides the edge',
+    body: 'A culture ranks its values the way it does because of what it holds to be true. ' +
+          'And it holds those things true because of how it sees the world — the glasses nobody ever takes off.',
+    build: () => chainPicture() },
+
+  { rail: 'Why', ico: 'ask', kicker: 'Why Interview Anyone?',
+    title: 'You learn the culture and the language in the same hour',
+    body: 'You cannot see a value. You have to ask — and then check the answer against other people. ' +
+          'An ethnographic interview is how anthropologists do it, and it is real listening practice at the same time.',
+    build: () => payoffPicture() }
+];
+
+/* the rings with nothing in them — the idea, before any scenario exists */
+function ringFigureStill(){
+  const w = el('div', 'rings-wrap');
+  const s = svg('0 0 300 300', 'rings');
+  RINGS.forEach((R, i) => {
+    const g = shape('g', { class: 'ring r-' + R.key + (R.key === 'behavior' ? ' is-open' : '') });
+    g.appendChild(shape('circle', { cx: 150, cy: 150, r: R.r, class: 'ring-face' }));
+    const inner = RINGS[i + 1] ? RINGS[i + 1].r : 0;
+    const mid = (R.r + inner) / 2;
+    const t = shape('text', { x: 150, y: 150 - mid + R.fs * 0.35, 'text-anchor': 'middle',
+                              class: 'ring-name', style: 'font-size:' + R.fs + 'px' });
+    t.textContent = R.name.toUpperCase();
+    g.appendChild(t);
+    s.appendChild(g);
+  });
+  w.appendChild(s);
+
+  const key = el('div', 'rkey');
+  RINGS.forEach(R => {
+    const r = el('div', 'rkey-row r-' + R.key);
+    r.appendChild(icon(LAYER_ICON[R.key], 'rkey-ico'));
+    r.appendChild(el('span', 'rkey-name', R.name));
+    r.appendChild(el('span', 'rkey-q', R.q));
+    r.appendChild(el('span', 'rkey-note', R.key === 'behavior' ? 'you can watch this' : 'you have to ask'));
+    key.appendChild(r);
+  });
+  w.appendChild(key);
+  return w;
+}
+
+/* the same three values, ranked two ways — the whole of panel two */
+const RANKINGS = {
+  west: ['Saying the true thing', 'Keeping everyone comfortable', 'Deferring to the older person'],
+  east: ['Deferring to the older person', 'Keeping everyone comfortable', 'Saying the true thing']
+};
+function rankingPicture(){
+  const box = el('div', 'rank');
+  [['west', 'A Western office'], ['east', 'A Rajshahi office']].forEach(side => {
+    const col = el('div', 'rank-col ' + side[0]);
+    col.appendChild(el('h3', 'rank-head', side[1]));
+    RANKINGS[side[0]].forEach((v, i) => {
+      const r = el('div', 'rank-item' + (i === 0 ? ' is-top' : ''));
+      r.appendChild(el('span', 'rank-n', String(i + 1)));
+      r.appendChild(el('span', null, v));
+      col.appendChild(r);
+    });
+    box.appendChild(col);
+  });
+  const note = el('p', 'rank-note',
+    'Both lists hold all three. Read the top line of each, then imagine the same meeting in both rooms.');
+  const wrap = el('div');
+  wrap.appendChild(box); wrap.appendChild(note);
+  return wrap;
+}
+
+/* worldview → beliefs → values → behaviour: the causal direction, which runs
+   outward, against the direction the student will travel to find it */
+function chainPicture(){
+  const box = el('div', 'chain');
+  const links = [
+    ['worldview', 'how the world is'],
+    ['belief',    'what is therefore true'],
+    ['value',     'what is therefore best'],
+    ['behavior',  'what is therefore done']
+  ];
+  links.forEach((L, i) => {
+    if (i) box.appendChild(el('span', 'chain-arrow', '→'));
+    const R = RINGS.find(x => x.key === L[0]);
+    const n = el('div', 'chain-link r-' + L[0]);
+    const h = el('span', 'chain-name');
+    h.appendChild(icon(LAYER_ICON[L[0]], 'chain-ico'));
+    h.appendChild(document.createTextNode(R.name));
+    n.appendChild(h);
+    n.appendChild(el('span', 'chain-sub', L[1]));
+    box.appendChild(n);
+  });
+  const w = el('div');
+  w.appendChild(box);
+  w.appendChild(el('p', 'rank-note',
+    'You will walk this backwards: start at the behaviour, and work in.'));
+  return w;
+}
+
+/* what an interview buys you, on both sides */
+function payoffPicture(){
+  const two = el('div', 'payoff');
+  [['About them', ['What they actually do, not what you assume',
+                   'Which value they put first',
+                   'Why a strange habit is obvious to them']],
+   ['In English',  ['Real speech at natural speed',
+                    'The idioms nobody puts in a textbook',
+                    'Asking a question that opens somebody up']]
+  ].forEach(col => {
+    const c = el('div', 'payoff-col');
+    c.appendChild(el('h3', null, col[0]));
+    const ul = el('ul', 'bullets');
+    col[1].forEach(t => ul.appendChild(el('li', null, t)));
+    c.appendChild(ul);
+    two.appendChild(c);
+  });
+  return two;
+}
+
+function stepLesson(){
+  const L = LESSON[lstep];
+  const p = el('div', 'panel p-lesson');
+  const c = el('div', 'card raised lead');
+  c.appendChild(el('p', 'kicker', L.kicker));
+  c.appendChild(el('h1', 'h-title', L.title));
+  c.appendChild(el('p', 'body', L.body));
+  c.appendChild(L.build());
+  p.appendChild(c);
+
+  const skip = el('div', 'tbar');
+  const b = el('button', 'mini', 'Skip to the activity');
+  b.type = 'button';
+  b.onclick = endLesson;
+  skip.appendChild(b);
+  p.appendChild(skip);
+  wrap.appendChild(p);
+}
+
+function endLesson(){
+  lesson = false; lstep = 0;
+  try { localStorage.setItem('ei-lesson-seen', '1'); } catch (e) {}
+  newScenario();
+}
+
+/* ---- 1. WATCH ----
+   The scene arrives as three pictures before it arrives as a paragraph. A
+   student who has read the strip already knows what happened; the paragraph
+   is then reading practice rather than the only way in. And the contrast is
+   held back behind a guess, because a prediction you have committed to is
+   worth more than a sentence you were handed. */
+function stepObserve(){
+  const p = el('div', 'panel p-observe');
+  const c = el('div', 'card raised lead');
+  c.appendChild(el('p', 'kicker', 'Step 1 · Watch'));
+  c.appendChild(el('h1', 'h-title', sc.title));
+  c.appendChild(settingChips());
+  c.appendChild(sceneStrip());
+  c.appendChild(el('p', 'body', sc.observation));
+  c.appendChild(predictBand());
+  p.appendChild(c);
+
+  const o = el('div', 'card raised');
+  o.appendChild(el('p', 'kicker', 'Four Rings'));
+  o.appendChild(ringFigure(false));
+  p.appendChild(o);
+
+  wrap.appendChild(p);
+}
+
+/* where, who with, and which of the six themes — three glances, no sentence */
+function settingChips(){
+  const box = el('div', 'fcts');
+  const parts = sc.setting.split('·').map(s => s.trim()).filter(Boolean);
+  const th = THEMES[sc.theme];
+  /* a capital opens a place name; a lower-case one opens an occasion */
+  parts.forEach(t => box.appendChild(fct(/^[A-Z]/.test(t) ? '📍' : '🎬', t)));
+  box.appendChild(fct(th.icon, th.label));
+  return box;
+}
+function fct(gly, txt){
+  const s = el('span', 'fct');
+  s.appendChild(el('span', 'fct-g', gly));
+  s.appendChild(el('span', null, txt));
+  return s;
+}
+
+/* the scene in three beats */
+function sceneStrip(){
+  const box = el('div', 'strip');
+  sc.beats.forEach((b, i) => {
+    if (i) box.appendChild(el('span', 'strip-arrow', '→'));
+    const t = el('div', 'beat');
+    t.style.animationDelay = (i * 110) + 'ms';
+    t.appendChild(el('span', 'beat-n', String(i + 1)));
+    t.appendChild(el('span', 'beat-g', b.ico));
+    t.appendChild(el('p', 'beat-t', b.t));
+    box.appendChild(t);
+  });
+  return box;
+}
+
+/* guess first, then read. Neither answer is marked: it is a prediction, not
+   a test, and the point is only that the student has taken a position. */
+function predictBand(){
+  const box = el('div', 'predict');
+  const q = el('p', 'predict-q');
+  q.appendChild(el('span', 'predict-g', '🤔'));
+  q.appendChild(document.createTextNode('Now picture the same scene at home. Would it go the same way?'));
+  box.appendChild(q);
+
+  const row = el('div', 'predict-btns');
+  ['Yes, much the same', 'No, quite different'].forEach(label => {
+    const b = el('button', 'predict-b', label);
+    b.type = 'button';
+    b.onclick = () => openPredict(box);
+    row.appendChild(b);
+  });
+  box.appendChild(row);
+  return box;
+}
+function openPredict(box){
+  if (box.classList.contains('is-open')) return;
+  box.classList.add('is-open');
+  box.querySelectorAll('.predict-b').forEach(b => { b.disabled = true; });
+  const band = el('div', 'band band-ill');
+  band.appendChild(icon('glasses', 'band-ico'));
+  band.appendChild(el('p', 'band-t', sc.noticing));
+  box.appendChild(band);
+}
+
+/* ---- 2. ASK ---- */
+function stepAsk(){
+  const p = el('div', 'panel p-ask');
+  const c = el('div', 'card raised');
+  c.appendChild(el('p', 'kicker', 'Step 2 · Ask'));
+  c.appendChild(el('h2', 'h-title', 'Which question gets you inside?'));
+  c.appendChild(el('p', 'hint', 'Three of these four close the conversation. One opens it.'));
+
+  const list = el('div', 'opts');
+  const opts = state.qOrder || (state.qOrder = shuffle(sc.questions.map((_, i) => i)));
+  opts.forEach(i => {
+    const q = sc.questions[i];
+    const b = el('button', 'opt');
+    b.type = 'button';
+    b.appendChild(document.createTextNode('“' + q.q + '”'));
+    b.onclick = () => chooseQ(b, q, list);
+    list.appendChild(b);
+  });
+  c.appendChild(list);
+  p.appendChild(c);
+  wrap.appendChild(p);
+}
+
+function chooseQ(btn, q, list){
+  if (btn.disabled) return;
+  btn.disabled = true;
+  const old = list.querySelector('.coach'); if (old) old.remove();
+
+  if (q.ok){
+    btn.classList.add('is-right');
+    btn.appendChild(el('br'));
+    const tg = el('span', 'opt-tag tag-good');
+    tg.appendChild(icon('tick'));
+    tg.appendChild(document.createTextNode(QTYPES[q.type] || 'Good question'));
+    btn.appendChild(tg);
+    const co = el('div', 'coach good');
+    co.appendChild(el('b', null, 'That is the one.'));
+    co.appendChild(document.createTextNode(q.why));
+    list.appendChild(co);
+    list.querySelectorAll('.opt').forEach(o => o.disabled = true);
+    state.qDone = true;
+    state.chosenQ = q.q;          /* carried to the top of the listening screen */
+    syncNext();
+  } else {
+    const f = FLAWS[q.flaw];
+    btn.classList.add('is-wrong');
+    btn.appendChild(el('br'));
+    const tb = el('span', 'opt-tag tag-bad');
+    tb.appendChild(icon('cross'));
+    tb.appendChild(document.createTextNode(f.label + ' · ' + f.short));
+    btn.appendChild(tb);
+    const co = el('div', 'coach');
+    co.appendChild(el('b', null, f.label));
+    co.appendChild(document.createTextNode(f.coach));
+    co.appendChild(el('span', 'fix', 'Fix it: ' + f.fix));
+    list.appendChild(co);
+  }
+}
+
+/* ---- 3. LISTEN + TRIANGULATE ----
+   Three people answering a question you asked. Each one gets a card built the
+   way /whos-this/ builds its identity cards — a framed photograph beside a
+   short dossier of labelled fields — because a person with a face, an age, a
+   job and a city is somebody you are talking to, where a name on a row is a
+   question on a test.
+
+   The first listen is pure listening. No caption, no transcript, nothing to
+   read: the words only open up once that person has been heard through. */
+function informantCard(s, i){
+  const row = el('div', 'spk'); row.dataset.i = i;
+  const heard = (state.passes[i] || 0) > 0;
+
+  const band = el('div', 'spk-band');
+  band.appendChild(el('span', 'lab', 'Informant ' + (i + 1) + ' of 3'));
+  band.appendChild(el('span', 'lab', heard ? 'Heard' : 'Not yet heard'));
+  row.appendChild(band);
+
+  const top = el('div', 'spk-top');
+
+  const win = el('div', 'window');
+  const img = new Image();
+  img.alt = s.name;
+  img.src = 'portraits/' + sc.id + '-' + (i + 1) + '.jpg';
+  img.onerror = () => { win.classList.remove('has-photo');
+                        win.appendChild(el('span', 'window-ph',
+                          s.name.replace(/^Professor\s+/, '').charAt(0))); };
+  img.onload = () => win.classList.add('has-photo');
+  win.appendChild(img);
+  top.appendChild(win);
+
+  const id = el('div', 'ident');
+  id.appendChild(el('span', 'lab', 'Name'));
+  id.appendChild(el('h3', 'ident-name', s.name));
+  const rows = el('div', 'frows');
+  [['Age', String(s.age)], ['Work', s.job], ['City', s.city]].forEach(f => {
+    const r = el('div', 'frow');
+    r.appendChild(el('span', 'lab', f[0]));
+    r.appendChild(el('span', 'fval', f[1]));
+    rows.appendChild(r);
+  });
+  id.appendChild(rows);
+  top.appendChild(id);
+  row.appendChild(top);
+
+  const ctl = el('div', 'spk-ctl');
+  const play = el('button', 'play');
+  play.type = 'button';
+  play.appendChild(icon('playmark', 'play-ico'));
+  play.appendChild(el('span', 'play-word', 'Play'));
+  play.setAttribute('aria-label', 'Play ' + s.name);
+  play.onclick = () => togglePlay(i);
+  ctl.appendChild(play);
+  const again = el('button', 'replay', '↻');
+  again.type = 'button';
+  again.disabled = !canReplay(i);
+  again.title = state.passes[i] >= 3 ? 'Listen again' : 'Listen again — new words';
+  again.setAttribute('aria-label', 'Listen to ' + s.name + ' again');
+  again.onclick = () => replaySpeaker(i);
+  ctl.appendChild(again);
+  const eq = el('div', 'eq');
+  for (let k = 0; k < 3; k++) eq.appendChild(el('i'));
+  ctl.appendChild(eq);
+  row.appendChild(ctl);
+
+  const prog = el('div', 'spk-prog'); prog.appendChild(el('i'));
+  row.appendChild(prog);
+
+  const bub = el('div', 'bubble');
+  /* the transcript only exists for somebody you have already heard */
+  if (heard){
+    const tr = glossedTranscript(s.script);
+    tr.hidden = !state.tOpen;
+    bub.appendChild(tr);
+  }
+  const catchBox = el('div', 'catch'); catchBox.hidden = true;
+  bub.appendChild(catchBox);
+  bub.appendChild(el('p', 'bubble-idle', heard
+    ? 'Play it again and the words follow along.'
+    : 'Listen first — the words come after.'));
+  row.appendChild(bub);
+
+  if (heard) row.classList.add('is-heard');
+  return row;
+}
+
+function stepListen(){
+  const p = el('div', 'panel p-listen');
+
+  const c = el('div', 'card raised');
+  c.appendChild(el('p', 'kicker', 'Step 3 · Listen'));
+  c.appendChild(el('h2', 'h-title', 'Three people answer'));
+
+  const pin = el('div', 'qpin');
+  pin.appendChild(el('span', 'cap', 'You asked'));
+  const qq = el('q'); qq.textContent = state.chosenQ || sc.questions.find(x => x.ok).q;
+  pin.appendChild(qq);
+  c.appendChild(pin);
+
+  const sp = el('div', 'speakers');
+  sc.speakers.forEach((s, i) => sp.appendChild(informantCard(s, i)));
+  c.appendChild(sp);
+
+  const bar = el('div', 'tbar');
+  const allBtn = el('button', 'mini', 'Play all three');
+  allBtn.type = 'button';
+  allBtn.onclick = playAll;
+  bar.appendChild(allBtn);
+  const anyHeard = state.passes.some(n => n > 0);
+  const tBtn = el('button', 'mini' + (state.tOpen ? ' on' : ''),
+                  state.tOpen ? 'Full text on' : 'Show full text');
+  tBtn.type = 'button';
+  tBtn.id = 'btn-transcripts';
+  tBtn.disabled = !anyHeard;
+  tBtn.title = anyHeard ? '' : 'Listen to somebody first';
+  tBtn.onclick = () => { state.tOpen = !state.tOpen;
+    document.querySelectorAll('.transcript').forEach(t => t.hidden = !state.tOpen);
+    if (state.tOpen) document.querySelectorAll('.caption').forEach(n => n.remove());
+    tBtn.classList.toggle('on', state.tOpen);
+    tBtn.textContent = state.tOpen ? 'Full text on' : 'Show full text';
+    const th = document.getElementById('tap-hint'); if (th) th.hidden = !state.tOpen;
+    if (!state.tOpen) hideGloss(); };
+  bar.appendChild(tBtn);
+  c.appendChild(bar);
+
+  const tip = el('div', 'tap-hint');
+  tip.appendChild(document.createTextNode('Tap any '));
+  tip.appendChild(el('b', null, 'underlined'));
+  tip.appendChild(document.createTextNode(' word for its meaning.'));
+  tip.hidden = !state.tOpen;
+  tip.id = 'tap-hint';
+  c.appendChild(tip);
+  p.appendChild(c);
+
+  const t = el('div', 'card raised');
+  t.appendChild(el('p', 'kicker', 'Triangulate'));
+  t.appendChild(el('h2', 'h-title', 'What did all three say?'));
+  t.appendChild(vennMark());
+  /* the three answers, side by side, so the comparison is on the page */
+  const board = gistBoard();
+  board.id = 'gist-board';
+  t.appendChild(board);
+  t.appendChild(el('p', 'hint',
+    'Three of these six came up in every answer. The other three are true about one person only.'));
+
+  const cl = el('div', 'claims');
+  const order = state.cOrder || (state.cOrder = shuffle(sc.claims.map((_, i) => i)));
+  order.forEach(i => {
+    const cm = sc.claims[i];
+    const b = el('button', 'claim' + (state.picked.has(i) ? ' sel' : ''));
+    b.type = 'button'; b.dataset.i = i;
+    const box = el('span', 'box', state.picked.has(i) ? '✓' : '');
+    b.appendChild(box);
+    b.appendChild(el('span', null, cm.text));
+    b.onclick = () => {
+      if (state.claimsDone) return;
+      if (state.picked.has(i)) state.picked.delete(i); else state.picked.add(i);
+      b.classList.toggle('sel', state.picked.has(i));
+      box.textContent = state.picked.has(i) ? '✓' : '';
+      chk.disabled = state.picked.size !== 3;
+    };
+    cl.appendChild(b);
+  });
+  t.appendChild(cl);
+
+  const bar2 = el('div', 'tbar');
+  const chk = el('button', 'mini on', 'Check my three');
+  chk.type = 'button'; chk.id = 'btn-check'; chk.disabled = state.picked.size !== 3;
+  chk.onclick = () => checkClaims(cl, chk, t);
+  bar2.appendChild(chk);
+  t.appendChild(bar2);
+
+  if (state.claimsDone) { markClaims(cl); chk.remove(); }
+  p.appendChild(t);
+  wrap.appendChild(p);
+}
+
+/* the three confirmed lines, carried forward from the triangulation so every
+   conclusion on this screen can be checked against them */
+function evidenceBoard(){
+  const box = el('div', 'evid');
+  box.appendChild(el('span', 'evid-cap', 'All three of them said'));
+  box.appendChild(el('p', 'evid-sub', 'Every ring has to rest on one of these.'));
+  const ul = el('ul', 'evid-list');
+  sc.claims.forEach(cm => {
+    if (!cm.shared) return;
+    ul.appendChild(el('li', null, cm.text));
+  });
+  box.appendChild(ul);
+  return box;
+}
+
+/* ------------------------------------------------------- the three columns
+   Triangulation used to ask a student to hold three whole interviews in their
+   head, summarise each one silently, and compare the summaries — all at once,
+   in a second language. That is the hardest thing on the page and none of it
+   was the point.
+
+   So each interview now hands back a one-line summary the moment it has been
+   heard through, and the three summaries stay on screen side by side while
+   the claims are sorted. The comparing happens with the eyes, on the page,
+   instead of in memory. */
+function gistBoard(){
+  const box = el('div', 'gists');
+  sc.speakers.forEach((sp, i) => {
+    const heard = (state.passes[i] || 0) > 0;
+    const col = el('div', 'gist' + (heard ? ' is-heard' : ''));
+    col.dataset.i = i;
+
+    const head = el('div', 'gist-head');
+    const face = el('span', 'gist-face');
+    face.appendChild(el('span', null, sp.name.replace(/^Professor\s+/, '').charAt(0)));
+    const img = new Image();
+    img.alt = ''; img.src = 'portraits/' + sc.id + '-' + (i + 1) + '.jpg';
+    img.onerror = () => img.remove();
+    face.appendChild(img);
+    head.appendChild(face);
+    head.appendChild(el('span', 'gist-name', sp.name));
+    col.appendChild(head);
+
+    col.appendChild(el('p', 'gist-text',
+      heard ? sp.gist : 'Listen to ' + sp.name + ' and their answer appears here.'));
+    if (!heard) col.querySelector('.gist-text').classList.add('empty');
+    box.appendChild(col);
+  });
+  return box;
+}
+
+/* redraw the board in place when a listen finishes, so the summary arrives
+   as the reward for having listened rather than as another wall of text */
+function refreshGists(){
+  const old = document.getElementById('gist-board');
+  if (old){
+    const fresh = gistBoard();
+    fresh.id = 'gist-board';
+    old.replaceWith(fresh);
+  }
+  const v = document.querySelector('.venn');
+  if (v) v.replaceWith(vennMark());
+}
+
+/* Three answers, one overlap.
+
+   The first version drew the overlap by hand as a lens, and the hand was
+   wrong: that shape was 64 units tall and sat 19 units low, where the real
+   triple intersection of these three circles is 10 units tall — so it came
+   out as a beige oval lying across three faces. Nested clip paths give the
+   exact region with no arithmetic at all: a rectangle clipped by circle A,
+   then by B, then by C, is precisely what all three have in common.
+
+   The faces have gone from here. This is the idea, small and abstract; the
+   people belong in the conversation above it, not inside a diagram. */
+let vennSeq = 0;
+function vennMark(){
+  const heard = sc.speakers.map((_, i) => (state.passes[i] || 0) > 0);
+  const all = heard.every(Boolean);
+  const n = ++vennSeq;
+  const s = svg('0 0 210 148', 'venn');
+  /* pulled a little closer than three tangent circles would be: the shared
+     region is the whole point of the picture, and at arm's length it has to
+     be big enough to see from the back of a classroom */
+  const P = [[78, 58], [132, 58], [105, 96]];
+
+  const defs = shape('defs', {});
+  P.forEach((c, i) => {
+    const cp = shape('clipPath', { id: 'vk' + n + i });
+    cp.appendChild(shape('circle', { cx: c[0], cy: c[1], r: 38 }));
+    defs.appendChild(cp);
+  });
+  s.appendChild(defs);
+
+  P.forEach((c, i) => s.appendChild(shape('circle',
+    { cx: c[0], cy: c[1], r: 38, class: 'venn-disc' + (heard[i] ? ' is-heard' : '') })));
+
+  let host = s;
+  for (let i = 0; i < 3; i++){
+    const g = shape('g', { 'clip-path': 'url(#vk' + n + i + ')' });
+    host.appendChild(g); host = g;
+  }
+  host.appendChild(shape('rect',
+    { x: 0, y: 0, width: 210, height: 148, class: 'venn-core' + (all ? ' is-on' : '') }));
+
+  P.forEach((c, i) => s.appendChild(shape('circle',
+    { cx: c[0], cy: c[1], r: 38, class: 'venn-ring' + (heard[i] ? ' is-heard' : '') })));
+
+  const t = shape('text', { x: 105, y: 143, 'text-anchor': 'middle',
+                            class: 'venn-cap' + (all ? ' is-on' : '') });
+  t.textContent = all ? 'what all three said' : 'listen to all three';
+  s.appendChild(t);
+  return s;
+}
+
+function markClaims(cl){
+  cl.querySelectorAll('.claim').forEach(b => {
+    const cm = sc.claims[+b.dataset.i];
+    b.classList.remove('sel');
+    b.classList.add(cm.shared ? 'mark-ok' : 'mark-no');
+    b.querySelector('.box').textContent = cm.shared ? '✓' : '·';
+    if (!cm.shared && !b.querySelector('.who')){
+      const j = sc.speakers.findIndex(sp => sp.name === cm.who);
+      const w = el('span', 'who');
+      if (j > -1){
+        const f = el('span', 'who-face');
+        const im = new Image(); im.alt = '';
+        im.src = 'portraits/' + sc.id + '-' + (j + 1) + '.jpg';
+        im.onerror = () => im.remove();
+        f.appendChild(im);
+        w.appendChild(f);
+      }
+      w.appendChild(document.createTextNode('Only ' + cm.who + ' said this'));
+      b.lastChild.appendChild(w);
+    }
+  });
+}
+
+function checkClaims(cl, chk, card){
+  const chosen = [...state.picked];
+  const wrong = chosen.filter(i => !sc.claims[i].shared);
+  if (wrong.length){
+    const w = sc.claims[wrong[0]];
+    toast('Only ' + w.who + ' said that',
+      'It is true about one person’s life. It is not a pattern in the culture. Keep the ones you heard from all three.');
+    cl.querySelectorAll('.claim').forEach(b => {
+      if (wrong.indexOf(+b.dataset.i) > -1){
+        b.classList.remove('sel'); state.picked.delete(+b.dataset.i);
+        b.querySelector('.box').textContent = '';
+        b.classList.add('is-refused'); setTimeout(() => b.classList.remove('is-refused'), 540);
+      }
+    });
+    chk.disabled = state.picked.size !== 3;
+    return;
+  }
+  state.claimsDone = true;
+  markClaims(cl);
+  chk.remove();
+  const co = el('div', 'coach good');
+  co.appendChild(el('b', null, 'Three people, three times.'));
+  co.appendChild(document.createTextNode(
+    'Now you have evidence, not a guess. Everything you say next has to come from these three sentences.'));
+  card.appendChild(co);
+  syncNext();
+}
+
+/* ---- 4. FILL THE RINGS ---- */
+function stepMap(){
+  const p = el('div', 'panel p-map');
+  const c = el('div', 'card raised');
+  c.appendChild(el('p', 'kicker', 'Step 4 · Fill the Rings'));
+  c.appendChild(el('h2', 'h-title', 'From what they did to what they think is real'));
+  /* the evidence comes with you. Naming a value is otherwise a guess dressed
+     up as a conclusion, and the jump from step 3 to here was the sharpest
+     edge in the activity. */
+  c.appendChild(evidenceBoard());
+  c.appendChild(el('p', 'hint', 'Tap a sentence, then tap its ring. Three of them belong nowhere.'));
+
+  const ringBox = ringFigure(true);
+  c.appendChild(ringBox);
+
+  const tray = el('div', 'tray');
+  const pool = state.pool || (state.pool = shuffle(
+    RINGS.filter(r => r.key !== 'behavior').map(r => ({ text: sc.rings[r.key], slot: r.key }))
+      .concat(sc.distractors.map(d => ({ text: d.text, fault: d.fault })))
+  ));
+  pool.forEach((item, i) => {
+    const ch = el('button', 'chip', item.text);
+    ch.type = 'button';
+    ch.dataset.i = i;
+    if (item.slot && state.placed[item.slot] === item.text) ch.classList.add('used');
+    tray.appendChild(ch);
+  });
+  c.appendChild(tray);
+  p.appendChild(c);
+  wrap.appendChild(p);
+
+  wireTap(tray, ringBox, p);
+  if (state.mapDone) revealExpert(p);
+}
+
+/* Tap a sentence, then tap a layer. Tapping the chosen sentence again lets it
+   go. Nothing is dragged, which is what makes this work on a phone. */
+/* Tap a sentence, then tap a ring — on the picture or on its row, both are
+   the same target. Tapping the chosen sentence again lets it go. Nothing is
+   dragged, which is what makes this work on a phone. */
+function wireTap(tray, ringBox, panel){
+  let sel = null;
+  const openSlots = () => [...ringBox.querySelectorAll('[data-slot]')]
+    .filter(n => n.dataset.slot !== 'behavior' && !state.placed[n.dataset.slot]);
+  const aim = on => openSlots().forEach(n => n.classList.toggle('is-target', on));
+
+  tray.addEventListener('click', e => {
+    const chip = e.target.closest('.chip');
+    if (!chip || chip.classList.contains('used')) return;
+    if (sel === chip){ chip.classList.remove('sel'); sel = null; aim(false); return; }
+    if (sel) sel.classList.remove('sel');
+    sel = chip; chip.classList.add('sel');
+    aim(true);
+  });
+
+  ringBox.addEventListener('click', e => {
+    const n = e.target.closest('[data-slot]');
+    if (!n) return;
+    const slot = n.dataset.slot;
+    if (slot === 'behavior' || state.placed[slot]) return;
+    if (!sel){ toast('Choose a sentence first', 'Tap one of the sentences below, then tap a ring.'); return; }
+    const chip = sel;
+    if (place(state.pool[+chip.dataset.i], chip, slot, ringBox, panel)){ sel = null; aim(false); }
+  });
+}
+
+function place(item, chipNode, slot, ringBox, panel){
+  if (!item.slot || item.slot !== slot){
+    const f = item.fault ? CHIP_FAULTS[item.fault] : null;
+    if (f) toast(f.label, f.coach);
+    else toast('Not that ring',
+      'This is true about them, but it answers a different question. Read the ring again: ' +
+      'a value ranks, a belief says what is true, a worldview says what the world is like. ' +
+      'Then check it against the three lines at the top of the screen.');
+    chipNode.classList.add('is-refused');
+    setTimeout(() => chipNode.classList.remove('is-refused'), 540);
+    return false;
+  }
+  state.placed[slot] = item.text;
+
+  /* light the ring and write the sentence into its row */
+  ringBox.querySelectorAll('[data-slot="' + slot + '"]').forEach(n => {
+    n.classList.remove('is-target');
+    n.classList.add('is-open', 'is-set');
+    const p = n.querySelector('.rrow-text');
+    if (p){ p.textContent = item.text; p.classList.remove('empty'); }
+  });
+  chipNode.classList.add('used');
+  chipNode.classList.remove('sel');
+
+  if (Object.keys(state.placed).length === 3 && !state.mapDone){
+    state.mapDone = true;
+    syncNext();
+    revealExpert(panel);
+  }
+  return true;
+}
+
+/* The finding arrives as one sentence and one picture. The full paragraph is
+   still here for anyone who wants it, but it is folded away: a student who
+   has just done the work should meet the conclusion, not an essay. */
+function revealExpert(panel){
+  if (panel.querySelector('.reveal')) return;
+  const r = el('div', 'reveal');
+
+  const c = el('div', 'card raised lead');
+  c.appendChild(el('p', 'kicker', 'What You Just Found'));
+  c.appendChild(punchLine());
+  c.appendChild(mechChain());
+  const more = el('details', 'more');
+  more.appendChild(el('summary', 'more-sum', 'Read the long version'));
+  more.appendChild(el('p', 'body', sc.expert));
+  c.appendChild(more);
+  r.appendChild(c);
+
+  const two = el('div', 'card raised');
+  two.appendChild(el('p', 'kicker', 'Two Sets of Rings, Same Situation'));
+  two.appendChild(compareRings());
+  two.appendChild(el('div', 'callout',
+    'Neither set of rings is a mistake. Each one is what a whole world looks like from the inside.'));
+  r.appendChild(two);
+
+  const n = el('div', 'card raised');
+  n.appendChild(el('p', 'kicker', 'Take It Further'));
+  n.appendChild(el('p', 'body', sc.contrast.note));
+  r.appendChild(n);
+
+  panel.appendChild(r);
+  setTimeout(() => r.scrollIntoView({ behavior: 'smooth', block: 'start' }), 90);
+}
+
+function punchLine(){
+  const d = el('div', 'punch');
+  d.appendChild(el('span', 'punch-g', '💡'));
+  d.appendChild(el('p', 'punch-t', sc.punch));
+  return d;
+}
+
+/* this scenario's own chain, running the way causation runs: centre to edge */
+function mechChain(){
+  const box = el('div', 'chain');
+  ['worldview', 'belief', 'value', 'behavior'].forEach((k, i) => {
+    if (i) box.appendChild(el('span', 'chain-arrow', '→'));
+    const R = RINGS.find(x => x.key === k);
+    const n = el('div', 'chain-link r-' + k);
+    const h = el('span', 'chain-name');
+    h.appendChild(icon(LAYER_ICON[k], 'chain-ico'));
+    h.appendChild(document.createTextNode(R.name));
+    n.appendChild(h);
+    n.appendChild(el('span', 'chain-sub', sc.chain[i]));
+    box.appendChild(n);
+  });
+  const w = el('div');
+  w.appendChild(box);
+  w.appendChild(el('p', 'rank-note',
+    'The centre makes the edge. You walked it the other way — from the outside in.'));
+  return w;
+}
+
+/* ---------------------------------------- the comparison, one ring at a time
+   Eight full sentences on one screen is the thing that was too heavy. So the
+   two sets of rings became the control: tap a band on either picture and that
+   layer's two answers appear underneath. A quarter of the text at any moment,
+   and the picture is doing the navigating. */
+const DIAL_ICO = 34;
+function miniRings(side){
+  const s = svg('0 0 300 300', 'rings dialring d-' + side);
+  RINGS.forEach((R, i) => {
+    const g = shape('g', { class: 'ring r-' + R.key });
+    g.dataset.slot = R.key;
+    g.appendChild(shape('circle', { cx: 150, cy: 150, r: R.r, class: 'ring-face' }));
+    /* no room for words at this size, so the symbol is the whole label */
+    const inner = RINGS[i + 1] ? RINGS[i + 1].r : 0;
+    const mid = (R.r + inner) / 2;
+    const sz = DIAL_ICO;   /* must match .dial .ring-ico in the stylesheet */
+    const mark = icon(LAYER_ICON[R.key]);
+    mark.setAttribute('class', 'ico ring-ico');
+    mark.setAttribute('x', 150 - sz / 2);
+    mark.setAttribute('y', 150 - mid - sz / 2);
+    mark.setAttribute('width', sz); mark.setAttribute('height', sz);
+    g.appendChild(mark);
+    s.appendChild(g);
+  });
+  return s;
+}
+
+function compareRings(){
+  const box = el('div', 'cmp2');
+  const seen = {};
+  let active = null;
+
+  const dialRow = el('div', 'dials');
+  const dials = {};
+  [['west', 'Western'], ['east', 'Bengali']].forEach(side => {
+    const col = el('div', 'dial ' + side[0]);
+    col.appendChild(el('span', 'dial-tag', side[1]));
+    const d = miniRings(side[0]);
+    d.addEventListener('click', e => {
+      const g = e.target.closest('.ring');
+      if (g) show(g.dataset.slot);
+    });
+    dials[side[0]] = d;
+    col.appendChild(d);
+    dialRow.appendChild(col);
+  });
+  box.appendChild(dialRow);
+
+  const tabs = el('div', 'cmp2-tabs');
+  tabs.setAttribute('role', 'tablist');
+  const tabEls = {};
+  RINGS.forEach(R => {
+    const b = el('button', 'cmp2-tab r-' + R.key);
+    b.type = 'button';
+    b.setAttribute('role', 'tab');
+    b.appendChild(icon(LAYER_ICON[R.key], 'cmp2-ico'));
+    b.appendChild(el('span', 'cmp2-lab', R.name));
+    b.appendChild(icon('tick', 'cmp2-tick'));
+    b.onclick = () => show(R.key);
+    tabEls[R.key] = b;
+    tabs.appendChild(b);
+  });
+  box.appendChild(tabs);
+
+  const body = el('div', 'cmp2-body');
+  box.appendChild(body);
+
+  const foot = el('div', 'cmp2-foot');
+  const count = el('span', 'cmp2-count');
+  const nextB = el('button', 'mini', 'Next ring →');
+  nextB.type = 'button';
+  nextB.onclick = () => {
+    const i = RINGS.findIndex(R => R.key === active);
+    show(RINGS[(i + 1) % RINGS.length].key);
+  };
+  foot.appendChild(count);
+  foot.appendChild(nextB);
+  box.appendChild(foot);
+
+  function show(key){
+    if (!key) return;
+    active = key;
+    seen[key] = true;
+    RINGS.forEach(R => {
+      tabEls[R.key].classList.toggle('on', R.key === key);
+      tabEls[R.key].classList.toggle('seen', !!seen[R.key]);
+      tabEls[R.key].setAttribute('aria-selected', R.key === key ? 'true' : 'false');
+    });
+    ['west', 'east'].forEach(s => {
+      dials[s].querySelectorAll('.ring').forEach(g =>
+        g.classList.toggle('is-open', g.dataset.slot === key));
+    });
+
+    const R = RINGS.find(x => x.key === key);
+    body.innerHTML = '';
+    const h = el('div', 'cmp-head r-' + key);
+    h.appendChild(icon(LAYER_ICON[key], 'cmp-ico'));
+    h.appendChild(el('span', 'cmp-name', R.name));
+    h.appendChild(el('span', 'cmp-q', R.q));
+    body.appendChild(h);
+
+    const pair = el('div', 'cmp-pair');
+    [['west', 'Western', sc.rings[key]], ['east', 'Bengali', sc.contrast[key]]].forEach(side => {
+      const d = el('div', 'cmp-side ' + side[0]);
+      d.appendChild(el('span', 'cmp-tag', side[1]));
+      d.appendChild(el('p', null, side[2]));
+      pair.appendChild(d);
+    });
+    body.appendChild(pair);
+    body.classList.remove('fade');
+    void body.offsetWidth;
+    body.classList.add('fade');
+
+    const n = Object.keys(seen).length;
+    count.textContent = n === 4 ? 'All four rings seen' : n + ' of 4 rings seen';
+    box.classList.toggle('is-done', n === 4);
+  }
+
+  show('behavior');
+  return box;
+}
+
+/* -------------------------------------------------------------- navigation */
+btnNext.onclick = () => {
+  if (btnNext.disabled) return;
+  stopAudio();
+  if (lesson){
+    if (lstep === LESSON.length - 1){ endLesson(); return; }
+    lstep++; render(); return;
+  }
+  if (step === 3){ newScenario(); return; }
+  step++; render();
+};
+btnBack.onclick = () => {
+  if (lesson){ if (lstep === 0) return; lstep--; render(); return; }
+  if (step === 0) return;
+  stopAudio(); step--; render();
+};
+
+/* ------------------------------------------------------------------- menu */
+const scrim = $('#scrim'), sheet = $('#sheet');
+const openSheet = () => { scrim.classList.add('show'); sheet.classList.add('show'); };
+const closeSheet = () => { scrim.classList.remove('show'); sheet.classList.remove('show'); };
+$('#btn-menu').onclick = openSheet;
+scrim.onclick = closeSheet;
+$('#m-close').onclick = closeSheet;
+$('#m-shuffle').onclick = () => { closeSheet(); newScenario(); };
+$('#m-lesson').onclick = () => { closeSheet(); lesson = true; lstep = 0; stopAudio(); render(); };
+$('#m-print').onclick = () => { closeSheet(); setTimeout(() => window.print(), 180); };
+$('#m-projector').onclick = () => { closeSheet(); toggleStage(); };
+
+/* Paper by day, the forest Stage on the projector. */
+function toggleStage(){
+  const root = document.documentElement;
+  const on = root.getAttribute('data-theme') !== 'stage';
+  root.setAttribute('data-theme', on ? 'stage' : 'paper');
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', on ? '#E6E0CB' : '#F4F1E6');
+  $('#m-projector').classList.toggle('on', on);
+  $('#m-projector').textContent = on ? 'Back to paper' : 'Present on TV';
+  $('#brand-text').innerHTML = '';
+  $('#brand-text').appendChild(el('span', 'brand-g', '🎯'));
+  $('#brand-text').appendChild(document.createTextNode(on ? 'Culture Circles · On TV' : 'Culture Circles'));
+  requestAnimationFrame(measureHeader);
+}
+
+function toggleFullscreen(){
+  const d = document.documentElement;
+  if (document.fullscreenElement) document.exitFullscreen();
+  else if (d.requestFullscreen) d.requestFullscreen();
+  else if (d.webkitRequestFullscreen) d.webkitRequestFullscreen();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if (k === 'escape'){ if (glossOpen){ hideGloss(); return; } closeSheet(); stopAudio(); return; }
+  if (k === 'arrowright' || k === ' '){ e.preventDefault(); btnNext.click(); return; }
+  if (k === 'arrowleft'){ e.preventDefault(); btnBack.click(); return; }
+  if (k === 'r'){ newScenario(); return; }
+  if (k === 'p'){ toggleStage(); return; }
+  if (k === 'f'){ toggleFullscreen(); return; }
+  if (k === 't'){ const b = [...document.querySelectorAll('.mini')].find(m => /transcript/i.test(m.textContent));
+                  if (b) b.click(); return; }
+  if (step === 2 && (k === '1' || k === '2' || k === '3')) togglePlay(+k - 1);
+});
+
+window.addEventListener('pagehide', stopAudio);
+
+/* ------------------------------------------------------------------- boot */
+newScenario(true);      /* a scenario is ready behind the lesson, if there is one */
+measureHeader();
+const logo = document.querySelector('.logo-chip img');
+if (logo && !logo.complete) logo.addEventListener('load', measureHeader);
+
+})();
+</script>
+</body>
+</html>
