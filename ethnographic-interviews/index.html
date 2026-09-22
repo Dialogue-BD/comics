@@ -176,6 +176,18 @@ button{font:inherit;color:inherit}
   transition:background .18s ease,border-color .18s ease;
 }
 .icon-btn:hover{border-color:var(--rule-strong)}
+.stage-next{
+  display:none;align-items:center;justify-content:center;flex:0 0 auto;
+  min-height:calc(38px*var(--ui));padding:0 calc(14px*var(--ui));
+  border:1px solid var(--accent);border-radius:var(--radius-sm);
+  background:var(--accent);color:var(--on-accent);cursor:pointer;
+  font-size:calc(.78rem*var(--ui));font-weight:700;
+}
+.stage-next:hover{background:var(--forest-deep)}
+.stage-next[disabled]{background:var(--panel);border-color:var(--rule);color:var(--tx-muted);cursor:not-allowed}
+:root[data-theme="stage"] .stage-next{display:inline-flex}
+:root[data-theme="stage"] .actionbar{display:none}
+:root[data-theme="stage"] .stage{padding-bottom:max(var(--s5),env(safe-area-inset-bottom))}
 
 /* ---------- step rail (kickers under a rule) ---------- */
 .rail{
@@ -494,6 +506,13 @@ h1,h2,h3{margin:0}
 }
 .transcript .w:hover{background:var(--gold-soft)}
 .transcript .w.is-open{background:var(--gold-soft);color:var(--ink)}
+.transcript .w.pronunciation-error{
+  color:#a32828;background:#ffe4e1;
+  text-decoration-color:#c73535;text-decoration-style:wavy;text-decoration-thickness:2px;
+  font-weight:700;padding:0 2px;border-radius:3px;
+}
+.transcript .w.pronunciation-error:hover,
+.transcript .w.pronunciation-error.is-open{background:#ffc9c4;color:#761c1c}
 .tap-hint{
   margin:var(--s2) 0 0;font-size:calc(.8rem*var(--ui));color:var(--tx-muted);
   display:flex;align-items:center;gap:var(--s2);
@@ -1177,9 +1196,10 @@ h1,h2,h3{margin:0}
 <div class="app">
   <div class="appbar" id="appbar">
     <header class="topbar">
-      <span class="logo-chip"><img src="../brand/dialogue-logo.png" alt="Dialogue"></span>
+      <span class="logo-chip"><img src="../ai-fluency/assets/dialogue-logo.png" alt="Dialogue English &amp; Skills Center"></span>
       <span class="brand-name" id="brand-text"><span class="brand-g">🎯</span>Culture Circles</span>
       <span class="badge" id="theme-pill">Time</span>
+      <button class="stage-next" id="btn-next-stage">Continue</button>
       <button class="icon-btn" id="btn-menu" title="Menu" aria-label="Menu">☰</button>
     </header>
     <nav class="rail"><div class="rail-inner" id="rail"></div></nav>
@@ -1355,7 +1375,8 @@ function measureHeader(){
 }
 window.addEventListener('resize', measureHeader);
 window.addEventListener('load', measureHeader);
-const btnNext = $('#btn-next'), btnBack = $('#btn-back'), toastEl = $('#toast');
+const btnNext = $('#btn-next'), btnNextStage = $('#btn-next-stage'),
+      btnBack = $('#btn-back'), toastEl = $('#toast');
 
 const STEPS = [['Watch', 'eye'], ['Ask', 'ask'], ['Listen', 'ear'], ['Map', 'target']];
 
@@ -1659,6 +1680,8 @@ function syncNext(){
   if (lesson){
     btnNext.disabled = false;
     btnNext.textContent = (lstep === LESSON.length - 1) ? 'Start the activity' : 'Next';
+    btnNextStage.disabled = btnNext.disabled;
+    btnNextStage.textContent = btnNext.textContent;
     return;
   }
   /* step 3 asks for one full listen to each speaker before it will let go;
@@ -1670,6 +1693,8 @@ function syncNext(){
   btnNext.textContent = ['Ask a question', 'Listen to three people',
                          listened ? 'Fill the rings' : 'Listen to all three first',
                          'Next scenario'][step];
+  btnNextStage.disabled = btnNext.disabled;
+  btnNextStage.textContent = btnNext.textContent;
 }
 
 /* ---------------------------------------------------------- word timings
@@ -2048,9 +2073,10 @@ function catchTick(c, i, t, dur){
    knows about become buttons. A phrase swallows its own words, so "figure
    out" is one button rather than two. */
 const KIND_LABEL = { idiom: 'Idiom', phrasal: 'Phrasal verb', grammar: 'Grammar',
-                     discourse: 'Conversation word', word: 'Word' };
+                     discourse: 'Conversation word', word: 'Word',
+                     pronunciation: 'Pronunciation note' };
 
-function glossedTranscript(text){
+function glossedTranscript(text, speakerName){
   const box = el('div', 'transcript');
   const parts = text.match(/[A-Za-z’'-]+|[^A-Za-z’'-]+/g) || [];
   const isW = p => /[A-Za-z]/.test(p);
@@ -2060,6 +2086,20 @@ function glossedTranscript(text){
   let p = 0, w = 0;
   while (p < parts.length){
     if (!isW(parts[p])){ box.appendChild(document.createTextNode(parts[p])); p++; continue; }
+    if (speakerName === 'Trevor' && words[w].toLowerCase() === 'app'){
+      const b = el('button', 'w tw pronunciation-error', parts[p]);
+      b.type = 'button';
+      b.dataset.k = 'pronunciation';
+      b.dataset.lo = w; b.dataset.hi = w;
+      b.gloss = {
+        k: 'pronunciation',
+        d: 'Trevor pronounced “app” like “Op.” The standard pronunciation is “Ahp.”',
+        n: 'Mistake preserved to teach the AI-fluency discernment step: carefully evaluate AI-generated outputs instead of assuming every detail is correct.'
+      };
+      box.appendChild(b);
+      w++; p++;
+      continue;
+    }
     const hit = (typeof glossAt === 'function') ? glossAt(words, w) : null;
     if (hit){
       const last = at[w + hit.len - 1];
@@ -2661,7 +2701,7 @@ function informantCard(s, i){
   const bub = el('div', 'bubble');
   /* the transcript only exists for somebody you have already heard */
   if (heard){
-    const tr = glossedTranscript(s.script);
+    const tr = glossedTranscript(s.script, s.name);
     tr.hidden = !state.tOpen;
     bub.appendChild(tr);
   }
@@ -3215,7 +3255,7 @@ function compareRings(){
 }
 
 /* -------------------------------------------------------------- navigation */
-btnNext.onclick = () => {
+function advance(){
   if (btnNext.disabled) return;
   stopAudio();
   if (lesson){
@@ -3224,7 +3264,9 @@ btnNext.onclick = () => {
   }
   if (step === 3){ newScenario(); return; }
   step++; render();
-};
+}
+btnNext.onclick = advance;
+btnNextStage.onclick = advance;
 btnBack.onclick = () => {
   if (lesson){ if (lstep === 0) return; lstep--; render(); return; }
   if (step === 0) return;
