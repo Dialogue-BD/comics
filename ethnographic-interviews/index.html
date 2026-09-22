@@ -161,11 +161,16 @@ button{font:inherit;color:inherit}
   /* the language switch now needs the room the theme badge was taking, and the
      scenario's theme is already a chip on the first screen */
   #theme-pill{display:none}
-  .langsw button{padding:0 calc(8px*var(--ui))}
+  /* the switch and the name have to share one row: trim both, and the target
+     beside the title goes — the tab icon already carries it */
+  .langsw button{padding:0 calc(7px*var(--ui));font-size:calc(.7rem*var(--ui))}
+  .brand-g{display:none}
+  .brand-name{gap:0}
 }
-@media (max-width:360px){
-  .logo-chip img{width:66px}
-  .brand-name{font-size:calc(1.02rem*var(--ui))}
+@media (max-width:380px){
+  .logo-chip img{width:58px}
+  .brand-name{font-size:calc(.94rem*var(--ui))}
+  .langsw button{padding:0 calc(6px*var(--ui))}
 }
 .badge{
   display:inline-flex;align-items:center;gap:var(--s1);flex:0 0 auto;
@@ -373,7 +378,9 @@ h1,h2,h3{margin:0}
   padding:calc(6px*var(--ui)) calc(11px*var(--ui));
   border:1px solid var(--rule);border-radius:var(--radius-sm);background:var(--panel);
 }
-.fval{font-size:calc(.98rem*var(--ui));font-weight:600;line-height:1.25;color:var(--tx)}
+.fval{font-size:calc(.98rem*var(--ui));font-weight:600;line-height:1.25;color:var(--tx);
+  /* 'physiotherapist' is longer than the field on a narrow phone */
+  overflow-wrap:anywhere;hyphens:auto}
 
 .spk-ctl{display:flex;align-items:center;gap:var(--s2);padding:0 var(--s4) var(--s3)}
 .play{
@@ -1129,25 +1136,71 @@ body.bangla .bn-inline{display:inline}
 /* the projector's own Next carries one language; two lines crush it */
 .stage-next .bn{display:none !important}
 
-/* ---------- what makes a question good ---------- */
-.qrules{display:grid;grid-template-columns:1fr;gap:var(--s3);margin-top:var(--s4)}
-@media (min-width:640px){ .qrules{grid-template-columns:1fr 1fr} }
-.qrule{border:1px solid var(--rule);border-radius:var(--radius-md);padding:var(--s3) var(--s4)}
-.qrule.ok{border-left:4px solid var(--forest);background:var(--moss-soft)}
-.qrule.no{border-left:4px solid var(--clay);background:rgba(176,86,58,.08)}
-.qrule-h{display:flex;align-items:flex-start;gap:var(--s2)}
-.qrule-ico{width:calc(1.1rem*var(--ui));height:calc(1.1rem*var(--ui));flex:0 0 auto;margin-top:calc(2px*var(--ui))}
-.qrule.ok .qrule-ico{color:var(--forest-print)}
-.qrule.no .qrule-ico{color:var(--clay-ink)}
-.qrule-t{font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.qrule.ok .qrule-t{color:var(--forest-print)}
-.qrule.no .qrule-t{color:var(--clay-ink)}
-.qrule-list{margin:var(--s2) 0 0;padding:0;list-style:none}
-.qrule-list li{position:relative;padding-left:var(--s4);margin-top:calc(5px*var(--ui));
-  font-size:calc(.9rem*var(--ui));line-height:1.4}
-.qrule-list li::before{content:"";position:absolute;left:0;top:calc(7px*var(--ui));
-  width:calc(6px*var(--ui));height:calc(6px*var(--ui));background:var(--gold)}
-.qrule .bn{margin-top:calc(2px*var(--ui))}
+/* ---------- step 2: one idea on screen at a time ---------- */
+.qpair{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);margin-top:var(--s4)}
+.qside{
+  position:relative;padding:var(--s5) var(--s3) var(--s4);border-radius:var(--radius-md);
+  text-align:center;border:1px solid var(--rule);
+}
+.qside.ok{border-left:4px solid var(--forest);background:var(--moss-soft)}
+.qside.no{border-left:4px solid var(--clay-ink);background:rgba(176,86,58,.08)}
+.qside-mark{
+  position:absolute;top:calc(8px*var(--ui));left:calc(9px*var(--ui));
+  width:calc(1.1rem*var(--ui));height:calc(1.1rem*var(--ui));display:block;
+}
+.qside.ok .qside-mark{color:var(--forest-print)}
+.qside.no .qside-mark{color:var(--clay-ink)}
+.qside-mark .ico{width:100%;height:100%}
+.qside-g{display:block;font-size:calc(2.6rem*var(--ui));line-height:1.1}
+.qside-t{margin:calc(6px*var(--ui)) 0 0;font-weight:700;
+  font-size:calc(.98rem*var(--ui));line-height:1.3;color:var(--tx)}
+.qside .bn{text-align:center}
+
+.qfoot{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);margin-top:var(--s5)}
+.qdots{display:flex;gap:calc(7px*var(--ui))}
+.qdot{width:calc(8px*var(--ui));height:calc(8px*var(--ui));border-radius:999px;
+  background:var(--rule-strong);opacity:.35}
+.qdot.on{opacity:1;background:var(--accent)}
+
+.qprog{margin:var(--s4) 0 0;font-size:calc(.78rem*var(--ui));font-weight:700;
+  letter-spacing:.12em;color:var(--kicker)}
+.qtest{margin-top:var(--s2);padding:var(--s4);border-radius:var(--radius-md);
+  background:var(--panel);border:1px solid var(--rule)}
+.qtest-q{margin:0;font-family:var(--font-display);font-style:italic;
+  font-size:calc(1.14rem*var(--ui));line-height:1.4;color:var(--tx)}
+.qjudge{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);margin-top:var(--s3)}
+.qj{
+  display:flex;flex-direction:column;align-items:center;gap:calc(4px*var(--ui));
+  min-height:calc(88px*var(--ui));padding:var(--s3);cursor:pointer;
+  border:1px solid var(--rule-strong);border-radius:var(--radius-md);
+  background:var(--surface-card);color:var(--tx);font-family:var(--font-ui);
+  font-size:calc(.92rem*var(--ui));font-weight:700;text-align:center;
+}
+.qj-g{font-size:calc(1.9rem*var(--ui));line-height:1.1}
+.qj:hover:not(:disabled){border-color:var(--gold);background:var(--gold-soft)}
+.qj:disabled{cursor:default;opacity:.55}
+.qj.is-right{opacity:1;border-color:var(--forest);background:var(--moss-soft)}
+.qj.is-wrong{opacity:1;border-color:var(--clay-ink);background:rgba(176,86,58,.1)}
+.qj .bn{font-weight:400}
+
+.qfb{display:none}
+.qfb.show{
+  display:flex;align-items:flex-start;gap:var(--s3);flex-wrap:wrap;
+  margin-top:var(--s3);padding:var(--s4);border-radius:var(--radius-md);
+}
+.qfb.good{background:var(--moss-soft);border-left:4px solid var(--forest)}
+.qfb.bad{background:rgba(176,86,58,.1);border-left:4px solid var(--clay-ink)}
+.qfb-g{font-size:calc(2rem*var(--ui));line-height:1;flex:0 0 auto}
+.qfb p{margin:0;font-weight:700;font-size:calc(.98rem*var(--ui));line-height:1.35}
+.qfb .mini{margin-left:auto;align-self:center}
+
+.qstrip{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s3)}
+.qstrip-i{
+  display:inline-flex;align-items:center;gap:calc(5px*var(--ui));
+  padding:calc(4px*var(--ui)) var(--s3);border-radius:var(--radius-pill);
+  background:var(--moss-soft);font-size:calc(.78rem*var(--ui));color:var(--tx)
+}
+.qstrip-t{color:var(--tx-muted)}
 
 /* ---------- action bar ---------- */
 .actionbar{
@@ -1573,7 +1626,13 @@ const T = {
                   'আবার বাজান, লেখাটি সঙ্গে সঙ্গে চলবে।'],
   nx_next:       ['Next',               'পরেরটি'],
   nx_start:      ['Start the activity', 'শুরু করুন'],
-  nx_got_it:     ['Got it',             'বুঝেছি']
+  nx_got_it:     ['Got it',             'বুঝেছি'],
+  q_try:         ['Now you try',        'এবার আপনি চেষ্টা করুন'],
+  q_now:         ['Now the real one',   'এবার আসলটি'],
+  q_opens:       ['Opens',              'কথা খোলে'],
+  q_closes:      ['Closes',             'কথা থামায়'],
+  q_good:        ['Yes — this one asks for a story.',
+                  'হ্যাঁ — এটি একটি ঘটনার বর্ণনা চায়।']
 };
 const t  = k => T[k][0];
 const tb = k => T[k][1];
@@ -2600,6 +2659,9 @@ function ringRows(live){
     head.appendChild(icon(LAYER_ICON[R.key], 'rrow-ico'));
     head.appendChild(el('span', 'rrow-name', R.name));
     head.appendChild(el('span', 'rrow-q', R.q));
+    const hb = bn(RING_BN[R.key][0] + ' · ' + RING_BN[R.key][1]);
+    hb.style.width = '100%';
+    head.appendChild(hb);
     row.appendChild(head);
 
     let text;
@@ -2630,6 +2692,44 @@ function ringFigure(live){
    The load-bearing sentence is panel two. Nobody learns anything from an
    exercise in cross-cultural judgment if they arrive believing one of the two
    cultures is simply wrong. */
+
+/* the four rings, named in both languages — used on the lesson panels, the
+   rows under the diagram, the causal chain and the comparison */
+const RING_BN = {
+  behavior:  ['আচরণ',      'কী করা হয়?'],
+  value:     ['মূল্যবোধ',   'কোনটি ভালো বা সবচেয়ে ভালো?'],
+  belief:    ['বিশ্বাস',     'কোনটি সত্য?'],
+  worldview: ['বিশ্বদৃষ্টি',  'কোনটি বাস্তব?']
+};
+const RING_WHY_BN = {
+  behavior:  'এই বৃত্তটিই কেবল চোখে দেখা যায়।',
+  value:     'দেখা যায় না। জিজ্ঞেস করুন — দুটি ভালো জিনিসের মধ্যে তিনি কোনটি আগে রাখেন।',
+  belief:    'দেখা যায় না। জিজ্ঞেস করুন — ওই মূল্যবোধটি ঠিক হতে হলে কী সত্য হতে হবে।',
+  worldview: 'দেখা যায় না। জিজ্ঞেস করুন — ওই বিশ্বাসগুলো কেমন একটা জগৎ ধরে নেয়।'
+};
+const RANKINGS_BN = {
+  west: ['সত্যি কথাটা বলা', 'সবাইকে স্বস্তিতে রাখা', 'বড়জনকে সম্মান দেওয়া'],
+  east: ['বড়জনকে সম্মান দেওয়া', 'সবাইকে স্বস্তিতে রাখা', 'সত্যি কথাটা বলা']
+};
+const CHAIN_BN = ['জগৎটা যেমন', 'তাই যা সত্য মনে হয়', 'তাই যা ভালো মনে হয়', 'তাই যা করা হয়'];
+const PAYOFF_BN = [
+  ['তাঁদের সম্পর্কে', ['আপনি যা ধরে নেন তা নয় — তাঁরা আসলে কী করেন',
+                      'কোন মূল্যবোধটি তাঁরা আগে রাখেন',
+                      'অদ্ভুত লাগা একটি অভ্যাস তাঁদের কাছে কেন স্বাভাবিক']],
+  ['ইংরেজিতে',      ['স্বাভাবিক গতিতে বলা আসল কথা',
+                      'যেসব বাগ্‌ধারা কোনো বইয়ে থাকে না',
+                      'এমন প্রশ্ন করা যা মানুষকে কথা বলতে উৎসাহ দেয়']]
+];
+const LESSON_BN = [
+  ['সংস্কৃতি কী?', 'চারটি বৃত্ত, বাইরে থেকে ভেতরে',
+   'একটি সংস্কৃতি মানে এমন একদল মানুষ, যাঁরা চারটি প্রশ্নের উত্তর একইভাবে দেন। কী করা হয়। কোনটি ভালো। কোনটি সত্য। কোনটি বাস্তব। এর মধ্যে কেবল প্রথমটিই চোখে দেখা যায়।'],
+  ['কোনো সংস্কৃতিই বড় নয়', 'একই মূল্যবোধ, শুধু ক্রমটা আলাদা',
+   'প্রতিটি সংস্কৃতিতেই এগুলো সবই আছে। কেউ কোনোটিকে ফেলে দেয় না। বদলায় শুধু কোনটি আগে থাকে — আর ওই ক্রম থেকেই আলাদা আচরণ জন্ম নেয়।'],
+  ['ক্রমটা আসে কোথা থেকে', 'কেন্দ্রই ঠিক করে দেয় প্রান্তটা',
+   'একটি সংস্কৃতি তার মূল্যবোধগুলোকে এভাবেই সাজায়, কারণ সে যা সত্য বলে মানে। আর সে ওগুলো সত্য মানে, কারণ সে জগৎটাকে যেভাবে দেখে — যে চশমা কেউ কখনো খোলে না।'],
+  ['সাক্ষাৎকার কেন নেব?', 'একই ঘণ্টায় সংস্কৃতি আর ভাষা, দুটোই',
+   'মূল্যবোধ চোখে দেখা যায় না। জিজ্ঞেস করতে হয় — তারপর সেই উত্তর অন্যদের সঙ্গে মিলিয়ে দেখতে হয়। নৃবিজ্ঞানীরা এভাবেই কাজ করেন, আর একই সঙ্গে এটি সত্যিকারের শোনার অনুশীলন।']
+];
 
 let lesson = false, lstep = 0;   /* the four theory panels are teacher mode only */
 
@@ -2684,6 +2784,9 @@ function ringFigureStill(){
     r.appendChild(el('span', 'rkey-name', R.name));
     r.appendChild(el('span', 'rkey-q', R.q));
     r.appendChild(el('span', 'rkey-note', R.key === 'behavior' ? 'you can watch this' : 'you have to ask'));
+    const kb = bn(RING_BN[R.key][0] + ' · ' + RING_BN[R.key][1]);
+    kb.style.gridColumn = '1 / -1';
+    r.appendChild(kb);
     key.appendChild(r);
   });
   w.appendChild(key);
@@ -2703,7 +2806,10 @@ function rankingPicture(){
     RANKINGS[side[0]].forEach((v, i) => {
       const r = el('div', 'rank-item' + (i === 0 ? ' is-top' : ''));
       r.appendChild(el('span', 'rank-n', String(i + 1)));
-      r.appendChild(el('span', null, v));
+      const tx = el('span');
+      tx.appendChild(el('span', null, v));
+      tx.appendChild(bn(RANKINGS_BN[side[0]][i]));
+      r.appendChild(tx);
       col.appendChild(r);
     });
     box.appendChild(col);
@@ -2734,12 +2840,14 @@ function chainPicture(){
     h.appendChild(document.createTextNode(R.name));
     n.appendChild(h);
     n.appendChild(el('span', 'chain-sub', L[1]));
+    n.appendChild(bn(CHAIN_BN[i]));
     box.appendChild(n);
   });
   const w = el('div');
   w.appendChild(box);
   w.appendChild(el('p', 'rank-note',
     'You will walk this backwards: start at the behaviour, and work in.'));
+  w.appendChild(bn('আপনি এটি উল্টো দিক থেকে হাঁটবেন: আচরণ থেকে শুরু করে ভেতরের দিকে।'));
   return w;
 }
 
@@ -2752,11 +2860,17 @@ function payoffPicture(){
    ['In English',  ['Real speech at natural speed',
                     'The idioms nobody puts in a textbook',
                     'Asking a question that opens somebody up']]
-  ].forEach(col => {
+  ].forEach((col, ci) => {
     const c = el('div', 'payoff-col');
     c.appendChild(el('h3', null, col[0]));
+    c.appendChild(bn(PAYOFF_BN[ci][0]));
     const ul = el('ul', 'bullets');
-    col[1].forEach(t => ul.appendChild(el('li', null, t)));
+    col[1].forEach((tx, k) => {
+      const li = el('li');
+      li.appendChild(el('span', null, tx));
+      li.appendChild(bn(PAYOFF_BN[ci][1][k]));
+      ul.appendChild(li);
+    });
     c.appendChild(ul);
     two.appendChild(c);
   });
@@ -2767,9 +2881,13 @@ function stepLesson(){
   const L = LESSON[lstep];
   const p = el('div', 'panel p-lesson');
   const c = el('div', 'card raised lead');
+  const LB = LESSON_BN[lstep] || [];
   c.appendChild(el('p', 'kicker', L.kicker));
+  if (LB[0]) c.appendChild(bn(LB[0]));
   c.appendChild(el('h1', 'h-title', L.title));
+  if (LB[1]) c.appendChild(bn(LB[1]));
   c.appendChild(el('p', 'body', L.body));
+  if (LB[2]) c.appendChild(bn(LB[2]));
   c.appendChild(L.build());
   p.appendChild(c);
 
@@ -2890,45 +3008,145 @@ function openPredict(box){
 }
 
 /* ---- 2. ASK ---- */
-/* What makes a question good, said before anybody has to pick one. The four
-   ticks and the four traps are the same ones on the printed field sheet, so a
-   class working from paper and a class working from the screen are being
-   taught the same thing in the same words. */
-const GOODQ = [
-  ['Cannot be answered yes or no',  'হ্যাঁ বা না দিয়ে উত্তর দেওয়া যায় না'],
-  ['No judgment hidden inside it',  'ভেতরে কোনো বিচার লুকানো নেই'],
-  ['About one person, one event',   'একজন মানুষ, একটি ঘটনা নিয়ে'],
-  ['Asks for a story, not a theory','তত্ত্ব নয়, ঘটনার বর্ণনা চায়']
+/* ------------------------------------------------- what makes a question good
+   This screen was two columns of English prose bullets, which is the same
+   mistake the whole activity started with: an abstraction, in the second
+   language, all at once, before anything concrete has happened.
+
+   It is now three phases, and only one idea is on screen at a time.
+
+     RULES     four pairs, a picture each: this opens / this closes.
+               One pair per tap. Nothing to read but four words.
+     PRACTICE  three short questions. Does this one open or close?
+               Wrong answers name the rule that was broken, with its picture.
+     CHOOSE    the scenario's four questions, as before.
+
+   Every line has its Bangla under it. The pictures carry the meaning; the
+   words confirm it. */
+const QRULES = [
+  { ok: '🗣️', okEn: 'They talk and talk',   okBn: 'তিনি বলতেই থাকেন',
+    no: '🤐', noEn: 'One word and it stops', noBn: 'এক কথাতেই শেষ',
+    flaw: 'closed' },
+  { ok: '❓', okEn: 'You ask. You wait.',    okBn: 'আপনি জানতে চান, অপেক্ষা করেন',
+    no: '📣', noEn: 'You say the answer first', noBn: 'উত্তরটা আপনিই বলে দেন',
+    flaw: 'leading' },
+  { ok: '👤', okEn: 'One person. One day.',  okBn: 'একজন মানুষ। একটি দিন।',
+    no: '🌍', noEn: 'A whole country',       noBn: 'গোটা একটা দেশ',
+    flaw: 'generalizing' },
+  { ok: '📖', okEn: 'What happened?',        okBn: 'কী ঘটেছিল?',
+    no: '💭', noEn: 'Which one is better?',  noBn: 'কোনটা ভালো?',
+    flaw: 'abstract' }
 ];
-const BADQ = [
-  ['closed',       'Yes / no',            'হ্যাঁ / না প্রশ্ন'],
-  ['leading',      'Answer built in',     'উত্তর আগেই বলে দেওয়া'],
-  ['generalizing', 'A whole culture',     'গোটা সংস্কৃতি নিয়ে'],
-  ['abstract',     'Asks for a theory',   'তত্ত্ব চাওয়া']
+/* short, culture-neutral, and the same three for every scenario, so a class
+   that meets this twice is practising the rule rather than the example */
+const QDRILL = [
+  { q: 'Do you eat rice every day?',                     ok: false, flaw: 'closed' },
+  { q: 'Tell me about the last wedding you went to.',    ok: true },
+  { q: 'Why are Americans so cold to their families?',   ok: false, flaw: 'generalizing' }
 ];
 
-function questionRules(){
-  const box = el('div', 'qrules');
-  [['ok', 'A good question', 'ভালো প্রশ্ন', 'tick', GOODQ.map(x => [x[0], x[1]])],
-   ['no', 'These close it',  'যেগুলো কথা থামিয়ে দেয়', 'cross',
-    BADQ.map(x => [x[1], x[2]])]].forEach(col => {
-    const c = el('div', 'qrule ' + col[0]);
-    const h = el('div', 'qrule-h');
-    h.appendChild(icon(col[3], 'qrule-ico'));
-    const ht = el('div');
-    ht.appendChild(el('span', 'qrule-t', col[1]));
-    ht.appendChild(bn(col[2]));
-    h.appendChild(ht);
-    c.appendChild(h);
-    const ul = el('ul', 'qrule-list');
-    col[4].forEach(row => {
-      const li = el('li');
-      li.appendChild(el('span', null, row[0]));
-      li.appendChild(bn(row[1]));
-      ul.appendChild(li);
-    });
-    c.appendChild(ul);
-    box.appendChild(c);
+function qPhaseRules(card){
+  const i = state.qRule || 0;
+  const R = QRULES[i];
+
+  const pair = el('div', 'qpair');
+  [['ok', R.ok, R.okEn, R.okBn, 'tick'], ['no', R.no, R.noEn, R.noBn, 'cross']].forEach(side => {
+    const d = el('div', 'qside ' + side[0]);
+    const mark = el('span', 'qside-mark');
+    mark.appendChild(icon(side[4]));
+    d.appendChild(mark);
+    d.appendChild(el('span', 'qside-g', side[1]));
+    d.appendChild(el('p', 'qside-t', side[2]));
+    d.appendChild(bn(side[3]));
+    pair.appendChild(d);
+  });
+  card.appendChild(pair);
+
+  const foot = el('div', 'qfoot');
+  const dots = el('div', 'qdots');
+  QRULES.forEach((_, k) => dots.appendChild(el('span', 'qdot' + (k === i ? ' on' : ''))));
+  foot.appendChild(dots);
+  const nb = el('button', 'mini on');
+  nb.type = 'button';
+  nb.appendChild(el('span', null, i < QRULES.length - 1 ? t('nx_next') : t('q_try')));
+  nb.appendChild(bn(i < QRULES.length - 1 ? tb('nx_next') : tb('q_try')));
+  nb.onclick = () => {
+    if (i < QRULES.length - 1){ state.qRule = i + 1; }
+    else { state.qPhase = 1; state.qDrill = 0; }
+    render();
+  };
+  foot.appendChild(nb);
+  card.appendChild(foot);
+}
+
+function qPhaseDrill(card){
+  const i = state.qDrill || 0;
+  const D = QDRILL[i];
+
+  const prog = el('p', 'qprog', (i + 1) + ' / ' + QDRILL.length);
+  card.appendChild(prog);
+
+  const q = el('div', 'qtest');
+  q.appendChild(el('p', 'qtest-q', '“' + D.q + '”'));
+  card.appendChild(q);
+
+  const row = el('div', 'qjudge');
+  const fb = el('div', 'qfb');
+  [['open', true, '🗣️', 'q_opens'], ['shut', false, '🤐', 'q_closes']].forEach(o => {
+    const b = el('button', 'qj ' + o[0]);
+    b.type = 'button';
+    b.appendChild(el('span', 'qj-g', o[2]));
+    const lab = el('span');
+    lab.appendChild(el('span', null, t(o[3])));
+    lab.appendChild(bn(tb(o[3])));
+    b.appendChild(lab);
+    b.onclick = () => {
+      if (row.dataset.done) return;
+      row.dataset.done = '1';
+      const right = (o[1] === D.ok);
+      b.classList.add(right ? 'is-right' : 'is-wrong');
+      row.querySelectorAll('.qj').forEach(x => { x.disabled = true; });
+      fb.innerHTML = '';
+      fb.className = 'qfb show ' + (right ? 'good' : 'bad');
+      if (D.ok){
+        fb.appendChild(el('span', 'qfb-g', '📖'));
+        const tx = el('div');
+        tx.appendChild(el('p', null, t('q_good')));
+        tx.appendChild(bn(tb('q_good')));
+        fb.appendChild(tx);
+      } else {
+        const R = QRULES.find(x => x.flaw === D.flaw);
+        fb.appendChild(el('span', 'qfb-g', R.no));
+        const tx = el('div');
+        tx.appendChild(el('p', null, R.noEn));
+        tx.appendChild(bn(R.noBn));
+        fb.appendChild(tx);
+      }
+      const nb = el('button', 'mini on');
+      nb.type = 'button';
+      nb.appendChild(el('span', null, i < QDRILL.length - 1 ? t('nx_next') : t('q_now')));
+      nb.appendChild(bn(i < QDRILL.length - 1 ? tb('nx_next') : tb('q_now')));
+      nb.onclick = () => {
+        if (i < QDRILL.length - 1) state.qDrill = i + 1;
+        else state.qPhase = 2;
+        render();
+      };
+      fb.appendChild(nb);
+    };
+    row.appendChild(b);
+  });
+  card.appendChild(row);
+  card.appendChild(fb);
+}
+
+/* the four rules, small, as a reminder while the real choice is made */
+function qStrip(){
+  const box = el('div', 'qstrip');
+  QRULES.forEach(R => {
+    const d = el('div', 'qstrip-i');
+    d.appendChild(el('span', null, R.ok));
+    d.appendChild(el('span', 'qstrip-t', R.okEn));
+    box.appendChild(d);
   });
   return box;
 }
@@ -2938,12 +3156,25 @@ function stepAsk(){
   p.appendChild(taskStrip(stepNo(), 'ask', 'task_ask'));
   const c = el('div', 'card raised');
   c.appendChild(el('p', 'kicker', stepKicker()));
+
+  if (state.qPhase === undefined) state.qPhase = state.qDone ? 2 : 0;
+
+  if (state.qPhase === 0){
+    c.appendChild(el('h2', 'h-title', 'One opens. One closes.'));
+    c.appendChild(bn('একটি কথা খোলে। একটি কথা থামায়।'));
+    qPhaseRules(c);
+    p.appendChild(c); wrap.appendChild(p); return;
+  }
+  if (state.qPhase === 1){
+    c.appendChild(el('h2', 'h-title', 'Open or closed?'));
+    c.appendChild(bn('এই প্রশ্নটি কথা খোলে, না থামায়?'));
+    qPhaseDrill(c);
+    p.appendChild(c); wrap.appendChild(p); return;
+  }
+
   c.appendChild(el('h2', 'h-title', 'Which question gets you inside?'));
   c.appendChild(bn('কোন প্রশ্নটি ভেতরে ঢোকার পথ খুলে দেয়?'));
-  c.appendChild(questionRules());
-  const pick = el('p', 'hint', 'Three of these four close the conversation. One opens it.');
-  c.appendChild(pick);
-  c.appendChild(bn('এই চারটির মধ্যে তিনটি কথা থামিয়ে দেয়। একটি কথা শুরু করায়।'));
+  c.appendChild(qStrip());
 
   const list = el('div', 'opts');
   const opts = state.qOrder || (state.qOrder = shuffle(sc.questions.map((_, i) => i)));
@@ -4031,11 +4262,29 @@ function coachDone(key){
   coachSeen[key] = 1;
   try { localStorage.setItem('ei-coach', JSON.stringify(coachSeen)); } catch (e) {}
 }
-/* put a ring round a real control and a line of text beside it */
+/* Put a ring round a real control and a line of text beside it.
+
+   The first version measured the target where it happened to be, which for
+   the first play button is usually below the fold — so the ring was drawn
+   off-screen and the tip looked broken. Scroll the control into view first,
+   measure on the next frame, and refuse to draw at all if it still is not on
+   screen; a tip nobody can see should not burn its one showing. */
+let coachBusy = false;
 function coachAt(key, target){
-  if (!target || coachSeen[key] || !COACH[key]) return;
+  if (!target || coachSeen[key] || !COACH[key] || coachBusy) return;
+  if (!target.getClientRects().length) return;
+  coachBusy = true;
+  target.scrollIntoView({ block: 'center', behavior: 'auto' });
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    coachBusy = false;
+    coachShow(key, target);
+  }));
+}
+function coachShow(key, target){
   const r = target.getBoundingClientRect();
-  if (!r.width) return;
+  const vw = window.innerWidth, vh = window.innerHeight;
+  /* still not on screen — say nothing and keep the tip for next time */
+  if (!r.width || r.bottom < 8 || r.top > vh - 8 || r.right < 8 || r.left > vw - 8) return;
   coachDone(key);
 
   const ring = coachEl.querySelector('.tip-ring');
@@ -4049,14 +4298,20 @@ function coachAt(key, target){
   bub.innerHTML = '';
   bub.appendChild(el('p', 'tip-en', COACH[key][0]));
   bub.appendChild(bn(COACH[key][1]));
-  /* sit under the control unless that would fall off the screen */
-  const below = r.bottom + 12;
-  const room = window.innerHeight - below;
-  bub.style.left = Math.max(12, Math.min(r.left, window.innerWidth - 260)) + 'px';
-  if (room > 120){ bub.style.top = below + 'px'; bub.style.bottom = 'auto'; }
-  else { bub.style.top = 'auto'; bub.style.bottom = (window.innerHeight - r.top + 12) + 'px'; }
+  bub.style.left = '0px'; bub.style.top = '0px'; bub.style.bottom = 'auto';
 
   coachEl.classList.add('show');
+  /* measure the bubble once it is laid out, then clamp it inside the viewport */
+  requestAnimationFrame(() => {
+    const b = bub.getBoundingClientRect();
+    const gap = 12;
+    const below = r.bottom + gap, above = r.top - gap - b.height;
+    const top = (below + b.height < vh - gap) ? below
+              : (above > gap) ? above
+              : Math.max(gap, Math.min(r.top, vh - b.height - gap));
+    bub.style.top  = Math.round(top) + 'px';
+    bub.style.left = Math.round(Math.max(gap, Math.min(r.left, vw - b.width - gap))) + 'px';
+  });
   clearTimeout(coachT);
   coachT = setTimeout(coachHide, 7000);
 }
@@ -4099,7 +4354,7 @@ $('#lang-bn').onclick   = () => { setBangla(true);  render(); };
 document.addEventListener('click', e => {
   if (coachEl.classList.contains('show') && !e.target.closest('.tipmark')) coachHide();
 }, true);
-stage.addEventListener('scroll', coachHide, { passive: true });
+stage.addEventListener('scroll', () => { if (!coachBusy) coachHide(); }, { passive: true });
 $('#m-lesson').onclick = () => { closeSheet(); lesson = true; lstep = 0; stopAudio(); render(); };
 $('#m-projector').onclick = () => { closeSheet(); toggleStage(); };
 
