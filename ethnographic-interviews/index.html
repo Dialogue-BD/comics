@@ -1089,6 +1089,25 @@ h1,h2,h3{margin:0}
 .sheet kbd{display:inline-block;padding:1px 7px;border-radius:var(--radius-sm);
   border:1px solid var(--rule);background:var(--panel);font-family:var(--font-ui);font-size:.82em;font-weight:600}
 .sheet-row{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+.print-picker{width:100%;margin-top:var(--s4);border:1px solid var(--rule);border-radius:var(--radius-sm);overflow:hidden}
+.print-picker__toggle{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:var(--s3);
+  padding:var(--s3) var(--s4);border:0;background:var(--panel);color:var(--tx);
+  font:inherit;font-weight:700;text-align:left;cursor:pointer;
+}
+.print-picker__toggle::after{content:"▾";color:var(--kicker)}
+.print-picker__toggle[aria-expanded="true"]::after{content:"▴"}
+.print-picker__options{display:grid;gap:1px;background:var(--rule)}
+.print-picker__options[hidden]{display:none}
+.print-option{
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s3);align-items:start;
+  padding:var(--s3) var(--s4);border:0;background:var(--surface-card);color:var(--tx);
+  font:inherit;text-align:left;cursor:pointer;
+}
+.print-option:hover{background:var(--moss-soft)}
+.print-option__icon{font-size:1.2em;line-height:1.2}
+.print-option strong,.print-option small{display:block}
+.print-option small{margin-top:2px;color:var(--tx-muted);font-size:.8em;line-height:1.35}
 /* the teacher's half of the menu, fenced off from the student's half */
 .sheet h2.tnote{
   margin-top:var(--s5);padding-top:var(--s4);border-top:1px solid var(--rule);
@@ -1158,6 +1177,11 @@ h1,h2,h3{margin:0}
   .app,.toast,.scrim,.sheet{display:none !important}
   html,body{overflow:visible;height:auto;background:#fff;color:#1D211C}
   #fieldsheet{display:block;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  #fieldsheet .print-sheet{display:block}
+  #fieldsheet .print-sheet + .print-sheet{break-before:page;page-break-before:always}
+  body[data-print-selection="interview"] #print-rings{display:none}
+  body[data-print-selection="rings"] #print-interview{display:none}
+  body[data-print-selection="rings"] #print-rings{break-before:auto;page-break-before:auto}
 
   .fs-head{display:flex;justify-content:space-between;font-family:'Public Sans',sans-serif;
     font-size:7.5pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#134219}
@@ -1194,7 +1218,6 @@ h1,h2,h3{margin:0}
   .fs-foot{margin-top:10pt;padding-top:5pt;border-top:.75pt solid #b6bdb6;
     display:flex;justify-content:space-between;font-family:'Public Sans',sans-serif;
     font-size:7.5pt;color:#5F6A5C}
-  .pb{page-break-before:always}
 }
 </style>
 </head>
@@ -1249,12 +1272,30 @@ h1,h2,h3{margin:0}
      every time, so a second listen is not the first one with the answers known; step 3 will not release
      the class until all three have been heard once. Opening the transcripts releases it — use that for
      a weaker group, and note that every underlined word there can be tapped for its meaning.</p>
-  <p>Print the field sheet and the class can run a real interview outside the room with the same four
-     steps. The paper version has no answers in it.</p>
+  <p>Choose any printable below. On a phone, tablet, computer, or projector, use the system print dialog
+     to print it or save it as a PDF. The paper versions contain no answers.</p>
+
+  <div class="print-picker">
+    <button class="print-picker__toggle" id="m-print-toggle" type="button"
+            aria-expanded="false" aria-controls="print-options">Printable sheets</button>
+    <div class="print-picker__options" id="print-options" hidden>
+      <button class="print-option" type="button" data-print-sheet="interview">
+        <span class="print-option__icon">📝</span>
+        <span><strong>Ethnographic Interview</strong><small>One-page observe, ask, listen, and triangulate field sheet</small></span>
+      </button>
+      <button class="print-option" type="button" data-print-sheet="rings">
+        <span class="print-option__icon">🎯</span>
+        <span><strong>Fill the Rings</strong><small>One-page culture comparison and reflection sheet</small></span>
+      </button>
+      <button class="print-option" type="button" data-print-sheet="all">
+        <span class="print-option__icon">📚</span>
+        <span><strong>All printable sheets</strong><small>Both one-page sheets in one print or Save to PDF job</small></span>
+      </button>
+    </div>
+  </div>
 
   <div class="sheet-row">
     <button class="mini" id="m-projector">Present on TV</button>
-    <button class="mini" id="m-print">Print field sheet</button>
     <button class="mini" id="m-lesson">Show the lesson</button>
     <button class="mini" id="m-shuffle">New scenario</button>
     <button class="mini" id="m-close">Close</button>
@@ -1263,6 +1304,7 @@ h1,h2,h3{margin:0}
 
 <!-- ============ PRINTABLE FIELD SHEET · blank, for real interviews ============ -->
 <div id="fieldsheet">
+  <section class="print-sheet" id="print-interview">
   <div class="fs-head"><span>Dialogue · Professional Skills Development Center</span><span>Field Sheet · Rajshahi</span></div>
   <div class="fs-mast">
     <p class="prog">Applied Professional English · Cross-Cultural Judgment</p>
@@ -1311,8 +1353,9 @@ h1,h2,h3{margin:0}
   <div class="lines"></div>
 
   <div class="fs-foot"><span>Dialogue · Professional Skills Development Center, Rajshahi</span><span>dialogue-bd.com</span></div>
+  </section>
 
-  <div class="pb"></div>
+  <section class="print-sheet" id="print-rings">
   <div class="fs-head"><span>Dialogue · Professional Skills Development Center</span><span>Field Sheet · Rajshahi</span></div>
   <div class="fs-mast">
     <p class="prog">Step 5</p>
@@ -1356,6 +1399,7 @@ h1,h2,h3{margin:0}
   </div>
 
   <div class="fs-foot"><span>Dialogue · Professional Skills Development Center, Rajshahi</span><span>dialogue-bd.com</span></div>
+  </section>
 </div>
 
 <script src="glossary.js"></script>
@@ -3324,8 +3368,26 @@ scrim.onclick = closeSheet;
 $('#m-close').onclick = closeSheet;
 $('#m-shuffle').onclick = () => { closeSheet(); newScenario(); };
 $('#m-lesson').onclick = () => { closeSheet(); lesson = true; lstep = 0; stopAudio(); render(); };
-$('#m-print').onclick = () => { closeSheet(); setTimeout(() => window.print(), 180); };
 $('#m-projector').onclick = () => { closeSheet(); toggleStage(); };
+
+const printToggle = $('#m-print-toggle'), printOptions = $('#print-options');
+printToggle.onclick = () => {
+  const open = printToggle.getAttribute('aria-expanded') === 'true';
+  printToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+  printOptions.hidden = open;
+};
+printOptions.addEventListener('click', e => {
+  const option = e.target.closest('[data-print-sheet]');
+  if (!option) return;
+  document.body.dataset.printSelection = option.dataset.printSheet;
+  printToggle.setAttribute('aria-expanded', 'false');
+  printOptions.hidden = true;
+  closeSheet();
+  setTimeout(() => window.print(), 180);
+});
+window.addEventListener('afterprint', () => {
+  delete document.body.dataset.printSelection;
+});
 
 /* Paper by day, the forest Stage on the projector. */
 function toggleStage(){
