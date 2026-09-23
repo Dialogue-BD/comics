@@ -224,10 +224,17 @@ button{font:inherit;color:inherit}
 .rail-step{
   display:inline-flex;align-items:center;gap:calc(5px*var(--ui));
   padding:var(--s2) calc(12px*var(--ui)) 0;white-space:nowrap;
+  font-family:var(--font-ui);
   font-size:calc(.7rem*var(--ui));font-weight:700;letter-spacing:.13em;text-transform:uppercase;
-  color:var(--tx-muted);border-top:2px solid transparent;margin-top:-2px;
+  color:var(--tx-muted);margin-top:-2px;
+  /* the rail itself stays click-through so it never swallows a tap meant for
+     the page; only the steps take one */
+  background:none;border:0;border-top:2px solid transparent;
+  pointer-events:auto;cursor:pointer;
   transition:color .25s ease,border-color .25s ease;
 }
+.rail-step:hover{color:var(--tx);border-top-color:var(--rule-strong)}
+.rail-step.is-active:hover{border-top-color:var(--gold)}
 .rail-step.is-done{color:var(--tx)}
 .rail-step.is-active{color:var(--kicker);border-top-color:var(--gold)}
 .rail-ico{width:calc(.95rem*var(--ui));height:calc(.95rem*var(--ui));opacity:.75}
@@ -947,6 +954,32 @@ h1,h2,h3{margin:0}
 }
 @media (min-width:720px){ .chain-arrow{transform:none} }
 
+.lfor{margin-top:var(--s5);display:flex;flex-direction:column;align-items:center;gap:var(--s2)}
+.lfor-row{display:flex;gap:var(--s3)}
+.lfor-p{
+  /* the number used to hang outside the circle on an absolute corner, which
+     pushed the row's scroll width past its box on a short projector; it lives
+     inside now */
+  width:calc(70px*var(--ui));height:calc(70px*var(--ui));
+  border:1.5px solid var(--rule-strong);border-radius:var(--radius-md);
+  background:var(--panel);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:calc(2px*var(--ui));
+}
+.lfor-ico{width:calc(1.6rem*var(--ui));height:calc(1.6rem*var(--ui));color:var(--tx-muted)}
+.lfor-n{
+  font-family:var(--font-ui);font-size:calc(.72rem*var(--ui));font-weight:700;
+  letter-spacing:.08em;color:var(--kicker);
+}
+.lfor-arrow{color:var(--kicker);font-size:calc(1.3rem*var(--ui));line-height:1}
+.lfor-hit{
+  display:flex;align-items:center;gap:var(--s2);
+  padding:calc(10px*var(--ui)) var(--s4);
+  border:1.5px solid var(--l-value);border-radius:var(--radius-sm);
+  background:var(--l-value-t);
+  font-family:var(--font-ui);font-size:calc(1rem*var(--ui));color:var(--ink);
+}
+.lfor-tick{width:calc(1.2rem*var(--ui));height:calc(1.2rem*var(--ui));color:var(--l-value);flex:0 0 auto}
 .payoff{display:grid;grid-template-columns:1fr;gap:var(--s3);margin-top:var(--s4)}
 @media (min-width:640px){ .payoff{grid-template-columns:1fr 1fr} }
 .payoff-col{padding:var(--s4);border:1px solid var(--rule);border-radius:var(--radius-md);background:var(--panel)}
@@ -1667,7 +1700,6 @@ body.bangla .bn-inline{display:inline}
   <div class="sheet-row">
     <button class="mini" id="m-demo">Show the tips again</button>
     <button class="mini" id="m-projector">Present on TV</button>
-    <button class="mini" id="m-teacher" aria-pressed="false">All 5 steps</button>
     <button class="mini" id="m-lesson">Show the lesson</button>
     <button class="mini" id="m-shuffle">New scenario</button>
     <button class="mini" id="m-close">Close</button>
@@ -1756,6 +1788,11 @@ const T = {
   nx_new:        ['Next scenario',        'পরের পরিস্থিতি'],
 
   playall:       ['Play all three',   'তিনজনের কথাই বাজান'],
+  hand_k:        ['Stop Here',        'এখানেই থামুন'],
+  hand_t:        ['You have the evidence',
+                  'প্রমাণ এখন আপনার হাতে'],
+  hand_b:        ['Three people, three times — and these are the sentences all three of them said. Your teacher takes it from here: what do people who say these things believe, and what does the world look like to them?',
+                  'তিনজন মানুষ, তিনবার — আর এই বাক্যগুলোই তিনজনই বলেছেন। এরপরের অংশ আপনার শিক্ষক দেখাবেন: যাঁরা এই কথাগুলো বলেন, তাঁরা কী বিশ্বাস করেন, আর তাঁদের চোখে জগৎটা কেমন?'],
   sp_text:       ['See the words',    'কথাগুলো দেখুন'],
   sp_text_on:    ['Hide the words',   'কথাগুলো লুকান'],
   fulltext:      ['Show full text',   'সম্পূর্ণ লেখা দেখুন'],
@@ -1909,7 +1946,13 @@ const btnNext = $('#btn-next'), btnNextStage = $('#btn-next-stage'),
    projector and for a class that has the idea already. Nothing is lost; it
    moves to where it can be said comprehensibly. */
 let teacher = false;
-try { teacher = localStorage.getItem('ei-teacher') === '1'; } catch (e) {}
+/* Presenting and the full five steps used to be two independent switches, so
+   the app allowed the one state that is worse than either: the teacher at the
+   front of the room running the three-step listening flow, with the culture
+   payoff missing. The projector now IS the full flow. Persisting the stage
+   rather than the step set means a reload cannot land on a flow the theme
+   disagrees with. */
+try { teacher = localStorage.getItem('ei-stage') === '1'; } catch (e) {}
 
 const STEP_SET = {
   student: [['Watch',  'eye',    'task_watch',  () => stepObserve()],
@@ -1924,14 +1967,30 @@ const STEP_SET = {
 const steps = () => STEP_SET[teacher ? 'full' : 'student'];
 const stepName = () => (steps()[step] || steps()[0])[0];
 
-function setTeacher(on){
+/* keepPlace is set when the projector is toggled part-way through a class:
+   the step sets differ, so the position is carried across by NAME. Ask and Map
+   have no counterpart in the short flow, so leaving the projector from one of
+   them lands on the nearest step that does exist rather than throwing the
+   class back to the beginning. */
+function setTeacher(on, keepPlace){
+  const wasName = (!lesson && sc && steps()[step]) ? steps()[step][0] : null;
+  /* Turning the projector on before anything has happened is the start of the
+     lesson, so it opens the framing. Turning it on part-way through is a
+     teacher taking the class over for the debrief, and must not throw away
+     where they had got to. */
+  const started = !sc || step > 0 || state.qDone ||
+                  (state.passes || []).some(x => x > 0) || state.handoff;
   teacher = on;
-  try { localStorage.setItem('ei-teacher', on ? '1' : '0'); } catch (e) {}
-  const b = $('#m-teacher');
-  if (b){ b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); }
-  /* the full lesson opens with the concept panels, so a class meets the idea
-     before it meets the method; listening-only never shows them */
-  step = 0; lstep = 0; lesson = on;
+  if (on && keepPlace && !started){ step = 0; lstep = 0; lesson = true; }
+  else if (keepPlace && wasName){
+    const S = steps();
+    let i = S.findIndex(x => x[0] === wasName);
+    if (i < 0) i = wasName === 'Ask' ? 0 : S.length - 1;
+    step = i;
+  } else {
+    /* a fresh start on the projector meets the idea before the method */
+    step = 0; lstep = 0; lesson = on;
+  }
   if (sc) render();          /* at boot there is no scenario yet */
 }
 
@@ -2204,11 +2263,30 @@ function renderRail(){
   const names = lesson ? LESSON.map(l => [l.rail, l.ico]) : steps().map(x => [x[0], x[1]]);
   const at = lesson ? lstep : step;
   names.forEach((s, i) => {
-    const n = el('div', 'rail-step' + (i === at ? ' is-active' : i < at ? ' is-done' : ''));
+    const n = el('button', 'rail-step' + (i === at ? ' is-active' : i < at ? ' is-done' : ''));
+    n.type = 'button';
     n.appendChild(icon(s[1], 'rail-ico'));
     n.appendChild(el('span', null, s[0]));
+    if (i === at) n.setAttribute('aria-current', 'step');
+    n.setAttribute('aria-label', (lesson ? 'Lesson panel ' : 'Step ') + (i + 1) + ': ' + s[0]);
+    n.onclick = () => jumpTo(i);
     railEl.appendChild(n);
   });
+}
+
+/* The rail was a progress indicator. It is navigation now: a teacher running
+   the debrief on the projector should reach Map without walking the class
+   through four screens to get there, and back to Listen just as fast. */
+function jumpTo(i){
+  stopAudio();
+  if (lesson){
+    if (i === lstep) return;
+    lstep = i; render(); return;
+  }
+  if (state.handoff) state.handoff = false;
+  else if (i === step) return;
+  step = i;
+  render();
 }
 
 /* --------------------------------------------------------------- scenario */
@@ -2221,6 +2299,7 @@ function newScenario(keepLesson, id){
   state = { qDone: false, passes: [0, 0, 0], catchScores: [[], [], []], tOpen: false,
             tCard: [false, false, false],
             claimsDone: false, picked: new Set(), placed: {}, mapDone: false,
+            handoff: false,
             chosenQ: null };
   /* The brand layer does not recolour per theme — the badge carries the theme. */
   const th = THEMES[sc.theme];
@@ -2238,6 +2317,7 @@ function render(){
   wrap.innerHTML = '';
   stage.scrollTop = 0;
   if (lesson){ stepLesson(); btnBack.disabled = (lstep === 0); syncNext(); return; }
+  if (state.handoff){ stepHandoff(); btnBack.disabled = false; syncNext(); return; }
   steps()[step][3]();
   btnBack.disabled = (step === 0);
   syncNext();
@@ -2253,6 +2333,15 @@ function syncNext(){
     setBtnLabel(btnNext, k);
     btnNextStage.disabled = false;
     btnNextStage.textContent = t(k);
+    return;
+  }
+
+  /* the handover card is the end of the short flow: nothing to continue to */
+  if (state.handoff){
+    btnNext.disabled = true;
+    setBtnLabel(btnNext, 'nx_new');
+    btnNextStage.disabled = true;
+    btnNextStage.textContent = t('nx_new');
     return;
   }
 
@@ -3021,7 +3110,9 @@ const LESSON_BN = [
   ['ক্রমটা আসে কোথা থেকে', 'কেন্দ্রই ঠিক করে দেয় প্রান্তটা',
    'একটি সংস্কৃতি তার মূল্যবোধগুলোকে এভাবেই সাজায়, কারণ সে যা সত্য বলে মানে। আর সে ওগুলো সত্য মানে, কারণ সে জগৎটাকে যেভাবে দেখে — যে চশমা কেউ কখনো খোলে না।'],
   ['সাক্ষাৎকার কেন নেব?', 'একই ঘণ্টায় সংস্কৃতি আর ভাষা, দুটোই',
-   'মূল্যবোধ চোখে দেখা যায় না। জিজ্ঞেস করতে হয় — তারপর সেই উত্তর অন্যদের সঙ্গে মিলিয়ে দেখতে হয়। নৃবিজ্ঞানীরা এভাবেই কাজ করেন, আর একই সঙ্গে এটি সত্যিকারের শোনার অনুশীলন।']
+   'মূল্যবোধ চোখে দেখা যায় না। জিজ্ঞেস করতে হয় — তারপর সেই উত্তর অন্যদের সঙ্গে মিলিয়ে দেখতে হয়। নৃবিজ্ঞানীরা এভাবেই কাজ করেন, আর একই সঙ্গে এটি সত্যিকারের শোনার অনুশীলন।'],
+  ['এবার আপনি শুনবেন', 'তিনজন মানুষ, একটি প্রশ্ন',
+   'একই প্রশ্নের উত্তর আপনি তিনজনের কাছ থেকে শুনবেন। খেয়াল করুন — তিনজনই যে কথাটা বলছেন, সেটিই সংস্কৃতি। কেবল একজন যা বলছেন, সেটি সেই মানুষটিরই কথা। প্রত্যেকের কথা তিনবার শোনা যাবে, আর দাগ দেওয়া যেকোনো শব্দে চাপ দিলে তার মানে দেখা যাবে।']
 ];
 
 let lesson = false, lstep = 0;   /* the four theory panels are teacher mode only */
@@ -3050,7 +3141,17 @@ const LESSON = [
     title: 'You learn the culture and the language in the same hour',
     body: 'You cannot see a value. You have to ask — and then check the answer against other people. ' +
           'An ethnographic interview is how anthropologists do it, and it is real listening practice at the same time.',
-    build: () => payoffPicture() }
+    build: () => payoffPicture() },
+
+  /* The framing used to stop at the idea and leave the class to work out what
+     they were meant to DO with it. This panel is the handover: it names the
+     listening task in one line and then gets out of the way. */
+  { rail: 'Listen for', ico: 'ear', kicker: 'Now You Listen',
+    title: 'Three people, one question',
+    body: 'You will hear three people answer the same question. Listen for the thing all three of them ' +
+          'say — that is the culture. What only one of them says is just that person. You can hear each ' +
+          'person three times, and any underlined word can be tapped for its meaning.',
+    build: () => listenForPicture() }
 ];
 
 /* the rings with nothing in them — the idea, before any scenario exists */
@@ -3153,6 +3254,28 @@ function chainPicture(){
 }
 
 /* what an interview buys you, on both sides */
+/* three heard, one thing in common — the listening task as a picture */
+function listenForPicture(){
+  const box = el('div', 'lfor');
+  const row = el('div', 'lfor-row');
+  ['1', '2', '3'].forEach(nm => {
+    const c = el('div', 'lfor-p');
+    c.appendChild(icon('ear', 'lfor-ico'));
+    c.appendChild(el('span', 'lfor-n', nm));
+    row.appendChild(c);
+  });
+  box.appendChild(row);
+  box.appendChild(el('span', 'lfor-arrow', '↓'));
+  const hit = el('div', 'lfor-hit');
+  hit.appendChild(icon('tick', 'lfor-tick'));
+  const w = el('div');
+  w.appendChild(el('strong', null, t('ui_allsaid')));
+  w.appendChild(bn(tb('ui_allsaid')));
+  hit.appendChild(w);
+  box.appendChild(hit);
+  return box;
+}
+
 function payoffPicture(){
   const two = el('div', 'payoff');
   [['About them', ['What they actually do, not what you assume',
@@ -3869,6 +3992,36 @@ function stepListen(){
    This was the bottom half of the listening screen, which meant that screen
    asked a student to meet a dozen new affordances at once. One screen, one
    task: hear them, then find the overlap. */
+/* where the students stop and the teacher takes over */
+function stepHandoff(){
+  const p = el('div', 'panel p-done');
+  const c = el('div', 'card raised lead');
+  c.appendChild(addBn(el('p', 'kicker', t('hand_k')), tb('hand_k')));
+  c.appendChild(addBn(el('h1', 'h-title', t('hand_t')), tb('hand_t')));
+
+  const ev = el('div', 'evid');
+  ev.appendChild(addBn(el('span', 'evid-cap', t('ui_evid')), tb('ui_evid')));
+  const ul = el('ul', 'evid-list');
+  sc.claims.forEach(cm => { if (cm.shared)
+    ul.appendChild(addBn(el('li', null, cm.text), cm.text_bn)); });
+  ev.appendChild(ul);
+  c.appendChild(ev);
+
+  c.appendChild(addBn(el('p', 'body', t('hand_b')), tb('hand_b')));
+
+  const bar = el('div', 'tbar');
+  const again = el('button', 'mini');
+  again.type = 'button';
+  again.appendChild(el('span', null, t('nx_new')));
+  again.appendChild(bn(tb('nx_new')));
+  again.onclick = () => newScenario();
+  bar.appendChild(again);
+  c.appendChild(bar);
+
+  p.appendChild(c);
+  wrap.appendChild(p);
+}
+
 function stepCheck(){
   const p = el('div', 'panel p-check');
   p.appendChild(taskStrip(stepNo(), 'tick', 'task_check'));
@@ -4832,13 +4985,21 @@ function advance(){
     if (lstep === LESSON.length - 1){ endLesson(); return; }
     lstep++; render(); return;
   }
-  if (step === steps().length - 1){ newScenario(); return; }
+  if (step === steps().length - 1){
+    /* The short flow used to roll straight into a fresh scenario, so a class
+       blew past the moment the whole listening was for. It stops and hands
+       back instead; the full flow still ends on a new scenario, because by
+       then the debrief has happened. */
+    if (!teacher && !state.handoff){ state.handoff = true; render(); return; }
+    newScenario(); return;
+  }
   step++; render();
 }
 btnNext.onclick = advance;
 btnNextStage.onclick = advance;
 btnBack.onclick = () => {
   if (lesson){ if (lstep === 0) return; lstep--; render(); return; }
+  if (state.handoff){ state.handoff = false; render(); return; }
   if (step === 0) return;
   stopAudio(); step--; render();
 };
@@ -4852,7 +5013,6 @@ scrim.onclick = closeSheet;
 $('#m-close').onclick = closeSheet;
 $('#m-shuffle').onclick = () => { closeSheet(); newScenario(); };
 $('#m-demo').onclick    = () => { closeSheet(); coachReset(); render(); };
-$('#m-teacher').onclick = () => { closeSheet(); setTeacher(!teacher); };
 $('#lang-en').onclick   = () => { setBangla(false); render(); };
 $('#lang-bn').onclick   = () => { setBangla(true);  render(); };
 document.addEventListener('click', e => {
@@ -4917,16 +5077,26 @@ printToggle.onclick = () => {
 
 /* Paper by day, the forest Stage on the projector. */
 function toggleStage(){
+  paintStage(document.documentElement.getAttribute('data-theme') !== 'stage');
+  /* the one switch: presenting turns on Ask and Map, leaving it puts the
+     short listening flow back — carrying the class's position across */
+  setTeacher(document.documentElement.getAttribute('data-theme') === 'stage', true);
+  requestAnimationFrame(measureHeader);
+}
+
+/* the theme and the chrome only. Boot calls this on its own to restore a
+   saved projector session without re-opening the lesson over a class that is
+   already half way through. */
+function paintStage(on){
   const root = document.documentElement;
-  const on = root.getAttribute('data-theme') !== 'stage';
   root.setAttribute('data-theme', on ? 'stage' : 'paper');
+  try { localStorage.setItem('ei-stage', on ? '1' : '0'); } catch (e) {}
   document.querySelector('meta[name="theme-color"]').setAttribute('content', on ? '#E6E0CB' : '#F4F1E6');
   $('#m-projector').classList.toggle('on', on);
-  $('#m-projector').textContent = on ? 'Back to paper' : 'Present on TV';
+  $('#m-projector').textContent = on ? 'Back to the short flow' : 'Present on TV · all 5 steps';
   $('#brand-text').innerHTML = '';
   $('#brand-text').appendChild(el('span', 'brand-g', '🎯'));
   $('#brand-text').appendChild(document.createTextNode(on ? 'Culture Circles · On TV' : 'Culture Circles'));
-  requestAnimationFrame(measureHeader);
 }
 
 function toggleFullscreen(){
@@ -4954,7 +5124,7 @@ window.addEventListener('pagehide', stopAudio);
 
 /* ------------------------------------------------------------------- boot */
 setBangla(bnOn);
-setTeacher(teacher);
+paintStage(teacher);          /* teacher now mirrors the projector switch */
 newScenario(true, (function(){ try { return localStorage.getItem('ei-scen'); }
                                catch (e) { return null; } })());
 measureHeader();
