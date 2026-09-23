@@ -109,6 +109,13 @@
   --shadow-dialog:0 26px 68px rgba(12,51,25,.34);
   --ui:1.42;
 }
+/* 1.42 was set against a 1080-line screen. A classroom projector is very often
+   720 or 768 lines, and scaling type for 1080 on a screen with two-thirds the
+   height pushed a third of step 1 below the fold — the teacher could not show
+   the pictures and the prediction buttons at the same time. The boost now
+   follows the height it has to fit into. */
+@media (max-height:980px){ :root[data-theme="stage"]{--ui:1.26} }
+@media (max-height:820px){ :root[data-theme="stage"]{--ui:1.12} }
 
 *{box-sizing:border-box}
 html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--surface)}
@@ -1357,7 +1364,10 @@ body.bangla .bn-inline{display:inline}
    on the projector the page stops being one tall column and opens sideways.
    Below this width Stage behaves exactly like Paper, only larger. */
 @media (min-width:1000px){
-  :root[data-theme="stage"] .wrap{width:min(100%,1460px)}
+  /* 1460 was chosen when the projector showed a column of text; on a 1920
+     screen it leaves 460px of empty ground down both sides while the thing
+     the class is looking at renders at 228px. Take the screen. */
+  :root[data-theme="stage"] .wrap{width:min(100%,1840px)}
 
   /* step 1 — the scene on the left, the model on the right, both at once.
      The task strip arrived after this grid was written and took the first
@@ -1365,7 +1375,7 @@ body.bangla .bn-inline{display:inline}
      on its own and dropped the model below it. Every panel's strip spans the
      full width and stays a header, whatever the panel does underneath. */
   :root[data-theme="stage"] .p-observe{
-    display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);
+    display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.8fr);
     gap:var(--s4);align-items:start;
   }
   :root[data-theme="stage"] .panel > .task{grid-column:1 / -1}
@@ -1378,6 +1388,21 @@ body.bangla .bn-inline{display:inline}
   /* the model is a reference on step 1, not the subject: it keeps its rows
      on screen rather than filling the column */
   :root[data-theme="stage"] .p-observe .rings{width:min(100%,300px)}
+  /* A 16:9 screen runs out of height long before it runs out of width, and
+     step 1's pictures are what the back row is trying to see. Turning the
+     story and the guess from two stacked blocks into two columns buys back
+     the height the bigger panels cost. */
+  :root[data-theme="stage"] .lead-foot{
+    display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+    column-gap:var(--s5);align-items:start;
+  }
+  :root[data-theme="stage"] .lead-foot > .predict{grid-column:2;grid-row:1 / -1;margin-top:0}
+  :root[data-theme="stage"] .lead-foot > .body,
+  :root[data-theme="stage"] .lead-foot > .bn{grid-column:1}
+  /* a 16:9 screen has height to spare nowhere: the card's resting padding is
+     generous on paper and is pure loss on a projector */
+  :root[data-theme="stage"] .p-observe .card{padding:var(--s3) var(--s5)}
+  :root[data-theme="stage"] .p-observe .strip{margin-top:var(--s3)}
   :root[data-theme="stage"] .p-map .rrows{margin-top:0}
 
   /* the comparison — both sets of rings on the left, the layer on the right */
@@ -3151,9 +3176,14 @@ function stepObserve(){
   if (sc.title_bn) c.appendChild(bn(sc.title_bn));
   c.appendChild(settingChips());
   c.appendChild(sceneStrip());
-  c.appendChild(el('p', 'body', sc.observation));
-  if (sc.observation_bn) c.appendChild(bn(sc.observation_bn));
-  c.appendChild(predictBand());
+  /* the story and the guess are one unit: stacked on paper and on a phone,
+     side by side on the projector, where vertical room is the scarce thing
+     and the panels above want all of it they can get */
+  const foot = el('div', 'lead-foot');
+  foot.appendChild(el('p', 'body', sc.observation));
+  if (sc.observation_bn) foot.appendChild(bn(sc.observation_bn));
+  foot.appendChild(predictBand());
+  c.appendChild(foot);
   p.appendChild(c);
 
   if (teacher){
