@@ -95,21 +95,28 @@ const CHIP_FAULTS = {
     label: 'That is the behaviour again',
     coach: 'You have taken the visible action and given it a new name. Nothing has been explained. ' +
            'Ask: what would a person have to CARE about for this to feel normal?',
-    label_bn: 'বিমূর্ত প্রশ্ন',
-    short_bn: 'তত্ত্ব চায়',
+    label_bn: 'এটি আবার সেই আচরণটিই',
     coach_bn:
-      'এটি অভিজ্ঞতা নয়, দর্শন চায়। নিজের মূল্যবোধ নিয়ে মানুষ খুব নির্ভরযোগ্য বক্তা নন — কিন্তু গত মঙ্গলবার তাঁরা আসলে কী করেছিলেন, তা তাঁরা চমৎকার বলতে পারেন। আচরণ দিয়ে শুরু করুন; মূল্যবোধ নিজেই বেরিয়ে আসবে।',
-    fix_bn: 'আগে ঘটনাটা শুনতে চান। “কেন” জিজ্ঞেস করবেন তিনি বলা শেষ করার পরে।'
+      'চোখে দেখা কাজটিকেই আপনি নতুন একটা নাম দিয়েছেন। কিছুই ব্যাখ্যা হয়নি। ' +
+      'জিজ্ঞেস করুন — এটি স্বাভাবিক মনে হওয়ার জন্য একজন মানুষকে কোন জিনিসটির প্রতি যত্নবান হতে হবে?'
   },
   judgment: {
     label: 'That is a judgment, not a value',
     coach: 'This tells me how you feel about them. A value statement says what THEY rank highest — ' +
-           'stated so that they would nod and say “yes, that is what I was doing.”'
+           'stated so that they would nod and say “yes, that is what I was doing.”',
+    label_bn: 'এটি একটি বিচার, মূল্যবোধ নয়',
+    coach_bn:
+      'এটি বলে দিচ্ছে তাঁদের সম্পর্কে আপনি কী ভাবেন। মূল্যবোধের বাক্য বলে, তাঁরা নিজেরা কোনটিকে সবার উপরে রাখেন — ' +
+      'এমনভাবে লেখা, যা শুনে তাঁরা মাথা নেড়ে বলবেন “হ্যাঁ, আমি তো এটাই করছিলাম।”'
   },
   stereotype: {
     label: 'That is a stereotype',
     coach: 'It explains everything and predicts nothing, and you cannot check it against a single ' +
-           'thing the three people said. Throw it out and go back to their words.'
+           'thing the three people said. Throw it out and go back to their words.',
+    label_bn: 'এটি একটি গৎবাঁধা ধারণা',
+    coach_bn:
+      'এটি সব কিছু ব্যাখ্যা করে অথচ কিছুই আগে থেকে বলতে পারে না, আর তিনজনের বলা একটি কথার সঙ্গেও ' +
+      'এটি মিলিয়ে দেখা যায় না। এটি বাদ দিন, তাঁদের নিজের কথায় ফিরে যান।'
   }
 };
 

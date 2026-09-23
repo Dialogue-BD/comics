@@ -42,6 +42,7 @@
 
   /* --- shape & spacing ----------------------------------------------- */
   --radius-print:0; --radius-sm:7px; --radius-md:12px; --radius-pill:999px;
+  --chip-veil:rgba(255,253,246,.9);
   --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
 
   --font-display:'Spectral','Source Serif 4',Georgia,serif;
@@ -601,6 +602,8 @@ h1,h2,h3{margin:0}
 .venn-cap{font-family:var(--font-ui);font-size:11px;font-weight:700;
   letter-spacing:.09em;text-transform:uppercase;fill:var(--tx-muted)}
 .venn-cap.is-on{fill:var(--kicker)}
+.venn-cap-bn{font-family:'Noto Sans Bengali','Hind Siliguri','Bangla Sangam MN',sans-serif;
+  font-size:10px;font-weight:600}
 
 .tbar{display:flex;gap:var(--s2);flex-wrap:wrap;margin-top:var(--s4);align-items:center}
 .mini{
@@ -645,28 +648,60 @@ h1,h2,h3{margin:0}
 }
 .fct-g{font-size:calc(.98rem*var(--ui));line-height:1}
 
-.strip{display:flex;flex-direction:column;align-items:stretch;gap:var(--s2);margin-top:var(--s5)}
-@media (min-width:640px){ .strip{flex-direction:row;align-items:stretch} }
+.strip{
+  display:flex;flex-direction:row;align-items:stretch;gap:var(--s2);margin-top:var(--s5);
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-padding:0 var(--s3);-webkit-overflow-scrolling:touch;
+  padding-bottom:var(--s2);scrollbar-width:thin;
+}
+@media (max-width:639.98px){
+  .strip > .beat{flex:0 0 78%;scroll-snap-align:center}
+  .strip > .strip-arrow{display:none}
+}
+@media (min-width:640px){ .strip{overflow-x:visible;scroll-snap-type:none} }
 .beat{
   position:relative;flex:1 1 0;min-width:0;
-  padding:var(--s3) var(--s3) var(--s3) calc(var(--s5) + var(--s2));
+  padding:0 0 var(--s3);
   border:1px solid var(--rule);
   border-radius:var(--radius-md);background:var(--panel);
-  display:flex;align-items:center;gap:var(--s3);
+  display:flex;flex-direction:column;text-align:center;gap:calc(6px*var(--ui));
+  overflow:hidden;
   animation:beatIn .34s ease both;
 }
-@media (min-width:640px){
-  .beat{
-    flex-direction:column;text-align:center;justify-content:flex-start;
-    padding:var(--s4) var(--s3) var(--s3);gap:calc(6px*var(--ui));
-  }
+.beat .beat-shot{width:100%;border-radius:0;align-self:stretch}
+.beat .beat-n{
+  top:calc(6px*var(--ui));left:calc(7px*var(--ui));z-index:2;
+  padding:calc(2px*var(--ui)) calc(6px*var(--ui));
+  border-radius:var(--radius-pill);background:var(--chip-veil);
 }
+.beat .beat-g{left:auto;right:calc(5px*var(--ui))}
+.beat .beat-w{padding:0 var(--s3)}
+.beat .beat-shot.no-shot{width:auto;align-self:center;padding-top:var(--s4)}
+@media (min-width:640px){ .beat{justify-content:flex-start} }
 .beat-n{
   position:absolute;top:calc(7px*var(--ui));left:calc(8px*var(--ui));
   font-family:var(--font-ui);font-weight:700;font-size:calc(.64rem*var(--ui));
   letter-spacing:.1em;color:var(--kicker);
 }
-.beat-g{font-size:calc(2.1rem*var(--ui));line-height:1.1}
+.beat-shot{
+  position:relative;flex:0 0 auto;align-self:stretch;
+  overflow:hidden;background:var(--panel);
+}
+.beat-shot img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+/* the emoji rides in the corner of the panel, and takes the whole box back
+   if the drawing is missing */
+.beat-g{
+  position:absolute;left:calc(5px*var(--ui));bottom:calc(4px*var(--ui));
+  font-size:calc(1.05rem*var(--ui));line-height:1;
+  padding:calc(3px*var(--ui)) calc(5px*var(--ui));
+  border-radius:var(--radius-sm);background:var(--chip-veil);
+}
+:root[data-theme="stage"] .beat-g{font-size:calc(.8rem*var(--ui))}
+.beat-shot.no-shot{width:auto;background:none;border-radius:0}
+.beat-shot.no-shot .beat-g{
+  position:static;font-size:calc(2.1rem*var(--ui));padding:0;background:none;
+}
+.beat-w{flex:1 1 auto;min-width:0}
 .beat-t{margin:0;font-size:calc(.95rem*var(--ui));line-height:1.35;color:var(--tx)}
 @media (min-width:640px){ .beat-t{font-size:calc(.9rem*var(--ui));line-height:1.4} }
 .strip-arrow{
@@ -719,6 +754,13 @@ h1,h2,h3{margin:0}
   font-family:var(--font-ui);font-weight:700;letter-spacing:.07em;
   fill:var(--tx-muted);transition:fill .3s ease;
 }
+.ring .ring-name-bn{
+  font-family:'Noto Sans Bengali','Hind Siliguri','Bangla Sangam MN',sans-serif;
+  font-weight:600;letter-spacing:0;
+}
+/* the symbol sits in the band's lower half; with two lines of label above it
+   the innermost band runs out of room, so it steps aside there */
+.rings.has-bn .r-worldview .ring-ico{display:none}
 /* each ring has a colour and a symbol of its own; the colour never carries a
    meaning on its own, because the name and the symbol are always beside it */
 .ring.r-behavior  .ring-ico{color:var(--l-behavior)}
@@ -967,6 +1009,7 @@ h1,h2,h3{margin:0}
   padding:var(--s4);border-left:4px solid var(--gold);background:var(--gold-soft);
 }
 .punch-g{font-size:calc(1.6rem*var(--ui));line-height:1.1;flex:0 0 auto}
+.punch-w{flex:1 1 auto;min-width:0}
 .punch-t{
   margin:0;font-family:var(--font-display);
   font-size:calc(clamp(1.14rem,4.4vw,1.34rem)*var(--ui));line-height:1.34;
@@ -1086,6 +1129,13 @@ h1,h2,h3{margin:0}
   font-size:.94em;line-height:1.75;font-weight:400;
 }
 body.bangla .bn{display:block}
+/* On a filled control the muted ink lands on the accent green at about 2:1 and
+   simply is not there. Anything that paints itself with --on-accent or
+   --on-band hands its own colour down to the Bangla line instead. */
+.play .bn, .mini.on .bn, .band .bn, .spk-band .bn,
+.btn .bn, .stage-next .bn, .langsw button[aria-pressed="true"] .bn{
+  color:inherit;opacity:.86;
+}
 .bn-inline{display:none}
 body.bangla .bn-inline{display:inline}
 .task .bn{color:var(--tx)}
@@ -1273,6 +1323,8 @@ body.bangla .bn-inline{display:inline}
 }
 .print-option:hover{background:var(--moss-soft)}
 .print-option__icon{font-size:1.2em;line-height:1.2}
+.print-option.is-current{border-color:var(--l-value);background:var(--gold-soft)}
+.print-option.is-current strong::after{content:" \2713";color:var(--l-value)}
 .print-option strong,.print-option small{display:block}
 .print-option small{margin-top:2px;color:var(--tx-muted);font-size:.8em;line-height:1.35}
 /* the teacher's half of the menu, fenced off from the student's half */
@@ -1519,6 +1571,12 @@ body.bangla .bn-inline{display:inline}
      to print it or save it as a PDF. The paper versions contain no answers.</p>
 
   <div class="print-picker">
+    <button class="print-picker__toggle" id="m-scen-toggle" type="button"
+            aria-expanded="false" aria-controls="scen-options">Choose a scenario</button>
+    <div class="print-picker__options" id="scen-options" hidden></div>
+  </div>
+
+  <div class="print-picker">
     <button class="print-picker__toggle" id="m-print-toggle" type="button"
             aria-expanded="false" aria-controls="print-options">Printable sheets</button>
     <div class="print-picker__options" id="print-options" hidden></div>
@@ -1540,6 +1598,7 @@ body.bangla .bn-inline{display:inline}
 <script src="glossary.js"></script>
 <script src="timings.js"></script>
 <script src="scenarios.js"></script>
+<script src="scenarios-bn.js"></script>
 <script>
 (function(){
 'use strict';
@@ -1641,10 +1700,82 @@ const T = {
   q_why_closes:  ['Why it closes the interview: ',
                   'কেন এটি কথা থামিয়ে দেয়: '],
   q_better:      ['Better approach: ',  'বরং এভাবে: '],
-  q_fixit:       ['Fix it: ',           'ঠিক করুন: ']
+  q_fixit:       ['Fix it: ',           'ঠিক করুন: '],
+  ui_fourrings:  ['Four Rings',        'চারটি বৃত্ত'],
+  ui_skip:       ['Skip to the activity', 'সরাসরি অনুশীলনে যান'],
+  ui_youasked:   ['You asked',         'আপনি জিজ্ঞেস করেছিলেন'],
+  ui_theyasked:  ['They were asked',   'তাঁদের জিজ্ঞেস করা হয়েছিল'],
+  ui_name:       ['Name',              'নাম'],
+  ui_age:        ['Age',               'বয়স'],
+  ui_work:       ['Work',              'কাজ'],
+  ui_city:       ['City',              'শহর'],
+  ui_playall:    ['Play all three',    'তিনজনের কথাই বাজান'],
+  ui_allsaid:    ['what all three said', 'তিনজনই যা বলেছেন'],
+  ui_taphere:    ['tap here',          'এখানে চাপ দিন'],
+  ui_mapt:       ['From what they did to what they think is real',
+                  'তাঁরা যা করলেন, তা থেকে তাঁরা যা বাস্তব মনে করেন'],
+  ui_evid:       ['All three of them said', 'তিনজনই বলেছেন'],
+  ui_evidsub:    ['Every ring has to rest on one of these.',
+                  'প্রতিটি বৃত্তকে এগুলোরই কোনো একটির উপর দাঁড়াতে হবে।'],
+  ui_traytip:    ['Tap a sentence, then tap its ring. Three of them belong nowhere.',
+                  'একটি বাক্যে চাপ দিন, তারপর তার বৃত্তে চাপ দিন। তিনটি বাক্যের কোনো জায়গা নেই।'],
+  ui_found:      ['What You Just Found', 'আপনি যা খুঁজে পেলেন'],
+  ui_centre:     ['The centre makes the edge. You walked it the other way — from the outside in.',
+                  'কেন্দ্রই প্রান্তটি তৈরি করে। আপনি হেঁটেছেন উল্টো দিক থেকে — বাইরে থেকে ভেতরে।'],
+  ui_long:       ['Read the long version', 'বিস্তারিত পড়ুন'],
+  ui_twosets:    ['Two Sets of Rings, Same Situation',
+                  'একই ঘটনা, দুই রকম বৃত্ত'],
+  ui_western:    ['Western',           'পশ্চিমা'],
+  ui_bengali:    ['Bengali',           'বাঙালি'],
+  ui_neither:    ['Neither set of rings is a mistake. Each one is what a whole world looks like from the inside.',
+                  'কোনো বৃত্তের সেটই ভুল নয়। প্রত্যেকটিই ভেতর থেকে দেখা একটি গোটা জগতের চেহারা।'],
+  ui_further:    ['Take It Further',   'আরও এক ধাপ'],
+  ui_nextring:   ['Next ring →',       'পরের বৃত্ত →'],
+  ui_ringseen:   ['of 4 rings seen',   'টি বৃত্ত দেখা হয়েছে (৪টির মধ্যে)'],
+  ui_allseen:    ['All four rings seen', 'চারটি বৃত্তই দেখা হয়েছে'],
+  ui_west_off:   ['A Western office',  'একটি পশ্চিমা অফিস'],
+  ui_east_off:   ['A Rajshahi office', 'রাজশাহীর একটি অফিস'],
+  ui_bothlists:  ['Both lists hold all three. Read the top line of each, then imagine the same meeting in both rooms.',
+                  'দুটো তালিকাতেই তিনটিই আছে। দুটোর প্রথম লাইনটি পড়ুন, তারপর একই সভা দুই ঘরে কল্পনা করুন।'],
+  ui_play:       ['Play',              'বাজান'],
+  ui_pause:      ['Pause',             'থামান'],
+  ui_watchthis:  ['you can watch this', 'এটি চোখে দেখা যায়'],
+  ui_mustask:    ['you have to ask',   'এটি জিজ্ঞেস করে জানতে হয়'],
+  ui_listenall:  ['listen to all three', 'তিনজনের কথাই শুনুন'],
+  ui_gistwait:   ['Listen to ',         'শুনুন — '],
+  ui_gistwait2:  [' and their answer appears here.',
+                  ' — তারপর তাঁর উত্তর এখানে আসবে।'],
+  ui_threetimes: ['Three people, three times.', 'তিনজন মানুষ, তিনবার।'],
+  ui_threetimesb:['Now you have evidence, not a guess. Everything you say next has to come from these three sentences.',
+                  'এখন আপনার হাতে প্রমাণ আছে, অনুমান নয়। এরপর আপনি যা বলবেন তার সবটাই এই তিনটি বাক্য থেকে আসতে হবে।'],
+  ui_only1:      ['Only ',              'কেবল '],
+  ui_only2:      [' said this',         ' এটি বলেছেন'],
+  ui_onlytoast:  ['It is true about one person’s life. It is not a pattern in the culture. Keep the ones you heard from all three.',
+                  'এটি একজন মানুষের জীবনের ক্ষেত্রে সত্য — সংস্কৃতির কোনো ধারা নয়। তিনজনের কাছ থেকেই যেগুলো শুনেছেন, সেগুলো রাখুন।'],
+  ui_notring:    ['Not that ring',      'এই বৃত্ত নয়'],
+  ui_notringb:   ['True about them, but it answers a different question. A value ranks, a belief says what is true, a worldview says what the world is like. Check it against the three lines at the top.',
+                  'কথাটি তাঁদের সম্পর্কে সত্য, কিন্তু এটি অন্য প্রশ্নের উত্তর। মূল্যবোধ ক্রম ঠিক করে, বিশ্বাস বলে কোনটি সত্য, বিশ্বদৃষ্টি বলে জগৎটা কেমন। উপরের তিনটি লাইনের সঙ্গে মিলিয়ে দেখুন।'],
+  ui_chfirst:    ['Choose a sentence first', 'আগে একটি বাক্য বেছে নিন'],
+  ui_chfirstb:   ['Tap one of the sentences below, then tap a ring.',
+                  'নিচের একটি বাক্যে চাপ দিন, তারপর একটি বৃত্তে চাপ দিন।'],
+  ui_scenario:   ['Scenario',          'পরিস্থিতি']
 };
 const t  = k => T[k][0];
 const tb = k => T[k][1];
+
+/* Bangla for the current scenario. Missing translations degrade to nothing
+   rather than to an error, so a half-translated bank still runs. */
+function sb(){ return (typeof SCEN_BN !== 'undefined' && SCEN_BN[sc.id]) || {}; }
+/* a Bangla line for a scenario field, or nothing at all */
+function sbn(path, i){
+  const b = sb(); if (!b) return null;
+  let v = b[path];
+  if (v == null) return null;
+  if (i !== undefined) v = Array.isArray(v) ? v[i] : v[i];
+  return v || null;
+}
+/* append a Bangla line to a node when there is one */
+function addBn(node, text){ if (text) node.appendChild(bn(text)); return node; }
 
 /* the task strip: the same shape, in the same place, on every screen */
 function taskStrip(n, ico, key){
@@ -1783,8 +1914,9 @@ function paintRow(i, st, pct){
     /* the button keeps its word: a bare glyph is one more thing to decode */
     b.innerHTML = '';
     b.appendChild(icon(st === 'play' ? 'pausemark' : 'playmark', 'play-ico'));
-    b.appendChild(el('span', 'play-word', st === 'play' ? 'Pause' : 'Play'));
-    b.setAttribute('aria-label', (st === 'play' ? 'Pause ' : 'Play ') + sc.speakers[i].name);
+    const pk = st === 'play' ? 'ui_pause' : 'ui_play';
+    b.appendChild(playWord(pk));
+    b.setAttribute('aria-label', t(pk) + ' ' + sc.speakers[i].name);
   }
   const rp = row.querySelector('.replay'); if (rp) rp.disabled = !canReplay(i);
   const bar = row.querySelector('.spk-prog i');
@@ -1801,14 +1933,22 @@ function canReplay(i){
   return (state.passes[i] || 0) > 0 || (cur && cur.i === i);
 }
 
+/* the word on the play button, in both languages, from the one place */
+function playWord(key){
+  const w = el('span', 'play-word');
+  w.appendChild(el('span', null, t(key)));
+  w.appendChild(bn(tb(key)));
+  return w;
+}
+
 function clearRows(){
   document.querySelectorAll('.spk').forEach(r => {
     r.classList.remove('is-playing', 'is-paused');
     const b = r.querySelector('.play');
     if (b){ b.innerHTML = '';
             b.appendChild(icon('playmark', 'play-ico'));
-            b.appendChild(el('span', 'play-word', 'Play'));
-            b.setAttribute('aria-label', 'Play interview'); }
+            b.appendChild(playWord('ui_play'));
+            b.setAttribute('aria-label', t('ui_play') + ' interview'); }
     const rp = r.querySelector('.replay'); if (rp) rp.disabled = !canReplay(+r.dataset.i);
     const bar = r.querySelector('.spk-prog i'); if (bar) bar.style.width = '0';
   });
@@ -1963,10 +2103,11 @@ function openTranscripts(){
 
 /* ------------------------------------------------------------------ toast */
 let toastT = null;
-function toast(title, msg){
+function toast(title, msg, tbn, mbn){
   toastEl.innerHTML = '';
   toastEl.appendChild(el('b', null, title));
   toastEl.appendChild(document.createTextNode(msg));
+  if (tbn || mbn) toastEl.appendChild(bn(((tbn || '') + ' ' + (mbn || '')).trim()));
   toastEl.classList.add('show');
   clearTimeout(toastT);
   toastT = setTimeout(() => toastEl.classList.remove('show'), 5200);
@@ -1987,10 +2128,11 @@ function renderRail(){
 }
 
 /* --------------------------------------------------------------- scenario */
-function newScenario(keepLesson){
+function newScenario(keepLesson, id){
   stopAudio();
   if (!keepLesson) lesson = false;
-  sc = draw();
+  sc = id ? (SCENARIOS.find(x => x.id === id) || draw()) : draw();
+  try { localStorage.setItem('ei-scen', sc.id); } catch (e) {}
   step = 0;
   state = { qDone: false, passes: [0, 0, 0], catchScores: [[], [], []], tOpen: false,
             claimsDone: false, picked: new Set(), placed: {}, mapDone: false,
@@ -2000,7 +2142,7 @@ function newScenario(keepLesson){
   const pill = $('#theme-pill');
   pill.innerHTML = '';
   pill.appendChild(el('span', 'pill-g', th.icon));
-  pill.appendChild(el('span', 'pill-lab', th.label));
+  pill.appendChild(addBn(el('span', 'pill-lab', th.label), THEME_BN[sc.theme]));
   render();
 }
 
@@ -2628,6 +2770,7 @@ function ringDiagram(live){
   s.removeAttribute('aria-hidden');
   s.setAttribute('role', 'img');
   s.setAttribute('aria-label', 'Four concentric rings: behaviour, values, beliefs, worldview');
+  s.classList.toggle('has-bn', bnOn);
 
   RINGS.forEach((R, i) => {
     const open = R.seen || (live && state.placed[R.key]);
@@ -2638,11 +2781,19 @@ function ringDiagram(live){
     const inner = RINGS[i + 1] ? RINGS[i + 1].r : 0;
     const mid = (R.r + inner) / 2;
     /* each ring inward has less room, so the label shrinks to fit inside it */
-    const label = shape('text', { x: 150, y: 150 - mid + R.fs * 0.35,
+    const ly = 150 - mid + R.fs * 0.35 - (bnOn ? R.fs * 0.52 : 0);
+    const label = shape('text', { x: 150, y: ly,
                                   'text-anchor': 'middle', class: 'ring-name',
                                   style: 'font-size:' + R.fs + 'px' });
     label.textContent = R.name.toUpperCase();
     g.appendChild(label);
+    if (bnOn){
+      const lb = shape('text', { x: 150, y: ly + R.fs * 1.16, lang: 'bn',
+                                 'text-anchor': 'middle', class: 'ring-name ring-name-bn',
+                                 style: 'font-size:' + (R.fs * 0.92) + 'px' });
+      lb.textContent = RING_BN[R.key][0];
+      g.appendChild(lb);
+    }
 
     /* the band's other half was empty; the symbol lives there */
     const sz = Math.max(13, R.fs * 1.5);
@@ -2674,12 +2825,16 @@ function ringRows(live){
     row.appendChild(head);
 
     let text;
-    if (R.key === 'behavior'){ text = sc.rings.behavior; row.classList.add('is-set', 'is-given'); }
-    else if (live && state.placed[R.key]){ text = state.placed[R.key]; row.classList.add('is-set'); }
-    else text = live ? 'tap here' : '';
+    let bnText = null;
+    if (R.key === 'behavior'){ text = sc.rings.behavior; bnText = sbn('rings')  && sb().rings[R.key];
+      row.classList.add('is-set', 'is-given'); }
+    else if (live && state.placed[R.key]){ text = state.placed[R.key];
+      bnText = sb().rings && sb().rings[R.key]; row.classList.add('is-set'); }
+    else { text = live ? t('ui_taphere') : ''; bnText = live ? tb('ui_taphere') : null; }
     const p = el('p', 'rrow-text', text);
     if (!row.classList.contains('is-set')) p.classList.add('empty');
     row.appendChild(p);
+    if (bnText) row.appendChild(bn(bnText));
     box.appendChild(row);
   });
   return box;
@@ -2704,6 +2859,47 @@ function ringFigure(live){
 
 /* the four rings, named in both languages — used on the lesson panels, the
    rows under the diagram, the causal chain and the comparison */
+/* The dossier's own vocabulary. A student who cannot read "physiotherapist"
+   cannot place the person, and the point of the card is the person. Jobs and
+   cities are shared across scenarios, so they live in one flat table rather
+   than in each scenario's Bangla block. */
+const JOB_BN = {
+  'project manager':        'প্রজেক্ট ম্যানেজার',
+  'high-school teacher':    'হাইস্কুলের শিক্ষক',
+  'nurse':                  'নার্স',
+  'engineering student':    'ইঞ্জিনিয়ারিংয়ের ছাত্র',
+  'dental hygienist':       'ডেন্টাল হাইজিনিস্ট (দাঁতের স্বাস্থ্যকর্মী)',
+  'software tester':        'সফটওয়্যার টেস্টার',
+  'data analyst':           'ডেটা অ্যানালিস্ট',
+  'operations director':    'অপারেশনস ডিরেক্টর',
+  'logistics supervisor':   'লজিস্টিকস সুপারভাইজার',
+  'country director':       'কান্ট্রি ডিরেক্টর',
+  'intern':                 'ইন্টার্ন',
+  'warehouse manager':      'গুদামের ম্যানেজার',
+  'literature professor':   'সাহিত্যের অধ্যাপক',
+  'second-year student':    'দ্বিতীয় বর্ষের শিক্ষার্থী',
+  'PhD student and teaching assistant': 'পিএইচডি শিক্ষার্থী ও শিক্ষকের সহকারী',
+  'retired electrician':    'অবসরপ্রাপ্ত ইলেকট্রিশিয়ান',
+  'bookkeeper':             'হিসাবরক্ষক',
+  'physiotherapist':        'ফিজিওথেরাপিস্ট'
+};
+const THEME_BN = {
+  time: 'সময়', me: 'ব্যক্তি', truth: 'সত্য',
+  boss: 'কর্তৃত্ব', opinion: 'মতামত', problem: 'বিরোধ'
+};
+const CITY_BN = {
+  'Chicago':        'শিকাগো',
+  'Columbus, Ohio': 'কলম্বাস, ওহাইও',
+  'Seattle':        'সিয়াটল',
+  'Austin':         'অস্টিন',
+  'Denver':         'ডেনভার',
+  'Boston':         'বোস্টন',
+  'Pittsburgh':     'পিটসবার্গ',
+  'Phoenix':        'ফিনিক্স',
+  'Ann Arbor':      'অ্যান আর্বর',
+  'Portland':       'পোর্টল্যান্ড'
+};
+
 const RING_BN = {
   behavior:  ['আচরণ',      'কী করা হয়?'],
   value:     ['মূল্যবোধ',   'কোনটি ভালো বা সবচেয়ে ভালো?'],
@@ -2778,10 +2974,18 @@ function ringFigureStill(){
     g.appendChild(shape('circle', { cx: 150, cy: 150, r: R.r, class: 'ring-face' }));
     const inner = RINGS[i + 1] ? RINGS[i + 1].r : 0;
     const mid = (R.r + inner) / 2;
-    const t = shape('text', { x: 150, y: 150 - mid + R.fs * 0.35, 'text-anchor': 'middle',
-                              class: 'ring-name', style: 'font-size:' + R.fs + 'px' });
-    t.textContent = R.name.toUpperCase();
-    g.appendChild(t);
+    const ly = 150 - mid + R.fs * 0.35 - (bnOn ? R.fs * 0.52 : 0);
+    const lt = shape('text', { x: 150, y: ly, 'text-anchor': 'middle',
+                               class: 'ring-name', style: 'font-size:' + R.fs + 'px' });
+    lt.textContent = R.name.toUpperCase();
+    g.appendChild(lt);
+    if (bnOn){
+      const lb = shape('text', { x: 150, y: ly + R.fs * 1.16, lang: 'bn',
+                                 'text-anchor': 'middle', class: 'ring-name ring-name-bn',
+                                 style: 'font-size:' + (R.fs * 0.92) + 'px' });
+      lb.textContent = RING_BN[R.key][0];
+      g.appendChild(lb);
+    }
     s.appendChild(g);
   });
   w.appendChild(s);
@@ -2792,8 +2996,9 @@ function ringFigureStill(){
     r.appendChild(icon(LAYER_ICON[R.key], 'rkey-ico'));
     r.appendChild(el('span', 'rkey-name', R.name));
     r.appendChild(el('span', 'rkey-q', R.q));
-    r.appendChild(el('span', 'rkey-note', R.key === 'behavior' ? 'you can watch this' : 'you have to ask'));
-    const kb = bn(RING_BN[R.key][0] + ' · ' + RING_BN[R.key][1]);
+    const nk = R.key === 'behavior' ? 'ui_watchthis' : 'ui_mustask';
+    r.appendChild(el('span', 'rkey-note', t(nk)));
+    const kb = bn(RING_BN[R.key][0] + ' · ' + RING_BN[R.key][1] + ' — ' + tb(nk));
     kb.style.gridColumn = '1 / -1';
     r.appendChild(kb);
     key.appendChild(r);
@@ -2809,9 +3014,9 @@ const RANKINGS = {
 };
 function rankingPicture(){
   const box = el('div', 'rank');
-  [['west', 'A Western office'], ['east', 'A Rajshahi office']].forEach(side => {
+  [['west', 'ui_west_off'], ['east', 'ui_east_off']].forEach(side => {
     const col = el('div', 'rank-col ' + side[0]);
-    col.appendChild(el('h3', 'rank-head', side[1]));
+    col.appendChild(addBn(el('h3', 'rank-head', t(side[1])), tb(side[1])));
     RANKINGS[side[0]].forEach((v, i) => {
       const r = el('div', 'rank-item' + (i === 0 ? ' is-top' : ''));
       r.appendChild(el('span', 'rank-n', String(i + 1)));
@@ -2823,8 +3028,7 @@ function rankingPicture(){
     });
     box.appendChild(col);
   });
-  const note = el('p', 'rank-note',
-    'Both lists hold all three. Read the top line of each, then imagine the same meeting in both rooms.');
+  const note = addBn(el('p', 'rank-note', t('ui_bothlists')), tb('ui_bothlists'));
   const wrap = el('div');
   wrap.appendChild(box); wrap.appendChild(note);
   return wrap;
@@ -2901,7 +3105,9 @@ function stepLesson(){
   p.appendChild(c);
 
   const skip = el('div', 'tbar');
-  const b = el('button', 'mini', 'Skip to the activity');
+  const b = el('button', 'mini');
+  b.appendChild(el('span', null, t('ui_skip')));
+  b.appendChild(bn(tb('ui_skip')));
   b.type = 'button';
   b.onclick = endLesson;
   skip.appendChild(b);
@@ -2927,7 +3133,7 @@ function stepObserve(){
   p.appendChild(taskStrip(stepNo(), 'eye', 'task_watch'));
 
   const c = el('div', 'card raised lead');
-  c.appendChild(el('p', 'kicker', stepKicker()));
+  c.appendChild(kickerEl());
   c.appendChild(el('h1', 'h-title', sc.title));
   if (sc.title_bn) c.appendChild(bn(sc.title_bn));
   c.appendChild(settingChips());
@@ -2939,7 +3145,7 @@ function stepObserve(){
 
   if (teacher){
     const o = el('div', 'card raised');
-    o.appendChild(el('p', 'kicker', 'Four Rings'));
+    o.appendChild(addBn(el('p', 'kicker', t('ui_fourrings')), tb('ui_fourrings')));
     o.appendChild(ringFigure(false));
     p.appendChild(o);
   }
@@ -2947,7 +3153,13 @@ function stepObserve(){
 }
 
 const stepNo = () => step + 1;
-const stepKicker = () => 'Step ' + (step + 1) + ' · ' + stepName();
+const STEP_BN = { Watch: 'দেখুন', Ask: 'জিজ্ঞেস করুন', Listen: 'শুনুন',
+                  Check: 'মিলিয়ে দেখুন', Map: 'মানচিত্র আঁকুন' };
+const BN_NUM = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+const bnNum = v => String(v).replace(/\d/g, d => BN_NUM[+d]);
+const stepKicker   = () => 'Step ' + (step + 1) + ' · ' + stepName();
+const stepKickerBn = () => 'ধাপ ' + BN_NUM[step + 1] + ' · ' + (STEP_BN[stepName()] || '');
+const kickerEl     = () => addBn(el('p', 'kicker', stepKicker()), stepKickerBn());
 
 /* where, who with, and which of the six themes — three glances, no sentence */
 function settingChips(){
@@ -2955,18 +3167,30 @@ function settingChips(){
   const parts = sc.setting.split('·').map(s => s.trim()).filter(Boolean);
   const th = THEMES[sc.theme];
   /* a capital opens a place name; a lower-case one opens an occasion */
-  parts.forEach(t => box.appendChild(fct(/^[A-Z]/.test(t) ? '📍' : '🎬', t)));
-  box.appendChild(fct(th.icon, th.label));
+  const sparts = (sbn('setting') || '').split('·').map(x => x.trim());
+  parts.forEach((t, i) => box.appendChild(fct(/^[A-Z]/.test(t) ? '📍' : '🎬', t, sparts[i])));
+  box.appendChild(fct(th.icon, th.label, THEME_BN[sc.theme]));
   return box;
 }
-function fct(gly, txt){
+function fct(gly, txt, bnTxt){
   const s = el('span', 'fct');
   s.appendChild(el('span', 'fct-g', gly));
-  s.appendChild(el('span', null, txt));
+  const w = el('span');
+  w.appendChild(el('span', null, txt));
+  addBn(w, bnTxt);
+  s.appendChild(w);
   return s;
 }
 
-/* the scene in three beats */
+/* The scene in three beats.
+
+   The beats used to be an emoji and a sentence. The emoji was doing work it
+   could not do: a student who cannot read the sentence yet cannot recover the
+   situation from 🕐 → 🍽 → 🚪, and step 1 is exactly where the situation has
+   to land before any English is asked for. So each beat now carries a drawn
+   panel — wordless on purpose, so it reads the same in either language — and
+   the emoji shrinks to a corner mark that keeps the icon language intact and
+   stands in whole if the picture fails to load. */
 function sceneStrip(){
   const box = el('div', 'strip');
   sc.beats.forEach((b, i) => {
@@ -2974,11 +3198,36 @@ function sceneStrip(){
     const t = el('div', 'beat');
     t.style.animationDelay = (i * 110) + 'ms';
     t.appendChild(el('span', 'beat-n', String(i + 1)));
-    t.appendChild(el('span', 'beat-g', b.ico));
-    t.appendChild(el('p', 'beat-t', b.t));
+    t.appendChild(beatShot(b, i));
+    const bt = el('div', 'beat-w');
+    bt.appendChild(el('p', 'beat-t', b.t));
+    addBn(bt, sbn('beats', i));
+    t.appendChild(bt);
     box.appendChild(t);
   });
   return box;
+}
+
+/* One panel, WebP with a JPEG fallback, never fetched until it is near the
+   screen. The whole strip is about 190 KB on a data plan; a scenario that has
+   no panels drawn yet degrades to the emoji it used to have. */
+function beatShot(b, i){
+  const fig = el('div', 'beat-shot');
+  const pic = document.createElement('picture');
+  const src = document.createElement('source');
+  src.type = 'image/webp';
+  src.srcset = 'strip/' + sc.id + '-' + (i + 1) + '.webp';
+  pic.appendChild(src);
+  const im = new Image();
+  im.src = 'strip/' + sc.id + '-' + (i + 1) + '.jpg';
+  im.alt = '';                       /* the caption beneath carries the meaning */
+  im.width = 720; im.height = 720;
+  im.loading = 'lazy'; im.decoding = 'async';
+  im.onerror = () => { pic.remove(); fig.classList.add('no-shot'); };
+  pic.appendChild(im);
+  fig.appendChild(pic);
+  fig.appendChild(el('span', 'beat-g', b.ico));
+  return fig;
 }
 
 /* guess first, then read. Neither answer is marked: it is a prediction, not
@@ -3154,7 +3403,7 @@ function qStrip(){
   QRULES.forEach(R => {
     const d = el('div', 'qstrip-i');
     d.appendChild(el('span', null, R.ok));
-    d.appendChild(el('span', 'qstrip-t', R.okEn));
+    d.appendChild(addBn(el('span', 'qstrip-t', R.okEn), R.okBn));
     box.appendChild(d);
   });
   return box;
@@ -3164,7 +3413,7 @@ function stepAsk(){
   const p = el('div', 'panel p-ask');
   p.appendChild(taskStrip(stepNo(), 'ask', 'task_ask'));
   const c = el('div', 'card raised');
-  c.appendChild(el('p', 'kicker', stepKicker()));
+  c.appendChild(kickerEl());
 
   if (state.qPhase === undefined) state.qPhase = state.qDone ? 2 : 0;
 
@@ -3193,6 +3442,7 @@ function stepAsk(){
     b.type = 'button';
     b.questionData = q;
     b.appendChild(document.createTextNode('“' + q.q + '”'));
+    addBn(b, (sb().questions || [])[i]);
     b.onclick = () => chooseQ(b, q, list);
     list.appendChild(b);
   });
@@ -3295,13 +3545,15 @@ function informantCard(s, i){
   top.appendChild(win);
 
   const id = el('div', 'ident');
-  id.appendChild(el('span', 'lab', 'Name'));
+  id.appendChild(addBn(el('span', 'lab', t('ui_name')), tb('ui_name')));
   id.appendChild(el('h3', 'ident-name', s.name));
   const rows = el('div', 'frows');
-  [['Age', String(s.age)], ['Work', s.job], ['City', s.city]].forEach(f => {
+  [['ui_age', String(s.age), bnNum(s.age)],
+   ['ui_work', s.job,  JOB_BN[s.job]],
+   ['ui_city', s.city, CITY_BN[s.city]]].forEach(f => {
     const r = el('div', 'frow');
-    r.appendChild(el('span', 'lab', f[0]));
-    r.appendChild(el('span', 'fval', f[1]));
+    r.appendChild(addBn(el('span', 'lab', t(f[0])), tb(f[0])));
+    r.appendChild(addBn(el('span', 'fval', f[1]), f[2]));
     rows.appendChild(r);
   });
   id.appendChild(rows);
@@ -3312,8 +3564,8 @@ function informantCard(s, i){
   const play = el('button', 'play');
   play.type = 'button';
   play.appendChild(icon('playmark', 'play-ico'));
-  play.appendChild(el('span', 'play-word', 'Play'));
-  play.setAttribute('aria-label', 'Play ' + s.name);
+  play.appendChild(playWord('ui_play'));
+  play.setAttribute('aria-label', t('ui_play') + ' ' + s.name);
   play.onclick = () => togglePlay(i);
   ctl.appendChild(play);
   const again = el('button', 'replay', '↻');
@@ -3361,14 +3613,19 @@ function stepListen(){
   p.appendChild(taskStrip(stepNo(), 'ear', 'task_listen'));
 
   const c = el('div', 'card raised');
-  c.appendChild(el('p', 'kicker', stepKicker()));
+  c.appendChild(kickerEl());
   c.appendChild(el('h2', 'h-title', 'Three people answer'));
   c.appendChild(bn('তিনজন মানুষ উত্তর দিচ্ছেন'));
 
   const pin = el('div', 'qpin');
-  pin.appendChild(el('span', 'cap', teacher ? 'You asked' : 'They were asked'));
-  const qq = el('q'); qq.textContent = state.chosenQ || sc.questions.find(x => x.ok).q;
+  const ck = teacher ? 'ui_youasked' : 'ui_theyasked';
+  pin.appendChild(addBn(el('span', 'cap', t(ck)), tb(ck)));
+  const chosen = state.chosenQ || sc.questions.find(x => x.ok).q;
+  const qq = el('q'); qq.textContent = chosen;
   pin.appendChild(qq);
+  /* whichever of the four was pinned, its Bangla sits under it */
+  const qi = sc.questions.findIndex(x => x.q === chosen);
+  addBn(pin, qi > -1 ? (sb().questions || [])[qi] : null);
   c.appendChild(pin);
 
   const sp = el('div', 'speakers');
@@ -3376,13 +3633,17 @@ function stepListen(){
   c.appendChild(sp);
 
   const bar = el('div', 'tbar');
-  const allBtn = el('button', 'mini', t('playall'));
+  const allBtn = el('button', 'mini');
+  allBtn.appendChild(el('span', null, t('playall')));
+  allBtn.appendChild(bn(tb('playall')));
   allBtn.type = 'button';
   allBtn.onclick = playAll;
   bar.appendChild(allBtn);
   const anyHeard = state.passes.some(x => x > 0);
-  const tBtn = el('button', 'mini' + (state.tOpen ? ' on' : ''),
-                  state.tOpen ? t('fulltext_on') : t('fulltext'));
+  const tk = state.tOpen ? 'fulltext_on' : 'fulltext';
+  const tBtn = el('button', 'mini' + (state.tOpen ? ' on' : ''));
+  tBtn.appendChild(el('span', null, t(tk)));
+  tBtn.appendChild(bn(tb(tk)));
   tBtn.type = 'button';
   tBtn.id = 'btn-transcripts';
   tBtn.disabled = !anyHeard;
@@ -3391,7 +3652,10 @@ function stepListen(){
     document.querySelectorAll('.transcript').forEach(x => x.hidden = !state.tOpen);
     if (state.tOpen) document.querySelectorAll('.caption').forEach(x => x.remove());
     tBtn.classList.toggle('on', state.tOpen);
-    tBtn.textContent = state.tOpen ? t('fulltext_on') : t('fulltext');
+    const k2 = state.tOpen ? 'fulltext_on' : 'fulltext';
+    tBtn.innerHTML = '';
+    tBtn.appendChild(el('span', null, t(k2)));
+    tBtn.appendChild(bn(tb(k2)));
     const th = document.getElementById('tap-hint'); if (th) th.hidden = !state.tOpen;
     if (!state.tOpen) hideGloss();
     if (state.tOpen) setTimeout(() =>
@@ -3422,7 +3686,7 @@ function stepCheck(){
   p.appendChild(taskStrip(stepNo(), 'tick', 'task_check'));
 
   const t2 = el('div', 'card raised');
-  t2.appendChild(el('p', 'kicker', stepKicker()));
+  t2.appendChild(kickerEl());
   t2.appendChild(el('h2', 'h-title', 'What did all three say?'));
   t2.appendChild(bn('তিনজনই কী বলেছেন?'));
   t2.appendChild(vennMark());
@@ -3459,7 +3723,9 @@ function stepCheck(){
   t2.appendChild(cl);
 
   const bar2 = el('div', 'tbar');
-  chk = el('button', 'mini on', t('checkmine'));
+  chk = el('button', 'mini on');
+  chk.appendChild(el('span', null, t('checkmine')));
+  chk.appendChild(bn(tb('checkmine')));
   chk.type = 'button'; chk.id = 'btn-check'; chk.disabled = state.picked.size !== 3;
   chk.onclick = () => checkClaims(cl, chk, t2);
   bar2.appendChild(chk);
@@ -3474,12 +3740,12 @@ function stepCheck(){
    conclusion on this screen can be checked against them */
 function evidenceBoard(){
   const box = el('div', 'evid');
-  box.appendChild(el('span', 'evid-cap', 'All three of them said'));
-  box.appendChild(el('p', 'evid-sub', 'Every ring has to rest on one of these.'));
+  box.appendChild(addBn(el('span', 'evid-cap', t('ui_evid')), tb('ui_evid')));
+  box.appendChild(addBn(el('p', 'evid-sub', t('ui_evidsub')), tb('ui_evidsub')));
   const ul = el('ul', 'evid-list');
   sc.claims.forEach(cm => {
     if (!cm.shared) return;
-    ul.appendChild(el('li', null, cm.text));
+    ul.appendChild(addBn(el('li', null, cm.text), cm.text_bn));
   });
   box.appendChild(ul);
   return box;
@@ -3513,9 +3779,12 @@ function gistBoard(){
     head.appendChild(el('span', 'gist-name', sp.name));
     col.appendChild(head);
 
-    col.appendChild(el('p', 'gist-text',
-      heard ? sp.gist : 'Listen to ' + sp.name + ' and their answer appears here.'));
-    if (!heard) col.querySelector('.gist-text').classList.add('empty');
+    const gt = el('p', 'gist-text',
+      heard ? sp.gist : t('ui_gistwait') + sp.name + t('ui_gistwait2'));
+    addBn(gt, heard ? (sb().gists || [])[i]
+                    : tb('ui_gistwait') + sp.name + tb('ui_gistwait2'));
+    col.appendChild(gt);
+    if (!heard) gt.classList.add('empty');
     box.appendChild(col);
   });
   return box;
@@ -3550,7 +3819,7 @@ function vennMark(){
   const heard = sc.speakers.map((_, i) => (state.passes[i] || 0) > 0);
   const all = heard.every(Boolean);
   const n = ++vennSeq;
-  const s = svg('0 0 210 148', 'venn');
+  const s = svg('0 0 210 ' + (bnOn ? 166 : 148), 'venn');
   /* pulled a little closer than three tangent circles would be: the shared
      region is the whole point of the picture, and at arm's length it has to
      be big enough to see from the back of a classroom */
@@ -3578,10 +3847,17 @@ function vennMark(){
   P.forEach((c, i) => s.appendChild(shape('circle',
     { cx: c[0], cy: c[1], r: 38, class: 'venn-ring' + (heard[i] ? ' is-heard' : '') })));
 
-  const t = shape('text', { x: 105, y: 143, 'text-anchor': 'middle',
-                            class: 'venn-cap' + (all ? ' is-on' : '') });
-  t.textContent = all ? 'what all three said' : 'listen to all three';
-  s.appendChild(t);
+  const key = all ? 'ui_allsaid' : 'ui_listenall';
+  const cap = shape('text', { x: 105, y: 143, 'text-anchor': 'middle',
+                              class: 'venn-cap' + (all ? ' is-on' : '') });
+  cap.textContent = t(key);
+  s.appendChild(cap);
+  if (bnOn){
+    const cb = shape('text', { x: 105, y: 160, 'text-anchor': 'middle', lang: 'bn',
+                               class: 'venn-cap venn-cap-bn' + (all ? ' is-on' : '') });
+    cb.textContent = tb(key);
+    s.appendChild(cb);
+  }
   return s;
 }
 
@@ -3602,7 +3878,8 @@ function markClaims(cl){
         f.appendChild(im);
         w.appendChild(f);
       }
-      w.appendChild(document.createTextNode('Only ' + cm.who + ' said this'));
+      w.appendChild(document.createTextNode(t('ui_only1') + cm.who + t('ui_only2')));
+      addBn(w, tb('ui_only1') + cm.who + tb('ui_only2'));
       b.lastChild.appendChild(w);
     }
   });
@@ -3613,8 +3890,8 @@ function checkClaims(cl, chk, card){
   const wrong = chosen.filter(i => !sc.claims[i].shared);
   if (wrong.length){
     const w = sc.claims[wrong[0]];
-    toast('Only ' + w.who + ' said that',
-      'It is true about one person’s life. It is not a pattern in the culture. Keep the ones you heard from all three.');
+    toast(t('ui_only1') + w.who + t('ui_only2'), ' — ' + t('ui_onlytoast'),
+          tb('ui_only1') + w.who + tb('ui_only2'), tb('ui_onlytoast'));
     cl.querySelectorAll('.claim').forEach(b => {
       if (wrong.indexOf(+b.dataset.i) > -1){
         b.classList.remove('sel'); state.picked.delete(+b.dataset.i);
@@ -3629,9 +3906,9 @@ function checkClaims(cl, chk, card){
   markClaims(cl);
   chk.remove();
   const co = el('div', 'coach good');
-  co.appendChild(el('b', null, 'Three people, three times.'));
-  co.appendChild(document.createTextNode(
-    'Now you have evidence, not a guess. Everything you say next has to come from these three sentences.'));
+  co.appendChild(el('b', null, t('ui_threetimes')));
+  co.appendChild(document.createTextNode(' ' + t('ui_threetimesb')));
+  addBn(co, tb('ui_threetimes') + ' ' + tb('ui_threetimesb'));
   card.appendChild(co);
   syncNext();
 }
@@ -3641,24 +3918,29 @@ function stepMap(){
   const p = el('div', 'panel p-map');
   p.appendChild(taskStrip(stepNo(), 'target', 'task_map'));
   const c = el('div', 'card raised');
-  c.appendChild(el('p', 'kicker', stepKicker()));
-  c.appendChild(el('h2', 'h-title', 'From what they did to what they think is real'));
+  c.appendChild(kickerEl());
+  c.appendChild(addBn(el('h2', 'h-title', t('ui_mapt')), tb('ui_mapt')));
   /* the evidence comes with you. Naming a value is otherwise a guess dressed
      up as a conclusion, and the jump from step 3 to here was the sharpest
      edge in the activity. */
   c.appendChild(evidenceBoard());
-  c.appendChild(el('p', 'hint', 'Tap a sentence, then tap its ring. Three of them belong nowhere.'));
+  c.appendChild(addBn(el('p', 'hint', t('ui_traytip')), tb('ui_traytip')));
 
   const ringBox = ringFigure(true);
   c.appendChild(ringBox);
 
   const tray = el('div', 'tray');
+  const B = sb();
   const pool = state.pool || (state.pool = shuffle(
-    RINGS.filter(r => r.key !== 'behavior').map(r => ({ text: sc.rings[r.key], slot: r.key }))
-      .concat(sc.distractors.map(d => ({ text: d.text, fault: d.fault })))
+    RINGS.filter(r => r.key !== 'behavior')
+         .map(r => ({ text: sc.rings[r.key], slot: r.key, bn: (B.rings || {})[r.key] }))
+      .concat(sc.distractors.map((d, k) => ({ text: d.text, fault: d.fault,
+                                              bn: (B.distractors || [])[k] })))
   ));
   pool.forEach((item, i) => {
-    const ch = el('button', 'chip', item.text);
+    const ch = el('button', 'chip');
+    ch.appendChild(el('span', null, item.text));
+    addBn(ch, item.bn);
     ch.type = 'button';
     ch.dataset.i = i;
     if (item.slot && state.placed[item.slot] === item.text) ch.classList.add('used');
@@ -3697,7 +3979,8 @@ function wireTap(tray, ringBox, panel){
     if (!n) return;
     const slot = n.dataset.slot;
     if (slot === 'behavior' || state.placed[slot]) return;
-    if (!sel){ toast('Choose a sentence first', 'Tap one of the sentences below, then tap a ring.'); return; }
+    if (!sel){ toast(t('ui_chfirst'), ' ' + t('ui_chfirstb'),
+                     tb('ui_chfirst'), tb('ui_chfirstb')); return; }
     const chip = sel;
     if (place(state.pool[+chip.dataset.i], chip, slot, ringBox, panel)){ sel = null; aim(false); }
   });
@@ -3706,11 +3989,8 @@ function wireTap(tray, ringBox, panel){
 function place(item, chipNode, slot, ringBox, panel){
   if (!item.slot || item.slot !== slot){
     const f = item.fault ? CHIP_FAULTS[item.fault] : null;
-    if (f) toast(f.label, f.coach);
-    else toast('Not that ring',
-      'This is true about them, but it answers a different question. Read the ring again: ' +
-      'a value ranks, a belief says what is true, a worldview says what the world is like. ' +
-      'Then check it against the three lines at the top of the screen.');
+    if (f) toast(f.label, ' ' + f.coach, f.label_bn, f.coach_bn);
+    else toast(t('ui_notring'), ' ' + t('ui_notringb'), tb('ui_notring'), tb('ui_notringb'));
     chipNode.classList.add('is-refused');
     setTimeout(() => chipNode.classList.remove('is-refused'), 540);
     return false;
@@ -3722,7 +4002,8 @@ function place(item, chipNode, slot, ringBox, panel){
     n.classList.remove('is-target');
     n.classList.add('is-open', 'is-set');
     const p = n.querySelector('.rrow-text');
-    if (p){ p.textContent = item.text; p.classList.remove('empty'); }
+    if (p){ p.textContent = item.text; p.classList.remove('empty');
+            addBn(p, item.bn); }
   });
   chipNode.classList.add('used');
   chipNode.classList.remove('sel');
@@ -3743,25 +4024,24 @@ function revealExpert(panel){
   const r = el('div', 'reveal');
 
   const c = el('div', 'card raised lead');
-  c.appendChild(el('p', 'kicker', 'What You Just Found'));
+  c.appendChild(addBn(el('p', 'kicker', t('ui_found')), tb('ui_found')));
   c.appendChild(punchLine());
   c.appendChild(mechChain());
   const more = el('details', 'more');
-  more.appendChild(el('summary', 'more-sum', 'Read the long version'));
-  more.appendChild(el('p', 'body', sc.expert));
+  more.appendChild(addBn(el('summary', 'more-sum', t('ui_long')), tb('ui_long')));
+  more.appendChild(addBn(el('p', 'body', sc.expert), sbn('expert')));
   c.appendChild(more);
   r.appendChild(c);
 
   const two = el('div', 'card raised');
-  two.appendChild(el('p', 'kicker', 'Two Sets of Rings, Same Situation'));
+  two.appendChild(addBn(el('p', 'kicker', t('ui_twosets')), tb('ui_twosets')));
   two.appendChild(compareRings());
-  two.appendChild(el('div', 'callout',
-    'Neither set of rings is a mistake. Each one is what a whole world looks like from the inside.'));
+  two.appendChild(addBn(el('div', 'callout', t('ui_neither')), tb('ui_neither')));
   r.appendChild(two);
 
   const n = el('div', 'card raised');
-  n.appendChild(el('p', 'kicker', 'Take It Further'));
-  n.appendChild(el('p', 'body', sc.contrast.note));
+  n.appendChild(addBn(el('p', 'kicker', t('ui_further')), tb('ui_further')));
+  n.appendChild(addBn(el('p', 'body', sc.contrast.note), (sb().contrast || {}).note));
   r.appendChild(n);
 
   panel.appendChild(r);
@@ -3771,7 +4051,10 @@ function revealExpert(panel){
 function punchLine(){
   const d = el('div', 'punch');
   d.appendChild(el('span', 'punch-g', '💡'));
-  d.appendChild(el('p', 'punch-t', sc.punch));
+  const pt = el('div', 'punch-w');
+  pt.appendChild(el('p', 'punch-t', sc.punch));
+  addBn(pt, sbn('punch'));
+  d.appendChild(pt);
   return d;
 }
 
@@ -3785,14 +4068,14 @@ function mechChain(){
     const h = el('span', 'chain-name');
     h.appendChild(icon(LAYER_ICON[k], 'chain-ico'));
     h.appendChild(document.createTextNode(R.name));
+    addBn(h, RING_BN[k][0]);
     n.appendChild(h);
-    n.appendChild(el('span', 'chain-sub', sc.chain[i]));
+    n.appendChild(addBn(el('span', 'chain-sub', sc.chain[i]), (sb().chain || [])[i]));
     box.appendChild(n);
   });
   const w = el('div');
   w.appendChild(box);
-  w.appendChild(el('p', 'rank-note',
-    'The centre makes the edge. You walked it the other way — from the outside in.'));
+  w.appendChild(addBn(el('p', 'rank-note', t('ui_centre')), tb('ui_centre')));
   return w;
 }
 
@@ -3830,9 +4113,9 @@ function compareRings(){
 
   const dialRow = el('div', 'dials');
   const dials = {};
-  [['west', 'Western'], ['east', 'Bengali']].forEach(side => {
+  [['west', 'ui_western'], ['east', 'ui_bengali']].forEach(side => {
     const col = el('div', 'dial ' + side[0]);
-    col.appendChild(el('span', 'dial-tag', side[1]));
+    col.appendChild(addBn(el('span', 'dial-tag', t(side[1])), tb(side[1])));
     const d = miniRings(side[0]);
     d.addEventListener('click', e => {
       const g = e.target.closest('.ring');
@@ -3852,7 +4135,7 @@ function compareRings(){
     b.type = 'button';
     b.setAttribute('role', 'tab');
     b.appendChild(icon(LAYER_ICON[R.key], 'cmp2-ico'));
-    b.appendChild(el('span', 'cmp2-lab', R.name));
+    b.appendChild(addBn(el('span', 'cmp2-lab', R.name), RING_BN[R.key][0]));
     b.appendChild(icon('tick', 'cmp2-tick'));
     b.onclick = () => show(R.key);
     tabEls[R.key] = b;
@@ -3865,7 +4148,9 @@ function compareRings(){
 
   const foot = el('div', 'cmp2-foot');
   const count = el('span', 'cmp2-count');
-  const nextB = el('button', 'mini', 'Next ring →');
+  const nextB = el('button', 'mini');
+  nextB.appendChild(el('span', null, t('ui_nextring')));
+  nextB.appendChild(bn(tb('ui_nextring')));
   nextB.type = 'button';
   nextB.onclick = () => {
     const i = RINGS.findIndex(R => R.key === active);
@@ -3893,15 +4178,17 @@ function compareRings(){
     body.innerHTML = '';
     const h = el('div', 'cmp-head r-' + key);
     h.appendChild(icon(LAYER_ICON[key], 'cmp-ico'));
-    h.appendChild(el('span', 'cmp-name', R.name));
-    h.appendChild(el('span', 'cmp-q', R.q));
+    h.appendChild(addBn(el('span', 'cmp-name', R.name), RING_BN[key][0]));
+    h.appendChild(addBn(el('span', 'cmp-q', R.q), RING_BN[key][1]));
     body.appendChild(h);
 
     const pair = el('div', 'cmp-pair');
-    [['west', 'Western', sc.rings[key]], ['east', 'Bengali', sc.contrast[key]]].forEach(side => {
+    const CB = sb();
+    [['west', 'ui_western', sc.rings[key], (CB.rings || {})[key]],
+     ['east', 'ui_bengali', sc.contrast[key], (CB.contrast || {})[key]]].forEach(side => {
       const d = el('div', 'cmp-side ' + side[0]);
-      d.appendChild(el('span', 'cmp-tag', side[1]));
-      d.appendChild(el('p', null, side[2]));
+      d.appendChild(addBn(el('span', 'cmp-tag', t(side[1])), tb(side[1])));
+      d.appendChild(addBn(el('p', null, side[2]), side[3]));
       pair.appendChild(d);
     });
     body.appendChild(pair);
@@ -3910,7 +4197,10 @@ function compareRings(){
     body.classList.add('fade');
 
     const n = Object.keys(seen).length;
-    count.textContent = n === 4 ? 'All four rings seen' : n + ' of 4 rings seen';
+    count.innerHTML = '';
+    const ck = n === 4 ? 'ui_allseen' : 'ui_ringseen';
+    count.appendChild(el('span', null, n === 4 ? t(ck) : n + ' ' + t(ck)));
+    count.appendChild(bn(n === 4 ? tb(ck) : n + ' ' + tb(ck)));
     box.classList.toggle('is-done', n === 4);
   }
 
@@ -4374,6 +4664,36 @@ stage.addEventListener('scroll', () => { if (!coachBusy) coachHide(); }, { passi
 $('#m-lesson').onclick = () => { closeSheet(); lesson = true; lstep = 0; stopAudio(); render(); };
 $('#m-projector').onclick = () => { closeSheet(); toggleStage(); };
 
+const scenToggle = $('#m-scen-toggle'), scenOptions = $('#scen-options');
+SCENARIOS.forEach(row => {
+  const b = el('button', 'print-option');
+  b.type = 'button';
+  b.dataset.id = row.id;
+  b.appendChild(el('span', 'print-option__icon', (THEMES[row.theme] || {}).icon || '•'));
+  const txt = el('span');
+  txt.appendChild(el('strong', null, row.title));
+  if (row.title_bn) txt.appendChild(bn(row.title_bn));
+  txt.appendChild(el('small', null, (THEMES[row.theme] || {}).label || ''));
+  b.appendChild(txt);
+  b.onclick = () => {
+    scenToggle.setAttribute('aria-expanded', 'false');
+    scenOptions.hidden = true;
+    closeSheet();
+    newScenario(false, row.id);
+  };
+  scenOptions.appendChild(b);
+});
+function markScen(){
+  scenOptions.querySelectorAll('.print-option').forEach(b =>
+    b.classList.toggle('is-current', sc && b.dataset.id === sc.id));
+}
+scenToggle.onclick = () => {
+  const open = scenToggle.getAttribute('aria-expanded') === 'true';
+  scenToggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+  scenOptions.hidden = open;
+  if (!open) markScen();
+};
+
 const printToggle = $('#m-print-toggle'), printOptions = $('#print-options');
 printMenu().forEach(row => {
   const b = el('button', 'print-option');
@@ -4437,7 +4757,8 @@ window.addEventListener('pagehide', stopAudio);
 /* ------------------------------------------------------------------- boot */
 setBangla(bnOn);
 setTeacher(teacher);
-newScenario(true);
+newScenario(true, (function(){ try { return localStorage.getItem('ei-scen'); }
+                               catch (e) { return null; } })());
 measureHeader();
 const logo = document.querySelector('.logo-chip img');
 if (logo && !logo.complete) logo.addEventListener('load', measureHeader);
