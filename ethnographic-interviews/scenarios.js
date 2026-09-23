@@ -126,7 +126,7 @@ const SCENARIOS = [
 {
   id: 'dinner-ends-at-eight',
   theme: 'time',
-  title: 'The dinner that ends at eight',
+  title: 'The Dinner That Ends at Eight',
   setting: 'Chicago · a colleague invites you home',
   observation:
     'Your American colleague invites you to dinner. The message says: “Come at six — I’ll have to ' +
@@ -242,7 +242,7 @@ const SCENARIOS = [
 {
   id: 'splitting-the-bill',
   theme: 'me',
-  title: 'Six friends, six payments',
+  title: 'Six Friends, Six Payments',
   setting: 'Austin, Texas · the end of a meal',
   observation:
     'Six American friends finish dinner. One bill arrives. Every person takes out a phone, works out ' +
@@ -357,7 +357,7 @@ const SCENARIOS = [
 {
   id: 'disagreeing-in-the-meeting',
   theme: 'truth',
-  title: 'The junior who said no',
+  title: 'The Junior Who Said No',
   setting: 'Boston · a Monday planning meeting',
   observation:
     'The director finishes presenting his plan. A twenty-six-year-old employee, two years in the job, ' +
@@ -476,7 +476,7 @@ const SCENARIOS = [
 {
   id: 'the-boss-stacks-chairs',
   theme: 'boss',
-  title: 'The director stacking chairs',
+  title: 'The Director Stacking Chairs',
   setting: 'Denver · after an office event',
   observation:
     'The event finishes. The country director — the most senior person in the building — is stacking ' +
@@ -591,7 +591,7 @@ const SCENARIOS = [
 {
   id: 'what-do-you-think',
   theme: 'opinion',
-  title: '“What do you think?”',
+  title: '“What Do You Think?”',
   setting: 'A university classroom · Michigan',
   observation:
     'The teacher finishes the reading and asks, “So — what do you think?” Silence. He waits. Ten more ' +
@@ -707,7 +707,7 @@ const SCENARIOS = [
 {
   id: 'the-neighbours-tree',
   theme: 'problem',
-  title: 'The neighbour’s tree',
+  title: 'The Neighbour’s Tree',
   setting: 'A suburban street · Portland',
   observation:
     'Leaves from the neighbour’s maple keep blocking an American man’s roof gutter. He walks next door, ' +
@@ -814,10 +814,22 @@ const SCENARIOS = [
     value:     'Harmony, and the protection of face on both sides.',
     belief:    'A complaint delivered face to face creates a rupture; a trusted third person can carry the message so that nobody has to be confronted.',
     worldview: 'Relationships are the permanent thing and problems are temporary; the indirect route exists so that the permanent thing survives the temporary one.',
+    /* The right-hand column on this one is NOT Bangladesh, and labelling it
+       "Bengali" makes the scenario read as false rather than as a contrast:
+       Bangladeshi students handle a neighbour's leaves about as directly as
+       Americans do. The column is relabelled, and the note turns that
+       recognition into the lesson instead of a confusion. */
+    east_label:    'Where the relationship comes first',
+    east_label_bn: 'যেখানে সম্পর্কই আগে',
     note:
-      'This one pays off fast. When a foreign colleague comes straight to your desk, he is not attacking ' +
-      'you — he is doing the thing his world calls respect. And when you send a message through a friend, ' +
-      'you are not hiding — you are protecting him.'
+      'Many students find this scenario the least strange of the six, and they are right to: going ' +
+      'to the man’s own door is close to what they would do themselves. That is the lesson, not a ' +
+      'failure of it. Directness in conflict is a dimension cultures sit anywhere along, and on ' +
+      'this one Rajshahi and Portland sit nearer to each other than either sits to the column on ' +
+      'the right — where a complaint about fallen leaves would never be worth the risk to a ' +
+      'neighbour you must live beside for thirty years, so it travels through somebody else or is ' +
+      'simply absorbed. Ask the class which of the three positions their own family takes, and ' +
+      'whether it changes with who the neighbour is.'
   }
 }
 

@@ -281,8 +281,13 @@ h1,h2,h3{margin:0}
 .band{
   margin-top:var(--s4);padding:var(--s4) var(--s5);border-radius:var(--radius-print);
   background:var(--band);color:var(--on-band);
-  font-family:var(--font-display);font-style:italic;font-size:calc(1.02rem*var(--ui));line-height:1.55;
+  /* italic display type at 1.02rem, reversed out of forest green, was the
+     least readable text on the page — and this is the payoff line the whole
+     prediction was for */
+  font-family:var(--font-ui);font-style:normal;font-weight:500;
+  font-size:calc(1.12rem*var(--ui));line-height:1.62;
 }
+.band .bn{color:inherit;opacity:.88}
 .callout{
   margin-top:var(--s4);padding:var(--s4);border-left:4px solid var(--gold);
   background:var(--gold-soft);color:var(--ink);
@@ -400,6 +405,14 @@ h1,h2,h3{margin:0}
 }
 .play-ico{width:calc(1rem*var(--ui));height:calc(1rem*var(--ui))}
 .play:hover{background:var(--forest-deep)}
+.spk-tr{
+  flex:0 0 auto;min-height:calc(40px*var(--ui));padding:0 calc(13px*var(--ui));
+  border:1px solid var(--rule-strong);border-radius:var(--radius-pill);
+  background:var(--surface-card);color:var(--tx);cursor:pointer;
+  font-family:var(--font-ui);font-size:calc(.84rem*var(--ui));font-weight:600;
+}
+.spk-tr.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.spk-tr .bn{margin-top:0;font-size:.86em;color:inherit;opacity:.86}
 .replay{
   width:calc(44px*var(--ui));height:calc(44px*var(--ui));border-radius:var(--radius-pill);flex:0 0 auto;
   cursor:pointer;border:1px solid var(--rule);background:var(--surface-card);color:var(--tx);
@@ -730,11 +743,16 @@ h1,h2,h3{margin:0}
 /* guess, then read */
 .predict{margin-top:var(--s5)}
 .predict-q{
-  margin:0;display:flex;align-items:center;gap:var(--s2);
-  font-family:var(--font-display);font-style:italic;
-  font-size:calc(1rem*var(--ui));line-height:1.45;color:var(--tx);
+  margin:0;display:flex;align-items:flex-start;gap:var(--s2);
+  font-family:var(--font-ui);font-style:normal;font-weight:700;
+  font-size:calc(1.16rem*var(--ui));line-height:1.4;color:var(--tx);
 }
-.predict-g{font-style:normal;font-size:calc(1.3rem*var(--ui));line-height:1}
+/* flex-start, not centre: against two lines the emoji floated to the middle
+   of the block and read as a stray mark rather than as part of the question */
+.predict-g{
+  font-style:normal;font-size:calc(1.5rem*var(--ui));line-height:1.2;
+  flex:0 0 auto;
+}
 .predict-btns{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s3)}
 .predict-b{
   flex:1 1 150px;min-height:calc(44px*var(--ui));padding:0 var(--s4);
@@ -746,7 +764,17 @@ h1,h2,h3{margin:0}
 .predict-b:hover:not(:disabled){border-color:var(--gold);background:var(--gold-soft)}
 .predict.is-open .predict-btns{display:none}
 .band-ill{display:flex;align-items:flex-start;gap:var(--s3)}
-.band-ico{width:calc(1.4rem*var(--ui));height:calc(1.4rem*var(--ui));margin-top:calc(2px*var(--ui));opacity:.9}
+.band-ico{
+  width:calc(1.7rem*var(--ui));height:calc(1.7rem*var(--ui));
+  flex:0 0 auto;opacity:.95;
+  /* park it on the first line: the paragraph beside it carries a browser
+     default top margin, which left the mark floating above the text with a
+     hole under it */
+  margin-top:calc(.06em*var(--ui));
+}
+.band-t{min-width:0}
+.band-t > p{margin:0}
+.band-t > p + .bn{margin-top:calc(6px*var(--ui))}
 .band-t{margin:0}
 
 /* ---------- concentric rings ----------
@@ -1615,9 +1643,11 @@ body.bangla .bn-inline{display:inline}
      The three wrong sentences in step 4 are the three traps — restatement, judgment and stereotype —
      and they are worth more discussion than the three right ones.</p>
   <p>Step 3 is the language work. Each interview can be heard three times and the word field changes
-     every time, so a second listen is not the first one with the answers known; step 3 will not release
-     the class until all three have been heard once. Opening the transcripts releases it — use that for
-     a weaker group, and note that every underlined word there can be tapped for its meaning.</p>
+     every time, so a second listen is not the first one with the answers known. Nothing is locked:
+     the class can move on whenever you want them to, and the step simply shows how many of the three
+     have been heard. After a second listen each informant gets a “See the words” button on their own
+     card; the switch under all three still opens every transcript at once for a weaker group. Every
+     underlined word in a transcript can be tapped for its meaning.</p>
   <p>Choose any printable below. On a phone, tablet, computer, or projector, use the system print dialog
      to print it or save it as a PDF. The paper versions contain no answers.</p>
 
@@ -1725,6 +1755,8 @@ const T = {
   nx_new:        ['Next scenario',        'পরের পরিস্থিতি'],
 
   playall:       ['Play all three',   'তিনজনের কথাই বাজান'],
+  sp_text:       ['See the words',    'কথাগুলো দেখুন'],
+  sp_text_on:    ['Hide the words',   'কথাগুলো লুকান'],
   fulltext:      ['Show full text',   'সম্পূর্ণ লেখা দেখুন'],
   fulltext_on:   ['Full text on',     'সম্পূর্ণ লেখা চালু'],
   checkmine:     ['Check my three',   'আমার ৩টি মিলিয়ে দেখুন'],
@@ -2186,6 +2218,7 @@ function newScenario(keepLesson, id){
   try { localStorage.setItem('ei-scen', sc.id); } catch (e) {}
   step = 0;
   state = { qDone: false, passes: [0, 0, 0], catchScores: [[], [], []], tOpen: false,
+            tCard: [false, false, false],
             claimsDone: false, picked: new Set(), placed: {}, mapDone: false,
             chosenQ: null };
   /* The brand layer does not recolour per theme — the badge carries the theme. */
@@ -2223,11 +2256,14 @@ function syncNext(){
   }
 
   const S = steps(), here = S[step][0], nxt = S[step + 1];
-  const listened = state.passes.every(n => n >= 1);
-  const ready = { Watch: true, Ask: state.qDone, Listen: listened,
+  /* Listen used to be a locked door until all three had been heard. The
+     intention was good, the effect was not: a class that had heard two and
+     wanted to move on could not, and the only way out was to open every
+     transcript — a worse outcome than simply moving on. */
+  const ready = { Watch: true, Ask: state.qDone, Listen: true,
                   Check: state.claimsDone, Map: state.mapDone }[here];
-  const why   = { Ask: 'why_question', Listen: 'why_listen',
-                  Check: 'why_check',  Map: 'why_rings' }[here];
+  const why   = { Ask: 'why_question', Check: 'why_check',
+                  Map: 'why_rings' }[here];
 
   const key = nxt ? { Ask:'nx_ask', Listen:'nx_listen',
                       Check:'nx_check', Map:'nx_rings' }[nxt[0]] : 'nx_new';
@@ -3168,7 +3204,10 @@ function stepLesson(){
 
 function endLesson(){
   lesson = false; lstep = 0;
-  newScenario();
+  /* keep whichever scenario is open. This drew a fresh random one, so a
+     teacher who chose a scenario and then showed the lesson had their choice
+     thrown away the moment the lesson ended. */
+  newScenario(false, sc && sc.id);
 }
 
 /* ---- 1. WATCH ----
@@ -3697,6 +3736,31 @@ function informantCard(s, i){
   again.setAttribute('aria-label', 'Listen to ' + s.name + ' again');
   again.onclick = () => replaySpeaker(i);
   ctl.appendChild(again);
+  /* The words for THIS person, beside this person. It used to live only in a
+     single switch under all three cards, so a student who had listened twice
+     and wanted to check one line had to leave the card, find the bottom of
+     the screen, and open everybody's text at once. */
+  if ((state.passes[i] || 0) >= 2){
+    const shown = state.tOpen || state.tCard[i];
+    const trBtn = el('button', 'spk-tr' + (shown ? ' on' : ''));
+    trBtn.type = 'button';
+    const tk2 = shown ? 'sp_text_on' : 'sp_text';
+    trBtn.appendChild(el('span', null, t(tk2)));
+    trBtn.appendChild(bn(tb(tk2)));
+    trBtn.onclick = () => {
+      const nowOn = !(state.tOpen || state.tCard[i]);
+      /* closing one while the global switch is on drops the global, or this
+         card would refuse to close and look broken */
+      if (!nowOn && state.tOpen){
+        state.tOpen = false;
+        state.tCard = state.tCard.map((v, k) => k !== i);
+      } else {
+        state.tCard[i] = nowOn;
+      }
+      render();
+    };
+    ctl.appendChild(trBtn);
+  }
   const eq = el('div', 'eq');
   for (let k = 0; k < 3; k++) eq.appendChild(el('i'));
   ctl.appendChild(eq);
@@ -3709,7 +3773,7 @@ function informantCard(s, i){
   /* the transcript only exists for somebody you have already heard */
   if (heard){
     const tr = glossedTranscript(s.script, s.name);
-    tr.hidden = !state.tOpen;
+    tr.hidden = !(state.tOpen || state.tCard[i]);
     bub.appendChild(tr);
   }
   const catchBox = el('div', 'catch');
@@ -3771,6 +3835,7 @@ function stepListen(){
   tBtn.disabled = !anyHeard;
   tBtn.title = anyHeard ? '' : 'Listen to somebody first';
   tBtn.onclick = () => { state.tOpen = !state.tOpen;
+    state.tCard = [state.tOpen, state.tOpen, state.tOpen];
     document.querySelectorAll('.transcript').forEach(x => x.hidden = !state.tOpen);
     if (state.tOpen) document.querySelectorAll('.caption').forEach(x => x.remove());
     tBtn.classList.toggle('on', state.tOpen);
@@ -4228,6 +4293,15 @@ function miniRings(side){
   return s;
 }
 
+/* The right column is "Bengali" unless a scenario says otherwise. On the
+   neighbour's tree it must not: Bangladeshi students handle that one about as
+   directly as Americans do, and a column labelled with their own name telling
+   them they would send a mutual friend reads as simply untrue. */
+function eastLab(){
+  const L = sc.contrast.east_label;
+  return L ? [L, sc.contrast.east_label_bn || L] : [t('ui_bengali'), tb('ui_bengali')];
+}
+
 function compareRings(){
   const box = el('div', 'cmp2');
   const seen = {};
@@ -4235,9 +4309,10 @@ function compareRings(){
 
   const dialRow = el('div', 'dials');
   const dials = {};
-  [['west', 'ui_western'], ['east', 'ui_bengali']].forEach(side => {
+  const EL = eastLab();
+  [['west', t('ui_western'), tb('ui_western')], ['east', EL[0], EL[1]]].forEach(side => {
     const col = el('div', 'dial ' + side[0]);
-    col.appendChild(addBn(el('span', 'dial-tag', t(side[1])), tb(side[1])));
+    col.appendChild(addBn(el('span', 'dial-tag', side[1]), side[2]));
     const d = miniRings(side[0]);
     d.addEventListener('click', e => {
       const g = e.target.closest('.ring');
@@ -4305,12 +4380,12 @@ function compareRings(){
     body.appendChild(h);
 
     const pair = el('div', 'cmp-pair');
-    const CB = sb();
-    [['west', 'ui_western', sc.rings[key], (CB.rings || {})[key]],
-     ['east', 'ui_bengali', sc.contrast[key], (CB.contrast || {})[key]]].forEach(side => {
+    const CB = sb(), E = eastLab();
+    [['west', t('ui_western'), tb('ui_western'), sc.rings[key], (CB.rings || {})[key]],
+     ['east', E[0], E[1], sc.contrast[key], (CB.contrast || {})[key]]].forEach(side => {
       const d = el('div', 'cmp-side ' + side[0]);
-      d.appendChild(addBn(el('span', 'cmp-tag', t(side[1])), tb(side[1])));
-      d.appendChild(addBn(el('p', null, side[2]), side[3]));
+      d.appendChild(addBn(el('span', 'cmp-tag', side[1]), side[2]));
+      d.appendChild(addBn(el('p', null, side[3]), side[4]));
       pair.appendChild(d);
     });
     body.appendChild(pair);
