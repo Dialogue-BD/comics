@@ -688,6 +688,14 @@ h1,h2,h3{margin:0}
   overflow:hidden;background:var(--panel);
 }
 .beat-shot img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+/* what the empty balloons say, drawn rather than lettered */
+.beat-mark{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.beat-mark text{font-family:var(--font-ui)}
+.mark-no{stroke:#B0563A;stroke-linecap:round}
+.mark-no-halo{stroke:#FFFDF6;stroke-linecap:round;opacity:.95}
+.mark-chip{fill:var(--chip-veil);stroke:rgba(16,61,33,.25);stroke-width:.5}
+.mark-wait{font-size:6.4px;font-weight:700;fill:#2B3A2E}
+.beat.is-tl .beat-n{top:auto;bottom:calc(6px*var(--ui))}
 /* the emoji rides in the corner of the panel, and takes the whole box back
    if the drawing is missing */
 .beat-g{
@@ -1351,11 +1359,16 @@ body.bangla .bn-inline{display:inline}
 @media (min-width:1000px){
   :root[data-theme="stage"] .wrap{width:min(100%,1460px)}
 
-  /* step 1 — the scene on the left, the model on the right, both at once */
+  /* step 1 — the scene on the left, the model on the right, both at once.
+     The task strip arrived after this grid was written and took the first
+     cell as an ordinary child, which pushed the scene into the right column
+     on its own and dropped the model below it. Every panel's strip spans the
+     full width and stays a header, whatever the panel does underneath. */
   :root[data-theme="stage"] .p-observe{
     display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);
     gap:var(--s4);align-items:start;
   }
+  :root[data-theme="stage"] .panel > .task{grid-column:1 / -1}
   /* step 4 — the rings get the room they deserve, the sentences sit beside */
   :root[data-theme="stage"] .p-map .rings-wrap{
     display:grid;grid-template-columns:auto minmax(0,1fr);
@@ -3195,7 +3208,7 @@ function sceneStrip(){
   const box = el('div', 'strip');
   sc.beats.forEach((b, i) => {
     if (i) box.appendChild(el('span', 'strip-arrow', '→'));
-    const t = el('div', 'beat');
+    const t = el('div', 'beat' + (markTopLeft(sc.id + '-' + (i + 1)) ? ' is-tl' : ''));
     t.style.animationDelay = (i * 110) + 'ms';
     t.appendChild(el('span', 'beat-n', String(i + 1)));
     t.appendChild(beatShot(b, i));
@@ -3206,6 +3219,67 @@ function sceneStrip(){
     box.appendChild(t);
   });
   return box;
+}
+
+/* Three of the six scenarios were drawn with EMPTY speech balloons, because an
+   image model letters about as badly as a video model talks. What goes in the
+   balloon is drawn here instead, as symbols — so the panel stays wordless and
+   reads the same in Bangla as in English.
+
+   Coordinates are percentages of the panel, measured off the drawings rather
+   than guessed, and the layer is a square SVG in a 0-100 space: the panel is
+   1:1, so everything in it scales exactly with the picture at any size. */
+const STRIP_MARK = {
+  'disagreeing-in-the-meeting-2': [{ x: 65.0, y: 15.0, g: '✋', size: 9 },
+                                   { x: 75.4, y: 15.0, g: '📊', size: 9, no: true }],
+  'the-boss-stacks-chairs-2':     [{ x: 15.2, y: 7.8,  g: '🎩', size: 10, no: true },
+                                   { x: 81.7, y: 8.8,  g: '🎩', size: 10 }],
+  'what-do-you-think-1':          [{ x: 59.4, y: 7.8,  g: '💭', size: 8 },
+                                   { x: 68.9, y: 7.8,  g: '❓', size: 8 }],
+  'what-do-you-think-2':          [{ wait: true }]
+};
+
+/* true when this panel's own marking occupies the top-left corner, where the
+   panel number otherwise sits */
+function markTopLeft(id){
+  return (STRIP_MARK[id] || []).some(m => !m.wait && m.x < 32 && m.y < 20);
+}
+
+function beatMark(id){
+  const marks = STRIP_MARK[id];
+  if (!marks) return null;
+  const s2 = svg('0 0 100 100', 'beat-mark');
+  marks.forEach(m => {
+    if (m.wait){
+      /* Panel 2 is the silence. Without this a beginner reads it as "nobody
+         knows the answer" rather than "the teacher is choosing to wait" —
+         which is the opposite of the lesson. */
+      const chip = shape('rect', { x: 56, y: 3, width: 41, height: 12, rx: 6,
+                                   class: 'mark-chip' });
+      s2.appendChild(chip);
+      const tx = shape('text', { x: 76.5, y: 9.2, 'text-anchor': 'middle',
+                                 'dominant-baseline': 'central', class: 'mark-wait' });
+      tx.textContent = '⏳ ' + (bnOn ? bnNum(1) + '…' + bnNum(10) : '1…10');
+      s2.appendChild(tx);
+      return;
+    }
+    const t2 = shape('text', { x: m.x, y: m.y, 'text-anchor': 'middle',
+                               'dominant-baseline': 'central',
+                               style: 'font-size:' + m.size + 'px' });
+    t2.textContent = m.g;
+    s2.appendChild(t2);
+    if (m.no){
+      const r = m.size * 0.62;
+      /* a paper-coloured stroke under the clay one, so the bar survives
+         whatever the glyph behind it is doing */
+      [['mark-no-halo', 3.2], ['mark-no', 1.7]].forEach(k => {
+        s2.appendChild(shape('line', { x1: m.x - r, y1: m.y + r,
+                                       x2: m.x + r, y2: m.y - r,
+                                       class: k[0], 'stroke-width': k[1] }));
+      });
+    }
+  });
+  return s2;
 }
 
 /* One panel, WebP with a JPEG fallback, never fetched until it is near the
@@ -3226,6 +3300,8 @@ function beatShot(b, i){
   im.onerror = () => { pic.remove(); fig.classList.add('no-shot'); };
   pic.appendChild(im);
   fig.appendChild(pic);
+  const mk = beatMark(sc.id + '-' + (i + 1));
+  if (mk){ mk.setAttribute('aria-hidden', 'true'); fig.appendChild(mk); }
   fig.appendChild(el('span', 'beat-g', b.ico));
   return fig;
 }
