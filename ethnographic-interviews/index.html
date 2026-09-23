@@ -1374,9 +1374,22 @@ body.bangla .bn-inline{display:inline}
      cell as an ordinary child, which pushed the scene into the right column
      on its own and dropped the model below it. Every panel's strip spans the
      full width and stays a header, whatever the panel does underneath. */
-  :root[data-theme="stage"] .p-observe{
+  :root[data-theme="stage"] .p-observe.has-aside{
     display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.8fr);
     gap:var(--s4);align-items:start;
+  }
+  /* Student mode has no model card beside the scene, so nothing should be
+     held back for one: the strip takes the whole screen and the panels come
+     out about two and a half times the size they were. */
+  :root[data-theme="stage"] .p-observe:not(.has-aside) .lead-foot{
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  }
+  /* left to itself the strip would take 568px a panel and push the story and
+     the two buttons off the bottom. The cap rides the same boost as the type,
+     so it keeps its share of the screen at every projector height. */
+  :root[data-theme="stage"] .p-observe:not(.has-aside) .strip{justify-content:center}
+  :root[data-theme="stage"] .p-observe:not(.has-aside) .beat{
+    max-width:calc(310px*var(--ui));
   }
   :root[data-theme="stage"] .panel > .task{grid-column:1 / -1}
   /* step 4 — the rings get the room they deserve, the sentences sit beside */
@@ -3191,6 +3204,9 @@ function stepObserve(){
     o.appendChild(addBn(el('p', 'kicker', t('ui_fourrings')), tb('ui_fourrings')));
     o.appendChild(ringFigure(false));
     p.appendChild(o);
+    /* the projector opens this step sideways, but only when there is in fact
+       something to put in the second column */
+    p.classList.add('has-aside');
   }
   wrap.appendChild(p);
 }
