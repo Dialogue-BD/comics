@@ -240,6 +240,11 @@ button{font:inherit;color:inherit}
   transition:color .25s ease,border-color .25s ease;
 }
 .rail-step:hover{color:var(--tx);border-top-color:var(--rule-strong)}
+/* the way out of the lesson, so the five steps are never more than one tap
+   away even while the framing is on screen */
+.rail-out{color:var(--kicker);border-top-color:transparent}
+.rail-out .rail-ico{opacity:1}
+.rail-out:hover{color:var(--accent);border-top-color:var(--accent)}
 .rail-step.is-active:hover{border-top-color:var(--gold)}
 .rail-step.is-done{color:var(--tx)}
 .rail-step.is-active{color:var(--kicker);border-top-color:var(--gold)}
@@ -2050,6 +2055,7 @@ const T = {
   ui_pause:      ['Pause',             ''],
   ui_watchthis:  ['you can watch this', 'এটি চোখে দেখা যায়'],
   ui_mustask:    ['you have to ask',   'এটি জিজ্ঞেস করে জানতে হয়'],
+  ui_toactivity: ['The activity →',    ''],
   ui_listenall:  ['listen to all three', 'তিনজনের কথাই শুনুন'],
   ui_gistwait:   ['Listen to ',         'শুনুন — '],
   ui_gistwait2:  [' and their answer appears here.',
@@ -2460,6 +2466,15 @@ function renderRail(){
     n.onclick = () => jumpTo(i);
     railEl.appendChild(n);
   });
+  if (lesson){
+    const out = el('button', 'rail-step rail-out');
+    out.type = 'button';
+    out.appendChild(icon('target', 'rail-ico'));
+    out.appendChild(el('span', null, t('ui_toactivity')));
+    out.setAttribute('aria-label', 'Leave the lesson and start the activity');
+    out.onclick = () => { stopAudio(); endLesson(); };
+    railEl.appendChild(out);
+  }
 }
 
 /* The rail was a progress indicator. It is navigation now: a teacher running
