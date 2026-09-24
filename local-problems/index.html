@@ -413,13 +413,11 @@
 
     .item-cell {
       position: absolute;
-      width: 48%;
-      height: 24%;
+      width: 42.6%;
+      height: 28.5%;
       border: 1px solid rgba(35, 39, 49, .1);
       border-radius: 11px;
-      background:
-        radial-gradient(circle at 30% 25%, hsl(var(--accent) / .12), transparent 42%),
-        #faf9f5;
+      background: #faf9f5;
       box-shadow: 0 3px 13px rgba(22, 25, 33, .07) inset;
       transition: background .32s ease, border-color .32s ease, box-shadow .32s ease;
       appearance: none;
@@ -428,11 +426,11 @@
       font: inherit;
     }
 
-    .item-cell:nth-child(1), .item-cell:nth-child(2) { top: 8%; }
-    .item-cell:nth-child(3), .item-cell:nth-child(4) { top: 32%; }
-    .item-cell:nth-child(5), .item-cell:nth-child(6) { top: 56%; }
-    .item-cell:nth-child(odd) { left: 1%; }
-    .item-cell:nth-child(even) { left: 51%; }
+    .item-cell:nth-child(1), .item-cell:nth-child(2) { top: 10.35%; }
+    .item-cell:nth-child(3), .item-cell:nth-child(4) { top: 39.92%; }
+    .item-cell:nth-child(5), .item-cell:nth-child(6) { top: 69.49%; }
+    .item-cell:nth-child(odd) { left: 6.06%; }
+    .item-cell:nth-child(even) { left: 51.39%; }
 
     .item-question {
       position: absolute;
@@ -446,6 +444,7 @@
     }
 
     .item-label {
+      display: none;
       position: absolute;
       left: 50%;
       bottom: 5px;
@@ -512,14 +511,6 @@
       75% { transform: translateX(4px); }
     }
 
-    .item-footer-mask {
-      position: absolute;
-      z-index: 6;
-      inset: 79% -1px -1px;
-      background: #f3f6f8;
-      pointer-events: none;
-    }
-
     .item-listen-grid {
       position: absolute;
       z-index: 8;
@@ -529,8 +520,8 @@
 
     .item-listen-button {
       position: absolute;
-      width: 48%;
-      height: 24%;
+      width: 42.6%;
+      height: 28.5%;
       padding: 0;
       border: 2px dashed hsl(var(--accent) / .72);
       border-radius: 13px;
@@ -543,11 +534,11 @@
       transition: background .18s ease, border-color .18s ease, transform .18s ease;
     }
 
-    .item-listen-button:nth-child(1), .item-listen-button:nth-child(2) { top: 8%; }
-    .item-listen-button:nth-child(3), .item-listen-button:nth-child(4) { top: 32%; }
-    .item-listen-button:nth-child(5), .item-listen-button:nth-child(6) { top: 56%; }
-    .item-listen-button:nth-child(odd) { left: 1%; }
-    .item-listen-button:nth-child(even) { left: 51%; }
+    .item-listen-button:nth-child(1), .item-listen-button:nth-child(2) { top: 10.35%; }
+    .item-listen-button:nth-child(3), .item-listen-button:nth-child(4) { top: 39.92%; }
+    .item-listen-button:nth-child(5), .item-listen-button:nth-child(6) { top: 69.49%; }
+    .item-listen-button:nth-child(odd) { left: 6.06%; }
+    .item-listen-button:nth-child(even) { left: 51.39%; }
 
     .item-listen-button span {
       position: absolute;
@@ -746,12 +737,11 @@
     .audio-match-stat strong { margin-top: 1px; font-size: 1.35rem; font-variant-numeric: tabular-nums; }
     .audio-match-instructions { margin: 0; color: var(--muted); font-size: clamp(.78rem, 1.8vw, .96rem); font-weight: 750; line-height: 1.4; }
     .audio-match-grid {
-      flex: 1;
+      flex: 0 0 auto;
       display: grid;
       grid-template-columns: repeat(6, minmax(90px, 1fr));
       gap: clamp(8px, 1.2vw, 14px);
-      align-content: center;
-      min-height: 0;
+      align-content: start;
     }
     .audio-match-tile {
       position: relative;
@@ -775,7 +765,7 @@
     .audio-match-tile.is-wrong { border-color: #ff716a; background: rgba(255, 90, 80, .14); animation: link-wrong .34s ease; }
     .audio-match-tile.is-matched { border-color: #8ee55d; background: rgba(126, 214, 76, .13); cursor: default; }
     .audio-match-tile.is-matched:hover { transform: none; }
-    .audio-match-picture { position: absolute; inset: 0; background-color: #fff; background-repeat: no-repeat; background-size: 208.334% 416.667%; background-position: var(--crop-x) var(--crop-y); }
+    .audio-match-picture { position: absolute; inset: 0; background-color: #fff; background-repeat: no-repeat; background-size: contain; background-position: center; }
     .audio-match-audio { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 35% 28%, hsl(var(--accent) / .3), transparent 40%), linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); }
     .audio-match-speaker { width: 45%; max-width: 72px; color: hsl(var(--accent)); filter: drop-shadow(0 5px 12px rgba(0,0,0,.28)); }
     .audio-match-speaker path { fill: currentColor; }
@@ -1379,7 +1369,6 @@
           <span class="face front">
             <img id="front-image" alt="" draggable="false">
             <span class="category-mask" id="category-mask" hidden aria-hidden="true"></span>
-            <span class="item-footer-mask" id="item-footer-mask" hidden aria-hidden="true"></span>
             <span class="item-grid" id="item-grid" hidden aria-hidden="true">
               <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
               <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
@@ -1525,7 +1514,7 @@
           <div class="audio-match-stat"><span>Score</span><strong id="audio-match-score">0</strong></div>
         </div>
       </header>
-      <p class="audio-match-instructions">Tap an audio tile to hear a word, then match it to the correct picture. Labels appear after a successful match.</p>
+      <p class="audio-match-instructions">Tap an audio tile to hear a word, then match it to the correct picture. The written label is on each picture.</p>
       <div class="audio-match-grid" id="audio-match-grid" role="group" aria-label="Six picture tiles and six audio tiles"></div>
       <p class="audio-match-feedback" id="audio-match-feedback" role="status" aria-live="polite">Choose an audio tile and a picture tile.</p>
       <div class="audio-match-actions">
@@ -1558,7 +1547,7 @@
           <button class="game-option" type="button" data-start-game="audio-match">
             <span class="game-option-icon" aria-hidden="true">Aa</span>
             <strong>Audio Match</strong>
-            <span>Match six spoken vocabulary labels with six pictures drawn from across the whole deck.</span>
+            <span>Match six spoken words with their labelled scenes from across the deck.</span>
           </button>
         </div>
       </div>
@@ -1732,6 +1721,7 @@
   }
 ];
     // PICTURE_THIS_CARDS_END
+    cards.forEach(card => { card.front += "?v=labels-v2"; });
     const wordHelpData = {"traffic-jam": [{"label": "Narrow Crossing", "collocations": ["cross the road", "narrow gap"]}, {"label": "Blocked Footpath", "collocations": ["block the footpath", "walk in traffic"]}, {"label": "Mid-Road Stop", "collocations": ["stop in the lane", "hold up traffic"]}, {"label": "Handcart Loading", "collocations": ["load a handcart", "delay the queue"]}, {"label": "Crowded Curb", "collocations": ["pickup point", "compete for space"]}, {"label": "Rushed Delivery", "collocations": ["delivery window", "rush a delivery"]}], "power-cut": [{"label": "Dark Study Room", "collocations": ["study in the dark", "lose power"]}, {"label": "Hot Room", "collocations": ["stifling room", "cool down"]}, {"label": "Phone Flashlight", "collocations": ["use a flashlight", "save battery"]}, {"label": "Generator Fumes", "collocations": ["run a generator", "breathe fumes"]}, {"label": "Dead Router", "collocations": ["internet connection", "lose connectivity"]}, {"label": "Limited Charging", "collocations": ["backup power", "limited capacity"]}], "open-drains": [{"label": "Missing Cover", "collocations": ["open drain", "watch your step"]}, {"label": "Overflowing Water", "collocations": ["drain overflow", "standing water"]}, {"label": "Dumped Cups", "collocations": ["clog a drain", "throw away cups"]}, {"label": "Sand Runoff", "collocations": ["wash away sand", "block the flow"]}, {"label": "Broken Drain Edge", "collocations": ["repair delay", "temporary barrier"]}, {"label": "Clearing Debris", "collocations": ["clear a blockage", "catch debris"]}], "street-litter": [{"label": "Open Gutter", "collocations": ["street gutter", "blow away"]}, {"label": "Full Bin", "collocations": ["overflowing bin", "leave rubbish"]}, {"label": "Sweeping Cups", "collocations": ["sweep up cups", "dump into a gutter"]}, {"label": "Fruit Peels", "collocations": ["discard peels", "food waste"]}, {"label": "Mixed Waste", "collocations": ["mixed waste", "sort rubbish"]}, {"label": "Carrying Waste", "collocations": ["collection point", "carry waste"]}], "riverfront-waste": [{"label": "Windblown Plastic", "collocations": ["windblown litter", "riverbank waste"]}, {"label": "Uneven Steps", "collocations": ["uneven steps", "carry rubbish"]}, {"label": "Leaving Bottles", "collocations": ["leave behind", "plastic bottle"]}, {"label": "Food Cart Waste", "collocations": ["food packaging", "collect waste"]}, {"label": "Full Riverside Bin", "collocations": ["overflowing bin", "dispose of waste"]}, {"label": "Cleanup After Dark", "collocations": ["collection schedule", "clean up later"]}], "workspace-limits": [{"label": "Shared Room", "collocations": ["shared room", "background noise"]}, {"label": "Few Sockets", "collocations": ["power socket", "charge a laptop"]}, {"label": "Video Call Noise", "collocations": ["hear a call", "reduce noise"]}, {"label": "Paid Seating", "collocations": ["minimum purchase", "afford a seat"]}, {"label": "Weak Wi-Fi", "collocations": ["unstable connection", "video call"]}, {"label": "Searching for Desk", "collocations": ["quiet workspace", "limited seating"]}], "road-dust": [{"label": "Loose Road Edge", "collocations": ["road shoulder", "raise dust"]}, {"label": "Dry Work Site", "collocations": ["loose sand", "blow into stalls"]}, {"label": "Fast Passing", "collocations": ["drive past", "dust cloud"]}, {"label": "Dry Sweeping", "collocations": ["sweep the pavement", "stir up dust"]}, {"label": "Uncovered Load", "collocations": ["cover a load", "spill material"]}, {"label": "Small Cleanup Cart", "collocations": ["clear debris", "cleanup schedule"]}], "summer-heat": [{"label": "Bare Walkway", "collocations": ["walk in the sun", "shaded route"]}, {"label": "Hot Shelter", "collocations": ["trapped heat", "bus shelter"]}, {"label": "Skipping Water", "collocations": ["drink water", "take a break"]}, {"label": "Midday Queue", "collocations": ["queue in the sun", "seek shade"]}, {"label": "Putting Up Shade", "collocations": ["shade cover", "temporary shelter"]}, {"label": "Fan Left Off", "collocations": ["cooling cost", "run a fan"]}], "tree-loss": [{"label": "Fresh Stump", "collocations": ["tree stump", "lost shade"]}, {"label": "Exposed Roots", "collocations": ["exposed roots", "dig a trench"]}, {"label": "Cutting Branches", "collocations": ["cut branches", "clear a route"]}, {"label": "Parking on Roots", "collocations": ["park on roots", "compact the soil"]}, {"label": "Road Expansion", "collocations": ["widen a road", "protect a tree"]}, {"label": "Drooping Sapling", "collocations": ["replacement sapling", "follow-up care"]}], "overpass-delay": [{"label": "Narrow Detour", "collocations": ["temporary detour", "narrow passage"]}, {"label": "Muddy Approach", "collocations": ["muddy road", "work-site access"]}, {"label": "Crossing Work Zone", "collocations": ["work-zone crossing", "take a shortcut"]}, {"label": "Wrong Turn", "collocations": ["wrong turn", "blocked lane"]}, {"label": "Closed Road", "collocations": ["road closure", "construction delay"]}, {"label": "Confusing Junction", "collocations": ["route guidance", "wayfinding sign"]}], "broken-footpaths": [{"label": "Broken Slab", "collocations": ["broken pavement", "trip hazard"]}, {"label": "High Curb", "collocations": ["high curb", "step up"]}, {"label": "Parked Motorcycle", "collocations": ["park on the footpath", "walk around"]}, {"label": "Shop Display", "collocations": ["shop display", "narrow the path"]}, {"label": "Open Repair", "collocations": ["unfinished repair", "loose paving"]}, {"label": "No Ramp", "collocations": ["curb ramp", "wheeled access"]}], "groundwater-drop": [{"label": "Lower Well", "collocations": ["water table", "deep well"]}, {"label": "Dry Field", "collocations": ["dry soil", "water shortage"]}, {"label": "Long Pumping", "collocations": ["pump groundwater", "irrigate crops"]}, {"label": "Carrying Water", "collocations": ["carry water", "fetch supplies"]}, {"label": "Thirsty Crop", "collocations": ["water-intensive crop", "irrigation demand"]}, {"label": "Lost Rainwater", "collocations": ["store rainwater", "surface-water option"]}], "prepaid-meter": [{"label": "Downstairs Meter", "collocations": ["meter downstairs", "check a balance"]}, {"label": "Caged Keypad", "collocations": ["meter cage", "physical access"]}, {"label": "Checking Portal", "collocations": ["online reading", "check the portal"]}, {"label": "Late Top-Up", "collocations": ["top up late", "power cuts out"]}, {"label": "Delayed Balance", "collocations": ["outdated balance", "real-time reading"]}, {"label": "Long PIN Entry", "collocations": ["recharge token", "enter a PIN"]}], "hard-water": [{"label": "White Scale", "collocations": ["calcium scale", "clog a tap"]}, {"label": "Iron Stains", "collocations": ["iron staining", "rust-coloured marks"]}, {"label": "Scrubbing Tiles", "collocations": ["scrub a surface", "remove scale"]}, {"label": "Replacing Taps", "collocations": ["replace a tap", "repair costs"]}, {"label": "Strong Cleaner", "collocations": ["strong cleaner", "cleaning runoff"]}, {"label": "No Water Test", "collocations": ["test the water", "share the cost"]}], "water-leaks": [{"label": "Street Leak", "collocations": ["pipe leak", "water loss"]}, {"label": "Weak Tap", "collocations": ["low pressure", "water supply"]}, {"label": "Reporting Again", "collocations": ["report a leak", "follow up"]}, {"label": "Storing Water", "collocations": ["store water", "plan ahead"]}, {"label": "Buried Pipe", "collocations": ["buried pipe", "repair access"]}, {"label": "Repair Delay", "collocations": ["repair crew", "response time"]}], "toilet-access": [{"label": "Distant Facility", "collocations": ["public toilet", "long walk"]}, {"label": "Broken Tap", "collocations": ["wash hands", "broken tap"]}, {"label": "Locked Door", "collocations": ["locked toilet", "find another place"]}, {"label": "Long Wait", "collocations": ["wait in line", "limited capacity"]}, {"label": "Cleaning Supplies", "collocations": ["cleaning supplies", "keep clean"]}, {"label": "Damaged Door", "collocations": ["repair a door", "maintenance need"]}], "mosquito-breeding": [{"label": "Standing Puddle", "collocations": ["standing water", "drain a puddle"]}, {"label": "Open Container", "collocations": ["open container", "collect rainwater"]}, {"label": "Leaving Buckets", "collocations": ["turn over a bucket", "leave outside"]}, {"label": "Discarded Tyre", "collocations": ["discard a tyre", "trap water"]}, {"label": "Blocked Outlet", "collocations": ["blocked outlet", "clear leaves"]}, {"label": "Missed Inspection", "collocations": ["check containers", "routine inspection"]}], "street-noise": [{"label": "Close Traffic", "collocations": ["traffic noise", "close a window"]}, {"label": "Echoing Lane", "collocations": ["narrow lane", "sound carries"]}, {"label": "Repeated Honking", "collocations": ["sound a horn", "traffic queue"]}, {"label": "Loud Speaker", "collocations": ["turn up volume", "speak over noise"]}, {"label": "Mixed Uses", "collocations": ["shared street", "work nearby"]}, {"label": "Late Unloading", "collocations": ["unloading time", "quiet hours"]}], "road-damage": [{"label": "Deep Pothole", "collocations": ["road pothole", "slow down"]}, {"label": "Loose Bricks", "collocations": ["loose bricks", "uneven surface"]}, {"label": "Sudden Swerving", "collocations": ["swerve around", "oncoming traffic"]}, {"label": "Heavy Load", "collocations": ["heavy load", "road wear"]}, {"label": "Patch Delay", "collocations": ["repair backlog", "temporary cone"]}, {"label": "Poor Runoff", "collocations": ["water runoff", "road patch"]}], "waste-pickup": [{"label": "Distant Point", "collocations": ["collection point", "carry waste"]}, {"label": "Overflowing Pile", "collocations": ["waste pile", "overflowing container"]}, {"label": "Early Drop-Off", "collocations": ["put out waste", "pickup time"]}, {"label": "Loose Bags", "collocations": ["tie a bag", "spill rubbish"]}, {"label": "Small Cart", "collocations": ["limited capacity", "collection cart"]}, {"label": "Unclear Route", "collocations": ["pickup route", "miss a street"]}], "clinic-queues": [{"label": "Small Waiting Room", "collocations": ["waiting room", "limited space"]}, {"label": "Hot Outdoor Line", "collocations": ["outdoor queue", "wait in the heat"]}, {"label": "Early Arrival", "collocations": ["arrive early", "join a queue"]}, {"label": "Finding a Desk", "collocations": ["find the right desk", "ask for help"]}, {"label": "Limited Staff", "collocations": ["staff shortage", "long queue"]}, {"label": "No Queue Guide", "collocations": ["queue guidance", "find the right line"]}], "rain-flooding": [{"label": "Low Walkway", "collocations": ["low walkway", "flooded path"]}, {"label": "Water at Entrance", "collocations": ["water at the door", "lift goods"]}, {"label": "Splashing Wheels", "collocations": ["drive through water", "splash pedestrians"]}, {"label": "Raised Detour", "collocations": ["take a detour", "avoid floodwater"]}, {"label": "Clogged Outflow", "collocations": ["clear an outlet", "backed-up water"]}, {"label": "No Overflow Route", "collocations": ["overflow route", "redirect water"]}], "mango-prices": [{"label": "Piled Crates", "collocations": ["market glut", "unsold fruit"]}, {"label": "Hot Loading", "collocations": ["hot storage", "perishable fruit"]}, {"label": "Rushed Harvest", "collocations": ["harvest window", "ripen together"]}, {"label": "Price Cut", "collocations": ["low farm price", "sell at a loss"]}, {"label": "Few Buyers", "collocations": ["buyer turnout", "weak demand"]}, {"label": "Limited Storage", "collocations": ["cold storage", "hold inventory"]}], "lost-ponds": [{"label": "Covered Pond Edge", "collocations": ["fill a pond", "pond edge"]}, {"label": "Blocked Inlet", "collocations": ["water inlet", "block drainage"]}, {"label": "Dumping Soil", "collocations": ["dump soil", "raise the ground"]}, {"label": "Reporting Fill", "collocations": ["report filling", "document change"]}, {"label": "Building Pressure", "collocations": ["land pressure", "building site"]}, {"label": "Weak Boundary", "collocations": ["pond boundary", "protect a wetland"]}], "barnoi-pollution": [{"label": "Dark Outflow", "collocations": ["drain outfall", "untreated waste"]}, {"label": "Floating Waste", "collocations": ["floating waste", "riverbank debris"]}, {"label": "Dumping Rubbish", "collocations": ["dump rubbish", "pollute a drain"]}, {"label": "Washing Nearby", "collocations": ["wash near water", "contaminated stream"]}, {"label": "Open Discharge", "collocations": ["direct discharge", "wastewater treatment"]}, {"label": "No Interceptor", "collocations": ["catch solid waste", "drain maintenance"]}]};
 
     const app = document.querySelector("#app");
@@ -1790,7 +1780,6 @@
     const endGameButton = document.querySelector("#end-game");
     const categoryMask = document.querySelector("#category-mask");
     const itemGrid = document.querySelector("#item-grid");
-    const itemFooterMask = document.querySelector("#item-footer-mask");
     const itemCells = [...document.querySelectorAll(".item-cell")];
     const linkWord = document.querySelector("#link-word");
     const linkWordValue = document.querySelector("#link-word-value");
@@ -1953,7 +1942,7 @@
         cardIndex: entryIndex,
         itemIndex,
         label,
-        front: entry.front
+        tile: `tiles/${entry.id}-${itemIndex + 1}.webp?v=labels-v2`
       }))).filter(item => typeof item.label === "string" && item.label.trim());
     }
 
@@ -2044,13 +2033,6 @@
       return played;
     }
 
-    function audioMatchCropPosition(itemIndex) {
-      return {
-        x: itemIndex % 2 === 0 ? "1.923%" : "98.077%",
-        y: ["10.526%", "42.105%", "73.684%"][Math.floor(itemIndex / 2)]
-      };
-    }
-
     function makeAudioMatchTile(item, kind) {
       const tile = document.createElement("button");
       tile.type = "button";
@@ -2072,18 +2054,15 @@
         tile.setAttribute("aria-label", "Audio tile. Activate to hear the vocabulary word.");
       } else {
         const picture = document.createElement("span");
-        const crop = audioMatchCropPosition(item.itemIndex);
         picture.className = "audio-match-picture";
-        picture.style.backgroundImage = `url("${item.front}")`;
-        picture.style.setProperty("--crop-x", crop.x);
-        picture.style.setProperty("--crop-y", crop.y);
+        picture.style.backgroundImage = `url("${item.tile}")`;
         tile.append(picture);
         tile.setAttribute("aria-label", `Picture: ${item.label}`);
       }
 
       const label = document.createElement("span");
       label.className = "audio-match-label";
-      label.textContent = kind === "audio" ? "" : item.label;
+      label.textContent = "";
       label.setAttribute("aria-hidden", "true");
       tile.append(label);
       return tile;
@@ -2140,9 +2119,7 @@
         selectedAudioTile.setAttribute("aria-label", `Matched audio: ${label}`);
         selectedPictureTile.setAttribute("aria-label", `Matched picture: ${label}`);
         selectedAudioTile.querySelector(".audio-match-label").textContent = label;
-        selectedPictureTile.querySelector(".audio-match-label").textContent = label;
         selectedAudioTile.querySelector(".audio-match-label")?.setAttribute("aria-hidden", "false");
-        selectedPictureTile.querySelector(".audio-match-label")?.setAttribute("aria-hidden", "false");
         selectedAudioTile = null;
         selectedPictureTile = null;
         audioMatchPairsFound += 1;
@@ -3041,7 +3018,6 @@
       itemGrid.classList.toggle("is-link-mode", isLinkMode());
       itemGrid.classList.toggle("is-pair-word", gameMode === "name-link");
       itemGrid.classList.remove("is-locked");
-      itemFooterMask.hidden = gameMode !== "items";
       newGameCardButton.textContent = isLinkMode() ? "Random unseen link →" : "New card →";
 
       itemCells.forEach((cell, index) => {
@@ -3345,7 +3321,6 @@
       itemGrid.hidden = true;
       itemGrid.setAttribute("aria-hidden", "true");
       itemGrid.classList.remove("is-link-mode", "is-pair-word", "is-locked");
-      itemFooterMask.hidden = true;
       linkWord.hidden = true;
       linkPuzzle = null;
       linkSessionExhausted = false;
