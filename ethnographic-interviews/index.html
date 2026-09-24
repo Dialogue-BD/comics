@@ -892,47 +892,6 @@ h1,h2,h3{margin:0}
 .evid-list li::before{content:"";position:absolute;left:0;top:calc(.52em - 3px);
   width:7px;height:7px;background:var(--gold)}
 
-/* ---------- the lesson ----------
-   Panel one names the four rings; panel two is the one that has to land, so
-   it gets the strongest picture on the page: the same three values, ranked
-   two ways, side by side. */
-.rkey{display:flex;flex-direction:column;gap:var(--s2);margin-top:var(--s4)}
-.rkey-row{
-  display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap;
-  padding:var(--s2) var(--s3);border-left:3px solid var(--rule-strong);background:var(--panel);
-}
-.rkey-ico{width:calc(1.1rem*var(--ui));height:calc(1.1rem*var(--ui))}
-.rkey-row.r-behavior {border-left-color:var(--l-behavior)}
-.rkey-row.r-value    {border-left-color:var(--l-value)}
-.rkey-row.r-belief   {border-left-color:var(--l-belief)}
-.rkey-row.r-worldview{border-left-color:var(--l-worldview)}
-.rkey-row.r-behavior  .rkey-ico,.rkey-row.r-behavior  .rkey-name{color:var(--l-behavior)}
-.rkey-row.r-value     .rkey-ico,.rkey-row.r-value     .rkey-name{color:var(--l-value)}
-.rkey-row.r-belief    .rkey-ico,.rkey-row.r-belief    .rkey-name{color:var(--l-belief)}
-.rkey-row.r-worldview .rkey-ico,.rkey-row.r-worldview .rkey-name{color:var(--l-worldview)}
-.rkey-name{font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--kicker)}
-.rkey-q{font-family:var(--font-display);font-style:italic;
-  font-size:calc(.86rem*var(--ui));color:var(--tx-muted)}
-.rkey-note{margin-left:auto;font-size:calc(.72rem*var(--ui));color:var(--tx-muted)}
-
-.rank{display:grid;grid-template-columns:1fr;gap:var(--s3);margin-top:var(--s4)}
-@media (min-width:640px){ .rank{grid-template-columns:1fr 1fr} }
-.rank-col{padding:var(--s4);border:1px solid var(--rule);border-radius:var(--radius-md)}
-.rank-col.west{border-top:4px solid var(--west);background:var(--west-tint)}
-.rank-col.east{border-top:4px solid var(--east);background:var(--east-tint)}
-.rank-head{font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;margin-bottom:var(--s3)}
-.rank-col.west .rank-head{color:var(--west)}
-.rank-col.east .rank-head{color:var(--east)}
-.rank-item{
-  display:flex;gap:var(--s3);align-items:baseline;margin-top:var(--s2);
-  padding:var(--s2) var(--s3);background:var(--surface-card);border-radius:var(--radius-sm);
-  font-size:calc(.94rem*var(--ui));line-height:1.45;color:var(--tx);
-}
-.rank-item.is-top{box-shadow:inset 3px 0 0 var(--gold);font-weight:600}
-.rank-n{font-family:var(--font-display);font-weight:600;font-size:calc(1.1rem*var(--ui));
-  color:var(--tx-muted);min-width:1.1em}
 .rank-note{margin:var(--s4) 0 0;font-size:calc(.9rem*var(--ui));line-height:1.55;color:var(--tx-muted)}
 
 /* Wrapped onto two lines the arrows end up pointing off the end of a row and
@@ -965,37 +924,243 @@ h1,h2,h3{margin:0}
 }
 @media (min-width:720px){ .chain-arrow{transform:none} }
 
-.lfor{margin-top:var(--s5);display:flex;flex-direction:column;align-items:center;gap:var(--s2)}
-.lfor-row{display:flex;gap:var(--s3)}
-.lfor-p{
-  /* the number used to hang outside the circle on an absolute corner, which
-     pushed the row's scroll width past its box on a short projector; it lives
-     inside now */
-  width:calc(70px*var(--ui));height:calc(70px*var(--ui));
-  border:1.5px solid var(--rule-strong);border-radius:var(--radius-md);
-  background:var(--panel);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:calc(2px*var(--ui));
+/* ---------- the lesson, animated ----------
+   Each panel is one picture that plays in beats (see paintBeat). On a screen
+   wide and tall enough the panel is fitted to the viewport, so a teacher never
+   scrolls mid-sentence: the picture takes whatever height the title and the
+   caption leave it. On a phone the picture keeps its own proportions and the
+   page scrolls as usual. */
+:root{--stage-pb:104px}
+:root[data-theme="stage"]{--stage-pb:24px}
+.zwords{display:none}
+.card.show-words .zwords{display:block}
+.zbox{display:flex;flex-direction:column;min-height:0;margin-top:var(--s3)}
+.zs{
+  display:block;width:100%;height:auto;aspect-ratio:960/560;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;
+  --ease:cubic-bezier(.22,.68,.2,1);
+  --fig:#8D907F; --fog:#DCD6C4;
 }
-.lfor-ico{width:calc(1.6rem*var(--ui));height:calc(1.6rem*var(--ui));color:var(--tx-muted)}
-.lfor-n{
-  font-family:var(--font-ui);font-size:calc(.72rem*var(--ui));font-weight:700;
-  letter-spacing:.08em;color:var(--kicker);
+.zbox.is-end .zs{cursor:default}
+@media (min-width:700px) and (min-height:600px){
+  .p-lesson{
+    display:flex;flex-direction:column;
+    height:calc(100dvh - var(--header-h,124px) - var(--s4) - var(--stage-pb));
+    min-height:520px;
+  }
+  .p-lesson > .card{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+  .p-lesson .zbox{flex:1 1 auto}
+  .p-lesson .zs{flex:1 1 auto;min-height:220px;height:0;aspect-ratio:auto}
+  /* the paragraph, when asked for, takes room from the picture — not the page */
+  .p-lesson .zwords .body{margin-top:var(--s3)}
 }
-.lfor-arrow{color:var(--kicker);font-size:calc(1.3rem*var(--ui));line-height:1}
-.lfor-hit{
-  display:flex;align-items:center;gap:var(--s2);
-  padding:calc(10px*var(--ui)) var(--s4);
-  border:1.5px solid var(--l-value);border-radius:var(--radius-sm);
-  background:var(--l-value-t);
-  font-family:var(--font-ui);font-size:calc(1rem*var(--ui));color:var(--ink);
+:root[data-theme="stage"] .zs{--fig:#6F7363; --fog:#D2CBB6}
+
+/* the caption: subtitles, one line of English and its Bangla */
+.zcap{
+  min-height:calc(2.9rem*var(--ui));margin-top:var(--s2);text-align:center;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
 }
-.lfor-tick{width:calc(1.2rem*var(--ui));height:calc(1.2rem*var(--ui));color:var(--l-value);flex:0 0 auto}
-.payoff{display:grid;grid-template-columns:1fr;gap:var(--s3);margin-top:var(--s4)}
-@media (min-width:640px){ .payoff{grid-template-columns:1fr 1fr} }
-.payoff-col{padding:var(--s4);border:1px solid var(--rule);border-radius:var(--radius-md);background:var(--panel)}
-.payoff-col h3{font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--kicker)}
+body.bangla .zcap{min-height:calc(4.6rem*var(--ui))}
+.zcap-en{
+  margin:0;font-family:var(--font-ui);font-weight:600;color:var(--tx);
+  font-size:calc(clamp(1.02rem,3.6vw,1.26rem)*var(--ui));line-height:1.35;max-width:62ch;
+}
+.zcap .bn{margin-top:calc(2px*var(--ui));font-size:calc(clamp(.96rem,3.3vw,1.1rem)*var(--ui));color:var(--tx-muted)}
+.zcap.swap{animation:zcapIn .45s var(--ease,ease) both}
+@keyframes zcapIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+.zctl{
+  display:flex;align-items:center;gap:var(--s3);flex-wrap:wrap;
+  margin-top:var(--s2);padding-top:var(--s2);border-top:1px solid var(--rule);
+}
+/* the controls are the teacher's; their Bangla would only cost the picture height */
+.zctl .mini .bn{display:none !important}
+.p-lesson .kicker .bn-inline{
+  font-family:'Noto Sans Bengali','Hind Siliguri','Bangla Sangam MN',sans-serif;
+  letter-spacing:normal;text-transform:none;font-weight:600;
+}
+.zdots-row{display:flex;gap:calc(6px*var(--ui));align-items:center}
+.zdotb{
+  width:calc(22px*var(--ui));height:calc(22px*var(--ui));padding:0;border:0;background:none;
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+}
+.zdotb::before{
+  content:"";width:calc(9px*var(--ui));height:calc(9px*var(--ui));border-radius:2px;
+  background:var(--rule-strong);transition:background .25s ease,transform .25s ease;
+}
+.zdotb.done::before{background:var(--moss)}
+.zdotb.on::before{background:var(--gold);transform:scale(1.35)}
+.zdotb:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.zhint{font-size:calc(.8rem*var(--ui));color:var(--tx-muted)}
+.zhint-end{display:none}
+.zbox.is-end .zhint-more{display:none}
+.zbox.is-end .zhint-end{display:inline;color:var(--kicker);font-weight:600}
+.zctl-tools{margin-left:auto;display:flex;gap:var(--s2);flex-wrap:wrap}
+.card.show-words .zwords-b{background:var(--accent-quiet);border-color:var(--rule-strong)}
+@media (max-width:560px){
+  .zhint{display:none}
+  /* on a phone the width is what the picture lacks, so the card gives it its padding */
+  .p-lesson > .card{padding-left:var(--s3);padding-right:var(--s3)}
+}
+
+/* ---- inside the picture ---- */
+.zs text{font-family:var(--font-ui);fill:var(--tx)}
+.zs .zt-bn{font-family:'Noto Sans Bengali','Hind Siliguri','Bangla Sangam MN',sans-serif;font-weight:500;fill:var(--tx-muted)}
+.zs .zt-name{font-weight:700;letter-spacing:.08em}
+.zs .zt-strong{font-weight:700}
+.zs .zt-q{font-family:var(--font-display);font-style:italic;fill:var(--tx-muted)}
+.zs .zt-big{font-family:var(--font-display);font-weight:600;fill:var(--heading)}
+.zs .zt-n{font-family:var(--font-display);font-weight:600}
+.zs .zt-card{font-weight:600}
+.zs .zt-say{font-family:var(--font-display);font-style:italic}
+.zs .zt-word{font-weight:600;fill:var(--l-value)}
+.zs .zt-fogq{font-family:var(--font-display);font-weight:600;font-size:30px;fill:var(--tx-muted)}
+.zs .zt-k{fill:var(--k)}
+.zs .zt-teal{fill:var(--l-value)}
+.zs .zic{overflow:visible}
+.zs .zic-k{color:var(--k)}
+.zs .zic-teal{color:var(--l-value)}
+.zs .zic-muted{color:var(--tx-muted)}
+.zs .zic-card{color:var(--k,var(--tx-muted))}
+.zs .zic-step{color:var(--heading)}
+
+.k-behavior {--k:var(--l-behavior); --kt:var(--l-behavior-t)}
+.k-value    {--k:var(--l-value);    --kt:var(--l-value-t)}
+.k-belief   {--k:var(--l-belief);   --kt:var(--l-belief-t)}
+.k-worldview{--k:var(--l-worldview);--kt:var(--l-worldview-t)}
+.k-west     {--k:var(--west);       --kt:#E7EDF6}
+.k-east     {--k:var(--east);       --kt:#F7E6E4}
+.k-teal     {--k:var(--l-value);    --kt:var(--l-value-t)}
+
+.zp .zp-body,.zp .zp-head{fill:var(--fig)}
+.zp-arm{stroke:var(--fig);stroke-linecap:round;fill:none}
+.zp-boss .zp-body,.zp-boss .zp-head{fill:var(--tx)}
+.zp-teal .zp-body,.zp-teal .zp-head{fill:var(--l-value)}
+.zb .zb-body{fill:var(--surface-card);stroke:var(--rule-strong);stroke-width:2.5;stroke-linejoin:round}
+.zb-teal .zb-body,.zb-say .zb-body{fill:var(--l-value-t);stroke:var(--l-value)}
+.zb-quiet .zb-body{stroke-dasharray:5 5}
+.zdots{fill:var(--tx-muted)}
+.zwave-l{fill:none;stroke:var(--l-value);stroke-width:3.5;stroke-linecap:round;opacity:.75}
+
+.zring-face{fill:var(--kt);stroke:var(--k);stroke-width:3}
+.zs .zring.dim{opacity:.3}
+.zs .zring.faint{opacity:.22}
+.zs .zring.faint.lit{opacity:1}
+.zring.lit2 .zring-face{stroke-width:7}
+.zdot{fill:var(--k);transform-box:fill-box;transform-origin:center}
+.zdot.now{transform:scale(1.6)}
+.zlead{fill:none;stroke:var(--k);stroke-width:2}
+.zlead-dot{fill:var(--k)}
+.zsight{fill:none;stroke:var(--k);stroke-width:3;stroke-dasharray:7 7;stroke-linecap:round}
+
+.zcard-face{fill:var(--surface-card);stroke:var(--rule-strong);stroke-width:2}
+.zcard.split .zcard-face{fill:var(--kt);stroke:var(--k)}
+.zcard.rising{isolation:isolate}
+.ztop{fill:none;stroke:var(--gold);stroke-width:4}
+.zfloor{stroke:var(--rule-strong);stroke-width:2}
+.zeasel{stroke:var(--tx-muted);stroke-width:4;stroke-linecap:round}
+.zboard{fill:var(--surface-card);stroke:var(--tx-muted);stroke-width:3}
+.zbar{fill:var(--moss)}
+.zcross{fill:none;stroke:var(--clay);stroke-width:5;stroke-linecap:round}
+.zcross-muted{stroke:var(--tx-muted);stroke-width:3.5}
+.zmist{transform-box:fill-box;transform-origin:center}
+.zmist.now{animation:zpulse 1.2s var(--ease) 2}
+.zok{fill:var(--l-value)}
+.zok-t,.ztick{fill:none;stroke:#fff;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.ztick{stroke:var(--l-value)}
+.zt-small{stroke-width:2.5}
+.zarrow{fill:none;stroke:var(--gold);stroke-width:4;stroke-linecap:round}
+.zarrow-h{fill:none;stroke:var(--gold);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.zs .gone2{opacity:0}
+
+.rip{fill:none;stroke:var(--k,var(--l-value));stroke-width:8;opacity:0;
+  transform-box:fill-box;transform-origin:center;pointer-events:none}
+.rip.now{animation:zrip 1.3s var(--ease) .1s 1 both}
+.rip-tap.now{animation:zrip 1.1s var(--ease) .6s 2 both}
+.zrow{fill:var(--kt);stroke:var(--k);stroke-width:2}
+.hi .zrow{stroke-width:5}
+.zlink{fill:none;stroke:var(--tx-muted);stroke-width:2.5;stroke-linecap:round}
+.zlink-h{fill:none;stroke:var(--tx-muted);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ztint{fill:var(--l-worldview);opacity:0}
+.zs .ztint.vis{opacity:.08}
+.zlens{fill:rgba(168,50,42,.1);stroke:var(--tx);stroke-width:7}
+.zframe{fill:none;stroke:var(--tx);stroke-width:7;stroke-linecap:round}
+.zway{fill:none;stroke:var(--gold);stroke-width:4;stroke-dasharray:10 9;stroke-linecap:round}
+.zway-teal{stroke:var(--l-value)}
+.zway-h{fill:none;stroke:var(--gold);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+
+.zdiv{stroke:var(--rule);stroke-width:2;stroke-dasharray:4 7}
+.zsheet{fill:var(--surface-card);stroke:var(--rule-strong);stroke-width:2}
+.zs .ztickbox{fill:none;stroke:var(--rule-strong);stroke-width:2}
+.zbar-yes{fill:var(--l-value)}
+.zbar-no{fill:var(--fig)}
+.growx{transform-box:fill-box;transform-origin:left center;transform:scaleX(0)}
+.growx.vis{transform:none}
+
+.zfog circle{fill:var(--fog);stroke:var(--tx-muted);stroke-width:2;stroke-dasharray:5 7}
+.zray{fill:none;stroke:var(--l-behavior);stroke-width:4;stroke-linecap:round}
+.zhit{fill:var(--l-behavior);transform-box:fill-box;transform-origin:center}
+.zhit.now{animation:zpulse 1s var(--ease) 2}
+.zflash{fill:#fff;opacity:0;pointer-events:none}
+.zflash.now{animation:zflash .9s ease-out .15s 1 both}
+.zphoto{fill:#fff;stroke:var(--rule-strong);stroke-width:2}
+.zphoto-ring{fill:var(--l-behavior-t);stroke:var(--l-behavior);stroke-width:3}
+.zphoto-fog{fill:var(--fog)}
+.zqpath{fill:none;stroke:var(--l-value);stroke-width:5;stroke-linecap:round}
+.zcore{fill:var(--l-value)}
+
+.zsh{fill:var(--fig)}
+.zsh-shared{fill:var(--l-value);transform-box:fill-box;transform-origin:center}
+.zsh-shared.hi{transform:scale(1.15)}
+.zsh-own{transform-box:fill-box;transform-origin:center}
+.zs .zsh-own.lo.vis,.zs .zsh-own.lo:not([data-in]){opacity:.35}
+.zpattern{fill:var(--l-value-t);stroke:var(--l-value);stroke-width:3}
+.zstep{fill:var(--surface-card);stroke:var(--heading);stroke-width:3}
+.zcol{fill:var(--kt);stroke:var(--k);stroke-width:2}
+
+.zsound{fill:none;stroke:var(--l-value);stroke-width:3.5;stroke-linecap:round;opacity:.25}
+.zsound.now{animation:zsound 3.3s ease-in-out infinite}
+.zlisten{fill:none;stroke:var(--l-value);stroke-width:2.5}
+.zlisten-on{fill:var(--l-value)}
+.zvenn{fill:rgba(10,106,98,.05);stroke:var(--l-value);stroke-width:3}
+.zcentre{fill:var(--l-value-t);stroke:var(--l-value);stroke-width:3}
+.zline{fill:var(--surface-card);stroke:var(--rule-strong);stroke-width:2}
+.zunder{stroke:var(--l-value);stroke-width:3;stroke-dasharray:1 5;stroke-linecap:round}
+
+/* ---- the beat machinery ---- */
+.zs [data-in]{opacity:0}
+.zs .vis{opacity:1}
+.zs .gone{opacity:0 !important}
+.zs [data-in],.zs [data-out],.zs [data-at],.zs .zmove,.zs .zcard{
+  transition:opacity .55s var(--ease),transform .9s var(--ease),fill .5s ease,stroke .5s ease,
+             stroke-width .5s ease,stroke-dashoffset 1.1s var(--ease);
+}
+.zs .draw{stroke-dasharray:1 1;stroke-dashoffset:1}
+.zs .draw[data-in]{opacity:1}
+.zs .draw.vis{stroke-dashoffset:0}
+.zs .grow{transform-box:fill-box;transform-origin:center;transform:scale(.88)}
+.zs .grow.vis{transform:none}
+.zs .rise{transform:translateY(14px)}
+.zs .rise.vis{transform:none}
+.zs .fly.vis{transform:none !important}
+.zs .toboss{transform:translateX(-170px)}
+.zs .zgroup{transform-box:fill-box;transform-origin:center;transform:translateX(354px) scale(1.5);
+  transition:transform 1.1s var(--ease)}
+.zs .zgroup.home{transform:none}
+.zs.rev *{transition-delay:0s !important}
+.zs.instant,.zs.instant *{transition:none !important;animation:none !important}
+
+@keyframes zrip{0%{opacity:.9;transform:scale(.35)}100%{opacity:0;transform:scale(1)}}
+@keyframes zpulse{0%,100%{transform:none}50%{transform:scale(1.35)}}
+@keyframes zflash{0%{opacity:.95}100%{opacity:0}}
+@keyframes zsound{0%,30%{opacity:.25}10%,20%{opacity:1}}
+
+@media (prefers-reduced-motion:reduce){
+  .zs *{transition-duration:.2s !important;transition-delay:0s !important;animation:none !important}
+  .zs .rise,.zs .grow{transform:none}
+  .zcap.swap{animation:none}
+}
 
 /* ---------- the rows under the rings ---------- */
 .rrows{display:flex;flex-direction:column;gap:var(--s2);margin-top:var(--s5)}
@@ -1291,159 +1456,6 @@ body.bangla .bn-inline{display:inline}
 .stage-next .bn{display:none !important}
 
 /* ---------- step 2: one idea on screen at a time ---------- */
-/* ---------- what an ethnographic interview is (step 2, phase 0) ---------- */
-.meth{display:flex;flex-direction:column;gap:var(--s4);margin-top:var(--s4)}
-.meth-card{
-  padding:var(--s4);border:1px solid var(--rule);border-radius:var(--radius-md);
-  background:var(--panel);
-}
-.meth-head{display:flex;align-items:flex-start;gap:var(--s3)}
-.meth-n{
-  flex:0 0 auto;width:calc(1.6rem*var(--ui));height:calc(1.6rem*var(--ui));
-  border-radius:var(--radius-pill);background:var(--accent);color:var(--on-accent);
-  display:grid;place-items:center;
-  font-family:var(--font-ui);font-size:calc(.8rem*var(--ui));font-weight:700;
-}
-.meth-t{
-  margin:0;font-family:var(--font-display);
-  font-size:calc(1.12rem*var(--ui));line-height:1.3;color:var(--heading);
-}
-.meth-cap{margin:var(--s3) 0 0;font-size:calc(.96rem*var(--ui));line-height:1.6;color:var(--tx)}
-
-/* 1 — a crowd counted, against three people heard */
-.meth-cmp{display:grid;grid-template-columns:1fr;gap:var(--s3);margin-top:var(--s3)}
-@media (min-width:640px){ .meth-cmp{grid-template-columns:1fr 1fr} }
-.meth-col{
-  padding:var(--s3);border-radius:var(--radius-sm);
-  border:1px solid var(--rule);background:var(--surface-card);
-}
-.meth-col.is-this{border-color:var(--l-value);background:var(--l-value-t)}
-/* both drawings are scale-free SVG, so on a projector column they would grow
-   to 800px wide and eat the screen: they are capped and centred instead */
-.meth-art{display:block;width:100%;max-width:calc(330px*var(--ui));height:auto;margin:0 auto}
-.meth-crowd-g{fill:var(--tx-muted);opacity:.42}
-.meth-flow{stroke:var(--kicker);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.meth-sheet{fill:var(--surface-card);stroke:var(--rule-strong);stroke-width:1.4}
-.meth-box{fill:none;stroke:var(--rule-strong);stroke-width:1.3}
-.meth-box.is-tick{stroke:var(--l-value)}
-.meth-tickline{stroke:var(--l-value);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.meth-line{fill:var(--tx-muted);opacity:.3}
-
-.meth-three{
-  display:flex;flex-direction:column;gap:calc(7px*var(--ui));
-  max-width:calc(340px*var(--ui));margin:0 auto;
-}
-.meth-row{display:flex;align-items:center;gap:calc(8px*var(--ui))}
-.meth-face{
-  flex:0 0 auto;width:calc(38px*var(--ui));height:calc(38px*var(--ui));
-  border-radius:var(--radius-pill);overflow:hidden;background:var(--panel);
-  border:1.5px solid var(--rule-strong);
-  display:grid;place-items:center;
-  font-family:var(--font-display);font-size:calc(1rem*var(--ui));color:var(--tx-muted);
-}
-.meth-face img{width:100%;height:100%;object-fit:cover;display:block}
-.meth-bub{flex:1 1 auto;min-width:0}
-.meth-bub-svg{display:block;width:100%;height:auto}
-.meth-bub-body{fill:var(--surface-card);stroke:var(--l-value);stroke-width:1.4;opacity:.95}
-.meth-bub-tail{fill:var(--surface-card);stroke:none}
-.meth-bub-line{fill:var(--l-value);opacity:.38}
-
-/* the mechanism: sight stops at the rim, a question reaches the centre */
-.meth-reach{display:block;width:100%;height:auto;max-width:calc(420px*var(--ui));margin:0 auto}
-.reach-ring{fill:none;stroke:var(--rule-strong);stroke-width:1.3;opacity:.4}
-.reach-ring.is-seen{stroke:var(--l-behavior);stroke-width:3;opacity:1;fill:var(--l-behavior-t)}
-.reach-eye{fill:none;stroke:var(--kicker);stroke-width:1.8}
-.reach-pupil{fill:var(--kicker)}
-.reach-ray{stroke:var(--l-behavior);stroke-width:2.2;stroke-dasharray:6 4;fill:none}
-.reach-hit{fill:var(--l-behavior)}
-.reach-qbub{fill:var(--l-value-t);stroke:var(--l-value);stroke-width:1.5}
-.reach-q{fill:var(--l-value);font-family:var(--font-ui);font-size:17px;font-weight:700}
-.reach-arrow{stroke:var(--l-value);stroke-width:2.4;fill:none;stroke-linecap:round}
-.reach-core{fill:var(--l-value)}
-.reach-lab{
-  font-family:var(--font-ui);font-size:7.4px;font-weight:700;letter-spacing:.06em;
-  fill:var(--tx-muted);opacity:.62;
-}
-.reach-lab.is-seen{fill:var(--l-behavior);opacity:1;font-size:8.4px}
-.reach-lab-bn{
-  font-family:'Noto Sans Bengali','Hind Siliguri',sans-serif;
-  font-size:6.6px;font-weight:600;letter-spacing:0;
-}
-.meth-legend{display:flex;flex-wrap:wrap;gap:var(--s3);justify-content:center;margin-top:var(--s2)}
-.meth-leg{
-  display:flex;align-items:flex-start;gap:calc(6px*var(--ui));
-  padding:calc(6px*var(--ui)) var(--s3);border-radius:var(--radius-pill);
-  background:var(--surface-card);border:1px solid var(--rule);
-  font-size:calc(.86rem*var(--ui));color:var(--tx);
-}
-.meth-leg.is-seen{border-color:var(--l-behavior)}
-.meth-leg.is-ask{border-color:var(--l-value)}
-.meth-leg-ico{width:calc(1.05rem*var(--ui));height:calc(1.05rem*var(--ui));flex:0 0 auto;
-  margin-top:calc(2px*var(--ui))}
-.meth-leg.is-seen .meth-leg-ico{color:var(--l-behavior)}
-.meth-leg.is-ask .meth-leg-ico{color:var(--l-value)}
-
-/* 2 — the rings, with what is watched and what is asked on either side */
-.meth-seen{
-  display:flex;flex-direction:column;align-items:center;gap:var(--s2);
-  margin-top:var(--s3);
-}
-.meth-eye,.meth-ask{
-  display:flex;flex-direction:column;align-items:center;gap:calc(4px*var(--ui));
-  flex:0 0 auto;max-width:calc(120px*var(--ui));text-align:center;
-}
-.meth-eye-ico{width:calc(1.5rem*var(--ui));height:calc(1.5rem*var(--ui));color:var(--kicker)}
-.meth-tag{
-  font-family:var(--font-ui);font-size:calc(.74rem*var(--ui));font-weight:700;
-  letter-spacing:.09em;text-transform:uppercase;color:var(--tx-muted);
-}
-.meth-seen .rings-wrap{flex:1 1 260px;min-width:0;max-width:calc(320px*var(--ui))}
-.meth-seen .rings{width:min(100%,240px)}
-.meth-seen .rkey{display:none}          /* the rows repeat the lesson; the picture is the point */
-/* only the outside ring is observable, so only the outside ring is drawn as
-   if it were: the other three fade back to the question they have to be asked */
-.meth-seen .ring:not(.is-open) .ring-face{opacity:.34}
-.meth-seen .ring:not(.is-open) .ring-name{opacity:.45}
-.meth-seen .ring:not(.is-open) .ring-ico{opacity:.3}
-.meth-seen .ring.is-open .ring-face{stroke-width:3}
-
-/* 3 — the loop, which is this activity's own rail */
-.meth-loop{
-  display:flex;align-items:stretch;justify-content:center;gap:calc(4px*var(--ui));
-  flex-wrap:wrap;margin-top:var(--s3);
-}
-.meth-step{
-  position:relative;
-  flex:0 1 auto;display:flex;flex-direction:column;align-items:center;
-  gap:calc(3px*var(--ui));padding:calc(10px*var(--ui)) calc(8px*var(--ui)) calc(8px*var(--ui));
-  min-width:calc(66px*var(--ui));
-  border:1px solid var(--rule);border-radius:var(--radius-sm);background:var(--surface-card);
-}
-.meth-step-ring{
-  position:relative;display:grid;place-items:center;
-  width:calc(2.1rem*var(--ui));height:calc(2.1rem*var(--ui));
-  border-radius:var(--radius-pill);background:var(--surface-card);border:2px solid currentColor;
-}
-.meth-step.r-behavior {color:var(--l-behavior)}
-.meth-step.r-value    {color:var(--l-value)}
-.meth-step.r-belief   {color:var(--l-belief)}
-.meth-step.r-worldview{color:var(--l-worldview)}
-.meth-step-ico{width:calc(1.05rem*var(--ui));height:calc(1.05rem*var(--ui));color:currentColor}
-.meth-x3{
-  position:absolute;right:calc(3px*var(--ui));top:calc(3px*var(--ui));
-  padding:0 calc(4px*var(--ui));border-radius:var(--radius-pill);
-  background:currentColor;
-  font-family:var(--font-ui);font-size:calc(.6rem*var(--ui));font-weight:700;
-}
-.meth-x3::after{content:''}
-.meth-step .meth-x3{color:var(--on-accent)}
-.meth-step.r-belief .meth-x3{background:var(--l-belief)}
-.meth-step-t{
-  font-family:var(--font-ui);font-size:calc(.76rem*var(--ui));font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;color:var(--tx);text-align:center;
-}
-.meth-arrow{align-self:center;color:var(--kicker);font-size:calc(1rem*var(--ui));flex:0 0 auto}
-
 .qpair{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);margin-top:var(--s4)}
 .qside{
   position:relative;padding:var(--s5) var(--s3) var(--s4);border-radius:var(--radius-md);
@@ -1644,7 +1656,6 @@ body.bangla .bn-inline{display:inline}
      languages side by side instead of doubling the card's height, and the
      diagram gives up the room the second column needs. */
   :root[data-theme="stage"] body.bangla .p-observe .rings{width:min(100%,232px)}
-  :root[data-theme="stage"] .rkey-row .bn,
   :root[data-theme="stage"] .rrow-head .bn{
     width:auto;margin-top:0;margin-left:auto;flex:0 1 46%;min-width:0;text-align:right;
   }
@@ -1682,8 +1693,6 @@ body.bangla .bn-inline{display:inline}
   :root[data-theme="stage"] .cmp2-foot,
   :root[data-theme="stage"] .cmp2-body{grid-column:2}
 
-  /* the lesson panels read better wide than tall */
-  :root[data-theme="stage"] .rank{gap:var(--s6)}
 }
 
 /* ===========================================================================
@@ -1862,6 +1871,11 @@ body.bangla .bn-inline{display:inline}
   <p>An eight-panel lesson, then five steps: about 45 minutes. The lesson is shown once and the browser
      remembers; “Show the lesson” brings it back for a new class. Its second panel is the one that
      matters — the same three values ranked two ways — and it is worth stopping on.</p>
+  <p>Each lesson panel is a picture that plays in short beats, with one line of caption under it. You
+     do the talking: <kbd>→</kbd> or a tap on the picture moves it on one beat, <kbd>←</kbd> steps it
+     back, and only after the last beat does <kbd>→</kbd> turn the panel. The squares under the picture
+     jump to any beat, “Play again” replays the panel, and “Read it” opens the panel’s paragraph for a
+     class that wants the words.</p>
   <p>Pairs work well: one student runs the audio, the other keeps notes on the printed field sheet.
      The three wrong sentences in step 4 are the three traps — restatement, judgment and stereotype —
      and they are worth more discussion than the three right ones.</p>
@@ -2056,6 +2070,10 @@ const T = {
   ui_watchthis:  ['you can watch this', 'এটি চোখে দেখা যায়'],
   ui_mustask:    ['you have to ask',   'এটি জিজ্ঞেস করে জানতে হয়'],
   ui_toactivity: ['The activity →',    ''],
+  ui_zmore:      ['Tap the picture, or press →, to go on', ''],
+  ui_zend:       ['Next panel →',       ''],
+  ui_zagain:     ['Play again',         'আবার দেখুন'],
+  ui_zwords:     ['Read it',            'পড়ুন'],
   ui_listenall:  ['listen to all three', 'তিনজনের কথাই শুনুন'],
   ui_gistwait:   ['Listen to ',         'শুনুন — '],
   ui_gistwait2:  [' and their answer appears here.',
@@ -2175,7 +2193,7 @@ function setTeacher(on, keepPlace){
   const started = !sc || step > 0 || state.qDone ||
                   (state.passes || []).some(x => x > 0) || state.handoff;
   teacher = on;
-  if (on && keepPlace && !started){ step = 0; lstep = 0; lesson = true; }
+  if (on && keepPlace && !started){ step = 0; lstep = 0; lbeatAt = -1; lesson = true; }
   else if (keepPlace && wasName){
     const S = steps();
     let i = S.findIndex(x => x[0] === wasName);
@@ -2183,7 +2201,7 @@ function setTeacher(on, keepPlace){
     step = i;
   } else {
     /* a fresh start on the projector meets the idea before the method */
-    step = 0; lstep = 0; lesson = on;
+    step = 0; lstep = 0; lbeatAt = -1; lesson = on;
   }
   if (sc) render();          /* at boot there is no scenario yet */
 }
@@ -2519,7 +2537,7 @@ function render(){
   renderRail();
   wrap.innerHTML = '';
   stage.scrollTop = 0;
-  if (lesson){ stepLesson(); btnBack.disabled = (lstep === 0); syncNext(); return; }
+  if (lesson){ stepLesson(); btnBack.disabled = (lstep === 0 && lbeat <= 0); syncNext(); return; }
   if (state.handoff){ stepHandoff(); btnBack.disabled = false; syncNext(); return; }
   steps()[step][3]();
   btnBack.disabled = (step === 0);
@@ -2532,7 +2550,8 @@ function syncNext(){
 
   if (lesson){
     btnNext.disabled = false;
-    const k = lstep === LESSON.length - 1 ? 'nx_start' : 'nx_next';
+    const k = (lstep === LESSON.length - 1 && scCur && lbeat >= scCur.beats.length - 1)
+      ? 'nx_start' : 'nx_next';
     setBtnLabel(btnNext, k);
     btnNextStage.disabled = false;
     btnNextStage.textContent = t(k);
@@ -3120,6 +3139,27 @@ const ICONS = {
     s.appendChild(shape('rect', { x: 8.8, y: 3.2, width: 2.6, height: 9.6, rx: .7, fill: 'currentColor' }));
   },
   tick: s => s.appendChild(shape('path', ST({ d: 'M2.8 8.4 6.3 12l7-8' }))),
+  /* the lesson's own few: a value you feel, an older and a younger person,
+     a clock for "afterwards", a camera, and a book */
+  heart: s => s.appendChild(shape('path', ST({ d: 'M8 13.4S2.2 9.9 2.2 6.1A2.9 2.9 0 0 1 8 4.9a2.9 2.9 0 0 1 5.8 1.2C13.8 9.9 8 13.4 8 13.4Z' }))),
+  elder: s => {
+    s.appendChild(shape('circle', ST({ cx: 5.2, cy: 4.1, r: 1.9 })));
+    s.appendChild(shape('path', ST({ d: 'M2.2 13.6v-3.3a3 3 0 0 1 6 0v3.3' })));
+    s.appendChild(shape('circle', ST({ cx: 11.7, cy: 6.9, r: 1.5 })));
+    s.appendChild(shape('path', ST({ d: 'M9.6 13.6v-2.1a2.1 2.1 0 0 1 4.2 0v2.1' })));
+  },
+  clock: s => {
+    s.appendChild(shape('circle', ST({ cx: 8, cy: 8, r: 6.2 })));
+    s.appendChild(shape('path', ST({ d: 'M8 4.6V8l2.4 1.6' })));
+  },
+  camera: s => {
+    s.appendChild(shape('path', ST({ d: 'M1.8 5.4h3l1.2-1.8h4l1.2 1.8h3v7.4H1.8Z' })));
+    s.appendChild(shape('circle', ST({ cx: 8, cy: 8.9, r: 2.4 })));
+  },
+  book: s => {
+    s.appendChild(shape('path', ST({ d: 'M8 4.4C6.6 3.3 4.4 3 2 3.3v9c2.4-.3 4.6 0 6 1.1 1.4-1.1 3.6-1.4 6-1.1v-9c-2.4-.3-4.6 0-6 1.1Z' })));
+    s.appendChild(shape('path', ST({ d: 'M8 4.4v9' })));
+  },
   cross: s => s.appendChild(shape('path', ST({ d: 'M3.6 3.6l8.8 8.8M12.4 3.6l-8.8 8.8' })))
 };
 function ST(a){
@@ -3325,240 +3365,793 @@ const LESSON_BN = [
    'একই প্রশ্নের উত্তর আপনি তিনজনের কাছ থেকে শুনবেন। খেয়াল করুন — তিনজনই যে কথাটা বলছেন, সেটিই সংস্কৃতি। কেবল একজন যা বলছেন, সেটি সেই মানুষটিরই কথা। প্রত্যেকের কথা তিনবার শোনা যাবে, আর দাগ দেওয়া যেকোনো শব্দে চাপ দিলে তার মানে দেখা যাবে।']
 ];
 
-let lesson = false, lstep = 0;   /* the four theory panels are teacher mode only */
-
-const LESSON = [
-  { rail: 'Culture', ico: 'target', kicker: 'What Is Culture?',
-    title: 'Four rings, from the outside in',
-    body: 'A culture is a group of people who answer four questions the same way. ' +
-          'What is done. What is good or best. What is true. What is real. ' +
-          'Only the first one can be seen.',
-    build: () => ringFigureStill() },
-
-  { rail: 'Ranking', ico: 'rank', kicker: 'No Culture Is Better',
-    title: 'The same values, in a different order',
-    body: 'Every culture has all of these. No culture throws one away. ' +
-          'What changes is which one goes first — and that order is where different behaviour comes from.',
-    build: () => rankingPicture() },
-
-  { rail: 'Order', ico: 'glasses', kicker: 'Where the Order Comes From',
-    title: 'The centre decides the edge',
-    body: 'A culture ranks its values the way it does because of what it holds to be true. ' +
-          'And it holds those things true because of how it sees the world — the glasses nobody ever takes off.',
-    build: () => chainPicture() },
-
-  { rail: 'Not a survey', ico: 'ask', kicker: 'What An Interview Is',
-    title: 'A survey counts. An interview explains.',
-    body: 'A survey reaches many people and asks each of them for a tick. An ethnographic interview ' +
-          'reaches a few people and asks them to explain, in their own words, something they have ' +
-          'never had to put into words before.',
-    build: () => surveyVsInterview() },
-
-  { rail: 'Unseen', ico: 'glasses', kicker: 'Why Anthropologists Use It',
-    title: 'It reaches what you cannot see',
-    body: 'Anthropologists and sociologists use this method because only the outside ring can be ' +
-          'observed. Values, beliefs and worldview leave no trace you can photograph — they have to ' +
-          'be asked for, and then checked against other people.',
-    build: () => reachPicture() },
-
-  { rail: 'The work', ico: 'target', kicker: 'How The Work Is Done',
-    title: 'One person is a story. Three are a pattern.',
-    body: 'Notice something, ask about it, listen, compare what different people say, and only then ' +
-          'name what is underneath. That is the method — and it is exactly the five steps you are ' +
-          'about to work through.',
-    build: () => loopPicture() },
-
-  { rail: 'Why', ico: 'ask', kicker: 'Why Interview Anyone?',
-    title: 'You learn the culture and the language in the same hour',
-    body: 'The same conversation that shows you what somebody values is also real listening practice ' +
-          'at natural speed — the idioms, the hesitations and the repairs that no textbook records.',
-    build: () => payoffPicture() },
-
-  /* The framing used to stop at the idea and leave the class to work out what
-     they were meant to DO with it. This panel is the handover: it names the
-     listening task in one line and then gets out of the way. */
-  { rail: 'Listen for', ico: 'ear', kicker: 'Now You Listen',
-    title: 'Three people, one question',
-    body: 'You will hear three people answer the same question. Listen for the thing all three of them ' +
-          'say — that is the culture. What only one of them says is just that person. You can hear each ' +
-          'person three times, and any underlined word can be tapped for its meaning.',
-    build: () => listenForPicture() }
-];
-
-/* the rings with nothing in them — the idea, before any scenario exists */
-function ringFigureStill(){
-  const w = el('div', 'rings-wrap');
-  const s = svg('0 0 300 300', 'rings');
-  RINGS.forEach((R, i) => {
-    const g = shape('g', { class: 'ring r-' + R.key + (R.key === 'behavior' ? ' is-open' : '') });
-    g.appendChild(shape('circle', { cx: 150, cy: 150, r: R.r, class: 'ring-face' }));
-    const inner = RINGS[i + 1] ? RINGS[i + 1].r : 0;
-    const mid = (R.r + inner) / 2;
-    const ly = 150 - mid + R.fs * 0.35 - (bnOn ? R.fs * 0.52 : 0);
-    const lt = shape('text', { x: 150, y: ly, 'text-anchor': 'middle',
-                               class: 'ring-name', style: 'font-size:' + R.fs + 'px' });
-    lt.textContent = R.name.toUpperCase();
-    g.appendChild(lt);
-    if (bnOn){
-      const lb = shape('text', { x: 150, y: ly + R.fs * 1.16, lang: 'bn',
-                                 'text-anchor': 'middle', class: 'ring-name ring-name-bn',
-                                 style: 'font-size:' + (R.fs * 0.92) + 'px' });
-      lb.textContent = RING_BN[R.key][0];
-      g.appendChild(lb);
-    }
-    s.appendChild(g);
-  });
-  w.appendChild(s);
-
-  const key = el('div', 'rkey');
-  RINGS.forEach(R => {
-    const r = el('div', 'rkey-row r-' + R.key);
-    r.appendChild(icon(LAYER_ICON[R.key], 'rkey-ico'));
-    r.appendChild(el('span', 'rkey-name', R.name));
-    r.appendChild(el('span', 'rkey-q', R.q));
-    const nk = R.key === 'behavior' ? 'ui_watchthis' : 'ui_mustask';
-    r.appendChild(el('span', 'rkey-note', t(nk)));
-    const kb = bn(RING_BN[R.key][0] + ' · ' + RING_BN[R.key][1] + ' — ' + tb(nk));
-    kb.style.gridColumn = '1 / -1';
-    r.appendChild(kb);
-    key.appendChild(r);
-  });
-  w.appendChild(key);
-  return w;
-}
-
 /* the same three values, ranked two ways — the whole of panel two */
 const RANKINGS = {
   west: ['Saying the true thing', 'Keeping everyone comfortable', 'Deferring to the older person'],
   east: ['Deferring to the older person', 'Keeping everyone comfortable', 'Saying the true thing']
 };
-function rankingPicture(){
-  const box = el('div', 'rank');
-  [['west', 'ui_west_off'], ['east', 'ui_east_off']].forEach(side => {
-    const col = el('div', 'rank-col ' + side[0]);
-    col.appendChild(addBn(el('h3', 'rank-head', t(side[1])), tb(side[1])));
-    RANKINGS[side[0]].forEach((v, i) => {
-      const r = el('div', 'rank-item' + (i === 0 ? ' is-top' : ''));
-      r.appendChild(el('span', 'rank-n', String(i + 1)));
-      const tx = el('span');
-      tx.appendChild(el('span', null, v));
-      tx.appendChild(bn(RANKINGS_BN[side[0]][i]));
-      r.appendChild(tx);
-      col.appendChild(r);
+let lesson = false, lstep = 0;   /* the eight framing panels are teacher mode only */
+
+/* ------------------------------------------------------ the animated lesson
+   Each panel is a picture that plays in beats. The teacher talks; → (or a tap
+   on the picture) moves the picture on by one beat, and only when the last
+   beat has played does → turn the panel. ← walks back the same way, beat by
+   beat, and arriving on a panel from the one after it lands on its final
+   picture rather than replaying it from the start.
+
+   The words were the problem the class trial found, so the words are few: a
+   one-line caption per beat, English with the Bangla under it, and the
+   panel's old paragraph kept behind "Read it" for anyone who wants it.
+
+   Motion follows the Brand Book: nothing bounces, nothing decorates. Things
+   move only when the movement is the idea — rings drawn from the outside in,
+   values changing places, three voices collapsing into one pattern.
+
+   Mechanics. A scene draws everything it will ever show at build time, and
+   tags each piece with when it matters:
+     data-in="k"      hidden until beat k, then shown (and .draw strokes draw)
+     data-out="k"     gone from beat k onward
+     data-now="k j"   carries .now only on those beats (a pulse, a ripple)
+     data-at="k:cls"  carries cls from beat k on ("k-m:cls" stops at beat m)
+   paintBeat() turns the current beat into classes, so every state is a pure
+   function of the beat number and stepping backwards is simply CSS
+   transitions running in reverse. A scene may add onBeat(k) for movement that
+   depends on k (the ranking cards) and mount() for anything that needs
+   measuring once it is on screen. */
+let lbeat = 0, lbeatAt = -1, lbeatEnd = false, lWords = false;
+let scRoot = null, scCur = null, scCap = null, scDots = null, scBox = null;
+
+/* a node in the scene, with the beat tags understood */
+function zN(parent, tag, a){
+  const n = document.createElementNS(NS, tag);
+  if (a) Object.keys(a).forEach(k => {
+    const v = a[k];
+    if (v == null || v === false) return;
+    if (k === 'text') n.textContent = v;
+    else if (k === 'cls') n.setAttribute('class', v);
+    else if (k === 'in' || k === 'out' || k === 'now' || k === 'at') n.setAttribute('data-' + k, String(v));
+    else if (k === 'delay') n.style.transitionDelay = v + 'ms';
+    else n.setAttribute(k, v);
+  });
+  /* Bengali set at the Latin's size reads a size smaller — the script is
+     more compact and its conjuncts need the room — so every Bangla line in a
+     scene is set a fifth larger than the number it was given */
+  if (a && a.lang === 'bn' && n.style.fontSize) n.style.fontSize = (parseFloat(n.style.fontSize) * 1.2) + 'px';
+  if (parent) parent.appendChild(n);
+  return n;
+}
+/* a group that only carries tags */
+const zG = (p, a) => zN(p, 'g', a);
+
+/* English with its Bangla under it, as one piece of the picture. Inside an
+   SVG a Bangla line cannot be a .bn div, so it is a second <text>, built only
+   when Bangla is on (the scene is rebuilt when the language changes). */
+function zText(p, x, y, en, bnText, o){
+  o = o || {};
+  const size = o.size || 18;
+  const g = zG(p, { cls: o.cls, in: o.in, out: o.out, now: o.now, at: o.at, delay: o.delay });
+  const two = bnOn && bnText;
+  const y0 = two ? y - (o.lift || 0) : y;
+  zN(g, 'text', { x: x, y: y0, 'text-anchor': o.anchor || 'middle',
+                  cls: 'zt ' + (o.tcls || ''), style: 'font-size:' + size + 'px', text: en });
+  if (two) zN(g, 'text', { x: x, y: y0 + (o.gap || size * 1.12), 'text-anchor': o.anchor || 'middle',
+                           lang: 'bn', cls: 'zt zt-bn ' + (o.bcls || ''),
+                           style: 'font-size:' + (o.bnSize || size * .84) + 'px', text: bnText });
+  return g;
+}
+
+/* one of the house symbols, placed and sized inside a scene */
+function zIcon(p, kind, x, y, size, a){
+  const m = icon(kind);
+  m.setAttribute('class', 'ico zic ' + ((a && a.cls) || ''));
+  m.setAttribute('x', x); m.setAttribute('y', y);
+  m.setAttribute('width', size); m.setAttribute('height', size);
+  /* .ico sizes itself in rem for the HTML; inside a scene the box is the size */
+  m.style.width = size + 'px'; m.style.height = size + 'px';
+  ['in', 'out', 'now', 'at'].forEach(k => { if (a && a[k] != null) m.setAttribute('data-' + k, String(a[k])); });
+  if (a && a.delay) m.style.transitionDelay = a.delay + 'ms';
+  p.appendChild(m);
+  return m;
+}
+
+/* A person: a head and a pair of shoulders. Faceless on purpose — the lesson
+   is about people in general, and the informants get real faces in step 3.
+   (x, y) is the bottom centre; s is the height. */
+function zPerson(p, x, y, s, a){
+  const g = zG(p, Object.assign({}, a || {}, { cls: 'zp ' + ((a && a.cls) || '') }));
+  const w = s * .3, h = s * .5, r = s * .2;
+  zN(g, 'path', { d: 'M' + (x - w) + ' ' + y + 'v' + (-h * .45) + 'a' + w + ' ' + (h * .55) +
+                     ' 0 0 1 ' + (2 * w) + ' 0v' + (h * .45) + 'z', cls: 'zp-body' });
+  zN(g, 'circle', { cx: x, cy: y - h - s * .04 - r, r: r, cls: 'zp-head' });
+  return g;
+}
+const headTop = (y, s) => y - s * .74 - s * .2;
+/* a hand up: drawn separately, so it can arrive on its own beat */
+function zArm(p, x, y, s, a){
+  const g = zG(p, Object.assign({ cls: 'zp' }, a || {}));
+  zN(g, 'path', { d: 'M' + (x + s * .2) + ' ' + (y - s * .27) + 'L' + (x + s * .42) + ' ' + (y - s * .92),
+                  cls: 'zp-arm', 'stroke-width': s * .1 });
+  zN(g, 'circle', { cx: x + s * .43, cy: y - s * .95, r: s * .065, cls: 'zp-head' });
+  return g;
+}
+
+/* A speech bubble as one outline, tail included, so the border runs
+   unbroken round the tail. side: 'b' (tail down), 'l' or 'r'; at: where along
+   that edge the tail sits (0-1); lean: how far the tip leans. */
+function zBubble(p, x, y, w, h, side, at, a, lean){
+  const g = zG(p, Object.assign({}, a || {}, { cls: 'zb ' + ((a && a.cls) || '') }));
+  const r = Math.min(16, h / 2.6), tw = Math.min(22, h * .34), th = Math.min(20, h * .32);
+  lean = lean || 0;
+  let d = 'M' + (x + r) + ' ' + y + 'H' + (x + w - r) + 'A' + r + ' ' + r + ' 0 0 1 ' + (x + w) + ' ' + (y + r);
+  if (side === 'r'){
+    const by = y + h * at - tw / 2;
+    d += 'V' + by + 'L' + (x + w + th) + ' ' + (by + tw / 2 + lean) + 'L' + (x + w) + ' ' + (by + tw);
+  }
+  d += 'V' + (y + h - r) + 'A' + r + ' ' + r + ' 0 0 1 ' + (x + w - r) + ' ' + (y + h);
+  if (side === 'b'){
+    const bx = x + w * at - tw / 2;
+    d += 'H' + (bx + tw) + 'L' + (bx + tw / 2 + lean) + ' ' + (y + h + th) + 'L' + bx + ' ' + (y + h);
+  }
+  d += 'H' + (x + r) + 'A' + r + ' ' + r + ' 0 0 1 ' + x + ' ' + (y + h - r);
+  if (side === 'l'){
+    const by = y + h * at - tw / 2;
+    d += 'V' + (by + tw) + 'L' + (x - th) + ' ' + (by + tw / 2 + lean) + 'L' + x + ' ' + by;
+  }
+  d += 'V' + (y + r) + 'A' + r + ' ' + r + ' 0 0 1 ' + (x + r) + ' ' + y + 'Z';
+  zN(g, 'path', { d: d, cls: 'zb-body' });
+  return g;
+}
+
+/* speech with no words in it — reads the same in either language */
+function zWaves(p, x, y, widths, a, step){
+  const g = zG(p, a);
+  widths.forEach((w, i) => {
+    let d = 'M' + x + ' ' + (y + i * (step || 18));
+    for (let k = 0; k < Math.floor(w / 16); k++) d += (k ? 't16 0' : 'q8 -6 16 0');
+    zN(g, 'path', { d: d, pathLength: 1, cls: 'zwave-l draw', in: a && a.in, delay: ((a && a.d0) || 0) + i * 260 });
+  });
+  return g;
+}
+
+/* the five marks a voice is drawn with in the pattern pictures */
+function zShape(p, kind, x, y, s, a){
+  const h = s / 2;
+  let n;
+  if (kind === 'circle')   n = zN(p, 'circle', { cx: x, cy: y, r: h * .92 });
+  if (kind === 'triangle') n = zN(p, 'path', { d: 'M' + x + ' ' + (y - h) + 'L' + (x + h) + ' ' + (y + h * .8) + 'L' + (x - h) + ' ' + (y + h * .8) + 'Z' });
+  if (kind === 'square')   n = zN(p, 'rect', { x: x - h * .82, y: y - h * .82, width: h * 1.64, height: h * 1.64, rx: 3 });
+  if (kind === 'diamond')  n = zN(p, 'path', { d: 'M' + x + ' ' + (y - h) + 'L' + (x + h) + ' ' + y + 'L' + x + ' ' + (y + h) + 'L' + (x - h) + ' ' + y + 'Z' });
+  if (kind === 'plus')     n = zN(p, 'path', { d: 'M' + (x - h * .3) + ' ' + (y - h) + 'h' + (h * .6) + 'v' + (h * .7) + 'h' + (h * .7) + 'v' + (h * .6) + 'h' + (-h * .7) + 'v' + (h * .7) + 'h' + (-h * .6) + 'v' + (-h * .7) + 'h' + (-h * .7) + 'v' + (-h * .6) + 'h' + (h * .7) + 'Z' });
+  a = a || {};
+  n.setAttribute('class', 'zsh ' + (a.cls || ''));
+  if (a.style) n.setAttribute('style', a.style);
+  if (a.delay) n.style.transitionDelay = a.delay + 'ms';
+  ['in', 'out', 'now', 'at'].forEach(k => { if (a[k] != null) n.setAttribute('data-' + k, String(a[k])); });
+  return n;
+}
+
+const zTick = (p, x, y, s, a) => zN(p, 'path', Object.assign({ d: 'M' + (x - s * .45) + ' ' + y + 'l' + (s * .32) + ' ' + (s * .32) + ' ' + (s * .58) + ' ' + (-s * .66), cls: 'ztick' }, a || {}));
+const zCross = (p, x, y, s, a) => zN(p, 'path', Object.assign({ d: 'M' + (x - s / 2) + ' ' + (y - s / 2) + 'l' + s + ' ' + s + 'M' + (x + s / 2) + ' ' + (y - s / 2) + 'l' + (-s) + ' ' + s, cls: 'zcross' }, a || {}));
+/* an arrowhead at (x, y) pointing along angle a (radians) */
+const zHead = (p, x, y, ang, s, a) => zN(p, 'path', Object.assign({
+  d: 'M' + (x - s * Math.cos(ang - .5)) + ' ' + (y - s * Math.sin(ang - .5)) + 'L' + x + ' ' + y +
+     'L' + (x - s * Math.cos(ang + .5)) + ' ' + (y - s * Math.sin(ang + .5)), cls: 'zarrow-h' }, a || {}));
+
+/* the four rings, drawn largest first so each ring's face sits on the one
+   outside it. Returns nothing; each ring is tagged by the caller's opts(i). */
+function zRings(p, cx, cy, RR, opts){
+  RINGS.forEach((R, i) => {
+    const o = opts(i) || {};
+    const g = zG(p, { cls: 'zring k-' + R.key + ' ' + (o.cls || ''), in: o.in, at: o.at, delay: o.delay });
+    zN(g, 'circle', { cx: cx, cy: cy, r: RR[i], cls: 'zring-face' });
+    if (o.label !== false){
+      const inner = RR[i + 1] || 0;
+      const fs = o.fs ? o.fs[i] : [20, 19, 17, 14][i];
+      const ly = i === 3 ? cy + fs * .36 : cy - (RR[i] + inner) / 2 + fs * .36;
+      zText(g, cx, ly, R.name.toUpperCase(), RING_BN[R.key][0],
+            { size: fs, tcls: 'zt-name zt-k', lift: fs * .6, bnSize: fs * .8, gap: fs * 1.15 });
+    }
+  });
+}
+
+/* the three values the ranking panel is built on, with the house's own words
+   for them so the lesson and the printed sheet never disagree */
+const VAL = {
+  truth:   [RANKINGS.west[0], RANKINGS_BN.west[0], 'ask'],
+  comfort: [RANKINGS.west[1], RANKINGS_BN.west[1], 'heart'],
+  elder:   [RANKINGS.west[2], RANKINGS_BN.west[2], 'elder']
+};
+const VAL_NEUTRAL = ['comfort', 'truth', 'elder'];
+const VAL_ORDER = { west: ['truth', 'comfort', 'elder'], east: ['elder', 'comfort', 'truth'] };
+
+/* the activity's own five steps, as they appear on the rail */
+const RAIL_BN = { Watch: 'দেখুন', Ask: 'জিজ্ঞেস', Listen: 'শুনুন', Check: 'মিলিয়ে দেখুন', Map: 'মানচিত্র' };
+
+const LESSON = [
+  /* 1 · four rings, drawn from the outside in, each one tied back to the
+     people who share its answer */
+  { rail: 'Culture', ico: 'target', kicker: 'What Is Culture?',
+    title: 'Four rings, from the outside in',
+    body: 'A culture is a group of people who answer four questions the same way. ' +
+          'What is done. What is good or best. What is true. What is real. ' +
+          'Only the first one can be seen.',
+    beats: [
+      ['A culture is a group of people…', 'সংস্কৃতি মানে একদল মানুষ…'],
+      ['…who answer four questions the same way.', '…যাঁরা চারটি প্রশ্নের উত্তর একইভাবে দেন।'],
+      ['What is done? That is behaviour.', 'কী করা হয়? এটি আচরণ।'],
+      ['What is good, or best? Those are values.', 'কোনটি ভালো, বা সবচেয়ে ভালো? এগুলো মূল্যবোধ।'],
+      ['What is true? Those are beliefs.', 'কোনটি সত্য? এগুলো বিশ্বাস।'],
+      ['What is real? That is the worldview, at the centre.', 'কোনটি বাস্তব? এটি বিশ্বদৃষ্টি — একেবারে কেন্দ্রে।'],
+      ['Only the outside ring can be seen.', 'এর মধ্যে কেবল বাইরের বৃত্তটিই চোখে দেখা যায়।']
+    ],
+    draw(s){
+      const cx = 480, cy = 282, RR = [232, 174, 118, 62];
+      /* the group, each with the same four answers over their heads. It stands
+         alone in the middle first, and steps aside when the rings arrive. */
+      const grp = zG(s, { cls: 'zgroup', at: '2:home' });
+      [[62, 242], [127, 242], [192, 242], [94, 332], [159, 332]].forEach((q, i) => {
+        const g = zG(grp, { in: 0, delay: i * 90, cls: 'rise' });
+        zPerson(g, q[0], q[1], 66);
+        const by = headTop(q[1], 66) - 16;
+        RINGS.forEach((R, j) => zN(g, 'rect', { x: q[0] - 21 + j * 11, y: by, width: 9, height: 9, rx: 2,
+          cls: 'zdot k-' + R.key, in: 1, delay: 250 + i * 80 + j * 40, now: String(j + 2) }));
+      });
+      zRings(s, cx, cy, RR, i => ({ cls: 'grow', in: i + 2, at: i ? '6:dim' : null }));
+      /* each ring's question, out to the side */
+      const LY = [58, 146, 234, 322], rMid = [203, 146, 90, 31], ang = -Math.PI / 6;
+      RINGS.forEach((R, i) => {
+        const g = zG(s, { cls: 'k-' + R.key });
+        const px = cx + rMid[i] * Math.cos(ang), py = cy + rMid[i] * Math.sin(ang);
+        zN(g, 'path', { d: 'M' + px + ' ' + py + 'L742 ' + (LY[i] + 10), pathLength: 1, cls: 'zlead draw', in: i + 2, delay: 300 });
+        zN(g, 'circle', { cx: px, cy: py, r: 4.5, cls: 'zlead-dot', in: i + 2, delay: 300 });
+        const lg = zG(g, { in: i + 2, delay: 650, cls: 'rise' });
+        zIcon(lg, LAYER_ICON[R.key], 748, LY[i] - 7, 24, { cls: 'zic-k' });
+        zN(lg, 'text', { x: 780, y: LY[i] + 12, cls: 'zt zt-name zt-k', style: 'font-size:19px', text: R.name.toUpperCase() });
+        zN(lg, 'text', { x: 748, y: LY[i] + 38, cls: 'zt zt-q', style: 'font-size:18px', text: R.q });
+        if (bnOn) zN(lg, 'text', { x: 748, y: LY[i] + 62, lang: 'bn', cls: 'zt zt-bn', style: 'font-size:15px', text: RING_BN[R.key][1] });
+      });
+      /* the one ring an eye can reach */
+      const eg = zG(s, { in: 6, cls: 'k-behavior' });
+      zIcon(eg, 'eye', 196, 40, 50, { cls: 'zic-k' });
+      zN(eg, 'path', { d: 'M250 74L334 136', cls: 'zsight' });
+      zText(eg, 30, 66, 'you can see this', 'এটি চোখে দেখা যায়', { anchor: 'start', size: 18, tcls: 'zt-strong zt-k', lift: 8 });
+    } },
+
+  /* 2 · the load-bearing panel: the same three cards, dealt to two offices,
+     change places — and the same meeting plays out two ways because of it */
+  { rail: 'Ranking', ico: 'rank', kicker: 'No Culture Is Better',
+    title: 'The same values, in a different order',
+    body: 'Every culture has all of these. No culture throws one away. ' +
+          'What changes is which one goes first — and that order is where different behaviour comes from.',
+    beats: [
+      ['Three good things. Every culture has all three.', 'তিনটি ভালো জিনিস। প্রতিটি সংস্কৃতিতেই তিনটিই আছে।'],
+      ['Two offices. Both keep all three.', 'দুটি অফিস। দুটিতেই তিনটিই আছে।'],
+      ['A Western office puts the truth first.', 'পশ্চিমা অফিস সত্যি কথাটাকে আগে রাখে।'],
+      ['A Rajshahi office puts the older person first.', 'রাজশাহীর অফিস বড়জনকে আগে রাখে।'],
+      ['The same meeting. The boss’s plan has a mistake.', 'একই মিটিং। বসের পরিকল্পনায় একটি ভুল আছে।'],
+      ['Here, the junior says so — in the meeting.', 'এখানে জুনিয়র সেটি বলে দেন — মিটিংয়েই।'],
+      ['Here, the junior stays quiet in the meeting…', 'এখানে জুনিয়র মিটিংয়ে চুপ থাকেন…'],
+      ['…and tells the boss afterwards, alone.', '…আর পরে বসকে একা বলেন।'],
+      ['A different order, different behaviour. Neither list is wrong.', 'ক্রম আলাদা, তাই আচরণও আলাদা। কোনো তালিকাই ভুল নয়।']
+    ],
+    draw(s){
+      const SL = [80, 146, 212], COL = { west: [40, 2, 5], east: [520, 3, 6] };
+      Object.keys(COL).forEach(side => {
+        const x0 = COL[side][0], b = COL[side][1];
+        const g = zG(s, { cls: 'k-' + side });
+        zText(g, x0 + 200, 36, t(side === 'west' ? 'ui_west_off' : 'ui_east_off').toUpperCase(),
+              tb(side === 'west' ? 'ui_west_off' : 'ui_east_off'),
+              { size: 18, tcls: 'zt-name zt-k', in: 1, delay: 300, lift: 10, gap: 21 });
+        zN(g, 'rect', { x: x0 + 34, y: SL[0] - 6, width: 372, height: 68, rx: 13, cls: 'ztop', in: b, delay: 800 });
+        [0, 1, 2].forEach(j => zN(g, 'text', { x: x0 + 14, y: SL[j] + 37, 'text-anchor': 'middle',
+          cls: 'zt zt-n zt-k', style: 'font-size:24px', text: String(j + 1), in: b, delay: 150 + j * 90 }));
+        /* both are right: a quiet tick at the end */
+        const tk = zG(g, { in: 8, delay: side === 'west' ? 900 : 1100 });
+        zN(tk, 'circle', { cx: x0 + 372, cy: 30, r: 16, cls: 'zok' });
+        zTick(tk, x0 + 372, 30, 16, { cls: 'zok-t' });
+      });
+      /* six cards, drawn in the neutral order at the centre; onBeat deals them */
+      ['east', 'west'].forEach(side => VAL_NEUTRAL.forEach((key, i) => {
+        const y = SL[i];
+        const g = zG(s, { cls: 'zcard zmove k-' + side, in: 0, delay: i * 120, at: '1:split' });
+        g.dataset.side = side; g.dataset.key = key;
+        zN(g, 'rect', { x: 300, y: y, width: 360, height: 56, rx: 10, cls: 'zcard-face' });
+        zIcon(g, VAL[key][2], 314, y + 14, 28, { cls: 'zic-card' });
+        zN(g, 'text', { x: 352, y: bnOn ? y + 25 : y + 35, cls: 'zt zt-card', style: 'font-size:17px', text: VAL[key][0] });
+        if (bnOn) zN(g, 'text', { x: 354, y: y + 46, lang: 'bn', cls: 'zt zt-bn', style: 'font-size:14px', text: VAL[key][1] });
+      }));
+      /* the same meeting in both rooms */
+      Object.keys(COL).forEach(side => {
+        const x0 = COL[side][0], say = COL[side][2];
+        const room = zG(s, { in: 4, delay: side === 'west' ? 0 : 250, cls: 'rise' });
+        zN(room, 'line', { x1: x0 + 10, y1: 522, x2: x0 + 400, y2: 522, cls: 'zfloor' });
+        zPerson(room, x0 + 62, 520, 120, { cls: 'zp-boss' });
+        /* the plan on its easel, with the mistake in it */
+        const ch = zG(room, side === 'east' ? { at: '7:gone2' } : null);
+        zN(ch, 'path', { d: 'M' + (x0 + 136) + ' 432L' + (x0 + 124) + ' 520M' + (x0 + 214) + ' 432L' + (x0 + 226) + ' 520', cls: 'zeasel' });
+        zN(ch, 'rect', { x: x0 + 110, y: 330, width: 130, height: 102, rx: 4, cls: 'zboard' });
+        [[124, 34], [152, 56], [180, 76]].forEach(bar => zN(ch, 'rect', { x: x0 + bar[0], y: 418 - bar[1], width: 20, height: bar[1], rx: 2, cls: 'zbar' }));
+        zCross(ch, x0 + 220, 352, 22, { cls: 'zcross zmist', now: '4' });
+        /* the junior — who in Rajshahi walks over to the boss afterwards */
+        const jr = zG(room, side === 'east' ? { cls: 'zmove', at: '7:toboss' } : null);
+        zPerson(jr, x0 + 330, 520, 96);
+        if (side === 'west'){
+          zArm(jr, x0 + 330, 520, 96, { in: say });
+          const bb = zBubble(jr, x0 + 248, 318, 150, 76, 'b', .72, { in: say, delay: 250, cls: 'zb-say' });
+          [[268, 20], [290, 32], [312, 44]].forEach(bar => zN(bb, 'rect', { x: x0 + bar[0], y: 376 - bar[1], width: 16, height: bar[1], rx: 2, cls: 'zbar' }));
+          zCross(bb, x0 + 360, 350, 24, { cls: 'zcross' });
+        } else {
+          const q = zBubble(jr, x0 + 300, 352, 90, 46, 'b', .42, { in: say, out: 7, cls: 'zb-quiet' });
+          [0, 1, 2].forEach(k => zN(q, 'circle', { cx: x0 + 326 + k * 19, cy: 375, r: 4.5, cls: 'zdots' }));
+          const later = zBubble(jr, x0 + 250, 318, 150, 76, 'b', .55, { in: 7, delay: 700, cls: 'zb-say' });
+          [[270, 20], [292, 32], [314, 44]].forEach(bar => zN(later, 'rect', { x: x0 + bar[0], y: 376 - bar[1], width: 16, height: bar[1], rx: 2, cls: 'zbar' }));
+          zCross(later, x0 + 362, 350, 24, { cls: 'zcross' });
+          const clk = zG(room, { in: 7, delay: 300 });
+          zIcon(clk, 'clock', x0 + 300, 400, 40, { cls: 'zic-muted' });
+          zText(clk, x0 + 320, 466, 'later, alone', 'পরে, একা', { size: 20, tcls: 'zt-q', gap: 22 });
+        }
+        /* the ranking above reaches down into the room */
+        const ar = zG(s, { cls: 'k-' + side, in: 8 });
+        zN(ar, 'path', { d: 'M' + (x0 + 34) + ' ' + (SL[0] + 50) + 'C' + (x0 - 16) + ' ' + (SL[0] + 110) + ' ' + (x0 - 20) + ' 270 ' + (x0 + 20) + ' 318',
+                         pathLength: 1, cls: 'zarrow draw', in: 8, delay: side === 'west' ? 0 : 200 });
+        zHead(ar, x0 + 20, 318, 0.9, 12, { cls: 'zarrow-h', in: 8, delay: side === 'west' ? 700 : 900 });
+      });
+    },
+    onBeat(k, root){
+      root.querySelectorAll('.zcard').forEach(g => {
+        const side = g.dataset.side, key = g.dataset.key;
+        const from = VAL_NEUTRAL.indexOf(key);
+        const moved = side === 'west' ? k >= 2 : k >= 3;
+        const to = moved ? VAL_ORDER[side].indexOf(key) : from;
+        const dx = k >= 1 ? (side === 'west' ? -220 : 260) : 0;
+        g.style.transform = 'translate(' + dx + 'px,' + ((to - from) * 66) + 'px)';
+        /* the card moving up passes in front of the one moving down */
+        g.classList.toggle('rising', to < from);
+      });
+    } },
+
+  /* 3 · the cause runs outward from the centre; the student's work runs in */
+  { rail: 'Order', ico: 'glasses', kicker: 'Where the Order Comes From',
+    title: 'The centre decides the edge',
+    body: 'A culture ranks its values the way it does because of what it holds to be true. ' +
+          'And it holds those things true because of how it sees the world — the glasses nobody ever takes off.',
+    beats: [
+      ['Start at the centre: how the world is.', 'শুরু কেন্দ্র থেকে: জগৎটা যেমন।'],
+      ['So some things are true.', 'তাই কিছু জিনিস সত্য বলে মনে হয়।'],
+      ['So some things are best.', 'তাই কিছু জিনিস সবচেয়ে ভালো বলে মনে হয়।'],
+      ['So this is what people do.', 'তাই মানুষ এভাবে কাজ করে।'],
+      ['The worldview is the glasses nobody takes off.', 'বিশ্বদৃষ্টি হলো সেই চশমা, যা কেউ কখনো খোলে না।'],
+      ['You will walk it backwards: from what people do, inward.', 'আপনি হাঁটবেন উল্টো দিকে: মানুষ যা করে, সেখান থেকে ভেতরের দিকে।']
+    ],
+    draw(s){
+      const cx = 250, cy = 282, RR = [228, 170, 114, 58];
+      const LIT = [3, 2, 1, 0];                         /* behaviour lights last */
+      zRings(s, cx, cy, RR, i => ({ cls: 'faint', in: 0, at: LIT[i] + ':lit' }));
+      RINGS.forEach((R, i) => zN(s, 'circle', { cx: cx, cy: cy, r: RR[i], cls: 'rip k-' + R.key, now: String(LIT[i]) }));
+      /* the chain, top to bottom in the order the cause runs */
+      const SUB = ['how the world is', 'what is therefore true', 'what is therefore best', 'what is therefore done'];
+      const RY = [22, 138, 254, 370];
+      [3, 2, 1, 0].forEach((ri, row) => {
+        const R = RINGS[ri], y = RY[row];
+        const g = zG(s, { cls: 'rise k-' + R.key, in: row, delay: 450, at: row === 0 ? '4-5:hi' : null });
+        zN(g, 'rect', { x: 556, y: y, width: 384, height: 96, rx: 10, cls: 'zrow' });
+        zIcon(g, LAYER_ICON[R.key], 574, y + 16, 24, { cls: 'zic-k' });
+        zN(g, 'text', { x: 608, y: y + 35, cls: 'zt zt-name zt-k', style: 'font-size:18px', text: R.name.toUpperCase() });
+        zN(g, 'text', { x: 574, y: y + 64, cls: 'zt zt-q', style: 'font-size:19px', text: SUB[row] });
+        if (bnOn) zN(g, 'text', { x: 574, y: y + 87, lang: 'bn', cls: 'zt zt-bn', style: 'font-size:15px', text: CHAIN_BN[row] });
+        if (row){
+          zN(s, 'path', { d: 'M748 ' + (RY[row - 1] + 98) + 'V' + (y - 3), cls: 'zlink', in: row, delay: 250 });
+          zHead(s, 748, y - 3, Math.PI / 2, 8, { cls: 'zlink-h', in: row, delay: 250 });
+        }
+      });
+      /* the glasses: every ring is seen through them */
+      zN(s, 'circle', { cx: cx, cy: cy, r: RR[0], cls: 'ztint', in: 4, out: 5 });
+      const gl = zG(s, { cls: 'grow', in: 4, out: 5 });
+      zN(gl, 'circle', { cx: cx - 64, cy: cy, r: 54, cls: 'zlens' });
+      zN(gl, 'circle', { cx: cx + 64, cy: cy, r: 54, cls: 'zlens' });
+      zN(gl, 'path', { d: 'M' + (cx - 12) + ' ' + (cy - 6) + 'q12 -12 24 0M' + (cx - 118) + ' ' + (cy - 6) + 'L' + (cx - 160) + ' ' + (cy - 40) + 'M' + (cx + 118) + ' ' + (cy - 6) + 'L' + (cx + 160) + ' ' + (cy - 40), cls: 'zframe' });
+      /* your way in, against the current */
+      const w = zG(s, { in: 5, cls: 'k-behavior' });
+      zIcon(w, 'eye', 8, 16, 44, { cls: 'zic-k' });
+      zN(w, 'path', { d: 'M52 58L' + (cx - 16) + ' ' + (cy - 18), cls: 'zway' });
+      zHead(w, cx - 16, cy - 18, Math.atan2(cy - 76, cx - 68), 14, { cls: 'zway-h' });
+      zN(w, 'path', { d: 'M532 460V40', cls: 'zway' });
+      zHead(w, 532, 40, -Math.PI / 2, 14, { cls: 'zway-h' });
+    } },
+
+  /* 4 · a crowd reduced to ticks, beside three people talking */
+  { rail: 'Not a survey', ico: 'ask', kicker: 'What An Interview Is',
+    title: 'A survey counts. An interview explains.',
+    body: 'A survey reaches many people and asks each of them for a tick. An ethnographic interview ' +
+          'reaches a few people and asks them to explain, in their own words, something they have ' +
+          'never had to put into words before.',
+    beats: [
+      ['A survey asks many people…', 'জরিপ অনেক মানুষকে প্রশ্ন করে…'],
+      ['…for one tick each. It counts.', '…প্রত্যেকের কাছে একটি করে টিক চায়। এটি গোনে।'],
+      ['An interview asks a few people…', 'সাক্ষাৎকার অল্প কয়েকজনকে প্রশ্ন করে…'],
+      ['…to explain, in their own words.', '…আর তাঁদের নিজের ভাষায় বুঝিয়ে বলতে বলে।'],
+      ['A survey tells you what. An interview tells you why.', 'জরিপ বলে কী। সাক্ষাৎকার বলে কেন।']
+    ],
+    draw(s){
+      zN(s, 'line', { x1: 480, y1: 16, x2: 480, y2: 544, cls: 'zdiv' });
+      zText(s, 240, 34, 'A SURVEY', 'জরিপ', { size: 18, tcls: 'zt-name', in: 0, lift: 8, gap: 21 });
+      zText(s, 720, 34, 'AN INTERVIEW', 'সাক্ষাৎকার', { size: 18, tcls: 'zt-name zt-teal', in: 2, lift: 8, gap: 21 });
+      for (let r = 0; r < 5; r++) for (let c = 0; c < 7; c++){
+        const x = 72 + c * 56, y = 112 + r * 44, i = r * 7 + c;
+        zPerson(s, x, y, 36, { in: 0, delay: i * 16, cls: 'rise' });
+        zTick(s, x + 15, headTop(y, 36) - 1, 11, { cls: 'ztick zt-small', in: 1, delay: i * 22 });
+      }
+      const sh = zG(s, { in: 1, delay: 700 });
+      zN(sh, 'rect', { x: 80, y: 330, width: 320, height: 140, rx: 6, cls: 'zsheet' });
+      zN(sh, 'rect', { x: 96, y: 360, width: 28, height: 28, rx: 4, cls: 'ztickbox' });
+      zTick(sh, 110, 376, 16, { cls: 'ztick' });
+      zN(sh, 'rect', { x: 96, y: 412, width: 28, height: 28, rx: 4, cls: 'ztickbox' });
+      zCross(sh, 110, 426, 13, { cls: 'zcross zcross-muted' });
+      zN(s, 'rect', { x: 138, y: 362, width: 238, height: 24, rx: 4, cls: 'zbar-yes growx', in: 1, delay: 1200 });
+      zN(s, 'rect', { x: 138, y: 414, width: 96, height: 24, rx: 4, cls: 'zbar-no growx', in: 1, delay: 1350 });
+      [175, 315, 455].forEach((y, i) => {
+        zPerson(s, 548, y, 92, { in: 2, delay: i * 220, cls: 'rise zp-teal' });
+        zBubble(s, 614, y - 104, 316, 76, 'l', .62, { in: 2, delay: 200 + i * 220, cls: 'zb-teal' });
+        zWaves(s, 640, y - 81, [[256, 208, 240][i], [176, 232, 144][i]], { in: 3, d0: i * 420 }, 26);
+      });
+      zText(s, 240, 514, 'WHAT?', 'কী?', { size: 34, tcls: 'zt-big', in: 4, lift: 10, gap: 36, bnSize: 22 });
+      zText(s, 720, 514, 'WHY?', 'কেন?', { size: 34, tcls: 'zt-big zt-teal', in: 4, delay: 500, lift: 10, gap: 36, bnSize: 22 });
+    } },
+
+  /* 5 · sight stops at the edge; a question goes all the way in */
+  { rail: 'Unseen', ico: 'glasses', kicker: 'Why Anthropologists Use It',
+    title: 'It reaches what you cannot see',
+    body: 'Anthropologists and sociologists use this method because only the outside ring can be ' +
+          'observed. Values, beliefs and worldview leave no trace you can photograph — they have to ' +
+          'be asked for, and then checked against other people.',
+    beats: [
+      ['Four rings. How much of them can you see?', 'চারটি বৃত্ত। এর কতটুকু আপনি দেখতে পান?'],
+      ['Your eyes stop at the outside ring.', 'আপনার চোখ বাইরের বৃত্তেই থেমে যায়।'],
+      ['A camera stops there too. No photo shows a value.', 'ক্যামেরাও ওখানেই থামে। কোনো ছবিতে মূল্যবোধ ধরা পড়ে না।'],
+      ['A question can go all the way in.', 'একটি প্রশ্ন একেবারে ভেতর পর্যন্ত যেতে পারে।'],
+      ['Then you check the answer with other people.', 'তারপর উত্তরটি অন্য মানুষের কথার সঙ্গে মিলিয়ে দেখেন।']
+    ],
+    draw(s){
+      const cx = 480, cy = 290, RR = [215, 160, 108, 56];
+      zRings(s, cx, cy, RR, i => ({ in: 0, cls: 'grow', at: i === 0 ? '1:lit2' : null }));
+      /* the fog over what cannot be seen, lifted ring by ring */
+      [[1, 300], [2, 800], [3, 1300]].forEach(f => {
+        const i = f[0], g = zG(s, { cls: 'zfog', in: 0, out: 3, delay: f[1] });
+        zN(g, 'circle', { cx: cx, cy: cy, r: RR[i] });
+        const inner = RR[i + 1] || 0;
+        zN(g, 'text', { x: cx, y: (i === 3 ? cy : cy - (RR[i] + inner) / 2) + 10, 'text-anchor': 'middle', cls: 'zt zt-fogq', text: '?' });
+      });
+      /* the eye */
+      const e = zG(s, { in: 0, cls: 'k-behavior' });
+      zIcon(e, 'eye', 40, 260, 60, { cls: 'zic-k' });
+      zN(s, 'path', { d: 'M106 290L262 290', pathLength: 1, cls: 'zray draw', in: 1 });
+      zN(s, 'circle', { cx: 265, cy: 290, r: 10, cls: 'zhit', in: 1, delay: 700, now: '1' });
+      /* the camera, and the photograph it takes */
+      const cam = zG(s, { in: 2 });
+      zIcon(cam, 'camera', 40, 70, 70, { cls: 'zic-muted' });
+      zN(cam, 'circle', { cx: 75, cy: 107, r: 44, cls: 'zflash', now: '2' });
+      const ph = zG(s, { in: 2, delay: 700, cls: 'rise' });
+      zN(ph, 'rect', { x: 30, y: 378, width: 150, height: 162, rx: 4, cls: 'zphoto' });
+      zN(ph, 'circle', { cx: 105, cy: 448, r: 54, cls: 'zphoto-ring' });
+      zN(ph, 'circle', { cx: 105, cy: 448, r: 40, cls: 'zphoto-fog' });
+      zN(ph, 'text', { x: 105, y: 458, 'text-anchor': 'middle', cls: 'zt zt-fogq', style: 'font-size:26px', text: '?' });
+      /* the question */
+      const q = zG(s, { in: 3 });
+      zBubble(q, 800, 60, 110, 74, 'b', .25, { cls: 'zb-teal' });
+      zN(q, 'text', { x: 855, y: 112, 'text-anchor': 'middle', cls: 'zt zt-big zt-teal', style: 'font-size:44px', text: '?' });
+      zN(s, 'path', { d: 'M826 158Q660 150 ' + (cx + 40) + ' ' + (cy - 40), pathLength: 1, cls: 'zqpath draw', in: 3, delay: 250 });
+      zN(s, 'circle', { cx: cx + 40, cy: cy - 40, r: 9, cls: 'zcore', in: 3, delay: 1500 });
+      /* and the people it is checked against */
+      [790, 852, 914].forEach((x, i) => {
+        zPerson(s, x, 530, 62, { in: 4, delay: i * 200, cls: 'rise zp-teal' });
+        const tk = zG(s, { in: 4, delay: 600 + i * 250 });
+        zN(tk, 'circle', { cx: x, cy: 438, r: 15, cls: 'zok' });
+        zTick(tk, x, 438, 15, { cls: 'zok-t' });
+      });
+      zN(s, 'path', { d: 'M770 440Q690 420 ' + (cx + 60) + ' ' + (cy + 52), cls: 'zway zway-teal', in: 4, delay: 1300 });
+    } },
+
+  /* 6 · three voices collapse into one pattern; then the five steps */
+  { rail: 'The work', ico: 'target', kicker: 'How The Work Is Done',
+    title: 'One person is a story. Three are a pattern.',
+    body: 'Notice something, ask about it, listen, compare what different people say, and only then ' +
+          'name what is underneath. That is the method — and it is exactly the five steps you are ' +
+          'about to work through.',
+    beats: [
+      ['One person is a story.', 'একজন মানুষ মানে একটি গল্প।'],
+      ['Now listen to three people.', 'এবার তিনজন মানুষের কথা শুনুন।'],
+      ['What all three say is a pattern. That is the culture.', 'তিনজনই যা বলেন, সেটি একটি ধারা। সেটিই সংস্কৃতি।'],
+      ['What only one says is just that person.', 'কেবল একজন যা বলেন, সেটি শুধু তাঁর নিজের কথা।'],
+      ['Five steps: watch, ask, listen, check, map.', 'পাঁচটি ধাপ: দেখুন, জিজ্ঞেস করুন, শুনুন, মিলিয়ে দেখুন, মানচিত্র আঁকুন।']
+    ],
+    draw(s){
+      const PX = [170, 480, 790], OWN = ['square', 'plus', 'diamond'];
+      const TARGET = { circle: [450, 276], triangle: [510, 276] };
+      zN(s, 'rect', { x: 370, y: 238, width: 220, height: 76, rx: 12, cls: 'zpattern', in: 2, delay: 100 });
+      PX.forEach((x, i) => {
+        const b = i ? 1 : 0, d = i ? (i - 1) * 260 : 0;
+        zPerson(s, x, 215, 96, { in: b, delay: d, cls: 'rise' });
+        zBubble(s, x - 105, 20, 210, 80, 'b', .5, { in: b, delay: d + 150 });
+        zShape(s, 'circle', x - 60, 60, 34, { cls: 'zsh-shared', in: b, delay: d + 350, at: '2:hi' });
+        zShape(s, 'triangle', x, 62, 34, { cls: 'zsh-shared', in: b, delay: d + 450, at: '2:hi' });
+        zShape(s, OWN[i], x + 60, 60, 32, { cls: 'zsh-own', in: b, delay: d + 550, at: '3:lo', now: '3' });
+        /* copies that travel down into the pattern */
+        [['circle', x - 60, 60], ['triangle', x, 62]].forEach(c => {
+          const tg = TARGET[c[0]];
+          zShape(s, c[0], tg[0], tg[1], 34, { cls: 'zsh-shared hi fly', in: 2, delay: 300 + i * 120,
+            style: 'transform:translate(' + (c[1] - tg[0]) + 'px,' + (c[2] - tg[1]) + 'px)' });
+        });
+      });
+      zText(s, 480, 344, t('ui_allsaid'), tb('ui_allsaid'), { size: 18, tcls: 'zt-strong zt-teal', in: 2, delay: 900, gap: 22 });
+      /* the rail the class is about to walk */
+      const S = STEP_SET.full, XS = [110, 295, 480, 665, 850];
+      S.forEach((st, i) => {
+        const g = zG(s, { in: 4, delay: i * 240, cls: 'rise' });
+        zN(g, 'circle', { cx: XS[i], cy: 444, r: 36, cls: 'zstep' });
+        zIcon(g, st[1], XS[i] - 17, 427, 34, { cls: 'zic-step' });
+        zText(g, XS[i], 506, st[0].toUpperCase(), RAIL_BN[st[0]], { size: 18, tcls: 'zt-name', gap: 22 });
+        if (i){
+          zN(s, 'path', { d: 'M' + (XS[i - 1] + 44) + ' 444H' + (XS[i] - 46), cls: 'zlink', in: 4, delay: i * 240 - 100 });
+          zHead(s, XS[i] - 46, 444, 0, 8, { cls: 'zlink-h', in: 4, delay: i * 240 - 100 });
+        }
+      });
+    } },
+
+  /* 7 · one conversation, two harvests */
+  { rail: 'Why', ico: 'ask', kicker: 'Why Interview Anyone?',
+    title: 'You learn the culture and the language in the same hour',
+    body: 'The same conversation that shows you what somebody values is also real listening practice ' +
+          'at natural speed — the idioms, the hesitations and the repairs that no textbook records.',
+    beats: [
+      ['One conversation…', 'একটি কথোপকথন…'],
+      ['…teaches you two things at once.', '…একসঙ্গে আপনাকে দুটি জিনিস শেখায়।'],
+      ['About them: what they do, and why.', 'তাঁদের সম্পর্কে: তাঁরা কী করেন, আর কেন।'],
+      ['In English: real speech, at real speed.', 'ইংরেজিতে: আসল কথা, আসল গতিতে।']
+    ],
+    draw(s){
+      zPerson(s, 410, 204, 104, { in: 0, cls: 'rise' });
+      zPerson(s, 556, 204, 104, { in: 0, delay: 150, cls: 'rise zp-teal' });
+      const q = zBubble(s, 262, 34, 100, 62, 'b', .78, { in: 0, delay: 300 });
+      zN(q, 'text', { x: 312, y: 78, 'text-anchor': 'middle', cls: 'zt zt-big', style: 'font-size:34px', text: '?' });
+      zBubble(s, 604, 18, 240, 86, 'b', .16, { in: 0, delay: 600, cls: 'zb-teal' }, -14);
+      zWaves(s, 628, 50, [192, 160], { in: 0, d0: 900 }, 26);
+      [[245, 'l'], [715, 'r']].forEach(a => {
+        zN(s, 'path', { d: 'M483 216Q' + ((483 + a[0]) / 2) + ' 222 ' + a[0] + ' 262', pathLength: 1, cls: 'zarrow draw', in: 1 });
+        zHead(s, a[0], 262, a[1] === 'l' ? 2.2 : .94, 12, { cls: 'zarrow-h', in: 1, delay: 700 });
+      });
+      const ITEMS = [['eye', 'rank', 'glasses'], ['ear', 'book', 'ask']];
+      [[20, 'About them', 'target', 2], [500, 'In English', 'ear', 3]].forEach((c, ci) => {
+        const x = c[0];
+        const g = zG(s, { in: 1, delay: 500, cls: 'rise' + (ci ? ' k-teal' : ' k-behavior') });
+        zN(g, 'rect', { x: x, y: 272, width: 440, height: 272, rx: 12, cls: 'zcol' });
+        zIcon(g, c[2], x + 20, 288, 26, { cls: 'zic-k' });
+        zText(g, x + 56, 306, c[1].toUpperCase(), PAYOFF_BN[ci][0], { anchor: 'start', size: 18, tcls: 'zt-name zt-k', gap: 22, bnSize: 15 });
+        [0, 1, 2].forEach(j => {
+          const y = 370 + j * 60;
+          const it = zG(s, { in: c[3], delay: j * 320, cls: 'rise' + (ci ? ' k-teal' : ' k-behavior') });
+          zIcon(it, ITEMS[ci][j], x + 20, y - 18, 24, { cls: 'zic-k' });
+          zText(it, x + 56, y, [['What they actually do, not what you assume', 'Which value they put first', 'Why a strange habit is obvious to them'],
+                                ['Real speech at natural speed', 'The idioms nobody puts in a textbook', 'Asking a question that opens somebody up']][ci][j],
+                PAYOFF_BN[ci][1][j], { anchor: 'start', size: 16, lift: 6, gap: 22, bnSize: 14 });
+        });
+      });
+    } },
+
+  /* 8 · the handover: what the class is about to do, and what to listen for */
+  { rail: 'Listen for', ico: 'ear', kicker: 'Now You Listen',
+    title: 'Three people, one question',
+    body: 'You will hear three people answer the same question. Listen for the thing all three of them ' +
+          'say — that is the culture. What only one of them says is just that person. You can hear each ' +
+          'person three times, and any underlined word can be tapped for its meaning.',
+    beats: [
+      ['One question. Three people answer it.', 'একটি প্রশ্ন। তিনজন মানুষ উত্তর দেন।'],
+      ['You can hear each person three times.', 'প্রত্যেকের কথা তিনবার শোনা যাবে।'],
+      ['Listen for what all three say. That is the culture.', 'খেয়াল করুন তিনজনই কী বলছেন। সেটিই সংস্কৃতি।'],
+      ['Tap any underlined word to see what it means.', 'দাগ দেওয়া যেকোনো শব্দে চাপ দিলে তার মানে দেখা যাবে।']
+    ],
+    draw(s){
+      const q = zBubble(s, 88, 14, 200, 64, 'b', .5, { in: 0 });
+      zN(q, 'text', { x: 188, y: 60, 'text-anchor': 'middle', cls: 'zt zt-big', style: 'font-size:38px', text: '?' });
+      [196, 330, 464].forEach((y, i) => {
+        zPerson(s, 110, y, 78, { in: 0, delay: 300 + i * 150, cls: 'rise zp-teal' });
+        zText(s, 110, y + 26, String(i + 1), null, { size: 17, tcls: 'zt-name zt-teal', in: 0, delay: 300 + i * 150 });
+        const sp = zG(s, { in: 0, delay: 500 + i * 150 });
+        zIcon(sp, 'ear', 164, y - 58, 40, { cls: 'zic-teal' });
+        zN(sp, 'path', { d: 'M212 ' + (y - 50) + 'a12 12 0 0 1 0 24', cls: 'zsound', now: '1', style: 'animation-delay:' + (i * 1.1) + 's' });
+        [0, 1, 2].forEach(j => {
+          zN(s, 'circle', { cx: 246 + j * 30, cy: y - 38, r: 9, cls: 'zlisten' });
+          zN(s, 'circle', { cx: 246 + j * 30, cy: y - 38, r: 9, cls: 'zlisten-on', in: 1, delay: (j * 3 + i) * 330 });
+        });
+      });
+      /* the pattern, as the page will draw it in step 3 */
+      const VC = [[700, 172], [640, 276], [760, 276]], OWN = [['square', 700, 104], ['plus', 584, 318], ['diamond', 816, 318]];
+      VC.forEach((c, i) => {
+        zN(s, 'circle', { cx: c[0], cy: c[1], r: 112, cls: 'zvenn grow', in: 2, delay: i * 180 });
+        zText(s, [700, 540, 860][i], [48, 380, 380][i], String(i + 1), null, { size: 17, tcls: 'zt-name zt-teal', in: 2, delay: i * 180 });
+        zShape(s, OWN[i][0], OWN[i][1], OWN[i][2], 28, { cls: 'zsh-own lo', in: 2, delay: 500 + i * 120 });
+      });
+      zN(s, 'circle', { cx: 700, cy: 242, r: 40, cls: 'zcentre', in: 2, delay: 700 });
+      zShape(s, 'circle', 684, 244, 24, { cls: 'zsh-shared hi', in: 2, delay: 900 });
+      zShape(s, 'triangle', 716, 246, 24, { cls: 'zsh-shared hi', in: 2, delay: 1000 });
+      zN(s, 'path', { d: 'M700 404V288', cls: 'zlink', in: 2, delay: 1100 });
+      zText(s, 700, 428, t('ui_allsaid'), tb('ui_allsaid'), { size: 19, tcls: 'zt-strong zt-teal', in: 2, delay: 1100, gap: 22, out: 3 });
+      /* a transcript line, and the word in it that opens */
+      const tl = zG(s, { in: 3, cls: 'rise' });
+      zN(tl, 'rect', { x: 380, y: 458, width: 372, height: 76, rx: 10, cls: 'zline' });
+      const tx = zN(tl, 'text', { x: 566, y: 504, 'text-anchor': 'middle', cls: 'zt zt-say', style: 'font-size:22px' });
+      ['“It’s not a ', 'big deal', ', you know.”'].forEach((part, i) => zN(tx, 'tspan', { cls: i === 1 ? 'zt-word' : null, text: part }));
+      zN(tl, 'line', { cls: 'zunder', x1: 0, y1: 0, x2: 0, y2: 0 });
+      zN(s, 'circle', { cls: 'rip rip-tap', cx: 0, cy: 0, r: 26, now: '3' });
+      const gl = zG(s, { in: 3, delay: 900, cls: 'rise' });
+      zBubble(gl, 776, 420, 180, 112, 'l', .74, { cls: 'zb-teal' });
+      zN(gl, 'text', { x: 792, y: 454, cls: 'zt zt-strong', style: 'font-size:21px', text: 'big deal' });
+      zN(gl, 'text', { x: 792, y: 482, cls: 'zt zt-q', style: 'font-size:18px', text: 'something important' });
+      if (bnOn) zN(gl, 'text', { x: 792, y: 510, lang: 'bn', cls: 'zt zt-bn', style: 'font-size:17px', text: 'গুরুত্বপূর্ণ কিছু' });
+    },
+    /* the underline and the tap have to sit exactly under the word, which is
+       only knowable once the text has been laid out in whatever face loaded */
+    mount(s){
+      const tx = s.querySelector('.zt-say');
+      if (!tx || !tx.getNumberOfChars) return;
+      try {
+        const a = tx.getStartPositionOfChar(12), b = tx.getEndPositionOfChar(19);
+        const u = s.querySelector('.zunder'), r = s.querySelector('.rip-tap');
+        u.setAttribute('x1', a.x); u.setAttribute('x2', b.x);
+        u.setAttribute('y1', a.y + 6); u.setAttribute('y2', a.y + 6);
+        r.setAttribute('cx', (a.x + b.x) / 2); r.setAttribute('cy', a.y - 6);
+      } catch (e) {}
+    } }
+];
+
+/* ------------------------------------------------------------ the engine */
+function paintBeat(instant, rev){
+  const root = scRoot;
+  if (!root || !scCur) return;
+  const k = lbeat;
+  root.classList.toggle('instant', !!instant);
+  root.classList.toggle('rev', !!rev);
+  root.querySelectorAll('[data-in]').forEach(n => n.classList.toggle('vis', k >= +n.getAttribute('data-in')));
+  root.querySelectorAll('[data-out]').forEach(n => n.classList.toggle('gone', k >= +n.getAttribute('data-out')));
+  root.querySelectorAll('[data-now]').forEach(n =>
+    n.classList.toggle('now', n.getAttribute('data-now').split(' ').indexOf(String(k)) >= 0));
+  root.querySelectorAll('[data-at]').forEach(n => {
+    const on = {};
+    n.getAttribute('data-at').split(' ').forEach(p => {
+      const m = p.match(/^(\d+)(?:-(\d+))?:(.+)$/);
+      if (!m) return;
+      on[m[3]] = on[m[3]] || (k >= +m[1] && (m[2] == null || k < +m[2]));
     });
-    box.appendChild(col);
+    Object.keys(on).forEach(c => n.classList.toggle(c, on[c]));
   });
-  const note = addBn(el('p', 'rank-note', t('ui_bothlists')), tb('ui_bothlists'));
-  const wrap = el('div');
-  wrap.appendChild(box); wrap.appendChild(note);
-  return wrap;
+  if (scCur.onBeat) scCur.onBeat(k, root);
+
+  const n = scCur.beats.length;
+  scBox.classList.toggle('is-end', k >= n - 1);
+  if (scCap){
+    scCap.innerHTML = '';
+    if (k >= 0){
+      const B = scCur.beats[k];
+      scCap.appendChild(el('p', 'zcap-en', B[0]));
+      scCap.appendChild(bn(B[1]));
+      scCap.classList.remove('swap');
+      void scCap.offsetWidth;
+      scCap.classList.add('swap');
+    }
+  }
+  if (scDots) [...scDots.children].forEach((d, i) => {
+    d.classList.toggle('on', i === k);
+    d.classList.toggle('done', i < k);
+    if (i === k) d.setAttribute('aria-current', 'step'); else d.removeAttribute('aria-current');
+  });
+  if (instant){
+    void root.getBoundingClientRect();
+    requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('instant')));
+  }
+  btnBack.disabled = (lstep === 0 && k <= 0);
+  syncNext();
 }
 
-/* worldview → beliefs → values → behaviour: the causal direction, which runs
-   outward, against the direction the student will travel to find it */
-function chainPicture(){
-  const box = el('div', 'chain');
-  const links = [
-    ['worldview', 'how the world is'],
-    ['belief',    'what is therefore true'],
-    ['value',     'what is therefore best'],
-    ['behavior',  'what is therefore done']
-  ];
-  links.forEach((L, i) => {
-    if (i) box.appendChild(el('span', 'chain-arrow', '→'));
-    const R = RINGS.find(x => x.key === L[0]);
-    const n = el('div', 'chain-link r-' + L[0]);
-    const h = el('span', 'chain-name');
-    h.appendChild(icon(LAYER_ICON[L[0]], 'chain-ico'));
-    h.appendChild(document.createTextNode(R.name));
-    n.appendChild(h);
-    n.appendChild(el('span', 'chain-sub', L[1]));
-    n.appendChild(bn(CHAIN_BN[i]));
-    box.appendChild(n);
-  });
-  const w = el('div');
-  w.appendChild(box);
-  w.appendChild(el('p', 'rank-note',
-    'You will walk this backwards: start at the behaviour, and work in.'));
-  w.appendChild(bn('আপনি এটি উল্টো দিক থেকে হাঁটবেন: আচরণ থেকে শুরু করে ভেতরের দিকে।'));
-  return w;
+/* play the panel's opening beat from an empty picture */
+function playFrom(k){
+  lbeat = -1; paintBeat(true);
+  lbeat = k;
+  requestAnimationFrame(() => requestAnimationFrame(() => paintBeat(false)));
 }
 
-/* what an interview buys you, on both sides */
-/* three heard, one thing in common — the listening task as a picture */
-function listenForPicture(){
-  const box = el('div', 'lfor');
-  const row = el('div', 'lfor-row');
-  ['1', '2', '3'].forEach(nm => {
-    const c = el('div', 'lfor-p');
-    c.appendChild(icon('ear', 'lfor-ico'));
-    c.appendChild(el('span', 'lfor-n', nm));
-    row.appendChild(c);
-  });
-  box.appendChild(row);
-  box.appendChild(el('span', 'lfor-arrow', '↓'));
-  const hit = el('div', 'lfor-hit');
-  hit.appendChild(icon('tick', 'lfor-tick'));
-  const w = el('div');
-  w.appendChild(el('strong', null, t('ui_allsaid')));
-  w.appendChild(bn(tb('ui_allsaid')));
-  hit.appendChild(w);
-  box.appendChild(hit);
-  return box;
-}
-
-function payoffPicture(){
-  const two = el('div', 'payoff');
-  [['About them', ['What they actually do, not what you assume',
-                   'Which value they put first',
-                   'Why a strange habit is obvious to them']],
-   ['In English',  ['Real speech at natural speed',
-                    'The idioms nobody puts in a textbook',
-                    'Asking a question that opens somebody up']]
-  ].forEach((col, ci) => {
-    const c = el('div', 'payoff-col');
-    c.appendChild(el('h3', null, col[0]));
-    c.appendChild(bn(PAYOFF_BN[ci][0]));
-    const ul = el('ul', 'bullets');
-    col[1].forEach((tx, k) => {
-      const li = el('li');
-      li.appendChild(el('span', null, tx));
-      li.appendChild(bn(PAYOFF_BN[ci][1][k]));
-      ul.appendChild(li);
-    });
-    c.appendChild(ul);
-    two.appendChild(c);
-  });
-  return two;
+function stepBeat(d){
+  const k = lbeat + d;
+  if (!scCur || k < 0 || k >= scCur.beats.length) return false;
+  lbeat = k;
+  paintBeat(false, d < 0);
+  return true;
 }
 
 function stepLesson(){
   const L = LESSON[lstep];
+  const fresh = lbeatAt !== lstep;
+  if (fresh) lbeat = lbeatEnd ? L.beats.length - 1 : 0;
+  const instant = !fresh || lbeatEnd;
+  lbeatEnd = false; lbeatAt = lstep;
+  lbeat = Math.max(0, Math.min(lbeat, L.beats.length - 1));
+
   const p = el('div', 'panel p-lesson');
-  const c = el('div', 'card raised lead');
+  const c = el('div', 'card raised lead' + (lWords ? ' show-words' : ''));
   const LB = LESSON_BN[lstep] || [];
-  c.appendChild(el('p', 'kicker', L.kicker));
-  if (LB[0]) c.appendChild(bn(LB[0]));
+  /* the kicker's Bangla rides on the same line: every line of chrome is a
+     line the picture cannot have on a projector */
+  const kk = el('p', 'kicker', L.kicker);
+  if (LB[0]){ const kb = el('span', 'bn-inline', ' · ' + LB[0]); kb.lang = 'bn'; kk.appendChild(kb); }
+  c.appendChild(kk);
   c.appendChild(el('h1', 'h-title', L.title));
   if (LB[1]) c.appendChild(bn(LB[1]));
-  c.appendChild(el('p', 'body', L.body));
-  if (LB[2]) c.appendChild(bn(LB[2]));
-  c.appendChild(L.build());
-  p.appendChild(c);
+  const words = el('div', 'zwords');
+  words.appendChild(el('p', 'body', L.body));
+  if (LB[2]) words.appendChild(bn(LB[2]));
+  c.appendChild(words);
 
-  const skip = el('div', 'tbar');
-  const b = el('button', 'mini');
-  b.appendChild(el('span', null, t('ui_skip')));
-  b.appendChild(bn(tb('ui_skip')));
-  b.type = 'button';
-  b.onclick = endLesson;
-  skip.appendChild(b);
-  p.appendChild(skip);
+  const box = el('div', 'zbox');
+  const s = svg('0 0 960 560', 'zs');
+  s.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+  s.removeAttribute('aria-hidden');
+  s.setAttribute('role', 'img');
+  s.setAttribute('aria-label', L.title);
+  L.draw(s);
+  s.addEventListener('click', () => stepBeat(1));
+  box.appendChild(s);
+
+  const cap = el('div', 'zcap');
+  cap.setAttribute('aria-live', 'polite');
+  box.appendChild(cap);
+
+  const ctl = el('div', 'zctl');
+  const dots = el('div', 'zdots-row');
+  L.beats.forEach((_, i) => {
+    const d = el('button', 'zdotb');
+    d.type = 'button';
+    d.setAttribute('aria-label', 'Picture ' + (i + 1) + ' of ' + L.beats.length);
+    d.onclick = e => { e.stopPropagation(); const back = i < lbeat; lbeat = i; paintBeat(false, back); };
+    dots.appendChild(d);
+  });
+  ctl.appendChild(dots);
+  const hint = el('span', 'zhint');
+  hint.appendChild(el('span', 'zhint-more', t('ui_zmore')));
+  hint.appendChild(el('span', 'zhint-end', t('ui_zend')));
+  ctl.appendChild(hint);
+  const mk = (key, fn, cls) => {
+    const b = el('button', 'mini' + (cls ? ' ' + cls : ''));
+    b.type = 'button';
+    b.appendChild(el('span', null, t(key)));
+    b.appendChild(bn(tb(key)));
+    b.onclick = fn;
+    return b;
+  };
+  const tools = el('div', 'zctl-tools');
+  tools.appendChild(mk('ui_zagain', () => playFrom(0)));
+  tools.appendChild(mk('ui_zwords', () => {
+    lWords = !lWords;
+    c.classList.toggle('show-words', lWords);
+  }, 'zwords-b'));
+  tools.appendChild(mk('ui_skip', endLesson));
+  ctl.appendChild(tools);
+  box.appendChild(ctl);
+  c.appendChild(box);
+  p.appendChild(c);
   wrap.appendChild(p);
+
+  scRoot = s; scCur = L; scCap = cap; scDots = dots; scBox = box;
+  if (L.mount){
+    L.mount(s);
+    /* a web font arriving late moves the words; measure again once it has */
+    if (document.fonts && document.fonts.ready)
+      document.fonts.ready.then(() => { if (s.isConnected) L.mount(s); });
+  }
+  if (instant) paintBeat(true);
+  else playFrom(lbeat);
 }
 
 function endLesson(){
-  lesson = false; lstep = 0;
+  lesson = false; lstep = 0; lbeatAt = -1;
+  scRoot = scCur = scCap = scDots = scBox = null;
   /* keep whichever scenario is open. This drew a fresh random one, so a
      teacher who chose a scenario and then showed the lesson had their choice
      thrown away the moment the lesson ended. */
@@ -3825,159 +4418,6 @@ const QDRILL = [
   { q: 'Tell me about the last wedding you went to.',    ok: true },
   { q: 'Why are Americans so cold to their families?',   ok: false, flaw: 'generalizing' }
 ];
-
-/* The three pictures that say what an ethnographic interview is. They live in
-   the lesson rather than in step 2: this is framing, and step 2 is a task.
-   Each one is a lesson panel's build(), so the panel's own kicker, title and
-   body carry the words and the picture carries the argument. */
-
-/* A tally sheet: a crowd reduced to one mark each. Drawn rather than emoji'd,
-   so it carries at projector size and keeps the paper palette. */
-function tallySheet(){
-  const s2 = svg('0 0 200 110', 'meth-art');
-  const crowd = shape('g', { class: 'meth-crowd-g' });
-  for (let i = 0; i < 26; i++){
-    const x = 8 + (i % 13) * 14.6, y = i < 13 ? 10 : 26;
-    crowd.appendChild(shape('circle', { cx: x, cy: y, r: 3.1 }));
-    crowd.appendChild(shape('path', { d: 'M' + (x - 4) + ' ' + (y + 11) +
-      ' a4 5 0 0 1 8 0 z' }));
-  }
-  s2.appendChild(crowd);
-  s2.appendChild(shape('path', { d: 'M100 42 l0 8 M94 46 l6 6 6-6', class: 'meth-flow' }));
-  s2.appendChild(shape('rect', { x: 46, y: 56, width: 108, height: 48, rx: 3, class: 'meth-sheet' }));
-  [0, 1, 2].forEach(r => {
-    const y = 66 + r * 13;
-    s2.appendChild(shape('rect', { x: 54, y: y - 4.5, width: 9, height: 9, rx: 1.5,
-                                   class: 'meth-box' + (r === 1 ? ' is-tick' : '') }));
-    if (r === 1) s2.appendChild(shape('path', { d: 'M56 ' + y + ' l2 2.5 3.5-5', class: 'meth-tickline' }));
-    s2.appendChild(shape('rect', { x: 69, y: y - 2.5, width: 76 - r * 14, height: 5, rx: 2.5,
-                                   class: 'meth-line' }));
-  });
-  return s2;
-}
-
-/* Three bubbles of real speech — squiggles, not words, so it reads the same in
-   either language and does not pretend to be a transcript. */
-function talkBubble(i){
-  const w = el('span', 'meth-bub');
-  const s2 = svg('0 0 120 34', 'meth-bub-svg');
-  s2.appendChild(shape('rect', { x: 0.8, y: 0.8, width: 118, height: 26, rx: 9,
-                                 class: 'meth-bub-body' }));
-  s2.appendChild(shape('path', { d: 'M13 26 l0 7 9-7 z', class: 'meth-bub-tail' }));
-  const rows = [[8, 92], [8, 74], [8, 100]][i % 3];
-  [0, 1].forEach(r => {
-    s2.appendChild(shape('rect', { x: rows[0], y: 8 + r * 8, rx: 2.2,
-                                   width: r ? rows[1] * 0.62 : rows[1], height: 4.4,
-                                   class: 'meth-bub-line' }));
-  });
-  w.appendChild(s2);
-  return w;
-}
-
-/* The mechanism of the whole method in one picture: sight stops at the outside
-   ring, a question goes all the way to the centre. */
-function reachPicture(){
-  const box = el('div', 'meth-seen');
-  const s2 = svg('0 0 340 200', 'meth-reach');
-  const cx = 170, cy = 100;
-  const RS = [[86, 'behavior'], [64, 'value'], [44, 'belief'], [24, 'worldview']];
-  RS.forEach((r, i) => {
-    s2.appendChild(shape('circle', { cx: cx, cy: cy, r: r[0],
-      class: 'reach-ring r-' + r[1] + (i === 0 ? ' is-seen' : '') }));
-    const inner = RS[i + 1] ? RS[i + 1][0] : 0;
-    const lab = shape('text', { x: cx, y: cy - (r[0] + inner) / 2 + 3.4,
-                                'text-anchor': 'middle',
-                                class: 'reach-lab' + (i === 0 ? ' is-seen' : '') });
-    lab.textContent = RINGS[i].name.toUpperCase();
-    s2.appendChild(lab);
-    if (bnOn){
-      const lb = shape('text', { x: cx, y: cy - (r[0] + inner) / 2 + 12, lang: 'bn',
-                                 'text-anchor': 'middle',
-                                 class: 'reach-lab reach-lab-bn' + (i === 0 ? ' is-seen' : '') });
-      lb.textContent = RING_BN[RINGS[i].key][0];
-      s2.appendChild(lb);
-    }
-  });
-  s2.appendChild(shape('path', { d: 'M18 74 q14 -11 28 0 q-14 11 -28 0 z', class: 'reach-eye' }));
-  s2.appendChild(shape('circle', { cx: 32, cy: 74, r: 4.4, class: 'reach-pupil' }));
-  s2.appendChild(shape('path', { d: 'M50 76 L' + (cx - 86) + ' 92', class: 'reach-ray' }));
-  s2.appendChild(shape('circle', { cx: cx - 86, cy: 92, r: 3.4, class: 'reach-hit' }));
-  s2.appendChild(shape('rect', { x: 258, y: 122, width: 62, height: 30, rx: 10, class: 'reach-qbub' }));
-  s2.appendChild(shape('path', { d: 'M272 152 l0 8 9-8 z', class: 'reach-qbub' }));
-  const qm = shape('text', { x: 289, y: 138, 'text-anchor': 'middle',
-                             'dominant-baseline': 'central', class: 'reach-q' });
-  qm.textContent = '?';
-  s2.appendChild(qm);
-  s2.appendChild(shape('path', { d: 'M262 128 Q210 116 ' + cx + ' ' + cy, class: 'reach-arrow' }));
-  s2.appendChild(shape('circle', { cx: cx, cy: cy, r: 4.6, class: 'reach-core' }));
-  box.appendChild(s2);
-
-  const legend = el('div', 'meth-legend');
-  [['eye', 'you can watch this one', 'এটি চোখে দেখা যায়', 'is-seen'],
-   ['ask', 'these three must be asked for', 'এই তিনটি জিজ্ঞেস করে জানতে হয়', 'is-ask']
-  ].forEach(l => {
-    const d = el('div', 'meth-leg ' + l[3]);
-    d.appendChild(icon(l[0], 'meth-leg-ico'));
-    const w = el('span');
-    w.appendChild(el('span', null, l[1]));
-    w.appendChild(bn(l[2]));
-    d.appendChild(w);
-    legend.appendChild(d);
-  });
-  box.appendChild(legend);
-  return box;
-}
-
-/* what it is not, beside what it is */
-function surveyVsInterview(){
-  const cmp = el('div', 'meth-cmp');
-
-  const sv = el('div', 'meth-col');
-  sv.appendChild(tallySheet());
-  sv.appendChild(addBn(el('p', 'meth-cap', 'A survey: many people, one box each. It counts.'),
-                       'জরিপ: বহু মানুষ, প্রত্যেকে একটি ঘর ভরেন। এটি গোনে।'));
-  cmp.appendChild(sv);
-
-  const iv = el('div', 'meth-col is-this');
-  const three = el('div', 'meth-three');
-  sc.speakers.forEach((sp, i) => {
-    const r = el('div', 'meth-row');
-    const f = el('span', 'meth-face');
-    const im = new Image();
-    im.alt = ''; im.src = 'portraits/' + sc.id + '-' + (i + 1) + '.jpg';
-    im.onerror = () => { im.remove(); f.textContent = sp.name.charAt(0); };
-    f.appendChild(im);
-    r.appendChild(f);
-    r.appendChild(talkBubble(i));
-    three.appendChild(r);
-  });
-  iv.appendChild(three);
-  iv.appendChild(addBn(el('p', 'meth-cap', 'An interview: a few people, in their own words. It explains.'),
-                       'সাক্ষাৎকার: অল্প কয়েকজন, তাঁদের নিজের ভাষায়। এটি ব্যাখ্যা করে।'));
-  cmp.appendChild(iv);
-  return cmp;
-}
-
-/* notice, ask, listen, compare, map — this activity's own rail */
-function loopPicture(){
-  const loop = el('div', 'meth-loop');
-  [['eye','Notice','লক্ষ করুন','behavior', null],
-   ['ask','Ask','জিজ্ঞেস করুন','value', null],
-   ['ear','Listen','শুনুন','belief', '×3'],
-   ['tick','Compare','মিলিয়ে দেখুন','worldview', null],
-   ['target','Map','মানচিত্র আঁকুন','behavior', null]].forEach((st, i) => {
-    if (i) loop.appendChild(el('span', 'meth-arrow', '→'));
-    const d = el('div', 'meth-step r-' + st[3]);
-    const ring = el('span', 'meth-step-ring');
-    ring.appendChild(icon(st[0], 'meth-step-ico'));
-    d.appendChild(ring);
-    if (st[4]) d.appendChild(el('span', 'meth-x3', st[4]));
-    d.appendChild(el('span', 'meth-step-t', st[1]));
-    d.appendChild(bn(st[2]));
-    loop.appendChild(d);
-  });
-  return loop;
-}
 
 function qPhaseRules(card){
   const i = state.qRule || 0;
@@ -5373,6 +5813,7 @@ function advance(){
   if (btnNext.disabled) return;
   stopAudio();
   if (lesson){
+    if (stepBeat(1)) return;                   /* the picture first, then the panel */
     if (lstep === LESSON.length - 1){ endLesson(); return; }
     lstep++; render(); return;
   }
@@ -5389,7 +5830,11 @@ function advance(){
 btnNext.onclick = advance;
 btnNextStage.onclick = advance;
 btnBack.onclick = () => {
-  if (lesson){ if (lstep === 0) return; lstep--; render(); return; }
+  if (lesson){
+    if (stepBeat(-1)) return;
+    if (lstep === 0) return;
+    lbeatEnd = true; lstep--; render(); return;  /* arrive on its last picture */
+  }
   if (state.handoff){ state.handoff = false; render(); return; }
   if (step === 0) return;
   stopAudio(); step--; render();
@@ -5410,7 +5855,7 @@ document.addEventListener('click', e => {
   if (coachEl.classList.contains('show') && !e.target.closest('.tipmark')) coachHide();
 }, true);
 stage.addEventListener('scroll', () => { if (!coachBusy) coachHide(); }, { passive: true });
-$('#m-lesson').onclick = () => { closeSheet(); lesson = true; lstep = 0; stopAudio(); render(); };
+$('#m-lesson').onclick = () => { closeSheet(); lesson = true; lstep = 0; lbeatAt = -1; stopAudio(); render(); };
 $('#m-projector').onclick = () => { closeSheet(); toggleStage(); };
 
 const scenToggle = $('#m-scen-toggle'), scenOptions = $('#scen-options');
