@@ -1286,6 +1286,159 @@ body.bangla .bn-inline{display:inline}
 .stage-next .bn{display:none !important}
 
 /* ---------- step 2: one idea on screen at a time ---------- */
+/* ---------- what an ethnographic interview is (step 2, phase 0) ---------- */
+.meth{display:flex;flex-direction:column;gap:var(--s4);margin-top:var(--s4)}
+.meth-card{
+  padding:var(--s4);border:1px solid var(--rule);border-radius:var(--radius-md);
+  background:var(--panel);
+}
+.meth-head{display:flex;align-items:flex-start;gap:var(--s3)}
+.meth-n{
+  flex:0 0 auto;width:calc(1.6rem*var(--ui));height:calc(1.6rem*var(--ui));
+  border-radius:var(--radius-pill);background:var(--accent);color:var(--on-accent);
+  display:grid;place-items:center;
+  font-family:var(--font-ui);font-size:calc(.8rem*var(--ui));font-weight:700;
+}
+.meth-t{
+  margin:0;font-family:var(--font-display);
+  font-size:calc(1.12rem*var(--ui));line-height:1.3;color:var(--heading);
+}
+.meth-cap{margin:var(--s3) 0 0;font-size:calc(.96rem*var(--ui));line-height:1.6;color:var(--tx)}
+
+/* 1 — a crowd counted, against three people heard */
+.meth-cmp{display:grid;grid-template-columns:1fr;gap:var(--s3);margin-top:var(--s3)}
+@media (min-width:640px){ .meth-cmp{grid-template-columns:1fr 1fr} }
+.meth-col{
+  padding:var(--s3);border-radius:var(--radius-sm);
+  border:1px solid var(--rule);background:var(--surface-card);
+}
+.meth-col.is-this{border-color:var(--l-value);background:var(--l-value-t)}
+/* both drawings are scale-free SVG, so on a projector column they would grow
+   to 800px wide and eat the screen: they are capped and centred instead */
+.meth-art{display:block;width:100%;max-width:calc(330px*var(--ui));height:auto;margin:0 auto}
+.meth-crowd-g{fill:var(--tx-muted);opacity:.42}
+.meth-flow{stroke:var(--kicker);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.meth-sheet{fill:var(--surface-card);stroke:var(--rule-strong);stroke-width:1.4}
+.meth-box{fill:none;stroke:var(--rule-strong);stroke-width:1.3}
+.meth-box.is-tick{stroke:var(--l-value)}
+.meth-tickline{stroke:var(--l-value);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.meth-line{fill:var(--tx-muted);opacity:.3}
+
+.meth-three{
+  display:flex;flex-direction:column;gap:calc(7px*var(--ui));
+  max-width:calc(340px*var(--ui));margin:0 auto;
+}
+.meth-row{display:flex;align-items:center;gap:calc(8px*var(--ui))}
+.meth-face{
+  flex:0 0 auto;width:calc(38px*var(--ui));height:calc(38px*var(--ui));
+  border-radius:var(--radius-pill);overflow:hidden;background:var(--panel);
+  border:1.5px solid var(--rule-strong);
+  display:grid;place-items:center;
+  font-family:var(--font-display);font-size:calc(1rem*var(--ui));color:var(--tx-muted);
+}
+.meth-face img{width:100%;height:100%;object-fit:cover;display:block}
+.meth-bub{flex:1 1 auto;min-width:0}
+.meth-bub-svg{display:block;width:100%;height:auto}
+.meth-bub-body{fill:var(--surface-card);stroke:var(--l-value);stroke-width:1.4;opacity:.95}
+.meth-bub-tail{fill:var(--surface-card);stroke:none}
+.meth-bub-line{fill:var(--l-value);opacity:.38}
+
+/* the mechanism: sight stops at the rim, a question reaches the centre */
+.meth-reach{display:block;width:100%;height:auto;max-width:calc(420px*var(--ui));margin:0 auto}
+.reach-ring{fill:none;stroke:var(--rule-strong);stroke-width:1.3;opacity:.4}
+.reach-ring.is-seen{stroke:var(--l-behavior);stroke-width:3;opacity:1;fill:var(--l-behavior-t)}
+.reach-eye{fill:none;stroke:var(--kicker);stroke-width:1.8}
+.reach-pupil{fill:var(--kicker)}
+.reach-ray{stroke:var(--l-behavior);stroke-width:2.2;stroke-dasharray:6 4;fill:none}
+.reach-hit{fill:var(--l-behavior)}
+.reach-qbub{fill:var(--l-value-t);stroke:var(--l-value);stroke-width:1.5}
+.reach-q{fill:var(--l-value);font-family:var(--font-ui);font-size:17px;font-weight:700}
+.reach-arrow{stroke:var(--l-value);stroke-width:2.4;fill:none;stroke-linecap:round}
+.reach-core{fill:var(--l-value)}
+.reach-lab{
+  font-family:var(--font-ui);font-size:7.4px;font-weight:700;letter-spacing:.06em;
+  fill:var(--tx-muted);opacity:.62;
+}
+.reach-lab.is-seen{fill:var(--l-behavior);opacity:1;font-size:8.4px}
+.reach-lab-bn{
+  font-family:'Noto Sans Bengali','Hind Siliguri',sans-serif;
+  font-size:6.6px;font-weight:600;letter-spacing:0;
+}
+.meth-legend{display:flex;flex-wrap:wrap;gap:var(--s3);justify-content:center;margin-top:var(--s2)}
+.meth-leg{
+  display:flex;align-items:flex-start;gap:calc(6px*var(--ui));
+  padding:calc(6px*var(--ui)) var(--s3);border-radius:var(--radius-pill);
+  background:var(--surface-card);border:1px solid var(--rule);
+  font-size:calc(.86rem*var(--ui));color:var(--tx);
+}
+.meth-leg.is-seen{border-color:var(--l-behavior)}
+.meth-leg.is-ask{border-color:var(--l-value)}
+.meth-leg-ico{width:calc(1.05rem*var(--ui));height:calc(1.05rem*var(--ui));flex:0 0 auto;
+  margin-top:calc(2px*var(--ui))}
+.meth-leg.is-seen .meth-leg-ico{color:var(--l-behavior)}
+.meth-leg.is-ask .meth-leg-ico{color:var(--l-value)}
+
+/* 2 — the rings, with what is watched and what is asked on either side */
+.meth-seen{
+  display:flex;flex-direction:column;align-items:center;gap:var(--s2);
+  margin-top:var(--s3);
+}
+.meth-eye,.meth-ask{
+  display:flex;flex-direction:column;align-items:center;gap:calc(4px*var(--ui));
+  flex:0 0 auto;max-width:calc(120px*var(--ui));text-align:center;
+}
+.meth-eye-ico{width:calc(1.5rem*var(--ui));height:calc(1.5rem*var(--ui));color:var(--kicker)}
+.meth-tag{
+  font-family:var(--font-ui);font-size:calc(.74rem*var(--ui));font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--tx-muted);
+}
+.meth-seen .rings-wrap{flex:1 1 260px;min-width:0;max-width:calc(320px*var(--ui))}
+.meth-seen .rings{width:min(100%,240px)}
+.meth-seen .rkey{display:none}          /* the rows repeat the lesson; the picture is the point */
+/* only the outside ring is observable, so only the outside ring is drawn as
+   if it were: the other three fade back to the question they have to be asked */
+.meth-seen .ring:not(.is-open) .ring-face{opacity:.34}
+.meth-seen .ring:not(.is-open) .ring-name{opacity:.45}
+.meth-seen .ring:not(.is-open) .ring-ico{opacity:.3}
+.meth-seen .ring.is-open .ring-face{stroke-width:3}
+
+/* 3 — the loop, which is this activity's own rail */
+.meth-loop{
+  display:flex;align-items:stretch;justify-content:center;gap:calc(4px*var(--ui));
+  flex-wrap:wrap;margin-top:var(--s3);
+}
+.meth-step{
+  position:relative;
+  flex:0 1 auto;display:flex;flex-direction:column;align-items:center;
+  gap:calc(3px*var(--ui));padding:calc(10px*var(--ui)) calc(8px*var(--ui)) calc(8px*var(--ui));
+  min-width:calc(66px*var(--ui));
+  border:1px solid var(--rule);border-radius:var(--radius-sm);background:var(--surface-card);
+}
+.meth-step-ring{
+  position:relative;display:grid;place-items:center;
+  width:calc(2.1rem*var(--ui));height:calc(2.1rem*var(--ui));
+  border-radius:var(--radius-pill);background:var(--surface-card);border:2px solid currentColor;
+}
+.meth-step.r-behavior {color:var(--l-behavior)}
+.meth-step.r-value    {color:var(--l-value)}
+.meth-step.r-belief   {color:var(--l-belief)}
+.meth-step.r-worldview{color:var(--l-worldview)}
+.meth-step-ico{width:calc(1.05rem*var(--ui));height:calc(1.05rem*var(--ui));color:currentColor}
+.meth-x3{
+  position:absolute;right:calc(3px*var(--ui));top:calc(3px*var(--ui));
+  padding:0 calc(4px*var(--ui));border-radius:var(--radius-pill);
+  background:currentColor;
+  font-family:var(--font-ui);font-size:calc(.6rem*var(--ui));font-weight:700;
+}
+.meth-x3::after{content:''}
+.meth-step .meth-x3{color:var(--on-accent)}
+.meth-step.r-belief .meth-x3{background:var(--l-belief)}
+.meth-step-t{
+  font-family:var(--font-ui);font-size:calc(.76rem*var(--ui));font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--tx);text-align:center;
+}
+.meth-arrow{align-self:center;color:var(--kicker);font-size:calc(1rem*var(--ui));flex:0 0 auto}
+
 .qpair{display:grid;grid-template-columns:1fr 1fr;gap:var(--s3);margin-top:var(--s4)}
 .qside{
   position:relative;padding:var(--s5) var(--s3) var(--s4);border-radius:var(--radius-md);
@@ -2334,6 +2487,7 @@ function newScenario(keepLesson, id){
   state = { qDone: false, passes: [0, 0, 0], catchScores: [[], [], []], tOpen: false,
             tCard: [false, false, false],
             claimsDone: false, picked: new Set(), placed: {}, mapDone: false,
+            qMeth: 0,
             handoff: false,
             chosenQ: null };
   /* The brand layer does not recolour per theme — the badge carries the theme. */
@@ -2401,7 +2555,10 @@ function syncNext(){
 
   /* a closed door that will not say why is its own small cruelty, and a toast
      has gone by the time a beginner has finished reading it */
-  if (!ready && why){
+  /* "Choose a question first" is true but premature while step 2 is still
+     explaining what an interview is — there are no questions on screen yet. */
+  const teaching = here === 'Ask' && (state.qPhase || 0) < 3;
+  if (!ready && why && !teaching){
     const panel = wrap.querySelector('.panel');
     if (panel) panel.appendChild(whyBox(why));
   }
@@ -3628,6 +3785,217 @@ const QDRILL = [
   { q: 'Why are Americans so cold to their families?',   ok: false, flaw: 'generalizing' }
 ];
 
+/* Three pictures for the three halves of the question "what is this method":
+   what it is not, what it reaches, and what a researcher actually does with
+   it. The third one is the activity's own rail, because the class is about to
+   carry out the method rather than read about it. */
+function qPhaseMethod(card){
+  const at = state.qMeth || 0;
+  const box = el('div', 'meth');
+
+  /* 1 — a survey counts people; an interview listens to a few of them */
+  const one = el('div', 'meth-card');
+  one.appendChild(methHead('1', 'Not a survey', 'জরিপ নয়'));
+  const cmp = el('div', 'meth-cmp');
+
+  const sv = el('div', 'meth-col');
+  sv.appendChild(tallySheet());
+  sv.appendChild(addBn(el('p', 'meth-cap', 'A survey: many people, one box each. It counts.'),
+                       'জরিপ: বহু মানুষ, প্রত্যেকে একটি ঘর ভরেন। এটি গোনে।'));
+  cmp.appendChild(sv);
+
+  const iv = el('div', 'meth-col is-this');
+  const three = el('div', 'meth-three');
+  sc.speakers.forEach((sp, i) => {
+    const r = el('div', 'meth-row');
+    const f = el('span', 'meth-face');
+    const im = new Image();
+    im.alt = ''; im.src = 'portraits/' + sc.id + '-' + (i + 1) + '.jpg';
+    im.onerror = () => { im.remove(); f.textContent = sp.name.charAt(0); };
+    f.appendChild(im);
+    r.appendChild(f);
+    r.appendChild(talkBubble(i));
+    three.appendChild(r);
+  });
+  iv.appendChild(three);
+  iv.appendChild(addBn(el('p', 'meth-cap', 'An interview: a few people, in their own words. It explains.'),
+                       'সাক্ষাৎকার: অল্প কয়েকজন, তাঁদের নিজের ভাষায়। এটি ব্যাখ্যা করে।'));
+  cmp.appendChild(iv);
+  one.appendChild(cmp);
+  if (at === 0) box.appendChild(one);
+
+  /* 2 — the rings again: one is visible, three have to be asked for */
+  const two = el('div', 'meth-card');
+  two.appendChild(methHead('2', 'It reaches what you cannot see', 'যা চোখে দেখা যায় না, সেখানে পৌঁছায়'));
+  two.appendChild(reachPicture());
+  two.appendChild(addBn(el('p', 'meth-cap',
+    'Anthropologists and sociologists use this method because only the outside ring can be observed. Values, beliefs and worldview leave no trace you can photograph — they have to be asked for, and then checked against other people.'),
+    'নৃবিজ্ঞানী আর সমাজবিজ্ঞানীরা এই পদ্ধতি ব্যবহার করেন, কারণ কেবল বাইরের বৃত্তটিই চোখে দেখা যায়। মূল্যবোধ, বিশ্বাস আর বিশ্বদৃষ্টির ছবি তোলা যায় না — জিজ্ঞেস করে জানতে হয়, তারপর অন্যদের কথার সঙ্গে মিলিয়ে দেখতে হয়।'));
+  if (at === 1) box.appendChild(two);
+
+  /* 3 — the fieldwork loop, which is this activity's own rail */
+  const three3 = el('div', 'meth-card');
+  three3.appendChild(methHead('3', 'How the work is done', 'কাজটা যেভাবে হয়'));
+  const loop = el('div', 'meth-loop');
+  [['eye','Notice','লক্ষ করুন','behavior', null],
+   ['ask','Ask','জিজ্ঞেস করুন','value', null],
+   ['ear','Listen','শুনুন','belief', '×3'],
+   ['tick','Compare','মিলিয়ে দেখুন','worldview', null],
+   ['target','Map','মানচিত্র আঁকুন','behavior', null]].forEach((st, i) => {
+    if (i) loop.appendChild(el('span', 'meth-arrow', '→'));
+    const d = el('div', 'meth-step r-' + st[3]);
+    const ring = el('span', 'meth-step-ring');
+    ring.appendChild(icon(st[0], 'meth-step-ico'));
+    d.appendChild(ring);
+    if (st[4]) d.appendChild(el('span', 'meth-x3', st[4]));
+    d.appendChild(el('span', 'meth-step-t', st[1]));
+    d.appendChild(bn(st[2]));
+    loop.appendChild(d);
+  });
+  three3.appendChild(loop);
+  three3.appendChild(addBn(el('p', 'meth-cap',
+    'One person is a story; three people are a pattern. That is why you will hear the same question answered three times — and it is exactly the five steps at the top of this screen.'),
+    'একজন মানুষ মানে একটি গল্প; তিনজন মানে একটি ধারা। তাই একই প্রশ্নের উত্তর আপনি তিনবার শুনবেন — আর এটিই এই পর্দার উপরের পাঁচটি ধাপ।'));
+  if (at === 2) box.appendChild(three3);
+
+  card.appendChild(box);
+
+  const foot = el('div', 'qfoot');
+  const dots = el('div', 'qdots');
+  for (let k = 0; k < 3; k++) dots.appendChild(el('span', 'qdot' + (k === at ? ' on' : '')));
+  foot.appendChild(dots);
+  const nb = el('button', 'mini on');
+  nb.type = 'button';
+  const last = at === 2;
+  nb.appendChild(el('span', null, last ? 'Now the questions' : t('nx_next')));
+  if (last) nb.appendChild(bn('এবার প্রশ্নগুলো'));
+  nb.onclick = () => {
+    if (last){ state.qPhase = 1; state.qRule = 0; }
+    else state.qMeth = at + 1;
+    render();
+  };
+  foot.appendChild(nb);
+  card.appendChild(foot);
+}
+
+/* A tally sheet: a crowd reduced to one mark each. Drawn rather than emoji'd,
+   so it carries at projector size and keeps the paper palette. */
+function tallySheet(){
+  const s2 = svg('0 0 200 110', 'meth-art');
+  const crowd = shape('g', { class: 'meth-crowd-g' });
+  for (let i = 0; i < 26; i++){
+    const x = 8 + (i % 13) * 14.6, y = i < 13 ? 10 : 26;
+    crowd.appendChild(shape('circle', { cx: x, cy: y, r: 3.1 }));
+    crowd.appendChild(shape('path', { d: 'M' + (x - 4) + ' ' + (y + 11) +
+      ' a4 5 0 0 1 8 0 z' }));
+  }
+  s2.appendChild(crowd);
+  s2.appendChild(shape('path', { d: 'M100 42 l0 8 M94 46 l6 6 6-6', class: 'meth-flow' }));
+  const sheet = shape('rect', { x: 46, y: 56, width: 108, height: 48, rx: 3,
+                                class: 'meth-sheet' });
+  s2.appendChild(sheet);
+  [0, 1, 2].forEach(r => {
+    const y = 66 + r * 13;
+    s2.appendChild(shape('rect', { x: 54, y: y - 4.5, width: 9, height: 9, rx: 1.5,
+                                   class: 'meth-box' + (r === 1 ? ' is-tick' : '') }));
+    if (r === 1) s2.appendChild(shape('path', { d: 'M56 ' + y + ' l2 2.5 3.5-5',
+                                                class: 'meth-tickline' }));
+    s2.appendChild(shape('rect', { x: 69, y: y - 2.5, width: 76 - r * 14, height: 5, rx: 2.5,
+                                   class: 'meth-line' }));
+  });
+  return s2;
+}
+
+/* Three bubbles of real speech — squiggles, not words, so it reads the same in
+   either language and does not pretend to be a transcript. */
+function talkBubble(i){
+  const w = el('span', 'meth-bub');
+  const s2 = svg('0 0 120 34', 'meth-bub-svg');
+  s2.appendChild(shape('rect', { x: 0.8, y: 0.8, width: 118, height: 26, rx: 9,
+                                 class: 'meth-bub-body' }));
+  s2.appendChild(shape('path', { d: 'M13 26 l0 7 9-7 z', class: 'meth-bub-tail' }));
+  const rows = [[8, 92], [8, 74], [8, 100]][i % 3];
+  [0, 1].forEach(r => {
+    s2.appendChild(shape('rect', { x: rows[0], y: 8 + r * 8, rx: 2.2,
+                                   width: r ? rows[1] * 0.62 : rows[1], height: 4.4,
+                                   class: 'meth-bub-line' }));
+  });
+  w.appendChild(s2);
+  return w;
+}
+
+/* The mechanism of the whole method in one picture: sight stops at the outside
+   ring, a question goes all the way to the centre. */
+function reachPicture(){
+  const box = el('div', 'meth-seen');
+  const s2 = svg('0 0 340 200', 'meth-reach');
+
+  const cx = 170, cy = 100;
+  const RS = [[86, 'behavior'], [64, 'value'], [44, 'belief'], [24, 'worldview']];
+  RS.forEach((r, i) => {
+    s2.appendChild(shape('circle', { cx: cx, cy: cy, r: r[0],
+      class: 'reach-ring r-' + r[1] + (i === 0 ? ' is-seen' : '') }));
+    /* each band gets its name, so the legend has something to point at */
+    const inner = RS[i + 1] ? RS[i + 1][0] : 0;
+    const lab = shape('text', { x: cx, y: cy - (r[0] + inner) / 2 + 3.4,
+                                'text-anchor': 'middle',
+                                class: 'reach-lab' + (i === 0 ? ' is-seen' : '') });
+    lab.textContent = RINGS[i].name.toUpperCase();
+    s2.appendChild(lab);
+    if (bnOn){
+      const lb = shape('text', { x: cx, y: cy - (r[0] + inner) / 2 + 12, lang: 'bn',
+                                 'text-anchor': 'middle',
+                                 class: 'reach-lab reach-lab-bn' + (i === 0 ? ' is-seen' : '') });
+      lb.textContent = RING_BN[RINGS[i].key][0];
+      s2.appendChild(lb);
+    }
+  });
+
+  /* the eye and its ray, which lands on the rim and goes no further */
+  s2.appendChild(shape('path', { d: 'M18 74 q14 -11 28 0 q-14 11 -28 0 z', class: 'reach-eye' }));
+  s2.appendChild(shape('circle', { cx: 32, cy: 74, r: 4.4, class: 'reach-pupil' }));
+  s2.appendChild(shape('path', { d: 'M50 76 L' + (cx - 86) + ' 92', class: 'reach-ray' }));
+  s2.appendChild(shape('circle', { cx: cx - 86, cy: 92, r: 3.4, class: 'reach-hit' }));
+
+  /* the question, which passes through all four */
+  s2.appendChild(shape('rect', { x: 258, y: 122, width: 62, height: 30, rx: 10,
+                                 class: 'reach-qbub' }));
+  s2.appendChild(shape('path', { d: 'M272 152 l0 8 9-8 z', class: 'reach-qbub' }));
+  const qm = shape('text', { x: 289, y: 138, 'text-anchor': 'middle',
+                             'dominant-baseline': 'central', class: 'reach-q' });
+  qm.textContent = '?';
+  s2.appendChild(qm);
+  s2.appendChild(shape('path', { d: 'M262 128 Q210 116 ' + cx + ' ' + cy, class: 'reach-arrow' }));
+  s2.appendChild(shape('circle', { cx: cx, cy: cy, r: 4.6, class: 'reach-core' }));
+
+  box.appendChild(s2);
+
+  const legend = el('div', 'meth-legend');
+  [['eye', 'you can watch this one', 'এটি চোখে দেখা যায়', 'is-seen'],
+   ['ask', 'these three must be asked for', 'এই তিনটি জিজ্ঞেস করে জানতে হয়', 'is-ask']
+  ].forEach(l => {
+    const d = el('div', 'meth-leg ' + l[3]);
+    d.appendChild(icon(l[0], 'meth-leg-ico'));
+    const w = el('span');
+    w.appendChild(el('span', null, l[1]));
+    w.appendChild(bn(l[2]));
+    d.appendChild(w);
+    legend.appendChild(d);
+  });
+  box.appendChild(legend);
+  return box;
+}
+
+function methHead(num, en, bnTxt){
+  const h = el('div', 'meth-head');
+  h.appendChild(el('span', 'meth-n', num));
+  const w = el('div');
+  w.appendChild(el('h3', 'meth-t', en));
+  addBn(w, bnTxt);
+  h.appendChild(w);
+  return h;
+}
+
 function qPhaseRules(card){
   const i = state.qRule || 0;
   const R = QRULES[i];
@@ -3655,7 +4023,7 @@ function qPhaseRules(card){
   nb.appendChild(bn(i < QRULES.length - 1 ? tb('nx_next') : tb('q_try')));
   nb.onclick = () => {
     if (i < QRULES.length - 1){ state.qRule = i + 1; }
-    else { state.qPhase = 1; state.qDrill = 0; }
+    else { state.qPhase = 2; state.qDrill = 0; }
     render();
   };
   foot.appendChild(nb);
@@ -3711,7 +4079,7 @@ function qPhaseDrill(card){
       nb.appendChild(bn(i < QDRILL.length - 1 ? tb('nx_next') : tb('q_now')));
       nb.onclick = () => {
         if (i < QDRILL.length - 1) state.qDrill = i + 1;
-        else state.qPhase = 2;
+        else state.qPhase = 3;
         render();
       };
       fb.appendChild(nb);
@@ -3740,15 +4108,21 @@ function stepAsk(){
   const c = el('div', 'card raised');
   c.appendChild(kickerEl());
 
-  if (state.qPhase === undefined) state.qPhase = state.qDone ? 2 : 0;
+  if (state.qPhase === undefined) state.qPhase = state.qDone ? 3 : 0;
 
   if (state.qPhase === 0){
+    c.appendChild(el('h2', 'h-title', 'What is an ethnographic interview?'));
+    c.appendChild(bn('নৃতাত্ত্বিক সাক্ষাৎকার জিনিসটা কী?'));
+    qPhaseMethod(c);
+    p.appendChild(c); wrap.appendChild(p); return;
+  }
+  if (state.qPhase === 1){
     c.appendChild(el('h2', 'h-title', 'One opens. One closes.'));
     c.appendChild(bn('একটি কথা খোলে। একটি কথা থামায়।'));
     qPhaseRules(c);
     p.appendChild(c); wrap.appendChild(p); return;
   }
-  if (state.qPhase === 1){
+  if (state.qPhase === 2){
     c.appendChild(el('h2', 'h-title', 'Open or closed?'));
     c.appendChild(bn('এই প্রশ্নটি কথা খোলে, না থামায়?'));
     qPhaseDrill(c);
