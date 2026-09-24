@@ -1,0 +1,134 @@
+{
+  "title": "Overpass Delay",
+  "slug": "overpass-delay",
+  "band_color": "auto",
+  "seed": "rajshahi-overpass-delay-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Overpass Delay"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "narrow-detour",
+      "label": "Narrow Detour",
+      "aliases": [],
+      "description": "A pedestrian and rickshaw squeeze through a narrow temporary passage beside an overpass work site.",
+      "visual_kind": "action",
+      "visual_focus": "a pedestrian and rickshaw squeezing between temporary work barriers",
+      "local_cue": "a maroon battery-run easy bike and pedestrian squeezed beside Rajshahi flyover work barriers",
+      "image": "assets/01-narrow-detour.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "temporary detour",
+        "narrow passage"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "muddy-approach",
+      "label": "Muddy Approach",
+      "aliases": [],
+      "description": "Rain turns the road beside an unfinished structure into deep mud.",
+      "visual_kind": "action",
+      "visual_focus": "a vehicle wheel sinking into mud beside an unfinished concrete pier",
+      "local_cue": "a battery-run easy bike wheel in mud beside an unfinished concrete flyover pier",
+      "image": "assets/02-muddy-approach.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "muddy road",
+        "work-site access"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "crossing-work-zone",
+      "label": "Crossing Work Zone",
+      "aliases": [],
+      "description": "A rider steers around a barrier to reach the other side of the road.",
+      "visual_kind": "action",
+      "visual_focus": "a rider steering tightly around a work-zone barrier",
+      "local_cue": "an easy-bike driver steering beside a striped flyover construction barrier",
+      "image": "assets/03-crossing-work-zone.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "work-zone crossing",
+        "take a shortcut"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "wrong-turn",
+      "label": "Wrong Turn",
+      "aliases": [],
+      "description": "A driver turns into a blocked lane and must reverse in traffic.",
+      "visual_kind": "action",
+      "visual_focus": "a driver forced to reverse from a fully blocked lane",
+      "local_cue": "a battery-run easy bike reversing from a blocked Rajshahi city lane",
+      "image": "assets/04-wrong-turn.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "wrong turn",
+        "blocked lane"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "closed-road",
+      "label": "Closed Road",
+      "aliases": [],
+      "description": "Closed road space remains beside an unfinished overpass pier.",
+      "visual_kind": "action",
+      "visual_focus": "a closed lane and large barrier directly beside unfinished overpass pillars",
+      "local_cue": "unfinished flyover pillars and a concrete road barricade on a Rajshahi street",
+      "image": "assets/05-closed-road.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "road closure",
+        "construction delay"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "confusing-junction",
+      "label": "Confusing Junction",
+      "aliases": [],
+      "description": "Several travellers stop at a confusing junction with no clear detour arrow.",
+      "visual_kind": "action",
+      "visual_focus": "travellers hesitating at a fork with several conflicting barricades",
+      "local_cue": "a maroon easy bike hesitating at conflicting temporary barriers near an unfinished flyover",
+      "image": "assets/06-confusing-junction.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "route guidance",
+        "wayfinding sign"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes make the detour hardest to follow?",
+    "How has roadwork changed a trip you make in Rajshahi?",
+    "Should the first fix protect walkers or guide drivers? Why?",
+    "Why can a delayed work site create costs for nearby shops?",
+    "If one detour becomes easier, where might traffic build up?",
+    "You have 300,000 BDT and 30 days. What one safe-detour pilot would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 300000,
+    "pilot_scope": "Test one temporary pedestrian route and clear detour guidance around a work site; do not fund construction itself."
+  },
+  "evidence": {
+    "basis": "current Rajshahi reporting",
+    "sources": [
+      "https://www.thedailystar.net/news/bangladesh/news/overpass-delays-add-rajshahi-traffic-woes-4275871"
+    ]
+  }
+}

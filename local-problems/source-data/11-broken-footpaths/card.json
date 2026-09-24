@@ -1,0 +1,134 @@
+{
+  "title": "Broken Footpaths",
+  "slug": "broken-footpaths",
+  "band_color": "auto",
+  "seed": "rajshahi-broken-footpaths-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Broken Footpaths"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "broken-slab",
+      "label": "Broken Slab",
+      "aliases": [],
+      "description": "A pedestrian steps over a raised broken slab on a footpath.",
+      "visual_kind": "action",
+      "visual_focus": "a foot stepping over one raised, cracked concrete slab",
+      "local_cue": "Rajshahi city footpath with concrete slabs, narrow shopfronts and local pedestrian traffic. In this cutout specifically, make the decisive evidence prominent: a foot stepping over one raised, cracked concrete slab",
+      "image": "assets/01-broken-slab.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "broken pavement",
+        "trip hazard"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "high-curb",
+      "label": "High Curb",
+      "aliases": [],
+      "description": "A person with a wheeled bag struggles to lift it over a high curb.",
+      "visual_kind": "action",
+      "visual_focus": "a wheeled bag lifted awkwardly over a tall curb",
+      "local_cue": "Rajshahi city footpath with concrete slabs, narrow shopfronts and local pedestrian traffic. In this cutout specifically, make the decisive evidence prominent: a wheeled bag lifted awkwardly over a tall curb",
+      "image": "assets/02-high-curb.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "high curb",
+        "step up"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "parked-motorcycle",
+      "label": "Parked Motorcycle",
+      "aliases": [],
+      "description": "A walker detours around a motorcycle left across the walking space.",
+      "visual_kind": "action",
+      "visual_focus": "a motorcycle parked across the walking route and a walker going around it",
+      "local_cue": "Rajshahi city footpath with concrete slabs, narrow shopfronts and local pedestrian traffic. In this cutout specifically, make the decisive evidence prominent: a motorcycle parked across the walking route and a walker going around it",
+      "image": "assets/03-parked-motorcycle.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "park on the footpath",
+        "walk around"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "shop-display",
+      "label": "Shop Display",
+      "aliases": [],
+      "description": "A customer and pedestrian squeeze past goods extending into the path.",
+      "visual_kind": "action",
+      "visual_focus": "goods protruding from a shop display while two people squeeze past",
+      "local_cue": "Rajshahi city footpath with concrete slabs, narrow shopfronts and local pedestrian traffic. In this cutout specifically, make the decisive evidence prominent: goods protruding from a shop display while two people squeeze past",
+      "image": "assets/04-shop-display.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "shop display",
+        "narrow the path"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "open-repair",
+      "label": "Open Repair",
+      "aliases": [],
+      "description": "People pass an unfinished footpath repair with loose paving pieces.",
+      "visual_kind": "action",
+      "visual_focus": "loose paving slabs and a walker stepping around an unfinished repair",
+      "local_cue": "Rajshahi city footpath with concrete slabs, narrow shopfronts and local pedestrian traffic. In this cutout specifically, make the decisive evidence prominent: loose paving slabs and a walker stepping around an unfinished repair",
+      "image": "assets/05-open-repair.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unfinished repair",
+        "loose paving"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "no-ramp",
+      "label": "No Ramp",
+      "aliases": [],
+      "description": "A person pushing a cart stops at a step where the footpath has no ramp.",
+      "visual_kind": "action",
+      "visual_focus": "a hand-pushed cart halted at a step with no connecting ramp",
+      "local_cue": "Rajshahi city footpath with concrete slabs, narrow shopfronts and local pedestrian traffic. In this cutout specifically, make the decisive evidence prominent: a hand-pushed cart halted at a step with no connecting ramp",
+      "image": "assets/06-no-ramp.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "curb ramp",
+        "wheeled access"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes would stop someone using wheels?",
+    "Where do you find walking easy or hard in Rajshahi?",
+    "Should repairs target broken slabs or blocked space first? Why?",
+    "Why might a shop use part of the footpath?",
+    "If parking is removed from the path, where might it move?",
+    "You have 150,000 BDT and 30 days. What one footpath change would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 150000,
+    "pilot_scope": "Clear and repair one short walking link, including wheeled access."
+  },
+  "evidence": {
+    "basis": "current Rajshahi reporting",
+    "sources": [
+      "https://www.tbsnews.net/supplement/why-rajshahi-city-losing-its-clean-green-healthy-image-fast-1350041"
+    ]
+  }
+}

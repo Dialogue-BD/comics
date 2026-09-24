@@ -1,0 +1,139 @@
+{
+  "title": "Prepaid Meter",
+  "slug": "prepaid-meter",
+  "band_color": "auto",
+  "seed": "rajshahi-prepaid-meter-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Prepaid Meter"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "downstairs-meter",
+      "label": "Downstairs Meter",
+      "aliases": [],
+      "description": "A renter walks downstairs from a flat toward a bank of separate electric meters.",
+      "visual_kind": "action",
+      "visual_focus": "a renter descending a stairway toward several distinct downstairs electricity meters",
+      "local_cue": "a rented Rajshahi apartment with one separate NESCO-style prepaid meter for each flat in a caged bank downstairs; no shared meter and no legible branding or text. In this cutout specifically, make the decisive evidence prominent: a renter descending a stairway toward several distinct downstairs electricity meters",
+      "image": "assets/01-downstairs-meter.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "meter downstairs",
+        "check a balance"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "caged-keypad",
+      "label": "Caged Keypad",
+      "aliases": [],
+      "description": "A renter opens the protective cage door and presses a prepaid meter keypad through the open doorway.",
+      "visual_kind": "action",
+      "visual_focus": "the barred cage door swung fully open, leaving a clear path for one hand to press the meter keypad",
+      "local_cue": "a bank of separate flat-specific prepaid meters in a downstairs Rajshahi building; the hinged barred cage door is fully open beside the renter, never crossing the hand or keypad",
+      "image": "assets/02-caged-keypad.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "meter cage",
+        "physical access"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "checking-portal",
+      "label": "Checking Portal",
+      "aliases": [],
+      "description": "A renter refreshes a meter account on a phone while remaining upstairs.",
+      "visual_kind": "action",
+      "visual_focus": "a renter upstairs repeatedly refreshing a phone account while the physical meter remains downstairs",
+      "local_cue": "a rented Rajshahi apartment with one separate NESCO-style prepaid meter for each flat in a caged bank downstairs; no shared meter and no legible branding or text. In this cutout specifically, make the decisive evidence prominent: a renter upstairs repeatedly refreshing a phone account while the physical meter remains downstairs",
+      "image": "assets/03-checking-portal.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "online reading",
+        "check the portal"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "late-top-up",
+      "label": "Late Top-Up",
+      "aliases": [],
+      "description": "A renter makes a phone payment after the fan and lights have stopped.",
+      "visual_kind": "action",
+      "visual_focus": "a dark apartment with stopped fan and a renter making a phone top-up",
+      "local_cue": "a rented Rajshahi apartment with one separate NESCO-style prepaid meter for each flat in a caged bank downstairs; no shared meter and no legible branding or text. In this cutout specifically, make the decisive evidence prominent: a dark apartment with stopped fan and a renter making a phone top-up",
+      "image": "assets/04-late-top-up.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "top up late",
+        "power cuts out"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "delayed-balance",
+      "label": "Delayed Balance",
+      "aliases": [],
+      "description": "A phone shows an older balance bar while the meter display shows a lower one.",
+      "visual_kind": "action",
+      "visual_focus": "a phone's stale high balance bar contrasted with a lower bar on the separate physical meter",
+      "local_cue": "a rented Rajshahi apartment with one separate NESCO-style prepaid meter for each flat in a caged bank downstairs; no shared meter and no legible branding or text. In this cutout specifically, make the decisive evidence prominent: a phone's stale high balance bar contrasted with a lower bar on the separate physical meter",
+      "image": "assets/05-delayed-balance.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "outdated balance",
+        "real-time reading"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "long-pin-entry",
+      "label": "Long PIN Entry",
+      "aliases": [],
+      "description": "A renter reads a long recharge PIN on a phone and keys it into a downstairs meter with the cage door fully open.",
+      "visual_kind": "action",
+      "visual_focus": "one hand holding a phone with a multi-line PIN, the other hand pressing a keypad through the clear open doorway of the swung-open cage",
+      "local_cue": "a downstairs Rajshahi bank of separate prepaid meters; the metal cage door has swung fully aside, with no bars between the renter and keypad",
+      "image": "assets/06-long-pin-entry.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "recharge token",
+        "enter a PIN"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes make checking the balance inconvenient?",
+    "Have you had to go downstairs to check or recharge a meter?",
+    "Would a live phone balance or a low-balance alert help more? Why?",
+    "Why does an online payment still require a trip to this meter?",
+    "If an alert is sent daily, what new annoyance or error might follow?",
+    "You have 80,000 BDT and 30 days. What one balance-or-recharge pilot would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 80000,
+    "pilot_scope": "Test a building-level way to read each flat’s balance remotely or deliver dependable low-balance alerts, without assuming NESCO offers a live API or remote token entry."
+  },
+  "evidence": {
+    "basis": "user report plus NESCO guidance and keypad-recharge instructions",
+    "sources": [
+      "https://customer.nesco.gov.bd/faqs",
+      "https://www.okwallet.com.bd/faq/",
+      "https://www.ntvbd.com/bangladesh/news-1619441",
+      "https://www.tbsnews.net/bangladesh/200-digit-recharge-tokens-leave-prepaid-electricity-users-frustrated-sylhet-1461086"
+    ],
+    "editor_note": "The meter arrangement, delayed remote reading, need to enter a token after an online purchase, and unusually long PIN messages are the user’s reported experience. NESCO documents meter short codes; the payment provider says keypad meters require token entry. A 2026 Sylhet report documents 80–240-digit prepaid tokens in Bangladesh; it does not establish the frequency for NESCO customers in Rajshahi.",
+    "user_detail": "The user reports that each flat usually has its own meter, the meter bank is often caged below the building, the website reading updates about once daily, and some recharge PIN messages reach about 100 characters."
+  }
+}

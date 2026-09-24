@@ -1,0 +1,134 @@
+{
+  "title": "Street Litter",
+  "slug": "street-litter",
+  "band_color": "auto",
+  "seed": "rajshahi-street-litter-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Street Litter"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "open-gutter",
+      "label": "Open Gutter",
+      "aliases": [],
+      "description": "Light food packaging blows into an uncovered street gutter.",
+      "visual_kind": "action",
+      "visual_focus": "a wrapper blowing into an open roadside gutter",
+      "local_cue": "a Bangladeshi snack wrapper beside a concrete street drain and small shopfront",
+      "image": "assets/01-open-gutter.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "street gutter",
+        "blow away"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "full-bin",
+      "label": "Full Bin",
+      "aliases": [],
+      "description": "A person tries to put a cup into an overflowing roadside bin.",
+      "visual_kind": "action",
+      "visual_focus": "a bin filled above the rim while a person holds one more cup",
+      "local_cue": "a small roadside rubbish bin beside a Rajshahi tea stall, full of paper cups",
+      "image": "assets/02-full-bin.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "overflowing bin",
+        "leave rubbish"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "sweeping-cups",
+      "label": "Sweeping Cups",
+      "aliases": [],
+      "description": "A stall worker sweeps disposable cups from the pavement into the gutter.",
+      "visual_kind": "action",
+      "visual_focus": "a broom pushing used cups off the pavement toward the gutter",
+      "local_cue": "used tea cups on a paved bazaar footpath beside a concrete gutter",
+      "image": "assets/03-sweeping-cups.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "sweep up cups",
+        "dump into a gutter"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "fruit-peels",
+      "label": "Fruit Peels",
+      "aliases": [],
+      "description": "A shopper drops fruit peels beside a busy stall.",
+      "visual_kind": "action",
+      "visual_focus": "a shopper's hand dropping fruit peels beside a stall",
+      "local_cue": "fruit peels beside a Bangladeshi produce stall with a hanging weighing scale",
+      "image": "assets/04-fruit-peels.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "discard peels",
+        "food waste"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "mixed-waste",
+      "label": "Mixed Waste",
+      "aliases": [],
+      "description": "A collector lifts one bag containing food scraps and plastic together.",
+      "visual_kind": "action",
+      "visual_focus": "food scraps and plastic visible together in the same lifted bag",
+      "local_cue": "a waste bag holding fruit peels and plastic cups beside a produce stall",
+      "image": "assets/05-mixed-waste.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "mixed waste",
+        "sort rubbish"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "carrying-waste",
+      "label": "Carrying Waste",
+      "aliases": [],
+      "description": "A vendor carries a full waste bag past several stalls toward a collection cart far down the lane.",
+      "visual_kind": "action",
+      "visual_focus": "a vendor carrying a full waste bag toward a distant collection cart",
+      "local_cue": "a Rajshahi bazaar vendor carrying a sack to a small hand-pulled collection cart",
+      "image": "assets/06-carrying-waste.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "collection point",
+        "carry waste"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes could spread litter fastest?",
+    "Where do you notice litter on a route you use in Rajshahi?",
+    "Should a stall worker or a shopper deal with a used cup? Why?",
+    "Why might a vendor sweep waste into the gutter?",
+    "If extra bins appear, who will empty them and when?",
+    "You have 100,000 BDT and 30 days. What one waste-handling change would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 100000,
+    "pilot_scope": "Trial waste containers and a collection agreement with one stall cluster."
+  },
+  "evidence": {
+    "basis": "supplied brief plus current reporting",
+    "sources": [
+      "https://www.tbsnews.net/supplement/why-rajshahi-city-losing-its-clean-green-healthy-image-fast-1350041"
+    ]
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "title": "Rain Flooding",
+  "slug": "rain-flooding",
+  "band_color": "auto",
+  "seed": "rajshahi-rain-flooding-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Rain Flooding"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "low-walkway",
+      "label": "Low Walkway",
+      "aliases": [],
+      "description": "People step through water covering a low walking route after rain.",
+      "visual_kind": "action",
+      "visual_focus": "pedestrians wading through water covering a low footpath",
+      "local_cue": "a Rajshahi city street after intense monsoon rain, with concrete walkways, small shopfronts, easy bikes and clogged roadside outlets. In this cutout specifically, make the decisive evidence prominent: pedestrians wading through water covering a low footpath",
+      "image": "assets/01-low-walkway.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "low walkway",
+        "flooded path"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "water-at-entrance",
+      "label": "Water at Entrance",
+      "aliases": [],
+      "description": "A shop worker lifts goods while rainwater reaches a doorway.",
+      "visual_kind": "action",
+      "visual_focus": "a shop worker lifting goods as floodwater reaches the doorway",
+      "local_cue": "a Rajshahi city street after intense monsoon rain, with concrete walkways, small shopfronts, easy bikes and clogged roadside outlets. In this cutout specifically, make the decisive evidence prominent: a shop worker lifting goods as floodwater reaches the doorway",
+      "image": "assets/02-water-at-entrance.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "water at the door",
+        "lift goods"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "splashing-wheels",
+      "label": "Splashing Wheels",
+      "aliases": [],
+      "description": "A vehicle drives through pooled water and splashes a person nearby.",
+      "visual_kind": "action",
+      "visual_focus": "an easy-bike wheel splashing a nearby pedestrian through pooled water",
+      "local_cue": "a Rajshahi city street after intense monsoon rain, with concrete walkways, small shopfronts, easy bikes and clogged roadside outlets. In this cutout specifically, make the decisive evidence prominent: an easy-bike wheel splashing a nearby pedestrian through pooled water",
+      "image": "assets/03-splashing-wheels.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "drive through water",
+        "splash pedestrians"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "raised-detour",
+      "label": "Raised Detour",
+      "aliases": [],
+      "description": "Walkers climb onto a narrow raised edge to avoid the flooded path.",
+      "visual_kind": "action",
+      "visual_focus": "walkers balancing on a narrow raised edge beside a flooded route",
+      "local_cue": "a Rajshahi city street after intense monsoon rain, with concrete walkways, small shopfronts, easy bikes and clogged roadside outlets. In this cutout specifically, make the decisive evidence prominent: walkers balancing on a narrow raised edge beside a flooded route",
+      "image": "assets/04-raised-detour.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "take a detour",
+        "avoid floodwater"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "clogged-outflow",
+      "label": "Clogged Outflow",
+      "aliases": [],
+      "description": "A worker pulls debris from an outlet while water backs up across the path.",
+      "visual_kind": "action",
+      "visual_focus": "a worker pulling debris from a clogged outlet while water backs up",
+      "local_cue": "a Rajshahi city street after intense monsoon rain, with concrete walkways, small shopfronts, easy bikes and clogged roadside outlets. In this cutout specifically, make the decisive evidence prominent: a worker pulling debris from a clogged outlet while water backs up",
+      "image": "assets/05-clogged-outflow.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "clear an outlet",
+        "backed-up water"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "no-overflow-route",
+      "label": "No Overflow Route",
+      "aliases": [],
+      "description": "Rainwater reaches a temporary barrier and spreads toward nearby stalls.",
+      "visual_kind": "action",
+      "visual_focus": "rainwater spreading around a temporary barrier toward market stalls",
+      "local_cue": "a Rajshahi city street after intense monsoon rain, with concrete walkways, small shopfronts, easy bikes and clogged roadside outlets. In this cutout specifically, make the decisive evidence prominent: rainwater spreading around a temporary barrier toward market stalls",
+      "image": "assets/06-no-overflow-route.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "overflow route",
+        "redirect water"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes stop a person from staying dry?",
+    "What happens on your usual route after heavy rain in Rajshahi?",
+    "Should a team raise a walkway or clear an outlet first? Why?",
+    "Why does water return to the same place after rain?",
+    "If water is sent down another lane, who could be affected?",
+    "You have 350,000 BDT and 30 days. What one flood-route change would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 350000,
+    "pilot_scope": "Test a safe temporary walking route and outlet maintenance at one repeat flooding point."
+  },
+  "evidence": {
+    "basis": "current Rajshahi reporting",
+    "sources": [
+      "https://www.dhakatribune.com/amp/bangladesh/nation/418951/heavy-rain-paralyses-life-in-rajshahi"
+    ]
+  }
+}

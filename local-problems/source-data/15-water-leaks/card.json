@@ -1,0 +1,134 @@
+{
+  "title": "Water Leaks",
+  "slug": "water-leaks",
+  "band_color": "auto",
+  "seed": "rajshahi-water-leaks-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Water Leaks"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "street-leak",
+      "label": "Street Leak",
+      "aliases": [],
+      "description": "Water streams from a break in the roadside pipe and runs toward a drain.",
+      "visual_kind": "action",
+      "visual_focus": "water visibly spurting from a broken roadside pipe into a drain",
+      "local_cue": "a Rajshahi residential lane with concrete roadside drain, household taps, buried municipal pipe and locally typical small repair crew. In this cutout specifically, make the decisive evidence prominent: water visibly spurting from a broken roadside pipe into a drain",
+      "image": "assets/01-street-leak.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "pipe leak",
+        "water loss"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "weak-tap",
+      "label": "Weak Tap",
+      "aliases": [],
+      "description": "A resident waits as only a thin stream comes from a household tap.",
+      "visual_kind": "action",
+      "visual_focus": "a resident waiting under a household tap that gives only a thin stream",
+      "local_cue": "a Rajshahi residential lane with concrete roadside drain, household taps, buried municipal pipe and locally typical small repair crew. In this cutout specifically, make the decisive evidence prominent: a resident waiting under a household tap that gives only a thin stream",
+      "image": "assets/02-weak-tap.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "low pressure",
+        "water supply"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "reporting-again",
+      "label": "Reporting Again",
+      "aliases": [],
+      "description": "A resident shows a photo of the same street leak to a service worker.",
+      "visual_kind": "action",
+      "visual_focus": "a resident showing a leak photograph on a phone to a service worker",
+      "local_cue": "a Rajshahi residential lane with concrete roadside drain, household taps, buried municipal pipe and locally typical small repair crew. In this cutout specifically, make the decisive evidence prominent: a resident showing a leak photograph on a phone to a service worker",
+      "image": "assets/03-reporting-again.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "report a leak",
+        "follow up"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "storing-water",
+      "label": "Storing Water",
+      "aliases": [],
+      "description": "A household member fills containers while the tap is working.",
+      "visual_kind": "action",
+      "visual_focus": "a household member filling several containers while tap water is available",
+      "local_cue": "a Rajshahi residential lane with concrete roadside drain, household taps, buried municipal pipe and locally typical small repair crew. In this cutout specifically, make the decisive evidence prominent: a household member filling several containers while tap water is available",
+      "image": "assets/04-storing-water.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "store water",
+        "plan ahead"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "buried-pipe",
+      "label": "Buried Pipe",
+      "aliases": [],
+      "description": "A repair worker searches for a leaking pipe beneath a recently paved road.",
+      "visual_kind": "action",
+      "visual_focus": "a repair worker locating a buried leaking pipe beneath recently paved road",
+      "local_cue": "a Rajshahi residential lane with concrete roadside drain, household taps, buried municipal pipe and locally typical small repair crew. In this cutout specifically, make the decisive evidence prominent: a repair worker locating a buried leaking pipe beneath recently paved road",
+      "image": "assets/05-buried-pipe.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "buried pipe",
+        "repair access"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "repair-delay",
+      "label": "Repair Delay",
+      "aliases": [],
+      "description": "A small crew arrives with tools while the leak continues beside traffic.",
+      "visual_kind": "action",
+      "visual_focus": "a small repair crew arriving with tools while water still leaks beside passing easy bikes",
+      "local_cue": "a Rajshahi residential lane with concrete roadside drain, household taps, buried municipal pipe and locally typical small repair crew. In this cutout specifically, make the decisive evidence prominent: a small repair crew arriving with tools while water still leaks beside passing easy bikes",
+      "image": "assets/06-repair-delay.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "repair crew",
+        "response time"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes show water being lost or unavailable?",
+    "Have you seen a leaking pipe or weak water supply in Rajshahi?",
+    "Should a team fix visible leaks or investigate weak taps first? Why?",
+    "Why can a leak beneath a paved road take time to repair?",
+    "If repairs dig up a street, who faces a new problem?",
+    "You have 200,000 BDT and 30 days. What one leak-reporting pilot would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 200000,
+    "pilot_scope": "Trial faster leak reporting and follow-up for one cluster of streets, with the water utility involved."
+  },
+  "evidence": {
+    "basis": "current Rajshahi reporting",
+    "sources": [
+      "https://www.dhakapost.com/country/401524"
+    ]
+  }
+}

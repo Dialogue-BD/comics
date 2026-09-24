@@ -1,0 +1,134 @@
+{
+  "title": "Power Cut",
+  "slug": "power-cut",
+  "band_color": "auto",
+  "seed": "rajshahi-power-cut-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Power Cut"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "dark-study-room",
+      "label": "Dark Study Room",
+      "aliases": [],
+      "description": "A student leans over a book in a room whose light has gone out.",
+      "visual_kind": "action",
+      "visual_focus": "a student bent over an open book below a switched-off lamp",
+      "local_cue": "a Bangladeshi student's notebook and locally typical small apartment furnishings",
+      "image": "assets/01-dark-study-room.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "study in the dark",
+        "lose power"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "hot-room",
+      "label": "Hot Room",
+      "aliases": [],
+      "description": "A person fans themself beside a motionless ceiling fan.",
+      "visual_kind": "action",
+      "visual_focus": "a person fanning their face beneath a still ceiling fan",
+      "local_cue": "a Rajshahi apartment ceiling fan and an open summer window with metal grille",
+      "image": "assets/02-hot-room.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "stifling room",
+        "cool down"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "phone-flashlight",
+      "label": "Phone Flashlight",
+      "aliases": [],
+      "description": "A student aims a phone light at a notebook as the battery icon glows low.",
+      "visual_kind": "action",
+      "visual_focus": "a phone flashlight beam falling directly on a student's notebook",
+      "local_cue": "a Bangladeshi student using a phone torch at a compact apartment study table",
+      "image": "assets/03-phone-flashlight.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "use a flashlight",
+        "save battery"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "generator-fumes",
+      "label": "Generator Fumes",
+      "aliases": [],
+      "description": "A shopkeeper starts a small generator while a passerby covers their nose.",
+      "visual_kind": "action",
+      "visual_focus": "a generator exhaust pipe and a nearby person's covered nose",
+      "local_cue": "a small petrol generator at a ground-floor Bangladeshi shop entrance",
+      "image": "assets/04-generator-fumes.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "run a generator",
+        "breathe fumes"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "dead-router",
+      "label": "Dead Router",
+      "aliases": [],
+      "description": "A worker tries to reconnect a laptop beside an unlit router.",
+      "visual_kind": "action",
+      "visual_focus": "an unlit router beside a laptop showing a broken-connection symbol",
+      "local_cue": "a compact router and laptop at a Rajshahi apartment study table",
+      "image": "assets/05-dead-router.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "internet connection",
+        "lose connectivity"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "limited-charging",
+      "label": "Limited Charging",
+      "aliases": [],
+      "description": "Several people wait to charge devices at one small battery backup.",
+      "visual_kind": "action",
+      "visual_focus": "several charging cables competing for one small backup battery",
+      "local_cue": "several Bangladeshi students and a small backup battery on an apartment table",
+      "image": "assets/06-limited-charging.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "backup power",
+        "limited capacity"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes make studying hardest?",
+    "When did a power cut last change your plans in Rajshahi?",
+    "Should a shared backup power point serve students or shops first? Why?",
+    "Why might a shop use a smoky generator despite the cost?",
+    "If one building offers free charging, what new problem might appear?",
+    "You have 150,000 BDT and 30 days. What one backup-power idea would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 150000,
+    "pilot_scope": "Pilot backup light and charging for one shared study area."
+  },
+  "evidence": {
+    "basis": "supplied brief plus Rajshahi student reporting",
+    "sources": [
+      "https://thedailycampus.com/public-university/212609"
+    ]
+  }
+}

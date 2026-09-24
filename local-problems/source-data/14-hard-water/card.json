@@ -1,0 +1,137 @@
+{
+  "title": "Hard Water",
+  "slug": "hard-water",
+  "band_color": "auto",
+  "seed": "rajshahi-hard-water-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Hard Water"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "white-scale",
+      "label": "White Scale",
+      "aliases": [],
+      "description": "A thick white ring builds around a bathroom tap and slows the stream.",
+      "visual_kind": "action",
+      "visual_focus": "a thick white mineral ring around a tap with a slowed water stream",
+      "local_cue": "a modest tiled bathroom in a rented Rajshahi flat; mineral-heavy groundwater leaves white calcium scale and orange iron stains on ordinary taps. In this cutout specifically, make the decisive evidence prominent: a thick white mineral ring around a tap with a slowed water stream",
+      "image": "assets/01-white-scale.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "calcium scale",
+        "clog a tap"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "iron-stains",
+      "label": "Iron Stains",
+      "aliases": [],
+      "description": "Orange-brown marks spread below a running bathroom faucet.",
+      "visual_kind": "action",
+      "visual_focus": "orange-brown iron streaks spreading below a running faucet",
+      "local_cue": "a modest tiled bathroom in a rented Rajshahi flat; mineral-heavy groundwater leaves white calcium scale and orange iron stains on ordinary taps. In this cutout specifically, make the decisive evidence prominent: orange-brown iron streaks spreading below a running faucet",
+      "image": "assets/02-iron-stains.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "iron staining",
+        "rust-coloured marks"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "scrubbing-tiles",
+      "label": "Scrubbing Tiles",
+      "aliases": [],
+      "description": "A renter scrubs mineral marks from bathroom tiles.",
+      "visual_kind": "action",
+      "visual_focus": "gloved hands scrubbing white mineral scale from bathroom tiles",
+      "local_cue": "a modest tiled bathroom in a rented Rajshahi flat; mineral-heavy groundwater leaves white calcium scale and orange iron stains on ordinary taps. In this cutout specifically, make the decisive evidence prominent: gloved hands scrubbing white mineral scale from bathroom tiles",
+      "image": "assets/03-scrubbing-tiles.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "scrub a surface",
+        "remove scale"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "replacing-taps",
+      "label": "Replacing Taps",
+      "aliases": [],
+      "description": "A plumber removes another worn tap while the renter holds a new fitting.",
+      "visual_kind": "action",
+      "visual_focus": "a plumber unscrewing a worn tap while the renter holds a replacement fitting",
+      "local_cue": "a modest tiled bathroom in a rented Rajshahi flat; mineral-heavy groundwater leaves white calcium scale and orange iron stains on ordinary taps. In this cutout specifically, make the decisive evidence prominent: a plumber unscrewing a worn tap while the renter holds a replacement fitting",
+      "image": "assets/04-replacing-taps.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "replace a tap",
+        "repair costs"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "strong-cleaner",
+      "label": "Strong Cleaner",
+      "aliases": [],
+      "description": "A cleaner wearing gloves applies a strong liquid to stained bathroom tiles.",
+      "visual_kind": "action",
+      "visual_focus": "gloved hands carefully applying a strong cleaner from an unbranded bottle to stained tile; no household brand or acid hazard graphics",
+      "local_cue": "a modest tiled bathroom in a rented Rajshahi flat; mineral-heavy groundwater leaves white calcium scale and orange iron stains on ordinary taps. In this cutout specifically, make the decisive evidence prominent: gloved hands carefully applying a strong cleaner from an unbranded bottle to stained tile; no household brand or acid hazard graphics",
+      "image": "assets/05-strong-cleaner.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "strong cleaner",
+        "cleaning runoff"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "no-water-test",
+      "label": "No Water Test",
+      "aliases": [],
+      "description": "A renter and landlord examine stained fixtures beside an unused sample bottle.",
+      "visual_kind": "action",
+      "visual_focus": "a renter and landlord comparing stained fittings beside an unopened sample bottle",
+      "local_cue": "a modest tiled bathroom in a rented Rajshahi flat; mineral-heavy groundwater leaves white calcium scale and orange iron stains on ordinary taps. In this cutout specifically, make the decisive evidence prominent: a renter and landlord comparing stained fittings beside an unopened sample bottle",
+      "image": "assets/06-no-water-test.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "test the water",
+        "share the cost"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes show what the water leaves behind?",
+    "What water marks or maintenance problems have you seen in Rajshahi?",
+    "Should the first money go to water testing or sturdier taps? Why?",
+    "Why might renters keep buying strong cleaner instead of fixing the source?",
+    "If residents use more strong cleaner, what problem may follow?",
+    "You have 100,000 BDT and 30 days. What one water-and-fixture pilot would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 100000,
+    "pilot_scope": "Test water in one building, document iron and hardness, and trial a practical fixture or treatment response."
+  },
+  "evidence": {
+    "basis": "user report plus Rajshahi water research",
+    "sources": [
+      "https://doi.org/10.1007/S13201-017-0629-Y",
+      "https://www.orientjchem.org/vol15no2/measurement-of-the-quality-of-drinking-water-in-and-around-the-rajshahi-city-of-bangladesh/"
+    ],
+    "editor_note": "The renter reports the high TDS and iron/calcium; TDS alone does not measure hardness. A local sample would need testing.",
+    "user_detail": "The renter uses Damp Fix for stubborn deposits; its exact formulation is not assumed here."
+  }
+}

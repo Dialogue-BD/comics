@@ -1,0 +1,135 @@
+{
+  "title": "Lost Ponds",
+  "slug": "lost-ponds",
+  "band_color": "auto",
+  "seed": "rajshahi-lost-ponds-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Lost Ponds"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "covered-pond-edge",
+      "label": "Covered Pond Edge",
+      "aliases": [],
+      "description": "A truck tips soil into the edge of a small city pond.",
+      "visual_kind": "action",
+      "visual_focus": "a local dump truck tipping soil into the edge of a city pond",
+      "local_cue": "a small urban pond in Rajshahi, with water plants, earth fill, a local dump truck and nearby building materials; preserve a visible remaining pond edge. In this cutout specifically, make the decisive evidence prominent: a local dump truck tipping soil into the edge of a city pond",
+      "image": "assets/01-covered-pond-edge.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "fill a pond",
+        "pond edge"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "blocked-inlet",
+      "label": "Blocked Inlet",
+      "aliases": [],
+      "description": "Rainwater runs past a pond entrance blocked with earth.",
+      "visual_kind": "action",
+      "visual_focus": "rainwater flowing past a pond inlet blocked with fresh earth",
+      "local_cue": "a small urban pond in Rajshahi, with water plants, earth fill, a local dump truck and nearby building materials; preserve a visible remaining pond edge. In this cutout specifically, make the decisive evidence prominent: rainwater flowing past a pond inlet blocked with fresh earth",
+      "image": "assets/02-blocked-inlet.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "water inlet",
+        "block drainage"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "dumping-soil",
+      "label": "Dumping Soil",
+      "aliases": [],
+      "description": "A worker spreads new fill over a wet section near the pond.",
+      "visual_kind": "action",
+      "visual_focus": "a worker spreading soil over wet ground at the pond edge",
+      "local_cue": "a small urban pond in Rajshahi, with water plants, earth fill, a local dump truck and nearby building materials; preserve a visible remaining pond edge. In this cutout specifically, make the decisive evidence prominent: a worker spreading soil over wet ground at the pond edge",
+      "image": "assets/03-dumping-soil.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "dump soil",
+        "raise the ground"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "reporting-fill",
+      "label": "Reporting Fill",
+      "aliases": [],
+      "description": "A resident photographs fresh fill beside a pond.",
+      "visual_kind": "action",
+      "visual_focus": "a resident photographing freshly dumped fill beside the pond",
+      "local_cue": "a small urban pond in Rajshahi, with water plants, earth fill, a local dump truck and nearby building materials; preserve a visible remaining pond edge. In this cutout specifically, make the decisive evidence prominent: a resident photographing freshly dumped fill beside the pond",
+      "image": "assets/04-reporting-fill.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "report filling",
+        "document change"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "building-pressure",
+      "label": "Building Pressure",
+      "aliases": [],
+      "description": "Construction materials are stacked beside the shrinking water edge.",
+      "visual_kind": "action",
+      "visual_focus": "construction supplies stacked beside visibly shrinking pond water",
+      "local_cue": "a small urban pond in Rajshahi, with water plants, earth fill, a local dump truck and nearby building materials; preserve a visible remaining pond edge. In this cutout specifically, make the decisive evidence prominent: construction supplies stacked beside visibly shrinking pond water",
+      "image": "assets/05-building-pressure.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "land pressure",
+        "building site"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "weak-boundary",
+      "label": "Weak Boundary",
+      "aliases": [],
+      "description": "A caretaker tries to mark the pond boundary after soil has already spread.",
+      "visual_kind": "action",
+      "visual_focus": "a caretaker placing boundary markers after earth has spread into the pond",
+      "local_cue": "a small urban pond in Rajshahi, with water plants, earth fill, a local dump truck and nearby building materials; preserve a visible remaining pond edge. In this cutout specifically, make the decisive evidence prominent: a caretaker placing boundary markers after earth has spread into the pond",
+      "image": "assets/06-weak-boundary.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "pond boundary",
+        "protect a wetland"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes show the pond losing space?",
+    "What pond or water space matters to people near you?",
+    "Should the first effort map pond edges or remove new fill? Why?",
+    "Why might someone try to turn a pond into building land?",
+    "If a pond is restored, who may bear the cost?",
+    "You have 300,000 BDT and 30 days. What one pond-protection pilot would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 300000,
+    "pilot_scope": "Map and monitor one threatened pond with residents and authorities; do not attempt land acquisition or re-excavation with this grant."
+  },
+  "evidence": {
+    "basis": "2025-26 Rajshahi reporting",
+    "sources": [
+      "https://www.bssnews.net/district/348661",
+      "https://www.newagebd.net/post/country/287410/illegally-filled-pond-reclaimed-in-rajshahi"
+    ]
+  }
+}

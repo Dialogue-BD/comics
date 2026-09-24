@@ -1,0 +1,3717 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" sizes="48x48" href="../favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#101218">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Local Problems — Conversation Cards</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --accent: 193 86% 64%;
+      --ink: #f7f7f4;
+      --muted: rgba(247, 247, 244, .66);
+      --glass: rgba(20, 22, 29, .66);
+      --border: rgba(255, 255, 255, .14);
+      --card-ratio: .6470588;
+      font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #101218;
+    }
+
+    body {
+      color: var(--ink);
+      overscroll-behavior: none;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    button { font: inherit; }
+
+    [hidden] { display: none !important; }
+
+    .app {
+      position: fixed;
+      inset: 0;
+      min-height: 100dvh;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 42%, hsl(var(--accent) / .19), transparent 42%),
+        radial-gradient(circle at 82% 4%, hsl(var(--accent-shifted, 260 80% 64%) / .1), transparent 34%),
+        linear-gradient(145deg, #171a22 0%, #0c0e13 58%, #12141b 100%);
+      transition: background .45s ease;
+    }
+
+    .app::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .18;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+
+    .topbar {
+      position: absolute;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: max(14px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) 10px max(18px, env(safe-area-inset-left));
+      pointer-events: none;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      flex: 1 1 auto;
+      letter-spacing: -.02em;
+      font-size: clamp(.95rem, 3.7vw, 1.08rem);
+      font-weight: 760;
+    }
+
+    .brand > span:last-child {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 11px;
+      height: 11px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: hsl(var(--accent));
+      box-shadow: 0 0 0 5px hsl(var(--accent) / .14), 0 0 22px hsl(var(--accent) / .65);
+    }
+
+    .side-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 7px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--glass);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, .2);
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    /* Score chip: persistent app-chrome state (like the score itself, which
+       lives for the whole game, not just the current round) belongs in the
+       topbar alongside the brand/menu — not inside the per-round game strip
+       below. Hidden by default; JS shows it only during mobile class games. */
+    .game-score-chip {
+      display: none;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: hsl(var(--accent) / .16);
+      color: hsl(var(--accent));
+      font-size: .74rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .game-score-chip[hidden] { display: none; }
+
+    .stage {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      /* --game-header-h is measured live by updateGameHeaderReserve() from the
+         actual rendered height of #game-strip (see the JS) and defaults to 0px
+         whenever the strip is hidden (desktop, browse mode, audio match). This
+         reserves exactly as much extra top padding as the strip needs, so the
+         centered card shrinks slightly to sit below it instead of the strip
+         floating over — and cropping — the top of the card. */
+      padding:
+        calc(max(65px, calc(env(safe-area-inset-top) + 56px)) + var(--game-header-h, 0px))
+        max(16px, env(safe-area-inset-right))
+        max(92px, calc(env(safe-area-inset-bottom) + 76px))
+        max(16px, env(safe-area-inset-left));
+      perspective: 1500px;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    .stage.is-dragging { cursor: grabbing; }
+
+    /* Side-by-side view scrolls its own content (see .dual-stage overflow-y below).
+       touch-action is not simply inherited: a browser computes the allowed touch
+       behavior for a touch point as the intersection of the touch-action values of
+       the target element AND all of its ancestors — so .stage's "none" (needed to
+       stop the browser from panning/zooming while the card is being drag-flipped)
+       silently blocks touch-scrolling in any descendant even when that descendant
+       itself declares touch-action: auto. Relax it back to vertical panning only
+       while dual view is active so the stacked cards can be scrolled by touch. */
+    .stage.is-dual { touch-action: pan-y; }
+
+    .deck {
+      position: relative;
+      width: min(calc(100vw - 32px), calc((100dvh - 157px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px);
+      aspect-ratio: 198 / 306;
+      transform-style: preserve-3d;
+      transition: opacity .16s ease, scale .16s ease, filter .16s ease;
+    }
+
+    .deck.is-changing {
+      opacity: 0;
+      scale: .94;
+      filter: blur(5px);
+    }
+
+    .card {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      border: 0;
+      border-radius: clamp(14px, 4.6vw, 25px);
+      outline: none;
+      color: inherit;
+      background: transparent;
+      box-shadow:
+        0 3px 2px rgba(255, 255, 255, .22) inset,
+        0 22px 68px rgba(0, 0, 0, .54),
+        0 5px 15px rgba(0, 0, 0, .35);
+      transform-style: preserve-3d;
+      transform: translate3d(var(--drag-x, 0px), 0, 0) rotateZ(var(--tilt-z, 0deg)) rotateY(var(--rotate-y, 0deg));
+      transition: transform .62s cubic-bezier(.2, .84, .24, 1);
+      will-change: transform;
+      cursor: inherit;
+    }
+
+    .card::before,
+    .card::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      bottom: 12px;
+      width: 9px;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(90deg, #aaa9a4, #f7f6f1 48%, #b8b7b1);
+      backface-visibility: visible;
+      -webkit-backface-visibility: visible;
+    }
+
+    .card::before {
+      left: 0;
+      transform-origin: left center;
+      transform: rotateY(90deg);
+    }
+
+    .card::after {
+      right: 0;
+      transform-origin: right center;
+      transform: rotateY(-90deg);
+    }
+
+    .card.is-dragging { transition: none; }
+
+    .card:focus-visible {
+      box-shadow:
+        0 0 0 4px hsl(var(--accent) / .92),
+        0 22px 68px rgba(0, 0, 0, .54);
+    }
+
+    .face {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .36);
+      border-radius: inherit;
+      background: #f8f7f2;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: translateZ(.5px);
+    }
+
+    .face.back { transform: rotateY(180deg) translateZ(.5px); }
+
+    .face img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+
+    .shine {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      border-radius: inherit;
+      opacity: var(--shine-opacity, .08);
+      pointer-events: none;
+      background: linear-gradient(var(--shine-angle, 118deg), transparent 18%, rgba(255,255,255,.7) 48%, transparent 70%);
+      mix-blend-mode: screen;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .footer {
+      position: absolute;
+      z-index: 20;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: end;
+      gap: 12px;
+      padding: 10px max(16px, env(safe-area-inset-right)) max(14px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+      pointer-events: none;
+    }
+
+    .footer > * { pointer-events: auto; }
+
+    .action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      width: max-content;
+      padding: 0 15px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--glass);
+      color: var(--ink);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .24);
+      cursor: pointer;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+
+    .action:hover { background: rgba(37, 40, 50, .82); border-color: rgba(255,255,255,.24); }
+    .action:active { transform: scale(.94); }
+    .action:focus-visible { outline: 3px solid hsl(var(--accent)); outline-offset: 3px; }
+    .action svg { width: 19px; height: 19px; }
+    .action span { font-size: .82rem; font-weight: 760; }
+    .fullscreen { justify-self: end; width: 48px; padding: 0; }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      pointer-events: auto;
+    }
+
+    .view-toggle {
+      min-height: 34px;
+      padding: 6px 14px;
+      font-size: .78rem;
+      font-weight: 760;
+      gap: 6px;
+      background: var(--glass);
+      border: 1px solid hsl(var(--accent) / .42);
+      color: hsl(var(--accent));
+      border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+      cursor: pointer;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .view-toggle:hover {
+      background: hsl(var(--accent) / .2);
+      border-color: hsl(var(--accent));
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .view-toggle.active {
+      background: hsl(var(--accent));
+      color: #0d1117;
+      border-color: transparent;
+      box-shadow: 0 0 18px hsl(var(--accent) / .5);
+    }
+
+    .game-menu-button {
+      background: hsl(var(--accent) / .16);
+      border-color: hsl(var(--accent) / .42);
+    }
+
+    .category-mask {
+      position: absolute;
+      z-index: 7;
+      top: 1.3%;
+      left: 5%;
+      width: 90%;
+      height: 9.2%;
+      overflow: hidden;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .58);
+      backdrop-filter: blur(15px) saturate(.25);
+      -webkit-backdrop-filter: blur(15px) saturate(.25);
+      transition: opacity .35s ease, transform .35s ease;
+      pointer-events: none;
+    }
+
+    .category-mask::after {
+      content: "Mystery category";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #4e5360;
+      font-size: clamp(.62rem, 2.2vw, .85rem);
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 5px white;
+    }
+
+    .category-mask.is-revealed { opacity: 0; transform: scale(1.04); }
+
+    .item-grid {
+      position: absolute;
+      z-index: 7;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .item-cell {
+      position: absolute;
+      width: 48%;
+      height: 24%;
+      border: 1px solid rgba(35, 39, 49, .1);
+      border-radius: 11px;
+      background:
+        radial-gradient(circle at 30% 25%, hsl(var(--accent) / .12), transparent 42%),
+        #faf9f5;
+      box-shadow: 0 3px 13px rgba(22, 25, 33, .07) inset;
+      transition: background .32s ease, border-color .32s ease, box-shadow .32s ease;
+      appearance: none;
+      padding: 0;
+      color: inherit;
+      font: inherit;
+    }
+
+    .item-cell:nth-child(1), .item-cell:nth-child(2) { top: 8%; }
+    .item-cell:nth-child(3), .item-cell:nth-child(4) { top: 32%; }
+    .item-cell:nth-child(5), .item-cell:nth-child(6) { top: 56%; }
+    .item-cell:nth-child(odd) { left: 1%; }
+    .item-cell:nth-child(even) { left: 51%; }
+
+    .item-question {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: hsl(var(--accent) / .72);
+      font-size: clamp(1.5rem, 7vw, 3.2rem);
+      font-weight: 950;
+      transition: opacity .2s ease, transform .25s ease;
+    }
+
+    .item-label {
+      position: absolute;
+      left: 50%;
+      bottom: 5px;
+      max-width: calc(100% - 12px);
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: #11141b;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, .18);
+      font-size: clamp(.52rem, 1.8vw, .76rem);
+      font-weight: 900;
+      line-height: 1.05;
+      text-align: center;
+      opacity: 0;
+      transform: translate(-50%, 7px);
+      transition: opacity .25s ease .08s, transform .25s ease .08s;
+    }
+
+    .item-cell.is-revealed {
+      border-color: transparent;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .item-cell.is-revealed .item-question { opacity: 0; transform: scale(.7); }
+    .item-cell.is-revealed .item-label { opacity: 1; transform: translate(-50%, 0); }
+
+    .item-grid.is-link-mode { pointer-events: auto; }
+    .item-grid.is-link-mode .item-cell {
+      border: 2px solid transparent;
+      background: transparent;
+      box-shadow: none;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .item-grid.is-link-mode .item-cell:hover,
+    .item-grid.is-link-mode .item-cell:focus-visible {
+      border-color: hsl(var(--accent) / .65);
+      background: hsl(var(--accent) / .09);
+      outline: none;
+    }
+    .item-grid.is-link-mode .item-question,
+    .item-grid.is-link-mode .item-label { display: none; }
+    .item-grid.is-link-mode .item-cell.is-selected,
+    .item-grid.is-link-mode .item-cell.is-target {
+      border-color: hsl(var(--accent));
+      background: hsl(var(--accent) / .18);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.82) inset, 0 0 24px hsl(var(--accent) / .42);
+    }
+    .item-grid.is-link-mode .item-cell.is-correct {
+      border-color: #8ee55d;
+      background: rgba(126, 214, 76, .2);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.84) inset, 0 0 24px rgba(126, 214, 76,.5);
+    }
+    .item-grid.is-link-mode .item-cell.is-wrong {
+      border-color: #ff6f68;
+      background: rgba(255, 91, 83, .18);
+      animation: link-wrong .34s ease;
+    }
+    .item-grid.is-link-mode.is-pair-word .item-cell,
+    .item-grid.is-link-mode.is-locked .item-cell { pointer-events: none; }
+    @keyframes link-wrong {
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+
+    .item-footer-mask {
+      position: absolute;
+      z-index: 6;
+      inset: 79% -1px -1px;
+      background: #f3f6f8;
+      pointer-events: none;
+    }
+
+    .item-listen-grid {
+      position: absolute;
+      z-index: 8;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .item-listen-button {
+      position: absolute;
+      width: 48%;
+      height: 24%;
+      padding: 0;
+      border: 2px dashed hsl(var(--accent) / .72);
+      border-radius: 13px;
+      color: #11141b;
+      background: hsl(var(--accent) / .08);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, .68) inset;
+      cursor: pointer;
+      pointer-events: auto;
+      touch-action: manipulation;
+      transition: background .18s ease, border-color .18s ease, transform .18s ease;
+    }
+
+    .item-listen-button:nth-child(1), .item-listen-button:nth-child(2) { top: 8%; }
+    .item-listen-button:nth-child(3), .item-listen-button:nth-child(4) { top: 32%; }
+    .item-listen-button:nth-child(5), .item-listen-button:nth-child(6) { top: 56%; }
+    .item-listen-button:nth-child(odd) { left: 1%; }
+    .item-listen-button:nth-child(even) { left: 51%; }
+
+    .item-listen-button span {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      color: #101218;
+      background: hsl(var(--accent));
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .24);
+      font-size: 1rem;
+    }
+
+    .item-listen-button:hover,
+    .item-listen-button:focus-visible,
+    .item-listen-button.is-speaking {
+      border-color: hsl(var(--accent));
+      outline: none;
+      background: hsl(var(--accent) / .2);
+      transform: scale(.985);
+    }
+
+    .question-listen-layer {
+      position: absolute;
+      z-index: 9;
+      inset: 0;
+      pointer-events: auto;
+    }
+
+    .question-listen-button {
+      position: absolute;
+      left: var(--question-x);
+      top: var(--question-y);
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 28px;
+      padding: 0;
+      border: 0;
+      border-radius: 4px;
+      color: #242122;
+      background: transparent;
+      cursor: pointer;
+      pointer-events: auto;
+      touch-action: manipulation;
+      transform: translateY(-50%);
+      transition: color .14s ease, background .14s ease, transform .14s ease;
+    }
+
+    .question-listen-button:hover,
+    .question-listen-button:focus-visible,
+    .question-listen-button.is-speaking {
+      color: #8a5600;
+      outline: 2px solid rgba(138, 86, 0, .62);
+      outline-offset: 1px;
+      background: rgba(251, 191, 36, .22);
+      transform: translateY(-50%) scale(1.04);
+    }
+
+    .question-listen-button .speaker-glyph { width: 18px; height: 18px; }
+
+    .game-picker {
+      position: fixed;
+      z-index: 100;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      background: rgba(7, 9, 14, .76);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      overflow-y: auto;
+    }
+
+    .game-picker-card {
+      position: relative;
+      width: min(760px, 100%);
+      padding: clamp(24px, 5vw, 42px);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: #191c25;
+      box-shadow: 0 35px 110px rgba(0,0,0,.58);
+    }
+
+    .game-picker-card > p { max-width: 590px; margin: 8px 0 25px; color: var(--muted); line-height: 1.55; }
+    .game-picker-card h2 { margin: 0; font-size: clamp(2rem, 7vw, 4.4rem); line-height: .95; letter-spacing: -.055em; }
+    .game-picker-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 13px; color: var(--muted); background: rgba(255,255,255,.05); font-size: 1.3rem; cursor: pointer; }
+    .game-options { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    .game-option { min-height: 154px; padding: 20px; border: 1px solid hsl(var(--accent) / .28); border-radius: 19px; color: var(--ink); background: hsl(var(--accent) / .045); text-align: left; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .game-option:hover { transform: translateY(-2px); border-color: hsl(var(--accent) / .75); background: hsl(var(--accent) / .14); }
+    .game-option-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 15px; border-radius: 13px 13px 13px 4px; color: #11141b; background: hsl(var(--accent)); font-size: 1.2rem; font-weight: 950; line-height: 1; }
+    .game-option strong { display: block; }
+    .game-option strong { margin-bottom: 7px; font-size: 1.12rem; }
+    .game-option > span:not(.game-option-icon) { display: block; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+    .game-option[data-start-game="audio-match"] { grid-column: 1 / -1; min-height: 132px; }
+
+    .game-panel {
+      position: fixed;
+      z-index: 45;
+      top: 72px;
+      right: 16px;
+      bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      width: min(350px, calc(100vw - 32px));
+      overflow: auto;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(22, 25, 34, .94);
+      box-shadow: 0 25px 75px rgba(0,0,0,.5);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* Drag handle + floating "peek" reopen pill are only used by the mobile floating-
+       drawer treatment (see the max-width: 900px block below). On desktop the panel
+       is always visible in its side-docked position, so these stay hidden. */
+    .drawer-handle, .drawer-peek { display: none; }
+
+    /* The game strip (link-word banner / prompt / relocated guess-form / live
+       feedback) is a mobile-only affordance; see the max-width: 900px block below
+       and the JS layoutGameControls() function. On desktop everything stays
+       inside the side-docked panel where it already works well with a keyboard
+       and mouse. */
+    .game-strip[hidden] { display: none; }
+
+    .game-panel-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+    .game-mode-kicker { display: block; color: hsl(var(--accent)); font-size: .67rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+    .game-panel h2 { margin: 5px 0 0; font-size: 1.65rem; line-height: 1; letter-spacing: -.035em; }
+    .game-score { min-width: 70px; padding: 9px 10px; border-radius: 14px; color: #101218; background: hsl(var(--accent)); text-align: center; }
+    .game-score span, .game-score strong { display: block; }
+    .game-score span { font-size: .58rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .game-score strong { margin-top: 1px; font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+    .game-score.pulse { animation: score-pop .28s ease; }
+    @keyframes score-pop { 50% { transform: scale(1.12) rotate(-2deg); } }
+    .game-prompt { margin: 21px 0 10px; color: var(--ink); font-size: 1rem; font-weight: 800; line-height: 1.45; }
+    .link-word { margin: 2px 0 16px; padding: 14px 16px; border: 1px solid hsl(var(--accent) / .42); border-radius: 15px; color: #101218; background: hsl(var(--accent)); text-align: center; }
+    .link-word span { display: block; font-size: .58rem; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .link-word strong { display: block; margin-top: 2px; font-size: clamp(1.45rem, 4vw, 2rem); line-height: 1; letter-spacing: -.025em; }
+    .game-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; color: var(--muted); font-size: .73rem; font-weight: 800; }
+    .game-progress-track { flex: 1; height: 6px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.09); }
+    .game-progress-track i { display: block; width: 0; height: 100%; border-radius: inherit; background: hsl(var(--accent)); transition: width .3s ease; }
+    .guess-form { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+    .guess-form input { min-width: 0; min-height: 49px; padding: 10px 13px; border: 1px solid var(--border); border-radius: 13px; outline: none; color: var(--ink); background: rgba(0,0,0,.2); font: inherit; }
+    .guess-form input:focus { border-color: hsl(var(--accent)); box-shadow: 0 0 0 3px hsl(var(--accent) / .15); }
+    .guess-form button, .game-panel-action { min-height: 49px; border: 0; border-radius: 13px; color: #101218; background: hsl(var(--accent)); font-weight: 900; cursor: pointer; }
+    .guess-form button { padding: 0 15px; }
+    .guess-form button:disabled, .guess-form input:disabled { opacity: .48; cursor: default; }
+    .game-feedback { min-height: 59px; margin: 11px 0 4px; padding: 11px 13px; border: 1px solid transparent; border-radius: 13px; color: var(--muted); background: rgba(255,255,255,.035); font-size: .8rem; font-weight: 750; line-height: 1.4; }
+    .game-feedback.correct { color: #d7ff9e; border-color: rgba(176, 235, 91, .3); background: rgba(126, 179, 47, .12); }
+    .game-feedback.wrong { color: #ffc2bd; border-color: rgba(255, 110, 100, .28); background: rgba(255, 90, 80, .1); }
+    .creative-accept { width: 100%; min-height: 45px; margin: 5px 0 10px; padding: 9px 12px; border: 1px solid rgba(176,235,91,.35); border-radius: 13px; color: #d7ff9e; background: rgba(126,179,47,.13); font: inherit; font-size: .78rem; font-weight: 900; cursor: pointer; }
+    .game-panel-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+    .game-panel-action { padding: 10px; color: var(--ink); background: rgba(255,255,255,.07); border: 1px solid var(--border); }
+    .game-panel-action.primary { color: #101218; background: hsl(var(--accent)); border-color: transparent; }
+    .game-end { width: 100%; margin-top: 9px; min-height: 42px; border: 0; color: var(--muted); background: transparent; font-size: .75rem; font-weight: 850; cursor: pointer; }
+    .app.game-active .stage { right: 374px; }
+    .app.game-active .footer { right: 374px; }
+    .app.game-active #view-toggle,
+    .app.game-active #hint-button { display: none; }
+
+    .audio-match-board {
+      position: fixed;
+      z-index: 44;
+      inset: 72px 16px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: min(1180px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: clamp(14px, 2.2vw, 24px);
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background: rgba(22, 25, 34, .97);
+      box-shadow: 0 25px 85px rgba(0,0,0,.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .audio-match-board[hidden] { display: none; }
+    .app.audio-match-active .stage,
+    .app.audio-match-active .footer,
+    .app.audio-match-active #view-toggle,
+    .app.audio-match-active #hint-button { display: none; }
+    .audio-match-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .audio-match-title-wrap span { display: block; color: hsl(var(--accent)); font-size: .68rem; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
+    .audio-match-title-wrap h2 { margin: 3px 0 0; font-size: clamp(1.55rem, 4vw, 2.5rem); line-height: 1; letter-spacing: -.04em; }
+    .audio-match-stats { display: flex; gap: 8px; }
+    .audio-match-stat { min-width: 72px; padding: 8px 11px; border-radius: 14px; color: #101218; background: hsl(var(--accent)); text-align: center; }
+    .audio-match-stat span, .audio-match-stat strong { display: block; }
+    .audio-match-stat span { font-size: .56rem; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
+    .audio-match-stat strong { margin-top: 1px; font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+    .audio-match-instructions { margin: 0; color: var(--muted); font-size: clamp(.78rem, 1.8vw, .96rem); font-weight: 750; line-height: 1.4; }
+    .audio-match-grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(90px, 1fr));
+      gap: clamp(8px, 1.2vw, 14px);
+      align-content: center;
+      min-height: 0;
+    }
+    .audio-match-tile {
+      position: relative;
+      min-width: 0;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      padding: 0;
+      border: 2px solid rgba(255,255,255,.12);
+      border-radius: clamp(14px, 2vw, 20px);
+      color: var(--ink);
+      background: rgba(255,255,255,.055);
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease, opacity .2s ease;
+    }
+    .audio-match-tile:hover { transform: translateY(-2px); border-color: hsl(var(--accent) / .55); }
+    .audio-match-tile:focus-visible { outline: 3px solid hsl(var(--accent)); outline-offset: 2px; }
+    .audio-match-tile.is-selected { border-color: hsl(var(--accent)); background: hsl(var(--accent) / .18); box-shadow: 0 0 0 3px hsl(var(--accent) / .18), 0 12px 28px rgba(0,0,0,.28); }
+    .audio-match-tile.is-wrong { border-color: #ff716a; background: rgba(255, 90, 80, .14); animation: link-wrong .34s ease; }
+    .audio-match-tile.is-matched { border-color: #8ee55d; background: rgba(126, 214, 76, .13); cursor: default; }
+    .audio-match-tile.is-matched:hover { transform: none; }
+    .audio-match-picture { position: absolute; inset: 0; background-color: #fff; background-repeat: no-repeat; background-size: 208.334% 416.667%; background-position: var(--crop-x) var(--crop-y); }
+    .audio-match-audio { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 35% 28%, hsl(var(--accent) / .3), transparent 40%), linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); }
+    .audio-match-speaker { width: 45%; max-width: 72px; color: hsl(var(--accent)); filter: drop-shadow(0 5px 12px rgba(0,0,0,.28)); }
+    .audio-match-speaker path { fill: currentColor; }
+    .audio-match-speaker .waves { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+    .audio-match-type { position: absolute; top: 8px; left: 8px; z-index: 2; padding: 4px 7px; border-radius: 999px; color: #11141b; background: rgba(255,255,255,.9); font-size: .55rem; font-weight: 950; letter-spacing: .06em; text-transform: uppercase; }
+    .audio-match-label { position: absolute; z-index: 3; left: 7px; right: 7px; bottom: 7px; padding: 6px 7px; border-radius: 10px; color: #11141b; background: rgba(255,255,255,.94); box-shadow: 0 4px 14px rgba(0,0,0,.2); font-size: clamp(.58rem, 1.4vw, .78rem); font-weight: 950; line-height: 1.05; text-align: center; opacity: 0; transform: translateY(5px); transition: opacity .2s ease, transform .2s ease; }
+    .audio-match-tile.is-matched .audio-match-label { opacity: 1; transform: none; }
+    .audio-match-feedback { min-height: 43px; margin: 0; padding: 9px 12px; border: 1px solid transparent; border-radius: 12px; color: var(--muted); background: rgba(255,255,255,.04); font-size: .78rem; font-weight: 800; line-height: 1.35; }
+    .audio-match-feedback.correct { color: #d7ff9e; border-color: rgba(176,235,91,.3); background: rgba(126,179,47,.12); }
+    .audio-match-feedback.wrong { color: #ffc2bd; border-color: rgba(255,110,100,.28); background: rgba(255,90,80,.1); }
+    .audio-match-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .audio-match-actions button { min-height: 46px; padding: 9px 13px; border: 1px solid var(--border); border-radius: 13px; color: var(--ink); background: rgba(255,255,255,.07); font: inherit; font-size: .78rem; font-weight: 900; cursor: pointer; }
+    .audio-match-actions .primary { color: #101218; border-color: transparent; background: hsl(var(--accent)); }
+
+    .dual-stage {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(14px, 3.5vw, 44px);
+      width: 100%;
+      height: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      animation: dualFadeIn .28s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    @keyframes dualFadeIn {
+      from { opacity: 0; transform: scale(.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .dual-card-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      height: 100%;
+      max-height: calc(100dvh - 145px);
+      flex: 1 1 0;
+      max-width: min(calc((100dvh - 175px) * var(--card-ratio)), 560px);
+    }
+
+    .dual-label-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .3);
+      flex-shrink: 0;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: hsl(var(--accent));
+      box-shadow: 0 0 8px hsl(var(--accent));
+    }
+
+    .badge-dot.question {
+      background: hsl(var(--accent));
+      box-shadow: 0 0 8px hsl(var(--accent));
+    }
+
+    .dual-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 198 / 306;
+      border-radius: clamp(12px, 3.5vw, 22px);
+      overflow: hidden;
+      box-shadow:
+        0 3px 2px rgba(255, 255, 255, .22) inset,
+        0 22px 68px rgba(0, 0, 0, .6),
+        0 5px 15px rgba(0, 0, 0, .4);
+      border: 1px solid rgba(255, 255, 255, .3);
+      background: #f8f7f2;
+      flex: 1 1 auto;
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .dual-card:hover {
+      transform: translateY(-3px) scale(1.015);
+      box-shadow:
+        0 3px 2px rgba(255, 255, 255, .28) inset,
+        0 28px 80px rgba(0, 0, 0, .75),
+        0 8px 24px hsl(var(--accent) / .25);
+    }
+
+    .dual-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-btn {
+      padding: 0 14px;
+      min-height: 48px;
+    }
+
+    @media (max-width: 640px) {
+      .dual-stage {
+        flex-direction: column;
+        overflow-y: auto;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        /* .dual-stage's justify-content: center above centers along the FLEX MAIN
+           AXIS, which flips from horizontal to vertical here since flex-direction
+           becomes column. When the stacked cards are taller than the visible area,
+           centered flex/grid overflow is clipped equally on both ends, and many
+           browsers (notably iOS Safari) won't let you scroll into the clipped-off
+           top portion at all — the classic "can't scroll to the start of centered
+           overflow" bug. "safe center" keeps the centered look while content fits,
+           but falls back to start-alignment (fully scrollable) once it overflows.
+           The flex-start line above it is a fallback for browsers that don't
+           understand the "safe" keyword yet (invalid values are ignored, so the
+           last valid declaration wins). */
+        justify-content: flex-start;
+        justify-content: safe center;
+      }
+      .dual-card-wrap {
+        max-height: none;
+        width: 100%;
+        max-width: min(calc(100vw - 40px), 380px);
+      }
+    }
+
+    .instructions {
+      align-self: center;
+      min-width: 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: clamp(.7rem, 2.7vw, .83rem);
+      line-height: 1.3;
+      pointer-events: none;
+    }
+
+    .instructions strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--ink);
+      font-size: .77rem;
+      letter-spacing: .01em;
+    }
+
+    @media (max-width: 700px) {
+      .game-picker { place-items: start center; }
+      .stage {
+        padding-bottom: max(116px, calc(env(safe-area-inset-bottom) + 104px));
+      }
+
+      .deck {
+        width: min(calc(100vw - 32px), calc((100dvh - 182px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px);
+      }
+
+      .footer {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .footer-left {
+        flex: 1 1 auto;
+        min-width: 0;
+        justify-content: space-between;
+        gap: 6px;
+      }
+
+      .footer-left .action {
+        min-width: 0;
+        padding-inline: 11px;
+      }
+
+      .fullscreen {
+        flex: 0 0 48px;
+      }
+
+      .instructions {
+        position: absolute;
+        left: 50%;
+        bottom: calc(max(14px, env(safe-area-inset-bottom)) + 58px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: max-content;
+        max-width: calc(100vw - 32px);
+        padding: 4px 11px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--glass);
+        white-space: nowrap;
+        transform: translateX(-50%);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      .instructions strong {
+        display: inline;
+        margin: 0;
+      }
+
+      .game-options { grid-template-columns: 1fr; }
+    }
+
+    /* Mobile floating-drawer redesign: on phones/small tablets, the game panel and
+       audio-match board no longer permanently dock along the bottom and shrink the
+       card down to coexist with them. Instead they float OVER the card as a
+       bottom-sheet drawer (see .is-collapsed / .drawer-handle / .drawer-peek below)
+       that can be swiped or tapped away, so the card keeps its normal full
+       browse-mode size and stays front-and-center. Resetting the game-active stage
+       and footer overrides back to their base (non-shifted) positions here undoes
+       the desktop side-docked layout rules above, which don't make sense once the
+       panel is a floating overlay instead of a fixed sidebar. */
+    @media (max-width: 900px) {
+      .app.game-active .stage { inset: 0; }
+      .app.game-active .footer { right: 0; bottom: 0; }
+    }
+
+    /* The drawer-peek pill floats above the footer (see .drawer-peek below),
+       which was fine back when the docked panel shrank the card — but now
+       that the card fills the available height, it can grow tall enough to
+       sit underneath the pill. Reserve room for it explicitly. Short/
+       landscape phones handle this differently (min-height gate below docks
+       the pill down into the footer's own band instead, since there isn't
+       enough height here to spare 140px), so this only applies at normal
+       mobile heights. */
+    @media (max-width: 900px) and (min-height: 561px) {
+      .app.game-active .stage { padding-bottom: max(140px, calc(env(safe-area-inset-bottom) + 134px)); }
+
+      /* The deck's own width/height formula (which drives its size via
+         aspect-ratio) has to reserve the same amount of vertical space the
+         padding above just reserved, or its intrinsic size will simply
+         overflow past that padding — the same category of bug fixed for
+         .stage padding-top / --game-header-h above. Mirrors the padding
+         terms exactly instead of a separate guessed constant, so the two
+         can't drift out of sync. */
+      .app.game-active .deck {
+        width: min(
+          calc(100vw - 32px),
+          calc((100dvh - max(65px, calc(env(safe-area-inset-top) + 56px)) - var(--game-header-h, 0px) - max(140px, calc(env(safe-area-inset-bottom) + 134px))) * var(--card-ratio)),
+          540px
+        );
+      }
+    }
+
+    @media (max-width: 900px) {
+      .game-panel,
+      .audio-match-board {
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        width: auto;
+        border-radius: 22px;
+        z-index: 46;
+        transform: translateY(0);
+        transition: transform .34s cubic-bezier(.16, 1, .3, 1);
+      }
+      /* Guessing/linking games: the card stays visible behind the drawer, so it's
+         capped to a bottom-sheet height rather than filling the screen. */
+      .game-panel { top: auto; max-height: min(70dvh, 620px); padding: 10px 16px 16px; }
+      .game-panel h2 { font-size: 1.3rem; }
+      .game-prompt { margin-top: 12px; }
+      .game-feedback { min-height: 45px; }
+      /* Audio Match has no card behind it (the stage is hidden entirely in this
+         mode — see .app.audio-match-active .stage above), so its drawer keeps
+         filling the screen below the topbar like before rather than being capped
+         to a short bottom-sheet; it can still be swiped away via the handle to
+         reveal a clear screen when it's not needed. */
+      .audio-match-board { top: 66px; padding: 8px 14px 14px; }
+      .audio-match-grid { grid-template-columns: repeat(4, minmax(78px, 1fr)); align-content: start; }
+
+      /* Slide the whole drawer off the bottom of the screen when collapsed. Using a
+         percentage keeps this correct regardless of the panel's actual content
+         height (which varies by game mode). */
+      .game-panel.is-collapsed,
+      .audio-match-board.is-collapsed {
+        transform: translateY(calc(100% + 24px));
+      }
+
+      /* Drag handle: a small grab bar at the top of the drawer. Tapping it toggles
+         open/closed; dragging it down past a threshold (or with enough velocity)
+         collapses the drawer, mirroring the swipe-to-flip gesture already used on
+         the card itself. touch-action: none stops the browser's own scroll/pan
+         gesture from fighting the drag. */
+      .drawer-handle {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        margin: -2px 0 6px;
+        padding: 8px 0 4px;
+        border: 0;
+        background: none;
+        cursor: grab;
+        touch-action: none;
+      }
+      .drawer-handle:active { cursor: grabbing; }
+      .drawer-handle-bar {
+        width: 38px;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, .3);
+      }
+
+      /* Floating pill that reappears once the drawer is swiped/tapped away, so the
+         game stays reachable without permanently occupying screen space. */
+      .drawer-peek {
+        display: inline-flex;
+        position: fixed;
+        left: 50%;
+        bottom: max(88px, calc(env(safe-area-inset-bottom) + 82px));
+        max-width: calc(100vw - 32px);
+        transform: translateX(-50%);
+        z-index: 45;
+        align-items: center;
+        gap: 8px;
+        min-height: 44px;
+        padding: 0 18px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: var(--ink);
+        background: rgba(22, 25, 34, .94);
+        box-shadow: 0 14px 40px rgba(0, 0, 0, .45);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        font: inherit;
+        font-size: .82rem;
+        font-weight: 800;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      .drawer-peek[hidden] { display: none; }
+      .drawer-peek span:first-child { color: hsl(var(--accent)); flex-shrink: 0; }
+      .drawer-peek span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+      /* Fixed (non-draggable) toolbar that carries the actual play loop — clue,
+         answer, feedback — near the top of the screen, above the card, instead
+         of requiring the bottom drawer to be open. Always pinned in the same
+         place: a predictable, always-in-the-same-place strip is easier to use
+         one-handed than something the player has to manage the position of.
+         Not inside .stage or .game-panel — both have their own containing-
+         block-creating properties (perspective / transform) that would
+         otherwise hijack position: fixed here and tie it to their box instead
+         of the viewport. */
+      .game-strip {
+        position: fixed;
+        z-index: 47;
+        top: max(58px, calc(env(safe-area-inset-top) + 52px));
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        width: min(calc(100vw - 24px), 420px);
+        padding: 10px 16px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: rgba(22, 25, 34, .92);
+        box-shadow: 0 14px 38px rgba(0, 0, 0, .42);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+      .game-strip[hidden] { display: none; }
+
+      .game-score-chip { display: inline-flex; }
+      .game-score-chip[hidden] { display: none; }
+
+      .game-strip-linkword {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 8px;
+        padding: 7px 14px;
+        border-radius: 999px;
+        background: hsl(var(--accent));
+        color: #101218;
+        box-shadow: 0 3px 0 rgba(0, 0, 0, .12) inset;
+      }
+      .game-strip-linkword[hidden] { display: none; }
+      .game-strip-linkword span { font-size: .58rem; font-weight: 950; letter-spacing: .09em; text-transform: uppercase; opacity: .7; }
+      .game-strip-linkword strong { font-size: 1.28rem; font-weight: 900; letter-spacing: -.02em; }
+
+      /* The question itself is the thing a player needs to read every round —
+         it should read as a headline, not a caption dwarfed by the input box
+         below it. */
+      .game-strip-prompt { margin: 0; color: var(--ink); font-size: 1.02rem; font-weight: 900; line-height: 1.28; text-align: center; }
+      .game-strip-prompt:empty { display: none; }
+
+      /* When JS relocates the real .guess-form here (see layoutGameControls),
+         style it to sit naturally inside the strip. The docked desktop panel's
+         input/button are sized for a mouse (49px tall) — deliberately smaller
+         here since answering is secondary to reading the question, and a
+         shorter control leaves more of the card visible. */
+      .game-strip .guess-form { width: 100%; margin-top: 2px; }
+      .game-strip .guess-form input {
+        min-height: 38px;
+        padding: 0 11px;
+        border-radius: 10px;
+        font-size: .8rem;
+        background: rgba(0, 0, 0, .3);
+      }
+      .game-strip .guess-form button {
+        min-height: 38px;
+        padding: 0 13px;
+        border-radius: 10px;
+        font-size: .78rem;
+      }
+
+      /* One line, ellipsized, everywhere — not just the short/landscape case
+         below. Feedback here is secondary to the question above it (the full
+         scoring-rules text is still readable in the drawer's docked panel),
+         and every line it doesn't need is a line the card gets back. */
+      .game-strip-feedback {
+        max-width: 100%;
+        margin: 0;
+        overflow: hidden;
+        color: var(--muted);
+        font-size: .72rem;
+        font-weight: 700;
+        line-height: 1.32;
+        text-align: center;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .game-strip-feedback:empty { display: none; }
+      .game-strip-feedback.correct { color: #d7ff9e; }
+      .game-strip-feedback.wrong { color: #ffc2bd; }
+    }
+
+    /* On phones, the deck previously had to shrink to make room for the permanently
+       docked game panel. Now that the panel floats over the card instead, the card
+       can use its normal browse-mode sizing at all times — so no .app.game-active
+       .deck override is needed here any more. */
+
+    @media (max-width: 560px) {
+      .topbar { gap: 8px; }
+      .topbar-right { gap: 6px; }
+      .view-toggle .text { display: none; }
+      .view-toggle { min-width: 34px; padding: 0 9px; }
+      .side-pill { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .game-option[data-start-game="audio-match"] { grid-column: auto; }
+      .audio-match-board { gap: 10px; }
+      .audio-match-header { align-items: flex-start; }
+      .audio-match-title-wrap h2 { font-size: 1.45rem; }
+      .audio-match-stats { gap: 5px; }
+      .audio-match-stat { min-width: 58px; padding: 6px 7px; border-radius: 11px; }
+      .audio-match-stat strong { font-size: 1.05rem; }
+      .audio-match-instructions { font-size: .72rem; }
+      .audio-match-grid { grid-template-columns: repeat(3, minmax(72px, 1fr)); gap: 7px; }
+      .audio-match-type { top: 5px; left: 5px; padding: 3px 5px; font-size: .48rem; }
+      .audio-match-label { left: 4px; right: 4px; bottom: 4px; padding: 5px 4px; font-size: .56rem; }
+      .audio-match-feedback { min-height: 38px; padding: 7px 9px; font-size: .69rem; }
+      .audio-match-actions button { min-height: 42px; font-size: .72rem; }
+    }
+
+    @media (max-height: 620px) and (min-width: 700px) {
+      .audio-match-board { top: 62px; gap: 8px; padding: 12px; }
+      .audio-match-grid { grid-template-columns: repeat(6, minmax(72px, 1fr)); }
+      .audio-match-instructions { font-size: .72rem; }
+      .audio-match-feedback { min-height: 34px; padding: 6px 9px; }
+      .audio-match-actions button { min-height: 38px; }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-height: 560px) {
+      /* .topbar and .footer are position: absolute overlays on top of .stage
+         (not in normal document flow), so .stage's own padding is the only
+         thing keeping the centered deck from sliding underneath them. The
+         previous 18px/18px padding here only left room for a sliver of safe-
+         area inset — nowhere near the topbar's ~54px or footer's ~72px real
+         height — so on short/landscape phones the card visibly overlapped
+         both. Reserve enough on each side to clear them (with a small gap),
+         and shrink the deck's own height formula to match so it doesn't
+         outgrow the space that padding just reserved for it. */
+      .stage { padding-top: calc(max(60px, calc(env(safe-area-inset-top) + 54px)) + var(--game-header-h, 0px)); padding-bottom: max(78px, calc(env(safe-area-inset-bottom) + 70px)); }
+      .deck { width: min(calc(100vw - 170px), calc((100dvh - 140px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px); }
+      .topbar { padding-top: max(10px, env(safe-area-inset-top)); }
+      .brand, .side-pill { opacity: .86; }
+      .footer { grid-template-columns: auto 1fr auto; }
+      .instructions { visibility: hidden; }
+
+      /* Short/landscape phones have little vertical room, so the game strip
+         needs to be noticeably more compact — otherwise it can run tall enough
+         to reach the peek pill near the bottom. Also nudged down slightly from
+         the topbar's actual ~54px height so it doesn't overlap it either. */
+      .game-strip { top: max(56px, calc(env(safe-area-inset-top) + 50px)); padding: 6px 12px; gap: 3px; max-height: 36vh; overflow-y: auto; }
+      .game-strip-prompt { font-size: .82rem; }
+      .game-strip-linkword { padding: 4px 11px; }
+      .game-strip-linkword strong { font-size: 1.02rem; }
+      /* The reserved space above the card is the scarcest resource on a short/
+         landscape phone, so the (often two-sentence) instructional feedback
+         line — "Each new correct item earns 1 point..." — is clipped to one
+         line here instead of wrapping and eating a second line's worth of
+         height. Short transient "Correct!"/"Not quite" messages still show in
+         full since they're a few words. */
+      .game-strip-feedback { font-size: .66rem; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .game-strip .guess-form { margin-top: 1px; min-width: 0; }
+      .game-strip .guess-form input, .game-strip .guess-form button { min-height: 32px; font-size: .74rem; }
+
+      /* The peek pill's portrait bottom offset (max(88px, ...)) floats it well
+         above the footer, which is fine when the card is short enough not to
+         reach that high — but on a short/landscape phone the card now fills
+         nearly the whole available height and the pill lands right on top of
+         it. Dock it down into the footer's own band instead — the (hidden)
+         .instructions element already reserves that centered space, so
+         nothing else is there to collide with. */
+      .drawer-peek { bottom: max(18px, calc(env(safe-area-inset-bottom) + 12px)); min-height: 36px; padding: 0 14px; font-size: .7rem; }
+    }
+
+    @media (max-width: 380px) {
+      .action span { display: none; }
+      .action { width: 48px; padding: 0; }
+      .footer { gap: 8px; }
+      #instructions-text { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card { transition-duration: .01ms; }
+      .deck, .app { transition-duration: .01ms; }
+    }
+    #words-button .icon { font-size: .9rem; font-weight: 900; }
+    .app.game-active #words-button, .app.audio-match-active #words-button { display: none; }
+    .word-help[hidden] { display: none; }
+    .word-help { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; background: rgba(8, 12, 18, .72); }
+    .word-help-card { position: relative; width: min(480px, 100%); max-height: min(85vh, 780px); overflow-y: auto; padding: 24px; border: 1px solid rgba(255,255,255,.2); border-radius: 22px; color: #f7f8fb; background: #1d2530; box-shadow: 0 25px 80px rgba(0,0,0,.4); }
+    .word-help-card h2 { margin: 0 40px 5px 0; font-size: 1.45rem; }
+    .word-help-card p { margin: 0 0 18px; color: #c9d0d9; font-size: .9rem; }
+    .word-help-close { position: absolute; top: 15px; right: 17px; border: 0; color: inherit; background: transparent; font-size: 1.9rem; cursor: pointer; }
+    #word-help-list { display: grid; gap: 8px; }
+    #word-help-list details { border: 1px solid rgba(255,255,255,.17); border-radius: 12px; background: rgba(255,255,255,.055); }
+    #word-help-list summary { padding: 13px 15px; font-weight: 800; cursor: pointer; }
+    #word-help-list details[open] summary { color: #dcf3ab; }
+    #word-help-list ul { margin: 0; padding: 0 16px 14px 36px; color: #edf4f8; line-height: 1.55; }
+    @media (max-width: 850px) {
+      .topbar-right { gap: 6px; }
+      #words-button .text, #view-toggle .text { display: none; }
+    }
+  </style>
+  <link rel="stylesheet" href="../dialogue-brand.css?v=20260924-2">
+</head>
+<body>
+  <main class="app" id="app">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark"></span><span>Local Problems</span></div>
+      <div class="topbar-right">
+        <button class="view-toggle game-menu-button" id="game-menu-button" type="button" aria-label="Choose a Local Problems game">
+          <span class="icon">🎯</span>
+          <span class="text">Games</span>
+        </button>
+        <button class="view-toggle" id="words-button" type="button" aria-label="Open word help" aria-expanded="false" title="Word help"><span class="icon" aria-hidden="true">Aa</span><span class="text">Words</span></button>
+        <button class="view-toggle" id="hint-button" type="button" aria-label="Turn on listening hints" aria-pressed="false" title="Listening hints (H)">
+          <span class="icon" aria-hidden="true">?</span>
+          <span class="text">Hint</span>
+        </button>
+        <button class="view-toggle" id="view-toggle" type="button" aria-label="Toggle Side-by-Side View" title="Toggle Side-by-Side View (S)">
+          <span class="icon">👥</span>
+          <span class="text">Side by Side</span>
+        </button>
+        <div class="side-pill" id="side-pill">Picture side</div>
+        <div class="game-score-chip" id="game-score-chip" hidden>Score 0</div>
+      </div>
+    </header>
+
+    <section class="stage" id="stage" aria-label="Conversation card">
+      <!-- 1. Single Flippable Card View -->
+      <div class="deck" id="deck">
+        <div class="card" id="card" role="button" tabindex="0" aria-label="Flip card to the question side">
+          <span class="face front">
+            <img id="front-image" alt="" draggable="false">
+            <span class="category-mask" id="category-mask" hidden aria-hidden="true"></span>
+            <span class="item-footer-mask" id="item-footer-mask" hidden aria-hidden="true"></span>
+            <span class="item-grid" id="item-grid" hidden aria-hidden="true">
+              <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
+              <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
+              <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
+              <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
+              <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
+              <span class="item-cell"><span class="item-question">?</span><span class="item-label"></span></span>
+            </span>
+            <span class="item-listen-grid" id="item-listen-grid" hidden aria-label="Listening hints">
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+            </span>
+          </span>
+          <span class="face back">
+            <img id="back-image" alt="" draggable="false">
+            <span class="question-listen-layer" id="question-listen-layer" hidden aria-label="Listen to a discussion question"></span>
+          </span>
+          <span class="shine" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <!-- 2. Dual Side-by-Side Presentation View -->
+      <div class="dual-stage" id="dual-stage" style="display: none;">
+        <div class="dual-card-wrap">
+          <div class="dual-label-pill"><span class="badge-dot"></span> 🖼️ Picture Side</div>
+          <div class="dual-card">
+            <img id="dual-front-image" alt="Picture side of card" draggable="false">
+            <span class="item-listen-grid" id="dual-item-listen-grid" hidden aria-label="Listening hints">
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+              <button class="item-listen-button" type="button"><span aria-hidden="true">🔊</span></button>
+            </span>
+          </div>
+        </div>
+        <div class="dual-card-wrap">
+          <div class="dual-label-pill"><span class="badge-dot question"></span> 💬 Questions Side</div>
+          <div class="dual-card">
+            <img id="dual-back-image" alt="Question side of card" draggable="false">
+            <div class="question-listen-layer" id="dual-question-listen-layer" hidden aria-label="Listen to a discussion question"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <button class="action nav-btn" id="prev-card" type="button" aria-label="Previous card" title="Previous card (P / ← in Dual view)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span>Prev</span>
+        </button>
+
+        <button class="action shuffle" id="shuffle" type="button" aria-label="Show a new random card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 3v6h-6"></path><path d="M3 21v-6h6"></path>
+            <path d="M5.5 9A7 7 0 0 1 17 5l4 4"></path><path d="M18.5 15A7 7 0 0 1 7 19l-4-4"></path>
+          </svg>
+          <span>New card</span>
+        </button>
+
+        <button class="action nav-btn" id="next-card" type="button" aria-label="Next card" title="Next card (N / → in Dual view)">
+          <span>Next</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <div class="instructions" aria-hidden="true">
+        <strong id="card-count">Card 1 of 24</strong>
+        <span id="instructions-text">Swipe or tap to flip</span>
+      </div>
+
+      <button class="action fullscreen" id="fullscreen" type="button" aria-label="Enter fullscreen">
+        <svg class="enter-fullscreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"></path>
+        </svg>
+        <svg class="exit-fullscreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+          <path d="M8 3v3a2 2 0 0 1-2 2H3M16 3v3a2 2 0 0 0 2 2h3M8 21v-3a2 2 0 0 0-2-2H3M16 21v-3a2 2 0 0 1 2-2h3"></path>
+        </svg>
+      </button>
+    </footer>
+
+    <aside class="game-panel" id="game-panel" hidden aria-labelledby="game-panel-title">
+      <button type="button" class="drawer-handle" id="game-panel-handle" aria-label="Collapse game panel"><span class="drawer-handle-bar" aria-hidden="true"></span></button>
+      <div class="game-panel-top">
+        <div><span class="game-mode-kicker" id="game-mode-kicker">Class game</span><h2 id="game-panel-title">Guess the Category</h2></div>
+        <div class="game-score" id="game-score"><span>Score</span><strong id="game-score-value">0</strong></div>
+      </div>
+      <p class="game-prompt" id="game-prompt">What category connects these six items?</p>
+      <div class="link-word" id="link-word" hidden><span>Link word</span><strong id="link-word-value"></strong></div>
+      <div class="game-progress" id="game-progress" hidden><span id="game-progress-label">0 of 6 found</span><span class="game-progress-track"><i id="game-progress-fill"></i></span></div>
+      <form class="guess-form" id="guess-form" autocomplete="off">
+        <label class="sr-only" for="guess-input">Your guess</label>
+        <input id="guess-input" type="text" inputmode="text" enterkeyhint="go" spellcheck="false" placeholder="Type a category…">
+        <button id="guess-submit" type="submit">Check</button>
+      </form>
+      <div class="game-feedback" id="game-feedback" role="status" aria-live="polite">Correct answers earn 1 point. Incorrect answers lose 1 point.</div>
+      <button class="creative-accept" id="accept-creative-link" type="button" hidden>Accept creative link · +1</button>
+      <div class="game-panel-actions">
+        <button class="game-panel-action" id="reveal-game-answer" type="button">Reveal answer</button>
+        <button class="game-panel-action primary" id="new-game-card" type="button">New card →</button>
+      </div>
+      <button class="game-end" id="end-game" type="button">End game and browse cards</button>
+    </aside>
+
+    <!-- Mobile-only game strip: a single fixed (non-draggable) toolbar pinned
+         below the topbar that carries the actual play loop — clue, answer,
+         feedback — per game mode, so the bottom drawer can stay closed by
+         default. Tailored per mode by JS: Find the Pair shows only the link-word
+         banner (no typing needed, so no input footprint at all); Category/Items/
+         Name the Link show the prompt and the relocated guess-form. Fixed
+         position + full width is a deliberate departure from a free-floating
+         panel — a predictable, always-in-the-same-place toolbar is easier to use
+         one-handed than something the player has to manage the position of. -->
+    <div class="game-strip" id="game-strip" hidden>
+      <div class="game-strip-linkword" id="game-strip-linkword" hidden>
+        <span>Link word</span>
+        <strong id="game-strip-linkword-value"></strong>
+      </div>
+      <p class="game-strip-prompt" id="game-strip-prompt"></p>
+      <!-- guess-form relocated here by JS for typing modes -->
+      <p class="game-strip-feedback" id="game-strip-feedback" role="status" aria-live="polite"></p>
+    </div>
+
+    <section class="audio-match-board" id="audio-match-board" hidden aria-labelledby="audio-match-title">
+      <button type="button" class="drawer-handle" id="audio-match-handle" aria-label="Collapse audio match board"><span class="drawer-handle-bar" aria-hidden="true"></span></button>
+      <header class="audio-match-header">
+        <div class="audio-match-title-wrap">
+          <span id="audio-match-session">Whole-deck listening game</span>
+          <h2 id="audio-match-title">Audio Match</h2>
+        </div>
+        <div class="audio-match-stats" aria-label="Round score">
+          <div class="audio-match-stat"><span>Pairs</span><strong id="audio-match-pairs">0/6</strong></div>
+          <div class="audio-match-stat"><span>Score</span><strong id="audio-match-score">0</strong></div>
+        </div>
+      </header>
+      <p class="audio-match-instructions">Tap an audio tile to hear a word, then match it to the correct picture. Labels appear after a successful match.</p>
+      <div class="audio-match-grid" id="audio-match-grid" role="group" aria-label="Six picture tiles and six audio tiles"></div>
+      <p class="audio-match-feedback" id="audio-match-feedback" role="status" aria-live="polite">Choose an audio tile and a picture tile.</p>
+      <div class="audio-match-actions">
+        <button id="end-audio-match" type="button">End game</button>
+        <button class="primary" id="new-audio-match" type="button">New six words →</button>
+      </div>
+    </section>
+
+    <button type="button" class="drawer-peek" id="drawer-peek" hidden>
+      <span aria-hidden="true">▲</span>
+      <span id="drawer-peek-label">Game</span>
+    </button>
+
+    <div class="game-picker" id="game-picker" hidden role="dialog" aria-modal="true" aria-labelledby="game-picker-title">
+      <div class="game-picker-card">
+        <button class="game-picker-close" id="game-picker-close" type="button" aria-label="Close game chooser">×</button>
+        <h2 id="game-picker-title">Choose a class game</h2>
+        <p>Project the activity, invite answers from the whole class, and let the screen keep score. Choose a guessing or listening activity.</p>
+        <div class="game-options">
+          <button class="game-option" type="button" data-start-game="category">
+            <span class="game-option-icon" aria-hidden="true">?</span>
+            <strong>Guess the Category</strong>
+            <span>The title is blurred. Students use the six pictures and labels to identify the category.</span>
+          </button>
+          <button class="game-option" type="button" data-start-game="items">
+            <span class="game-option-icon" aria-hidden="true">6</span>
+            <strong>Guess the Items</strong>
+            <span>The category stays visible. Correct item guesses reveal the matching picture and label.</span>
+          </button>
+          <button class="game-option" type="button" data-start-game="audio-match">
+            <span class="game-option-icon" aria-hidden="true">Aa</span>
+            <strong>Audio Match</strong>
+            <span>Match six spoken vocabulary labels with six pictures drawn from across the whole deck.</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="word-help" id="word-help" hidden role="dialog" aria-modal="true" aria-labelledby="word-help-title"><div class="word-help-card"><button class="word-help-close" id="word-help-close" type="button" aria-label="Close word help">×</button><h2 id="word-help-title">Words in this card</h2><p>Tap a label to see two useful phrases.</p><div id="word-help-list"></div></div></div>
+    <p class="sr-only" id="status" aria-live="polite"></p>
+  </main>
+
+  <script>
+    // The deck grows frequently. A fresh query key prevents a host or browser
+    // from pairing the newest card list with an older, cached answer key.
+    const pictureThisDataRevision = Date.now();
+    document.write(`<script src="game-data.js?v=${pictureThisDataRevision}"><\/script>`);
+
+    document.write(`<script src="question-data.js?v=${pictureThisDataRevision}"><\/script>`);
+  </script>
+  <script>
+    // Mirrors cards.json so the activity also works when opened directly from file://.
+    // PICTURE_THIS_CARDS_START
+    const cards = [
+  {
+    "id": "traffic-jam",
+    "title": "Traffic Jam",
+    "front": "pages/page_001.png",
+    "back": "pages/page_002.png"
+  },
+  {
+    "id": "power-cut",
+    "title": "Power Cut",
+    "front": "pages/page_003.png",
+    "back": "pages/page_004.png"
+  },
+  {
+    "id": "open-drains",
+    "title": "Open Drains",
+    "front": "pages/page_005.png",
+    "back": "pages/page_006.png"
+  },
+  {
+    "id": "street-litter",
+    "title": "Street Litter",
+    "front": "pages/page_007.png",
+    "back": "pages/page_008.png"
+  },
+  {
+    "id": "riverfront-waste",
+    "title": "Riverfront Waste",
+    "front": "pages/page_009.png",
+    "back": "pages/page_010.png"
+  },
+  {
+    "id": "workspace-limits",
+    "title": "Workspace Limits",
+    "front": "pages/page_011.png",
+    "back": "pages/page_012.png"
+  },
+  {
+    "id": "road-dust",
+    "title": "Road Dust",
+    "front": "pages/page_013.png",
+    "back": "pages/page_014.png"
+  },
+  {
+    "id": "summer-heat",
+    "title": "Summer Heat",
+    "front": "pages/page_015.png",
+    "back": "pages/page_016.png"
+  },
+  {
+    "id": "tree-loss",
+    "title": "Tree Loss",
+    "front": "pages/page_017.png",
+    "back": "pages/page_018.png"
+  },
+  {
+    "id": "overpass-delay",
+    "title": "Overpass Delay",
+    "front": "pages/page_019.png",
+    "back": "pages/page_020.png"
+  },
+  {
+    "id": "broken-footpaths",
+    "title": "Broken Footpaths",
+    "front": "pages/page_021.png",
+    "back": "pages/page_022.png"
+  },
+  {
+    "id": "groundwater-drop",
+    "title": "Groundwater Drop",
+    "front": "pages/page_023.png",
+    "back": "pages/page_024.png"
+  },
+  {
+    "id": "prepaid-meter",
+    "title": "Prepaid Meter",
+    "front": "pages/page_025.png",
+    "back": "pages/page_026.png"
+  },
+  {
+    "id": "hard-water",
+    "title": "Hard Water",
+    "front": "pages/page_027.png",
+    "back": "pages/page_028.png"
+  },
+  {
+    "id": "water-leaks",
+    "title": "Water Leaks",
+    "front": "pages/page_029.png",
+    "back": "pages/page_030.png"
+  },
+  {
+    "id": "toilet-access",
+    "title": "Toilet Access",
+    "front": "pages/page_031.png",
+    "back": "pages/page_032.png"
+  },
+  {
+    "id": "mosquito-breeding",
+    "title": "Mosquito Breeding",
+    "front": "pages/page_033.png",
+    "back": "pages/page_034.png"
+  },
+  {
+    "id": "street-noise",
+    "title": "Street Noise",
+    "front": "pages/page_035.png",
+    "back": "pages/page_036.png"
+  },
+  {
+    "id": "road-damage",
+    "title": "Road Damage",
+    "front": "pages/page_037.png",
+    "back": "pages/page_038.png"
+  },
+  {
+    "id": "waste-pickup",
+    "title": "Waste Pickup",
+    "front": "pages/page_039.png",
+    "back": "pages/page_040.png"
+  },
+  {
+    "id": "clinic-queues",
+    "title": "Hospital Queues",
+    "front": "pages/page_041.png",
+    "back": "pages/page_042.png"
+  },
+  {
+    "id": "rain-flooding",
+    "title": "Rain Flooding",
+    "front": "pages/page_043.png",
+    "back": "pages/page_044.png"
+  },
+  {
+    "id": "mango-prices",
+    "title": "Mango Prices",
+    "front": "pages/page_045.png",
+    "back": "pages/page_046.png"
+  },
+  {
+    "id": "lost-ponds",
+    "title": "Lost Ponds",
+    "front": "pages/page_047.png",
+    "back": "pages/page_048.png"
+  },
+  {
+    "id": "barnoi-pollution",
+    "title": "Barnoi Pollution",
+    "front": "pages/page_049.png",
+    "back": "pages/page_050.png"
+  }
+];
+    // PICTURE_THIS_CARDS_END
+    const wordHelpData = {"traffic-jam": [{"label": "Narrow Crossing", "collocations": ["cross the road", "narrow gap"]}, {"label": "Blocked Footpath", "collocations": ["block the footpath", "walk in traffic"]}, {"label": "Mid-Road Stop", "collocations": ["stop in the lane", "hold up traffic"]}, {"label": "Handcart Loading", "collocations": ["load a handcart", "delay the queue"]}, {"label": "Crowded Curb", "collocations": ["pickup point", "compete for space"]}, {"label": "Rushed Delivery", "collocations": ["delivery window", "rush a delivery"]}], "power-cut": [{"label": "Dark Study Room", "collocations": ["study in the dark", "lose power"]}, {"label": "Hot Room", "collocations": ["stifling room", "cool down"]}, {"label": "Phone Flashlight", "collocations": ["use a flashlight", "save battery"]}, {"label": "Generator Fumes", "collocations": ["run a generator", "breathe fumes"]}, {"label": "Dead Router", "collocations": ["internet connection", "lose connectivity"]}, {"label": "Limited Charging", "collocations": ["backup power", "limited capacity"]}], "open-drains": [{"label": "Missing Cover", "collocations": ["open drain", "watch your step"]}, {"label": "Overflowing Water", "collocations": ["drain overflow", "standing water"]}, {"label": "Dumped Cups", "collocations": ["clog a drain", "throw away cups"]}, {"label": "Sand Runoff", "collocations": ["wash away sand", "block the flow"]}, {"label": "Broken Drain Edge", "collocations": ["repair delay", "temporary barrier"]}, {"label": "Clearing Debris", "collocations": ["clear a blockage", "catch debris"]}], "street-litter": [{"label": "Open Gutter", "collocations": ["street gutter", "blow away"]}, {"label": "Full Bin", "collocations": ["overflowing bin", "leave rubbish"]}, {"label": "Sweeping Cups", "collocations": ["sweep up cups", "dump into a gutter"]}, {"label": "Fruit Peels", "collocations": ["discard peels", "food waste"]}, {"label": "Mixed Waste", "collocations": ["mixed waste", "sort rubbish"]}, {"label": "Carrying Waste", "collocations": ["collection point", "carry waste"]}], "riverfront-waste": [{"label": "Windblown Plastic", "collocations": ["windblown litter", "riverbank waste"]}, {"label": "Uneven Steps", "collocations": ["uneven steps", "carry rubbish"]}, {"label": "Leaving Bottles", "collocations": ["leave behind", "plastic bottle"]}, {"label": "Food Cart Waste", "collocations": ["food packaging", "collect waste"]}, {"label": "Full Riverside Bin", "collocations": ["overflowing bin", "dispose of waste"]}, {"label": "Cleanup After Dark", "collocations": ["collection schedule", "clean up later"]}], "workspace-limits": [{"label": "Shared Room", "collocations": ["shared room", "background noise"]}, {"label": "Few Sockets", "collocations": ["power socket", "charge a laptop"]}, {"label": "Video Call Noise", "collocations": ["hear a call", "reduce noise"]}, {"label": "Paid Seating", "collocations": ["minimum purchase", "afford a seat"]}, {"label": "Weak Wi-Fi", "collocations": ["unstable connection", "video call"]}, {"label": "Searching for Desk", "collocations": ["quiet workspace", "limited seating"]}], "road-dust": [{"label": "Loose Road Edge", "collocations": ["road shoulder", "raise dust"]}, {"label": "Dry Work Site", "collocations": ["loose sand", "blow into stalls"]}, {"label": "Fast Passing", "collocations": ["drive past", "dust cloud"]}, {"label": "Dry Sweeping", "collocations": ["sweep the pavement", "stir up dust"]}, {"label": "Uncovered Load", "collocations": ["cover a load", "spill material"]}, {"label": "Small Cleanup Cart", "collocations": ["clear debris", "cleanup schedule"]}], "summer-heat": [{"label": "Bare Walkway", "collocations": ["walk in the sun", "shaded route"]}, {"label": "Hot Shelter", "collocations": ["trapped heat", "bus shelter"]}, {"label": "Skipping Water", "collocations": ["drink water", "take a break"]}, {"label": "Midday Queue", "collocations": ["queue in the sun", "seek shade"]}, {"label": "Putting Up Shade", "collocations": ["shade cover", "temporary shelter"]}, {"label": "Fan Left Off", "collocations": ["cooling cost", "run a fan"]}], "tree-loss": [{"label": "Fresh Stump", "collocations": ["tree stump", "lost shade"]}, {"label": "Exposed Roots", "collocations": ["exposed roots", "dig a trench"]}, {"label": "Cutting Branches", "collocations": ["cut branches", "clear a route"]}, {"label": "Parking on Roots", "collocations": ["park on roots", "compact the soil"]}, {"label": "Road Expansion", "collocations": ["widen a road", "protect a tree"]}, {"label": "Drooping Sapling", "collocations": ["replacement sapling", "follow-up care"]}], "overpass-delay": [{"label": "Narrow Detour", "collocations": ["temporary detour", "narrow passage"]}, {"label": "Muddy Approach", "collocations": ["muddy road", "work-site access"]}, {"label": "Crossing Work Zone", "collocations": ["work-zone crossing", "take a shortcut"]}, {"label": "Wrong Turn", "collocations": ["wrong turn", "blocked lane"]}, {"label": "Closed Road", "collocations": ["road closure", "construction delay"]}, {"label": "Confusing Junction", "collocations": ["route guidance", "wayfinding sign"]}], "broken-footpaths": [{"label": "Broken Slab", "collocations": ["broken pavement", "trip hazard"]}, {"label": "High Curb", "collocations": ["high curb", "step up"]}, {"label": "Parked Motorcycle", "collocations": ["park on the footpath", "walk around"]}, {"label": "Shop Display", "collocations": ["shop display", "narrow the path"]}, {"label": "Open Repair", "collocations": ["unfinished repair", "loose paving"]}, {"label": "No Ramp", "collocations": ["curb ramp", "wheeled access"]}], "groundwater-drop": [{"label": "Lower Well", "collocations": ["water table", "deep well"]}, {"label": "Dry Field", "collocations": ["dry soil", "water shortage"]}, {"label": "Long Pumping", "collocations": ["pump groundwater", "irrigate crops"]}, {"label": "Carrying Water", "collocations": ["carry water", "fetch supplies"]}, {"label": "Thirsty Crop", "collocations": ["water-intensive crop", "irrigation demand"]}, {"label": "Lost Rainwater", "collocations": ["store rainwater", "surface-water option"]}], "prepaid-meter": [{"label": "Downstairs Meter", "collocations": ["meter downstairs", "check a balance"]}, {"label": "Caged Keypad", "collocations": ["meter cage", "physical access"]}, {"label": "Checking Portal", "collocations": ["online reading", "check the portal"]}, {"label": "Late Top-Up", "collocations": ["top up late", "power cuts out"]}, {"label": "Delayed Balance", "collocations": ["outdated balance", "real-time reading"]}, {"label": "Long PIN Entry", "collocations": ["recharge token", "enter a PIN"]}], "hard-water": [{"label": "White Scale", "collocations": ["calcium scale", "clog a tap"]}, {"label": "Iron Stains", "collocations": ["iron staining", "rust-coloured marks"]}, {"label": "Scrubbing Tiles", "collocations": ["scrub a surface", "remove scale"]}, {"label": "Replacing Taps", "collocations": ["replace a tap", "repair costs"]}, {"label": "Strong Cleaner", "collocations": ["strong cleaner", "cleaning runoff"]}, {"label": "No Water Test", "collocations": ["test the water", "share the cost"]}], "water-leaks": [{"label": "Street Leak", "collocations": ["pipe leak", "water loss"]}, {"label": "Weak Tap", "collocations": ["low pressure", "water supply"]}, {"label": "Reporting Again", "collocations": ["report a leak", "follow up"]}, {"label": "Storing Water", "collocations": ["store water", "plan ahead"]}, {"label": "Buried Pipe", "collocations": ["buried pipe", "repair access"]}, {"label": "Repair Delay", "collocations": ["repair crew", "response time"]}], "toilet-access": [{"label": "Distant Facility", "collocations": ["public toilet", "long walk"]}, {"label": "Broken Tap", "collocations": ["wash hands", "broken tap"]}, {"label": "Locked Door", "collocations": ["locked toilet", "find another place"]}, {"label": "Long Wait", "collocations": ["wait in line", "limited capacity"]}, {"label": "Cleaning Supplies", "collocations": ["cleaning supplies", "keep clean"]}, {"label": "Damaged Door", "collocations": ["repair a door", "maintenance need"]}], "mosquito-breeding": [{"label": "Standing Puddle", "collocations": ["standing water", "drain a puddle"]}, {"label": "Open Container", "collocations": ["open container", "collect rainwater"]}, {"label": "Leaving Buckets", "collocations": ["turn over a bucket", "leave outside"]}, {"label": "Discarded Tyre", "collocations": ["discard a tyre", "trap water"]}, {"label": "Blocked Outlet", "collocations": ["blocked outlet", "clear leaves"]}, {"label": "Missed Inspection", "collocations": ["check containers", "routine inspection"]}], "street-noise": [{"label": "Close Traffic", "collocations": ["traffic noise", "close a window"]}, {"label": "Echoing Lane", "collocations": ["narrow lane", "sound carries"]}, {"label": "Repeated Honking", "collocations": ["sound a horn", "traffic queue"]}, {"label": "Loud Speaker", "collocations": ["turn up volume", "speak over noise"]}, {"label": "Mixed Uses", "collocations": ["shared street", "work nearby"]}, {"label": "Late Unloading", "collocations": ["unloading time", "quiet hours"]}], "road-damage": [{"label": "Deep Pothole", "collocations": ["road pothole", "slow down"]}, {"label": "Loose Bricks", "collocations": ["loose bricks", "uneven surface"]}, {"label": "Sudden Swerving", "collocations": ["swerve around", "oncoming traffic"]}, {"label": "Heavy Load", "collocations": ["heavy load", "road wear"]}, {"label": "Patch Delay", "collocations": ["repair backlog", "temporary cone"]}, {"label": "Poor Runoff", "collocations": ["water runoff", "road patch"]}], "waste-pickup": [{"label": "Distant Point", "collocations": ["collection point", "carry waste"]}, {"label": "Overflowing Pile", "collocations": ["waste pile", "overflowing container"]}, {"label": "Early Drop-Off", "collocations": ["put out waste", "pickup time"]}, {"label": "Loose Bags", "collocations": ["tie a bag", "spill rubbish"]}, {"label": "Small Cart", "collocations": ["limited capacity", "collection cart"]}, {"label": "Unclear Route", "collocations": ["pickup route", "miss a street"]}], "clinic-queues": [{"label": "Small Waiting Room", "collocations": ["waiting room", "limited space"]}, {"label": "Hot Outdoor Line", "collocations": ["outdoor queue", "wait in the heat"]}, {"label": "Early Arrival", "collocations": ["arrive early", "join a queue"]}, {"label": "Finding a Desk", "collocations": ["find the right desk", "ask for help"]}, {"label": "Limited Staff", "collocations": ["staff shortage", "long queue"]}, {"label": "No Queue Guide", "collocations": ["queue guidance", "find the right line"]}], "rain-flooding": [{"label": "Low Walkway", "collocations": ["low walkway", "flooded path"]}, {"label": "Water at Entrance", "collocations": ["water at the door", "lift goods"]}, {"label": "Splashing Wheels", "collocations": ["drive through water", "splash pedestrians"]}, {"label": "Raised Detour", "collocations": ["take a detour", "avoid floodwater"]}, {"label": "Clogged Outflow", "collocations": ["clear an outlet", "backed-up water"]}, {"label": "No Overflow Route", "collocations": ["overflow route", "redirect water"]}], "mango-prices": [{"label": "Piled Crates", "collocations": ["market glut", "unsold fruit"]}, {"label": "Hot Loading", "collocations": ["hot storage", "perishable fruit"]}, {"label": "Rushed Harvest", "collocations": ["harvest window", "ripen together"]}, {"label": "Price Cut", "collocations": ["low farm price", "sell at a loss"]}, {"label": "Few Buyers", "collocations": ["buyer turnout", "weak demand"]}, {"label": "Limited Storage", "collocations": ["cold storage", "hold inventory"]}], "lost-ponds": [{"label": "Covered Pond Edge", "collocations": ["fill a pond", "pond edge"]}, {"label": "Blocked Inlet", "collocations": ["water inlet", "block drainage"]}, {"label": "Dumping Soil", "collocations": ["dump soil", "raise the ground"]}, {"label": "Reporting Fill", "collocations": ["report filling", "document change"]}, {"label": "Building Pressure", "collocations": ["land pressure", "building site"]}, {"label": "Weak Boundary", "collocations": ["pond boundary", "protect a wetland"]}], "barnoi-pollution": [{"label": "Dark Outflow", "collocations": ["drain outfall", "untreated waste"]}, {"label": "Floating Waste", "collocations": ["floating waste", "riverbank debris"]}, {"label": "Dumping Rubbish", "collocations": ["dump rubbish", "pollute a drain"]}, {"label": "Washing Nearby", "collocations": ["wash near water", "contaminated stream"]}, {"label": "Open Discharge", "collocations": ["direct discharge", "wastewater treatment"]}, {"label": "No Interceptor", "collocations": ["catch solid waste", "drain maintenance"]}]};
+
+    const app = document.querySelector("#app");
+    const stage = document.querySelector("#stage");
+    const deck = document.querySelector("#deck");
+    const card = document.querySelector("#card");
+    const frontImage = document.querySelector("#front-image");
+    const backImage = document.querySelector("#back-image");
+    const sidePill = document.querySelector("#side-pill");
+    const cardCount = document.querySelector("#card-count");
+    const instructionsText = document.querySelector("#instructions-text");
+    const status = document.querySelector("#status");
+    const shuffleButton = document.querySelector("#shuffle");
+    const prevCardButton = document.querySelector("#prev-card");
+    const nextCardButton = document.querySelector("#next-card");
+    const viewToggleButton = document.querySelector("#view-toggle");
+    const dualStage = document.querySelector("#dual-stage");
+    const dualFrontImage = document.querySelector("#dual-front-image");
+    const dualBackImage = document.querySelector("#dual-back-image");
+    const fullscreenButton = document.querySelector("#fullscreen");
+    const enterFullscreenIcon = fullscreenButton.querySelector(".enter-fullscreen");
+    const exitFullscreenIcon = fullscreenButton.querySelector(".exit-fullscreen");
+    const gameData = window.PICTURE_THIS_GAME_DATA || {};
+    const gameMeta = window.PICTURE_THIS_GAME_META?.cards || {};
+    const curatedLinkData = window.PICTURE_THIS_LINK_DATA || {};
+    const questionData = window.PICTURE_THIS_QUESTION_DATA || {};
+    const gameMenuButton = document.querySelector("#game-menu-button");
+    const hintButton = document.querySelector("#hint-button");
+    const wordsButton = document.querySelector("#words-button");
+    const wordHelp = document.querySelector("#word-help");
+    const wordHelpList = document.querySelector("#word-help-list");
+    const wordHelpClose = document.querySelector("#word-help-close");
+    const itemListenGrid = document.querySelector("#item-listen-grid");
+    const itemListenButtons = [...itemListenGrid.querySelectorAll(".item-listen-button")];
+    const dualItemListenGrid = document.querySelector("#dual-item-listen-grid");
+    const dualItemListenButtons = [...dualItemListenGrid.querySelectorAll(".item-listen-button")];
+    const questionListenLayer = document.querySelector("#question-listen-layer");
+    const dualQuestionListenLayer = document.querySelector("#dual-question-listen-layer");
+    const gamePicker = document.querySelector("#game-picker");
+    const gamePickerClose = document.querySelector("#game-picker-close");
+    const gamePanel = document.querySelector("#game-panel");
+    const gameModeKicker = document.querySelector("#game-mode-kicker");
+    const gamePanelTitle = document.querySelector("#game-panel-title");
+    const gamePrompt = document.querySelector("#game-prompt");
+    const gameScore = document.querySelector("#game-score");
+    const gameScoreValue = document.querySelector("#game-score-value");
+    const gameProgress = document.querySelector("#game-progress");
+    const gameProgressLabel = document.querySelector("#game-progress-label");
+    const gameProgressFill = document.querySelector("#game-progress-fill");
+    const guessForm = document.querySelector("#guess-form");
+    const guessInput = document.querySelector("#guess-input");
+    const guessSubmit = document.querySelector("#guess-submit");
+    const gameFeedback = document.querySelector("#game-feedback");
+    const revealGameAnswerButton = document.querySelector("#reveal-game-answer");
+    const newGameCardButton = document.querySelector("#new-game-card");
+    const endGameButton = document.querySelector("#end-game");
+    const categoryMask = document.querySelector("#category-mask");
+    const itemGrid = document.querySelector("#item-grid");
+    const itemFooterMask = document.querySelector("#item-footer-mask");
+    const itemCells = [...document.querySelectorAll(".item-cell")];
+    const linkWord = document.querySelector("#link-word");
+    const linkWordValue = document.querySelector("#link-word-value");
+    const acceptCreativeLinkButton = document.querySelector("#accept-creative-link");
+    const audioMatchBoard = document.querySelector("#audio-match-board");
+    const audioMatchGrid = document.querySelector("#audio-match-grid");
+    const audioMatchSession = document.querySelector("#audio-match-session");
+    const audioMatchPairs = document.querySelector("#audio-match-pairs");
+    const audioMatchScore = document.querySelector("#audio-match-score");
+    const audioMatchFeedback = document.querySelector("#audio-match-feedback");
+    const newAudioMatchButton = document.querySelector("#new-audio-match");
+    const endAudioMatchButton = document.querySelector("#end-audio-match");
+    const gamePanelHandle = document.querySelector("#game-panel-handle");
+    const audioMatchHandle = document.querySelector("#audio-match-handle");
+    const drawerPeek = document.querySelector("#drawer-peek");
+    const drawerPeekLabel = document.querySelector("#drawer-peek-label");
+    const gameStrip = document.querySelector("#game-strip");
+    const gameStripLinkword = document.querySelector("#game-strip-linkword");
+    const gameStripLinkwordValue = document.querySelector("#game-strip-linkword-value");
+    const gameStripPrompt = document.querySelector("#game-strip-prompt");
+    const gameStripFeedback = document.querySelector("#game-strip-feedback");
+    const gameScoreChip = document.querySelector("#game-score-chip");
+    const mobileGameStripQuery = window.matchMedia("(max-width: 900px)");
+
+    let isDualView = false;
+    let gameMode = "browse";
+    let drawerCollapsed = false;
+    let gamePoints = 0;
+    let roundComplete = false;
+    let foundItems = new Set();
+    let linkPuzzle = null;
+    let linkSessionExhausted = false;
+    let linkRoundTransitionPending = false;
+    let linkPuzzleSessionProgress = { used: 0, total: 0 };
+    const LINK_HISTORY_STORAGE_KEY = "rajshahi-problems-unused-link-history-v1";
+    let seenLinkPuzzleKeys = loadSeenLinkPuzzleKeys();
+    let selectedLinkItems = new Set();
+    let pendingCreativeLink = "";
+    const AUDIO_MATCH_HISTORY_STORAGE_KEY = "rajshahi-problems-audio-match-items-v1";
+    let seenAudioMatchKeys = loadSeenAudioMatchKeys();
+    let audioMatchRound = [];
+    let selectedAudioTile = null;
+    let selectedPictureTile = null;
+    let audioMatchPairsFound = 0;
+    let audioMatchLocked = false;
+    let listeningHintsActive = false;
+    let speakingControl = null;
+    let cardIndex = 0;
+    let angle = 0;
+    let startAngle = 0;
+    let startX = 0;
+    let startY = 0;
+    let lastX = 0;
+    let startTime = 0;
+    let dragging = false;
+    let pendingQuestionControl = null;
+
+    function secureRandomIndex(max) {
+      if (window.crypto && window.crypto.getRandomValues) {
+        const values = new Uint32Array(1);
+        window.crypto.getRandomValues(values);
+        return Math.floor((values[0] / 4294967296) * max);
+      }
+      return Math.floor(Math.random() * max);
+    }
+
+    function isLinkMode() {
+      return gameMode === "find-pair" || gameMode === "name-link";
+    }
+
+    function gameModeName() {
+      return {
+        category: "Guess the category",
+        items: "Guess the items",
+        "find-pair": "Find the pair",
+        "name-link": "Name the link",
+        "audio-match": "Audio match"
+      }[gameMode] || "Local Problems";
+    }
+
+    function generatedLinkPuzzles(cardId) {
+      const meta = gameMeta[cardId];
+      if (!meta || !Array.isArray(meta.items) || !Array.isArray(meta.links)) return [];
+      const itemIndexes = new Map(meta.items.map((item, index) => [item.id, index]));
+      return meta.links.map(link => ({
+        word: link.word,
+        answers: Array.isArray(link.answers) && link.answers.length ? link.answers : [link.word],
+        items: Array.isArray(link.items) ? link.items.map(item => Number.isInteger(item) ? item : itemIndexes.get(item)) : [],
+        explanation: link.explanation || "",
+        audit: link.audit
+      })).filter(link => link.word
+        && link.items.length === 2
+        && link.items.every(Number.isInteger)
+        && link.audit === "exclusive-among-six-v1");
+    }
+
+    function linkPuzzlesForCard(cardId) {
+      const curated = Array.isArray(curatedLinkData[cardId]) ? curatedLinkData[cardId] : [];
+      return [...curated, ...generatedLinkPuzzles(cardId)];
+    }
+
+    function loadSeenLinkPuzzleKeys() {
+      try {
+        const stored = JSON.parse(sessionStorage.getItem(LINK_HISTORY_STORAGE_KEY) || "[]");
+        return new Set(Array.isArray(stored) ? stored.filter(key => typeof key === "string") : []);
+      } catch (_) {
+        return new Set();
+      }
+    }
+
+    function saveSeenLinkPuzzleKeys() {
+      try { sessionStorage.setItem(LINK_HISTORY_STORAGE_KEY, JSON.stringify([...seenLinkPuzzleKeys])); } catch (_) {}
+    }
+
+    function linkPuzzleCandidates() {
+      return cards.flatMap((entry, entryIndex) => linkPuzzlesForCard(entry.id).map(puzzle => ({
+        key: `${entry.id}|${puzzle.word.toLowerCase()}|${[...puzzle.items].sort((a, b) => a - b).join("-")}`,
+        cardIndex: entryIndex,
+        puzzle
+      })));
+    }
+
+    function takeRandomUnseenLinkPuzzle() {
+      const candidates = linkPuzzleCandidates();
+      const validKeys = new Set(candidates.map(candidate => candidate.key));
+      seenLinkPuzzleKeys = new Set([...seenLinkPuzzleKeys].filter(key => validKeys.has(key)));
+      const unseen = candidates.filter(candidate => !seenLinkPuzzleKeys.has(candidate.key));
+      if (!unseen.length) {
+        saveSeenLinkPuzzleKeys();
+        return { selection: null, used: candidates.length, total: candidates.length };
+      }
+
+      const selection = unseen[secureRandomIndex(unseen.length)];
+      seenLinkPuzzleKeys.add(selection.key);
+      saveSeenLinkPuzzleKeys();
+      return {
+        selection,
+        used: candidates.length - unseen.length + 1,
+        total: candidates.length
+      };
+    }
+
+    function loadSeenAudioMatchKeys() {
+      try {
+        const stored = JSON.parse(sessionStorage.getItem(AUDIO_MATCH_HISTORY_STORAGE_KEY) || "[]");
+        return new Set(Array.isArray(stored) ? stored.filter(key => typeof key === "string") : []);
+      } catch (_) {
+        return new Set();
+      }
+    }
+
+    function saveSeenAudioMatchKeys() {
+      try { sessionStorage.setItem(AUDIO_MATCH_HISTORY_STORAGE_KEY, JSON.stringify([...seenAudioMatchKeys])); } catch (_) {}
+    }
+
+    function audioMatchPool() {
+      return cards.flatMap((entry, entryIndex) => (gameData[entry.id] || []).map((label, itemIndex) => ({
+        key: `${entry.id}|${itemIndex}`,
+        cardId: entry.id,
+        cardIndex: entryIndex,
+        itemIndex,
+        label,
+        front: entry.front
+      }))).filter(item => typeof item.label === "string" && item.label.trim());
+    }
+
+    function shuffledCopy(values) {
+      const shuffled = [...values];
+      for (let index = shuffled.length - 1; index > 0; index -= 1) {
+        const other = secureRandomIndex(index + 1);
+        [shuffled[index], shuffled[other]] = [shuffled[other], shuffled[index]];
+      }
+      return shuffled;
+    }
+
+    function chooseSixUniqueLabels(candidates) {
+      const labels = new Set();
+      const selected = [];
+      for (const item of shuffledCopy(candidates)) {
+        const labelKey = item.label.trim().toLocaleLowerCase();
+        if (labels.has(labelKey)) continue;
+        labels.add(labelKey);
+        selected.push(item);
+        if (selected.length === 6) break;
+      }
+      return selected;
+    }
+
+    function takeAudioMatchRound() {
+      const pool = audioMatchPool();
+      const validKeys = new Set(pool.map(item => item.key));
+      seenAudioMatchKeys = new Set([...seenAudioMatchKeys].filter(key => validKeys.has(key)));
+      let selected = chooseSixUniqueLabels(pool.filter(item => !seenAudioMatchKeys.has(item.key)));
+
+      if (selected.length < 6) {
+        seenAudioMatchKeys = new Set();
+        selected = chooseSixUniqueLabels(pool);
+      }
+
+      selected.forEach(item => seenAudioMatchKeys.add(item.key));
+      saveSeenAudioMatchKeys();
+      return { selected, used: seenAudioMatchKeys.size, total: pool.length };
+    }
+
+    function setAudioMatchFeedback(message, tone = "") {
+      audioMatchFeedback.textContent = message;
+      audioMatchFeedback.classList.toggle("correct", tone === "correct");
+      audioMatchFeedback.classList.toggle("wrong", tone === "wrong");
+    }
+
+    function updateAudioMatchScore(delta = 0) {
+      gamePoints += delta;
+      audioMatchScore.textContent = gamePoints > 0 ? `+${gamePoints}` : String(gamePoints);
+      audioMatchPairs.textContent = `${audioMatchPairsFound}/6`;
+    }
+
+    function stopSpeech() {
+      window.speechSynthesis?.cancel();
+      speakingControl?.classList.remove("is-speaking");
+      speakingControl = null;
+    }
+
+    function speakText(text, control = null, announcement = "Audio played.") {
+      if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        status.textContent = "Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.";
+        return false;
+      }
+      stopSpeech();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.rate = .86;
+      utterance.pitch = 1;
+      if (control) {
+        speakingControl = control;
+        control.classList.add("is-speaking");
+      }
+      const clearSpeakingControl = () => {
+        control?.classList.remove("is-speaking");
+        if (speakingControl === control) speakingControl = null;
+      };
+      utterance.onend = clearSpeakingControl;
+      utterance.onerror = clearSpeakingControl;
+      window.speechSynthesis.speak(utterance);
+      status.textContent = announcement;
+      return true;
+    }
+
+    function speakAudioMatchWord(label) {
+      const played = speakText(label, null, "Audio vocabulary label played.");
+      if (!played) setAudioMatchFeedback("Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.", "wrong");
+      return played;
+    }
+
+    function audioMatchCropPosition(itemIndex) {
+      return {
+        x: itemIndex % 2 === 0 ? "1.923%" : "98.077%",
+        y: ["10.526%", "42.105%", "73.684%"][Math.floor(itemIndex / 2)]
+      };
+    }
+
+    function makeAudioMatchTile(item, kind) {
+      const tile = document.createElement("button");
+      tile.type = "button";
+      tile.className = "audio-match-tile";
+      tile.dataset.kind = kind;
+      tile.dataset.pairKey = item.key;
+      tile.dataset.label = item.label;
+
+      const type = document.createElement("span");
+      type.className = "audio-match-type";
+      type.textContent = kind === "audio" ? "Listen" : "Picture";
+      tile.append(type);
+
+      if (kind === "audio") {
+        const audio = document.createElement("span");
+        audio.className = "audio-match-audio";
+        audio.innerHTML = `<svg class="audio-match-speaker" viewBox="0 0 64 64" aria-hidden="true"><path d="M9 25h12l15-12v38L21 39H9z"></path><path class="waves" d="M43 23c5 5 5 13 0 18M49 17c9 9 9 21 0 30"></path></svg>`;
+        tile.append(audio);
+        tile.setAttribute("aria-label", "Audio tile. Activate to hear the vocabulary word.");
+      } else {
+        const picture = document.createElement("span");
+        const crop = audioMatchCropPosition(item.itemIndex);
+        picture.className = "audio-match-picture";
+        picture.style.backgroundImage = `url("${item.front}")`;
+        picture.style.setProperty("--crop-x", crop.x);
+        picture.style.setProperty("--crop-y", crop.y);
+        tile.append(picture);
+        tile.setAttribute("aria-label", `Picture: ${item.label}`);
+      }
+
+      const label = document.createElement("span");
+      label.className = "audio-match-label";
+      label.textContent = kind === "audio" ? "" : item.label;
+      label.setAttribute("aria-hidden", "true");
+      tile.append(label);
+      return tile;
+    }
+
+    function startAudioMatchRound() {
+      if (gameMode !== "audio-match") return;
+      window.speechSynthesis?.cancel();
+      const { selected, used, total } = takeAudioMatchRound();
+      audioMatchRound = selected;
+      selectedAudioTile = null;
+      selectedPictureTile = null;
+      audioMatchPairsFound = 0;
+      audioMatchLocked = false;
+      roundComplete = false;
+      audioMatchGrid.replaceChildren();
+      updateAudioMatchScore(0);
+      newAudioMatchButton.textContent = "New six words →";
+      audioMatchSession.textContent = `Whole deck · ${used} of ${total} vocabulary items used this session`;
+
+      if (selected.length !== 6) {
+        setAudioMatchFeedback("The deck does not contain six usable vocabulary items.", "wrong");
+        return;
+      }
+
+      const tiles = shuffledCopy(selected.flatMap(item => [
+        { item, kind: "picture" },
+        { item, kind: "audio" }
+      ]));
+      tiles.forEach(({ item, kind }) => audioMatchGrid.append(makeAudioMatchTile(item, kind)));
+      setAudioMatchFeedback("Choose an audio tile and a picture tile.");
+      audioMatchGrid.querySelector("button")?.focus();
+      status.textContent = "New Audio Match round with six vocabulary pairs.";
+    }
+
+    function clearAudioMatchSelection() {
+      selectedAudioTile?.classList.remove("is-selected", "is-wrong");
+      selectedPictureTile?.classList.remove("is-selected", "is-wrong");
+      selectedAudioTile = null;
+      selectedPictureTile = null;
+    }
+
+    function checkAudioMatchSelection() {
+      if (!selectedAudioTile || !selectedPictureTile || audioMatchLocked) return;
+      const correct = selectedAudioTile.dataset.pairKey === selectedPictureTile.dataset.pairKey;
+      if (correct) {
+        const label = selectedAudioTile.dataset.label;
+        selectedAudioTile.classList.remove("is-selected");
+        selectedPictureTile.classList.remove("is-selected");
+        selectedAudioTile.classList.add("is-matched");
+        selectedPictureTile.classList.add("is-matched");
+        selectedAudioTile.disabled = true;
+        selectedPictureTile.disabled = true;
+        selectedAudioTile.setAttribute("aria-label", `Matched audio: ${label}`);
+        selectedPictureTile.setAttribute("aria-label", `Matched picture: ${label}`);
+        selectedAudioTile.querySelector(".audio-match-label").textContent = label;
+        selectedPictureTile.querySelector(".audio-match-label").textContent = label;
+        selectedAudioTile.querySelector(".audio-match-label")?.setAttribute("aria-hidden", "false");
+        selectedPictureTile.querySelector(".audio-match-label")?.setAttribute("aria-hidden", "false");
+        selectedAudioTile = null;
+        selectedPictureTile = null;
+        audioMatchPairsFound += 1;
+        updateAudioMatchScore(1);
+        if (audioMatchPairsFound === 6) {
+          roundComplete = true;
+          newAudioMatchButton.textContent = "Play another six →";
+          setAudioMatchFeedback(`Round complete! You matched all six pairs with ${gamePoints} total point${gamePoints === 1 ? "" : "s"}.`, "correct");
+        } else {
+          setAudioMatchFeedback(`Correct—${label}! Choose another audio and picture. +1 point.`, "correct");
+        }
+        return;
+      }
+
+      audioMatchLocked = true;
+      selectedAudioTile.classList.add("is-wrong");
+      selectedPictureTile.classList.add("is-wrong");
+      updateAudioMatchScore(-1);
+      setAudioMatchFeedback("Those tiles do not match. −1 point. Listen and try again.", "wrong");
+      window.setTimeout(() => {
+        if (gameMode !== "audio-match") return;
+        clearAudioMatchSelection();
+        audioMatchLocked = false;
+      }, 520);
+    }
+
+    function handleAudioMatchTile(tile) {
+      if (gameMode !== "audio-match" || audioMatchLocked || tile.disabled) return;
+      const kind = tile.dataset.kind;
+      if (kind === "audio") {
+        speakAudioMatchWord(tile.dataset.label);
+        if (selectedAudioTile === tile) return;
+        selectedAudioTile?.classList.remove("is-selected");
+        selectedAudioTile = tile;
+      } else {
+        if (selectedPictureTile === tile) {
+          selectedPictureTile.classList.remove("is-selected");
+          selectedPictureTile = null;
+          return;
+        }
+        selectedPictureTile?.classList.remove("is-selected");
+        selectedPictureTile = tile;
+      }
+      tile.classList.add("is-selected");
+      checkAudioMatchSelection();
+    }
+
+    function beginRandomLinkRound(animate = true) {
+      if (!isLinkMode() || linkRoundTransitionPending) return;
+      const { selection, used, total } = takeRandomUnseenLinkPuzzle();
+      linkPuzzleSessionProgress = { used, total };
+      linkSessionExhausted = !selection;
+
+      if (!selection) {
+        linkPuzzle = null;
+        resetGameRound();
+        updateSideUI(false);
+        status.textContent = `All ${total} link puzzles have been used in this browser session.`;
+        return;
+      }
+
+      linkPuzzle = selection.puzzle;
+      linkRoundTransitionPending = true;
+      const finish = () => { linkRoundTransitionPending = false; };
+      if (animate && selection.cardIndex !== cardIndex) {
+        transitionToCard(selection.cardIndex, finish);
+      } else {
+        showCard(selection.cardIndex, false);
+        finish();
+      }
+    }
+
+    function initialCardIndex() {
+      const requested = Number(new URLSearchParams(location.search).get("card"));
+      if (Number.isInteger(requested) && requested >= 1 && requested <= cards.length) return requested - 1;
+
+      let previous = -1;
+      try { previous = Number(sessionStorage.getItem("local-problems-last-card")); } catch (_) {}
+      let next = secureRandomIndex(cards.length);
+      if (cards.length > 1 && next === previous) next = (next + 1 + secureRandomIndex(cards.length - 1)) % cards.length;
+      return next;
+    }
+
+    function isQuestionSide() {
+      return Math.abs(Math.round(angle / 180)) % 2 === 1;
+    }
+
+    function currentQuestionRecord() {
+      const record = questionData[cards[cardIndex]?.id];
+      return record && Array.isArray(record.questions) && record.questions.length === 6 ? record : null;
+    }
+
+    function updateListeningHintButtons() {
+      const labels = gameData[cards[cardIndex]?.id] || [];
+      [itemListenButtons, dualItemListenButtons].forEach(buttons => {
+        buttons.forEach((button, index) => {
+          const label = labels[index] || "";
+          button.dataset.label = label;
+          button.disabled = !label;
+          button.setAttribute("aria-label", label ? `Hear ${label}` : "Vocabulary label unavailable");
+          button.setAttribute("title", label ? `Hear “${label}”` : "Vocabulary label unavailable");
+        });
+      });
+      hintButton.disabled = labels.length !== 6;
+    }
+
+    function makeQuestionListenButton(question, index, endpoint) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "question-listen-button";
+      button.setAttribute("aria-label", `Listen to question ${index + 1}: ${question}`);
+      button.setAttribute("title", `Listen to question ${index + 1}`);
+      button.style.setProperty("--question-x", `${endpoint.x}%`);
+      button.style.setProperty("--question-y", `${endpoint.y}%`);
+      button.innerHTML = `<svg class="speaker-glyph" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 10v4h4l5 4V6l-5 4H4Z" fill="currentColor"></path>
+        <path d="M16 9c1 .8 1.5 1.8 1.5 3S17 14.2 16 15m2.6-8c1.7 1.4 2.6 3 2.6 5s-.9 3.6-2.6 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path>
+      </svg>`;
+      button.addEventListener("pointerdown", event => event.stopPropagation());
+      button.addEventListener("pointerup", event => event.stopPropagation());
+      button.addEventListener("click", event => {
+        event.stopPropagation();
+        speakText(question, button, `Question ${index + 1} played.`);
+      });
+      return button;
+    }
+
+    function renderQuestionControls() {
+      const record = currentQuestionRecord();
+      questionListenLayer.replaceChildren();
+      dualQuestionListenLayer.replaceChildren();
+      if (!record) return;
+      record.questions.forEach((question, index) => {
+        const endpoint = record.endpoints?.[index];
+        const position = Array.isArray(record.positions) && Number.isFinite(record.positions[index])
+          ? record.positions[index]
+          : 15 + index * 13;
+        const placement = Number.isFinite(endpoint?.x) && Number.isFinite(endpoint?.y)
+          ? endpoint
+          : { x: 89, y: position };
+        questionListenLayer.append(makeQuestionListenButton(question, index, placement));
+        dualQuestionListenLayer.append(makeQuestionListenButton(question, index, placement));
+      });
+    }
+
+    function syncListeningSurfaces() {
+      const browsing = gameMode === "browse";
+      const questionSide = browsing && !isDualView && isQuestionSide();
+      const hasQuestions = Boolean(currentQuestionRecord());
+      itemListenGrid.hidden = !(browsing && listeningHintsActive && !isDualView && !questionSide);
+      dualItemListenGrid.hidden = !(browsing && listeningHintsActive && isDualView);
+      questionListenLayer.hidden = !(questionSide && hasQuestions);
+      dualQuestionListenLayer.hidden = !(browsing && isDualView && hasQuestions);
+      hintButton.classList.toggle("active", listeningHintsActive);
+      hintButton.setAttribute("aria-pressed", String(listeningHintsActive));
+      hintButton.setAttribute("aria-label", listeningHintsActive ? "Turn off listening hints" : "Turn on listening hints");
+    }
+
+    function setListeningHintsActive(active) {
+      if (gameMode !== "browse") active = false;
+      listeningHintsActive = active;
+      stopSpeech();
+      if (active && !isDualView && isQuestionSide()) {
+        flip(1);
+        return;
+      }
+      syncListeningSurfaces();
+      status.textContent = active
+        ? "Listening hints on. Select any picture to hear its vocabulary label."
+        : "Listening hints off.";
+    }
+
+    function toggleListeningHints() {
+      setListeningHintsActive(!listeningHintsActive);
+    }
+
+    function updateSideUI(announce = true) {
+      if (gameMode !== "browse") {
+        const current = cards[cardIndex];
+        sidePill.textContent = gameModeName();
+        const labels = gameData[current.id] || [];
+        if (gameMode === "category") {
+          card.setAttribute("aria-label", "Mystery category picture card. Type a category guess in the game panel.");
+        } else if (gameMode === "items") {
+          card.setAttribute("aria-label", `${current.title}. Item guessing card. Type an item guess in the game panel.`);
+        } else if (gameMode === "find-pair") {
+          card.setAttribute("aria-label", `${current.title}. Select the two pictures linked by ${linkPuzzle?.word || "the displayed word"}.`);
+        } else {
+          const pair = linkPuzzle?.items?.map(index => labels[index]).filter(Boolean).join(" and ") || "the highlighted pair";
+          card.setAttribute("aria-label", `${current.title}. Type one word that links ${pair}.`);
+        }
+        syncListeningSurfaces();
+        if (announce) status.textContent = `New ${gameModeName().toLocaleLowerCase()} card: ${current.title}.`;
+        return;
+      }
+      const questionSide = isQuestionSide();
+      const current = cards[cardIndex];
+      sidePill.textContent = questionSide ? "Question side" : "Picture side";
+      card.setAttribute("aria-label", questionSide
+        ? `${current.title}. Question side. Flip to the picture side.`
+        : `${current.title}. Picture side. Flip to the question side.`);
+      syncListeningSurfaces();
+      if (announce) status.textContent = `${current.title}: ${questionSide ? "question side" : "picture side"}.`;
+    }
+
+    function applyTransform(nextAngle = angle, dragX = 0) {
+      const progress = Math.min(1, Math.abs(dragX) / Math.max(180, deck.clientWidth * .7));
+      card.style.setProperty("--rotate-y", `${nextAngle}deg`);
+      card.style.setProperty("--drag-x", `${dragX * .12}px`);
+      card.style.setProperty("--tilt-z", `${Math.max(-2.2, Math.min(2.2, dragX * .012))}deg`);
+      card.style.setProperty("--shine-opacity", `${.07 + progress * .18}`);
+      card.style.setProperty("--shine-angle", dragX < 0 ? "62deg" : "118deg");
+    }
+
+    function finishFlip(direction) {
+      angle = startAngle + (direction < 0 ? -180 : 180);
+      card.classList.remove("is-dragging");
+      stage.classList.remove("is-dragging");
+      applyTransform(angle, 0);
+      updateSideUI();
+      if (navigator.vibrate) navigator.vibrate(12);
+    }
+
+    function flip(direction = 1) {
+      if (gameMode !== "browse") return;
+      startAngle = angle;
+      finishFlip(direction);
+    }
+
+    function cancelDrag() {
+      dragging = false;
+      pendingQuestionControl = null;
+      card.classList.remove("is-dragging");
+      stage.classList.remove("is-dragging");
+      applyTransform(startAngle, 0);
+      angle = startAngle;
+    }
+
+    function questionControlFromPoint(clientX, clientY) {
+      const layers = [questionListenLayer, dualQuestionListenLayer];
+      for (const layer of layers) {
+        if (layer.hidden) continue;
+        for (const button of layer.querySelectorAll(".question-listen-button")) {
+          const bounds = button.getBoundingClientRect();
+          if (clientX >= bounds.left && clientX <= bounds.right && clientY >= bounds.top && clientY <= bounds.bottom) {
+            return button;
+          }
+        }
+      }
+      return null;
+    }
+
+    function onPointerDown(event) {
+      if (isDualView || gameMode !== "browse") return;
+      if (event.target.closest?.(".question-listen-button, .item-listen-button")) return;
+      pendingQuestionControl = questionControlFromPoint(event.clientX, event.clientY);
+      if (pendingQuestionControl) return;
+      if (event.button !== undefined && event.button !== 0) return;
+      dragging = true;
+      startX = lastX = event.clientX;
+      startY = event.clientY;
+      startTime = performance.now();
+      startAngle = angle;
+      card.classList.add("is-dragging");
+      stage.classList.add("is-dragging");
+      stage.setPointerCapture?.(event.pointerId);
+    }
+
+    function onPointerMove(event) {
+      if (!dragging || isDualView) return;
+      lastX = event.clientX;
+      const dx = lastX - startX;
+      const rotation = Math.max(-118, Math.min(118, dx * (180 / Math.max(210, deck.clientWidth * .72))));
+      applyTransform(startAngle + rotation, dx);
+    }
+
+    function onPointerUp(event) {
+      if (pendingQuestionControl) {
+        const control = pendingQuestionControl;
+        pendingQuestionControl = null;
+        control.click();
+        return;
+      }
+      if (event.target.closest?.(".question-listen-button, .item-listen-button")) {
+        dragging = false;
+        card.classList.remove("is-dragging");
+        stage.classList.remove("is-dragging");
+        return;
+      }
+      if (!dragging || isDualView) return;
+      dragging = false;
+      const dx = event.clientX - startX;
+      const dy = event.clientY - startY;
+      const elapsed = Math.max(1, performance.now() - startTime);
+      const velocity = dx / elapsed;
+      const wasTap = Math.hypot(dx, dy) < 9;
+      const committed = Math.abs(dx) > Math.min(72, deck.clientWidth * .18) || Math.abs(velocity) > .48;
+
+      if (wasTap) {
+        finishFlip(1);
+      } else if (committed && Math.abs(dx) > Math.abs(dy) * .8) {
+        finishFlip(dx < 0 ? -1 : 1);
+      } else {
+        cancelDrag();
+      }
+    }
+
+    function setDualView(active) {
+      if (active && gameMode !== "browse") return;
+      isDualView = active;
+      if (isDualView) {
+        viewToggleButton.classList.add("active");
+        viewToggleButton.querySelector(".text").textContent = "Flip Card";
+        viewToggleButton.querySelector(".icon").textContent = "🎴";
+        deck.style.display = "none";
+        dualStage.style.display = "flex";
+        sidePill.style.display = "none";
+        instructionsText.textContent = "Side-by-Side View · 'N' for next card";
+        stage.style.cursor = "default";
+        stage.classList.add("is-dual");
+      } else {
+        viewToggleButton.classList.remove("active");
+        viewToggleButton.querySelector(".text").textContent = "Side by Side";
+        viewToggleButton.querySelector(".icon").textContent = "👥";
+        deck.style.display = "block";
+        dualStage.style.display = "none";
+        sidePill.style.display = "inline-flex";
+        instructionsText.textContent = "Swipe or tap to flip";
+        stage.style.cursor = "grab";
+        stage.classList.remove("is-dual");
+      }
+      showCard(cardIndex, false);
+    }
+
+    function toggleDualView() {
+      setDualView(!isDualView);
+    }
+
+    function rgbToHsl(red, green, blue) {
+      const r = red / 255;
+      const g = green / 255;
+      const b = blue / 255;
+      const maximum = Math.max(r, g, b);
+      const minimum = Math.min(r, g, b);
+      const delta = maximum - minimum;
+      const lightness = (maximum + minimum) / 2;
+      let hue = 0;
+
+      if (delta) {
+        if (maximum === r) hue = ((g - b) / delta) % 6;
+        else if (maximum === g) hue = (b - r) / delta + 2;
+        else hue = (r - g) / delta + 4;
+        hue *= 60;
+        if (hue < 0) hue += 360;
+      }
+
+      const saturation = delta ? delta / (1 - Math.abs(2 * lightness - 1)) : 0;
+      return { hue, saturation, lightness };
+    }
+
+    function setAccentFromCardGradient(image) {
+      const source = image.src;
+
+      function applyAccent() {
+        if (image.src !== source || !image.naturalWidth || !image.naturalHeight) return;
+
+        try {
+          const swatch = document.createElement("canvas");
+          swatch.width = 1;
+          swatch.height = 1;
+          const context = swatch.getContext("2d", { willReadFrequently: true });
+          const sampleTop = Math.round(image.naturalHeight * .96);
+          const sampleHeight = Math.max(1, Math.round(image.naturalHeight * .035));
+          context.drawImage(
+            image,
+            0,
+            sampleTop,
+            image.naturalWidth,
+            sampleHeight,
+            0,
+            0,
+            1,
+            1
+          );
+
+          const [red, green, blue] = context.getImageData(0, 0, 1, 1).data;
+          const { hue, saturation } = rgbToHsl(red, green, blue);
+          if (saturation < .06) return;
+
+          const roundedHue = Math.round(hue);
+          app.style.setProperty("--accent", `${roundedHue} 84% 64%`);
+          app.style.setProperty("--accent-shifted", `${(roundedHue + 22) % 360} 74% 60%`);
+        } catch (_) {
+          // If an image cannot be sampled, retain the current accessible accent.
+        }
+      }
+
+      if (image.complete) applyAccent();
+      else image.addEventListener("load", applyAccent, { once: true });
+    }
+
+    function showCard(index, announce = true) {
+      stopSpeech();
+      cardIndex = index;
+      angle = 0;
+      startAngle = 0;
+      const current = cards[index];
+
+      frontImage.src = current.front;
+      frontImage.alt = gameMode === "category" ? "Mystery category picture card" : `${current.title} picture card`;
+      backImage.src = current.back;
+      backImage.alt = `${current.title} discussion questions`;
+
+      dualFrontImage.src = current.front;
+      dualFrontImage.alt = `${current.title} picture card`;
+      dualBackImage.src = current.back;
+      dualBackImage.alt = `${current.title} discussion questions`;
+
+      updateListeningHintButtons();
+      renderQuestionControls();
+
+      cardCount.textContent = `Card ${index + 1} of ${cards.length}`;
+      setAccentFromCardGradient(frontImage);
+      applyTransform(0, 0);
+      if (gameMode !== "browse") resetGameRound();
+      updateSideUI(false);
+      document.title = gameMode === "browse" ? `${current.title} — Local Problems` : `${gameModeName()} — Local Problems`;
+      try { sessionStorage.setItem("local-problems-last-card", String(index)); } catch (_) {}
+      if (announce) status.textContent = gameMode === "browse" ? `New card: ${current.title}.` : `New ${gameModeName().toLocaleLowerCase()} card: ${current.title}.`;
+    }
+
+    function transitionToCard(nextIndex, onComplete = () => {}) {
+      if (isDualView) {
+        dualStage.style.opacity = "0.2";
+        dualStage.style.transform = "scale(0.97)";
+        setTimeout(() => {
+          showCard(nextIndex);
+          dualStage.style.opacity = "1";
+          dualStage.style.transform = "scale(1)";
+          onComplete();
+        }, 130);
+      } else {
+        deck.classList.add("is-changing");
+        setTimeout(() => {
+          showCard(nextIndex);
+          deck.classList.remove("is-changing");
+          onComplete();
+        }, 165);
+      }
+    }
+
+    function nextCard() {
+      if (isLinkMode()) {
+        beginRandomLinkRound();
+        return;
+      }
+      const next = (cardIndex + 1) % cards.length;
+      transitionToCard(next);
+    }
+
+    function prevCard() {
+      if (isLinkMode()) {
+        beginRandomLinkRound();
+        return;
+      }
+      const prev = (cardIndex - 1 + cards.length) % cards.length;
+      transitionToCard(prev);
+    }
+
+    function newRandomCard() {
+      if (isLinkMode()) {
+        beginRandomLinkRound();
+        return;
+      }
+      let next = secureRandomIndex(cards.length - 1);
+      if (next >= cardIndex) next += 1;
+      transitionToCard(next);
+    }
+
+    const ITEM_ALIASES = {
+      "airplane": ["plane", "aeroplane", "aircraft"],
+      "aluminum foil": ["aluminium foil", "tin foil"],
+      "ambulance": ["emergency vehicle"],
+      "atm": ["cash machine", "cashpoint", "bank machine"],
+      "baby bottle": ["feeding bottle"],
+      "backpack": ["rucksack", "school bag"],
+      "bandage": ["band aid", "bandaid", "plaster"],
+      "banknote": ["bank note", "paper money", "bill"],
+      "bar soap": ["soap", "soap bar"],
+      "bathrobe": ["dressing gown", "robe"],
+      "bell pepper": ["capsicum", "sweet pepper"],
+      "bicycle": ["bike", "cycle"],
+      "binder clip": ["bulldog clip", "foldback clip"],
+      "blackboard": ["chalkboard"],
+      "book cart": ["book trolley", "library trolley"],
+      "bookshelf": ["bookcase", "book shelf"],
+      "business person": ["businessman", "businesswoman", "office worker", "business worker"],
+      "canteen": ["water bottle", "flask"],
+      "car tire": ["tire", "tyre", "car tyre"],
+      "cell phone": ["mobile phone", "cellphone", "mobile", "phone"],
+      "checkered blanket": ["checked blanket", "picnic blanket"],
+      "cinema seat": ["movie seat", "theater seat", "theatre seat"],
+      "cleaning cloth": ["rag", "cleaning rag", "duster"],
+      "clothes hanger": ["coat hanger", "hanger"],
+      "clothes iron": ["iron"],
+      "clothespin": ["clothes peg", "peg"],
+      "coiled fire hose": ["fire hose", "hose"],
+      "computer mouse": ["mouse"],
+      "construction helmet": ["hard hat", "safety helmet"],
+      "cooler box": ["cool box", "ice box", "cooler"],
+      "credit card": ["bank card", "payment card"],
+      "crutch": ["walking crutch", "walking aid"],
+      "cutting board": ["chopping board"],
+      "diaper": ["nappy"],
+      "dish soap": ["washing up liquid", "dishwashing liquid"],
+      "dome tent": ["tent", "camping tent"],
+      "door key": ["key", "house key"],
+      "dslr camera": ["camera", "digital camera"],
+      "dumbbell": ["hand weight", "free weight"],
+      "eggplant": ["aubergine", "brinjal"],
+      "eraser": ["rubber", "pencil eraser"],
+      "exercise bike": ["stationary bike", "exercise bicycle"],
+      "face mask": ["mask", "medical mask", "surgical mask"],
+      "faucet": ["tap", "water tap"],
+      "file folder": ["folder", "document folder"],
+      "film reel": ["movie reel", "reel"],
+      "fire engine": ["fire truck", "firetruck"],
+      "first aid kit": ["medical kit", "emergency kit"],
+      "flip flops": ["sandals", "flipflops", "thongs"],
+      "food container": ["storage container", "tupperware"],
+      "football": ["american football", "gridiron ball"],
+      "front door": ["door", "house door"],
+      "frying pan": ["frypan", "skillet"],
+      "game die": ["dice", "die"],
+      "garbage bag": ["trash bag", "bin bag", "rubbish bag"],
+      "garbage can": ["trash can", "rubbish bin", "dustbin"],
+      "garden hose": ["hose", "water hose"],
+      "garden gloves": ["gardening gloves"],
+      "gearshift": ["gear stick", "gear lever", "shifter"],
+      "glasses": ["eyeglasses", "spectacles"],
+      "hair clippers": ["clippers", "electric clippers"],
+      "hair dryer": ["blow dryer", "blowdryer"],
+      "hand basket": ["shopping basket", "grocery basket"],
+      "hand trowel": ["garden trowel", "trowel"],
+      "hot water bottle": ["hot water bag"],
+      "iv stand": ["drip stand", "iv pole", "drip pole"],
+      "jump rope": ["skipping rope"],
+      "kettle": ["tea kettle"],
+      "laptop": ["notebook computer", "portable computer"],
+      "life buoy": ["lifebuoy", "life ring", "life preserver"],
+      "light bulb": ["lightbulb", "bulb"],
+      "mail": ["letter", "post"],
+      "mailbox": ["postbox", "letter box"],
+      "manhole cover": ["drain cover", "sewer cover"],
+      "measuring spoon": ["medicine spoon"],
+      "megaphone": ["loudhailer", "bullhorn"],
+      "microwave oven": ["microwave"],
+      "mobile phone": ["cell phone", "cellphone", "mobile", "phone", "smartphone"],
+      "modeling clay": ["modelling clay", "play dough", "playdough"],
+      "motorcycle": ["motorbike", "bike"],
+      "movie ticket": ["cinema ticket", "theater ticket", "theatre ticket"],
+      "napkin ring": ["serviette ring"],
+      "pacifier": ["dummy", "soother"],
+      "parking meter": ["car park meter"],
+      "pearl necklace": ["necklace", "pearls"],
+      "peas": ["pea", "green peas"],
+      "pepper": ["bell pepper", "capsicum", "sweet pepper"],
+      "pickup truck": ["pickup", "pick up truck", "ute"],
+      "pill bottle": ["medicine bottle", "tablet bottle"],
+      "police cap": ["police hat"],
+      "police officer": ["policeman", "policewoman", "cop"],
+      "popcorn tub": ["popcorn bucket", "popcorn"],
+      "postage stamp": ["stamp"],
+      "power outlet": ["wall outlet", "socket", "power socket"],
+      "power plug": ["electric plug", "electrical plug", "plug"],
+      "power strip": ["extension strip", "multi plug", "multiplug"],
+      "pruning shears": ["garden shears", "secateurs", "pruners"],
+      "purse": ["handbag"],
+      "rain boots": ["rubber boots", "wellingtons", "wellies", "gumboots"],
+      "refrigerator": ["fridge"],
+      "remote control": ["remote", "clicker"],
+      "rice cooker": ["rice pot"],
+      "rickshaw": ["tuk tuk", "tuktuk", "auto rickshaw"],
+      "rubber gloves": ["washing up gloves", "dishwashing gloves"],
+      "safety goggles": ["protective goggles", "lab goggles"],
+      "sand timer": ["hourglass", "egg timer"],
+      "shopping cart": ["shopping trolley", "grocery cart", "trolley"],
+      "side mirror": ["wing mirror", "car mirror"],
+      "sneakers": ["trainers", "tennis shoes", "running shoes"],
+      "soccer ball": ["soccer", "association football"],
+      "soda": ["pop", "soft drink", "fizzy drink", "cola"],
+      "sofa": ["couch", "settee"],
+      "spark plug": ["sparkplug"],
+      "stage microphone": ["microphone", "mic"],
+      "stroller": ["pushchair", "pram", "baby carriage", "buggy"],
+      "sunglasses": ["shades", "sun glasses"],
+      "t shirt": ["tee shirt", "tee", "shirt"],
+      "table tennis paddle": ["ping pong paddle", "table tennis bat", "ping pong bat"],
+      "takeaway cup": ["to go cup", "takeout cup", "coffee cup"],
+      "tape measure": ["measuring tape"],
+      "telephone": ["landline", "landline phone", "phone"],
+      "thermos flask": ["thermos", "vacuum flask"],
+      "tissue box": ["kleenex box", "box of tissues"],
+      "toilet": ["loo", "commode"],
+      "trash can": ["garbage can", "rubbish bin", "dustbin", "bin"],
+      "usb drive": ["flash drive", "thumb drive", "memory stick", "pen drive"],
+      "vacuum": ["vacuum cleaner", "hoover"],
+      "wall outlet": ["power outlet", "socket", "power socket"],
+      "washbasin": ["sink", "bathroom sink", "basin"],
+      "wi fi router": ["router", "wifi router", "wireless router"],
+      "wind sock": ["windsock"],
+      "wooden spoon": ["wood spoon"],
+      "wrench": ["spanner"]
+    };
+
+    const CATEGORY_ALIASES = {
+      "weather": ["weather conditions", "kinds of weather"],
+      "vegetable": ["veggies", "vegetable food"],
+      "zoo": ["zoo animals", "animals at zoo", "wild animals"],
+      "feeling": ["emotions", "moods", "emotional states"],
+      "beverage": ["drinks", "things to drink"],
+      "sports ball": ["let's play", "play", "sports", "ball sports"],
+      "school": ["school supplies", "classroom things", "classroom supplies"],
+      "personal item": ["personal belongings", "everyday items", "things you carry"],
+      "snack time": ["snacks", "snack foods"],
+      "hobby": ["free time activities", "leisure activities", "pastimes"],
+      "shape": ["geometric shapes"],
+      "bug": ["insects", "creepy crawlies"],
+      "tool": ["hand tools", "workshop tools"],
+      "outdoor place": ["places in nature", "natural places", "nature"],
+      "furniture": ["household furniture", "home furniture"],
+      "communication medium": ["communication tools", "ways to communicate", "communication methods", "media"],
+      "transportation": ["transport", "vehicles", "ways of traveling"],
+      "outdoor activity": ["the great outdoors", "great outdoors", "adventure activities", "outdoor sports"],
+      "job": ["occupations", "professions", "careers"],
+      "staple food": ["everyday foods", "basic foods", "common foods"],
+      "musical instrument": ["instruments", "music instruments"],
+      "market": ["market foods", "food market", "grocery market"],
+      "weather accessory": ["outdoor gear", "weather gear", "outdoor clothing", "things for outside"],
+      "pet": ["pet animals", "domestic animals"],
+      "at beach": ["beach", "beach items", "things at beach"],
+      "in kitchen": ["kitchen", "kitchen items", "things in kitchen"],
+      "clothe and accessory": ["getting dressed", "clothes", "clothing", "things you wear"],
+      "at doctor": ["doctor", "doctor office", "medical equipment"],
+      "cleaning day": ["cleaning", "cleaning supplies", "house cleaning"],
+      "in garden": ["garden", "gardening", "gardening tools"],
+      "at playground": ["playground", "playground equipment", "playground activities"],
+      "on farm": ["farm", "farm things", "farming"],
+      "baby thing": ["baby items", "baby supplies", "things for babies"],
+      "party time": ["party", "party supplies", "birthday party"],
+      "science lab": ["laboratory", "lab equipment", "science equipment"],
+      "sewing kit": ["sewing", "sewing supplies", "sewing tools"],
+      "winter fun": ["winter activities", "snow activities", "winter sports"],
+      "laundry day": ["laundry", "washing clothes", "laundry items"],
+      "movie night": ["movies", "cinema", "movie theater"],
+      "space and astronomy": ["space travel", "space", "outer space", "space exploration"],
+      "hair salon": ["hairdresser", "hairdressing", "barber shop"],
+      "at airport": ["airport", "air travel", "airport items"],
+      "at office": ["office", "office supplies", "office equipment"],
+      "under sea": ["ocean animals", "sea life", "marine life"],
+      "at library": ["library", "library items", "library equipment"],
+      "at harbor": ["harbor", "harbour", "port", "things at port"],
+      "photography": ["camera equipment", "photo equipment", "taking photos"],
+      "fitness equipment": ["gym", "at the gym", "gym equipment", "exercise equipment", "workout equipment"],
+      "at museum": ["museum", "museum exhibits", "things in museum"],
+      "city street": ["street furniture", "things on street", "urban street"],
+      "at wedding": ["wedding", "wedding items", "wedding things"],
+      "bathroom fixture": ["bathroom", "bathroom fittings", "bathroom equipment"],
+      "money and banking": ["banking", "money", "bank items"],
+      "houseplant": ["indoor plants", "potted plants", "home plants"],
+      "at dentist": ["dentist", "dental equipment", "dentist office"],
+      "fire station": ["firefighting", "firefighter equipment", "fire service"],
+      "at hotel": ["hotel", "hotel items", "hotel room"],
+      "at post office": ["post office", "mail service", "postal service"],
+      "construction site": ["construction", "building site", "construction equipment"],
+      "at theater": ["theater", "theatre", "stage equipment"],
+      "at restaurant": ["restaurant", "restaurant items", "dining out"],
+      "at train station": ["train station", "railway station", "rail station"],
+      "at bakery": ["bakery", "baking", "bakery items"],
+      "at police station": ["police station", "police equipment", "law enforcement"],
+      "at campsite": ["camping", "campsite", "camping equipment"],
+      "tabletop game": ["board games", "game pieces", "games"],
+      "jewelry": ["jewellery", "accessories", "jewels"],
+      "computer equipment": ["computer accessories", "computer hardware", "tech equipment"],
+      "emergency room": ["hospital", "er", "hospital equipment"],
+      "car part": ["auto parts", "automobile parts", "vehicle parts"],
+      "ancient egypt": ["egypt", "egyptian history", "egyptian objects"],
+      "flower": ["flowers and plants", "blooms"],
+      "bird": ["types of birds"],
+      "kitchen appliance": ["appliances", "cooking appliances"],
+      "art supply": ["art materials", "craft supplies", "artist tools"],
+      "sport equipment": ["sporting goods", "sports gear", "game equipment"],
+      "at pharmacy": ["pharmacy", "chemist", "medicine"],
+      "picnic time": ["picnic", "picnic items", "picnic supplies"],
+      "spice": ["seasonings", "cooking spices"],
+      "travel accessory": ["travel gear", "travel items", "luggage accessories"],
+      "weather instrument": ["weather tools", "meteorological instruments", "measuring weather"],
+      "way to travel": ["transport", "modes of transport", "ways of traveling"],
+      "at aquarium": ["aquarium", "aquarium life", "sea creatures"],
+      "at coffee shop": ["coffee shop", "cafe", "coffee making"],
+      "at supermarket": ["supermarket", "grocery store", "shopping"],
+      "tableware": ["dinnerware", "things on table", "eating utensils"],
+      "cooking utensil": ["kitchen utensils", "cooking tools", "kitchen tools"],
+      "fresh fruit": ["fruit", "fruits"],
+      "fresh vegetable": ["vegetables", "veggies", "fresh produce"],
+      "pantry basic": ["pantry staples", "store cupboard basics", "dry goods"],
+      "breakfast food": ["breakfast", "morning foods"],
+      "home entryway": ["front entrance", "entrance hall", "house entrance"],
+      "electrical essential": ["electrical items", "electric supplies", "home electrics"],
+      "personal care": ["hygiene", "toiletries", "grooming items"],
+      "dishwashing": ["washing dishes", "dish cleaning", "dishwashing supplies"],
+      "food storage": ["storing food", "food containers", "kitchen storage"],
+      "stationery": ["writing supplies", "school stationery", "writing tools"],
+      "bathroom essential": ["bathroom supplies", "bathroom items", "toiletries"],
+      "cleaning extra": ["cleaning supplies", "cleaning equipment", "household cleaning"],
+      "part of home": ["parts of house", "house parts", "home features"],
+      "coffee shop drink": ["coffee drinks", "types of coffee", "cafe drinks"]
+    };
+
+    const WORD_NORMALIZATIONS = {
+      "knives": "knife",
+      "leaves": "leaf",
+      "scarves": "scarf",
+      "shelves": "shelf",
+      "buses": "bus",
+      "teeth": "tooth",
+      "women": "woman",
+      "men": "man"
+    };
+
+    function normalizedGuess(value) {
+      const words = String(value)
+        .toLocaleLowerCase()
+        .replaceAll("&", " and ")
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim()
+        .split(/\s+/)
+        .filter(word => word && !["a", "an", "the"].includes(word))
+        .map(word => {
+          if (WORD_NORMALIZATIONS[word]) return WORD_NORMALIZATIONS[word];
+          if (word.length > 4 && word.endsWith("ies")) return `${word.slice(0, -3)}y`;
+          if (word.length > 4 && /(ches|shes|sses|xes|zes|oes)$/.test(word)) return word.slice(0, -2);
+          if (word.length > 3 && word.endsWith("s") && !word.endsWith("ss")) return word.slice(0, -1);
+          return word;
+        });
+      return words.join(" ");
+    }
+
+    function categoryCore(value) {
+      const filler = new Set([
+        "all", "category", "group", "kind", "type", "thing", "item", "object", "stuff",
+        "picture", "shown", "related", "you", "we", "would", "find", "found", "see", "use", "have", "from"
+      ]);
+      return normalizedGuess(value).split(" ").filter(word => word && !filler.has(word)).join(" ");
+    }
+
+    function editDistance(left, right) {
+      if (left === right) return 0;
+      const previous = Array.from({ length: right.length + 1 }, (_, index) => index);
+      for (let row = 1; row <= left.length; row += 1) {
+        let diagonal = previous[0];
+        previous[0] = row;
+        for (let column = 1; column <= right.length; column += 1) {
+          const above = previous[column];
+          const cost = left[row - 1] === right[column - 1] ? 0 : 1;
+          previous[column] = Math.min(
+            previous[column] + 1,
+            previous[column - 1] + 1,
+            diagonal + cost
+          );
+          diagonal = above;
+        }
+      }
+      return previous[right.length];
+    }
+
+    function closeSpellingMatch(left, right) {
+      const shorter = Math.min(left.length, right.length);
+      const longer = Math.max(left.length, right.length);
+      if (shorter < 4 || Math.abs(left.length - right.length) > 3) return false;
+      const allowance = longer >= 12 ? 3 : longer >= 7 ? 2 : 1;
+      return editDistance(left, right) <= allowance;
+    }
+
+    function itemForms(answer, itemIndex, cardId) {
+      const direct = normalizedGuess(answer);
+      const aliases = ITEM_ALIASES[direct] || ITEM_ALIASES[String(answer).toLocaleLowerCase().replace(/[^a-z0-9]+/g, " ").trim()] || [];
+      const generatedAnswers = gameMeta[cardId]?.items?.[itemIndex]?.answers || [];
+      return new Set([direct, ...aliases.map(normalizedGuess), ...generatedAnswers.map(normalizedGuess)]);
+    }
+
+    function matchingItemIndex(rawGuess, items, cardId, includeFound = false) {
+      const guess = normalizedGuess(rawGuess);
+      if (!guess) return -1;
+      const available = items.map((answer, index) => ({ answer, index, forms: itemForms(answer, index, cardId) }))
+        .filter(entry => includeFound || !foundItems.has(entry.index));
+      const exact = available.filter(entry => entry.forms.has(guess));
+      if (exact.length === 1) return exact[0].index;
+
+      if (guess.length >= 4) {
+        const partial = available.filter(entry => [...entry.forms].some(form => form.includes(guess)));
+        if (partial.length === 1) return partial[0].index;
+      }
+
+      const close = available.filter(entry => [...entry.forms].some(form => closeSpellingMatch(guess, form)));
+      if (close.length === 1) return close[0].index;
+      return -1;
+    }
+
+    function categoryMatches(rawGuess, title, cardId) {
+      const guess = normalizedGuess(rawGuess);
+      const guessCore = categoryCore(rawGuess);
+      const full = normalizedGuess(title);
+      if (!guess) return false;
+      const simplified = full
+        .replace(/^(at|in|on) /, "")
+        .replace(/^trip to /, "")
+        .replace(/^time for /, "")
+        .replace(/^let play$/, "play")
+        .replace(/^eat your /, "");
+      const aliases = CATEGORY_ALIASES[full] || CATEGORY_ALIASES[simplified] || [];
+      const generatedAnswers = gameMeta[cardId]?.category_answers || [];
+      const forms = new Set([full, simplified, ...aliases.map(normalizedGuess), ...generatedAnswers.map(normalizedGuess)]);
+      if (forms.has(guess)) return true;
+      const coreForms = new Set([...forms].map(categoryCore).filter(Boolean));
+      if (guessCore && coreForms.has(guessCore)) return true;
+      if (guess.length >= 3 && [...forms].some(form => (` ${form} `).includes(` ${guess} `))) return true;
+      if (guessCore.length >= 3 && [...coreForms].some(form => (` ${form} `).includes(` ${guessCore} `))) return true;
+      return [...forms].some(form => closeSpellingMatch(guess, form))
+        || [...coreForms].some(form => closeSpellingMatch(guessCore, form));
+    }
+
+    function setGameFeedback(message, tone = "") {
+      gameFeedback.textContent = message;
+      gameFeedback.classList.toggle("correct", tone === "correct");
+      gameFeedback.classList.toggle("wrong", tone === "wrong");
+      gameStripFeedback.textContent = message;
+      gameStripFeedback.classList.toggle("correct", tone === "correct");
+      gameStripFeedback.classList.toggle("wrong", tone === "wrong");
+      // Feedback text appearing/disappearing (or wrapping to another line)
+      // changes the strip's real height mid-round, not just at round start.
+      requestAnimationFrame(updateGameHeaderReserve);
+    }
+
+    // Score is persistent app-chrome state (topbar badge), and for Guess the
+    // Items, progress ("3/6 found") is just as important to see at a glance —
+    // without it, the topbar badge would silently drop information the player
+    // could previously see in the always-visible score/progress row. Combine
+    // both into the one badge rather than adding a second piece of chrome.
+    function updateScoreChip() {
+      gameScoreChip.textContent = gameMode === "items"
+        ? `Score ${gameScoreValue.textContent} · ${foundItems.size}/6`
+        : `Score ${gameScoreValue.textContent}`;
+    }
+
+    function changeScore(delta) {
+      gamePoints += delta;
+      gameScoreValue.textContent = gamePoints > 0 ? `+${gamePoints}` : String(gamePoints);
+      gameScore.classList.remove("pulse");
+      void gameScore.offsetWidth;
+      gameScore.classList.add("pulse");
+      updateScoreChip();
+    }
+
+    function updateItemProgress() {
+      const count = foundItems.size;
+      gameProgressLabel.textContent = `${count} of 6 found`;
+      gameProgressFill.style.width = `${(count / 6) * 100}%`;
+      updateScoreChip();
+    }
+
+    function resetGameRound() {
+      if (gameMode === "browse") return;
+      const current = cards[cardIndex];
+      const items = gameData[current.id] || [];
+      foundItems = new Set();
+      selectedLinkItems = new Set();
+      pendingCreativeLink = "";
+      if (!isLinkMode()) {
+        linkPuzzle = null;
+        linkSessionExhausted = false;
+      }
+      roundComplete = false;
+      guessInput.value = "";
+      guessInput.disabled = false;
+      guessSubmit.disabled = false;
+      revealGameAnswerButton.disabled = false;
+      newGameCardButton.disabled = false;
+      guessForm.hidden = gameMode === "find-pair";
+      linkWord.hidden = gameMode !== "find-pair";
+      acceptCreativeLinkButton.hidden = true;
+      categoryMask.hidden = gameMode !== "category";
+      categoryMask.classList.remove("is-revealed");
+      itemGrid.hidden = gameMode !== "items" && !isLinkMode();
+      itemGrid.setAttribute("aria-hidden", gameMode === "items" || isLinkMode() ? "false" : "true");
+      itemGrid.classList.toggle("is-link-mode", isLinkMode());
+      itemGrid.classList.toggle("is-pair-word", gameMode === "name-link");
+      itemGrid.classList.remove("is-locked");
+      itemFooterMask.hidden = gameMode !== "items";
+      newGameCardButton.textContent = isLinkMode() ? "Random unseen link →" : "New card →";
+
+      itemCells.forEach((cell, index) => {
+        cell.classList.remove("is-revealed", "is-selected", "is-target", "is-correct", "is-wrong");
+        cell.querySelector(".item-label").textContent = items[index] || "";
+        cell.tabIndex = -1;
+        cell.removeAttribute("role");
+        cell.removeAttribute("aria-label");
+        cell.removeAttribute("aria-pressed");
+      });
+
+      if (gameMode === "category") {
+        gameModeKicker.textContent = `${cards.length}-card class game`;
+        gamePanelTitle.textContent = "Guess the Category";
+        gamePrompt.textContent = "What category connects these six items?";
+        guessInput.placeholder = "Type a category…";
+        gameProgress.hidden = true;
+        revealGameAnswerButton.textContent = "Reveal category";
+        setGameFeedback("Correct: +1 point · Incorrect: −1 point");
+      } else if (gameMode === "items") {
+        gameModeKicker.textContent = current.title;
+        gamePanelTitle.textContent = "Guess the Items";
+        gamePrompt.textContent = "Name something you think is hidden on this card.";
+        guessInput.placeholder = "Type an item…";
+        gameProgress.hidden = false;
+        revealGameAnswerButton.textContent = "Reveal all items";
+        updateItemProgress();
+        setGameFeedback("Each new correct item earns 1 point. Incorrect guesses lose 1 point.");
+        if (items.length !== 6) {
+          guessInput.disabled = true;
+          guessSubmit.disabled = true;
+          revealGameAnswerButton.disabled = true;
+          setGameFeedback("This card is missing its item answer key.", "wrong");
+        }
+      } else {
+        gameModeKicker.textContent = linkPuzzle
+          ? `${current.title} · ${linkPuzzleSessionProgress.used} of ${linkPuzzleSessionProgress.total} this session`
+          : current.title;
+        gameProgress.hidden = true;
+
+        if (linkSessionExhausted) {
+          gamePanelTitle.textContent = gameMode === "find-pair" ? "Find the Pair" : "Name the Link";
+          gamePrompt.textContent = "You have completed every link puzzle in this browser session.";
+          linkWord.hidden = true;
+          guessInput.disabled = true;
+          guessSubmit.disabled = true;
+          revealGameAnswerButton.disabled = true;
+          newGameCardButton.disabled = true;
+          newGameCardButton.textContent = `All ${linkPuzzleSessionProgress.total} links used`;
+          setGameFeedback("Close this browser session to begin a fresh no-repeat run.", "correct");
+          return;
+        }
+
+        if (!linkPuzzle || items.length !== 6) {
+          guessInput.disabled = true;
+          guessSubmit.disabled = true;
+          revealGameAnswerButton.disabled = true;
+          setGameFeedback("This card is missing a complete link puzzle.", "wrong");
+          return;
+        }
+
+        revealGameAnswerButton.disabled = false;
+        if (gameMode === "find-pair") {
+          gamePanelTitle.textContent = "Find the Pair";
+          gamePrompt.textContent = "Which two pictures are linked by this word?";
+          linkWordValue.textContent = linkPuzzle.word;
+          revealGameAnswerButton.textContent = "Show the pair";
+          setGameFeedback("Select two pictures. Correct pair: +1 · Incorrect pair: −1.");
+          itemCells.forEach((cell, index) => {
+            cell.tabIndex = 0;
+            cell.setAttribute("role", "button");
+            cell.setAttribute("aria-label", `Select ${items[index]}`);
+            cell.setAttribute("aria-pressed", "false");
+          });
+        } else {
+          const [first, second] = linkPuzzle.items;
+          gamePanelTitle.textContent = "Name the Link";
+          gamePrompt.textContent = `What one word links ${items[first]} and ${items[second]}?`;
+          guessInput.placeholder = "Type one word…";
+          revealGameAnswerButton.textContent = "Reveal model word";
+          linkPuzzle.items.forEach(index => {
+            itemCells[index].classList.add("is-target");
+            itemCells[index].setAttribute("aria-label", `${items[index]}, highlighted`);
+          });
+          setGameFeedback("Use one word. The teacher can accept a different creative link.");
+        }
+      }
+      layoutGameControls();
+      if (gameMode !== "find-pair") window.setTimeout(() => guessInput.focus(), 180);
+    }
+
+    function newGameRound() {
+      if (gameMode === "audio-match") {
+        startAudioMatchRound();
+        return;
+      }
+      if (!isLinkMode()) {
+        newRandomCard();
+        return;
+      }
+      beginRandomLinkRound();
+    }
+
+    function openGamePicker() {
+      gamePicker.hidden = false;
+      gamePicker.querySelector("[data-start-game]").focus();
+    }
+
+    function closeGamePicker() {
+      gamePicker.hidden = true;
+      gameMenuButton.focus();
+    }
+
+    // --- Mobile floating drawer (game panel / audio-match board) -----------------
+    // On phones the game panel and audio-match board float over the card as a
+    // dismissible bottom-sheet instead of permanently docking and shrinking it (see
+    // the max-width: 900px CSS above). These helpers track whether that drawer is
+    // collapsed and keep the reopen "peek" pill in sync.
+
+    function activeDrawerPanel() {
+      if (!gamePanel.hidden) return gamePanel;
+      if (!audioMatchBoard.hidden) return audioMatchBoard;
+      return null;
+    }
+
+    function updateDrawerPeekLabel() {
+      const points = `${gamePoints} pt${gamePoints === 1 ? "" : "s"}`;
+      drawerPeekLabel.textContent = gameMode === "audio-match"
+        ? `Audio Match · ${points}`
+        : `${gameModeName()} · ${points}`;
+    }
+
+    function setDrawerCollapsed(collapsed) {
+      const panel = activeDrawerPanel();
+      drawerCollapsed = collapsed && !!panel;
+      if (panel) panel.classList.toggle("is-collapsed", drawerCollapsed);
+      updateDrawerPeekLabel();
+      drawerPeek.hidden = !drawerCollapsed;
+    }
+
+    function toggleDrawerCollapsed() {
+      setDrawerCollapsed(!drawerCollapsed);
+    }
+
+    function setupDrawerHandle(handleEl, panelEl) {
+      let dragging = false;
+      let startY = 0;
+      let dragDy = 0;
+      let startTime = 0;
+
+      function onDown(event) {
+        dragging = true;
+        startY = event.clientY;
+        dragDy = 0;
+        startTime = performance.now();
+        panelEl.style.transition = "none";
+        handleEl.setPointerCapture?.(event.pointerId);
+      }
+
+      function onMove(event) {
+        if (!dragging) return;
+        dragDy = Math.max(0, event.clientY - startY);
+        panelEl.style.transform = `translateY(${dragDy}px)`;
+      }
+
+      function finishDrag() {
+        if (!dragging) return;
+        dragging = false;
+        panelEl.style.transition = "";
+        panelEl.style.transform = "";
+        const elapsed = Math.max(1, performance.now() - startTime);
+        const velocity = dragDy / elapsed;
+        const wasTap = dragDy < 6;
+        const committed = dragDy > 70 || velocity > 0.5;
+        if (wasTap) toggleDrawerCollapsed();
+        else setDrawerCollapsed(committed);
+      }
+
+      handleEl.addEventListener("pointerdown", onDown);
+      handleEl.addEventListener("pointermove", onMove);
+      handleEl.addEventListener("pointerup", finishDrag);
+      handleEl.addEventListener("pointercancel", finishDrag);
+    }
+
+    setupDrawerHandle(gamePanelHandle, gamePanel);
+    setupDrawerHandle(audioMatchHandle, audioMatchBoard);
+    drawerPeek.addEventListener("click", () => setDrawerCollapsed(false));
+
+    // --- Mobile game strip (fixed toolbar) ------------------------------------
+    // Carries the actual play loop — see the clue, respond, see feedback, move
+    // on — so the bottom drawer can default to closed and still leave the game
+    // fully playable. Deliberately a single FIXED (non-draggable) strip pinned
+    // below the topbar, tailored per mode, rather than free-floating bubbles:
+    // a predictable, always-in-the-same-place toolbar is far easier to use
+    // one-handed and to find again than something the player has to manage the
+    // position of. The prompt/link-word/feedback text is mirrored (kept in sync
+    // from the real elements inside .game-panel) rather than duplicated as
+    // separate state. The guess-form has real interactive state — a typed
+    // value, focus, disabled state — so instead of duplicating it,
+    // layoutGameControls() physically relocates the single real element
+    // between its docked home inside .game-panel (desktop, or find-pair/
+    // audio-match modes with no text input) and the strip (mobile guessing
+    // modes). Score is persistent app-chrome state, not per-round content, so
+    // it lives in the topbar's #game-score-chip instead of inside the strip —
+    // see syncGameStripMeta() / changeScore().
+
+    function syncGameStripMeta() {
+      // Find the Pair needs no prompt text at all — the link-word banner IS
+      // the clue, and the card itself is the only control surface (tap two
+      // pictures). Keeping the strip down to just that one line is the whole
+      // point of this mode's "zero input footprint" design.
+      gameStripPrompt.textContent = gameMode === "find-pair" ? "" : gamePrompt.textContent;
+      gameStripLinkwordValue.textContent = linkWordValue.textContent;
+      gameStripLinkword.hidden = linkWord.hidden;
+      updateScoreChip();
+    }
+
+    // The strip is fixed-position (so it never scrolls away), which means it
+    // doesn't push the card down on its own — CSS can't see its height. Measure
+    // it after each layout pass and feed that height back in as --game-header-h
+    // (see .stage/.deck above), so the card is reserved exactly the room the
+    // strip actually needs instead of either overlapping it or over-reserving
+    // with a guessed constant. Re-measured on every content change (round
+    // start, feedback text appearing, a category name wrapping to two lines)
+    // and on resize, since a rotation can change wrapping without crossing the
+    // mobile/desktop breakpoint that layoutGameControls() already listens for.
+    function updateGameHeaderReserve() {
+      if (gameStrip.hidden) {
+        stage.style.removeProperty("--game-header-h");
+        return;
+      }
+      const height = Math.ceil(gameStrip.getBoundingClientRect().height);
+      stage.style.setProperty("--game-header-h", `${height + 10}px`);
+    }
+
+    function layoutGameControls() {
+      const mobile = mobileGameStripQuery.matches;
+      const inClassGame = gameMode !== "browse" && gameMode !== "audio-match";
+      gameStrip.hidden = !(mobile && inClassGame);
+      gameScoreChip.hidden = !(mobile && inClassGame);
+      if (inClassGame) syncGameStripMeta();
+      // Always resolve where .guess-form belongs (not gated on inClassGame) so it
+      // gets moved back into .game-panel when a game ends, not just when a
+      // different in-game mode no longer wants it floating.
+      const wantsFloatingInput = mobile && inClassGame && !guessForm.hidden;
+      if (wantsFloatingInput && guessForm.parentElement !== gameStrip) {
+        gameStrip.insertBefore(guessForm, gameStripFeedback);
+      } else if (!wantsFloatingInput && guessForm.parentElement !== gamePanel) {
+        gamePanel.insertBefore(guessForm, gameFeedback);
+      }
+      requestAnimationFrame(updateGameHeaderReserve);
+    }
+
+    mobileGameStripQuery.addEventListener("change", layoutGameControls);
+    window.addEventListener("resize", () => requestAnimationFrame(updateGameHeaderReserve));
+
+    function startGame(mode) {
+      if (!["category", "items", "audio-match"].includes(mode)) return;
+      closeWordHelp();
+      if (isDualView) setDualView(false);
+      setListeningHintsActive(false);
+      stopSpeech();
+      gameMode = mode;
+      sidePill.textContent = gameModeName();
+      gamePoints = 0;
+      gameScoreValue.textContent = "0";
+      gamePicker.hidden = true;
+      const audioMode = gameMode === "audio-match";
+      gamePanel.hidden = audioMode;
+      audioMatchBoard.hidden = !audioMode;
+      app.classList.toggle("game-active", !audioMode);
+      app.classList.toggle("audio-match-active", audioMode);
+      card.setAttribute("role", "group");
+      card.tabIndex = -1;
+      if (audioMode) startAudioMatchRound();
+      else if (isLinkMode()) beginRandomLinkRound(false);
+      else showCard(cardIndex, false);
+      // Class games play through the floating bubbles now, so the drawer starts
+      // closed and out of the way. Audio Match has no floating equivalent — its
+      // "drawer" is the whole game board — so it still opens by default.
+      setDrawerCollapsed(!audioMode);
+      layoutGameControls();
+      status.textContent = `${gameModeName()} game started.`;
+    }
+
+    function endGame() {
+      stopSpeech();
+      gameMode = "browse";
+      layoutGameControls();
+      gamePanel.hidden = true;
+      audioMatchBoard.hidden = true;
+      gamePanel.classList.remove("is-collapsed");
+      audioMatchBoard.classList.remove("is-collapsed");
+      drawerCollapsed = false;
+      drawerPeek.hidden = true;
+      app.classList.remove("game-active");
+      app.classList.remove("audio-match-active");
+      card.setAttribute("role", "button");
+      card.tabIndex = 0;
+      categoryMask.hidden = true;
+      itemGrid.hidden = true;
+      itemGrid.setAttribute("aria-hidden", "true");
+      itemGrid.classList.remove("is-link-mode", "is-pair-word", "is-locked");
+      itemFooterMask.hidden = true;
+      linkWord.hidden = true;
+      linkPuzzle = null;
+      linkSessionExhausted = false;
+      acceptCreativeLinkButton.hidden = true;
+      audioMatchLocked = false;
+      selectedAudioTile = null;
+      selectedPictureTile = null;
+      guessForm.hidden = false;
+      revealGameAnswerButton.disabled = false;
+      itemCells.forEach(cell => {
+        cell.classList.remove("is-selected", "is-target", "is-correct", "is-wrong");
+        cell.tabIndex = -1;
+        cell.removeAttribute("role");
+        cell.removeAttribute("aria-label");
+        cell.removeAttribute("aria-pressed");
+      });
+      showCard(cardIndex, false);
+      status.textContent = `Game ended with ${gamePoints} point${gamePoints === 1 ? "" : "s"}.`;
+    }
+
+    function revealGameAnswer() {
+      if (roundComplete) return;
+      roundComplete = true;
+      guessInput.disabled = true;
+      guessSubmit.disabled = true;
+      if (gameMode === "category") {
+        categoryMask.classList.add("is-revealed");
+        setGameFeedback(`The category is “${cards[cardIndex].title}.”`, "correct");
+      } else if (gameMode === "items") {
+        const answers = gameData[cards[cardIndex].id] || [];
+        if (answers.length !== 6) {
+          roundComplete = false;
+          revealGameAnswerButton.disabled = true;
+          setGameFeedback("The answer key did not load. Refresh the page to reload the deck data.", "wrong");
+          return;
+        }
+        itemCells.forEach((cell, index) => {
+          foundItems.add(index);
+          cell.classList.add("is-revealed");
+          cell.setAttribute("aria-label", `${answers[index]}, revealed`);
+        });
+        updateItemProgress();
+        setGameFeedback("All six answers are revealed. No points were added.");
+      } else if (linkPuzzle) {
+        itemGrid.classList.add("is-locked");
+        linkPuzzle.items.forEach(index => itemCells[index].classList.add("is-correct"));
+        const labels = linkPuzzle.items.map(index => (gameData[cards[cardIndex].id] || [])[index]);
+        if (gameMode === "find-pair") {
+          setGameFeedback(`${linkPuzzle.word} links ${labels.join(" and ")}. ${linkPuzzle.explanation}`, "correct");
+        } else {
+          setGameFeedback(`Model word: “${linkPuzzle.word}.” ${linkPuzzle.explanation}`, "correct");
+        }
+      }
+    }
+
+    function handleLinkCellSelection(index) {
+      if (gameMode !== "find-pair" || roundComplete || !linkPuzzle) return;
+      if (selectedLinkItems.size >= 2) return;
+      const cell = itemCells[index];
+      if (selectedLinkItems.has(index)) {
+        selectedLinkItems.delete(index);
+        cell.classList.remove("is-selected");
+        cell.setAttribute("aria-pressed", "false");
+        return;
+      }
+
+      selectedLinkItems.add(index);
+      cell.classList.add("is-selected");
+      cell.setAttribute("aria-pressed", "true");
+      if (selectedLinkItems.size < 2) {
+        setGameFeedback("Choose one more picture.");
+        return;
+      }
+
+      const selected = [...selectedLinkItems].sort((a, b) => a - b);
+      const answer = [...linkPuzzle.items].sort((a, b) => a - b);
+      const correct = selected.every((value, position) => value === answer[position]);
+      if (correct) {
+        changeScore(1);
+        roundComplete = true;
+        itemGrid.classList.add("is-locked");
+        selected.forEach(itemIndex => itemCells[itemIndex].classList.add("is-correct"));
+        const labels = answer.map(itemIndex => (gameData[cards[cardIndex].id] || [])[itemIndex]);
+        setGameFeedback(`Correct—${labels.join(" and ")}! ${linkPuzzle.explanation} +1 point.`, "correct");
+        return;
+      }
+
+      changeScore(-1);
+      itemGrid.classList.add("is-locked");
+      selected.forEach(itemIndex => itemCells[itemIndex].classList.add("is-wrong"));
+      setGameFeedback("Those two are not the intended pair. −1 point. Try again.", "wrong");
+      const roundCard = cardIndex;
+      window.setTimeout(() => {
+        if (gameMode !== "find-pair" || roundComplete || cardIndex !== roundCard) return;
+        selected.forEach(itemIndex => {
+          itemCells[itemIndex].classList.remove("is-selected", "is-wrong");
+          itemCells[itemIndex].setAttribute("aria-pressed", "false");
+        });
+        selectedLinkItems = new Set();
+        itemGrid.classList.remove("is-locked");
+      }, 520);
+    }
+
+    function isSingleWord(value) {
+      return /^[\p{L}\p{N}]+$/u.test(value.trim());
+    }
+
+    function acceptCreativeLink() {
+      if (gameMode !== "name-link" || roundComplete || !pendingCreativeLink || !linkPuzzle) return;
+      changeScore(1);
+      roundComplete = true;
+      guessInput.disabled = true;
+      guessSubmit.disabled = true;
+      acceptCreativeLinkButton.hidden = true;
+      itemGrid.classList.add("is-locked");
+      linkPuzzle.items.forEach(index => itemCells[index].classList.add("is-correct"));
+      setGameFeedback(`Accepted: “${pendingCreativeLink}.” The model word was “${linkPuzzle.word}.” +1 point.`, "correct");
+    }
+
+    function handleGuess(event) {
+      event.preventDefault();
+      if (roundComplete) return;
+      const rawGuess = guessInput.value.trim();
+      if (!rawGuess) {
+        setGameFeedback("Type a guess first.");
+        guessInput.focus();
+        return;
+      }
+
+      if (gameMode === "category") {
+        if (categoryMatches(rawGuess, cards[cardIndex].title, cards[cardIndex].id)) {
+          changeScore(1);
+          roundComplete = true;
+          categoryMask.classList.add("is-revealed");
+          guessInput.disabled = true;
+          guessSubmit.disabled = true;
+          setGameFeedback(`Correct! The category is “${cards[cardIndex].title}.” +1 point.`, "correct");
+        } else {
+          changeScore(-1);
+          setGameFeedback(`“${rawGuess}” is not the category. −1 point. Try again.`, "wrong");
+          guessInput.select();
+        }
+        return;
+      }
+
+      if (gameMode === "name-link") {
+        if (!isSingleWord(rawGuess)) {
+          setGameFeedback("Use one uninterrupted word. Spaces, hyphens, and punctuation are not allowed.", "wrong");
+          guessInput.select();
+          return;
+        }
+        const guess = normalizedGuess(rawGuess);
+        const answers = new Set((linkPuzzle?.answers || [linkPuzzle?.word]).filter(Boolean).map(normalizedGuess));
+        if (answers.has(guess)) {
+          changeScore(1);
+          roundComplete = true;
+          guessInput.disabled = true;
+          guessSubmit.disabled = true;
+          acceptCreativeLinkButton.hidden = true;
+          itemGrid.classList.add("is-locked");
+          linkPuzzle.items.forEach(index => itemCells[index].classList.add("is-correct"));
+          setGameFeedback(`Yes—“${rawGuess}” links them. ${linkPuzzle.explanation} +1 point.`, "correct");
+        } else {
+          pendingCreativeLink = rawGuess;
+          acceptCreativeLinkButton.textContent = `Accept “${rawGuess}” · +1`;
+          acceptCreativeLinkButton.hidden = false;
+          setGameFeedback(`“${rawGuess}” is not the model word. If the class can explain the link, the teacher can accept it.`);
+          guessInput.select();
+        }
+        return;
+      }
+
+      const items = gameData[cards[cardIndex].id] || [];
+      const match = matchingItemIndex(rawGuess, items, cards[cardIndex].id, false);
+      const anyMatch = matchingItemIndex(rawGuess, items, cards[cardIndex].id, true);
+      if (match >= 0) {
+        foundItems.add(match);
+        itemCells[match].classList.add("is-revealed");
+        changeScore(1);
+        updateItemProgress();
+        const answer = items[match];
+        guessInput.value = "";
+        if (foundItems.size === 6) {
+          roundComplete = true;
+          guessInput.disabled = true;
+          guessSubmit.disabled = true;
+          setGameFeedback(`All six found! “${answer}” completes the card.`, "correct");
+        } else {
+          setGameFeedback(`Yes—${answer}! +1 point. ${6 - foundItems.size} left.`, "correct");
+          guessInput.focus();
+        }
+      } else if (anyMatch >= 0 && foundItems.has(anyMatch)) {
+        setGameFeedback(`${items[anyMatch]} is already revealed. No score change.`);
+        guessInput.select();
+      } else {
+        changeScore(-1);
+        setGameFeedback(`“${rawGuess}” is not on this card. −1 point.`, "wrong");
+        guessInput.select();
+      }
+    }
+
+    function fullscreenElement() {
+      return document.fullscreenElement || document.webkitFullscreenElement;
+    }
+
+    async function toggleFullscreen() {
+      try {
+        if (fullscreenElement()) {
+          const exit = document.exitFullscreen || document.webkitExitFullscreen;
+          if (exit) await exit.call(document);
+        } else {
+          const enter = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen;
+          if (enter) await enter.call(document.documentElement);
+        }
+      } catch (_) {
+        status.textContent = "Fullscreen is not available in this browser.";
+      }
+    }
+
+    function updateFullscreenButton() {
+      const active = Boolean(fullscreenElement());
+      enterFullscreenIcon.hidden = active;
+      exitFullscreenIcon.hidden = !active;
+      fullscreenButton.setAttribute("aria-label", active ? "Exit fullscreen" : "Enter fullscreen");
+    }
+
+
+    function closeWordHelp() {
+      wordHelp.hidden = true;
+      wordsButton.setAttribute("aria-expanded", "false");
+    }
+    function openWordHelp() {
+      wordHelpList.replaceChildren();
+      (wordHelpData[cards[cardIndex].id] || []).forEach((item, index) => {
+        const details = document.createElement("details");
+        const summary = document.createElement("summary");
+        summary.textContent = `${index + 1}. ${item.label}`;
+        details.append(summary);
+        const list = document.createElement("ul");
+        item.collocations.forEach(phrase => {
+          const li = document.createElement("li");
+          li.textContent = phrase;
+          list.append(li);
+        });
+        details.append(list);
+        wordHelpList.append(details);
+      });
+      wordHelp.hidden = false;
+      wordsButton.setAttribute("aria-expanded", "true");
+      wordHelpClose.focus();
+    }
+    wordsButton.addEventListener("click", openWordHelp);
+    wordHelpClose.addEventListener("click", closeWordHelp);
+    wordHelp.addEventListener("click", event => {
+      if (event.target === wordHelp) closeWordHelp();
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && !wordHelp.hidden) {
+        event.stopImmediatePropagation();
+        closeWordHelp();
+      }
+    }, true);
+
+    stage.addEventListener("pointerdown", onPointerDown);
+    stage.addEventListener("pointermove", onPointerMove);
+    stage.addEventListener("pointerup", onPointerUp);
+    stage.addEventListener("pointercancel", cancelDrag);
+    stage.addEventListener("click", event => {
+      if (!isDualView || event.target.closest?.(".question-listen-button")) return;
+      questionControlFromPoint(event.clientX, event.clientY)?.click();
+    });
+
+    viewToggleButton.addEventListener("click", toggleDualView);
+    hintButton.addEventListener("click", toggleListeningHints);
+    gameMenuButton.addEventListener("click", openGamePicker);
+    gamePickerClose.addEventListener("click", closeGamePicker);
+    gamePicker.addEventListener("click", event => {
+      const option = event.target.closest("[data-start-game]");
+      if (option) startGame(option.dataset.startGame);
+      else if (event.target === gamePicker) closeGamePicker();
+    });
+    guessForm.addEventListener("submit", handleGuess);
+    acceptCreativeLinkButton.addEventListener("click", acceptCreativeLink);
+    audioMatchGrid.addEventListener("click", event => {
+      const tile = event.target.closest(".audio-match-tile");
+      if (tile) handleAudioMatchTile(tile);
+    });
+    newAudioMatchButton.addEventListener("click", startAudioMatchRound);
+    endAudioMatchButton.addEventListener("click", endGame);
+    itemCells.forEach((cell, index) => {
+      cell.addEventListener("click", event => {
+        if (gameMode !== "find-pair") return;
+        event.stopPropagation();
+        handleLinkCellSelection(index);
+      });
+      cell.addEventListener("keydown", event => {
+        if (gameMode !== "find-pair" || (event.key !== "Enter" && event.key !== " ")) return;
+        event.preventDefault();
+        event.stopPropagation();
+        handleLinkCellSelection(index);
+      });
+    });
+    [itemListenButtons, dualItemListenButtons].forEach(buttons => {
+      buttons.forEach(button => {
+        button.addEventListener("pointerdown", event => event.stopPropagation());
+        button.addEventListener("click", event => {
+          event.stopPropagation();
+          const label = button.dataset.label;
+          if (label) speakText(label, button, `${label} played.`);
+        });
+      });
+    });
+    revealGameAnswerButton.addEventListener("click", revealGameAnswer);
+    newGameCardButton.addEventListener("click", newGameRound);
+    endGameButton.addEventListener("click", endGame);
+    prevCardButton.addEventListener("click", prevCard);
+    nextCardButton.addEventListener("click", nextCard);
+    shuffleButton.addEventListener("click", newRandomCard);
+    fullscreenButton.addEventListener("click", toggleFullscreen);
+    document.addEventListener("fullscreenchange", updateFullscreenButton);
+    document.addEventListener("webkitfullscreenchange", updateFullscreenButton);
+
+    document.addEventListener("keydown", event => {
+      if (!gamePicker.hidden && event.key === "Escape") {
+        closeGamePicker();
+        return;
+      }
+      if (event.target.matches("input, textarea, select, button") || gamePicker.hidden === false) return;
+      if (gameMode !== "browse") {
+        if (event.key.toLowerCase() === "n") newGameRound();
+        else if (event.key.toLowerCase() === "f") toggleFullscreen();
+        else if (event.key === "Escape") endGame();
+        return;
+      }
+      if (event.key === "h" || event.key === "H") {
+        toggleListeningHints();
+      } else if (event.key === "s" || event.key === "S") {
+        toggleDualView();
+      } else if (event.key === "ArrowLeft" || event.key === "p" || event.key === "P") {
+        if (isDualView) prevCard();
+        else flip(-1);
+      } else if (event.key === "ArrowRight") {
+        if (isDualView) nextCard();
+        else flip(1);
+      } else if (event.key === " " || event.key === "Enter") {
+        if (!isDualView) flip(1);
+        else nextCard();
+      } else if (event.key.toLowerCase() === "n") {
+        newRandomCard();
+      } else if (event.key.toLowerCase() === "f") {
+        toggleFullscreen();
+      }
+    });
+
+    if (!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen)) {
+      fullscreenButton.hidden = true;
+    }
+
+    // Check initial mode from URL param or hash
+    const initialViewParam = new URLSearchParams(location.search).get("view");
+    if (initialViewParam === "dual" || location.hash === "#side-by-side" || location.hash === "#dual") {
+      setDualView(true);
+    }
+
+    showCard(initialCardIndex(), false);
+  </script>
+  <script src="../dialogue-brand.js"></script>
+</body>
+</html>

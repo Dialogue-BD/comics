@@ -1,0 +1,134 @@
+{
+  "title": "Waste Pickup",
+  "slug": "waste-pickup",
+  "band_color": "auto",
+  "seed": "rajshahi-waste-pickup-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Waste Pickup"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "distant-point",
+      "label": "Distant Point",
+      "aliases": [],
+      "description": "A resident carries a full waste bag along a long street toward a collection place.",
+      "visual_kind": "action",
+      "visual_focus": "a resident carrying a full waste bag a long way toward a collection point",
+      "local_cue": "a Rajshahi residential and bazaar lane with small hand-pulled municipal collection carts, household bags and concrete street edges. In this cutout specifically, make the decisive evidence prominent: a resident carrying a full waste bag a long way toward a collection point",
+      "image": "assets/01-distant-point.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "collection point",
+        "carry waste"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "overflowing-pile",
+      "label": "Overflowing Pile",
+      "aliases": [],
+      "description": "A collector approaches bags stacked above the edge of a roadside container.",
+      "visual_kind": "action",
+      "visual_focus": "waste bags piled above a roadside container as a collector approaches",
+      "local_cue": "a Rajshahi residential and bazaar lane with small hand-pulled municipal collection carts, household bags and concrete street edges. In this cutout specifically, make the decisive evidence prominent: waste bags piled above a roadside container as a collector approaches",
+      "image": "assets/02-overflowing-pile.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "waste pile",
+        "overflowing container"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "early-drop-off",
+      "label": "Early Drop-Off",
+      "aliases": [],
+      "description": "A shop worker leaves a bag outside long before the collection cart arrives.",
+      "visual_kind": "action",
+      "visual_focus": "a shop worker leaving a bag outside before the collection cart arrives",
+      "local_cue": "a Rajshahi residential and bazaar lane with small hand-pulled municipal collection carts, household bags and concrete street edges. In this cutout specifically, make the decisive evidence prominent: a shop worker leaving a bag outside before the collection cart arrives",
+      "image": "assets/03-early-drop-off.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "put out waste",
+        "pickup time"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "loose-bags",
+      "label": "Loose Bags",
+      "aliases": [],
+      "description": "A person sets an untied bag where its contents spill onto the street.",
+      "visual_kind": "action",
+      "visual_focus": "an untied rubbish bag spilling its contents onto the street",
+      "local_cue": "a Rajshahi residential and bazaar lane with small hand-pulled municipal collection carts, household bags and concrete street edges. In this cutout specifically, make the decisive evidence prominent: an untied rubbish bag spilling its contents onto the street",
+      "image": "assets/04-loose-bags.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "tie a bag",
+        "spill rubbish"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "small-cart",
+      "label": "Small Cart",
+      "aliases": [],
+      "description": "A collector tries to fit several large bags onto one nearly full cart.",
+      "visual_kind": "action",
+      "visual_focus": "a collector trying to load several bulky bags onto a nearly full handcart",
+      "local_cue": "a Rajshahi residential and bazaar lane with small hand-pulled municipal collection carts, household bags and concrete street edges. In this cutout specifically, make the decisive evidence prominent: a collector trying to load several bulky bags onto a nearly full handcart",
+      "image": "assets/05-small-cart.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "limited capacity",
+        "collection cart"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "unclear-route",
+      "label": "Unclear Route",
+      "aliases": [],
+      "description": "Two collectors pass one lane while full bags wait on the next lane.",
+      "visual_kind": "action",
+      "visual_focus": "two collectors passing one lane while full bags remain in the adjacent lane",
+      "local_cue": "a Rajshahi residential and bazaar lane with small hand-pulled municipal collection carts, household bags and concrete street edges. In this cutout specifically, make the decisive evidence prominent: two collectors passing one lane while full bags remain in the adjacent lane",
+      "image": "assets/06-unclear-route.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "pickup route",
+        "miss a street"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes could leave waste outside all day?",
+    "How is rubbish collected where you spend time in Rajshahi?",
+    "Should pickup times change or should collection points move? Why?",
+    "Why might a shop put waste out before the cart comes?",
+    "If pickup comes later, who must store waste longer?",
+    "You have 250,000 BDT and 30 days. What one pickup-system change would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 250000,
+    "pilot_scope": "Pilot a reliable pickup schedule and overflow response at a few collection points."
+  },
+  "evidence": {
+    "basis": "current Rajshahi reporting",
+    "sources": [
+      "https://www.jagonews24.com/en/amp/90821"
+    ]
+  }
+}

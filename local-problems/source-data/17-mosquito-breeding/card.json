@@ -1,0 +1,135 @@
+{
+  "title": "Mosquito Breeding",
+  "slug": "mosquito-breeding",
+  "band_color": "auto",
+  "seed": "rajshahi-mosquito-breeding-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Mosquito Breeding"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "standing-puddle",
+      "label": "Standing Puddle",
+      "aliases": [],
+      "description": "A child steps around a puddle that remains beside a building after rain.",
+      "visual_kind": "action",
+      "visual_focus": "a child stepping around a persistent puddle near the building wall",
+      "local_cue": "a Rajshahi residential courtyard after monsoon rain, with concrete drains, small buildings and ordinary household containers. In this cutout specifically, make the decisive evidence prominent: a child stepping around a persistent puddle near the building wall",
+      "image": "assets/01-standing-puddle.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "standing water",
+        "drain a puddle"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "open-container",
+      "label": "Open Container",
+      "aliases": [],
+      "description": "Rain collects in an uncovered bucket left outdoors.",
+      "visual_kind": "action",
+      "visual_focus": "rainwater visibly collecting in an uncovered outdoor bucket",
+      "local_cue": "a Rajshahi residential courtyard after monsoon rain, with concrete drains, small buildings and ordinary household containers. In this cutout specifically, make the decisive evidence prominent: rainwater visibly collecting in an uncovered outdoor bucket",
+      "image": "assets/02-open-container.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "open container",
+        "collect rainwater"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "leaving-buckets",
+      "label": "Leaving Buckets",
+      "aliases": [],
+      "description": "A person sets an empty bucket outside with its open side facing upward.",
+      "visual_kind": "action",
+      "visual_focus": "a person's hands leaving an empty bucket upright in the rain",
+      "local_cue": "a Rajshahi residential courtyard after monsoon rain, with concrete drains, small buildings and ordinary household containers. In this cutout specifically, make the decisive evidence prominent: a person's hands leaving an empty bucket upright in the rain",
+      "image": "assets/03-leaving-buckets.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "turn over a bucket",
+        "leave outside"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "discarded-tyre",
+      "label": "Discarded Tyre",
+      "aliases": [],
+      "description": "A worker leaves an old tyre where rainwater collects inside it.",
+      "visual_kind": "action",
+      "visual_focus": "an old tyre lying flat with rainwater pooled inside its hollow",
+      "local_cue": "a Rajshahi residential courtyard after monsoon rain, with concrete drains, small buildings and ordinary household containers. In this cutout specifically, make the decisive evidence prominent: an old tyre lying flat with rainwater pooled inside its hollow",
+      "image": "assets/04-discarded-tyre.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "discard a tyre",
+        "trap water"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "blocked-outlet",
+      "label": "Blocked Outlet",
+      "aliases": [],
+      "description": "A caretaker tries to clear leaves from a small outlet beside pooled water.",
+      "visual_kind": "action",
+      "visual_focus": "a caretaker pulling leaves from a blocked outlet beside pooled water",
+      "local_cue": "a Rajshahi residential courtyard after monsoon rain, with concrete drains, small buildings and ordinary household containers. In this cutout specifically, make the decisive evidence prominent: a caretaker pulling leaves from a blocked outlet beside pooled water",
+      "image": "assets/05-blocked-outlet.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "blocked outlet",
+        "clear leaves"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "missed-inspection",
+      "label": "Missed Inspection",
+      "aliases": [],
+      "description": "A maintenance worker checks one water container while several others remain nearby.",
+      "visual_kind": "action",
+      "visual_focus": "a maintenance worker inspecting one container while several other open containers remain nearby",
+      "local_cue": "a Rajshahi residential courtyard after monsoon rain, with concrete drains, small buildings and ordinary household containers. In this cutout specifically, make the decisive evidence prominent: a maintenance worker inspecting one container while several other open containers remain nearby",
+      "image": "assets/06-missed-inspection.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "check containers",
+        "routine inspection"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes hold water after rain?",
+    "Where have you noticed standing water in Rajshahi?",
+    "Should people empty containers or should shared outlets be cleared first? Why?",
+    "Why might a small pool return after it is emptied?",
+    "If old containers are removed, what useful items might be lost?",
+    "You have 150,000 BDT and 30 days. What one standing-water change would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 150000,
+    "pilot_scope": "Pilot weekly standing-water checks and container removal on a small block."
+  },
+  "evidence": {
+    "basis": "current Rajshahi reporting",
+    "sources": [
+      "https://www.voice7news.tv/who/news/21767",
+      "https://www.bssnews.net/district/423199"
+    ]
+  }
+}

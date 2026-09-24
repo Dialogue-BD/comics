@@ -1,0 +1,135 @@
+{
+  "title": "Toilet Access",
+  "slug": "toilet-access",
+  "band_color": "auto",
+  "seed": "rajshahi-toilet-access-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Toilet Access"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "distant-facility",
+      "label": "Distant Facility",
+      "aliases": [],
+      "description": "A visitor walks a long way from a busy public area toward a small toilet building.",
+      "visual_kind": "action",
+      "visual_focus": "a visitor walking far from a busy market toward a small toilet building",
+      "local_cue": "a busy public area in Rajshahi with a modest concrete public toilet building, handwashing sink and locally typical visitors. In this cutout specifically, make the decisive evidence prominent: a visitor walking far from a busy market toward a small toilet building",
+      "image": "assets/01-distant-facility.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "public toilet",
+        "long walk"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "broken-tap",
+      "label": "Broken Tap",
+      "aliases": [],
+      "description": "A person tries to wash hands at a toilet sink with no flowing water.",
+      "visual_kind": "action",
+      "visual_focus": "a hand under a dry handwashing tap with no water flowing",
+      "local_cue": "a busy public area in Rajshahi with a modest concrete public toilet building, handwashing sink and locally typical visitors. In this cutout specifically, make the decisive evidence prominent: a hand under a dry handwashing tap with no water flowing",
+      "image": "assets/02-broken-tap.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "wash hands",
+        "broken tap"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "locked-door",
+      "label": "Locked Door",
+      "aliases": [],
+      "description": "A visitor reaches a closed toilet door and looks around for another option.",
+      "visual_kind": "action",
+      "visual_focus": "a visitor confronting a locked toilet door and looking for another",
+      "local_cue": "a busy public area in Rajshahi with a modest concrete public toilet building, handwashing sink and locally typical visitors. In this cutout specifically, make the decisive evidence prominent: a visitor confronting a locked toilet door and looking for another",
+      "image": "assets/03-locked-door.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "locked toilet",
+        "find another place"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "long-wait",
+      "label": "Long Wait",
+      "aliases": [],
+      "description": "Several people wait in a queue outside a single usable toilet.",
+      "visual_kind": "action",
+      "visual_focus": "several visitors waiting outside the only usable toilet cubicle",
+      "local_cue": "a busy public area in Rajshahi with a modest concrete public toilet building, handwashing sink and locally typical visitors. In this cutout specifically, make the decisive evidence prominent: several visitors waiting outside the only usable toilet cubicle",
+      "image": "assets/04-long-wait.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "wait in line",
+        "limited capacity"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "cleaning-supplies",
+      "label": "Cleaning Supplies",
+      "aliases": [],
+      "description": "A cleaner faces an empty supply shelf while holding a mop.",
+      "visual_kind": "action",
+      "visual_focus": "a cleaner holding a mop beside an empty supply shelf",
+      "local_cue": "a busy public area in Rajshahi with a modest concrete public toilet building, handwashing sink and locally typical visitors. In this cutout specifically, make the decisive evidence prominent: a cleaner holding a mop beside an empty supply shelf",
+      "image": "assets/05-cleaning-supplies.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "cleaning supplies",
+        "keep clean"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "damaged-door",
+      "label": "Damaged Door",
+      "aliases": [],
+      "description": "A caretaker examines a damaged toilet door as people continue waiting.",
+      "visual_kind": "action",
+      "visual_focus": "a caretaker examining a damaged cubicle door while visitors wait",
+      "local_cue": "a busy public area in Rajshahi with a modest concrete public toilet building, handwashing sink and locally typical visitors. In this cutout specifically, make the decisive evidence prominent: a caretaker examining a damaged cubicle door while visitors wait",
+      "image": "assets/06-damaged-door.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "repair a door",
+        "maintenance need"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes stop someone from using the facility?",
+    "What makes a public toilet feel usable to you?",
+    "Should funds first fix water or add cleaning supplies? Why?",
+    "Why might a working toilet close after a few months?",
+    "If use is free, how can regular cleaning be funded?",
+    "You have 500,000 BDT and 30 days. What one toilet-access change would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 500000,
+    "pilot_scope": "Test cleaning, water, and access management at one existing public toilet."
+  },
+  "evidence": {
+    "basis": "current Rajshahi reporting",
+    "sources": [
+      "https://www.bssnews.net/others/410495",
+      "https://www.thedailystar.net/news/bangladesh/news/too-few-facilities-too-many-people-4276656"
+    ]
+  }
+}

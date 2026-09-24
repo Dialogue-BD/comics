@@ -1,0 +1,134 @@
+{
+  "title": "Hospital Queues",
+  "slug": "clinic-queues",
+  "band_color": "auto",
+  "seed": "rajshahi-clinic-queues-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Hospital Queues"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "small-waiting-room",
+      "label": "Small Waiting Room",
+      "aliases": [],
+      "description": "Visitors stand in a full waiting room as more people enter.",
+      "visual_kind": "action",
+      "visual_focus": "people standing shoulder to shoulder in a small full waiting room",
+      "local_cue": "a large public hospital in Rajshahi with modest waiting areas, registration desks and Bangladeshi patients and accompanying visitors; no legible hospital signs. In this cutout specifically, make the decisive evidence prominent: people standing shoulder to shoulder in a small full waiting room",
+      "image": "assets/01-small-waiting-room.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "waiting room",
+        "limited space"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "hot-outdoor-line",
+      "label": "Hot Outdoor Line",
+      "aliases": [],
+      "description": "People queue outside a clinic entrance in direct sun.",
+      "visual_kind": "action",
+      "visual_focus": "a patient queue outside the hospital entrance in direct sun",
+      "local_cue": "a large public hospital in Rajshahi with modest waiting areas, registration desks and Bangladeshi patients and accompanying visitors; no legible hospital signs. In this cutout specifically, make the decisive evidence prominent: a patient queue outside the hospital entrance in direct sun",
+      "image": "assets/02-hot-outdoor-line.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "outdoor queue",
+        "wait in the heat"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "early-arrival",
+      "label": "Early Arrival",
+      "aliases": [],
+      "description": "A visitor joins a line before the door opens while holding paperwork.",
+      "visual_kind": "action",
+      "visual_focus": "a visitor holding paperwork and joining a line before the doors open",
+      "local_cue": "a large public hospital in Rajshahi with modest waiting areas, registration desks and Bangladeshi patients and accompanying visitors; no legible hospital signs. In this cutout specifically, make the decisive evidence prominent: a visitor holding paperwork and joining a line before the doors open",
+      "image": "assets/03-early-arrival.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "arrive early",
+        "join a queue"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "finding-a-desk",
+      "label": "Finding a Desk",
+      "aliases": [],
+      "description": "A visitor moves between crowded hospital desks while asking where to go.",
+      "visual_kind": "action",
+      "visual_focus": "a visitor moving between crowded desks asking a worker for directions",
+      "local_cue": "a large public hospital in Rajshahi with modest waiting areas, registration desks and Bangladeshi patients and accompanying visitors; no legible hospital signs. In this cutout specifically, make the decisive evidence prominent: a visitor moving between crowded desks asking a worker for directions",
+      "image": "assets/04-finding-a-desk.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "find the right desk",
+        "ask for help"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "limited-staff",
+      "label": "Limited Staff",
+      "aliases": [],
+      "description": "One worker tries to help a long line of waiting visitors.",
+      "visual_kind": "action",
+      "visual_focus": "one staff member serving a long line of waiting patients",
+      "local_cue": "a large public hospital in Rajshahi with modest waiting areas, registration desks and Bangladeshi patients and accompanying visitors; no legible hospital signs. In this cutout specifically, make the decisive evidence prominent: one staff member serving a long line of waiting patients",
+      "image": "assets/05-limited-staff.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "staff shortage",
+        "long queue"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "no-queue-guide",
+      "label": "No Queue Guide",
+      "aliases": [],
+      "description": "New visitors hesitate between two lines because the route is unclear.",
+      "visual_kind": "action",
+      "visual_focus": "new visitors hesitating between two unmarked queues",
+      "local_cue": "a large public hospital in Rajshahi with modest waiting areas, registration desks and Bangladeshi patients and accompanying visitors; no legible hospital signs. In this cutout specifically, make the decisive evidence prominent: new visitors hesitating between two unmarked queues",
+      "image": "assets/06-no-queue-guide.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "queue guidance",
+        "find the right line"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes make it hard to know where to wait?",
+    "What has made a hospital visit easier or harder for you or someone you know?",
+    "Should the first fix be shade outside or clearer registration? Why?",
+    "Why might one registration desk become a bottleneck?",
+    "If waiting moves outdoors, what new difficulty may appear?",
+    "You have 500,000 BDT and 30 days. What one queue-management change would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 500000,
+    "pilot_scope": "Pilot queue guidance and shaded waiting in one hospital service area; do not affect clinical triage."
+  },
+  "evidence": {
+    "basis": "current Rajshahi hospital reporting",
+    "sources": [
+      "https://online.thedailystar.net/news/bangladesh/news/childrens-hospital-lie-idle-patients-struggle-rmch-4139501"
+    ]
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "title": "Street Noise",
+  "slug": "street-noise",
+  "band_color": "auto",
+  "seed": "rajshahi-street-noise-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Street Noise"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "close-traffic",
+      "label": "Close Traffic",
+      "aliases": [],
+      "description": "An easy bike passes very close to a ground-floor home window protected by a fixed metal grill.",
+      "visual_kind": "action",
+      "visual_focus": "a green easy bike passing close to the outside of a fixed grilled ground-floor window, with no people",
+      "local_cue": "a Rajshahi mixed-use lane with an easy bike close to a brick home; the metal security grill covers the whole ground-floor window and the entire vehicle stays outdoors",
+      "image": "assets/01-close-traffic.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "traffic noise",
+        "close a window"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "echoing-lane",
+      "label": "Echoing Lane",
+      "aliases": [],
+      "description": "A vehicle horn sounds in a narrow lane beside closely packed homes.",
+      "visual_kind": "action",
+      "visual_focus": "an easy-bike horn sounded inside a narrow lane beside close homes",
+      "local_cue": "a Rajshahi mixed-use lane with easy bikes, a small repair stall and tightly spaced homes; sound is shown through source and reaction, never written sound effects. In this cutout specifically, make the decisive evidence prominent: an easy-bike horn sounded inside a narrow lane beside close homes",
+      "image": "assets/02-echoing-lane.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "narrow lane",
+        "sound carries"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "repeated-honking",
+      "label": "Repeated Honking",
+      "aliases": [],
+      "description": "A driver leans on a horn while the vehicles ahead cannot move.",
+      "visual_kind": "action",
+      "visual_focus": "a driver's hand pressing a horn behind stationary vehicles",
+      "local_cue": "a Rajshahi mixed-use lane with easy bikes, a small repair stall and tightly spaced homes; sound is shown through source and reaction, never written sound effects. In this cutout specifically, make the decisive evidence prominent: a driver's hand pressing a horn behind stationary vehicles",
+      "image": "assets/03-repeated-honking.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "sound a horn",
+        "traffic queue"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "loud-speaker",
+      "label": "Loud Speaker",
+      "aliases": [],
+      "description": "A vendor turns up a small speaker beside another person trying to talk.",
+      "visual_kind": "action",
+      "visual_focus": "a vendor turning up a compact speaker while a nearby person strains to talk",
+      "local_cue": "a Rajshahi mixed-use lane with easy bikes, a small repair stall and tightly spaced homes; sound is shown through source and reaction, never written sound effects. In this cutout specifically, make the decisive evidence prominent: a vendor turning up a compact speaker while a nearby person strains to talk",
+      "image": "assets/04-loud-speaker.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "turn up volume",
+        "speak over noise"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "mixed-uses",
+      "label": "Mixed Uses",
+      "aliases": [],
+      "description": "A person studies at a desk next to an active roadside repair stall.",
+      "visual_kind": "action",
+      "visual_focus": "a student studying beside an active roadside repair stall",
+      "local_cue": "a Rajshahi mixed-use lane with easy bikes, a small repair stall and tightly spaced homes; sound is shown through source and reaction, never written sound effects. In this cutout specifically, make the decisive evidence prominent: a student studying beside an active roadside repair stall",
+      "image": "assets/05-mixed-uses.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "shared street",
+        "work nearby"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "late-unloading",
+      "label": "Late Unloading",
+      "aliases": [],
+      "description": "Late evening unloading continues beside lit residential windows.",
+      "visual_kind": "action",
+      "visual_focus": "workers unloading goods after dark beside lit apartment windows",
+      "local_cue": "a Rajshahi mixed-use lane with easy bikes, a small repair stall and tightly spaced homes; sound is shown through source and reaction, never written sound effects. In this cutout specifically, make the decisive evidence prominent: workers unloading goods after dark beside lit apartment windows",
+      "image": "assets/06-late-unloading.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unloading time",
+        "quiet hours"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes could interrupt a conversation?",
+    "When does street noise affect something you do in Rajshahi?",
+    "Should the first effort target horns or loud speakers? Why?",
+    "Why might a driver honk when traffic cannot move?",
+    "If quiet hours limit deliveries, who must work differently?",
+    "You have 100,000 BDT and 30 days. What one noise-reduction change would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 100000,
+    "pilot_scope": "Pilot a quiet-hours agreement and horn-awareness signs on one mixed-use lane."
+  },
+  "evidence": {
+    "basis": "current Rajshahi reporting",
+    "sources": [
+      "https://www.tbsnews.net/supplement/why-rajshahi-city-losing-its-clean-green-healthy-image-fast-1350041"
+    ]
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "title": "Mango Prices",
+  "slug": "mango-prices",
+  "band_color": "auto",
+  "seed": "rajshahi-mango-prices-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Mango Prices"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "piled-crates",
+      "label": "Piled Crates",
+      "aliases": [],
+      "description": "Many full mango crates crowd a wholesale market floor.",
+      "visual_kind": "action",
+      "visual_focus": "a wholesale floor crowded with many full mango crates",
+      "local_cue": "Rajshahi mango season at a Bangladeshi wholesale market and nearby orchards, with local green-yellow mangoes, bamboo baskets and wooden crates. In this cutout specifically, make the decisive evidence prominent: a wholesale floor crowded with many full mango crates",
+      "image": "assets/01-piled-crates.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "market glut",
+        "unsold fruit"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "hot-loading",
+      "label": "Hot Loading",
+      "aliases": [],
+      "description": "Harvested mangoes wait in the sun as sellers look for transport.",
+      "visual_kind": "action",
+      "visual_focus": "harvested mango crates waiting in direct sun for transport",
+      "local_cue": "Rajshahi mango season at a Bangladeshi wholesale market and nearby orchards, with local green-yellow mangoes, bamboo baskets and wooden crates. In this cutout specifically, make the decisive evidence prominent: harvested mango crates waiting in direct sun for transport",
+      "image": "assets/02-hot-loading.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "hot storage",
+        "perishable fruit"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "rushed-harvest",
+      "label": "Rushed Harvest",
+      "aliases": [],
+      "description": "Workers pick ripe mangoes quickly while more fruit is ready on the trees.",
+      "visual_kind": "action",
+      "visual_focus": "workers hurriedly picking ripe mangoes while fruit remains on branches",
+      "local_cue": "Rajshahi mango season at a Bangladeshi wholesale market and nearby orchards, with local green-yellow mangoes, bamboo baskets and wooden crates. In this cutout specifically, make the decisive evidence prominent: workers hurriedly picking ripe mangoes while fruit remains on branches",
+      "image": "assets/03-rushed-harvest.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "harvest window",
+        "ripen together"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "price-cut",
+      "label": "Price Cut",
+      "aliases": [],
+      "description": "A grower reluctantly accepts a small cash payment for a full crate.",
+      "visual_kind": "action",
+      "visual_focus": "a grower receiving a small cash payment beside a full mango crate",
+      "local_cue": "Rajshahi mango season at a Bangladeshi wholesale market and nearby orchards, with local green-yellow mangoes, bamboo baskets and wooden crates. In this cutout specifically, make the decisive evidence prominent: a grower receiving a small cash payment beside a full mango crate",
+      "image": "assets/04-price-cut.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "low farm price",
+        "sell at a loss"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "few-buyers",
+      "label": "Few Buyers",
+      "aliases": [],
+      "description": "Several growers wait beside full crates while one buyer examines fruit.",
+      "visual_kind": "action",
+      "visual_focus": "several growers waiting with full crates while one buyer examines fruit",
+      "local_cue": "Rajshahi mango season at a Bangladeshi wholesale market and nearby orchards, with local green-yellow mangoes, bamboo baskets and wooden crates. In this cutout specifically, make the decisive evidence prominent: several growers waiting with full crates while one buyer examines fruit",
+      "image": "assets/05-few-buyers.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "buyer turnout",
+        "weak demand"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "limited-storage",
+      "label": "Limited Storage",
+      "aliases": [],
+      "description": "A trader stacks mangoes in a warm room with no cool storage.",
+      "visual_kind": "action",
+      "visual_focus": "mangoes stacked in a warm uncooled storage room",
+      "local_cue": "Rajshahi mango season at a Bangladeshi wholesale market and nearby orchards, with local green-yellow mangoes, bamboo baskets and wooden crates. In this cutout specifically, make the decisive evidence prominent: mangoes stacked in a warm uncooled storage room",
+      "image": "assets/06-limited-storage.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "cold storage",
+        "hold inventory"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes make it hard to wait for a better price?",
+    "What have you noticed about mango prices in Rajshahi markets?",
+    "Should growers sell quickly or pay to store fruit? Why?",
+    "Why might prices fall when the harvest is strong?",
+    "If storage raises prices later, who pays more for mangoes?",
+    "You have 500,000 BDT and 30 days. What one mango-market pilot would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 500000,
+    "pilot_scope": "Trial shared grading, packing, or short-term storage with one grower group; do not guarantee a market price."
+  },
+  "evidence": {
+    "basis": "2026 Rajshahi market reporting",
+    "sources": [
+      "https://www.thedailystar.net/business/agriculture/news/cheaper-mangoes-consumers-tough-post-eid-season-rajshahi-farmers-4190621",
+      "https://www.dhakatribune.com/bangladesh/nation/411746/rajshahi-mango-markets-yet-to-gain-momentum"
+    ]
+  }
+}

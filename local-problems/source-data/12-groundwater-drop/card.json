@@ -1,0 +1,135 @@
+{
+  "title": "Groundwater Drop",
+  "slug": "groundwater-drop",
+  "band_color": "auto",
+  "seed": "rajshahi-groundwater-drop-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Groundwater Drop"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "lower-well",
+      "label": "Lower Well",
+      "aliases": [],
+      "description": "A farmer lowers a rope farther into a well before reaching water.",
+      "visual_kind": "action",
+      "visual_focus": "a rope lowered deep into a well before its bucket reaches water",
+      "local_cue": "Barind area near Rajshahi, with reddish dry soil, small crop plots, tubewell equipment and modest farm buildings. In this cutout specifically, make the decisive evidence prominent: a rope lowered deep into a well before its bucket reaches water",
+      "image": "assets/01-lower-well.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "water table",
+        "deep well"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "dry-field",
+      "label": "Dry Field",
+      "aliases": [],
+      "description": "A farmer presses dry cracked soil beside young crops.",
+      "visual_kind": "action",
+      "visual_focus": "a farmer's hand pressing visibly cracked soil beside young crops",
+      "local_cue": "Barind area near Rajshahi, with reddish dry soil, small crop plots, tubewell equipment and modest farm buildings. In this cutout specifically, make the decisive evidence prominent: a farmer's hand pressing visibly cracked soil beside young crops",
+      "image": "assets/02-dry-field.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "dry soil",
+        "water shortage"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "long-pumping",
+      "label": "Long Pumping",
+      "aliases": [],
+      "description": "A farmer keeps a pump running to water a field in the dry season.",
+      "visual_kind": "action",
+      "visual_focus": "a running irrigation pump and water entering a thirsty small field",
+      "local_cue": "Barind area near Rajshahi, with reddish dry soil, small crop plots, tubewell equipment and modest farm buildings. In this cutout specifically, make the decisive evidence prominent: a running irrigation pump and water entering a thirsty small field",
+      "image": "assets/03-long-pumping.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "pump groundwater",
+        "irrigate crops"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "carrying-water",
+      "label": "Carrying Water",
+      "aliases": [],
+      "description": "A resident carries containers from a distant working water point.",
+      "visual_kind": "action",
+      "visual_focus": "a resident carrying two water containers from a distant working tubewell",
+      "local_cue": "Barind area near Rajshahi, with reddish dry soil, small crop plots, tubewell equipment and modest farm buildings. In this cutout specifically, make the decisive evidence prominent: a resident carrying two water containers from a distant working tubewell",
+      "image": "assets/04-carrying-water.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "carry water",
+        "fetch supplies"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "thirsty-crop",
+      "label": "Thirsty Crop",
+      "aliases": [],
+      "description": "Water runs through channels toward a crop that needs frequent irrigation.",
+      "visual_kind": "action",
+      "visual_focus": "thin irrigation channels feeding a water-demanding crop",
+      "local_cue": "Barind area near Rajshahi, with reddish dry soil, small crop plots, tubewell equipment and modest farm buildings. In this cutout specifically, make the decisive evidence prominent: thin irrigation channels feeding a water-demanding crop",
+      "image": "assets/05-thirsty-crop.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "water-intensive crop",
+        "irrigation demand"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "lost-rainwater",
+      "label": "Lost Rainwater",
+      "aliases": [],
+      "description": "Rainwater runs off a farm edge while a farmer looks at an empty storage basin.",
+      "visual_kind": "action",
+      "visual_focus": "rain running past an empty farm storage basin while a farmer gestures toward it",
+      "local_cue": "Barind area near Rajshahi, with reddish dry soil, small crop plots, tubewell equipment and modest farm buildings. In this cutout specifically, make the decisive evidence prominent: rain running past an empty farm storage basin while a farmer gestures toward it",
+      "image": "assets/06-lost-rainwater.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "store rainwater",
+        "surface-water option"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes show water becoming harder to reach?",
+    "How do people you know manage water in the dry season?",
+    "Should water go first to drinking needs or crop irrigation? Why?",
+    "Why might a farmer keep pumping even as the water level falls?",
+    "If pumping is reduced quickly, what happens to a farmer’s income?",
+    "You have 1,000,000 BDT and 30 days. What one water-saving pilot would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 1000000,
+    "pilot_scope": "Trial water-saving irrigation or surface-water storage with one farmer group; do not promise to restore the aquifer in 30 days."
+  },
+  "evidence": {
+    "basis": "current Barind research and reporting",
+    "sources": [
+      "https://www.thedailystar.net/news/bangladesh/news/low-groundwater-recharge-raises-alarm-study-4224031",
+      "https://online91.thedailystar.net/slow-reads/big-picture/news/beyond-groundwater-rethinking-barinds-water-crisis-4228496"
+    ]
+  }
+}

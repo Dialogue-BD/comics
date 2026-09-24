@@ -1,0 +1,152 @@
+[
+  {
+    "id": "traffic-jam",
+    "title": "Traffic Jam",
+    "front": "pages/page_001.png",
+    "back": "pages/page_002.png"
+  },
+  {
+    "id": "power-cut",
+    "title": "Power Cut",
+    "front": "pages/page_003.png",
+    "back": "pages/page_004.png"
+  },
+  {
+    "id": "open-drains",
+    "title": "Open Drains",
+    "front": "pages/page_005.png",
+    "back": "pages/page_006.png"
+  },
+  {
+    "id": "street-litter",
+    "title": "Street Litter",
+    "front": "pages/page_007.png",
+    "back": "pages/page_008.png"
+  },
+  {
+    "id": "riverfront-waste",
+    "title": "Riverfront Waste",
+    "front": "pages/page_009.png",
+    "back": "pages/page_010.png"
+  },
+  {
+    "id": "workspace-limits",
+    "title": "Workspace Limits",
+    "front": "pages/page_011.png",
+    "back": "pages/page_012.png"
+  },
+  {
+    "id": "road-dust",
+    "title": "Road Dust",
+    "front": "pages/page_013.png",
+    "back": "pages/page_014.png"
+  },
+  {
+    "id": "summer-heat",
+    "title": "Summer Heat",
+    "front": "pages/page_015.png",
+    "back": "pages/page_016.png"
+  },
+  {
+    "id": "tree-loss",
+    "title": "Tree Loss",
+    "front": "pages/page_017.png",
+    "back": "pages/page_018.png"
+  },
+  {
+    "id": "overpass-delay",
+    "title": "Overpass Delay",
+    "front": "pages/page_019.png",
+    "back": "pages/page_020.png"
+  },
+  {
+    "id": "broken-footpaths",
+    "title": "Broken Footpaths",
+    "front": "pages/page_021.png",
+    "back": "pages/page_022.png"
+  },
+  {
+    "id": "groundwater-drop",
+    "title": "Groundwater Drop",
+    "front": "pages/page_023.png",
+    "back": "pages/page_024.png"
+  },
+  {
+    "id": "prepaid-meter",
+    "title": "Prepaid Meter",
+    "front": "pages/page_025.png",
+    "back": "pages/page_026.png"
+  },
+  {
+    "id": "hard-water",
+    "title": "Hard Water",
+    "front": "pages/page_027.png",
+    "back": "pages/page_028.png"
+  },
+  {
+    "id": "water-leaks",
+    "title": "Water Leaks",
+    "front": "pages/page_029.png",
+    "back": "pages/page_030.png"
+  },
+  {
+    "id": "toilet-access",
+    "title": "Toilet Access",
+    "front": "pages/page_031.png",
+    "back": "pages/page_032.png"
+  },
+  {
+    "id": "mosquito-breeding",
+    "title": "Mosquito Breeding",
+    "front": "pages/page_033.png",
+    "back": "pages/page_034.png"
+  },
+  {
+    "id": "street-noise",
+    "title": "Street Noise",
+    "front": "pages/page_035.png",
+    "back": "pages/page_036.png"
+  },
+  {
+    "id": "road-damage",
+    "title": "Road Damage",
+    "front": "pages/page_037.png",
+    "back": "pages/page_038.png"
+  },
+  {
+    "id": "waste-pickup",
+    "title": "Waste Pickup",
+    "front": "pages/page_039.png",
+    "back": "pages/page_040.png"
+  },
+  {
+    "id": "clinic-queues",
+    "title": "Hospital Queues",
+    "front": "pages/page_041.png",
+    "back": "pages/page_042.png"
+  },
+  {
+    "id": "rain-flooding",
+    "title": "Rain Flooding",
+    "front": "pages/page_043.png",
+    "back": "pages/page_044.png"
+  },
+  {
+    "id": "mango-prices",
+    "title": "Mango Prices",
+    "front": "pages/page_045.png",
+    "back": "pages/page_046.png"
+  },
+  {
+    "id": "lost-ponds",
+    "title": "Lost Ponds",
+    "front": "pages/page_047.png",
+    "back": "pages/page_048.png"
+  },
+  {
+    "id": "barnoi-pollution",
+    "title": "Barnoi Pollution",
+    "front": "pages/page_049.png",
+    "back": "pages/page_050.png"
+  }
+]

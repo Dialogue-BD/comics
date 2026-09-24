@@ -717,6 +717,7 @@ body[data-dialogue-page] {
 body[data-dialogue-page="action-pictures"],
 body[data-dialogue-page="busy-pictures"],
 body[data-dialogue-page="picture-this"],
+body[data-dialogue-page="local-problems"],
 body[data-dialogue-page="whos-this"] { --page-accent: #86a87a; --page-tint: #e3ead9; }
 body[data-dialogue-page="debate"],
 body[data-dialogue-page="discussion"],
@@ -1451,11 +1452,23 @@ body[data-dialogue-page="narratives"] :where(.nav, .controls, .story-header) {
 body[data-dialogue-page="picture-this"] :where(#card-count, #instructions-text) { color: #314034 !important; }
 body[data-dialogue-page="picture-this"] .app { background: radial-gradient(circle at 50% 42%, rgba(111,143,98,.25), transparent 42%), linear-gradient(145deg,#174629,#08250f) !important; }
 body[data-dialogue-page="picture-this"] :where(.topbar, .game-strip, .action) { color: #f4f1e6; }
+body[data-dialogue-page="local-problems"] :where(#card-count, #instructions-text) { color: #d8e2d2 !important; }
+body[data-dialogue-page="local-problems"] .app { background: radial-gradient(circle at 50% 42%, rgba(111,143,98,.25), transparent 42%), linear-gradient(145deg,#174629,#08250f) !important; }
+body[data-dialogue-page="local-problems"] :where(.topbar, .game-strip, .action) { color: #f4f1e6; }
+body[data-dialogue-page="local-problems"] :where(.game-picker-card, .game-panel, .game-strip, .audio-match-board, .word-help-card) { color: #f4f1e6; background: #174629; border-color: rgba(185,146,79,.58); }
+body[data-dialogue-page="local-problems"] :where(.game-picker, .word-help) { background: rgba(8,37,15,.86); }
+body[data-dialogue-page="local-problems"] .game-option { color: #f4f1e6; background: #205536; border-color: rgba(185,146,79,.45); }
+body[data-dialogue-page="local-problems"] .game-option:hover { background: #2a6240; border-color: #d2b978; }
+body[data-dialogue-page="local-problems"] .word-help-card :where(p, li) { color: #d8e2d2; }
+body[data-dialogue-page="local-problems"] #word-help-list details { background: #205536; border-color: rgba(185,146,79,.45); }
+body[data-dialogue-page="local-problems"] #word-help-list details[open] summary { color: #dec78f; }
 @media (min-width: 700px) {
-  body[data-dialogue-page="picture-this"] .stage {
+  body[data-dialogue-page="picture-this"] .stage,
+  body[data-dialogue-page="local-problems"] .stage {
     padding-top: calc(80px + var(--game-header-h, 0px));
   }
-  body[data-dialogue-page="picture-this"] .deck {
+  body[data-dialogue-page="picture-this"] .deck,
+  body[data-dialogue-page="local-problems"] .deck {
     width: min(calc(100vw - 32px), calc((100dvh - 172px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px);
   }
 }
@@ -1637,7 +1650,8 @@ body[data-dialogue-page="whos-this"] .tts--key.is-speaking {
   body[data-dialogue-page="mouse-strawberry"] .modal-close { min-width: 44px; min-height: 44px; }
   body[data-dialogue-page="guess-what"] :where(.icon-button, .brand) { min-width: 44px; }
   body[data-dialogue-page="icebreakers"] :where(.pill, .speak, .action) { min-height: 44px; }
-  body[data-dialogue-page="picture-this"] :where(.topbar button, .icon-button) { min-width: 44px; min-height: 44px; }
+  body[data-dialogue-page="picture-this"] :where(.topbar button, .icon-button),
+  body[data-dialogue-page="local-problems"] :where(.topbar button, .icon-button) { min-width: 44px; min-height: 44px; }
   body[data-dialogue-page="qr"] :where(.timer-btn, .slide-nav-btn, #btn-open-current) { min-width: 44px; min-height: 44px; }
   body[data-dialogue-page="whos-this"] :where(.speak, .answer-audio, .icon-button) { min-width: 44px; min-height: 44px; }
   body[data-dialogue-page="emotions"] .site-header { min-height: 70px; padding-block: 10px !important; }

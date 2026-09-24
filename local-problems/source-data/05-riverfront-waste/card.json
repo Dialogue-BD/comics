@@ -1,0 +1,134 @@
+{
+  "title": "Riverfront Waste",
+  "slug": "riverfront-waste",
+  "band_color": "auto",
+  "seed": "rajshahi-riverfront-waste-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Riverfront Waste"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "windblown-plastic",
+      "label": "Windblown Plastic",
+      "aliases": [],
+      "description": "A plastic wrapper blows down the open riverbank toward the water.",
+      "visual_kind": "action",
+      "visual_focus": "a single plastic wrapper blowing toward the river water",
+      "local_cue": "a wrapper at the sandy edge of the Padma River near Rajshahi",
+      "image": "assets/01-windblown-plastic.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "windblown litter",
+        "riverbank waste"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "uneven-steps",
+      "label": "Uneven Steps",
+      "aliases": [],
+      "description": "A visitor carries rubbish past worn riverside steps and keeps walking.",
+      "visual_kind": "action",
+      "visual_focus": "a visitor carefully sidestepping damaged riverside steps while holding litter",
+      "local_cue": "the concrete steps of a Rajshahi Padma river ghat with a damaged edge",
+      "image": "assets/02-uneven-steps.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "uneven steps",
+        "carry rubbish"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "leaving-bottles",
+      "label": "Leaving Bottles",
+      "aliases": [],
+      "description": "A visitor leaves an empty water bottle on the sand while walking away.",
+      "visual_kind": "action",
+      "visual_focus": "a visitor walking away from an abandoned bottle on sand",
+      "local_cue": "a discarded plastic bottle on the sandy Padma riverbank near a visitor",
+      "image": "assets/03-leaving-bottles.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "leave behind",
+        "plastic bottle"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "food-cart-waste",
+      "label": "Food Cart Waste",
+      "aliases": [],
+      "description": "A cart worker gathers used plates as the evening crowd moves away.",
+      "visual_kind": "action",
+      "visual_focus": "a food-cart worker gathering used plates into a bag",
+      "local_cue": "a Bangladeshi riverside snack cart with paper plates near the Padma embankment",
+      "image": "assets/04-food-cart-waste.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "food packaging",
+        "collect waste"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "full-riverside-bin",
+      "label": "Full Riverside Bin",
+      "aliases": [],
+      "description": "Visitors hold used cups beside a riverside bin already full of rubbish.",
+      "visual_kind": "action",
+      "visual_focus": "a riverside rubbish bin overflowing as visitors hold used cups",
+      "local_cue": "a full waste bin beside the concrete Padma embankment walkway",
+      "image": "assets/05-full-riverside-bin.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "overflowing bin",
+        "dispose of waste"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "cleanup-after-dark",
+      "label": "Cleanup After Dark",
+      "aliases": [],
+      "description": "A worker pulls a large bag of litter across the riverfront after visitors have left.",
+      "visual_kind": "action",
+      "visual_focus": "a lone worker hauling a large waste bag at dusk beside the river",
+      "local_cue": "a worker carrying a waste sack up concrete steps from the Padma riverbank at dusk",
+      "image": "assets/06-cleanup-after-dark.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "collection schedule",
+        "clean up later"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes could send waste into the river?",
+    "What have you noticed about rubbish at a public gathering place in Rajshahi?",
+    "Should visitors carry waste away or should vendors collect it? Why?",
+    "Why might a busy food cart struggle to collect every used plate?",
+    "If more bins are placed by the water, what maintenance problem follows?",
+    "You have 250,000 BDT and 30 days. What one riverfront cleanup system would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 250000,
+    "pilot_scope": "Trial a vendor-and-visitor collection system at one Padma riverfront gathering spot."
+  },
+  "evidence": {
+    "basis": "supplied brief plus river pollution reporting",
+    "sources": [
+      "https://www.bssnews.net/district/374379"
+    ]
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "title": "Road Dust",
+  "slug": "road-dust",
+  "band_color": "auto",
+  "seed": "rajshahi-road-dust-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Road Dust"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "loose-road-edge",
+      "label": "Loose Road Edge",
+      "aliases": [],
+      "description": "A passing vehicle lifts dust from a broken road shoulder beside pedestrians.",
+      "visual_kind": "action",
+      "visual_focus": "a wheel lifting dust from a broken road shoulder toward a pedestrian",
+      "local_cue": "a battery-run easy bike wheel lifting grit from a damaged Rajshahi road shoulder",
+      "image": "assets/01-loose-road-edge.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "road shoulder",
+        "raise dust"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "dry-work-site",
+      "label": "Dry Work Site",
+      "aliases": [],
+      "description": "Wind blows loose sand from a roadside work pile toward nearby stalls.",
+      "visual_kind": "action",
+      "visual_focus": "wind blowing sand from an uncovered roadside pile toward a stall",
+      "local_cue": "an uncovered sand pile beside a small Rajshahi roadside shop",
+      "image": "assets/02-dry-work-site.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "loose sand",
+        "blow into stalls"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "fast-passing",
+      "label": "Fast Passing",
+      "aliases": [],
+      "description": "A driver speeds past a person who shields their face from dust.",
+      "visual_kind": "action",
+      "visual_focus": "a fast vehicle passing a person who shields their face from dust",
+      "local_cue": "a maroon battery-run easy bike passing a pedestrian in roadside dust",
+      "image": "assets/03-fast-passing.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "drive past",
+        "dust cloud"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "dry-sweeping",
+      "label": "Dry Sweeping",
+      "aliases": [],
+      "description": "A worker sweeps dry dirt into the air beside a busy stall.",
+      "visual_kind": "action",
+      "visual_focus": "a broom lifting a thick cloud of fine dry dust",
+      "local_cue": "a Bangladeshi street cleaner using a traditional long-handled straw broom",
+      "image": "assets/04-dry-sweeping.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "sweep the pavement",
+        "stir up dust"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "uncovered-load",
+      "label": "Uncovered Load",
+      "aliases": [],
+      "description": "A small truck carries loose sand that spills along the road.",
+      "visual_kind": "action",
+      "visual_focus": "sand visibly spilling from an uncovered truck bed",
+      "local_cue": "a small locally typical open-bed sand truck on a Rajshahi road",
+      "image": "assets/05-uncovered-load.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "cover a load",
+        "spill material"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "small-cleanup-cart",
+      "label": "Small Cleanup Cart",
+      "aliases": [],
+      "description": "A cleaner works around several fresh piles of road debris with one small cart.",
+      "visual_kind": "action",
+      "visual_focus": "one small collection cart beside several separate debris piles",
+      "local_cue": "a municipal handcart and several separate construction-debris piles beside a Rajshahi street",
+      "image": "assets/06-small-cleanup-cart.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "clear debris",
+        "cleanup schedule"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes put dust closest to people's faces?",
+    "Where have you noticed road dust on a route in Rajshahi?",
+    "Should drivers slow down or should work sites cover sand first? Why?",
+    "Why might a delivery leave sand uncovered?",
+    "If roads are sprayed with water, what problem could that create?",
+    "You have 150,000 BDT and 30 days. What one dust-control change would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 150000,
+    "pilot_scope": "Trial dust suppression and covered material storage along one work-site edge."
+  },
+  "evidence": {
+    "basis": "current Rajshahi reporting",
+    "sources": [
+      "https://www.tbsnews.net/supplement/why-rajshahi-city-losing-its-clean-green-healthy-image-fast-1350041"
+    ]
+  }
+}

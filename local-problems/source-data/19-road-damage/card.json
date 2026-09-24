@@ -1,0 +1,134 @@
+{
+  "title": "Road Damage",
+  "slug": "road-damage",
+  "band_color": "auto",
+  "seed": "rajshahi-road-damage-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Road Damage"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "deep-pothole",
+      "label": "Deep Pothole",
+      "aliases": [],
+      "description": "A rickshaw wheel drops into a road pothole and the driver slows.",
+      "visual_kind": "action",
+      "visual_focus": "a pedal-rickshaw front wheel dropping into a deep pothole",
+      "local_cue": "a Rajshahi road with easy bikes, pedal rickshaws, brick edging and monsoon runoff; show the road defect as the dominant cue. In this cutout specifically, make the decisive evidence prominent: a pedal-rickshaw front wheel dropping into a deep pothole",
+      "image": "assets/01-deep-pothole.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "road pothole",
+        "slow down"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "loose-bricks",
+      "label": "Loose Bricks",
+      "aliases": [],
+      "description": "A walker and rider both avoid loose paving bricks at a road edge.",
+      "visual_kind": "action",
+      "visual_focus": "loose paving bricks at a road edge forcing both walker and rider aside",
+      "local_cue": "a Rajshahi road with easy bikes, pedal rickshaws, brick edging and monsoon runoff; show the road defect as the dominant cue. In this cutout specifically, make the decisive evidence prominent: loose paving bricks at a road edge forcing both walker and rider aside",
+      "image": "assets/02-loose-bricks.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "loose bricks",
+        "uneven surface"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "sudden-swerving",
+      "label": "Sudden Swerving",
+      "aliases": [],
+      "description": "A driver steers around a hole into the path of another vehicle.",
+      "visual_kind": "action",
+      "visual_focus": "an easy-bike swerving around a hole toward another vehicle",
+      "local_cue": "a Rajshahi road with easy bikes, pedal rickshaws, brick edging and monsoon runoff; show the road defect as the dominant cue. In this cutout specifically, make the decisive evidence prominent: an easy-bike swerving around a hole toward another vehicle",
+      "image": "assets/03-sudden-swerving.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "swerve around",
+        "oncoming traffic"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "heavy-load",
+      "label": "Heavy Load",
+      "aliases": [],
+      "description": "A heavily loaded cart rolls over a weak road edge and chips it.",
+      "visual_kind": "action",
+      "visual_focus": "a heavily loaded handcart wheel crumbling a weak road edge",
+      "local_cue": "a Rajshahi road with easy bikes, pedal rickshaws, brick edging and monsoon runoff; show the road defect as the dominant cue. In this cutout specifically, make the decisive evidence prominent: a heavily loaded handcart wheel crumbling a weak road edge",
+      "image": "assets/04-heavy-load.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "heavy load",
+        "road wear"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "patch-delay",
+      "label": "Patch Delay",
+      "aliases": [],
+      "description": "People step around a coned pothole while no repair work is underway.",
+      "visual_kind": "action",
+      "visual_focus": "a coned pothole with people detouring and no repair crew present",
+      "local_cue": "a Rajshahi road with easy bikes, pedal rickshaws, brick edging and monsoon runoff; show the road defect as the dominant cue. In this cutout specifically, make the decisive evidence prominent: a coned pothole with people detouring and no repair crew present",
+      "image": "assets/05-patch-delay.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "repair backlog",
+        "temporary cone"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "poor-runoff",
+      "label": "Poor Runoff",
+      "aliases": [],
+      "description": "Rainwater flows under a fresh road patch and loosens the edge.",
+      "visual_kind": "action",
+      "visual_focus": "rainwater washing under the edge of a fresh road patch",
+      "local_cue": "a Rajshahi road with easy bikes, pedal rickshaws, brick edging and monsoon runoff; show the road defect as the dominant cue. In this cutout specifically, make the decisive evidence prominent: rainwater washing under the edge of a fresh road patch",
+      "image": "assets/06-poor-runoff.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "water runoff",
+        "road patch"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes show how a small hole becomes dangerous?",
+    "What road damage have you had to avoid in Rajshahi?",
+    "Should a team patch many small holes or one dangerous one first? Why?",
+    "Why might a quick patch fail after the next rain?",
+    "If repairs close one lane, what happens to nearby traffic?",
+    "You have 300,000 BDT and 30 days. What one road-repair change would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 300000,
+    "pilot_scope": "Trial quick, durable repairs on a small set of dangerous potholes."
+  },
+  "evidence": {
+    "basis": "current Rajshahi reporting",
+    "sources": [
+      "https://www.tbsnews.net/supplement/why-rajshahi-city-losing-its-clean-green-healthy-image-fast-1350041"
+    ]
+  }
+}

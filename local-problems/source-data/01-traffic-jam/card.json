@@ -1,0 +1,134 @@
+{
+  "title": "Traffic Jam",
+  "slug": "traffic-jam",
+  "band_color": "auto",
+  "seed": "rajshahi-traffic-jam-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Traffic Jam"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "narrow-crossing",
+      "label": "Narrow Crossing",
+      "aliases": [],
+      "description": "Pedestrians squeeze through a narrow opening between slow vehicles.",
+      "visual_kind": "action",
+      "visual_focus": "a pedestrian's body squeezed between two slow vehicles, mid-step",
+      "local_cue": "two maroon battery-run easy bikes pressing close on a Rajshahi bazaar road",
+      "image": "assets/01-narrow-crossing.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "cross the road",
+        "narrow gap"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "blocked-footpath",
+      "label": "Blocked Footpath",
+      "aliases": [],
+      "description": "A walker steps into traffic because goods fill the footpath.",
+      "visual_kind": "action",
+      "visual_focus": "goods blocking the raised footpath and a pedestrian's foot entering the road",
+      "local_cue": "a Saheb Bazar-style small shop's raised concrete footpath with boxes and a battery-run easy bike at its edge",
+      "image": "assets/02-blocked-footpath.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "block the footpath",
+        "walk in traffic"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "mid-road-stop",
+      "label": "Mid-Road Stop",
+      "aliases": [],
+      "description": "A driver stops in the moving lane to let a passenger out.",
+      "visual_kind": "action",
+      "visual_focus": "a passenger stepping out of a stopped vehicle in front of a waiting vehicle",
+      "local_cue": "a passenger stepping down from a maroon battery-run easy bike beside another waiting easy bike",
+      "image": "assets/03-mid-road-stop.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "stop in the lane",
+        "hold up traffic"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "handcart-loading",
+      "label": "Handcart Loading",
+      "aliases": [],
+      "description": "A worker loads boxes from a handcart while vehicles wait behind.",
+      "visual_kind": "action",
+      "visual_focus": "hands lifting a box onto a handcart while traffic waits directly behind",
+      "local_cue": "a hand-pulled delivery van and stacked cartons outside a narrow Rajshahi shopfront, with a waiting easy bike",
+      "image": "assets/04-handcart-loading.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "load a handcart",
+        "delay the queue"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "crowded-curb",
+      "label": "Crowded Curb",
+      "aliases": [],
+      "description": "Two vehicles compete for a curb with no clear place to pick up riders.",
+      "visual_kind": "action",
+      "visual_focus": "two vehicles pressing toward the same short curb while riders wait",
+      "local_cue": "two battery-run easy bikes converging beside a short concrete bazaar curb",
+      "image": "assets/05-crowded-curb.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "pickup point",
+        "compete for space"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "rushed-delivery",
+      "label": "Rushed Delivery",
+      "aliases": [],
+      "description": "A shop worker rushes boxes from a vehicle to a doorway during a busy period.",
+      "visual_kind": "action",
+      "visual_focus": "a shop worker hurrying boxes from a delivery vehicle into a doorway",
+      "local_cue": "a shop worker moving cartons from a small local delivery van into a ground-floor bazaar shop",
+      "image": "assets/06-rushed-delivery.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "delivery window",
+        "rush a delivery"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes would slow a person on foot most?",
+    "When has a crowded Rajshahi street delayed you? What happened?",
+    "Should the curb serve passengers or shop deliveries first? Why?",
+    "Why might a driver stop in the lane even when it delays others?",
+    "If loading is banned at busy times, who might lose income?",
+    "You have 300,000 BDT and 30 days. What one street-space change would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 300000,
+    "pilot_scope": "Pilot one safer pickup or delivery zone on a short Saheb Bazar segment."
+  },
+  "evidence": {
+    "basis": "supplied brief plus current reporting",
+    "sources": [
+      "https://www.tbsnews.net/supplement/why-rajshahi-city-losing-its-clean-green-healthy-image-fast-1350041"
+    ]
+  }
+}

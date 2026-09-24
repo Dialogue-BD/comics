@@ -1,0 +1,135 @@
+{
+  "title": "Tree Loss",
+  "slug": "tree-loss",
+  "band_color": "auto",
+  "seed": "rajshahi-tree-loss-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Tree Loss"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "fresh-stump",
+      "label": "Fresh Stump",
+      "aliases": [],
+      "description": "A walker passes the fresh stump of a large roadside tree in strong sun.",
+      "visual_kind": "action",
+      "visual_focus": "a large fresh stump beside a pedestrian in strong sunlight",
+      "local_cue": "a fresh stump where a mature roadside shade tree stood on a Rajshahi paved footpath",
+      "image": "assets/01-fresh-stump.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "tree stump",
+        "lost shade"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "exposed-roots",
+      "label": "Exposed Roots",
+      "aliases": [],
+      "description": "A pedestrian steps around roots exposed by a roadside trench.",
+      "visual_kind": "action",
+      "visual_focus": "tree roots exposed by a roadside trench and a foot stepping around them",
+      "local_cue": "exposed roots at a Rajshahi roadside utility trench beside a concrete footpath",
+      "image": "assets/02-exposed-roots.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "exposed roots",
+        "dig a trench"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "cutting-branches",
+      "label": "Cutting Branches",
+      "aliases": [],
+      "description": "Workers cut heavy branches beside a new utility pipe route.",
+      "visual_kind": "action",
+      "visual_focus": "a worker sawing a heavy tree branch beside a new pipe route",
+      "local_cue": "a worker cutting a mature roadside branch beside a new utility trench",
+      "image": "assets/03-cutting-branches.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "cut branches",
+        "clear a route"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "parking-on-roots",
+      "label": "Parking on Roots",
+      "aliases": [],
+      "description": "A driver parks on bare soil around a surviving tree trunk.",
+      "visual_kind": "action",
+      "visual_focus": "a parked vehicle wheel pressing soil over the exposed tree roots",
+      "local_cue": "a parked battery-run easy bike wheel compressing soil over exposed roots",
+      "image": "assets/04-parking-on-roots.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "park on roots",
+        "compact the soil"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "road-expansion",
+      "label": "Road Expansion",
+      "aliases": [],
+      "description": "Road builders measure a new edge that passes close to mature tree trunks.",
+      "visual_kind": "action",
+      "visual_focus": "builders measuring a road edge very close to mature trunks",
+      "local_cue": "survey stakes and road works close to mature shade trees on a Rajshahi avenue",
+      "image": "assets/05-road-expansion.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "widen a road",
+        "protect a tree"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "drooping-sapling",
+      "label": "Drooping Sapling",
+      "aliases": [],
+      "description": "A small replacement sapling bends in dry soil beside a busy road.",
+      "visual_kind": "action",
+      "visual_focus": "a drooping young sapling in dry soil beside the road",
+      "local_cue": "a young roadside sapling drooping in dry Rajshahi soil with a concrete curb",
+      "image": "assets/06-drooping-sapling.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "replacement sapling",
+        "follow-up care"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes show a tree already damaged or lost?",
+    "Where do street trees make a trip better for you in Rajshahi?",
+    "Should a project change its route or replace cut trees later? Why?",
+    "Why might a road or pipe project remove a mature tree?",
+    "If saplings replace it, what must happen for them to survive?",
+    "You have 250,000 BDT and 30 days. What one tree-protection pilot would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 250000,
+    "pilot_scope": "Protect mature trees along one work-site edge and trial monitored care for replacement saplings; no claim that new saplings replace mature shade within 30 days."
+  },
+  "evidence": {
+    "basis": "2025 Rajshahi reporting on tree removal during development",
+    "sources": [
+      "https://www.jugantor.com/tp-city/1011707",
+      "https://www.newagebd.net/post/country/285940/rwasa-trimes-100-krishnachura-trees"
+    ]
+  }
+}

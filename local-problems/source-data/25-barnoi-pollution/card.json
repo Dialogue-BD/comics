@@ -1,0 +1,135 @@
+{
+  "title": "Barnoi Pollution",
+  "slug": "barnoi-pollution",
+  "band_color": "auto",
+  "seed": "rajshahi-barnoi-pollution-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Barnoi Pollution"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "dark-outflow",
+      "label": "Dark Outflow",
+      "aliases": [],
+      "description": "Dark water runs from a city drain into the river.",
+      "visual_kind": "action",
+      "visual_focus": "dark waste-bearing drain water flowing into the river",
+      "local_cue": "the smaller Barnoi River near Rajshahi, not the Padma, with low banks, concrete drainage channels and locally typical riverside activity. In this cutout specifically, make the decisive evidence prominent: dark waste-bearing drain water flowing into the river",
+      "image": "assets/01-dark-outflow.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "drain outfall",
+        "untreated waste"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "floating-waste",
+      "label": "Floating Waste",
+      "aliases": [],
+      "description": "Plastic and other rubbish gather along a slow river edge.",
+      "visual_kind": "action",
+      "visual_focus": "plastic waste gathering along a slow river edge",
+      "local_cue": "the smaller Barnoi River near Rajshahi, not the Padma, with low banks, concrete drainage channels and locally typical riverside activity. In this cutout specifically, make the decisive evidence prominent: plastic waste gathering along a slow river edge",
+      "image": "assets/02-floating-waste.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "floating waste",
+        "riverbank debris"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "dumping-rubbish",
+      "label": "Dumping Rubbish",
+      "aliases": [],
+      "description": "A person drops a bag of mixed waste beside a drainage channel.",
+      "visual_kind": "action",
+      "visual_focus": "a hand dropping a mixed-waste bag beside a drainage channel",
+      "local_cue": "the smaller Barnoi River near Rajshahi, not the Padma, with low banks, concrete drainage channels and locally typical riverside activity. In this cutout specifically, make the decisive evidence prominent: a hand dropping a mixed-waste bag beside a drainage channel",
+      "image": "assets/03-dumping-rubbish.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "dump rubbish",
+        "pollute a drain"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "washing-nearby",
+      "label": "Washing Nearby",
+      "aliases": [],
+      "description": "A person washes a tool beside water already carrying waste.",
+      "visual_kind": "action",
+      "visual_focus": "a person washing a tool beside visibly polluted flowing water",
+      "local_cue": "the smaller Barnoi River near Rajshahi, not the Padma, with low banks, concrete drainage channels and locally typical riverside activity. In this cutout specifically, make the decisive evidence prominent: a person washing a tool beside visibly polluted flowing water",
+      "image": "assets/04-washing-nearby.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "wash near water",
+        "contaminated stream"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "open-discharge",
+      "label": "Open Discharge",
+      "aliases": [],
+      "description": "Several drain channels join before reaching the river without a treatment step.",
+      "visual_kind": "action",
+      "visual_focus": "several open drain channels joining before they reach the river",
+      "local_cue": "the smaller Barnoi River near Rajshahi, not the Padma, with low banks, concrete drainage channels and locally typical riverside activity. In this cutout specifically, make the decisive evidence prominent: several open drain channels joining before they reach the river",
+      "image": "assets/05-open-discharge.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "direct discharge",
+        "wastewater treatment"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "no-interceptor",
+      "label": "No Interceptor",
+      "aliases": [],
+      "description": "A cleaner pulls solid rubbish from a drain mouth using a simple rake.",
+      "visual_kind": "action",
+      "visual_focus": "a cleaner raking solid rubbish from a drain mouth with no catch basket",
+      "local_cue": "the smaller Barnoi River near Rajshahi, not the Padma, with low banks, concrete drainage channels and locally typical riverside activity. In this cutout specifically, make the decisive evidence prominent: a cleaner raking solid rubbish from a drain mouth with no catch basket",
+      "image": "assets/06-no-interceptor.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "catch solid waste",
+        "drain maintenance"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes show waste entering the river?",
+    "What changes have you noticed in a river or canal near Rajshahi?",
+    "Should the first effort stop solid rubbish or test the water? Why?",
+    "Why might city drains keep sending waste into the Barnoi?",
+    "If one outfall is blocked, where might the water go?",
+    "You have 500,000 BDT and 30 days. What one pollution-monitoring pilot would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 500000,
+    "pilot_scope": "Map and sample one outfall with an authorized partner, and trial a safe solid-waste interception plan."
+  },
+  "evidence": {
+    "basis": "2025-26 Rajshahi reporting",
+    "sources": [
+      "https://online.thedailystar.net/news/bangladesh/news/barnoi-turns-toxic-untreated-waste-pours-4035216",
+      "https://www.bssnews.net/district/374379"
+    ]
+  }
+}

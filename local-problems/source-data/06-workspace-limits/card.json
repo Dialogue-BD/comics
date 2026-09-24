@@ -1,0 +1,135 @@
+{
+  "title": "Workspace Limits",
+  "slug": "workspace-limits",
+  "band_color": "auto",
+  "seed": "rajshahi-workspace-limits-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Workspace Limits"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "shared-room",
+      "label": "Shared Room",
+      "aliases": [],
+      "description": "A student tries to speak in an online class while others talk nearby.",
+      "visual_kind": "action",
+      "visual_focus": "a student speaking into a laptop while close by roommates talk",
+      "local_cue": "a compact rented Rajshahi flat with a low study table and several students",
+      "image": "assets/01-shared-room.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "shared room",
+        "background noise"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "few-sockets",
+      "label": "Few Sockets",
+      "aliases": [],
+      "description": "Two students reach toward the same power outlet with laptop chargers.",
+      "visual_kind": "action",
+      "visual_focus": "two laptop chargers reaching for one wall socket",
+      "local_cue": "two laptop chargers at one socket in a modest Bangladeshi student room",
+      "image": "assets/02-few-sockets.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "power socket",
+        "charge a laptop"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "video-call-noise",
+      "label": "Video Call Noise",
+      "aliases": [],
+      "description": "A learner moves a laptop closer to their face to hear over conversation.",
+      "visual_kind": "action",
+      "visual_focus": "a learner cupping one ear to hear a laptop video call over nearby talk",
+      "local_cue": "a video call on a laptop in a shared Rajshahi student room",
+      "image": "assets/03-video-call-noise.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "hear a call",
+        "reduce noise"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "paid-seating",
+      "label": "Paid Seating",
+      "aliases": [],
+      "description": "A worker buys a drink before settling at a café table with a laptop.",
+      "visual_kind": "action",
+      "visual_focus": "a worker paying for a drink before using a café table with a laptop",
+      "local_cue": "a small Rajshahi cafe counter and laptop table, with a glass of tea",
+      "image": "assets/04-paid-seating.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "minimum purchase",
+        "afford a seat"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "weak-wi-fi",
+      "label": "Weak Wi-Fi",
+      "aliases": [],
+      "description": "A person waits as a laptop video call freezes beside a small router.",
+      "visual_kind": "action",
+      "visual_focus": "a frozen video-call symbol on a laptop beside a small router",
+      "local_cue": "a small router and laptop in a Bangladeshi student apartment",
+      "image": "assets/05-weak-wi-fi.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unstable connection",
+        "video call"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "searching-for-desk",
+      "label": "Searching for Desk",
+      "aliases": [],
+      "description": "Several people search for a free desk in a crowded study room.",
+      "visual_kind": "action",
+      "visual_focus": "a student carrying a laptop while scanning a room of occupied desks",
+      "local_cue": "a crowded Bangladeshi university study room with simple desks",
+      "image": "assets/06-searching-for-desk.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "quiet workspace",
+        "limited seating"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes would make an online class hardest?",
+    "Where in Rajshahi can you usually work or study well?",
+    "Is reliable internet or a quiet desk more urgent? Why?",
+    "Why might a café set a minimum purchase for someone using a table?",
+    "If a free study room opens, how could crowding change it?",
+    "You have 120,000 BDT and 30 days. What one shared-workspace fix would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 120000,
+    "pilot_scope": "Pilot a quiet, powered study room with agreed opening and maintenance hours."
+  },
+  "evidence": {
+    "basis": "supplied brief plus current university internet reporting",
+    "sources": [
+      "/Users/timothyhall/Downloads/rajshahi_problem_cards_activity_specification.md",
+      "https://www.bssnews.net/news/408649"
+    ]
+  }
+}

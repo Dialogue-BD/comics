@@ -1,0 +1,134 @@
+{
+  "title": "Open Drains",
+  "slug": "open-drains",
+  "band_color": "auto",
+  "seed": "rajshahi-open-drains-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Open Drains"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "missing-cover",
+      "label": "Missing Cover",
+      "aliases": [],
+      "description": "A pedestrian steps around an uncovered roadside drain opening.",
+      "visual_kind": "action",
+      "visual_focus": "an uncovered drain opening and a pedestrian foot stepping around it",
+      "local_cue": "a narrow open concrete roadside drain beside a Rajshahi footpath",
+      "image": "assets/01-missing-cover.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "open drain",
+        "watch your step"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "overflowing-water",
+      "label": "Overflowing Water",
+      "aliases": [],
+      "description": "Rainwater spills from a drain and pushes across a walking path.",
+      "visual_kind": "action",
+      "visual_focus": "water visibly spilling from a drain onto the walking path",
+      "local_cue": "a low concrete roadside drain overflowing onto a bazaar-side walkway",
+      "image": "assets/02-overflowing-water.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "drain overflow",
+        "standing water"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "dumped-cups",
+      "label": "Dumped Cups",
+      "aliases": [],
+      "description": "A person drops used cups into a roadside drain.",
+      "visual_kind": "action",
+      "visual_focus": "a hand dropping disposable cups directly into a drain opening",
+      "local_cue": "a disposable tea cup falling into a narrow open concrete roadside drain",
+      "image": "assets/03-dumped-cups.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "clog a drain",
+        "throw away cups"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "sand-runoff",
+      "label": "Sand Runoff",
+      "aliases": [],
+      "description": "A worker washes construction sand toward a drain as rain begins.",
+      "visual_kind": "action",
+      "visual_focus": "sand and muddy water flowing together into a drain",
+      "local_cue": "rainwater and construction sand flowing toward a concrete roadside drain",
+      "image": "assets/04-sand-runoff.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "wash away sand",
+        "block the flow"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "broken-drain-edge",
+      "label": "Broken Drain Edge",
+      "aliases": [],
+      "description": "A small damaged drain edge is cordoned off while people detour around it.",
+      "visual_kind": "action",
+      "visual_focus": "a broken drain rim behind a temporary barrier with a pedestrian detouring",
+      "local_cue": "a broken lip of a concrete roadside drain beside a small Bangladeshi shop",
+      "image": "assets/05-broken-drain-edge.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "repair delay",
+        "temporary barrier"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "clearing-debris",
+      "label": "Clearing Debris",
+      "aliases": [],
+      "description": "A cleaner pulls mixed rubbish from a drain mouth with no catch basket.",
+      "visual_kind": "action",
+      "visual_focus": "a cleaner's rake pulling a clump of rubbish from a drain mouth",
+      "local_cue": "a municipal cleaner raking plastic and leaves from an open concrete roadside drain",
+      "image": "assets/06-clearing-debris.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "clear a blockage",
+        "catch debris"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes are most dangerous for someone walking?",
+    "Where have you had to avoid water or an open drain in Rajshahi?",
+    "Should the first effort cover open drains or clear blocked ones? Why?",
+    "Why might rubbish keep entering a drain after it is cleaned?",
+    "If a drain is covered, what could make future cleaning harder?",
+    "You have 200,000 BDT and 30 days. What one drain-safety fix would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 200000,
+    "pilot_scope": "Trial covers or debris catches at a small number of hazardous drains."
+  },
+  "evidence": {
+    "basis": "supplied brief plus current civic work",
+    "sources": [
+      "https://www.bssnews.net/district/383660"
+    ]
+  }
+}

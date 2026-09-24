@@ -1,0 +1,1577 @@
+{
+  "schema_version": 1,
+  "status": "draft-for-user-review",
+  "locale": "Rajshahi, Bangladesh",
+  "grant_challenge": {
+    "duration_days": 30,
+    "pitch_seconds": 60,
+    "constraint": "Propose one small, testable intervention. No major construction or police crackdown. Explain who maintains it.",
+    "display_note": "Show this card’s budget and pilot scope with the 30-day challenge beside question 6.",
+    "budget_policy": "Each card has a proposed classroom pilot budget in BDT, scaled to the pilot scope. These are discussion constraints, not verified procurement estimates."
+  },
+  "tile_order": [
+    "physical_or_spatial",
+    "physical_or_spatial",
+    "human_habit",
+    "human_habit",
+    "structural_or_economic",
+    "structural_or_economic"
+  ],
+  "tile_fields": [
+    "label",
+    "scene",
+    "collocation_1",
+    "collocation_2"
+  ],
+  "question_order": [
+    "observe",
+    "narrate",
+    "distinguish",
+    "diagnose",
+    "anticipate",
+    "propose"
+  ],
+  "cards": [
+    {
+      "id": "traffic-jam",
+      "title": "TRAFFIC JAM",
+      "focus": "A crowded Saheb Bazar street where people and goods compete for limited road space.",
+      "tiles": [
+        [
+          "Narrow Crossing",
+          "Pedestrians squeeze through a narrow opening between slow vehicles.",
+          "cross the road",
+          "narrow gap"
+        ],
+        [
+          "Blocked Footpath",
+          "A walker steps into traffic because goods fill the footpath.",
+          "block the footpath",
+          "walk in traffic"
+        ],
+        [
+          "Mid-Road Stop",
+          "A driver stops in the moving lane to let a passenger out.",
+          "stop in the lane",
+          "hold up traffic"
+        ],
+        [
+          "Handcart Loading",
+          "A worker loads boxes from a handcart while vehicles wait behind.",
+          "load a handcart",
+          "delay the queue"
+        ],
+        [
+          "Crowded Curb",
+          "Two vehicles compete for a curb with no clear place to pick up riders.",
+          "pickup point",
+          "compete for space"
+        ],
+        [
+          "Rushed Delivery",
+          "A shop worker rushes boxes from a vehicle to a doorway during a busy period.",
+          "delivery window",
+          "rush a delivery"
+        ]
+      ],
+      "questions": [
+        "Which two scenes would slow a person on foot most?",
+        "When has a crowded Rajshahi street delayed you? What happened?",
+        "Should the curb serve passengers or shop deliveries first? Why?",
+        "Why might a driver stop in the lane even when it delays others?",
+        "If loading is banned at busy times, who might lose income?",
+        "What one street-space change would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 300000,
+        "pilot_scope": "Pilot one safer pickup or delivery zone on a short Saheb Bazar segment."
+      },
+      "evidence": {
+        "basis": "supplied brief plus current reporting",
+        "sources": [
+          "https://www.tbsnews.net/supplement/why-rajshahi-city-losing-its-clean-green-healthy-image-fast-1350041"
+        ]
+      }
+    },
+    {
+      "id": "power-cut",
+      "title": "POWER CUT",
+      "focus": "An unexpected loss of electricity disrupts study, work, and small businesses.",
+      "tiles": [
+        [
+          "Dark Study Room",
+          "A student leans over a book in a room whose light has gone out.",
+          "study in the dark",
+          "lose power"
+        ],
+        [
+          "Hot Room",
+          "A person fans themself beside a motionless ceiling fan.",
+          "stifling room",
+          "cool down"
+        ],
+        [
+          "Phone Flashlight",
+          "A student aims a phone light at a notebook as the battery icon glows low.",
+          "use a flashlight",
+          "save battery"
+        ],
+        [
+          "Generator Fumes",
+          "A shopkeeper starts a small generator while a passerby covers their nose.",
+          "run a generator",
+          "breathe fumes"
+        ],
+        [
+          "Dead Router",
+          "A worker tries to reconnect a laptop beside an unlit router.",
+          "internet connection",
+          "lose connectivity"
+        ],
+        [
+          "Limited Charging",
+          "Several people wait to charge devices at one small battery backup.",
+          "backup power",
+          "limited capacity"
+        ]
+      ],
+      "questions": [
+        "Which two scenes make studying hardest?",
+        "When did a power cut last change your plans in Rajshahi?",
+        "Should a shared backup power point serve students or shops first? Why?",
+        "Why might a shop use a smoky generator despite the cost?",
+        "If one building offers free charging, what new problem might appear?",
+        "What one backup-power idea would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 150000,
+        "pilot_scope": "Pilot backup light and charging for one shared study area."
+      },
+      "evidence": {
+        "basis": "supplied brief plus Rajshahi student reporting",
+        "sources": [
+          "https://thedailycampus.com/public-university/212609"
+        ]
+      }
+    },
+    {
+      "id": "open-drains",
+      "title": "OPEN DRAINS",
+      "focus": "Drainage hazards along walking routes after rain.",
+      "tiles": [
+        [
+          "Missing Cover",
+          "A pedestrian steps around an uncovered roadside drain opening.",
+          "open drain",
+          "watch your step"
+        ],
+        [
+          "Overflowing Water",
+          "Rainwater spills from a drain and pushes across a walking path.",
+          "drain overflow",
+          "standing water"
+        ],
+        [
+          "Dumped Cups",
+          "A person drops used cups into a roadside drain.",
+          "clog a drain",
+          "throw away cups"
+        ],
+        [
+          "Sand Runoff",
+          "A worker washes construction sand toward a drain as rain begins.",
+          "wash away sand",
+          "block the flow"
+        ],
+        [
+          "Broken Drain Edge",
+          "A small damaged drain edge is cordoned off while people detour around it.",
+          "repair delay",
+          "temporary barrier"
+        ],
+        [
+          "Clearing Debris",
+          "A cleaner pulls mixed rubbish from a drain mouth with no catch basket.",
+          "clear a blockage",
+          "catch debris"
+        ]
+      ],
+      "questions": [
+        "Which two scenes are most dangerous for someone walking?",
+        "Where have you had to avoid water or an open drain in Rajshahi?",
+        "Should the first effort cover open drains or clear blocked ones? Why?",
+        "Why might rubbish keep entering a drain after it is cleaned?",
+        "If a drain is covered, what could make future cleaning harder?",
+        "What one drain-safety fix would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 200000,
+        "pilot_scope": "Trial covers or debris catches at a small number of hazardous drains."
+      },
+      "evidence": {
+        "basis": "supplied brief plus current civic work",
+        "sources": [
+          "https://www.bssnews.net/district/383660"
+        ]
+      }
+    },
+    {
+      "id": "street-litter",
+      "title": "STREET LITTER",
+      "focus": "Daily waste from stalls and shoppers gathers along a commercial street.",
+      "tiles": [
+        [
+          "Open Gutter",
+          "Light food packaging blows into an uncovered street gutter.",
+          "street gutter",
+          "blow away"
+        ],
+        [
+          "Full Bin",
+          "A person tries to put a cup into an overflowing roadside bin.",
+          "overflowing bin",
+          "leave rubbish"
+        ],
+        [
+          "Sweeping Cups",
+          "A stall worker sweeps disposable cups from the pavement into the gutter.",
+          "sweep up cups",
+          "dump into a gutter"
+        ],
+        [
+          "Fruit Peels",
+          "A shopper drops fruit peels beside a busy stall.",
+          "discard peels",
+          "food waste"
+        ],
+        [
+          "Mixed Waste",
+          "A collector lifts one bag containing food scraps and plastic together.",
+          "mixed waste",
+          "sort rubbish"
+        ],
+        [
+          "Carrying Waste",
+          "A vendor carries a full waste bag past several stalls toward a collection cart far down the lane.",
+          "collection point",
+          "carry waste"
+        ]
+      ],
+      "questions": [
+        "Which two scenes could spread litter fastest?",
+        "Where do you notice litter on a route you use in Rajshahi?",
+        "Should a stall worker or a shopper deal with a used cup? Why?",
+        "Why might a vendor sweep waste into the gutter?",
+        "If extra bins appear, who will empty them and when?",
+        "What one waste-handling change would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 100000,
+        "pilot_scope": "Trial waste containers and a collection agreement with one stall cluster."
+      },
+      "evidence": {
+        "basis": "supplied brief plus current reporting",
+        "sources": [
+          "https://www.tbsnews.net/supplement/why-rajshahi-city-losing-its-clean-green-healthy-image-fast-1350041"
+        ]
+      }
+    },
+    {
+      "id": "riverfront-waste",
+      "title": "RIVERFRONT WASTE",
+      "focus": "Visitors and vendors leave waste along a Padma riverside gathering area.",
+      "tiles": [
+        [
+          "Windblown Plastic",
+          "A plastic wrapper blows down the open riverbank toward the water.",
+          "windblown litter",
+          "riverbank waste"
+        ],
+        [
+          "Uneven Steps",
+          "A visitor carries rubbish past worn riverside steps and keeps walking.",
+          "uneven steps",
+          "carry rubbish"
+        ],
+        [
+          "Leaving Bottles",
+          "A visitor leaves an empty water bottle on the sand while walking away.",
+          "leave behind",
+          "plastic bottle"
+        ],
+        [
+          "Food Cart Waste",
+          "A cart worker gathers used plates as the evening crowd moves away.",
+          "food packaging",
+          "collect waste"
+        ],
+        [
+          "Full Riverside Bin",
+          "Visitors hold used cups beside a riverside bin already full of rubbish.",
+          "overflowing bin",
+          "dispose of waste"
+        ],
+        [
+          "Cleanup After Dark",
+          "A worker pulls a large bag of litter across the riverfront after visitors have left.",
+          "collection schedule",
+          "clean up later"
+        ]
+      ],
+      "questions": [
+        "Which two scenes could send waste into the river?",
+        "What have you noticed about rubbish at a public gathering place in Rajshahi?",
+        "Should visitors carry waste away or should vendors collect it? Why?",
+        "Why might a busy food cart struggle to collect every used plate?",
+        "If more bins are placed by the water, what maintenance problem follows?",
+        "What one riverfront cleanup system would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 250000,
+        "pilot_scope": "Trial a vendor-and-visitor collection system at one Padma riverfront gathering spot."
+      },
+      "evidence": {
+        "basis": "supplied brief plus river pollution reporting",
+        "sources": [
+          "https://www.bssnews.net/district/374379"
+        ]
+      }
+    },
+    {
+      "id": "workspace-limits",
+      "title": "WORKSPACE LIMITS",
+      "focus": "Students and digital workers struggle to find reliable, affordable places to work.",
+      "tiles": [
+        [
+          "Shared Room",
+          "A student tries to speak in an online class while others talk nearby.",
+          "shared room",
+          "background noise"
+        ],
+        [
+          "Few Sockets",
+          "Two students reach toward the same power outlet with laptop chargers.",
+          "power socket",
+          "charge a laptop"
+        ],
+        [
+          "Video Call Noise",
+          "A learner moves a laptop closer to their face to hear over conversation.",
+          "hear a call",
+          "reduce noise"
+        ],
+        [
+          "Paid Seating",
+          "A worker buys a drink before settling at a café table with a laptop.",
+          "minimum purchase",
+          "afford a seat"
+        ],
+        [
+          "Weak Wi-Fi",
+          "A person waits as a laptop video call freezes beside a small router.",
+          "unstable connection",
+          "video call"
+        ],
+        [
+          "Searching for Desk",
+          "Several people search for a free desk in a crowded study room.",
+          "quiet workspace",
+          "limited seating"
+        ]
+      ],
+      "questions": [
+        "Which two scenes would make an online class hardest?",
+        "Where in Rajshahi can you usually work or study well?",
+        "Is reliable internet or a quiet desk more urgent? Why?",
+        "Why might a café set a minimum purchase for someone using a table?",
+        "If a free study room opens, how could crowding change it?",
+        "What one shared-workspace fix would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 120000,
+        "pilot_scope": "Pilot a quiet, powered study room with agreed opening and maintenance hours."
+      },
+      "evidence": {
+        "basis": "supplied brief plus current university internet reporting",
+        "sources": [
+          "/Users/timothyhall/Downloads/rajshahi_problem_cards_activity_specification.md",
+          "https://www.bssnews.net/news/408649"
+        ]
+      }
+    },
+    {
+      "id": "road-dust",
+      "title": "ROAD DUST",
+      "focus": "Dust from road edges and uncovered loads reaches people walking and working nearby.",
+      "tiles": [
+        [
+          "Loose Road Edge",
+          "A passing vehicle lifts dust from a broken road shoulder beside pedestrians.",
+          "road shoulder",
+          "raise dust"
+        ],
+        [
+          "Dry Work Site",
+          "Wind blows loose sand from a roadside work pile toward nearby stalls.",
+          "loose sand",
+          "blow into stalls"
+        ],
+        [
+          "Fast Passing",
+          "A driver speeds past a person who shields their face from dust.",
+          "drive past",
+          "dust cloud"
+        ],
+        [
+          "Dry Sweeping",
+          "A worker sweeps dry dirt into the air beside a busy stall.",
+          "sweep the pavement",
+          "stir up dust"
+        ],
+        [
+          "Uncovered Load",
+          "A small truck carries loose sand that spills along the road.",
+          "cover a load",
+          "spill material"
+        ],
+        [
+          "Small Cleanup Cart",
+          "A cleaner works around several fresh piles of road debris with one small cart.",
+          "clear debris",
+          "cleanup schedule"
+        ]
+      ],
+      "questions": [
+        "Which two scenes put dust closest to people's faces?",
+        "Where have you noticed road dust on a route in Rajshahi?",
+        "Should drivers slow down or should work sites cover sand first? Why?",
+        "Why might a delivery leave sand uncovered?",
+        "If roads are sprayed with water, what problem could that create?",
+        "What one dust-control change would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 150000,
+        "pilot_scope": "Trial dust suppression and covered material storage along one work-site edge."
+      },
+      "evidence": {
+        "basis": "current Rajshahi reporting",
+        "sources": [
+          "https://www.tbsnews.net/supplement/why-rajshahi-city-losing-its-clean-green-healthy-image-fast-1350041"
+        ]
+      }
+    },
+    {
+      "id": "summer-heat",
+      "title": "SUMMER HEAT",
+      "focus": "People waiting and travelling outdoors have few ways to escape strong sun.",
+      "tiles": [
+        [
+          "Bare Walkway",
+          "A pedestrian crosses a long sunlit path with no shade nearby.",
+          "walk in the sun",
+          "shaded route"
+        ],
+        [
+          "Hot Shelter",
+          "People wait under a low roof while fanning themselves in trapped heat.",
+          "trapped heat",
+          "bus shelter"
+        ],
+        [
+          "Skipping Water",
+          "A busy worker keeps serving customers while pushing aside a water bottle.",
+          "drink water",
+          "take a break"
+        ],
+        [
+          "Midday Queue",
+          "Several people wait in direct sun while a person searches for shade.",
+          "queue in the sun",
+          "seek shade"
+        ],
+        [
+          "Putting Up Shade",
+          "A worker sets a temporary cloth over a waiting place with no permanent canopy.",
+          "shade cover",
+          "temporary shelter"
+        ],
+        [
+          "Fan Left Off",
+          "A shopkeeper turns away from an electric fan beside a high stack of bills.",
+          "cooling cost",
+          "run a fan"
+        ]
+      ],
+      "questions": [
+        "Which two scenes give people the least relief from heat?",
+        "What helps you stay comfortable on a hot day in Rajshahi?",
+        "Should shade go first to walkers or people waiting in queues? Why?",
+        "Why might a worker continue outside during the hottest hour?",
+        "If a new shelter blocks shop entrances, who is affected?",
+        "What one heat-relief change would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 200000,
+        "pilot_scope": "Test shade and water access at one exposed public waiting point."
+      },
+      "evidence": {
+        "basis": "current Rajshahi reporting",
+        "sources": [
+          "https://www.tbsnews.net/features/panorama/once-green-city-rajshahi-now-struggling-breathe-1144731"
+        ]
+      }
+    },
+    {
+      "id": "tree-loss",
+      "title": "TREE LOSS",
+      "focus": "Rajshahi road and utility projects can remove mature trees whose shade takes years to replace.",
+      "tiles": [
+        [
+          "Fresh Stump",
+          "A walker passes the fresh stump of a large roadside tree in strong sun.",
+          "tree stump",
+          "lost shade"
+        ],
+        [
+          "Exposed Roots",
+          "A pedestrian steps around roots exposed by a roadside trench.",
+          "exposed roots",
+          "dig a trench"
+        ],
+        [
+          "Cutting Branches",
+          "Workers cut heavy branches beside a new utility pipe route.",
+          "cut branches",
+          "clear a route"
+        ],
+        [
+          "Parking on Roots",
+          "A driver parks on bare soil around a surviving tree trunk.",
+          "park on roots",
+          "compact the soil"
+        ],
+        [
+          "Road Expansion",
+          "Road builders measure a new edge that passes close to mature tree trunks.",
+          "widen a road",
+          "protect a tree"
+        ],
+        [
+          "Drooping Sapling",
+          "A small replacement sapling bends in dry soil beside a busy road.",
+          "replacement sapling",
+          "follow-up care"
+        ]
+      ],
+      "questions": [
+        "Which two scenes show a tree already damaged or lost?",
+        "Where do street trees make a trip better for you in Rajshahi?",
+        "Should a project change its route or replace cut trees later? Why?",
+        "Why might a road or pipe project remove a mature tree?",
+        "If saplings replace it, what must happen for them to survive?",
+        "What one tree-protection pilot would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 250000,
+        "pilot_scope": "Protect mature trees along one work-site edge and trial monitored care for replacement saplings; no claim that new saplings replace mature shade within 30 days."
+      },
+      "evidence": {
+        "basis": "2025 Rajshahi reporting on tree removal during development",
+        "sources": [
+          "https://www.jugantor.com/tp-city/1011707",
+          "https://www.newagebd.net/post/country/285940/rwasa-trimes-100-krishnachura-trees"
+        ]
+      }
+    },
+    {
+      "id": "overpass-delay",
+      "title": "OVERPASS DELAY",
+      "focus": "Long-running railway overpass construction narrows routes and complicates travel around Rajshahi work sites.",
+      "tiles": [
+        [
+          "Narrow Detour",
+          "A pedestrian and rickshaw squeeze through a narrow temporary passage beside an overpass work site.",
+          "temporary detour",
+          "narrow passage"
+        ],
+        [
+          "Muddy Approach",
+          "Rain turns the road beside an unfinished structure into deep mud.",
+          "muddy road",
+          "work-site access"
+        ],
+        [
+          "Crossing Work Zone",
+          "A rider steers around a barrier to reach the other side of the road.",
+          "work-zone crossing",
+          "take a shortcut"
+        ],
+        [
+          "Wrong Turn",
+          "A driver turns into a blocked lane and must reverse in traffic.",
+          "wrong turn",
+          "blocked lane"
+        ],
+        [
+          "Closed Road",
+          "Closed road space remains beside an unfinished overpass pier.",
+          "road closure",
+          "construction delay"
+        ],
+        [
+          "Confusing Junction",
+          "Several travellers stop at a confusing junction with no clear detour arrow.",
+          "route guidance",
+          "wayfinding sign"
+        ]
+      ],
+      "questions": [
+        "Which two scenes make the detour hardest to follow?",
+        "How has roadwork changed a trip you make in Rajshahi?",
+        "Should the first fix protect walkers or guide drivers? Why?",
+        "Why can a delayed work site create costs for nearby shops?",
+        "If one detour becomes easier, where might traffic build up?",
+        "What one safe-detour pilot would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 300000,
+        "pilot_scope": "Test one temporary pedestrian route and clear detour guidance around a work site; do not fund construction itself."
+      },
+      "evidence": {
+        "basis": "current Rajshahi reporting",
+        "sources": [
+          "https://www.thedailystar.net/news/bangladesh/news/overpass-delays-add-rajshahi-traffic-woes-4275871"
+        ]
+      }
+    },
+    {
+      "id": "broken-footpaths",
+      "title": "BROKEN FOOTPATHS",
+      "focus": "Damaged and obstructed footpaths push walkers into vehicle space.",
+      "tiles": [
+        [
+          "Broken Slab",
+          "A pedestrian steps over a raised broken slab on a footpath.",
+          "broken pavement",
+          "trip hazard"
+        ],
+        [
+          "High Curb",
+          "A person with a wheeled bag struggles to lift it over a high curb.",
+          "high curb",
+          "step up"
+        ],
+        [
+          "Parked Motorcycle",
+          "A walker detours around a motorcycle left across the walking space.",
+          "park on the footpath",
+          "walk around"
+        ],
+        [
+          "Shop Display",
+          "A customer and pedestrian squeeze past goods extending into the path.",
+          "shop display",
+          "narrow the path"
+        ],
+        [
+          "Open Repair",
+          "People pass an unfinished footpath repair with loose paving pieces.",
+          "unfinished repair",
+          "loose paving"
+        ],
+        [
+          "No Ramp",
+          "A person pushing a cart stops at a step where the footpath has no ramp.",
+          "curb ramp",
+          "wheeled access"
+        ]
+      ],
+      "questions": [
+        "Which two scenes would stop someone using wheels?",
+        "Where do you find walking easy or hard in Rajshahi?",
+        "Should repairs target broken slabs or blocked space first? Why?",
+        "Why might a shop use part of the footpath?",
+        "If parking is removed from the path, where might it move?",
+        "What one footpath change would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 150000,
+        "pilot_scope": "Clear and repair one short walking link, including wheeled access."
+      },
+      "evidence": {
+        "basis": "current Rajshahi reporting",
+        "sources": [
+          "https://www.tbsnews.net/supplement/why-rajshahi-city-losing-its-clean-green-healthy-image-fast-1350041"
+        ]
+      }
+    },
+    {
+      "id": "groundwater-drop",
+      "title": "GROUNDWATER DROP",
+      "focus": "Falling groundwater in the Barind area puts irrigation and household water needs under pressure.",
+      "tiles": [
+        [
+          "Lower Well",
+          "A farmer lowers a rope farther into a well before reaching water.",
+          "water table",
+          "deep well"
+        ],
+        [
+          "Dry Field",
+          "A farmer presses dry cracked soil beside young crops.",
+          "dry soil",
+          "water shortage"
+        ],
+        [
+          "Long Pumping",
+          "A farmer keeps a pump running to water a field in the dry season.",
+          "pump groundwater",
+          "irrigate crops"
+        ],
+        [
+          "Carrying Water",
+          "A resident carries containers from a distant working water point.",
+          "carry water",
+          "fetch supplies"
+        ],
+        [
+          "Thirsty Crop",
+          "Water runs through channels toward a crop that needs frequent irrigation.",
+          "water-intensive crop",
+          "irrigation demand"
+        ],
+        [
+          "Lost Rainwater",
+          "Rainwater runs off a farm edge while a farmer looks at an empty storage basin.",
+          "store rainwater",
+          "surface-water option"
+        ]
+      ],
+      "questions": [
+        "Which two scenes show water becoming harder to reach?",
+        "How do people you know manage water in the dry season?",
+        "Should water go first to drinking needs or crop irrigation? Why?",
+        "Why might a farmer keep pumping even as the water level falls?",
+        "If pumping is reduced quickly, what happens to a farmer’s income?",
+        "What one water-saving pilot would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 1000000,
+        "pilot_scope": "Trial water-saving irrigation or surface-water storage with one farmer group; do not promise to restore the aquifer in 30 days."
+      },
+      "evidence": {
+        "basis": "current Barind research and reporting",
+        "sources": [
+          "https://www.thedailystar.net/news/bangladesh/news/low-groundwater-recharge-raises-alarm-study-4224031",
+          "https://online91.thedailystar.net/slow-reads/big-picture/news/beyond-groundwater-rethinking-barinds-water-crisis-4228496"
+        ]
+      }
+    },
+    {
+      "id": "prepaid-meter",
+      "title": "PREPAID METER",
+      "focus": "A Rajshahi renter has a flat-specific NESCO prepaid meter in a caged downstairs bank, with no easy live remote balance check and a recharge token that must be keyed in at the meter.",
+      "tiles": [
+        [
+          "Downstairs Meter",
+          "A renter walks downstairs from a flat toward a bank of separate electric meters.",
+          "meter downstairs",
+          "check a balance"
+        ],
+        [
+          "Caged Keypad",
+          "A renter opens the protective cage door and presses a prepaid meter keypad through the open doorway.",
+          "meter cage",
+          "physical access"
+        ],
+        [
+          "Checking Portal",
+          "A renter refreshes a meter account on a phone while remaining upstairs.",
+          "online reading",
+          "check the portal"
+        ],
+        [
+          "Late Top-Up",
+          "A renter makes a phone payment after the fan and lights have stopped.",
+          "top up late",
+          "power cuts out"
+        ],
+        [
+          "Delayed Balance",
+          "A phone shows an older balance bar while the meter display shows a lower one.",
+          "outdated balance",
+          "real-time reading"
+        ],
+        [
+          "Long PIN Entry",
+          "A renter reads a long recharge PIN on a phone and keys it into a downstairs meter with the cage door fully open.",
+          "recharge token",
+          "enter a PIN"
+        ]
+      ],
+      "questions": [
+        "Which two scenes make checking the balance inconvenient?",
+        "Have you had to go downstairs to check or recharge a meter?",
+        "Would a live phone balance or a low-balance alert help more? Why?",
+        "Why does an online payment still require a trip to this meter?",
+        "If an alert is sent daily, what new annoyance or error might follow?",
+        "What one balance-or-recharge pilot would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 80000,
+        "pilot_scope": "Test a building-level way to read each flat’s balance remotely or deliver dependable low-balance alerts, without assuming NESCO offers a live API or remote token entry."
+      },
+      "evidence": {
+        "basis": "user report plus NESCO guidance and keypad-recharge instructions",
+        "sources": [
+          "https://customer.nesco.gov.bd/faqs",
+          "https://www.okwallet.com.bd/faq/",
+          "https://www.ntvbd.com/bangladesh/news-1619441",
+          "https://www.tbsnews.net/bangladesh/200-digit-recharge-tokens-leave-prepaid-electricity-users-frustrated-sylhet-1461086"
+        ],
+        "editor_note": "The meter arrangement, delayed remote reading, need to enter a token after an online purchase, and unusually long PIN messages are the user’s reported experience. NESCO documents meter short codes; the payment provider says keypad meters require token entry. A 2026 Sylhet report documents 80–240-digit prepaid tokens in Bangladesh; it does not establish the frequency for NESCO customers in Rajshahi.",
+        "user_detail": "The user reports that each flat usually has its own meter, the meter bank is often caged below the building, the website reading updates about once daily, and some recharge PIN messages reach about 100 characters."
+      }
+    },
+    {
+      "id": "hard-water",
+      "title": "HARD WATER",
+      "focus": "In one rented Rajshahi building, reported high-TDS water with iron and calcium leaves stains and scale, damages taps, and drives repeated strong-cleaner use.",
+      "tiles": [
+        [
+          "White Scale",
+          "A thick white ring builds around a bathroom tap and slows the stream.",
+          "calcium scale",
+          "clog a tap"
+        ],
+        [
+          "Iron Stains",
+          "Orange-brown marks spread below a running bathroom faucet.",
+          "iron staining",
+          "rust-coloured marks"
+        ],
+        [
+          "Scrubbing Tiles",
+          "A renter scrubs mineral marks from bathroom tiles.",
+          "scrub a surface",
+          "remove scale"
+        ],
+        [
+          "Replacing Taps",
+          "A plumber removes another worn tap while the renter holds a new fitting.",
+          "replace a tap",
+          "repair costs"
+        ],
+        [
+          "Strong Cleaner",
+          "A cleaner wearing gloves applies a strong liquid to stained bathroom tiles.",
+          "strong cleaner",
+          "cleaning runoff"
+        ],
+        [
+          "No Water Test",
+          "A renter and landlord examine stained fixtures beside an unused sample bottle.",
+          "test the water",
+          "share the cost"
+        ]
+      ],
+      "questions": [
+        "Which two scenes show what the water leaves behind?",
+        "What water marks or maintenance problems have you seen in Rajshahi?",
+        "Should the first money go to water testing or sturdier taps? Why?",
+        "Why might renters keep buying strong cleaner instead of fixing the source?",
+        "If residents use more strong cleaner, what problem may follow?",
+        "What one water-and-fixture pilot would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 100000,
+        "pilot_scope": "Test water in one building, document iron and hardness, and trial a practical fixture or treatment response."
+      },
+      "evidence": {
+        "basis": "user report plus Rajshahi water research",
+        "sources": [
+          "https://doi.org/10.1007/S13201-017-0629-Y",
+          "https://www.orientjchem.org/vol15no2/measurement-of-the-quality-of-drinking-water-in-and-around-the-rajshahi-city-of-bangladesh/"
+        ],
+        "editor_note": "The renter reports the high TDS and iron/calcium; TDS alone does not measure hardness. A local sample would need testing.",
+        "user_detail": "The renter uses Damp Fix for stubborn deposits; its exact formulation is not assumed here."
+      }
+    },
+    {
+      "id": "water-leaks",
+      "title": "WATER LEAKS",
+      "focus": "Leaking Rajshahi water pipes waste supply while residents wait for repairs.",
+      "tiles": [
+        [
+          "Street Leak",
+          "Water streams from a break in the roadside pipe and runs toward a drain.",
+          "pipe leak",
+          "water loss"
+        ],
+        [
+          "Weak Tap",
+          "A resident waits as only a thin stream comes from a household tap.",
+          "low pressure",
+          "water supply"
+        ],
+        [
+          "Reporting Again",
+          "A resident shows a photo of the same street leak to a service worker.",
+          "report a leak",
+          "follow up"
+        ],
+        [
+          "Storing Water",
+          "A household member fills containers while the tap is working.",
+          "store water",
+          "plan ahead"
+        ],
+        [
+          "Buried Pipe",
+          "A repair worker searches for a leaking pipe beneath a recently paved road.",
+          "buried pipe",
+          "repair access"
+        ],
+        [
+          "Repair Delay",
+          "A small crew arrives with tools while the leak continues beside traffic.",
+          "repair crew",
+          "response time"
+        ]
+      ],
+      "questions": [
+        "Which two scenes show water being lost or unavailable?",
+        "Have you seen a leaking pipe or weak water supply in Rajshahi?",
+        "Should a team fix visible leaks or investigate weak taps first? Why?",
+        "Why can a leak beneath a paved road take time to repair?",
+        "If repairs dig up a street, who faces a new problem?",
+        "What one leak-reporting pilot would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 200000,
+        "pilot_scope": "Trial faster leak reporting and follow-up for one cluster of streets, with the water utility involved."
+      },
+      "evidence": {
+        "basis": "current Rajshahi reporting",
+        "sources": [
+          "https://www.dhakapost.com/country/401524"
+        ]
+      }
+    },
+    {
+      "id": "toilet-access",
+      "title": "TOILET ACCESS",
+      "focus": "People spending hours in public places need clean, usable toilet facilities.",
+      "tiles": [
+        [
+          "Distant Facility",
+          "A visitor walks a long way from a busy public area toward a small toilet building.",
+          "public toilet",
+          "long walk"
+        ],
+        [
+          "Broken Tap",
+          "A person tries to wash hands at a toilet sink with no flowing water.",
+          "wash hands",
+          "broken tap"
+        ],
+        [
+          "Locked Door",
+          "A visitor reaches a closed toilet door and looks around for another option.",
+          "locked toilet",
+          "find another place"
+        ],
+        [
+          "Long Wait",
+          "Several people wait in a queue outside a single usable toilet.",
+          "wait in line",
+          "limited capacity"
+        ],
+        [
+          "Cleaning Supplies",
+          "A cleaner faces an empty supply shelf while holding a mop.",
+          "cleaning supplies",
+          "keep clean"
+        ],
+        [
+          "Damaged Door",
+          "A caretaker examines a damaged toilet door as people continue waiting.",
+          "repair a door",
+          "maintenance need"
+        ]
+      ],
+      "questions": [
+        "Which two scenes stop someone from using the facility?",
+        "What makes a public toilet feel usable to you?",
+        "Should funds first fix water or add cleaning supplies? Why?",
+        "Why might a working toilet close after a few months?",
+        "If use is free, how can regular cleaning be funded?",
+        "What one toilet-access change would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 500000,
+        "pilot_scope": "Test cleaning, water, and access management at one existing public toilet."
+      },
+      "evidence": {
+        "basis": "current Rajshahi reporting",
+        "sources": [
+          "https://www.bssnews.net/others/410495",
+          "https://www.thedailystar.net/news/bangladesh/news/too-few-facilities-too-many-people-4276656"
+        ]
+      }
+    },
+    {
+      "id": "mosquito-breeding",
+      "title": "MOSQUITO BREEDING",
+      "focus": "Small pools of standing water remain in shared outdoor spaces.",
+      "tiles": [
+        [
+          "Standing Puddle",
+          "A child steps around a puddle that remains beside a building after rain.",
+          "standing water",
+          "drain a puddle"
+        ],
+        [
+          "Open Container",
+          "Rain collects in an uncovered bucket left outdoors.",
+          "open container",
+          "collect rainwater"
+        ],
+        [
+          "Leaving Buckets",
+          "A person sets an empty bucket outside with its open side facing upward.",
+          "turn over a bucket",
+          "leave outside"
+        ],
+        [
+          "Discarded Tyre",
+          "A worker leaves an old tyre where rainwater collects inside it.",
+          "discard a tyre",
+          "trap water"
+        ],
+        [
+          "Blocked Outlet",
+          "A caretaker tries to clear leaves from a small outlet beside pooled water.",
+          "blocked outlet",
+          "clear leaves"
+        ],
+        [
+          "Missed Inspection",
+          "A maintenance worker checks one water container while several others remain nearby.",
+          "check containers",
+          "routine inspection"
+        ]
+      ],
+      "questions": [
+        "Which two scenes hold water after rain?",
+        "Where have you noticed standing water in Rajshahi?",
+        "Should people empty containers or should shared outlets be cleared first? Why?",
+        "Why might a small pool return after it is emptied?",
+        "If old containers are removed, what useful items might be lost?",
+        "What one standing-water change would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 150000,
+        "pilot_scope": "Pilot weekly standing-water checks and container removal on a small block."
+      },
+      "evidence": {
+        "basis": "current Rajshahi reporting",
+        "sources": [
+          "https://www.voice7news.tv/who/news/21767",
+          "https://www.bssnews.net/district/423199"
+        ]
+      }
+    },
+    {
+      "id": "street-noise",
+      "title": "STREET NOISE",
+      "focus": "Noise from movement and commerce interrupts study, work, and rest.",
+      "tiles": [
+        [
+          "Close Traffic",
+          "An easy bike passes very close to a ground-floor home window protected by a fixed metal grill.",
+          "traffic noise",
+          "close a window"
+        ],
+        [
+          "Echoing Lane",
+          "A vehicle horn sounds in a narrow lane beside closely packed homes.",
+          "narrow lane",
+          "sound carries"
+        ],
+        [
+          "Repeated Honking",
+          "A driver leans on a horn while the vehicles ahead cannot move.",
+          "sound a horn",
+          "traffic queue"
+        ],
+        [
+          "Loud Speaker",
+          "A vendor turns up a small speaker beside another person trying to talk.",
+          "turn up volume",
+          "speak over noise"
+        ],
+        [
+          "Mixed Uses",
+          "A person studies at a desk next to an active roadside repair stall.",
+          "shared street",
+          "work nearby"
+        ],
+        [
+          "Late Unloading",
+          "Late evening unloading continues beside lit residential windows.",
+          "unloading time",
+          "quiet hours"
+        ]
+      ],
+      "questions": [
+        "Which two scenes could interrupt a conversation?",
+        "When does street noise affect something you do in Rajshahi?",
+        "Should the first effort target horns or loud speakers? Why?",
+        "Why might a driver honk when traffic cannot move?",
+        "If quiet hours limit deliveries, who must work differently?",
+        "What one noise-reduction change would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 100000,
+        "pilot_scope": "Pilot a quiet-hours agreement and horn-awareness signs on one mixed-use lane."
+      },
+      "evidence": {
+        "basis": "current Rajshahi reporting",
+        "sources": [
+          "https://www.tbsnews.net/supplement/why-rajshahi-city-losing-its-clean-green-healthy-image-fast-1350041"
+        ]
+      }
+    },
+    {
+      "id": "road-damage",
+      "title": "ROAD DAMAGE",
+      "focus": "Small road defects interrupt movement and grow when water and traffic reach them.",
+      "tiles": [
+        [
+          "Deep Pothole",
+          "A rickshaw wheel drops into a road pothole and the driver slows.",
+          "road pothole",
+          "slow down"
+        ],
+        [
+          "Loose Bricks",
+          "A walker and rider both avoid loose paving bricks at a road edge.",
+          "loose bricks",
+          "uneven surface"
+        ],
+        [
+          "Sudden Swerving",
+          "A driver steers around a hole into the path of another vehicle.",
+          "swerve around",
+          "oncoming traffic"
+        ],
+        [
+          "Heavy Load",
+          "A heavily loaded cart rolls over a weak road edge and chips it.",
+          "heavy load",
+          "road wear"
+        ],
+        [
+          "Patch Delay",
+          "People step around a coned pothole while no repair work is underway.",
+          "repair backlog",
+          "temporary cone"
+        ],
+        [
+          "Poor Runoff",
+          "Rainwater flows under a fresh road patch and loosens the edge.",
+          "water runoff",
+          "road patch"
+        ]
+      ],
+      "questions": [
+        "Which two scenes show how a small hole becomes dangerous?",
+        "What road damage have you had to avoid in Rajshahi?",
+        "Should a team patch many small holes or one dangerous one first? Why?",
+        "Why might a quick patch fail after the next rain?",
+        "If repairs close one lane, what happens to nearby traffic?",
+        "What one road-repair change would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 300000,
+        "pilot_scope": "Trial quick, durable repairs on a small set of dangerous potholes."
+      },
+      "evidence": {
+        "basis": "current Rajshahi reporting",
+        "sources": [
+          "https://www.tbsnews.net/supplement/why-rajshahi-city-losing-its-clean-green-healthy-image-fast-1350041"
+        ]
+      }
+    },
+    {
+      "id": "waste-pickup",
+      "title": "WASTE PICKUP",
+      "focus": "Collection points and pickup times fail to match when people produce waste.",
+      "tiles": [
+        [
+          "Distant Point",
+          "A resident carries a full waste bag along a long street toward a collection place.",
+          "collection point",
+          "carry waste"
+        ],
+        [
+          "Overflowing Pile",
+          "A collector approaches bags stacked above the edge of a roadside container.",
+          "waste pile",
+          "overflowing container"
+        ],
+        [
+          "Early Drop-Off",
+          "A shop worker leaves a bag outside long before the collection cart arrives.",
+          "put out waste",
+          "pickup time"
+        ],
+        [
+          "Loose Bags",
+          "A person sets an untied bag where its contents spill onto the street.",
+          "tie a bag",
+          "spill rubbish"
+        ],
+        [
+          "Small Cart",
+          "A collector tries to fit several large bags onto one nearly full cart.",
+          "limited capacity",
+          "collection cart"
+        ],
+        [
+          "Unclear Route",
+          "Two collectors pass one lane while full bags wait on the next lane.",
+          "pickup route",
+          "miss a street"
+        ]
+      ],
+      "questions": [
+        "Which two scenes could leave waste outside all day?",
+        "How is rubbish collected where you spend time in Rajshahi?",
+        "Should pickup times change or should collection points move? Why?",
+        "Why might a shop put waste out before the cart comes?",
+        "If pickup comes later, who must store waste longer?",
+        "What one pickup-system change would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 250000,
+        "pilot_scope": "Pilot a reliable pickup schedule and overflow response at a few collection points."
+      },
+      "evidence": {
+        "basis": "current Rajshahi reporting",
+        "sources": [
+          "https://www.jagonews24.com/en/amp/90821"
+        ]
+      }
+    },
+    {
+      "id": "clinic-queues",
+      "title": "HOSPITAL QUEUES",
+      "focus": "Crowding at a major Rajshahi hospital makes waiting and navigation difficult for patients and accompanying people.",
+      "tiles": [
+        [
+          "Small Waiting Room",
+          "Visitors stand in a full waiting room as more people enter.",
+          "waiting room",
+          "limited space"
+        ],
+        [
+          "Hot Outdoor Line",
+          "People queue outside a clinic entrance in direct sun.",
+          "outdoor queue",
+          "wait in the heat"
+        ],
+        [
+          "Early Arrival",
+          "A visitor joins a line before the door opens while holding paperwork.",
+          "arrive early",
+          "join a queue"
+        ],
+        [
+          "Finding a Desk",
+          "A visitor moves between crowded hospital desks while asking where to go.",
+          "find the right desk",
+          "ask for help"
+        ],
+        [
+          "Limited Staff",
+          "One worker tries to help a long line of waiting visitors.",
+          "staff shortage",
+          "long queue"
+        ],
+        [
+          "No Queue Guide",
+          "New visitors hesitate between two lines because the route is unclear.",
+          "queue guidance",
+          "find the right line"
+        ]
+      ],
+      "questions": [
+        "Which two scenes make it hard to know where to wait?",
+        "What has made a hospital visit easier or harder for you or someone you know?",
+        "Should the first fix be shade outside or clearer registration? Why?",
+        "Why might one registration desk become a bottleneck?",
+        "If waiting moves outdoors, what new difficulty may appear?",
+        "What one queue-management change would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 500000,
+        "pilot_scope": "Pilot queue guidance and shaded waiting in one hospital service area; do not affect clinical triage."
+      },
+      "evidence": {
+        "basis": "current Rajshahi hospital reporting",
+        "sources": [
+          "https://online.thedailystar.net/news/bangladesh/news/childrens-hospital-lie-idle-patients-struggle-rmch-4139501"
+        ]
+      }
+    },
+    {
+      "id": "rain-flooding",
+      "title": "RAIN FLOODING",
+      "focus": "Short heavy rain leaves key pedestrian routes under water.",
+      "tiles": [
+        [
+          "Low Walkway",
+          "People step through water covering a low walking route after rain.",
+          "low walkway",
+          "flooded path"
+        ],
+        [
+          "Water at Entrance",
+          "A shop worker lifts goods while rainwater reaches a doorway.",
+          "water at the door",
+          "lift goods"
+        ],
+        [
+          "Splashing Wheels",
+          "A vehicle drives through pooled water and splashes a person nearby.",
+          "drive through water",
+          "splash pedestrians"
+        ],
+        [
+          "Raised Detour",
+          "Walkers climb onto a narrow raised edge to avoid the flooded path.",
+          "take a detour",
+          "avoid floodwater"
+        ],
+        [
+          "Clogged Outflow",
+          "A worker pulls debris from an outlet while water backs up across the path.",
+          "clear an outlet",
+          "backed-up water"
+        ],
+        [
+          "No Overflow Route",
+          "Rainwater reaches a temporary barrier and spreads toward nearby stalls.",
+          "overflow route",
+          "redirect water"
+        ]
+      ],
+      "questions": [
+        "Which two scenes stop a person from staying dry?",
+        "What happens on your usual route after heavy rain in Rajshahi?",
+        "Should a team raise a walkway or clear an outlet first? Why?",
+        "Why does water return to the same place after rain?",
+        "If water is sent down another lane, who could be affected?",
+        "What one flood-route change would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 350000,
+        "pilot_scope": "Test a safe temporary walking route and outlet maintenance at one repeat flooding point."
+      },
+      "evidence": {
+        "basis": "current Rajshahi reporting",
+        "sources": [
+          "https://www.dhakatribune.com/amp/bangladesh/nation/418951/heavy-rain-paralyses-life-in-rajshahi"
+        ]
+      }
+    },
+    {
+      "id": "mango-prices",
+      "title": "MANGO PRICES",
+      "focus": "Rajshahi growers face low prices when many mangoes reach the market at once and buyers are few.",
+      "tiles": [
+        [
+          "Piled Crates",
+          "Many full mango crates crowd a wholesale market floor.",
+          "market glut",
+          "unsold fruit"
+        ],
+        [
+          "Hot Loading",
+          "Harvested mangoes wait in the sun as sellers look for transport.",
+          "hot storage",
+          "perishable fruit"
+        ],
+        [
+          "Rushed Harvest",
+          "Workers pick ripe mangoes quickly while more fruit is ready on the trees.",
+          "harvest window",
+          "ripen together"
+        ],
+        [
+          "Price Cut",
+          "A grower reluctantly accepts a small cash payment for a full crate.",
+          "low farm price",
+          "sell at a loss"
+        ],
+        [
+          "Few Buyers",
+          "Several growers wait beside full crates while one buyer examines fruit.",
+          "buyer turnout",
+          "weak demand"
+        ],
+        [
+          "Limited Storage",
+          "A trader stacks mangoes in a warm room with no cool storage.",
+          "cold storage",
+          "hold inventory"
+        ]
+      ],
+      "questions": [
+        "Which two scenes make it hard to wait for a better price?",
+        "What have you noticed about mango prices in Rajshahi markets?",
+        "Should growers sell quickly or pay to store fruit? Why?",
+        "Why might prices fall when the harvest is strong?",
+        "If storage raises prices later, who pays more for mangoes?",
+        "What one mango-market pilot would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 500000,
+        "pilot_scope": "Trial shared grading, packing, or short-term storage with one grower group; do not guarantee a market price."
+      },
+      "evidence": {
+        "basis": "2026 Rajshahi market reporting",
+        "sources": [
+          "https://www.thedailystar.net/business/agriculture/news/cheaper-mangoes-consumers-tough-post-eid-season-rajshahi-farmers-4190621",
+          "https://www.dhakatribune.com/bangladesh/nation/411746/rajshahi-mango-markets-yet-to-gain-momentum"
+        ]
+      }
+    },
+    {
+      "id": "lost-ponds",
+      "title": "LOST PONDS",
+      "focus": "Filled ponds in Rajshahi city reduce local water space and create conflicts over land use.",
+      "tiles": [
+        [
+          "Covered Pond Edge",
+          "A truck tips soil into the edge of a small city pond.",
+          "fill a pond",
+          "pond edge"
+        ],
+        [
+          "Blocked Inlet",
+          "Rainwater runs past a pond entrance blocked with earth.",
+          "water inlet",
+          "block drainage"
+        ],
+        [
+          "Dumping Soil",
+          "A worker spreads new fill over a wet section near the pond.",
+          "dump soil",
+          "raise the ground"
+        ],
+        [
+          "Reporting Fill",
+          "A resident photographs fresh fill beside a pond.",
+          "report filling",
+          "document change"
+        ],
+        [
+          "Building Pressure",
+          "Construction materials are stacked beside the shrinking water edge.",
+          "land pressure",
+          "building site"
+        ],
+        [
+          "Weak Boundary",
+          "A caretaker tries to mark the pond boundary after soil has already spread.",
+          "pond boundary",
+          "protect a wetland"
+        ]
+      ],
+      "questions": [
+        "Which two scenes show the pond losing space?",
+        "What pond or water space matters to people near you?",
+        "Should the first effort map pond edges or remove new fill? Why?",
+        "Why might someone try to turn a pond into building land?",
+        "If a pond is restored, who may bear the cost?",
+        "What one pond-protection pilot would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 300000,
+        "pilot_scope": "Map and monitor one threatened pond with residents and authorities; do not attempt land acquisition or re-excavation with this grant."
+      },
+      "evidence": {
+        "basis": "2025-26 Rajshahi reporting",
+        "sources": [
+          "https://www.bssnews.net/district/348661",
+          "https://www.newagebd.net/post/country/287410/illegally-filled-pond-reclaimed-in-rajshahi"
+        ]
+      }
+    },
+    {
+      "id": "barnoi-pollution",
+      "title": "BARNOI POLLUTION",
+      "focus": "Waste-bearing drains enter the Barnoi river near Rajshahi, affecting the river and people downstream.",
+      "tiles": [
+        [
+          "Dark Outflow",
+          "Dark water runs from a city drain into the river.",
+          "drain outfall",
+          "untreated waste"
+        ],
+        [
+          "Floating Waste",
+          "Plastic and other rubbish gather along a slow river edge.",
+          "floating waste",
+          "riverbank debris"
+        ],
+        [
+          "Dumping Rubbish",
+          "A person drops a bag of mixed waste beside a drainage channel.",
+          "dump rubbish",
+          "pollute a drain"
+        ],
+        [
+          "Washing Nearby",
+          "A person washes a tool beside water already carrying waste.",
+          "wash near water",
+          "contaminated stream"
+        ],
+        [
+          "Open Discharge",
+          "Several drain channels join before reaching the river without a treatment step.",
+          "direct discharge",
+          "wastewater treatment"
+        ],
+        [
+          "No Interceptor",
+          "A cleaner pulls solid rubbish from a drain mouth using a simple rake.",
+          "catch solid waste",
+          "drain maintenance"
+        ]
+      ],
+      "questions": [
+        "Which two scenes show waste entering the river?",
+        "What changes have you noticed in a river or canal near Rajshahi?",
+        "Should the first effort stop solid rubbish or test the water? Why?",
+        "Why might city drains keep sending waste into the Barnoi?",
+        "If one outfall is blocked, where might the water go?",
+        "What one pollution-monitoring pilot would your grant test?"
+      ],
+      "grant": {
+        "budget_bdt": 500000,
+        "pilot_scope": "Map and sample one outfall with an authorized partner, and trial a safe solid-waste interception plan."
+      },
+      "evidence": {
+        "basis": "2025-26 Rajshahi reporting",
+        "sources": [
+          "https://online.thedailystar.net/news/bangladesh/news/barnoi-turns-toxic-untreated-waste-pours-4035216",
+          "https://www.bssnews.net/district/374379"
+        ]
+      }
+    }
+  ]
+}

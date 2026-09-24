@@ -1,0 +1,134 @@
+{
+  "title": "Summer Heat",
+  "slug": "summer-heat",
+  "band_color": "auto",
+  "seed": "rajshahi-summer-heat-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Summer Heat"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "bare-walkway",
+      "label": "Bare Walkway",
+      "aliases": [],
+      "description": "A pedestrian crosses a long sunlit path with no shade nearby.",
+      "visual_kind": "action",
+      "visual_focus": "a pedestrian crossing an exposed path in strong sun with no nearby shade",
+      "local_cue": "a treeless Rajshahi footpath with concrete curb under a strong summer sun",
+      "image": "assets/01-bare-walkway.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "walk in the sun",
+        "shaded route"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "hot-shelter",
+      "label": "Hot Shelter",
+      "aliases": [],
+      "description": "People wait under a low roof while fanning themselves in trapped heat.",
+      "visual_kind": "action",
+      "visual_focus": "people fanning themselves under a low heat-trapping roof",
+      "local_cue": "people beneath a low corrugated metal shop roof in Rajshahi summer heat",
+      "image": "assets/02-hot-shelter.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "trapped heat",
+        "bus shelter"
+      ],
+      "factor_role": "physical_or_spatial"
+    },
+    {
+      "id": "skipping-water",
+      "label": "Skipping Water",
+      "aliases": [],
+      "description": "A busy worker keeps serving customers while pushing aside a water bottle.",
+      "visual_kind": "action",
+      "visual_focus": "a working vendor pushing aside a water bottle while continuing to serve",
+      "local_cue": "a Rajshahi market vendor serving customers beside a drinking-water bottle",
+      "image": "assets/03-skipping-water.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "drink water",
+        "take a break"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "midday-queue",
+      "label": "Midday Queue",
+      "aliases": [],
+      "description": "Several people wait in direct sun while a person searches for shade.",
+      "visual_kind": "action",
+      "visual_focus": "a queue of people standing in direct midday sun",
+      "local_cue": "a queue outside a modest Rajshahi shop in strong midday sun",
+      "image": "assets/04-midday-queue.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "queue in the sun",
+        "seek shade"
+      ],
+      "factor_role": "human_habit"
+    },
+    {
+      "id": "putting-up-shade",
+      "label": "Putting Up Shade",
+      "aliases": [],
+      "description": "A worker sets a temporary cloth over a waiting place with no permanent canopy.",
+      "visual_kind": "action",
+      "visual_focus": "a worker pulling shade cloth over a waiting area",
+      "local_cue": "a worker stretching shade cloth across a small bazaar waiting area",
+      "image": "assets/05-putting-up-shade.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "shade cover",
+        "temporary shelter"
+      ],
+      "factor_role": "structural_or_economic"
+    },
+    {
+      "id": "fan-left-off",
+      "label": "Fan Left Off",
+      "aliases": [],
+      "description": "A shopkeeper turns away from an electric fan beside a high stack of bills.",
+      "visual_kind": "action",
+      "visual_focus": "a shopkeeper holding a bill beside a switched-off electric fan",
+      "local_cue": "a Bangladeshi shopkeeper beside an off ceiling fan and an electricity bill in taka",
+      "image": "assets/06-fan-left-off.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "cooling cost",
+        "run a fan"
+      ],
+      "factor_role": "structural_or_economic"
+    }
+  ],
+  "questions": [
+    "Which two scenes give people the least relief from heat?",
+    "What helps you stay comfortable on a hot day in Rajshahi?",
+    "Should shade go first to walkers or people waiting in queues? Why?",
+    "Why might a worker continue outside during the hottest hour?",
+    "If a new shelter blocks shop entrances, who is affected?",
+    "You have 200,000 BDT and 30 days. What one heat-relief change would your grant test?"
+  ],
+  "grant": {
+    "budget_bdt": 200000,
+    "pilot_scope": "Test shade and water access at one exposed public waiting point."
+  },
+  "evidence": {
+    "basis": "current Rajshahi reporting",
+    "sources": [
+      "https://www.tbsnews.net/features/panorama/once-green-city-rajshahi-now-struggling-breathe-1144731"
+    ]
+  }
+}
