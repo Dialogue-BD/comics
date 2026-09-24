@@ -1,0 +1,139 @@
+{
+  "title": "Late Tailor Orders",
+  "slug": "late-tailor-orders",
+  "band_color": "auto",
+  "seed": "rajshahi-late-tailor-orders-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Late Tailor Orders"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "order-rush",
+      "label": "Order Rush",
+      "aliases": [],
+      "description": "Several customers bring Eid fabric to a small Rajshahi tailor at the same time.",
+      "visual_kind": "action",
+      "visual_focus": "Several customers bring Eid fabric to a small Rajshahi tailor at the same time.",
+      "local_cue": "a Saheb Bazar-style Rajshahi tailor shop before Eid, with shalwar-kameez fabric and sewing machines",
+      "image": "assets/01-order-rush.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "Eid rush",
+        "new orders"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "lost-measurements",
+      "label": "Lost Measurements",
+      "aliases": [],
+      "description": "A tailor searches a crowded notebook for a customer’s measurements while cut fabric waits.",
+      "visual_kind": "action",
+      "visual_focus": "A tailor searches a crowded notebook for a customer’s measurements while cut fabric waits.",
+      "local_cue": "a Saheb Bazar-style Rajshahi tailor shop before Eid, with shalwar-kameez fabric and sewing machines",
+      "image": "assets/02-lost-measurements.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "missing measurements",
+        "search a record"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "vague-date",
+      "label": "Vague Date",
+      "aliases": [],
+      "description": "A customer holds an order slip with no clear pickup date while the tailor points to a busy calendar; text illegible.",
+      "visual_kind": "action",
+      "visual_focus": "A customer holds an order slip with no clear pickup date while the tailor points to a busy calendar; text illegible.",
+      "local_cue": "a Saheb Bazar-style Rajshahi tailor shop before Eid, with shalwar-kameez fabric and sewing machines",
+      "image": "assets/03-vague-date.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "pickup date",
+        "unclear promise"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "busy-machines",
+      "label": "Busy Machines",
+      "aliases": [],
+      "description": "Two tailors sew at crowded worktables during the pre-Eid rush.",
+      "visual_kind": "action",
+      "visual_focus": "Two tailors sew at crowded worktables during the pre-Eid rush.",
+      "local_cue": "a Saheb Bazar-style Rajshahi tailor shop before Eid, with shalwar-kameez fabric and sewing machines",
+      "image": "assets/04-busy-machines.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "busy season",
+        "finish an order"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "fitting-change",
+      "label": "Fitting Change",
+      "aliases": [],
+      "description": "The customer points to a sleeve needing adjustment during a fitting.",
+      "visual_kind": "action",
+      "visual_focus": "The customer points to a sleeve needing adjustment during a fitting.",
+      "local_cue": "a Saheb Bazar-style Rajshahi tailor shop before Eid, with shalwar-kameez fabric and sewing machines",
+      "image": "assets/05-fitting-change.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "alter a sleeve",
+        "second fitting"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "late-pickup",
+      "label": "Late Pickup",
+      "aliases": [],
+      "description": "The customer arrives at the shop, but the promised outfit is still on a workbench.",
+      "visual_kind": "action",
+      "visual_focus": "The customer arrives at the shop, but the promised outfit is still on a workbench.",
+      "local_cue": "a Saheb Bazar-style Rajshahi tailor shop before Eid, with shalwar-kameez fabric and sewing machines",
+      "image": "assets/06-late-pickup.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "late pickup",
+        "track progress"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes could lead to a missed pickup date?",
+    "When have you waited for something made to order?",
+    "Is a lost measurement or a vague pickup date harder to fix?",
+    "Why do orders pile up before Eid?",
+    "If tailors turn away late orders, who loses?",
+    "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 1500,
+    "pilot_days": 7,
+    "pilot": "Trace twenty orders at a willing tailor to find where dates, measurements, or changes are lost.",
+    "potential_customer": "Tailors or customers",
+    "test_metric": "Missed pickup dates, repeat visits, and tailor bottlenecks",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.tbsnews.net/bangladesh/tailors-busy-ahead-eid-rajshahi-1374871"
+    ],
+    "editor_note": ""
+  }
+}

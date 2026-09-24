@@ -1,0 +1,140 @@
+{
+  "title": "Childcare Gaps",
+  "slug": "childcare-gaps",
+  "band_color": "auto",
+  "seed": "rajshahi-childcare-gaps-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Childcare Gaps"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "class-schedule",
+      "label": "Class Schedule",
+      "aliases": [],
+      "description": "A parent in a three-piece with orna compares a class timetable with a child's pickup time.",
+      "visual_kind": "action",
+      "visual_focus": "A parent in a three-piece with orna compares a class timetable with a child's pickup time.",
+      "local_cue": "a modest Rajshahi home, workplace or childcare doorway; women wear three-pieces with ornas or burkas",
+      "image": "assets/01-class-schedule.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "class schedule",
+        "care gap"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "work-shift",
+      "label": "Work Shift",
+      "aliases": [],
+      "description": "A parent prepares for work while a young child needs supervision at home.",
+      "visual_kind": "action",
+      "visual_focus": "A parent prepares for work while a young child needs supervision at home.",
+      "local_cue": "a modest Rajshahi home, workplace or childcare doorway; women wear three-pieces with ornas or burkas",
+      "image": "assets/02-work-shift.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "work shift",
+        "family care"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "closed-center",
+      "label": "Closed Center",
+      "aliases": [],
+      "description": "A parent reaches a childcare room after its opening hours and finds the door closed.",
+      "visual_kind": "action",
+      "visual_focus": "A parent reaches a childcare room after its opening hours and finds the door closed.",
+      "local_cue": "a modest Rajshahi home, workplace or childcare doorway; women wear three-pieces with ornas or burkas",
+      "image": "assets/03-closed-center.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "closed care",
+        "late pickup"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "caregiver-absence",
+      "label": "Caregiver Absence",
+      "aliases": [],
+      "description": "A parent receives a last-minute message that the usual caregiver cannot come.",
+      "visual_kind": "action",
+      "visual_focus": "A parent receives a last-minute message that the usual caregiver cannot come.",
+      "local_cue": "a modest Rajshahi home, workplace or childcare doorway; women wear three-pieces with ornas or burkas",
+      "image": "assets/04-caregiver-absence.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "caregiver absent",
+        "last-minute change"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "missed-shift",
+      "label": "Missed Shift",
+      "aliases": [],
+      "description": "A parent remains home with a child while a work shift starts elsewhere.",
+      "visual_kind": "action",
+      "visual_focus": "A parent remains home with a child while a work shift starts elsewhere.",
+      "local_cue": "a modest Rajshahi home, workplace or childcare doorway; women wear three-pieces with ornas or burkas",
+      "image": "assets/05-missed-shift.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "miss a shift",
+        "care gap"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "high-care-fee",
+      "label": "High Care Fee",
+      "aliases": [],
+      "description": "A parent holding a child studies a childcare price sheet with unreadable figures.",
+      "visual_kind": "action",
+      "visual_focus": "A parent holding a child studies a childcare price sheet with unreadable figures.",
+      "local_cue": "a modest Rajshahi home, workplace or childcare doorway; women wear three-pieces with ornas or burkas",
+      "image": "assets/06-high-care-fee.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "care fee",
+        "family budget"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes make childcare hard to arrange?",
+    "When might a family need care for only a few hours?",
+    "Is a last-minute absence or a high fee harder for a parent?",
+    "Why do work and care hours fail to match?",
+    "If low fees mean too few caregivers, what could happen?",
+    "What could you try in 14 days for at most 3,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 3000,
+    "pilot_days": 14,
+    "pilot": "Interview parents and qualified caregivers about timing, trust, price, and the rules for any future service; do not enroll children.",
+    "potential_customer": "Parents or employers",
+    "test_metric": "Care-hour gaps, affordability, and safety requirements",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.worldbank.org/en/brief/2025/04/01/investinchildcare",
+      "https://thedocs.worldbank.org/en/doc/4581900abae6053f9c03e1a840b28777-0350042024/original/RSR-Gender-Window-Review-Report-FINAL-Oct24.pdf"
+    ],
+    "editor_note": "Care provision needs appropriate local registration, safeguarding, and qualified supervision; the pilot starts with validation, not child enrolment."
+  }
+}

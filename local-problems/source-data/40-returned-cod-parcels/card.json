@@ -1,0 +1,140 @@
+{
+  "title": "Returned COD Parcels",
+  "slug": "returned-cod-parcels",
+  "band_color": "auto",
+  "seed": "rajshahi-returned-cod-parcels-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Returned COD Parcels"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "packed-order",
+      "label": "Packed Order",
+      "aliases": [],
+      "description": "A home-based seller packs one clothing order on a clean table.",
+      "visual_kind": "action",
+      "visual_focus": "A home-based seller packs one clothing order on a clean table.",
+      "local_cue": "a Bangladesh home-based online seller and local courier using cash-on-delivery parcels, no legible address or phone number",
+      "image": "assets/01-packed-order.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "pack an order",
+        "online seller"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "cod-label",
+      "label": "COD Label",
+      "aliases": [],
+      "description": "A courier attaches a cash-on-delivery label with illegible details.",
+      "visual_kind": "action",
+      "visual_focus": "A courier attaches a cash-on-delivery label with illegible details.",
+      "local_cue": "a Bangladesh home-based online seller and local courier using cash-on-delivery parcels, no legible address or phone number",
+      "image": "assets/02-cod-label.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "cash on delivery",
+        "courier label"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "no-answer",
+      "label": "No Answer",
+      "aliases": [],
+      "description": "A courier calls from a doorstep while the buyer's phone remains unanswered.",
+      "visual_kind": "action",
+      "visual_focus": "A courier calls from a doorstep while the buyer's phone remains unanswered.",
+      "local_cue": "a Bangladesh home-based online seller and local courier using cash-on-delivery parcels, no legible address or phone number",
+      "image": "assets/03-no-answer.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "no answer",
+        "delivery attempt"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "refused-parcel",
+      "label": "Refused Parcel",
+      "aliases": [],
+      "description": "A buyer politely refuses an unopened parcel at the gate.",
+      "visual_kind": "action",
+      "visual_focus": "A buyer politely refuses an unopened parcel at the gate.",
+      "local_cue": "a Bangladesh home-based online seller and local courier using cash-on-delivery parcels, no legible address or phone number",
+      "image": "assets/04-refused-parcel.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "refuse delivery",
+        "return parcel"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "return-charge",
+      "label": "Return Charge",
+      "aliases": [],
+      "description": "The seller examines a courier bill beside the returned package.",
+      "visual_kind": "action",
+      "visual_focus": "The seller examines a courier bill beside the returned package.",
+      "local_cue": "a Bangladesh home-based online seller and local courier using cash-on-delivery parcels, no legible address or phone number",
+      "image": "assets/05-return-charge.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "return charge",
+        "lost margin"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "returned-stock",
+      "label": "Returned Stock",
+      "aliases": [],
+      "description": "A home seller stores several unopened COD parcels returned by the courier.",
+      "visual_kind": "action",
+      "visual_focus": "A home seller stores several unopened COD parcels returned by the courier.",
+      "local_cue": "a Bangladesh home-based online seller and local courier using cash-on-delivery parcels, no legible address or phone number",
+      "image": "assets/06-returned-stock.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "returned stock",
+        "unsold parcels"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes reduce the seller's income?",
+    "Have you bought or sold something by cash on delivery?",
+    "Is an unanswered call or a refusal more costly to a seller?",
+    "Why might a buyer refuse a parcel they ordered?",
+    "If a seller asks for a deposit, who might stop ordering?",
+    "What could you try in 14 days for at most 2,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 2000,
+    "pilot_days": 14,
+    "pilot": "Track ten recent COD orders with sellers and couriers; find why buyers did not accept delivery.",
+    "potential_customer": "Online sellers",
+    "test_metric": "Reasons for COD returns and cost per returned order",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.dhl.com/discover/en-bd/e-commerce-advice/e-commerce-trends/what-is-e-commerce-2025-blangladeshi-trends",
+      "https://www.tbsnews.net/features/panorama/how-courier-failures-are-undermining-bangladeshs-online-perishables-trade-1181016"
+    ],
+    "editor_note": "Cash-on-delivery use is grounded; the specific refusal scenario is illustrative."
+  }
+}

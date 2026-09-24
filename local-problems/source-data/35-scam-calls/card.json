@@ -1,0 +1,140 @@
+{
+  "title": "Scam Calls",
+  "slug": "scam-calls",
+  "band_color": "auto",
+  "seed": "rajshahi-scam-calls-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Scam Calls"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "unknown-caller",
+      "label": "Unknown Caller",
+      "aliases": [],
+      "description": "A phone rings from an unknown number as its owner looks uncertain.",
+      "visual_kind": "action",
+      "visual_focus": "A phone rings from an unknown number as its owner looks uncertain.",
+      "local_cue": "a Bangladesh mobile-money user receiving a suspicious phone call, no legible brand, code, or personal data",
+      "image": "assets/01-unknown-caller.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unknown caller",
+        "unexpected call"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "urgent-claim",
+      "label": "Urgent Claim",
+      "aliases": [],
+      "description": "The caller's speech bubble has an alarm symbol while the listener hesitates.",
+      "visual_kind": "action",
+      "visual_focus": "The caller's speech bubble has an alarm symbol while the listener hesitates.",
+      "local_cue": "a Bangladesh mobile-money user receiving a suspicious phone call, no legible brand, code, or personal data",
+      "image": "assets/02-urgent-claim.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "urgent claim",
+        "pressure tactic"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "otp-message",
+      "label": "OTP Message",
+      "aliases": [],
+      "description": "An unreadable one-time-code notification arrives on a phone while a call is active.",
+      "visual_kind": "action",
+      "visual_focus": "An unreadable one-time-code notification arrives on a phone while a call is active.",
+      "local_cue": "a Bangladesh mobile-money user receiving a suspicious phone call, no legible brand, code, or personal data",
+      "image": "assets/03-otp-message.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "one-time code",
+        "keep it secret"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "official-sounding-call",
+      "label": "Official-Sounding Call",
+      "aliases": [],
+      "description": "A caller claims authority while the mobile-money user looks uncertain; no legible caller ID.",
+      "visual_kind": "action",
+      "visual_focus": "A caller claims authority while the mobile-money user looks uncertain; no legible caller ID.",
+      "local_cue": "a Bangladesh mobile-money user receiving a suspicious phone call, no legible brand, code, or personal data",
+      "image": "assets/04-official-sounding-call.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "official-sounding",
+        "false authority"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "shared-code",
+      "label": "Shared Code",
+      "aliases": [],
+      "description": "A user nearly reads a one-time code aloud while speaking into a phone on speaker mode.",
+      "visual_kind": "action",
+      "visual_focus": "A user nearly reads a one-time code aloud while speaking into a phone on speaker mode.",
+      "local_cue": "a Bangladesh mobile-money user receiving a suspicious phone call, no legible brand, code, or personal data",
+      "image": "assets/05-shared-code.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "share a code",
+        "account risk"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "empty-balance",
+      "label": "Empty Balance",
+      "aliases": [],
+      "description": "After a suspicious call, a user stares at a nearly empty mobile-money balance bar.",
+      "visual_kind": "action",
+      "visual_focus": "After a suspicious call, a user stares at a nearly empty mobile-money balance bar.",
+      "local_cue": "a Bangladesh mobile-money user receiving a suspicious phone call, no legible brand, code, or personal data",
+      "image": "assets/06-empty-balance.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "missing money",
+        "account balance"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes show the scammer's pressure?",
+    "What suspicious financial message have you seen?",
+    "Which is more persuasive: an urgent claim or an official-sounding caller?",
+    "Why might an urgent voice sound trustworthy?",
+    "If a user ignores all unknown calls, what might they miss?",
+    "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 1500,
+    "pilot_days": 7,
+    "pilot": "Ask twenty people how they judge sample calls and which warning signs they miss.",
+    "potential_customer": "MFS agents, schools, or community groups",
+    "test_metric": "Scam cues people miss and actions they would take",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.sonalibank.com.bd/",
+      "https://ti-bangladesh.org/images/2025/report/mfs/Executive-Summary-Mobile-Financial-Services-Sector-En.pdf"
+    ],
+    "editor_note": ""
+  }
+}

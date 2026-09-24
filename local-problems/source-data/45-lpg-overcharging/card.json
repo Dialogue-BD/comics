@@ -1,0 +1,140 @@
+{
+  "title": "LPG Overcharging",
+  "slug": "lpg-overcharging",
+  "band_color": "auto",
+  "seed": "rajshahi-lpg-overcharging-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi LPG Overcharging"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "empty-cylinder",
+      "label": "Empty Cylinder",
+      "aliases": [],
+      "description": "A home cook finds that the kitchen LPG cylinder is empty before preparing a meal.",
+      "visual_kind": "action",
+      "visual_focus": "A home cook finds that the kitchen LPG cylinder is empty before preparing a meal.",
+      "local_cue": "a Rajshahi household buying an LPG cooking-gas cylinder at a neighborhood Bangladeshi shop, no legible brand or price figures",
+      "image": "assets/01-empty-cylinder.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "empty cylinder",
+        "cooking gas"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "shop-quote",
+      "label": "Shop Quote",
+      "aliases": [],
+      "description": "A customer asks the price at a neighborhood cylinder shop.",
+      "visual_kind": "action",
+      "visual_focus": "A customer asks the price at a neighborhood cylinder shop.",
+      "local_cue": "a Rajshahi household buying an LPG cooking-gas cylinder at a neighborhood Bangladeshi shop, no legible brand or price figures",
+      "image": "assets/02-shop-quote.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "shop quote",
+        "ask the price"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "old-price-notice",
+      "label": "Old Price Notice",
+      "aliases": [],
+      "description": "A faded LPG price notice hangs behind a seller who quotes a different price; numbers unreadable.",
+      "visual_kind": "action",
+      "visual_focus": "A faded LPG price notice hangs behind a seller who quotes a different price; numbers unreadable.",
+      "local_cue": "a Rajshahi household buying an LPG cooking-gas cylinder at a neighborhood Bangladeshi shop, no legible brand or price figures",
+      "image": "assets/03-old-price-notice.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "old price",
+        "new quote"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "delivery-fee",
+      "label": "Delivery Fee",
+      "aliases": [],
+      "description": "A delivery worker brings a cylinder to a flat and points to a separate fee on a receipt.",
+      "visual_kind": "action",
+      "visual_focus": "A delivery worker brings a cylinder to a flat and points to a separate fee on a receipt.",
+      "local_cue": "a Rajshahi household buying an LPG cooking-gas cylinder at a neighborhood Bangladeshi shop, no legible brand or price figures",
+      "image": "assets/04-delivery-fee.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "delivery fee",
+        "total cost"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "no-receipt",
+      "label": "No Receipt",
+      "aliases": [],
+      "description": "A customer hands over cash for an LPG cylinder but receives no itemized receipt.",
+      "visual_kind": "action",
+      "visual_focus": "A customer hands over cash for an LPG cylinder but receives no itemized receipt.",
+      "local_cue": "a Rajshahi household buying an LPG cooking-gas cylinder at a neighborhood Bangladeshi shop, no legible brand or price figures",
+      "image": "assets/05-no-receipt.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "no receipt",
+        "cash payment"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "carrying-cylinder",
+      "label": "Carrying Cylinder",
+      "aliases": [],
+      "description": "A household member carries an empty cylinder toward another shop after hearing a high quote.",
+      "visual_kind": "action",
+      "visual_focus": "A household member carries an empty cylinder toward another shop after hearing a high quote.",
+      "local_cue": "a Rajshahi household buying an LPG cooking-gas cylinder at a neighborhood Bangladeshi shop, no legible brand or price figures",
+      "image": "assets/06-carrying-cylinder.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "carry a cylinder",
+        "search for a price"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes show what the customer actually pays?",
+    "How do households near you learn the current cylinder price?",
+    "Is a hidden delivery fee or an old price notice more misleading?",
+    "Why can a delivery price differ from a headline price?",
+    "If buyers compare shops while out of gas, what cost appears?",
+    "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 1500,
+    "pilot_days": 7,
+    "pilot": "Compare a current official price with quotes and receipts at several local shops.",
+    "potential_customer": "Households or LPG retailers",
+    "test_metric": "Difference between official, quoted, and paid cylinder prices",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://bdnews24.com/bangladesh/159894f73367",
+      "https://www.tbsnews.net/bangladesh/energy/distributors-overcharge-govt-plans-sell-lpg-directly-consumers-1173296"
+    ],
+    "editor_note": "Do not claim underweight cylinders; the documented issue is price variation and overcharging."
+  }
+}

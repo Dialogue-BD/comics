@@ -198,6 +198,206 @@ window.PICTURE_THIS_GAME_DATA = {
     "Washing Nearby",
     "Open Discharge",
     "No Interceptor"
+  ],
+  "spoiled-tiffin": [
+    "Morning Packing",
+    "Sunny Commute",
+    "Hot Bag",
+    "Sour Smell",
+    "Uneaten Lunch",
+    "Extra Purchase"
+  ],
+  "missed-waste-pickups": [
+    "Full Bucket",
+    "Missed Pickup",
+    "Stair Carry",
+    "Narrow Lane",
+    "Torn Bag",
+    "Unclear Time"
+  ],
+  "exposed-documents": [
+    "NID Copy",
+    "Visible Form",
+    "AI Upload",
+    "Cloud Copy",
+    "Missed Field",
+    "Forwarded File"
+  ],
+  "uncertain-mess-rooms": [
+    "Room Visit",
+    "Long Commute",
+    "Deposit Request",
+    "House Rules",
+    "Old Photo",
+    "Surprise Fee"
+  ],
+  "poor-mess-meals": [
+    "Small Portion",
+    "Missed Dinner",
+    "Shared Pot",
+    "Meal Count",
+    "Market Cost",
+    "Uneven Portions"
+  ],
+  "textbook-costs": [
+    "Book Stall",
+    "Wrong Edition",
+    "Marked Pages",
+    "Price Haggling",
+    "Sold-Out Copy",
+    "Low Resale Offer"
+  ],
+  "coaching-costs": [
+    "Confusing Notes",
+    "Coaching Poster",
+    "Crowded Coaching",
+    "Unanswered Question",
+    "No Study Partner",
+    "Travel Expense"
+  ],
+  "confusing-forms": [
+    "Small Screen",
+    "Missing Field",
+    "Print Shop",
+    "Confusing Menu",
+    "Password Risk",
+    "No Confirmation"
+  ],
+  "allowance-barriers": [
+    "Payment Message",
+    "Agent Queue",
+    "Cash-Out Fee",
+    "Watching Eyes",
+    "Unclear Icons",
+    "Unread Receipt"
+  ],
+  "scam-calls": [
+    "Unknown Caller",
+    "Urgent Claim",
+    "OTP Message",
+    "Official-Sounding Call",
+    "Shared Code",
+    "Empty Balance"
+  ],
+  "uncertain-evening-rides": [
+    "Late Class",
+    "Empty Stand",
+    "Unknown Driver",
+    "Fare Pressure",
+    "Low Battery",
+    "Route Change"
+  ],
+  "childcare-gaps": [
+    "Class Schedule",
+    "Work Shift",
+    "Closed Center",
+    "Caregiver Absence",
+    "Missed Shift",
+    "High Care Fee"
+  ],
+  "damp-laundry": [
+    "Wet Clothes",
+    "Full Balcony",
+    "Damp Shirt",
+    "Musty Smell",
+    "Rain Returns",
+    "Repeat Wash"
+  ],
+  "late-tailor-orders": [
+    "Order Rush",
+    "Lost Measurements",
+    "Vague Date",
+    "Busy Machines",
+    "Fitting Change",
+    "Late Pickup"
+  ],
+  "returned-cod-parcels": [
+    "Packed Order",
+    "COD Label",
+    "No Answer",
+    "Refused Parcel",
+    "Return Charge",
+    "Returned Stock"
+  ],
+  "product-mismatch": [
+    "Bright Photo",
+    "Real Colour",
+    "Size Guess",
+    "Chat Promise",
+    "Parcel Opening",
+    "Return Request"
+  ],
+  "bruised-mangoes": [
+    "Ripe Fruit",
+    "Thin Box",
+    "Stacked Parcels",
+    "Courier Handoff",
+    "Bruised Arrival",
+    "Warm Delay"
+  ],
+  "uncertain-seed-quality": [
+    "Seed Packet",
+    "Missing Seed Receipt",
+    "Bare Row",
+    "Weak Sprouts",
+    "Dealer Visit",
+    "Missing Batch"
+  ],
+  "unclear-repair-terms": [
+    "Cracked Screen",
+    "Two Parts",
+    "Vague Price",
+    "Unlabeled Parts",
+    "Delayed Pickup",
+    "Repeat Fault"
+  ],
+  "lpg-overcharging": [
+    "Empty Cylinder",
+    "Shop Quote",
+    "Old Price Notice",
+    "Delivery Fee",
+    "No Receipt",
+    "Carrying Cylinder"
+  ],
+  "lost-baki-records": [
+    "Credit Sale",
+    "Paper Khata",
+    "Missing Page",
+    "Customer Memory",
+    "Faded Ink",
+    "Unpaid Month"
+  ],
+  "application-mistakes": [
+    "Document Pile",
+    "Photo Size",
+    "Scan Quality",
+    "Deadline Clock",
+    "Rejected Photo",
+    "Exposed Copies"
+  ],
+  "hard-to-find-medicine": [
+    "Prescription",
+    "Empty Shelf",
+    "Second Shop",
+    "No Stock Answer",
+    "Wrong Strength",
+    "Long Search"
+  ],
+  "costly-farm-machines": [
+    "Small Plot",
+    "Costly Machine",
+    "No Available Tool",
+    "Clashing Needs",
+    "Unfamiliar Controls",
+    "Machine Breakdown"
+  ],
+  "elder-isolation": [
+    "Quiet Home",
+    "Missed Call",
+    "Unanswered Gate",
+    "Heavy Errand",
+    "Busy Contact",
+    "Unwanted Knock"
   ]
 };
 window.PICTURE_THIS_GAME_META = {
@@ -1623,6 +1823,1456 @@ window.PICTURE_THIS_GAME_META = {
           "label": "No Interceptor",
           "answers": [
             "No Interceptor"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "spoiled-tiffin": {
+      "title": "Spoiled Tiffin",
+      "category_answers": [
+        "Spoiled Tiffin",
+        "Rajshahi Spoiled Tiffin"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "morning-packing",
+          "label": "Morning Packing",
+          "answers": [
+            "Morning Packing"
+          ]
+        },
+        {
+          "id": "sunny-commute",
+          "label": "Sunny Commute",
+          "answers": [
+            "Sunny Commute"
+          ]
+        },
+        {
+          "id": "hot-bag",
+          "label": "Hot Bag",
+          "answers": [
+            "Hot Bag"
+          ]
+        },
+        {
+          "id": "sour-smell",
+          "label": "Sour Smell",
+          "answers": [
+            "Sour Smell"
+          ]
+        },
+        {
+          "id": "uneaten-lunch",
+          "label": "Uneaten Lunch",
+          "answers": [
+            "Uneaten Lunch"
+          ]
+        },
+        {
+          "id": "extra-purchase",
+          "label": "Extra Purchase",
+          "answers": [
+            "Extra Purchase"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "missed-waste-pickups": {
+      "title": "Missed Waste Pickups",
+      "category_answers": [
+        "Missed Waste Pickups",
+        "Rajshahi Missed Waste Pickups"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "full-bucket",
+          "label": "Full Bucket",
+          "answers": [
+            "Full Bucket"
+          ]
+        },
+        {
+          "id": "missed-pickup",
+          "label": "Missed Pickup",
+          "answers": [
+            "Missed Pickup"
+          ]
+        },
+        {
+          "id": "stair-carry",
+          "label": "Stair Carry",
+          "answers": [
+            "Stair Carry"
+          ]
+        },
+        {
+          "id": "narrow-lane",
+          "label": "Narrow Lane",
+          "answers": [
+            "Narrow Lane"
+          ]
+        },
+        {
+          "id": "torn-bag",
+          "label": "Torn Bag",
+          "answers": [
+            "Torn Bag"
+          ]
+        },
+        {
+          "id": "unclear-time",
+          "label": "Unclear Time",
+          "answers": [
+            "Unclear Time"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "exposed-documents": {
+      "title": "Exposed Documents",
+      "category_answers": [
+        "Exposed Documents",
+        "Rajshahi Exposed Documents"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "nid-copy",
+          "label": "NID Copy",
+          "answers": [
+            "NID Copy"
+          ]
+        },
+        {
+          "id": "visible-form",
+          "label": "Visible Form",
+          "answers": [
+            "Visible Form"
+          ]
+        },
+        {
+          "id": "ai-upload",
+          "label": "AI Upload",
+          "answers": [
+            "AI Upload"
+          ]
+        },
+        {
+          "id": "cloud-copy",
+          "label": "Cloud Copy",
+          "answers": [
+            "Cloud Copy"
+          ]
+        },
+        {
+          "id": "missed-field",
+          "label": "Missed Field",
+          "answers": [
+            "Missed Field"
+          ]
+        },
+        {
+          "id": "forwarded-file",
+          "label": "Forwarded File",
+          "answers": [
+            "Forwarded File"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "uncertain-mess-rooms": {
+      "title": "Uncertain Mess Rooms",
+      "category_answers": [
+        "Uncertain Mess Rooms",
+        "Rajshahi Uncertain Mess Rooms"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "room-visit",
+          "label": "Room Visit",
+          "answers": [
+            "Room Visit"
+          ]
+        },
+        {
+          "id": "long-commute",
+          "label": "Long Commute",
+          "answers": [
+            "Long Commute"
+          ]
+        },
+        {
+          "id": "deposit-request",
+          "label": "Deposit Request",
+          "answers": [
+            "Deposit Request"
+          ]
+        },
+        {
+          "id": "house-rules",
+          "label": "House Rules",
+          "answers": [
+            "House Rules"
+          ]
+        },
+        {
+          "id": "old-photo",
+          "label": "Old Photo",
+          "answers": [
+            "Old Photo"
+          ]
+        },
+        {
+          "id": "surprise-fee",
+          "label": "Surprise Fee",
+          "answers": [
+            "Surprise Fee"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "poor-mess-meals": {
+      "title": "Poor Mess Meals",
+      "category_answers": [
+        "Poor Mess Meals",
+        "Rajshahi Poor Mess Meals"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "small-portion",
+          "label": "Small Portion",
+          "answers": [
+            "Small Portion"
+          ]
+        },
+        {
+          "id": "missed-dinner",
+          "label": "Missed Dinner",
+          "answers": [
+            "Missed Dinner"
+          ]
+        },
+        {
+          "id": "shared-pot",
+          "label": "Shared Pot",
+          "answers": [
+            "Shared Pot"
+          ]
+        },
+        {
+          "id": "meal-count",
+          "label": "Meal Count",
+          "answers": [
+            "Meal Count"
+          ]
+        },
+        {
+          "id": "market-cost",
+          "label": "Market Cost",
+          "answers": [
+            "Market Cost"
+          ]
+        },
+        {
+          "id": "uneven-portions",
+          "label": "Uneven Portions",
+          "answers": [
+            "Uneven Portions"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "textbook-costs": {
+      "title": "Textbook Costs",
+      "category_answers": [
+        "Textbook Costs",
+        "Rajshahi Textbook Costs"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "book-stall",
+          "label": "Book Stall",
+          "answers": [
+            "Book Stall"
+          ]
+        },
+        {
+          "id": "wrong-edition",
+          "label": "Wrong Edition",
+          "answers": [
+            "Wrong Edition"
+          ]
+        },
+        {
+          "id": "marked-pages",
+          "label": "Marked Pages",
+          "answers": [
+            "Marked Pages"
+          ]
+        },
+        {
+          "id": "price-haggling",
+          "label": "Price Haggling",
+          "answers": [
+            "Price Haggling"
+          ]
+        },
+        {
+          "id": "sold-out-copy",
+          "label": "Sold-Out Copy",
+          "answers": [
+            "Sold-Out Copy"
+          ]
+        },
+        {
+          "id": "low-resale-offer",
+          "label": "Low Resale Offer",
+          "answers": [
+            "Low Resale Offer"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "coaching-costs": {
+      "title": "Coaching Costs",
+      "category_answers": [
+        "Coaching Costs",
+        "Rajshahi Coaching Costs"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "confusing-notes",
+          "label": "Confusing Notes",
+          "answers": [
+            "Confusing Notes"
+          ]
+        },
+        {
+          "id": "coaching-poster",
+          "label": "Coaching Poster",
+          "answers": [
+            "Coaching Poster"
+          ]
+        },
+        {
+          "id": "crowded-coaching",
+          "label": "Crowded Coaching",
+          "answers": [
+            "Crowded Coaching"
+          ]
+        },
+        {
+          "id": "unanswered-question",
+          "label": "Unanswered Question",
+          "answers": [
+            "Unanswered Question"
+          ]
+        },
+        {
+          "id": "no-study-partner",
+          "label": "No Study Partner",
+          "answers": [
+            "No Study Partner"
+          ]
+        },
+        {
+          "id": "travel-expense",
+          "label": "Travel Expense",
+          "answers": [
+            "Travel Expense"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "confusing-forms": {
+      "title": "Confusing Forms",
+      "category_answers": [
+        "Confusing Forms",
+        "Rajshahi Confusing Forms"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "small-screen",
+          "label": "Small Screen",
+          "answers": [
+            "Small Screen"
+          ]
+        },
+        {
+          "id": "missing-field",
+          "label": "Missing Field",
+          "answers": [
+            "Missing Field"
+          ]
+        },
+        {
+          "id": "print-shop",
+          "label": "Print Shop",
+          "answers": [
+            "Print Shop"
+          ]
+        },
+        {
+          "id": "confusing-menu",
+          "label": "Confusing Menu",
+          "answers": [
+            "Confusing Menu"
+          ]
+        },
+        {
+          "id": "password-risk",
+          "label": "Password Risk",
+          "answers": [
+            "Password Risk"
+          ]
+        },
+        {
+          "id": "no-confirmation",
+          "label": "No Confirmation",
+          "answers": [
+            "No Confirmation"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "allowance-barriers": {
+      "title": "Allowance Barriers",
+      "category_answers": [
+        "Allowance Barriers",
+        "Rajshahi Allowance Barriers"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "payment-message",
+          "label": "Payment Message",
+          "answers": [
+            "Payment Message"
+          ]
+        },
+        {
+          "id": "agent-queue",
+          "label": "Agent Queue",
+          "answers": [
+            "Agent Queue"
+          ]
+        },
+        {
+          "id": "cash-out-fee",
+          "label": "Cash-Out Fee",
+          "answers": [
+            "Cash-Out Fee"
+          ]
+        },
+        {
+          "id": "watching-eyes",
+          "label": "Watching Eyes",
+          "answers": [
+            "Watching Eyes"
+          ]
+        },
+        {
+          "id": "unclear-icons",
+          "label": "Unclear Icons",
+          "answers": [
+            "Unclear Icons"
+          ]
+        },
+        {
+          "id": "unread-receipt",
+          "label": "Unread Receipt",
+          "answers": [
+            "Unread Receipt"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "scam-calls": {
+      "title": "Scam Calls",
+      "category_answers": [
+        "Scam Calls",
+        "Rajshahi Scam Calls"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "unknown-caller",
+          "label": "Unknown Caller",
+          "answers": [
+            "Unknown Caller"
+          ]
+        },
+        {
+          "id": "urgent-claim",
+          "label": "Urgent Claim",
+          "answers": [
+            "Urgent Claim"
+          ]
+        },
+        {
+          "id": "otp-message",
+          "label": "OTP Message",
+          "answers": [
+            "OTP Message"
+          ]
+        },
+        {
+          "id": "official-sounding-call",
+          "label": "Official-Sounding Call",
+          "answers": [
+            "Official-Sounding Call"
+          ]
+        },
+        {
+          "id": "shared-code",
+          "label": "Shared Code",
+          "answers": [
+            "Shared Code"
+          ]
+        },
+        {
+          "id": "empty-balance",
+          "label": "Empty Balance",
+          "answers": [
+            "Empty Balance"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "uncertain-evening-rides": {
+      "title": "Uncertain Evening Rides",
+      "category_answers": [
+        "Uncertain Evening Rides",
+        "Rajshahi Uncertain Evening Rides"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "late-class",
+          "label": "Late Class",
+          "answers": [
+            "Late Class"
+          ]
+        },
+        {
+          "id": "empty-stand",
+          "label": "Empty Stand",
+          "answers": [
+            "Empty Stand"
+          ]
+        },
+        {
+          "id": "unknown-driver",
+          "label": "Unknown Driver",
+          "answers": [
+            "Unknown Driver"
+          ]
+        },
+        {
+          "id": "fare-pressure",
+          "label": "Fare Pressure",
+          "answers": [
+            "Fare Pressure"
+          ]
+        },
+        {
+          "id": "low-battery",
+          "label": "Low Battery",
+          "answers": [
+            "Low Battery"
+          ]
+        },
+        {
+          "id": "route-change",
+          "label": "Route Change",
+          "answers": [
+            "Route Change"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "childcare-gaps": {
+      "title": "Childcare Gaps",
+      "category_answers": [
+        "Childcare Gaps",
+        "Rajshahi Childcare Gaps"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "class-schedule",
+          "label": "Class Schedule",
+          "answers": [
+            "Class Schedule"
+          ]
+        },
+        {
+          "id": "work-shift",
+          "label": "Work Shift",
+          "answers": [
+            "Work Shift"
+          ]
+        },
+        {
+          "id": "closed-center",
+          "label": "Closed Center",
+          "answers": [
+            "Closed Center"
+          ]
+        },
+        {
+          "id": "caregiver-absence",
+          "label": "Caregiver Absence",
+          "answers": [
+            "Caregiver Absence"
+          ]
+        },
+        {
+          "id": "missed-shift",
+          "label": "Missed Shift",
+          "answers": [
+            "Missed Shift"
+          ]
+        },
+        {
+          "id": "high-care-fee",
+          "label": "High Care Fee",
+          "answers": [
+            "High Care Fee"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "damp-laundry": {
+      "title": "Damp Laundry",
+      "category_answers": [
+        "Damp Laundry",
+        "Rajshahi Damp Laundry"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "wet-clothes",
+          "label": "Wet Clothes",
+          "answers": [
+            "Wet Clothes"
+          ]
+        },
+        {
+          "id": "full-balcony",
+          "label": "Full Balcony",
+          "answers": [
+            "Full Balcony"
+          ]
+        },
+        {
+          "id": "damp-shirt",
+          "label": "Damp Shirt",
+          "answers": [
+            "Damp Shirt"
+          ]
+        },
+        {
+          "id": "musty-smell",
+          "label": "Musty Smell",
+          "answers": [
+            "Musty Smell"
+          ]
+        },
+        {
+          "id": "rain-returns",
+          "label": "Rain Returns",
+          "answers": [
+            "Rain Returns"
+          ]
+        },
+        {
+          "id": "repeat-wash",
+          "label": "Repeat Wash",
+          "answers": [
+            "Repeat Wash"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "late-tailor-orders": {
+      "title": "Late Tailor Orders",
+      "category_answers": [
+        "Late Tailor Orders",
+        "Rajshahi Late Tailor Orders"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "order-rush",
+          "label": "Order Rush",
+          "answers": [
+            "Order Rush"
+          ]
+        },
+        {
+          "id": "lost-measurements",
+          "label": "Lost Measurements",
+          "answers": [
+            "Lost Measurements"
+          ]
+        },
+        {
+          "id": "vague-date",
+          "label": "Vague Date",
+          "answers": [
+            "Vague Date"
+          ]
+        },
+        {
+          "id": "busy-machines",
+          "label": "Busy Machines",
+          "answers": [
+            "Busy Machines"
+          ]
+        },
+        {
+          "id": "fitting-change",
+          "label": "Fitting Change",
+          "answers": [
+            "Fitting Change"
+          ]
+        },
+        {
+          "id": "late-pickup",
+          "label": "Late Pickup",
+          "answers": [
+            "Late Pickup"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "returned-cod-parcels": {
+      "title": "Returned COD Parcels",
+      "category_answers": [
+        "Returned COD Parcels",
+        "Rajshahi Returned COD Parcels"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "packed-order",
+          "label": "Packed Order",
+          "answers": [
+            "Packed Order"
+          ]
+        },
+        {
+          "id": "cod-label",
+          "label": "COD Label",
+          "answers": [
+            "COD Label"
+          ]
+        },
+        {
+          "id": "no-answer",
+          "label": "No Answer",
+          "answers": [
+            "No Answer"
+          ]
+        },
+        {
+          "id": "refused-parcel",
+          "label": "Refused Parcel",
+          "answers": [
+            "Refused Parcel"
+          ]
+        },
+        {
+          "id": "return-charge",
+          "label": "Return Charge",
+          "answers": [
+            "Return Charge"
+          ]
+        },
+        {
+          "id": "returned-stock",
+          "label": "Returned Stock",
+          "answers": [
+            "Returned Stock"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "product-mismatch": {
+      "title": "Product Mismatch",
+      "category_answers": [
+        "Product Mismatch",
+        "Rajshahi Product Mismatch"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "bright-photo",
+          "label": "Bright Photo",
+          "answers": [
+            "Bright Photo"
+          ]
+        },
+        {
+          "id": "real-colour",
+          "label": "Real Colour",
+          "answers": [
+            "Real Colour"
+          ]
+        },
+        {
+          "id": "size-guess",
+          "label": "Size Guess",
+          "answers": [
+            "Size Guess"
+          ]
+        },
+        {
+          "id": "chat-promise",
+          "label": "Chat Promise",
+          "answers": [
+            "Chat Promise"
+          ]
+        },
+        {
+          "id": "parcel-opening",
+          "label": "Parcel Opening",
+          "answers": [
+            "Parcel Opening"
+          ]
+        },
+        {
+          "id": "return-request",
+          "label": "Return Request",
+          "answers": [
+            "Return Request"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "bruised-mangoes": {
+      "title": "Bruised Mangoes",
+      "category_answers": [
+        "Bruised Mangoes",
+        "Rajshahi Bruised Mangoes"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "ripe-fruit",
+          "label": "Ripe Fruit",
+          "answers": [
+            "Ripe Fruit"
+          ]
+        },
+        {
+          "id": "thin-box",
+          "label": "Thin Box",
+          "answers": [
+            "Thin Box"
+          ]
+        },
+        {
+          "id": "stacked-parcels",
+          "label": "Stacked Parcels",
+          "answers": [
+            "Stacked Parcels"
+          ]
+        },
+        {
+          "id": "courier-handoff",
+          "label": "Courier Handoff",
+          "answers": [
+            "Courier Handoff"
+          ]
+        },
+        {
+          "id": "bruised-arrival",
+          "label": "Bruised Arrival",
+          "answers": [
+            "Bruised Arrival"
+          ]
+        },
+        {
+          "id": "warm-delay",
+          "label": "Warm Delay",
+          "answers": [
+            "Warm Delay"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "uncertain-seed-quality": {
+      "title": "Uncertain Seed Quality",
+      "category_answers": [
+        "Uncertain Seed Quality",
+        "Rajshahi Uncertain Seed Quality"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "seed-packet",
+          "label": "Seed Packet",
+          "answers": [
+            "Seed Packet"
+          ]
+        },
+        {
+          "id": "missing-seed-receipt",
+          "label": "Missing Seed Receipt",
+          "answers": [
+            "Missing Seed Receipt"
+          ]
+        },
+        {
+          "id": "bare-row",
+          "label": "Bare Row",
+          "answers": [
+            "Bare Row"
+          ]
+        },
+        {
+          "id": "weak-sprouts",
+          "label": "Weak Sprouts",
+          "answers": [
+            "Weak Sprouts"
+          ]
+        },
+        {
+          "id": "dealer-visit",
+          "label": "Dealer Visit",
+          "answers": [
+            "Dealer Visit"
+          ]
+        },
+        {
+          "id": "missing-batch",
+          "label": "Missing Batch",
+          "answers": [
+            "Missing Batch"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "unclear-repair-terms": {
+      "title": "Unclear Repair Terms",
+      "category_answers": [
+        "Unclear Repair Terms",
+        "Rajshahi Unclear Repair Terms"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "cracked-screen",
+          "label": "Cracked Screen",
+          "answers": [
+            "Cracked Screen"
+          ]
+        },
+        {
+          "id": "two-parts",
+          "label": "Two Parts",
+          "answers": [
+            "Two Parts"
+          ]
+        },
+        {
+          "id": "vague-price",
+          "label": "Vague Price",
+          "answers": [
+            "Vague Price"
+          ]
+        },
+        {
+          "id": "unlabeled-parts",
+          "label": "Unlabeled Parts",
+          "answers": [
+            "Unlabeled Parts"
+          ]
+        },
+        {
+          "id": "delayed-pickup",
+          "label": "Delayed Pickup",
+          "answers": [
+            "Delayed Pickup"
+          ]
+        },
+        {
+          "id": "repeat-fault",
+          "label": "Repeat Fault",
+          "answers": [
+            "Repeat Fault"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "lpg-overcharging": {
+      "title": "LPG Overcharging",
+      "category_answers": [
+        "LPG Overcharging",
+        "Rajshahi LPG Overcharging"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "empty-cylinder",
+          "label": "Empty Cylinder",
+          "answers": [
+            "Empty Cylinder"
+          ]
+        },
+        {
+          "id": "shop-quote",
+          "label": "Shop Quote",
+          "answers": [
+            "Shop Quote"
+          ]
+        },
+        {
+          "id": "old-price-notice",
+          "label": "Old Price Notice",
+          "answers": [
+            "Old Price Notice"
+          ]
+        },
+        {
+          "id": "delivery-fee",
+          "label": "Delivery Fee",
+          "answers": [
+            "Delivery Fee"
+          ]
+        },
+        {
+          "id": "no-receipt",
+          "label": "No Receipt",
+          "answers": [
+            "No Receipt"
+          ]
+        },
+        {
+          "id": "carrying-cylinder",
+          "label": "Carrying Cylinder",
+          "answers": [
+            "Carrying Cylinder"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "lost-baki-records": {
+      "title": "Lost Baki Records",
+      "category_answers": [
+        "Lost Baki Records",
+        "Rajshahi Lost Baki Records"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "credit-sale",
+          "label": "Credit Sale",
+          "answers": [
+            "Credit Sale"
+          ]
+        },
+        {
+          "id": "paper-khata",
+          "label": "Paper Khata",
+          "answers": [
+            "Paper Khata"
+          ]
+        },
+        {
+          "id": "missing-page",
+          "label": "Missing Page",
+          "answers": [
+            "Missing Page"
+          ]
+        },
+        {
+          "id": "customer-memory",
+          "label": "Customer Memory",
+          "answers": [
+            "Customer Memory"
+          ]
+        },
+        {
+          "id": "faded-ink",
+          "label": "Faded Ink",
+          "answers": [
+            "Faded Ink"
+          ]
+        },
+        {
+          "id": "unpaid-month",
+          "label": "Unpaid Month",
+          "answers": [
+            "Unpaid Month"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "application-mistakes": {
+      "title": "Application Mistakes",
+      "category_answers": [
+        "Application Mistakes",
+        "Rajshahi Application Mistakes"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "document-pile",
+          "label": "Document Pile",
+          "answers": [
+            "Document Pile"
+          ]
+        },
+        {
+          "id": "photo-size",
+          "label": "Photo Size",
+          "answers": [
+            "Photo Size"
+          ]
+        },
+        {
+          "id": "scan-quality",
+          "label": "Scan Quality",
+          "answers": [
+            "Scan Quality"
+          ]
+        },
+        {
+          "id": "deadline-clock",
+          "label": "Deadline Clock",
+          "answers": [
+            "Deadline Clock"
+          ]
+        },
+        {
+          "id": "rejected-photo",
+          "label": "Rejected Photo",
+          "answers": [
+            "Rejected Photo"
+          ]
+        },
+        {
+          "id": "exposed-copies",
+          "label": "Exposed Copies",
+          "answers": [
+            "Exposed Copies"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "hard-to-find-medicine": {
+      "title": "Hard-To-Find Medicine",
+      "category_answers": [
+        "Hard-To-Find Medicine",
+        "Rajshahi Hard-To-Find Medicine"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "prescription",
+          "label": "Prescription",
+          "answers": [
+            "Prescription"
+          ]
+        },
+        {
+          "id": "empty-shelf",
+          "label": "Empty Shelf",
+          "answers": [
+            "Empty Shelf"
+          ]
+        },
+        {
+          "id": "second-shop",
+          "label": "Second Shop",
+          "answers": [
+            "Second Shop"
+          ]
+        },
+        {
+          "id": "no-stock-answer",
+          "label": "No Stock Answer",
+          "answers": [
+            "No Stock Answer"
+          ]
+        },
+        {
+          "id": "wrong-strength",
+          "label": "Wrong Strength",
+          "answers": [
+            "Wrong Strength"
+          ]
+        },
+        {
+          "id": "long-search",
+          "label": "Long Search",
+          "answers": [
+            "Long Search"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "costly-farm-machines": {
+      "title": "Costly Farm Machines",
+      "category_answers": [
+        "Costly Farm Machines",
+        "Rajshahi Costly Farm Machines"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "small-plot",
+          "label": "Small Plot",
+          "answers": [
+            "Small Plot"
+          ]
+        },
+        {
+          "id": "costly-machine",
+          "label": "Costly Machine",
+          "answers": [
+            "Costly Machine"
+          ]
+        },
+        {
+          "id": "no-available-tool",
+          "label": "No Available Tool",
+          "answers": [
+            "No Available Tool"
+          ]
+        },
+        {
+          "id": "clashing-needs",
+          "label": "Clashing Needs",
+          "answers": [
+            "Clashing Needs"
+          ]
+        },
+        {
+          "id": "unfamiliar-controls",
+          "label": "Unfamiliar Controls",
+          "answers": [
+            "Unfamiliar Controls"
+          ]
+        },
+        {
+          "id": "machine-breakdown",
+          "label": "Machine Breakdown",
+          "answers": [
+            "Machine Breakdown"
+          ]
+        }
+      ],
+      "links": []
+    },
+    "elder-isolation": {
+      "title": "Elder Isolation",
+      "category_answers": [
+        "Elder Isolation",
+        "Rajshahi Elder Isolation"
+      ],
+      "tags": [
+        "rajshahi",
+        "local-problem",
+        "conversation",
+        "citizen-scale"
+      ],
+      "items": [
+        {
+          "id": "quiet-home",
+          "label": "Quiet Home",
+          "answers": [
+            "Quiet Home"
+          ]
+        },
+        {
+          "id": "missed-call",
+          "label": "Missed Call",
+          "answers": [
+            "Missed Call"
+          ]
+        },
+        {
+          "id": "unanswered-gate",
+          "label": "Unanswered Gate",
+          "answers": [
+            "Unanswered Gate"
+          ]
+        },
+        {
+          "id": "heavy-errand",
+          "label": "Heavy Errand",
+          "answers": [
+            "Heavy Errand"
+          ]
+        },
+        {
+          "id": "busy-contact",
+          "label": "Busy Contact",
+          "answers": [
+            "Busy Contact"
+          ]
+        },
+        {
+          "id": "unwanted-knock",
+          "label": "Unwanted Knock",
+          "answers": [
+            "Unwanted Knock"
           ]
         }
       ],

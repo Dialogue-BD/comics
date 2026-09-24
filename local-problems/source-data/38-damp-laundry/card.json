@@ -1,0 +1,139 @@
+{
+  "title": "Damp Laundry",
+  "slug": "damp-laundry",
+  "band_color": "auto",
+  "seed": "rajshahi-damp-laundry-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Damp Laundry"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "wet-clothes",
+      "label": "Wet Clothes",
+      "aliases": [],
+      "description": "A resident removes dripping clothes from a washing bucket.",
+      "visual_kind": "action",
+      "visual_focus": "A resident removes dripping clothes from a washing bucket.",
+      "local_cue": "a rented Rajshahi flat with a small grilled balcony, concrete walls and monsoon rain",
+      "image": "assets/01-wet-clothes.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "wet clothes",
+        "wash by hand"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "full-balcony",
+      "label": "Full Balcony",
+      "aliases": [],
+      "description": "Clothes crowd a small balcony behind protective metal grilles as rain falls.",
+      "visual_kind": "action",
+      "visual_focus": "Clothes crowd a small balcony behind protective metal grilles as rain falls.",
+      "local_cue": "a rented Rajshahi flat with a small grilled balcony, concrete walls and monsoon rain",
+      "image": "assets/02-full-balcony.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "crowded balcony",
+        "monsoon rain"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "damp-shirt",
+      "label": "Damp Shirt",
+      "aliases": [],
+      "description": "A person touches a shirt that remains damp on an indoor line.",
+      "visual_kind": "action",
+      "visual_focus": "A person touches a shirt that remains damp on an indoor line.",
+      "local_cue": "a rented Rajshahi flat with a small grilled balcony, concrete walls and monsoon rain",
+      "image": "assets/03-damp-shirt.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "damp fabric",
+        "dry slowly"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "musty-smell",
+      "label": "Musty Smell",
+      "aliases": [],
+      "description": "A resident notices a musty garment and pulls it away from clean clothes.",
+      "visual_kind": "action",
+      "visual_focus": "A resident notices a musty garment and pulls it away from clean clothes.",
+      "local_cue": "a rented Rajshahi flat with a small grilled balcony, concrete walls and monsoon rain",
+      "image": "assets/04-musty-smell.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "musty smell",
+        "rewash clothes"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "rain-returns",
+      "label": "Rain Returns",
+      "aliases": [],
+      "description": "A resident rushes to pull still-wet clothes from a grilled balcony as rain begins again.",
+      "visual_kind": "action",
+      "visual_focus": "A resident rushes to pull still-wet clothes from a grilled balcony as rain begins again.",
+      "local_cue": "a rented Rajshahi flat with a small grilled balcony, concrete walls and monsoon rain",
+      "image": "assets/05-rain-returns.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "rain returns",
+        "bring clothes inside"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "repeat-wash",
+      "label": "Repeat Wash",
+      "aliases": [],
+      "description": "A resident puts a musty shirt back into the washing bucket instead of wearing it.",
+      "visual_kind": "action",
+      "visual_focus": "A resident puts a musty shirt back into the washing bucket instead of wearing it.",
+      "local_cue": "a rented Rajshahi flat with a small grilled balcony, concrete walls and monsoon rain",
+      "image": "assets/06-repeat-wash.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "wash again",
+        "damp smell"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes show why indoor drying is difficult?",
+    "Where do people dry clothes during long rainy periods?",
+    "Is a crowded balcony or indoor dampness worse?",
+    "Why do clothes dry slowly during monsoon?",
+    "If clothes stay indoors every day, what other problem appears?",
+    "What could you try in 14 days for at most 6,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 6000,
+    "pilot_days": 14,
+    "pilot": "Ask ten residents how they dry clothes now, measure drying time, and identify the cost of re-washing or damage.",
+    "potential_customer": "Renters or mess residents",
+    "test_metric": "Drying time, rewashes, garment damage, and willingness to pay",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.tbsnews.net/features/habitat/your-home-ready-monsoon-guide-protecting-interiors-1171981"
+    ],
+    "editor_note": ""
+  }
+}

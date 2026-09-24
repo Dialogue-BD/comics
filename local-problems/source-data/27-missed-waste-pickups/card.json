@@ -1,0 +1,139 @@
+{
+  "title": "Missed Waste Pickups",
+  "slug": "missed-waste-pickups",
+  "band_color": "auto",
+  "seed": "rajshahi-missed-waste-pickups-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Missed Waste Pickups"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "full-bucket",
+      "label": "Full Bucket",
+      "aliases": [],
+      "description": "A resident closes an overfilled kitchen waste bucket in a Rajshahi flat.",
+      "visual_kind": "action",
+      "visual_focus": "A resident closes an overfilled kitchen waste bucket in a Rajshahi flat.",
+      "local_cue": "a Rajshahi apartment block with concrete stairs, protective window grilles, street gate and locally typical small waste handcart",
+      "image": "assets/01-full-bucket.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "full bucket",
+        "household waste"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "missed-pickup",
+      "label": "Missed Pickup",
+      "aliases": [],
+      "description": "A bag remains beside an apartment gate after the usual collection time.",
+      "visual_kind": "action",
+      "visual_focus": "A bag remains beside an apartment gate after the usual collection time.",
+      "local_cue": "a Rajshahi apartment block with concrete stairs, protective window grilles, street gate and locally typical small waste handcart",
+      "image": "assets/02-missed-pickup.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "miss a pickup",
+        "collection time"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "stair-carry",
+      "label": "Stair Carry",
+      "aliases": [],
+      "description": "A resident carries a heavy tied waste bag down several apartment stairs.",
+      "visual_kind": "action",
+      "visual_focus": "A resident carries a heavy tied waste bag down several apartment stairs.",
+      "local_cue": "a Rajshahi apartment block with concrete stairs, protective window grilles, street gate and locally typical small waste handcart",
+      "image": "assets/03-stair-carry.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "carry rubbish",
+        "heavy bag"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "narrow-lane",
+      "label": "Narrow Lane",
+      "aliases": [],
+      "description": "A municipal handcart cannot enter a narrow residential side lane, leaving a long walk to the collection point.",
+      "visual_kind": "action",
+      "visual_focus": "A municipal handcart cannot enter a narrow residential side lane, leaving a long walk to the collection point.",
+      "local_cue": "a Rajshahi apartment block with concrete stairs, protective window grilles, street gate and locally typical small waste handcart",
+      "image": "assets/04-narrow-lane.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "narrow lane",
+        "distant collection point"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "torn-bag",
+      "label": "Torn Bag",
+      "aliases": [],
+      "description": "An animal tears open a waste bag left beside an apartment gate.",
+      "visual_kind": "action",
+      "visual_focus": "An animal tears open a waste bag left beside an apartment gate.",
+      "local_cue": "a Rajshahi apartment block with concrete stairs, protective window grilles, street gate and locally typical small waste handcart",
+      "image": "assets/05-torn-bag.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "torn bag",
+        "scattered rubbish"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "unclear-time",
+      "label": "Unclear Time",
+      "aliases": [],
+      "description": "A resident waits by the gate with a waste bag, uncertain when the collector will pass.",
+      "visual_kind": "action",
+      "visual_focus": "A resident waits by the gate with a waste bag, uncertain when the collector will pass.",
+      "local_cue": "a Rajshahi apartment block with concrete stairs, protective window grilles, street gate and locally typical small waste handcart",
+      "image": "assets/06-unclear-time.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unclear schedule",
+        "wait for collection"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes show why rubbish stays at a home?",
+    "When has rubbish remained outside a home longer than expected?",
+    "Is the uncertain time or the long carry worse? Why?",
+    "Why might a collector miss one building on a busy route?",
+    "If one building is collected first, who waits longer?",
+    "What could you try in 7 days for at most 8,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 8000,
+    "pilot_days": 7,
+    "pilot": "Observe one building route with a collector; ask five households where and when bags are missed.",
+    "potential_customer": "Residents or landlords",
+    "test_metric": "Missed pickups, time spent carrying bags, and collector constraints",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://icceiruet.org/wp-content/uploads/2025/12/1340_Camera-Ready-Final-Paper_ICCEI-2025.pdf"
+    ],
+    "editor_note": "Distinct from card 20: this shows the resident's missed handoff and the cost of carrying rubbish, rather than the citywide collection system. Students may propose a service, a scheduling change, or another small test."
+  }
+}

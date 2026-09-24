@@ -1,0 +1,140 @@
+{
+  "title": "Coaching Costs",
+  "slug": "coaching-costs",
+  "band_color": "auto",
+  "seed": "rajshahi-coaching-costs-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Coaching Costs"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "confusing-notes",
+      "label": "Confusing Notes",
+      "aliases": [],
+      "description": "A student looks puzzled over dense class notes at a shared study desk.",
+      "visual_kind": "action",
+      "visual_focus": "A student looks puzzled over dense class notes at a shared study desk.",
+      "local_cue": "a Rajshahi student room or Bangladeshi coaching classroom with notebooks, fee notices and easy-bike travel",
+      "image": "assets/01-confusing-notes.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "class notes",
+        "ask for help"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "coaching-poster",
+      "label": "Coaching Poster",
+      "aliases": [],
+      "description": "A student compares the fee on a coaching poster with cash in hand; text is unreadable.",
+      "visual_kind": "action",
+      "visual_focus": "A student compares the fee on a coaching poster with cash in hand; text is unreadable.",
+      "local_cue": "a Rajshahi student room or Bangladeshi coaching classroom with notebooks, fee notices and easy-bike travel",
+      "image": "assets/02-coaching-poster.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "coaching fee",
+        "tight budget"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "crowded-coaching",
+      "label": "Crowded Coaching",
+      "aliases": [],
+      "description": "A learner at the back of a crowded coaching class cannot get the instructor’s attention.",
+      "visual_kind": "action",
+      "visual_focus": "A learner at the back of a crowded coaching class cannot get the instructor’s attention.",
+      "local_cue": "a Rajshahi student room or Bangladeshi coaching classroom with notebooks, fee notices and easy-bike travel",
+      "image": "assets/03-crowded-coaching.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "crowded class",
+        "ask a question"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "unanswered-question",
+      "label": "Unanswered Question",
+      "aliases": [],
+      "description": "A student raises a hand over a difficult practice sheet while the instructor helps others.",
+      "visual_kind": "action",
+      "visual_focus": "A student raises a hand over a difficult practice sheet while the instructor helps others.",
+      "local_cue": "a Rajshahi student room or Bangladeshi coaching classroom with notebooks, fee notices and easy-bike travel",
+      "image": "assets/04-unanswered-question.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unanswered question",
+        "practice problem"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "no-study-partner",
+      "label": "No Study Partner",
+      "aliases": [],
+      "description": "A student struggles alone over course notes at a shared mess-room table.",
+      "visual_kind": "action",
+      "visual_focus": "A student struggles alone over course notes at a shared mess-room table.",
+      "local_cue": "a Rajshahi student room or Bangladeshi coaching classroom with notebooks, fee notices and easy-bike travel",
+      "image": "assets/05-no-study-partner.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "study alone",
+        "need help"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "travel-expense",
+      "label": "Travel Expense",
+      "aliases": [],
+      "description": "A student pays easy-bike fare to reach a coaching class across town.",
+      "visual_kind": "action",
+      "visual_focus": "A student pays easy-bike fare to reach a coaching class across town.",
+      "local_cue": "a Rajshahi student room or Bangladeshi coaching classroom with notebooks, fee notices and easy-bike travel",
+      "image": "assets/06-travel-expense.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "travel cost",
+        "extra lesson"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes show why a student seeks extra help?",
+    "When has a classmate explained something well to you?",
+    "Which costs more over a term: coaching fees or travel?",
+    "Why might a crowded class leave questions unanswered?",
+    "If extra help stays expensive, who is left out?",
+    "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 1500,
+    "pilot_days": 7,
+    "pilot": "Ask ten learners where they get stuck and compare the cost and usefulness of help they already use.",
+    "potential_customer": "Students",
+    "test_metric": "Unanswered questions, current coaching costs, and demand for help",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.tbsnews.net/features/panorama/how-big-admission-coaching-market-bangladesh-1222986",
+      "https://en.prothomalo.com/bangladesh/pvg3rbvka0"
+    ],
+    "editor_note": "This is a plausible student service hypothesis, not an assertion that all local coaching is unaffordable."
+  }
+}

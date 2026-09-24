@@ -148,5 +148,155 @@
     "title": "Barnoi Pollution",
     "front": "pages/page_049.png",
     "back": "pages/page_050.png"
+  },
+  {
+    "id": "spoiled-tiffin",
+    "title": "Spoiled Tiffin",
+    "front": "pages/page_051.png",
+    "back": "pages/page_052.png"
+  },
+  {
+    "id": "missed-waste-pickups",
+    "title": "Missed Waste Pickups",
+    "front": "pages/page_053.png",
+    "back": "pages/page_054.png"
+  },
+  {
+    "id": "exposed-documents",
+    "title": "Exposed Documents",
+    "front": "pages/page_055.png",
+    "back": "pages/page_056.png"
+  },
+  {
+    "id": "uncertain-mess-rooms",
+    "title": "Uncertain Mess Rooms",
+    "front": "pages/page_057.png",
+    "back": "pages/page_058.png"
+  },
+  {
+    "id": "poor-mess-meals",
+    "title": "Poor Mess Meals",
+    "front": "pages/page_059.png",
+    "back": "pages/page_060.png"
+  },
+  {
+    "id": "textbook-costs",
+    "title": "Textbook Costs",
+    "front": "pages/page_061.png",
+    "back": "pages/page_062.png"
+  },
+  {
+    "id": "coaching-costs",
+    "title": "Coaching Costs",
+    "front": "pages/page_063.png",
+    "back": "pages/page_064.png"
+  },
+  {
+    "id": "confusing-forms",
+    "title": "Confusing Forms",
+    "front": "pages/page_065.png",
+    "back": "pages/page_066.png"
+  },
+  {
+    "id": "allowance-barriers",
+    "title": "Allowance Barriers",
+    "front": "pages/page_067.png",
+    "back": "pages/page_068.png"
+  },
+  {
+    "id": "scam-calls",
+    "title": "Scam Calls",
+    "front": "pages/page_069.png",
+    "back": "pages/page_070.png"
+  },
+  {
+    "id": "uncertain-evening-rides",
+    "title": "Uncertain Evening Rides",
+    "front": "pages/page_071.png",
+    "back": "pages/page_072.png"
+  },
+  {
+    "id": "childcare-gaps",
+    "title": "Childcare Gaps",
+    "front": "pages/page_073.png",
+    "back": "pages/page_074.png"
+  },
+  {
+    "id": "damp-laundry",
+    "title": "Damp Laundry",
+    "front": "pages/page_075.png",
+    "back": "pages/page_076.png"
+  },
+  {
+    "id": "late-tailor-orders",
+    "title": "Late Tailor Orders",
+    "front": "pages/page_077.png",
+    "back": "pages/page_078.png"
+  },
+  {
+    "id": "returned-cod-parcels",
+    "title": "Returned COD Parcels",
+    "front": "pages/page_079.png",
+    "back": "pages/page_080.png"
+  },
+  {
+    "id": "product-mismatch",
+    "title": "Product Mismatch",
+    "front": "pages/page_081.png",
+    "back": "pages/page_082.png"
+  },
+  {
+    "id": "bruised-mangoes",
+    "title": "Bruised Mangoes",
+    "front": "pages/page_083.png",
+    "back": "pages/page_084.png"
+  },
+  {
+    "id": "uncertain-seed-quality",
+    "title": "Uncertain Seed Quality",
+    "front": "pages/page_085.png",
+    "back": "pages/page_086.png"
+  },
+  {
+    "id": "unclear-repair-terms",
+    "title": "Unclear Repair Terms",
+    "front": "pages/page_087.png",
+    "back": "pages/page_088.png"
+  },
+  {
+    "id": "lpg-overcharging",
+    "title": "LPG Overcharging",
+    "front": "pages/page_089.png",
+    "back": "pages/page_090.png"
+  },
+  {
+    "id": "lost-baki-records",
+    "title": "Lost Baki Records",
+    "front": "pages/page_091.png",
+    "back": "pages/page_092.png"
+  },
+  {
+    "id": "application-mistakes",
+    "title": "Application Mistakes",
+    "front": "pages/page_093.png",
+    "back": "pages/page_094.png"
+  },
+  {
+    "id": "hard-to-find-medicine",
+    "title": "Hard-To-Find Medicine",
+    "front": "pages/page_095.png",
+    "back": "pages/page_096.png"
+  },
+  {
+    "id": "costly-farm-machines",
+    "title": "Costly Farm Machines",
+    "front": "pages/page_097.png",
+    "back": "pages/page_098.png"
+  },
+  {
+    "id": "elder-isolation",
+    "title": "Elder Isolation",
+    "front": "pages/page_099.png",
+    "back": "pages/page_100.png"
   }
 ]

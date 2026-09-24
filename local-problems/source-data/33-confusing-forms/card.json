@@ -1,0 +1,139 @@
+{
+  "title": "Confusing Forms",
+  "slug": "confusing-forms",
+  "band_color": "auto",
+  "seed": "rajshahi-confusing-forms-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Confusing Forms"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "small-screen",
+      "label": "Small Screen",
+      "aliases": [],
+      "description": "A person squints at a crowded Bengali online form on an older phone.",
+      "visual_kind": "action",
+      "visual_focus": "A person squints at a crowded Bengali online form on an older phone.",
+      "local_cue": "a Bangladesh online-service form used on an older Android phone near a local print-and-scan shop, without readable personal data",
+      "image": "assets/01-small-screen.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "small screen",
+        "fill a form"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "missing-field",
+      "label": "Missing Field",
+      "aliases": [],
+      "description": "A required field is left empty on a form, shown with a simple red outline and no text.",
+      "visual_kind": "action",
+      "visual_focus": "A required field is left empty on a form, shown with a simple red outline and no text.",
+      "local_cue": "a Bangladesh online-service form used on an older Android phone near a local print-and-scan shop, without readable personal data",
+      "image": "assets/02-missing-field.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "missing field",
+        "check details"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "print-shop",
+      "label": "Print Shop",
+      "aliases": [],
+      "description": "An applicant waits beside a local print-and-scan counter with a folder.",
+      "visual_kind": "action",
+      "visual_focus": "An applicant waits beside a local print-and-scan counter with a folder.",
+      "local_cue": "a Bangladesh online-service form used on an older Android phone near a local print-and-scan shop, without readable personal data",
+      "image": "assets/03-print-shop.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "print shop",
+        "service fee"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "confusing-menu",
+      "label": "Confusing Menu",
+      "aliases": [],
+      "description": "An applicant hesitates between several similar service options on a crowded phone screen.",
+      "visual_kind": "action",
+      "visual_focus": "An applicant hesitates between several similar service options on a crowded phone screen.",
+      "local_cue": "a Bangladesh online-service form used on an older Android phone near a local print-and-scan shop, without readable personal data",
+      "image": "assets/04-confusing-menu.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "confusing menu",
+        "choose a service"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "password-risk",
+      "label": "Password Risk",
+      "aliases": [],
+      "description": "An applicant covers a password entry area before handing over a device.",
+      "visual_kind": "action",
+      "visual_focus": "An applicant covers a password entry area before handing over a device.",
+      "local_cue": "a Bangladesh online-service form used on an older Android phone near a local print-and-scan shop, without readable personal data",
+      "image": "assets/05-password-risk.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "private password",
+        "keep control"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "no-confirmation",
+      "label": "No Confirmation",
+      "aliases": [],
+      "description": "An applicant sees a blank result after submitting a form and cannot tell whether it went through.",
+      "visual_kind": "action",
+      "visual_focus": "An applicant sees a blank result after submitting a form and cannot tell whether it went through.",
+      "local_cue": "a Bangladesh online-service form used on an older Android phone near a local print-and-scan shop, without readable personal data",
+      "image": "assets/06-no-confirmation.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "no confirmation",
+        "submit a form"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes show where a form can go wrong?",
+    "Which online form has been difficult for someone you know?",
+    "Is a missed field or a shared password the bigger risk?",
+    "Why should the applicant keep control of passwords?",
+    "If a form shows no confirmation, what might an applicant do twice?",
+    "What could you try in 7 days for at most 2,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 2000,
+    "pilot_days": 7,
+    "pilot": "Watch consenting applicants try one form using sample data; record the confusing steps and privacy concerns.",
+    "potential_customer": "Applicants or community organizations",
+    "test_metric": "Form errors, completion time, and privacy concerns",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://bigd.bracu.ac.bd/publications/digital-literacy-and-access-to-public-services-in-rural-households-of-bangladesh/"
+    ],
+    "editor_note": ""
+  }
+}

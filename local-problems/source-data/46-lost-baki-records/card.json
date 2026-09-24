@@ -1,0 +1,140 @@
+{
+  "title": "Lost Baki Records",
+  "slug": "lost-baki-records",
+  "band_color": "auto",
+  "seed": "rajshahi-lost-baki-records-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Lost Baki Records"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "credit-sale",
+      "label": "Credit Sale",
+      "aliases": [],
+      "description": "A grocer hands everyday items to a familiar customer who will pay later.",
+      "visual_kind": "action",
+      "visual_focus": "A grocer hands everyday items to a familiar customer who will pay later.",
+      "local_cue": "a Rajshahi neighborhood grocery shop using a Bengali baki khata paper ledger, no legible customer names or amounts",
+      "image": "assets/01-credit-sale.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "sell on credit",
+        "local customer"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "paper-khata",
+      "label": "Paper Khata",
+      "aliases": [],
+      "description": "The shopkeeper writes the amount in a worn Bengali account notebook.",
+      "visual_kind": "action",
+      "visual_focus": "The shopkeeper writes the amount in a worn Bengali account notebook.",
+      "local_cue": "a Rajshahi neighborhood grocery shop using a Bengali baki khata paper ledger, no legible customer names or amounts",
+      "image": "assets/02-paper-khata.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "baki khata",
+        "record a due"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "missing-page",
+      "label": "Missing Page",
+      "aliases": [],
+      "description": "The shopkeeper searches a damaged ledger page for an old entry.",
+      "visual_kind": "action",
+      "visual_focus": "The shopkeeper searches a damaged ledger page for an old entry.",
+      "local_cue": "a Rajshahi neighborhood grocery shop using a Bengali baki khata paper ledger, no legible customer names or amounts",
+      "image": "assets/03-missing-page.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "missing entry",
+        "check a balance"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "customer-memory",
+      "label": "Customer Memory",
+      "aliases": [],
+      "description": "Customer and shopkeeper disagree politely over the amount owed.",
+      "visual_kind": "action",
+      "visual_focus": "Customer and shopkeeper disagree politely over the amount owed.",
+      "local_cue": "a Rajshahi neighborhood grocery shop using a Bengali baki khata paper ledger, no legible customer names or amounts",
+      "image": "assets/04-customer-memory.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "payment dispute",
+        "remember a purchase"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "faded-ink",
+      "label": "Faded Ink",
+      "aliases": [],
+      "description": "A shopkeeper tries to read an old baki entry whose ink has faded in the paper khata.",
+      "visual_kind": "action",
+      "visual_focus": "A shopkeeper tries to read an old baki entry whose ink has faded in the paper khata.",
+      "local_cue": "a Rajshahi neighborhood grocery shop using a Bengali baki khata paper ledger, no legible customer names or amounts",
+      "image": "assets/05-faded-ink.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "faded entry",
+        "paper record"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "unpaid-month",
+      "label": "Unpaid Month",
+      "aliases": [],
+      "description": "A shopkeeper counts little cash beside several unpaid baki entries at month end.",
+      "visual_kind": "action",
+      "visual_focus": "A shopkeeper counts little cash beside several unpaid baki entries at month end.",
+      "local_cue": "a Rajshahi neighborhood grocery shop using a Bengali baki khata paper ledger, no legible customer names or amounts",
+      "image": "assets/06-unpaid-month.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unpaid dues",
+        "cash flow"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes make a baki dispute more likely?",
+    "Where have you seen a shop keep a paper khata?",
+    "Is a missing page or a remembered amount stronger evidence?",
+    "Why might shops still prefer informal credit?",
+    "If a customer disputes a baki total, what happens to trust?",
+    "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 1500,
+    "pilot_days": 7,
+    "pilot": "Observe one willing shop for a week and note how baki sales, payments, and disputes are recorded.",
+    "potential_customer": "Small shops",
+    "test_metric": "Disputed balances, missing entries, and time spent checking the khata",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.hishab.com.bd/blog/credit-collection-tracking-bangladesh/",
+      "https://baki.bd/"
+    ],
+    "editor_note": "Existing Bangladeshi products confirm this is an active market; students should test a distinct service hypothesis rather than assume there is no competition."
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "title": "Uncertain Evening Rides",
+  "slug": "uncertain-evening-rides",
+  "band_color": "auto",
+  "seed": "rajshahi-uncertain-evening-rides-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Uncertain Evening Rides"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "late-class",
+      "label": "Late Class",
+      "aliases": [],
+      "description": "A woman in a three-piece with orna exits an evening class as daylight fades.",
+      "visual_kind": "action",
+      "visual_focus": "A woman in a three-piece with orna exits an evening class as daylight fades.",
+      "local_cue": "a Rajshahi university-area evening journey by local battery-run easy bike; the woman student wears a three-piece with an orna",
+      "image": "assets/01-late-class.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "late class",
+        "travel home"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "empty-stand",
+      "label": "Empty Stand",
+      "aliases": [],
+      "description": "She reaches a nearly empty easy-bike stand and looks for a ride.",
+      "visual_kind": "action",
+      "visual_focus": "She reaches a nearly empty easy-bike stand and looks for a ride.",
+      "local_cue": "a Rajshahi university-area evening journey by local battery-run easy bike; the woman student wears a three-piece with an orna",
+      "image": "assets/02-empty-stand.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "empty stand",
+        "find a ride"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "unknown-driver",
+      "label": "Unknown Driver",
+      "aliases": [],
+      "description": "A woman in a three-piece with orna hesitates beside an easy bike driven by someone she does not know.",
+      "visual_kind": "action",
+      "visual_focus": "A woman in a three-piece with orna hesitates beside an easy bike driven by someone she does not know.",
+      "local_cue": "a Rajshahi university-area evening journey by local battery-run easy bike; the woman student wears a three-piece with an orna",
+      "image": "assets/03-unknown-driver.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unknown driver",
+        "choose a ride"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "fare-pressure",
+      "label": "Fare Pressure",
+      "aliases": [],
+      "description": "A driver asks a higher fare than the student expected before an evening trip.",
+      "visual_kind": "action",
+      "visual_focus": "A driver asks a higher fare than the student expected before an evening trip.",
+      "local_cue": "a Rajshahi university-area evening journey by local battery-run easy bike; the woman student wears a three-piece with an orna",
+      "image": "assets/04-fare-pressure.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "higher fare",
+        "travel cost"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "low-battery",
+      "label": "Low Battery",
+      "aliases": [],
+      "description": "The student checks a nearly empty phone battery while waiting for a ride.",
+      "visual_kind": "action",
+      "visual_focus": "The student checks a nearly empty phone battery while waiting for a ride.",
+      "local_cue": "a Rajshahi university-area evening journey by local battery-run easy bike; the woman student wears a three-piece with an orna",
+      "image": "assets/05-low-battery.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "low battery",
+        "call home"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "route-change",
+      "label": "Route Change",
+      "aliases": [],
+      "description": "From inside an easy bike, the student notices it turning onto an unfamiliar route.",
+      "visual_kind": "action",
+      "visual_focus": "From inside an easy bike, the student notices it turning onto an unfamiliar route.",
+      "local_cue": "a Rajshahi university-area evening journey by local battery-run easy bike; the woman student wears a three-piece with an orna",
+      "image": "assets/06-route-change.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "route change",
+        "unfamiliar turn"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes make an evening ride feel least certain?",
+    "What makes an evening trip feel comfortable or uncomfortable?",
+    "Is an unknown driver or uncertain fare harder to manage?",
+    "Why might late travel leave fewer choices?",
+    "If a rider’s location is shared too widely, what risk appears?",
+    "What could you try in 14 days for at most 8,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 8000,
+    "pilot_days": 14,
+    "pilot": "Interview riders and existing drivers about availability, fares, verification, and privacy before trying any ride arrangement.",
+    "potential_customer": "Students, institutions, or riders",
+    "test_metric": "Unmet rides, fare uncertainty, and rider trust concerns",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.thedailystar.net/news/bangladesh/news/price-commuting-woman-bangladesh-4022056",
+      "https://www.tbsnews.net/features/panorama/rickshaw-carries-mothers-love-and-sacrifice-1107941"
+    ],
+    "editor_note": "Transport-safety evidence is nationwide, not a measured Rajshahi route. No safety guarantee is implied."
+  }
+}

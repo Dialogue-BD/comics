@@ -1,0 +1,140 @@
+{
+  "title": "Exposed Documents",
+  "slug": "exposed-documents",
+  "band_color": "auto",
+  "seed": "rajshahi-exposed-documents-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Exposed Documents"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "nid-copy",
+      "label": "NID Copy",
+      "aliases": [],
+      "description": "A person holds a paper identity-card photocopy next to a phone; all details are illegible.",
+      "visual_kind": "action",
+      "visual_focus": "A person holds a paper identity-card photocopy next to a phone; all details are illegible.",
+      "local_cue": "a Bangladesh student or applicant handling an NID photocopy and phone or laptop, with every document field unreadable",
+      "image": "assets/01-nid-copy.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "ID copy",
+        "personal details"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "visible-form",
+      "label": "Visible Form",
+      "aliases": [],
+      "description": "An applicant's form is open on a shared print-shop computer, with private fields visible in layout but all text and numbers illegible.",
+      "visual_kind": "action",
+      "visual_focus": "An applicant's form is open on a shared print-shop computer, with private fields visible in layout but all text and numbers illegible.",
+      "local_cue": "a Bangladesh student or applicant handling an NID photocopy and phone or laptop, with every document field unreadable",
+      "image": "assets/02-visible-form.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "sensitive form",
+        "visible details"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "ai-upload",
+      "label": "AI Upload",
+      "aliases": [],
+      "description": "A hand pauses before tapping an upload icon beside an unredacted scan.",
+      "visual_kind": "action",
+      "visual_focus": "A hand pauses before tapping an upload icon beside an unredacted scan.",
+      "local_cue": "a Bangladesh student or applicant handling an NID photocopy and phone or laptop, with every document field unreadable",
+      "image": "assets/03-ai-upload.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "upload a file",
+        "pause before sharing"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "cloud-copy",
+      "label": "Cloud Copy",
+      "aliases": [],
+      "description": "A sensitive document appears in a phone upload history after it was shared online; all fields are illegible.",
+      "visual_kind": "action",
+      "visual_focus": "A sensitive document appears in a phone upload history after it was shared online; all fields are illegible.",
+      "local_cue": "a Bangladesh student or applicant handling an NID photocopy and phone or laptop, with every document field unreadable",
+      "image": "assets/04-cloud-copy.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "cloud copy",
+        "upload history"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "missed-field",
+      "label": "Missed Field",
+      "aliases": [],
+      "description": "A private-number field remains visible on a document that a person thought was safe to share; no legible digits.",
+      "visual_kind": "action",
+      "visual_focus": "A private-number field remains visible on a document that a person thought was safe to share; no legible digits.",
+      "local_cue": "a Bangladesh student or applicant handling an NID photocopy and phone or laptop, with every document field unreadable",
+      "image": "assets/05-missed-field.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "miss a field",
+        "check every page"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "forwarded-file",
+      "label": "Forwarded File",
+      "aliases": [],
+      "description": "A document image passes from one person's phone to another, with its private details illegible and its future sharing uncertain.",
+      "visual_kind": "action",
+      "visual_focus": "A document image passes from one person's phone to another, with its private details illegible and its future sharing uncertain.",
+      "local_cue": "a Bangladesh student or applicant handling an NID photocopy and phone or laptop, with every document field unreadable",
+      "image": "assets/06-forwarded-file.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "forward a file",
+        "lose control"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes reveal a privacy mistake?",
+    "When might someone need help with a sensitive document?",
+    "Which is riskier: uploading an original or missing one private field?",
+    "Why is one missed private field enough to create a risk?",
+    "What happens if a copied document is forwarded again?",
+    "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 1500,
+    "pilot_days": 7,
+    "pilot": "Use dummy documents to find common exposure mistakes; ask five people what they would trust before sharing.",
+    "potential_customer": "Students, applicants, or small offices",
+    "test_metric": "Common exposure mistakes, desired safeguards, and willingness to pay",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.nidw.gov.bd/UseNIDReceivingCertainServices.php",
+      "https://www.bssnews.net/business/418749"
+    ],
+    "editor_note": "The user's example motivates this privacy problem. The sources ground identity-document use and personal-data risk; they do not establish demand for any particular redaction product."
+  }
+}

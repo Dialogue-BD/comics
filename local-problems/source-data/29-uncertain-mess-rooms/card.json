@@ -1,0 +1,140 @@
+{
+  "title": "Uncertain Mess Rooms",
+  "slug": "uncertain-mess-rooms",
+  "band_color": "auto",
+  "seed": "rajshahi-uncertain-mess-rooms-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Uncertain Mess Rooms"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "room-visit",
+      "label": "Room Visit",
+      "aliases": [],
+      "description": "A student inspects a compact Rajshahi mess room with a bed, desk, and barred window.",
+      "visual_kind": "action",
+      "visual_focus": "A student inspects a compact Rajshahi mess room with a bed, desk, and barred window.",
+      "local_cue": "an off-campus Rajshahi university mess room with simple furniture, concrete building and metal window grilles",
+      "image": "assets/01-room-visit.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "view a room",
+        "shared mess"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "long-commute",
+      "label": "Long Commute",
+      "aliases": [],
+      "description": "The student checks the walk from a mess gate to a university entrance.",
+      "visual_kind": "action",
+      "visual_focus": "The student checks the walk from a mess gate to a university entrance.",
+      "local_cue": "an off-campus Rajshahi university mess room with simple furniture, concrete building and metal window grilles",
+      "image": "assets/02-long-commute.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "travel distance",
+        "daily commute"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "deposit-request",
+      "label": "Deposit Request",
+      "aliases": [],
+      "description": "A manager holds out a deposit receipt while the student counts cash.",
+      "visual_kind": "action",
+      "visual_focus": "A manager holds out a deposit receipt while the student counts cash.",
+      "local_cue": "an off-campus Rajshahi university mess room with simple furniture, concrete building and metal window grilles",
+      "image": "assets/03-deposit-request.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "security deposit",
+        "get a receipt"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "house-rules",
+      "label": "House Rules",
+      "aliases": [],
+      "description": "Two roommates point to a posted rules sheet with unreadable writing.",
+      "visual_kind": "action",
+      "visual_focus": "Two roommates point to a posted rules sheet with unreadable writing.",
+      "local_cue": "an off-campus Rajshahi university mess room with simple furniture, concrete building and metal window grilles",
+      "image": "assets/04-house-rules.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "house rules",
+        "compare terms"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "old-photo",
+      "label": "Old Photo",
+      "aliases": [],
+      "description": "A phone listing shows a tidy room while the actual room has different furniture.",
+      "visual_kind": "action",
+      "visual_focus": "A phone listing shows a tidy room while the actual room has different furniture.",
+      "local_cue": "an off-campus Rajshahi university mess room with simple furniture, concrete building and metal window grilles",
+      "image": "assets/05-old-photo.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "outdated listing",
+        "verify a photo"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "surprise-fee",
+      "label": "Surprise Fee",
+      "aliases": [],
+      "description": "A student at a mess desk is asked for an extra fee while looking at a room key.",
+      "visual_kind": "action",
+      "visual_focus": "A student at a mess desk is asked for an extra fee while looking at a room key.",
+      "local_cue": "an off-campus Rajshahi university mess room with simple furniture, concrete building and metal window grilles",
+      "image": "assets/06-surprise-fee.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "surprise fee",
+        "moving cost"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes could cause a bad housing choice?",
+    "How have you or someone you know found a mess room?",
+    "Is an unknown deposit or an outdated photo more serious?",
+    "Why might a listing hide a deposit or house rule?",
+    "If a room changes after a visit, who should find out?",
+    "What could you try in 7 days for at most 2,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 2000,
+    "pilot_days": 7,
+    "pilot": "Walk through five current room searches with students and record surprise costs or mismatches.",
+    "potential_customer": "Students or listing owners",
+    "test_metric": "Unexpected fees, listing mismatches, and student decision time",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://en.prothomalo.com/amp/story/bangladesh/tvv6gspwpu",
+      "https://online.thedailystar.net/youth/education/campus/news/ru-students-still-face-poor-food-housing-woes-3963861"
+    ],
+    "editor_note": ""
+  }
+}

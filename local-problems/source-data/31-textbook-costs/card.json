@@ -1,0 +1,139 @@
+{
+  "title": "Textbook Costs",
+  "slug": "textbook-costs",
+  "band_color": "auto",
+  "seed": "rajshahi-textbook-costs-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Textbook Costs"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "book-stall",
+      "label": "Book Stall",
+      "aliases": [],
+      "description": "A student scans stacked used textbooks at a Sonadighi-style book stall.",
+      "visual_kind": "action",
+      "visual_focus": "A student scans stacked used textbooks at a Sonadighi-style book stall.",
+      "local_cue": "the Sonadighi-area used-book market in Rajshahi with narrow stalls, Bangla and English book spines without legible text",
+      "image": "assets/01-book-stall.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "used textbook",
+        "book stall"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "wrong-edition",
+      "label": "Wrong Edition",
+      "aliases": [],
+      "description": "A student compares two visibly different editions of the same subject book.",
+      "visual_kind": "action",
+      "visual_focus": "A student compares two visibly different editions of the same subject book.",
+      "local_cue": "the Sonadighi-area used-book market in Rajshahi with narrow stalls, Bangla and English book spines without legible text",
+      "image": "assets/02-wrong-edition.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "wrong edition",
+        "check a syllabus"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "marked-pages",
+      "label": "Marked Pages",
+      "aliases": [],
+      "description": "A student checks annotations and torn corners before paying.",
+      "visual_kind": "action",
+      "visual_focus": "A student checks annotations and torn corners before paying.",
+      "local_cue": "the Sonadighi-area used-book market in Rajshahi with narrow stalls, Bangla and English book spines without legible text",
+      "image": "assets/03-marked-pages.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "marked pages",
+        "book condition"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "price-haggling",
+      "label": "Price Haggling",
+      "aliases": [],
+      "description": "A bookseller and student compare two price tags and a small cash offer.",
+      "visual_kind": "action",
+      "visual_focus": "A bookseller and student compare two price tags and a small cash offer.",
+      "local_cue": "the Sonadighi-area used-book market in Rajshahi with narrow stalls, Bangla and English book spines without legible text",
+      "image": "assets/04-price-haggling.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "fair price",
+        "bargain politely"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "sold-out-copy",
+      "label": "Sold-Out Copy",
+      "aliases": [],
+      "description": "A student points to an empty space in a used-book stall where the required title should be.",
+      "visual_kind": "action",
+      "visual_focus": "A student points to an empty space in a used-book stall where the required title should be.",
+      "local_cue": "the Sonadighi-area used-book market in Rajshahi with narrow stalls, Bangla and English book spines without legible text",
+      "image": "assets/05-sold-out-copy.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "sold-out book",
+        "search again"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "low-resale-offer",
+      "label": "Low Resale Offer",
+      "aliases": [],
+      "description": "A graduating student presents a stack of books while a buyer offers only a few notes.",
+      "visual_kind": "action",
+      "visual_focus": "A graduating student presents a stack of books while a buyer offers only a few notes.",
+      "local_cue": "the Sonadighi-area used-book market in Rajshahi with narrow stalls, Bangla and English book spines without legible text",
+      "image": "assets/06-low-resale-offer.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "resale offer",
+        "recover costs"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes could waste a student's money?",
+    "Where do students near you look for secondhand books?",
+    "Is a cheaper marked copy better than a clean older edition?",
+    "Why is the exact edition important for some courses?",
+    "If shops stop buying old books, who loses?",
+    "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 1500,
+    "pilot_days": 7,
+    "pilot": "Ask ten students what books they need, then compare available copies and prices at existing stalls.",
+    "potential_customer": "Students or bookshops",
+    "test_metric": "Needed editions, price gaps, and books that remain unsold",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.bhorerkagoj.net/thinking/799674"
+    ],
+    "editor_note": "The source describes the Sonadighi used-book market; exact textbook shortages are a discussion scenario."
+  }
+}

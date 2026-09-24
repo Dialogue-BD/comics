@@ -1,0 +1,139 @@
+{
+  "title": "Unclear Repair Terms",
+  "slug": "unclear-repair-terms",
+  "band_color": "auto",
+  "seed": "rajshahi-unclear-repair-terms-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Unclear Repair Terms"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "cracked-screen",
+      "label": "Cracked Screen",
+      "aliases": [],
+      "description": "A student shows a cracked Android phone screen at a local repair counter.",
+      "visual_kind": "action",
+      "visual_focus": "A student shows a cracked Android phone screen at a local repair counter.",
+      "local_cue": "a small Rajshahi Android phone-repair shop with a Bangladeshi customer, simple tools and replacement screens",
+      "image": "assets/01-cracked-screen.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "cracked screen",
+        "seek repair"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "two-parts",
+      "label": "Two Parts",
+      "aliases": [],
+      "description": "A technician shows a lower-cost and a higher-cost replacement screen in separate trays.",
+      "visual_kind": "action",
+      "visual_focus": "A technician shows a lower-cost and a higher-cost replacement screen in separate trays.",
+      "local_cue": "a small Rajshahi Android phone-repair shop with a Bangladeshi customer, simple tools and replacement screens",
+      "image": "assets/02-two-parts.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "parts choice",
+        "compare quality"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "vague-price",
+      "label": "Vague Price",
+      "aliases": [],
+      "description": "A technician gestures about possible costs while the phone owner holds cash and has no written quote.",
+      "visual_kind": "action",
+      "visual_focus": "A technician gestures about possible costs while the phone owner holds cash and has no written quote.",
+      "local_cue": "a small Rajshahi Android phone-repair shop with a Bangladeshi customer, simple tools and replacement screens",
+      "image": "assets/03-vague-price.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unclear cost",
+        "verbal quote"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "unlabeled-parts",
+      "label": "Unlabeled Parts",
+      "aliases": [],
+      "description": "Two replacement screens with no clear quality labels lie beside an opened phone.",
+      "visual_kind": "action",
+      "visual_focus": "Two replacement screens with no clear quality labels lie beside an opened phone.",
+      "local_cue": "a small Rajshahi Android phone-repair shop with a Bangladeshi customer, simple tools and replacement screens",
+      "image": "assets/04-unlabeled-parts.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "part quality",
+        "replacement screen"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "delayed-pickup",
+      "label": "Delayed Pickup",
+      "aliases": [],
+      "description": "A customer arrives for the phone, but it remains disassembled on the workbench.",
+      "visual_kind": "action",
+      "visual_focus": "A customer arrives for the phone, but it remains disassembled on the workbench.",
+      "local_cue": "a small Rajshahi Android phone-repair shop with a Bangladeshi customer, simple tools and replacement screens",
+      "image": "assets/05-delayed-pickup.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "late repair",
+        "return date"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "repeat-fault",
+      "label": "Repeat Fault",
+      "aliases": [],
+      "description": "A newly repaired phone screen flickers again while the owner looks disappointed.",
+      "visual_kind": "action",
+      "visual_focus": "A newly repaired phone screen flickers again while the owner looks disappointed.",
+      "local_cue": "a small Rajshahi Android phone-repair shop with a Bangladeshi customer, simple tools and replacement screens",
+      "image": "assets/06-repeat-fault.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "repeat fault",
+        "repair guarantee"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes could lead to a repair dispute?",
+    "What would you ask before leaving your phone for repair?",
+    "Is an unclear cost or unknown part quality more worrying?",
+    "Why can a verbal quote change after a device is opened?",
+    "If a repair fails soon after pickup, who bears the cost?",
+    "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 1500,
+    "pilot_days": 7,
+    "pilot": "Observe twenty repair quotes at a willing shop and ask customers which terms were unclear.",
+    "potential_customer": "Repair shops or phone owners",
+    "test_metric": "Unclear quotes, repair delays, repeat faults, and disputes",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://service.startech.com.bd/mobile-repair-service"
+    ],
+    "editor_note": "The source describes a transparent repair model; the card tests whether a simpler local version would help."
+  }
+}

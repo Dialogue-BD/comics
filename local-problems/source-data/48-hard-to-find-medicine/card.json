@@ -1,0 +1,140 @@
+{
+  "title": "Hard-To-Find Medicine",
+  "slug": "hard-to-find-medicine",
+  "band_color": "auto",
+  "seed": "rajshahi-hard-to-find-medicine-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Hard-To-Find Medicine"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "prescription",
+      "label": "Prescription",
+      "aliases": [],
+      "description": "A patient holds a prescription with no readable medical details at a pharmacy counter.",
+      "visual_kind": "action",
+      "visual_focus": "A patient holds a prescription with no readable medical details at a pharmacy counter.",
+      "local_cue": "a patient and licensed-looking pharmacist in a Rajshahi neighborhood pharmacy, no legible prescription or medicine brand",
+      "image": "assets/01-prescription.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "prescription",
+        "exact strength"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "empty-shelf",
+      "label": "Empty Shelf",
+      "aliases": [],
+      "description": "A pharmacist checks an empty space where a requested medicine would normally be stored.",
+      "visual_kind": "action",
+      "visual_focus": "A pharmacist checks an empty space where a requested medicine would normally be stored.",
+      "local_cue": "a patient and licensed-looking pharmacist in a Rajshahi neighborhood pharmacy, no legible prescription or medicine brand",
+      "image": "assets/02-empty-shelf.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "out of stock",
+        "check a shelf"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "second-shop",
+      "label": "Second Shop",
+      "aliases": [],
+      "description": "The patient walks to another licensed pharmacy with the prescription.",
+      "visual_kind": "action",
+      "visual_focus": "The patient walks to another licensed pharmacy with the prescription.",
+      "local_cue": "a patient and licensed-looking pharmacist in a Rajshahi neighborhood pharmacy, no legible prescription or medicine brand",
+      "image": "assets/03-second-shop.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "second pharmacy",
+        "search nearby"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "no-stock-answer",
+      "label": "No Stock Answer",
+      "aliases": [],
+      "description": "A pharmacist tries to call another shop about stock, but the phone goes unanswered while the patient waits.",
+      "visual_kind": "action",
+      "visual_focus": "A pharmacist tries to call another shop about stock, but the phone goes unanswered while the patient waits.",
+      "local_cue": "a patient and licensed-looking pharmacist in a Rajshahi neighborhood pharmacy, no legible prescription or medicine brand",
+      "image": "assets/04-no-stock-answer.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unanswered inquiry",
+        "unknown stock"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "wrong-strength",
+      "label": "Wrong Strength",
+      "aliases": [],
+      "description": "A patient compares two medicine packs of different strengths while a pharmacist checks the prescription; all text illegible.",
+      "visual_kind": "action",
+      "visual_focus": "A patient compares two medicine packs of different strengths while a pharmacist checks the prescription; all text illegible.",
+      "local_cue": "a patient and licensed-looking pharmacist in a Rajshahi neighborhood pharmacy, no legible prescription or medicine brand",
+      "image": "assets/05-wrong-strength.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "correct strength",
+        "check carefully"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "long-search",
+      "label": "Long Search",
+      "aliases": [],
+      "description": "A patient carrying a prescription passes several pharmacy counters without finding the required pack.",
+      "visual_kind": "action",
+      "visual_focus": "A patient carrying a prescription passes several pharmacy counters without finding the required pack.",
+      "local_cue": "a patient and licensed-looking pharmacist in a Rajshahi neighborhood pharmacy, no legible prescription or medicine brand",
+      "image": "assets/06-long-search.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "search several shops",
+        "wasted trip"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes cause unnecessary travel?",
+    "How do people usually find a medicine that one shop lacks?",
+    "Is an empty shelf or the wrong strength a bigger problem?",
+    "Why must a pharmacist confirm the exact medicine and strength?",
+    "What could go wrong if a patient buys a different pack without advice?",
+    "What could you try in 14 days for at most 3,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 3000,
+    "pilot_days": 14,
+    "pilot": "Ask ten consenting patients and licensed pharmacies which stock questions cause wasted trips; do not handle prescriptions.",
+    "potential_customer": "Patients or pharmacies",
+    "test_metric": "Unnecessary pharmacy trips and uncertainty about exact stock",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.thedailystar.net/news/bangladesh/news/year-disruptions-health-sector-4069776",
+      "https://www.pharmaz247.com/modules/ecommerce"
+    ],
+    "editor_note": "National supply disruption and an existing pharmacy-stock product ground the need and possible model, not measured demand in Rajshahi. No medicine substitution or diagnosis should be suggested."
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "title": "Elder Isolation",
+  "slug": "elder-isolation",
+  "band_color": "auto",
+  "seed": "rajshahi-elder-isolation-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Elder Isolation"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "quiet-home",
+      "label": "Quiet Home",
+      "aliases": [],
+      "description": "An older person sits alone beside a phone in a modest Rajshahi home.",
+      "visual_kind": "action",
+      "visual_focus": "An older person sits alone beside a phone in a modest Rajshahi home.",
+      "local_cue": "an older resident in a modest Rajshahi home and courtyard with a protective street gate and locally typical clothing",
+      "image": "assets/01-quiet-home.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "living alone",
+        "daily routine"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "missed-call",
+      "label": "Missed Call",
+      "aliases": [],
+      "description": "The phone shows an unanswered call icon while the person is outside in the courtyard.",
+      "visual_kind": "action",
+      "visual_focus": "The phone shows an unanswered call icon while the person is outside in the courtyard.",
+      "local_cue": "an older resident in a modest Rajshahi home and courtyard with a protective street gate and locally typical clothing",
+      "image": "assets/02-missed-call.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "missed call",
+        "try again"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "unanswered-gate",
+      "label": "Unanswered Gate",
+      "aliases": [],
+      "description": "A known neighbor calls from an older resident’s gate but receives no answer.",
+      "visual_kind": "action",
+      "visual_focus": "A known neighbor calls from an older resident’s gate but receives no answer.",
+      "local_cue": "an older resident in a modest Rajshahi home and courtyard with a protective street gate and locally typical clothing",
+      "image": "assets/03-unanswered-gate.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "no answer",
+        "check again"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "heavy-errand",
+      "label": "Heavy Errand",
+      "aliases": [],
+      "description": "An older resident carries a heavy grocery bag home alone along a Rajshahi lane.",
+      "visual_kind": "action",
+      "visual_focus": "An older resident carries a heavy grocery bag home alone along a Rajshahi lane.",
+      "local_cue": "an older resident in a modest Rajshahi home and courtyard with a protective street gate and locally typical clothing",
+      "image": "assets/04-heavy-errand.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "heavy errand",
+        "carry groceries"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "busy-contact",
+      "label": "Busy Contact",
+      "aliases": [],
+      "description": "A chosen contact sees a missed call while occupied at work and cannot answer immediately.",
+      "visual_kind": "action",
+      "visual_focus": "A chosen contact sees a missed call while occupied at work and cannot answer immediately.",
+      "local_cue": "an older resident in a modest Rajshahi home and courtyard with a protective street gate and locally typical clothing",
+      "image": "assets/05-busy-contact.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "busy contact",
+        "missed call"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "unwanted-knock",
+      "label": "Unwanted Knock",
+      "aliases": [],
+      "description": "An older resident hesitates when an unfamiliar visitor knocks at the home gate.",
+      "visual_kind": "action",
+      "visual_focus": "An older resident hesitates when an unfamiliar visitor knocks at the home gate.",
+      "local_cue": "an older resident in a modest Rajshahi home and courtyard with a protective street gate and locally typical clothing",
+      "image": "assets/06-unwanted-knock.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unwanted visit",
+        "personal privacy"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes show why contact can be difficult?",
+    "When might an older resident want contact or practical help?",
+    "Is a missed call or an unwanted visit more troubling?",
+    "Why might a chosen contact be hard to reach?",
+    "What could happen if helpers ignore an older person’s preferences?",
+    "What could you try in 14 days for at most 5,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 5000,
+    "pilot_days": 14,
+    "pilot": "Ask willing older residents what contact they want, what they decline, and which practical gaps remain.",
+    "potential_customer": "Older residents or relatives",
+    "test_metric": "Desired contact, missed help, and privacy preferences",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://socialprotection.gov.bd/2026/05/female-labor-migration-and-household-care-dynamics-in-bangladesh/",
+      "https://www.dhakatribune.com/bangladesh/378410/aged-and-alone-the-hidden-sorrows-in-old-age"
+    ],
+    "editor_note": "The card avoids assuming every older adult has relatives, a smartphone, or a desire for visits."
+  }
+}

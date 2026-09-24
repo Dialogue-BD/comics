@@ -1,0 +1,140 @@
+{
+  "title": "Allowance Barriers",
+  "slug": "allowance-barriers",
+  "band_color": "auto",
+  "seed": "rajshahi-allowance-barriers-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Allowance Barriers"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "payment-message",
+      "label": "Payment Message",
+      "aliases": [],
+      "description": "An older person holds a basic phone with a payment notification icon and asks for help.",
+      "visual_kind": "action",
+      "visual_focus": "An older person holds a basic phone with a payment notification icon and asks for help.",
+      "local_cue": "an older Bangladeshi allowance recipient using a basic phone at a neighborhood mobile-money agent, no readable PIN or account data",
+      "image": "assets/01-payment-message.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "payment message",
+        "read a notice"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "agent-queue",
+      "label": "Agent Queue",
+      "aliases": [],
+      "description": "Several people wait at a neighborhood mobile-money agent counter.",
+      "visual_kind": "action",
+      "visual_focus": "Several people wait at a neighborhood mobile-money agent counter.",
+      "local_cue": "an older Bangladeshi allowance recipient using a basic phone at a neighborhood mobile-money agent, no readable PIN or account data",
+      "image": "assets/02-agent-queue.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "cash-out agent",
+        "wait in line"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "cash-out-fee",
+      "label": "Cash-Out Fee",
+      "aliases": [],
+      "description": "A recipient studies the fee on a printed transaction receipt; figures are illegible.",
+      "visual_kind": "action",
+      "visual_focus": "A recipient studies the fee on a printed transaction receipt; figures are illegible.",
+      "local_cue": "an older Bangladeshi allowance recipient using a basic phone at a neighborhood mobile-money agent, no readable PIN or account data",
+      "image": "assets/03-cash-out-fee.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "cash-out fee",
+        "check a receipt"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "watching-eyes",
+      "label": "Watching Eyes",
+      "aliases": [],
+      "description": "While an older recipient enters a PIN at a mobile-money counter, a person in the queue looks toward the keypad; no digits are visible.",
+      "visual_kind": "action",
+      "visual_focus": "While an older recipient enters a PIN at a mobile-money counter, a person in the queue looks toward the keypad; no digits are visible.",
+      "local_cue": "an older Bangladeshi allowance recipient using a basic phone at a neighborhood mobile-money agent, no readable PIN or account data",
+      "image": "assets/04-watching-eyes.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "PIN privacy",
+        "watching eyes"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "unclear-icons",
+      "label": "Unclear Icons",
+      "aliases": [],
+      "description": "An older allowance recipient studies unfamiliar payment-menu icons on a phone.",
+      "visual_kind": "action",
+      "visual_focus": "An older allowance recipient studies unfamiliar payment-menu icons on a phone.",
+      "local_cue": "an older Bangladeshi allowance recipient using a basic phone at a neighborhood mobile-money agent, no readable PIN or account data",
+      "image": "assets/05-unclear-icons.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unfamiliar icons",
+        "payment menu"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "unread-receipt",
+      "label": "Unread Receipt",
+      "aliases": [],
+      "description": "An older person holds a small cash-out receipt but cannot easily read the tiny print.",
+      "visual_kind": "action",
+      "visual_focus": "An older person holds a small cash-out receipt but cannot easily read the tiny print.",
+      "local_cue": "an older Bangladeshi allowance recipient using a basic phone at a neighborhood mobile-money agent, no readable PIN or account data",
+      "image": "assets/06-unread-receipt.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "small print",
+        "check a receipt"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes make a cash-out most confusing?",
+    "What digital payment step is confusing for older people you know?",
+    "Is an unclear message or a cash-out fee harder to manage?",
+    "Why might someone reveal a PIN to a well-meaning helper?",
+    "What could go wrong if a helper controls the phone?",
+    "What could you try in 7 days for at most 3,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 3000,
+    "pilot_days": 7,
+    "pilot": "Ask five willing recipients to explain sample payment messages and identify confusing steps without touching accounts.",
+    "potential_customer": "Community organization or recipient family",
+    "test_metric": "Confusing payment steps, help sought, and PIN-risk awareness",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.thedailystar.net/news/bangladesh/news/experts-warn-gaps-digital-social-protection-4021481",
+      "https://www.bb.org.bd/en/index.php/services/cipc_procedure"
+    ],
+    "editor_note": ""
+  }
+}

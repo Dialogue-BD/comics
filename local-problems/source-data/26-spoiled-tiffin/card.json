@@ -1,0 +1,140 @@
+{
+  "title": "Spoiled Tiffin",
+  "slug": "spoiled-tiffin",
+  "band_color": "auto",
+  "seed": "rajshahi-spoiled-tiffin-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Spoiled Tiffin"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "morning-packing",
+      "label": "Morning Packing",
+      "aliases": [],
+      "description": "A Bangladeshi parent packs rice and vegetable curry into a reusable steel tiffin box before a Rajshahi student leaves home.",
+      "visual_kind": "action",
+      "visual_focus": "A Bangladeshi parent packs rice and vegetable curry into a reusable steel tiffin box before a Rajshahi student leaves home.",
+      "local_cue": "a Rajshahi student's steel tiffin box, cloth lunch bag, simple home or classroom, hot summer day and local battery-run easy bike; no unsafe food is eaten",
+      "image": "assets/01-morning-packing.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "pack lunch",
+        "tiffin box"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "sunny-commute",
+      "label": "Sunny Commute",
+      "aliases": [],
+      "description": "A student carries a cloth lunch bag while riding a local battery-run easy bike under strong midday sun.",
+      "visual_kind": "action",
+      "visual_focus": "A student carries a cloth lunch bag while riding a local battery-run easy bike under strong midday sun.",
+      "local_cue": "a Rajshahi student's steel tiffin box, cloth lunch bag, simple home or classroom, hot summer day and local battery-run easy bike; no unsafe food is eaten",
+      "image": "assets/02-sunny-commute.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "carry lunch",
+        "hot commute"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "hot-bag",
+      "label": "Hot Bag",
+      "aliases": [],
+      "description": "The student's lunch bag rests in a hot classroom corner beside a still ceiling fan, long before lunch.",
+      "visual_kind": "action",
+      "visual_focus": "The student's lunch bag rests in a hot classroom corner beside a still ceiling fan, long before lunch.",
+      "local_cue": "a Rajshahi student's steel tiffin box, cloth lunch bag, simple home or classroom, hot summer day and local battery-run easy bike; no unsafe food is eaten",
+      "image": "assets/03-hot-bag.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "warm bag",
+        "long wait"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "sour-smell",
+      "label": "Sour Smell",
+      "aliases": [],
+      "description": "At lunchtime the student opens the tiffin box, notices an unpleasant smell, and pulls back without eating.",
+      "visual_kind": "action",
+      "visual_focus": "At lunchtime the student opens the tiffin box, notices an unpleasant smell, and pulls back without eating.",
+      "local_cue": "a Rajshahi student's steel tiffin box, cloth lunch bag, simple home or classroom, hot summer day and local battery-run easy bike; no unsafe food is eaten",
+      "image": "assets/04-sour-smell.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "smell spoiled",
+        "skip lunch"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "uneaten-lunch",
+      "label": "Uneaten Lunch",
+      "aliases": [],
+      "description": "At the end of lunch break, a full steel tiffin sits untouched beside a hungry student in a Rajshahi classroom.",
+      "visual_kind": "action",
+      "visual_focus": "At the end of lunch break, a full steel tiffin sits untouched beside a hungry student in a Rajshahi classroom.",
+      "local_cue": "a Rajshahi student's steel tiffin box, cloth lunch bag, simple home or classroom, hot summer day and local battery-run easy bike; no unsafe food is eaten",
+      "image": "assets/05-uneaten-lunch.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "uneaten lunch",
+        "wasted meal"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "extra-purchase",
+      "label": "Extra Purchase",
+      "aliases": [],
+      "description": "The hungry student buys a replacement lunch from a modest Rajshahi campus-area food stall.",
+      "visual_kind": "action",
+      "visual_focus": "The hungry student buys a replacement lunch from a modest Rajshahi campus-area food stall.",
+      "local_cue": "a Rajshahi student's steel tiffin box, cloth lunch bag, simple home or classroom, hot summer day and local battery-run easy bike; no unsafe food is eaten",
+      "image": "assets/06-extra-purchase.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "buy lunch twice",
+        "extra expense"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes show what the heat costs the student?",
+    "When has packed food become unappealing before you could eat it?",
+    "Is food waste or the extra lunch expense the bigger problem?",
+    "Why might a lunch bag become hot before noon?",
+    "If a student skips the spoiled meal, what problem follows?",
+    "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 1500,
+    "pilot_days": 7,
+    "pilot": "Ask ten students or workers how they carry lunch, how long it stays warm, and how often food must be discarded; use a food thermometer if available.",
+    "potential_customer": "Students, workers, households, or food sellers",
+    "test_metric": "Time without cooling, discarded meals, and replacement-lunch costs",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.thedailystar.net/health/healthcare/news/ramadan-bazaar-food-safety-battling-high-temperatures-hygiene-and-health-3849031",
+      "https://www.dhakatribune.com/amp/bangladesh/nation/344378/heatwave-sweeps-rajshahi-diarrhoea-outbreak-on"
+    ],
+    "editor_note": "The sources establish food-safety risk in high heat and Rajshahi heat conditions. The tiffin story is an illustrative student scenario; it does not diagnose spoilage from smell alone."
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "title": "Uncertain Seed Quality",
+  "slug": "uncertain-seed-quality",
+  "band_color": "auto",
+  "seed": "rajshahi-uncertain-seed-quality-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Uncertain Seed Quality"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "seed-packet",
+      "label": "Seed Packet",
+      "aliases": [],
+      "description": "A farmer studies a sealed seed packet in a Barind-area supply shop; printing is unreadable.",
+      "visual_kind": "action",
+      "visual_focus": "A farmer studies a sealed seed packet in a Barind-area supply shop; printing is unreadable.",
+      "local_cue": "a Barind-area small farmer near Rajshahi, reddish dry soil and a licensed-looking local seed shop without legible brand text",
+      "image": "assets/01-seed-packet.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "seed packet",
+        "choose a variety"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "missing-seed-receipt",
+      "label": "Missing Seed Receipt",
+      "aliases": [],
+      "description": "The farmer pays cash for seed packets, but the seller turns away without giving a receipt.",
+      "visual_kind": "action",
+      "visual_focus": "The farmer pays cash for seed packets, but the seller turns away without giving a receipt.",
+      "local_cue": "a Barind-area small farmer near Rajshahi, reddish dry soil and a licensed-looking local seed shop without legible brand text",
+      "image": "assets/02-missing-seed-receipt.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "missing receipt",
+        "cash purchase"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "bare-row",
+      "label": "Bare Row",
+      "aliases": [],
+      "description": "A Barind farmer surveys a planted row with many empty gaps where seedlings should have emerged.",
+      "visual_kind": "action",
+      "visual_focus": "A Barind farmer surveys a planted row with many empty gaps where seedlings should have emerged.",
+      "local_cue": "a Barind-area small farmer near Rajshahi, reddish dry soil and a licensed-looking local seed shop without legible brand text",
+      "image": "assets/03-bare-row.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "bare row",
+        "poor germination"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "weak-sprouts",
+      "label": "Weak Sprouts",
+      "aliases": [],
+      "description": "Only a few seeds sprout in the tray while others remain bare.",
+      "visual_kind": "action",
+      "visual_focus": "Only a few seeds sprout in the tray while others remain bare.",
+      "local_cue": "a Barind-area small farmer near Rajshahi, reddish dry soil and a licensed-looking local seed shop without legible brand text",
+      "image": "assets/04-weak-sprouts.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "weak sprouting",
+        "poor germination"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "dealer-visit",
+      "label": "Dealer Visit",
+      "aliases": [],
+      "description": "The farmer shows an opened seed packet to the seller, who cannot identify its batch.",
+      "visual_kind": "action",
+      "visual_focus": "The farmer shows an opened seed packet to the seller, who cannot identify its batch.",
+      "local_cue": "a Barind-area small farmer near Rajshahi, reddish dry soil and a licensed-looking local seed shop without legible brand text",
+      "image": "assets/05-dealer-visit.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "return to dealer",
+        "unknown batch"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "missing-batch",
+      "label": "Missing Batch",
+      "aliases": [],
+      "description": "A farmer searches an opened seed packet for a usable batch mark but finds none legible.",
+      "visual_kind": "action",
+      "visual_focus": "A farmer searches an opened seed packet for a usable batch mark but finds none legible.",
+      "local_cue": "a Barind-area small farmer near Rajshahi, reddish dry soil and a licensed-looking local seed shop without legible brand text",
+      "image": "assets/06-missing-batch.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "batch number",
+        "trace a purchase"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes give a farmer evidence of a problem?",
+    "How do farmers near you choose seed sellers?",
+    "Is missing batch information or weak sprouts more serious?",
+    "Why is poor germination costly even if seeds are cheap?",
+    "If seeds fail after planting, what evidence could a farmer still gather?",
+    "What could you try in 14 days for at most 5,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 5000,
+    "pilot_days": 14,
+    "pilot": "Ask growers what proof they receive and run small labeled germination checks on purchased samples.",
+    "potential_customer": "Seed sellers or farmer groups",
+    "test_metric": "Missing seed records, germination results, and farmer losses",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.tbsnews.net/bangladesh/two-badc-officials-suspended-over-distribution-faulty-onion-seeds-farmers-1014491",
+      "https://www.tbsnews.net/supplement/access-quality-seeds-and-our-research-facilities-bangladesh-pathways-resilient"
+    ],
+    "editor_note": "The 2024 faulty-seed case is outside Rajshahi; the card asks about a small farmer's general purchasing risk, not local misconduct."
+  }
+}

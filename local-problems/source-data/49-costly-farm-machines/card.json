@@ -1,0 +1,140 @@
+{
+  "title": "Costly Farm Machines",
+  "slug": "costly-farm-machines",
+  "band_color": "auto",
+  "seed": "rajshahi-costly-farm-machines-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Costly Farm Machines"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "small-plot",
+      "label": "Small Plot",
+      "aliases": [],
+      "description": "A farmer stands beside a modest Barind crop plot that needs preparation.",
+      "visual_kind": "action",
+      "visual_focus": "A farmer stands beside a modest Barind crop plot that needs preparation.",
+      "local_cue": "a small Barind farm near Rajshahi with local crop plots and locally plausible shared agricultural machinery",
+      "image": "assets/01-small-plot.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "small plot",
+        "farm task"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "costly-machine",
+      "label": "Costly Machine",
+      "aliases": [],
+      "description": "The farmer examines a powered farm tool at a dealer but hesitates at its price tag.",
+      "visual_kind": "action",
+      "visual_focus": "The farmer examines a powered farm tool at a dealer but hesitates at its price tag.",
+      "local_cue": "a small Barind farm near Rajshahi with local crop plots and locally plausible shared agricultural machinery",
+      "image": "assets/02-costly-machine.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "buy a machine",
+        "high upfront cost"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "no-available-tool",
+      "label": "No Available Tool",
+      "aliases": [],
+      "description": "A farmer reaches an empty machinery shed during the busy season.",
+      "visual_kind": "action",
+      "visual_focus": "A farmer reaches an empty machinery shed during the busy season.",
+      "local_cue": "a small Barind farm near Rajshahi with local crop plots and locally plausible shared agricultural machinery",
+      "image": "assets/03-no-available-tool.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "no machine",
+        "busy season"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "clashing-needs",
+      "label": "Clashing Needs",
+      "aliases": [],
+      "description": "Two farmers ask the same machine owner for help on the same planting morning.",
+      "visual_kind": "action",
+      "visual_focus": "Two farmers ask the same machine owner for help on the same planting morning.",
+      "local_cue": "a small Barind farm near Rajshahi with local crop plots and locally plausible shared agricultural machinery",
+      "image": "assets/04-clashing-needs.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "same-day demand",
+        "limited machines"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "unfamiliar-controls",
+      "label": "Unfamiliar Controls",
+      "aliases": [],
+      "description": "A farmer hesitates at the controls of a large farm machine without an operator nearby.",
+      "visual_kind": "action",
+      "visual_focus": "A farmer hesitates at the controls of a large farm machine without an operator nearby.",
+      "local_cue": "a small Barind farm near Rajshahi with local crop plots and locally plausible shared agricultural machinery",
+      "image": "assets/05-unfamiliar-controls.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "unfamiliar controls",
+        "trained operator"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "machine-breakdown",
+      "label": "Machine Breakdown",
+      "aliases": [],
+      "description": "A mechanic repairs a stalled rented farm machine while the next farmer waits beside a ready field.",
+      "visual_kind": "action",
+      "visual_focus": "A mechanic repairs a stalled rented farm machine while the next farmer waits beside a ready field.",
+      "local_cue": "a small Barind farm near Rajshahi with local crop plots and locally plausible shared agricultural machinery",
+      "image": "assets/06-machine-breakdown.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "machine downtime",
+        "maintenance plan"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes could delay a farmer at the busiest time?",
+    "What farm tool would be useful to hire only occasionally?",
+    "Is an unavailable tool or a broken one harder during planting?",
+    "Why does timing matter more during planting or harvest?",
+    "If one machine serves several farms, who waits?",
+    "What could you try in 14 days for at most 5,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 5000,
+    "pilot_days": 14,
+    "pilot": "Ask growers and equipment owners when machines are unavailable, idle, or too costly to hire.",
+    "potential_customer": "Small farmers or equipment owners",
+    "test_metric": "Unmet machine demand, idle equipment, and hire costs",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://b.bssnews.net/agriculture-news/313578",
+      "https://alfaagroltd.com/"
+    ],
+    "editor_note": "Existing machinery services show this is an established model; test availability and trust in one local context."
+  }
+}

@@ -1,0 +1,2012 @@
+{
+  "schema_version": 2,
+  "status": "rendered-and-validated",
+  "locale": "Rajshahi / Bangladesh",
+  "positioning": "Everyday citizen-scale problems that students can investigate and potentially solve; the card title and all six front scenes identify the problem, not a selected product or service.",
+  "funding_policy": "Amounts are optional cash ceilings for a 7–14 day first experiment, scaled to the problem, not grants required to begin or full launch costs. Students should use existing tools and willing partners, pay for any extra work, test with real users, and name what evidence would justify a larger seed or angel investment later.",
+  "agency_goal": "Students should leave each card seeing a nearby problem they can investigate and a first action they can afford this week. They may spend less than the ceiling or nothing at all.",
+  "card_authoring_rule": "The visible front shows causes, constraints, current workarounds, and consequences. The reverse questions build toward an open proposal; no one solution is presented as the answer.",
+  "visual_policy": "Six distinct action scenes, labels over matching pictures, Bangladesh/Rajshahi material context. Depicted women wear three-pieces with ornas or burkas. No legible sensitive details in artwork.",
+  "question_order": [
+    "observe",
+    "narrate",
+    "distinguish",
+    "diagnose",
+    "anticipate",
+    "venture test"
+  ],
+  "cards": [
+    {
+      "number": 26,
+      "id": "spoiled-tiffin",
+      "title": "SPOILED TIFFIN",
+      "focus": "Food packed in the morning may become unsafe or unappetizing before lunch in Rajshahi's summer heat.",
+      "theme": "student / food",
+      "tiles": [
+        {
+          "label": "Morning Packing",
+          "scene": "A Bangladeshi parent packs rice and vegetable curry into a reusable steel tiffin box before a Rajshahi student leaves home.",
+          "collocations": [
+            "pack lunch",
+            "tiffin box"
+          ]
+        },
+        {
+          "label": "Sunny Commute",
+          "scene": "A student carries a cloth lunch bag while riding a local battery-run easy bike under strong midday sun.",
+          "collocations": [
+            "carry lunch",
+            "hot commute"
+          ]
+        },
+        {
+          "label": "Hot Bag",
+          "scene": "The student's lunch bag rests in a hot classroom corner beside a still ceiling fan, long before lunch.",
+          "collocations": [
+            "warm bag",
+            "long wait"
+          ]
+        },
+        {
+          "label": "Sour Smell",
+          "scene": "At lunchtime the student opens the tiffin box, notices an unpleasant smell, and pulls back without eating.",
+          "collocations": [
+            "smell spoiled",
+            "skip lunch"
+          ]
+        },
+        {
+          "label": "Uneaten Lunch",
+          "scene": "At the end of lunch break, a full steel tiffin sits untouched beside a hungry student in a Rajshahi classroom.",
+          "collocations": [
+            "uneaten lunch",
+            "wasted meal"
+          ]
+        },
+        {
+          "label": "Extra Purchase",
+          "scene": "The hungry student buys a replacement lunch from a modest Rajshahi campus-area food stall.",
+          "collocations": [
+            "buy lunch twice",
+            "extra expense"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes show what the heat costs the student?",
+        "When has packed food become unappealing before you could eat it?",
+        "Is food waste or the extra lunch expense the bigger problem?",
+        "Why might a lunch bag become hot before noon?",
+        "If a student skips the spoiled meal, what problem follows?",
+        "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 1500,
+        "pilot_days": 7,
+        "pilot": "Ask ten students or workers how they carry lunch, how long it stays warm, and how often food must be discarded; use a food thermometer if available.",
+        "potential_customer": "Students, workers, households, or food sellers",
+        "test_metric": "Time without cooling, discarded meals, and replacement-lunch costs",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.thedailystar.net/health/healthcare/news/ramadan-bazaar-food-safety-battling-high-temperatures-hygiene-and-health-3849031",
+          "https://www.dhakatribune.com/amp/bangladesh/nation/344378/heatwave-sweeps-rajshahi-diarrhoea-outbreak-on"
+        ],
+        "editor_note": "The sources establish food-safety risk in high heat and Rajshahi heat conditions. The tiffin story is an illustrative student scenario; it does not diagnose spoilage from smell alone."
+      }
+    },
+    {
+      "number": 27,
+      "id": "missed-waste-pickups",
+      "title": "MISSED WASTE PICKUPS",
+      "focus": "A household is left holding rubbish when collection timing or handoff is unreliable.",
+      "theme": "household / service",
+      "tiles": [
+        {
+          "label": "Full Bucket",
+          "scene": "A resident closes an overfilled kitchen waste bucket in a Rajshahi flat.",
+          "collocations": [
+            "full bucket",
+            "household waste"
+          ]
+        },
+        {
+          "label": "Missed Pickup",
+          "scene": "A bag remains beside an apartment gate after the usual collection time.",
+          "collocations": [
+            "miss a pickup",
+            "collection time"
+          ]
+        },
+        {
+          "label": "Stair Carry",
+          "scene": "A resident carries a heavy tied waste bag down several apartment stairs.",
+          "collocations": [
+            "carry rubbish",
+            "heavy bag"
+          ]
+        },
+        {
+          "label": "Narrow Lane",
+          "scene": "A municipal handcart cannot enter a narrow residential side lane, leaving a long walk to the collection point.",
+          "collocations": [
+            "narrow lane",
+            "distant collection point"
+          ]
+        },
+        {
+          "label": "Torn Bag",
+          "scene": "An animal tears open a waste bag left beside an apartment gate.",
+          "collocations": [
+            "torn bag",
+            "scattered rubbish"
+          ]
+        },
+        {
+          "label": "Unclear Time",
+          "scene": "A resident waits by the gate with a waste bag, uncertain when the collector will pass.",
+          "collocations": [
+            "unclear schedule",
+            "wait for collection"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes show why rubbish stays at a home?",
+        "When has rubbish remained outside a home longer than expected?",
+        "Is the uncertain time or the long carry worse? Why?",
+        "Why might a collector miss one building on a busy route?",
+        "If one building is collected first, who waits longer?",
+        "What could you try in 7 days for at most 8,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 8000,
+        "pilot_days": 7,
+        "pilot": "Observe one building route with a collector; ask five households where and when bags are missed.",
+        "potential_customer": "Residents or landlords",
+        "test_metric": "Missed pickups, time spent carrying bags, and collector constraints",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://icceiruet.org/wp-content/uploads/2025/12/1340_Camera-Ready-Final-Paper_ICCEI-2025.pdf"
+        ],
+        "editor_note": "Distinct from card 20: this shows the resident's missed handoff and the cost of carrying rubbish, rather than the citywide collection system. Students may propose a service, a scheduling change, or another small test."
+      }
+    },
+    {
+      "number": 28,
+      "id": "exposed-documents",
+      "title": "EXPOSED DOCUMENTS",
+      "focus": "A person risks exposing NID numbers and other private details when sharing a document for online help.",
+      "theme": "digital / privacy",
+      "tiles": [
+        {
+          "label": "NID Copy",
+          "scene": "A person holds a paper identity-card photocopy next to a phone; all details are illegible.",
+          "collocations": [
+            "ID copy",
+            "personal details"
+          ]
+        },
+        {
+          "label": "Visible Form",
+          "scene": "An applicant's form is open on a shared print-shop computer, with private fields visible in layout but all text and numbers illegible.",
+          "collocations": [
+            "sensitive form",
+            "visible details"
+          ]
+        },
+        {
+          "label": "AI Upload",
+          "scene": "A hand pauses before tapping an upload icon beside an unredacted scan.",
+          "collocations": [
+            "upload a file",
+            "pause before sharing"
+          ]
+        },
+        {
+          "label": "Cloud Copy",
+          "scene": "A sensitive document appears in a phone upload history after it was shared online; all fields are illegible.",
+          "collocations": [
+            "cloud copy",
+            "upload history"
+          ]
+        },
+        {
+          "label": "Missed Field",
+          "scene": "A private-number field remains visible on a document that a person thought was safe to share; no legible digits.",
+          "collocations": [
+            "miss a field",
+            "check every page"
+          ]
+        },
+        {
+          "label": "Forwarded File",
+          "scene": "A document image passes from one person's phone to another, with its private details illegible and its future sharing uncertain.",
+          "collocations": [
+            "forward a file",
+            "lose control"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes reveal a privacy mistake?",
+        "When might someone need help with a sensitive document?",
+        "Which is riskier: uploading an original or missing one private field?",
+        "Why is one missed private field enough to create a risk?",
+        "What happens if a copied document is forwarded again?",
+        "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 1500,
+        "pilot_days": 7,
+        "pilot": "Use dummy documents to find common exposure mistakes; ask five people what they would trust before sharing.",
+        "potential_customer": "Students, applicants, or small offices",
+        "test_metric": "Common exposure mistakes, desired safeguards, and willingness to pay",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.nidw.gov.bd/UseNIDReceivingCertainServices.php",
+          "https://www.bssnews.net/business/418749"
+        ],
+        "editor_note": "The user's example motivates this privacy problem. The sources ground identity-document use and personal-data risk; they do not establish demand for any particular redaction product."
+      }
+    },
+    {
+      "number": 29,
+      "id": "uncertain-mess-rooms",
+      "title": "UNCERTAIN MESS ROOMS",
+      "focus": "An off-campus student cannot easily judge a room, deposit, rules, and travel cost before moving.",
+      "theme": "student / housing",
+      "tiles": [
+        {
+          "label": "Room Visit",
+          "scene": "A student inspects a compact Rajshahi mess room with a bed, desk, and barred window.",
+          "collocations": [
+            "view a room",
+            "shared mess"
+          ]
+        },
+        {
+          "label": "Long Commute",
+          "scene": "The student checks the walk from a mess gate to a university entrance.",
+          "collocations": [
+            "travel distance",
+            "daily commute"
+          ]
+        },
+        {
+          "label": "Deposit Request",
+          "scene": "A manager holds out a deposit receipt while the student counts cash.",
+          "collocations": [
+            "security deposit",
+            "get a receipt"
+          ]
+        },
+        {
+          "label": "House Rules",
+          "scene": "Two roommates point to a posted rules sheet with unreadable writing.",
+          "collocations": [
+            "house rules",
+            "compare terms"
+          ]
+        },
+        {
+          "label": "Old Photo",
+          "scene": "A phone listing shows a tidy room while the actual room has different furniture.",
+          "collocations": [
+            "outdated listing",
+            "verify a photo"
+          ]
+        },
+        {
+          "label": "Surprise Fee",
+          "scene": "A student at a mess desk is asked for an extra fee while looking at a room key.",
+          "collocations": [
+            "surprise fee",
+            "moving cost"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes could cause a bad housing choice?",
+        "How have you or someone you know found a mess room?",
+        "Is an unknown deposit or an outdated photo more serious?",
+        "Why might a listing hide a deposit or house rule?",
+        "If a room changes after a visit, who should find out?",
+        "What could you try in 7 days for at most 2,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 2000,
+        "pilot_days": 7,
+        "pilot": "Walk through five current room searches with students and record surprise costs or mismatches.",
+        "potential_customer": "Students or listing owners",
+        "test_metric": "Unexpected fees, listing mismatches, and student decision time",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://en.prothomalo.com/amp/story/bangladesh/tvv6gspwpu",
+          "https://online.thedailystar.net/youth/education/campus/news/ru-students-still-face-poor-food-housing-woes-3963861"
+        ],
+        "editor_note": ""
+      }
+    },
+    {
+      "number": 30,
+      "id": "poor-mess-meals",
+      "title": "POOR MESS MEALS",
+      "focus": "Students paying for a mess meal plan face uncertain portions, timing, and value.",
+      "theme": "student / food",
+      "tiles": [
+        {
+          "label": "Small Portion",
+          "scene": "A student compares a very small rice-and-vegetable plate with the weekly menu board.",
+          "collocations": [
+            "small portion",
+            "meal value"
+          ]
+        },
+        {
+          "label": "Missed Dinner",
+          "scene": "A student reaches the mess dining room after class as serving pots are almost empty.",
+          "collocations": [
+            "miss dinner",
+            "late class"
+          ]
+        },
+        {
+          "label": "Shared Pot",
+          "scene": "A cook serves students from a large pot at a modest campus-area mess.",
+          "collocations": [
+            "shared kitchen",
+            "serve dinner"
+          ]
+        },
+        {
+          "label": "Meal Count",
+          "scene": "A manager marks meal attendance in a paper ledger while students queue.",
+          "collocations": [
+            "count meals",
+            "monthly bill"
+          ]
+        },
+        {
+          "label": "Market Cost",
+          "scene": "A mess cook compares rising market purchases with a small meal budget.",
+          "collocations": [
+            "market cost",
+            "meal budget"
+          ]
+        },
+        {
+          "label": "Uneven Portions",
+          "scene": "Two students who paid the same amount receive visibly unequal dinner portions.",
+          "collocations": [
+            "uneven portions",
+            "same price"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes most affect whether a student renews?",
+        "What makes a low-cost meal feel worth its price?",
+        "Is a small portion or a missed dinner worse? Why?",
+        "Why might a kitchen struggle to serve late students?",
+        "If food costs rise, which choice hurts students most?",
+        "What could you try in 7 days for at most 5,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 5000,
+        "pilot_days": 7,
+        "pilot": "Record a week of meal timing, portions, prices, and student feedback at one willing mess.",
+        "potential_customer": "Students or mess managers",
+        "test_metric": "Missed meals, portion satisfaction, food costs, and waste",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://online.thedailystar.net/youth/education/campus/news/ru-students-still-face-poor-food-housing-woes-3963861"
+        ],
+        "editor_note": ""
+      }
+    },
+    {
+      "number": 31,
+      "id": "textbook-costs",
+      "title": "TEXTBOOK COSTS",
+      "focus": "New books strain a student budget while secondhand copies vary in edition, condition, and availability.",
+      "theme": "student / market",
+      "tiles": [
+        {
+          "label": "Book Stall",
+          "scene": "A student scans stacked used textbooks at a Sonadighi-style book stall.",
+          "collocations": [
+            "used textbook",
+            "book stall"
+          ]
+        },
+        {
+          "label": "Wrong Edition",
+          "scene": "A student compares two visibly different editions of the same subject book.",
+          "collocations": [
+            "wrong edition",
+            "check a syllabus"
+          ]
+        },
+        {
+          "label": "Marked Pages",
+          "scene": "A student checks annotations and torn corners before paying.",
+          "collocations": [
+            "marked pages",
+            "book condition"
+          ]
+        },
+        {
+          "label": "Price Haggling",
+          "scene": "A bookseller and student compare two price tags and a small cash offer.",
+          "collocations": [
+            "fair price",
+            "bargain politely"
+          ]
+        },
+        {
+          "label": "Sold-Out Copy",
+          "scene": "A student points to an empty space in a used-book stall where the required title should be.",
+          "collocations": [
+            "sold-out book",
+            "search again"
+          ]
+        },
+        {
+          "label": "Low Resale Offer",
+          "scene": "A graduating student presents a stack of books while a buyer offers only a few notes.",
+          "collocations": [
+            "resale offer",
+            "recover costs"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes could waste a student's money?",
+        "Where do students near you look for secondhand books?",
+        "Is a cheaper marked copy better than a clean older edition?",
+        "Why is the exact edition important for some courses?",
+        "If shops stop buying old books, who loses?",
+        "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 1500,
+        "pilot_days": 7,
+        "pilot": "Ask ten students what books they need, then compare available copies and prices at existing stalls.",
+        "potential_customer": "Students or bookshops",
+        "test_metric": "Needed editions, price gaps, and books that remain unsold",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.bhorerkagoj.net/thinking/799674"
+        ],
+        "editor_note": "The source describes the Sonadighi used-book market; exact textbook shortages are a discussion scenario."
+      }
+    },
+    {
+      "number": 32,
+      "id": "coaching-costs",
+      "title": "COACHING COSTS",
+      "focus": "Students with uneven preparation face extra coaching costs and limited individual help.",
+      "theme": "student / education",
+      "tiles": [
+        {
+          "label": "Confusing Notes",
+          "scene": "A student looks puzzled over dense class notes at a shared study desk.",
+          "collocations": [
+            "class notes",
+            "ask for help"
+          ]
+        },
+        {
+          "label": "Coaching Poster",
+          "scene": "A student compares the fee on a coaching poster with cash in hand; text is unreadable.",
+          "collocations": [
+            "coaching fee",
+            "tight budget"
+          ]
+        },
+        {
+          "label": "Crowded Coaching",
+          "scene": "A learner at the back of a crowded coaching class cannot get the instructor’s attention.",
+          "collocations": [
+            "crowded class",
+            "ask a question"
+          ]
+        },
+        {
+          "label": "Unanswered Question",
+          "scene": "A student raises a hand over a difficult practice sheet while the instructor helps others.",
+          "collocations": [
+            "unanswered question",
+            "practice problem"
+          ]
+        },
+        {
+          "label": "No Study Partner",
+          "scene": "A student struggles alone over course notes at a shared mess-room table.",
+          "collocations": [
+            "study alone",
+            "need help"
+          ]
+        },
+        {
+          "label": "Travel Expense",
+          "scene": "A student pays easy-bike fare to reach a coaching class across town.",
+          "collocations": [
+            "travel cost",
+            "extra lesson"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes show why a student seeks extra help?",
+        "When has a classmate explained something well to you?",
+        "Which costs more over a term: coaching fees or travel?",
+        "Why might a crowded class leave questions unanswered?",
+        "If extra help stays expensive, who is left out?",
+        "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 1500,
+        "pilot_days": 7,
+        "pilot": "Ask ten learners where they get stuck and compare the cost and usefulness of help they already use.",
+        "potential_customer": "Students",
+        "test_metric": "Unanswered questions, current coaching costs, and demand for help",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.tbsnews.net/features/panorama/how-big-admission-coaching-market-bangladesh-1222986",
+          "https://en.prothomalo.com/bangladesh/pvg3rbvka0"
+        ],
+        "editor_note": "This is a plausible student service hypothesis, not an assertion that all local coaching is unaffordable."
+      }
+    },
+    {
+      "number": 33,
+      "id": "confusing-forms",
+      "title": "CONFUSING FORMS",
+      "focus": "Online service forms can be hard to complete on a phone, while asking for help can expose private data.",
+      "theme": "digital / public service",
+      "tiles": [
+        {
+          "label": "Small Screen",
+          "scene": "A person squints at a crowded Bengali online form on an older phone.",
+          "collocations": [
+            "small screen",
+            "fill a form"
+          ]
+        },
+        {
+          "label": "Missing Field",
+          "scene": "A required field is left empty on a form, shown with a simple red outline and no text.",
+          "collocations": [
+            "missing field",
+            "check details"
+          ]
+        },
+        {
+          "label": "Print Shop",
+          "scene": "An applicant waits beside a local print-and-scan counter with a folder.",
+          "collocations": [
+            "print shop",
+            "service fee"
+          ]
+        },
+        {
+          "label": "Confusing Menu",
+          "scene": "An applicant hesitates between several similar service options on a crowded phone screen.",
+          "collocations": [
+            "confusing menu",
+            "choose a service"
+          ]
+        },
+        {
+          "label": "Password Risk",
+          "scene": "An applicant covers a password entry area before handing over a device.",
+          "collocations": [
+            "private password",
+            "keep control"
+          ]
+        },
+        {
+          "label": "No Confirmation",
+          "scene": "An applicant sees a blank result after submitting a form and cannot tell whether it went through.",
+          "collocations": [
+            "no confirmation",
+            "submit a form"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes show where a form can go wrong?",
+        "Which online form has been difficult for someone you know?",
+        "Is a missed field or a shared password the bigger risk?",
+        "Why should the applicant keep control of passwords?",
+        "If a form shows no confirmation, what might an applicant do twice?",
+        "What could you try in 7 days for at most 2,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 2000,
+        "pilot_days": 7,
+        "pilot": "Watch consenting applicants try one form using sample data; record the confusing steps and privacy concerns.",
+        "potential_customer": "Applicants or community organizations",
+        "test_metric": "Form errors, completion time, and privacy concerns",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://bigd.bracu.ac.bd/publications/digital-literacy-and-access-to-public-services-in-rural-households-of-bangladesh/"
+        ],
+        "editor_note": ""
+      }
+    },
+    {
+      "number": 34,
+      "id": "allowance-barriers",
+      "title": "ALLOWANCE BARRIERS",
+      "focus": "An older recipient may struggle to understand a digital allowance message, fee, or cash-out step.",
+      "theme": "social / financial",
+      "tiles": [
+        {
+          "label": "Payment Message",
+          "scene": "An older person holds a basic phone with a payment notification icon and asks for help.",
+          "collocations": [
+            "payment message",
+            "read a notice"
+          ]
+        },
+        {
+          "label": "Agent Queue",
+          "scene": "Several people wait at a neighborhood mobile-money agent counter.",
+          "collocations": [
+            "cash-out agent",
+            "wait in line"
+          ]
+        },
+        {
+          "label": "Cash-Out Fee",
+          "scene": "A recipient studies the fee on a printed transaction receipt; figures are illegible.",
+          "collocations": [
+            "cash-out fee",
+            "check a receipt"
+          ]
+        },
+        {
+          "label": "Watching Eyes",
+          "scene": "While an older recipient enters a PIN at a mobile-money counter, a person in the queue looks toward the keypad; no digits are visible.",
+          "collocations": [
+            "PIN privacy",
+            "watching eyes"
+          ]
+        },
+        {
+          "label": "Unclear Icons",
+          "scene": "An older allowance recipient studies unfamiliar payment-menu icons on a phone.",
+          "collocations": [
+            "unfamiliar icons",
+            "payment menu"
+          ]
+        },
+        {
+          "label": "Unread Receipt",
+          "scene": "An older person holds a small cash-out receipt but cannot easily read the tiny print.",
+          "collocations": [
+            "small print",
+            "check a receipt"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes make a cash-out most confusing?",
+        "What digital payment step is confusing for older people you know?",
+        "Is an unclear message or a cash-out fee harder to manage?",
+        "Why might someone reveal a PIN to a well-meaning helper?",
+        "What could go wrong if a helper controls the phone?",
+        "What could you try in 7 days for at most 3,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 3000,
+        "pilot_days": 7,
+        "pilot": "Ask five willing recipients to explain sample payment messages and identify confusing steps without touching accounts.",
+        "potential_customer": "Community organization or recipient family",
+        "test_metric": "Confusing payment steps, help sought, and PIN-risk awareness",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.thedailystar.net/news/bangladesh/news/experts-warn-gaps-digital-social-protection-4021481",
+          "https://www.bb.org.bd/en/index.php/services/cipc_procedure"
+        ],
+        "editor_note": ""
+      }
+    },
+    {
+      "number": 35,
+      "id": "scam-calls",
+      "title": "SCAM CALLS",
+      "focus": "A mobile-money user can be pressured by a convincing call to share a PIN or one-time code.",
+      "theme": "digital / financial",
+      "tiles": [
+        {
+          "label": "Unknown Caller",
+          "scene": "A phone rings from an unknown number as its owner looks uncertain.",
+          "collocations": [
+            "unknown caller",
+            "unexpected call"
+          ]
+        },
+        {
+          "label": "Urgent Claim",
+          "scene": "The caller's speech bubble has an alarm symbol while the listener hesitates.",
+          "collocations": [
+            "urgent claim",
+            "pressure tactic"
+          ]
+        },
+        {
+          "label": "OTP Message",
+          "scene": "An unreadable one-time-code notification arrives on a phone while a call is active.",
+          "collocations": [
+            "one-time code",
+            "keep it secret"
+          ]
+        },
+        {
+          "label": "Official-Sounding Call",
+          "scene": "A caller claims authority while the mobile-money user looks uncertain; no legible caller ID.",
+          "collocations": [
+            "official-sounding",
+            "false authority"
+          ]
+        },
+        {
+          "label": "Shared Code",
+          "scene": "A user nearly reads a one-time code aloud while speaking into a phone on speaker mode.",
+          "collocations": [
+            "share a code",
+            "account risk"
+          ]
+        },
+        {
+          "label": "Empty Balance",
+          "scene": "After a suspicious call, a user stares at a nearly empty mobile-money balance bar.",
+          "collocations": [
+            "missing money",
+            "account balance"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes show the scammer's pressure?",
+        "What suspicious financial message have you seen?",
+        "Which is more persuasive: an urgent claim or an official-sounding caller?",
+        "Why might an urgent voice sound trustworthy?",
+        "If a user ignores all unknown calls, what might they miss?",
+        "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 1500,
+        "pilot_days": 7,
+        "pilot": "Ask twenty people how they judge sample calls and which warning signs they miss.",
+        "potential_customer": "MFS agents, schools, or community groups",
+        "test_metric": "Scam cues people miss and actions they would take",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.sonalibank.com.bd/",
+          "https://ti-bangladesh.org/images/2025/report/mfs/Executive-Summary-Mobile-Financial-Services-Sector-En.pdf"
+        ],
+        "editor_note": ""
+      }
+    },
+    {
+      "number": 36,
+      "id": "uncertain-evening-rides",
+      "title": "UNCERTAIN EVENING RIDES",
+      "focus": "After an evening class, a student may struggle to find an affordable ride she trusts.",
+      "theme": "social / transport",
+      "tiles": [
+        {
+          "label": "Late Class",
+          "scene": "A woman in a three-piece with orna exits an evening class as daylight fades.",
+          "collocations": [
+            "late class",
+            "travel home"
+          ]
+        },
+        {
+          "label": "Empty Stand",
+          "scene": "She reaches a nearly empty easy-bike stand and looks for a ride.",
+          "collocations": [
+            "empty stand",
+            "find a ride"
+          ]
+        },
+        {
+          "label": "Unknown Driver",
+          "scene": "A woman in a three-piece with orna hesitates beside an easy bike driven by someone she does not know.",
+          "collocations": [
+            "unknown driver",
+            "choose a ride"
+          ]
+        },
+        {
+          "label": "Fare Pressure",
+          "scene": "A driver asks a higher fare than the student expected before an evening trip.",
+          "collocations": [
+            "higher fare",
+            "travel cost"
+          ]
+        },
+        {
+          "label": "Low Battery",
+          "scene": "The student checks a nearly empty phone battery while waiting for a ride.",
+          "collocations": [
+            "low battery",
+            "call home"
+          ]
+        },
+        {
+          "label": "Route Change",
+          "scene": "From inside an easy bike, the student notices it turning onto an unfamiliar route.",
+          "collocations": [
+            "route change",
+            "unfamiliar turn"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes make an evening ride feel least certain?",
+        "What makes an evening trip feel comfortable or uncomfortable?",
+        "Is an unknown driver or uncertain fare harder to manage?",
+        "Why might late travel leave fewer choices?",
+        "If a rider’s location is shared too widely, what risk appears?",
+        "What could you try in 14 days for at most 8,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 8000,
+        "pilot_days": 14,
+        "pilot": "Interview riders and existing drivers about availability, fares, verification, and privacy before trying any ride arrangement.",
+        "potential_customer": "Students, institutions, or riders",
+        "test_metric": "Unmet rides, fare uncertainty, and rider trust concerns",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.thedailystar.net/news/bangladesh/news/price-commuting-woman-bangladesh-4022056",
+          "https://www.tbsnews.net/features/panorama/rickshaw-carries-mothers-love-and-sacrifice-1107941"
+        ],
+        "editor_note": "Transport-safety evidence is nationwide, not a measured Rajshahi route. No safety guarantee is implied."
+      }
+    },
+    {
+      "number": 37,
+      "id": "childcare-gaps",
+      "title": "CHILDCARE GAPS",
+      "focus": "Work and class schedules can leave gaps in safe, affordable care for a young child.",
+      "theme": "social / care",
+      "tiles": [
+        {
+          "label": "Class Schedule",
+          "scene": "A parent in a three-piece with orna compares a class timetable with a child's pickup time.",
+          "collocations": [
+            "class schedule",
+            "care gap"
+          ]
+        },
+        {
+          "label": "Work Shift",
+          "scene": "A parent prepares for work while a young child needs supervision at home.",
+          "collocations": [
+            "work shift",
+            "family care"
+          ]
+        },
+        {
+          "label": "Closed Center",
+          "scene": "A parent reaches a childcare room after its opening hours and finds the door closed.",
+          "collocations": [
+            "closed care",
+            "late pickup"
+          ]
+        },
+        {
+          "label": "Caregiver Absence",
+          "scene": "A parent receives a last-minute message that the usual caregiver cannot come.",
+          "collocations": [
+            "caregiver absent",
+            "last-minute change"
+          ]
+        },
+        {
+          "label": "Missed Shift",
+          "scene": "A parent remains home with a child while a work shift starts elsewhere.",
+          "collocations": [
+            "miss a shift",
+            "care gap"
+          ]
+        },
+        {
+          "label": "High Care Fee",
+          "scene": "A parent holding a child studies a childcare price sheet with unreadable figures.",
+          "collocations": [
+            "care fee",
+            "family budget"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes make childcare hard to arrange?",
+        "When might a family need care for only a few hours?",
+        "Is a last-minute absence or a high fee harder for a parent?",
+        "Why do work and care hours fail to match?",
+        "If low fees mean too few caregivers, what could happen?",
+        "What could you try in 14 days for at most 3,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 3000,
+        "pilot_days": 14,
+        "pilot": "Interview parents and qualified caregivers about timing, trust, price, and the rules for any future service; do not enroll children.",
+        "potential_customer": "Parents or employers",
+        "test_metric": "Care-hour gaps, affordability, and safety requirements",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.worldbank.org/en/brief/2025/04/01/investinchildcare",
+          "https://thedocs.worldbank.org/en/doc/4581900abae6053f9c03e1a840b28777-0350042024/original/RSR-Gender-Window-Review-Report-FINAL-Oct24.pdf"
+        ],
+        "editor_note": "Care provision needs appropriate local registration, safeguarding, and qualified supervision; the pilot starts with validation, not child enrolment."
+      }
+    },
+    {
+      "number": 38,
+      "id": "damp-laundry",
+      "title": "DAMP LAUNDRY",
+      "focus": "Clothes stay damp for days in a small flat during humid monsoon weather.",
+      "theme": "household / environment",
+      "tiles": [
+        {
+          "label": "Wet Clothes",
+          "scene": "A resident removes dripping clothes from a washing bucket.",
+          "collocations": [
+            "wet clothes",
+            "wash by hand"
+          ]
+        },
+        {
+          "label": "Full Balcony",
+          "scene": "Clothes crowd a small balcony behind protective metal grilles as rain falls.",
+          "collocations": [
+            "crowded balcony",
+            "monsoon rain"
+          ]
+        },
+        {
+          "label": "Damp Shirt",
+          "scene": "A person touches a shirt that remains damp on an indoor line.",
+          "collocations": [
+            "damp fabric",
+            "dry slowly"
+          ]
+        },
+        {
+          "label": "Musty Smell",
+          "scene": "A resident notices a musty garment and pulls it away from clean clothes.",
+          "collocations": [
+            "musty smell",
+            "rewash clothes"
+          ]
+        },
+        {
+          "label": "Rain Returns",
+          "scene": "A resident rushes to pull still-wet clothes from a grilled balcony as rain begins again.",
+          "collocations": [
+            "rain returns",
+            "bring clothes inside"
+          ]
+        },
+        {
+          "label": "Repeat Wash",
+          "scene": "A resident puts a musty shirt back into the washing bucket instead of wearing it.",
+          "collocations": [
+            "wash again",
+            "damp smell"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes show why indoor drying is difficult?",
+        "Where do people dry clothes during long rainy periods?",
+        "Is a crowded balcony or indoor dampness worse?",
+        "Why do clothes dry slowly during monsoon?",
+        "If clothes stay indoors every day, what other problem appears?",
+        "What could you try in 14 days for at most 6,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 6000,
+        "pilot_days": 14,
+        "pilot": "Ask ten residents how they dry clothes now, measure drying time, and identify the cost of re-washing or damage.",
+        "potential_customer": "Renters or mess residents",
+        "test_metric": "Drying time, rewashes, garment damage, and willingness to pay",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.tbsnews.net/features/habitat/your-home-ready-monsoon-guide-protecting-interiors-1171981"
+        ],
+        "editor_note": ""
+      }
+    },
+    {
+      "number": 39,
+      "id": "late-tailor-orders",
+      "title": "LATE TAILOR ORDERS",
+      "focus": "A customer cannot tell whether an Eid outfit will be ready after fittings and order changes.",
+      "theme": "culture / service",
+      "tiles": [
+        {
+          "label": "Order Rush",
+          "scene": "Several customers bring Eid fabric to a small Rajshahi tailor at the same time.",
+          "collocations": [
+            "Eid rush",
+            "new orders"
+          ]
+        },
+        {
+          "label": "Lost Measurements",
+          "scene": "A tailor searches a crowded notebook for a customer’s measurements while cut fabric waits.",
+          "collocations": [
+            "missing measurements",
+            "search a record"
+          ]
+        },
+        {
+          "label": "Vague Date",
+          "scene": "A customer holds an order slip with no clear pickup date while the tailor points to a busy calendar; text illegible.",
+          "collocations": [
+            "pickup date",
+            "unclear promise"
+          ]
+        },
+        {
+          "label": "Busy Machines",
+          "scene": "Two tailors sew at crowded worktables during the pre-Eid rush.",
+          "collocations": [
+            "busy season",
+            "finish an order"
+          ]
+        },
+        {
+          "label": "Fitting Change",
+          "scene": "The customer points to a sleeve needing adjustment during a fitting.",
+          "collocations": [
+            "alter a sleeve",
+            "second fitting"
+          ]
+        },
+        {
+          "label": "Late Pickup",
+          "scene": "The customer arrives at the shop, but the promised outfit is still on a workbench.",
+          "collocations": [
+            "late pickup",
+            "track progress"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes could lead to a missed pickup date?",
+        "When have you waited for something made to order?",
+        "Is a lost measurement or a vague pickup date harder to fix?",
+        "Why do orders pile up before Eid?",
+        "If tailors turn away late orders, who loses?",
+        "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 1500,
+        "pilot_days": 7,
+        "pilot": "Trace twenty orders at a willing tailor to find where dates, measurements, or changes are lost.",
+        "potential_customer": "Tailors or customers",
+        "test_metric": "Missed pickup dates, repeat visits, and tailor bottlenecks",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.tbsnews.net/bangladesh/tailors-busy-ahead-eid-rajshahi-1374871"
+        ],
+        "editor_note": ""
+      }
+    },
+    {
+      "number": 40,
+      "id": "returned-cod-parcels",
+      "title": "RETURNED COD PARCELS",
+      "focus": "A small online seller loses time and shipping money when a cash-on-delivery parcel returns.",
+      "theme": "microbusiness / delivery",
+      "tiles": [
+        {
+          "label": "Packed Order",
+          "scene": "A home-based seller packs one clothing order on a clean table.",
+          "collocations": [
+            "pack an order",
+            "online seller"
+          ]
+        },
+        {
+          "label": "COD Label",
+          "scene": "A courier attaches a cash-on-delivery label with illegible details.",
+          "collocations": [
+            "cash on delivery",
+            "courier label"
+          ]
+        },
+        {
+          "label": "No Answer",
+          "scene": "A courier calls from a doorstep while the buyer's phone remains unanswered.",
+          "collocations": [
+            "no answer",
+            "delivery attempt"
+          ]
+        },
+        {
+          "label": "Refused Parcel",
+          "scene": "A buyer politely refuses an unopened parcel at the gate.",
+          "collocations": [
+            "refuse delivery",
+            "return parcel"
+          ]
+        },
+        {
+          "label": "Return Charge",
+          "scene": "The seller examines a courier bill beside the returned package.",
+          "collocations": [
+            "return charge",
+            "lost margin"
+          ]
+        },
+        {
+          "label": "Returned Stock",
+          "scene": "A home seller stores several unopened COD parcels returned by the courier.",
+          "collocations": [
+            "returned stock",
+            "unsold parcels"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes reduce the seller's income?",
+        "Have you bought or sold something by cash on delivery?",
+        "Is an unanswered call or a refusal more costly to a seller?",
+        "Why might a buyer refuse a parcel they ordered?",
+        "If a seller asks for a deposit, who might stop ordering?",
+        "What could you try in 14 days for at most 2,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 2000,
+        "pilot_days": 14,
+        "pilot": "Track ten recent COD orders with sellers and couriers; find why buyers did not accept delivery.",
+        "potential_customer": "Online sellers",
+        "test_metric": "Reasons for COD returns and cost per returned order",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.dhl.com/discover/en-bd/e-commerce-advice/e-commerce-trends/what-is-e-commerce-2025-blangladeshi-trends",
+          "https://www.tbsnews.net/features/panorama/how-courier-failures-are-undermining-bangladeshs-online-perishables-trade-1181016"
+        ],
+        "editor_note": "Cash-on-delivery use is grounded; the specific refusal scenario is illustrative."
+      }
+    },
+    {
+      "number": 41,
+      "id": "product-mismatch",
+      "title": "PRODUCT MISMATCH",
+      "focus": "A buyer cannot tell whether a social-commerce photo matches the real product, size, or colour.",
+      "theme": "microbusiness / trust",
+      "tiles": [
+        {
+          "label": "Bright Photo",
+          "scene": "A seller photographs a handmade outfit in strong filtered light for a phone listing.",
+          "collocations": [
+            "product photo",
+            "show a colour"
+          ]
+        },
+        {
+          "label": "Real Colour",
+          "scene": "The same fabric is held beside a window to compare its actual shade.",
+          "collocations": [
+            "real colour",
+            "compare fabric"
+          ]
+        },
+        {
+          "label": "Size Guess",
+          "scene": "A buyer checks a clothing item against a measuring tape before ordering.",
+          "collocations": [
+            "check size",
+            "measure carefully"
+          ]
+        },
+        {
+          "label": "Chat Promise",
+          "scene": "Seller and buyer discuss a product through unreadable phone chat bubbles.",
+          "collocations": [
+            "seller promise",
+            "ask a question"
+          ]
+        },
+        {
+          "label": "Parcel Opening",
+          "scene": "A buyer opens the package and compares the garment with the phone photo.",
+          "collocations": [
+            "open a parcel",
+            "match the photo"
+          ]
+        },
+        {
+          "label": "Return Request",
+          "scene": "A buyer shows a mismatched garment to a seller over a phone call after delivery.",
+          "collocations": [
+            "request a return",
+            "product mismatch"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes could reveal a mismatch?",
+        "When has an online product looked different in person?",
+        "Which mismatch matters more: size or colour?",
+        "Why might a listing photo differ from the item?",
+        "If returns are difficult, what happens to trust?",
+        "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 1500,
+        "pilot_days": 7,
+        "pilot": "Compare five listings with delivered items and ask buyers what they needed to know before ordering.",
+        "potential_customer": "Home sellers or marketplaces",
+        "test_metric": "Product mismatches, buyer complaints, and lost trust",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://documents1.worldbank.org/curated/en/099347306132442378/pdf/IDU-3eb13acf-4061-48ec-a6df-a4686e5627fd.pdf",
+          "https://www.dhl.com/discover/en-bd/e-commerce-advice/e-commerce-trends/what-is-e-commerce-2025-blangladeshi-trends"
+        ],
+        "editor_note": "This is a social-commerce trust hypothesis, not a claim that Rajshahi sellers generally mislead buyers."
+      }
+    },
+    {
+      "number": 42,
+      "id": "bruised-mangoes",
+      "title": "BRUISED MANGOES",
+      "focus": "Rajshahi mangoes can arrive bruised or spoiled after a small parcel is shipped to another city.",
+      "theme": "local trade / delivery",
+      "tiles": [
+        {
+          "label": "Ripe Fruit",
+          "scene": "A seller gently sorts ripe and firm Rajshahi mangoes into two baskets.",
+          "collocations": [
+            "ripe mango",
+            "sort by ripeness"
+          ]
+        },
+        {
+          "label": "Thin Box",
+          "scene": "Mangoes press against one another in a weak cardboard box.",
+          "collocations": [
+            "thin box",
+            "fruit pressure"
+          ]
+        },
+        {
+          "label": "Stacked Parcels",
+          "scene": "A heavy courier box is stacked on top of a thin carton containing mangoes.",
+          "collocations": [
+            "heavy parcel",
+            "crush a box"
+          ]
+        },
+        {
+          "label": "Courier Handoff",
+          "scene": "A seller hands a mango parcel to a courier at a Rajshahi counter.",
+          "collocations": [
+            "courier handoff",
+            "record a parcel"
+          ]
+        },
+        {
+          "label": "Bruised Arrival",
+          "scene": "A recipient opens a package and finds visibly bruised mangoes.",
+          "collocations": [
+            "bruised fruit",
+            "arrival condition"
+          ]
+        },
+        {
+          "label": "Warm Delay",
+          "scene": "A mango parcel sits in a warm holding area while other packages are sorted.",
+          "collocations": [
+            "warm delay",
+            "perishable fruit"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes most affect whether fruit arrives whole?",
+        "Have you sent or received seasonal food by courier?",
+        "Is bruising or a long delivery delay more costly?",
+        "Where might fruit be damaged after it leaves the seller?",
+        "If packing gets heavier, what extra costs appear?",
+        "What could you try in 14 days for at most 8,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 8000,
+        "pilot_days": 14,
+        "pilot": "Follow a few existing mango shipments and record packing, handoffs, travel time, damage, and cost.",
+        "potential_customer": "Mango sellers or senders",
+        "test_metric": "Bruising frequency, delay points, and loss per parcel",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.tbsnews.net/features/panorama/how-courier-failures-are-undermining-bangladeshs-online-perishables-trade-1181016"
+        ],
+        "editor_note": "Distinct from card 23's farmgate price problem: this follows an individual parcel after sale."
+      }
+    },
+    {
+      "number": 43,
+      "id": "uncertain-seed-quality",
+      "title": "UNCERTAIN SEED QUALITY",
+      "focus": "A small farmer cannot know whether purchased seed will germinate well before planting.",
+      "theme": "rural / agriculture",
+      "tiles": [
+        {
+          "label": "Seed Packet",
+          "scene": "A farmer studies a sealed seed packet in a Barind-area supply shop; printing is unreadable.",
+          "collocations": [
+            "seed packet",
+            "choose a variety"
+          ]
+        },
+        {
+          "label": "Missing Seed Receipt",
+          "scene": "The farmer pays cash for seed packets, but the seller turns away without giving a receipt.",
+          "collocations": [
+            "missing receipt",
+            "cash purchase"
+          ]
+        },
+        {
+          "label": "Bare Row",
+          "scene": "A Barind farmer surveys a planted row with many empty gaps where seedlings should have emerged.",
+          "collocations": [
+            "bare row",
+            "poor germination"
+          ]
+        },
+        {
+          "label": "Weak Sprouts",
+          "scene": "Only a few seeds sprout in the tray while others remain bare.",
+          "collocations": [
+            "weak sprouting",
+            "poor germination"
+          ]
+        },
+        {
+          "label": "Dealer Visit",
+          "scene": "The farmer shows an opened seed packet to the seller, who cannot identify its batch.",
+          "collocations": [
+            "return to dealer",
+            "unknown batch"
+          ]
+        },
+        {
+          "label": "Missing Batch",
+          "scene": "A farmer searches an opened seed packet for a usable batch mark but finds none legible.",
+          "collocations": [
+            "batch number",
+            "trace a purchase"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes give a farmer evidence of a problem?",
+        "How do farmers near you choose seed sellers?",
+        "Is missing batch information or weak sprouts more serious?",
+        "Why is poor germination costly even if seeds are cheap?",
+        "If seeds fail after planting, what evidence could a farmer still gather?",
+        "What could you try in 14 days for at most 5,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 5000,
+        "pilot_days": 14,
+        "pilot": "Ask growers what proof they receive and run small labeled germination checks on purchased samples.",
+        "potential_customer": "Seed sellers or farmer groups",
+        "test_metric": "Missing seed records, germination results, and farmer losses",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.tbsnews.net/bangladesh/two-badc-officials-suspended-over-distribution-faulty-onion-seeds-farmers-1014491",
+          "https://www.tbsnews.net/supplement/access-quality-seeds-and-our-research-facilities-bangladesh-pathways-resilient"
+        ],
+        "editor_note": "The 2024 faulty-seed case is outside Rajshahi; the card asks about a small farmer's general purchasing risk, not local misconduct."
+      }
+    },
+    {
+      "number": 44,
+      "id": "unclear-repair-terms",
+      "title": "UNCLEAR REPAIR TERMS",
+      "focus": "A phone owner cannot easily know the final repair cost, part quality, or pickup date before leaving a device.",
+      "theme": "household / service",
+      "tiles": [
+        {
+          "label": "Cracked Screen",
+          "scene": "A student shows a cracked Android phone screen at a local repair counter.",
+          "collocations": [
+            "cracked screen",
+            "seek repair"
+          ]
+        },
+        {
+          "label": "Two Parts",
+          "scene": "A technician shows a lower-cost and a higher-cost replacement screen in separate trays.",
+          "collocations": [
+            "parts choice",
+            "compare quality"
+          ]
+        },
+        {
+          "label": "Vague Price",
+          "scene": "A technician gestures about possible costs while the phone owner holds cash and has no written quote.",
+          "collocations": [
+            "unclear cost",
+            "verbal quote"
+          ]
+        },
+        {
+          "label": "Unlabeled Parts",
+          "scene": "Two replacement screens with no clear quality labels lie beside an opened phone.",
+          "collocations": [
+            "part quality",
+            "replacement screen"
+          ]
+        },
+        {
+          "label": "Delayed Pickup",
+          "scene": "A customer arrives for the phone, but it remains disassembled on the workbench.",
+          "collocations": [
+            "late repair",
+            "return date"
+          ]
+        },
+        {
+          "label": "Repeat Fault",
+          "scene": "A newly repaired phone screen flickers again while the owner looks disappointed.",
+          "collocations": [
+            "repeat fault",
+            "repair guarantee"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes could lead to a repair dispute?",
+        "What would you ask before leaving your phone for repair?",
+        "Is an unclear cost or unknown part quality more worrying?",
+        "Why can a verbal quote change after a device is opened?",
+        "If a repair fails soon after pickup, who bears the cost?",
+        "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 1500,
+        "pilot_days": 7,
+        "pilot": "Observe twenty repair quotes at a willing shop and ask customers which terms were unclear.",
+        "potential_customer": "Repair shops or phone owners",
+        "test_metric": "Unclear quotes, repair delays, repeat faults, and disputes",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://service.startech.com.bd/mobile-repair-service"
+        ],
+        "editor_note": "The source describes a transparent repair model; the card tests whether a simpler local version would help."
+      }
+    },
+    {
+      "number": 45,
+      "id": "lpg-overcharging",
+      "title": "LPG OVERCHARGING",
+      "focus": "A household may face a cooking-gas price or delivery fee that differs from what it expected.",
+      "theme": "household / market",
+      "tiles": [
+        {
+          "label": "Empty Cylinder",
+          "scene": "A home cook finds that the kitchen LPG cylinder is empty before preparing a meal.",
+          "collocations": [
+            "empty cylinder",
+            "cooking gas"
+          ]
+        },
+        {
+          "label": "Shop Quote",
+          "scene": "A customer asks the price at a neighborhood cylinder shop.",
+          "collocations": [
+            "shop quote",
+            "ask the price"
+          ]
+        },
+        {
+          "label": "Old Price Notice",
+          "scene": "A faded LPG price notice hangs behind a seller who quotes a different price; numbers unreadable.",
+          "collocations": [
+            "old price",
+            "new quote"
+          ]
+        },
+        {
+          "label": "Delivery Fee",
+          "scene": "A delivery worker brings a cylinder to a flat and points to a separate fee on a receipt.",
+          "collocations": [
+            "delivery fee",
+            "total cost"
+          ]
+        },
+        {
+          "label": "No Receipt",
+          "scene": "A customer hands over cash for an LPG cylinder but receives no itemized receipt.",
+          "collocations": [
+            "no receipt",
+            "cash payment"
+          ]
+        },
+        {
+          "label": "Carrying Cylinder",
+          "scene": "A household member carries an empty cylinder toward another shop after hearing a high quote.",
+          "collocations": [
+            "carry a cylinder",
+            "search for a price"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes show what the customer actually pays?",
+        "How do households near you learn the current cylinder price?",
+        "Is a hidden delivery fee or an old price notice more misleading?",
+        "Why can a delivery price differ from a headline price?",
+        "If buyers compare shops while out of gas, what cost appears?",
+        "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 1500,
+        "pilot_days": 7,
+        "pilot": "Compare a current official price with quotes and receipts at several local shops.",
+        "potential_customer": "Households or LPG retailers",
+        "test_metric": "Difference between official, quoted, and paid cylinder prices",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://bdnews24.com/bangladesh/159894f73367",
+          "https://www.tbsnews.net/bangladesh/energy/distributors-overcharge-govt-plans-sell-lpg-directly-consumers-1173296"
+        ],
+        "editor_note": "Do not claim underweight cylinders; the documented issue is price variation and overcharging."
+      }
+    },
+    {
+      "number": 46,
+      "id": "lost-baki-records",
+      "title": "LOST BAKI RECORDS",
+      "focus": "A neighborhood shop and customer can disagree when informal credit records are missing or unclear.",
+      "theme": "microbusiness / finance",
+      "tiles": [
+        {
+          "label": "Credit Sale",
+          "scene": "A grocer hands everyday items to a familiar customer who will pay later.",
+          "collocations": [
+            "sell on credit",
+            "local customer"
+          ]
+        },
+        {
+          "label": "Paper Khata",
+          "scene": "The shopkeeper writes the amount in a worn Bengali account notebook.",
+          "collocations": [
+            "baki khata",
+            "record a due"
+          ]
+        },
+        {
+          "label": "Missing Page",
+          "scene": "The shopkeeper searches a damaged ledger page for an old entry.",
+          "collocations": [
+            "missing entry",
+            "check a balance"
+          ]
+        },
+        {
+          "label": "Customer Memory",
+          "scene": "Customer and shopkeeper disagree politely over the amount owed.",
+          "collocations": [
+            "payment dispute",
+            "remember a purchase"
+          ]
+        },
+        {
+          "label": "Faded Ink",
+          "scene": "A shopkeeper tries to read an old baki entry whose ink has faded in the paper khata.",
+          "collocations": [
+            "faded entry",
+            "paper record"
+          ]
+        },
+        {
+          "label": "Unpaid Month",
+          "scene": "A shopkeeper counts little cash beside several unpaid baki entries at month end.",
+          "collocations": [
+            "unpaid dues",
+            "cash flow"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes make a baki dispute more likely?",
+        "Where have you seen a shop keep a paper khata?",
+        "Is a missing page or a remembered amount stronger evidence?",
+        "Why might shops still prefer informal credit?",
+        "If a customer disputes a baki total, what happens to trust?",
+        "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 1500,
+        "pilot_days": 7,
+        "pilot": "Observe one willing shop for a week and note how baki sales, payments, and disputes are recorded.",
+        "potential_customer": "Small shops",
+        "test_metric": "Disputed balances, missing entries, and time spent checking the khata",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.hishab.com.bd/blog/credit-collection-tracking-bangladesh/",
+          "https://baki.bd/"
+        ],
+        "editor_note": "Existing Bangladeshi products confirm this is an active market; students should test a distinct service hypothesis rather than assume there is no competition."
+      }
+    },
+    {
+      "number": 47,
+      "id": "application-mistakes",
+      "title": "APPLICATION MISTAKES",
+      "focus": "A student can miss an application deadline because a photo, scan, or document is wrong or missing.",
+      "theme": "student / administration",
+      "tiles": [
+        {
+          "label": "Document Pile",
+          "scene": "An applicant sorts certificates, photo prints, and ID photocopies on a table.",
+          "collocations": [
+            "document pile",
+            "required copies"
+          ]
+        },
+        {
+          "label": "Photo Size",
+          "scene": "A print-shop worker checks a passport-style photo against an application size guide.",
+          "collocations": [
+            "photo size",
+            "print a copy"
+          ]
+        },
+        {
+          "label": "Scan Quality",
+          "scene": "A student notices that a phone scan has cut off one certificate corner.",
+          "collocations": [
+            "clear scan",
+            "missing corner"
+          ]
+        },
+        {
+          "label": "Deadline Clock",
+          "scene": "The applicant checks a deadline on a phone while waiting to print.",
+          "collocations": [
+            "application deadline",
+            "finish in time"
+          ]
+        },
+        {
+          "label": "Rejected Photo",
+          "scene": "An applicant sees a photo upload rejected because its size is wrong; no readable text.",
+          "collocations": [
+            "wrong photo size",
+            "upload rejected"
+          ]
+        },
+        {
+          "label": "Exposed Copies",
+          "scene": "Unclaimed identity photocopies lie on a public print-shop counter with details illegible.",
+          "collocations": [
+            "private copies",
+            "left behind"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes could make an application incomplete?",
+        "What paperwork has taken you more than one visit?",
+        "Is a bad scan or the wrong photo harder to notice?",
+        "Why do different applications need different formats?",
+        "If a deadline is missed, what chance is lost?",
+        "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 1500,
+        "pilot_days": 7,
+        "pilot": "Ask ten applicants to walk through one real checklist using their own documents; retain no copies.",
+        "potential_customer": "Applicants or campus service shops",
+        "test_metric": "Missing documents, rejected scans, and time lost before deadlines",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://seu.edu.bd/uploads/media/2025/07/Admission_Prospectus_Fall_2025.pdf",
+          "https://bigd.bracu.ac.bd/publications/digital-literacy-and-access-to-public-services-in-rural-households-of-bangladesh/"
+        ],
+        "editor_note": "The prospectus is one example of detailed document requirements, not a Rajshahi job posting."
+      }
+    },
+    {
+      "number": 48,
+      "id": "hard-to-find-medicine",
+      "title": "HARD-TO-FIND MEDICINE",
+      "focus": "A person with a prescription may need to visit several pharmacies to find the exact medicine and strength.",
+      "theme": "health / service",
+      "tiles": [
+        {
+          "label": "Prescription",
+          "scene": "A patient holds a prescription with no readable medical details at a pharmacy counter.",
+          "collocations": [
+            "prescription",
+            "exact strength"
+          ]
+        },
+        {
+          "label": "Empty Shelf",
+          "scene": "A pharmacist checks an empty space where a requested medicine would normally be stored.",
+          "collocations": [
+            "out of stock",
+            "check a shelf"
+          ]
+        },
+        {
+          "label": "Second Shop",
+          "scene": "The patient walks to another licensed pharmacy with the prescription.",
+          "collocations": [
+            "second pharmacy",
+            "search nearby"
+          ]
+        },
+        {
+          "label": "No Stock Answer",
+          "scene": "A pharmacist tries to call another shop about stock, but the phone goes unanswered while the patient waits.",
+          "collocations": [
+            "unanswered inquiry",
+            "unknown stock"
+          ]
+        },
+        {
+          "label": "Wrong Strength",
+          "scene": "A patient compares two medicine packs of different strengths while a pharmacist checks the prescription; all text illegible.",
+          "collocations": [
+            "correct strength",
+            "check carefully"
+          ]
+        },
+        {
+          "label": "Long Search",
+          "scene": "A patient carrying a prescription passes several pharmacy counters without finding the required pack.",
+          "collocations": [
+            "search several shops",
+            "wasted trip"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes cause unnecessary travel?",
+        "How do people usually find a medicine that one shop lacks?",
+        "Is an empty shelf or the wrong strength a bigger problem?",
+        "Why must a pharmacist confirm the exact medicine and strength?",
+        "What could go wrong if a patient buys a different pack without advice?",
+        "What could you try in 14 days for at most 3,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 3000,
+        "pilot_days": 14,
+        "pilot": "Ask ten consenting patients and licensed pharmacies which stock questions cause wasted trips; do not handle prescriptions.",
+        "potential_customer": "Patients or pharmacies",
+        "test_metric": "Unnecessary pharmacy trips and uncertainty about exact stock",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://www.thedailystar.net/news/bangladesh/news/year-disruptions-health-sector-4069776",
+          "https://www.pharmaz247.com/modules/ecommerce"
+        ],
+        "editor_note": "National supply disruption and an existing pharmacy-stock product ground the need and possible model, not measured demand in Rajshahi. No medicine substitution or diagnosis should be suggested."
+      }
+    },
+    {
+      "number": 49,
+      "id": "costly-farm-machines",
+      "title": "COSTLY FARM MACHINES",
+      "focus": "A small Barind-area farmer needs a machine briefly but cannot justify buying it alone.",
+      "theme": "rural / service",
+      "tiles": [
+        {
+          "label": "Small Plot",
+          "scene": "A farmer stands beside a modest Barind crop plot that needs preparation.",
+          "collocations": [
+            "small plot",
+            "farm task"
+          ]
+        },
+        {
+          "label": "Costly Machine",
+          "scene": "The farmer examines a powered farm tool at a dealer but hesitates at its price tag.",
+          "collocations": [
+            "buy a machine",
+            "high upfront cost"
+          ]
+        },
+        {
+          "label": "No Available Tool",
+          "scene": "A farmer reaches an empty machinery shed during the busy season.",
+          "collocations": [
+            "no machine",
+            "busy season"
+          ]
+        },
+        {
+          "label": "Clashing Needs",
+          "scene": "Two farmers ask the same machine owner for help on the same planting morning.",
+          "collocations": [
+            "same-day demand",
+            "limited machines"
+          ]
+        },
+        {
+          "label": "Unfamiliar Controls",
+          "scene": "A farmer hesitates at the controls of a large farm machine without an operator nearby.",
+          "collocations": [
+            "unfamiliar controls",
+            "trained operator"
+          ]
+        },
+        {
+          "label": "Machine Breakdown",
+          "scene": "A mechanic repairs a stalled rented farm machine while the next farmer waits beside a ready field.",
+          "collocations": [
+            "machine downtime",
+            "maintenance plan"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes could delay a farmer at the busiest time?",
+        "What farm tool would be useful to hire only occasionally?",
+        "Is an unavailable tool or a broken one harder during planting?",
+        "Why does timing matter more during planting or harvest?",
+        "If one machine serves several farms, who waits?",
+        "What could you try in 14 days for at most 5,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 5000,
+        "pilot_days": 14,
+        "pilot": "Ask growers and equipment owners when machines are unavailable, idle, or too costly to hire.",
+        "potential_customer": "Small farmers or equipment owners",
+        "test_metric": "Unmet machine demand, idle equipment, and hire costs",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://b.bssnews.net/agriculture-news/313578",
+          "https://alfaagroltd.com/"
+        ],
+        "editor_note": "Existing machinery services show this is an established model; test availability and trust in one local context."
+      }
+    },
+    {
+      "number": 50,
+      "id": "elder-isolation",
+      "title": "ELDER ISOLATION",
+      "focus": "An older resident may want dependable contact or practical help while keeping control over visits and private information.",
+      "theme": "social / care",
+      "tiles": [
+        {
+          "label": "Quiet Home",
+          "scene": "An older person sits alone beside a phone in a modest Rajshahi home.",
+          "collocations": [
+            "living alone",
+            "daily routine"
+          ]
+        },
+        {
+          "label": "Missed Call",
+          "scene": "The phone shows an unanswered call icon while the person is outside in the courtyard.",
+          "collocations": [
+            "missed call",
+            "try again"
+          ]
+        },
+        {
+          "label": "Unanswered Gate",
+          "scene": "A known neighbor calls from an older resident’s gate but receives no answer.",
+          "collocations": [
+            "no answer",
+            "check again"
+          ]
+        },
+        {
+          "label": "Heavy Errand",
+          "scene": "An older resident carries a heavy grocery bag home alone along a Rajshahi lane.",
+          "collocations": [
+            "heavy errand",
+            "carry groceries"
+          ]
+        },
+        {
+          "label": "Busy Contact",
+          "scene": "A chosen contact sees a missed call while occupied at work and cannot answer immediately.",
+          "collocations": [
+            "busy contact",
+            "missed call"
+          ]
+        },
+        {
+          "label": "Unwanted Knock",
+          "scene": "An older resident hesitates when an unfamiliar visitor knocks at the home gate.",
+          "collocations": [
+            "unwanted visit",
+            "personal privacy"
+          ]
+        }
+      ],
+      "questions": [
+        "Which two scenes show why contact can be difficult?",
+        "When might an older resident want contact or practical help?",
+        "Is a missed call or an unwanted visit more troubling?",
+        "Why might a chosen contact be hard to reach?",
+        "What could happen if helpers ignore an older person’s preferences?",
+        "What could you try in 14 days for at most 5,000 BDT? Who might pay if it worked?"
+      ],
+      "seed_funding": {
+        "amount_bdt": 5000,
+        "pilot_days": 14,
+        "pilot": "Ask willing older residents what contact they want, what they decline, and which practical gaps remain.",
+        "potential_customer": "Older residents or relatives",
+        "test_metric": "Desired contact, missed help, and privacy preferences",
+        "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+      },
+      "evidence": {
+        "sources": [
+          "https://socialprotection.gov.bd/2026/05/female-labor-migration-and-household-care-dynamics-in-bangladesh/",
+          "https://www.dhakatribune.com/bangladesh/378410/aged-and-alone-the-hidden-sorrows-in-old-age"
+        ],
+        "editor_note": "The card avoids assuming every older adult has relatives, a smartphone, or a desire for visits."
+      }
+    }
+  ]
+}

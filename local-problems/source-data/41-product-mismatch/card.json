@@ -1,0 +1,140 @@
+{
+  "title": "Product Mismatch",
+  "slug": "product-mismatch",
+  "band_color": "auto",
+  "seed": "rajshahi-product-mismatch-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Product Mismatch"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "bright-photo",
+      "label": "Bright Photo",
+      "aliases": [],
+      "description": "A seller photographs a handmade outfit in strong filtered light for a phone listing.",
+      "visual_kind": "action",
+      "visual_focus": "A seller photographs a handmade outfit in strong filtered light for a phone listing.",
+      "local_cue": "Bangladesh social-commerce clothing sold from a Rajshahi home, with three-piece garments, local courier packaging and phone photos",
+      "image": "assets/01-bright-photo.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "product photo",
+        "show a colour"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "real-colour",
+      "label": "Real Colour",
+      "aliases": [],
+      "description": "The same fabric is held beside a window to compare its actual shade.",
+      "visual_kind": "action",
+      "visual_focus": "The same fabric is held beside a window to compare its actual shade.",
+      "local_cue": "Bangladesh social-commerce clothing sold from a Rajshahi home, with three-piece garments, local courier packaging and phone photos",
+      "image": "assets/02-real-colour.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "real colour",
+        "compare fabric"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "size-guess",
+      "label": "Size Guess",
+      "aliases": [],
+      "description": "A buyer checks a clothing item against a measuring tape before ordering.",
+      "visual_kind": "action",
+      "visual_focus": "A buyer checks a clothing item against a measuring tape before ordering.",
+      "local_cue": "Bangladesh social-commerce clothing sold from a Rajshahi home, with three-piece garments, local courier packaging and phone photos",
+      "image": "assets/03-size-guess.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "check size",
+        "measure carefully"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "chat-promise",
+      "label": "Chat Promise",
+      "aliases": [],
+      "description": "Seller and buyer discuss a product through unreadable phone chat bubbles.",
+      "visual_kind": "action",
+      "visual_focus": "Seller and buyer discuss a product through unreadable phone chat bubbles.",
+      "local_cue": "Bangladesh social-commerce clothing sold from a Rajshahi home, with three-piece garments, local courier packaging and phone photos",
+      "image": "assets/04-chat-promise.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "seller promise",
+        "ask a question"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "parcel-opening",
+      "label": "Parcel Opening",
+      "aliases": [],
+      "description": "A buyer opens the package and compares the garment with the phone photo.",
+      "visual_kind": "action",
+      "visual_focus": "A buyer opens the package and compares the garment with the phone photo.",
+      "local_cue": "Bangladesh social-commerce clothing sold from a Rajshahi home, with three-piece garments, local courier packaging and phone photos",
+      "image": "assets/05-parcel-opening.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "open a parcel",
+        "match the photo"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "return-request",
+      "label": "Return Request",
+      "aliases": [],
+      "description": "A buyer shows a mismatched garment to a seller over a phone call after delivery.",
+      "visual_kind": "action",
+      "visual_focus": "A buyer shows a mismatched garment to a seller over a phone call after delivery.",
+      "local_cue": "Bangladesh social-commerce clothing sold from a Rajshahi home, with three-piece garments, local courier packaging and phone photos",
+      "image": "assets/06-return-request.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "request a return",
+        "product mismatch"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes could reveal a mismatch?",
+    "When has an online product looked different in person?",
+    "Which mismatch matters more: size or colour?",
+    "Why might a listing photo differ from the item?",
+    "If returns are difficult, what happens to trust?",
+    "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 1500,
+    "pilot_days": 7,
+    "pilot": "Compare five listings with delivered items and ask buyers what they needed to know before ordering.",
+    "potential_customer": "Home sellers or marketplaces",
+    "test_metric": "Product mismatches, buyer complaints, and lost trust",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://documents1.worldbank.org/curated/en/099347306132442378/pdf/IDU-3eb13acf-4061-48ec-a6df-a4686e5627fd.pdf",
+      "https://www.dhl.com/discover/en-bd/e-commerce-advice/e-commerce-trends/what-is-e-commerce-2025-blangladeshi-trends"
+    ],
+    "editor_note": "This is a social-commerce trust hypothesis, not a claim that Rajshahi sellers generally mislead buyers."
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "title": "Application Mistakes",
+  "slug": "application-mistakes",
+  "band_color": "auto",
+  "seed": "rajshahi-application-mistakes-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Application Mistakes"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "document-pile",
+      "label": "Document Pile",
+      "aliases": [],
+      "description": "An applicant sorts certificates, photo prints, and ID photocopies on a table.",
+      "visual_kind": "action",
+      "visual_focus": "An applicant sorts certificates, photo prints, and ID photocopies on a table.",
+      "local_cue": "a Bangladeshi student preparing photos, certificates and scans at a Rajshahi print-and-scan shop, no legible private details",
+      "image": "assets/01-document-pile.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "document pile",
+        "required copies"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "photo-size",
+      "label": "Photo Size",
+      "aliases": [],
+      "description": "A print-shop worker checks a passport-style photo against an application size guide.",
+      "visual_kind": "action",
+      "visual_focus": "A print-shop worker checks a passport-style photo against an application size guide.",
+      "local_cue": "a Bangladeshi student preparing photos, certificates and scans at a Rajshahi print-and-scan shop, no legible private details",
+      "image": "assets/02-photo-size.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "photo size",
+        "print a copy"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "scan-quality",
+      "label": "Scan Quality",
+      "aliases": [],
+      "description": "A student notices that a phone scan has cut off one certificate corner.",
+      "visual_kind": "action",
+      "visual_focus": "A student notices that a phone scan has cut off one certificate corner.",
+      "local_cue": "a Bangladeshi student preparing photos, certificates and scans at a Rajshahi print-and-scan shop, no legible private details",
+      "image": "assets/03-scan-quality.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "clear scan",
+        "missing corner"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "deadline-clock",
+      "label": "Deadline Clock",
+      "aliases": [],
+      "description": "The applicant checks a deadline on a phone while waiting to print.",
+      "visual_kind": "action",
+      "visual_focus": "The applicant checks a deadline on a phone while waiting to print.",
+      "local_cue": "a Bangladeshi student preparing photos, certificates and scans at a Rajshahi print-and-scan shop, no legible private details",
+      "image": "assets/04-deadline-clock.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "application deadline",
+        "finish in time"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "rejected-photo",
+      "label": "Rejected Photo",
+      "aliases": [],
+      "description": "An applicant sees a photo upload rejected because its size is wrong; no readable text.",
+      "visual_kind": "action",
+      "visual_focus": "An applicant sees a photo upload rejected because its size is wrong; no readable text.",
+      "local_cue": "a Bangladeshi student preparing photos, certificates and scans at a Rajshahi print-and-scan shop, no legible private details",
+      "image": "assets/05-rejected-photo.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "wrong photo size",
+        "upload rejected"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "exposed-copies",
+      "label": "Exposed Copies",
+      "aliases": [],
+      "description": "Unclaimed identity photocopies lie on a public print-shop counter with details illegible.",
+      "visual_kind": "action",
+      "visual_focus": "Unclaimed identity photocopies lie on a public print-shop counter with details illegible.",
+      "local_cue": "a Bangladeshi student preparing photos, certificates and scans at a Rajshahi print-and-scan shop, no legible private details",
+      "image": "assets/06-exposed-copies.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "private copies",
+        "left behind"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes could make an application incomplete?",
+    "What paperwork has taken you more than one visit?",
+    "Is a bad scan or the wrong photo harder to notice?",
+    "Why do different applications need different formats?",
+    "If a deadline is missed, what chance is lost?",
+    "What could you try in 7 days for at most 1,500 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 1500,
+    "pilot_days": 7,
+    "pilot": "Ask ten applicants to walk through one real checklist using their own documents; retain no copies.",
+    "potential_customer": "Applicants or campus service shops",
+    "test_metric": "Missing documents, rejected scans, and time lost before deadlines",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://seu.edu.bd/uploads/media/2025/07/Admission_Prospectus_Fall_2025.pdf",
+      "https://bigd.bracu.ac.bd/publications/digital-literacy-and-access-to-public-services-in-rural-households-of-bangladesh/"
+    ],
+    "editor_note": "The prospectus is one example of detailed document requirements, not a Rajshahi job posting."
+  }
+}

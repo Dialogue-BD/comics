@@ -1,0 +1,139 @@
+{
+  "title": "Poor Mess Meals",
+  "slug": "poor-mess-meals",
+  "band_color": "auto",
+  "seed": "rajshahi-poor-mess-meals-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Poor Mess Meals"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "small-portion",
+      "label": "Small Portion",
+      "aliases": [],
+      "description": "A student compares a very small rice-and-vegetable plate with the weekly menu board.",
+      "visual_kind": "action",
+      "visual_focus": "A student compares a very small rice-and-vegetable plate with the weekly menu board.",
+      "local_cue": "a low-cost Rajshahi student mess kitchen and dining space with rice, dal, vegetables and everyday metal serving pots",
+      "image": "assets/01-small-portion.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "small portion",
+        "meal value"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "missed-dinner",
+      "label": "Missed Dinner",
+      "aliases": [],
+      "description": "A student reaches the mess dining room after class as serving pots are almost empty.",
+      "visual_kind": "action",
+      "visual_focus": "A student reaches the mess dining room after class as serving pots are almost empty.",
+      "local_cue": "a low-cost Rajshahi student mess kitchen and dining space with rice, dal, vegetables and everyday metal serving pots",
+      "image": "assets/02-missed-dinner.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "miss dinner",
+        "late class"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "shared-pot",
+      "label": "Shared Pot",
+      "aliases": [],
+      "description": "A cook serves students from a large pot at a modest campus-area mess.",
+      "visual_kind": "action",
+      "visual_focus": "A cook serves students from a large pot at a modest campus-area mess.",
+      "local_cue": "a low-cost Rajshahi student mess kitchen and dining space with rice, dal, vegetables and everyday metal serving pots",
+      "image": "assets/03-shared-pot.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "shared kitchen",
+        "serve dinner"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "meal-count",
+      "label": "Meal Count",
+      "aliases": [],
+      "description": "A manager marks meal attendance in a paper ledger while students queue.",
+      "visual_kind": "action",
+      "visual_focus": "A manager marks meal attendance in a paper ledger while students queue.",
+      "local_cue": "a low-cost Rajshahi student mess kitchen and dining space with rice, dal, vegetables and everyday metal serving pots",
+      "image": "assets/04-meal-count.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "count meals",
+        "monthly bill"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "market-cost",
+      "label": "Market Cost",
+      "aliases": [],
+      "description": "A mess cook compares rising market purchases with a small meal budget.",
+      "visual_kind": "action",
+      "visual_focus": "A mess cook compares rising market purchases with a small meal budget.",
+      "local_cue": "a low-cost Rajshahi student mess kitchen and dining space with rice, dal, vegetables and everyday metal serving pots",
+      "image": "assets/05-market-cost.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "market cost",
+        "meal budget"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "uneven-portions",
+      "label": "Uneven Portions",
+      "aliases": [],
+      "description": "Two students who paid the same amount receive visibly unequal dinner portions.",
+      "visual_kind": "action",
+      "visual_focus": "Two students who paid the same amount receive visibly unequal dinner portions.",
+      "local_cue": "a low-cost Rajshahi student mess kitchen and dining space with rice, dal, vegetables and everyday metal serving pots",
+      "image": "assets/06-uneven-portions.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "uneven portions",
+        "same price"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes most affect whether a student renews?",
+    "What makes a low-cost meal feel worth its price?",
+    "Is a small portion or a missed dinner worse? Why?",
+    "Why might a kitchen struggle to serve late students?",
+    "If food costs rise, which choice hurts students most?",
+    "What could you try in 7 days for at most 5,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 5000,
+    "pilot_days": 7,
+    "pilot": "Record a week of meal timing, portions, prices, and student feedback at one willing mess.",
+    "potential_customer": "Students or mess managers",
+    "test_metric": "Missed meals, portion satisfaction, food costs, and waste",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://online.thedailystar.net/youth/education/campus/news/ru-students-still-face-poor-food-housing-woes-3963861"
+    ],
+    "editor_note": ""
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "title": "Bruised Mangoes",
+  "slug": "bruised-mangoes",
+  "band_color": "auto",
+  "seed": "rajshahi-bruised-mangoes-v1",
+  "game": {
+    "schema_version": 1,
+    "category_aliases": [
+      "Rajshahi Bruised Mangoes"
+    ],
+    "tags": [
+      "rajshahi",
+      "local-problem",
+      "conversation",
+      "citizen-scale"
+    ],
+    "links": []
+  },
+  "items": [
+    {
+      "id": "ripe-fruit",
+      "label": "Ripe Fruit",
+      "aliases": [],
+      "description": "A seller gently sorts ripe and firm Rajshahi mangoes into two baskets.",
+      "visual_kind": "action",
+      "visual_focus": "A seller gently sorts ripe and firm Rajshahi mangoes into two baskets.",
+      "local_cue": "Rajshahi mango season, local mango baskets, simple cardboard parcels and a Bangladesh courier counter",
+      "image": "assets/01-ripe-fruit.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "ripe mango",
+        "sort by ripeness"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "thin-box",
+      "label": "Thin Box",
+      "aliases": [],
+      "description": "Mangoes press against one another in a weak cardboard box.",
+      "visual_kind": "action",
+      "visual_focus": "Mangoes press against one another in a weak cardboard box.",
+      "local_cue": "Rajshahi mango season, local mango baskets, simple cardboard parcels and a Bangladesh courier counter",
+      "image": "assets/02-thin-box.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "thin box",
+        "fruit pressure"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "stacked-parcels",
+      "label": "Stacked Parcels",
+      "aliases": [],
+      "description": "A heavy courier box is stacked on top of a thin carton containing mangoes.",
+      "visual_kind": "action",
+      "visual_focus": "A heavy courier box is stacked on top of a thin carton containing mangoes.",
+      "local_cue": "Rajshahi mango season, local mango baskets, simple cardboard parcels and a Bangladesh courier counter",
+      "image": "assets/03-stacked-parcels.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "heavy parcel",
+        "crush a box"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "courier-handoff",
+      "label": "Courier Handoff",
+      "aliases": [],
+      "description": "A seller hands a mango parcel to a courier at a Rajshahi counter.",
+      "visual_kind": "action",
+      "visual_focus": "A seller hands a mango parcel to a courier at a Rajshahi counter.",
+      "local_cue": "Rajshahi mango season, local mango baskets, simple cardboard parcels and a Bangladesh courier counter",
+      "image": "assets/04-courier-handoff.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "courier handoff",
+        "record a parcel"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "bruised-arrival",
+      "label": "Bruised Arrival",
+      "aliases": [],
+      "description": "A recipient opens a package and finds visibly bruised mangoes.",
+      "visual_kind": "action",
+      "visual_focus": "A recipient opens a package and finds visibly bruised mangoes.",
+      "local_cue": "Rajshahi mango season, local mango baskets, simple cardboard parcels and a Bangladesh courier counter",
+      "image": "assets/05-bruised-arrival.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "bruised fruit",
+        "arrival condition"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    },
+    {
+      "id": "warm-delay",
+      "label": "Warm Delay",
+      "aliases": [],
+      "description": "A mango parcel sits in a warm holding area while other packages are sorted.",
+      "visual_kind": "action",
+      "visual_focus": "A mango parcel sits in a warm holding area while other packages are sorted.",
+      "local_cue": "Rajshahi mango season, local mango baskets, simple cardboard parcels and a Bangladesh courier counter",
+      "image": "assets/06-warm-delay.png",
+      "chroma_key": "#ff00ff",
+      "collocations": [
+        "warm delay",
+        "perishable fruit"
+      ],
+      "factor_role": "problem-cause-workaround-or-effect"
+    }
+  ],
+  "questions": [
+    "Which two scenes most affect whether fruit arrives whole?",
+    "Have you sent or received seasonal food by courier?",
+    "Is bruising or a long delivery delay more costly?",
+    "Where might fruit be damaged after it leaves the seller?",
+    "If packing gets heavier, what extra costs appear?",
+    "What could you try in 14 days for at most 8,000 BDT? Who might pay if it worked?"
+  ],
+  "starter_experiment": {
+    "amount_bdt": 8000,
+    "pilot_days": 14,
+    "pilot": "Follow a few existing mango shipments and record packing, handoffs, travel time, damage, and cost.",
+    "potential_customer": "Mango sellers or senders",
+    "test_metric": "Bruising frequency, delay points, and loss per parcel",
+    "note": "Optional cash ceiling for a first experiment, not money required to begin or a full launch budget. Start with tools and relationships already available; pay partners fairly and account for founder time before scaling."
+  },
+  "evidence": {
+    "sources": [
+      "https://www.tbsnews.net/features/panorama/how-courier-failures-are-undermining-bangladeshs-online-perishables-trade-1181016"
+    ],
+    "editor_note": "Distinct from card 23's farmgate price problem: this follows an individual parcel after sale."
+  }
+}
