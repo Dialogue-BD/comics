@@ -2502,7 +2502,6 @@ function newScenario(keepLesson, id){
   state = { qDone: false, passes: [0, 0, 0], catchScores: [[], [], []], tOpen: false,
             tCard: [false, false, false],
             claimsDone: false, picked: new Set(), placed: {}, mapDone: false,
-            qMeth: 0,
             handoff: false,
             chosenQ: null };
   /* The brand layer does not recolour per theme — the badge carries the theme. */
@@ -2572,7 +2571,7 @@ function syncNext(){
      has gone by the time a beginner has finished reading it */
   /* "Choose a question first" is true but premature while step 2 is still
      explaining what an interview is — there are no questions on screen yet. */
-  const teaching = here === 'Ask' && (state.qPhase || 0) < 3;
+  const teaching = here === 'Ask' && (state.qPhase || 0) < 2;
   if (!ready && why && !teaching){
     const panel = wrap.querySelector('.panel');
     if (panel) panel.appendChild(whyBox(why));
@@ -3314,8 +3313,14 @@ const LESSON_BN = [
    'প্রতিটি সংস্কৃতিতেই এগুলো সবই আছে। কেউ কোনোটিকে ফেলে দেয় না। বদলায় শুধু কোনটি আগে থাকে — আর ওই ক্রম থেকেই আলাদা আচরণ জন্ম নেয়।'],
   ['ক্রমটা আসে কোথা থেকে', 'কেন্দ্রই ঠিক করে দেয় প্রান্তটা',
    'একটি সংস্কৃতি তার মূল্যবোধগুলোকে এভাবেই সাজায়, কারণ সে যা সত্য বলে মানে। আর সে ওগুলো সত্য মানে, কারণ সে জগৎটাকে যেভাবে দেখে — যে চশমা কেউ কখনো খোলে না।'],
+  ['সাক্ষাৎকার জিনিসটা কী', 'জরিপ গোনে। সাক্ষাৎকার ব্যাখ্যা করে।',
+   'জরিপ বহু মানুষের কাছে যায় আর প্রত্যেকের কাছে একটি টিক চায়। নৃতাত্ত্বিক সাক্ষাৎকার অল্প কয়েকজনের কাছে যায় আর তাঁদের নিজের ভাষায় এমন কিছু বলতে বলে, যা তাঁদের কখনো ভাষায় প্রকাশ করতে হয়নি।'],
+  ['নৃবিজ্ঞানীরা কেন এটি ব্যবহার করেন', 'যা চোখে দেখা যায় না, সেখানে পৌঁছায়',
+   'নৃবিজ্ঞানী আর সমাজবিজ্ঞানীরা এই পদ্ধতি ব্যবহার করেন, কারণ কেবল বাইরের বৃত্তটিই চোখে দেখা যায়। মূল্যবোধ, বিশ্বাস আর বিশ্বদৃষ্টির ছবি তোলা যায় না — জিজ্ঞেস করে জানতে হয়, তারপর অন্যদের কথার সঙ্গে মিলিয়ে দেখতে হয়।'],
+  ['কাজটা যেভাবে হয়', 'একজন মানুষ মানে একটি গল্প। তিনজন মানে একটি ধারা।',
+   'কিছু একটা লক্ষ করুন, সেটি নিয়ে জিজ্ঞেস করুন, শুনুন, ভিন্ন ভিন্ন মানুষ কী বলছেন মিলিয়ে দেখুন — তারপরেই কেবল নিচে যা আছে তার নাম দিন। এটিই পদ্ধতি — আর এটিই সেই পাঁচটি ধাপ, যেগুলো আপনি এখন করতে যাচ্ছেন।'],
   ['সাক্ষাৎকার কেন নেব?', 'একই ঘণ্টায় সংস্কৃতি আর ভাষা, দুটোই',
-   'মূল্যবোধ চোখে দেখা যায় না। জিজ্ঞেস করতে হয় — তারপর সেই উত্তর অন্যদের সঙ্গে মিলিয়ে দেখতে হয়। নৃবিজ্ঞানীরা এভাবেই কাজ করেন, আর একই সঙ্গে এটি সত্যিকারের শোনার অনুশীলন।'],
+   'যে কথোপকথন আপনাকে দেখায় একজন মানুষ কী মূল্য দেন, সেটিই একইসঙ্গে স্বাভাবিক গতিতে সত্যিকারের শোনার অনুশীলন — বাগধারা, থেমে যাওয়া আর নিজের কথা শুধরে নেওয়া, যা কোনো পাঠ্যবই লিখে রাখে না।'],
   ['এবার আপনি শুনবেন', 'তিনজন মানুষ, একটি প্রশ্ন',
    'একই প্রশ্নের উত্তর আপনি তিনজনের কাছ থেকে শুনবেন। খেয়াল করুন — তিনজনই যে কথাটা বলছেন, সেটিই সংস্কৃতি। কেবল একজন যা বলছেন, সেটি সেই মানুষটিরই কথা। প্রত্যেকের কথা তিনবার শোনা যাবে, আর দাগ দেওয়া যেকোনো শব্দে চাপ দিলে তার মানে দেখা যাবে।']
 ];
@@ -3342,10 +3347,31 @@ const LESSON = [
           'And it holds those things true because of how it sees the world — the glasses nobody ever takes off.',
     build: () => chainPicture() },
 
+  { rail: 'Not a survey', ico: 'ask', kicker: 'What An Interview Is',
+    title: 'A survey counts. An interview explains.',
+    body: 'A survey reaches many people and asks each of them for a tick. An ethnographic interview ' +
+          'reaches a few people and asks them to explain, in their own words, something they have ' +
+          'never had to put into words before.',
+    build: () => surveyVsInterview() },
+
+  { rail: 'Unseen', ico: 'glasses', kicker: 'Why Anthropologists Use It',
+    title: 'It reaches what you cannot see',
+    body: 'Anthropologists and sociologists use this method because only the outside ring can be ' +
+          'observed. Values, beliefs and worldview leave no trace you can photograph — they have to ' +
+          'be asked for, and then checked against other people.',
+    build: () => reachPicture() },
+
+  { rail: 'The work', ico: 'target', kicker: 'How The Work Is Done',
+    title: 'One person is a story. Three are a pattern.',
+    body: 'Notice something, ask about it, listen, compare what different people say, and only then ' +
+          'name what is underneath. That is the method — and it is exactly the five steps you are ' +
+          'about to work through.',
+    build: () => loopPicture() },
+
   { rail: 'Why', ico: 'ask', kicker: 'Why Interview Anyone?',
     title: 'You learn the culture and the language in the same hour',
-    body: 'You cannot see a value. You have to ask — and then check the answer against other people. ' +
-          'An ethnographic interview is how anthropologists do it, and it is real listening practice at the same time.',
+    body: 'The same conversation that shows you what somebody values is also real listening practice ' +
+          'at natural speed — the idioms, the hesitations and the repairs that no textbook records.',
     build: () => payoffPicture() },
 
   /* The framing used to stop at the idea and leave the class to work out what
@@ -3800,98 +3826,10 @@ const QDRILL = [
   { q: 'Why are Americans so cold to their families?',   ok: false, flaw: 'generalizing' }
 ];
 
-/* Three pictures for the three halves of the question "what is this method":
-   what it is not, what it reaches, and what a researcher actually does with
-   it. The third one is the activity's own rail, because the class is about to
-   carry out the method rather than read about it. */
-function qPhaseMethod(card){
-  const at = state.qMeth || 0;
-  const box = el('div', 'meth');
-
-  /* 1 — a survey counts people; an interview listens to a few of them */
-  const one = el('div', 'meth-card');
-  one.appendChild(methHead('1', 'Not a survey', 'জরিপ নয়'));
-  const cmp = el('div', 'meth-cmp');
-
-  const sv = el('div', 'meth-col');
-  sv.appendChild(tallySheet());
-  sv.appendChild(addBn(el('p', 'meth-cap', 'A survey: many people, one box each. It counts.'),
-                       'জরিপ: বহু মানুষ, প্রত্যেকে একটি ঘর ভরেন। এটি গোনে।'));
-  cmp.appendChild(sv);
-
-  const iv = el('div', 'meth-col is-this');
-  const three = el('div', 'meth-three');
-  sc.speakers.forEach((sp, i) => {
-    const r = el('div', 'meth-row');
-    const f = el('span', 'meth-face');
-    const im = new Image();
-    im.alt = ''; im.src = 'portraits/' + sc.id + '-' + (i + 1) + '.jpg';
-    im.onerror = () => { im.remove(); f.textContent = sp.name.charAt(0); };
-    f.appendChild(im);
-    r.appendChild(f);
-    r.appendChild(talkBubble(i));
-    three.appendChild(r);
-  });
-  iv.appendChild(three);
-  iv.appendChild(addBn(el('p', 'meth-cap', 'An interview: a few people, in their own words. It explains.'),
-                       'সাক্ষাৎকার: অল্প কয়েকজন, তাঁদের নিজের ভাষায়। এটি ব্যাখ্যা করে।'));
-  cmp.appendChild(iv);
-  one.appendChild(cmp);
-  if (at === 0) box.appendChild(one);
-
-  /* 2 — the rings again: one is visible, three have to be asked for */
-  const two = el('div', 'meth-card');
-  two.appendChild(methHead('2', 'It reaches what you cannot see', 'যা চোখে দেখা যায় না, সেখানে পৌঁছায়'));
-  two.appendChild(reachPicture());
-  two.appendChild(addBn(el('p', 'meth-cap',
-    'Anthropologists and sociologists use this method because only the outside ring can be observed. Values, beliefs and worldview leave no trace you can photograph — they have to be asked for, and then checked against other people.'),
-    'নৃবিজ্ঞানী আর সমাজবিজ্ঞানীরা এই পদ্ধতি ব্যবহার করেন, কারণ কেবল বাইরের বৃত্তটিই চোখে দেখা যায়। মূল্যবোধ, বিশ্বাস আর বিশ্বদৃষ্টির ছবি তোলা যায় না — জিজ্ঞেস করে জানতে হয়, তারপর অন্যদের কথার সঙ্গে মিলিয়ে দেখতে হয়।'));
-  if (at === 1) box.appendChild(two);
-
-  /* 3 — the fieldwork loop, which is this activity's own rail */
-  const three3 = el('div', 'meth-card');
-  three3.appendChild(methHead('3', 'How the work is done', 'কাজটা যেভাবে হয়'));
-  const loop = el('div', 'meth-loop');
-  [['eye','Notice','লক্ষ করুন','behavior', null],
-   ['ask','Ask','জিজ্ঞেস করুন','value', null],
-   ['ear','Listen','শুনুন','belief', '×3'],
-   ['tick','Compare','মিলিয়ে দেখুন','worldview', null],
-   ['target','Map','মানচিত্র আঁকুন','behavior', null]].forEach((st, i) => {
-    if (i) loop.appendChild(el('span', 'meth-arrow', '→'));
-    const d = el('div', 'meth-step r-' + st[3]);
-    const ring = el('span', 'meth-step-ring');
-    ring.appendChild(icon(st[0], 'meth-step-ico'));
-    d.appendChild(ring);
-    if (st[4]) d.appendChild(el('span', 'meth-x3', st[4]));
-    d.appendChild(el('span', 'meth-step-t', st[1]));
-    d.appendChild(bn(st[2]));
-    loop.appendChild(d);
-  });
-  three3.appendChild(loop);
-  three3.appendChild(addBn(el('p', 'meth-cap',
-    'One person is a story; three people are a pattern. That is why you will hear the same question answered three times — and it is exactly the five steps at the top of this screen.'),
-    'একজন মানুষ মানে একটি গল্প; তিনজন মানে একটি ধারা। তাই একই প্রশ্নের উত্তর আপনি তিনবার শুনবেন — আর এটিই এই পর্দার উপরের পাঁচটি ধাপ।'));
-  if (at === 2) box.appendChild(three3);
-
-  card.appendChild(box);
-
-  const foot = el('div', 'qfoot');
-  const dots = el('div', 'qdots');
-  for (let k = 0; k < 3; k++) dots.appendChild(el('span', 'qdot' + (k === at ? ' on' : '')));
-  foot.appendChild(dots);
-  const nb = el('button', 'mini on');
-  nb.type = 'button';
-  const last = at === 2;
-  nb.appendChild(el('span', null, last ? 'Now the questions' : t('nx_next')));
-  if (last) nb.appendChild(bn('এবার প্রশ্নগুলো'));
-  nb.onclick = () => {
-    if (last){ state.qPhase = 1; state.qRule = 0; }
-    else state.qMeth = at + 1;
-    render();
-  };
-  foot.appendChild(nb);
-  card.appendChild(foot);
-}
+/* The three pictures that say what an ethnographic interview is. They live in
+   the lesson rather than in step 2: this is framing, and step 2 is a task.
+   Each one is a lesson panel's build(), so the panel's own kicker, title and
+   body carry the words and the picture carries the argument. */
 
 /* A tally sheet: a crowd reduced to one mark each. Drawn rather than emoji'd,
    so it carries at projector size and keeps the paper palette. */
@@ -3906,15 +3844,12 @@ function tallySheet(){
   }
   s2.appendChild(crowd);
   s2.appendChild(shape('path', { d: 'M100 42 l0 8 M94 46 l6 6 6-6', class: 'meth-flow' }));
-  const sheet = shape('rect', { x: 46, y: 56, width: 108, height: 48, rx: 3,
-                                class: 'meth-sheet' });
-  s2.appendChild(sheet);
+  s2.appendChild(shape('rect', { x: 46, y: 56, width: 108, height: 48, rx: 3, class: 'meth-sheet' }));
   [0, 1, 2].forEach(r => {
     const y = 66 + r * 13;
     s2.appendChild(shape('rect', { x: 54, y: y - 4.5, width: 9, height: 9, rx: 1.5,
                                    class: 'meth-box' + (r === 1 ? ' is-tick' : '') }));
-    if (r === 1) s2.appendChild(shape('path', { d: 'M56 ' + y + ' l2 2.5 3.5-5',
-                                                class: 'meth-tickline' }));
+    if (r === 1) s2.appendChild(shape('path', { d: 'M56 ' + y + ' l2 2.5 3.5-5', class: 'meth-tickline' }));
     s2.appendChild(shape('rect', { x: 69, y: y - 2.5, width: 76 - r * 14, height: 5, rx: 2.5,
                                    class: 'meth-line' }));
   });
@@ -3944,13 +3879,11 @@ function talkBubble(i){
 function reachPicture(){
   const box = el('div', 'meth-seen');
   const s2 = svg('0 0 340 200', 'meth-reach');
-
   const cx = 170, cy = 100;
   const RS = [[86, 'behavior'], [64, 'value'], [44, 'belief'], [24, 'worldview']];
   RS.forEach((r, i) => {
     s2.appendChild(shape('circle', { cx: cx, cy: cy, r: r[0],
       class: 'reach-ring r-' + r[1] + (i === 0 ? ' is-seen' : '') }));
-    /* each band gets its name, so the legend has something to point at */
     const inner = RS[i + 1] ? RS[i + 1][0] : 0;
     const lab = shape('text', { x: cx, y: cy - (r[0] + inner) / 2 + 3.4,
                                 'text-anchor': 'middle',
@@ -3965,16 +3898,11 @@ function reachPicture(){
       s2.appendChild(lb);
     }
   });
-
-  /* the eye and its ray, which lands on the rim and goes no further */
   s2.appendChild(shape('path', { d: 'M18 74 q14 -11 28 0 q-14 11 -28 0 z', class: 'reach-eye' }));
   s2.appendChild(shape('circle', { cx: 32, cy: 74, r: 4.4, class: 'reach-pupil' }));
   s2.appendChild(shape('path', { d: 'M50 76 L' + (cx - 86) + ' 92', class: 'reach-ray' }));
   s2.appendChild(shape('circle', { cx: cx - 86, cy: 92, r: 3.4, class: 'reach-hit' }));
-
-  /* the question, which passes through all four */
-  s2.appendChild(shape('rect', { x: 258, y: 122, width: 62, height: 30, rx: 10,
-                                 class: 'reach-qbub' }));
+  s2.appendChild(shape('rect', { x: 258, y: 122, width: 62, height: 30, rx: 10, class: 'reach-qbub' }));
   s2.appendChild(shape('path', { d: 'M272 152 l0 8 9-8 z', class: 'reach-qbub' }));
   const qm = shape('text', { x: 289, y: 138, 'text-anchor': 'middle',
                              'dominant-baseline': 'central', class: 'reach-q' });
@@ -3982,7 +3910,6 @@ function reachPicture(){
   s2.appendChild(qm);
   s2.appendChild(shape('path', { d: 'M262 128 Q210 116 ' + cx + ' ' + cy, class: 'reach-arrow' }));
   s2.appendChild(shape('circle', { cx: cx, cy: cy, r: 4.6, class: 'reach-core' }));
-
   box.appendChild(s2);
 
   const legend = el('div', 'meth-legend');
@@ -4001,14 +3928,55 @@ function reachPicture(){
   return box;
 }
 
-function methHead(num, en, bnTxt){
-  const h = el('div', 'meth-head');
-  h.appendChild(el('span', 'meth-n', num));
-  const w = el('div');
-  w.appendChild(el('h3', 'meth-t', en));
-  addBn(w, bnTxt);
-  h.appendChild(w);
-  return h;
+/* what it is not, beside what it is */
+function surveyVsInterview(){
+  const cmp = el('div', 'meth-cmp');
+
+  const sv = el('div', 'meth-col');
+  sv.appendChild(tallySheet());
+  sv.appendChild(addBn(el('p', 'meth-cap', 'A survey: many people, one box each. It counts.'),
+                       'জরিপ: বহু মানুষ, প্রত্যেকে একটি ঘর ভরেন। এটি গোনে।'));
+  cmp.appendChild(sv);
+
+  const iv = el('div', 'meth-col is-this');
+  const three = el('div', 'meth-three');
+  sc.speakers.forEach((sp, i) => {
+    const r = el('div', 'meth-row');
+    const f = el('span', 'meth-face');
+    const im = new Image();
+    im.alt = ''; im.src = 'portraits/' + sc.id + '-' + (i + 1) + '.jpg';
+    im.onerror = () => { im.remove(); f.textContent = sp.name.charAt(0); };
+    f.appendChild(im);
+    r.appendChild(f);
+    r.appendChild(talkBubble(i));
+    three.appendChild(r);
+  });
+  iv.appendChild(three);
+  iv.appendChild(addBn(el('p', 'meth-cap', 'An interview: a few people, in their own words. It explains.'),
+                       'সাক্ষাৎকার: অল্প কয়েকজন, তাঁদের নিজের ভাষায়। এটি ব্যাখ্যা করে।'));
+  cmp.appendChild(iv);
+  return cmp;
+}
+
+/* notice, ask, listen, compare, map — this activity's own rail */
+function loopPicture(){
+  const loop = el('div', 'meth-loop');
+  [['eye','Notice','লক্ষ করুন','behavior', null],
+   ['ask','Ask','জিজ্ঞেস করুন','value', null],
+   ['ear','Listen','শুনুন','belief', '×3'],
+   ['tick','Compare','মিলিয়ে দেখুন','worldview', null],
+   ['target','Map','মানচিত্র আঁকুন','behavior', null]].forEach((st, i) => {
+    if (i) loop.appendChild(el('span', 'meth-arrow', '→'));
+    const d = el('div', 'meth-step r-' + st[3]);
+    const ring = el('span', 'meth-step-ring');
+    ring.appendChild(icon(st[0], 'meth-step-ico'));
+    d.appendChild(ring);
+    if (st[4]) d.appendChild(el('span', 'meth-x3', st[4]));
+    d.appendChild(el('span', 'meth-step-t', st[1]));
+    d.appendChild(bn(st[2]));
+    loop.appendChild(d);
+  });
+  return loop;
 }
 
 function qPhaseRules(card){
@@ -4038,7 +4006,7 @@ function qPhaseRules(card){
   nb.appendChild(bn(i < QRULES.length - 1 ? tb('nx_next') : tb('q_try')));
   nb.onclick = () => {
     if (i < QRULES.length - 1){ state.qRule = i + 1; }
-    else { state.qPhase = 2; state.qDrill = 0; }
+    else { state.qPhase = 1; state.qDrill = 0; }
     render();
   };
   foot.appendChild(nb);
@@ -4094,7 +4062,7 @@ function qPhaseDrill(card){
       nb.appendChild(bn(i < QDRILL.length - 1 ? tb('nx_next') : tb('q_now')));
       nb.onclick = () => {
         if (i < QDRILL.length - 1) state.qDrill = i + 1;
-        else state.qPhase = 3;
+        else state.qPhase = 2;
         render();
       };
       fb.appendChild(nb);
@@ -4123,21 +4091,15 @@ function stepAsk(){
   const c = el('div', 'card raised');
   c.appendChild(kickerEl());
 
-  if (state.qPhase === undefined) state.qPhase = state.qDone ? 3 : 0;
+  if (state.qPhase === undefined) state.qPhase = state.qDone ? 2 : 0;
 
   if (state.qPhase === 0){
-    c.appendChild(el('h2', 'h-title', 'What is an ethnographic interview?'));
-    c.appendChild(bn('নৃতাত্ত্বিক সাক্ষাৎকার জিনিসটা কী?'));
-    qPhaseMethod(c);
-    p.appendChild(c); wrap.appendChild(p); return;
-  }
-  if (state.qPhase === 1){
     c.appendChild(el('h2', 'h-title', 'One opens. One closes.'));
     c.appendChild(bn('একটি কথা খোলে। একটি কথা থামায়।'));
     qPhaseRules(c);
     p.appendChild(c); wrap.appendChild(p); return;
   }
-  if (state.qPhase === 2){
+  if (state.qPhase === 1){
     c.appendChild(el('h2', 'h-title', 'Open or closed?'));
     c.appendChild(bn('এই প্রশ্নটি কথা খোলে, না থামায়?'));
     qPhaseDrill(c);
