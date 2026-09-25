@@ -163,10 +163,10 @@ button{font:inherit;color:inherit}
 }
 .logo-chip{
   display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
-  padding:calc(4px*var(--ui)) calc(8px*var(--ui));
-  background:var(--paper);border-radius:var(--radius-sm);
+  padding:calc(5px*var(--ui)) calc(9px*var(--ui));
+  background:#fff;border-radius:calc(9px*var(--ui));box-shadow:0 0 0 1px var(--rule),0 1px 2px rgba(16,61,33,.08);
 }
-.logo-chip img{width:calc(84px*var(--ui));height:auto;display:block}
+.logo-chip img{width:calc(92px*var(--ui));height:auto;display:block}
 .brand-name{
   display:flex;align-items:center;gap:calc(6px*var(--ui));
   min-width:0;flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
@@ -175,6 +175,9 @@ button{font:inherit;color:inherit}
   padding-left:calc(10px*var(--ui));border-left:1px solid var(--rule);
 }
 .brand-g{font-size:.95em;line-height:1;flex:0 0 auto}
+.brand-mode{margin-left:calc(4px*var(--ui));padding:calc(2px*var(--ui)) calc(8px*var(--ui));border-radius:var(--radius-pill);
+  background:var(--forest);color:#fff;font-family:var(--font-ui);font-size:calc(.62rem*var(--ui));font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;line-height:1.4;flex:0 0 auto}
 @media (max-width:540px){
   .logo-chip{padding:calc(3px*var(--ui)) calc(5px*var(--ui))}
   .logo-chip img{width:70px}
@@ -815,7 +818,7 @@ h1,h2,h3{margin:0}
    it. The sentences live in the rows underneath, colour-keyed to the ring,
    because a sentence written inside a ring is a sentence nobody can read. */
 .rings-wrap{margin-top:var(--s5)}
-.rings{display:block;margin:0 auto;width:min(100%,calc(300px*var(--ui)));height:auto}
+.rings{display:block;margin:0 auto;width:min(100%,calc(300px*var(--ui)));height:auto;overflow:visible}
 
 .ico{width:1em;height:1em;flex:0 0 auto;vertical-align:-.14em}
 .ring-ico{overflow:visible;opacity:.5;transition:opacity .3s ease,color .3s ease}
@@ -2015,8 +2018,9 @@ body.bangla .bn-inline{display:inline}
   padding:var(--s3) var(--s4);border:0;background:var(--panel);color:var(--tx);
   font:inherit;font-weight:700;text-align:left;cursor:pointer;
 }
-.print-picker__toggle::after{content:"▾";color:var(--kicker)}
-.print-picker__toggle[aria-expanded="true"]::after{content:"▴"}
+.print-picker__toggle::after{content:"";width:7px;height:7px;margin-right:4px;border-right:2px solid var(--kicker);border-bottom:2px solid var(--kicker);
+  transform:translateY(-2px) rotate(45deg);transition:transform .2s ease}
+.print-picker__toggle[aria-expanded="true"]::after{transform:translateY(2px) rotate(-135deg)}
 .print-picker__options{display:grid;gap:1px;background:var(--rule)}
 .print-picker__options[hidden]{display:none}
 .print-option{
@@ -2459,6 +2463,175 @@ body.bangla .bn-inline{display:inline}
 .zs .zlens{stroke-width:9}
 .zs .zframe{stroke-width:9}
 .zs .zlink,.zs .zlink-h{stroke-width:3.5}
+
+/* ---- the four rings, drawn as a finished diagram ---- */
+.rings .ring-face{fill:url(#rg-idle);stroke:rgba(16,61,33,.22);stroke-width:1.2}
+.rings .ring.r-behavior .ring-face{filter:url(#rf-lift)}
+.rings .ring.is-open.r-behavior  .ring-face{fill:url(#rg-behavior); stroke:var(--l-behavior)}
+.rings .ring.is-open.r-value     .ring-face{fill:url(#rg-value);    stroke:var(--l-value)}
+.rings .ring.is-open.r-belief    .ring-face{fill:url(#rg-belief);   stroke:var(--l-belief)}
+.rings .ring.is-open.r-worldview .ring-face{fill:url(#rg-worldview);stroke:var(--l-worldview)}
+.rings .ring.is-open .ring-face{stroke-width:1.8}
+.rings .ring .ring-name{letter-spacing:.14em;font-weight:700;fill:#8C9187}
+.rings .ring-badge{fill:#fff;stroke:rgba(16,61,33,.12);stroke-width:.8;filter:url(#rf-token);opacity:.75;transition:opacity .3s ease}
+.rings .ring.is-open .ring-badge{opacity:1}
+.rings .ring-ico{opacity:.45}
+.rings .ring.is-open .ring-ico{opacity:1}
+.rings.is-live .ring.is-target .ring-face{fill:url(#rg-target);stroke:var(--gold);stroke-width:2.4;stroke-dasharray:6 5;
+  animation:ringMarch 1.6s linear infinite}
+.rings.is-live .ring.is-target .ring-name{fill:var(--kicker)}
+.rings.is-live .ring.is-set .ring-face{animation:ringSet .7s cubic-bezier(.2,.7,.2,1) both}
+@keyframes ringMarch{to{stroke-dashoffset:-22}}
+@keyframes ringSet{0%{stroke-width:6}100%{stroke-width:1.8}}
+.rings.has-bn .r-worldview .ring-badge{display:none}
+.rings.dialring .ring-badge{display:none}
+
+/* ---- the three circles in Check ---- */
+.g-venn-disc{fill:url(#vg-disc);stroke:rgba(10,106,98,.55);stroke-width:1.8}
+.g-venn-core{fill:rgba(255,255,255,.55);stroke:rgba(10,106,98,.5);stroke-width:1.6;stroke-dasharray:4 5}
+.g-venn-core.is-on{fill:#F6ECD2;stroke:var(--gold);stroke-width:3;stroke-dasharray:none;filter:url(#rf-lift)}
+.g-venn-ring{fill:#fff;stroke:#fff;stroke-width:3;filter:url(#rf-lift)}
+.g-tok circle{filter:url(#rf-token)}
+.g-tok text{font-size:16px}
+.g-tok.is-mid circle{fill:var(--forest)}
+.g-tok.is-one circle{fill:#8A9285}
+
+/* ---- the finding ---- */
+.g-found-m .punch{flex-direction:column;text-align:center;align-items:center;max-width:calc(900px*var(--ui));margin:0 auto calc(28px*var(--ui));
+  background:none;padding:0;gap:calc(14px*var(--ui))}
+.g-found-m .punch .glyph.punch-g{width:calc(56px*var(--ui));height:calc(56px*var(--ui));background:var(--gold-soft);box-shadow:none}
+.g-found-m .punch-t{font-weight:600;color:var(--heading);letter-spacing:-.01em;text-wrap:balance}
+.g-found-m .punch .bn{text-align:center}
+.g-found-m .chain{align-items:stretch;gap:0}
+.g-found-m .chain-link{position:relative;align-items:center;text-align:center;gap:calc(8px*var(--ui));
+  padding:calc(20px*var(--ui)) calc(16px*var(--ui)) calc(18px*var(--ui));border:1.5px solid;border-radius:calc(14px*var(--ui));
+  box-shadow:var(--shadow-card);background:var(--surface-card) !important}
+.g-found-m .chain-link.r-behavior {border-color:rgba(138,86,16,.35)}
+.g-found-m .chain-link.r-value    {border-color:rgba(10,106,98,.35)}
+.g-found-m .chain-link.r-belief   {border-color:rgba(63,79,168,.35)}
+.g-found-m .chain-link.r-worldview{border-color:rgba(168,50,42,.35)}
+.g-found-m .chain-name{flex-direction:column;gap:calc(8px*var(--ui))}
+.g-found-m .chain-ico{width:calc(40px*var(--ui));height:calc(40px*var(--ui));padding:calc(10px*var(--ui));border-radius:999px;box-sizing:border-box}
+.g-found-m .r-behavior  .chain-ico{background:var(--l-behavior-t)}
+.g-found-m .r-value     .chain-ico{background:var(--l-value-t)}
+.g-found-m .r-belief    .chain-ico{background:var(--l-belief-t)}
+.g-found-m .r-worldview .chain-ico{background:var(--l-worldview-t)}
+.g-found-m .chain-sub{font-family:var(--font-display);font-size:calc(1.05rem*var(--ui));line-height:1.35}
+.g-found-m .chain-arrow{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:calc(1.4rem*var(--ui));
+  width:calc(34px*var(--ui));flex:0 0 auto;transform:rotate(90deg);margin:calc(4px*var(--ui)) auto}
+@media (min-width:720px){ .g-found-m .chain-arrow{transform:none;margin:0} }
+.g-found-m .chain > *{animation:gRise .5s cubic-bezier(.2,.7,.2,1) both}
+.g-found-m .chain > :nth-child(3){animation-delay:.12s}
+.g-found-m .chain > :nth-child(4),.g-found-m .chain > :nth-child(5){animation-delay:.24s}
+.g-found-m .chain > :nth-child(n+6){animation-delay:.36s}
+.g-found-m .rank-note{text-align:center;margin-top:calc(18px*var(--ui))}
+:root[data-theme="stage"] .g-found-m .punch-t{font-size:calc(2.2rem*var(--ui))}
+:root[data-theme="stage"] .g-found-m .chain-sub{font-size:calc(1.3rem*var(--ui))}
+:root[data-theme="stage"] .g-found-m .chain-name{font-size:calc(.85rem*var(--ui))}
+:root[data-theme="stage"] .g-found-m .chain-ico{width:calc(48px*var(--ui));height:calc(48px*var(--ui));padding:calc(12px*var(--ui))}
+@media (prefers-reduced-motion:reduce){ .rings.is-live .ring.is-target .ring-face,.rings.is-live .ring.is-set .ring-face,.g-found-m .chain > *{animation:none} }
+
+/* ---- the end of the short flow ---- */
+.p-done{min-height:calc(100dvh - var(--header-h,124px) - var(--s4) - var(--stage-pb));display:flex;align-items:center;justify-content:center}
+.done-card{width:min(100%,calc(640px*var(--ui)));text-align:center;border-radius:calc(18px*var(--ui));
+  padding:calc(36px*var(--ui)) calc(32px*var(--ui)) calc(30px*var(--ui));animation:gRise .5s cubic-bezier(.2,.7,.2,1) both}
+.done-card .done-mark{width:calc(64px*var(--ui));height:calc(64px*var(--ui));background:var(--forest);color:#fff;margin:0 auto calc(16px*var(--ui));
+  box-shadow:0 0 0 8px var(--moss-soft);animation:gPop .45s .15s cubic-bezier(.2,.7,.2,1) both}
+.done-card .done-mark .ico{stroke-width:2.2}
+.done-card .kicker{margin-bottom:calc(6px*var(--ui))}
+.done-card .h-title{font-size:calc(clamp(1.6rem,6vw,2rem)*var(--ui));letter-spacing:-.01em}
+.done-card .evid{text-align:left;margin-top:calc(22px*var(--ui))}
+.done-card .body{font-size:calc(1rem*var(--ui));color:var(--tx-muted)}
+.done-card .tbar{justify-content:center;margin-top:calc(22px*var(--ui))}
+.done-card .done-again{flex:0 0 auto}
+
+/* ---- word help: a popover, not a panel ---- */
+.glossbox{border-left:0;border:1px solid var(--rule);border-radius:calc(14px*var(--ui));
+  box-shadow:0 2px 6px rgba(16,61,33,.1),0 22px 48px rgba(16,61,33,.2)}
+.glossbox{transform:translate(-50%,10px);transition:opacity .2s ease,transform .28s cubic-bezier(.2,.7,.2,1)}
+.glossbox.show{transform:translate(-50%,0)}
+.toast{border-left:0;border:1px solid rgba(176,86,58,.3);border-radius:calc(14px*var(--ui));
+  transform:translate(-50%,10px);transition:opacity .22s ease,transform .28s cubic-bezier(.2,.7,.2,1)}
+.toast.show{transform:translate(-50%,0)}
+.tip-bub{border-left:0;border-radius:calc(12px*var(--ui));border:1px solid var(--rule)}
+.tip-ring{border-radius:calc(14px*var(--ui))}
+.why{border:1px solid var(--rule);border-radius:calc(12px*var(--ui));background:var(--well)}
+.sheet .mini,.sheet .btn{border-radius:var(--radius-pill)}
+
+/* ---- lesson scenes: the pieces drawn properly ---- */
+.zs .zchip{fill:#fff;filter:url(#zf-soft)}
+.zs .zdot{stroke:#fff;stroke-width:2}
+.zs .zring.k-behavior .zring-face{fill:url(#rg-behavior)}
+.zs .zring.k-value .zring-face{fill:url(#rg-value)}
+.zs .zring.k-belief .zring-face{fill:url(#rg-belief)}
+.zs .zring.k-worldview .zring-face{fill:url(#rg-worldview)}
+.zs .zring.lit2 .zring-face{stroke-width:7}
+.zs .zfog circle{fill:#E6E1D3;stroke:rgba(16,61,33,.25);stroke-width:2;stroke-dasharray:6 8}
+.zs .zcam-body{fill:url(#zg-cam);filter:url(#zf-shadow)}
+.zs .zcam-top{fill:#3A4238}
+.zs .zcam-btn{fill:var(--clay)}
+.zs .zcam-grip{fill:#1E231D;opacity:.35}
+.zs .zcam-flash{fill:#E9EEE6;opacity:.85}
+.zs .zcam-ring{fill:#EEF1EC;stroke:#1E231D;stroke-width:3}
+.zs .zcam-lens{fill:url(#zg-lens)}
+.zs .zcam-core{fill:#0E161C;opacity:.85}
+.zs .zcam-glint{fill:#fff;opacity:.7}
+.zs .zphoto{fill:#fff;stroke:rgba(16,61,33,.12);stroke-width:1;filter:url(#zf-shadow)}
+.zs .zphoto-bg{fill:#F2EEE3}
+.zs .zphoto-ring{fill:url(#rg-behavior);stroke:var(--l-behavior);stroke-width:3}
+.zs .zphoto-fog{fill:#DDD8CA}
+.zs .zstep{fill:url(#zg-step)}
+.zs .zstep-n{fill:var(--forest);stroke:#fff;stroke-width:3}
+.zs .zt-stepn{fill:#fff;font-weight:700;font-size:24px}
+.zs .zrow{stroke-opacity:.55}
+.zs .zcard.split .zcard-face{stroke-opacity:.6}
+.p-lesson > .zcard-main{animation:gRise .45s cubic-bezier(.2,.7,.2,1) both}
+.p-lesson > .g-head{animation:fade .35s ease both}
+.zs .rise{transform:translateY(18px)}
+.zs .draw{stroke-linecap:round}
+@media (prefers-reduced-motion:reduce){ .p-lesson > .zcard-main{animation:none} }
+
+/* ---- the menu: a drawer from the right ---- */
+.sheet{left:auto;top:0;right:0;bottom:0;transform:translateX(104%);width:min(94vw,calc(440px*var(--ui)));max-height:none;height:100dvh;
+  border-radius:calc(18px*var(--ui)) 0 0 calc(18px*var(--ui));border:0;border-left:1px solid var(--rule);
+  padding:calc(18px*var(--ui)) calc(22px*var(--ui)) calc(28px*var(--ui));
+  transition:transform .32s cubic-bezier(.2,.7,.2,1),opacity .2s ease;opacity:1;visibility:hidden}
+.sheet.show{transform:none;visibility:visible}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:calc(14px*var(--ui))}
+.sheet .sheet-head h2{font-size:calc(1.4rem*var(--ui))}
+.sheet-x{width:calc(36px*var(--ui));height:calc(36px*var(--ui))}
+.m-tiles{display:grid;grid-template-columns:1fr 1fr;gap:calc(8px*var(--ui))}
+.m-tile{display:flex;flex-direction:column;align-items:flex-start;gap:calc(10px*var(--ui));text-align:left;cursor:pointer;
+  padding:calc(14px*var(--ui));border:1px solid var(--rule);border-radius:calc(12px*var(--ui));background:var(--surface-card);
+  color:var(--tx);font:inherit;font-weight:600;font-size:calc(.88rem*var(--ui));line-height:1.3;
+  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.m-tile:hover{border-color:var(--forest);box-shadow:0 6px 16px rgba(16,61,33,.1);transform:translateY(-1px)}
+.m-tile .ico{width:calc(34px*var(--ui));height:calc(34px*var(--ui));padding:calc(8px*var(--ui));border-radius:999px;
+  background:var(--moss-soft);color:var(--forest);box-sizing:border-box}
+.m-tile.on{border-color:var(--forest);background:var(--moss-soft)}
+.m-tile.on .ico{background:var(--forest);color:#fff}
+.sheet .print-picker{border-radius:calc(12px*var(--ui));margin-top:calc(10px*var(--ui))}
+.sheet .print-picker:first-of-type{margin-top:calc(14px*var(--ui))}
+.sheet .print-picker__toggle{background:var(--surface-card);padding:calc(12px*var(--ui)) calc(14px*var(--ui))}
+.sheet-sec{margin:calc(24px*var(--ui)) 0 0;font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--kicker)}
+.m-rings{list-style:none;margin:calc(10px*var(--ui)) 0 0;padding:0;display:flex;flex-direction:column;gap:calc(6px*var(--ui))}
+.m-rings li{position:relative;padding:calc(8px*var(--ui)) calc(12px*var(--ui)) calc(8px*var(--ui)) calc(30px*var(--ui));border-radius:calc(10px*var(--ui));
+  background:var(--well);font-size:calc(.88rem*var(--ui));line-height:1.45;color:var(--tx)}
+.m-rings li::before{content:"";position:absolute;left:calc(12px*var(--ui));top:calc(.95em + 1px);width:calc(9px*var(--ui));height:calc(9px*var(--ui));border-radius:999px;background:var(--k)}
+.m-rings li.r-behavior{--k:var(--l-behavior)} .m-rings li.r-value{--k:var(--l-value)}
+.m-rings li.r-belief{--k:var(--l-belief)} .m-rings li.r-worldview{--k:var(--l-worldview)}
+.m-rings b{color:var(--k)} .m-rings i{font-family:var(--font-display);color:var(--tx-muted);margin-right:4px}
+.m-keys{display:grid;grid-template-columns:auto 1fr;gap:calc(6px*var(--ui)) calc(12px*var(--ui));margin:calc(10px*var(--ui)) 0 0;
+  font-size:calc(.88rem*var(--ui));align-items:center}
+.m-keys dt{justify-self:start}.m-keys dd{margin:0;color:var(--tx-muted)}
+.m-teacher{margin-top:calc(24px*var(--ui));border-top:1px solid var(--rule);padding-top:calc(4px*var(--ui))}
+.m-teacher summary{font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--kicker);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;padding:calc(12px*var(--ui)) 0}
+.m-teacher summary::-webkit-details-marker{display:none}
+.m-teacher summary::after{content:"+";font-size:1.4em;font-weight:400;color:var(--kicker);letter-spacing:0}
+.m-teacher[open] summary::after{content:"–"}
+.sheet .m-teacher summary.tnote{margin:0;border:0;padding-top:calc(12px*var(--ui))}
+.sheet .m-teacher p{font-size:calc(.88rem*var(--ui));color:var(--tx-muted)}
+@media (min-width:1100px){ :root[data-theme="paper"] .wrap{width:min(100%,1040px)} }
 @media (prefers-reduced-motion:reduce){ .g-player.is-playing .g-wave-row i{animation:none} .g-fb-in{animation:none} }
 
 /* ===========================================================================
@@ -2597,6 +2770,18 @@ body.bangla .bn-inline{display:inline}
     <linearGradient id="zg-teal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E8A80"/><stop offset="1" stop-color="#0A615A"/></linearGradient>
     <linearGradient id="zg-card" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FBF8EF"/></linearGradient>
     <radialGradient id="zg-glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".9"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+    <linearGradient id="rg-idle" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFEFA"/><stop offset="1" stop-color="#F3EEE1"/></linearGradient>
+    <linearGradient id="rg-behavior" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCF5E8"/><stop offset="1" stop-color="#F0DFC0"/></linearGradient>
+    <linearGradient id="rg-value" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EDF7F5"/><stop offset="1" stop-color="#CFE8E3"/></linearGradient>
+    <linearGradient id="rg-belief" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1F3FB"/><stop offset="1" stop-color="#D7DCF2"/></linearGradient>
+    <linearGradient id="rg-worldview" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FCF0EE"/><stop offset="1" stop-color="#F1D3CE"/></linearGradient>
+    <linearGradient id="rg-target" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF5E6"/><stop offset="1" stop-color="#EEDDB5"/></linearGradient>
+    <linearGradient id="vg-disc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0A6A62" stop-opacity=".05"/><stop offset="1" stop-color="#0A6A62" stop-opacity=".12"/></linearGradient>
+    <filter id="rf-lift" x="-10%" y="-10%" width="120%" height="125%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#103D21" flood-opacity=".16"/></filter>
+    <filter id="rf-token" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="1.5" stdDeviation="1.8" flood-color="#103D21" flood-opacity=".22"/></filter>
+    <linearGradient id="zg-cam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A5347"/><stop offset="1" stop-color="#262B25"/></linearGradient>
+    <radialGradient id="zg-lens" cx=".38" cy=".35" r=".7"><stop offset="0" stop-color="#6E8FA3"/><stop offset=".55" stop-color="#2E4556"/><stop offset="1" stop-color="#16222B"/></radialGradient>
+    <linearGradient id="zg-step" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#EEF3EA"/></linearGradient>
     <filter id="zf-shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#103D21" flood-opacity=".14"/></filter>
     <filter id="zf-soft" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#103D21" flood-opacity=".13"/></filter>
   </defs>
@@ -2634,21 +2819,55 @@ body.bangla .bn-inline{display:inline}
 </div>
 <div class="scrim" id="scrim"></div>
 
-<div class="sheet" id="sheet">
-  <h2>Culture in four rings</h2>
+<div class="sheet" id="sheet" role="dialog" aria-label="Menu">
+  <div class="sheet-head">
+    <h2>Menu</h2>
+    <button class="icon-btn sheet-x" id="m-close" type="button" aria-label="Close"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3.6 3.6l8.8 8.8M12.4 3.6l-8.8 8.8"/></svg></button>
+  </div>
+
+  <div class="m-tiles">
+    <button class="m-tile" id="m-lesson" type="button"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 4.4C6.6 3.3 4.4 3 2 3.3v9c2.4-.3 4.6 0 6 1.1 1.4-1.1 3.6-1.4 6-1.1v-9c-2.4-.3-4.6 0-6 1.1Z"/><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 4.4v9"/></svg><span class="m-lab">Show the lesson</span></button>
+    <button class="m-tile" id="m-projector" type="button"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><rect fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" x="1.8" y="2.8" width="12.4" height="8.4" rx="1.4"/><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5.4 13.8h5.2M8 11.2v2.6"/></svg><span class="m-lab">Present on TV</span></button>
+    <button class="m-tile" id="m-shuffle" type="button"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M2 4.6h2.2c3.6 0 4.4 6.8 8 6.8H14M2 11.4h2.2c1.3 0 2.2-.9 2.8-2M11.8 2.6 14 4.6l-2.2 2M11.8 9.4l2.2 2-2.2 2M9 6.6c.6-1.2 1.5-2 2.8-2H14"/></svg><span class="m-lab">New scenario</span></button>
+    <button class="m-tile" id="m-demo" type="button"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" cx="8" cy="8" r="6.1"/><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M6.3 6.2a1.8 1.8 0 0 1 3.5.5c0 1.2-1.8 1.6-1.8 2.6"/><circle cx="8" cy="11.4" r=".8" fill="currentColor"/></svg><span class="m-lab">Show the tips again</span></button>
+  </div>
+
+  <div class="print-picker">
+    <button class="print-picker__toggle" id="m-scen-toggle" type="button"
+            aria-expanded="false" aria-controls="scen-options">Choose a scenario</button>
+    <div class="print-picker__options" id="scen-options" hidden></div>
+  </div>
+
+  <div class="print-picker">
+    <button class="print-picker__toggle" id="m-print-toggle" type="button"
+            aria-expanded="false" aria-controls="print-options">Printable sheets</button>
+    <div class="print-picker__options" id="print-options" hidden></div>
+  </div>
+
+  <h3 class="sheet-sec">Culture in four rings</h3>
   <p>You can only <em>see</em> the outside ring. Every ring inside it has to be asked for — and then
      checked against three people, because one person’s answer is a story, not a culture.</p>
-  <ul class="bullets">
-    <li><b>Behaviour</b> — <i>what is done?</i> The outside ring, and the only one you can watch.</li>
-    <li><b>Values</b> — <i>what is good or best?</i> What they put first.</li>
-    <li><b>Beliefs</b> — <i>what is true?</i> What has to be true for that value to make sense.</li>
-    <li><b>Worldview</b> — <i>what is real?</i> The shape of the world those beliefs assume.</li>
+  <ul class="m-rings">
+    <li class="r-behavior"><b>Behaviour</b> <i>what is done?</i> The outside ring, and the only one you can watch.</li>
+    <li class="r-value"><b>Values</b> <i>what is good or best?</i> What they put first.</li>
+    <li class="r-belief"><b>Beliefs</b> <i>what is true?</i> What has to be true for that value to make sense.</li>
+    <li class="r-worldview"><b>Worldview</b> <i>what is real?</i> The shape of the world those beliefs assume.</li>
   </ul>
-  <p><b>Keys</b> — <kbd>→</kbd> continue · <kbd>←</kbd> back · <kbd>Enter</kbd> play or
-     pause whoever is on screen · <kbd>R</kbd> new scenario · <kbd>P</kbd> present on TV ·
-     <kbd>F</kbd> fullscreen · <kbd>Esc</kbd> stop the audio</p>
 
-  <h2 class="tnote">For the teacher</h2>
+  <h3 class="sheet-sec">Keys</h3>
+  <dl class="m-keys">
+    <dt><kbd>→</kbd></dt><dd>continue</dd>
+    <dt><kbd>←</kbd></dt><dd>back</dd>
+    <dt><kbd>Enter</kbd></dt><dd>play or pause whoever is on screen</dd>
+    <dt><kbd>R</kbd></dt><dd>new scenario</dd>
+    <dt><kbd>P</kbd></dt><dd>present on TV</dd>
+    <dt><kbd>F</kbd></dt><dd>fullscreen</dd>
+    <dt><kbd>Esc</kbd></dt><dd>stop the audio</dd>
+  </dl>
+
+  <details class="m-teacher">
+  <summary class="tnote">For the teacher</summary>
+
   <p>An eight-panel lesson, then five steps: about 45 minutes. The lesson is shown once and the browser
      remembers; “Show the lesson” brings it back for a new class. Its second panel is the one that
      matters — the same three values ranked two ways — and it is worth stopping on.</p>
@@ -2670,28 +2889,9 @@ body.bangla .bn-inline{display:inline}
      judgment, stereotype — and the sentence that belongs one ring deeper. The traps are worth more
      discussion than the right answers. Pairs work well on phones: one runs the audio, the other keeps
      notes on the printed field sheet.</p>
-  <p>Choose any printable below. On a phone, tablet, computer, or projector, use the system print dialog
+  <p>Choose any printable from the lists above. On a phone, tablet, computer, or projector, use the system print dialog
      to print it or save it as a PDF. The paper versions contain no answers.</p>
-
-  <div class="print-picker">
-    <button class="print-picker__toggle" id="m-scen-toggle" type="button"
-            aria-expanded="false" aria-controls="scen-options">Choose a scenario</button>
-    <div class="print-picker__options" id="scen-options" hidden></div>
-  </div>
-
-  <div class="print-picker">
-    <button class="print-picker__toggle" id="m-print-toggle" type="button"
-            aria-expanded="false" aria-controls="print-options">Printable sheets</button>
-    <div class="print-picker__options" id="print-options" hidden></div>
-  </div>
-
-  <div class="sheet-row">
-    <button class="mini" id="m-demo">Show the tips again</button>
-    <button class="mini" id="m-projector">Present on TV</button>
-    <button class="mini" id="m-lesson">Show the lesson</button>
-    <button class="mini" id="m-shuffle">New scenario</button>
-    <button class="mini" id="m-close">Close</button>
-  </div>
+  </details>
 </div>
 
 <!-- ============ PRINTABLE FIELD SHEET · blank, for real interviews ============ -->
@@ -3347,6 +3547,7 @@ function render(){
 function syncNext(){
   const old = document.getElementById('why');
   if (old) old.remove();
+  btnNext.hidden = false;
 
   if (lesson){
     btnNext.disabled = false;
@@ -3360,6 +3561,8 @@ function syncNext(){
 
   /* the handover card is the end of the short flow: nothing to continue to */
   if (state.handoff){
+    /* the card carries its own way on; a greyed Next beside it only asks why */
+    btnNext.hidden = true;
     btnNext.disabled = true;
     setBtnLabel(btnNext, 'nx_new');
     btnNextStage.disabled = true;
@@ -4098,6 +4301,8 @@ function ringDiagram(live){
 
     /* the band's other half was empty; the symbol lives there */
     const sz = Math.max(13, R.fs * 1.5);
+    /* the symbol sits on a small white token, like a pin on a map */
+    g.appendChild(shape('circle', { cx: 150, cy: 150 + mid, r: sz * .78, class: 'ring-badge' }));
     const mark = icon(LAYER_ICON[R.key]);
     mark.setAttribute('class', 'ico ring-ico');
     mark.setAttribute('x', 150 - sz / 2);
@@ -4313,6 +4518,23 @@ function zPerson(p, x, y, s, a){
   return g;
 }
 const headTop = (y, s) => y - s * .74 - s * .2;
+/* a camera, drawn rather than blown up from a 16px symbol. (x, y) is the
+   top left of the body; w its width. */
+function zCamera(p, x, y, w){
+  const h = w * .66, g = zG(p, { cls: 'zcam' });
+  zN(g, 'rect', { x: x + w * .28, y: y - h * .14, width: w * .34, height: h * .22, rx: w * .04, cls: 'zcam-top' });
+  zN(g, 'rect', { x: x + w * .72, y: y - h * .08, width: w * .12, height: h * .12, rx: w * .02, cls: 'zcam-btn' });
+  zN(g, 'rect', { x: x, y: y, width: w, height: h, rx: w * .1, cls: 'zcam-body' });
+  zN(g, 'rect', { x: x, y: y + h * .2, width: w, height: h * .16, cls: 'zcam-grip' });
+  zN(g, 'rect', { x: x + w * .08, y: y + h * .1, width: w * .14, height: h * .08, rx: w * .02, cls: 'zcam-flash' });
+  const cx = x + w * .5, cy = y + h * .56;
+  zN(g, 'circle', { cx: cx, cy: cy, r: h * .38, cls: 'zcam-ring' });
+  zN(g, 'circle', { cx: cx, cy: cy, r: h * .28, cls: 'zcam-lens' });
+  zN(g, 'circle', { cx: cx, cy: cy, r: h * .14, cls: 'zcam-core' });
+  zN(g, 'circle', { cx: cx - h * .09, cy: cy - h * .09, r: h * .06, cls: 'zcam-glint' });
+  return g;
+}
+
 /* a hand up: drawn separately, so it can arrive on its own beat */
 function zArm(p, x, y, s, a){
   const g = zG(p, Object.assign({ cls: 'zp' }, a || {}));
@@ -4449,7 +4671,9 @@ const LESSON = [
         const g = zG(grp, { in: 0, delay: i * 90, cls: 'rise' });
         zPerson(g, q[0], q[1], 116);
         const by = headTop(q[1], 116) - 30;
-        RINGS.forEach((R, j) => zN(g, 'rect', { x: q[0] - 40 + j * 21, y: by, width: 17, height: 17, rx: 3,
+        /* the four answers they share, as four dots on a little tag */
+        zN(g, 'rect', { x: q[0] - 50, y: by - 5, width: 100, height: 28, rx: 14, cls: 'zchip', in: 1, delay: 200 + i * 80 });
+        RINGS.forEach((R, j) => zN(g, 'circle', { cx: q[0] - 33 + j * 22, cy: by + 9, r: 8,
           cls: 'zdot k-' + R.key, in: 1, delay: 250 + i * 80 + j * 40, now: String(j + 2) }));
       });
       zRings(s, cx, cy, RR, i => ({ cls: 'grow', in: i + 2, at: i ? '6:dim' : null, fs: [30, 28, 26, 20] }));
@@ -4674,14 +4898,17 @@ const LESSON = [
       zIcon(e, 'eye', 250, 262, 100, { cls: 'zic-k' });
       zN(s, 'path', { d: 'M356 312L500 312', pathLength: 1, cls: 'zray draw', in: 1 });
       zN(s, 'circle', { cx: 506, cy: 312, r: 16, cls: 'zhit', in: 1, delay: 700, now: '1' });
-      const cam = zG(s, { in: 2 });
-      zIcon(cam, 'camera', 60, 20, 130, { cls: 'zic-muted' });
-      zN(cam, 'circle', { cx: 125, cy: 92, r: 80, cls: 'zflash', now: '2' });
+      const cam = zG(s, { in: 2, cls: 'grow' });
+      zCamera(cam, 58, 60, 180);
+      zN(cam, 'circle', { cx: 148, cy: 138, r: 90, cls: 'zflash', now: '2' });
+      /* the photograph it takes: the outside ring, and fog where the rest should be */
       const ph = zG(s, { in: 2, delay: 700, cls: 'rise' });
-      zN(ph, 'rect', { x: 40, y: 380, width: 200, height: 226, rx: 6, cls: 'zphoto' });
-      zN(ph, 'circle', { cx: 140, cy: 476, r: 78, cls: 'zphoto-ring' });
-      zN(ph, 'circle', { cx: 140, cy: 476, r: 58, cls: 'zphoto-fog' });
-      zN(ph, 'text', { x: 140, y: 492, 'text-anchor': 'middle', cls: 'zt zt-fogq', text: '?' });
+      const pg = zG(ph, { transform: 'rotate(-4 150 470)' });
+      zN(pg, 'rect', { x: 50, y: 330, width: 200, height: 236, rx: 8, cls: 'zphoto' });
+      zN(pg, 'rect', { x: 66, y: 346, width: 168, height: 168, rx: 4, cls: 'zphoto-bg' });
+      zN(pg, 'circle', { cx: 150, cy: 430, r: 72, cls: 'zphoto-ring' });
+      zN(pg, 'circle', { cx: 150, cy: 430, r: 50, cls: 'zphoto-fog' });
+      zN(pg, 'text', { x: 150, y: 448, 'text-anchor': 'middle', cls: 'zt zt-fogq', text: '?' });
       const q = zG(s, { in: 3 });
       zBubble(q, 1250, 40, 170, 116, 'b', .25, { cls: 'zb-teal' });
       zN(q, 'text', { x: 1335, y: 122, 'text-anchor': 'middle', cls: 'zt zt-big zt-teal', style: 'font-size:76px', text: '?' });
@@ -4735,6 +4962,8 @@ const LESSON = [
         zN(g, 'circle', { cx: XS[i], cy: 250, r: 90, cls: 'zstep' });
         zIcon(g, st[1], XS[i] - 42, 208, 84, { cls: 'zic-step' });
         zText(g, XS[i], 400, st[0].toUpperCase(), RAIL_BN[st[0]], { size: 38, tcls: 'zt-name', gap: 42, bnSize: 32 });
+        zN(g, 'circle', { cx: XS[i] + 64, cy: 186, r: 22, cls: 'zstep-n' });
+        zN(g, 'text', { x: XS[i] + 64, y: 195, 'text-anchor': 'middle', cls: 'zt zt-stepn', text: String(i + 1) });
         if (i){
           zN(s, 'path', { d: 'M' + (XS[i - 1] + 102) + ' 250H' + (XS[i] - 104), cls: 'zlink', in: 4, delay: 500 + i * 260 - 100 });
           zHead(s, XS[i] - 104, 250, 0, 14, { cls: 'zlink-h', in: 4, delay: 500 + i * 260 - 100 });
@@ -5887,7 +6116,8 @@ function stepCheck(){
 /* where the students stop and the teacher takes over */
 function stepHandoff(){
   const p = el('div', 'panel p-done');
-  const c = el('div', 'card raised lead');
+  const c = el('div', 'card raised done-card');
+  c.appendChild(glyph('tick', 'done-mark'));
   c.appendChild(addBn(el('p', 'kicker', t('hand_k')), tb('hand_k')));
   c.appendChild(addBn(el('h1', 'h-title', t('hand_t')), tb('hand_t')));
 
@@ -5902,10 +6132,9 @@ function stepHandoff(){
   c.appendChild(addBn(el('p', 'body', t('hand_b')), tb('hand_b')));
 
   const bar = el('div', 'tbar');
-  const again = el('button', 'mini');
+  const again = el('button', 'btn done-again');
   again.type = 'button';
-  again.appendChild(el('span', null, t('nx_new')));
-  again.appendChild(bn(tb('nx_new')));
+  setBtnLabel(again, 'nx_new');
   again.onclick = () => newScenario();
   bar.appendChild(again);
   c.appendChild(bar);
@@ -6899,10 +7128,11 @@ function paintStage(on){
   try { localStorage.setItem('ei-stage', on ? '1' : '0'); } catch (e) {}
   document.querySelector('meta[name="theme-color"]').setAttribute('content', on ? '#E6E0CB' : '#F4F1E6');
   $('#m-projector').classList.toggle('on', on);
-  $('#m-projector').textContent = on ? 'Back to the short flow' : 'Present on TV · all 5 steps';
+  $('#m-projector .m-lab').textContent = on ? 'Back to the short flow' : 'Present on TV · all 5 steps';
   $('#brand-text').innerHTML = '';
   $('#brand-text').appendChild(el('span', 'brand-g', '🎯'));
-  $('#brand-text').appendChild(document.createTextNode(on ? 'Culture Circles · On TV' : 'Culture Circles'));
+  $('#brand-text').appendChild(document.createTextNode('Culture Circles'));
+  if (on) $('#brand-text').appendChild(el('span', 'brand-mode', 'On TV'));
 }
 
 function toggleFullscreen(){
@@ -6939,6 +7169,14 @@ newScenario(true, (function(){ try { return localStorage.getItem('ei-scen'); }
 measureHeader();
 const logo = document.querySelector('.logo-chip img');
 if (logo && !logo.complete) logo.addEventListener('load', measureHeader);
+
+/* a handle for the screenshot tests, and only when the address asks for it */
+if (/[?&]dev\b/.test(location.search)) window.__cc = {
+  get state(){ return state; }, render: render, gSet: gSet, jumpTo: jumpTo,
+  go(n, k){ lesson = false; state.handoff = false; step = n; if (k != null) gSet(steps()[n][0], k); render(); },
+  lesson(i, b){ lesson = true; lstep = i; lbeatAt = -1; lbeatEnd = b === 'end'; render(); },
+  handoff(){ lesson = false; state.handoff = true; render(); }
+};
 
 })();
 </script>
