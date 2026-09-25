@@ -165,7 +165,9 @@ button{font:inherit;color:inherit}
   display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
   padding:calc(5px*var(--ui)) calc(9px*var(--ui));
   background:#fff;border-radius:calc(9px*var(--ui));box-shadow:0 0 0 1px var(--rule),0 1px 2px rgba(16,61,33,.08);
+  text-decoration:none;transition:box-shadow .18s ease,transform .18s ease;
 }
+a.logo-chip:hover{box-shadow:0 0 0 1px var(--rule-strong),0 4px 12px rgba(16,61,33,.14);transform:translateY(-1px)}
 .logo-chip img{width:calc(92px*var(--ui));height:auto;display:block}
 .brand-name{
   display:flex;align-items:center;gap:calc(6px*var(--ui));
@@ -1251,7 +1253,7 @@ body.bangla .zcap{min-height:calc(4.6rem*var(--ui))}
 .g-dot.on::before{background:var(--forest);width:calc(36px*var(--ui))}
 .g-dot:not(:disabled):not(.on):hover::before{background:var(--gold)}
 .g-dot:disabled{cursor:default}
-.g-dot:disabled::before{opacity:.6}
+.g-dot.ahead::before{opacity:.6}
 .g-dot:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
 .g-count{font-size:calc(.74rem*var(--ui));font-weight:600;color:var(--tx-muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 /* inside the panel (a phone's paper flow keeps it under the stage) */
@@ -2187,6 +2189,8 @@ body.bangla .bn-inline{display:inline}
 .g-fb.is-bad .g-fb-ico{background:var(--clay);color:#fff}
 .g-fb .g-fb-g{width:calc(38px*var(--ui));height:calc(38px*var(--ui))}
 .g-fb.is-bad .g-fb-g{background:rgba(176,86,58,.14);color:var(--clay-ink)}
+.g-fb.is-good .g-fb-g{background:#fff;color:var(--forest)}
+.g-drill-m .g-fb{max-width:calc(1100px*var(--ui));margin-left:auto;margin-right:auto;width:100%}
 .g-fb-t{font-size:calc(1.02rem*var(--ui))}
 
 /* ---- ask: the real question ---- */
@@ -2641,6 +2645,224 @@ body.bangla .bn-inline{display:inline}
 }
 @media (max-width:1179px){ .rail-inner.is-lesson .rail-step:not(.is-active):not(.rail-out) > span:last-child{display:none}
   .rail-inner.is-lesson .rail-step:not(.is-active):not(.rail-out){padding-right:calc(5px*var(--ui))} }
+
+/* ---- the three listens, named ---- */
+.g-lsteps{list-style:none;margin:0 0 calc(4px*var(--ui));padding:calc(4px*var(--ui));display:flex;gap:calc(4px*var(--ui));
+  border-radius:calc(12px*var(--ui));background:color-mix(in srgb,var(--tx) 5%,transparent)}
+.g-lstep{flex:1 1 0;display:flex;align-items:center;gap:calc(8px*var(--ui));min-width:0;
+  padding:calc(7px*var(--ui)) calc(10px*var(--ui));border-radius:calc(9px*var(--ui));color:var(--tx-muted);
+  font-size:calc(.82rem*var(--ui));font-weight:600;line-height:1.2}
+.g-lstep-n{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:calc(22px*var(--ui));height:calc(22px*var(--ui));
+  border-radius:999px;background:color-mix(in srgb,var(--tx) 9%,transparent);font-size:calc(.72rem*var(--ui));font-weight:700}
+.g-lstep-t{min-width:0}
+.g-lstep-t .bn{font-size:.86em;margin-top:1px}
+.g-lstep.on{background:var(--surface-card);color:var(--heading);box-shadow:0 1px 3px rgba(16,61,33,.14)}
+.g-lstep.on .g-lstep-n{background:var(--forest);color:#fff}
+.g-lstep.past .g-lstep-n{background:var(--moss-soft);color:var(--forest)}
+:root[data-theme="stage"] .g-lstep{font-size:calc(.95rem*var(--ui))}
+:root[data-theme="stage"] .g-lstep-n{width:calc(26px*var(--ui));height:calc(26px*var(--ui));font-size:calc(.82rem*var(--ui))}
+@media (max-width:520px){ .g-lstep{flex-direction:column;align-items:flex-start;gap:4px;font-size:calc(.74rem*var(--ui))} }
+
+/* reading along: the words not said yet wait as soft bars, and fill in */
+.transcript.is-follow{color:transparent}
+.transcript.is-follow .tw{color:transparent;background:linear-gradient(transparent 34%,rgba(16,61,33,.09) 34%,rgba(16,61,33,.09) 72%,transparent 72%);text-decoration-color:transparent;
+  pointer-events:none;transition:color .25s ease,background .25s ease}
+.transcript.is-follow .tw.is-said,.transcript.is-follow .tw.is-now{color:var(--tx);background:transparent;pointer-events:none}
+.transcript.is-follow .tw{display:inline;padding:0;margin:0;line-height:inherit;font:inherit;border:0;border-radius:3px;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+.transcript.is-follow .tp{color:transparent}
+.transcript.is-follow .tp.is-said{color:var(--tx)}
+.transcript.is-follow .tw.is-now{background:var(--gold);color:var(--ink)}
+.g-read-hint{margin:calc(12px*var(--ui)) 0 0;font-size:calc(.9rem*var(--ui));color:var(--tx-muted);display:flex;flex-direction:column}
+.g-read-hint.is-done{color:var(--forest);font-weight:600}
+:root[data-theme="stage"] .g-read-hint{font-size:calc(1.05rem*var(--ui))}
+.g-mode-read .transcript:not(.is-follow){animation:fade .5s ease both}
+
+/* ---- Ask: the four rules on one board ---- */
+.g-rules{display:grid;grid-template-columns:1fr 1fr;gap:calc(10px*var(--ui)) calc(18px*var(--ui));width:100%;max-width:calc(1060px*var(--ui));margin:0 auto}
+.g-rules-h{display:flex;flex-direction:column;align-items:center;gap:calc(10px*var(--ui));padding-bottom:calc(6px*var(--ui))}
+.g-rules-tag{display:inline-flex;align-items:center;gap:calc(8px*var(--ui));padding:calc(6px*var(--ui)) calc(16px*var(--ui)) calc(6px*var(--ui)) calc(8px*var(--ui));
+  border-radius:var(--radius-pill);font-weight:700;font-size:calc(1rem*var(--ui));letter-spacing:.02em;color:#fff}
+.g-rules-tag .bn{display:none}
+body.bangla .g-rules-tag .bn{display:inline;margin:0 0 0 6px;color:inherit;opacity:.85;font-weight:500}
+.g-rules-h.ok .g-rules-tag{background:var(--forest)}
+.g-rules-h.no .g-rules-tag{background:var(--clay)}
+.g-rules-tagico{width:calc(22px*var(--ui));height:calc(22px*var(--ui));padding:calc(4px*var(--ui));border-radius:999px;background:rgba(255,255,255,.2);box-sizing:border-box}
+.g-rules-tagico path{stroke-width:2.4}
+.zs.g-rule-art{aspect-ratio:auto;cursor:default;width:100%;max-width:calc(400px*var(--ui));height:auto}
+.g-rule-art .zb .zb-body{filter:none}
+.g-rule-art .ra-b{opacity:0;animation:raIn .5s cubic-bezier(.2,.7,.2,1) both}
+.g-rule-art .ra-0{animation-delay:.35s}.g-rule-art .ra-1{animation-delay:.8s}.g-rule-art .ra-2{animation-delay:1.25s}
+.g-rule-art .ra-line{fill:none;stroke:var(--l-value);stroke-width:6;stroke-linecap:round;opacity:.55}
+.g-rule-art .ra-yes{font-family:var(--font-display);font-weight:600;font-size:22px;fill:var(--tx)}
+.g-rule-art .ra-dot{fill:var(--tx-muted);opacity:.5}
+.g-rule-art .ra-flat{fill:none;stroke:var(--rule-strong);stroke-width:3;stroke-linecap:round;stroke-dasharray:2 9}
+.g-rule-art.is-open .ra-b .zb-body{animation:raTalk 2.4s 2s ease-in-out infinite}
+.g-rule-art.is-open .ra-1 .zb-body{animation-delay:2.4s}.g-rule-art.is-open .ra-2 .zb-body{animation-delay:2.8s}
+@keyframes raIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+@keyframes raTalk{0%,70%,100%{fill:#E6F3F1}35%{fill:#CFE9E4}}
+.g-rule{display:flex;align-items:center;gap:calc(14px*var(--ui));padding:calc(12px*var(--ui)) calc(16px*var(--ui));
+  border:1.5px solid;border-radius:calc(12px*var(--ui));background:var(--surface-card);animation:gRise .5s cubic-bezier(.2,.7,.2,1) both}
+.g-rule.ok{border-color:rgba(16,61,33,.22);background:linear-gradient(90deg,rgba(227,234,217,.6),var(--surface-card) 60%)}
+.g-rule.no{border-color:rgba(176,86,58,.25);background:linear-gradient(90deg,rgba(176,86,58,.07),var(--surface-card) 60%)}
+.g-rule .glyph.g-rule-g{width:calc(44px*var(--ui));height:calc(44px*var(--ui))}
+.g-rule.no .glyph{background:rgba(176,86,58,.13);color:var(--clay-ink)}
+.g-rule-t{margin:0;font-family:var(--font-display);font-weight:600;font-size:calc(1.08rem*var(--ui));line-height:1.25;color:var(--tx)}
+.g-rule-w .bn{font-size:calc(.9rem*var(--ui))}
+.g-drill-q{text-align:center;max-width:calc(900px*var(--ui));margin:0 auto calc(24px*var(--ui))}
+.g-drill-q .g-q{margin:0}
+.g-drill-q .bn{text-align:center;font-size:calc(1.05rem*var(--ui))}
+:root[data-theme="stage"] .g-rule-t{font-size:calc(1.4rem*var(--ui))}
+:root[data-theme="stage"] .g-rule-w .bn{font-size:calc(1.1rem*var(--ui))}
+:root[data-theme="stage"] .g-rule .glyph.g-rule-g{width:calc(52px*var(--ui));height:calc(52px*var(--ui))}
+:root[data-theme="stage"] .g-rules-tag{font-size:calc(1.15rem*var(--ui))}
+:root[data-theme="stage"] .g-drill-q .g-q{font-size:calc(2.2rem*var(--ui))}
+:root[data-theme="stage"] .g-drill-q .bn{font-size:calc(1.35rem*var(--ui))}
+@media (max-width:560px){
+  .g-rules{gap:8px}
+  .g-rule{flex-direction:column;align-items:flex-start;gap:8px;padding:10px}
+  .g-rule .glyph.g-rule-g{width:34px;height:34px}
+  .g-rule-t{font-size:.95rem}
+}
+@media (prefers-reduced-motion:reduce){ .g-rule-art .ra-b,.g-rule,.g-rule-art.is-open .ra-b .zb-body{animation:none;opacity:1} }
+
+/* ---- Map: two sets of rings, side by side ---- */
+.g-duel{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:calc(24px*var(--ui));align-items:start;width:100%}
+.g-duel-side{display:flex;flex-direction:column;align-items:center;gap:calc(12px*var(--ui));min-width:0}
+.g-duel-tag{margin:0;font-size:calc(.85rem*var(--ui));font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-align:center}
+.g-duel-tag .bn{letter-spacing:0;text-transform:none;font-weight:500}
+.g-duel-side.west .g-duel-tag{color:var(--west)} .g-duel-side.east .g-duel-tag{color:var(--east)}
+.rings.g-duel-dial{width:calc(210px*var(--ui));cursor:pointer;animation:duelIn .6s cubic-bezier(.2,.7,.2,1) both}
+.g-duel-side.east .rings.g-duel-dial{animation-delay:.12s}
+.g-duel-dial .ring .ring-face{transition:fill .35s ease,stroke .35s ease,stroke-width .35s ease,opacity .35s ease}
+.g-duel-dial .ring:not(.is-open) .ring-face{opacity:.55}
+.g-duel-dial.d-west .ring.is-open .ring-face{stroke:var(--west);stroke-width:5}
+.g-duel-dial.d-east .ring.is-open .ring-face{stroke:var(--east);stroke-width:5}
+@keyframes duelIn{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:none}}
+.g-duel-card{width:100%;min-height:calc(150px*var(--ui));padding:calc(16px*var(--ui)) calc(20px*var(--ui));border-radius:calc(14px*var(--ui));
+  border:1.5px solid;background:var(--surface-card);box-shadow:var(--shadow-card)}
+.g-duel-side.west .g-duel-card{border-color:rgba(27,79,156,.3);background:linear-gradient(180deg,#F3F6FB,var(--surface-card) 70%)}
+.g-duel-side.east .g-duel-card{border-color:rgba(181,35,31,.3);background:linear-gradient(180deg,#FBF3F2,var(--surface-card) 70%)}
+.g-duel-card.is-in{animation:gRise .45s cubic-bezier(.2,.7,.2,1) both}
+.g-duel-side.east .g-duel-card.is-in{animation-delay:.1s}
+.g-duel-ch{margin:0 0 calc(8px*var(--ui));display:flex;align-items:center;flex-wrap:wrap;gap:calc(6px*var(--ui));
+  font-size:calc(.78rem*var(--ui));font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--k)}
+.g-duel-chico{width:calc(1.05rem*var(--ui));height:calc(1.05rem*var(--ui))}
+.g-duel-q{font-family:var(--font-display);font-style:italic;font-weight:400;letter-spacing:0;text-transform:none;color:var(--tx-muted);font-size:1.15em}
+.g-duel-card.r-behavior,.g-duel-pill.r-behavior{--k:var(--l-behavior);--kt:var(--l-behavior-t)}
+.g-duel-card.r-value,.g-duel-pill.r-value{--k:var(--l-value);--kt:var(--l-value-t)}
+.g-duel-card.r-belief,.g-duel-pill.r-belief{--k:var(--l-belief);--kt:var(--l-belief-t)}
+.g-duel-card.r-worldview,.g-duel-pill.r-worldview{--k:var(--l-worldview);--kt:var(--l-worldview-t)}
+.g-duel-t{margin:0;font-family:var(--font-display);font-size:calc(1.1rem*var(--ui));line-height:1.4;color:var(--tx)}
+.g-duel-mid{display:flex;flex-direction:column;align-items:center;gap:calc(4px*var(--ui));padding-top:calc(30px*var(--ui))}
+.g-duel-pill{display:flex;align-items:center;gap:calc(8px*var(--ui));min-width:calc(170px*var(--ui));cursor:pointer;
+  padding:calc(9px*var(--ui)) calc(16px*var(--ui)) calc(9px*var(--ui)) calc(10px*var(--ui));border-radius:var(--radius-pill);
+  border:1.5px solid var(--rule);background:var(--surface-card);color:var(--tx-muted);font:inherit;font-weight:700;
+  font-size:calc(.85rem*var(--ui));letter-spacing:.06em;text-transform:uppercase;text-align:left;
+  transition:background .25s ease,border-color .25s ease,color .25s ease,transform .25s ease}
+.g-duel-pill .bn{letter-spacing:0;text-transform:none;font-weight:500}
+.g-duel-ico{width:calc(28px*var(--ui));height:calc(28px*var(--ui));padding:calc(6px*var(--ui));border-radius:999px;box-sizing:border-box;
+  background:var(--kt);color:var(--k)}
+.g-duel-pill:hover{border-color:var(--k)}
+.g-duel-pill.on{background:var(--kt);border-color:var(--k);color:var(--k);transform:scale(1.04)}
+.g-duel-pill.on .g-duel-ico{background:var(--k);color:#fff}
+.g-duel-pill.seen{color:var(--tx)}
+.g-duel-arrow{color:var(--rule-strong);transform:rotate(90deg);display:flex;height:calc(16px*var(--ui))}
+.g-duel-arrow .ico{width:calc(14px*var(--ui));height:calc(14px*var(--ui))}
+.g-duel-foot{margin:calc(20px*var(--ui)) auto 0;max-width:calc(900px*var(--ui));text-align:center;font-family:var(--font-display);font-style:italic;
+  font-size:calc(1rem*var(--ui));color:var(--tx-muted)}
+.g-duel-foot .bn{font-style:normal}
+:root[data-theme="stage"] .rings.g-duel-dial{width:min(100%,calc(250px*var(--ui)))}
+:root[data-theme="stage"] .g-duel-t{font-size:calc(1.35rem*var(--ui))}
+:root[data-theme="stage"] .g-duel-card .bn{font-size:calc(1.05rem*var(--ui))}
+:root[data-theme="stage"] .g-duel-tag{font-size:calc(1rem*var(--ui))}
+:root[data-theme="stage"] .g-duel-pill{font-size:calc(.95rem*var(--ui))}
+:root[data-theme="stage"] .g-duel-foot{font-size:calc(1.15rem*var(--ui))}
+@media (max-width:760px){
+  .g-duel{grid-template-columns:1fr 1fr;gap:12px}
+  .g-duel-mid{grid-column:1 / -1;grid-row:1;flex-direction:row;flex-wrap:wrap;justify-content:center;padding-top:0}
+  .g-duel-arrow{display:none}
+  .g-duel-pill{min-width:0;padding:6px 10px 6px 6px;font-size:.7rem}
+  .rings.g-duel-dial{width:min(100%,150px)}
+  .g-duel-card{padding:10px 12px}
+  .g-duel-t{font-size:.95rem}
+}
+
+/* ---- Map: your turn ---- */
+.g-turn{width:100%;max-width:calc(1200px*var(--ui));margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:calc(26px*var(--ui))}
+.g-turn-q{margin:0;text-align:center;font-family:var(--font-display);font-weight:600;color:var(--heading);letter-spacing:-.01em;
+  font-size:calc(clamp(1.4rem,5.4vw,1.9rem)*var(--ui));line-height:1.2;text-wrap:balance;animation:gRise .5s cubic-bezier(.2,.7,.2,1) both}
+.g-turn-q .bn{font-family:var(--font-ui);font-weight:500;font-size:.62em;text-align:center}
+.g-spec{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr) minmax(0,1fr);gap:calc(20px*var(--ui));align-items:center}
+.g-spec-end{display:flex;flex-direction:column;align-items:center;text-align:center;gap:calc(8px*var(--ui));animation:gRise .55s .2s cubic-bezier(.2,.7,.2,1) both}
+.g-spec-end.east{animation-delay:.35s}
+.g-spec-mark{display:inline-flex;align-items:center;justify-content:center;width:calc(64px*var(--ui));height:calc(64px*var(--ui));border-radius:999px}
+.g-spec-mark .ico{width:52%;height:52%}
+.g-spec-end.west .g-spec-mark{background:#E7EDF6;color:var(--west);box-shadow:0 0 0 2px rgba(27,79,156,.25)}
+.g-spec-end.east .g-spec-mark{background:#F7E6E4;color:var(--east);box-shadow:0 0 0 2px rgba(181,35,31,.25)}
+.g-spec-tag{font-size:calc(.78rem*var(--ui));font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.g-spec-tag .bn{letter-spacing:0;text-transform:none;font-weight:500}
+.g-spec-end.west .g-spec-tag{color:var(--west)} .g-spec-end.east .g-spec-tag{color:var(--east)}
+.g-spec-t{margin:0;font-family:var(--font-display);font-weight:600;font-size:calc(1.15rem*var(--ui));line-height:1.3;color:var(--tx)}
+.g-spec-track{position:relative;height:calc(90px*var(--ui));margin:0 calc(14px*var(--ui))}
+.g-spec-line{position:absolute;left:0;right:0;top:50%;height:calc(6px*var(--ui));margin-top:calc(-3px*var(--ui));border-radius:999px;
+  background:linear-gradient(90deg,var(--west),#C9B9A4 50%,var(--east));opacity:.55;transform-origin:center;animation:specDraw .7s .45s cubic-bezier(.2,.7,.2,1) both}
+@keyframes specDraw{from{transform:scaleX(0)}to{transform:none}}
+.g-spec-stop{position:absolute;top:50%;width:calc(26px*var(--ui));height:calc(26px*var(--ui));margin:calc(-13px*var(--ui)) 0 0 calc(-13px*var(--ui));
+  border-radius:999px;border:3px solid #fff;background:#D8D0BF;box-shadow:0 1px 3px rgba(16,61,33,.25);cursor:pointer;padding:0;
+  transition:transform .2s ease,background .2s ease;animation:fade .3s .9s both}
+.g-spec-stop:hover{transform:scale(1.2);background:var(--gold-light)}
+.g-spec-pin{position:absolute;bottom:calc(50% + 14px*var(--ui));left:50%;width:calc(48px*var(--ui));height:calc(58px*var(--ui));margin-left:calc(-24px*var(--ui));
+  pointer-events:none;transition:left .55s cubic-bezier(.2,.7,.2,1);animation:pinDrop .6s 1.1s cubic-bezier(.2,.7,.2,1) both}
+.g-spec-pin::before{content:"";position:absolute;left:0;top:0;width:calc(48px*var(--ui));height:calc(48px*var(--ui));border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);background:var(--gold);box-shadow:0 4px 10px rgba(121,94,32,.35)}
+.g-spec-pin-t{position:absolute;left:0;top:0;width:calc(48px*var(--ui));height:calc(48px*var(--ui));display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:600;font-size:calc(1.5rem*var(--ui));color:#fff}
+.g-spec-pin:not(.is-set){animation:pinDrop .6s 1.1s cubic-bezier(.2,.7,.2,1) both,pinBob 2.4s 1.8s ease-in-out infinite}
+.g-spec-pin.is-set .g-spec-pin-t{font-size:0}
+.g-spec-pin.is-set .g-spec-pin-t::after{content:"";width:calc(14px*var(--ui));height:calc(14px*var(--ui));border-radius:999px;background:#fff}
+@keyframes pinDrop{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
+@keyframes pinBob{0%,100%{transform:none}50%{transform:translateY(-6px)}}
+.g-turn-foot{margin:0;text-align:center;font-size:calc(.95rem*var(--ui));color:var(--tx-muted);max-width:calc(760px*var(--ui))}
+:root[data-theme="stage"] .g-turn-q{font-size:calc(2.3rem*var(--ui))}
+:root[data-theme="stage"] .g-spec-t{font-size:calc(1.45rem*var(--ui))}
+:root[data-theme="stage"] .g-spec-end .bn{font-size:calc(1.05rem*var(--ui))}
+:root[data-theme="stage"] .g-spec-mark{width:calc(80px*var(--ui));height:calc(80px*var(--ui))}
+:root[data-theme="stage"] .g-spec-tag{font-size:calc(.95rem*var(--ui))}
+:root[data-theme="stage"] .g-turn-foot{font-size:calc(1.1rem*var(--ui))}
+@media (max-width:760px){
+  .g-spec{grid-template-columns:1fr 1fr;gap:14px}
+  .g-spec-track{grid-column:1 / -1;grid-row:2}
+  .g-spec-t{font-size:1rem}
+}
+.m-scen{margin:0 0 calc(10px*var(--ui));padding:calc(12px*var(--ui)) calc(14px*var(--ui));border-radius:calc(10px*var(--ui));background:var(--gold-soft)}
+.sheet .m-scen p{margin:0;color:var(--ink);font-size:calc(.88rem*var(--ui))}
+.sheet .m-scen p.m-scen-h{margin-bottom:calc(6px*var(--ui));font-weight:700;color:var(--kicker);font-size:calc(.72rem*var(--ui));letter-spacing:.1em;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){ .g-spec-pin,.g-spec-line,.g-spec-stop,.g-spec-end,.g-turn-q,.rings.g-duel-dial,.g-duel-card.is-in{animation:none} }
+
+/* ---- autoplay: the current beat's bar fills while it waits ---- */
+.zdotb{position:relative}
+.zdots-row.is-auto .zdotb.on::after{content:"";position:absolute;left:calc(3px*var(--ui));top:50%;height:calc(5px*var(--ui));margin-top:calc(-2.5px*var(--ui));
+  border-radius:999px;background:var(--gold);width:0;animation:autoFill var(--auto-d,6000ms) linear forwards}
+@keyframes autoFill{to{width:calc(36px*var(--ui))}}
+.zctl .mini.zauto.on{color:#fff;background:var(--forest);border-color:var(--forest)}
+.zctl .mini.zauto.on:hover{background:var(--forest-deep);color:#fff}
+@media (prefers-reduced-motion:reduce){ .zdots-row.is-auto .zdotb.on::after{animation:none;width:calc(36px*var(--ui))} }
+.zs.g-rule-art{max-height:calc(128px*var(--ui));width:auto;max-width:100%}
+@media (max-height:980px){
+  .g-rules{gap:calc(8px*var(--ui)) calc(16px*var(--ui))}
+  .g-rule{padding:calc(8px*var(--ui)) calc(14px*var(--ui))}
+  .zs.g-rule-art{max-height:calc(104px*var(--ui))}
+  :root[data-theme="stage"] .g-rule .glyph.g-rule-g{width:calc(42px*var(--ui));height:calc(42px*var(--ui))}
+}
+body.bangla .g-rule{padding-top:calc(7px*var(--ui));padding-bottom:calc(7px*var(--ui))}
+:root[data-theme="stage"] body.bangla .g-rule-t{font-size:calc(1.22rem*var(--ui))}
+:root[data-theme="stage"] body.bangla .g-rule-w .bn{font-size:calc(1rem*var(--ui))}
+@media (max-height:820px){
+  :root[data-theme="stage"] .rings.g-duel-dial{width:min(100%,calc(180px*var(--ui)))}
+  .g-duel-card{min-height:0}
+  .g-duel-mid{padding-top:calc(10px*var(--ui))}
+}
 @media (prefers-reduced-motion:reduce){ .g-player.is-playing .g-wave-row i{animation:none} .g-fb-in{animation:none} }
 
 /* ===========================================================================
@@ -2798,7 +3020,7 @@ body.bangla .bn-inline{display:inline}
 <div class="app">
   <div class="appbar" id="appbar">
     <header class="topbar">
-      <span class="logo-chip"><img src="../brand/dialogue-logo.png" alt="Dialogue English &amp; Skills Center"></span>
+      <a class="logo-chip" href="/" title="All activities" aria-label="Dialogue — back to all activities"><img src="../brand/dialogue-logo.png" alt="Dialogue English &amp; Skills Center"></a>
       <span class="brand-name" id="brand-text"><span class="brand-g">🎯</span>Culture Circles</span>
       <span class="langsw" role="group" aria-label="Language">
         <button type="button" id="lang-en" aria-pressed="true">EN</button>
@@ -2871,11 +3093,13 @@ body.bangla .bn-inline{display:inline}
     <dt><kbd>R</kbd></dt><dd>new scenario</dd>
     <dt><kbd>P</kbd></dt><dd>present on TV</dd>
     <dt><kbd>F</kbd></dt><dd>fullscreen</dd>
+    <dt><kbd>A</kbd></dt><dd>autoplay the lesson on or off</dd>
     <dt><kbd>Esc</kbd></dt><dd>stop the audio</dd>
   </dl>
 
   <details class="m-teacher">
   <summary class="tnote">For the teacher</summary>
+  <div class="m-scen" id="m-scen-note"></div>
 
   <p>An eight-panel lesson, then five steps: about 45 minutes. The lesson is shown once and the browser
      remembers; “Show the lesson” brings it back for a new class. Its second panel is the one that
@@ -3070,6 +3294,8 @@ const T = {
   ui_zmore:      ['Tap the picture, or press →, to go on', ''],
   ui_zend:       ['Next panel →',       ''],
   ui_zagain:     ['Play again',         'আবার দেখুন'],
+  ui_zauto:      ['Autoplay',           'নিজে থেকে চলুক'],
+  ui_zstop:      ['Pause autoplay',     'থামান'],
   ui_zwords:     ['Read it',            'পড়ুন'],
   ui_listenall:  ['listen to all three', 'তিনজনের কথাই শুনুন'],
   ui_gistwait:   ['Listen to ',         'শুনুন — '],
@@ -3368,7 +3594,7 @@ function startSpeaker(i){
     }
     const v = pickVoice(sp.voice.gender, i + sc.id.length);
     const words = sp.script.split(/\s+/).length;
-    if (state.passes[i] < 3 && !c.round && gListenMode === 'catch') catchStart(c, i);
+    if (!c.round && gListenMode === 'catch') catchStart(c, i);
     c.chunks = (c.round && c.round.sents.length) ? c.round.sents : sentences(sp.script);
     c.ci = 0;
     c.est = (words / 2.4) * 1000;
@@ -3416,7 +3642,7 @@ function startSpeaker(i){
   a.onended = finish;
   a.onerror = speak;
   paintRow(i, 'play', 0);
-  if (state.passes[i] < 3 && gListenMode === 'catch') catchStart(c, i);
+  if (gListenMode === 'catch') catchStart(c, i);
   a.play().catch(speak);
 }
 
@@ -3537,6 +3763,13 @@ function newScenario(keepLesson, id){
   pill.innerHTML = '';
   const pg = el('span', 'pill-g'); pg.appendChild(icon(themeIco(sc.theme), 'pill-ico')); pill.appendChild(pg);
   pill.appendChild(addBn(el('span', 'pill-lab', th.label), THEME_BN[sc.theme]));
+  /* the scenario's note to the teacher: in the menu, not on the projector */
+  const mn = $('#m-scen-note');
+  if (mn){
+    mn.innerHTML = '';
+    mn.appendChild(el('p', 'm-scen-h', 'This scenario · ' + sc.title));
+    mn.appendChild(el('p', null, sc.contrast.note));
+  }
   render();
 }
 
@@ -3546,6 +3779,7 @@ function render(){
   renderRail();
   wrap.innerHTML = '';
   abMid.innerHTML = '';
+  if (!lesson){ clearTimeout(lAutoT); lAutoT = null; }
   stage.scrollTop = 0;
   gCur = null;
   if (lesson){ stepLesson(); btnBack.disabled = (lstep === 0 && lbeat <= 0); syncNext(); return; }
@@ -3583,43 +3817,25 @@ function syncNext(){
 
   /* part-way through a guided step, Next means the next moment */
   const gk = gNextLabel();
+  /* Nothing is ever locked: a moment that asks for something glows Next once
+     it is done, but a class can always move on without doing it. */
   if (gk){
-    const ok = gOk();
-    btnNext.disabled = !ok;
+    btnNext.disabled = false;
     setBtnLabel(btnNext, gk);
-    btnNextStage.disabled = !ok;
+    btnNextStage.disabled = false;
     btnNextStage.textContent = t(gk);
     return;
   }
 
-  const S = steps(), here = S[step][0], nxt = S[step + 1];
-  /* Listen used to be a locked door until all three had been heard. The
-     intention was good, the effect was not: a class that had heard two and
-     wanted to move on could not, and the only way out was to open every
-     transcript — a worse outcome than simply moving on. */
-  const ready = { Watch: true, Ask: state.qDone, Listen: true,
-                  Check: state.claimsDone, Map: state.mapDone }[here];
-  const why   = { Ask: 'why_question', Check: 'why_check',
-                  Map: 'why_rings' }[here];
-
+  const S = steps(), nxt = S[step + 1];
   const key = nxt ? { Ask:'nx_ask', Listen:'nx_listen',
                       Check:'nx_check', Map:'nx_rings' }[nxt[0]] : 'nx_new';
-  btnNext.disabled = !ready;
+  btnNext.disabled = false;
   setBtnLabel(btnNext, key);
-  btnNextStage.disabled = btnNext.disabled;
+  btnNextStage.disabled = false;
   /* the projector's own Next is one line of English — copying textContent from
      the bilingual button ran the two languages together */
   btnNextStage.textContent = t(key);
-
-  /* a closed door that will not say why is its own small cruelty, and a toast
-     has gone by the time a beginner has finished reading it */
-  /* "Choose a question first" is true but premature while step 2 is still
-     explaining what an interview is — there are no questions on screen yet. */
-  const teaching = here === 'Ask' && (state.qPhase || 0) < 2;
-  if (!ready && why && !teaching){
-    const panel = wrap.querySelector('.panel');
-    if (panel) panel.appendChild(whyBox(why));
-  }
 }
 
 function setBtnLabel(b, key){
@@ -3711,6 +3927,11 @@ function paintKaraoke(i, wi){
   const was = tr.querySelector('.tw.is-now');
   if (was) was.classList.remove('is-now');
   if (wi < 0) return;
+  /* reading along: every word already said stays on the page */
+  if (tr.classList.contains('is-follow')){
+    const all = tr.twList || (tr.twList = [...tr.querySelectorAll('.tw, .tp')]);
+    for (const n of all){ if (+n.dataset.lo <= wi) n.classList.add('is-said'); else break; }
+  }
   const now = tr.querySelector('.tw[data-lo="' + wi + '"]') ||
               [...tr.querySelectorAll('.tw')].find(n =>
                 wi >= +n.dataset.lo && wi <= +n.dataset.hi);
@@ -3892,7 +4113,6 @@ function passDots(i){
 function catchHead(i, label){
   const bar = el('div', 'catch-bar');
   bar.appendChild(el('span', null, label));
-  bar.appendChild(passDots(i));
   return bar;
 }
 
@@ -3910,10 +4130,10 @@ function catchResults(i){
 function catchStart(c, i){
   const box = catchNode(i);
   if (!box) return;
-  c.round = catchRound(i, state.passes[i] || 0);
+  c.round = catchRound(i, (state.catchScores[i] || []).length % 3);
   box.hidden = false;
   box.innerHTML = '';
-  box.appendChild(catchHead(i, 'Listen ' + ((state.passes[i] || 0) + 1) + ' of 3 · tap the words you hear'));
+  box.appendChild(catchHead(i, 'Tap the words you hear'));
   /* the countdown is the whole point: the field used to change with no warning
      and a tap already on its way landed on whatever took the old word's place */
   const cd = el('div', 'catch-cd'); cd.appendChild(el('i'));
@@ -3970,6 +4190,8 @@ function catchEnd(c, i){
   /* a listen that reached the end counts, with a word field or without one */
   state.passes[i] = Math.min(3, (state.passes[i] || 0) + 1);
   if (r) state.catchScores[i].push({ caught: r.caught, targets: r.targets });
+  /* the read-along listen has reached the end: the whole transcript opens */
+  if (gListenMode === 'read'){ state.readDone = state.readDone || {}; state.readDone[i] = true; }
   syncNext();
   refreshGists();
   refreshCard(i);        /* the moment redraws with its score and its door */
@@ -4022,7 +4244,13 @@ function glossedTranscript(text, speakerName){
 
   let p = 0, w = 0;
   while (p < parts.length){
-    if (!isW(parts[p])){ box.appendChild(document.createTextNode(parts[p])); p++; continue; }
+    if (!isW(parts[p])){
+      /* spaces and punctuation ride with the word before them, so a read-along
+         can show them the moment that word has been said */
+      const n = el('span', 'tp', parts[p]);
+      n.dataset.lo = Math.max(0, w - 1);
+      box.appendChild(n); p++; continue;
+    }
     if (speakerName === 'Trevor' && words[w].toLowerCase() === 'app'){
       const b = el('button', 'w tw pronunciation-error', parts[p]);
       b.type = 'button';
@@ -4220,9 +4448,9 @@ const ICONS = {
     s.appendChild(shape('path', ST({ d: 'M3.8 6.3v7.1h8.4V6.3M6.6 13.4V9.8h2.8v3.6' })));
   },
   thought: s => {
-    s.appendChild(shape('path', ST({ d: 'M4.6 10.4a2.6 2.6 0 0 1-.4-5.1 3.2 3.2 0 0 1 6-1 2.7 2.7 0 0 1 1.6 5.2 2.4 2.4 0 0 1-2.4.9H4.6Z' })));
-    s.appendChild(shape('circle', ST({ cx: 4.2, cy: 12.6, r: .8 })));
-    s.appendChild(shape('circle', ST({ cx: 2.6, cy: 14.2, r: .4 })));
+    s.appendChild(shape('path', ST({ d: 'M5.4 9.6a2.6 2.6 0 0 1-.4-5.1 3.2 3.2 0 0 1 6-1 2.7 2.7 0 0 1 1.6 5.2 2.4 2.4 0 0 1-2.4.9H5.4Z' })));
+    s.appendChild(shape('circle', ST({ cx: 4.4, cy: 11.9, r: .85 })));
+    s.appendChild(shape('circle', ST({ cx: 2.9, cy: 13.5, r: .45 })));
   },
   bulb: s => {
     s.appendChild(shape('path', ST({ d: 'M6 11.2c0-1.3-2.2-2.6-2.2-5A4.2 4.2 0 0 1 8 2a4.2 4.2 0 0 1 4.2 4.2c0 2.4-2.2 3.7-2.2 5Z' })));
@@ -5134,6 +5362,7 @@ function paintBeat(instant, rev){
   }
   btnBack.disabled = (lstep === 0 && k <= 0);
   syncNext();
+  lAutoSchedule();
 }
 
 /* play the panel's opening beat from an empty picture */
@@ -5149,6 +5378,54 @@ function stepBeat(d){
   lbeat = k;
   paintBeat(false, d < 0);
   return true;
+}
+
+/* ---- autoplay ----
+   For a teacher who wants the lesson to run on its own: each beat stays up
+   long enough for a slow reader to read its caption twice — about two words
+   a second, longer when the Bangla line is there too — plus time for the
+   picture to move. The last beat of a panel waits a little longer before the
+   panel turns, and the lesson stops on its final picture rather than
+   starting the activity by itself. Any manual step simply restarts the
+   clock from where the class now is. */
+let lAuto = (() => { try { return localStorage.getItem('ei-auto') === '1'; } catch (e) { return false; } })();
+let lAutoT = null;
+function lAutoDur(){
+  const B = scCur && scCur.beats[lbeat];
+  if (!B) return 6000;
+  const en = B[0].split(/\s+/).length;
+  const bnw = bnOn && B[1] ? B[1].split(/\s+/).length : 0;
+  let d = 2600 + en * 520 + bnw * 380;
+  if (lbeat >= scCur.beats.length - 1) d += 1800;
+  return Math.max(5000, d);
+}
+function lAutoSchedule(){
+  clearTimeout(lAutoT); lAutoT = null;
+  const row = scDots;
+  if (row) row.classList.toggle('is-auto', lesson && lAuto);
+  const btn = document.querySelector('.zauto');
+  if (btn) setAutoBtn(btn);
+  if (!lesson || !lAuto || !scCur) return;
+  const last = lstep === LESSON.length - 1 && lbeat >= scCur.beats.length - 1;
+  if (last){ if (row) row.classList.remove('is-auto'); return; }
+  const d = lAutoDur();
+  if (row){
+    row.style.setProperty('--auto-d', d + 'ms');
+    row.classList.remove('is-auto'); void row.offsetWidth; row.classList.add('is-auto');
+  }
+  lAutoT = setTimeout(() => { if (lesson && lAuto && !document.hidden) advance(); else lAutoSchedule(); }, d);
+}
+function setAutoBtn(b){
+  b.innerHTML = '';
+  b.classList.toggle('on', lAuto);
+  b.appendChild(icon(lAuto ? 'pausemark' : 'playmark', 'mini-ico'));
+  b.appendChild(el('span', null, t(lAuto ? 'ui_zstop' : 'ui_zauto')));
+  b.setAttribute('aria-pressed', lAuto ? 'true' : 'false');
+}
+function toggleAuto(){
+  lAuto = !lAuto;
+  try { localStorage.setItem('ei-auto', lAuto ? '1' : '0'); } catch (e) {}
+  lAutoSchedule();
 }
 
 function stepLesson(){
@@ -5216,6 +5493,11 @@ function stepLesson(){
     return b;
   };
   const tools = el('div', 'zctl-tools');
+  const ab = el('button', 'mini zauto');
+  ab.type = 'button';
+  ab.onclick = e => { e.stopPropagation(); toggleAuto(); };
+  setAutoBtn(ab);
+  tools.appendChild(ab);
   tools.appendChild(mk('ui_zagain', () => playFrom(0), null, 'replay'));
   tools.appendChild(mk('ui_zwords', () => {
     lWords = !lWords;
@@ -5323,7 +5605,7 @@ function guided(name, ico, list){
   list.forEach((m, i) => {
     const d = el('button', 'g-dot' + (i === k ? ' on' : i < k ? ' done' : ''));
     d.type = 'button';
-    d.disabled = i > far;
+    d.classList.toggle('ahead', i > far);
     d.setAttribute('aria-label', (i + 1) + ' / ' + list.length);
     if (i === k) d.setAttribute('aria-current', 'step');
     d.onclick = () => { if (i === gCur.k) return; stopAudio(); gDir = i < gCur.k ? -1 : 1; gSet(name, i); render(); };
@@ -5649,11 +5931,34 @@ const QRULES = [
 ];
 /* short, culture-neutral, and the same three for every scenario, so a class
    that meets this twice is practising the rule rather than the example */
-const QDRILL = [
-  { q: 'Do you eat rice every day?',                     ok: false, flaw: 'closed' },
-  { q: 'Tell me about the last wedding you went to.',    ok: true },
-  { q: 'Why are Americans so cold to their families?',   ok: false, flaw: 'generalizing' }
+/* Practice questions, short and culture-neutral. Each scenario draws three
+   at random — one that opens, two that close for different reasons — so a
+   class that meets the activity twice practises the rule, not the answers. */
+const QBANK = [
+  { q: 'Tell me about the last wedding you went to.',            bn: 'শেষ যে বিয়েতে গিয়েছিলেন, সেটার কথা বলুন।', ok: true },
+  { q: 'What happened the first time you cooked for your family?', bn: 'প্রথম যেদিন পরিবারের জন্য রান্না করেছিলেন, সেদিন কী হয়েছিল?', ok: true },
+  { q: 'Walk me through a normal morning at your house.',        bn: 'আপনার বাড়িতে একটা সাধারণ সকাল কীভাবে কাটে, একটু একটু করে বলুন।', ok: true },
+  { q: 'Tell me about a time a teacher surprised you.',          bn: 'কোনো শিক্ষক আপনাকে অবাক করেছিলেন, এমন একটা সময়ের কথা বলুন।', ok: true },
+  { q: 'Tell me about the last holiday you spent with family.',  bn: 'শেষ যে ছুটিটা পরিবারের সঙ্গে কাটিয়েছেন, সেটার কথা বলুন।', ok: true },
+  { q: 'Do you eat rice every day?',                             bn: 'আপনি কি প্রতিদিন ভাত খান?', ok: false, flaw: 'closed' },
+  { q: 'Do you like your job?',                                  bn: 'আপনার কি নিজের কাজ ভালো লাগে?', ok: false, flaw: 'closed' },
+  { q: 'Respecting elders is important, isn’t it?',              bn: 'বড়দের সম্মান করা জরুরি, তাই না?', ok: false, flaw: 'leading' },
+  { q: 'You must feel lonely living far from home, right?',      bn: 'বাড়ি থেকে দূরে থেকে আপনার নিশ্চয়ই একা লাগে, তাই না?', ok: false, flaw: 'leading' },
+  { q: 'Why are Americans so cold to their families?',           bn: 'আমেরিকানরা পরিবারের প্রতি এত উদাসীন কেন?', ok: false, flaw: 'generalizing' },
+  { q: 'What do Bangladeshis believe about marriage?',           bn: 'বিয়ে নিয়ে বাংলাদেশিরা কী বিশ্বাস করে?', ok: false, flaw: 'generalizing' },
+  { q: 'Is it better to live with your parents or alone?',       bn: 'বাবা-মায়ের সঙ্গে থাকা ভালো, নাকি একা থাকা?', ok: false, flaw: 'abstract' },
+  { q: 'Is family more important than work?',                    bn: 'পরিবার কি কাজের চেয়ে বেশি জরুরি?', ok: false, flaw: 'abstract' }
 ];
+/* this scenario's three, chosen once and kept while the class is on it */
+function drillPick(){
+  if (state.qdPick) return state.qdPick;
+  const ids = QBANK.map((_, i) => i);
+  const open = shuffle(ids.filter(i => QBANK[i].ok));
+  const shut = shuffle(ids.filter(i => !QBANK[i].ok));
+  const two = [];
+  shut.forEach(i => { if (two.length < 2 && !two.some(j => QBANK[j].flaw === QBANK[i].flaw)) two.push(i); });
+  return (state.qdPick = shuffle([open[0]].concat(two)));
+}
 
 /* the four rules, small, as a reminder while the real choice is made */
 function qStrip(){
@@ -5780,6 +6085,24 @@ function gPlayer(i, mode){
   row.appendChild(left);
 
   const right = el('div', 'g-listen');
+  /* which of the three listens this is, always in view */
+  const LS = [['pure', 'Just listen', 'শুধু শুনুন', 'ear'], ['catch', 'Catch the words', 'শব্দ ধরুন', 'hand'],
+              ['read', 'Read along', 'পড়তে পড়তে শুনুন', 'book']];
+  const lk = LS.findIndex(x => x[0] === mode);
+  const steps = el('ol', 'g-lsteps');
+  steps.setAttribute('aria-label', 'Listen ' + (lk + 1) + ' of 3');
+  LS.forEach((x, k) => {
+    const li = el('li', 'g-lstep' + (k === lk ? ' on' : k < lk ? ' past' : ''));
+    const n = el('span', 'g-lstep-n');
+    n.textContent = String(k + 1);
+    li.appendChild(n);
+    const w = el('span', 'g-lstep-t');
+    w.appendChild(el('span', null, x[1]));
+    addBn(w, x[2]);
+    li.appendChild(w);
+    steps.appendChild(li);
+  });
+  right.appendChild(steps);
   const ctl = el('div', 'spk-ctl g-ctl');
   const play = el('button', 'play g-play');
   play.type = 'button';
@@ -5798,10 +6121,6 @@ function gPlayer(i, mode){
   const eq = el('div', 'eq');
   for (let k = 0; k < 3; k++) eq.appendChild(el('i'));
   ctl.appendChild(eq);
-  /* how many times this person has been heard, as three dots */
-  const heard = el('span', 'g-heard');
-  heard.appendChild(passDots(i));
-  ctl.appendChild(heard);
   right.appendChild(ctl);
 
   const prog = el('div', 'spk-prog g-prog'); prog.appendChild(el('i'));
@@ -5809,8 +6128,17 @@ function gPlayer(i, mode){
 
   const bub = el('div', 'bubble g-bubble');
   if (mode === 'read'){
+    /* the words arrive as they are said; the whole transcript, with its
+       meanings, opens once the listen reaches the end */
+    const done = !!(state.readDone && state.readDone[i]);
     const tr = glossedTranscript(sp.script, sp.name);
+    if (!done) tr.classList.add('is-follow');
     bub.appendChild(tr);
+    bub.appendChild(addBn(el('p', 'g-read-hint' + (done ? ' is-done' : ''),
+      done ? 'Here is everything ' + sp.name + ' said. Tap an underlined word for its meaning.'
+           : 'Press play. The words appear as ' + sp.name + ' says them.'),
+      done ? sp.name + ' যা বলেছেন, সবটা এখানে। দাগ দেওয়া শব্দে চাপ দিলে মানে দেখা যাবে।'
+           : 'প্লে চাপুন। ' + sp.name + ' যেমন যেমন বলবেন, শব্দগুলো তেমন তেমন দেখা যাবে।'));
   }
   const catchBox = el('div', 'catch');
   catchBox.hidden = true;
@@ -5845,7 +6173,7 @@ function gPlayer(i, mode){
 function gistRow(upTo, now){
   const box = el('div', 'g-gists');
   sc.speakers.forEach((sp, j) => {
-    const has = j <= upTo && (state.passes[j] || 0) > 0;
+    const has = j <= upTo;
     const c = el('div', 'g-gist' + (has ? ' is-in' : '') + (j === now ? ' is-now' : ''));
     const h = el('div', 'g-gist-h');
     h.appendChild(faceImg(j, 'g-gist-face'));
@@ -5886,16 +6214,16 @@ function stepListen(){
     } });
 
   sc.speakers.forEach((sp, i) => {
-    M.push({ cue: ['This is ' + sp.name + '. Press play, and just listen.',
+    M.push({ cue: ['This is ' + sp.name + '. Press play and just listen.',
                    'ইনি ' + sp.name + '। প্লে চাপুন, আর শুধু শুনুন।'],
              ico: 'ear', cls: 'g-listen-m',
              done: () => (state.passes[i] || 0) > 0 || !!state.noAudio,
              render(st){ st.appendChild(gPlayer(i, 'pure')); } });
     M.push({ cue: ['Listen again. Tap the words you hear.', 'আবার শুনুন। যে শব্দগুলো শুনছেন, সেগুলোতে চাপ দিন।'],
-             ico: 'ear', cls: 'g-listen-m',
+             ico: 'hand', cls: 'g-listen-m',
              render(st){ st.appendChild(gPlayer(i, 'catch')); } });
-    M.push({ cue: ['Listen and read. Tap an underlined word for its meaning.', 'শুনুন আর পড়ুন। দাগ দেওয়া শব্দে চাপ দিলে মানে দেখা যাবে।'],
-             ico: 'ear', cls: 'g-listen-m',
+    M.push({ cue: ['One more time. Read along as ' + sp.name + ' speaks.', 'আরেকবার। ' + sp.name + ' যখন বলছেন, সঙ্গে সঙ্গে পড়ুন।'],
+             ico: 'book', cls: 'g-listen-m',
              render(st){ st.appendChild(gPlayer(i, 'read')); } });
     M.push({ cue: [sp.name + ', in one line.', sp.name + ', এক লাইনে।'],
              ico: 'tick', cls: 'g-gist-m',
@@ -6178,33 +6506,80 @@ function refreshGists(){}
 /* ---- 2. ASK, as moments ----
    The four rules, one pair to a moment; three practice questions, one to a
    moment; then the real choice. Nothing on screen but the one decision. */
+/* The four rules on one screen, taught by a picture first: the same kind of
+   question asked twice. On the left the answer keeps coming; on the right it
+   is one word and then silence. Then the four pairs arrive, one row at a
+   time, each with its symbol — what opens on the left, what closes on the
+   right. */
+function rulesArt(open){
+  const s = svg('0 0 460 176', 'zs g-rule-art ' + (open ? 'is-open' : 'is-shut'));
+  s.removeAttribute('aria-hidden');
+  s.setAttribute('role', 'img');
+  s.setAttribute('aria-label', open ? 'A person answering at length' : 'A person answering in one word, then silence');
+  zPerson(s, 58, 166, 126, { cls: open ? 'zp-teal' : '' });
+  if (open){
+    [[112, 8, 330, 0], [112, 62, 280, 1], [112, 116, 318, 2]].forEach(b => {
+      const g = zG(s, { cls: 'ra-b ra-' + b[3] });
+      zBubble(g, b[0], b[1], b[2], 44, 'l', .5, { cls: 'zb-teal' });
+      zN(g, 'path', { d: 'M' + (b[0] + 20) + ' ' + (b[1] + 17) + 'h' + (b[2] - 60), cls: 'ra-line' });
+      zN(g, 'path', { d: 'M' + (b[0] + 20) + ' ' + (b[1] + 29) + 'h' + (b[2] - 120 - b[3] * 30), cls: 'ra-line' });
+    });
+  } else {
+    const g = zG(s, { cls: 'ra-b ra-0' });
+    zBubble(g, 112, 62, 108, 44, 'l', .5, {});
+    zN(g, 'text', { x: 166, y: 91, 'text-anchor': 'middle', cls: 'zt ra-yes', text: 'Yes.' });
+    const d = zG(s, { cls: 'ra-b ra-2' });
+    [0, 1, 2].forEach(k => zN(d, 'circle', { cx: 252 + k * 20, cy: 84, r: 4.5, cls: 'ra-dot' }));
+    zN(d, 'path', { d: 'M318 84h110', cls: 'ra-flat' });
+  }
+  return s;
+}
+
+function rulesBoard(){
+  const box = el('div', 'g-rules');
+  [['ok', 'tick', 'q_opens'], ['no', 'cross', 'q_closes']].forEach((h, k) => {
+    const col = el('div', 'g-rules-h ' + h[0]);
+    const tag = el('div', 'g-rules-tag');
+    tag.appendChild(icon(h[1], 'g-rules-tagico'));
+    tag.appendChild(el('span', null, t(h[2])));
+    tag.appendChild(bn(tb(h[2])));
+    col.appendChild(tag);
+    col.appendChild(rulesArt(!k));
+    box.appendChild(col);
+  });
+  QRULES.forEach((R, i) => {
+    [['ok', R.ok, R.okEn, R.okBn], ['no', R.no, R.noEn, R.noBn]].forEach(side => {
+      const c = el('div', 'g-rule ' + side[0]);
+      c.style.animationDelay = (1.9 + i * 0.45) + 's';
+      c.appendChild(glyph(side[1], 'g-rule-g'));
+      const w = el('div', 'g-rule-w');
+      w.appendChild(el('p', 'g-rule-t', side[2]));
+      addBn(w, side[3]);
+      c.appendChild(w);
+      box.appendChild(c);
+    });
+  });
+  return box;
+}
+
 function stepAsk(){
   const M = [];
-  QRULES.forEach((R, i) => M.push({
-    cue: ['A good question opens. A bad one closes.', 'ভালো প্রশ্ন কথা খোলে। খারাপ প্রশ্ন কথা থামায়।'],
-    ico: 'ask', cls: 'g-rule-m',
-    render(st){
-      const pair = el('div', 'qpair g-qpair');
-      [['ok', R.ok, R.okEn, R.okBn, 'tick'], ['no', R.no, R.noEn, R.noBn, 'cross']].forEach((side, k) => {
-        const d = el('div', 'qside ' + side[0]);
-        d.style.animationDelay = (k * 260) + 'ms';
-        const mark = el('span', 'qside-mark');
-        mark.appendChild(icon(side[4]));
-        d.appendChild(mark);
-        d.appendChild(glyph(side[1], 'qside-g'));
-        d.appendChild(el('p', 'qside-t', side[2]));
-        d.appendChild(bn(side[3]));
-        pair.appendChild(d);
-      });
-      st.appendChild(pair);
-    } }));
+  M.push({
+    cue: ['A good question opens a conversation. A bad one closes it.', 'ভালো প্রশ্ন কথা খুলে দেয়। খারাপ প্রশ্ন কথা থামিয়ে দেয়।'],
+    ico: 'ask', cls: 'g-rules-m',
+    render(st){ st.appendChild(rulesBoard()); } });
 
-  QDRILL.forEach((D, i) => M.push({
+  drillPick().forEach((qi, i) => {
+    const D = QBANK[qi];
+    M.push({
     cue: ['Does this question open the conversation, or close it?', 'এই প্রশ্নটি কথা খোলে, না থামায়?'],
     ico: 'ask', cls: 'g-drill-m',
     done: () => !!(state.qd && state.qd[i]),
     render(st){
-      st.appendChild(el('p', 'g-q g-drill-q', '“' + D.q + '”'));
+      const qp = el('div', 'g-drill-q');
+      qp.appendChild(el('p', 'g-q', '“' + D.q + '”'));
+      addBn(qp, D.bn);
+      st.appendChild(qp);
       const row = el('div', 'g-choices g-two-choices');
       const fb = el('div', 'g-fb');
       const show = pick => {
@@ -6212,17 +6587,18 @@ function stepAsk(){
         fb.innerHTML = '';
         fb.className = 'g-fb ' + (right ? 'is-good' : 'is-bad');
         const box = el('div', 'g-fb-in');
-        box.appendChild(glyph(D.ok ? 'book' : QRULES.find(x => x.flaw === D.flaw).no, 'g-fb-g'));
+        const R = D.ok ? null : QRULES.find(x => x.flaw === D.flaw);
+        box.appendChild(glyph(D.ok ? 'talk' : R.no, 'g-fb-g'));
         const w = el('div');
-        if (D.ok){ w.appendChild(el('p', 'g-fb-t', t('q_good'))); w.appendChild(bn(tb('q_good'))); }
-        else {
-          const R = QRULES.find(x => x.flaw === D.flaw);
-          w.appendChild(el('p', 'g-fb-t', (right ? 'Yes — it closes. ' : 'It closes. ') + R.noEn + '.'));
-          w.appendChild(bn(R.noBn));
+        if (D.ok){
+          w.appendChild(el('p', 'g-fb-t', (right ? 'Yes — it opens. ' : 'Look again: it opens. ') + 'It asks for a story.'));
+          w.appendChild(bn((right ? 'ঠিক — এটি কথা খোলে। ' : 'আবার দেখুন: এটি কথা খোলে। ') + 'এটি একটি ঘটনার বর্ণনা চায়।'));
+        } else {
+          w.appendChild(el('p', 'g-fb-t', (right ? 'Yes — it closes. ' : 'Look again: it closes. ') + R.noEn + '.'));
+          w.appendChild(bn((right ? 'ঠিক — এটি কথা থামায়। ' : 'আবার দেখুন: এটি কথা থামায়। ') + R.noBn + '।'));
         }
         box.appendChild(w);
         fb.appendChild(box);
-        gShow(fb);
       };
       [['open', 'talk', 'q_opens'], ['shut', 'shut', 'q_closes']].forEach(o => {
         const b = el('button', 'g-choice');
@@ -6249,7 +6625,8 @@ function stepAsk(){
       if (state.qd && state.qd[i]){ row.classList.add('is-done'); show(state.qd[i]); }
       st.appendChild(row);
       st.appendChild(fb);
-    } }));
+    } });
+  });
 
   M.push({ cue: ['Which question gets you inside? Choose one.', 'কোন প্রশ্নটি ভেতরে ঢোকার পথ খুলে দেয়? একটি বেছে নিন।'],
     ico: 'ask', cls: 'g-choose-m',
@@ -6408,23 +6785,170 @@ function stepMap(){
       st.appendChild(punchLine());
       st.appendChild(mechChain());
     } });
-  M.push({ cue: ['Two sets of rings, same situation. Tap a ring to compare.', 'দুই সেট বৃত্ত, একই পরিস্থিতি। মিলিয়ে দেখতে একটি বৃত্তে চাপ দিন।'],
-    ico: 'rank', cls: 'g-cmp-m',
-    render(st){
-      st.appendChild(compareRings());
-      st.appendChild(addBn(el('div', 'callout', t('ui_neither')), tb('ui_neither')));
-    } });
-  M.push({ cue: ['One more thing to think about.', 'ভেবে দেখার মতো আরও একটি কথা।'], ico: 'glasses', cls: 'g-notice-m',
-    render(st){
-      const band = el('div', 'g-notice');
-      band.appendChild(icon('glasses', 'g-notice-ico'));
-      const w = el('div');
-      w.appendChild(el('p', 'g-read', sc.contrast.note));
-      addBn(w, (sb().contrast || {}).note);
-      band.appendChild(w);
-      st.appendChild(band);
-    } });
+  M.push(duelMoment());
+  M.push({ cue: ['Your turn. Where do you stand?', 'এবার আপনার পালা। আপনি কোথায় দাঁড়ান?'], ico: 'person', cls: 'g-turn-m',
+    render(st){ st.appendChild(turnBoard()); } });
   guided('Map', 'target', M);
+}
+
+/* ---- two sets of rings, one ring at a time ----
+   Both pictures stay on screen. The teacher walks inward with → (each press
+   lights the same ring in both pictures and brings up the two answers side
+   by side) or taps a ring or a name. Only after the fourth ring does → leave
+   the moment. */
+function duelMoment(){
+  const mom = { cue: ['Two sets of rings, same situation.', 'দুই সেট বৃত্ত, একই পরিস্থিতি।'],
+    ico: 'rank', cls: 'g-duel-m',
+    step(dir){
+      const k = state.cmpK || 0;
+      if (dir > 0 && k < RINGS.length - 1){ mom.go(k + 1); return true; }
+      if (dir < 0 && k > 0){ mom.go(k - 1); return true; }
+      return false;
+    },
+    render(st){
+      const box = el('div', 'g-duel');
+      const EL = eastLab(), CB = sb();
+      const sides = {}, cards = {};
+      const col = (key, lab, labBn) => {
+        const c = el('div', 'g-duel-side ' + key);
+        c.appendChild(addBn(el('p', 'g-duel-tag', lab), labBn));
+        const d = miniRings(key);
+        d.classList.add('g-duel-dial');
+        d.addEventListener('click', e => {
+          const g = e.target.closest('.ring');
+          if (g) mom.go(RINGS.findIndex(R => R.key === g.dataset.slot));
+        });
+        c.appendChild(d);
+        const card = el('div', 'g-duel-card');
+        c.appendChild(card);
+        sides[key] = d; cards[key] = card;
+        return c;
+      };
+      box.appendChild(col('west', t('ui_western'), tb('ui_western')));
+      const mid = el('div', 'g-duel-mid');
+      const pills = RINGS.map((R, k) => {
+        const b = el('button', 'g-duel-pill r-' + R.key);
+        b.type = 'button';
+        b.appendChild(icon(LAYER_ICON[R.key], 'g-duel-ico'));
+        const w = el('span');
+        w.appendChild(el('span', 'g-duel-name', R.name));
+        addBn(w, RING_BN[R.key][0]);
+        b.appendChild(w);
+        b.onclick = () => mom.go(k);
+        mid.appendChild(b);
+        if (k < RINGS.length - 1){ const a = el('span', 'g-duel-arrow'); a.appendChild(icon('arrow')); mid.appendChild(a); }
+        return b;
+      });
+      box.appendChild(mid);
+      box.appendChild(col('east', EL[0], EL[1]));
+      st.appendChild(box);
+      st.appendChild(addBn(el('p', 'g-duel-foot', t('ui_neither')), tb('ui_neither')));
+
+      mom.go = k => {
+        k = Math.max(0, Math.min(RINGS.length - 1, k));
+        const fresh = state.cmpK !== k || !box.dataset.k;
+        state.cmpK = k;
+        state.cmpSeen = state.cmpSeen || {};
+        state.cmpSeen[k] = true;
+        box.dataset.k = k;
+        const R = RINGS[k];
+        pills.forEach((p, j) => { p.classList.toggle('on', j === k); p.classList.toggle('seen', !!state.cmpSeen[j] && j !== k); });
+        ['west', 'east'].forEach(side => {
+          sides[side].querySelectorAll('.ring').forEach(g => g.classList.toggle('is-open', g.dataset.slot === R.key));
+          const card = cards[side];
+          card.innerHTML = '';
+          card.className = 'g-duel-card r-' + R.key;
+          if (fresh){ void card.offsetWidth; card.classList.add('is-in'); }
+          const h = el('p', 'g-duel-ch');
+          h.appendChild(icon(LAYER_ICON[R.key], 'g-duel-chico'));
+          h.appendChild(el('span', null, R.name));
+          h.appendChild(el('span', 'g-duel-q', R.q));
+          card.appendChild(h);
+          const text = side === 'west' ? sc.rings[R.key] : sc.contrast[R.key];
+          const tbn = side === 'west' ? (CB.rings || {})[R.key] : (CB.contrast || {})[R.key];
+          card.appendChild(addBn(el('p', 'g-duel-t', text), tbn));
+        });
+        syncNext();
+      };
+      mom.go(state.cmpK || 0);
+    } };
+  return mom;
+}
+
+/* ---- your turn ----
+   The end of Map used to be a paragraph written to the teacher and projected
+   at the class. Now it is one question and a line between the two ways of
+   doing the thing: the class decides where it stands, and a tap moves the
+   marker there. The teacher's paragraph lives in the menu. */
+const TURN = {
+  'dinner-ends-at-eight': {
+    l: ['Say when the evening ends', 'সন্ধ্যা কখন শেষ, আগেই বলে দেওয়া'],
+    r: ['Keep the guest as long as you can', 'অতিথিকে যতক্ষণ পারা যায় ধরে রাখা'],
+    q: ['Where does your family stand? Does it change with the guest?', 'আপনার পরিবার কোথায় দাঁড়ায়? অতিথি বদলালে কি সেটা বদলায়?'] },
+  'splitting-the-bill': {
+    l: ['Everyone pays their own share', 'যার যার ভাগ সে দেয়'],
+    r: ['One person pays for everyone', 'একজন সবার বিল দেয়'],
+    q: ['Who pays when you eat out with friends? Does it depend on who is there?', 'বন্ধুদের সঙ্গে বাইরে খেলে বিল কে দেয়? কে সঙ্গে আছে, তার ওপর কি নির্ভর করে?'] },
+  'disagreeing-in-the-meeting': {
+    l: ['Say no to the boss, in the meeting', 'মিটিংয়েই বসকে না বলা'],
+    r: ['Stay quiet, and tell him later', 'চুপ থাকা, পরে আলাদা করে বলা'],
+    q: ['Your boss’s plan has a mistake. What do you do?', 'বসের পরিকল্পনায় একটা ভুল আছে। আপনি কী করবেন?'] },
+  'the-boss-stacks-chairs': {
+    l: ['The boss stacks the chairs', 'বস নিজেই চেয়ার গোছান'],
+    r: ['The boss sits, and is served', 'বস বসে থাকেন, অন্যরা সেবা করেন'],
+    q: ['Where would your boss be after the event? How would it feel?', 'অনুষ্ঠানের পরে আপনার বস কোথায় থাকতেন? আপনার কেমন লাগত?'] },
+  'what-do-you-think': {
+    l: ['Speak up before you are sure', 'নিশ্চিত হওয়ার আগেই মুখ খোলা'],
+    r: ['Wait for the teacher’s answer', 'শিক্ষকের উত্তরের জন্য অপেক্ষা করা'],
+    q: ['In your classes, which one gets a good grade? Which one feels safe?', 'আপনার ক্লাসে কোনটায় ভালো নম্বর আসে? কোনটায় নিরাপদ লাগে?'] },
+  'the-neighbours-tree': {
+    l: ['Knock on the neighbour’s door', 'প্রতিবেশীর দরজায় নিজে যাওয়া'],
+    r: ['Send a friend to say it', 'একজন বন্ধুকে দিয়ে বলানো'],
+    q: ['Where does your family stand? Does it change with the neighbour?', 'আপনার পরিবার কোথায় দাঁড়ায়? প্রতিবেশী বদলালে কি সেটা বদলায়?'] }
+};
+function turnBoard(){
+  const T = TURN[sc.id] || { l: [sc.rings.behavior, ''], r: [sc.contrast.behavior, ''], q: ['Where do you stand?', 'আপনি কোথায় দাঁড়ান?'] };
+  const EL = eastLab();
+  const box = el('div', 'g-turn');
+  box.appendChild(addBn(el('p', 'g-turn-q', T.q[0]), T.q[1]));
+  const spec = el('div', 'g-spec');
+  const end = (key, lab, labBn, txt) => {
+    const e = el('div', 'g-spec-end ' + key);
+    const m = el('span', 'g-spec-mark');
+    m.appendChild(icon('person'));
+    e.appendChild(m);
+    e.appendChild(addBn(el('span', 'g-spec-tag', lab), labBn));
+    e.appendChild(addBn(el('p', 'g-spec-t', txt[0]), txt[1]));
+    return e;
+  };
+  spec.appendChild(end('west', t('ui_western'), tb('ui_western'), T.l));
+  const track = el('div', 'g-spec-track');
+  track.appendChild(el('span', 'g-spec-line'));
+  const pin = el('span', 'g-spec-pin');
+  pin.appendChild(el('span', 'g-spec-pin-t', '?'));
+  const place = k => {
+    state.turn = k;
+    pin.style.left = (k * 25) + '%';
+    pin.classList.toggle('is-set', k != null);
+    stops.forEach((b, j) => b.classList.toggle('on', j === k));
+  };
+  const stops = [0, 1, 2, 3, 4].map(k => {
+    const b = el('button', 'g-spec-stop');
+    b.type = 'button';
+    b.style.left = (k * 25) + '%';
+    b.setAttribute('aria-label', ['Very like the left', 'A little like the left', 'In the middle', 'A little like the right', 'Very like the right'][k]);
+    b.onclick = () => place(k);
+    track.appendChild(b);
+    return b;
+  });
+  track.appendChild(pin);
+  spec.appendChild(track);
+  spec.appendChild(end('east', EL[0], EL[1], T.r));
+  box.appendChild(spec);
+  box.appendChild(addBn(el('p', 'g-turn-foot', 'Tap the line to show where your class stands. Both ends make sense from inside their own rings.'),
+                        'আপনার ক্লাস কোথায় দাঁড়ায়, লাইনে চাপ দিয়ে দেখান। নিজের বৃত্তের ভেতর থেকে দেখলে দুই প্রান্তই যুক্তিসঙ্গত।'));
+  if (state.turn != null) place(state.turn); else pin.style.left = '50%';
+  return box;
 }
 
 function punchLine(){
@@ -7024,6 +7548,8 @@ function advance(){
     if (lstep === LESSON.length - 1){ endLesson(); return; }
     lstep++; render(); return;
   }
+  /* a moment with steps of its own takes Next first (the ring comparison) */
+  if (gCur && gCur.list[gCur.k].step && gCur.list[gCur.k].step(1)) return;
   if (gCur && gCur.k < gCur.list.length - 1){
     gDir = 1; gSet(gCur.name, gCur.k + 1); render(); return;
   }
@@ -7047,6 +7573,7 @@ btnBack.onclick = () => {
     lbeatEnd = true; lstep--; render(); return;  /* arrive on its last picture */
   }
   if (state.handoff){ state.handoff = false; render(); return; }
+  if (gCur && gCur.list[gCur.k].step && gCur.list[gCur.k].step(-1)) return;
   if (gCur && gCur.k > 0){ stopAudio(); gDir = -1; gSet(gCur.name, gCur.k - 1); render(); return; }
   if (step === 0) return;
   stopAudio(); gDir = -1; step--; render();
@@ -7158,6 +7685,7 @@ function toggleFullscreen(){
 document.addEventListener('keydown', e => {
   if (e.metaKey || e.ctrlKey || e.altKey) return;
   const k = e.key.toLowerCase();
+  if (k === 'a' && lesson){ e.preventDefault(); toggleAuto(); return; }
   if (k === 'escape'){ if (glossOpen){ hideGloss(); return; } closeSheet(); stopAudio(); return; }
   if (k === 'arrowright' || k === ' '){ e.preventDefault(); btnNext.click(); return; }
   if (k === 'arrowleft'){ e.preventDefault(); btnBack.click(); return; }
