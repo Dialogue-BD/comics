@@ -2289,8 +2289,8 @@ body.bangla .bn-inline{display:inline}
     <li><b>Beliefs</b> — <i>what is true?</i> What has to be true for that value to make sense.</li>
     <li><b>Worldview</b> — <i>what is real?</i> The shape of the world those beliefs assume.</li>
   </ul>
-  <p><b>Keys</b> — <kbd>→</kbd> continue · <kbd>←</kbd> back · <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> play or
-     pause a speaker · <kbd>T</kbd> transcripts · <kbd>R</kbd> new scenario · <kbd>P</kbd> present on TV ·
+  <p><b>Keys</b> — <kbd>→</kbd> continue · <kbd>←</kbd> back · <kbd>Enter</kbd> play or
+     pause whoever is on screen · <kbd>R</kbd> new scenario · <kbd>P</kbd> present on TV ·
      <kbd>F</kbd> fullscreen · <kbd>Esc</kbd> stop the audio</p>
 
   <h2 class="tnote">For the teacher</h2>
@@ -2302,15 +2302,19 @@ body.bangla .bn-inline{display:inline}
      back, and only after the last beat does <kbd>→</kbd> turn the panel. The squares under the picture
      jump to any beat, “Play again” replays the panel, and “Read it” opens the panel’s paragraph for a
      class that wants the words.</p>
-  <p>Pairs work well: one student runs the audio, the other keeps notes on the printed field sheet.
-     The three wrong sentences in step 4 are the three traps — restatement, judgment and stereotype —
-     and they are worth more discussion than the three right ones.</p>
-  <p>Step 3 is the language work. Each interview can be heard three times and the word field changes
-     every time, so a second listen is not the first one with the answers known. Nothing is locked:
-     the class can move on whenever you want them to, and the step simply shows how many of the three
-     have been heard. After a second listen each informant gets a “See the words” button on their own
-     card; the switch under all three still opens every transcript at once for a weaker group. Every
-     underlined word in a transcript can be tapped for its meaning.</p>
+  <p>Every step is a short run of moments, and each moment asks for one thing: one line of instruction
+     at the top, one thing on the screen, the squares at the bottom to show where you are. <kbd>→</kbd>
+     moves on a moment and <kbd>←</kbd> goes back one. A moment that asks the class to do something keeps
+     Next closed until it is done, then Next glows. The squares jump back to anything already seen.</p>
+  <p>Listen is the language work. Each person is met, heard once with nothing to read, heard again while
+     the class taps the words it catches, and heard a third time with the words lit as they are said —
+     any underlined word opens its meaning. Only the first listen is required. Each person ends as one
+     line on a board of three, and Check starts from that board: six sentences, one at a time, each
+     asking only “all three, or only one?”</p>
+  <p>In Map each ring offers three sentences: the right one, one of the three traps — restatement,
+     judgment, stereotype — and the sentence that belongs one ring deeper. The traps are worth more
+     discussion than the right answers. Pairs work well on phones: one runs the audio, the other keeps
+     notes on the printed field sheet.</p>
   <p>Choose any printable below. On a phone, tablet, computer, or projector, use the system print dialog
      to print it or save it as a PDF. The paper versions contain no answers.</p>
 
@@ -2538,18 +2542,6 @@ function sbn(path, i){
 }
 /* append a Bangla line to a node when there is one */
 function addBn(node, text){ if (text) node.appendChild(bn(text)); return node; }
-
-/* the task strip: the same shape, in the same place, on every screen */
-function taskStrip(n, ico, key){
-  const s = el('div', 'task');
-  s.appendChild(el('span', 'task-n', String(n)));
-  s.appendChild(icon(ico, 'task-ico'));
-  const box = el('div', 'task-t');
-  box.appendChild(el('p', 'task-en', t(key)));
-  box.appendChild(bn(tb(key)));
-  s.appendChild(box);
-  return s;
-}
 
 /* why the Continue button is closed, said where the eye already is */
 function whyBox(key){
@@ -2871,8 +2863,6 @@ function togglePlay(i){
 }
 
 function replaySpeaker(i){ queue = false; startSpeaker(i); }
-
-function playAll(){ queue = true; startSpeaker(0); }
 
 function handOver(justFinished){
   const n = justFinished + 1;
@@ -3665,43 +3655,6 @@ function ringDiagram(live){
     s.appendChild(g);
   });
   return s;
-}
-
-/* one row per ring, colour-keyed to it: the label, the question, the sentence */
-function ringRows(live){
-  const box = el('div', 'rrows');
-  RINGS.forEach(R => {
-    const row = el('div', 'rrow r-' + R.key);
-    row.dataset.slot = R.key;
-
-    const head = el('div', 'rrow-head');
-    head.appendChild(icon(LAYER_ICON[R.key], 'rrow-ico'));
-    head.appendChild(el('span', 'rrow-name', R.name));
-    head.appendChild(el('span', 'rrow-q', R.q));
-    head.appendChild(bn(RING_BN[R.key][0] + ' · ' + RING_BN[R.key][1]));
-    row.appendChild(head);
-
-    let text;
-    let bnText = null;
-    if (R.key === 'behavior'){ text = sc.rings.behavior; bnText = sbn('rings')  && sb().rings[R.key];
-      row.classList.add('is-set', 'is-given'); }
-    else if (live && state.placed[R.key]){ text = state.placed[R.key];
-      bnText = sb().rings && sb().rings[R.key]; row.classList.add('is-set'); }
-    else { text = live ? t('ui_taphere') : ''; bnText = live ? tb('ui_taphere') : null; }
-    const p = el('p', 'rrow-text', text);
-    if (!row.classList.contains('is-set')) p.classList.add('empty');
-    row.appendChild(p);
-    if (bnText) row.appendChild(bn(bnText));
-    box.appendChild(row);
-  });
-  return box;
-}
-
-function ringFigure(live){
-  const w = el('div', 'rings-wrap');
-  w.appendChild(ringDiagram(live));
-  w.appendChild(ringRows(live));
-  return w;
 }
 
 /* ================================================================ the lesson
@@ -4859,23 +4812,6 @@ function fct(gly, txt, bnTxt){
    panel — wordless on purpose, so it reads the same in either language — and
    the emoji shrinks to a corner mark that keeps the icon language intact and
    stands in whole if the picture fails to load. */
-function sceneStrip(){
-  const box = el('div', 'strip');
-  sc.beats.forEach((b, i) => {
-    if (i) box.appendChild(el('span', 'strip-arrow', '→'));
-    const t = el('div', 'beat' + (markTopLeft(sc.id + '-' + (i + 1)) ? ' is-tl' : ''));
-    t.style.animationDelay = (i * 110) + 'ms';
-    t.appendChild(el('span', 'beat-n', String(i + 1)));
-    t.appendChild(beatShot(b, i));
-    const bt = el('div', 'beat-w');
-    bt.appendChild(el('p', 'beat-t', b.t));
-    addBn(bt, sbn('beats', i));
-    t.appendChild(bt);
-    box.appendChild(t);
-  });
-  return box;
-}
-
 /* Three of the six scenarios were drawn with EMPTY speech balloons, because an
    image model letters about as badly as a video model talks. What goes in the
    balloon is drawn here instead, as symbols — so the panel stays wordless and
@@ -4959,41 +4895,6 @@ function beatShot(b, i){
   if (mk){ mk.setAttribute('aria-hidden', 'true'); fig.appendChild(mk); }
   fig.appendChild(el('span', 'beat-g', b.ico));
   return fig;
-}
-
-/* guess first, then read. Neither answer is marked: it is a prediction, not
-   a test, and the point is only that the student has taken a position. */
-function predictBand(){
-  const box = el('div', 'predict');
-  const q = el('p', 'predict-q');
-  q.appendChild(el('span', 'predict-g', '🤔'));
-  q.appendChild(document.createTextNode(t('guess_q')));
-  box.appendChild(q);
-  box.appendChild(bn(tb('guess_q')));
-
-  const row = el('div', 'predict-btns');
-  ['guess_yes', 'guess_no'].forEach(key => {
-    const b = el('button', 'predict-b');
-    b.appendChild(el('span', null, t(key)));
-    b.appendChild(bn(tb(key)));
-    b.type = 'button';
-    b.onclick = () => openPredict(box);
-    row.appendChild(b);
-  });
-  box.appendChild(row);
-  return box;
-}
-function openPredict(box){
-  if (box.classList.contains('is-open')) return;
-  box.classList.add('is-open');
-  box.querySelectorAll('.predict-b').forEach(b => { b.disabled = true; });
-  const band = el('div', 'band band-ill');
-  band.appendChild(icon('glasses', 'band-ico'));
-  const bt = el('div', 'band-t');
-  bt.appendChild(el('p', null, sc.noticing));
-  if (sc.noticing_bn) bt.appendChild(bn(sc.noticing_bn));
-  band.appendChild(bt);
-  box.appendChild(band);
 }
 
 /* ---- 2. ASK ---- */
