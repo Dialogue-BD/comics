@@ -1536,6 +1536,58 @@ body.bangla .zcap{min-height:calc(4.6rem*var(--ui))}
 :root[data-theme="stage"] .g-center{font-size:calc(1.25rem*var(--ui))}
 @media (prefers-reduced-motion:reduce){ .g-tok.is-fresh .g-tok-in,.g-claim,.g-shared li{animation:none} }
 
+/* ---------- ask and map, as moments ---------- */
+.g-qpair{margin-top:0}
+.g-qpair .qside{animation:gGist .55s cubic-bezier(.22,.68,.2,1) both}
+.g-drill-q{margin:0 auto var(--s5);max-width:30ch}
+.g-fb-g{font-size:calc(2rem*var(--ui));line-height:1;flex:0 0 auto}
+.g-fb-s{margin:calc(4px*var(--ui)) 0 0;font-size:calc(.95rem*var(--ui));line-height:1.5;color:var(--tx)}
+.g-opts{margin-top:var(--s4)}
+.g-mopts{display:flex;flex-direction:column;gap:var(--s2);margin-top:var(--s2)}
+.g-mopt{
+  text-align:left;cursor:pointer;font:inherit;color:var(--tx);
+  padding:var(--s3) var(--s4);border:2px solid var(--rule-strong);border-radius:var(--radius-md);
+  background:var(--panel);font-size:calc(clamp(1rem,4vw,1.12rem)*var(--ui));line-height:1.45;
+  transition:border-color .2s ease,background .2s ease,opacity .3s ease;
+}
+.g-mopt:hover:not(:disabled){border-color:var(--gold);background:var(--gold-soft)}
+.g-mopt .bn{font-size:.9em}
+.g-mopt.is-picked{border-color:var(--l-value);background:var(--l-value-t)}
+.g-mopt:disabled{cursor:default}
+.g-mopt:disabled:not(.is-picked){opacity:.35}
+.g-mopt.is-refused{border-color:var(--clay);background:rgba(176,86,58,.1)}
+.g-ringname.r-value{color:var(--l-value)}
+.g-ringname.r-belief{color:var(--l-belief)}
+.g-ringname.r-worldview{color:var(--l-worldview)}
+.g-line-s{font-size:calc(clamp(1.1rem,4.4vw,1.3rem)*var(--ui))}
+.g-found-m .punch{margin-top:0}
+@media (min-width:760px){
+  .g-mapgrid{grid-template-columns:minmax(0,.8fr) minmax(0,1.3fr)}
+}
+:root[data-theme="stage"] .g-qpair .qside-g{font-size:calc(4.4rem*var(--ui))}
+:root[data-theme="stage"] .g-qpair .qside-t{font-size:calc(1.8rem*var(--ui))}
+:root[data-theme="stage"] .g-qpair .bn{font-size:calc(1.4rem*var(--ui))}
+:root[data-theme="stage"] .g-qpair .qside{padding:var(--s6) var(--s5)}
+:root[data-theme="stage"] .g-drill-q{font-size:calc(2.4rem*var(--ui));max-width:none}
+:root[data-theme="stage"] .g-fb-s{font-size:calc(1.15rem*var(--ui))}
+:root[data-theme="stage"] .g-opts .opt{font-size:calc(1.3rem*var(--ui));padding:var(--s4) var(--s5)}
+:root[data-theme="stage"] .g-opts .opt .bn{font-size:calc(1.1rem*var(--ui))}
+:root[data-theme="stage"] .g-choose-m .qstrip{zoom:1.35}
+:root[data-theme="stage"] .g-choose-m .coach{font-size:calc(1.15rem*var(--ui))}
+:root[data-theme="stage"] .g-mopt{font-size:calc(1.4rem*var(--ui));padding:var(--s4) var(--s5)}
+:root[data-theme="stage"] .g-mapgrid{height:100%;min-height:0}
+:root[data-theme="stage"] .g-mapgrid .g-rings{height:min(100%,calc(470px*var(--ui)))}
+:root[data-theme="stage"] .g-line-s{font-size:calc(1.6rem*var(--ui))}
+:root[data-theme="stage"] .g-map-m .evid{zoom:1.35}
+:root[data-theme="stage"] body.bangla .g-map-m .evid{zoom:1.1}
+:root[data-theme="stage"] body.bangla .g-mopt{font-size:calc(1.25rem*var(--ui));padding:var(--s3) var(--s4)}
+:root[data-theme="stage"] body.bangla .g-opts .opt{font-size:calc(1.15rem*var(--ui));padding:var(--s3) var(--s4)}
+:root[data-theme="stage"] .g-found-m > *{zoom:1.45}
+:root[data-theme="stage"] .g-cmp-m > *{zoom:1.3}
+:root[data-theme="stage"] body.bangla .g-cmp-m > *{zoom:1.12}
+:root[data-theme="stage"] .g-choose-m .opt-tag{zoom:1.3}
+@media (prefers-reduced-motion:reduce){ .g-qpair .qside{animation:none} }
+
 /* ---------- the rows under the rings ---------- */
 .rrows{display:flex;flex-direction:column;gap:var(--s2);margin-top:var(--s5)}
 .rrow{
@@ -4588,7 +4640,7 @@ function guided(name, ico, list){
   const M = list[k];
   gCur = { name: name, list: list, k: k };
 
-  const p = el('div', 'panel g-panel p-' + name.toLowerCase());
+  const p = el('div', 'panel g-panel g-p-' + name.toLowerCase());
   const hd = el('div', 'g-cue');
   const badge = el('span', 'g-badge');
   badge.appendChild(icon(M.ico || ico, 'g-badge-ico'));
@@ -4622,6 +4674,12 @@ function guided(name, ico, list){
   p.appendChild(ft);
   wrap.appendChild(p);
   M.render(st, p);
+}
+
+/* feedback that lands below the fold of a full stage is scrolled to, gently */
+function gShow(node){
+  if (!node) return;
+  requestAnimationFrame(() => node.scrollIntoView({ block: 'nearest', behavior: 'smooth' }));
 }
 
 /* the step's own Next, when the class is part-way through its moments */
@@ -4976,100 +5034,6 @@ const QDRILL = [
   { q: 'Why are Americans so cold to their families?',   ok: false, flaw: 'generalizing' }
 ];
 
-function qPhaseRules(card){
-  const i = state.qRule || 0;
-  const R = QRULES[i];
-
-  const pair = el('div', 'qpair');
-  [['ok', R.ok, R.okEn, R.okBn, 'tick'], ['no', R.no, R.noEn, R.noBn, 'cross']].forEach(side => {
-    const d = el('div', 'qside ' + side[0]);
-    const mark = el('span', 'qside-mark');
-    mark.appendChild(icon(side[4]));
-    d.appendChild(mark);
-    d.appendChild(el('span', 'qside-g', side[1]));
-    d.appendChild(el('p', 'qside-t', side[2]));
-    d.appendChild(bn(side[3]));
-    pair.appendChild(d);
-  });
-  card.appendChild(pair);
-
-  const foot = el('div', 'qfoot');
-  const dots = el('div', 'qdots');
-  QRULES.forEach((_, k) => dots.appendChild(el('span', 'qdot' + (k === i ? ' on' : ''))));
-  foot.appendChild(dots);
-  const nb = el('button', 'mini on');
-  nb.type = 'button';
-  nb.appendChild(el('span', null, i < QRULES.length - 1 ? t('nx_next') : t('q_try')));
-  nb.appendChild(bn(i < QRULES.length - 1 ? tb('nx_next') : tb('q_try')));
-  nb.onclick = () => {
-    if (i < QRULES.length - 1){ state.qRule = i + 1; }
-    else { state.qPhase = 1; state.qDrill = 0; }
-    render();
-  };
-  foot.appendChild(nb);
-  card.appendChild(foot);
-}
-
-function qPhaseDrill(card){
-  const i = state.qDrill || 0;
-  const D = QDRILL[i];
-
-  const prog = el('p', 'qprog', (i + 1) + ' / ' + QDRILL.length);
-  card.appendChild(prog);
-
-  const q = el('div', 'qtest');
-  q.appendChild(el('p', 'qtest-q', '“' + D.q + '”'));
-  card.appendChild(q);
-
-  const row = el('div', 'qjudge');
-  const fb = el('div', 'qfb');
-  [['open', true, '🗣️', 'q_opens'], ['shut', false, '🤐', 'q_closes']].forEach(o => {
-    const b = el('button', 'qj ' + o[0]);
-    b.type = 'button';
-    b.appendChild(el('span', 'qj-g', o[2]));
-    const lab = el('span');
-    lab.appendChild(el('span', null, t(o[3])));
-    lab.appendChild(bn(tb(o[3])));
-    b.appendChild(lab);
-    b.onclick = () => {
-      if (row.dataset.done) return;
-      row.dataset.done = '1';
-      const right = (o[1] === D.ok);
-      b.classList.add(right ? 'is-right' : 'is-wrong');
-      row.querySelectorAll('.qj').forEach(x => { x.disabled = true; });
-      fb.innerHTML = '';
-      fb.className = 'qfb show ' + (right ? 'good' : 'bad');
-      if (D.ok){
-        fb.appendChild(el('span', 'qfb-g', '📖'));
-        const tx = el('div');
-        tx.appendChild(el('p', null, t('q_good')));
-        tx.appendChild(bn(tb('q_good')));
-        fb.appendChild(tx);
-      } else {
-        const R = QRULES.find(x => x.flaw === D.flaw);
-        fb.appendChild(el('span', 'qfb-g', R.no));
-        const tx = el('div');
-        tx.appendChild(el('p', null, R.noEn));
-        tx.appendChild(bn(R.noBn));
-        fb.appendChild(tx);
-      }
-      const nb = el('button', 'mini on');
-      nb.type = 'button';
-      nb.appendChild(el('span', null, i < QDRILL.length - 1 ? t('nx_next') : t('q_now')));
-      nb.appendChild(bn(i < QDRILL.length - 1 ? tb('nx_next') : tb('q_now')));
-      nb.onclick = () => {
-        if (i < QDRILL.length - 1) state.qDrill = i + 1;
-        else state.qPhase = 2;
-        render();
-      };
-      fb.appendChild(nb);
-    };
-    row.appendChild(b);
-  });
-  card.appendChild(row);
-  card.appendChild(fb);
-}
-
 /* the four rules, small, as a reminder while the real choice is made */
 function qStrip(){
   const box = el('div', 'qstrip');
@@ -5080,48 +5044,6 @@ function qStrip(){
     box.appendChild(d);
   });
   return box;
-}
-
-function stepAsk(){
-  const p = el('div', 'panel p-ask');
-  p.appendChild(taskStrip(stepNo(), 'ask', 'task_ask'));
-  const c = el('div', 'card raised');
-  c.appendChild(kickerEl());
-
-  if (state.qPhase === undefined) state.qPhase = state.qDone ? 2 : 0;
-
-  if (state.qPhase === 0){
-    c.appendChild(el('h2', 'h-title', 'One opens. One closes.'));
-    c.appendChild(bn('একটি কথা খোলে। একটি কথা থামায়।'));
-    qPhaseRules(c);
-    p.appendChild(c); wrap.appendChild(p); return;
-  }
-  if (state.qPhase === 1){
-    c.appendChild(el('h2', 'h-title', 'Open or closed?'));
-    c.appendChild(bn('এই প্রশ্নটি কথা খোলে, না থামায়?'));
-    qPhaseDrill(c);
-    p.appendChild(c); wrap.appendChild(p); return;
-  }
-
-  c.appendChild(el('h2', 'h-title', 'Which question gets you inside?'));
-  c.appendChild(bn('কোন প্রশ্নটি ভেতরে ঢোকার পথ খুলে দেয়?'));
-  c.appendChild(qStrip());
-
-  const list = el('div', 'opts');
-  const opts = state.qOrder || (state.qOrder = shuffle(sc.questions.map((_, i) => i)));
-  opts.forEach(i => {
-    const q = sc.questions[i];
-    const b = el('button', 'opt');
-    b.type = 'button';
-    b.questionData = q;
-    b.appendChild(document.createTextNode('“' + q.q + '”'));
-    addBn(b, (sb().questions || [])[i]);
-    b.onclick = () => chooseQ(b, q, list);
-    list.appendChild(b);
-  });
-  c.appendChild(list);
-  p.appendChild(c);
-  wrap.appendChild(p);
 }
 
 function markWrongQuestion(btn, q, showReason){
@@ -5167,13 +5089,17 @@ function chooseQ(btn, q, list){
     co.appendChild(document.createTextNode(q.why));
     if (q.why_bn) co.appendChild(bn(tb('q_thats_it') + ' ' + q.why_bn));
     list.appendChild(co);
+    if (gCur) gShow(co);
     list.querySelectorAll('.opt').forEach(o => {
-      if (o !== btn) markWrongQuestion(o, o.questionData, true);
+      /* in the guided step the reasons would push the right answer off the
+         screen; the tag on each one is enough, and the coach says why */
+      if (o !== btn) markWrongQuestion(o, o.questionData, !gCur);
       o.disabled = true;
     });
     state.qDone = true;
     state.chosenQ = q.q;          /* carried to the top of the listening screen */
     syncNext();
+    gDone();
   } else {
     const f = markWrongQuestion(btn, q, false);
     const co = el('div', 'coach');
@@ -5479,6 +5405,7 @@ function claimMoment(ci, n){
             row.querySelectorAll('.g-choice').forEach(x => { x.disabled = true; });
             fb.className = 'g-fb is-good';
             fb.appendChild(fbLine(cm, true));
+            gShow(fb);
             /* the claim goes into the picture */
             vbox.innerHTML = '';
             vbox.appendChild(checkVenn(ci));
@@ -5489,6 +5416,7 @@ function claimMoment(ci, n){
           } else {
             fb.className = 'g-fb is-bad';
             fb.appendChild(fbLine(cm, false));
+            gShow(fb);
             b.classList.add('is-refused');
             setTimeout(() => b.classList.remove('is-refused'), 600);
           }
@@ -5625,139 +5553,256 @@ function evidenceBoard(){
    their own moment instead */
 function refreshGists(){}
 
-/* ---- 4. FILL THE RINGS ---- */
-function stepMap(){
-  const p = el('div', 'panel p-map');
-  p.appendChild(taskStrip(stepNo(), 'target', 'task_map'));
-  const c = el('div', 'card raised');
-  c.appendChild(kickerEl());
-  c.appendChild(addBn(el('h2', 'h-title', t('ui_mapt')), tb('ui_mapt')));
-  /* the evidence comes with you. Naming a value is otherwise a guess dressed
-     up as a conclusion, and the jump from step 3 to here was the sharpest
-     edge in the activity. */
-  c.appendChild(evidenceBoard());
-  c.appendChild(addBn(el('p', 'hint', t('ui_traytip')), tb('ui_traytip')));
+/* ---- 2. ASK, as moments ----
+   The four rules, one pair to a moment; three practice questions, one to a
+   moment; then the real choice. Nothing on screen but the one decision. */
+function stepAsk(){
+  const M = [];
+  QRULES.forEach((R, i) => M.push({
+    cue: ['A good question opens. A bad one closes.', 'ভালো প্রশ্ন কথা খোলে। খারাপ প্রশ্ন কথা থামায়।'],
+    ico: 'ask', cls: 'g-rule-m',
+    render(st){
+      const pair = el('div', 'qpair g-qpair');
+      [['ok', R.ok, R.okEn, R.okBn, 'tick'], ['no', R.no, R.noEn, R.noBn, 'cross']].forEach((side, k) => {
+        const d = el('div', 'qside ' + side[0]);
+        d.style.animationDelay = (k * 260) + 'ms';
+        const mark = el('span', 'qside-mark');
+        mark.appendChild(icon(side[4]));
+        d.appendChild(mark);
+        d.appendChild(el('span', 'qside-g', side[1]));
+        d.appendChild(el('p', 'qside-t', side[2]));
+        d.appendChild(bn(side[3]));
+        pair.appendChild(d);
+      });
+      st.appendChild(pair);
+    } }));
 
-  const ringBox = ringFigure(true);
-  c.appendChild(ringBox);
+  QDRILL.forEach((D, i) => M.push({
+    cue: ['Does this question open the conversation, or close it?', 'এই প্রশ্নটি কথা খোলে, না থামায়?'],
+    ico: 'ask', cls: 'g-drill-m',
+    done: () => !!(state.qd && state.qd[i]),
+    render(st){
+      st.appendChild(el('p', 'g-q g-drill-q', '“' + D.q + '”'));
+      const row = el('div', 'g-choices g-two-choices');
+      const fb = el('div', 'g-fb');
+      const show = pick => {
+        const right = (pick === 'open') === D.ok;
+        fb.innerHTML = '';
+        fb.className = 'g-fb ' + (right ? 'is-good' : 'is-bad');
+        const box = el('div', 'g-fb-in');
+        box.appendChild(el('span', 'g-fb-g', D.ok ? '📖' : QRULES.find(x => x.flaw === D.flaw).no));
+        const w = el('div');
+        if (D.ok){ w.appendChild(el('p', 'g-fb-t', t('q_good'))); w.appendChild(bn(tb('q_good'))); }
+        else {
+          const R = QRULES.find(x => x.flaw === D.flaw);
+          w.appendChild(el('p', 'g-fb-t', (right ? 'Yes — it closes. ' : 'It closes. ') + R.noEn + '.'));
+          w.appendChild(bn(R.noBn));
+        }
+        box.appendChild(w);
+        fb.appendChild(box);
+        gShow(fb);
+      };
+      [['open', '🗣️', 'q_opens'], ['shut', '🤐', 'q_closes']].forEach(o => {
+        const b = el('button', 'g-choice');
+        b.type = 'button';
+        b.appendChild(el('span', 'g-choice-g', o[1]));
+        const w = el('span', 'g-choice-t');
+        w.appendChild(el('span', null, t(o[2])));
+        w.appendChild(bn(tb(o[2])));
+        b.appendChild(w);
+        const had = state.qd && state.qd[i];
+        if (had){ b.disabled = true; if (had === o[0]) b.classList.add('is-picked'); }
+        b.onclick = () => {
+          if (state.qd && state.qd[i]) return;
+          state.qd = state.qd || {};
+          state.qd[i] = o[0];
+          b.classList.add('is-picked');
+          row.classList.add('is-done');
+          row.querySelectorAll('.g-choice').forEach(x => { x.disabled = true; });
+          show(o[0]);
+          gDone();
+        };
+        row.appendChild(b);
+      });
+      if (state.qd && state.qd[i]){ row.classList.add('is-done'); show(state.qd[i]); }
+      st.appendChild(row);
+      st.appendChild(fb);
+    } }));
 
-  const tray = el('div', 'tray');
+  M.push({ cue: ['Which question gets you inside? Choose one.', 'কোন প্রশ্নটি ভেতরে ঢোকার পথ খুলে দেয়? একটি বেছে নিন।'],
+    ico: 'ask', cls: 'g-choose-m',
+    done: () => !!state.qDone,
+    render(st){
+      st.appendChild(qStrip());
+      const list = el('div', 'opts g-opts');
+      const opts = state.qOrder || (state.qOrder = shuffle(sc.questions.map((_, i) => i)));
+      opts.forEach(i => {
+        const q = sc.questions[i];
+        const b = el('button', 'opt');
+        b.type = 'button';
+        b.questionData = q;
+        b.appendChild(document.createTextNode('“' + q.q + '”'));
+        addBn(b, (sb().questions || [])[i]);
+        b.onclick = () => chooseQ(b, q, list);
+        list.appendChild(b);
+      });
+      st.appendChild(list);
+      /* coming back to a question already chosen shows it chosen */
+      if (state.qDone){
+        const b = [...list.querySelectorAll('.opt')].find(x => x.questionData.q === state.chosenQ);
+        if (b){ state.qDone = false; chooseQ(b, b.questionData, list); }
+      }
+    } });
+
+  guided('Ask', 'ask', M);
+}
+
+/* ---- 5. MAP, as moments ----
+   One ring at a time, from the outside in. Each ring offers three sentences:
+   the one that belongs there, one of the three traps, and the sentence that
+   belongs one ring deeper — so a wrong choice is either a trap the class can
+   name, or right-but-deeper, which is the distinction the whole exercise is
+   about. Then the finding, the chain it rests on, the other set of rings,
+   and one question to take away. */
+const MAP_ORDER = ['value', 'belief', 'worldview'];
+function mapOptions(slot){
   const B = sb();
-  const pool = state.pool || (state.pool = shuffle(
-    RINGS.filter(r => r.key !== 'behavior')
-         .map(r => ({ text: sc.rings[r.key], slot: r.key, bn: (B.rings || {})[r.key] }))
-      .concat(sc.distractors.map((d, k) => ({ text: d.text, fault: d.fault,
-                                              bn: (B.distractors || [])[k] })))
-  ));
-  pool.forEach((item, i) => {
-    const ch = el('button', 'chip');
-    ch.appendChild(el('span', null, item.text));
-    addBn(ch, item.bn);
-    ch.type = 'button';
-    ch.dataset.i = i;
-    if (item.slot && state.placed[item.slot] === item.text) ch.classList.add('used');
-    tray.appendChild(ch);
-  });
-  c.appendChild(tray);
-  p.appendChild(c);
-  wrap.appendChild(p);
-
-  wireTap(tray, ringBox, p);
-  if (state.mapDone) revealExpert(p);
+  const ring = k => ({ text: sc.rings[k], slot: k, bn: (B.rings || {})[k] });
+  const trap = k => ({ text: sc.distractors[k].text, fault: sc.distractors[k].fault, bn: (B.distractors || [])[k] });
+  const pick = { value: [ring('value'), trap(0), ring('belief')],
+                 belief: [ring('belief'), trap(1), ring('worldview')],
+                 worldview: [ring('worldview'), trap(2), trap(0)] }[slot];
+  state.mOpt = state.mOpt || {};
+  if (!state.mOpt[slot]) state.mOpt[slot] = shuffle([0, 1, 2]);
+  return state.mOpt[slot].map(k => pick[k]);
 }
 
-/* Tap a sentence, then tap a layer. Tapping the chosen sentence again lets it
-   go. Nothing is dragged, which is what makes this work on a phone. */
-/* Tap a sentence, then tap a ring — on the picture or on its row, both are
-   the same target. Tapping the chosen sentence again lets it go. Nothing is
-   dragged, which is what makes this work on a phone. */
-function wireTap(tray, ringBox, panel){
-  let sel = null;
-  const openSlots = () => [...ringBox.querySelectorAll('[data-slot]')]
-    .filter(n => n.dataset.slot !== 'behavior' && !state.placed[n.dataset.slot]);
-  const aim = on => openSlots().forEach(n => n.classList.toggle('is-target', on));
+function mapRingMoment(slot){
+  const R = RINGS.find(x => x.key === slot);
+  return {
+    cue: [R.name + ' — ' + R.q + ' Choose the sentence that belongs here.',
+          RING_BN[slot][0] + ' — ' + RING_BN[slot][1] + ' এখানে যে বাক্যটি মানায়, সেটি বেছে নিন।'],
+    ico: LAYER_ICON[slot], cls: 'g-map-m',
+    done: () => !!state.placed[slot],
+    render(st){
+      const two = el('div', 'g-two g-mapgrid');
+      const rb = el('div', 'g-vbox');
+      const d = ringDiagram(true);
+      d.classList.add('g-rings');
+      const aim = () => d.querySelectorAll('[data-slot="' + slot + '"]').forEach(n => n.classList.toggle('is-target', !state.placed[slot]));
+      aim();
+      rb.appendChild(d);
+      two.appendChild(rb);
 
-  tray.addEventListener('click', e => {
-    const chip = e.target.closest('.chip');
-    if (!chip || chip.classList.contains('used')) return;
-    if (sel === chip){ chip.classList.remove('sel'); sel = null; aim(false); return; }
-    if (sel) sel.classList.remove('sel');
-    sel = chip; chip.classList.add('sel');
-    aim(true);
-  });
-
-  ringBox.addEventListener('click', e => {
-    const n = e.target.closest('[data-slot]');
-    if (!n) return;
-    const slot = n.dataset.slot;
-    if (slot === 'behavior' || state.placed[slot]) return;
-    if (!sel){ toast(t('ui_chfirst'), ' ' + t('ui_chfirstb'),
-                     tb('ui_chfirst'), tb('ui_chfirstb')); return; }
-    const chip = sel;
-    if (place(state.pool[+chip.dataset.i], chip, slot, ringBox, panel)){ sel = null; aim(false); }
-  });
+      const side = el('div', 'g-side');
+      const h = el('p', 'g-ringname r-' + slot);
+      h.appendChild(icon(LAYER_ICON[slot], 'g-ringname-ico'));
+      h.appendChild(document.createTextNode(R.name));
+      addBn(h, RING_BN[slot][0]);
+      side.appendChild(h);
+      const list = el('div', 'g-mopts');
+      const fb = el('div', 'g-fb');
+      mapOptions(slot).forEach(item => {
+        const b = el('button', 'g-mopt');
+        b.type = 'button';
+        b.appendChild(el('span', null, item.text));
+        addBn(b, item.bn);
+        if (state.placed[slot]){
+          b.disabled = true;
+          if (item.slot === slot) b.classList.add('is-picked');
+        }
+        b.onclick = () => {
+          if (state.placed[slot]) return;
+          fb.innerHTML = '';
+          const box = el('div', 'g-fb-in');
+          const w = el('div');
+          if (item.slot === slot){
+            state.placed[slot] = item.text;
+            b.classList.add('is-picked');
+            list.querySelectorAll('.g-mopt').forEach(x => { x.disabled = true; });
+            fb.className = 'g-fb is-good';
+            box.appendChild(icon('tick', 'g-fb-ico'));
+            w.appendChild(el('p', 'g-fb-t', 'Yes — that is the ' + R.name.toLowerCase() + ' ring.'));
+            w.appendChild(bn('ঠিক — এটিই ' + RING_BN[slot][0] + '-এর বৃত্ত।'));
+            /* light the ring in place rather than redrawing the picture */
+            d.querySelectorAll('[data-slot="' + slot + '"]').forEach(n => n.classList.add('is-open', 'is-set'));
+            aim();
+            if (MAP_ORDER.every(k => state.placed[k])) state.mapDone = true;
+            gDone();
+          } else {
+            fb.className = 'g-fb is-bad';
+            box.appendChild(icon('cross', 'g-fb-ico'));
+            if (item.fault && CHIP_FAULTS[item.fault]){
+              const f = CHIP_FAULTS[item.fault];
+              w.appendChild(el('p', 'g-fb-t', f.label));
+              w.appendChild(el('p', 'g-fb-s', f.coach));
+              addBn(w, f.label_bn + ' — ' + f.coach_bn);
+            } else {
+              const other = RINGS.find(x => x.key === item.slot);
+              w.appendChild(el('p', 'g-fb-t', 'True — but deeper. That one belongs in ' + other.name.toUpperCase() + '.'));
+              w.appendChild(bn('সত্য — কিন্তু আরও ভেতরের। এটি ' + RING_BN[item.slot][0] + '-এর বৃত্তে যায়।'));
+            }
+            b.classList.add('is-refused');
+            setTimeout(() => b.classList.remove('is-refused'), 600);
+          }
+          box.appendChild(w);
+          fb.appendChild(box);
+          gShow(fb);
+        };
+        list.appendChild(b);
+      });
+      side.appendChild(list);
+      side.appendChild(fb);
+      two.appendChild(side);
+      st.appendChild(two);
+    }
+  };
 }
 
-function place(item, chipNode, slot, ringBox, panel){
-  if (!item.slot || item.slot !== slot){
-    const f = item.fault ? CHIP_FAULTS[item.fault] : null;
-    if (f) toast(f.label, ' ' + f.coach, f.label_bn, f.coach_bn);
-    else toast(t('ui_notring'), ' ' + t('ui_notringb'), tb('ui_notring'), tb('ui_notringb'));
-    chipNode.classList.add('is-refused');
-    setTimeout(() => chipNode.classList.remove('is-refused'), 540);
-    return false;
-  }
-  state.placed[slot] = item.text;
-
-  /* light the ring and write the sentence into its row */
-  ringBox.querySelectorAll('[data-slot="' + slot + '"]').forEach(n => {
-    n.classList.remove('is-target');
-    n.classList.add('is-open', 'is-set');
-    const p = n.querySelector('.rrow-text');
-    if (p){ p.textContent = item.text; p.classList.remove('empty');
-            addBn(p, item.bn); }
-  });
-  chipNode.classList.add('used');
-  chipNode.classList.remove('sel');
-
-  if (Object.keys(state.placed).length === 3 && !state.mapDone){
-    state.mapDone = true;
-    syncNext();
-    revealExpert(panel);
-  }
-  return true;
-}
-
-/* The finding arrives as one sentence and one picture. The full paragraph is
-   still here for anyone who wants it, but it is folded away: a student who
-   has just done the work should meet the conclusion, not an essay. */
-function revealExpert(panel){
-  if (panel.querySelector('.reveal')) return;
-  const r = el('div', 'reveal');
-
-  const c = el('div', 'card raised lead');
-  c.appendChild(addBn(el('p', 'kicker', t('ui_found')), tb('ui_found')));
-  c.appendChild(punchLine());
-  c.appendChild(mechChain());
-  const more = el('details', 'more');
-  more.appendChild(addBn(el('summary', 'more-sum', t('ui_long')), tb('ui_long')));
-  more.appendChild(addBn(el('p', 'body', sc.expert), sbn('expert')));
-  c.appendChild(more);
-  r.appendChild(c);
-
-  const two = el('div', 'card raised');
-  two.appendChild(addBn(el('p', 'kicker', t('ui_twosets')), tb('ui_twosets')));
-  two.appendChild(compareRings());
-  two.appendChild(addBn(el('div', 'callout', t('ui_neither')), tb('ui_neither')));
-  r.appendChild(two);
-
-  const n = el('div', 'card raised');
-  n.appendChild(addBn(el('p', 'kicker', t('ui_further')), tb('ui_further')));
-  n.appendChild(addBn(el('p', 'body', sc.contrast.note), (sb().contrast || {}).note));
-  r.appendChild(n);
-
-  panel.appendChild(r);
-  setTimeout(() => r.scrollIntoView({ behavior: 'smooth', block: 'start' }), 90);
+function stepMap(){
+  const M = [];
+  M.push({ cue: ['Start from what they did — and what all three said.', 'শুরু করুন তাঁরা যা করেছেন, আর তিনজনই যা বলেছেন, সেখান থেকে।'],
+    ico: 'target', cls: 'g-map-m',
+    render(st){
+      const two = el('div', 'g-two g-mapgrid');
+      const d = ringDiagram(true);
+      d.classList.add('g-rings');
+      const rb = el('div', 'g-vbox'); rb.appendChild(d);
+      two.appendChild(rb);
+      const side = el('div', 'g-side');
+      const h = el('p', 'g-ringname r-behavior');
+      h.appendChild(icon(LAYER_ICON.behavior, 'g-ringname-ico'));
+      h.appendChild(document.createTextNode(RINGS[0].name));
+      addBn(h, RING_BN.behavior[0]);
+      side.appendChild(h);
+      side.appendChild(addBn(el('p', 'g-line g-line-s', sc.rings.behavior), sbn('rings', 'behavior')));
+      side.appendChild(evidenceBoard());
+      two.appendChild(side);
+      st.appendChild(two);
+    } });
+  MAP_ORDER.forEach(slot => M.push(mapRingMoment(slot)));
+  M.push({ cue: ['What you just found.', 'আপনি এইমাত্র যা খুঁজে পেলেন।'], ico: 'target', cls: 'g-found-m',
+    render(st){
+      st.appendChild(punchLine());
+      st.appendChild(mechChain());
+    } });
+  M.push({ cue: ['Two sets of rings, same situation. Tap a ring to compare.', 'দুই সেট বৃত্ত, একই পরিস্থিতি। মিলিয়ে দেখতে একটি বৃত্তে চাপ দিন।'],
+    ico: 'rank', cls: 'g-cmp-m',
+    render(st){
+      st.appendChild(compareRings());
+      st.appendChild(addBn(el('div', 'callout', t('ui_neither')), tb('ui_neither')));
+    } });
+  M.push({ cue: ['One more thing to think about.', 'ভেবে দেখার মতো আরও একটি কথা।'], ico: 'glasses', cls: 'g-notice-m',
+    render(st){
+      const band = el('div', 'g-notice');
+      band.appendChild(icon('glasses', 'g-notice-ico'));
+      const w = el('div');
+      w.appendChild(el('p', 'g-read', sc.contrast.note));
+      addBn(w, (sb().contrast || {}).note);
+      band.appendChild(w);
+      st.appendChild(band);
+    } });
+  guided('Map', 'target', M);
 }
 
 function punchLine(){
