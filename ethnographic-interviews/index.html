@@ -1182,6 +1182,175 @@ body.bangla .zcap{min-height:calc(4.6rem*var(--ui))}
   .zcap.swap{animation:none}
 }
 
+/* ---------- guided steps ----------
+   One instruction on top, one thing on the stage, the dots underneath. */
+.g-panel{display:flex;flex-direction:column;gap:var(--s3)}
+.g-cue{
+  display:flex;align-items:center;gap:var(--s3);
+  padding:var(--s3) var(--s4);background:var(--surface-card);
+  border:1px solid var(--rule);border-left:5px solid var(--gold);border-radius:var(--radius-md);
+  box-shadow:var(--shadow-card);
+}
+.g-badge{
+  flex:0 0 auto;width:calc(46px*var(--ui));height:calc(46px*var(--ui));border-radius:999px;
+  background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;
+}
+.g-badge-ico{width:54%;height:54%}
+.g-cue-t{min-width:0}
+.g-cue-en{margin:0;font-weight:700;color:var(--tx);
+  font-size:calc(clamp(1.06rem,4.2vw,1.32rem)*var(--ui));line-height:1.3}
+.g-cue .bn{margin-top:calc(2px*var(--ui));font-size:calc(clamp(1rem,3.8vw,1.14rem)*var(--ui));line-height:1.45}
+
+.g-stage{
+  position:relative;background:var(--surface-card);border:1px solid var(--rule);
+  border-radius:var(--radius-md);box-shadow:var(--shadow-raised);
+  padding:calc(var(--s5)*var(--ui)) calc(var(--s5)*var(--ui));
+  animation:gIn .45s cubic-bezier(.22,.68,.2,1) both;
+}
+.g-stage.g-back{animation-name:gInBack}
+@keyframes gIn{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:none}}
+@keyframes gInBack{from{opacity:0;transform:translateX(-22px)}to{opacity:1;transform:none}}
+
+.g-foot{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);flex-wrap:wrap}
+.g-ctx{display:flex;gap:var(--s2);align-items:baseline;min-width:0;
+  font-size:calc(.78rem*var(--ui));color:var(--tx-muted)}
+.g-ctx-step{font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--kicker)}
+.g-ctx-sc{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.g-dots{display:flex;gap:calc(4px*var(--ui));flex-wrap:wrap}
+.g-dot{
+  width:calc(24px*var(--ui));height:calc(24px*var(--ui));padding:0;border:0;background:none;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+.g-dot::before{content:"";width:calc(10px*var(--ui));height:calc(10px*var(--ui));border-radius:2px;
+  background:var(--rule-strong);transition:background .25s ease,transform .25s ease}
+.g-dot.done::before{background:var(--moss)}
+.g-dot.on::before{background:var(--gold);transform:scale(1.4)}
+.g-dot:disabled{cursor:default}
+.g-dot:disabled::before{background:var(--rule)}
+.g-dot:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+
+/* the button glows once when a task is done, so the eye finds the way on */
+.g-nudge{animation:gNudge 1.1s ease 2}
+@keyframes gNudge{0%,100%{box-shadow:0 0 0 0 rgba(185,146,79,0)}40%{box-shadow:0 0 0 6px rgba(185,146,79,.55)}}
+
+/* the moment's parts */
+.g-read{margin:0;font-size:calc(clamp(1.06rem,4vw,1.2rem)*var(--ui));line-height:1.6;color:var(--tx)}
+.g-line{margin:0;font-family:var(--font-display);font-weight:600;color:var(--heading);
+  font-size:calc(clamp(1.3rem,5.4vw,1.7rem)*var(--ui));line-height:1.25}
+.g-side .bn{font-size:calc(clamp(1rem,3.8vw,1.15rem)*var(--ui))}
+.g-hint{margin:var(--s4) 0 0;font-size:calc(.95rem*var(--ui));color:var(--tx-muted);line-height:1.5}
+.g-two{display:grid;grid-template-columns:1fr;gap:var(--s4);align-items:center}
+.g-side{min-width:0;display:flex;flex-direction:column;gap:var(--s2)}
+
+.g-pic{position:relative;border-radius:var(--radius-md);overflow:hidden;background:var(--panel);
+  border:1px solid var(--rule)}
+.g-pic .beat-shot{border-radius:0}
+.g-pic .beat-shot img{width:100%;height:100%}
+.g-pic-n{position:absolute;top:calc(8px*var(--ui));left:calc(8px*var(--ui));z-index:2;
+  min-width:calc(30px*var(--ui));height:calc(30px*var(--ui));border-radius:999px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--accent);color:var(--on-accent);font-weight:700;font-size:calc(.95rem*var(--ui))}
+.g-pic.is-tl .g-pic-n{top:auto;bottom:calc(8px*var(--ui))}
+.g-pic.is-big{width:100%;max-width:calc(560px*var(--ui));justify-self:center;animation:gPic .6s cubic-bezier(.22,.68,.2,1) both}
+@keyframes gPic{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+.g-thumbs{display:flex;gap:var(--s2);margin-top:var(--s3)}
+.g-pic.is-thumb{flex:1 1 0;max-width:calc(150px*var(--ui))}
+.g-pic.is-thumb .g-pic-n{min-width:calc(22px*var(--ui));height:calc(22px*var(--ui));font-size:calc(.72rem*var(--ui))}
+.g-pic.is-thumb .beat-g{display:none}
+.g-pic.is-veiled{opacity:.28;filter:grayscale(1) blur(1px)}
+.g-pic.is-now{outline:4px solid var(--gold);outline-offset:-4px}
+.g-thumbs.is-small .g-pic.is-thumb{max-width:calc(96px*var(--ui))}
+.g-thumbs.is-strip{justify-content:center;margin:0 0 var(--s4)}
+.g-thumbs.is-strip .g-pic.is-thumb{max-width:calc(170px*var(--ui))}
+
+.g-titlecard{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--s2)}
+.g-theme{font-size:calc(3rem*var(--ui));line-height:1}
+.g-title{margin:0;font-family:var(--font-display);font-weight:600;color:var(--heading);
+  font-size:calc(clamp(1.8rem,7vw,2.6rem)*var(--ui));line-height:1.15}
+.g-titlecard > .bn{font-size:calc(1.2rem*var(--ui))}
+.g-titlecard .fcts{justify-content:center}
+.g-titlecard .g-thumbs{justify-content:center;width:100%}
+
+.g-story{width:100%;max-width:calc(760px*var(--ui));margin:0 auto}
+.g-story .bn{font-size:calc(clamp(1rem,3.8vw,1.12rem)*var(--ui))}
+
+.g-choices{display:grid;grid-template-columns:1fr;gap:var(--s3);max-width:calc(820px*var(--ui));margin:0 auto;width:100%}
+@media (min-width:560px){ .g-choices{grid-template-columns:1fr 1fr} }
+.g-choice{
+  display:flex;flex-direction:column;align-items:center;gap:var(--s2);text-align:center;cursor:pointer;
+  padding:calc(var(--s5)*var(--ui)) var(--s4);border:2px solid var(--rule-strong);border-radius:var(--radius-md);
+  background:var(--panel);color:var(--tx);font:inherit;
+  transition:border-color .2s ease,background .2s ease,transform .2s ease,opacity .3s ease;
+}
+.g-choice:hover{border-color:var(--gold);background:var(--gold-soft)}
+.g-choice-g{font-size:calc(3rem*var(--ui));line-height:1}
+.g-choice-t{font-weight:700;font-size:calc(clamp(1.06rem,4vw,1.25rem)*var(--ui))}
+.g-choice-t .bn{font-weight:500}
+.g-choices.is-done .g-choice{cursor:default}
+.g-choices.is-done .g-choice:not(.is-picked){opacity:.35}
+.g-choice.is-picked{border-color:var(--gold);background:var(--gold-soft);transform:scale(1.03)}
+
+.g-notice{display:flex;gap:var(--s4);align-items:flex-start;max-width:60ch;margin:0 auto;
+  padding:var(--s5);border-radius:var(--radius-md);background:var(--band);color:var(--on-band)}
+.g-notice .g-read{color:inherit;font-size:calc(clamp(1.15rem,4.4vw,1.4rem)*var(--ui))}
+.g-notice .bn{color:inherit;opacity:.88}
+.g-notice-ico{flex:0 0 auto;width:calc(2.4rem*var(--ui));height:calc(2.4rem*var(--ui));color:var(--gold-light)}
+
+.g-rings{width:min(100%,calc(340px*var(--ui)));justify-self:center}
+.g-ringname{margin:0;display:flex;align-items:center;flex-wrap:wrap;gap:var(--s2);
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--l-behavior);
+  font-size:calc(1rem*var(--ui))}
+.g-ringname .bn{width:100%;margin:0}
+.g-ringname-ico{width:calc(1.3rem*var(--ui));height:calc(1.3rem*var(--ui))}
+
+@media (min-width:760px){
+  .g-two{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s6)}
+  .g-pic-m .g-two{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+}
+
+/* Fitted to the screen on anything wide and tall enough: the moment gets the
+   whole height, and the stage centres what it holds. */
+@media (min-width:900px) and (min-height:600px){
+  .g-panel{height:calc(100dvh - var(--header-h,124px) - var(--s4) - var(--stage-pb));min-height:500px}
+  .g-stage{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;justify-content:center;overflow:auto}
+  .g-pic-m .g-two, .g-ring-m .g-two{height:100%;min-height:0}
+  .g-pic.is-big{height:100%;max-height:100%;width:auto;max-width:100%;aspect-ratio:1/1}
+  .g-pic.is-big .beat-shot{height:100%}
+}
+
+/* The projector: the wrap is 1840px wide, so the type is set for the back
+   row and the pictures take the height they are given. */
+:root[data-theme="stage"] .g-cue{padding:var(--s3) var(--s5)}
+:root[data-theme="stage"] .g-badge{width:calc(52px*var(--ui));height:calc(52px*var(--ui))}
+:root[data-theme="stage"] .g-cue-en{font-size:calc(1.6rem*var(--ui))}
+:root[data-theme="stage"] .g-cue .bn{font-size:calc(1.3rem*var(--ui));margin-top:0}
+:root[data-theme="stage"] body.bangla .g-cue-en{font-size:calc(1.45rem*var(--ui))}
+:root[data-theme="stage"] .g-stage{padding:var(--s5) var(--s6)}
+:root[data-theme="stage"] .g-read{font-size:calc(1.55rem*var(--ui));line-height:1.5}
+:root[data-theme="stage"] .g-story .bn{font-size:calc(1.3rem*var(--ui))}
+:root[data-theme="stage"] .g-story{max-width:calc(1000px*var(--ui))}
+:root[data-theme="stage"] .g-line{font-size:calc(2.3rem*var(--ui))}
+:root[data-theme="stage"] .g-side .bn{font-size:calc(1.5rem*var(--ui))}
+:root[data-theme="stage"] .g-title{font-size:calc(3.4rem*var(--ui))}
+:root[data-theme="stage"] .g-titlecard .fcts{zoom:1.5}
+:root[data-theme="stage"] .g-pic.is-thumb{max-width:calc(190px*var(--ui))}
+:root[data-theme="stage"] .g-thumbs.is-small .g-pic.is-thumb{max-width:calc(120px*var(--ui))}
+:root[data-theme="stage"] .g-thumbs.is-strip .g-pic.is-thumb{max-width:calc(150px*var(--ui))}
+:root[data-theme="stage"] .g-choice-t{font-size:calc(1.6rem*var(--ui))}
+:root[data-theme="stage"] .g-choice-g{font-size:calc(4.2rem*var(--ui))}
+:root[data-theme="stage"] .g-choices{max-width:none}
+:root[data-theme="stage"] .g-notice{max-width:none;padding:var(--s6)}
+:root[data-theme="stage"] .g-notice .g-read{font-size:calc(1.9rem*var(--ui))}
+:root[data-theme="stage"] .g-rings{width:auto;height:100%;max-height:calc(520px*var(--ui))}
+:root[data-theme="stage"] .g-ringname{font-size:calc(1.4rem*var(--ui))}
+:root[data-theme="stage"] .g-hint{font-size:calc(1.25rem*var(--ui))}
+:root[data-theme="stage"] .g-ctx{font-size:calc(.72rem*var(--ui))}
+
+@media (prefers-reduced-motion:reduce){
+  .g-stage,.g-pic.is-big{animation:none}
+  .g-nudge{animation:none}
+}
+
 /* ---------- the rows under the rings ---------- */
 .rrows{display:flex;flex-direction:column;gap:var(--s2);margin-top:var(--s5)}
 .rrow{
@@ -2036,6 +2205,7 @@ const T = {
   listen_again:  ['Play it again and the words follow along.',
                   'আবার বাজান, লেখাটি সঙ্গে সঙ্গে চলবে।'],
   nx_next:       ['Next',               ''],
+  nx_go:         ['Next',               'এগিয়ে চলুন'],
   nx_start:      ['Start the activity', 'শুরু করুন'],
   nx_got_it:     ['Got it',             ''],
   q_try:         ['Now you try',        ''],
@@ -2557,10 +2727,11 @@ function render(){
   renderRail();
   wrap.innerHTML = '';
   stage.scrollTop = 0;
+  gCur = null;
   if (lesson){ stepLesson(); btnBack.disabled = (lstep === 0 && lbeat <= 0); syncNext(); return; }
   if (state.handoff){ stepHandoff(); btnBack.disabled = false; syncNext(); return; }
   steps()[step][3]();
-  btnBack.disabled = (step === 0);
+  btnBack.disabled = (step === 0 && (!gCur || gCur.k === 0));
   syncNext();
 }
 
@@ -2584,6 +2755,17 @@ function syncNext(){
     setBtnLabel(btnNext, 'nx_new');
     btnNextStage.disabled = true;
     btnNextStage.textContent = t('nx_new');
+    return;
+  }
+
+  /* part-way through a guided step, Next means the next moment */
+  const gk = gNextLabel();
+  if (gk){
+    const ok = gOk();
+    btnNext.disabled = !ok;
+    setBtnLabel(btnNext, gk);
+    btnNextStage.disabled = !ok;
+    btnNextStage.textContent = t(gk);
     return;
   }
 
@@ -4174,44 +4356,221 @@ function endLesson(){
   newScenario(false, sc && sc.id);
 }
 
-/* ---- 1. WATCH ----
-   The scene arrives as three pictures before it arrives as a paragraph, and
-   the contrast is held behind a guess, because a prediction you have
-   committed to is worth more than a sentence you were handed.
+/* ============================================================ guided steps
+   The class trial found the load was the problem, not the ideas: every step
+   put a whole screen of new things in front of a beginner at once. So each
+   step is now a short run of MOMENTS, and a moment asks for exactly one
+   thing. It has one line of instruction at the top (English, the Bangla
+   under it), one thing on the stage, and nothing else.
 
-   The four rings used to be on this screen. They are theory, and theory at
-   minute zero — before anything concrete has happened — is what made this
-   unteachable. They live in teacher mode now. */
-function stepObserve(){
-  const p = el('div', 'panel p-observe');
-  p.appendChild(taskStrip(stepNo(), 'eye', 'task_watch'));
+   A moment is either shown or done. A shown moment moves on with Next, → or
+   a tap on the dots. A moment that asks the student to do something holds
+   Next closed until it has been done, and then the button glows once so the
+   eye finds its way on. Back walks back through the moments before it walks
+   back a step.
 
-  const c = el('div', 'card raised lead');
-  c.appendChild(kickerEl());
-  c.appendChild(el('h1', 'h-title', sc.title));
-  if (sc.title_bn) c.appendChild(bn(sc.title_bn));
-  c.appendChild(settingChips());
-  c.appendChild(sceneStrip());
-  /* the story and the guess are one unit: stacked on paper and on a phone,
-     side by side on the projector, where vertical room is the scarce thing
-     and the panels above want all of it they can get */
-  const foot = el('div', 'lead-foot');
-  foot.appendChild(el('p', 'body', sc.observation));
-  if (sc.observation_bn) foot.appendChild(bn(sc.observation_bn));
-  foot.appendChild(predictBand());
-  c.appendChild(foot);
-  p.appendChild(c);
+   On the projector the moment is fitted to the screen, so nothing scrolls
+   and nothing important sits below the fold; on a phone it stacks and
+   scrolls like any page. Each step keeps its own place, so the rail can jump
+   between steps without losing where the class was.
 
-  if (teacher){
-    const o = el('div', 'card raised');
-    o.appendChild(addBn(el('p', 'kicker', t('ui_fourrings')), tb('ui_fourrings')));
-    o.appendChild(ringFigure(false));
-    p.appendChild(o);
-    /* the projector opens this step sideways, but only when there is in fact
-       something to put in the second column */
-    p.classList.add('has-aside');
-  }
+   A moment is { cue:[en,bn], ico, done?:()=>bool, render(stage, panel) }.
+   The step builds its list fresh on every render, from the scenario and the
+   state, so what a moment shows is always a function of where the class is. */
+let gCur = null;            /* the step on screen: { name, list, k } */
+let gDir = 1;               /* which way the class last moved, for the slide */
+
+function gAt(name){ return (state.m && state.m[name]) || 0; }
+function gSet(name, k){
+  state.m = state.m || {}; state.mMax = state.mMax || {};
+  state.m[name] = k;
+  state.mMax[name] = Math.max(state.mMax[name] || 0, k);
+}
+/* has the class finished what this moment asked of it? */
+function gOk(){
+  if (!gCur) return true;
+  const M = gCur.list[gCur.k];
+  return !M.done || M.done();
+}
+/* a moment reports that its task is done: open the door, and point at it */
+function gDone(){
+  syncNext();
+  [btnNext, btnNextStage].forEach(b => {
+    b.classList.remove('g-nudge'); void b.offsetWidth; b.classList.add('g-nudge');
+  });
+}
+
+function guided(name, ico, list){
+  const k = Math.max(0, Math.min(gAt(name), list.length - 1));
+  gSet(name, k);
+  const M = list[k];
+  gCur = { name: name, list: list, k: k };
+
+  const p = el('div', 'panel g-panel p-' + name.toLowerCase());
+  const hd = el('div', 'g-cue');
+  const badge = el('span', 'g-badge');
+  badge.appendChild(icon(M.ico || ico, 'g-badge-ico'));
+  hd.appendChild(badge);
+  const tx = el('div', 'g-cue-t');
+  tx.appendChild(el('p', 'g-cue-en', M.cue[0]));
+  tx.appendChild(bn(M.cue[1]));
+  hd.appendChild(tx);
+  p.appendChild(hd);
+
+  const st = el('div', 'g-stage' + (gDir < 0 ? ' g-back' : '') + (M.cls ? ' ' + M.cls : ''));
+  p.appendChild(st);
+
+  const ft = el('div', 'g-foot');
+  const ctx = el('span', 'g-ctx');
+  ctx.appendChild(el('span', 'g-ctx-step', stepName()));
+  ctx.appendChild(el('span', 'g-ctx-sc', sc.title));
+  ft.appendChild(ctx);
+  const dots = el('div', 'g-dots');
+  const far = (state.mMax || {})[name] || 0;
+  list.forEach((m, i) => {
+    const d = el('button', 'g-dot' + (i === k ? ' on' : i < k ? ' done' : ''));
+    d.type = 'button';
+    d.disabled = i > far;
+    d.setAttribute('aria-label', (i + 1) + ' / ' + list.length);
+    if (i === k) d.setAttribute('aria-current', 'step');
+    d.onclick = () => { if (i === gCur.k) return; stopAudio(); gDir = i < gCur.k ? -1 : 1; gSet(name, i); render(); };
+    dots.appendChild(d);
+  });
+  ft.appendChild(dots);
+  p.appendChild(ft);
   wrap.appendChild(p);
+  M.render(st, p);
+}
+
+/* the step's own Next, when the class is part-way through its moments */
+function gNextLabel(){
+  if (!gCur) return null;
+  if (gCur.k >= gCur.list.length - 1) return null;
+  return gCur.list[gCur.k].next || 'nx_go';
+}
+
+/* one of the three comic panels, as a figure for a moment's stage */
+function panelFig(i, cls){
+  const b = sc.beats[i];
+  const fig = el('div', 'g-pic ' + (cls || '') + (markTopLeft(sc.id + '-' + (i + 1)) ? ' is-tl' : ''));
+  fig.appendChild(beatShot(b, i));
+  fig.appendChild(el('span', 'g-pic-n', String(i + 1)));
+  return fig;
+}
+
+/* ---- 1. WATCH ----
+   The story arrives the way a picture book tells one: a title, then one
+   picture at a time with a line under it, then the paragraph once the
+   pictures have carried the situation, then a guess, then one thing to
+   notice. The four rings used to sit beside all of this; they are theory,
+   and in teacher mode they come last, as the ring this step has just filled. */
+function stepObserve(){
+  const M = [];
+  M.push({ cue: ['A story from America. Look at it one picture at a time.',
+                 'আমেরিকার একটি গল্প। একটি একটি করে ছবি দেখুন।'],
+           ico: 'eye', cls: 'g-title-m',
+    render(st){
+      const box = el('div', 'g-titlecard');
+      const th = THEMES[sc.theme];
+      box.appendChild(el('span', 'g-theme', th.icon));
+      box.appendChild(el('h1', 'g-title', sc.title));
+      if (sc.title_bn) box.appendChild(bn(sc.title_bn));
+      box.appendChild(settingChips());
+      const row = el('div', 'g-thumbs');
+      sc.beats.forEach((_, i) => row.appendChild(panelFig(i, 'is-thumb is-veiled')));
+      box.appendChild(row);
+      st.appendChild(box);
+    } });
+
+  sc.beats.forEach((b, i) => M.push({
+    cue: ['Picture ' + (i + 1) + '. What is happening?', 'ছবি ' + bnNum(i + 1) + '। কী ঘটছে?'],
+    ico: 'eye', cls: 'g-pic-m',
+    render(st){
+      const two = el('div', 'g-two');
+      two.appendChild(panelFig(i, 'is-big'));
+      const side = el('div', 'g-side');
+      side.appendChild(el('p', 'g-line', b.t));
+      addBn(side, sbn('beats', i));
+      const row = el('div', 'g-thumbs is-small');
+      sc.beats.forEach((_, j) => row.appendChild(panelFig(j, 'is-thumb' + (j === i ? ' is-now' : j > i ? ' is-veiled' : ''))));
+      side.appendChild(row);
+      two.appendChild(side);
+      st.appendChild(two);
+    } }));
+
+  M.push({ cue: ['Now read the whole story.', 'এবার পুরো গল্পটি পড়ুন।'], ico: 'eye', cls: 'g-story-m',
+    render(st){
+      const row = el('div', 'g-thumbs is-strip');
+      sc.beats.forEach((_, j) => row.appendChild(panelFig(j, 'is-thumb')));
+      st.appendChild(row);
+      const tx = el('div', 'g-story');
+      tx.appendChild(el('p', 'g-read', sc.observation));
+      if (sc.observation_bn) tx.appendChild(bn(sc.observation_bn));
+      st.appendChild(tx);
+    } });
+
+  M.push({ cue: [t('guess_q'), tb('guess_q')], ico: 'ask', cls: 'g-guess-m',
+    done: () => !!state.guess,
+    render(st){
+      const row = el('div', 'g-choices');
+      [['same', '🏠', 'guess_yes'], ['diff', '🌏', 'guess_no']].forEach(o => {
+        const b = el('button', 'g-choice' + (state.guess === o[0] ? ' is-picked' : ''));
+        b.type = 'button';
+        b.appendChild(el('span', 'g-choice-g', o[1]));
+        const w = el('span', 'g-choice-t');
+        w.appendChild(el('span', null, t(o[2])));
+        w.appendChild(bn(tb(o[2])));
+        b.appendChild(w);
+        b.onclick = () => {
+          if (state.guess) return;
+          state.guess = o[0];
+          b.classList.add('is-picked');
+          row.classList.add('is-done');
+          gDone();
+          /* a guess is not marked, so there is nothing to look at here:
+             the class goes straight on to what the guess was for */
+          const here = gCur.k;
+          setTimeout(() => { if (!lesson && gCur && gCur.name === 'Watch' && gCur.k === here) advance(); }, 900);
+        };
+        row.appendChild(b);
+      });
+      if (state.guess) row.classList.add('is-done');
+      st.appendChild(row);
+    } });
+
+  M.push({ cue: ['Something to notice.', 'একটি জিনিস লক্ষ করুন।'], ico: 'glasses', cls: 'g-notice-m',
+    render(st){
+      const band = el('div', 'g-notice');
+      band.appendChild(icon('glasses', 'g-notice-ico'));
+      const w = el('div');
+      w.appendChild(el('p', 'g-read', sc.noticing));
+      if (sc.noticing_bn) w.appendChild(bn(sc.noticing_bn));
+      band.appendChild(w);
+      st.appendChild(band);
+    } });
+
+  if (teacher) M.push({ cue: ['This is all we can see: the outside ring.', 'এটুকুই চোখে দেখা যায়: বাইরের বৃত্ত।'],
+    ico: 'target', cls: 'g-ring-m',
+    render(st){
+      const two = el('div', 'g-two');
+      const d = ringDiagram(false);
+      d.classList.add('g-rings');
+      two.appendChild(d);
+      const side = el('div', 'g-side');
+      const R = RINGS[0];
+      const h = el('p', 'g-ringname r-behavior');
+      h.appendChild(icon(LAYER_ICON.behavior, 'g-ringname-ico'));
+      h.appendChild(document.createTextNode(R.name));
+      addBn(h, RING_BN.behavior[0]);
+      side.appendChild(h);
+      side.appendChild(addBn(el('p', 'g-line', sc.rings.behavior), sbn('rings') && sb().rings.behavior));
+      side.appendChild(addBn(el('p', 'g-hint', 'The other three rings cannot be seen. We have to ask.'),
+                             'বাকি তিনটি বৃত্ত দেখা যায় না। জিজ্ঞেস করে জানতে হয়।'));
+      two.appendChild(side);
+      st.appendChild(two);
+    } });
+
+  guided('Watch', 'eye', M);
 }
 
 const stepNo = () => step + 1;
@@ -5833,6 +6192,10 @@ function advance(){
     if (lstep === LESSON.length - 1){ endLesson(); return; }
     lstep++; render(); return;
   }
+  if (gCur && gCur.k < gCur.list.length - 1){
+    gDir = 1; gSet(gCur.name, gCur.k + 1); render(); return;
+  }
+  gDir = 1;
   if (step === steps().length - 1){
     /* The short flow used to roll straight into a fresh scenario, so a class
        blew past the moment the whole listening was for. It stops and hands
@@ -5852,8 +6215,9 @@ btnBack.onclick = () => {
     lbeatEnd = true; lstep--; render(); return;  /* arrive on its last picture */
   }
   if (state.handoff){ state.handoff = false; render(); return; }
+  if (gCur && gCur.k > 0){ stopAudio(); gDir = -1; gSet(gCur.name, gCur.k - 1); render(); return; }
   if (step === 0) return;
-  stopAudio(); step--; render();
+  stopAudio(); gDir = -1; step--; render();
 };
 
 /* ------------------------------------------------------------------- menu */
