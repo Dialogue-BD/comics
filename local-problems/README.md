@@ -5,7 +5,6 @@ A separate, branded 50-card speaking activity about everyday problems in Rajshah
 ## Activity
 
 - Browse and flip the 50 cards, with optional listening hints and question speech.
-- Open Words for each picture label and two useful phrases.
 - Play Guess the Category, Guess the Items, or Audio Match. Item guessing hides each labelled scene until it is found; Audio Match uses labelled scene tiles. Pair games are not included.
 - Use `pdfs/` for printable two-page card pairs. `pages/` contains the web card images.
 
