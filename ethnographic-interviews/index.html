@@ -2863,6 +2863,11 @@ body.bangla .g-rule{padding-top:calc(7px*var(--ui));padding-bottom:calc(7px*var(
   .g-duel-card{min-height:0}
   .g-duel-mid{padding-top:calc(10px*var(--ui))}
 }
+.zs .zt-why{font-family:var(--font-display);font-style:italic;font-weight:600;fill:var(--kicker)}
+.chain-arrow{display:flex;flex-direction:column;align-items:center;gap:2px}
+.chain-why{font-family:var(--font-display);font-style:italic;font-size:.62em;color:var(--kicker);line-height:1}
+.g-found-m .chain-arrow{flex-direction:column;transform:none}
+@media (max-width:719px){ .g-found-m .chain-arrow{flex-direction:row;gap:6px} .g-found-m .chain-ar{display:inline-block;transform:rotate(90deg)} }
 @media (prefers-reduced-motion:reduce){ .g-player.is-playing .g-wave-row i{animation:none} .g-fb-in{animation:none} }
 
 /* ===========================================================================
@@ -3269,8 +3274,8 @@ const T = {
   ui_traytip:    ['Tap a sentence, then tap its ring. Three of them belong nowhere.',
                   'একটি বাক্যে চাপ দিন, তারপর তার বৃত্তে চাপ দিন। তিনটি বাক্যের কোনো জায়গা নেই।'],
   ui_found:      ['What You Just Found', ''],
-  ui_centre:     ['The centre makes the edge. You walked it the other way — from the outside in.',
-                  'কেন্দ্রই প্রান্তটি তৈরি করে। আপনি হেঁটেছেন উল্টো দিক থেকে — বাইরে থেকে ভেতরে।'],
+  ui_centre:     ['Start with what they do and keep asking why: each ring rests on the one inside it.',
+                  'তাঁরা যা করেন, সেখান থেকে শুরু করে বারবার জিজ্ঞেস করুন কেন: প্রতিটি বৃত্ত দাঁড়িয়ে আছে তার ভেতরের বৃত্তের ওপর।'],
   ui_long:       ['Read the long version', ''],
   ui_twosets:    ['Two Sets of Rings, Same Situation',
                   ''],
@@ -4622,7 +4627,7 @@ const RANKINGS_BN = {
   west: ['সত্যি কথাটা বলা', 'সবাইকে স্বস্তিতে রাখা', 'বড়জনকে সম্মান দেওয়া'],
   east: ['বড়জনকে সম্মান দেওয়া', 'সবাইকে স্বস্তিতে রাখা', 'সত্যি কথাটা বলা']
 };
-const CHAIN_BN = ['জগৎটা যেমন', 'তাই যা সত্য মনে হয়', 'তাই যা ভালো মনে হয়', 'তাই যা করা হয়'];
+const CHAIN_BN = ['মানুষ যা করে', 'তাঁরা যা মূল্য দেন', 'তাঁরা যা সত্য বলে মানেন', 'তাঁরা জগৎটাকে যেভাবে দেখেন'];
 const PAYOFF_BN = [
   ['তাঁদের সম্পর্কে', ['আপনি যা ধরে নেন তা নয় — তাঁরা আসলে কী করেন',
                       'কোন মূল্যবোধটি তাঁরা আগে রাখেন',
@@ -4636,8 +4641,8 @@ const LESSON_BN = [
    'একটি সংস্কৃতি মানে এমন একদল মানুষ, যাঁরা চারটি প্রশ্নের উত্তর একইভাবে দেন। কী করা হয়। কোনটি ভালো। কোনটি সত্য। কোনটি বাস্তব। এর মধ্যে কেবল প্রথমটিই চোখে দেখা যায়।'],
   ['কোনো সংস্কৃতিই বড় নয়', 'একই মূল্যবোধ, শুধু ক্রমটা আলাদা',
    'প্রতিটি সংস্কৃতিতেই এগুলো সবই আছে। কেউ কোনোটিকে ফেলে দেয় না। বদলায় শুধু কোনটি আগে থাকে — আর ওই ক্রম থেকেই আলাদা আচরণ জন্ম নেয়।'],
-  ['ক্রমটা আসে কোথা থেকে', 'কেন্দ্রই ঠিক করে দেয় প্রান্তটা',
-   'একটি সংস্কৃতি তার মূল্যবোধগুলোকে এভাবেই সাজায়, কারণ সে যা সত্য বলে মানে। আর সে ওগুলো সত্য মানে, কারণ সে জগৎটাকে যেভাবে দেখে — যে চশমা কেউ কখনো খোলে না।'],
+  ['ক্রমটা আসে কোথা থেকে', 'প্রতিটি বৃত্ত দাঁড়িয়ে আছে তার ভেতরের বৃত্তের ওপর',
+   'মানুষ যা করে, তা দেখায় তাঁরা কী মূল্য দেন। তাঁরা যা মূল্য দেন, তা দাঁড়িয়ে আছে তাঁরা যা সত্য বলে মানেন তার ওপর। আর তাঁরা যা সত্য মানেন, তা দাঁড়িয়ে আছে জগৎটাকে তাঁরা যেভাবে দেখেন তার ওপর — সেই চশমা, যা কেউ কখনো খোলে না।'],
   ['সাক্ষাৎকার জিনিসটা কী', 'জরিপ গোনে। সাক্ষাৎকার ব্যাখ্যা করে।',
    'জরিপ বহু মানুষের কাছে যায় আর প্রত্যেকের কাছে একটি টিক চায়। নৃতাত্ত্বিক সাক্ষাৎকার অল্প কয়েকজনের কাছে যায় আর তাঁদের নিজের ভাষায় এমন কিছু বলতে বলে, যা তাঁদের কখনো ভাষায় প্রকাশ করতে হয়নি।'],
   ['নৃবিজ্ঞানীরা কেন এটি ব্যবহার করেন', 'যা চোখে দেখা যায় না, সেখানে পৌঁছায়',
@@ -5027,37 +5032,40 @@ const LESSON = [
       });
     } },
 
-  /* 3 · the cause runs outward from the centre; the student's work runs in */
+  /* 3 · from the outside in: what people do, and then why, and why again,
+     until the question reaches the centre. This is the order the class
+     meets things in, and the order the activity works in. */
   { rail: 'Order', ico: 'glasses', kicker: 'Where the Order Comes From',
-    title: 'The centre decides the edge',
-    body: 'A culture ranks its values the way it does because of what it holds to be true. ' +
-          'And it holds those things true because of how it sees the world — the glasses nobody ever takes off.',
+    title: 'Each ring rests on the one inside it',
+    body: 'What people do shows what they value. What they value rests on what they hold to be true. ' +
+          'And what they hold true rests on how they see the world — the glasses nobody ever takes off.',
     beats: [
-      ['Start at the centre: how the world is.', 'শুরু কেন্দ্র থেকে: জগৎটা যেমন।'],
-      ['So some things are true.', 'তাই কিছু জিনিস সত্য বলে মনে হয়।'],
-      ['So some things are best.', 'তাই কিছু জিনিস সবচেয়ে ভালো বলে মনে হয়।'],
-      ['So this is what people do.', 'তাই মানুষ এভাবে কাজ করে।'],
+      ['Start with what you can see: what people do.', 'শুরু করুন যা দেখা যায় তা দিয়ে: মানুষ কী করে।'],
+      ['Ask why — and you find what they value most.', 'কেন, জিজ্ঞেস করুন — দেখবেন তাঁরা কোনটিকে সবচেয়ে মূল্য দেন।'],
+      ['Ask why again — and you find what they believe is true.', 'আবার জিজ্ঞেস করুন কেন — দেখবেন তাঁরা কোনটিকে সত্য বলে মানেন।'],
+      ['Keep asking — and you reach how they see the world.', 'জিজ্ঞেস করতে থাকুন — পৌঁছে যাবেন তাঁরা জগৎটাকে কীভাবে দেখেন, সেখানে।'],
       ['The worldview is the glasses nobody takes off.', 'বিশ্বদৃষ্টি হলো সেই চশমা, যা কেউ কখনো খোলে না।'],
-      ['You will walk it backwards: from what people do, inward.', 'আপনি হাঁটবেন উল্টো দিকে: মানুষ যা করে, সেখান থেকে ভেতরের দিকে।']
+      ['That is your path: from what people do, inward.', 'এটিই আপনার পথ: মানুষ যা করে, সেখান থেকে ভেতরের দিকে।']
     ],
     draw(s){
       const cx = 330, cy = 312, RR = [292, 220, 150, 80];
-      const LIT = [3, 2, 1, 0];
-      zRings(s, cx, cy, RR, i => ({ cls: 'faint', in: 0, at: LIT[i] + ':lit', fs: [30, 28, 26, 20] }));
-      RINGS.forEach((R, i) => zN(s, 'circle', { cx: cx, cy: cy, r: RR[i], cls: 'rip k-' + R.key, now: String(LIT[i]) }));
-      const SUB = ['how the world is', 'what is therefore true', 'what is therefore best', 'what is therefore done'];
+      zRings(s, cx, cy, RR, i => ({ cls: 'faint', in: 0, at: i + ':lit', fs: [30, 28, 26, 20] }));
+      RINGS.forEach((R, i) => zN(s, 'circle', { cx: cx, cy: cy, r: RR[i], cls: 'rip k-' + R.key, now: String(i) }));
+      const SUB = ['what people do', 'what they value most', 'what they hold to be true', 'how they see the world'];
       const RY = [8, 162, 316, 470], RH = 134;
-      [3, 2, 1, 0].forEach((ri, row) => {
-        const R = RINGS[ri], y = RY[row];
-        const g = zG(s, { cls: 'rise k-' + R.key, in: row, delay: 450, at: row === 0 ? '4-5:hi' : null });
+      RINGS.forEach((R, row) => {
+        const y = RY[row];
+        const g = zG(s, { cls: 'rise k-' + R.key, in: row, delay: 450, at: row === 3 ? '4-5:hi' : null });
         zN(g, 'rect', { x: 740, y: y, width: 850, height: RH, rx: 14, cls: 'zrow' });
         zIcon(g, LAYER_ICON[R.key], 768, y + 20, 42, { cls: 'zic-k' });
         zN(g, 'text', { x: 824, y: y + 52, cls: 'zt zt-name zt-k', style: 'font-size:32px', text: R.name.toUpperCase() });
         zN(g, 'text', { x: 768, y: y + (bnOn ? 92 : 104), cls: 'zt zt-q', style: 'font-size:34px', text: SUB[row] });
         if (bnOn) zN(g, 'text', { x: 768, y: y + 124, lang: 'bn', cls: 'zt zt-bn', style: 'font-size:27px', text: CHAIN_BN[row] });
         if (row){
+          /* each step inward is the same question */
           zN(s, 'path', { d: 'M1165 ' + (RY[row - 1] + RH + 2) + 'V' + (y - 4), cls: 'zlink', in: row, delay: 250 });
           zHead(s, 1165, y - 4, Math.PI / 2, 12, { cls: 'zlink-h', in: row, delay: 250 });
+          zText(s, 1188, RY[row - 1] + RH + 16, bnOn ? 'why? · কেন?' : 'why?', null, { anchor: 'start', size: 22, tcls: 'zt-why', in: row, delay: 250 });
         }
       });
       zN(s, 'circle', { cx: cx, cy: cy, r: RR[0], cls: 'ztint', in: 4, out: 5 });
@@ -5069,8 +5077,8 @@ const LESSON = [
       zIcon(w, 'eye', 0, 0, 70, { cls: 'zic-k' });
       zN(w, 'path', { d: 'M70 70L' + (cx - 28) + ' ' + (cy - 30), cls: 'zway' });
       zHead(w, cx - 28, cy - 30, Math.atan2(cy - 100, cx - 98), 22, { cls: 'zway-h' });
-      zN(w, 'path', { d: 'M706 596V24', cls: 'zway' });
-      zHead(w, 706, 24, -Math.PI / 2, 22, { cls: 'zway-h' });
+      zN(w, 'path', { d: 'M706 24V596', cls: 'zway' });
+      zHead(w, 706, 596, Math.PI / 2, 22, { cls: 'zway-h' });
     } },
 
   /* 4 · a crowd reduced to ticks, beside three people talking */
@@ -6964,8 +6972,16 @@ function punchLine(){
 /* this scenario's own chain, running the way causation runs: centre to edge */
 function mechChain(){
   const box = el('div', 'chain');
-  ['worldview', 'belief', 'value', 'behavior'].forEach((k, i) => {
-    if (i) box.appendChild(el('span', 'chain-arrow', '→'));
+  /* outside in, the way the class found it; the scenario's chain is stored
+     centre-first, so it is read from the end */
+  ['behavior', 'value', 'belief', 'worldview'].forEach((k, j) => {
+    const i = 3 - j;
+    if (j){
+      const a = el('span', 'chain-arrow');
+      a.appendChild(el('span', 'chain-why', 'why?'));
+      a.appendChild(el('span', 'chain-ar', '→'));
+      box.appendChild(a);
+    }
     const R = RINGS.find(x => x.key === k);
     const n = el('div', 'chain-link r-' + k);
     const h = el('span', 'chain-name');
@@ -7307,7 +7323,8 @@ function psScenario(sx){
   s.appendChild(tbl);
 
   const ch = el('div', 'pp-chain');
-  ['worldview', 'belief', 'value', 'behavior'].forEach((k, i) => {
+  ['behavior', 'value', 'belief', 'worldview'].forEach((k, j) => {
+    const i = 3 - j;
     const R = RINGS.find(x => x.key === k);
     const d = el('div', 'L-' + k + ' B-' + k);
     d.appendChild(el('b', null, R.name));
@@ -7364,10 +7381,10 @@ function psLesson(){
   s.appendChild(rank);
   s.appendChild(el('p', 'ps-cap', 'Both lists hold all three. Read the top line of each, then imagine the same meeting in both rooms.'));
 
-  psSection(s, 'Where the order comes from — the centre decides the edge');
+  psSection(s, 'Where the order comes from — each ring rests on the one inside it');
   const ch = el('div', 'pp-chain');
-  [['worldview', 'how the world is'], ['belief', 'what is therefore true'],
-   ['value', 'what is therefore best'], ['behavior', 'what is therefore done']].forEach(L => {
+  [['behavior', 'what people do'], ['value', 'why? what they value most'],
+   ['belief', 'why? what they hold to be true'], ['worldview', 'why? how they see the world']].forEach(L => {
     const R = RINGS.find(x => x.key === L[0]);
     const d = el('div', 'L-' + L[0] + ' B-' + L[0]);
     d.appendChild(el('b', null, R.name));
@@ -7375,7 +7392,7 @@ function psLesson(){
     ch.appendChild(d);
   });
   s.appendChild(ch);
-  s.appendChild(el('p', 'ps-cap', 'You will walk this backwards: start at the behaviour, and work in.'));
+  s.appendChild(el('p', 'ps-cap', 'Start with what people do, and keep asking why until you reach the centre.'));
 
   psSection(s, 'Why interview anyone?');
   const why = el('div', 'pp-why');
