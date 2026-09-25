@@ -2632,6 +2632,15 @@ body.bangla .bn-inline{display:inline}
 .sheet .m-teacher summary.tnote{margin:0;border:0;padding-top:calc(12px*var(--ui))}
 .sheet .m-teacher p{font-size:calc(.88rem*var(--ui));color:var(--tx-muted)}
 @media (min-width:1100px){ :root[data-theme="paper"] .wrap{width:min(100%,1040px)} }
+/* nine lesson panels do not fit beside the name on a laptop: the panels
+   not on screen keep their number and give up their word */
+@media (min-width:1180px){ .brand-name{flex:0 0 auto} }
+@media (min-width:1180px) and (max-width:1680px){
+  .rail-inner.is-lesson .rail-step:not(.is-active):not(.rail-out) > span:last-child{display:none}
+  .rail-inner.is-lesson .rail-step:not(.is-active):not(.rail-out){padding-right:calc(5px*var(--ui))}
+}
+@media (max-width:1179px){ .rail-inner.is-lesson .rail-step:not(.is-active):not(.rail-out) > span:last-child{display:none}
+  .rail-inner.is-lesson .rail-step:not(.is-active):not(.rail-out){padding-right:calc(5px*var(--ui))} }
 @media (prefers-reduced-motion:reduce){ .g-player.is-playing .g-wave-row i{animation:none} .g-fb-in{animation:none} }
 
 /* ===========================================================================
@@ -3464,6 +3473,7 @@ function toast(title, msg, tbn, mbn){
 /* ------------------------------------------------------------------- rail */
 function renderRail(){
   railEl.innerHTML = '';
+  railEl.classList.toggle('is-lesson', lesson);
   requestAnimationFrame(measureHeader);
   const names = lesson ? LESSON.map(l => [l.rail, l.ico]) : steps().map(x => [x[0], x[1]]);
   const at = lesson ? lstep : step;
@@ -3477,6 +3487,7 @@ function renderRail(){
     n.appendChild(el('span', null, s[0]));
     if (i === at) n.setAttribute('aria-current', 'step');
     n.setAttribute('aria-label', (lesson ? 'Lesson panel ' : 'Step ') + (i + 1) + ': ' + s[0]);
+    n.title = s[0];
     n.onclick = () => jumpTo(i);
     railEl.appendChild(n);
   });
@@ -4676,7 +4687,8 @@ const LESSON = [
         RINGS.forEach((R, j) => zN(g, 'circle', { cx: q[0] - 33 + j * 22, cy: by + 9, r: 8,
           cls: 'zdot k-' + R.key, in: 1, delay: 250 + i * 80 + j * 40, now: String(j + 2) }));
       });
-      zRings(s, cx, cy, RR, i => ({ cls: 'grow', in: i + 2, at: i ? '6:dim' : null, fs: [30, 28, 26, 20] }));
+      /* the first ring waits for the group to step aside before it opens */
+      zRings(s, cx, cy, RR, i => ({ cls: 'grow', in: i + 2, delay: i ? 0 : 420, at: i ? '6:dim' : null, fs: [30, 28, 26, 20] }));
       /* each ring's question, out to the side */
       const LY = [30, 176, 322, 468], rMid = [256, 185, 115, 40], ang = -Math.PI / 7;
       RINGS.forEach((R, i) => {
@@ -4939,7 +4951,7 @@ const LESSON = [
     draw(s){
       const PX = [300, 800, 1300], OWN = ['square', 'plus', 'diamond'];
       const TARGET = { circle: [740, 406], triangle: [860, 406] };
-      const all = zG(s, { out: 4 });
+      const all = zG(s, { out: 4, transform: 'translate(0 44)' });
       zN(all, 'rect', { x: 620, y: 350, width: 360, height: 112, rx: 18, cls: 'zpattern', in: 2, delay: 100 });
       PX.forEach((x, i) => {
         const b = i ? 1 : 0, d = i ? (i - 1) * 260 : 0;
@@ -4959,14 +4971,15 @@ const LESSON = [
       const S = STEP_SET.full, XS = [180, 490, 800, 1110, 1420];
       S.forEach((st, i) => {
         const g = zG(s, { in: 4, delay: 500 + i * 260, cls: 'rise' });
-        zN(g, 'circle', { cx: XS[i], cy: 250, r: 90, cls: 'zstep' });
-        zIcon(g, st[1], XS[i] - 42, 208, 84, { cls: 'zic-step' });
-        zText(g, XS[i], 400, st[0].toUpperCase(), RAIL_BN[st[0]], { size: 38, tcls: 'zt-name', gap: 42, bnSize: 32 });
-        zN(g, 'circle', { cx: XS[i] + 64, cy: 186, r: 22, cls: 'zstep-n' });
-        zN(g, 'text', { x: XS[i] + 64, y: 195, 'text-anchor': 'middle', cls: 'zt zt-stepn', text: String(i + 1) });
+        const Y = 270;
+        zN(g, 'circle', { cx: XS[i], cy: Y, r: 90, cls: 'zstep' });
+        zIcon(g, st[1], XS[i] - 42, Y - 42, 84, { cls: 'zic-step' });
+        zText(g, XS[i], Y + 150, st[0].toUpperCase(), RAIL_BN[st[0]], { size: 38, tcls: 'zt-name', gap: 42, bnSize: 32 });
+        zN(g, 'circle', { cx: XS[i] + 64, cy: Y - 64, r: 22, cls: 'zstep-n' });
+        zN(g, 'text', { x: XS[i] + 64, y: Y - 55, 'text-anchor': 'middle', cls: 'zt zt-stepn', text: String(i + 1) });
         if (i){
-          zN(s, 'path', { d: 'M' + (XS[i - 1] + 102) + ' 250H' + (XS[i] - 104), cls: 'zlink', in: 4, delay: 500 + i * 260 - 100 });
-          zHead(s, XS[i] - 104, 250, 0, 14, { cls: 'zlink-h', in: 4, delay: 500 + i * 260 - 100 });
+          zN(s, 'path', { d: 'M' + (XS[i - 1] + 102) + ' ' + Y + 'H' + (XS[i] - 104), cls: 'zlink', in: 4, delay: 500 + i * 260 - 100 });
+          zHead(s, XS[i] - 104, Y, 0, 14, { cls: 'zlink-h', in: 4, delay: 500 + i * 260 - 100 });
         }
       });
     } },
