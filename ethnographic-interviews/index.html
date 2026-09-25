@@ -2868,6 +2868,42 @@ body.bangla .g-rule{padding-top:calc(7px*var(--ui));padding-bottom:calc(7px*var(
 .chain-why{font-family:var(--font-display);font-style:italic;font-size:.62em;color:var(--kicker);line-height:1}
 .g-found-m .chain-arrow{flex-direction:column;transform:none}
 @media (max-width:719px){ .g-found-m .chain-arrow{flex-direction:row;gap:6px} .g-found-m .chain-ar{display:inline-block;transform:rotate(90deg)} }
+
+/* ---- first visit: who is at the screen? ---- */
+body.is-welcome .actionbar{display:none}
+body.is-welcome .rail{display:none}
+body.is-welcome .brand-name{flex:1 1 auto}
+body.is-welcome #theme-pill{visibility:hidden}
+.p-welcome{min-height:calc(100dvh - var(--header-h,124px) - var(--s4) - 24px);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:calc(28px*var(--ui));padding:calc(20px*var(--ui)) 0}
+.wl-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:calc(8px*var(--ui));animation:gRise .5s cubic-bezier(.2,.7,.2,1) both}
+.wl-head .wl-mark{width:calc(60px*var(--ui));height:calc(60px*var(--ui));background:var(--gold-soft);color:var(--kicker);margin-bottom:calc(6px*var(--ui))}
+.wl-title{margin:0;font-family:var(--font-display);font-weight:600;color:var(--heading);letter-spacing:-.015em;font-size:calc(clamp(1.8rem,7vw,2.6rem)*var(--ui));line-height:1.1}
+.wl-title + .bn{text-align:center;font-size:calc(1.1rem*var(--ui))}
+.wl-sub{margin:calc(4px*var(--ui)) 0 0;font-size:calc(1.1rem*var(--ui));color:var(--tx-muted)}
+.wl-sub + .bn{text-align:center}
+.wl-cards{display:grid;grid-template-columns:1fr;gap:calc(16px*var(--ui));width:min(100%,calc(860px*var(--ui)))}
+@media (min-width:640px){ .wl-cards{grid-template-columns:1fr 1fr} }
+.wl-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:calc(10px*var(--ui));text-align:left;cursor:pointer;
+  padding:calc(26px*var(--ui)) calc(24px*var(--ui)) calc(22px*var(--ui));border:1.5px solid var(--rule);border-radius:calc(18px*var(--ui));
+  background:var(--surface-card);color:var(--tx);font:inherit;box-shadow:var(--shadow-card);
+  animation:gRise .5s cubic-bezier(.2,.7,.2,1) both;transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
+.wl-card:hover{border-color:var(--forest);transform:translateY(-3px);box-shadow:0 12px 30px rgba(16,61,33,.14)}
+.wl-card .wl-ico{width:calc(58px*var(--ui));height:calc(58px*var(--ui))}
+.wl-teacher .wl-ico{background:var(--gold-soft);color:var(--kicker)}
+.wl-name{font-family:var(--font-display);font-weight:600;font-size:calc(1.55rem*var(--ui));color:var(--heading);line-height:1.15}
+.wl-name + .bn,.wl-desc + .bn{margin-top:-4px}
+.wl-desc{font-size:calc(.98rem*var(--ui));line-height:1.5;color:var(--tx-muted)}
+.wl-steps{display:flex;flex-wrap:wrap;align-items:center;gap:calc(6px*var(--ui));margin-top:calc(4px*var(--ui));
+  font-size:calc(.72rem*var(--ui));font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--kicker)}
+.wl-dot{width:4px;height:4px;border-radius:999px;background:currentColor;opacity:.5}
+.wl-go{margin-top:calc(8px*var(--ui));display:inline-flex;align-items:center;gap:calc(8px*var(--ui));padding:calc(9px*var(--ui)) calc(18px*var(--ui));
+  border-radius:var(--radius-pill);background:var(--forest);color:#fff;font-weight:700;font-size:calc(.95rem*var(--ui))}
+.wl-go .ico{width:calc(1rem*var(--ui));height:calc(1rem*var(--ui));transition:transform .2s ease}
+.wl-card:hover .wl-go .ico{transform:translateX(3px)}
+.wl-foot{margin:0;font-size:calc(.88rem*var(--ui));color:var(--tx-muted);text-align:center}
+.wl-foot .bn{text-align:center}
+@media (prefers-reduced-motion:reduce){ .wl-head,.wl-card{animation:none} }
 @media (prefers-reduced-motion:reduce){ .g-player.is-playing .g-wave-row i{animation:none} .g-fb-in{animation:none} }
 
 /* ===========================================================================
@@ -3383,6 +3419,19 @@ let teacher = false;
    disagrees with. */
 try { teacher = localStorage.getItem('ei-stage') === '1'; } catch (e) {}
 
+/* Who is at the screen decides the flow: a student gets the short listening
+   flow on paper, a teacher gets the lesson and all five steps on the
+   projector. The first visit asks; the answer is remembered on this device,
+   and ?role=student or ?role=teacher in the address answers it for a link. */
+let role = null;
+try { role = localStorage.getItem('ei-role'); } catch (e) {}
+(function(){
+  const m = location.search.match(/[?&]role=(student|teacher)\b/);
+  if (m){ role = m[1]; try { localStorage.setItem('ei-role', role); } catch (e) {} }
+})();
+if (role) teacher = role === 'teacher';
+let welcome = !role;
+
 const STEP_SET = {
   student: [['Watch',  'eye',    'task_watch',  () => stepObserve()],
             ['Listen', 'ear',    'task_listen', () => stepListen()],
@@ -3704,6 +3753,7 @@ function toast(title, msg, tbn, mbn){
 /* ------------------------------------------------------------------- rail */
 function renderRail(){
   railEl.innerHTML = '';
+  if (welcome) return;
   railEl.classList.toggle('is-lesson', lesson);
   requestAnimationFrame(measureHeader);
   const names = lesson ? LESSON.map(l => [l.rail, l.ico]) : steps().map(x => [x[0], x[1]]);
@@ -3779,6 +3829,55 @@ function newScenario(keepLesson, id){
 }
 
 /* ------------------------------------------------------------------ steps */
+function stepWelcome(){
+  const p = el('div', 'panel p-welcome');
+  const hd = el('div', 'wl-head');
+  hd.appendChild(glyph('target', 'wl-mark'));
+  hd.appendChild(addBn(el('h1', 'wl-title', 'Welcome to Culture Circles'), 'কালচার সার্কেলসে স্বাগতম'));
+  hd.appendChild(addBn(el('p', 'wl-sub', 'Who is using this screen?'), 'এই স্ক্রিনটি কে ব্যবহার করছেন?'));
+  p.appendChild(hd);
+  const row = el('div', 'wl-cards');
+  [['student', 'phone', 'I’m a student', 'আমি শিক্ষার্থী',
+    'Watch a story, listen to three people, and find what they all say.',
+    'একটি গল্প দেখুন, তিনজনের কথা শুনুন, আর খুঁজে বের করুন তিনজনই কী বলেন।',
+    ['Watch', 'Listen', 'Check']],
+   ['teacher', 'tv', 'I’m a teacher', 'আমি শিক্ষক',
+    'Show the lesson on the projector, then lead the class through all five steps.',
+    'প্রজেক্টরে পাঠটি দেখান, তারপর পুরো ক্লাসকে পাঁচটি ধাপের মধ্য দিয়ে নিয়ে যান।',
+    ['Lesson', 'Watch', 'Ask', 'Listen', 'Check', 'Map']]].forEach((c, k) => {
+    const b = el('button', 'wl-card wl-' + c[0]);
+    b.type = 'button';
+    b.style.animationDelay = (0.15 + k * 0.12) + 's';
+    b.appendChild(glyph(c[1], 'wl-ico'));
+    b.appendChild(addBn(el('span', 'wl-name', c[2]), c[3]));
+    b.appendChild(addBn(el('span', 'wl-desc', c[4]), c[5]));
+    const st = el('span', 'wl-steps');
+    c[6].forEach((x, j) => { if (j) st.appendChild(el('span', 'wl-dot')); st.appendChild(el('span', null, x)); });
+    b.appendChild(st);
+    const go = el('span', 'wl-go');
+    go.appendChild(el('span', null, 'Start'));
+    go.appendChild(icon('arrow'));
+    b.appendChild(go);
+    b.onclick = () => chooseRole(c[0]);
+    row.appendChild(b);
+  });
+  p.appendChild(row);
+  p.appendChild(addBn(el('p', 'wl-foot', 'You can change this later in the menu.'), 'পরে মেনু থেকে এটি বদলাতে পারবেন।'));
+  wrap.appendChild(p);
+}
+
+function chooseRole(r){
+  role = r;
+  try { localStorage.setItem('ei-role', r); } catch (e) {}
+  welcome = false;
+  document.body.classList.remove('is-welcome');
+  paintStage(r === 'teacher');
+  /* a teacher starts on the lesson, a student on the story */
+  step = 0; lstep = 0; lbeatAt = -1;
+  setTeacher(r === 'teacher');
+  requestAnimationFrame(measureHeader);
+}
+
 function render(){
   hideGloss();
   renderRail();
@@ -3787,6 +3886,8 @@ function render(){
   if (!lesson){ clearTimeout(lAutoT); lAutoT = null; }
   stage.scrollTop = 0;
   gCur = null;
+  document.body.classList.toggle('is-welcome', welcome);
+  if (welcome){ stepWelcome(); return; }
   if (lesson){ stepLesson(); btnBack.disabled = (lstep === 0 && lbeat <= 0); syncNext(); return; }
   if (state.handoff){ stepHandoff(); btnBack.disabled = false; syncNext(); return; }
   steps()[step][3]();
@@ -4473,6 +4574,14 @@ const ICONS = {
     s.appendChild(shape('path', ST({ d: 'M5.4 8.2V3.4a1 1 0 0 1 2 0v4M7.4 7V2.4a1 1 0 0 1 2 0V7M9.4 7.2V3.6a1 1 0 0 1 2 0v5.6c0 3-1.8 5-4.3 5-1.8 0-2.8-.9-3.9-2.7L2 8.8a1 1 0 0 1 1.6-1.1l1.8 1.9' })));
   },
   crown: s => s.appendChild(shape('path', ST({ d: 'M2.4 12.4 1.8 5l3.6 2.6L8 3.2l2.6 4.4L14.2 5l-.6 7.4Z' }))),
+  tv: s => {
+    s.appendChild(shape('rect', ST({ x: 1.8, y: 2.6, width: 12.4, height: 8.6, rx: 1.4 })));
+    s.appendChild(shape('path', ST({ d: 'M5.4 13.8h5.2M8 11.2v2.6' })));
+  },
+  phone: s => {
+    s.appendChild(shape('rect', ST({ x: 4.4, y: 1.6, width: 7.2, height: 12.8, rx: 1.6 })));
+    s.appendChild(shape('path', ST({ d: 'M7 12.1h2' })));
+  },
   split: s => {
     s.appendChild(shape('path', ST({ d: 'M8 14V9.4L3.4 4.8M8 9.4l4.6-4.6' })));
     s.appendChild(shape('path', ST({ d: 'M3.2 7.6V4.6h3M12.8 7.6V4.6h-3' })));
@@ -7670,6 +7779,8 @@ printToggle.onclick = () => {
 /* Paper by day, the forest Stage on the projector. */
 function toggleStage(){
   paintStage(document.documentElement.getAttribute('data-theme') !== 'stage');
+  role = document.documentElement.getAttribute('data-theme') === 'stage' ? 'teacher' : 'student';
+  try { localStorage.setItem('ei-role', role); } catch (e) {}
   /* the one switch: presenting turns on Ask and Map, leaving it puts the
      short listening flow back — carrying the class's position across */
   setTeacher(document.documentElement.getAttribute('data-theme') === 'stage', true);
@@ -7685,7 +7796,7 @@ function paintStage(on){
   try { localStorage.setItem('ei-stage', on ? '1' : '0'); } catch (e) {}
   document.querySelector('meta[name="theme-color"]').setAttribute('content', on ? '#E6E0CB' : '#F4F1E6');
   $('#m-projector').classList.toggle('on', on);
-  $('#m-projector .m-lab').textContent = on ? 'Back to the short flow' : 'Present on TV · all 5 steps';
+  $('#m-projector .m-lab').textContent = on ? 'Switch to the student flow' : 'Switch to the teacher flow · on TV';
   $('#brand-text').innerHTML = '';
   $('#brand-text').appendChild(el('span', 'brand-g', '🎯'));
   $('#brand-text').appendChild(document.createTextNode('Culture Circles'));
@@ -7721,7 +7832,7 @@ window.addEventListener('pagehide', stopAudio);
 
 /* ------------------------------------------------------------------- boot */
 setBangla(bnOn);
-paintStage(teacher);          /* teacher now mirrors the projector switch */
+paintStage(teacher && !welcome);   /* teacher now mirrors the projector switch; the welcome is on paper */
 newScenario(true, (function(){ try { return localStorage.getItem('ei-scen'); }
                                catch (e) { return null; } })());
 measureHeader();
