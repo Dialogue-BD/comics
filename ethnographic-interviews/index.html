@@ -1351,6 +1351,115 @@ body.bangla .zcap{min-height:calc(4.6rem*var(--ui))}
   .g-nudge{animation:none}
 }
 
+/* ---------- listen, one person and one listen at a time ---------- */
+.g-stage.g-still{animation:none}
+.g-qbub{position:relative;max-width:calc(900px*var(--ui));margin:0 auto;padding:var(--s5) var(--s6);
+  background:var(--l-value-t);border:3px solid var(--l-value);border-radius:calc(24px*var(--ui))}
+.g-qbub::after{content:"";position:absolute;left:50%;bottom:-18px;margin-left:-16px;width:30px;height:30px;
+  background:var(--l-value-t);border-right:3px solid var(--l-value);border-bottom:3px solid var(--l-value);
+  transform:rotate(45deg)}
+.g-q{margin:0;font-family:var(--font-display);font-weight:600;color:var(--heading);text-align:center;
+  font-size:calc(clamp(1.25rem,5vw,1.8rem)*var(--ui));line-height:1.3}
+.g-qbub .bn{text-align:center;font-size:calc(clamp(1rem,3.8vw,1.15rem)*var(--ui))}
+.g-three{display:flex;justify-content:center;gap:var(--s5);margin-top:calc(var(--s6) + 8px)}
+.g-three-p{display:flex;flex-direction:column;align-items:center;gap:var(--s2);text-align:center}
+.g-three-n{font-weight:700;font-size:calc(.95rem*var(--ui))}
+
+.g-face{position:relative;flex:0 0 auto;width:calc(110px*var(--ui));aspect-ratio:3/4;overflow:hidden;
+  border-radius:var(--radius-md);background:var(--panel);border:4px solid var(--card);
+  box-shadow:0 0 0 1px var(--rule),var(--shadow-card);display:grid;place-items:center;
+  transition:box-shadow .25s ease}
+.g-face img{width:100%;height:100%;object-fit:cover;display:block}
+.g-face.is-small{width:calc(84px*var(--ui))}
+.g-face-ph{font-family:var(--font-display);font-weight:600;font-size:calc(2.4rem*var(--ui));color:var(--tx-muted)}
+
+.g-player{display:grid;grid-template-columns:1fr;gap:var(--s4);
+  border:0;background:none;box-shadow:none;overflow:visible;border-radius:0}
+.g-player.is-playing{box-shadow:none}
+.g-player.is-playing .g-face{box-shadow:0 0 0 5px var(--gold),var(--shadow-raised)}
+.g-who{display:flex;gap:var(--s4);align-items:center;min-width:0}
+.g-id{min-width:0}
+.g-name{margin:0;font-family:var(--font-display);font-weight:600;color:var(--heading);
+  font-size:calc(clamp(1.5rem,6vw,2rem)*var(--ui));line-height:1.1}
+.g-facts{margin:calc(4px*var(--ui)) 0 0;color:var(--tx-muted);font-size:calc(.95rem*var(--ui))}
+.g-id .bn{margin-top:2px;font-size:calc(.9rem*var(--ui))}
+.g-listen{display:flex;flex-direction:column;gap:var(--s3);min-width:0}
+.g-ctl{padding:0;gap:var(--s3);flex-wrap:wrap}
+.g-play{min-height:calc(58px*var(--ui));padding:0 calc(28px*var(--ui));font-size:calc(1.08rem*var(--ui))}
+.g-play .play-ico{width:calc(1.25rem*var(--ui));height:calc(1.25rem*var(--ui))}
+.g-replay{width:calc(58px*var(--ui));height:calc(58px*var(--ui));font-size:calc(1.4rem*var(--ui))}
+.g-heard{margin-left:auto}
+.g-heard .dots i{width:calc(12px*var(--ui));height:calc(12px*var(--ui))}
+.g-prog{height:calc(6px*var(--ui));border-radius:999px}
+.g-bubble{border:1px solid var(--rule);border-radius:var(--radius-md);min-height:calc(130px*var(--ui))}
+.g-idle{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s2);
+  text-align:center;min-height:calc(100px*var(--ui))}
+.g-player.is-playing .g-idle{display:none}
+/* the first listen has nothing to show but the fact of listening */
+.g-mode-pure.is-playing .g-idle{display:flex}
+.g-mode-pure.is-playing .g-pure-ico{animation:gEar 1.6s ease-in-out infinite}
+@keyframes gEar{0%,100%{transform:scale(1);opacity:.75}50%{transform:scale(1.25);opacity:1}}
+@media (prefers-reduced-motion:reduce){ .g-mode-pure.is-playing .g-pure-ico{animation:none} }
+.g-pure-ico{width:calc(2.6rem*var(--ui));height:calc(2.6rem*var(--ui));color:var(--l-value)}
+.g-score{margin:0;font-family:var(--font-display);font-weight:600;color:var(--heading);
+  font-size:calc(2.6rem*var(--ui));line-height:1}
+.g-score-t{margin:0;color:var(--tx-muted);font-size:calc(1rem*var(--ui))}
+.g-bubble .catch{margin-top:0}
+.g-bubble .transcript{margin:0}
+
+.g-gists{display:grid;grid-template-columns:1fr;gap:var(--s3)}
+.g-gist{padding:var(--s4);border:2px dashed var(--rule-strong);border-radius:var(--radius-md);
+  background:var(--panel);opacity:.55}
+.g-gist.is-in{opacity:1;border-style:solid;border-color:var(--l-value);background:var(--l-value-t)}
+.g-gist.is-now{box-shadow:0 0 0 4px var(--gold);animation:gGist .7s cubic-bezier(.22,.68,.2,1) both}
+@keyframes gGist{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.g-gist-h{display:flex;align-items:center;gap:var(--s2)}
+.g-gist-face{width:calc(48px*var(--ui));height:calc(48px*var(--ui));border-radius:999px;overflow:hidden;
+  flex:0 0 auto;background:var(--card);display:grid;place-items:center}
+.g-gist-face img{width:100%;height:100%;object-fit:cover}
+.g-gist-face .g-face-ph{font-size:calc(1.2rem*var(--ui))}
+.g-gist-name{font-weight:700;font-size:calc(1rem*var(--ui))}
+.g-gist-t{margin:var(--s3) 0 0;font-family:var(--font-display);color:var(--tx);
+  font-size:calc(1.12rem*var(--ui));line-height:1.4}
+.g-gist-t.is-empty{color:var(--tx-muted);font-size:calc(2rem*var(--ui))}
+.g-gist .bn{font-size:calc(.95rem*var(--ui))}
+
+@media (min-width:760px){
+  .g-player{grid-template-columns:minmax(0,.75fr) minmax(0,1.5fr);gap:var(--s6);align-items:center}
+  .g-who{flex-direction:column;align-items:center;text-align:center}
+  .g-face{width:min(100%,calc(220px*var(--ui)))}
+  .g-gists{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+
+:root[data-theme="stage"] .g-q{font-size:calc(2.3rem*var(--ui))}
+:root[data-theme="stage"] .g-qbub .bn{font-size:calc(1.5rem*var(--ui))}
+:root[data-theme="stage"] .g-qbub{max-width:none}
+:root[data-theme="stage"] .g-face.is-small{width:calc(140px*var(--ui))}
+:root[data-theme="stage"] .g-three-n{font-size:calc(1.3rem*var(--ui))}
+:root[data-theme="stage"] .g-face{width:min(100%,calc(250px*var(--ui)))}
+:root[data-theme="stage"] .g-name{font-size:calc(2.6rem*var(--ui))}
+:root[data-theme="stage"] .g-facts{font-size:calc(1.2rem*var(--ui))}
+:root[data-theme="stage"] .g-id .bn{font-size:calc(1.1rem*var(--ui))}
+:root[data-theme="stage"] .g-play{min-height:calc(66px*var(--ui));font-size:calc(1.3rem*var(--ui))}
+:root[data-theme="stage"] .g-replay{width:calc(66px*var(--ui));height:calc(66px*var(--ui))}
+:root[data-theme="stage"] .g-bubble{min-height:calc(220px*var(--ui))}
+:root[data-theme="stage"] .g-bubble .transcript{font-size:calc(1.5rem*var(--ui));line-height:1.7}
+:root[data-theme="stage"] .g-bubble .cw{font-size:calc(1.6rem*var(--ui));padding:calc(14px*var(--ui)) calc(24px*var(--ui))}
+:root[data-theme="stage"] .g-bubble .catch-bar{font-size:calc(.9rem*var(--ui))}
+:root[data-theme="stage"] .g-score-t{font-size:calc(1.3rem*var(--ui))}
+:root[data-theme="stage"] .g-score{font-size:calc(3.4rem*var(--ui))}
+:root[data-theme="stage"] .g-gist-t{font-size:calc(1.5rem*var(--ui))}
+:root[data-theme="stage"] .g-gist .bn{font-size:calc(1.2rem*var(--ui))}
+:root[data-theme="stage"] .g-gist-face{width:calc(64px*var(--ui));height:calc(64px*var(--ui))}
+:root[data-theme="stage"] .g-gist-name{font-size:calc(1.3rem*var(--ui))}
+:root[data-theme="stage"] .g-gist{padding:var(--s5)}
+:root[data-theme="stage"] .g-pure-ico{width:calc(4rem*var(--ui));height:calc(4rem*var(--ui))}
+/* the meaning of a word, readable from where the class is sitting */
+:root[data-theme="stage"] .glossbox{width:min(94vw,calc(620px*var(--ui)));bottom:var(--s6)}
+:root[data-theme="stage"] .gloss-word{font-size:calc(1.6rem*var(--ui))}
+:root[data-theme="stage"] .gloss-def{font-size:calc(1.3rem*var(--ui))}
+:root[data-theme="stage"] .gloss-note{font-size:calc(1.1rem*var(--ui))}
+
 /* ---------- the rows under the rings ---------- */
 .rrows{display:flex;flex-direction:column;gap:var(--s2);margin-top:var(--s5)}
 .rrow{
@@ -2547,6 +2656,8 @@ function startSpeaker(i){
     c.fellBack = true; c.audio = null;
     if (!ttsAvailable() || !voices.length){
       stopAudio(false);
+      state.noAudio = true;         /* the first listen cannot be required of a silent device */
+      gDone();
       openTranscripts();
       toast('No voices on this device',
         'The transcripts are open instead. Recorded audio put in the audio folder plays automatically.');
@@ -2554,7 +2665,7 @@ function startSpeaker(i){
     }
     const v = pickVoice(sp.voice.gender, i + sc.id.length);
     const words = sp.script.split(/\s+/).length;
-    if (state.passes[i] < 3 && !c.round) catchStart(c, i);
+    if (state.passes[i] < 3 && !c.round && gListenMode === 'catch') catchStart(c, i);
     c.chunks = (c.round && c.round.sents.length) ? c.round.sents : sentences(sp.script);
     c.ci = 0;
     c.est = (words / 2.4) * 1000;
@@ -2602,7 +2713,7 @@ function startSpeaker(i){
   a.onended = finish;
   a.onerror = speak;
   paintRow(i, 'play', 0);
-  if (state.passes[i] < 3) catchStart(c, i);
+  if (state.passes[i] < 3 && gListenMode === 'catch') catchStart(c, i);
   a.play().catch(speak);
 }
 
@@ -2854,6 +2965,8 @@ function captionWords(i, lo, hi){
 function showCaption(c, i, n){
   /* nothing to read on the first pass: that one is pure listening */
   if ((state.passes[i] || 0) < 1) return;
+  /* the guided listen reads along with the whole transcript, or not at all */
+  if (gCur) return;
   if (state.tOpen || !c.round || !c.round.bounds[n]) return;
   const row = rowOf(i); if (!row) return;
   const bub = row.querySelector('.bubble'); if (!bub) return;
@@ -3137,14 +3250,15 @@ function catchCountdown(i, frac, closing){
 
 /* the round is over: score it, show what was missed, bank the listen */
 function catchEnd(c, i){
-  if (!c.round) return;
   const r = c.round;
   c.round = null;
+  /* a listen that reached the end counts, with a word field or without one */
   state.passes[i] = Math.min(3, (state.passes[i] || 0) + 1);
-  state.catchScores[i].push({ caught: r.caught, targets: r.targets });
+  if (r) state.catchScores[i].push({ caught: r.caught, targets: r.targets });
   syncNext();
   refreshGists();
-  refreshCard(i);        /* the card reopens with its words available */
+  refreshCard(i);        /* the moment redraws with its score and its door */
+  if (!r || gCur) return;
   const box = catchNode(i);
   if (!box) return;
 
@@ -3152,16 +3266,6 @@ function catchEnd(c, i){
   box.innerHTML = '';
   box.appendChild(catchHead(i, 'Listen ' + state.passes[i] + ' of 3'));
   box.appendChild(catchResults(i));
-}
-
-/* rebuild one informant card in place — after a listen it has a transcript it
-   did not have before, and its band no longer says "not yet heard" */
-function refreshCard(i){
-  const old = rowOf(i);
-  if (!old) return;
-  old.replaceWith(informantCard(sc.speakers[i], i));
-  const t = document.getElementById('btn-transcripts');
-  if (t && state.passes.some(n => n > 0)){ t.disabled = false; t.title = ''; }
 }
 
 function catchClear(i){
@@ -4417,7 +4521,7 @@ function guided(name, ico, list){
   hd.appendChild(tx);
   p.appendChild(hd);
 
-  const st = el('div', 'g-stage' + (gDir < 0 ? ' g-back' : '') + (M.cls ? ' ' + M.cls : ''));
+  const st = el('div', 'g-stage' + (gDir < 0 ? ' g-back' : gDir === 0 ? ' g-still' : '') + (M.cls ? ' ' + M.cls : ''));
   p.appendChild(st);
 
   const ft = el('div', 'g-foot');
@@ -5004,194 +5108,186 @@ function chooseQ(btn, q, list){
   }
 }
 
-/* ---- 3. LISTEN + TRIANGULATE ----
-   Three people answering a question you asked. Each one gets a card built the
-   way /whos-this/ builds its identity cards — a framed photograph beside a
-   short dossier of labelled fields — because a person with a face, an age, a
-   job and a city is somebody you are talking to, where a name on a row is a
-   question on a test.
+/* ---- 3. LISTEN ----
+   Three people, one at a time, and one listen at a time. Each informant gets
+   four moments:
 
-   The first listen is pure listening. No caption, no transcript, nothing to
-   read: the words only open up once that person has been heard through. */
-function informantCard(s, i){
-  const row = el('div', 'spk'); row.dataset.i = i;
-  const heard = (state.passes[i] || 0) > 0;
+     LISTEN   meet them, press play, and only listen — nothing to read
+     CATCH    listen again and tap the words you hear
+     READ     listen once more with the words in front of you, lit as they
+              are said; any underlined word opens its meaning
+     GIST     what they said, in one line, added to a board of three
 
-  const band = el('div', 'spk-band');
-  band.appendChild(el('span', 'lab', 'Informant ' + (i + 1) + ' of 3'));
-  band.appendChild(el('span', 'lab', heard ? 'Heard' : 'Not yet heard'));
-  row.appendChild(band);
+   Only the first listen is required. The board fills as the class goes, so
+   by the third person the three summaries are side by side — which is where
+   the next step starts.
 
-  const top = el('div', 'spk-top');
+   The player is built with the same classes the audio engine already drives
+   (.spk, .play, .replay, .spk-prog, .catch, .transcript), so the karaoke, the
+   word field and the progress bar work here unchanged. */
+let gListenMode = 'pure';
 
-  const win = el('div', 'window');
-  const img = new Image();
-  img.alt = s.name;
-  img.src = 'portraits/' + sc.id + '-' + (i + 1) + '.jpg';
-  img.onerror = () => { win.classList.remove('has-photo');
-                        win.appendChild(el('span', 'window-ph',
-                          s.name.replace(/^Professor\s+/, '').charAt(0))); };
-  img.onload = () => win.classList.add('has-photo');
-  win.appendChild(img);
-  top.appendChild(win);
+function faceImg(i, cls){
+  const sp = sc.speakers[i];
+  const f = el('div', cls);
+  const im = new Image();
+  im.alt = sp.name;
+  im.src = 'portraits/' + sc.id + '-' + (i + 1) + '.jpg';
+  im.onerror = () => { im.remove(); f.appendChild(el('span', 'g-face-ph', sp.name.replace(/^Professor\s+/, '').charAt(0))); };
+  f.appendChild(im);
+  return f;
+}
 
-  const id = el('div', 'ident');
-  id.appendChild(addBn(el('span', 'lab', t('ui_name')), tb('ui_name')));
-  id.appendChild(el('h3', 'ident-name', s.name));
-  const rows = el('div', 'frows');
-  [['ui_age', String(s.age), null],
-   ['ui_work', s.job,  JOB_BN[s.job]],
-   ['ui_city', s.city, null]].forEach(f => {
-    const r = el('div', 'frow');
-    r.appendChild(addBn(el('span', 'lab', t(f[0])), tb(f[0])));
-    r.appendChild(addBn(el('span', 'fval', f[1]), f[2]));
-    rows.appendChild(r);
-  });
-  id.appendChild(rows);
-  top.appendChild(id);
-  row.appendChild(top);
+function gPlayer(i, mode){
+  const sp = sc.speakers[i];
+  const row = el('div', 'spk g-player g-mode-' + mode + ((state.passes[i] || 0) > 0 ? ' is-heard' : ''));
+  row.dataset.i = i;
 
-  const ctl = el('div', 'spk-ctl');
-  const play = el('button', 'play');
+  const left = el('div', 'g-who');
+  left.appendChild(faceImg(i, 'g-face'));
+  const id = el('div', 'g-id');
+  id.appendChild(el('h2', 'g-name', sp.name));
+  const facts = el('p', 'g-facts');
+  facts.appendChild(el('span', null, sp.age + ' · ' + sp.job + ' · ' + sp.city));
+  id.appendChild(facts);
+  if (JOB_BN[sp.job]) id.appendChild(bn(bnNum(sp.age) + ' · ' + JOB_BN[sp.job] + ' · ' + (CITY_BN[sp.city] || sp.city)));
+  left.appendChild(id);
+  row.appendChild(left);
+
+  const right = el('div', 'g-listen');
+  const ctl = el('div', 'spk-ctl g-ctl');
+  const play = el('button', 'play g-play');
   play.type = 'button';
   play.appendChild(icon('playmark', 'play-ico'));
   play.appendChild(playWord('ui_play'));
-  play.setAttribute('aria-label', t('ui_play') + ' ' + s.name);
-  play.onclick = () => togglePlay(i);
+  play.setAttribute('aria-label', t('ui_play') + ' ' + sp.name);
+  play.onclick = () => { gListenMode = mode; togglePlay(i); };
   ctl.appendChild(play);
-  const again = el('button', 'replay', '↻');
+  const again = el('button', 'replay g-replay', '↻');
   again.type = 'button';
   again.disabled = !canReplay(i);
-  again.title = state.passes[i] >= 3 ? 'Listen again' : 'Listen again — new words';
-  again.setAttribute('aria-label', 'Listen to ' + s.name + ' again');
-  again.onclick = () => replaySpeaker(i);
+  again.setAttribute('aria-label', 'Start ' + sp.name + ' again');
+  again.onclick = () => { gListenMode = mode; replaySpeaker(i); };
   ctl.appendChild(again);
-  /* The words for THIS person, beside this person. It used to live only in a
-     single switch under all three cards, so a student who had listened twice
-     and wanted to check one line had to leave the card, find the bottom of
-     the screen, and open everybody's text at once. */
-  if ((state.passes[i] || 0) >= 2){
-    const shown = state.tOpen || state.tCard[i];
-    const trBtn = el('button', 'spk-tr' + (shown ? ' on' : ''));
-    trBtn.type = 'button';
-    const tk2 = shown ? 'sp_text_on' : 'sp_text';
-    trBtn.appendChild(el('span', null, t(tk2)));
-    trBtn.appendChild(bn(tb(tk2)));
-    trBtn.onclick = () => {
-      const nowOn = !(state.tOpen || state.tCard[i]);
-      /* closing one while the global switch is on drops the global, or this
-         card would refuse to close and look broken */
-      if (!nowOn && state.tOpen){
-        state.tOpen = false;
-        state.tCard = state.tCard.map((v, k) => k !== i);
-      } else {
-        state.tCard[i] = nowOn;
-      }
-      render();
-    };
-    ctl.appendChild(trBtn);
-  }
   const eq = el('div', 'eq');
   for (let k = 0; k < 3; k++) eq.appendChild(el('i'));
   ctl.appendChild(eq);
-  row.appendChild(ctl);
+  /* how many times this person has been heard, as three dots */
+  const heard = el('span', 'g-heard');
+  heard.appendChild(passDots(i));
+  ctl.appendChild(heard);
+  right.appendChild(ctl);
 
-  const prog = el('div', 'spk-prog'); prog.appendChild(el('i'));
-  row.appendChild(prog);
+  const prog = el('div', 'spk-prog g-prog'); prog.appendChild(el('i'));
+  right.appendChild(prog);
 
-  const bub = el('div', 'bubble');
-  /* the transcript only exists for somebody you have already heard */
-  if (heard){
-    const tr = glossedTranscript(s.script, s.name);
-    tr.hidden = !(state.tOpen || state.tCard[i]);
+  const bub = el('div', 'bubble g-bubble');
+  if (mode === 'read'){
+    const tr = glossedTranscript(sp.script, sp.name);
     bub.appendChild(tr);
   }
   const catchBox = el('div', 'catch');
-  const hasScores = Boolean(state.catchScores[i] && state.catchScores[i].length);
-  catchBox.hidden = !hasScores;
-  if (hasScores){
-    catchBox.appendChild(catchHead(i, 'Your listening scores'));
-    catchBox.appendChild(catchResults(i));
-  }
+  catchBox.hidden = true;
   bub.appendChild(catchBox);
-  const idle = el('p', 'bubble-idle');
-  idle.appendChild(el('span', null, t(heard ? 'listen_again' : 'listen_first')));
-  idle.appendChild(bn(tb(heard ? 'listen_again' : 'listen_first')));
-  bub.appendChild(idle);
-  row.appendChild(bub);
-
-  if (heard) row.classList.add('is-heard');
+  if (mode === 'catch'){
+    const sc2 = state.catchScores[i] || [];
+    const last = sc2[sc2.length - 1];
+    const idle = el('div', 'g-idle');
+    if (last){
+      idle.appendChild(el('p', 'g-score', last.caught + ' / ' + last.targets));
+      idle.appendChild(addBn(el('p', 'g-score-t', 'words caught. Play again for new words.'),
+                             'টি শব্দ ধরেছেন। নতুন শব্দের জন্য আবার শুনুন।'));
+    } else {
+      idle.appendChild(addBn(el('p', 'g-score-t', 'Words will appear here while ' + sp.name + ' talks.'),
+                             sp.name + ' কথা বলার সময় এখানে শব্দ ভেসে উঠবে।'));
+    }
+    bub.appendChild(idle);
+  }
+  if (mode === 'pure'){
+    const idle = el('div', 'g-idle g-pure');
+    idle.appendChild(icon('ear', 'g-pure-ico'));
+    idle.appendChild(addBn(el('p', 'g-score-t', (state.passes[i] || 0) > 0 ? 'Heard. You can play it again, or go on.' : 'Nothing to read. Just listen.'),
+                           (state.passes[i] || 0) > 0 ? 'শোনা হয়েছে। আবার শুনতে পারেন, বা এগিয়ে যান।' : 'পড়ার কিছু নেই। শুধু শুনুন।'));
+    bub.appendChild(idle);
+  }
+  right.appendChild(bub);
+  row.appendChild(right);
   return row;
 }
 
+/* the board of three summaries, filled as far as the class has got */
+function gistRow(upTo, now){
+  const box = el('div', 'g-gists');
+  sc.speakers.forEach((sp, j) => {
+    const has = j <= upTo && (state.passes[j] || 0) > 0;
+    const c = el('div', 'g-gist' + (has ? ' is-in' : '') + (j === now ? ' is-now' : ''));
+    const h = el('div', 'g-gist-h');
+    h.appendChild(faceImg(j, 'g-gist-face'));
+    h.appendChild(el('span', 'g-gist-name', sp.name));
+    c.appendChild(h);
+    if (has){
+      c.appendChild(el('p', 'g-gist-t', sp.gist));
+      addBn(c, (sb().gists || [])[j]);
+    } else {
+      c.appendChild(el('p', 'g-gist-t is-empty', '…'));
+    }
+    box.appendChild(c);
+  });
+  return box;
+}
+
 function stepListen(){
-  const p = el('div', 'panel p-listen');
-  p.appendChild(taskStrip(stepNo(), 'ear', 'task_listen'));
-
-  const c = el('div', 'card raised');
-  c.appendChild(kickerEl());
-  c.appendChild(el('h2', 'h-title', 'Three people answer'));
-  c.appendChild(bn('তিনজন মানুষ উত্তর দিচ্ছেন'));
-
-  const pin = el('div', 'qpin');
-  const ck = teacher ? 'ui_youasked' : 'ui_theyasked';
-  pin.appendChild(addBn(el('span', 'cap', t(ck)), tb(ck)));
+  const M = [];
   const chosen = state.chosenQ || sc.questions.find(x => x.ok).q;
-  const qq = el('q'); qq.textContent = chosen;
-  pin.appendChild(qq);
-  /* whichever of the four was pinned, its Bangla sits under it */
   const qi = sc.questions.findIndex(x => x.q === chosen);
-  addBn(pin, qi > -1 ? (sb().questions || [])[qi] : null);
-  c.appendChild(pin);
 
-  const sp = el('div', 'speakers');
-  sc.speakers.forEach((s2, i) => sp.appendChild(informantCard(s2, i)));
-  c.appendChild(sp);
+  M.push({ cue: teacher ? ['You asked three people one question.', 'আপনি তিনজন মানুষকে একটি প্রশ্ন করেছেন।']
+                        : ['Three people were asked one question.', 'তিনজন মানুষকে একটি প্রশ্ন করা হয়েছিল।'],
+           ico: 'ask', cls: 'g-q-m',
+    render(st){
+      const q = el('div', 'g-qbub');
+      q.appendChild(el('p', 'g-q', '“' + chosen + '”'));
+      addBn(q, qi > -1 ? (sb().questions || [])[qi] : null);
+      st.appendChild(q);
+      const row = el('div', 'g-three');
+      sc.speakers.forEach((sp, j) => {
+        const f = el('div', 'g-three-p');
+        f.appendChild(faceImg(j, 'g-face is-small'));
+        f.appendChild(el('span', 'g-three-n', sp.name));
+        row.appendChild(f);
+      });
+      st.appendChild(row);
+    } });
 
-  const bar = el('div', 'tbar');
-  const allBtn = el('button', 'mini');
-  allBtn.appendChild(el('span', null, t('playall')));
-  allBtn.appendChild(bn(tb('playall')));
-  allBtn.type = 'button';
-  allBtn.onclick = playAll;
-  bar.appendChild(allBtn);
-  const anyHeard = state.passes.some(x => x > 0);
-  const tk = state.tOpen ? 'fulltext_on' : 'fulltext';
-  const tBtn = el('button', 'mini' + (state.tOpen ? ' on' : ''));
-  tBtn.appendChild(el('span', null, t(tk)));
-  tBtn.appendChild(bn(tb(tk)));
-  tBtn.type = 'button';
-  tBtn.id = 'btn-transcripts';
-  tBtn.disabled = !anyHeard;
-  tBtn.title = anyHeard ? '' : 'Listen to somebody first';
-  tBtn.onclick = () => { state.tOpen = !state.tOpen;
-    state.tCard = [state.tOpen, state.tOpen, state.tOpen];
-    document.querySelectorAll('.transcript').forEach(x => x.hidden = !state.tOpen);
-    if (state.tOpen) document.querySelectorAll('.caption').forEach(x => x.remove());
-    tBtn.classList.toggle('on', state.tOpen);
-    const k2 = state.tOpen ? 'fulltext_on' : 'fulltext';
-    tBtn.innerHTML = '';
-    tBtn.appendChild(el('span', null, t(k2)));
-    tBtn.appendChild(bn(tb(k2)));
-    const th = document.getElementById('tap-hint'); if (th) th.hidden = !state.tOpen;
-    if (!state.tOpen) hideGloss();
-    if (state.tOpen) setTimeout(() =>
-      coachAt('word', document.querySelector('.transcript:not([hidden]) button.w')), 220); };
-  bar.appendChild(tBtn);
-  c.appendChild(bar);
+  sc.speakers.forEach((sp, i) => {
+    M.push({ cue: ['This is ' + sp.name + '. Press play, and just listen.',
+                   'ইনি ' + sp.name + '। প্লে চাপুন, আর শুধু শুনুন।'],
+             ico: 'ear', cls: 'g-listen-m',
+             done: () => (state.passes[i] || 0) > 0 || !!state.noAudio,
+             render(st){ st.appendChild(gPlayer(i, 'pure')); } });
+    M.push({ cue: ['Listen again. Tap the words you hear.', 'আবার শুনুন। যে শব্দগুলো শুনছেন, সেগুলোতে চাপ দিন।'],
+             ico: 'ear', cls: 'g-listen-m',
+             render(st){ st.appendChild(gPlayer(i, 'catch')); } });
+    M.push({ cue: ['Listen and read. Tap an underlined word for its meaning.', 'শুনুন আর পড়ুন। দাগ দেওয়া শব্দে চাপ দিলে মানে দেখা যাবে।'],
+             ico: 'ear', cls: 'g-listen-m',
+             render(st){ st.appendChild(gPlayer(i, 'read')); } });
+    M.push({ cue: [sp.name + ', in one line.', sp.name + ', এক লাইনে।'],
+             ico: 'tick', cls: 'g-gist-m',
+             render(st){ st.appendChild(gistRow(i, i)); } });
+  });
 
-  /* the ring goes round the first real play button once the screen is up */
-  if (!state.passes.some(x => x > 0))
-    setTimeout(() => coachAt('play', document.querySelector('.spk[data-i="0"] .play')), 480);
+  guided('Listen', 'ear', M);
+}
 
-  const tip = el('div', 'tap-hint');
-  tip.appendChild(el('span', null, t('taphint')));
-  tip.appendChild(bn(tb('taphint')));
-  tip.hidden = !state.tOpen;
-  tip.id = 'tap-hint';
-  c.appendChild(tip);
-  p.appendChild(c);
-  wrap.appendChild(p);
+/* A listen has just ended: redraw the moment so its score, its dots and its
+   door reflect it. */
+function refreshCard(i){
+  if (gCur && gCur.name === 'Listen'){
+    const was = gDir; gDir = 0;
+    render();
+    gDir = was;
+    gDone();
+  }
 }
 
 /* ---- 4. CHECK ----
@@ -6333,7 +6429,10 @@ document.addEventListener('keydown', e => {
   if (k === 'f'){ toggleFullscreen(); return; }
   if (k === 't'){ const b = [...document.querySelectorAll('.mini')].find(m => /transcript/i.test(m.textContent));
                   if (b) b.click(); return; }
-  if (step === 2 && (k === '1' || k === '2' || k === '3')) togglePlay(+k - 1);
+  /* 1, 2, 3 or Enter: play whoever is on screen */
+  if ((k === '1' || k === '2' || k === '3' || k === 'enter') && !lesson && stepName() === 'Listen'){
+    const pb = document.querySelector('.g-play'); if (pb){ e.preventDefault(); pb.click(); }
+  }
 });
 
 window.addEventListener('pagehide', stopAudio);
