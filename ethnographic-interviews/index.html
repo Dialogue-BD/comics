@@ -1460,6 +1460,82 @@ body.bangla .zcap{min-height:calc(4.6rem*var(--ui))}
 :root[data-theme="stage"] .gloss-def{font-size:calc(1.3rem*var(--ui))}
 :root[data-theme="stage"] .gloss-note{font-size:calc(1.1rem*var(--ui))}
 
+/* ---------- check, one claim at a time ---------- */
+.g-center{text-align:center}
+.g-vbox{display:flex;justify-content:center}
+.g-venn{width:min(100%,calc(300px*var(--ui)));height:auto;overflow:visible}
+.g-venn-disc{fill:rgba(10,106,98,.06);stroke:var(--l-value);stroke-width:3}
+.g-venn-core{fill:var(--l-value-t);stroke:var(--l-value);stroke-width:2;stroke-dasharray:5 5;transition:fill .4s ease}
+.g-venn-core.is-on{fill:var(--gold-soft);stroke:var(--gold);stroke-width:4;stroke-dasharray:none}
+.g-venn-ring{fill:var(--card);stroke:var(--l-value);stroke-width:3}
+.g-tok text{font-family:var(--font-ui);font-weight:700;font-size:17px;fill:#fff}
+.g-tok.is-mid circle{fill:var(--l-value)}
+.g-tok.is-one circle{fill:var(--ink-muted)}
+.g-tok-in{transform-box:fill-box;transform-origin:center}
+.g-tok.is-fresh .g-tok-in{animation:gTok .7s cubic-bezier(.22,.68,.2,1) both}
+@keyframes gTok{from{transform:scale(2.6);opacity:0}to{transform:none;opacity:1}}
+
+.g-claim{display:flex;gap:var(--s3);align-items:flex-start;padding:var(--s4) var(--s5);
+  border:2px solid var(--rule-strong);border-radius:var(--radius-md);background:var(--panel);
+  animation:gPic .5s cubic-bezier(.22,.68,.2,1) both}
+.g-claim-n{flex:0 0 auto;min-width:calc(34px*var(--ui));height:calc(34px*var(--ui));border-radius:999px;
+  display:flex;align-items:center;justify-content:center;background:var(--ink);color:#fff;
+  font-weight:700;font-size:calc(1rem*var(--ui))}
+.g-claim-t{margin:0;font-family:var(--font-display);font-weight:600;color:var(--tx);
+  font-size:calc(clamp(1.2rem,5vw,1.6rem)*var(--ui));line-height:1.3}
+.g-claim .bn{font-size:calc(clamp(1rem,3.8vw,1.15rem)*var(--ui))}
+.g-two-choices{margin-top:var(--s3);grid-template-columns:1fr 1fr}
+.g-cchoice{padding:var(--s4) var(--s3)}
+.g-cfaces{display:flex;gap:calc(4px*var(--ui))}
+.g-cface{width:calc(22px*var(--ui));height:calc(22px*var(--ui));border-radius:999px;background:var(--l-value)}
+.g-cchoice:last-child .g-cface{background:var(--ink-muted)}
+.g-choice.is-refused{border-color:var(--clay);background:rgba(176,86,58,.1)}
+.g-fb{min-height:calc(64px*var(--ui));margin-top:var(--s3)}
+.g-fb-in{display:flex;gap:var(--s3);align-items:center;padding:var(--s3) var(--s4);border-radius:var(--radius-md);
+  animation:fade .3s ease both}
+.g-fb.is-good .g-fb-in{background:var(--moss-soft)}
+.g-fb.is-bad .g-fb-in{background:rgba(176,86,58,.1);border-left:4px solid var(--clay)}
+.g-fb-face{width:calc(48px*var(--ui));height:calc(48px*var(--ui));border-radius:999px;overflow:hidden;flex:0 0 auto;
+  display:grid;place-items:center;background:var(--card)}
+.g-fb-face img{width:100%;height:100%;object-fit:cover}
+.g-fb-face .g-face-ph{font-size:calc(1.2rem*var(--ui))}
+.g-fb-ico{width:calc(28px*var(--ui));height:calc(28px*var(--ui));flex:0 0 auto;color:var(--forest)}
+.g-fb.is-bad .g-fb-ico{color:var(--clay)}
+.g-fb-t{margin:0;font-weight:700;font-size:calc(1.05rem*var(--ui))}
+
+.g-shared{list-style:none;margin:var(--s3) 0 0;padding:0;display:flex;flex-direction:column;gap:var(--s3)}
+.g-shared li{display:flex;gap:var(--s3);align-items:flex-start;padding:var(--s3) var(--s4);
+  border-radius:var(--radius-md);background:var(--l-value-t);border:2px solid var(--l-value);
+  animation:gGist .6s cubic-bezier(.22,.68,.2,1) both}
+.g-shared .g-claim-n{background:var(--l-value)}
+.g-shared-t{margin:0;font-family:var(--font-display);font-weight:600;font-size:calc(1.15rem*var(--ui));line-height:1.35}
+.g-shared .bn{font-size:calc(.95rem*var(--ui))}
+.g-ringname.r-value{color:var(--l-value)}
+
+/* on a phone the question comes first and the picture sits under it */
+@media (max-width:759.98px){
+  .g-check .g-vbox{order:2}
+  .g-check .g-venn{width:min(80%,calc(240px*var(--ui)))}
+}
+@media (min-width:760px){
+  .g-check{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+  .g-venn{width:min(100%,calc(380px*var(--ui)))}
+}
+:root[data-theme="stage"] .g-venn{width:auto;height:min(100%,calc(560px*var(--ui)));max-width:100%}
+:root[data-theme="stage"] .g-check{height:100%;min-height:0}
+:root[data-theme="stage"] .g-vbox{height:100%;min-height:0;align-items:center}
+:root[data-theme="stage"] .g-claim-t{font-size:calc(2rem*var(--ui))}
+:root[data-theme="stage"] .g-claim .bn{font-size:calc(1.45rem*var(--ui))}
+:root[data-theme="stage"] .g-claim-n{min-width:calc(46px*var(--ui));height:calc(46px*var(--ui));font-size:calc(1.3rem*var(--ui))}
+:root[data-theme="stage"] .g-cface{width:calc(30px*var(--ui));height:calc(30px*var(--ui))}
+:root[data-theme="stage"] .g-fb-t{font-size:calc(1.45rem*var(--ui))}
+:root[data-theme="stage"] .g-fb .bn{font-size:calc(1.2rem*var(--ui))}
+:root[data-theme="stage"] .g-fb-face{width:calc(64px*var(--ui));height:calc(64px*var(--ui))}
+:root[data-theme="stage"] .g-shared-t{font-size:calc(1.6rem*var(--ui))}
+:root[data-theme="stage"] .g-shared .bn{font-size:calc(1.25rem*var(--ui))}
+:root[data-theme="stage"] .g-center{font-size:calc(1.25rem*var(--ui))}
+@media (prefers-reduced-motion:reduce){ .g-tok.is-fresh .g-tok-in,.g-claim,.g-shared li{animation:none} }
+
 /* ---------- the rows under the rings ---------- */
 .rrows{display:flex;flex-direction:column;gap:var(--s2);margin-top:var(--s5)}
 .rrow{
@@ -2315,6 +2391,8 @@ const T = {
                   'আবার বাজান, লেখাটি সঙ্গে সঙ্গে চলবে।'],
   nx_next:       ['Next',               ''],
   nx_go:         ['Next',               'এগিয়ে চলুন'],
+  ui_c_all:      ['All three',          'তিনজনই'],
+  ui_c_one:      ['Only one',           'কেবল একজন'],
   nx_start:      ['Start the activity', 'শুরু করুন'],
   nx_got_it:     ['Got it',             ''],
   q_try:         ['Now you try',        ''],
@@ -5291,9 +5369,213 @@ function refreshCard(i){
 }
 
 /* ---- 4. CHECK ----
-   This was the bottom half of the listening screen, which meant that screen
-   asked a student to meet a dozen new affordances at once. One screen, one
-   task: hear them, then find the overlap. */
+   Choosing three sentences out of six, all at once, asked a beginner to hold
+   six claims and three interviews in mind together. Now the claims come one
+   at a time, and each asks one yes-or-no question: did all three people say
+   this, or only one?
+
+   A right answer drops the claim into a picture of the three answers — into
+   the middle if all three said it, into that person's own circle if only
+   one did — so the picture builds up the triangulation while the class
+   answers. A wrong answer says who really said it, and the class tries
+   again. When the six are sorted, the middle of the picture is the culture. */
+
+/* where a claim's token sits: three places in the middle, one per lobe */
+const VENN_C = [[200, 146], [140, 250], [260, 250]];
+const VENN_MID = [[180, 196], [220, 196], [200, 230]];
+const VENN_LOBE = [[200, 84], [106, 290], [294, 290]];
+
+function claimOrder(){
+  return state.cOrder || (state.cOrder = shuffle(sc.claims.map((_, i) => i)));
+}
+function claimWho(cm){ return sc.speakers.findIndex(sp => sp.name === cm.who); }
+
+/* the three answers as circles, with every claim sorted so far in its place */
+function checkVenn(fresh){
+  const s = svg('0 0 400 380', 'g-venn');
+  const defs = shape('defs', {});
+  sc.speakers.forEach((sp, j) => {
+    const cp = shape('clipPath', { id: 'gvf' + j });
+    cp.appendChild(shape('circle', { cx: 0, cy: 0, r: 30 }));
+    defs.appendChild(cp);
+  });
+  s.appendChild(defs);
+  VENN_C.forEach(c => s.appendChild(shape('circle', { cx: c[0], cy: c[1], r: 112, class: 'g-venn-disc' })));
+  const all = sc.claims.every((_, i) => state.cAns && state.cAns[i]);
+  s.appendChild(shape('circle', { cx: 200, cy: 214, r: 44, class: 'g-venn-core' + (all ? ' is-on' : '') }));
+  /* the faces sit outside their own circle, so it is plain whose is whose */
+  [[200, 30], [40, 336], [360, 336]].forEach((f, j) => {
+    const g = shape('g', { transform: 'translate(' + f[0] + ' ' + f[1] + ')' });
+    g.appendChild(shape('circle', { cx: 0, cy: 0, r: 32, class: 'g-venn-ring' }));
+    const im = shape('image', { href: 'portraits/' + sc.id + '-' + (j + 1) + '.jpg',
+                                x: -30, y: -30, width: 60, height: 60,
+                                'clip-path': 'url(#gvf' + j + ')', preserveAspectRatio: 'xMidYMid slice' });
+    g.appendChild(im);
+    s.appendChild(g);
+  });
+  let mid = 0;
+  claimOrder().forEach((ci, n) => {
+    if (!state.cAns || !state.cAns[ci]) return;
+    const cm = sc.claims[ci];
+    const at = cm.shared ? VENN_MID[mid++] : VENN_LOBE[Math.max(0, claimWho(cm))];
+    const g = shape('g', { class: 'g-tok' + (cm.shared ? ' is-mid' : ' is-one') + (ci === fresh ? ' is-fresh' : ''),
+                           transform: 'translate(' + at[0] + ' ' + at[1] + ')' });
+    const inner = shape('g', { class: 'g-tok-in' });
+    inner.appendChild(shape('circle', { cx: 0, cy: 0, r: 17 }));
+    const tx = shape('text', { x: 0, y: 0, 'text-anchor': 'middle', 'dominant-baseline': 'central' });
+    tx.textContent = String(n + 1);
+    inner.appendChild(tx);
+    g.appendChild(inner);
+    s.appendChild(g);
+  });
+  return s;
+}
+
+function claimMoment(ci, n){
+  const cm = sc.claims[ci];
+  return {
+    cue: ['Did all three say this — or only one?', 'তিনজনই কি এটা বলেছেন — নাকি কেবল একজন?'],
+    ico: 'tick', cls: 'g-claim-m',
+    done: () => !!(state.cAns && state.cAns[ci]),
+    render(st){
+      const two = el('div', 'g-two g-check');
+      const vbox = el('div', 'g-vbox');
+      vbox.appendChild(checkVenn());
+      two.appendChild(vbox);
+
+      const side = el('div', 'g-side');
+      const card = el('div', 'g-claim');
+      card.appendChild(el('span', 'g-claim-n', String(n + 1)));
+      const w = el('div');
+      w.appendChild(el('p', 'g-claim-t', cm.text));
+      addBn(w, cm.text_bn);
+      card.appendChild(w);
+      side.appendChild(card);
+
+      const row = el('div', 'g-choices g-two-choices');
+      const fb = el('div', 'g-fb');
+      const answered = !!(state.cAns && state.cAns[ci]);
+      [['all', 'ui_c_all', 3], ['one', 'ui_c_one', 1]].forEach(o => {
+        const b = el('button', 'g-choice g-cchoice');
+        b.type = 'button';
+        const faces = el('span', 'g-cfaces');
+        for (let k = 0; k < o[2]; k++) faces.appendChild(el('span', 'g-cface'));
+        b.appendChild(faces);
+        const lab = el('span', 'g-choice-t');
+        lab.appendChild(el('span', null, t(o[1])));
+        lab.appendChild(bn(tb(o[1])));
+        b.appendChild(lab);
+        b.disabled = answered;
+        if (answered && ((o[0] === 'all') === !!cm.shared)) b.classList.add('is-picked');
+        b.onclick = () => {
+          if (state.cAns && state.cAns[ci]) return;
+          const right = (o[0] === 'all') === !!cm.shared;
+          fb.innerHTML = '';
+          if (right){
+            state.cAns = state.cAns || {};
+            state.cAns[ci] = true;
+            b.classList.add('is-picked');
+            row.classList.add('is-done');
+            row.querySelectorAll('.g-choice').forEach(x => { x.disabled = true; });
+            fb.className = 'g-fb is-good';
+            fb.appendChild(fbLine(cm, true));
+            /* the claim goes into the picture */
+            vbox.innerHTML = '';
+            vbox.appendChild(checkVenn(ci));
+            if (sc.claims.every((_, i) => state.cAns[i])) state.claimsDone = true;
+            gDone();
+            const here = gCur.k;
+            setTimeout(() => { if (!lesson && gCur && gCur.name === 'Check' && gCur.k === here) advance(); }, 1900);
+          } else {
+            fb.className = 'g-fb is-bad';
+            fb.appendChild(fbLine(cm, false));
+            b.classList.add('is-refused');
+            setTimeout(() => b.classList.remove('is-refused'), 600);
+          }
+        };
+        row.appendChild(b);
+      });
+      if (answered){ row.classList.add('is-done'); fb.className = 'g-fb is-good'; fb.appendChild(fbLine(cm, true)); }
+      side.appendChild(row);
+      side.appendChild(fb);
+      two.appendChild(side);
+      st.appendChild(two);
+    }
+  };
+}
+
+/* what the class is told after an answer, with the face of whoever said it */
+function fbLine(cm, right){
+  const box = el('div', 'g-fb-in');
+  const j = claimWho(cm);
+  if (!cm.shared && j > -1) box.appendChild(faceImg(j, 'g-fb-face'));
+  else box.appendChild(icon(right ? 'tick' : 'cross', 'g-fb-ico'));
+  const w = el('div');
+  let en, bnT;
+  if (right && cm.shared){ en = 'Yes — all three said it.'; bnT = 'ঠিক — তিনজনই এটা বলেছেন।'; }
+  else if (right){ en = 'Yes — only ' + cm.who + ' said this.'; bnT = 'ঠিক — কেবল ' + cm.who + ' এটা বলেছেন।'; }
+  else if (cm.shared){ en = 'Look again: all three said something like this.'; bnT = 'আবার দেখুন: তিনজনই এমন কিছু বলেছেন।'; }
+  else { en = 'Not all three. Only ' + cm.who + ' said this.'; bnT = 'তিনজন নন। কেবল ' + cm.who + ' এটা বলেছেন।'; }
+  w.appendChild(el('p', 'g-fb-t', en));
+  w.appendChild(bn(bnT));
+  box.appendChild(w);
+  return box;
+}
+
+function stepCheck(){
+  const M = [];
+  M.push({ cue: ['Here is what each person said.', 'প্রত্যেকে কী বলেছেন, এখানে দেখুন।'], ico: 'ear', cls: 'g-gist-m',
+    render(st){
+      const box = el('div', 'g-gists');
+      sc.speakers.forEach((sp, j) => {
+        const c = el('div', 'g-gist is-in');
+        const h = el('div', 'g-gist-h');
+        h.appendChild(faceImg(j, 'g-gist-face'));
+        h.appendChild(el('span', 'g-gist-name', sp.name));
+        c.appendChild(h);
+        c.appendChild(el('p', 'g-gist-t', sp.gist));
+        addBn(c, (sb().gists || [])[j]);
+        box.appendChild(c);
+      });
+      st.appendChild(box);
+      st.appendChild(addBn(el('p', 'g-hint g-center', 'Next: six sentences, one at a time. For each one, decide: did all three say it, or only one?'),
+                           'এরপর: ছয়টি বাক্য, একটি একটি করে। প্রতিটির জন্য ঠিক করুন: তিনজনই বলেছেন, নাকি কেবল একজন?'));
+    } });
+
+  claimOrder().forEach((ci, n) => M.push(claimMoment(ci, n)));
+
+  M.push({ cue: ['What all three said is the culture.', 'তিনজনই যা বলেছেন, সেটিই সংস্কৃতি।'], ico: 'target', cls: 'g-claim-m',
+    render(st){
+      const two = el('div', 'g-two g-check');
+      const vbox = el('div', 'g-vbox');
+      vbox.appendChild(checkVenn());
+      two.appendChild(vbox);
+      const side = el('div', 'g-side');
+      side.appendChild(addBn(el('p', 'g-ringname r-value', t('ui_allsaid')), tb('ui_allsaid')));
+      const ul = el('ul', 'g-shared');
+      let n = 0;
+      claimOrder().forEach((ci, k) => {
+        const cm = sc.claims[ci];
+        if (!cm.shared) return;
+        const li = el('li');
+        li.style.animationDelay = (n++ * 260) + 'ms';
+        li.appendChild(el('span', 'g-claim-n', String(k + 1)));
+        const w = el('div');
+        w.appendChild(el('p', 'g-shared-t', cm.text));
+        addBn(w, cm.text_bn);
+        li.appendChild(w);
+        ul.appendChild(li);
+      });
+      side.appendChild(ul);
+      side.appendChild(addBn(el('p', 'g-hint', 'The other three were true of one person only.'),
+                             'বাকি তিনটি কেবল একজনের ক্ষেত্রে সত্য।'));
+      two.appendChild(side);
+      st.appendChild(two);
+    } });
+
+  guided('Check', 'tick', M);
+}
+
 /* where the students stop and the teacher takes over */
 function stepHandoff(){
   const p = el('div', 'panel p-done');
@@ -5324,61 +5606,6 @@ function stepHandoff(){
   wrap.appendChild(p);
 }
 
-function stepCheck(){
-  const p = el('div', 'panel p-check');
-  p.appendChild(taskStrip(stepNo(), 'tick', 'task_check'));
-
-  const t2 = el('div', 'card raised');
-  t2.appendChild(kickerEl());
-  t2.appendChild(el('h2', 'h-title', 'What did all three say?'));
-  t2.appendChild(bn('তিনজনই কী বলেছেন?'));
-  t2.appendChild(vennMark());
-
-  const board = gistBoard();
-  board.id = 'gist-board';
-  t2.appendChild(board);
-  t2.appendChild(el('p', 'hint',
-    'Three of these six came up in every answer. The other three are true about one person only.'));
-  t2.appendChild(bn('এই ছয়টির মধ্যে তিনটি প্রত্যেকের উত্তরেই এসেছে। বাকি তিনটি কেবল একজনের ক্ষেত্রে সত্য।'));
-
-  const cl = el('div', 'claims');
-  const order = state.cOrder || (state.cOrder = shuffle(sc.claims.map((_, i) => i)));
-  let chk;
-  order.forEach(i => {
-    const cm = sc.claims[i];
-    const b = el('button', 'claim' + (state.picked.has(i) ? ' sel' : ''));
-    b.type = 'button'; b.dataset.i = i;
-    const box = el('span', 'box', state.picked.has(i) ? '✓' : '');
-    b.appendChild(box);
-    const txt = el('span');
-    txt.appendChild(el('span', null, cm.text));
-    if (cm.text_bn) txt.appendChild(bn(cm.text_bn));
-    b.appendChild(txt);
-    b.onclick = () => {
-      if (state.claimsDone) return;
-      if (state.picked.has(i)) state.picked.delete(i); else state.picked.add(i);
-      b.classList.toggle('sel', state.picked.has(i));
-      box.textContent = state.picked.has(i) ? '✓' : '';
-      chk.disabled = state.picked.size !== 3;
-    };
-    cl.appendChild(b);
-  });
-  t2.appendChild(cl);
-
-  const bar2 = el('div', 'tbar');
-  chk = el('button', 'mini on');
-  chk.appendChild(el('span', null, t('checkmine')));
-  chk.appendChild(bn(tb('checkmine')));
-  chk.type = 'button'; chk.id = 'btn-check'; chk.disabled = state.picked.size !== 3;
-  chk.onclick = () => checkClaims(cl, chk, t2);
-  bar2.appendChild(chk);
-  t2.appendChild(bar2);
-
-  if (state.claimsDone) { markClaims(cl); chk.remove(); }
-  p.appendChild(t2);
-  wrap.appendChild(p);
-}
-
 /* the three confirmed lines, carried forward from the triangulation so every
    conclusion on this screen can be checked against them */
 function evidenceBoard(){
@@ -5394,167 +5621,9 @@ function evidenceBoard(){
   return box;
 }
 
-/* ------------------------------------------------------- the three columns
-   Triangulation used to ask a student to hold three whole interviews in their
-   head, summarise each one silently, and compare the summaries — all at once,
-   in a second language. That is the hardest thing on the page and none of it
-   was the point.
-
-   So each interview now hands back a one-line summary the moment it has been
-   heard through, and the three summaries stay on screen side by side while
-   the claims are sorted. The comparing happens with the eyes, on the page,
-   instead of in memory. */
-function gistBoard(){
-  const box = el('div', 'gists');
-  sc.speakers.forEach((sp, i) => {
-    const heard = (state.passes[i] || 0) > 0;
-    const col = el('div', 'gist' + (heard ? ' is-heard' : ''));
-    col.dataset.i = i;
-
-    const head = el('div', 'gist-head');
-    const face = el('span', 'gist-face');
-    face.appendChild(el('span', null, sp.name.replace(/^Professor\s+/, '').charAt(0)));
-    const img = new Image();
-    img.alt = ''; img.src = 'portraits/' + sc.id + '-' + (i + 1) + '.jpg';
-    img.onerror = () => img.remove();
-    face.appendChild(img);
-    head.appendChild(face);
-    head.appendChild(el('span', 'gist-name', sp.name));
-    col.appendChild(head);
-
-    const gt = el('p', 'gist-text',
-      heard ? sp.gist : t('ui_gistwait') + sp.name + t('ui_gistwait2'));
-    addBn(gt, heard ? (sb().gists || [])[i]
-                    : tb('ui_gistwait') + sp.name + tb('ui_gistwait2'));
-    col.appendChild(gt);
-    if (!heard) gt.classList.add('empty');
-    box.appendChild(col);
-  });
-  return box;
-}
-
-/* redraw the board in place when a listen finishes, so the summary arrives
-   as the reward for having listened rather than as another wall of text */
-function refreshGists(){
-  const old = document.getElementById('gist-board');
-  if (old){
-    const fresh = gistBoard();
-    fresh.id = 'gist-board';
-    old.replaceWith(fresh);
-  }
-  const v = document.querySelector('.venn');
-  if (v) v.replaceWith(vennMark());
-}
-
-/* Three answers, one overlap.
-
-   The first version drew the overlap by hand as a lens, and the hand was
-   wrong: that shape was 64 units tall and sat 19 units low, where the real
-   triple intersection of these three circles is 10 units tall — so it came
-   out as a beige oval lying across three faces. Nested clip paths give the
-   exact region with no arithmetic at all: a rectangle clipped by circle A,
-   then by B, then by C, is precisely what all three have in common.
-
-   The faces have gone from here. This is the idea, small and abstract; the
-   people belong in the conversation above it, not inside a diagram. */
-let vennSeq = 0;
-function vennMark(){
-  const heard = sc.speakers.map((_, i) => (state.passes[i] || 0) > 0);
-  const all = heard.every(Boolean);
-  const n = ++vennSeq;
-  const s = svg('0 0 210 ' + (bnOn ? 166 : 148), 'venn');
-  /* pulled a little closer than three tangent circles would be: the shared
-     region is the whole point of the picture, and at arm's length it has to
-     be big enough to see from the back of a classroom */
-  const P = [[78, 58], [132, 58], [105, 96]];
-
-  const defs = shape('defs', {});
-  P.forEach((c, i) => {
-    const cp = shape('clipPath', { id: 'vk' + n + i });
-    cp.appendChild(shape('circle', { cx: c[0], cy: c[1], r: 38 }));
-    defs.appendChild(cp);
-  });
-  s.appendChild(defs);
-
-  P.forEach((c, i) => s.appendChild(shape('circle',
-    { cx: c[0], cy: c[1], r: 38, class: 'venn-disc' + (heard[i] ? ' is-heard' : '') })));
-
-  let host = s;
-  for (let i = 0; i < 3; i++){
-    const g = shape('g', { 'clip-path': 'url(#vk' + n + i + ')' });
-    host.appendChild(g); host = g;
-  }
-  host.appendChild(shape('rect',
-    { x: 0, y: 0, width: 210, height: 148, class: 'venn-core' + (all ? ' is-on' : '') }));
-
-  P.forEach((c, i) => s.appendChild(shape('circle',
-    { cx: c[0], cy: c[1], r: 38, class: 'venn-ring' + (heard[i] ? ' is-heard' : '') })));
-
-  const key = all ? 'ui_allsaid' : 'ui_listenall';
-  const cap = shape('text', { x: 105, y: 143, 'text-anchor': 'middle',
-                              class: 'venn-cap' + (all ? ' is-on' : '') });
-  cap.textContent = t(key);
-  s.appendChild(cap);
-  if (bnOn){
-    const cb = shape('text', { x: 105, y: 160, 'text-anchor': 'middle', lang: 'bn',
-                               class: 'venn-cap venn-cap-bn' + (all ? ' is-on' : '') });
-    cb.textContent = tb(key);
-    s.appendChild(cb);
-  }
-  return s;
-}
-
-function markClaims(cl){
-  cl.querySelectorAll('.claim').forEach(b => {
-    const cm = sc.claims[+b.dataset.i];
-    b.classList.remove('sel');
-    b.classList.add(cm.shared ? 'mark-ok' : 'mark-no');
-    b.querySelector('.box').textContent = cm.shared ? '✓' : '·';
-    if (!cm.shared && !b.querySelector('.who')){
-      const j = sc.speakers.findIndex(sp => sp.name === cm.who);
-      const w = el('span', 'who');
-      if (j > -1){
-        const f = el('span', 'who-face');
-        const im = new Image(); im.alt = '';
-        im.src = 'portraits/' + sc.id + '-' + (j + 1) + '.jpg';
-        im.onerror = () => im.remove();
-        f.appendChild(im);
-        w.appendChild(f);
-      }
-      w.appendChild(document.createTextNode(t('ui_only1') + cm.who + t('ui_only2')));
-      addBn(w, tb('ui_only1') + cm.who + tb('ui_only2'));
-      b.lastChild.appendChild(w);
-    }
-  });
-}
-
-function checkClaims(cl, chk, card){
-  const chosen = [...state.picked];
-  const wrong = chosen.filter(i => !sc.claims[i].shared);
-  if (wrong.length){
-    const w = sc.claims[wrong[0]];
-    toast(t('ui_only1') + w.who + t('ui_only2'), ' — ' + t('ui_onlytoast'),
-          tb('ui_only1') + w.who + tb('ui_only2'), tb('ui_onlytoast'));
-    cl.querySelectorAll('.claim').forEach(b => {
-      if (wrong.indexOf(+b.dataset.i) > -1){
-        b.classList.remove('sel'); state.picked.delete(+b.dataset.i);
-        b.querySelector('.box').textContent = '';
-        b.classList.add('is-refused'); setTimeout(() => b.classList.remove('is-refused'), 540);
-      }
-    });
-    chk.disabled = state.picked.size !== 3;
-    return;
-  }
-  state.claimsDone = true;
-  markClaims(cl);
-  chk.remove();
-  const co = el('div', 'coach good');
-  co.appendChild(el('b', null, t('ui_threetimes')));
-  co.appendChild(document.createTextNode(' ' + t('ui_threetimesb')));
-  addBn(co, tb('ui_threetimes') + ' ' + tb('ui_threetimesb'));
-  card.appendChild(co);
-  syncNext();
-}
+/* the old board redrew itself after each listen; the guided steps redraw
+   their own moment instead */
+function refreshGists(){}
 
 /* ---- 4. FILL THE RINGS ---- */
 function stepMap(){
