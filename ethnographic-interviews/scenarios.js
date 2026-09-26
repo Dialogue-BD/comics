@@ -832,5 +832,4 @@ const SCENARIOS = [
       'whether it changes with who the neighbour is.'
   }
 }
-
 ];

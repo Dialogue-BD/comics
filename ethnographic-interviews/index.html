@@ -171,12 +171,13 @@ a.logo-chip:hover{box-shadow:0 0 0 1px var(--rule-strong),0 4px 12px rgba(16,61,
 .logo-chip img{width:calc(92px*var(--ui));height:auto;display:block}
 .brand-name{
   display:flex;align-items:center;gap:calc(6px*var(--ui));
-  min-width:0;flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  min-width:0;flex:1 1 auto;
   font-family:var(--font-display);font-weight:600;
   font-size:calc(clamp(1rem,4vw,1.12rem)*var(--ui));letter-spacing:-.005em;color:var(--heading);
   padding-left:calc(10px*var(--ui));border-left:1px solid var(--rule);
 }
 .brand-g{font-size:.95em;line-height:1;flex:0 0 auto}
+.brand-txt{min-width:0;flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .brand-mode{margin-left:calc(4px*var(--ui));padding:calc(2px*var(--ui)) calc(8px*var(--ui));border-radius:var(--radius-pill);
   background:var(--forest);color:#fff;font-family:var(--font-ui);font-size:calc(.62rem*var(--ui));font-weight:700;
   letter-spacing:.1em;text-transform:uppercase;line-height:1.4;flex:0 0 auto}
@@ -1240,9 +1241,30 @@ body.bangla .zcap{min-height:calc(4.6rem*var(--ui))}
 @keyframes gRiseBack{from{opacity:0;transform:translate3d(-14px,6px,0)}to{opacity:1;transform:none}}
 .g-head{animation:fade .35s ease both}
 
+/* the page turn (see turnPage): the stage card keeps its identity and morphs,
+   the old contents leave toward where the class came from */
+.g-stage{view-transition-name:gstage}
+.g-head{view-transition-name:ghead}
+::view-transition-group(gstage){animation-duration:.42s;animation-timing-function:cubic-bezier(.22,.8,.24,1)}
+::view-transition-old(gstage){animation:vtOut .2s cubic-bezier(.4,0,1,1) both}
+::view-transition-new(gstage){animation:vtIn .32s cubic-bezier(.2,.7,.2,1) .06s both}
+::view-transition-old(ghead){animation:vtFade .16s ease both reverse}
+::view-transition-new(ghead){animation:vtFade .3s ease .05s both}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.24s}
+:root[data-vt="back"]::view-transition-old(gstage){animation-name:vtOutBack}
+@keyframes vtOut{to{opacity:0;transform:translateX(-18px)}}
+@keyframes vtOutBack{to{opacity:0;transform:translateX(18px)}}
+@keyframes vtIn{from{opacity:0}}
+@keyframes vtFade{from{opacity:0}}
+@media (prefers-reduced-motion: reduce){
+  .g-stage,.g-head{view-transition-name:none}
+}
+
 /* the step's progress: a row of short bars, the current one long */
 .g-foot{display:flex;align-items:center;justify-content:center;gap:calc(12px*var(--ui));min-width:0}
-.g-dots{display:flex;align-items:center;gap:0;flex-wrap:nowrap}
+.g-dots{display:flex;align-items:center;gap:0;flex-wrap:nowrap;min-width:0;max-width:100%;
+  overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch}
+.g-dots::-webkit-scrollbar{display:none}
 .g-dot{
   height:calc(26px*var(--ui));padding:0 calc(3px*var(--ui));border:0;background:none;cursor:pointer;
   display:inline-flex;align-items:center;justify-content:center;
@@ -1255,7 +1277,7 @@ body.bangla .zcap{min-height:calc(4.6rem*var(--ui))}
 .g-dot:disabled{cursor:default}
 .g-dot.ahead::before{opacity:.6}
 .g-dot:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
-.g-count{font-size:calc(.74rem*var(--ui));font-weight:600;color:var(--tx-muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.g-count{font-size:calc(.74rem*var(--ui));font-weight:600;color:var(--tx-muted);font-variant-numeric:tabular-nums;white-space:nowrap;flex:0 0 auto}
 /* inside the panel (a phone's paper flow keeps it under the stage) */
 .g-panel > .g-foot{justify-content:center}
 
@@ -1269,7 +1291,7 @@ body.bangla .zcap{min-height:calc(4.6rem*var(--ui))}
   font-size:calc(clamp(1.3rem,5.2vw,1.6rem)*var(--ui));line-height:1.25;text-wrap:balance}
 .g-side .bn{font-size:calc(clamp(1rem,3.8vw,1.08rem)*var(--ui))}
 .g-hint{margin:var(--s4) 0 0;font-size:calc(.95rem*var(--ui));color:var(--tx-muted);line-height:1.5}
-.g-two{display:grid;grid-template-columns:1fr;gap:var(--s4);align-items:center}
+.g-two{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s4);align-items:center;min-width:0}
 .g-side{min-width:0;display:flex;flex-direction:column;gap:calc(10px*var(--ui))}
 
 .g-pic{position:relative;border-radius:calc(12px*var(--ui));overflow:hidden;background:var(--panel);
@@ -1283,13 +1305,20 @@ body.bangla .zcap{min-height:calc(4.6rem*var(--ui))}
   box-shadow:0 1px 3px rgba(0,0,0,.18)}
 .g-pic.is-tl .g-pic-n{top:auto;bottom:calc(10px*var(--ui))}
 .g-pic.is-big{width:100%;max-width:calc(560px*var(--ui));justify-self:center}
-.g-thumbs{display:flex;gap:calc(10px*var(--ui));margin-top:var(--s3)}
-.g-pic.is-thumb{flex:1 1 0;max-width:calc(150px*var(--ui));border-radius:calc(8px*var(--ui))}
+.g-thumbs{display:flex;gap:calc(10px*var(--ui));margin-top:var(--s3);min-width:0}
+.g-pic.is-thumb{flex:1 1 0;min-width:0;max-width:calc(150px*var(--ui));border-radius:calc(8px*var(--ui))}
 .g-pic.is-thumb .g-pic-n{min-width:calc(20px*var(--ui));height:calc(20px*var(--ui));font-size:calc(.68rem*var(--ui));
   top:calc(5px*var(--ui));left:calc(5px*var(--ui))}
 .g-pic.is-thumb.is-tl .g-pic-n{top:auto;bottom:calc(5px*var(--ui))}
 .g-pic.is-thumb .beat-g{display:none}
 .g-pic.is-veiled{opacity:.35;filter:grayscale(1)}
+/* a panel whose drawing has not been made yet: the scene's own icon, large
+   and centred on a soft wash, so the frame still reads as a picture slot */
+.g-pic:has(.no-shot){aspect-ratio:1/1}
+.g-pic .beat-shot.no-shot{position:absolute;inset:0;width:100%;height:100%;display:grid;place-items:center;
+  padding:0;background:radial-gradient(circle at 50% 46%,var(--chip-veil) 0,transparent 68%)}
+.g-pic .beat-shot.no-shot .beat-g{display:block;font-size:calc(4.6rem*var(--ui));filter:saturate(.9)}
+.g-pic.is-thumb .beat-shot.no-shot .beat-g{display:block;font-size:calc(1.9rem*var(--ui))}
 .g-pic.is-now{box-shadow:0 0 0 3px var(--gold),0 6px 18px rgba(16,61,33,.12)}
 .g-thumbs.is-small .g-pic.is-thumb{max-width:calc(96px*var(--ui))}
 .g-thumbs.is-strip{justify-content:center;margin:0 0 var(--s5)}
@@ -1324,6 +1353,20 @@ body.bangla .zcap{min-height:calc(4.6rem*var(--ui))}
 .g-choices.is-done .g-choice{cursor:default}
 .g-choices.is-done .g-choice:not(.is-picked){opacity:.4}
 .g-choice.is-picked{border-color:var(--forest);background:var(--moss-soft);box-shadow:0 0 0 1px var(--forest)}
+/* open / close: the two answers wear their meaning before anyone picks */
+.g-choice.is-open .g-choice-g{background:var(--moss-soft);color:var(--forest)}
+.g-choice.is-shut .g-choice-g{background:rgba(176,86,58,.12);color:var(--clay-ink,#8A3F28)}
+.g-choice.is-shut:hover:not(:disabled){border-color:var(--clay)}
+.g-choice.is-right .glyph{animation:gPick .5s cubic-bezier(.2,.7,.2,1.4)}
+.g-choice.is-wrong{border-color:var(--clay);background:rgba(176,86,58,.07);box-shadow:0 0 0 1px var(--clay);
+  animation:gShake .45s cubic-bezier(.36,.07,.19,.97)}
+.g-choice.is-picked.is-wrong .glyph{background:var(--clay);color:#fff}
+.g-choice.is-wrong::after{display:none}
+.g-choices.is-done .g-choice.is-answer{opacity:1;border:1.5px dashed var(--forest);background:var(--surface-card)}
+.g-choice.is-answer .glyph{background:var(--forest);color:#fff}
+@keyframes gPick{0%{transform:scale(.8)}60%{transform:scale(1.12)}100%{transform:none}}
+@keyframes gShake{10%,90%{transform:translateX(-1px)}20%,80%{transform:translateX(2px)}
+  30%,50%,70%{transform:translateX(-5px)}40%,60%{transform:translateX(5px)}}
 .g-choice.is-picked .glyph{background:var(--forest);color:#fff}
 .g-choice.is-picked::after{
   content:"";position:absolute;top:calc(10px*var(--ui));right:calc(10px*var(--ui));
@@ -1417,7 +1460,14 @@ body.bangla .zcap{min-height:calc(4.6rem*var(--ui))}
   transition:box-shadow .25s ease}
 .g-face img{width:100%;height:100%;object-fit:cover;display:block}
 .g-face.is-small{width:calc(84px*var(--ui))}
-.g-face-ph{font-family:var(--font-display);font-weight:600;font-size:calc(2.4rem*var(--ui));color:var(--tx-muted)}
+.g-face-ph{font-family:var(--font-display);font-weight:600;font-size:calc(2.4rem*var(--ui));
+  color:color-mix(in srgb,var(--l-value) 70%,var(--tx))}
+/* portrait not made yet: a moss-tinted card with the initial, never a grey hole */
+.g-face:has(.g-face-ph){background:linear-gradient(165deg,
+  color-mix(in srgb,var(--l-value) 20%,var(--card)),color-mix(in srgb,var(--l-value) 7%,var(--card)))}
+.g-venn-ph{fill:color-mix(in srgb,var(--l-value) 18%,var(--card))}
+.g-venn-ph-t{font-family:var(--font-display);font-weight:600;font-size:26px;
+  fill:color-mix(in srgb,var(--l-value) 70%,var(--tx))}
 
 .g-player{display:grid;grid-template-columns:1fr;gap:var(--s4);
   border:0;background:none;box-shadow:none;overflow:visible;border-radius:0}
@@ -2524,10 +2574,19 @@ body.bangla .bn-inline{display:inline}
 .g-found-m .chain-arrow{display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:calc(1.4rem*var(--ui));
   width:calc(34px*var(--ui));flex:0 0 auto;transform:rotate(90deg);margin:calc(4px*var(--ui)) auto}
 @media (min-width:720px){ .g-found-m .chain-arrow{transform:none;margin:0} }
-.g-found-m .chain > *{animation:gRise .5s cubic-bezier(.2,.7,.2,1) both}
-.g-found-m .chain > :nth-child(3){animation-delay:.12s}
-.g-found-m .chain > :nth-child(4),.g-found-m .chain > :nth-child(5){animation-delay:.24s}
-.g-found-m .chain > :nth-child(n+6){animation-delay:.36s}
+.g-found-m .chain > *{animation:gRise .55s cubic-bezier(.2,.7,.2,1) both}
+/* read aloud at a class's pace: a ring, then "why?", then the ring inside it */
+.g-found-m .chain > .chain-arrow{animation:chainWhy .5s cubic-bezier(.2,.7,.2,1.5) both}
+.g-found-m .chain > :nth-child(1){animation-delay:.25s}
+.g-found-m .chain > :nth-child(2){animation-delay:.85s}
+.g-found-m .chain > :nth-child(3){animation-delay:1.05s}
+.g-found-m .chain > :nth-child(4){animation-delay:1.65s}
+.g-found-m .chain > :nth-child(5){animation-delay:1.85s}
+.g-found-m .chain > :nth-child(6){animation-delay:2.45s}
+.g-found-m .chain > :nth-child(7){animation-delay:2.65s}
+.g-found-m .rank-note{animation:fade .6s ease 3.1s both}
+.g-stage.g-still .chain > *,.g-stage.g-still .rank-note{animation:none}
+@keyframes chainWhy{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
 .g-found-m .rank-note{text-align:center;margin-top:calc(18px*var(--ui))}
 :root[data-theme="stage"] .g-found-m .punch-t{font-size:calc(2.2rem*var(--ui))}
 :root[data-theme="stage"] .g-found-m .chain-sub{font-size:calc(1.3rem*var(--ui))}
@@ -2772,7 +2831,7 @@ body.bangla .g-rules-tag .bn{display:inline;margin:0 0 0 6px;color:inherit;opaci
 .g-duel-foot{margin:calc(20px*var(--ui)) auto 0;max-width:calc(900px*var(--ui));text-align:center;font-family:var(--font-display);font-style:italic;
   font-size:calc(1rem*var(--ui));color:var(--tx-muted)}
 .g-duel-foot .bn{font-style:normal}
-:root[data-theme="stage"] .rings.g-duel-dial{width:min(100%,calc(250px*var(--ui)))}
+:root[data-theme="stage"] .rings.g-duel-dial{width:min(100%,calc(290px*var(--ui)))}
 :root[data-theme="stage"] .g-duel-t{font-size:calc(1.35rem*var(--ui))}
 :root[data-theme="stage"] .g-duel-card .bn{font-size:calc(1.05rem*var(--ui))}
 :root[data-theme="stage"] .g-duel-tag{font-size:calc(1rem*var(--ui))}
@@ -3062,7 +3121,7 @@ body.is-welcome #theme-pill{visibility:hidden}
   <div class="appbar" id="appbar">
     <header class="topbar">
       <a class="logo-chip" href="/" title="All activities" aria-label="Dialogue — back to all activities"><img src="../brand/dialogue-logo.png" alt="Dialogue English &amp; Skills Center"></a>
-      <span class="brand-name" id="brand-text"><span class="brand-g">🎯</span>Culture Circles</span>
+      <span class="brand-name" id="brand-text"><span class="brand-g">🎯</span><span class="brand-txt">Culture Circles</span></span>
       <span class="langsw" role="group" aria-label="Language">
         <button type="button" id="lang-en" aria-pressed="true">EN</button>
         <button type="button" id="lang-bn" lang="bn" aria-pressed="false">বাংলা</button>
@@ -3175,6 +3234,16 @@ body.is-welcome #theme-pill{visibility:hidden}
 <script src="timings.js"></script>
 <script src="scenarios.js"></script>
 <script src="scenarios-bn.js"></script>
+<script>
+/* Scenarios still waiting for their pictures and recordings carry
+   draft: true. They stay out of the draw, the menu and the printables unless
+   the address asks for them with ?drafts, so the bank can grow in the repo
+   without a half-finished scenario reaching a class. */
+(function(){
+  if (/[?&]drafts\b/.test(location.search)) return;
+  for (let i = SCENARIOS.length - 1; i >= 0; i--) if (SCENARIOS[i].draft) SCENARIOS.splice(i, 1);
+})();
+</script>
 <script>
 (function(){
 'use strict';
@@ -4701,7 +4770,19 @@ const JOB_BN = {
   'PhD student and teaching assistant': 'পিএইচডি শিক্ষার্থী ও শিক্ষকের সহকারী',
   'retired electrician':    'অবসরপ্রাপ্ত ইলেকট্রিশিয়ান',
   'bookkeeper':             'হিসাবরক্ষক',
-  'physiotherapist':        'ফিজিওথেরাপিস্ট'
+  'physiotherapist':        'ফিজিওথেরাপিস্ট',
+  'engineering manager':    'ইঞ্জিনিয়ারিং ম্যানেজার',
+  'software developer':     'সফটওয়্যার ডেভেলপার',
+  'product designer':       'প্রোডাক্ট ডিজাইনার',
+  'school nurse':           'স্কুলের নার্স',
+  'café worker':            'ক্যাফের কর্মী',
+  'bank branch manager':    'ব্যাংকের শাখা ব্যবস্থাপক',
+  'office administrator':   'অফিস প্রশাসক',
+  'graduate student':       'স্নাতকোত্তর শিক্ষার্থী',
+  'retired librarian':      'অবসরপ্রাপ্ত গ্রন্থাগারিক',
+  'orthopaedic surgeon':    'অর্থোপেডিক সার্জন (হাড়ের শল্যচিকিৎসক)',
+  'retired bus driver':     'অবসরপ্রাপ্ত বাসচালক',
+  'hospital nurse':         'হাসপাতালের নার্স'
 };
 const THEME_BN = {
   time: 'সময়', me: 'ব্যক্তি', truth: 'সত্য',
@@ -4717,7 +4798,11 @@ const CITY_BN = {
   'Pittsburgh':     'পিটসবার্গ',
   'Phoenix':        'ফিনিক্স',
   'Ann Arbor':      'অ্যান আর্বর',
-  'Portland':       'পোর্টল্যান্ড'
+  'Portland':       'পোর্টল্যান্ড',
+  'Minneapolis':    'মিনিয়াপোলিস',
+  'Omaha':          'ওমাহা',
+  'San Diego':      'সান ডিয়েগো',
+  'Baltimore':      'বাল্টিমোর'
 };
 
 const RING_BN = {
@@ -5732,12 +5817,16 @@ function guided(name, ico, list){
     d.classList.toggle('ahead', i > far);
     d.setAttribute('aria-label', (i + 1) + ' / ' + list.length);
     if (i === k) d.setAttribute('aria-current', 'step');
-    d.onclick = () => { if (i === gCur.k) return; stopAudio(); gDir = i < gCur.k ? -1 : 1; gSet(name, i); render(); };
+    d.onclick = () => { if (i === gCur.k) return; stopAudio(); gDir = i < gCur.k ? -1 : 1; gSet(name, i); turnPage(render); };
     dots.appendChild(d);
   });
   ft.appendChild(dots);
   ft.appendChild(el('span', 'g-count', (k + 1) + ' / ' + list.length));
   abMid.appendChild(ft);
+  /* on a narrow phone the dot rail can be wider than the screen and scrolls;
+     keep the current step in view instead of stranding it off the edge */
+  const onDot = dots.querySelector('.g-dot.on');
+  if (onDot) requestAnimationFrame(() => onDot.scrollIntoView({ inline: 'center', block: 'nearest' }));
   wrap.appendChild(p);
   M.render(st, p);
 }
@@ -6187,7 +6276,7 @@ function faceImg(i, cls){
   const im = new Image();
   im.alt = sp.name;
   im.src = 'portraits/' + sc.id + '-' + (i + 1) + '.jpg';
-  im.onerror = () => { im.remove(); f.appendChild(el('span', 'g-face-ph', sp.name.replace(/^Professor\s+/, '').charAt(0))); };
+  im.onerror = () => { im.remove(); f.appendChild(el('span', 'g-face-ph', sp.name.replace(/^(Professor|Dr\.)\s+/, '').charAt(0))); };
   f.appendChild(im);
   return f;
 }
@@ -6392,6 +6481,7 @@ function claimWho(cm){ return sc.speakers.findIndex(sp => sp.name === cm.who); }
 
 /* the three answers as circles, with every claim sorted so far in its place */
 function checkVenn(fresh){
+  const sp0 = j => sc.speakers[j].name.replace(/^(Professor|Dr\.)\s+/, '');
   const s = svg('0 0 400 380', 'g-venn');
   const defs = shape('defs', {});
   sc.speakers.forEach((sp, j) => {
@@ -6410,6 +6500,15 @@ function checkVenn(fresh){
     const im = shape('image', { href: 'portraits/' + sc.id + '-' + (j + 1) + '.jpg',
                                 x: -30, y: -30, width: 60, height: 60,
                                 'clip-path': 'url(#gvf' + j + ')', preserveAspectRatio: 'xMidYMid slice' });
+    /* no portrait yet: the speaker's initial, the same stand-in the
+       player uses, instead of the browser's broken-image glyph */
+    im.addEventListener('error', () => {
+      im.remove();
+      g.appendChild(shape('circle', { cx: 0, cy: 0, r: 30, class: 'g-venn-ph' }));
+      const t0 = shape('text', { x: 0, y: 1, 'text-anchor': 'middle', 'dominant-baseline': 'central', class: 'g-venn-ph-t' });
+      t0.textContent = sp0(j).charAt(0);
+      g.appendChild(t0);
+    });
     g.appendChild(im);
     s.appendChild(g);
   });
@@ -6724,8 +6823,20 @@ function stepAsk(){
         box.appendChild(w);
         fb.appendChild(box);
       };
+      /* the right answer, and whether a pick matched it, stay visible on the
+         cards themselves: green for opens, clay for closes, a shake for a miss */
+      const mark = pick => {
+        const right = (pick === 'open') === D.ok;
+        row.querySelectorAll('.g-choice').forEach(x => {
+          const mine = x.dataset.v === pick;
+          x.classList.toggle('is-right', mine && right);
+          x.classList.toggle('is-wrong', mine && !right);
+          x.classList.toggle('is-answer', !mine && !right);
+        });
+      };
       [['open', 'talk', 'q_opens'], ['shut', 'shut', 'q_closes']].forEach(o => {
-        const b = el('button', 'g-choice');
+        const b = el('button', 'g-choice is-' + o[0]);
+        b.dataset.v = o[0];
         b.type = 'button';
         b.appendChild(glyph(o[1], 'g-choice-g'));
         const w = el('span', 'g-choice-t');
@@ -6741,12 +6852,13 @@ function stepAsk(){
           b.classList.add('is-picked');
           row.classList.add('is-done');
           row.querySelectorAll('.g-choice').forEach(x => { x.disabled = true; });
+          mark(o[0]);
           show(o[0]);
           gDone();
         };
         row.appendChild(b);
       });
-      if (state.qd && state.qd[i]){ row.classList.add('is-done'); show(state.qd[i]); }
+      if (state.qd && state.qd[i]){ row.classList.add('is-done'); mark(state.qd[i]); show(state.qd[i]); }
       st.appendChild(row);
       st.appendChild(fb);
     } });
@@ -7673,6 +7785,21 @@ function coachReset(){
 }
 
 /* -------------------------------------------------------------- navigation */
+/* Moving between moments is a page turn, not a cut: the old moment slips
+   away in the direction of travel while the new one's parts rise in. The
+   stage card itself morphs to its new size, so the eye stays on one object.
+   Browsers without view transitions, and anyone who asks for less motion,
+   get the plain swap. */
+const RM = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+function turnPage(fn){
+  if (!document.startViewTransition || RM.matches || document.hidden){ fn(); return; }
+  const root = document.documentElement;
+  root.dataset.vt = gDir < 0 ? 'back' : 'fwd';
+  try {
+    const tr = document.startViewTransition(fn);
+    tr.finished.finally(() => { delete root.dataset.vt; });
+  } catch (e){ delete root.dataset.vt; fn(); }
+}
 function advance(){
   if (btnNext.disabled) return;
   stopAudio();
@@ -7684,7 +7811,7 @@ function advance(){
   /* a moment with steps of its own takes Next first (the ring comparison) */
   if (gCur && gCur.list[gCur.k].step && gCur.list[gCur.k].step(1)) return;
   if (gCur && gCur.k < gCur.list.length - 1){
-    gDir = 1; gSet(gCur.name, gCur.k + 1); render(); return;
+    gDir = 1; gSet(gCur.name, gCur.k + 1); turnPage(render); return;
   }
   gDir = 1;
   if (step === steps().length - 1){
@@ -7695,7 +7822,7 @@ function advance(){
     if (!teacher && !state.handoff){ state.handoff = true; render(); return; }
     newScenario(); return;
   }
-  step++; render();
+  step++; turnPage(render);
 }
 btnNext.onclick = advance;
 btnNextStage.onclick = advance;
@@ -7707,9 +7834,9 @@ btnBack.onclick = () => {
   }
   if (state.handoff){ state.handoff = false; render(); return; }
   if (gCur && gCur.list[gCur.k].step && gCur.list[gCur.k].step(-1)) return;
-  if (gCur && gCur.k > 0){ stopAudio(); gDir = -1; gSet(gCur.name, gCur.k - 1); render(); return; }
+  if (gCur && gCur.k > 0){ stopAudio(); gDir = -1; gSet(gCur.name, gCur.k - 1); turnPage(render); return; }
   if (step === 0) return;
-  stopAudio(); gDir = -1; step--; render();
+  stopAudio(); gDir = -1; step--; turnPage(render);
 };
 
 /* ------------------------------------------------------------------- menu */
@@ -7806,7 +7933,7 @@ function paintStage(on){
   $('#m-projector .m-lab').textContent = on ? 'Switch to the student flow' : 'Switch to the teacher flow · on TV';
   $('#brand-text').innerHTML = '';
   $('#brand-text').appendChild(el('span', 'brand-g', '🎯'));
-  $('#brand-text').appendChild(document.createTextNode('Culture Circles'));
+  $('#brand-text').appendChild(el('span', 'brand-txt', 'Culture Circles'));
   if (on) $('#brand-text').appendChild(el('span', 'brand-mode', 'On TV'));
 }
 
