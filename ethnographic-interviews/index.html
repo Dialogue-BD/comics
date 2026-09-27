@@ -5364,7 +5364,7 @@ const LESSON = [
       });
       zText(all, 800, 510, t('ui_allsaid'), tb('ui_allsaid'), { size: 34, tcls: 'zt-strong zt-teal', in: 2, delay: 900, gap: 38, bnSize: 29 });
       /* the rail the class is about to walk, given the whole picture */
-      const S = STEP_SET.full, XS = [180, 490, 800, 1110, 1420];
+      const S = ACTIVITY_STEPS, XS = [180, 490, 800, 1110, 1420];
       S.forEach((st, i) => {
         const g = zG(s, { in: 4, delay: 500 + i * 260, cls: 'rise' });
         const Y = 270;
