@@ -11,30 +11,32 @@ speechSynthesis instead — a different voice, rate and pitch per speaker. If th
 device has no speech engine at all, the page opens the transcripts and says so
 rather than leaving a dead play button.
 
-**The scripts, scenes, suggested voices, director's notes and audio tags all
-live in `ethnographic-interviews-voice-script.md`** — a set of ready-to-paste
-Gemini TTS prompts. That file is the single source of truth for how these
-should sound; this one is only the filename map. Both are generated from
-`scenarios.js`, so change a line there and regenerate rather than editing a
-transcript by hand.
+The page's spoken transcript is `scenarios.js`. The original eighteen voice
+prompts are in `ethnographic-interviews-voice-script.md`; the four new scenario
+briefs were supplied separately. For the new takes, use Gemini 3.8 Flash TTS
+in the AI Studio speech playground. If a script changes, regenerate its audio
+and word timings from that exact text.
 
 Target: 20-35 seconds each, conversational, room tone rather than studio-dry.
 
-All eighteen are recorded, and each has a room bed mixed under it. The clean
+The original eighteen are recorded, and each has a room bed mixed under it. The clean
 exports are kept in `_dry-originals/` — re-run `../ambience/run.py` from those
 if a bed needs rebalancing, and never layer ambience onto a file twice.
 
 **If you re-record anything, re-run the alignment.** `../timings.js` holds the
-start and end time of every word, and the page leans on it twice: the transcript
-highlights word by word during playback, and the word-catch field turns over on
-real sentence boundaries. Both go wrong silently against a new take.
+start and end time of every word. Whisper's local `small` model supplies
+word-level start/end estimates from the dry recording; `../tools/align.py`
+matches them to the exact transcript words shown by the page. This needs
+`openai-whisper` and `ffmpeg`, but no API key. The first run may download the
+model; later runs use the cached copy.
 
-    python3 ../tools/align.py      # needs pocketsphinx and ffmpeg
+    python3 ../tools/align.py
 
 It reads the clean takes in `_dry-originals/` and the transcripts in
-`../scenarios.js`, so put the new dry export in place first. The script is the
-source of truth throughout: the page's transcript, the glossary coverage, the
-game's answers and the alignment all come from it.
+`../scenarios.js`, so put the new dry export in place first. Review any
+reported transcript/ASR differences: speech generators sometimes say a
+contraction or number differently from the written script. The script is the
+source of truth for what the page displays and which word gets each timestamp.
 
 
 ## The dinner that ends at eight  —  Time
@@ -72,3 +74,27 @@ game's answers and the alignment all come from it.
 - `audio/the-neighbours-tree-1.mp3` — **Hank**, 61, retired electrician, Portland · suggested voice: **Umbriel (Easy-going)**
 - `audio/the-neighbours-tree-2.mp3` — **Michelle**, 44, bookkeeper, Portland · suggested voice: **Despina (Smooth)**
 - `audio/the-neighbours-tree-3.mp3` — **Ade**, 33, physiotherapist, Portland · suggested voice: **Callirrhoe (Easy-going)**
+
+## Back of the line — Fairness
+
+- `audio/back-of-the-line-1.mp3` — **Angela**, 44, pharmacist, Philadelphia · **Erinome**
+- `audio/back-of-the-line-2.mp3` — **Marcus**, 31, delivery driver, Philadelphia · **Achird**
+- `audio/back-of-the-line-3.mp3` — **Daniel**, 38, school counselor, Philadelphia · **Rasalgethi**, faint Korean accent
+
+## Tell them what you did — Self-presentation
+
+- `audio/tell-them-what-you-did-1.mp3` — **Diane**, 50, HR manager, Atlanta · **Sulafat**
+- `audio/tell-them-what-you-did-2.mp3` — **Jordan**, 22, college senior, Atlanta · **Sadachbia**
+- `audio/tell-them-what-you-did-3.mp3` — **Arjun**, 35, software engineer, Atlanta · **Alnilam**
+
+## Honestly, I’m annoyed — Feelings
+
+- `audio/honestly-im-annoyed-1.mp3` — **Hannah**, 23, engineering student, Sacramento · **Zephyr**
+- `audio/honestly-im-annoyed-2.mp3` — **Ethan**, 22, computer science student, Sacramento · **Fenrir**
+- `audio/honestly-im-annoyed-3.mp3` — **Kenji**, 45, restaurant manager, Sacramento · **Algieba**, slight Japanese accent
+
+## Leave the snake alone — Nature
+
+- `audio/leave-the-snake-alone-1.mp3` — **Kathy**, 48, garden centre owner, Asheville · **Vindemiatrix**
+- `audio/leave-the-snake-alone-2.mp3` — **Ray**, 61, retired forest ranger, Asheville · **Enceladus**
+- `audio/leave-the-snake-alone-3.mp3` — **Lucia**, 27, environmental science student, Asheville · **Laomedeia**

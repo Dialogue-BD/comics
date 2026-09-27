@@ -3233,7 +3233,7 @@ body.is-welcome #theme-pill{visibility:hidden}
 <script src="glossary.js"></script>
 <script src="timings.js"></script>
 <script src="scenarios.js"></script>
-<script src="scenarios-bn.js"></script>
+<script src="scenarios-bn.js?v=20260927"></script>
 <script>
 /* Scenarios still waiting for their pictures and recordings carry
    draft: true. They stay out of the draw, the menu and the printables unless
@@ -4033,7 +4033,12 @@ function setBtnLabel(b, key){
    own pacing; that path keeps the per-utterance scheme it already used. */
 function wordTimes(i){
   const key = sc.id + '-' + (i + 1);
-  return (typeof TIMINGS !== 'undefined' && TIMINGS[key]) ? TIMINGS[key] : null;
+  const t = typeof TIMINGS !== 'undefined' ? TIMINGS[key] : null;
+  const words = sc.speakers[i].script.match(/[A-Za-z’'-]+/g) || [];
+  /* A script edit changes the karaoke word indices. Ignore stale alignment
+     until timings.js has been regenerated for the matching recording. */
+  return t && Array.isArray(t.w) && t.w.length === words.length &&
+         Number.isFinite(t.dur) ? t : null;
 }
 
 /* which word is being said at time t — a walk forward from the last answer,
@@ -4239,7 +4244,7 @@ function catchRound(i, pass){
   const sents = catchSentences(sp.script);      /* the speech engine speaks these */
 
   let bounds;
-  if (t && t.w.length === toks.length){
+  if (t){
     bounds = evenWindows(t.w, t.dur);
   } else {
     bounds = []; let at = 0;
@@ -4656,8 +4661,8 @@ const ICONS = {
     s.appendChild(shape('path', ST({ d: 'M3.2 7.6V4.6h3M12.8 7.6V4.6h-3' })));
   }
 };
-/* the six themes, as marks rather than emoji */
-const THEME_ICO = { time: 'clock', me: 'person', truth: 'talk', boss: 'crown', opinion: 'hand', problem: 'split' };
+/* theme marks for the scenario badges */
+const THEME_ICO = { time: 'clock', me: 'person', truth: 'talk', boss: 'crown', opinion: 'hand', problem: 'split', line: 'split', selfpres: 'talk', annoyance: 'ear', nature: 'globe' };
 const themeIco = k => THEME_ICO[k] || 'target';
 function ST(a){
   return Object.assign({ fill: 'none', stroke: 'currentColor', 'stroke-width': 1.5,
@@ -4782,11 +4787,23 @@ const JOB_BN = {
   'retired librarian':      'অবসরপ্রাপ্ত গ্রন্থাগারিক',
   'orthopaedic surgeon':    'অর্থোপেডিক সার্জন (হাড়ের শল্যচিকিৎসক)',
   'retired bus driver':     'অবসরপ্রাপ্ত বাসচালক',
-  'hospital nurse':         'হাসপাতালের নার্স'
+  'hospital nurse':         'হাসপাতালের নার্স',
+  'pharmacist':             'ফার্মাসিস্ট',
+  'delivery driver':        'ডেলিভারি ড্রাইভার',
+  'school counselor':       'স্কুল কাউন্সেলর',
+  'human resources manager':'হিউম্যান রিসোর্স (মানবসম্পদ) ম্যানেজার',
+  'college senior':         'কলেজের চতুর্থ বর্ষের শিক্ষার্থী',
+  'software engineer':      'সফটওয়্যার ইঞ্জিনিয়ার',
+  'computer science student':'কম্পিউটার সায়েন্সের ছাত্র',
+  'restaurant manager':     'রেস্তোরাঁর ম্যানেজার',
+  'garden centre owner':    'নার্সারি (বাগান কেন্দ্র)-এর মালিক',
+  'retired forest ranger':  'অবসরপ্রাপ্ত ফরেস্ট রেঞ্জার (বনরক্ষী)',
+  'environmental science student':'পরিবেশ বিজ্ঞানের শিক্ষার্থী'
 };
 const THEME_BN = {
   time: 'সময়', me: 'ব্যক্তি', truth: 'সত্য',
-  boss: 'কর্তৃত্ব', opinion: 'মতামত', problem: 'বিরোধ'
+  boss: 'কর্তৃত্ব', opinion: 'মতামত', problem: 'বিরোধ',
+  line: 'ন্যায্যতা', selfpres: 'আত্ম-উপস্থাপন', annoyance: 'অনুভূতি', nature: 'প্রকৃতি'
 };
 const CITY_BN = {
   'Chicago':        'শিকাগো',
@@ -4802,7 +4819,11 @@ const CITY_BN = {
   'Minneapolis':    'মিনিয়াপোলিস',
   'Omaha':          'ওমাহা',
   'San Diego':      'সান ডিয়েগো',
-  'Baltimore':      'বাল্টিমোর'
+  'Baltimore':      'বাল্টিমোর',
+  'Philadelphia':   'ফিলাডেলফিয়া',
+  'Atlanta':        'আটলান্টা',
+  'Sacramento':     'স্যাক্রামেন্টো',
+  'Asheville':      'অ্যাশভিল'
 };
 
 const RING_BN = {
@@ -5984,12 +6005,11 @@ function settingChips(){
   const box = el('div', 'fcts');
   const parts = sc.setting.split('·').map(s => s.trim()).filter(Boolean);
   const th = THEMES[sc.theme];
-  /* a capital opens a place name; a lower-case one opens an occasion */
+  /* A/An/The introduce an occasion even when they start a setting. */
   const sparts = (sbn('setting') || '').split('·').map(x => x.trim());
-  /* the capital that picks the pin also marks a place name, and a place name
-     respelled in Bengali script teaches nothing — the occasion beside it does */
+  /* Keep English place names on the pin; add Bangla for the occasion beside it. */
   parts.forEach((t, i) => {
-    const place = /^[A-Z]/.test(t);
+    const place = /^[A-Z]/.test(t) && !/^(?:A|An|The)\s/i.test(t);
     box.appendChild(fct(place ? 'pin' : 'scene', t, place ? null : sparts[i]));
   });
   box.appendChild(fct(themeIco(sc.theme), th.label, THEME_BN[sc.theme]));
@@ -7140,7 +7160,23 @@ const TURN = {
   'the-neighbours-tree': {
     l: ['Knock on the neighbour’s door', 'প্রতিবেশীর দরজায় নিজে যাওয়া'],
     r: ['Send a friend to say it', 'একজন বন্ধুকে দিয়ে বলানো'],
-    q: ['Where does your family stand? Does it change with the neighbour?', 'আপনার পরিবার কোথায় দাঁড়ায়? প্রতিবেশী বদলালে কি সেটা বদলায়?'] }
+    q: ['Where does your family stand? Does it change with the neighbour?', 'আপনার পরিবার কোথায় দাঁড়ায়? প্রতিবেশী বদলালে কি সেটা বদলায়?'] },
+  'back-of-the-line': {
+    l: ['Everyone waits in one line', 'সবাই এক লাইনে দাঁড়ান'],
+    r: ['An elder or guest goes first', 'বয়োজ্যেষ্ঠ বা অতিথি আগে যান'],
+    q: ['Where does a line already work at home? When would letting an elder go first feel fair, and when not?', 'দেশে কোথায় লাইন এমনিতেই কাজ করে? বয়োজ্যেষ্ঠকে আগে যেতে দেওয়া কখন ন্যায্য মনে হয়, আর কখন নয়?'] },
+  'tell-them-what-you-did': {
+    l: ['Say clearly what you did', 'আপনি কী করেছেন তা স্পষ্ট করে বলা'],
+    r: ['Let your work speak for itself', 'নিজের কাজকেই নিজের হয়ে কথা বলতে দেওয়া'],
+    q: ['Tell an interviewer about your biggest achievement. What do you say, and what do you leave out?', 'ইন্টারভিউতে নিজের সবচেয়ে বড় অর্জনের কথা বললে আপনি কী বলবেন, আর কী বাদ দেবেন?'] },
+  'honestly-im-annoyed': {
+    l: ['Say “I’m annoyed”, then move on', 'বলে দেওয়া “আমি বিরক্ত”, তারপর এগিয়ে যাওয়া'],
+    r: ['Smile, and let it pass quietly', 'হাসিমুখে থাকা, চুপচাপ মিটিয়ে ফেলা'],
+    q: ['How can you tell, at home, that someone is annoyed with you, if they never say it?', 'দেশে কারও ওপর কেউ বিরক্ত থাকলে, তিনি কখনো না বললে আপনি কীভাবে বুঝবেন?'] },
+  'leave-the-snake-alone': {
+    l: ['Leave the wild thing alone', 'বুনো জিনিসটাকে তার মতো থাকতে দেওয়া'],
+    r: ['Clear it, and keep the yard tidy', 'সাফ করে ফেলা, উঠোন পরিপাটি রাখা'],
+    q: ['What does a well-kept home look like in Rajshahi? What would it think of a wild, uncut corner?', 'রাজশাহীতে একটা পরিপাটি বাড়ি দেখতে কেমন? একটা ইচ্ছাকৃত জংলা কোণকে সেটা কীভাবে দেখবে?'] }
 };
 function turnBoard(){
   const T = TURN[sc.id] || { l: [sc.rings.behavior, ''], r: [sc.contrast.behavior, ''], q: ['Where do you stand?', 'আপনি কোথায় দাঁড়ান?'] };

@@ -22,7 +22,11 @@ const THEMES = {
   truth:   { label: 'Truth',     icon: '\u{1F4AC}', hue: '265 84% 70%' },
   boss:    { label: 'Authority', icon: '\u{1FA91}', hue: '155 68% 54%' },
   opinion: { label: 'Opinion',   icon: '\u{1F64B}', hue: '340 82% 66%' },
-  problem: { label: 'Conflict',  icon: '\u{1F342}', hue: '12 88% 62%'  }
+  problem: { label: 'Conflict',  icon: '\u{1F342}', hue: '12 88% 62%'  },
+  line:     { label: 'Fairness',        icon: '\u{1F48A}', hue: '75 62% 42%'  },
+  selfpres: { label: 'Self-Presentation', icon: '\u{1F3A4}', hue: '300 55% 58%' },
+  annoyance:{ label: 'Feelings',        icon: '\u{1F624}', hue: '230 70% 62%' },
+  nature:   { label: 'Nature',          icon: '\u{1F40D}', hue: '118 40% 40%' }
 };
 
 /* Why a question fails. Shown as coaching when a student picks a bad one. */
@@ -831,5 +835,460 @@ const SCENARIOS = [
       'simply absorbed. Ask the class which of the three positions their own family takes, and ' +
       'whether it changes with who the neighbour is.'
   }
+},
+
+/* ========================================================================= 7
+   Scenarios 7–10 add fairness, self-presentation, feelings and nature.
+   Their pictures, portraits and recordings are in place, so they are part
+   of the shuffled deck and the menu. */
+{
+  id: 'back-of-the-line',
+  theme: 'line',
+  title: 'Back of the Line',
+  setting: 'A pharmacy · Philadelphia',
+  observation:
+    'At a busy pharmacy, eight people wait in one straight line for the counter. A well-dressed man in a ' +
+    'hurry walks past them to the front and says, “I just have one quick question.” The pharmacist smiles ' +
+    'and says, “Sure — the line starts back there.” He walks to the back. Nobody in the line looks angry, ' +
+    'and nobody offers to let him go first.',
+  noticing:
+    'He looked important, he was in a hurry, and he had only one question. None of that mattered. Why not?',
+
+  title_bn: 'লাইনের পেছনে',
+  observation_bn:
+    'এক ব্যস্ত ফার্মেসিতে আটজন মানুষ কাউন্টারের সামনে একটা সোজা লাইনে দাঁড়িয়ে আছেন। সুন্দর পোশাক পরা, তাড়াহুড়োয় থাকা এক ভদ্রলোক সবাইকে পাশ কাটিয়ে সামনে গিয়ে বললেন, “আমার শুধু একটা ছোট্ট প্রশ্ন।” ফার্মাসিস্ট হেসে বললেন, “অবশ্যই — লাইন ওখান থেকে শুরু।” তিনি পেছনে চলে গেলেন। লাইনের কেউ রাগ দেখাল না, আবার কেউ তাঁকে আগে যেতেও দিল না।',
+  noticing_bn:
+    'তাঁকে গুরুত্বপূর্ণ মনে হচ্ছিল, তাঁর তাড়া ছিল, আর প্রশ্নও মাত্র একটা। তবু এর কোনোটাই কাজে এল না। কেন?',
+
+  beats: [
+    { ico: '🧍', t: 'Eight people, one straight line' },
+    { ico: '🏃', t: '“Just one quick question.”' },
+    { ico: '👉', t: '“The line starts back there.”' }
+  ],
+
+  punch: 'In the line, everyone is the same size.',
+  chain: [
+    'Every person counts the same',
+    'One rule for everyone, whoever they are',
+    'First come, first served',
+    'Wait your turn at the back'
+  ],
+  questions: [
+    { q: 'Tell me about the last time someone tried to skip the line at your counter. What happened?',
+      ok: true, type: 'experience',
+      why: 'It asks for one real moment at her own counter. How she handled it will show you the rule ' +
+           'without your naming it.',
+      why_bn:
+        'এটি তাঁর নিজের কাউন্টারের একটি সত্যিকারের মুহূর্তের কথা জানতে চায়। তিনি কীভাবে সামলালেন, তা থেকেই নিয়মটা বোঝা যাবে — আপনাকে নাম ধরে জিজ্ঞেস করতে হবে না।' },
+    { q: 'Do people here always wait in line? Is skipping the line against the rules?', flaw: 'closed' },
+    { q: 'Why are Americans so strict about lines? Is following rules part of your culture?', flaw: 'generalizing' },
+    { q: 'Wasn’t it a little embarrassing for him to be sent to the back in front of everyone?', flaw: 'leading' }
+  ],
+
+  speakers: [
+    { name: 'Angela', age: 44, job: 'pharmacist', city: 'Philadelphia',
+      voice: { rate: 1.0, pitch: 1.0, gender: 'female' },
+      script:
+        'He was nice about it, and so was I. But if I help him first, I’m telling the eight people in line ' +
+        'that their time is worth less than his. They all have quick questions too. And the woman at the ' +
+        'front had been standing there for twenty minutes with a sick kid. The line’s the fairest thing ' +
+        'I have. It doesn’t care who you are.',
+      gist: 'If she helps him first, she tells eight people their time is worth less. The line does not care who you are.' },
+    { name: 'Marcus', age: 31, job: 'delivery driver', city: 'Philadelphia',
+      voice: { rate: 1.04, pitch: 0.95, gender: 'male' },
+      script:
+        'I was number four in that line. Nobody was angry at him — he just forgot, or he didn’t know. In ' +
+        'a line, you don’t have to argue or explain your problem. You just stand there, and your turn ' +
+        'comes. It’s kind of peaceful, actually. The rule does the work. Nobody has to decide who’s more ' +
+        'important, because nobody is.',
+      gist: 'He was fourth in line. Nobody has to decide who is more important, because nobody is.' },
+    { name: 'Daniel', age: 38, job: 'school counselor', city: 'Philadelphia',
+      voice: { rate: 0.98, pitch: 0.96, gender: 'male' },
+      script:
+        'When my family first came from Seoul, my father hated lines. At home he knew people, and knowing ' +
+        'people got you in faster. Here he stood at the back of the bank line behind a teenager, and he was ' +
+        'furious. Then one day the bank manager came in and stood in the same line, right behind him. My ' +
+        'father came home laughing. He said, “It’s fair. Here even the boss waits his turn.”',
+      gist: 'His father hated lines — until the bank manager waited in line behind him.' }
+  ],
+
+  claims: [
+    { text: 'A line treats everyone the same, whoever they are.', shared: true, text_bn: 'লাইন সবার সঙ্গে একই রকম আচরণ করে, মানুষটি যে-ই হোন।' },
+    { text: 'Being important or in a hurry does not buy a place at the front.', shared: true, text_bn: 'গুরুত্বপূর্ণ হলে বা তাড়া থাকলেও সামনের জায়গা পাওয়া যায় না।' },
+    { text: 'Waiting your turn is fair to the people who came first.', shared: true, text_bn: 'নিজের পালার জন্য অপেক্ষা করাটা আগে আসা মানুষদের প্রতি ন্যায্য।' },
+    { text: 'A mother with a sick child had waited twenty minutes at the front.', shared: false, text_bn: 'অসুস্থ বাচ্চা নিয়ে এক মা বিশ মিনিট ধরে সামনে দাঁড়িয়ে ছিলেন।', who: 'Angela' },
+    { text: 'They were fourth in the line that day.', shared: false, text_bn: 'সেদিন তিনি লাইনে চতুর্থ ছিলেন।', who: 'Marcus' },
+    { text: 'Their father once saw the bank manager wait behind him.', shared: false, text_bn: 'তাঁর বাবা একবার দেখেছিলেন, ব্যাংকের ম্যানেজার তাঁর পেছনে লাইনে দাঁড়িয়ে আছেন।', who: 'Daniel' }
+  ],
+
+  rings: {
+    behavior:  'Everyone waits in one line in the order they arrived, and someone who walks to the front is calmly sent to the back.',
+    value:     'Fairness as equal treatment — first come, first served, whoever you are.',
+    belief:    'The same rule should apply to everyone; status, hurry or connections should not buy a better place.',
+    worldview: 'Society is made of equal individuals, and strangers are held together by impartial rules rather than by personal ties.'
+  },
+  distractors: [
+    { text: 'They make everyone stand in a line.', fault: 'restatement' },
+    { text: 'Americans are cold and do not care about each other.', fault: 'stereotype' },
+    { text: 'Sending him to the back was rude.', fault: 'judgment' }
+  ],
+
+  expert:
+    'Marcus says it best: nobody has to decide who is more important, “because nobody is.” The line is a ' +
+    'small machine for equality. It takes the judgment away from the pharmacist, so she never has to rank ' +
+    'a busy man against a mother with a sick child. Daniel’s father felt it first as an insult — his ' +
+    'connections stopped working — and then as a relief, when he saw the rule held for the boss too.',
+
+  contrast: {
+    behavior:  'People gather around the counter; an elder, someone with connections or someone in real need is often let through first.',
+    value:     'Respect for age and relationships, and flexibility for a person’s urgent need.',
+    belief:    'Fairness means treating people according to who they are and what they need, not identically.',
+    worldview: 'Society is a web of relationships and ranks; people are placed by their ties to one another, not as interchangeable units.',
+    note:
+      'Students often admire the line but doubt it would survive in Rajshahi. Ask where a line already ' +
+      'works at home — a token machine at a bank, a ticket counter — and what makes it work there. Then ' +
+      'ask: when is letting an elder go first the right thing, and when is it unfair to everyone else?'
+  }
+},
+
+/* ========================================================================= 8 */
+{
+  id: 'tell-them-what-you-did',
+  theme: 'selfpres',
+  title: 'Tell Them What You Did',
+  setting: 'An internship interview · Atlanta',
+  observation:
+    'Two students interview for the same summer internship and are asked the same question: “Tell us ' +
+    'about your biggest achievement.” The American student says, “I led a team of five, and we grew our ' +
+    'club’s membership by forty percent. I’m proud of that.” The Bangladeshi student, who in fact ' +
+    'organised a whole charity project, says, “I helped a little. It was really the team’s work.” The ' +
+    'American student gets the internship.',
+  noticing:
+    'The student who did more said less — and the interviewers believed the words. What were they ' +
+    'listening for?',
+
+  title_bn: 'আপনি কী করেছেন, সেটা বলুন',
+  observation_bn:
+    'দুজন শিক্ষার্থী একই সামার ইন্টার্নশিপের ইন্টারভিউ দিচ্ছেন, আর দুজনকেই একই প্রশ্ন করা হলো: “আপনার সবচেয়ে বড় অর্জনের কথা বলুন।” আমেরিকান শিক্ষার্থী বললেন, “আমি পাঁচজনের একটা দলের নেতৃত্ব দিয়েছি, আর আমাদের ক্লাবের সদস্য চল্লিশ শতাংশ বেড়েছে। এ নিয়ে আমি গর্বিত।” বাংলাদেশি শিক্ষার্থী, যিনি আসলে একটা পুরো দাতব্য প্রকল্প আয়োজন করেছিলেন, বললেন, “আমি একটু সাহায্য করেছিলাম। কাজটা আসলে দলের।” ইন্টার্নশিপটা পেলেন আমেরিকান শিক্ষার্থী।',
+  noticing_bn:
+    'যিনি বেশি করেছেন, তিনি বললেন কম — আর ইন্টারভিউ নেওয়া মানুষেরা কথাগুলোই বিশ্বাস করলেন। তাঁরা আসলে কী শুনতে চাইছিলেন?',
+
+  beats: [
+    { ico: '🎤', t: '“Tell us your biggest achievement.”' },
+    { ico: '📣', t: '“I led it. I’m proud of that.”' },
+    { ico: '🤫', t: '“I only helped a little.”' }
+  ],
+
+  punch: 'Here, if you do not say what you did, nobody knows you did it.',
+  chain: [
+    'Each person’s worth is shown by what they do',
+    'People are judged on what they can show',
+    'Speaking up for your own work is honest',
+    'Say clearly what you did'
+  ],
+  questions: [
+    { q: 'Tell me about the last internship interview you ran. What did the best candidate say?',
+      ok: true, type: 'experience',
+      why: 'It asks about one real interview and one real candidate. What she listens for will come out ' +
+           'in the story.',
+      why_bn:
+        'এটি একটি সত্যিকারের ইন্টারভিউ আর একজন সত্যিকারের প্রার্থীর কথা জানতে চায়। তিনি কী শুনতে চান, তা গল্পের ভেতরেই বেরিয়ে আসবে।' },
+    { q: 'Do you prefer confident candidates? Is it normal here to talk about your achievements?', flaw: 'closed' },
+    { q: 'Isn’t it a bit arrogant when young people praise themselves in an interview?', flaw: 'leading' },
+    { q: 'Why do Americans love to talk about themselves? Is modesty not valued in your culture?', flaw: 'generalizing' }
+  ],
+
+  speakers: [
+    { name: 'Diane', age: 50, job: 'human resources manager', city: 'Atlanta',
+      voice: { rate: 1.0, pitch: 1.0, gender: 'female' },
+      script:
+        'I’ve got twenty minutes with each student. I can’t read their mind. So when someone says, “I only ' +
+        'helped a little,” I believe them — why wouldn’t I? The student who says, “I led a team of five, ' +
+        'and this is what we did,” is giving me facts I can check. That’s not bragging. Bragging is saying ' +
+        'things that aren’t true.',
+      gist: 'She cannot read minds. When a student says “I only helped a little,” she believes it.' },
+    { name: 'Jordan', age: 22, job: 'college senior', city: 'Atlanta',
+      voice: { rate: 1.06, pitch: 0.97, gender: 'male' },
+      script:
+        'My mom always told me, “Nobody’s going to speak for you in that room.” So I practice. I write ' +
+        'down three things I actually did, with numbers, and I say them out loud until it feels normal. If ' +
+        'you’re too humble, they just think you didn’t do much. It’s not showing off if it’s true. And ' +
+        'I always say the team was great too — because it was.',
+      gist: 'His mom said nobody will speak for you. He practises saying three true things he did.' },
+    { name: 'Arjun', age: 35, job: 'software engineer', city: 'Atlanta',
+      voice: { rate: 1.0, pitch: 0.94, gender: 'male' },
+      script:
+        'When I came from Chennai for my master’s, I failed my first three interviews. I kept saying “we” ' +
+        'and “the team.” My professor finally told me, “They think you didn’t do anything.” At home, praising ' +
+        'yourself sounds proud and a little rude. Here, keeping quiet sounds like you’ve got nothing to say. ' +
+        'Now I say “I” for what I did, and “we” for what we did. Both are honest.',
+      gist: 'He failed his first interviews saying “we.” Now he says “I” for his work and “we” for the team’s.' }
+  ],
+
+  claims: [
+    { text: 'Interviewers can only judge what you tell them.', shared: true, text_bn: 'আপনি যা বলেন, ইন্টারভিউ নেওয়া মানুষেরা কেবল তা দিয়েই বিচার করতে পারেন।' },
+    { text: 'Saying clearly what you really did is not bragging.', shared: true, text_bn: 'আপনি আসলে যা করেছেন, তা স্পষ্ট করে বলা বড়াই করা নয়।' },
+    { text: 'Being too modest can hide your real work.', shared: true, text_bn: 'বেশি বিনয় আপনার আসল কাজকে আড়াল করে দিতে পারে।' },
+    { text: 'They have twenty minutes with each student.', shared: false, text_bn: 'প্রত্যেক শিক্ষার্থীর জন্য তাঁর হাতে বিশ মিনিট থাকে।', who: 'Diane' },
+    { text: 'Their mother told them nobody would speak for them.', shared: false, text_bn: 'তাঁর মা বলেছিলেন, তাঁর হয়ে কেউ কথা বলবে না।', who: 'Jordan' },
+    { text: 'They failed their first three interviews.', shared: false, text_bn: 'প্রথম তিনটি ইন্টারভিউতে তিনি ব্যর্থ হয়েছিলেন।', who: 'Arjun' }
+  ],
+
+  rings: {
+    behavior:  'In an interview, candidates state their own achievements clearly, with facts and numbers, and say “I” for what they did.',
+    value:     'Self-advocacy and clarity — making your abilities visible is part of doing the job well.',
+    belief:    'People cannot know your worth unless you show it; modest words are taken at face value.',
+    worldview: 'Each person is responsible for their own path, and their worth is shown by what they individually achieve.'
+  },
+  distractors: [
+    { text: 'The American student talked about his achievement.', fault: 'restatement' },
+    { text: 'Americans are all arrogant show-offs.', fault: 'stereotype' },
+    { text: 'The Bangladeshi student should never be so shy.', fault: 'judgment' }
+  ],
+
+  expert:
+    'Diane gives you the belief in one line: “I cannot read their mind.” If words are taken at face ' +
+    'value, modesty is not heard as politeness — it is heard as information, and “I helped a little” ' +
+    'becomes a fact about you. Arjun’s answer is the one to teach: “I” for what you did, “we” for what ' +
+    'the team did. Neither is boasting. Both are true.',
+
+  contrast: {
+    behavior:  'Candidates play down their own part, credit the team or their teachers, and wait for others to notice their work.',
+    value:     'Humility — praising yourself is proud and impolite; praise should come from other people.',
+    belief:    'Real ability shows itself in time; someone who talks about their own success is suspected of boasting.',
+    worldview: 'A person’s worth belongs to the family and group that raised them, and is recognised by others, not declared by oneself.',
+    note:
+      'Students often hear Jordan as arrogant. Separate two things for them: claiming what is not true ' +
+      '(boasting, everywhere) and stating clearly what is true (expected here). Then have pairs rewrite ' +
+      '“I helped a little” as one true sentence with “I” and a number.'
+  }
+},
+
+/* ========================================================================= 9 */
+{
+  id: 'honestly-im-annoyed',
+  theme: 'annoyance',
+  title: 'Honestly, I’m Annoyed',
+  setting: 'A university library · Sacramento',
+  observation:
+    'A Bangladeshi student is doing a group project with three American classmates. One of the American classmates, Ethan, ' +
+    'forgot to finish his part, so Hannah stayed up until 2 a.m. to do it. The next day she looks straight ' +
+    'at him, frowns and says, “Honestly, I’m annoyed. I did your part last night.” Ethan says, “You’re ' +
+    'right — I’m sorry.” Ten minutes later the two of them are laughing, and they go for coffee together.',
+  noticing:
+    'The Bangladeshi student was sure they would be enemies now. They were friends again in ten minutes. ' +
+    'How?',
+
+  title_bn: 'সত্যি বলতে, আমি বিরক্ত',
+  observation_bn:
+    'এক বাংলাদেশি শিক্ষার্থী তিনজন আমেরিকান সহপাঠীর সঙ্গে একটা গ্রুপ প্রজেক্ট করছেন। সেই আমেরিকান সহপাঠীদের একজন, ইথান, নিজের অংশটা শেষ করতে ভুলে গিয়েছিলেন, তাই হান্না রাত দুটো পর্যন্ত জেগে সেটা করে দিয়েছেন। পরদিন হান্না সোজা ইথানের দিকে তাকিয়ে ভুরু কুঁচকে বললেন, “সত্যি বলতে, আমি বিরক্ত। কাল রাতে তোমার অংশটা আমি করেছি।” ইথান বললেন, “তুমি ঠিকই বলেছ — আমি দুঃখিত।” দশ মিনিট পরে দুজনে হাসছেন, আর একসঙ্গে কফি খেতে গেলেন।',
+  noticing_bn:
+    'বাংলাদেশি শিক্ষার্থী নিশ্চিত ছিলেন, এখন ওঁরা শত্রু হয়ে যাবেন। অথচ দশ মিনিটেই আবার বন্ধু। কীভাবে?',
+
+  beats: [
+    { ico: '😠', t: '“Honestly, I’m annoyed.”' },
+    { ico: '🙏', t: '“You’re right — I’m sorry.”' },
+    { ico: '☕', t: 'Ten minutes later: coffee' }
+  ],
+
+  punch: 'Here, a feeling said out loud is a feeling finished.',
+  chain: [
+    'Each person’s feelings are honest information',
+    'A hidden feeling grows; a spoken one ends',
+    'Show what you feel, kindly',
+    'Say “I’m annoyed” — then move on'
+  ],
+  questions: [
+    { q: 'Tell me about the last time a teammate let you down. What did you do next?',
+      ok: true, type: 'experience',
+      why: 'It asks for one real moment and what she did after it. How she handled the feeling will come ' +
+           'out in the story.',
+      why_bn:
+        'এটি একটি সত্যিকারের মুহূর্ত আর তারপর তিনি কী করলেন, তা জানতে চায়। অনুভূতিটা তিনি কীভাবে সামলালেন, তা গল্পের ভেতরেই বেরিয়ে আসবে।' },
+    { q: 'Do you always tell people when you are annoyed? Is that normal here?', flaw: 'closed' },
+    { q: 'Why do Americans show their feelings so easily? Is that part of your culture?', flaw: 'generalizing' },
+    { q: 'Wasn’t it a bit harsh to tell him you were annoyed in front of everyone?', flaw: 'leading' }
+  ],
+
+  speakers: [
+    { name: 'Hannah', age: 23, job: 'engineering student', city: 'Sacramento',
+      voice: { rate: 1.04, pitch: 1.06, gender: 'female' },
+      script:
+        'I was annoyed, so I said it. I’d stayed up until two finishing his part, and he just said, “Oh, ' +
+        'sorry, I forgot.” If I smile and say it’s fine, it’s not fine — it just sits inside me and gets ' +
+        'bigger. Once I say it, it’s done. I wasn’t angry at him as a person. I was annoyed about one ' +
+        'night. Then we got coffee.',
+      gist: 'She said she was annoyed, and then it was done. It was about one night, not about him.' },
+    { name: 'Ethan', age: 22, job: 'computer science student', city: 'Sacramento',
+      voice: { rate: 1.03, pitch: 0.98, gender: 'male' },
+      script:
+        'Yeah, she was annoyed, and she was right. I messed up. I’d much rather she tell me to my face ' +
+        'than smile and then quietly hate me for the rest of the semester. When someone says, “I’m ' +
+        'annoyed,” I know exactly where I stand. I say sorry, I fix it, and we move on. That’s how you ' +
+        'stay friends.',
+      gist: 'He would rather hear it to his face than be quietly disliked. He said sorry, and they moved on.' },
+    { name: 'Kenji', age: 45, job: 'restaurant manager', city: 'Sacramento',
+      voice: { rate: 0.98, pitch: 0.95, gender: 'male' },
+      script:
+        'My mother’s Japanese. When she was annoyed, she smiled more and got very polite, and we all knew ' +
+        'we were in trouble. Here that doesn’t work. A smile means you’re fine. So at my restaurant I ' +
+        'tell my staff, “If something bothers you, say it early and say it kindly.” A frown today, and then ' +
+        'it’s over. That’s better than a quiet war for a month.',
+      gist: 'His mother smiled more when she was annoyed. He tells his staff: say it early, and say it kindly.' }
+  ],
+
+  claims: [
+    { text: 'If you are annoyed, it is better to say so.', shared: true, text_bn: 'বিরক্ত হলে সেটা বলে দেওয়াই ভালো।' },
+    { text: 'Hidden annoyance grows and lasts longer.', shared: true, text_bn: 'লুকিয়ে রাখা বিরক্তি বাড়ে, আর বেশি দিন থাকে।' },
+    { text: 'Once the annoyance is said, the friendship can move on.', shared: true, text_bn: 'বিরক্তিটা একবার বলে ফেললে বন্ধুত্ব আবার এগিয়ে যেতে পারে।' },
+    { text: 'They stayed up until two doing someone else’s part.', shared: false, text_bn: 'অন্য একজনের অংশ করতে গিয়ে তিনি রাত দুটো পর্যন্ত জেগে ছিলেন।', who: 'Hannah' },
+    { text: 'They forgot to finish their part of the project.', shared: false, text_bn: 'প্রজেক্টে নিজের অংশটা শেষ করতে তিনি ভুলে গিয়েছিলেন।', who: 'Ethan' },
+    { text: 'Their mother smiled more when she was annoyed.', shared: false, text_bn: 'তাঁর মা বিরক্ত হলে আরও বেশি হাসতেন।', who: 'Kenji' }
+  ],
+
+  rings: {
+    behavior:  'Showing annoyance openly — a frown and the words “I’m annoyed” — then accepting the apology and being friendly again minutes later.',
+    value:     'Emotional honesty — your face and your words should match what you feel.',
+    belief:    'A hidden feeling grows and damages a relationship; a feeling that is said can be dealt with and finished.',
+    worldview: 'Each person has an inner life that others have a right to know, and relationships stay healthy through openness, not smooth surfaces.'
+  },
+  distractors: [
+    { text: 'She told him she was annoyed.', fault: 'restatement' },
+    { text: 'Americans cannot control their emotions.', fault: 'stereotype' },
+    { text: 'Frowning at a classmate is bad manners.', fault: 'judgment' }
+  ],
+
+  expert:
+    'Hannah gives the belief in one sentence: if she smiles and says it is fine, “it just sits inside me ' +
+    'and gets bigger.” Here the danger is the hidden feeling, not the shown one. Notice, too, what she is ' +
+    'annoyed at: not Ethan as a person, but one night. Kenji knows the other system from the inside — ' +
+    'his mother smiled more when she was angry — and his rule for his staff joins the two: say it early, ' +
+    'and say it kindly.',
+
+  contrast: {
+    behavior:  'Smiling and saying “it’s fine” while annoyed, and showing displeasure only indirectly — silence, coolness, distance.',
+    value:     'Harmony and self-control — a calm face protects the group and everyone’s dignity.',
+    belief:    'Showing annoyance openly shames the other person and harms the relationship; a strong person swallows it.',
+    worldview: 'A person lives inside a web of relationships whose peace matters more than any one person’s feelings.',
+    note:
+      'Students often read Hannah as rude and Ethan as humiliated. Point them to Ethan: he preferred it. ' +
+      'Then ask how they can tell, at home, that someone is annoyed with them — most will list signs ' +
+      '(sudden politeness, short answers, not sharing food). Both systems communicate annoyance; one ' +
+      'uses words, the other uses signs.'
+  }
+},
+
+/* ======================================================================== 10 */
+{
+  id: 'leave-the-snake-alone',
+  theme: 'nature',
+  title: 'Leave the Snake Alone',
+  setting: 'A back garden · Asheville, North Carolina',
+  observation:
+    'A Bangladeshi student is staying with an American family. In the back garden he sees a long black ' +
+    'snake near the vegetable beds and runs for a stick. Kathy, the mother, stops him: “No, no — leave ' +
+    'him. He lives here.” She calls the children to watch it from a few steps away. The snake slides under ' +
+    'the shed. Later the student notices that the family also leaves a dead tree standing and lets one ' +
+    'corner of the garden grow wild.',
+  noticing:
+    'At home a snake near the house is killed, and a wild corner is cleared. Here they protect both. Why?',
+
+  title_bn: 'সাপটাকে থাকতে দিন',
+  observation_bn:
+    'এক বাংলাদেশি শিক্ষার্থী একটি আমেরিকান পরিবারের সঙ্গে থাকছেন। পেছনের বাগানে সবজির বেডের কাছে তিনি একটা লম্বা কালো সাপ দেখে লাঠি আনতে দৌড় দিলেন। বাড়ির মা ক্যাথি তাঁকে থামালেন: “না, না — ওকে থাকতে দাও। ও এখানেই থাকে।” তিনি বাচ্চাদের ডেকে কয়েক পা দূর থেকে সাপটা দেখতে বললেন। সাপটা শেডের নিচে ঢুকে গেল। পরে শিক্ষার্থী খেয়াল করলেন, পরিবারটি একটা মরা গাছও দাঁড় করিয়ে রেখেছে, আর বাগানের এক কোণ ইচ্ছে করেই জংলা হতে দিয়েছে।',
+  noticing_bn:
+    'দেশে বাড়ির কাছে সাপ দেখলে মেরে ফেলা হয়, আর জংলা কোণ সাফ করা হয়। এখানে দুটোকেই রক্ষা করা হচ্ছে। কেন?',
+
+  beats: [
+    { ico: '🐍', t: 'A snake by the vegetables' },
+    { ico: '✋', t: '“No — leave him. He lives here.”' },
+    { ico: '🌿', t: 'The wild corner stays wild' }
+  ],
+
+  punch: 'Here, a good garden is one you share with what was there before you.',
+  chain: [
+    'Nature is good, and it was here first',
+    'People are guests in the natural world',
+    'Leave wild things as they are',
+    'Let the snake go under the shed'
+  ],
+  questions: [
+    { q: 'Tell me about the last wild animal you found in your garden. What did you do?',
+      ok: true, type: 'experience',
+      why: 'It asks for one real animal on one real day. What she did will show you what she believes ' +
+           'about nature.',
+      why_bn:
+        'এটি একটি সত্যিকারের দিনের একটি সত্যিকারের প্রাণীর কথা জানতে চায়। তিনি যা করলেন, তা থেকেই বোঝা যাবে প্রকৃতি নিয়ে তিনি কী বিশ্বাস করেন।' },
+    { q: 'Are snakes common here? Is it against the law to kill them?', flaw: 'closed' },
+    { q: 'Why do Americans care so much about animals? Is that part of your culture?', flaw: 'generalizing' },
+    { q: 'Isn’t it dangerous to let a snake live so close to your children?', flaw: 'leading' }
+  ],
+
+  speakers: [
+    { name: 'Kathy', age: 48, job: 'garden centre owner', city: 'Asheville',
+      voice: { rate: 0.98, pitch: 1.0, gender: 'female' },
+      script:
+        'That was a black rat snake. He’s not dangerous, and he eats the mice that eat my vegetables, so he’s ' +
+        'doing me a favour. But even if he did nothing for me, I’d leave him. This was his hill ' +
+        'before it was my garden. I want my kids to grow up knowing we share this place. We don’t own it.',
+      gist: 'The snake eats the mice. But even if he did not, this was his hill before it was her garden.' },
+    { name: 'Ray', age: 61, job: 'retired forest ranger', city: 'Asheville',
+      voice: { rate: 0.96, pitch: 0.92, gender: 'male' },
+      script:
+        'People always want to fix nature — cut it, clean it, spray it. Most of the time it doesn’t need ' +
+        'fixing. That dead tree in Kathy’s yard? Woodpeckers nest in it, and owls, and beetles. It’s their ' +
+        'home too. If you tidy it away, you tidy away the animals. I tell kids: look, but don’t touch. The ' +
+        'wild knows what it’s doing.',
+      gist: 'Nature does not need fixing. A dead tree is home to woodpeckers and owls. Look, but do not touch.' },
+    { name: 'Lucia', age: 27, job: 'environmental science student', city: 'Asheville',
+      voice: { rate: 1.03, pitch: 1.06, gender: 'female' },
+      script:
+        'I grew up in Mexico City, where my grandmother swept every leaf from the patio and killed every ' +
+        'spider she saw. A clean yard meant a good family. When I first saw American gardens left messy on ' +
+        'purpose, I thought the owners were lazy. Now I study them, and I leave the spiders alone. For my ' +
+        'grandmother, nature was something to keep out. Here, it’s something to let in.',
+      gist: 'Her grandmother swept every leaf and killed every spider. Here, nature is something to let in.' }
+  ],
+
+  claims: [
+    { text: 'Wild animals should be left alone when they are not causing harm.', shared: true, text_bn: 'ক্ষতি না করলে বুনো প্রাণীকে তার মতো থাকতে দেওয়া উচিত।' },
+    { text: 'Nature works well on its own and does not need to be fixed.', shared: true, text_bn: 'প্রকৃতি নিজে নিজেই ভালো চলে; একে ঠিক করে দেওয়ার দরকার নেই।' },
+    { text: 'People share the land with nature; they do not own it.', shared: true, text_bn: 'মানুষ জমি প্রকৃতির সঙ্গে ভাগ করে নেয়; এর মালিক মানুষ নয়।' },
+    { text: 'The snake eats the mice that eat their vegetables.', shared: false, text_bn: 'সাপটা সেই ইঁদুরগুলো খায়, যেগুলো তাঁর সবজি খায়।', who: 'Kathy' },
+    { text: 'Woodpeckers and owls nest in a dead tree in the yard.', shared: false, text_bn: 'উঠোনের একটা মরা গাছে কাঠঠোকরা আর পেঁচা বাসা বাঁধে।', who: 'Ray' },
+    { text: 'Their grandmother swept every leaf from the patio.', shared: false, text_bn: 'তাঁর দাদি বা নানি উঠোনের প্রতিটি পাতা ঝাঁট দিয়ে ফেলতেন।', who: 'Lucia' }
+  ],
+
+  rings: {
+    behavior:  'A harmless snake, a dead tree and a wild corner of the garden are left alone, and children are taught to watch without touching.',
+    value:     'Respect for nature as it is — protecting wild things rather than managing them.',
+    belief:    'Nature is good and balanced on its own; human interference usually does more harm than good.',
+    worldview: 'People are one part of the natural world, not its masters; the land was there first, and it is shared, not owned.'
+  },
+  distractors: [
+    { text: 'They let the snake stay in the garden.', fault: 'restatement' },
+    { text: 'Americans care more about animals than about people.', fault: 'stereotype' },
+    { text: 'Leaving a snake near children is foolish.', fault: 'judgment' }
+  ],
+
+  expert:
+    'Kathy gives two reasons, and the second is the real one. The snake eats the mice — that is useful. ' +
+    'But “even if he did nothing for me, I would leave him. This was his hill before it was my garden.” ' +
+    'Nature here is not a problem to solve but a neighbour who was there first. Ray says the same about ' +
+    'the dead tree, and Lucia shows how far the idea can travel: from a grandmother who swept every leaf ' +
+    'to a student who leaves the spiders alone.',
+
+  contrast: {
+    behavior:  'A snake near the house is killed or chased away, and yards are swept, cut back and kept clean and orderly.',
+    value:     'Safety and order — a good household keeps wildness away from the home and the family.',
+    belief:    'Left alone, nature becomes disorder and danger; it is people’s duty to clear it, tame it and control it.',
+    worldview: 'Nature is a powerful, chaotic force that people must hold back and shape to make a safe place to live.',
+    note:
+      'Take care with the snake: in Bangladesh many snakes really are deadly, and the students’ caution ' +
+      'is wise, not backward. The point is not which is right but what each side believes about nature. ' +
+      'Ask what a well-kept home looks like in Rajshahi and what they would think of Kathy’s wild corner — ' +
+      'then what Kathy would think of a swept, bare courtyard.'
+  }
 }
+
 ];

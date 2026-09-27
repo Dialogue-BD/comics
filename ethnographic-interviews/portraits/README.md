@@ -2,8 +2,8 @@
 
     portraits/<scenario-id>-<n>.jpg    n = 1, 2, 3 in the order the speakers appear
 
-**All eighteen are in place.** 384x384 JPEG, about 26 kB each, half a megabyte
-for the set. If a file is missing the page falls back to a tinted initial in the
+The original eighteen are in place, with twelve more portraits for the new
+scenarios. The page uses 384x384 JPEGs. If a file is missing the page falls back to a tinted initial in the
 brand's moss, so the activity still looks finished without them.
 
 The prompts that produced these are in `../ethnographic-interviews-voice-script.md`,
@@ -61,3 +61,27 @@ illustrative and never present them as photographs of real participants.
 - `portraits/the-neighbours-tree-1.jpg` — **Hank**, 61, retired electrician, Portland
 - `portraits/the-neighbours-tree-2.jpg` — **Michelle**, 44, bookkeeper, Portland
 - `portraits/the-neighbours-tree-3.jpg` — **Ade**, 33, physiotherapist, Portland
+
+## Back of the line — Fairness
+
+- `portraits/back-of-the-line-1.jpg` — **Angela**, pharmacist, Philadelphia
+- `portraits/back-of-the-line-2.jpg` — **Marcus**, delivery driver, Philadelphia
+- `portraits/back-of-the-line-3.jpg` — **Daniel**, school counselor, Philadelphia
+
+## Tell them what you did — Self-presentation
+
+- `portraits/tell-them-what-you-did-1.jpg` — **Diane**, HR manager, Atlanta
+- `portraits/tell-them-what-you-did-2.jpg` — **Jordan**, college senior, Atlanta
+- `portraits/tell-them-what-you-did-3.jpg` — **Arjun**, software engineer, Atlanta
+
+## Honestly, I’m annoyed — Feelings
+
+- `portraits/honestly-im-annoyed-1.jpg` — **Hannah**, engineering student, Sacramento
+- `portraits/honestly-im-annoyed-2.jpg` — **Ethan**, computer science student, Sacramento
+- `portraits/honestly-im-annoyed-3.jpg` — **Kenji**, restaurant manager, Sacramento
+
+## Leave the snake alone — Nature
+
+- `portraits/leave-the-snake-alone-1.jpg` — **Kathy**, garden centre owner, Asheville
+- `portraits/leave-the-snake-alone-2.jpg` — **Ray**, retired forest ranger, Asheville
+- `portraits/leave-the-snake-alone-3.jpg` — **Lucia**, environmental science student, Asheville

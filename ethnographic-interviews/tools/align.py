@@ -1,145 +1,209 @@
 #!/usr/bin/env python3
-"""Word-level timings for the eighteen interviews, by forced alignment.
+"""Build karaoke timings with local Whisper word timestamps.
 
-We already know every word that was said, so this is alignment, not
-recognition: PocketSphinx is handed the transcript and asked where in the
-waveform each word falls. The acoustic model ships inside the wheel, which
-matters here because the sandbox cannot reach a model host.
+Whisper times the clean recordings in audio/_dry-originals/. The displayed
+words remain the scripts in scenarios.js; differences in spelling, contractions
+and number formatting are reconciled before timings.js is written.
 
-Three words in the whole activity are outside the CMU dictionary. Hyphenated
-compounds are aligned as their parts and then collapsed back to one span, and
-the rest go through a small substitution table — the label the page shows
-always comes from the transcript, never from this file, so a stand-in
-pronunciation costs nothing.
-
-Output: timings.js — { "<key>": {dur, w:[[start,end], ...]} }, one pair per
-transcript word, in transcript order, so the page can zip them straight onto
-its own tokens with no matching at runtime.
-Run it with:  python3 tools/align.py       (needs pocketsphinx and ffmpeg)
-
-The clean takes in audio/_dry-originals/ are what get aligned — the ambience
-beds cost the recogniser accuracy and the durations are identical either way,
-so the times apply to the files the page actually plays.
+Run: python3 tools/align.py  (needs openai-whisper and ffmpeg)
+For reviewing a saved Whisper pass: python3 tools/align.py --raw-json FILE
+No API key is used; a cached model also needs no network access.
 """
-import os, re, json, subprocess, sys, difflib
-from pocketsphinx import Decoder, Config, get_model_path
 
-# run from anywhere: everything is found relative to this file
-HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.dirname(HERE)                       # ethnographic-interviews/
-SRC  = os.path.join(ROOT, "audio", "_dry-originals")   # align the clean takes
-SCEN = os.path.join(ROOT, "scenarios.js")
-OUT  = os.path.join(ROOT, "timings.js")
-
-WORD = re.compile(r"[A-Za-z’'-]+")
-
-model = get_model_path()
-dict_path = os.path.join(model, "en-us", "cmudict-en-us.dict")
-KNOWN = set()
-for line in open(dict_path, encoding="latin-1"):
-    w = line.split("\t")[0].split(" ")[0].strip()
-    KNOWN.add(re.sub(r"\(\d+\)$", "", w).lower())
+import argparse
+import difflib
+import json
+import re
+import subprocess
+from pathlib import Path
 
 
-def parts_for(token):
-    """What to hand the aligner for one transcript word, as a list."""
-    t = token.lower().replace("’", "'")
-    if t in KNOWN:
-        return [t]
-    if "-" in t:                                  # twenty-two-year-old, half-formed
-        bits = [b for b in t.split("-") if b]
-        if all(b in KNOWN for b in bits):
-            return bits
-    stripped = t.strip("'")
-    if stripped in KNOWN:
-        return [stripped]
-    # a name the dictionary has never met (Pune). The nearest spelling gives a
-    # close-enough pronunciation, and the label on screen comes from the
-    # transcript regardless, so the stand-in is never seen.
-    near = difflib.get_close_matches(t, KNOWN, n=1, cutoff=0.6)
-    if near:
-        print("   (%s aligned as %s)" % (t, near[0]))
-        return [near[0]]
-    return None                                   # unalignable; time it by neighbours
+ROOT = Path(__file__).resolve().parent.parent
+SRC = ROOT / "audio" / "_dry-originals"
+SCEN = ROOT / "scenarios.js"
+OUT = ROOT / "timings.js"
+WORD = re.compile(r"[A-Za-z’'-]+")  # same rule as index.html
+HEARD_WORD = re.compile(r"[A-Za-z0-9’'-]+")
+ONES = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+TEENS = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+         "sixteen", "seventeen", "eighteen", "nineteen"]
+TENS = ["", "", "twenty", "thirty", "forty", "fifty", "sixty",
+        "seventy", "eighty", "ninety"]
 
 
-scripts = json.loads(subprocess.run(["node", "-e", """
-const vm=require("vm"),fs=require("fs");const c={};vm.createContext(c);
-vm.runInContext(fs.readFileSync(process.argv[1],"utf8")+";this.O=SCENARIOS",c);
-const out={};c.O.forEach(s=>s.speakers.forEach((sp,i)=>out[s.id+"-"+(i+1)]=sp.script));
+def norm(word):
+    word = re.sub(r"[^a-z0-9]", "", word.lower().replace("’", "'"))
+    if not word.isdigit():
+        return word
+    n = int(word)
+    if n < 10:
+        return ONES[n]
+    if n < 20:
+        return TEENS[n - 10]
+    if n < 100:
+        return TENS[n // 10] + (ONES[n % 10] if n % 10 else "")
+    return word
+
+
+def scripts_from_js():
+    code = r'''
+const vm=require("vm"), fs=require("fs"), c={}; vm.createContext(c);
+vm.runInContext(fs.readFileSync(process.argv[1], "utf8")+";this.O=SCENARIOS", c);
+const out={}; c.O.forEach(s=>s.speakers.forEach((sp,i)=>out[s.id+"-"+(i+1)]=sp.script));
 console.log(JSON.stringify(out));
-""", SCEN], capture_output=True, text=True, check=True).stdout)
+'''
+    done = subprocess.run(["node", "-e", code, str(SCEN)], capture_output=True,
+                          text=True, check=True)
+    return json.loads(done.stdout)
 
-cfg = Config(hmm=os.path.join(model, "en-us", "en-us"), dict=dict_path,
-             samprate=16000, loglevel="ERROR")
-dec = Decoder(cfg)
 
-result, report = {}, []
-for key in sorted(scripts):
-    mp3 = os.path.join(SRC, key + ".mp3")
-    pcm = subprocess.run(["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error",
-                          "-i", mp3, "-f", "s16le", "-ac", "1", "-ar", "16000", "-"],
-                         capture_output=True, check=True).stdout
-    dur = len(pcm) / 2 / 16000.0
+def duration(path):
+    done = subprocess.run(["ffprobe", "-v", "error", "-show_entries",
+                           "format=duration", "-of",
+                           "default=noprint_wrappers=1:nokey=1", str(path)],
+                          capture_output=True, text=True, check=True)
+    return float(done.stdout.strip())
 
-    tokens = WORD.findall(scripts[key])
-    align_words, owner = [], []          # owner[i] = index of the transcript token
-    for ti, tok in enumerate(tokens):
-        p = parts_for(tok)
-        if p:
-            for w in p:
-                align_words.append(w); owner.append(ti)
 
-    dec.set_align_text(" ".join(align_words))
-    dec.start_utt(); dec.process_raw(pcm, full_utt=True); dec.end_utt()
-
-    # segment times come back in 10 ms frames, silences included
-    spans, ai = [None] * len(align_words), 0
-    for seg in dec.seg():
-        w = seg.word.lower()
-        if w in ("<sil>", "<s>", "</s>", "[noise]", "(null)"):
+def heard_tokens(words):
+    """Split rare multiword ASR items while retaining their timed span."""
+    result = []
+    for item in words:
+        bits = HEARD_WORD.findall(item["word"])
+        if not bits:
             continue
-        w = re.sub(r"\(\d+\)$", "", w)
-        if ai < len(align_words):
-            spans[ai] = (seg.start_frame / 100.0, seg.end_frame / 100.0)
-            ai += 1
+        start, end = float(item["start"]), float(item["end"])
+        weights = [max(1, len(bit)) for bit in bits]
+        total = sum(weights)
+        t = start
+        for bit, weight in zip(bits, weights):
+            next_t = t + (end - start) * weight / total
+            result.append((bit, t, next_t))
+            t = next_t
+    return result
 
+
+def distribute(tokens, left, right):
+    """Place script words across one mismatched ASR span."""
+    left, right = max(0.0, left), max(left, right)
+    weights = [max(1, len(norm(token))) for token in tokens]
+    total = sum(weights)
+    result, t = [], left
+    for weight in weights:
+        next_t = t + (right - left) * weight / total
+        result.append([t, next_t])
+        t = next_t
+    return result
+
+
+def align(script, asr_words, dur):
+    tokens = WORD.findall(script)
+    heard = heard_tokens(asr_words)
+    if not heard:
+        raise ValueError("Whisper returned no timed words")
+    a, b = [norm(token) for token in tokens], [norm(word) for word, _, _ in heard]
+    matcher = difflib.SequenceMatcher(None, a, b, autojunk=False)
     times = [None] * len(tokens)
-    for i, sp in enumerate(spans):
-        if not sp: continue
-        ti = owner[i]
-        if times[ti] is None: times[ti] = [sp[0], sp[1]]
-        else: times[ti][1] = sp[1]        # collapse a hyphenated compound back to one
+    matched, differences = 0, []
+    for kind, i0, i1, j0, j1 in matcher.get_opcodes():
+        if kind == "equal":
+            matched += i1 - i0
+            for i, j in zip(range(i0, i1), range(j0, j1)):
+                times[i] = [heard[j][1], heard[j][2]]
+            continue
+        differences.append({"script": " ".join(tokens[i0:i1]),
+                            "heard": " ".join(item[0] for item in heard[j0:j1])})
+        if i0 == i1:  # an ASR word with no on-screen counterpart
+            continue
+        left = heard[j0][1] if j0 < j1 else (heard[j0 - 1][2] if j0 else 0.0)
+        right = heard[j1 - 1][2] if j0 < j1 else (
+            heard[j0][1] if j0 < len(heard) else dur)
+        times[i0:i1] = distribute(tokens[i0:i1], left, right)
 
-    matched = sum(1 for t in times if t)
-    known_i = [i for i, t in enumerate(times) if t]
-    if not known_i:
-        print("!! %s: alignment produced nothing" % key); continue
-    for i in range(known_i[0]):
-        times[i] = [0.0, times[known_i[0]][0]]
-    for i in range(known_i[-1] + 1, len(times)):
-        times[i] = [times[known_i[-1]][1], dur]
-    for x, y in zip(known_i, known_i[1:]):
-        if y - x < 2: continue
-        t0, t1 = times[x][1], times[y][0]
-        step = (t1 - t0) / (y - x)
-        for k in range(1, y - x):
-            times[x + k] = [t0 + step * (k - 1), t0 + step * k]
+    if any(pair is None for pair in times):
+        raise ValueError("A transcript word received no timing")
+    # Whisper occasionally gives a spoken word a zero-width boundary. A script
+    # word inside an ASR contraction can also need a brief display window.
+    for i, pair in enumerate(times):
+        if pair[1] - pair[0] >= 0.04:
+            continue
+        before = times[i - 1] if i else None
+        after = times[i + 1] if i + 1 < len(times) else None
+        gap_before = pair[0] - (before[1] if before else 0.0)
+        gap_after = (after[0] if after else dur) - pair[1]
+        if gap_before >= 0.08:
+            pair[0] -= min(0.16, gap_before)
+        elif gap_after >= 0.08:
+            pair[1] += min(0.16, gap_after)
+        else:
+            take_before = min(0.06, (before[1] - before[0]) / 3) if before else 0
+            take_after = min(0.06, (after[1] - after[0]) / 3) if after else 0
+            if before:
+                before[1] -= take_before
+                pair[0] -= take_before
+            if after:
+                after[0] += take_after
+                pair[1] += take_after
+    previous = 0.0
+    for pair in times:
+        pair[0] = min(dur, max(previous, pair[0]))
+        pair[1] = min(dur, max(pair[0], pair[1]))
+        previous = pair[1]
+    return {"dur": round(dur, 3),
+            "w": [[round(start, 3), round(end, 3)] for start, end in times]}, \
+           matched / len(tokens), differences
 
-    result[key] = {"dur": round(dur, 3),
-                   "w": [[round(a, 3), round(b, 3)] for a, b in times]}
-    report.append((key, len(tokens), matched, dur))
-    print("%-34s %3d words, %3d aligned (%3.0f%%), %5.1fs" %
-          (key, len(tokens), matched, matched / len(tokens) * 100, dur))
 
-with open(OUT, "w") as f:
-    f.write("/* Word timings for the eighteen recordings.\n"
-            "   Forced alignment, produced by tools/align.py — see audio/README.md.\n"
-            "   One [start, end] pair per transcript word, in transcript order.\n"
-            "   Do not hand-edit: regenerate if a recording or a script changes. */\n")
-    f.write("const TIMINGS = " + json.dumps(result, separators=(",", ":")) + ";\n")
-    f.write("if (typeof module !== 'undefined') module.exports = { TIMINGS };\n")
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--model", default="small", help="Whisper model (default: small)")
+    parser.add_argument("--raw-json", type=Path, help="reuse a saved Whisper output")
+    args = parser.parse_args()
+    scripts = scripts_from_js()
+    raw = json.loads(args.raw_json.read_text()) if args.raw_json else None
+    model = None
+    if raw is None:
+        import whisper
+        model = whisper.load_model(args.model)
 
-tot = sum(r[1] for r in report); ok = sum(r[2] for r in report)
-print("\n%d files, %d/%d words aligned (%.1f%%)" % (len(report), ok, tot, ok / tot * 100))
-print("wrote %s (%.0f kB)" % (OUT, os.path.getsize(OUT) / 1024))
+    result, report = {}, []
+    for key, script in sorted(scripts.items()):
+        mp3 = SRC / (key + ".mp3")
+        if not mp3.is_file():
+            raise FileNotFoundError(mp3)
+        if raw is None:
+            transcription = model.transcribe(str(mp3), language="en",
+                                              word_timestamps=True, fp16=False,
+                                              verbose=None,
+                                              condition_on_previous_text=False)
+            words = [word for segment in transcription["segments"]
+                     for word in segment.get("words", [])]
+        else:
+            words = raw[key]["words"]
+        item, fraction, differences = align(script, words, duration(mp3))
+        result[key] = item
+        report.append((key, fraction, differences))
+        print(f"{key:34} {len(item['w']):3} words, {fraction:.1%} exact ASR match")
+
+    poor = [(key, fraction, differences) for key, fraction, differences in report
+            if fraction < 0.80]
+    if poor:
+        for key, fraction, differences in poor:
+            print(f"REVIEW {key}: {fraction:.1%} match; {differences}")
+        raise SystemExit("Transcript and audio differ too much; timings were not written")
+
+    header = ("/* Word timings for the recorded interviews.\n"
+              "   Whisper word timestamps, reconciled to scenarios.js by tools/align.py.\n"
+              "   One [start, end] pair per transcript word, in transcript order.\n"
+              "   Do not hand-edit: regenerate if a recording or script changes. */\n")
+    OUT.write_text(header + "const TIMINGS = "
+                   + json.dumps(result, separators=(",", ":")) + ";\n"
+                   + "if (typeof module !== 'undefined') module.exports = { TIMINGS };\n")
+    exact = sum(round(fraction * len(result[key]["w"])) for key, fraction, _ in report)
+    total = sum(len(result[key]["w"]) for key, _, _ in report)
+    print(f"\n{len(report)} files, {exact}/{total} transcript words matched exactly ({exact / total:.1%})")
+    print(f"wrote {OUT} ({OUT.stat().st_size / 1024:.0f} kB)")
+
+
+if __name__ == "__main__":
+    main()
