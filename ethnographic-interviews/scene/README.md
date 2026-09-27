@@ -6,6 +6,13 @@ along → explore the words). The content is `../scenes.js`; the full asset
 brief with every prompt is `culture-circles-scene-assets.md`, generated from
 it by `../tools/gen-scene-assets.js`.
 
+## Asset progress
+
+`dinner-ends-at-eight` has its six finished panels, matching Tania and Jeff
+portraits, eight dry Gemini 3.8 takes, an assembled 92-second scene file, and
+Whisper word timings. The other nine scenes still use picture and portrait
+stand-ins and the browser-speech fallback.
+
 Each scene is recorded as takes — dialogue takes, where both characters play a
 whole exchange in one Gemini conversational call, and narration takes between
 them — and assembled into one file per scene.

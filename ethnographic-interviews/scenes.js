@@ -514,12 +514,29 @@ const SCENES = {
 const SCENE_GLOSS = {
   phrases: [
     /* dinner */
+    { p: 'voice message',      k: 'word',    d: 'a short spoken message recorded on a phone.' },
+    { p: 'a few of us',        k: 'grammar', d: 'a small number of people in our group.',
+      n: '“A few” means some, but not many. “Us” includes the speaker.' },
+    { p: 'at my place',        k: 'idiom',   d: 'at my home — a casual way to invite someone over.' },
+    { p: 'want to come',       k: 'discourse', d: 'would you like to join us?',
+      n: 'In casual speech, people often use “want to” for a friendly invitation.' },
     { p: 'push everyone out', k: 'idiom',   d: 'make all the guests leave.',
       n: 'Jeff says it lightly, as a joke about himself — not as a threat.' },
+    { p: 'by eight',          k: 'grammar', d: 'no later than 8:00.',
+      n: '“By” gives the latest time something must happen; it does not mean exactly at that time.' },
     { p: 'early start',       k: 'word',    d: 'a day when you must get up very early.' },
+    { p: 'on Saturday',       k: 'grammar', d: 'on the day called Saturday.',
+      n: 'English normally uses “on” before a day of the week.' },
     { p: 'come in',           k: 'phrasal', d: 'enter — what you say when you open the door to a guest.' },
+    { p: 'having a great time', k: 'idiom', d: 'enjoying herself very much.' },
     { p: 'five past eight',   k: 'grammar', d: '8:05.', n: 'Telling the time: “five past”, “quarter past”, “half past”, “quarter to”.' },
+    { p: 'stands up',         k: 'phrasal', d: 'rises from a sitting position.',
+      n: 'Here Jeff stands to signal that the dinner is ending.' },
+    { p: 'thank you so much', k: 'discourse', d: 'a warm, strong way to say thank you.' },
+    { p: 'see you on Monday', k: 'discourse', d: 'goodbye for now; we expect to meet again on Monday.' },
     { p: 'quarter past eight', k: 'grammar', d: '8:15.' },
+    { p: 'just getting started', k: 'idiom', d: 'only beginning now.',
+      n: '“Just” makes the contrast sharper: the party is ending here at a time it would only be beginning at home.' },
     { p: 'getting started',   k: 'phrasal', d: 'beginning.' },
     /* the bill */
     { p: 'didn\'t i tell you', k: 'grammar', d: 'I told you so — I was right!',
@@ -581,6 +598,9 @@ const SCENE_GLOSS = {
     { p: 'growing wild',      k: 'idiom',   d: 'growing naturally with nobody cutting or tidying it.' }
   ],
   words: {
+    buzzes:     { k: 'word', d: 'makes a short vibrating sound, like a phone receiving a message.' },
+    colleague:  { k: 'word', d: 'someone you work with.' },
+    exactly:    { k: 'word', d: 'at that precise time, not a little early or late.' },
     sweets:      { k: 'word', d: 'small sweet foods, like mishti — a common gift for a host in Bangladesh.' },
     upset:       { k: 'word', d: 'unhappy or hurt.' },
     delicious:   { k: 'word', d: 'tasting very good.' },
