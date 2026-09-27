@@ -2594,20 +2594,6 @@ body.bangla .bn-inline{display:inline}
 :root[data-theme="stage"] .g-found-m .chain-ico{width:calc(48px*var(--ui));height:calc(48px*var(--ui));padding:calc(12px*var(--ui))}
 @media (prefers-reduced-motion:reduce){ .rings.is-live .ring.is-target .ring-face,.rings.is-live .ring.is-set .ring-face,.g-found-m .chain > *{animation:none} }
 
-/* ---- the end of the short flow ---- */
-.p-done{min-height:calc(100dvh - var(--header-h,124px) - var(--s4) - var(--stage-pb));display:flex;align-items:center;justify-content:center}
-.done-card{width:min(100%,calc(640px*var(--ui)));text-align:center;border-radius:calc(18px*var(--ui));
-  padding:calc(36px*var(--ui)) calc(32px*var(--ui)) calc(30px*var(--ui));animation:gRise .5s cubic-bezier(.2,.7,.2,1) both}
-.done-card .done-mark{width:calc(64px*var(--ui));height:calc(64px*var(--ui));background:var(--forest);color:#fff;margin:0 auto calc(16px*var(--ui));
-  box-shadow:0 0 0 8px var(--moss-soft);animation:gPop .45s .15s cubic-bezier(.2,.7,.2,1) both}
-.done-card .done-mark .ico{stroke-width:2.2}
-.done-card .kicker{margin-bottom:calc(6px*var(--ui))}
-.done-card .h-title{font-size:calc(clamp(1.6rem,6vw,2rem)*var(--ui));letter-spacing:-.01em}
-.done-card .evid{text-align:left;margin-top:calc(22px*var(--ui))}
-.done-card .body{font-size:calc(1rem*var(--ui));color:var(--tx-muted)}
-.done-card .tbar{justify-content:center;margin-top:calc(22px*var(--ui))}
-.done-card .done-again{flex:0 0 auto}
-
 /* ---- word help: a popover, not a panel ---- */
 .glossbox{border-left:0;border:1px solid var(--rule);border-radius:calc(14px*var(--ui));
   box-shadow:0 2px 6px rgba(16,61,33,.1),0 22px 48px rgba(16,61,33,.2)}
@@ -3201,8 +3187,8 @@ body.is-welcome #theme-pill{visibility:hidden}
   <summary class="tnote">For the teacher</summary>
   <div class="m-scen" id="m-scen-note"></div>
 
-  <p>An eight-panel lesson, then five steps: about 45 minutes. The lesson is shown once and the browser
-     remembers; “Show the lesson” brings it back for a new class. Its second panel is the one that
+  <p>An eight-panel opening lesson, then the same five activity steps students use: about 45 minutes.
+     Teacher mode opens with the lesson; “Show the lesson” brings it back at any time. Its second panel is the one that
      matters — the same three values ranked two ways — and it is worth stopping on.</p>
   <p>Each lesson panel is a picture that plays in short beats, with one line of caption under it. You
      do the talking: <kbd>→</kbd> or a tap on the picture moves it on one beat, <kbd>←</kbd> steps it
@@ -3230,7 +3216,7 @@ body.is-welcome #theme-pill{visibility:hidden}
 <!-- ============ PRINTABLE FIELD SHEET · blank, for real interviews ============ -->
 <div id="printsheet"></div>
 
-<script src="glossary.js"></script>
+<script src="glossary.js?v=20260927b"></script>
 <script src="timings.js"></script>
 <script src="scenarios.js"></script>
 <script src="scenarios-bn.js?v=20260927"></script>
@@ -3323,11 +3309,6 @@ const T = {
   nx_new:        ['Next scenario',        'পরের পরিস্থিতি'],
 
   playall:       ['Play all three',   ''],
-  hand_k:        ['Stop Here',        ''],
-  hand_t:        ['You have the evidence',
-                  'প্রমাণ এখন আপনার হাতে'],
-  hand_b:        ['Three people, three times — and these are the sentences all three of them said. Your teacher takes it from here: what do people who say these things believe, and what does the world look like to them?',
-                  'তিনজন মানুষ, তিনবার — আর এই বাক্যগুলোই তিনজনই বলেছেন। এরপরের অংশ আপনার শিক্ষক দেখাবেন: যাঁরা এই কথাগুলো বলেন, তাঁরা কী বিশ্বাস করেন, আর তাঁদের চোখে জগৎটা কেমন?'],
   sp_text:       ['See the words',    ''],
   sp_text_on:    ['Hide the words',   ''],
   fulltext:      ['Show full text',   ''],
@@ -3470,27 +3451,14 @@ const btnNext = $('#btn-next'), btnNextStage = $('#btn-next-stage'),
       btnBack = $('#btn-back'), toastEl = $('#toast');
 
 /* ------------------------------------------------------------------ modes
-   The activity was trying to teach listening, vocabulary, research-question
-   design, inference and the anthropology of values all at once, in a second
-   language, on a first encounter with the medium. It does not survive that.
-
-   So the student app is listening: watch a scene, hear three people, find
-   what they share. The question step and the ring mapping — which are method
-   and theory rather than language — sit behind a teacher toggle, for the
-   projector and for a class that has the idea already. Nothing is lost; it
-   moves to where it can be said comprehensibly. */
+   Both roles do the same five-step activity. Teacher mode adds the opening
+   lesson and projector layout; student mode starts directly with Watch. */
 let teacher = false;
-/* Presenting and the full five steps used to be two independent switches, so
-   the app allowed the one state that is worse than either: the teacher at the
-   front of the room running the three-step listening flow, with the culture
-   payoff missing. The projector now IS the full flow. Persisting the stage
-   rather than the step set means a reload cannot land on a flow the theme
-   disagrees with. */
+/* The projector layout follows the selected role. */
 try { teacher = localStorage.getItem('ei-stage') === '1'; } catch (e) {}
 
-/* Who is at the screen decides the flow: a student gets the short listening
-   flow on paper, a teacher gets the lesson and all five steps on the
-   projector. The first visit asks; the answer is remembered on this device,
+/* Who is at the screen decides whether to show the opening lesson. The first
+   visit asks; the answer is remembered on this device,
    and ?role=student or ?role=teacher in the address answers it for a link. */
 let role = null;
 try { role = localStorage.getItem('ei-role'); } catch (e) {}
@@ -3501,24 +3469,15 @@ try { role = localStorage.getItem('ei-role'); } catch (e) {}
 if (role) teacher = role === 'teacher';
 let welcome = !role;
 
-const STEP_SET = {
-  student: [['Watch',  'eye',    'task_watch',  () => stepObserve()],
-            ['Listen', 'ear',    'task_listen', () => stepListen()],
-            ['Check',  'tick',   'task_check',  () => stepCheck()]],
-  full:    [['Watch',  'eye',    'task_watch',  () => stepObserve()],
-            ['Ask',    'ask',    'task_ask',    () => stepAsk()],
-            ['Listen', 'ear',    'task_listen', () => stepListen()],
-            ['Check',  'tick',   'task_check',  () => stepCheck()],
-            ['Map',    'target', 'task_map',    () => stepMap()]]
-};
-const steps = () => STEP_SET[teacher ? 'full' : 'student'];
+const ACTIVITY_STEPS = [['Watch',  'eye',    'task_watch',  () => stepObserve()],
+                        ['Ask',    'ask',    'task_ask',    () => stepAsk()],
+                        ['Listen', 'ear',    'task_listen', () => stepListen()],
+                        ['Check',  'tick',   'task_check',  () => stepCheck()],
+                        ['Map',    'target', 'task_map',    () => stepMap()]];
+const steps = () => ACTIVITY_STEPS;
 const stepName = () => (steps()[step] || steps()[0])[0];
 
-/* keepPlace is set when the projector is toggled part-way through a class:
-   the step sets differ, so the position is carried across by NAME. Ask and Map
-   have no counterpart in the short flow, so leaving the projector from one of
-   them lands on the nearest step that does exist rather than throwing the
-   class back to the beginning. */
+/* Keep the current activity step when changing screen layouts. */
 function setTeacher(on, keepPlace){
   const wasName = (!lesson && sc && steps()[step]) ? steps()[step][0] : null;
   /* Turning the projector on before anything has happened is the start of the
@@ -3526,13 +3485,13 @@ function setTeacher(on, keepPlace){
      teacher taking the class over for the debrief, and must not throw away
      where they had got to. */
   const started = !sc || step > 0 || state.qDone ||
-                  (state.passes || []).some(x => x > 0) || state.handoff;
+                  (state.passes || []).some(x => x > 0);
   teacher = on;
   if (on && keepPlace && !started){ step = 0; lstep = 0; lbeatAt = -1; lesson = true; }
   else if (keepPlace && wasName){
     const S = steps();
     let i = S.findIndex(x => x[0] === wasName);
-    if (i < 0) i = wasName === 'Ask' ? 0 : S.length - 1;
+    if (i < 0) i = 0;
     step = i;
   } else {
     /* a fresh start on the projector meets the idea before the method */
@@ -3863,8 +3822,7 @@ function jumpTo(i){
     if (i === lstep) return;
     lstep = i; render(); return;
   }
-  if (state.handoff) state.handoff = false;
-  else if (i === step) return;
+  if (i === step) return;
   step = i;
   render();
 }
@@ -3879,7 +3837,6 @@ function newScenario(keepLesson, id){
   state = { qDone: false, passes: [0, 0, 0], catchScores: [[], [], []], tOpen: false,
             tCard: [false, false, false],
             claimsDone: false, picked: new Set(), placed: {}, mapDone: false,
-            handoff: false,
             chosenQ: null };
   /* The brand layer does not recolour per theme — the badge carries the theme. */
   const th = THEMES[sc.theme];
@@ -3907,9 +3864,9 @@ function stepWelcome(){
   p.appendChild(hd);
   const row = el('div', 'wl-cards');
   [['student', 'phone', 'I’m a student', 'আমি শিক্ষার্থী',
-    'Watch a story, listen to three people, and find what they all say.',
-    'একটি গল্প দেখুন, তিনজনের কথা শুনুন, আর খুঁজে বের করুন তিনজনই কী বলেন।',
-    ['Watch', 'Listen', 'Check']],
+    'Watch a story, ask a question, listen to three people, check what they share, and map the reasons.',
+    'গল্প দেখুন, প্রশ্ন করুন, তিনজনের কথা শুনুন, মিল খুঁজুন, তারপর কারণগুলো বৃত্তে বসান।',
+    ['Watch', 'Ask', 'Listen', 'Check', 'Map']],
    ['teacher', 'tv', 'I’m a teacher', 'আমি শিক্ষক',
     'Show the lesson on the projector, then lead the class through all five steps.',
     'প্রজেক্টরে পাঠটি দেখান, তারপর পুরো ক্লাসকে পাঁচটি ধাপের মধ্য দিয়ে নিয়ে যান।',
@@ -3958,7 +3915,6 @@ function render(){
   document.body.classList.toggle('is-welcome', welcome);
   if (welcome){ stepWelcome(); return; }
   if (lesson){ stepLesson(); btnBack.disabled = (lstep === 0 && lbeat <= 0); syncNext(); return; }
-  if (state.handoff){ stepHandoff(); btnBack.disabled = false; syncNext(); return; }
   steps()[step][3]();
   btnBack.disabled = (step === 0 && (!gCur || gCur.k === 0));
   syncNext();
@@ -3979,16 +3935,6 @@ function syncNext(){
     return;
   }
 
-  /* the handover card is the end of the short flow: nothing to continue to */
-  if (state.handoff){
-    /* the card carries its own way on; a greyed Next beside it only asks why */
-    btnNext.hidden = true;
-    btnNext.disabled = true;
-    setBtnLabel(btnNext, 'nx_new');
-    btnNextStage.disabled = true;
-    btnNextStage.textContent = t('nx_new');
-    return;
-  }
 
   /* part-way through a guided step, Next means the next moment */
   const gk = gNextLabel();
@@ -4456,8 +4402,7 @@ function glossedTranscript(text, speakerName){
       box.appendChild(b);
       w += hit.len; p = last + 1;
     } else {
-      /* a plain word still gets a span: the karaoke highlight has to have
-         something to land on, and the glossed runs cover only a quarter */
+      /* a plain word still gets a span so the karaoke highlight can land on it */
       const n = el('span', 'tw', parts[p]);
       n.dataset.lo = w; n.dataset.hi = w;
       box.appendChild(n);
@@ -4875,7 +4820,7 @@ const RANKINGS = {
   west: ['Saying the true thing', 'Keeping everyone comfortable', 'Deferring to the older person'],
   east: ['Deferring to the older person', 'Keeping everyone comfortable', 'Saying the true thing']
 };
-let lesson = false, lstep = 0;   /* the eight framing panels are teacher mode only */
+let lesson = teacher && !welcome, lstep = 0;   /* teacher opens with the framing panels */
 
 /* ------------------------------------------------------ the animated lesson
    Each panel is a picture that plays in beats. The teacher talks; → (or a tap
@@ -5878,8 +5823,7 @@ function panelFig(i, cls){
    The story arrives the way a picture book tells one: a title, then one
    picture at a time with a line under it, then the paragraph once the
    pictures have carried the situation, then a guess, then one thing to
-   notice. The four rings used to sit beside all of this; they are theory,
-   and in teacher mode they come last, as the ring this step has just filled. */
+   notice. The first ring appears after the story, before students ask. */
 function stepObserve(){
   const M = [];
   M.push({ cue: ['A story from America. Look at it one picture at a time.',
@@ -5965,7 +5909,7 @@ function stepObserve(){
       st.appendChild(band);
     } });
 
-  if (teacher) M.push({ cue: ['This is all we can see: the outside ring.', 'এটুকুই চোখে দেখা যায়: বাইরের বৃত্ত।'],
+  M.push({ cue: ['This is all we can see: the outside ring.', 'এটুকুই চোখে দেখা যায়: বাইরের বৃত্ত।'],
     ico: 'target', cls: 'g-ring-m',
     render(st){
       const two = el('div', 'g-two');
@@ -6428,8 +6372,7 @@ function stepListen(){
   const chosen = state.chosenQ || sc.questions.find(x => x.ok).q;
   const qi = sc.questions.findIndex(x => x.q === chosen);
 
-  M.push({ cue: teacher ? ['You asked three people one question.', 'আপনি তিনজন মানুষকে একটি প্রশ্ন করেছেন।']
-                        : ['Three people were asked one question.', 'তিনজন মানুষকে একটি প্রশ্ন করা হয়েছিল।'],
+  M.push({ cue: ['You asked three people one question.', 'আপনি তিনজন মানুষকে একটি প্রশ্ন করেছেন।'],
            ico: 'ask', cls: 'g-q-m',
     render(st){
       const q = el('div', 'g-qbub');
@@ -6695,36 +6638,6 @@ function stepCheck(){
     } });
 
   guided('Check', 'tick', M);
-}
-
-/* where the students stop and the teacher takes over */
-function stepHandoff(){
-  const p = el('div', 'panel p-done');
-  const c = el('div', 'card raised done-card');
-  c.appendChild(glyph('tick', 'done-mark'));
-  c.appendChild(addBn(el('p', 'kicker', t('hand_k')), tb('hand_k')));
-  c.appendChild(addBn(el('h1', 'h-title', t('hand_t')), tb('hand_t')));
-
-  const ev = el('div', 'evid');
-  ev.appendChild(addBn(el('span', 'evid-cap', t('ui_evid')), tb('ui_evid')));
-  const ul = el('ul', 'evid-list');
-  sc.claims.forEach(cm => { if (cm.shared)
-    ul.appendChild(addBn(el('li', null, cm.text), cm.text_bn)); });
-  ev.appendChild(ul);
-  c.appendChild(ev);
-
-  c.appendChild(addBn(el('p', 'body', t('hand_b')), tb('hand_b')));
-
-  const bar = el('div', 'tbar');
-  const again = el('button', 'btn done-again');
-  again.type = 'button';
-  setBtnLabel(again, 'nx_new');
-  again.onclick = () => newScenario();
-  bar.appendChild(again);
-  c.appendChild(bar);
-
-  p.appendChild(c);
-  wrap.appendChild(p);
 }
 
 /* the three confirmed lines, carried forward from the triangulation so every
@@ -7134,7 +7047,7 @@ function duelMoment(){
 /* ---- your turn ----
    The end of Map used to be a paragraph written to the teacher and projected
    at the class. Now it is one question and a line between the two ways of
-   doing the thing: the class decides where it stands, and a tap moves the
+   doing the thing: the learner decides where to stand, and a tap moves the
    marker there. The teacher's paragraph lives in the menu. */
 const TURN = {
   'dinner-ends-at-eight': {
@@ -7217,8 +7130,8 @@ function turnBoard(){
   spec.appendChild(track);
   spec.appendChild(end('east', EL[0], EL[1], T.r));
   box.appendChild(spec);
-  box.appendChild(addBn(el('p', 'g-turn-foot', 'Tap the line to show where your class stands. Both ends make sense from inside their own rings.'),
-                        'আপনার ক্লাস কোথায় দাঁড়ায়, লাইনে চাপ দিয়ে দেখান। নিজের বৃত্তের ভেতর থেকে দেখলে দুই প্রান্তই যুক্তিসঙ্গত।'));
+  box.appendChild(addBn(el('p', 'g-turn-foot', 'Tap the line to show where you stand. Both ends make sense from inside their own rings.'),
+                        'আপনি কোথায় দাঁড়ান, লাইনে চাপ দিয়ে দেখান। নিজের বৃত্তের ভেতর থেকে দেখলে দুই প্রান্তই যুক্তিসঙ্গত।'));
   if (state.turn != null) place(state.turn); else pin.style.left = '50%';
   return box;
 }
@@ -7850,14 +7763,7 @@ function advance(){
     gDir = 1; gSet(gCur.name, gCur.k + 1); turnPage(render); return;
   }
   gDir = 1;
-  if (step === steps().length - 1){
-    /* The short flow used to roll straight into a fresh scenario, so a class
-       blew past the moment the whole listening was for. It stops and hands
-       back instead; the full flow still ends on a new scenario, because by
-       then the debrief has happened. */
-    if (!teacher && !state.handoff){ state.handoff = true; render(); return; }
-    newScenario(); return;
-  }
+  if (step === steps().length - 1){ newScenario(); return; }
   step++; turnPage(render);
 }
 btnNext.onclick = advance;
@@ -7868,7 +7774,6 @@ btnBack.onclick = () => {
     if (lstep === 0) return;
     lbeatEnd = true; lstep--; render(); return;  /* arrive on its last picture */
   }
-  if (state.handoff){ state.handoff = false; render(); return; }
   if (gCur && gCur.list[gCur.k].step && gCur.list[gCur.k].step(-1)) return;
   if (gCur && gCur.k > 0){ stopAudio(); gDir = -1; gSet(gCur.name, gCur.k - 1); turnPage(render); return; }
   if (step === 0) return;
@@ -7951,8 +7856,7 @@ function toggleStage(){
   paintStage(document.documentElement.getAttribute('data-theme') !== 'stage');
   role = document.documentElement.getAttribute('data-theme') === 'stage' ? 'teacher' : 'student';
   try { localStorage.setItem('ei-role', role); } catch (e) {}
-  /* the one switch: presenting turns on Ask and Map, leaving it puts the
-     short listening flow back — carrying the class's position across */
+  /* The screen layout changes while the five activity steps stay in place. */
   setTeacher(document.documentElement.getAttribute('data-theme') === 'stage', true);
   requestAnimationFrame(measureHeader);
 }
@@ -8012,9 +7916,8 @@ if (logo && !logo.complete) logo.addEventListener('load', measureHeader);
 /* a handle for the screenshot tests, and only when the address asks for it */
 if (/[?&]dev\b/.test(location.search)) window.__cc = {
   get state(){ return state; }, render: render, gSet: gSet, jumpTo: jumpTo,
-  go(n, k){ lesson = false; state.handoff = false; step = n; if (k != null) gSet(steps()[n][0], k); render(); },
-  lesson(i, b){ lesson = true; lstep = i; lbeatAt = -1; lbeatEnd = b === 'end'; render(); },
-  handoff(){ lesson = false; state.handoff = true; render(); }
+  go(n, k){ lesson = false; step = n; if (k != null) gSet(steps()[n][0], k); render(); },
+  lesson(i, b){ lesson = true; lstep = i; lbeatAt = -1; lbeatEnd = b === 'end'; render(); }
 };
 
 })();
