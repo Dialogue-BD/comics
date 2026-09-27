@@ -5976,11 +5976,14 @@ function panelFig(i, cls){
 
    No listen is required before the next (no completion locks).
 
-   Audio is one file per line: scene/<id>-<nn>.mp3. The page changes panel on
-   the line, so panel timing never needs authoring. Until a recording exists
-   the line is spoken by the browser's speech engine in a voice matched to the
-   character; with no speech engine at all the comic still moves on at reading
-   pace. Pictures are scene/panels/<id>-<n>.webp (.jpg); until one is drawn,
+   Audio is one file per scene, scene/<id>.mp3: the two characters recorded
+   together in each exchange, the narrator between. scene-timings.js times
+   every word in it, and the page reads the line boundaries from that — to
+   turn the panel as a line starts, to seek when one line is replayed, and to
+   light the karaoke. Without timings the lines are spread over the file by
+   length (roughly right). Without the file, each line is spoken by the
+   browser's speech engine in a voice matched to the character; with no
+   speech engine at all the comic still moves on at reading pace. Pictures are scene/panels/<id>-<n>.webp (.jpg); until one is drawn,
    the nearest of the three existing strip panels stands in. */
 const SCN_GAP = 420;                         /* ms between two lines */
 const scnPad = n => String(n).padStart(2, '0');
@@ -5995,6 +5998,24 @@ let scn = null;                              /* the scene that owns the speakers
 let scnWarned = false;
 const scnNoMp3 = {};                         /* scenario ids with no recordings yet */
 const scnShown = {};                         /* last panel shown, per scenario */
+
+/* The scene file is fetched once, into memory. server.py (SimpleHTTPRequest-
+   Handler) does not answer byte-range requests, and without them a browser
+   cannot reliably seek in a streamed mp3 — which listen 3 needs to replay one
+   line. A blob is always seekable, and listens 2 and 3 then start instantly.
+   Fetched when the moment opens, so it is usually ready before Play. */
+const scnBlob = {};                          /* id -> url | null (none) | undefined (loading) */
+const scnBlobP = {};
+function scnFetch(id){
+  if (!scnBlobP[id]){
+    scnBlobP[id] = fetch('scene/' + id + '.mp3')
+      .then(r => r.ok ? r.blob() : null)
+      .then(b => (b && b.size > 2000) ? URL.createObjectURL(b) : null)
+      .catch(() => null)
+      .then(u => (scnBlob[id] = u));
+  }
+  return scnBlobP[id];
+}
 
 /* where each word starts in the clean line: for the speech engine's
    charIndex, and for the proportional estimate an mp3 falls back on */
@@ -6020,10 +6041,30 @@ function scnCharWord(L, ci){
   while (i + 1 < st.length && st[i + 1] <= ci) i++;
   return i;
 }
-/* aligned word times, if tools/align.py has been run for this line */
-function scnTimes(li, n){
-  const t = typeof SCENE_TIMINGS !== 'undefined' ? SCENE_TIMINGS[sc.id + '-' + scnPad(li + 1)] : null;
-  return t && Array.isArray(t.w) && t.w.length === n ? t.w : null;
+/* When each line starts and ends in the scene file. From scene-timings.js
+   (every word, in order, from tools/align_scenes.py) when it matches the
+   script; otherwise spread over the file by length, with a pause for each. */
+function scnCues(dur){
+  const S = scnData();
+  const T = typeof SCENE_TIMINGS !== 'undefined' ? SCENE_TIMINGS[sc.id] : null;
+  const n = S.lines.map(L => scnWords(L.t).length);
+  const total = n.reduce((a, b) => a + b, 0);
+  if (T && Array.isArray(T.w) && T.w.length === total){
+    let k = 0;
+    return S.lines.map((L, i) => {
+      const w = T.w.slice(k, k + n[i]); k += n[i];
+      return { t0: w[0][0], t1: w[w.length - 1][1], w: w };
+    });
+  }
+  const wt = S.lines.map(L => scnMap(L).txt.length + 24);
+  const sum = wt.reduce((a, b) => a + b, 0);
+  let t = 0;
+  return S.lines.map((L, i) => {
+    const d = dur * wt[i] / sum;
+    const c = { t0: t + d * .1, t1: t + d * .9, w: null };
+    t += d;
+    return c;
+  });
 }
 function scnSeed(who){
   let h = 0;
@@ -6036,7 +6077,7 @@ function scnStop(){
   const c = scn; scn = null;
   clearTimeout(c.gapT); clearInterval(c.tick); clearTimeout(c.watch);
   if (c.audio){
-    c.audio.onended = c.audio.onerror = c.audio.ontimeupdate = null;
+    c.audio.onended = c.audio.onerror = c.audio.ontimeupdate = c.audio.onloadedmetadata = null;
     try { c.audio.pause(); } catch (e) {}
   }
   if (c.utter && window.speechSynthesis) speechSynthesis.cancel();
@@ -6052,10 +6093,75 @@ function scnStart(pass, from, only){
   const a = new Audio();
   a.preload = 'auto';
   try { a.play().catch(() => {}); } catch (e) {}
-  scn = { pass: pass, li: from || 0, only: !!only, paused: false, inGap: false,
-          el: a, audio: null, utter: null, wi: -1, frac: 0,
+  scn = { pass: pass, li: from || 0, from: from || 0, only: !!only, paused: false, inGap: false,
+          el: a, audio: null, utter: null, wi: -1, frac: 0, mode: 'tts',
           gapT: null, tick: null, watch: null, fb: -1 };
-  scnLine(scn);
+  if (scnNoMp3[sc.id] || scnBlob[sc.id] === null) scnLine(scn);
+  else scnFile(scn);
+}
+
+/* the recorded scene: one file, seek to the line, follow the clock */
+function scnFile(c){
+  const a = c.el;
+  c.audio = a; c.mode = 'file';
+  const fail = () => {
+    if (scn !== c || c.mode !== 'file') return;
+    scnNoMp3[sc.id] = true;
+    clearInterval(c.tick);
+    a.onerror = a.onended = a.onloadedmetadata = null;
+    c.audio = null; c.mode = 'tts';
+    scnLine(c);
+  };
+  a.onerror = fail;
+  a.onended = () => { if (scn === c) scnEnd(c); };
+  a.onloadedmetadata = () => {
+    if (scn !== c) return;
+    c.cues = scnCues(a.duration);
+    if (c.from > 0 || c.only) a.currentTime = Math.max(0, c.cues[c.from].t0 - .12);
+    a.play().catch(err => { if (!err || err.name !== 'AbortError') fail(); });
+    c.tick = setInterval(() => scnFileTick(c), 60);
+    scnPaint();
+  };
+  const go = url => {
+    if (scn !== c || c.mode !== 'file') return;
+    c.loading = false;
+    if (!url){ fail(); return; }
+    a.src = url;
+    a.load();
+  };
+  if (scnBlob[sc.id]) go(scnBlob[sc.id]);        /* the usual case: already here, inside the tap */
+  else { c.loading = true; scnPaint(); scnFetch(sc.id).then(go); }
+}
+
+function scnFileTick(c){
+  if (scn !== c || c.paused || !c.cues) return;
+  const S = scnData(), a = c.audio, cues = c.cues, t = a.currentTime;
+  if (c.only && t >= cues[c.from].t1 + .18){
+    try { a.pause(); } catch (e) {}
+    scnEnd(c);
+    return;
+  }
+  let li = c.li;
+  while (li + 1 < cues.length && cues[li + 1].t0 <= t) li++;
+  while (li > 0 && cues[li].t0 > t) li--;
+  if (c.only) li = c.from;
+  const Q = cues[li];
+  const speaking = t >= Q.t0 - .05 && t <= Q.t1 + .12;
+  if (li !== c.li || speaking === c.inGap){
+    if (li !== c.li) c.wi = -1;
+    c.li = li; c.inGap = !speaking;
+    scnShown[sc.id] = S.lines[li].p;
+    scnPaint();
+  }
+  const L = S.lines[li], n = scnWords(L.t).length;
+  if (t < Q.t0) c.wi = -1;
+  else if (t > Q.t1) c.wi = n;
+  else if (Q.w) c.wi = wordAt(t, Q.w, Math.max(0, c.wi));
+  else c.wi = scnEstWord(L, (t - Q.t0) / Math.max(.1, Q.t1 - Q.t0));
+  c.frac = c.only ? Math.min(1, Math.max(0, (t - Q.t0) / Math.max(.1, Q.t1 - Q.t0)))
+                  : (a.duration ? t / a.duration : 0);
+  scnPaintWords();
+  scnPaintProg();
 }
 
 function scnLine(c){
@@ -6132,25 +6238,7 @@ function scnLine(c){
     speechSynthesis.speak(u);
   };
 
-  if (scnNoMp3[sc.id]){ speak(); return; }
-  const a = c.el;
-  c.audio = a;
-  const times = scnTimes(c.li, n);
-  a.ontimeupdate = () => {
-    if (scn !== c || !a.duration) return;
-    const t = a.currentTime;
-    c.frac = t / a.duration;
-    c.wi = times ? wordAt(t, times, Math.max(0, c.wi)) : scnEstWord(L, c.frac);
-    scnPaintWords(); scnPaintProg();
-  };
-  a.onended = done;
-  a.onerror = () => { if (scn !== c) return; scnNoMp3[sc.id] = true; speak(); };
-  a.src = 'scene/' + sc.id + '-' + scnPad(c.li + 1) + '.mp3';
-  a.play().catch(err => {
-    if (scn !== c || c.audio !== a) return;
-    if (err && err.name === 'AbortError') return;   /* a newer src took over */
-    scnNoMp3[sc.id] = true; speak();
-  });
+  speak();
 }
 
 function scnEnd(c){
@@ -6161,7 +6249,7 @@ function scnEnd(c){
   }
   scn = null;
   clearTimeout(c.gapT); clearInterval(c.tick); clearTimeout(c.watch);
-  if (c.audio){ c.audio.onended = c.audio.onerror = c.audio.ontimeupdate = null; }
+  if (c.audio){ c.audio.onended = c.audio.onerror = c.audio.ontimeupdate = c.audio.onloadedmetadata = null; }
   scnPaint();
 }
 
@@ -6169,8 +6257,8 @@ function scnPause(){
   const c = scn;
   if (!c || c.paused) return;
   c.paused = true;
-  if (c.inGap){ clearTimeout(c.gapT); }
-  else if (c.audio){ try { c.audio.pause(); } catch (e) {} }
+  if (c.mode === 'file'){ try { c.audio.pause(); } catch (e) {} }
+  else if (c.inGap){ clearTimeout(c.gapT); }
   else if (c.utter && window.speechSynthesis) speechSynthesis.pause();
   scnPaint();
 }
@@ -6178,8 +6266,8 @@ function scnResume(){
   const c = scn;
   if (!c || !c.paused) return;
   c.paused = false;
+  if (c.mode === 'file'){ c.audio.play().catch(() => {}); scnPaint(); return; }
   if (c.inGap){ scnLine(c); return; }
-  if (c.audio) c.audio.play().catch(() => {});
   else if (c.utter && window.speechSynthesis){ speechSynthesis.resume(); c.t0 = Date.now() - c.spoken; }
   else c.t0 = Date.now() - c.spoken;
   scnPaint();
@@ -6349,8 +6437,8 @@ function scnView(pass){
     body.appendChild(scr);
   }
   root.appendChild(body);
+  scnFetch(sc.id);
 
-  const heard = (state.scnHeard || {})[pass] || 0;
   const hint = el('p', 'scn-hint');
   root.appendChild(addBn(hint, null));
   root._hint = hint;
@@ -6360,6 +6448,7 @@ function scnView(pass){
 
 function scnHintText(pass, playing){
   const heard = (state.scnHeard || {})[pass] || 0;
+  if (scn && scn.loading) return ['Loading the story…', 'গল্পটি লোড হচ্ছে…'];
   if (pass === 3) return ['Tap a line to hear it again. Tap an underlined word for its meaning.',
                          'কোনো লাইনে চাপ দিলে আবার শোনা যাবে। দাগ দেওয়া শব্দে চাপ দিলে মানে দেখা যাবে।'];
   if (playing) return pass === 1 ? ['Nothing to read. Watch the pictures and listen.', 'পড়ার কিছু নেই। ছবি দেখুন আর শুনুন।']
@@ -6486,7 +6575,8 @@ function scnPaintProg(){
   if (!bar) return;
   const pass = +root.dataset.pass;
   let pct = 0;
-  if (scn && scn.pass === pass && !scn.only) pct = (Math.min(scn.li, S.lines.length) + (scn.inGap ? 0 : scn.frac)) / S.lines.length * 100;
+  if (scn && scn.mode === 'file') pct = scn.frac * 100;
+  else if (scn && scn.pass === pass && !scn.only) pct = (Math.min(scn.li, S.lines.length) + (scn.inGap ? 0 : scn.frac)) / S.lines.length * 100;
   else if (scn && scn.only) pct = scn.frac * 100;
   bar.style.width = Math.max(0, Math.min(100, pct)) + '%';
 }

@@ -23,15 +23,25 @@
                beat = which of the three existing strip panels stands in for
                it until the new picture is drawn.
      lines[]   w: 'N' for the narrator, or 0 / 1 for cast[0] / cast[1]
-               p: the panel on screen while the line plays
+               p: the panel on screen from the moment the line starts
                t: the words, exactly as spoken. <sigh>-style tags are for the
                   TTS model only; the page strips them.
                s: the delivery for this line (Gemini style), optional
 
-   Audio: one file per line, scene/<id>-<nn>.mp3, nn = 01, 02 … in line order.
-   One file per line means the page can change panel exactly on the line,
-   replay a single line in listen 3, and re-record one line without
-   re-recording the scene.
+   Audio: ONE FILE PER SCENE, scene/<id>.mp3, built from takes:
+     - a dialogue take is a run of character lines in one room, recorded in
+       one Gemini conversational-mode call so the two characters actually
+       play off each other (the model takes two speakers per call);
+     - a narration take is a run of narrator lines, recorded on its own —
+       voice-over, dry, as in radio drama (and a call takes two speakers).
+   Every voice is a prebuilt Gemini voice. A character's accent is an
+   inflection note (accent) added to the style of each of their lines.
+   sceneSegments() below derives the takes from the lines, so nothing is
+   authored twice. tools/assemble_scenes.py levels them, adds room tone to
+   the dialogue, and joins them into the scene file; tools/align_scenes.py
+   then times every word, which is how the page knows when each line starts
+   (to turn the panel), where to seek (to replay one line), and which word
+   to light up.
 
    Writing rules: B1 English, short sentences, contractions, present tense for
    the narrator. The scene shows what happened; it never explains why — the
@@ -42,6 +52,7 @@
 const SCENE_NARRATOR = {
   slug: 'narrator',
   name: 'Narrator',
+  voice: { prebuilt: 'Sulafat', note: 'Warm' },
   tts: { gender: 'female', rate: 0.9, pitch: 1.0 },
   style: 'calm, warm storytelling for learners, slow and very clear, a small pause at every full stop'
 };
@@ -59,7 +70,8 @@ const SCENES = {
     { slug: 'tania', name: 'Tania', age: 26, gender: 'female',
       who: 'an accountant from Rajshahi, three weeks into her first job in Chicago',
       look: 'Bangladeshi woman, 26, shoulder-length dark wavy hair, small gold hoop earrings, forest-green sweater (as in the existing strip)',
-      voice: { library: 'English, South Asian (Bangladeshi or Indian) accent, female, young adult, warm', fallback: 'Autonoe' },
+      voice: { prebuilt: 'Autonoe', note: 'Bright' },
+      accent: 'light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, a gentle rise at the end of statements',
       profile: 'Young woman in her mid-twenties, warm clear mid-range voice, careful and slightly formal English with a soft Bangladeshi accent. Polite, rises a little at the ends of questions, stresses the key word gently rather than loudly.',
       tts: { gender: 'female', rate: 0.95, pitch: 1.1 } },
     { slug: 'jeff', name: 'Jeff', age: 42, gender: 'male',
@@ -106,7 +118,8 @@ const SCENES = {
     { slug: 'nusrat', name: 'Nusrat', age: 22, gender: 'female',
       who: 'an exchange student from Dhaka in her first term in Austin',
       look: 'Bangladeshi woman, 22, long dark wavy hair, maroon top, small gold earrings (as in the existing strip)',
-      voice: { library: 'English, South Asian (Bangladeshi or Indian) accent, female, young adult, lively', fallback: 'Leda' },
+      voice: { prebuilt: 'Leda', note: 'Youthful' },
+      accent: 'light Bangladeshi accent: soft tapped r, dental t and d, quick even rhythm, warm open vowels',
       profile: 'Young woman, bright mid-range voice with a clear Bangladeshi accent. Quick and warm, laughs easily, lifts her pitch when she is being generous.',
       tts: { gender: 'female', rate: 1.0, pitch: 1.15 } },
     { slug: 'jake', name: 'Jake', age: 23, gender: 'male',
@@ -193,7 +206,8 @@ const SCENES = {
     { slug: 'tanvir', name: 'Tanvir', age: 23, gender: 'male',
       who: 'a new intern from Chittagong, in his first week',
       look: 'Bangladeshi man, 23, thick dark hair, navy blazer over a white T-shirt, khaki trousers (as in the existing strip)',
-      voice: { library: 'English, South Asian (Bangladeshi or Indian) accent, male, young adult, earnest', fallback: 'Umbriel' },
+      voice: { prebuilt: 'Umbriel', note: 'Easy-going' },
+      accent: 'light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, v sounds close to b-w',
       profile: 'Young man, earnest light baritone with a Bangladeshi accent. Respectful, a little breathless when nervous, softens the ends of his sentences.',
       tts: { gender: 'male', rate: 1.0, pitch: 1.1 } },
     { slug: 'dave', name: 'Dave', age: 49, gender: 'male',
@@ -238,7 +252,8 @@ const SCENES = {
     { slug: 'farhana', name: 'Farhana', age: 20, gender: 'female',
       who: 'a first-year student from Khulna in her first university class in Michigan',
       look: 'Bangladeshi woman, 20, deep-red hijab, cream sweater, holding a paperback book (as in the existing strip)',
-      voice: { library: 'English, South Asian (Bangladeshi or Indian) accent, female, young adult, soft', fallback: 'Achernar' },
+      voice: { prebuilt: 'Achernar', note: 'Soft' },
+      accent: 'light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, very gentle stress',
       profile: 'Young woman, soft and slightly breathy voice with a Bangladeshi accent. Quiet, hesitates before she starts, grows steadier as she goes.',
       tts: { gender: 'female', rate: 0.95, pitch: 1.1 } },
     { slug: 'novak', name: 'Dr. Novak', age: 54, gender: 'male',
@@ -367,7 +382,8 @@ const SCENES = {
     { slug: 'arif', name: 'Arif', age: 22, gender: 'male',
       who: 'a final-year student from Rajshahi applying for a summer internship',
       look: 'Bangladeshi man, 22, thick black hair, green button-down shirt (as in the existing strip)',
-      voice: { library: 'English, South Asian (Bangladeshi or Indian) accent, male, young adult, gentle', fallback: 'Iapetus' },
+      voice: { prebuilt: 'Iapetus', note: 'Clear' },
+      accent: 'light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, sentences that fall softly at the end',
       profile: 'Young man, gentle and modest light baritone with a Bangladeshi accent. Speaks softly, lets his voice fall at the end of sentences, downplays everything.',
       tts: { gender: 'male', rate: 0.95, pitch: 1.0 } },
     { slug: 'tyler', name: 'Tyler', age: 22, gender: 'male',
@@ -455,7 +471,8 @@ const SCENES = {
     { slug: 'imran', name: 'Imran', age: 21, gender: 'male',
       who: 'a student from Sylhet staying with an American family for the summer',
       look: 'Bangladeshi man, 21, short black hair, light stubble, navy hoodie, jeans (as in the existing strip)',
-      voice: { library: 'English, South Asian (Bangladeshi or Indian) accent, male, young adult, energetic', fallback: 'Enceladus' },
+      voice: { prebuilt: 'Enceladus', note: 'Breathy' },
+      accent: 'light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, questions that rise sharply',
       profile: 'Young man, energetic mid-range voice with a Bangladeshi accent. Loud and fast when alarmed, rising pitch on questions, curious and thoughtful when calm.',
       tts: { gender: 'male', rate: 1.05, pitch: 1.05 } },
     { slug: 'kathy', name: 'Kathy', age: 48, gender: 'female',
@@ -593,4 +610,44 @@ const SCENE_GLOSS = {
   }
 };
 
-if (typeof module !== 'undefined') module.exports = { SCENES, SCENE_NARRATOR, SCENE_GLOSS };
+/* Room tone under the dialogue takes, per room: (component, dB relative to
+   the take's own speech level), the components of ambience/amb.py. Narration
+   takes get none — voice-over is dry. Used by tools/assemble_scenes.py. */
+const SCENE_BEDS = {
+  sofa:       [['air', -40], ['rumble', -44], ['presence', -52]],
+  home:       [['air', -40], ['babble', -34], ['dish', -40]],
+  street:     [['wind', -40], ['rumble', -42], ['air', -44]],
+  restaurant: [['babble', -30], ['dish', -36], ['clatter', -40, 4], ['air', -42]],
+  meeting:    [['air', -38], ['fluoro', -46], ['presence', -52]],
+  hall:       [['air', -36], ['presence', -44], ['clatter', -44, 3]],
+  lot:        [['wind', -38], ['rumble', -40]],
+  kitchen:    [['air', -40], ['mains', -46], ['babble', -42]],
+  classroom:  [['air', -40], ['fan', -44, 9.0], ['presence', -52]],
+  corridor:   [['air', -40], ['presence', -50], ['babble', -44]],
+  yard:       [['wind', -38], ['birds', -42], ['air', -44]],
+  door:       [['wind', -40], ['birds', -46], ['air', -44]],
+  pharmacy:   [['fluoro', -40], ['air', -40], ['babble', -38], ['door', -46]],
+  waiting:    [['air', -38], ['fan', -44, 11.0], ['presence', -52]],
+  interview:  [['air', -42], ['presence', -52]],
+  library:    [['air', -40], ['fan', -46, 11.0], ['presence', -52]],
+  exit:       [['babble', -34], ['dish', -40], ['air', -42]],
+  garden:     [['birds', -36], ['wind', -40], ['air', -44]]
+};
+
+/* The takes a scene is recorded in: runs of narrator lines, and runs of
+   character lines that stay in one room. Returns
+   [{ key: '<id>-s01', kind: 'narration' | 'dialogue', room, lines: [i, …] }]. */
+function sceneSegments(id){
+  const S = SCENES[id], out = [];
+  S.lines.forEach((L, i) => {
+    const kind = L.w === 'N' ? 'narration' : 'dialogue';
+    const room = kind === 'dialogue' ? S.panels[L.p - 1].room : null;
+    const last = out[out.length - 1];
+    if (last && last.kind === kind && last.room === room) last.lines.push(i);
+    else out.push({ kind, room, lines: [i] });
+  });
+  out.forEach((g, k) => { g.key = id + '-s' + String(k + 1).padStart(2, '0'); });
+  return out;
+}
+
+if (typeof module !== 'undefined') module.exports = { SCENES, SCENE_NARRATOR, SCENE_GLOSS, SCENE_BEDS, sceneSegments };

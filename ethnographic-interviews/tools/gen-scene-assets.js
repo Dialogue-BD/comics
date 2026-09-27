@@ -15,38 +15,16 @@ const ROOT = path.resolve(__dirname, '..');
 const ctx = {};
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(ROOT, 'scenarios.js'), 'utf8') + ';this.SCENARIOS=SCENARIOS;this.THEMES=THEMES;', ctx);
-vm.runInContext(fs.readFileSync(path.join(ROOT, 'scenes.js'), 'utf8') + ';this.SCENES=SCENES;this.NARR=SCENE_NARRATOR;', ctx);
-const { SCENARIOS, THEMES, SCENES, NARR } = ctx;
+vm.runInContext(fs.readFileSync(path.join(ROOT, 'scenes.js'), 'utf8') +
+  ';this.SCENES=SCENES;this.NARR=SCENE_NARRATOR;this.BED=SCENE_BEDS;this.seg=sceneSegments;', ctx);
+const { SCENARIOS, THEMES, SCENES, NARR, BED, seg } = ctx;
 const OUT = process.argv[2] || path.join(ROOT, 'scene', 'culture-circles-scene-assets.md');
 
-const pad = n => String(n).padStart(2, '0');
 const clean = t => t.replace(/<[^>]+>\s*/g, '').replace(/\s+/g, ' ').trim();
 const tagsOf = t => (t.match(/<[^>]+>/g) || []);
 const words = t => (clean(t).match(/[A-Za-z’'-]+/g) || []).length;
-
-/* ------------------------------------------------------------------ beds
-   Room-tone recipes for the ambience step, (component, dB relative to the
-   take's own speech level). Keyed by the room names used in scenes.js. */
-const BED = {
-  office:     [['air', -38], ['fluoro', -44], ['keys', -42], ['presence', -40]],
-  home:       [['air', -40], ['babble', -34], ['dish', -40]],
-  street:     [['wind', -40], ['rumble', -42], ['air', -44]],
-  restaurant: [['babble', -30], ['dish', -36], ['clatter', -40], ['air', -42]],
-  meeting:    [['air', -38], ['fluoro', -46], ['presence', -42]],
-  hall:       [['air', -36], ['presence', -34], ['clatter', -44]],
-  lot:        [['wind', -38], ['rumble', -40]],
-  kitchen:    [['air', -40], ['mains', -46], ['babble', -42]],
-  classroom:  [['air', -40], ['fan', -44], ['presence', -42]],
-  corridor:   [['air', -40], ['presence', -40], ['babble', -44]],
-  yard:       [['wind', -38], ['birds', -42], ['air', -44]],
-  door:       [['wind', -40], ['birds', -46], ['air', -44]],
-  pharmacy:   [['fluoro', -40], ['air', -40], ['babble', -38], ['door', -46]],
-  waiting:    [['air', -38], ['fan', -44], ['presence', -44]],
-  interview:  [['air', -42], ['presence', -44]],
-  library:    [['air', -40], ['fan', -46], ['presence', -44]],
-  exit:       [['air', -38], ['babble', -38], ['door', -44]],
-  garden:     [['birds', -36], ['wind', -40], ['air', -44]]
-};
+const mdCell = t => t.replace(/\|/g, '\\|').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const spk = c => c.name.replace(/^Dr\.\s+/, '');       /* speaker id in a conversational call */
 
 const STYLE_BLOCK =
 `Editorial comic illustration, clean modern graphic-novel style. Flat colour
@@ -59,23 +37,29 @@ caricature. Plain uncluttered backgrounds with just enough detail to place
 the scene. Absolutely no text, no lettering, no signage with words, no
 watermark, no logos, no speech bubbles containing writing.`;
 
-function voiceLabel(c){
-  if (c.voice.prebuilt) return `${c.voice.prebuilt} (${c.voice.note.split(' —')[0]})`;
-  return `Extended Voice Library — ${c.voice.library} · fallback ${c.voice.fallback}`;
-}
-function voiceShort(c){ return c.voice.prebuilt || ('EVL · ' + c.voice.fallback); }
+function voiceLabel(c){ return `${c.voice.prebuilt} (${c.voice.note.split(' —')[0]})`; }
+function voiceShort(c){ return c.voice.prebuilt; }
+/* a line's style as sent to the model: its delivery, then the speaker's accent */
+const turnStyle = (c, L) => [L.s || 'natural and conversational', c.accent].filter(Boolean).join('; ');
 
 const scen = id => SCENARIOS.find(s => s.id === id);
 const order = SCENARIOS.map(s => s.id).filter(id => SCENES[id]);
+const TAKES = {};
+order.forEach(id => { TAKES[id] = seg(id); });
 
-let totalLines = 0, totalWords = 0;
-order.forEach(id => { totalLines += SCENES[id].lines.length; SCENES[id].lines.forEach(L => totalWords += words(L.t)); });
+let totalLines = 0, totalWords = 0, nDia = 0, nNar = 0;
+order.forEach(id => {
+  totalLines += SCENES[id].lines.length;
+  SCENES[id].lines.forEach(L => totalWords += words(L.t));
+  TAKES[id].forEach(t => t.kind === 'dialogue' ? nDia++ : nNar++);
+});
 const allCast = order.flatMap(id => SCENES[id].cast.map(c => Object.assign({ scene: id }, c)));
-const secs = Math.round(totalWords / 2.3 + totalLines * 0.45);
+const secs = Math.round(totalWords / 2.3 + totalLines * 0.5);
 
 const md = [];
 const P = s => md.push(s);
 
+/* ------------------------------------------------------------ front matter */
 P(`# Culture Circles — Scene Comic Assets
 
 **Dialogue · Professional Skills Development Center, Rajshahi**
@@ -89,8 +73,8 @@ breaks them silently.
 | | |
 |---|---|
 | Scenes | ${order.length} |
-| Audio | **${totalLines} recordings** — one per line (${totalWords} words, about ${Math.round(secs / 60)} minutes in total) |
-| Voices | 1 narrator (the same in every scene) + ${allCast.length} characters |
+| Audio | **${nDia + nNar} takes** — ${nDia} dialogue takes (both characters in one call) and ${nNar} narration takes — assembled into **${order.length} scene files**. ${totalLines} lines, ${totalWords} words, about ${Math.round(secs / 60)} minutes in total |
+| Voices | ${allCast.length + 1}, all prebuilt Gemini voices — 1 narrator (the same in every scene) + ${allCast.length} characters |
 | Comic panels | **${order.length * 6} images** — six square panels per scene |
 | Portraits | **${allCast.length} images** — one per character (the narrator has none) |
 
@@ -105,132 +89,137 @@ Each scenario opens with a short story told as a **wordless comic** with a
 2. **Read along** — the same, with the line being spoken lit up word by word (karaoke).
 3. **Explore the words** — the whole conversation as a chat, every glossed word tappable for its meaning, and any line playable on its own.
 
-The page changes panel **exactly when a line starts**, which is why the audio is
-one file per line. It also lets a student replay one line, and lets you fix one
-line without re-recording a scene.
+**The audio is one file per scene**, recorded as takes:
 
-The listeners are Bangladeshi B1 students. Every recording must be **clear,
-natural and a little slower than native speed** — acted, but never theatrical.
-The comic must tell the story with the sound off.
+- **Dialogue takes** — every run of character lines in one room is **one conversational-mode call with both characters**, so they actually play off each other: the reactions, the interruptions, the timing of a reply. This is where the performance lives; never split a dialogue take into single lines.
+- **Narration takes** — the narrator's lines between them, recorded on their own. The narrator is voice-over, outside the story, as in radio drama. (Conversational mode takes at most two speakers, so this split is also what the API allows.)
+
+\`tools/assemble_scenes.py\` joins the takes into \`scene/<id>.mp3\`, and
+\`tools/align_scenes.py\` times every word. The page reads the line boundaries
+from those timings — it turns the panel as a line starts, seeks to a line when a
+student replays it, and lights up each word.
+
+The listeners are Bangladeshi B1 students. Every take must be **clear, natural
+and a little slower than native speed** — acted, but never theatrical. The comic
+must tell the story with the sound off.
 
 ## Filenames
 
 \`\`\`
-ethnographic-interviews/scene/<scenario-id>-<nn>.mp3          nn = 01, 02 … in line order (the tables below)
-ethnographic-interviews/scene/_dry-originals/<id>-<nn>.wav    clean TTS exports — keep, never mix into these
-ethnographic-interviews/scene/panels/<scenario-id>-<n>.webp   n = 1–6, 720x720, quality 72
-ethnographic-interviews/scene/panels/<scenario-id>-<n>.jpg    the same, JPEG quality 82 (fallback)
-ethnographic-interviews/scene/panels/_originals/<id>-<n>.png  full-size originals from the image model
-ethnographic-interviews/scene/cast/<slug>.jpg                 384x384, JPEG quality 84
-ethnographic-interviews/scene/cast/_originals/<slug>.png      full-size originals
+ethnographic-interviews/scene/_dry-originals/<scenario-id>-sNN.wav   the takes, untouched (sNN = s01, s02 … — the tables below)
+ethnographic-interviews/scene/<scenario-id>.mp3                      the assembled scene (written by assemble_scenes.py)
+ethnographic-interviews/scene/_build/<scenario-id>.json             where each take sits in the scene (written by assemble_scenes.py)
+ethnographic-interviews/scene-timings.js                            word timings (written by align_scenes.py)
+ethnographic-interviews/scene/panels/<scenario-id>-<n>.webp          n = 1–6, 720x720, quality 72
+ethnographic-interviews/scene/panels/<scenario-id>-<n>.jpg           the same, JPEG quality 82 (fallback)
+ethnographic-interviews/scene/panels/_originals/<id>-<n>.png         full-size originals from the image model
+ethnographic-interviews/scene/cast/<slug>.jpg                        384x384, JPEG quality 84
+ethnographic-interviews/scene/cast/_originals/<slug>.png             full-size originals
 \`\`\`
 
 The page already runs without any of these (browser speech, the old strip
-pictures and initials stand in), so assets can land in any order and in batches.
+pictures and initials stand in), so scenes can land one at a time.
 
 ## Order of work
 
-1. **Design the narrator voice once** (below) and save its \`voice_…\` ID.
-2. **Pick the six Bangladeshi voices** from the Extended Voice Library (below). Audition them side by side — they must sound like six different people.
-3. **Draw the panels, one scene at a time** — panel 1 first, then 2–6 with panel 1 attached for continuity.
-4. **Draw the portraits** from each scene's panel 1, so the face matches the comic.
-5. **Record the lines** (the generation script at the end does all ${totalLines}).
-6. **Convert, level, add room tone, align** — the steps after the script.
+1. **Draw the panels, one scene at a time** — panel 1 first, then 2–6 with panel 1 attached for continuity.
+2. **Draw the portraits** from each scene's panel 1, so the face matches the comic.
+3. **Record the takes**, one scene at a time. Record the dinner scene first and listen to it end to end — especially Tania's accent — before doing the rest.
+4. **Assemble, then align**: \`python3 tools/assemble_scenes.py\` then \`python3 tools/align_scenes.py\`.
 
 ---
 
 ## Audio
 
-### Model and format
+### Model and calls
 
-- **Model:** \`gemini-3.8-flash-tts\` for keeper takes; \`gemini-3.8-flash-lite-tts\` is fine for a first draft pass. Check the current model names before running — the TTS API has changed shape across model generations.
-- **Call:** the Interactions API, one call per line, single speaker. Style goes in a \`speech_metadata\` annotation on the transcript item; the voice goes in \`generation_config.speech_config\`.
-- **Output:** a unary call returns a complete WAV (24 kHz mono 16-bit). Save it untouched to \`scene/_dry-originals/<id>-<nn>.wav\`.
-- **Length:** most lines are 2–8 seconds. The whole of one scene is 45–90 seconds.
+- **Model:** \`gemini-3.8-flash-tts\` for keeper takes; \`gemini-3.8-flash-lite-tts\` is fine for a first draft pass. Check the current model names and call shape before running — the TTS API has changed across model generations.
+- **Dialogue takes:** one Interactions API call per take with \`speech_config.mode = "conversational"\` and both characters as \`speakers\`. Each line is its own content item carrying a \`speech_metadata\` annotation with its \`speaker\` and \`style\`. Configure both speakers even when only one of them talks in a take.
+- **Narration takes:** one single-speaker call per take, the narrator's voice (Sulafat), the take's lines as one transcript.
+- **Voices:** all prebuilt — no designed or cloned voices — so every dialogue take can be a conversational call.
+- **Output:** a unary call returns a complete WAV (24 kHz mono 16-bit). Save it untouched to \`scene/_dry-originals/<id>-sNN.wav\`. Do not trim, level or edit the takes — the assembler does that, and the aligner needs the originals.
+- **Length:** takes run from about 2 to 25 seconds; a whole scene is 45–90 seconds.
 
 ### How the fields divide
 
 Each character has an **audio profile** (the sound of the voice only), each place
-has a **scene** (the room, with the room tone on its last line), and each line
-has a **style** (the delivery of that one line). They do different jobs — never
-repeat one inside another, or the read goes flat.
+has a **scene** (the room, with its room tone on the last line), each take has a
+**sample context** (what this exchange is), and each line has a **style** (the
+delivery of that one line). They do different jobs — never repeat one inside
+another, or the read goes flat.
 
-- In the **AI Studio speech playground**: paste the character's audio profile into *Audio profile*, the room into *Scene*, the line's sample context into *Sample context*, and the line into the transcript. Put the line's style in the style field.
-- Through the **API**: the voice carries the profile (a designed voice, or a prebuilt voice chosen to match it), and \`speech_metadata.style\` carries the line's style. The script below does this.
+- In the **AI Studio speech playground** (multi-speaker): paste the room into *Scene*, the take's sample context into *Sample context*, each character's audio profile against their speaker, and the turns into the transcript with each turn's style.
+- Through the **API**: the prebuilt voice carries the profile — choose it by auditioning against the profile — and each turn's \`speech_metadata.style\` carries its delivery. The script below does this.
 
-**Transcripts are verbatim.** The text is read exactly as written. Do not add
-stage directions to it.
+**Transcripts are verbatim.** Every word is read exactly as written. Never add
+stage directions to the text; delivery goes in the style.
 
-**Audio tags** such as \`<laugh>\` or \`<sigh>\` are written inside a few lines,
-in angle brackets. They are performed, not read. If a tag is **spoken aloud**,
-delete it and re-run — the words either side already carry the moment. If it
-makes the delivery **too big**, cut it. The page strips tags from the transcript
-students see.
+**Audio tags** such as \`<laugh>\` or \`<sigh>\` sit inside a few lines, in angle
+brackets. They are performed, not read. If a tag is **spoken aloud**, delete it and
+re-run — the words either side already carry the moment. If it makes the delivery
+**too big**, cut it. The page strips tags from the transcript students see.
 
 ### The narrator — one voice for all ${order.length} scenes
 
-**Designed voice** (AI Studio → Voice design, or \`POST /v1beta/voices\` with \`type="prompted"\`). Create it once, keep the \`voice_…\` ID, use it for every \`N\` line.
+**Voice:** the prebuilt **Sulafat (Warm)** for every narration take. No character uses it.
+
+**Audio profile**
 
 \`\`\`text
-A warm, calm female storyteller in her forties reading a picture book to adult
-learners of English. Neutral general American accent. Clear, unhurried and kind;
-slightly slower than normal speech, with a small natural pause at every full
-stop. Friendly but never childish or sing-song. Every consonant clear, no
-vocal fry, no breathiness.
+A warm, calm woman in her forties reading a picture book to adult learners of
+English. Neutral general American accent. Clear, unhurried and kind; slightly
+slower than normal speech, with a small natural pause at every full stop.
+Friendly but never childish or sing-song. Every consonant clear.
 \`\`\`
 
-If voice design is unavailable, use the prebuilt **Sulafat (Warm)**.
+**Style for every narration take:** \`${NARR.style}\`
 
-**Style for every narrator line:** \`${NARR.style}\`
-
-**Sample context for every narrator line:**
+**Sample context for every narration take:**
 
 \`\`\`text
-Voice-over narration for one panel of a wordless picture-book comic, heard by
-Bangladeshi students learning English at B1 level. The narrator is outside the
-story, setting the scene simply and warmly. Not an advertisement, not a
+Voice-over narration for a wordless picture-book comic, heard by Bangladeshi
+students learning English at B1 level. The narrator is outside the story,
+setting each picture simply and warmly. Not an advertisement, not a
 documentary. Read slowly enough that a learner can follow every word.
 \`\`\`
 
-Narrator lines get **no room tone** — they are voice-over, dry and close.
+Narration takes get **no room tone** — they are voice-over, dry and close.
 
-### The six Bangladeshi voices
+### Accents
 
 Six characters are Bangladeshi students or young professionals in the US:
-${allCast.filter(c => c.voice.library).map(c => `**${c.name}** (${scen(c.scene).title})`).join(', ')}.
+${allCast.filter(c => c.accent).map(c => `**${c.name}** (${scen(c.scene).title})`).join(', ')}.
 Students should hear an accent they recognise from home, speaking good, clear
-English. Search the **Extended Voice Library** in the AI Studio picker
-(Language: English → Accent: Bangladeshi, or South Asian / Indian if there is no
-Bangladeshi entry), or:
+English.
 
-\`\`\`python
-for v in client.voices.list(language_code="en", search="Bangladesh"):
-    print(v.name, v.accent, v.gender, v.persona)
-# if nothing: region_code="IN", or search="South Asian"
-\`\`\`
+Each of them has a prebuilt voice and an **accent note** — a short inflection
+description (a softly tapped r, dental t and d, even syllable timing, and one
+habit of their own). The note is added to the style of **every** line they speak,
+after that line's delivery, so it stays the same across all of their takes. The
+takes below and the script already include it.
 
-Pick three male and three female voices that are **clearly different from one
-another**, and write the chosen voice names into the cast table below before
-recording. If the library has no South Asian English voices at all, use the
-fallback prebuilt voice listed for each character and describe the accent in the
-style — but check it survives; the lines still have to work read in a neutral
-accent.
+Audition the first take of each of these characters. The accent should be
+**light and natural** — a real person, not an impression. If it comes out too
+strong, add *"very light, subtle"* to the start of that character's note (in
+\`scenes.js\`, then regenerate) rather than removing it. If it disappears
+entirely, run the take again before changing anything — the model varies from
+take to take.
 
 ### Returning characters
 
 Four characters also appear in the scenario's interviews in step 3:
 ${allCast.filter(c => c.alsoIn).map(c => `**${c.name}** (\`audio/${c.alsoIn}.mp3\`)`).join(', ')}.
 Use **the same voice as their interview take**, so students hear the same person.
-Dave's interview used **Zubenelgenubi**. For the other three, check the voice
-used for their interview recording; the voice listed here is a best guess and
-should be swapped if it does not match.
+Dave's interview used **Zubenelgenubi**. For the other three, check the voice used
+for their interview recording; the voice listed here is a best guess and should be
+swapped if it does not match.
 
 ### Cast
 
-| Portrait | Character | Scene | Voice | Audio profile |
-|---|---|---|---|---|
-| — | **Narrator** | all | designed voice · fallback Sulafat | see above |
-${allCast.map(c => `| \`${c.slug}.jpg\` | **${c.name}**, ${c.age} | ${scen(c.scene).title} | ${voiceLabel(c)} | ${c.profile} |`).join('\n')}
+| Portrait | Character | Scene | Voice | Audio profile | Accent note |
+|---|---|---|---|---|---|
+| — | **Narrator** | all | Sulafat (Warm) | see above | — |
+${allCast.map(c => `| \`${c.slug}.jpg\` | **${c.name}**, ${c.age} | ${scen(c.scene).title} | ${voiceLabel(c)} | ${c.profile} | ${c.accent || '—'} |`).join('\n')}
 
 ---
 
@@ -239,8 +228,9 @@ ${allCast.map(c => `| \`${c.slug}.jpg\` | **${c.name}**, ${c.age} | ${scen(c.sce
 ### The style block
 
 **Paste this at the top of every panel prompt and every portrait prompt, unchanged.**
-It is the style of the existing three-panel strips on the page, so old and new
-pictures sit together.
+It is the style of the existing three-panel strips on the page, and the casts
+below follow the people already drawn in those strips, so old and new pictures
+sit together.
 
 \`\`\`text
 ${STYLE_BLOCK}
@@ -254,16 +244,16 @@ ${STYLE_BLOCK}
   magick <id>-<n>.png -resize 720x720 -quality 72 <id>-<n>.webp
   magick <id>-<n>.png -resize 720x720 -quality 82 <id>-<n>.jpg
   \`\`\`
-- **Continuity is everything.** Draw panel 1 first — attach the scenario's existing strip panel \`strip/<id>-1.png\` (or \`strip/_originals/\`) as a reference for the setting and style. For panels 2–6, attach panel 1 and begin the prompt with: *"Same characters, same clothing, same art style and palette as the attached image. Continue the sequence."* If a face or an outfit drifts, regenerate that panel. A student tracking "the same man" across six pictures is doing half the comprehension work.
+- **Continuity is everything.** Draw panel 1 first — attach the scenario's existing strip panel \`strip/<id>-1.png\` (or \`strip/_originals/\`) as a reference for the people, setting and style. For panels 2–6, attach panel 1 and begin the prompt with: *"Same characters, same clothing, same art style and palette as the attached image. Continue the sequence."* If a face or an outfit drifts, regenerate that panel. A student tracking "the same man" across six pictures is doing half the comprehension work.
 - **Returning characters** (${allCast.filter(c => c.alsoIn).map(c => c.name).join(', ')}): also attach their existing portrait from \`portraits/\` so they look like the person in the interview.
 - **Readable at 300px.** One clear action per panel, the speaker's face visible, nothing important in the bottom-left corner (the page puts the speaker's face there).
 
 ### Portraits
 
-Draw each portrait **after** its scene's panels, attaching panel 1 so the
-face, hair and clothes match. One prompt per character, in each scene section
-below. Crop to a square with the face about 60% of the height, resize to
-384×384, JPEG quality 84.
+Draw each portrait **after** its scene's panels, attaching panel 1 so the face,
+hair and clothes match. One prompt per character, in each scene section below.
+Crop to a square with the face about 60% of the height, resize to 384×384, JPEG
+quality 84.
 
 ---
 `);
@@ -271,6 +261,7 @@ below. Crop to a square with the face about 60% of the height, resize to
 /* ---------------------------------------------------------------- scenes */
 order.forEach((id, si) => {
   const S = SCENES[id], X = scen(id), th = THEMES[X.theme];
+  const castLook = S.cast.map(c => `${c.name}: ${c.look}.`).join(' ');
   P(`## ${si + 1} · ${X.title}  —  ${th.label}
 
 **Setting:** ${X.setting}
@@ -280,37 +271,28 @@ order.forEach((id, si) => {
 **Cast:** ${S.cast.map(c => `**${c.name}**, ${c.age}, ${c.who}`).join('; ')}.
 `);
 
-  /* rooms */
   P(`### Rooms (the *Scene* field)
 
-${Object.keys(S.rooms).map(k => `**${k}** — used by panels ${S.panels.map((p, i) => p.room === k ? i + 1 : null).filter(Boolean).join(', ')}
+${Object.keys(S.rooms).map(k => `**${k}** — panels ${S.panels.map((p, i) => p.room === k ? i + 1 : null).filter(Boolean).join(', ')}
 
 \`\`\`text
 ${S.rooms[k]}
 \`\`\`
 
-Room-tone bed: ${(BED[k] || []).map(b => `\`${b[0]} ${b[1]} dB\``).join(' · ') || '—'}
+Room tone the assembler lays under dialogue in this room: ${(BED[k] || []).map(b => `\`${b[0]} ${b[1]} dB\``).join(' · ') || '—'}
 `).join('\n')}`);
 
-  /* cast */
   S.cast.forEach(c => {
-    P(`### ${c.name} — \`scene/cast/${c.slug}.jpg\`
+    P(`### ${c.name} — speaker \`${spk(c)}\` · \`scene/cast/${c.slug}.jpg\`
 
-**Voice** ${voiceLabel(c)}${c.alsoIn ? ` · **same voice as** \`audio/${c.alsoIn}.mp3\`` : ''}
+**Voice** ${voiceLabel(c)}${c.alsoIn ? ` · **same voice as** \`audio/${c.alsoIn}.mp3\`` : ''}${c.accent ? `
+
+**Accent note** (added to the style of every ${c.name} line): \`${c.accent}\`` : ''}
 
 **Audio profile**
 
 \`\`\`text
 ${c.profile}
-\`\`\`
-
-**Sample context (for every ${c.name} line)**
-
-\`\`\`text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. ${c.name} is ${c.who}. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 \`\`\`
 
 **Portrait prompt**
@@ -323,8 +305,6 @@ Head-and-shoulders character portrait for a profile picture. ${c.look}${c.alsoIn
 `);
   });
 
-  /* panels */
-  const castLook = S.cast.map(c => `${c.name}: ${c.look}.`).join(' ');
   P(`### Panels
 
 Characters in this scene — keep them identical in every panel: ${castLook}
@@ -339,7 +319,7 @@ Characters in this scene — keep them identical in every panel: ${castLook}
 \`\`\`text
 ${STYLE_BLOCK}
 
-${i === 0 ? `Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the setting and style.`
+${i === 0 ? `Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the people, setting and style.`
           : `Same characters, same clothing, same art style and palette as the attached image. Continue the sequence: panel ${i + 1} of 6.`}
 Characters: ${castLook}
 ${pn.see}
@@ -348,41 +328,57 @@ Square 1:1. Keep the bottom-left corner free of important detail. No words anywh
 `);
   });
 
-  /* lines */
-  P(`### Lines
+  /* takes */
+  P(`### Takes
 
-| File | Speaker | Voice | Style | Transcript (verbatim) |
-|---|---|---|---|---|
-${S.lines.map((L, i) => {
-    const who = L.w === 'N' ? 'Narrator' : S.cast[L.w].name;
-    const v = L.w === 'N' ? 'narrator' : voiceShort(S.cast[L.w]);
-    const st = L.w === 'N' ? (L.s || 'narrator style') : (L.s || '');
-    return `| \`${id}-${pad(i + 1)}.mp3\` | ${who} | ${v} | ${st} | ${L.t.replace(/\|/g, '\\|').replace(/</g, '&lt;').replace(/>/g, '&gt;')} |`;
-  }).join('\n')}
-
----
+In order. Dialogue takes are one conversational call with both speakers —
+\`${spk(S.cast[0])}\` (${voiceShort(S.cast[0])}) and \`${spk(S.cast[1])}\` (${voiceShort(S.cast[1])}).
 `);
+  TAKES[id].forEach(tk => {
+    const Ls = tk.lines.map(i => S.lines[i]);
+    const panels = [...new Set(Ls.map(L => L.p))].join(', ');
+    if (tk.kind === 'narration'){
+      P(`**\`${tk.key}\`** · narration · panel${panels.includes(',') ? 's' : ''} ${panels} · Sulafat
+
+\`\`\`text
+${Ls.map(L => L.t).join(' ')}
+\`\`\`
+`);
+      return;
+    }
+    const who = Ls.map(L => S.cast[L.w].name);
+    const both = new Set(who).size > 1;
+    P(`**\`${tk.key}\`** · dialogue · room **${tk.room}** · panel${panels.includes(',') ? 's' : ''} ${panels}
+
+*Sample context:* ${both ? `A short, natural exchange between ${S.cast[0].name} and ${S.cast[1].name}.` : `${who[0]} speaking to ${who[0] === S.cast[0].name ? S.cast[1].name : S.cast[0].name}.`} ${S.cast[0].name} is ${S.cast[0].who}; ${S.cast[1].name} is ${S.cast[1].who}. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+${Ls.map(L => `| ${spk(S.cast[L.w])} | ${turnStyle(S.cast[L.w], L)} | ${mdCell(L.t)} |`).join('\n')}
+`);
+  });
+  P('---\n');
 });
 
 /* ------------------------------------------------------------ the script */
-const manifest = order.flatMap(id => SCENES[id].lines.map((L, i) => {
-  const c = L.w === 'N' ? null : SCENES[id].cast[L.w];
+const manifest = order.flatMap(id => TAKES[id].map(tk => {
+  const S = SCENES[id];
+  if (tk.kind === 'narration'){
+    return { key: tk.key, kind: 'narration', voice: NARR.voice.prebuilt, style: NARR.style,
+             text: tk.lines.map(i => S.lines[i].t).join(' ') };
+  }
   return {
-    key: `${id}-${pad(i + 1)}`,
-    who: L.w === 'N' ? 'narrator' : c.slug,
-    voice: L.w === 'N' ? 'NARRATOR' : (c.voice.prebuilt || ('EVL:' + c.slug)),
-    style: L.w === 'N' ? (L.s ? NARR.style + '; ' + L.s : NARR.style) : (L.s || 'natural and conversational'),
-    text: L.t,
-    room: L.w === 'N' ? null : SCENES[id].panels[L.p - 1].room
+    key: tk.key, kind: 'dialogue',
+    speakers: S.cast.map(c => ({ speaker: spk(c), voice: c.voice.prebuilt })),
+    turns: tk.lines.map(i => ({ speaker: spk(S.cast[S.lines[i].w]), style: turnStyle(S.cast[S.lines[i].w], S.lines[i]), text: S.lines[i].t }))
   };
 }));
 
 P(`## Generation script
 
-Fill in \`VOICES\` first: the narrator's designed \`voice_…\` ID and the six
-Extended Voice Library names you picked. Everything else comes from
-\`scenes.js\`. It skips any line whose dry take already exists, so it can be
-re-run after fixing a few lines (delete those takes first).
+Everything comes from \`scenes.js\` — voices, styles (accent notes included) and
+transcripts. The script skips any take whose dry file already exists, so to redo
+a take, delete its file and run again.
 
 \`\`\`python
 # pip install google-genai
@@ -394,85 +390,92 @@ MODEL = "gemini-3.8-flash-tts"          # or gemini-3.8-flash-lite-tts for a dra
 DRY = pathlib.Path("ethnographic-interviews/scene/_dry-originals")
 DRY.mkdir(parents=True, exist_ok=True)
 
-VOICES = {
-    "NARRATOR":   "voice_...",            # the designed narrator voice (fallback: "Sulafat")
-${allCast.filter(c => c.voice.library).map(c => `    "EVL:${c.slug}": "${c.voice.fallback}",   # ${c.name} — replace with the chosen Extended Voice Library voice`).join('\n')}
-}
-
-LINES = json.loads(r'''
-${JSON.stringify(manifest, null, 0).replace(/\},\{/g, '},\n{')}
+TAKES = json.loads(r'''
+${JSON.stringify(manifest).replace(/\},\{"key"/g, '},\n{"key"')}
 ''')
 
-def voice_for(v):
-    return VOICES.get(v, v)
-
-def make(line):
-    out = DRY / (line["key"] + ".wav")
-    if out.exists():
-        return
-    interaction = client.interactions.create(
+def dialogue(t):
+    return client.interactions.create(
         model=MODEL,
-        input=[{
-            "type": "user_input",
-            "content": [{
-                "type": "text",
-                "text": line["text"],                     # verbatim, tags and all
-                "annotations": [{"type": "speech_metadata", "style": line["style"]}],
-            }],
-        }],
+        input=[{"type": "user_input", "content": [
+            {"type": "text", "text": turn["text"],               # verbatim, tags and all
+             "annotations": [{"type": "speech_metadata",
+                              "speaker": turn["speaker"], "style": turn["style"]}]}
+            for turn in t["turns"]]}],
         response_format={"type": "audio"},
-        generation_config={"speech_config": [{"voice": voice_for(line["voice"])}]},
+        generation_config={"speech_config": {
+            "mode": "conversational",
+            "speakers": [{"speaker": s["speaker"], "voice": s["voice"]} for s in t["speakers"]],
+        }},
     )
-    out.write_bytes(base64.b64decode(interaction.output_audio.data))
-    print("wrote", out)
 
-for line in LINES:
-    make(line)
+def narration(t):
+    return client.interactions.create(
+        model=MODEL,
+        input=[{"type": "user_input", "content": [
+            {"type": "text", "text": t["text"],
+             "annotations": [{"type": "speech_metadata", "style": t["style"]}]}]}],
+        response_format={"type": "audio"},
+        generation_config={"speech_config": [{"voice": t["voice"]}]},
+    )
+
+for t in TAKES:
+    out = DRY / (t["key"] + ".wav")
+    if out.exists():
+        continue
+    reply = dialogue(t) if t["kind"] == "dialogue" else narration(t)
+    out.write_bytes(base64.b64decode(reply.output_audio.data))
+    print("wrote", out)
 \`\`\`
 
 Check the SDK's current call shape before running — these fields have moved
-before. Listen to the first scene end to end before running the rest.
+before. Record one scene, listen to every take, then run the rest.
 
 ## After recording
 
-**1 · Audition.** Play each scene straight through in order. Listen for: a tag
-read aloud, a character who sounds like someone else, a line much louder or
-quieter than its neighbours, a Bangladeshi voice that drifts into another accent.
+**1 · Audition each take.** Listen for: a tag read aloud; a reply that does not
+land on the line before it (re-run the take — do not split it); a character who
+sounds like someone else; a Bangladeshi accent that is too strong, or gone; a
+word that is not in the transcript (the aligner will flag it too).
 
-**2 · Level and convert.** Per-line takes must sit at the same loudness or the
-scene jumps in volume between speakers:
+**2 · Assemble.** \`python3 ethnographic-interviews/tools/assemble_scenes.py\` —
+or name one scene. It trims each take, levels them all to the same speech
+loudness, lays the room's tone under dialogue takes (low-passed at 3.2 kHz, seeded
+per room so a room sounds continuous across takes; narration stays dry), joins them
+with pauses (longer where the panel changes), peak-limits, and writes
+\`scene/<id>.mp3\` plus \`scene/_build/<id>.json\`. It prints the 2–5 kHz
+speech-to-bed ratio of every dialogue take — **keep it above 20 dB**; if one
+falls below, lower that room's recipe in \`SCENE_BEDS\` in \`scenes.js\` and
+re-run. It never touches the dry takes.
 
-\`\`\`
-ffmpeg -i _dry-originals/<key>.wav -af loudnorm=I=-18:TP=-1.5:LRA=11 -ar 24000 -ac 1 -codec:a libmp3lame -b:a 96k <key>.mp3
-\`\`\`
+**3 · Align.** \`python3 ethnographic-interviews/tools/align_scenes.py\` (needs
+\`openai-whisper\`). It times every word of every take against the lines in
+\`scenes.js\` and writes \`scene-timings.js\`. **Re-run it whenever a take is
+re-recorded or re-assembled** — without it the page only estimates where each line
+starts, and the panels and highlighting drift.
 
-**3 · Room tone** (character lines only — narrator lines stay dry). Use the
-same pipeline as the interviews (\`ambience/amb.py\`): render every bed **from
-the dry original**, never from a mixed file; the recipes are listed under each
-scene's rooms, in dB relative to the take's own speech level. Low-pass every bed
-at about 3.2 kHz, keep speech-to-bed above 20 dB in the 2–5 kHz band, fade the
-bed in and out over 0.3 s (these takes are short), and peak-limit to about 0.97.
-Because the lines are separate files, keep each room's bed **seeded by room, not
-by line**, so consecutive lines in one room sound like one continuous place.
-
-**4 · Align.** Run \`python3 ethnographic-interviews/tools/align_scenes.py\`. It
-matches Whisper word times to the lines in \`scenes.js\` and writes
-\`scene-timings.js\`, which makes the karaoke exact. **Re-run it whenever a line
-is re-recorded** — otherwise the highlighting goes wrong silently.
+**4 · Listen through on the page**, all three listens, on a phone and on the projector.
 
 ---
 
 ## Checklists
 
-### Audio — ${totalLines} lines
+### Takes — ${nDia + nNar}
 
-| File | Speaker | Voice | Tags | Generated | Auditioned | Levelled + mp3 | Bed | Aligned |
-|---|---|---|---|:-:|:-:|:-:|:-:|:-:|
-${order.flatMap(id => SCENES[id].lines.map((L, i) => {
-  const who = L.w === 'N' ? 'Narrator' : SCENES[id].cast[L.w].name;
-  const v = L.w === 'N' ? 'narrator' : voiceShort(SCENES[id].cast[L.w]);
-  return `| \`${id}-${pad(i + 1)}\` | ${who} | ${v} | ${tagsOf(L.t).map(t => '`' + t.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '`').join(' ')} | ☐ | ☐ | ☐ | ${L.w === 'N' ? '—' : '☐'} | ☐ |`;
+| Take | Kind | Speakers | Tags | Recorded | Auditioned |
+|---|---|---|---|:-:|:-:|
+${order.flatMap(id => TAKES[id].map(tk => {
+  const S = SCENES[id], Ls = tk.lines.map(i => S.lines[i]);
+  const who = tk.kind === 'narration' ? 'Narrator' : [...new Set(Ls.map(L => S.cast[L.w].name))].join(' + ');
+  const tags = Ls.flatMap(L => tagsOf(L.t)).map(t => '`' + mdCell(t) + '`').join(' ');
+  return `| \`${tk.key}\` | ${tk.kind} | ${who} | ${tags} | ☐ | ☐ |`;
 })).join('\n')}
+
+### Scenes — ${order.length}
+
+| Scene file | Takes | Assembled (SNR ≥ 20 dB) | Aligned | Checked on the page |
+|---|---|:-:|:-:|:-:|
+${order.map(id => `| \`scene/${id}.mp3\` | ${TAKES[id].length} | ☐ | ☐ | ☐ |`).join('\n')}
 
 ### Panels — ${order.length * 6} images
 
@@ -485,8 +488,13 @@ ${order.flatMap(id => SCENES[id].panels.map((_, i) => `| \`panels/${id}-${i + 1}
 | File | Character | Scene | Generated | Cropped | Placed |
 |---|---|---|:-:|:-:|:-:|
 ${allCast.map(c => `| \`cast/${c.slug}.jpg\` | ${c.name} | ${scen(c.scene).title} | ☐ | ☐ | ☐ |`).join('\n')}
+
+---
+
+Sources for the API limits above: [Gemini API — Text-to-speech generation](https://ai.google.dev/gemini-api/docs/speech-generation).
 `);
 
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, md.join('\n'));
-console.log('wrote', OUT, '—', totalLines, 'lines,', order.length * 6, 'panels,', allCast.length, 'portraits');
+console.log('wrote', OUT, '—', nDia + nNar, 'takes (' + nDia + ' dialogue, ' + nNar + ' narration),',
+            order.length * 6, 'panels,', allCast.length, 'portraits');

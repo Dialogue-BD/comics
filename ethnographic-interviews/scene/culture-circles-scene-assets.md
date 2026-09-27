@@ -11,8 +11,8 @@ breaks them silently.
 | | |
 |---|---|
 | Scenes | 10 |
-| Audio | **117 recordings** — one per line (1300 words, about 10 minutes in total) |
-| Voices | 1 narrator (the same in every scene) + 20 characters |
+| Audio | **67 takes** — 34 dialogue takes (both characters in one call) and 33 narration takes — assembled into **10 scene files**. 117 lines, 1300 words, about 10 minutes in total |
+| Voices | 21, all prebuilt Gemini voices — 1 narrator (the same in every scene) + 20 characters |
 | Comic panels | **60 images** — six square panels per scene |
 | Portraits | **20 images** — one per character (the narrator has none) |
 
@@ -27,151 +27,156 @@ Each scenario opens with a short story told as a **wordless comic** with a
 2. **Read along** — the same, with the line being spoken lit up word by word (karaoke).
 3. **Explore the words** — the whole conversation as a chat, every glossed word tappable for its meaning, and any line playable on its own.
 
-The page changes panel **exactly when a line starts**, which is why the audio is
-one file per line. It also lets a student replay one line, and lets you fix one
-line without re-recording a scene.
+**The audio is one file per scene**, recorded as takes:
 
-The listeners are Bangladeshi B1 students. Every recording must be **clear,
-natural and a little slower than native speed** — acted, but never theatrical.
-The comic must tell the story with the sound off.
+- **Dialogue takes** — every run of character lines in one room is **one conversational-mode call with both characters**, so they actually play off each other: the reactions, the interruptions, the timing of a reply. This is where the performance lives; never split a dialogue take into single lines.
+- **Narration takes** — the narrator's lines between them, recorded on their own. The narrator is voice-over, outside the story, as in radio drama. (Conversational mode takes at most two speakers, so this split is also what the API allows.)
+
+`tools/assemble_scenes.py` joins the takes into `scene/<id>.mp3`, and
+`tools/align_scenes.py` times every word. The page reads the line boundaries
+from those timings — it turns the panel as a line starts, seeks to a line when a
+student replays it, and lights up each word.
+
+The listeners are Bangladeshi B1 students. Every take must be **clear, natural
+and a little slower than native speed** — acted, but never theatrical. The comic
+must tell the story with the sound off.
 
 ## Filenames
 
 ```
-ethnographic-interviews/scene/<scenario-id>-<nn>.mp3          nn = 01, 02 … in line order (the tables below)
-ethnographic-interviews/scene/_dry-originals/<id>-<nn>.wav    clean TTS exports — keep, never mix into these
-ethnographic-interviews/scene/panels/<scenario-id>-<n>.webp   n = 1–6, 720x720, quality 72
-ethnographic-interviews/scene/panels/<scenario-id>-<n>.jpg    the same, JPEG quality 82 (fallback)
-ethnographic-interviews/scene/panels/_originals/<id>-<n>.png  full-size originals from the image model
-ethnographic-interviews/scene/cast/<slug>.jpg                 384x384, JPEG quality 84
-ethnographic-interviews/scene/cast/_originals/<slug>.png      full-size originals
+ethnographic-interviews/scene/_dry-originals/<scenario-id>-sNN.wav   the takes, untouched (sNN = s01, s02 … — the tables below)
+ethnographic-interviews/scene/<scenario-id>.mp3                      the assembled scene (written by assemble_scenes.py)
+ethnographic-interviews/scene/_build/<scenario-id>.json             where each take sits in the scene (written by assemble_scenes.py)
+ethnographic-interviews/scene-timings.js                            word timings (written by align_scenes.py)
+ethnographic-interviews/scene/panels/<scenario-id>-<n>.webp          n = 1–6, 720x720, quality 72
+ethnographic-interviews/scene/panels/<scenario-id>-<n>.jpg           the same, JPEG quality 82 (fallback)
+ethnographic-interviews/scene/panels/_originals/<id>-<n>.png         full-size originals from the image model
+ethnographic-interviews/scene/cast/<slug>.jpg                        384x384, JPEG quality 84
+ethnographic-interviews/scene/cast/_originals/<slug>.png             full-size originals
 ```
 
 The page already runs without any of these (browser speech, the old strip
-pictures and initials stand in), so assets can land in any order and in batches.
+pictures and initials stand in), so scenes can land one at a time.
 
 ## Order of work
 
-1. **Design the narrator voice once** (below) and save its `voice_…` ID.
-2. **Pick the six Bangladeshi voices** from the Extended Voice Library (below). Audition them side by side — they must sound like six different people.
-3. **Draw the panels, one scene at a time** — panel 1 first, then 2–6 with panel 1 attached for continuity.
-4. **Draw the portraits** from each scene's panel 1, so the face matches the comic.
-5. **Record the lines** (the generation script at the end does all 117).
-6. **Convert, level, add room tone, align** — the steps after the script.
+1. **Draw the panels, one scene at a time** — panel 1 first, then 2–6 with panel 1 attached for continuity.
+2. **Draw the portraits** from each scene's panel 1, so the face matches the comic.
+3. **Record the takes**, one scene at a time. Record the dinner scene first and listen to it end to end — especially Tania's accent — before doing the rest.
+4. **Assemble, then align**: `python3 tools/assemble_scenes.py` then `python3 tools/align_scenes.py`.
 
 ---
 
 ## Audio
 
-### Model and format
+### Model and calls
 
-- **Model:** `gemini-3.8-flash-tts` for keeper takes; `gemini-3.8-flash-lite-tts` is fine for a first draft pass. Check the current model names before running — the TTS API has changed shape across model generations.
-- **Call:** the Interactions API, one call per line, single speaker. Style goes in a `speech_metadata` annotation on the transcript item; the voice goes in `generation_config.speech_config`.
-- **Output:** a unary call returns a complete WAV (24 kHz mono 16-bit). Save it untouched to `scene/_dry-originals/<id>-<nn>.wav`.
-- **Length:** most lines are 2–8 seconds. The whole of one scene is 45–90 seconds.
+- **Model:** `gemini-3.8-flash-tts` for keeper takes; `gemini-3.8-flash-lite-tts` is fine for a first draft pass. Check the current model names and call shape before running — the TTS API has changed across model generations.
+- **Dialogue takes:** one Interactions API call per take with `speech_config.mode = "conversational"` and both characters as `speakers`. Each line is its own content item carrying a `speech_metadata` annotation with its `speaker` and `style`. Configure both speakers even when only one of them talks in a take.
+- **Narration takes:** one single-speaker call per take, the narrator's voice (Sulafat), the take's lines as one transcript.
+- **Voices:** all prebuilt — no designed or cloned voices — so every dialogue take can be a conversational call.
+- **Output:** a unary call returns a complete WAV (24 kHz mono 16-bit). Save it untouched to `scene/_dry-originals/<id>-sNN.wav`. Do not trim, level or edit the takes — the assembler does that, and the aligner needs the originals.
+- **Length:** takes run from about 2 to 25 seconds; a whole scene is 45–90 seconds.
 
 ### How the fields divide
 
 Each character has an **audio profile** (the sound of the voice only), each place
-has a **scene** (the room, with the room tone on its last line), and each line
-has a **style** (the delivery of that one line). They do different jobs — never
-repeat one inside another, or the read goes flat.
+has a **scene** (the room, with its room tone on the last line), each take has a
+**sample context** (what this exchange is), and each line has a **style** (the
+delivery of that one line). They do different jobs — never repeat one inside
+another, or the read goes flat.
 
-- In the **AI Studio speech playground**: paste the character's audio profile into *Audio profile*, the room into *Scene*, the line's sample context into *Sample context*, and the line into the transcript. Put the line's style in the style field.
-- Through the **API**: the voice carries the profile (a designed voice, or a prebuilt voice chosen to match it), and `speech_metadata.style` carries the line's style. The script below does this.
+- In the **AI Studio speech playground** (multi-speaker): paste the room into *Scene*, the take's sample context into *Sample context*, each character's audio profile against their speaker, and the turns into the transcript with each turn's style.
+- Through the **API**: the prebuilt voice carries the profile — choose it by auditioning against the profile — and each turn's `speech_metadata.style` carries its delivery. The script below does this.
 
-**Transcripts are verbatim.** The text is read exactly as written. Do not add
-stage directions to it.
+**Transcripts are verbatim.** Every word is read exactly as written. Never add
+stage directions to the text; delivery goes in the style.
 
-**Audio tags** such as `<laugh>` or `<sigh>` are written inside a few lines,
-in angle brackets. They are performed, not read. If a tag is **spoken aloud**,
-delete it and re-run — the words either side already carry the moment. If it
-makes the delivery **too big**, cut it. The page strips tags from the transcript
-students see.
+**Audio tags** such as `<laugh>` or `<sigh>` sit inside a few lines, in angle
+brackets. They are performed, not read. If a tag is **spoken aloud**, delete it and
+re-run — the words either side already carry the moment. If it makes the delivery
+**too big**, cut it. The page strips tags from the transcript students see.
 
 ### The narrator — one voice for all 10 scenes
 
-**Designed voice** (AI Studio → Voice design, or `POST /v1beta/voices` with `type="prompted"`). Create it once, keep the `voice_…` ID, use it for every `N` line.
+**Voice:** the prebuilt **Sulafat (Warm)** for every narration take. No character uses it.
+
+**Audio profile**
 
 ```text
-A warm, calm female storyteller in her forties reading a picture book to adult
-learners of English. Neutral general American accent. Clear, unhurried and kind;
-slightly slower than normal speech, with a small natural pause at every full
-stop. Friendly but never childish or sing-song. Every consonant clear, no
-vocal fry, no breathiness.
+A warm, calm woman in her forties reading a picture book to adult learners of
+English. Neutral general American accent. Clear, unhurried and kind; slightly
+slower than normal speech, with a small natural pause at every full stop.
+Friendly but never childish or sing-song. Every consonant clear.
 ```
 
-If voice design is unavailable, use the prebuilt **Sulafat (Warm)**.
+**Style for every narration take:** `calm, warm storytelling for learners, slow and very clear, a small pause at every full stop`
 
-**Style for every narrator line:** `calm, warm storytelling for learners, slow and very clear, a small pause at every full stop`
-
-**Sample context for every narrator line:**
+**Sample context for every narration take:**
 
 ```text
-Voice-over narration for one panel of a wordless picture-book comic, heard by
-Bangladeshi students learning English at B1 level. The narrator is outside the
-story, setting the scene simply and warmly. Not an advertisement, not a
+Voice-over narration for a wordless picture-book comic, heard by Bangladeshi
+students learning English at B1 level. The narrator is outside the story,
+setting each picture simply and warmly. Not an advertisement, not a
 documentary. Read slowly enough that a learner can follow every word.
 ```
 
-Narrator lines get **no room tone** — they are voice-over, dry and close.
+Narration takes get **no room tone** — they are voice-over, dry and close.
 
-### The six Bangladeshi voices
+### Accents
 
 Six characters are Bangladeshi students or young professionals in the US:
 **Tania** (The Dinner That Ends at Eight), **Nusrat** (Six Friends, Six Payments), **Tanvir** (The Director Stacking Chairs), **Farhana** (“What Do You Think?”), **Arif** (Tell Them What You Did), **Imran** (Leave the Snake Alone).
 Students should hear an accent they recognise from home, speaking good, clear
-English. Search the **Extended Voice Library** in the AI Studio picker
-(Language: English → Accent: Bangladeshi, or South Asian / Indian if there is no
-Bangladeshi entry), or:
+English.
 
-```python
-for v in client.voices.list(language_code="en", search="Bangladesh"):
-    print(v.name, v.accent, v.gender, v.persona)
-# if nothing: region_code="IN", or search="South Asian"
-```
+Each of them has a prebuilt voice and an **accent note** — a short inflection
+description (a softly tapped r, dental t and d, even syllable timing, and one
+habit of their own). The note is added to the style of **every** line they speak,
+after that line's delivery, so it stays the same across all of their takes. The
+takes below and the script already include it.
 
-Pick three male and three female voices that are **clearly different from one
-another**, and write the chosen voice names into the cast table below before
-recording. If the library has no South Asian English voices at all, use the
-fallback prebuilt voice listed for each character and describe the accent in the
-style — but check it survives; the lines still have to work read in a neutral
-accent.
+Audition the first take of each of these characters. The accent should be
+**light and natural** — a real person, not an impression. If it comes out too
+strong, add *"very light, subtle"* to the start of that character's note (in
+`scenes.js`, then regenerate) rather than removing it. If it disappears
+entirely, run the take again before changing anything — the model varies from
+take to take.
 
 ### Returning characters
 
 Four characters also appear in the scenario's interviews in step 3:
 **Dave** (`audio/the-boss-stacks-chairs-1.mp3`), **Hannah** (`audio/honestly-im-annoyed-1.mp3`), **Ethan** (`audio/honestly-im-annoyed-2.mp3`), **Kathy** (`audio/leave-the-snake-alone-1.mp3`).
 Use **the same voice as their interview take**, so students hear the same person.
-Dave's interview used **Zubenelgenubi**. For the other three, check the voice
-used for their interview recording; the voice listed here is a best guess and
-should be swapped if it does not match.
+Dave's interview used **Zubenelgenubi**. For the other three, check the voice used
+for their interview recording; the voice listed here is a best guess and should be
+swapped if it does not match.
 
 ### Cast
 
-| Portrait | Character | Scene | Voice | Audio profile |
-|---|---|---|---|---|
-| — | **Narrator** | all | designed voice · fallback Sulafat | see above |
-| `tania.jpg` | **Tania**, 26 | The Dinner That Ends at Eight | Extended Voice Library — English, South Asian (Bangladeshi or Indian) accent, female, young adult, warm · fallback Autonoe | Young woman in her mid-twenties, warm clear mid-range voice, careful and slightly formal English with a soft Bangladeshi accent. Polite, rises a little at the ends of questions, stresses the key word gently rather than loudly. |
-| `jeff.jpg` | **Jeff**, 42 | The Dinner That Ends at Eight | Achird (Friendly) | Warm, easy baritone, general American. Talks quickly and brightly, lots of energy in the first word of a sentence, relaxed and sure of himself. |
-| `nusrat.jpg` | **Nusrat**, 22 | Six Friends, Six Payments | Extended Voice Library — English, South Asian (Bangladeshi or Indian) accent, female, young adult, lively · fallback Leda | Young woman, bright mid-range voice with a clear Bangladeshi accent. Quick and warm, laughs easily, lifts her pitch when she is being generous. |
-| `jake.jpg` | **Jake**, 23 | Six Friends, Six Payments | Fenrir (Excitable) | Young man, bright and bouncy tenor, general American with a light Texan ease. Speaks fast, smiles through his words, drops his voice when he reassures. |
-| `richard.jpg` | **Richard**, 56 | The Junior Who Said No | Alnilam (Firm) | Man in his fifties, low steady baritone, general American. Measured and unhurried, slight pause before important words, sounds in charge without being cold. |
-| `ryan.jpg` | **Ryan**, 26 | The Junior Who Said No | Algieba (Smooth) | Young man, smooth mid-range voice, general American. Clear and polite, speaks with calm confidence, counts his points with a small lift on each number. |
-| `tanvir.jpg` | **Tanvir**, 23 | The Director Stacking Chairs | Extended Voice Library — English, South Asian (Bangladeshi or Indian) accent, male, young adult, earnest · fallback Umbriel | Young man, earnest light baritone with a Bangladeshi accent. Respectful, a little breathless when nervous, softens the ends of his sentences. |
-| `dave.jpg` | **Dave**, 49 | The Director Stacking Chairs | Zubenelgenubi (Casual) | Man in his late forties, relaxed and casual mid-baritone, general American. Laughs easily, never sounds like a boss, a friendly lift at the end of short phrases. |
-| `farhana.jpg` | **Farhana**, 20 | “What Do You Think?” | Extended Voice Library — English, South Asian (Bangladeshi or Indian) accent, female, young adult, soft · fallback Achernar | Young woman, soft and slightly breathy voice with a Bangladeshi accent. Quiet, hesitates before she starts, grows steadier as she goes. |
-| `novak.jpg` | **Dr. Novak**, 54 | “What Do You Think?” | Rasalgethi (Informative) | Man in his fifties, warm and informative baritone, general American. Patient, lets silences sit, rises with real curiosity when a student speaks. |
-| `bill.jpg` | **Bill**, 58 | The Neighbour’s Tree | Algenib (Gravelly) | Man in his late fifties, gravelly low voice, general American. Plain-spoken and a bit gruff, then friendly; short phrases, a smile you can hear when he relaxes. |
-| `mike.jpg` | **Mike**, 47 | The Neighbour’s Tree | Sadachbia (Lively) | Man in his forties, lively warm tenor, general American. Open and easy, quick to agree, a friendly bounce in his rhythm. |
-| `brad.jpg` | **Brad**, 41 | Back of the Line | Orus (Firm) | Man in his early forties, firm quick baritone, general American. Brisk and a little impatient, polite words said fast, voice drops flat when he is let down. |
-| `carla.jpg` | **Carla**, 45 | Back of the Line | Pulcherrima (Forward) | Woman in her forties, clear forward alto, general American. Warm and smiling, completely steady; friendly tone, firm words, never raises her voice. |
-| `arif.jpg` | **Arif**, 22 | Tell Them What You Did | Extended Voice Library — English, South Asian (Bangladeshi or Indian) accent, male, young adult, gentle · fallback Iapetus | Young man, gentle and modest light baritone with a Bangladeshi accent. Speaks softly, lets his voice fall at the end of sentences, downplays everything. |
-| `tyler.jpg` | **Tyler**, 22 | Tell Them What You Did | Puck (Upbeat) | Young man, upbeat and bright tenor, general American. Confident and fluent, strong stress on numbers and on "I", sounds pleased with himself in a friendly way. |
-| `hannah.jpg` | **Hannah**, 23 | Honestly, I’m Annoyed | Kore (Firm) | Young woman, firm clear alto, general American. Calm and direct even when upset, no shouting; warmth comes back fast into her voice once it is said. |
-| `ethan.jpg` | **Ethan**, 22 | Honestly, I’m Annoyed | Zephyr (Bright) | Young man, bright light tenor, general American. Cheerful and quick, drops into a sincere lower tone when he apologises, laughs easily. |
-| `imran.jpg` | **Imran**, 21 | Leave the Snake Alone | Extended Voice Library — English, South Asian (Bangladeshi or Indian) accent, male, young adult, energetic · fallback Enceladus | Young man, energetic mid-range voice with a Bangladeshi accent. Loud and fast when alarmed, rising pitch on questions, curious and thoughtful when calm. |
-| `kathy.jpg` | **Kathy**, 48 | Leave the Snake Alone | Aoede (Breezy) | Woman in her late forties, breezy warm alto with a soft Southern ease. Unhurried, amused, gently firm; fond when she talks about animals. |
+| Portrait | Character | Scene | Voice | Audio profile | Accent note |
+|---|---|---|---|---|---|
+| — | **Narrator** | all | Sulafat (Warm) | see above | — |
+| `tania.jpg` | **Tania**, 26 | The Dinner That Ends at Eight | Autonoe (Bright) | Young woman in her mid-twenties, warm clear mid-range voice, careful and slightly formal English with a soft Bangladeshi accent. Polite, rises a little at the ends of questions, stresses the key word gently rather than loudly. | light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, a gentle rise at the end of statements |
+| `jeff.jpg` | **Jeff**, 42 | The Dinner That Ends at Eight | Achird (Friendly) | Warm, easy baritone, general American. Talks quickly and brightly, lots of energy in the first word of a sentence, relaxed and sure of himself. | — |
+| `nusrat.jpg` | **Nusrat**, 22 | Six Friends, Six Payments | Leda (Youthful) | Young woman, bright mid-range voice with a clear Bangladeshi accent. Quick and warm, laughs easily, lifts her pitch when she is being generous. | light Bangladeshi accent: soft tapped r, dental t and d, quick even rhythm, warm open vowels |
+| `jake.jpg` | **Jake**, 23 | Six Friends, Six Payments | Fenrir (Excitable) | Young man, bright and bouncy tenor, general American with a light Texan ease. Speaks fast, smiles through his words, drops his voice when he reassures. | — |
+| `richard.jpg` | **Richard**, 56 | The Junior Who Said No | Alnilam (Firm) | Man in his fifties, low steady baritone, general American. Measured and unhurried, slight pause before important words, sounds in charge without being cold. | — |
+| `ryan.jpg` | **Ryan**, 26 | The Junior Who Said No | Algieba (Smooth) | Young man, smooth mid-range voice, general American. Clear and polite, speaks with calm confidence, counts his points with a small lift on each number. | — |
+| `tanvir.jpg` | **Tanvir**, 23 | The Director Stacking Chairs | Umbriel (Easy-going) | Young man, earnest light baritone with a Bangladeshi accent. Respectful, a little breathless when nervous, softens the ends of his sentences. | light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, v sounds close to b-w |
+| `dave.jpg` | **Dave**, 49 | The Director Stacking Chairs | Zubenelgenubi (Casual) | Man in his late forties, relaxed and casual mid-baritone, general American. Laughs easily, never sounds like a boss, a friendly lift at the end of short phrases. | — |
+| `farhana.jpg` | **Farhana**, 20 | “What Do You Think?” | Achernar (Soft) | Young woman, soft and slightly breathy voice with a Bangladeshi accent. Quiet, hesitates before she starts, grows steadier as she goes. | light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, very gentle stress |
+| `novak.jpg` | **Dr. Novak**, 54 | “What Do You Think?” | Rasalgethi (Informative) | Man in his fifties, warm and informative baritone, general American. Patient, lets silences sit, rises with real curiosity when a student speaks. | — |
+| `bill.jpg` | **Bill**, 58 | The Neighbour’s Tree | Algenib (Gravelly) | Man in his late fifties, gravelly low voice, general American. Plain-spoken and a bit gruff, then friendly; short phrases, a smile you can hear when he relaxes. | — |
+| `mike.jpg` | **Mike**, 47 | The Neighbour’s Tree | Sadachbia (Lively) | Man in his forties, lively warm tenor, general American. Open and easy, quick to agree, a friendly bounce in his rhythm. | — |
+| `brad.jpg` | **Brad**, 41 | Back of the Line | Orus (Firm) | Man in his early forties, firm quick baritone, general American. Brisk and a little impatient, polite words said fast, voice drops flat when he is let down. | — |
+| `carla.jpg` | **Carla**, 45 | Back of the Line | Pulcherrima (Forward) | Woman in her forties, clear forward alto, general American. Warm and smiling, completely steady; friendly tone, firm words, never raises her voice. | — |
+| `arif.jpg` | **Arif**, 22 | Tell Them What You Did | Iapetus (Clear) | Young man, gentle and modest light baritone with a Bangladeshi accent. Speaks softly, lets his voice fall at the end of sentences, downplays everything. | light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, sentences that fall softly at the end |
+| `tyler.jpg` | **Tyler**, 22 | Tell Them What You Did | Puck (Upbeat) | Young man, upbeat and bright tenor, general American. Confident and fluent, strong stress on numbers and on "I", sounds pleased with himself in a friendly way. | — |
+| `hannah.jpg` | **Hannah**, 23 | Honestly, I’m Annoyed | Kore (Firm) | Young woman, firm clear alto, general American. Calm and direct even when upset, no shouting; warmth comes back fast into her voice once it is said. | — |
+| `ethan.jpg` | **Ethan**, 22 | Honestly, I’m Annoyed | Zephyr (Bright) | Young man, bright light tenor, general American. Cheerful and quick, drops into a sincere lower tone when he apologises, laughs easily. | — |
+| `imran.jpg` | **Imran**, 21 | Leave the Snake Alone | Enceladus (Breathy) | Young man, energetic mid-range voice with a Bangladeshi accent. Loud and fast when alarmed, rising pitch on questions, curious and thoughtful when calm. | light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, questions that rise sharply |
+| `kathy.jpg` | **Kathy**, 48 | Leave the Snake Alone | Aoede (Breezy) | Woman in her late forties, breezy warm alto with a soft Southern ease. Unhurried, amused, gently firm; fond when she talks about animals. | — |
 
 ---
 
@@ -180,8 +185,9 @@ should be swapped if it does not match.
 ### The style block
 
 **Paste this at the top of every panel prompt and every portrait prompt, unchanged.**
-It is the style of the existing three-panel strips on the page, so old and new
-pictures sit together.
+It is the style of the existing three-panel strips on the page, and the casts
+below follow the people already drawn in those strips, so old and new pictures
+sit together.
 
 ```text
 Editorial comic illustration, clean modern graphic-novel style. Flat colour
@@ -203,16 +209,16 @@ watermark, no logos, no speech bubbles containing writing.
   magick <id>-<n>.png -resize 720x720 -quality 72 <id>-<n>.webp
   magick <id>-<n>.png -resize 720x720 -quality 82 <id>-<n>.jpg
   ```
-- **Continuity is everything.** Draw panel 1 first — attach the scenario's existing strip panel `strip/<id>-1.png` (or `strip/_originals/`) as a reference for the setting and style. For panels 2–6, attach panel 1 and begin the prompt with: *"Same characters, same clothing, same art style and palette as the attached image. Continue the sequence."* If a face or an outfit drifts, regenerate that panel. A student tracking "the same man" across six pictures is doing half the comprehension work.
+- **Continuity is everything.** Draw panel 1 first — attach the scenario's existing strip panel `strip/<id>-1.png` (or `strip/_originals/`) as a reference for the people, setting and style. For panels 2–6, attach panel 1 and begin the prompt with: *"Same characters, same clothing, same art style and palette as the attached image. Continue the sequence."* If a face or an outfit drifts, regenerate that panel. A student tracking "the same man" across six pictures is doing half the comprehension work.
 - **Returning characters** (Dave, Hannah, Ethan, Kathy): also attach their existing portrait from `portraits/` so they look like the person in the interview.
 - **Readable at 300px.** One clear action per panel, the speaker's face visible, nothing important in the bottom-left corner (the page puts the speaker's face there).
 
 ### Portraits
 
-Draw each portrait **after** its scene's panels, attaching panel 1 so the
-face, hair and clothes match. One prompt per character, in each scene section
-below. Crop to a square with the face about 60% of the height, resize to
-384×384, JPEG quality 84.
+Draw each portrait **after** its scene's panels, attaching panel 1 so the face,
+hair and clothes match. One prompt per character, in each scene section below.
+Crop to a square with the face about 60% of the height, resize to 384×384, JPEG
+quality 84.
 
 ---
 
@@ -226,50 +232,43 @@ below. Crop to a square with the face about 60% of the height, resize to
 
 ### Rooms (the *Scene* field)
 
-**sofa** — used by panels 1
+**sofa** — panels 1
 
 ```text
 Tania's small apartment in Chicago on a weekday evening, sunset through the window.
 Room tone: quiet room air, faint traffic through a closed window. Jeff's lines are a voice message played from her phone.
 ```
 
-Room-tone bed: —
+Room tone the assembler lays under dialogue in this room: `air -40 dB` · `rumble -44 dB` · `presence -52 dB`
 
-**home** — used by panels 2, 3, 4, 5
+**home** — panels 2, 3, 4, 5
 
 ```text
 A warm apartment in a Chicago neighbourhood on a Saturday evening, six people around a dining table.
 Room tone: small-room warmth, cutlery on plates, low friendly chatter of four other guests under the speakers.
 ```
 
-Room-tone bed: `air -40 dB` · `babble -34 dB` · `dish -40 dB`
+Room tone the assembler lays under dialogue in this room: `air -40 dB` · `babble -34 dB` · `dish -40 dB`
 
-**street** — used by panels 6
+**street** — panels 6
 
 ```text
 A quiet residential street in Chicago just after eight in the evening.
 Room tone: light traffic two streets away, a gentle breeze, one car door far off.
 ```
 
-Room-tone bed: `wind -40 dB` · `rumble -42 dB` · `air -44 dB`
+Room tone the assembler lays under dialogue in this room: `wind -40 dB` · `rumble -42 dB` · `air -44 dB`
 
-### Tania — `scene/cast/tania.jpg`
+### Tania — speaker `Tania` · `scene/cast/tania.jpg`
 
-**Voice** Extended Voice Library — English, South Asian (Bangladeshi or Indian) accent, female, young adult, warm · fallback Autonoe
+**Voice** Autonoe (Bright)
+
+**Accent note** (added to the style of every Tania line): `light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, a gentle rise at the end of statements`
 
 **Audio profile**
 
 ```text
 Young woman in her mid-twenties, warm clear mid-range voice, careful and slightly formal English with a soft Bangladeshi accent. Polite, rises a little at the ends of questions, stresses the key word gently rather than loudly.
-```
-
-**Sample context (for every Tania line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Tania is an accountant from Rajshahi, three weeks into her first job in Chicago. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -288,7 +287,7 @@ watermark, no logos, no speech bubbles containing writing.
 Head-and-shoulders character portrait for a profile picture. Bangladeshi woman, 26, shoulder-length dark wavy hair, small gold hoop earrings, forest-green sweater (as in the existing strip). Tania is an accountant from Rajshahi, three weeks into her first job in Chicago. Friendly, natural expression, looking slightly off to one side as if listening. Plain warm cream background with a soft forest-green vignette, no setting. Face and shoulders fill the square, centred, head fully in frame with a little space above. Same character design as the attached panel 1. No text, no logos, no watermarks.
 ```
 
-### Jeff — `scene/cast/jeff.jpg`
+### Jeff — speaker `Jeff` · `scene/cast/jeff.jpg`
 
 **Voice** Achird (Friendly)
 
@@ -296,15 +295,6 @@ Head-and-shoulders character portrait for a profile picture. Bangladeshi woman, 
 
 ```text
 Warm, easy baritone, general American. Talks quickly and brightly, lots of energy in the first word of a sentence, relaxed and sure of himself.
-```
-
-**Sample context (for every Jeff line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Jeff is Tania's colleague, the host. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -342,7 +332,7 @@ caricature. Plain uncluttered backgrounds with just enough detail to place
 the scene. Absolutely no text, no lettering, no signage with words, no
 watermark, no logos, no speech bubbles containing writing.
 
-Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the setting and style.
+Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the people, setting and style.
 Characters: Tania: Bangladeshi woman, 26, shoulder-length dark wavy hair, small gold hoop earrings, forest-green sweater (as in the existing strip). Jeff: white American man, 42, curly brown hair, short beard, forest-green crew-neck sweater, dark trousers (as in the existing strip).
 Evening in a small apartment. Tania sits on her sofa, holding her phone to her ear, listening to a voice message. On the phone screen: an envelope icon and a small clock showing 6:00–8:00. She looks surprised and pleased.
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
@@ -453,25 +443,70 @@ Night street outside the building. The other guests walk away cheerfully. Tania 
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
 ```
 
-### Lines
+### Takes
 
-| File | Speaker | Voice | Style | Transcript (verbatim) |
-|---|---|---|---|---|
-| `dinner-ends-at-eight-01.mp3` | Narrator | narrator | narrator style | This is Tania. She is from Rajshahi. Three weeks ago, she started a new job in Chicago. |
-| `dinner-ends-at-eight-02.mp3` | Narrator | narrator | narrator style | One evening, her phone buzzes. It's a voice message from Jeff, a colleague. |
-| `dinner-ends-at-eight-03.mp3` | Jeff | Achird | friendly and casual, a recorded voice message, a little rushed | Hi, Tania, it's Jeff! A few of us are having dinner at my place on Saturday. Want to come? |
-| `dinner-ends-at-eight-04.mp3` | Jeff | Achird | cheerful and matter-of-fact, as if saying something completely normal | Come at six. I'll have to push everyone out by eight, though. I've got an early start on Sunday. |
-| `dinner-ends-at-eight-05.mp3` | Tania | EVL · Autonoe | surprised, quietly repeating it to herself | Push everyone out by eight? Oh... okay. |
-| `dinner-ends-at-eight-06.mp3` | Narrator | narrator | narrator style | On Saturday, Tania arrives at six o'clock exactly. She brings a box of sweets. |
-| `dinner-ends-at-eight-07.mp3` | Jeff | Achird | delighted and welcoming | Tania! Come in, come in. Oh, wow, are these for us? Thank you! |
-| `dinner-ends-at-eight-08.mp3` | Narrator | narrator | narrator style | The food is good. Everybody talks and laughs. Tania is having a great time. |
-| `dinner-ends-at-eight-09.mp3` | Narrator | narrator | narrator style | Then, at five past eight, Jeff stands up. |
-| `dinner-ends-at-eight-10.mp3` | Jeff | Achird | bright and grateful, raising his voice a little over the table | Okay, everyone, that's eight o'clock! Thank you so much for coming. This was really fun. |
-| `dinner-ends-at-eight-11.mp3` | Tania | EVL · Autonoe | quiet, surprised, half to herself | Oh... is it finished already? |
-| `dinner-ends-at-eight-12.mp3` | Jeff | Achird | warm, a friendly goodbye | Tania, thanks for the sweets. See you on Monday! |
-| `dinner-ends-at-eight-13.mp3` | Narrator | narrator | narrator style | Everybody smiles. Everybody says goodbye. Nobody looks hurt. |
-| `dinner-ends-at-eight-14.mp3` | Narrator | narrator | narrator style | Tania stands in the street. It is only a quarter past eight. In Rajshahi, a dinner party is just getting started. |
-| `dinner-ends-at-eight-15.mp3` | Tania | EVL · Autonoe | puzzled, thinking aloud, slow | Eight o'clock... and nobody was upset? |
+In order. Dialogue takes are one conversational call with both speakers —
+`Tania` (Autonoe) and `Jeff` (Achird).
+
+**`dinner-ends-at-eight-s01`** · narration · panel 1 · Sulafat
+
+```text
+This is Tania. She is from Rajshahi. Three weeks ago, she started a new job in Chicago. One evening, her phone buzzes. It's a voice message from Jeff, a colleague.
+```
+
+**`dinner-ends-at-eight-s02`** · dialogue · room **sofa** · panel 1
+
+*Sample context:* A short, natural exchange between Tania and Jeff. Tania is an accountant from Rajshahi, three weeks into her first job in Chicago; Jeff is Tania's colleague, the host. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Jeff | friendly and casual, a recorded voice message, a little rushed | Hi, Tania, it's Jeff! A few of us are having dinner at my place on Saturday. Want to come? |
+| Jeff | cheerful and matter-of-fact, as if saying something completely normal | Come at six. I'll have to push everyone out by eight, though. I've got an early start on Sunday. |
+| Tania | surprised, quietly repeating it to herself; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, a gentle rise at the end of statements | Push everyone out by eight? Oh... okay. |
+
+**`dinner-ends-at-eight-s03`** · narration · panel 2 · Sulafat
+
+```text
+On Saturday, Tania arrives at six o'clock exactly. She brings a box of sweets.
+```
+
+**`dinner-ends-at-eight-s04`** · dialogue · room **home** · panel 2
+
+*Sample context:* Jeff speaking to Tania. Tania is an accountant from Rajshahi, three weeks into her first job in Chicago; Jeff is Tania's colleague, the host. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Jeff | delighted and welcoming | Tania! Come in, come in. Oh, wow, are these for us? Thank you! |
+
+**`dinner-ends-at-eight-s05`** · narration · panels 3, 4 · Sulafat
+
+```text
+The food is good. Everybody talks and laughs. Tania is having a great time. Then, at five past eight, Jeff stands up.
+```
+
+**`dinner-ends-at-eight-s06`** · dialogue · room **home** · panels 4, 5
+
+*Sample context:* A short, natural exchange between Tania and Jeff. Tania is an accountant from Rajshahi, three weeks into her first job in Chicago; Jeff is Tania's colleague, the host. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Jeff | bright and grateful, raising his voice a little over the table | Okay, everyone, that's eight o'clock! Thank you so much for coming. This was really fun. |
+| Tania | quiet, surprised, half to herself; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, a gentle rise at the end of statements | Oh... is it finished already? |
+| Jeff | warm, a friendly goodbye | Tania, thanks for the sweets. See you on Monday! |
+
+**`dinner-ends-at-eight-s07`** · narration · panels 5, 6 · Sulafat
+
+```text
+Everybody smiles. Everybody says goodbye. Nobody looks hurt. Tania stands in the street. It is only a quarter past eight. In Rajshahi, a dinner party is just getting started.
+```
+
+**`dinner-ends-at-eight-s08`** · dialogue · room **street** · panel 6
+
+*Sample context:* Tania speaking to Jeff. Tania is an accountant from Rajshahi, three weeks into her first job in Chicago; Jeff is Tania's colleague, the host. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Tania | puzzled, thinking aloud, slow; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, a gentle rise at the end of statements | Eight o'clock... and nobody was upset? |
 
 ---
 
@@ -485,41 +520,34 @@ Square 1:1. Keep the bottom-left corner free of important detail. No words anywh
 
 ### Rooms (the *Scene* field)
 
-**restaurant** — used by panels 1, 2, 3, 4, 5
+**restaurant** — panels 1, 2, 3, 4, 5
 
 ```text
 A cosy, busy restaurant in Austin, Texas, on a Friday night. Six students at a round wooden table with candles.
 Room tone: lively restaurant hum, plates and cutlery, soft background music too low to make out.
 ```
 
-Room-tone bed: `babble -30 dB` · `dish -36 dB` · `clatter -40 dB` · `air -42 dB`
+Room tone the assembler lays under dialogue in this room: `babble -30 dB` · `dish -36 dB` · `clatter -40 dB` · `air -42 dB`
 
-**street** — used by panels 6
+**street** — panels 6
 
 ```text
 The pavement outside the restaurant, warm night air.
 Room tone: light traffic, distant music from a bar, footsteps.
 ```
 
-Room-tone bed: `wind -40 dB` · `rumble -42 dB` · `air -44 dB`
+Room tone the assembler lays under dialogue in this room: `wind -40 dB` · `rumble -42 dB` · `air -44 dB`
 
-### Nusrat — `scene/cast/nusrat.jpg`
+### Nusrat — speaker `Nusrat` · `scene/cast/nusrat.jpg`
 
-**Voice** Extended Voice Library — English, South Asian (Bangladeshi or Indian) accent, female, young adult, lively · fallback Leda
+**Voice** Leda (Youthful)
+
+**Accent note** (added to the style of every Nusrat line): `light Bangladeshi accent: soft tapped r, dental t and d, quick even rhythm, warm open vowels`
 
 **Audio profile**
 
 ```text
 Young woman, bright mid-range voice with a clear Bangladeshi accent. Quick and warm, laughs easily, lifts her pitch when she is being generous.
-```
-
-**Sample context (for every Nusrat line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Nusrat is an exchange student from Dhaka in her first term in Austin. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -538,7 +566,7 @@ watermark, no logos, no speech bubbles containing writing.
 Head-and-shoulders character portrait for a profile picture. Bangladeshi woman, 22, long dark wavy hair, maroon top, small gold earrings (as in the existing strip). Nusrat is an exchange student from Dhaka in her first term in Austin. Friendly, natural expression, looking slightly off to one side as if listening. Plain warm cream background with a soft forest-green vignette, no setting. Face and shoulders fill the square, centred, head fully in frame with a little space above. Same character design as the attached panel 1. No text, no logos, no watermarks.
 ```
 
-### Jake — `scene/cast/jake.jpg`
+### Jake — speaker `Jake` · `scene/cast/jake.jpg`
 
 **Voice** Fenrir (Excitable)
 
@@ -546,15 +574,6 @@ Head-and-shoulders character portrait for a profile picture. Bangladeshi woman, 
 
 ```text
 Young man, bright and bouncy tenor, general American with a light Texan ease. Speaks fast, smiles through his words, drops his voice when he reassures.
-```
-
-**Sample context (for every Jake line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Jake is her classmate, who chose the restaurant. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -592,7 +611,7 @@ caricature. Plain uncluttered backgrounds with just enough detail to place
 the scene. Absolutely no text, no lettering, no signage with words, no
 watermark, no logos, no speech bubbles containing writing.
 
-Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the setting and style.
+Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the people, setting and style.
 Characters: Nusrat: Bangladeshi woman, 22, long dark wavy hair, maroon top, small gold earrings (as in the existing strip). Jake: white American man, 23, curly brown hair, easy grin, forest-green sweater (as in the existing strip).
 A cosy restaurant. Six young friends at a round table with candles and nearly empty plates of tacos. Jake at the end gestures proudly at the food. Nusrat, beside him, gives a thumbs-up, smiling.
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
@@ -703,23 +722,70 @@ Outside the restaurant at night. The friends walk off chatting. Nusrat stops und
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
 ```
 
-### Lines
+### Takes
 
-| File | Speaker | Voice | Style | Transcript (verbatim) |
-|---|---|---|---|---|
-| `splitting-the-bill-01.mp3` | Narrator | narrator | narrator style | Nusrat is a student in Austin, Texas. Tonight she is having dinner with five friends from her class. |
-| `splitting-the-bill-02.mp3` | Jake | Fenrir | proud and playful | Didn't I tell you? Best tacos in Austin. I found this place last year. |
-| `splitting-the-bill-03.mp3` | Nusrat | EVL · Leda | happy, full, warm | You were right, Jake. It was delicious. |
-| `splitting-the-bill-04.mp3` | Narrator | narrator | narrator style | Then the waiter brings the bill. Just one bill, for six people. |
-| `splitting-the-bill-05.mp3` | Nusrat | EVL · Leda | teasing lightly, but half serious | So, Jake... this was your idea. Are you paying tonight? |
-| `splitting-the-bill-06.mp3` | Jake | Fenrir | amused and relaxed | &lt;laugh&gt; Me? No way! We'll just split it. Everybody pays for what they had. |
-| `splitting-the-bill-07.mp3` | Narrator | narrator | narrator style | Everybody takes out their phone. They look at the bill and do some math. |
-| `splitting-the-bill-08.mp3` | Jake | Fenrir | reading numbers off his phone, easy-going | Okay, I had the fish tacos and a soda. That's fourteen fifty, plus the tip. |
-| `splitting-the-bill-09.mp3` | Nusrat | EVL · Leda | generous and a little urgent | Wait, wait. Please, let me pay for everyone. It's no problem! |
-| `splitting-the-bill-10.mp3` | Jake | Fenrir | gentle and friendly, completely sure | That's really nice, Nusrat, but no. Just pay for yours. Really, it's fine. |
-| `splitting-the-bill-11.mp3` | Narrator | narrator | narrator style | One by one, everybody pays their own share. Nobody argues. Nobody reaches for the whole bill. |
-| `splitting-the-bill-12.mp3` | Narrator | narrator | narrator style | Outside, Nusrat looks at her receipt. At home, the fight to pay is half the fun. |
-| `splitting-the-bill-13.mp3` | Nusrat | EVL · Leda | amused and puzzled, softly | Nobody even tried to pay for me... |
+In order. Dialogue takes are one conversational call with both speakers —
+`Nusrat` (Leda) and `Jake` (Fenrir).
+
+**`splitting-the-bill-s01`** · narration · panel 1 · Sulafat
+
+```text
+Nusrat is a student in Austin, Texas. Tonight she is having dinner with five friends from her class.
+```
+
+**`splitting-the-bill-s02`** · dialogue · room **restaurant** · panel 1
+
+*Sample context:* A short, natural exchange between Nusrat and Jake. Nusrat is an exchange student from Dhaka in her first term in Austin; Jake is her classmate, who chose the restaurant. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Jake | proud and playful | Didn't I tell you? Best tacos in Austin. I found this place last year. |
+| Nusrat | happy, full, warm; light Bangladeshi accent: soft tapped r, dental t and d, quick even rhythm, warm open vowels | You were right, Jake. It was delicious. |
+
+**`splitting-the-bill-s03`** · narration · panel 2 · Sulafat
+
+```text
+Then the waiter brings the bill. Just one bill, for six people.
+```
+
+**`splitting-the-bill-s04`** · dialogue · room **restaurant** · panel 2
+
+*Sample context:* A short, natural exchange between Nusrat and Jake. Nusrat is an exchange student from Dhaka in her first term in Austin; Jake is her classmate, who chose the restaurant. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Nusrat | teasing lightly, but half serious; light Bangladeshi accent: soft tapped r, dental t and d, quick even rhythm, warm open vowels | So, Jake... this was your idea. Are you paying tonight? |
+| Jake | amused and relaxed | &lt;laugh&gt; Me? No way! We'll just split it. Everybody pays for what they had. |
+
+**`splitting-the-bill-s05`** · narration · panel 3 · Sulafat
+
+```text
+Everybody takes out their phone. They look at the bill and do some math.
+```
+
+**`splitting-the-bill-s06`** · dialogue · room **restaurant** · panels 3, 4
+
+*Sample context:* A short, natural exchange between Nusrat and Jake. Nusrat is an exchange student from Dhaka in her first term in Austin; Jake is her classmate, who chose the restaurant. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Jake | reading numbers off his phone, easy-going | Okay, I had the fish tacos and a soda. That's fourteen fifty, plus the tip. |
+| Nusrat | generous and a little urgent; light Bangladeshi accent: soft tapped r, dental t and d, quick even rhythm, warm open vowels | Wait, wait. Please, let me pay for everyone. It's no problem! |
+| Jake | gentle and friendly, completely sure | That's really nice, Nusrat, but no. Just pay for yours. Really, it's fine. |
+
+**`splitting-the-bill-s07`** · narration · panels 5, 6 · Sulafat
+
+```text
+One by one, everybody pays their own share. Nobody argues. Nobody reaches for the whole bill. Outside, Nusrat looks at her receipt. At home, the fight to pay is half the fun.
+```
+
+**`splitting-the-bill-s08`** · dialogue · room **street** · panel 6
+
+*Sample context:* Nusrat speaking to Jake. Nusrat is an exchange student from Dhaka in her first term in Austin; Jake is her classmate, who chose the restaurant. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Nusrat | amused and puzzled, softly; light Bangladeshi accent: soft tapped r, dental t and d, quick even rhythm, warm open vowels | Nobody even tried to pay for me... |
 
 ---
 
@@ -733,16 +799,16 @@ Square 1:1. Keep the bottom-left corner free of important detail. No words anywh
 
 ### Rooms (the *Scene* field)
 
-**meeting** — used by panels 1, 2, 3, 4, 5, 6
+**meeting** — panels 1, 2, 3, 4, 5, 6
 
 ```text
 A glass-walled meeting room in a Boston logistics office on a Monday morning. Eight people around a long table, a screen at one end.
 Room tone: quiet air handling, a chair creaking, one person turning a page.
 ```
 
-Room-tone bed: `air -38 dB` · `fluoro -46 dB` · `presence -42 dB`
+Room tone the assembler lays under dialogue in this room: `air -38 dB` · `fluoro -46 dB` · `presence -52 dB`
 
-### Richard — `scene/cast/richard.jpg`
+### Richard — speaker `Richard` · `scene/cast/richard.jpg`
 
 **Voice** Alnilam (Firm)
 
@@ -750,15 +816,6 @@ Room-tone bed: `air -38 dB` · `fluoro -46 dB` · `presence -42 dB`
 
 ```text
 Man in his fifties, low steady baritone, general American. Measured and unhurried, slight pause before important words, sounds in charge without being cold.
-```
-
-**Sample context (for every Richard line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Richard is the director presenting his plan. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -777,7 +834,7 @@ watermark, no logos, no speech bubbles containing writing.
 Head-and-shoulders character portrait for a profile picture. white American man, 56, swept-back grey hair, open-collared white shirt, dark trousers (as in the existing strip). Richard is the director presenting his plan. Friendly, natural expression, looking slightly off to one side as if listening. Plain warm cream background with a soft forest-green vignette, no setting. Face and shoulders fill the square, centred, head fully in frame with a little space above. Same character design as the attached panel 1. No text, no logos, no watermarks.
 ```
 
-### Ryan — `scene/cast/ryan.jpg`
+### Ryan — speaker `Ryan` · `scene/cast/ryan.jpg`
 
 **Voice** Algieba (Smooth)
 
@@ -785,15 +842,6 @@ Head-and-shoulders character portrait for a profile picture. white American man,
 
 ```text
 Young man, smooth mid-range voice, general American. Clear and polite, speaks with calm confidence, counts his points with a small lift on each number.
-```
-
-**Sample context (for every Ryan line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Ryan is a junior analyst, two years in the job. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -831,7 +879,7 @@ caricature. Plain uncluttered backgrounds with just enough detail to place
 the scene. Absolutely no text, no lettering, no signage with words, no
 watermark, no logos, no speech bubbles containing writing.
 
-Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the setting and style.
+Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the people, setting and style.
 Characters: Richard: white American man, 56, swept-back grey hair, open-collared white shirt, dark trousers (as in the existing strip). Ryan: white American man, 26, wavy brown hair, forest-green sweater (as in the existing strip).
 A meeting room. Eight colleagues at a long table. Richard stands by a wall screen showing a simple bar chart, pointing at it. He looks confident.
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
@@ -942,20 +990,61 @@ The meeting carries on: a different colleague is now at the screen. Richard and 
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
 ```
 
-### Lines
+### Takes
 
-| File | Speaker | Voice | Style | Transcript (verbatim) |
-|---|---|---|---|---|
-| `disagreeing-in-the-meeting-01.mp3` | Narrator | narrator | narrator style | It's Monday morning in Boston. Eight people are in a planning meeting. Richard, the director, is showing his new plan. |
-| `disagreeing-in-the-meeting-02.mp3` | Richard | Alnilam | confident, wrapping up a presentation | So that's the plan. We move all our deliveries to Tuesday, starting next month. Any thoughts? |
-| `disagreeing-in-the-meeting-03.mp3` | Narrator | narrator | narrator style | Ryan is twenty-six. He has worked here for two years. He puts up his hand. |
-| `disagreeing-in-the-meeting-04.mp3` | Ryan | Algieba | calm and polite, direct | Honestly, I don't think that will work. Can I say why? |
-| `disagreeing-in-the-meeting-05.mp3` | Richard | Alnilam | neutral, genuinely open | Sure. Go ahead. |
-| `disagreeing-in-the-meeting-06.mp3` | Ryan | Algieba | clear and organised, counting his points | Okay. First, Tuesday is already our busiest day. Second, two of our drivers don't work on Tuesdays. And third, our biggest customer wants Monday deliveries. |
-| `disagreeing-in-the-meeting-07.mp3` | Narrator | narrator | narrator style | The room is quiet. Richard listens. He writes something down. |
-| `disagreeing-in-the-meeting-08.mp3` | Richard | Alnilam | thoughtful, then appreciative | Hmm. The drivers... I didn't know that. Good point. Thanks, Ryan. |
-| `disagreeing-in-the-meeting-09.mp3` | Ryan | Algieba | relaxed, simple | Sure. |
-| `disagreeing-in-the-meeting-10.mp3` | Narrator | narrator | narrator style | And the meeting goes on. Nobody looks embarrassed. Not Ryan, and not Richard. |
+In order. Dialogue takes are one conversational call with both speakers —
+`Richard` (Alnilam) and `Ryan` (Algieba).
+
+**`disagreeing-in-the-meeting-s01`** · narration · panel 1 · Sulafat
+
+```text
+It's Monday morning in Boston. Eight people are in a planning meeting. Richard, the director, is showing his new plan.
+```
+
+**`disagreeing-in-the-meeting-s02`** · dialogue · room **meeting** · panel 1
+
+*Sample context:* Richard speaking to Ryan. Richard is the director presenting his plan; Ryan is a junior analyst, two years in the job. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Richard | confident, wrapping up a presentation | So that's the plan. We move all our deliveries to Tuesday, starting next month. Any thoughts? |
+
+**`disagreeing-in-the-meeting-s03`** · narration · panel 2 · Sulafat
+
+```text
+Ryan is twenty-six. He has worked here for two years. He puts up his hand.
+```
+
+**`disagreeing-in-the-meeting-s04`** · dialogue · room **meeting** · panels 2, 3
+
+*Sample context:* A short, natural exchange between Richard and Ryan. Richard is the director presenting his plan; Ryan is a junior analyst, two years in the job. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Ryan | calm and polite, direct | Honestly, I don't think that will work. Can I say why? |
+| Richard | neutral, genuinely open | Sure. Go ahead. |
+| Ryan | clear and organised, counting his points | Okay. First, Tuesday is already our busiest day. Second, two of our drivers don't work on Tuesdays. And third, our biggest customer wants Monday deliveries. |
+
+**`disagreeing-in-the-meeting-s05`** · narration · panel 4 · Sulafat
+
+```text
+The room is quiet. Richard listens. He writes something down.
+```
+
+**`disagreeing-in-the-meeting-s06`** · dialogue · room **meeting** · panel 5
+
+*Sample context:* A short, natural exchange between Richard and Ryan. Richard is the director presenting his plan; Ryan is a junior analyst, two years in the job. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Richard | thoughtful, then appreciative | Hmm. The drivers... I didn't know that. Good point. Thanks, Ryan. |
+| Ryan | relaxed, simple | Sure. |
+
+**`disagreeing-in-the-meeting-s07`** · narration · panel 6 · Sulafat
+
+```text
+And the meeting goes on. Nobody looks embarrassed. Not Ryan, and not Richard.
+```
 
 ---
 
@@ -969,50 +1058,43 @@ Square 1:1. Keep the bottom-left corner free of important detail. No words anywh
 
 ### Rooms (the *Scene* field)
 
-**hall** — used by panels 1, 2, 3
+**hall** — panels 1, 2, 3
 
 ```text
 A community hall in Denver just after an office event, most guests gone. Stacks of folding chairs, a few balloons.
 Room tone: big empty-room echo, chairs clacking somewhere at the back, a door propped open.
 ```
 
-Room-tone bed: `air -36 dB` · `presence -34 dB` · `clatter -44 dB`
+Room tone the assembler lays under dialogue in this room: `air -36 dB` · `presence -44 dB` · `clatter -44 dB`
 
-**lot** — used by panels 4
+**lot** — panels 4
 
 ```text
 A parking lot outside the hall, late afternoon.
 Room tone: light wind, a distant highway, a car boot opening.
 ```
 
-Room-tone bed: `wind -38 dB` · `rumble -40 dB`
+Room tone the assembler lays under dialogue in this room: `wind -38 dB` · `rumble -40 dB`
 
-**kitchen** — used by panels 5, 6
+**kitchen** — panels 5, 6
 
 ```text
 The small office kitchen at the back of the hall.
 Room tone: a coffee maker gurgling, a fridge hum, voices of two volunteers in the next room.
 ```
 
-Room-tone bed: `air -40 dB` · `mains -46 dB` · `babble -42 dB`
+Room tone the assembler lays under dialogue in this room: `air -40 dB` · `mains -46 dB` · `babble -42 dB`
 
-### Tanvir — `scene/cast/tanvir.jpg`
+### Tanvir — speaker `Tanvir` · `scene/cast/tanvir.jpg`
 
-**Voice** Extended Voice Library — English, South Asian (Bangladeshi or Indian) accent, male, young adult, earnest · fallback Umbriel
+**Voice** Umbriel (Easy-going)
+
+**Accent note** (added to the style of every Tanvir line): `light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, v sounds close to b-w`
 
 **Audio profile**
 
 ```text
 Young man, earnest light baritone with a Bangladeshi accent. Respectful, a little breathless when nervous, softens the ends of his sentences.
-```
-
-**Sample context (for every Tanvir line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Tanvir is a new intern from Chittagong, in his first week. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -1031,7 +1113,7 @@ watermark, no logos, no speech bubbles containing writing.
 Head-and-shoulders character portrait for a profile picture. Bangladeshi man, 23, thick dark hair, navy blazer over a white T-shirt, khaki trousers (as in the existing strip). Tanvir is a new intern from Chittagong, in his first week. Friendly, natural expression, looking slightly off to one side as if listening. Plain warm cream background with a soft forest-green vignette, no setting. Face and shoulders fill the square, centred, head fully in frame with a little space above. Same character design as the attached panel 1. No text, no logos, no watermarks.
 ```
 
-### Dave — `scene/cast/dave.jpg`
+### Dave — speaker `Dave` · `scene/cast/dave.jpg`
 
 **Voice** Zubenelgenubi (Casual) · **same voice as** `audio/the-boss-stacks-chairs-1.mp3`
 
@@ -1039,15 +1121,6 @@ Head-and-shoulders character portrait for a profile picture. Bangladeshi man, 23
 
 ```text
 Man in his late forties, relaxed and casual mid-baritone, general American. Laughs easily, never sounds like a boss, a friendly lift at the end of short phrases.
-```
-
-**Sample context (for every Dave line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Dave is the country director — the same Dave the class interviews in step 3. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -1085,7 +1158,7 @@ caricature. Plain uncluttered backgrounds with just enough detail to place
 the scene. Absolutely no text, no lettering, no signage with words, no
 watermark, no logos, no speech bubbles containing writing.
 
-Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the setting and style.
+Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the people, setting and style.
 Characters: Tanvir: Bangladeshi man, 23, thick dark hair, navy blazer over a white T-shirt, khaki trousers (as in the existing strip). Dave: white American man, 49, short grey hair, white shirt with sleeves rolled up, dark green trousers (as in the existing strip; face as in portraits/the-boss-stacks-chairs-1.jpg).
 After the party in a hall: balloons, empty tables. Dave, sleeves rolled up, lifts a stack of folding chairs. Tanvir, holding a box, stares at him in surprise.
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
@@ -1196,22 +1269,56 @@ Dave hands a mug to Tanvir. Tanvir holds it with both hands, amazed, as if recei
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
 ```
 
-### Lines
+### Takes
 
-| File | Speaker | Voice | Style | Transcript (verbatim) |
-|---|---|---|---|---|
-| `the-boss-stacks-chairs-01.mp3` | Narrator | narrator | narrator style | The office party is over. Tanvir is a new intern. It is his first week. |
-| `the-boss-stacks-chairs-02.mp3` | Narrator | narrator | narrator style | Then he sees Dave, the country director, the most senior person in the building. Dave is stacking chairs. |
-| `the-boss-stacks-chairs-03.mp3` | Tanvir | EVL · Umbriel | anxious and respectful, hurrying | Sir! Sir, please, let me do that. You don't have to. |
-| `the-boss-stacks-chairs-04.mp3` | Dave | Zubenelgenubi | amused and kind, completely relaxed | &lt;laugh&gt; Sir? Please, it's Dave. And it's fine, I've got these. |
-| `the-boss-stacks-chairs-05.mp3` | Tanvir | EVL · Umbriel | hesitant, trying the first name for the first time | Okay, s... Dave. |
-| `the-boss-stacks-chairs-06.mp3` | Dave | Zubenelgenubi | casual, practical | Hey, can you grab that box? The car's just outside. I'll take the heavy one. |
-| `the-boss-stacks-chairs-07.mp3` | Narrator | narrator | narrator style | Together they carry the boxes out to the car. |
-| `the-boss-stacks-chairs-08.mp3` | Narrator | narrator | narrator style | Later, the cleaning is almost finished. Dave goes into the kitchen. |
-| `the-boss-stacks-chairs-09.mp3` | Dave | Zubenelgenubi | calling out cheerfully to the next room | Who wants coffee? I'm making a pot. |
-| `the-boss-stacks-chairs-10.mp3` | Dave | Zubenelgenubi | friendly and offhand | Here you go, Tanvir. The milk's in the fridge. |
-| `the-boss-stacks-chairs-11.mp3` | Tanvir | EVL · Umbriel | quiet, amazed, grateful | Thank you... Dave. |
-| `the-boss-stacks-chairs-12.mp3` | Narrator | narrator | narrator style | Tanvir holds the cup with both hands. The boss made him coffee. |
+In order. Dialogue takes are one conversational call with both speakers —
+`Tanvir` (Umbriel) and `Dave` (Zubenelgenubi).
+
+**`the-boss-stacks-chairs-s01`** · narration · panel 1 · Sulafat
+
+```text
+The office party is over. Tanvir is a new intern. It is his first week. Then he sees Dave, the country director, the most senior person in the building. Dave is stacking chairs.
+```
+
+**`the-boss-stacks-chairs-s02`** · dialogue · room **hall** · panels 2, 3
+
+*Sample context:* A short, natural exchange between Tanvir and Dave. Tanvir is a new intern from Chittagong, in his first week; Dave is the country director — the same Dave the class interviews in step 3. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Tanvir | anxious and respectful, hurrying; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, v sounds close to b-w | Sir! Sir, please, let me do that. You don't have to. |
+| Dave | amused and kind, completely relaxed | &lt;laugh&gt; Sir? Please, it's Dave. And it's fine, I've got these. |
+| Tanvir | hesitant, trying the first name for the first time; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, v sounds close to b-w | Okay, s... Dave. |
+
+**`the-boss-stacks-chairs-s03`** · dialogue · room **lot** · panel 4
+
+*Sample context:* Dave speaking to Tanvir. Tanvir is a new intern from Chittagong, in his first week; Dave is the country director — the same Dave the class interviews in step 3. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Dave | casual, practical | Hey, can you grab that box? The car's just outside. I'll take the heavy one. |
+
+**`the-boss-stacks-chairs-s04`** · narration · panels 4, 5 · Sulafat
+
+```text
+Together they carry the boxes out to the car. Later, the cleaning is almost finished. Dave goes into the kitchen.
+```
+
+**`the-boss-stacks-chairs-s05`** · dialogue · room **kitchen** · panels 5, 6
+
+*Sample context:* A short, natural exchange between Tanvir and Dave. Tanvir is a new intern from Chittagong, in his first week; Dave is the country director — the same Dave the class interviews in step 3. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Dave | calling out cheerfully to the next room | Who wants coffee? I'm making a pot. |
+| Dave | friendly and offhand | Here you go, Tanvir. The milk's in the fridge. |
+| Tanvir | quiet, amazed, grateful; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, v sounds close to b-w | Thank you... Dave. |
+
+**`the-boss-stacks-chairs-s06`** · narration · panel 6 · Sulafat
+
+```text
+Tanvir holds the cup with both hands. The boss made him coffee.
+```
 
 ---
 
@@ -1225,41 +1332,34 @@ Square 1:1. Keep the bottom-left corner free of important detail. No words anywh
 
 ### Rooms (the *Scene* field)
 
-**classroom** — used by panels 1, 2, 3, 4, 5
+**classroom** — panels 1, 2, 3, 4, 5
 
 ```text
 A mid-sized university seminar room in Michigan, twenty students at tables, afternoon light.
 Room tone: a quiet heating vent, a clock ticking faintly, one chair shifting.
 ```
 
-Room-tone bed: `air -40 dB` · `fan -44 dB` · `presence -42 dB`
+Room tone the assembler lays under dialogue in this room: `air -40 dB` · `fan -44 dB` · `presence -52 dB`
 
-**corridor** — used by panels 6
+**corridor** — panels 6
 
 ```text
 A university corridor just after class.
 Room tone: soft footsteps, distant voices, a door closing.
 ```
 
-Room-tone bed: `air -40 dB` · `presence -40 dB` · `babble -44 dB`
+Room tone the assembler lays under dialogue in this room: `air -40 dB` · `presence -50 dB` · `babble -44 dB`
 
-### Farhana — `scene/cast/farhana.jpg`
+### Farhana — speaker `Farhana` · `scene/cast/farhana.jpg`
 
-**Voice** Extended Voice Library — English, South Asian (Bangladeshi or Indian) accent, female, young adult, soft · fallback Achernar
+**Voice** Achernar (Soft)
+
+**Accent note** (added to the style of every Farhana line): `light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, very gentle stress`
 
 **Audio profile**
 
 ```text
 Young woman, soft and slightly breathy voice with a Bangladeshi accent. Quiet, hesitates before she starts, grows steadier as she goes.
-```
-
-**Sample context (for every Farhana line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Farhana is a first-year student from Khulna in her first university class in Michigan. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -1278,7 +1378,7 @@ watermark, no logos, no speech bubbles containing writing.
 Head-and-shoulders character portrait for a profile picture. Bangladeshi woman, 20, deep-red hijab, cream sweater, holding a paperback book (as in the existing strip). Farhana is a first-year student from Khulna in her first university class in Michigan. Friendly, natural expression, looking slightly off to one side as if listening. Plain warm cream background with a soft forest-green vignette, no setting. Face and shoulders fill the square, centred, head fully in frame with a little space above. Same character design as the attached panel 1. No text, no logos, no watermarks.
 ```
 
-### Dr. Novak — `scene/cast/novak.jpg`
+### Dr. Novak — speaker `Novak` · `scene/cast/novak.jpg`
 
 **Voice** Rasalgethi (Informative)
 
@@ -1286,15 +1386,6 @@ Head-and-shoulders character portrait for a profile picture. Bangladeshi woman, 
 
 ```text
 Man in his fifties, warm and informative baritone, general American. Patient, lets silences sit, rises with real curiosity when a student speaks.
-```
-
-**Sample context (for every Dr. Novak line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Dr. Novak is the literature teacher. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -1332,7 +1423,7 @@ caricature. Plain uncluttered backgrounds with just enough detail to place
 the scene. Absolutely no text, no lettering, no signage with words, no
 watermark, no logos, no speech bubbles containing writing.
 
-Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the setting and style.
+Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the people, setting and style.
 Characters: Farhana: Bangladeshi woman, 20, deep-red hijab, cream sweater, holding a paperback book (as in the existing strip). Dr. Novak: white American man, 54, curly grey hair, short grey beard, olive tweed jacket, khaki trousers (as in the existing strip).
 University classroom with tables in a horseshoe. Students with books open. Dr. Novak closes his book and leans on the front desk, looking at the class with an open, expectant face.
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
@@ -1443,21 +1534,56 @@ After class, Farhana in the corridor looks at a printed course plan with a pie c
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
 ```
 
-### Lines
+### Takes
 
-| File | Speaker | Voice | Style | Transcript (verbatim) |
-|---|---|---|---|---|
-| `what-do-you-think-01.mp3` | Narrator | narrator | narrator style | Farhana is in her first class at a university in Michigan. The teacher, Dr. Novak, finishes reading a short story. |
-| `what-do-you-think-02.mp3` | Dr. Novak | Rasalgethi | open and curious, relaxed | So... what do you think? |
-| `what-do-you-think-03.mp3` | Narrator | narrator | narrator style | Nobody speaks. Farhana looks down at her book. |
-| `what-do-you-think-04.mp3` | Narrator | narrator | narrator style | Dr. Novak doesn't say anything. He just waits. Five seconds. Ten seconds. |
-| `what-do-you-think-05.mp3` | Dr. Novak | Rasalgethi | patient and encouraging, unhurried | It's okay. There's no right answer. I actually want to know your opinion. |
-| `what-do-you-think-06.mp3` | Farhana | EVL · Achernar | whispering to herself, unsure | &lt;whispers&gt; My opinion? But he is the teacher... |
-| `what-do-you-think-07.mp3` | Dr. Novak | Rasalgethi | gentle, inviting | Farhana? You look like you have an idea. |
-| `what-do-you-think-08.mp3` | Farhana | EVL · Achernar | hesitant at first, then a little steadier | Um... I think the father was wrong. He didn't listen to his son. |
-| `what-do-you-think-09.mp3` | Dr. Novak | Rasalgethi | genuinely delighted and curious | Interesting! Why do you think that? Tell me more. |
-| `what-do-you-think-10.mp3` | Narrator | narrator | narrator style | After class, Farhana reads the course plan. Twenty percent of the grade is for speaking in class. |
-| `what-do-you-think-11.mp3` | Farhana | EVL · Achernar | surprised, thinking aloud | Twenty percent... just for talking? |
+In order. Dialogue takes are one conversational call with both speakers —
+`Farhana` (Achernar) and `Novak` (Rasalgethi).
+
+**`what-do-you-think-s01`** · narration · panel 1 · Sulafat
+
+```text
+Farhana is in her first class at a university in Michigan. The teacher, Dr. Novak, finishes reading a short story.
+```
+
+**`what-do-you-think-s02`** · dialogue · room **classroom** · panel 1
+
+*Sample context:* Dr. Novak speaking to Farhana. Farhana is a first-year student from Khulna in her first university class in Michigan; Dr. Novak is the literature teacher. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Novak | open and curious, relaxed | So... what do you think? |
+
+**`what-do-you-think-s03`** · narration · panels 2, 3 · Sulafat
+
+```text
+Nobody speaks. Farhana looks down at her book. Dr. Novak doesn't say anything. He just waits. Five seconds. Ten seconds.
+```
+
+**`what-do-you-think-s04`** · dialogue · room **classroom** · panels 3, 4, 5
+
+*Sample context:* A short, natural exchange between Farhana and Dr. Novak. Farhana is a first-year student from Khulna in her first university class in Michigan; Dr. Novak is the literature teacher. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Novak | patient and encouraging, unhurried | It's okay. There's no right answer. I actually want to know your opinion. |
+| Farhana | whispering to herself, unsure; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, very gentle stress | &lt;whispers&gt; My opinion? But he is the teacher... |
+| Novak | gentle, inviting | Farhana? You look like you have an idea. |
+| Farhana | hesitant at first, then a little steadier; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, very gentle stress | Um... I think the father was wrong. He didn't listen to his son. |
+| Novak | genuinely delighted and curious | Interesting! Why do you think that? Tell me more. |
+
+**`what-do-you-think-s05`** · narration · panel 6 · Sulafat
+
+```text
+After class, Farhana reads the course plan. Twenty percent of the grade is for speaking in class.
+```
+
+**`what-do-you-think-s06`** · dialogue · room **corridor** · panel 6
+
+*Sample context:* Farhana speaking to Dr. Novak. Farhana is a first-year student from Khulna in her first university class in Michigan; Dr. Novak is the literature teacher. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Farhana | surprised, thinking aloud; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, very gentle stress | Twenty percent... just for talking? |
 
 ---
 
@@ -1471,25 +1597,25 @@ Square 1:1. Keep the bottom-left corner free of important detail. No words anywh
 
 ### Rooms (the *Scene* field)
 
-**yard** — used by panels 1, 2, 4, 5, 6
+**yard** — panels 1, 2, 4, 5, 6
 
 ```text
 Two neighbouring front gardens on a quiet suburban street in Portland, a cool grey autumn morning, wet leaves everywhere.
 Room tone: light breeze through trees, leaves rustling, a crow far off.
 ```
 
-Room-tone bed: `wind -38 dB` · `birds -42 dB` · `air -44 dB`
+Room tone the assembler lays under dialogue in this room: `wind -38 dB` · `birds -42 dB` · `air -44 dB`
 
-**door** — used by panels 3
+**door** — panels 3
 
 ```text
 The front porch of the house next door.
 Room tone: breeze, a wind chime once, the door swinging open.
 ```
 
-Room-tone bed: `wind -40 dB` · `birds -46 dB` · `air -44 dB`
+Room tone the assembler lays under dialogue in this room: `wind -40 dB` · `birds -46 dB` · `air -44 dB`
 
-### Bill — `scene/cast/bill.jpg`
+### Bill — speaker `Bill` · `scene/cast/bill.jpg`
 
 **Voice** Algenib (Gravelly)
 
@@ -1497,15 +1623,6 @@ Room-tone bed: `wind -40 dB` · `birds -46 dB` · `air -44 dB`
 
 ```text
 Man in his late fifties, gravelly low voice, general American. Plain-spoken and a bit gruff, then friendly; short phrases, a smile you can hear when he relaxes.
-```
-
-**Sample context (for every Bill line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Bill is the man whose roof gutter keeps filling with leaves. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -1524,7 +1641,7 @@ watermark, no logos, no speech bubbles containing writing.
 Head-and-shoulders character portrait for a profile picture. white American man, 58, grey hair and grey beard, forest-green fleece jacket, khaki trousers (as in the existing strip). Bill is the man whose roof gutter keeps filling with leaves. Friendly, natural expression, looking slightly off to one side as if listening. Plain warm cream background with a soft forest-green vignette, no setting. Face and shoulders fill the square, centred, head fully in frame with a little space above. Same character design as the attached panel 1. No text, no logos, no watermarks.
 ```
 
-### Mike — `scene/cast/mike.jpg`
+### Mike — speaker `Mike` · `scene/cast/mike.jpg`
 
 **Voice** Sadachbia (Lively)
 
@@ -1532,15 +1649,6 @@ Head-and-shoulders character portrait for a profile picture. white American man,
 
 ```text
 Man in his forties, lively warm tenor, general American. Open and easy, quick to agree, a friendly bounce in his rhythm.
-```
-
-**Sample context (for every Mike line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Mike is the neighbour with the maple tree. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -1578,7 +1686,7 @@ caricature. Plain uncluttered backgrounds with just enough detail to place
 the scene. Absolutely no text, no lettering, no signage with words, no
 watermark, no logos, no speech bubbles containing writing.
 
-Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the setting and style.
+Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the people, setting and style.
 Characters: Bill: white American man, 58, grey hair and grey beard, forest-green fleece jacket, khaki trousers (as in the existing strip). Mike: white American man, 47, dark greying hair, navy puffer vest over a plaid shirt, jeans (as in the existing strip).
 Autumn. Bill stands in his garden, hands on hips, frowning up at his roof gutter, which is overflowing with orange maple leaves. The neighbour's big maple tree leans over the fence.
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
@@ -1689,22 +1797,64 @@ Next morning. Bill carries out his rubbish bin; Mike, backing out of his drivewa
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
 ```
 
-### Lines
+### Takes
 
-| File | Speaker | Voice | Style | Transcript (verbatim) |
-|---|---|---|---|---|
-| `the-neighbours-tree-01.mp3` | Narrator | narrator | narrator style | It's autumn in Portland. Leaves from the neighbour's big maple tree keep falling into Bill's roof gutter. |
-| `the-neighbours-tree-02.mp3` | Bill | Algenib | tired, grumbling to himself | &lt;groan&gt; Again? That's the third time this week. |
-| `the-neighbours-tree-03.mp3` | Narrator | narrator | narrator style | Bill walks next door and knocks. |
-| `the-neighbours-tree-04.mp3` | Mike | Sadachbia | surprised and friendly | Oh, hey, Bill! What's up? |
-| `the-neighbours-tree-05.mp3` | Bill | Algenib | friendly and direct, with a small smile | Hey, Mike. So... your maple's filling my gutter. Can we figure something out? |
-| `the-neighbours-tree-06.mp3` | Mike | Sadachbia | apologetic, then helpful | Oh, man, I'm sorry. I didn't know. What if I cut back those big branches over your roof? |
-| `the-neighbours-tree-07.mp3` | Bill | Algenib | relieved and practical | That'd be great. And I'll clean the gutter one more time. Deal? |
-| `the-neighbours-tree-08.mp3` | Mike | Sadachbia | warm, decided | Deal. |
-| `the-neighbours-tree-09.mp3` | Narrator | narrator | narrator style | They talk for four minutes. They shake hands. And that's it. |
-| `the-neighbours-tree-10.mp3` | Narrator | narrator | narrator style | The next morning, neither man says anything about the tree. They just wave. |
-| `the-neighbours-tree-11.mp3` | Mike | Sadachbia | cheerful, calling from a car window | Morning, Bill! |
-| `the-neighbours-tree-12.mp3` | Bill | Algenib | friendly, calling back | Morning! |
+In order. Dialogue takes are one conversational call with both speakers —
+`Bill` (Algenib) and `Mike` (Sadachbia).
+
+**`the-neighbours-tree-s01`** · narration · panel 1 · Sulafat
+
+```text
+It's autumn in Portland. Leaves from the neighbour's big maple tree keep falling into Bill's roof gutter.
+```
+
+**`the-neighbours-tree-s02`** · dialogue · room **yard** · panel 1
+
+*Sample context:* Bill speaking to Mike. Bill is the man whose roof gutter keeps filling with leaves; Mike is the neighbour with the maple tree. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Bill | tired, grumbling to himself | &lt;groan&gt; Again? That's the third time this week. |
+
+**`the-neighbours-tree-s03`** · narration · panel 2 · Sulafat
+
+```text
+Bill walks next door and knocks.
+```
+
+**`the-neighbours-tree-s04`** · dialogue · room **door** · panel 3
+
+*Sample context:* A short, natural exchange between Bill and Mike. Bill is the man whose roof gutter keeps filling with leaves; Mike is the neighbour with the maple tree. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Mike | surprised and friendly | Oh, hey, Bill! What's up? |
+| Bill | friendly and direct, with a small smile | Hey, Mike. So... your maple's filling my gutter. Can we figure something out? |
+
+**`the-neighbours-tree-s05`** · dialogue · room **yard** · panels 4, 5
+
+*Sample context:* A short, natural exchange between Bill and Mike. Bill is the man whose roof gutter keeps filling with leaves; Mike is the neighbour with the maple tree. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Mike | apologetic, then helpful | Oh, man, I'm sorry. I didn't know. What if I cut back those big branches over your roof? |
+| Bill | relieved and practical | That'd be great. And I'll clean the gutter one more time. Deal? |
+| Mike | warm, decided | Deal. |
+
+**`the-neighbours-tree-s06`** · narration · panels 5, 6 · Sulafat
+
+```text
+They talk for four minutes. They shake hands. And that's it. The next morning, neither man says anything about the tree. They just wave.
+```
+
+**`the-neighbours-tree-s07`** · dialogue · room **yard** · panel 6
+
+*Sample context:* A short, natural exchange between Bill and Mike. Bill is the man whose roof gutter keeps filling with leaves; Mike is the neighbour with the maple tree. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Mike | cheerful, calling from a car window | Morning, Bill! |
+| Bill | friendly, calling back | Morning! |
 
 ---
 
@@ -1718,16 +1868,16 @@ Square 1:1. Keep the bottom-left corner free of important detail. No words anywh
 
 ### Rooms (the *Scene* field)
 
-**pharmacy** — used by panels 1, 2, 3, 4, 5, 6
+**pharmacy** — panels 1, 2, 3, 4, 5, 6
 
 ```text
 A busy neighbourhood pharmacy in Philadelphia on a weekday afternoon. Eight people queue at one counter.
 Room tone: bright shop hum, fluorescent buzz, a till beeping, the automatic door sliding.
 ```
 
-Room-tone bed: `fluoro -40 dB` · `air -40 dB` · `babble -38 dB` · `door -46 dB`
+Room tone the assembler lays under dialogue in this room: `fluoro -40 dB` · `air -40 dB` · `babble -38 dB` · `door -46 dB`
 
-### Brad — `scene/cast/brad.jpg`
+### Brad — speaker `Brad` · `scene/cast/brad.jpg`
 
 **Voice** Orus (Firm)
 
@@ -1735,15 +1885,6 @@ Room-tone bed: `fluoro -40 dB` · `air -40 dB` · `babble -38 dB` · `door -46 d
 
 ```text
 Man in his early forties, firm quick baritone, general American. Brisk and a little impatient, polite words said fast, voice drops flat when he is let down.
-```
-
-**Sample context (for every Brad line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Brad is a man in a hurry. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -1762,7 +1903,7 @@ watermark, no logos, no speech bubbles containing writing.
 Head-and-shoulders character portrait for a profile picture. white American man, 41, brown hair, navy suit, phone in hand (as in the existing strip). Brad is a man in a hurry. Friendly, natural expression, looking slightly off to one side as if listening. Plain warm cream background with a soft forest-green vignette, no setting. Face and shoulders fill the square, centred, head fully in frame with a little space above. Same character design as the attached panel 1. No text, no logos, no watermarks.
 ```
 
-### Carla — `scene/cast/carla.jpg`
+### Carla — speaker `Carla` · `scene/cast/carla.jpg`
 
 **Voice** Pulcherrima (Forward)
 
@@ -1770,15 +1911,6 @@ Head-and-shoulders character portrait for a profile picture. white American man,
 
 ```text
 Woman in her forties, clear forward alto, general American. Warm and smiling, completely steady; friendly tone, firm words, never raises her voice.
-```
-
-**Sample context (for every Carla line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Carla is the pharmacist. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -1816,7 +1948,7 @@ caricature. Plain uncluttered backgrounds with just enough detail to place
 the scene. Absolutely no text, no lettering, no signage with words, no
 watermark, no logos, no speech bubbles containing writing.
 
-Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the setting and style.
+Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the people, setting and style.
 Characters: Brad: white American man, 41, brown hair, navy suit, phone in hand (as in the existing strip). Carla: Black American woman, 45, hair pulled back in a neat bun, white pharmacist coat (as in the existing strip).
 Inside a pharmacy. Eight people wait in one straight line to the counter: an older woman, a mother with a small child, a student with headphones, others. Carla serves at the counter.
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
@@ -1927,20 +2059,54 @@ Brad stands at the very back behind the mother and child, looking at his phone. 
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
 ```
 
-### Lines
+### Takes
 
-| File | Speaker | Voice | Style | Transcript (verbatim) |
-|---|---|---|---|---|
-| `back-of-the-line-01.mp3` | Narrator | narrator | narrator style | It's a busy afternoon at a pharmacy in Philadelphia. Eight people are waiting in one straight line. |
-| `back-of-the-line-02.mp3` | Narrator | narrator | narrator style | A man in a suit walks in. He looks at his watch. He is in a hurry. |
-| `back-of-the-line-03.mp3` | Brad | Orus | rushed, polite on the surface, moving fast | Excuse me... sorry... excuse me. |
-| `back-of-the-line-04.mp3` | Narrator | narrator | narrator style | He walks past everyone, straight to the front. |
-| `back-of-the-line-05.mp3` | Brad | Orus | charming and quick, sure it will work | Hi. I just have one quick question. It'll only take ten seconds. |
-| `back-of-the-line-06.mp3` | Carla | Pulcherrima | warm and smiling, completely firm | Sure, I'm happy to help. The line starts back there. |
-| `back-of-the-line-07.mp3` | Brad | Orus | deflated, flat | Oh. Right. Okay. |
-| `back-of-the-line-08.mp3` | Narrator | narrator | narrator style | He walks to the back of the line. Nobody looks angry. |
-| `back-of-the-line-09.mp3` | Narrator | narrator | narrator style | And nobody says, "You can go first." |
-| `back-of-the-line-10.mp3` | Carla | Pulcherrima | bright and friendly, calling down the line | Next, please! |
+In order. Dialogue takes are one conversational call with both speakers —
+`Brad` (Orus) and `Carla` (Pulcherrima).
+
+**`back-of-the-line-s01`** · narration · panels 1, 2 · Sulafat
+
+```text
+It's a busy afternoon at a pharmacy in Philadelphia. Eight people are waiting in one straight line. A man in a suit walks in. He looks at his watch. He is in a hurry.
+```
+
+**`back-of-the-line-s02`** · dialogue · room **pharmacy** · panel 2
+
+*Sample context:* Brad speaking to Carla. Brad is a man in a hurry; Carla is the pharmacist. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Brad | rushed, polite on the surface, moving fast | Excuse me... sorry... excuse me. |
+
+**`back-of-the-line-s03`** · narration · panel 3 · Sulafat
+
+```text
+He walks past everyone, straight to the front.
+```
+
+**`back-of-the-line-s04`** · dialogue · room **pharmacy** · panels 3, 4
+
+*Sample context:* A short, natural exchange between Brad and Carla. Brad is a man in a hurry; Carla is the pharmacist. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Brad | charming and quick, sure it will work | Hi. I just have one quick question. It'll only take ten seconds. |
+| Carla | warm and smiling, completely firm | Sure, I'm happy to help. The line starts back there. |
+| Brad | deflated, flat | Oh. Right. Okay. |
+
+**`back-of-the-line-s05`** · narration · panels 5, 6 · Sulafat
+
+```text
+He walks to the back of the line. Nobody looks angry. And nobody says, "You can go first."
+```
+
+**`back-of-the-line-s06`** · dialogue · room **pharmacy** · panel 6
+
+*Sample context:* Carla speaking to Brad. Brad is a man in a hurry; Carla is the pharmacist. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Carla | bright and friendly, calling down the line | Next, please! |
 
 ---
 
@@ -1954,50 +2120,43 @@ Square 1:1. Keep the bottom-left corner free of important detail. No words anywh
 
 ### Rooms (the *Scene* field)
 
-**waiting** — used by panels 1
+**waiting** — panels 1
 
 ```text
 A quiet corridor outside an interview room at a company in Atlanta. Two chairs against the wall.
 Room tone: soft air conditioning, a distant phone ringing once, muffled voices behind a door.
 ```
 
-Room-tone bed: `air -38 dB` · `fan -44 dB` · `presence -44 dB`
+Room tone the assembler lays under dialogue in this room: `air -38 dB` · `fan -44 dB` · `presence -52 dB`
 
-**interview** — used by panels 2, 3, 4
+**interview** — panels 2, 3, 4
 
 ```text
 A small bright office, one interviewer behind a wooden desk.
 Room tone: very quiet office, a pen tapping once.
 ```
 
-Room-tone bed: `air -42 dB` · `presence -44 dB`
+Room tone the assembler lays under dialogue in this room: `air -42 dB` · `presence -52 dB`
 
-**home** — used by panels 5, 6
+**home** — panels 5, 6
 
 ```text
 Two different places a week later — a dorm room, a library.
 Room tone: near silence, a laptop fan.
 ```
 
-Room-tone bed: `air -40 dB` · `babble -34 dB` · `dish -40 dB`
+Room tone the assembler lays under dialogue in this room: `air -40 dB` · `babble -34 dB` · `dish -40 dB`
 
-### Arif — `scene/cast/arif.jpg`
+### Arif — speaker `Arif` · `scene/cast/arif.jpg`
 
-**Voice** Extended Voice Library — English, South Asian (Bangladeshi or Indian) accent, male, young adult, gentle · fallback Iapetus
+**Voice** Iapetus (Clear)
+
+**Accent note** (added to the style of every Arif line): `light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, sentences that fall softly at the end`
 
 **Audio profile**
 
 ```text
 Young man, gentle and modest light baritone with a Bangladeshi accent. Speaks softly, lets his voice fall at the end of sentences, downplays everything.
-```
-
-**Sample context (for every Arif line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Arif is a final-year student from Rajshahi applying for a summer internship. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -2016,7 +2175,7 @@ watermark, no logos, no speech bubbles containing writing.
 Head-and-shoulders character portrait for a profile picture. Bangladeshi man, 22, thick black hair, green button-down shirt (as in the existing strip). Arif is a final-year student from Rajshahi applying for a summer internship. Friendly, natural expression, looking slightly off to one side as if listening. Plain warm cream background with a soft forest-green vignette, no setting. Face and shoulders fill the square, centred, head fully in frame with a little space above. Same character design as the attached panel 1. No text, no logos, no watermarks.
 ```
 
-### Tyler — `scene/cast/tyler.jpg`
+### Tyler — speaker `Tyler` · `scene/cast/tyler.jpg`
 
 **Voice** Puck (Upbeat)
 
@@ -2024,15 +2183,6 @@ Head-and-shoulders character portrait for a profile picture. Bangladeshi man, 22
 
 ```text
 Young man, upbeat and bright tenor, general American. Confident and fluent, strong stress on numbers and on "I", sounds pleased with himself in a friendly way.
-```
-
-**Sample context (for every Tyler line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Tyler is an American student applying for the same internship. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -2070,7 +2220,7 @@ caricature. Plain uncluttered backgrounds with just enough detail to place
 the scene. Absolutely no text, no lettering, no signage with words, no
 watermark, no logos, no speech bubbles containing writing.
 
-Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the setting and style.
+Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the people, setting and style.
 Characters: Arif: Bangladeshi man, 22, thick black hair, green button-down shirt (as in the existing strip). Tyler: white American man, 22, short brown hair, light-blue button-down shirt, confident posture (as in the existing strip).
 A corridor outside an interview room. Arif and Tyler sit on two chairs, both in formal clothes with folders. Tyler leans back, relaxed, and smiles at her. Arif sits stiffly, nervous.
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
@@ -2181,21 +2331,68 @@ Arif at a library desk reads an email on his laptop. His face falls, disappointe
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
 ```
 
-### Lines
+### Takes
 
-| File | Speaker | Voice | Style | Transcript (verbatim) |
-|---|---|---|---|---|
-| `tell-them-what-you-did-01.mp3` | Narrator | narrator | narrator style | Arif and Tyler are students in Atlanta. They are waiting for the same internship interview. |
-| `tell-them-what-you-did-02.mp3` | Tyler | Puck | relaxed and friendly | Nervous? Don't be. Just tell them what you did. |
-| `tell-them-what-you-did-03.mp3` | Arif | EVL · Iapetus | uncertain, quiet | Tell them what I did? Okay... |
-| `tell-them-what-you-did-04.mp3` | Narrator | narrator | narrator style | The interviewer asks each of them the same question: "Tell us about your biggest achievement." |
-| `tell-them-what-you-did-05.mp3` | Tyler | Puck | confident and bright, proud | Sure. Last year I led a team of five, and we grew our club's membership by forty percent. I'm really proud of that. |
-| `tell-them-what-you-did-06.mp3` | Arif | EVL · Iapetus | modest and soft, eyes down | Oh... I helped a little with a charity project. But really, it was the team's work. |
-| `tell-them-what-you-did-07.mp3` | Narrator | narrator | narrator style | But Arif did much more than help. He planned the whole project. He found thirty volunteers and raised money for two hundred families. |
-| `tell-them-what-you-did-08.mp3` | Narrator | narrator | narrator style | One week later, the email arrives. |
-| `tell-them-what-you-did-09.mp3` | Tyler | Puck | excited, a burst of joy | Yes! I got it! |
-| `tell-them-what-you-did-10.mp3` | Narrator | narrator | narrator style | Arif reads his email too. It says, "Thank you for your interest." |
-| `tell-them-what-you-did-11.mp3` | Arif | EVL · Iapetus | quiet and disappointed | &lt;sigh&gt; But I did so much... |
+In order. Dialogue takes are one conversational call with both speakers —
+`Arif` (Iapetus) and `Tyler` (Puck).
+
+**`tell-them-what-you-did-s01`** · narration · panel 1 · Sulafat
+
+```text
+Arif and Tyler are students in Atlanta. They are waiting for the same internship interview.
+```
+
+**`tell-them-what-you-did-s02`** · dialogue · room **waiting** · panel 1
+
+*Sample context:* A short, natural exchange between Arif and Tyler. Arif is a final-year student from Rajshahi applying for a summer internship; Tyler is an American student applying for the same internship. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Tyler | relaxed and friendly | Nervous? Don't be. Just tell them what you did. |
+| Arif | uncertain, quiet; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, sentences that fall softly at the end | Tell them what I did? Okay... |
+
+**`tell-them-what-you-did-s03`** · narration · panel 2 · Sulafat
+
+```text
+The interviewer asks each of them the same question: "Tell us about your biggest achievement."
+```
+
+**`tell-them-what-you-did-s04`** · dialogue · room **interview** · panels 2, 3
+
+*Sample context:* A short, natural exchange between Arif and Tyler. Arif is a final-year student from Rajshahi applying for a summer internship; Tyler is an American student applying for the same internship. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Tyler | confident and bright, proud | Sure. Last year I led a team of five, and we grew our club's membership by forty percent. I'm really proud of that. |
+| Arif | modest and soft, eyes down; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, sentences that fall softly at the end | Oh... I helped a little with a charity project. But really, it was the team's work. |
+
+**`tell-them-what-you-did-s05`** · narration · panels 4, 5 · Sulafat
+
+```text
+But Arif did much more than help. He planned the whole project. He found thirty volunteers and raised money for two hundred families. One week later, the email arrives.
+```
+
+**`tell-them-what-you-did-s06`** · dialogue · room **home** · panel 5
+
+*Sample context:* Tyler speaking to Arif. Arif is a final-year student from Rajshahi applying for a summer internship; Tyler is an American student applying for the same internship. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Tyler | excited, a burst of joy | Yes! I got it! |
+
+**`tell-them-what-you-did-s07`** · narration · panel 6 · Sulafat
+
+```text
+Arif reads his email too. It says, "Thank you for your interest."
+```
+
+**`tell-them-what-you-did-s08`** · dialogue · room **home** · panel 6
+
+*Sample context:* Arif speaking to Tyler. Arif is a final-year student from Rajshahi applying for a summer internship; Tyler is an American student applying for the same internship. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Arif | quiet and disappointed; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, sentences that fall softly at the end | &lt;sigh&gt; But I did so much... |
 
 ---
 
@@ -2209,25 +2406,25 @@ Square 1:1. Keep the bottom-left corner free of important detail. No words anywh
 
 ### Rooms (the *Scene* field)
 
-**library** — used by panels 1, 2, 3, 4, 5
+**library** — panels 1, 2, 3, 4, 5
 
 ```text
 A group study room in a university library in Sacramento, morning. Four students round a table with laptops.
 Room tone: hushed library air, a laptop fan, a book trolley rolling past outside the glass.
 ```
 
-Room-tone bed: `air -40 dB` · `fan -46 dB` · `presence -44 dB`
+Room tone the assembler lays under dialogue in this room: `air -40 dB` · `fan -46 dB` · `presence -52 dB`
 
-**exit** — used by panels 6
+**exit** — panels 6
 
 ```text
 A busy campus café.
 Room tone: coffee machine hiss, cups on saucers, cheerful chatter.
 ```
 
-Room-tone bed: `air -38 dB` · `babble -38 dB` · `door -44 dB`
+Room tone the assembler lays under dialogue in this room: `babble -34 dB` · `dish -40 dB` · `air -42 dB`
 
-### Hannah — `scene/cast/hannah.jpg`
+### Hannah — speaker `Hannah` · `scene/cast/hannah.jpg`
 
 **Voice** Kore (Firm) · **same voice as** `audio/honestly-im-annoyed-1.mp3`
 
@@ -2235,15 +2432,6 @@ Room-tone bed: `air -38 dB` · `babble -38 dB` · `door -44 dB`
 
 ```text
 Young woman, firm clear alto, general American. Calm and direct even when upset, no shouting; warmth comes back fast into her voice once it is said.
-```
-
-**Sample context (for every Hannah line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Hannah is an engineering student who stayed up to finish Ethan's part — the same Hannah the class interviews in step 3. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -2262,7 +2450,7 @@ watermark, no logos, no speech bubbles containing writing.
 Head-and-shoulders character portrait for a profile picture. white American woman, 23, light-brown hair in a messy bun, forest-green sweater, tired eyes (as in the existing strip) (match the face in the attached portrait from portraits/honestly-im-annoyed-1.jpg). Hannah is an engineering student who stayed up to finish Ethan's part — the same Hannah the class interviews in step 3. Friendly, natural expression, looking slightly off to one side as if listening. Plain warm cream background with a soft forest-green vignette, no setting. Face and shoulders fill the square, centred, head fully in frame with a little space above. Same character design as the attached panel 1. No text, no logos, no watermarks.
 ```
 
-### Ethan — `scene/cast/ethan.jpg`
+### Ethan — speaker `Ethan` · `scene/cast/ethan.jpg`
 
 **Voice** Zephyr (Bright) · **same voice as** `audio/honestly-im-annoyed-2.mp3`
 
@@ -2270,15 +2458,6 @@ Head-and-shoulders character portrait for a profile picture. white American woma
 
 ```text
 Young man, bright light tenor, general American. Cheerful and quick, drops into a sincere lower tone when he apologises, laughs easily.
-```
-
-**Sample context (for every Ethan line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Ethan is the classmate who forgot his part — the same Ethan the class interviews in step 3. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -2316,7 +2495,7 @@ caricature. Plain uncluttered backgrounds with just enough detail to place
 the scene. Absolutely no text, no lettering, no signage with words, no
 watermark, no logos, no speech bubbles containing writing.
 
-Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the setting and style.
+Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the people, setting and style.
 Characters: Hannah: white American woman, 23, light-brown hair in a messy bun, forest-green sweater, tired eyes (as in the existing strip). Ethan: white American man, 22, shaggy blond hair, navy hoodie (as in the existing strip).
 A library study table by a window. Mahin, a Bangladeshi student in a checked shirt, sits with Hannah, who looks exhausted, at a table of laptops and books. Ethan arrives cheerfully and sits down.
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
@@ -2427,22 +2606,51 @@ A café table: Hannah and Ethan sit with takeaway coffees, laughing together. At
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
 ```
 
-### Lines
+### Takes
 
-| File | Speaker | Voice | Style | Transcript (verbatim) |
-|---|---|---|---|---|
-| `honestly-im-annoyed-01.mp3` | Narrator | narrator | narrator style | Mahin is from Dhaka. He is doing a group project in the library with three American classmates. |
-| `honestly-im-annoyed-02.mp3` | Narrator | narrator | narrator style | Last night, Ethan forgot to finish his part. So Hannah stayed up until two in the morning to do it. |
-| `honestly-im-annoyed-03.mp3` | Ethan | Zephyr | cheerful, completely unaware | Morning, guys! Oh, did anyone finish the slides? |
-| `honestly-im-annoyed-04.mp3` | Hannah | Kore | calm but clearly upset, direct | Honestly, Ethan, I'm annoyed. I did your part last night. I was up until two. |
-| `honestly-im-annoyed-05.mp3` | Ethan | Zephyr | taken aback, then sincere | Oh no. You're right. I totally forgot. I'm really sorry, Hannah. |
-| `honestly-im-annoyed-06.mp3` | Hannah | Kore | softening, sincere | Okay. Thank you for saying that. |
-| `honestly-im-annoyed-07.mp3` | Narrator | narrator | narrator style | Mahin looks down at the table. In Dhaka, a friendship could end right here. |
-| `honestly-im-annoyed-08.mp3` | Narrator | narrator | narrator style | But ten minutes later... |
-| `honestly-im-annoyed-09.mp3` | Ethan | Zephyr | laughing, delighted | &lt;laugh&gt; Wait, did you really put a cat on slide nine? |
-| `honestly-im-annoyed-10.mp3` | Hannah | Kore | laughing, playful | It was two in the morning! I needed a cat. |
-| `honestly-im-annoyed-11.mp3` | Ethan | Zephyr | warm and friendly | Coffee? It's on me. I owe you. |
-| `honestly-im-annoyed-12.mp3` | Hannah | Kore | teasing, smiling | You definitely owe me. |
+In order. Dialogue takes are one conversational call with both speakers —
+`Hannah` (Kore) and `Ethan` (Zephyr).
+
+**`honestly-im-annoyed-s01`** · narration · panel 1 · Sulafat
+
+```text
+Mahin is from Dhaka. He is doing a group project in the library with three American classmates. Last night, Ethan forgot to finish his part. So Hannah stayed up until two in the morning to do it.
+```
+
+**`honestly-im-annoyed-s02`** · dialogue · room **library** · panels 1, 2, 3
+
+*Sample context:* A short, natural exchange between Hannah and Ethan. Hannah is an engineering student who stayed up to finish Ethan's part — the same Hannah the class interviews in step 3; Ethan is the classmate who forgot his part — the same Ethan the class interviews in step 3. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Ethan | cheerful, completely unaware | Morning, guys! Oh, did anyone finish the slides? |
+| Hannah | calm but clearly upset, direct | Honestly, Ethan, I'm annoyed. I did your part last night. I was up until two. |
+| Ethan | taken aback, then sincere | Oh no. You're right. I totally forgot. I'm really sorry, Hannah. |
+| Hannah | softening, sincere | Okay. Thank you for saying that. |
+
+**`honestly-im-annoyed-s03`** · narration · panels 4, 5 · Sulafat
+
+```text
+Mahin looks down at the table. In Dhaka, a friendship could end right here. But ten minutes later...
+```
+
+**`honestly-im-annoyed-s04`** · dialogue · room **library** · panel 5
+
+*Sample context:* A short, natural exchange between Hannah and Ethan. Hannah is an engineering student who stayed up to finish Ethan's part — the same Hannah the class interviews in step 3; Ethan is the classmate who forgot his part — the same Ethan the class interviews in step 3. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Ethan | laughing, delighted | &lt;laugh&gt; Wait, did you really put a cat on slide nine? |
+| Hannah | laughing, playful | It was two in the morning! I needed a cat. |
+
+**`honestly-im-annoyed-s05`** · dialogue · room **exit** · panel 6
+
+*Sample context:* A short, natural exchange between Hannah and Ethan. Hannah is an engineering student who stayed up to finish Ethan's part — the same Hannah the class interviews in step 3; Ethan is the classmate who forgot his part — the same Ethan the class interviews in step 3. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Ethan | warm and friendly | Coffee? It's on me. I owe you. |
+| Hannah | teasing, smiling | You definitely owe me. |
 
 ---
 
@@ -2456,32 +2664,25 @@ Square 1:1. Keep the bottom-left corner free of important detail. No words anywh
 
 ### Rooms (the *Scene* field)
 
-**garden** — used by panels 1, 2, 3, 4, 5, 6
+**garden** — panels 1, 2, 3, 4, 5, 6
 
 ```text
 A sunny back garden in Asheville, North Carolina, on a summer morning: vegetable beds, a wooden shed, woods behind.
 Room tone: birdsong, insects buzzing, leaves moving in a light breeze.
 ```
 
-Room-tone bed: `birds -36 dB` · `wind -40 dB` · `air -44 dB`
+Room tone the assembler lays under dialogue in this room: `birds -36 dB` · `wind -40 dB` · `air -44 dB`
 
-### Imran — `scene/cast/imran.jpg`
+### Imran — speaker `Imran` · `scene/cast/imran.jpg`
 
-**Voice** Extended Voice Library — English, South Asian (Bangladeshi or Indian) accent, male, young adult, energetic · fallback Enceladus
+**Voice** Enceladus (Breathy)
+
+**Accent note** (added to the style of every Imran line): `light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, questions that rise sharply`
 
 **Audio profile**
 
 ```text
 Young man, energetic mid-range voice with a Bangladeshi accent. Loud and fast when alarmed, rising pitch on questions, curious and thoughtful when calm.
-```
-
-**Sample context (for every Imran line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Imran is a student from Sylhet staying with an American family for the summer. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -2500,7 +2701,7 @@ watermark, no logos, no speech bubbles containing writing.
 Head-and-shoulders character portrait for a profile picture. Bangladeshi man, 21, short black hair, light stubble, navy hoodie, jeans (as in the existing strip). Imran is a student from Sylhet staying with an American family for the summer. Friendly, natural expression, looking slightly off to one side as if listening. Plain warm cream background with a soft forest-green vignette, no setting. Face and shoulders fill the square, centred, head fully in frame with a little space above. Same character design as the attached panel 1. No text, no logos, no watermarks.
 ```
 
-### Kathy — `scene/cast/kathy.jpg`
+### Kathy — speaker `Kathy` · `scene/cast/kathy.jpg`
 
 **Voice** Aoede (Breezy) · **same voice as** `audio/leave-the-snake-alone-1.mp3`
 
@@ -2508,15 +2709,6 @@ Head-and-shoulders character portrait for a profile picture. Bangladeshi man, 21
 
 ```text
 Woman in her late forties, breezy warm alto with a soft Southern ease. Unhurried, amused, gently firm; fond when she talks about animals.
-```
-
-**Sample context (for every Kathy line)**
-
-```text
-One line from a short scripted scene for Bangladeshi students learning English
-at B1 level. Kathy is the host mother — the same Kathy the class interviews in step 3. The line is part of a natural conversation,
-spoken to another person in the room — not narration, not a performance for an
-audience. Clear and a little slower than native speed, with real feeling.
 ```
 
 **Portrait prompt**
@@ -2554,7 +2746,7 @@ caricature. Plain uncluttered backgrounds with just enough detail to place
 the scene. Absolutely no text, no lettering, no signage with words, no
 watermark, no logos, no speech bubbles containing writing.
 
-Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the setting and style.
+Panel 1 of a six-panel wordless comic. Use the attached strip panel as a reference for the people, setting and style.
 Characters: Imran: Bangladeshi man, 21, short black hair, light stubble, navy hoodie, jeans (as in the existing strip). Kathy: white American woman, 48, brown hair tied back, tan gardening apron over an olive shirt, gardening gloves, jeans (as in the existing strip).
 A back garden with vegetable beds. Imran, holding a watering can, jumps back: a long black snake lies near the tomato plants.
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
@@ -2665,30 +2857,63 @@ Later. Imran walks through the garden and notices a dead tree still standing, wi
 Square 1:1. Keep the bottom-left corner free of important detail. No words anywhere.
 ```
 
-### Lines
+### Takes
 
-| File | Speaker | Voice | Style | Transcript (verbatim) |
-|---|---|---|---|---|
-| `leave-the-snake-alone-01.mp3` | Narrator | narrator | narrator style | Imran is a student from Sylhet. This summer, he is staying with an American family in North Carolina. |
-| `leave-the-snake-alone-02.mp3` | Narrator | narrator | narrator style | One morning, in the back garden, he sees a long black snake near the vegetables. |
-| `leave-the-snake-alone-03.mp3` | Imran | EVL · Enceladus | alarmed, loud and fast | A snake! Wait, I'll get a stick! |
-| `leave-the-snake-alone-04.mp3` | Kathy | Aoede | urgent but calm, the way you stop a child touching a hot stove | No, no, no! Imran, leave him. He lives here. |
-| `leave-the-snake-alone-05.mp3` | Imran | EVL · Enceladus | confused, rising pitch | He lives here? But... it's a snake! |
-| `leave-the-snake-alone-06.mp3` | Kathy | Aoede | relaxed and fond, then calling happily to the house | He's a black rat snake. He's not dangerous, and he eats the mice. Kids! Come and see! |
-| `leave-the-snake-alone-07.mp3` | Narrator | narrator | narrator style | The children come out. They watch the snake from a few steps away. |
-| `leave-the-snake-alone-08.mp3` | Narrator | narrator | narrator style | Slowly, the snake slides under the shed. |
-| `leave-the-snake-alone-09.mp3` | Kathy | Aoede | fond and amused, quietly | Bye, buddy. See you later. |
-| `leave-the-snake-alone-10.mp3` | Narrator | narrator | narrator style | Later, Imran notices other things. A dead tree is still standing. And one corner of the garden is growing wild. |
-| `leave-the-snake-alone-11.mp3` | Imran | EVL · Enceladus | puzzled and curious, slow | Nobody cuts it... on purpose? |
+In order. Dialogue takes are one conversational call with both speakers —
+`Imran` (Enceladus) and `Kathy` (Aoede).
+
+**`leave-the-snake-alone-s01`** · narration · panel 1 · Sulafat
+
+```text
+Imran is a student from Sylhet. This summer, he is staying with an American family in North Carolina. One morning, in the back garden, he sees a long black snake near the vegetables.
+```
+
+**`leave-the-snake-alone-s02`** · dialogue · room **garden** · panels 2, 3, 4
+
+*Sample context:* A short, natural exchange between Imran and Kathy. Imran is a student from Sylhet staying with an American family for the summer; Kathy is the host mother — the same Kathy the class interviews in step 3. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Imran | alarmed, loud and fast; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, questions that rise sharply | A snake! Wait, I'll get a stick! |
+| Kathy | urgent but calm, the way you stop a child touching a hot stove | No, no, no! Imran, leave him. He lives here. |
+| Imran | confused, rising pitch; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, questions that rise sharply | He lives here? But... it's a snake! |
+| Kathy | relaxed and fond, then calling happily to the house | He's a black rat snake. He's not dangerous, and he eats the mice. Kids! Come and see! |
+
+**`leave-the-snake-alone-s03`** · narration · panels 4, 5 · Sulafat
+
+```text
+The children come out. They watch the snake from a few steps away. Slowly, the snake slides under the shed.
+```
+
+**`leave-the-snake-alone-s04`** · dialogue · room **garden** · panel 5
+
+*Sample context:* Kathy speaking to Imran. Imran is a student from Sylhet staying with an American family for the summer; Kathy is the host mother — the same Kathy the class interviews in step 3. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Kathy | fond and amused, quietly | Bye, buddy. See you later. |
+
+**`leave-the-snake-alone-s05`** · narration · panel 6 · Sulafat
+
+```text
+Later, Imran notices other things. A dead tree is still standing. And one corner of the garden is growing wild.
+```
+
+**`leave-the-snake-alone-s06`** · dialogue · room **garden** · panel 6
+
+*Sample context:* Imran speaking to Kathy. Imran is a student from Sylhet staying with an American family for the summer; Kathy is the host mother — the same Kathy the class interviews in step 3. One continuous moment — let each reply land on the line before it. Scripted scene for B1 learners: clear and a little slower than native speed, never theatrical.
+
+| Speaker | Style | Transcript (verbatim) |
+|---|---|---|
+| Imran | puzzled and curious, slow; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, questions that rise sharply | Nobody cuts it... on purpose? |
 
 ---
 
 ## Generation script
 
-Fill in `VOICES` first: the narrator's designed `voice_…` ID and the six
-Extended Voice Library names you picked. Everything else comes from
-`scenes.js`. It skips any line whose dry take already exists, so it can be
-re-run after fixing a few lines (delete those takes first).
+Everything comes from `scenes.js` — voices, styles (accent notes included) and
+transcripts. The script skips any take whose dry file already exists, so to redo
+a take, delete its file and run again.
 
 ```python
 # pip install google-genai
@@ -2700,318 +2925,228 @@ MODEL = "gemini-3.8-flash-tts"          # or gemini-3.8-flash-lite-tts for a dra
 DRY = pathlib.Path("ethnographic-interviews/scene/_dry-originals")
 DRY.mkdir(parents=True, exist_ok=True)
 
-VOICES = {
-    "NARRATOR":   "voice_...",            # the designed narrator voice (fallback: "Sulafat")
-    "EVL:tania": "Autonoe",   # Tania — replace with the chosen Extended Voice Library voice
-    "EVL:nusrat": "Leda",   # Nusrat — replace with the chosen Extended Voice Library voice
-    "EVL:tanvir": "Umbriel",   # Tanvir — replace with the chosen Extended Voice Library voice
-    "EVL:farhana": "Achernar",   # Farhana — replace with the chosen Extended Voice Library voice
-    "EVL:arif": "Iapetus",   # Arif — replace with the chosen Extended Voice Library voice
-    "EVL:imran": "Enceladus",   # Imran — replace with the chosen Extended Voice Library voice
-}
-
-LINES = json.loads(r'''
-[{"key":"dinner-ends-at-eight-01","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"This is Tania. She is from Rajshahi. Three weeks ago, she started a new job in Chicago.","room":null},
-{"key":"dinner-ends-at-eight-02","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"One evening, her phone buzzes. It's a voice message from Jeff, a colleague.","room":null},
-{"key":"dinner-ends-at-eight-03","who":"jeff","voice":"Achird","style":"friendly and casual, a recorded voice message, a little rushed","text":"Hi, Tania, it's Jeff! A few of us are having dinner at my place on Saturday. Want to come?","room":"sofa"},
-{"key":"dinner-ends-at-eight-04","who":"jeff","voice":"Achird","style":"cheerful and matter-of-fact, as if saying something completely normal","text":"Come at six. I'll have to push everyone out by eight, though. I've got an early start on Sunday.","room":"sofa"},
-{"key":"dinner-ends-at-eight-05","who":"tania","voice":"EVL:tania","style":"surprised, quietly repeating it to herself","text":"Push everyone out by eight? Oh... okay.","room":"sofa"},
-{"key":"dinner-ends-at-eight-06","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"On Saturday, Tania arrives at six o'clock exactly. She brings a box of sweets.","room":null},
-{"key":"dinner-ends-at-eight-07","who":"jeff","voice":"Achird","style":"delighted and welcoming","text":"Tania! Come in, come in. Oh, wow, are these for us? Thank you!","room":"home"},
-{"key":"dinner-ends-at-eight-08","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"The food is good. Everybody talks and laughs. Tania is having a great time.","room":null},
-{"key":"dinner-ends-at-eight-09","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Then, at five past eight, Jeff stands up.","room":null},
-{"key":"dinner-ends-at-eight-10","who":"jeff","voice":"Achird","style":"bright and grateful, raising his voice a little over the table","text":"Okay, everyone, that's eight o'clock! Thank you so much for coming. This was really fun.","room":"home"},
-{"key":"dinner-ends-at-eight-11","who":"tania","voice":"EVL:tania","style":"quiet, surprised, half to herself","text":"Oh... is it finished already?","room":"home"},
-{"key":"dinner-ends-at-eight-12","who":"jeff","voice":"Achird","style":"warm, a friendly goodbye","text":"Tania, thanks for the sweets. See you on Monday!","room":"home"},
-{"key":"dinner-ends-at-eight-13","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Everybody smiles. Everybody says goodbye. Nobody looks hurt.","room":null},
-{"key":"dinner-ends-at-eight-14","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Tania stands in the street. It is only a quarter past eight. In Rajshahi, a dinner party is just getting started.","room":null},
-{"key":"dinner-ends-at-eight-15","who":"tania","voice":"EVL:tania","style":"puzzled, thinking aloud, slow","text":"Eight o'clock... and nobody was upset?","room":"street"},
-{"key":"splitting-the-bill-01","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Nusrat is a student in Austin, Texas. Tonight she is having dinner with five friends from her class.","room":null},
-{"key":"splitting-the-bill-02","who":"jake","voice":"Fenrir","style":"proud and playful","text":"Didn't I tell you? Best tacos in Austin. I found this place last year.","room":"restaurant"},
-{"key":"splitting-the-bill-03","who":"nusrat","voice":"EVL:nusrat","style":"happy, full, warm","text":"You were right, Jake. It was delicious.","room":"restaurant"},
-{"key":"splitting-the-bill-04","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Then the waiter brings the bill. Just one bill, for six people.","room":null},
-{"key":"splitting-the-bill-05","who":"nusrat","voice":"EVL:nusrat","style":"teasing lightly, but half serious","text":"So, Jake... this was your idea. Are you paying tonight?","room":"restaurant"},
-{"key":"splitting-the-bill-06","who":"jake","voice":"Fenrir","style":"amused and relaxed","text":"<laugh> Me? No way! We'll just split it. Everybody pays for what they had.","room":"restaurant"},
-{"key":"splitting-the-bill-07","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Everybody takes out their phone. They look at the bill and do some math.","room":null},
-{"key":"splitting-the-bill-08","who":"jake","voice":"Fenrir","style":"reading numbers off his phone, easy-going","text":"Okay, I had the fish tacos and a soda. That's fourteen fifty, plus the tip.","room":"restaurant"},
-{"key":"splitting-the-bill-09","who":"nusrat","voice":"EVL:nusrat","style":"generous and a little urgent","text":"Wait, wait. Please, let me pay for everyone. It's no problem!","room":"restaurant"},
-{"key":"splitting-the-bill-10","who":"jake","voice":"Fenrir","style":"gentle and friendly, completely sure","text":"That's really nice, Nusrat, but no. Just pay for yours. Really, it's fine.","room":"restaurant"},
-{"key":"splitting-the-bill-11","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"One by one, everybody pays their own share. Nobody argues. Nobody reaches for the whole bill.","room":null},
-{"key":"splitting-the-bill-12","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Outside, Nusrat looks at her receipt. At home, the fight to pay is half the fun.","room":null},
-{"key":"splitting-the-bill-13","who":"nusrat","voice":"EVL:nusrat","style":"amused and puzzled, softly","text":"Nobody even tried to pay for me...","room":"street"},
-{"key":"disagreeing-in-the-meeting-01","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"It's Monday morning in Boston. Eight people are in a planning meeting. Richard, the director, is showing his new plan.","room":null},
-{"key":"disagreeing-in-the-meeting-02","who":"richard","voice":"Alnilam","style":"confident, wrapping up a presentation","text":"So that's the plan. We move all our deliveries to Tuesday, starting next month. Any thoughts?","room":"meeting"},
-{"key":"disagreeing-in-the-meeting-03","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Ryan is twenty-six. He has worked here for two years. He puts up his hand.","room":null},
-{"key":"disagreeing-in-the-meeting-04","who":"ryan","voice":"Algieba","style":"calm and polite, direct","text":"Honestly, I don't think that will work. Can I say why?","room":"meeting"},
-{"key":"disagreeing-in-the-meeting-05","who":"richard","voice":"Alnilam","style":"neutral, genuinely open","text":"Sure. Go ahead.","room":"meeting"},
-{"key":"disagreeing-in-the-meeting-06","who":"ryan","voice":"Algieba","style":"clear and organised, counting his points","text":"Okay. First, Tuesday is already our busiest day. Second, two of our drivers don't work on Tuesdays. And third, our biggest customer wants Monday deliveries.","room":"meeting"},
-{"key":"disagreeing-in-the-meeting-07","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"The room is quiet. Richard listens. He writes something down.","room":null},
-{"key":"disagreeing-in-the-meeting-08","who":"richard","voice":"Alnilam","style":"thoughtful, then appreciative","text":"Hmm. The drivers... I didn't know that. Good point. Thanks, Ryan.","room":"meeting"},
-{"key":"disagreeing-in-the-meeting-09","who":"ryan","voice":"Algieba","style":"relaxed, simple","text":"Sure.","room":"meeting"},
-{"key":"disagreeing-in-the-meeting-10","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"And the meeting goes on. Nobody looks embarrassed. Not Ryan, and not Richard.","room":null},
-{"key":"the-boss-stacks-chairs-01","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"The office party is over. Tanvir is a new intern. It is his first week.","room":null},
-{"key":"the-boss-stacks-chairs-02","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Then he sees Dave, the country director, the most senior person in the building. Dave is stacking chairs.","room":null},
-{"key":"the-boss-stacks-chairs-03","who":"tanvir","voice":"EVL:tanvir","style":"anxious and respectful, hurrying","text":"Sir! Sir, please, let me do that. You don't have to.","room":"hall"},
-{"key":"the-boss-stacks-chairs-04","who":"dave","voice":"Zubenelgenubi","style":"amused and kind, completely relaxed","text":"<laugh> Sir? Please, it's Dave. And it's fine, I've got these.","room":"hall"},
-{"key":"the-boss-stacks-chairs-05","who":"tanvir","voice":"EVL:tanvir","style":"hesitant, trying the first name for the first time","text":"Okay, s... Dave.","room":"hall"},
-{"key":"the-boss-stacks-chairs-06","who":"dave","voice":"Zubenelgenubi","style":"casual, practical","text":"Hey, can you grab that box? The car's just outside. I'll take the heavy one.","room":"lot"},
-{"key":"the-boss-stacks-chairs-07","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Together they carry the boxes out to the car.","room":null},
-{"key":"the-boss-stacks-chairs-08","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Later, the cleaning is almost finished. Dave goes into the kitchen.","room":null},
-{"key":"the-boss-stacks-chairs-09","who":"dave","voice":"Zubenelgenubi","style":"calling out cheerfully to the next room","text":"Who wants coffee? I'm making a pot.","room":"kitchen"},
-{"key":"the-boss-stacks-chairs-10","who":"dave","voice":"Zubenelgenubi","style":"friendly and offhand","text":"Here you go, Tanvir. The milk's in the fridge.","room":"kitchen"},
-{"key":"the-boss-stacks-chairs-11","who":"tanvir","voice":"EVL:tanvir","style":"quiet, amazed, grateful","text":"Thank you... Dave.","room":"kitchen"},
-{"key":"the-boss-stacks-chairs-12","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Tanvir holds the cup with both hands. The boss made him coffee.","room":null},
-{"key":"what-do-you-think-01","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Farhana is in her first class at a university in Michigan. The teacher, Dr. Novak, finishes reading a short story.","room":null},
-{"key":"what-do-you-think-02","who":"novak","voice":"Rasalgethi","style":"open and curious, relaxed","text":"So... what do you think?","room":"classroom"},
-{"key":"what-do-you-think-03","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Nobody speaks. Farhana looks down at her book.","room":null},
-{"key":"what-do-you-think-04","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Dr. Novak doesn't say anything. He just waits. Five seconds. Ten seconds.","room":null},
-{"key":"what-do-you-think-05","who":"novak","voice":"Rasalgethi","style":"patient and encouraging, unhurried","text":"It's okay. There's no right answer. I actually want to know your opinion.","room":"classroom"},
-{"key":"what-do-you-think-06","who":"farhana","voice":"EVL:farhana","style":"whispering to herself, unsure","text":"<whispers> My opinion? But he is the teacher...","room":"classroom"},
-{"key":"what-do-you-think-07","who":"novak","voice":"Rasalgethi","style":"gentle, inviting","text":"Farhana? You look like you have an idea.","room":"classroom"},
-{"key":"what-do-you-think-08","who":"farhana","voice":"EVL:farhana","style":"hesitant at first, then a little steadier","text":"Um... I think the father was wrong. He didn't listen to his son.","room":"classroom"},
-{"key":"what-do-you-think-09","who":"novak","voice":"Rasalgethi","style":"genuinely delighted and curious","text":"Interesting! Why do you think that? Tell me more.","room":"classroom"},
-{"key":"what-do-you-think-10","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"After class, Farhana reads the course plan. Twenty percent of the grade is for speaking in class.","room":null},
-{"key":"what-do-you-think-11","who":"farhana","voice":"EVL:farhana","style":"surprised, thinking aloud","text":"Twenty percent... just for talking?","room":"corridor"},
-{"key":"the-neighbours-tree-01","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"It's autumn in Portland. Leaves from the neighbour's big maple tree keep falling into Bill's roof gutter.","room":null},
-{"key":"the-neighbours-tree-02","who":"bill","voice":"Algenib","style":"tired, grumbling to himself","text":"<groan> Again? That's the third time this week.","room":"yard"},
-{"key":"the-neighbours-tree-03","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Bill walks next door and knocks.","room":null},
-{"key":"the-neighbours-tree-04","who":"mike","voice":"Sadachbia","style":"surprised and friendly","text":"Oh, hey, Bill! What's up?","room":"door"},
-{"key":"the-neighbours-tree-05","who":"bill","voice":"Algenib","style":"friendly and direct, with a small smile","text":"Hey, Mike. So... your maple's filling my gutter. Can we figure something out?","room":"door"},
-{"key":"the-neighbours-tree-06","who":"mike","voice":"Sadachbia","style":"apologetic, then helpful","text":"Oh, man, I'm sorry. I didn't know. What if I cut back those big branches over your roof?","room":"yard"},
-{"key":"the-neighbours-tree-07","who":"bill","voice":"Algenib","style":"relieved and practical","text":"That'd be great. And I'll clean the gutter one more time. Deal?","room":"yard"},
-{"key":"the-neighbours-tree-08","who":"mike","voice":"Sadachbia","style":"warm, decided","text":"Deal.","room":"yard"},
-{"key":"the-neighbours-tree-09","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"They talk for four minutes. They shake hands. And that's it.","room":null},
-{"key":"the-neighbours-tree-10","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"The next morning, neither man says anything about the tree. They just wave.","room":null},
-{"key":"the-neighbours-tree-11","who":"mike","voice":"Sadachbia","style":"cheerful, calling from a car window","text":"Morning, Bill!","room":"yard"},
-{"key":"the-neighbours-tree-12","who":"bill","voice":"Algenib","style":"friendly, calling back","text":"Morning!","room":"yard"},
-{"key":"back-of-the-line-01","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"It's a busy afternoon at a pharmacy in Philadelphia. Eight people are waiting in one straight line.","room":null},
-{"key":"back-of-the-line-02","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"A man in a suit walks in. He looks at his watch. He is in a hurry.","room":null},
-{"key":"back-of-the-line-03","who":"brad","voice":"Orus","style":"rushed, polite on the surface, moving fast","text":"Excuse me... sorry... excuse me.","room":"pharmacy"},
-{"key":"back-of-the-line-04","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"He walks past everyone, straight to the front.","room":null},
-{"key":"back-of-the-line-05","who":"brad","voice":"Orus","style":"charming and quick, sure it will work","text":"Hi. I just have one quick question. It'll only take ten seconds.","room":"pharmacy"},
-{"key":"back-of-the-line-06","who":"carla","voice":"Pulcherrima","style":"warm and smiling, completely firm","text":"Sure, I'm happy to help. The line starts back there.","room":"pharmacy"},
-{"key":"back-of-the-line-07","who":"brad","voice":"Orus","style":"deflated, flat","text":"Oh. Right. Okay.","room":"pharmacy"},
-{"key":"back-of-the-line-08","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"He walks to the back of the line. Nobody looks angry.","room":null},
-{"key":"back-of-the-line-09","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"And nobody says, \"You can go first.\"","room":null},
-{"key":"back-of-the-line-10","who":"carla","voice":"Pulcherrima","style":"bright and friendly, calling down the line","text":"Next, please!","room":"pharmacy"},
-{"key":"tell-them-what-you-did-01","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Arif and Tyler are students in Atlanta. They are waiting for the same internship interview.","room":null},
-{"key":"tell-them-what-you-did-02","who":"tyler","voice":"Puck","style":"relaxed and friendly","text":"Nervous? Don't be. Just tell them what you did.","room":"waiting"},
-{"key":"tell-them-what-you-did-03","who":"arif","voice":"EVL:arif","style":"uncertain, quiet","text":"Tell them what I did? Okay...","room":"waiting"},
-{"key":"tell-them-what-you-did-04","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"The interviewer asks each of them the same question: \"Tell us about your biggest achievement.\"","room":null},
-{"key":"tell-them-what-you-did-05","who":"tyler","voice":"Puck","style":"confident and bright, proud","text":"Sure. Last year I led a team of five, and we grew our club's membership by forty percent. I'm really proud of that.","room":"interview"},
-{"key":"tell-them-what-you-did-06","who":"arif","voice":"EVL:arif","style":"modest and soft, eyes down","text":"Oh... I helped a little with a charity project. But really, it was the team's work.","room":"interview"},
-{"key":"tell-them-what-you-did-07","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"But Arif did much more than help. He planned the whole project. He found thirty volunteers and raised money for two hundred families.","room":null},
-{"key":"tell-them-what-you-did-08","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"One week later, the email arrives.","room":null},
-{"key":"tell-them-what-you-did-09","who":"tyler","voice":"Puck","style":"excited, a burst of joy","text":"Yes! I got it!","room":"home"},
-{"key":"tell-them-what-you-did-10","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Arif reads his email too. It says, \"Thank you for your interest.\"","room":null},
-{"key":"tell-them-what-you-did-11","who":"arif","voice":"EVL:arif","style":"quiet and disappointed","text":"<sigh> But I did so much...","room":"home"},
-{"key":"honestly-im-annoyed-01","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Mahin is from Dhaka. He is doing a group project in the library with three American classmates.","room":null},
-{"key":"honestly-im-annoyed-02","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Last night, Ethan forgot to finish his part. So Hannah stayed up until two in the morning to do it.","room":null},
-{"key":"honestly-im-annoyed-03","who":"ethan","voice":"Zephyr","style":"cheerful, completely unaware","text":"Morning, guys! Oh, did anyone finish the slides?","room":"library"},
-{"key":"honestly-im-annoyed-04","who":"hannah","voice":"Kore","style":"calm but clearly upset, direct","text":"Honestly, Ethan, I'm annoyed. I did your part last night. I was up until two.","room":"library"},
-{"key":"honestly-im-annoyed-05","who":"ethan","voice":"Zephyr","style":"taken aback, then sincere","text":"Oh no. You're right. I totally forgot. I'm really sorry, Hannah.","room":"library"},
-{"key":"honestly-im-annoyed-06","who":"hannah","voice":"Kore","style":"softening, sincere","text":"Okay. Thank you for saying that.","room":"library"},
-{"key":"honestly-im-annoyed-07","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Mahin looks down at the table. In Dhaka, a friendship could end right here.","room":null},
-{"key":"honestly-im-annoyed-08","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"But ten minutes later...","room":null},
-{"key":"honestly-im-annoyed-09","who":"ethan","voice":"Zephyr","style":"laughing, delighted","text":"<laugh> Wait, did you really put a cat on slide nine?","room":"library"},
-{"key":"honestly-im-annoyed-10","who":"hannah","voice":"Kore","style":"laughing, playful","text":"It was two in the morning! I needed a cat.","room":"library"},
-{"key":"honestly-im-annoyed-11","who":"ethan","voice":"Zephyr","style":"warm and friendly","text":"Coffee? It's on me. I owe you.","room":"exit"},
-{"key":"honestly-im-annoyed-12","who":"hannah","voice":"Kore","style":"teasing, smiling","text":"You definitely owe me.","room":"exit"},
-{"key":"leave-the-snake-alone-01","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Imran is a student from Sylhet. This summer, he is staying with an American family in North Carolina.","room":null},
-{"key":"leave-the-snake-alone-02","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"One morning, in the back garden, he sees a long black snake near the vegetables.","room":null},
-{"key":"leave-the-snake-alone-03","who":"imran","voice":"EVL:imran","style":"alarmed, loud and fast","text":"A snake! Wait, I'll get a stick!","room":"garden"},
-{"key":"leave-the-snake-alone-04","who":"kathy","voice":"Aoede","style":"urgent but calm, the way you stop a child touching a hot stove","text":"No, no, no! Imran, leave him. He lives here.","room":"garden"},
-{"key":"leave-the-snake-alone-05","who":"imran","voice":"EVL:imran","style":"confused, rising pitch","text":"He lives here? But... it's a snake!","room":"garden"},
-{"key":"leave-the-snake-alone-06","who":"kathy","voice":"Aoede","style":"relaxed and fond, then calling happily to the house","text":"He's a black rat snake. He's not dangerous, and he eats the mice. Kids! Come and see!","room":"garden"},
-{"key":"leave-the-snake-alone-07","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"The children come out. They watch the snake from a few steps away.","room":null},
-{"key":"leave-the-snake-alone-08","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Slowly, the snake slides under the shed.","room":null},
-{"key":"leave-the-snake-alone-09","who":"kathy","voice":"Aoede","style":"fond and amused, quietly","text":"Bye, buddy. See you later.","room":"garden"},
-{"key":"leave-the-snake-alone-10","who":"narrator","voice":"NARRATOR","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Later, Imran notices other things. A dead tree is still standing. And one corner of the garden is growing wild.","room":null},
-{"key":"leave-the-snake-alone-11","who":"imran","voice":"EVL:imran","style":"puzzled and curious, slow","text":"Nobody cuts it... on purpose?","room":"garden"}]
+TAKES = json.loads(r'''
+[{"key":"dinner-ends-at-eight-s01","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"This is Tania. She is from Rajshahi. Three weeks ago, she started a new job in Chicago. One evening, her phone buzzes. It's a voice message from Jeff, a colleague."},
+{"key":"dinner-ends-at-eight-s02","kind":"dialogue","speakers":[{"speaker":"Tania","voice":"Autonoe"},{"speaker":"Jeff","voice":"Achird"}],"turns":[{"speaker":"Jeff","style":"friendly and casual, a recorded voice message, a little rushed","text":"Hi, Tania, it's Jeff! A few of us are having dinner at my place on Saturday. Want to come?"},{"speaker":"Jeff","style":"cheerful and matter-of-fact, as if saying something completely normal","text":"Come at six. I'll have to push everyone out by eight, though. I've got an early start on Sunday."},{"speaker":"Tania","style":"surprised, quietly repeating it to herself; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, a gentle rise at the end of statements","text":"Push everyone out by eight? Oh... okay."}]},
+{"key":"dinner-ends-at-eight-s03","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"On Saturday, Tania arrives at six o'clock exactly. She brings a box of sweets."},
+{"key":"dinner-ends-at-eight-s04","kind":"dialogue","speakers":[{"speaker":"Tania","voice":"Autonoe"},{"speaker":"Jeff","voice":"Achird"}],"turns":[{"speaker":"Jeff","style":"delighted and welcoming","text":"Tania! Come in, come in. Oh, wow, are these for us? Thank you!"}]},
+{"key":"dinner-ends-at-eight-s05","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"The food is good. Everybody talks and laughs. Tania is having a great time. Then, at five past eight, Jeff stands up."},
+{"key":"dinner-ends-at-eight-s06","kind":"dialogue","speakers":[{"speaker":"Tania","voice":"Autonoe"},{"speaker":"Jeff","voice":"Achird"}],"turns":[{"speaker":"Jeff","style":"bright and grateful, raising his voice a little over the table","text":"Okay, everyone, that's eight o'clock! Thank you so much for coming. This was really fun."},{"speaker":"Tania","style":"quiet, surprised, half to herself; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, a gentle rise at the end of statements","text":"Oh... is it finished already?"},{"speaker":"Jeff","style":"warm, a friendly goodbye","text":"Tania, thanks for the sweets. See you on Monday!"}]},
+{"key":"dinner-ends-at-eight-s07","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Everybody smiles. Everybody says goodbye. Nobody looks hurt. Tania stands in the street. It is only a quarter past eight. In Rajshahi, a dinner party is just getting started."},
+{"key":"dinner-ends-at-eight-s08","kind":"dialogue","speakers":[{"speaker":"Tania","voice":"Autonoe"},{"speaker":"Jeff","voice":"Achird"}],"turns":[{"speaker":"Tania","style":"puzzled, thinking aloud, slow; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, a gentle rise at the end of statements","text":"Eight o'clock... and nobody was upset?"}]},
+{"key":"splitting-the-bill-s01","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Nusrat is a student in Austin, Texas. Tonight she is having dinner with five friends from her class."},
+{"key":"splitting-the-bill-s02","kind":"dialogue","speakers":[{"speaker":"Nusrat","voice":"Leda"},{"speaker":"Jake","voice":"Fenrir"}],"turns":[{"speaker":"Jake","style":"proud and playful","text":"Didn't I tell you? Best tacos in Austin. I found this place last year."},{"speaker":"Nusrat","style":"happy, full, warm; light Bangladeshi accent: soft tapped r, dental t and d, quick even rhythm, warm open vowels","text":"You were right, Jake. It was delicious."}]},
+{"key":"splitting-the-bill-s03","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Then the waiter brings the bill. Just one bill, for six people."},
+{"key":"splitting-the-bill-s04","kind":"dialogue","speakers":[{"speaker":"Nusrat","voice":"Leda"},{"speaker":"Jake","voice":"Fenrir"}],"turns":[{"speaker":"Nusrat","style":"teasing lightly, but half serious; light Bangladeshi accent: soft tapped r, dental t and d, quick even rhythm, warm open vowels","text":"So, Jake... this was your idea. Are you paying tonight?"},{"speaker":"Jake","style":"amused and relaxed","text":"<laugh> Me? No way! We'll just split it. Everybody pays for what they had."}]},
+{"key":"splitting-the-bill-s05","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Everybody takes out their phone. They look at the bill and do some math."},
+{"key":"splitting-the-bill-s06","kind":"dialogue","speakers":[{"speaker":"Nusrat","voice":"Leda"},{"speaker":"Jake","voice":"Fenrir"}],"turns":[{"speaker":"Jake","style":"reading numbers off his phone, easy-going","text":"Okay, I had the fish tacos and a soda. That's fourteen fifty, plus the tip."},{"speaker":"Nusrat","style":"generous and a little urgent; light Bangladeshi accent: soft tapped r, dental t and d, quick even rhythm, warm open vowels","text":"Wait, wait. Please, let me pay for everyone. It's no problem!"},{"speaker":"Jake","style":"gentle and friendly, completely sure","text":"That's really nice, Nusrat, but no. Just pay for yours. Really, it's fine."}]},
+{"key":"splitting-the-bill-s07","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"One by one, everybody pays their own share. Nobody argues. Nobody reaches for the whole bill. Outside, Nusrat looks at her receipt. At home, the fight to pay is half the fun."},
+{"key":"splitting-the-bill-s08","kind":"dialogue","speakers":[{"speaker":"Nusrat","voice":"Leda"},{"speaker":"Jake","voice":"Fenrir"}],"turns":[{"speaker":"Nusrat","style":"amused and puzzled, softly; light Bangladeshi accent: soft tapped r, dental t and d, quick even rhythm, warm open vowels","text":"Nobody even tried to pay for me..."}]},
+{"key":"disagreeing-in-the-meeting-s01","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"It's Monday morning in Boston. Eight people are in a planning meeting. Richard, the director, is showing his new plan."},
+{"key":"disagreeing-in-the-meeting-s02","kind":"dialogue","speakers":[{"speaker":"Richard","voice":"Alnilam"},{"speaker":"Ryan","voice":"Algieba"}],"turns":[{"speaker":"Richard","style":"confident, wrapping up a presentation","text":"So that's the plan. We move all our deliveries to Tuesday, starting next month. Any thoughts?"}]},
+{"key":"disagreeing-in-the-meeting-s03","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Ryan is twenty-six. He has worked here for two years. He puts up his hand."},
+{"key":"disagreeing-in-the-meeting-s04","kind":"dialogue","speakers":[{"speaker":"Richard","voice":"Alnilam"},{"speaker":"Ryan","voice":"Algieba"}],"turns":[{"speaker":"Ryan","style":"calm and polite, direct","text":"Honestly, I don't think that will work. Can I say why?"},{"speaker":"Richard","style":"neutral, genuinely open","text":"Sure. Go ahead."},{"speaker":"Ryan","style":"clear and organised, counting his points","text":"Okay. First, Tuesday is already our busiest day. Second, two of our drivers don't work on Tuesdays. And third, our biggest customer wants Monday deliveries."}]},
+{"key":"disagreeing-in-the-meeting-s05","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"The room is quiet. Richard listens. He writes something down."},
+{"key":"disagreeing-in-the-meeting-s06","kind":"dialogue","speakers":[{"speaker":"Richard","voice":"Alnilam"},{"speaker":"Ryan","voice":"Algieba"}],"turns":[{"speaker":"Richard","style":"thoughtful, then appreciative","text":"Hmm. The drivers... I didn't know that. Good point. Thanks, Ryan."},{"speaker":"Ryan","style":"relaxed, simple","text":"Sure."}]},
+{"key":"disagreeing-in-the-meeting-s07","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"And the meeting goes on. Nobody looks embarrassed. Not Ryan, and not Richard."},
+{"key":"the-boss-stacks-chairs-s01","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"The office party is over. Tanvir is a new intern. It is his first week. Then he sees Dave, the country director, the most senior person in the building. Dave is stacking chairs."},
+{"key":"the-boss-stacks-chairs-s02","kind":"dialogue","speakers":[{"speaker":"Tanvir","voice":"Umbriel"},{"speaker":"Dave","voice":"Zubenelgenubi"}],"turns":[{"speaker":"Tanvir","style":"anxious and respectful, hurrying; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, v sounds close to b-w","text":"Sir! Sir, please, let me do that. You don't have to."},{"speaker":"Dave","style":"amused and kind, completely relaxed","text":"<laugh> Sir? Please, it's Dave. And it's fine, I've got these."},{"speaker":"Tanvir","style":"hesitant, trying the first name for the first time; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, v sounds close to b-w","text":"Okay, s... Dave."}]},
+{"key":"the-boss-stacks-chairs-s03","kind":"dialogue","speakers":[{"speaker":"Tanvir","voice":"Umbriel"},{"speaker":"Dave","voice":"Zubenelgenubi"}],"turns":[{"speaker":"Dave","style":"casual, practical","text":"Hey, can you grab that box? The car's just outside. I'll take the heavy one."}]},
+{"key":"the-boss-stacks-chairs-s04","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Together they carry the boxes out to the car. Later, the cleaning is almost finished. Dave goes into the kitchen."},
+{"key":"the-boss-stacks-chairs-s05","kind":"dialogue","speakers":[{"speaker":"Tanvir","voice":"Umbriel"},{"speaker":"Dave","voice":"Zubenelgenubi"}],"turns":[{"speaker":"Dave","style":"calling out cheerfully to the next room","text":"Who wants coffee? I'm making a pot."},{"speaker":"Dave","style":"friendly and offhand","text":"Here you go, Tanvir. The milk's in the fridge."},{"speaker":"Tanvir","style":"quiet, amazed, grateful; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, v sounds close to b-w","text":"Thank you... Dave."}]},
+{"key":"the-boss-stacks-chairs-s06","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Tanvir holds the cup with both hands. The boss made him coffee."},
+{"key":"what-do-you-think-s01","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Farhana is in her first class at a university in Michigan. The teacher, Dr. Novak, finishes reading a short story."},
+{"key":"what-do-you-think-s02","kind":"dialogue","speakers":[{"speaker":"Farhana","voice":"Achernar"},{"speaker":"Novak","voice":"Rasalgethi"}],"turns":[{"speaker":"Novak","style":"open and curious, relaxed","text":"So... what do you think?"}]},
+{"key":"what-do-you-think-s03","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Nobody speaks. Farhana looks down at her book. Dr. Novak doesn't say anything. He just waits. Five seconds. Ten seconds."},
+{"key":"what-do-you-think-s04","kind":"dialogue","speakers":[{"speaker":"Farhana","voice":"Achernar"},{"speaker":"Novak","voice":"Rasalgethi"}],"turns":[{"speaker":"Novak","style":"patient and encouraging, unhurried","text":"It's okay. There's no right answer. I actually want to know your opinion."},{"speaker":"Farhana","style":"whispering to herself, unsure; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, very gentle stress","text":"<whispers> My opinion? But he is the teacher..."},{"speaker":"Novak","style":"gentle, inviting","text":"Farhana? You look like you have an idea."},{"speaker":"Farhana","style":"hesitant at first, then a little steadier; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, very gentle stress","text":"Um... I think the father was wrong. He didn't listen to his son."},{"speaker":"Novak","style":"genuinely delighted and curious","text":"Interesting! Why do you think that? Tell me more."}]},
+{"key":"what-do-you-think-s05","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"After class, Farhana reads the course plan. Twenty percent of the grade is for speaking in class."},
+{"key":"what-do-you-think-s06","kind":"dialogue","speakers":[{"speaker":"Farhana","voice":"Achernar"},{"speaker":"Novak","voice":"Rasalgethi"}],"turns":[{"speaker":"Farhana","style":"surprised, thinking aloud; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, very gentle stress","text":"Twenty percent... just for talking?"}]},
+{"key":"the-neighbours-tree-s01","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"It's autumn in Portland. Leaves from the neighbour's big maple tree keep falling into Bill's roof gutter."},
+{"key":"the-neighbours-tree-s02","kind":"dialogue","speakers":[{"speaker":"Bill","voice":"Algenib"},{"speaker":"Mike","voice":"Sadachbia"}],"turns":[{"speaker":"Bill","style":"tired, grumbling to himself","text":"<groan> Again? That's the third time this week."}]},
+{"key":"the-neighbours-tree-s03","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Bill walks next door and knocks."},
+{"key":"the-neighbours-tree-s04","kind":"dialogue","speakers":[{"speaker":"Bill","voice":"Algenib"},{"speaker":"Mike","voice":"Sadachbia"}],"turns":[{"speaker":"Mike","style":"surprised and friendly","text":"Oh, hey, Bill! What's up?"},{"speaker":"Bill","style":"friendly and direct, with a small smile","text":"Hey, Mike. So... your maple's filling my gutter. Can we figure something out?"}]},
+{"key":"the-neighbours-tree-s05","kind":"dialogue","speakers":[{"speaker":"Bill","voice":"Algenib"},{"speaker":"Mike","voice":"Sadachbia"}],"turns":[{"speaker":"Mike","style":"apologetic, then helpful","text":"Oh, man, I'm sorry. I didn't know. What if I cut back those big branches over your roof?"},{"speaker":"Bill","style":"relieved and practical","text":"That'd be great. And I'll clean the gutter one more time. Deal?"},{"speaker":"Mike","style":"warm, decided","text":"Deal."}]},
+{"key":"the-neighbours-tree-s06","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"They talk for four minutes. They shake hands. And that's it. The next morning, neither man says anything about the tree. They just wave."},
+{"key":"the-neighbours-tree-s07","kind":"dialogue","speakers":[{"speaker":"Bill","voice":"Algenib"},{"speaker":"Mike","voice":"Sadachbia"}],"turns":[{"speaker":"Mike","style":"cheerful, calling from a car window","text":"Morning, Bill!"},{"speaker":"Bill","style":"friendly, calling back","text":"Morning!"}]},
+{"key":"back-of-the-line-s01","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"It's a busy afternoon at a pharmacy in Philadelphia. Eight people are waiting in one straight line. A man in a suit walks in. He looks at his watch. He is in a hurry."},
+{"key":"back-of-the-line-s02","kind":"dialogue","speakers":[{"speaker":"Brad","voice":"Orus"},{"speaker":"Carla","voice":"Pulcherrima"}],"turns":[{"speaker":"Brad","style":"rushed, polite on the surface, moving fast","text":"Excuse me... sorry... excuse me."}]},
+{"key":"back-of-the-line-s03","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"He walks past everyone, straight to the front."},
+{"key":"back-of-the-line-s04","kind":"dialogue","speakers":[{"speaker":"Brad","voice":"Orus"},{"speaker":"Carla","voice":"Pulcherrima"}],"turns":[{"speaker":"Brad","style":"charming and quick, sure it will work","text":"Hi. I just have one quick question. It'll only take ten seconds."},{"speaker":"Carla","style":"warm and smiling, completely firm","text":"Sure, I'm happy to help. The line starts back there."},{"speaker":"Brad","style":"deflated, flat","text":"Oh. Right. Okay."}]},
+{"key":"back-of-the-line-s05","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"He walks to the back of the line. Nobody looks angry. And nobody says, \"You can go first.\""},
+{"key":"back-of-the-line-s06","kind":"dialogue","speakers":[{"speaker":"Brad","voice":"Orus"},{"speaker":"Carla","voice":"Pulcherrima"}],"turns":[{"speaker":"Carla","style":"bright and friendly, calling down the line","text":"Next, please!"}]},
+{"key":"tell-them-what-you-did-s01","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Arif and Tyler are students in Atlanta. They are waiting for the same internship interview."},
+{"key":"tell-them-what-you-did-s02","kind":"dialogue","speakers":[{"speaker":"Arif","voice":"Iapetus"},{"speaker":"Tyler","voice":"Puck"}],"turns":[{"speaker":"Tyler","style":"relaxed and friendly","text":"Nervous? Don't be. Just tell them what you did."},{"speaker":"Arif","style":"uncertain, quiet; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, sentences that fall softly at the end","text":"Tell them what I did? Okay..."}]},
+{"key":"tell-them-what-you-did-s03","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"The interviewer asks each of them the same question: \"Tell us about your biggest achievement.\""},
+{"key":"tell-them-what-you-did-s04","kind":"dialogue","speakers":[{"speaker":"Arif","voice":"Iapetus"},{"speaker":"Tyler","voice":"Puck"}],"turns":[{"speaker":"Tyler","style":"confident and bright, proud","text":"Sure. Last year I led a team of five, and we grew our club's membership by forty percent. I'm really proud of that."},{"speaker":"Arif","style":"modest and soft, eyes down; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, sentences that fall softly at the end","text":"Oh... I helped a little with a charity project. But really, it was the team's work."}]},
+{"key":"tell-them-what-you-did-s05","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"But Arif did much more than help. He planned the whole project. He found thirty volunteers and raised money for two hundred families. One week later, the email arrives."},
+{"key":"tell-them-what-you-did-s06","kind":"dialogue","speakers":[{"speaker":"Arif","voice":"Iapetus"},{"speaker":"Tyler","voice":"Puck"}],"turns":[{"speaker":"Tyler","style":"excited, a burst of joy","text":"Yes! I got it!"}]},
+{"key":"tell-them-what-you-did-s07","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Arif reads his email too. It says, \"Thank you for your interest.\""},
+{"key":"tell-them-what-you-did-s08","kind":"dialogue","speakers":[{"speaker":"Arif","voice":"Iapetus"},{"speaker":"Tyler","voice":"Puck"}],"turns":[{"speaker":"Arif","style":"quiet and disappointed; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, sentences that fall softly at the end","text":"<sigh> But I did so much..."}]},
+{"key":"honestly-im-annoyed-s01","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Mahin is from Dhaka. He is doing a group project in the library with three American classmates. Last night, Ethan forgot to finish his part. So Hannah stayed up until two in the morning to do it."},
+{"key":"honestly-im-annoyed-s02","kind":"dialogue","speakers":[{"speaker":"Hannah","voice":"Kore"},{"speaker":"Ethan","voice":"Zephyr"}],"turns":[{"speaker":"Ethan","style":"cheerful, completely unaware","text":"Morning, guys! Oh, did anyone finish the slides?"},{"speaker":"Hannah","style":"calm but clearly upset, direct","text":"Honestly, Ethan, I'm annoyed. I did your part last night. I was up until two."},{"speaker":"Ethan","style":"taken aback, then sincere","text":"Oh no. You're right. I totally forgot. I'm really sorry, Hannah."},{"speaker":"Hannah","style":"softening, sincere","text":"Okay. Thank you for saying that."}]},
+{"key":"honestly-im-annoyed-s03","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Mahin looks down at the table. In Dhaka, a friendship could end right here. But ten minutes later..."},
+{"key":"honestly-im-annoyed-s04","kind":"dialogue","speakers":[{"speaker":"Hannah","voice":"Kore"},{"speaker":"Ethan","voice":"Zephyr"}],"turns":[{"speaker":"Ethan","style":"laughing, delighted","text":"<laugh> Wait, did you really put a cat on slide nine?"},{"speaker":"Hannah","style":"laughing, playful","text":"It was two in the morning! I needed a cat."}]},
+{"key":"honestly-im-annoyed-s05","kind":"dialogue","speakers":[{"speaker":"Hannah","voice":"Kore"},{"speaker":"Ethan","voice":"Zephyr"}],"turns":[{"speaker":"Ethan","style":"warm and friendly","text":"Coffee? It's on me. I owe you."},{"speaker":"Hannah","style":"teasing, smiling","text":"You definitely owe me."}]},
+{"key":"leave-the-snake-alone-s01","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Imran is a student from Sylhet. This summer, he is staying with an American family in North Carolina. One morning, in the back garden, he sees a long black snake near the vegetables."},
+{"key":"leave-the-snake-alone-s02","kind":"dialogue","speakers":[{"speaker":"Imran","voice":"Enceladus"},{"speaker":"Kathy","voice":"Aoede"}],"turns":[{"speaker":"Imran","style":"alarmed, loud and fast; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, questions that rise sharply","text":"A snake! Wait, I'll get a stick!"},{"speaker":"Kathy","style":"urgent but calm, the way you stop a child touching a hot stove","text":"No, no, no! Imran, leave him. He lives here."},{"speaker":"Imran","style":"confused, rising pitch; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, questions that rise sharply","text":"He lives here? But... it's a snake!"},{"speaker":"Kathy","style":"relaxed and fond, then calling happily to the house","text":"He's a black rat snake. He's not dangerous, and he eats the mice. Kids! Come and see!"}]},
+{"key":"leave-the-snake-alone-s03","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"The children come out. They watch the snake from a few steps away. Slowly, the snake slides under the shed."},
+{"key":"leave-the-snake-alone-s04","kind":"dialogue","speakers":[{"speaker":"Imran","voice":"Enceladus"},{"speaker":"Kathy","voice":"Aoede"}],"turns":[{"speaker":"Kathy","style":"fond and amused, quietly","text":"Bye, buddy. See you later."}]},
+{"key":"leave-the-snake-alone-s05","kind":"narration","voice":"Sulafat","style":"calm, warm storytelling for learners, slow and very clear, a small pause at every full stop","text":"Later, Imran notices other things. A dead tree is still standing. And one corner of the garden is growing wild."},
+{"key":"leave-the-snake-alone-s06","kind":"dialogue","speakers":[{"speaker":"Imran","voice":"Enceladus"},{"speaker":"Kathy","voice":"Aoede"}],"turns":[{"speaker":"Imran","style":"puzzled and curious, slow; light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, questions that rise sharply","text":"Nobody cuts it... on purpose?"}]}]
 ''')
 
-def voice_for(v):
-    return VOICES.get(v, v)
-
-def make(line):
-    out = DRY / (line["key"] + ".wav")
-    if out.exists():
-        return
-    interaction = client.interactions.create(
+def dialogue(t):
+    return client.interactions.create(
         model=MODEL,
-        input=[{
-            "type": "user_input",
-            "content": [{
-                "type": "text",
-                "text": line["text"],                     # verbatim, tags and all
-                "annotations": [{"type": "speech_metadata", "style": line["style"]}],
-            }],
-        }],
+        input=[{"type": "user_input", "content": [
+            {"type": "text", "text": turn["text"],               # verbatim, tags and all
+             "annotations": [{"type": "speech_metadata",
+                              "speaker": turn["speaker"], "style": turn["style"]}]}
+            for turn in t["turns"]]}],
         response_format={"type": "audio"},
-        generation_config={"speech_config": [{"voice": voice_for(line["voice"])}]},
+        generation_config={"speech_config": {
+            "mode": "conversational",
+            "speakers": [{"speaker": s["speaker"], "voice": s["voice"]} for s in t["speakers"]],
+        }},
     )
-    out.write_bytes(base64.b64decode(interaction.output_audio.data))
-    print("wrote", out)
 
-for line in LINES:
-    make(line)
+def narration(t):
+    return client.interactions.create(
+        model=MODEL,
+        input=[{"type": "user_input", "content": [
+            {"type": "text", "text": t["text"],
+             "annotations": [{"type": "speech_metadata", "style": t["style"]}]}]}],
+        response_format={"type": "audio"},
+        generation_config={"speech_config": [{"voice": t["voice"]}]},
+    )
+
+for t in TAKES:
+    out = DRY / (t["key"] + ".wav")
+    if out.exists():
+        continue
+    reply = dialogue(t) if t["kind"] == "dialogue" else narration(t)
+    out.write_bytes(base64.b64decode(reply.output_audio.data))
+    print("wrote", out)
 ```
 
 Check the SDK's current call shape before running — these fields have moved
-before. Listen to the first scene end to end before running the rest.
+before. Record one scene, listen to every take, then run the rest.
 
 ## After recording
 
-**1 · Audition.** Play each scene straight through in order. Listen for: a tag
-read aloud, a character who sounds like someone else, a line much louder or
-quieter than its neighbours, a Bangladeshi voice that drifts into another accent.
+**1 · Audition each take.** Listen for: a tag read aloud; a reply that does not
+land on the line before it (re-run the take — do not split it); a character who
+sounds like someone else; a Bangladeshi accent that is too strong, or gone; a
+word that is not in the transcript (the aligner will flag it too).
 
-**2 · Level and convert.** Per-line takes must sit at the same loudness or the
-scene jumps in volume between speakers:
+**2 · Assemble.** `python3 ethnographic-interviews/tools/assemble_scenes.py` —
+or name one scene. It trims each take, levels them all to the same speech
+loudness, lays the room's tone under dialogue takes (low-passed at 3.2 kHz, seeded
+per room so a room sounds continuous across takes; narration stays dry), joins them
+with pauses (longer where the panel changes), peak-limits, and writes
+`scene/<id>.mp3` plus `scene/_build/<id>.json`. It prints the 2–5 kHz
+speech-to-bed ratio of every dialogue take — **keep it above 20 dB**; if one
+falls below, lower that room's recipe in `SCENE_BEDS` in `scenes.js` and
+re-run. It never touches the dry takes.
 
-```
-ffmpeg -i _dry-originals/<key>.wav -af loudnorm=I=-18:TP=-1.5:LRA=11 -ar 24000 -ac 1 -codec:a libmp3lame -b:a 96k <key>.mp3
-```
+**3 · Align.** `python3 ethnographic-interviews/tools/align_scenes.py` (needs
+`openai-whisper`). It times every word of every take against the lines in
+`scenes.js` and writes `scene-timings.js`. **Re-run it whenever a take is
+re-recorded or re-assembled** — without it the page only estimates where each line
+starts, and the panels and highlighting drift.
 
-**3 · Room tone** (character lines only — narrator lines stay dry). Use the
-same pipeline as the interviews (`ambience/amb.py`): render every bed **from
-the dry original**, never from a mixed file; the recipes are listed under each
-scene's rooms, in dB relative to the take's own speech level. Low-pass every bed
-at about 3.2 kHz, keep speech-to-bed above 20 dB in the 2–5 kHz band, fade the
-bed in and out over 0.3 s (these takes are short), and peak-limit to about 0.97.
-Because the lines are separate files, keep each room's bed **seeded by room, not
-by line**, so consecutive lines in one room sound like one continuous place.
-
-**4 · Align.** Run `python3 ethnographic-interviews/tools/align_scenes.py`. It
-matches Whisper word times to the lines in `scenes.js` and writes
-`scene-timings.js`, which makes the karaoke exact. **Re-run it whenever a line
-is re-recorded** — otherwise the highlighting goes wrong silently.
+**4 · Listen through on the page**, all three listens, on a phone and on the projector.
 
 ---
 
 ## Checklists
 
-### Audio — 117 lines
+### Takes — 67
 
-| File | Speaker | Voice | Tags | Generated | Auditioned | Levelled + mp3 | Bed | Aligned |
-|---|---|---|---|:-:|:-:|:-:|:-:|:-:|
-| `dinner-ends-at-eight-01` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `dinner-ends-at-eight-02` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `dinner-ends-at-eight-03` | Jeff | Achird |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `dinner-ends-at-eight-04` | Jeff | Achird |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `dinner-ends-at-eight-05` | Tania | EVL · Autonoe |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `dinner-ends-at-eight-06` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `dinner-ends-at-eight-07` | Jeff | Achird |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `dinner-ends-at-eight-08` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `dinner-ends-at-eight-09` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `dinner-ends-at-eight-10` | Jeff | Achird |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `dinner-ends-at-eight-11` | Tania | EVL · Autonoe |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `dinner-ends-at-eight-12` | Jeff | Achird |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `dinner-ends-at-eight-13` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `dinner-ends-at-eight-14` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `dinner-ends-at-eight-15` | Tania | EVL · Autonoe |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `splitting-the-bill-01` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `splitting-the-bill-02` | Jake | Fenrir |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `splitting-the-bill-03` | Nusrat | EVL · Leda |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `splitting-the-bill-04` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `splitting-the-bill-05` | Nusrat | EVL · Leda |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `splitting-the-bill-06` | Jake | Fenrir | `&lt;laugh&gt;` | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `splitting-the-bill-07` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `splitting-the-bill-08` | Jake | Fenrir |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `splitting-the-bill-09` | Nusrat | EVL · Leda |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `splitting-the-bill-10` | Jake | Fenrir |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `splitting-the-bill-11` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `splitting-the-bill-12` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `splitting-the-bill-13` | Nusrat | EVL · Leda |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `disagreeing-in-the-meeting-01` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `disagreeing-in-the-meeting-02` | Richard | Alnilam |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `disagreeing-in-the-meeting-03` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `disagreeing-in-the-meeting-04` | Ryan | Algieba |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `disagreeing-in-the-meeting-05` | Richard | Alnilam |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `disagreeing-in-the-meeting-06` | Ryan | Algieba |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `disagreeing-in-the-meeting-07` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `disagreeing-in-the-meeting-08` | Richard | Alnilam |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `disagreeing-in-the-meeting-09` | Ryan | Algieba |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `disagreeing-in-the-meeting-10` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `the-boss-stacks-chairs-01` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `the-boss-stacks-chairs-02` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `the-boss-stacks-chairs-03` | Tanvir | EVL · Umbriel |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-boss-stacks-chairs-04` | Dave | Zubenelgenubi | `&lt;laugh&gt;` | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-boss-stacks-chairs-05` | Tanvir | EVL · Umbriel |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-boss-stacks-chairs-06` | Dave | Zubenelgenubi |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-boss-stacks-chairs-07` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `the-boss-stacks-chairs-08` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `the-boss-stacks-chairs-09` | Dave | Zubenelgenubi |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-boss-stacks-chairs-10` | Dave | Zubenelgenubi |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-boss-stacks-chairs-11` | Tanvir | EVL · Umbriel |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-boss-stacks-chairs-12` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `what-do-you-think-01` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `what-do-you-think-02` | Dr. Novak | Rasalgethi |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `what-do-you-think-03` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `what-do-you-think-04` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `what-do-you-think-05` | Dr. Novak | Rasalgethi |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `what-do-you-think-06` | Farhana | EVL · Achernar | `&lt;whispers&gt;` | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `what-do-you-think-07` | Dr. Novak | Rasalgethi |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `what-do-you-think-08` | Farhana | EVL · Achernar |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `what-do-you-think-09` | Dr. Novak | Rasalgethi |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `what-do-you-think-10` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `what-do-you-think-11` | Farhana | EVL · Achernar |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-neighbours-tree-01` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `the-neighbours-tree-02` | Bill | Algenib | `&lt;groan&gt;` | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-neighbours-tree-03` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `the-neighbours-tree-04` | Mike | Sadachbia |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-neighbours-tree-05` | Bill | Algenib |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-neighbours-tree-06` | Mike | Sadachbia |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-neighbours-tree-07` | Bill | Algenib |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-neighbours-tree-08` | Mike | Sadachbia |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-neighbours-tree-09` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `the-neighbours-tree-10` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `the-neighbours-tree-11` | Mike | Sadachbia |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `the-neighbours-tree-12` | Bill | Algenib |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `back-of-the-line-01` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `back-of-the-line-02` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `back-of-the-line-03` | Brad | Orus |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `back-of-the-line-04` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `back-of-the-line-05` | Brad | Orus |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `back-of-the-line-06` | Carla | Pulcherrima |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `back-of-the-line-07` | Brad | Orus |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `back-of-the-line-08` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `back-of-the-line-09` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `back-of-the-line-10` | Carla | Pulcherrima |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `tell-them-what-you-did-01` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `tell-them-what-you-did-02` | Tyler | Puck |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `tell-them-what-you-did-03` | Arif | EVL · Iapetus |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `tell-them-what-you-did-04` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `tell-them-what-you-did-05` | Tyler | Puck |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `tell-them-what-you-did-06` | Arif | EVL · Iapetus |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `tell-them-what-you-did-07` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `tell-them-what-you-did-08` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `tell-them-what-you-did-09` | Tyler | Puck |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `tell-them-what-you-did-10` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `tell-them-what-you-did-11` | Arif | EVL · Iapetus | `&lt;sigh&gt;` | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `honestly-im-annoyed-01` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `honestly-im-annoyed-02` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `honestly-im-annoyed-03` | Ethan | Zephyr |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `honestly-im-annoyed-04` | Hannah | Kore |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `honestly-im-annoyed-05` | Ethan | Zephyr |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `honestly-im-annoyed-06` | Hannah | Kore |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `honestly-im-annoyed-07` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `honestly-im-annoyed-08` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `honestly-im-annoyed-09` | Ethan | Zephyr | `&lt;laugh&gt;` | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `honestly-im-annoyed-10` | Hannah | Kore |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `honestly-im-annoyed-11` | Ethan | Zephyr |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `honestly-im-annoyed-12` | Hannah | Kore |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `leave-the-snake-alone-01` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `leave-the-snake-alone-02` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `leave-the-snake-alone-03` | Imran | EVL · Enceladus |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `leave-the-snake-alone-04` | Kathy | Aoede |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `leave-the-snake-alone-05` | Imran | EVL · Enceladus |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `leave-the-snake-alone-06` | Kathy | Aoede |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `leave-the-snake-alone-07` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `leave-the-snake-alone-08` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `leave-the-snake-alone-09` | Kathy | Aoede |  | ☐ | ☐ | ☐ | ☐ | ☐ |
-| `leave-the-snake-alone-10` | Narrator | narrator |  | ☐ | ☐ | ☐ | — | ☐ |
-| `leave-the-snake-alone-11` | Imran | EVL · Enceladus |  | ☐ | ☐ | ☐ | ☐ | ☐ |
+| Take | Kind | Speakers | Tags | Recorded | Auditioned |
+|---|---|---|---|:-:|:-:|
+| `dinner-ends-at-eight-s01` | narration | Narrator |  | ☐ | ☐ |
+| `dinner-ends-at-eight-s02` | dialogue | Jeff + Tania |  | ☐ | ☐ |
+| `dinner-ends-at-eight-s03` | narration | Narrator |  | ☐ | ☐ |
+| `dinner-ends-at-eight-s04` | dialogue | Jeff |  | ☐ | ☐ |
+| `dinner-ends-at-eight-s05` | narration | Narrator |  | ☐ | ☐ |
+| `dinner-ends-at-eight-s06` | dialogue | Jeff + Tania |  | ☐ | ☐ |
+| `dinner-ends-at-eight-s07` | narration | Narrator |  | ☐ | ☐ |
+| `dinner-ends-at-eight-s08` | dialogue | Tania |  | ☐ | ☐ |
+| `splitting-the-bill-s01` | narration | Narrator |  | ☐ | ☐ |
+| `splitting-the-bill-s02` | dialogue | Jake + Nusrat |  | ☐ | ☐ |
+| `splitting-the-bill-s03` | narration | Narrator |  | ☐ | ☐ |
+| `splitting-the-bill-s04` | dialogue | Nusrat + Jake | `&lt;laugh&gt;` | ☐ | ☐ |
+| `splitting-the-bill-s05` | narration | Narrator |  | ☐ | ☐ |
+| `splitting-the-bill-s06` | dialogue | Jake + Nusrat |  | ☐ | ☐ |
+| `splitting-the-bill-s07` | narration | Narrator |  | ☐ | ☐ |
+| `splitting-the-bill-s08` | dialogue | Nusrat |  | ☐ | ☐ |
+| `disagreeing-in-the-meeting-s01` | narration | Narrator |  | ☐ | ☐ |
+| `disagreeing-in-the-meeting-s02` | dialogue | Richard |  | ☐ | ☐ |
+| `disagreeing-in-the-meeting-s03` | narration | Narrator |  | ☐ | ☐ |
+| `disagreeing-in-the-meeting-s04` | dialogue | Ryan + Richard |  | ☐ | ☐ |
+| `disagreeing-in-the-meeting-s05` | narration | Narrator |  | ☐ | ☐ |
+| `disagreeing-in-the-meeting-s06` | dialogue | Richard + Ryan |  | ☐ | ☐ |
+| `disagreeing-in-the-meeting-s07` | narration | Narrator |  | ☐ | ☐ |
+| `the-boss-stacks-chairs-s01` | narration | Narrator |  | ☐ | ☐ |
+| `the-boss-stacks-chairs-s02` | dialogue | Tanvir + Dave | `&lt;laugh&gt;` | ☐ | ☐ |
+| `the-boss-stacks-chairs-s03` | dialogue | Dave |  | ☐ | ☐ |
+| `the-boss-stacks-chairs-s04` | narration | Narrator |  | ☐ | ☐ |
+| `the-boss-stacks-chairs-s05` | dialogue | Dave + Tanvir |  | ☐ | ☐ |
+| `the-boss-stacks-chairs-s06` | narration | Narrator |  | ☐ | ☐ |
+| `what-do-you-think-s01` | narration | Narrator |  | ☐ | ☐ |
+| `what-do-you-think-s02` | dialogue | Dr. Novak |  | ☐ | ☐ |
+| `what-do-you-think-s03` | narration | Narrator |  | ☐ | ☐ |
+| `what-do-you-think-s04` | dialogue | Dr. Novak + Farhana | `&lt;whispers&gt;` | ☐ | ☐ |
+| `what-do-you-think-s05` | narration | Narrator |  | ☐ | ☐ |
+| `what-do-you-think-s06` | dialogue | Farhana |  | ☐ | ☐ |
+| `the-neighbours-tree-s01` | narration | Narrator |  | ☐ | ☐ |
+| `the-neighbours-tree-s02` | dialogue | Bill | `&lt;groan&gt;` | ☐ | ☐ |
+| `the-neighbours-tree-s03` | narration | Narrator |  | ☐ | ☐ |
+| `the-neighbours-tree-s04` | dialogue | Mike + Bill |  | ☐ | ☐ |
+| `the-neighbours-tree-s05` | dialogue | Mike + Bill |  | ☐ | ☐ |
+| `the-neighbours-tree-s06` | narration | Narrator |  | ☐ | ☐ |
+| `the-neighbours-tree-s07` | dialogue | Mike + Bill |  | ☐ | ☐ |
+| `back-of-the-line-s01` | narration | Narrator |  | ☐ | ☐ |
+| `back-of-the-line-s02` | dialogue | Brad |  | ☐ | ☐ |
+| `back-of-the-line-s03` | narration | Narrator |  | ☐ | ☐ |
+| `back-of-the-line-s04` | dialogue | Brad + Carla |  | ☐ | ☐ |
+| `back-of-the-line-s05` | narration | Narrator |  | ☐ | ☐ |
+| `back-of-the-line-s06` | dialogue | Carla |  | ☐ | ☐ |
+| `tell-them-what-you-did-s01` | narration | Narrator |  | ☐ | ☐ |
+| `tell-them-what-you-did-s02` | dialogue | Tyler + Arif |  | ☐ | ☐ |
+| `tell-them-what-you-did-s03` | narration | Narrator |  | ☐ | ☐ |
+| `tell-them-what-you-did-s04` | dialogue | Tyler + Arif |  | ☐ | ☐ |
+| `tell-them-what-you-did-s05` | narration | Narrator |  | ☐ | ☐ |
+| `tell-them-what-you-did-s06` | dialogue | Tyler |  | ☐ | ☐ |
+| `tell-them-what-you-did-s07` | narration | Narrator |  | ☐ | ☐ |
+| `tell-them-what-you-did-s08` | dialogue | Arif | `&lt;sigh&gt;` | ☐ | ☐ |
+| `honestly-im-annoyed-s01` | narration | Narrator |  | ☐ | ☐ |
+| `honestly-im-annoyed-s02` | dialogue | Ethan + Hannah |  | ☐ | ☐ |
+| `honestly-im-annoyed-s03` | narration | Narrator |  | ☐ | ☐ |
+| `honestly-im-annoyed-s04` | dialogue | Ethan + Hannah | `&lt;laugh&gt;` | ☐ | ☐ |
+| `honestly-im-annoyed-s05` | dialogue | Ethan + Hannah |  | ☐ | ☐ |
+| `leave-the-snake-alone-s01` | narration | Narrator |  | ☐ | ☐ |
+| `leave-the-snake-alone-s02` | dialogue | Imran + Kathy |  | ☐ | ☐ |
+| `leave-the-snake-alone-s03` | narration | Narrator |  | ☐ | ☐ |
+| `leave-the-snake-alone-s04` | dialogue | Kathy |  | ☐ | ☐ |
+| `leave-the-snake-alone-s05` | narration | Narrator |  | ☐ | ☐ |
+| `leave-the-snake-alone-s06` | dialogue | Imran |  | ☐ | ☐ |
+
+### Scenes — 10
+
+| Scene file | Takes | Assembled (SNR ≥ 20 dB) | Aligned | Checked on the page |
+|---|---|:-:|:-:|:-:|
+| `scene/dinner-ends-at-eight.mp3` | 8 | ☐ | ☐ | ☐ |
+| `scene/splitting-the-bill.mp3` | 8 | ☐ | ☐ | ☐ |
+| `scene/disagreeing-in-the-meeting.mp3` | 7 | ☐ | ☐ | ☐ |
+| `scene/the-boss-stacks-chairs.mp3` | 6 | ☐ | ☐ | ☐ |
+| `scene/what-do-you-think.mp3` | 6 | ☐ | ☐ | ☐ |
+| `scene/the-neighbours-tree.mp3` | 7 | ☐ | ☐ | ☐ |
+| `scene/back-of-the-line.mp3` | 6 | ☐ | ☐ | ☐ |
+| `scene/tell-them-what-you-did.mp3` | 8 | ☐ | ☐ | ☐ |
+| `scene/honestly-im-annoyed.mp3` | 5 | ☐ | ☐ | ☐ |
+| `scene/leave-the-snake-alone.mp3` | 6 | ☐ | ☐ | ☐ |
 
 ### Panels — 60 images
 
@@ -3102,3 +3237,7 @@ is re-recorded** — otherwise the highlighting goes wrong silently.
 | `cast/ethan.jpg` | Ethan | Honestly, I’m Annoyed | ☐ | ☐ | ☐ |
 | `cast/imran.jpg` | Imran | Leave the Snake Alone | ☐ | ☐ | ☐ |
 | `cast/kathy.jpg` | Kathy | Leave the Snake Alone | ☐ | ☐ | ☐ |
+
+---
+
+Sources for the API limits above: [Gemini API — Text-to-speech generation](https://ai.google.dev/gemini-api/docs/speech-generation).
