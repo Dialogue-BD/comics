@@ -11,7 +11,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Spectral:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#103d21">
   <link rel="stylesheet" href="dialogue-brand.css?v=20260908-6">
   <style>
     *, *::before, *::after {
@@ -39,7 +40,7 @@
       --radius: 16px;
       --radius-lg: 24px;
       --header-h: 58px;
-      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-main: 'Public Sans', system-ui, -apple-system, "Segoe UI", sans-serif;
     }
 
     body, html {
@@ -74,109 +75,8 @@
       transform: translateY(-100%);
     }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .back-btn {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .back-btn:hover {
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--accent);
-    }
-
-    .header-title {
-      font-size: 1.1rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .header-title .badge {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      background: rgba(79, 126, 248, 0.2);
-      color: #93c5fd;
-      border: 1px solid rgba(129, 140, 248, 0.35);
-      padding: 3px 8px;
-      border-radius: 20px;
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .view-toggle-wrap {
-      display: flex;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 3px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-      gap: 3px;
-    }
-
-    .view-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-family: inherit;
-      font-size: 0.82rem;
-      font-weight: 700;
-      padding: 6px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.18s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .view-btn:hover { color: var(--text); }
-    .view-btn.active {
-      background: var(--accent);
-      color: #ffffff;
-      box-shadow: 0 2px 8px var(--accent-glow);
-    }
-
-    .header-action-btn {
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.82rem;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      transition: all 0.18s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .header-action-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: var(--accent);
-      color: #ffffff;
-    }
+    .header-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .header-right { display: flex; align-items: center; gap: 10px; }
 
     /* ── Main App Views Wrapper ── */
     #app-main {
@@ -632,183 +532,6 @@
       color: #ffffff;
     }
 
-    /* ═════════════════════════════════════════════════════════════ */
-    /* 2. ALL-IN-ONE INTERACTIVE QR DIRECTORY GRID                   */
-    /* ═════════════════════════════════════════════════════════════ */
-    #grid-view {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      background: var(--bg);
-      padding: 16px 24px;
-      overflow-y: auto;
-    }
-
-    .grid-toolbar {
-      width: 100%;
-      max-width: 1600px;
-      margin: 0 auto 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .grid-search-wrap {
-      flex: 1;
-      max-width: 460px;
-      position: relative;
-    }
-
-    .grid-search-input {
-      width: 100%;
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm);
-      color: #ffffff;
-      font-family: inherit;
-      font-size: 0.92rem;
-      padding: 9px 14px 9px 38px;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-    .grid-search-input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 12px var(--accent-glow);
-    }
-    .grid-search-icon {
-      position: absolute;
-      top: 50%;
-      left: 12px;
-      transform: translateY(-50%);
-      font-size: 1rem;
-      color: var(--text-muted);
-      pointer-events: none;
-    }
-
-    .grid-count-badge {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-
-    .qr-cards-grid {
-      width: 100%;
-      max-width: 1600px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 18px;
-      padding-bottom: 40px;
-    }
-
-    .qr-card-item {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .qr-card-item:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-glow);
-    }
-
-    .qr-card-head {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .qr-card-icon {
-      font-size: 2rem;
-      line-height: 1;
-      flex-shrink: 0;
-    }
-
-    .qr-card-title {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1.25;
-    }
-
-    .qr-card-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .qr-card-preview-wrap {
-      background: #ffffff;
-      padding: 14px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      width: 160px;
-      height: 160px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-    }
-
-    .qr-card-preview-wrap canvas {
-      width: 100% !important;
-      height: 100% !important;
-      display: block;
-    }
-
-    .qr-card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-top: auto;
-    }
-
-    .qr-card-badge {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--accent);
-      background: rgba(79, 126, 248, 0.12);
-      padding: 3px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .qr-card-present-btn {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border);
-      color: #ffffff;
-      font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      white-space: nowrap;
-    }
-    .qr-card-present-btn:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-    }
-
     /* ── Responsive adjustments ── */
     @media (max-width: 1000px) {
       .slide-stage {
@@ -847,15 +570,545 @@
   </style>
   <style>
     :root{--bg:#eae7dc;--surface:#f4f1e6;--surface-card:#fffdf7;--surface-hover:#e3ead9;--border:#d8d3c2;--accent:#103d21;--accent-hover:#0c3319;--accent-glow:rgba(185,146,79,.24);--text:#1d211c;--text-muted:#5f6a5c;--font-main:'Public Sans',system-ui,sans-serif}
-    #app-header{background:rgba(16,61,33,.97);border-color:rgba(185,146,79,.5)}
-    .header-title{font-family:'Source Serif 4',Georgia,serif;color:#f4f1e6}.header-title .badge{color:#dec78f;background:rgba(185,146,79,.18);border-color:rgba(185,146,79,.5)}
-    #grid-view{background:var(--bg)}#slideshow-view{background:radial-gradient(circle at 60% 38%,#285b3c 0%,#174629 58%,#0c3319 100%)}.slideshow-progress-bar{background:#b9924f}.qr-card-item,.slide-info-card,.slideshow-footer{background:var(--surface-card);border-color:var(--border);box-shadow:0 12px 30px rgba(16,61,33,.08)}
-    .qr-card-title,.slide-title{color:var(--text);text-shadow:none}.qr-card-desc,.slide-desc{color:var(--text-muted)}
-    .slide-category-pill,.slide-counter-badge,.qr-card-badge{color:#6f531c;background:#f0e6cd;border-color:#d2b978}.slide-url-box{background:#f0ede3;border-color:var(--border)}.slide-url-text{color:#103d21}
+    #slideshow-view{background:radial-gradient(circle at 60% 38%,#285b3c 0%,#174629 58%,#0c3319 100%)}.slideshow-progress-bar{background:#b9924f}.slide-info-card,.slideshow-footer{background:var(--surface-card);border-color:var(--border);box-shadow:0 12px 30px rgba(16,61,33,.08)}
+    .slide-title{color:var(--text);text-shadow:none}.slide-desc{color:var(--text-muted)}
+    .slide-category-pill,.slide-counter-badge{color:#6f531c;background:#f0e6cd;border-color:#d2b978}.slide-url-box{background:#f0ede3;border-color:var(--border)}.slide-url-text{color:#103d21}
     .slide-qr-card{box-shadow:0 20px 55px rgba(16,61,33,.16)}.slide-qr-scan-badge{background:#103d21;box-shadow:none}
-    .slide-action-btn,.fs-toggle-btn,.qr-card-present-btn{color:var(--text);background:#e3ead9;border-color:#b9c8af}.grid-search-input{color:var(--text);background:var(--surface-card)}
+    .slide-action-btn,.fs-toggle-btn{color:var(--text);background:#e3ead9;border-color:#b9c8af}
     .slide-nav-btn{color:#f4f1e6;background:#103d21;border-color:#b9924f}
-    @media(max-width:600px){#app-header{padding-left:120px}.header-title{font-size:.9rem}.view-btn{padding-inline:8px}}
+  </style>
+  <style id="home-polish">
+    /* ═════════════════════════════════════════════════════════════ */
+    /* HOME POLISH — Brand Book surfaces for the header and grid     */
+    /* Paper by day, forest chrome, Spectral display, Public Sans UI */
+    /* ═════════════════════════════════════════════════════════════ */
+    :root {
+      --header-h: 64px;
+      --ink: #1d211c;
+      --ink-soft: #5f6a5c;
+      --paper: #f4f1e6;
+      --page: #ece8dc;
+      --card: #fffdf7;
+      --line: #dcd6c4;
+      --line-strong: #c9bb94;
+      --forest: #103d21;
+      --deep: #0c3319;
+      --gold: #b9924f;
+      --gold-ink: #7d5f24;
+      --ease-out: cubic-bezier(.22, .8, .26, 1);
+      --font-display: 'Spectral', 'Source Serif 4', Georgia, serif;
+      --font-main: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    /* ── Header ── */
+    #app-header {
+      height: var(--header-h);
+      padding: 0 20px;
+      background: linear-gradient(180deg, #13422a 0%, #0e3719 100%);
+      border-bottom: 1px solid rgba(185, 146, 79, .5);
+      box-shadow: 0 12px 30px -20px rgba(12, 51, 25, .9);
+    }
+    body.dialogue-home #app-header { padding-left: 72px; }
+    body.dialogue-home .dialogue-brandbar { top: 10px; left: 12px; }
+
+    .brand-lockup { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    .brand-kicker {
+      font: 600 10px/1 var(--font-main);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #d9bf85;
+    }
+    .brand-title {
+      font: 600 21px/1.1 var(--font-display);
+      letter-spacing: -.005em;
+      color: var(--paper);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .seg {
+      position: relative;
+      display: inline-flex;
+      padding: 4px;
+      gap: 2px;
+      border-radius: 11px;
+      background: rgba(0, 0, 0, .24);
+      border: 1px solid rgba(244, 241, 230, .14);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
+    }
+    .seg-thumb {
+      position: absolute;
+      top: 4px;
+      left: 0;
+      width: 0;
+      height: calc(100% - 8px);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #e0ca93 0%, #c8aa66 100%);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45), 0 4px 14px rgba(0, 0, 0, .28);
+      pointer-events: none;
+    }
+    .seg.is-ready .seg-thumb { transition: transform .42s var(--ease-out), width .42s var(--ease-out); }
+    .seg-btn {
+      position: relative;
+      z-index: 1;
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 16px;
+      background: none;
+      border: 0;
+      border-radius: 8px;
+      font: 600 14px/1 var(--font-main);
+      cursor: pointer;
+      transition: color .3s var(--ease-out);
+    }
+    .seg-btn svg { width: 17px; height: 17px; flex: 0 0 auto; }
+    body[data-dialogue-page="home"] #app-header .seg-btn { color: rgba(244, 241, 230, .74) !important; }
+    body[data-dialogue-page="home"] #app-header .seg-btn:hover { color: #fffdf7 !important; }
+    body[data-dialogue-page="home"] #app-header .seg-btn.active { color: #1f1a0c !important; background: none !important; }
+
+    /* ── Grid view shell ── */
+    #grid-view {
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      background:
+        radial-gradient(900px 420px at 88% -120px, rgba(185, 146, 79, .16), transparent 70%),
+        radial-gradient(700px 360px at -10% 0, rgba(111, 143, 98, .10), transparent 70%),
+        var(--page);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      color: var(--ink);
+      font-family: var(--font-main);
+    }
+    .gv-wrap { width: 100%; max-width: 1560px; margin: 0 auto; padding-inline: 28px; }
+
+    .gv-hero {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 36px;
+      padding-bottom: 22px;
+    }
+    .gv-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font: 600 11px/1 var(--font-main);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold-ink);
+    }
+    .gv-eyebrow::before { content: ""; width: 8px; height: 8px; background: var(--gold); }
+    .gv-title {
+      font: 500 clamp(30px, 3.4vw, 46px)/1.06 var(--font-display);
+      letter-spacing: -.018em;
+      color: var(--forest);
+      text-wrap: balance;
+    }
+    .gv-title em { font-style: italic; color: var(--gold-ink); }
+    .gv-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding-bottom: 4px;
+      white-space: nowrap;
+      font: 500 14px/1 var(--font-main);
+      color: var(--ink-soft);
+    }
+    .gv-stat b { font: 500 48px/1 var(--font-display); color: var(--forest); letter-spacing: -.02em; }
+    .gv-hero > * { animation: heroIn .8s var(--ease-out) backwards; }
+    .gv-hero > :nth-child(2) { animation-delay: .12s; }
+    @keyframes heroIn { from { opacity: 0; transform: translateY(12px); } }
+
+    /* ── Sticky toolbar ── */
+    .gv-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      margin-bottom: 22px;
+      background: rgba(236, 232, 220, .82);
+      -webkit-backdrop-filter: blur(16px) saturate(1.25);
+      backdrop-filter: blur(16px) saturate(1.25);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s ease, box-shadow .3s ease, background .3s ease;
+      animation: heroIn .8s var(--ease-out) .2s backwards;
+    }
+    .gv-toolbar.is-stuck {
+      background: rgba(244, 241, 230, .9);
+      border-bottom-color: var(--line);
+      box-shadow: 0 14px 28px -24px rgba(16, 61, 33, .55);
+    }
+    .gv-toolbar-row { display: flex; align-items: center; gap: 14px; padding-block: 12px; }
+
+    .gv-search { position: relative; flex: 0 0 300px; }
+    .gv-search > svg {
+      position: absolute; left: 14px; top: 50%;
+      width: 18px; height: 18px; transform: translateY(-50%);
+      color: var(--ink-soft); pointer-events: none;
+    }
+    #grid-view .gv-search input {
+      width: 100%;
+      height: 44px;
+      padding: 0 76px 0 42px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--ink);
+      font: 500 15px/1 var(--font-main);
+      box-shadow: 0 1px 2px rgba(16, 61, 33, .06);
+      transition: border-color .2s ease, box-shadow .25s ease;
+    }
+    #grid-view .gv-search input::placeholder { color: #8b927f; }
+    #grid-view .gv-search input::-webkit-search-cancel-button { display: none; }
+    #grid-view .gv-search input:focus {
+      outline: none;
+      border-color: var(--forest);
+      box-shadow: 0 0 0 4px rgba(185, 146, 79, .25);
+    }
+    .gv-kbd {
+      position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+      padding: 3px 8px;
+      font: 600 12px/1 var(--font-main);
+      color: var(--ink-soft);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-bottom-width: 2px;
+      border-radius: 6px;
+      pointer-events: none;
+      transition: opacity .2s ease;
+    }
+    #grid-view .gv-clear {
+      position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+      display: grid; place-items: center;
+      width: 34px; height: 34px; min-height: 0;
+      border: 0; border-radius: 8px;
+      background: transparent; color: var(--ink-soft);
+      cursor: pointer; opacity: 0; pointer-events: none;
+      transition: opacity .2s ease, background .2s ease, color .2s ease;
+    }
+    #grid-view .gv-clear:hover { background: var(--paper); color: var(--forest); }
+    #grid-view .gv-clear svg { width: 16px; height: 16px; }
+    #grid-view .gv-search.has-value .gv-clear { opacity: 1; pointer-events: auto; }
+    .gv-search.has-value .gv-kbd,
+    .gv-search:focus-within .gv-kbd { opacity: 0; }
+    @media (hover: none) { .gv-kbd { display: none; } }
+
+    .gv-chips {
+      display: flex;
+      gap: 8px;
+      flex: 1 1 auto;
+      min-width: 0;
+      padding: 2px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent);
+      mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent);
+    }
+    .gv-chips::-webkit-scrollbar { display: none; }
+    #grid-view .gv-chip {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 44px;
+      padding: 0 12px 0 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--ink);
+      font: 600 13.5px/1 var(--font-main);
+      cursor: pointer;
+      transition: background .3s var(--ease-out), color .3s var(--ease-out), border-color .3s ease, transform .15s ease, opacity .2s ease;
+    }
+    #grid-view .gv-chip .dot { width: 8px; height: 8px; border-radius: 2px; background: var(--c-ink, var(--gold)); }
+    #grid-view .gv-chip .n {
+      min-width: 24px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(16, 61, 33, .07);
+      color: var(--ink-soft);
+      font-size: 12px;
+      text-align: center;
+      transition: background .3s ease, color .3s ease;
+    }
+    #grid-view .gv-chip:hover { border-color: var(--line-strong); background: #fff; }
+    #grid-view .gv-chip:active { transform: scale(.97); }
+    #grid-view .gv-chip.is-empty { opacity: .5; }
+    #grid-view .gv-chip[aria-pressed="true"] { background: var(--forest); border-color: var(--forest); color: var(--paper); }
+    #grid-view .gv-chip[aria-pressed="true"] .n { background: rgba(244, 241, 230, .16); color: #e7d6a8; }
+    #grid-view .gv-chip[aria-pressed="true"] .dot { background: #d9bf85; }
+
+    #grid-view .gv-count {
+      margin-left: auto;
+      white-space: nowrap;
+      font: 500 13px/1 var(--font-main);
+      color: var(--ink-soft);
+    }
+
+    /* ── Activity cards ── */
+    .act-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(296px, 1fr));
+      gap: 20px;
+      padding-bottom: 64px;
+    }
+    .act-card[data-g="speaking"] { --c-bg: #e3ead9; --c-ink: #3d5a36; }
+    .act-card[data-g="stories"]  { --c-bg: #f0e6cd; --c-ink: #7d5f24; }
+    .act-card[data-g="language"] { --c-bg: #dfe8ea; --c-ink: #2d5260; }
+    .act-card[data-g="culture"]  { --c-bg: #f1e4d8; --c-ink: #7a4a31; }
+    .act-card[data-g="dialogue"] { --c-bg: #103d21; --c-ink: #103d21; }
+    .act-card[data-g="more"]     { --c-bg: #ebe6d6; --c-ink: #5f6a5c; }
+    .gv-chip[data-g="speaking"] { --c-ink: #3d5a36; }
+    .gv-chip[data-g="stories"]  { --c-ink: #b9924f; }
+    .gv-chip[data-g="language"] { --c-ink: #2d5260; }
+    .gv-chip[data-g="culture"]  { --c-ink: #9a5d3e; }
+    .gv-chip[data-g="dialogue"] { --c-ink: #103d21; }
+
+    .act-card {
+      --line-c: var(--line);
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      flex-direction: column;
+      background: var(--card);
+      border: 1px solid var(--line-c);
+      border-radius: 14px;
+      box-shadow: 0 1px 2px rgba(16, 61, 33, .05), 0 10px 24px -16px rgba(16, 61, 33, .22);
+      cursor: pointer;
+      transition: transform .4s var(--ease-out), box-shadow .4s var(--ease-out), border-color .3s ease;
+    }
+    .act-card[hidden] { display: none; }
+    .act-card::before {
+      content: "";
+      position: absolute;
+      left: 18px; right: 18px; top: -1px;
+      height: 3px;
+      border-radius: 0 0 3px 3px;
+      background: var(--c-ink);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform .5s var(--ease-out);
+    }
+    .act-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), rgba(185, 146, 79, .14), transparent 55%);
+      opacity: 0;
+      transition: opacity .4s ease;
+      pointer-events: none;
+    }
+    @media (hover: hover) {
+      .act-card:hover {
+        --line-c: #d8c595;
+        transform: translateY(-4px);
+        box-shadow: 0 2px 4px rgba(16, 61, 33, .05), 0 26px 48px -24px rgba(16, 61, 33, .42);
+      }
+      .act-card:hover::before { transform: scaleX(1); }
+      .act-card:hover::after { opacity: 1; }
+      .act-card:hover .act-icon { transform: scale(1.07); }
+      .act-card:hover .act-present svg { transform: translateX(3px); }
+      .act-card:hover .act-qr { transform: scale(1.03); }
+    }
+    .act-card:focus-within { --line-c: #d8c595; }
+    .act-card.is-pressed { transform: scale(.985); transition-duration: .12s; }
+
+    .act-body { display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto; padding: 20px 20px 18px; }
+    .act-top { display: flex; align-items: center; gap: 12px; min-height: 48px; }
+    .act-icon {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--c-bg);
+      box-shadow: inset 0 0 0 1px rgba(16, 61, 33, .06);
+      font-size: 25px;
+      line-height: 1;
+      transition: transform .45s var(--ease-out);
+    }
+    .act-eyebrow {
+      min-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font: 600 11px/1.3 var(--font-main);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--c-ink);
+    }
+    .act-open {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      margin-left: auto;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      color: var(--ink-soft);
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .act-open svg { width: 17px; height: 17px; transition: transform .3s var(--ease-out); }
+    .act-open:hover { background: var(--paper); border-color: var(--line); color: var(--forest); }
+    .act-open:hover svg { transform: translate(2px, -2px); }
+    .act-title {
+      font: 600 21px/1.2 var(--font-display);
+      letter-spacing: -.01em;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    .act-desc {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font: 400 14px/1.55 var(--font-main);
+      color: var(--ink-soft);
+    }
+
+    /* Ticket stub: perforated divider with notches, QR on the left. */
+    .act-stub {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 18px 16px 16px;
+      border-top: 1.5px dashed var(--line-c);
+      transition: border-color .3s ease;
+    }
+    .act-stub::before,
+    .act-stub::after {
+      content: "";
+      position: absolute;
+      top: -9.5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--page);
+      border: 1px solid var(--line-c);
+      transition: border-color .3s ease;
+    }
+    .act-stub::before { left: -10px; clip-path: inset(0 0 0 50%); }
+    .act-stub::after { right: -10px; clip-path: inset(0 50% 0 0); }
+    .act-qr {
+      flex: 0 0 auto;
+      width: 104px;
+      height: 104px;
+      padding: 7px;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 0 0 1px rgba(16, 61, 33, .08), 0 6px 14px -8px rgba(16, 61, 33, .35);
+      transition: transform .45s var(--ease-out);
+    }
+    .act-qr canvas { display: block; width: 100% !important; height: 100% !important; }
+    .act-meta {
+      flex: 1 1 auto;
+      min-width: 0;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .act-tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; }
+    .act-tags li {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      font: 600 11.5px/1 var(--font-main);
+      color: var(--ink-soft);
+    }
+    #grid-view .act-present {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 40px;
+      min-height: 40px;
+      padding: 0 14px 0 16px;
+      border: 0;
+      border-radius: 7px;
+      background: var(--forest);
+      color: var(--paper);
+      font: 600 14px/1 var(--font-main);
+      cursor: pointer;
+      transition: background .2s ease, box-shadow .3s ease;
+    }
+    #grid-view .act-present:hover { background: var(--deep); box-shadow: 0 8px 18px -10px rgba(12, 51, 25, .8); }
+    #grid-view .act-present svg { width: 16px; height: 16px; transition: transform .35s var(--ease-out); }
+
+    /* Scroll-in reveal (added by JS only, so no-JS never hides cards). */
+    .act-card.pre { opacity: 0; }
+    .act-card.enter { animation: cardIn .7s var(--ease-out) var(--d, 0ms) backwards; }
+    @keyframes cardIn { from { opacity: 0; transform: translateY(18px); } }
+
+    /* Empty state */
+    .gv-empty { padding: 72px 20px 96px; text-align: center; color: var(--ink-soft); }
+    .gv-empty[hidden] { display: none; }
+    .gv-empty-mark {
+      display: grid; place-items: center;
+      width: 64px; height: 64px; margin: 0 auto 18px;
+      border-radius: 50%;
+      border: 1.5px dashed var(--line-strong);
+      color: var(--gold-ink);
+    }
+    .gv-empty-mark svg { width: 26px; height: 26px; }
+    .gv-empty-title { font: 500 24px/1.25 var(--font-display); color: var(--forest); margin-bottom: 16px; }
+    #grid-view .gv-empty-reset {
+      height: 44px; padding: 0 18px;
+      border-radius: 7px; border: 1px solid var(--line-strong);
+      background: var(--card); color: var(--forest);
+      font: 600 14px/1 var(--font-main); cursor: pointer;
+      transition: background .2s ease;
+    }
+    #grid-view .gv-empty-reset:hover { background: #fff; }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* ── Phones ── */
+    @media (max-width: 720px) {
+      .brand-kicker { display: none; }
+      .brand-title { font-size: 18px; }
+      .seg-btn { padding: 0 13px; }
+      .seg-btn .seg-label { display: none; }
+      .gv-wrap { padding-inline: 16px; }
+      .gv-hero { padding-top: 24px; padding-bottom: 16px; align-items: flex-start; }
+      .gv-stat { display: none; }
+      .gv-toolbar { margin-bottom: 16px; }
+      .gv-toolbar-row { flex-wrap: wrap; gap: 10px; padding-block: 10px; }
+      .gv-search { flex: 1 1 100%; min-width: 0; }
+      .gv-chips { flex: 1 1 100%; margin-inline: -2px; }
+      #grid-view .gv-count { display: none; }
+      .act-grid { gap: 14px; grid-template-columns: 1fr; }
+      .act-body { padding: 18px 18px 16px; }
+      .act-qr { width: 96px; height: 96px; }
+    }
+    @media (max-width: 380px) {
+      body.dialogue-home #app-header { padding-right: 12px; }
+      .brand-title { font-size: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gv-hero > *, .gv-toolbar, .act-card.enter { animation: none !important; }
+      .act-card, .act-card::before, .act-icon, .act-qr, .seg.is-ready .seg-thumb { transition: none !important; }
+      .act-card:hover { transform: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -863,20 +1116,23 @@
   <!-- Top Header Navigation Bar -->
   <header id="app-header">
     <div class="header-left">
-      <h1 class="header-title">
-        <span>📱 Classroom Activities</span>
-        <span class="badge">Smart-TV Ready</span>
+      <h1 class="brand-lockup">
+        <span class="brand-kicker">Dialogue</span>
+        <span class="brand-title">Classroom Activities</span>
       </h1>
     </div>
 
     <div class="header-right">
       <!-- View Mode Switcher -->
-      <div class="view-toggle-wrap">
-        <button id="btn-view-slideshow" class="view-btn" type="button">
-          🖥️ TV Slideshow
+      <div class="seg" id="view-seg" role="group" aria-label="View">
+        <span class="seg-thumb" aria-hidden="true"></span>
+        <button id="btn-view-grid" class="seg-btn active" type="button" aria-pressed="true" aria-label="All activities">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="5.5" height="5.5" rx="1.4"/><rect x="11.5" y="3" width="5.5" height="5.5" rx="1.4"/><rect x="3" y="11.5" width="5.5" height="5.5" rx="1.4"/><rect x="11.5" y="11.5" width="5.5" height="5.5" rx="1.4"/></svg>
+          <span class="seg-label">Activities</span>
         </button>
-        <button id="btn-view-grid" class="view-btn active" type="button">
-          🔲 All QR Grid
+        <button id="btn-view-slideshow" class="seg-btn" type="button" aria-pressed="false" aria-label="TV slideshow">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="3.5" width="15" height="10" rx="1.8"/><path d="M7 17h6M10 13.5V17"/></svg>
+          <span class="seg-label">TV Slideshow</span>
         </button>
       </div>
     </div>
@@ -978,17 +1234,40 @@
       </div>
     </section>
 
-    <!-- 2. ALL-IN-ONE INTERACTIVE QR DIRECTORY GRID -->
+    <!-- 2. ACTIVITY DIRECTORY GRID -->
     <section id="grid-view">
-      <div class="grid-toolbar">
-        <div class="grid-search-wrap">
-          <span class="grid-search-icon">🔍</span>
-          <input id="grid-search-input" class="grid-search-input" type="text" placeholder="Search activities by title or category..." autocomplete="off">
+      <div class="gv-wrap gv-hero">
+        <div>
+          <p class="gv-eyebrow">English &amp; Skills Center · Rajshahi</p>
+          <h2 class="gv-title">Pick an activity. <em>Scan to join.</em></h2>
         </div>
-        <span id="grid-count-badge" class="grid-count-badge">Showing 25 activities</span>
+        <p class="gv-stat"><b id="gv-total">30</b> activities</p>
       </div>
 
-      <div id="qr-cards-grid" class="qr-cards-grid"></div>
+      <div class="gv-toolbar" id="gv-toolbar">
+        <div class="gv-wrap gv-toolbar-row">
+          <div class="gv-search" id="gv-search">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8.8" cy="8.8" r="5.6"/><path d="m13 13 4 4"/></svg>
+            <label class="sr-only" for="grid-search-input">Search activities</label>
+            <input id="grid-search-input" type="search" placeholder="Search activities" autocomplete="off" spellcheck="false">
+            <kbd class="gv-kbd" aria-hidden="true">/</kbd>
+            <button class="gv-clear" id="gv-clear" type="button" aria-label="Clear search">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m5.5 5.5 9 9m0-9-9 9"/></svg>
+            </button>
+          </div>
+          <div class="gv-chips" id="gv-chips" role="group" aria-label="Filter by type"></div>
+          <span id="grid-count-badge" class="gv-count" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="gv-wrap">
+        <div id="qr-cards-grid" class="act-grid"></div>
+        <div class="gv-empty" id="gv-empty" hidden>
+          <div class="gv-empty-mark"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="8.8" cy="8.8" r="5.6"/><path d="m13 13 4 4"/></svg></div>
+          <p class="gv-empty-title">Nothing matches that search.</p>
+          <button class="gv-empty-reset" id="gv-empty-reset" type="button">Show all activities</button>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -1515,105 +1794,333 @@
     });
 
     /* ------------------------------------------------------------- */
-    /* ALL-IN-ONE GRID LOGIC                                         */
+    /* ACTIVITY GRID                                                 */
+    /* Built once; search and filter chips only toggle visibility,   */
+    /* and cards glide to their new places (FLIP).                   */
     /* ------------------------------------------------------------- */
     var qrCardsGrid = document.getElementById("qr-cards-grid");
     var gridSearchInput = document.getElementById("grid-search-input");
     var gridCountBadge = document.getElementById("grid-count-badge");
+    var gvSearch = document.getElementById("gv-search");
+    var gvClear = document.getElementById("gv-clear");
+    var gvChips = document.getElementById("gv-chips");
+    var gvEmpty = document.getElementById("gv-empty");
+    var gvToolbar = document.getElementById("gv-toolbar");
+    var viewSeg = document.getElementById("view-seg");
+    var EASE = "cubic-bezier(.22,.8,.26,1)";
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    function renderGrid(filterText) {
+    // Broad groups for the filter chips. Each activity keeps its own
+    // specific category as the card's eyebrow; an unmapped category
+    // still shows under "All".
+    var GROUPS = [
+      { id: "speaking", label: "Speaking", cats: ["Discussion & Speaking", "Debate & Speaking", "Speaking", "ESL Pair Activity", "Local Problems", "GPT Practice", "Classroom Game"] },
+      { id: "stories", label: "Stories & Pictures", cats: ["Visual Story", "Picture Story", "Comics", "Action Pictures", "Narrative", "Stories", "Parable", "Audio Story"] },
+      { id: "language", label: "Language & Exams", cats: ["ESL", "Vocabulary", "IELTS Listening", "IELTS Reading"] },
+      { id: "culture", label: "Culture & Skills", cats: ["Culture", "Digital & AI Literacy"] },
+      { id: "dialogue", label: "Visit Dialogue", cats: ["Community", "Location"] }
+    ];
+
+    var ICON_OPEN = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5H5.5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V12M11.5 4.5h4v4M15.5 4.5 9 11"/></svg>';
+    var ICON_ARROW = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10h11M11 5.5l4.5 4.5-4.5 4.5"/></svg>';
+
+    var gridBuilt = false;
+    var cardEls = [];
+    var activeGroup = "all";
+    var revealObserver = null;
+
+    function groupOf(act) {
+      for (var i = 0; i < GROUPS.length; i++) {
+        if (GROUPS[i].cats.indexOf(act.category) !== -1) return GROUPS[i].id;
+      }
+      return "more";
+    }
+
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, function(c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+
+    function buildGrid() {
       qrCardsGrid.innerHTML = "";
-      var filter = (filterText || "").toLowerCase().trim();
-      var count = 0;
-
-      activities.forEach(function(act, idx) {
-        if (filter) {
-          var matchTitle = act.title.toLowerCase().includes(filter);
-          var matchDesc = act.desc.toLowerCase().includes(filter);
-          var matchBadge = (act.badge || "").toLowerCase().includes(filter);
-          if (!matchTitle && !matchDesc && !matchBadge) return;
-        }
-
-        count++;
+      cardEls = activities.map(function(act, idx) {
+        var g = groupOf(act);
         var fullUrl = act.qrUrl || getAbsoluteUrl(act.href);
-        var card = document.createElement("div");
-        card.className = "qr-card-item";
+        var tags = (act.badge || "").split("·").map(function(t) { return t.trim(); }).filter(Boolean).slice(0, 2);
+        var external = /^https?:/i.test(act.href);
 
-        // Head
-        var head = document.createElement("div");
-        head.className = "qr-card-head";
-        head.innerHTML = `
-          <div class="qr-card-icon">${act.icon}</div>
-          <div>
-            <div class="qr-card-title">${act.title}</div>
-            <div class="qr-card-desc">${act.desc}</div>
-          </div>
-        `;
-        card.appendChild(head);
+        var card = document.createElement("article");
+        card.className = "act-card";
+        card.dataset.g = g;
+        card.innerHTML =
+          '<div class="act-body">' +
+            '<div class="act-top">' +
+              '<span class="act-icon" aria-hidden="true">' + esc(act.icon) + '</span>' +
+              '<span class="act-eyebrow" title="' + esc(act.category || "Activity") + '">' + esc(act.category || "Activity") + '</span>' +
+              '<a class="act-open" href="' + esc(act.href) + '" target="_blank" rel="noopener"' +
+                ' aria-label="Open ' + esc(act.title) + (external ? '' : ' in a new tab') + '" title="Open">' + ICON_OPEN + '</a>' +
+            '</div>' +
+            '<h3 class="act-title">' + esc(act.title) + '</h3>' +
+            '<p class="act-desc">' + esc(act.desc) + '</p>' +
+          '</div>' +
+          '<div class="act-stub">' +
+            '<div class="act-qr" role="img" aria-label="QR code for ' + esc(act.title) + '"></div>' +
+            '<div class="act-meta">' +
+              '<ul class="act-tags">' + tags.map(function(t) { return '<li>' + esc(t) + '</li>'; }).join("") + '</ul>' +
+              '<button class="act-present" type="button">Present' + ICON_ARROW + '</button>' +
+            '</div>' +
+          '</div>';
 
-        // QR Preview
-        var qrWrap = document.createElement("div");
-        qrWrap.className = "qr-card-preview-wrap";
-        new QRCode(qrWrap, {
+        // Rendered at 2× for crisp modules on projectors and retina screens.
+        new QRCode(card.querySelector(".act-qr"), {
           text: fullUrl,
-          width: 130,
-          height: 130,
-          colorDark: "#000000",
+          width: 232,
+          height: 232,
+          colorDark: "#0c3319",
           colorLight: "#ffffff",
           correctLevel: QRCode.CorrectLevel.M
         });
-        card.appendChild(qrWrap);
 
-        // Footer
-        var footer = document.createElement("div");
-        footer.className = "qr-card-footer";
-        footer.innerHTML = `
-          <span class="qr-card-badge">${act.badge.split("·")[0].trim()}</span>
-          <button class="qr-card-present-btn" type="button">▶ Present</button>
-        `;
-        card.appendChild(footer);
+        card._g = g;
+        card._idx = idx;
+        card._text = [act.title, act.desc, act.badge, act.category, (GROUPS.filter(function(x) { return x.id === g; })[0] || {}).label]
+          .join(" ").toLowerCase();
 
-        // Click to launch in TV Slideshow
-        card.addEventListener("click", function() {
-          switchToSlideshow();
-          renderSlide(idx);
+        card.addEventListener("click", function(e) {
+          if (e.target.closest("a")) return; // the Open link goes straight to the activity
+          presentFromCard(card);
         });
 
         qrCardsGrid.appendChild(card);
+        return card;
       });
 
-      gridCountBadge.innerText = "Showing " + count + " of " + activities.length + " activities";
+      buildChips();
+      document.getElementById("gv-total").textContent = activities.length;
+      setupReveal();
     }
 
-    if (gridSearchInput) {
-      gridSearchInput.addEventListener("input", function() {
-        renderGrid(gridSearchInput.value);
+    function presentFromCard(card) {
+      if (reduceMotion) { switchToSlideshow(); renderSlide(card._idx); return; }
+      card.classList.add("is-pressed");
+      setTimeout(function() {
+        card.classList.remove("is-pressed");
+        switchToSlideshow();
+        renderSlide(card._idx);
+      }, 110);
+    }
+
+    function buildChips() {
+      var list = [{ id: "all", label: "All" }].concat(GROUPS);
+      if (cardEls.some(function(c) { return c._g === "more"; })) list.push({ id: "more", label: "More" });
+      gvChips.innerHTML = list.map(function(g) {
+        return '<button class="gv-chip" type="button" data-g="' + g.id + '" aria-pressed="' + (g.id === activeGroup) + '">' +
+          (g.id === "all" ? "" : '<span class="dot" aria-hidden="true"></span>') +
+          esc(g.label) + '<span class="n"></span></button>';
+      }).join("");
+      gvChips.addEventListener("click", function(e) {
+        var chip = e.target.closest(".gv-chip");
+        if (!chip || chip.dataset.g === activeGroup) return;
+        activeGroup = chip.dataset.g;
+        gvChips.querySelectorAll(".gv-chip").forEach(function(c) {
+          c.setAttribute("aria-pressed", String(c === chip));
+        });
+        chip.scrollIntoView({ block: "nearest", inline: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
+        applyFilter(true);
       });
     }
+
+    function searchTerms() {
+      return (gridSearchInput.value || "").toLowerCase().trim().split(/\s+/).filter(Boolean);
+    }
+
+    function matchesSearch(card, terms) {
+      return terms.every(function(t) { return card._text.indexOf(t) !== -1; });
+    }
+
+    function applyFilter(animate) {
+      var terms = searchTerms();
+      var doFlip = animate && !reduceMotion && typeof Element.prototype.animate === "function";
+      var first = new Map();
+      if (doFlip) {
+        cardEls.forEach(function(c) { if (!c.hidden) first.set(c, c.getBoundingClientRect()); });
+      }
+
+      var shown = 0;
+      var perGroup = { all: 0 };
+      cardEls.forEach(function(c) {
+        var inSearch = matchesSearch(c, terms);
+        if (inSearch) {
+          perGroup.all++;
+          perGroup[c._g] = (perGroup[c._g] || 0) + 1;
+        }
+        var ok = inSearch && (activeGroup === "all" || c._g === activeGroup);
+        c.hidden = !ok;
+        if (ok) shown++;
+      });
+
+      gvChips.querySelectorAll(".gv-chip").forEach(function(chip) {
+        var n = perGroup[chip.dataset.g] || 0;
+        chip.querySelector(".n").textContent = n;
+        chip.classList.toggle("is-empty", n === 0);
+      });
+
+      var filtered = shown !== activities.length;
+      gridCountBadge.textContent = filtered ? shown + " of " + activities.length + " shown" : "";
+      gvSearch.classList.toggle("has-value", !!gridSearchInput.value);
+      gvEmpty.hidden = shown !== 0;
+
+      if (!doFlip) return;
+      cardEls.forEach(function(c) {
+        if (c.hidden) return;
+        var f = first.get(c);
+        var l = c.getBoundingClientRect();
+        if (f) {
+          var dx = f.left - l.left;
+          var dy = f.top - l.top;
+          if (Math.abs(dx) > 0.5 || Math.abs(dy) > 0.5) {
+            c.animate(
+              [{ transform: "translate(" + dx + "px," + dy + "px)" }, { transform: "translate(0,0)" }],
+              { duration: 480, easing: EASE }
+            );
+          }
+        } else if (!c.classList.contains("pre")) {
+          c.animate(
+            [{ opacity: 0, transform: "scale(.96)" }, { opacity: 1, transform: "none" }],
+            { duration: 380, delay: 100, easing: EASE, fill: "backwards" }
+          );
+        }
+      });
+    }
+
+    // Cards rise into place as they scroll into view, staggered per batch.
+    function setupReveal() {
+      if (reduceMotion || !("IntersectionObserver" in window)) return;
+      cardEls.forEach(function(c) { c.classList.add("pre"); });
+      revealObserver = new IntersectionObserver(function(entries) {
+        var n = 0;
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) return;
+          var c = entry.target;
+          c.style.setProperty("--d", Math.min(n++, 8) * 55 + "ms");
+          c.classList.remove("pre");
+          c.classList.add("enter");
+          c.addEventListener("animationend", function done() {
+            c.classList.remove("enter");
+            c.removeEventListener("animationend", done);
+          });
+          revealObserver.unobserve(c);
+        });
+      }, { root: gridView, rootMargin: "0px 0px -24px 0px", threshold: 0.06 });
+      cardEls.forEach(function(c) { revealObserver.observe(c); });
+    }
+
+    // Soft gold spotlight that follows the pointer across a card.
+    qrCardsGrid.addEventListener("pointermove", function(e) {
+      var c = e.target.closest(".act-card");
+      if (!c) return;
+      var r = c.getBoundingClientRect();
+      c.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      c.style.setProperty("--my", (e.clientY - r.top) + "px");
+    });
+
+    var searchTimer = null;
+    gridSearchInput.addEventListener("input", function() {
+      gvSearch.classList.toggle("has-value", !!gridSearchInput.value);
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(function() { applyFilter(true); }, 90);
+    });
+    gridSearchInput.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        e.stopPropagation();
+        if (gridSearchInput.value) { gridSearchInput.value = ""; applyFilter(true); }
+        else gridSearchInput.blur();
+      }
+    });
+    gvClear.addEventListener("click", function() {
+      gridSearchInput.value = "";
+      applyFilter(true);
+      gridSearchInput.focus();
+    });
+    document.getElementById("gv-empty-reset").addEventListener("click", function() {
+      gridSearchInput.value = "";
+      activeGroup = "all";
+      gvChips.querySelectorAll(".gv-chip").forEach(function(c) {
+        c.setAttribute("aria-pressed", String(c.dataset.g === "all"));
+      });
+      applyFilter(true);
+    });
+
+    // Toolbar gains a hairline and shadow once it sticks.
+    var stuckTicking = false;
+    gridView.addEventListener("scroll", function() {
+      if (stuckTicking) return;
+      stuckTicking = true;
+      requestAnimationFrame(function() {
+        gvToolbar.classList.toggle("is-stuck", gridView.scrollTop > gvToolbar.offsetTop - 1);
+        stuckTicking = false;
+      });
+    }, { passive: true });
 
     /* ------------------------------------------------------------- */
     /* VIEW SWITCHING & FULLSCREEN                                   */
     /* ------------------------------------------------------------- */
+    function moveSegThumb() {
+      var active = viewSeg.querySelector(".seg-btn.active");
+      var thumb = viewSeg.querySelector(".seg-thumb");
+      if (!active || !thumb) return;
+      thumb.style.width = active.offsetWidth + "px";
+      thumb.style.transform = "translateX(" + active.offsetLeft + "px)";
+    }
+
+    function setActiveView(btn) {
+      [btnViewGrid, btnViewSlideshow].forEach(function(b) {
+        var on = b === btn;
+        b.classList.toggle("active", on);
+        b.setAttribute("aria-pressed", String(on));
+      });
+      moveSegThumb();
+    }
+
+    function fadeIn(el) {
+      if (reduceMotion || typeof el.animate !== "function") return;
+      el.animate(
+        [{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "none" }],
+        { duration: 420, easing: EASE }
+      );
+    }
+
     function switchToSlideshow() {
-      btnViewSlideshow.classList.add("active");
-      btnViewGrid.classList.remove("active");
+      var wasHidden = slideshowView.style.display !== "flex";
+      setActiveView(btnViewSlideshow);
       slideshowView.style.display = "flex";
       gridView.style.display = "none";
+      if (wasHidden) fadeIn(slideshowView);
       resetSlideTimer();
     }
 
     function switchToGrid() {
-      btnViewGrid.classList.add("active");
-      btnViewSlideshow.classList.remove("active");
+      var wasHidden = gridView.style.display !== "block";
+      setActiveView(btnViewGrid);
       slideshowView.style.display = "none";
-      gridView.style.display = "flex";
+      gridView.style.display = "block";
       if (slideTimer) clearTimeout(slideTimer);
       if (progressInterval) clearInterval(progressInterval);
-      renderGrid(gridSearchInput ? gridSearchInput.value : "");
+      if (!gridBuilt) {
+        gridBuilt = true;
+        buildGrid();
+        applyFilter(false);
+        return;
+      }
+      if (wasHidden) fadeIn(gridView);
     }
 
     btnViewSlideshow.addEventListener("click", switchToSlideshow);
     btnViewGrid.addEventListener("click", switchToGrid);
+
+    window.addEventListener("resize", moveSegThumb);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveSegThumb);
 
     function toggleFullscreen() {
       var isFs = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
@@ -1661,9 +2168,23 @@
 
     /* Keyboard Shortcuts */
     document.addEventListener("keydown", function(e) {
-      if (e.target.tagName === "INPUT") return;
+      var inSlides = slideshowView.style.display === "flex";
+      if (e.key === "/" && !inSlides && e.target.tagName !== "INPUT") {
+        e.preventDefault();
+        gridSearchInput.focus();
+        return;
+      }
+      if (e.target.tagName === "INPUT" || e.metaKey || e.ctrlKey || e.altKey) return;
 
-      if (e.key === "ArrowLeft") {
+      if (e.key === "g" || e.key === "G") {
+        if (inSlides) switchToGrid();
+        else switchToSlideshow();
+      } else if (e.key === "Escape") {
+        hideQrZoom();
+        slideQrCard.blur();
+      } else if (!inSlides) {
+        return; // arrows, space and digits scroll or type normally in the grid
+      } else if (e.key === "ArrowLeft") {
         renderSlide(currentIndex - 1);
       } else if (e.key === "ArrowRight") {
         renderSlide(currentIndex + 1);
@@ -1672,15 +2193,9 @@
         togglePlayPause();
       } else if (e.key === "f" || e.key === "F") {
         toggleFullscreen();
-      } else if (e.key === "g" || e.key === "G") {
-        if (slideshowView.style.display !== "none") switchToGrid();
-        else switchToSlideshow();
       } else if (e.key >= "1" && e.key <= "9") {
         var num = parseInt(e.key) - 1;
         if (num < activities.length) renderSlide(num);
-      } else if (e.key === "Escape") {
-        hideQrZoom();
-        slideQrCard.blur();
       }
     });
 
@@ -1692,6 +2207,10 @@
       initDots();
       renderSlide(0);
       switchToGrid(); // homepage opens in the browsable grid; TV Slideshow is one tap away
+      moveSegThumb();
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() { viewSeg.classList.add("is-ready"); });
+      });
     }
 
     init();
