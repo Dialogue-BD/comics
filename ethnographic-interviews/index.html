@@ -2706,6 +2706,147 @@ body.bangla .bn-inline{display:inline}
 .g-lstep.past .g-lstep-n{background:var(--moss-soft);color:var(--forest)}
 :root[data-theme="stage"] .g-lstep{font-size:calc(.95rem*var(--ui))}
 :root[data-theme="stage"] .g-lstep-n{width:calc(26px*var(--ui));height:calc(26px*var(--ui));font-size:calc(.82rem*var(--ui))}
+
+/* ---- the scene comic (Watch) -------------------------------------------- */
+.scn{display:flex;flex-direction:column;gap:var(--s3);width:100%;min-width:0}
+.scn-steps{max-width:calc(720px*var(--ui));width:100%;align-self:center}
+.scn-body{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s4);align-items:start;min-width:0}
+.scn-left{display:flex;flex-direction:column;align-items:center;gap:var(--s3);min-width:0}
+
+/* the comic: six squares stacked in one frame, one on at a time */
+.scn-view{position:relative;width:100%;max-width:calc(560px*var(--ui));aspect-ratio:1/1;
+  border-radius:calc(12px*var(--ui));overflow:hidden;background:var(--panel);cursor:pointer;
+  box-shadow:0 0 0 1px var(--rule),0 10px 28px rgba(16,61,33,.14)}
+.scn-view:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.scn-pic{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
+.scn-pic.on{opacity:1}
+.scn-pic picture,.scn-pic img{display:block;width:100%;height:100%;object-fit:cover}
+.scn-pic .beat-shot{position:absolute;inset:0;width:100%;height:100%;border-radius:0}
+.scn-pic .beat-shot img{width:100%;height:100%;object-fit:cover}
+.scn-pic .beat-shot .beat-g{display:none}
+.scn-pic .beat-shot.no-shot{display:grid;place-items:center;background:var(--panel)}
+.scn-pic .beat-shot.no-shot .beat-g{display:block;font-size:calc(4.6rem*var(--ui))}
+.scn-pass-1 .scn-pic.on{animation:scnKen 9s ease-out both}
+@keyframes scnKen{from{transform:scale(1.035)}to{transform:scale(1)}}
+
+/* who is talking: a face, no name, so listen 1 stays wordless */
+.scn-badge{position:absolute;left:calc(12px*var(--ui));bottom:calc(12px*var(--ui));z-index:3;
+  opacity:0;transform:translateY(6px) scale(.92);transition:opacity .3s ease,transform .3s ease;pointer-events:none}
+.scn-badge.on{opacity:1;transform:none}
+.scn-face{position:relative;flex:0 0 auto;width:calc(44px*var(--ui));height:calc(44px*var(--ui));border-radius:50%;
+  overflow:hidden;background:var(--moss-soft);display:grid;place-items:center;
+  box-shadow:0 0 0 2px var(--surface-card),0 2px 8px rgba(16,61,33,.18)}
+.scn-face img{width:100%;height:100%;object-fit:cover;display:block}
+.scn-face-ph{font-family:var(--font-display);font-weight:600;color:var(--forest);font-size:calc(1.2rem*var(--ui))}
+.scn-face.is-narrator{background:var(--gold-soft);color:var(--kicker)}
+.scn-face-ico{width:55%;height:55%}
+.scn-face.is-badge{width:calc(76px*var(--ui));height:calc(76px*var(--ui));
+  box-shadow:0 0 0 3px var(--gold),0 6px 18px rgba(0,0,0,.28)}
+.scn-face.is-badge .scn-face-ph{font-size:calc(2rem*var(--ui))}
+.scn.is-playing .scn-face.is-badge{animation:scnTalk 1.4s ease-in-out infinite}
+@keyframes scnTalk{0%,100%{box-shadow:0 0 0 3px var(--gold),0 6px 18px rgba(0,0,0,.28)}
+  50%{box-shadow:0 0 0 7px rgba(185,146,79,.45),0 6px 18px rgba(0,0,0,.28)}}
+
+/* a poster play button until the story starts */
+.scn-bigplay{position:absolute;inset:0;margin:auto;z-index:4;width:calc(92px*var(--ui));height:calc(92px*var(--ui));
+  border-radius:50%;display:grid;place-items:center;background:rgba(16,61,33,.88);color:#fff;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);transition:opacity .3s ease,transform .3s ease;pointer-events:none}
+.scn-bigplay-ico{width:38%;height:38%;margin-left:6%}
+.scn.is-playing .scn-bigplay{opacity:0;transform:scale(.8)}
+.scn.is-paused .scn-bigplay{opacity:1}
+
+.scn-marks{display:flex;gap:calc(6px*var(--ui));justify-content:center;flex-wrap:wrap}
+.scn-mark{min-width:calc(34px*var(--ui));height:calc(34px*var(--ui));padding:0;border-radius:999px;
+  border:1.5px solid var(--rule-strong);background:var(--surface-card);color:var(--tx-muted);
+  font:600 calc(.85rem*var(--ui))/1 var(--font-ui);cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.scn-mark.past{background:var(--moss-soft);border-color:transparent;color:var(--forest)}
+.scn-mark.on{background:var(--forest);border-color:var(--forest);color:#fff}
+
+.scn-ctl{display:flex;align-items:center;gap:var(--s3);width:100%;max-width:calc(560px*var(--ui))}
+.scn-prog{flex:1 1 auto;height:calc(6px*var(--ui));border-radius:999px;background:var(--rule);overflow:hidden}
+.scn-prog i{display:block;height:100%;width:0;background:var(--gold);transition:width .15s linear}
+.scn-hint{margin:0;text-align:center;color:var(--tx-muted);font-size:calc(.95rem*var(--ui));line-height:1.45}
+.scn-hint .bn{display:block}
+
+/* listen 2: the line being said */
+.scn-kara{min-height:calc(150px*var(--ui));display:flex;align-items:center;min-width:0}
+.scn-kara-in{display:flex;gap:var(--s3);align-items:flex-start;width:100%;animation:gRise .35s cubic-bezier(.2,.7,.2,1) both}
+.scn-face.is-kara{width:calc(64px*var(--ui));height:calc(64px*var(--ui))}
+.scn-kara-t{min-width:0;flex:1}
+.scn-name{display:block;font:700 calc(.78rem*var(--ui))/1.2 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--kicker);margin-bottom:calc(4px*var(--ui))}
+.scn-kara-in.is-n .scn-name{color:var(--tx-muted)}
+.scn-words{margin:0;font-family:var(--font-display);font-weight:600;color:var(--heading);
+  font-size:calc(clamp(1.35rem,5vw,1.9rem)*var(--ui));line-height:1.35;letter-spacing:-.005em}
+.scn-kara-in.is-n .scn-words{font-style:italic;font-weight:500}
+.scn-words .tw,.scn-words .tp{color:var(--tx-muted);opacity:.55;transition:opacity .15s,color .15s}
+.scn-words .tw.is-said,.scn-words .tp.is-said{opacity:1;color:var(--heading)}
+.scn-words .tw.is-now{opacity:1;color:var(--ink);background:var(--gold);border-radius:4px;box-shadow:0 0 0 2px var(--gold)}
+.scn-kara-idle{width:100%;height:calc(10px*var(--ui));border-radius:999px;
+  background:repeating-linear-gradient(90deg,var(--rule) 0 calc(38px*var(--ui)),transparent 0 calc(50px*var(--ui)))}
+
+/* listen 3: the whole conversation, as a chat */
+.scn-script{display:flex;flex-direction:column;gap:var(--s3);min-width:0}
+.scn-row{display:flex;gap:var(--s3);align-items:flex-end;cursor:pointer;border-radius:calc(12px*var(--ui))}
+.scn-row.is-b{flex-direction:row-reverse}
+.scn-row.is-n{align-items:center}
+.scn-face.is-small{width:calc(38px*var(--ui));height:calc(38px*var(--ui))}
+.scn-bub{min-width:0;max-width:calc(100% - 90px*var(--ui));padding:calc(10px*var(--ui)) calc(14px*var(--ui));
+  border-radius:calc(14px*var(--ui));background:var(--surface-card);box-shadow:0 0 0 1px var(--rule);
+  transition:box-shadow .25s,background .25s}
+.scn-row.is-a .scn-bub{border-bottom-left-radius:calc(4px*var(--ui))}
+.scn-row.is-b .scn-bub{border-bottom-right-radius:calc(4px*var(--ui));background:var(--moss-soft);box-shadow:none}
+.scn-row.is-n .scn-bub{background:transparent;box-shadow:none;padding-left:0;padding-right:0;flex:1;max-width:none}
+.scn-row.is-n .transcript{font-style:italic;color:var(--tx-muted)}
+.scn-bub .transcript{font-size:calc(1.02rem*var(--ui));line-height:1.55;max-height:none;overflow:visible;padding:0;margin:0;background:none;border:0}
+.scn-row.is-now .scn-bub{box-shadow:0 0 0 2px var(--gold),0 4px 14px rgba(16,61,33,.12)}
+.scn-row.is-n.is-now .scn-bub{box-shadow:none}
+.scn-row.is-n.is-now .transcript{color:var(--tx)}
+.scn-one{flex:0 0 auto;width:calc(36px*var(--ui));height:calc(36px*var(--ui));min-height:0;border-radius:50%;padding:0;
+  border:1.5px solid var(--rule);background:var(--surface-card);color:var(--forest);display:grid;place-items:center;
+  cursor:pointer;opacity:.55;transition:opacity .2s,background .2s}
+.scn-one-ico{width:40%;height:40%;margin-left:8%}
+.scn-row:hover .scn-one,.scn-row.is-now .scn-one,.scn-one:focus-visible{opacity:1}
+.scn-row.is-now .scn-one{background:var(--forest);color:#fff;border-color:var(--forest)}
+
+@media (min-width:900px){
+  .scn-pass-2 .scn-body{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:var(--s6);align-items:center}
+  .scn-pass-3 .scn-body{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:var(--s6)}
+  .scn-pass-3 .scn-left{position:sticky;top:var(--s3)}
+  .scn-pass-3 .scn-script{max-height:calc(100dvh - var(--header-h,120px) - 260px*var(--ui));overflow:auto;
+    padding:calc(4px*var(--ui)) calc(6px*var(--ui)) calc(12px*var(--ui)) 2px;scroll-behavior:smooth}
+}
+/* the comic must fit between the header and the action bar on a projector */
+.scn-pass-1 .scn-view{max-width:max(260px,min(calc(620px*var(--ui)),calc(100dvh - var(--header-h,120px) - 440px*var(--ui))))}
+.scn-pass-2 .scn-view,.scn-pass-3 .scn-view{max-width:max(260px,min(calc(520px*var(--ui)),calc(100dvh - var(--header-h,120px) - 400px*var(--ui))))}
+@media (max-width:899px){
+  .scn-view{max-width:min(100%,calc(100dvh - 330px))}
+  .scn-pass-3 .scn-view{max-width:min(72%,calc(100dvh - 380px))}
+  .scn-pass-1 .scn-view,.scn-pass-2 .scn-view{max-width:100%}
+}
+@media (max-width:899px){
+  /* listen 3 on a phone: the picture rides along at the top while the
+     conversation scrolls under it */
+  .scn-pass-3 .scn-left{position:sticky;top:calc(-1*var(--s3));z-index:3;flex-direction:row;align-items:center;
+    justify-content:flex-start;gap:var(--s3);padding:var(--s2) 0;background:var(--surface-card);
+    box-shadow:0 8px 12px -10px rgba(16,61,33,.25)}
+  .scn-pass-3 .scn-view{width:38%;max-width:38%;flex:0 0 auto}
+  .scn-pass-3 .scn-marks{display:none}
+  .scn-pass-3 .scn-ctl{flex-direction:column;align-items:stretch;flex:1}
+  .scn-pass-3 .scn-bigplay{width:44px;height:44px}
+  .scn-pass-3 .scn-badge{display:none}
+}
+@media (max-width:520px){
+  .scn-face.is-badge{width:calc(58px*var(--ui));height:calc(58px*var(--ui))}
+  .scn-bigplay{width:calc(72px*var(--ui));height:calc(72px*var(--ui))}
+  .scn-kara{min-height:calc(120px*var(--ui))}
+}
+:root[data-theme="stage"] .scn-words{font-size:calc(2rem*var(--ui))}
+:root[data-theme="stage"] .scn-bub .transcript{font-size:calc(1.1rem*var(--ui))}
+@media (prefers-reduced-motion:reduce){
+  .scn-pic{transition:none}
+  .scn-pass-1 .scn-pic.on,.scn.is-playing .scn-face.is-badge,.scn-kara-in{animation:none}
+}
 @media (max-width:520px){ .g-lstep{flex-direction:column;align-items:flex-start;gap:4px;font-size:calc(.74rem*var(--ui))} }
 
 /* reading along: the words not said yet wait as soft bars, and fill in */
@@ -3216,7 +3357,9 @@ body.is-welcome #theme-pill{visibility:hidden}
 <!-- ============ PRINTABLE FIELD SHEET · blank, for real interviews ============ -->
 <div id="printsheet"></div>
 
-<script src="glossary.js?v=20260927b"></script>
+<script src="scenes.js?v=20260927"></script>
+<script src="scene-timings.js?v=20260927"></script>
+<script src="glossary.js?v=20260927c"></script>
 <script src="timings.js"></script>
 <script src="scenarios.js"></script>
 <script src="scenarios-bn.js?v=20260927"></script>
@@ -3624,6 +3767,7 @@ function clearRows(){
    the sequence is over too. */
 function stopAudio(keepQueue){
   if (!keepQueue) queue = false;
+  scnStop();                  /* the scene comic shares the speakers */
   if (cur){
     const c = cur; cur = null;
     /* a round still open here means the student stopped part-way: it does not
@@ -5819,11 +5963,553 @@ function panelFig(i, cls){
   return fig;
 }
 
+/* ---- the scene comic ----------------------------------------------------
+   The Watch step's listening exercise (content in scenes.js). The set-up is
+   told as a wordless comic with a narrator and two voiced characters, heard
+   three times, each time with a little more on screen:
+
+     1  Just listen        the comic turns its own pages with the audio;
+                           nothing to read — a face shows who is talking
+     2  Read along         the same, with the line being spoken, karaoke-style
+     3  Explore the words  the whole conversation, every glossed word tappable,
+                           and any line can be heard again on its own
+
+   No listen is required before the next (no completion locks).
+
+   Audio is one file per line: scene/<id>-<nn>.mp3. The page changes panel on
+   the line, so panel timing never needs authoring. Until a recording exists
+   the line is spoken by the browser's speech engine in a voice matched to the
+   character; with no speech engine at all the comic still moves on at reading
+   pace. Pictures are scene/panels/<id>-<n>.webp (.jpg); until one is drawn,
+   the nearest of the three existing strip panels stands in. */
+const SCN_GAP = 420;                         /* ms between two lines */
+const scnPad = n => String(n).padStart(2, '0');
+const scnClean = t => String(t).replace(/<[^>]+>\s*/g, '').replace(/\s+/g, ' ').trim();
+const SCN_WRE = /[A-Za-z’'-]+/g;
+const scnWords = t => scnClean(t).match(SCN_WRE) || [];
+function scnData(){ return (typeof SCENES !== 'undefined' && sc && SCENES[sc.id]) || null; }
+function scnWho(L){ const S = scnData(); return L.w === 'N' ? SCENE_NARRATOR : S.cast[L.w]; }
+function scnSide(L){ return L.w === 'N' ? 'n' : L.w === 0 ? 'a' : 'b'; }
+
+let scn = null;                              /* the scene that owns the speakers */
+let scnWarned = false;
+const scnNoMp3 = {};                         /* scenario ids with no recordings yet */
+const scnShown = {};                         /* last panel shown, per scenario */
+
+/* where each word starts in the clean line: for the speech engine's
+   charIndex, and for the proportional estimate an mp3 falls back on */
+function scnMap(L){
+  if (L._map) return L._map;
+  const txt = scnClean(L.t), starts = [], lens = [];
+  let m; SCN_WRE.lastIndex = 0;
+  while ((m = SCN_WRE.exec(txt))){ starts.push(m.index); lens.push(m[0].length + 1); }
+  const tot = lens.reduce((a, b) => a + b, 0) || 1;
+  let acc = 0;
+  const cum = lens.map(l => (acc += l) / tot);
+  return (L._map = { txt, starts, cum });
+}
+function scnEstWord(L, frac){
+  const cum = scnMap(L).cum;
+  let i = 0;
+  while (i < cum.length - 1 && cum[i] < frac) i++;
+  return i;
+}
+function scnCharWord(L, ci){
+  const st = scnMap(L).starts;
+  let i = 0;
+  while (i + 1 < st.length && st[i + 1] <= ci) i++;
+  return i;
+}
+/* aligned word times, if tools/align.py has been run for this line */
+function scnTimes(li, n){
+  const t = typeof SCENE_TIMINGS !== 'undefined' ? SCENE_TIMINGS[sc.id + '-' + scnPad(li + 1)] : null;
+  return t && Array.isArray(t.w) && t.w.length === n ? t.w : null;
+}
+function scnSeed(who){
+  let h = 0;
+  for (const ch of who.slug) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return h;
+}
+
+function scnStop(){
+  if (!scn) return;
+  const c = scn; scn = null;
+  clearTimeout(c.gapT); clearInterval(c.tick); clearTimeout(c.watch);
+  if (c.audio){
+    c.audio.onended = c.audio.onerror = c.audio.ontimeupdate = null;
+    try { c.audio.pause(); } catch (e) {}
+  }
+  if (c.utter && window.speechSynthesis) speechSynthesis.cancel();
+  scnPaint();
+}
+
+function scnStart(pass, from, only){
+  stopAudio();                                /* the interviews and any other scene */
+  const S = scnData();
+  if (!S) return;
+  /* one element for the whole run: a phone unlocks an audio element once,
+     inside the tap, and the lines after it play from timers */
+  const a = new Audio();
+  a.preload = 'auto';
+  try { a.play().catch(() => {}); } catch (e) {}
+  scn = { pass: pass, li: from || 0, only: !!only, paused: false, inGap: false,
+          el: a, audio: null, utter: null, wi: -1, frac: 0,
+          gapT: null, tick: null, watch: null, fb: -1 };
+  scnLine(scn);
+}
+
+function scnLine(c){
+  if (scn !== c) return;
+  const S = scnData();
+  const L = S.lines[c.li];
+  if (!L){ scnEnd(c); return; }
+  c.inGap = false; c.wi = -1; c.frac = 0; c.fb = -1;
+  clearInterval(c.tick); clearTimeout(c.watch);
+  scnShown[sc.id] = L.p;
+  scnPaint();
+  const n = scnWords(L.t).length;
+
+  const done = () => {
+    if (scn !== c || c.doneAt === c.li) return;
+    c.doneAt = c.li;
+    clearInterval(c.tick); clearTimeout(c.watch);
+    c.wi = n; c.frac = 1; scnPaintWords(); scnPaintProg();
+    if (c.only){ scnEnd(c); return; }
+    const nx = S.lines[c.li + 1];
+    c.li++;
+    c.inGap = true;
+    /* a new picture gets a beat longer, so the eye can land on it */
+    c.gapT = setTimeout(() => scnLine(c), nx && nx.p !== L.p ? SCN_GAP * 2 : SCN_GAP);
+  };
+
+  const speak = () => {
+    if (scn !== c || c.fb === c.li) return;
+    c.fb = c.li; c.audio = null;
+    const who = scnWho(L);
+    const rate = (who.tts && who.tts.rate) || 1;
+    const est = (n / 2.5) * 1000 / rate + 400;
+    c.t0 = Date.now(); c.spoken = 0; c.est = est; c.bound = false;
+    c.tick = setInterval(() => {
+      if (scn !== c || c.paused) return;
+      c.spoken = Date.now() - c.t0;
+      c.frac = Math.min(1, c.spoken / c.est);
+      if (!c.bound){ c.wi = scnEstWord(L, c.frac); scnPaintWords(); }
+      scnPaintProg();
+    }, 110);
+    if (!ttsAvailable() || !voices.length){
+      /* no voice at all: the comic still turns at reading pace */
+      if (!scnWarned){
+        scnWarned = true;
+        toast('No voices on this device',
+          'The pictures still move on by themselves. Recorded audio in the scene folder plays automatically.');
+      }
+      c.watch = setTimeout(function wait(){
+        if (scn !== c) return;
+        if (c.paused){ c.watch = setTimeout(wait, 300); return; }
+        if (Date.now() - c.t0 >= c.est) done(); else c.watch = setTimeout(wait, 150);
+      }, 150);
+      return;
+    }
+    const u = new SpeechSynthesisUtterance(scnMap(L).txt);
+    const v = pickVoice(who.tts.gender, scnSeed(who));
+    if (v) u.voice = v;
+    u.rate = rate; u.pitch = who.tts.pitch || 1; u.lang = (v && v.lang) || 'en-US';
+    u.onboundary = e => {
+      if (scn !== c || (e.name && e.name !== 'word')) return;
+      c.bound = true;
+      c.wi = scnCharWord(L, e.charIndex);
+      scnPaintWords();
+    };
+    u.onend = done;
+    u.onerror = done;
+    c.utter = u;
+    /* a lost onend must never strand the comic on one picture */
+    c.watch = setTimeout(function guard(){
+      if (scn !== c) return;
+      if (c.paused || speechSynthesis.speaking) c.watch = setTimeout(guard, 1000);
+      else done();
+    }, est + 4000);
+    speechSynthesis.speak(u);
+  };
+
+  if (scnNoMp3[sc.id]){ speak(); return; }
+  const a = c.el;
+  c.audio = a;
+  const times = scnTimes(c.li, n);
+  a.ontimeupdate = () => {
+    if (scn !== c || !a.duration) return;
+    const t = a.currentTime;
+    c.frac = t / a.duration;
+    c.wi = times ? wordAt(t, times, Math.max(0, c.wi)) : scnEstWord(L, c.frac);
+    scnPaintWords(); scnPaintProg();
+  };
+  a.onended = done;
+  a.onerror = () => { if (scn !== c) return; scnNoMp3[sc.id] = true; speak(); };
+  a.src = 'scene/' + sc.id + '-' + scnPad(c.li + 1) + '.mp3';
+  a.play().catch(err => {
+    if (scn !== c || c.audio !== a) return;
+    if (err && err.name === 'AbortError') return;   /* a newer src took over */
+    scnNoMp3[sc.id] = true; speak();
+  });
+}
+
+function scnEnd(c){
+  if (scn !== c) return;
+  if (!c.only){
+    state.scnHeard = state.scnHeard || {};
+    state.scnHeard[c.pass] = (state.scnHeard[c.pass] || 0) + 1;
+  }
+  scn = null;
+  clearTimeout(c.gapT); clearInterval(c.tick); clearTimeout(c.watch);
+  if (c.audio){ c.audio.onended = c.audio.onerror = c.audio.ontimeupdate = null; }
+  scnPaint();
+}
+
+function scnPause(){
+  const c = scn;
+  if (!c || c.paused) return;
+  c.paused = true;
+  if (c.inGap){ clearTimeout(c.gapT); }
+  else if (c.audio){ try { c.audio.pause(); } catch (e) {} }
+  else if (c.utter && window.speechSynthesis) speechSynthesis.pause();
+  scnPaint();
+}
+function scnResume(){
+  const c = scn;
+  if (!c || !c.paused) return;
+  c.paused = false;
+  if (c.inGap){ scnLine(c); return; }
+  if (c.audio) c.audio.play().catch(() => {});
+  else if (c.utter && window.speechSynthesis){ speechSynthesis.resume(); c.t0 = Date.now() - c.spoken; }
+  else c.t0 = Date.now() - c.spoken;
+  scnPaint();
+}
+function scnToggle(pass){
+  if (scn && scn.pass === pass && !scn.only){ scn.paused ? scnResume() : scnPause(); return; }
+  scnStart(pass, 0);
+}
+
+/* ---------------------------------------------------------------- drawing */
+function scnFace(who, cls){
+  const f = el('div', 'scn-face ' + (cls || '') + (who.slug === 'narrator' ? ' is-narrator' : ''));
+  if (who.slug === 'narrator'){ f.appendChild(icon('book', 'scn-face-ico')); return f; }
+  const im = new Image();
+  im.alt = who.name;
+  im.src = 'scene/cast/' + who.slug + '.jpg';
+  im.onerror = () => { im.remove(); f.appendChild(el('span', 'scn-face-ph', who.name.replace(/^Dr\.\s+/, '').charAt(0))); };
+  f.appendChild(im);
+  return f;
+}
+
+function scnPanel(n){
+  const S = scnData();
+  const P = S.panels[n - 1] || {};
+  const fig = el('div', 'scn-pic');
+  fig.dataset.p = n;
+  const pic = document.createElement('picture');
+  const src = document.createElement('source');
+  src.type = 'image/webp';
+  src.srcset = 'scene/panels/' + sc.id + '-' + n + '.webp';
+  pic.appendChild(src);
+  const im = new Image();
+  im.src = 'scene/panels/' + sc.id + '-' + n + '.jpg';
+  im.alt = '';
+  im.width = 720; im.height = 720; im.decoding = 'async';
+  im.onerror = () => {
+    pic.remove();
+    const b = Math.max(1, Math.min(sc.beats.length, P.beat || 1)) - 1;
+    fig.appendChild(beatShot(sc.beats[b], b));
+    fig.classList.add('is-stand-in');
+  };
+  pic.appendChild(im);
+  fig.appendChild(pic);
+  return fig;
+}
+
+/* the words of one line, one span per word, the same indices the karaoke
+   and the transcript use */
+function scnLineWords(txt){
+  const box = el('p', 'scn-words');
+  const parts = txt.match(/[A-Za-z’'-]+|[^A-Za-z’'-]+/g) || [];
+  let w = -1;
+  parts.forEach(p => {
+    if (!/[A-Za-z]/.test(p)){
+      const s = el('span', 'tp', p);
+      s.dataset.lo = Math.max(0, w);
+      box.appendChild(s);
+      return;
+    }
+    w++;
+    const s = el('span', 'tw', p);
+    s.dataset.lo = w; s.dataset.hi = w;
+    box.appendChild(s);
+  });
+  return box;
+}
+
+const SCN_PASSES = [['Just listen', 'শুধু শুনুন'], ['Read along', 'পড়তে পড়তে শুনুন'],
+                    ['Explore the words', 'শব্দগুলো দেখুন']];
+
+function scnView(pass){
+  const S = scnData();
+  const root = el('div', 'scn scn-pass-' + pass);
+  root.dataset.pass = pass;
+
+  const steps = el('ol', 'g-lsteps scn-steps');
+  steps.setAttribute('aria-label', 'Listen ' + pass + ' of 3');
+  SCN_PASSES.forEach((x, k) => {
+    const li = el('li', 'g-lstep' + (k === pass - 1 ? ' on' : k < pass - 1 ? ' past' : ''));
+    li.appendChild(el('span', 'g-lstep-n', String(k + 1)));
+    const w = el('span', 'g-lstep-t');
+    w.appendChild(el('span', null, x[0]));
+    addBn(w, x[1]);
+    li.appendChild(w);
+    steps.appendChild(li);
+  });
+  root.appendChild(steps);
+
+  const body = el('div', 'scn-body');
+  const left = el('div', 'scn-left');
+
+  /* the comic: all six panels stacked, one on — they are all loaded as soon
+     as the moment opens, so a page turn never waits on the network */
+  const view = el('div', 'scn-view');
+  view.setAttribute('role', 'button');
+  view.tabIndex = 0;
+  view.setAttribute('aria-label', 'Play or pause the story');
+  S.panels.forEach((_, i) => view.appendChild(scnPanel(i + 1)));
+  const badge = el('div', 'scn-badge');
+  badge.setAttribute('aria-hidden', 'true');
+  view.appendChild(badge);
+  const big = el('span', 'scn-bigplay');
+  big.appendChild(icon('playmark', 'scn-bigplay-ico'));
+  view.appendChild(big);
+  view.onclick = () => scnToggle(pass);
+  view.onkeydown = e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); scnToggle(pass); } };
+  left.appendChild(view);
+
+  /* six numbered marks: where the story is, and a way to jump back into it */
+  const marks = el('div', 'scn-marks');
+  S.panels.forEach((_, i) => {
+    const m = el('button', 'scn-mark', String(i + 1));
+    m.type = 'button';
+    m.dataset.p = i + 1;
+    m.setAttribute('aria-label', 'Picture ' + (i + 1));
+    m.onclick = () => {
+      const li = S.lines.findIndex(L => L.p === i + 1);
+      if (li > -1) scnStart(pass, li);
+    };
+    marks.appendChild(m);
+  });
+  left.appendChild(marks);
+
+  const ctl = el('div', 'scn-ctl');
+  const play = el('button', 'play g-play scn-play');
+  play.type = 'button';
+  play.onclick = () => scnToggle(pass);
+  ctl.appendChild(play);
+  const again = el('button', 'replay g-replay scn-again');
+  again.type = 'button';
+  again.appendChild(icon('replay'));
+  again.setAttribute('aria-label', 'Start the story again');
+  again.onclick = () => scnStart(pass, 0);
+  ctl.appendChild(again);
+  const prog = el('div', 'scn-prog');
+  prog.appendChild(el('i'));
+  ctl.appendChild(prog);
+  left.appendChild(ctl);
+  body.appendChild(left);
+
+  if (pass === 2){
+    const kara = el('div', 'scn-kara');
+    kara.setAttribute('aria-live', 'off');
+    body.appendChild(kara);
+  }
+  if (pass === 3){
+    const scr = el('div', 'scn-script');
+    S.lines.forEach((L, i) => {
+      const who = scnWho(L);
+      const row = el('div', 'scn-row is-' + scnSide(L));
+      row.dataset.li = i;
+      row.appendChild(scnFace(who, 'is-small'));
+      const bub = el('div', 'scn-bub');
+      bub.appendChild(el('span', 'scn-name', who.name));
+      bub.appendChild(glossedTranscript(scnClean(L.t), who.name));
+      row.appendChild(bub);
+      const one = el('button', 'scn-one');
+      one.type = 'button';
+      one.appendChild(icon('playmark', 'scn-one-ico'));
+      one.setAttribute('aria-label', 'Hear this line');
+      one.onclick = e => { e.stopPropagation(); scnStart(3, i, true); };
+      row.appendChild(one);
+      /* tapping the line hears it; tapping an underlined word explains it */
+      row.onclick = e => { if (e.target.closest('.w')) return; scnStart(3, i, true); };
+      scr.appendChild(row);
+    });
+    body.appendChild(scr);
+  }
+  root.appendChild(body);
+
+  const heard = (state.scnHeard || {})[pass] || 0;
+  const hint = el('p', 'scn-hint');
+  root.appendChild(addBn(hint, null));
+  root._hint = hint;
+  requestAnimationFrame(scnPaint);
+  return root;
+}
+
+function scnHintText(pass, playing){
+  const heard = (state.scnHeard || {})[pass] || 0;
+  if (pass === 3) return ['Tap a line to hear it again. Tap an underlined word for its meaning.',
+                         'কোনো লাইনে চাপ দিলে আবার শোনা যাবে। দাগ দেওয়া শব্দে চাপ দিলে মানে দেখা যাবে।'];
+  if (playing) return pass === 1 ? ['Nothing to read. Watch the pictures and listen.', 'পড়ার কিছু নেই। ছবি দেখুন আর শুনুন।']
+                                 : ['Follow the words as they light up.', 'শব্দগুলো যেমন যেমন জ্বলে উঠবে, সঙ্গে সঙ্গে পড়ুন।'];
+  if (heard) return ['Heard. Listen again, or go on.', 'শোনা হয়েছে। আবার শুনুন, বা এগিয়ে যান।'];
+  return pass === 1 ? ['Press play. The pictures move by themselves.', 'প্লে চাপুন। ছবিগুলো নিজে নিজেই এগিয়ে যাবে।']
+                    : ['Press play and read along.', 'প্লে চাপুন, আর পড়তে পড়তে শুনুন।'];
+}
+
+/* Everything on screen follows the one scene object, looked up fresh each
+   time, so a re-render (theme, language) mid-story keeps painting. */
+function scnPaint(){
+  const root = document.querySelector('.scn');
+  const S = scnData();
+  if (!root || !S) return;
+  const pass = +root.dataset.pass;
+  const mine = scn && scn.pass === pass ? scn : (scn && pass === 3 && scn.only ? scn : null);
+  const playing = !!(mine && !mine.paused);
+  const L = mine ? S.lines[Math.min(mine.li, S.lines.length - 1)] : null;
+  const p = L ? L.p : (scnShown[sc.id] || 1);
+
+  root.classList.toggle('is-playing', playing);
+  root.classList.toggle('is-paused', !!(mine && mine.paused));
+  root.querySelectorAll('.scn-pic').forEach(f => f.classList.toggle('on', +f.dataset.p === p));
+  root.querySelectorAll('.scn-mark').forEach(m => {
+    const k = +m.dataset.p;
+    m.classList.toggle('on', k === p);
+    m.classList.toggle('past', k < p);
+  });
+
+  const badge = root.querySelector('.scn-badge');
+  if (badge){
+    const key = L && !mine.inGap ? scnWho(L).slug : '';
+    if (badge.dataset.who !== key){
+      badge.dataset.who = key;
+      badge.innerHTML = '';
+      if (key){
+        badge.appendChild(scnFace(scnWho(L), 'is-badge'));
+        badge.classList.add('on');
+      } else badge.classList.remove('on');
+    }
+  }
+
+  const play = root.querySelector('.scn-play');
+  if (play){
+    const cont = !!(scn && scn.pass === pass && !scn.only);
+    const k = cont && !scn.paused ? 'ui_pause' : 'ui_play';
+    play.innerHTML = '';
+    play.appendChild(icon(k === 'ui_pause' ? 'pausemark' : 'playmark', 'play-ico'));
+    play.appendChild(playWord(k));
+    play.setAttribute('aria-label', t(k) + ' — the story');
+  }
+
+  const kara = root.querySelector('.scn-kara');
+  if (kara){
+    const li = L ? mine.li : -1;
+    if (kara.dataset.li !== String(li)){
+      kara.dataset.li = li;
+      kara.innerHTML = '';
+      if (L){
+        const who = scnWho(L);
+        const row = el('div', 'scn-kara-in is-' + scnSide(L));
+        row.appendChild(scnFace(who, 'is-kara'));
+        const w = el('div', 'scn-kara-t');
+        w.appendChild(el('span', 'scn-name', who.name));
+        w.appendChild(scnLineWords(scnMap(L).txt));
+        row.appendChild(w);
+        kara.appendChild(row);
+      } else {
+        kara.appendChild(el('div', 'scn-kara-idle'));
+      }
+    }
+  }
+
+  root.querySelectorAll('.scn-row').forEach(r => {
+    const on = !!(L && +r.dataset.li === mine.li);
+    if (r.classList.contains('is-now') !== on){
+      r.classList.toggle('is-now', on);
+      if (!on) r.querySelectorAll('.tw.is-now, .is-said').forEach(n => n.classList.remove('is-now', 'is-said'));
+      else {
+        const box = root.querySelector('.scn-script');
+        if (box && box.scrollHeight > box.clientHeight + 4){
+          const b = r.getBoundingClientRect(), q = box.getBoundingClientRect();
+          if (b.top < q.top || b.bottom > q.bottom) box.scrollTop += (b.top - q.top) - box.clientHeight * 0.3;
+        }
+      }
+    }
+  });
+
+  if (root._hint){
+    const h = scnHintText(pass, playing);
+    if (root._hint.dataset.k !== h[0]){
+      root._hint.dataset.k = h[0];
+      root._hint.innerHTML = '';
+      root._hint.appendChild(document.createTextNode(h[0]));
+      root._hint.appendChild(bn(h[1]));
+    }
+  }
+  scnPaintWords();
+  scnPaintProg();
+}
+
+function scnPaintWords(){
+  const root = document.querySelector('.scn');
+  if (!root || !scn) return;
+  const wi = scn.wi;
+  let box = null;
+  if (+root.dataset.pass === 2) box = root.querySelector('.scn-kara .scn-words');
+  else if (+root.dataset.pass === 3) box = root.querySelector('.scn-row.is-now .transcript');
+  if (!box || box._wi === wi) return;
+  box._wi = wi;
+  box.querySelectorAll('.tw, .tp').forEach(n => {
+    const lo = +n.dataset.lo, hi = n.dataset.hi != null ? +n.dataset.hi : lo;
+    n.classList.toggle('is-said', n.classList.contains('tp') ? lo < wi : hi < wi);
+    if (n.classList.contains('tw')) n.classList.toggle('is-now', wi >= lo && wi <= hi);
+  });
+}
+
+function scnPaintProg(){
+  const root = document.querySelector('.scn');
+  const S = scnData();
+  if (!root || !S) return;
+  const bar = root.querySelector('.scn-prog i');
+  if (!bar) return;
+  const pass = +root.dataset.pass;
+  let pct = 0;
+  if (scn && scn.pass === pass && !scn.only) pct = (Math.min(scn.li, S.lines.length) + (scn.inGap ? 0 : scn.frac)) / S.lines.length * 100;
+  else if (scn && scn.only) pct = scn.frac * 100;
+  bar.style.width = Math.max(0, Math.min(100, pct)) + '%';
+}
+
+/* the three listens, as Watch moments */
+function sceneMoments(){
+  if (!scnData()) return [];
+  return [
+    { cue: ['Listen to the story. The pictures move by themselves.', 'গল্পটি শুনুন। ছবিগুলো নিজে নিজেই এগিয়ে যাবে।'],
+      ico: 'ear', cls: 'g-scene-m', render(st){ st.appendChild(scnView(1)); } },
+    { cue: ['Listen again. Read the words as you hear them.', 'আবার শুনুন। শুনতে শুনতে শব্দগুলো পড়ুন।'],
+      ico: 'book', cls: 'g-scene-m', render(st){ st.appendChild(scnView(2)); } },
+    { cue: ['Now read the whole story. Tap a word for its meaning.', 'এবার পুরো গল্পটি পড়ুন। কোনো শব্দে চাপ দিলে মানে দেখা যাবে।'],
+      ico: 'hand', cls: 'g-scene-m', render(st){ st.appendChild(scnView(3)); } }
+  ];
+}
+
 /* ---- 1. WATCH ----
-   The story arrives the way a picture book tells one: a title, then one
-   picture at a time with a line under it, then the paragraph once the
-   pictures have carried the situation, then a guess, then one thing to
-   notice. The first ring appears after the story, before students ask. */
+   The story arrives the way a picture book tells one: a title, then the
+   scene comic heard three times (see sceneMoments; a scenario with no scene
+   falls back to its three strip pictures, one at a time), then the paragraph
+   once the pictures have carried the situation, then a guess, then one thing
+   to notice. The first ring appears after the story, before students ask. */
 function stepObserve(){
   const M = [];
   M.push({ cue: ['A story from America. Look at it one picture at a time.',
@@ -5842,7 +6528,11 @@ function stepObserve(){
       st.appendChild(box);
     } });
 
-  sc.beats.forEach((b, i) => M.push({
+  /* With a scene comic, its three listens tell the story; without one, the
+     three strip pictures do, one at a time. */
+  const SM = sceneMoments();
+  if (SM.length) SM.forEach(m => M.push(m));
+  else sc.beats.forEach((b, i) => M.push({
     cue: ['Picture ' + (i + 1) + '. What is happening?', 'ছবি ' + bnNum(i + 1) + '। কী ঘটছে?'],
     ico: 'eye', cls: 'g-pic-m',
     render(st){

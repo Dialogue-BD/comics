@@ -570,6 +570,15 @@ function glossWord(w){
   return null;
 }
 
+/* The scene comics (scenes.js) bring their own word help. It is merged in
+   here, before the phrase index is built; anything the main bank already
+   glosses keeps the main bank's entry. scenes.js must load before this file. */
+if (typeof SCENE_GLOSS !== 'undefined'){
+  const had = new Set(GLOSS_PHRASES.map(e => e.p.toLowerCase()));
+  SCENE_GLOSS.phrases.forEach(e => { if (!had.has(e.p.toLowerCase())) GLOSS_PHRASES.push(e); });
+  Object.keys(SCENE_GLOSS.words).forEach(w => { if (!GLOSS_WORDS[w]) GLOSS_WORDS[w] = SCENE_GLOSS.words[w]; });
+}
+
 /* phrases, longest first, so "figure out" beats "figure" */
 const GLOSS_PHRASE_INDEX = GLOSS_PHRASES
   .map(e => ({ e: e, t: e.p.split(/\s+/).map(glossNorm) }))
