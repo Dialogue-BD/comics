@@ -110,6 +110,8 @@ const SCENES = {
 
 /* ========================================================================= 2 */
 'splitting-the-bill': {
+  panelSheet: true,
+  portraitSheet: true,
   rooms: {
     restaurant: 'A cosy, busy restaurant in Austin, Texas, on a Friday night. Six students at a round wooden table with candles.\nRoom tone: lively restaurant hum, plates and cutlery, soft background music too low to make out.',
     street: 'The pavement outside the restaurant, warm night air.\nRoom tone: light traffic, distant music from a bar, footsteps.'
@@ -156,6 +158,8 @@ const SCENES = {
 
 /* ========================================================================= 3 */
 'disagreeing-in-the-meeting': {
+  panelSheet: true,
+  portraitSheet: true,
   rooms: {
     meeting: 'A glass-walled meeting room in a Boston logistics office on a Monday morning. Eight people around a long table, a screen at one end.\nRoom tone: quiet air handling, a chair creaking, one person turning a page.'
   },
@@ -197,6 +201,8 @@ const SCENES = {
 
 /* ========================================================================= 4 */
 'the-boss-stacks-chairs': {
+  panelSheet: true,
+  portraitSheet: true,
   rooms: {
     hall: 'A community hall in Denver just after an office event, most guests gone. Stacks of folding chairs, a few balloons.\nRoom tone: big empty-room echo, chairs clacking somewhere at the back, a door propped open.',
     lot: 'A parking lot outside the hall, late afternoon.\nRoom tone: light wind, a distant highway, a car boot opening.',
@@ -244,6 +250,8 @@ const SCENES = {
 
 /* ========================================================================= 5 */
 'what-do-you-think': {
+  panelSheet: true,
+  portraitSheet: true,
   rooms: {
     classroom: 'A mid-sized university seminar room in Michigan, twenty students at tables, afternoon light.\nRoom tone: a quiet heating vent, a clock ticking faintly, one chair shifting.',
     corridor: 'A university corridor just after class.\nRoom tone: soft footsteps, distant voices, a door closing.'
@@ -288,6 +296,8 @@ const SCENES = {
 
 /* ========================================================================= 6 */
 'the-neighbours-tree': {
+  panelSheet: true,
+  portraitSheet: true,
   rooms: {
     yard: 'Two neighbouring front gardens on a quiet suburban street in Portland, a cool grey autumn morning, wet leaves everywhere.\nRoom tone: light breeze through trees, leaves rustling, a crow far off.',
     door: 'The front porch of the house next door.\nRoom tone: breeze, a wind chime once, the door swinging open.'
@@ -332,6 +342,8 @@ const SCENES = {
 
 /* ========================================================================= 7 */
 'back-of-the-line': {
+  panelSheet: true,
+  portraitSheet: true,
   rooms: {
     pharmacy: 'A busy neighbourhood pharmacy in Philadelphia on a weekday afternoon. Eight people queue at one counter.\nRoom tone: bright shop hum, fluorescent buzz, a till beeping, the automatic door sliding.'
   },
@@ -373,6 +385,8 @@ const SCENES = {
 
 /* ========================================================================= 8 */
 'tell-them-what-you-did': {
+  panelSheet: true,
+  portraitSheet: true,
   rooms: {
     waiting: 'A quiet corridor outside an interview room at a company in Atlanta. Two chairs against the wall.\nRoom tone: soft air conditioning, a distant phone ringing once, muffled voices behind a door.',
     interview: 'A small bright office, one interviewer behind a wooden desk.\nRoom tone: very quiet office, a pen tapping once.',
@@ -394,7 +408,7 @@ const SCENES = {
       tts: { gender: 'male', rate: 1.05, pitch: 1.0 } }
   ],
   panels: [
-    { beat: 1, room: 'waiting',   see: 'A corridor outside an interview room. Arif and Tyler sit on two chairs, both in formal clothes with folders. Tyler leans back, relaxed, and smiles at her. Arif sits stiffly, nervous.' },
+    { beat: 1, room: 'waiting',   see: 'A corridor outside an interview room. Arif and Tyler sit on two chairs, both in formal clothes with folders. Tyler leans back, relaxed, and smiles at Arif. Arif sits stiffly, nervous.' },
     { beat: 2, room: 'interview', see: 'An office. Tyler sits up straight in front of the interviewer — a Black American woman in a navy blazer at a wooden desk — gesturing confidently with one hand. She smiles and takes notes.' },
     { beat: 3, room: 'interview', see: 'The same office. Arif sits in front of the same interviewer, eyes down, one hand on his chest, making a small modest gesture.' },
     { beat: 3, room: 'interview', see: 'A memory panel with a soft faded border: Arif with a clipboard directing a crowd of volunteers packing food boxes at a charity event, clearly the person in charge.' },
@@ -418,6 +432,8 @@ const SCENES = {
 
 /* ========================================================================= 9 */
 'honestly-im-annoyed': {
+  panelSheet: true,
+  portraitSheet: true,
   rooms: {
     library: 'A group study room in a university library in Sacramento, morning. Four students round a table with laptops.\nRoom tone: hushed library air, a laptop fan, a book trolley rolling past outside the glass.',
     exit: 'A busy campus café.\nRoom tone: coffee machine hiss, cups on saucers, cheerful chatter.'
@@ -464,6 +480,8 @@ const SCENES = {
 
 /* ======================================================================== 10 */
 'leave-the-snake-alone': {
+  panelSheet: true,
+  portraitSheet: true,
   rooms: {
     garden: 'A sunny back garden in Asheville, North Carolina, on a summer morning: vegetable beds, a wooden shed, woods behind.\nRoom tone: birdsong, insects buzzing, leaves moving in a light breeze.'
   },

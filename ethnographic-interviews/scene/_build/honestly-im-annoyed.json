@@ -1,0 +1,68 @@
+{
+ "id": "honestly-im-annoyed",
+ "dur": 55.53,
+ "takes": [
+  {
+   "key": "honestly-im-annoyed-s01",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    0,
+    1
+   ],
+   "start": 0.3,
+   "trim": 0.0,
+   "len": 17.21
+  },
+  {
+   "key": "honestly-im-annoyed-s02",
+   "kind": "dialogue",
+   "room": "library",
+   "lines": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "start": 17.96,
+   "trim": 0.0,
+   "len": 16.13
+  },
+  {
+   "key": "honestly-im-annoyed-s03",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    6,
+    7
+   ],
+   "start": 34.89,
+   "trim": 0.63,
+   "len": 8.98
+  },
+  {
+   "key": "honestly-im-annoyed-s04",
+   "kind": "dialogue",
+   "room": "library",
+   "lines": [
+    8,
+    9
+   ],
+   "start": 44.32,
+   "trim": 0.37,
+   "len": 5.45
+  },
+  {
+   "key": "honestly-im-annoyed-s05",
+   "kind": "dialogue",
+   "room": "exit",
+   "lines": [
+    10,
+    11
+   ],
+   "start": 50.57,
+   "trim": 0.46,
+   "len": 4.36
+  }
+ ]
+}

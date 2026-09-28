@@ -1,0 +1,76 @@
+{
+ "id": "back-of-the-line",
+ "dur": 43.27,
+ "takes": [
+  {
+   "key": "back-of-the-line-s01",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    0,
+    1
+   ],
+   "start": 0.3,
+   "trim": 0.0,
+   "len": 16.53
+  },
+  {
+   "key": "back-of-the-line-s02",
+   "kind": "dialogue",
+   "room": "pharmacy",
+   "lines": [
+    2
+   ],
+   "start": 17.28,
+   "trim": 0.18,
+   "len": 1.8
+  },
+  {
+   "key": "back-of-the-line-s03",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    3
+   ],
+   "start": 19.88,
+   "trim": 0.55,
+   "len": 3.4
+  },
+  {
+   "key": "back-of-the-line-s04",
+   "kind": "dialogue",
+   "room": "pharmacy",
+   "lines": [
+    4,
+    5,
+    6
+   ],
+   "start": 23.73,
+   "trim": 0.46,
+   "len": 8.9
+  },
+  {
+   "key": "back-of-the-line-s05",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    7,
+    8
+   ],
+   "start": 33.43,
+   "trim": 0.69,
+   "len": 7.93
+  },
+  {
+   "key": "back-of-the-line-s06",
+   "kind": "dialogue",
+   "room": "pharmacy",
+   "lines": [
+    9
+   ],
+   "start": 41.81,
+   "trim": 0.61,
+   "len": 0.86
+  }
+ ]
+}

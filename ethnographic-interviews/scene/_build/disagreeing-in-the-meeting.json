@@ -1,0 +1,86 @@
+{
+ "id": "disagreeing-in-the-meeting",
+ "dur": 56.17,
+ "takes": [
+  {
+   "key": "disagreeing-in-the-meeting-s01",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    0
+   ],
+   "start": 0.3,
+   "trim": 0.2,
+   "len": 9.79
+  },
+  {
+   "key": "disagreeing-in-the-meeting-s02",
+   "kind": "dialogue",
+   "room": "meeting",
+   "lines": [
+    1
+   ],
+   "start": 10.54,
+   "trim": 0.16,
+   "len": 6.19
+  },
+  {
+   "key": "disagreeing-in-the-meeting-s03",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    2
+   ],
+   "start": 17.53,
+   "trim": 0.42,
+   "len": 5.68
+  },
+  {
+   "key": "disagreeing-in-the-meeting-s04",
+   "kind": "dialogue",
+   "room": "meeting",
+   "lines": [
+    3,
+    4,
+    5
+   ],
+   "start": 23.66,
+   "trim": 0.4,
+   "len": 13.07
+  },
+  {
+   "key": "disagreeing-in-the-meeting-s05",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    6
+   ],
+   "start": 37.53,
+   "trim": 0.47,
+   "len": 4.98
+  },
+  {
+   "key": "disagreeing-in-the-meeting-s06",
+   "kind": "dialogue",
+   "room": "meeting",
+   "lines": [
+    7,
+    8
+   ],
+   "start": 43.31,
+   "trim": 0.38,
+   "len": 5.65
+  },
+  {
+   "key": "disagreeing-in-the-meeting-s07",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    9
+   ],
+   "start": 49.76,
+   "trim": 0.47,
+   "len": 5.81
+  }
+ ]
+}

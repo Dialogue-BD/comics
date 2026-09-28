@@ -2721,6 +2721,7 @@ body.bangla .bn-inline{display:inline}
 .scn-pic{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
 .scn-pic.on{opacity:1}
 .scn-pic picture,.scn-pic img{display:block;width:100%;height:100%;object-fit:cover}
+.scn-pic.is-sheet{background-size:200% 300%;background-repeat:no-repeat}
 .scn-pic .beat-shot{position:absolute;inset:0;width:100%;height:100%;border-radius:0}
 .scn-pic .beat-shot img{width:100%;height:100%;object-fit:cover}
 .scn-pic .beat-shot .beat-g{display:none}
@@ -2737,6 +2738,7 @@ body.bangla .bn-inline{display:inline}
   overflow:hidden;background:var(--moss-soft);display:grid;place-items:center;
   box-shadow:0 0 0 2px var(--surface-card),0 2px 8px rgba(16,61,33,.18)}
 .scn-face img{width:100%;height:100%;object-fit:cover;display:block}
+.scn-face.is-sheet{background-size:200% auto;background-repeat:no-repeat}
 .scn-face-ph{font-family:var(--font-display);font-weight:600;color:var(--forest);font-size:calc(1.2rem*var(--ui))}
 .scn-face.is-narrator{background:var(--gold-soft);color:var(--kicker)}
 .scn-face-ico{width:55%;height:55%}
@@ -3357,8 +3359,8 @@ body.is-welcome #theme-pill{visibility:hidden}
 <!-- ============ PRINTABLE FIELD SHEET · blank, for real interviews ============ -->
 <div id="printsheet"></div>
 
-<script src="scenes.js?v=20260927b"></script>
-<script src="scene-timings.js?v=20260927b"></script>
+<script src="scenes.js?v=20260927c"></script>
+<script src="scene-timings.js?v=20260928a"></script>
 <script src="glossary.js?v=20260927c"></script>
 <script src="timings.js"></script>
 <script src="scenarios.js"></script>
@@ -6281,6 +6283,21 @@ function scnToggle(pass){
 function scnFace(who, cls){
   const f = el('div', 'scn-face ' + (cls || '') + (who.slug === 'narrator' ? ' is-narrator' : ''));
   if (who.slug === 'narrator'){ f.appendChild(icon('book', 'scn-face-ico')); return f; }
+  const S = scnData();
+  if (S.portraitSheet){
+    const side = S.cast.indexOf(who);
+    const im = new Image();
+    im.onload = () => {
+      f.classList.add('is-sheet');
+      f.style.backgroundImage = 'url("' + im.src + '")';
+      f.style.backgroundPosition = (side === 0 ? '0%' : '100%') + ' 50%';
+    };
+    im.onerror = () => f.appendChild(el('span', 'scn-face-ph', who.name.replace(/^Dr\.\s+/, '').charAt(0)));
+    im.src = 'scene/cast/' + sc.id + '-pair.webp';
+    f.setAttribute('role', 'img');
+    f.setAttribute('aria-label', who.name);
+    return f;
+  }
   const im = new Image();
   im.alt = who.name;
   im.src = 'scene/cast/' + who.slug + '.jpg';
@@ -6294,6 +6311,27 @@ function scnPanel(n){
   const P = S.panels[n - 1] || {};
   const fig = el('div', 'scn-pic');
   fig.dataset.p = n;
+  const standIn = () => {
+    const b = Math.max(1, Math.min(sc.beats.length, P.beat || 1)) - 1;
+    fig.appendChild(beatShot(sc.beats[b], b));
+    fig.classList.add('is-stand-in');
+  };
+  if (S.panelSheet){
+    const im = new Image();
+    im.onload = () => {
+      fig.classList.add('is-sheet');
+      fig.style.backgroundImage = 'url("' + im.src + '")';
+      const widthUnits = 3 * im.naturalWidth / im.naturalHeight;
+      fig.style.backgroundSize = (widthUnits * 100) + '% 300%';
+      const cellWidth = widthUnits / 2;
+      const column = (n - 1) % 2;
+      const x = (column * cellWidth + (cellWidth - 1) / 2) / (widthUnits - 1) * 100;
+      fig.style.backgroundPosition = x + '% ' + (Math.floor((n - 1) / 2) * 50) + '%';
+    };
+    im.onerror = standIn;
+    im.src = 'scene/panels/' + sc.id + '-sheet.webp';
+    return fig;
+  }
   const pic = document.createElement('picture');
   const src = document.createElement('source');
   src.type = 'image/webp';
@@ -6305,9 +6343,7 @@ function scnPanel(n){
   im.width = 720; im.height = 720; im.decoding = 'async';
   im.onerror = () => {
     pic.remove();
-    const b = Math.max(1, Math.min(sc.beats.length, P.beat || 1)) - 1;
-    fig.appendChild(beatShot(sc.beats[b], b));
-    fig.classList.add('is-stand-in');
+    standIn();
   };
   pic.appendChild(im);
   fig.appendChild(pic);

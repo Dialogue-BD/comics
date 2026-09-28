@@ -1,0 +1,97 @@
+{
+ "id": "tell-them-what-you-did",
+ "dur": 60.76,
+ "takes": [
+  {
+   "key": "tell-them-what-you-did-s01",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    0
+   ],
+   "start": 0.3,
+   "trim": 0.33,
+   "len": 7.15
+  },
+  {
+   "key": "tell-them-what-you-did-s02",
+   "kind": "dialogue",
+   "room": "waiting",
+   "lines": [
+    1,
+    2
+   ],
+   "start": 7.9,
+   "trim": 0.11,
+   "len": 5.46
+  },
+  {
+   "key": "tell-them-what-you-did-s03",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    3
+   ],
+   "start": 14.16,
+   "trim": 0.22,
+   "len": 6.98
+  },
+  {
+   "key": "tell-them-what-you-did-s04",
+   "kind": "dialogue",
+   "room": "interview",
+   "lines": [
+    4,
+    5
+   ],
+   "start": 21.59,
+   "trim": 0.7,
+   "len": 12.33
+  },
+  {
+   "key": "tell-them-what-you-did-s05",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    6,
+    7
+   ],
+   "start": 34.72,
+   "trim": 0.82,
+   "len": 13.95
+  },
+  {
+   "key": "tell-them-what-you-did-s06",
+   "kind": "dialogue",
+   "room": "home",
+   "lines": [
+    8
+   ],
+   "start": 49.12,
+   "trim": 0.48,
+   "len": 2.17
+  },
+  {
+   "key": "tell-them-what-you-did-s07",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    9
+   ],
+   "start": 52.09,
+   "trim": 0.54,
+   "len": 5.23
+  },
+  {
+   "key": "tell-them-what-you-did-s08",
+   "kind": "dialogue",
+   "room": "home",
+   "lines": [
+    10
+   ],
+   "start": 57.77,
+   "trim": 0.35,
+   "len": 2.39
+  }
+ ]
+}

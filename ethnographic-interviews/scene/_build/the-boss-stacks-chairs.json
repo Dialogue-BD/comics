@@ -1,0 +1,78 @@
+{
+ "id": "the-boss-stacks-chairs",
+ "dur": 55.46,
+ "takes": [
+  {
+   "key": "the-boss-stacks-chairs-s01",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    0,
+    1
+   ],
+   "start": 0.3,
+   "trim": 0.28,
+   "len": 15.44
+  },
+  {
+   "key": "the-boss-stacks-chairs-s02",
+   "kind": "dialogue",
+   "room": "hall",
+   "lines": [
+    2,
+    3,
+    4
+   ],
+   "start": 16.54,
+   "trim": 0.14,
+   "len": 10.26
+  },
+  {
+   "key": "the-boss-stacks-chairs-s03",
+   "kind": "dialogue",
+   "room": "lot",
+   "lines": [
+    5
+   ],
+   "start": 27.6,
+   "trim": 0.55,
+   "len": 4.59
+  },
+  {
+   "key": "the-boss-stacks-chairs-s04",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    6,
+    7
+   ],
+   "start": 32.64,
+   "trim": 0.27,
+   "len": 8.85
+  },
+  {
+   "key": "the-boss-stacks-chairs-s05",
+   "kind": "dialogue",
+   "room": "kitchen",
+   "lines": [
+    8,
+    9,
+    10
+   ],
+   "start": 41.94,
+   "trim": 0.66,
+   "len": 7.13
+  },
+  {
+   "key": "the-boss-stacks-chairs-s06",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    11
+   ],
+   "start": 49.52,
+   "trim": 0.52,
+   "len": 5.34
+  }
+ ]
+}

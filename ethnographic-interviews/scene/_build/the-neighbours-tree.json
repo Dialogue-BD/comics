@@ -1,0 +1,88 @@
+{
+ "id": "the-neighbours-tree",
+ "dur": 50.46,
+ "takes": [
+  {
+   "key": "the-neighbours-tree-s01",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    0
+   ],
+   "start": 0.3,
+   "trim": 0.19,
+   "len": 7.93
+  },
+  {
+   "key": "the-neighbours-tree-s02",
+   "kind": "dialogue",
+   "room": "yard",
+   "lines": [
+    1
+   ],
+   "start": 8.68,
+   "trim": 0.0,
+   "len": 3.75
+  },
+  {
+   "key": "the-neighbours-tree-s03",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    2
+   ],
+   "start": 13.23,
+   "trim": 0.47,
+   "len": 2.44
+  },
+  {
+   "key": "the-neighbours-tree-s04",
+   "kind": "dialogue",
+   "room": "door",
+   "lines": [
+    3,
+    4
+   ],
+   "start": 16.47,
+   "trim": 0.99,
+   "len": 7.89
+  },
+  {
+   "key": "the-neighbours-tree-s05",
+   "kind": "dialogue",
+   "room": "yard",
+   "lines": [
+    5,
+    6,
+    7
+   ],
+   "start": 25.16,
+   "trim": 0.92,
+   "len": 11.25
+  },
+  {
+   "key": "the-neighbours-tree-s06",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    8,
+    9
+   ],
+   "start": 36.86,
+   "trim": 0.37,
+   "len": 10.32
+  },
+  {
+   "key": "the-neighbours-tree-s07",
+   "kind": "dialogue",
+   "room": "yard",
+   "lines": [
+    10,
+    11
+   ],
+   "start": 47.63,
+   "trim": 0.98,
+   "len": 2.23
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "id": "leave-the-snake-alone",
+ "dur": 59.71,
+ "takes": [
+  {
+   "key": "leave-the-snake-alone-s01",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    0,
+    1
+   ],
+   "start": 0.3,
+   "trim": 0.2,
+   "len": 14.83
+  },
+  {
+   "key": "leave-the-snake-alone-s02",
+   "kind": "dialogue",
+   "room": "garden",
+   "lines": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "start": 15.93,
+   "trim": 0.14,
+   "len": 16.02
+  },
+  {
+   "key": "leave-the-snake-alone-s03",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    6,
+    7
+   ],
+   "start": 32.4,
+   "trim": 0.54,
+   "len": 8.86
+  },
+  {
+   "key": "leave-the-snake-alone-s04",
+   "kind": "dialogue",
+   "room": "garden",
+   "lines": [
+    8
+   ],
+   "start": 41.71,
+   "trim": 0.93,
+   "len": 2.69
+  },
+  {
+   "key": "leave-the-snake-alone-s05",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    9
+   ],
+   "start": 45.2,
+   "trim": 0.73,
+   "len": 9.78
+  },
+  {
+   "key": "leave-the-snake-alone-s06",
+   "kind": "dialogue",
+   "room": "garden",
+   "lines": [
+    10
+   ],
+   "start": 55.43,
+   "trim": 0.35,
+   "len": 3.68
+  }
+ ]
+}

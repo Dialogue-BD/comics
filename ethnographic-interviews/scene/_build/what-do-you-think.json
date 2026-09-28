@@ -1,0 +1,77 @@
+{
+ "id": "what-do-you-think",
+ "dur": 59.12,
+ "takes": [
+  {
+   "key": "what-do-you-think-s01",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    0
+   ],
+   "start": 0.3,
+   "trim": 0.3,
+   "len": 9.83
+  },
+  {
+   "key": "what-do-you-think-s02",
+   "kind": "dialogue",
+   "room": "classroom",
+   "lines": [
+    1
+   ],
+   "start": 10.58,
+   "trim": 0.12,
+   "len": 1.97
+  },
+  {
+   "key": "what-do-you-think-s03",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    2,
+    3
+   ],
+   "start": 13.35,
+   "trim": 0.54,
+   "len": 12.76
+  },
+  {
+   "key": "what-do-you-think-s04",
+   "kind": "dialogue",
+   "room": "classroom",
+   "lines": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "start": 26.56,
+   "trim": 0.73,
+   "len": 20.16
+  },
+  {
+   "key": "what-do-you-think-s05",
+   "kind": "narration",
+   "room": null,
+   "lines": [
+    9
+   ],
+   "start": 47.52,
+   "trim": 0.8,
+   "len": 7.63
+  },
+  {
+   "key": "what-do-you-think-s06",
+   "kind": "dialogue",
+   "room": "corridor",
+   "lines": [
+    10
+   ],
+   "start": 55.6,
+   "trim": 0.38,
+   "len": 2.92
+  }
+ ]
+}
