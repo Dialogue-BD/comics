@@ -159,9 +159,12 @@ function curWord(){ return S.word || 'Anxious'; }
 function save(){ ['role', 'lang', 'word', 'level', 'frames', 'idiom'].forEach(k => store.set(k, S[k])); store.set('filter0', S.storm0); store.set('filter1', S.storm1); }
 
 /* ------------------------------------------------------------- speech
-   Browser voices only (no recordings yet). Lines are spoken one at a time
-   so Chrome's long-utterance cut-off never bites, and every line has a
+   Recorded voices first (audio/manifest.js maps each line to an mp3), the
+   browser's own voice as the fallback. Lines are spoken one at a time so
+   Chrome's long-utterance cut-off never bites, and every line has a
    watchdog so a device that never fires "end" cannot freeze the page. */
+const sayKey = t => t.toLowerCase().replace(/[‘’`]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
+const AUDIO_BASE = 'audio/';
 const TTS = {
   ok: 'speechSynthesis' in window, voice: null, rate: store.get('rate', 0.9), run: 0,
   pick(){
@@ -173,7 +176,30 @@ const TTS = {
     for (const re of pref) { if (this.voice) break; this.voice = vs.find(v => re.test(v.lang + ' ' + v.name)) || null; }
   },
   voices(){ return this.ok ? speechSynthesis.getVoices().filter(v => /^en[-_]/i.test(v.lang)) : []; },
-  stop(){ this.run++; if (this.ok) speechSynthesis.cancel(); },
+  stop(){ this.run++; if (this.ok) speechSynthesis.cancel(); if (this.el) { this.el.pause(); this.el = null; } cancelAnimationFrame(this.raf); },
+  clip(text){ const A = window.EMO_AUDIO; return A && A[sayKey(text)]; },
+  /* play a recorded line; word highlights follow the clock, spread by length */
+  play(text, clip, o, run, fallback){
+    const a = new Audio(AUDIO_BASE + clip[0]);
+    this.el = a;
+    a.playbackRate = Math.max(.7, Math.min(1.2, this.rate / .9)); a.preservesPitch = true;
+    const words = [...text.matchAll(/\S+/g)], total = text.length || 1;
+    const lead = clip[2] || 0, tail = clip[3] || 0;
+    let lastW = -1, done = false;
+    const tick = () => {
+      if (run !== this.run || done) return;
+      const d = (a.duration || clip[1] || 1) - lead - tail, t = Math.max(0, a.currentTime - lead);
+      const c = Math.min(total, t / Math.max(.2, d) * total);
+      let k = -1; words.forEach((m, j) => { if (m.index <= c) k = j; });
+      if (k !== lastW && k >= 0) { lastW = k; o.onWord && o.onWord(words[k].index); }
+      this.raf = requestAnimationFrame(tick);
+    };
+    const end = () => { if (done) return; done = true; clearTimeout(dog); cancelAnimationFrame(this.raf); if (run === this.run) o.onEnd && o.onEnd(); };
+    const dog = setTimeout(end, ((clip[1] || 6) * 1000) / a.playbackRate * 1.6 + 2500);
+    a.onended = end;
+    a.onerror = () => { if (done) return; done = true; clearTimeout(dog); if (run === this.run) fallback(); };
+    a.play().then(() => { this.raf = requestAnimationFrame(tick); }, () => { if (done) return; done = true; clearTimeout(dog); if (run === this.run) fallback(); });
+  },
   /* speak lines in order; o.onLine(i), o.onWord(i, charIndex), o.onDone() */
   list(lines, o = {}){
     this.stop();
@@ -194,6 +220,8 @@ const TTS = {
   },
   say(text, o = {}, run){
     if (run == null) { this.stop(); run = this.run; }
+    const clip = !o.synth && this.clip(text);
+    if (clip) return this.play(text, clip, o, run, () => this.say(text, Object.assign({}, o, { synth: true }), run));
     const est = 600 + text.length * 62 / this.rate;
     let done = false;
     const end = () => { if (done) return; done = true; clearTimeout(dog); o.onEnd && o.onEnd(); };
