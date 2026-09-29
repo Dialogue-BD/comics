@@ -1307,6 +1307,35 @@ const QUESTIONS = [
     "Sometimes I only know it was right after ___"
   ]
 },
+{
+  // https://www.newagebd.net/post/country/315620/ocea
+  id:116, cat:"moral",
+  q:"After a venomous snake bit a student in a Rajshahi University hall, should the snake be killed or safely captured by trained rescuers and released away from people? Why?",
+  note:"should + base verb / should <b>be</b> + past participle — <i>should it be released?</i>",
+  vocab:[
+    ["venomous","able to inject poison through a bite","B2"],
+    ["capture","catch a person or animal","B1"],
+    ["release","let someone or something go free","B1"],
+    ["rescuer","a person trained to bring someone or something to safety","B1"],
+    ["relocate","move someone or something to a new place","C1"],
+    ["humane","causing as little harm to an animal as possible","C1"]
+  ],
+  chunks:[
+    "keep a safe distance",
+    "call trained rescuers",
+    "capture the snake safely",
+    "release it away from people",
+    "protect students from harm",
+    "balance safety and animal welfare"
+  ],
+  frames:[
+    "I think the snake should be ___ because ___",
+    "The safest option for students would be ___",
+    "Trained rescuers could ___ instead of ___ «-ing»",
+    "The risk of releasing the snake is ___",
+    "We can protect both students and wildlife by ___ «-ing»"
+  ]
+},
 
 /* ── NATURE, BEAUTY & AWE ───────────────────────────────────────── */
 {
