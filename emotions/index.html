@@ -1,429 +1,54 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f7f3e9">
-    <meta name="description" content="An interactive emotions wheel for English Club daily check-ins.">
-    <title>How Are You Feeling? · English Club</title>
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="stylesheet" href="../dialogue-brand.css">
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <a class="site-logo" href="/" aria-label="Dialogue English Language Center">
-          <img src="dialogue-logo.png" alt="Dialogue English Language Center" class="site-logo__img">
-        </a>
-        <div class="header-actions">
-          <div class="date-chip" id="today">Daily check-in</div>
-        </div>
-      </header>
-
-      <!-- PERSISTENT STICKY CONTROLS BAR (AUTOPLAY + COLOR-CODED CEFR) -->
-      <section class="sticky-bar-container" id="sticky-bar-container" aria-label="Persistent controls">
-        <div class="sticky-bar">
-          <div class="sticky-bar__left">
-            <button class="header-audio-button" id="global-audio-toggle" type="button" aria-pressed="false" aria-label="Turn automatic speech on">
-              <span class="header-audio-button__icon" aria-hidden="true">🔇</span>
-              <span class="header-audio-button__label">Auto-play</span>
-            </button>
-            <div class="audio-tune-inline">
-              <select id="voice-select" class="tune-select" aria-label="Select speech voice"></select>
-              <select id="rate-select" class="tune-select" aria-label="Select speech speed">
-                <option value="0.75">0.75x</option>
-                <option value="0.9" selected>0.9x</option>
-                <option value="1">1.0x</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="sticky-bar__right">
-            <div class="cefr-bar-label">
-              <span>Vocab Mastery:</span>
-            </div>
-            <div class="cefr-selector" id="cefr-selector" role="group" aria-label="Choose a CEFR English level">
-              <button type="button" data-level="A1" class="cefr-btn cefr-btn--a" aria-pressed="false"><strong>New</strong><span>Collocations</span></button>
-              <button type="button" data-level="A2" class="cefr-btn cefr-btn--a" aria-pressed="true"><strong>Seen/Heard</strong><span>Colligations</span></button>
-              <button type="button" data-level="B1" class="cefr-btn cefr-btn--b" aria-pressed="false"><strong>Familiar</strong><span>5 Contrasts</span></button>
-              <button type="button" data-level="B2" class="cefr-btn cefr-btn--b" aria-pressed="false"><strong>Used Once</strong><span>10 Contrasts</span></button>
-              <button type="button" data-level="C1" class="cefr-btn cefr-btn--c" aria-pressed="false"><strong>Active Use</strong><span>Headword Line</span></button>
-              <button type="button" data-level="C2" class="cefr-btn cefr-btn--c" aria-pressed="false"><strong>Mastered</strong><span>Idiom Line</span></button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <main>
-        <section class="intro" aria-labelledby="page-title">
-          <p class="eyebrow">Name it. Learn it. Share it.</p>
-          <h1 id="page-title">How are you feeling <em>today?</em></h1>
-          <p class="intro__copy">Start in the middle. Choose a big feeling, then move outward to find a more exact English word.</p>
-        </section>
-
-        <nav class="steps" aria-label="Three steps">
-          <div class="step is-active" data-step="1"><span>1</span><strong>Choose a feeling</strong></div>
-          <div class="step" data-step="2"><span>2</span><strong>Get specific</strong></div>
-          <div class="step" data-step="3"><span>3</span><strong>Find your word</strong></div>
-        </nav>
-
-        <section class="experience" aria-label="Interactive emotions check-in">
-          <div class="wheel-card">
-            <div class="wheel-card__topline">
-              <div>
-                <p class="section-kicker">Your feeling</p>
-                <h2 id="wheel-instruction">Choose one from the center</h2>
-              </div>
-              <div class="wheel-actions">
-                <button class="quiet-button emoji-mode-button" id="emoji-mode" type="button" aria-pressed="false" aria-label="Show only emojis on the emotions wheel">
-                  <span aria-hidden="true">🙂</span> Emoji-only
-                </button>
-                <button class="quiet-button" id="start-over" type="button">↻ Start over</button>
-              </div>
-            </div>
-
-            <div class="mobile-choices" id="mobile-choices" aria-label="Visible emotion choices"></div>
-
-            <div class="wheel-stage">
-              <div class="wheel-halo" aria-hidden="true"></div>
-              <div class="emotion-wheel" id="emotion-wheel" role="group" aria-label="Emotions wheel"></div>
-              <div class="wheel-center" aria-hidden="true">
-                <span>How do</span>
-                <strong>you feel?</strong>
-              </div>
-            </div>
-
-            <div class="rotation-controls" aria-label="Rotate the emotions wheel">
-              <span class="drag-hint">↻ Drag the wheel to rotate</span>
-              <div class="rotation-buttons">
-                <button type="button" id="rotate-left" aria-label="Rotate wheel left">−15°</button>
-                <button type="button" id="reset-rotation">Center</button>
-                <button type="button" id="rotate-right" aria-label="Rotate wheel right">+15°</button>
-              </div>
-            </div>
-
-            <div class="wheel-key" aria-live="polite">
-              <span><i class="key-dot key-dot--one"></i>big feeling</span>
-              <span><i class="key-dot key-dot--two"></i>more specific</span>
-              <span><i class="key-dot key-dot--three"></i>most exact</span>
-            </div>
-
-          </div>
-
-        </section>
-
-        <section class="poll-card" id="daily-poll" aria-labelledby="poll-heading">
-          <div class="poll-card__header">
-            <div>
-              <p class="section-kicker">Our room, this hour</p>
-              <h2 id="poll-heading">Anonymous emotion check-in</h2>
-              <p id="poll-date"></p>
-            </div>
-            <div class="live-badge"><span aria-hidden="true"></span>Live</div>
-          </div>
-
-          <div class="share-prompt">
-            <label for="reason"><span>Add your response</span>I feel <strong id="prompt-word">…</strong> because…</label>
-            <textarea id="reason" rows="2" maxlength="220" placeholder="Choose a feeling from the wheel first." disabled></textarea>
-            <div class="anonymous-submit">
-              <p><strong>Anonymous:</strong> do not include anyone’s name or contact details.</p>
-              <button type="button" id="submit-poll" disabled>Choose a feeling to share</button>
-            </div>
-            <p class="poll-submit-status" id="poll-submit-status" aria-live="polite"></p>
-          </div>
-
-          <div class="poll-overview">
-            <div class="poll-total">
-              <strong id="poll-total">0</strong>
-              <span>responses this hour</span>
-              <small id="poll-updated">Waiting for the first response…</small>
-            </div>
-            <div class="poll-chart" id="poll-chart" aria-label="Live emotion poll results"></div>
-          </div>
-
-          <div class="poll-lower">
-            <div class="popular-words">
-              <p class="section-kicker">Words people chose</p>
-              <div id="popular-words"><span class="poll-empty">No responses yet.</span></div>
-            </div>
-            <div class="anonymous-reasons">
-              <p class="section-kicker">Anonymous reasons</p>
-              <div id="poll-reasons"><p class="poll-empty">The first written reason will appear here.</p></div>
-            </div>
-          </div>
-
-          <p class="poll-privacy">No names, emails, or profiles are collected. One response per device can be updated during the hour. The board resets at the start of each hour in Dhaka.</p>
-        </section>
-
-        <!-- AURAL FLOODING DRILLS TRANSCRIPT (BELOW THE WHEEL AND POLL) -->
-        <section class="transcript-card" id="transcript-card" aria-labelledby="transcript-heading" hidden>
-          <div class="transcript-card__header">
-            <div>
-              <p class="section-kicker">Aural Input Flooding Exercise</p>
-              <div class="selected-heading">
-                <span class="selected-emoji" id="selected-emoji" aria-hidden="true">😊</span>
-                <h2 id="selected-word">Happy</h2>
-                <span class="pronunciation" id="pronunciation">/ˈhæp.i/</span>
-              </div>
-              <p class="breadcrumb" id="breadcrumb"></p>
-            </div>
-            <button class="sound-orb" id="play-all" type="button" aria-label="Listen to the input flooding exercise">
-              <span class="sound-orb__icon" aria-hidden="true">▶</span>
-              <span class="sound-orb__label">Listen</span>
-            </button>
-          </div>
-          <div class="audio-controls" aria-label="Audio controls">
-            <button type="button" class="stop-button" id="stop-audio">■ Stop</button>
-            <p class="transcript-status" id="transcript-status" aria-live="polite">Ready to listen</p>
-          </div>
-          <h3 id="transcript-heading">Listening transcript</h3>
-          <div class="live-transcript" id="live-transcript" aria-live="off"></div>
-          <section class="bangla-transcript" lang="bn" aria-labelledby="bangla-transcript-heading">
-            <div class="bangla-transcript__header">
-              <h4 id="bangla-transcript-heading">সহজ বাংলা অনুবাদ</h4>
-              <span id="bangla-transcript-level">A2</span>
-            </div>
-            <div class="bangla-transcript__lines" id="bangla-transcript" aria-live="polite"></div>
-          </section>
-        </section>
-
-        <!-- SELF-REFLECTION CARD -->
-        <section class="reflection-card" id="reflection-card" aria-labelledby="reflection-heading" hidden>
-          <p class="section-kicker">Self-Reflection</p>
-          <h2 class="reflection-card__heading" id="reflection-heading">Put it into words</h2>
-          <div class="reflection-fields">
-            <div class="reflection-row">
-              <label class="reflection-label" for="reflection-because">I feel <strong id="reflection-emotion">…</strong> because</label>
-              <input type="text" id="reflection-because" class="reflection-input" autocomplete="off" spellcheck="true" placeholder="">
-            </div>
-            <div class="reflection-row">
-              <label class="reflection-label" for="reflection-stake">What's really at stake though is</label>
-              <input type="text" id="reflection-stake" class="reflection-input" autocomplete="off" spellcheck="true" placeholder="">
-            </div>
-            <div class="reflection-row">
-              <label class="reflection-label" for="reflection-need">I need</label>
-              <input type="text" id="reflection-need" class="reflection-input" autocomplete="off" spellcheck="true" placeholder="">
-            </div>
-          </div>
-        </section>
-
-        <!-- DEFINITION & REFERENCE CARD (BELOW DRILL TRANSCRIPT) -->
-        <section class="definition-card" id="definition-card" aria-labelledby="definition-heading" hidden>
-          <div class="definition-card__header">
-            <div>
-              <p class="section-kicker">Dictionary & Usage Reference</p>
-              <h2 id="definition-heading">Meaning & Reference</h2>
-              <p class="bangla-definition" id="bangla-definition" lang="bn"></p>
-            </div>
-          </div>
-          <div class="definition-body" id="definition-body"></div>
-        </section>
-
-        <section class="clues-card" id="feeling-clues" aria-labelledby="clues-heading">
-          <div class="clues-card__header">
-            <div>
-              <p class="section-kicker">Notice the clues</p>
-              <h2 id="clues-heading">How do I know what I’m feeling?</h2>
-            </div>
-            <div class="clue-language-area">
-              <p id="clues-intro">Choose 1–3 clues that fit best. You can add more if you need to.</p>
-              <div class="clue-language" id="clue-language" role="group" aria-label="Language for clue options">
-                <button type="button" data-clue-language="en" aria-pressed="true">English</button>
-                <button type="button" data-clue-language="bn" aria-pressed="false" lang="bn">বাংলা</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="clue-workspace">
-            <div class="clue-picker">
-              <div class="clue-tabs" role="tablist" aria-label="Types of emotional clues">
-                <button type="button" id="behavior-tab" role="tab" aria-selected="true" aria-controls="clue-options" data-clue-mode="behavior">
-                  <span class="clue-tab__label" id="behavior-tab-label">What am I doing?</span> <span class="clue-tab__count" id="behavior-count">0</span>
-                </button>
-                <button type="button" id="sensation-tab" role="tab" aria-selected="false" aria-controls="clue-options" data-clue-mode="sensation">
-                  <span class="clue-tab__label" id="sensation-tab-label">What is my body doing?</span> <span class="clue-tab__count" id="sensation-count">0</span>
-                </button>
-              </div>
-              <div class="clue-options" id="clue-options" role="tabpanel" aria-labelledby="behavior-tab"></div>
-              <button type="button" class="show-more-clues" id="show-more-clues" aria-expanded="false">Show all clues</button>
-            </div>
-
-            <aside class="clue-result" aria-live="polite">
-              <p class="section-kicker">Your possible match</p>
-              <div id="clue-result-content">
-                <h3>Start with one clue.</h3>
-                <p>Think about what you are doing or what you notice in your body right now.</p>
-              </div>
-              <div class="clue-bars" id="clue-bars" aria-label="Possible emotion matches"></div>
-              <div class="clue-result__actions">
-                <button type="button" class="explore-match" id="explore-match" hidden>Explore this emotion ↑</button>
-                <button type="button" class="clear-clues" id="clear-clues" disabled>Clear clues</button>
-              </div>
-              <p class="clue-note">These clues can guide you, but they cannot prove exactly what you feel.</p>
-            </aside>
-          </div>
-        </section>
-
-        <!-- EMOTIONAL BOUNDARIES QUIZ -->
-        <section class="eq-quiz-card" id="eq-quiz-card" aria-labelledby="eq-quiz-heading">
-
-          <!-- Abstract visual: three emotional distance states -->
-          <div class="eq-visual-wrap" aria-hidden="true">
-            <svg class="eq-svg" viewBox="0 0 600 175" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <!-- Glow filters -->
-                <filter id="eqfr" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="13"/></filter>
-                <filter id="eqfg" x="-80%"  y="-80%"  width="260%" height="260%"><feGaussianBlur stdDeviation="9"/></filter>
-                <filter id="eqfb" x="-70%"  y="-70%"  width="240%" height="240%"><feGaussianBlur stdDeviation="7"/></filter>
-                <filter id="eqfs" x="-25%" y="-15%" width="150%" height="140%">
-                  <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="rgba(0,0,0,.22)"/>
-                </filter>
-                <!-- Orb: bright specular upper-left → saturated mid → transparent edge -->
-                <radialGradient id="eqrg" cx="36%" cy="32%" r="62%">
-                  <stop offset="0%"   stop-color="#ff8b76" stop-opacity=".95"/>
-                  <stop offset="48%"  stop-color="#d63c28" stop-opacity=".78"/>
-                  <stop offset="100%" stop-color="#9a2018" stop-opacity=".16"/>
-                </radialGradient>
-                <radialGradient id="eqgg" cx="36%" cy="32%" r="62%">
-                  <stop offset="0%"   stop-color="#7ef2be" stop-opacity=".95"/>
-                  <stop offset="48%"  stop-color="#25a668" stop-opacity=".78"/>
-                  <stop offset="100%" stop-color="#13633e" stop-opacity=".14"/>
-                </radialGradient>
-                <radialGradient id="eqbg" cx="36%" cy="32%" r="62%">
-                  <stop offset="0%"   stop-color="#b0ccff" stop-opacity=".85"/>
-                  <stop offset="48%"  stop-color="#4c6ed0" stop-opacity=".55"/>
-                  <stop offset="100%" stop-color="#263ea6" stop-opacity=".1"/>
-                </radialGradient>
-                <!-- Figure: subtle top-to-bottom gradient -->
-                <linearGradient id="eqfig" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%"   stop-color="#3d5046"/>
-                  <stop offset="100%" stop-color="#18261e"/>
-                </linearGradient>
-              </defs>
-
-              <!-- Panel dividers -->
-              <line x1="200" y1="14" x2="200" y2="144" stroke="rgba(24,37,31,.07)" stroke-width="1"/>
-              <line x1="400" y1="14" x2="400" y2="144" stroke="rgba(24,37,31,.07)" stroke-width="1"/>
-
-              <!-- ══ LEFT: Too Close — orb swallows the figure ══ -->
-              <!-- Outermost ambient halo -->
-              <circle cx="100" cy="80" r="57" fill="rgba(210,62,44,.06)" filter="url(#eqfr)"/>
-              <!-- Concentric dashed rings rippling outward -->
-              <circle cx="100" cy="80" r="50" stroke="rgba(192,50,36,.055)" stroke-width="1"   stroke-dasharray="4 9"/>
-              <circle cx="100" cy="80" r="40" stroke="rgba(192,50,36,.09)"  stroke-width="1"   stroke-dasharray="3 5"/>
-              <circle cx="100" cy="80" r="29" stroke="rgba(192,50,36,.15)"  stroke-width="1.5" stroke-dasharray="2 4"/>
-              <!-- Orb inner glow -->
-              <circle cx="100" cy="80" r="21" fill="rgba(212,56,40,.28)" filter="url(#eqfr)"/>
-              <!-- Orb core -->
-              <circle cx="100" cy="80" r="21" fill="url(#eqrg)"/>
-              <!-- Specular highlight (small bright ellipse, upper-left) -->
-              <ellipse cx="93" cy="73" rx="5.5" ry="3.5" fill="rgba(255,255,255,.38)" transform="rotate(-30,93,73)"/>
-              <!-- Figure — torso inside orb, head emerges above (= overwhelmed) -->
-              <g transform="translate(100,80)" filter="url(#eqfs)">
-                <ellipse cy="-31" rx="8.5" ry="9.5" fill="url(#eqfig)"/>
-                <path d="M-6,-21 Q-14,-18,-13,-13 C-14,-7,-12,1,-12,10 C-11,18,-8,25,-5,28 C-2,30,2,30,5,28 C8,25,11,18,12,10 C12,1,14,-7,13,-13 Q14,-18,6,-21 Z" fill="url(#eqfig)"/>
-              </g>
-              <text x="100" y="163" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="8.5" font-weight="800" letter-spacing=".1em" fill="rgba(184,44,28,.68)">TOO CLOSE</text>
-
-              <!-- ══ CENTER: Healthy Distance — calm arm's-length awareness ══ -->
-              <!-- Figure -->
-              <g transform="translate(254,80)" filter="url(#eqfs)">
-                <ellipse cy="-31" rx="8.5" ry="9.5" fill="url(#eqfig)"/>
-                <path d="M-6,-21 Q-14,-18,-13,-13 C-14,-7,-12,1,-12,10 C-11,18,-8,25,-5,28 C-2,30,2,30,5,28 C8,25,11,18,12,10 C12,1,14,-7,13,-13 Q14,-18,6,-21 Z" fill="url(#eqfig)"/>
-              </g>
-              <!-- Gentle arc — relaxed tether between figure and orb -->
-              <path d="M267,77 Q296,60 322,77" stroke="rgba(32,146,94,.42)" stroke-width="1.5" stroke-dasharray="4 4" fill="none" stroke-linecap="round"/>
-              <!-- Orb ambient halo -->
-              <circle cx="344" cy="80" r="30" fill="rgba(36,146,96,.08)" filter="url(#eqfg)"/>
-              <!-- Orb rings -->
-              <circle cx="344" cy="80" r="26" stroke="rgba(34,142,92,.08)"  stroke-width="1"   stroke-dasharray="3 6"/>
-              <circle cx="344" cy="80" r="18" stroke="rgba(34,142,92,.16)"  stroke-width="1.5"/>
-              <!-- Orb inner glow -->
-              <circle cx="344" cy="80" r="14" fill="rgba(36,146,96,.26)" filter="url(#eqfg)"/>
-              <!-- Orb core -->
-              <circle cx="344" cy="80" r="14" fill="url(#eqgg)"/>
-              <!-- Specular -->
-              <ellipse cx="339" cy="75" rx="4" ry="2.5" fill="rgba(255,255,255,.46)" transform="rotate(-28,339,75)"/>
-              <text x="300" y="163" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="8.5" font-weight="800" letter-spacing=".1em" fill="rgba(18,112,64,.7)">HEALTHY</text>
-
-              <!-- ══ RIGHT: Too Far — figure averted, orb tiny and distant ══ -->
-              <!-- Figure — head cx offset slightly left = subtly looking away -->
-              <g transform="translate(436,80)" filter="url(#eqfs)">
-                <ellipse cx="-2" cy="-31" rx="8.5" ry="9.5" fill="url(#eqfig)"/>
-                <path d="M-6,-21 Q-14,-18,-13,-13 C-14,-7,-12,1,-12,10 C-11,18,-8,25,-5,28 C-2,30,2,30,5,28 C8,25,11,18,12,10 C12,1,14,-7,13,-13 Q14,-18,6,-21 Z" fill="url(#eqfig)"/>
-              </g>
-              <!-- Long fading dotted line — connection barely there -->
-              <line x1="450" y1="78" x2="560" y2="78" stroke="rgba(54,90,206,.11)" stroke-width="1" stroke-dasharray="2 11" stroke-linecap="round"/>
-              <!-- Orb ambient halo -->
-              <circle cx="570" cy="78" r="19" fill="rgba(52,88,206,.07)" filter="url(#eqfb)"/>
-              <!-- Orb ring -->
-              <circle cx="570" cy="78" r="14" stroke="rgba(56,92,208,.09)" stroke-width="1" stroke-dasharray="2 4"/>
-              <!-- Orb inner glow -->
-              <circle cx="570" cy="78" r="9"  fill="rgba(54,90,208,.15)" filter="url(#eqfb)"/>
-              <!-- Orb core -->
-              <circle cx="570" cy="78" r="9"  fill="url(#eqbg)"/>
-              <!-- Specular (tiny) -->
-              <ellipse cx="567" cy="75" rx="2.5" ry="1.5" fill="rgba(255,255,255,.38)" transform="rotate(-22,567,75)"/>
-              <text x="500" y="163" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="8.5" font-weight="800" letter-spacing=".1em" fill="rgba(40,68,178,.62)">TOO FAR</text>
-            </svg>
-          </div>
-
-          <!-- Card body -->
-          <div class="eq-body">
-            <!-- Language toggle -->
-            <div class="eq-lang-row" role="group" aria-label="Language">
-              <button class="eq-lang-btn eq-lang-active" data-lang="en" aria-pressed="true">English</button>
-              <button class="eq-lang-btn" data-lang="bn" aria-pressed="false">বাংলা</button>
-            </div>
-
-            <!-- Phase 1: Intro -->
-            <div id="eq-phase-intro" class="eq-phase">
-              <p class="section-kicker">Emotional Wellbeing</p>
-              <h2 class="eq-intro-title" id="eq-quiz-heading"></h2>
-              <p class="eq-intro-desc"></p>
-              <div class="eq-concepts">
-                <div class="eq-concept eq-concept--red"><h3></h3><p></p></div>
-                <div class="eq-concept eq-concept--green"><h3></h3><p></p></div>
-                <div class="eq-concept eq-concept--blue"><h3></h3><p></p></div>
-              </div>
-              <p class="eq-honest-note" id="eq-honest-note"></p>
-              <button class="eq-primary-btn" id="eq-start-btn"></button>
-            </div>
-
-            <!-- Phase 2: Quiz -->
-            <div id="eq-phase-quiz" class="eq-phase" hidden>
-              <div class="eq-prog-row">
-                <div class="eq-prog-track"><div class="eq-prog-fill" id="eq-prog-fill"></div></div>
-                <span class="eq-prog-label" id="eq-prog-label"></span>
-              </div>
-              <p class="eq-question" id="eq-question"></p>
-              <p class="eq-quiz-instruct" id="eq-quiz-instruct"></p>
-              <div class="eq-options" id="eq-options" role="radiogroup" aria-labelledby="eq-question"></div>
-              <button class="eq-primary-btn" id="eq-next-btn" disabled></button>
-            </div>
-
-            <!-- Phase 3: Results -->
-            <div id="eq-phase-results" class="eq-phase" hidden>
-              <p class="eq-score-line">
-                <span class="eq-score-lbl" id="eq-score-lbl"></span>
-                <span class="eq-score-val" id="eq-score-val"></span>
-              </p>
-              <div class="eq-result-card" id="eq-result-card">
-                <h3 id="eq-result-title"></h3>
-                <p id="eq-result-desc"></p>
-              </div>
-              <button class="eq-retake-btn" id="eq-retake-btn">↺ <span id="eq-retake-lbl">Retake Quiz</span></button>
-            </div>
-          </div>
-        </section>
-
-        <p class="privacy-note">Learning preferences stay on this device. Anonymous poll responses are stored only for the shared hourly check-in.</p>
-      </main>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F1E6">
+<meta name="description" content="Name a feeling, calm the storm, and watch one English word rise through the iceberg — listening, word partners, grammar patterns, sentences and idioms.">
+<title>How Are You Feeling? — Dialogue English Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=guided1">
+</head>
+<body>
+<div class="app" id="app">
+  <header class="appbar" id="appbar">
+    <div class="topbar">
+      <a class="logo-chip" href="/" aria-label="All Dialogue activities"><img src="../brand/dialogue-logo.png" alt="Dialogue English &amp; Skills Center"></a>
+      <div class="brand-name"><span class="brand-g" aria-hidden="true">😊</span><span class="brand-txt">How Are You Feeling?</span><span class="brand-mode" id="brand-mode" hidden>On TV</span></div>
+      <div class="langsw" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="bn" aria-pressed="false" lang="bn">বাংলা</button>
+      </div>
+      <button type="button" class="pill" id="btn-tv" aria-pressed="false" title="Present on TV (P)"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span class="pill-lab">TV</span></button>
+      <button type="button" class="icon-btn" id="btn-menu" aria-label="Menu"><svg class="ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
+    <nav class="rail" id="rail" aria-label="Steps"></nav>
+    <div class="wordbar" id="wordbar" hidden></div>
+  </header>
 
-    <script src="app.js?v=flooding13"></script>
-    <script src="../dialogue-brand.js"></script>
-  </body>
+  <main class="stage" id="stage"><div class="wrap" id="wrap"></div></main>
+
+  <footer class="actionbar" id="actionbar">
+    <button type="button" class="btn quiet" id="btn-back" aria-label="Back"><svg class="ico" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+    <div class="ab-mid" id="dashes"></div>
+    <button type="button" class="btn" id="btn-next"><span class="btn-lab"><span id="next-en">Next</span><span class="bn" id="next-bn">পরের ধাপ</span></span><svg class="ico arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+  </footer>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-h"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="print-root" aria-hidden="true"></div>
+
+<script src="data.js?v=guided1"></script>
+<script src="chunks.js?v=guided1"></script>
+<script src="app.js?v=guided1"></script>
+<script src="lesson.js?v=guided1"></script>
+<script src="print.js?v=guided1"></script>
+</body>
 </html>

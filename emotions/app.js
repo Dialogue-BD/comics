@@ -1,3542 +1,1438 @@
-const wheelData = [
-  { name: "Fear", color: "#c993dd", start: -150, children: [
-    { name: "Insecure", children: ["Inadequate", "Inferior"] },
-    { name: "Rejected", children: ["Alienated", "Disrespected"] },
-    { name: "Anxious", children: ["Overwhelmed", "Worried"] },
-    { name: "Scared", children: ["Terrified", "Frightened"] }
-  ]},
-  { name: "Anger", color: "#ee806b", start: -90, children: [
-    { name: "Mad", children: ["Enraged", "Furious"] },
-    { name: "Hurt", children: ["Devastated", "Embarrassed"] },
-    { name: "Threatened", children: ["Insecure", "Jealous"] },
-    { name: "Distant", children: ["Suspicious", "Withdrawn"] }
-  ]},
-  { name: "Surprise", color: "#edae53", start: -30, children: [
-    { name: "Confused", children: ["Disillusioned", "Perplexed"] },
-    { name: "Startled", children: ["Shocked", "Dismayed"] },
-    { name: "Amazed", children: ["Astonished", "Awe"] },
-    { name: "Excited", children: ["Eager", "Energetic"] }
-  ]},
-  { name: "Happy", color: "#e9cf5f", start: 30, children: [
-    { name: "Joyful", children: ["Liberated", "Ecstatic"] },
-    { name: "Proud", children: ["Confident", "Important"] },
-    { name: "Optimistic", children: ["Open", "Inspired"] },
-    { name: "Peaceful", children: ["Hopeful", "Loving"] }
-  ]},
-  { name: "Disgust", color: "#73c989", start: 90, children: [
-    { name: "Avoidance", children: ["Hesitant", "Aversion"] },
-    { name: "Disapproval", children: ["Judgmental", "Loathing"] },
-    { name: "Awful", children: ["Revulsion", "Detestable"] },
-    { name: "Disappointed", children: ["Revolted", "Repugnant"] }
-  ]},
-  { name: "Sad", color: "#70bee0", start: 150, children: [
-    { name: "Bored", children: ["Indifferent", "Apathetic"] },
-    { name: "Lonely", children: ["Isolated", "Abandoned"] },
-    { name: "Despair", children: ["Vulnerable", "Powerless"] },
-    { name: "Guilty", children: ["Ashamed", "Remorseful"] }
-  ]}
-];
+/* ===========================================================================
+   How Are You Feeling? — guided lesson and student activity
+   ---------------------------------------------------------------------------
+   Two ways in, as in Culture Circles:
+     teacher  — an animated lesson for the projector (lesson.js), then the
+                same seven steps the students do, shown large.
+     student  — the seven steps on a phone, one thing at a time.
 
-const primaryBangla = {
-  Fear: { word: "ভয়", definition: "বিপদ বা ক্ষতির আশঙ্কার অনুভূতি।" },
-  Anger: { word: "রাগ", definition: "অন্যায় বা বাধায় তীব্র বিরক্তির অনুভূতি।" },
-  Surprise: { word: "বিস্ময়", definition: "অপ্রত্যাশিত কিছু ঘটলে যে অনুভূতি হয়।" },
-  Happy: { word: "আনন্দ", definition: "ভালো লাগা, তৃপ্তি বা খুশির অনুভূতি।" },
-  Disgust: { word: "ঘৃণা", definition: "খুব অপছন্দ হলে দূরে সরে যেতে চাওয়ার অনুভূতি।" },
-  Sad: { word: "দুঃখ", definition: "ক্ষতি, কষ্ট বা হতাশায় মন খারাপের অনুভূতি।" }
+   The seven steps walk one feeling word up the Growing Participator
+   Approach iceberg. A word starts deep under the water — heard, not yet
+   understood — and rises each time it is heard and understood in context:
+
+     Feel      name the feeling, measure the storm, breathe   (SEL)
+     Hear      aural input flood: the word, many times        level 1
+     Partners  collocations: the words it keeps company with  level 2
+     Patterns  colligations: the grammar it hangs on          level 3
+     ─────────────────────────── waterline ──────────────────────────
+     Say       the headword in sentences, then your own       level 4
+     Idioms    other ways English says the same feeling       level 5
+     Share     the word is yours; tell the class              level 6
+
+   Nothing is locked (Tim's standing rule): every step and every screen can
+   be opened at any time, and nothing has to be finished first.
+   =========================================================================== */
+'use strict';
+
+/* ------------------------------------------------------------ helpers */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+function el(tag, cls, text){
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+function bn(node, text, inline){
+  if (!text) return node;
+  const b = el('span', 'bn' + (inline ? ' inl' : ''), text);
+  b.lang = 'bn';
+  node.appendChild(b);
+  return node;
+}
+function txt(tag, cls, en, bnText){ return bn(el(tag, cls, en), bnText); }
+function shuffle(a){ a = a.slice(); for (let i = a.length - 1; i > 0; i--){ const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+const store = {
+  get(k, d){ try { const v = localStorage.getItem('hayf:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v){ try { localStorage.setItem('hayf:' + k, JSON.stringify(v)); } catch (e) {} }
 };
 
-const emotionBanglaTerms = {
-  Fear: "ভয়", Insecure: "অনিরাপত্তা", Inadequate: "নিজেকে যথেষ্ট মনে না হওয়া", Inferior: "হীন মনে হওয়া",
-  Rejected: "প্রত্যাখ্যাত", Alienated: "বিচ্ছিন্ন", Disrespected: "অসম্মানিত", Anxious: "উদ্বিগ্ন",
-  Overwhelmed: "চাপে দিশেহারা", Worried: "চিন্তিত", Scared: "ভীত", Terrified: "আতঙ্কিত", Frightened: "ভয় পাওয়া",
-  Anger: "রাগ", Mad: "রাগান্বিত", Enraged: "প্রচণ্ড ক্ষুব্ধ", Furious: "প্রচণ্ড রাগান্বিত", Hurt: "কষ্ট পাওয়া",
-  Devastated: "বিধ্বস্ত", Embarrassed: "বিব্রত", Threatened: "হুমকির মুখে", Jealous: "ঈর্ষান্বিত",
-  Distant: "মানসিকভাবে দূরে", Suspicious: "সন্দেহপ্রবণ", Withdrawn: "নিজেকে গুটিয়ে নেওয়া",
-  Surprise: "বিস্ময়", Confused: "বিভ্রান্ত", Disillusioned: "মোহভঙ্গ", Perplexed: "কিংকর্তব্যবিমূঢ়",
-  Startled: "চমকে ওঠা", Shocked: "হতবাক", Dismayed: "হতাশ ও বিচলিত", Amazed: "বিস্মিত",
-  Astonished: "অত্যন্ত বিস্মিত", Awe: "সম্ভ্রমমিশ্রিত বিস্ময়", Excited: "উত্তেজিত", Eager: "আগ্রহী", Energetic: "উদ্যমী",
-  Happy: "সুখী", Joyful: "আনন্দিত", Liberated: "মুক্ত", Ecstatic: "আনন্দে আত্মহারা", Proud: "গর্বিত",
-  Confident: "আত্মবিশ্বাসী", Important: "গুরুত্বপূর্ণ মনে হওয়া", Optimistic: "আশাবাদী", Open: "খোলামেলা",
-  Inspired: "অনুপ্রাণিত", Peaceful: "শান্ত", Hopeful: "আশাবাদী", Loving: "স্নেহময়",
-  Disgust: "ঘৃণা", Avoidance: "এড়িয়ে চলা", Hesitant: "দ্বিধাগ্রস্ত", Aversion: "প্রবল অনীহা",
-  Disapproval: "অসম্মতি", Judgmental: "অন্যকে বিচার করার মনোভাব", Loathing: "তীব্র ঘৃণা", Awful: "ভীষণ খারাপ লাগা",
-  Revulsion: "তীব্র বিতৃষ্ণা", Detestable: "ঘৃণ্য", Disappointed: "হতাশ", Revolted: "অত্যন্ত বিতৃষ্ণ",
-  Repugnant: "জঘন্য", Sad: "দুঃখিত", Bored: "একঘেয়ে ও বিরক্ত", Indifferent: "উদাসীন", Apathetic: "নিরুৎসাহী ও উদাসীন",
-  Lonely: "একাকী", Isolated: "বিচ্ছিন্ন", Abandoned: "পরিত্যক্ত", Despair: "নিরাশা", Vulnerable: "অরক্ষিত ও স্পর্শকাতর",
-  Powerless: "ক্ষমতাহীন", Guilty: "অপরাধবোধ", Ashamed: "লজ্জিত", Remorseful: "অনুতপ্ত"
+/* one stroke-icon set for the whole page (24px grid) */
+const ICONS = {
+  heart: 'M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z',
+  ear: 'M7 10a5 5 0 0 1 10 0c0 3-2.5 3.5-3 6a3 3 0 0 1-5.5 1.5M10 10a2 2 0 0 1 4 0c0 1.2-1 1.6-1.5 2.4',
+  link: 'M10 14a4 4 0 0 0 5.6 0l3-3a4 4 0 0 0-5.6-5.6l-1 1M14 10a4 4 0 0 0-5.6 0l-3 3a4 4 0 0 0 5.6 5.6l1-1',
+  puzzle: 'M5 8h3a2 2 0 1 1 4 0h3v3a2 2 0 1 1 0 4v3h-3a2 2 0 1 0-4 0H5v-3a2 2 0 1 0 0-4z',
+  speech: 'M4 5h16v11H9l-5 4z M8 9h8M8 12h5',
+  image: 'M4 5h16v14H4z M4 16l5-5 4 4 3-3 4 4 M15 9.5a1 1 0 1 0 .01 0',
+  berg: 'M3 13h18 M6 13l4-8 3 4 2-2 3 6 M5 13l2 6h10l2-6',
+  play: 'M8 5v14l11-7z',
+  pause: 'M8 5v14M16 5v14',
+  stop: 'M6 6h12v12H6z',
+  replay: 'M4 12a8 8 0 1 0 2.4-5.7M4 4v5h5',
+  arrow: 'M5 12h14M13 6l6 6-6 6',
+  back: 'M19 12H5M11 6l-6 6 6 6',
+  book: 'M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z M4 19V5',
+  print: 'M7 9V3h10v6 M7 17H4v-7h16v7h-3 M7 14h10v7H7z',
+  tv: 'M3 4h18v13H3z M8 21h8M12 17v4',
+  phone: 'M7 2h10v20H7z M11 18h2',
+  users: 'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M3 20a6 6 0 0 1 12 0 M16 11a3 3 0 1 0 0-6 M21 20a6 6 0 0 0-4-5.6',
+  chart: 'M4 20V10M10 20V4M16 20v-7M22 20H2',
+  compass: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z M15.5 8.5l-2 5-5 2 2-5z',
+  reset: 'M3 12a9 9 0 1 0 3-6.7L3 8 M3 3v5h5',
+  x: 'M6 6l12 12M18 6L6 18',
+  check: 'M5 12l5 5 9-10',
+  flip: 'M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4',
+  wind: 'M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h8',
+  bulb: 'M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z',
+  hand: 'M8 13V5.5a1.5 1.5 0 0 1 3 0V12M11 11V4.5a1.5 1.5 0 0 1 3 0V12M14 11.5V6a1.5 1.5 0 0 1 3 0v7c0 4-2.5 7-6 7-2.5 0-4-1.2-5.5-3.5L3.8 13a1.5 1.5 0 0 1 2.4-1.8L8 13',
+  target: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10z M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2z'
 };
-
-const emotionEmojis = {
-  Fear: "😨", Insecure: "😟", Inadequate: "😞", Inferior: "😔", Rejected: "😢", Alienated: "👽",
-  Disrespected: "😠", Anxious: "😰", Overwhelmed: "🤯", Worried: "😟", Scared: "😱", Terrified: "😱", Frightened: "😨",
-  Anger: "😠", Mad: "😡", Enraged: "🤬", Furious: "🤬", Hurt: "💔", Devastated: "😭", Embarrassed: "😳",
-  Threatened: "😤", Jealous: "😒", Distant: "😶", Suspicious: "🤨", Withdrawn: "🫥",
-  Surprise: "😮", Confused: "😕", Disillusioned: "😔", Perplexed: "🤔", Startled: "😲", Shocked: "😲",
-  Dismayed: "😧", Amazed: "🤩", Astonished: "😮", Awe: "🤩", Excited: "🤗", Eager: "😃", Energetic: "⚡",
-  Happy: "😊", Joyful: "😄", Liberated: "🕊️", Ecstatic: "🤩", Proud: "😌", Confident: "😎", Important: "🌟",
-  Optimistic: "🌅", Open: "🤗", Inspired: "💡", Peaceful: "😌", Hopeful: "🌱", Loving: "🥰",
-  Disgust: "🤢", Avoidance: "🙈", Hesitant: "😬", Aversion: "🙅", Disapproval: "👎", Judgmental: "🧐",
-  Loathing: "🤮", Awful: "😖", Revulsion: "🤢", Detestable: "👿", Disappointed: "😞", Revolted: "🤮", Repugnant: "🤢",
-  Sad: "😢", Bored: "😐", Indifferent: "😑", Apathetic: "🫤", Lonely: "🥺", Isolated: "🏝️", Abandoned: "😭",
-  Despair: "😫", Vulnerable: "🫣", Powerless: "😔", Guilty: "😓", Ashamed: "😳", Remorseful: "😔"
-};
-
-const banglaCategoryGuides = {
-  Fear: {
-    situation: "অনিরাপত্তা, অনিশ্চয়তা বা বিপদের আশঙ্কা হলে এমন অনুভূতি হতে পারে।",
-    body: "হৃদস্পন্দন বেড়ে যাওয়া, শরীর শক্ত হওয়া বা সরে যেতে ইচ্ছে করার মতো লক্ষণ দেখা দিতে পারে।"
-  },
-  Anger: {
-    situation: "কিছু অন্যায়, কষ্টদায়ক বা বাধা সৃষ্টি করছে মনে হলে এমন অনুভূতি হতে পারে।",
-    body: "শরীর গরম হওয়া, পেশি শক্ত হওয়া বা জোরে কথা বলতে ইচ্ছে করার মতো লক্ষণ দেখা দিতে পারে।"
-  },
-  Surprise: {
-    situation: "হঠাৎ বা অপ্রত্যাশিত কিছু ঘটলে এমন অনুভূতি হতে পারে।",
-    body: "চমকে ওঠা, চোখ বড় হওয়া বা মুহূর্তের জন্য শ্বাস আটকে যাওয়ার মতো লক্ষণ দেখা দিতে পারে।"
-  },
-  Happy: {
-    situation: "নিরাপত্তা, সাফল্য, ভালোবাসা বা মানুষের সঙ্গে সংযোগ অনুভব করলে এমন অনুভূতি হতে পারে।",
-    body: "শরীর হালকা, শান্ত, উষ্ণ বা উদ্যমী লাগার মতো লক্ষণ দেখা দিতে পারে।"
-  },
-  Disgust: {
-    situation: "কিছু খুব অপছন্দনীয়, অস্বস্তিকর বা ভুল মনে হলে এমন অনুভূতি হতে পারে।",
-    body: "বমি বমি লাগা, মুখ কুঁচকে যাওয়া বা দূরে সরে যেতে ইচ্ছে করার মতো লক্ষণ দেখা দিতে পারে।"
-  },
-  Sad: {
-    situation: "ক্ষতি, কষ্ট, হতাশা বা একাকিত্বের অভিজ্ঞতায় এমন অনুভূতি হতে পারে।",
-    body: "শরীর ভারী লাগা, শক্তি কমে যাওয়া বা কাঁদতে ইচ্ছে করার মতো লক্ষণ দেখা দিতে পারে।"
-  }
-};
-
-const banglaStrength = {
-  gentle: "মৃদু", medium: "মাঝারি", strong: "তীব্র", "very strong": "খুব তীব্র"
-};
-
-const clueData = [
-  { id: "b-avoid", type: "behavior", label: "Avoiding or getting away", scores: { Fear: 3, Disgust: 1 } },
-  { id: "b-fidget", type: "behavior", label: "Fidgeting or acting out", scores: { Fear: 3, Anger: 1 } },
-  { id: "b-fit-in", type: "behavior", label: "Trying hard to fit in", scores: { Fear: 3, Sad: 1 } },
-  { id: "b-isolate", type: "behavior", label: "Isolating or covering it up", scores: { Fear: 2, Sad: 2 } },
-  { id: "b-defensive", type: "behavior", label: "Getting defensive", scores: { Anger: 3, Fear: 1 } },
-  { id: "b-yelling", type: "behavior", label: "Yelling or storming off", scores: { Anger: 3 } },
-  { id: "b-fight", type: "behavior", label: "Arguing or picking a fight", scores: { Anger: 3 } },
-  { id: "b-ignore", type: "behavior", label: "Not listening or ignoring", scores: { Anger: 2, Disgust: 1 } },
-  { id: "b-silent", type: "behavior", label: "Going silent, then reacting", scores: { Surprise: 3, Fear: 1 } },
-  { id: "b-questions", type: "behavior", label: "Asking many questions", scores: { Surprise: 3 } },
-  { id: "b-watch", type: "behavior", label: "Becoming still and watching", scores: { Surprise: 2, Fear: 1 } },
-  { id: "b-fast", type: "behavior", label: "Talking fast and smiling", scores: { Surprise: 2, Happy: 2 } },
-  { id: "b-cheerful", type: "behavior", label: "Acting cheerful", scores: { Happy: 3 } },
-  { id: "b-help", type: "behavior", label: "Listening or helping", scores: { Happy: 3 } },
-  { id: "b-affection", type: "behavior", label: "Admiring or sharing affection", scores: { Happy: 3 } },
-  { id: "b-wrong", type: "behavior", label: "Telling someone they are wrong", scores: { Disgust: 3, Anger: 1 } },
-  { id: "b-trust", type: "behavior", label: "Withdrawing trust or turning away", scores: { Disgust: 3, Sad: 1 } },
-  { id: "b-leave", type: "behavior", label: "Showing disgust or leaving", scores: { Disgust: 3 } },
-  { id: "b-give-up", type: "behavior", label: "Giving up or not caring", scores: { Sad: 3, Disgust: 1 } },
-  { id: "b-shut-down", type: "behavior", label: "Shutting down", scores: { Sad: 3, Fear: 1 } },
-  { id: "b-hide", type: "behavior", label: "Hiding or blaming", scores: { Sad: 2, Fear: 1, Anger: 1 } },
-  { id: "s-heart", type: "sensation", label: "Racing heart", scores: { Fear: 3, Anger: 1, Surprise: 1 } },
-  { id: "s-tremble", type: "sensation", label: "Trembling or numb hands", scores: { Fear: 3 } },
-  { id: "s-frozen", type: "sensation", label: "Tense, frozen, or cold", scores: { Fear: 3 } },
-  { id: "s-blush", type: "sensation", label: "Blushing or feeling tender", scores: { Fear: 2 } },
-  { id: "s-hot", type: "sensation", label: "Feeling hot or flushed", scores: { Anger: 3 } },
-  { id: "s-clench", type: "sensation", label: "Clenched jaw or fists", scores: { Anger: 3 } },
-  { id: "s-pressure", type: "sensation", label: "Head pressure or tight muscles", scores: { Anger: 3, Fear: 1 } },
-  { id: "s-gut", type: "sensation", label: "Headache or gut turning", scores: { Anger: 2, Disgust: 1 } },
-  { id: "s-breathless", type: "sensation", label: "Breathless or speechless", scores: { Surprise: 3, Fear: 1 } },
-  { id: "s-jaw-drop", type: "sensation", label: "Jaw drops or eyebrows rise", scores: { Surprise: 3 } },
-  { id: "s-sweaty", type: "sensation", label: "Sweaty palms or startled", scores: { Surprise: 2, Fear: 2 } },
-  { id: "s-jumpy", type: "sensation", label: "Electrified or jumpy", scores: { Surprise: 3, Happy: 1 } },
-  { id: "s-warm", type: "sensation", label: "Warm, light, or buzzing", scores: { Happy: 3 } },
-  { id: "s-awake", type: "sensation", label: "Open, energetic, or awake", scores: { Happy: 3 } },
-  { id: "s-calm", type: "sensation", label: "Relaxed, soft, or calm", scores: { Happy: 3 } },
-  { id: "s-tall", type: "sensation", label: "Tall, steady, or confident", scores: { Happy: 2 } },
-  { id: "s-nausea", type: "sensation", label: "Nausea or queasiness", scores: { Disgust: 3 } },
-  { id: "s-face", type: "sensation", label: "Scrunched face or curled lip", scores: { Disgust: 3, Anger: 1 } },
-  { id: "s-shudder", type: "sensation", label: "Shuddering or needing to move", scores: { Disgust: 3 } },
-  { id: "s-throat", type: "sensation", label: "Lump in throat or turning away", scores: { Disgust: 2, Sad: 1 } },
-  { id: "s-heavy", type: "sensation", label: "Heavy or weak", scores: { Sad: 3 } },
-  { id: "s-tired", type: "sensation", label: "Tired or low energy", scores: { Sad: 3 } },
-  { id: "s-empty", type: "sensation", label: "Hollow or empty", scores: { Sad: 3 } },
-  { id: "s-crying", type: "sensation", label: "Crying, aching, or slouching", scores: { Sad: 3 } }
-];
-
-const clueBangla = {
-  "b-avoid": "এড়িয়ে যাচ্ছি বা দূরে সরে যাচ্ছি",
-  "b-fidget": "ছটফট করছি বা অস্থির আচরণ করছি",
-  "b-fit-in": "দলে মানিয়ে নিতে খুব চেষ্টা করছি",
-  "b-isolate": "নিজেকে আলাদা করছি বা লুকাচ্ছি",
-  "b-defensive": "আত্মরক্ষামূলক আচরণ করছি",
-  "b-yelling": "চিৎকার করছি বা রেগে চলে যাচ্ছি",
-  "b-fight": "তর্ক করছি বা ঝগড়া বাধাচ্ছি",
-  "b-ignore": "শুনছি না বা উপেক্ষা করছি",
-  "b-silent": "প্রথমে চুপ হচ্ছি, পরে প্রতিক্রিয়া দিচ্ছি",
-  "b-questions": "অনেক প্রশ্ন করছি",
-  "b-watch": "স্থির হয়ে তাকিয়ে দেখছি",
-  "b-fast": "দ্রুত কথা বলছি ও হাসছি",
-  "b-cheerful": "হাসিখুশি আচরণ করছি",
-  "b-help": "মন দিয়ে শুনছি বা সাহায্য করছি",
-  "b-affection": "প্রশংসা করছি বা ভালোবাসা দেখাচ্ছি",
-  "b-wrong": "অন্যকে বলছি যে সে ভুল",
-  "b-trust": "বিশ্বাস সরিয়ে নিচ্ছি বা মুখ ফিরিয়ে নিচ্ছি",
-  "b-leave": "বিরক্তি দেখাচ্ছি বা চলে যাচ্ছি",
-  "b-give-up": "হাল ছেড়ে দিচ্ছি বা কিছুই পরোয়া করছি না",
-  "b-shut-down": "চুপ হয়ে নিজেকে গুটিয়ে নিচ্ছি",
-  "b-hide": "লুকাচ্ছি বা অন্যকে দোষ দিচ্ছি",
-  "s-heart": "হৃদস্পন্দন দ্রুত হচ্ছে",
-  "s-tremble": "হাত কাঁপছে বা অবশ লাগছে",
-  "s-frozen": "শরীর টানটান, জমে গেছে বা ঠান্ডা লাগছে",
-  "s-blush": "লজ্জায় লাল হচ্ছি বা স্পর্শকাতর লাগছে",
-  "s-hot": "শরীর গরম বা মুখ লাল লাগছে",
-  "s-clench": "চোয়াল বা মুঠি শক্ত হয়ে আছে",
-  "s-pressure": "মাথায় চাপ বা পেশি শক্ত লাগছে",
-  "s-gut": "মাথাব্যথা বা পেট মোচড়াচ্ছে",
-  "s-breathless": "শ্বাস আটকে যাচ্ছে বা কথা বের হচ্ছে না",
-  "s-jaw-drop": "মুখ হাঁ হয়ে যাচ্ছে বা ভ্রু উঠছে",
-  "s-sweaty": "হাতের তালু ঘামছে বা চমকে উঠছি",
-  "s-jumpy": "শরীরে বিদ্যুতের মতো বা ছটফটে লাগছে",
-  "s-warm": "উষ্ণ, হালকা বা ঝিরঝির লাগছে",
-  "s-awake": "খোলা, শক্তিশালী বা জেগে আছি",
-  "s-calm": "শরীর শান্ত, নরম বা আরাম লাগছে",
-  "s-tall": "সোজা, স্থির বা আত্মবিশ্বাসী লাগছে",
-  "s-nausea": "বমি বমি বা অস্বস্তি লাগছে",
-  "s-face": "মুখ কুঁচকে যাচ্ছে বা ঠোঁট বাঁকছে",
-  "s-shudder": "শরীর শিউরে উঠছে বা নড়তে ইচ্ছে করছে",
-  "s-throat": "গলায় দলা লাগছে বা মুখ ফিরিয়ে নিতে ইচ্ছে করছে",
-  "s-heavy": "শরীর ভারী বা দুর্বল লাগছে",
-  "s-tired": "ক্লান্ত বা শক্তি কম লাগছে",
-  "s-empty": "ভেতরে ফাঁকা বা শূন্য লাগছে",
-  "s-crying": "কাঁদছি, শরীর ব্যথা বা কুঁজো হয়ে আছি"
-};
-
-const clueLanguageText = {
-  en: {
-    intro: "Choose 1–3 clues that fit best. You can add more if you need to.",
-    behavior: "What am I doing?",
-    sensation: "What is my body doing?",
-    showAll: count => `Show all ${count} clues`,
-    showLess: "Show fewer clues"
-  },
-  bn: {
-    intro: "যে ১–৩টি লক্ষণ সবচেয়ে বেশি মেলে সেগুলো বেছে নিন। প্রয়োজন হলে আরও যোগ করুন।",
-    behavior: "আমি কী করছি?",
-    sensation: "আমার শরীরে কী হচ্ছে?",
-    showAll: count => `সব ${count}টি লক্ষণ দেখুন`,
-    showLess: "কম লক্ষণ দেখুন"
-  }
-};
-
-const featuredClues = {
-  behavior: ["b-avoid", "b-defensive", "b-questions", "b-cheerful", "b-trust", "b-shut-down", "b-fidget", "b-fast", "b-give-up"],
-  sensation: ["s-heart", "s-hot", "s-jaw-drop", "s-warm", "s-nausea", "s-heavy", "s-frozen", "s-calm", "s-tired"]
-};
-
-const clueSummaries = {
-  Fear: "Your system may be trying to protect you from danger, uncertainty, or rejection.",
-  Anger: "Your energy may be pushing against something that feels wrong, unfair, or blocked.",
-  Surprise: "Your mind and body may be reacting to something sudden or unexpected.",
-  Happy: "Your clues suggest safety, connection, energy, or something going well.",
-  Disgust: "Your system may be trying to reject or move away from something unpleasant or wrong.",
-  Sad: "Your clues may reflect loss, low energy, disconnection, or emotional pain."
-};
-
-// meaning, strength, situation, body sign, contrast word, distinction, example
-const emotionInfo = {
-  Fear: ["you sense danger or possible harm", "strong", "something feels unsafe", "become alert and ready to move", "surprise", "fear expects danger; surprise only means something was unexpected", "I feel fear when I walk alone in a dark place"],
-  Insecure: ["you are not sure that you are safe, accepted, or good enough", "medium", "you compare yourself with other people", "feel small or tense", "shy", "insecurity is self-doubt; shyness is discomfort around people", "I feel insecure when I speak in front of fluent speakers"],
-  Inadequate: ["you believe you are not good enough for a task", "strong", "a job feels bigger than your ability", "lose energy or want to stop", "unprepared", "inadequate describes how you judge yourself; unprepared means you need more time or practice", "I feel inadequate when I cannot understand the instructions"],
-  Inferior: ["you believe you are less valuable or capable than another person", "strong", "you compare your ability or status with someone else's", "look down or make yourself smaller", "humble", "feeling inferior lowers your value; being humble means you do not boast", "I feel inferior when everyone else seems more experienced"],
-  Rejected: ["you feel that someone does not want or accept you", "strong", "you are left out of a group or relationship", "feel a heavy chest and want to leave", "lonely", "rejection comes from not being accepted; loneliness can happen even without rejection", "I feel rejected when my friends do not invite me"],
-  Alienated: ["you feel separated from a group and unable to connect", "strong", "the people around you seem very different from you", "feel distant and quiet", "isolated", "alienated means you do not feel that you belong; isolated means you have little contact", "I feel alienated when nobody understands my culture"],
-  Disrespected: ["you feel that someone treated you as unimportant or without dignity", "strong", "someone ignores your rights, words, or boundaries", "become hot, tense, or ready to argue", "criticized", "disrespect attacks your worth; criticism can be useful feedback", "I feel disrespected when someone laughs at my accent"],
-  Anxious: ["you feel nervous about something that may happen", "medium", "the future is uncertain", "breathe quickly or find it hard to sit still", "scared", "anxiety often worries about the future; being scared often responds to danger now", "I feel anxious before an important exam"],
-  Overwhelmed: ["you have more feelings or tasks than you can manage", "strong", "many problems arrive at the same time", "freeze, forget things, or want to escape", "busy", "busy means you have much to do; overwhelmed means it feels like too much", "I feel overwhelmed when three assignments are due together"],
-  Worried: ["you keep thinking that something may go wrong", "medium", "you do not know if a person or plan will be okay", "frown, feel tight, or repeat the same thoughts", "careful", "worry repeats a possible problem; care helps you take sensible action", "I feel worried when my family does not answer the phone"],
-  Scared: ["you feel afraid because danger seems near", "strong", "you hear, see, or imagine a threat", "shake, hide, or move away", "anxious", "scared usually feels immediate; anxious can last while you wait", "I feel scared when a large dog runs toward me"],
-  Terrified: ["you feel extremely scared", "very strong", "you believe serious danger is close", "freeze, shake, scream, or run", "nervous", "terror is intense fear; nervousness is much milder", "I feel terrified during a violent storm"],
-  Frightened: ["something has made you suddenly or clearly afraid", "strong", "a sound, person, or event seems dangerous", "jump, stare, or pull away", "startled", "frightened includes fear; startled only means a sudden reaction", "I feel frightened when I hear footsteps behind me at night"],
-
-  Anger: ["you feel that something is wrong, unfair, or blocking you", "strong", "someone breaks a rule or hurts you", "become hot, tense, or loud", "hurt", "anger pushes against a problem; hurt focuses on the pain it caused", "I feel anger when someone treats my friend unfairly"],
-  Mad: ["you feel angry about something", "strong", "a person annoys you or a plan goes wrong", "tighten your jaw or speak sharply", "upset", "mad clearly means angry; upset can include sadness, worry, or anger", "I feel mad when someone takes my things without asking"],
-  Enraged: ["you feel extremely angry and almost out of control", "very strong", "you see serious cruelty or unfairness", "shake, shout, or feel ready to act", "annoyed", "rage is extreme anger; annoyance is a small irritation", "I feel enraged when a powerful person hurts someone weak"],
-  Furious: ["you feel extremely angry", "very strong", "someone seriously betrays or mistreats you", "feel heat in your face and strong energy", "frustrated", "fury is intense anger; frustration comes from being blocked", "I feel furious when someone lies to me again and again"],
-  Hurt: ["another person's words or actions cause emotional pain", "medium", "someone is unkind, unfair, or forgets you", "feel a heavy chest or want to cry", "angry", "hurt is the pain underneath; anger is the energy that may cover it", "I feel hurt when my friend makes a joke about me"],
-  Devastated: ["you feel deeply shocked and emotionally broken by a loss", "very strong", "something precious ends or is destroyed", "cry, feel weak, or cannot think clearly", "disappointed", "devastated is overwhelming loss; disappointed is a smaller unmet hope", "I feel devastated when someone I love dies"],
-  Embarrassed: ["you feel uncomfortable because others may notice your mistake or weakness", "medium", "you make a mistake in public", "blush, look away, or want to hide", "ashamed", "embarrassment is usually brief and about a situation; shame attacks your whole self", "I feel embarrassed when I say the wrong word in class"],
-  Threatened: ["you believe someone or something may harm you, your place, or your values", "strong", "a person challenges your safety or position", "become defensive and watch closely", "scared", "a threat is the danger you notice; scared is the feeling it creates", "I feel threatened when someone comes too close and shouts"],
-  Jealous: ["you fear losing attention, love, or a valued relationship to someone else", "medium", "a person you care about gives attention to another person", "feel tight, watchful, or possessive", "envious", "jealousy fears losing what you have; envy wants what another person has", "I feel jealous when my best friend spends all day with someone new"],
-  Distant: ["you feel emotionally far away from other people", "medium", "you do not trust the situation or do not want to connect", "speak less and avoid eye contact", "lonely", "being distant means you pull away; loneliness means you want more connection", "I feel distant after an argument with my friend"],
-  Suspicious: ["you think someone may be dishonest or harmful", "medium", "a story does not seem true", "watch carefully and ask many questions", "curious", "suspicion expects a hidden problem; curiosity simply wants to know more", "I feel suspicious when the explanation keeps changing"],
-  Withdrawn: ["you pull away and avoid talking or joining in", "medium", "you feel hurt, tired, or unsafe with people", "become quiet and keep to yourself", "calm", "withdrawn means disconnected; calm means peaceful and steady", "I feel withdrawn after people ignore my ideas"],
-
-  Surprise: ["something happens that you did not expect", "medium", "an event is new or sudden", "open your eyes, stop, or react quickly", "fear", "surprise can be good or bad; fear expects danger", "I feel surprise when my friends bring me a cake"],
-  Confused: ["you do not understand what something means or what to do", "medium", "information is unclear or does not match", "pause, frown, or ask questions", "uncertain", "confused means the information is hard to understand; uncertain means you are not sure which answer is right", "I feel confused when the directions use unfamiliar words"],
-  Disillusioned: ["you are disappointed after learning that something is not as good or true as you believed", "strong", "a person or idea fails to match your hopes", "feel flat and lose trust", "disappointed", "disillusionment changes a belief; disappointment only means a hope was not met", "I feel disillusioned when a leader does not follow their own rules"],
-  Perplexed: ["you are very confused by a difficult problem", "medium", "the facts do not seem to fit together", "think hard and look puzzled", "curious", "perplexed means unable to understand; curious means interested in finding out", "I feel perplexed when both answers seem correct"],
-  Startled: ["you react suddenly because something unexpected happens", "medium", "you hear a sudden noise or someone appears", "jump, blink, or take a quick breath", "frightened", "startled describes the sudden reaction; frightened means you also feel fear", "I feel startled when a door slams behind me"],
-  Shocked: ["you feel a strong surprise that is hard to accept", "strong", "you hear very unexpected news", "freeze or become speechless", "startled", "shock lasts while your mind processes the news; a startle is a quick body reaction", "I feel shocked when I hear that the school is closing"],
-  Dismayed: ["you feel worried and disappointed by an unpleasant surprise", "strong", "a plan suddenly develops a serious problem", "lose energy or stare in disbelief", "shocked", "dismay includes worry and disappointment; shock can happen before you know how you feel", "I feel dismayed when I see the damage after the storm"],
-  Amazed: ["you feel great surprise and wonder", "strong", "you see something unusually skillful or beautiful", "open your eyes and pay full attention", "surprised", "amazed is a strong, usually positive surprise; surprised is more general", "I feel amazed when I see the view from a mountain"],
-  Astonished: ["you feel extremely surprised", "very strong", "something seems almost impossible", "stop, stare, or become speechless", "amazed", "astonished emphasizes how unexpected it is; amazed often also includes admiration", "I feel astonished when a beginner plays the song perfectly"],
-  Awe: ["you feel wonder and respect for something great or powerful", "strong", "you experience great beauty, skill, or power", "become quiet and pay close attention", "amazed", "awe includes deep respect; amazement mainly describes strong surprise", "I feel awe when I see the stars far from the city"],
-  Excited: ["you feel happy energy about something that is happening or coming", "strong", "you expect a good event", "smile, talk quickly, or find it hard to sit still", "nervous", "excitement expects something good; nervousness worries something may go wrong", "I feel excited before a club trip"],
-  Eager: ["you strongly want to do or receive something soon", "medium", "you are ready for an opportunity", "lean forward and pay attention", "impatient", "eager means happily ready; impatient means upset about waiting", "I feel eager to meet my new classmates"],
-  Energetic: ["you feel full of strength and ready to act", "medium", "you have rested or something motivates you", "move quickly and want to do things", "excited", "energetic describes your level of power; excited describes your emotional anticipation", "I feel energetic after a good night's sleep"],
-
-  Happy: ["you feel pleased, comfortable, or glad", "medium", "something good happens or life feels right", "smile and feel light", "excited", "happiness can be calm; excitement has more energy and anticipation", "I feel happy when I spend time with friends"],
-  Joyful: ["you feel deep, bright happiness", "strong", "you experience something meaningful and good", "smile freely and want to share the feeling", "happy", "joy is deeper and brighter; happy is the broader everyday word", "I feel joyful when my family celebrates together"],
-  Liberated: ["you feel free after a limit, fear, or burden is removed", "strong", "you finish a difficult duty or escape a restriction", "breathe deeply and move easily", "relieved", "liberated means newly free; relieved means a worry has ended", "I feel liberated after I finish my final exam"],
-  Ecstatic: ["you feel extremely joyful and excited", "very strong", "wonderful news exceeds your hopes", "laugh, cry, jump, or celebrate", "pleased", "ecstatic is the highest joy; pleased is quiet and mild", "I feel ecstatic when I learn that I won the scholarship"],
-  Proud: ["you feel pleased about an achievement, quality, or person you value", "medium", "you or someone close works hard and succeeds", "stand taller and smile", "arrogant", "healthy pride values an achievement; arrogance says you are better than others", "I feel proud when I complete a difficult project"],
-  Confident: ["you trust your ability to handle a situation", "medium", "you have prepared and know what to do", "stand steadily and speak clearly", "certain", "confidence trusts your ability; certainty means you believe a fact is true", "I feel confident after I practice my presentation"],
-  Important: ["you feel valued and able to make a difference", "medium", "people listen to you or depend on your contribution", "sit taller and feel connected", "superior", "feeling important means you matter; feeling superior means you think others matter less", "I feel important when my team asks for my help"],
-  Optimistic: ["you expect that the future can go well", "medium", "you see a real reason for hope", "feel lighter and look for possibilities", "hopeful", "optimism is a general positive outlook; hope often focuses on one desired result", "I feel optimistic because our plan is improving"],
-  Open: ["you are willing to receive new ideas, people, or experiences", "gentle", "you feel safe enough to listen and explore", "relax your face and pay attention", "agreeable", "being open means willing to consider; agreeing means you already accept the idea", "I feel open to trying a different way"],
-  Inspired: ["you feel moved by an idea or example and want to create or act", "strong", "you see courage, beauty, or meaningful work", "feel bright energy and many ideas", "motivated", "inspiration gives you a new vision; motivation gives you a reason to act", "I feel inspired after hearing her story"],
-  Peaceful: ["you feel calm, safe, and free from conflict", "gentle", "your surroundings and thoughts are quiet", "breathe slowly and relax your muscles", "bored", "peace feels comfortably still; boredom wants more interest", "I feel peaceful while sitting beside the river"],
-  Hopeful: ["you believe a good result is possible", "medium", "a difficult situation shows a path forward", "breathe more easily and keep trying", "optimistic", "hope often holds one desired possibility; optimism expects good things more generally", "I feel hopeful when I see small improvements"],
-  Loving: ["you feel warm care, affection, and connection", "strong", "you think about someone or something precious", "feel warm, gentle, and ready to help", "liking", "love is deeper care and commitment; liking is lighter enjoyment", "I feel loving when I care for my little brother"],
-
-  Disgust: ["you strongly dislike something and want it away from you", "strong", "something seems dirty, harmful, or morally wrong", "pull back, frown, or feel sick", "anger", "disgust pushes something away; anger pushes against a wrong", "I feel disgust when I smell rotten food"],
-  Avoidance: ["you want to stay away from a person, thing, or situation", "medium", "something feels unpleasant, risky, or painful", "turn away or delay", "fear", "avoidance is the action or urge to stay away; fear is one feeling that may cause it", "I feel avoidance when I think about a difficult conversation"],
-  Hesitant: ["you pause because you are not sure whether to act", "gentle", "a choice has possible risks", "stop, speak slowly, or move back", "unwilling", "hesitant means not sure yet; unwilling means you do not want to do it", "I feel hesitant before answering a personal question"],
-  Aversion: ["you have a strong wish to avoid something unpleasant", "strong", "a taste, habit, or idea feels deeply wrong to you", "pull away or feel tense", "dislike", "aversion is a strong, lasting dislike that makes you avoid; dislike can be mild", "I have an aversion to the smell of smoke"],
-  Disapproval: ["you believe an action or idea is wrong or not acceptable", "medium", "someone breaks an important standard", "frown or speak firmly", "disgust", "disapproval is a judgment about right and wrong; disgust is a stronger body feeling", "I feel disapproval when someone cheats"],
-  Judgmental: ["you form harsh opinions about people, often without enough understanding", "strong", "you focus on another person's faults", "close your expression and speak critically", "discerning", "judgmental thinking condemns a person; discernment carefully evaluates a choice", "I become judgmental when I assume I know someone's reasons"],
-  Loathing: ["you feel an extremely strong and lasting dislike", "very strong", "you think something is deeply harmful or hateful", "feel sick, cold, or ready to turn away", "dislike", "loathing is intense hatred; dislike is much milder", "I feel loathing toward deliberate cruelty"],
-  Awful: ["you feel that something is very bad, unpleasant, or distressing", "strong", "an experience causes pain or disgust", "grimace or feel heavy", "uncomfortable", "awful is strongly bad; uncomfortable is only mildly unpleasant", "I feel awful when I realize that I hurt someone"],
-  Revulsion: ["you feel a sudden, powerful disgust that makes you pull away", "very strong", "you see or imagine something deeply repulsive", "recoil or feel sick", "aversion", "revulsion is an intense immediate reaction; aversion can be a lasting preference to avoid", "I feel revulsion when I see food covered with mold"],
-  Detestable: ["you believe something deserves intense dislike", "very strong", "an action seems cruel or morally hateful", "speak with strong rejection", "annoying", "detestable means worthy of hatred; annoying only causes irritation", "I find bullying detestable"],
-  Disappointed: ["you feel sad because reality did not meet your hope", "medium", "a plan, person, or result is less good than expected", "sigh and lose some energy", "devastated", "disappointment is an unmet hope; devastation is overwhelming loss", "I feel disappointed when the event is canceled"],
-  Revolted: ["you feel extremely disgusted and offended", "very strong", "something seems physically or morally horrible", "pull away and strongly object", "shocked", "revolted means strong disgust; shocked means strong surprise", "I feel revolted by people who enjoy hurting animals"],
-  Repugnant: ["you find something extremely unpleasant or unacceptable", "very strong", "an idea or behavior strongly violates your values", "reject it immediately", "unpleasant", "repugnant is intensely offensive; unpleasant is a much weaker word", "I find racist jokes repugnant"],
-
-  Sad: ["you feel unhappy because of loss, pain, or disappointment", "medium", "something important is missing or has gone wrong", "feel heavy, quiet, or tearful", "tired", "sadness is emotional pain; tiredness is low physical or mental energy", "I feel sad when a friend moves away"],
-  Bored: ["you do not feel interested and want something more engaging", "gentle", "an activity is repetitive or has no meaning for you", "lose focus, yawn, or check the time", "peaceful", "boredom wants stimulation; peace is comfortable with stillness", "I feel bored during a very long, repetitive task"],
-  Indifferent: ["you do not care strongly one way or the other", "gentle", "a choice or result does not matter much to you", "show little reaction", "undecided", "indifferent means you do not care; undecided means you care but have not chosen", "I feel indifferent about which color we use"],
-  Apathetic: ["you have little interest, feeling, or motivation", "medium", "you feel disconnected or emotionally exhausted", "move slowly and stop trying", "bored", "apathy is a broad lack of care; boredom still wants something interesting", "I feel apathetic when I have been stressed for too long"],
-  Lonely: ["you want meaningful connection but feel alone", "strong", "you have nobody with whom you can truly share", "feel empty and reach for contact", "alone", "lonely is an unwanted feeling; being alone can be peaceful and chosen", "I feel lonely when I have no one to talk to"],
-  Isolated: ["you are separated from other people or support", "strong", "distance, language, or circumstances keep you apart", "become quiet and disconnected", "lonely", "isolated describes separation; lonely describes how separation may feel", "I feel isolated when everyone speaks a language I do not understand"],
-  Abandoned: ["you feel that someone you depended on has left you without care", "very strong", "support disappears when you need it", "feel empty, panicked, or helpless", "alone", "abandoned includes being left by someone; alone only describes having no company", "I feel abandoned when a trusted person leaves during a crisis"],
-  Despair: ["you feel that there is no hope and nothing will improve", "very strong", "a painful problem continues for a long time", "feel heavy and stop imagining solutions", "sad", "despair is sadness without hope; ordinary sadness can still expect change", "I feel despair when every possible solution seems closed"],
-  Vulnerable: ["you feel open to being hurt emotionally or physically", "medium", "you reveal a need, weakness, or personal truth", "feel exposed and watch others closely", "weak", "vulnerable means open to harm; weak means lacking strength", "I feel vulnerable when I share a painful memory"],
-  Powerless: ["you feel unable to control or change what is happening", "strong", "other people or rules control an important outcome", "freeze, give up, or feel very small", "helpless", "powerless means you lack control; helpless means you also cannot get the help you need", "I feel powerless when decisions about me are made without me"],
-  Guilty: ["you feel bad because you believe you did something wrong", "medium", "your action hurts someone or breaks your values", "feel heavy and want to repair the harm", "ashamed", "guilt says I did something bad; shame says I am bad", "I feel guilty when I break a promise"],
-  Ashamed: ["you feel that others may see you as bad or unworthy", "strong", "a failure feels like it says something terrible about you", "hide your face or want to disappear", "embarrassed", "shame attacks your identity; embarrassment is usually about one awkward moment", "I feel ashamed when I believe my mistake makes me a bad person"],
-  Remorseful: ["you feel deep regret for harm you caused and want to make it right", "strong", "you understand how your action hurt someone", "feel heavy but ready to apologize", "guilty", "remorse includes sincere sorrow and a wish to repair; guilt may stop at feeling bad", "I feel remorseful after I understand how my words hurt her"]
-};
-
-const pronunciation = {
-  anxious: "/ˈæŋk.ʃəs/", overwhelmed: "/ˌoʊ.vɚˈwelmd/", worried: "/ˈwɝː.id/", terrified: "/ˈter.ə.faɪd/", frightened: "/ˈfraɪ.tənd/",
-  enraged: "/ɪnˈreɪdʒd/", furious: "/ˈfjʊr.i.əs/", devastated: "/ˈdev.ə.steɪ.tɪd/", embarrassed: "/ɪmˈber.əst/", threatened: "/ˈθret.ənd/",
-  jealous: "/ˈdʒel.əs/", suspicious: "/səˈspɪʃ.əs/", withdrawn: "/wɪðˈdrɔːn/", confused: "/kənˈfjuːzd/", disillusioned: "/ˌdɪs.ɪˈluː.ʒənd/",
-  perplexed: "/pɚˈplekst/", startled: "/ˈstɑːr.təld/", astonished: "/əˈstɑː.nɪʃt/", energetic: "/ˌen.ɚˈdʒet̬.ɪk/", joyful: "/ˈdʒɔɪ.fəl/",
-  liberated: "/ˈlɪb.ə.reɪ.tɪd/", ecstatic: "/ɪkˈstæt̬.ɪk/", confident: "/ˈkɑːn.fə.dənt/", optimistic: "/ˌɑːp.təˈmɪs.tɪk/", peaceful: "/ˈpiːs.fəl/",
-  disgust: "/dɪsˈɡʌst/", avoidance: "/əˈvɔɪ.dəns/", hesitant: "/ˈhez.ə.tənt/", aversion: "/əˈvɝː.ʒən/", disapproval: "/ˌdɪs.əˈpruː.vəl/",
-  judgmental: "/dʒʌdʒˈmen.təl/", loathing: "/ˈloʊ.ðɪŋ/", revulsion: "/rɪˈvʌl.ʃən/", detestable: "/dɪˈtes.tə.bəl/", disappointed: "/ˌdɪs.əˈpɔɪn.tɪd/",
-  repugnant: "/rɪˈpʌɡ.nənt/", indifferent: "/ɪnˈdɪf.ɚ.ənt/", apathetic: "/ˌæp.əˈθet̬.ɪk/", isolated: "/ˈaɪ.sə.leɪ.tɪd/", abandoned: "/əˈbæn.dənd/",
-  despair: "/dɪˈsper/", vulnerable: "/ˈvʌl.nɚ.ə.bəl/", powerless: "/ˈpaʊ.ɚ.ləs/", guilty: "/ˈɡɪl.ti/", remorseful: "/rɪˈmɔːrs.fəl/"
-};
-
-let savedCefr = "A2";
-let savedAutoPlay = false;
-let savedEmojiOnly = false;
-try {
-  const storedCefr = localStorage.getItem("english-club-cefr");
-  if (["A1", "A2", "B1", "B2", "C1", "C2"].includes(storedCefr)) savedCefr = storedCefr;
-  savedAutoPlay = localStorage.getItem("english-club-autoplay") === "true";
-  savedEmojiOnly = localStorage.getItem("english-club-emoji-only") === "true";
-} catch (_) {}
-
-const state = { primary: null, secondary: null, selected: null, speaking: false, autoPlay: savedAutoPlay, emojiOnly: savedEmojiOnly, rotation: 0, cefr: savedCefr, trail: [], color: "#e65f42" };
-const wheel = document.querySelector("#emotion-wheel");
-const playButton = document.querySelector("#play-all");
-const globalAudioToggle = document.querySelector("#global-audio-toggle");
-const emojiModeButton = document.querySelector("#emoji-mode");
-const transcriptCard = document.querySelector("#transcript-card");
-const liveTranscript = document.querySelector("#live-transcript");
-const transcriptStatus = document.querySelector("#transcript-status");
-let transcriptRows = [];
-let wordHighlightTimer = null;
-let timedHighlightRow = -1;
-let timedHighlightCursor = 0;
-
-document.querySelector("#today").textContent = new Intl.DateTimeFormat("en", { weekday: "long", month: "long", day: "numeric" }).format(new Date());
-
-function point(radius, degrees) {
-  const angle = degrees * Math.PI / 180;
-  return [50 + radius * Math.cos(angle), 50 + radius * Math.sin(angle)];
+function icon(name, cls){
+  const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  s.setAttribute('viewBox', '0 0 24 24');
+  s.setAttribute('class', 'ico' + (cls ? ' ' + cls : ''));
+  s.setAttribute('aria-hidden', 'true');
+  const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  p.setAttribute('d', ICONS[name] || '');
+  if (name === 'play') { p.setAttribute('fill', 'currentColor'); p.setAttribute('stroke', 'none'); }
+  s.appendChild(p);
+  return s;
 }
 
-function ringPolygon(inner, outer, start, end) {
-  const points = [];
-  const steps = Math.max(3, Math.ceil(Math.abs(end - start) / 7.5));
-  for (let i = 0; i <= steps; i++) points.push(point(outer, start + (end - start) * i / steps));
-  if (inner === 0) points.push([50, 50]);
-  else for (let i = steps; i >= 0; i--) points.push(point(inner, start + (end - start) * i / steps));
-  return `polygon(${points.map(([x,y]) => `${x.toFixed(2)}% ${y.toFixed(2)}%`).join(",")})`;
-}
-
-function mixHex(base, target, amount) {
-  const from = base.replace("#", "");
-  const to = target.replace("#", "");
-  const channels = [0, 2, 4].map(index => {
-    const start = parseInt(from.slice(index, index + 2), 16);
-    const end = parseInt(to.slice(index, index + 2), 16);
-    return Math.round(start + (end - start) * amount).toString(16).padStart(2, "0");
+/* ------------------------------------------------------------- words */
+const FAMILY = {};            /* word -> big feeling */
+const PARENT = {};            /* word -> the word one ring in */
+EMO.wheel.forEach(p => {
+  FAMILY[p.name] = p.name;
+  p.children.forEach(c => {
+    FAMILY[c.name] = FAMILY[c.name] || p.name; PARENT[c.name] = PARENT[c.name] || p.name;
+    c.children.forEach(t => { FAMILY[t] = FAMILY[t] || p.name; PARENT[t] = PARENT[t] || c.name; });
   });
-  return `#${channels.join("")}`;
+});
+const famKey = w => (FAMILY[w] || 'Happy').toLowerCase();
+const lower = w => w.toLowerCase();
+const emoji = w => EMO.emoji[w] || '🙂';
+const bnWord = w => EMO.bn[w] || '';
+const chunk = w => CHUNKS[w] || CHUNKS.Happy;
+/* "~" is the word itself; {form} is another form of it */
+function plain(s, w){ return s.replace(/~/g, lower(w)).replace(/[{}\[\]*]/g, ''); }
+/* the same line as HTML, with the word lit up; [key] can be lit or hidden */
+function marked(s, w, keyMode){
+  let h = esc(s).replace(/~/g, '<span class="hw">' + esc(lower(w)) + '</span>')
+                .replace(/\{([^}]+)\}/g, '<span class="hw">$1</span>')
+                .replace(/\*([^*]+)\*/g, '<span class="idm">$1</span>');
+  h = h.replace(/\[([^\]]+)\]/g, (m, k) => keyMode === 'gap' ? '<span class="gap" data-gap></span>'
+                                          : keyMode === 'lit' ? '<span class="key">' + k + '</span>' : k);
+  return h;
 }
-
-function primaryFill(color) {
-  return mixHex(color, "#ffffff", 0.16);
+function stemRe(w){
+  const x = lower(w);
+  const stem = x.length <= 4 ? x : x.slice(0, Math.max(4, x.length - 3));
+  return x.length <= 4 ? new RegExp('\\b' + stem + '\\b', 'i') : new RegExp('\\b' + stem + '\\w*', 'i');
 }
-
-function secondaryFill(color, branchIndex) {
-  return mixHex(color, "#ffffff", [0.12, 0.30, 0.48, 0.66][branchIndex]);
+/* the listening flood: the word, its partners, its patterns, its sentences */
+function floodLines(w){
+  const C = chunk(w);
+  return [w + '.', w + '.']
+    .concat(C.p.map(x => plain(x, w) + '.'))
+    .concat(C.g.map(g => plain(g[1], w)))
+    .concat((EMO.say[w] || []).slice(0, 5));
 }
+const BIG_BN = { Fear: 'ভয়', Anger: 'রাগ', Surprise: 'বিস্ময়', Happy: 'আনন্দ', Disgust: 'ঘৃণা', Sad: 'দুঃখ' };
 
-function tertiaryFill(parentShade, siblingIndex) {
-  return mixHex(parentShade, "#ffffff", siblingIndex === 0 ? 0.10 : 0.21);
-}
+/* ------------------------------------------------------------ state */
+const S = {
+  role: store.get('role', null),
+  lang: store.get('lang', 'en'),
+  tv: false,
+  view: 'welcome',                 /* welcome | lesson | flow */
+  lstep: 0, step: 0, sub: 0, dir: 1,
+  word: store.get('word', null),
+  storm0: store.get('storm0', null), storm1: store.get('storm1', null),
+  level: store.get('level', 0),
+  frames: store.get('frames', { because: '', stake: '', need: '' }),
+  idiom: store.get('idiom', null),
+  pick: { big: null, mid: null }
+};
+(function readURL(){
+  const q = new URLSearchParams(location.search);
+  const r = q.get('role'); if (r === 'student' || r === 'teacher') S.role = r;
+  const w = q.get('word'); if (w && CHUNKS[w[0].toUpperCase() + w.slice(1).toLowerCase()]) S.word = w[0].toUpperCase() + w.slice(1).toLowerCase();
+  if (q.get('lang') === 'bn') S.lang = 'bn';
+})();
+function curWord(){ return S.word || 'Anxious'; }
+function save(){ ['role', 'lang', 'word', 'storm0', 'storm1', 'level', 'frames', 'idiom'].forEach(k => store.set(k, S[k])); }
 
-function makeSector({ name, translation = "", color, start, end, inner, outer, level, selected, muted, delay = 0 }) {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = `sector sector--${level} is-new${selected ? " is-selected" : ""}${muted ? " is-muted" : ""}`;
-  button.style.setProperty("--sector-color", color);
-  const labelRadius = level === "primary" ? 11.85 : (inner + outer) / 2;
-  const middleAngle = (start + end) / 2;
-  const [labelX, labelY] = point(labelRadius, middleAngle);
-  let textRotation = ((middleAngle + 180) % 360 + 360) % 360 - 180;
-  if (textRotation > 90) textRotation -= 180;
-  if (textRotation < -90) textRotation += 180;
-  button.style.setProperty("--label-x", `${labelX}%`);
-  button.style.setProperty("--label-y", `${labelY}%`);
-  button.style.setProperty("--text-rotation", `${textRotation}deg`);
-  button.style.clipPath = ringPolygon(inner, outer, start, end);
-  button.style.animationDelay = `${delay}ms`;
-  button.setAttribute("aria-label", `${name}${translation ? `, ${translation}` : ""}. Select to hear this emotion.`);
-  button.innerHTML = `<span class="sector__label"><span class="sector__main"><span class="sector__emoji" aria-hidden="true">${emotionEmojis[name] || "🙂"}</span><span class="sector__word">${name}</span></span>${translation ? `<span class="sector__bangla" lang="bn">${translation}</span>` : ""}</span>`;
-  return button;
-}
-
-function renderWheel() {
-  wheel.replaceChildren();
-  wheel.classList.toggle("is-emoji-only", state.emojiOnly);
-  const fragment = document.createDocumentFragment();
-
-  wheelData.forEach((primary, pIndex) => {
-    const primarySelected = state.primary === pIndex;
-    const mainColor = primaryFill(primary.color);
-    const button = makeSector({
-      name: primary.name, translation: primaryBangla[primary.name].word, color: mainColor, start: primary.start, end: primary.start + 60,
-      inner: 0, outer: 17.2, level: "primary", selected: primarySelected, muted: state.primary !== null && !primarySelected
-    });
-    button.addEventListener("click", () => selectPrimary(pIndex));
-    fragment.append(button);
-
-    if (primarySelected) {
-      primary.children.forEach((secondary, sIndex) => {
-        const start = primary.start + sIndex * 15;
-        const secondarySelected = state.secondary === sIndex;
-        const branchColor = secondaryFill(primary.color, sIndex);
-        const secondButton = makeSector({
-          name: secondary.name, color: branchColor, start, end: start + 15,
-          inner: 17.6, outer: 31.2, level: "secondary", selected: secondarySelected,
-          muted: state.secondary !== null && !secondarySelected, delay: sIndex * 35
-        });
-        secondButton.addEventListener("click", () => selectSecondary(pIndex, sIndex));
-        fragment.append(secondButton);
-      });
-
-      if (state.secondary !== null) {
-        primary.children.forEach((secondary, sIndex) => {
-          const branchColor = secondaryFill(primary.color, sIndex);
-          secondary.children.forEach((name, tIndex) => {
-            const start = primary.start + sIndex * 15 + tIndex * 7.5;
-            const selected = state.selected === name;
-            const thirdButton = makeSector({
-              name, color: tertiaryFill(branchColor, tIndex), start, end: start + 7.5, inner: 31.6, outer: 48,
-              level: "tertiary", selected, muted: state.secondary !== sIndex, delay: (sIndex * 2 + tIndex) * 28
-            });
-            thirdButton.addEventListener("click", () => selectTertiary(pIndex, sIndex, name));
-            fragment.append(thirdButton);
-          });
-        });
-      }
+/* ------------------------------------------------------------- speech
+   Browser voices only (no recordings yet). Lines are spoken one at a time
+   so Chrome's long-utterance cut-off never bites, and every line has a
+   watchdog so a device that never fires "end" cannot freeze the page. */
+const TTS = {
+  ok: 'speechSynthesis' in window, voice: null, rate: store.get('rate', 0.9), run: 0,
+  pick(){
+    if (!this.ok) return;
+    const vs = speechSynthesis.getVoices().filter(v => /^en[-_]/i.test(v.lang));
+    const pref = [/en-US.*(Google|Samantha|Aria|Jenny|Natural)/i, /en-GB.*(Google|Natural|Sonia|Libby)/i, /en-US/i, /en-GB/i, /en/i];
+    const saved = store.get('voice', null);
+    this.voice = vs.find(v => v.name === saved) || null;
+    for (const re of pref) { if (this.voice) break; this.voice = vs.find(v => re.test(v.lang + ' ' + v.name)) || null; }
+  },
+  voices(){ return this.ok ? speechSynthesis.getVoices().filter(v => /^en[-_]/i.test(v.lang)) : []; },
+  stop(){ this.run++; if (this.ok) speechSynthesis.cancel(); },
+  /* speak lines in order; o.onLine(i), o.onWord(i, charIndex), o.onDone() */
+  list(lines, o = {}){
+    this.stop();
+    const run = this.run, gap = o.gap == null ? 650 : o.gap;
+    let i = o.from || 0;
+    const next = () => {
+      if (run !== this.run) return;
+      if (i >= lines.length) { o.onDone && o.onDone(); return; }
+      const k = i++, text = lines[k];
+      o.onLine && o.onLine(k);
+      this.say(text, {
+        onWord: c => run === this.run && o.onWord && o.onWord(k, c),
+        onEnd: () => { if (run === this.run) setTimeout(next, gap); }
+      }, run);
+    };
+    next();
+    return run;
+  },
+  say(text, o = {}, run){
+    if (run == null) { this.stop(); run = this.run; }
+    const est = 600 + text.length * 62 / this.rate;
+    let done = false;
+    const end = () => { if (done) return; done = true; clearTimeout(dog); o.onEnd && o.onEnd(); };
+    const dog = setTimeout(end, est * 2 + 1500);
+    if (!this.ok || !this.voices().length) {
+      /* no voice: walk the words at reading pace so the highlight still moves */
+      const words = [...text.matchAll(/\S+/g)];
+      words.forEach((m, j) => setTimeout(() => { if (run === this.run && !done) o.onWord && o.onWord(m.index); }, j * est / Math.max(1, words.length)));
+      setTimeout(end, est);
+      if (!TTS.warned) { TTS.warned = true; toast('No English voice on this device — read along instead.', 'এই ডিভাইসে ইংরেজি কণ্ঠ নেই — লেখাটি পড়ে নিন।'); }
+      return;
     }
-  });
-
-  wheel.append(fragment);
-  renderMobileChoices();
-}
-
-function selectPrimary(index) {
-  stopSpeech();
-  state.primary = index;
-  state.secondary = null;
-  state.selected = wheelData[index].name;
-  updateLesson(wheelData[index].name, [wheelData[index].name], wheelData[index].color);
-  renderWheel();
-  setStep(2, "Now choose a more specific feeling");
-  if (state.autoPlay) speakLesson();
-}
-
-function selectSecondary(primaryIndex, secondaryIndex) {
-  stopSpeech();
-  state.primary = primaryIndex;
-  state.secondary = secondaryIndex;
-  const primary = wheelData[primaryIndex];
-  const secondary = primary.children[secondaryIndex];
-  state.selected = secondary.name;
-  updateLesson(secondary.name, [primary.name, secondary.name], primary.color);
-  renderWheel();
-  setStep(3, "Choose the most exact word — or keep this one");
-  if (state.autoPlay) speakLesson();
-}
-
-function selectTertiary(primaryIndex, secondaryIndex, name) {
-  stopSpeech();
-  state.primary = primaryIndex;
-  state.secondary = secondaryIndex;
-  state.selected = name;
-  const primary = wheelData[primaryIndex];
-  const secondary = primary.children[secondaryIndex];
-  updateLesson(name, [primary.name, secondary.name, name], primary.color);
-  renderWheel();
-  setStep(3, "You found a precise feeling word");
-  if (state.autoPlay) speakLesson();
-}
-
-function setStep(step, instruction) {
-  document.querySelectorAll(".step").forEach(el => el.classList.toggle("is-active", Number(el.dataset.step) <= step));
-  document.querySelector("#wheel-instruction").textContent = instruction;
-}
-
-const emotionFloodingData = {
-  Fear: {
-    collocations: ["feel fear", "deep fear", "overcome fear", "fear of failure", "fear of heights"],
-    colligations: ["in fear for", "driven by fear", "fear that happens", "fear about future", "no fear left"],
-    distinctions: [
-      "Fear is danger, not worry.",
-      "Fear is urgent, not mild.",
-      "Fear is threat, not doubt.",
-      "Fear is survival, not weakness.",
-      "Fear is physical, not emotional.",
-      "Fear is alarm, not sadness.",
-      "Fear is now, not later.",
-      "Fear is acute, not dull.",
-      "Fear is action, not thought.",
-      "Fear is intense, not calm."
-    ],
-    dialogueC1: [
-      "“My biggest fear is letting down the people who depend on me.”",
-      "“He conquered his fear of public speaking by practicing every day.”",
-      "“There was a moment of sheer fear when the brakes stopped responding.”",
-      "“She tried to hide her fear, but her voice was trembling.”",
-      "“You can't let fear paralyze you when opportunity knocks.”"
-    ],
-    dialogueC2: [
-      "“My heart was in my throat the entire time I was up on stage.”",
-      "“She froze in her tracks when the thunder cracked.”",
-      "“My blood ran cold when I heard footsteps behind me.”",
-      "“I was shaking like a leaf right before walking out.”",
-      "“It scared the living daylights out of everyone present.”"
-    ]
-  },
-  Anxious: {
-    collocations: ["feel anxious", "socially anxious", "anxious thought", "anxious energy", "deeply anxious"],
-    colligations: ["anxious about exams", "anxious to succeed", "feel anxious when", "too anxious to", "anxious waiting period"],
-    distinctions: [
-      "Anxious is doubt, not danger.",
-      "Anxious is future, not present.",
-      "Anxious is tension, not panic.",
-      "Anxious is mind, not body.",
-      "Anxious is waiting, not acting.",
-      "Anxious is restless, not calm.",
-      "Anxious is ongoing, not sudden.",
-      "Anxious is uneasy, not safe.",
-      "Anxious is concern, not fury.",
-      "Anxious is hesitant, not steady."
-    ],
-    dialogueC1: [
-      "“I always get anxious right before giving a big presentation.”",
-      "“She was so anxious about the test results that she couldn't sleep.”",
-      "“He looked anxious while waiting for the doctor to call his name.”",
-      "“Sitting in traffic when you're late makes anyone feel anxious.”",
-      "“Try to stay calm and don't get anxious over small delays.”"
-    ],
-    dialogueC2: [
-      "“I've been on pins and needles all morning waiting for news.”",
-      "“Having all eyes on me gives me serious butterflies in my stomach.”",
-      "“She's running on pure nervous energy ahead of the meeting.”",
-      "“I was sweating bullets until I finally got the confirmation.”",
-      "“Don't work yourself up into a lather over a small detail.”"
-    ]
-  },
-  Insecure: {
-    collocations: ["feel insecure", "deeply insecure", "insecure feeling", "socially insecure", "emotionally insecure"],
-    colligations: ["insecure about skills", "feel insecure around", "become insecure when", "too insecure to", "insecure in relationships"],
-    distinctions: [
-      "Insecure is doubt, not shyness.",
-      "Insecure is self, not others.",
-      "Insecure is worth, not safety.",
-      "Insecure is unsteady, not calm.",
-      "Insecure is quiet, not loud.",
-      "Insecure is fragile, not strong.",
-      "Insecure is inner, not outer.",
-      "Insecure is fear, not anger.",
-      "Insecure is hesitant, not bold.",
-      "Insecure is low, not high."
-    ],
-    dialogueC1: [
-      "“He felt insecure about his accent when he first moved here.”",
-      "“Comparing yourself to people on social media will make you insecure.”",
-      "“She was insecure about leading the team without prior experience.”",
-      "“It's natural to feel insecure when starting out in a new field.”",
-      "“His defensive attitude comes from feeling insecure about his role.”"
-    ],
-    dialogueC2: [
-      "“I always feel like I'm swimming in deep water around experts.”",
-      "“She's second-guessing every single decision she makes lately.”",
-      "“Imposter syndrome really got the better of me on day one.”",
-      "“He puts on a tough front, but he's deeply fragile inside.”",
-      "“Don't sell yourself short—you earned your spot here.”"
-    ]
-  },
-  Overwhelmed: {
-    collocations: ["feel overwhelmed", "completely overwhelmed", "overwhelmed by work", "emotionally overwhelmed", "overwhelmed with tasks"],
-    colligations: ["feel overwhelmed when", "become overwhelmed easily", "too overwhelmed to", "overwhelmed by choices", "deeply overwhelmed state"],
-    distinctions: [
-      "Overwhelmed is overload, not laziness.",
-      "Overwhelmed is stuck, not busy.",
-      "Overwhelmed is capacity, not fear.",
-      "Overwhelmed is limit, not failure.",
-      "Overwhelmed is heavy, not light.",
-      "Overwhelmed is flooded, not clear.",
-      "Overwhelmed is noise, not peace.",
-      "Overwhelmed is chaos, not order.",
-      "Overwhelmed is excess, not lack.",
-      "Overwhelmed is stop, not go."
-    ],
-    dialogueC1: [
-      "“I am completely overwhelmed by the sheer volume of emails today.”",
-      "“She felt overwhelmed trying to balance work, family, and studies.”",
-      "“Don't get overwhelmed—just take the project one step at a time.”",
-      "“He was so overwhelmed by the support that he broke down in tears.”",
-      "“The new manager looked overwhelmed during his first week on the floor.”"
-    ],
-    dialogueC2: [
-      "“I'm completely snowed under with deadlines this week.”",
-      "“My brain feels like it has fifty open tabs right now.”",
-      "“She's reaching her breaking point with everything on her plate.”",
-      "“I just need to take a step back before I drown in this.”",
-      "“That final email was the straw that broke the camel's back.”"
-    ]
-  },
-  Scared: {
-    collocations: ["feel scared", "scared of heights", "deeply scared", "scared to death", "scared of failure"],
-    colligations: ["feel scared when", "become scared suddenly", "too scared to", "scared of dark", "scared for future"],
-    distinctions: [
-      "Scared is threat, not stress.",
-      "Scared is sudden, not slow.",
-      "Scared is alarm, not worry.",
-      "Scared is recoil, not advance.",
-      "Scared is real, not fake.",
-      "Scared is wild, not tame.",
-      "Scared is reflex, not plan.",
-      "Scared is shock, not calm.",
-      "Scared is sharp, not soft.",
-      "Scared is safety, not risk."
-    ],
-    dialogueC1: [
-      "“I was scared to death when the thunderstorm knocked out the lights.”",
-      "“She's scared of making mistakes in front of her supervisor.”",
-      "“Don't be scared to ask questions if you don't understand the task.”",
-      "“He got scared when he realized he had lost his way in the city.”",
-      "“My dog gets scared every time there are loud fireworks outside.”"
-    ],
-    dialogueC2: [
-      "“I was scared out of my wits when the door slammed shut.”",
-      "“He was shaking like a leaf during his entire presentation.”",
-      "“Don't let cold feet stop you right at the finish line.”",
-      "“She was scared half to death by the loud bang outside.”",
-      "“My heart skipped a beat when I stepped off the curb.”"
-    ]
-  },
-  Terrified: {
-    collocations: ["terrified of snakes", "completely terrified", "terrified look", "terrified voice", "deeply terrified"],
-    colligations: ["terrified to enter", "feel terrified when", "become terrified instantly", "too terrified to", "terrified of loss"],
-    distinctions: [
-      "Terrified is dread, not worry.",
-      "Terrified is frozen, not nervous.",
-      "Terrified is extreme, not mild.",
-      "Terrified is helpless, not steady.",
-      "Terrified is panic, not concern.",
-      "Terrified is severe, not light.",
-      "Terrified is silent, not loud.",
-      "Terrified is shock, not doubt.",
-      "Terrified is cold, not warm.",
-      "Terrified is trapped, not free."
-    ],
-    dialogueC1: [
-      "“She was terrified of heights, so climbing the tower was huge.”",
-      "“I was terrified that we wouldn't reach the hospital in time.”",
-      "“He looked terrified as the severe turbulence shook the plane.”",
-      "“The child was terrified of being left alone in the dark room.”",
-      "“I get terrified just thinking about swimming in open ocean water.”"
-    ],
-    dialogueC2: [
-      "“I was scared stiff when I looked down over the cliff.”",
-      "“She froze in her tracks, completely petrified by the noise.”",
-      "“My blood ran cold when I heard the alarm go off.”",
-      "“He was trembling like a leaf after the near-miss.”",
-      "“It scared the living daylights out of me when lights cut out.”"
-    ]
-  },
-  Worried: {
-    collocations: ["feel worried", "deeply worried", "worried look", "constantly worried", "worried parent"],
-    colligations: ["worried about money", "worried that happens", "feel worried when", "too worried to", "worried for safety"],
-    distinctions: [
-      "Worried is mind, not body.",
-      "Worried is future, not now.",
-      "Worried is tension, not pain.",
-      "Worried is outcome, not threat.",
-      "Worried is restless, not calm.",
-      "Worried is thought, not deed.",
-      "Worried is uneasy, not angry.",
-      "Worried is slow, not fast.",
-      "Worried is doubt, not faith.",
-      "Worried is care, not hate."
-    ],
-    dialogueC1: [
-      "“My parents were worried sick when I didn't call after landing.”",
-      "“She's worried that her application won't arrive before the deadline.”",
-      "“He looked worried while reading through the contract terms.”",
-      "“There's no point getting worried about things you cannot change.”",
-      "“I'm worried about how the team will handle the sudden workload.”"
-    ],
-    dialogueC2: [
-      "“I'm worried sick about how he's going to handle the news.”",
-      "“She's been pacing the floor all evening waiting for a call.”",
-      "“Don't lose any sleep over it—things usually sort themselves out.”",
-      "“It's been weighing heavily on my mind ever since yesterday.”",
-      "“He was beside himself with worry until they got home.”"
-    ]
-  },
-  Happy: {
-    collocations: ["feel happy", "genuinely happy", "happy memory", "happy moment", "extremely happy"],
-    colligations: ["happy about news", "happy to help", "feel happy when", "make someone happy", "happy with results"],
-    distinctions: [
-      "Happy is calm, not thrill.",
-      "Happy is warm, not cold.",
-      "Happy is present, not past.",
-      "Happy is light, not heavy.",
-      "Happy is content, not greedy.",
-      "Happy is quiet, not wild.",
-      "Happy is safe, not scared.",
-      "Happy is good, not bad.",
-      "Happy is easy, not hard.",
-      "Happy is smile, not frown."
-    ],
-    dialogueC1: [
-      "“Seeing my family together after so long makes me truly happy.”",
-      "“She was happy to hear that her best friend got the job offer.”",
-      "“He gave a happy laugh when his daughter took her first steps.”",
-      "“I'm just happy that everything worked out without any trouble.”",
-      "“They built a simple, happy life in a quiet coastal town.”"
-    ],
-    dialogueC2: [
-      "“I'm over the moon about getting into the program!”",
-      "“He was walking on air for days after the proposal was accepted.”",
-      "“Honestly, seeing everyone come together warms my heart.”",
-      "“We had an absolute blast at the celebration last night.”",
-      "“I couldn't be more pleased with how things turned out.”"
-    ]
-  },
-  Confident: {
-    collocations: ["feel confident", "highly confident", "confident voice", "confident smile", "deeply confident"],
-    colligations: ["confident in skills", "confident about test", "feel confident when", "become confident with", "confident to speak"],
-    distinctions: [
-      "Confident is trust, not pride.",
-      "Confident is quiet, not loud.",
-      "Confident is steady, not rash.",
-      "Confident is ready, not shy.",
-      "Confident is sure, not boastful.",
-      "Confident is calm, not angry.",
-      "Confident is strong, not weak.",
-      "Confident is poise, not fear.",
-      "Confident is clear, not lost.",
-      "Confident is firm, not soft."
-    ],
-    dialogueC1: [
-      "“She walked into the interview room feeling calm and confident.”",
-      "“He was confident that his team had prepared thoroughly.”",
-      "“Speaking clearly helps you sound more confident during presentations.”",
-      "“I feel confident about our chances of winning the contract.”",
-      "“Practice builds skill, and skill makes you truly confident.”"
-    ],
-    dialogueC2: [
-      "“She carried herself with quiet poise throughout the tough interview.”",
-      "“He was in his element presenting the project to the board.”",
-      "“I feel like I really hit my stride after the first few months.”",
-      "“Walk in there with your head held high—you know your stuff.”",
-      "“She didn't bat an eye when asked the most difficult question.”"
-    ]
-  },
-  Excited: {
-    collocations: ["feel excited", "super excited", "excited voice", "excited about trip", "deeply excited"],
-    colligations: ["excited to meet", "excited for weekend", "feel excited when", "become excited easily", "too excited to"],
-    distinctions: [
-      "Excited is eager, not calm.",
-      "Excited is high, not low.",
-      "Excited is future, not present.",
-      "Excited is fast, not slow.",
-      "Excited is spark, not shade.",
-      "Excited is active, not passive.",
-      "Excited is thrill, not fear.",
-      "Excited is wild, not quiet.",
-      "Excited is glad, not sad.",
-      "Excited is jump, not sit."
-    ],
-    dialogueC1: [
-      "“The kids are so excited about going to the amusement park tomorrow.”",
-      "“I'm really excited to collaborate on this new project with you.”",
-      "“She sounded excited when describing her upcoming trip to Asia.”",
-      "“He was too excited to sleep the night before the championship.”",
-      "“We are excited to share our latest product updates with everyone.”"
-    ],
-    dialogueC2: [
-      "“I'm bouncing off the walls waiting for the concert tonight!”",
-      "“She was beside herself with excitement when she opened the gift.”",
-      "“We're all hyped up for the championship game this weekend.”",
-      "“He was like a kid in a candy store when he walked into the expo.”",
-      "“I can barely contain my enthusiasm for this new project.”"
-    ]
-  },
-  Joyful: {
-    collocations: ["feel joyful", "joyful heart", "joyful occasion", "deeply joyful", "purely joyful"],
-    colligations: ["joyful about life", "joyful to give", "feel joyful in", "make someone joyful", "joyful celebration"],
-    distinctions: [
-      "Joyful is deep, not surface.",
-      "Joyful is inner, not outer.",
-      "Joyful is lasting, not quick.",
-      "Joyful is radiant, not loud.",
-      "Joyful is spirit, not mind.",
-      "Joyful is warm, not cold.",
-      "Joyful is light, not dark.",
-      "Joyful is gift, not trade.",
-      "Joyful is rich, not poor.",
-      "Joyful is life, not death."
-    ],
-    dialogueC1: [
-      "“The wedding celebration was a deeply joyful occasion for everyone.”",
-      "“She burst into joyful laughter when she opened the surprise package.”",
-      "“There was a joyful energy in the air during the holiday festival.”",
-      "“Helping others brings a quiet, joyful satisfaction to his heart.”",
-      "“They shared a joyful moment when the final goal was scored.”"
-    ],
-    dialogueC2: [
-      "“Her face lit up with pure joy when she saw her old friend.”",
-      "“There was an infectious sense of joy spreading through the crowd.”",
-      "“It brought immense joy to my heart to see them reconciled.”",
-      "“We were singing at the top of our lungs out of sheer delight.”",
-      "“She has a buoyant spirit that brightens up any room.”"
-    ]
-  },
-  Optimistic: {
-    collocations: ["feel optimistic", "optimistic outlook", "cautiously optimistic", "deeply optimistic", "always optimistic"],
-    colligations: ["optimistic about future", "optimistic for success", "feel optimistic when", "remain optimistic under", "optimistic frame of mind"],
-    distinctions: [
-      "Optimistic is hope, not blind.",
-      "Optimistic is future, not past.",
-      "Optimistic is forward, not back.",
-      "Optimistic is bright, not dark.",
-      "Optimistic is open, not closed.",
-      "Optimistic is can, not cannot.",
-      "Optimistic is light, not heavy.",
-      "Optimistic is active, not passive.",
-      "Optimistic is faith, not fear.",
-      "Optimistic is growth, not loss."
-    ],
-    dialogueC1: [
-      "“Despite the tough market conditions, she remains optimistic.”",
-      "“He takes an optimistic approach to solving complex problems.”",
-      "“I am cautiously optimistic about our quarterly performance targets.”",
-      "“Her optimistic attitude keeps the entire team motivated.”",
-      "“It's good to stay optimistic even when facing temporary setbacks.”"
-    ],
-    dialogueC2: [
-      "“I'm looking on the bright side despite the rainy forecast.”",
-      "“Every cloud has a silver lining if you look hard enough.”",
-      "“She always sees the glass as half full, no matter what happens.”",
-      "“I'm keeping my fingers crossed for a smooth outcome.”",
-      "“He maintains a sunny disposition even during tough times.”"
-    ]
-  },
-  Peaceful: {
-    collocations: ["feel peaceful", "peaceful mind", "peaceful place", "deeply peaceful", "truly peaceful"],
-    colligations: ["peaceful after work", "peaceful in nature", "feel peaceful when", "become peaceful with", "peaceful environment"],
-    distinctions: [
-      "Peaceful is calm, not noisy.",
-      "Peaceful is still, not wild.",
-      "Peaceful is rest, not rush.",
-      "Peaceful is smooth, not rough.",
-      "Peaceful is soft, not hard.",
-      "Peaceful is light, not dark.",
-      "Peaceful is free, not bound.",
-      "Peaceful is deep, not shallow.",
-      "Peaceful is safe, not scared.",
-      "Peaceful is silent, not loud."
-    ],
-    dialogueC1: [
-      "“Sitting by the lake at sunrise gives me a peaceful feeling.”",
-      "“She enjoyed a peaceful afternoon reading in the quiet garden.”",
-      "“After a long busy week, I just need a peaceful weekend at home.”",
-      "“His gentle voice created a peaceful atmosphere in the room.”",
-      "“The mountain village offered a peaceful escape from city noise.”"
-    ],
-    dialogueC2: [
-      "“I felt at total peace sitting by the quiet lake at sunrise.”",
-      "“She has a serene presence that puts everyone at ease.”",
-      "“After all the drama settled down, a sense of calm washed over the house.”",
-      "“My mind was completely at rest for the first time in weeks.”",
-      "“It was a smooth sailing afternoon with zero stress.”"
-    ]
-  },
-  Proud: {
-    collocations: ["feel proud", "proud moment", "deeply proud", "proud parent", "immensely proud"],
-    colligations: ["proud of work", "proud to serve", "feel proud when", "make someone proud", "proud achievement"],
-    distinctions: [
-      "Proud is honor, not boast.",
-      "Proud is effort, not luck.",
-      "Proud is tall, not low.",
-      "Proud is inner, not outer.",
-      "Proud is growth, not greed.",
-      "Proud is work, not rest.",
-      "Proud is glad, not mean.",
-      "Proud is earned, not given.",
-      "Proud is firm, not weak.",
-      "Proud is warm, not cold."
-    ],
-    dialogueC1: [
-      "“Her parents were immensely proud when she graduated with honors.”",
-      "“He felt proud of the house he had built with his own hands.”",
-      "“You should be proud of how hard you worked to get here.”",
-      "“She took a proud stance as she received the community award.”",
-      "“Our team is proud to contribute to such a meaningful cause.”"
-    ],
-    dialogueC2: [
-      "“I'm bursting with pride seeing how far you've come!”",
-      "“She stood tall and took a well-deserved bow after the performance.”",
-      "“He wore his hard-earned medal like a badge of honor.”",
-      "“You should hold your head high after everything you accomplished.”",
-      "“That was a feather in her cap that nobody can take away.”"
-    ]
-  },
-  Anger: {
-    collocations: ["feel anger", "blind anger", "suppress anger", "express anger", "righteous anger"],
-    colligations: ["anger at someone", "anger over decision", "feel anger when", "channel anger into", "filled with anger"],
-    distinctions: [
-      "Anger is protest, not hurt.",
-      "Anger is fire, not ice.",
-      "Anger is push, not pull.",
-      "Anger is loud, not quiet.",
-      "Anger is boundaries, not hatred.",
-      "Anger is action, not grief.",
-      "Anger is hot, not cold.",
-      "Anger is fight, not flight.",
-      "Anger is now, not later.",
-      "Anger is force, not weakness."
-    ],
-    dialogueC1: [
-      "“He struggled to contain his anger after the unfair treatment.”",
-      "“Her eyes flashed with anger when she heard the dishonest claim.”",
-      "“Miscommunication can easily lead to unnecessary anger between friends.”",
-      "“Channel your anger into constructive action rather than yelling.”",
-      "“You could hear the rising anger in his voice during the debate.”"
-    ],
-    dialogueC2: [
-      "“I was seeing red when I saw how unfairly she was treated.”",
-      "“Don't blow your top over a minor miscommunication.”",
-      "“He really hit a raw nerve with that comment.”",
-      "“I had to bite my tongue so I wouldn't snap at him.”",
-      "“She was steaming mad after waiting two hours for nothing.”"
-    ]
-  },
-  Sad: {
-    collocations: ["feel sad", "deeply sad", "sad story", "sad truth", "heartbreakingly sad"],
-    colligations: ["sad about loss", "sad to leave", "feel sad when", "make someone sad", "too sad to"],
-    distinctions: [
-      "Sad is loss, not tired.",
-      "Sad is heavy, not light.",
-      "Sad is quiet, not angry.",
-      "Sad is tears, not fire.",
-      "Sad is grief, not fear.",
-      "Sad is hurt, not mean.",
-      "Sad is down, not up.",
-      "Sad is processing, not fighting.",
-      "Sad is soft, not sharp.",
-      "Sad is slow, not fast."
-    ],
-    dialogueC1: [
-      "“It made me sad to say goodbye to my colleagues after five years.”",
-      "“She felt sad watching her old childhood neighborhood change.”",
-      "“He looked sad as he read the final chapter of the story.”",
-      "“It's completely normal to feel sad when missing loved ones.”",
-      "“The sad news brought a quiet hush over the entire office.”"
-    ],
-    dialogueC2: [
-      "“I've been feeling down in the dumps ever since.”",
-      "“It really broke my heart to see him pack his things.”",
-      "“She's had a heavy heart all week after hearing the news.”",
-      "“I'm just going through a rough patch right now.”",
-      "“It brought a tear to my eye seeing them say goodbye.”"
-    ]
-  },
-  Disgust: {
-    collocations: ["deep disgust", "feel disgust", "look of disgust", "moral disgust", "utter disgust"],
-    colligations: ["disgust at behavior", "disgusted by smell", "turn in disgust", "filled with disgust", "express disgust towards"],
-    distinctions: [
-      "Disgust is recoil, not dislike.",
-      "Disgust is stomach, not head.",
-      "Disgust is away, not near.",
-      "Disgust is foul, not sweet.",
-      "Disgust is physical, not moral.",
-      "Disgust is turn, not fight.",
-      "Disgust is sick, not mad.",
-      "Disgust is sharp, not dull.",
-      "Disgust is push, not hold.",
-      "Disgust is gross, not fine."
-    ],
-    dialogueC1: [
-      "“She pulled her hand back in disgust after touching the slime.”",
-      "“He expressed disgust at how much food was wasted at the party.”",
-      "“A look of disgust crossed his face when he smelled the spoiled milk.”",
-      "“The dishonest corruption scandal caused widespread public disgust.”",
-      "“I turned away in disgust when I saw the filthy alleyway.”"
-    ],
-    dialogueC2: [
-      "“Ugh, that smells so foul it turned my stomach immediately.”",
-      "“I was completely grossed out by the dirty counter.”",
-      "“His dishonest behavior left a really bad taste in my mouth.”",
-      "“She recoiled the moment she opened the container.”",
-      "“I couldn't even look at it—it was revolting.”"
-    ]
-  },
-  Surprise: {
-    collocations: ["total surprise", "pleasant surprise", "caught by surprise", "look of surprise", "gasp in surprise"],
-    colligations: ["surprised by news", "surprised to hear", "feel surprised when", "taken by surprise", "much to surprise"],
-    distinctions: [
-      "Surprise is sudden, not slow.",
-      "Surprise is shock, not fear.",
-      "Surprise is new, not old.",
-      "Surprise is gasp, not sigh.",
-      "Surprise is open, not closed.",
-      "Surprise is quick, not long.",
-      "Surprise is now, not next.",
-      "Surprise is shift, not stay.",
-      "Surprise is flash, not shadow.",
-      "Surprise is fresh, not stale."
-    ],
-    dialogueC1: [
-      "“His unexpected visit was a wonderful surprise for the whole family.”",
-      "“She gasped in surprise when she saw the birthday decorations.”",
-      "“To my great surprise, the complex problem turned out to be easy.”",
-      "“He couldn't hide his surprise when his name was called first.”",
-      "“Life is full of surprise twists that change our direction.”"
-    ],
-    dialogueC2: [
-      "“Out of the blue, she called me up after five years!”",
-      "“That caught me completely off guard—I didn't see it coming.”",
-      "“My jaw dropped when I saw the final test scores.”",
-      "“I had to do a double take when he walked in.”",
-      "“Well, knock me down with a feather—I never expected that!”"
-    ]
+    const u = new SpeechSynthesisUtterance(text.replace(/[“”"]/g, ''));
+    if (this.voice) u.voice = this.voice;
+    u.lang = this.voice ? this.voice.lang : 'en-US';
+    u.rate = this.rate;
+    u.onboundary = e => { if (e.name === 'word' || e.charIndex != null) o.onWord && o.onWord(e.charIndex); };
+    u.onend = end; u.onerror = end;
+    speechSynthesis.speak(u);
   }
 };
+if (TTS.ok) { TTS.pick(); speechSynthesis.onvoiceschanged = () => TTS.pick(); }
 
-const customC2Data = {
-  Frightened: [
-    `"I jumped clean out of my skin when the door slammed."`,
-    `"She went white as a sheet the moment she saw the shadow."`,
-    `"He bolted out of there like a bat out of hell."`,
-    `"My heart was hammering so hard I thought it would come through my chest."`,
-    `"I was so frightened I practically flew to the other side of the room."`
-  ],
-  Mad: [
-    `"I completely lost my cool when I heard what had happened."`,
-    `"That was the last straw—I finally blew my top."`,
-    `"He flew off the handle over the tiniest little thing."`,
-    `"I had to walk away before I said something I'd seriously regret."`,
-    `"She was absolutely hopping mad and not hiding it one bit."`
-  ],
-  Enraged: [
-    `"He went absolutely ballistic when he found out."`,
-    `"I hit the roof when I saw what they'd done behind our backs."`,
-    `"She was fit to be tied by the end of that meeting."`,
-    `"He was absolutely livid and not even trying to hide it."`,
-    `"I was so enraged I could barely see straight."`
-  ],
-  Furious: [
-    `"I was absolutely seething when I finally got off that call."`,
-    `"She was spitting feathers by the time he showed up."`,
-    `"I was so furious I had to leave before I completely lost it."`,
-    `"He was steaming—you could practically see smoke coming out his ears."`,
-    `"They were up in arms the moment the decision came down."`
-  ],
-  Hurt: [
-    `"That really cut me to the quick, I won't lie."`,
-    `"What she said knocked the wind right out of me."`,
-    `"It stings more because it came from someone I actually trusted."`,
-    `"That hit me right where it hurts."`,
-    `"I'm still licking my wounds over that one."`
-  ],
-  Devastated: [
-    `"When I heard, my whole world just came crashing down."`,
-    `"She was completely gutted—it took weeks for her to come around."`,
-    `"He fell apart at the seams after the separation."`,
-    `"I was absolutely floored—I couldn't even form a sentence."`,
-    `"It pulled the rug completely out from under everything we'd built."`
-  ],
-  Embarrassed: [
-    `"I wanted the ground to open up and swallow me whole."`,
-    `"My face went bright red—I must have looked absolutely ridiculous."`,
-    `"I could have died on the spot, honestly."`,
-    `"I was absolutely mortified the moment the words left my mouth."`,
-    `"I'm still cringing about it weeks later."`
-  ],
-  Threatened: [
-    `"My hackles went up the moment he walked into the room."`,
-    `"Every alarm bell in my head started going off at once."`,
-    `"I felt like I was being backed into a corner with nowhere to go."`,
-    `"Something about the whole setup put me immediately on edge."`,
-    `"I kept my guard up all evening—something felt very off."`
-  ],
-  Jealous: [
-    `"The green-eyed monster really got the better of me that night."`,
-    `"I couldn't help feeling a pang every time they were together."`,
-    `"My nose was well out of joint when she got the role I wanted."`,
-    `"I hate to admit it, but I was absolutely green with envy."`,
-    `"I kept comparing myself and it was eating me alive."`
-  ],
-  Distant: [
-    `"I was there in body but not in spirit the whole evening."`,
-    `"I just wasn't present—I had one foot out the door mentally."`,
-    `"I phoned it in all week without really knowing why."`,
-    `"She drifted off somewhere in her own world and we couldn't reach her."`,
-    `"He was miles away every time we tried to talk to him."`
-  ],
-  Suspicious: [
-    `"I smelled a rat the moment she changed her story."`,
-    `"Something about the whole thing just didn't add up."`,
-    `"My gut was screaming that something wasn't right."`,
-    `"I had a sneaking suspicion something was going on behind the scenes."`,
-    `"He kept giving me the runaround, which only made things worse."`
-  ],
-  Withdrawn: [
-    `"She retreated into her shell and wouldn't let anyone in."`,
-    `"He went completely quiet and put up walls around himself."`,
-    `"I pulled back from everyone for a while—I just needed the space."`,
-    `"She shut down the moment things got too intense."`,
-    `"He was present physically but completely closed off inside."`
-  ],
-  Inadequate: [
-    `"I feel like I'm totally out of my depth in these meetings."`,
-    `"It's like I'm always punching above my weight and barely keeping up."`,
-    `"I was in way over my head and everyone seemed to know it."`,
-    `"I felt like a complete fraud sitting at that table."`,
-    `"No matter how hard I tried, I just couldn't measure up."`
-  ],
-  Inferior: [
-    `"I always feel like the odd one out when everyone else just gets it."`,
-    `"I spent the whole evening feeling like second fiddle to everyone there."`,
-    `"It's like I don't belong in the room—they're just on a different level."`,
-    `"I constantly felt like I had to prove myself just to be taken seriously."`,
-    `"Next to her, I felt completely small and invisible."`
-  ],
-  Rejected: [
-    `"I got the cold shoulder from the whole group without any explanation."`,
-    `"Being left out in the cold like that really knocks you sideways."`,
-    `"I felt like an outsider looking in through the window."`,
-    `"The door was shut in my face before I even got a chance to speak."`,
-    `"You don't forget the feeling of being shown the door like that."`
-  ],
-  Alienated: [
-    `"I felt like a fish out of water the entire time I was there."`,
-    `"I couldn't relate to a single person in the room—it was completely isolating."`,
-    `"It was like being a stranger in a strange land, even among people I knew."`,
-    `"No matter what I said, I just couldn't find a way in."`,
-    `"I was on the outside looking in, and nobody was holding the door open."`
-  ],
-  Disrespected: [
-    `"She talked down to me like I had absolutely no idea what I was doing."`,
-    `"They walked all over my input like it didn't count for anything."`,
-    `"I was treated like I was nobody—like my presence didn't even register."`,
-    `"He cut me off mid-sentence without a second thought."`,
-    `"Being talked over in every single meeting really takes its toll on you."`
-  ],
-  Confused: [
-    `"I couldn't make head or tail of what was going on."`,
-    `"My head was completely spinning by the time they finished explaining."`,
-    `"It went clean over my head the first three times."`,
-    `"I'd lost the thread entirely by the halfway point."`,
-    `"None of it was computing—I just stared and nodded."`
-  ],
-  Disillusioned: [
-    `"Once the scales fell from my eyes, I couldn't unsee any of it."`,
-    `"The magic was completely gone after I found out the truth."`,
-    `"You build something up so much, and then reality just shatters it."`,
-    `"I felt like I'd been sold a dream that turned out to be smoke and mirrors."`,
-    `"The whole thing left a really bitter taste in my mouth."`
-  ],
-  Perplexed: [
-    `"I couldn't wrap my head around it no matter how many times I read it."`,
-    `"It just didn't compute—the pieces weren't fitting together."`,
-    `"I didn't know which way was up by the time she'd finished talking."`,
-    `"The more I thought about it, the less sense it made."`,
-    `"It's still a complete puzzle to me, if I'm being honest."`
-  ],
-  Startled: [
-    `"I jumped clean out of my skin when the alarm went off."`,
-    `"That nearly gave me a heart attack—I didn't hear them come in."`,
-    `"She practically hit the ceiling when the door banged."`,
-    `"He shot up out of his chair like he'd been given an electric shock."`,
-    `"Don't creep up on me like that—my heart's still racing."`
-  ],
-  Shocked: [
-    `"I was absolutely floored when the announcement came through."`,
-    `"It knocked me for six—I just sat there in complete silence."`,
-    `"I couldn't believe my ears when she told me what had happened."`,
-    `"The news stopped me dead in my tracks."`,
-    `"My mind went completely blank—I couldn't form a single word."`
-  ],
-  Dismayed: [
-    `"My heart sank the moment I heard how bad it had gotten."`,
-    `"The bottom fell completely out of my plans when I heard the news."`,
-    `"I couldn't believe it had come to this—we'd worked so hard."`,
-    `"It was a real gut punch watching it all fall apart like that."`,
-    `"I just stood there shaking my head—it was hard to take in."`
-  ],
-  Amazed: [
-    `"I was absolutely blown away by the whole performance."`,
-    `"I couldn't believe my eyes—it was beyond anything I'd imagined."`,
-    `"She left us completely gobsmacked from start to finish."`,
-    `"My jaw literally dropped when I saw what they'd built."`,
-    `"It just took my breath away—I had absolutely nothing to say."`
-  ],
-  Astonished: [
-    `"My jaw hit the floor when he walked through the door."`,
-    `"I was completely gobsmacked—I had no words for it whatsoever."`,
-    `"It was beyond belief—I had to ask twice if it was actually real."`,
-    `"She stopped dead in her tracks when she saw the results."`,
-    `"Nobody saw that coming—we were all absolutely floored."`
-  ],
-  Awe: [
-    `"It stopped me dead in my tracks—I just stood there taking it all in."`,
-    `"You feel very small standing there, in the best possible way."`,
-    `"It was one of those moments that take your breath clean away."`,
-    `"Words honestly don't do it justice—you just have to be there."`,
-    `"Something about it made the whole world go quiet for a second."`
-  ],
-  Eager: [
-    `"I was raring to go from the moment I heard about it."`,
-    `"I'm chomping at the bit to get started on this one."`,
-    `"She was itching to dive in the second they gave the green light."`,
-    `"I couldn't wait to sink my teeth into the project."`,
-    `"He was first in line before we'd even confirmed the details."`
-  ],
-  Energetic: [
-    `"I was firing on all cylinders from the moment I woke up."`,
-    `"She was in full swing before everyone else had finished their coffee."`,
-    `"I was buzzing all morning—couldn't sit still if I tried."`,
-    `"He hit the ground running on day one and never looked back."`,
-    `"I had so much fuel in the tank I didn't know what to do with it."`
-  ],
-  Liberated: [
-    `"It felt like a weight had lifted straight off my shoulders."`,
-    `"I could finally breathe again—properly breathe."`,
-    `"It gave me a whole new lease on life after everything I'd been through."`,
-    `"Handing in that resignation felt like walking out of a cage."`,
-    `"I felt completely unchained for the first time in years."`
-  ],
-  Ecstatic: [
-    `"I was on cloud nine for the rest of the week."`,
-    `"She was absolutely beside herself with joy when she found out."`,
-    `"I could have floated home—I was that happy."`,
-    `"Honestly, I'm still pinching myself."`,
-    `"We were over the moon—it was the best news we'd ever had."`
-  ],
-  Important: [
-    `"For the first time, I actually felt like I had a voice in the room."`,
-    `"It meant everything to know my input was genuinely valued."`,
-    `"People were leaning in when I spoke—that doesn't happen often."`,
-    `"I finally felt like I was part of something, not just along for the ride."`,
-    `"She made me feel like what I had to say actually mattered."`
-  ],
-  Open: [
-    `"I went in with a completely clean slate and a fresh pair of eyes."`,
-    `"I'm all ears—throw it at me and let's see where it lands."`,
-    `"I was willing to throw out the rulebook if it meant something better."`,
-    `"Come to me with anything—I won't shoot it down before I've heard you out."`,
-    `"I went in without a fixed position and it was surprisingly refreshing."`
-  ],
-  Inspired: [
-    `"Ideas were flying around my head so fast I couldn't write quick enough."`,
-    `"She fired me up in a way I hadn't felt in a long time."`,
-    `"I was on fire after that talk—I couldn't wait to get to work."`,
-    `"Something clicked and suddenly everything felt possible."`,
-    `"It lit a spark in me that I thought had been well and truly out."`
-  ],
-  Hopeful: [
-    `"There's finally a light at the end of the tunnel."`,
-    `"I think we're really starting to turn a corner."`,
-    `"Things are finally starting to look up—I can feel it."`,
-    `"It's not much, but it's enough to keep me going for now."`,
-    `"For the first time in a while, I woke up thinking things might be okay."`
-  ],
-  Loving: [
-    `"I'd move mountains for that person without a second thought."`,
-    `"My heart was completely full just watching them from across the room."`,
-    `"I honestly couldn't picture my life without them in it."`,
-    `"The love I have for them is just bone deep—it never goes away."`,
-    `"I'd do anything for them, and I mean that without any reservation."`
-  ],
-  Avoidance: [
-    `"I just couldn't bring myself to face it, so I kept putting it off."`,
-    `"I gave it a wide berth for as long as I possibly could."`,
-    `"Every time it came up, I found a reason to be somewhere else."`,
-    `"I danced around it for months before finally sitting down with it."`,
-    `"I kept finding excuses—anything not to have to deal with it."`
-  ],
-  Hesitant: [
-    `"I dragged my feet on the decision a lot longer than I should have."`,
-    `"I sat on the fence for way too long and nearly missed my chance."`,
-    `"I couldn't quite pull the trigger—something kept holding me back."`,
-    `"I kept second-guessing myself right up to the last minute."`,
-    `"I was in two minds about it the whole way through."`
-  ],
-  Aversion: [
-    `"My skin crawls just thinking about it—I honestly can't help it."`,
-    `"It turns my stomach—I have a really visceral reaction to it."`,
-    `"I just can't stomach it no matter how hard I try."`,
-    `"Even the idea of it makes me want to look the other way."`,
-    `"I've always had a strong aversion to it—it's not rational, it just is."`
-  ],
-  Disapproval: [
-    `"I raised an eyebrow at that—it didn't sit well with me at all."`,
-    `"She wasn't impressed one bit, and she didn't hold back saying so."`,
-    `"I shook my head when I heard—it wasn't the right call."`,
-    `"That's not something I can get behind, and I was very clear about that."`,
-    `"He made his feelings known without raising his voice—very pointed."`
-  ],
-  Judgmental: [
-    `"I'll hold my hand up—I wrote her off before I'd even spoken to her."`,
-    `"I pointed the finger too fast without knowing the full story."`,
-    `"I jumped to conclusions and made a complete fool of myself."`,
-    `"I had him pegged as trouble from day one—unfairly, as it turned out."`,
-    `"I need to stop making snap judgments—it doesn't serve anyone."`
-  ],
-  Loathing: [
-    `"I can't stand the sight of him—it goes back years."`,
-    `"The very thought of it makes my blood boil."`,
-    `"I have a deep-rooted contempt for that kind of behavior."`,
-    `"Every time his name comes up, my stomach turns."`,
-    `"It's not something I can explain rationally—I just despise it entirely."`
-  ],
-  Awful: [
-    `"I felt absolutely terrible about it—truly one of my worst moments."`,
-    `"That was a real low point for all of us, no question."`,
-    `"It hit rock bottom before we even knew what was happening."`,
-    `"I've felt rough before, but nothing quite like that."`,
-    `"I walked away from it feeling completely hollowed out."`
-  ],
-  Revulsion: [
-    `"It made my stomach turn the second I saw it."`,
-    `"I practically gagged—I couldn't even look at it properly."`,
-    `"I still can't get the image out of my head, weeks later."`,
-    `"My whole body recoiled before my brain had even processed it."`,
-    `"I've never had such a gut reaction to anything in my life."`
-  ],
-  Detestable: [
-    `"That kind of behavior is completely beyond the pale."`,
-    `"I have absolutely no stomach for that sort of thing."`,
-    `"It crosses every line I have—there's no coming back from it."`,
-    `"Some things are just indefensible, and that's one of them."`,
-    `"I find it morally reprehensible, and I'm not going to pretend otherwise."`
-  ],
-  Disappointed: [
-    `"It really took the shine off everything we'd been working toward."`,
-    `"It fell well short of what we'd been promised—a real letdown."`,
-    `"I was let down pretty badly, and it was hard not to take personally."`,
-    `"I had high hopes going in, and it just didn't deliver."`,
-    `"After all that build-up, it was a proper anticlimax."`
-  ],
-  Revolted: [
-    `"It nearly made me sick to my stomach on the spot."`,
-    `"I couldn't look at it twice—it crossed a line I can't forgive."`,
-    `"My whole body recoiled the moment I realized what it was."`,
-    `"It was deeply offensive—I had to leave the room."`,
-    `"I can't even talk about it without feeling physically ill."`
-  ],
-  Repugnant: [
-    `"It goes against every grain of my being—I won't even entertain it."`,
-    `"That crosses every line imaginable and then some."`,
-    `"I find it completely beyond the pale on every level."`,
-    `"It's morally offensive in a way I don't have words for."`,
-    `"The very idea of it is abhorrent to me—I won't soften that."`
-  ],
-  Bored: [
-    `"I was climbing the walls by the second hour."`,
-    `"It was like watching paint dry—absolutely no end in sight."`,
-    `"I was counting ceiling tiles by the time lunch finally came."`,
-    `"I've been going through the motions all week with nothing to show for it."`,
-    `"I was so bored I started making up games just to stay awake."`
-  ],
-  Indifferent: [
-    `"I genuinely couldn't care less either way—it's all the same to me."`,
-    `"Six of one, half a dozen of the other—I'm not fussed."`,
-    `"Makes absolutely no odds to me—you decide."`,
-    `"I've got no horse in this race, so do what you like."`,
-    `"I've got no strong feelings about it at all, if I'm being honest."`
-  ],
-  Apathetic: [
-    `"I've just been going through the motions for months now."`,
-    `"I couldn't be bothered to lift a finger about it either way."`,
-    `"I'm doing just enough to get by and that's about it."`,
-    `"Nothing really lands anymore—I just let it wash over me."`,
-    `"I used to care deeply about this, but the spark's just gone."`
-  ],
-  Lonely: [
-    `"You can go a whole day without a single real conversation, and it hollows you out."`,
-    `"I'm just rattling around in an empty house with nobody to talk to."`,
-    `"It's the kind of lonely you feel even in a crowded room."`,
-    `"I've got people all around me and still feel completely alone."`,
-    `"You can only fill the silence for so long before it really gets to you."`
-  ],
-  Isolated: [
-    `"I felt completely off the map out there—cut off from everything familiar."`,
-    `"It was like I'd fallen off the face of the earth for a while."`,
-    `"I was so far removed from everything that it started to mess with my head."`,
-    `"There was nobody around who remotely understood what I was going through."`,
-    `"You can handle a lot, but complete isolation really wears you down."`
-  ],
-  Abandoned: [
-    `"I was left to fend for myself when I needed support the most."`,
-    `"They hung me out to dry without a second thought."`,
-    `"It felt like being thrown to the wolves after everything I'd done."`,
-    `"I was out on my own with absolutely no one in my corner."`,
-    `"The person I counted on most just disappeared when things got hard."`
-  ],
-  Despair: [
-    `"I was completely at the end of my rope—there was nothing left."`,
-    `"I couldn't see a single way out, no matter which direction I looked."`,
-    `"I'd hit rock bottom and didn't have the strength to start climbing."`,
-    `"I was running on empty and I just stopped caring."`,
-    `"For a while, I genuinely stopped believing things could ever get better."`
-  ],
-  Vulnerable: [
-    `"I went in with my heart on my sleeve and left myself wide open."`,
-    `"I felt completely exposed out there with nothing to fall back on."`,
-    `"I dropped my guard and let people see the parts I usually keep hidden."`,
-    `"There was no armor left—I was completely raw."`,
-    `"Putting yourself out there like that takes everything you've got."`
-  ],
-  Powerless: [
-    `"My hands were completely tied—there was nothing I could do."`,
-    `"I was fighting with one arm behind my back the entire time."`,
-    `"I watched it happen and couldn't do a single thing to stop it."`,
-    `"The decision was out of my hands and I just had to live with it."`,
-    `"It's an awful feeling, watching something unfold with zero control."`
-  ],
-  Guilty: [
-    `"It's been eating me up inside ever since it happened."`,
-    `"I tossed and turned over it for weeks—I couldn't let it go."`,
-    `"I couldn't live with myself knowing what I'd done."`,
-    `"It's been sitting on my chest like a stone I can't shift."`,
-    `"I owe an apology that I still haven't found the courage to give."`
-  ],
-  Ashamed: [
-    `"I couldn't look anyone in the eye for days afterward."`,
-    `"I wanted the ground to swallow me up—I truly did."`,
-    `"I didn't want to show my face after what happened."`,
-    `"It's not something I'm proud of, and I won't pretend it didn't happen."`,
-    `"I felt like I'd let myself down in the worst possible way."`
-  ],
-  Remorseful: [
-    `"I'd give anything to go back and undo what I did."`,
-    `"It's something I still haven't forgiven myself for, honestly."`,
-    `"The regret is bone deep—I think about it more than I should."`,
-    `"I can't undo what happened, and that's something I have to live with."`,
-    `"I kept saying sorry because I meant it—truly meant every word of it."`
-  ]
-};
+/* a line of text split into word spans, for karaoke */
+function wordSpans(node, html){
+  node.innerHTML = html;
+  /* wrap each word of the text nodes, keeping the markup around them */
+  const walk = n => {
+    [...n.childNodes].forEach(c => {
+      if (c.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        c.textContent.split(/(\s+)/).forEach(part => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) frag.appendChild(document.createTextNode(part));
+          else frag.appendChild(el('span', 'w', part));
+        });
+        c.replaceWith(frag);
+      } else if (c.nodeType === 1 && !c.hasAttribute('data-gap')) walk(c);
+    });
+  };
+  walk(node);
+  /* char offsets of each word in the spoken text */
+  let at = 0;
+  const spans = [...node.querySelectorAll('.w')];
+  const plainText = node.textContent;
+  spans.forEach(s => { const k = plainText.indexOf(s.textContent, at); s.dataset.c = k; at = k + s.textContent.length; });
+  return spans;
+}
+function lightWord(spans, c){
+  let hit = null;
+  spans.forEach(s => { if (+s.dataset.c <= c) hit = s; });
+  spans.forEach(s => s.classList.toggle('lit', s === hit));
+}
 
-const customC1Data = {
-  Frightened: [
-    `"She was frightened to walk home alone after the street lights went out."`,
-    `"He looked frightened the moment the alarm started going off."`,
-    `"Even as an adult, I get frightened by sudden loud noises in the night."`,
-    `"The child was so frightened by the thunder that she refused to leave the bed."`,
-    `"She tried to stay calm, but anyone could see she was genuinely frightened."`
-  ],
-  Inadequate: [
-    `"She felt inadequate whenever her more experienced colleagues spoke up in meetings."`,
-    `"He admitted feeling inadequate when he first stepped into the managerial role."`,
-    `"Nobody should feel inadequate for not knowing everything from the start."`,
-    `"Her harsh feedback left him feeling deeply inadequate for the rest of the week."`,
-    `"It's common to feel inadequate in a new environment—it doesn't mean you don't belong."`
-  ],
-  Inferior: [
-    `"He always felt inferior to his older brother, no matter how well he did."`,
-    `"Being the least experienced person in the room made her feel inferior."`,
-    `"She refused to let anyone make her feel inferior because of her background."`,
-    `"Feeling inferior at work can quietly drain your confidence over time."`,
-    `"He knew his skills were solid, but he still felt inferior going into the interview."`
-  ],
-  Rejected: [
-    `"She felt rejected when her proposal was turned down without any explanation."`,
-    `"Being rejected from the program was a real blow to his confidence."`,
-    `"He tried not to feel rejected, but the silence was hard to ignore."`,
-    `"Feeling rejected by people you're close to is far more painful than rejection by strangers."`,
-    `"She picked herself up quickly after being rejected the first time around."`
-  ],
-  Alienated: [
-    `"He felt alienated from his colleagues because of the language barrier."`,
-    `"Growing up bilingual, she sometimes felt alienated from both cultures at once."`,
-    `"The new policies made many long-serving employees feel alienated."`,
-    `"He became increasingly alienated from his family after moving abroad."`,
-    `"Feeling alienated in a new country is completely normal in the first year."`
-  ],
-  Disrespected: [
-    `"She felt genuinely disrespected when her idea was presented as someone else's."`,
-    `"He walked out of the meeting feeling completely disrespected."`,
-    `"Being interrupted in every conversation made her feel disrespected as a professional."`,
-    `"He had given years to that company and felt deeply disrespected by the decision."`,
-    `"You don't have to accept being disrespected, even in a professional context."`
-  ],
-  Mad: [
-    `"He was mad at himself for missing such an obvious mistake."`,
-    `"She got mad when she found out they had gone ahead without consulting her."`,
-    `"It makes me genuinely mad when people assume I don't know what I'm talking about."`,
-    `"Don't get mad at me—I was only doing what I was told."`,
-    `"He was so mad he had to take a long walk before he could speak to anyone calmly."`
-  ],
-  Enraged: [
-    `"She was enraged when she discovered the contract had been changed without notice."`,
-    `"He was enraged by the injustice and refused to drop the subject."`,
-    `"The crowd became enraged after the announcement was made."`,
-    `"Being deliberately excluded from the decision left her enraged for days."`,
-    `"He was enraged when his hard work was publicly credited to someone else."`
-  ],
-  Furious: [
-    `"She was furious when the flight was cancelled with no warning and no offer of help."`,
-    `"He was furious to find out the deadline had been moved without anyone telling him."`,
-    `"I was furious that the same issue had been ignored for the third time."`,
-    `"She stayed completely silent but was absolutely furious underneath."`,
-    `"He tried to remain professional, but his fury at the outcome was hard to conceal."`
-  ],
-  Hurt: [
-    `"She was deeply hurt when her closest friend didn't show up."`,
-    `"He felt hurt by the criticism, even though he knew it was meant to be constructive."`,
-    `"It's okay to feel hurt when someone lets you down—it means you trusted them."`,
-    `"She was hurt by what was said and found it difficult to move past."`,
-    `"He didn't say much, but you could see he was genuinely hurt by the response."`
-  ],
-  Devastated: [
-    `"She was devastated when she didn't get the role she had spent months preparing for."`,
-    `"He was devastated to hear that the project had been cancelled entirely."`,
-    `"The whole team was devastated by the sudden loss of their manager."`,
-    `"She was completely devastated after the breakup and needed time to herself."`,
-    `"It's hard not to feel devastated when something you've worked hard for falls apart."`
-  ],
-  Embarrassed: [
-    `"He was embarrassed to admit he had completely forgotten the meeting was that morning."`,
-    `"She felt embarrassed when her phone rang loudly in the middle of the presentation."`,
-    `"Being called out in front of everyone made him feel deeply embarrassed."`,
-    `"I was so embarrassed when I got the client's name wrong in the email."`,
-    `"She laughed it off, but she was clearly embarrassed by the mistake."`
-  ],
-  Threatened: [
-    `"He felt threatened by her expertise and began trying to undermine her."`,
-    `"She felt threatened when a new colleague started outperforming her regularly."`,
-    `"Strong leaders aren't threatened by people who challenge their thinking."`,
-    `"He felt threatened by the change and resisted it every step of the way."`,
-    `"She felt her position was being threatened and became increasingly defensive."`
-  ],
-  Jealous: [
-    `"She was jealous of her sister's easy confidence in social situations."`,
-    `"He got jealous whenever his partner spent too much time with old friends."`,
-    `"I'll admit I was a little jealous when she got promoted ahead of me."`,
-    `"Feeling jealous is natural—acting on it is what damages relationships."`,
-    `"He was jealous of the attention she was receiving and struggled to hide it."`
-  ],
-  Distant: [
-    `"She seemed distant all evening and barely said a word at dinner."`,
-    `"He became distant after the argument and stopped returning calls."`,
-    `"When she's under pressure, she tends to go quiet and feel distant from everyone."`,
-    `"I noticed she was distant during the meeting—something was clearly on her mind."`,
-    `"Being emotionally distant is sometimes a way of protecting yourself from further hurt."`
-  ],
-  Suspicious: [
-    `"He was suspicious when the numbers in the report didn't quite add up."`,
-    `"She became suspicious when he changed his story for the third time."`,
-    `"It's sensible to be suspicious when an offer seems too good to be true."`,
-    `"He was suspicious of the proposal and immediately asked for more details."`,
-    `"She had been suspicious of his motives from the very beginning."`
-  ],
-  Withdrawn: [
-    `"He became increasingly withdrawn after the difficult semester."`,
-    `"She grew withdrawn during that period and rarely spoke to anyone outside work."`,
-    `"Being withdrawn doesn't always mean something is wrong—sometimes you just need space."`,
-    `"He had been withdrawn for weeks before anyone thought to check in on him."`,
-    `"Feeling withdrawn during stressful periods is more common than most people admit."`
-  ],
-  Confused: [
-    `"She was confused by the conflicting instructions from two different managers."`,
-    `"He left the meeting feeling confused about what exactly was being asked of him."`,
-    `"I was confused when the results came back completely different from what we'd expected."`,
-    `"Don't be confused by the terminology—just ask for a plain explanation."`,
-    `"She was genuinely confused and wasn't trying to be difficult."`
-  ],
-  Disillusioned: [
-    `"He became disillusioned with politics after years of promises that never materialized."`,
-    `"She felt disillusioned when she realized the company's values didn't match its actions."`,
-    `"Many young workers feel disillusioned when careers don't match what they were told to expect."`,
-    `"It's normal to feel disillusioned when reality falls short of what you'd imagined."`,
-    `"He wasn't angry—just deeply disillusioned with the way things had turned out."`
-  ],
-  Perplexed: [
-    `"She was perplexed by his decision to resign right when things were finally improving."`,
-    `"He sat there perplexed, reading the same section over and over."`,
-    `"The consultant was perplexed by the data and asked for more time to review it."`,
-    `"I was completely perplexed when the fix stopped working with no explanation."`,
-    `"She gave a perplexed look and asked him to start again from the beginning."`
-  ],
-  Startled: [
-    `"She was startled when a pigeon flew right past her head on the stairwell."`,
-    `"He was startled by the sudden knock at the door late at night."`,
-    `"The noise startled everyone in the room and the meeting stopped abruptly."`,
-    `"She startled easily and hated being approached from behind without warning."`,
-    `"He was startled to find a message already waiting for him so early in the morning."`
-  ],
-  Shocked: [
-    `"She was shocked to discover that her account had been suspended without notice."`,
-    `"He was shocked by how quickly the situation had escalated."`,
-    `"The whole office was shocked when the CEO resigned with no advance warning."`,
-    `"I was shocked to read what had happened while I was away."`,
-    `"She stood there, visibly shocked, and took a long moment to gather her thoughts."`
-  ],
-  Dismayed: [
-    `"He was dismayed to see how much the neighborhood had changed."`,
-    `"She was dismayed by the lack of support from the people she had counted on."`,
-    `"The team was dismayed when the funding was withdrawn at the last minute."`,
-    `"I was dismayed to find the document hadn't been saved after all that work."`,
-    `"He was visibly dismayed by the results and needed time before he could respond."`
-  ],
-  Amazed: [
-    `"She was amazed by how much he had developed since she last worked with him."`,
-    `"I'm constantly amazed by what this small team manages to produce."`,
-    `"He was amazed that such a small adjustment had made such a significant difference."`,
-    `"We were all amazed when the most junior member of the team solved it first."`,
-    `"She stood amazed at the view and completely forgot what she had been about to say."`
-  ],
-  Astonished: [
-    `"She was astonished to find the whole project had been completed ahead of schedule."`,
-    `"He was astonished by the level of detail in the final presentation."`,
-    `"I was genuinely astonished when I saw the transformation they had pulled off."`,
-    `"The panel was astonished when the candidate gave such a composed and confident answer."`,
-    `"She looked astonished and asked twice whether the news had actually been confirmed."`
-  ],
-  Awe: [
-    `"Standing at the edge of the canyon, I was filled with a sense of awe."`,
-    `"She spoke with awe about the architect who had designed the whole structure."`,
-    `"The sheer scale of the project left everyone in genuine awe."`,
-    `"He looked on in awe as the orchestra performed the entire piece without a score."`,
-    `"There's something awe-inspiring about watching a master craftsperson at work."`
-  ],
-  Eager: [
-    `"She was eager to get started and had already read the entire brief."`,
-    `"He was so eager to impress on his first day that he arrived an hour early."`,
-    `"The students were eager to share their findings with the rest of the group."`,
-    `"Don't be so eager to answer—take a moment to think it through properly."`,
-    `"She was eager for feedback and took every comment seriously."`
-  ],
-  Energetic: [
-    `"She was energetic and enthusiastic from the moment she joined the team."`,
-    `"He felt energetic after the run and went straight into a very productive morning."`,
-    `"The session was great—everyone left feeling energetic and motivated."`,
-    `"She's always energetic in meetings—it's impossible not to be drawn into her enthusiasm."`,
-    `"He was unusually energetic that day, so he used the time to clear the backlog."`
-  ],
-  Liberated: [
-    `"She felt liberated after finally saying what she'd been thinking for months."`,
-    `"He felt liberated once he stopped trying to please everyone around him."`,
-    `"Leaving that environment was liberating—she felt clear-headed for the first time in years."`,
-    `"There's something deeply liberating about making a decision that is entirely your own."`,
-    `"He felt a sense of liberation once the long negotiation was finally resolved."`
-  ],
-  Ecstatic: [
-    `"She was ecstatic when she found out she'd been accepted onto the program."`,
-    `"He was ecstatic about the win and couldn't stop talking about it for days."`,
-    `"The whole team was ecstatic when they hit the target a week ahead of schedule."`,
-    `"I was ecstatic to hear that the surgery had gone better than anyone had expected."`,
-    `"She was so ecstatic she burst into tears when she got the call."`
-  ],
-  Important: [
-    `"She finally felt important when the director asked for her opinion directly."`,
-    `"He felt important when the board stopped the meeting to hear his proposal."`,
-    `"Everyone deserves to feel important and genuinely valued in their workplace."`,
-    `"Making staff feel important is one of the clearest markers of good leadership."`,
-    `"She played an important role in getting the project to where it is today."`
-  ],
-  Open: [
-    `"She went into the negotiation with an open mind and came out with a better deal."`,
-    `"He was open about his concerns from the start, which made everything easier."`,
-    `"Being open to criticism is one of the fastest ways to actually improve."`,
-    `"I try to stay open to different approaches, even when I have a clear preference."`,
-    `"She was open to revising the plan if there was a strong enough reason to do so."`
-  ],
-  Inspired: [
-    `"She was inspired by her mentor and chose to go into the same field."`,
-    `"He left the conference feeling deeply inspired and full of ideas."`,
-    `"I was inspired by how they had rebuilt the organization from almost nothing."`,
-    `"The documentary inspired her to change her career path entirely."`,
-    `"Seeing his work in the gallery left me feeling inspired for the whole week."`
-  ],
-  Hopeful: [
-    `"She was hopeful that the new policy would make a real difference on the ground."`,
-    `"He remained hopeful even when progress seemed frustratingly slow."`,
-    `"I'm hopeful the relationship can be repaired if both sides are willing to talk."`,
-    `"The positive feedback made her hopeful about the direction things were heading."`,
-    `"It's hard to stay hopeful when things keep falling through, but it genuinely matters."`
-  ],
-  Loving: [
-    `"She had always been loving and patient, even when things were difficult."`,
-    `"He grew up in a loving household and wanted to give the same to his own children."`,
-    `"She sent a long, loving message on her grandmother's birthday."`,
-    `"He found it hard to express himself, but his actions were consistently loving."`,
-    `"A loving relationship takes real effort from both sides, but it's worth it."`
-  ],
-  Avoidance: [
-    `"Her avoidance of the subject made everyone in the room uncomfortable."`,
-    `"His avoidance of difficult conversations was quietly holding the whole team back."`,
-    `"Avoidance is a natural response to discomfort, but it rarely makes things better."`,
-    `"She recognized her own avoidance of the task and made herself sit down with it."`,
-    `"Therapy helped him understand why avoidance had become his default way of coping."`
-  ],
-  Hesitant: [
-    `"She was hesitant to volunteer without knowing more about the commitment involved."`,
-    `"He seemed hesitant when asked to give his opinion in front of the whole group."`,
-    `"I was hesitant at first, but the results proved the change was absolutely worth it."`,
-    `"Don't be hesitant to ask for help—it's a sign of self-awareness, not weakness."`,
-    `"She was hesitant about the new direction and asked for more time to think it over."`
-  ],
-  Aversion: [
-    `"He had a strong aversion to confrontation and would go to great lengths to avoid it."`,
-    `"Her aversion to public speaking held her back for years before she sought help."`,
-    `"Some people develop an aversion to certain foods after a single bad experience."`,
-    `"His aversion to change made it difficult to introduce any new processes at all."`,
-    `"She had a clear aversion to making decisions under pressure and was upfront about it."`
-  ],
-  Disapproval: [
-    `"He expressed his disapproval of the approach in a calm but very direct way."`,
-    `"Her disapproval was evident even though she never raised her voice."`,
-    `"She registered her disapproval and then let the team make the final call."`,
-    `"He showed his disapproval by refusing to sign off on the final version."`,
-    `"Disapproval, expressed constructively and early, can actually drive positive change."`
-  ],
-  Judgmental: [
-    `"He was being judgmental without having heard the full story."`,
-    `"She caught herself being judgmental and tried to approach the situation differently."`,
-    `"Growing up in a very judgmental household made it hard for him to trust people."`,
-    `"It's easy to be judgmental from the outside when you don't know the context."`,
-    `"The team became judgmental of new ideas before they'd even been properly tested."`
-  ],
-  Loathing: [
-    `"She felt a deep loathing for dishonesty that went all the way back to her childhood."`,
-    `"His loathing of office politics was one of the main reasons he preferred working alone."`,
-    `"There was a barely concealed loathing between the two senior managers."`,
-    `"She looked at the memo with undisguised loathing and dropped it on the desk."`,
-    `"His self-loathing after the incident took a very long time to work through."`
-  ],
-  Awful: [
-    `"I feel awful about the way I handled that conversation."`,
-    `"She felt awful when she realized her comment had been completely misunderstood."`,
-    `"The news hit everyone hard—it was an awful thing for the whole team to go through."`,
-    `"He was looking awful—pale and completely exhausted—so we told him to go home."`,
-    `"She said she felt awful about missing the event and wanted to find a way to make it up."`
-  ],
-  Revulsion: [
-    `"She felt a wave of revulsion when she saw the conditions they were living in."`,
-    `"His revulsion at the suggestion was immediate and written all over his face."`,
-    `"She couldn't disguise her revulsion when the topic was brought up."`,
-    `"The revulsion on his face said everything he was unwilling to put into words."`,
-    `"She felt a mixture of revulsion and sadness watching the documentary."`
-  ],
-  Detestable: [
-    `"He found that kind of dishonest behavior utterly detestable."`,
-    `"The report described the working conditions as detestable and called for urgent change."`,
-    `"She was open about finding the policy detestable from the moment it was announced."`,
-    `"He used the word detestable in his resignation letter, and nobody disagreed."`,
-    `"Some things are simply detestable, regardless of the justification offered."`
-  ],
-  Disappointed: [
-    `"She was disappointed when the event was cancelled with so little notice."`,
-    `"He was deeply disappointed that the final work didn't reflect the effort he'd put in."`,
-    `"I was disappointed with the outcome, but I understood why the decision was made."`,
-    `"She was disappointed but professional, and said she would apply again next year."`,
-    `"Being disappointed doesn't mean it's over—sometimes the timing just isn't right."`
-  ],
-  Revolted: [
-    `"She was revolted by the conditions described in the investigation."`,
-    `"He was revolted when he found out how the product had actually been manufactured."`,
-    `"The audience was clearly revolted by what the documentary showed."`,
-    `"She was revolted by the comment and made her feelings clear immediately."`,
-    `"He was revolted by the idea and refused to have his name associated with it."`
-  ],
-  Repugnant: [
-    `"She found the proposal morally repugnant and said so in plain terms."`,
-    `"His behavior was described as repugnant in multiple formal complaints."`,
-    `"He found any compromise on this point entirely repugnant."`,
-    `"She considered the policy repugnant and immediately drafted a formal objection."`,
-    `"Some attitudes are simply repugnant to the kind of organization we want to be."`
-  ],
-  Bored: [
-    `"He was completely bored by the second hour of the conference."`,
-    `"She was so bored with the routine that she started applying for other positions."`,
-    `"The students looked bored, so the teacher switched to something more interactive."`,
-    `"Don't let yourself get bored—there's almost always a challenge worth finding."`,
-    `"He was bored with the project and it began to show in the quality of his work."`
-  ],
-  Indifferent: [
-    `"She was indifferent to the outcome and said either option was fine with her."`,
-    `"He appeared indifferent to criticism, which was both a strength and a blind spot."`,
-    `"The committee seemed completely indifferent to the community's concerns."`,
-    `"I'm largely indifferent to the format—just make sure the content is solid."`,
-    `"She was indifferent about the destination, so he went ahead and made the call."`
-  ],
-  Apathetic: [
-    `"He had grown apathetic about the project after too many setbacks."`,
-    `"She became apathetic when her suggestions were repeatedly dismissed."`,
-    `"Feeling apathetic is often a signal that you need a real change, not just a break."`,
-    `"The team grew apathetic after months of working without any clear direction."`,
-    `"He was apathetic about the new initiative—he'd seen too many like it fail before."`
-  ],
-  Lonely: [
-    `"She felt lonely despite being surrounded by people at the office all day."`,
-    `"He grew lonely after the move and hadn't yet found people he could connect with."`,
-    `"Feeling lonely in a new city is very common, especially in the first year."`,
-    `"She confided that she'd been feeling lonely since her closest friend moved away."`,
-    `"He didn't want to admit he was lonely, so he kept himself as busy as possible."`
-  ],
-  Isolated: [
-    `"She felt isolated when no one else on the team seemed to share her perspective."`,
-    `"He felt increasingly isolated after the restructure moved his whole department."`,
-    `"Working remotely can leave people feeling isolated without the right kind of support."`,
-    `"She felt isolated within the group and didn't know how to bridge the gap."`,
-    `"Being geographically isolated from family made the whole adjustment much harder."`
-  ],
-  Abandoned: [
-    `"She felt abandoned when her mentor left the company without any warning at all."`,
-    `"He felt abandoned when the organization withdrew its support mid-project."`,
-    `"People who felt abandoned in childhood often carry that pattern into adult relationships."`,
-    `"She felt abandoned by the very people she had most relied on during the crisis."`,
-    `"He struggled to admit he felt abandoned, seeing it as a sign of weakness."`
-  ],
-  Despair: [
-    `"She fell into despair after receiving the third rejection letter in a row."`,
-    `"There was a sense of collective despair when the funding was finally pulled."`,
-    `"He spoke openly about the despair he had felt before finding the right support."`,
-    `"Don't give in to despair—even the most difficult periods eventually pass."`,
-    `"She described the despair of watching everything she had built slowly fall apart."`
-  ],
-  Vulnerable: [
-    `"She felt vulnerable sharing her personal story in front of the whole team."`,
-    `"He was at his most vulnerable right after the diagnosis came through."`,
-    `"Being vulnerable with people you trust isn't weakness—it takes real courage."`,
-    `"She had never allowed herself to feel vulnerable before, and the unfamiliarity scared her."`,
-    `"He opened up about feeling vulnerable in a way that surprised everyone in the room."`
-  ],
-  Powerless: [
-    `"She felt powerless watching decisions being made that directly affected her."`,
-    `"He described feeling powerless when the appeal process dragged on for months."`,
-    `"Feeling powerless in your own workplace is a serious sign that something needs to change."`,
-    `"She felt powerless in the situation and reached out to someone she trusted for advice."`,
-    `"He admitted feeling powerless during the illness and how difficult that had been to sit with."`
-  ],
-  Guilty: [
-    `"She felt guilty for leaving early, even though she had every right to."`,
-    `"He felt guilty about missing his daughter's performance and couldn't stop apologizing."`,
-    `"Feeling guilty is one thing—actually doing something about it is what matters."`,
-    `"She felt guilty every time she said no, even when it was completely reasonable."`,
-    `"He had carried that guilt for years before he finally spoke to someone about what had happened."`
-  ],
-  Ashamed: [
-    `"He was deeply ashamed of how he had behaved during that difficult period."`,
-    `"She felt ashamed to ask for help, even when she genuinely needed it."`,
-    `"He was ashamed to admit the mistake in front of the whole team."`,
-    `"You have nothing to be ashamed of—you did the best you could at the time."`,
-    `"She carried a deep sense of shame for years before she was finally able to talk about it."`
-  ],
-  Remorseful: [
-    `"He was genuinely remorseful and apologized without making any excuses."`,
-    `"She looked remorseful when she realized how much her comment had affected him."`,
-    `"Being remorseful is important, but it has to be followed up with changed behavior."`,
-    `"He was remorseful about the decision, even though he had believed it was right at the time."`,
-    `"She wrote him a remorseful letter explaining what had led to her actions."`
-  ]
-};
+/* ------------------------------------------------------------- toast */
+let toastT = 0;
+function toast(en, bnText){
+  const t = $('#toast');
+  t.replaceChildren(el('div', null, en));
+  if (bnText) bn(t, bnText);
+  t.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => t.classList.remove('show'), 3800);
+}
 
-function getFloodingData(name) {
-  if (emotionFloodingData[name]) return emotionFloodingData[name];
-  const info = emotionInfo[name] || [`you feel ${name.toLowerCase()}`, "moderate", "facing unexpected situations", "notice a change in your body", "calm", "the two emotions express different internal states", `I feel ${name.toLowerCase()} in this moment`];
-  const rawWord = name.toLowerCase();
-  const contrast = info[4].toLowerCase();
+/* -------------------------------------------------------- language, TV */
+function setLang(l){
+  S.lang = l;
+  document.body.classList.toggle('bangla', l === 'bn');
+  $$('.langsw button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === l)));
+  save(); measure();
+}
+function setTV(on){
+  S.tv = on;
+  document.documentElement.dataset.theme = on ? 'stage' : 'paper';
+  $('#btn-tv').setAttribute('aria-pressed', String(on));
+  $('#brand-mode').hidden = !on;
+  store.set('tv', on);
+  measure();
+}
+function measure(){
+  requestAnimationFrame(() => {
+    document.documentElement.style.setProperty('--header-h', $('#appbar').offsetHeight + 'px');
+    document.documentElement.style.setProperty('--foot-h', $('#actionbar').offsetHeight + 'px');
+  });
+}
+window.addEventListener('resize', measure);
 
-  // Grammatical noun vs adjective detection & word family inflection
-  const isNoun = ["awe", "grief", "panic", "rage", "resentment", "jealousy", "envy", "shame", "guilt", "fear", "anger", "disgust", "surprise"].includes(rawWord);
-  const adjWord = isNoun ? (rawWord === "awe" ? "awesome" : rawWord === "grief" ? "grieved" : rawWord === "panic" ? "panicked" : rawWord === "rage" ? "enraged" : rawWord === "resentment" ? "resentful" : rawWord === "jealousy" ? "jealous" : rawWord === "envy" ? "envious" : rawWord === "shame" ? "ashamed" : rawWord === "guilt" ? "guilty" : `${rawWord}ful`) : rawWord;
-  const nounWord = isNoun ? rawWord : (rawWord === "scared" ? "fear" : rawWord === "anxious" ? "anxiety" : rawWord === "insecure" ? "insecurity" : rawWord === "overwhelmed" ? "overload" : rawWord === "terrified" ? "terror" : rawWord === "worried" ? "worry" : rawWord === "happy" ? "happiness" : rawWord === "confident" ? "confidence" : rawWord === "excited" ? "excitement" : rawWord === "joyful" ? "joy" : rawWord === "optimistic" ? "optimism" : rawWord === "peaceful" ? "peace" : rawWord === "proud" ? "pride" : rawWord === "sad" ? "sadness" : rawWord);
+/* ============================================================ the steps */
+const STEPS = [
+  { k: 'feel',     en: 'Feel',     bn: 'অনুভব',     ico: 'heart',  lv: 0 },
+  { k: 'hear',     en: 'Hear',     bn: 'শুনুন',      ico: 'ear',    lv: 1 },
+  { k: 'partners', en: 'Partners', bn: 'সঙ্গী শব্দ', ico: 'link',   lv: 2 },
+  { k: 'patterns', en: 'Patterns', bn: 'গঠন',       ico: 'puzzle', lv: 3 },
+  { k: 'say',      en: 'Say',      bn: 'বলুন',       ico: 'speech', lv: 4 },
+  { k: 'idioms',   en: 'Idioms',   bn: 'বাগধারা',    ico: 'image',  lv: 5 },
+  { k: 'share',    en: 'Share',    bn: 'ভাগ করুন',   ico: 'berg',   lv: 6 }
+];
+/* the six rungs of the iceberg, deepest first (after the GPA "language iceberg") */
+const LEVELS = [
+  ['I have heard it', 'শুনেছি'],
+  ['I know its partners', 'সঙ্গী শব্দ চিনি'],
+  ['I know its pattern', 'গঠন জানি'],
+  ['I have said it', 'বলেছি'],
+  ['I can say it other ways', 'অন্যভাবেও বলতে পারি'],
+  ['It is mine', 'শব্দটি আমার']
+];
 
+/* ---------- small builders shared by the screens ---------- */
+function task(ico, en, bnText, leadEn, leadBn){
+  const t = el('div', 'task');
+  const i = el('span', 'task-ico'); i.appendChild(icon(ico)); t.appendChild(i);
+  const x = el('div', 'task-txt');
+  x.appendChild(txt('h2', 'h-title', en, bnText));
+  if (leadEn) x.appendChild(txt('p', 'lead', leadEn, leadBn));
+  t.appendChild(x);
+  return t;
+}
+function wordCard(w, opts = {}){
+  const c = el('div', 'wcard');
+  c.appendChild(el('div', 'emo', emoji(w)));
+  c.appendChild(el('div', 'w', w));
+  const ipa = EMO.pron[lower(w)];
+  if (ipa) c.appendChild(el('div', 'ipa', ipa));
+  const b = el('div', 'bnw', bnWord(w)); b.lang = 'bn'; c.appendChild(b);
+  if (opts.meaning !== false && EMO.info[w]) {
+    const m = el('p', 'mean');
+    const b0 = el('b', null, w + ': '); m.appendChild(b0);
+    m.appendChild(el('span', null, 'when ' + EMO.info[w][0] + '.'));
+    c.appendChild(m);
+  }
+  const say = el('button', 'roundbtn'); say.type = 'button'; say.setAttribute('aria-label', 'Hear the word');
+  say.style.cssText = 'position:absolute;right:12px;top:12px';
+  say.appendChild(icon('play')); say.onclick = () => TTS.say(w);
+  c.appendChild(say);
+  return c;
+}
+function playBtn(onToggle){
+  const b = el('button', 'play'); b.type = 'button'; b.setAttribute('aria-label', 'Play');
+  b.appendChild(icon('play'));
+  b.onclick = () => onToggle(b);
+  b.setOn = on => { b.classList.toggle('is-on', on); b.replaceChildren(icon(on ? 'stop' : 'play')); b.setAttribute('aria-label', on ? 'Stop' : 'Play'); };
+  return b;
+}
+function weather(n){
+  /* 1 clear sun … 5 thunderstorm: a wordless storm-size scale */
+  const s = ['<circle cx="24" cy="24" r="9" fill="#E9B949"/><g stroke="#E9B949" stroke-width="3" stroke-linecap="round"><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5L37 37M11 37l3.5-3.5M33.5 14.5L37 11"/></g>',
+    '<circle cx="18" cy="18" r="8" fill="#E9B949"/><path d="M14 36h20a7 7 0 0 0 0-14 9 9 0 0 0-17 3 5.5 5.5 0 0 0-3 11z" fill="#fff" stroke="#8FA3AD" stroke-width="2"/>',
+    '<path d="M10 34h26a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-5 13z" fill="#D5DEE3" stroke="#6C8490" stroke-width="2"/>',
+    '<path d="M10 28h26a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-5 13z" fill="#A9B8C0" stroke="#566E7A" stroke-width="2"/><g stroke="#3F7FA6" stroke-width="3" stroke-linecap="round"><path d="M15 33l-2 6M24 33l-2 6M33 33l-2 6"/></g>',
+    '<path d="M10 26h26a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-5 13z" fill="#6E7F89" stroke="#3E4E57" stroke-width="2"/><path d="M25 26l-6 10h6l-3 9 10-13h-6l3-6z" fill="#F2C443" stroke="#9A7616" stroke-width="1.5" stroke-linejoin="round"/>'][n - 1];
+  return '<svg viewBox="0 0 48 48" aria-hidden="true">' + s + '</svg>';
+}
+function stormScale(key, onPick){
+  const row = el('div', 'wx'); row.setAttribute('role', 'group'); row.setAttribute('aria-label', 'How strong is the feeling, 1 to 5');
+  for (let n = 1; n <= 5; n++) {
+    const b = el('button'); b.type = 'button';
+    b.innerHTML = weather(n) + '<span class="n">' + n + '</span>';
+    b.setAttribute('aria-pressed', String(S[key] === n));
+    b.setAttribute('aria-label', 'Strength ' + n + ' of 5');
+    b.onclick = () => { S[key] = n; save(); [...row.children].forEach((x, j) => x.setAttribute('aria-pressed', String(j + 1 === n))); onPick && onPick(n); };
+    row.appendChild(b);
+  }
+  return row;
+}
+/* the mini iceberg in the word bar: the dot is the word */
+function bergMini(level){
+  const y = [27, 23.5, 19.5, 11, 7.5, 4][Math.max(0, level - 1)] ;
+  return '<svg class="wb-berg" viewBox="0 0 112 30" aria-hidden="true">' +
+    '<rect x="0" y="13" width="112" height="17" rx="3" fill="var(--sea-t)"/>' +
+    '<path d="M0 13h112" stroke="var(--sea)" stroke-width="1.5" stroke-dasharray="3 3"/>' +
+    '<path d="M44 13l9-10 5 5 4-3 8 8z" fill="#fff" stroke="var(--sea)" stroke-width="1.2"/>' +
+    '<path d="M38 13l32 0 6 8-12 8H44l-10-7z" fill="var(--ice-shade)" stroke="var(--sea)" stroke-width="1.2"/>' +
+    (level ? '<circle cx="57" cy="' + y + '" r="3.6" fill="var(--fi)" stroke="#fff" stroke-width="1.5"/>' : '<circle cx="57" cy="29" r="2.6" fill="var(--fi)" opacity=".5"/>') +
+    '<text x="82" y="10" font-size="8.5" font-weight="800" fill="var(--sea-deep)" font-family="Public Sans,sans-serif">' + level + '/6</text></svg>';
+}
+function setFamily(w){
+  document.body.className = document.body.className.replace(/\bfam-\w+/g, '').trim();
+  if (w) document.body.classList.add('fam-' + famKey(w));
+}
+function chooseWord(w){
+  if (S.word !== w) { S.level = 0; S.idiom = null; }
+  S.word = w; setFamily(w); save(); paintWordbar();
+}
+function paintWordbar(){
+  const wb = $('#wordbar');
+  if (S.view !== 'flow' || !S.word) { wb.hidden = true; measure(); return; }
+  wb.hidden = false;
+  wb.innerHTML = '';
+  const chip = el('span', 'wb-chip');
+  chip.appendChild(el('span', 'wb-emo', emoji(S.word)));
+  chip.appendChild(el('span', null, S.word));
+  wb.appendChild(chip);
+  const b = el('span'); b.innerHTML = bergMini(S.level); b.title = 'How high the word has risen';
+  wb.appendChild(b.firstChild);
+  measure();
+}
+
+/* ============================================================ FEEL */
+function feelTile(name, cls, onPick, pressed, keep){
+  const b = el('button', 'ftile f-' + famKey(name) + (keep ? ' keep' : '')); b.type = 'button';
+  b.setAttribute('aria-pressed', String(!!pressed));
+  b.appendChild(el('span', 'emo', emoji(name)));
+  b.appendChild(el('span', 'nm', keep ? 'Keep “' + name + '”' : name));
+  if (!keep) { const x = el('span', 'bn', bnWord(name)); x.lang = 'bn'; b.appendChild(x); }
+  b.onclick = () => { onPick(name); b.setAttribute('aria-pressed', 'true'); setTimeout(() => go(1), 420); };
+  return b;
+}
+function scrBig(){
+  const p = el('div', 'panel');
+  p.appendChild(task('heart', 'How are you feeling right now?', 'এই মুহূর্তে আপনার কেমন লাগছে?', 'Start with a big feeling. There is no wrong answer.', 'একটি বড় অনুভূতি দিয়ে শুরু করুন। কোনো উত্তরই ভুল নয়।'));
+  const g = el('div', 'fgrid six');
+  EMO.wheel.forEach((f, i) => {
+    const t = feelTile(f.name, '', n => { S.pick.big = n; chooseWord(n); }, S.word && FAMILY[S.word] === f.name);
+    t.style.animationDelay = (i * 0.05) + 's';
+    const x = t.querySelector('.bn'); if (x) x.textContent = BIG_BN[f.name];
+    g.appendChild(t);
+  });
+  p.appendChild(g);
+  const l = el('button', 'linkbtn'); l.type = 'button';
+  l.appendChild(icon('compass')); bn(l.appendChild(el('span', null, 'Not sure? Notice the clues in your body')), 'নিশ্চিত নন? শরীরের লক্ষণ খেয়াল করুন', true);
+  l.onclick = openClues;
+  p.appendChild(l);
+  return p;
+}
+function scrMid(){
+  const p = el('div', 'panel');
+  const big = FAMILY[S.word] || 'Happy';
+  p.appendChild(task('heart', 'Can you be more exact?', 'আরও নির্দিষ্ট করে বলতে পারেন?', 'Choose the word that fits best.', 'যে শব্দটি সবচেয়ে ভালো মেলে সেটি বেছে নিন।'));
+  p.appendChild(trail());
+  const g = el('div', 'fgrid four');
+  const fam = EMO.wheel.find(f => f.name === big);
+  fam.children.forEach((c, i) => { const t = feelTile(c.name, '', n => { S.pick.mid = n; chooseWord(n); }, S.word === c.name || PARENT[S.word] === c.name); t.style.animationDelay = (i * 0.05) + 's'; g.appendChild(t); });
+  p.appendChild(g);
+  const keep = el('div', 'fgrid'); keep.style.gridTemplateColumns = '1fr';
+  keep.appendChild(feelTile(big, '', n => chooseWord(n), false, true));
+  p.appendChild(keep);
+  return p;
+}
+function scrExact(){
+  const p = el('div', 'panel');
+  const big = FAMILY[S.word] || 'Happy';
+  const fam = EMO.wheel.find(f => f.name === big);
+  let node = fam.children.find(c => c.name === S.word) || fam.children.find(c => c.name === PARENT[S.word]);
+  p.appendChild(task('heart', 'The most exact word', 'সবচেয়ে সঠিক শব্দ', 'One more step. Or keep the word you have.', 'আরও এক ধাপ — অথবা আপনার শব্দটিই রাখুন।'));
+  p.appendChild(trail());
+  const g = el('div', 'fgrid');
+  if (!node) node = fam.children[0];
+  node.children.forEach((c, i) => { const t = feelTile(c, '', n => chooseWord(n), S.word === c); t.style.animationDelay = (i * 0.06) + 's'; g.appendChild(t); });
+  p.appendChild(g);
+  const keep = el('div', 'fgrid'); keep.style.gridTemplateColumns = '1fr';
+  keep.appendChild(feelTile(node.name, '', n => chooseWord(n), false, true));
+  p.appendChild(keep);
+  return p;
+}
+function trail(){
+  const t = el('div', 'trail');
+  const w = curWord(), chain = [];
+  let x = w; while (x) { chain.unshift(x); x = PARENT[x]; }
+  chain.forEach((c, i) => { if (i) t.appendChild(el('span', null, '›')); t.appendChild(el(i === chain.length - 1 ? 'b' : 'span', null, emoji(c) + ' ' + c)); });
+  return t;
+}
+function scrStorm(){
+  const w = curWord(), p = el('div', 'panel');
+  p.appendChild(task('wind', 'You named it.', 'আপনি নাম দিয়েছেন।', 'Now: how strong is the feeling?', 'এবার বলুন: অনুভূতিটি কতটা তীব্র?'));
+  p.appendChild(wordCard(w));
+  p.appendChild(stormScale('storm0'));
+  return p;
+}
+function scrBreathe(){
+  const p = el('div', 'panel');
+  p.appendChild(task('wind', 'Breathe with the circle', 'বৃত্তের সঙ্গে শ্বাস নিন', 'Three slow breaths. In as it grows, out as it shrinks.', 'তিনটি ধীর শ্বাস। বড় হলে শ্বাস নিন, ছোট হলে ছাড়ুন।'));
+  const box = el('div', 'breath');
+  box.innerHTML = '<div class="breath-ring"><svg viewBox="0 0 220 220" aria-hidden="true">' +
+    '<circle cx="110" cy="110" r="104" fill="none" stroke="var(--sea-t)" stroke-width="3"/>' +
+    '<circle class="breath-core" cx="110" cy="110" r="96" fill="var(--sea-t)" stroke="var(--sea)" stroke-width="2" style="transform:scale(.45)"/>' +
+    '<text x="110" y="121" text-anchor="middle" font-size="34" font-family="Public Sans,sans-serif" font-weight="800" fill="var(--sea-deep)" class="breath-n"></text></svg></div>' +
+    '<div class="breath-lab" aria-live="polite"></div><div class="breath-dots"><i></i><i></i><i></i></div>';
+  const start = el('button', 'btn ghost'); start.type = 'button';
+  bn(start.appendChild(el('span', null, 'Start')), 'শুরু', true);
+  box.appendChild(start);
+  p.appendChild(box);
+  p.appendChild(txt('p', 'lead', 'Name it. Breathe. Now your mind has room to learn.', 'নাম দিন। শ্বাস নিন। এখন শেখার জন্য মনে জায়গা হলো।'));
+  const core = box.querySelector('.breath-core'), lab = box.querySelector('.breath-lab'), num = box.querySelector('.breath-n'), dots = box.querySelectorAll('.breath-dots i');
+  let timers = [];
+  const clear = () => { timers.forEach(clearTimeout); timers = []; };
+  start.onclick = () => {
+    clear(); start.hidden = true;
+    let t = 0;
+    for (let k = 0; k < 3; k++) {
+      timers.push(setTimeout(() => { core.style.transitionDuration = '4s'; core.style.transform = 'scale(1)'; lab.textContent = 'Breathe in'; }, t));
+      for (let s = 0; s < 4; s++) timers.push(setTimeout(() => { num.textContent = s + 1; }, t + s * 1000));
+      t += 4000;
+      timers.push(setTimeout(() => { core.style.transitionDuration = '6s'; core.style.transform = 'scale(.45)'; lab.textContent = 'Breathe out'; }, t));
+      for (let s = 0; s < 6; s++) timers.push(setTimeout(() => { num.textContent = 6 - s; }, t + s * 1000));
+      t += 6000;
+      timers.push(setTimeout(() => { dots[k].classList.add('on'); }, t - 50));
+    }
+    timers.push(setTimeout(() => { lab.textContent = 'Well done'; num.textContent = '✓'; start.hidden = false; start.firstChild.textContent = 'Again'; }, t));
+  };
+  p.cleanup = clear;
+  return p;
+}
+
+/* ============================================================ HEAR */
+function scrListen(){
+  const w = curWord(), p = el('div', 'panel');
+  p.appendChild(task('ear', 'Just listen', 'শুধু শুনুন', 'You will hear “' + lower(w) + '” many times. Don’t read. Don’t write. Just listen.', 'শব্দটি অনেকবার শুনবেন। পড়বেন না, লিখবেন না — শুধু শুনুন।'));
+  p.appendChild(wordCard(w, { meaning: false }));
+  const L = floodLines(w);
+  const box = el('div', 'listen card');
+  const meter = el('div', 'meter'); for (let i = 0; i < 7; i++) meter.appendChild(el('i'));
+  const row = el('div', 'listen-row');
+  const drops = el('div', 'drops'); L.forEach(() => drops.appendChild(el('i')));
+  const b = playBtn(btn => {
+    if (btn.classList.contains('is-on')) { TTS.stop(); btn.setOn(false); box.classList.remove('live'); return; }
+    btn.setOn(true); box.classList.add('live');
+    [...drops.children].forEach(d => d.classList.remove('on'));
+    TTS.list(L, { onLine: i => drops.children[i].classList.add('on'), onDone: () => { btn.setOn(false); box.classList.remove('live'); } });
+  });
+  row.appendChild(b); row.appendChild(meter);
+  box.appendChild(row); box.appendChild(drops);
+  box.appendChild(txt('p', 'small', 'Each dot is one time you hear it.', 'প্রতিটি বিন্দু মানে একবার শোনা।'));
+  p.appendChild(box);
+  p.cleanup = () => TTS.stop();
+  return p;
+}
+function scrCatch(){
+  const w = curWord(), p = el('div', 'panel');
+  p.appendChild(task('hand', 'Catch the word', 'শব্দটি ধরুন', 'Listen again. Tap the big button every time you hear “' + lower(w) + '”.', 'আবার শুনুন। শব্দটি যতবার শুনবেন, ততবার বড় বোতামে চাপ দিন।'));
+  const L = floodLines(w), re = new RegExp(stemRe(w).source, 'gi');
+  const total = L.reduce((n, l) => n + ((l.match(re) || []).length), 0);
+  let taps = 0;
+  const box = el('div', 'listen card');
+  const score = el('div', 'score');
+  const setScore = done => {
+    score.replaceChildren(el('span', null, done ? 'You tapped ' + taps + ' times. The word came ' + total + ' times.' : 'Taps: ' + taps));
+    if (done) bn(score, 'আপনি ' + taps + ' বার চাপ দিয়েছেন। শব্দটি এসেছে ' + total + ' বার।');
+  };
+  const c = el('button', 'catch'); c.type = 'button';
+  c.appendChild(el('span', 'emo', emoji(w))); c.appendChild(el('span', null, 'I heard it!'));
+  c.onclick = () => { taps++; setScore(false); c.classList.add('hit'); setTimeout(() => c.classList.remove('hit'), 120); };
+  const b = playBtn(btn => {
+    if (btn.classList.contains('is-on')) { TTS.stop(); btn.setOn(false); box.classList.remove('live'); setScore(true); return; }
+    taps = 0; setScore(false); btn.setOn(true); box.classList.add('live');
+    TTS.list(L, { gap: 900, onDone: () => { btn.setOn(false); box.classList.remove('live'); setScore(true); } });
+  });
+  const row = el('div', 'listen-row'); row.appendChild(b);
+  const meter = el('div', 'meter'); for (let i = 0; i < 7; i++) meter.appendChild(el('i')); row.appendChild(meter);
+  box.appendChild(row); box.appendChild(c); box.appendChild(score); setScore(false);
+  p.appendChild(box);
+  p.cleanup = () => TTS.stop();
+  return p;
+}
+function karaoke(lines, w, opts = {}){
+  /* lines as tappable rows; returns {node, playAll(btn)} */
+  const box = el('div', 'lines');
+  const rows = lines.map((l, i) => {
+    const r = el('button', 'line'); r.type = 'button';
+    const s = el('span', 'spk'); s.appendChild(icon('play')); r.appendChild(s);
+    const t = el('span', 'lt'); r.appendChild(t);
+    r.spans = wordSpans(t, opts.html ? opts.html(l) : marked(l, w));
+    r.onclick = () => { stopAll(); speakFrom(i, true); };
+    box.appendChild(r);
+    return r;
+  });
+  let playBtnRef = null;
+  const stopAll = () => { TTS.stop(); rows.forEach(r => r.classList.remove('is-now')); if (playBtnRef) playBtnRef.setOn(false); };
+  const speakFrom = (i, one) => {
+    const texts = lines.map(l => plain(l, w));
+    TTS.list(one ? [texts[i]] : texts, {
+      from: one ? 0 : i,
+      onLine: k => { const idx = one ? i : k; rows.forEach((r, j) => r.classList.toggle('is-now', j === idx)); rows[idx].scrollIntoView({ block: 'nearest', behavior: 'smooth' }); },
+      onWord: (k, c) => lightWord(rows[one ? i : k].spans, c),
+      onDone: () => { rows.forEach(r => { r.classList.remove('is-now'); r.spans.forEach(s => s.classList.remove('lit')); }); if (playBtnRef) playBtnRef.setOn(false); }
+    });
+  };
   return {
-    collocations: [
-      isNoun ? `filled with ${nounWord}` : `feel ${adjWord}`,
-      isNoun ? `deep ${nounWord}` : `deeply ${adjWord}`,
-      isNoun ? `sense of ${nounWord}` : `${adjWord} state`,
-      isNoun ? `express ${nounWord}` : `genuinely ${adjWord}`,
-      isNoun ? `overcome ${nounWord}` : `become ${adjWord}`
-    ],
-    colligations: [
-      isNoun ? `in ${nounWord} of` : `${adjWord} about things`,
-      isNoun ? `driven by ${nounWord}` : `too ${adjWord} to focus`,
-      isNoun ? `feel ${nounWord} when` : `feel ${adjWord} when facing change`,
-      isNoun ? `with pure ${nounWord}` : `become ${adjWord} under pressure`,
-      isNoun ? `no ${nounWord} left` : `so ${adjWord} that it shows`
-    ],
-    distinctions: [
-      `${name} is ${info[1]}, not ${contrast}.`,
-      `${name} is inner, not outer.`,
-      `${name} is now, not later.`,
-      `${name} is mind, not body.`,
-      `${name} is deep, not surface.`,
-      `${name} is state, not action.`,
-      `${name} is present, not past.`,
-      `${name} is real, not fake.`,
-      `${name} is clear, not vague.`,
-      `${name} is quiet, not loud.`
-    ],
-    dialogueC1: customC1Data[name] || [
-      isNoun ? `"He felt a sudden surge of ${nounWord} during the meeting."` : `"I felt quite ${adjWord} right before the presentation."`,
-      isNoun ? `"She tried to hide her ${nounWord}, but her voice trembled."` : `"She looked ${adjWord} when she heard the unexpected news."`,
-      isNoun ? `"There was a deep sense of ${nounWord} throughout the room."` : `"He gets ${adjWord} whenever plans change suddenly."`,
-      isNoun ? `"You shouldn't let ${nounWord} control your key decisions."` : `"It is completely natural to feel ${adjWord} in this situation."`,
-      isNoun ? `"It takes courage to face your ${nounWord} head-on."` : `"Don't let feeling ${adjWord} stop you from applying."`
-    ],
-    dialogueC2: customC2Data[name] || [
-      `"I've been feeling completely out of sorts all afternoon."`,
-      `"That sudden change really threw me for a loop."`,
-      `"She was caught completely off guard by the update."`,
-      `"He's been pacing the floor trying to process it all."`,
-      `"It's been weighing heavily on my mind all day long."`
-    ]
+    node: box,
+    play(btn){ playBtnRef = btn; if (btn.classList.contains('is-on')) { stopAll(); return; } btn.setOn(true); speakFrom(0, false); },
+    stop: stopAll
   };
 }
+function scrRead(){
+  const w = curWord(), p = el('div', 'panel');
+  p.appendChild(task('book', 'Now read and listen', 'এবার পড়ুন ও শুনুন', 'Follow the words. Tap any line to hear it again.', 'শব্দগুলো অনুসরণ করুন। যেকোনো লাইনে চাপ দিলে আবার শুনবেন।'));
+  const L = floodLines(w).slice(2);
+  const src = chunk(w).p.map(x => x + '.').concat(chunk(w).g.map(g => g[1])).concat((EMO.say[w] || []).slice(0, 5));
+  const k = karaoke(src.map(s => s.replace(/[\[\]]/g, '')), w, { html: l => marked(l, w) });
+  const bar = el('div', 'listen-row'); bar.style.justifyContent = 'center';
+  const b = playBtn(btn => k.play(btn)); b.style.width = b.style.height = 'calc(64px*var(--ui))';
+  bar.appendChild(b); bar.appendChild(txt('span', 'small', 'Play all', 'সব শুনুন'));
+  p.appendChild(bar);
+  const c = el('div', 'card'); c.appendChild(k.node); p.appendChild(c);
+  p.cleanup = () => k.stop();
+  void L;
+  return p;
+}
 
-function sentencesFor(name) {
-  const flooding = getFloodingData(name);
-
-  const collocationsAndColligations = [
-    ...flooding.collocations,
-    ...flooding.colligations
-  ];
-
-  const lessons = {
-    A1: collocationsAndColligations,
-    A2: collocationsAndColligations,
-    B1: flooding.distinctions.slice(0, 5),
-    B2: flooding.distinctions,
-    C1: flooding.dialogueC1 || flooding.dialogue,
-    C2: flooding.dialogueC2 || flooding.dialogue
+/* ============================================================ PARTNERS */
+function partnerOf(s){
+  const m = s.match(/~|\{[^}]+\}/);
+  if (!m) return { before: s, after: '', side: 'l' };
+  const before = s.slice(0, m.index).trim(), after = s.slice(m.index + m[0].length).trim();
+  return { before, after, form: m[0] === '~' ? null : m[0].slice(1, -1), side: before.length >= after.length ? 'l' : 'r' };
+}
+function partnerLabel(q){ return (q.before ? q.before + ' ' : '') + '…' + (q.after ? ' ' + q.after : ''); }
+function scrWeb(){
+  const w = curWord(), p = el('div', 'panel'), C = chunk(w);
+  p.appendChild(task('link', 'Words have partners', 'শব্দেরও সঙ্গী থাকে', 'Listen. Each partner joins the word. Tap one to hear it again.', 'শুনুন — প্রতিটি সঙ্গী শব্দ মূল শব্দের সাথে যুক্ত হয়। আবার শুনতে যেকোনোটিতে চাপ দিন।'));
+  const web = el('div', 'web');
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('class', 'links'); svg.setAttribute('viewBox', '0 0 100 100'); svg.setAttribute('preserveAspectRatio', 'none');
+  web.appendChild(svg);
+  const hub = el('div', 'hub', lower(w)); web.appendChild(hub);
+  const Q = C.p.map(partnerOf);
+  const L = Q.filter(q => q.side === 'l'), R = Q.filter(q => q.side === 'r');
+  const place = (arr, side) => arr.map((q, i) => {
+    const a = arr.length === 1 ? 0 : (-58 + 116 * i / (arr.length - 1)) * Math.PI / 180;
+    const x = 50 + (side === 'l' ? -1 : 1) * 34 * Math.cos(a), y = 50 + 38 * Math.sin(a);
+    return { q, x, y };
+  });
+  const sats = place(L, 'l').concat(place(R, 'r'));
+  const chunkline = el('div', 'chunkline');
+  const nodes = sats.map(({ q, x, y }) => {
+    const ln = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    ln.setAttribute('x1', 50); ln.setAttribute('y1', 50); ln.setAttribute('x2', x); ln.setAttribute('y2', y); ln.setAttribute('class', 'ln');
+    svg.appendChild(ln);
+    const s = el('button', 'sat', partnerLabel(q)); s.type = 'button';
+    s.style.left = x + '%'; s.style.top = y + '%';
+    const full = C.p[Q.indexOf(q)];
+    s.onclick = () => { reveal(s, ln, full); TTS.say(plain(full, w)); };
+    web.appendChild(s);
+    return { s, ln, full };
+  });
+  const reveal = (s, ln, full) => {
+    s.classList.add('on'); ln.classList.add('on');
+    nodes.forEach(n => n.s.classList.toggle('is-now', n.s === s));
+    chunkline.innerHTML = marked(full, w);
   };
-
-  return lessons[state.cefr] || lessons.A2;
-}
-
-function banglaTermFor(name) {
-  const key = Object.keys(emotionBanglaTerms).find(item => item.toLowerCase() === String(name).toLowerCase());
-  return key ? emotionBanglaTerms[key] : name;
-}
-
-function banglaSentencesFor(name) {
-  const info = emotionInfo[name] || ["you are experiencing this feeling", "medium", "something affects you", "notice a change in your body", "happy"];
-  const primaryName = state.trail[0] || wheelData.find(category =>
-    category.name === name || category.children.some(child => child.name === name || child.children.includes(name))
-  )?.name || "Happy";
-  const primary = primaryBangla[primaryName];
-  const guide = banglaCategoryGuides[primaryName];
-  const term = banglaTermFor(name);
-  const contrastName = info[4];
-  const contrastLabel = contrastName.charAt(0).toUpperCase() + contrastName.slice(1);
-  const contrastTerm = banglaTermFor(contrastName);
-
-  const levelActivities = {
-    A1: [
-      `শব্দ ও অর্থ: “${name}” মানে “${term}” (মূল অনুভূতি: ${primary.word})।`,
-      `শ্রবণ অনুশীলন (A1-A2): নিচে ৫টি সাধারণ Collocation (শব্দগুচ্ছ) এবং ৫টি Colligation (ব্যাকরণগত প্রয়োগ) শুনুন।`,
-      `পরামর্শ: শব্দটির সাথে অন্য শব্দ কীভাবে যুক্ত হয় তা বার বার শুনে অভ্যস্ত হন।`
-    ],
-    A2: [
-      `শব্দ ও অর্থ: “${name}” এর সহজ বাংলা “${term}” (মূল অনুভূতি: ${primary.word})।`,
-      `শ্রবণ অনুশীলন (A2): ৫টি কলকেশন ও ৫টি কলিগেশন পর পর উচ্চারণ করা হচ্ছে।`,
-      `পরামর্শ: প্রতিটি শব্দগুচ্ছের সাবলীল ব্যবহার ও উচ্চারণ অনুকরণ করুন।`
-    ],
-    B1: [
-      `শব্দ ও অর্থ: “${name}” (বাংলা: “${term}”)—কাছাকাছি অনুভূতি: “${contrastLabel}” (${contrastTerm})।`,
-      `শ্রবণ অনুশীলন (B1): সূক্ষ্ম পার্থক্য ও বৈসাদৃশ্যের (Distinction & Contrast) বাক্যসমূহ শুনুন।`,
-      `পরামর্শ: সমার্থক বা কাছাকাছি অনুভূতিগুলোর মধ্যে সূক্ষ্ম পার্থক্য বুঝতে এটি সাহায্য করবে।`
-    ],
-    B2: [
-      `শব্দ ও অর্থ: “${name}” (বাংলা: “${term}”)—অর্থগত সীমা ও সূক্ষ্ম পার্থক্য।`,
-      `শ্রবণ অনুশীলন (B2): শব্দটির সেমান্টিক ওয়েব (Semantic Web) এবং বৈসাদৃশ্যমূলক বাক্য শুনুন।`,
-      `পরামর্শ: সমার্থক শব্দের চেয়ে ঠিক কোন জায়গায় শব্দটির প্রয়োগ আলাদা তা খেয়াল করুন।`
-    ],
-    C1: [
-      `শব্দ ও অর্থ: “${name}” (বাংলা: “${term}”)—স্বাভাবিক নেটিভ ব্যবহার।`,
-      `শ্রবণ অনুশীলন (C1): ইংরেজিতে প্রাত্যহিক কথোপকথন (Colloquial & Idiomatic Dialogue) শুনুন।`,
-      `পরামর্শ: সাধারণ আলাপে নেটিভ স্পিকাররা কীভাবে প্রবাদ বা বাকধারা ব্যবহার করেন তা লক্ষ্য করুন।`
-    ],
-    C2: [
-      `শব্দ ও অর্থ: “${name}” (বাংলা: “${term}”)—উচ্চমানের সাবলীলতা ও বাকধারা।`,
-      `শ্রবণ অনুশীলন (C2): নেটিভ কথোপকথনের বাস্তব উদাহরণ ও ভাবপ্রকাশের বাক্য শুনুন।`,
-      `পরামর্শ: অনুভূতি প্রকাশের প্রাতিষ্ঠানিক ও ঘরোয়া রূপের প্রয়োগ আয়ত্ত করুন।`
-    ]
-  };
-
-  return [
-    ...(levelActivities[state.cefr] || levelActivities.A2),
-    guide.situation,
-    guide.body
-  ];
-}
-
-function renderBanglaTranscript(name) {
-  const container = document.querySelector("#bangla-transcript");
-  document.querySelector("#bangla-transcript-level").textContent = state.cefr;
-  container.replaceChildren();
-  banglaSentencesFor(name).forEach(text => {
-    const line = document.createElement("p");
-    line.textContent = text;
-    container.append(line);
+  p.appendChild(web); p.appendChild(chunkline);
+  const bar = el('div', 'listen-row'); bar.style.justifyContent = 'center';
+  const b = playBtn(btn => {
+    if (btn.classList.contains('is-on')) { TTS.stop(); btn.setOn(false); return; }
+    btn.setOn(true);
+    TTS.list(nodes.map(n => plain(n.full, w)), { gap: 900, onLine: i => reveal(nodes[i].s, nodes[i].ln, nodes[i].full), onDone: () => btn.setOn(false) });
   });
+  b.style.width = b.style.height = 'calc(64px*var(--ui))';
+  bar.appendChild(b); p.appendChild(bar);
+  p.enter = () => setTimeout(() => { if (p.isConnected) b.click(); }, 500);
+  p.cleanup = () => TTS.stop();
+  return p;
 }
-
-function updateLesson(name, trail, color) {
-  state.trail = [...trail];
-  state.color = color;
-  transcriptCard.style.setProperty("--lesson-color", color);
-  document.querySelector("#daily-poll").style.setProperty("--lesson-color", color);
-  document.querySelector("#selected-emoji").textContent = emotionEmojis[name] || "🙂";
-  document.querySelector("#selected-word").textContent = name;
-  document.querySelector("#pronunciation").textContent = pronunciation[name.toLowerCase()] || "Tap Listen to hear the pronunciation";
-  document.querySelector("#breadcrumb").textContent = trail.join("  ›  ");
-  const primaryDefinition = primaryBangla[trail[0]];
-  document.querySelector("#bangla-definition").textContent = `${trail[0]} · ${primaryDefinition.word} — ${primaryDefinition.definition}`;
-  document.querySelector("#prompt-word").textContent = name.toLowerCase();
-  const reasonInput = document.querySelector("#reason");
-  reasonInput.disabled = false;
-  reasonInput.value = "";
-  reasonInput.placeholder = `I feel ${name.toLowerCase()} because…`;
-  const pollButton = document.querySelector("#submit-poll");
-  pollButton.disabled = false;
-  pollButton.textContent = "Share anonymously";
-
-  renderTranscript(name);
-  renderDefinitionSection(name);
-  showReflectionCard(name);
-}
-
-function renderDefinitionSection(name) {
-  const definitionCard = document.querySelector("#definition-card");
-  const definitionBody = document.querySelector("#definition-body");
-  if (!definitionCard || !definitionBody) return;
-  definitionCard.hidden = false;
-  definitionCard.style.setProperty("--lesson-color", state.color);
-
-  const info = emotionInfo[name] || [`you feel ${name.toLowerCase()}`, "medium", "something happens", "notice a change", "happy", "the two emotions describe different experiences", `I feel ${name.toLowerCase()} right now`];
-  const word = name.toLowerCase();
-  const contrastName = info[4].charAt(0).toUpperCase() + info[4].slice(1);
-  const contrastTerm = banglaTermFor(info[4]);
-
-  document.querySelector("#definition-heading").textContent = `${name} — Meaning & Reference`;
-
-  definitionBody.replaceChildren();
-
-  const blocks = [
-    { title: "Core Meaning", text: `<strong>${name}</strong> means ${info[0]}. It is typically a <em>${info[1]}</em> feeling.` },
-    { title: "When You Feel It & Body Signals", text: `You may feel <strong>${word}</strong> when ${info[2]}. Physically, your body may ${info[3]}.` },
-    { title: "Distinction vs. Neighboring Feeling", text: `Do not confuse <strong>${word}</strong> with <strong>${contrastName}</strong> (${contrastTerm}). ${info[5]}.` },
-    { title: "Example Sentence", text: `“${info[6]}.”`, isExample: true }
-  ];
-
-  blocks.forEach(block => {
-    const card = document.createElement("div");
-    card.className = `def-block${block.isExample ? " def-block--example" : ""}`;
-    card.innerHTML = `<h4>${block.title}</h4><p>${block.text}</p>`;
-    definitionBody.append(card);
-  });
-}
-
-function renderTranscript(name) {
-  transcriptCard.hidden = false;
-  liveTranscript.replaceChildren();
-  transcriptRows = [name, ...sentencesFor(name)].map((text, rowIndex) => {
-    const row = document.createElement("span");
-    row.className = "transcript-line";
-    row.dataset.row = rowIndex;
-    const tokens = [];
-    [...text.matchAll(/\S+/g)].forEach((match, tokenIndex, matches) => {
-      const token = document.createElement("span");
-      token.className = "transcript-token";
-      token.textContent = match[0];
-      row.append(token);
-      row.append(document.createTextNode(" "));
-      tokens.push({ element: token, start: match.index, end: match.index + match[0].length });
-    });
-    liveTranscript.append(row);
-    return { element: row, tokens, text };
-  });
-  renderBanglaTranscript(name);
-  resetTranscript();
-}
-
-function resetTranscript(message = `${state.cefr} · Ready to listen`) {
-  transcriptRows.forEach(row => row.tokens.forEach(token => token.element.classList.remove("is-current", "is-spoken")));
-  transcriptStatus.textContent = message;
-  transcriptStatus.classList.remove("is-speaking");
-}
-
-function highlightTranscriptToken(rowIndex, tokenIndex, includeEarlierRows = true) {
-  const row = transcriptRows[rowIndex];
-  if (!row) return;
-  transcriptRows.forEach((item, index) => item.tokens.forEach(token => {
-    token.element.classList.remove("is-current");
-    if (includeEarlierRows && index < rowIndex) token.element.classList.add("is-spoken");
-  }));
-  const active = row.tokens[tokenIndex] || row.tokens[0];
-  row.tokens.forEach((token, index) => {
-    if (index < tokenIndex) token.element.classList.add("is-spoken");
-  });
-  active?.element.classList.remove("is-spoken");
-  active?.element.classList.add("is-current");
-  transcriptStatus.textContent = `${state.cefr} · Listening to ${state.selected}`;
-  transcriptStatus.classList.add("is-speaking");
-}
-
-function markTranscriptWord(rowIndex, charIndex = 0, includeEarlierRows = true) {
-  const row = transcriptRows[rowIndex];
-  if (!row) return;
-  const tokenIndex = Math.max(0, row.tokens.findIndex(token => charIndex >= token.start && charIndex < token.end));
-  if (timedHighlightRow === rowIndex) timedHighlightCursor = Math.max(timedHighlightCursor, tokenIndex + 1);
-  highlightTranscriptToken(rowIndex, tokenIndex, includeEarlierRows);
-}
-
-function clearTimedHighlight() {
-  if (wordHighlightTimer !== null) window.clearTimeout(wordHighlightTimer);
-  wordHighlightTimer = null;
-  timedHighlightRow = -1;
-  timedHighlightCursor = 0;
-}
-
-function tokenHighlightDelay(token) {
-  const text = token?.element.textContent || "";
-  const letters = text.replace(/[^A-Za-z0-9]/g, "").length;
-  const punctuationPause = /[.!?,;:]$/.test(text) ? 120 : 0;
-  return Math.min(650, 205 + letters * 28 + punctuationPause);
-}
-
-function startTimedHighlight(rowIndex) {
-  clearTimedHighlight();
-  timedHighlightRow = rowIndex;
-  timedHighlightCursor = 0;
-
-  const advance = () => {
-    if (!state.speaking || timedHighlightRow !== rowIndex) return;
-    const row = transcriptRows[rowIndex];
-    if (!row || timedHighlightCursor >= row.tokens.length) return;
-    const tokenIndex = timedHighlightCursor++;
-    highlightTranscriptToken(rowIndex, tokenIndex);
-    wordHighlightTimer = window.setTimeout(advance, tokenHighlightDelay(row.tokens[tokenIndex]));
-  };
-
-  advance();
-}
-
-function completeTranscriptRow(rowIndex, includeEarlierRows = true) {
-  const row = transcriptRows[rowIndex];
-  if (!row) return;
-  row.tokens.forEach(token => {
-    token.element.classList.remove("is-current");
-    token.element.classList.add("is-spoken");
-  });
-  if (includeEarlierRows) {
-    transcriptRows.slice(0, rowIndex).forEach(item => item.tokens.forEach(token => token.element.classList.add("is-spoken")));
-  }
-}
-
-function renderMobileChoices() {
-  const container = document.querySelector("#mobile-choices");
-  container.replaceChildren();
-  let choices = wheelData.map((p, i) => ({ name: p.name, color: p.color, action: () => selectPrimary(i) }));
-  if (state.primary !== null && state.secondary === null) {
-    const primary = wheelData[state.primary];
-    choices = primary.children.map((s, i) => ({ name: s.name, color: primary.color, action: () => selectSecondary(state.primary, i) }));
-  } else if (state.primary !== null && state.secondary !== null) {
-    const primary = wheelData[state.primary];
-    choices = primary.children.flatMap((s, sIndex) => s.children.map(name => ({ name, color: primary.color, action: () => selectTertiary(state.primary, sIndex, name) })));
-  }
-  choices.forEach(choice => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = `choice-chip${state.selected === choice.name ? " is-selected" : ""}${state.emojiOnly ? " is-emoji-only" : ""}`;
-    button.style.setProperty("--chip-color", choice.color);
-    button.textContent = state.emojiOnly ? (emotionEmojis[choice.name] || "🙂") : `${emotionEmojis[choice.name] || "🙂"} ${choice.name}`;
-    button.setAttribute("aria-label", `Select ${choice.name}`);
-    button.addEventListener("click", choice.action);
-    container.append(button);
-  });
-}
-
-function chooseVoice() {
-  const voices = window.speechSynthesis?.getVoices() || [];
-  return voices.find(v => /^en-(US|CA)/.test(v.lang) && /Samantha|Ava|Google|Natural|Premium/i.test(v.name))
-    || voices.find(v => /^en-(US|CA)/.test(v.lang))
-    || voices.find(v => /^en/.test(v.lang))
-    || null;
-}
-
-function updateGlobalAudioButton() {
-  if (!globalAudioToggle) return;
-  const icon = globalAudioToggle.querySelector(".header-audio-button__icon");
-  const label = globalAudioToggle.querySelector(".header-audio-button__label");
-  globalAudioToggle.setAttribute("aria-pressed", String(state.autoPlay));
-  globalAudioToggle.setAttribute("aria-label", state.autoPlay ? "Turn automatic speech off" : "Turn automatic speech on");
-  if (icon) icon.textContent = state.autoPlay ? "🔊" : "🔇";
-  if (label) label.textContent = state.autoPlay ? "Auto-play ON" : "Auto-play OFF";
-}
-
-function utter(text, onStart, onEnd, emphasis = false, onBoundary = null) {
-  const cleanText = String(text || "").trim();
-  const formatted = /[.!?]$/.test(cleanText) ? cleanText : `${cleanText}.`;
-  const item = new SpeechSynthesisUtterance(formatted);
-  item.lang = "en-US";
-  item.rate = state.speechRate || 0.9;
-  item.pitch = emphasis ? 1.04 : 1;
-  const voices = ("speechSynthesis" in window) ? speechSynthesis.getVoices() : [];
-  const voice = voices.find(v => v.voiceURI === state.voiceURI) || chooseVoice();
-  if (voice) item.voice = voice;
-  item.onstart = onStart || null;
-  item.onend = onEnd || null;
-  item.onerror = onEnd || null;
-  item.onboundary = onBoundary;
-  return item;
-}
-
-function speakLesson() {
-  if (!state.selected || !("speechSynthesis" in window)) return;
-  stopSpeech();
-  resetTranscript();
-  state.speaking = true;
-  updateGlobalAudioButton();
-  playButton.classList.add("is-playing");
-  playButton.querySelector(".sound-orb__icon").textContent = "■";
-  playButton.querySelector(".sound-orb__label").textContent = "Stop";
-
-  speechSynthesis.speak(utter(state.selected,
-    () => startTimedHighlight(0),
-    () => {
-      clearTimedHighlight();
-      completeTranscriptRow(0);
-    },
-    true,
-    event => markTranscriptWord(0, event.charIndex)
-  ));
-  const lines = sentencesFor(state.selected);
-  lines.forEach((text, index) => {
-    speechSynthesis.speak(utter(text,
-      () => startTimedHighlight(index + 1),
-      () => {
-      clearTimedHighlight();
-      completeTranscriptRow(index + 1);
-      if (index === lines.length - 1) finishSpeech();
-    }, false, event => markTranscriptWord(index + 1, event.charIndex)));
-  });
-}
-
-function finishSpeech() {
-  clearTimedHighlight();
-  state.speaking = false;
-  playButton.classList.remove("is-playing");
-  playButton.querySelector(".sound-orb__icon").textContent = "▶";
-  playButton.querySelector(".sound-orb__label").textContent = "Listen";
-  transcriptStatus.textContent = state.selected ? `${state.cefr} · Finished` : `${state.cefr} · Ready to listen`;
-  transcriptStatus.classList.remove("is-speaking");
-  updateGlobalAudioButton();
-}
-
-function stopSpeech() {
-  clearTimedHighlight();
-  if ("speechSynthesis" in window) speechSynthesis.cancel();
-  transcriptRows.forEach(row => row.tokens.forEach(token => token.element.classList.remove("is-current")));
-  finishSpeech();
-}
-
-function setWheelRotation(degrees) {
-  state.rotation = ((degrees % 360) + 360) % 360;
-  wheel.style.setProperty("--wheel-rotation", `${state.rotation}deg`);
-}
-
-document.querySelector("#rotate-left").addEventListener("click", () => setWheelRotation(state.rotation - 15));
-document.querySelector("#rotate-right").addEventListener("click", () => setWheelRotation(state.rotation + 15));
-document.querySelector("#reset-rotation").addEventListener("click", () => setWheelRotation(0));
-
-const drag = { active: false, startAngle: 0, startRotation: 0, moved: false, blockClick: false };
-
-function pointerAngle(event) {
-  const rect = wheel.getBoundingClientRect();
-  return Math.atan2(event.clientY - (rect.top + rect.height / 2), event.clientX - (rect.left + rect.width / 2)) * 180 / Math.PI;
-}
-
-wheel.addEventListener("pointerdown", event => {
-  if (event.pointerType === "mouse" && event.button !== 0) return;
-  drag.active = true;
-  drag.moved = false;
-  drag.blockClick = false;
-  drag.startAngle = pointerAngle(event);
-  drag.startRotation = state.rotation;
-});
-
-wheel.addEventListener("pointermove", event => {
-  if (!drag.active) return;
-  let delta = pointerAngle(event) - drag.startAngle;
-  if (delta > 180) delta -= 360;
-  if (delta < -180) delta += 360;
-  if (Math.abs(delta) > 3 && !drag.moved) {
-    drag.moved = true;
-    wheel.classList.add("is-dragging");
-    wheel.setPointerCapture(event.pointerId);
-  }
-  if (!drag.moved) return;
-  setWheelRotation(drag.startRotation + delta);
-});
-
-function endWheelDrag(event) {
-  if (!drag.active) return;
-  drag.active = false;
-  drag.blockClick = drag.moved;
-  wheel.classList.remove("is-dragging");
-  if (wheel.hasPointerCapture(event.pointerId)) wheel.releasePointerCapture(event.pointerId);
-}
-
-wheel.addEventListener("pointerup", endWheelDrag);
-wheel.addEventListener("pointercancel", endWheelDrag);
-wheel.addEventListener("click", event => {
-  if (!drag.blockClick) return;
-  event.preventDefault();
-  event.stopImmediatePropagation();
-  drag.blockClick = false;
-}, true);
-
-let savedClueLanguage = "en";
-try {
-  const storedClueLanguage = localStorage.getItem("english-club-clue-language");
-  if (["en", "bn"].includes(storedClueLanguage)) savedClueLanguage = storedClueLanguage;
-} catch (_) {}
-
-const clueState = { mode: "behavior", language: savedClueLanguage, expanded: false, selected: new Set(), match: null };
-const clueOptions = document.querySelector("#clue-options");
-const clueResultContent = document.querySelector("#clue-result-content");
-const clueBars = document.querySelector("#clue-bars");
-const exploreMatch = document.querySelector("#explore-match");
-const clearClues = document.querySelector("#clear-clues");
-const showMoreClues = document.querySelector("#show-more-clues");
-
-function emotionColor(name) {
-  const category = wheelData.find(item => item.name === name);
-  return primaryFill(category?.color || "#91a59b");
-}
-
-function clueMainEmotion(clue) {
-  return Object.entries(clue.scores).sort((a, b) => b[1] - a[1])[0][0];
-}
-
-function updateClueCounts() {
-  const countFor = type => clueData.filter(clue => clue.type === type && clueState.selected.has(clue.id)).length;
-  document.querySelector("#behavior-count").textContent = countFor("behavior");
-  document.querySelector("#sensation-count").textContent = countFor("sensation");
-}
-
-function renderClueOptions() {
-  clueOptions.replaceChildren();
-  clueOptions.setAttribute("aria-labelledby", `${clueState.mode}-tab`);
-  const allClues = clueData.filter(clue => clue.type === clueState.mode);
-  const visibleClues = clueState.expanded
-    ? allClues
-    : allClues.filter(clue => featuredClues[clueState.mode].includes(clue.id) || clueState.selected.has(clue.id));
-  visibleClues.forEach(clue => {
-    const button = document.createElement("button");
-    const mainEmotion = clueMainEmotion(clue);
-    button.type = "button";
-    button.className = "clue-chip";
-    button.textContent = clueState.language === "bn" ? clueBangla[clue.id] : clue.label;
-    button.lang = clueState.language;
-    button.style.setProperty("--clue-color", emotionColor(mainEmotion));
-    button.setAttribute("aria-pressed", String(clueState.selected.has(clue.id)));
-    button.addEventListener("click", () => {
-      if (clueState.selected.has(clue.id)) clueState.selected.delete(clue.id);
-      else clueState.selected.add(clue.id);
-      button.setAttribute("aria-pressed", String(clueState.selected.has(clue.id)));
-      updateClueCounts();
-      updateClueResult();
-    });
-    clueOptions.append(button);
-  });
-  const languageText = clueLanguageText[clueState.language];
-  showMoreClues.hidden = allClues.length <= 9;
-  showMoreClues.setAttribute("aria-expanded", String(clueState.expanded));
-  showMoreClues.textContent = clueState.expanded ? languageText.showLess : languageText.showAll(allClues.length);
-  showMoreClues.lang = clueState.language;
-  updateClueCounts();
-}
-
-function updateClueLanguage() {
-  const languageText = clueLanguageText[clueState.language];
-  document.querySelector("#clues-intro").textContent = languageText.intro;
-  document.querySelector("#clues-intro").lang = clueState.language;
-  document.querySelector("#behavior-tab-label").textContent = languageText.behavior;
-  document.querySelector("#behavior-tab-label").lang = clueState.language;
-  document.querySelector("#sensation-tab-label").textContent = languageText.sensation;
-  document.querySelector("#sensation-tab-label").lang = clueState.language;
-  document.querySelectorAll("[data-clue-language]").forEach(button => {
-    button.setAttribute("aria-pressed", String(button.dataset.clueLanguage === clueState.language));
-  });
-  renderClueOptions();
-}
-
-function updateClueResult() {
-  const selectedClues = clueData.filter(clue => clueState.selected.has(clue.id));
-  clearClues.disabled = selectedClues.length === 0;
-  clueBars.replaceChildren();
-
-  if (!selectedClues.length) {
-    clueState.match = null;
-    clueResultContent.innerHTML = "<h3>Start with one clue.</h3><p>Think about what you are doing or what you notice in your body right now.</p>";
-    exploreMatch.hidden = true;
-    return;
-  }
-
-  const scores = Object.fromEntries(wheelData.map(category => [category.name, 0]));
-  selectedClues.forEach(clue => Object.entries(clue.scores).forEach(([emotion, points]) => { scores[emotion] += points; }));
-  const ranked = Object.entries(scores).filter(([, score]) => score > 0).sort((a, b) => b[1] - a[1]);
-  const topScore = ranked[0][1];
-  const leaders = ranked.filter(([, score]) => score === topScore).map(([name]) => name);
-  const top = leaders[0];
-  clueState.match = top;
-  const title = leaders.length > 1 ? leaders.slice(0, 2).join(" or ") : top;
-  const summary = leaders.slice(0, 2).map(name => clueSummaries[name]).join(" ");
-  const matchColor = emotionColor(top);
-
-  clueResultContent.innerHTML = `<h3>Your clues point toward <span class="clue-result-content__name">${title}</span>.</h3><p>${summary}</p>`;
-  clueResultContent.style.setProperty("--match-color", matchColor);
-
-  ranked.slice(0, 3).forEach(([name, score]) => {
-    const row = document.createElement("div");
-    row.className = "clue-bar";
-    row.innerHTML = `<div class="clue-bar__top"><span>${name}</span><span>${Math.round(score / topScore * 100)}%</span></div><div class="clue-bar__track"><div class="clue-bar__fill"></div></div>`;
-    row.querySelector(".clue-bar__fill").style.setProperty("--bar-width", `${score / topScore * 100}%`);
-    row.querySelector(".clue-bar__fill").style.setProperty("--bar-color", emotionColor(name));
-    clueBars.append(row);
-  });
-
-  exploreMatch.hidden = false;
-  exploreMatch.textContent = `Explore ${top} on the wheel ↑`;
-}
-
-document.querySelectorAll("[data-clue-mode]").forEach(tab => tab.addEventListener("click", () => {
-  clueState.mode = tab.dataset.clueMode;
-  clueState.expanded = false;
-  document.querySelectorAll("[data-clue-mode]").forEach(item => item.setAttribute("aria-selected", String(item === tab)));
-  renderClueOptions();
-}));
-
-document.querySelectorAll("[data-clue-language]").forEach(button => button.addEventListener("click", () => {
-  clueState.language = button.dataset.clueLanguage;
-  try { localStorage.setItem("english-club-clue-language", clueState.language); } catch (_) {}
-  updateClueLanguage();
-}));
-
-showMoreClues.addEventListener("click", () => {
-  clueState.expanded = !clueState.expanded;
-  renderClueOptions();
-});
-
-clearClues.addEventListener("click", () => {
-  clueState.selected.clear();
-  renderClueOptions();
-  updateClueResult();
-});
-
-exploreMatch.addEventListener("click", () => {
-  if (!clueState.match) return;
-  const index = wheelData.findIndex(category => category.name === clueState.match);
-  selectPrimary(index);
-  document.querySelector(".experience").scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-// Poll API is now built into server.py (SQLite-backed) — same origin, no external dependency.
-const pollApiOrigin = "";
-const pollState = { windowKey: "", loading: false };
-const pollTotal = document.querySelector("#poll-total");
-const pollUpdated = document.querySelector("#poll-updated");
-const pollChart = document.querySelector("#poll-chart");
-const popularWords = document.querySelector("#popular-words");
-const pollReasons = document.querySelector("#poll-reasons");
-const pollDate = document.querySelector("#poll-date");
-const submitPoll = document.querySelector("#submit-poll");
-const pollSubmitStatus = document.querySelector("#poll-submit-status");
-
-function dhakaHour() {
-  const parts = Object.fromEntries(new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Asia/Dhaka", year: "numeric", month: "2-digit", day: "2-digit",
-    hour: "2-digit", hourCycle: "h23", weekday: "long"
-  }).formatToParts(new Date()).filter(part => part.type !== "literal").map(part => [part.type, part.value]));
-  const key = `${parts.year}-${parts.month}-${parts.day}T${parts.hour}`;
-  const nextHour = String((Number(parts.hour) + 1) % 24).padStart(2, "0");
-  return { key, label: `${parts.hour}:00–${nextHour}:00 · ${parts.weekday}, ${parts.day}/${parts.month}/${parts.year} · Dhaka` };
-}
-
-function getResponseToken(windowKey) {
-  const storageKey = `emotion-poll-token:${windowKey}`;
-  try {
-    let token = localStorage.getItem(storageKey);
-    if (!token) {
-      token = crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-      localStorage.setItem(storageKey, token);
+function scrPartnerCloze(){
+  const w = curWord(), p = el('div', 'panel'), C = chunk(w);
+  p.appendChild(task('link', 'Find the partner', 'সঙ্গী শব্দটি খুঁজুন', 'Which word goes in the gap? The first letter helps.', 'ফাঁকা জায়গায় কোন শব্দ বসবে? প্রথম অক্ষরটি সাহায্য করবে।'));
+  const Q = shuffle(C.p.map(s => ({ s, q: partnerOf(s) })));
+  const card = el('div', 'card round');
+  const dots = el('div', 'roundnav'); Q.forEach(() => dots.appendChild(el('i')));
+  const line = el('div', 'slotline'), opts = el('div', 'opts');
+  card.appendChild(dots); card.appendChild(line); card.appendChild(opts);
+  const done = new Set();
+  let r = 0;
+  const partText = q => q.side === 'l' ? q.before : q.after;
+  const allParts = C.p.map(s => partnerOf(s));
+  const paint = () => {
+    [...dots.children].forEach((d, i) => { d.className = done.has(i) ? 'ok' : i === r ? 'on' : ''; });
+    line.innerHTML = '';
+    if (r >= Q.length) {
+      line.appendChild(txt('span', null, 'All five partners found!', 'পাঁচটি সঙ্গী শব্দই পাওয়া গেছে!'));
+      opts.innerHTML = '';
+      const again = el('button', 'btn ghost'); again.type = 'button'; again.appendChild(icon('replay')); again.appendChild(el('span', null, 'Again'));
+      again.onclick = () => { done.clear(); r = 0; Q.sort(() => Math.random() - .5); paint(); };
+      opts.appendChild(again);
+      return;
     }
-    return token;
-  } catch (_) {
-    return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-  }
-}
-
-function setPollWindow() {
-  const current = dhakaHour();
-  if (pollState.windowKey && pollState.windowKey !== current.key) {
-    pollSubmitStatus.textContent = "A new hourly check-in has started.";
-  }
-  pollState.windowKey = current.key;
-  pollDate.textContent = current.label;
-}
-
-function renderPoll(data) {
-  pollTotal.textContent = data.total;
-  pollUpdated.textContent = data.total ? "Updated just now" : "Waiting for the first response…";
-  pollChart.replaceChildren();
-  const largest = Math.max(1, ...Object.values(data.counts));
-
-  wheelData.forEach(category => {
-    const count = data.counts[category.name] || 0;
-    const row = document.createElement("div");
-    row.className = "poll-row";
-    row.innerHTML = `<span class="poll-row__label">${category.name}</span><div class="poll-row__track"><div class="poll-row__fill"></div></div><span class="poll-row__count">${count}</span>`;
-    const fill = row.querySelector(".poll-row__fill");
-    fill.style.setProperty("--poll-width", `${count / largest * 100}%`);
-    fill.style.setProperty("--poll-min", count ? "4px" : "0");
-    fill.style.setProperty("--poll-color", primaryFill(category.color));
-    pollChart.append(row);
-  });
-
-  popularWords.replaceChildren();
-  if (!data.specificCounts.length) {
-    const empty = document.createElement("span");
-    empty.className = "poll-empty";
-    empty.textContent = "No responses yet.";
-    popularWords.append(empty);
-  } else {
-    data.specificCounts.slice(0, 8).forEach(item => {
-      const chip = document.createElement("span");
-      chip.className = "popular-word";
-      chip.textContent = item.emotion;
-      const count = document.createElement("b");
-      count.textContent = `×${item.count}`;
-      chip.append(count);
-      popularWords.append(chip);
+    const { s, q } = Q[r];
+    const ans = partText(q);
+    const gap = el('span', 'gap'); const h = el('span', 'hint1', ans[0] + ans.slice(1).replace(/[^\s]/g, '·')); gap.appendChild(h);
+    const hw = el('span', 'hw', q.form || lower(w));
+    const other = q.side === 'l' ? q.after : q.before;
+    if (q.side === 'l') { line.appendChild(gap); line.appendChild(hw); if (other) line.appendChild(el('span', null, other)); }
+    else { if (other) line.appendChild(el('span', null, other)); line.appendChild(hw); line.appendChild(gap); }
+    opts.innerHTML = '';
+    shuffle(allParts.map(partText)).forEach(t => {
+      const o = el('button', 'opt', t); o.type = 'button';
+      o.onclick = () => {
+        if (t === ans) {
+          o.classList.add('ok'); gap.classList.add('filled'); gap.textContent = t; done.add(r);
+          TTS.say(plain(s, w));
+          [...opts.children].forEach(x => x.disabled = true);
+          setTimeout(() => { r++; paint(); }, 1300);
+        } else { o.classList.remove('no'); void o.offsetWidth; o.classList.add('no'); }
+      };
+      opts.appendChild(o);
     });
-  }
-
-  pollReasons.replaceChildren();
-  if (!data.reasonsVisible) {
-    const message = document.createElement("p");
-    message.className = "poll-empty";
-    message.textContent = "The first written reason will appear here.";
-    pollReasons.append(message);
-  } else if (!data.reasons.length) {
-    const message = document.createElement("p");
-    message.className = "poll-empty";
-    message.textContent = "No one has added a reason yet.";
-    pollReasons.append(message);
-  } else {
-    data.reasons.forEach(item => {
-      const card = document.createElement("article");
-      card.className = "reason-card";
-      card.style.setProperty("--reason-color", emotionColor(item.primaryEmotion));
-      const label = document.createElement("span");
-      label.textContent = item.emotion;
-      const reason = document.createElement("p");
-      reason.textContent = item.reason;
-      card.append(label, reason);
-      pollReasons.append(card);
-    });
-  }
-}
-
-async function loadPoll() {
-  if (pollState.loading || document.hidden) return;
-  setPollWindow();
-  pollState.loading = true;
-  try {
-    const response = await fetch(`${pollApiOrigin}/api/poll?window=${encodeURIComponent(pollState.windowKey)}`, { cache: "no-store" });
-    if (!response.ok) throw new Error("Poll unavailable");
-    renderPoll(await response.json());
-  } catch (_) {
-    pollUpdated.textContent = "Live poll is reconnecting…";
-  } finally {
-    pollState.loading = false;
-  }
-}
-
-submitPoll.addEventListener("click", async () => {
-  if (state.primary === null || !state.selected) return;
-  setPollWindow();
-  const reason = document.querySelector("#reason").value.trim();
-  const primaryEmotion = wheelData[state.primary].name;
-  submitPoll.disabled = true;
-  pollSubmitStatus.textContent = "Sharing without your name…";
-  try {
-    const response = await fetch(`${pollApiOrigin}/api/poll`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        window: pollState.windowKey,
-        responseToken: getResponseToken(pollState.windowKey),
-        primaryEmotion,
-        emotion: state.selected,
-        reason
-      })
-    });
-    let result;
-    try { result = await response.json(); } catch (_) { result = {}; }
-    if (!response.ok) throw new Error(result.error || "Could not share this response.");
-    pollSubmitStatus.textContent = "Shared anonymously. You can update it again during this hour.";
-    submitPoll.textContent = "Update my anonymous response";
-    await loadPoll();
-    document.querySelector("#daily-poll").scrollIntoView({ behavior: "smooth", block: "start" });
-  } catch (error) {
-    pollSubmitStatus.textContent = error instanceof Error ? error.message : "Could not connect to the live poll.";
-  } finally {
-    submitPoll.disabled = false;
-  }
-});
-
-setInterval(loadPoll, 5000);
-document.addEventListener("visibilitychange", () => { if (!document.hidden) loadPoll(); });
-
-playButton.addEventListener("click", () => {
-  if (state.speaking) return stopSpeech();
-  speakLesson();
-});
-document.querySelector("#stop-audio").addEventListener("click", stopSpeech);
-globalAudioToggle.addEventListener("click", () => {
-  state.autoPlay = !state.autoPlay;
-  try { localStorage.setItem("english-club-autoplay", String(state.autoPlay)); } catch (_) {}
-  if (!state.autoPlay && state.speaking) stopSpeech();
-  updateGlobalAudioButton();
-});
-
-function updateEmojiModeButton() {
-  emojiModeButton.setAttribute("aria-pressed", String(state.emojiOnly));
-  emojiModeButton.setAttribute("aria-label", state.emojiOnly ? "Show words and emojis on the emotions wheel" : "Show only emojis on the emotions wheel");
-}
-
-emojiModeButton.addEventListener("click", () => {
-  state.emojiOnly = !state.emojiOnly;
-  try { localStorage.setItem("english-club-emoji-only", String(state.emojiOnly)); } catch (_) {}
-  updateEmojiModeButton();
-  renderWheel();
-});
-const cefrButtons = [...document.querySelectorAll("#cefr-selector button")];
-
-function updateCefrButtons() {
-  cefrButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.level === state.cefr)));
-}
-
-cefrButtons.forEach(button => button.addEventListener("click", () => {
-  const level = button.dataset.level;
-  if (level === state.cefr) return;
-  stopSpeech();
-  state.cefr = level;
-  try { localStorage.setItem("english-club-cefr", level); } catch (_) {}
-  updateCefrButtons();
-  if (state.selected) {
-    const reason = document.querySelector("#reason").value;
-    updateLesson(state.selected, state.trail, state.color);
-    document.querySelector("#reason").value = reason;
-    if (state.autoPlay) speakLesson();
-  }
-}));
-
-document.querySelector("#start-over").addEventListener("click", () => {
-  stopSpeech();
-  state.primary = null;
-  state.secondary = null;
-  state.selected = null;
-  transcriptCard.hidden = true;
-  const definitionCard = document.querySelector("#definition-card");
-  if (definitionCard) definitionCard.hidden = true;
-  const reflectionCard = document.querySelector("#reflection-card");
-  if (reflectionCard) reflectionCard.hidden = true;
-  document.querySelector("#prompt-word").textContent = "…";
-  const reasonInput = document.querySelector("#reason");
-  reasonInput.value = "";
-  reasonInput.placeholder = "Choose a feeling from the wheel first.";
-  reasonInput.disabled = true;
-  submitPoll.textContent = "Choose a feeling to share";
-  submitPoll.disabled = true;
-  pollSubmitStatus.textContent = "";
-  clearReflectionCycles();
-  liveTranscript.replaceChildren();
-  transcriptRows = [];
-  setWheelRotation(0);
-  setStep(1, "Choose one from the center");
-  renderWheel();
-});
-
-window.addEventListener("beforeunload", stopSpeech);
-if ("speechSynthesis" in window) window.speechSynthesis.onvoiceschanged = chooseVoice;
-updateCefrButtons();
-updateGlobalAudioButton();
-updateEmojiModeButton();
-renderWheel();
-updateClueLanguage();
-updateClueResult();
-setPollWindow();
-loadPoll();
-
-
-function populateVoiceSelect() {
-  const voiceSelect = document.querySelector("#voice-select");
-  if (!voiceSelect || !("speechSynthesis" in window)) return;
-  const voices = speechSynthesis.getVoices().filter(v => v.lang.startsWith("en"));
-  voiceSelect.replaceChildren();
-  voices.forEach(v => {
-    const opt = document.createElement("option");
-    opt.value = v.voiceURI;
-    opt.textContent = `${v.name} (${v.lang})`;
-    voiceSelect.appendChild(opt);
-  });
-  if (state.voiceURI) voiceSelect.value = state.voiceURI;
-}
-
-document.querySelector("#voice-select")?.addEventListener("change", e => {
-  state.voiceURI = e.target.value;
-});
-
-document.querySelector("#rate-select")?.addEventListener("change", e => {
-  state.speechRate = parseFloat(e.target.value) || 0.9;
-});
-
-if ("speechSynthesis" in window) {
-  window.speechSynthesis.onvoiceschanged = () => {
-    chooseVoice();
-    populateVoiceSelect();
   };
-  populateVoiceSelect();
+  paint();
+  p.appendChild(card);
+  p.cleanup = () => TTS.stop();
+  return p;
 }
 
-// ── Self-Reflection Card ──────────────────────────────────────────────────
+/* ============================================================ PATTERNS */
+const SLOTS = /^(noun|verb|clause|-ing|person|someone|place|time|group|role|area|people|yourself|noun\/-ing|person\/noun|A|B)$/;
+function patternBlocks(g, w){
+  const key = (g[1].match(/\[([^\]]+)\]/) || [])[1] || '';
+  const re = stemRe(w);
+  const box = el('div', 'pattern');
+  g[0].split(' + ').forEach(tok => {
+    tok.split(' ').forEach(word => {
+      let cls = 'plain', small = '';
+      if (SLOTS.test(word)) { cls = 'slot'; }
+      else if (re.test(word)) { cls = 'head'; small = 'word'; }
+      else if (key && word.toLowerCase() === key.toLowerCase()) { cls = 'key'; small = 'grammar'; }
+      const b = el('span', 'pb ' + cls, word);
+      if (small) b.appendChild(el('small', null, small));
+      if (cls === 'plain') { b.style.background = 'var(--panel)'; b.style.color = 'var(--tx)'; }
+      box.appendChild(b);
+    });
+  });
+  return box;
+}
+function scrPatterns(){
+  const w = curWord(), p = el('div', 'panel'), C = chunk(w);
+  p.appendChild(task('puzzle', 'Words have patterns', 'শব্দের গঠন থাকে', 'See the small grammar word the feeling hangs on.', 'অনুভূতির শব্দটি কোন ছোট ব্যাকরণ-শব্দের সঙ্গে ঝুলে থাকে, দেখুন।'));
+  const card = el('div', 'card'); card.style.textAlign = 'center';
+  const nav = el('div', 'pcount');
+  const stage = el('div'); stage.style.minHeight = 'calc(170px*var(--ui))';
+  let k = 0;
+  const show = i => {
+    k = i;
+    [...nav.children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === i)));
+    stage.innerHTML = '';
+    const g = C.g[i];
+    stage.appendChild(patternBlocks(g, w));
+    const ex = el('p', 'example'); ex.innerHTML = marked(g[1], w, 'lit'); stage.appendChild(ex);
+    TTS.say(plain(g[1], w));
+  };
+  C.g.forEach((g, i) => { const b = el('button', null, String(i + 1)); b.type = 'button'; b.onclick = () => show(i); nav.appendChild(b); });
+  card.appendChild(stage); card.appendChild(nav);
+  const nextP = el('button', 'mini gold'); nextP.type = 'button'; nextP.style.marginTop = '8px';
+  nextP.appendChild(el('span', null, 'Next pattern')); nextP.appendChild(icon('arrow'));
+  nextP.onclick = () => show((k + 1) % C.g.length);
+  card.appendChild(nextP);
+  p.appendChild(card);
+  p.enter = () => show(0);
+  p.cleanup = () => TTS.stop();
+  return p;
+}
+function scrPatternGap(){
+  const w = curWord(), p = el('div', 'panel'), C = chunk(w);
+  p.appendChild(task('puzzle', 'Fill the grammar gap', 'ব্যাকরণের ফাঁকটি পূরণ করুন', 'Choose the small word that fits.', 'যে ছোট শব্দটি মেলে সেটি বেছে নিন।'));
+  const Q = shuffle(C.g);
+  const card = el('div', 'card round');
+  const dots = el('div', 'roundnav'); Q.forEach(() => dots.appendChild(el('i')));
+  const patt = el('div'), line = el('p', 'example'), opts = el('div', 'opts');
+  line.style.fontSize = 'calc(1.35rem*var(--ui))';
+  card.appendChild(dots); card.appendChild(patt); card.appendChild(line); card.appendChild(opts);
+  let r = 0; const ok = new Set();
+  const paint = () => {
+    [...dots.children].forEach((d, i) => { d.className = ok.has(i) ? 'ok' : i === r ? 'on' : ''; });
+    patt.innerHTML = ''; opts.innerHTML = '';
+    if (r >= Q.length) {
+      line.replaceChildren(txt('span', null, 'Five patterns — well done!', 'পাঁচটি গঠনই হয়ে গেছে — দারুণ!'));
+      const again = el('button', 'btn ghost'); again.type = 'button'; again.appendChild(icon('replay')); again.appendChild(el('span', null, 'Again'));
+      again.onclick = () => { ok.clear(); r = 0; paint(); };
+      opts.appendChild(again); return;
+    }
+    const g = Q[r], key = g[1].match(/\[([^\]]+)\]/)[1];
+    const pat = el('div', 'small', g[0]); pat.style.cssText = 'font-weight:800;letter-spacing:.04em;color:var(--kicker)'; patt.appendChild(pat);
+    line.innerHTML = marked(g[1], w, 'gap');
+    const gap = line.querySelector('.gap');
+    shuffle([key].concat(g[2].split('|'))).forEach(t => {
+      const o = el('button', 'opt', t); o.type = 'button';
+      o.onclick = () => {
+        if (t === key) {
+          o.classList.add('ok'); gap.classList.add('filled'); gap.style.background = 'var(--gold-soft)'; gap.style.borderColor = 'var(--gold)'; gap.style.color = '#6B5116'; gap.textContent = key;
+          ok.add(r); [...opts.children].forEach(x => x.disabled = true);
+          TTS.say(plain(g[1], w));
+          setTimeout(() => { r++; paint(); }, 1500);
+        } else { o.classList.remove('no'); void o.offsetWidth; o.classList.add('no'); }
+      };
+      opts.appendChild(o);
+    });
+  };
+  paint();
+  p.appendChild(card);
+  p.cleanup = () => TTS.stop();
+  return p;
+}
 
-const reflectionHints = {
-  // Primary emotions
-  Fear: {
-    because: ["something I care about feels threatened", "I can't see how this ends", "I'm in unfamiliar territory and have no map"],
-    stake: ["whether I'm actually safe", "something I can't afford to lose", "my ability to trust my own judgment here"],
-    need: ["more information before I can move", "someone to stand beside me", "to name exactly what I'm afraid of"]
-  },
-  Anger: {
-    because: ["something unjust happened and no one seems to care", "my boundary was crossed and I wasn't heard", "I was let down by someone who knew better"],
-    stake: ["my sense of what's fair in this relationship", "whether I can trust this person going forward", "my own integrity if I stay silent"],
-    need: ["to say what happened out loud", "to be heard before I can move on", "to figure out what I actually want to change"]
-  },
-  Surprise: {
-    because: ["something happened that I had no framework for", "reality just shifted and I'm still catching up", "I was expecting one thing and got something completely different"],
-    stake: ["my sense of how predictable the world is", "the plan I had that now needs to change", "my ability to adapt when things don't go as expected"],
-    need: ["a moment to absorb it before I react", "to figure out if this is good or bad news", "to update my picture of what's actually happening"]
-  },
-  Happy: {
-    because: ["things aligned in a way they don't always", "the people I care about showed up for me", "I was doing exactly what I'm supposed to be doing"],
-    stake: ["my ability to notice and keep this feeling instead of rushing past it", "the relationships that made it possible", "my sense of what a good day actually looks like"],
-    need: ["to slow down enough to feel it fully", "to say thank you to someone who made it happen", "to carry some of this into what comes next"]
-  },
-  Disgust: {
-    because: ["something violated my sense of what's acceptable", "I was exposed to something I can't un-see", "my values were pushed up against something that doesn't share them"],
-    stake: ["my sense of what I'm willing to participate in", "a relationship or environment that may not be good for me", "where I choose to spend my energy going forward"],
-    need: ["some distance before I decide anything", "to name exactly what was violated", "a space that reflects my values"]
-  },
-  Sad: {
-    because: ["something I cared about is gone or changed beyond recognition", "I can feel the weight of time and loss together", "everything just feels heavier than it should"],
-    stake: ["my ability to grieve honestly without collapsing", "the relationships that need me present even when I'm not okay", "my own health if I push through without feeling this"],
-    need: ["to let myself be sad for a while without fixing it", "one person to be with who won't try to cheer me up", "permission to feel what this actually is"]
-  },
-
-  // Fear branch
-  Insecure: {
-    because: ["I keep comparing where I am to where I thought I'd be", "I can't tell if I actually belong here", "I can't tell if people are being genuine with me"],
-    stake: ["whether I actually measure up", "my sense of who I am in this group", "whether I'm welcome here at all"],
-    need: ["one honest conversation", "to stop measuring myself against the wrong ruler", "a reminder of something I've done well"]
-  },
-  Inadequate: {
-    because: ["everyone else seems to already know what I don't", "I keep trying and it keeps not being enough", "I made a mistake I should have avoided"],
-    stake: ["my belief that I'm capable of this", "whether I stay or give up", "how I see myself going forward"],
-    need: ["to hear that learning takes time", "one small win to build on", "permission to not know everything yet"]
-  },
-  Inferior: {
-    because: ["they have something I feel like I'll never have", "I was treated like my opinion didn't count", "I looked around the room and felt out of place"],
-    stake: ["my sense of dignity in this space", "whether I keep showing up", "whether I trust my own voice"],
-    need: ["to be seen as an equal", "space to prove something to myself", "to stop explaining myself to people who aren't listening"]
-  },
-  Rejected: {
-    because: ["I reached out and got nothing back", "I was left out when I expected to be included", "I said something real and it landed badly"],
-    stake: ["my willingness to try again", "whether I belong in this group", "trust that openness is worth the risk"],
-    need: ["to know it wasn't about me", "a reason to believe this isn't the pattern", "time before I try again"]
-  },
-  Alienated: {
-    because: ["I can't find the conversation I actually want to be in", "I look around and no one seems to see what I see", "something changed and I don't know how to close the gap"],
-    stake: ["whether I stay connected or start pulling away", "my sense of shared purpose with these people", "whether I'm able to belong somewhere"],
-    need: ["one person who speaks my language", "to find what I still have in common here", "a bridge, not a wall"]
-  },
-  Disrespected: {
-    because: ["what I said was dismissed without a real response", "they spoke to me like I didn't know my own experience", "my time and effort were treated as unimportant"],
-    stake: ["whether I keep putting in the same effort here", "my self-respect in this relationship", "whether I can trust this space to be fair"],
-    need: ["an acknowledgment that it happened", "to decide what I'll accept going forward", "to say clearly what I expect"]
-  },
-  Anxious: {
-    because: ["there's too much uncertain and not enough I can control", "I keep running through the worst versions of how this goes", "I haven't been able to stop thinking about it since yesterday"],
-    stake: ["my ability to keep functioning under pressure", "whether I trust myself to handle what's coming", "something I've been building that could fall apart"],
-    need: ["one thing I can actually do right now", "to put the spiral on pause for an hour", "someone to think this through with me"]
-  },
-  Overwhelmed: {
-    because: ["I keep adding to the list and nothing gets taken off", "every direction I look, something needs my attention", "I said yes too many times and now I can't keep up"],
-    stake: ["my ability to do any of it well", "my health if I don't slow down soon", "the things that matter getting buried under the urgent ones"],
-    need: ["permission to drop one thing", "someone to help me sort what's actually essential", "a clear end to today's list"]
-  },
-  Worried: {
-    because: ["I haven't heard anything and my mind is filling in the gaps", "something I care about is out of my hands", "the last time this happened it didn't go well"],
-    stake: ["someone I love or something I've worked for", "my trust that things tend to work out", "my ability to be present while I wait"],
-    need: ["actual information instead of guessing", "something to do with my hands while I wait", "to hear that worrying about it makes sense"]
-  },
-  Scared: {
-    because: ["I don't know what happens if I get this wrong", "the thing I'm facing feels bigger than me", "I keep imagining the moment things go badly"],
-    stake: ["my sense of safety or control", "something I'm not ready to lose", "whether I go forward or find a way around"],
-    need: ["to break it into smaller pieces", "to know someone's done this and come out okay", "to stop imagining the ending before it happens"]
-  },
-  Terrified: {
-    because: ["I've never faced something like this before", "the risk feels real and very close", "I've lost the ability to tell myself it'll be fine"],
-    stake: ["everything I've worked to keep stable", "my confidence that I can survive hard things", "someone I need to protect"],
-    need: ["to get through the next ten minutes, not the whole thing", "to not be alone in this", "one steady thing to hold onto"]
-  },
-  Frightened: {
-    because: ["something I didn't expect made the danger feel real", "I can feel my body reacting before my mind catches up", "the thing I've been trying not to think about just got closer"],
-    stake: ["my sense of control in a situation that matters", "how I'll act when it counts", "whether I can think clearly under this much pressure"],
-    need: ["to slow my breathing first", "a plan that gives me something to do", "to talk it through with someone calm"]
-  },
-
-  // Anger branch
-  Mad: {
-    because: ["it keeps happening and nothing changes", "I feel like my feelings were dismissed", "I was blamed for something that wasn't my fault"],
-    stake: ["whether I stay or walk away", "the respect I should be getting but am not", "a relationship that matters but is breaking"],
-    need: ["some space before I say what I'm thinking", "someone to actually listen without defending", "to see something change, even something small"]
-  },
-  Enraged: {
-    because: ["this has been building for a long time and today broke something open", "the injustice is too obvious and too ignored", "I feel like I'm not being treated as a person"],
-    stake: ["my ability to act clearly instead of just react", "the relationship I'm about to say something permanent to", "something I've been holding in for too long"],
-    need: ["an outlet before I say something I can't take back", "someone who won't tell me to calm down", "to be taken seriously for once"]
-  },
-  Furious: {
-    because: ["what happened was a betrayal, not just a mistake", "I've been patient for too long and it's run out", "the thing that mattered most to me was treated like nothing"],
-    stake: ["my trust in this person or institution", "what I'm willing to put up with going forward", "my own self-respect in deciding what I do next"],
-    need: ["to decide what I'm going to do before I do anything", "to name what specifically was violated", "to feel like I have some power here"]
-  },
-  Hurt: {
-    because: ["someone I trusted said or did something that cut deep", "I expected care and got carelessness instead", "what happened made me feel like I don't matter to them"],
-    stake: ["the closeness I thought existed in this relationship", "my willingness to be open with this person again", "whether I say what actually happened or just bury it"],
-    need: ["to know the hurt was seen and acknowledged", "to understand what the other person was thinking", "time to figure out if this is fixable"]
-  },
-  Devastated: {
-    because: ["something I built or hoped for fell apart completely", "the loss is real and I can't pretend it isn't", "I can't see a version of things that gets better from here"],
-    stake: ["my belief that things I care about can last", "my energy to start over", "a future I was counting on"],
-    need: ["to sit with this for a moment without having to fix it", "someone who doesn't try to silver-line it", "one small concrete reason to keep going"]
-  },
-  Embarrassed: {
-    because: ["I did or said something in front of people and I can't stop replaying it", "I thought no one was watching and they were", "I showed a part of myself I wasn't ready to share"],
-    stake: ["how I'm perceived by people I respect", "my confidence in that setting going forward", "my ability to show my face and try again"],
-    need: ["to know people have already forgotten it", "to laugh at it before the shame hardens", "permission to be imperfect in public"]
-  },
-  Threatened: {
-    because: ["someone is getting what I was counting on having", "the thing I've built feels like it could be taken", "I feel like I'm being pushed out of a space that was mine"],
-    stake: ["my position, my sense of safety, or my belonging", "whether I act from strength or from fear", "a relationship that's getting complicated by something neither of us is naming"],
-    need: ["to understand if the threat is real or imagined", "to stop making decisions in reaction", "a direct conversation instead of a silent competition"]
-  },
-  Jealous: {
-    because: ["they have what I want, and I can't pretend I don't want it", "I care about this person more than they seem to care about me", "I'm watching someone get something I've been working toward"],
-    stake: ["the relationship — if I let this eat at me, I'll damage it", "my own self-image when I feel like this", "whether I turn this into drive or let it become resentment"],
-    need: ["to admit it instead of dressing it up as something else", "to focus on my own path for a while", "a real conversation if someone's closeness is what I'm worried about"]
-  },
-  Distant: {
-    because: ["I've been burned before and I'm not ready to risk it again", "something happened that I haven't processed and I'm closing off instead", "I can feel myself pulling back but I don't know how to stop"],
-    stake: ["a relationship that needs more than I'm giving right now", "my own need for connection underneath the wall I'm building", "whether I address what caused this or let it compound"],
-    need: ["space to figure out what made me shut down", "a low-pressure way back into contact", "to stop pretending everything's fine"]
-  },
-  Suspicious: {
-    because: ["something doesn't add up and I can't let it go", "I've been misled before in a similar situation", "their words and their actions don't match and I keep noticing it"],
-    stake: ["whether I can trust my own read of people", "a relationship that might be fine — or might not be", "my willingness to be open if the suspicion hardens into certainty"],
-    need: ["more information before I decide what to believe", "to ask the direct question I've been avoiding", "to know if my gut is pattern-matching or just afraid"]
-  },
-  Withdrawn: {
-    because: ["I don't have the energy to be around people right now", "I said something that didn't land and I'd rather disappear than try again", "the world outside feels like more than I can take today"],
-    stake: ["my relationships if I stay closed too long", "my own mental health if this becomes the default", "the version of me that used to be able to show up"],
-    need: ["permission to rest without guilt", "one person to check in without expecting much back", "a reason to come back out when I'm ready"]
-  },
-
-  // Surprise branch
-  Confused: {
-    because: ["I keep getting different answers and I don't know which one to trust", "I thought I understood and then realized I didn't", "the rules keep changing and I can't find the stable ground"],
-    stake: ["my ability to make a good decision with the information I have", "my trust in the people giving me conflicting signals", "my time — I can't afford to keep going in the wrong direction"],
-    need: ["one clear answer from one reliable source", "permission to say I don't understand instead of pretending I do", "to slow down enough to sort out what I actually know"]
-  },
-  Disillusioned: {
-    because: ["I believed in something that turned out to be different than I thought", "the gap between what was promised and what happened is too wide to ignore", "I trusted a person or idea and they didn't hold up"],
-    stake: ["my optimism — it's getting harder to extend it again", "my ability to invest in the next thing wholeheartedly", "a belief that shaped how I saw myself"],
-    need: ["to grieve the version I thought was true", "time before I'm expected to commit to something new", "one thing that still deserves my faith"]
-  },
-  Perplexed: {
-    because: ["I keep trying to find the logic and there isn't any", "someone's behavior makes no sense to me no matter how I look at it", "I understand all the pieces but not how they fit together"],
-    stake: ["my ability to respond well in a confusing situation", "a relationship where I've lost the thread of what's happening", "my confidence in my own ability to figure things out"],
-    need: ["more context, not more opinions", "to talk it through out loud with someone patient", "to accept that some things won't resolve neatly"]
-  },
-  Startled: {
-    because: ["something hit me without warning and I'm still recovering from the jolt", "I wasn't ready and it showed", "my body reacted before I had a chance to think"],
-    stake: ["my composure in a situation where I need to stay clear-headed", "my sense of safety in this environment", "the impression I gave in a moment I'd rather have back"],
-    need: ["a minute to settle before I do anything", "to laugh at it if it's laughable", "to check that I'm actually okay"]
-  },
-  Shocked: {
-    because: ["what just happened doesn't fit with what I thought I knew", "someone I trusted did something I would have said was impossible for them", "the news arrived too fast for me to have any defense against it"],
-    stake: ["my picture of who this person is or how this situation works", "the trust and certainty I was building on", "my ability to absorb bad surprises without shutting down"],
-    need: ["to sit still for a moment before I do anything", "to say it out loud to make it real", "to understand what comes next, even if I can't change what happened"]
-  },
-  Dismayed: {
-    because: ["the thing I was hoping for didn't come through", "I watched something avoidable happen anyway", "I expected better and got something I wasn't prepared for"],
-    stake: ["my belief that effort and care translate to good outcomes", "my energy for trying again", "a relationship where the disappointment is between two people"],
-    need: ["to be honest about how let-down I actually feel", "to understand if this is fixable or something I need to accept", "time to decide what I want to do with what's left"]
-  },
-  Amazed: {
-    because: ["what just happened is more than I expected was possible", "someone showed me something I didn't know could exist", "the world just got larger in my imagination"],
-    stake: ["how I see what's possible from here", "the energy and direction this feeling could give me", "my sense of connection to something larger than my daily routine"],
-    need: ["to hold this feeling a little longer before it fades", "to tell someone so it becomes more real", "to let it change something small about how I move today"]
-  },
-  Astonished: {
-    because: ["this was so far outside anything I predicted, I don't have a response yet", "the scale of what happened is still landing", "I've never seen anything like it"],
-    stake: ["my sense of how the world works", "a moment that could reshape something important", "the story I tell myself about what's possible"],
-    need: ["time to translate this into something I can actually use", "to tell someone who will understand why it matters", "to let the surprise become something more lasting"]
-  },
-  Awe: {
-    because: ["I came into contact with something much bigger than me and I wasn't prepared", "beauty or scale or complexity stopped me completely", "for a moment I forgot about myself"],
-    stake: ["my sense of proportion — this puts things in a different perspective", "a connection to something that feels meaningful beyond my daily life", "my gratitude, which I forget to exercise"],
-    need: ["to stay here a little longer", "to remember this feeling when things feel small and grinding", "to share it with someone"]
-  },
-  Excited: {
-    because: ["something I've been waiting for is finally about to happen", "a door just opened that I didn't expect", "I can see clearly how good this could be"],
-    stake: ["my ability to channel this into something real rather than just feeling it", "the opportunity — it's real and it won't wait forever", "my relationships with the people this excitement involves"],
-    need: ["to do something concrete while the energy is here", "to share it with someone who'll match my enthusiasm", "to make sure my excitement doesn't run ahead of my preparation"]
-  },
-  Eager: {
-    because: ["I can already picture how well this goes", "I've been waiting for an opening and this is it", "every part of me is pointing in the same direction"],
-    stake: ["the window — it won't stay open forever", "my follow-through, which has to match my enthusiasm", "the impression I give when I arrive with this much energy"],
-    need: ["to channel this before it turns into restlessness", "a clear first step to move on right now", "someone to be excited with"]
-  },
-  Energetic: {
-    because: ["something clicked and I feel like I could take on twice as much", "I slept well, the news was good, and everything feels possible", "I can feel momentum building and it's rare — I want to use it"],
-    stake: ["the work I could actually get done while this lasts", "a chance to move something forward that's been stuck", "my own sense of capability when I feel this way"],
-    need: ["to point this at something that actually matters", "to not waste it on busy work", "to remember this feeling when the low days come"]
-  },
-
-  // Happy branch
-  Joyful: {
-    because: ["something happened that reminded me why everything is worth it", "I felt fully present for the first time in a while", "there was nothing I needed to fix or worry about, just this"],
-    stake: ["my ability to access this when things are harder", "a moment with someone I love that I want to remember", "my gratitude, which this moment is demanding"],
-    need: ["to be fully here and not think about what's next", "to mark this moment in some way", "to tell someone how good this feels"]
-  },
-  Liberated: {
-    because: ["I finally let go of something that had been weighing on me for too long", "I stopped waiting for permission and just did it", "the thing I was afraid of happened and I survived it"],
-    stake: ["what I do with the freedom now that I have it", "the patterns I can finally break without the old weight", "my sense of what I'm actually capable of"],
-    need: ["to use this feeling before it fades back into habit", "to decide what I want to build in the space I just cleared", "to celebrate this — actually celebrate it"]
-  },
-  Ecstatic: {
-    because: ["everything I hoped for came together at once", "the feeling is too big to hold quietly", "something happened that I didn't think was possible for me"],
-    stake: ["turning this peak into something that lasts beyond the moment", "sharing it with people who will understand", "my ability to commit when the high settles down"],
-    need: ["to share it loudly and immediately", "to write it down so future-me can find it", "to let it change my idea of what I'm capable of"]
-  },
-  Proud: {
-    because: ["I did something hard and I did it well", "I kept going when it would have been easier to stop", "someone I care about saw me clearly and reflected something good"],
-    stake: ["my belief in my own capabilities when things get difficult again", "the story I carry about who I am", "my relationship with the person whose opinion made this land"],
-    need: ["to let myself feel this instead of moving straight to the next challenge", "to acknowledge the effort, not just the result", "to share it with one person who will understand why it matters"]
-  },
-  Confident: {
-    because: ["I've done this before and I remember how it went", "the preparation I put in is finally showing", "I can see exactly what I need to do and I trust my ability to do it"],
-    stake: ["acting from this place instead of second-guessing it away", "the decision or moment this feeling is preparing me for", "my ability to hold this when things get harder"],
-    need: ["to move while I feel this, not wait", "to stop adding qualifications to my own ability", "to remember this specific feeling for the next time I doubt myself"]
-  },
-  Important: {
-    because: ["what I did made a real difference to someone", "I was included and asked for my perspective in a way that felt genuine", "for once, the work I put in was visible to the people who matter"],
-    stake: ["my continued investment in this role or relationship", "my sense of purpose — which depends on mattering to something larger than myself", "the energy I'll bring to the next hard thing"],
-    need: ["to let this land instead of deflecting it", "to understand exactly what created it so I can seek it again", "to tell someone it happened"]
-  },
-  Optimistic: {
-    because: ["the thing I was worried about looks more manageable from here", "I can see a path even if it's not perfectly clear", "something shifted and the future feels real again"],
-    stake: ["the plans and decisions this feeling could help me make well", "my relationship with hope, which I sometimes abandon too early", "my ability to invite others into this view"],
-    need: ["to act on this before doubt creeps back in", "to make one concrete decision that reflects this feeling", "to share the view with someone who's been struggling to see it"]
-  },
-  Open: {
-    because: ["the conversation went somewhere I didn't expect and I liked it", "I let my guard down and nothing bad happened", "I'm curious about something new and it doesn't feel threatening"],
-    stake: ["a relationship that gets deeper if I stay in this mode", "an idea that only becomes useful if I follow it honestly", "my own growth, which depends on staying teachable"],
-    need: ["to stay in this mode long enough to see what it produces", "to have the conversation I've been avoiding", "to follow the curiosity without needing to know where it leads"]
-  },
-  Inspired: {
-    because: ["I encountered something that made me see what was possible", "someone showed me who they are and I want to be like that", "something unlocked in me that had been stuck"],
-    stake: ["doing something with this before it evaporates", "a new direction I could take my work or my attention", "the belief that I have something worth creating"],
-    need: ["to act on this within the next hour, not the next month", "to protect this feeling from the first person who might dismiss it", "to write something down before the feeling outpaces the idea"]
-  },
-  Peaceful: {
-    because: ["for the moment, there's nothing that needs my urgent attention", "something resolved that had been pulling at me", "I'm exactly where I want to be, with exactly who I want to be with"],
-    stake: ["my ability to rest without guilt", "the relationships that created this — they need tending", "my sense of what I'm working toward when things aren't peaceful"],
-    need: ["to be fully here instead of waiting for the peace to end", "to express gratitude for this, even quietly", "to remember what created this and try to build more of it"]
-  },
-  Hopeful: {
-    because: ["something gave me reason to believe this could still go well", "I can see evidence that things are moving in the right direction", "I let myself imagine the good version and it felt possible, not naive"],
-    stake: ["my willingness to keep investing in what I'm hoping for", "the energy I need to push through the uncertain middle part", "the people I hope are hoping too"],
-    need: ["to hold this without squeezing it too tight", "to take one step that reflects the hope instead of waiting for certainty", "to share it with someone who could use it"]
-  },
-  Loving: {
-    because: ["I feel close to someone in a way that doesn't need words to explain", "I'm grateful for this person in a way that's hard to hold quietly", "I looked at someone and everything complicated fell away"],
-    stake: ["saying something before the moment passes", "the relationship itself, which grows or shrinks based on whether I tend it", "my ability to receive love as well as give it"],
-    need: ["to say something out loud, not just feel it", "to do one small thing that shows it", "to be fully present with this person right now"]
-  },
-
-  // Disgust branch
-  Avoidance: {
-    because: ["getting closer to this feels like a risk I'm not ready to take", "I've been in this situation before and the ending wasn't good", "every time I try to approach it, something in me pulls back"],
-    stake: ["whether I'm protecting myself wisely or just hiding", "an opportunity or relationship that requires me to get closer", "my own pattern — if I avoid too many things, the world gets smaller"],
-    need: ["to understand what specifically I'm afraid of about this", "one small step toward it, not the whole thing", "to decide consciously instead of just drifting away"]
-  },
-  Hesitant: {
-    because: ["I can see two ways forward and they both have real costs", "I'm waiting for more certainty that probably won't come", "my gut and my logic are saying different things"],
-    stake: ["the decision that's waiting for me while I hesitate", "my relationship with the person or process waiting on me", "my own confidence if I let hesitation become a habit"],
-    need: ["a deadline — mine or someone else's", "to separate the real reasons from the comfortable excuses", "to commit to something even if I'm not sure, and see what happens"]
-  },
-  Aversion: {
-    because: ["everything about this situation activates my defenses", "it goes against something I hold as a core value", "I've been in contact with it and I can feel the wrongness of it"],
-    stake: ["how long I remain in proximity to this", "my integrity if I stay without saying something", "my health — some things are worth strongly avoiding"],
-    need: ["to trust this reaction instead of talking myself out of it", "clear distance between me and the thing", "to say what I observe without needing to convince everyone"]
-  },
-  Disapproval: {
-    because: ["what I watched happen crossed a clear line for me", "I expected better from the person or system involved", "the gap between what was said and what was done is too wide"],
-    stake: ["whether I say something or stay silent and what that says about me", "a relationship where honesty is the only path forward", "my own standards — I can't claim them if I don't hold others to them"],
-    need: ["to be clear and direct without making it a lecture", "to focus on the behavior, not the whole person", "to decide what I want from this: change or just acknowledgment"]
-  },
-  Judgmental: {
-    because: ["I'm looking at someone and I can't stop cataloguing what's wrong", "I feel like my standards are being violated and the feeling won't quiet down", "something about them is triggering something in me I haven't examined"],
-    stake: ["the relationship — judgment without compassion poisons things quietly", "something about me that this reaction might be pointing toward", "my ability to stay curious instead of closing down"],
-    need: ["to ask what's underneath the judgment", "to get curious about their situation before I decide what I see", "to notice if I'm judging something in them that I'm afraid of in myself"]
-  },
-  Loathing: {
-    because: ["this goes so far against my values that proximity feels like a kind of harm", "the feeling has been building for a long time and it's settled into something solid", "I've tried to be fair about it and the conclusion keeps being the same"],
-    stake: ["my well-being if I stay in contact with this", "a decision about whether to remove myself or say something permanent", "my integrity in a situation where what I do reflects who I am"],
-    need: ["significant distance before I make any decisions", "to check whether this is about one thing or has become total", "to decide if I want to change anything or just protect myself"]
-  },
-  Awful: {
-    because: ["what happened sits wrong in every way I can examine it", "I feel it in my body as much as my head", "there's no reframing that makes this okay"],
-    stake: ["my trust in this situation or person going forward", "my sense of what I deserve in the spaces I occupy", "the decision I'll need to make about staying or leaving"],
-    need: ["to be honest that it was bad, not soften it for anyone", "time before I'm expected to be okay", "to name it clearly, even just to myself"]
-  },
-  Revulsion: {
-    because: ["I was exposed to something that hit something deep and instinctive", "the wrongness of it won't reduce no matter how I think about it", "it violated something about dignity I didn't know I held so strongly"],
-    stake: ["my sense of safety in this environment", "whether I can be present in this space again without residue", "what I decide to do with what I witnessed"],
-    need: ["to get out and get some air, space, different company", "to talk to someone whose values I trust", "to take some action, however small, in the opposite direction"]
-  },
-  Detestable: {
-    because: ["it represents everything I've worked to move away from", "looking at it clearly, there's nothing I can find that's redeemable", "it's been wrong for so long I can't separate it from the harm it's caused"],
-    stake: ["where I put my energy — do I fight this or move away from it", "my integrity in staying silent in a space that tolerates it", "my own moral clarity about what I stand for"],
-    need: ["to remove myself if I can't change it", "to decide what kind of opposition is worth it", "to not carry this alone"]
-  },
-  Disappointed: {
-    because: ["I expected more from someone I trusted", "I put real hope into this and it came back empty", "the outcome doesn't match the effort I put in"],
-    stake: ["my willingness to invest next time", "the relationship if the disappointment is between us", "my belief that things I care about can turn out well"],
-    need: ["to say I'm disappointed out loud, not just absorb it", "to understand if this was a failure of expectation or a failure of commitment", "to decide what, if anything, I want to ask for"]
-  },
-  Revolted: {
-    because: ["what I witnessed contradicts something basic about how people should be treated", "I had no way to prepare for what I saw or heard", "the feeling came fully formed — there was no gradual buildup"],
-    stake: ["my sense of safety in this context", "my trust in the people around me who didn't react", "what I'm willing to be a silent witness to"],
-    need: ["to voice it — even writing it down helps", "to be around people with the same baseline as mine", "to do something, even one small thing, that points the other way"]
-  },
-  Repugnant: {
-    because: ["something I've encountered violates my sense of what's decent", "I can't find any angle that makes it acceptable", "it confirms a fear I had and hoped wasn't true"],
-    stake: ["how I respond without making things worse", "my mental health if I dwell on it too long", "what this means for the larger situation I'm in"],
-    need: ["to give myself permission to walk away from this", "to voice it to someone who won't minimize it", "to focus on something that restores my sense of what's good"]
-  },
-
-  // Sad branch
-  Bored: {
-    because: ["nothing in reach feels like it deserves my attention", "I'm going through the motions without any of it meaning anything", "the same day is repeating and I can't find the variation"],
-    stake: ["my time — boredom that stays becomes drift", "something I used to care about that I'm slowly disconnecting from", "my need for growth, which isn't being met here"],
-    need: ["one new thing to be curious about", "to change one part of the routine", "to ask honestly whether this place or role still fits me"]
-  },
-  Indifferent: {
-    because: ["I've been disappointed here enough times that I stopped feeling it", "I used to care about this and somewhere along the way the caring stopped", "I can see reasons why this should matter to me but I can't feel them"],
-    stake: ["a relationship or role I'm quietly exiting without deciding to", "my own engagement with my life if this becomes my default mode", "whether someone notices and says something before the distance becomes permanent"],
-    need: ["to understand what caused the shutdown", "one small thing that's genuinely interesting, not just required", "to check whether I'm protecting myself or just disappearing"]
-  },
-  Apathetic: {
-    because: ["even the things I chose are starting to feel like obligations", "I've lost the thread of why any of this matters", "something drained the energy that used to make this feel worth it"],
-    stake: ["my sense of meaning, which has gone quiet", "my relationships if I stay in this fog too long", "my health — this kind of flatness can signal something that needs attention"],
-    need: ["to find out if this is tiredness, grief, or something else", "permission to want less for a while, not more", "one small thing that produces actual feeling, positive or negative"]
-  },
-  Lonely: {
-    because: ["I'm surrounded by people and still can't find the connection I'm looking for", "the people I want to be with aren't reachable right now", "I've been keeping my real thoughts to myself for too long"],
-    stake: ["my mental health if isolation becomes the pattern", "a friendship that's quietly going cold because I keep not reaching out", "my ability to trust people enough to let them in"],
-    need: ["to reach out to one person, even a short message", "to find one space where being known is possible", "to say something real to someone instead of staying at the surface"]
-  },
-  Isolated: {
-    because: ["the distance between me and other people feels physical even when they're close", "I've been withdrawing step by step and now I'm far from where I was", "the community I thought I had turned out to be less solid than I thought"],
-    stake: ["my wellbeing over the long term — isolation compounds", "a relationship that I could still repair if I moved now", "my belief that belonging is possible for me"],
-    need: ["a small, low-commitment way back into contact", "one person who already knows me well enough that I don't have to start from scratch", "to be honest that I've been absent and not pretend it was fine"]
-  },
-  Abandoned: {
-    because: ["someone I counted on left without explanation", "I reached out repeatedly and got silence", "I was there for them and when I needed them, they weren't there"],
-    stake: ["my trust in people going forward — this is the kind of wound that changes how you open up", "my sense of whether I'm worth staying for", "a grief that's real and deserves real acknowledgment"],
-    need: ["to hear that what happened was real and not in my head", "to grieve this fully before I decide what it means about people", "time before I'm expected to be okay with it"]
-  },
-  Despair: {
-    because: ["I've been trying for long enough that I don't know if I have more tries in me", "the gap between where I am and where I need to be feels uncrossable", "something happened that I can't see past right now"],
-    stake: ["my will to keep going — this needs attention, not patience", "the people who depend on me and need me to stay present", "my own life, which is worth fighting for even when it doesn't feel that way"],
-    need: ["to talk to someone — not text, actually talk", "to focus on today, just today, not the whole picture", "professional support if this feeling has been here for more than a few days"]
-  },
-  Vulnerable: {
-    because: ["I let someone see me honestly and now I'm waiting to see how they treat that", "something stripped away my usual defenses and I'm exposed", "I'm in a situation where I have less control than I need"],
-    stake: ["my trust in this person and whether openness was the right call", "my future willingness to be honest — this will either affirm or close that down", "something raw and true about me that I'm not sure I wanted visible"],
-    need: ["gentleness, especially from myself", "to know the person I opened to can be trusted with it", "to not regret having been real"]
-  },
-  Powerless: {
-    because: ["the outcome depends entirely on decisions I have no influence over", "I've tried every approach I have and none of them moved it", "something is happening to me that I cannot stop"],
-    stake: ["my sense of agency — this is a hard feeling to carry for long", "a situation that may require me to ask for help I haven't asked for yet", "my mental health if helplessness becomes the story I tell myself"],
-    need: ["to find one thing, however small, that I can actually affect", "to ask for help without framing it as failure", "to separate what's truly fixed from what still has some give"]
-  },
-  Guilty: {
-    because: ["I did something I knew wasn't right and I can't stop thinking about it", "I let someone down who was counting on me", "I took the easier path instead of the honest one"],
-    stake: ["my integrity — this keeps its grip until I address it", "the relationship with the person I harmed or failed", "my ability to forgive myself, which depends on facing this honestly"],
-    need: ["to make it right if making it right is still possible", "to apologize — directly, specifically, without hedging", "to decide what I want to do differently and mean it"]
-  },
-  Ashamed: {
-    because: ["I acted in a way that contradicts who I want to be", "people saw something about me that I'm not ready to claim", "I feel the gap between my values and my behavior and it's wider than I can explain"],
-    stake: ["my sense of who I am — shame speaks directly to identity", "whether I address this or let it shape me from the inside silently", "a relationship where trust was damaged"],
-    need: ["to distinguish between guilt (I did something bad) and shame (I am bad)", "to talk to someone I respect about what happened", "to take one step toward the person I want to be"]
-  },
-  Remorseful: {
-    because: ["I caused harm I didn't intend and the intention doesn't make the harm smaller", "I had a chance to do the right thing and chose the wrong one", "I've been carrying this and the weight isn't getting lighter on its own"],
-    stake: ["the relationship I damaged and whether it can be restored", "my integrity if I acknowledge this only privately and never to the person who deserves to hear it", "my ability to move forward — remorse without action becomes a trap"],
-    need: ["to say what happened clearly to the person affected", "to ask what repair looks like, not assume I already know", "to forgive myself after I've made it right, not before"]
+/* ============================================================ SAY */
+function scrModel(){
+  const w = curWord(), p = el('div', 'panel');
+  p.appendChild(task('speech', 'The word in sentences', 'বাক্যে শব্দটি', 'Listen to five sentences. Notice the partners and patterns you know now.', 'পাঁচটি বাক্য শুনুন। যে সঙ্গী শব্দ ও গঠন শিখেছেন, সেগুলো খেয়াল করুন।'));
+  const S5 = (EMO.say[w] || []).slice(0, 5);
+  const re = new RegExp('(' + stemRe(w).source.replace(/^\\b/, '') + ')', 'gi');
+  const k = karaoke(S5, w, { html: l => esc(l).replace(re, '<span class="hw">$1</span>') });
+  const bar = el('div', 'listen-row'); bar.style.justifyContent = 'center';
+  const b = playBtn(btn => k.play(btn)); b.style.width = b.style.height = 'calc(64px*var(--ui))';
+  bar.appendChild(b); bar.appendChild(txt('span', 'small', 'Play all', 'সব শুনুন'));
+  p.appendChild(bar);
+  const c = el('div', 'card'); c.appendChild(k.node); p.appendChild(c);
+  p.cleanup = () => k.stop();
+  return p;
+}
+function tilesOf(sentence){
+  const words = sentence.split(/\s+/);
+  const out = []; let i = 0;
+  while (i < words.length) {
+    const left = words.length - i;
+    const n = left <= 3 ? left : left === 4 ? 2 : (words[i].length + words[i + 1].length > 11 ? 2 : 3);
+    out.push(words.slice(i, i + n).join(' ')); i += n;
   }
+  return out;
+}
+function scrBuild(){
+  const w = curWord(), p = el('div', 'panel');
+  p.appendChild(task('puzzle', 'Build a sentence', 'একটি বাক্য সাজান', 'Tap the pieces in order.', 'টুকরোগুলো ক্রমানুসারে চাপ দিন।'));
+  const pool = (EMO.say[w] || []).slice().sort((a, b) => a.split(' ').length - b.split(' ').length).slice(0, 3);
+  let which = 0;
+  const card = el('div', 'card build');
+  const target = el('div', 'target'), tray = el('div', 'tray');
+  card.appendChild(target); card.appendChild(tray);
+  const tools = el('div', 'l-tools'); tools.style.justifyContent = 'center';
+  const hear = el('button', 'mini'); hear.type = 'button'; hear.appendChild(icon('play')); hear.appendChild(el('span', null, 'Hear it'));
+  const other = el('button', 'mini gold'); other.type = 'button'; other.appendChild(icon('replay')); other.appendChild(el('span', null, 'Another sentence'));
+  tools.appendChild(hear); tools.appendChild(other); card.appendChild(tools);
+  const re = stemRe(w);
+  const paint = () => {
+    const sent = pool[which % pool.length] || w + '.';
+    hear.onclick = () => TTS.say(sent);
+    const T = tilesOf(sent);
+    let at = 0;
+    target.innerHTML = ''; tray.innerHTML = ''; target.classList.remove('done');
+    shuffle(T.map((t, i) => ({ t, i }))).forEach(({ t }) => {
+      const b = el('button', 'tile' + (re.test(t) ? ' hw-t' : ''), t); b.type = 'button';
+      b.onclick = () => {
+        if (t === T[at]) {
+          at++; target.appendChild(b); b.onclick = null;
+          if (at === T.length) { target.classList.add('done'); TTS.say(sent); }
+        } else { b.classList.remove('no'); void b.offsetWidth; b.classList.add('no'); }
+      };
+      tray.appendChild(b);
+    });
+  };
+  other.onclick = () => { which++; paint(); };
+  paint();
+  p.appendChild(card);
+  p.cleanup = () => TTS.stop();
+  return p;
+}
+function scrFrames(){
+  const w = curWord(), p = el('div', 'panel');
+  p.appendChild(task('heart', 'Now say it your way', 'এবার নিজের মতো বলুন', 'Finish the three sentences. Tap an idea if you need help.', 'তিনটি বাক্য শেষ করুন। সাহায্য লাগলে একটি ধারণায় চাপ দিন।'));
+  const H = EMO.hints[w] || EMO.hintsDefault;
+  const box = el('div', 'frames');
+  [['because', 'I feel <span class="hwl">' + esc(lower(w)) + '</span> because…', 'আমার এমন লাগছে কারণ…'],
+   ['stake', 'What’s really at stake is…', 'আসলে যা ঝুঁকিতে আছে তা হলো…'],
+   ['need', 'I need…', 'আমার দরকার…']].forEach(([k, lab, lb]) => {
+    const f = el('div', 'frame');
+    const l = el('label'); l.innerHTML = lab; bn(l, lb); l.htmlFor = 'fr-' + k;
+    const i = el('input'); i.id = 'fr-' + k; i.type = 'text'; i.autocomplete = 'off'; i.value = S.frames[k] || '';
+    i.placeholder = H[k][0];
+    i.oninput = () => { S.frames[k] = i.value; save(); };
+    const ideas = el('div', 'ideas');
+    H[k].forEach(h => { const b = el('button', 'idea', h); b.type = 'button'; b.onclick = () => { i.value = h; S.frames[k] = h; save(); }; ideas.appendChild(b); });
+    f.appendChild(l); f.appendChild(i); f.appendChild(ideas);
+    box.appendChild(f);
+  });
+  p.appendChild(box);
+  const pair = el('div', 'pair');
+  pair.innerHTML = '<svg viewBox="0 0 44 30" aria-hidden="true"><circle cx="11" cy="9" r="5" fill="#8a6a22"/><path d="M2 29a9 9 0 0 1 18 0z" fill="#8a6a22"/><circle cx="33" cy="9" r="5" fill="#6f8f62"/><path d="M24 29a9 9 0 0 1 18 0z" fill="#6f8f62"/><path d="M17 5h9l-2 3" fill="none" stroke="#5a4413" stroke-width="1.6" stroke-linecap="round"/></svg>';
+  bn(pair.appendChild(el('span', null, 'Say your three sentences to your partner. Then listen to theirs.')), 'আপনার তিনটি বাক্য সঙ্গীকে বলুন। তারপর তার কথা শুনুন।');
+  p.appendChild(pair);
+  const hear = el('button', 'mini'); hear.type = 'button'; hear.appendChild(icon('play')); hear.appendChild(el('span', null, 'Hear my sentences'));
+  hear.onclick = () => {
+    const f = S.frames, parts = [];
+    parts.push('I feel ' + lower(w) + (f.because ? ' because ' + f.because : '') + '.');
+    if (f.stake) parts.push('What’s really at stake is ' + f.stake + '.');
+    if (f.need) parts.push('I need ' + f.need + '.');
+    TTS.list(parts, { gap: 400 });
+  };
+  p.appendChild(hear);
+  p.cleanup = () => TTS.stop();
+  return p;
+}
+
+/* ============================================================ IDIOMS */
+function idiomCard(I, w){
+  const c = el('div', 'icard'); c.setAttribute('role', 'button'); c.tabIndex = 0;
+  const inner = el('div', 'icard-in');
+  const f = el('div', 'iface front'), b = el('div', 'iface back');
+  f.appendChild(el('div', 'idiom', I[0]));
+  const ex = el('div', 'ex'); ex.innerHTML = marked(I[2], w); f.appendChild(ex);
+  const fm = el('span', 'flipmark'); fm.appendChild(icon('flip')); fm.appendChild(el('span', null, 'meaning')); f.appendChild(fm);
+  b.appendChild(el('div', 'meaning', I[1]));
+  b.appendChild(el('div', 'eq', '≈ I feel ' + lower(w)));
+  inner.appendChild(f); inner.appendChild(b); c.appendChild(inner);
+  const say = el('button', 'roundbtn say'); say.type = 'button'; say.setAttribute('aria-label', 'Hear it'); say.appendChild(icon('play'));
+  say.onclick = e => { e.stopPropagation(); TTS.say(plain(I[2], w)); };
+  c.appendChild(say);
+  const flip = () => c.classList.toggle('flipped');
+  c.onclick = flip; c.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } };
+  return c;
+}
+function scrIdiomCards(){
+  const w = curWord(), p = el('div', 'panel'), C = chunk(w);
+  p.appendChild(task('image', 'Say it in a picture', 'ছবির ভাষায় বলুন', 'Idioms describe the feeling with a picture. Tap a card to see its meaning.', 'বাগধারা ছবির মতো করে অনুভূতি বোঝায়। মানে দেখতে কার্ডে চাপ দিন।'));
+  const g = el('div', 'icards');
+  C.i.forEach((I, i) => { const c = idiomCard(I, w); c.style.animation = 'rise .5s var(--ease) ' + (i * .1) + 's both'; g.appendChild(c); });
+  p.appendChild(g);
+  /* five more natural lines, for listening only */
+  const more = el('details', 'card');
+  const sum = el('summary'); sum.style.cssText = 'cursor:pointer;font-weight:800;color:var(--heading)';
+  sum.textContent = 'Hear five more ways people say it'; more.appendChild(sum);
+  const T = (EMO.talk[w] || []).slice(0, 5);
+  const k = karaoke(T, w, { html: l => esc(l) });
+  const bar = el('div', 'listen-row'); bar.style.cssText = 'justify-content:center;margin:12px 0';
+  const b = playBtn(btn => k.play(btn)); b.style.width = b.style.height = 'calc(56px*var(--ui))';
+  bar.appendChild(b); more.appendChild(bar); more.appendChild(k.node);
+  p.appendChild(more);
+  p.cleanup = () => k.stop();
+  return p;
+}
+function scrIdiomGap(){
+  const w = curWord(), p = el('div', 'panel'), C = chunk(w);
+  p.appendChild(task('image', 'Which idiom fits?', 'কোন বাগধারাটি মেলে?', 'Read the sentence. Choose the idiom for the gap.', 'বাক্যটি পড়ুন। ফাঁকা জায়গার জন্য বাগধারাটি বেছে নিন।'));
+  const Q = shuffle(C.i);
+  const card = el('div', 'card round');
+  const dots = el('div', 'roundnav'); Q.forEach(() => dots.appendChild(el('i')));
+  const line = el('p', 'example'), opts = el('div', 'choose'); opts.style.width = '100%';
+  card.appendChild(dots); card.appendChild(line); card.appendChild(opts);
+  let r = 0; const ok = new Set();
+  const paint = () => {
+    [...dots.children].forEach((d, i) => { d.className = ok.has(i) ? 'ok' : i === r ? 'on' : ''; });
+    opts.innerHTML = '';
+    if (r >= Q.length) { line.replaceChildren(txt('span', null, 'Three idioms — you can picture the feeling now.', 'তিনটি বাগধারা — এখন অনুভূতিটি ছবির মতো দেখতে পাচ্ছেন।')); return; }
+    const I = Q[r];
+    line.innerHTML = esc(I[2]).replace(/\*([^*]+)\*/, '<span class="gap" style="min-width:8ch">?</span>');
+    const gap = line.querySelector('.gap');
+    shuffle(C.i).forEach(J => {
+      const o = el('button'); o.type = 'button'; o.appendChild(el('span', 'dot')); o.appendChild(el('span', null, J[0]));
+      o.onclick = () => {
+        if (J === I) {
+          o.setAttribute('aria-pressed', 'true'); ok.add(r); gap.classList.add('filled');
+          gap.textContent = I[2].match(/\*([^*]+)\*/)[1];
+          TTS.say(plain(I[2], w));
+          setTimeout(() => { r++; paint(); }, 1600);
+        } else { o.style.borderColor = 'var(--clay)'; o.animate([{ background: '#F6E1D9' }, { background: 'var(--surface-card)' }], 600); }
+      };
+      opts.appendChild(o);
+    });
+  };
+  paint();
+  p.appendChild(card);
+  p.cleanup = () => TTS.stop();
+  return p;
+}
+function scrIdiomChoose(){
+  const w = curWord(), p = el('div', 'panel'), C = chunk(w);
+  p.appendChild(task('image', 'Which one fits your moment?', 'আপনার মুহূর্তের সঙ্গে কোনটি মেলে?', 'Choose one idiom to describe how you feel today.', 'আজ আপনার অনুভূতি বোঝাতে একটি বাগধারা বেছে নিন।'));
+  const list = el('div', 'choose');
+  const preview = el('div', 'card'); preview.style.textAlign = 'center';
+  const paintPrev = () => {
+    preview.innerHTML = '';
+    const f = S.frames;
+    const q = el('p', 'example');
+    const idm = S.idiom != null ? C.i[S.idiom] : null;
+    q.innerHTML = 'I feel <span class="hw">' + esc(lower(w)) + '</span>' + (f.because ? ' because ' + esc(f.because) : '') + '.' +
+      (idm ? '<br>' + esc(idm[2]).replace(/\*([^*]+)\*/, '<span class="idm">$1</span>') : '');
+    preview.appendChild(q);
+  };
+  C.i.forEach((I, k) => {
+    const b = el('button'); b.type = 'button'; b.setAttribute('aria-pressed', String(S.idiom === k));
+    b.appendChild(el('span', 'dot'));
+    const t = el('span'); t.appendChild(el('span', null, I[0])); const m = el('span', 'small', ' — ' + I[1]); t.appendChild(m); b.appendChild(t);
+    b.onclick = () => { S.idiom = k; save(); [...list.children].forEach((x, j) => x.setAttribute('aria-pressed', String(j === k))); paintPrev(); TTS.say(plain(I[2], w)); };
+    list.appendChild(b);
+  });
+  p.appendChild(list); p.appendChild(preview); paintPrev();
+  p.cleanup = () => TTS.stop();
+  return p;
+}
+
+/* ============================================================ SHARE */
+const BERG_Y = [360, 304, 246, 124, 86, 48];     /* level 1…6, deepest first */
+function bergBig(level, w){
+  const marks = LEVELS.map((L, i) => {
+    const y = BERG_Y[i], on = i < level;
+    return '<path d="M52 ' + y + 'H200" stroke="var(--sea)" stroke-dasharray="3 5" stroke-width="1.5" opacity="' + (on ? .9 : .4) + '"/>' +
+      '<circle cx="36" cy="' + y + '" r="15" fill="' + (on ? 'var(--fi)' : '#fff') + '" stroke="var(--sea)" stroke-width="2"/>' +
+      '<text x="36" y="' + (y + 6) + '" text-anchor="middle" font-size="16" font-weight="800" fill="' + (on ? '#fff' : 'var(--sea-deep)') + '">' + (i + 1) + '</text>';
+  }).join('');
+  return '<svg class="berg-big z" viewBox="0 0 400 400" role="img" aria-label="The word has risen to level ' + level + ' of 6">' +
+    '<defs><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFE5EF"/><stop offset="1" stop-color="#7FB0C8"/></linearGradient></defs>' +
+    '<rect x="0" y="150" width="400" height="250" fill="url(#sea)" rx="10"/>' +
+    '<path d="M218 150L246 70l18 16 22-60 20 38 14-12 28 98z" fill="#fff" stroke="var(--sea)" stroke-width="2.2" stroke-linejoin="round"/>' +
+    '<path d="M212 150l-24 86 24 96 80 52 78-42 22-110-28-82z" fill="#E9F3F7" stroke="var(--sea)" stroke-width="2.2" stroke-linejoin="round" opacity=".92"/>' +
+    '<path d="M0 150h400" stroke="var(--sea-deep)" stroke-width="2" stroke-dasharray="8 6"/>' +
+    '<text x="392" y="172" text-anchor="end" font-size="13" font-weight="800" fill="var(--sea-deep)" letter-spacing="1.5">WATERLINE</text>' +
+    marks +
+    '<g class="berg-word" style="transform:translate(290px,392px)" data-y="' + (level ? BERG_Y[level - 1] : 392) + '">' +
+    '<rect x="-66" y="-18" width="132" height="36" rx="18" fill="var(--fi)" stroke="#fff" stroke-width="2"/>' +
+    '<text x="0" y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">' + esc(lower(w)) + '</text></g></svg>';
+}
+function bergLegend(level){
+  const ol = el('ol', 'berg-legend');
+  LEVELS.slice().reverse().forEach((L, j) => {
+    const i = 5 - j, li = el('li', i < level ? 'on' : '');
+    li.appendChild(el('span', 'bl-n', String(i + 1)));
+    const t = el('span'); t.appendChild(el('span', null, L[0])); bn(t, L[1]); li.appendChild(t);
+    if (i === 3) li.classList.add('wl');
+    ol.appendChild(li);
+  });
+  return ol;
+}
+function scrRise(){
+  const w = curWord(), p = el('div', 'panel');
+  p.appendChild(task('berg', 'Your word has risen', 'আপনার শব্দটি উপরে উঠে এসেছে', 'Every time you heard it and understood it, it rose. Now it is above the water — you can use it.', 'যতবার শুনে বুঝেছেন, ততবার এটি উপরে উঠেছে। এখন এটি পানির উপরে — আপনি এটি ব্যবহার করতে পারবেন।'));
+  const c = el('div', 'card berg-card'); c.innerHTML = bergBig(S.level, w); c.appendChild(bergLegend(S.level)); p.appendChild(c);
+  p.enter = () => { const g = c.querySelector('.berg-word'); requestAnimationFrame(() => requestAnimationFrame(() => { g.style.transform = 'translate(290px,' + g.dataset.y + 'px)'; })); };
+  const sc = el('div', 'card');
+  sc.appendChild(txt('h3', 'h-title', 'How strong is the storm now?', 'এখন ঝড়টা কতটা তীব্র?'));
+  sc.firstChild.style.fontSize = 'calc(1.15rem*var(--ui))';
+  const cmp = el('div', 'compare'); cmp.style.marginTop = '12px';
+  const paintCmp = () => { cmp.innerHTML = S.storm0 && S.storm1 ? weather(S.storm0) + '<span class="arrow">→</span>' + weather(S.storm1) : ''; };
+  const scale = stormScale('storm1', paintCmp); scale.style.marginTop = '12px';
+  sc.appendChild(scale); sc.appendChild(cmp); paintCmp();
+  sc.appendChild(txt('p', 'small', 'Naming a feeling often makes the storm smaller. If it didn’t today, that’s okay too.', 'অনুভূতির নাম দিলে ঝড় প্রায়ই ছোট হয়ে আসে। আজ না হলে, সেটাও ঠিক আছে।'));
+  p.appendChild(sc);
+  /* what the student now owns */
+  const C = chunk(w), sum = el('div', 'card summary');
+  const row = (ico, lab, html) => { const r = el('div', 'sum-row'); const i = el('span', 'sico'); i.appendChild(icon(ico)); r.appendChild(i); const t = el('div', 'stx'); t.innerHTML = '<small>' + lab + '</small>' + html; r.appendChild(t); sum.appendChild(r); };
+  row('link', 'Partners', C.p.slice(0, 3).map(x => marked(x, w)).join(' · '));
+  row('puzzle', 'Patterns', C.g.slice(0, 2).map(g => esc(g[0])).join(' · '));
+  row('speech', 'My sentence', 'I feel <span class="hw">' + esc(lower(w)) + '</span>' + (S.frames.because ? ' because ' + esc(S.frames.because) : '…') + '.');
+  row('image', 'My idiom', S.idiom != null ? '<span class="idm">' + esc(C.i[S.idiom][0]) + '</span>' : esc(C.i[0][0]));
+  p.appendChild(sum);
+  return p;
+}
+/* the live class board — the same hourly, anonymous board as before */
+const POLL = { key: '', timer: 0 };
+function dhakaHour(){
+  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Dhaka', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', hourCycle: 'h23' })
+    .formatToParts(new Date()).filter(x => x.type !== 'literal').map(x => [x.type, x.value]));
+  return parts.year + '-' + parts.month + '-' + parts.day + 'T' + parts.hour;
+}
+function pollToken(k){
+  try { let t = localStorage.getItem('emotion-poll-token:' + k); if (!t) { t = (crypto.randomUUID && crypto.randomUUID()) || (Date.now() + '-' + Math.random().toString(36).slice(2)); localStorage.setItem('emotion-poll-token:' + k, t); } return t; }
+  catch (e) { return Date.now() + '-' + Math.random().toString(36).slice(2); }
+}
+function boardNode(){
+  const box = el('div', 'card poll');
+  const top = el('div', 'poll-top');
+  const tot = el('div'); tot.appendChild(el('span', 'poll-total', '0')); tot.appendChild(txt('span', 'small', ' responses this hour', 'এই ঘণ্টার উত্তর'));
+  top.appendChild(tot); top.appendChild(el('span', 'live', 'Live')); box.appendChild(top);
+  const bars = el('div', 'poll'), words = el('div', 'pwords'), reasons = el('div', 'preasons');
+  box.appendChild(bars); box.appendChild(txt('p', 'kicker', 'Words people chose', 'যে শব্দগুলো বেছে নেওয়া হয়েছে')); box.appendChild(words);
+  box.appendChild(txt('p', 'kicker', 'Anonymous reasons', 'নামহীন কারণ')); box.appendChild(reasons);
+  box.paint = d => {
+    box.querySelector('.poll-total').textContent = d.total || 0;
+    const max = Math.max(1, ...Object.values(d.counts || {}));
+    bars.innerHTML = '';
+    EMO.wheel.forEach(f => {
+      const n = (d.counts || {})[f.name] || 0;
+      const r = el('div', 'prow f-' + f.name.toLowerCase());
+      const l = el('span', 'pl'); l.appendChild(el('span', null, emoji(f.name))); l.appendChild(el('span', null, f.name)); r.appendChild(l);
+      const t = el('div', 'pt'), fi = el('div', 'pf'); t.appendChild(fi); r.appendChild(t);
+      r.appendChild(el('span', 'pc', String(n)));
+      bars.appendChild(r);
+      requestAnimationFrame(() => { fi.style.width = (n / max * 100) + '%'; });
+    });
+    words.innerHTML = '';
+    (d.specificCounts || []).slice(0, 10).forEach(x => { const c = el('span', 'pword f-' + famKey(x.emotion), x.emotion + ' ×' + x.count); c.style.cssText = 'background:var(--t);color:var(--i)'; words.appendChild(c); });
+    if (!words.children.length) words.appendChild(txt('span', 'small', 'No responses yet.', 'এখনও কোনো উত্তর নেই।'));
+    reasons.innerHTML = '';
+    (d.reasons || []).slice(0, 8).forEach(x => { const c = el('div', 'preason f-' + famKey(x.primaryEmotion)); c.style.borderLeftColor = 'var(--c)'; c.appendChild(el('b', null, x.emotion)); c.appendChild(el('span', null, x.reason)); reasons.appendChild(c); });
+    if (!reasons.children.length) reasons.appendChild(txt('span', 'small', 'The first reason will appear here.', 'প্রথম কারণটি এখানে দেখা যাবে।'));
+  };
+  const load = async () => {
+    if (!box.isConnected) { clearInterval(POLL.timer); return; }
+    POLL.key = dhakaHour();
+    try { const r = await fetch('/api/poll?window=' + encodeURIComponent(POLL.key), { cache: 'no-store' }); if (r.ok) box.paint(await r.json()); } catch (e) {}
+  };
+  box.load = load;
+  box.paint({ total: 0, counts: {}, specificCounts: [], reasons: [] });
+  clearInterval(POLL.timer); POLL.timer = setInterval(load, 5000); setTimeout(load, 50);
+  return box;
+}
+function scrShare(){
+  const w = curWord(), p = el('div', 'panel');
+  p.appendChild(task('users', 'Share with the class', 'ক্লাসের সঙ্গে ভাগ করুন', 'No names. Only your word and, if you like, your reason.', 'কোনো নাম নয়। শুধু আপনার শব্দ, আর চাইলে কারণটি।'));
+  const box = el('div', 'card share-box');
+  const lab = el('label'); lab.htmlFor = 'share-r'; lab.style.cssText = 'display:block;font-weight:800;margin-bottom:8px;color:var(--heading)';
+  lab.innerHTML = 'I feel <span class="hw">' + esc(lower(w)) + '</span> because…';
+  const ta = el('textarea'); ta.id = 'share-r'; ta.maxLength = 220; ta.value = S.frames.because || '';
+  const small = txt('p', 'small', 'Don’t write anyone’s name or phone number.', 'কারও নাম বা ফোন নম্বর লিখবেন না।');
+  const send = el('button', 'btn'); send.type = 'button'; send.style.marginTop = '10px';
+  bn(send.appendChild(el('span', null, 'Share anonymously')), 'নাম ছাড়া ভাগ করুন', true);
+  const st = el('p', 'status'); st.setAttribute('aria-live', 'polite');
+  box.appendChild(lab); box.appendChild(ta); box.appendChild(small); box.appendChild(send); box.appendChild(st);
+  p.appendChild(box);
+  const board = boardNode(); p.appendChild(board);
+  send.onclick = async () => {
+    send.disabled = true; st.textContent = 'Sharing…';
+    const key = dhakaHour();
+    try {
+      const r = await fetch('/api/poll', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ window: key, responseToken: pollToken(key), primaryEmotion: FAMILY[w] || 'Happy', emotion: w, reason: ta.value.trim() }) });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(d.error || 'Could not share.');
+      st.textContent = 'Shared. You can change it again this hour.'; board.paint(d);
+    } catch (e) { st.textContent = 'The class board is not reachable right now.'; }
+    send.disabled = false;
+  };
+  const more = el('div', 'l-tools'); more.style.justifyContent = 'flex-start';
+  const rtc = el('button', 'mini gold'); rtc.type = 'button'; rtc.appendChild(icon('compass')); rtc.appendChild(el('span', null, 'Going further: Room to choose'));
+  rtc.onclick = openRTC;
+  const again = el('button', 'mini'); again.type = 'button'; again.appendChild(icon('reset')); again.appendChild(el('span', null, 'Start again with a new feeling'));
+  again.onclick = () => { S.word = null; S.level = 0; S.storm0 = S.storm1 = null; S.idiom = null; S.frames = { because: '', stake: '', need: '' }; save(); setFamily(null); goStep(0, 0); };
+  more.appendChild(rtc); more.appendChild(again);
+  p.appendChild(more);
+  p.cleanup = () => clearInterval(POLL.timer);
+  return p;
+}
+
+const SUBS = {
+  feel: [scrBig, scrMid, scrExact, scrStorm, scrBreathe],
+  hear: [scrListen, scrCatch, scrRead],
+  partners: [scrWeb, scrPartnerCloze],
+  patterns: [scrPatterns, scrPatternGap],
+  say: [scrModel, scrBuild, scrFrames],
+  idioms: [scrIdiomCards, scrIdiomGap, scrIdiomChoose],
+  share: [scrRise, scrShare]
 };
 
-const _defaultReflectionHints = {
-  because: ["something that matters to me is involved", "it caught me off guard", "I wasn't expecting to feel this way"],
-  stake: ["something I care about", "my sense of what's important right now", "a relationship or situation that needs attention"],
-  need: ["time to sit with this", "to talk it through with someone", "to understand what's driving the feeling"]
-};
-
-let _reflectionCycles = [];
-
-function clearReflectionCycles() {
-  _reflectionCycles.forEach(clearInterval);
-  _reflectionCycles = [];
+/* ============================================================ sheets */
+function openSheet(build){
+  const sh = $('#sheet'); sh.innerHTML = '';
+  const x = el('button', 'icon-btn sheet-close'); x.type = 'button'; x.setAttribute('aria-label', 'Close'); x.appendChild(icon('x')); x.onclick = closeSheet;
+  sh.appendChild(x); build(sh);
+  sh.classList.add('show'); $('#scrim').classList.add('show');
+  setTimeout(() => x.focus(), 50);
 }
+function closeSheet(){ $('#sheet').classList.remove('show'); $('#scrim').classList.remove('show'); }
+$('#scrim').onclick = closeSheet;
 
-function _cyclePlaceholder(input, hints) {
-  if (!hints || hints.length === 0) return;
-  let i = 0;
-  input.placeholder = hints[0];
-  const id = setInterval(() => {
-    if (!input.value) {
-      i = (i + 1) % hints.length;
-      input.placeholder = hints[i];
-    }
-  }, 3600);
-  _reflectionCycles.push(id);
-}
-
-function showReflectionCard(name) {
-  const card = document.querySelector("#reflection-card");
-  if (!card) return;
-
-  clearReflectionCycles();
-
-  const emotionEl = document.querySelector("#reflection-emotion");
-  if (emotionEl) emotionEl.textContent = name.toLowerCase();
-
-  const becauseInput = document.querySelector("#reflection-because");
-  const stakeInput  = document.querySelector("#reflection-stake");
-  const needInput   = document.querySelector("#reflection-need");
-  if (becauseInput) becauseInput.value = "";
-  if (stakeInput)   stakeInput.value   = "";
-  if (needInput)    needInput.value    = "";
-
-  const hints = reflectionHints[name] || _defaultReflectionHints;
-  if (becauseInput) _cyclePlaceholder(becauseInput, hints.because);
-  if (stakeInput)   _cyclePlaceholder(stakeInput,   hints.stake);
-  if (needInput)    _cyclePlaceholder(needInput,     hints.need);
-
-  card.style.setProperty("--lesson-color", state.color || "#e65f42");
-  card.hidden = false;
-}
-
-// ── Emotional Boundaries Quiz ──────────────────────────────────────────────
-(function initEQQuiz() {
-  const DATA = {
-    en: {
-      introTitle: "Do You Have a Healthy Relationship with Your Emotions?",
-      introDesc: "In our culture, family harmony and social expectations are very important. Because of this, we often handle our emotions in two extreme ways: we get 'Too Close' or 'Too Far'.",
-      concepts: [
-        { title: "🔴 Too Close (Overwhelmed)", desc: "This happens when an emotion completely controls you. You might stay silent and suffer for others, feel hopeless, or feel like a victim. You lose your peace and feel trapped in the storm.", cls: "eq-concept--red" },
-        { title: "🟢 The Healthy Middle Ground", desc: "A healthy relationship means standing at a comfortable distance. You can look at your anger, sadness, or fear with calmness and curiosity. You listen to your feelings, but you do not let them drive the car.", cls: "eq-concept--green" },
-        { title: "🔵 Too Far (Suppressed)", desc: "To keep up appearances or 'save face', you push your feelings away. You avoid difficult talks or blame others. But hidden feelings do not disappear; they explode later over small things.", cls: "eq-concept--blue" }
-      ],
-      quizStartBtn: "Take the Quiz",
-      nextBtn: "Next Question",
-      resultBtn: "See My Results",
-      scoreLabel: "Your pattern:",
-      retakeLabel: "Retake Quiz",
-      honestNote: "There are no right or wrong answers. Choose the option that honestly reflects what you would most likely do — go with your first instinct and do not overthink it.",
-      quizInstruct: "Trust your first instinct — pick the option that feels most honest, not the one that sounds best.",
-      questionOf: function(c, t) { return "Question " + c + " of " + t; },
-      questions: [
-        {
-          text: "1. You see a relative or old classmate posting about their perfect life and big success on social media. You:",
-          options: [
-            { text: "You feel a sudden wave of inadequacy and spend the next hour scrolling their profile, comparing every detail to your own life.", type: "Close" },
-            { text: "You immediately post your own best photos and highlights so your life looks equally successful.", type: "Far" },
-            { text: "You leave a warm comment and close the app, but the knot in your stomach stays with you all day without you really addressing it.", type: "Mixed" },
-            { text: "You notice the jealousy, name it, take a short break from the app, and later talk to a friend about feeling left behind.", type: "Healthy" }
-          ]
-        },
-        {
-          text: "2. Your boss explicitly promised you wouldn't work this weekend. But on Friday afternoon, they ask you to work late and come in on Saturday for the third week in a row. You:",
-          options: [
-            { text: "You go home so angry you cannot sleep — you replay the conversation for hours and send your boss a frustrated message that night.", type: "Close" },
-            { text: "You immediately say yes, swallow your frustration, and spend the weekend working in silent resentment while telling yourself it is fine.", type: "Far" },
-            { text: "You agree to work, but spend the weekend procrastinating and half-working — unable to fully enjoy your time off or fully commit to the job.", type: "Mixed" },
-            { text: "You take a breath, acknowledge the frustration, and arrange a time to speak calmly with your boss about the pattern and your earlier agreement.", type: "Healthy" }
-          ]
-        },
-        {
-          text: "3. At a family gathering, a close relative makes a mean comment about your life choices in front of everyone. You:",
-          options: [
-            { text: "You cannot hold it in — you snap back at them, your voice rises, or you leave the room abruptly and create a scene.", type: "Close" },
-            { text: "You smile, say it is fine, and pretend the comment did not bother you — but you replay it quietly for days.", type: "Far" },
-            { text: "You say nothing in the moment, but spend the rest of the gathering sulking and barely speaking to anyone, without ever addressing it.", type: "Mixed" },
-            { text: "You stay calm in the moment and later find a private opportunity to tell them honestly and kindly how the comment made you feel.", type: "Healthy" }
-          ]
-        },
-        {
-          text: "4. You worked very hard for a promotion or an academic opportunity, but someone else got it. You:",
-          options: [
-            { text: "You are so devastated you lose all motivation — you start making mistakes, withdraw from the team, or hint loudly about quitting.", type: "Close" },
-            { text: "You tell yourself it does not matter and push yourself to act completely normal, but the disappointment festers and you start resenting your colleagues.", type: "Far" },
-            { text: "You vent to a colleague and feel better temporarily, but you take no concrete steps to understand what happened or how to move forward.", type: "Mixed" },
-            { text: "You let yourself feel the disappointment, talk it through with someone you trust, and after a day or two ask your manager for honest feedback.", type: "Healthy" }
-          ]
-        },
-        {
-          text: "5. You have a huge presentation tomorrow morning. It is 10:00 PM, and you are still obsessively changing tiny details. You:",
-          options: [
-            { text: "The anxiety spikes — you panic, call a friend in distress for an hour, and end up going to bed at 2 AM still feeling unprepared.", type: "Close" },
-            { text: "You keep changing colours and fonts for hours, telling yourself you are being productive, to avoid sitting with the feeling of uncertainty.", type: "Far" },
-            { text: "You force yourself to close the laptop, but then scroll your phone anxiously for another hour worrying about the presentation instead of actually resting.", type: "Mixed" },
-            { text: "You notice that perfectionism is feeding your anxiety, choose to stop, remind yourself the preparation was solid, and go to bed at a reasonable time.", type: "Healthy" }
-          ]
-        }
-      ],
-      results: {
-        close: { tier: "eq-tier-close", title: "🔴 You Tend to Get Swept Up in Your Emotions",     desc: "When a difficult feeling arrives, it quickly takes over — you may find yourself ruminating, feeling like a victim of circumstances, or stuck in emotional storms you can't escape. Your feelings are real and valid. The next step is learning to observe them with a little compassionate distance, so they inform you rather than control you." },
-        far:   { tier: "eq-tier-far",   title: "🔵 You Tend to Push Your Emotions Away",           desc: "You probably learned early that showing painful feelings causes trouble, so you push them down or stay busy to avoid them. But suppressed emotions don't disappear — they resurface later as sudden outbursts or quiet numbness. Gently welcoming your feelings, instead of silencing them, will turn them into a source of real strength." },
-        mid:   { tier: "eq-tier-mid",   title: "🟡 You are Navigating a Mixed Internal Landscape", desc: "Your responses show a blend of all three patterns — sometimes feelings sweep you up, sometimes you push them away, and sometimes you find the healthy middle. This is the most common and honest profile. Recognising your own patterns is already a real strength. With practice, you can learn to catch yourself in each situation and respond with a little more calm and intention." },
-        high:  { tier: "eq-tier-high",  title: "🟢 You Maintain a Healthy, Comfortable Distance",  desc: "You have strong emotional awareness. When an intense feeling arrives, you can pause, observe it with kindness, and speak from your feelings rather than react from them. This gives you honest, steady relationships and genuine inner peace." }
-      }
-    },
-    bn: {
-      introTitle: "আপনার আবেগের সাথে আপনার সম্পর্কটি কি স্বাস্থ্যকর?",
-      introDesc: "আমাদের সংস্কৃতিতে পারিবারিক সম্প্রীতি এবং সামাজিক প্রত্যাশাকে অনেক বড় করে দেখা হয়। এই কারণে আমরা প্রায়ই আমাদের আবেগগুলোকে দুটি চরম উপায়ে সামলাই: হয় আমরা আবেগের 'খুব কাছে' চলে যাই, না হয় 'অনেক দূরে' ঠেলে দিই।",
-      concepts: [
-        { title: "🔴 খুব কাছে (নিয়ন্ত্রণ হারিয়ে ফেলা)", desc: "এটি তখন ঘটে যখন কোনো আবেগ আপনাকে পুরোপুরি নিয়ন্ত্রণ করে। আপনি হয়তো অন্যের জন্য নীরবে কষ্ট সহ্য করেন, নিজেকে অসহায় ভাবেন, বা নিজেকে পরিস্থিতির শিকার মনে করেন। আপনি আপনার মনের শান্তি হারান এবং আবেগের ঝড়ে আটকে যান।", cls: "eq-concept--red" },
-        { title: "🟢 স্বাস্থ্যকর মধ্যপন্থা", desc: "একটি স্বাস্থ্যকর সম্পর্কের মানে হলো আবেগ থেকে একটি আরামদায়ক দূরত্ব বজায় রাখা। আপনি শান্তভাবে এবং কৌতূহল নিয়ে আপনার রাগ, দুঃখ বা ভয়কে দেখতে পারেন। আপনি আপনার অনুভূতির কথা শুনবেন, তবে তাকে আপনার জীবন চালাতে দেবেন না।", cls: "eq-concept--green" },
-        { title: "🔵 অনেক দূরে (আবেগ চেপে রাখা)", desc: "লোকলজ্জা এড়াতে বা 'সম্মান বাঁচাতে' আপনি আপনার অনুভূতিগুলোকে দূরে ঠেলে দেন। আপনি কঠিন আলোচনা এড়িয়ে চলেন বা অন্যদের দোষারোপ করেন। কিন্তু লুকিয়ে রাখা অনুভূতিগুলো হারিয়ে যায় না; পরবর্তীতে ছোটখাটো বিষয় নিয়ে সেগুলো হঠাৎ বিস্ফোরিত হয়।", cls: "eq-concept--blue" }
-      ],
-      quizStartBtn: "কুইজ শুরু করুন",
-      nextBtn: "পরবর্তী প্রশ্ন",
-      resultBtn: "ফলাফল দেখুন",
-      scoreLabel: "আপনার প্যাটার্ন:",
-      retakeLabel: "পুনরায় শুরু করুন",
-      honestNote: "কোনো সঠিক বা ভুল উত্তর নেই। বাস্তবে আপনি যা করতেন তার সবচেয়ে কাছের উত্তরটি বেছে নিন — প্রথম যা মনে আসে সেটিই বেছে নিন, বেশি ভাববেন না।",
-      quizInstruct: "প্রথম যে উত্তরটি মনে আসে সেটি বেছে নিন — সেরাটা নয়, সবচেয়ে সৎটা।",
-      questionOf: function(c, t) { return "প্রশ্ন " + c + " / " + t; },
-      questions: [
-        {
-          text: "১. সোশ্যাল মিডিয়ায় আপনার কোনো আত্মীয় বা পুরোনো সহপাঠী তাদের চমৎকার জীবন ও বড় সাফল্যের ছবি পোস্ট করেছেন। আপনি:",
-          options: [
-            { text: "হঠাৎ নিজেকে অপর্যাপ্ত মনে হয় এবং পরের এক ঘণ্টা তাদের প্রোফাইল স্ক্রল করতে করতে নিজের জীবনের সাথে প্রতিটি বিষয় তুলনা করেন।", type: "Close" },
-            { text: "সাথে সাথে নিজের সেরা ছবি ও হাইলাইটগুলো পোস্ট করেন, যাতে আপনার জীবনটাও সমান সফল দেখায়।", type: "Far" },
-            { text: "একটি উষ্ণ মন্তব্য করে অ্যাপ বন্ধ করেন, কিন্তু পেটের ভেতরের অস্বস্তিটা সারাদিন থেকে যায় — আপনি সেটা নিয়ে কিছুই করেন না।", type: "Mixed" },
-            { text: "ঈর্ষার অনুভূতিটি খেয়াল করেন, তার নাম দেন, অ্যাপ থেকে একটু বিরতি নেন এবং পরে একজন বন্ধুর সাথে পিছিয়ে পড়ার অনুভূতি নিয়ে কথা বলেন।", type: "Healthy" }
-          ]
-        },
-        {
-          text: "২. আপনার বস কথা দিয়েছিলেন যে এই উইকেন্ডে আপনাকে কাজ করতে হবে না। কিন্তু টানা তৃতীয় সপ্তাহের মতো শুক্রবার বিকেলে তিনি আপনাকে দেরিতে যেতে এবং শনিবারে অফিসে আসতে বললেন। আপনি:",
-          options: [
-            { text: "এতটাই রাগান্বিত হয়ে বাড়ি যান যে ঘুম আসে না — ঘণ্টার পর ঘণ্টা কথোপকথনটা মাথায় ঘোরে এবং সেই রাতেই বসকে একটি রাগান্বিত বার্তা পাঠান।", type: "Close" },
-            { text: "সাথে সাথে হ্যাঁ বলেন, রাগ গিলে ফেলেন এবং সারা উইকেন্ড নীরব ক্ষোভে কাজ করেন — নিজেকে বলেন সব ঠিক আছে।", type: "Far" },
-            { text: "কাজ করতে রাজি হন, কিন্তু উইকেন্ড জুড়ে অর্ধেক মনে কাজ করেন — না ছুটি উপভোগ করতে পারেন, না কাজে পুরোপুরি মনোযোগ দিতে পারেন।", type: "Mixed" },
-            { text: "একটু শ্বাস নেন, রাগটি মনে মনে স্বীকার করেন এবং বসের সাথে শান্তভাবে কথা বলার একটি সময় ঠিক করেন — এই প্যাটার্ন ও আগের প্রতিশ্রুতি নিয়ে।", type: "Healthy" }
-          ]
-        },
-        {
-          text: "৩. একটি পারিবারিক অনুষ্ঠানে, একজন ঘনিষ্ঠ আত্মীয় সবার সামনে আপনার জীবনের সিদ্ধান্ত নিয়ে একটি কটূক্তি করলেন। আপনি:",
-          options: [
-            { text: "নিজেকে ধরে রাখতে পারেন না — পাল্টা কথা বলেন, গলা উঁচু হয়ে যায়, বা হঠাৎ ঘর থেকে বেরিয়ে যান এবং একটি দৃশ্য তৈরি হয়।", type: "Close" },
-            { text: "হাসেন, বলেন 'ঠিক আছে' এবং ভান করেন কথাটা কিছুই না — কিন্তু পরের কয়েকদিন সেটা মাথায় চুপচাপ ঘুরতে থাকে।", type: "Far" },
-            { text: "মুহূর্তে কিছু বলেন না, কিন্তু বাকি অনুষ্ঠান চুপচাপ কাটান এবং কারো সাথে ঠিকমতো কথা বলেন না — বিষয়টা কখনো মোকাবেলা করা হয় না।", type: "Mixed" },
-            { text: "মুহূর্তে শান্ত থাকেন এবং পরে একটি ব্যক্তিগত সুযোগ খুঁজে তাকে সৎ ও সদয়ভাবে জানান যে কথাটা আপনাকে কেমন লাগিয়েছিল।", type: "Healthy" }
-          ]
-        },
-        {
-          text: "৪. আপনি কোনো প্রমোশন বা শিক্ষার সুযোগের জন্য খুব কঠোর পরিশ্রম করেছিলেন, কিন্তু অন্য কেউ সেটি পেয়ে গেল। আপনি:",
-          options: [
-            { text: "এতটাই ভেঙে পড়েন যে কাজে মনোযোগ হারান — ভুল করতে থাকেন, দলের কাছ থেকে সরে যান, বা জোরে জোরে চাকরি ছাড়ার ইঙ্গিত দেন।", type: "Close" },
-            { text: "নিজেকে বলেন এটা কিছুই না এবং সম্পূর্ণ স্বাভাবিক ভাব ধরে রাখার চেষ্টা করেন, কিন্তু হতাশা জমতে থাকে এবং সহকর্মীদের প্রতি বিরক্তি আসতে শুরু করে।", type: "Far" },
-            { text: "একজন সহকর্মীর কাছে মনের কথা বলেন এবং সাময়িকভাবে ভালো লাগে, কিন্তু কী হয়েছিল বা কীভাবে এগিয়ে যাবেন তা বোঝার জন্য কোনো পদক্ষেপ নেন না।", type: "Mixed" },
-            { text: "নিজেকে হতাশ হতে দেন, কোনো বিশ্বস্ত মানুষের কাছে মন খুলে বলেন এবং এক-দুদিন পর ম্যানেজারের কাছ থেকে সৎ মতামত চান।", type: "Healthy" }
-          ]
-        },
-        {
-          text: "৫. আগামীকাল সকালে আপনার একটি বড় প্রেজেন্টেশন আছে। এখন রাত ১০টা বাজে এবং আপনি এখনো খুঁটিনাটি বিষয়গুলো নিয়ে অতিরিক্ত চিন্তা করছেন। আপনি:",
-          options: [
-            { text: "উদ্বেগ তীব্র হয়ে ওঠে — আতঙ্কিত হয়ে পড়েন, এক ঘণ্টা বন্ধুকে ফোন করে কষ্ট ভাগ করেন এবং শেষ পর্যন্ত রাত ২টায় ঘুমাতে যান, তবুও অপ্রস্তুত বোধ করতে থাকেন।", type: "Close" },
-            { text: "ঘণ্টার পর ঘণ্টা রঙ ও ফন্ট পরিবর্তন করতে থাকেন — নিজেকে বলেন উৎপাদনশীল হচ্ছেন, কিন্তু আসলে অনিশ্চয়তার অনুভূতি থেকে পালাচ্ছেন।", type: "Far" },
-            { text: "জোর করে ল্যাপটপ বন্ধ করেন, কিন্তু তারপর আরও এক ঘণ্টা ফোনে প্রেজেন্টেশন নিয়ে দুশ্চিন্তা করতে করতে স্ক্রল করেন — প্রকৃত বিশ্রাম নেন না।", type: "Mixed" },
-            { text: "বুঝতে পারেন পারফেকশনিজম আপনার উদ্বেগকে বাড়াচ্ছে, থামার সিদ্ধান্ত নেন, নিজেকে মনে করিয়ে দেন প্রস্তুতি ভালোই হয়েছে এবং যুক্তিসঙ্গত সময়ে ঘুমাতে যান।", type: "Healthy" }
-          ]
-        }
-      ],
-      results: {
-        close: { tier: "eq-tier-close", title: "🔴 আপনি প্রায়ই আবেগের স্রোতে ভেসে যান",                        desc: "যখন কোনো কঠিন অনুভূতি আসে, সেটি দ্রুত আপনার উপর নিয়ন্ত্রণ নিতে পারে। আপনি হয়তো একটি চিন্তার আবর্তে আটকে যান, নিজেকে পরিস্থিতির শিকার ভাবেন, বা আবেগের ঝড় থেকে বের হতে পারেন না। আপনার অনুভূতিগুলো সত্যিকারের ও গুরুত্বপূর্ণ — পরবর্তী পদক্ষেপ হলো সেগুলোকে একটু সহানুভূতিশীল দূরত্ব থেকে দেখতে শেখা, যাতে সেগুলো আপনাকে পথ দেখায়, নিয়ন্ত্রণ না করে।" },
-        far:   { tier: "eq-tier-far",   title: "🔵 আপনি আপনার আবেগকে দূরে ঠেলে দেওয়ার চেষ্টা করেন",          desc: "আপনি হয়তো জীবনের শুরুতেই শিখেছেন যে কষ্টদায়ক আবেগ প্রকাশ করলে সমস্যা তৈরি হয়। তাই আপনি অনুভূতিগুলো চেপে রাখেন বা নিজেকে ব্যস্ত রাখেন। কিন্তু দমন করা অনুভূতি হারিয়ে যায় না — সেগুলো পরে হঠাৎ বিস্ফোরণ বা শূন্যতা হিসেবে ফিরে আসে। নিজের অনুভূতিগুলোকে আলতোভাবে গ্রহণ করতে শিখলে তা আপনার শক্তিতে পরিণত হবে।" },
-        mid:   { tier: "eq-tier-mid",   title: "🟡 আপনি একটি মিশ্র মানসিক অবস্থার মধ্য দিয়ে যাচ্ছেন",         desc: "আপনার উত্তরগুলো তিনটি প্যাটার্নের মিশেল দেখাচ্ছে — কখনো আবেগ আপনাকে অভিভূত করে, কখনো আপনি সেগুলো দূরে ঠেলে দেন, আবার কখনোবা স্বাস্থ্যকর মধ্যপন্থা খুঁজে পান। এটিই সবচেয়ে সাধারণ ও সৎ প্রোফাইল। নিজের প্যাটার্নটি চেনার এই সচেতনতাই একটি বড় শক্তি — এখন থেকে কোন পরিস্থিতিতে কোন দিকে যাচ্ছেন তা লক্ষ্য করুন এবং আরও শান্তভাবে সাড়া দেওয়ার চেষ্টা করুন।" },
-        high:  { tier: "eq-tier-high",  title: "🟢 আপনি আবেগ থেকে একটি স্বাস্থ্যকর ও আরামদায়ক দূরত্ব বজায় রাখেন", desc: "আপনার মানসিক সচেতনতা চমৎকার। যখন কোনো তীব্র অনুভূতি আসে, আপনি থামতে পারেন, সেটিকে দয়া ও সহানুভূতির সাথে দেখতে পারেন এবং আবেগের বশে কাজ না করে শান্তভাবে নিজের অনুভূতির কথা প্রকাশ করতে পারেন। এটি আপনাকে শক্তিশালী, সৎ সম্পর্ক ও প্রকৃত মানসিক শান্তি দেয়।" }
-      }
-    }
-  };
-
-  const TOTAL = 5;
-
-  // State
-  var lang       = 'en';
-  var phase      = 'intro';  // 'intro' | 'quiz' | 'results'
-  var qIndex     = 0;
-  var picks      = [];       // 'Far' | 'Close' | 'Healthy' — one per answered question
-  var pending    = null;     // type of the currently selected option
-
-  // DOM refs
-  var phaseIntro   = document.getElementById('eq-phase-intro');
-  var phaseQuiz    = document.getElementById('eq-phase-quiz');
-  var phaseResults = document.getElementById('eq-phase-results');
-  var startBtn     = document.getElementById('eq-start-btn');
-  var nextBtn      = document.getElementById('eq-next-btn');
-  var retakeBtn    = document.getElementById('eq-retake-btn');
-  var progFill     = document.getElementById('eq-prog-fill');
-  var progLabel    = document.getElementById('eq-prog-label');
-  var questionEl   = document.getElementById('eq-question');
-  var optionsEl    = document.getElementById('eq-options');
-  var scoreLbl     = document.getElementById('eq-score-lbl');
-  var scoreVal     = document.getElementById('eq-score-val');
-  var resultCard   = document.getElementById('eq-result-card');
-  var resultTitle  = document.getElementById('eq-result-title');
-  var resultDesc   = document.getElementById('eq-result-desc');
-  var retakeLbl      = document.getElementById('eq-retake-lbl');
-  var honestNoteEl   = document.getElementById('eq-honest-note');
-  var quizInstructEl = document.getElementById('eq-quiz-instruct');
-
-  if (!phaseIntro) return; // guard: quiz card not on page
-
-  function d() { return DATA[lang]; }
-
-  // ── Render intro ──────────────────────────────────────────────────────────
-  function renderIntro() {
-    var data = d();
-    phaseIntro.querySelector('.eq-intro-title').textContent = data.introTitle;
-    phaseIntro.querySelector('.eq-intro-desc').textContent  = data.introDesc;
-    var cards = phaseIntro.querySelectorAll('.eq-concept');
-    data.concepts.forEach(function(c, i) {
-      cards[i].className = 'eq-concept ' + c.cls;
-      cards[i].querySelector('h3').textContent = c.title;
-      cards[i].querySelector('p').textContent  = c.desc;
+function openClues(){
+  openSheet(sh => {
+    sh.appendChild(txt('h2', null, 'Notice the clues', 'লক্ষণগুলো খেয়াল করুন'));
+    sh.appendChild(txt('p', 'small', 'Tap 1–3 things you notice right now. They are clues, not proof.', 'এই মুহূর্তে যা খেয়াল করছেন তার ১–৩টিতে চাপ দিন। এগুলো লক্ষণ, প্রমাণ নয়।'));
+    const picked = new Set();
+    const res = el('div', 'card'); res.style.marginTop = '12px';
+    const lists = el('div');
+    [['behavior', 'What am I doing?', 'আমি কী করছি?'], ['sensation', 'What is my body doing?', 'আমার শরীরে কী হচ্ছে?']].forEach(([type, en, b]) => {
+      lists.appendChild(txt('p', 'kicker', en, b)); lists.lastChild.style.margin = '14px 0 6px';
+      const g = el('div', 'ideas'); g.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px';
+      EMO.clues.filter(c => c.type === type).forEach(c => {
+        const t = el('button', 'idea', c.label); t.type = 'button';
+        if (EMO.clueBn[c.id]) bn(t, EMO.clueBn[c.id]);
+        t.onclick = () => { picked.has(c.id) ? picked.delete(c.id) : picked.add(c.id); t.style.cssText = picked.has(c.id) ? 'border-style:solid;border-color:var(--forest);background:var(--moss-soft);color:var(--forest)' : ''; paint(); };
+        g.appendChild(t);
+      });
+      lists.appendChild(g);
     });
-    startBtn.textContent = data.quizStartBtn;
-    if (honestNoteEl) honestNoteEl.textContent = data.honestNote;
-  }
+    sh.appendChild(lists); sh.appendChild(res);
+    const paint = () => {
+      res.innerHTML = '';
+      if (!picked.size) { res.appendChild(txt('p', 'small', 'Your possible match will appear here.', 'সম্ভাব্য মিলটি এখানে দেখাবে।')); return; }
+      const score = {};
+      EMO.clues.filter(c => picked.has(c.id)).forEach(c => Object.entries(c.scores).forEach(([k, v]) => score[k] = (score[k] || 0) + v));
+      const best = Object.entries(score).sort((a, b) => b[1] - a[1])[0][0];
+      const h = el('div', 'ftile f-' + best.toLowerCase()); h.style.minHeight = '0'; h.style.flexDirection = 'row'; h.style.gap = '12px';
+      h.appendChild(el('span', 'emo', emoji(best))); h.appendChild(el('span', 'nm', best));
+      res.appendChild(h);
+      res.appendChild(el('p', 'small', EMO.clueSummaries[best] || ''));
+      const use = el('button', 'btn'); use.type = 'button'; use.style.marginTop = '8px';
+      bn(use.appendChild(el('span', null, 'Start with ' + best)), best + ' দিয়ে শুরু করুন', true);
+      use.onclick = () => { chooseWord(best); closeSheet(); goStep(0, 1); };
+      res.appendChild(use);
+    };
+    paint();
+  });
+}
 
-  // ── Render quiz question ──────────────────────────────────────────────────
-  function renderQuestion() {
-    var data = d();
-    var q = data.questions[qIndex];
-    var pct = ((qIndex) / TOTAL * 100).toFixed(0);
-    progFill.style.width = pct + '%';
-    progLabel.textContent = data.questionOf(qIndex + 1, TOTAL);
-    questionEl.textContent = q.text;
-    if (quizInstructEl) quizInstructEl.textContent = data.quizInstruct;
-    optionsEl.innerHTML = '';
-    pending = null;
-    nextBtn.disabled = true;
-    nextBtn.textContent = (qIndex === TOTAL - 1) ? data.resultBtn : data.nextBtn;
-
-    q.options.forEach(function(opt, i) {
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'eq-option';
-      btn.textContent = opt.text;
-      btn.setAttribute('role', 'radio');
-      btn.setAttribute('aria-checked', 'false');
-      btn.setAttribute('data-type', opt.type);
-      btn.addEventListener('click', function() {
-        optionsEl.querySelectorAll('.eq-option').forEach(function(b) {
-          b.classList.remove('eq-selected');
-          b.setAttribute('aria-checked', 'false');
+/* Room to choose: the three ways to hold a feeling, then five situations */
+function rtcScene(kind){
+  const person = '<g fill="none" stroke="#1D211C" stroke-width="3" stroke-linecap="round"><circle cx="40" cy="30" r="10" fill="#fff"/><path d="M40 42v30M40 50l-16 14M40 50l16 14M40 72l-12 20M40 72l12 20"/></g>';
+  if (kind === 'close') return '<svg viewBox="0 0 160 100"><circle cx="52" cy="54" r="44" fill="#F3C9BD" opacity=".85"/>' + person + '<path d="M110 20l-8 14h9l-6 12" fill="none" stroke="#B0563A" stroke-width="3"/></svg>';
+  if (kind === 'room') return '<svg viewBox="0 0 160 100">' + person + '<path d="M60 56h52" stroke="#6F8F62" stroke-width="3" stroke-dasharray="5 5"/><circle cx="128" cy="56" r="18" fill="#E3EAD9" stroke="#6F8F62" stroke-width="2.5"/><path d="M123 49v14M133 49v14" stroke="#103D21" stroke-width="3" stroke-linecap="round"/></svg>';
+  return '<svg viewBox="0 0 160 100">' + person + '<path d="M86 12v80M94 12v80" stroke="#1F5C7A" stroke-width="4"/><circle cx="134" cy="56" r="12" fill="#DCEBF2" stroke="#1F5C7A" stroke-width="2"/></svg>';
+}
+function openRTC(){
+  const L = () => S.lang === 'bn' ? EMO.eq.bn : EMO.eq.en;
+  let q = -1, picks = [], order = [];
+  openSheet(sh => {
+    const body = el('div'); sh.appendChild(body);
+    const paint = () => {
+      const D = L(), E = EMO.eq.en;
+      body.innerHTML = '';
+      if (q < 0) {
+        body.appendChild(el('h2', null, 'Room to choose')); body.lastChild.id = 'sheet-h';
+        body.appendChild(el('p', 'small', D.scenario || E.scenario));
+        const g = el('div', 'rtc'); g.style.marginTop = '12px';
+        [['close', 0], ['far', 2], ['room', 1]].forEach(([k, i]) => {
+          const c = el('div', 'rtc-card' + (k === 'room' ? ' green' : ''));
+          c.innerHTML = rtcScene(k);
+          c.appendChild(el('b', null, D.concepts[i].title));
+          c.appendChild(el('span', null, D.concepts[i].thought));
+          c.appendChild(el('span', null, D.concepts[i].action));
+          g.appendChild(c);
         });
-        btn.classList.add('eq-selected');
-        btn.setAttribute('aria-checked', 'true');
-        pending = opt.type;
-        nextBtn.disabled = false;
+        body.appendChild(g);
+        body.appendChild(el('p', 'small', D.honestNote));
+        const go = el('button', 'btn'); go.type = 'button'; go.style.marginTop = '12px'; go.textContent = D.quizStartBtn;
+        go.onclick = () => { q = 0; picks = []; order = E.questions.map(x => shuffle(x.options.map((_, i) => i))); paint(); };
+        body.appendChild(go);
+        return;
+      }
+      if (q >= E.questions.length) {
+        const n = t => picks.filter(x => x === t).length;
+        const tier = n('Healthy') >= 3 ? D.results.high : n('Close') >= 3 ? D.results.close : n('Far') >= 3 ? D.results.far : D.results.mid;
+        body.appendChild(el('h2', null, tier.title)); body.lastChild.id = 'sheet-h';
+        body.appendChild(el('p', null, tier.desc));
+        body.appendChild(el('p', 'small', '💚 ' + n('Healthy') + '   🔴 ' + n('Close') + '   🔵 ' + n('Far') + '   🟡 ' + n('Mixed')));
+        const again = el('button', 'btn ghost'); again.type = 'button'; again.style.marginTop = '12px'; again.textContent = D.retakeLabel;
+        again.onclick = () => { q = -1; paint(); }; body.appendChild(again);
+        return;
+      }
+      const Q = D.questions[q];
+      body.appendChild(el('p', 'kicker', (q + 1) + ' / ' + E.questions.length));
+      const qq = el('p', 'q', Q.text.replace(/^\d+\.\s*/, '')); qq.id = 'sheet-h'; qq.style.cssText = 'font-weight:700;line-height:1.45;margin:8px 0 12px'; body.appendChild(qq);
+      const ch = el('div', 'choose');
+      order[q].forEach(i => {
+        const o = Q.options[i], b = el('button'); b.type = 'button'; b.appendChild(el('span', 'dot')); b.appendChild(el('span', null, o.text));
+        b.onclick = () => { b.setAttribute('aria-pressed', 'true'); picks[q] = E.questions[q].options[i].type; setTimeout(() => { q++; paint(); }, 350); };
+        ch.appendChild(b);
       });
-      optionsEl.appendChild(btn);
-    });
-  }
-
-  // ── Render results ────────────────────────────────────────────────────────
-  function renderResults() {
-    var data         = d();
-    var healthyCount = picks.filter(function(t) { return t === 'Healthy'; }).length;
-    var closeCount   = picks.filter(function(t) { return t === 'Close';   }).length;
-    var farCount     = picks.filter(function(t) { return t === 'Far';     }).length;
-    var mixedCount   = picks.filter(function(t) { return t === 'Mixed';   }).length;
-    // 3+ of the same non-mixed type triggers that specific result; everything else → mixed
-    var tier;
-    if      (healthyCount >= 3) tier = data.results.high;
-    else if (closeCount   >= 3) tier = data.results.close;
-    else if (farCount     >= 3) tier = data.results.far;
-    else                        tier = data.results.mid;
-    scoreLbl.textContent = data.scoreLabel;
-    scoreVal.innerHTML   = '<span class="eq-sc-h">💚 ' + healthyCount + '</span>'
-                         + '<span class="eq-sc-c">🔴 ' + closeCount   + '</span>'
-                         + '<span class="eq-sc-f">🔵 ' + farCount     + '</span>'
-                         + '<span class="eq-sc-m">🟡 ' + mixedCount   + '</span>';
-    resultCard.className    = 'eq-result-card ' + tier.tier;
-    resultTitle.textContent = tier.title;
-    resultDesc.textContent  = tier.desc;
-    retakeLbl.textContent   = data.retakeLabel;
-    progFill.style.width    = '100%';
-  }
-
-  // ── Phase transition ──────────────────────────────────────────────────────
-  function showPhase(next) {
-    [phaseIntro, phaseQuiz, phaseResults].forEach(function(p) {
-      p.hidden = true;
-      p.classList.remove('eq-entering');
-    });
-    var el = next === 'intro' ? phaseIntro : next === 'quiz' ? phaseQuiz : phaseResults;
-    el.hidden = false;
-    // Force reflow then add animation class
-    void el.offsetWidth;
-    el.classList.add('eq-entering');
-    phase = next;
-  }
-
-  // ── Language swap (no state reset) ───────────────────────────────────────
-  function applyLang() {
-    if (phase === 'intro')   { renderIntro(); }
-    if (phase === 'quiz')    { renderQuestion(); }
-    if (phase === 'results') { renderResults(); }
-  }
-
-  // ── Language toggle listeners ─────────────────────────────────────────────
-  document.querySelectorAll('.eq-lang-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      if (btn.dataset.lang === lang) return;
-      lang = btn.dataset.lang;
-      document.querySelectorAll('.eq-lang-btn').forEach(function(b) {
-        var active = b.dataset.lang === lang;
-        b.classList.toggle('eq-lang-active', active);
-        b.setAttribute('aria-pressed', active ? 'true' : 'false');
-      });
-      applyLang();
-    });
+      body.appendChild(ch);
+    };
+    paint();
+    sh.repaint = paint;
   });
+}
 
-  // ── Start quiz ────────────────────────────────────────────────────────────
-  startBtn.addEventListener('click', function() {
-    qIndex = 0;
-    picks = [];
-    showPhase('quiz');
-    renderQuestion();
+/* ============================================================ the shell */
+let CUR = null;                   /* the panel on screen, for its cleanup */
+function levelFor(step){ return STEPS[step].lv; }
+function goStep(step, sub){
+  S.dir = step > S.step || (step === S.step && sub >= S.sub) ? 1 : -1;
+  S.view = 'flow'; S.step = step; S.sub = sub;
+  render();
+}
+function go(d){
+  if (S.view === 'lesson') { (d > 0 ? Lesson.next() : Lesson.back()) || (d > 0 ? startActivity() : null); return; }
+  if (S.view === 'board') { S.view = 'flow'; render(); return; }
+  if (S.view !== 'flow') return;
+  const n = SUBS[STEPS[S.step].k].length;
+  let st = S.step, sb = S.sub + d;
+  if (sb >= n) { if (st < STEPS.length - 1) { st++; sb = 0; } else return; }
+  if (sb < 0) {
+    if (st > 0) { st--; sb = SUBS[STEPS[st].k].length - 1; }
+    else if (S.role === 'teacher') { S.view = 'lesson'; Lesson.toEnd(); render(); return; }
+    else return;
+  }
+  goStep(st, sb);
+}
+function startActivity(){ S.view = 'flow'; S.step = 0; S.sub = 0; S.dir = 1; render(); }
+
+function paintRail(){
+  const rail = $('#rail'); rail.innerHTML = '';
+  if (S.view === 'welcome') return;
+  const inner = el('div', 'rail-inner');
+  const add = (label, bnLabel, ico, cls, onClick, n) => {
+    const b = el('button', 'rail-step ' + (cls || '')); b.type = 'button';
+    const r = el('span', 'rail-n'); if (ico) r.appendChild(icon(ico)); else r.textContent = n; b.appendChild(r);
+    const l = el('span', 'rail-lab', label); b.appendChild(l);
+    b.title = label; b.onclick = onClick; inner.appendChild(b);
+    return b;
+  };
+  if (S.view === 'lesson') {
+    Lesson.panels.forEach((P, i) => add(P.rail, P.railBn, null, i === Lesson.i ? 'is-active' : i < Lesson.i ? 'is-done' : '', () => { Lesson.jump(i); render(); }, i + 1));
+    add('The activity', 'কাজ', 'arrow', 'rail-out', startActivity);
+  } else {
+    if (S.role === 'teacher') add('Lesson', 'পাঠ', 'tv', 'rail-out', () => { S.view = 'lesson'; render(); });
+    STEPS.forEach((st, i) => add(st.en, st.bn, st.ico, S.view === 'flow' && i === S.step ? 'is-active' : S.word && st.lv && st.lv <= S.level ? 'is-done' : '', () => goStep(i, 0)));
+  }
+  rail.appendChild(inner);
+  const act = inner.querySelector('.is-active'); if (act) act.scrollIntoView({ inline: 'center', block: 'nearest' });
+}
+function paintFoot(){
+  const bar = $('#actionbar'), dashes = $('#dashes');
+  bar.hidden = S.view === 'welcome';
+  dashes.innerHTML = '';
+  let n = 0, at = 0, en = 'Next', bnT = 'পরের ধাপ', back = true, nextOn = true;
+  if (S.view === 'lesson') {
+    n = Lesson.panels.length; at = Lesson.i;
+    if (Lesson.atEnd()) { en = Lesson.i === n - 1 ? 'Start the activity' : 'Next'; bnT = Lesson.i === n - 1 ? 'কাজ শুরু করুন' : 'পরের ধাপ'; }
+    back = !(Lesson.i === 0 && Lesson.beat === 0);
+  } else if (S.view === 'flow') {
+    n = SUBS[STEPS[S.step].k].length; at = S.sub;
+    const last = S.sub === n - 1;
+    if (last && S.step < STEPS.length - 1) { en = 'Next: ' + STEPS[S.step + 1].en; bnT = 'পরের ধাপ: ' + STEPS[S.step + 1].bn; }
+    if (last && S.step === STEPS.length - 1) nextOn = false;
+    back = S.step > 0 || S.sub > 0 || S.role === 'teacher';
+  } else if (S.view === 'board') { en = 'Back to the activity'; bnT = 'কাজে ফিরুন'; }
+  for (let i = 0; i < n; i++) dashes.appendChild(el('i', 'dash' + (i === at ? ' on' : i < at ? ' done' : '')));
+  $('#next-en').textContent = en; $('#next-bn').textContent = bnT;
+  $('#btn-next').hidden = !nextOn;
+  $('#btn-back').disabled = !back;
+}
+function render(){
+  if (CUR && CUR.cleanup) try { CUR.cleanup(); } catch (e) {}
+  CUR = null; TTS.stop();
+  const wrap = $('#wrap'); wrap.innerHTML = ''; wrap.className = 'wrap';
+  if (S.view === 'welcome') CUR = welcome();
+  else if (S.view === 'lesson') { wrap.classList.add('wide'); CUR = Lesson.mount(); }
+  else if (S.view === 'board') { CUR = el('div', 'panel'); CUR.appendChild(task('chart', 'Our room, this hour', 'এই ঘণ্টায় আমাদের ক্লাস', 'Anonymous. It starts again every hour.', 'নামহীন। প্রতি ঘণ্টায় নতুন করে শুরু হয়।')); CUR.appendChild(boardNode()); CUR.cleanup = () => clearInterval(POLL.timer); }
+  else {
+    const lv = levelFor(S.step);
+    if (S.word && lv > S.level) { S.level = lv; save(); }
+    if (S.step > 0 && !S.word) toast('Using “' + curWord() + '” for now — choose your own feeling in Feel.', 'আপাতত “' + curWord() + '” দেখানো হচ্ছে — ‘অনুভব’ ধাপে নিজের অনুভূতি বেছে নিন।');
+    setFamily(curWord());
+    CUR = SUBS[STEPS[S.step].k][S.sub]();
+    if (S.dir < 0) CUR.classList.add('back');
+  }
+  if (CUR && !CUR.isConnected) wrap.appendChild(CUR);
+  if (CUR && CUR.enter) CUR.enter();
+  paintRail(); paintWordbar(); paintFoot(); measure();
+  $('#stage').scrollTop = 0;
+  const saveView = { view: S.view, step: S.step, sub: S.sub, lesson: typeof Lesson !== 'undefined' ? Lesson.i : 0 };
+  store.set('pos', saveView);
+}
+
+/* ---------- welcome ---------- */
+function welcome(){
+  const p = el('div', 'panel p-welcome');
+  p.appendChild(el('div', 'wl-mark', '😊'));
+  p.appendChild(txt('h1', 'wl-title', 'How are you feeling?', 'আপনার কেমন লাগছে?'));
+  p.appendChild(txt('p', 'wl-sub', 'Name a feeling. Calm the storm. Watch one English word rise.', 'অনুভূতির নাম দিন। ঝড় শান্ত করুন। একটি ইংরেজি শব্দকে উপরে উঠতে দেখুন।'));
+  const row = el('div', 'wl-cards');
+  [['student', 'phone', 'I’m a student', 'আমি শিক্ষার্থী', 'Choose your feeling, then learn its word in seven small steps.', 'নিজের অনুভূতি বেছে নিন, তারপর সাতটি ছোট ধাপে শব্দটি শিখুন।', STEPS.map(s => s.en)],
+   ['teacher', 'tv', 'I’m a teacher', 'আমি শিক্ষক', 'Show the lesson on the projector, then lead the class through the seven steps.', 'প্রজেক্টরে পাঠটি দেখান, তারপর পুরো ক্লাসকে সাতটি ধাপে নিয়ে যান।', ['Lesson'].concat(STEPS.map(s => s.en))]].forEach((c, k) => {
+    const b = el('button', 'wl-card wl-' + c[0]); b.type = 'button'; b.style.animationDelay = (0.1 + k * 0.12) + 's';
+    const i = el('span', 'wl-ico'); i.appendChild(icon(c[1])); b.appendChild(i);
+    b.appendChild(txt('span', 'wl-name', c[2], c[3]));
+    b.appendChild(txt('span', 'wl-desc', c[4], c[5]));
+    const st = el('span', 'wl-steps'); c[6].forEach((x, j) => { if (j) st.appendChild(el('i')); st.appendChild(el('span', null, x)); }); b.appendChild(st);
+    const g = el('span', 'wl-go'); g.appendChild(el('span', null, 'Start')); g.appendChild(icon('arrow')); b.appendChild(g);
+    b.onclick = () => chooseRole(c[0]);
+    row.appendChild(b);
   });
+  p.appendChild(row);
+  p.appendChild(txt('p', 'wl-foot', 'You can change this later in the menu.', 'পরে মেনু থেকে এটি বদলাতে পারবেন।'));
+  return p;
+}
+function chooseRole(r){
+  S.role = r; save();
+  if (r === 'teacher') { setTV(true); S.view = 'lesson'; Lesson.jump(0); }
+  else { setTV(false); S.view = 'flow'; S.step = 0; S.sub = 0; }
+  render();
+}
 
-  // ── Next / finish ─────────────────────────────────────────────────────────
-  nextBtn.addEventListener('click', function() {
-    if (nextBtn.disabled || pending === null) return;
-    picks.push(pending);
-    pending = null;
-    qIndex++;
-    if (qIndex < TOTAL) {
-      renderQuestion();
-    } else {
-      showPhase('results');
-      renderResults();
-    }
+/* ---------- menu ---------- */
+function openMenu(){
+  openSheet(sh => {
+    sh.appendChild(txt('h2', null, 'Menu', 'মেনু')); sh.lastChild.id = 'sheet-h';
+    const list = el('div', 'menu-list');
+    const item = (ico, en, sub, fn) => {
+      const b = el('button', 'menu-item'); b.type = 'button';
+      const m = el('span', 'mi'); m.appendChild(icon(ico)); b.appendChild(m);
+      const t = el('span'); t.appendChild(el('span', null, en)); if (sub) t.appendChild(el('small', null, sub)); b.appendChild(t);
+      b.onclick = () => { closeSheet(); fn(); };
+      list.appendChild(b);
+    };
+    item('tv', 'The lesson for the projector', 'Seven animated panels — ← → to move, A to autoplay', () => { if (S.role !== 'teacher') { S.role = 'teacher'; save(); } setTV(true); S.view = 'lesson'; render(); });
+    item('heart', 'The student activity', 'Feel · Hear · Partners · Patterns · Say · Idioms · Share', () => { S.view = 'flow'; render(); });
+    item('chart', 'Class board (live)', 'This hour’s anonymous feelings — good on the projector', () => { S.view = 'board'; render(); });
+    item('compass', 'Room to choose', 'Three ways to hold a feeling, and a five-question reflection', openRTC);
+    list.appendChild(el('div', 'menu-sep'));
+    item('print', 'Print the worksheet for “' + curWord() + '”', 'One A4 page — for students without phones', () => Print.word(curWord()));
+    item('print', 'Print a blank worksheet', 'One A4 page — works with any feeling word', () => Print.blank());
+    list.appendChild(el('div', 'menu-sep'));
+    /* speech settings */
+    const vr = el('div', 'menu-row'); vr.appendChild(el('span', null, 'Voice'));
+    const vs = el('select'); vs.setAttribute('aria-label', 'Voice');
+    const V = TTS.voices();
+    if (!V.length) vs.appendChild(el('option', null, 'No English voice on this device'));
+    V.forEach(v => { const o = el('option', null, v.name + ' (' + v.lang + ')'); o.value = v.name; o.selected = TTS.voice && TTS.voice.name === v.name; vs.appendChild(o); });
+    vs.onchange = () => { TTS.voice = V.find(v => v.name === vs.value) || null; store.set('voice', vs.value); TTS.say('How are you feeling today?'); };
+    vr.appendChild(vs); list.appendChild(vr);
+    const rr = el('div', 'menu-row'); rr.appendChild(el('span', null, 'Speed'));
+    const rs = el('select'); rs.setAttribute('aria-label', 'Speed');
+    [[0.75, 'Slow'], [0.9, 'Steady'], [1, 'Natural']].forEach(([v, l]) => { const o = el('option', null, l); o.value = v; o.selected = TTS.rate === v; rs.appendChild(o); });
+    rs.onchange = () => { TTS.rate = +rs.value; store.set('rate', TTS.rate); };
+    rr.appendChild(rs); list.appendChild(rr);
+    list.appendChild(el('div', 'menu-sep'));
+    item('users', S.role === 'teacher' ? 'Switch to student view' : 'Switch to teacher view', null, () => chooseRole(S.role === 'teacher' ? 'student' : 'teacher'));
+    item('reset', 'Start over', 'Clears the chosen feeling and your sentences on this device', () => { S.word = null; S.level = 0; S.storm0 = S.storm1 = null; S.idiom = null; S.frames = { because: '', stake: '', need: '' }; save(); setFamily(null); S.view = 'welcome'; render(); });
+    sh.appendChild(list);
+    const t = el('div', 'teach');
+    t.innerHTML = '<h3>For the teacher</h3><ol>' +
+      '<li><b>Lesson (10 min, projected).</b> Six panels. Talk over each picture; → moves one beat. <kbd>A</kbd> autoplays at a slow reading pace; <kbd>B</kbd> shows Bangla; <kbd>P</kbd> switches the TV look.</li>' +
+      '<li><b>Demo one word together.</b> Pick a feeling on the projector and run Hear and Partners with the whole class.</li>' +
+      '<li><b>Pairs on phones (25–30 min).</b> Each student chooses their own feeling and climbs the seven steps. Students without phones use the printed worksheet; you play the listening from the projector.</li>' +
+      '<li><b>Share (5 min).</b> Open the Class board on the projector. Read a few anonymous reasons aloud — never ask who wrote them.</li></ol>' +
+      '<p style="margin:8px 0 0">Nothing is locked — any step can be opened at any time.</p>';
+    sh.appendChild(t);
   });
+}
 
-  // ── Retake ────────────────────────────────────────────────────────────────
-  retakeBtn.addEventListener('click', function() {
-    qIndex = 0;
-    picks = [];
-    showPhase('intro');
-    renderIntro();
-  });
+/* ---------- wiring ---------- */
+$('#btn-next').onclick = () => go(1);
+$('#btn-back').onclick = () => go(-1);
+$('#btn-menu').onclick = openMenu;
+$('#btn-tv').onclick = () => setTV(!S.tv);
+$$('.langsw button').forEach(b => b.onclick = () => { setLang(b.dataset.lang); const sh = $('#sheet'); if (sh.classList.contains('show') && sh.repaint) sh.repaint(); });
+document.addEventListener('keydown', e => {
+  if (e.target.closest('input,textarea,select') || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.key === 'Escape') { closeSheet(); return; }
+  if ($('#sheet').classList.contains('show')) return;
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); go(1); }
+  else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
+  else if (e.key === ' ' && S.view === 'lesson') { e.preventDefault(); go(1); }
+  else if (e.key === 'p' || e.key === 'P') setTV(!S.tv);
+  else if (e.key === 'b' || e.key === 'B') setLang(S.lang === 'bn' ? 'en' : 'bn');
+  else if ((e.key === 'a' || e.key === 'A') && S.view === 'lesson') Lesson.toggleAuto();
+});
+new ResizeObserver(measure).observe($('#appbar'));
 
-  // ── Boot ──────────────────────────────────────────────────────────────────
-  renderIntro();
-}());
+function boot(){
+  setLang(S.lang);
+  const q = new URLSearchParams(location.search);
+  setTV(q.has('tv') ? true : S.role === 'teacher' ? store.get('tv', true) : false);
+  if (S.word) setFamily(S.word);
+  const pos = store.get('pos', null);
+  if (!S.role) S.view = 'welcome';
+  else if (q.get('role')) { S.view = S.role === 'teacher' ? 'lesson' : 'flow'; }
+  else if (pos && pos.view && pos.view !== 'welcome') { S.view = pos.view === 'board' ? 'flow' : pos.view; S.step = Math.min(pos.step || 0, STEPS.length - 1); S.sub = Math.min(pos.sub || 0, SUBS[STEPS[S.step].k].length - 1); if (pos.view === 'lesson') Lesson.jump(pos.lesson || 0); }
+  else S.view = S.role === 'teacher' ? 'lesson' : 'flow';
+  const st = q.get('step'); if (st) { const i = STEPS.findIndex(x => x.k === st); if (i >= 0) { S.view = 'flow'; S.step = i; S.sub = +(q.get('sub') || 0); } }
+  render();
+}
+window.addEventListener('DOMContentLoaded', boot);
