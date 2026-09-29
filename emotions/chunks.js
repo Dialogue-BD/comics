@@ -801,7 +801,7 @@ Isolated: {
       ['an island', 'a person alone and separate', 'I feel like *an island*.']]
 },
 Abandoned: {
-  p: ['feel ~', 'totally ~', '~ by friends', 'a ~ house', 'leave someone feeling ~'],
+  p: ['feel ~', 'totally ~', '~ by friends', 'an ~ house', 'leave someone feeling ~'],
   g: [['abandoned by + person', 'I felt ~ [by] my friends.', 'from|with'],
       ['feel abandoned when + clause', 'I feel ~ [when] nobody calls.', 'what|which'],
       ['leave + someone + feeling abandoned', 'It [left] me feeling ~.', 'let|took'],
