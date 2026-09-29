@@ -1,0 +1,50 @@
+{
+"When the price was so low, I smelled a rat.": [
+"suspicious/talk-01.mp3",
+3.31,
+0.08,
+0.15
+],
+"There\u2019s something fishy about this email.": [
+"suspicious/talk-02.mp3",
+2.42,
+0.08,
+0.15
+],
+"I take his stories with a pinch of salt.": [
+"suspicious/talk-03.mp3",
+2.4,
+0.08,
+0.15
+],
+"I smelled a rat the moment she changed her story.": [
+"suspicious/talk-04.mp3",
+3.17,
+0.08,
+0.15
+],
+"Something about the whole thing just didn't add up.": [
+"suspicious/talk-05.mp3",
+2.86,
+0.08,
+0.15
+],
+"My gut was screaming that something wasn't right.": [
+"suspicious/talk-06.mp3",
+3.14,
+0.08,
+0.15
+],
+"I had a sneaking suspicion something was going on behind the scenes.": [
+"suspicious/talk-07.mp3",
+4.08,
+0.08,
+0.15
+],
+"He kept giving me the runaround, which only made things worse.": [
+"suspicious/talk-08.mp3",
+3.7,
+0.08,
+0.15
+]
+}
