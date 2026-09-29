@@ -77,7 +77,10 @@ const ICONS = {
   wind: 'M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h8',
   bulb: 'M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z',
   hand: 'M8 13V5.5a1.5 1.5 0 0 1 3 0V12M11 11V4.5a1.5 1.5 0 0 1 3 0V12M14 11.5V6a1.5 1.5 0 0 1 3 0v7c0 4-2.5 7-6 7-2.5 0-4-1.2-5.5-3.5L3.8 13a1.5 1.5 0 0 1 2.4-1.8L8 13',
-  target: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10z M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2z'
+  target: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10z M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2z',
+  vol: 'M4 9h4l5-4v14l-5-4H4z M16 9a4 4 0 0 1 0 6 M18.5 6.5a8 8 0 0 1 0 11',
+  mute: 'M4 9h4l5-4v14l-5-4H4z M17 9l5 6M22 9l-5 6',
+  eyes: 'M3 12c3-4 6-6 9-6s6 2 9 6c-3 4-6 6-9 6s-6-2-9-6z M4 20l16-16'
 };
 function icon(name, cls){
   const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -256,6 +259,111 @@ function toast(en, bnText){
   toastT = setTimeout(() => t.classList.remove('show'), 3800);
 }
 
+/* ------------------------------------------------------------- sound
+   Tiny synthesised cues, no files to download: a bright two-note chime for
+   a right answer, a soft low note for a wrong one, a rising arpeggio when
+   the word climbs a level. They sit well under the speech, and the speaker
+   button in the header turns them off (remembered on this device). */
+const SFX = {
+  on: store.get('sfx', true), ctx: null,
+  ac(){
+    try {
+      if (!this.ctx) { const C = window.AudioContext || window.webkitAudioContext; if (!C) return null; this.ctx = new C(); }
+      if (this.ctx.state === 'suspended') this.ctx.resume();
+    } catch (e) { return null; }
+    return this.ctx;
+  },
+  tone(f, t0, dur, type, vol, to){
+    const a = this.ac(); if (!a) return;
+    const o = a.createOscillator(), g = a.createGain(), t = a.currentTime + t0;
+    o.type = type || 'sine'; o.frequency.setValueAtTime(f, t);
+    if (to) o.frequency.exponentialRampToValueAtTime(to, t + dur);
+    g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(vol || .1, t + .012); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + dur + .03);
+  },
+  play(k){
+    if (!this.on) return;
+    const T = (...a) => this.tone(...a);
+    const cues = {
+      tap: () => T(1320, 0, .05, 'sine', .035),
+      ok: () => { T(784, 0, .16, 'sine', .12); T(1175, .09, .26, 'sine', .11); },
+      no: () => T(247, 0, .2, 'triangle', .12, 185),
+      hit: () => { T(1046, 0, .09, 'sine', .08); T(1568, .045, .12, 'sine', .055); },
+      miss: () => T(330, 0, .08, 'triangle', .045),
+      count: () => T(660, 0, .12, 'sine', .08),
+      go: () => { T(880, 0, .12, 'sine', .09); T(1320, .07, .2, 'sine', .08); },
+      level: () => [523, 659, 784, 1046, 1319].forEach((f, i) => T(f, i * .085, .32, 'sine', .1)),
+      done: () => [659, 784, 988, 1319].forEach((f, i) => T(f, i * .09, .42, 'triangle', .08))
+    };
+    try { cues[k] && cues[k](); } catch (e) {}
+  }
+};
+function paintSound(){
+  const b = $('#btn-sound'); b.replaceChildren(icon(SFX.on ? 'vol' : 'mute'));
+  b.setAttribute('aria-pressed', String(SFX.on)); b.setAttribute('aria-label', SFX.on ? 'Sound effects on' : 'Sound effects off');
+}
+
+/* ------------------------------------------------------------- feedback
+   The sheet that slides up from the bottom after every answer: green with
+   the chunk you just made, or clay with a nudge to try again. */
+const PRAISE = [['Nice!', 'দারুণ!'], ['Great!', 'চমৎকার!'], ['Well done!', 'খুব ভালো!'], ['Exactly!', 'একদম ঠিক!'], ['Yes!', 'হ্যাঁ!']];
+let fbT = 0;
+function feedback(ok, subHTML, opts = {}){
+  const f = $('#fb');
+  const [h, hb] = ok ? PRAISE[Math.random() * PRAISE.length | 0] : ['Not quite — try again', 'হয়নি — আবার চেষ্টা করুন'];
+  f.className = 'fb ' + (ok ? 'ok' : 'no');
+  f.innerHTML = '';
+  const i = el('span', 'fb-ico'); i.appendChild(icon(ok ? 'check' : 'x')); f.appendChild(i);
+  const t = el('div', 'fb-txt');
+  t.appendChild(bn(el('div', 'fb-h', h), hb, true));
+  if (subHTML) { const s2 = el('div', 'fb-s'); s2.innerHTML = subHTML; t.appendChild(s2); }
+  f.appendChild(t);
+  if (opts.say) { const b = el('button', 'roundbtn'); b.type = 'button'; b.setAttribute('aria-label', 'Hear it'); b.appendChild(icon('play')); b.onclick = () => TTS.say(opts.say); f.appendChild(b); }
+  requestAnimationFrame(() => f.classList.add('show'));
+  SFX.play(ok ? 'ok' : 'no');
+  if (navigator.vibrate) try { navigator.vibrate(ok ? 12 : [20, 40, 20]); } catch (e) {}
+  clearTimeout(fbT);
+  fbT = setTimeout(() => f.classList.remove('show'), opts.ms || (ok ? 1500 : 1300));
+}
+function hideFeedback(){ clearTimeout(fbT); $('#fb').classList.remove('show'); }
+/* gold squares — the Brand Book's bullet — thrown outwards once */
+function burst(host, n = 22){
+  const b = el('div', 'burst');
+  for (let k = 0; k < n; k++) {
+    const i = el('i'), a = Math.random() * Math.PI * 2, d = 90 + Math.random() * 140;
+    i.style.setProperty('--dx', Math.cos(a) * d + 'px'); i.style.setProperty('--dy', Math.sin(a) * d - 40 + 'px');
+    i.style.setProperty('--rot', (Math.random() * 540 - 270) + 'deg'); i.style.animationDelay = (Math.random() * .12) + 's';
+    b.appendChild(i);
+  }
+  host.appendChild(b);
+  setTimeout(() => b.remove(), 1800);
+}
+/* the word climbs a rung: a short moment of its own */
+let lvlT = 0;
+function celebrate(level){
+  const o = $('#lvl'); o.innerHTML = '';
+  const c = el('div', 'lvl-card');
+  const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 240 170'); svg.setAttribute('class', 'lv-berg');
+  ART.iceberg(svg, 120, 70, 70, 46, { x0: 0, x1: 240, top: 0, bottom: 170, clouds: false, sunX: 200 });
+  const Y = [150, 128, 104, 58, 44, 30], from = level > 1 ? Y[level - 2] : 170;
+  const w = G(svg, { cls: 'lv-word', style: `transform:translate(120px,${from}px)` });
+  N(w, 'rect', { x: -38, y: -12, width: 76, height: 24, rx: 12, fill: getComputedStyle(document.body).getPropertyValue('--fi').trim() || '#6B3F80', stroke: '#fff', 'stroke-width': 2 });
+  N(w, 'text', { x: 0, y: 5, 'font-size': 12, 'font-weight': 900, fill: '#fff', 'text-anchor': 'middle', 'font-family': 'Public Sans,sans-serif', text: lower(curWord()) });
+  c.appendChild(svg);
+  c.appendChild(bn(el('div', 'lvl-k', 'Your word rose'), 'আপনার শব্দটি উপরে উঠল', true));
+  c.appendChild(el('div', 'lvl-h', 'Level ' + level));
+  c.appendChild(bn(el('div', 'lvl-s', LEVELS[level - 1][0]), LEVELS[level - 1][1]));
+  o.appendChild(c);
+  o.classList.add('show');
+  burst(c);
+  SFX.play('level');
+  requestAnimationFrame(() => requestAnimationFrame(() => { w.style.transform = `translate(120px,${Y[level - 1]}px)`; }));
+  const close = () => { o.classList.remove('show'); clearTimeout(lvlT); };
+  o.onclick = close;
+  clearTimeout(lvlT); lvlT = setTimeout(close, 2300);
+  const b = document.querySelector('.wb-lvl'); if (b) { b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); }
+}
+
 /* -------------------------------------------------------- language, TV */
 function setLang(l){
   S.lang = l;
@@ -303,47 +411,45 @@ const LEVELS = [
 function task(ico, en, bnText, leadEn, leadBn){
   const t = el('div', 'task');
   const i = el('span', 'task-ico'); i.appendChild(icon(ico)); t.appendChild(i);
-  const x = el('div', 'task-txt');
-  x.appendChild(txt('h2', 'h-title', en, bnText));
-  if (leadEn) x.appendChild(txt('p', 'lead', leadEn, leadBn));
-  t.appendChild(x);
+  const k = el('div', 'task-kick');
+  if (S.view === 'flow') {
+    const st = STEPS[S.step], n = SUBS[st.k].length;
+    k.appendChild(el('span', null, 'Step ' + (S.step + 1) + ' · ' + st.en));
+    if (n > 1) k.appendChild(el('span', 'of', (S.sub + 1) + ' / ' + n));
+  } else k.appendChild(el('span', null, 'Our class'));
+  t.appendChild(k);
+  const h = txt('h2', 'h-title task-head', en, bnText); t.appendChild(h);
+  if (leadEn) { const x = el('div', 'task-txt'); x.appendChild(txt('p', 'lead', leadEn, leadBn)); t.appendChild(x); }
   return t;
 }
 function wordCard(w, opts = {}){
   const c = el('div', 'wcard');
   c.appendChild(el('div', 'emo', emoji(w)));
   c.appendChild(el('div', 'w', w));
+  const meta = el('div', 'meta');
   const ipa = EMO.pron[lower(w)];
-  if (ipa) c.appendChild(el('div', 'ipa', ipa));
-  const b = el('div', 'bnw', bnWord(w)); b.lang = 'bn'; c.appendChild(b);
+  if (ipa) meta.appendChild(el('span', 'ipa', ipa));
+  if (bnWord(w)) { const b = el('span', 'bnw', bnWord(w)); b.lang = 'bn'; meta.appendChild(b); }
+  c.appendChild(meta);
   if (opts.meaning !== false && EMO.info[w]) {
     const m = el('p', 'mean');
-    const b0 = el('b', null, w + ': '); m.appendChild(b0);
+    m.appendChild(el('b', null, w + ': '));
     m.appendChild(el('span', null, 'when ' + EMO.info[w][0] + '.'));
     c.appendChild(m);
   }
   const say = el('button', 'roundbtn'); say.type = 'button'; say.setAttribute('aria-label', 'Hear the word');
-  say.style.cssText = 'position:absolute;right:12px;top:12px';
-  say.appendChild(icon('play')); say.onclick = () => TTS.say(w);
+  say.appendChild(icon('vol')); say.onclick = () => TTS.say(w);
   c.appendChild(say);
   return c;
 }
-function playBtn(onToggle){
-  const b = el('button', 'play'); b.type = 'button'; b.setAttribute('aria-label', 'Play');
+function playBtn(onToggle, small){
+  const b = el('button', 'play' + (small ? ' sm' : '')); b.type = 'button'; b.setAttribute('aria-label', 'Play');
   b.appendChild(icon('play'));
   b.onclick = () => onToggle(b);
   b.setOn = on => { b.classList.toggle('is-on', on); b.replaceChildren(icon(on ? 'stop' : 'play')); b.setAttribute('aria-label', on ? 'Stop' : 'Play'); };
   return b;
 }
-function weather(n){
-  /* 1 clear sun … 5 thunderstorm: a wordless storm-size scale */
-  const s = ['<circle cx="24" cy="24" r="9" fill="#E9B949"/><g stroke="#E9B949" stroke-width="3" stroke-linecap="round"><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5L37 37M11 37l3.5-3.5M33.5 14.5L37 11"/></g>',
-    '<circle cx="18" cy="18" r="8" fill="#E9B949"/><path d="M14 36h20a7 7 0 0 0 0-14 9 9 0 0 0-17 3 5.5 5.5 0 0 0-3 11z" fill="#fff" stroke="#8FA3AD" stroke-width="2"/>',
-    '<path d="M10 34h26a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-5 13z" fill="#D5DEE3" stroke="#6C8490" stroke-width="2"/>',
-    '<path d="M10 28h26a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-5 13z" fill="#A9B8C0" stroke="#566E7A" stroke-width="2"/><g stroke="#3F7FA6" stroke-width="3" stroke-linecap="round"><path d="M15 33l-2 6M24 33l-2 6M33 33l-2 6"/></g>',
-    '<path d="M10 26h26a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-5 13z" fill="#6E7F89" stroke="#3E4E57" stroke-width="2"/><path d="M25 26l-6 10h6l-3 9 10-13h-6l3-6z" fill="#F2C443" stroke="#9A7616" stroke-width="1.5" stroke-linejoin="round"/>'][n - 1];
-  return '<svg viewBox="0 0 48 48" aria-hidden="true">' + s + '</svg>';
-}
+function weather(n){ return ART.weather(n); }
 function stormScale(key, onPick){
   const row = el('div', 'wx'); row.setAttribute('role', 'group'); row.setAttribute('aria-label', 'How strong is the feeling, 1 to 5');
   for (let n = 1; n <= 5; n++) {
@@ -351,21 +457,21 @@ function stormScale(key, onPick){
     b.innerHTML = weather(n) + '<span class="n">' + n + '</span>';
     b.setAttribute('aria-pressed', String(S[key] === n));
     b.setAttribute('aria-label', 'Strength ' + n + ' of 5');
-    b.onclick = () => { S[key] = n; save(); [...row.children].forEach((x, j) => x.setAttribute('aria-pressed', String(j + 1 === n))); onPick && onPick(n); };
+    b.onclick = () => { S[key] = n; save(); SFX.play('tap'); [...row.children].forEach((x, j) => x.setAttribute('aria-pressed', String(j + 1 === n))); onPick && onPick(n); };
     row.appendChild(b);
   }
-  return row;
+  const wrap = el('div');
+  wrap.appendChild(row);
+  const lab = el('div', 'wx-lab'); lab.appendChild(el('span', null, 'calm')); lab.appendChild(el('span', null, 'stormy'));
+  wrap.appendChild(lab);
+  return wrap;
 }
 /* the mini iceberg in the word bar: the dot is the word */
 function bergMini(level){
-  const y = [27, 23.5, 19.5, 11, 7.5, 4][Math.max(0, level - 1)] ;
-  return '<svg class="wb-berg" viewBox="0 0 112 30" aria-hidden="true">' +
-    '<rect x="0" y="13" width="112" height="17" rx="3" fill="var(--sea-t)"/>' +
-    '<path d="M0 13h112" stroke="var(--sea)" stroke-width="1.5" stroke-dasharray="3 3"/>' +
-    '<path d="M44 13l9-10 5 5 4-3 8 8z" fill="#fff" stroke="var(--sea)" stroke-width="1.2"/>' +
-    '<path d="M38 13l32 0 6 8-12 8H44l-10-7z" fill="var(--ice-shade)" stroke="var(--sea)" stroke-width="1.2"/>' +
-    (level ? '<circle cx="57" cy="' + y + '" r="3.6" fill="var(--fi)" stroke="#fff" stroke-width="1.5"/>' : '<circle cx="57" cy="29" r="2.6" fill="var(--fi)" opacity=".5"/>') +
-    '<text x="82" y="10" font-size="8.5" font-weight="800" fill="var(--sea-deep)" font-family="Public Sans,sans-serif">' + level + '/6</text></svg>';
+  return '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M2 16h28v14H2z" fill="#8CC3D8"/><path d="M9 16l5-10 3 3 3-5 4 12z" fill="#fff" stroke="#1F5C7A" stroke-width="1.3" stroke-linejoin="round"/>' +
+    '<path d="M8 16l-2 7 5 5h9l5-6-2-6z" fill="#E4F3F8" stroke="#1F5C7A" stroke-width="1.3" stroke-linejoin="round" opacity=".95"/>' +
+    '<path d="M1 16h30" stroke="#123F57" stroke-width="1.4" stroke-dasharray="2 2"/>' +
+    '<circle cx="16" cy="' + [29, 26, 22, 13, 10, 7][Math.max(0, level - 1)] + '" r="' + (level ? 3.2 : 0) + '" fill="var(--fi)" stroke="#fff" stroke-width="1.4"/></svg>';
 }
 function setFamily(w){
   document.body.className = document.body.className.replace(/\bfam-\w+/g, '').trim();
@@ -384,19 +490,26 @@ function paintWordbar(){
   chip.appendChild(el('span', 'wb-emo', emoji(S.word)));
   chip.appendChild(el('span', null, S.word));
   wb.appendChild(chip);
-  const b = el('span'); b.innerHTML = bergMini(S.level); b.title = 'How high the word has risen';
-  wb.appendChild(b.firstChild);
+  const lv = el('span', 'wb-lvl'); lv.title = 'How high your word has risen in the iceberg';
+  lv.innerHTML = bergMini(S.level) + '<span>Level <b>' + S.level + '</b>/6</span>';
+  wb.appendChild(lv);
   measure();
 }
-
 /* ============================================================ FEEL */
 function feelTile(name, cls, onPick, pressed, keep){
   const b = el('button', 'ftile f-' + famKey(name) + (keep ? ' keep' : '')); b.type = 'button';
   b.setAttribute('aria-pressed', String(!!pressed));
   b.appendChild(el('span', 'emo', emoji(name)));
-  b.appendChild(el('span', 'nm', keep ? 'Keep “' + name + '”' : name));
-  if (!keep) { const x = el('span', 'bn', bnWord(name)); x.lang = 'bn'; b.appendChild(x); }
-  b.onclick = () => { onPick(name); b.setAttribute('aria-pressed', 'true'); setTimeout(() => go(1), 420); };
+  const t = el('span'); t.style.display = 'flex'; t.style.flexDirection = 'column'; t.style.alignItems = keep ? 'flex-start' : 'center';
+  t.appendChild(el('span', 'nm', keep ? 'Keep “' + name + '”' : name));
+  if (!keep) { const x = el('span', 'bn', bnWord(name)); x.lang = 'bn'; t.appendChild(x); }
+  b.appendChild(t);
+  const c = el('span', 'chk'); c.appendChild(icon('check')); b.appendChild(c);
+  b.onclick = () => {
+    b.parentNode.querySelectorAll('.ftile').forEach(x => x.setAttribute('aria-pressed', 'false'));
+    onPick(name); b.setAttribute('aria-pressed', 'true'); SFX.play('tap');
+    setTimeout(() => go(1), 520);
+  };
   return b;
 }
 function scrBig(){
@@ -450,7 +563,7 @@ function trail(){
   const t = el('div', 'trail');
   const w = curWord(), chain = [];
   let x = w; while (x) { chain.unshift(x); x = PARENT[x]; }
-  chain.forEach((c, i) => { if (i) t.appendChild(el('span', null, '›')); t.appendChild(el(i === chain.length - 1 ? 'b' : 'span', null, emoji(c) + ' ' + c)); });
+  chain.forEach((c, i) => { if (i) t.appendChild(el('span', 'sep', '›')); t.appendChild(el(i === chain.length - 1 ? 'b' : 'span', 'tc', emoji(c) + ' ' + c)); });
   return t;
 }
 function scrStorm(){
@@ -463,11 +576,14 @@ function scrStorm(){
 function scrBreathe(){
   const p = el('div', 'panel');
   p.appendChild(task('wind', 'Breathe with the circle', 'বৃত্তের সঙ্গে শ্বাস নিন', 'Three slow breaths. In as it grows, out as it shrinks.', 'তিনটি ধীর শ্বাস। বড় হলে শ্বাস নিন, ছোট হলে ছাড়ুন।'));
-  const box = el('div', 'breath');
+  const box = el('div', 'breath card'); box.style.position = 'relative';
   box.innerHTML = '<div class="breath-ring"><svg viewBox="0 0 220 220" aria-hidden="true">' +
-    '<circle cx="110" cy="110" r="104" fill="none" stroke="var(--sea-t)" stroke-width="3"/>' +
-    '<circle class="breath-core" cx="110" cy="110" r="96" fill="var(--sea-t)" stroke="var(--sea)" stroke-width="2" style="transform:scale(.45)"/>' +
-    '<text x="110" y="121" text-anchor="middle" font-size="34" font-family="Public Sans,sans-serif" font-weight="800" fill="var(--sea-deep)" class="breath-n"></text></svg></div>' +
+    '<defs><radialGradient id="brg" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#CFE7F2"/><stop offset="1" stop-color="#6FA7C0"/></radialGradient></defs>' +
+    '<circle cx="110" cy="110" r="106" fill="none" stroke="#CFE7F2" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>' +
+    '<g class="breath-core" style="transform:scale(.45)">' +
+    [0, 60, 120, 180, 240, 300].map(a => '<ellipse cx="110" cy="62" rx="34" ry="52" fill="#8CC3D8" opacity=".28" transform="rotate(' + a + ' 110 110)"/>').join('') +
+    '<circle cx="110" cy="110" r="72" fill="url(#brg)" stroke="#fff" stroke-width="4"/></g>' +
+    '<text x="110" y="122" text-anchor="middle" font-size="36" font-family="Spectral,Georgia,serif" font-weight="600" fill="#123F57" class="breath-n"></text></svg></div>' +
     '<div class="breath-lab" aria-live="polite"></div><div class="breath-dots"><i></i><i></i><i></i></div>';
   const start = el('button', 'btn ghost'); start.type = 'button';
   bn(start.appendChild(el('span', null, 'Start')), 'শুরু', true);
@@ -487,62 +603,175 @@ function scrBreathe(){
       timers.push(setTimeout(() => { core.style.transitionDuration = '6s'; core.style.transform = 'scale(.45)'; lab.textContent = 'Breathe out'; }, t));
       for (let s = 0; s < 6; s++) timers.push(setTimeout(() => { num.textContent = 6 - s; }, t + s * 1000));
       t += 6000;
-      timers.push(setTimeout(() => { dots[k].classList.add('on'); }, t - 50));
+      timers.push(setTimeout(() => { dots[k].classList.add('on'); SFX.play('tap'); }, t - 50));
     }
-    timers.push(setTimeout(() => { lab.textContent = 'Well done'; num.textContent = '✓'; start.hidden = false; start.firstChild.textContent = 'Again'; }, t));
+    timers.push(setTimeout(() => { lab.textContent = 'Well done'; num.textContent = '✓'; start.hidden = false; start.firstChild.textContent = 'Again'; SFX.play('done'); burst(box, 14); }, t));
   };
   p.cleanup = clear;
   return p;
 }
 
 /* ============================================================ HEAR */
+/* The listening stage: the word at the centre, one bead on the ring for
+   every line of the flood. Each bead lights as its line is spoken, and a
+   ripple leaves the word — so a student can watch the repetitions pile up
+   without reading anything. */
+function listenStage(w, L){
+  const st = el('div', 'stagebox');
+  const n = L.length, R = 132;
+  const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 320 320'); svg.setAttribute('class', 'ls-svg');
+  N(svg, 'circle', { cx: 160, cy: 160, r: 150, fill: ART.grad(svg, [['#fff', 0, 1], ['#fff', 1, 0]], { radial: true, cx: '50%', cy: '50%', r: '50%' }) });
+  N(svg, 'circle', { cx: 160, cy: 160, r: R, fill: 'none', stroke: 'var(--rule-strong)', 'stroke-width': 2, 'stroke-dasharray': '2 7', 'stroke-linecap': 'round' });
+  const bars = G(svg, { cls: 'ls-bars' });
+  for (let k = 0; k < 36; k++) {
+    const a = k / 36 * Math.PI * 2;
+    N(bars, 'line', { x1: 160 + 74 * Math.cos(a), y1: 160 + 74 * Math.sin(a), x2: 160 + 86 * Math.cos(a), y2: 160 + 86 * Math.sin(a), stroke: 'var(--fc)', 'stroke-width': 5, 'stroke-linecap': 'round', style: `animation-delay:${(k % 6) * .11}s;transform-origin:160px 160px` });
+  }
+  const beads = L.map((_, k) => {
+    const a = -Math.PI / 2 + k / n * Math.PI * 2;
+    return N(svg, 'circle', { cx: 160 + R * Math.cos(a), cy: 160 + R * Math.sin(a), r: 7, class: 'bead' });
+  });
+  st.appendChild(svg);
+  const core = el('div', 'ls-core');
+  core.appendChild(el('span', 'ls-emo', emoji(w)));
+  core.appendChild(el('span', 'ls-w', lower(w)));
+  st.appendChild(core);
+  st.light = k => {
+    beads.forEach((b, j) => b.classList.toggle('on', j <= k));
+    const rp = el('span', 'ripple'); st.appendChild(rp); setTimeout(() => rp.remove(), 1600);
+  };
+  st.reset = () => beads.forEach(b => b.classList.remove('on'));
+  return st;
+}
 function scrListen(){
   const w = curWord(), p = el('div', 'panel');
-  p.appendChild(task('ear', 'Just listen', 'শুধু শুনুন', 'You will hear “' + lower(w) + '” many times. Don’t read. Don’t write. Just listen.', 'শব্দটি অনেকবার শুনবেন। পড়বেন না, লিখবেন না — শুধু শুনুন।'));
-  p.appendChild(wordCard(w, { meaning: false }));
+  p.appendChild(task('ear', 'Just listen', 'শুধু শুনুন', 'You will hear “' + lower(w) + '” again and again. Don’t read. Don’t write. Just listen.', 'শব্দটি বারবার শুনবেন। পড়বেন না, লিখবেন না — শুধু শুনুন।'));
   const L = floodLines(w);
   const box = el('div', 'listen card');
-  const meter = el('div', 'meter'); for (let i = 0; i < 7; i++) meter.appendChild(el('i'));
-  const row = el('div', 'listen-row');
-  const drops = el('div', 'drops'); L.forEach(() => drops.appendChild(el('i')));
+  const stage = listenStage(w, L);
+  const count = el('div', 'ls-count');
+  const setCount = k => { count.innerHTML = '<b>' + k + '</b> / ' + L.length; };
+  setCount(0);
   const b = playBtn(btn => {
-    if (btn.classList.contains('is-on')) { TTS.stop(); btn.setOn(false); box.classList.remove('live'); return; }
-    btn.setOn(true); box.classList.add('live');
-    [...drops.children].forEach(d => d.classList.remove('on'));
-    TTS.list(L, { onLine: i => drops.children[i].classList.add('on'), onDone: () => { btn.setOn(false); box.classList.remove('live'); } });
+    if (btn.classList.contains('is-on')) { TTS.stop(); btn.setOn(false); box.classList.remove('playing'); return; }
+    btn.setOn(true); box.classList.add('playing'); stage.reset(); setCount(0);
+    TTS.list(L, { onLine: i => { stage.light(i); setCount(i + 1); }, onDone: () => { btn.setOn(false); box.classList.remove('playing'); SFX.play('done'); } });
   });
-  row.appendChild(b); row.appendChild(meter);
-  box.appendChild(row); box.appendChild(drops);
-  box.appendChild(txt('p', 'small', 'Each dot is one time you hear it.', 'প্রতিটি বিন্দু মানে একবার শোনা।'));
+  box.appendChild(stage);
+  const row = el('div', 'listen-row'); row.appendChild(b); row.appendChild(count); box.appendChild(row);
+  const tip = el('div', 'ls-tip'); tip.appendChild(icon('eyes')); tip.appendChild(bn(el('span', null, 'Close your eyes if it helps.'), 'দরকার হলে চোখ বন্ধ করুন।', true));
+  box.appendChild(tip);
   p.appendChild(box);
   p.cleanup = () => TTS.stop();
   return p;
 }
+
+/* Catch the word: a real listening game. Each line of the flood is a
+   window; a tap while (or just after) a line that still holds an uncaught
+   "anxious" is a catch, anything else is an extra. Three-two-one to start,
+   a pop and a +1 for every catch, beads that fill as the lines go by, and
+   stars at the end. */
 function scrCatch(){
   const w = curWord(), p = el('div', 'panel');
-  p.appendChild(task('hand', 'Catch the word', 'শব্দটি ধরুন', 'Listen again. Tap the big button every time you hear “' + lower(w) + '”.', 'আবার শুনুন। শব্দটি যতবার শুনবেন, ততবার বড় বোতামে চাপ দিন।'));
+  p.appendChild(task('hand', 'Catch the word', 'শব্দটি ধরুন', 'Tap the big button every time you hear “' + lower(w) + '”.', 'শব্দটি যতবার শুনবেন, ততবার বড় বোতামে চাপ দিন।'));
   const L = floodLines(w), re = new RegExp(stemRe(w).source, 'gi');
-  const total = L.reduce((n, l) => n + ((l.match(re) || []).length), 0);
-  let taps = 0;
-  const box = el('div', 'listen card');
-  const score = el('div', 'score');
-  const setScore = done => {
-    score.replaceChildren(el('span', null, done ? 'You tapped ' + taps + ' times. The word came ' + total + ' times.' : 'Taps: ' + taps));
-    if (done) bn(score, 'আপনি ' + taps + ' বার চাপ দিয়েছেন। শব্দটি এসেছে ' + total + ' বার।');
-  };
-  const c = el('button', 'catch'); c.type = 'button';
-  c.appendChild(el('span', 'emo', emoji(w))); c.appendChild(el('span', null, 'I heard it!'));
-  c.onclick = () => { taps++; setScore(false); c.classList.add('hit'); setTimeout(() => c.classList.remove('hit'), 120); };
-  const b = playBtn(btn => {
-    if (btn.classList.contains('is-on')) { TTS.stop(); btn.setOn(false); box.classList.remove('live'); setScore(true); return; }
-    taps = 0; setScore(false); btn.setOn(true); box.classList.add('live');
-    TTS.list(L, { gap: 900, onDone: () => { btn.setOn(false); box.classList.remove('live'); setScore(true); } });
-  });
-  const row = el('div', 'listen-row'); row.appendChild(b);
-  const meter = el('div', 'meter'); for (let i = 0; i < 7; i++) meter.appendChild(el('i')); row.appendChild(meter);
-  box.appendChild(row); box.appendChild(c); box.appendChild(score); setScore(false);
+  const need = L.map(l => Math.max(1, (l.match(re) || []).length));
+  const total = need.reduce((a, b) => a + b, 0);
+  const G2 = { state: 'idle', cur: -1, curAt: 0, got: [], extras: 0, caught: 0, timers: [] };
+  const box = el('div', 'game card');
+  /* the heads-up display */
+  const hud = el('div', 'hud');
+  const sc = el('div', 'hud-score'); sc.innerHTML = '<b class="hud-n">0</b><span>/ ' + total + '</span>';
+  const scl = el('div', 'hud-lab'); bn(scl.appendChild(el('span', null, 'caught')), 'ধরা হয়েছে', true);
+  const left = el('div'); left.appendChild(sc); left.appendChild(scl);
+  const track = el('div', 'hud-track'); L.forEach(() => track.appendChild(el('i')));
+  hud.appendChild(left); hud.appendChild(track);
+  box.appendChild(hud);
+  /* the pad */
+  const arena = el('div', 'arena');
+  const pad = el('button', 'pad'); pad.type = 'button'; pad.setAttribute('aria-label', 'I heard it');
+  const face = el('span', 'pad-face');
+  face.appendChild(el('span', 'pad-emo', emoji(w)));
+  face.appendChild(el('span', 'pad-w', 'I heard it!'));
+  pad.appendChild(face);
+  const cd = el('span', 'pad-count'); pad.appendChild(cd);
+  arena.appendChild(pad);
+  box.appendChild(arena);
+  /* controls and result */
+  const ctl = el('div', 'game-ctl');
+  const start = el('button', 'btn gold'); start.type = 'button';
+  start.appendChild(icon('play')); bn(start.appendChild(el('span', null, 'Start listening')), 'শোনা শুরু করুন', true);
+  ctl.appendChild(start);
+  const result = el('div', 'result'); result.hidden = true; box.appendChild(result);
+  box.appendChild(ctl);
   p.appendChild(box);
-  p.cleanup = () => TTS.stop();
+
+  const nEl = sc.querySelector('.hud-n');
+  const later = (f, ms) => G2.timers.push(setTimeout(f, ms));
+  const paintTrack = () => [...track.children].forEach((t, i) => {
+    t.className = i === G2.cur && G2.state === 'play' ? 'now' : G2.got[i] >= need[i] ? 'full' : G2.got[i] > 0 ? 'part' : i < G2.cur ? 'miss' : '';
+  });
+  const floater = (txtv, cls) => {
+    const f = el('span', 'floater ' + cls, txtv);
+    f.style.left = (40 + Math.random() * 20) + '%';
+    arena.appendChild(f); setTimeout(() => f.remove(), 900);
+  };
+  const tap = () => {
+    if (G2.state === 'idle') { begin(); return; }
+    if (G2.state !== 'play') return;
+    pad.classList.remove('hit', 'miss'); void pad.offsetWidth;
+    const now = performance.now();
+    let k = -1;
+    if (G2.cur >= 0 && G2.got[G2.cur] < need[G2.cur]) k = G2.cur;
+    else if (G2.cur > 0 && now - G2.curAt < 1200 && G2.got[G2.cur - 1] < need[G2.cur - 1]) k = G2.cur - 1;
+    if (k >= 0) {
+      G2.got[k]++; G2.caught++; nEl.textContent = G2.caught;
+      nEl.classList.remove('pop'); void nEl.offsetWidth; nEl.classList.add('pop');
+      pad.classList.add('hit'); floater('+1', 'good'); SFX.play('hit');
+      if (navigator.vibrate) try { navigator.vibrate(10); } catch (e) {}
+    } else {
+      G2.extras++; pad.classList.add('miss'); floater('·', 'bad'); SFX.play('miss');
+    }
+    paintTrack();
+  };
+  /* touch taps land on pointerdown, so fast tapping is not slowed by the
+     click delay; the click that follows a touch is ignored */
+  let lastTouch = 0;
+  pad.onpointerdown = e => { if (e.pointerType === 'touch' || e.pointerType === 'pen') { lastTouch = performance.now(); tap(); } };
+  pad.onclick = () => { if (performance.now() - lastTouch > 500) tap(); };
+  const keyTap = e => { if (e.code === 'Space' && G2.state === 'play' && document.activeElement !== start) { e.preventDefault(); e.stopPropagation(); tap(); } };
+  document.addEventListener('keydown', keyTap, true);
+
+  const finish = () => {
+    G2.state = 'done'; box.classList.remove('playing'); paintTrack();
+    const acc = Math.max(0, (G2.caught - G2.extras * .5) / total);
+    const stars = acc >= .85 ? 3 : acc >= .6 ? 2 : 1;
+    result.hidden = false; result.innerHTML = '';
+    const st = el('div', 'stars');
+    for (let k = 0; k < 3; k++) { const s2 = el('span', 'star' + (k < stars ? ' on' : '')); s2.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg>'; s2.style.animationDelay = (.15 + k * .18) + 's'; st.appendChild(s2); }
+    result.appendChild(st);
+    result.appendChild(bn(el('div', 'res-h', ['Keep listening!', 'Good ears!', 'Sharp ears!'][stars - 1]), ['আরও শুনুন!', 'ভালো শুনেছেন!', 'দারুণ শুনেছেন!'][stars - 1]));
+    const line = el('p', 'res-s'); line.innerHTML = 'You caught <b>' + G2.caught + '</b> of <b>' + total + '</b>' + (G2.extras ? ' · ' + G2.extras + ' extra tap' + (G2.extras > 1 ? 's' : '') : '') + '.';
+    result.appendChild(line);
+    burst(result, stars * 8); SFX.play('done');
+    setTimeout(() => { const st2 = $('#stage'); st2.scrollBy({ top: result.getBoundingClientRect().bottom - (window.innerHeight - $('#actionbar').offsetHeight - 80), behavior: 'smooth' }); }, 200);
+    start.hidden = false;
+    start.replaceChildren(icon('replay')); bn(start.appendChild(el('span', null, 'Play again')), 'আবার খেলুন', true);
+  };
+  const begin = () => {
+    G2.timers.forEach(clearTimeout); G2.timers = []; TTS.stop();
+    G2.state = 'count'; G2.cur = -1; G2.got = need.map(() => 0); G2.extras = 0; G2.caught = 0;
+    nEl.textContent = '0'; result.hidden = true; start.hidden = true; paintTrack();
+    box.classList.add('counting');
+    [3, 2, 1].forEach((n, i) => later(() => { cd.textContent = n; cd.classList.remove('show'); void cd.offsetWidth; cd.classList.add('show'); SFX.play('count'); }, i * 800));
+    later(() => {
+      cd.textContent = 'Go!'; cd.classList.remove('show'); void cd.offsetWidth; cd.classList.add('show'); SFX.play('go');
+      box.classList.remove('counting'); box.classList.add('playing'); G2.state = 'play';
+      TTS.list(L, { gap: 900, onLine: i => { G2.cur = i; G2.curAt = performance.now(); paintTrack(); }, onDone: () => later(finish, 900) });
+    }, 2400);
+  };
+  start.onclick = begin;
+  p.cleanup = () => { TTS.stop(); G2.timers.forEach(clearTimeout); document.removeEventListener('keydown', keyTap, true); };
   return p;
 }
 function karaoke(lines, w, opts = {}){
@@ -563,7 +792,7 @@ function karaoke(lines, w, opts = {}){
     const texts = lines.map(l => plain(l, w));
     TTS.list(one ? [texts[i]] : texts, {
       from: one ? 0 : i,
-      onLine: k => { const idx = one ? i : k; rows.forEach((r, j) => r.classList.toggle('is-now', j === idx)); rows[idx].scrollIntoView({ block: 'nearest', behavior: 'smooth' }); },
+      onLine: k => { const idx = one ? i : k; rows.forEach((r, j) => r.classList.toggle('is-now', j === idx)); { const st = $('#stage'), r = rows[idx].getBoundingClientRect(), top = $('#appbar').offsetHeight + 12, bot = window.innerHeight - $('#actionbar').offsetHeight - 12; if (r.top < top || r.bottom > bot) st.scrollBy({ top: r.top < top ? r.top - top : r.bottom - bot, behavior: 'smooth' }); } },
       onWord: (k, c) => lightWord(rows[one ? i : k].spans, c),
       onDone: () => { rows.forEach(r => { r.classList.remove('is-now'); r.spans.forEach(s => s.classList.remove('lit')); }); if (playBtnRef) playBtnRef.setOn(false); }
     });
@@ -590,6 +819,17 @@ function scrRead(){
   return p;
 }
 
+/* the end of a set of rounds: a medal, what was learned, and "again" */
+function doneCard(emo, en, bnText, subHTML, again){
+  const c = el('div', 'done-card');
+  c.appendChild(el('span', 'medal', emo));
+  c.appendChild(bn(el('div', 'dh', en), bnText));
+  if (subHTML) { const s2 = el('p', 'small'); s2.innerHTML = subHTML; c.appendChild(s2); }
+  const b = el('button', 'mini gold'); b.type = 'button'; b.appendChild(icon('replay')); b.appendChild(el('span', null, 'Play again'));
+  b.onclick = again; c.appendChild(b);
+  setTimeout(() => { if (c.isConnected) { burst(c); SFX.play('done'); } }, 250);
+  return c;
+}
 /* ============================================================ PARTNERS */
 function partnerOf(s){
   const m = s.match(/~|\{[^}]+\}/);
@@ -659,11 +899,8 @@ function scrPartnerCloze(){
     [...dots.children].forEach((d, i) => { d.className = done.has(i) ? 'ok' : i === r ? 'on' : ''; });
     line.innerHTML = '';
     if (r >= Q.length) {
-      line.appendChild(txt('span', null, 'All five partners found!', 'পাঁচটি সঙ্গী শব্দই পাওয়া গেছে!'));
       opts.innerHTML = '';
-      const again = el('button', 'btn ghost'); again.type = 'button'; again.appendChild(icon('replay')); again.appendChild(el('span', null, 'Again'));
-      again.onclick = () => { done.clear(); r = 0; Q.sort(() => Math.random() - .5); paint(); };
-      opts.appendChild(again);
+      line.appendChild(doneCard('🔗', 'All five partners!', 'পাঁচটি সঙ্গী শব্দই পাওয়া গেছে!', C.p.map(x => marked(x, w)).join(' · '), () => { done.clear(); r = 0; Q.sort(() => Math.random() - .5); paint(); }));
       return;
     }
     const { s, q } = Q[r];
@@ -679,10 +916,11 @@ function scrPartnerCloze(){
       o.onclick = () => {
         if (t === ans) {
           o.classList.add('ok'); gap.classList.add('filled'); gap.textContent = t; done.add(r);
-          TTS.say(plain(s, w));
+          feedback(true, marked(s, w), { say: plain(s, w) });
+          setTimeout(() => TTS.say(plain(s, w)), 350);
           [...opts.children].forEach(x => x.disabled = true);
-          setTimeout(() => { r++; paint(); }, 1300);
-        } else { o.classList.remove('no'); void o.offsetWidth; o.classList.add('no'); }
+          setTimeout(() => { hideFeedback(); r++; paint(); }, 1700);
+        } else { o.classList.remove('no'); void o.offsetWidth; o.classList.add('no'); feedback(false, 'Listen: <b>' + esc(ans[0]) + '…</b> starts with “' + esc(ans[0]) + '”.'); }
       };
       opts.appendChild(o);
     });
@@ -754,24 +992,23 @@ function scrPatternGap(){
     [...dots.children].forEach((d, i) => { d.className = ok.has(i) ? 'ok' : i === r ? 'on' : ''; });
     patt.innerHTML = ''; opts.innerHTML = '';
     if (r >= Q.length) {
-      line.replaceChildren(txt('span', null, 'Five patterns — well done!', 'পাঁচটি গঠনই হয়ে গেছে — দারুণ!'));
-      const again = el('button', 'btn ghost'); again.type = 'button'; again.appendChild(icon('replay')); again.appendChild(el('span', null, 'Again'));
-      again.onclick = () => { ok.clear(); r = 0; paint(); };
-      opts.appendChild(again); return;
+      line.replaceChildren(doneCard('🧩', 'Five patterns!', 'পাঁচটি গঠনই হয়ে গেছে!', C.g.map(g => esc(g[0])).join(' · '), () => { ok.clear(); r = 0; paint(); }));
+      return;
     }
     const g = Q[r], key = g[1].match(/\[([^\]]+)\]/)[1];
-    const pat = el('div', 'small', g[0]); pat.style.cssText = 'font-weight:800;letter-spacing:.04em;color:var(--kicker)'; patt.appendChild(pat);
+    const pat = el('div', 'pat-label', g[0]); patt.appendChild(pat);
     line.innerHTML = marked(g[1], w, 'gap');
     const gap = line.querySelector('.gap');
     shuffle([key].concat(g[2].split('|'))).forEach(t => {
       const o = el('button', 'opt', t); o.type = 'button';
       o.onclick = () => {
         if (t === key) {
-          o.classList.add('ok'); gap.classList.add('filled'); gap.style.background = 'var(--gold-soft)'; gap.style.borderColor = 'var(--gold)'; gap.style.color = '#6B5116'; gap.textContent = key;
+          o.classList.add('ok'); gap.classList.add('filled'); gap.textContent = key;
           ok.add(r); [...opts.children].forEach(x => x.disabled = true);
-          TTS.say(plain(g[1], w));
-          setTimeout(() => { r++; paint(); }, 1500);
-        } else { o.classList.remove('no'); void o.offsetWidth; o.classList.add('no'); }
+          feedback(true, esc(g[0]), { say: plain(g[1], w) });
+          setTimeout(() => TTS.say(plain(g[1], w)), 350);
+          setTimeout(() => { hideFeedback(); r++; paint(); }, 1800);
+        } else { o.classList.remove('no'); void o.offsetWidth; o.classList.add('no'); feedback(false, 'The pattern is <b>' + esc(g[0]) + '</b>.'); }
       };
       opts.appendChild(o);
     });
@@ -831,8 +1068,9 @@ function scrBuild(){
       b.onclick = () => {
         if (t === T[at]) {
           at++; target.appendChild(b); b.onclick = null;
-          if (at === T.length) { target.classList.add('done'); TTS.say(sent); }
-        } else { b.classList.remove('no'); void b.offsetWidth; b.classList.add('no'); }
+          SFX.play('tap');
+          if (at === T.length) { target.classList.add('done'); feedback(true, esc(sent), { say: sent, ms: 2200 }); setTimeout(() => TTS.say(sent), 350); }
+        } else { b.classList.remove('no'); void b.offsetWidth; b.classList.add('no'); SFX.play('no'); }
       };
       tray.appendChild(b);
     });
@@ -928,7 +1166,7 @@ function scrIdiomGap(){
   const paint = () => {
     [...dots.children].forEach((d, i) => { d.className = ok.has(i) ? 'ok' : i === r ? 'on' : ''; });
     opts.innerHTML = '';
-    if (r >= Q.length) { line.replaceChildren(txt('span', null, 'Three idioms — you can picture the feeling now.', 'তিনটি বাগধারা — এখন অনুভূতিটি ছবির মতো দেখতে পাচ্ছেন।')); return; }
+    if (r >= Q.length) { line.replaceChildren(doneCard('🖼️', 'Three idioms!', 'তিনটি বাগধারা!', 'Now you can picture the feeling.', () => { ok.clear(); r = 0; paint(); })); return; }
     const I = Q[r];
     line.innerHTML = esc(I[2]).replace(/\*([^*]+)\*/, '<span class="gap" style="min-width:8ch">?</span>');
     const gap = line.querySelector('.gap');
@@ -938,9 +1176,10 @@ function scrIdiomGap(){
         if (J === I) {
           o.setAttribute('aria-pressed', 'true'); ok.add(r); gap.classList.add('filled');
           gap.textContent = I[2].match(/\*([^*]+)\*/)[1];
-          TTS.say(plain(I[2], w));
-          setTimeout(() => { r++; paint(); }, 1600);
-        } else { o.style.borderColor = 'var(--clay)'; o.animate([{ background: '#F6E1D9' }, { background: 'var(--surface-card)' }], 600); }
+          feedback(true, '<b>' + esc(I[0]) + '</b> — ' + esc(I[1]), { say: plain(I[2], w) });
+          setTimeout(() => TTS.say(plain(I[2], w)), 350);
+          setTimeout(() => { hideFeedback(); r++; paint(); }, 1900);
+        } else { o.classList.remove('no'); void o.offsetWidth; o.classList.add('no'); feedback(false, '<b>' + esc(J[0]) + '</b> means “' + esc(J[1]) + '”.'); }
       };
       opts.appendChild(o);
     });
@@ -977,25 +1216,25 @@ function scrIdiomChoose(){
 }
 
 /* ============================================================ SHARE */
-const BERG_Y = [360, 304, 246, 124, 86, 48];     /* level 1…6, deepest first */
+const BERG_Y = [322, 272, 216, 128, 100, 70];     /* level 1…6, deepest first */
 function bergBig(level, w){
-  const marks = LEVELS.map((L, i) => {
-    const y = BERG_Y[i], on = i < level;
-    return '<path d="M52 ' + y + 'H200" stroke="var(--sea)" stroke-dasharray="3 5" stroke-width="1.5" opacity="' + (on ? .9 : .4) + '"/>' +
-      '<circle cx="36" cy="' + y + '" r="15" fill="' + (on ? 'var(--fi)' : '#fff') + '" stroke="var(--sea)" stroke-width="2"/>' +
-      '<text x="36" y="' + (y + 6) + '" text-anchor="middle" font-size="16" font-weight="800" fill="' + (on ? '#fff' : 'var(--sea-deep)') + '">' + (i + 1) + '</text>';
-  }).join('');
-  return '<svg class="berg-big z" viewBox="0 0 400 400" role="img" aria-label="The word has risen to level ' + level + ' of 6">' +
-    '<defs><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFE5EF"/><stop offset="1" stop-color="#7FB0C8"/></linearGradient></defs>' +
-    '<rect x="0" y="150" width="400" height="250" fill="url(#sea)" rx="10"/>' +
-    '<path d="M218 150L246 70l18 16 22-60 20 38 14-12 28 98z" fill="#fff" stroke="var(--sea)" stroke-width="2.2" stroke-linejoin="round"/>' +
-    '<path d="M212 150l-24 86 24 96 80 52 78-42 22-110-28-82z" fill="#E9F3F7" stroke="var(--sea)" stroke-width="2.2" stroke-linejoin="round" opacity=".92"/>' +
-    '<path d="M0 150h400" stroke="var(--sea-deep)" stroke-width="2" stroke-dasharray="8 6"/>' +
-    '<text x="392" y="172" text-anchor="end" font-size="13" font-weight="800" fill="var(--sea-deep)" letter-spacing="1.5">WATERLINE</text>' +
-    marks +
-    '<g class="berg-word" style="transform:translate(290px,392px)" data-y="' + (level ? BERG_Y[level - 1] : 392) + '">' +
-    '<rect x="-66" y="-18" width="132" height="36" rx="18" fill="var(--fi)" stroke="#fff" stroke-width="2"/>' +
-    '<text x="0" y="6" text-anchor="middle" font-size="18" font-weight="800" fill="#fff">' + esc(lower(w)) + '</text></g></svg>';
+  const svg = document.createElementNS(NS, 'svg');
+  svg.setAttribute('viewBox', '0 0 400 380'); svg.setAttribute('class', 'berg-big z');
+  svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'Your word has risen to level ' + level + ' of 6');
+  ART.iceberg(svg, 250, 150, 118, 92, { x0: 0, x1: 400, top: 0, bottom: 380, sunX: 360 });
+  BERG_Y.forEach((y, i) => {
+    const on = i < level;
+    N(svg, 'path', { d: `M52 ${y}H${i < 3 ? 170 : 205}`, stroke: i < 3 ? '#fff' : '#1F5C7A', 'stroke-opacity': on ? .9 : .45, 'stroke-width': 2, 'stroke-dasharray': '2 6', 'stroke-linecap': 'round' });
+    N(svg, 'circle', { cx: 34, cy: y, r: 14, fill: on ? 'var(--fi)' : '#fff', stroke: on ? '#fff' : '#8CBBD1', 'stroke-width': 2.5 });
+    N(svg, 'text', { x: 34, y: y + 5.5, 'text-anchor': 'middle', 'font-size': 15, 'font-weight': 900, fill: on ? '#fff' : '#123F57', 'font-family': 'Public Sans,sans-serif', text: String(i + 1) });
+  });
+  const g = G(svg, { cls: 'berg-word', style: 'transform:translate(250px,400px)' });
+  g.dataset.y = level ? BERG_Y[level - 1] : 400;
+  N(g, 'rect', { x: -64, y: -15, width: 128, height: 36, rx: 18, fill: '#103D21', opacity: .2 });
+  N(g, 'rect', { x: -64, y: -19, width: 128, height: 36, rx: 18, fill: 'var(--fi)', stroke: '#fff', 'stroke-width': 2.5 });
+  N(g, 'text', { x: 0, y: 5, 'text-anchor': 'middle', 'font-size': 17, 'font-weight': 900, fill: '#fff', 'font-family': 'Public Sans,sans-serif', text: lower(w) });
+  ART.spark(g, 60, -18, 7, '#FBE3A0');
+  return svg;
 }
 function bergLegend(level){
   const ol = el('ol', 'berg-legend');
@@ -1011,8 +1250,8 @@ function bergLegend(level){
 function scrRise(){
   const w = curWord(), p = el('div', 'panel');
   p.appendChild(task('berg', 'Your word has risen', 'আপনার শব্দটি উপরে উঠে এসেছে', 'Every time you heard it and understood it, it rose. Now it is above the water — you can use it.', 'যতবার শুনে বুঝেছেন, ততবার এটি উপরে উঠেছে। এখন এটি পানির উপরে — আপনি এটি ব্যবহার করতে পারবেন।'));
-  const c = el('div', 'card berg-card'); c.innerHTML = bergBig(S.level, w); c.appendChild(bergLegend(S.level)); p.appendChild(c);
-  p.enter = () => { const g = c.querySelector('.berg-word'); requestAnimationFrame(() => requestAnimationFrame(() => { g.style.transform = 'translate(290px,' + g.dataset.y + 'px)'; })); };
+  const c = el('div', 'card berg-card'); c.appendChild(bergBig(S.level, w)); c.appendChild(bergLegend(S.level)); p.appendChild(c);
+  p.enter = () => { const g = c.querySelector('.berg-word'); requestAnimationFrame(() => requestAnimationFrame(() => { g.style.transform = 'translate(250px,' + g.dataset.y + 'px)'; })); };
   const sc = el('div', 'card');
   sc.appendChild(txt('h3', 'h-title', 'How strong is the storm now?', 'এখন ঝড়টা কতটা তীব্র?'));
   sc.firstChild.style.fontSize = 'calc(1.15rem*var(--ui))';
@@ -1047,7 +1286,7 @@ function boardNode(){
   const box = el('div', 'card poll');
   const top = el('div', 'poll-top');
   const tot = el('div'); tot.appendChild(el('span', 'poll-total', '0')); tot.appendChild(txt('span', 'small', ' responses this hour', 'এই ঘণ্টার উত্তর'));
-  top.appendChild(tot); top.appendChild(el('span', 'live', 'Live')); box.appendChild(top);
+  top.appendChild(tot); top.appendChild(el('span', 'livebadge', 'Live')); box.appendChild(top);
   const bars = el('div', 'poll'), words = el('div', 'pwords'), reasons = el('div', 'preasons');
   box.appendChild(bars); box.appendChild(txt('p', 'kicker', 'Words people chose', 'যে শব্দগুলো বেছে নেওয়া হয়েছে')); box.appendChild(words);
   box.appendChild(txt('p', 'kicker', 'Anonymous reasons', 'নামহীন কারণ')); box.appendChild(reasons);
@@ -1251,13 +1490,23 @@ function go(d){
   if (S.view !== 'flow') return;
   const n = SUBS[STEPS[S.step].k].length;
   let st = S.step, sb = S.sub + d;
-  if (sb >= n) { if (st < STEPS.length - 1) { st++; sb = 0; } else return; }
+  if (sb >= n) {
+    if (st < STEPS.length - 1) { st++; sb = 0; award(st === STEPS.length - 1 ? 6 : STEPS[st - 1].lv); }
+    else return;
+  }
   if (sb < 0) {
     if (st > 0) { st--; sb = SUBS[STEPS[st].k].length - 1; }
     else if (S.role === 'teacher') { S.view = 'lesson'; Lesson.toEnd(); render(); return; }
     else return;
   }
   goStep(st, sb);
+}
+/* the word climbs when you move on from a step (and reaches the top on
+   arriving at Share); jumping about on the rail never takes a level away */
+let pendingLevel = 0;
+function award(lv){
+  if (!S.word || !lv || lv <= S.level) return;
+  S.level = lv; save(); pendingLevel = lv;
 }
 function startActivity(){ S.view = 'flow'; S.step = 0; S.sub = 0; S.dir = 1; render(); }
 
@@ -1280,7 +1529,44 @@ function paintRail(){
     STEPS.forEach((st, i) => add(st.en, st.bn, st.ico, S.view === 'flow' && i === S.step ? 'is-active' : S.word && st.lv && st.lv <= S.level ? 'is-done' : '', () => goStep(i, 0)));
   }
   rail.appendChild(inner);
-  const act = inner.querySelector('.is-active'); if (act) act.scrollIntoView({ inline: 'center', block: 'nearest' });
+  /* centre the active step inside the rail only — scrollIntoView would also
+     scroll the page's overflow:hidden ancestors sideways */
+  const act = inner.querySelector('.is-active');
+  if (act) requestAnimationFrame(() => {
+    const l = act.offsetLeft, r = l + act.offsetWidth;
+    if (l < inner.scrollLeft || r > inner.scrollLeft + inner.clientWidth) inner.scrollLeft = l - (inner.clientWidth - act.offsetWidth) / 2;
+  });
+}
+/* phones: a seven-segment bar instead of the rail; tap it to jump */
+function paintProgress(){
+  const p = $('#progress'); p.innerHTML = '';
+  if (S.view === 'welcome' || S.view === 'board') { p.style.visibility = 'hidden'; return; }
+  p.style.visibility = '';
+  const n = S.view === 'lesson' ? Lesson.panels.length : STEPS.length;
+  const at = S.view === 'lesson' ? Lesson.i : S.step;
+  const frac = S.view === 'lesson' ? (Lesson.beat + 1) / Lesson.panels[Lesson.i].beats.length : (S.sub + 1) / SUBS[STEPS[S.step].k].length;
+  for (let i = 0; i < n; i++) {
+    const g = el('span', 'seg' + (i < at ? ' done' : i === at ? ' cur' : '')); const f = el('i'); g.appendChild(f); p.appendChild(g);
+    if (i === at) requestAnimationFrame(() => { f.style.width = Math.round(frac * 100) + '%'; });
+  }
+  p.onclick = openSteps;
+}
+function openSteps(){
+  openSheet(sh => {
+    sh.appendChild(txt('h2', null, S.view === 'lesson' ? 'The lesson' : 'Seven steps', S.view === 'lesson' ? 'পাঠ' : 'সাতটি ধাপ')); sh.lastChild.id = 'sheet-h';
+    const list = el('div', 'menu-list');
+    const items = S.view === 'lesson' ? Lesson.panels.map((P, i) => [P.rail, P.railBn, null, i === Lesson.i, () => { Lesson.jump(i); render(); }])
+      : STEPS.map((st, i) => [st.en, st.bn, st.ico, i === S.step, () => goStep(i, 0), st.lv && st.lv <= S.level && S.word]);
+    items.forEach(([en, b, ico, cur, fn, done], i) => {
+      const m = el('button', 'menu-item'); m.type = 'button';
+      const mi = el('span', 'mi'); if (ico) mi.appendChild(icon(ico)); else mi.textContent = i + 1;
+      if (cur) { mi.style.background = 'var(--forest)'; mi.style.color = '#fff'; } else if (done) { mi.style.background = 'var(--moss-soft)'; mi.style.color = 'var(--moss-ink)'; }
+      m.appendChild(mi); const t = el('span'); t.appendChild(el('span', null, en)); t.appendChild(el('small', null, b)); m.appendChild(t);
+      m.onclick = () => { closeSheet(); fn(); };
+      list.appendChild(m);
+    });
+    sh.appendChild(list);
+  });
 }
 function paintFoot(){
   const bar = $('#actionbar'), dashes = $('#dashes');
@@ -1299,6 +1585,7 @@ function paintFoot(){
     back = S.step > 0 || S.sub > 0 || S.role === 'teacher';
   } else if (S.view === 'board') { en = 'Back to the activity'; bnT = 'কাজে ফিরুন'; }
   for (let i = 0; i < n; i++) dashes.appendChild(el('i', 'dash' + (i === at ? ' on' : i < at ? ' done' : '')));
+  if (S.view === 'lesson') paintProgress();
   $('#next-en').textContent = en; $('#next-bn').textContent = bnT;
   $('#btn-next').hidden = !nextOn;
   $('#btn-back').disabled = !back;
@@ -1311,8 +1598,6 @@ function render(){
   else if (S.view === 'lesson') { wrap.classList.add('wide'); CUR = Lesson.mount(); }
   else if (S.view === 'board') { CUR = el('div', 'panel'); CUR.appendChild(task('chart', 'Our room, this hour', 'এই ঘণ্টায় আমাদের ক্লাস', 'Anonymous. It starts again every hour.', 'নামহীন। প্রতি ঘণ্টায় নতুন করে শুরু হয়।')); CUR.appendChild(boardNode()); CUR.cleanup = () => clearInterval(POLL.timer); }
   else {
-    const lv = levelFor(S.step);
-    if (S.word && lv > S.level) { S.level = lv; save(); }
     if (S.step > 0 && !S.word) toast('Using “' + curWord() + '” for now — choose your own feeling in Feel.', 'আপাতত “' + curWord() + '” দেখানো হচ্ছে — ‘অনুভব’ ধাপে নিজের অনুভূতি বেছে নিন।');
     setFamily(curWord());
     CUR = SUBS[STEPS[S.step].k][S.sub]();
@@ -1320,16 +1605,45 @@ function render(){
   }
   if (CUR && !CUR.isConnected) wrap.appendChild(CUR);
   if (CUR && CUR.enter) CUR.enter();
-  paintRail(); paintWordbar(); paintFoot(); measure();
+  hideFeedback();
+  $('#app').classList.toggle('at-welcome', S.view === 'welcome');
+  paintRail(); paintProgress(); paintWordbar(); paintFoot(); measure();
+  if (pendingLevel) { const l = pendingLevel; pendingLevel = 0; setTimeout(() => celebrate(l), 380); }
   $('#stage').scrollTop = 0;
   const saveView = { view: S.view, step: S.step, sub: S.sub, lesson: typeof Lesson !== 'undefined' ? Lesson.i : 0 };
   store.set('pos', saveView);
 }
 
 /* ---------- welcome ---------- */
+/* the welcome picture: six feelings circling an iceberg, a word rising */
+function welcomeHero(){
+  const box = el('div', 'wl-hero');
+  const svg = document.createElementNS(NS, 'svg'); svg.setAttribute('viewBox', '0 0 420 300'); svg.setAttribute('aria-hidden', 'true');
+  const clip = N(ART.grad(svg, [['#fff'], ['#fff']]) && svg.__defs, 'clipPath', { id: 'wlc' });
+  N(clip, 'rect', { x: 20, y: 10, width: 380, height: 280, rx: 36 });
+  const sc = G(svg, { 'clip-path': 'url(#wlc)' });
+  ART.iceberg(sc, 210, 150, 100, 64, { x0: 20, x1: 400, top: 10, bottom: 290, sunX: 340 });
+  const word = G(sc, { cls: 'rising' });
+  const WORDS = ['calm', 'proud', 'hopeful', 'anxious', 'excited', 'curious'];
+  N(word, 'rect', { x: 150, y: 96, width: 120, height: 32, rx: 16, fill: '#103D21', opacity: .2 });
+  N(word, 'rect', { x: 150, y: 92, width: 120, height: 32, rx: 16, fill: '#6B3F80', stroke: '#fff', 'stroke-width': 2 });
+  const wt = N(word, 'text', { x: 210, y: 113, 'text-anchor': 'middle', 'font-size': 15, 'font-weight': 900, fill: '#fff', 'font-family': 'Public Sans,sans-serif', text: 'hopeful' });
+  let wi = 0; const iv = setInterval(() => { if (!box.isConnected) { clearInterval(iv); return; } wt.textContent = WORDS[wi++ % WORDS.length]; }, 5000);
+  const orbit = G(svg, { cls: 'orbit' });
+  EMO.wheel.forEach((f, i) => {
+    const a = -Math.PI / 2 + i / 6 * Math.PI * 2, x = 210 + 178 * Math.cos(a), y = 150 + 118 * Math.sin(a);
+    const g = G(orbit, {});
+    N(g, 'circle', { cx: x, cy: y + 3, r: 25, fill: '#103D21', opacity: .12 });
+    N(g, 'circle', { cx: x, cy: y, r: 25, fill: '#fff', stroke: FAM_C[f.name], 'stroke-width': 4 });
+    N(g, 'text', { x, y: y + 9, 'text-anchor': 'middle', 'font-size': 25, text: EMO.emoji[f.name] });
+  });
+  box.appendChild(svg);
+  return box;
+}
+const FAM_C = { Fear: '#c993dd', Anger: '#ee806b', Surprise: '#edae53', Happy: '#e9cf5f', Disgust: '#73c989', Sad: '#70bee0' };
 function welcome(){
   const p = el('div', 'panel p-welcome');
-  p.appendChild(el('div', 'wl-mark', '😊'));
+  p.appendChild(welcomeHero());
   p.appendChild(txt('h1', 'wl-title', 'How are you feeling?', 'আপনার কেমন লাগছে?'));
   p.appendChild(txt('p', 'wl-sub', 'Name a feeling. Calm the storm. Watch one English word rise.', 'অনুভূতির নাম দিন। ঝড় শান্ত করুন। একটি ইংরেজি শব্দকে উপরে উঠতে দেখুন।'));
   const row = el('div', 'wl-cards');
@@ -1408,6 +1722,8 @@ $('#btn-next').onclick = () => go(1);
 $('#btn-back').onclick = () => go(-1);
 $('#btn-menu').onclick = openMenu;
 $('#btn-tv').onclick = () => setTV(!S.tv);
+$('#btn-sound').onclick = () => { SFX.on = !SFX.on; store.set('sfx', SFX.on); paintSound(); SFX.play('ok'); };
+paintSound();
 $$('.langsw button').forEach(b => b.onclick = () => { setLang(b.dataset.lang); const sh = $('#sheet'); if (sh.classList.contains('show') && sh.repaint) sh.repaint(); });
 document.addEventListener('keydown', e => {
   if (e.target.closest('input,textarea,select') || e.metaKey || e.ctrlKey || e.altKey) return;
