@@ -803,3 +803,16 @@ body.bangla .l-cap-bn{display:block}
   .pattern{flex-wrap:nowrap}
 }
 :root[data-theme="stage"] .pad{width:calc(290px*var(--ui))}
+/* living figures: a slow breath, and an occasional blink */
+.idle{animation:idle 4.6s ease-in-out infinite}
+@keyframes idle{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+.blink{transform-box:fill-box;transform-origin:center;animation:blink 5.2s infinite}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}97%{transform:scaleY(1)}}
+.z .cam{transition:transform 1.4s var(--ease-io)}
+.z.instant .cam{transition:none}
+@media (prefers-reduced-motion:reduce){ .idle,.blink{animation:none} }
+.z .drift{animation:drift 18s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translateX(0)}50%{transform:translateX(26px)}}
+@media (prefers-reduced-motion:reduce){.z .cam{transition:none}.drift,.idle,.blink{animation:none}}
+.z .blind{transform-box:fill-box;transform-origin:top;transform:scaleY(0);transition:transform 1.2s var(--ease-io)}
+.z .blind.up{transform:none}

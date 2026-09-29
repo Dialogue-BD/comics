@@ -84,7 +84,8 @@ const ART = (() => {
   function figure(p, x, y, s, o = {}){
     const c = Object.assign({}, CAST[o.who || 'learner'], o);
     const r = .2 * s, face = o.face || 'smile';
-    const g = G(p, { in: o.in, out: o.out, at: o.at, cls: o.cls, delay: o.delay });
+    const outer = G(p, { in: o.in, out: o.out, at: o.at, cls: o.cls, delay: o.delay });
+    const g = G(outer, { cls: o.still ? null : 'idle', style: 'animation-delay:-' + (Math.random() * 4).toFixed(2) + 's' });
     const skin = c.skin, skinD = shade(skin, -.22), skinL = shade(skin, .18);
     const hair = c.hairC, hairD = shade(hair, -.25), hairL = shade(hair, .25);
     if (o.shadow !== false) N(g, 'ellipse', { cx: x, cy: y + 3.95 * r, rx: 2.2 * r, ry: .22 * r, fill: '#103D21', opacity: .10 });
@@ -132,6 +133,7 @@ const ART = (() => {
     }
     /* brows, eyes, nose, mouth */
     const ey = y + .06 * r, ex = .36 * r;
+    const blinkDelay = (Math.random() * 5).toFixed(2);
     const brow = { smile: [0, -.03], laugh: [.04, -.08], worry: [-.14, .02], flat: [0, 0], sad: [-.12, .02], angry: [.12, -.02], calm: [0, -.03], wow: [-.06, -.14] }[face] || [0, 0];
     [-1, 1].forEach(k => {
       const ox = x + k * ex;
@@ -140,9 +142,10 @@ const ART = (() => {
       if (face === 'laugh' || face === 'calm') {
         N(g, 'path', { d: `M${ox - .15 * r} ${ey + .02 * r}Q${ox} ${ey - .16 * r} ${ox + .15 * r} ${ey + .02 * r}`, fill: 'none', stroke: '#2B1D14', 'stroke-width': .08 * r, 'stroke-linecap': 'round' });
       } else {
-        N(g, 'ellipse', { cx: ox, cy: ey, rx: .16 * r, ry: face === 'wow' ? .21 * r : .18 * r, fill: '#fff' });
-        N(g, 'circle', { cx: ox + (face === 'worry' || face === 'sad' ? 0 : .02 * r), cy: ey + (face === 'sad' ? .04 * r : .02 * r), r: .11 * r, fill: '#2B1D14' });
-        N(g, 'circle', { cx: ox + .05 * r, cy: ey - .03 * r, r: .035 * r, fill: '#fff' });
+        const eg = G(g, { cls: 'blink', style: 'animation-delay:' + blinkDelay + 's' });
+        N(eg, 'ellipse', { cx: ox, cy: ey, rx: .16 * r, ry: face === 'wow' ? .21 * r : .18 * r, fill: '#fff' });
+        N(eg, 'circle', { cx: ox + (face === 'worry' || face === 'sad' ? 0 : .02 * r) + (c.look || 0) * .05 * r, cy: ey + (face === 'sad' ? .04 * r : .02 * r), r: .11 * r, fill: '#2B1D14' });
+        N(eg, 'circle', { cx: ox + .05 * r + (c.look || 0) * .05 * r, cy: ey - .03 * r, r: .035 * r, fill: '#fff' });
       }
     });
     if (c.glasses) {
@@ -165,7 +168,46 @@ const ART = (() => {
       wow: () => N(g, 'ellipse', { cx: x, cy: my + .08 * r, rx: .13 * r, ry: .17 * r, fill: '#5A1E16' })
     };
     (mouth[face] || mouth.smile)();
-    return g;
+    if (c.pose) arms(g, x, y, r, c, POSES[c.pose] || []);
+    return outer;
+  }
+
+  /* arms, in r units from the centre of the face: shoulder, elbow, wrist
+     and the shape of the hand. Long sleeves in the shirt colour, then a
+     hand in the skin colour — enough to point, wave, explain, hug, shrug. */
+  const POSES = {
+    point:   [{ S: [1.75, 2.45], E: [2.7, 2.55], W: [3.6, 2.1], h: 'point' }],
+    pointL:  [{ S: [-1.75, 2.45], E: [-2.7, 2.55], W: [-3.6, 2.1], h: 'point' }],
+    present: [{ S: [1.75, 2.45], E: [2.6, 3.2], W: [3.35, 2.55], h: 'palm' }],
+    wave:    [{ S: [1.75, 2.45], E: [2.65, 1.8], W: [2.8, .55], h: 'palm' }],
+    heart:   [{ S: [-1.75, 2.45], E: [-1.3, 3.4], W: [-.35, 2.75], h: 'palm' }],
+    chin:    [{ S: [1.75, 2.45], E: [1.7, 3.35], W: [.55, 1.35], h: 'fist' }],
+    laugh:   [{ S: [-1.75, 2.45], E: [-2.7, 2.55], W: [-3.55, 2.05], h: 'point' }, { S: [1.75, 2.45], E: [2.05, 3.4], W: [.75, 3.4], h: 'fist' }],
+    desk:    [{ S: [-1.75, 2.45], E: [-2.05, 3.45], W: [-.6, 3.6], h: 'fist' }, { S: [1.75, 2.45], E: [2.05, 3.45], W: [.6, 3.6], h: 'fist' }],
+    shrug:   [{ S: [-1.75, 2.45], E: [-2.75, 3.0], W: [-3.1, 2.1], h: 'palm' }, { S: [1.75, 2.45], E: [2.75, 3.0], W: [3.1, 2.1], h: 'palm' }],
+    hug:     [{ S: [-1.75, 2.45], E: [-1.45, 3.5], W: [.75, 2.75], h: 'fist' }, { S: [1.75, 2.45], E: [1.45, 3.5], W: [-.75, 2.75], h: 'fist' }],
+    phone:   [{ S: [1.75, 2.45], E: [2.2, 3.5], W: [1.0, 2.9], h: 'fist' }]
+  };
+  function arms(g, x, y, r, c, list){
+    const skin = c.skin, skinD = shade(skin, -.22), sleeve = shade(c.shirt, -.06), sleeveD = shade(c.shirt, -.22);
+    const P = q => [x + q[0] * r, y + q[1] * r];
+    list.forEach(a => {
+      const [sx, sy] = P(a.S), [ex, ey] = P(a.E), [wx, wy] = P(a.W);
+      const d = `M${sx} ${sy}L${ex} ${ey}L${wx} ${wy}`;
+      N(g, 'path', { d, fill: 'none', stroke: sleeveD, 'stroke-width': .84 * r, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
+      N(g, 'path', { d, fill: 'none', stroke: sleeve, 'stroke-width': .7 * r, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' });
+      N(g, 'path', { d: `M${sx} ${sy - .12 * r}L${ex} ${ey - .12 * r}`, fill: 'none', stroke: '#fff', 'stroke-opacity': .16, 'stroke-width': .14 * r, 'stroke-linecap': 'round' });
+      const ang = Math.atan2(wy - ey, wx - ex), ca = Math.cos(ang), sa = Math.sin(ang);
+      const hx = wx + ca * .22 * r, hy = wy + sa * .22 * r;
+      if (a.h === 'point') {
+        N(g, 'path', { d: `M${hx} ${hy}L${hx + ca * .62 * r} ${hy + sa * .62 * r}`, stroke: skinD, 'stroke-width': .2 * r, 'stroke-linecap': 'round' });
+        N(g, 'path', { d: `M${hx} ${hy}L${hx + ca * .6 * r} ${hy + sa * .6 * r}`, stroke: skin, 'stroke-width': .15 * r, 'stroke-linecap': 'round' });
+      }
+      N(g, 'ellipse', { cx: hx, cy: hy, rx: (a.h === 'palm' ? .34 : .3) * r, ry: (a.h === 'palm' ? .4 : .3) * r, fill: grad(g, [[shade(skin, .12)], [skinD]]), stroke: shade(skin, -.3), 'stroke-width': .04 * r,
+        transform: `rotate(${ang * 180 / Math.PI + 90} ${hx} ${hy})` });
+      if (a.h === 'palm') [-1, 0, 1].forEach(k => N(g, 'path', { d: `M${hx + k * .12 * r} ${hy - .1 * r}v${-.18 * r}`, stroke: shade(skin, -.3), 'stroke-width': .03 * r, opacity: .5, transform: `rotate(${ang * 180 / Math.PI + 90} ${hx} ${hy})` }));
+      N(g, 'path', { d: `M${wx - sa * .3 * r} ${wy + ca * .3 * r}L${wx + sa * .3 * r} ${wy - ca * .3 * r}`, stroke: shade(c.shirt, .2), 'stroke-width': .14 * r, 'stroke-linecap': 'round' });
+    });
   }
 
   /* ------------------------------------------------------------- the room */
@@ -191,6 +233,27 @@ const ART = (() => {
       cloud(g, wx + 80, 150, 34, '#fff', { stroke: false });
       N(g, 'path', { d: `M${wx + ww / 2} 60V270M${wx} 165H${wx + ww}`, stroke: '#E4D7B8', 'stroke-width': 10 });
     }
+    /* the lower wall panel, and a few things every classroom has */
+    N(g, 'rect', { x: 0, y: fy - 120, width: W, height: 120, fill: '#EFE4C9', opacity: .7 });
+    N(g, 'path', { d: `M0 ${fy - 120}H${W}`, stroke: '#DCCBA3', 'stroke-width': 4 });
+    if (o.clockX) {
+      const cx = o.clockX, cy = o.clockY || 76;
+      N(g, 'circle', { cx, cy: cy + 4, r: 38, fill: '#103D21', opacity: .08 });
+      N(g, 'circle', { cx, cy, r: 38, fill: '#fff', stroke: '#B39D72', 'stroke-width': 6 });
+      for (let k = 0; k < 12; k++) { const a = k * Math.PI / 6; N(g, 'path', { d: `M${cx + 28 * Math.cos(a)} ${cy + 28 * Math.sin(a)}L${cx + 32 * Math.cos(a)} ${cy + 32 * Math.sin(a)}`, stroke: '#5F6A5C', 'stroke-width': 3, 'stroke-linecap': 'round' }); }
+      N(g, 'path', { d: `M${cx} ${cy}L${cx} ${cy - 22}M${cx} ${cy}L${cx + 15} ${cy + 8}`, stroke: '#1D211C', 'stroke-width': 4, 'stroke-linecap': 'round' });
+    }
+    if (o.pinX) {
+      const bx = o.pinX, by = o.pinY || 60, bw = o.pinW || 250, bh = 170;
+      N(g, 'rect', { x: bx, y: by, width: bw, height: bh, rx: 10, fill: '#C9A677' });
+      N(g, 'rect', { x: bx + 10, y: by + 10, width: bw - 20, height: bh - 20, rx: 6, fill: '#D9BA8C' });
+      [['#FBF5D6', 20, 20, -4], ['#E1F1F9', 110, 26, 3], ['#FCE9E4', 40, 90, 2], ['#E4F4E8', 140, 92, -3]].forEach(c2 => {
+        const px = bx + c2[1], py = by + c2[2];
+        N(g, 'rect', { x: px, y: py, width: 80, height: 56, fill: c2[0], transform: `rotate(${c2[3]} ${px + 40} ${py + 28})` });
+        N(g, 'path', { d: `M${px + 12} ${py + 22}h50M${px + 12} ${py + 34}h36`, stroke: '#8B9487', 'stroke-width': 3, 'stroke-linecap': 'round', opacity: .6, transform: `rotate(${c2[3]} ${px + 40} ${py + 28})` });
+        N(g, 'circle', { cx: px + 40, cy: py + 4, r: 5, fill: '#B0563A' });
+      });
+    }
     if (o.plant !== false) {
       const px = o.plantX || W - 90;
       [[-40, -120, -8], [-10, -150, 0], [26, -118, 10], [-30, -80, -14], [20, -86, 12]].forEach(l =>
@@ -200,9 +263,36 @@ const ART = (() => {
     return g;
   }
 
+  /* a soft studio: warm paper, two big colour washes, a floor to stand on */
+  function studio(p, W, H, o = {}){
+    const g = G(p, { cls: 'studio' });
+    N(g, 'rect', { x: 0, y: 0, width: W, height: H, fill: grad(g, [['#FFFDF6'], ['#F5EEDB']]) });
+    const tints = o.tints || ['#F3D9A4', '#CFE3D6'];
+    N(g, 'circle', { cx: W * .12, cy: H * .1, r: H * .75, fill: grad(g, [[tints[0], 0, .55], [tints[0], 1, 0]], { radial: true, cx: '50%', cy: '50%', r: '50%' }) });
+    N(g, 'circle', { cx: W * .9, cy: H * .85, r: H * .85, fill: grad(g, [[tints[1], 0, .6], [tints[1], 1, 0]], { radial: true, cx: '50%', cy: '50%', r: '50%' }) });
+    for (let i = 0; i < 40; i++) {
+      const x = (i * 197) % W, y = (i * 113) % (H * .7);
+      N(g, 'circle', { cx: x, cy: y, r: 2.2, fill: '#B9924F', opacity: .12 });
+    }
+    N(g, 'ellipse', { cx: W / 2, cy: H + 70, rx: W * .62, ry: 150, fill: '#E9DDBF', opacity: .75 });
+    return g;
+  }
+  /* the frame over every picture: a whisper of grain and a soft vignette,
+     so flat shapes read as one lit, printed page */
+  function finish(svg, W, H){
+    const d = defsOf(svg), id = 'n' + svg.__uid;
+    const f = N(d, 'filter', { id, x: 0, y: 0, width: '100%', height: '100%' });
+    N(f, 'feTurbulence', { type: 'fractalNoise', baseFrequency: .85, numOctaves: 2, stitchTiles: 'stitch', result: 't' });
+    N(f, 'feColorMatrix', { type: 'matrix', values: '0 0 0 0 .35  0 0 0 0 .25  0 0 0 0 .12  0 0 0 .07 0' });
+    const g = G(svg, { cls: 'finish', 'pointer-events': 'none' });
+    N(g, 'rect', { x: 0, y: 0, width: W, height: H, filter: `url(#${id})` });
+    N(g, 'rect', { x: 0, y: 0, width: W, height: H, fill: grad(svg, [['#000', 0, 0], ['#000', .72, 0], ['#3A2A10', 1, .16]], { radial: true, cx: '50%', cy: '48%', r: '72%' }) });
+    return g;
+  }
+
   /* ------------------------------------------------------------- weather bits */
   function cloud(p, x, y, s, fill, o = {}){
-    const g = G(p, { in: o.in, out: o.out, at: o.at, cls: o.cls });
+    const g = G(p, { in: o.in, out: o.out, at: o.at, cls: o.cls, style: o.style });
     const d = `M${x - 1.05 * s} ${y + .45 * s}H${x + 1.05 * s}A${.45 * s} ${.45 * s} 0 0 0 ${x + 1 * s} ${y - .38 * s}A${.62 * s} ${.62 * s} 0 0 0 ${x - .12 * s} ${y - .58 * s}A${.5 * s} ${.5 * s} 0 0 0 ${x - .92 * s} ${y - .12 * s}A${.3 * s} ${.3 * s} 0 0 0 ${x - 1.05 * s} ${y + .45 * s}Z`;
     const dark = fill !== '#fff' && shade(fill, -.25);
     N(g, 'path', { d, fill: fill === '#fff' ? '#fff' : grad(g, [[shade(fill, .22)], [fill, .6], [dark]]), stroke: o.stroke === false ? 'none' : 'rgba(16,40,60,.12)', 'stroke-width': 2 });
@@ -288,5 +378,26 @@ const ART = (() => {
     return `<svg viewBox="0 0 48 48" aria-hidden="true">${defs}${body}</svg>`;
   }
 
-  return { figure, room, cloud, bolt, butterfly, spark, iceberg, weather, grad, shade, soft, CAST };
+  /* ------------------------------------------------------------- filter scale
+     The affective filter as a window shutter: 1 is shut tight, 5 is wide
+     open with the sun coming in. It asks how much room there is for
+     English right now, which — unlike "how strong is the feeling" — means
+     the same thing for "worried" as for "terrified". */
+  let suid = 0;
+  function shutter(n){
+    const u = 's' + (++suid), h = 28 * (5 - n) / 4;
+    let slats = '';
+    for (let y = 13; y < 10 + h - 1; y += 4) slats += `<path d="M10 ${y}h28" stroke="#F8DCCF" stroke-width="1.2" opacity=".7"/>`;
+    return `<svg viewBox="0 0 48 48" aria-hidden="true"><defs>
+      <linearGradient id="${u}k" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFE7F2"/><stop offset="1" stop-color="#FFF6D8"/></linearGradient>
+      <linearGradient id="${u}c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D9795C"/><stop offset="1" stop-color="#A94E33"/></linearGradient></defs>
+      <rect x="4" y="5" width="40" height="38" rx="7" fill="#E9DCBF"/>
+      <rect x="9" y="10" width="30" height="28" rx="3" fill="url(#${u}k)"/>
+      <circle cx="30" cy="30" r="${3 + n}" fill="#F6C94E" opacity="${.35 + n * .13}"/>
+      <path d="M12 36q6-6 12 0t12 0" fill="none" stroke="#8FBF7C" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+      ${h > 0 ? `<rect x="9" y="10" width="30" height="${h}" rx="2" fill="url(#${u}c)"/>${slats}<rect x="20" y="${10 + h - 3}" width="8" height="3" rx="1.5" fill="#7A3622"/>` : ''}
+      <rect x="9" y="10" width="30" height="28" rx="3" fill="none" stroke="#B89F6E" stroke-width="1.5"/></svg>`;
+  }
+
+  return { figure, room, studio, finish, cloud, bolt, butterfly, spark, iceberg, weather, shutter, grad, shade, soft, CAST, POSES };
 })();
