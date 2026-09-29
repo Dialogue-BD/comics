@@ -143,7 +143,7 @@ const S = {
   view: 'welcome',                 /* welcome | lesson | flow */
   lstep: 0, step: 0, sub: 0, dir: 1,
   word: store.get('word', null),
-  storm0: store.get('storm0', null), storm1: store.get('storm1', null),
+  storm0: store.get('filter0', null), storm1: store.get('filter1', null),
   level: store.get('level', 0),
   frames: store.get('frames', { because: '', stake: '', need: '' }),
   idiom: store.get('idiom', null),
@@ -156,7 +156,7 @@ const S = {
   if (q.get('lang') === 'bn') S.lang = 'bn';
 })();
 function curWord(){ return S.word || 'Anxious'; }
-function save(){ ['role', 'lang', 'word', 'storm0', 'storm1', 'level', 'frames', 'idiom'].forEach(k => store.set(k, S[k])); }
+function save(){ ['role', 'lang', 'word', 'level', 'frames', 'idiom'].forEach(k => store.set(k, S[k])); store.set('filter0', S.storm0); store.set('filter1', S.storm1); }
 
 /* ------------------------------------------------------------- speech
    Browser voices only (no recordings yet). Lines are spoken one at a time
@@ -451,18 +451,18 @@ function playBtn(onToggle, small){
 }
 function weather(n){ return ART.weather(n); }
 function stormScale(key, onPick){
-  const row = el('div', 'wx'); row.setAttribute('role', 'group'); row.setAttribute('aria-label', 'How strong is the feeling, 1 to 5');
+  const row = el('div', 'wx'); row.setAttribute('role', 'group'); row.setAttribute('aria-label', 'How open is your filter, 1 to 5');
   for (let n = 1; n <= 5; n++) {
     const b = el('button'); b.type = 'button';
-    b.innerHTML = weather(n) + '<span class="n">' + n + '</span>';
+    b.innerHTML = ART.shutter(n) + '<span class="n">' + n + '</span>';
     b.setAttribute('aria-pressed', String(S[key] === n));
-    b.setAttribute('aria-label', 'Strength ' + n + ' of 5');
+    b.setAttribute('aria-label', 'Filter ' + ['shut', 'mostly shut', 'half open', 'mostly open', 'wide open'][n - 1]);
     b.onclick = () => { S[key] = n; save(); SFX.play('tap'); [...row.children].forEach((x, j) => x.setAttribute('aria-pressed', String(j + 1 === n))); onPick && onPick(n); };
     row.appendChild(b);
   }
   const wrap = el('div');
   wrap.appendChild(row);
-  const lab = el('div', 'wx-lab'); lab.appendChild(el('span', null, 'calm')); lab.appendChild(el('span', null, 'stormy'));
+  const lab = el('div', 'wx-lab'); lab.appendChild(bn(el('span', null, 'shut'), 'বন্ধ', true)); lab.appendChild(bn(el('span', null, 'wide open'), 'খোলা', true));
   wrap.appendChild(lab);
   return wrap;
 }
@@ -568,9 +568,13 @@ function trail(){
 }
 function scrStorm(){
   const w = curWord(), p = el('div', 'panel');
-  p.appendChild(task('wind', 'You named it.', 'আপনি নাম দিয়েছেন।', 'Now: how strong is the feeling?', 'এবার বলুন: অনুভূতিটি কতটা তীব্র?'));
+  p.appendChild(task('wind', 'You named it.', 'আপনি নাম দিয়েছেন।', 'Now check your filter: how open is your mind to English right now?', 'এবার আপনার ছাঁকনিটি দেখুন: এই মুহূর্তে ইংরেজির জন্য মন কতটা খোলা?'));
   p.appendChild(wordCard(w));
-  p.appendChild(stormScale('storm0'));
+  const fc = el('div', 'card');
+  fc.appendChild(stormScale('storm0'));
+  fc.appendChild(txt('p', 'small', 'Any answer is fine. When we feel safe, the filter opens and English gets in.', 'যেকোনো উত্তরই ঠিক। নিরাপদ বোধ করলে ছাঁকনি খোলে, আর ইংরেজি ভেতরে ঢোকে।'));
+  fc.lastChild.style.marginTop = '12px';
+  p.appendChild(fc);
   return p;
 }
 function scrBreathe(){
@@ -1253,13 +1257,13 @@ function scrRise(){
   const c = el('div', 'card berg-card'); c.appendChild(bergBig(S.level, w)); c.appendChild(bergLegend(S.level)); p.appendChild(c);
   p.enter = () => { const g = c.querySelector('.berg-word'); requestAnimationFrame(() => requestAnimationFrame(() => { g.style.transform = 'translate(250px,' + g.dataset.y + 'px)'; })); };
   const sc = el('div', 'card');
-  sc.appendChild(txt('h3', 'h-title', 'How strong is the storm now?', 'এখন ঝড়টা কতটা তীব্র?'));
+  sc.appendChild(txt('h3', 'h-title', 'How open is your filter now?', 'এখন আপনার ছাঁকনি কতটা খোলা?'));
   sc.firstChild.style.fontSize = 'calc(1.15rem*var(--ui))';
   const cmp = el('div', 'compare'); cmp.style.marginTop = '12px';
-  const paintCmp = () => { cmp.innerHTML = S.storm0 && S.storm1 ? weather(S.storm0) + '<span class="arrow">→</span>' + weather(S.storm1) : ''; };
+  const paintCmp = () => { cmp.innerHTML = S.storm0 && S.storm1 ? ART.shutter(S.storm0) + '<span class="arrow">→</span>' + ART.shutter(S.storm1) : ''; };
   const scale = stormScale('storm1', paintCmp); scale.style.marginTop = '12px';
   sc.appendChild(scale); sc.appendChild(cmp); paintCmp();
-  sc.appendChild(txt('p', 'small', 'Naming a feeling often makes the storm smaller. If it didn’t today, that’s okay too.', 'অনুভূতির নাম দিলে ঝড় প্রায়ই ছোট হয়ে আসে। আজ না হলে, সেটাও ঠিক আছে।'));
+  sc.appendChild(txt('p', 'small', 'Naming a feeling and breathing often open the filter a little. If yours didn’t move today, that’s okay too.', 'অনুভূতির নাম দেওয়া আর শ্বাস নেওয়া প্রায়ই ছাঁকনিটা একটু খুলে দেয়। আজ না খুললেও, সেটাও ঠিক আছে।'));
   p.appendChild(sc);
   /* what the student now owns */
   const C = chunk(w), sum = el('div', 'card summary');
@@ -1347,11 +1351,9 @@ function scrShare(){
     send.disabled = false;
   };
   const more = el('div', 'l-tools'); more.style.justifyContent = 'flex-start';
-  const rtc = el('button', 'mini gold'); rtc.type = 'button'; rtc.appendChild(icon('compass')); rtc.appendChild(el('span', null, 'Going further: Room to choose'));
-  rtc.onclick = openRTC;
   const again = el('button', 'mini'); again.type = 'button'; again.appendChild(icon('reset')); again.appendChild(el('span', null, 'Start again with a new feeling'));
   again.onclick = () => { S.word = null; S.level = 0; S.storm0 = S.storm1 = null; S.idiom = null; S.frames = { because: '', stake: '', need: '' }; save(); setFamily(null); goStep(0, 0); };
-  more.appendChild(rtc); more.appendChild(again);
+  more.appendChild(again);
   p.appendChild(more);
   p.cleanup = () => clearInterval(POLL.timer);
   return p;
@@ -1413,66 +1415,6 @@ function openClues(){
       res.appendChild(use);
     };
     paint();
-  });
-}
-
-/* Room to choose: the three ways to hold a feeling, then five situations */
-function rtcScene(kind){
-  const person = '<g fill="none" stroke="#1D211C" stroke-width="3" stroke-linecap="round"><circle cx="40" cy="30" r="10" fill="#fff"/><path d="M40 42v30M40 50l-16 14M40 50l16 14M40 72l-12 20M40 72l12 20"/></g>';
-  if (kind === 'close') return '<svg viewBox="0 0 160 100"><circle cx="52" cy="54" r="44" fill="#F3C9BD" opacity=".85"/>' + person + '<path d="M110 20l-8 14h9l-6 12" fill="none" stroke="#B0563A" stroke-width="3"/></svg>';
-  if (kind === 'room') return '<svg viewBox="0 0 160 100">' + person + '<path d="M60 56h52" stroke="#6F8F62" stroke-width="3" stroke-dasharray="5 5"/><circle cx="128" cy="56" r="18" fill="#E3EAD9" stroke="#6F8F62" stroke-width="2.5"/><path d="M123 49v14M133 49v14" stroke="#103D21" stroke-width="3" stroke-linecap="round"/></svg>';
-  return '<svg viewBox="0 0 160 100">' + person + '<path d="M86 12v80M94 12v80" stroke="#1F5C7A" stroke-width="4"/><circle cx="134" cy="56" r="12" fill="#DCEBF2" stroke="#1F5C7A" stroke-width="2"/></svg>';
-}
-function openRTC(){
-  const L = () => S.lang === 'bn' ? EMO.eq.bn : EMO.eq.en;
-  let q = -1, picks = [], order = [];
-  openSheet(sh => {
-    const body = el('div'); sh.appendChild(body);
-    const paint = () => {
-      const D = L(), E = EMO.eq.en;
-      body.innerHTML = '';
-      if (q < 0) {
-        body.appendChild(el('h2', null, 'Room to choose')); body.lastChild.id = 'sheet-h';
-        body.appendChild(el('p', 'small', D.scenario || E.scenario));
-        const g = el('div', 'rtc'); g.style.marginTop = '12px';
-        [['close', 0], ['far', 2], ['room', 1]].forEach(([k, i]) => {
-          const c = el('div', 'rtc-card' + (k === 'room' ? ' green' : ''));
-          c.innerHTML = rtcScene(k);
-          c.appendChild(el('b', null, D.concepts[i].title));
-          c.appendChild(el('span', null, D.concepts[i].thought));
-          c.appendChild(el('span', null, D.concepts[i].action));
-          g.appendChild(c);
-        });
-        body.appendChild(g);
-        body.appendChild(el('p', 'small', D.honestNote));
-        const go = el('button', 'btn'); go.type = 'button'; go.style.marginTop = '12px'; go.textContent = D.quizStartBtn;
-        go.onclick = () => { q = 0; picks = []; order = E.questions.map(x => shuffle(x.options.map((_, i) => i))); paint(); };
-        body.appendChild(go);
-        return;
-      }
-      if (q >= E.questions.length) {
-        const n = t => picks.filter(x => x === t).length;
-        const tier = n('Healthy') >= 3 ? D.results.high : n('Close') >= 3 ? D.results.close : n('Far') >= 3 ? D.results.far : D.results.mid;
-        body.appendChild(el('h2', null, tier.title)); body.lastChild.id = 'sheet-h';
-        body.appendChild(el('p', null, tier.desc));
-        body.appendChild(el('p', 'small', '💚 ' + n('Healthy') + '   🔴 ' + n('Close') + '   🔵 ' + n('Far') + '   🟡 ' + n('Mixed')));
-        const again = el('button', 'btn ghost'); again.type = 'button'; again.style.marginTop = '12px'; again.textContent = D.retakeLabel;
-        again.onclick = () => { q = -1; paint(); }; body.appendChild(again);
-        return;
-      }
-      const Q = D.questions[q];
-      body.appendChild(el('p', 'kicker', (q + 1) + ' / ' + E.questions.length));
-      const qq = el('p', 'q', Q.text.replace(/^\d+\.\s*/, '')); qq.id = 'sheet-h'; qq.style.cssText = 'font-weight:700;line-height:1.45;margin:8px 0 12px'; body.appendChild(qq);
-      const ch = el('div', 'choose');
-      order[q].forEach(i => {
-        const o = Q.options[i], b = el('button'); b.type = 'button'; b.appendChild(el('span', 'dot')); b.appendChild(el('span', null, o.text));
-        b.onclick = () => { b.setAttribute('aria-pressed', 'true'); picks[q] = E.questions[q].options[i].type; setTimeout(() => { q++; paint(); }, 350); };
-        ch.appendChild(b);
-      });
-      body.appendChild(ch);
-    };
-    paint();
-    sh.repaint = paint;
   });
 }
 
@@ -1684,7 +1626,6 @@ function openMenu(){
     item('tv', 'The lesson for the projector', 'Seven animated panels — ← → to move, A to autoplay', () => { if (S.role !== 'teacher') { S.role = 'teacher'; save(); } setTV(true); S.view = 'lesson'; render(); });
     item('heart', 'The student activity', 'Feel · Hear · Partners · Patterns · Say · Idioms · Share', () => { S.view = 'flow'; render(); });
     item('chart', 'Class board (live)', 'This hour’s anonymous feelings — good on the projector', () => { S.view = 'board'; render(); });
-    item('compass', 'Room to choose', 'Three ways to hold a feeling, and a five-question reflection', openRTC);
     list.appendChild(el('div', 'menu-sep'));
     item('print', 'Print the worksheet for “' + curWord() + '”', 'One A4 page — for students without phones', () => Print.word(curWord()));
     item('print', 'Print a blank worksheet', 'One A4 page — works with any feeling word', () => Print.blank());

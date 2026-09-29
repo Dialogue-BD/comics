@@ -69,7 +69,7 @@ const Print = (() => {
       '<text x="85" y="206" text-anchor="middle" font-size="6.8" fill="#5F6A5C">Colour a circle each time your word rises.</text></svg>';
   }
   function storm(label){
-    return '<div class="ws-box"><h3>' + label + '</h3><div class="ws-storm">' + [1, 2, 3, 4, 5].map(n => '<div>' + weather(n) + '<div>' + n + '</div></div>').join('') + '</div></div>';
+    return '<div class="ws-box"><h3>' + label + '</h3><div class="ws-storm">' + [1, 2, 3, 4, 5].map(n => '<div>' + ART.shutter(n) + '<div>' + n + '</div></div>').join('') + '</div></div>';
   }
   function head(w){
     return '<div class="ws-head"><img src="../brand/dialogue-logo.png" alt=""><div class="ws-t"><h1>How Are You Feeling?</h1><p>The word iceberg · name a feeling, then take its word from “heard it” to “it is mine”.</p></div>' +
@@ -81,7 +81,7 @@ const Print = (() => {
   function sec(n, title, how, inner){ return '<div class="ws-sec"><div class="ws-n">' + n + '</div><div><h2>' + title + '</h2>' + (how ? '<p class="how">' + how + '</p>' : '') + inner + '</div></div>'; }
   function side(){
     return '<div class="ws-side"><div class="ws-box"><h3>My word rises</h3>' + berg() + '</div>' +
-      storm('Storm before') + storm('Storm after') +
+      storm('Filter before') + storm('Filter after') +
       '<div class="ws-box"><h3>Breathe</h3><p style="margin:0;font-size:8.4pt">In for 4 · out for 6.<br>Three times.</p></div></div>';
   }
 
