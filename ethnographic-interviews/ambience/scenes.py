@@ -10,7 +10,7 @@ SCENES = {
 "disagreeing-in-the-meeting-2":[("air",-34),("keys",-41),("presence",-54)],
 "disagreeing-in-the-meeting-3":[("air",-32),("radio",-42),("clatter",-40,5)],
 "the-boss-stacks-chairs-1":[("wind",-34),("rumble",-37),("presence",-54)],
-"the-boss-stacks-chairs-2":[("babble",-31),("clatter",-38,10),("air",-36)],
+"the-boss-stacks-chairs-2":[("air",-38),("keys",-48),("presence",-54)],
 "the-boss-stacks-chairs-3":[("fan",-30,9.0),("air",-35),("rumble",-39)],
 "what-do-you-think-1":    [("air",-36),("clatter",-45,6),("presence",-54)],
 "what-do-you-think-2":    [("presence",-50),("air",-43),("clatter",-48,2)],

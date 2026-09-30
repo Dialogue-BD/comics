@@ -535,16 +535,16 @@ const SCENARIOS = [
         'boxes while I hold a coffee, what exactly am I teaching them about this place? Whatever I do at ' +
         'six o’clock is the real policy.',
       gist: 'The title is a job, not a size. Whatever he does at six o’clock is the real policy.' },
-    { name: 'Kim', age: 24, job: 'design intern', city: 'Seattle',
-      context: 'At a different organisation',
-      context_bn: 'অন্য একটি প্রতিষ্ঠানে কাজ করেন',
+    { name: 'Kim', age: 28, job: 'product designer', city: 'Portland',
+      context: 'At a different technology company',
+      context_bn: 'অন্য একটি প্রযুক্তি প্রতিষ্ঠানে কাজ করেন',
       voice: { rate: 1.05, pitch: 1.25, gender: 'female' },
       script:
-        'I called him sir and he looked genuinely uncomfortable. Where I grew up you would never — but ' +
-        'here, the ones who want the title are usually the ones who are bad at the job. The good ones just ' +
-        'work next to you. I respect him way more for stacking chairs than I would if he had stood there ' +
-        'being important.',
-      gist: 'The ones who want the title are usually bad at the job. She respects him more for stacking chairs.' },
+        'At my first job, our manager made a call that put the project two weeks behind. On Monday she said, ' +
+        '“That was my decision, so the delay is mine.” Then she asked our newest engineer to lead the fix ' +
+        'because he knew that system best. Nobody thought she looked weak. That was when I trusted her. ' +
+        'She didn’t protect her title. She protected the team.',
+      gist: 'Her manager owned a bad decision and let the newest engineer lead the fix. That was when Kim trusted her.' },
     { name: 'Roberto', age: 38, job: 'warehouse manager', city: 'Phoenix',
       voice: { rate: 0.99, pitch: 0.88, gender: 'male' },
       script:
@@ -558,10 +558,10 @@ const SCENARIOS = [
   claims: [
     { text: 'Authority is treated as a function you perform, not a status you carry.', shared: true, text_bn: 'কর্তৃত্বকে একটি দায়িত্ব হিসেবে দেখা হয়, বহন করার মর্যাদা হিসেবে নয়।' },
     { text: 'Respect has to be earned by visible contribution, and it can be lost.', shared: true, text_bn: 'সম্মান চোখে দেখা যায় এমন কাজ দিয়ে অর্জন করতে হয়, আর তা হারানোও যায়।' },
-    { text: 'Standing apart from the work is read as arrogance, not as dignity.', shared: true, text_bn: 'কাজ থেকে দূরে দাঁড়িয়ে থাকাকে মর্যাদা নয়, অহংকার হিসেবে পড়া হয়।' },
+    { text: 'Leadership is read through visible responsibility, not ceremonial distance.', shared: true, text_bn: 'নেতৃত্বকে দেখা হয় চোখে পড়া দায়িত্বের মধ্যে, আনুষ্ঠানিক দূরত্বের মধ্যে নয়।' },
     { text: 'They still drive the forklift with their own team.', shared: false, text_bn: 'তিনি এখনো নিজের দলের সঙ্গে ফর্কলিফট চালান।', who: 'Roberto' },
     { text: 'They felt uncomfortable when someone called them “sir”.', shared: false, text_bn: 'কেউ তাঁকে “স্যার” ডাকলে তাঁর অস্বস্তি লাগে।', who: 'Dave' },
-    { text: 'They come from a place where you would never use a manager’s first name.', shared: false, text_bn: 'তিনি এমন জায়গা থেকে এসেছেন যেখানে ম্যানেজারকে নাম ধরে ডাকা যায় না।', who: 'Kim' }
+    { text: 'Their manager owned a delay and asked the newest engineer to lead the fix.', shared: false, text_bn: 'তাঁর ম্যানেজার বিলম্বের দায় নেন এবং সবচেয়ে নতুন ইঞ্জিনিয়ারকে সমাধানের নেতৃত্ব দিতে বলেন।', who: 'Kim' }
   ],
 
   rings: {
@@ -577,10 +577,11 @@ const SCENARIOS = [
   ],
 
   expert:
-    'Three people, three positions — director, intern, middle manager — and all three describe rank as ' +
-    'something rented rather than owned. Roberto puts the mechanism plainly: “you have to earn it again ' +
-    'every year.” If rank is rented, displaying it without working is theft. That is why the honorific ' +
-    'makes Dave uncomfortable rather than pleased.',
+    'Three people, three workplaces — a director carrying chairs, a manager owning a costly mistake, and ' +
+    'a warehouse manager taking the hard shift. All three describe rank as something rented rather than ' +
+    'owned. Roberto puts the mechanism plainly: “you have to earn it again every year.” Kim adds that a ' +
+    'leader can give the floor to the newest expert without becoming smaller. If rank is rented, it has ' +
+    'to keep proving useful.',
 
   contrast: {
     behavior:  'The senior person is seated, served and named by title, while junior staff carry the chairs.',

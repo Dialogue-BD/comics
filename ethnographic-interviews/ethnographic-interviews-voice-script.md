@@ -484,39 +484,39 @@ Candid documentary portrait photograph of a 49-year-old white American man, grey
 
 ## 11 · Kim — `the-boss-stacks-chairs-2.mp3`
 
-**Voice** Leda (Youthful) · **Style** `Vocal Smile` · **Pace** `Rapid Fire` · **Accent** `American (Gen)` · **Tags** `[laughs]`
+**Voice** Fola · **Model** Gemini 3.8 Flash TTS · **Style** natural recorded interview · **Accent** general American
 
 Scenario: The director stacking chairs (Authority). Same question as Dave: “Think of a manager you genuinely respected. Tell me about something you actually saw them do.”
 
 ### Audio profile — the sound of the voice
 
 ```text
-Female, early twenties. Higher pitch, lively, wider range than the others. Fast and certain. Warm rather than sarcastic on the last sentence.
+Female, late twenties. Clear, warm medium voice. Thoughtful and matter-of-fact, with a small pause before the quoted words and the final contrast.
 ```
 
 ### Scene
 
 ```text
-A coffee shop near the office the next morning. She is still slightly amazed by what she saw.
-Busy café: espresso machine, cups, layered conversation. Keep her clear over the top of it.
+A quiet room at a Portland technology company. Kim is describing a manager from her first job, at a separate organisation with no connection to Dave, Tanvir or the office event.
+Low office air and very faint keyboard sounds. Keep the voice close and clear.
 ```
 
 ### Sample context — what this recording is
 
 ```text
-A spontaneous answer to a single question from an interviewer, recorded on the spot. Not narration, not an advertisement. Kim is still slightly amazed by what she saw, describing the exact moment her idea of respect got rearranged. One continuous take, 20-35 seconds.
+A spontaneous answer to a single question from an interviewer, recorded on the spot. Not narration, not an advertisement. Kim remembers the exact moment a manager earned her trust by owning a mistake and yielding to the person with the right expertise. One continuous take, about 22 seconds.
 ```
 
 ### Transcript
 
 ```text
-[laughs] I called him sir and he looked genuinely uncomfortable. Where I grew up you would never — but here, the ones who want the title are usually the ones who are bad at the job. The good ones just work next to you. I respect him way more for stacking chairs than I would if he had stood there being important.
+At my first job, our manager made a call that put the project two weeks behind. On Monday she said, “That was my decision, so the delay is mine.” Then she asked our newest engineer to lead the fix because he knew that system best. Nobody thought she looked weak. That was when I trusted her. She didn’t protect her title. She protected the team.
 ```
 
 ### Portrait — `portraits/the-boss-stacks-chairs-2.jpg`
 
 ```text
-Candid documentary portrait photograph of a 24-year-old Korean-American woman, straight black hair to her shoulders with a blunt fringe, light makeup, wearing a knitted jumper over a collared shirt. She is in a busy coffee shop the morning after an office event: an espresso machine and blurred customers behind her, a cup on the table in front of her. Bright and slightly incredulous, caught mid-sentence, half-laughing. Window daylight mixed with warm cafe lamps. 50mm lens, f/2, shallow depth of field. Square 1:1 crop, head and shoulders, face centred and slightly above centre. Photorealistic, natural skin texture, unretouched. No text, no logos, no watermarks.
+Candid documentary portrait photograph of a 28-year-old Korean-American product designer from Portland, straight black hair to her shoulders with a blunt fringe, light makeup, wearing a knitted jumper over a collared shirt. She is seated in a bright shared work café at a technology company, caught mid-sentence with a thoughtful, open expression. Window daylight mixed with warm interior lamps. 50mm lens, f/2, shallow depth of field. Square 1:1 crop, head and shoulders, face centred and slightly above centre. Photorealistic, natural skin texture, unretouched. No text, no logos, no watermarks.
 ```
 
 
@@ -820,7 +820,7 @@ bed ever needs re-balancing; never layer ambience onto a file twice.
 - [x] `audio/disagreeing-in-the-meeting-2.mp3` — Nadia (Schedar)
 - [x] `audio/disagreeing-in-the-meeting-3.mp3` — Wes (Charon)
 - [x] `audio/the-boss-stacks-chairs-1.mp3` — Dave (Zubenelgenubi)
-- [x] `audio/the-boss-stacks-chairs-2.mp3` — Kim (Leda)
+- [x] `audio/the-boss-stacks-chairs-2.mp3` — Kim (Fola · Gemini 3.8 Flash TTS)
 - [x] `audio/the-boss-stacks-chairs-3.mp3` — Roberto (Orus)
 - [x] `audio/what-do-you-think-1.mp3` — Professor Hale (Sadaltager)
 - [x] `audio/what-do-you-think-2.mp3` — Beth (Achernar)
@@ -844,7 +844,7 @@ crop recipe if any of them is ever regenerated.
 - [x] `portraits/disagreeing-in-the-meeting-2.jpg` — Nadia (Schedar)
 - [x] `portraits/disagreeing-in-the-meeting-3.jpg` — Wes (Charon)
 - [x] `portraits/the-boss-stacks-chairs-1.jpg` — Dave (Zubenelgenubi)
-- [x] `portraits/the-boss-stacks-chairs-2.jpg` — Kim (Leda)
+- [x] `portraits/the-boss-stacks-chairs-2.jpg` — Kim (Fola)
 - [x] `portraits/the-boss-stacks-chairs-3.jpg` — Roberto (Orus)
 - [x] `portraits/what-do-you-think-1.jpg` — Professor Hale (Sadaltager)
 - [x] `portraits/what-do-you-think-2.jpg` — Beth (Achernar)
