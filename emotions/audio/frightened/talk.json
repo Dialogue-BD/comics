@@ -1,7 +1,7 @@
 {
 "I got the fright of my life when the dog barked.": [
 "frightened/talk-01.mp3",
-3.14,
+3.02,
 0.08,
 0.15
 ],
@@ -13,13 +13,13 @@
 ],
 "That dark street makes my skin crawl.": [
 "frightened/talk-03.mp3",
-2.57,
+2.54,
 0.08,
 0.15
 ],
 "I jumped clean out of my skin when the door slammed.": [
 "frightened/talk-04.mp3",
-3.05,
+3.02,
 0.08,
 0.15
 ],
@@ -31,7 +31,7 @@
 ],
 "He bolted out of there like a bat out of hell.": [
 "frightened/talk-06.mp3",
-2.38,
+2.3,
 0.08,
 0.15
 ],
@@ -43,7 +43,7 @@
 ],
 "I was so frightened I practically flew to the other side of the room.": [
 "frightened/talk-08.mp3",
-3.55,
+3.53,
 0.08,
 0.15
 ]
