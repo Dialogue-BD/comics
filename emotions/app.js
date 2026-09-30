@@ -475,7 +475,7 @@ function playBtn(onToggle, small){
   const b = el('button', 'play' + (small ? ' sm' : '')); b.type = 'button'; b.setAttribute('aria-label', 'Play');
   b.appendChild(icon('play'));
   b.onclick = () => onToggle(b);
-  b.setOn = on => { b.classList.toggle('is-on', on); b.replaceChildren(icon(on ? 'stop' : 'play')); b.setAttribute('aria-label', on ? 'Stop' : 'Play'); };
+  b.setOn = on => { b.classList.toggle('is-on', on); b.replaceChildren(icon(on ? 'pause' : 'play')); b.setAttribute('aria-label', on ? 'Pause' : 'Play'); };
   return b;
 }
 function weather(n){ return ART.weather(n); }
@@ -702,13 +702,20 @@ function scrListen(){
   const count = el('div', 'ls-count');
   const setCount = k => { count.innerHTML = '<b>' + k + '</b> / ' + L.length; };
   setCount(0);
+  /* pause keeps your place; play carries on from the line you were on */
+  let at = 0;
+  const again = el('button', 'linkbtn'); again.type = 'button'; again.hidden = true;
+  again.appendChild(icon('replay')); bn(again.appendChild(el('span', null, 'Start again')), 'আবার শুরু', true);
   const b = playBtn(btn => {
-    if (btn.classList.contains('is-on')) { TTS.stop(); btn.setOn(false); box.classList.remove('playing'); return; }
-    btn.setOn(true); box.classList.add('playing'); stage.reset(); setCount(0);
-    TTS.list(L, { onLine: i => { stage.light(i); setCount(i + 1); }, onDone: () => { btn.setOn(false); box.classList.remove('playing'); SFX.play('done'); } });
+    if (btn.classList.contains('is-on')) { TTS.stop(); btn.setOn(false); box.classList.remove('playing'); again.hidden = at === 0; return; }
+    btn.setOn(true); box.classList.add('playing'); again.hidden = true;
+    if (at === 0) { stage.reset(); setCount(0); }
+    TTS.list(L, { from: at, onLine: i => { at = i; stage.light(i); setCount(i + 1); }, onDone: () => { at = 0; btn.setOn(false); box.classList.remove('playing'); SFX.play('done'); } });
   });
+  again.onclick = () => { TTS.stop(); at = 0; stage.reset(); setCount(0); again.hidden = true; b.setOn(false); b.click(); };
   box.appendChild(stage);
   const row = el('div', 'listen-row'); row.appendChild(b); row.appendChild(count); box.appendChild(row);
+  box.appendChild(again);
   const tip = el('div', 'ls-tip'); tip.appendChild(icon('eyes')); tip.appendChild(bn(el('span', null, 'Close your eyes if it helps.'), 'দরকার হলে চোখ বন্ধ করুন।', true));
   box.appendChild(tip);
   p.appendChild(box);
@@ -836,20 +843,20 @@ function karaoke(lines, w, opts = {}){
     box.appendChild(r);
     return r;
   });
-  let playBtnRef = null;
+  let playBtnRef = null, at = 0;
   const stopAll = () => { TTS.stop(); rows.forEach(r => r.classList.remove('is-now')); if (playBtnRef) playBtnRef.setOn(false); };
   const speakFrom = (i, one) => {
     const texts = lines.map(l => plain(l, w));
     TTS.list(one ? [texts[i]] : texts, {
       from: one ? 0 : i,
-      onLine: k => { const idx = one ? i : k; rows.forEach((r, j) => r.classList.toggle('is-now', j === idx)); { const st = $('#stage'), r = rows[idx].getBoundingClientRect(), top = $('#appbar').offsetHeight + 12, bot = window.innerHeight - $('#actionbar').offsetHeight - 12; if (r.top < top || r.bottom > bot) st.scrollBy({ top: r.top < top ? r.top - top : r.bottom - bot, behavior: 'smooth' }); } },
+      onLine: k => { const idx = one ? i : k; if (!one) at = k; rows.forEach((r, j) => r.classList.toggle('is-now', j === idx)); { const st = $('#stage'), r = rows[idx].getBoundingClientRect(), top = $('#appbar').offsetHeight + 12, bot = window.innerHeight - $('#actionbar').offsetHeight - 12; if (r.top < top || r.bottom > bot) st.scrollBy({ top: r.top < top ? r.top - top : r.bottom - bot, behavior: 'smooth' }); } },
       onWord: (k, c) => lightWord(rows[one ? i : k].spans, c),
-      onDone: () => { rows.forEach(r => { r.classList.remove('is-now'); r.spans.forEach(s => s.classList.remove('lit')); }); if (playBtnRef) playBtnRef.setOn(false); }
+      onDone: () => { if (!one) at = 0; rows.forEach(r => { r.classList.remove('is-now'); r.spans.forEach(s => s.classList.remove('lit')); }); if (playBtnRef) playBtnRef.setOn(false); }
     });
   };
   return {
     node: box,
-    play(btn){ playBtnRef = btn; if (btn.classList.contains('is-on')) { stopAll(); return; } btn.setOn(true); speakFrom(0, false); },
+    play(btn){ playBtnRef = btn; if (btn.classList.contains('is-on')) { stopAll(); return; } btn.setOn(true); speakFrom(at, false); },
     stop: stopAll
   };
 }
@@ -922,10 +929,11 @@ function scrWeb(){
   };
   p.appendChild(web); p.appendChild(chunkline);
   const bar = el('div', 'listen-row'); bar.style.justifyContent = 'center';
+  let at = 0;
   const b = playBtn(btn => {
     if (btn.classList.contains('is-on')) { TTS.stop(); btn.setOn(false); return; }
     btn.setOn(true);
-    TTS.list(nodes.map(n => plain(n.full, w)), { gap: 900, onLine: i => reveal(nodes[i].s, nodes[i].ln, nodes[i].full), onDone: () => btn.setOn(false) });
+    TTS.list(nodes.map(n => plain(n.full, w)), { gap: 900, from: at, onLine: i => { at = i; reveal(nodes[i].s, nodes[i].ln, nodes[i].full); }, onDone: () => { at = 0; btn.setOn(false); } });
   });
   b.style.width = b.style.height = 'calc(64px*var(--ui))';
   bar.appendChild(b); p.appendChild(bar);
