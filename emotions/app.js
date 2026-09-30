@@ -547,7 +547,7 @@ function feelTile(name, cls, onPick, pressed, keep){
 }
 function scrBig(){
   const p = el('div', 'panel');
-  p.appendChild(task('heart', 'How are you feeling right now?', 'এই মুহূর্তে আপনার কেমন লাগছে?', 'Start with a big feeling. There is no wrong answer.', 'একটি বড় অনুভূতি দিয়ে শুরু করুন। কোনো উত্তরই ভুল নয়।'));
+  p.appendChild(task('heart', 'Think of a big feeling you had recently', 'সম্প্রতি হওয়া একটি বড় অনুভূতির কথা ভাবুন', 'A moment this week, at home, in class or with friends. Which big feeling was it? There is no wrong answer.', 'এই সপ্তাহের কোনো মুহূর্ত — বাড়িতে, ক্লাসে বা বন্ধুদের সঙ্গে। কোন বড় অনুভূতিটি ছিল? কোনো উত্তরই ভুল নয়।'));
   const g = el('div', 'fgrid six');
   EMO.wheel.forEach((f, i) => {
     const t = feelTile(f.name, '', n => { S.pick.big = n; chooseWord(n); }, S.word && FAMILY[S.word] === f.name);
@@ -625,7 +625,7 @@ function scrStorm(){
 }
 function scrBreathe(){
   const p = el('div', 'panel');
-  p.appendChild(task('wind', 'Breathe with the circle', 'বৃত্তের সঙ্গে শ্বাস নিন', 'Three slow breaths. In as it grows, out as it shrinks.', 'তিনটি ধীর শ্বাস। বড় হলে শ্বাস নিন, ছোট হলে ছাড়ুন।'));
+  p.appendChild(task('wind', 'Breathe with the circle', 'বৃত্তের সঙ্গে শ্বাস নিন', 'A short pause before we learn: three slow breaths. In as it grows, out as it shrinks.', 'শেখার আগে একটু থামুন: তিনটি ধীর শ্বাস। বড় হলে শ্বাস নিন, ছোট হলে ছাড়ুন।'));
   const box = el('div', 'breath card'); box.style.position = 'relative';
   box.innerHTML = '<div class="breath-ring"><svg viewBox="0 0 220 220" aria-hidden="true">' +
     '<defs><radialGradient id="brg" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#CFE7F2"/><stop offset="1" stop-color="#6FA7C0"/></radialGradient></defs>' +
@@ -1144,7 +1144,7 @@ function scrFrames(){
   p.appendChild(task('heart', 'Now say it your way', 'এবার নিজের মতো বলুন', 'Finish the three sentences. Tap an idea if you need help.', 'তিনটি বাক্য শেষ করুন। সাহায্য লাগলে একটি ধারণায় চাপ দিন।'));
   const H = EMO.hints[w] || EMO.hintsDefault;
   const box = el('div', 'frames');
-  [['because', 'I feel <span class="hwl">' + esc(lower(w)) + '</span> because…', 'আমার এমন লাগছে কারণ…'],
+  [['because', 'I felt <span class="hwl">' + esc(lower(w)) + '</span> because…', 'আমার এমন লেগেছিল কারণ…'],
    ['stake', 'What’s really at stake is…', 'আসলে যা ঝুঁকিতে আছে তা হলো…'],
    ['need', 'I need…', 'আমার দরকার…']].forEach(([k, lab, lb]) => {
     const f = el('div', 'frame');
@@ -1165,7 +1165,7 @@ function scrFrames(){
   const hear = el('button', 'mini'); hear.type = 'button'; hear.appendChild(icon('play')); hear.appendChild(el('span', null, 'Hear my sentences'));
   hear.onclick = () => {
     const f = S.frames, parts = [];
-    parts.push('I feel ' + lower(w) + (f.because ? ' because ' + f.because : '') + '.');
+    parts.push('I felt ' + lower(w) + (f.because ? ' because ' + f.because : '') + '.');
     if (f.stake) parts.push('What’s really at stake is ' + f.stake + '.');
     if (f.need) parts.push('I need ' + f.need + '.');
     TTS.list(parts, { gap: 400 });
@@ -1249,7 +1249,7 @@ function scrIdiomGap(){
 }
 function scrIdiomChoose(){
   const w = curWord(), p = el('div', 'panel'), C = chunk(w);
-  p.appendChild(task('image', 'Which one fits your moment?', 'আপনার মুহূর্তের সঙ্গে কোনটি মেলে?', 'Choose one idiom to describe how you feel today.', 'আজ আপনার অনুভূতি বোঝাতে একটি বাগধারা বেছে নিন।'));
+  p.appendChild(task('image', 'Which one fits your moment?', 'আপনার মুহূর্তের সঙ্গে কোনটি মেলে?', 'Choose one idiom to describe that feeling.', 'আজ আপনার অনুভূতি বোঝাতে একটি বাগধারা বেছে নিন।'));
   const list = el('div', 'choose');
   const preview = el('div', 'card'); preview.style.textAlign = 'center';
   const paintPrev = () => {
@@ -1257,7 +1257,7 @@ function scrIdiomChoose(){
     const f = S.frames;
     const q = el('p', 'example');
     const idm = S.idiom != null ? C.i[S.idiom] : null;
-    q.innerHTML = 'I feel <span class="hw">' + esc(lower(w)) + '</span>' + (f.because ? ' because ' + esc(f.because) : '') + '.' +
+    q.innerHTML = 'I felt <span class="hw">' + esc(lower(w)) + '</span>' + (f.because ? ' because ' + esc(f.because) : '') + '.' +
       (idm ? '<br>' + esc(idm[2]).replace(/\*([^*]+)\*/, '<span class="idm">$1</span>') : '');
     preview.appendChild(q);
   };
@@ -1324,7 +1324,7 @@ function scrRise(){
   const row = (ico, lab, html) => { const r = el('div', 'sum-row'); const i = el('span', 'sico'); i.appendChild(icon(ico)); r.appendChild(i); const t = el('div', 'stx'); t.innerHTML = '<small>' + lab + '</small>' + html; r.appendChild(t); sum.appendChild(r); };
   row('link', 'Partners', C.p.slice(0, 3).map(x => marked(x, w)).join(' · '));
   row('puzzle', 'Patterns', C.g.slice(0, 2).map(g => esc(g[0])).join(' · '));
-  row('speech', 'My sentence', 'I feel <span class="hw">' + esc(lower(w)) + '</span>' + (S.frames.because ? ' because ' + esc(S.frames.because) : '…') + '.');
+  row('speech', 'My sentence', 'I felt <span class="hw">' + esc(lower(w)) + '</span>' + (S.frames.because ? ' because ' + esc(S.frames.because) : '…') + '.');
   row('image', 'My idiom', S.idiom != null ? '<span class="idm">' + esc(C.i[S.idiom][0]) + '</span>' : esc(C.i[0][0]));
   p.appendChild(sum);
   return p;
@@ -1383,7 +1383,7 @@ function scrShare(){
   p.appendChild(task('users', 'Share with the class', 'ক্লাসের সঙ্গে ভাগ করুন', 'No names. Only your word and, if you like, your reason.', 'কোনো নাম নয়। শুধু আপনার শব্দ, আর চাইলে কারণটি।'));
   const box = el('div', 'card share-box');
   const lab = el('label'); lab.htmlFor = 'share-r'; lab.style.cssText = 'display:block;font-weight:800;margin-bottom:8px;color:var(--heading)';
-  lab.innerHTML = 'I feel <span class="hw">' + esc(lower(w)) + '</span> because…';
+  lab.innerHTML = 'I felt <span class="hw">' + esc(lower(w)) + '</span> because…';
   const ta = el('textarea'); ta.id = 'share-r'; ta.maxLength = 220; ta.value = S.frames.because || '';
   const small = txt('p', 'small', 'Don’t write anyone’s name or phone number.', 'কারও নাম বা ফোন নম্বর লিখবেন না।');
   const send = el('button', 'btn'); send.type = 'button'; send.style.marginTop = '10px';
@@ -1437,11 +1437,11 @@ $('#scrim').onclick = closeSheet;
 function openClues(){
   openSheet(sh => {
     sh.appendChild(txt('h2', null, 'Notice the clues', 'লক্ষণগুলো খেয়াল করুন'));
-    sh.appendChild(txt('p', 'small', 'Tap 1–3 things you notice right now. They are clues, not proof.', 'এই মুহূর্তে যা খেয়াল করছেন তার ১–৩টিতে চাপ দিন। এগুলো লক্ষণ, প্রমাণ নয়।'));
+    sh.appendChild(txt('p', 'small', 'Think back to that moment. Tap 1–3 things you noticed. They are clues, not proof.', 'সেই মুহূর্তের কথা ভাবুন। যা খেয়াল করেছিলেন তার ১–৩টিতে চাপ দিন। এগুলো লক্ষণ, প্রমাণ নয়।'));
     const picked = new Set();
     const res = el('div', 'card'); res.style.marginTop = '12px';
     const lists = el('div');
-    [['behavior', 'What am I doing?', 'আমি কী করছি?'], ['sensation', 'What is my body doing?', 'আমার শরীরে কী হচ্ছে?']].forEach(([type, en, b]) => {
+    [['behavior', 'What was I doing?', 'আমি কী করছিলাম?'], ['sensation', 'What was my body doing?', 'আমার শরীরে কী হচ্ছিল?']].forEach(([type, en, b]) => {
       lists.appendChild(txt('p', 'kicker', en, b)); lists.lastChild.style.margin = '14px 0 6px';
       const g = el('div', 'ideas'); g.style.cssText = 'display:flex;flex-wrap:wrap;gap:6px';
       EMO.clues.filter(c => c.type === type).forEach(c => {
@@ -1641,7 +1641,7 @@ function welcome(){
   const p = el('div', 'panel p-welcome');
   p.appendChild(welcomeHero());
   p.appendChild(txt('h1', 'wl-title', 'How are you feeling?', 'আপনার কেমন লাগছে?'));
-  p.appendChild(txt('p', 'wl-sub', 'Name a feeling. Calm the storm. Watch one English word rise.', 'অনুভূতির নাম দিন। ঝড় শান্ত করুন। একটি ইংরেজি শব্দকে উপরে উঠতে দেখুন।'));
+  p.appendChild(txt('p', 'wl-sub', 'Think of a feeling. Name it. Watch one English word rise.', 'একটি অনুভূতির কথা ভাবুন। নাম দিন। একটি ইংরেজি শব্দকে উপরে উঠতে দেখুন।'));
   const row = el('div', 'wl-cards');
   [['student', 'phone', 'I’m a student', 'আমি শিক্ষার্থী', 'Choose your feeling, then learn its word in seven small steps.', 'নিজের অনুভূতি বেছে নিন, তারপর সাতটি ছোট ধাপে শব্দটি শিখুন।', STEPS.map(s => s.en)],
    ['teacher', 'tv', 'I’m a teacher', 'আমি শিক্ষক', 'Show the lesson on the projector, then lead the class through the seven steps.', 'প্রজেক্টরে পাঠটি দেখান, তারপর পুরো ক্লাসকে সাতটি ধাপে নিয়ে যান।', ['Lesson'].concat(STEPS.map(s => s.en))]].forEach((c, k) => {

@@ -409,11 +409,11 @@ const LESSON = [
 /* 6 · your turn ------------------------------------------------------------ */
 { rail: 'Your turn', railBn: 'আপনার পালা', kicker: 'Today’s activity', kickerBn: 'আজকের কাজ',
   title: 'Seven small steps, one word', titleBn: 'সাতটি ছোট ধাপ, একটি শব্দ',
-  body: 'Work in pairs. Each of you chooses your own feeling, then takes its word up the iceberg: Feel, Hear, Partners, Patterns, Say, Idioms, Share. Nothing is locked — go back to any step whenever you like. No phone? Use the printed worksheet; the listening plays on the projector.',
-  bodyBn: 'জোড়ায় কাজ করুন। প্রত্যেকে নিজের অনুভূতি বেছে নিন, তারপর সেই শব্দটিকে হিমশৈলের উপরে নিয়ে যান: অনুভব, শুনুন, সঙ্গী শব্দ, গঠন, বলুন, বাগধারা, ভাগ করুন। কিছুই আটকানো নেই — যেকোনো ধাপে ফিরে যেতে পারেন। ফোন নেই? ছাপানো ওয়ার্কশিট ব্যবহার করুন; শোনার অংশ প্রজেক্টরে বাজবে।',
+  body: 'Work in pairs. Each of you thinks of a big feeling you had recently, names it, then takes its word up the iceberg: Feel, Hear, Partners, Patterns, Say, Idioms, Share. Nothing is locked — go back to any step whenever you like. No phone? Use the printed worksheet; the listening plays on the projector.',
+  bodyBn: 'জোড়ায় কাজ করুন। প্রত্যেকে সম্প্রতি হওয়া একটি বড় অনুভূতির কথা ভেবে নাম দিন, তারপর সেই শব্দটিকে হিমশৈলের উপরে নিয়ে যান: অনুভব, শুনুন, সঙ্গী শব্দ, গঠন, বলুন, বাগধারা, ভাগ করুন। কিছুই আটকানো নেই — যেকোনো ধাপে ফিরে যেতে পারেন। ফোন নেই? ছাপানো ওয়ার্কশিট ব্যবহার করুন; শোনার অংশ প্রজেক্টরে বাজবে।',
   beats: [
     ['Seven small steps. One word rises.', 'সাতটি ছোট ধাপ। একটি শব্দ উপরে ওঠে।'],
-    ['Feel: name your feeling. Breathe.', 'অনুভব: অনুভূতির নাম দিন। শ্বাস নিন।'],
+    ['Feel: think of a recent feeling and name it. Breathe.', 'অনুভব: সাম্প্রতিক একটি অনুভূতির কথা ভেবে নাম দিন। শ্বাস নিন।'],
     ['Hear: listen to your word many times.', 'শুনুন: শব্দটি অনেকবার শুনুন।'],
     ['Partners and patterns: learn its chunks.', 'সঙ্গী শব্দ ও গঠন: শব্দগুচ্ছ শিখুন।'],
     ['Say it — then say it another way.', 'বলুন — তারপর অন্যভাবেও বলুন।'],

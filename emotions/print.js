@@ -105,7 +105,7 @@ const Print = (() => {
       sec(2, 'Partners <span style="font-weight:500;color:#5F6A5C">· collocations</span>', 'Write the partner. The first letter is there to help.', '<div class="ws-grid">' + partners + '</div><div class="ws-bank"><b>Word bank</b>' + esc(bank) + '</div>') +
       sec(3, 'Patterns <span style="font-weight:500;color:#5F6A5C">· colligations</span>', 'Circle the small grammar word that fits, then write it in.', '<ol>' + pats2 + '</ol>') +
       sec(4, 'Say it your way', null,
-        '<div class="ws-line">I feel <span class="hw">&nbsp;' + esc(lower(w)) + '&nbsp;</span> because <i></i></div>' +
+        '<div class="ws-line">I felt <span class="hw">&nbsp;' + esc(lower(w)) + '&nbsp;</span> because <i></i></div>' +
         '<div class="ws-line">What’s really at stake is <i></i></div><div class="ws-line">I need <i></i></div>' +
         '<p class="how" style="margin-top:1mm"><span class="sq"></span>Say your three sentences to your partner. Then listen to theirs.</p>') +
       sec(5, 'Idioms', 'Circle the one that fits your moment. Then use it.', '<div class="ws-idm">' + idm + '</div><div class="ws-line" style="margin-top:1.4mm">My sentence: <i></i></div>') +
@@ -119,7 +119,7 @@ const Print = (() => {
       sec(2, 'Partners <span style="font-weight:500;color:#5F6A5C">· collocations</span>', 'Words that often go with my word (feel ___, deeply ___, ___ about my exam).', '<div class="ws-grid">' + lines(6) + '</div>') +
       sec(3, 'Patterns <span style="font-weight:500;color:#5F6A5C">· colligations</span>', 'My word + a small grammar word + a slot. Example: anxious <b>about</b> + noun · too anxious <b>to</b> + verb.', '<div class="ws-grid">' + lines(4) + '</div>') +
       sec(4, 'Say it your way', null,
-        '<div class="ws-line">I feel <i style="flex:.5"></i> because <i></i></div><div class="ws-line">What’s really at stake is <i></i></div><div class="ws-line">I need <i></i></div>' +
+        '<div class="ws-line">I felt <i style="flex:.5"></i> because <i></i></div><div class="ws-line">What’s really at stake is <i></i></div><div class="ws-line">I need <i></i></div>' +
         '<p class="how" style="margin-top:1mm"><span class="sq"></span>Say your three sentences to your partner. Then listen to theirs.</p>') +
       sec(5, 'Idioms', 'Other ways English says my feeling — and what they mean.', lines(3) + '<div class="ws-line" style="margin-top:1mm">My sentence: <i></i></div>') +
       sec(6, 'Share', null, '<p class="how" style="margin:0"><span class="sq"></span>Tell the class your word — no names needed. Then colour the top of your iceberg.</p>') +
