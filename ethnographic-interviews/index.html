@@ -2772,18 +2772,24 @@ body.bangla .bn-inline{display:inline}
 
 /* listen 2: the line being said */
 .scn-kara{min-height:calc(150px*var(--ui));display:flex;align-items:center;min-width:0}
-.scn-kara-in{display:flex;gap:var(--s3);align-items:flex-start;width:100%;animation:gRise .35s cubic-bezier(.2,.7,.2,1) both}
+.scn-kara-in{display:flex;gap:var(--s3);align-items:flex-start;width:100%}
 .scn-face.is-kara{width:calc(64px*var(--ui));height:calc(64px*var(--ui))}
 .scn-kara-t{min-width:0;flex:1}
 .scn-name{display:block;font:700 calc(.78rem*var(--ui))/1.2 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;
   color:var(--kicker);margin-bottom:calc(4px*var(--ui))}
 .scn-kara-in.is-n .scn-name{color:var(--tx-muted)}
-.scn-words{margin:0;font-family:var(--font-display);font-weight:600;color:var(--heading);
+.scn-words{position:relative;isolation:isolate;margin:0;font-family:var(--font-display);font-weight:600;color:var(--heading);
   font-size:calc(clamp(1.35rem,5vw,1.9rem)*var(--ui));line-height:1.35;letter-spacing:-.005em}
 .scn-kara-in.is-n .scn-words{font-style:italic;font-weight:500}
-.scn-words .tw,.scn-words .tp{color:var(--tx-muted);opacity:.55;transition:opacity .15s,color .15s}
+.scn-words .tw,.scn-words .tp{position:relative;z-index:1;color:var(--tx-muted);opacity:.55;transition:opacity .12s ease,color .12s ease}
 .scn-words .tw.is-said,.scn-words .tp.is-said{opacity:1;color:var(--heading)}
-.scn-words .tw.is-now{opacity:1;color:var(--ink);background:var(--gold);border-radius:4px;box-shadow:0 0 0 2px var(--gold)}
+.scn-words .tw.is-now{opacity:1;color:var(--ink)}
+.scn-word-glide{position:absolute;z-index:0;left:0;top:0;width:0;height:0;border-radius:4px;
+  background:var(--gold);box-shadow:0 0 0 2px var(--gold);opacity:0;pointer-events:none;
+  transform:translate3d(0,0,0);transition:transform .14s cubic-bezier(.22,.68,.2,1),
+  width .14s cubic-bezier(.22,.68,.2,1),height .14s cubic-bezier(.22,.68,.2,1),opacity .18s ease;
+  will-change:transform,width,height,opacity}
+.scn-word-glide.on{opacity:1}
 .scn-kara-idle{width:100%;height:calc(10px*var(--ui));border-radius:999px;
   background:repeating-linear-gradient(90deg,var(--rule) 0 calc(38px*var(--ui)),transparent 0 calc(50px*var(--ui)))}
 
@@ -2848,6 +2854,7 @@ body.bangla .bn-inline{display:inline}
 @media (prefers-reduced-motion:reduce){
   .scn-pic{transition:none}
   .scn-pass-1 .scn-pic.on,.scn.is-playing .scn-face.is-badge,.scn-kara-in{animation:none}
+  .scn-word-glide{transition:opacity .12s ease}
 }
 @media (max-width:520px){ .g-lstep{flex-direction:column;align-items:flex-start;gap:4px;font-size:calc(.74rem*var(--ui))} }
 
@@ -3216,6 +3223,38 @@ body.is-welcome #theme-pill{visibility:hidden}
   .ps-k-lesson .pp-steps div{border-top:2pt solid #134219;padding-top:3pt;font-size:7.2pt;line-height:1.3}
   .ps-k-lesson .pp-steps b{display:block;font-size:6.6pt;letter-spacing:.1em;text-transform:uppercase;color:#134219}
 }
+
+/* Intact comic artwork, with a camera that fits each complete panel. */
+.scn-view{background:#ebe8df; isolation:isolate}
+.scn-canvas{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translate(var(--pan-x,0px),var(--pan-y,0px)) scale(var(--zoom,.96));transform-origin:center;transition:transform 900ms cubic-bezier(.22,.68,.2,1);will-change:transform}
+.scn-canvas>img{display:block;width:100%;height:100%;object-fit:contain}
+.scn-canvas.is-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:0}
+.scn-canvas.is-grid>img{min-width:0;min-height:0}
+.scn-focus{position:absolute;width:50%;height:33.333333%;border:3px solid var(--gold);box-shadow:0 0 0 100vmax rgba(18,34,22,.22);pointer-events:none}
+.scn-overview{min-height:40px;white-space:nowrap;font-size:.8rem}
+.scn-left{gap:8px}
+.scn-ctl{gap:8px;flex-wrap:wrap;justify-content:center}
+.scn-prog{flex-basis:100%;height:4px}
+.scn-pass-1 .scn-view,.scn-pass-2 .scn-view,.scn-pass-3 .scn-view{max-width:520px;aspect-ratio:4/3;height:clamp(220px,calc(100dvh - 500px),400px);width:100%}
+.scn-marks{gap:8px}
+@media(min-width:900px){
+ .scn-pass-1 .scn-left{display:grid;grid-template-columns:minmax(0,1fr) 220px;grid-template-rows:1fr auto 1fr;column-gap:28px;max-width:840px;width:100%;margin:auto}
+ .scn-pass-1 .scn-view{grid-column:1;grid-row:1/4;height:clamp(250px,calc(100dvh - 410px),480px);max-width:none}
+ .scn-pass-1 .scn-marks{grid-column:2;grid-row:1;align-self:end;flex-wrap:wrap}
+ .scn-pass-1 .scn-ctl{grid-column:2;grid-row:2}
+}
+@media(max-width:899px){
+ .scn-pass-1 .scn-view,.scn-pass-2 .scn-view{height:clamp(200px,calc(100dvh - 530px),300px)}
+ .scn-pass-3 .scn-view{height:150px;width:38%;max-width:38%}
+ .scn-pass-2 .scn-body{display:flex;flex-direction:column;gap:8px}
+ .scn-pass-2 .scn-kara{order:-1;min-height:90px;width:100%;padding:4px 0}
+ .scn-pass-2 .scn-left{width:100%}
+ .scn-pass-2 .scn-view{height:180px}
+ .scn-pass-3 .scn-ctl{flex-direction:row}
+}
+.scn-view .scn-bigplay{width:64px;height:64px}
+@media(prefers-reduced-motion:reduce){.scn-canvas{transition:none}}
+
 </style>
 </head>
 <body>
@@ -3359,11 +3398,11 @@ body.is-welcome #theme-pill{visibility:hidden}
 <!-- ============ PRINTABLE FIELD SHEET · blank, for real interviews ============ -->
 <div id="printsheet"></div>
 
-<script src="scenes.js?v=20260927c"></script>
-<script src="scene-timings.js?v=20260928a"></script>
+<script src="scenes.js?v=20260929-review2"></script>
+<script src="scene-timings.js?v=20260929-review2"></script>
 <script src="glossary.js?v=20260927c"></script>
-<script src="timings.js"></script>
-<script src="scenarios.js"></script>
+<script src="timings.js?v=20260930-boss"></script>
+<script src="scenarios.js?v=20260930-boss"></script>
 <script src="scenarios-bn.js?v=20260927"></script>
 <script>
 /* Scenarios still waiting for their pictures and recordings carry
@@ -3858,7 +3897,7 @@ function startSpeaker(i){
     next();
   };
 
-  const a = new Audio('audio/' + sc.id + '-' + (i + 1) + '.mp3');
+  const a = new Audio('audio/' + sc.id + '-' + (i + 1) + '.mp3?v=20260930-boss');
   c.audio = a;
   a.ontimeupdate = () => {
     if (cur !== c || !a.duration) return;
@@ -4860,6 +4899,7 @@ const JOB_BN = {
   'logistics supervisor':   'লজিস্টিকস সুপারভাইজার',
   'country director':       'কান্ট্রি ডিরেক্টর',
   'intern':                 'ইন্টার্ন',
+  'design intern':          'ডিজাইন ইন্টার্ন',
   'warehouse manager':      'গুদামের ম্যানেজার',
   'literature professor':   'সাহিত্যের অধ্যাপক',
   'second-year student':    'দ্বিতীয় বর্ষের শিক্ষার্থী',
@@ -5982,11 +6022,9 @@ function panelFig(i, cls){
    together in each exchange, the narrator between. scene-timings.js times
    every word in it, and the page reads the line boundaries from that — to
    turn the panel as a line starts, to seek when one line is replayed, and to
-   light the karaoke. Without timings the lines are spread over the file by
-   length (roughly right). Without the file, each line is spoken by the
-   browser's speech engine in a voice matched to the character; with no
-   speech engine at all the comic still moves on at reading pace. Pictures are scene/panels/<id>-<n>.webp (.jpg); until one is drawn,
-   the nearest of the three existing strip panels stands in. */
+   light the karaoke. Timings must match the script and recording. A failed recording shows a retry state. It never silently substitutes
+   another voice. Whole comic sheets or the six individual dinner panels
+   are displayed intact, with a camera that follows the current panel. */
 const SCN_GAP = 420;                         /* ms between two lines */
 const scnPad = n => String(n).padStart(2, '0');
 const scnClean = t => String(t).replace(/<[^>]+>\s*/g, '').replace(/\s+/g, ' ').trim();
@@ -5998,7 +6036,6 @@ function scnSide(L){ return L.w === 'N' ? 'n' : L.w === 0 ? 'a' : 'b'; }
 
 let scn = null;                              /* the scene that owns the speakers */
 let scnWarned = false;
-const scnNoMp3 = {};                         /* scenario ids with no recordings yet */
 const scnShown = {};                         /* last panel shown, per scenario */
 
 /* The scene file is fetched once, into memory. server.py (SimpleHTTPRequest-
@@ -6008,9 +6045,13 @@ const scnShown = {};                         /* last panel shown, per scenario *
    Fetched when the moment opens, so it is usually ready before Play. */
 const scnBlob = {};                          /* id -> url | null (none) | undefined (loading) */
 const scnBlobP = {};
+const SCN_ASSET_VERSION = '20260929-review2';
+const scnAsset = path => new URL(path + '?v=' + SCN_ASSET_VERSION, document.baseURI).href;
+const scnOverview = {};
+const scnErrors = {};
 function scnFetch(id){
   if (!scnBlobP[id]){
-    scnBlobP[id] = fetch('scene/' + id + '.mp3')
+    scnBlobP[id] = fetch(scnAsset('scene/' + id + '.mp3'), {signal: AbortSignal.timeout(20000)})
       .then(r => r.ok ? r.blob() : null)
       .then(b => (b && b.size > 2000) ? URL.createObjectURL(b) : null)
       .catch(() => null)
@@ -6045,28 +6086,20 @@ function scnCharWord(L, ci){
 }
 /* When each line starts and ends in the scene file. From scene-timings.js
    (every word, in order, from tools/align_scenes.py) when it matches the
-   script; otherwise spread over the file by length, with a pause for each. */
+   script and duration; otherwise require a reload instead of guessing. */
 function scnCues(dur){
   const S = scnData();
   const T = typeof SCENE_TIMINGS !== 'undefined' ? SCENE_TIMINGS[sc.id] : null;
   const n = S.lines.map(L => scnWords(L.t).length);
   const total = n.reduce((a, b) => a + b, 0);
-  if (T && Array.isArray(T.w) && T.w.length === total){
+  if (T && T.script === S.lines.map(L => scnClean(L.t)).join("\n") && Math.abs(T.dur - dur) < .25 && Array.isArray(T.w) && T.w.length === total){
     let k = 0;
     return S.lines.map((L, i) => {
       const w = T.w.slice(k, k + n[i]); k += n[i];
       return { t0: w[0][0], t1: w[w.length - 1][1], w: w };
     });
   }
-  const wt = S.lines.map(L => scnMap(L).txt.length + 24);
-  const sum = wt.reduce((a, b) => a + b, 0);
-  let t = 0;
-  return S.lines.map((L, i) => {
-    const d = dur * wt[i] / sum;
-    const c = { t0: t + d * .1, t1: t + d * .9, w: null };
-    t += d;
-    return c;
-  });
+  return null; // Never invent karaoke timings for a recording.
 }
 function scnSeed(who){
   let h = 0;
@@ -6096,10 +6129,11 @@ function scnStart(pass, from, only){
   a.preload = 'auto';
   try { a.play().catch(() => {}); } catch (e) {}
   scn = { pass: pass, li: from || 0, from: from || 0, only: !!only, paused: false, inGap: false,
-          el: a, audio: null, utter: null, wi: -1, frac: 0, mode: 'tts',
+          el: a, audio: null, utter: null, wi: -1, frac: 0, mode: 'file',
           gapT: null, tick: null, watch: null, fb: -1 };
-  if (scnNoMp3[sc.id] || scnBlob[sc.id] === null) scnLine(scn);
-  else scnFile(scn);
+  if (scnBlob[sc.id] === null){ delete scnBlobP[sc.id]; delete scnBlob[sc.id]; }
+  delete scnErrors[sc.id];
+  scnFile(scn);
 }
 
 /* the recorded scene: one file, seek to the line, follow the clock */
@@ -6108,17 +6142,20 @@ function scnFile(c){
   c.audio = a; c.mode = 'file';
   const fail = () => {
     if (scn !== c || c.mode !== 'file') return;
-    scnNoMp3[sc.id] = true;
+    scnErrors[sc.id] = true;
     clearInterval(c.tick);
     a.onerror = a.onended = a.onloadedmetadata = null;
-    c.audio = null; c.mode = 'tts';
-    scnLine(c);
+    a.pause();
+    c.audio = null; c.loading = false; c.paused = true; c.mode = 'error';
+    delete scnBlobP[sc.id]; delete scnBlob[sc.id];
+    scn = null; scnPaint();
   };
   a.onerror = fail;
   a.onended = () => { if (scn === c) scnEnd(c); };
   a.onloadedmetadata = () => {
     if (scn !== c) return;
     c.cues = scnCues(a.duration);
+    if (!c.cues){ fail(); scnErrors[sc.id] = 'timing'; scnPaint(); return; }
     if (c.from > 0 || c.only) a.currentTime = Math.max(0, c.cues[c.from].t0 - .12);
     a.play().catch(err => { if (!err || err.name !== 'AbortError') fail(); });
     c.tick = setInterval(() => scnFileTick(c), 60);
@@ -6156,9 +6193,20 @@ function scnFileTick(c){
     scnPaint();
   }
   const L = S.lines[li], n = scnWords(L.t).length;
+  c.wordActive = false;
   if (t < Q.t0) c.wi = -1;
   else if (t > Q.t1) c.wi = n;
-  else if (Q.w) c.wi = wordAt(t, Q.w, Math.max(0, c.wi));
+  else if (Q.w){
+    c.wi = wordAt(t, Q.w, Math.max(0, c.wi));
+    if (c.wi >= 0){
+      const end = Q.w[c.wi][1];
+      const next = c.wi + 1 < Q.w.length ? Q.w[c.wi + 1][0] : Infinity;
+      /* Hold through ordinary between-word gaps. The old exact-end check
+         blanked the highlight dozens of times per sentence, which read as
+         flicker even when the alignment itself was correct. */
+      c.wordActive = t <= end + .22 || (next - end <= .72 && t < next);
+    }
+  }
   else c.wi = scnEstWord(L, (t - Q.t0) / Math.max(.1, Q.t1 - Q.t0));
   c.frac = c.only ? Math.min(1, Math.max(0, (t - Q.t0) / Math.max(.1, Q.t1 - Q.t0)))
                   : (a.duration ? t / a.duration : 0);
@@ -6293,61 +6341,57 @@ function scnFace(who, cls){
       f.style.backgroundPosition = (side === 0 ? '0%' : '100%') + ' 50%';
     };
     im.onerror = () => f.appendChild(el('span', 'scn-face-ph', who.name.replace(/^Dr\.\s+/, '').charAt(0)));
-    im.src = 'scene/cast/' + sc.id + '-pair.webp';
+    im.src = scnAsset('scene/cast/' + sc.id + '-pair.webp');
     f.setAttribute('role', 'img');
     f.setAttribute('aria-label', who.name);
     return f;
   }
   const im = new Image();
   im.alt = who.name;
-  im.src = 'scene/cast/' + who.slug + '.jpg';
+  im.src = scnAsset('scene/cast/' + who.slug + '.jpg');
   im.onerror = () => { im.remove(); f.appendChild(el('span', 'scn-face-ph', who.name.replace(/^Dr\.\s+/, '').charAt(0))); };
   f.appendChild(im);
   return f;
 }
 
-function scnPanel(n){
-  const S = scnData();
-  const P = S.panels[n - 1] || {};
-  const fig = el('div', 'scn-pic');
-  fig.dataset.p = n;
-  const standIn = () => {
-    const b = Math.max(1, Math.min(sc.beats.length, P.beat || 1)) - 1;
-    fig.appendChild(beatShot(sc.beats[b], b));
-    fig.classList.add('is-stand-in');
-  };
+/* Keep the full artwork intact. The camera fits a complete panel instead of
+   cutting every source cell to a square. Whole-comic mode is always available. */
+function scnComic(){
+  const S = scnData(), canvas = el('div', 'scn-canvas');
+  canvas.dataset.ratio = 2 / 3;
   if (S.panelSheet){
-    const im = new Image();
-    im.onload = () => {
-      fig.classList.add('is-sheet');
-      fig.style.backgroundImage = 'url("' + im.src + '")';
-      const widthUnits = 3 * im.naturalWidth / im.naturalHeight;
-      fig.style.backgroundSize = (widthUnits * 100) + '% 300%';
-      const cellWidth = widthUnits / 2;
-      const column = (n - 1) % 2;
-      const x = (column * cellWidth + (cellWidth - 1) / 2) / (widthUnits - 1) * 100;
-      fig.style.backgroundPosition = x + '% ' + (Math.floor((n - 1) / 2) * 50) + '%';
-    };
-    im.onerror = standIn;
-    im.src = 'scene/panels/' + sc.id + '-sheet.webp';
-    return fig;
+    const im = new Image(); im.alt = S.panels.map((p,i) => (i+1) + '. ' + p.see).join(' ');
+    im.onload = () => { canvas.dataset.ratio = im.naturalWidth / im.naturalHeight; scnCamera(); };
+    im.onerror = () => { canvas.classList.add('is-missing'); im.alt = 'Comic unavailable. Reload to retry.'; };
+    im.src = scnAsset('scene/panels/' + sc.id + '-sheet.webp'); canvas.appendChild(im);
+  } else {
+    canvas.classList.add('is-grid');
+    S.panels.forEach((p,i) => {
+      const im = new Image(); im.alt = p.see;
+      im.src = scnAsset('scene/panels/' + sc.id + '-' + (i+1) + '.webp');
+      canvas.appendChild(im);
+    });
   }
-  const pic = document.createElement('picture');
-  const src = document.createElement('source');
-  src.type = 'image/webp';
-  src.srcset = 'scene/panels/' + sc.id + '-' + n + '.webp';
-  pic.appendChild(src);
-  const im = new Image();
-  im.src = 'scene/panels/' + sc.id + '-' + n + '.jpg';
-  im.alt = '';
-  im.width = 720; im.height = 720; im.decoding = 'async';
-  im.onerror = () => {
-    pic.remove();
-    standIn();
-  };
-  pic.appendChild(im);
-  fig.appendChild(pic);
-  return fig;
+  canvas.appendChild(el('div', 'scn-focus'));
+  return canvas;
+}
+function scnCamera(){
+  const root = document.querySelector('.scn'), S = scnData();
+  if (!root || !S) return;
+  const view = root.querySelector('.scn-view'), canvas = root.querySelector('.scn-canvas');
+  if (!view || !canvas) return;
+  const vw = view.clientWidth, vh = view.clientHeight, ratio = +canvas.dataset.ratio;
+  const w = Math.min(vw, vh * ratio), h = w / ratio;
+  canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+  const p = +(root.dataset.panel || 1), col = (p-1)%2, row = Math.floor((p-1)/2);
+  const follow = !scnOverview[sc.id] && root.classList.contains('has-started');
+  const z = follow ? Math.min(vw/(w/2),vh/(h/3)) * .94 : .96;
+  canvas.style.setProperty('--zoom',z);
+  canvas.style.setProperty('--pan-x',follow ? (w/2-(col+.5)*w/2)*z+'px' : '0px');
+  canvas.style.setProperty('--pan-y',follow ? (h/2-(row+.5)*h/3)*z+'px' : '0px');
+  const focus = canvas.querySelector('.scn-focus');
+  focus.style.left = col*50+'%'; focus.style.top = row*100/3+'%';
+  focus.hidden = !root.classList.contains('has-started') || follow;
 }
 
 /* the words of one line, one span per word, the same indices the karaoke
@@ -6368,6 +6412,9 @@ function scnLineWords(txt){
     s.dataset.lo = w; s.dataset.hi = w;
     box.appendChild(s);
   });
+  const glide = el('span', 'scn-word-glide');
+  glide.setAttribute('aria-hidden', 'true');
+  box.appendChild(glide);
   return box;
 }
 
@@ -6401,16 +6448,20 @@ function scnView(pass){
   view.setAttribute('role', 'button');
   view.tabIndex = 0;
   view.setAttribute('aria-label', 'Play or pause the story');
-  S.panels.forEach((_, i) => view.appendChild(scnPanel(i + 1)));
-  const badge = el('div', 'scn-badge');
-  badge.setAttribute('aria-hidden', 'true');
-  view.appendChild(badge);
+  view.appendChild(scnComic());
   const big = el('span', 'scn-bigplay');
   big.appendChild(icon('playmark', 'scn-bigplay-ico'));
   view.appendChild(big);
   view.onclick = () => scnToggle(pass);
   view.onkeydown = e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); scnToggle(pass); } };
   left.appendChild(view);
+  const overview = el('button', 'mini scn-overview', scnOverview[sc.id] ? 'Follow panels' : 'Whole comic');
+  overview.type = 'button'; overview.setAttribute('aria-pressed', String(!!scnOverview[sc.id]));
+  overview.onclick = () => { scnOverview[sc.id] = !scnOverview[sc.id]; overview.setAttribute('aria-pressed', String(!!scnOverview[sc.id])); overview.textContent = scnOverview[sc.id] ? 'Follow panels' : 'Whole comic'; scnCamera(); };
+
+  if (window.scnResizeObserver) window.scnResizeObserver.disconnect();
+  window.scnResizeObserver = new ResizeObserver(scnCamera); window.scnResizeObserver.observe(view);
+  requestAnimationFrame(scnCamera);
 
   /* six numbered marks: where the story is, and a way to jump back into it */
   const marks = el('div', 'scn-marks');
@@ -6438,6 +6489,7 @@ function scnView(pass){
   again.setAttribute('aria-label', 'Start the story again');
   again.onclick = () => scnStart(pass, 0);
   ctl.appendChild(again);
+  ctl.appendChild(overview);
   const prog = el('div', 'scn-prog');
   prog.appendChild(el('i'));
   ctl.appendChild(prog);
@@ -6484,6 +6536,8 @@ function scnView(pass){
 
 function scnHintText(pass, playing){
   const heard = (state.scnHeard || {})[pass] || 0;
+  if (scnErrors[sc.id] === 'timing') return ['This story has been updated. Reload the page to sync the words and audio.', 'গল্পটি আপডেট হয়েছে। শব্দ ও অডিও মিলিয়ে নিতে পেজটি আবার লোড করুন।'];
+  if (scnErrors[sc.id]) return ['The recording couldn’t load. Press Play to retry.', 'রেকর্ডিং লোড হয়নি। আবার চেষ্টা করতে প্লে চাপুন।'];
   if (scn && scn.loading) return ['Loading the story…', 'গল্পটি লোড হচ্ছে…'];
   if (pass === 3) return ['Tap a line to hear it again. Tap an underlined word for its meaning.',
                          'কোনো লাইনে চাপ দিলে আবার শোনা যাবে। দাগ দেওয়া শব্দে চাপ দিলে মানে দেখা যাবে।'];
@@ -6508,7 +6562,9 @@ function scnPaint(){
 
   root.classList.toggle('is-playing', playing);
   root.classList.toggle('is-paused', !!(mine && mine.paused));
-  root.querySelectorAll('.scn-pic').forEach(f => f.classList.toggle('on', +f.dataset.p === p));
+  root.dataset.panel = p;
+  if (mine) root.classList.add('has-started');
+  scnCamera();
   root.querySelectorAll('.scn-mark').forEach(m => {
     const k = +m.dataset.p;
     m.classList.toggle('on', k === p);
@@ -6594,13 +6650,28 @@ function scnPaintWords(){
   let box = null;
   if (+root.dataset.pass === 2) box = root.querySelector('.scn-kara .scn-words');
   else if (+root.dataset.pass === 3) box = root.querySelector('.scn-row.is-now .transcript');
-  if (!box || box._wi === wi) return;
-  box._wi = wi;
+  const active = scn.mode !== 'file' || !!scn.wordActive;
+  if (!box) return;
+  const changed = box._wi !== wi || box._active !== active;
+  box._wi = wi; box._active = active;
+  let current = null;
   box.querySelectorAll('.tw, .tp').forEach(n => {
     const lo = +n.dataset.lo, hi = n.dataset.hi != null ? +n.dataset.hi : lo;
-    n.classList.toggle('is-said', n.classList.contains('tp') ? lo < wi : hi < wi);
-    if (n.classList.contains('tw')) n.classList.toggle('is-now', wi >= lo && wi <= hi);
+    if (changed){
+      n.classList.toggle('is-said', n.classList.contains('tp') ? lo < wi : hi < wi);
+      if (n.classList.contains('tw')) n.classList.toggle('is-now', active && wi >= lo && wi <= hi);
+    }
+    if (active && n.classList.contains('tw') && wi >= lo && wi <= hi) current = n;
   });
+  const glide = box.querySelector('.scn-word-glide');
+  if (!glide) return;
+  if (!current){ glide.classList.remove('on'); return; }
+  const word = current.getBoundingClientRect(), bounds = box.getBoundingClientRect();
+  glide.style.width = word.width + 'px';
+  glide.style.height = word.height + 'px';
+  glide.style.transform = 'translate3d(' + (word.left - bounds.left) + 'px,' +
+                          (word.top - bounds.top) + 'px,0)';
+  glide.classList.add('on');
 }
 
 function scnPaintProg(){
@@ -6611,7 +6682,7 @@ function scnPaintProg(){
   if (!bar) return;
   const pass = +root.dataset.pass;
   let pct = 0;
-  if (scn && scn.mode === 'file') pct = scn.frac * 100;
+  if (scn && scn.mode === 'file'){ pct = scn.frac * 100; root.dataset.audioTime = scn.audio ? scn.audio.currentTime.toFixed(3) : ''; root.dataset.timing = scn.cues ? 'aligned' : 'loading'; }
   else if (scn && scn.pass === pass && !scn.only) pct = (Math.min(scn.li, S.lines.length) + (scn.inGap ? 0 : scn.frac)) / S.lines.length * 100;
   else if (scn && scn.only) pct = scn.frac * 100;
   bar.style.width = Math.max(0, Math.min(100, pct)) + '%';
@@ -6674,7 +6745,7 @@ function stepObserve(){
       st.appendChild(two);
     } }));
 
-  M.push({ cue: ['Now read the whole story.', 'এবার পুরো গল্পটি পড়ুন।'], ico: 'eye', cls: 'g-story-m',
+  if (!SM.length) M.push({ cue: ['Now read the whole story.', 'এবার পুরো গল্পটি পড়ুন।'], ico: 'eye', cls: 'g-story-m',
     render(st){
       const row = el('div', 'g-thumbs is-strip');
       sc.beats.forEach((_, j) => row.appendChild(panelFig(j, 'is-thumb')));
@@ -7074,6 +7145,10 @@ function gPlayer(i, mode){
   facts.appendChild(el('span', null, sp.age + ' · ' + sp.job + ' · ' + sp.city));
   id.appendChild(facts);
   if (JOB_BN[sp.job]) id.appendChild(bn(bnNum(sp.age) + ' · ' + JOB_BN[sp.job] + ' · ' + (CITY_BN[sp.city] || sp.city)));
+  if (sp.context) {
+    id.appendChild(el('p', 'g-facts', sp.context));
+    if (sp.context_bn) id.appendChild(bn(sp.context_bn));
+  }
   left.appendChild(id);
   row.appendChild(left);
 
@@ -8281,6 +8356,7 @@ function psScenario(sx){
     const c = el('div', 'pp-spk');
     c.appendChild(el('div', 'pp-who', sp.name));
     c.appendChild(el('div', 'pp-meta', sp.age + ' · ' + sp.job + ' · ' + sp.city));
+    if (sp.context) c.appendChild(el('div', 'pp-meta', sp.context));
     c.appendChild(el('div', 'pp-say', sp.script));
     three.appendChild(c);
   });

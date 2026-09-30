@@ -16,7 +16,7 @@ conversational-mode call, and narration takes between them. This script
   5. joins them with pauses — 0.45 s, or 0.8 s when the next take opens a new
      panel — and peak-limits the whole file to 0.97
   6. writes scene/_build/<id>.json: where each take starts in the file and how
-     much was trimmed from its front. tools/align_scenes.py needs this.
+     much was trimmed from its front. tools/force_align_scenes.py needs this.
 
 The dry takes are never modified, so this can be re-run as often as needed.
 
@@ -133,7 +133,7 @@ def main():
         if want and sid not in want:
             continue
         done += assemble(sid, data["S"][sid], takes, data["B"])
-    print(f"\n{done} scene file(s) written. Now run: python3 tools/align_scenes.py")
+    print(f"\n{done} scene file(s) written. Now run: python3 tools/force_align_scenes.py")
 
 
 if __name__ == "__main__":

@@ -60,7 +60,7 @@ source of truth for what the page displays and which word gets each timestamp.
 ## The director stacking chairs  —  Authority
 
 - `audio/the-boss-stacks-chairs-1.mp3` — **Dave**, 49, country director, Denver · suggested voice: **Zubenelgenubi (Casual)**
-- `audio/the-boss-stacks-chairs-2.mp3` — **Kim**, 24, intern, Denver · suggested voice: **Leda (Youthful)**
+- `audio/the-boss-stacks-chairs-2.mp3` — **Kim**, 24, design intern, Seattle (a different workplace from Dave and Tanvir) · suggested voice: **Leda (Youthful)**
 - `audio/the-boss-stacks-chairs-3.mp3` — **Roberto**, 38, warehouse manager, Phoenix · suggested voice: **Orus (Firm)**
 
 ## “What do you think?”  —  Opinion

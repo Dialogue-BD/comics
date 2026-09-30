@@ -132,27 +132,29 @@ const SCENES = {
       tts: { gender: 'male', rate: 1.08, pitch: 1.0 } }
   ],
   panels: [
-    { beat: 1, room: 'restaurant', see: 'A cosy restaurant. Six young friends at a round table with candles and nearly empty plates of tacos. Jake at the end gestures proudly at the food. Nusrat, beside him, gives a thumbs-up, smiling.' },
-    { beat: 1, room: 'restaurant', see: 'A waiter places a single bill in a small folder in the middle of the table. Nusrat looks at Jake expectantly, eyebrows raised, half-teasing.' },
-    { beat: 2, room: 'restaurant', see: 'Everyone at the table has a phone out, looking at the bill and tapping calculators. One phone screen shows 14.50.' },
-    { beat: 2, room: 'restaurant', see: 'Nusrat reaches into her handbag for her purse, leaning forward to offer to pay for everyone. Jake laughs and shakes his head, one palm raised: no.' },
-    { beat: 3, room: 'restaurant', see: 'A card machine passes from hand to hand around the table. Each friend taps their own card or phone. Calm and friendly.' },
-    { beat: 3, room: 'street',     see: 'Outside the restaurant at night. The friends walk off chatting. Nusrat stops under a lamp and looks at her small paper receipt, amused and puzzled.' }
+    { beat: 1, room: 'restaurant', see: 'Six young friends at a round restaurant table. Jake in a green sweater smiles at Nusrat in a maroon top, who is pleased to have been invited.' },
+    { beat: 1, room: 'restaurant', see: 'A waiter leaves the bill. Nusrat looks expectantly at Jake; he reaches for his phone, not the bill.' },
+    { beat: 2, room: 'restaurant', see: 'The others calculate their shares. Nusrat looks hurt and caught off guard, hands still in her lap. Jake notices her expression.' },
+    { beat: 2, room: 'restaurant', see: 'Nusrat searches her purse with a tense, embarrassed expression. Jake gently offers to help; she gives a small restrained head shake.' },
+    { beat: 3, room: 'restaurant', see: 'Nusrat pays with her card at a correctly oriented card reader, lips pressed together. Her friends continue chatting without noticing her discomfort.' },
+    { beat: 3, room: 'street', see: 'Outside under a streetlamp, Nusrat speaks quietly to Jake. She looks disappointed. He listens, concerned. Their friends walk a few steps ahead.' }
   ],
   lines: [
-    { w: 'N', p: 1, t: 'Nusrat is a student in Austin, Texas. Tonight she is having dinner with five friends from her class.' },
-    { w: 1,   p: 1, t: 'Didn\'t I tell you? Best tacos in Austin. I found this place last year.', s: 'proud and playful' },
-    { w: 0,   p: 1, t: 'You were right, Jake. It was delicious.', s: 'happy, full, warm' },
-    { w: 'N', p: 2, t: 'Then the waiter brings the bill. Just one bill, for six people.' },
-    { w: 0,   p: 2, t: 'So, Jake... this was your idea. Are you paying tonight?', s: 'teasing lightly, but half serious' },
-    { w: 1,   p: 2, t: '<laugh> Me? No way! We\'ll just split it. Everybody pays for what they had.', s: 'amused and relaxed' },
-    { w: 'N', p: 3, t: 'Everybody takes out their phone. They look at the bill and do some math.' },
-    { w: 1,   p: 3, t: 'Okay, I had the fish tacos and a soda. That\'s fourteen fifty, plus the tip.', s: 'reading numbers off his phone, easy-going' },
-    { w: 0,   p: 4, t: 'Wait, wait. Please, let me pay for everyone. It\'s no problem!', s: 'generous and a little urgent' },
-    { w: 1,   p: 4, t: 'That\'s really nice, Nusrat, but no. Just pay for yours. Really, it\'s fine.', s: 'gentle and friendly, completely sure' },
-    { w: 'N', p: 5, t: 'One by one, everybody pays their own share. Nobody argues. Nobody reaches for the whole bill.' },
-    { w: 'N', p: 6, t: 'Outside, Nusrat looks at her receipt. At home, the fight to pay is half the fun.' },
-    { w: 0,   p: 6, t: 'Nobody even tried to pay for me...', s: 'amused and puzzled, softly' }
+    { w: 'N', p: 1, t: 'Jake invited Nusrat to dinner with some classmates. He picked the restaurant.' },
+    { w: 1, p: 1, t: 'Best tacos in Austin. Didn\'t I tell you?', s: 'pleased and friendly' },
+    { w: 0, p: 1, t: 'You were right. Thanks for inviting me.', s: 'warm, grateful; light Bengali accent' },
+    { w: 'N', p: 2, t: 'Then the bill arrives. Jake takes out his phone.' },
+    { w: 1, p: 2, t: 'Mine\'s fourteen fifty, plus the tip. What did you have?', s: 'casual, assuming they share the same expectations' },
+    { w: 0, p: 3, t: 'Oh... I thought you invited me.', s: 'hurt, surprised, quietly; light Bengali accent' },
+    { w: 1, p: 3, t: 'I did. Oh... I meant we\'d each pay for our own food. I should\'ve said.', s: 'realising the misunderstanding, apologetic' },
+    { w: 'N', p: 4, t: 'Nusrat opens her purse. She wasn\'t expecting to spend this money tonight.' },
+    { w: 0, p: 4, t: 'Give me a second.', s: 'tight, embarrassed, trying to stay composed; Bengali accent' },
+    { w: 1, p: 4, t: 'I\'m sorry. I can get yours.', s: 'sincere, quiet' },
+    { w: 0, p: 4, t: 'No, it\'s okay. I\'ve got it.', s: 'quietly firm, preserving dignity, not cheerful' },
+    { w: 'N', p: 5, t: 'Everybody pays separately. The others are still chatting. Nusrat puts her card away.' },
+    { w: 'N', p: 6, t: 'Outside, she hangs back beside Jake.' },
+    { w: 0, p: 6, t: 'I\'d have taken you out next time.', s: 'disappointed, softly; Bengali accent' },
+    { w: 1, p: 6, t: 'Oh. I didn\'t think of it like that.', s: 'thoughtful, beginning to understand' }
   ]
 },
 
@@ -211,7 +213,7 @@ const SCENES = {
   cast: [
     { slug: 'tanvir', name: 'Tanvir', age: 23, gender: 'male',
       who: 'a new intern from Chittagong, in his first week',
-      look: 'Bangladeshi man, 23, thick dark hair, navy blazer over a white T-shirt, khaki trousers (as in the existing strip)',
+      look: 'Bengali Bangladeshi man, 23, medium-deep brown skin, straight black hair swept to the side, subtle moustache and light stubble, navy blazer over a white T-shirt, khaki trousers (as in the existing strip)',
       voice: { prebuilt: 'Umbriel', note: 'Easy-going' },
       accent: 'light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, v sounds close to b-w',
       profile: 'Young man, earnest light baritone with a Bangladeshi accent. Respectful, a little breathless when nervous, softens the ends of his sentences.',
@@ -233,11 +235,11 @@ const SCENES = {
     { beat: 3, room: 'kitchen', see: 'Dave hands a mug to Tanvir. Tanvir holds it with both hands, amazed, as if receiving a gift.' }
   ],
   lines: [
-    { w: 'N', p: 1, t: 'The office party is over. Tanvir is a new intern. It is his first week.' },
+    { w: 'N', p: 1, t: 'The office party is over. Tanvir is a new intern. It\'s his first week.' },
     { w: 'N', p: 1, t: 'Then he sees Dave, the country director, the most senior person in the building. Dave is stacking chairs.' },
     { w: 0,   p: 2, t: 'Sir! Sir, please, let me do that. You don\'t have to.', s: 'anxious and respectful, hurrying' },
     { w: 1,   p: 3, t: '<laugh> Sir? Please, it\'s Dave. And it\'s fine, I\'ve got these.', s: 'amused and kind, completely relaxed' },
-    { w: 0,   p: 3, t: 'Okay, s... Dave.', s: 'hesitant, trying the first name for the first time' },
+    { w: 0,   p: 3, t: 'Sir... I mean... Dave... <quietly> sir.', s: 'Bengali accent; sir sounds like sar. Hesitates, corrects himself to Dave, then slips out a final very quiet sir'  },
     { w: 1,   p: 4, t: 'Hey, can you grab that box? The car\'s just outside. I\'ll take the heavy one.', s: 'casual, practical' },
     { w: 'N', p: 4, t: 'Together they carry the boxes out to the car.' },
     { w: 'N', p: 5, t: 'Later, the cleaning is almost finished. Dave goes into the kitchen.' },
@@ -285,7 +287,7 @@ const SCENES = {
     { w: 'N', p: 2, t: 'Nobody speaks. Farhana looks down at her book.' },
     { w: 'N', p: 3, t: 'Dr. Novak doesn\'t say anything. He just waits. Five seconds. Ten seconds.' },
     { w: 1,   p: 3, t: 'It\'s okay. There\'s no right answer. I actually want to know your opinion.', s: 'patient and encouraging, unhurried' },
-    { w: 0,   p: 4, t: '<whispers> My opinion? But he is the teacher...', s: 'whispering to herself, unsure' },
+    { w: 0,   p: 4, t: '<whispers> My opinion? But he\'s the teacher...', s: 'whispering to herself, unsure' },
     { w: 1,   p: 4, t: 'Farhana? You look like you have an idea.', s: 'gentle, inviting' },
     { w: 0,   p: 5, t: 'Um... I think the father was wrong. He didn\'t listen to his son.', s: 'hesitant at first, then a little steadier' },
     { w: 1,   p: 5, t: 'Interesting! Why do you think that? Tell me more.', s: 'genuinely delighted and curious' },
@@ -354,20 +356,20 @@ const SCENES = {
       voice: { prebuilt: 'Orus', note: 'Firm' },
       profile: 'Man in his early forties, firm quick baritone, general American. Brisk and a little impatient, polite words said fast, voice drops flat when he is let down.',
       tts: { gender: 'male', rate: 1.1, pitch: 0.9 } },
-    { slug: 'carla', name: 'Carla', age: 45, gender: 'female',
+    { slug: 'angela', name: 'Angela', age: 44, gender: 'female',
       who: 'the pharmacist',
       look: 'Black American woman, 45, hair pulled back in a neat bun, white pharmacist coat (as in the existing strip)',
-      voice: { prebuilt: 'Pulcherrima', note: 'Forward' },
+      voice: { prebuilt: 'Kore', note: 'Adult woman, firm warm alto' },
       profile: 'Woman in her forties, clear forward alto, general American. Warm and smiling, completely steady; friendly tone, firm words, never raises her voice.',
       tts: { gender: 'female', rate: 1.0, pitch: 1.0 } }
   ],
   panels: [
-    { beat: 1, room: 'pharmacy', see: 'Inside a pharmacy. Eight people wait in one straight line to the counter: an older woman, a mother with a small child, a student with headphones, others. Carla serves at the counter.' },
+    { beat: 1, room: 'pharmacy', see: 'Inside a pharmacy. Eight people wait in one straight line to the counter: an older woman, a mother with a small child, a student with headphones, others. Angela serves at the counter.' },
     { beat: 2, room: 'pharmacy', see: 'Brad, in a suit, checks his wristwatch as he walks quickly past the line, one hand raised in a small apologetic wave.' },
     { beat: 2, room: 'pharmacy', see: 'Brad at the front of the counter, leaning in, one finger raised. The people in the line look at him, calm but watching.' },
-    { beat: 3, room: 'pharmacy', see: 'Carla smiles politely and points with an open hand towards the back of the line.' },
+    { beat: 3, room: 'pharmacy', see: 'Angela smiles politely and points with an open hand towards the back of the line.' },
     { beat: 3, room: 'pharmacy', see: 'Brad walks back along the line towards the end, shoulders slightly dropped. Nobody in the line looks angry.' },
-    { beat: 3, room: 'pharmacy', see: 'Brad stands at the very back behind the mother and child, looking at his phone. The line moves forward one step. Carla calls the next customer.' }
+    { beat: 3, room: 'pharmacy', see: 'Brad stands at the very back behind the mother and child, looking at his phone. The line moves forward one step. Angela calls the next customer.' }
   ],
   lines: [
     { w: 'N', p: 1, t: 'It\'s a busy afternoon at a pharmacy in Philadelphia. Eight people are waiting in one straight line.' },
@@ -450,7 +452,7 @@ const SCENES = {
       who: 'the classmate who forgot his part — the same Ethan the class interviews in step 3',
       alsoIn: 'honestly-im-annoyed-2',
       look: 'white American man, 22, shaggy blond hair, navy hoodie (as in the existing strip)',
-      voice: { prebuilt: 'Zephyr', note: 'Bright — use the same voice as his interview take if it was different' },
+      voice: { prebuilt: 'Puck', note: 'Young adult male, warm light tenor' },
       profile: 'Young man, bright light tenor, general American. Cheerful and quick, drops into a sincere lower tone when he apologises, laughs easily.',
       tts: { gender: 'male', rate: 1.05, pitch: 1.05 } }
   ],
@@ -505,7 +507,7 @@ const SCENES = {
     { beat: 1, room: 'garden', see: 'A back garden with vegetable beds. Imran, holding a watering can, jumps back: a long black snake lies near the tomato plants.' },
     { beat: 1, room: 'garden', see: 'Imran grabs a long stick from beside the shed and raises it.' },
     { beat: 2, room: 'garden', see: 'Kathy hurries out of the back door in her apron and gloves, one hand up: stop.' },
-    { beat: 2, room: 'garden', see: 'Kathy and two children (a boy in a red top, a girl in purple) crouch a few steps from the snake, watching it with interest. Imran stands behind them, stick lowered, confused.' },
+    { beat: 2, room: 'garden', see: 'Kathy and two children (Kathy’s two children with fair skin and light-brown hair resembling their mother: a boy in a red top, a girl in purple) crouch a few steps from the snake, watching it with interest. Imran stands behind them, stick lowered, confused.' },
     { beat: 3, room: 'garden', see: 'The snake slides away under the wooden shed. Kathy waves goodbye to it.' },
     { beat: 3, room: 'garden', see: 'Later. Imran walks through the garden and notices a dead tree still standing, with a woodpecker hole, and one corner of the garden grown wild with tall grass and flowers.' }
   ],
@@ -591,6 +593,11 @@ const SCENE_GLOSS = {
     { p: 'oh man',            k: 'discourse', d: 'a sound of surprise or sympathy, like “oh dear”.' },
     { p: 'cut back',          k: 'phrasal', d: 'cut some parts off a tree or plant to make it smaller.' },
     { p: 'that\'d be great',  k: 'grammar', d: 'yes please, that would help.', n: '“That’d” = that would.' },
+    { p: "I've got it", k: 'idiom', d: 'I can pay for this myself. Here Nusrat declines Jake’s offer.' },
+    { p: 'get yours', k: 'idiom', d: 'pay for your meal or your share of the bill.' },
+    { p: 'hangs back', k: 'phrasal', d: 'stays a little behind the others.' },
+    { p: "I'd have taken you out", k: 'grammar', d: 'I would have invited you for a meal and paid next time.', n: '“I’d have” = I would have. She describes the return invitation she had imagined.' },
+    { p: "I should've said", k: 'grammar', d: 'I should have explained that earlier. Jake recognises his mistake.' },
     /* the pharmacy */
     { p: 'in a hurry',        k: 'idiom',   d: 'needing to go fast; short of time.' },
     { p: 'excuse me',         k: 'discourse', d: 'a polite way to ask people to let you pass.' },

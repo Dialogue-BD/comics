@@ -1,6 +1,6 @@
 {
  "id": "what-do-you-think",
- "dur": 59.12,
+ "dur": 56.51,
  "takes": [
   {
    "key": "what-do-you-think-s01",
@@ -10,8 +10,8 @@
     0
    ],
    "start": 0.3,
-   "trim": 0.3,
-   "len": 9.83
+   "trim": 0.24,
+   "len": 7.99
   },
   {
    "key": "what-do-you-think-s02",
@@ -20,9 +20,9 @@
    "lines": [
     1
    ],
-   "start": 10.58,
-   "trim": 0.12,
-   "len": 1.97
+   "start": 8.74,
+   "trim": 0.18,
+   "len": 1.91
   },
   {
    "key": "what-do-you-think-s03",
@@ -32,9 +32,9 @@
     2,
     3
    ],
-   "start": 13.35,
-   "trim": 0.54,
-   "len": 12.76
+   "start": 11.45,
+   "trim": 0.47,
+   "len": 10.27
   },
   {
    "key": "what-do-you-think-s04",
@@ -47,9 +47,9 @@
     7,
     8
    ],
-   "start": 26.56,
-   "trim": 0.73,
-   "len": 20.16
+   "start": 22.17,
+   "trim": 0.47,
+   "len": 21.99
   },
   {
    "key": "what-do-you-think-s05",
@@ -58,9 +58,9 @@
    "lines": [
     9
    ],
-   "start": 47.52,
-   "trim": 0.8,
-   "len": 7.63
+   "start": 44.96,
+   "trim": 0.61,
+   "len": 7.27
   },
   {
    "key": "what-do-you-think-s06",
@@ -69,9 +69,9 @@
    "lines": [
     10
    ],
-   "start": 55.6,
-   "trim": 0.38,
-   "len": 2.92
+   "start": 52.68,
+   "trim": 0.25,
+   "len": 3.23
   }
  ]
 }

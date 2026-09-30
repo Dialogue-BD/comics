@@ -1,6 +1,6 @@
 {
  "id": "the-neighbours-tree",
- "dur": 50.46,
+ "dur": 50.23,
  "takes": [
   {
    "key": "the-neighbours-tree-s01",
@@ -21,8 +21,8 @@
     1
    ],
    "start": 8.68,
-   "trim": 0.0,
-   "len": 3.75
+   "trim": 0.02,
+   "len": 3.96
   },
   {
    "key": "the-neighbours-tree-s03",
@@ -31,7 +31,7 @@
    "lines": [
     2
    ],
-   "start": 13.23,
+   "start": 13.44,
    "trim": 0.47,
    "len": 2.44
   },
@@ -43,9 +43,9 @@
     3,
     4
    ],
-   "start": 16.47,
-   "trim": 0.99,
-   "len": 7.89
+   "start": 16.68,
+   "trim": 0.72,
+   "len": 7.56
   },
   {
    "key": "the-neighbours-tree-s05",
@@ -56,9 +56,9 @@
     6,
     7
    ],
-   "start": 25.16,
-   "trim": 0.92,
-   "len": 11.25
+   "start": 25.04,
+   "trim": 0.42,
+   "len": 11.56
   },
   {
    "key": "the-neighbours-tree-s06",
@@ -68,7 +68,7 @@
     8,
     9
    ],
-   "start": 36.86,
+   "start": 37.05,
    "trim": 0.37,
    "len": 10.32
   },
@@ -80,9 +80,9 @@
     10,
     11
    ],
-   "start": 47.63,
-   "trim": 0.98,
-   "len": 2.23
+   "start": 47.82,
+   "trim": 0.54,
+   "len": 1.81
   }
  ]
 }

@@ -1,6 +1,6 @@
 {
  "id": "the-boss-stacks-chairs",
- "dur": 55.46,
+ "dur": 52.42,
  "takes": [
   {
    "key": "the-boss-stacks-chairs-s01",
@@ -11,8 +11,8 @@
     1
    ],
    "start": 0.3,
-   "trim": 0.28,
-   "len": 15.44
+   "trim": 0.23,
+   "len": 13.05
   },
   {
    "key": "the-boss-stacks-chairs-s02",
@@ -23,9 +23,9 @@
     3,
     4
    ],
-   "start": 16.54,
-   "trim": 0.14,
-   "len": 10.26
+   "start": 14.15,
+   "trim": 0.17,
+   "len": 11.82
   },
   {
    "key": "the-boss-stacks-chairs-s03",
@@ -34,9 +34,9 @@
    "lines": [
     5
    ],
-   "start": 27.6,
-   "trim": 0.55,
-   "len": 4.59
+   "start": 26.77,
+   "trim": 0.37,
+   "len": 4.28
   },
   {
    "key": "the-boss-stacks-chairs-s04",
@@ -46,9 +46,9 @@
     6,
     7
    ],
-   "start": 32.64,
-   "trim": 0.27,
-   "len": 8.85
+   "start": 31.5,
+   "trim": 0.44,
+   "len": 6.89
   },
   {
    "key": "the-boss-stacks-chairs-s05",
@@ -59,9 +59,9 @@
     9,
     10
    ],
-   "start": 41.94,
-   "trim": 0.66,
-   "len": 7.13
+   "start": 38.84,
+   "trim": 0.37,
+   "len": 7.7
   },
   {
    "key": "the-boss-stacks-chairs-s06",
@@ -70,9 +70,9 @@
    "lines": [
     11
    ],
-   "start": 49.52,
-   "trim": 0.52,
-   "len": 5.34
+   "start": 46.99,
+   "trim": 0.36,
+   "len": 4.83
   }
  ]
 }

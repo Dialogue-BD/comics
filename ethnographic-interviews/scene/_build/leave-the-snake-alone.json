@@ -1,6 +1,6 @@
 {
  "id": "leave-the-snake-alone",
- "dur": 59.71,
+ "dur": 59.94,
  "takes": [
   {
    "key": "leave-the-snake-alone-s01",
@@ -25,8 +25,8 @@
     5
    ],
    "start": 15.93,
-   "trim": 0.14,
-   "len": 16.02
+   "trim": 0.04,
+   "len": 17.36
   },
   {
    "key": "leave-the-snake-alone-s03",
@@ -36,7 +36,7 @@
     6,
     7
    ],
-   "start": 32.4,
+   "start": 33.74,
    "trim": 0.54,
    "len": 8.86
   },
@@ -47,9 +47,9 @@
    "lines": [
     8
    ],
-   "start": 41.71,
-   "trim": 0.93,
-   "len": 2.69
+   "start": 43.05,
+   "trim": 0.91,
+   "len": 1.99
   },
   {
    "key": "leave-the-snake-alone-s05",
@@ -58,7 +58,7 @@
    "lines": [
     9
    ],
-   "start": 45.2,
+   "start": 45.84,
    "trim": 0.73,
    "len": 9.78
   },
@@ -69,9 +69,9 @@
    "lines": [
     10
    ],
-   "start": 55.43,
-   "trim": 0.35,
-   "len": 3.68
+   "start": 56.07,
+   "trim": 0.29,
+   "len": 3.27
   }
  ]
 }

@@ -249,11 +249,11 @@ const SCENARIOS = [
   title: 'Six Friends, Six Payments',
   setting: 'Austin, Texas · the end of a meal',
   observation:
-    'Six American friends finish dinner. One bill arrives. Every person takes out a phone, works out ' +
+    'Nusrat finishes dinner with five American classmates. One bill arrives. Every person takes out a phone, works out ' +
     'what they ate, and pays their own share — including the man who suggested the restaurant in the ' +
     'first place. There is no argument about who pays. There is no reaching for the bill at all.',
   noticing:
-    'At home, the fight to pay is half the pleasure of the meal. Here nobody even reached.',
+    'Nusrat thought she was Jake’s guest. He thought they were friends eating out together. Neither thought to ask.',
 
 
   /* Bangla for the parts a student has to read. The transcripts and the
@@ -261,9 +261,9 @@ const SCENARIOS = [
      learned; these are the scaffolding around it. */
   title_bn: 'ছয় বন্ধু, ছয়টি বিল',
   observation_bn:
-    'ছয়জন আমেরিকান বন্ধু খাওয়া শেষ করলেন। একটি বিল এলো। প্রত্যেকে ফোন বের করে হিসাব করলেন কে কী খেয়েছেন, আর নিজের অংশটুকু দিলেন — যিনি রেস্তোরাঁটির কথা বলেছিলেন, তিনিও। কে দেবে তা নিয়ে কোনো তর্ক হলো না। বিলটি কেউ হাতে তুলেই নিলেন না।',
+    'নুসরাত পাঁচজন আমেরিকান সহপাঠীর সঙ্গে খাওয়া শেষ করল। একটি বিল এলো। প্রত্যেকে ফোন বের করে হিসাব করলেন কে কী খেয়েছেন, আর নিজের অংশটুকু দিলেন — যিনি রেস্তোরাঁটির কথা বলেছিলেন, তিনিও। কে দেবে তা নিয়ে কোনো তর্ক হলো না। বিলটি কেউ হাতে তুলেই নিলেন না।',
   noticing_bn:
-    'আমাদের এখানে বিল দেওয়ার জন্য কাড়াকাড়িটাই খাওয়ার অর্ধেক আনন্দ। এখানে কেউ হাতই বাড়াল না।',
+    'নুসরাত ভেবেছিল সে জেকের অতিথি। জেক ভেবেছিল বন্ধুরা একসঙ্গে খেতে এসেছে। আগে থেকে কেউ কাউকে জিজ্ঞেস করেনি।',
 
   /* three tiles: the scene as a picture, before the paragraph */
   beats: [
@@ -530,12 +530,14 @@ const SCENARIOS = [
     { name: 'Dave', age: 49, job: 'country director', city: 'Denver',
       voice: { rate: 0.95, pitch: 0.8, gender: 'male' },
       script:
-        'The title is a job, not a size. I do budgets and I take the blame — that is the job. It does not ' +
+        'The title is a job, not a size. I do budgets and I take the blame — that’s the job. It doesn’t ' +
         'mean my arms stopped working. And honestly, if I stand there watching a twenty-two-year-old carry ' +
-        'boxes while I hold a coffee, what exactly have I taught her about this place? Whatever I do at ' +
+        'boxes while I hold a coffee, what exactly am I teaching them about this place? Whatever I do at ' +
         'six o’clock is the real policy.',
       gist: 'The title is a job, not a size. Whatever he does at six o’clock is the real policy.' },
-    { name: 'Kim', age: 24, job: 'intern', city: 'Denver',
+    { name: 'Kim', age: 24, job: 'design intern', city: 'Seattle',
+      context: 'At a different organisation',
+      context_bn: 'অন্য একটি প্রতিষ্ঠানে কাজ করেন',
       voice: { rate: 1.05, pitch: 1.25, gender: 'female' },
       script:
         'I called him sir and he looked genuinely uncomfortable. Where I grew up you would never — but ' +

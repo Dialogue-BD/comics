@@ -100,11 +100,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("scene_id")
     parser.add_argument("--model", default="small")
+    parser.add_argument("--kind", choices=["narration", "dialogue"])
     args = parser.parse_args()
     scene, groups = scene_data(args.scene_id)
     import whisper
     model = whisper.load_model(args.model)
-    for kind in ("narration", "dialogue"):
+    for kind in ([args.kind] if args.kind else ("narration", "dialogue")):
         split_kind(args.scene_id, scene, groups, kind, model)
 
 

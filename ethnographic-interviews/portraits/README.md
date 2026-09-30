@@ -47,7 +47,7 @@ illustrative and never present them as photographs of real participants.
 ## The director stacking chairs  —  Authority
 
 - `portraits/the-boss-stacks-chairs-1.jpg` — **Dave**, 49, country director, Denver
-- `portraits/the-boss-stacks-chairs-2.jpg` — **Kim**, 24, intern, Denver
+- `portraits/the-boss-stacks-chairs-2.jpg` — **Kim**, 24, design intern, Seattle (a different workplace from Dave and Tanvir)
 - `portraits/the-boss-stacks-chairs-3.jpg` — **Roberto**, 38, warehouse manager, Phoenix
 
 ## “What do you think?”  —  Opinion

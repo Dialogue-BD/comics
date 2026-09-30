@@ -1,6 +1,6 @@
 {
  "id": "honestly-im-annoyed",
- "dur": 55.53,
+ "dur": 59.14,
  "takes": [
   {
    "key": "honestly-im-annoyed-s01",
@@ -25,8 +25,8 @@
     5
    ],
    "start": 17.96,
-   "trim": 0.0,
-   "len": 16.13
+   "trim": 0.23,
+   "len": 17.34
   },
   {
    "key": "honestly-im-annoyed-s03",
@@ -36,7 +36,7 @@
     6,
     7
    ],
-   "start": 34.89,
+   "start": 36.1,
    "trim": 0.63,
    "len": 8.98
   },
@@ -48,9 +48,9 @@
     8,
     9
    ],
-   "start": 44.32,
-   "trim": 0.37,
-   "len": 5.45
+   "start": 45.53,
+   "trim": 0.12,
+   "len": 7.72
   },
   {
    "key": "honestly-im-annoyed-s05",
@@ -60,9 +60,9 @@
     10,
     11
    ],
-   "start": 50.57,
-   "trim": 0.46,
-   "len": 4.36
+   "start": 54.05,
+   "trim": 0.57,
+   "len": 4.49
   }
  ]
 }

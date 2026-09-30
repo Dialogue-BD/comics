@@ -58,7 +58,7 @@ def main():
     import whisper
     model = whisper.load_model(args.model)
 
-    result, poor = {}, []
+    result, poor, audit = {}, [], []
     for mf in built:
         m = json.loads(mf.read_text())
         sid = m["id"]
@@ -71,6 +71,7 @@ def main():
                                   condition_on_previous_text=False)
             heard = [w for seg in tr["segments"] for w in seg.get("words", [])]
             item, fraction, diffs = align(text, heard, duration(src))
+            audit.append({"take": take["key"], "exact": round(fraction, 4), "expected": text, "heard": tr["text"], "differences": diffs})
             shift = take["start"] - take["trim"]
             end = take["start"] + take["len"]
             for a, b in item["w"]:
@@ -80,8 +81,11 @@ def main():
             print(f"{take['key']:32} {len(item['w']):3} words, {fraction:.0%} exact")
             if fraction < 0.8 and len(item["w"]) > 2:
                 poor.append((take["key"], fraction, diffs))
-        result[sid] = {"dur": m["dur"], "w": words}
+        result[sid] = {"dur": m["dur"], "script": "\n".join(lines[sid]), "w": words}
 
+    review = ROOT / "scene" / "review"
+    review.mkdir(exist_ok=True)
+    (review / "alignment-audit.json").write_text(json.dumps(audit, indent=2))
     for key, fraction, diffs in poor:
         print(f"REVIEW {key}: {fraction:.0%} match; {diffs}")
     if poor:
