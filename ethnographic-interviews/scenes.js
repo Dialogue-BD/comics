@@ -69,7 +69,7 @@ const SCENES = {
   cast: [
     { slug: 'tania', name: 'Tania', age: 26, gender: 'female',
       who: 'an accountant from Rajshahi, three weeks into her first job in Chicago',
-      look: 'Bangladeshi woman, 26, shoulder-length dark wavy hair, small gold hoop earrings, forest-green sweater (as in the existing strip)',
+      look: 'Bangladeshi woman, 26, shoulder-length dark wavy hair, small gold hoop earrings, deep plum-purple crew-neck sweater, cream trousers',
       voice: { prebuilt: 'Autonoe', note: 'Bright' },
       accent: 'light Bangladeshi accent: soft tapped r, dental t and d, even syllable timing, a gentle rise at the end of statements',
       profile: 'Young woman in her mid-twenties, warm clear mid-range voice, careful and slightly formal English with a soft Bangladeshi accent. Polite, rises a little at the ends of questions, stresses the key word gently rather than loudly.',
@@ -84,10 +84,10 @@ const SCENES = {
   panels: [
     { beat: 1, room: 'sofa',   see: 'Evening in a small apartment. Tania sits on her sofa, holding her phone to her ear, listening to a voice message. On the phone screen: an envelope icon and a small clock showing 6:00–8:00. She looks surprised and pleased.' },
     { beat: 2, room: 'home',   see: 'An apartment door opening. Tania on the doormat holding a wrapped box of sweets with both hands. Jeff opens the door, delighted. A wall clock just inside reads 6:00.' },
-    { beat: 2, room: 'home',   see: 'Dinner table at an angle. Six people eating and laughing, plates of food, candles, glasses. Tania relaxed in the middle of it, mid-laugh.' },
-    { beat: 2, room: 'home',   see: 'The wall clock reads 8:05. Jeff stands up at the table, one hand raised as if thanking everyone. Tania, still seated, is caught mid-bite, eyebrows up in surprise.' },
-    { beat: 3, room: 'home',   see: 'At the front door. Guests putting on coats, smiling, waving. Jeff shakes hands warmly with a departing guest. Everyone looks happy.' },
-    { beat: 3, room: 'street', see: 'Night street outside the building. The other guests walk away cheerfully. Tania stands alone under a streetlamp holding the empty sweet box, looking at her wristwatch, puzzled but half-smiling.' }
+    { beat: 2, room: 'home',   see: 'Dinner table at an angle. Six people eating and laughing, plates of food, candles, and clear water with lemon. Tania, in a plum-purple sweater, is relaxed in the middle of it, mid-laugh.' },
+    { beat: 2, room: 'home',   see: 'The wall clock reads 8:05. Jeff stands up at the table, one hand raised as if thanking everyone. Tania, in a plum-purple sweater and still seated, is caught mid-bite, eyebrows up in surprise. The table has clear water with lemon.' },
+    { beat: 3, room: 'home',   see: 'At the apartment doorway into the indoor building hallway. Jeff stays fully inside and waves. Tania crosses the threshold into the hallway, turns back to wave, and follows the other departing guests.' },
+    { beat: 3, room: 'street', see: 'Night street outside the apartment building after everyone has gone downstairs. The other guests walk away cheerfully. Tania, in a plum-purple sweater with empty hands, stands under a streetlamp looking at her wristwatch, puzzled but half-smiling. Jeff is not outside.' }
   ],
   lines: [
     { w: 'N', p: 1, t: 'This is Tania. She is from Rajshahi. Three weeks ago, she started a new job in Chicago.' },
@@ -119,7 +119,7 @@ const SCENES = {
   cast: [
     { slug: 'nusrat', name: 'Nusrat', age: 22, gender: 'female',
       who: 'an exchange student from Dhaka in her first term in Austin',
-      look: 'Bangladeshi woman, 22, long dark wavy hair, maroon top, small gold earrings (as in the existing strip)',
+      look: 'Bangladeshi woman, 22, long dark wavy hair, small gold earrings, high-neck deep-maroon long-sleeved kurta, opaque coordinating orna draped across her shoulders and chest',
       voice: { prebuilt: 'Leda', note: 'Youthful' },
       accent: 'light Bangladeshi accent: soft tapped r, dental t and d, quick even rhythm, warm open vowels',
       profile: 'Young woman, bright mid-range voice with a clear Bangladeshi accent. Quick and warm, laughs easily, lifts her pitch when she is being generous.',
@@ -132,7 +132,7 @@ const SCENES = {
       tts: { gender: 'male', rate: 1.08, pitch: 1.0 } }
   ],
   panels: [
-    { beat: 1, room: 'restaurant', see: 'Six young friends at a round restaurant table. Jake in a green sweater smiles at Nusrat in a maroon top, who is pleased to have been invited.' },
+    { beat: 1, room: 'restaurant', see: 'Six young friends at a round restaurant table with plates of food and clear water. Jake in a green sweater smiles at Nusrat, who wears a high-neck maroon kurta with an opaque orna across her shoulders and chest and is pleased to have been invited.' },
     { beat: 1, room: 'restaurant', see: 'A waiter leaves the bill. Nusrat looks expectantly at Jake; he reaches for his phone, not the bill.' },
     { beat: 2, room: 'restaurant', see: 'The others calculate their shares. Nusrat looks hurt and caught off guard, hands still in her lap. Jake notices her expression.' },
     { beat: 2, room: 'restaurant', see: 'Nusrat searches her purse with a tense, embarrassed expression. Jake gently offers to help; she gives a small restrained head shake.' },
