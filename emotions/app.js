@@ -80,6 +80,7 @@ const ICONS = {
   target: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10z M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2z',
   vol: 'M4 9h4l5-4v14l-5-4H4z M16 9a4 4 0 0 1 0 6 M18.5 6.5a8 8 0 0 1 0 11',
   mute: 'M4 9h4l5-4v14l-5-4H4z M17 9l5 6M22 9l-5 6',
+  grid: 'M4 4h7v7H4z M13 4h7v7h-7z M4 13h7v7H4z M13 13h7v7h-7z',
   eyes: 'M3 12c3-4 6-6 9-6s6 2 9 6c-3 4-6 6-9 6s-6-2-9-6z M4 20l16-16'
 };
 function icon(name, cls){
@@ -514,9 +515,13 @@ function paintWordbar(){
   if (S.view !== 'flow' || !S.word) { wb.hidden = true; measure(); return; }
   wb.hidden = false;
   wb.innerHTML = '';
-  const chip = el('span', 'wb-chip');
+  const chip = el('button', 'wb-chip'); chip.type = 'button';
+  chip.title = 'Change your feeling';
+  chip.setAttribute('aria-label', S.word + ': change your feeling');
   chip.appendChild(el('span', 'wb-emo', emoji(S.word)));
   chip.appendChild(el('span', null, S.word));
+  const pen = el('span', 'wb-chg'); pen.appendChild(icon('grid')); chip.appendChild(pen);
+  chip.onclick = () => { SFX.play('tap'); goStep(0, 0); };
   wb.appendChild(chip);
   const lv = el('span', 'wb-lvl'); lv.title = 'How high your word has risen in the iceberg';
   lv.innerHTML = bergMini(S.level) + '<span>Level <b>' + S.level + '</b>/6</span>';
@@ -588,10 +593,23 @@ function scrExact(){
   return p;
 }
 function trail(){
-  const t = el('div', 'trail');
+  /* where you are in the wheel; every earlier crumb is a way back */
+  const t = el('nav', 'trail'); t.setAttribute('aria-label', 'Your feeling path');
   const w = curWord(), chain = [];
   let x = w; while (x) { chain.unshift(x); x = PARENT[x]; }
-  chain.forEach((c, i) => { if (i) t.appendChild(el('span', 'sep', '›')); t.appendChild(el(i === chain.length - 1 ? 'b' : 'span', 'tc', emoji(c) + ' ' + c)); });
+  const back = (label, bnText, ico, fn) => {
+    const b = el('button', 'tc'); b.type = 'button';
+    if (ico) b.appendChild(icon(ico));
+    bn(b.appendChild(el('span', null, label)), bnText, true);
+    b.onclick = () => { SFX.play('tap'); fn(); };
+    return b;
+  };
+  t.appendChild(back('All feelings', 'সব অনুভূতি', 'grid', () => goStep(S.step, 0)));
+  chain.forEach((c, i) => {
+    t.appendChild(el('span', 'sep', '›'));
+    if (i === chain.length - 1) { t.appendChild(el('b', 'tc', emoji(c) + ' ' + c)); return; }
+    t.appendChild(back(emoji(c) + ' ' + c, null, null, () => { chooseWord(c); goStep(S.step, i + 1); }));
+  });
   return t;
 }
 function scrStorm(){
