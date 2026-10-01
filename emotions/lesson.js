@@ -15,14 +15,36 @@
    so every state is a pure function of the beat, and stepping back is the
    same transitions running in reverse.
 
-   The people, the room, the iceberg and the weather come from art.js, so
-   the projector and the phones share one cast. The canvas is 1600 x 620 —
+   ImageGen supplies the people and places; art.js draws the animated
+   teaching marks. The canvas is 1600 x 620 —
    the shape of what a 1080p projector has left once the header and caption
    have had theirs — and nothing is set smaller than 21 units.
    =========================================================================== */
 'use strict';
 
 const ZW = 1600, ZH = 620;
+/* ImageGen supplies the visual world; the SVG remains the live teaching layer. */
+const LESSON_IMG = {
+  classroom: 'img/classroom.jpg', studio: 'img/studio.jpg',
+  iceberg: 'img/iceberg.jpg', hill: 'img/hill.jpg',
+  teacher: 'img/teacher.webp', learner: 'img/learner-ready.webp',
+  worried: 'img/learner-worried.webp', friend: 'img/classmate.webp',
+  boy: 'img/student-thinking.webp', girl: 'img/student-orna.webp'
+};
+function lessonBackplate(p, name){
+  return N(p, 'image', { href: LESSON_IMG[name], x: 0, y: 0, width: ZW, height: ZH,
+    preserveAspectRatio: 'xMidYMid slice', cls: 'l-art-bg' });
+}
+function lessonFigure(p, x, y, s, o = {}){
+  const key = o.who === 'learner' && o.face === 'worry' ? 'worried' : o.who || 'learner';
+  const g = G(p, { in: o.in, out: o.out, at: o.at,
+    cls: ['l-art-person', o.cls].filter(Boolean).join(' '), delay: o.delay });
+  const figure = G(g, { cls: o.still ? null : 'idle' });
+  const w = s * .98, h = s * 1.08;
+  N(figure, 'image', { href: LESSON_IMG[key], x: x - w / 2, y: y - s * .27,
+    width: w, height: h, preserveAspectRatio: 'xMidYMid meet' });
+  return g;
+}
 /* a label, with its Bangla line underneath when Bangla is on */
 function T(p, x, y, en, bnText, a = {}){
   const g = G(p, { in: a.in, out: a.out, at: a.at, cls: a.cls, delay: a.delay });
@@ -30,6 +52,14 @@ function T(p, x, y, en, bnText, a = {}){
   N(g, 'text', { x, y, 'font-size': size, 'font-weight': a.weight || 800, fill: a.fill || '#1D211C', 'text-anchor': a.anchor || 'middle',
     'font-style': a.italic ? 'italic' : null, 'letter-spacing': a.ls || null, text: en });
   if (bnText) N(g, 'text', { x, y: y + size * 1.05, 'font-size': Math.max(22, size * .74), fill: a.bnFill || '#5F6A5C', 'text-anchor': a.anchor || 'middle', cls: 't-bn', text: bnText });
+  return g;
+}
+function choiceStage(p, cx, title, bnText, accent, at){
+  const g = G(p, { in: 1, at, cls: 'choice-panel' });
+  N(g, 'rect', { x: cx - 225, y: 36, width: 450, height: 540, rx: 27, fill: '#FFFEFA', opacity: .91,
+    stroke: accent, 'stroke-width': 2, 'stroke-opacity': .26 });
+  N(g, 'rect', { x: cx - 198, y: 58, width: 64, height: 5, rx: 2.5, fill: accent });
+  T(g, cx, 103, title, bnText, { size: 32, fill: accent, weight: 800 });
   return g;
 }
 /* a pill with a lip under it, the same tactile language as the buttons */
@@ -46,18 +76,17 @@ function bubble(p, x, y, w, h, tx, ty, text, a = {}){
   const g = G(p, { in: a.in, out: a.out, at: a.at, cls: a.cls });
   if (text) { const need = text.length * (a.size || 30) * .56 + 48; if (need > w) { x -= (need - w) / 2; w = need; } }
   x = Math.max(8, Math.min(ZW - 8 - w, x));
-  const d = `M${x + 22} ${y}H${x + w - 22}Q${x + w} ${y} ${x + w} ${y + 22}V${y + h - 22}Q${x + w} ${y + h} ${x + w - 22} ${y + h}H${Math.min(x + w - 30, Math.max(x + 60, tx + 40))}L${tx} ${ty}L${Math.min(x + w - 60, Math.max(x + 30, tx))} ${y + h}H${x + 22}Q${x} ${y + h} ${x} ${y + h - 22}V${y + 22}Q${x} ${y} ${x + 22} ${y}Z`;
-  N(g, 'path', { d, fill: a.fill || '#fff', stroke: a.stroke || '#1D211C', 'stroke-width': 3, 'stroke-linejoin': 'round', filter: ART.soft(p) });
-  if (text) N(g, 'text', { x: x + w / 2, y: y + h / 2 + (a.size || 30) * .36, 'font-size': a.size || 30, 'font-weight': 900, fill: a.ink || '#1D211C', 'text-anchor': 'middle', text });
+  N(g, 'rect', { x, y, width: w, height: h, rx: 17, fill: a.fill || '#FFFEF9', stroke: a.stroke || '#D7C9B4', 'stroke-width': 1.5, 'stroke-opacity': .35, filter: ART.soft(p) });
+  N(g, 'rect', { x: x + 14, y: y + 13, width: 4, height: h - 26, rx: 2, fill: a.ink || '#103D21', opacity: .55 });
+  if (text) N(g, 'text', { x: x + w / 2 + 6, y: y + h / 2 + (a.size || 30) * .33, 'font-size': a.size || 30, 'font-weight': 750, fill: a.ink || '#1D211C', 'text-anchor': 'middle', text });
   return g;
 }
-/* a word tile that travels a path, forever, while its group is shown */
+/* a word of live input moving between teacher and learner */
 function flier(p, path, text, begin, dur, fill, bounce){
   const g = G(p, {});
-  const w = text.length * 17 + 36;
-  N(g, 'rect', { x: -w / 2, y: -21, width: w, height: 46, rx: 12, fill: '#103D21', opacity: .16 });
-  N(g, 'rect', { x: -w / 2, y: -25, width: w, height: 46, rx: 12, fill, stroke: 'rgba(16,61,33,.18)', 'stroke-width': 2 });
-  N(g, 'text', { x: 0, y: 6, 'font-size': 26, 'font-weight': 900, 'text-anchor': 'middle', fill: '#1D211C', text });
+  N(g, 'text', { x: 0, y: 8, 'font-size': 31, 'font-weight': 750, 'font-style': 'italic',
+    cls: 't-disp', 'text-anchor': 'middle', fill,
+    stroke: '#FFFEF6', 'stroke-width': 8, 'stroke-linejoin': 'round', 'paint-order': 'stroke', text });
   N(g, 'animateMotion', { path, dur: dur + 's', begin: begin + 's', repeatCount: 'indefinite', calcMode: 'linear' });
   N(g, 'animate', { attributeName: 'opacity', values: bounce ? '0;1;1;0;0' : '0;1;1;0', keyTimes: bounce ? '0;.08;.55;.7;1' : '0;.1;.85;1', dur: dur + 's', begin: begin + 's', repeatCount: 'indefinite' });
   g.setAttribute('opacity', 0);
@@ -90,7 +119,6 @@ function ring(p, cx, cy, r0, r1, items, a = {}){
 function hubDisc(p, cx, cy, r, fill){
   N(p, 'circle', { cx, cy, r, fill, stroke: '#fff', 'stroke-width': 7, filter: ART.soft(p) });
 }
-const orbFill = (s, a, b) => ART.grad(s, [[a], [b]], { radial: true, cx: '38%', cy: '32%', r: '70%' });
 /* one of the page's stroke icons, drawn inside a scene */
 function glyph(p, name, x, y, size, color){
   const g = G(p, { transform: `translate(${x - size / 2} ${y - size / 2}) scale(${size / 24})` });
@@ -117,94 +145,73 @@ const LESSON = [
 /* 1 · the affective filter ------------------------------------------------ */
 { rail: 'Filter', railBn: 'ছাঁকনি', kicker: 'Why feelings matter', kickerBn: 'অনুভূতি কেন গুরুত্বপূর্ণ',
   title: 'Feelings come to class, too', titleBn: 'অনুভূতিও ক্লাসে আসে',
-  body: 'When we feel safe, the English we hear gets in and stays. When we feel afraid or embarrassed, something like a filter goes up and blocks it. Stephen Krashen called this the affective filter. Naming the feeling and breathing can bring the filter down.',
-  bodyBn: 'নিরাপদ বোধ করলে যে ইংরেজি শুনি তা মনে ঢোকে ও থেকে যায়। ভয় বা লজ্জা পেলে যেন একটা ছাঁকনি উঠে যায় আর শব্দগুলো আটকে দেয়। স্টিফেন ক্র্যাশেন এর নাম দিয়েছেন ‘অ্যাফেক্টিভ ফিল্টার’। অনুভূতির নাম দেওয়া আর শ্বাস নেওয়া ছাঁকনিটিকে নামিয়ে আনতে পারে।',
+  body: 'Feeling safe can help us attend to and use the English we hear. Fear or embarrassment can make that harder. Stephen Krashen pictured this as an affective filter. Naming a feeling, breathing, and getting another chance to try can help us rejoin the lesson.',
+  bodyBn: 'নিরাপদ বোধ করলে শোনা ইংরেজিতে মনোযোগ দেওয়া ও তা ব্যবহার করা সহজ হতে পারে। ভয় বা লজ্জা তা কঠিন করে তুলতে পারে। স্টিফেন ক্র্যাশেন একে ‘অ্যাফেক্টিভ ফিল্টার’ বা অনুভূতির ছাঁকনি দিয়ে বুঝিয়েছেন। অনুভূতির নাম দেওয়া, শ্বাস নেওয়া আর আবার চেষ্টা করার সুযোগ পেলে পাঠে মন ফেরানো সহজ হতে পারে।',
   beats: [
     ['Every class, English flows towards us.', 'প্রতিটি ক্লাসে ইংরেজি আমাদের দিকে বয়ে আসে।'],
-    ['When we feel safe, the words get in.', 'নিরাপদ বোধ করলে শব্দগুলো মনের ভেতরে ঢোকে।'],
+    ['Feeling safe helps us listen and notice.', 'নিরাপদ বোধ করলে শুনতে ও খেয়াল করতে সুবিধা হয়।'],
     ['Then someone laughs at a mistake…', 'তারপর ভুল করলে কেউ হেসে ফেলল…'],
-    ['…and a filter goes up. The words bounce off.', '…তখন একটা ছাঁকনি উঠে যায়। শব্দগুলো ফিরে যায়।'],
-    ['Stephen Krashen called it the affective filter.', 'স্টিফেন ক্র্যাশেন এর নাম দিয়েছেন ‘অ্যাফেক্টিভ ফিল্টার’।'],
+    ['…and it becomes harder to take in the words.', '…তখন শব্দগুলো গ্রহণ করা কঠিন হয়ে যায়।'],
+    ['Krashen pictured this as an affective filter.', 'ক্র্যাশেন একে অনুভূতির ছাঁকনি দিয়ে বুঝিয়েছেন।'],
     ['Name the feeling. Breathe.', 'অনুভূতির নাম দিন। শ্বাস নিন।'],
-    ['The filter comes down. The words get in again.', 'ছাঁকনি নেমে যায়। শব্দগুলো আবার ঢোকে।']
+    ['Give yourself room to listen and try again.', 'আবার শোনা ও চেষ্টা করার জন্য নিজেকে সুযোগ দিন।']
   ],
   cam: [[1, 800, 310], [1.04, 780, 300], [1.16, 1180, 300], [1.06, 960, 300], [1.1, 860, 360], [1.04, 1060, 310], [1, 800, 310]],
   draw(s){
-    ART.room(s, ZW, ZH, { floor: 548, boardX: 60, boardW: 430, window: false, plantX: 1548, clockX: 700, clockY: 70 });
+    lessonBackplate(s, 'classroom');
     const T0 = [300, 250], L = [1150, 250];
     /* the learner's mind glows while words are getting in */
     N(s, 'circle', { cx: L[0], cy: L[1], r: 160, fill: ART.grad(s, [['#FFE7A6', 0, .95], ['#FFE7A6', .55, .45], ['#FFE7A6', 1, 0]], { radial: true, cx: '50%', cy: '50%', r: '50%' }), in: 1, at: '2-4:dim' });
-    ART.figure(s, T0[0], T0[1], 380, { who: 'teacher', face: 'smile', pose: 'present', look: 1 });
+    N(s, 'circle', { cx: L[0], cy: L[1] + 20, r: 255, fill: ART.grad(s, [['#CFE7DD', 0, .45], ['#CFE7DD', 1, 0]], { radial: true, cx: '50%', cy: '50%', r: '50%' }), in: 5, out: 6, cls: 'breathe' });
+    lessonFigure(s, T0[0], T0[1], 380, { who: 'teacher', face: 'smile', pose: 'present', look: 1 });
     [['smile', null, 2, null], ['worry', 2, 5, 'hug'], ['calm', 5, 6, 'heart'], ['smile', 6, null, null]].forEach(f =>
-      ART.figure(s, L[0], L[1], 380, { who: 'learner', face: f[0], in: f[1], out: f[2], pose: f[3], look: -1 }));
-    /* the desk she sits at */
-    N(s, 'path', { d: 'M930 478H1370L1392 506H908Z', fill: ART.grad(s, [['#DDB889'], ['#C0925E']]) });
-    N(s, 'rect', { x: 908, y: 506, width: 484, height: 120, fill: ART.grad(s, [['#B98452'], ['#9C6B3F']]) });
-    N(s, 'path', { d: 'M908 506H1392', stroke: '#E6C79C', 'stroke-width': 3 });
-    N(s, 'rect', { x: 980, y: 458, width: 130, height: 22, rx: 4, fill: '#3F7FA6' });
-    N(s, 'rect', { x: 992, y: 442, width: 110, height: 18, rx: 4, fill: '#E1B84B' });
-    N(s, 'rect', { x: 1250, y: 462, width: 90, height: 12, rx: 3, fill: '#fff', transform: 'rotate(-6 1295 468)' });
+      lessonFigure(s, L[0], L[1], 380, { who: 'learner', face: f[0], in: f[1], out: f[2], pose: f[3], look: -1 }));
     /* the stream of English */
     const path = 'M390 290 Q720 10 1060 215';
-    N(s, 'path', { d: path, fill: 'none', stroke: 'rgba(16,61,33,.22)', 'stroke-width': 5, 'stroke-dasharray': '2 14', 'stroke-linecap': 'round', cls: 'flow' });
-    const words = ['feel', 'happy', 'deeply', 'about', 'nervous', 'proud'], fills = ['#FBF5D6', '#E4F4E8', '#E1F1F9', '#F0E6CD', '#F4EAF9', '#FCE9E4'];
+    const words = ['feel', 'happy', 'deeply', 'about', 'nervous', 'proud'], fills = ['#174D39', '#285C65', '#5C4372', '#73562B', '#7B473A', '#174D39'];
     const inG = G(s, { in: 1, at: '2-5:gone' });
     words.forEach((w, i) => flier(inG, path, w, i * .5, 3, fills[i]));
     const bounce = 'M390 290 Q720 10 850 150 Q840 250 740 330';
     const outG = G(s, { in: 3, out: 5 });
     words.forEach((w, i) => flier(outG, bounce, w, i * .5, 3, fills[i], true));
     /* a classmate laughs and points */
-    ART.figure(s, 1488, 330, 262, { who: 'friend', face: 'laugh', pose: 'laugh', in: 2, out: 5, cls: 'slide-r' });
-    bubble(s, 1380, 96, 190, 68, 1460, 225, 'HA HA!', { in: 2, out: 5, size: 32, fill: '#FCE9E4', stroke: '#9A3522', ink: '#9A3522', cls: 'pop' });
-    ART.cloud(s, L[0], 64, 72, '#6E7F89', { in: 2, out: 5, cls: 'pop' });
-    ART.bolt(s, L[0] - 8, 92, 60, { in: 2, out: 5 });
-    /* the filter: a glowing screen that rises between them */
-    /* the filter: a roller shutter that rolls down between them */
-    const box = G(s, { in: 3, out: 6 });
-    N(box, 'rect', { x: 848, y: 62, width: 128, height: 40, rx: 12, fill: ART.grad(s, [['#8E5A45'], ['#6E3F2E']]), filter: ART.soft(s) });
-    N(box, 'rect', { x: 856, y: 68, width: 112, height: 8, rx: 4, fill: '#fff', opacity: .18 });
-    const wall = G(s, { cls: 'blind', at: '3-5:up' });
-    N(wall, 'rect', { x: 862, y: 100, width: 100, height: 372, fill: ART.grad(s, [['#E4906F'], ['#B0563A']]) });
-    for (let y = 100; y < 468; y += 23) {
-      N(wall, 'rect', { x: 862, y, width: 100, height: 11, fill: '#fff', opacity: .12 });
-      N(wall, 'path', { d: `M862 ${y + 22}H962`, stroke: '#7E3522', 'stroke-width': 2, opacity: .45 });
-    }
-    N(wall, 'rect', { x: 856, y: 462, width: 112, height: 16, rx: 6, fill: '#6E3F2E' });
-    N(wall, 'rect', { x: 900, y: 470, width: 24, height: 14, rx: 5, fill: '#4A2A1E' });
-    const lab = G(s, { in: 4, out: 6, cls: 'pop' });
-    N(lab, 'rect', { x: 520, y: 488, width: 380, height: 66, rx: 33, fill: '#fff', stroke: '#B0563A', 'stroke-width': 3, filter: ART.soft(s) });
-    N(lab, 'text', { x: 710, y: 532, 'font-size': 30, 'font-weight': 800, fill: '#8E402B', 'text-anchor': 'middle', 'letter-spacing': 3, text: 'AFFECTIVE FILTER' });
-    N(lab, 'path', { d: 'M900 520Q908 510 912 482', fill: 'none', stroke: '#B0563A', 'stroke-width': 3 });
+    lessonFigure(s, 1488, 330, 262, { who: 'friend', face: 'laugh', pose: 'laugh', in: 2, out: 5, cls: 'slide-r' });
+    /* a translucent veil makes the metaphor legible without becoming a literal barrier */
+    const veil = G(s, { in: 3, out: 6, cls: 'filter-veil' });
+    N(veil, 'rect', { x: 805, y: 58, width: 190, height: 456, rx: 26, fill: '#D9A995', opacity: .32 });
+    N(veil, 'rect', { x: 827, y: 58, width: 146, height: 456, rx: 19, fill: '#FFF9EF', opacity: .52, stroke: '#A85F4B', 'stroke-width': 2, 'stroke-opacity': .45 });
+    [850, 872, 894, 916, 938, 960].forEach((xx, i) => N(veil, 'path', { d: `M${xx} 76Q${xx + (i % 2 ? 13 : -13)} 260 ${xx} 494`, fill: 'none', stroke: '#A85F4B', 'stroke-width': 2, opacity: .18 }));
+    N(veil, 'path', { d: 'M804 86V486', fill: 'none', stroke: '#A85F4B', 'stroke-width': 5, 'stroke-linecap': 'round', opacity: .65 });
+    N(veil, 'path', { d: 'M997 86V486', fill: 'none', stroke: '#A85F4B', 'stroke-width': 5, 'stroke-linecap': 'round', opacity: .65 });
+    const lab = G(s, { in: 4, out: 6 });
+    N(lab, 'text', { x: 900, y: 558, 'font-size': 26, 'font-weight': 800, fill: '#813E30', 'text-anchor': 'middle', 'letter-spacing': 2, stroke: '#FFFEF6', 'stroke-width': 7, 'paint-order': 'stroke', text: 'AFFECTIVE FILTER' });
     /* naming it, breathing */
     bubble(s, 1230, 30, 340, 74, 1215, 160, 'I feel embarrassed.', { in: 5, out: 6, size: 28, fill: '#F4EAF9', stroke: '#6B3F80', ink: '#6B3F80', cls: 'pop' });
-    [0, 1, 2].forEach(k => N(s, 'circle', { cx: L[0], cy: L[1] + 30, r: 170 + k * 40, fill: 'none', stroke: '#1F5C7A', 'stroke-width': 4 - k, opacity: .5 - k * .12, cls: 'breathe', style: `animation-delay:${k * .4}s`, in: 5, out: 6 }));
     T(s, 700, 596, 'breathe in… breathe out', null, { in: 5, out: 6, size: 28, fill: '#1F5C7A', italic: true, weight: 700 });
-    ART.spark(s, 1000, 150, 16, '#F2C443', { in: 6, cls: 'pop' });
-    ART.spark(s, 1290, 110, 12, '#F2C443', { in: 6, cls: 'pop' });
   } },
 
-/* 2 · name it to tame it --------------------------------------------------- */
+/* 2 · name and notice ------------------------------------------------------ */
 { rail: 'Name it', railBn: 'নাম দিন', kicker: 'The feelings wheel', kickerBn: 'অনুভূতির চাকা',
-  title: 'Name it to tame it', titleBn: 'নাম দিন, বশে আনুন',
-  body: 'A big feeling with no name feels like a storm. Start in the middle of the wheel with a big feeling, then move outwards to a more exact word. The more exactly we can name a feeling, the smaller the storm often feels.',
-  bodyBn: 'নামহীন বড় অনুভূতি ঝড়ের মতো লাগে। চাকার মাঝখানে একটি বড় অনুভূতি দিয়ে শুরু করুন, তারপর বাইরের দিকে আরও নির্দিষ্ট শব্দে যান। অনুভূতির নাম যত সঠিক হয়, ঝড়টা প্রায়ই তত ছোট মনে হয়।',
+  title: 'Name it and notice it', titleBn: 'নাম দিন, অনুভব করুন',
+  body: 'A big feeling can feel like a storm. Start in the middle of the wheel with a broad feeling, then move outwards to a more exact word. A useful name can help us notice what is happening and say what we need.',
+  bodyBn: 'বড় অনুভূতি ঝড়ের মতো লাগতে পারে। চাকার মাঝখানে একটি সাধারণ অনুভূতি দিয়ে শুরু করুন, তারপর বাইরের দিকে আরও নির্দিষ্ট শব্দে যান। উপযুক্ত নাম খুঁজে পেলে কী হচ্ছে তা বোঝা এবং কী প্রয়োজন তা বলা সহজ হতে পারে।',
   beats: [
     ['A big feeling with no name feels like a storm.', 'নামহীন বড় অনুভূতি ঝড়ের মতো লাগে।'],
     ['Start in the middle: six big feelings.', 'মাঝখান থেকে শুরু করুন: ছয়টি বড় অনুভূতি।'],
     ['Then move out to a more exact word.', 'তারপর বাইরের দিকে আরও নির্দিষ্ট শব্দে যান।'],
     ['And out again — the most exact word.', 'আবার বাইরে — সবচেয়ে সঠিক শব্দ।'],
     ['“I feel overwhelmed.” Now the storm has a name.', '“আমি দিশেহারা বোধ করছি।” এখন ঝড়ের একটা নাম আছে।'],
-    ['Named, the storm often gets smaller.', 'নাম দিলে ঝড়টা প্রায়ই ছোট হয়ে আসে।']
+    ['A name can help us pause and choose.', 'নাম খুঁজে পেলে থেমে সিদ্ধান্ত নিতে সুবিধা হতে পারে।']
   ],
   cam: [[1.12, 600, 300], [1.02, 900, 312], [1.05, 1000, 312], [1.08, 1040, 312], [1.02, 780, 300], [1, 800, 310]],
   draw(s){
-    ART.studio(s, ZW, ZH, { tints: ['#C9D6DD', '#F3D9A4'] });
+    lessonBackplate(s, 'studio');
     /* the sky behind him turns from grey to warm once the storm has a name */
     N(s, 'circle', { cx: 300, cy: 240, r: 470, fill: ART.grad(s, [['#AEBEC7', 0, .8], ['#AEBEC7', .6, .35], ['#AEBEC7', 1, 0]], { radial: true, cx: '50%', cy: '50%', r: '50%' }), out: 5 });
     N(s, 'circle', { cx: 300, cy: 240, r: 470, fill: ART.grad(s, [['#FBE3A0', 0, .8], ['#FBE3A0', .6, .35], ['#FBE3A0', 1, 0]], { radial: true, cx: '50%', cy: '50%', r: '50%' }), in: 5 });
     N(s, 'ellipse', { cx: 300, cy: 598, rx: 260, ry: 22, fill: '#103D21', opacity: .06 });
     [['worry', null, 1, 'hug'], ['flat', 1, 4, 'chin'], ['flat', 4, 5, 'heart'], ['smile', 5, null, 'wave']].forEach(f =>
-      ART.figure(s, 300, 290, 390, { who: 'boy', face: f[0], in: f[1], out: f[2], pose: f[3], look: 1 }));
+      lessonFigure(s, 300, 290, 390, { who: 'boy', face: f[0], in: f[1], out: f[2], pose: f[3], look: 1 }));
     const storm = G(s, { cls: 'mover stormy', at: '5:shrink' });
     ART.cloud(storm, 300, 70, 118, '#5E6E78');
     ART.bolt(storm, 288, 104, 92);
@@ -256,62 +263,46 @@ const LESSON = [
   ],
   cam: [[1.1, 820, 300], [1, 800, 310], [1.12, 300, 310], [1.12, 1300, 310], [1.12, 800, 310], [1.04, 800, 300]],
   draw(s){
-    ART.studio(s, ZW, ZH, { tints: ['#F3D9A4', '#CFE3D6'] });
-    const X = [290, 800, 1310], y = 250;
-    /* three pools of light on the floor */
-    [['#F2A58E', 0], ['#A9D39A', 1], ['#9CC9E0', 2]].forEach(([c, i]) => N(s, 'ellipse', { cx: X[i], cy: 585, rx: 250, ry: 46, fill: ART.grad(s, [[c, 0, .75], [c, 1, 0]], { radial: true, cx: '50%', cy: '50%', r: '50%' }), in: 1 }));
+    lessonBackplate(s, 'studio');
+    const X = [290, 800, 1310], y = 258;
     /* the moment, in the classroom */
     const m = G(s, { at: '1:gone' });
-    ART.room(m, ZW, ZH, { floor: 560, boardX: 1080, boardW: 440, window: false, plant: false, clockX: 180, clockY: 90 });
-    N(m, 'ellipse', { cx: 820, cy: 600, rx: 420, ry: 20, fill: '#103D21', opacity: .06 });
-    ART.figure(m, 650, 250, 390, { who: 'learner', face: 'worry', pose: 'present', look: -1 });
+    lessonBackplate(m, 'classroom');
+    lessonFigure(m, 650, 250, 390, { who: 'learner', face: 'worry', pose: 'present', look: -1 });
     bubble(m, 390, 36, 330, 84, 590, 150, 'vege-TA-ble?', { size: 34 });
-    ART.figure(m, 1020, 300, 320, { who: 'friend', face: 'laugh', pose: 'laugh', look: -1 });
+    lessonFigure(m, 1020, 300, 320, { who: 'friend', face: 'laugh', pose: 'laugh', look: -1 });
     bubble(m, 1110, 70, 220, 74, 1060, 210, 'HA HA!', { size: 34, fill: '#FCE9E4', stroke: '#9A3522', ink: '#9A3522' });
-    /* too close: the feeling swallows her */
-    const c1 = G(s, { in: 1, at: '5:dim' });
-    N(c1, 'circle', { cx: X[0], cy: y + 70, r: 225, fill: orbFill(s, '#F6B6A3', '#D9674B'), in: 2, cls: 'pop', opacity: .92 });
-    [0, 1].forEach(k => N(c1, 'path', { d: `M${X[0] - 160 + k * 40} ${y + 30 + k * 60}q60 -60 120 0t120 0`, fill: 'none', stroke: '#fff', 'stroke-width': 5, opacity: .45, in: 2, 'stroke-linecap': 'round' }));
-    ART.figure(c1, X[0], y, 300, { who: 'learner', face: 'worry', pose: 'hug' });
-    T(c1, X[0], 574, 'Too close', 'খুব কাছে', { size: 34, fill: '#9A3522', in: 2 });
-    bubble(c1, X[0] - 180, 40, 360, 70, X[0] - 20, 130, 'I’m terrible at English!', { in: 2, size: 26, fill: '#FCE9E4', stroke: '#9A3522', ink: '#9A3522', cls: 'pop' });
-    /* room to choose (shown last) */
-    const c2 = G(s, { in: 1 });
-    [['flat', null, 4, null], ['calm', 4, 5, 'heart'], ['smile', 5, null, 'wave']].forEach(f => ART.figure(c2, X[1] - 60, y, 300, { who: 'learner', face: f[0], in: f[1], out: f[2], pose: f[3] }));
-    N(c2, 'path', { d: `M${X[1] + 70} ${y + 150}H${X[1] + 108}`, stroke: '#5E8A52', 'stroke-width': 5, 'stroke-dasharray': '2 12', 'stroke-linecap': 'round', in: 4 });
-    N(c2, 'circle', { cx: X[1] + 150, cy: y + 150, r: 42, fill: orbFill(s, '#E9F4DE', '#8DBE7C'), in: 4, cls: 'pop', filter: ART.soft(s) });
-    N(c2, 'path', { d: `M${X[1] + 140} ${y + 134}v32M${X[1] + 160} ${y + 134}v32`, stroke: '#103D21', 'stroke-width': 9, 'stroke-linecap': 'round', in: 4 });
-    T(c2, X[1], 574, 'Room to choose', 'বেছে নেওয়ার সুযোগ', { size: 34, fill: '#2C5A24', in: 4 });
-    bubble(c2, X[1] - 250, 40, 500, 76, X[1] - 60, 130, 'I’m embarrassed. Can I try again?', { in: 5, size: 26, fill: '#E3EDD9', stroke: '#2C5A24', ink: '#103D21', cls: 'pop' });
-    /* too far: a wall between her and it */
-    const c3 = G(s, { in: 1, at: '5:dim' });
-    ART.figure(c3, X[2] - 40, y, 300, { who: 'learner', face: 'flat', pose: 'shrug' });
-    const wall = G(c3, { in: 3, cls: 'rise' });
-    N(wall, 'rect', { x: X[2] + 100, y: 110, width: 70, height: 360, rx: 8, fill: ART.grad(s, [['#6E9BB3'], ['#2F6A88']]) });
-    for (let yy = 140; yy < 470; yy += 34) N(wall, 'path', { d: `M${X[2] + 100} ${yy}h70M${X[2] + 135 + ((yy / 34) % 2 ? 0 : -18)} ${yy - 34}v34`, stroke: '#DCEBF2', 'stroke-width': 3, opacity: .55 });
-    N(c3, 'circle', { cx: X[2] + 225, cy: y + 150, r: 30, fill: orbFill(s, '#E1F1F9', '#70BEE0'), in: 3 });
-    T(c3, X[2], 574, 'Too far', 'অনেক দূরে', { size: 34, fill: '#22607C', in: 3 });
-    bubble(c3, X[2] - 220, 40, 280, 70, X[2] - 90, 130, 'I don’t care.', { in: 3, size: 28, fill: '#E1F1F9', stroke: '#1F5C7A', ink: '#123F57', cls: 'pop' });
+    /* an editorial triptych gives each response an equal, readable space */
+    const c1 = choiceStage(s, X[0], 'Too close', 'খুব কাছে', '#9A4D3D', '3-5:soften');
+    lessonFigure(c1, X[0], y, 330, { who: 'learner', face: 'worry' });
+    N(c1, 'text', { x: X[0], y: 548, 'font-size': 25, 'font-weight': 700, 'text-anchor': 'middle', fill: '#7B4036', in: 2, text: '“I can’t do this.”' });
+    const c2 = choiceStage(s, X[1], 'Room to choose', 'বেছে নেওয়ার সুযোগ', '#2C6A4A', '2-3:soften');
+    lessonFigure(c2, X[1], y, 300, { who: 'learner', face: 'smile' });
+    N(c2, 'text', { x: X[1], y: 548, 'font-size': 23, 'font-weight': 800, 'text-anchor': 'middle', fill: '#22563B', in: 4, out: 5, 'letter-spacing': 1, text: 'NOTICE  ·  PAUSE  ·  CHOOSE' });
+    N(c2, 'text', { x: X[1], y: 548, 'font-size': 21, 'font-weight': 700, 'text-anchor': 'middle', fill: '#22563B', in: 5, text: '“I’m embarrassed. Can I try again?”' });
+    const c3 = choiceStage(s, X[2], 'Too far', 'অনেক দূরে', '#3F7188', '2-2:soften 4-5:soften');
+    lessonFigure(c3, X[2], y + 32, 255, { who: 'learner', face: 'worry' });
+    N(c3, 'text', { x: X[2], y: 548, 'font-size': 25, 'font-weight': 700, 'text-anchor': 'middle', fill: '#315E73', in: 3, text: '“I don’t care.”' });
   } },
 
 /* 4 · the iceberg ------------------------------------------------------------ */
 { rail: 'Iceberg', railBn: 'হিমশৈল', kicker: 'How a word grows', kickerBn: 'একটি শব্দ কীভাবে বেড়ে ওঠে',
   title: 'Every word climbs an iceberg', titleBn: 'প্রতিটি শব্দ একটি হিমশৈল বেয়ে ওঠে',
-  body: 'The Growing Participator Approach pictures what we know of a language as an iceberg. Most of it is under the water: words we have heard and half understand. Words rise each time we hear them and understand them in context — first the word, then its partners, then its patterns. Above the water are the words we can say, and at the very tip are the words we understand before the speaker has finished.',
-  bodyBn: 'গ্রোয়িং পার্টিসিপেটর অ্যাপ্রোচ ভাষাজ্ঞানকে একটি হিমশৈলের মতো দেখে। এর বেশিরভাগই পানির নিচে: যে শব্দ শুনেছি, আধা বুঝি। প্রতিবার প্রসঙ্গে শুনে বুঝলে শব্দটি একটু উপরে ওঠে — প্রথমে শব্দ, তারপর তার সঙ্গী শব্দ, তারপর তার গঠন। পানির উপরে থাকে যে শব্দগুলো আমরা বলতে পারি, আর একেবারে চূড়ায় থাকে যে শব্দ বক্তা শেষ করার আগেই বুঝে ফেলি।',
+  body: 'The Growing Participator Approach uses an iceberg to picture language knowledge. Much of it is below the surface: words we have heard but cannot yet use easily. Repeated, meaningful encounters help us notice a word, its partners, and its patterns. Trying it in our own sentences helps build a usable word. These are ways knowledge can grow, not fixed stages every word must climb.',
+  bodyBn: 'গ্রোয়িং পার্টিসিপেটর অ্যাপ্রোচ ভাষাজ্ঞান বোঝাতে হিমশৈলের ছবি ব্যবহার করে। অনেক শব্দ আমরা শুনেছি, কিন্তু সহজে ব্যবহার করতে পারি না—সেগুলো যেন পানির নিচে। অর্থপূর্ণ প্রসঙ্গে বারবার শব্দ শুনলে তার সঙ্গী শব্দ ও গঠন খেয়াল করা যায়। নিজের বাক্যে ব্যবহার করার চেষ্টায় শব্দটি আরও কাজে লাগে। এগুলো শেখার পথ, প্রতিটি শব্দের জন্য বাঁধা ধাপ নয়।',
   beats: [
     ['Most of what we know is under the water.', 'আমরা যা জানি তার বেশিরভাগই পানির নিচে।'],
     ['First we hear a word — many, many times.', 'প্রথমে একটি শব্দ শুনি — অনেক, অনেকবার।'],
     ['Then we hear its partners: feel anxious, deeply anxious.', 'তারপর তার সঙ্গী শব্দ শুনি: feel anxious, deeply anxious।'],
     ['We notice its pattern: anxious about + something.', 'তার গঠন খেয়াল করি: anxious about + কিছু।'],
-    ['We say it in our own sentence. Now it is above the water.', 'নিজের বাক্যে বলি। এখন শব্দটি পানির উপরে।'],
+    ['Try it in your own sentence.', 'নিজের বাক্যে শব্দটি ব্যবহার করে দেখুন।'],
     ['We learn other ways to say it: butterflies in my stomach.', 'একই কথা অন্যভাবে বলা শিখি: butterflies in my stomach।'],
-    ['At the top, we understand it before the speaker finishes.', 'চূড়ায় পৌঁছালে বক্তা শেষ করার আগেই বুঝে ফেলি।'],
-    ['Words rise when we hear them and understand them — again and again.', 'বারবার শুনে বুঝলেই শব্দ উপরে ওঠে।']
+    ['With practice, we may recognize it quickly.', 'অনুশীলনে শব্দটি দ্রুত চিনতে পারি।'],
+    ['Revisit, notice, and use the word again.', 'শব্দটি আবার শুনুন, খেয়াল করুন, ব্যবহার করুন।']
   ],
   draw(s){
     const WL = 232, BX = 1010;
-    ART.iceberg(s, BX, WL, 250, 168, { x0: 0, x1: ZW, top: 0, bottom: ZH, sunX: 760 });
+    lessonBackplate(s, 'iceberg');
     /* the six rungs */
     const Y = [548, 456, 352, 196, 142, 88];
     const R = [['Hear it', 'শুনি', 'ear'], ['Partners', 'সঙ্গী শব্দ', 'link'], ['Pattern', 'গঠন', 'puzzle'], ['Say it', 'বলি', 'speech'], ['Idioms', 'বাগধারা', 'image'], ['Mine!', 'আমার!', 'check']];
@@ -333,7 +324,7 @@ const LESSON = [
     const bf = G(E, { in: 5, out: 7, cls: 'pop' });
     ART.butterfly(bf, 1222, 72, 20, '#FBE3A0', '#E9A23B', { cls: 'bob' });
     N(bf, 'text', { x: 1250, y: 80, 'font-size': 22, 'font-weight': 800, fill: '#6F5B10', text: 'butterflies in my stomach' });
-    T(E, 1370, 36, '…before the speaker finishes', null, { in: 6, out: 7, size: 24, italic: true, fill: '#134219' });
+    T(E, 1370, 36, '…recognize it quickly', null, { in: 6, out: 7, size: 24, italic: true, fill: '#134219' });
     /* the word itself, climbing */
     const w = G(s, { cls: 'mover climber' });
     N(w, 'rect', { x: -100, y: -28, width: 200, height: 62, rx: 31, fill: '#3E2150', opacity: .35, transform: 'translate(0 5)' });
@@ -364,11 +355,11 @@ const LESSON = [
   ],
   cam: [[1.5, 800, 250], [1.08, 800, 260], [1, 800, 320], [1, 800, 300], [1, 800, 310], [1, 800, 310]],
   draw(s){
-    ART.studio(s, ZW, ZH, { tints: ['#E9D8F1', '#F3D9A4'] });
+    lessonBackplate(s, 'studio');
     N(s, 'ellipse', { cx: 800, cy: 270, rx: 520, ry: 260, fill: ART.grad(s, [['#F4EAF9', 0, 1], ['#F4EAF9', 1, 0]], { radial: true, cx: '50%', cy: '50%', r: '50%' }) });
     /* a learner putting the pieces together */
     [['flat', null, 2, 'chin'], ['calm', 2, 4, 'present'], ['smile', 4, null, 'wave']].forEach(f =>
-      ART.figure(s, 190, 300, 300, { who: 'girl', face: f[0], in: f[1] == null ? 1 : f[1], out: f[2], pose: f[3], look: 1 }));
+      lessonFigure(s, 190, 300, 300, { who: 'girl', face: f[0], in: f[1] == null ? 1 : f[1], out: f[2], pose: f[3], look: 1 }));
     ART.spark(s, 290, 170, 12, '#E9B949', { in: 4, cls: 'pop' });
     const cx = 800, cy = 250;
     const L = [['feel', 520, 120], ['deeply', 450, 250], ['a bit', 520, 380]], R = [['thoughts', 1090, 140], ['moment', 1110, 300]];
@@ -421,24 +412,9 @@ const LESSON = [
     ['Work in pairs: dialogue-bd.com/emotions', 'জোড়ায় কাজ করুন: dialogue-bd.com/emotions']
   ],
   draw(s){
-    /* a morning sky over the hill */
-    N(s, 'rect', { x: 0, y: 0, width: ZW, height: ZH, fill: ART.grad(s, [['#DCEBF2'], ['#F7EFD9']]) });
-    N(s, 'circle', { cx: 1190, cy: 96, r: 150, fill: ART.grad(s, [['#FBE3A0', 0, .8], ['#FBE3A0', 1, 0]], { radial: true, cx: '50%', cy: '50%', r: '50%' }) });
-    N(s, 'circle', { cx: 1190, cy: 96, r: 52, fill: ART.grad(s, [['#FFEFB8'], ['#F2B53A']], { radial: true }) });
-    ART.cloud(s, 1000, 70, 46, '#fff', { cls: 'drift' });
-    ART.cloud(s, 1500, 250, 38, '#fff', { cls: 'drift', style: 'animation-delay:-6s' });
-    ART.cloud(s, 640, 150, 30, '#fff', { cls: 'drift', style: 'animation-delay:-3s' });
-    [[1400, 56], [1440, 44], [1424, 76]].forEach(([bx, by]) => N(s, 'path', { d: `M${bx - 10} ${by}q5 -6 10 0q5 -6 10 0`, fill: 'none', stroke: '#5F6A5C', 'stroke-width': 3, 'stroke-linecap': 'round' }));
-    /* a hill to climb, one station per step */
-    N(s, 'path', { d: 'M0 620L0 500Q500 520 900 380T1600 150L1600 620Z', fill: ART.grad(s, [['#CFE0C2'], ['#B7CFA6']]), opacity: .6 });
-    N(s, 'path', { d: 'M0 620L0 560Q400 540 800 420T1600 110L1600 620Z', fill: ART.grad(s, [['#E3EDD9'], ['#CFE0C2']]) });
-    N(s, 'path', { d: 'M0 620L0 590Q500 590 900 480T1600 250L1600 620Z', fill: ART.grad(s, [['#D6E6CB'], ['#BFD5AF']]), opacity: .8 });
-    [[260, 575], [700, 530], [1180, 420], [1480, 300]].forEach(([tx, ty]) => {
-      N(s, 'path', { d: `M${tx} ${ty}v-26`, stroke: '#7A5A35', 'stroke-width': 6, 'stroke-linecap': 'round' });
-      N(s, 'circle', { cx: tx, cy: ty - 40, r: 24, fill: ART.grad(s, [['#8FBF77'], ['#4E8A4A']]) });
-    });
+    lessonBackplate(s, 'hill');
     const St = [['Feel', 'heart'], ['Hear', 'ear'], ['Partners', 'link'], ['Patterns', 'puzzle'], ['Say', 'speech'], ['Idioms', 'image'], ['Share', 'users']];
-    const X = i => 140 + i * 205, Y = i => 520 - i * 62;
+    const X = i => 140 + i * 205, Y = i => 530 - i * 34;
     N(s, 'path', { d: St.map((_, i) => (i ? 'L' : 'M') + X(i) + ' ' + Y(i)).join(''), fill: 'none', stroke: '#B9924F', 'stroke-width': 6, 'stroke-dasharray': '2 16', 'stroke-linecap': 'round', cls: 'draw', in: 0 });
     const hi = [1, 2, 3, 3, 4, 4, 5];
     St.forEach(([t, ic], i) => {
@@ -447,7 +423,7 @@ const LESSON = [
       N(g, 'circle', { cx: X(i), cy: Y(i), r: 58, fill: '#fff', stroke: '#134219', 'stroke-width': 5, cls: 'st-ring' });
       N(g, 'circle', { cx: X(i), cy: Y(i), r: 40, fill: ART.grad(s, [['#2E7447'], ['#103D21']]) });
       glyph(g, ic, X(i), Y(i), 40, '#fff');
-      N(g, 'text', { x: X(i), y: Y(i) + 96, 'font-size': 28, 'font-weight': 900, 'text-anchor': 'middle', fill: '#134219', text: t, stroke: '#F7EFD9', 'stroke-width': 6, 'paint-order': 'stroke' });
+      N(g, 'text', { x: X(i), y: Y(i) + 76, 'font-size': 28, 'font-weight': 900, 'text-anchor': 'middle', fill: '#134219', text: t, stroke: '#F7EFD9', 'stroke-width': 6, 'paint-order': 'stroke' });
     });
     const flag = G(s, { in: 5, cls: 'pop' });
     N(flag, 'path', { d: `M${X(6) + 40} ${Y(6) - 50}V${Y(6) - 124}`, stroke: '#6B5116', 'stroke-width': 6, 'stroke-linecap': 'round' });
@@ -457,8 +433,8 @@ const LESSON = [
     const pr = G(s, { in: 6, cls: 'pop' });
     N(pr, 'rect', { x: 130, y: 24, width: 760, height: 210, rx: 32, fill: '#FBF5E6', filter: ART.soft(s) });
     N(pr, 'rect', { x: 130, y: 24, width: 760, height: 210, rx: 32, fill: 'none', stroke: '#E4D3A8', 'stroke-width': 3 });
-    ART.figure(pr, 240, 94, 150, { who: 'learner', face: 'smile', pose: 'phone', shadow: false, look: 1 });
-    ART.figure(pr, 410, 94, 150, { who: 'friend', face: 'laugh', pose: 'pointL', shadow: false, look: -1 });
+    lessonFigure(pr, 240, 94, 150, { who: 'learner', face: 'smile', pose: 'phone', shadow: false, look: 1 });
+    lessonFigure(pr, 410, 94, 150, { who: 'friend', face: 'laugh', pose: 'pointL', shadow: false, look: -1 });
     const ph = G(pr, { transform: 'rotate(-8 300 160)' });
     N(ph, 'rect', { x: 278, y: 118, width: 46, height: 82, rx: 9, fill: '#1D211C' });
     N(ph, 'rect', { x: 283, y: 127, width: 36, height: 62, rx: 4, fill: ART.grad(s, [['#E1F1F9'], ['#A9D3E3']]) });
