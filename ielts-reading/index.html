@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Reading Altitude — IELTS Skimming &amp; Scanning | Dialogue Language Center</title>
-<meta name="description" content="A classroom system for teaching IELTS skimming and scanning: a 3D reading-altitude demo for the projector, a six-step method walkthrough, and timed drills students run on their phones or on paper.">
+<meta name="description" content="A guided IELTS Reading lesson that builds skimming and scanning one step at a time, then brings the skills together in a timed practice paper.">
+<link rel="stylesheet" href="../ielts-guide.css?v=1">
 <style>
 :root {
   color-scheme: light;
@@ -1766,12 +1767,11 @@ footer.foot { padding: 50px 0 70px; text-align: center; color: var(--text-dim); 
   <div class="wrap">
     <div class="eyebrow">Dialogue Language Center · IELTS Reading</div>
     <h1>Reading Altitude</h1>
-    <p class="lede">Students fail IELTS Reading on the clock, not on the vocabulary. This is a ten-station system for teaching them to change altitude on purpose — fly high to map a text, drop low to scan for one fact, and never read every word again.</p>
+    <p class="lede">Learn to move through a passage with purpose. First find your pace, then practise one reading move at a time, and finally bring them together on the clock.</p>
     <div class="hero-meta">
-      <span class="chip">🖥️ Big-screen demos</span>
-      <span class="chip">📱 Phone drills</span>
-      <span class="chip">👥 Pair races</span>
-      <span class="chip">🖨️ Printable worksheets</span>
+      <span class="chip">01 · Notice</span>
+      <span class="chip">02 · Practise</span>
+      <span class="chip">03 · Put it together</span>
     </div>
     <a class="home-link" href="../">← All activities</a>
   </div>
@@ -3818,6 +3818,7 @@ function tnorm(x) { return String(x).replace(/<[^>]+>/g, '').replace(/\s+/g, ' '
    missed every one of them. */
 var BN_N = {};
 (function () { for (var k in BN) BN_N[tnorm(k)] = BN[k]; })();
+BN_N[tnorm('Learn to move through a passage with purpose. First find your pace, then practise one reading move at a time, and finally bring them together on the clock.')] = 'উদ্দেশ্য নিয়ে প্যাসেজ পড়তে শিখুন। আগে নিজের গতি বুঝুন, তারপর একবারে একটি পড়ার কৌশল অনুশীলন করুন, শেষে সময় ধরে সব কৌশল একসাথে প্রয়োগ করুন।';
 
 /* t() wraps any English string that should follow the language toggle. */
 function t(x) {
@@ -3832,7 +3833,7 @@ function bnum(n) {
 
 /* Elements whose visible text is instruction, not exam material. */
 var I18N_SEL = [
-  '.station-head h2', '.station-sub', '.card-title', '.card-intro', '.card-label',
+  '.lede', '.station-head h2', '.station-sub', '.card-title', '.card-intro', '.card-label',
   '.btn', '.toggle-btn', '.jump-head', '.shot-head', '.tri-verdict', '.shot-k',
   '.check-card .ct', '.check-card .cd', '.trap-card .tt', '.trap-card .td',
   '.mc-step .t', '.mc-step .d', '.mc-kw .h', '.mc-kw .d', '.mc-check .q', '.mc-check .a',
@@ -6784,5 +6785,6 @@ function makePrediction(boxId, optsId, resultId, judge) {
 })();
 </script>
   <script src="../dialogue-brand.js"></script>
+  <script src="../ielts-guide.js?v=1"></script>
 </body>
 </html>
