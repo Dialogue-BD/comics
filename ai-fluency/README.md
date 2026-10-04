@@ -33,6 +33,12 @@ Orbit, Sathi and Studio are invented apps modelled on Meta Muse / xAI Grok Bot, 
 - `print.html` — one single-sided A4 page per workflow for students without a phone.
 - **Her documents are always one tap away.** Attachments in the chat open in an Android-style document viewer, beats can show a "Ayesha's documents" strip (`docs:[ids]`), and in Check each AI line has **Where to look** buttons that open the right document zoomed to a gold box around the evidence (`look:[{f,m:'x,y,w,h;…',t}]`, percentages of the page image). The box shows *where* to read, not the answer.
 
+## The four Ds — onboarding animation
+
+`intro.js` + `intro.css`: a 1920×1080 motion graphic for the projector (about 2 minutes, eight scenes, told through Ayesha's CV). Open it from the start screen ("Watch: the four Ds"), the menu, or `/ai-fluency/#intro`. Space pauses, ← → step through scenes, B shows Bangla captions, speed 0.75× for slower readers. The gold ring is the mascot — the human eye that makes every connection.
+
+Every movement is a Web Animation built from `data-a="anim start [duration]"` attributes, so the film is a pure function of (scene, time). `INTRO.seek(scene, t)` freezes any frame; the narrated video is rendered from the same scenes. Narration script and voice settings: `intro-voice-script.md` (record one take in the AI Studio speech playground → `intro/four-ds-narration.wav`).
+
 ## Files
 
 - `index.html` — page shell + all CSS

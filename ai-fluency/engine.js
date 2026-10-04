@@ -323,6 +323,7 @@ function hubCoach(){
    <div class="card"><div class="who"><span class="av">A</span><div><b>Ayesha Rahman</b><span>3rd-year Economics · Rajshahi University</span></div></div>
    <div class="facts"><span>CGPA 3.58</span><span>IELTS mock 6.0</span><span>RUCEI volunteer tutor</span><span>Goal: fully funded master's</span></div></div>
    <p class="sub">Pick one message on her phone — or here.${S.bn?'':''}<span class="bn" lang="bn">ফোনে একটা মেসেজ বেছে নাও — অথবা এখানে।</span></p>
+   <button class="pcard" data-c="intro" style="margin-top:10px;width:100%;border-color:var(--gold);background:var(--gold-soft)"><span class="pi" style="background:var(--forest);color:var(--gold-light)">▶</span><span><em>Start here · projector</em><b>Watch: the four Ds</b><span>A 2-minute animation. Delegation, Description, Discernment, Diligence.</span><span class="bn" lang="bn">২ মিনিটের অ্যানিমেশন: চারটা D।</span></span></button>
    <div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard" data-start="${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${esc(L.blurb)}</span>${L.blurbbn?`<span class="bn" lang="bn">${L.blurbbn}</span>`:''}</span>${done(id)?'<span class="done">✓ Done</span>':''}</button>`}).join('')}</div>
    <div class="card"><h3>Two layers</h3><ul class="plist">
      <li><span class="ic">📱</span><span><b>Below:</b> the phone. It works like a real Android phone.<span class="bn" lang="bn">নিচে: ফোন। এটা আসল অ্যান্ড্রয়েড ফোনের মতো কাজ করে।</span></span></li>
@@ -498,7 +499,7 @@ function onCoachClick(e){
   const dv=e.target.closest('[data-view]'); if(dv){openView(dv.dataset.view,dv.dataset.mark);return}
   const c=e.target.closest('[data-c]'); const st=e.target.closest('[data-start]');
   if(st){ start(st.dataset.start); return; }
-  if(c){ const a=c.dataset.c; if(a==='next')next(); else if(a==='back')back(); else if(a==='show')showMe(); else if(a==='menu')openMenu(); return; }
+  if(c){ const a=c.dataset.c; if(a==='next')next(); else if(a==='back')back(); else if(a==='show')showMe(); else if(a==='menu')openMenu(); else if(a==='intro')openIntro(); return; }
   const stg=e.target.closest('[data-stage]'); if(stg&&S.lesson){ const i=LESSONS[S.lesson].beats.findIndex(b=>b.stage===stg.dataset.stage); if(i>=0) go(i); return; }
   if(!S.lesson) return; const x=ctx();
   const so=e.target.closest('[data-sort]'); if(so){ const [k,i,v]=so.dataset.sort.split('|'); const a=x.get(k,{}); a[i]=v; x.set(k,a); renderCoachKeep(); return; }
@@ -542,10 +543,11 @@ function openMenu(){
   const m=$('#menu'); m.hidden=false;
   m.innerHTML=`<div class="panel" role="dialog" aria-label="Menu"><div style="display:flex;justify-content:space-between;align-items:center"><h2>AI Fluency Lab</h2><button class="iconbtn" data-m="close" aria-label="Close">${ico('close')}</button></div>
    <h3>Workflows</h3><div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard" data-m="start:${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${esc(L.time||'')}</span></span></button>`}).join('')}</div>
-   <div class="row" style="margin-top:12px"><button class="btn quiet" data-m="hub">Ayesha's lock screen</button><button class="btn quiet" data-m="stage">${S.stage?'Leave':'Present on'} projector (P)</button><button class="btn quiet" data-m="fs">Full screen</button><button class="btn quiet" data-m="print">Paper version</button><button class="btn quiet" data-m="reset">Start over</button></div>
+   <div class="row" style="margin-top:12px"><button class="btn gold" data-m="intro">▶ The four Ds (animation)</button><button class="btn quiet" data-m="hub">Ayesha's lock screen</button><button class="btn quiet" data-m="stage">${S.stage?'Leave':'Present on'} projector (P)</button><button class="btn quiet" data-m="fs">Full screen</button><button class="btn quiet" data-m="print">Paper version</button><button class="btn quiet" data-m="reset">Start over</button></div>
    <h3>For the teacher</h3>
    <p>Each workflow is one class period (35–45 min). Students work in pairs on one phone: one taps, one reads the coach aloud. Swap at every stage.</p>
    <p>The four Ds (Delegation, Description, Discernment, Diligence) come from the AI Fluency framework by Rick Dakan, Joseph Feller and Anthropic. Each stage is coloured by the D it practises.</p>
+   <p>Start the class with <b>The four Ds</b> animation on the projector (about 2 minutes; Space pauses, → skips, B shows Bangla, speed 0.75× for slower readers). Pause on each D and ask: “Where did you see this on Ayesha’s phone?”</p>
    <p>Nothing is locked. “Show me” plays any step, so you can demonstrate on the projector, then let pairs repeat it.</p>
    <p>The AI replies are scripted. They copy what real AI assistants do with prompts like these — including the mistakes students must learn to catch. No data leaves the phone and no account is needed.</p>
    <p>Students without a phone: use the Paper version (one A4 page per workflow).</p>
@@ -555,9 +557,10 @@ function openMenu(){
 function onMenuClick(e){
   const t=e.target.closest('[data-m]'); if(!t){ if(e.target.id==='menu') closeMenu(); return }
   const a=t.dataset.m; closeMenu();
-  if(a.startsWith('start:')) start(a.slice(6)); else if(a==='hub') hub(); else if(a==='stage') toggleStage(); else if(a==='fs') toggleFS(); else if(a==='print') location.href='print.html';
+  if(a.startsWith('start:')) start(a.slice(6)); else if(a==='hub') hub(); else if(a==='stage') toggleStage(); else if(a==='fs') toggleFS(); else if(a==='print') location.href='print.html'; else if(a==='intro') openIntro();
   else if(a==='reset'){ S.ch={}; save(); hub(); }
 }
+function openIntro(){ if(window.INTRO) INTRO.open({bn:S.bn,fullscreen:matchMedia('(min-width:900px)').matches,onExit:()=>{ if(location.hash==='#intro') history.replaceState(null,'',location.pathname+location.search) }}); }
 function closeMenu(){ $('#menu').hidden=true; }
 function toggleStage(){ S.stage=!S.stage; document.body.classList.toggle('stage',S.stage); fit(); }
 function toggleFS(){ try{ document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen({navigationUI:'hide'}) }catch(e){} }
@@ -594,7 +597,7 @@ function boot(){
     else if(e.key==='s'||e.key==='S'){ if(S.lesson) showMe(); } else if(e.key==='p'||e.key==='P') toggleStage(); else if(e.key==='b'||e.key==='B') setBn(!S.bn);
     else if(e.key==='Escape') closeMenu();
   });
-  const fromHash=()=>{const h=(location.hash||'').slice(1); const m=h.match(/^(\w+)(?:\/(\d+))?$/); if(m&&LESSONS[m[1]]){ S.lesson=m[1]; prevScene=null; go(m[2]?+m[2]:0,false); return true } return false};
+  const fromHash=()=>{ if(location.hash==='#intro'){ openIntro(); return true }const h=(location.hash||'').slice(1); const m=h.match(/^(\w+)(?:\/(\d+))?$/); if(m&&LESSONS[m[1]]){ S.lesson=m[1]; prevScene=null; go(m[2]?+m[2]:0,false); return true } return false};
   addEventListener('hashchange',fromHash);
   if(!fromHash()){ if(S.lesson&&LESSONS[S.lesson]) go(S.beat,false); else hub(); }
 }
