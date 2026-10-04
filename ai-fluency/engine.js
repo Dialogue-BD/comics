@@ -59,12 +59,14 @@ const P={
  apps:'M4 8h4V4H4zm6 12h4v-4h-4zm-6 0h4v-4H4zm0-6h4v-4H4zm6 0h4v-4h-4zm6-10v4h4V4zm-6 4h4V4h-4zm6 6h4v-4h-4zm0 6h4v-4h-4z',
  bolt:'M7 2v11h3v9l7-12h-4l4-8z',
  eye:'M12 4.5C7 4.5 2.7 7.6 1 12c1.7 4.4 6 7.5 11 7.5s9.3-3.1 11-7.5c-1.7-4.4-6-7.5-11-7.5zM12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z',
+ git:'M21.6 11.1 12.9 2.4a1.4 1.4 0 0 0-2 0L9.1 4.2l2.3 2.3a1.6 1.6 0 0 1 2.1 2.1l2.2 2.2a1.6 1.6 0 1 1-1 1l-2.1-2.1v5.4a1.6 1.6 0 1 1-1.3-.1V9.5a1.6 1.6 0 0 1-.9-2.2L8.2 5 2.4 10.9a1.4 1.4 0 0 0 0 2l8.7 8.7a1.4 1.4 0 0 0 2 0l8.5-8.5a1.4 1.4 0 0 0 0-2z',
  tune:'M3 17v2h6v-2zM3 5v2h10V5zm10 16v-2h8v-2h-8v-2h-2v6zM7 9v2H3v2h4v2h2V9zm14 4v-2H11v2zm-6-4h2V7h4V5h-4V3h-2z'
 };
 const ico=(n,cls='')=>`<svg viewBox="0 0 24 24" class="${cls}" aria-hidden="true"><path d="${P[n]||P.info}" fill="currentColor"/></svg>`;
 
 /* ------------------------------------------------------------- the phone's files */
 const FILES={
+ spec:{name:'My_Deadlines_spec.md',ph:'doc',meta:'Doc · today'},
  cv:{name:'Ayesha_CV_2025.pdf',img:'docs/cv.webp',t:'docs/cv-t.webp',meta:'PDF · 71 KB · May'},
  ielts:{name:'IELTS_Mock_Report.pdf',img:'docs/ielts.webp',t:'docs/ielts-t.webp',meta:'PDF · 2 MB · May'},
  rucei:{name:'RUCEI_Project_Report.pdf',img:'docs/rucei.webp',t:'docs/rucei-t.webp',meta:'PDF · 260 KB · May'},
@@ -184,11 +186,12 @@ APPS.settings=sc=>`<div class="view settings">${appBar(esc(sc.title||'App info')
 APPS.orbit=sc=>`<div class="view orbit">${sc.bar!==false?appBar(sc.title||'Orbit',{left:sc.left===undefined?'back':sc.left,right:sc.right||`<button class="mi">${ico('history')}</button><button class="mi">${ico('more')}</button>`}):''}<div class="scroll">${sc.body}</div>${sc.composer?composer(sc):''}${sc.foot||''}</div>`;
 
 APPS.studio=sc=>{
-  const tabs=['Chat','Code','Preview'];
-  return `<div class="view studio" data-theme="dark">${appBar(esc(sc.title||'My Deadlines'),{left:'back',right:`<button class="mi" ${sc.deployHit?`data-hit="${sc.deployHit}"`:''} aria-label="Deploy">${ico('share')}</button><button class="mi">${ico('more')}</button>`})}
+  const tabs=['Chat','Code','Preview'].concat(sc.git?['GitHub']:[]);
+  return `<div class="view studio" data-theme="dark">${appBar(esc(sc.title||'My Deadlines'),{left:'back',right:`${sc.gitHit!==undefined||sc.git?`<button class="mi" ${sc.gitHit?`data-hit="${sc.gitHit}"`:''} aria-label="GitHub">${ico('git')}</button>`:''}<button class="mi" ${sc.deployHit?`data-hit="${sc.deployHit}"`:''} aria-label="Deploy">${ico('share')}</button><button class="mi">${ico('more')}</button>`})}
   <div class="stabs">${tabs.map(t=>`<button class="${(sc.tab||'Chat')===t?'on':''}" ${sc.tabHits&&sc.tabHits[t]?`data-hit="${sc.tabHits[t]}"`:''}>${t}</button>`).join('')}</div>
   ${sc.tab==='Preview'?`<div class="preview"><div class="pbar2"><span class="dot"></span> Preview · ${esc(sc.ver||'v1')}</div><div class="mini" id="mini">${sc.mini||''}</div></div>`:
-    sc.tab==='Code'?`<div class="scroll"><div class="code">${sc.code||''}</div></div>`:
+    sc.tab==='Code'?`<div class="scroll">${sc.files?`<div class="ftree">${sc.files.map(f=>`<span class="${f===sc.fileOn?'on':''}">${esc(f)}</span>`).join('')}</div>`:''}<div class="code">${sc.code||''}</div></div>`:
+    sc.tab==='GitHub'?`<div class="scroll">${sc.git||''}</div>`:
     `<div class="scroll" id="chatscroll">${(sc.msgs||[]).map(m=>m.role==='u'?uMsg(m):aiMsg(m)).join('')}</div>${sc.composer===false?'':composer(sc,true)}<div class="disclaim">Studio can make mistakes. Test your app.</div>`}
   </div>`;
 };
@@ -307,7 +310,7 @@ function renderCoach(){
   const stIdx=L.stages.findIndex(s=>s.id===b.stage);
   const inStage=L.beats.map((bb,i)=>[bb,i]).filter(([bb])=>bb.stage===b.stage);
   const pos=inStage.findIndex(([,i])=>i===S.beat);
-  const canShow=!!(b.tap||b.compose||b.pickShow||b.decide||b.check||b.showMe);
+  const cdx=fn(b.card,x); const canShow=!!(b.tap||b.compose||b.pickShow||b.decide||b.check||b.showMe||(cdx&&(cdx.type==='pickeach'||cdx.type==='sort')));
   const last=S.beat===L.beats.length-1;
   act.innerHTML=`<button class="btn quiet" data-c="back" aria-label="Back" ${S.beat===0?'':''}>${ico('back')}</button>
    ${canShow?`<button class="btn gold" data-c="show">${ico('play')}<span>${S.bn?'দেখাও':'Show me'}</span></button>`:''}
@@ -351,6 +354,12 @@ function cardHTML(c,x){
     const on=x.get(c.key,{});
     return `<div class="chk">${c.items.map((it,i)=>`<button class="${on[i]?'on':''}" data-tick="${c.key}|${i}"><i>${on[i]?'✓':''}</i><span><b>${it.en}</b>${it.sub?`<span style="color:var(--ink-muted);font-size:13px">${it.sub}</span>`:''}${it.bn?`<span class="bn" lang="bn">${it.bn}</span>`:''}</span></button>`).join('')}</div>`;
   }
+  if(c.type==='pickeach'){
+    const ans=x.get(c.key,{});
+    return `<div class="sort">${c.items.map((it,i)=>{const a=ans[i];const o=a!=null?it.options[a]:null;return `<div class="srow"><div class="it" style="font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--d-${c.d||'des'})">${it.label}${it.bn?` <span class="bn" lang="bn" style="display:${S.bn?'inline':'none'}">· ${it.bn}</span>`:''}</div>
+     <div class="opts" style="margin-top:6px">${it.options.map((op,j)=>`<button class="opt ${a===j?'pick'+(op.ok?'':' wrong'):''}" data-pe="${c.key}|${i}|${j}" style="padding:8px 10px;font-size:calc(13.5px*var(--ui))">${op.en}</button>`).join('')}</div>
+     ${o?`<div class="why ${o.ok?'':'no'}">${o.why}${o.whybn?`<span class="bn" lang="bn">${o.whybn}</span>`:''}</div>`:''}</div>`}).join('')}</div>`;
+  }
   if(c.type==='say'){
     return `<div class="card"><h3>${c.title||'Say it to your partner'}${c.titlebn?`<span class="bn" lang="bn">${c.titlebn}</span>`:''}</h3><div class="saylines">${c.lines.map(l=>`<div>${l.en}${l.bn?`<span class="bn" lang="bn">${l.bn}</span>`:''}</div>`).join('')}</div>
       <button class="listen" data-speak="${esc(c.lines.map(l=>l.en.replace(/<[^>]+>/g,'')).join(' '))}">🔊 Listen</button></div>`;
@@ -387,9 +396,36 @@ function openView(id,mark){
   const v=$('#viewer'); v.hidden=false;
   v.innerHTML=`<div class="tab"><button class="mi" data-vclose="1" aria-label="Close">${ico('back')}</button><h1>${esc(f.name)}</h1><button class="mi" data-vzoom="-1" aria-label="Zoom out">−</button><button class="mi" data-vzoom="1" aria-label="Zoom in">+</button></div>
    <div class="vscroll"><div class="vpage"><img src="${f.img}" alt="${esc(f.name)}">${marks.map(m=>`<i class="vmark" style="left:${m[0]}%;top:${m[1]}%;width:${m[2]}%;height:${m[3]}%"></i>`).join('')}</div></div>
-   <div class="vhint">${marks.length?(S.bn?'সোনালি দাগের জায়গাটা পড়ো':'Read the part inside the gold box'):(S.bn?'বড় করতে + চাপো':'Tap + to zoom in')}</div>`;
-  applyZoom(true);
+   <div class="vhint">${marks.length?(S.bn?'সোনালি দাগের জায়গাটা পড়ো · টেনে সরাও':'Read the part inside the gold box · drag to move'):(S.bn?'দুই আঙুলে বড় করো · টেনে সরাও':'Pinch or + to zoom · drag to move')}</div>`;
+  applyZoom(true); bindViewerGestures($('.vscroll',v));
   if(innerWidth<900) $('#coach').classList.remove('open');
+}
+/* zoom about a screen point, keeping that point under the finger/cursor */
+function zoomAt(z,cx,cy){
+  const sc=$('#viewer .vscroll'); const pg=$('#viewer .vpage'); if(!sc||!pg) return;
+  z=Math.max(1,Math.min(4,z)); const r=sc.getBoundingClientRect(); const k=(r.width/sc.offsetWidth)||1;
+  const px=(cx-r.left)/k, py=(cy-r.top)/k;
+  const fx=(sc.scrollLeft+px)/pg.offsetWidth, fy=(sc.scrollTop+py)/pg.offsetHeight;
+  VIEW.zoom=z; pg.style.transition='none'; pg.style.width=(z*100)+'%';
+  sc.scrollLeft=fx*pg.offsetWidth-px; sc.scrollTop=fy*pg.offsetHeight-py;
+  requestAnimationFrame(()=>pg.style.transition='');
+}
+function bindViewerGestures(sc){
+  let drag=null, pinch=null;
+  // mouse / pen: drag to pan
+  sc.addEventListener('pointerdown',e=>{ if(e.pointerType==='touch') return; drag={x:e.clientX,y:e.clientY,l:sc.scrollLeft,t:sc.scrollTop,moved:0}; sc.setPointerCapture(e.pointerId); sc.classList.add('grabbing'); });
+  sc.addEventListener('pointermove',e=>{ if(!drag) return; const k=(sc.getBoundingClientRect().width/sc.offsetWidth)||1; const dx=(e.clientX-drag.x)/k, dy=(e.clientY-drag.y)/k; drag.moved=Math.max(drag.moved,Math.abs(dx)+Math.abs(dy)); sc.scrollLeft=drag.l-dx; sc.scrollTop=drag.t-dy; });
+  const end=()=>{ drag=null; sc.classList.remove('grabbing'); };
+  sc.addEventListener('pointerup',end); sc.addEventListener('pointercancel',end);
+  // double-click / double-tap: zoom in on that spot, or back out
+  sc.addEventListener('dblclick',e=>{ zoomAt(VIEW.zoom<2?2.5:1,e.clientX,e.clientY); });
+  // trackpad pinch and Ctrl+wheel arrive as wheel events with ctrlKey
+  sc.addEventListener('wheel',e=>{ if(!e.ctrlKey) return; e.preventDefault(); zoomAt(VIEW.zoom*Math.exp(-Math.max(-60,Math.min(60,e.deltaY))*0.006),e.clientX,e.clientY); },{passive:false});
+  // two-finger pinch on touchscreens — zooms the document, not the whole page
+  const dist=t=>Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);
+  sc.addEventListener('touchstart',e=>{ if(e.touches.length===2){ pinch={d:dist(e.touches),z:VIEW.zoom}; e.preventDefault(); } },{passive:false});
+  sc.addEventListener('touchmove',e=>{ if(pinch&&e.touches.length===2){ e.preventDefault(); const cx=(e.touches[0].clientX+e.touches[1].clientX)/2, cy=(e.touches[0].clientY+e.touches[1].clientY)/2; zoomAt(pinch.z*dist(e.touches)/pinch.d,cx,cy); } },{passive:false});
+  sc.addEventListener('touchend',e=>{ if(e.touches.length<2) pinch=null; });
 }
 function applyZoom(center){
   const v=$('#viewer'); const pg=$('.vpage',v); const sc=$('.vscroll',v); pg.style.width=(VIEW.zoom*100)+'%';
@@ -444,7 +480,7 @@ function renderHubPhone(){
 /* ------------------------------------------------------------- input on the phone */
 function onPhoneClick(e){
   const vc=e.target.closest('[data-vclose]'); if(vc){closeView();return}
-  const vz=e.target.closest('[data-vzoom]'); if(vz){VIEW.zoom=Math.max(1,Math.min(4,VIEW.zoom+(+vz.dataset.vzoom)*0.5));applyZoom(false);return}
+  const vz=e.target.closest('[data-vzoom]'); if(vz){const r=$('#viewer .vscroll').getBoundingClientRect(); zoomAt(VIEW.zoom+(+vz.dataset.vzoom)*0.5,r.left+r.width/2,r.top+r.height/2);return}
   if(e.target.closest('#viewer')) return;
   const dv=e.target.closest('[data-view]'); if(dv){openView(dv.dataset.view,dv.dataset.mark);return}
   const x=S.lesson?ctx():null;
@@ -503,6 +539,7 @@ function onCoachClick(e){
   const stg=e.target.closest('[data-stage]'); if(stg&&S.lesson){ const i=LESSONS[S.lesson].beats.findIndex(b=>b.stage===stg.dataset.stage); if(i>=0) go(i); return; }
   if(!S.lesson) return; const x=ctx();
   const so=e.target.closest('[data-sort]'); if(so){ const [k,i,v]=so.dataset.sort.split('|'); const a=x.get(k,{}); a[i]=v; x.set(k,a); renderCoachKeep(); return; }
+  const pe=e.target.closest('[data-pe]'); if(pe){ const [k,i,j]=pe.dataset.pe.split('|'); const a=x.get(k,{}); a[i]=+j; x.set(k,a); renderPhone(false); renderCoachKeep(); return; }
   const ch=e.target.closest('[data-choice]'); if(ch){ const [k,i]=ch.dataset.choice.split('|'); x.set(k,+i); renderCoachKeep(); return; }
   const tk=e.target.closest('[data-tick]'); if(tk){ const [k,i]=tk.dataset.tick.split('|'); const a=x.get(k,{}); a[i]=!a[i]; x.set(k,a); renderCoachKeep(); return; }
   const vd=e.target.closest('[data-verd]'); if(vd){ const [k,id,v]=vd.dataset.verd.split('|'); const a=x.get(k,{}); a[id]=v; x.set(k,a); renderPhone(false); renderCoachKeep(); if(innerWidth<900){const cb=$('#cbody'); cb.scrollTo({top:cb.scrollHeight,behavior:'smooth'})} return; }
@@ -523,6 +560,8 @@ function showMe(){
   const x=ctx(), b=x.beat;
   if(S.streaming&&S.finishStream){S.finishStream();return}
   if(b.showMe){ b.showMe(x,{ghostTo,click:el=>el&&el.click(),render:()=>{renderPhone(false);renderCoach()}}); return; }
+  const cd=fn(b.card,x); if(cd&&cd.type==='pickeach'){ const a={}; cd.items.forEach((it,i)=>a[i]=it.options.findIndex(o=>o.ok)); x.set(cd.key,a); renderPhone(false); renderCoach(); return; }
+  if(cd&&cd.type==='sort'&&!b.tap&&!b.compose){ const a={}; cd.items.forEach((it,i)=>a[i]=it.ans); x.set(cd.key,a); renderCoach(); return; }
   if(b.compose){
     const c=b.compose; const kb=activeKB(x); const best=c.best; let v='';
     x.set(c.key,''); renderPhoneKeepFocus();

@@ -21,7 +21,7 @@ Fictional 3rd-year Economics student at Rajshahi University (from the *RU AI Sem
 | --- | --- | --- |
 | **An honest CV with AI** (`lesson-cv.js`) | Plan · Prompt · Check · Fix · Finish | The quick prompt invents IELTS 7.0 and "led 20 volunteers"; the four-part prompt (Context · Product · Process · Performance) makes the AI ask first; the draft still has 3 slips to catch against her documents |
 | **Set up an AI agent** (`lesson-agent.js`) | Goal · Access · Rules · Watch · Review | The pilot story (*logging in yourself ≠ giving your login to an agent*); seven access decisions with four questions — whose data? does the job need it? worst case? can I undo it?; Orbit then misreads a handwritten deadline, tries to forward a confidential reference letter, meets a prompt-injection scam fee, asks for more access; finally the activity log and revoking access |
-| **Vibe-code an app** (`lesson-build.js`) | Plan · Describe · Test · Fix · Share | The preview is a real working app; v1 has the `new Date("15/10/2025")` bug (American date order → NaN). Students test, write an Input/Expected/Actual bug report, retest v2, and publish without personal data |
+| **Vibe-code an app** (`lesson-build.js`) | Plan · Spec · Build · Test · Secure · Launch | The app developer’s trade without the programming. Delegation: feature creep, a one-page spec (goal, v1, not-in-v1, data, edge cases, screen design, code rules) and modular architecture (the tiffin carrier: screen · list · dates · storage). Description: build from the spec; Input/Expected/Actual bug reports; “only change dates.js”. Discernment: the preview is a real app with the dd/mm bug. Diligence: GitHub save points (the AI’s fix rewrites 4 files and breaks sorting — restore v1), Firestore rules left in test mode, an unasked feature with a Gemini key already pushed (remove + revoke), and the road from prototype to a labelled beta |
 
 Orbit, Sathi and Studio are invented apps modelled on Meta Muse / xAI Grok Bot, Gemini / ChatGPT / Claude, and Google AI Studio Build.
 
@@ -31,7 +31,7 @@ Orbit, Sathi and Studio are invented apps modelled on Meta Muse / xAI Grok Bot, 
 - Tap, never drag. No completion locks: **Next** always works; **Show me** plays any step with a ghost finger (good for projector demos).
 - English is built in: prompt "recipes" are sentence frames (*Use only ___. If ___, ask me first.*), bug reports are Input/Expected/Actual, every workflow ends with three "Say it to your partner" sentences.
 - `print.html` — one single-sided A4 page per workflow for students without a phone.
-- **Her documents are always one tap away.** Attachments in the chat open in an Android-style document viewer, beats can show a "Ayesha's documents" strip (`docs:[ids]`), and in Check each AI line has **Where to look** buttons that open the right document zoomed to a gold box around the evidence (`look:[{f,m:'x,y,w,h;…',t}]`, percentages of the page image). The box shows *where* to read, not the answer.
+- **Her documents are always one tap away.** Attachments in the chat open in an Android-style document viewer (drag to pan, pinch / Ctrl+scroll / + − to zoom, double-click to zoom on a spot), beats can show a "Ayesha's documents" strip (`docs:[ids]`), and in Check each AI line has **Where to look** buttons that open the right document zoomed to a gold box around the evidence (`look:[{f,m:'x,y,w,h;…',t}]`, percentages of the page image). The box shows *where* to read, not the answer.
 
 ## The four Ds — onboarding animation
 

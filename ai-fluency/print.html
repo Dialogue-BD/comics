@@ -127,37 +127,45 @@ td.c{text-align:center;width:11mm;font-size:10pt;color:#999}
 <!-- ============ SHEET 3: BUILD ============ -->
 <section class="sheet">
  <div class="hd"><img src="../brand/dialogue-logo.png" alt="Dialogue"><h1><small>AI Fluency Lab · Workflow 3</small>Vibe-code an app</h1><div class="nm">Name <b></b><br>Partner <b></b></div></div>
- <div class="intro">Ayesha’s study group keeps missing deadlines. She has never coded, but she can <b>describe</b> an app in words and let an AI (like Google AI Studio) write the code. Then she must <b>test</b> it.<div class="bn">তুমি কথায় বর্ণনা করো, AI কোড লেখে, তুমি পরীক্ষা করো।</div></div>
+ <div class="intro">Ayesha’s study group keeps missing master’s deadlines. She builds “My Deadlines” with an AI app builder (like Google AI Studio). <b>The AI writes the code. Ayesha makes the builder’s decisions.</b><div class="bn">AI কোড লেখে। নির্মাতার সিদ্ধান্ত আয়েশার।</div></div>
  <div class="cols">
-  <div class="box del"><h2><b>1</b>Keep it small <i>Delegation</i></h2>
-   <table><tr><th>Idea</th><th>Must</th><th>Later</th><th>No</th></tr>
+  <div class="box del"><h2><b>1</b>Stop feature creep <i>Delegation</i></h2>
+   <table><tr><th>Idea</th><th>v1</th><th>Later</th><th>No</th></tr>
    <tr><td>Add a programme and its deadline</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td></tr>
-   <tr><td>Show days left, nearest first</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td></tr>
-   <tr><td>Dark mode</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td></tr>
-   <tr><td>Login with Google</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td></tr></table></div>
-  <div class="box des"><h2><b>2</b>Describe the app <i>Description</i></h2>
-   <span class="frame"><b>Product:</b> Build a <u></u> called <u></u>.</span>
-   <span class="frame"><b>Features:</b> I can <u></u>. It shows <u></u>.</span>
-   <span class="frame"><b>Local detail:</b> Dates are written <u></u>, like <u></u>.</span>
-   <span class="frame"><b>Data:</b> Save the list <u></u>. No <u></u>.</span></div>
+   <tr><td>Days left, nearest first</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td></tr>
+   <tr><td>Shared list for everyone</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td></tr>
+   <tr><td>AI tips for each university</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td></tr>
+   <tr><td>Dark mode</td><td class="c">☐</td><td class="c">☐</td><td class="c">☐</td></tr></table></div>
+  <div class="box del"><h2><b>2</b>Write the spec <i>Delegation</i></h2>
+   <span class="frame"><b>Goal:</b> Help <u></u> stop <u></u>.</span>
+   <span class="frame"><b>Version 1 does:</b> <u style="min-width:52mm"></u></span>
+   <span class="frame"><b>Not in v1:</b> <u style="min-width:56mm"></u></span>
+   <span class="frame"><b>Edge cases:</b> dates are <u></u>; 31/02 shows <u></u></span>
+   <span class="frame"><b>Modules</b> (like a tiffin carrier): screen · list · <u style="min-width:14mm"></u> · storage</span></div>
  </div>
  <div class="box dis"><h2><b>3</b>Test it <i>Discernment</i></h2>
-  <p class="small" style="margin:0 0 1mm">Today is <b>4 October 2025</b>. Work out the expected days first. Version 1 of the app showed these results.</p>
-  <table><tr><th>Programme</th><th>Deadline (dd/mm/yyyy)</th><th>Expected days left</th><th>App version 1 shows</th><th>✓ / ✗</th></tr>
+  <p class="small" style="margin:0 0 1mm">Today is <b>4 October 2025</b>. Work out the expected days first.</p>
+  <table><tr><th>Programme</th><th>Deadline</th><th>Expected</th><th>v1 shows</th><th>✓/✗</th></tr>
   <tr><td>Oxford</td><td>15/10/2025</td><td></td><td>NaN days left</td><td class="c">☐</td></tr>
-  <tr><td>LSE</td><td>31/10/2025</td><td></td><td>NaN days left</td><td class="c">☐</td></tr>
-  <tr><td>Erasmus</td><td>01/12/2025</td><td></td><td>−265 days left</td><td class="c">☐</td></tr>
-  <tr><td>Sussex</td><td>15/01/2026</td><td></td><td>NaN days left</td><td class="c">☐</td></tr></table>
-  <p style="margin:1mm 0 0">Why did it break? Hint: how does America write 01/12? <span class="line" style="display:inline-block;width:80mm;height:3.5mm"></span></p></div>
- <div class="box des"><h2><b>4</b>Write a clear bug report <i>Description</i></h2>
-  <span class="frame"><b>Input:</b> When I add <u></u> with the date <u></u>,</span>
-  <span class="frame"><b>Expected:</b> I expect to see <u style="min-width:60mm"></u>.</span>
-  <span class="frame"><b>Actual:</b> But I see <u style="min-width:60mm"></u>.</span>
-  <p class="small" style="margin:.6mm 0 0">Not this: “It doesn’t work. Fix it.” — the AI has to guess.</p></div>
+  <tr><td>Erasmus</td><td>01/12/2025</td><td></td><td>−265 days left</td><td class="c">☐</td></tr></table>
+  <span class="frame" style="margin-top:1.4mm"><b>Bug report:</b> When I add <u></u>, I expect <u></u>, but I see <u></u>.</span></div>
  <div class="cols">
-  <div class="box dil"><h2><b>5</b>Before you share <i>Diligence</i></h2>
-   ☐ No personal data inside the app.<br>☐ No passwords or secret keys in the code.<br>☐ I tested it with real dates.<br>☐ It says “Made with AI help”.<br><p style="margin:1mm 0 0">Share it <b>empty</b> or <b>with her 8 programmes inside</b>? Why?</p><div class="line"></div></div>
-  <div class="box say"><h2>Say it to your partner</h2><div>I <b>described</b> the app, and the AI <b>wrote</b> the code.</div><div>I <b>expected</b> 11 days, but I <b>saw</b> “NaN”. So I <b>reported</b> it.</div><div>The AI said “it works”. I <b>tested</b> it myself.</div></div>
+  <div class="box dil"><h2><b>4</b>Save points (Git) <i>Diligence</i></h2>
+   Best commit message? Circle: &nbsp;<b>Update app</b> · <b>v1: form, list and days left</b> · <b>asdf</b>
+   <p style="margin:1.2mm 0 0">The AI’s fix changed <b>4 files</b> to fix one date bug, and now the list is sorted A–Z and the saved list is gone. Circle:</p>
+   <b>Restore v1</b> · <b>Commit it</b> · <b>Ask AI to fix the new bugs</b>
+   <p style="margin:1.2mm 0 0">Then ask: “Only change <u style="text-decoration:none;display:inline-block;min-width:20mm;border-bottom:1px solid #999"></u>. Don’t change any other file.”</p></div>
+  <div class="box dil"><h2><b>5</b>Secure it <i>Diligence</i></h2>
+   <p style="margin:0">Firestore rule <code>allow read, write: if true</code> means <span class="line" style="display:inline-block;width:30mm;height:3.5mm"></span>. Better rule:</p>
+   <b>Test mode</b> · <b>Members read, edit only your own</b> · <b>Lock everything</b>
+   <p style="margin:1.2mm 0 0">The AI added a feature with a <b>Gemini API key</b> in the code, already on GitHub. Circle:</p>
+   <b>Leave it</b> · <b>Delete the line</b> · <b>Remove the feature + revoke the key</b></div>
+ </div>
+ <div class="cols">
+  <div class="box dil"><h2><b>6</b>Prototype ≠ launch <i>Diligence</i></h2>
+   ☐ Works on my phone &nbsp; ☐ Tested on an old Android &nbsp; ☐ Slow mobile data<br>☐ Edge cases (empty, 100 items) &nbsp; ☐ No secret keys &nbsp; ☐ Privacy note<br>☐ 5 users tested it &nbsp; ☐ Who fixes bugs after launch?
+   <p style="margin:1mm 0 0">Tick what is done. Is it ready? Share as: <b>beta with 5 friends</b> · <b>whole university</b> · <b>wait</b></p></div>
+  <div class="box say"><h2>Say it to your partner</h2><div>I <b>wrote a spec</b> first, so the AI <b>built</b> only what we needed.</div><div>When the AI’s fix <b>broke</b> the app, I <b>restored</b> my save point.</div><div>It <b>looked</b> finished, but it <b>wasn’t</b> ready.</div></div>
  </div>
  <div class="ft"><span>Dialogue · AI Fluency Lab · dialogue-bd.com/ai-fluency</span><span>Studio is an invented app modelled on Google AI Studio’s Build mode.</span></div>
 </section>

@@ -509,6 +509,7 @@ body.bangla .bn{display:block}
 .code{background:#0B0B0C;border-radius:12px;padding:10px 0;font:12px/1.55 var(--md-mono);color:#D7DAE0;overflow-x:auto;white-space:pre}
 .code .cl{display:block;padding:0 12px}
 .code .cl.del{background:rgba(242,139,130,.16);color:#F2B8B5}
+.code .cl.bugline{background:rgba(242,184,181,.2);box-shadow:inset 4px 0 0 #F2B8B5;color:#fff}
 .code .cl.add{background:rgba(129,201,149,.16);color:#B6E3C1}
 .code .kw{color:#C58AF9}.code .st{color:#81C995;background:none;padding:0;border-radius:0;font-weight:400;font-size:inherit}.code .cm{color:#8E918F}
 .preview{flex:1;min-height:0;margin:0 10px 10px;border-radius:16px;overflow:hidden;background:#fff;color:#1d1b20;display:flex;flex-direction:column}
@@ -537,6 +538,26 @@ body.bangla .bn{display:block}
 .cb small{display:block;text-align:right;font-size:10.5px;color:#667781;margin-top:1px}
 .cb.me{margin-left:auto;background:#D9FDD3;border-radius:14px 4px 14px 14px}
 .cb a{color:#027EB5}
+/* studio extras: file tree, git */
+.ftree{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 8px}
+.ftree span{font:12px var(--md-mono);color:#C4C7C5;background:#1E1F20;border:1px solid #333;border-radius:8px;padding:4px 8px}
+.ftree span.on{color:#062E6F;background:#A8C7FA;border-color:#A8C7FA}
+.ghc{margin:8px 0;border:1px solid #3a3b3d;border-radius:14px;background:#1E1F20;overflow:hidden}
+.ghc .gh-h{display:flex;gap:10px;align-items:center;padding:10px 12px;font-size:13.5px;color:#E3E3E3}
+.ghc .gh-h b{font-weight:600}
+.ghc .gh-h small{display:block;color:#8E918F;font-size:11.5px}
+.ghc .gh-dot{width:14px;height:14px;border-radius:99px;border:3px solid #81C995;flex:none}
+.ghc.unc .gh-dot{border-color:#F2B8B5}
+.ghc .gh-files{padding:0 12px 10px 36px;font:12px var(--md-mono);color:#C4C7C5;line-height:1.7}
+.ghc .gh-files i{font-style:normal;color:#81C995}.ghc .gh-files u{text-decoration:none;color:#F2B8B5}
+.ghc .acts{display:flex;gap:8px;flex-wrap:wrap;padding:0 12px 12px}
+.ghc .acts .mdbtn{font-size:13px;padding:8px 14px}
+.ghsec{font-size:12px;font-weight:600;color:#A8C7FA;letter-spacing:.04em;margin:12px 2px 2px}
+.studio .radio b{color:#E3E3E3}.studio .radio span{color:#C4C7C5}
+.studio .sheet{background:#1E1F20;color:#E3E3E3}.studio .sheet .sh-sub{color:#C4C7C5}
+.specdoc h6{font-family:var(--md-font);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#1B3A6B;margin:10px 0 2px}
+.specdoc .gap{color:#999;font-style:italic}
+.specdoc .fresh{background:#FFF1C9}
 /* settings */
 .settings .li{grid-template-columns:28px 1fr auto}
 .perm{display:grid;grid-template-columns:28px 1fr auto;gap:14px;align-items:center;padding:12px 18px;border:0;background:transparent;width:100%;text-align:left;font-family:var(--md-font)}
@@ -549,7 +570,9 @@ body.bangla .bn{display:block}
 .viewer .tab{color:#fff}.viewer .mi{color:#fff;font-size:26px;font-family:var(--md-font)}
 .viewer .mi svg{width:24px;height:24px}
 .viewer h1{font-size:16px}
-.vscroll{flex:1;overflow:auto;padding:8px;overscroll-behavior:contain}
+.vscroll{flex:1;overflow:auto;padding:8px;overscroll-behavior:contain;cursor:grab;touch-action:pan-x pan-y;user-select:none;-webkit-user-select:none}
+.vscroll.grabbing{cursor:grabbing}
+.vpage img{-webkit-user-drag:none;pointer-events:none}
 .vpage{position:relative;transition:width .2s}
 .vpage img{width:100%;display:block;box-shadow:0 4px 18px rgba(0,0,0,.4);background:#fff}
 .vmark{position:absolute;border:3px solid var(--gold);border-radius:6px;background:rgba(240,220,150,.18);box-shadow:0 0 0 3px rgba(185,146,79,.35);animation:pulse 1.8s infinite}
