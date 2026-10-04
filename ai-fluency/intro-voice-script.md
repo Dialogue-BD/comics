@@ -32,7 +32,7 @@ A bright university classroom in Rajshahi in the late morning. The teacher stand
 
 ## Sample context
 
-This is the opening of a class on using AI well. The speaker is the teacher, explaining the theory of AI fluency: four competencies — Delegation, Description, Discernment and Diligence — that work as two interlocking loops. Delegation and Diligence are the big decisions about what to do with AI and who is responsible; Description and Discernment are the back-and-forth conversation with the AI. The intent is calm and encouraging: AI is useful, and the student always stays the human in the loop. The listeners are intermediate learners of English, so every sentence must be easy to follow on first hearing.
+This is the opening of a class on using AI well. The speaker is the teacher, explaining the theory of AI fluency: four competencies — Delegation, Description, Discernment and Diligence — that work as two interlocking loops. Delegation and Diligence (the vertical loop) are the big decisions about what to do with AI and who is responsible; Description and Discernment (the horizontal loop) are the back-and-forth conversation with the AI. AI fluency is the sweet spot in the middle, where both loops work well. The intent is calm and encouraging: AI is useful, and the student always stays the human in the loop. The listeners are intermediate learners of English, so every sentence must be easy to follow on first hearing.
 
 ## Transcript (paste as one block)
 
@@ -44,12 +44,12 @@ The first loop is Delegation and Diligence: the big decisions. ... Delegation as
 
 The second loop is Description and Discernment: the conversation. ... Description: say what you want, how to work, and how the AI should behave. ... Discernment: judge what comes back. Then describe again, better. ... It is a conversation, not a command.
 
-The two loops lock together. ... The first loop makes the big decisions. The second loop does the work. ... And you move between them all the time.
+The two loops lock together. ... The first loop makes the big decisions. The second loop does the work. ... When both loops work well, you reach the sweet spot in the middle: AI fluency.
 
 For example: studying for an exam. ... AI makes practice questions. You answer them. ... No AI in the real exam, and you check facts in your book. ... Ask for five questions. Spot a wrong one. Ask again.
 
-Two loops. Four Ds. ... One human in the loop: you.
+Two loops. Four Ds. ... In the middle, where both loops work well: AI fluency. ... And you are the human in the loop.
 
 ---
 
-*218 words — about 1 minute 50 seconds at this pace. The film follows the take, so don't trim pauses.*
+*230 words — about 1 minute 55 seconds at this pace. The film follows the take, so don't trim pauses.*

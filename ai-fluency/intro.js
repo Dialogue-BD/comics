@@ -40,26 +40,29 @@ const chip=(n,name,q,col,colT,t)=>`<div class="chip" style="--c:${col};--ct:${co
  * ring: [[t,x,y],…] the gold eye's path (centre point, stage px)
  */
 /* geometry helpers: a stadium-shaped loop (rounded rectangle with semicircle ends) */
-const stad=(x,y,w,h)=>{const r=h/2;return `M${x+r} ${y} H${x+w-r} A${r} ${r} 0 0 1 ${x+w-r} ${y+h} H${x+r} A${r} ${r} 0 0 1 ${x+r} ${y} Z`};
+const stad=(x,y,w,h)=>{ if(h>w){const r=w/2;return `M${x} ${y+r} A${r} ${r} 0 0 1 ${x+w} ${y+r} V${y+h-r} A${r} ${r} 0 0 1 ${x} ${y+h-r} Z`} const r=h/2;return `M${x+r} ${y} H${x+w-r} A${r} ${r} 0 0 1 ${x+w-r} ${y+h} H${x+r} A${r} ${r} 0 0 1 ${x+r} ${y} Z`};
 const arrowHead=(x,y,deg,col)=>`<path d="M0 -18 L30 0 L0 18 Z" fill="${col}" transform="translate(${x} ${y}) rotate(${deg})"/>`;
 const node=(x,y,label,col,colT,t,sub)=>`<div class="node" style="left:${x-130}px;top:${y-130}px;--c:${col};--ct:${colT}" data-a="pop ${t}"><b>${label}</b>${sub?`<small>${sub}</small>`:''}</div>`;
 const q=(x,y,txt,col,t,w)=>`<div class="qchip" style="left:${x}px;top:${y}px;--c:${col};${w?`width:${w}px`:''}" data-a="left ${t}">${txt}</div>`;
 const pill=(x,y,txt,t,cls='')=>`<div class="arcl ${cls}" style="left:${x}px;top:${y}px" data-a="pop ${t}">${txt}</div>`;
-/* the two interlocking links used in scenes 5–7 */
-const LINKS=(opts={})=>{const L=stad(150,250,1000,440), R=stad(770,370,1000,440);
+/* the framework's cross: Delegation ⇄ Diligence vertical, Description ⇄ Discernment horizontal */
+const VL=[760,120,400,720], HL=[260,310,1400,400];   // x,y,w,h
+const CROSS=(opts={})=>{const V=stad(...VL), Hh=stad(...HL); const f=opts.faint?'opacity=".22"':'';
  return `<svg class="ln" viewBox="0 0 ${W} ${H}"><defs>
-  <linearGradient id="gL" x1="0" y1="0" x2="0" y2="1"><stop offset=".48" stop-color="${C.del}"/><stop offset=".52" stop-color="${C.dil}"/></linearGradient>
-  <linearGradient id="gR" x1="0" y1="0" x2="0" y2="1"><stop offset=".48" stop-color="${C.des}"/><stop offset=".52" stop-color="${C.dis}"/></linearGradient></defs>
-  <path d="${L}" pathLength="1" stroke="url(#gL)" stroke-width="30" fill="none" stroke-dasharray="1" ${opts.faint?'opacity=".22"':''} data-a="draw ${opts.t1||0.4} 1.4"/>
-  <path d="M1075 370 H1180" stroke="#F4F1E6" stroke-width="46" fill="none" ${opts.faint?'opacity=".22"':''} data-a="fade ${opts.t2||1.2} .2"/>
-  <path d="${R}" pathLength="1" stroke="url(#gR)" stroke-width="30" fill="none" stroke-dasharray="1" ${opts.faint?'opacity=".22"':''} data-a="draw ${opts.t2||1.2} 1.4"/>
-  <g ${opts.faint?'opacity=".22"':''} data-a="fade ${(opts.t2||1.2)+1.3} .3"><path d="M768 690 H822" stroke="#F4F1E6" stroke-width="46" fill="none"/><path d="M745 690 H845" stroke="${C.dil}" stroke-width="30" fill="none" stroke-linecap="butt"/></g>
+  <linearGradient id="gV" x1="0" y1="0" x2="0" y2="1"><stop offset=".49" stop-color="${C.del}"/><stop offset=".51" stop-color="${C.dil}"/></linearGradient>
+  <linearGradient id="gH" x1="0" y1="0" x2="1" y2="0"><stop offset=".49" stop-color="${C.des}"/><stop offset=".51" stop-color="${C.dis}"/></linearGradient></defs>
+  <g ${f}><path d="${V}" pathLength="1" stroke="url(#gV)" stroke-width="30" fill="none" stroke-dasharray="1" data-a="draw ${opts.t1||0.4} 1.4"/>
+  <g data-a="fade ${opts.t2||1.2} .2"></g>
+  <path d="${Hh}" pathLength="1" stroke="url(#gH)" stroke-width="30" fill="none" stroke-dasharray="1" data-a="draw ${opts.t2||1.2} 1.4"/>
+  <g data-a="fade ${(opts.t2||1.2)+1.3} .3"><path d="M1160 296 V324" stroke="#F4F1E6" stroke-width="48"/><path d="M1160 282 V338" stroke="${C.del}" stroke-width="30"/>
+   <path d="M769 694 L777 726" stroke="#F4F1E6" stroke-width="48"/><path d="M765 680 L781 740" stroke="${C.dil}" stroke-width="30"/></g></g>
  </svg>`};
+const DPILLS=t=>`${pill(870,92,'Delegation',t,'c-del')}${pill(890,812,'Diligence',t+.4,'c-dil')}${pill(120,482,'Description',t+.8,'c-des')}${pill(1600,482,'Discernment',t+1.2,'c-dis')}`;
 
 /* ---------- scenes ----------
  * dur: seconds at a slow reading pace (the projector default).
  * caps: [t, English, Bangla] — the narration, word for word.
- * data-a="anim start [duration]"   data-fly="dx,dy" for fly-ins
+ * data-a="anim start [duration]"   data-fly="dx,dy" for fly-ins / moves
  * ring: [[t,x,y],…] the gold eye's path (centre point, stage px)
  */
 const SCENES=[
@@ -79,81 +82,80 @@ const SCENES=[
  <div class="adjs" data-a="fade 5.2"><span data-a="pop 6">effective</span><span data-a="pop 7">efficient</span><span data-a="pop 8">ethical</span><span data-a="pop 9">safe</span></div>
  <div class="hitl" data-a="pop 13">human in the loop</div>`},
 
-{id:'pairs',dur:14,
+{id:'pairs',dur:15,
  caps:[[0,'AI fluency has four parts: the four Ds.','AI-তে দক্ষতার চারটা অংশ: চারটা D।'],
        [3.6,'Delegation. Description. Discernment. Diligence.','Delegation। Description। Discernment। Diligence।'],
        [8,'They work in two pairs. Each pair is a loop.','এরা দুই জোড়ায় কাজ করে। প্রতিটি জোড়া একটা চক্র।']],
- ring:[[10.4,600,500],[11.4,1320,500],[13,1320,500]],
- html:`<div class="tile4" style="--c:${C.del};--ct:${C.delT};left:340px;top:310px" data-fly="40,0" data-a="fade 3.6|move 8.2 1.2">Delegation</div>
- <div class="tile4" style="--c:${C.des};--ct:${C.desT};left:1060px;top:310px" data-fly="-40,0" data-a="fade 4.3|move 8.2 1.2">Description</div>
- <div class="tile4" style="--c:${C.dil};--ct:${C.dilT};left:340px;top:560px" data-fly="680,0" data-a="fade 5.6|move 8.2 1.2">Diligence</div>
- <div class="tile4" style="--c:${C.dis};--ct:${C.disT};left:1060px;top:560px;z-index:4" data-fly="-680,0" data-a="fade 5|move 8.2 1.2">Discernment</div>
+ ring:[[12.2,960,480],[14.6,960,480]],
+ html:`<div class="tile4 t4s" style="--c:${C.del};--ct:${C.delT};left:760px;top:150px" data-fly="-220,130" data-a="fade 3.6|move 8.2 1.4">Delegation</div>
+ <div class="tile4 t4s" style="--c:${C.des};--ct:${C.desT};left:160px;top:405px" data-fly="820,-125" data-a="fade 4.3|move 8.2 1.4">Description</div>
+ <div class="tile4 t4s" style="--c:${C.dis};--ct:${C.disT};left:1360px;top:405px" data-fly="-820,75" data-a="fade 5|move 8.2 1.4">Discernment</div>
+ <div class="tile4 t4s" style="--c:${C.dil};--ct:${C.dilT};left:760px;top:660px" data-fly="220,-180" data-a="fade 5.6|move 8.2 1.4">Diligence</div>
  <svg class="ln" viewBox="0 0 ${W} ${H}">
-  <path d="${stad(230,240,740,520)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" data-a="draw 9.6 1.2"/>
-  <path d="${stad(950,240,740,520)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" data-a="draw 10.4 1.2"/></svg>
- ${pill(510,215,'Loop 1',11.4)}${pill(1230,215,'Loop 2',11.8)}`},
+  <path d="${stad(715,110,490,760)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" data-a="draw 9.8 1.2"/>
+  <path d="${stad(110,355,1700,250)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" data-a="draw 10.8 1.2"/></svg>
+ ${pill(1230,150,'Loop 1 ↕',11.2)}${pill(130,620,'Loop 2 ↔',12)}`},
 
 {id:'loop1',dur:26,
  caps:[[0,'The first loop is Delegation and Diligence: the big decisions.','প্রথম চক্র: Delegation আর Diligence — বড় সিদ্ধান্তগুলো।'],
        [5,'Delegation asks: What am I trying to do? Which AI tool fits? Who does what?','Delegation জিজ্ঞেস করে: আমি কী করতে চাই? কোন AI টুল মানানসই? কে কোন কাজ করবে?'],
        [12.5,'Diligence asks: Is this safe and fair? Who needs to know AI helped? Who is responsible for the result?','Diligence জিজ্ঞেস করে: এটা কি নিরাপদ ও ন্যায্য? AI সাহায্য করেছে — কাকে জানাতে হবে? ফলাফলের দায় কার?'],
        [20.5,'Each answer changes the other.','একটার উত্তর অন্যটাকে বদলে দেয়।']],
- ring:[[20.6,330,515],[21.4,960,190],[22.2,1590,515],[23,960,840],[23.8,330,515],[25.6,330,515]],
+ ring:[[20.6,960,120],[21.4,1160,320],[22,1160,640],[22.6,960,840],[23.2,760,640],[23.8,760,320],[24.4,960,120],[25.6,960,120]],
  html:`<div class="ltitle" style="--c:${C.del}" data-a="left .2">Loop 1 · <b>the big decisions</b></div>
  <svg class="ln" viewBox="0 0 ${W} ${H}">
-  <path d="${stad(330,190,1260,650)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" opacity=".85" data-a="draw .6 1.6"/>
-  <g data-a="fade 20.6 .4">${arrowHead(1000,190,0,C.ink)}${arrowHead(920,840,180,C.ink)}</g></svg>
- ${node(330,515,'Delegation',C.del,C.delT,1.4,'plan')}${node(1590,515,'Diligence',C.dil,C.dilT,2.2,'responsibility')}
- ${q(500,340,'What am I trying to do?',C.del,6)}${q(500,450,'Which AI tool fits?',C.del,8)}${q(500,560,'Who does what — me, AI, or both?',C.del,9.8)}
- ${q(1000,340,'Is it safe and fair?',C.dil,13.5)}${q(1000,450,'Who needs to know AI helped?',C.dil,15.6)}${q(1000,560,'Who is responsible for the result?',C.dil,17.8)}
- ${pill(820,160,'decisions raise questions →',20.8)}${pill(800,810,'← answers change the plan',22.4)}`},
+  <path d="${stad(760,120,400,720)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" opacity=".85" data-a="draw .6 1.6"/>
+  <g data-a="fade 20.6 .4">${arrowHead(1160,500,90,C.ink)}${arrowHead(760,460,-90,C.ink)}</g></svg>
+ ${node(960,320,'Delegation',C.del,C.delT,1.4,'plan')}${node(960,640,'Diligence',C.dil,C.dilT,2.2,'responsibility')}
+ ${q(1230,180,'What am I trying to do?',C.del,6)}${q(1230,290,'Which AI tool fits?',C.del,8)}${q(1230,400,'Who does what — me, AI, or both?',C.del,9.8)}
+ ${q(270,500,'Is it safe and fair?',C.dil,13.5)}${q(270,610,'Who needs to know AI helped?',C.dil,15.6)}${q(270,720,'Who is responsible for the result?',C.dil,17.8)}
+ ${pill(1200,560,'↓ decisions raise questions',20.8)}${pill(330,330,'answers change the plan ↑',22.4)}`},
 
 {id:'loop2',dur:24,
  caps:[[0,'The second loop is Description and Discernment: the conversation.','দ্বিতীয় চক্র: Description আর Discernment — কথোপকথন।'],
        [5.5,'Description: say what you want, how to work, and how the AI should behave.','Description: বলো তুমি কী চাও, কীভাবে কাজ হবে, আর AI কেমন আচরণ করবে।'],
        [12.5,'Discernment: judge what comes back. Then describe again, better.','Discernment: যা ফিরে আসে তা বিচার করো। তারপর আবার, আরও ভালো করে বলো।'],
        [19,'It is a conversation, not a command.','এটা কথোপকথন, আদেশ নয়।']],
- ring:[[12.8,1590,515],[14,960,840],[15.2,330,515],[16.4,960,190],[17.6,1590,515],[18.8,960,840],[20,330,515],[23.6,330,515]],
+ ring:[[12.8,1660,510],[14,1460,710],[15.2,460,710],[16,260,510],[16.8,460,310],[18,1460,310],[18.8,1660,510],[20,1660,510],[23.6,1660,510]],
  html:`<div class="ltitle" style="--c:${C.des}" data-a="left .2">Loop 2 · <b>the conversation</b></div>
  <svg class="ln" viewBox="0 0 ${W} ${H}">
-  <path d="${stad(330,190,1260,650)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" opacity=".85" data-a="draw .6 1.6"/>
-  <g data-a="fade 13 .4">${arrowHead(1000,190,0,C.ink)}${arrowHead(920,840,180,C.ink)}</g></svg>
- ${node(330,515,'Description',C.des,C.desT,1.4,'say it')}${node(1590,515,'Discernment',C.dis,C.disT,2.2,'judge it')}
- ${q(500,340,'<b>Product</b> — what I want',C.des,6.2,380)}${q(500,450,'<b>Process</b> — how to work',C.des,7.6,380)}${q(500,560,'<b>Performance</b> — how to behave',C.des,9,380)}
- ${q(1040,340,'Is the product good?',C.dis,13.2,380)}${q(1040,450,'Was the process sound?',C.dis,14.4,380)}${q(1040,560,'Did it behave well?',C.dis,15.6,380)}
- <div class="cmd" data-a="pop 19.2">command ✗</div><div class="conv" data-a="pop 20.2"><span>💬</span><span>💬</span><span>💬</span> conversation ✓</div>`},
+  <path d="${stad(260,310,1400,400)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" opacity=".85" data-a="draw .6 1.6"/>
+  <g data-a="fade 13 .4">${arrowHead(1000,310,0,C.ink)}${arrowHead(920,710,180,C.ink)}</g></svg>
+ ${node(460,510,'Description',C.des,C.desT,1.4,'say it')}${node(1460,510,'Discernment',C.dis,C.disT,2.2,'judge it')}
+ ${q(615,365,'<b>Product</b> — what I want',C.des,6.2,330)}${q(615,470,'<b>Process</b> — how to work',C.des,7.6,330)}${q(615,575,'<b>Performance</b> — how to behave',C.des,9,330)}
+ ${q(975,365,'Is the product good?',C.dis,13.2,330)}${q(975,470,'Was the process sound?',C.dis,14.4,330)}${q(975,575,'Did it behave well?',C.dis,15.6,330)}
+ ${pill(780,275,'describe → judge',13.4)}${pill(760,675,'← describe again, better',14.6)}
+ <div class="cmd" style="left:560px;top:790px" data-a="pop 19.2">command ✗</div><div class="conv" style="left:880px;top:790px" data-a="pop 20.2"><span>💬</span><span>💬</span><span>💬</span> conversation ✓</div>`},
 
-{id:'interlock',dur:16,
+{id:'interlock',dur:18,
  caps:[[0,'The two loops lock together.','দুটো চক্র একসাথে আটকে থাকে।'],
        [3.6,'The first loop makes the big decisions. The second loop does the work.','প্রথম চক্র বড় সিদ্ধান্ত নেয়। দ্বিতীয় চক্র কাজটা করে।'],
-       [10,'And you move between them all the time.','আর তুমি সবসময় এই দুইয়ের মধ্যে আসা-যাওয়া করো।']],
- ring:[[10.2,960,530],[11.2,650,250],[12.2,960,530],[13.2,1270,810],[14.2,960,530],[15.8,960,530]],
- html:`${LINKS()}
- ${pill(500,215,'Delegation',3,'c-del')}${pill(510,655,'Diligence',3.4,'c-dil')}${pill(1300,335,'Description',4.2,'c-des')}${pill(1290,775,'Discernment',4.6,'c-dis')}
- <div class="lname" style="left:250px;top:420px" data-a="fade 5.6">the big<br>decisions</div><div class="lname" style="left:1420px;top:540px" data-a="fade 7.4">the<br>work</div>
- <div class="youtag" data-a="pop 10.4">you</div>`},
+       [9.6,'When both loops work well, you reach the sweet spot in the middle: AI fluency.','যখন দুটো চক্রই ভালোভাবে চলে, তখন মাঝখানের সেরা জায়গায় পৌঁছাও: AI-তে দক্ষতা।']],
+ ring:[[9.8,960,200],[10.6,960,510],[11.4,400,510],[12.2,960,510],[13,960,820],[13.8,960,510],[14.6,1520,510],[15.2,960,510],[15.8,960,510,2.1],[17.8,960,510,2.1]],
+ html:`${CROSS()}${DPILLS(3)}
+ <div class="lname" style="left:1210px;top:150px" data-a="fade 5.4">the big decisions ↕</div><div class="lname" style="left:1210px;top:760px" data-a="fade 7.4">the work ↔</div>
+ <div class="sweet" data-a="pop 15.6"><b>AI fluency</b><span>the sweet spot</span></div>`},
 
 {id:'example',dur:22,
  caps:[[0,'For example: studying for an exam.','উদাহরণ: পরীক্ষার পড়া।'],
        [3.4,'AI makes practice questions. You answer them.','AI অনুশীলনের প্রশ্ন বানায়। উত্তর দাও তুমি।'],
        [8.2,'No AI in the real exam, and you check facts in your book.','আসল পরীক্ষায় AI নয়, আর তথ্য বই দেখে যাচাই করো।'],
        [13.6,'Ask for five questions. Spot a wrong one. Ask again.','পাঁচটা প্রশ্ন চাও। ভুলটা ধরো। আবার চাও।']],
- ring:[[3.6,560,300],[8.4,560,770],[13.8,1360,400],[16.4,1360,860],[18.6,1360,400],[21.6,1360,400]],
- html:`${LINKS({faint:1,t1:.1,t2:.2})}
- <div class="extitle" data-a="up .2">📚 Studying for an exam</div>
- <div class="exc" style="left:320px;top:240px;--c:${C.del};--ct:${C.delT}" data-a="pop 3.4"><b>Delegation</b>AI makes practice questions. I answer them.</div>
- <div class="exc" style="left:320px;top:690px;--c:${C.dil};--ct:${C.dilT}" data-a="pop 8.2"><b>Diligence</b>No AI in the real exam. I check facts in my book.</div>
- <div class="exc" style="left:1120px;top:330px;--c:${C.des};--ct:${C.desT}" data-a="pop 13.6"><b>Description</b>“Give me 5 questions on chapter 3.”</div>
- <div class="exc" style="left:1120px;top:780px;--c:${C.dis};--ct:${C.disT};top:700px" data-a="pop 16.2"><b>Discernment</b>Question 4 is wrong. My book says…</div>
- <div class="again" style="left:1560px" data-a="pop 18.4">↺ ask again</div>`},
+ ring:[[3.6,960,170],[8.4,960,830],[13.8,300,510],[16.4,1620,510],[18.6,300,510],[21.6,300,510]],
+ html:`${CROSS({faint:1,t1:.1,t2:.2})}
+ <div class="ltitle" style="--c:${C.forest}" data-a="left .2">📚 <b>Studying for an exam</b></div>
+ <div class="exc" style="left:1240px;top:110px;--c:${C.del};--ct:${C.delT}" data-a="pop 3.4"><b>Delegation ↑</b>AI makes practice questions. I answer them.</div>
+ <div class="exc" style="left:200px;top:720px;--c:${C.dil};--ct:${C.dilT}" data-a="pop 8.2"><b>Diligence ↓</b>No AI in the real exam. I check facts in my book.</div>
+ <div class="exc" style="left:120px;top:190px;--c:${C.des};--ct:${C.desT}" data-a="pop 13.6"><b>← Description</b>“Give me 5 questions on chapter 3.”</div>
+ <div class="exc" style="left:1300px;top:720px;--c:${C.dis};--ct:${C.disT}" data-a="pop 16.2"><b>Discernment →</b>Question 4 is wrong. My book says…</div>
+ <div class="again" style="left:820px;top:470px" data-a="pop 18.4">↺ ask again</div>`},
 
-{id:'recap',dur:13,
- caps:[[0,'Two loops. Four Ds.','দুটো চক্র। চারটা D।'],[4.4,'One human in the loop: you.','চক্রের মানুষটি একজন: তুমি।']],
- ring:[[4.6,960,530],[12.6,960,530]],
- html:`${LINKS({t1:.1,t2:.6})}
- ${pill(500,215,'Delegation',1.4,'c-del')}${pill(510,655,'Diligence',1.8,'c-dil')}${pill(1300,335,'Description',2.2,'c-des')}${pill(1290,775,'Discernment',2.6,'c-dis')}
- <div class="youtag" data-a="pop 4.8">you</div>
- <div class="ayw" style="left:1630px;top:120px;width:200px" data-a="up 5.6">${AYESHA}</div>`}
+{id:'recap',dur:15,
+ caps:[[0,'Two loops. Four Ds.','দুটো চক্র। চারটা D।'],[4,'In the middle, where both loops work well: AI fluency.','মাঝখানে, যেখানে দুটো চক্রই ভালো চলে: AI-তে দক্ষতা।'],[9.4,'And you are the human in the loop.','আর চক্রের মানুষটি তুমি।']],
+ ring:[[9.6,1690,230],[14.6,1690,230]],
+ html:`${CROSS({t1:.1,t2:.6})}${DPILLS(1.4)}
+ <div class="sweet" data-a="pop 4.4"><b>AI fluency</b><span>the sweet spot</span></div>
+ <div class="ayw" style="left:1580px;top:110px;width:220px" data-a="up 9.4">${AYESHA}</div>`}
 ];
 
 /* ---------- keyframes ---------- */
@@ -181,7 +183,7 @@ function ringAnim(el,path,dur){
   if(!path||!path.length){el.style.opacity=0;return []}
   const T=dur*1000; const first=path[0];
   const kf=[{transform:`translate(${first[1]}px,${first[2]}px) scale(.4)`,opacity:0,offset:0},{transform:`translate(${first[1]}px,${first[2]}px) scale(.4)`,opacity:0,offset:Math.max(0,(first[0]-.4)/dur)}];
-  path.forEach(([t,x,y],i)=>kf.push({transform:`translate(${x}px,${y}px) scale(1)`,opacity:1,offset:Math.min(1,t/dur)}));
+  path.forEach(([t,x,y,sc],i)=>kf.push({transform:`translate(${x}px,${y}px) scale(${sc||1})`,opacity:1,offset:Math.min(1,t/dur)}));
   kf.push({transform:kf[kf.length-1].transform,opacity:1,offset:1});
   // keep offsets non-decreasing
   for(let i=1;i<kf.length;i++) if(kf[i].offset<kf[i-1].offset) kf[i].offset=kf[i-1].offset;
