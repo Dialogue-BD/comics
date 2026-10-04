@@ -131,6 +131,7 @@ AFL.lesson({
    say:x=>x.streaming?'Studio is building…':'“I tested it and everything works ✅.” Did it? Open Preview.',bn:'“আমি পরীক্ষা করেছি, সব ঠিক আছে ✅।” সত্যি? Preview খোলো।'},
   {stage:'test',scene:x=>SC(x,{tab:'Preview',ver:'v1',mini:miniApp(x,'v1')}),
    onUi:onMini,showMe:autoTest('v1',[0,2,4]),
+   docs:['checklist'],
    say:'Test it like a user. Add three deadlines from Ayesha’s checklist.',bn:'ব্যবহারকারীর মতো পরীক্ষা করো। আয়েশার চেকলিস্ট থেকে তিনটা ডেডলাইন যোগ করো।',
    sub:'Tap a dashed button, then Add.',subbn:'একটা ড্যাশ-দেওয়া বোতাম চাপো, তারপর Add।',
    card:x=>{const it=x.get('items_v1',[]);const bad=it.some(i=>Number.isNaN(daysLeft('v1',i.date))||daysLeft('v1',i.date)<0);
@@ -151,6 +152,7 @@ AFL.lesson({
    say:'Red = removed. Green = added. Now test again: tap Preview.',bn:'লাল = বাদ। সবুজ = যোগ। এবার আবার পরীক্ষা করো: Preview চাপো।'},
   {stage:'fix',d:'dis',scene:x=>SC(x,{tab:'Preview',ver:'v2',mini:miniApp(x,'v2')}),
    onUi:onMini,showMe:autoTest('v2',[0,2,4,5]),
+   docs:['checklist'],
    say:'Test again — same dates. Also try the impossible date.',bn:'আবার পরীক্ষা করো — একই তারিখ। অসম্ভব তারিখটাও চেষ্টা করো।',
    card:x=>{const it=x.get('items_v2',[]);const want={Oxford:11,LSE:27,Erasmus:58,'Göttingen':72,Sussex:103};
      const rows=it.map(i=>{const n=daysLeft('v2',i.date);const w=want[i.name];return `<tr><td style="padding:4px 6px">${esc(i.name)}</td><td style="padding:4px 6px">${w!=null?w:'—'}</td><td style="padding:4px 6px">${n==='bad'?'warning':n}</td><td>${(w!=null&&w===n)||(w==null&&n==='bad')?'✅':'❌'}</td></tr>`}).join('');

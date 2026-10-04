@@ -209,7 +209,7 @@ AFL.lesson({
    say:'Orbit worked while she was in class. First, check what it already did. Open the calendar.',bn:'সে ক্লাসে থাকার সময় Orbit কাজ করেছে। আগে দেখো সে কী করে ফেলেছে। ক্যালেন্ডার খোলো।'},
   {stage:'watch',scene:{app:'cal',body:CAL(false)},
    say:'Compare Orbit’s calendar with her handwritten checklist.',bn:'Orbit-এর ক্যালেন্ডার তার হাতে লেখা চেকলিস্টের সাথে মেলাও।',
-   card:{type:'html',html:`<div class="card" style="padding:8px"><img src="docs/deadlines-crop.webp" alt="Ayesha’s handwritten deadlines" style="width:100%;border-radius:8px;display:block"></div>`},
+   card:{type:'html',html:`<div class="card" style="padding:8px"><button data-view="checklist" data-mark="64,40.5,36,27" style="border:0;padding:0;background:none;width:100%;display:block;cursor:zoom-in"><img src="docs/deadlines-crop.webp" alt="Ayesha’s handwritten deadlines" style="width:100%;border-radius:8px;display:block"></button><p class="sub" style="margin:4px 2px 0;font-size:12.5px">Tap to open her full checklist.</p></div>`},
    decide:{key:'calErr',think:null,prompt:'Which deadline is wrong? Tap it on the phone.',promptbn:'কোন ডেডলাইনটা ভুল? ফোনে চাপো।',options:{}},
    onHit:(x,id)=>{if(id==='ev:ox'){x.set('calErr','ox');AFL.renderCoach();return true}return false},
    showMe:(x,h)=>{const e=document.querySelector('[data-hit="ev:ox"]');h.ghostTo(e,()=>e.click())},

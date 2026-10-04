@@ -31,6 +31,7 @@ Orbit, Sathi and Studio are invented apps modelled on Meta Muse / xAI Grok Bot, 
 - Tap, never drag. No completion locks: **Next** always works; **Show me** plays any step with a ghost finger (good for projector demos).
 - English is built in: prompt "recipes" are sentence frames (*Use only ___. If ___, ask me first.*), bug reports are Input/Expected/Actual, every workflow ends with three "Say it to your partner" sentences.
 - `print.html` — one single-sided A4 page per workflow for students without a phone.
+- **Her documents are always one tap away.** Attachments in the chat open in an Android-style document viewer, beats can show a "Ayesha's documents" strip (`docs:[ids]`), and in Check each AI line has **Where to look** buttons that open the right document zoomed to a gold box around the evidence (`look:[{f,m:'x,y,w,h;…',t}]`, percentages of the page image). The box shows *where* to read, not the answer.
 
 ## Files
 

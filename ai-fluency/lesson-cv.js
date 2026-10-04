@@ -42,14 +42,14 @@ const FIXED=`<p>Thanks for catching these. I've made the changes:</p>
 <p>I'm sorry about the membership line — it wasn't in your files. Would you like the full CV as a document?</p>`;
 
 const LINES=[
- {id:'l1',text:'CGPA 3.58 / 4.00 (up to second year)',v:'ok',src:'Her old CV',quote:'“CGPA: 3.58/4.00 up to second year, 60 credit hours completed”',why:'Same number, same limit (“up to second year”).',whybn:'একই সংখ্যা, একই সীমা।'},
- {id:'l2',text:'Term paper … (2025, coursework)',v:'ok',src:'Her old CV',quote:'“Term Paper … Prepared as Development Economics coursework.”',why:'It says term paper and coursework — not “published”. Honest.',whybn:'এটা টার্ম পেপার আর কোর্সওয়ার্ক — “প্রকাশিত” নয়। সৎ।'},
- {id:'l3',text:'Student research poster … (2025)',v:'ok',src:'Her old CV',quote:'“Student Research Poster: Youth Unemployment and Skills Development in Bangladesh (2025) — Economics Study Circle Student Research Forum”',why:'Matches her CV.',whybn:'তার CV-র সাথে মেলে।'},
- {id:'l4',text:'Led the Book Support project, which raised attendance from 68% to 86%',v:'chg',src:'RUCEI project report',quote:'Role: “Volunteer Tutor &amp; Organizing Team Member”. Attendance 68% → 86% is a result of the whole project.',why:'She was a tutor and team member, not the leader. The attendance result belongs to the whole team.',whybn:'সে টিউটর ও দলের সদস্য ছিল, নেতা নয়। উপস্থিতির ফল পুরো দলের।'},
- {id:'l5',text:'Helped distribute 186 books to 62 students across 48 sessions',v:'ok',src:'RUCEI project report',quote:'Books distributed: 186 · Students enrolled: 62 · Tutoring sessions: 48 (15 Jan – 30 Apr 2025)',why:'The numbers match, and “helped” shows her real role.',whybn:'সংখ্যা মেলে, আর “helped” তার আসল ভূমিকা দেখায়।'},
- {id:'l6',text:'IELTS mock: overall 6.0 — L 6.5, R 6.5, W 5.5, S 5.5',v:'ok',src:'IELTS mock report',quote:'Listening 6.5 · Reading 6.5 · Writing 5.5 · Speaking 5.5 · Overall 6.0 (test date 24 May 2025)',why:'Exactly the report. It also says “mock” — honest.',whybn:'রিপোর্টের সাথে হুবহু মেলে। “mock” কথাটাও আছে — সৎ।'},
- {id:'l7',text:'Excel, SPSS and Stata (advanced)',v:'chg',src:'Her old CV',quote:'“Software: MS Word, PowerPoint, Excel, Google Workspace, basic SPSS, basic Stata”',why:'Her CV says basic. “Advanced” changes the meaning — an interviewer could test it.',whybn:'তার CV-তে লেখা basic। “Advanced” অর্থ বদলে দেয় — ইন্টারভিউতে পরীক্ষা করতে পারে।'},
- {id:'l8',text:'Student member, Bangladesh Economic Association',v:'none',src:'All four files',quote:'No file mentions this association.',why:'The AI invented it. Even a good prompt can’t stop every invention — that’s why you check.',whybn:'AI এটা বানিয়েছে। ভালো প্রম্পটও সব বানানো কথা থামাতে পারে না — তাই যাচাই করতে হয়।'}
+ {id:'l1',look:[{f:'cv',m:'7.7,29,26,2.7',t:'Her CV — Education'}],text:'CGPA 3.58 / 4.00 (up to second year)',v:'ok',src:'Her old CV',quote:'“CGPA: 3.58/4.00 up to second year, 60 credit hours completed”',why:'Same number, same limit (“up to second year”).',whybn:'একই সংখ্যা, একই সীমা।'},
+ {id:'l2',look:[{f:'cv',m:'7.7,59.9,37,2.7',t:'Her CV — Academic projects'}],text:'Term paper … (2025, coursework)',v:'ok',src:'Her old CV',quote:'“Term Paper … Prepared as Development Economics coursework.”',why:'It says term paper and coursework — not “published”. Honest.',whybn:'এটা টার্ম পেপার আর কোর্সওয়ার্ক — “প্রকাশিত” নয়। সৎ।'},
+ {id:'l3',look:[{f:'cv',m:'6.3,63.6,32,4.6',t:'Her CV — Academic projects'}],text:'Student research poster … (2025)',v:'ok',src:'Her old CV',quote:'“Student Research Poster: Youth Unemployment and Skills Development in Bangladesh (2025) — Economics Study Circle Student Research Forum”',why:'Matches her CV.',whybn:'তার CV-র সাথে মেলে।'},
+ {id:'l4',look:[{f:'rucei',m:'7.5,22.8,48,4.6;9.5,68.2,45,2.8',t:'RUCEI report — her role and the results'},{f:'cv',m:'6.3,41.3,29,2.7',t:'Her CV — Volunteer'}],text:'Led the Book Support project, which raised attendance from 68% to 86%',v:'chg',src:'RUCEI project report',quote:'Role: “Volunteer Tutor &amp; Organizing Team Member”. Attendance 68% → 86% is a result of the whole project.',why:'She was a tutor and team member, not the leader. The attendance result belongs to the whole team.',whybn:'সে টিউটর ও দলের সদস্য ছিল, নেতা নয়। উপস্থিতির ফল পুরো দলের।'},
+ {id:'l5',look:[{f:'rucei',m:'8,56,46,11.5',t:'RUCEI report — Key outputs'}],text:'Helped distribute 186 books to 62 students across 48 sessions',v:'ok',src:'RUCEI project report',quote:'Books distributed: 186 · Students enrolled: 62 · Tutoring sessions: 48 (15 Jan – 30 Apr 2025)',why:'The numbers match, and “helped” shows her real role.',whybn:'সংখ্যা মেলে, আর “helped” তার আসল ভূমিকা দেখায়।'},
+ {id:'l6',look:[{f:'ielts',m:'5.5,40,87,22',t:'IELTS mock report — scores'}],text:'IELTS mock: overall 6.0 — L 6.5, R 6.5, W 5.5, S 5.5',v:'ok',src:'IELTS mock report',quote:'Listening 6.5 · Reading 6.5 · Writing 5.5 · Speaking 5.5 · Overall 6.0 (test date 24 May 2025)',why:'Exactly the report. It also says “mock” — honest.',whybn:'রিপোর্টের সাথে হুবহু মেলে। “mock” কথাটাও আছে — সৎ।'},
+ {id:'l7',look:[{f:'cv',m:'49.2,85.8,17.5,2.7',t:'Her CV — Skills'}],text:'Excel, SPSS and Stata (advanced)',v:'chg',src:'Her old CV',quote:'“Software: MS Word, PowerPoint, Excel, Google Workspace, basic SPSS, basic Stata”',why:'Her CV says basic. “Advanced” changes the meaning — an interviewer could test it.',whybn:'তার CV-তে লেখা basic। “Advanced” অর্থ বদলে দেয় — ইন্টারভিউতে পরীক্ষা করতে পারে।'},
+ {id:'l8',look:[{f:'cv',t:'Her CV'},{f:'rucei',t:'RUCEI report'},{f:'ielts',t:'IELTS report'},{f:'shortlist',t:'Shortlist'}],text:'Student member, Bangladesh Economic Association',v:'none',src:'All four files',quote:'No file mentions this association.',why:'The AI invented it. Even a good prompt can’t stop every invention — that’s why you check.',whybn:'AI এটা বানিয়েছে। ভালো প্রম্পটও সব বানানো কথা থামাতে পারে না — তাই যাচাই করতে হয়।'}
 ];
 
 const FILE_WHY={
@@ -129,6 +129,7 @@ AFL.lesson({
  stages:[{id:'plan',label:'Plan',d:'del'},{id:'prompt',label:'Prompt',d:'des'},{id:'check',label:'Check',d:'dis'},{id:'fix',label:'Fix',d:'des'},{id:'finish',label:'Finish',d:'dil'}],
  beats:[
   {stage:'plan',open:true,scene:{app:'lock',notifs:[{app:'mail',title:'Research Intern — application update',text:'Dear Ayesha, thank you for applying. After careful review…',time:'9:12',hit:'n:mail'}]},
+   docs:['cv','ielts','rucei','shortlist'],
    say:'Meet Ayesha. Today you help her make an honest CV with AI.',bn:'আয়েশার সাথে পরিচয় করো। আজ তুমি AI দিয়ে তার একটা সৎ CV বানাতে সাহায্য করবে।',
    card:{type:'info',html:`<div class="who"><span class="av">A</span><div><b>Ayesha Rahman</b><span>3rd-year Economics · Rajshahi University</span></div></div><div class="facts"><span>CGPA 3.58</span><span>IELTS mock 6.0</span><span>Volunteer tutor</span></div>`,
      points:[{i:'🎯',en:'<b>Her goal:</b> a fully funded master’s in Development Economics.',bn:'তার লক্ষ্য: ডেভেলপমেন্ট ইকোনমিক্সে সম্পূর্ণ ফান্ডেড মাস্টার্স।'},{i:'📄',en:'<b>You will make:</b> a 2-page academic CV — every line true.',bn:'তুমি বানাবে: ২ পাতার একাডেমিক CV — প্রতিটি লাইন সত্য।'},{i:'🧭',en:'<b>Five steps:</b> Plan · Prompt · Check · Fix · Finish',bn:'পাঁচ ধাপ: পরিকল্পনা · প্রম্পট · যাচাই · সংশোধন · শেষ'}]}},
@@ -154,6 +155,7 @@ AFL.lesson({
    say:'Most students type something short, like this. Try it — tap send.',bn:'বেশিরভাগ শিক্ষার্থী এভাবে ছোট করে লেখে। চেষ্টা করো — send চাপো।'},
   {stage:'prompt',scene:{app:'sathi',msgs:[{role:'u',text:ASK_FIRST,atts:['cv']},{role:'a',html:WEAK,stream:true,id:'weak'}],composer:{text:''}},
    afterRender:(x,scr)=>{ if(!document.querySelector('[data-stream]')) scr.querySelectorAll('.flag').forEach(f=>f.classList.add('ln','v-bad')); },
+   docs:['cv','ielts','rucei'],
    say:x=>document.querySelector('[data-stream]')?'Sathi is answering…':'It looks impressive. But is it true?',bn:'দেখতে চমৎকার। কিন্তু এটা কি সত্য?',
    card:x=>({type:'html',html:`<div class="card"><h3>AI wrote vs. her documents${x.bn?'<span class="bn" lang="bn">AI যা লিখেছে বনাম তার কাগজপত্র</span>':''}</h3>
      <table style="width:100%;border-collapse:collapse;font-size:14px">${[['IELTS 7.0','IELTS mock: <b>6.0</b>'],['Led a team of 20 volunteers','<b>Volunteer tutor</b> in a team'],['Fluent English','English: <b>intermediate</b>'],['Published research','A <b>term paper</b> for a course']].map(r=>`<tr><td style="padding:6px;border-top:1px solid var(--rule);color:var(--clay-ink)">✗ ${r[0]}</td><td style="padding:6px;border-top:1px solid var(--rule)">${r[1]}</td></tr>`).join('')}</table>
@@ -181,8 +183,9 @@ AFL.lesson({
   {stage:'prompt',scene:x=>CHAT_SC(x,1),
    say:'This time Sathi asks first — because your prompt told it to.',bn:'এবার Sathi আগে প্রশ্ন করছে — কারণ তোমার প্রম্পট তাকে বলেছে।',
    card:{type:'html',html:`<div class="good">Asking before guessing is good AI behaviour. Your <b>Process</b> part (“If something is missing, ask me first”) made it happen.<span class="bn" lang="bn">অনুমান না করে প্রশ্ন করা — এটা ভালো আচরণ। তোমার Process অংশ এটা ঘটিয়েছে।</span></div>
-     <div class="note">Where can you find her graduation year? Her internship form says <b>Expected graduation: 2026</b>.<span class="bn" lang="bn">তার স্নাতক শেষের বছর কোথায় পাবে? ইন্টার্নশিপ ফর্মে লেখা: ২০২৬।</span></div>`}},
+     <div class="note">Answer from her documents, not from memory.<span class="bn" lang="bn">স্মৃতি থেকে নয়, কাগজপত্র দেখে উত্তর দাও।</span><div class="looks" style="margin-top:6px"><button class="look" data-view="bigd" data-mark="74,36.2,20,5">📄 Graduation year → her internship form</button><button class="look" data-view="cv" data-mark="7.7,59.9,37,2.7">📄 Term paper → her CV</button></div></div>`}},
   {stage:'prompt',scene:x=>Object.assign(CHAT_SC(x,1),{composer:{key:'cvAns',placeholder:'Reply to Sathi'},kb:{key:'cvAns',label:'ANSWERS',chips:ANS_CHIPS}}),tap:'send',
+   docs:['bigd','cv'],
    say:'Answer Sathi’s three questions — truthfully.',bn:'Sathi-এর তিনটা প্রশ্নের উত্তর দাও — সত্যি করে।',
    compose:{key:'cvAns',title:'Answer all three',titlebn:'তিনটারই উত্তর দাও',chips:ANS_CHIPS,best:['a1','a2','a3'],slots:[
      {label:'1 · Graduation',frame:'<em>I expect to graduate in</em> ___.',bn:'আমি ___ সালে স্নাতক শেষ করব বলে আশা করছি।',test:[/20\d\d|graduat/i]},
@@ -190,12 +193,14 @@ AFL.lesson({
      {label:'3 · Contact details',frame:'<em>I will add</em> ___ <em>myself.</em>',bn:'আমি নিজে ___ যোগ করব।',test:[/placeholder|myself/i]}]}},
   {stage:'check',scene:x=>CHAT_SC(x,3,{scrollTo:'[data-mid="draft"]'}),
    say:x=>document.querySelector('[data-stream]')?'Sathi is writing the draft…':'A draft! It looks good. Now check it.',bn:'একটা খসড়া! দেখতে ভালো। এবার যাচাই করো।',
-   sub:'Even good prompts don’t stop every mistake.',subbn:'ভালো প্রম্পটও সব ভুল থামাতে পারে না।'},
+   sub:'Even good prompts don’t stop every mistake.',subbn:'ভালো প্রম্পটও সব ভুল থামাতে পারে না।',docs:['cv','ielts','rucei','shortlist'],},
   {stage:'check',scene:x=>{const v=x.get('cvVerd',{}),sel=x.get('cvVerd_sel');return Object.assign(CHAT_SC(x,3,{scrollTo:'[data-mid="draft"]'}),{_v:v,_s:sel})},
    afterRender:(x,scr)=>{const v=x.get('cvVerd',{}),sel=x.get('cvVerd_sel');scr.querySelectorAll('.ln[data-ui]').forEach(el=>{const id=el.dataset.ui.slice(5);const l=LINES.find(z=>z.id===id);if(v[id])el.classList.add(l.v==='ok'?'v-ok':'v-bad');if(sel===id)el.classList.add('sel')});const s=scr.querySelector('.ln.sel');if(s)s.scrollIntoView({block:'center'})},
    say:'Check each line against her files.',bn:'প্রতিটি লাইন তার ফাইলের সাথে মিলিয়ে দেখো।',
-   check:{key:'cvVerd',lines:LINES,prompt:'Tap an underlined line in Sathi’s answer.',promptbn:'Sathi-এর উত্তরে দাগ দেওয়া একটা লাইনে চাপো।',done:'All 8 checked. Three lines need fixing: 4, 7 and 8.',donebn:'৮টাই যাচাই হয়েছে। ৪, ৭ আর ৮ নম্বর লাইন ঠিক করতে হবে।'}},
+   sub:'Tap a line. Then tap <b>Where to look</b> to open the right document. Decide only after you read it.',subbn:'একটা লাইনে চাপো। তারপর “Where to look” চেপে ঠিক কাগজটা খোলো। পড়ে তারপর সিদ্ধান্ত নাও।',docs:['cv','ielts','rucei','shortlist'],
+   check:{key:'cvVerd',lines:LINES,prompt:'Tap an underlined line in Sathi’s answer. You can also tap the files under Ayesha’s message to open them.',promptbn:'Sathi-এর উত্তরে দাগ দেওয়া একটা লাইনে চাপো। আয়েশার মেসেজের নিচের ফাইলেও চাপতে পারো।',done:'All 8 checked. Three lines need fixing: 4, 7 and 8.',donebn:'৮টাই যাচাই হয়েছে। ৪, ৭ আর ৮ নম্বর লাইন ঠিক করতে হবে।'}},
   {stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi'},kb:{key:'cvFix',label:'FIXES',chips:FIX_CHIPS}}),tap:'send',
+   docs:['cv','ielts','rucei','shortlist'],
    say:'Tell Sathi exactly what to fix.',bn:'Sathi-কে ঠিক কী ঠিক করতে হবে, স্পষ্ট করে বলো।',
    compose:{key:'cvFix',title:'Fix three lines',titlebn:'তিনটা লাইন ঠিক করো',chips:FIX_CHIPS,best:['f1','f2','f3'],ready:'Clear and exact. Send it.',readybn:'স্পষ্ট আর সুনির্দিষ্ট। পাঠাও।',slots:[
      {label:'Line 4 · her role',frame:'<em>I was a</em> ___. <em>I did not</em> ___.',bn:'আমি ছিলাম ___। আমি ___ করিনি।',test:[/did not lead|didn'?t lead|not the leader|team member/i]},

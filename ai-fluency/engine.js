@@ -145,7 +145,7 @@ APPS.mail=sc=>{
 /* --- Sathi: a chat assistant, in the shape every AI chat app shares --- */
 function composer(sc,dark){
   const c=sc.composer||{}; const x=ctx(); const val=c.key?(x.get(c.key,c.prefill||'')):(c.text||'');
-  const atts=(c.atts||[]).map(id=>`<span class="att">${fileThumb(id)}<span>${esc(FILES[id].name)}</span></span>`).join('');
+  const atts=(c.atts||[]).map(id=>`<span class="att" data-view="${id}">${fileThumb(id)}<span>${esc(FILES[id].name)}</span></span>`).join('');
   return `<div class="composer" ${c.hit?'':''}>${atts?`<div class="pend">${atts}</div>`:''}
    <div class="row"><button class="mi" ${c.attHit?`data-hit="${c.attHit}"`:''} aria-label="Add files">${ico('plus')}</button>
    <textarea id="cmp" rows="1" inputmode="none" placeholder="${esc(c.placeholder||'Ask Sathi')}" ${c.key?`data-key="${c.key}"`:'readonly'}>${esc(val)}</textarea>
@@ -155,7 +155,7 @@ function aiMsg(m,dark){
   return `<div class="msg-a" data-mid="${m.id||''}"><span class="spark">${ico('spark')}</span><div class="tx" ${m.stream?'data-stream="1"':''}>${m.html}</div></div>${m.actions!==false&&!m.thinking?`<div class="actions-row"><button class="mi">${ico('thumb')}</button><button class="mi">${ico('copy')}</button><button class="mi">${ico('share')}</button><button class="mi" ${m.moreHit?`data-hit="${m.moreHit}"`:''} aria-label="More">${ico('more')}</button></div>`:''}`;
 }
 function uMsg(m){
-  const atts=(m.atts||[]).length?`<div class="att-row">${m.atts.map(id=>`<span class="att">${fileThumb(id)}<span>${esc(FILES[id].name)}</span></span>`).join('')}</div>`:'';
+  const atts=(m.atts||[]).length?`<div class="att-row">${m.atts.map(id=>`<span class="att" data-view="${id}" role="button" title="Open">${fileThumb(id)}<span>${esc(FILES[id].name)}</span></span>`).join('')}</div>`:'';
   return `${atts}<div class="msg-u">${esc(m.text)}</div>`;
 }
 APPS.sathi=sc=>{
@@ -299,6 +299,7 @@ function renderCoach(){
   if(b.check) h+=checkCard(x,b);
   if(b.decide) h+=decideCard(x,b);
   if(b.card) h+=cardHTML(fn(b.card,x),x);
+  const docs=fn(b.docs,x); if(docs&&docs.length) h+=docStrip(docs);
   body.innerHTML=h; body.scrollTop=0;
   // open as an overlay sheet on phones when the beat is a "think" moment
   coach.classList.toggle('open',!!b.open);
@@ -368,12 +369,40 @@ function composeChanged(){ const x=ctx(); if(x.beat&&x.beat.compose){ const keep
 function refreshSend(){ const x=ctx(); const b=x.beat; if(!b.compose) return; renderPhoneKeepFocus(); }
 function renderPhoneKeepFocus(){ const ta=$('#cmp'); const pos=ta?ta.selectionStart:null; const had=document.activeElement===ta; renderPhone(false); const t2=$('#cmp'); if(t2&&had){t2.focus(); if(pos!=null) t2.setSelectionRange(t2.value.length,t2.value.length)} }
 function refreshChips(){}
+function lookButtons(l){
+  if(!l.look) return '';
+  return `<div class="looks"><span>${S.bn?'কোথায় দেখবে:':'Where to look:'}</span>${l.look.map(k=>`<button class="look" data-view="${k.f}" ${k.m?`data-mark="${k.m}"`:''}>📄 ${esc(k.t||FILES[k.f].name)}</button>`).join('')}</div>`;
+}
+function docStrip(ids){
+  return `<div class="docstrip"><b>📁 ${S.bn?'আয়েশার কাগজপত্র — খুলতে চাপো':'Ayesha’s documents — tap to open'}</b><div>${ids.map(id=>`<button data-view="${id}">${fileThumb(id)}<span>${esc(FILES[id].name.replace(/_/g,' ').replace(/\.(pdf|jpg)$/,''))}</span></button>`).join('')}</div></div>`;
+}
+/* ---- document viewer: opens over whatever the phone shows, like tapping an attachment ---- */
+let VIEW=null;
+function openView(id,mark){
+  const f=FILES[id]; if(!f||!f.img) return;
+  const marks=(mark||'').split(';').filter(Boolean).map(m=>m.split(',').map(Number));
+  VIEW={id,marks,zoom:1};
+  if(marks.length){ const w=Math.max(...marks.map(m=>m[0]+m[2]))-Math.min(...marks.map(m=>m[0])); VIEW.zoom=Math.min(3,Math.max(1.6,92/w)); }
+  const v=$('#viewer'); v.hidden=false;
+  v.innerHTML=`<div class="tab"><button class="mi" data-vclose="1" aria-label="Close">${ico('back')}</button><h1>${esc(f.name)}</h1><button class="mi" data-vzoom="-1" aria-label="Zoom out">−</button><button class="mi" data-vzoom="1" aria-label="Zoom in">+</button></div>
+   <div class="vscroll"><div class="vpage"><img src="${f.img}" alt="${esc(f.name)}">${marks.map(m=>`<i class="vmark" style="left:${m[0]}%;top:${m[1]}%;width:${m[2]}%;height:${m[3]}%"></i>`).join('')}</div></div>
+   <div class="vhint">${marks.length?(S.bn?'সোনালি দাগের জায়গাটা পড়ো':'Read the part inside the gold box'):(S.bn?'বড় করতে + চাপো':'Tap + to zoom in')}</div>`;
+  applyZoom(true);
+  if(innerWidth<900) $('#coach').classList.remove('open');
+}
+function applyZoom(center){
+  const v=$('#viewer'); const pg=$('.vpage',v); const sc=$('.vscroll',v); pg.style.width=(VIEW.zoom*100)+'%';
+  if(!center||!VIEW.marks.length) return;
+  const go=()=>{const m=VIEW.marks[0]; const x=Math.min(...VIEW.marks.map(z=>z[0])); sc.scrollLeft=pg.offsetWidth*x/100-12; sc.scrollTop=pg.offsetHeight*m[1]/100-sc.clientHeight*0.3;};
+  const img=$('img',pg); if(img.complete) go(); else img.addEventListener('load',go,{once:true});
+}
+function closeView(){ VIEW=null; const v=$('#viewer'); if(v){v.hidden=true;v.innerHTML='';} if(S.lesson){const b=LESSONS[S.lesson].beats[S.beat]; if(b&&b.open&&innerWidth<900) $('#coach').classList.add('open');} }
 function checkCard(x,b){
   const c=b.check; const v=x.get(c.key,{}); const sel=x.get(c.key+'_sel');
   const L=c.lines; const doneN=Object.keys(v).length;
   let h=`<div class="tally">${L.map((l,i)=>`<span class="${v[l.id]?'done':''}">${i+1}</span>`).join('')}</div>`;
   if(sel){ const l=L.find(z=>z.id===sel); const mine=v[sel];
-    h+=`<div class="card" style="padding:10px"><p style="font-weight:700;margin:0 0 4px">“${l.text}”</p>
+    h+=`<div class="card" style="padding:10px"><p style="font-weight:700;margin:0 0 4px">“${l.text}”</p>${lookButtons(l)}
      <div class="verd">${[['ok','✓','True to her documents','তথ্যের সাথে মেলে'],['chg','≈','Changed the meaning','অর্থ বদলে গেছে'],['none','✗','No evidence','কোনো প্রমাণ নেই']].map(([k,i,t,tb])=>`<button class="${mine===k?'pick'+(k===l.v?'':' wrong'):''}" data-verd="${c.key}|${sel}|${k}"><i>${i}</i>${t}${S.bn?`<span class="bn" lang="bn" style="font-size:11px">${tb}</span>`:''}</button>`).join('')}</div>
      ${mine?`<div class="why ${mine===l.v?'':'no'}"><b>${mine===l.v?'Yes.':'Look again.'}</b> ${l.why}${l.whybn?`<span class="bn" lang="bn">${l.whybn}</span>`:''}</div><div class="quote"><small>${esc(l.src)}</small>${l.quote}</div>`:''}</div>`;
   } else h+=`<div class="note">${c.prompt||'Tap a highlighted line in the AI answer.'}${c.promptbn?`<span class="bn" lang="bn">${c.promptbn}</span>`:''}</div>`;
@@ -393,6 +422,7 @@ function decideCard(x,b){
 function go(i,anim=true){
   const L=LESSONS[S.lesson]; if(!L) return;
   if(S.finishStream) S.finishStream();
+  if(VIEW) closeView();
   S.beat=Math.max(0,Math.min(L.beats.length-1,i)); save();
   const x=ctx(); if(x.beat.enter) x.beat.enter(x);
   renderPhone(anim); renderCoach();
@@ -412,7 +442,10 @@ function renderHubPhone(){
 
 /* ------------------------------------------------------------- input on the phone */
 function onPhoneClick(e){
-  if(ghostBusy&&!e.isTrusted) {}
+  const vc=e.target.closest('[data-vclose]'); if(vc){closeView();return}
+  const vz=e.target.closest('[data-vzoom]'); if(vz){VIEW.zoom=Math.max(1,Math.min(4,VIEW.zoom+(+vz.dataset.vzoom)*0.5));applyZoom(false);return}
+  if(e.target.closest('#viewer')) return;
+  const dv=e.target.closest('[data-view]'); if(dv){openView(dv.dataset.view,dv.dataset.mark);return}
   const x=S.lesson?ctx():null;
   const sys=e.target.closest('[data-sys]');
   const ui=e.target.closest('[data-ui]');
@@ -441,7 +474,7 @@ function handleUI(id,el,x){
   if(kind==='chip'){ toggleChip(arg,x); return; }
   if(kind==='pick'){ const sc=fn(b.scene,x); const sel=x.get(sc.sel,[]).slice(); const k=sel.indexOf(arg); if(k>=0)sel.splice(k,1); else sel.push(arg); x.set(sc.sel,sel); renderPhone(false); renderCoach(); return; }
   if(kind==='opt'&&b.decide){ const d=fn(b.decide,x); x.set(d.key,arg); if(d.onPick) d.onPick(x,arg); renderPhone(false); renderCoach(); if(innerWidth<900) $('#cbody').scrollTop=$('#cbody').scrollHeight; return; }
-  if(kind==='line'&&b.check){ x.set(b.check.key+'_sel',arg); renderPhone(false); renderCoach(); return; }
+  if(kind==='line'&&b.check){ x.set(b.check.key+'_sel',arg); renderPhone(false); renderCoach(); const lk=$('#cbody .looks'); if(lk&&innerWidth<900){const cb=$('#cbody'); cb.scrollTop=lk.offsetTop-cb.offsetTop-70;} return; }
   if(b.onUi&&b.onUi(x,kind,arg,el)!==false) return;
   if(x.L.onUi) x.L.onUi(x,kind,arg,el);
 }
@@ -462,6 +495,7 @@ function renderCoachKeep(){ const k=$('#cbody').scrollTop; renderCoach(); $('#cb
 
 /* ------------------------------------------------------------- coach clicks */
 function onCoachClick(e){
+  const dv=e.target.closest('[data-view]'); if(dv){openView(dv.dataset.view,dv.dataset.mark);return}
   const c=e.target.closest('[data-c]'); const st=e.target.closest('[data-start]');
   if(st){ start(st.dataset.start); return; }
   if(c){ const a=c.dataset.c; if(a==='next')next(); else if(a==='back')back(); else if(a==='show')showMe(); else if(a==='menu')openMenu(); return; }
@@ -565,5 +599,5 @@ function boot(){
   if(!fromHash()){ if(S.lesson&&LESSONS[S.lesson]) go(S.beat,false); else hub(); }
 }
 
-window.AFL={boot,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,next,ctx,renderPhone:()=>renderPhone(false),renderCoach,start,hub,STORY_DATE};
+window.AFL={boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,next,ctx,renderPhone:()=>renderPhone(false),renderCoach,start,hub,STORY_DATE};
 })();
