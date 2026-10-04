@@ -323,7 +323,7 @@ function hubCoach(){
    <div class="card"><div class="who"><span class="av">A</span><div><b>Ayesha Rahman</b><span>3rd-year Economics · Rajshahi University</span></div></div>
    <div class="facts"><span>CGPA 3.58</span><span>IELTS mock 6.0</span><span>RUCEI volunteer tutor</span><span>Goal: fully funded master's</span></div></div>
    <p class="sub">Pick one message on her phone — or here.${S.bn?'':''}<span class="bn" lang="bn">ফোনে একটা মেসেজ বেছে নাও — অথবা এখানে।</span></p>
-   <button class="pcard" data-c="intro" style="margin-top:10px;width:100%;border-color:var(--gold);background:var(--gold-soft)"><span class="pi" style="background:var(--forest);color:var(--gold-light)">▶</span><span><em>Start here · projector</em><b>Watch: the four Ds</b><span>A 2-minute animation. Delegation, Description, Discernment, Diligence.</span><span class="bn" lang="bn">২ মিনিটের অ্যানিমেশন: চারটা D।</span></span></button>
+   <button class="pcard" data-c="intro" style="margin-top:10px;width:100%;border-color:var(--gold);background:var(--gold-soft)"><span class="pi" style="background:var(--forest);color:var(--gold-light)">▶</span><span><em>Start here · projector</em><b>Watch: the four Ds</b><span>A 2-minute animation: the four Ds as two interlocking loops.</span><span class="bn" lang="bn">২ মিনিটের অ্যানিমেশন: চারটা D, দুটো জোড়া চক্র।</span></span></button>
    <div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard" data-start="${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${esc(L.blurb)}</span>${L.blurbbn?`<span class="bn" lang="bn">${L.blurbbn}</span>`:''}</span>${done(id)?'<span class="done">✓ Done</span>':''}</button>`}).join('')}</div>
    <div class="card"><h3>Two layers</h3><ul class="plist">
      <li><span class="ic">📱</span><span><b>Below:</b> the phone. It works like a real Android phone.<span class="bn" lang="bn">নিচে: ফোন। এটা আসল অ্যান্ড্রয়েড ফোনের মতো কাজ করে।</span></span></li>
@@ -547,7 +547,7 @@ function openMenu(){
    <h3>For the teacher</h3>
    <p>Each workflow is one class period (35–45 min). Students work in pairs on one phone: one taps, one reads the coach aloud. Swap at every stage.</p>
    <p>The four Ds (Delegation, Description, Discernment, Diligence) come from the AI Fluency framework by Rick Dakan, Joseph Feller and Anthropic. Each stage is coloured by the D it practises.</p>
-   <p>Start the class with <b>The four Ds</b> animation on the projector (about 2 minutes; Space pauses, → skips, B shows Bangla, speed 0.75× for slower readers). Pause on each D and ask: “Where did you see this on Ayesha’s phone?”</p>
+   <p>Start the class with <b>The four Ds</b> animation on the projector (about 2 minutes; Space pauses, → skips, B shows Bangla, speed 0.75× for slower readers). Pause on each loop and ask: “What would you ask before using AI for your own assignment?” The film teaches the theory only — the phone workflows are where students apply it.</p>
    <p>Nothing is locked. “Show me” plays any step, so you can demonstrate on the projector, then let pairs repeat it.</p>
    <p>The AI replies are scripted. They copy what real AI assistants do with prompts like these — including the mistakes students must learn to catch. No data leaves the phone and no account is needed.</p>
    <p>Students without a phone: use the Paper version (one A4 page per workflow).</p>

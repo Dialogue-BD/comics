@@ -1,5 +1,6 @@
 /* The 4Ds — onboarding motion graphic for the projector.
- * One 1920×1080 stage, eight scenes, told through Ayesha's CV.
+ * One 1920×1080 stage, seven scenes: the two interlocking loops of the
+ * AI Fluency framework (Delegation–Diligence, Description–Discernment).
  * Every movement is a Web Animation built from data-a attributes, so the
  * whole film is a pure function of (scene, t): the projector player runs it
  * live, and the video renderer seeks it frame by frame (INTRO.seek).
@@ -38,118 +39,121 @@ const chip=(n,name,q,col,colT,t)=>`<div class="chip" style="--c:${col};--ct:${co
  * data-a="anim start [duration]"   data-fly="dx,dy" for fly-ins
  * ring: [[t,x,y],…] the gold eye's path (centre point, stage px)
  */
+/* geometry helpers: a stadium-shaped loop (rounded rectangle with semicircle ends) */
+const stad=(x,y,w,h)=>{const r=h/2;return `M${x+r} ${y} H${x+w-r} A${r} ${r} 0 0 1 ${x+w-r} ${y+h} H${x+r} A${r} ${r} 0 0 1 ${x+r} ${y} Z`};
+const arrowHead=(x,y,deg,col)=>`<path d="M0 -18 L30 0 L0 18 Z" fill="${col}" transform="translate(${x} ${y}) rotate(${deg})"/>`;
+const node=(x,y,label,col,colT,t,sub)=>`<div class="node" style="left:${x-130}px;top:${y-130}px;--c:${col};--ct:${colT}" data-a="pop ${t}"><b>${label}</b>${sub?`<small>${sub}</small>`:''}</div>`;
+const q=(x,y,txt,col,t,w)=>`<div class="qchip" style="left:${x}px;top:${y}px;--c:${col};${w?`width:${w}px`:''}" data-a="left ${t}">${txt}</div>`;
+const pill=(x,y,txt,t,cls='')=>`<div class="arcl ${cls}" style="left:${x}px;top:${y}px" data-a="pop ${t}">${txt}</div>`;
+/* the two interlocking links used in scenes 5–7 */
+const LINKS=(opts={})=>{const L=stad(150,250,1000,440), R=stad(770,370,1000,440);
+ return `<svg class="ln" viewBox="0 0 ${W} ${H}"><defs>
+  <linearGradient id="gL" x1="0" y1="0" x2="0" y2="1"><stop offset=".48" stop-color="${C.del}"/><stop offset=".52" stop-color="${C.dil}"/></linearGradient>
+  <linearGradient id="gR" x1="0" y1="0" x2="0" y2="1"><stop offset=".48" stop-color="${C.des}"/><stop offset=".52" stop-color="${C.dis}"/></linearGradient></defs>
+  <path d="${L}" pathLength="1" stroke="url(#gL)" stroke-width="30" fill="none" stroke-dasharray="1" ${opts.faint?'opacity=".22"':''} data-a="draw ${opts.t1||0.4} 1.4"/>
+  <path d="M1075 370 H1180" stroke="#F4F1E6" stroke-width="46" fill="none" ${opts.faint?'opacity=".22"':''} data-a="fade ${opts.t2||1.2} .2"/>
+  <path d="${R}" pathLength="1" stroke="url(#gR)" stroke-width="30" fill="none" stroke-dasharray="1" ${opts.faint?'opacity=".22"':''} data-a="draw ${opts.t2||1.2} 1.4"/>
+  <g ${opts.faint?'opacity=".22"':''} data-a="fade ${(opts.t2||1.2)+1.3} .3"><path d="M768 690 H822" stroke="#F4F1E6" stroke-width="46" fill="none"/><path d="M745 690 H845" stroke="${C.dil}" stroke-width="30" fill="none" stroke-linecap="butt"/></g>
+ </svg>`};
+
+/* ---------- scenes ----------
+ * dur: seconds at a slow reading pace (the projector default).
+ * caps: [t, English, Bangla] — the narration, word for word.
+ * data-a="anim start [duration]"   data-fly="dx,dy" for fly-ins
+ * ring: [[t,x,y],…] the gold eye's path (centre point, stage px)
+ */
 const SCENES=[
-{id:'hook',dur:16,
- caps:[[0,'Ayesha asked AI: “Make my CV better.”','আয়েশা AI-কে বলল: “আমার CV আরও ভালো করো।”'],
-       [3.6,'In seconds, it looked amazing.','কয়েক সেকেন্ডেই দারুণ দেখাল।'],
-       [6.8,'But it said her IELTS score was 7.0. Her real score is 6.0.','কিন্তু লিখল তার IELTS ৭.০। তার আসল স্কোর ৬.০।'],
-       [12,'Is that AI fluency?','একে কি AI-তে দক্ষতা বলে?']],
- ring:[[6.6,1700,140],[7.6,600,348],[9.2,600,348],[10.2,1360,640],[11.6,1360,640]],
- html:`<div class="ayw" style="left:110px;top:300px" data-a="up 0">${AYESHA}</div>
- ${phone(`<div class="bub-u" data-a="pop .5">make my cv better</div>
-   <div class="bub-a" data-a="up 2.2"><div class="sp">${SPARK}</div><div>
-     <p class="t" data-a="fade 2.6">AYESHA RAHMAN ✨</p>
-     <p data-a="fade 3.0">Fluent English</p>
-     <p data-a="fade 3.3">Led a team of 20 volunteers</p>
-     <p class="hi" data-a="fade 3.6">IELTS Academic: 7.0</p>
-     <p data-a="fade 3.9">Published research</p>
-     <p class="em" data-a="pop 4.4">You’ve got this! 🚀</p></div></div>`,370,110,'data-a="up .1"')}
- <div class="doc" style="left:1130px;top:300px;width:460px" data-a="right 5.6"><div class="doc-h">IELTS mock report</div>
-   <div class="row"><span>Listening</span><b>6.5</b></div><div class="row"><span>Reading</span><b>6.5</b></div><div class="row"><span>Writing</span><b>5.5</b></div><div class="row"><span>Speaking</span><b>5.5</b></div>
-   <div class="row tot"><span>Overall</span><b>6.0</b></div></div>
- <svg class="ln" viewBox="0 0 ${W} ${H}"><path d="M690 348 C900 360 1120 560 1300 640" pathLength="1" stroke="${C.gold}" stroke-width="7" fill="none" stroke-dasharray="1" data-a="draw 8.2 1.6"/></svg>
- <div class="stamp" style="left:700px;top:290px" data-a="stamp 9.6">✗</div>
- <div class="dim" data-a="fade 11.7 .5"></div><div class="bigq" data-a="pop 12">Is that AI fluency?</div>`},
+{id:'fluency',dur:17,
+ caps:[[0,'Many people use AI. Fewer people are fluent with it.','অনেকেই AI ব্যবহার করে। দক্ষভাবে ব্যবহার করে কম মানুষ।'],
+       [5,'AI fluency means working with AI in a way that is effective, efficient, ethical and safe.','AI-তে দক্ষতা মানে AI-এর সাথে এমনভাবে কাজ করা যা কার্যকর, দ্রুত, নৈতিক আর নিরাপদ।'],
+       [12,'And it always keeps you, the human, in the loop.','আর এতে সবসময় তুমি, মানুষটি, নিয়ন্ত্রণে থাকো।']],
+ ring:[[12.4,1300,480],[13.6,1060,560],[14.8,1300,480],[16.4,1300,480]],
+ html:`<div class="col" style="left:150px;top:200px" data-a="left .2"><div class="colh">Using AI</div></div>
+ <div class="ayw" style="left:180px;top:330px;width:200px" data-a="up .5">${AYESHA}</div>
+ <div class="btnx" style="left:420px;top:450px" data-a="pop 1.2">▶ Go</div>
+ <div class="outfly" style="left:600px;top:440px" data-a="right 1.8">${SPARK}<span>?</span></div>
+ <div class="mute" style="left:180px;top:640px;position:absolute;width:600px" data-a="fade 2.4">Ask once. Copy. Hope it’s right.</div>
+ <div class="col" style="left:1000px;top:200px" data-a="right 3.2"><div class="colh" style="color:${C.forest}">AI fluency</div></div>
+ <div class="ayw" style="left:1200px;top:330px;width:200px" data-a="up 3.6">${AYESHA}</div>
+ <div class="you sp2b" style="left:1010px;top:500px" data-a="pop 4">${SPARK}</div>
+ <div class="adjs" data-a="fade 5.2"><span data-a="pop 6">effective</span><span data-a="pop 7">efficient</span><span data-a="pop 8">ethical</span><span data-a="pop 9">safe</span></div>
+ <div class="hitl" data-a="pop 13">human in the loop</div>`},
 
-{id:'two',dur:10,
- caps:[[0,'Using AI is easy.','AI ব্যবহার করা সহজ।'],[3,'Being fluent with AI takes four habits: the four Ds.','কিন্তু AI-তে দক্ষ হতে চারটা অভ্যাস লাগে: চারটা D।']],
- ring:[[6.6,1500,570],[9.6,1500,570]],
- html:`<div class="col" style="left:180px" data-a="left .2"><div class="colh">Using AI</div>
-   <div class="flow"><span>type</span><i>→</i><span>copy</span><i>→</i><span>send</span></div><div class="mute">Fast. But who checked it?</div></div>
- <div class="col" style="left:1020px" data-a="right 2.6"><div class="colh" style="color:${C.forest}">Fluent with AI</div></div>
- <div class="d4" style="left:1210px;top:380px">
-   <div class="dd" style="--c:${C.del};left:0;top:0" data-a="pop 4.0">Delegation</div>
-   <div class="dd" style="--c:${C.des};left:310px;top:0" data-a="pop 4.5">Description</div>
-   <div class="dd" style="--c:${C.dis};left:0;top:230px" data-a="pop 5.0">Discernment</div>
-   <div class="dd" style="--c:${C.dil};left:310px;top:230px" data-a="pop 5.5">Diligence</div></div>
- <div class="you" style="left:1435px;top:505px" data-a="pop 6.4">${PERSON}</div>`},
+{id:'pairs',dur:14,
+ caps:[[0,'AI fluency has four parts: the four Ds.','AI-তে দক্ষতার চারটা অংশ: চারটা D।'],
+       [3.6,'Delegation. Description. Discernment. Diligence.','Delegation। Description। Discernment। Diligence।'],
+       [8,'They work in two pairs. Each pair is a loop.','এরা দুই জোড়ায় কাজ করে। প্রতিটি জোড়া একটা চক্র।']],
+ ring:[[10.4,600,500],[11.4,1320,500],[13,1320,500]],
+ html:`<div class="tile4" style="--c:${C.del};--ct:${C.delT};left:340px;top:310px" data-fly="40,0" data-a="fade 3.6|move 8.2 1.2">Delegation</div>
+ <div class="tile4" style="--c:${C.des};--ct:${C.desT};left:1060px;top:310px" data-fly="-40,0" data-a="fade 4.3|move 8.2 1.2">Description</div>
+ <div class="tile4" style="--c:${C.dil};--ct:${C.dilT};left:340px;top:560px" data-fly="680,0" data-a="fade 5.6|move 8.2 1.2">Diligence</div>
+ <div class="tile4" style="--c:${C.dis};--ct:${C.disT};left:1060px;top:560px;z-index:4" data-fly="-680,0" data-a="fade 5|move 8.2 1.2">Discernment</div>
+ <svg class="ln" viewBox="0 0 ${W} ${H}">
+  <path d="${stad(230,240,740,520)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" data-a="draw 9.6 1.2"/>
+  <path d="${stad(950,240,740,520)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" data-a="draw 10.4 1.2"/></svg>
+ ${pill(510,215,'Loop 1',11.4)}${pill(1230,215,'Loop 2',11.8)}`},
 
-{id:'delegation',dur:15,
- caps:[[0,'First, Delegation: decide who does what.','প্রথম, Delegation: কে কোন কাজ করবে ঠিক করো।'],
-       [4.6,'Ayesha keeps the facts. The AI can do the layout.','তথ্য আয়েশার কাছে থাকবে। লেআউট AI করতে পারে।'],
-       [10,'Some jobs, they share.','কিছু কাজ দুজনে মিলে।']],
- ring:[[3.4,960,230],[4.6,380,470],[6.4,960,230],[7.6,1540,470],[9.2,960,230],[10.4,960,470],[11.4,960,230],[12.6,380,560],[14,380,560]],
- html:`${chip('1','Delegation','Who does what?',C.del,C.delT,.2)}
- <div class="tray" style="left:160px" data-a="up .8"><div class="tray-h">${AYESHA}<b>Ayesha</b></div></div>
- <div class="tray" style="left:740px" data-a="up 1.0"><div class="tray-h"><span class="tico" style="background:${C.del}">${PERSON}</span><span class="tplus">+</span><span class="tico sp2">${SPARK}</span><b>Together</b></div></div>
- <div class="tray" style="left:1320px" data-a="up 1.2"><div class="tray-h"><span class="tico sp2">${SPARK}</span><b>AI</b></div></div>
- <div class="task" style="left:190px;top:430px" data-fly="580,-240" data-a="fly 3.6 1.1">Her true facts</div>
- <div class="task" style="left:1350px;top:430px" data-fly="-580,-240" data-a="fly 6.6 1.1">Layout &amp; headings</div>
- <div class="task" style="left:770px;top:430px" data-fly="0,-240" data-a="fly 9.4 1.1">What matters for her goal</div>
- <div class="task" style="left:190px;top:540px" data-fly="580,-350" data-a="fly 11.6 1.1">Check every line</div>`},
+{id:'loop1',dur:26,
+ caps:[[0,'The first loop is Delegation and Diligence: the big decisions.','প্রথম চক্র: Delegation আর Diligence — বড় সিদ্ধান্তগুলো।'],
+       [5,'Delegation asks: What am I trying to do? Which AI tool fits? Who does what?','Delegation জিজ্ঞেস করে: আমি কী করতে চাই? কোন AI টুল মানানসই? কে কোন কাজ করবে?'],
+       [12.5,'Diligence asks: Is this safe and fair? Who needs to know AI helped? Who is responsible for the result?','Diligence জিজ্ঞেস করে: এটা কি নিরাপদ ও ন্যায্য? AI সাহায্য করেছে — কাকে জানাতে হবে? ফলাফলের দায় কার?'],
+       [20.5,'Each answer changes the other.','একটার উত্তর অন্যটাকে বদলে দেয়।']],
+ ring:[[20.6,330,515],[21.4,960,190],[22.2,1590,515],[23,960,840],[23.8,330,515],[25.6,330,515]],
+ html:`<div class="ltitle" style="--c:${C.del}" data-a="left .2">Loop 1 · <b>the big decisions</b></div>
+ <svg class="ln" viewBox="0 0 ${W} ${H}">
+  <path d="${stad(330,190,1260,650)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" opacity=".85" data-a="draw .6 1.6"/>
+  <g data-a="fade 20.6 .4">${arrowHead(1000,190,0,C.ink)}${arrowHead(920,840,180,C.ink)}</g></svg>
+ ${node(330,515,'Delegation',C.del,C.delT,1.4,'plan')}${node(1590,515,'Diligence',C.dil,C.dilT,2.2,'responsibility')}
+ ${q(500,340,'What am I trying to do?',C.del,6)}${q(500,450,'Which AI tool fits?',C.del,8)}${q(500,560,'Who does what — me, AI, or both?',C.del,9.8)}
+ ${q(1000,340,'Is it safe and fair?',C.dil,13.5)}${q(1000,450,'Who needs to know AI helped?',C.dil,15.6)}${q(1000,560,'Who is responsible for the result?',C.dil,17.8)}
+ ${pill(820,160,'decisions raise questions →',20.8)}${pill(800,810,'← answers change the plan',22.4)}`},
 
-{id:'description',dur:15,
- caps:[[0,'Second, Description: tell the AI clearly.','দ্বিতীয়, Description: AI-কে স্পষ্ট করে বলো।'],
-       [4.2,'Who you are. What you need. How to work. How to behave.','তুমি কে। তোমার কী দরকার। কীভাবে কাজ করবে। কেমন আচরণ করবে।']],
- ring:[[4,520,360],[5.6,520,360],[6.4,1400,360],[8,1400,360],[8.8,520,640],[10.4,520,640],[11.2,1400,640],[12.8,1400,640]],
- html:`${chip('2','Description','Tell it clearly',C.des,C.desT,.2)}
- <div class="prompt" data-a="pop 1.2"><div class="ph-lbl">Ayesha’s prompt</div></div>
- <div class="blk" style="left:330px;top:300px;--c:${C.des}" data-fly="-500,0" data-a="fly 4.2 .9"><b>Context</b>I am a third-year Economics student.</div>
- <div class="blk" style="left:1010px;top:300px;--c:${C.des}" data-fly="500,0" data-a="fly 6.0 .9"><b>Product</b>Make a 2-page academic CV.</div>
- <div class="blk" style="left:330px;top:580px;--c:${C.des}" data-fly="-500,0" data-a="fly 8.4 .9"><b>Process</b>Use only my files. Ask me first.</div>
- <div class="blk" style="left:1010px;top:580px;--c:${C.des}" data-fly="500,0" data-a="fly 10.8 .9"><b>Performance</b>Be an honest editor.</div>
- <div class="send" data-a="pop 13">➤</div>`},
+{id:'loop2',dur:24,
+ caps:[[0,'The second loop is Description and Discernment: the conversation.','দ্বিতীয় চক্র: Description আর Discernment — কথোপকথন।'],
+       [5.5,'Description: say what you want, how to work, and how the AI should behave.','Description: বলো তুমি কী চাও, কীভাবে কাজ হবে, আর AI কেমন আচরণ করবে।'],
+       [12.5,'Discernment: judge what comes back. Then describe again, better.','Discernment: যা ফিরে আসে তা বিচার করো। তারপর আবার, আরও ভালো করে বলো।'],
+       [19,'It is a conversation, not a command.','এটা কথোপকথন, আদেশ নয়।']],
+ ring:[[12.8,1590,515],[14,960,840],[15.2,330,515],[16.4,960,190],[17.6,1590,515],[18.8,960,840],[20,330,515],[23.6,330,515]],
+ html:`<div class="ltitle" style="--c:${C.des}" data-a="left .2">Loop 2 · <b>the conversation</b></div>
+ <svg class="ln" viewBox="0 0 ${W} ${H}">
+  <path d="${stad(330,190,1260,650)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" opacity=".85" data-a="draw .6 1.6"/>
+  <g data-a="fade 13 .4">${arrowHead(1000,190,0,C.ink)}${arrowHead(920,840,180,C.ink)}</g></svg>
+ ${node(330,515,'Description',C.des,C.desT,1.4,'say it')}${node(1590,515,'Discernment',C.dis,C.disT,2.2,'judge it')}
+ ${q(500,340,'<b>Product</b> — what I want',C.des,6.2,380)}${q(500,450,'<b>Process</b> — how to work',C.des,7.6,380)}${q(500,560,'<b>Performance</b> — how to behave',C.des,9,380)}
+ ${q(1040,340,'Is the product good?',C.dis,13.2,380)}${q(1040,450,'Was the process sound?',C.dis,14.4,380)}${q(1040,560,'Did it behave well?',C.dis,15.6,380)}
+ <div class="cmd" data-a="pop 19.2">command ✗</div><div class="conv" data-a="pop 20.2"><span>💬</span><span>💬</span><span>💬</span> conversation ✓</div>`},
 
-{id:'discernment',dur:15,
- caps:[[0,'Third, Discernment: check what comes back.','তৃতীয়, Discernment: যা ফিরে আসে তা যাচাই করো।'],
-       [4.4,'Line by line, against the real documents.','লাইন ধরে ধরে, আসল কাগজপত্রের সাথে মিলিয়ে।']],
- ring:[[3.6,720,330],[5,720,330],[5.6,720,450],[6.6,1390,420],[8.4,1390,420],[9.2,720,570],[10.2,720,570],[10.8,720,690],[11.8,1390,640],[13.6,1390,640]],
- html:`${chip('3','Discernment','Check what comes back',C.dis,C.disT,.2)}
- <div class="draft" data-a="left .8"><div class="dh"><span class="sp">${SPARK}</span>AI draft</div>
-   <div class="dl" style="top:90px">CGPA 3.58 / 4.00<i class="ok" data-a="pop 5">✓</i></div>
-   <div class="dl" style="top:210px">Led the Book Support project<i class="bad" data-a="pop 8.4">≈</i><s data-a="fade 8.6"></s></div>
-   <div class="dl" style="top:330px">186 books to 62 students<i class="ok" data-a="pop 10.2">✓</i></div>
-   <div class="dl" style="top:450px">SPSS and Stata (advanced)<i class="bad" data-a="pop 12.6">✗</i><s data-a="fade 12.8"></s></div></div>
- <div class="doc" style="left:1130px;top:250px;width:560px" data-a="right 2"><div class="doc-h">Her documents</div>
-   <div class="ev" data-a="fade 6.4"><small>RUCEI report</small>Volunteer Tutor &amp; Team Member</div>
-   <div class="ev" data-a="fade 11.6"><small>Her CV</small>basic SPSS, basic Stata</div></div>
- <svg class="ln" viewBox="0 0 ${W} ${H}"><path d="M960 460 C1080 420 1140 410 1180 420" pathLength="1" stroke="${C.gold}" stroke-width="6" fill="none" stroke-dasharray="1" data-a="draw 6 .8"/><path d="M960 700 C1080 680 1140 650 1180 640" pathLength="1" stroke="${C.gold}" stroke-width="6" fill="none" stroke-dasharray="1" data-a="draw 11.2 .8"/></svg>`},
+{id:'interlock',dur:16,
+ caps:[[0,'The two loops lock together.','দুটো চক্র একসাথে আটকে থাকে।'],
+       [3.6,'The first loop makes the big decisions. The second loop does the work.','প্রথম চক্র বড় সিদ্ধান্ত নেয়। দ্বিতীয় চক্র কাজটা করে।'],
+       [10,'And you move between them all the time.','আর তুমি সবসময় এই দুইয়ের মধ্যে আসা-যাওয়া করো।']],
+ ring:[[10.2,960,530],[11.2,650,250],[12.2,960,530],[13.2,1270,810],[14.2,960,530],[15.8,960,530]],
+ html:`${LINKS()}
+ ${pill(500,215,'Delegation',3,'c-del')}${pill(510,655,'Diligence',3.4,'c-dil')}${pill(1300,335,'Description',4.2,'c-des')}${pill(1290,775,'Discernment',4.6,'c-dis')}
+ <div class="lname" style="left:250px;top:420px" data-a="fade 5.6">the big<br>decisions</div><div class="lname" style="left:1420px;top:540px" data-a="fade 7.4">the<br>work</div>
+ <div class="youtag" data-a="pop 10.4">you</div>`},
 
-{id:'loop',dur:11,
- caps:[[0,'Description and Discernment work as a loop:','Description আর Discernment একটা চক্রে কাজ করে:'],[4.4,'ask, check, fix — and check again.','বলো, যাচাই করো, ঠিক করো — আবার যাচাই করো।']],
- ring:[[4.4,960,200],[5.4,1640,520],[6.4,960,880],[7.4,1680,650],[10.6,1680,650]],
- html:`<div class="lp" style="left:400px;--c:${C.des};--ct:${C.desT}" data-a="left .2">Description</div>
- <div class="lp" style="left:1120px;--c:${C.dis};--ct:${C.disT}" data-a="right .6">Discernment</div>
- <svg class="ln" viewBox="0 0 ${W} ${H}"><g><path d="M760 330 C860 200 1060 200 1160 330" pathLength="1" stroke="${C.ink}" stroke-width="8" fill="none" stroke-dasharray="1" data-a="draw 1.4 1"/><path d="M1160 750 C1060 880 860 880 760 750" pathLength="1" stroke="${C.ink}" stroke-width="8" fill="none" stroke-dasharray="1" data-a="draw 2.2 1"/></g>
-   <path d="M1140 300 l26 34 l-40 6z" fill="${C.ink}" data-a="fade 2.2"/><path d="M780 780 l-26 -34 l40 -6z" fill="${C.ink}" data-a="fade 3.2"/></svg>
- <div class="loopw" style="left:885px;top:170px" data-a="pop 4.6">1 · ask</div><div class="loopw" style="left:1560px;top:480px" data-a="pop 5.6">2 · check</div>
- <div class="loopw" style="left:895px;top:850px" data-a="pop 6.6">3 · fix</div><div class="loopw" style="left:1560px;top:610px" data-a="pop 7.6">4 · check again</div>`},
-
-{id:'diligence',dur:18,
- caps:[[0,'Fourth, Diligence: you are responsible.','চতুর্থ, Diligence: দায়িত্ব তোমার।'],
-       [4,'Share only what is needed. Be honest that you used AI.','শুধু দরকারি তথ্য দাও। AI ব্যবহার করেছ — সৎভাবে বলো।'],
-       [10.6,'And remember: a login page means private inside.','আর মনে রাখো: লগইন পেজ মানে ভেতরে গোপন তথ্য।']],
- ring:[[3.4,560,380],[5,560,380],[6.6,960,380],[8.2,1360,380],[9.6,1360,380],[11.4,1230,700],[16,1230,700]],
- html:`${chip('4','Diligence','You are responsible',C.dil,C.dilT,.2)}
- <div class="sh" data-a="fade 1 1.2"><div>${SHIELD}</div></div>
- <div class="dg" style="left:400px" data-a="up 4.2"><span>📄🔒</span>Share only<br>what’s needed</div>
- <div class="dg" style="left:800px" data-a="up 5.8"><span class="tag">Made with AI help</span>Be honest<br>about AI</div>
- <div class="dg" style="left:1200px" data-a="up 7.4"><span>✍️</span>You own<br>the result</div>
- <div class="door" data-a="up 10.6"><div class="dpanel"><div class="dsign">${LOCK}<span>Private inside</span></div></div></div>
- <div class="agent" data-a="right 12"><span class="sp">${SPARK}</span>AI agent</div>
- <div class="nope" data-a="stamp 14">?</div>`},
+{id:'example',dur:22,
+ caps:[[0,'For example: studying for an exam.','উদাহরণ: পরীক্ষার পড়া।'],
+       [3.4,'AI makes practice questions. You answer them.','AI অনুশীলনের প্রশ্ন বানায়। উত্তর দাও তুমি।'],
+       [8.2,'No AI in the real exam, and you check facts in your book.','আসল পরীক্ষায় AI নয়, আর তথ্য বই দেখে যাচাই করো।'],
+       [13.6,'Ask for five questions. Spot a wrong one. Ask again.','পাঁচটা প্রশ্ন চাও। ভুলটা ধরো। আবার চাও।']],
+ ring:[[3.6,560,300],[8.4,560,770],[13.8,1360,400],[16.4,1360,860],[18.6,1360,400],[21.6,1360,400]],
+ html:`${LINKS({faint:1,t1:.1,t2:.2})}
+ <div class="extitle" data-a="up .2">📚 Studying for an exam</div>
+ <div class="exc" style="left:320px;top:240px;--c:${C.del};--ct:${C.delT}" data-a="pop 3.4"><b>Delegation</b>AI makes practice questions. I answer them.</div>
+ <div class="exc" style="left:320px;top:690px;--c:${C.dil};--ct:${C.dilT}" data-a="pop 8.2"><b>Diligence</b>No AI in the real exam. I check facts in my book.</div>
+ <div class="exc" style="left:1120px;top:330px;--c:${C.des};--ct:${C.desT}" data-a="pop 13.6"><b>Description</b>“Give me 5 questions on chapter 3.”</div>
+ <div class="exc" style="left:1120px;top:780px;--c:${C.dis};--ct:${C.disT};top:700px" data-a="pop 16.2"><b>Discernment</b>Question 4 is wrong. My book says…</div>
+ <div class="again" style="left:1560px" data-a="pop 18.4">↺ ask again</div>`},
 
 {id:'recap',dur:13,
- caps:[[0,'Delegation. Description. Discernment. Diligence.','Delegation। Description। Discernment। Diligence।'],
-       [5.4,'The AI does the work faster. You stay responsible.','AI কাজটা দ্রুত করে। দায়িত্ব থাকে তোমার।']],
- ring:[[6.6,1555,822],[12,1555,822]],
- html:`<div class="tiles">
-   <div class="tile" style="--c:${C.del};--ct:${C.delT}" data-a="up .2"><b>Delegation</b><span>Who does what?</span></div>
-   <div class="tile" style="--c:${C.des};--ct:${C.desT}" data-a="up 1.4"><b>Description</b><span>Tell it clearly</span></div>
-   <div class="tile" style="--c:${C.dis};--ct:${C.disT}" data-a="up 2.6"><b>Discernment</b><span>Check what comes back</span></div>
-   <div class="tile" style="--c:${C.dil};--ct:${C.dilT}" data-a="up 3.8"><b>Diligence</b><span>You are responsible</span></div></div>
- <div class="ayw" style="left:1400px;top:300px;width:320px" data-a="up 5">${AYESHA}</div>
- <div class="cvok" data-a="pop 6.4">CV ✓</div>`}
+ caps:[[0,'Two loops. Four Ds.','দুটো চক্র। চারটা D।'],[4.4,'One human in the loop: you.','চক্রের মানুষটি একজন: তুমি।']],
+ ring:[[4.6,960,530],[12.6,960,530]],
+ html:`${LINKS({t1:.1,t2:.6})}
+ ${pill(500,215,'Delegation',1.4,'c-del')}${pill(510,655,'Diligence',1.8,'c-dil')}${pill(1300,335,'Description',2.2,'c-des')}${pill(1290,775,'Discernment',2.6,'c-dis')}
+ <div class="youtag" data-a="pop 4.8">you</div>
+ <div class="ayw" style="left:1630px;top:120px;width:200px" data-a="up 5.6">${AYESHA}</div>`}
 ];
 
 /* ---------- keyframes ---------- */
@@ -166,6 +170,7 @@ function anim(el,spec){
    case 'stamp':kf=[{opacity:0,transform:'scale(2.4) rotate(-20deg)'},{opacity:1,transform:'scale(1) rotate(-8deg)'}];d=(du?+du:.4)*1000;break;
    case 'draw':kf=[{strokeDashoffset:1},{strokeDashoffset:0}];break;
    case 'fly':{const [dx,dy]=(el.dataset.fly||'0,0').split(',').map(Number);kf=[{opacity:0,transform:`translate(${dx}px,${dy}px) scale(.9)`},{opacity:1,transform:`translate(${dx}px,${dy}px) scale(1)`,offset:.15},{opacity:1,transform:'none'}];break;}
+   case 'move':{const [dx,dy]=(el.dataset.fly||'0,0').split(',').map(Number);kf=[{transform:`translate(${dx}px,${dy}px)`},{transform:'none'}];break;}
    case 'spin':kf=[{transform:'rotate(0deg)'},{transform:'rotate(360deg)'}];return el.animate(kf,{duration:d,delay:t0,iterations:6,easing:'linear',fill:'both'});
    default:kf=[{opacity:0},{opacity:1}];
   }

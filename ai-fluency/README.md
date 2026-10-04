@@ -35,7 +35,7 @@ Orbit, Sathi and Studio are invented apps modelled on Meta Muse / xAI Grok Bot, 
 
 ## The four Ds — onboarding animation
 
-`intro.js` + `intro.css`: a 1920×1080 motion graphic for the projector (about 2 minutes, eight scenes, told through Ayesha's CV). Open it from the start screen ("Watch: the four Ds"), the menu, or `/ai-fluency/#intro`. Space pauses, ← → step through scenes, B shows Bangla captions, speed 0.75× for slower readers. The gold ring is the mascot — the human eye that makes every connection.
+`intro.js` + `intro.css`: a 1920×1080 motion graphic for the projector (about 2 minutes, seven scenes) on the theory of the framework: the four Ds as two interlocking loops — Delegation ⇄ Diligence (the big decisions) and Description ⇄ Discernment (the conversation), with the course's own sub-questions and one neutral example (studying for an exam). It deliberately does not preview the phone workflows. Open it from the start screen ("Watch: the four Ds"), the menu, or `/ai-fluency/#intro`. Space pauses, ← → step through scenes, B shows Bangla captions, speed 0.75× for slower readers. The gold ring is the mascot — the human eye that makes every connection.
 
 Every movement is a Web Animation built from `data-a="anim start [duration]"` attributes, so the film is a pure function of (scene, time). `INTRO.seek(scene, t)` freezes any frame; the narrated video is rendered from the same scenes. Narration script and voice settings: `intro-voice-script.md` (record one take in the AI Studio speech playground → `intro/four-ds-narration.wav`).
 

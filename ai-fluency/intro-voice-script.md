@@ -32,26 +32,24 @@ A bright university classroom in Rajshahi in the late morning. The teacher stand
 
 ## Sample context
 
-This is the opening of a class on using AI well. The speaker is the teacher, introducing four habits — the four Ds of AI fluency — through the story of Ayesha, a Bangladeshi economics student who asked AI to improve her CV and got a version with a false test score. The intent is calm and encouraging: AI is useful, but the student stays in charge. The listeners are intermediate learners of English, so every sentence must be easy to follow on first hearing.
+This is the opening of a class on using AI well. The speaker is the teacher, explaining the theory of AI fluency: four competencies — Delegation, Description, Discernment and Diligence — that work as two interlocking loops. Delegation and Diligence are the big decisions about what to do with AI and who is responsible; Description and Discernment are the back-and-forth conversation with the AI. The intent is calm and encouraging: AI is useful, and the student always stays the human in the loop. The listeners are intermediate learners of English, so every sentence must be easy to follow on first hearing.
 
 ## Transcript (paste as one block)
 
-Ayesha asked AI: "Make my CV better." ... In seconds, it looked amazing. ... But it said her IELTS score was seven point zero. Her real score is six point zero. ... Is that AI fluency?
+Many people use AI. Fewer people are fluent with it. ... AI fluency means working with AI in a way that is effective, efficient, ethical and safe. ... And it always keeps you, the human, in the loop.
 
-Using AI is easy. ... Being fluent with AI takes four habits: the four Ds.
+AI fluency has four parts: the four Ds. ... Delegation. Description. Discernment. Diligence. ... They work in two pairs. Each pair is a loop.
 
-First, Delegation: decide who does what. ... Ayesha keeps the facts. The AI can do the layout. ... Some jobs, they share.
+The first loop is Delegation and Diligence: the big decisions. ... Delegation asks: What am I trying to do? Which AI tool fits? Who does what? ... Diligence asks: Is this safe and fair? Who needs to know AI helped? Who is responsible for the result? ... Each answer changes the other.
 
-Second, Description: tell the AI clearly. ... Who you are. What you need. How to work. How to behave.
+The second loop is Description and Discernment: the conversation. ... Description: say what you want, how to work, and how the AI should behave. ... Discernment: judge what comes back. Then describe again, better. ... It is a conversation, not a command.
 
-Third, Discernment: check what comes back. ... Line by line, against the real documents.
+The two loops lock together. ... The first loop makes the big decisions. The second loop does the work. ... And you move between them all the time.
 
-Description and Discernment work as a loop: ... ask, check, fix ... and check again.
+For example: studying for an exam. ... AI makes practice questions. You answer them. ... No AI in the real exam, and you check facts in your book. ... Ask for five questions. Spot a wrong one. Ask again.
 
-Fourth, Diligence: you are responsible. ... Share only what is needed. Be honest that you used AI. ... And remember: a login page means private inside.
-
-Delegation. Description. Discernment. Diligence. ... The AI does the work faster. ... You stay responsible.
+Two loops. Four Ds. ... One human in the loop: you.
 
 ---
 
-*Spoken forms:* "seven point zero" / "six point zero" are shown on screen as 7.0 / 6.0. 145 words — about 80–90 seconds at this pace.
+*218 words — about 1 minute 50 seconds at this pace. The film follows the take, so don't trim pauses.*
