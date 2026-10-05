@@ -1,8 +1,8 @@
-/* The 4D compass — one picture of the AI Fluency framework, reused everywhere.
+/* The 4D gears — one picture of the AI Fluency framework, reused everywhere.
  *
- *            N  Delegation  (plan)              ↑ loop 1: the big decisions
- *   W  Description   ⚙ AI fluency ⚙   E  Discernment      ← loop 2: the conversation →
- *            S  Diligence   (be responsible)    ↓
+ *                    Delegation (plan)                ↕ loop 1: the big decisions
+ *   Description (say it)   ⚙ AI fluency ⚙   Discernment (judge it)   ↔ loop 2: the conversation
+ *                    Diligence (be responsible)
  *
  * Four gears in a ring. Every gear meshes with its two neighbours, so when one
  * turns they ALL turn: the vertical loop (N, S) spins one way, the horizontal
@@ -15,13 +15,13 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 
 /* ---- the four Ds ---- */
 const META={
- del:{dir:'N',dirbn:'উ',n:'Delegation',nbn:'দায়িত্ব ভাগ',v:'Plan',vbn:'পরিকল্পনা',loop:'v',
+ del:{n:'Delegation',nbn:'দায়িত্ব ভাগ',v:'Plan',vbn:'পরিকল্পনা',loop:'v',
       q:'Who does what — me, the AI, or both?',qbn:'কে কী করবে — আমি, AI, নাকি দুজনে?'},
- des:{dir:'W',dirbn:'প',n:'Description',nbn:'বর্ণনা',v:'Say it',vbn:'বলো',loop:'h',
+ des:{n:'Description',nbn:'বর্ণনা',v:'Say it',vbn:'বলো',loop:'h',
       q:'Tell the AI clearly what you want — and how.',qbn:'AI-কে স্পষ্ট করে বলো তুমি কী চাও — আর কীভাবে।'},
- dis:{dir:'E',dirbn:'পূ',n:'Discernment',nbn:'যাচাই',v:'Judge it',vbn:'বিচার করো',loop:'h',
+ dis:{n:'Discernment',nbn:'যাচাই',v:'Judge it',vbn:'বিচার করো',loop:'h',
       q:'Is what came back true, right and good enough?',qbn:'যা ফিরে এলো তা কি সত্য, সঠিক আর যথেষ্ট ভালো?'},
- dil:{dir:'S',dirbn:'দ',n:'Diligence',nbn:'সতর্কতা',v:'Be responsible',vbn:'দায়িত্ব নাও',loop:'v',
+ dil:{n:'Diligence',nbn:'সতর্কতা',v:'Be responsible',vbn:'দায়িত্ব নাও',loop:'v',
       q:'Is it safe, honest and fair? Who is responsible?',qbn:'এটা কি নিরাপদ, সৎ আর ন্যায্য? দায় কার?'}
 };
 const LOOP={v:{n:'the big decisions',bn:'বড় সিদ্ধান্ত'},h:{n:'the conversation',bn:'কথোপকথন'}};
@@ -47,7 +47,7 @@ const GEAR=(()=>{const p=[],rad=a=>a*Math.PI/180,pt=(r,a)=>`${(r*Math.cos(rad(a)
     p.push(`${k?'L':'M'}${pt(R-A,c-.36*T)}`,`L${pt(R+A,c-.17*T)}`,`A${R+A} ${R+A} 0 0 1 ${pt(R+A,c+.17*T)}`,`L${pt(R-A,c+.36*T)}`,`A${R-A} ${R-A} 0 0 1 ${pt(R-A,c+.64*T)}`)}
   return p.join('')+'Z';})();
 
-/* compass SVG. o: {on:'dis', used:{del:1,…}, angle:deg, cls:'', title:''} */
+/* the gears SVG. o: {on:'dis', used:{del:1,…}, angle:deg, cls:'', title:''} */
 D4.svg=(o={})=>{
   const on=o.on, ang=o.angle||0;
   const gear=d=>{const [x,y]=POS[d];const lit=on==='all'||d===on, used=o.used&&o.used[d];
@@ -55,14 +55,14 @@ D4.svg=(o={})=>{
       ${lit&&on!=='all'?`<circle class="halo" r="${R+A+5}"/>`:''}
       <g class="rot" style="--o:${PH[d]}deg;--s:${SPIN[d]}"><path class="teeth" d="${GEAR}"/><circle class="axle" r="${R-A-3}"/></g>
       <path class="sym" d="${ICON[d]}" transform="translate(-18 -18) scale(1.5)"/></g>`};
-  return `<svg class="compass${o.cls?' '+o.cls:''}" viewBox="0 0 200 200" style="--ga:${ang}deg" role="img" aria-label="${esc(o.title||'The four Ds compass')}">
+  return `<svg class="compass${o.cls?' '+o.cls:''}" viewBox="0 0 200 200" style="--ga:${ang}deg" role="img" aria-label="${esc(o.title||'The four Ds as gears')}">
     ${o.loops?`<rect class="loop lv" x="${100-R-14}" y="4" width="${2*R+28}" height="192" rx="${R+14}"/><rect class="loop lh" x="4" y="${100-R-14}" width="192" height="${2*R+28}" rx="${R+14}"/>`:''}
     ${['del','dis','dil','des'].map(gear).join('')}
     <circle class="sweet${o.sweet?' lit':''}" cx="100" cy="100" r="${o.sweet?9:6.5}"/></svg>`;
 };
 
 /* a single small gear badge for inline use (rail, shift card, path) */
-D4.badge=(d,size=26,lit=true)=>`<span class="d4b d-${d}${lit?' lit':''}" style="--sz:${size}px" title="${META[d].dir} · ${META[d].n}"><svg viewBox="-44 -44 88 88" aria-hidden="true"><path class="teeth" d="${GEAR}"/><path class="sym" d="${ICON[d]}" transform="translate(-18 -18) scale(1.5)"/></svg></span>`;
+D4.badge=(d,size=26,lit=true)=>`<span class="d4b d-${d}${lit?' lit':''}" style="--sz:${size}px" title="${META[d].n}"><svg viewBox="-44 -44 88 88" aria-hidden="true"><path class="teeth" d="${GEAR}"/><path class="sym" d="${ICON[d]}" transform="translate(-18 -18) scale(1.5)"/></svg></span>`;
 
 /* how one D hands over to the next. Same loop, or the loops crossing. */
 const LINK={
@@ -83,14 +83,14 @@ D4.link=(a,b)=>{ if(!a) return {en:`First gear: ${META[b].n}.`,bn:`প্রথ�
   const same=META[a].loop===META[b].loop, l=LINK[a+'>'+b]||['',''];
   return {en:l[0],bn:l[1],kind:same?'same':'cross',loop:same?LOOP[META[b].loop]:null}; };
 
-/* the legend: compass in the middle, the four points around it */
+/* the legend: the gears in the middle, one D on each side */
 D4.legend=(o={})=>{
-  const cell=d=>{const m=META[d];return `<div class="lg-pt lg-${m.dir} d-${d}"><b><i>${m.dir}</i>${m.n}</b><span class="lg-v">${m.v}</span><span class="lg-q">${m.q}</span><span class="bn" lang="bn">${m.nbn} · ${m.vbn} — ${m.qbn}</span>${o.extra&&o.extra[d]?`<span class="lg-x">${o.extra[d]}</span>`:''}</div>`};
+  const cell=d=>{const m=META[d];return `<div class="lg-pt lg-${d} d-${d}"><b>${D4.icon(d,15)}${m.n}</b><span class="lg-v">${m.v}</span><span class="lg-q">${m.q}</span><span class="bn" lang="bn">${m.nbn} · ${m.vbn} — ${m.qbn}</span>${o.extra&&o.extra[d]?`<span class="lg-x">${o.extra[d]}</span>`:''}</div>`};
   return `<div class="d4legend${o.compact?' compact':''}">${cell('del')}${cell('des')}<div class="lg-c">${D4.svg({loops:true,sweet:true,on:o.on,used:o.used,cls:o.on==='all'?'all':''})}</div>${cell('dis')}${cell('dil')}</div>`;
 };
 D4.loopsNote=()=>`<div class="d4loops">
-  <div><span class="lv">↕</span><p><b>N ⇄ S · Loop 1: the big decisions.</b> Plan before you start; take responsibility for the result.<span class="bn" lang="bn">উত্তর ⇄ দক্ষিণ · প্রথম চক্র: বড় সিদ্ধান্ত। শুরুর আগে পরিকল্পনা; ফলাফলের দায়িত্ব।</span></p></div>
-  <div><span class="lh">↔</span><p><b>W ⇄ E · Loop 2: the conversation.</b> Say it, judge what comes back, say it better.<span class="bn" lang="bn">পশ্চিম ⇄ পূর্ব · দ্বিতীয় চক্র: কথোপকথন। বলো, যা ফেরে তা বিচার করো, আরও ভালো করে বলো।</span></p></div>
+  <div><span class="lv">↕</span><p><b>Delegation ⇄ Diligence · Loop 1: the big decisions.</b> Plan before you start; take responsibility for the result.<span class="bn" lang="bn">Delegation ⇄ Diligence · প্রথম চক্র: বড় সিদ্ধান্ত। শুরুর আগে পরিকল্পনা; ফলাফলের দায়িত্ব।</span></p></div>
+  <div><span class="lh">↔</span><p><b>Description ⇄ Discernment · Loop 2: the conversation.</b> Say it, judge what comes back, say it better.<span class="bn" lang="bn">Description ⇄ Discernment · দ্বিতীয় চক্র: কথোপকথন। বলো, যা ফেরে তা বিচার করো, আরও ভালো করে বলো।</span></p></div>
   <div><span class="lc">⚙</span><p><b>The gears touch.</b> When one turns, all four turn. Where they meet is AI fluency.<span class="bn" lang="bn">গিয়ারগুলো একটা আরেকটাকে ছুঁয়ে আছে। একটা ঘুরলে চারটাই ঘোরে। যেখানে চারটা মেলে, সেটাই AI fluency।</span></p></div></div>`;
 
 window.D4=D4;

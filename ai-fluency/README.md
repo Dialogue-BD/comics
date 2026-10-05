@@ -25,15 +25,15 @@ Fictional 3rd-year Economics student at Rajshahi University (from the *RU AI Sem
 
 Orbit, Sathi and Studio are invented apps modelled on Meta Muse / xAI Grok Bot, Gemini / ChatGPT / Claude, and Google AI Studio Build.
 
-## The 4D compass
+## The 4D gears
 
-`compass.js` draws the framework as four interlocking gears on compass points: **N Delegation** (plan), **W Description** (say it), **E Discernment** (judge it), **S Diligence** (be responsible). N–S is loop 1, the big decisions; W–E is loop 2, the conversation. Each gear meshes with its two neighbours, so when one turns all four turn (N and S one way, W and E the other), and the gold spot where they meet is AI fluency. One picture, reused everywhere:
+`compass.js` draws the framework as four interlocking gears: **Delegation** (plan) at the top, **Diligence** (be responsible) at the bottom, **Description** (say it) on the left and **Discernment** (judge it) on the right. Top–bottom is loop 1, the big decisions; left–right is loop 2, the conversation. Each gear meshes with its two neighbours, so when one turns all four turn (the vertical pair one way, the horizontal pair the other), and the gold spot where they meet is AI fluency. One picture, reused everywhere:
 
 - **The band** under the stage rail shows the D in use at every step; its gear lights up and the whole set turns when the D changes. Tap it for the legend.
 - **“Why now?”** — on every step where the D changes, a card comes *before* the instruction: the old gear → the new gear, whether the move stays in one loop or crosses between them, the lesson’s reason (`why`/`whybn` on the beat), and a one-line link between the two Ds.
 - **The rail** marks each stage with its gear. **The hub** and the teacher menu carry the legend.
-- **The finish** of each workflow shows the compass with what that workflow did at each point, and Ayesha’s path round it — how many times the loops crossed.
-- **Paper:** each sheet has a small compass key, and every box tag carries its letter.
+- **The finish** of each workflow shows the gears with what that workflow did with each D, and Ayesha’s path through them — how many times the loops crossed.
+- **Paper:** each sheet has a small colour key for the four Ds.
 
 A beat’s D is `b.d` or its stage’s D; `d:'none'` marks story beats where no gear is lit.
 
@@ -54,7 +54,7 @@ Every movement is a Web Animation built from `data-a="anim start [duration]"` at
 ## Files
 
 - `index.html` — page shell + all CSS
-- `compass.js` — the 4D compass (gears, legend, “why now” links)
+- `compass.js` — the 4D gears (legend, “why now” links, finish recap)
 - `engine.js` — Android simulator (app renderers, keyboard, dialogs, streaming AI replies) + coach + lesson runner
 - `lesson-cv.js`, `lesson-agent.js`, `lesson-build.js` — content banks (beats, scripted AI replies, Bangla)
 - `docs/` — Ayesha's documents as small webp images (~80 KB each)

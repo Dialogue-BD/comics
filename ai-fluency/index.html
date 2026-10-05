@@ -102,7 +102,7 @@ body.bangla .bn{display:block}
 .sub{color:var(--ink-muted);font-size:calc(14.5px*var(--ui));line-height:1.45;margin:6px 0 0}
 
 
-/* ---------- the 4D compass ---------- */
+/* ---------- the 4D gears ---------- */
 @property --ga{syntax:'<angle>';inherits:true;initial-value:0deg}
 .compass{display:block;width:100%;height:auto;overflow:visible;transition:--ga 1.1s cubic-bezier(.3,.05,.2,1)}
 .compass .rot{transform:rotate(calc(var(--o) + var(--ga) * var(--s)))}
@@ -162,9 +162,9 @@ body.bangla .bn{display:block}
 .d4legend{display:grid;grid-template-columns:1fr minmax(0,1.05fr) 1fr;grid-template-areas:". n ." "w c e" ". s .";gap:6px 8px;align-items:center;margin:8px 0}
 .lg-c{grid-area:c;max-width:170px;justify-self:center;width:100%}
 .lg-pt{border-radius:10px;background:var(--dt);border:1px solid color-mix(in srgb,var(--dc) 30%,transparent);padding:6px 8px;font-size:calc(12.5px*var(--ui));line-height:1.3}
-.lg-N{grid-area:n} .lg-W{grid-area:w} .lg-E{grid-area:e} .lg-S{grid-area:s}
+.lg-del{grid-area:n} .lg-des{grid-area:w} .lg-dis{grid-area:e} .lg-dil{grid-area:s}
 .lg-pt b{display:block;color:var(--dc);font-size:calc(14px*var(--ui))}
-.lg-pt b i{font-style:normal;font-size:.75em;font-weight:800;display:inline-grid;place-items:center;width:1.55em;height:1.55em;border-radius:99px;background:var(--dc);color:#fff;margin-right:5px;vertical-align:.1em}
+.lg-pt b .d4i{fill:var(--dc);margin-right:5px;vertical-align:-.12em}
 .lg-v{display:block;font-weight:700;font-size:.92em;color:var(--ink)}
 .lg-q{display:block;color:var(--ink-muted)}
 .lg-x{display:block;margin-top:4px;padding-top:4px;border-top:1px dashed color-mix(in srgb,var(--dc) 40%,transparent);color:var(--ink);font-size:1.02em}
@@ -727,7 +727,7 @@ body.stage{--ui:1.28}
       <button class="iconbtn" id="btn-menu" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     </div>
     <nav class="c-rail" id="rail" aria-label="Stages"></nav>
-    <button class="dband idle" id="dband" hidden aria-label="The four Ds compass"></button>
+    <button class="dband idle" id="dband" hidden aria-label="The four Ds"></button>
     <div class="c-body" id="cbody" aria-live="polite"></div>
     <div class="c-actions" id="cact"></div>
   </section>
@@ -744,8 +744,8 @@ body.stage{--ui:1.28}
 </div>
 <div id="menu" hidden></div>
 <noscript>This activity needs JavaScript.</noscript>
-<script src="compass.js?v=8"></script>
-<script src="engine.js?v=8"></script>
+<script src="compass.js?v=9"></script>
+<script src="engine.js?v=9"></script>
 <script src="lesson-cv.js"></script>
 <script src="lesson-agent.js"></script>
 <script src="lesson-build.js?v=8"></script>
