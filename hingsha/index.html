@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="stylesheet" href="../dialogue-brand.css">
-  <link rel="stylesheet" href="styles.css?v=20261005b">
+  <link rel="stylesheet" href="styles.css?v=20261005f">
 </head>
 <body>
   <main class="app" id="app">
@@ -27,7 +27,7 @@
 
     <section class="lesson" aria-label="Hingsha listening exercise">
       <nav class="passes" aria-label="Listening passes">
-        <button class="pass active" type="button" data-pass="1"><span>1</span><b>Watch &amp; listen</b><small>দেখুন ও শুনুন</small></button>
+        <button class="pass active" type="button" data-pass="1"><span>1</span><b>Just listen</b><small>শুধু শুনুন</small></button>
         <button class="pass" type="button" data-pass="2"><span>2</span><b>Follow the words</b><small>শব্দ ধরে শুনুন</small></button>
         <button class="pass" type="button" data-pass="3"><span>3</span><b>Explore phrases</b><small>বাক্যাংশ দেখুন</small></button>
       </nav>
@@ -38,6 +38,7 @@
           <div class="stage-vignette" aria-hidden="true"></div>
 
           <div class="stage-topbar">
+            <a class="stage-brand" href="/" aria-label="Dialogue home"><img src="../brand/dialogue-logo.png" alt=""><span>Dialogue</span></a>
             <div class="frame-number" id="frame-number" aria-live="polite"></div>
             <button class="stage-button" id="overview-toggle" type="button" aria-label="Show the whole comic">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/></svg>
@@ -70,7 +71,6 @@
           <p class="audio-status" id="audio-status" role="status"></p>
         </div>
         <div class="stage-notes">
-          <p id="content-note"></p>
           <button class="next-pass" id="next-pass" type="button" hidden></button>
         </div>
       </section>
@@ -95,8 +95,8 @@
   </dialog>
 
   <audio id="audio" preload="auto"></audio>
-  <script src="story.js?v=20261005b"></script>
-  <script src="story-timings.js?v=20261005b"></script>
-  <script src="app.js?v=20261005b"></script>
+  <script src="story.js?v=20261005f"></script>
+  <script src="story-timings.js?v=20261005f"></script>
+  <script src="app.js?v=20261005f"></script>
 </body>
 </html>

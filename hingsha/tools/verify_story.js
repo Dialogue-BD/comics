@@ -40,6 +40,25 @@ for (const [i, page] of story.portraitPages.entries()) {
   assert(fs.statSync(file).size > 2000, `portrait page ${i + 1}: missing or empty asset`);
 }
 assert.equal(story.camera.length, story.lines.length, "camera/line count mismatch");
+let lastBeatWord = -1;
+for (const beat of story.cameraBeats || []) {
+  const lineWords = words(story.lines[beat.line]?.text || "");
+  assert(beat.word >= 0 && beat.word < lineWords.length, `invalid camera word: ${beat.label}`);
+  const globalWord = story.lines.slice(0, beat.line).reduce((n, line) => n + words(line.text).length, 0) + beat.word;
+  assert(!beat.page || story.portraitPages[beat.page - 1], `invalid camera page: ${beat.label}`);
+  assert(!beat.frame || story.frames[beat.frame - 1], `invalid camera frame: ${beat.label}`);
+  assert(globalWord > lastBeatWord, `camera beats out of order: ${beat.label}`);
+  lastBeatWord = globalWord;
+  for (const mode of ["portrait", "landscape"]) {
+    const rect = beat[mode];
+    assert(rect.length === 4 && rect.every(Number.isFinite), `invalid ${mode} panel: ${beat.label}`);
+    assert(rect[0] >= 0 && rect[1] >= 0 && rect[2] > 0 && rect[3] > 0 && rect[0] + rect[2] <= 1 && rect[1] + rect[3] <= 1,
+      `panel exceeds image: ${beat.label}`);
+  }
+}
+for (let line = 0; line < story.lines.length; line++) {
+  assert(story.cameraBeats.some(beat => beat.line === line && beat.word === 0), `line ${line + 1} has no opening panel cue`);
+}
 const audio = path.join(root, story.audio);
 const duration = Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration",
   "-of", "default=nw=1:nk=1", audio], { encoding: "utf8" }));

@@ -6,6 +6,15 @@ the comic as synchronized captions and moves a virtual camera through the full
 comic. It uses a 4 × 4 widescreen atlas in landscape and a five-page vertical
 strip in portrait, so phones do not receive a cropped desktop composition.
 
+The first pass hides captions, the second adds synchronized captions, and the
+third adds clickable phrase help. `cameraBeats` maps exact transcript word
+offsets to panel rectangles in both layouts. All five pages have phrase-level camera cues, including each one-versus-two
+exchange, the pir's warning, the loss of sight, and the begging epilogue.
+Each cue can select its own landscape frame and portrait page, independently
+of transcript line boundaries. Panel
+framing reserves space above captions; `overflow: clip` prevents timeline focus
+from scrolling the visual stage and displacing its controls.
+
 Production files:
 
 - `assets/frames/01.webp`–`12.webp`: frames rendered from the existing wordless comic

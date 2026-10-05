@@ -34,12 +34,21 @@
   let worldSize = { width: 1, height: 1 };
   let overviewMode = true;
   let resizeTimer = 0;
+  let cameraKey = "";
+
+  const cameraBeats = (S.cameraBeats || []).map(beat => ({ ...beat,
+    time: aligned ? T.w[lineStarts[beat.line] + beat.word][0] : Infinity }));
+
+  function cameraBeatAt(time) {
+    // Begin the short pan just before the spoken clause so the panel arrives
+    // as its quantity is named. Seeking uses the same audio-clock mapping.
+    return cameraBeats.filter(beat => beat.line === lineIndex && beat.time - .3 <= time).at(-1) || null;
+  }
 
   $("#title").textContent = S.title;
   $("#title-bn").textContent = S.titleBn;
   $("#kicker").textContent = S.kicker;
   $("#source-note").textContent = S.sourceNote;
-  $("#content-note").textContent = S.contentNote;
   audio.src = S.audio + "?v=20261005b";
 
   const fmt = seconds => {
@@ -181,7 +190,9 @@
     if (!worldItems.length) return;
     const sw = stage.clientWidth;
     const sh = stage.clientHeight;
-    world.style.transitionDuration = !animate || reducedMotion ? "0s" : "1.35s";
+    const beat = overviewMode ? null : cameraBeatAt(audio.currentTime || 0);
+    cameraKey = overviewMode ? "overview" : `${layoutMode}:${lineIndex}:${beat?.word ?? "line"}`;
+    world.style.transitionDuration = !animate || reducedMotion ? "0s" : beat ? ".55s" : "1.05s";
     let scale;
     let centerX;
     let centerY;
@@ -192,8 +203,9 @@
       centerY = worldSize.height / 2;
     } else {
       const camera = S.camera[lineIndex] || {};
-      itemIndex = layoutMode === "portrait" ? Math.max(0, (camera.p || 1) - 1) : S.lines[lineIndex].frame - 1;
+      itemIndex = layoutMode === "portrait" ? Math.max(0, (beat?.page || camera.p || 1) - 1) : (beat?.frame || S.lines[lineIndex].frame) - 1;
       const item = worldItems[itemIndex] || worldItems[0];
+      const focus = beat?.[layoutMode];
       const x = layoutMode === "portrait" ? .5 : (camera.lx ?? .5);
       const y = layoutMode === "portrait" ? (camera.py ?? .5) : (camera.ly ?? .5);
       const zoom = layoutMode === "portrait" ? (camera.pz ?? 1) : (camera.lz ?? 1);
@@ -204,15 +216,28 @@
       const wantedY = item.y + item.height * y;
       centerX = Math.max(item.x + halfVisibleWidth, Math.min(item.x + item.width - halfVisibleWidth, wantedX));
       centerY = Math.max(item.y + halfVisibleHeight, Math.min(item.y + item.height - halfVisibleHeight, wantedY));
+      if (focus) {
+        const [left, top, width, height] = focus;
+        // Fit the complete target panel into the space ABOVE the captions.
+        const captionTop = pass === 1 ? sh - 80 : $(".caption-shell").getBoundingClientRect().top - stage.getBoundingClientRect().top;
+        const artTop = 50;
+        const artBottom = Math.max(artTop + sh * .3, captionTop - 12);
+        scale = Math.min(sw * .94 / (item.width * width), (artBottom - artTop) / (item.height * height));
+        centerX = item.x + item.width * (left + width / 2);
+        centerY = item.y + item.height * (top + height / 2);
+        const targetY = (artTop + artBottom) / 2;
+        world.style.transform = `translate3d(${sw / 2 - centerX * scale}px,${targetY - centerY * scale}px,0) scale(${scale})`;
+      }
     }
     const tx = sw / 2 - centerX * scale;
     const ty = sh / 2 - centerY * scale;
-    world.style.transform = `translate3d(${tx}px,${ty}px,0) scale(${scale})`;
+    if (!beat) world.style.transform = `translate3d(${tx}px,${ty}px,0) scale(${scale})`;
+    stage.dataset.cameraBeat = beat?.label || "";
     $$(".world-item", world).forEach((node, i) => node.classList.toggle("current", !overviewMode && i === itemIndex));
     overviewToggle.querySelector("span").textContent = overviewMode ? "Return to story" : "Whole comic";
     overviewToggle.setAttribute("aria-label", overviewMode ? "Return to the current story scene" : "Show the whole comic");
     const camera = S.camera[lineIndex] || {};
-    $("#frame-number").textContent = overviewMode ? "The complete comic" : layoutMode === "portrait" ? `Page ${camera.p || 1} of ${S.portraitPages.length}` : `Frame ${S.lines[lineIndex].frame} of ${S.frames.length}`;
+    $("#frame-number").textContent = overviewMode ? "The complete comic" : layoutMode === "portrait" ? `Page ${itemIndex + 1} of ${S.portraitPages.length}` : `Frame ${itemIndex + 1} of ${S.frames.length}`;
   }
 
   function buildCurrentLine(i) {
@@ -288,17 +313,20 @@
         lineIndex = nextLine;
         buildCurrentLine(lineIndex);
         $$(".line-row").forEach((row, i) => row.classList.toggle("active", i === lineIndex));
-        if (!overviewMode) setCamera(true);
         if ($("#transcript-dialog").open) $(".line-row.active")?.scrollIntoView({ block: "nearest", behavior: reducedMotion ? "auto" : "smooth" });
       }
       wordIndex = nextWord;
       paintWords(wordIndex, wordIsActive(wordIndex, time));
+      const beat = cameraBeatAt(time);
+      const key = `${layoutMode}:${lineIndex}:${beat?.word ?? "line"}`;
+      if (!overviewMode && key !== cameraKey) setCamera(!audio.paused);
     }
     if (!audio.paused) raf = requestAnimationFrame(updateFromAudio);
   }
 
   function setPass(next) {
     pass = next;
+    $(".caption-shell").hidden = pass === 1;
     $$(".pass").forEach(button => button.classList.toggle("active", +button.dataset.pass === pass));
     const label = pass === 1 ? "Watch & listen" : pass === 2 ? "Follow the words" : "Explore phrases";
     $("#mode-label").textContent = label;
@@ -306,6 +334,7 @@
     nextPass.hidden = true;
     buildCurrentLine(lineIndex);
     updateFromAudio();
+    setCamera(false);
   }
 
   function seekLine(i, shouldPlay) {
