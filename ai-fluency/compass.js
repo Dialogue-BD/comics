@@ -25,6 +25,18 @@ const META={
       q:'Is it safe, honest and fair? Who is responsible?',qbn:'এটা কি নিরাপদ, সৎ আর ন্যায্য? দায় কার?'}
 };
 const LOOP={v:{n:'the big decisions',bn:'বড় সিদ্ধান্ত'},h:{n:'the conversation',bn:'কথোপকথন'}};
+/* each D is also a job you do with English — the phrases students reach for when that gear turns */
+const SAY={
+ del:{fn:'Plan and share jobs',fnbn:'পরিকল্পনা করা, কাজ ভাগ করা',
+      frames:[{en:'I will ___. The AI can ___.',bn:'আমি ___ করব। AI ___ করতে পারে।'},{en:'Who should ___?',bn:'কে ___ করবে?'},{en:'Let’s ___ first.',bn:'আগে ___ করি।'}]},
+ des:{fn:'Give clear instructions',fnbn:'স্পষ্ট নির্দেশ দেওয়া',
+      frames:[{en:'Please make ___.',bn:'দয়া করে ___ বানাও।'},{en:'Use only ___.',bn:'শুধু ___ ব্যবহার করো।'},{en:'If ___, ask me first.',bn:'যদি ___, আগে আমাকে জিজ্ঞেস করো।'}]},
+ dis:{fn:'Judge it, disagree politely',fnbn:'বিচার করা, ভদ্রভাবে দ্বিমত করা',
+      frames:[{en:'That’s not true. ___ says ___.',bn:'এটা সত্য নয়। ___-এ লেখা ___।'},{en:'Stop. Instead, ___.',bn:'থামো। বরং ___।'},{en:'This part is good because ___.',bn:'এই অংশটা ভালো, কারণ ___।'}]},
+ dil:{fn:'Set limits, take responsibility',fnbn:'সীমা ঠিক করা, দায়িত্ব নেওয়া',
+      frames:[{en:'I won’t share ___. It’s private.',bn:'আমি ___ শেয়ার করব না। এটা ব্যক্তিগত।'},{en:'If ___, then ___.',bn:'যদি ___, তাহলে ___।'},{en:'I’m responsible for ___.',bn:'___-এর দায়িত্ব আমার।'}]}
+};
+D4.SAY=SAY;
 D4.META=META; D4.LOOP=LOOP; D4.ORDER=['del','des','dis','dil'];
 
 /* ---- symbols (Material icons, 24-unit box) ---- */

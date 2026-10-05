@@ -86,7 +86,17 @@ function fileThumb(id,cls=''){
 
 /* ------------------------------------------------------------- state */
 const KEY='afl2-state';
-const S={lesson:null,beat:0,bn:false,ch:{},stage:false};
+const S={lesson:null,beat:0,bn:false,ch:{},stage:false,mode:'pair',voice:true};
+/* How the class is working: alone (at home), pairs (one phone, two students) or
+   class (teacher up front on the projector). Kept per device, like a remembered tab. */
+const MODES={
+ solo:{i:'👤',n:'Alone',bn:'একা',d:'At home, on your own phone',dbn:'বাড়িতে, নিজের ফোনে'},
+ pair:{i:'👥',n:'Pairs',bn:'জোড়ায়',d:'Two students, one phone',dbn:'দুজন শিক্ষার্থী, একটা ফোন'},
+ class:{i:'🙋',n:'Class',bn:'পুরো ক্লাস',d:'Teacher up front, on the projector',dbn:'শিক্ষক সামনে, প্রজেক্টরে'}
+};
+function loadPrefs(){try{const v=JSON.parse(localStorage.getItem('afl-prefs')||'null');if(v){if(MODES[v.mode])S.mode=v.mode;if(typeof v.voice==='boolean')S.voice=v.voice}}catch(e){}}
+function savePrefs(){try{localStorage.setItem('afl-prefs',JSON.stringify({mode:S.mode,voice:S.voice}))}catch(e){}}
+const byMode=o=>o[S.mode]!==undefined?o[S.mode]:o.pair;
 const LESSONS={}; const ORDER=[];
 let prevScene=null, streamTimer=null, ghostBusy=false;
 function save(){try{sessionStorage.setItem(KEY,JSON.stringify({lesson:S.lesson,beat:S.beat,bn:S.bn,ch:S.ch}))}catch(e){}}
@@ -287,7 +297,7 @@ function renderRail(){
   if(!S.lesson){rail.innerHTML='';rail.hidden=true;return}
   rail.hidden=false; const L=LESSONS[S.lesson]; const cur=L.beats[S.beat].stage;
   const idx=L.stages.findIndex(s=>s.id===cur);
-  rail.innerHTML=L.stages.map((s,i)=>`<button class="${i===idx?'on':i<idx?'done':''}" style="--dc:var(--d-${s.d})" data-stage="${s.id}" title="${i+1} · ${esc(s.label)} · ${D4.META[s.d].n}">${D4.badge(s.d,24,i<=idx)}<span>${esc(s.label)}</span></button>`).join('');
+  rail.innerHTML=L.stages.map((s,i)=>`<button class="${i===idx?'on':i<idx?'done':''}" ${s.d?`style="--dc:var(--d-${s.d})"`:''} data-stage="${s.id}" title="${i+1} · ${esc(s.label)}${s.d?' · '+D4.META[s.d].n:''}">${s.d?D4.badge(s.d,24,i<=idx):`<span class="wu" aria-hidden="true">${s.icon||'🎧'}</span>`}<span>${esc(s.label)}</span></button>`).join('');
   const on=$('.on',rail); if(on) on.scrollIntoView({inline:'nearest',block:'nearest'});
 }
 /* ---- the 4D gears in the coach ---- */
@@ -318,9 +328,11 @@ function dShiftCard(x,L,i){
   const why=fn(b.why,x)||m.q, whybn=fn(b.whybn,x)||(b.why?'':m.qbn);
   const tag=lk.kind==='same'?`Same loop · ${lk.loop.n}`:lk.kind==='cross'?'The loops connect':'Ayesha starts here';
   const tagbn=lk.kind==='same'?`একই চক্র · ${lk.loop.bn}`:lk.kind==='cross'?'দুই চক্র জুড়ে যায়':'আয়েশা এখান থেকে শুরু করে';
-  return `<div class="dshift d-${d}"><div class="ds-row">${p?D4.badge(p,24,false)+'<span class="ds-arr">→</span>':''}${D4.badge(d,30)}<span class="ds-tag"><b>${m.n}</b><small>${tag}</small><span class="bn" lang="bn">${tagbn}</span></span></div>
-    <p class="ds-why"><b>Why ${m.n} now?</b> ${why}${whybn?`<span class="bn" lang="bn">${whybn}</span>`:''}</p>
-    ${p&&lk.en?`<p class="ds-link">${D4.icon(p,13)} → ${D4.icon(d,13)} ${lk.en}<span class="bn" lang="bn">${lk.bn}</span></p>`:''}</div>`;
+  const sy=D4.SAY[d], fr=fn(b.frame,x)||sy.frames[0];
+  return `<div class="dshift d-${d}"><div class="ds-row">${p?D4.badge(p,24,false)+'<span class="ds-arr">→</span>':''}${D4.badge(d,34)}<span class="ds-tag"><b>${m.n} · ${m.v}</b><small>${sy.fn}</small><span class="bn" lang="bn">${m.nbn} · ${sy.fnbn}</span></span></div>
+    <div class="ds-say"><span class="ds-q">“${fr.en.replace(/___/g,'<i class="gap"></i>')}”${fr.bn?`<span class="bn" lang="bn">${fr.bn}</span>`:''}</span>${sayBtn(fr.en,'Listen to the phrase')}</div>
+    <details class="ds-more"><summary>${S.bn?'কেন এখন?':'Why now?'}</summary><p class="ds-why">${why}${whybn?`<span class="bn" lang="bn">${whybn}</span>`:''}</p>
+    <p class="ds-link"><small>${tag}</small>${p&&lk.en?` · ${lk.en}`:''}<span class="bn" lang="bn">${tagbn}${p&&lk.bn?` · ${lk.bn}`:''}</span></p></details></div>`;
 }
 function openLegend(){
   const m=$('#menu'); m.hidden=false; const L=S.lesson&&LESSONS[S.lesson]; const d=L?beatD(L,S.beat):null;
@@ -346,16 +358,18 @@ function renderCoach(){
   const d=beatD(L,S.beat);
   renderBand(d,L);
   let h=dShiftCard(x,L,S.beat);
-  h+=`<p class="say">${fn(b.say,x)||''}</p>${fn(b.bn,x)?`<span class="bn" lang="bn">${fn(b.bn,x)}</span>`:''}`;
+  const sayT=fn(b.say,x)||'';
+  h+=`<div class="sayrow"><p class="say">${sayT}</p>${sayT?sayBtn(sayT):''}</div>${fn(b.bn,x)?`<span class="bn" lang="bn">${fn(b.bn,x)}</span>`:''}`;
   if(b.sub) h+=`<p class="sub">${fn(b.sub,x)}${fn(b.subbn,x)?`<span class="bn" lang="bn">${fn(b.subbn,x)}</span>`:''}</p>`;
   if(b.compose) h+=composeCard(x,b);
   if(b.check) h+=checkCard(x,b);
   if(b.decide) h+=decideCard(x,b);
   if(b.card) h+=cardHTML(fn(b.card,x),x);
+  if(b.talk) h+=talkCard(x,b);
   const docs=fn(b.docs,x); if(docs&&docs.length) h+=docStrip(docs);
-  body.innerHTML=h; body.scrollTop=0;
+  body.innerHTML=h; body.scrollTop=0; paintTimer();
   // open as an overlay sheet on phones when the beat is a "think" moment
-  coach.classList.toggle('open',!!b.open);
+  coach.classList.toggle('open',!!(b.open||b.wide));
   // actions
   const stIdx=L.stages.findIndex(s=>s.id===b.stage);
   const inStage=L.beats.map((bb,i)=>[bb,i]).filter(([bb])=>bb.stage===b.stage);
@@ -372,17 +386,13 @@ function hubCoach(){
   const body=$('#cbody'),act=$('#cact'); $('#coach').classList.remove('open'); renderBand(null,null); $('#c-head').textContent="Ayesha's Phone";
   const done=k=>{const c=S.ch[k];return c&&c._finished};
   body.innerHTML=`<div class="kick"><span>Start here</span></div>
-   <p class="say">This is Ayesha's phone. Learn AI by doing real tasks on it.</p><span class="bn" lang="bn">এটা আয়েশার ফোন। বাস্তব কাজ করে করে AI ব্যবহার শেখো।</span>
-   <div class="card"><div class="who"><span class="av">A</span><div><b>Ayesha Rahman</b><span>3rd-year Economics · Rajshahi University</span></div></div>
-   <div class="facts"><span>CGPA 3.58</span><span>IELTS mock 6.0</span><span>RUCEI volunteer tutor</span><span>Goal: fully funded master's</span></div></div>
-   <p class="sub">Pick one message on her phone — or here.${S.bn?'':''}<span class="bn" lang="bn">ফোনে একটা মেসেজ বেছে নাও — অথবা এখানে।</span></p>
-   <button class="pcard" data-c="intro" style="margin-top:10px;width:100%;border-color:var(--gold);background:var(--gold-soft)"><span class="pi" style="background:var(--forest);color:var(--gold-light)">▶</span><span><em>Start here · projector</em><b>Watch: the four Ds</b><span>A 2-minute animation: the four Ds as two interlocking loops.</span><span class="bn" lang="bn">২ মিনিটের অ্যানিমেশন: চারটা D, দুটো জোড়া চক্র।</span></span></button>
+   <div class="sayrow"><p class="say">This is Ayesha’s phone. Learn AI — and English — by doing real tasks.</p>${sayBtn('This is Ayesha’s phone. Learn AI, and English, by doing real tasks.')}</div><span class="bn" lang="bn">এটা আয়েশার ফোন। বাস্তব কাজ করে করে AI — আর ইংরেজি — শেখো।</span>
+   <div class="hows"><span>🎧<b>Listen</b><span class="bn" lang="bn">শোনো</span></span><span>🗣<b>Talk</b><span class="bn" lang="bn">বলো</span></span><span>📱<b>Tap</b><span class="bn" lang="bn">চাপো</span></span></div>
+   <h3 class="hh">How are you working?<span class="bn" lang="bn">তুমি কীভাবে কাজ করছ?</span></h3>${modeButtons()}
+   <button class="pcard" data-c="intro" style="margin-top:12px;width:100%;border-color:var(--gold);background:var(--gold-soft)"><span class="pi" style="background:var(--forest);color:var(--gold-light)">▶</span><span><em>Start here · projector</em><b>Watch: the four Ds</b><span>Two minutes. Four gears, two loops.</span><span class="bn" lang="bn">দুই মিনিট। চারটা গিয়ার, দুটো চক্র।</span></span></button>
    <div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard" data-start="${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${esc(L.blurb)}</span>${L.blurbbn?`<span class="bn" lang="bn">${L.blurbbn}</span>`:''}</span>${done(id)?'<span class="done">✓ Done</span>':''}</button>`}).join('')}</div>
-   <div class="card"><h3>Watch the gears<span class="bn" lang="bn">গিয়ারগুলোতে চোখ রাখো</span></h3><p class="sub" style="margin-top:0">At every step, one gear lights up and turns: the D Ayesha is using. Before each new D, the coach tells you <b>why</b>.<span class="bn" lang="bn">প্রতিটি ধাপে একটা গিয়ার জ্বলে ওঠে আর ঘোরে: আয়েশা যে D ব্যবহার করছে। নতুন D শুরুর আগে কোচ বলে দেয় কেন।</span></p>${D4.legend({compact:true})}${D4.loopsNote()}</div>
-   <div class="card"><h3>Two layers</h3><ul class="plist">
-     <li><span class="ic">📱</span><span><b>Below:</b> the phone. It works like a real Android phone.<span class="bn" lang="bn">নিচে: ফোন। এটা আসল অ্যান্ড্রয়েড ফোনের মতো কাজ করে।</span></span></li>
-     <li><span class="ic">🧭</span><span><b>Above:</b> your coach. One step at a time. The gold ring shows where to tap.<span class="bn" lang="bn">উপরে: তোমার কোচ। এক ধাপ করে। সোনালি বৃত্ত দেখায় কোথায় চাপতে হবে।</span></span></li>
-     <li><span class="ic">▶</span><span><b>Stuck?</b> Tap “Show me”. You can always go Next.<span class="bn" lang="bn">আটকে গেলে “Show me” চাপো। যেকোনো সময় Next চাপতে পারো।</span></span></li></ul></div>`;
+   <div class="card"><h3>Four gears, four ways to use English<span class="bn" lang="bn">চারটা গিয়ার, ইংরেজির চারটা কাজ</span></h3>
+    <div class="dphr">${['del','des','dis','dil'].map(d=>`<div class="dph d-${d}" data-say="${esc(D4.SAY[d].frames[0].en)}">${D4.badge(d,30)}<span><small>${D4.META[d].n}</small><span class="pq">${D4.SAY[d].fn}</span><span class="bn" lang="bn">${D4.SAY[d].fnbn}</span></span>${sayBtn(D4.SAY[d].frames[0].en)}</div>`).join('')}</div></div>`;
   act.innerHTML=`<span class="grow"></span><button class="btn quiet" data-c="menu">For the teacher</button>`;
 }
 
@@ -390,6 +400,9 @@ function hubCoach(){
 function cardHTML(c,x){
   if(!c) return '';
   if(c.type==='html') return c.html;
+  if(c.type==='words') return wordsCard(c);
+  if(c.type==='story') return storyCard(c);
+  if(c.type==='phrases') return phrasesCard(c);
   if(c.type==='info') return `<div class="card">${c.title?`<h3>${c.title}${c.titlebn?`<span class="bn" lang="bn">${c.titlebn}</span>`:''}</h3>`:''}${c.html||''}${c.points?`<ul class="plist">${c.points.map(p=>`<li><span class="ic">${p.i||'•'}</span><span>${p.en}${p.bn?`<span class="bn" lang="bn">${p.bn}</span>`:''}</span></li>`).join('')}</ul>`:''}</div>`;
   if(c.type==='sort'){
     const ans=x.get(c.key,{});
@@ -416,6 +429,73 @@ function cardHTML(c,x){
       <button class="listen" data-speak="${esc(c.lines.map(l=>l.en.replace(/<[^>]+>/g,'')).join(' '))}">🔊 Listen</button></div>`;
   }
   return '';
+}
+/* ---- listening & speaking cards ---- */
+const gapped=t=>esc(t).replace(/___/g,'<i class="gap"></i>');
+/* picture words: tap to hear the word and a short sentence with it */
+function wordsCard(c){
+  return `<div class="card words">${c.title?`<h3>${c.title}${c.titlebn?`<span class="bn" lang="bn">${c.titlebn}</span>`:''}</h3>`:''}<div class="wgrid">${c.items.map((w,i)=>`<button class="wtile" data-word="${i}" data-say="${esc(w.w+'. '+w.ex)}"><span class="we" aria-hidden="true">${w.e}</span><b>${esc(w.w)}</b><span class="wex">${esc(w.ex)}</span>${w.bn?`<span class="bn" lang="bn">${w.bn}</span>`:''}</button>`).join('')}</div></div>`;
+}
+/* a wordless story: pictures first, the narration is heard, the words come last */
+function storyCard(c){
+  return `<div class="card tale" id="story"><div class="tpanels">${c.panels.map((p,i)=>`<figure class="tpanel" data-pi="${i}" data-say="${esc(p.en)}"><div class="pe" aria-hidden="true">${p.e}</div><figcaption>${esc(p.en)}${p.bn?`<span class="bn" lang="bn">${p.bn}</span>`:''}</figcaption><span class="pn">${i+1}</span></figure>`).join('')}</div>
+   <div class="row"><button class="btn gold" data-story="play">▶ ${S.bn?'শোনো':'Listen'}</button><button class="btn quiet" data-story="words">${S.bn?'শব্দগুলো দেখাও':'Show the words'}</button></div></div>`;
+}
+/* today's four phrases, one per gear: listen and repeat */
+function phrasesCard(c){
+  return `<div class="card phrases"><div class="dphr">${['del','des','dis','dil'].filter(d=>c.items[d]).map(d=>{const it=c.items[d],m=D4.META[d];return `<div class="dph d-${d}" data-say="${esc(it.en)}">${D4.badge(d,34)}<span><small>${m.n} · ${m.v}</small><span class="pq">${gapped(it.en)}</span>${it.bn?`<span class="bn" lang="bn">${it.bn}</span>`:''}</span>${sayBtn(it.en)}</div>`}).join('')}</div>
+   <div class="row"><button class="btn gold" data-phrases="all">▶ ${S.bn?'সবগুলো শোনো, তারপর বলো':'Hear all four, then repeat'}</button></div></div>`;
+}
+/* play a list of elements one after another, lighting each while it is heard */
+function playSeq(els,cls,done){
+  let i=0; const my=++speakId;
+  const step=()=>{ if(my!==speakId) return; els.forEach(e=>e.classList.remove(cls)); if(i>=els.length){done&&done();return}
+    const el=els[i++]; el.classList.add(cls); el.scrollIntoView({block:'nearest',behavior:'smooth'});
+    speak(el.dataset.say,()=>setTimeout(step,S.mode==='class'?1100:700)); speakId=my; };
+  try{speechSynthesis.cancel()}catch(e){} step();
+}
+
+/* the talk moment: the same question, set up for how the class is working */
+const TALK_HEAD={
+ solo:{i:'🗣',en:'Say it out loud',bn:'জোরে জোরে বলো'},
+ pair:{i:'👥',en:'Talk to your partner',bn:'সঙ্গীর সাথে কথা বলো'},
+ class:{i:'🙋',en:'Talk to the person next to you',bn:'পাশের জনের সাথে কথা বলো'}
+};
+let TIMER={left:0,total:0,id:null};
+let REC={mr:null,chunks:[],url:null,on:false};
+function resetTalk(){ clearInterval(TIMER.id); TIMER={left:0,total:0,id:null}; if(REC.mr&&REC.on){try{REC.mr.stop()}catch(e){}} if(REC.url) URL.revokeObjectURL(REC.url); REC={mr:null,chunks:[],url:null,on:false}; }
+function talkCard(x,b){
+  const t=fn(b.talk,x); if(!t) return ''; const hd=TALK_HEAD[S.mode];
+  const roles=t.roles&&S.mode!=='solo'?`<div class="roles">${t.roles.map((r,i)=>`<span><b>${'AB'[i]}</b>${esc(r.en)}${r.bn?`<span class="bn" lang="bn">${r.bn}</span>`:''}</span>`).join('')}</div>`:'';
+  const solo=S.mode==='solo'?`<div class="rec">${REC.url?`<audio controls src="${REC.url}"></audio>`:''}<button class="btn ${REC.on?'':'quiet'}" data-rec="${REC.on?'stop':'start'}">${REC.on?'■ Stop':'● '+(REC.url?'Record again':'Record yourself')}</button>${REC.url?'':`<small>${S.bn?'নিজের কথা রেকর্ড করো, তারপর শোনো।':'Record, then listen back.'}</small>`}</div>`:'';
+  const timer=t.time&&S.mode!=='solo'?`<button class="ttimer" data-tt="${t.time}" aria-label="Timer"><span class="ttbar"></span><span class="tt">⏱ ${Math.floor(t.time/60)}:${String(t.time%60).padStart(2,'0')}</span></button>`:'';
+  return `<div class="card talk ${t.big?'big':''}"><div class="talk-h"><span class="ti" aria-hidden="true">${hd.i}</span><b>${hd.en}<span class="bn" lang="bn">${hd.bn}</span></b>${timer}</div>
+   ${t.q?`<p class="tq">${t.pic?`<span class="tpic" aria-hidden="true">${t.pic}</span>`:''}<span>${esc(t.q)}${t.qbn?`<span class="bn" lang="bn">${t.qbn}</span>`:''}</span>${sayBtn(t.q)}</p>`:''}
+   ${roles}
+   <div class="frames">${(t.frames||[]).map(f=>`<div class="fr" data-say="${esc(f.en)}"><span>${gapped(f.en)}${f.bn?`<span class="bn" lang="bn">${f.bn}</span>`:''}</span>${sayBtn(f.en)}</div>`).join('')}</div>
+   ${t.model?`<button class="model" data-speak="${esc(t.model)}">🎧 ${S.bn?'একটা উদাহরণ শোনো':'Hear an example'}</button><p class="model-t" hidden>${esc(t.model)}</p>`:''}
+   ${solo}</div>`;
+}
+function paintTimer(){
+  const el=$('#cbody .ttimer'); if(!el||!TIMER.total) return;
+  const l=Math.max(0,TIMER.left); $('.tt',el).textContent=(l?'⏱ ':'✓ ')+Math.floor(l/60)+':'+String(l%60).padStart(2,'0');
+  $('.ttbar',el).style.width=(100*(TIMER.total-l)/TIMER.total)+'%'; el.classList.toggle('run',!!TIMER.id); el.classList.toggle('end',l===0);
+}
+function chime(){ try{ const a=new (window.AudioContext||window.webkitAudioContext)(); [660,880].forEach((f,i)=>{const o=a.createOscillator(),g=a.createGain();o.frequency.value=f;o.connect(g);g.connect(a.destination);const t0=a.currentTime+i*.22;g.gain.setValueAtTime(.0001,t0);g.gain.exponentialRampToValueAtTime(.25,t0+.02);g.gain.exponentialRampToValueAtTime(.0001,t0+.5);o.start(t0);o.stop(t0+.55)}); }catch(e){} }
+function toggleTimer(sec){
+  if(TIMER.id){ clearInterval(TIMER.id); TIMER.id=null; paintTimer(); return; }
+  if(!TIMER.total||TIMER.left<=0) TIMER={left:sec,total:sec,id:null};
+  hush(); TIMER.id=setInterval(()=>{ TIMER.left--; if(TIMER.left<=0){ clearInterval(TIMER.id); TIMER.id=null; chime(); } paintTimer(); },1000); paintTimer();
+}
+async function recToggle(kind){
+  if(kind==='stop'){ if(REC.mr) REC.mr.stop(); return; }
+  try{
+    hush(); const st=await navigator.mediaDevices.getUserMedia({audio:true});
+    REC.chunks=[]; REC.mr=new MediaRecorder(st); REC.on=true;
+    REC.mr.ondataavailable=e=>REC.chunks.push(e.data);
+    REC.mr.onstop=()=>{ st.getTracks().forEach(t=>t.stop()); REC.on=false; if(REC.url) URL.revokeObjectURL(REC.url); REC.url=URL.createObjectURL(new Blob(REC.chunks,{type:REC.mr.mimeType||'audio/webm'})); renderCoachKeep(); };
+    REC.mr.start(); renderCoachKeep();
+  }catch(e){ REC.on=false; const r=$('#cbody .rec'); if(r) r.innerHTML=`<small>${S.bn?'মাইক্রোফোন পাওয়া যায়নি। জোরে বলো — নিজের কানে শোনো।':'No microphone here. Say it out loud anyway — listen to yourself.'}</small>`; }
 }
 function composeCard(x,b){
   const c=fn(b.compose,x); const val=x.get(c.key,c.prefill||'');
@@ -511,15 +591,29 @@ function go(i,anim=true){
   const L=LESSONS[S.lesson]; if(!L) return;
   if(S.finishStream) S.finishStream();
   if(VIEW) closeView();
-  S.beat=Math.max(0,Math.min(L.beats.length-1,i)); save();
+  const moved=S.beat!==i||anim; S.beat=Math.max(0,Math.min(L.beats.length-1,i)); save();
+  resetTalk(); hush();
   const x=ctx(); if(x.beat.enter) x.beat.enter(x);
+  document.body.classList.toggle('wide',!!x.beat.wide);
   renderPhone(anim); renderCoach();
+  if(S.voice&&moved) autoVoice(x);
   if(x.beat.auto){ const at=S.beat; setTimeout(()=>{ if(S.beat===at&&S.lesson===L.id) go(S.beat+1) },x.beat.auto) }
 }
 function next(force){ const x=ctx(); if(!force&&S.streaming&&S.finishStream){S.finishStream();return} if(x.beat.leave) x.beat.leave(x); if(S.beat>=x.L.beats.length-1){ x.set('_finished',true); hub(); return } go(S.beat+1) }
 function back(){ if(S.beat===0){hub();return} go(S.beat-1) }
 function start(id){ S.lesson=id; S.beat=0; prevScene=null; maybeFullscreen(); go(0); }
-function hub(){ S.lesson=null; S.beat=0; save(); prevScene=null; renderHubPhone(); renderCoach(); }
+function hub(){ S.lesson=null; S.beat=0; save(); prevScene=null; resetTalk(); hush(); document.body.classList.remove('wide'); renderHubPhone(); renderCoach(); }
+/* the coach reads each new step aloud; a story or a phrase set then plays itself */
+function autoVoice(x){
+  const at=S.beat, L=S.lesson; const b=x.beat; const c=fn(b.card,x)||{};
+  setTimeout(()=>{ if(S.beat!==at||S.lesson!==L) return;
+    const say=$('#cbody .say'); const t=say?say.textContent:'';
+    const then=()=>{ if(S.beat!==at||S.lesson!==L) return;
+      if(c.type==='story') playSeq($$('#story .tpanel'),'lit');
+      else { const tk=fn(b.talk,x); if(tk&&tk.q&&tk.q!==t) speak(tk.q); } };
+    if(t) speak(t,()=>setTimeout(then,450)); else then();
+  },350);
+}
 function renderHubPhone(){
   const scr=$('#screen'); $('#kb').hidden=true; const dev=$('#device');
   dev.style.background='radial-gradient(130% 80% at 20% 0%,#C9B8F2 0,#8C77C9 40%,#3C2E6B 100%)';
@@ -584,6 +678,7 @@ function renderCoachKeep(){ const k=$('#cbody').scrollTop; renderCoach(); $('#cb
 /* ------------------------------------------------------------- coach clicks */
 function onCoachClick(e){
   const dv=e.target.closest('[data-view]'); if(dv){openView(dv.dataset.view,dv.dataset.mark);return}
+  const mdc=e.target.closest('[data-mode]'); if(mdc){ setMode(mdc.dataset.mode); return; }
   const c=e.target.closest('[data-c]'); const st=e.target.closest('[data-start]');
   if(st){ start(st.dataset.start); return; }
   if(c){ const a=c.dataset.c; if(a==='next')next(); else if(a==='back')back(); else if(a==='show')showMe(); else if(a==='menu')openMenu(); else if(a==='intro')openIntro(); return; }
@@ -594,9 +689,32 @@ function onCoachClick(e){
   const ch=e.target.closest('[data-choice]'); if(ch){ const [k,i]=ch.dataset.choice.split('|'); x.set(k,+i); renderCoachKeep(); return; }
   const tk=e.target.closest('[data-tick]'); if(tk){ const [k,i]=tk.dataset.tick.split('|'); const a=x.get(k,{}); a[i]=!a[i]; x.set(k,a); renderCoachKeep(); return; }
   const vd=e.target.closest('[data-verd]'); if(vd){ const [k,id,v]=vd.dataset.verd.split('|'); const a=x.get(k,{}); a[id]=v; x.set(k,a); renderPhone(false); renderCoachKeep(); if(innerWidth<900){const cb=$('#cbody'); cb.scrollTo({top:cb.scrollHeight,behavior:'smooth'})} return; }
-  const sp=e.target.closest('[data-speak]'); if(sp){ speak(sp.dataset.speak); return; }
+  const sp=e.target.closest('[data-speak]'); if(sp){ speak(sp.dataset.speak); sp.classList.add('speaking'); if(sp.classList.contains('model')){const t=sp.nextElementSibling; if(t) t.hidden=false;} return; }
+  const wd=e.target.closest('[data-word]'); if(wd){ wd.classList.add('open'); speak(wd.dataset.say); wd.classList.add('speaking'); return; }
+  const sy=e.target.closest('[data-story]'); if(sy){ const card=$('#story'); if(sy.dataset.story==='words'){ card.classList.toggle('words-on'); } else playSeq($$('.tpanel',card),'lit'); return; }
+  const pa=e.target.closest('[data-phrases]'); if(pa){ playSeq($$('#cbody .dph'),'lit'); return; }
+  const tt=e.target.closest('[data-tt]'); if(tt){ toggleTimer(+tt.dataset.tt); return; }
+  const rc=e.target.closest('[data-rec]'); if(rc){ recToggle(rc.dataset.rec); return; }
+  const ds=e.target.closest('[data-say]'); if(ds){ speak(ds.dataset.say); ds.classList.add('speaking'); return; }
 }
-function speak(t){ try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(t); u.lang='en-GB'; u.rate=.9; speechSynthesis.speak(u);}catch(e){} }
+/* ---- listening: everything the coach says can be heard. Spoken sentence by
+   sentence, because Chrome cuts long utterances off. English always — listening
+   is the English task, Bangla is there to read. ---- */
+let voiceEN=null, speakId=0;
+function pickVoice(){ try{ const vs=speechSynthesis.getVoices(); voiceEN=vs.find(v=>/en[-_]IN/i.test(v.lang))||vs.find(v=>/en[-_]GB/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null; }catch(e){} }
+const plain=t=>String(t||'').replace(/<span class="bn"[^>]*>.*?<\/span>/g,' ').replace(/<[^>]+>/g,' ').replace(/___/g,' blank ').replace(/&amp;/g,'&').replace(/&[a-z]+;/g,' ').replace(/\s+/g,' ').trim();
+function speak(t,onEnd){
+  try{
+    speechSynthesis.cancel(); const my=++speakId; $$('.speaking').forEach(e=>e.classList.remove('speaking'));
+    const parts=plain(t).match(/[^.!?…]+[.!?…]*/g)||[]; if(!parts.length){onEnd&&onEnd();return}
+    if(!voiceEN) pickVoice();
+    parts.forEach((p,i)=>{ const u=new SpeechSynthesisUtterance(p.trim()); u.lang=voiceEN?voiceEN.lang:'en-GB'; if(voiceEN)u.voice=voiceEN; u.rate=S.mode==='class'?.82:.88;
+      if(i===parts.length-1) u.onend=()=>{ if(my===speakId){ $$('.speaking').forEach(e=>e.classList.remove('speaking')); onEnd&&onEnd(); } };
+      speechSynthesis.speak(u); });
+  }catch(e){ onEnd&&onEnd(); }
+}
+function hush(){ speakId++; try{speechSynthesis.cancel()}catch(e){} $$('.speaking').forEach(e=>e.classList.remove('speaking')); }
+const sayBtn=(text,label)=>`<button class="ear" data-speak="${esc(plain(text))}" aria-label="${label||'Listen'}">🔊</button>`;
 
 /* ------------------------------------------------------------- Show me (ghost finger) */
 function ghostTo(el,cb){
@@ -634,24 +752,46 @@ function openMenu(){
   m.innerHTML=`<div class="panel" role="dialog" aria-label="Menu"><div style="display:flex;justify-content:space-between;align-items:center"><h2>AI Fluency Lab</h2><button class="iconbtn" data-m="close" aria-label="Close">${ico('close')}</button></div>
    <h3>Workflows</h3><div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard" data-m="start:${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${esc(L.time||'')}</span></span></button>`}).join('')}</div>
    <div class="row" style="margin-top:12px"><button class="btn gold" data-m="intro">▶ The four Ds (animation)</button><button class="btn quiet" data-m="legend">The four Ds (gears)</button><button class="btn quiet" data-m="hub">Ayesha's lock screen</button><button class="btn quiet" data-m="stage">${S.stage?'Leave':'Present on'} projector (P)</button><button class="btn quiet" data-m="fs">Full screen</button><button class="btn quiet" data-m="print">Paper version</button><button class="btn quiet" data-m="reset">Start over</button></div>
+   <h3>How are you working?</h3>${modeButtons()}
    <h3>For the teacher</h3>
-   <p>Each workflow is one class period (35–45 min). Students work in pairs on one phone: one taps, one reads the coach aloud. Swap at every stage.</p>
-   <p>The four Ds (Delegation, Description, Discernment, Diligence) come from the AI Fluency framework by Rick Dakan, Joseph Feller and Anthropic. Each stage is coloured by the D it practises.</p>
-   <p>Start the class with <b>The four Ds</b> animation on the projector (about 2 minutes; Space pauses, → skips, B shows Bangla, speed 0.75× for slower readers). Pause on each loop and ask: “What would you ask before using AI for your own assignment?” The film teaches the theory only — the phone workflows are where students apply it.</p>
-   <p>Nothing is locked. “Show me” plays any step, so you can demonstrate on the projector, then let pairs repeat it.</p>
-   <p>The AI replies are scripted. They copy what real AI assistants do with prompts like these — including the mistakes students must learn to catch. No data leaves the phone and no account is needed.</p>
+   <p><b>Every workflow has two halves.</b> It opens with a <b>warm-up for the projector</b>: picture words, a story told in pictures, and the four phrases of the day. Play each one; the class listens, then repeats. Then the phone work starts, and you choose how the class does it:</p>
+   <ul class="tlist"><li><b>👥 Pairs</b> — one phone, two students. One taps, one reads the coach aloud; swap at every gear. At each 🗣 talk moment they use the phrases on screen; press the timer (T) for a minute of talk.</li>
+   <li><b>🙋 Class</b> — you drive the phone on the projector (large text). At each talk moment, neighbours turn and talk while the timer runs; then take two or three answers before you tap Next.</li>
+   <li><b>👤 Alone</b> — homework. The coach reads every step aloud, and at each talk moment the student records their answer and plays it back.</li></ul>
+   <p><b>The four Ds are also four jobs for English</b>: Delegation = planning and sharing jobs (<i>I will… The AI can…</i>); Description = clear instructions (<i>Use only… If…, ask me first</i>); Discernment = judging and disagreeing politely (<i>That’s not true. Her report says…</i>); Diligence = limits and responsibility (<i>I won’t share… It’s private</i>). When a gear turns, the coach shows that D’s phrase. “Why now?” opens the reason — read it with the class if they need it.</p>
+   <p>The four Ds come from the AI Fluency framework by Rick Dakan, Joseph Feller and Anthropic. The theory film (<b>▶ The four Ds</b>) runs about 2 minutes; use it before the first workflow.</p>
+   <p>Nothing is locked. “Show me” plays any step. The coach reads aloud (🔊 / V to turn off). The AI replies are scripted from real assistants, mistakes included. No data leaves the phone.</p>
    <p>Students without a phone: use the Paper version (one A4 page per workflow).</p>
-   <h3>Keys</h3><p>→ next · ← back · S show me · P projector · B Bangla</p>
+   <h3>Keys</h3><p>→ next · ← back · S show me · T talk timer · V read aloud · P projector · B Bangla</p>
    <h3>Credits</h3><p style="font-size:12.5px;color:var(--ink-muted)">Framework: AI Fluency by Rick Dakan, Joseph Feller and Anthropic (CC BY-NC-SA 4.0). Ayesha Rahman and all her documents are fictional classroom materials. Orbit, Sathi and Studio are invented apps modelled on real ones (Meta Muse and Grok Bot; Gemini, ChatGPT and Claude; Google AI Studio). No affiliation is implied.</p></div>`;
 }
 function onMenuClick(e){
+  const md=e.target.closest('[data-mode]'); if(md){ setMode(md.dataset.mode); closeMenu(); return; }
   const t=e.target.closest('[data-m]'); if(!t){ if(e.target.id==='menu') closeMenu(); return }
-  const a=t.dataset.m; closeMenu(); if(a==='legend'){ openLegend(); return; }
+  const a=t.dataset.m; if(a==='voice'){ setVoice(!S.voice); openModes(); return; } closeMenu(); if(a==='legend'){ openLegend(); return; }
   if(a.startsWith('start:')) start(a.slice(6)); else if(a==='hub') hub(); else if(a==='stage') toggleStage(); else if(a==='fs') toggleFS(); else if(a==='print') location.href='print.html'; else if(a==='intro') openIntro();
   else if(a==='reset'){ S.ch={}; save(); hub(); }
 }
 function openIntro(){ if(window.INTRO) INTRO.open({bn:S.bn,fullscreen:matchMedia('(min-width:900px)').matches,onExit:()=>{ if(location.hash==='#intro') history.replaceState(null,'',location.pathname+location.search) }}); }
 function closeMenu(){ $('#menu').hidden=true; }
+function modeButtons(){ return `<div class="modes" role="group" aria-label="How are you working?">${Object.keys(MODES).map(k=>{const m=MODES[k];return `<button class="mode ${S.mode===k?'on':''}" data-mode="${k}" aria-pressed="${S.mode===k}"><span class="mi2" aria-hidden="true">${m.i}</span><b>${m.n}<span class="bn" lang="bn">${m.bn}</span></b><small>${m.d}<span class="bn" lang="bn">${m.dbn}</span></small></button>`}).join('')}</div>`; }
+function openModes(){
+  const m=$('#menu'); m.hidden=false;
+  m.innerHTML=`<div class="panel" role="dialog" aria-label="How are you working?"><div style="display:flex;justify-content:space-between;align-items:center"><h2>How are you working?<span class="bn" lang="bn">তুমি কীভাবে কাজ করছ?</span></h2><button class="iconbtn" data-m="close" aria-label="Close">${ico('close')}</button></div>
+   ${modeButtons()}<p class="sub">${S.bn?'যেকোনো সময় বদলাতে পারো। এতে শুধু কথা বলার অংশগুলো বদলায়।':'Change it any time. Only the talking parts change.'}</p>
+   <button class="btn quiet" data-m="voice" style="margin-top:10px">${S.voice?'🔊 The coach reads aloud — turn off':'🔇 The coach is silent — read aloud'}</button></div>`;
+}
+let stageByMode=false;
+function setMode(k){
+  if(!MODES[k]) return; S.mode=k; savePrefs();
+  ['solo','pair','class'].forEach(z=>document.body.classList.toggle('mode-'+z,z===k));
+  if(k==='class'&&!S.stage){ stageByMode=true; toggleStage(); }
+  else if(k!=='class'&&S.stage&&stageByMode){ stageByMode=false; toggleStage(); }
+  paintHeader(); resetTalk(); renderCoachKeep();
+}
+function setVoice(on){ S.voice=on; savePrefs(); if(!on) hush(); paintHeader(); }
+function paintHeader(){ const b=$('#btn-mode'); if(b){ b.innerHTML=`<span aria-hidden="true">${MODES[S.mode].i}</span><span class="ml">${MODES[S.mode].n}</span>`; b.title='How are you working? '+MODES[S.mode].n; }
+  const v=$('#btn-voice'); if(v){ v.textContent=S.voice?'🔊':'🔇'; v.setAttribute('aria-pressed',S.voice); v.title=S.voice?'The coach reads aloud (V)':'The coach is silent (V)'; } }
 function toggleStage(){ S.stage=!S.stage; document.body.classList.toggle('stage',S.stage); fit(); }
 function toggleFS(){ try{ document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen({navigationUI:'hide'}) }catch(e){} }
 function maybeFullscreen(){ try{ if(matchMedia('(pointer:coarse)').matches&&innerWidth<900&&document.documentElement.requestFullscreen&&!document.fullscreenElement) document.documentElement.requestFullscreen({navigationUI:'hide'}).catch(()=>{}) }catch(e){} }
@@ -671,7 +811,10 @@ function tickClock(){ $('#sb').innerHTML=`<span>${now()}</span><span class="ico"
 
 /* ------------------------------------------------------------- boot */
 function boot(){
-  load();
+  load(); loadPrefs();
+  ['solo','pair','class'].forEach(z=>document.body.classList.toggle('mode-'+z,z===S.mode));
+  if(S.mode==='class'){ stageByMode=true; S.stage=true; document.body.classList.add('stage'); }
+  if('speechSynthesis' in window){ pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; }
   document.body.classList.toggle('bangla',S.bn); $('#lang-en').setAttribute('aria-pressed',!S.bn); $('#lang-bn').setAttribute('aria-pressed',S.bn);
   tickClock(); setInterval(tickClock,15000);
   $('#device').addEventListener('click',onPhoneClick);
@@ -679,13 +822,16 @@ function boot(){
   $('#menu').addEventListener('click',onMenuClick);
   $('#btn-menu').addEventListener('click',openMenu);
   $('#dband').addEventListener('click',openLegend);
+  $('#btn-mode').addEventListener('click',openModes);
+  $('#btn-voice').addEventListener('click',()=>setVoice(!S.voice));
+  paintHeader();
   $('#lang-en').addEventListener('click',()=>setBn(false));
   $('#lang-bn').addEventListener('click',()=>setBn(true));
   addEventListener('resize',fit); fit();
   addEventListener('keydown',e=>{
     if(e.target.matches('textarea,input')) return;
     if(e.key==='ArrowRight'&&S.lesson) next(); else if(e.key==='ArrowLeft'&&S.lesson) back();
-    else if(e.key==='s'||e.key==='S'){ if(S.lesson) showMe(); } else if(e.key==='p'||e.key==='P') toggleStage(); else if(e.key==='b'||e.key==='B') setBn(!S.bn);
+    else if(e.key==='s'||e.key==='S'){ if(S.lesson) showMe(); } else if(e.key==='p'||e.key==='P') toggleStage(); else if(e.key==='b'||e.key==='B') setBn(!S.bn); else if(e.key==='v'||e.key==='V') setVoice(!S.voice); else if(e.key==='t'||e.key==='T'){ const tt=$('#cbody .ttimer'); if(tt) toggleTimer(+tt.dataset.tt); }
     else if(e.key==='Escape') closeMenu();
   });
   const fromHash=()=>{ if(location.hash==='#intro'){ openIntro(); return true }const h=(location.hash||'').slice(1); const m=h.match(/^(\w+)(?:\/(\d+))?$/); if(m&&LESSONS[m[1]]){ S.lesson=m[1]; prevScene=null; go(m[2]?+m[2]:0,false); return true } return false};
@@ -693,5 +839,5 @@ function boot(){
   if(!fromHash()){ if(S.lesson&&LESSONS[S.lesson]) go(S.beat,false); else hub(); }
 }
 
-window.AFL={recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,next,ctx,renderPhone:()=>renderPhone(false),renderCoach,start,hub,STORY_DATE};
+window.AFL={byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,next,ctx,renderPhone:()=>renderPhone(false),renderCoach,start,hub,STORY_DATE};
 })();

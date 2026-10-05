@@ -45,6 +45,18 @@ A beat’s D is `b.d` or its stage’s D; `d:'none'` marks story beats where no 
 - `print.html` — one single-sided A4 page per workflow for students without a phone.
 - **Her documents are always one tap away.** Attachments in the chat open in an Android-style document viewer (drag to pan, pinch / Ctrl+scroll / + − to zoom, double-click to zoom on a spot), beats can show a "Ayesha's documents" strip (`docs:[ids]`), and in Check each AI line has **Where to look** buttons that open the right document zoomed to a gold box around the evidence (`look:[{f,m:'x,y,w,h;…',t}]`, percentages of the page image). The box shows *where* to read, not the answer.
 
+## Teaching English and AI fluency together
+
+Each D is also a job you do with English (`D4.SAY` in `compass.js`): **Delegation** = planning and sharing jobs (*I will ___. The AI can ___.*), **Description** = clear instructions (*Use only ___. If ___, ask me first.*), **Discernment** = judging and disagreeing politely (*That's not true. ___ says ___.*), **Diligence** = limits and responsibility (*I won't share ___. It's private.*). When a gear turns, the coach shows that D's phrase with a 🔊 button; the reason ("Why now?") waits behind a tap, so the screen shows rather than tells. A beat can give its own phrase with `frame:{en,bn}`.
+
+**Two halves per workflow.** It opens with a **warm-up for the projector** (`wide:true` beats fill the screen on a laptop or projector and cover the phone on a handset): picture words (`card:{type:'words'}` — tap to hear the word and a sentence), a story told in pictures and heard before it is read (`card:{type:'story'}`), the four phrases of the day (`card:{type:'phrases'}` — listen and repeat), and a first talk question. Then the phone work.
+
+**Three ways to work** (header pill, hub, menu; kept per device in `localStorage['afl-prefs']`): 👤 **Alone** (homework — talk moments offer *Record yourself* and play back), 👥 **Pairs** (one phone, two students; talk moments have a one-minute timer and A/B roles), 🙋 **Class** (teacher drives on the projector: switches on the large projector type, talk moments say *turn to the person next to you*). Only the talk moments change; the AI fluency content is identical. Nothing is locked in any mode.
+
+**Talk moments** (`talk:{q, qbn, frames:[{en,bn}], model, time, roles, pic, big}`) sit on any beat, alone or under a card: a question, sentence frames with gaps, an example answer to hear, and an optional timer (T). **Listening:** the coach reads each new step aloud in English (🔊 in the header, or V, turns it off) — sentence by sentence, because Chrome cuts long speech off; it prefers an en-IN voice, then en-GB.
+
+The CV workflow is the first rebuilt this way (29 beats: 4 warm-up, 7 talk moments). Agent and Build still use the older flow — they get the default phrase on each gear change, but no warm-up or talk moments yet. The story panels are emoji for now; like Culture Circles, they can become wordless comic panels.
+
 ## The four Ds — onboarding animation
 
 `intro.js` + `intro.css`: a 1920×1080 motion graphic for the projector (about 2 minutes, seven scenes) on the theory of the framework: the four Ds as two interlocking loops — Delegation ⇄ Diligence (the big decisions) and Description ⇄ Discernment (the conversation), with the course's own sub-questions and one neutral example (studying for an exam). It deliberately does not preview the phone workflows. Open it from the start screen ("Watch: the four Ds"), the menu, or `/ai-fluency/#intro`. Space pauses, ← → step through scenes, B shows Bangla captions, speed 0.75× for slower readers. The gold ring is the mascot — the human eye that makes every connection.
@@ -62,7 +74,7 @@ Every movement is a Web Animation built from `data-a="anim start [duration]"` at
 
 ### Beat shape
 
-Each lesson is `{id, title, stages[], beats[]}`. A beat has `stage`, `say`/`bn`, a `scene` (the phone's state — `{app:'sathi', msgs, composer, kb, sheet, dialog…}`) and one interaction: `tap` (a `data-hit` target), `compose` (prompt recipe with chips), `pickShow` (file picker), `decide` (options on the phone), `check` (verdicts on AI lines) or a coach `card` (`info`, `sort`, `choice`, `checklist`, `say`). Any field may be a function of `ctx`. `interrupt:true` lets a tap (Studio’s ■ Stop) cut a streaming reply short instead of finishing it; Studio’s stop bar comes from `scene.stopHit`, and `msg.speed` slows a stream. Deep links: `#cv/12`, `#agent/0`, `#build/7`.
+Each lesson is `{id, title, stages[], beats[]}`. A beat has `stage`, `say`/`bn`, a `scene` (the phone's state — `{app:'sathi', msgs, composer, kb, sheet, dialog…}`) and one interaction: `tap` (a `data-hit` target), `compose` (prompt recipe with chips), `pickShow` (file picker), `decide` (options on the phone), `check` (verdicts on AI lines) or a coach `card` (`info`, `sort`, `choice`, `checklist`, `say`, `words`, `story`, `phrases`). `talk` adds a talk moment; `wide` makes a projector beat; `frame` sets the phrase shown when the gear turns. Any field may be a function of `ctx`. `interrupt:true` lets a tap (Studio’s ■ Stop) cut a streaming reply short instead of finishing it; Studio’s stop bar comes from `scene.stopHit`, and `msg.speed` slows a stream. Deep links: `#cv/12`, `#agent/0`, `#build/7`.
 
 ### Replacing scripted replies with real captures
 
