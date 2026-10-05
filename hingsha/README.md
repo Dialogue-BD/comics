@@ -1,5 +1,14 @@
 # Hingsha narrated comic
 
+## Live classroom storytelling
+
+Tell it live opens `classroom.html`: the five complete reviewed comic pages
+with manual scrolling or dragging, zoom, page navigation, and fullscreen.
+No narration is loaded and no captions are shown. The teacher tells the story
+at their own pace, then the Student listening link opens the recorded three
+listening passes for learners at their desks. The two story activities share
+the silent viewer code in `../comic-classroom/`.
+
 `story.js` is the source of truth for the English script, visual sequence,
 camera cues, language notes, and TTS direction. The player keeps the words on
 the comic as synchronized captions and moves a virtual camera through the full

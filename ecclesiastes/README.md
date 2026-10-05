@@ -10,6 +10,13 @@ The listening passes match Hingsha:
 2. Follow the words: captions over the comic with a persistent word follower.
 3. Explore phrases: the same captions with English and Bangla explanations.
 
+**Tell it live** opens `classroom.html`, a separate, silent classroom viewer.
+The teacher can scroll or drag through the complete comic, select a page,
+zoom, fit its width or show the whole page, and enter fullscreen. No recording
+is loaded. Arrow keys and Page Up/Down on the comic navigate pages; +/- zoom.
+The Student listening link returns to the three recorded listening passes
+for independent smartphone practice. Both views share the reviewed artwork.
+
 The complete current page remains available through Whole page. A chapter
 selector provides direct access to all ten pages. Portrait and landscape use
 camera rectangles in the complete page's own coordinate system. The original
