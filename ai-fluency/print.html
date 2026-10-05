@@ -24,6 +24,11 @@ body{margin:0;background:#DCD5BF;font-family:'Public Sans',system-ui,sans-serif;
 .intro{background:var(--mist);border-left:3px solid var(--gold);padding:1.6mm 2.6mm;border-radius:2px}
 .bn{font-family:'Noto Sans Bengali',sans-serif;color:var(--muted);font-size:7.6pt}
 h2{font-family:Spectral,serif;font-size:10.5pt;color:var(--forest);margin:0 0 1mm;display:flex;align-items:center;gap:6px}
+h2 i::before{font-weight:800;margin-right:1.2mm}
+.del h2 i::before{content:"N"}.des h2 i::before{content:"W"}.dis h2 i::before{content:"E"}.dil h2 i::before{content:"S"}
+.cmp{display:flex;align-items:center;gap:1.6mm;font-size:6.1pt;line-height:1.12;color:var(--muted)}
+.cmp svg{width:11mm;height:11mm;flex:none}
+.cmp b{color:var(--ink)}
 h2 i{font-style:normal;font-family:'Public Sans';font-size:6.8pt;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--c);padding:.5mm 1.8mm;border-radius:99px}
 h2 b{display:inline-grid;place-items:center;width:5mm;height:5mm;border-radius:99px;background:var(--forest);color:#fff;font:700 7.5pt 'Public Sans'}
 .box{border:1px solid var(--rule);border-radius:2mm;padding:1.8mm 2.4mm}
@@ -58,7 +63,7 @@ td.c{text-align:center;width:11mm;font-size:10pt;color:#999}
 
 <!-- ============ SHEET 1: CV ============ -->
 <section class="sheet">
- <div class="hd"><img src="../brand/dialogue-logo.png" alt="Dialogue"><h1><small>AI Fluency Lab · Workflow 1</small>An honest CV with AI</h1><div class="nm">Name <b></b><br>Partner <b></b></div></div>
+ <div class="hd"><img src="../brand/dialogue-logo.png" alt="Dialogue"><h1><small>AI Fluency Lab · Workflow 1</small>An honest CV with AI</h1><div class="cmp"><svg viewBox="0 0 100 100" aria-hidden="true"><rect x="32" y="3" width="36" height="94" rx="18" fill="none" stroke="#ccc" stroke-width="1.5"/><rect x="3" y="32" width="94" height="36" rx="18" fill="none" stroke="#ccc" stroke-width="1.5"/><g font-family="Public Sans,sans-serif" font-weight="800" font-size="13" fill="#fff" text-anchor="middle"><circle cx="50" cy="20" r="14" fill="#8A5610"/><text x="50" y="25">N</text><circle cx="20" cy="50" r="14" fill="#0A6A62"/><text x="20" y="55">W</text><circle cx="80" cy="50" r="14" fill="#3F4FA8"/><text x="80" y="55">E</text><circle cx="50" cy="80" r="14" fill="#A8322A"/><text x="50" y="85">S</text></g><circle cx="50" cy="50" r="5" fill="#B9924F"/></svg><span><b>N</b> Delegation · plan<br><b>W</b> Description · say it<br><b>E</b> Discernment · judge it<br><b>S</b> Diligence · be responsible</span></div><div class="nm">Name <b></b><br>Partner <b></b></div></div>
  <div class="intro"><b>Ayesha Rahman</b> — 3rd-year Economics, Rajshahi University. CGPA 3.58 · IELTS mock 6.0 · volunteer tutor (RUCEI). Goal: a fully funded master’s. She was not shortlisted for an internship. Help her make an honest academic CV with AI.<div class="bn">আয়েশাকে AI দিয়ে একটা সৎ একাডেমিক CV বানাতে সাহায্য করো।</div></div>
  <div class="box del"><h2><b>1</b>Plan: who does each job? <i>Delegation</i></h2>
   <table><tr><th>Job</th><th>Ayesha</th><th>AI</th><th>Both</th></tr>
@@ -97,7 +102,7 @@ td.c{text-align:center;width:11mm;font-size:10pt;color:#999}
 
 <!-- ============ SHEET 2: AGENT ============ -->
 <section class="sheet">
- <div class="hd"><img src="../brand/dialogue-logo.png" alt="Dialogue"><h1><small>AI Fluency Lab · Workflow 2</small>Set up an AI agent</h1><div class="nm">Name <b></b><br>Partner <b></b></div></div>
+ <div class="hd"><img src="../brand/dialogue-logo.png" alt="Dialogue"><h1><small>AI Fluency Lab · Workflow 2</small>Set up an AI agent</h1><div class="cmp"><svg viewBox="0 0 100 100" aria-hidden="true"><rect x="32" y="3" width="36" height="94" rx="18" fill="none" stroke="#ccc" stroke-width="1.5"/><rect x="3" y="32" width="94" height="36" rx="18" fill="none" stroke="#ccc" stroke-width="1.5"/><g font-family="Public Sans,sans-serif" font-weight="800" font-size="13" fill="#fff" text-anchor="middle"><circle cx="50" cy="20" r="14" fill="#8A5610"/><text x="50" y="25">N</text><circle cx="20" cy="50" r="14" fill="#0A6A62"/><text x="20" y="55">W</text><circle cx="80" cy="50" r="14" fill="#3F4FA8"/><text x="80" y="55">E</text><circle cx="50" cy="80" r="14" fill="#A8322A"/><text x="50" y="85">S</text></g><circle cx="50" cy="50" r="5" fill="#B9924F"/></svg><span><b>N</b> Delegation · plan<br><b>W</b> Description · say it<br><b>E</b> Discernment · judge it<br><b>S</b> Diligence · be responsible</span></div><div class="nm">Name <b></b><br>Partner <b></b></div></div>
  <div class="intro">A chatbot <b>writes</b>. An agent <b>acts</b>: it opens apps, sends emails, fills forms and pays. Real examples: Meta’s Muse and xAI’s Grok Bot. Ayesha wants an agent called <b>Orbit</b> to help with her 8 master’s applications. Your job: decide what it may touch.<div class="bn">এজেন্ট শুধু লেখে না, কাজ করে। তোমার কাজ: সে কী কী ধরতে পারবে তা ঠিক করা।</div></div>
  <div class="box dil"><h2>A true story <i>Diligence</i></h2>
   <div class="story" style="grid-template-columns:repeat(4,1fr)"><div><em>👨‍✈️🔐</em>His airline’s scheduling site has a login page: <b>private inside</b>.</div><div><em>🛰️🔓</em>He lets an AI agent sign in for him. It never sees his password.</div><div><em>👀📂</em>Once inside, the agent sees everything: crews, schedules, company data.</div><div><em>🏢➜☁️</em>All of it passes through a social media company’s computers.</div></div>
@@ -126,7 +131,7 @@ td.c{text-align:center;width:11mm;font-size:10pt;color:#999}
 
 <!-- ============ SHEET 3: BUILD ============ -->
 <section class="sheet">
- <div class="hd"><img src="../brand/dialogue-logo.png" alt="Dialogue"><h1><small>AI Fluency Lab · Workflow 3</small>Vibe-code an app</h1><div class="nm">Name <b></b><br>Partner <b></b></div></div>
+ <div class="hd"><img src="../brand/dialogue-logo.png" alt="Dialogue"><h1><small>AI Fluency Lab · Workflow 3</small>Vibe-code an app</h1><div class="cmp"><svg viewBox="0 0 100 100" aria-hidden="true"><rect x="32" y="3" width="36" height="94" rx="18" fill="none" stroke="#ccc" stroke-width="1.5"/><rect x="3" y="32" width="94" height="36" rx="18" fill="none" stroke="#ccc" stroke-width="1.5"/><g font-family="Public Sans,sans-serif" font-weight="800" font-size="13" fill="#fff" text-anchor="middle"><circle cx="50" cy="20" r="14" fill="#8A5610"/><text x="50" y="25">N</text><circle cx="20" cy="50" r="14" fill="#0A6A62"/><text x="20" y="55">W</text><circle cx="80" cy="50" r="14" fill="#3F4FA8"/><text x="80" y="55">E</text><circle cx="50" cy="80" r="14" fill="#A8322A"/><text x="50" y="85">S</text></g><circle cx="50" cy="50" r="5" fill="#B9924F"/></svg><span><b>N</b> Delegation · plan<br><b>W</b> Description · say it<br><b>E</b> Discernment · judge it<br><b>S</b> Diligence · be responsible</span></div><div class="nm">Name <b></b><br>Partner <b></b></div></div>
  <div class="intro">Ayesha’s study group keeps missing master’s deadlines. She can’t code, but she builds “My Deadlines” with an AI app builder (like Google AI Studio). <b>This is not a coding lesson.</b> Watch where the four Ds decide how the app turns out.<div class="bn">এটা কোডিংয়ের পাঠ নয়। খেয়াল করো চারটা D কোথায় অ্যাপের ফলাফল ঠিক করে।</div></div>
  <div class="box dil"><h2><b>1</b>First: who is the app for? <i>Diligence</i></h2>
   <table><tr><th></th><th>Just me</th><th>Our Study Circle (15)</th><th>A product to sell</th></tr>

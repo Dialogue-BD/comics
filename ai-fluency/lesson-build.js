@@ -135,9 +135,9 @@ AFL.lesson({
  stages:[{id:'purpose',label:'Purpose',d:'dil'},{id:'delegate',label:'Hand over',d:'del'},{id:'describe',label:'Describe',d:'des'},{id:'steer',label:'Steer',d:'dis'},{id:'test',label:'Test',d:'dis'},{id:'grow',label:'Grow',d:'dil'}],
  beats:[
   /* ===== PURPOSE — Diligence comes first ===== */
-  {stage:'purpose',scene:{app:'lock',notifs:[{app:'chats',title:'Economics Study Circle',text:'Riya: Ayesha, can you make that deadline app you talked about? 🙏',time:'8:55',hit:'n:chat'}]},tap:'n:chat',
+  {d:'none',stage:'purpose',scene:{app:'lock',notifs:[{app:'chats',title:'Economics Study Circle',text:'Riya: Ayesha, can you make that deadline app you talked about? 🙏',time:'8:55',hit:'n:chat'}]},tap:'n:chat',
    say:'Ayesha’s study group needs something. Tap the message.',bn:'আয়েশার স্টাডি গ্রুপের কিছু দরকার। মেসেজে চাপো।'},
-  {stage:'purpose',open:true,scene:Object.assign({app:'chats'},CHATS,{msgs:[
+  {d:'none',stage:'purpose',open:true,scene:Object.assign({app:'chats'},CHATS,{msgs:[
      {from:'Mitu',color:'#A33A7A',text:'I missed the Groningen deadline 😭 I thought it was June.',time:'8:41'},
      {from:'Riya',color:'#0E5A2A',text:'Ayesha, can you make that deadline app you talked about? Something simple on our phones 🙏',time:'8:55'},
      {from:'Tanvir',color:'#1F5FA8',text:'Ooh and reminders! And a shared list! And AI tips!! We could even sell it 🤑',time:'8:58'},
@@ -146,7 +146,7 @@ AFL.lesson({
    card:{type:'info',points:[
      {i:'🧭',en:'This is not a coding lesson. Watch <b>where the four Ds decide</b> how the app turns out.',bn:'এটা কোডিংয়ের পাঠ নয়। খেয়াল করো চারটা D কোথায় অ্যাপের ফলাফল ঠিক করে।'},
      {i:'🛠️',en:'Real tools work like this — Google AI Studio’s Build mode, for example. Ours is called Studio.',bn:'বাস্তব টুল এভাবেই কাজ করে — যেমন Google AI Studio-র Build মোড। আমাদেরটার নাম Studio।'}]}},
-  {stage:'purpose',scene:x=>({app:'home',sheet:{html:purposeSheet(x,'purpose')}}),
+  {why:'Before describing anything, Ayesha decides who the app is for. That one decision shapes every other.',whybn:'কিছু বর্ণনা করার আগে আয়েশা ঠিক করে অ্যাপটা কার জন্য। এই একটা সিদ্ধান্তই বাকি সব ঠিক করে।',stage:'purpose',scene:x=>({app:'home',sheet:{html:purposeSheet(x,'purpose')}}),
    say:'Before anything else: who is this app for?',bn:'সবার আগে: অ্যাপটা কার জন্য?',
    sub:'No answer is wrong — but each answer builds a different app.',subbn:'কোনো উত্তর ভুল নয় — কিন্তু প্রতিটি উত্তরে আলাদা অ্যাপ তৈরি হয়।',
    decide:{key:'purpose',options:{
@@ -163,7 +163,7 @@ AFL.lesson({
      <tr><td>If it breaks<span class="bn" lang="bn">ভাঙলে</span></td><td>My problem</td><td class="on">Undo it</td><td>Customers lose</td></tr></table></div>
      <div class="good">This is <b>Diligence</b> at the start, not the end: who it’s for decides how safe, tested and careful it must be.<span class="bn" lang="bn">এটা শুরুতেই Diligence, শেষে নয়: কার জন্য — সেটাই ঠিক করে কতটা নিরাপদ, পরীক্ষিত আর সতর্ক হতে হবে।</span></div>`}},
   /* ===== HAND OVER — Delegation ===== */
-  {stage:'delegate',open:true,scene:{app:'home'},
+  {why:'Purpose set. Now she plans the hand-over: a long rope where the AI is the expert; she keeps what only she knows.',whybn:'উদ্দেশ্য ঠিক হলো। এবার হাতবদলের পরিকল্পনা: যেখানে AI বিশেষজ্ঞ সেখানে লম্বা দড়ি; যা শুধু সে জানে তা তার হাতে।',stage:'delegate',open:true,scene:{app:'home'},
    say:'Who should decide each thing: Ayesha, or the AI?',bn:'কোনটা কে ঠিক করবে: আয়েশা, নাকি AI?',
    sub:'Where the AI is the expert, give it a long rope. Where only Ayesha knows, keep hold.',subbn:'যেখানে AI বিশেষজ্ঞ, সেখানে লম্বা দড়ি দাও। যেখানে শুধু আয়েশা জানে, শক্ত করে ধরো।',
    card:{type:'sort',key:'who',bins:[{id:'me',label:'Ayesha'},{id:'ai',label:'AI'}],items:[
@@ -173,14 +173,14 @@ AFL.lesson({
      {en:'How it should feel on her friends’ cheap phones',bn:'বন্ধুদের সস্তা ফোনে এটা কেমন লাগবে',ans:'me',why:'Design awareness: she knows her users. The AI has never met them.',whybn:'নকশা-সচেতনতা: সে তার ব্যবহারকারীদের চেনে। AI তাদের কখনো দেখেনি।',hint:'Who has met the users?',hintbn:'ব্যবহারকারীদের কে চেনে?'},
      {en:'What a correct date looks like in Bangladesh',bn:'বাংলাদেশে সঠিক তারিখ দেখতে কেমন',ans:'me',why:'Local knowledge. AI tools often assume American habits.',whybn:'স্থানীয় জ্ঞান। AI টুল প্রায়ই আমেরিকান অভ্যাস ধরে নেয়।',hint:'Whose habits does the AI usually assume?',hintbn:'AI সাধারণত কাদের অভ্যাস ধরে নেয়?'}]}},
   /* ===== DESCRIBE — Description ===== */
-  {stage:'describe',scene:{app:'home'},tap:'app:studio',
+  {why:'Now her decisions become words: version 1, and where it may grow.',whybn:'এবার তার সিদ্ধান্তগুলো কথায় রূপ নেয়: প্রথম সংস্করণ, আর ভবিষ্যতে কোথায় বাড়তে পারে।',stage:'describe',scene:{app:'home'},tap:'app:studio',
    say:'Open Studio.',bn:'Studio খোলো।'},
   {stage:'describe',scene:x=>SC(x,{title:'New app',tab:'Chat',msgs:[],composer:{key:'desc',placeholder:'Describe your app…'},kb:{key:'desc',label:'DESCRIBE',chips:PROMPT_CHIPS}}),tap:'send',
    say:'Describe version 1 — and where it may grow.',bn:'প্রথম সংস্করণ বর্ণনা করো — আর ভবিষ্যতে কোথায় বাড়তে পারে।',
    sub:'Knowing what may come later helps the AI organise the code now.',subbn:'পরে কী আসতে পারে জানলে AI এখনই কোড ভালোভাবে সাজাতে পারে।',
    compose:{key:'desc',title:'Describe the app',titlebn:'অ্যাপটা বর্ণনা করো',slots:PROMPT_SLOTS,chips:PROMPT_CHIPS,best:['p1','p2','p3','p4','p5'],ready:'Purpose, version 1, a roadmap — and rope where the AI is the expert. Send it.',readybn:'উদ্দেশ্য, প্রথম সংস্করণ, ভবিষ্যতের পথ — আর যেখানে AI বিশেষজ্ঞ সেখানে ছাড়। পাঠাও।'}},
   /* ===== STEER — Discernment while it thinks ===== */
-  {stage:'steer',interrupt:true,
+  {why:'Judging doesn’t wait for the finished app. She reads the plan while the AI is still thinking.',whybn:'বিচার শেষ অ্যাপের জন্য অপেক্ষা করে না। AI ভাবতে ভাবতেই সে পরিকল্পনা পড়ে।',stage:'steer',interrupt:true,
    scene:x=>SC(x,{tab:'Chat',msgs:[{role:'u',text:promptText(x)},{role:'a',html:planHTML(PLAN_LINES.length,false),id:'plan1',stream:true,speed:1,actions:false}],composer:false,stopHit:'stop',stopLabel:'Studio is thinking…'}),
    tap:'stop',onTap:x=>{x.set('stopN',x.streaming?linesVisible():PLAN_LINES.length)},
    showMe:(x,h)=>{const at=x.beat;const t=setInterval(()=>{if(AFL.ctx().beat!==at){clearInterval(t);return}
@@ -195,10 +195,10 @@ AFL.lesson({
      <li><span class="ic" style="background:#F7E3E1">✗</span><span><b>Off track:</b> AI reminders nobody asked for — more to check, more to secure.<span class="bn" lang="bn">লক্ষ্যচ্যুত: কেউ চায়নি এমন AI রিমাইন্ডার — যাচাই আর সুরক্ষার কাজ বাড়ে।</span></span></li>
      ${sawDates(x)?`<li><span class="ic" style="background:#F7E3E1">✗</span><span><b>Wrong:</b> MM/DD dates — the opposite of what she said.<span class="bn" lang="bn">ভুল: MM/DD তারিখ — সে যা বলেছিল তার উল্টো।</span></span></li>`:''}</ul></div>
      <div class="good">This is <b>Discernment</b> in action — while the AI is still thinking, not after it has built the wrong thing.<span class="bn" lang="bn">এটাই কাজের মধ্যে Discernment — AI ভাবতে ভাবতেই, ভুল জিনিস বানিয়ে ফেলার পরে নয়।</span></div>`})},
-  {stage:'steer',d:'des',scene:x=>SC(x,{tab:'Chat',msgs:stoppedMsgs(x),composer:{key:'redirect',placeholder:'Steer Studio…'},kb:{key:'redirect',label:'STEER',chips:rChips(x)}}),tap:'send',
+  {why:'She tells Studio exactly what to drop, what to correct — and what it got right.',whybn:'সে Studio-কে ঠিক বলে দেয় কী বাদ দিতে হবে, কী ঠিক করতে হবে — আর কী সে ঠিক করেছে।',stage:'steer',d:'des',scene:x=>SC(x,{tab:'Chat',msgs:stoppedMsgs(x),composer:{key:'redirect',placeholder:'Steer Studio…'},kb:{key:'redirect',label:'STEER',chips:rChips(x)}}),tap:'send',
    say:'Steer it: what to drop, what to correct, what to keep.',bn:'পথ দেখাও: কী বাদ, কী ঠিক করবে, কী রাখবে।',
    compose:x=>({key:'redirect',title:'Steer the AI',titlebn:'AI-কে পথ দেখাও',slots:REDIRECT_SLOTS.filter(c=>!c.dates||sawDates(x)),chips:rChips(x),best:rChips(x).filter(c=>!c.x).map(c=>c.id),ready:'Clear and fair — including what it got right. Send it.',readybn:'স্পষ্ট আর ন্যায্য — সে যা ঠিক করেছে তাও বলেছ। পাঠাও।'})},
-  {stage:'steer',scene:x=>SC(x,{tab:'Chat',msgs:stoppedMsgs(x).concat([{role:'u',text:redirectText(x)},{role:'a',html:PLAN2,id:'plan2',stream:true,actions:false}]),composer:false,scrollTo:'[data-mid="plan2"]',tabHits:{Preview:'tab:prev'}}),tap:'tab:prev',
+  {why:'She steered it. Did it listen? Read the new plan, then try the app.',whybn:'সে পথ দেখিয়েছে। Studio কি শুনেছে? নতুন পরিকল্পনা পড়ো, তারপর অ্যাপটা চালিয়ে দেখো।',stage:'steer',scene:x=>SC(x,{tab:'Chat',msgs:stoppedMsgs(x).concat([{role:'u',text:redirectText(x)},{role:'a',html:PLAN2,id:'plan2',stream:true,actions:false}]),composer:false,scrollTo:'[data-mid="plan2"]',tabHits:{Preview:'tab:prev'}}),tap:'tab:prev',
    say:x=>x.streaming?'Studio is re-planning…':'Back on track — and built. Now test it: tap Preview.',bn:x=>x.streaming?'Studio আবার পরিকল্পনা করছে…':'আবার ঠিক পথে — আর বানানো শেষ। এবার পরীক্ষা করো: Preview চাপো।'},
   /* ===== TEST — Discernment of the result ===== */
   {stage:'test',scene:x=>SC(x,{tab:'Preview',ver:'v1',mini:miniApp(x,'v1')}),
@@ -208,17 +208,17 @@ AFL.lesson({
    card:x=>{const it=x.get('items_v1',[]);const feb=it.find(i=>i.date==='31/02/2026');
      return {type:'html',html:`<div class="tally">${[0,1,2].map(i=>`<span class="${it[i]?'done':''}">${i+1}</span>`).join('')}</div>
       ${feb?`<div class="warn"><b>Caught it.</b> 31 February doesn’t exist — but the app shows ${daysLeft('v1',feb.date)} days left, as if it were 3 March. It <i>looks</i> right. That is what makes it dangerous.<span class="bn" lang="bn">ধরেছ। ৩১ ফেব্রুয়ারি বলে কিছু নেই — অথচ অ্যাপ দেখাচ্ছে ১৫০ দিন বাকি, যেন ৩ মার্চ। দেখতে ঠিক মনে হয় — সেটাই বিপদ।</span></div>`:it.length?`<div class="note">Oxford: 11 days ✓ — the dates read correctly. Now try the impossible one: <b>Test: 31 Feb</b>.<span class="bn" lang="bn">অক্সফোর্ড: ১১ দিন ✓ — তারিখ ঠিকভাবে পড়ছে। এবার অসম্ভবটা চেষ্টা করো: Test: 31 Feb।</span></div>`:`<div class="note">Work out one answer first: Oxford is 15 October, so <b>11 days left</b>.<span class="bn" lang="bn">আগে একটা উত্তর বের করো: অক্সফোর্ড ১৫ অক্টোবর, তাই ১১ দিন বাকি।</span></div>`}`}}},
-  {stage:'test',d:'des',scene:x=>SC(x,{tab:'Chat',msgs:[{role:'a',html:PLAN2,id:'plan2',actions:false}],composer:{key:'bug',placeholder:'Tell Studio what you saw…'},kb:{key:'bug',label:'BUG REPORT',chips:BUG_CHIPS}}),tap:'send',
+  {why:'A bug report is Description too: what I did, what I expected, what I got.',whybn:'বাগ রিপোর্টও Description: আমি কী করেছি, কী আশা করেছি, কী পেয়েছি।',stage:'test',d:'des',scene:x=>SC(x,{tab:'Chat',msgs:[{role:'a',html:PLAN2,id:'plan2',actions:false}],composer:{key:'bug',placeholder:'Tell Studio what you saw…'},kb:{key:'bug',label:'BUG REPORT',chips:BUG_CHIPS}}),tap:'send',
    say:'Tell Studio exactly what you saw.',bn:'Studio-কে ঠিক কী দেখেছ তা বলো।',
    compose:{key:'bug',title:'Input · Expected · Actual',titlebn:'ইনপুট · প্রত্যাশা · বাস্তবে যা ঘটেছে',slots:BUG_SLOTS,chips:BUG_CHIPS,best:['b1','b2','b3'],ready:'Clear. Send it.',readybn:'স্পষ্ট। পাঠাও।'}},
-  {stage:'test',scene:x=>SC(x,{tab:'Chat',msgs:[{role:'a',html:PLAN2,id:'plan2',actions:false},{role:'u',text:bugText(x)},{role:'a',html:FIXED,id:'fixed',stream:true,actions:false}],composer:false,scrollTo:'[data-mid="fixed"]',tabHits:{Preview:'tab:prev2'}}),tap:'tab:prev2',
+  {why:'“Fixed ✅” is another claim. Judge it the same way as the first one.',whybn:'“ঠিক হয়েছে ✅” আরেকটা দাবি। প্রথমটার মতোই এটাও বিচার করো।',stage:'test',scene:x=>SC(x,{tab:'Chat',msgs:[{role:'a',html:PLAN2,id:'plan2',actions:false},{role:'u',text:bugText(x)},{role:'a',html:FIXED,id:'fixed',stream:true,actions:false}],composer:false,scrollTo:'[data-mid="fixed"]',tabHits:{Preview:'tab:prev2'}}),tap:'tab:prev2',
    say:x=>x.streaming?'Studio is fixing it…':'“Fixed ✅” — another claim. Tap Preview.',bn:x=>x.streaming?'Studio ঠিক করছে…':'“ঠিক হয়েছে ✅” — আরেকটা দাবি। Preview চাপো।'},
   {stage:'test',scene:x=>SC(x,{tab:'Preview',ver:'v2',mini:miniApp(x,'v2')}),
    onUi:onMini,showMe:autoTest('v2',[0,5]),
    say:'Check it again yourself.',bn:'নিজে আবার যাচাই করো।',
    card:x=>{const ok=x.get('items_v2',[]).some(i=>i.date==='31/02/2026');return {type:'html',html:ok?`<div class="good">“Not a real date” — fixed, and checked by you.<span class="bn" lang="bn">“Not a real date” — ঠিক হয়েছে, আর তুমি নিজে যাচাই করেছ।</span></div>`:`<div class="note">Add <b>Test: 31 Feb</b> again.<span class="bn" lang="bn">আবার Test: 31 Feb যোগ করো।</span></div>`}}},
   /* ===== GROW — the purpose changes, and the loop starts again ===== */
-  {stage:'grow',open:true,scene:Object.assign({app:'chats'},CHATS,{msgs:[
+  {why:'A new purpose is a responsibility question — and it starts the loop again.',whybn:'নতুন উদ্দেশ্য মানে দায়িত্বের নতুন প্রশ্ন — আর চক্র আবার শুরু হয়।',stage:'grow',open:true,scene:Object.assign({app:'chats'},CHATS,{msgs:[
      {me:1,html:'Here it is! 📅 <a>my-deadlines.studio.app</a> — made with AI help. Please check every date on the official website too 🙏',time:'22:40'},
      {from:'Riya',color:'#0E5A2A',text:'It works!! 😍',time:'22:42'},
      {from:'Tanvir',color:'#1F5FA8',text:'This is great. Let’s sell it to coaching centres! ৳99 a month!',time:'22:44'}]}),
@@ -238,8 +238,12 @@ AFL.lesson({
      {en:'When its plan <u>went</u> off track, I <u>stopped</u> it and <u>explained</u> why.',bn:'তার পরিকল্পনা লক্ষ্য থেকে সরে গেলে আমি থামিয়ে কারণ ব্যাখ্যা করেছি।'}]}},
   {stage:'grow',open:true,scene:{app:'home'},
    say:'Done! The four Ds in a real vibe-coding workflow.',bn:'শেষ! একটা আসল ভাইব-কোডিং কাজে চারটা D।',
-   card:{type:'html',html:`<div class="big4"><div class="d-dil"><b>Diligence</b><span>Decide what the app is for — just me, a small team, or a product. It sets every design decision.</span></div><div class="d-del"><b>Delegation</b><span>Give the AI rope where it’s the expert. Keep your problem and design awareness.</span></div><div class="d-des"><b>Description</b><span>Describe version 1 and where it may grow, so the AI can build for the future.</span></div><div class="d-dis"><b>Discernment</b><span>Read the plan and stop it when it drifts. Test what it built — “✅” is a claim.</span></div></div>
-     <div class="pick-cards"><button class="pcard" data-start="cv"><span class="pi" style="background:#D7E3FF">📄</span><span><em>Also try</em><b>An honest CV with AI</b></span></button><button class="pcard" data-start="agent"><span class="pi" style="background:#FFDBCC">🛰️</span><span><em>Also try</em><b>Set up an AI agent</b></span></button></div>`}}
+   card:x=>({type:'html',html:AFL.recap(x,{
+     del:{en:'Give the AI rope where it’s the expert. Keep your problem and design awareness.',bn:'যেখানে AI বিশেষজ্ঞ, সেখানে ছাড় দাও। সমস্যা আর নকশার বোধ নিজের কাছে রাখো।'},
+     des:{en:'Describe version 1 and where it may grow, so the AI builds for the future.',bn:'প্রথম সংস্করণ আর ভবিষ্যতের পথ বলো, যাতে AI সামনের কথা ভেবে বানায়।'},
+     dis:{en:'Read the plan and stop it when it drifts. Test what it built — “✅” is a claim.',bn:'পরিকল্পনা পড়ো, লক্ষ্য থেকে সরলে থামাও। যা বানিয়েছে পরীক্ষা করো — “✅” একটা দাবি মাত্র।'},
+     dil:{en:'Decide who the app is for. It sets every design decision.',bn:'অ্যাপটা কার জন্য ঠিক করো। এটাই সব নকশার সিদ্ধান্ত ঠিক করে।'}})+`
+     <div class="pick-cards"><button class="pcard" data-start="cv"><span class="pi" style="background:#D7E3FF">📄</span><span><em>Also try</em><b>An honest CV with AI</b></span></button><button class="pcard" data-start="agent"><span class="pi" style="background:#FFDBCC">🛰️</span><span><em>Also try</em><b>Set up an AI agent</b></span></button></div>`})}
  ]
 });
 })();

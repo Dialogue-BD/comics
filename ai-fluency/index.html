@@ -101,6 +101,98 @@ body.bangla .bn{display:block}
 .say + .bn{font-size:calc(15px*var(--ui))}
 .sub{color:var(--ink-muted);font-size:calc(14.5px*var(--ui));line-height:1.45;margin:6px 0 0}
 
+
+/* ---------- the 4D compass ---------- */
+@property --ga{syntax:'<angle>';inherits:true;initial-value:0deg}
+.compass{display:block;width:100%;height:auto;overflow:visible;transition:--ga 1.1s cubic-bezier(.3,.05,.2,1)}
+.compass .rot{transform:rotate(calc(var(--o) + var(--ga) * var(--s)))}
+.compass .gear .teeth{fill:var(--gt);stroke:var(--gc);stroke-width:2;stroke-opacity:.45;transition:fill .5s}
+.compass .gear .axle{fill:var(--card);stroke:var(--gc);stroke-width:1.2;stroke-opacity:.35}
+.compass .gear .sym{fill:var(--gc);opacity:.72;transition:fill .5s,opacity .5s}
+.compass .gear.on .teeth{fill:var(--gc);stroke-opacity:1}
+.compass .gear.on .axle{fill:color-mix(in srgb,var(--gc) 82%,#000);stroke:none}
+.compass .gear.on .sym{fill:#fff;opacity:1}
+.compass .gear .halo{fill:var(--gold-light);opacity:.55;animation:halo 2.4s ease-in-out infinite}
+@keyframes halo{50%{opacity:.25}}
+.compass .g-del{--gc:var(--d-del);--gt:var(--d-del-t)} .compass .g-des{--gc:var(--d-des);--gt:var(--d-des-t)}
+.compass .g-dis{--gc:var(--d-dis);--gt:var(--d-dis-t)} .compass .g-dil{--gc:var(--d-dil);--gt:var(--d-dil-t)}
+.compass .sweet{fill:var(--gold);stroke:var(--card);stroke-width:2.5}
+.compass .sweet.lit{filter:drop-shadow(0 0 5px var(--gold-light))}
+.compass .loop{fill:none;stroke-width:2;opacity:.28}
+.compass .loop.lv{stroke:var(--d-del)} .compass .loop.lh{stroke:var(--d-des)}
+
+.dband{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--rule);background:linear-gradient(90deg,var(--dt,var(--mist)) 0,var(--paper) 75%);padding:6px 12px;font:inherit;color:var(--ink);cursor:pointer}
+.dband[hidden]{display:none}
+.dband .dcomp{flex:none;width:calc(58px*var(--ui));height:calc(58px*var(--ui))}
+.dband .dtx{flex:1;min-width:0;display:flex;flex-direction:column}
+.dband .dtx b{font-family:var(--font-display);font-size:calc(17px*var(--ui));color:var(--dc,var(--forest));line-height:1.15}
+.dband .dtx b i{font-style:normal;font-family:var(--font-ui);font-size:.68em;font-weight:800;display:inline-grid;place-items:center;width:1.6em;height:1.6em;border-radius:99px;background:var(--dc);color:#fff;margin-right:6px;vertical-align:.12em}
+.dband .dtx b em{font-style:normal;font-family:var(--font-ui);font-weight:600;font-size:.72em;color:var(--ink-muted)}
+.dband .dtx b.story{color:var(--forest)}
+.dband .dstage{display:none;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-muted)}
+.compass.all .gear .halo{animation-delay:calc(var(--s) * .6s)}
+.dband .dq{font-size:calc(13.5px*var(--ui));color:var(--ink-muted);line-height:1.3}
+.dband .bn{font-size:calc(12.5px*var(--ui));margin-top:1px}
+.dband .dmore{flex:none;width:24px;height:24px;border-radius:99px;border:1px solid var(--rule-strong);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--ink-muted)}
+.dband.pulse .dcomp{animation:bandpop .7s ease-out}
+@keyframes bandpop{40%{transform:scale(1.12)}}
+
+.d4b{display:inline-block;width:var(--sz);height:var(--sz);flex:none;vertical-align:middle}
+.d4b svg{width:100%;height:100%;display:block}
+.d4b .teeth{fill:var(--dt);stroke:var(--dc);stroke-width:3;stroke-opacity:.5}
+.d4b .sym{fill:var(--dc)}
+.d4b.lit .teeth{fill:var(--dc);stroke:none} .d4b.lit .sym{fill:#fff}
+.d4i{display:inline-block;vertical-align:-.15em}
+.c-rail button .d4b{margin:-1px 0}
+.c-rail button:not(.on):not(.done) .d4b{filter:grayscale(1);opacity:.5}
+.c-rail button.done .d4b{opacity:.6}
+
+.dshift{border-radius:12px;background:var(--dt);border:1px solid color-mix(in srgb,var(--dc) 35%,transparent);padding:9px 11px;margin:0 0 10px}
+.ds-row{display:flex;align-items:center;gap:7px}
+.ds-arr{color:var(--ink-muted);font-weight:700}
+.ds-tag{display:flex;flex-direction:column;line-height:1.2;margin-left:2px}
+.ds-tag b{color:var(--dc);font-size:calc(14px*var(--ui))}
+.ds-tag small{font-size:calc(11.5px*var(--ui));letter-spacing:.06em;text-transform:uppercase;color:var(--ink-muted);font-weight:700}
+.ds-tag .bn{font-size:12px;margin-top:0}
+.ds-why{margin:7px 0 0;font-size:calc(14.5px*var(--ui));line-height:1.42}
+.ds-why b{color:var(--dc)}
+.ds-link{margin:5px 0 0;font-size:calc(12.5px*var(--ui));color:var(--ink-muted);line-height:1.35}
+.ds-link .d4i{fill:var(--ink-muted)}
+
+.d4legend{display:grid;grid-template-columns:1fr minmax(0,1.05fr) 1fr;grid-template-areas:". n ." "w c e" ". s .";gap:6px 8px;align-items:center;margin:8px 0}
+.lg-c{grid-area:c;max-width:170px;justify-self:center;width:100%}
+.lg-pt{border-radius:10px;background:var(--dt);border:1px solid color-mix(in srgb,var(--dc) 30%,transparent);padding:6px 8px;font-size:calc(12.5px*var(--ui));line-height:1.3}
+.lg-N{grid-area:n} .lg-W{grid-area:w} .lg-E{grid-area:e} .lg-S{grid-area:s}
+.lg-pt b{display:block;color:var(--dc);font-size:calc(14px*var(--ui))}
+.lg-pt b i{font-style:normal;font-size:.75em;font-weight:800;display:inline-grid;place-items:center;width:1.55em;height:1.55em;border-radius:99px;background:var(--dc);color:#fff;margin-right:5px;vertical-align:.1em}
+.lg-v{display:block;font-weight:700;font-size:.92em;color:var(--ink)}
+.lg-q{display:block;color:var(--ink-muted)}
+.lg-x{display:block;margin-top:4px;padding-top:4px;border-top:1px dashed color-mix(in srgb,var(--dc) 40%,transparent);color:var(--ink);font-size:1.02em}
+.d4legend.compact .lg-q{display:none}
+.d4legend.compact .lg-x ~ .bn,.d4legend.compact .lg-pt > .bn{display:none}
+body.bangla .d4legend.compact .lg-x .bn{display:block}
+.d4loops{display:grid;gap:6px;font-size:calc(13px*var(--ui));line-height:1.4}
+.d4loops > div{display:grid;grid-template-columns:24px 1fr;gap:6px;align-items:start}
+.d4loops p{margin:0}
+.d4loops span.lv,.d4loops span.lh,.d4loops span.lc{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;font-weight:800;color:#fff}
+.d4loops .lv{background:linear-gradient(var(--d-del),var(--d-dil))} .d4loops .lh{background:linear-gradient(90deg,var(--d-des),var(--d-dis))} .d4loops .lc{background:var(--gold)}
+.d4path .pathrow{display:flex;flex-wrap:wrap;align-items:center;gap:3px;margin:6px 0}
+.d4path .pa{color:var(--ink-muted);font-weight:700;font-size:13px}
+.d4path .pa.x{color:var(--gold);font-size:15px}
+@media (max-width:899px){
+  .dband{padding:5px 10px;gap:8px}
+  .dband .dcomp{width:44px;height:44px}
+  .dband .dq{display:none}
+  .dband .dtx b{font-size:15.5px}
+  .dband .bn{display:none}
+  .dshift{padding:7px 9px;margin-bottom:8px}
+  .dshift .ds-tag small,.dshift .ds-link{display:none}
+  .dshift .ds-why{margin-top:5px;font-size:14px}
+  body.inlesson .c-rail{display:none}
+  .dband .dstage{display:block}
+}
+@media (max-width:420px){ .d4legend{grid-template-columns:1fr 1fr;grid-template-areas:"n n" "c c" "w e" "s s"} .lg-c{max-width:120px} }
+
 /* the coach strip on a phone: compact, sheet opens over the phone for big cards */
 @media (max-width:899px){
   #coach{max-height:46dvh}
@@ -635,6 +727,7 @@ body.stage{--ui:1.28}
       <button class="iconbtn" id="btn-menu" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     </div>
     <nav class="c-rail" id="rail" aria-label="Stages"></nav>
+    <button class="dband idle" id="dband" hidden aria-label="The four Ds compass"></button>
     <div class="c-body" id="cbody" aria-live="polite"></div>
     <div class="c-actions" id="cact"></div>
   </section>
@@ -651,6 +744,7 @@ body.stage{--ui:1.28}
 </div>
 <div id="menu" hidden></div>
 <noscript>This activity needs JavaScript.</noscript>
+<script src="compass.js?v=8"></script>
 <script src="engine.js?v=8"></script>
 <script src="lesson-cv.js"></script>
 <script src="lesson-agent.js"></script>

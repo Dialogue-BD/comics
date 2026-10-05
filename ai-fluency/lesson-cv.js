@@ -128,43 +128,43 @@ AFL.lesson({
  notif:{app:'mail',title:'Research Intern — application update',text:'Dear Ayesha, thank you for applying. After careful review…',time:'9:12',hit:'start:cv'},
  stages:[{id:'plan',label:'Plan',d:'del'},{id:'prompt',label:'Prompt',d:'des'},{id:'check',label:'Check',d:'dis'},{id:'fix',label:'Fix',d:'des'},{id:'finish',label:'Finish',d:'dil'}],
  beats:[
-  {stage:'plan',open:true,scene:{app:'lock',notifs:[{app:'mail',title:'Research Intern — application update',text:'Dear Ayesha, thank you for applying. After careful review…',time:'9:12',hit:'n:mail'}]},
+  {d:'none',stage:'plan',open:true,scene:{app:'lock',notifs:[{app:'mail',title:'Research Intern — application update',text:'Dear Ayesha, thank you for applying. After careful review…',time:'9:12',hit:'n:mail'}]},
    docs:['cv','ielts','rucei','shortlist'],
    say:'Meet Ayesha. Today you help her make an honest CV with AI.',bn:'আয়েশার সাথে পরিচয় করো। আজ তুমি AI দিয়ে তার একটা সৎ CV বানাতে সাহায্য করবে।',
    card:{type:'info',html:`<div class="who"><span class="av">A</span><div><b>Ayesha Rahman</b><span>3rd-year Economics · Rajshahi University</span></div></div><div class="facts"><span>CGPA 3.58</span><span>IELTS mock 6.0</span><span>Volunteer tutor</span></div>`,
      points:[{i:'🎯',en:'<b>Her goal:</b> a fully funded master’s in Development Economics.',bn:'তার লক্ষ্য: ডেভেলপমেন্ট ইকোনমিক্সে সম্পূর্ণ ফান্ডেড মাস্টার্স।'},{i:'📄',en:'<b>You will make:</b> a 2-page academic CV — every line true.',bn:'তুমি বানাবে: ২ পাতার একাডেমিক CV — প্রতিটি লাইন সত্য।'},{i:'🧭',en:'<b>Five steps:</b> Plan · Prompt · Check · Fix · Finish',bn:'পাঁচ ধাপ: পরিকল্পনা · প্রম্পট · যাচাই · সংশোধন · শেষ'}]}},
-  {stage:'plan',scene:{app:'lock',notifs:[{app:'mail',title:'Research Intern — application update',text:'Dear Ayesha, thank you for applying. After careful review…',time:'9:12',hit:'n:mail'}]},tap:'n:mail',
+  {d:'none',stage:'plan',scene:{app:'lock',notifs:[{app:'mail',title:'Research Intern — application update',text:'Dear Ayesha, thank you for applying. After careful review…',time:'9:12',hit:'n:mail'}]},tap:'n:mail',
    say:'Ayesha has a new email. Tap it.',bn:'আয়েশার একটা নতুন ইমেইল এসেছে। ওটাতে চাপো।'},
-  {stage:'plan',scene:{app:'mail',view:'read',mail:{from:'Internship Desk',color:'#00639B',subject:'Research Intern — application update',time:'9:12 AM',
+  {d:'dil',why:'An honest CV is Ayesha’s responsibility before any AI is involved. Big claims fall apart in an interview.',whybn:'কোনো AI আসার আগেই সৎ CV আয়েশার দায়িত্ব। বড় দাবি ইন্টারভিউতে টেকে না।',stage:'plan',scene:{app:'mail',view:'read',mail:{from:'Internship Desk',color:'#00639B',subject:'Research Intern — application update',time:'9:12 AM',
      body:`<p>Dear Ayesha,</p><p>Thank you for applying for the Research Assistant Intern position. We received many strong applications, and we are not able to shortlist you this time.</p><p>Most shortlisted applicants sent a short <b>academic CV</b> that showed their research skills clearly. We encourage you to apply again.</p><p>Best wishes,<br>Internship Desk</p>`}},
    say:'Not shortlisted. What should she do next time?',bn:'শর্টলিস্টে নাম নেই। পরের বার সে কী করবে?',
    card:{type:'choice',key:'cvWhy',options:[
      {en:'Send a clear academic CV with her real skills.',bn:'নিজের আসল দক্ষতা দিয়ে একটা পরিষ্কার একাডেমিক CV পাঠানো।',ok:1,why:'Yes — the email says shortlisted students had a clear academic CV.',whybn:'হ্যাঁ — ইমেইলে বলা আছে, শর্টলিস্টে থাকা শিক্ষার্থীদের পরিষ্কার একাডেমিক CV ছিল।'},
      {en:'Make bigger claims so she looks stronger.',bn:'বড় বড় দাবি লিখে নিজেকে শক্তিশালী দেখানো।',ok:0,why:'Claims that aren’t true fall apart in an interview — and can end an application.',whybn:'মিথ্যা দাবি ইন্টারভিউতে ধরা পড়ে — আবেদনও বাতিল হতে পারে।'},
      {en:'Stop applying for a while.',bn:'কিছুদিন আবেদন করা বন্ধ রাখা।',ok:0,why:'The email invites her to apply again. The CV is the problem to fix.',whybn:'ইমেইলে আবার আবেদন করতে বলেছে। CV-টাই ঠিক করতে হবে।'}]}},
-  {stage:'plan',open:true,scene:{app:'home'},
+  {why:'Before she opens the AI, Ayesha decides which jobs are hers and which are the AI’s. Her facts and the final check stay with her.',whybn:'AI খোলার আগে আয়েশা ঠিক করে কোন কাজ তার, কোনটা AI-এর। তথ্য আর শেষ যাচাই তার হাতেই থাকে।',stage:'plan',open:true,scene:{app:'home'},
    say:'Plan first. Who should do each job?',bn:'আগে পরিকল্পনা। কোন কাজ কে করবে?',sub:'Tap a button for each job.',subbn:'প্রতিটি কাজের জন্য একটা বোতাম চাপো।',
    card:{type:'sort',key:'cvJobs',bins:[{id:'me',label:'Ayesha'},{id:'ai',label:'AI'},{id:'both',label:'Both'}],items:[
      {en:'Collect her true facts — dates, scores, roles',bn:'তার সত্যি তথ্য জোগাড় করা — তারিখ, স্কোর, ভূমিকা',ans:'me',why:'Only Ayesha knows what really happened. The AI can’t know her life.',whybn:'আসলে কী হয়েছে তা শুধু আয়েশা জানে। AI তার জীবন জানে না।',hint:'Can the AI know her real scores and roles without her?',hintbn:'আয়েশা না বললে AI কি তার আসল স্কোর জানতে পারে?'},
      {en:'Suggest a clean layout and headings',bn:'পরিষ্কার লেআউট আর শিরোনাম প্রস্তাব করা',ans:'ai',why:'A good AI job: it has seen many CVs, and a layout is low-risk.',whybn:'AI-এর জন্য ভালো কাজ: অনেক CV দেখেছে, আর লেআউটে ঝুঁকি কম।',hint:'Is a layout risky? Does it need her private facts?',hintbn:'লেআউটে কি ঝুঁকি আছে? এতে কি তার ব্যক্তিগত তথ্য লাগে?'},
      {en:'Choose what matters most for her master’s goal',bn:'মাস্টার্সের লক্ষ্যের জন্য কোনটা সবচেয়ে জরুরি তা বাছাই করা',ans:'both',why:'The AI can suggest; Ayesha decides. It’s her goal and her story.',whybn:'AI প্রস্তাব দিতে পারে; সিদ্ধান্ত আয়েশার। লক্ষ্য আর গল্প তারই।',hint:'Who knows CVs? Who knows her goal? Maybe both.',hintbn:'CV কে চেনে? তার লক্ষ্য কে জানে? হয়তো দুজনেই।'},
      {en:'Check every line is true before she sends it',bn:'পাঠানোর আগে প্রতিটি লাইন সত্য কি না যাচাই করা',ans:'me',why:'The CV carries her name. She is responsible — not the AI.',whybn:'CV-তে তার নাম থাকে। দায়িত্ব তার — AI-এর নয়।',hint:'Whose name is on the CV?',hintbn:'CV-তে কার নাম থাকে?'}]}},
-  {stage:'prompt',scene:{app:'home'},tap:'app:sathi',
+  {why:'Now the plan becomes words. What she types decides what comes back. First, watch what a short prompt does.',whybn:'এবার পরিকল্পনা কথায় রূপ নেয়। সে যা লেখে, তা-ই ঠিক করে কী ফিরে আসবে। আগে দেখো ছোট প্রম্পট কী করে।',stage:'prompt',scene:{app:'home'},tap:'app:sathi',
    say:'Open the AI app. Tap Sathi.',bn:'AI অ্যাপটা খোলো। Sathi-তে চাপো।',sub:'Sathi works like Gemini, ChatGPT or Claude.',subbn:'Sathi চলে Gemini, ChatGPT বা Claude-এর মতো।'},
   {stage:'prompt',scene:{app:'sathi',msgs:[],composer:{text:ASK_FIRST,atts:['cv']}},tap:'send',
    say:'Most students type something short, like this. Try it — tap send.',bn:'বেশিরভাগ শিক্ষার্থী এভাবে ছোট করে লেখে। চেষ্টা করো — send চাপো।'},
-  {stage:'prompt',scene:{app:'sathi',msgs:[{role:'u',text:ASK_FIRST,atts:['cv']},{role:'a',html:WEAK,stream:true,id:'weak'}],composer:{text:''}},
+  {d:'dis',why:'The reply looks finished. Judge it against her real documents before believing a word.',whybn:'উত্তরটা দেখতে সম্পূর্ণ। একটা শব্দও বিশ্বাস করার আগে তার আসল কাগজপত্রের সাথে মিলিয়ে বিচার করো।',stage:'prompt',scene:{app:'sathi',msgs:[{role:'u',text:ASK_FIRST,atts:['cv']},{role:'a',html:WEAK,stream:true,id:'weak'}],composer:{text:''}},
    afterRender:(x,scr)=>{ if(!document.querySelector('[data-stream]')) scr.querySelectorAll('.flag').forEach(f=>f.classList.add('ln','v-bad')); },
    docs:['cv','ielts','rucei'],
    say:x=>document.querySelector('[data-stream]')?'Sathi is answering…':'It looks impressive. But is it true?',bn:'দেখতে চমৎকার। কিন্তু এটা কি সত্য?',
    card:x=>({type:'html',html:`<div class="card"><h3>AI wrote vs. her documents${x.bn?'<span class="bn" lang="bn">AI যা লিখেছে বনাম তার কাগজপত্র</span>':''}</h3>
      <table style="width:100%;border-collapse:collapse;font-size:14px">${[['IELTS 7.0','IELTS mock: <b>6.0</b>'],['Led a team of 20 volunteers','<b>Volunteer tutor</b> in a team'],['Fluent English','English: <b>intermediate</b>'],['Published research','A <b>term paper</b> for a course']].map(r=>`<tr><td style="padding:6px;border-top:1px solid var(--rule);color:var(--clay-ink)">✗ ${r[0]}</td><td style="padding:6px;border-top:1px solid var(--rule)">${r[1]}</td></tr>`).join('')}</table>
      <div class="note">The prompt was short, so the AI filled the gaps with guesses — and made them sound good.<span class="bn" lang="bn">প্রম্পট ছোট ছিল, তাই AI ফাঁকগুলো অনুমান দিয়ে ভরেছে — আর সুন্দর করে লিখেছে।</span></div></div>`})},
-  {stage:'prompt',open:true,scene:x=>({app:'sathi',msgs:[{role:'u',text:ASK_FIRST,atts:['cv']},{role:'a',html:WEAK}],composer:{text:''}}),
+  {why:'The made-up lines point straight at what the prompt was missing.',whybn:'বানানো লাইনগুলোই দেখিয়ে দেয় প্রম্পটে কী বাদ ছিল।',stage:'prompt',open:true,scene:x=>({app:'sathi',msgs:[{role:'u',text:ASK_FIRST,atts:['cv']},{role:'a',html:WEAK}],composer:{text:''}}),
    say:'The short prompt left out four things.',bn:'ছোট প্রম্পটে চারটা জিনিস বাদ পড়েছে।',
    card:{type:'info',title:'A good prompt has four parts',titlebn:'ভালো প্রম্পটের চারটা অংশ',html:`<p style="font-family:var(--md-mono);background:var(--mist);padding:8px;border-radius:8px;font-size:13.5px">“make my cv better for scholarship”</p>`,
      points:[{i:'👤',en:'<b>Context</b> — who she is and her goal. <i>Missing.</i>',bn:'প্রেক্ষাপট — সে কে, তার লক্ষ্য কী। নেই।'},{i:'📄',en:'<b>Product</b> — what to make. <i>Only “better”.</i>',bn:'পণ্য — কী বানাতে হবে। শুধু “better”।'},{i:'🛠',en:'<b>Process</b> — how to work: use only her facts, ask first. <i>Missing.</i>',bn:'প্রক্রিয়া — কীভাবে কাজ করবে: শুধু তার তথ্য, আগে জিজ্ঞেস। নেই।'},{i:'🧑‍🏫',en:'<b>Performance</b> — how the AI should act: an honest editor. <i>Missing.</i>',bn:'আচরণ — AI কেমন হবে: একজন সৎ সম্পাদক। নেই।'}]}},
-  {stage:'prompt',d:'dil',scene:{app:'sathi',msgs:[],composer:{text:'',attHit:'att',placeholder:'Ask Sathi'}},tap:'att',
+  {why:'Before attaching anything: does a CV need this file, and is it hers to share?',whybn:'কিছু যোগ করার আগে: CV-তে কি এই ফাইল লাগে, আর এটা কি তার শেয়ার করার জিনিস?',stage:'prompt',d:'dil',scene:{app:'sathi',msgs:[],composer:{text:'',attHit:'att',placeholder:'Ask Sathi'}},tap:'att',
    say:'New chat. First, give Sathi the right files. Tap +',bn:'নতুন চ্যাট। আগে Sathi-কে সঠিক ফাইল দাও। + চাপো।'},
   {stage:'prompt',d:'dil',scene:{app:'picker',files:PICK_FILES,sel:'cvFiles',attachHit:'attach'},tap:'attach',pickShow:['cv','ielts','rucei','shortlist'],
    say:'Choose only the files a CV needs.',bn:'শুধু CV-র জন্য দরকারি ফাইলগুলো বাছো।',
@@ -177,7 +177,7 @@ AFL.lesson({
      return {type:'info',points:[...bad.map(id=>({i:'🚫',en:`<b>${esc(AFL.FILES[id].name)}</b> — removed. ${FILE_WHY[id].en}`,bn:FILE_WHY[id].bn})),
       ...(miss.length?[{i:'➕',en:'The IELTS report and RUCEI report give the AI <b>real facts</b>. Without them it guesses.',bn:'IELTS আর RUCEI রিপোর্ট AI-কে আসল তথ্য দেয়। এগুলো ছাড়া সে অনুমান করে।'}]:[]),
       {i:'🔐',en:'<b>Rule:</b> share only what the job needs, and only what is yours to share.',bn:'নিয়ম: শুধু কাজের জন্য যা দরকার, আর যা তোমার শেয়ার করার অধিকার আছে — শুধু তা-ই দাও।'}]}}},
-  {stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS}}),tap:'send',
+  {why:'Files chosen. Now she says exactly what she wants: Context, Product, Process, Performance.',whybn:'ফাইল বাছাই শেষ। এবার সে ঠিক কী চায় তা বলে: প্রেক্ষাপট, পণ্য, প্রক্রিয়া, আচরণ।',stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS}}),tap:'send',
    say:'Now build a better prompt. Tap the parts above the keyboard.',bn:'এবার একটা ভালো প্রম্পট বানাও। কিবোর্ডের উপরের অংশগুলো চাপো।',sub:'You can type your own words too.',subbn:'নিজের ভাষায় টাইপও করতে পারো।',
    compose:{key:'cvPrompt',title:'Prompt recipe',titlebn:'প্রম্পটের রেসিপি',slots:SLOTS,chips:PROMPT_CHIPS,best:['c1','c2','c3','c4'],ready:'All four parts are there. Tap send ➤ on the phone.',readybn:'চারটা অংশই আছে। ফোনে send ➤ চাপো।'}},
   {stage:'prompt',scene:x=>CHAT_SC(x,1),
@@ -191,7 +191,7 @@ AFL.lesson({
      {label:'1 · Graduation',frame:'<em>I expect to graduate in</em> ___.',bn:'আমি ___ সালে স্নাতক শেষ করব বলে আশা করছি।',test:[/20\d\d|graduat/i]},
      {label:'2 · Term paper',frame:'<em>It was</em> ___<em>. It was not</em> ___.',bn:'এটা ছিল ___। এটা ___ ছিল না।',test:[/coursework|not published/i]},
      {label:'3 · Contact details',frame:'<em>I will add</em> ___ <em>myself.</em>',bn:'আমি নিজে ___ যোগ করব।',test:[/placeholder|myself/i]}]}},
-  {stage:'check',scene:x=>CHAT_SC(x,3,{scrollTo:'[data-mid="draft"]'}),
+  {stage:'check',why:'Even a good prompt doesn’t stop every mistake. Only her documents can prove each line.',whybn:'ভালো প্রম্পটও সব ভুল থামাতে পারে না। প্রতিটি লাইন প্রমাণ করতে পারে শুধু তার কাগজপত্র।',scene:x=>CHAT_SC(x,3,{scrollTo:'[data-mid="draft"]'}),
    say:x=>document.querySelector('[data-stream]')?'Sathi is writing the draft…':'A draft! It looks good. Now check it.',bn:'একটা খসড়া! দেখতে ভালো। এবার যাচাই করো।',
    sub:'Even good prompts don’t stop every mistake.',subbn:'ভালো প্রম্পটও সব ভুল থামাতে পারে না।',docs:['cv','ielts','rucei','shortlist'],},
   {stage:'check',scene:x=>{const v=x.get('cvVerd',{}),sel=x.get('cvVerd_sel');return Object.assign(CHAT_SC(x,3,{scrollTo:'[data-mid="draft"]'}),{_v:v,_s:sel})},
@@ -199,7 +199,7 @@ AFL.lesson({
    say:'Check each line against her files.',bn:'প্রতিটি লাইন তার ফাইলের সাথে মিলিয়ে দেখো।',
    sub:'Tap a line. Then tap <b>Where to look</b> to open the right document. Decide only after you read it.',subbn:'একটা লাইনে চাপো। তারপর “Where to look” চেপে ঠিক কাগজটা খোলো। পড়ে তারপর সিদ্ধান্ত নাও।',docs:['cv','ielts','rucei','shortlist'],
    check:{key:'cvVerd',lines:LINES,prompt:'Tap an underlined line in Sathi’s answer. You can also tap the files under Ayesha’s message to open them.',promptbn:'Sathi-এর উত্তরে দাগ দেওয়া একটা লাইনে চাপো। আয়েশার মেসেজের নিচের ফাইলেও চাপতে পারো।',done:'All 8 checked. Three lines need fixing: 4, 7 and 8.',donebn:'৮টাই যাচাই হয়েছে। ৪, ৭ আর ৮ নম্বর লাইন ঠিক করতে হবে।'}},
-  {stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi'},kb:{key:'cvFix',label:'FIXES',chips:FIX_CHIPS}}),tap:'send',
+  {why:'Every mistake she found becomes a precise instruction.',whybn:'যে ভুলগুলো পেয়েছে, প্রতিটি একটা স্পষ্ট নির্দেশ হয়ে যায়।',stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi'},kb:{key:'cvFix',label:'FIXES',chips:FIX_CHIPS}}),tap:'send',
    docs:['cv','ielts','rucei','shortlist'],
    say:'Tell Sathi exactly what to fix.',bn:'Sathi-কে ঠিক কী ঠিক করতে হবে, স্পষ্ট করে বলো।',
    compose:{key:'cvFix',title:'Fix three lines',titlebn:'তিনটা লাইন ঠিক করো',chips:FIX_CHIPS,best:['f1','f2','f3'],ready:'Clear and exact. Send it.',readybn:'স্পষ্ট আর সুনির্দিষ্ট। পাঠাও।',slots:[
@@ -209,7 +209,7 @@ AFL.lesson({
   {stage:'fix',scene:x=>CHAT_SC(x,5,{scrollTo:'[data-mid="fixed"]'}),
    say:'Fixed. Notice: Sathi said sorry for the invented line.',bn:'ঠিক হয়েছে। খেয়াল করো: বানানো লাইনের জন্য Sathi দুঃখ প্রকাশ করেছে।',
    card:{type:'html',html:`<div class="note">This is the loop: <b>prompt → check → fix → check again.</b><span class="bn" lang="bn">এটাই চক্র: প্রম্পট → যাচাই → সংশোধন → আবার যাচাই।</span></div>`}},
-  {stage:'finish',scene:x=>CHAT_SC(x,5),tap:'export',
+  {why:'The CV goes out with her name on it. The last steps — her contact details and the honesty checks — are hers, not the AI’s.',whybn:'CV যাবে তার নামে। শেষ ধাপগুলো — যোগাযোগের তথ্য আর সততার যাচাই — তার, AI-এর নয়।',stage:'finish',scene:x=>CHAT_SC(x,5),tap:'export',
    say:'Put the CV into a document. Tap ⋮ under the answer.',bn:'CV-টা ডকুমেন্টে নাও। উত্তরের নিচে ⋮ চাপো।'},
   {stage:'finish',scene:x=>Object.assign(CHAT_SC(x,5),{sheet:{html:`<h3>Share &amp; export</h3><button class="li" data-hit="todocs"><span class="av" style="background:#1A4CA8">${AFL.ico('doc')}</span><span><b>Export to Docs</b><p>Make an editable document</p></span></button><button class="li"><span class="av" style="background:#5E5E66">${AFL.ico('copy')}</span><span><b>Copy</b><p>Copy the text</p></span></button><button class="li"><span class="av" style="background:#5E5E66">${AFL.ico('share')}</span><span><b>Share link</b><p>Anyone with the link can see this chat</p></span></button>`}}),tap:'todocs',
    say:'Choose “Export to Docs”.',bn:'“Export to Docs” বেছে নাও।'},
@@ -233,12 +233,12 @@ AFL.lesson({
      {en:'I <u>didn’t share</u> my ID card, because a CV <u>doesn’t need</u> it.',bn:'আমি NID শেয়ার করিনি, কারণ CV-তে এর দরকার নেই।'}]}},
   {stage:'finish',open:true,scene:x=>({app:'gdoc',page:fillCV(x)}),
    say:'Done! You used all four Ds.',bn:'শেষ! তুমি চারটা D-ই ব্যবহার করেছ।',
-   card:{type:'html',html:`<div class="big4">
-     <div class="d-del"><b>Delegation</b><span>Ayesha keeps the facts. AI does the layout.</span><span class="bn" lang="bn">তথ্য আয়েশার; লেআউট AI-এর।</span></div>
-     <div class="d-des"><b>Description</b><span>Context · Product · Process · Performance.</span><span class="bn" lang="bn">প্রেক্ষাপট · পণ্য · প্রক্রিয়া · আচরণ।</span></div>
-     <div class="d-dis"><b>Discernment</b><span>Check every line against the source.</span><span class="bn" lang="bn">প্রতিটি লাইন উৎসের সাথে মেলাও।</span></div>
-     <div class="d-dil"><b>Diligence</b><span>Share only what’s needed. Own the result.</span><span class="bn" lang="bn">শুধু দরকারি তথ্য দাও। ফলাফলের দায় নাও।</span></div></div>
-     <div class="pick-cards"><button class="pcard" data-start="agent"><span class="pi" style="background:#FFDBCC">🛰️</span><span><em>Next</em><b>Set up an AI agent</b><span>Decide what an agent may touch.</span></span></button></div>`}}
+   card:x=>({type:'html',html:AFL.recap(x,{
+     del:{en:'Ayesha keeps the facts. AI does the layout.',bn:'তথ্য আয়েশার; লেআউট AI-এর।'},
+     des:{en:'Context · Product · Process · Performance.',bn:'প্রেক্ষাপট · পণ্য · প্রক্রিয়া · আচরণ।'},
+     dis:{en:'Check every line against her documents.',bn:'প্রতিটি লাইন তার কাগজপত্রের সাথে মেলাও।'},
+     dil:{en:'Share only what’s needed. Own the result.',bn:'শুধু দরকারি তথ্য দাও। ফলাফলের দায় নাও।'}})+`
+     <div class="pick-cards"><button class="pcard" data-start="agent"><span class="pi" style="background:#FFDBCC">🛰️</span><span><em>Next</em><b>Set up an AI agent</b><span>Decide what an agent may touch.</span></span></button></div>`})}
  ]
 });
 })();

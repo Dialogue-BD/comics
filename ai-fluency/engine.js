@@ -283,19 +283,69 @@ const D={del:{n:'Delegation',bn:'দায়িত্ব ভাগ'},des:{n:'De
 const T=(en,bn)=>`${en}${bn?`<span class="bn" lang="bn">${bn}</span>`:''}`;
 function renderRail(){
   const rail=$('#rail');
+  document.body.classList.toggle('inlesson',!!S.lesson);
   if(!S.lesson){rail.innerHTML='';rail.hidden=true;return}
   rail.hidden=false; const L=LESSONS[S.lesson]; const cur=L.beats[S.beat].stage;
   const idx=L.stages.findIndex(s=>s.id===cur);
-  rail.innerHTML=L.stages.map((s,i)=>`<button class="${i===idx?'on':i<idx?'done':''}" style="--dc:var(--d-${s.d})" data-stage="${s.id}"><i>${i+1}</i><span>${esc(s.label)}</span></button>`).join('');
+  rail.innerHTML=L.stages.map((s,i)=>`<button class="${i===idx?'on':i<idx?'done':''}" style="--dc:var(--d-${s.d})" data-stage="${s.id}" title="${i+1} · ${esc(s.label)} · ${D4.META[s.d].dir} ${D4.META[s.d].n}">${D4.badge(s.d,24,i<=idx)}<span>${esc(s.label)}</span></button>`).join('');
   const on=$('.on',rail); if(on) on.scrollIntoView({inline:'nearest',block:'nearest'});
+}
+/* ---- the 4D compass in the coach ---- */
+function beatD(L,i){ const b=L.beats[i]; if(!b) return null; if(b.d==='none') return null; const st=L.stages.find(s=>s.id===b.stage)||{}; return b.d||st.d||null; }
+function prevD(L,i){ for(let j=i-1;j>=0;j--){ const d=beatD(L,j); if(d) return d; } return null; }
+function usedDs(L,upto){ const u={}; for(let j=0;j<=upto;j++){const d=beatD(L,j); if(d) u[d]=1;} return u; }
+let bandD=null, bandAng=0, bandLesson=null;
+function renderBand(d,L){
+  const band=$('#dband'); if(!band) return;
+  if(!L){ band.hidden=true; bandD=null; return; }
+  band.hidden=false;
+  if(bandLesson!==L.id){ bandLesson=L.id; bandD=null; band.innerHTML=`<span class="dcomp">${D4.svg({title:'The four Ds compass'})}</span><span class="dtx"></span><span class="dmore" aria-hidden="true">?</span>`; }
+  const svg=$('svg',band);
+  if(d&&d!==bandD){ if(bandD) bandAng+=2*360/12; svg.style.setProperty('--ga',bandAng+'deg'); band.classList.remove('pulse'); void band.offsetWidth; if(bandD) band.classList.add('pulse'); }
+  $$('.gear',svg).forEach(g=>{ const k=g.getAttribute('class').match(/g-(\w+)/)[1]; g.classList.toggle('on',k===d); g.classList.toggle('used',!!usedDs(L,S.beat)[k]); });
+  bandD=d||bandD;
+  const m=d&&D4.META[d];
+  band.className='dband'+(d?' d-'+d:' idle')+(band.classList.contains('pulse')?' pulse':'');
+  const stg=(L.stages.find(z=>z.id===L.beats[S.beat].stage)||{}).label||'';
+  $('.dtx',band).innerHTML=`<small class="dstage">${esc(stg)}</small>`+(m?`<b><i>${m.dir}</i>${m.n}<em> · ${m.v}</em></b><span class="dq">${m.q}</span><span class="bn" lang="bn">${m.nbn} · ${m.vbn} — ${m.qbn}</span>`
+    :`<b class="story">Ayesha’s story</b><span class="dq">Watch for the gear that turns.</span><span class="bn" lang="bn">খেয়াল করো কোন গিয়ারটা ঘোরে।</span>`);
+  band.setAttribute('aria-label',m?`${m.dir} · ${m.n}: ${m.q} Tap to see all four Ds.`:'The four Ds compass. Tap to see all four.');
+}
+function dShiftCard(x,L,i){
+  const d=beatD(L,i); if(!d) return '';
+  const p=prevD(L,i); if(p===d) return '';
+  const b=L.beats[i], m=D4.META[d], lk=D4.link(p,d);
+  const why=fn(b.why,x)||m.q, whybn=fn(b.whybn,x)||(b.why?'':m.qbn);
+  const tag=lk.kind==='same'?`Same loop · ${lk.loop.n}`:lk.kind==='cross'?'The loops connect':'Ayesha starts here';
+  const tagbn=lk.kind==='same'?`একই চক্র · ${lk.loop.bn}`:lk.kind==='cross'?'দুই চক্র জুড়ে যায়':'আয়েশা এখান থেকে শুরু করে';
+  return `<div class="dshift d-${d}"><div class="ds-row">${p?D4.badge(p,24,false)+'<span class="ds-arr">→</span>':''}${D4.badge(d,30)}<span class="ds-tag"><b>${m.dir} · ${m.n}</b><small>${tag}</small><span class="bn" lang="bn">${tagbn}</span></span></div>
+    <p class="ds-why"><b>Why ${m.n} now?</b> ${why}${whybn?`<span class="bn" lang="bn">${whybn}</span>`:''}</p>
+    ${p&&lk.en?`<p class="ds-link">${D4.icon(p,13)} → ${D4.icon(d,13)} ${lk.en}<span class="bn" lang="bn">${lk.bn}</span></p>`:''}</div>`;
+}
+function openLegend(){
+  const m=$('#menu'); m.hidden=false; const L=S.lesson&&LESSONS[S.lesson]; const d=L?beatD(L,S.beat):null;
+  m.innerHTML=`<div class="panel" role="dialog" aria-label="The four Ds compass"><div style="display:flex;justify-content:space-between;align-items:center"><h2>The 4D compass</h2><button class="iconbtn" data-m="close" aria-label="Close">${ico('close')}</button></div>
+   <p class="sub" style="margin-top:0">Four gears, two loops. The lit gear is the D Ayesha is using now.<span class="bn" lang="bn">চারটা গিয়ার, দুটো চক্র। উজ্জ্বল গিয়ারটা সেই D, যা আয়েশা এখন ব্যবহার করছে।</span></p>
+   ${D4.legend({on:d,used:L?usedDs(L,S.beat):null})}${D4.loopsNote()}</div>`;
+}
+/* end-of-workflow recap: the compass with what this workflow did at each point, and the path taken */
+function recap(x,texts){
+  const L=x.L, seq=[]; L.beats.forEach((b,i)=>{const d=beatD(L,i); if(d&&seq[seq.length-1]!==d) seq.push(d);});
+  let cross=0; for(let i=1;i<seq.length;i++) if(D4.META[seq[i]].loop!==D4.META[seq[i-1]].loop) cross++;
+  const extra={}; Object.keys(texts).forEach(k=>{const t=texts[k];extra[k]=`${t.en||t}${t.bn?`<span class="bn" lang="bn">${t.bn}</span>`:''}`});
+  return `${D4.legend({extra,on:'all',compact:true})}
+   <div class="card d4path"><h3>Ayesha’s path round the compass<span class="bn" lang="bn">কম্পাসে আয়েশার পথ</span></h3>
+    <div class="pathrow">${seq.map((d,i)=>`${i?`<span class="pa ${D4.META[d].loop!==D4.META[seq[i-1]].loop?'x':''}">→</span>`:''}${D4.badge(d,28)}`).join('')}</div>
+    <p class="sub">She didn’t go N, W, E, S once. She went round and round — and the loops crossed ${cross} times. Each D fed the next.<span class="bn" lang="bn">সে একবার উত্তর-পশ্চিম-পূর্ব-দক্ষিণ ঘুরে থামেনি। বারবার ঘুরেছে — দুই চক্র ${cross} বার মিলেছে। প্রতিটি D পরেরটাকে চালিয়েছে।</span></p></div>`;
 }
 function renderCoach(){
   const body=$('#cbody'), act=$('#cact'); const coach=$('#coach');
   renderRail();
   if(!S.lesson){ hubCoach(); return; }
   const x=ctx(), b=x.beat, L=x.L; const st=L.stages.find(s=>s.id===b.stage)||L.stages[0];
-  const d=b.d||st.d;
-  let h=`<div class="kick"><span>${esc(st.label)}</span>${d?`<span class="dtag d-${d}">${D[d].n}</span>`:''}</div>`;
+  const d=beatD(L,S.beat);
+  renderBand(d,L);
+  let h=dShiftCard(x,L,S.beat);
   h+=`<p class="say">${fn(b.say,x)||''}</p>${fn(b.bn,x)?`<span class="bn" lang="bn">${fn(b.bn,x)}</span>`:''}`;
   if(b.sub) h+=`<p class="sub">${fn(b.sub,x)}${fn(b.subbn,x)?`<span class="bn" lang="bn">${fn(b.subbn,x)}</span>`:''}</p>`;
   if(b.compose) h+=composeCard(x,b);
@@ -319,7 +369,7 @@ function renderCoach(){
   $('#c-head').textContent=L.title;
 }
 function hubCoach(){
-  const body=$('#cbody'),act=$('#cact'); $('#coach').classList.remove('open'); $('#c-head').textContent="Ayesha's Phone";
+  const body=$('#cbody'),act=$('#cact'); $('#coach').classList.remove('open'); renderBand(null,null); $('#c-head').textContent="Ayesha's Phone";
   const done=k=>{const c=S.ch[k];return c&&c._finished};
   body.innerHTML=`<div class="kick"><span>Start here</span></div>
    <p class="say">This is Ayesha's phone. Learn AI by doing real tasks on it.</p><span class="bn" lang="bn">এটা আয়েশার ফোন। বাস্তব কাজ করে করে AI ব্যবহার শেখো।</span>
@@ -328,6 +378,7 @@ function hubCoach(){
    <p class="sub">Pick one message on her phone — or here.${S.bn?'':''}<span class="bn" lang="bn">ফোনে একটা মেসেজ বেছে নাও — অথবা এখানে।</span></p>
    <button class="pcard" data-c="intro" style="margin-top:10px;width:100%;border-color:var(--gold);background:var(--gold-soft)"><span class="pi" style="background:var(--forest);color:var(--gold-light)">▶</span><span><em>Start here · projector</em><b>Watch: the four Ds</b><span>A 2-minute animation: the four Ds as two interlocking loops.</span><span class="bn" lang="bn">২ মিনিটের অ্যানিমেশন: চারটা D, দুটো জোড়া চক্র।</span></span></button>
    <div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard" data-start="${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${esc(L.blurb)}</span>${L.blurbbn?`<span class="bn" lang="bn">${L.blurbbn}</span>`:''}</span>${done(id)?'<span class="done">✓ Done</span>':''}</button>`}).join('')}</div>
+   <div class="card"><h3>Watch the compass<span class="bn" lang="bn">কম্পাসে চোখ রাখো</span></h3><p class="sub" style="margin-top:0">At every step, one gear lights up and turns: the D Ayesha is using. Before each new D, the coach tells you <b>why</b>.<span class="bn" lang="bn">প্রতিটি ধাপে একটা গিয়ার জ্বলে ওঠে আর ঘোরে: আয়েশা যে D ব্যবহার করছে। নতুন D শুরুর আগে কোচ বলে দেয় কেন।</span></p>${D4.legend({compact:true})}${D4.loopsNote()}</div>
    <div class="card"><h3>Two layers</h3><ul class="plist">
      <li><span class="ic">📱</span><span><b>Below:</b> the phone. It works like a real Android phone.<span class="bn" lang="bn">নিচে: ফোন। এটা আসল অ্যান্ড্রয়েড ফোনের মতো কাজ করে।</span></span></li>
      <li><span class="ic">🧭</span><span><b>Above:</b> your coach. One step at a time. The gold ring shows where to tap.<span class="bn" lang="bn">উপরে: তোমার কোচ। এক ধাপ করে। সোনালি বৃত্ত দেখায় কোথায় চাপতে হবে।</span></span></li>
@@ -582,7 +633,7 @@ function openMenu(){
   const m=$('#menu'); m.hidden=false;
   m.innerHTML=`<div class="panel" role="dialog" aria-label="Menu"><div style="display:flex;justify-content:space-between;align-items:center"><h2>AI Fluency Lab</h2><button class="iconbtn" data-m="close" aria-label="Close">${ico('close')}</button></div>
    <h3>Workflows</h3><div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard" data-m="start:${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${esc(L.time||'')}</span></span></button>`}).join('')}</div>
-   <div class="row" style="margin-top:12px"><button class="btn gold" data-m="intro">▶ The four Ds (animation)</button><button class="btn quiet" data-m="hub">Ayesha's lock screen</button><button class="btn quiet" data-m="stage">${S.stage?'Leave':'Present on'} projector (P)</button><button class="btn quiet" data-m="fs">Full screen</button><button class="btn quiet" data-m="print">Paper version</button><button class="btn quiet" data-m="reset">Start over</button></div>
+   <div class="row" style="margin-top:12px"><button class="btn gold" data-m="intro">▶ The four Ds (animation)</button><button class="btn quiet" data-m="legend">The 4D compass</button><button class="btn quiet" data-m="hub">Ayesha's lock screen</button><button class="btn quiet" data-m="stage">${S.stage?'Leave':'Present on'} projector (P)</button><button class="btn quiet" data-m="fs">Full screen</button><button class="btn quiet" data-m="print">Paper version</button><button class="btn quiet" data-m="reset">Start over</button></div>
    <h3>For the teacher</h3>
    <p>Each workflow is one class period (35–45 min). Students work in pairs on one phone: one taps, one reads the coach aloud. Swap at every stage.</p>
    <p>The four Ds (Delegation, Description, Discernment, Diligence) come from the AI Fluency framework by Rick Dakan, Joseph Feller and Anthropic. Each stage is coloured by the D it practises.</p>
@@ -595,7 +646,7 @@ function openMenu(){
 }
 function onMenuClick(e){
   const t=e.target.closest('[data-m]'); if(!t){ if(e.target.id==='menu') closeMenu(); return }
-  const a=t.dataset.m; closeMenu();
+  const a=t.dataset.m; closeMenu(); if(a==='legend'){ openLegend(); return; }
   if(a.startsWith('start:')) start(a.slice(6)); else if(a==='hub') hub(); else if(a==='stage') toggleStage(); else if(a==='fs') toggleFS(); else if(a==='print') location.href='print.html'; else if(a==='intro') openIntro();
   else if(a==='reset'){ S.ch={}; save(); hub(); }
 }
@@ -627,6 +678,7 @@ function boot(){
   $('#coach').addEventListener('click',onCoachClick);
   $('#menu').addEventListener('click',onMenuClick);
   $('#btn-menu').addEventListener('click',openMenu);
+  $('#dband').addEventListener('click',openLegend);
   $('#lang-en').addEventListener('click',()=>setBn(false));
   $('#lang-bn').addEventListener('click',()=>setBn(true));
   addEventListener('resize',fit); fit();
@@ -641,5 +693,5 @@ function boot(){
   if(!fromHash()){ if(S.lesson&&LESSONS[S.lesson]) go(S.beat,false); else hub(); }
 }
 
-window.AFL={boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,next,ctx,renderPhone:()=>renderPhone(false),renderCoach,start,hub,STORY_DATE};
+window.AFL={recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,next,ctx,renderPhone:()=>renderPhone(false),renderCoach,start,hub,STORY_DATE};
 })();
