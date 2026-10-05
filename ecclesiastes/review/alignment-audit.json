@@ -1,0 +1,175 @@
+{
+  "method": "Whisper small word timestamps, reviewed against source recordings and reconciled to captions",
+  "audio_sha256": "471c97f30893da99edff93b8b19924c5e278521968d514304befbd27de546aae",
+  "duration": 828.24,
+  "word_count": 1641,
+  "chapters": [
+    {
+      "page": 1,
+      "audio": "audio_1.mp3",
+      "audio_sha256": "598d518e199e53b14c8682ea1bc29f85d080bcb532506fd3995a939e5fe393f2",
+      "start": 0.0,
+      "duration": 97.01095833333333,
+      "word_count": 172,
+      "exact_fraction": 0.9884,
+      "differences": [
+        {
+          "script": "tea stall",
+          "heard": "teestall"
+        }
+      ],
+      "expected": "A young man wakes before the city is fully awake. Outside his window, the sun rises over rooftops, apartments, and distant minarets. His room is small; his dreams are not. At the university tea stall, his friends talk with excitement. They imagine airplanes, foreign degrees, shiny cars, a beautiful marriage, elegant clothes, a modern home, and fame on a phone screen. He listens, he smiles, and something inside him begins to burn. That night he studies: books, laptop, globe, model airplane. His desk becomes a small bridge between Bangladesh and the world he wants. On the street he passes rickshaws, crowds, shops, glass windows, expensive clothes, and polished cars. The dream no longer feels far away. It feels like something he must reach. On a rooftop at sunset he sees the whole future in his mind: the airplane, the car, the house, the beautiful wife, the money, the city lights. But around the dream a thin mist begins to rise. It looks solid, it feels urgent, but it is already becoming smoke.",
+      "heard": "A young man wakes before the city is fully awake. Outside his window, the sun rises over rooftops, apartments, and distant minarets. His room is small, his dreams are not. At the university teestall, his friends talk with excitement. They imagine airplanes, foreign degrees, shiny cars, a beautiful marriage, elegant clothes, a modern home, and fame on a phone screen. He listens, he smiles, and something inside him begins to burn. That night he studies, books, laptop, globe, model airplane. His desk becomes a small bridge between Bangladesh and the world he wants. On the street he passes rickshaws, crowds, shops, glass windows, expensive clothes, and polished cars. The dream no longer feels far away. It feels like something he must reach. On a rooftop at sunset he sees the whole future in his mind. The airplane, the car, the house, the beautiful wife, the money, the city lights. But around the dream a thin mist begins to rise. It looks solid, it feels urgent, but it is already becoming smoke."
+    },
+    {
+      "page": 2,
+      "audio": "audio_2.mp3",
+      "audio_sha256": "17c1fa7ec0217f506fa574c7d0ea724e8bbd0095af549421fde25d00c21c4a45",
+      "start": 97.460958,
+      "duration": 85.53095833333333,
+      "word_count": 166,
+      "exact_fraction": 1.0,
+      "differences": [
+        {
+          "script": "",
+          "heard": "Today"
+        }
+      ],
+      "expected": "Before dawn, while others sleep, he studies again. His eyes are heavy, but his hand keeps moving. He is building a future one page at a time. In the exam hall, he writes. At his desk, he checks papers, passport, and forms. Every step feels like a test. Every test feels like a gate. At home his parents help him pack. His father stands proud. His mother touches his shoulder, trying to be brave. Their son is leaving. At the airport the family stands together for one last moment. The planes are behind them. The journey is in front of him. Then the sky carries him away. He arrives in a cold glass city. Tall buildings surround him. He has reached the place he imagined. But now he is small, tired, and alone. At night, in a little room far from home, he looks out over the strange city lights. The same dreams return: degree, car, marriage, house, success. And again the mist curls around them.",
+      "heard": "Before dawn, while others sleep, he studies again. His eyes are heavy, but his hand keeps moving. He is building a future one page at a time. In the exam hall, he writes. At his desk, he checks papers, passport, and forms. Every step feels like a test. Every test feels like a gate. At home his parents help him pack. His father stands proud. His mother touches his shoulder, trying to be brave. Their son is leaving. At the airport the family stands together for one last moment. The planes are behind them. The journey is in front of him. Then the sky carries him away. Today he arrives in a cold glass city. Tall buildings surround him. He has reached the place he imagined. But now he is small, tired, and alone, at night, in a little room far from home. He looks out over the strange city lights, the same dreams return. Degree, car, marriage, house, success, and again the mist curls around them."
+    },
+    {
+      "page": 3,
+      "audio": "audio_3.mp3",
+      "audio_sha256": "3674585925365f1d380bad7571c1f124be87b0912ae7aaede0f57413f91690fe",
+      "start": 183.441917,
+      "duration": 64.37095833333333,
+      "word_count": 146,
+      "exact_fraction": 0.9863,
+      "differences": [
+        {
+          "script": "held",
+          "heard": "hailed"
+        },
+        {
+          "script": "ladder",
+          "heard": "latter"
+        },
+        {
+          "script": "",
+          "heard": "seats"
+        }
+      ],
+      "expected": "He hurries across a foreign campus with books in his arms and winter air on his face. Everyone is moving. Everyone is chasing something. He studies late, then he works. He writes, serves, cleans, earns, studies too little and starts again. Then comes the day of success: cap and gown, photos, friends. A blank diploma held like a trophy. For a moment, the struggle feels worth it. Soon he sits in a high office above the city. Laptop open, tie straight, windows shining. He has entered the world he once admired from far away. The salary grows, the clothes improve, the dinners become elegant. The phone captures the perfect life: smiles, glasses, lights, applause. But the ladder does not end. He keeps moving upward through escalators, towers, and glowing streets: degree, money, car, recognition, celebration. Each step says, a little higher. The mist follows him up.",
+      "heard": "He hurries across a foreign campus with books in his arms and winter air on his face. Everyone is moving. Everyone is chasing something. He studies late, then he works. He writes, serves, cleans, earns, studies too little and starts again. Then comes the day of success. Cap and gown, photos, friends. A blank diploma hailed like a trophy. For a moment, the struggle feels worth it. Soon he sits in a high office above the city. Laptop open, tie straight, windows shining. He has entered the world he once admired from far away. The salary grows, the clothes improve, the dinners become elegant. The phone captures the perfect life, smiles, glasses, lights, applause. But the latter does not end. He keeps moving upward through escalators, towers, and glowing streets. seats, degree, money, car, recognition, celebration. Each step says, a little higher, the mist follows him up."
+    },
+    {
+      "page": 4,
+      "audio": "audio_4.mp3",
+      "audio_sha256": "4d3885762b1ff949cbf35b24eddc5e3130181bfb922668a0ef9ecb9b38e0c0bb",
+      "start": 248.262875,
+      "duration": 69.57095833333334,
+      "word_count": 141,
+      "exact_fraction": 1.0,
+      "differences": [],
+      "expected": "A key is placed in his hand. A black car waits behind him. The skyline glows behind him like a promise fulfilled. He enters a beautiful apartment: glass walls, soft lights, a view of the city. This is the life he once saw only in dreams. Then comes romance, celebration, a bride in rose and gold. His face is full of joy; her smile is gentle and bright. Dinners, photos, shopping, lights, good clothes, shining memories. Every picture says, look, he made it. Friends gather, people clap, the car waits outside, the home is beautiful. The couple stands together in success. He has reached the place his younger self wanted. But in the final picture his eyes change. The car is there, the money is there, the wife is there, the apartment is there, and still the smoke is there too.",
+      "heard": "A key is placed in his hand. A black car waits behind him. The skyline glows behind him like a promise fulfilled. He enters a beautiful apartment, glass walls, soft lights, a view of the city. This is the life he once saw only in dreams. Then comes romance, celebration, a bride in rose and gold. His face is full of joy, her smile is gentle and bright. Dinners, photos, shopping, lights, good clothes, shining memories. Every picture says, look, he made it. Friends gather, people clap, the car waits outside, the home is beautiful. the couple stands together in success. He has reached the place his younger self wanted, but in the final picture his eyes change. The car is there, the money is there, the wife is there, the apartment is there, and still the smoke is there too."
+    },
+    {
+      "page": 5,
+      "audio": "audio_5.mp3",
+      "audio_sha256": "a36c1dda8fefb9106bbbc8410b6f68050798e96b9a5e8469c7de84bd29a4076d",
+      "start": 318.283833,
+      "duration": 74.61095833333333,
+      "word_count": 132,
+      "exact_fraction": 1.0,
+      "differences": [],
+      "expected": "Alarm, train, office, laptop, night, again. The dream becomes a schedule; the schedule becomes a chain. In his luxury apartment, expensive things surround him: clothes, watches, glass, lights, car, city view. But he stands there like a guest in his own life. He and his wife sit in the same beautiful room. Their bodies are close, but their hearts feel far away. Each one disappears into a separate screen, a separate silence. At the party, everyone laughs: music, food, light, beautiful people. But his face is still. The celebration reaches everyone except him. Then the symbols begin to fade: money, car, house, romance, applause. They float around him like smoke in a dark room. At night he sits alone by the window. The city is full of light. His heart is not.",
+      "heard": "Alarm, train, office, laptop, night, again. The dream becomes a schedule, the schedule becomes a chain. In his luxury apartment, expensive things surround him, clothes, watches, glass, lights, car, city view. But he stands there like a guest in his own life. He and his wife sit in the same beautiful room. Their bodies are close, but their hearts feel far away. Each one disappears into a separate screen, a separate silence. At the party, everyone laughs, music, food, light, beautiful people, but his face is still. The celebration reaches everyone except him. Then the symbols begin to fade. Money, car, house, romance, applause, they float around him like smoke in a dark room. At night he sits alone by the window. The city is full of light. His heart is not."
+    },
+    {
+      "page": 6,
+      "audio": "audio_6.mp3",
+      "audio_sha256": "a1dc81929210ed8975ed20f913bc4cb307460d366fb786e187465a1a34d9224e",
+      "start": 393.344792,
+      "duration": 86.57095833333334,
+      "word_count": 164,
+      "exact_fraction": 1.0,
+      "differences": [
+        {
+          "script": "",
+          "heard": "land"
+        }
+      ],
+      "expected": "One night a face appears on his phone. An old face, a tired face. Someone he loves is weak and far away. He rushes through the airport. He sits in the airplane with his head in his hand. He looks out from the road home, but his mind is already beside the sick bed. At home, he holds the old man's hand. The room is quiet. His mother weeps. His father stands heavy with grief. Success cannot enter this room and fix it. Then the community gathers. Men stand in prayer. The body is covered in white. The young man bows his head with everyone else, reflective. Nearby another funeral shows another life. One grave has flowers, cars, umbrellas, and important men. Another body is carried simply by laborers, through dust and earth. But the ground receives them both. At sunset the young man stands among the graves. Rich and poor, known and unknown, successful and forgotten all become dust under the same sky.",
+      "heard": "One night a face appears on his phone. An old face, a tired face. Someone he loves is weak and far away. He rushes through the airport. He sits in the airplane with his head in his hand. He looks out from the road home, but his mind is already beside the sick bed. At home, he holds the old man's hand. land. The room is quiet. His mother weeps. His father stands heavy with grief. Success cannot enter this room and fix it. Then the community gathers. Men stand in prayer. The body is covered in white. The young man bows his head with everyone else, reflective. Nearby another funeral shows another life. One grave has flowers, cars, umbrellas, and important men. Another body is carried simply by laborers, through dust and earth, but the ground receives them both. At sunset the young man stands among the graves. Rich and poor, known and unknown, successful and forgotten all become dust under the same sky."
+    },
+    {
+      "page": 7,
+      "audio": "audio_7.mp3",
+      "audio_sha256": "63b7c779d4bb52949ea9abbf5ecb3360c9e68c66efb1f6a168452943ba78ca32",
+      "start": 480.36575,
+      "duration": 76.41095833333334,
+      "word_count": 131,
+      "exact_fraction": 1.0,
+      "differences": [],
+      "expected": "He walks again through the streets of Bangladesh. Rickshaw pullers strain. Vendors wait. Students read. Workers carry heavy loads. He sees power welcomed through the front door, while weakness sits ignored beside the wall. He sees crowds full of people, but many are alone. Faces bent over phones, students bent over pressure, workers bent under exhaustion. Morning comes, noon burns, evening falls. The same sun rises and sets over the same city, the same river, the same hunger, the same hopes. Water moves, traffic circles. New students look up and dream the same dreams he dreamed: plane, car, house, marriage, status. The world keeps moving. People go up the stairs. People ride the escalator. People chase the next step. And he stands still. For the first time, he sees the treadmill.",
+      "heard": "He walks again through the streets of Bangladesh. Rickshaw pullers strain. Vendors wait? Students read. Workers carry heavy loads. He sees power welcomed through the front door, while weakness sits ignored beside the wall. He sees crowds full of people, but many are alone. Faces bent over phones, students bent over pressure, workers bent under exhaustion. Morning comes, noon burns, evening falls. The same sun rises and sets over the same city, the same river, the same hunger, the same hopes. Water moves, traffic circles. New students look up and dream the same dreams he dreamed, plane, car, house, marriage, status. The world keeps moving. People go up the stairs. People ride the escalator. People chase the next step. And he stands still. For the first time, he sees the treadmill."
+    },
+    {
+      "page": 8,
+      "audio": "audio_8.mp3",
+      "audio_sha256": "1d8b0a3af5b066e12a452728f8e5acbd5b5cb1aedb777ec60b3e4afa6ed5da2a",
+      "start": 557.226708,
+      "duration": 72.89095833333333,
+      "word_count": 140,
+      "exact_fraction": 0.9857,
+      "differences": [
+        {
+          "script": "and mourning",
+          "heard": "morning"
+        }
+      ],
+      "expected": "At dawn, he sits by the river and watches the light touch the water. In one home, a baby is held. Older hands and younger hands gather around new life. There is laughter. Somewhere else, a wedding shines with flowers, lights, music, and happy faces. In another room, grief sits beside a bed. One person cries. Another comforts. Someone they love is gone. In the fields people plant. On the building site workers carry bricks. Near the river a fisherman pulls his net. In one place people dance under lights. In another place someone sits alone in the rain. Birth and death, laughter and tears, planting and building, dancing and mourning. Life is not one season. He looks over the city and understands: not everything can be controlled. Not every moment can be chosen, but every moment can be received.",
+      "heard": "At dawn, he sits by the river and watches the light touch the water. In one home, a baby is held. Older hands and younger hands gather around new life. There is laughter. Somewhere else, a wedding shines with flowers, lights, music, and happy faces. In another room, grief sits beside a bed. One person cries. Another comforts. someone they love is gone. In the fields people plant. On the building site workers carry bricks. Near the river a fisherman pulls his net. In one place people dance under lights. In another place someone sits alone in the rain. Birth and death, laughter and tears, planting and building, dancing morning. Life is not one season. He looks over the city and understands not everything can be controlled. Not every moment can be chosen, but every moment can be received."
+    },
+    {
+      "page": 9,
+      "audio": "audio_9.mp3",
+      "audio_sha256": "b7546f2823587e4bb5b8bf9135e427dbdc6a8927f79e742a930edc59cfbb03dc",
+      "start": 630.567667,
+      "duration": 63.85095833333333,
+      "word_count": 138,
+      "exact_fraction": 1.0,
+      "differences": [
+        {
+          "script": "",
+          "heard": "farming"
+        },
+        {
+          "script": "",
+          "heard": "It"
+        }
+      ],
+      "expected": "He wakes in a modest room, but his face is peaceful now. The morning is simple, and that is enough. He teaches children. He helps them write. Their smiles are not a promotion, not a trophy, not a passport. They are a gift. He eats with family: rice, vegetables, fish, tea, metal plates, familiar voices. No one is performing. Everyone belongs. He laughs with friends at a tea stall: small glasses, old jokes, afternoon light, ordinary happiness. He carries food to an elderly neighbor. Her smile is simple. His joy is quiet. At sunset he sits on the rooftop and offers thanks to God. A cup of tea sends steam into the evening air. The vapor is still there. But now it is not only emptiness. It is the fragile beauty of a life received with open hands.",
+      "heard": "He wakes in a modest room, but his face is peaceful now. The morning is simple, and that is enough. He teaches children. He helps them write. Their smiles are not a promotion, not a trophy, not a passport. They are a gift. He eats with family. Rice, vegetables, fish, tea, metal plates, familiar voices. No one is performing. farming, everyone belongs. He laughs with friends at a tea stall, small glasses, old jokes, afternoon light, ordinary happiness. He carries food to an elderly neighbor. Her smile is simple. His joy is quiet. At sunset he sits on the rooftop and offers thanks to God. A cup of tea sends steam into the evening air. The vapor is still there. But now it It is not only emptiness. It is the fragile beauty of a life received with open hands."
+    },
+    {
+      "page": 10,
+      "audio": "audio_10.mp3",
+      "audio_sha256": "dbb73038419afb6a4de16ea0fcb89d6c9d302dc4e5e425deefadafb637166372",
+      "start": 694.868625,
+      "duration": 133.37095833333333,
+      "word_count": 311,
+      "exact_fraction": 0.9968,
+      "differences": [
+        {
+          "script": "nails",
+          "heard": "makes"
+        }
+      ],
+      "expected": "The same old dreams fill the sky around another young man: the plane, the car, the romance, the big house, the crowd, the feeling of being important. They shine above him like promises. But the older brother beside him has already chased those promises under the sun. He gathers the younger men close and teaches them from what he has seen. Success can rise like smoke. Desire can pull like wind, and a man can spend his whole life chasing what his hands can never hold. The dream is bright and powerful, but it is vapor, and chasing after it is like chasing after the wind. The younger man listens; his face changes. The old dream does not disappear all at once, but it begins to loosen its grip. Then a new dream opens before the man who has seen everything under the sun: not a louder life, but a quieter one. Children learning, a family sitting together, a simple home, a small garden, honest work, shared food, and people giving what they have. He sees hands building, writing, planting, serving and repairing. Boards, bricks, nails, dust, sweat, and evening light become part of a humbler wisdom. Then the man, older and wiser now, looks upward toward heaven. His face is calm. His life is no longer reaching for applause, but bowing in obedience, reverence, and humility before God. Beside him, steam rises from a little cup into the golden air. The smoke rises higher and higher, past the roof, past the trees, past the fading sun. Under the sun everything passes, but above the sun God remains. So receive life as a gift. Share the meal, do the work, love the people near you, walk humbly, fear God, and let your life, which is only but a vapor, rise as an offering to return to the one who granted it.",
+      "heard": "The same old dreams fill the sky around another young man, the plane, the car, the romance, the big house, the crowd, the feeling of being important. They shine above him like promises. But the older brother beside him has already chased those promises under the sun. He gathers the younger men close and teaches them from what he has seen. Success can rise like smoke. desire can pull like wind, and a man can spend his whole life chasing what his hands can never hold. The dream is bright and powerful, but it is vapor, and chasing after it is like chasing after the wind. The younger man listens, his face changes. The old dream does not disappear all at once, but it begins to loosen its grip. Then a new dream opens before the man who has seen everything under the sun, not a louder life, but a quieter one. Children learning, a family sitting together, a simple home, a small garden, honest work, shared food, and people giving what they have. He sees hands building, writing, planting, serving and repairing, boards, bricks, makes dust, sweat, and evening light become part of a humbler wisdom. Then the man, older and wiser now, looks upward toward heaven. His face is calm. His life is no longer reaching for applause, but bowing in obedience, reverence, and humility before God. Beside him, steam rises from a little cup into the golden air. The smoke rises higher and higher, past the roof, past the trees, past the fading sun. Under the sun everything passes, but above the sun God remains. So receive life as a gift, share the meal, do the work, love the people near you, walk humbly, fear God, and let your life which is only but a vapor rise as an offering to return to the one who granted it."
+    }
+  ]
+}
