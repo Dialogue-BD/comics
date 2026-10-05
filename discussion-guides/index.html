@@ -118,7 +118,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;max-height:86vh;overflow:auto;background:var(--card);border-radius:18px 18px 0 0;transform:translateY(100%);visibility:hidden;transition:transform .25s ease,visibility 0s linear .25s;padding:0 16px calc(20px + env(safe-area-inset-bottom))}
 .sheet-open .sheet-bg{opacity:1;pointer-events:auto}
 .sheet-open .sheet{transform:none;visibility:visible;transition:transform .25s ease}
-.sheet .grab{position:sticky;top:0;background:var(--card);padding:10px 0 8px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);max-width:720px;margin:0 auto}
+.sheet .grab{position:sticky;top:0;z-index:2;background:var(--card);padding:10px 0 8px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);max-width:720px;margin:0 auto}
 .sheet .grab h3{margin:0;font-family:var(--serif);font-size:21px;color:var(--forest)}
 .sheet .body{max-width:720px;margin:0 auto}
 .vocab{list-style:none;margin:0;padding:0}
@@ -128,7 +128,26 @@ button{font:inherit;color:inherit;cursor:pointer}
 .vocab .m{font-size:15px}
 .vocab .e{font-size:14px;color:var(--ink-soft);font-style:italic}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}
-.chips span{background:var(--moss-soft);color:var(--forest);border-radius:99px;padding:4px 10px;font-size:14px;font-weight:600}
+.chips button{display:inline-flex;align-items:center;gap:6px;background:var(--moss-soft);color:var(--forest);border:1px solid transparent;border-radius:99px;padding:6px 12px 6px 9px;font-size:14.5px;font-weight:600;min-height:36px}
+.chips button svg{width:15px;height:15px;flex:none;opacity:.7}
+/* speak buttons (phone voice) */
+.spk{flex:none;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--forest);padding:0;vertical-align:middle}
+.spk svg{width:17px;height:17px}
+.spk.sm{width:30px;height:30px}
+.spk.sm svg{width:15px;height:15px}
+.speaking,.chips button.speaking{background:var(--forest)!important;color:var(--paper)!important;border-color:var(--forest)!important}
+.speaking svg{opacity:1}
+.no-speech .spk,.no-speech .listen{display:none}
+.no-speech .chips button svg{display:none}
+.vocab li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:start}
+.vocab .w,.vocab .m,.vocab .e{grid-column:1}
+.vocab .spk.word{grid-column:2;grid-row:1}
+.vocab .spk.ex{grid-column:2;grid-row:3;align-self:center}
+.listen{display:inline-flex;align-items:center;gap:8px;margin:0 0 12px;background:rgba(244,241,230,.14);color:var(--paper);border:1px solid rgba(244,241,230,.35);border-radius:99px;padding:7px 14px 7px 11px;font-weight:700;font-size:14.5px}
+.listen svg{width:18px;height:18px}
+.qbox .listen.speaking{background:var(--paper)!important;color:var(--forest)!important}
+.mini-q{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.pat{display:flex;gap:10px;align-items:center;justify-content:space-between}
 .sheet h4{margin:18px 0 4px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--moss);font-weight:800}
 
 @media (min-width:700px){
@@ -375,9 +394,11 @@ button{font:inherit;color:inherit;cursor:pointer}
   function sayHTML(list){
     return '<div class="say">'+list.map(function(s){return '<div>'+blanks(s)+'</div>';}).join("")+'</div>';
   }
+  var SPK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
   var TIP_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>';
 
   function render(){
+    stopSpeaking();
     var t = cur, h = "";
     // progress
     var d = "";
@@ -391,6 +412,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     if(idx===0){
       h += '<div class="qbox"><div class="cat">'+esc(t.category)+'</div>'+
            '<p class="q">'+esc(t.question)+'</p>'+
+           '<button class="listen" type="button" data-say="'+esc(t.question)+'">'+SPK+'Listen to the question</button>'+
            '<p class="bn" lang="bn">'+esc(t.bn)+'</p></div>';
       h += '<div class="panel"><h3>Background</h3><p>'+esc(t.context)+'</p></div>';
       h += '<div class="panel"><h3>Choose three roles</h3><div class="roles">'+
@@ -399,7 +421,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     } else {
       var s = S[idx-1];
       h += '<div class="step-head"><span class="step-num">'+idx+'</span><div><h2>'+esc(s.title)+'</h2><span class="time">About '+s.time+' minutes</span></div></div>';
-      h += '<p class="mini-q">'+esc(t.question)+'</p>';
+      h += '<div class="mini-q"><span>'+esc(t.question)+'</span><button class="spk sm" type="button" aria-label="Listen to the question" data-say="'+esc(t.question)+'">'+SPK+'</button></div>';
       h += '<div class="panel"><h3>Do this</h3><ol class="do">'+s.doo.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ol></div>';
       if(s.talk) h += '<div class="panel"><h3>Talk about</h3><ul class="talk">'+s.talk.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul></div>';
       if(s.persons) h += '<div class="panel"><h3>Take one person each</h3><ul class="talk persons">'+s.persons.map(function(x,i){return '<li><i>'+String.fromCharCode(65+i)+'</i><span>'+esc(x)+'</span></li>';}).join("")+'</ul></div>';
@@ -448,22 +470,74 @@ button{font:inherit;color:inherit;cursor:pointer}
     if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.6) go(idx+(dx<0?1:-1));
   },{passive:true});
 
+  /* ---------- speech (the phone's own voice) ---------- */
+  var SYN = window.speechSynthesis, VOICE = null, speakingBtn = null, speakTimer = null;
+  function pickVoice(){
+    if(!SYN) return;
+    var vs = SYN.getVoices().filter(function(v){return /^en[-_]/i.test(v.lang);});
+    if(!vs.length) return;
+    // Prefer natural-sounding US/UK voices; fall back to any English voice.
+    var pref = [/Google US English/i,/Samantha/i,/Google UK English Female/i,/Natural/i,/Daniel/i,/Karen/i];
+    for(var i=0;i<pref.length;i++){
+      for(var j=0;j<vs.length;j++){ if(pref[i].test(vs[j].name)){ VOICE=vs[j]; return; } }
+    }
+    for(var k=0;k<vs.length;k++){ if(/en[-_](US|GB)/i.test(vs[k].lang)){ VOICE=vs[k]; return; } }
+    VOICE = vs[0];
+  }
+  if(SYN && window.SpeechSynthesisUtterance){
+    pickVoice();
+    if(SYN.addEventListener) SYN.addEventListener("voiceschanged",pickVoice); else SYN.onvoiceschanged = pickVoice;
+  } else { SYN = null; document.documentElement.classList.add("no-speech"); }
+
+  function stopSpeaking(){
+    if(SYN) SYN.cancel();
+    clearTimeout(speakTimer);
+    if(speakingBtn){ speakingBtn.classList.remove("speaking"); speakingBtn = null; }
+  }
+  function watch(btn){
+    // Some phones never fire onend, which would leave a button lit; poll instead.
+    speakTimer = setTimeout(function(){
+      if(speakingBtn !== btn) return;
+      if(SYN.speaking || SYN.pending) watch(btn); else stopSpeaking();
+    }, 700);
+  }
+  function speak(text, btn, kind){
+    if(!SYN) return;
+    var again = speakingBtn === btn;
+    stopSpeaking();
+    if(again) return;                       // a second tap on the same button stops it
+    var u = new SpeechSynthesisUtterance(text.replace(/[’‘]/g,"'"));
+    if(VOICE){ u.voice = VOICE; u.lang = VOICE.lang; } else u.lang = "en-US";
+    u.rate = kind==="word" ? 0.8 : 0.9;     // a little slower than conversation
+    u.onend = u.onerror = function(){ if(speakingBtn===btn) stopSpeaking(); };
+    speakingBtn = btn; btn.classList.add("speaking");
+    SYN.speak(u);
+    watch(btn);
+  }
+  document.addEventListener("click",function(e){
+    var b = e.target.closest("[data-say]"); if(!b) return;
+    speak(b.getAttribute("data-say"), b, b.getAttribute("data-kind"));
+  });
+
   /* ---------- words sheet ---------- */
   function buildWords(){
     var t = cur, h = '<ul class="vocab">';
     (t.vocabulary||[]).forEach(function(v){
-      h += '<li><div class="w">'+esc(v[0])+'<span class="bn" lang="bn">'+esc(v[1])+'</span></div><div class="m">'+esc(v[2])+'</div><div class="e">'+esc(v[3])+'</div></li>';
+      h += '<li><div class="w">'+esc(v[0])+'<span class="bn" lang="bn">'+esc(v[1])+'</span></div>'+
+           '<button class="spk word" type="button" aria-label="Say '+esc(v[0])+'" data-say="'+esc(v[0])+'" data-kind="word">'+SPK+'</button>'+
+           '<div class="m">'+esc(v[2])+'</div><div class="e">'+esc(v[3])+'</div>'+
+           '<button class="spk sm ex" type="button" aria-label="Listen to the example" data-say="'+esc(v[3])+'">'+SPK+'</button></li>';
     });
     h += '</ul>';
     var ph = (t.topicChunks||[]).concat(t.collocations||[]);
-    if(ph.length) h += '<h4>Useful phrases</h4><div class="chips">'+ph.map(function(c){return '<span>'+esc(c)+'</span>';}).join("")+'</div>';
+    if(ph.length) h += '<h4>Useful phrases</h4><div class="chips">'+ph.map(function(c){return '<button type="button" data-say="'+esc(c)+'" data-kind="phrase">'+SPK+esc(c)+'</button>';}).join("")+'</div>';
     if(t.grammar&&t.grammar.length){
-      h += '<h4>Sentence patterns</h4><div class="say">'+t.grammar.map(function(g){return '<div>'+blanks(g[1])+'<small>'+esc(g[2])+'</small></div>';}).join("")+'</div>';
+      h += '<h4>Sentence patterns</h4><div class="say">'+t.grammar.map(function(g){return '<div class="pat"><span>'+blanks(g[1])+'<small>'+esc(g[2])+'</small></span><button class="spk sm" type="button" aria-label="Listen to the example" data-say="'+esc(g[2])+'">'+SPK+'</button></div>';}).join("")+'</div>';
     }
     $("sheet-body").innerHTML = h;
   }
   function openWords(){ document.body.classList.add("sheet-open"); $("close-words").focus(); }
-  function closeWords(){ document.body.classList.remove("sheet-open"); }
+  function closeWords(){ stopSpeaking(); document.body.classList.remove("sheet-open"); }
   $("open-words").onclick = openWords;
   $("close-words").onclick = closeWords;
   $("sheet-bg").onclick = closeWords;
