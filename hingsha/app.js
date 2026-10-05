@@ -48,7 +48,7 @@
   $("#title").textContent = S.title;
   $("#title-bn").textContent = S.titleBn;
   $("#kicker").textContent = S.kicker;
-  audio.src = S.audio + "?v=20261005b";
+  audio.src = S.audio + "?v=20261005-audio-cleaned";
 
   const fmt = seconds => {
     if (!Number.isFinite(seconds)) return "0:00";

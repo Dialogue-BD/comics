@@ -36,3 +36,13 @@ the transcript lines.
 /Users/timothyhall/miniforge3/bin/python3 tools/align_story.py --model small
 node tools/verify_story.js
 ```
+
+Audio cleanup (2026-10-05): delivery MP3 uses the original WAV with cuts at
+10.4 kHz (-24 dB, Q 35) and 9.05 kHz (-15 dB, Q 30), an 8 dB high-shelf
+cut at 6.5 kHz, and a two-pole 7.8 kHz low-pass. Smoothstep blending leaves
+the first 45 seconds untouched and reaches full treatment at 85 seconds.
+No samples were added or removed: the source and cleaned WAV both contain
+3,080,640 samples at 24 kHz (128.36 seconds), so existing word intervals
+remain applicable. The timing file's delivery hash has been updated.
+The alignment audit retains the original ASR result and original audio hash;
+it was not rerun for this filtering-only edit. The untouched source is retained.
