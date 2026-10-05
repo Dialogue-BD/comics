@@ -1,0 +1,20 @@
+{
+  "tool": "Built-in imagegen; no API key",
+  "edits": [
+    {
+      "source": "page_3.jpg",
+      "output": "assets/source/page-03-edited.png",
+      "instructions": "Preserve the complete six-row comic, exact panel borders, aspect ratio, characters, faces, clothing, poses, backgrounds, objects, and photographic painted style. Replace all stemmed glasses in the fifth-row restaurant celebration with plain water or tea tumblers. Add a straight dark navy tie to the fourth-row office character, fastening his existing shirt collar, to match the recorded line. No wine, alcohol, bottles, readable text, speech bubbles, cropping, or recomposition."
+    },
+    {
+      "source": "page_4.jpg",
+      "output": "assets/source/page-04-edited.png",
+      "instructions": "Preserve the complete six-row comic, exact panel borders, aspect ratio, faces, clothing, poses, wedding beats, backgrounds, objects, and photographic painted style. Replace stemmed glasses in the fourth-row romantic dinner and small inset photos with plain water tumblers. No wine, alcohol, bottles, readable text, speech bubbles, cropping, or recomposition."
+    },
+    {
+      "source": "page_5.jpg",
+      "output": "assets/source/page-05-edited.png",
+      "instructions": "Preserve the complete six-row comic, exact panel borders, aspect ratio, faces, poses, backgrounds, objects, and photographic painted style. Replace every stemmed glass in the fourth-row party with plain water or tea tumblers. Give the two party women modest long-sleeved high-neck clothing and matching orna scarves covering their chest and shoulders. Keep all other rows and people unchanged. No wine, alcohol, bottles, readable text, speech bubbles, cropping, or recomposition."
+    }
+  ]
+}
