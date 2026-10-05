@@ -3,7 +3,6 @@ const HINGSHA_STORY = {
   title: "Hingsha",
   titleBn: "হিংসা",
   kicker: "A Bengali folk tale",
-  sourceNote: "A contextual retelling of ATU 1331",
   audio: "audio/hingsha-story.mp3",
   tts: {
     model: "Gemini 3.8 Flash TTS",

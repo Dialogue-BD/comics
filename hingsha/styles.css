@@ -9,9 +9,11 @@ html{background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,sy
 body{margin:0;min-height:100vh;background:radial-gradient(circle at 82% 0,#e6decb 0,transparent 34rem),var(--paper)}
 button,input{font:inherit}button{color:inherit}svg{width:1.2em;height:1.2em;fill:currentColor}
 .app{width:min(1460px,100%);margin:0 auto;padding:20px clamp(14px,3vw,48px) 40px}
+.screen-brand{display:none;position:fixed;z-index:40;top:max(8px,env(safe-area-inset-top));left:max(8px,env(safe-area-inset-left));width:126px;height:62px;padding:5px 8px;border:1px solid rgba(24,56,47,.16);border-radius:15px;background:rgba(255,253,248,.92);box-shadow:0 8px 26px rgba(0,0,0,.22);backdrop-filter:blur(12px)}
+.screen-brand img{display:block;width:100%;height:100%;object-fit:contain}
 .masthead{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:22px;margin-bottom:16px}
 .brand{justify-self:start;display:inline-flex;align-items:center;gap:10px;color:var(--forest);text-decoration:none;font-weight:800;letter-spacing:.02em}
-.brand-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--forest);color:white;font-family:Georgia,serif;font-size:1.25rem}
+.brand-logo{display:block;width:132px;height:66px;object-fit:contain}
 .title-block{text-align:center}.eyebrow,.gloss-kind{margin:0 0 4px;text-transform:uppercase;letter-spacing:.14em;font-weight:800;font-size:.7rem;color:var(--forest-2)}
 h1,h2,p{margin-top:0}h1{margin-bottom:2px;font:700 clamp(1.8rem,3.4vw,3rem)/.95 Georgia,serif;color:var(--forest)}
 .title-bn{font-family:"Noto Sans Bengali","Hind Siliguri",sans-serif;font-size:.58em;font-weight:600;color:#8b6c2e;vertical-align:.12em}
@@ -74,4 +76,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #56b5df;outline-offse
   .app{padding:6px 10px}.masthead{display:none}.passes{position:fixed;z-index:20;top:8px;left:50%;transform:translateX(-50%);width:min(560px,58vw);margin:0;background:rgba(20,29,25,.7);border-color:rgba(255,255,255,.16);backdrop-filter:blur(10px)}.pass{padding:4px 9px;color:rgba(255,255,255,.8)}.pass small{display:none}.pass.active{background:rgba(255,255,255,.94)}
   .cinema-card{width:min(100%,calc((100svh - 12px)*16/9));margin:auto;border-radius:14px}.cinema-stage{aspect-ratio:16/9}.stage-notes{display:none}.stage-topbar{top:8px}.caption-shell{bottom:65px}.current-line{font-size:clamp(.9rem,2.4vw,1.25rem)}.transport{bottom:7px;padding:5px 7px}.play{width:38px;height:38px}.round-btn,.transcript-icon{width:32px;height:32px}
 }
+@media(orientation:landscape) and (min-width:761px) and (max-height:620px){.screen-brand{display:block}.stage-brand{display:none}.stage-topbar{left:58px}}
+:fullscreen .screen-brand,:-webkit-full-screen .screen-brand,body.fullscreen-active .screen-brand{display:block}
+:fullscreen .stage-brand,:-webkit-full-screen .stage-brand,body.fullscreen-active .stage-brand{display:none}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}}

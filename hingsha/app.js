@@ -48,7 +48,6 @@
   $("#title").textContent = S.title;
   $("#title-bn").textContent = S.titleBn;
   $("#kicker").textContent = S.kicker;
-  $("#source-note").textContent = S.sourceNote;
   audio.src = S.audio + "?v=20261005b";
 
   const fmt = seconds => {
