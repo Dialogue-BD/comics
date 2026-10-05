@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Discussion Guides — Dialogue</title>
+<meta name="description" content="Pick a discussion question and follow six simple steps as a group. Phone guide and one-page printable for every question.">
+<meta name="theme-color" content="#103d21">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#103d21; --deep:#0c3319; --ink:#1d211c; --ink-soft:#5f6a5c;
+  --paper:#f4f1e6; --card:#fffdf7; --line:#d8d3c2;
+  --gold:#b9924f; --gold-soft:#f0e6cd; --moss:#6f8f62; --moss-soft:#e3ead9; --clay:#b0563a;
+  --serif:'Source Serif 4', Georgia, serif;
+  --sans:'Public Sans', system-ui, -apple-system, sans-serif;
+  --bn:'Hind Siliguri', 'Public Sans', sans-serif;
+  --bar-h:76px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;cursor:pointer}
+.bn{font-family:var(--bn)}
+.blank{display:inline-block;min-width:2.4em;border-bottom:1.5px solid currentColor;opacity:.55;margin:0 .12em;transform:translateY(-.18em)}
+[hidden]{display:none!important}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:10px;padding:10px 16px;padding-top:max(10px,env(safe-area-inset-top));background:var(--forest);color:var(--paper)}
+.topbar a,.topbar button.link{color:var(--paper);text-decoration:none;font-weight:600;font-size:15px;background:none;border:0;padding:8px 4px;white-space:nowrap}
+.topbar .mark{flex:1;min-width:0;text-align:center;font-family:var(--serif);font-weight:600;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid rgba(244,241,230,.35);background:transparent;display:grid;place-items:center;padding:0}
+.topbar .icon-btn svg{width:20px;height:20px}
+
+/* ---------- picker ---------- */
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+.intro{padding:26px 0 8px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.intro h1{font-family:var(--serif);font-weight:600;font-size:32px;line-height:1.12;margin:6px 0 10px;color:var(--forest)}
+.intro p{margin:0;color:var(--ink-soft)}
+.steps-strip{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 4px;padding:0;list-style:none}
+.steps-strip li{font-size:13px;font-weight:600;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:4px 10px 4px 5px;display:flex;align-items:center;gap:6px}
+.steps-strip b{width:20px;height:20px;border-radius:50%;background:var(--forest);color:var(--paper);display:grid;place-items:center;font-size:11px}
+.teacher{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0 6px;padding:12px 14px;border:1px dashed var(--gold);border-radius:12px;background:var(--gold-soft)}
+.teacher p{margin:0;font-size:14px;color:var(--ink)}
+.teacher p small{display:block;color:var(--ink-soft);font-size:12.5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;border:1px solid var(--forest);background:var(--forest);color:var(--paper);font-weight:700;font-size:15px;padding:10px 14px;min-height:44px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--forest)}
+.btn svg{width:18px;height:18px}
+.list{list-style:none;margin:14px 0 40px;padding:0;display:grid;gap:10px}
+.topic{display:grid;grid-template-columns:44px 1fr;gap:12px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;transition:border-color .15s, transform .15s}
+.topic:hover{border-color:var(--moss)}
+.topic:active{transform:scale(.99)}
+.topic .num{width:44px;height:44px;border-radius:12px;background:var(--moss-soft);color:var(--forest);font-family:var(--serif);font-weight:700;font-size:20px;display:grid;place-items:center}
+.topic .cat{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--moss)}
+.topic .ttl{font-family:var(--serif);font-weight:600;font-size:19px;line-height:1.2;color:var(--forest);margin:2px 0 4px}
+.topic .q{font-size:14px;color:var(--ink-soft);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.foot{padding:0 0 40px;color:var(--ink-soft);font-size:13px;text-align:center}
+
+/* ---------- guide ---------- */
+.progress{position:sticky;top:60px;z-index:15;background:var(--paper);padding:10px 16px 8px;border-bottom:1px solid var(--line)}
+.progress .dots{display:flex;gap:5px;max-width:720px;margin:0 auto}
+.progress button{flex:1;height:30px;border:0;background:transparent;padding:0;position:relative}
+.progress button::before{content:"";position:absolute;left:0;right:0;top:13px;height:5px;border-radius:3px;background:var(--line)}
+.progress button.done::before{background:var(--moss)}
+.progress button.on::before{background:var(--forest);height:7px;top:12px}
+.progress .lbl{max-width:720px;margin:2px auto 0;display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);font-weight:600}
+.stage{max-width:720px;margin:0 auto;padding:18px 16px calc(var(--bar-h) + 30px + env(safe-area-inset-bottom))}
+.step-head{display:flex;align-items:center;gap:12px;margin:2px 0 14px}
+.step-num{flex:none;width:48px;height:48px;border-radius:50%;background:var(--forest);color:var(--paper);display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:24px}
+.step-head h2{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.1;margin:0;color:var(--forest)}
+.step-head .time{font-size:13px;color:var(--ink-soft);font-weight:600}
+.qbox{background:var(--forest);color:var(--paper);border-radius:16px;padding:18px 18px 16px;margin:0 0 14px}
+.qbox .cat{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#d2b978}
+.qbox .q{font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.28;margin:6px 0 10px}
+.qbox .bn{font-size:16px;line-height:1.55;opacity:.9;border-top:1px solid rgba(244,241,230,.22);padding-top:10px}
+.mini-q{font-family:var(--serif);font-size:15.5px;line-height:1.35;color:var(--forest);background:var(--moss-soft);border-radius:10px;padding:10px 12px;margin:0 0 14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 12px}
+.panel h3{margin:0 0 8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--moss);font-weight:800}
+.panel p{margin:0}
+.do{margin:0;padding:0;list-style:none;counter-reset:d}
+.do li{counter-increment:d;position:relative;padding:0 0 8px 32px;font-size:16.5px}
+.do li:last-child{padding-bottom:0}
+.do li::before{content:counter(d);position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--forest);color:var(--forest);font-size:12px;font-weight:800;display:grid;place-items:center}
+.talk{margin:0;padding:0;list-style:none}
+.talk li{padding:9px 0;border-top:1px solid var(--line);font-size:16px}
+.talk li:first-child{border-top:0;padding-top:0}
+.talk li:last-child{padding-bottom:0}
+.talk.persons li{display:flex;gap:10px;align-items:flex-start}
+.talk.persons li i{flex:none;font-style:normal;width:26px;height:26px;border-radius:8px;background:var(--gold-soft);color:#7a5a20;font-weight:800;font-size:13px;display:grid;place-items:center}
+.task{font-family:var(--serif);font-size:19px;line-height:1.35;color:var(--forest);font-weight:600}
+.say{display:flex;flex-direction:column;gap:7px}
+.say div{background:var(--paper);border-radius:10px;padding:8px 12px;font-size:16px;border-left:3px solid var(--gold)}
+.say div small{display:block;color:var(--ink-soft);font-size:13px;font-style:italic;margin-top:2px}
+.tip{display:flex;gap:10px;background:var(--gold-soft);border-radius:12px;padding:12px 14px;font-size:14.5px;margin:0 0 12px}
+.tip b{display:block;color:#6d5020}
+.tip svg{flex:none;width:20px;height:20px;color:#8a6a2c;margin-top:2px}
+.roles{display:grid;gap:8px}
+.role{display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:start}
+.role i{font-style:normal;width:36px;height:36px;border-radius:10px;background:var(--moss-soft);display:grid;place-items:center;font-size:18px}
+.role b{display:block;color:var(--forest)}
+.role span{font-size:14.5px;color:var(--ink-soft)}
+.frame-lines div{border-bottom:1.5px solid var(--line);padding:10px 0 6px;font-size:16px}
+.finish{text-align:center;padding:20px 0}
+.finish .btn{margin:6px}
+
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:25;background:rgba(255,253,247,.96);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.bar .in{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1.4fr;gap:8px}
+.bar .btn{width:100%}
+.bar .btn:disabled{opacity:.35;cursor:default}
+.bar .words-btn{background:var(--gold-soft);border-color:var(--gold);color:#6d5020;padding:10px 14px}
+
+/* words sheet */
+.sheet-bg{position:fixed;inset:0;z-index:40;background:rgba(12,51,25,.45);opacity:0;pointer-events:none;transition:opacity .2s}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;max-height:86vh;overflow:auto;background:var(--card);border-radius:18px 18px 0 0;transform:translateY(100%);visibility:hidden;transition:transform .25s ease,visibility 0s linear .25s;padding:0 16px calc(20px + env(safe-area-inset-bottom))}
+.sheet-open .sheet-bg{opacity:1;pointer-events:auto}
+.sheet-open .sheet{transform:none;visibility:visible;transition:transform .25s ease}
+.sheet .grab{position:sticky;top:0;background:var(--card);padding:10px 0 8px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);max-width:720px;margin:0 auto}
+.sheet .grab h3{margin:0;font-family:var(--serif);font-size:21px;color:var(--forest)}
+.sheet .body{max-width:720px;margin:0 auto}
+.vocab{list-style:none;margin:0;padding:0}
+.vocab li{padding:11px 0;border-bottom:1px solid var(--line)}
+.vocab .w{font-weight:800;color:var(--forest);font-size:17px}
+.vocab .w .bn{font-weight:500;color:var(--clay);font-size:15.5px;margin-left:8px}
+.vocab .m{font-size:15px}
+.vocab .e{font-size:14px;color:var(--ink-soft);font-style:italic}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}
+.chips span{background:var(--moss-soft);color:var(--forest);border-radius:99px;padding:4px 10px;font-size:14px;font-weight:600}
+.sheet h4{margin:18px 0 4px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--moss);font-weight:800}
+
+@media (min-width:700px){
+  .intro h1{font-size:40px}
+  .qbox .q{font-size:26px}
+}
+
+/* ---------- print sheets ---------- */
+#print-root{position:absolute;left:-10000px;top:0;width:190mm}
+.ps{width:190mm;height:277mm;overflow:hidden;font-family:var(--sans);color:#111;font-size:var(--fs,9pt);line-height:1.32;display:flex;flex-direction:column;background:#fff}
+.ps .hd{display:flex;gap:4mm;align-items:flex-start;border-bottom:2px solid var(--forest);padding-bottom:2.2mm}
+.ps .hd .l{flex:1;min-width:0}
+.ps .eb{font-size:.8em;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--moss)}
+.ps h1{font-family:var(--serif);font-size:1.95em;line-height:1.05;margin:.6mm 0 1.4mm;color:var(--forest);font-weight:700}
+.ps .pq{font-family:var(--serif);font-weight:600;font-size:1.28em;line-height:1.25;margin:0}
+.ps .pbn{font-family:var(--bn);font-size:1.02em;line-height:1.4;margin:1mm 0 0;color:#333}
+.ps .qr{flex:none;width:23mm;text-align:center;font-size:.72em;color:#555;line-height:1.2}
+.ps .qr canvas,.ps .qr img{width:23mm!important;height:23mm!important;display:block;margin:0 auto 1mm}
+.ps .ctx{margin:2mm 0 0;font-size:.94em;color:#333}
+.ps .rl{display:flex;gap:2mm;margin:2.2mm 0 0}
+.ps .rl div{flex:1;border:1px solid var(--line);border-radius:2mm;padding:1.2mm 2mm;font-size:.9em}
+.ps .rl b{color:var(--forest)}
+.ps .rl .nm{display:inline-block;border-bottom:1px solid #999;min-width:16mm;margin-left:1mm}
+.ps .cols{flex:1;display:grid;grid-template-columns:1fr 62mm;gap:4mm;margin-top:2.4mm;min-height:0}
+.ps .st{display:grid;grid-template-columns:7mm 1fr;gap:2mm;padding:1.7mm 0;border-top:1px solid var(--line)}
+.ps .st:first-child{border-top:0;padding-top:0}
+.ps .st .n{width:6.4mm;height:6.4mm;border-radius:50%;background:var(--forest);color:#fff;display:grid;place-items:center;font-weight:800;font-family:var(--serif);font-size:1.15em}
+.ps .st h2{margin:0;font-size:1.12em;color:var(--forest);font-family:var(--serif);font-weight:700;line-height:1.2}
+.ps .st h2 small{font-family:var(--sans);font-weight:600;color:#777;font-size:.78em;margin-left:1.5mm}
+.ps .st p{margin:.5mm 0 0}
+.ps .st ul{margin:.6mm 0 0;padding-left:4mm;display:grid;grid-template-columns:1fr 1fr;column-gap:5mm}
+.ps .st ul.one{grid-template-columns:1fr}
+.ps .st li{margin:0}
+.ps .st .sy{margin:.8mm 0 0;font-size:.93em;color:#333}
+.ps .st .sy b{color:#7a5a20;font-size:.85em;letter-spacing:.06em;text-transform:uppercase;margin-right:1mm}
+.ps .st .tp{margin:.6mm 0 0;font-size:.88em;color:#6d5020;font-style:italic}
+.ps .st .tk{font-weight:700;color:var(--forest)}
+.ps .lines div{border-bottom:1px solid #aaa;height:6mm;font-size:.92em;padding-top:1.4mm;color:#555}
+.ps .side{border-left:1px solid var(--line);padding-left:3.5mm;min-height:0}
+.ps .side h3{margin:0 0 1mm;font-size:.8em;letter-spacing:.12em;text-transform:uppercase;color:var(--moss);font-weight:800}
+.ps .side h3:not(:first-child){margin-top:2.6mm}
+.ps .vw{margin:0 0 1.1mm;font-size:.92em;line-height:1.25}
+.ps .vw b{color:var(--forest)}
+.ps .vw .bn{color:var(--clay);font-size:.98em}
+.ps .gf{margin:0 0 1.2mm;font-size:.92em;line-height:1.25}
+.ps .gf i{color:#555}
+.ps .ck{font-size:.92em;line-height:1.35}
+.ps .rules{margin:0;padding:0;list-style:none}
+.ps .rules li{margin:0 0 1.1mm;font-size:.9em;line-height:1.25}
+.ps .rules b{color:#7a5a20}
+.ps .ft{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:1.2mm;margin-top:1.5mm;font-size:.72em;color:#777}
+
+@page{size:A4 portrait;margin:10mm}
+@media print{
+  body{background:#fff}
+  .screen{display:none!important}
+  #print-root{position:static;left:auto;width:auto}
+  .ps{page-break-after:always;break-after:page}
+  .ps:last-child{page-break-after:auto;break-after:auto}
+  body[data-print="one"] .ps:not(.pick){display:none}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="screen">
+  <!-- ===== Picker ===== -->
+  <section id="picker">
+    <header class="topbar">
+      <a href="/" aria-label="Back to all activities">← Activities</a>
+      <span class="mark">Discussion Guides</span>
+      <span style="width:84px"></span>
+    </header>
+    <div class="wrap">
+      <div class="intro">
+        <div class="eyebrow">Small-group discussion</div>
+        <h1>Choose your group’s question.</h1>
+        <p>Then follow six steps together. One phone or one paper guide is enough for the whole group.</p>
+        <ol class="steps-strip" id="steps-strip"></ol>
+      </div>
+      <div class="teacher">
+        <p><b>Teacher</b><small>Every guide prints on one side of A4, with a QR code to the phone version.</small></p>
+        <button class="btn ghost" type="button" id="print-all">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print all
+        </button>
+      </div>
+      <ul class="list" id="topic-list"></ul>
+      <p class="foot">Dialogue Professional Skills Development Center · Rajshahi</p>
+    </div>
+  </section>
+
+  <!-- ===== Guide ===== -->
+  <section id="guide" hidden>
+    <header class="topbar">
+      <button class="link" type="button" id="to-picker">← Questions</button>
+      <span class="mark" id="g-title"></span>
+      <button class="icon-btn" type="button" id="print-one" aria-label="Print this guide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      </button>
+    </header>
+    <nav class="progress" aria-label="Steps">
+      <div class="dots" id="dots"></div>
+      <div class="lbl"><span id="lbl-step"></span><span id="lbl-time"></span></div>
+    </nav>
+    <main class="stage" id="stage" aria-live="polite"></main>
+    <div class="bar">
+      <div class="in">
+        <button class="btn ghost" type="button" id="prev">← Back</button>
+        <button class="btn words-btn" type="button" id="open-words">Words</button>
+        <button class="btn" type="button" id="next">Next →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Words sheet ===== -->
+  <div class="sheet-bg" id="sheet-bg"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="grab"><h3 id="sheet-title">Words for this question</h3><button class="btn ghost" type="button" id="close-words">Close</button></div>
+    <div class="body" id="sheet-body"></div>
+  </div>
+</div>
+
+<div id="print-root" aria-hidden="true"></div>
+
+<script src="../qr/qrcode.js"></script>
+<script src="topics.js"></script>
+<script>
+(function(){
+  "use strict";
+  var TOPICS = window.FGD_TOPICS || [];
+
+  /* ---------- helpers ---------- */
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  function blanks(s){return esc(s).replace(/_{3,}/g,'<span class="blank"></span>');}
+  function $(id){return document.getElementById(id);}
+  function siteBase(){
+    var o = location.origin;
+    return (o && /^https?:/.test(o) ? o : "https://dialogue-bd.com") + "/discussion-guides/";
+  }
+
+  /* ---------- the six steps ----------
+     Each step is built from the topic, so the same script serves every
+     question on the phone and on paper. "say" frames use ___ for a blank. */
+  var ROLES = [
+    {icon:"🧭", name:"Leader", job:"Reads each step aloud and watches the time."},
+    {icon:"🤝", name:"Includer", job:"Makes sure everyone speaks. Invites quiet people in."},
+    {icon:"✍️", name:"Reporter", job:"Takes notes and reports to the class at the end."}
+  ];
+
+  function steps(t){
+    var g = t.grammar || [];
+    return [
+      { key:"understand", title:"Understand", time:5,
+        doo:["The Leader reads the question aloud. Someone reads it in Bangla.",
+             "Open Words. Each person explains one word to the group.",
+             "Agree together: what is the question really asking?"],
+        print:"Read the question aloud (English, then Bangla). Each person explains one word from the word list. Agree what the question is really asking.",
+        say:["Does the question mean ___?","What does ___ mean?","In other words, ___."],
+        tip:["Choose a useful risk","Use words that stretch you a little — not so hard that you stop speaking."] },
+      { key:"first", title:"First voices", time:5,
+        doo:["Go round the group. Each person gives a first answer and one reason.",
+             "Nobody speaks twice before everyone has spoken.",
+             "Just listen for now. Don’t argue yet."],
+        print:"Go round the group. Each person gives a first answer and one reason. Nobody speaks twice before everyone has spoken.",
+        say:["I think ___ because ___.","For example, ___.","I’m not sure yet, but ___."],
+        tip:["Step up, step back","Age, status and gender don’t decide who speaks first. You may pass — you’ll be asked again later."] },
+      { key:"explore", title:"Explore", time:10,
+        doo:["Choose two or three questions below and talk about them.",
+             "Before you answer, connect to what the last person said.",
+             "Ask follow-up questions."],
+        print:"Choose two or three questions. Connect to what the last person said, then ask a follow-up.",
+        talk:t.questions||[],
+        say:["I’d like to add to what ___ said.","Why do you think that?","Can you give an example?"].concat(g[0]?[g[0][1]]:[]),
+        tip:["Listen → Link → Ask","Show you heard the last idea, connect to it, then ask a real question."] },
+      { key:"lens", title:"Change the lens", time:5,
+        doo:["Each person takes one person from the list below.",
+             "Speak as that person. What do they think? What do they need?",
+             "Does this change your group’s view?"],
+        print:"Each person takes one of these people and speaks as them. What do they think and need? Does it change your view?",
+        persons:t.perspectives||[],
+        say:["As ___, I would feel ___ because ___.","So you’re saying ___. Is that right?","I see your point; however, ___."],
+        tip:["Paraphrase before you disagree","Say what you understood first. Let the speaker check it. Then challenge the idea, not the person."] },
+      { key:"decide", title:"Decide", time:8,
+        doo:["Do the group task below.",
+             "Find what most of you agree on.",
+             "Keep one different view — don’t hide it."],
+        print:"Do the group task. Find what most of you agree on, and keep one different view.",
+        task:t.finalTask,
+        say:["We seem to agree that ___, although ___.","Can everyone accept ___?"].concat(g[1]?[g[1][1]]:[]),
+        tip:["Agree without forcing","A fair decision can still include a disagreement."] },
+      { key:"report", title:"Report", time:5,
+        doo:["The Reporter writes three sentences with the frame below.",
+             "Read them to the group. Are they fair to everyone?",
+             "The Reporter shares them with the class."],
+        print:"The Reporter writes three sentences, reads them to the group to check they are fair, then shares them with the class.",
+        frame:["Our group thinks ___.","Our main reason is ___.","One different view was ___."],
+        say:["Is this fair to everyone?","Did we miss anything important?","Can I read it back to you?"],
+        tip:["Every voice, fairly","Include your strongest agreement and one different view."] }
+    ];
+  }
+
+  /* ---------- picker ---------- */
+  var STEP_NAMES = steps({}).map(function(s){return s.title;});
+  $("steps-strip").innerHTML = STEP_NAMES.map(function(n,i){return '<li><b>'+(i+1)+'</b>'+esc(n)+'</li>';}).join("");
+  $("topic-list").innerHTML = TOPICS.map(function(t){
+    return '<li><button class="topic" type="button" data-id="'+t.id+'">'+
+      '<span class="num">'+t.id+'</span>'+
+      '<span><span class="cat">'+esc(t.category)+'</span>'+
+      '<span class="ttl" style="display:block">'+esc(t.title)+'</span>'+
+      '<span class="q">'+esc(t.question)+'</span></span></button></li>';
+  }).join("");
+  $("topic-list").addEventListener("click",function(e){
+    var b = e.target.closest(".topic"); if(!b) return;
+    open(+b.dataset.id, 0, true);
+  });
+
+  /* ---------- guide ---------- */
+  var cur = null, idx = 0, S = [];
+  var TOTAL = 7; // screen 0 = the question, 1–6 = steps
+
+  function byId(id){for(var i=0;i<TOPICS.length;i++){if(TOPICS[i].id===id) return TOPICS[i];}return null;}
+
+  function setURL(push){
+    var q = cur ? "?t="+cur.id+(idx?"&s="+idx:"") : location.pathname;
+    try{ history[push?"pushState":"replaceState"]({t:cur&&cur.id,s:idx},"",q);}catch(e){}
+  }
+
+  function open(id, s, push){
+    var t = byId(id); if(!t){ showPicker(false); return; }
+    cur = t; S = steps(t); idx = Math.max(0,Math.min(TOTAL-1, s|0));
+    $("picker").hidden = true; $("guide").hidden = false;
+    $("g-title").textContent = t.title;
+    buildWords();
+    render(); setURL(push);
+  }
+  function showPicker(push){
+    cur = null; $("guide").hidden = true; $("picker").hidden = false; closeWords();
+    if(push!==null) setURL(push);
+    window.scrollTo(0,0);
+  }
+
+  function sayHTML(list){
+    return '<div class="say">'+list.map(function(s){return '<div>'+blanks(s)+'</div>';}).join("")+'</div>';
+  }
+  var TIP_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>';
+
+  function render(){
+    var t = cur, h = "";
+    // progress
+    var d = "";
+    for(var i=0;i<TOTAL;i++){
+      d += '<button type="button" data-i="'+i+'" class="'+(i<idx?"done":"")+(i===idx?" on":"")+'" aria-label="'+(i===0?"The question":"Step "+i+": "+esc(S[i-1].title))+'"'+(i===idx?' aria-current="step"':'')+'></button>';
+    }
+    $("dots").innerHTML = d;
+    $("lbl-step").textContent = idx===0 ? "Start" : "Step "+idx+" of 6 · "+S[idx-1].title;
+    $("lbl-time").textContent = idx===0 ? "about 40 min" : "about "+S[idx-1].time+" min";
+
+    if(idx===0){
+      h += '<div class="qbox"><div class="cat">'+esc(t.category)+'</div>'+
+           '<p class="q">'+esc(t.question)+'</p>'+
+           '<p class="bn" lang="bn">'+esc(t.bn)+'</p></div>';
+      h += '<div class="panel"><h3>Background</h3><p>'+esc(t.context)+'</p></div>';
+      h += '<div class="panel"><h3>Choose three roles</h3><div class="roles">'+
+           ROLES.map(function(r){return '<div class="role"><i aria-hidden="true">'+r.icon+'</i><div><b>'+r.name+'</b><span>'+esc(r.job)+'</span></div></div>';}).join("")+
+           '</div><p style="margin-top:10px;font-size:14.5px;color:var(--ink-soft)">Everyone else: speak, listen and ask questions.</p></div>';
+    } else {
+      var s = S[idx-1];
+      h += '<div class="step-head"><span class="step-num">'+idx+'</span><div><h2>'+esc(s.title)+'</h2><span class="time">About '+s.time+' minutes</span></div></div>';
+      h += '<p class="mini-q">'+esc(t.question)+'</p>';
+      h += '<div class="panel"><h3>Do this</h3><ol class="do">'+s.doo.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ol></div>';
+      if(s.talk) h += '<div class="panel"><h3>Talk about</h3><ul class="talk">'+s.talk.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul></div>';
+      if(s.persons) h += '<div class="panel"><h3>Take one person each</h3><ul class="talk persons">'+s.persons.map(function(x,i){return '<li><i>'+String.fromCharCode(65+i)+'</i><span>'+esc(x)+'</span></li>';}).join("")+'</ul></div>';
+      if(s.task) h += '<div class="panel"><h3>Group task</h3><p class="task">'+esc(s.task)+'</p></div>';
+      if(s.frame) h += '<div class="panel"><h3>Report frame</h3><div class="say">'+s.frame.map(function(x){return '<div>'+blanks(x)+'</div>';}).join("")+'</div></div>';
+      h += '<div class="panel"><h3>Say it</h3>'+sayHTML(s.say)+'</div>';
+      h += '<div class="tip">'+TIP_ICON+'<div><b>'+esc(s.tip[0])+'</b>'+esc(s.tip[1])+'</div></div>';
+      if(idx===TOTAL-1){
+        h += '<div class="finish"><p style="margin:0 0 6px;color:var(--ink-soft)">Finished early? Go back to Step 3 and try another question.</p>'+
+             '<button class="btn ghost" type="button" data-go="3">Back to Explore</button>'+
+             '<button class="btn" type="button" data-home>Choose another question</button></div>';
+      }
+    }
+    $("stage").innerHTML = h;
+    $("prev").disabled = idx===0;
+    $("next").textContent = idx===0 ? "Start →" : (idx===TOTAL-1 ? "Done ✓" : "Next →");
+    window.scrollTo(0,0);
+  }
+
+  function go(n){
+    if(!cur) return;
+    if(n>=TOTAL){ showPicker(true); return; }
+    idx = Math.max(0,Math.min(TOTAL-1,n)); render(); setURL(false);
+  }
+  $("prev").onclick = function(){go(idx-1);};
+  $("next").onclick = function(){go(idx+1);};
+  $("dots").addEventListener("click",function(e){var b=e.target.closest("button"); if(b) go(+b.dataset.i);});
+  $("stage").addEventListener("click",function(e){
+    var b = e.target.closest("[data-go]"); if(b){ go(+b.dataset.go); return; }
+    if(e.target.closest("[data-home]")) showPicker(true);
+  });
+  $("to-picker").onclick = function(){showPicker(true);};
+  window.addEventListener("popstate",function(){route();});
+  document.addEventListener("keydown",function(e){
+    if(!cur) return;
+    if(document.body.classList.contains("sheet-open")){ if(e.key==="Escape") closeWords(); return; }
+    if(e.key==="ArrowRight") go(idx+1);
+    else if(e.key==="ArrowLeft") go(idx-1);
+    else if(e.key==="w"||e.key==="W") openWords();
+  });
+  // swipe between steps
+  var sx=null, sy=null;
+  $("stage").addEventListener("touchstart",function(e){var p=e.touches[0]; sx=p.clientX; sy=p.clientY;},{passive:true});
+  $("stage").addEventListener("touchend",function(e){
+    if(sx===null) return; var p=e.changedTouches[0], dx=p.clientX-sx, dy=p.clientY-sy; sx=null;
+    if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.6) go(idx+(dx<0?1:-1));
+  },{passive:true});
+
+  /* ---------- words sheet ---------- */
+  function buildWords(){
+    var t = cur, h = '<ul class="vocab">';
+    (t.vocabulary||[]).forEach(function(v){
+      h += '<li><div class="w">'+esc(v[0])+'<span class="bn" lang="bn">'+esc(v[1])+'</span></div><div class="m">'+esc(v[2])+'</div><div class="e">'+esc(v[3])+'</div></li>';
+    });
+    h += '</ul>';
+    var ph = (t.topicChunks||[]).concat(t.collocations||[]);
+    if(ph.length) h += '<h4>Useful phrases</h4><div class="chips">'+ph.map(function(c){return '<span>'+esc(c)+'</span>';}).join("")+'</div>';
+    if(t.grammar&&t.grammar.length){
+      h += '<h4>Sentence patterns</h4><div class="say">'+t.grammar.map(function(g){return '<div>'+blanks(g[1])+'<small>'+esc(g[2])+'</small></div>';}).join("")+'</div>';
+    }
+    $("sheet-body").innerHTML = h;
+  }
+  function openWords(){ document.body.classList.add("sheet-open"); $("close-words").focus(); }
+  function closeWords(){ document.body.classList.remove("sheet-open"); }
+  $("open-words").onclick = openWords;
+  $("close-words").onclick = closeWords;
+  $("sheet-bg").onclick = closeWords;
+
+  /* ---------- printable sheets ---------- */
+  function sheetHTML(t){
+    var s = steps(t), h = '';
+    h += '<section class="ps" data-id="'+t.id+'">';
+    h += '<div class="hd"><div class="l"><div class="eb">Discussion guide '+t.id+' · '+esc(t.category)+'</div>'+
+         '<h1>'+esc(t.title)+'</h1>'+
+         '<p class="pq">'+esc(t.question)+'</p>'+
+         '<p class="pbn" lang="bn">'+esc(t.bn)+'</p></div>'+
+         '<div class="qr"><div class="qrc"></div>Scan for the<br>phone guide</div></div>';
+    h += '<p class="ctx">'+esc(t.context)+'</p>';
+    h += '<div class="rl">'+ROLES.map(function(r){return '<div><b>'+r.name+'</b><span class="nm"></span><br>'+esc(r.job)+'</div>';}).join("")+'</div>';
+    h += '<div class="cols"><div class="main">';
+    s.forEach(function(st,i){
+      h += '<div class="st"><span class="n">'+(i+1)+'</span><div>';
+      h += '<h2>'+esc(st.title)+'<small>about '+st.time+' min</small></h2>';
+      h += '<p>'+esc(st.print)+'</p>';
+      if(st.talk) h += '<ul>'+st.talk.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>';
+      if(st.persons) h += '<ul>'+st.persons.map(function(x,j){return '<li><b>'+String.fromCharCode(65+j)+'</b> '+esc(x)+'</li>';}).join("")+'</ul>';
+      if(st.task) h += '<p class="tk">Task: '+esc(st.task)+'</p>';
+      if(st.frame) h += '<div class="lines">'+st.frame.map(function(x){return '<div>'+esc(x.replace(/\s*_{3,}\.?/,""))+'</div>';}).join("")+'</div>';
+      h += '<p class="sy"><b>Say</b>'+st.say.map(blanks).join(' &nbsp;·&nbsp; ')+'</p>';
+      h += '</div></div>';
+    });
+    h += '</div><div class="side"><h3>Group rules</h3><ul class="rules">'+s.map(function(st,i){return '<li><b>'+(i+1)+' · '+esc(st.tip[0])+'.</b> '+esc(st.tip[1])+'</li>';}).join('')+'</ul><h3>Words</h3>';
+    (t.vocabulary||[]).forEach(function(v){
+      h += '<p class="vw"><b>'+esc(v[0])+'</b> <span class="bn" lang="bn">'+esc(v[1])+'</span><br>'+esc(v[2])+'</p>';
+    });
+    if(t.grammar&&t.grammar.length){
+      h += '<h3>Sentence patterns</h3>';
+      t.grammar.forEach(function(g){ h += '<p class="gf">'+blanks(g[1])+'<br><i>'+esc(g[2])+'</i></p>'; });
+    }
+    if(t.topicChunks&&t.topicChunks.length){
+      h += '<h3>Useful phrases</h3><p class="ck">'+t.topicChunks.map(esc).join(' · ')+'</p>';
+    }
+    h += '</div></div>';
+    h += '<div class="ft"><span>Dialogue Professional Skills Development Center · Rajshahi</span><span>'+esc(siteBase().replace(/^https?:\/\//,""))+'?t='+t.id+'</span></div>';
+    h += '</section>';
+    return h;
+  }
+
+  var printBuilt = false;
+  function buildPrint(){
+    if(printBuilt) return; printBuilt = true;
+    var root = $("print-root");
+    root.innerHTML = TOPICS.map(sheetHTML).join("");
+    Array.prototype.forEach.call(root.querySelectorAll(".ps"),function(ps){
+      var id = ps.dataset.id, box = ps.querySelector(".qrc");
+      if(window.QRCode && box){
+        try{ new QRCode(box,{text:siteBase()+"?t="+id,width:240,height:240,colorDark:"#103d21",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M}); }catch(e){}
+      }
+    });
+    fitAll();
+  }
+  // Shrink type on any sheet whose content would run past one A4 side.
+  function fitSheet(ps){
+    var fs = 9.4; ps.style.setProperty("--fs",fs+"pt");
+    var cols = ps.querySelector(".cols");
+    function over(){
+      var m = ps.querySelector(".main"), sd = ps.querySelector(".side");
+      return ps.scrollHeight > ps.clientHeight + 1 || m.scrollHeight > cols.clientHeight + 1 || sd.scrollHeight > cols.clientHeight + 1;
+    }
+    while(over() && fs > 7.2){ fs = Math.round((fs-0.2)*10)/10; ps.style.setProperty("--fs",fs+"pt"); }
+    ps.dataset.fs = fs;
+  }
+  function fitAll(){ Array.prototype.forEach.call(document.querySelectorAll(".ps"),fitSheet); }
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(function(){ if(printBuilt) fitAll(); }); }
+
+  function doPrint(mode){
+    buildPrint();
+    document.body.dataset.print = mode;
+    Array.prototype.forEach.call(document.querySelectorAll(".ps"),function(ps){
+      ps.classList.toggle("pick", !!cur && +ps.dataset.id===cur.id);
+    });
+    setTimeout(function(){ window.print(); },60);
+  }
+  $("print-all").onclick = function(){ doPrint("all"); };
+  $("print-one").onclick = function(){ doPrint("one"); };
+  window.addEventListener("beforeprint",function(){ buildPrint(); if(!document.body.dataset.print) document.body.dataset.print = cur ? "one" : "all"; if(cur) Array.prototype.forEach.call(document.querySelectorAll(".ps"),function(ps){ps.classList.toggle("pick",+ps.dataset.id===cur.id);}); });
+  window.addEventListener("afterprint",function(){ delete document.body.dataset.print; });
+
+  /* ---------- routing ---------- */
+  function route(){
+    var p = new URLSearchParams(location.search), t = parseInt(p.get("t"),10);
+    if(t && byId(t)) open(t, parseInt(p.get("s"),10)||0, null);
+    else showPicker(null);
+  }
+  route();
+  // build the print sheets once the page is idle, so Ctrl+P works straight away
+  (window.requestIdleCallback || function(f){setTimeout(f,400);})(buildPrint);
+  window.__dg = {buildPrint:buildPrint, fitAll:fitAll};
+})();
+</script>
+</body>
+</html>
