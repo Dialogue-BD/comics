@@ -154,7 +154,7 @@ function composer(sc,dark){
    ${val.trim()||atts?`<button class="send" data-hit="${c.sendHit||'send'}" aria-label="Send">${ico('send')}</button>`:`<button class="mi" aria-label="Voice">${ico('mic')}</button>`}</div></div>`;
 }
 function aiMsg(m,dark){
-  return `<div class="msg-a" data-mid="${m.id||''}"><span class="spark">${ico('spark')}</span><div class="tx" ${m.stream?'data-stream="1"':''}>${m.html}</div></div>${m.actions!==false&&!m.thinking?`<div class="actions-row"><button class="mi">${ico('thumb')}</button><button class="mi">${ico('copy')}</button><button class="mi">${ico('share')}</button><button class="mi" ${m.moreHit?`data-hit="${m.moreHit}"`:''} aria-label="More">${ico('more')}</button></div>`:''}`;
+  return `<div class="msg-a" data-mid="${m.id||''}"><span class="spark">${ico('spark')}</span><div class="tx" ${m.stream?'data-stream="1"':''} ${m.speed?`data-speed="${m.speed}"`:''}>${m.html}</div></div>${m.actions!==false&&!m.thinking?`<div class="actions-row"><button class="mi">${ico('thumb')}</button><button class="mi">${ico('copy')}</button><button class="mi">${ico('share')}</button><button class="mi" ${m.moreHit?`data-hit="${m.moreHit}"`:''} aria-label="More">${ico('more')}</button></div>`:''}`;
 }
 function uMsg(m){
   const atts=(m.atts||[]).length?`<div class="att-row">${m.atts.map(id=>`<span class="att" data-view="${id}" role="button" title="Open">${fileThumb(id)}<span>${esc(FILES[id].name)}</span></span>`).join('')}</div>`:'';
@@ -192,7 +192,7 @@ APPS.studio=sc=>{
   ${sc.tab==='Preview'?`<div class="preview"><div class="pbar2"><span class="dot"></span> Preview · ${esc(sc.ver||'v1')}</div><div class="mini" id="mini">${sc.mini||''}</div></div>`:
     sc.tab==='Code'?`<div class="scroll">${sc.files?`<div class="ftree">${sc.files.map(f=>`<span class="${f===sc.fileOn?'on':''}">${esc(f)}</span>`).join('')}</div>`:''}<div class="code">${sc.code||''}</div></div>`:
     sc.tab==='GitHub'?`<div class="scroll">${sc.git||''}</div>`:
-    `<div class="scroll" id="chatscroll">${(sc.msgs||[]).map(m=>m.role==='u'?uMsg(m):aiMsg(m)).join('')}</div>${sc.composer===false?'':composer(sc,true)}<div class="disclaim">Studio can make mistakes. Test your app.</div>`}
+    `<div class="scroll" id="chatscroll">${(sc.msgs||[]).map(m=>m.role==='u'?uMsg(m):aiMsg(m)).join('')}</div>${sc.stopHit?`<div class="stopbar"><span class="orb"></span><span>${esc(sc.stopLabel||'Studio is thinking…')}</span><button data-hit="${sc.stopHit}">■ Stop</button></div>`:''}${sc.composer===false?'':composer(sc,true)}<div class="disclaim">Studio can make mistakes. Test your app.</div>`}
   </div>`;
 };
 
@@ -267,7 +267,7 @@ function streamIn(el,scroller,done){
   S.finishStream=finish;
   setTimeout(()=>{ if(!S.streaming) return; dots.remove();
     streamTimer=setInterval(()=>{
-      let budget=7;
+      let budget=+(el.dataset.speed||7);
       while(budget>0&&i<nodes.length){const [t,v]=nodes[i];const step=Math.min(budget,v.length-pos);t.nodeValue=v.slice(0,pos+step);pos+=step;budget-=step;
         let p=t.parentElement;while(p&&p!==el){if(p.parentElement===el)p.style.visibility='';p=p.parentElement}
         if(pos>=v.length){i++;pos=0}}
@@ -367,7 +367,7 @@ function cardHTML(c,x){
   return '';
 }
 function composeCard(x,b){
-  const c=b.compose; const val=x.get(c.key,c.prefill||'');
+  const c=fn(b.compose,x); const val=x.get(c.key,c.prefill||'');
   const has=s=>s.test.some(r=>r.test(val));
   const used=c.chips.filter(ch=>ch.x&&val.includes(ch.text));
   const warns=used.map(u=>`<div class="warn">⚠ “${esc(u.text)}” — ${u.warn}${u.warnbn?`<span class="bn" lang="bn">${u.warnbn}</span>`:''}</div>`).join('');
@@ -465,7 +465,7 @@ function go(i,anim=true){
   renderPhone(anim); renderCoach();
   if(x.beat.auto){ const at=S.beat; setTimeout(()=>{ if(S.beat===at&&S.lesson===L.id) go(S.beat+1) },x.beat.auto) }
 }
-function next(){ const x=ctx(); if(S.streaming&&S.finishStream){S.finishStream();return} if(x.beat.leave) x.beat.leave(x); if(S.beat>=x.L.beats.length-1){ x.set('_finished',true); hub(); return } go(S.beat+1) }
+function next(force){ const x=ctx(); if(!force&&S.streaming&&S.finishStream){S.finishStream();return} if(x.beat.leave) x.beat.leave(x); if(S.beat>=x.L.beats.length-1){ x.set('_finished',true); hub(); return } go(S.beat+1) }
 function back(){ if(S.beat===0){hub();return} go(S.beat-1) }
 function start(id){ S.lesson=id; S.beat=0; prevScene=null; maybeFullscreen(); go(0); }
 function hub(){ S.lesson=null; S.beat=0; save(); prevScene=null; renderHubPhone(); renderCoach(); }
@@ -494,8 +494,8 @@ function onPhoneClick(e){
     const want=[].concat(fn(b.tap,x)||[]);
     if(want.includes(hit.dataset.hit)){
       if(b.onTap){ const r=b.onTap(x,hit.dataset.hit); if(r===false) return; }
-      if(hit.dataset.hit==='send'||hit.dataset.hit.startsWith('send')){ if(b.compose){const v=x.get(b.compose.key,'');if(!v.trim()){pulseCoach();return}} }
-      next(); return;
+      if(hit.dataset.hit==='send'||hit.dataset.hit.startsWith('send')){ if(b.compose){const v=x.get(fn(b.compose,x).key,'');if(!v.trim()){pulseCoach();return}} }
+      next(!!b.interrupt); return;
     }
     if(b.onHit&&b.onHit(x,hit.dataset.hit,hit)!==false){return}
     wrongTap(hit); return;
@@ -558,12 +558,12 @@ function ghostTo(el,cb){
 }
 function showMe(){
   const x=ctx(), b=x.beat;
-  if(S.streaming&&S.finishStream){S.finishStream();return}
+  if(S.streaming&&S.finishStream&&!b.interrupt){S.finishStream();return}
   if(b.showMe){ b.showMe(x,{ghostTo,click:el=>el&&el.click(),render:()=>{renderPhone(false);renderCoach()}}); return; }
   const cd=fn(b.card,x); if(cd&&cd.type==='pickeach'){ const a={}; cd.items.forEach((it,i)=>a[i]=it.options.findIndex(o=>o.ok)); x.set(cd.key,a); renderPhone(false); renderCoach(); return; }
   if(cd&&cd.type==='sort'&&!b.tap&&!b.compose){ const a={}; cd.items.forEach((it,i)=>a[i]=it.ans); x.set(cd.key,a); renderCoach(); return; }
   if(b.compose){
-    const c=b.compose; const kb=activeKB(x); const best=c.best; let v='';
+    const c=fn(b.compose,x); const kb=activeKB(x); const best=c.best; let v='';
     x.set(c.key,''); renderPhoneKeepFocus();
     const seq=best.slice(); const step=()=>{ if(!seq.length){ renderCoach(); const s=$('#screen [data-hit="'+(fn(b.tap,x)||'send')+'"]'); ghostTo(s,()=>{ if(s) s.click(); }); return; }
       const id=seq.shift(); const el=$(`#kb [data-ui="chip:${id}"]`); ghostTo(el,()=>{ toggleChip(id,x); setTimeout(step,120); }); };
