@@ -45,7 +45,7 @@
   "voice": "ayesha",
   "lesson": "common",
   "where": "Description phrase",
-  "take": "common-ayesha-01"
+  "take": "common-ayesha-02"
  },
  {
   "key": "0lg4svs",
@@ -53,7 +53,7 @@
   "voice": "ayesha",
   "lesson": "common",
   "where": "Description phrase",
-  "take": "common-ayesha-01"
+  "take": "common-ayesha-02"
  },
  {
   "key": "1lf61cp",
@@ -61,7 +61,7 @@
   "voice": "ayesha",
   "lesson": "common",
   "where": "Discernment phrase",
-  "take": "common-ayesha-01"
+  "take": "common-ayesha-02"
  },
  {
   "key": "1tk06s0",
@@ -69,7 +69,7 @@
   "voice": "ayesha",
   "lesson": "common",
   "where": "Discernment phrase",
-  "take": "common-ayesha-01"
+  "take": "common-ayesha-02"
  },
  {
   "key": "0a5xn2u",
@@ -77,7 +77,7 @@
   "voice": "ayesha",
   "lesson": "common",
   "where": "Discernment phrase",
-  "take": "common-ayesha-02"
+  "take": "common-ayesha-03"
  },
  {
   "key": "12j0ayx",
@@ -85,7 +85,7 @@
   "voice": "ayesha",
   "lesson": "common",
   "where": "Diligence phrase",
-  "take": "common-ayesha-02"
+  "take": "common-ayesha-03"
  },
  {
   "key": "04ty0lp",
@@ -93,7 +93,7 @@
   "voice": "ayesha",
   "lesson": "common",
   "where": "Diligence phrase",
-  "take": "common-ayesha-02"
+  "take": "common-ayesha-03"
  },
  {
   "key": "1f3eocy",
@@ -101,7 +101,7 @@
   "voice": "ayesha",
   "lesson": "common",
   "where": "Diligence phrase",
-  "take": "common-ayesha-02"
+  "take": "common-ayesha-03"
  },
  {
   "key": "0gk7r63",
@@ -149,7 +149,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/0 word",
-  "take": "cv-coach-01"
+  "take": "cv-coach-02"
  },
  {
   "key": "0jhji3x",
@@ -157,7 +157,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/0 word",
-  "take": "cv-coach-01"
+  "take": "cv-coach-02"
  },
  {
   "key": "1xnovch",
@@ -165,7 +165,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/0 word",
-  "take": "cv-coach-01"
+  "take": "cv-coach-02"
  },
  {
   "key": "1ihkjvj",
@@ -173,7 +173,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/0 word",
-  "take": "cv-coach-01"
+  "take": "cv-coach-02"
  },
  {
   "key": "1hbzokm",
@@ -181,7 +181,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/0 word",
-  "take": "cv-coach-02"
+  "take": "cv-coach-03"
  },
  {
   "key": "13buzb7",
@@ -189,7 +189,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/1",
-  "take": "cv-coach-02"
+  "take": "cv-coach-03"
  },
  {
   "key": "1fiyme2",
@@ -197,7 +197,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/1 story",
-  "take": "cv-coach-02"
+  "take": "cv-coach-03"
  },
  {
   "key": "196fhi7",
@@ -205,7 +205,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/1 story",
-  "take": "cv-coach-02"
+  "take": "cv-coach-03"
  },
  {
   "key": "10y6l37",
@@ -213,7 +213,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/1 story",
-  "take": "cv-coach-02"
+  "take": "cv-coach-04"
  },
  {
   "key": "1xmys8o",
@@ -221,7 +221,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/2",
-  "take": "cv-coach-02"
+  "take": "cv-coach-04"
  },
  {
   "key": "0w12pdv",
@@ -261,7 +261,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/3",
-  "take": "cv-coach-02"
+  "take": "cv-coach-04"
  },
  {
   "key": "02mtaqo",
@@ -269,7 +269,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/3 question",
-  "take": "cv-coach-02"
+  "take": "cv-coach-04"
  },
  {
   "key": "1n4fq3r",
@@ -277,7 +277,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/3 frame",
-  "take": "cv-ayesha-01"
+  "take": "cv-ayesha-02"
  },
  {
   "key": "14bzrp2",
@@ -285,7 +285,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/3 frame",
-  "take": "cv-ayesha-01"
+  "take": "cv-ayesha-02"
  },
  {
   "key": "0mcye7w",
@@ -293,7 +293,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/3 frame",
-  "take": "cv-ayesha-01"
+  "take": "cv-ayesha-02"
  },
  {
   "key": "00th8dt",
@@ -301,7 +301,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/3 example",
-  "take": "cv-ayesha-01"
+  "take": "cv-ayesha-02"
  },
  {
   "key": "0d7m260",
@@ -309,7 +309,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/4",
-  "take": "cv-coach-03"
+  "take": "cv-coach-05"
  },
  {
   "key": "0ggiguq",
@@ -317,7 +317,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/5",
-  "take": "cv-coach-03"
+  "take": "cv-coach-05"
  },
  {
   "key": "0rynakg",
@@ -325,7 +325,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/5 phrase",
-  "take": "cv-ayesha-02"
+  "take": "cv-ayesha-03"
  },
  {
   "key": "1hubuyl",
@@ -333,7 +333,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/6",
-  "take": "cv-coach-03"
+  "take": "cv-coach-05"
  },
  {
   "key": "1quxt8h",
@@ -341,7 +341,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/6 question",
-  "take": "cv-coach-03"
+  "take": "cv-coach-05"
  },
  {
   "key": "1to57um",
@@ -349,7 +349,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/6 frame",
-  "take": "cv-ayesha-02"
+  "take": "cv-ayesha-03"
  },
  {
   "key": "0biqt8j",
@@ -357,7 +357,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/6 frame",
-  "take": "cv-ayesha-02"
+  "take": "cv-ayesha-03"
  },
  {
   "key": "0skpail",
@@ -365,7 +365,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/6 frame",
-  "take": "cv-ayesha-02"
+  "take": "cv-ayesha-03"
  },
  {
   "key": "0kuebdy",
@@ -373,7 +373,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/6 example",
-  "take": "cv-ayesha-02"
+  "take": "cv-ayesha-04"
  },
  {
   "key": "0fsabqx",
@@ -381,7 +381,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/7",
-  "take": "cv-coach-03"
+  "take": "cv-coach-06"
  },
  {
   "key": "1gz75zk",
@@ -389,7 +389,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/7 phrase",
-  "take": "cv-ayesha-02"
+  "take": "cv-ayesha-04"
  },
  {
   "key": "0vrvx8f",
@@ -397,7 +397,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/8",
-  "take": "cv-coach-03"
+  "take": "cv-coach-06"
  },
  {
   "key": "1k37hsl",
@@ -405,7 +405,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/8 question",
-  "take": "cv-coach-03"
+  "take": "cv-coach-06"
  },
  {
   "key": "154chbi",
@@ -413,7 +413,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/8 frame",
-  "take": "cv-ayesha-02"
+  "take": "cv-ayesha-04"
  },
  {
   "key": "01hir6a",
@@ -421,7 +421,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/9",
-  "take": "cv-coach-03"
+  "take": "cv-coach-06"
  },
  {
   "key": "04z428k",
@@ -429,7 +429,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/9",
-  "take": "cv-coach-04"
+  "take": "cv-coach-07"
  },
  {
   "key": "0vyfdur",
@@ -437,7 +437,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/9 phrase",
-  "take": "cv-ayesha-02"
+  "take": "cv-ayesha-04"
  },
  {
   "key": "0nyq2be",
@@ -445,7 +445,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/9 question",
-  "take": "cv-coach-04"
+  "take": "cv-coach-07"
  },
  {
   "key": "1l2f6w2",
@@ -453,7 +453,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/9 frame",
-  "take": "cv-ayesha-03"
+  "take": "cv-ayesha-05"
  },
  {
   "key": "1yqupbk",
@@ -461,7 +461,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/9 example",
-  "take": "cv-ayesha-03"
+  "take": "cv-ayesha-05"
  },
  {
   "key": "0sntk2y",
@@ -469,7 +469,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/10",
-  "take": "cv-coach-04"
+  "take": "cv-coach-07"
  },
  {
   "key": "1e8ntur",
@@ -477,7 +477,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/10 phrase",
-  "take": "cv-ayesha-03"
+  "take": "cv-ayesha-05"
  },
  {
   "key": "0kuhsx3",
@@ -485,7 +485,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/11",
-  "take": "cv-coach-04"
+  "take": "cv-coach-07"
  },
  {
   "key": "1r032ub",
@@ -493,7 +493,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/12",
-  "take": "cv-coach-04"
+  "take": "cv-coach-08"
  },
  {
   "key": "19v56fr",
@@ -501,7 +501,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/13",
-  "take": "cv-coach-04"
+  "take": "cv-coach-08"
  },
  {
   "key": "0tte7bm",
@@ -509,7 +509,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/13",
-  "take": "cv-coach-04"
+  "take": "cv-coach-08"
  },
  {
   "key": "13cmydy",
@@ -517,7 +517,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/13 question",
-  "take": "cv-coach-04"
+  "take": "cv-coach-08"
  },
  {
   "key": "1wofnz3",
@@ -525,7 +525,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/13 frame",
-  "take": "cv-ayesha-03"
+  "take": "cv-ayesha-05"
  },
  {
   "key": "0y6coq4",
@@ -533,7 +533,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/13 frame",
-  "take": "cv-ayesha-03"
+  "take": "cv-ayesha-06"
  },
  {
   "key": "1sq49ta",
@@ -541,7 +541,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/13 example",
-  "take": "cv-ayesha-03"
+  "take": "cv-ayesha-06"
  },
  {
   "key": "17a1ht9",
@@ -549,7 +549,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/14",
-  "take": "cv-coach-05"
+  "take": "cv-coach-09"
  },
  {
   "key": "1xhkpbb",
@@ -557,7 +557,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/15",
-  "take": "cv-coach-05"
+  "take": "cv-coach-09"
  },
  {
   "key": "0qk99qw",
@@ -565,7 +565,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/16",
-  "take": "cv-coach-05"
+  "take": "cv-coach-09"
  },
  {
   "key": "1tuborf",
@@ -573,7 +573,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/17",
-  "take": "cv-coach-05"
+  "take": "cv-coach-09"
  },
  {
   "key": "02f549i",
@@ -581,7 +581,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/17",
-  "take": "cv-coach-05"
+  "take": "cv-coach-10"
  },
  {
   "key": "1rgklsf",
@@ -589,7 +589,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/17 phrase",
-  "take": "cv-ayesha-03"
+  "take": "cv-ayesha-06"
  },
  {
   "key": "0xjr0f4",
@@ -597,7 +597,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/17 question",
-  "take": "cv-coach-05"
+  "take": "cv-coach-10"
  },
  {
   "key": "16md44r",
@@ -605,7 +605,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/17 frame",
-  "take": "cv-ayesha-03"
+  "take": "cv-ayesha-06"
  },
  {
   "key": "0nt2gru",
@@ -613,7 +613,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/17 frame",
-  "take": "cv-ayesha-04"
+  "take": "cv-ayesha-07"
  },
  {
   "key": "1ns526d",
@@ -621,7 +621,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/18",
-  "take": "cv-coach-05"
+  "take": "cv-coach-10"
  },
  {
   "key": "10pqruh",
@@ -629,7 +629,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/19",
-  "take": "cv-coach-05"
+  "take": "cv-coach-10"
  },
  {
   "key": "17dygr3",
@@ -637,7 +637,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/19 question",
-  "take": "cv-coach-06"
+  "take": "cv-coach-11"
  },
  {
   "key": "1flzcoz",
@@ -645,7 +645,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/19 frame",
-  "take": "cv-ayesha-04"
+  "take": "cv-ayesha-07"
  },
  {
   "key": "1cvmsqu",
@@ -653,7 +653,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/19 frame",
-  "take": "cv-ayesha-04"
+  "take": "cv-ayesha-07"
  },
  {
   "key": "17iwt3a",
@@ -661,7 +661,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/19 example",
-  "take": "cv-ayesha-04"
+  "take": "cv-ayesha-07"
  },
  {
   "key": "0ofg6dp",
@@ -669,7 +669,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/20",
-  "take": "cv-coach-06"
+  "take": "cv-coach-11"
  },
  {
   "key": "137lh7u",
@@ -677,7 +677,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/20 phrase",
-  "take": "cv-ayesha-04"
+  "take": "cv-ayesha-08"
  },
  {
   "key": "0t2j7c0",
@@ -685,7 +685,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/21",
-  "take": "cv-coach-06"
+  "take": "cv-coach-11"
  },
  {
   "key": "1472fw8",
@@ -693,7 +693,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/22",
-  "take": "cv-coach-06"
+  "take": "cv-coach-11"
  },
  {
   "key": "0o6uz3y",
@@ -701,7 +701,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/22 phrase",
-  "take": "cv-ayesha-04"
+  "take": "cv-ayesha-08"
  },
  {
   "key": "1kgbprc",
@@ -709,7 +709,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/23",
-  "take": "cv-coach-06"
+  "take": "cv-coach-12"
  },
  {
   "key": "1814njk",
@@ -717,7 +717,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/24",
-  "take": "cv-coach-06"
+  "take": "cv-coach-12"
  },
  {
   "key": "1nnu7kf",
@@ -725,7 +725,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/25",
-  "take": "cv-coach-06"
+  "take": "cv-coach-12"
  },
  {
   "key": "06ex51n",
@@ -733,7 +733,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/26",
-  "take": "cv-coach-06"
+  "take": "cv-coach-12"
  },
  {
   "key": "0vnic0h",
@@ -741,7 +741,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/26 question",
-  "take": "cv-coach-07"
+  "take": "cv-coach-13"
  },
  {
   "key": "1up0kcv",
@@ -749,7 +749,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/26 frame",
-  "take": "cv-ayesha-04"
+  "take": "cv-ayesha-08"
  },
  {
   "key": "0ztsaeh",
@@ -757,7 +757,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/26 frame",
-  "take": "cv-ayesha-04"
+  "take": "cv-ayesha-08"
  },
  {
   "key": "1lfanhz",
@@ -765,7 +765,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/26 frame",
-  "take": "cv-ayesha-05"
+  "take": "cv-ayesha-09"
  },
  {
   "key": "178c2sx",
@@ -773,7 +773,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/26 question",
-  "take": "cv-coach-07"
+  "take": "cv-coach-13"
  },
  {
   "key": "1o1egxy",
@@ -781,7 +781,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/27",
-  "take": "cv-coach-07"
+  "take": "cv-coach-13"
  },
  {
   "key": "113ascl",
@@ -789,7 +789,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/27 question",
-  "take": "cv-coach-07"
+  "take": "cv-coach-13"
  },
  {
   "key": "0vau8r1",
@@ -797,7 +797,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/27 frame",
-  "take": "cv-ayesha-05"
+  "take": "cv-ayesha-09"
  },
  {
   "key": "1qcixhl",
@@ -805,7 +805,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/27 frame",
-  "take": "cv-ayesha-05"
+  "take": "cv-ayesha-09"
  },
  {
   "key": "0sufrm3",
@@ -813,7 +813,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/27 frame",
-  "take": "cv-ayesha-05"
+  "take": "cv-ayesha-09"
  },
  {
   "key": "19en2vx",
@@ -821,7 +821,7 @@
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/27 example",
-  "take": "cv-ayesha-05"
+  "take": "cv-ayesha-10"
  },
  {
   "key": "1iexy39",
@@ -829,7 +829,7 @@
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/28",
-  "take": "cv-coach-07"
+  "take": "cv-coach-14"
  },
  {
   "key": "16mid1m",
@@ -861,7 +861,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/0 word",
-  "take": "agent-coach-01"
+  "take": "agent-coach-02"
  },
  {
   "key": "0si3h1u",
@@ -869,7 +869,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/0 word",
-  "take": "agent-coach-01"
+  "take": "agent-coach-02"
  },
  {
   "key": "03d95al",
@@ -877,7 +877,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/0 word",
-  "take": "agent-coach-01"
+  "take": "agent-coach-02"
  },
  {
   "key": "12ed1c8",
@@ -885,7 +885,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/0 word",
-  "take": "agent-coach-01"
+  "take": "agent-coach-02"
  },
  {
   "key": "1dkg79e",
@@ -893,7 +893,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/0 word",
-  "take": "agent-coach-02"
+  "take": "agent-coach-03"
  },
  {
   "key": "05jfzmu",
@@ -901,7 +901,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/0 word",
-  "take": "agent-coach-02"
+  "take": "agent-coach-03"
  },
  {
   "key": "17gl5hh",
@@ -909,7 +909,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/1",
-  "take": "agent-coach-02"
+  "take": "agent-coach-03"
  },
  {
   "key": "0z5rfwz",
@@ -917,7 +917,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/1 story",
-  "take": "agent-coach-02"
+  "take": "agent-coach-03"
  },
  {
   "key": "1v9lbd7",
@@ -925,7 +925,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/1 story",
-  "take": "agent-coach-02"
+  "take": "agent-coach-04"
  },
  {
   "key": "0l9pyyi",
@@ -933,7 +933,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/1 story",
-  "take": "agent-coach-02"
+  "take": "agent-coach-04"
  },
  {
   "key": "0wsui5c",
@@ -941,7 +941,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/1 story",
-  "take": "agent-coach-02"
+  "take": "agent-coach-04"
  },
  {
   "key": "185dd5s",
@@ -949,7 +949,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/2",
-  "take": "agent-coach-02"
+  "take": "agent-coach-04"
  },
  {
   "key": "1irs8pl",
@@ -989,7 +989,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/3 question",
-  "take": "agent-coach-03"
+  "take": "agent-coach-05"
  },
  {
   "key": "1v9bi4n",
@@ -997,7 +997,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/3 frame",
-  "take": "agent-ayesha-01"
+  "take": "agent-ayesha-02"
  },
  {
   "key": "1syvpbh",
@@ -1005,7 +1005,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/3 frame",
-  "take": "agent-ayesha-01"
+  "take": "agent-ayesha-02"
  },
  {
   "key": "03zsy0x",
@@ -1013,7 +1013,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/3 frame",
-  "take": "agent-ayesha-01"
+  "take": "agent-ayesha-02"
  },
  {
   "key": "05qxd9n",
@@ -1021,7 +1021,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/3 example",
-  "take": "agent-ayesha-01"
+  "take": "agent-ayesha-02"
  },
  {
   "key": "1oghe0u",
@@ -1029,7 +1029,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/4",
-  "take": "agent-coach-03"
+  "take": "agent-coach-05"
  },
  {
   "key": "1qd1y75",
@@ -1037,7 +1037,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/4 phrase",
-  "take": "agent-ayesha-02"
+  "take": "agent-ayesha-03"
  },
  {
   "key": "0k9o7k4",
@@ -1045,7 +1045,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/5",
-  "take": "agent-coach-03"
+  "take": "agent-coach-05"
  },
  {
   "key": "09yz3d8",
@@ -1053,7 +1053,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/5 phrase",
-  "take": "agent-ayesha-02"
+  "take": "agent-ayesha-03"
  },
  {
   "key": "00i6ixq",
@@ -1061,7 +1061,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/6",
-  "take": "agent-coach-03"
+  "take": "agent-coach-05"
  },
  {
   "key": "1ym15sx",
@@ -1069,7 +1069,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/7",
-  "take": "agent-coach-03"
+  "take": "agent-coach-06"
  },
  {
   "key": "0y23we2",
@@ -1077,7 +1077,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/7 question",
-  "take": "agent-coach-03"
+  "take": "agent-coach-06"
  },
  {
   "key": "09lkkts",
@@ -1085,7 +1085,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/7 frame",
-  "take": "agent-ayesha-02"
+  "take": "agent-ayesha-03"
  },
  {
   "key": "1xt413y",
@@ -1093,7 +1093,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/7 frame",
-  "take": "agent-ayesha-02"
+  "take": "agent-ayesha-03"
  },
  {
   "key": "1uavi7w",
@@ -1101,7 +1101,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/7 example",
-  "take": "agent-ayesha-02"
+  "take": "agent-ayesha-04"
  },
  {
   "key": "0wvyxej",
@@ -1109,7 +1109,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/8",
-  "take": "agent-coach-03"
+  "take": "agent-coach-06"
  },
  {
   "key": "0278cyk",
@@ -1117,7 +1117,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/8 phrase",
-  "take": "agent-ayesha-02"
+  "take": "agent-ayesha-04"
  },
  {
   "key": "1mhhxfx",
@@ -1125,7 +1125,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/9",
-  "take": "agent-coach-03"
+  "take": "agent-coach-06"
  },
  {
   "key": "0ug49kh",
@@ -1133,7 +1133,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/10",
-  "take": "agent-coach-04"
+  "take": "agent-coach-07"
  },
  {
   "key": "18yzvgo",
@@ -1141,7 +1141,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/11",
-  "take": "agent-coach-04"
+  "take": "agent-coach-07"
  },
  {
   "key": "0ori6v2",
@@ -1149,7 +1149,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/12",
-  "take": "agent-coach-04"
+  "take": "agent-coach-07"
  },
  {
   "key": "0ej0r0r",
@@ -1157,7 +1157,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/13",
-  "take": "agent-coach-04"
+  "take": "agent-coach-07"
  },
  {
   "key": "180dujn",
@@ -1165,7 +1165,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/14",
-  "take": "agent-coach-04"
+  "take": "agent-coach-08"
  },
  {
   "key": "0fmpvu7",
@@ -1173,7 +1173,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/15",
-  "take": "agent-coach-04"
+  "take": "agent-coach-08"
  },
  {
   "key": "0xebhum",
@@ -1181,7 +1181,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/16",
-  "take": "agent-coach-04"
+  "take": "agent-coach-08"
  },
  {
   "key": "0yset4i",
@@ -1189,7 +1189,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/16 question",
-  "take": "agent-coach-04"
+  "take": "agent-coach-08"
  },
  {
   "key": "0osek9o",
@@ -1197,7 +1197,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/16 frame",
-  "take": "agent-ayesha-02"
+  "take": "agent-ayesha-04"
  },
  {
   "key": "1v10csh",
@@ -1205,7 +1205,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/16 frame",
-  "take": "agent-ayesha-02"
+  "take": "agent-ayesha-04"
  },
  {
   "key": "0bigzso",
@@ -1213,7 +1213,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/16 example",
-  "take": "agent-ayesha-03"
+  "take": "agent-ayesha-05"
  },
  {
   "key": "0t2n2gx",
@@ -1221,7 +1221,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/17",
-  "take": "agent-coach-05"
+  "take": "agent-coach-09"
  },
  {
   "key": "1k35atc",
@@ -1229,7 +1229,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/17 phrase",
-  "take": "agent-ayesha-03"
+  "take": "agent-ayesha-05"
  },
  {
   "key": "0qmsmxw",
@@ -1237,7 +1237,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/18",
-  "take": "agent-coach-05"
+  "take": "agent-coach-09"
  },
  {
   "key": "1z0xu38",
@@ -1245,7 +1245,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/19",
-  "take": "agent-coach-05"
+  "take": "agent-coach-09"
  },
  {
   "key": "1i0q3l5",
@@ -1253,7 +1253,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/20",
-  "take": "agent-coach-05"
+  "take": "agent-coach-09"
  },
  {
   "key": "14uwaly",
@@ -1261,7 +1261,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/20 phrase",
-  "take": "agent-ayesha-03"
+  "take": "agent-ayesha-05"
  },
  {
   "key": "125dcz3",
@@ -1269,7 +1269,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/21",
-  "take": "agent-coach-05"
+  "take": "agent-coach-10"
  },
  {
   "key": "1b7741y",
@@ -1277,7 +1277,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/22",
-  "take": "agent-coach-05"
+  "take": "agent-coach-10"
  },
  {
   "key": "0l3kuys",
@@ -1285,7 +1285,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/22 question",
-  "take": "agent-coach-05"
+  "take": "agent-coach-10"
  },
  {
   "key": "1ctwfy4",
@@ -1293,7 +1293,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/22 frame",
-  "take": "agent-ayesha-03"
+  "take": "agent-ayesha-05"
  },
  {
   "key": "1x8jfkz",
@@ -1301,7 +1301,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/22 example",
-  "take": "agent-ayesha-03"
+  "take": "agent-ayesha-06"
  },
  {
   "key": "14wemtx",
@@ -1309,7 +1309,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/23",
-  "take": "agent-coach-05"
+  "take": "agent-coach-10"
  },
  {
   "key": "14qrlkl",
@@ -1317,7 +1317,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/24",
-  "take": "agent-coach-06"
+  "take": "agent-coach-11"
  },
  {
   "key": "1y9yydd",
@@ -1325,7 +1325,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/25",
-  "take": "agent-coach-06"
+  "take": "agent-coach-11"
  },
  {
   "key": "084uisz",
@@ -1333,7 +1333,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/25 phrase",
-  "take": "agent-ayesha-03"
+  "take": "agent-ayesha-06"
  },
  {
   "key": "1yaevqk",
@@ -1341,7 +1341,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/26",
-  "take": "agent-coach-06"
+  "take": "agent-coach-11"
  },
  {
   "key": "08o00uk",
@@ -1349,7 +1349,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/27",
-  "take": "agent-coach-06"
+  "take": "agent-coach-11"
  },
  {
   "key": "1aeprsi",
@@ -1357,7 +1357,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/28",
-  "take": "agent-coach-06"
+  "take": "agent-coach-12"
  },
  {
   "key": "0eval33",
@@ -1365,7 +1365,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/28 question",
-  "take": "agent-coach-06"
+  "take": "agent-coach-12"
  },
  {
   "key": "19ule9k",
@@ -1373,7 +1373,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/28 frame",
-  "take": "agent-ayesha-03"
+  "take": "agent-ayesha-06"
  },
  {
   "key": "11qy8u4",
@@ -1381,7 +1381,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/28 frame",
-  "take": "agent-ayesha-03"
+  "take": "agent-ayesha-06"
  },
  {
   "key": "0l8v2oc",
@@ -1389,7 +1389,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/28 frame",
-  "take": "agent-ayesha-04"
+  "take": "agent-ayesha-07"
  },
  {
   "key": "0onl5ff",
@@ -1397,7 +1397,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/28 question",
-  "take": "agent-coach-06"
+  "take": "agent-coach-12"
  },
  {
   "key": "03g9gqb",
@@ -1405,7 +1405,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/29",
-  "take": "agent-coach-06"
+  "take": "agent-coach-12"
  },
  {
   "key": "0580koz",
@@ -1413,7 +1413,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/29 question",
-  "take": "agent-coach-07"
+  "take": "agent-coach-13"
  },
  {
   "key": "09fluzv",
@@ -1421,7 +1421,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/29 frame",
-  "take": "agent-ayesha-04"
+  "take": "agent-ayesha-07"
  },
  {
   "key": "1wjqq0z",
@@ -1429,7 +1429,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/29 frame",
-  "take": "agent-ayesha-04"
+  "take": "agent-ayesha-07"
  },
  {
   "key": "18kuwp6",
@@ -1437,7 +1437,7 @@
   "voice": "ayesha",
   "lesson": "agent",
   "where": "#agent/29 example",
-  "take": "agent-ayesha-04"
+  "take": "agent-ayesha-07"
  },
  {
   "key": "0i5mqn1",
@@ -1445,7 +1445,7 @@
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/30",
-  "take": "agent-coach-07"
+  "take": "agent-coach-13"
  },
  {
   "key": "1yk29vy",
@@ -1485,7 +1485,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/0 word",
-  "take": "build-coach-01"
+  "take": "build-coach-02"
  },
  {
   "key": "1kzhjsd",
@@ -1493,7 +1493,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/0 word",
-  "take": "build-coach-01"
+  "take": "build-coach-02"
  },
  {
   "key": "1f8nagg",
@@ -1501,7 +1501,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/0 word",
-  "take": "build-coach-01"
+  "take": "build-coach-02"
  },
  {
   "key": "0j85w5m",
@@ -1509,7 +1509,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/0 word",
-  "take": "build-coach-01"
+  "take": "build-coach-02"
  },
  {
   "key": "0w45ugt",
@@ -1517,7 +1517,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/1",
-  "take": "build-coach-02"
+  "take": "build-coach-03"
  },
  {
   "key": "0ll8w02",
@@ -1525,7 +1525,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/1 story",
-  "take": "build-coach-02"
+  "take": "build-coach-03"
  },
  {
   "key": "0mm941t",
@@ -1533,7 +1533,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/1 story",
-  "take": "build-coach-02"
+  "take": "build-coach-03"
  },
  {
   "key": "14dfzeb",
@@ -1541,7 +1541,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/1 story",
-  "take": "build-coach-02"
+  "take": "build-coach-03"
  },
  {
   "key": "1apvfrl",
@@ -1549,7 +1549,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/2",
-  "take": "build-coach-02"
+  "take": "build-coach-04"
  },
  {
   "key": "1a5h0fc",
@@ -1589,7 +1589,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/3 question",
-  "take": "build-coach-02"
+  "take": "build-coach-04"
  },
  {
   "key": "0g4o97l",
@@ -1597,7 +1597,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/3 frame",
-  "take": "build-ayesha-01"
+  "take": "build-ayesha-02"
  },
  {
   "key": "13qpmve",
@@ -1605,7 +1605,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/3 frame",
-  "take": "build-ayesha-01"
+  "take": "build-ayesha-02"
  },
  {
   "key": "1ss0ckq",
@@ -1613,7 +1613,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/3 example",
-  "take": "build-ayesha-01"
+  "take": "build-ayesha-02"
  },
  {
   "key": "08jc3f1",
@@ -1621,7 +1621,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/4",
-  "take": "build-coach-02"
+  "take": "build-coach-04"
  },
  {
   "key": "1u5gp3x",
@@ -1629,7 +1629,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/5",
-  "take": "build-coach-02"
+  "take": "build-coach-04"
  },
  {
   "key": "0bdg2iy",
@@ -1637,7 +1637,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/6",
-  "take": "build-coach-03"
+  "take": "build-coach-05"
  },
  {
   "key": "0xp04ek",
@@ -1645,7 +1645,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/6 phrase",
-  "take": "build-ayesha-01"
+  "take": "build-ayesha-02"
  },
  {
   "key": "0z4zyvv",
@@ -1653,7 +1653,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/7",
-  "take": "build-coach-03"
+  "take": "build-coach-05"
  },
  {
   "key": "12n6b94",
@@ -1661,7 +1661,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/7 question",
-  "take": "build-coach-03"
+  "take": "build-coach-05"
  },
  {
   "key": "0tt1d5g",
@@ -1669,7 +1669,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/7 frame",
-  "take": "build-ayesha-02"
+  "take": "build-ayesha-03"
  },
  {
   "key": "0er4d8m",
@@ -1677,7 +1677,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/7 frame",
-  "take": "build-ayesha-02"
+  "take": "build-ayesha-03"
  },
  {
   "key": "1ksbu0x",
@@ -1685,7 +1685,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/7 example",
-  "take": "build-ayesha-02"
+  "take": "build-ayesha-03"
  },
  {
   "key": "0dlorbh",
@@ -1693,7 +1693,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/8",
-  "take": "build-coach-03"
+  "take": "build-coach-05"
  },
  {
   "key": "0xk95aw",
@@ -1701,7 +1701,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/8 phrase",
-  "take": "build-ayesha-02"
+  "take": "build-ayesha-03"
  },
  {
   "key": "0u4l0g6",
@@ -1709,7 +1709,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/8 question",
-  "take": "build-coach-03"
+  "take": "build-coach-06"
  },
  {
   "key": "09zhox3",
@@ -1717,7 +1717,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/8 frame",
-  "take": "build-ayesha-02"
+  "take": "build-ayesha-04"
  },
  {
   "key": "0qitzgt",
@@ -1725,7 +1725,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/8 frame",
-  "take": "build-ayesha-02"
+  "take": "build-ayesha-04"
  },
  {
   "key": "176k80k",
@@ -1733,7 +1733,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/8 example",
-  "take": "build-ayesha-02"
+  "take": "build-ayesha-04"
  },
  {
   "key": "1vt0mhp",
@@ -1741,7 +1741,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/9",
-  "take": "build-coach-03"
+  "take": "build-coach-06"
  },
  {
   "key": "1wyrt12",
@@ -1749,7 +1749,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/9 phrase",
-  "take": "build-ayesha-02"
+  "take": "build-ayesha-04"
  },
  {
   "key": "0cdhqjc",
@@ -1757,7 +1757,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/10",
-  "take": "build-coach-03"
+  "take": "build-coach-06"
  },
  {
   "key": "1xdowkg",
@@ -1765,7 +1765,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/11",
-  "take": "build-coach-03"
+  "take": "build-coach-06"
  },
  {
   "key": "18bjuq7",
@@ -1773,7 +1773,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/11 phrase",
-  "take": "build-ayesha-03"
+  "take": "build-ayesha-05"
  },
  {
   "key": "0y3iolk",
@@ -1781,7 +1781,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/12",
-  "take": "build-coach-04"
+  "take": "build-coach-07"
  },
  {
   "key": "0x151ey",
@@ -1789,7 +1789,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/12 question",
-  "take": "build-coach-04"
+  "take": "build-coach-07"
  },
  {
   "key": "0t034gy",
@@ -1797,7 +1797,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/12 frame",
-  "take": "build-ayesha-03"
+  "take": "build-ayesha-05"
  },
  {
   "key": "06i8hxj",
@@ -1805,7 +1805,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/12 frame",
-  "take": "build-ayesha-03"
+  "take": "build-ayesha-05"
  },
  {
   "key": "1095y7m",
@@ -1813,7 +1813,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/12 example",
-  "take": "build-ayesha-03"
+  "take": "build-ayesha-05"
  },
  {
   "key": "0u1hws8",
@@ -1821,7 +1821,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/13",
-  "take": "build-coach-04"
+  "take": "build-coach-07"
  },
  {
   "key": "0o43pic",
@@ -1829,7 +1829,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/13 phrase",
-  "take": "build-ayesha-03"
+  "take": "build-ayesha-06"
  },
  {
   "key": "1van9jj",
@@ -1837,7 +1837,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/14",
-  "take": "build-coach-04"
+  "take": "build-coach-07"
  },
  {
   "key": "1qj8gna",
@@ -1845,7 +1845,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/14",
-  "take": "build-coach-04"
+  "take": "build-coach-08"
  },
  {
   "key": "0rqmrtm",
@@ -1853,7 +1853,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/14 phrase",
-  "take": "build-ayesha-03"
+  "take": "build-ayesha-06"
  },
  {
   "key": "1vr4izs",
@@ -1861,7 +1861,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/15",
-  "take": "build-coach-04"
+  "take": "build-coach-08"
  },
  {
   "key": "130hxfy",
@@ -1869,7 +1869,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/16",
-  "take": "build-coach-04"
+  "take": "build-coach-08"
  },
  {
   "key": "018ibr8",
@@ -1877,7 +1877,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/16 phrase",
-  "take": "build-ayesha-03"
+  "take": "build-ayesha-06"
  },
  {
   "key": "16n3lnk",
@@ -1885,7 +1885,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/17",
-  "take": "build-coach-04"
+  "take": "build-coach-08"
  },
  {
   "key": "0k8z073",
@@ -1893,7 +1893,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/17",
-  "take": "build-coach-05"
+  "take": "build-coach-09"
  },
  {
   "key": "0ynnai4",
@@ -1901,7 +1901,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/17 phrase",
-  "take": "build-ayesha-03"
+  "take": "build-ayesha-06"
  },
  {
   "key": "1l5sam5",
@@ -1909,7 +1909,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/18",
-  "take": "build-coach-05"
+  "take": "build-coach-09"
  },
  {
   "key": "04ht40k",
@@ -1917,7 +1917,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/19",
-  "take": "build-coach-05"
+  "take": "build-coach-09"
  },
  {
   "key": "07f0v5h",
@@ -1925,7 +1925,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/19 phrase",
-  "take": "build-ayesha-04"
+  "take": "build-ayesha-07"
  },
  {
   "key": "1yvdlrw",
@@ -1933,7 +1933,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/20",
-  "take": "build-coach-05"
+  "take": "build-coach-09"
  },
  {
   "key": "1yqh27z",
@@ -1941,7 +1941,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/21",
-  "take": "build-coach-05"
+  "take": "build-coach-10"
  },
  {
   "key": "1h3v6e1",
@@ -1949,7 +1949,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/21 question",
-  "take": "build-coach-05"
+  "take": "build-coach-10"
  },
  {
   "key": "1bmo5bm",
@@ -1957,7 +1957,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/21 frame",
-  "take": "build-ayesha-04"
+  "take": "build-ayesha-07"
  },
  {
   "key": "0s3rf2z",
@@ -1965,7 +1965,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/21 frame",
-  "take": "build-ayesha-04"
+  "take": "build-ayesha-07"
  },
  {
   "key": "00fedri",
@@ -1973,7 +1973,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/21 frame",
-  "take": "build-ayesha-04"
+  "take": "build-ayesha-07"
  },
  {
   "key": "06h9147",
@@ -1981,7 +1981,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/21 question",
-  "take": "build-coach-05"
+  "take": "build-coach-10"
  },
  {
   "key": "1ackzye",
@@ -1989,7 +1989,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/22",
-  "take": "build-coach-05"
+  "take": "build-coach-10"
  },
  {
   "key": "0vj8elu",
@@ -1997,7 +1997,7 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/22 question",
-  "take": "build-coach-06"
+  "take": "build-coach-11"
  },
  {
   "key": "1aji38j",
@@ -2005,7 +2005,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/22 frame",
-  "take": "build-ayesha-04"
+  "take": "build-ayesha-08"
  },
  {
   "key": "16j2ejk",
@@ -2013,7 +2013,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/22 frame",
-  "take": "build-ayesha-04"
+  "take": "build-ayesha-08"
  },
  {
   "key": "0b42j1w",
@@ -2021,7 +2021,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/22 frame",
-  "take": "build-ayesha-04"
+  "take": "build-ayesha-08"
  },
  {
   "key": "1c1lk09",
@@ -2029,7 +2029,7 @@
   "voice": "ayesha",
   "lesson": "build",
   "where": "#build/22 example",
-  "take": "build-ayesha-04"
+  "take": "build-ayesha-08"
  },
  {
   "key": "01b7g42",
@@ -2037,6 +2037,6 @@
   "voice": "coach",
   "lesson": "build",
   "where": "#build/23",
-  "take": "build-coach-06"
+  "take": "build-coach-11"
  }
 ]

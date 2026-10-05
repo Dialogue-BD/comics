@@ -703,7 +703,7 @@ function onCoachClick(e){
    is the English task, Bangla is there to read. ---- */
 let voiceEN=null, speakId=0;
 function pickVoice(){ try{ const vs=speechSynthesis.getVoices(); voiceEN=vs.find(v=>/en[-_]IN/i.test(v.lang))||vs.find(v=>/en[-_]GB/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null; }catch(e){} }
-const plain=t=>String(t||'').replace(/<span class="bn"[^>]*>.*?<\/span>/g,' ').replace(/<[^>]+>/g,' ').replace(/___/g,' blank ').replace(/&amp;/g,'&').replace(/&[a-z]+;/g,' ').replace(/\s+/g,' ').trim();
+const plain=t=>String(t||'').replace(/Ayesha/g,'Eye-sha').replace(/<span class="bn"[^>]*>.*?<\/span>/g,' ').replace(/<[^>]+>/g,' ').replace(/___/g,' blank ').replace(/&amp;/g,'&').replace(/&[a-z]+;/g,' ').replace(/\s+/g,' ').trim();
 /* Recorded voices. Every spoken line has a key made from its words, so a
    recording is found by what it says: change a line and the old file simply
    stops matching (the browser voice reads the new one until it is recorded).
