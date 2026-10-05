@@ -1,0 +1,52 @@
+{
+  "model": "small",
+  "audio": "audio/hingsha-story.mp3",
+  "audio_sha256": "f2237f1176ed5c40238fadb4c573fa4d9dfb6f4c6fb651a75d720c5d70fc974c",
+  "duration": 128.36,
+  "expected": "In a riverside village in Bengal, Jalal and Hamid lived side by side. Hamid was prosperous, and Jalal couldn't bear to see it.\nOne morning, Jalal watched Hamid carry home another heavy bag. Then a wandering Pir Sahib came down the village path.\n“Ask me for anything you wish,” the pir said. “But remember: whatever you receive, your neighbor will receive twice as much.”\n“Then give me one fish,” Jalal said.\nA fish appeared before Jalal. Two appeared before Hamid. Jalal asked for one sack of rice, and Hamid received two.\nJalal asked for one chicken. Hamid got two. Soon Hamid's yard was overflowing, but Jalal's heart only grew tighter.\n“Give me one goat,” Jalal demanded.\nHamid received two. Jalal asked for coins and grain, but every gift made his neighbor twice as rich.\nThat night Jalal lay awake. He had more than before, yet he could think only of what Hamid had.\nBy morning, envy had given him a terrible idea. He went back to Pir Sahib.\n“Take the sight from one of my eyes,” Jalal said.\n“Think carefully,” the pir warned. “Your neighbor will receive twice what you ask.”\n“I know,” Jalal replied. “Do it.”\nThe wish was granted. Jalal lost the sight in one eye, and Hamid lost the sight in both.\nWithout his sight, Hamid couldn't protect his wealth or work as before. In time it was gone, and he had to beg beside the road.\nJalal had finally brought his neighbor lower than himself, but he still found no peace. Envy had taken more than it had given.",
+  "heard": "In a riverside village in Bengal, Jalal and Hamid lived side by side. Hamid was prosperous and Jalal couldn't bear to see it. One morning, Jalal watched Hamid carry home another heavy bag. Then a wandering Pirsaheb came down the village path. Ask me for anything you wish, the Pirsaheb said. But remember, whatever you receive, your neighbour will receive twice as much. Then give me one fish, Jalal said. A fish appeared before Jalal. Two appeared before Hamid. Jalal asked for one sack of rice and Hamid received two. Jalal asked for one chicken. Hamid got two. Soon Hamid's yard was overflowing. But Jalal's heart only grew tighter. Give me one goat, Jalal demanded. Hamid received two. Jalal asked for coins and green, but every gift made his neighbour twice as rich. That night, Jalal lay awake. He had more than before, yet he could think only of what Hamid had. By morning, Envi had given him a terrible idea. He went back to Pir Sahib. Take the sight from one of my eyes, Jalal said. Think carefully, the Pir warned. Your neighbour will receive twice what you ask. I know, Jalal replied. Do it. The wish was granted. Jalal lost the sight in one eye and Hamid lost the sight in both. Without his sight, Hamid couldn't protect his well-thought work as before. In time it was gone and he had to beg beside the road. Jalal had finally brought his neighbour lower than himself but he still found no peace. N.V. had taken more than it had given.",
+  "exact_fraction": 0.9544,
+  "differences": [
+    {
+      "script": "Pir Sahib",
+      "heard": "Pirsaheb"
+    },
+    {
+      "script": "pir",
+      "heard": "Pirsaheb"
+    },
+    {
+      "script": "neighbor",
+      "heard": "neighbour"
+    },
+    {
+      "script": "grain",
+      "heard": "green"
+    },
+    {
+      "script": "neighbor",
+      "heard": "neighbour"
+    },
+    {
+      "script": "envy",
+      "heard": "Envi"
+    },
+    {
+      "script": "neighbor",
+      "heard": "neighbour"
+    },
+    {
+      "script": "wealth or",
+      "heard": "well -thought"
+    },
+    {
+      "script": "neighbor",
+      "heard": "neighbour"
+    },
+    {
+      "script": "Envy",
+      "heard": "N V"
+    }
+  ],
+  "word_count": 263
+}
