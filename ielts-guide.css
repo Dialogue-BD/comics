@@ -1,0 +1,83 @@
+/* Shared guided shell for the Reading and Listening lessons. */
+@media screen {
+  body.guide-ready .station:not(.guide-active) { display: none !important; }
+  body.guide-ready .guide-active > .wrap > [data-guide-step]:not(.guide-step-active) { display: none !important; }
+  body.guide-ready .nav-links { display: none !important; }
+  body.guide-ready .jump-fab { display: inline-flex !important; align-items: center; gap: 7px; }
+  body.guide-ready .jump-sheet.open { display: grid !important; align-items: end; }
+}
+body.guide-ready .jump-fab { position: fixed; right: 16px; bottom: 18px; z-index: 90; padding: 11px 17px; border-radius: 999px; cursor: pointer; }
+body.guide-ready .jump-sheet.open { position: fixed; inset: 0; z-index: 120; background: rgba(0, 0, 0, .55); }
+body.guide-ready .jump-panel { width: min(100%, 620px); justify-self: center; max-height: min(84vh, 760px); overflow-y: auto; padding: 16px; border-radius: 20px 20px 0 0; background: var(--surface, #fffefa); }
+body.guide-ready .jump-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: .86rem; font-weight: 800; }
+body.guide-ready .jump-head button { width: 36px; height: 36px; border: 1px solid var(--border, #d7ddd6); border-radius: 50%; background: var(--surface-2, #e8eee7); cursor: pointer; }
+body.guide-ready .jump-list { display: grid; gap: 6px; }
+body.guide-ready .jump-list a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--border, #d7ddd6); border-radius: 10px; background: var(--surface-2, #e8eee7); color: var(--ink, var(--text, #222d2c)); text-decoration: none; }
+body.guide-ready .jump-list a b { flex: 0 0 auto; }
+body[data-guide-lesson="listening"].guide-ready .jump-fab { bottom: 92px; }
+
+.guide-overview {
+  max-width: 1116px;
+  margin: 0 auto 12px;
+  padding: 0 22px;
+}
+.guide-overview-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: center;
+  padding: clamp(22px, 4vw, 38px);
+  border: 1px solid var(--border, #d7ddd6);
+  border-radius: 22px;
+  background: var(--surface, #fffefa);
+  box-shadow: var(--shadow, 0 18px 45px -30px #244f43);
+}
+.guide-kicker { margin: 0 0 8px; color: var(--accent, #244f43); font-size: .72rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+.guide-overview h2 { margin: 0 0 8px; font-family: var(--serif, Georgia, serif); font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 500; line-height: 1.14; }
+.guide-overview p:not(.guide-kicker) { max-width: 620px; margin: 0; color: var(--muted, var(--text-muted, #576260)); font-size: .94rem; }
+.guide-start, .guide-next, .guide-back {
+  min-height: 46px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--accent, #244f43);
+  font: inherit;
+  font-size: .86rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.guide-start, .guide-next { background: var(--accent, #244f43); color: var(--on-accent, #fffefa); }
+.guide-back { background: transparent; color: var(--accent, #244f43); }
+.guide-start:hover, .guide-next:hover { filter: brightness(1.13); }
+.guide-back:hover { background: var(--accent-soft, var(--accent-dim, #e8eee7)); }
+.guide-progress { margin: 0 0 20px; padding: 16px 20px 18px; border: 1px solid var(--border, #d7ddd6); border-radius: 16px; background: var(--surface, #fffefa); }
+.guide-progress-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 10px; }
+.guide-progress-top strong { color: var(--accent, #244f43); font-size: .72rem; letter-spacing: .11em; text-transform: uppercase; }
+.guide-progress-top span { color: var(--muted, var(--text-muted, #576260)); font-size: .76rem; font-weight: 700; }
+.guide-meter { height: 7px; overflow: hidden; border-radius: 20px; background: var(--surface-2, #e8eee7); }
+.guide-meter-fill { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--accent, #244f43); transition: width .3s ease; }
+.guide-now { display: flex; align-items: flex-start; gap: 13px; margin-top: 16px; }
+.guide-now-num { display: grid; place-items: center; flex: 0 0 36px; width: 36px; height: 36px; border-radius: 11px; background: var(--accent-soft, var(--accent-dim, #e8eee7)); color: var(--accent, #244f43); font-weight: 850; }
+.guide-now h3 { margin: 0 0 2px; font-family: var(--sans, sans-serif); font-size: 1.05rem; font-weight: 800; }
+.guide-now p { margin: 0; color: var(--muted, var(--text-muted, #576260)); font-size: .86rem; }
+.guide-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 24px; padding: 18px 0 10px; border-top: 1px solid var(--border, #d7ddd6); }
+body.guide-ready .guide-actions { margin-bottom: 64px; }
+.guide-actions .guide-back[hidden] { display: none; }
+.guide-next { margin-left: auto; }
+.guide-reference { margin: 0 0 18px; border: 1px solid var(--border, #d7ddd6); border-radius: 12px; background: var(--surface, #fffefa); }
+.guide-reference summary { cursor: pointer; padding: 12px 16px; color: var(--accent, #244f43); font-size: .84rem; font-weight: 800; }
+.guide-reference .passage-box { margin: 0 14px 14px; max-height: 340px; overflow: auto; }
+.guide-reference .passage { font-size: .87rem; }
+.guide-complete { margin: 0 0 18px; padding: 18px 20px; border: 1px solid var(--accent, #244f43); border-radius: 14px; background: var(--accent-soft, var(--accent-dim, #e8eee7)); }
+.guide-complete strong { display: block; margin-bottom: 3px; color: var(--accent, #244f43); }
+.guide-complete p { margin: 0; font-size: .88rem; color: var(--muted, var(--text-muted, #576260)); }
+@media (max-width: 650px) {
+  .guide-overview-inner { grid-template-columns: 1fr; }
+  .guide-start { justify-self: start; }
+  .guide-progress { padding: 14px; }
+  .guide-actions { position: relative; }
+  .guide-actions button { padding: 9px 14px; }
+  body.guide-ready .hero-chips span:nth-child(2), body.guide-ready .hero-chips span:nth-child(3) { display: inline-flex; }
+}
+@media print {
+  .guide-overview, .guide-progress, .guide-actions, .guide-reference, .guide-complete { display: none !important; }
+}

@@ -76,9 +76,9 @@ const ART = (() => {
   const CAST = {
     teacher: { skin: SKIN.a, hair: 'short', hairC: '#2B2020', grey: true, shirt: '#1F5C4A', collar: '#F4F1E6', glasses: true },
     learner: { skin: SKIN.b, hair: 'hijab', hairC: '#7C4A8E', shirt: '#E7A96B' },
-    friend:  { skin: SKIN.c, hair: 'curly', hairC: '#1E1612', shirt: '#E1B84B', collar: '#FFF8E6' },
+    friend:  { skin: SKIN.a, hair: 'short', hairC: '#1E1612', shirt: '#E1B84B', collar: '#FFF8E6' },
     boy:     { skin: SKIN.a, hair: 'short', hairC: '#1E1612', shirt: '#3F7FA6', collar: '#EAF3F7' },
-    girl:    { skin: SKIN.d, hair: 'long', hairC: '#2A1C16', shirt: '#C9625A' }
+    girl:    { skin: SKIN.d, hair: 'long', hairC: '#2A1C16', shirt: '#C9625A', orna: '#F5EBD4' }
   };
   /* (x, y) is the centre of the face; s is the height of the whole bust */
   function figure(p, x, y, s, o = {}){
@@ -97,6 +97,10 @@ const ART = (() => {
     const body = `M${x - 2.15 * r} ${y + 3.95 * r}C${x - 2.2 * r} ${y + 2.35 * r} ${x - 1.5 * r} ${y + 1.6 * r} ${x} ${y + 1.55 * r}C${x + 1.5 * r} ${y + 1.6 * r} ${x + 2.2 * r} ${y + 2.35 * r} ${x + 2.15 * r} ${y + 3.95 * r}Z`;
     N(g, 'path', { d: body, fill: grad(g, [[shade(c.shirt, .12)], [shade(c.shirt, -.16)]]) });
     N(g, 'path', { d: `M${x - 1.55 * r} ${y + 2.2 * r}Q${x - 1.2 * r} ${y + 1.8 * r} ${x - .6 * r} ${y + 1.7 * r}`, fill: 'none', stroke: '#fff', 'stroke-opacity': .22, 'stroke-width': .12 * r, 'stroke-linecap': 'round' });
+    if (c.orna) {
+      N(g, 'path', { d: `M${x - 1.45 * r} ${y + 1.6 * r}Q${x - .5 * r} ${y + 2.55 * r} ${x + 1.35 * r} ${y + 1.75 * r}L${x + 1.85 * r} ${y + 3.95 * r}H${x - 1.7 * r}Z`, fill: grad(g, [[shade(c.orna, .06)], [shade(c.orna, -.1)]]) });
+      N(g, 'path', { d: `M${x - 1.35 * r} ${y + 1.76 * r}Q${x - .2 * r} ${y + 2.78 * r} ${x + 1.34 * r} ${y + 1.9 * r}`, fill: 'none', stroke: '#C99278', 'stroke-width': .045 * r, opacity: .75 });
+    }
     if (c.hair !== 'hijab') {
       N(g, 'path', { d: `M${x - .5 * r} ${y + 1.58 * r}L${x} ${y + 2.25 * r}L${x + .5 * r} ${y + 1.58 * r}Z`, fill: skinD });
       if (c.collar) {
