@@ -438,7 +438,7 @@ function wordsCard(c){
 }
 /* a wordless story: pictures first, the narration is heard, the words come last */
 function storyCard(c){
-  return `<div class="card tale" id="story"><div class="tpanels">${c.panels.map((p,i)=>`<figure class="tpanel" data-pi="${i}" data-say="${esc(p.en)}"><div class="pe" aria-hidden="true">${p.e}</div><figcaption>${esc(p.en)}${p.bn?`<span class="bn" lang="bn">${p.bn}</span>`:''}</figcaption><span class="pn">${i+1}</span></figure>`).join('')}</div>
+  return `<div class="card tale" id="story"><div class="tpanels" style="--n:${c.panels.length}">${c.panels.map((p,i)=>`<figure class="tpanel" data-pi="${i}" data-say="${esc(p.en)}"><div class="pe" aria-hidden="true">${p.e}</div><figcaption>${esc(p.en)}${p.bn?`<span class="bn" lang="bn">${p.bn}</span>`:''}</figcaption><span class="pn">${i+1}</span></figure>`).join('')}</div>
    <div class="row"><button class="btn gold" data-story="play">▶ ${S.bn?'শোনো':'Listen'}</button><button class="btn quiet" data-story="words">${S.bn?'শব্দগুলো দেখাও':'Show the words'}</button></div></div>`;
 }
 /* today's four phrases, one per gear: listen and repeat */
@@ -447,12 +447,13 @@ function phrasesCard(c){
    <div class="row"><button class="btn gold" data-phrases="all">▶ ${S.bn?'সবগুলো শোনো, তারপর বলো':'Hear all four, then repeat'}</button></div></div>`;
 }
 /* play a list of elements one after another, lighting each while it is heard */
+let seqId=0;
 function playSeq(els,cls,done){
-  let i=0; const my=++speakId;
-  const step=()=>{ if(my!==speakId) return; els.forEach(e=>e.classList.remove(cls)); if(i>=els.length){done&&done();return}
+  hush(); let i=0; const my=++seqId;
+  const step=()=>{ if(my!==seqId) return; els.forEach(e=>e.classList.remove(cls)); if(i>=els.length){done&&done();return}
     const el=els[i++]; el.classList.add(cls); el.scrollIntoView({block:'nearest',behavior:'smooth'});
-    speak(el.dataset.say,()=>setTimeout(step,S.mode==='class'?1100:700)); speakId=my; };
-  try{speechSynthesis.cancel()}catch(e){} step();
+    speak(el.dataset.say,()=>setTimeout(step,S.mode==='class'?1100:700)); };
+  step();
 }
 
 /* the talk moment: the same question, set up for how the class is working */
@@ -703,9 +704,31 @@ function onCoachClick(e){
 let voiceEN=null, speakId=0;
 function pickVoice(){ try{ const vs=speechSynthesis.getVoices(); voiceEN=vs.find(v=>/en[-_]IN/i.test(v.lang))||vs.find(v=>/en[-_]GB/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null; }catch(e){} }
 const plain=t=>String(t||'').replace(/<span class="bn"[^>]*>.*?<\/span>/g,' ').replace(/<[^>]+>/g,' ').replace(/___/g,' blank ').replace(/&amp;/g,'&').replace(/&[a-z]+;/g,' ').replace(/\s+/g,' ').trim();
+/* Recorded voices. Every spoken line has a key made from its words, so a
+   recording is found by what it says: change a line and the old file simply
+   stops matching (the browser voice reads the new one until it is recorded).
+   tools/voice-script.js lists every line; tools/split_takes.py cuts the
+   AI Studio takes into audio/<key>.mp3 and writes audio/manifest.json. */
+const canon=t=>String(t||'').replace(/<span class="bn"[^>]*>.*?<\/span>/g,' ').replace(/<[^>]+>/g,' ').replace(/&amp;/g,'&').replace(/&[a-z]+;/g,' ').replace(/[“”]/g,'"').replace(/[‘’]/g,"'").replace(/\s+/g,' ').trim();
+const audioKey=t=>{ let h=0x811c9dc5; const c=canon(t).toLowerCase(); for(let i=0;i<c.length;i++){ h^=c.charCodeAt(i); h=Math.imul(h,0x01000193)>>>0; } return h.toString(36).padStart(7,'0'); };
+let AUDIO=new Set(), audioEl=null;
+function loadAudio(){ try{ fetch('audio/manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(m=>{ if(m&&m.keys) AUDIO=new Set(m.keys); }).catch(()=>{}); }catch(e){} }
+function stopClip(){ if(audioEl){ try{audioEl.pause()}catch(e){} audioEl.onended=audioEl.onerror=null; audioEl=null; } }
 function speak(t,onEnd){
+  const k=audioKey(t);
+  if(AUDIO.has(k)){
+    try{ speechSynthesis.cancel() }catch(e){} stopClip(); const my=++speakId; $$('.speaking').forEach(e=>e.classList.remove('speaking'));
+    const a=new Audio('audio/'+k+'.mp3'); audioEl=a; a.playbackRate=S.mode==='class'?.94:1;
+    const done=()=>{ if(my!==speakId) return; audioEl=null; $$('.speaking').forEach(e=>e.classList.remove('speaking')); onEnd&&onEnd(); };
+    a.onended=done; a.onerror=()=>{ AUDIO.delete(k); if(my===speakId){ audioEl=null; speak(t,onEnd); } };
+    a.play().catch(()=>{ if(my===speakId){ AUDIO.delete(k); audioEl=null; speak(t,onEnd); } });
+    return;
+  }
+  ttsSpeak(t,onEnd);
+}
+function ttsSpeak(t,onEnd){
   try{
-    speechSynthesis.cancel(); const my=++speakId; $$('.speaking').forEach(e=>e.classList.remove('speaking'));
+    speechSynthesis.cancel(); stopClip(); const my=++speakId; $$('.speaking').forEach(e=>e.classList.remove('speaking'));
     const parts=plain(t).match(/[^.!?…]+[.!?…]*/g)||[]; if(!parts.length){onEnd&&onEnd();return}
     if(!voiceEN) pickVoice();
     parts.forEach((p,i)=>{ const u=new SpeechSynthesisUtterance(p.trim()); u.lang=voiceEN?voiceEN.lang:'en-GB'; if(voiceEN)u.voice=voiceEN; u.rate=S.mode==='class'?.82:.88;
@@ -713,8 +736,8 @@ function speak(t,onEnd){
       speechSynthesis.speak(u); });
   }catch(e){ onEnd&&onEnd(); }
 }
-function hush(){ speakId++; try{speechSynthesis.cancel()}catch(e){} $$('.speaking').forEach(e=>e.classList.remove('speaking')); }
-const sayBtn=(text,label)=>`<button class="ear" data-speak="${esc(plain(text))}" aria-label="${label||'Listen'}">🔊</button>`;
+function hush(){ speakId++; seqId++; stopClip(); try{speechSynthesis.cancel()}catch(e){} $$('.speaking').forEach(e=>e.classList.remove('speaking')); }
+const sayBtn=(text,label)=>`<button class="ear" data-speak="${esc(canon(text))}" aria-label="${label||'Listen'}">🔊</button>`;
 
 /* ------------------------------------------------------------- Show me (ghost finger) */
 function ghostTo(el,cb){
@@ -811,7 +834,7 @@ function tickClock(){ $('#sb').innerHTML=`<span>${now()}</span><span class="ico"
 
 /* ------------------------------------------------------------- boot */
 function boot(){
-  load(); loadPrefs();
+  load(); loadPrefs(); loadAudio();
   ['solo','pair','class'].forEach(z=>document.body.classList.toggle('mode-'+z,z===S.mode));
   if(S.mode==='class'){ stageByMode=true; S.stage=true; document.body.classList.add('stage'); }
   if('speechSynthesis' in window){ pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; }
@@ -839,5 +862,5 @@ function boot(){
   if(!fromHash()){ if(S.lesson&&LESSONS[S.lesson]) go(S.beat,false); else hub(); }
 }
 
-window.AFL={byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,next,ctx,renderPhone:()=>renderPhone(false),renderCoach,start,hub,STORY_DATE};
+window.AFL={_mode:k=>{S.mode=k},audioKey,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,next,ctx,renderPhone:()=>renderPhone(false),renderCoach,start,hub,STORY_DATE};
 })();

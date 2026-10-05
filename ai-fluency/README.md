@@ -55,7 +55,15 @@ Each D is also a job you do with English (`D4.SAY` in `compass.js`): **Delegatio
 
 **Talk moments** (`talk:{q, qbn, frames:[{en,bn}], model, time, roles, pic, big}`) sit on any beat, alone or under a card: a question, sentence frames with gaps, an example answer to hear, and an optional timer (T). **Listening:** the coach reads each new step aloud in English (🔊 in the header, or V, turns it off) — sentence by sentence, because Chrome cuts long speech off; it prefers an en-IN voice, then en-GB.
 
-The CV workflow is the first rebuilt this way (29 beats: 4 warm-up, 7 talk moments). Agent and Build still use the older flow — they get the default phrase on each gear change, but no warm-up or talk moments yet. The story panels are emoji for now; like Culture Circles, they can become wordless comic panels.
+All three workflows follow this pattern: CV (29 steps), Agent (31) and Build (24), each with four warm-up steps and six or seven talk moments. The story panels are emoji for now; like Culture Circles, they can become wordless comic panels.
+
+## Recorded voices (Gemini TTS, no API)
+
+Every spoken line has a key made from its words (`audioKey()` in `engine.js`, FNV-1a over the normalised text). The page plays `audio/<key>.mp3` when `audio/manifest.json` lists the key, and falls back to the browser's voice otherwise — so a line that changes simply falls back until it is re-recorded, and nothing has to be renamed.
+
+- `node tools/voice-script.js` lists every line from the lesson files (say lines, picture words, story panels, phrases, talk questions, frames and example answers, in every mode) into `audio/lines.json`, groups them into takes of up to eight lines per voice in `audio/takes.json`, and writes **`voice-script.md`**: the voice settings and a transcript block per take to paste into the AI Studio speech playground. Run it again after any text change; recorded takes are ticked.
+- Two voices: **the coach** (instructions, words, stories, questions) and **Ayesha** (phrases, frames, example answers). Lines in a take are separated by `<long pause>`.
+- Download each take as `<take>.wav`, then `python3 tools/split_takes.py ~/Downloads` (needs ffmpeg) cuts each take at its pauses into `audio/<key>.mp3`, trims it, and rewrites the manifest. A take with too few pauses is skipped and reported; lines whose length looks wrong for their words are listed to check by ear.
 
 ## The four Ds — onboarding animation
 
@@ -70,6 +78,7 @@ Every movement is a Web Animation built from `data-a="anim start [duration]"` at
 - `engine.js` — Android simulator (app renderers, keyboard, dialogs, streaming AI replies) + coach + lesson runner
 - `lesson-cv.js`, `lesson-agent.js`, `lesson-build.js` — content banks (beats, scripted AI replies, Bangla)
 - `docs/` — Ayesha's documents as small webp images (~80 KB each)
+- `tools/voice-script.js`, `tools/split_takes.py`, `voice-script.md`, `audio/` — the recorded voices (above)
 - `print.html` — paper version · `manifest.webmanifest` — lets the page open full-screen from the home screen
 
 ### Beat shape

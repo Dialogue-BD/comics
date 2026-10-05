@@ -205,7 +205,7 @@ AFL.lesson({
    talk:{q:'Find one thing that is not true.',qbn:'একটা অসত্য কথা খুঁজে বের করো।',time:45,
      frames:[{en:'It says ___, but her report says ___.',bn:'এখানে লেখা ___, কিন্তু তার রিপোর্টে লেখা ___।'}],
      model:'It says IELTS 7.0, but her report says 6.0.'}},
-  {why:'The made-up lines point straight at what the prompt was missing.',whybn:'বানানো লাইনগুলোই দেখিয়ে দেয় প্রম্পটে কী বাদ ছিল।',
+  {frame:{en:'The prompt needs context, product, process and performance.',bn:'প্রম্পটে প্রেক্ষাপট, পণ্য, প্রক্রিয়া আর আচরণ লাগে।'},why:'The made-up lines point straight at what the prompt was missing.',whybn:'বানানো লাইনগুলোই দেখিয়ে দেয় প্রম্পটে কী বাদ ছিল।',
    stage:'prompt',open:true,scene:x=>({app:'sathi',msgs:[{role:'u',text:ASK_FIRST,atts:['cv']},{role:'a',html:WEAK}],composer:{text:''}}),
    say:'The short prompt left out four things.',bn:'ছোট প্রম্পটে চারটা জিনিস বাদ পড়েছে।',
    card:{type:'html',html:`<div class="card"><p class="mono">“make my cv better for scholarship”</p><div class="four">

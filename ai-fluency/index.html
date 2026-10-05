@@ -757,7 +757,7 @@ body.bangla .d4legend.compact .lg-x .bn{display:block}
 .wtile .bn{font-size:12.5px;margin:0}
 .wtile.open{background:var(--card);border-color:var(--gold)}
 /* story in pictures */
-.tale .tpanels{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tale .tpanels{display:grid;grid-template-columns:repeat(var(--n,3),1fr);gap:8px}
 .tpanel{position:relative;margin:0;background:var(--mist);border:1px solid var(--rule);border-radius:12px;padding:10px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;transition:box-shadow .3s,background .3s;cursor:pointer}
 .tpanel .pe{font-size:calc(46px*var(--ui));line-height:1.1;letter-spacing:.05em;text-align:center}
 .tpanel figcaption{display:none;font-size:calc(14px*var(--ui));line-height:1.35;text-align:center}
@@ -841,6 +841,17 @@ table.vs td:first-child{color:var(--clay-ink);text-decoration:line-through;text-
 .four em{font-style:normal;font-size:calc(12px*var(--ui));font-weight:700;color:var(--clay-ink)}
 .loopline{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-weight:700;color:var(--ink-muted);margin-top:10px}
 .loopline span{background:var(--card);border:1px solid var(--rule-strong);border-radius:999px;padding:5px 10px;color:var(--forest)}
+
+.idiom{display:flex;align-items:center;gap:10px;background:var(--gold-soft);border:1px solid var(--gold);border-radius:12px;padding:9px 10px;margin-top:10px}
+.idiom>span:first-child{font-size:30px}
+.idiom p{flex:1;margin:0;font-size:calc(15px*var(--ui))}
+.idiom small{display:block;color:var(--ink-muted);font-size:calc(13px*var(--ui))}
+.walls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.walls>span{display:flex;flex-direction:column;align-items:center;text-align:center;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:10px 6px;font-size:28px}
+.walls b{font-size:calc(15px*var(--ui));color:var(--forest)}
+.walls small{font-size:calc(12.5px*var(--ui));color:var(--ink-muted)}
+.fourq>div{cursor:pointer}
+.fourq i{font-style:normal;display:block;font-size:22px;margin-bottom:2px}
 body.stage{--ui:1.28}
 @media (min-width:900px){ body.stage #coach{font-size:110%} }
 
@@ -878,11 +889,11 @@ body.stage{--ui:1.28}
 </div>
 <div id="menu" hidden></div>
 <noscript>This activity needs JavaScript.</noscript>
-<script src="compass.js?v=10"></script>
-<script src="engine.js?v=10"></script>
-<script src="lesson-cv.js?v=10"></script>
-<script src="lesson-agent.js"></script>
-<script src="lesson-build.js?v=8"></script>
+<script src="compass.js?v=11"></script>
+<script src="engine.js?v=11"></script>
+<script src="lesson-cv.js?v=11"></script>
+<script src="lesson-agent.js?v=11"></script>
+<script src="lesson-build.js?v=11"></script>
 <script src="intro.js"></script>
 <script>AFL.boot();</script>
 </body>
