@@ -1,0 +1,882 @@
+{
+  "testedOn": "2026-10-07",
+  "portrait": [
+    {
+      "beat": "Beat 1",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 1
+    },
+    {
+      "beat": "Behind their stalls",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 22
+    },
+    {
+      "beat": "Beat 2",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 42
+    },
+    {
+      "beat": "Beat 3",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 71
+    },
+    {
+      "beat": "Beat 4",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 94
+    },
+    {
+      "beat": "Beat 5",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 119
+    },
+    {
+      "beat": "The man slipped",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 126
+    },
+    {
+      "beat": "Nobody dared",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 136
+    },
+    {
+      "beat": "Beat 6",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 144
+    },
+    {
+      "beat": "Then the thug",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 158
+    },
+    {
+      "beat": "Beat 7",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 166
+    },
+    {
+      "beat": "Beat 8",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 192
+    },
+    {
+      "beat": "Beat 9",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 214
+    },
+    {
+      "beat": "People feared",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 224
+    },
+    {
+      "beat": "Beat 10",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 236
+    },
+    {
+      "beat": "The elderly",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 249
+    },
+    {
+      "beat": "Beat 11",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 268
+    },
+    {
+      "beat": "Beat 12",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 285
+    },
+    {
+      "beat": "he noticed",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 297
+    },
+    {
+      "beat": "Beat 13",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 307
+    },
+    {
+      "beat": "Before the organizers",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 320
+    },
+    {
+      "beat": "Beat 14",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 334
+    },
+    {
+      "beat": "Beat 15",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 355
+    },
+    {
+      "beat": "Beat 16",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 377
+    },
+    {
+      "beat": "Beat 17",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 410
+    },
+    {
+      "beat": "Around the stall",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 436
+    },
+    {
+      "beat": "Beat 18",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 445
+    },
+    {
+      "beat": "Beat 19",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 467
+    },
+    {
+      "beat": "Beat 20",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 489
+    },
+    {
+      "beat": "Beat 21",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 512
+    },
+    {
+      "beat": "Beat 22",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 536
+    },
+    {
+      "beat": "Beat 23",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 559
+    },
+    {
+      "beat": "Around them",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 565
+    },
+    {
+      "beat": "Beat 24",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 580
+    },
+    {
+      "beat": "Beat 25",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 622
+    },
+    {
+      "beat": "Beat 26",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 648
+    },
+    {
+      "beat": "Inside were",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 654
+    },
+    {
+      "beat": "Beat 27",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 669
+    },
+    {
+      "beat": "Beat 28",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 693
+    },
+    {
+      "beat": "Beat 29",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 713
+    },
+    {
+      "beat": "the man pulled",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 725
+    },
+    {
+      "beat": "Beat 30",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 733
+    },
+    {
+      "beat": "Beat 31",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 754
+    },
+    {
+      "beat": "Beat 32",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 776
+    },
+    {
+      "beat": "Beat 33",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 801
+    },
+    {
+      "beat": "Beat 34",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 822
+    },
+    {
+      "beat": "Beat 35",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 846
+    },
+    {
+      "beat": "Another seller",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 856
+    },
+    {
+      "beat": "the money in both hands",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 859
+    },
+    {
+      "beat": "Beat 36",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 871
+    },
+    {
+      "beat": "Beat 37",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 892
+    },
+    {
+      "beat": "Beat 38",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 913
+    },
+    {
+      "beat": "Beat 39",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 938
+    },
+    {
+      "beat": "Beat 40",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 972
+    }
+  ],
+  "desktop": [
+    {
+      "beat": "Beat 1",
+      "pass": true,
+      "v": 1
+    },
+    {
+      "beat": "Behind their stalls",
+      "pass": true,
+      "v": 22
+    },
+    {
+      "beat": "Beat 2",
+      "pass": true,
+      "v": 42
+    },
+    {
+      "beat": "Beat 3",
+      "pass": true,
+      "v": 71
+    },
+    {
+      "beat": "Beat 4",
+      "pass": true,
+      "v": 94
+    },
+    {
+      "beat": "Beat 5",
+      "pass": true,
+      "v": 119
+    },
+    {
+      "beat": "The man slipped",
+      "pass": true,
+      "v": 126
+    },
+    {
+      "beat": "Nobody dared",
+      "pass": true,
+      "v": 136
+    },
+    {
+      "beat": "Beat 6",
+      "pass": true,
+      "v": 144
+    },
+    {
+      "beat": "Then the thug",
+      "pass": true,
+      "v": 158
+    },
+    {
+      "beat": "Beat 7",
+      "pass": true,
+      "v": 166
+    },
+    {
+      "beat": "Beat 8",
+      "pass": true,
+      "v": 192
+    },
+    {
+      "beat": "Beat 9",
+      "pass": true,
+      "v": 214
+    },
+    {
+      "beat": "People feared",
+      "pass": true,
+      "v": 224
+    },
+    {
+      "beat": "Beat 10",
+      "pass": true,
+      "v": 236
+    },
+    {
+      "beat": "The elderly",
+      "pass": true,
+      "v": 249
+    },
+    {
+      "beat": "Beat 11",
+      "pass": true,
+      "v": 268
+    },
+    {
+      "beat": "Beat 12",
+      "pass": true,
+      "v": 285
+    },
+    {
+      "beat": "he noticed",
+      "pass": true,
+      "v": 297
+    },
+    {
+      "beat": "Beat 13",
+      "pass": true,
+      "v": 307
+    },
+    {
+      "beat": "Before the organizers",
+      "pass": true,
+      "v": 320
+    },
+    {
+      "beat": "Beat 14",
+      "pass": true,
+      "v": 334
+    },
+    {
+      "beat": "Beat 15",
+      "pass": true,
+      "v": 355
+    },
+    {
+      "beat": "Beat 16",
+      "pass": true,
+      "v": 377
+    },
+    {
+      "beat": "Beat 17",
+      "pass": true,
+      "v": 410
+    },
+    {
+      "beat": "Around the stall",
+      "pass": true,
+      "v": 436
+    },
+    {
+      "beat": "Beat 18",
+      "pass": true,
+      "v": 445
+    },
+    {
+      "beat": "Beat 19",
+      "pass": true,
+      "v": 467
+    },
+    {
+      "beat": "Beat 20",
+      "pass": true,
+      "v": 489
+    },
+    {
+      "beat": "Beat 21",
+      "pass": true,
+      "v": 512
+    },
+    {
+      "beat": "Beat 22",
+      "pass": true,
+      "v": 536
+    },
+    {
+      "beat": "Beat 23",
+      "pass": true,
+      "v": 559
+    },
+    {
+      "beat": "Around them",
+      "pass": true,
+      "v": 565
+    },
+    {
+      "beat": "Beat 24",
+      "pass": true,
+      "v": 580
+    },
+    {
+      "beat": "Beat 25",
+      "pass": true,
+      "v": 622
+    },
+    {
+      "beat": "Beat 26",
+      "pass": true,
+      "v": 648
+    },
+    {
+      "beat": "Inside were",
+      "pass": true,
+      "v": 654
+    },
+    {
+      "beat": "Beat 27",
+      "pass": true,
+      "v": 669
+    },
+    {
+      "beat": "Beat 28",
+      "pass": true,
+      "v": 693
+    },
+    {
+      "beat": "Beat 29",
+      "pass": true,
+      "v": 713
+    },
+    {
+      "beat": "the man pulled",
+      "pass": true,
+      "v": 725
+    },
+    {
+      "beat": "Beat 30",
+      "pass": true,
+      "v": 733
+    },
+    {
+      "beat": "Beat 31",
+      "pass": true,
+      "v": 754
+    },
+    {
+      "beat": "Beat 32",
+      "pass": true,
+      "v": 776
+    },
+    {
+      "beat": "Beat 33",
+      "pass": true,
+      "v": 801
+    },
+    {
+      "beat": "Beat 34",
+      "pass": true,
+      "v": 822
+    },
+    {
+      "beat": "Beat 35",
+      "pass": true,
+      "v": 846
+    },
+    {
+      "beat": "Another seller",
+      "pass": true,
+      "v": 856
+    },
+    {
+      "beat": "the money in both hands",
+      "pass": true,
+      "v": 859
+    },
+    {
+      "beat": "Beat 36",
+      "pass": true,
+      "v": 871
+    },
+    {
+      "beat": "Beat 37",
+      "pass": true,
+      "v": 892
+    },
+    {
+      "beat": "Beat 38",
+      "pass": true,
+      "v": 913
+    },
+    {
+      "beat": "Beat 39",
+      "pass": true,
+      "v": 938
+    },
+    {
+      "beat": "Beat 40",
+      "pass": true,
+      "v": 972
+    }
+  ],
+  "phoneLandscape": [
+    {
+      "beat": "Beat 1",
+      "pass": true,
+      "v": 1
+    },
+    {
+      "beat": "Behind their stalls",
+      "pass": true,
+      "v": 22
+    },
+    {
+      "beat": "Beat 2",
+      "pass": true,
+      "v": 42
+    },
+    {
+      "beat": "Beat 3",
+      "pass": true,
+      "v": 71
+    },
+    {
+      "beat": "Beat 4",
+      "pass": true,
+      "v": 94
+    },
+    {
+      "beat": "Beat 5",
+      "pass": true,
+      "v": 119
+    },
+    {
+      "beat": "The man slipped",
+      "pass": true,
+      "v": 126
+    },
+    {
+      "beat": "Nobody dared",
+      "pass": true,
+      "v": 136
+    },
+    {
+      "beat": "Beat 6",
+      "pass": true,
+      "v": 144
+    },
+    {
+      "beat": "Then the thug",
+      "pass": true,
+      "v": 158
+    },
+    {
+      "beat": "Beat 7",
+      "pass": true,
+      "v": 166
+    },
+    {
+      "beat": "Beat 8",
+      "pass": true,
+      "v": 192
+    },
+    {
+      "beat": "Beat 9",
+      "pass": true,
+      "v": 214
+    },
+    {
+      "beat": "People feared",
+      "pass": true,
+      "v": 224
+    },
+    {
+      "beat": "Beat 10",
+      "pass": true,
+      "v": 236
+    },
+    {
+      "beat": "The elderly",
+      "pass": true,
+      "v": 249
+    },
+    {
+      "beat": "Beat 11",
+      "pass": true,
+      "v": 268
+    },
+    {
+      "beat": "Beat 12",
+      "pass": true,
+      "v": 285
+    },
+    {
+      "beat": "he noticed",
+      "pass": true,
+      "v": 297
+    },
+    {
+      "beat": "Beat 13",
+      "pass": true,
+      "v": 307
+    },
+    {
+      "beat": "Before the organizers",
+      "pass": true,
+      "v": 320
+    },
+    {
+      "beat": "Beat 14",
+      "pass": true,
+      "v": 334
+    },
+    {
+      "beat": "Beat 15",
+      "pass": true,
+      "v": 355
+    },
+    {
+      "beat": "Beat 16",
+      "pass": true,
+      "v": 377
+    },
+    {
+      "beat": "Beat 17",
+      "pass": true,
+      "v": 410
+    },
+    {
+      "beat": "Around the stall",
+      "pass": true,
+      "v": 436
+    },
+    {
+      "beat": "Beat 18",
+      "pass": true,
+      "v": 445
+    },
+    {
+      "beat": "Beat 19",
+      "pass": true,
+      "v": 467
+    },
+    {
+      "beat": "Beat 20",
+      "pass": true,
+      "v": 489
+    },
+    {
+      "beat": "Beat 21",
+      "pass": true,
+      "v": 512
+    },
+    {
+      "beat": "Beat 22",
+      "pass": true,
+      "v": 536
+    },
+    {
+      "beat": "Beat 23",
+      "pass": true,
+      "v": 559
+    },
+    {
+      "beat": "Around them",
+      "pass": true,
+      "v": 565
+    },
+    {
+      "beat": "Beat 24",
+      "pass": true,
+      "v": 580
+    },
+    {
+      "beat": "Beat 25",
+      "pass": true,
+      "v": 622
+    },
+    {
+      "beat": "Beat 26",
+      "pass": true,
+      "v": 648
+    },
+    {
+      "beat": "Inside were",
+      "pass": true,
+      "v": 654
+    },
+    {
+      "beat": "Beat 27",
+      "pass": true,
+      "v": 669
+    },
+    {
+      "beat": "Beat 28",
+      "pass": true,
+      "v": 693
+    },
+    {
+      "beat": "Beat 29",
+      "pass": true,
+      "v": 713
+    },
+    {
+      "beat": "the man pulled",
+      "pass": true,
+      "v": 725
+    },
+    {
+      "beat": "Beat 30",
+      "pass": true,
+      "v": 733
+    },
+    {
+      "beat": "Beat 31",
+      "pass": true,
+      "v": 754
+    },
+    {
+      "beat": "Beat 32",
+      "pass": true,
+      "v": 776
+    },
+    {
+      "beat": "Beat 33",
+      "pass": true,
+      "v": 801
+    },
+    {
+      "beat": "Beat 34",
+      "pass": true,
+      "v": 822
+    },
+    {
+      "beat": "Beat 35",
+      "pass": true,
+      "v": 846
+    },
+    {
+      "beat": "Another seller",
+      "pass": true,
+      "v": 856
+    },
+    {
+      "beat": "the money in both hands",
+      "pass": true,
+      "v": 859
+    },
+    {
+      "beat": "Beat 36",
+      "pass": true,
+      "v": 871
+    },
+    {
+      "beat": "Beat 37",
+      "pass": true,
+      "v": 892
+    },
+    {
+      "beat": "Beat 38",
+      "pass": true,
+      "v": 913
+    },
+    {
+      "beat": "Beat 39",
+      "pass": true,
+      "v": 938
+    },
+    {
+      "beat": "Beat 40",
+      "pass": true,
+      "v": 972
+    }
+  ],
+  "checks": 162,
+  "manualCoverage": [
+    "First pass hides captions",
+    "Actual playback and persistent word highlight",
+    "Pause, current-line replay and restart",
+    "Unearned favor, risk and fourfold repayment notes",
+    "Fullscreen upper-left logo with no duplicate",
+    "Eight-page silent classroom navigation; all images loaded; no audio element"
+  ]
+}

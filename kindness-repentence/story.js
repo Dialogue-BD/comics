@@ -1,0 +1,1971 @@
+const KINDNESS_STORY = {
+  "id": "kindness-repentance",
+  "title": "Kindness & Repentance",
+  "titleBn": "দয়া ও অনুতাপ",
+  "kicker": "A Bengali retelling of Zacchaeus · B2 English",
+  "level": "B2",
+  "version": "20261007-kindness-1",
+  "audio": "audio/kindness-story.mp3",
+  "tts": {
+    "model": "Gemini 2.5 Pro Preview TTS",
+    "voice": "Gacrux",
+    "direction": "One mature male storyteller narrating a fictional bazaar story for B2 English learners. Speak warm, clear neutral General American English at about 150 words per minute, with quiet tension, gentle surprise and restrained emotion. Subtle quoted dialogue in the same narrator voice. Pronounce the Bengali loanwords exactly as a native Bangladeshi Bengali speaker: waz mahfil (ওয়াজ মাহফিল), mahfil (মাহফিল), mastan (মাস্তান), hujur (হুজুর), Dhaka (ঢাকা). Keep the surrounding English General American. Read only the exact narration below, with no additions, spoken directions, music or sound effects."
+  },
+  "cast": {
+    "N": {
+      "role": "storyteller; performs all quoted dialogue",
+      "voice": "Gacrux",
+      "accent": "neutral General American English"
+    },
+    "man": {
+      "role": "local extortionist who chooses to make restitution",
+      "appearance": "stocky middle-aged man, short black hair and beard, beige panjabi and dark brown waistcoat"
+    },
+    "preacher": {
+      "role": "elderly invited hujur from Dhaka",
+      "appearance": "white beard, white turban and panjabi, cream shawl"
+    },
+    "vendors": {
+      "role": "poor vegetable sellers harmed by extortion",
+      "appearance": "retain the original older male vendors and woman in floral pink covering"
+    },
+    "organizers": {
+      "role": "entourage concerned about the preacher’s reputation and the man’s political ties",
+      "appearance": "retain original men in blue, cream, brown and yellow"
+    }
+  },
+  "frames": [
+    {
+      "src": "assets/page-1.webp",
+      "alt": "Extortion in a bazaar beside preparations for a religious gathering."
+    },
+    {
+      "src": "assets/page-2.webp",
+      "alt": "Customers leave a feared man sitting alone at a tea stall."
+    },
+    {
+      "src": "assets/page-3.webp",
+      "alt": "An elderly preacher arrives and notices the lonely man."
+    },
+    {
+      "src": "assets/page-4.webp",
+      "alt": "His entourage objects, but he approaches the tea stall."
+    },
+    {
+      "src": "assets/page-5.webp",
+      "alt": "The preacher greets the man warmly and shares tea."
+    },
+    {
+      "src": "assets/page-6.webp",
+      "alt": "Kindness moves the man to tears and a decision to change."
+    },
+    {
+      "src": "assets/page-7.webp",
+      "alt": "He returns to an older vendor and offers restitution."
+    },
+    {
+      "src": "assets/page-8.webp",
+      "alt": "He repays every seller four times the money he took."
+    }
+  ],
+  "portraitPages": [
+    {
+      "src": "assets/page-1.webp",
+      "alt": "Extortion in a bazaar beside preparations for a religious gathering."
+    },
+    {
+      "src": "assets/page-2.webp",
+      "alt": "Customers leave a feared man sitting alone at a tea stall."
+    },
+    {
+      "src": "assets/page-3.webp",
+      "alt": "An elderly preacher arrives and notices the lonely man."
+    },
+    {
+      "src": "assets/page-4.webp",
+      "alt": "His entourage objects, but he approaches the tea stall."
+    },
+    {
+      "src": "assets/page-5.webp",
+      "alt": "The preacher greets the man warmly and shares tea."
+    },
+    {
+      "src": "assets/page-6.webp",
+      "alt": "Kindness moves the man to tears and a decision to change."
+    },
+    {
+      "src": "assets/page-7.webp",
+      "alt": "He returns to an older vendor and offers restitution."
+    },
+    {
+      "src": "assets/page-8.webp",
+      "alt": "He repays every seller four times the money he took."
+    }
+  ],
+  "lines": [
+    {
+      "frame": 1,
+      "panel": 1,
+      "speaker": "N",
+      "text": "As evening fell over a bazaar in Bangladesh, vegetable sellers were finishing another long day. Behind their stalls, workers were preparing the stage for a waz mahfil, a large religious gathering."
+    },
+    {
+      "frame": 1,
+      "panel": 2,
+      "speaker": "N",
+      "text": "A stocky man in a dark waistcoat moved through the market. He was a local mastan, a thug whose political connections made him feel untouchable."
+    },
+    {
+      "frame": 1,
+      "panel": 3,
+      "speaker": "N",
+      "text": "He stopped beside an older vendor and held out his hand. The demand was familiar. Pay up, or there would be trouble."
+    },
+    {
+      "frame": 1,
+      "panel": 4,
+      "speaker": "N",
+      "text": "The vendor handed over the money. It wasn't a payment for anything. It was extortion, and it came out of the little he had earned that day."
+    },
+    {
+      "frame": 1,
+      "panel": 5,
+      "speaker": "N",
+      "text": "Other sellers watched in silence. The man slipped the notes into his pocket and walked on. Nobody dared to challenge him."
+    },
+    {
+      "frame": 2,
+      "panel": 6,
+      "speaker": "N",
+      "text": "At a nearby tea stall, customers were talking over glasses of hot tea. Then the thug arrived and sat down."
+    },
+    {
+      "frame": 2,
+      "panel": 7,
+      "speaker": "N",
+      "text": "The conversation faded. One customer glanced at another. People shifted along the benches, leaving an empty space around him."
+    },
+    {
+      "frame": 2,
+      "panel": 8,
+      "speaker": "N",
+      "text": "The tea seller brought his drink and quickly stepped away. The man had money in his pocket, but no one wanted his company."
+    },
+    {
+      "frame": 2,
+      "panel": 9,
+      "speaker": "N",
+      "text": "He sat alone while the bazaar carried on around him. People feared him. That didn't mean they respected him."
+    },
+    {
+      "frame": 3,
+      "panel": 10,
+      "speaker": "N",
+      "text": "Meanwhile, a respected Islamic preacher had arrived for the mahfil. The elderly hujur had flown in from Dhaka, and the organizers were eager to escort him to the stage."
+    },
+    {
+      "frame": 3,
+      "panel": 11,
+      "speaker": "N",
+      "text": "His entourage cleared a path through the crowd. This way, Hujur. Everyone's waiting for you."
+    },
+    {
+      "frame": 3,
+      "panel": 12,
+      "speaker": "N",
+      "text": "But the preacher slowed down. Beyond the men surrounding him, he noticed someone sitting by himself at the tea stall."
+    },
+    {
+      "frame": 3,
+      "panel": 13,
+      "speaker": "N",
+      "text": "He looked at the lonely figure, then toward the empty place beside him. Before the organizers could guide him on, he turned toward the stall."
+    },
+    {
+      "frame": 4,
+      "panel": 14,
+      "speaker": "N",
+      "text": "One of them stepped forward. Hujur, please. You don't want to be seen with that man. He takes money from the poor."
+    },
+    {
+      "frame": 4,
+      "panel": 15,
+      "speaker": "N",
+      "text": "Another lowered his voice. He's got political connections. If you sit with him, people will think you're on his side."
+    },
+    {
+      "frame": 4,
+      "panel": 16,
+      "speaker": "N",
+      "text": "The preacher listened. He knew the risk was real. Sitting with this man could damage his reputation and leave him open to accusations of supporting the political figures behind him."
+    },
+    {
+      "frame": 4,
+      "panel": 17,
+      "speaker": "N",
+      "text": "Still, he stepped past the protesting organizers. He was willing to risk his good name to reach a man everyone else avoided. Around the stall, people turned to watch."
+    },
+    {
+      "frame": 4,
+      "panel": 18,
+      "speaker": "N",
+      "text": "The thug looked up. He was used to people getting out of his way. He hadn't expected this visitor to come toward him."
+    },
+    {
+      "frame": 5,
+      "panel": 19,
+      "speaker": "N",
+      "text": "May I join you? the preacher asked. The man stared at him, uncertain what to say. Then he got to his feet."
+    },
+    {
+      "frame": 5,
+      "panel": 20,
+      "speaker": "N",
+      "text": "The old man greeted him warmly and drew him into an embrace. The man who frightened the whole market stood speechless in his arms."
+    },
+    {
+      "frame": 5,
+      "panel": 21,
+      "speaker": "N",
+      "text": "Nearby customers exchanged astonished looks. Of all the people in the bazaar, the honored guest had chosen to sit with him."
+    },
+    {
+      "frame": 5,
+      "panel": 22,
+      "speaker": "N",
+      "text": "The preacher settled onto the bench beside him. A cup of tea for me too, please, he said to the seller."
+    },
+    {
+      "frame": 5,
+      "panel": 23,
+      "speaker": "N",
+      "text": "The seller brought another glass. Around them, the crowd grew larger, watching a meeting no one had expected."
+    },
+    {
+      "frame": 6,
+      "panel": 24,
+      "speaker": "N",
+      "text": "For a while, the two men sat together. The man hadn't apologized, repaid anyone, or promised to change. Yet the preacher had welcomed him with kindness he hadn't earned."
+    },
+    {
+      "frame": 6,
+      "panel": 25,
+      "speaker": "N",
+      "text": "The thug lowered his eyes. He had made people afraid of him for so long that he hardly knew how to respond to kindness."
+    },
+    {
+      "frame": 6,
+      "panel": 26,
+      "speaker": "N",
+      "text": "His hand moved toward his pocket. Inside were the notes he'd taken from people who could barely afford to lose them."
+    },
+    {
+      "frame": 6,
+      "panel": 27,
+      "speaker": "N",
+      "text": "A small tear ran down his cheek. This unexpected welcome had reached him in a way that threats and arguments never had."
+    },
+    {
+      "frame": 6,
+      "panel": 28,
+      "speaker": "N",
+      "text": "He looked at the preacher, then back toward the market. There was something he needed to put right, and it couldn't wait."
+    },
+    {
+      "frame": 7,
+      "panel": 29,
+      "speaker": "N",
+      "text": "He rose from the bench. The preacher stayed seated and watched as the man pulled the money from his pocket."
+    },
+    {
+      "frame": 7,
+      "panel": 30,
+      "speaker": "N",
+      "text": "Then he walked straight back to the vegetable stalls. The sellers saw him coming and braced themselves for another demand."
+    },
+    {
+      "frame": 7,
+      "panel": 31,
+      "speaker": "N",
+      "text": "He stopped in front of the older vendor. Earlier, he'd held out an empty hand. Now he held out a stack of notes."
+    },
+    {
+      "frame": 7,
+      "panel": 32,
+      "speaker": "N",
+      "text": "I took your money, he said. It was wrong. I'm returning four times what I took. The vendor looked from the money to his face."
+    },
+    {
+      "frame": 7,
+      "panel": 33,
+      "speaker": "N",
+      "text": "The man waited as the seller counted it. There was no threat this time, and no favor being asked in return."
+    },
+    {
+      "frame": 8,
+      "panel": 34,
+      "speaker": "N",
+      "text": "He went from stall to stall, finding each person he'd forced to pay. He returned four times the amount to every one of them."
+    },
+    {
+      "frame": 8,
+      "panel": 35,
+      "speaker": "N",
+      "text": "An older woman accepted the notes with a cautious smile. Another seller held the money in both hands, hardly believing what was happening."
+    },
+    {
+      "frame": 8,
+      "panel": 36,
+      "speaker": "N",
+      "text": "The man kept his eyes lowered. Paying them back wouldn't erase what he'd done, but he could begin to make amends."
+    },
+    {
+      "frame": 8,
+      "panel": 37,
+      "speaker": "N",
+      "text": "The preacher watched quietly. Around him, faces that had been tense with suspicion began to soften."
+    },
+    {
+      "frame": 8,
+      "panel": 38,
+      "speaker": "N",
+      "text": "At the last stall, the man placed the money in the seller's hands. People gathered close, and this time they weren't keeping their distance."
+    },
+    {
+      "frame": 8,
+      "panel": 39,
+      "speaker": "N",
+      "text": "Behind them, the mahfil lights shone over the bazaar. The kindness had come first, before any apology or promise. Now the man was choosing a different way to live."
+    },
+    {
+      "frame": 8,
+      "panel": 40,
+      "speaker": "N",
+      "text": "His repentance was taking shape in the money he returned and the harm he began to repair. It had started with a welcome he could never have earned."
+    }
+  ],
+  "camera": [
+    {
+      "p": 1,
+      "py": 0.11800000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.33899999999999997,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.33899999999999997,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.531,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.712,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.1815,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.4355,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.5995,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.842,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.168,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.406,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.6435,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.7390000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.116,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.3205,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.3205,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.584,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.8765000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.1005,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.28900000000000003,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.465,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.6195,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.8424999999999999,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.11,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.328,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.529,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.706,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.895,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.1825,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.4525,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.6175,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.7745,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.9265,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.1335,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.23700000000000002,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.575,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.575,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.8375,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.8375,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.8375,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    }
+  ],
+  "cameraBeats": [
+    {
+      "line": 0,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "label": "Beat 1",
+      "portrait": [
+        0.008,
+        0.004,
+        0.984,
+        0.228
+      ],
+      "landscape": [
+        0.008,
+        0.004,
+        0.984,
+        0.228
+      ]
+    },
+    {
+      "line": 0,
+      "word": 15,
+      "page": 1,
+      "frame": 1,
+      "label": "Behind their stalls",
+      "portrait": [
+        0.008,
+        0.004,
+        0.984,
+        0.228
+      ],
+      "landscape": [
+        0.008,
+        0.004,
+        0.984,
+        0.228
+      ]
+    },
+    {
+      "line": 1,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "label": "Beat 2",
+      "portrait": [
+        0.008,
+        0.235,
+        0.984,
+        0.208
+      ],
+      "landscape": [
+        0.008,
+        0.235,
+        0.984,
+        0.208
+      ]
+    },
+    {
+      "line": 2,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "label": "Beat 3",
+      "portrait": [
+        0.008,
+        0.235,
+        0.984,
+        0.208
+      ],
+      "landscape": [
+        0.008,
+        0.235,
+        0.984,
+        0.208
+      ]
+    },
+    {
+      "line": 3,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "label": "Beat 4",
+      "portrait": [
+        0.008,
+        0.446,
+        0.49,
+        0.17
+      ],
+      "landscape": [
+        0.008,
+        0.446,
+        0.49,
+        0.17
+      ]
+    },
+    {
+      "line": 4,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "label": "Beat 5",
+      "portrait": [
+        0.502,
+        0.446,
+        0.49,
+        0.17
+      ],
+      "landscape": [
+        0.502,
+        0.446,
+        0.49,
+        0.17
+      ]
+    },
+    {
+      "line": 4,
+      "word": 5,
+      "page": 1,
+      "frame": 1,
+      "label": "The man slipped",
+      "portrait": [
+        0.008,
+        0.619,
+        0.984,
+        0.186
+      ],
+      "landscape": [
+        0.008,
+        0.619,
+        0.984,
+        0.186
+      ]
+    },
+    {
+      "line": 4,
+      "word": 16,
+      "page": 1,
+      "frame": 1,
+      "label": "Nobody dared",
+      "portrait": [
+        0.008,
+        0.808,
+        0.984,
+        0.187
+      ],
+      "landscape": [
+        0.008,
+        0.808,
+        0.984,
+        0.187
+      ]
+    },
+    {
+      "line": 5,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "label": "Beat 6",
+      "portrait": [
+        0.008,
+        0.004,
+        0.984,
+        0.183
+      ],
+      "landscape": [
+        0.008,
+        0.004,
+        0.984,
+        0.183
+      ]
+    },
+    {
+      "line": 5,
+      "word": 13,
+      "page": 2,
+      "frame": 2,
+      "label": "Then the thug",
+      "portrait": [
+        0.008,
+        0.19,
+        0.984,
+        0.169
+      ],
+      "landscape": [
+        0.008,
+        0.19,
+        0.984,
+        0.169
+      ]
+    },
+    {
+      "line": 6,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "label": "Beat 7",
+      "portrait": [
+        0.008,
+        0.362,
+        0.984,
+        0.147
+      ],
+      "landscape": [
+        0.008,
+        0.362,
+        0.984,
+        0.147
+      ]
+    },
+    {
+      "line": 7,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "label": "Beat 8",
+      "portrait": [
+        0.008,
+        0.513,
+        0.984,
+        0.173
+      ],
+      "landscape": [
+        0.008,
+        0.513,
+        0.984,
+        0.173
+      ]
+    },
+    {
+      "line": 8,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "label": "Beat 9",
+      "portrait": [
+        0.008,
+        0.689,
+        0.984,
+        0.138
+      ],
+      "landscape": [
+        0.008,
+        0.689,
+        0.984,
+        0.138
+      ]
+    },
+    {
+      "line": 8,
+      "word": 10,
+      "page": 2,
+      "frame": 2,
+      "label": "People feared",
+      "portrait": [
+        0.008,
+        0.831,
+        0.984,
+        0.164
+      ],
+      "landscape": [
+        0.008,
+        0.831,
+        0.984,
+        0.164
+      ]
+    },
+    {
+      "line": 9,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "label": "Beat 10",
+      "portrait": [
+        0.008,
+        0.004,
+        0.984,
+        0.168
+      ],
+      "landscape": [
+        0.008,
+        0.004,
+        0.984,
+        0.168
+      ]
+    },
+    {
+      "line": 9,
+      "word": 10,
+      "page": 3,
+      "frame": 3,
+      "label": "The elderly",
+      "portrait": [
+        0.008,
+        0.175,
+        0.984,
+        0.157
+      ],
+      "landscape": [
+        0.008,
+        0.175,
+        0.984,
+        0.157
+      ]
+    },
+    {
+      "line": 10,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "label": "Beat 11",
+      "portrait": [
+        0.008,
+        0.335,
+        0.984,
+        0.142
+      ],
+      "landscape": [
+        0.008,
+        0.335,
+        0.984,
+        0.142
+      ]
+    },
+    {
+      "line": 11,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "label": "Beat 12",
+      "portrait": [
+        0.008,
+        0.48,
+        0.984,
+        0.19
+      ],
+      "landscape": [
+        0.008,
+        0.48,
+        0.984,
+        0.19
+      ]
+    },
+    {
+      "line": 11,
+      "word": 10,
+      "page": 3,
+      "frame": 3,
+      "label": "he noticed",
+      "portrait": [
+        0.008,
+        0.671,
+        0.984,
+        0.136
+      ],
+      "landscape": [
+        0.008,
+        0.671,
+        0.984,
+        0.136
+      ]
+    },
+    {
+      "line": 12,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "label": "Beat 13",
+      "portrait": [
+        0.008,
+        0.671,
+        0.984,
+        0.136
+      ],
+      "landscape": [
+        0.008,
+        0.671,
+        0.984,
+        0.136
+      ]
+    },
+    {
+      "line": 12,
+      "word": 13,
+      "page": 3,
+      "frame": 3,
+      "label": "Before the organizers",
+      "portrait": [
+        0.008,
+        0.812,
+        0.984,
+        0.183
+      ],
+      "landscape": [
+        0.008,
+        0.812,
+        0.984,
+        0.183
+      ]
+    },
+    {
+      "line": 13,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "label": "Beat 14",
+      "portrait": [
+        0.008,
+        0.004,
+        0.984,
+        0.224
+      ],
+      "landscape": [
+        0.008,
+        0.004,
+        0.984,
+        0.224
+      ]
+    },
+    {
+      "line": 14,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "label": "Beat 15",
+      "portrait": [
+        0.504,
+        0.231,
+        0.488,
+        0.179
+      ],
+      "landscape": [
+        0.504,
+        0.231,
+        0.488,
+        0.179
+      ]
+    },
+    {
+      "line": 15,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "label": "Beat 16",
+      "portrait": [
+        0.008,
+        0.231,
+        0.491,
+        0.179
+      ],
+      "landscape": [
+        0.008,
+        0.231,
+        0.491,
+        0.179
+      ]
+    },
+    {
+      "line": 16,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "label": "Beat 17",
+      "portrait": [
+        0.008,
+        0.414,
+        0.984,
+        0.19
+      ],
+      "landscape": [
+        0.008,
+        0.414,
+        0.984,
+        0.19
+      ]
+    },
+    {
+      "line": 16,
+      "word": 22,
+      "page": 4,
+      "frame": 4,
+      "label": "Around the stall",
+      "portrait": [
+        0.008,
+        0.608,
+        0.984,
+        0.146
+      ],
+      "landscape": [
+        0.008,
+        0.608,
+        0.984,
+        0.146
+      ]
+    },
+    {
+      "line": 17,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "label": "Beat 18",
+      "portrait": [
+        0.008,
+        0.758,
+        0.984,
+        0.237
+      ],
+      "landscape": [
+        0.008,
+        0.758,
+        0.984,
+        0.237
+      ]
+    },
+    {
+      "line": 18,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "label": "Beat 19",
+      "portrait": [
+        0.008,
+        0.004,
+        0.984,
+        0.193
+      ],
+      "landscape": [
+        0.008,
+        0.004,
+        0.984,
+        0.193
+      ]
+    },
+    {
+      "line": 19,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "label": "Beat 20",
+      "portrait": [
+        0.008,
+        0.2,
+        0.984,
+        0.178
+      ],
+      "landscape": [
+        0.008,
+        0.2,
+        0.984,
+        0.178
+      ]
+    },
+    {
+      "line": 20,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "label": "Beat 21",
+      "portrait": [
+        0.008,
+        0.381,
+        0.984,
+        0.168
+      ],
+      "landscape": [
+        0.008,
+        0.381,
+        0.984,
+        0.168
+      ]
+    },
+    {
+      "line": 21,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "label": "Beat 22",
+      "portrait": [
+        0.008,
+        0.552,
+        0.984,
+        0.135
+      ],
+      "landscape": [
+        0.008,
+        0.552,
+        0.984,
+        0.135
+      ]
+    },
+    {
+      "line": 22,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "label": "Beat 23",
+      "portrait": [
+        0.502,
+        0.69,
+        0.49,
+        0.133
+      ],
+      "landscape": [
+        0.502,
+        0.69,
+        0.49,
+        0.133
+      ]
+    },
+    {
+      "line": 22,
+      "word": 5,
+      "page": 5,
+      "frame": 5,
+      "label": "Around them",
+      "portrait": [
+        0.008,
+        0.827,
+        0.984,
+        0.168
+      ],
+      "landscape": [
+        0.008,
+        0.827,
+        0.984,
+        0.168
+      ]
+    },
+    {
+      "line": 23,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "label": "Beat 24",
+      "portrait": [
+        0.008,
+        0.004,
+        0.984,
+        0.212
+      ],
+      "landscape": [
+        0.008,
+        0.004,
+        0.984,
+        0.212
+      ]
+    },
+    {
+      "line": 24,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "label": "Beat 25",
+      "portrait": [
+        0.008,
+        0.219,
+        0.984,
+        0.218
+      ],
+      "landscape": [
+        0.008,
+        0.219,
+        0.984,
+        0.218
+      ]
+    },
+    {
+      "line": 25,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "label": "Beat 26",
+      "portrait": [
+        0.008,
+        0.441,
+        0.49,
+        0.176
+      ],
+      "landscape": [
+        0.008,
+        0.441,
+        0.49,
+        0.176
+      ]
+    },
+    {
+      "line": 25,
+      "word": 6,
+      "page": 6,
+      "frame": 6,
+      "label": "Inside were",
+      "portrait": [
+        0.502,
+        0.441,
+        0.49,
+        0.176
+      ],
+      "landscape": [
+        0.502,
+        0.441,
+        0.49,
+        0.176
+      ]
+    },
+    {
+      "line": 26,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "label": "Beat 27",
+      "portrait": [
+        0.008,
+        0.621,
+        0.984,
+        0.17
+      ],
+      "landscape": [
+        0.008,
+        0.621,
+        0.984,
+        0.17
+      ]
+    },
+    {
+      "line": 27,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "label": "Beat 28",
+      "portrait": [
+        0.008,
+        0.795,
+        0.984,
+        0.2
+      ],
+      "landscape": [
+        0.008,
+        0.795,
+        0.984,
+        0.2
+      ]
+    },
+    {
+      "line": 28,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "label": "Beat 29",
+      "portrait": [
+        0.008,
+        0.004,
+        0.984,
+        0.18
+      ],
+      "landscape": [
+        0.008,
+        0.004,
+        0.984,
+        0.18
+      ]
+    },
+    {
+      "line": 28,
+      "word": 12,
+      "page": 7,
+      "frame": 7,
+      "label": "the man pulled",
+      "portrait": [
+        0.008,
+        0.188,
+        0.984,
+        0.173
+      ],
+      "landscape": [
+        0.008,
+        0.188,
+        0.984,
+        0.173
+      ]
+    },
+    {
+      "line": 29,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "label": "Beat 30",
+      "portrait": [
+        0.008,
+        0.365,
+        0.984,
+        0.175
+      ],
+      "landscape": [
+        0.008,
+        0.365,
+        0.984,
+        0.175
+      ]
+    },
+    {
+      "line": 30,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "label": "Beat 31",
+      "portrait": [
+        0.008,
+        0.543,
+        0.984,
+        0.149
+      ],
+      "landscape": [
+        0.008,
+        0.543,
+        0.984,
+        0.149
+      ]
+    },
+    {
+      "line": 31,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "label": "Beat 32",
+      "portrait": [
+        0.008,
+        0.695,
+        0.984,
+        0.159
+      ],
+      "landscape": [
+        0.008,
+        0.695,
+        0.984,
+        0.159
+      ]
+    },
+    {
+      "line": 32,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "label": "Beat 33",
+      "portrait": [
+        0.008,
+        0.858,
+        0.984,
+        0.137
+      ],
+      "landscape": [
+        0.008,
+        0.858,
+        0.984,
+        0.137
+      ]
+    },
+    {
+      "line": 33,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 34",
+      "portrait": [
+        0.008,
+        0.004,
+        0.984,
+        0.259
+      ],
+      "landscape": [
+        0.008,
+        0.004,
+        0.984,
+        0.259
+      ]
+    },
+    {
+      "line": 34,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 35",
+      "portrait": [
+        0.008,
+        0.004,
+        0.984,
+        0.259
+      ],
+      "landscape": [
+        0.008,
+        0.004,
+        0.984,
+        0.259
+      ]
+    },
+    {
+      "line": 34,
+      "word": 10,
+      "page": 8,
+      "frame": 8,
+      "label": "Another seller",
+      "portrait": [
+        0.008,
+        0.267,
+        0.499,
+        0.203
+      ],
+      "landscape": [
+        0.008,
+        0.267,
+        0.499,
+        0.203
+      ]
+    },
+    {
+      "line": 34,
+      "word": 13,
+      "page": 8,
+      "frame": 8,
+      "label": "the money in both hands",
+      "portrait": [
+        0.512,
+        0.267,
+        0.48,
+        0.203
+      ],
+      "landscape": [
+        0.512,
+        0.267,
+        0.48,
+        0.203
+      ]
+    },
+    {
+      "line": 35,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 36",
+      "portrait": [
+        0.008,
+        0.474,
+        0.49,
+        0.202
+      ],
+      "landscape": [
+        0.008,
+        0.474,
+        0.49,
+        0.202
+      ]
+    },
+    {
+      "line": 36,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 37",
+      "portrait": [
+        0.502,
+        0.474,
+        0.49,
+        0.202
+      ],
+      "landscape": [
+        0.502,
+        0.474,
+        0.49,
+        0.202
+      ]
+    },
+    {
+      "line": 37,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 38",
+      "portrait": [
+        0.008,
+        0.68,
+        0.984,
+        0.315
+      ],
+      "landscape": [
+        0.008,
+        0.68,
+        0.984,
+        0.315
+      ]
+    },
+    {
+      "line": 38,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 39",
+      "portrait": [
+        0.008,
+        0.68,
+        0.984,
+        0.315
+      ],
+      "landscape": [
+        0.008,
+        0.68,
+        0.984,
+        0.315
+      ]
+    },
+    {
+      "line": 39,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 40",
+      "portrait": [
+        0.008,
+        0.68,
+        0.984,
+        0.315
+      ],
+      "landscape": [
+        0.008,
+        0.68,
+        0.984,
+        0.315
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "line": 0,
+      "phrase": "As evening fell",
+      "kind": "phrase",
+      "meaning": "as it gradually became evening",
+      "bn": "সন্ধ্যা নেমে আসার সময়"
+    },
+    {
+      "line": 0,
+      "phrase": "waz mahfil",
+      "kind": "culture",
+      "meaning": "a public gathering for Islamic preaching; the background event in this Bengali retelling",
+      "bn": "ইসলামি আলোচনা ও উপদেশের জনসমাবেশ; এই বাংলা রূপান্তরের পটভূমি"
+    },
+    {
+      "line": 1,
+      "phrase": "mastan",
+      "kind": "culture",
+      "meaning": "a local term for a thug or intimidating strongman; here, someone who forces vendors to pay",
+      "bn": "স্থানীয় গুন্ডা বা ভয় দেখিয়ে প্রভাব খাটানো ব্যক্তি; এখানে বিক্রেতাদের কাছ থেকে জোর করে টাকা নেয়"
+    },
+    {
+      "line": 1,
+      "phrase": "political connections",
+      "kind": "phrase",
+      "meaning": "relationships with influential political people that can provide power or protection",
+      "bn": "প্রভাবশালী রাজনৈতিক ব্যক্তিদের সঙ্গে সম্পর্ক"
+    },
+    {
+      "line": 1,
+      "phrase": "untouchable",
+      "kind": "word",
+      "meaning": "so powerful or protected that he thinks nobody can punish him",
+      "bn": "এত প্রভাবশালী বা সুরক্ষিত যে সে মনে করে কেউ তার শাস্তি দিতে পারবে না"
+    },
+    {
+      "line": 2,
+      "phrase": "Pay up",
+      "kind": "phrasal verb",
+      "meaning": "give the money demanded; here it is a threatening command",
+      "bn": "দাবি করা টাকা দাও; এখানে হুমকির সুরে বলা"
+    },
+    {
+      "line": 3,
+      "phrase": "handed over",
+      "kind": "phrasal verb",
+      "meaning": "gave something to another person; here, under pressure",
+      "bn": "অন্যের হাতে দিয়ে দিলেন; এখানে চাপের মুখে"
+    },
+    {
+      "line": 3,
+      "phrase": "extortion",
+      "kind": "word",
+      "meaning": "forcing someone to give money by threatening them",
+      "bn": "ভয় দেখিয়ে জোর করে টাকা আদায়; চাঁদাবাজি"
+    },
+    {
+      "line": 3,
+      "phrase": "came out of",
+      "kind": "phrasal verb",
+      "meaning": "was taken from a limited amount of money",
+      "bn": "সীমিত আয় থেকে কেটে নেওয়া হয়েছিল"
+    },
+    {
+      "line": 4,
+      "phrase": "Nobody dared to",
+      "kind": "grammar",
+      "meaning": "no one was brave enough to do it; dare is followed here by to and a verb",
+      "bn": "কেউ সাহস করল না; এখানে dare-এর পরে to ও ক্রিয়া"
+    },
+    {
+      "line": 6,
+      "phrase": "leaving an empty space",
+      "kind": "grammar",
+      "meaning": "a participle phrase describing the result of people moving away",
+      "bn": "লোকজন সরে যাওয়ার ফল বোঝানো participle phrase"
+    },
+    {
+      "line": 8,
+      "phrase": "carried on",
+      "kind": "phrasal verb",
+      "meaning": "continued as usual",
+      "bn": "স্বাভাবিকভাবে চলতে থাকল"
+    },
+    {
+      "line": 9,
+      "phrase": "hujur",
+      "kind": "culture",
+      "meaning": "a respectful local address for a Muslim religious teacher or preacher; this character is an elderly invited speaker",
+      "bn": "মুসলিম ধর্মীয় শিক্ষক বা বক্তাকে সম্মান করে সম্বোধন; এখানে প্রবীণ আমন্ত্রিত বক্তা"
+    },
+    {
+      "line": 9,
+      "phrase": "escort him",
+      "kind": "word",
+      "meaning": "accompany him and guide him to a place",
+      "bn": "সঙ্গে নিয়ে পথ দেখিয়ে পৌঁছে দেওয়া"
+    },
+    {
+      "line": 10,
+      "phrase": "entourage",
+      "kind": "word",
+      "meaning": "the group of people accompanying an important person",
+      "bn": "গুরুত্বপূর্ণ ব্যক্তির সঙ্গে থাকা লোকজন"
+    },
+    {
+      "line": 10,
+      "phrase": "cleared a path",
+      "kind": "phrase",
+      "meaning": "made space so someone could move through a crowd",
+      "bn": "ভিড়ের মধ্যে চলার পথ করে দিল"
+    },
+    {
+      "line": 13,
+      "phrase": "be seen with that man",
+      "kind": "grammar",
+      "meaning": "be observed in his company; the passive emphasizes what others might think",
+      "bn": "ওই লোকের সঙ্গে দেখা যাওয়া; অন্যেরা কী ভাববে তা বোঝাতে passive"
+    },
+    {
+      "line": 14,
+      "phrase": "on his side",
+      "kind": "idiom",
+      "meaning": "supporting him or agreeing with his actions",
+      "bn": "তার পক্ষে বা তার কাজের সমর্থনে"
+    },
+    {
+      "line": 15,
+      "phrase": "leave him open to accusations",
+      "kind": "phrase",
+      "meaning": "make it possible for others to accuse or criticize him; the risk is public and political",
+      "bn": "অন্যদের অভিযোগ বা সমালোচনার সুযোগ করে দেওয়া; এখানে সামাজিক ও রাজনৈতিক ঝুঁকি"
+    },
+    {
+      "line": 16,
+      "phrase": "risk his good name",
+      "kind": "idiom",
+      "meaning": "accept the possibility of damage to his reputation; he knows his compassion could cost him public respect",
+      "bn": "সুনাম ক্ষুণ্ণ হওয়ার ঝুঁকি নেওয়া; দয়া দেখালে মানুষের সম্মান হারানোর আশঙ্কা তিনি বোঝেন"
+    },
+    {
+      "line": 16,
+      "phrase": "stepped past",
+      "kind": "phrase",
+      "meaning": "walked beyond someone despite their objections",
+      "bn": "আপত্তি সত্ত্বেও পাশ কাটিয়ে এগিয়ে গেলেন"
+    },
+    {
+      "line": 17,
+      "phrase": "was used to",
+      "kind": "grammar",
+      "meaning": "was accustomed to; use a noun or an -ing form after used to in this pattern",
+      "bn": "অভ্যস্ত ছিল; এই গঠনে used to-এর পরে noun বা -ing form"
+    },
+    {
+      "line": 18,
+      "phrase": "got to his feet",
+      "kind": "idiom",
+      "meaning": "stood up from sitting",
+      "bn": "বসা থেকে উঠে দাঁড়াল"
+    },
+    {
+      "line": 19,
+      "phrase": "speechless",
+      "kind": "word",
+      "meaning": "unable to speak because of a strong emotion or surprise",
+      "bn": "আবেগ বা বিস্ময়ে কথা বলতে অক্ষম"
+    },
+    {
+      "line": 23,
+      "phrase": "kindness he hadn't earned",
+      "kind": "meaning",
+      "meaning": "unmerited favor: kindness offered before he apologized or changed; his repentance is a response to that welcome",
+      "bn": "অপ্রাপ্য অনুগ্রহ: ক্ষমা চাওয়া বা বদলে যাওয়ার আগেই পাওয়া দয়া; অনুতাপ সেই দয়ার প্রতিক্রিয়া"
+    },
+    {
+      "line": 25,
+      "phrase": "could barely afford",
+      "kind": "phrase",
+      "meaning": "had so little money that the loss was very difficult to bear",
+      "bn": "টাকা এত কম ছিল যে এই ক্ষতি সামলানো খুব কঠিন"
+    },
+    {
+      "line": 26,
+      "phrase": "had reached him",
+      "kind": "metaphor",
+      "meaning": "had affected him deeply enough to change his feelings or thinking",
+      "bn": "তার মনে গভীরভাবে প্রভাব ফেলেছিল"
+    },
+    {
+      "line": 27,
+      "phrase": "put right",
+      "kind": "phrase",
+      "meaning": "correct something wrong or repair harm",
+      "bn": "ভুল সংশোধন বা ক্ষতির প্রতিকার করা"
+    },
+    {
+      "line": 29,
+      "phrase": "braced themselves",
+      "kind": "phrase",
+      "meaning": "prepared for something difficult or unpleasant",
+      "bn": "কঠিন বা অপ্রীতিকর কিছুর জন্য নিজেকে প্রস্তুত করলেন"
+    },
+    {
+      "line": 31,
+      "phrase": "four times what I took",
+      "kind": "grammar",
+      "meaning": "four times the original amount in total: if he took one hundred taka, he returns four hundred",
+      "bn": "নেওয়া টাকার মোট চার গুণ: একশ টাকা নিলে চারশ টাকা ফেরত দেয়"
+    },
+    {
+      "line": 32,
+      "phrase": "in return",
+      "kind": "phrase",
+      "meaning": "as repayment or in exchange for something",
+      "bn": "বিনিময়ে বা প্রতিদানে"
+    },
+    {
+      "line": 35,
+      "phrase": "wouldn't erase",
+      "kind": "metaphor",
+      "meaning": "would not make the past harm disappear",
+      "bn": "আগের ক্ষতি মুছে ফেলবে না"
+    },
+    {
+      "line": 35,
+      "phrase": "make amends",
+      "kind": "idiom",
+      "meaning": "take action to repair harm you caused; here, by repaying the victims",
+      "bn": "নিজের করা ক্ষতির প্রতিকার করতে বাস্তব পদক্ষেপ নেওয়া"
+    },
+    {
+      "line": 37,
+      "phrase": "keeping their distance",
+      "kind": "idiom",
+      "meaning": "staying away from someone physically or socially",
+      "bn": "শারীরিক বা সামাজিকভাবে দূরে থাকা"
+    },
+    {
+      "line": 38,
+      "phrase": "had come first",
+      "kind": "grammar",
+      "meaning": "past perfect highlights the order: kindness was offered before apology, repayment or change",
+      "bn": "past perfect দিয়ে ঘটনার ক্রম বোঝানো: ক্ষমা চাওয়া, টাকা ফেরত দেওয়া বা বদলে যাওয়ার আগেই দয়া দেখানো হয়েছিল"
+    },
+    {
+      "line": 39,
+      "phrase": "repentance was taking shape",
+      "kind": "phrase",
+      "meaning": "his change of heart was becoming visible through actions that repaired harm; he was responding to kindness, not earning it",
+      "bn": "মনের পরিবর্তন ক্ষতির প্রতিকার করার কাজে প্রকাশ পাচ্ছিল; সে দয়ার প্রতিক্রিয়া দিচ্ছিল, দয়া অর্জন করছিল না"
+    }
+  ],
+  "culturalNotes": [
+    "The user’s fictional modern Bengali retelling of Zacchaeus; not a quotation from scripture or a claim about a real preacher or political party.",
+    "The preacher offers dignity and compassion without endorsing extortion or political intimidation.",
+    "Central connection: unmerited kindness precedes apology or restitution; repentance and repair follow as the man’s response to freely offered favor.",
+    "Compassion is costly: the preacher knowingly risks his reputation and accusations of political alignment by offering a public welcome. Do not invent physical danger or a specific party.",
+    "Keep the harm to poor vendors visible; emotion alone is not restitution. Fourfold repayment totals four times the amount taken.",
+    "Preserve the pictured embrace before sitting for tea. Do not invent an airport or aircraft image; the flight is user-supplied backstory.",
+    "Retain Bangladeshi setting and local cultural terms while teaching neutral American English pronunciation.",
+    "Do not infer any person’s religion or political party solely from clothing."
+  ],
+  "continuity": [
+    "Retain all eight original pages unaltered.",
+    "Extortion, isolation, invited preacher, entourage objections, embrace and shared tea, tear, decision, fourfold restitution."
+  ],
+  "assets": {
+    "source": "kindness_repentence.pdf",
+    "audio": "audio/kindness-story.mp3",
+    "timings": "story-timings.js"
+  }
+};
+if(typeof module!=="undefined") module.exports={KINDNESS_STORY};

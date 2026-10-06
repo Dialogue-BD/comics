@@ -1,0 +1,415 @@
+{
+  "text": " The preacher settled onto the bench beside him. A cup of tea for me too, please, he said to the cellar. The thug lowered his eyes. He had made people afraid of him for so long that he heartily knew how to respond to kindness.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0.0,
+      "end": 3.12,
+      "text": " The preacher settled onto the bench beside him.",
+      "tokens": [
+        50364,
+        440,
+        42078,
+        14819,
+        3911,
+        264,
+        10638,
+        15726,
+        796,
+        13,
+        50544
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.2664784358097957,
+      "compression_ratio": 1.4240506329113924,
+      "no_speech_prob": 0.008043942041695118,
+      "words": [
+        {
+          "word": " The",
+          "start": 0.0,
+          "end": 0.34,
+          "probability": 0.8654419183731079
+        },
+        {
+          "word": " preacher",
+          "start": 0.34,
+          "end": 0.76,
+          "probability": 0.9925991296768188
+        },
+        {
+          "word": " settled",
+          "start": 0.76,
+          "end": 1.44,
+          "probability": 0.9547837972640991
+        },
+        {
+          "word": " onto",
+          "start": 1.44,
+          "end": 1.82,
+          "probability": 0.602367639541626
+        },
+        {
+          "word": " the",
+          "start": 1.82,
+          "end": 2.02,
+          "probability": 0.9978771209716797
+        },
+        {
+          "word": " bench",
+          "start": 2.02,
+          "end": 2.38,
+          "probability": 0.9982725381851196
+        },
+        {
+          "word": " beside",
+          "start": 2.38,
+          "end": 2.72,
+          "probability": 0.99178546667099
+        },
+        {
+          "word": " him.",
+          "start": 2.72,
+          "end": 3.12,
+          "probability": 0.9924322366714478
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 3.74,
+      "end": 7.6,
+      "text": " A cup of tea for me too, please, he said to the cellar.",
+      "tokens": [
+        50544,
+        316,
+        4414,
+        295,
+        5817,
+        337,
+        385,
+        886,
+        11,
+        1767,
+        11,
+        415,
+        848,
+        281,
+        264,
+        2815,
+        289,
+        13,
+        50784
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.2664784358097957,
+      "compression_ratio": 1.4240506329113924,
+      "no_speech_prob": 0.008043942041695118,
+      "words": [
+        {
+          "word": " A",
+          "start": 3.74,
+          "end": 4.0,
+          "probability": 0.10096368193626404
+        },
+        {
+          "word": " cup",
+          "start": 4.0,
+          "end": 4.22,
+          "probability": 0.9967825412750244
+        },
+        {
+          "word": " of",
+          "start": 4.22,
+          "end": 4.38,
+          "probability": 0.9972885847091675
+        },
+        {
+          "word": " tea",
+          "start": 4.38,
+          "end": 4.7,
+          "probability": 0.9959845542907715
+        },
+        {
+          "word": " for",
+          "start": 4.7,
+          "end": 4.98,
+          "probability": 0.9712836742401123
+        },
+        {
+          "word": " me",
+          "start": 4.98,
+          "end": 5.18,
+          "probability": 0.9788789749145508
+        },
+        {
+          "word": " too,",
+          "start": 5.18,
+          "end": 5.52,
+          "probability": 0.6149806380271912
+        },
+        {
+          "word": " please,",
+          "start": 5.66,
+          "end": 5.92,
+          "probability": 0.9986144304275513
+        },
+        {
+          "word": " he",
+          "start": 6.46,
+          "end": 6.62,
+          "probability": 0.9880363941192627
+        },
+        {
+          "word": " said",
+          "start": 6.62,
+          "end": 6.84,
+          "probability": 0.9994489550590515
+        },
+        {
+          "word": " to",
+          "start": 6.84,
+          "end": 7.04,
+          "probability": 0.9964063763618469
+        },
+        {
+          "word": " the",
+          "start": 7.04,
+          "end": 7.18,
+          "probability": 0.9987138509750366
+        },
+        {
+          "word": " cellar.",
+          "start": 7.18,
+          "end": 7.6,
+          "probability": 0.7414826154708862
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "seek": 0,
+      "start": 8.52,
+      "end": 10.16,
+      "text": " The thug lowered his eyes.",
+      "tokens": [
+        50784,
+        440,
+        258,
+        697,
+        28466,
+        702,
+        2575,
+        13,
+        50904
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.2664784358097957,
+      "compression_ratio": 1.4240506329113924,
+      "no_speech_prob": 0.008043942041695118,
+      "words": [
+        {
+          "word": " The",
+          "start": 8.52,
+          "end": 8.68,
+          "probability": 0.9880672693252563
+        },
+        {
+          "word": " thug",
+          "start": 8.68,
+          "end": 9.16,
+          "probability": 0.9799785017967224
+        },
+        {
+          "word": " lowered",
+          "start": 9.16,
+          "end": 9.52,
+          "probability": 0.9776046872138977
+        },
+        {
+          "word": " his",
+          "start": 9.52,
+          "end": 9.78,
+          "probability": 0.9984220266342163
+        },
+        {
+          "word": " eyes.",
+          "start": 9.78,
+          "end": 10.16,
+          "probability": 0.9985456466674805
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "seek": 0,
+      "start": 10.98,
+      "end": 13.8,
+      "text": " He had made people afraid of him for so long",
+      "tokens": [
+        50904,
+        634,
+        632,
+        1027,
+        561,
+        4638,
+        295,
+        796,
+        337,
+        370,
+        938,
+        51060
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.2664784358097957,
+      "compression_ratio": 1.4240506329113924,
+      "no_speech_prob": 0.008043942041695118,
+      "words": [
+        {
+          "word": " He",
+          "start": 10.98,
+          "end": 11.14,
+          "probability": 0.9975714087486267
+        },
+        {
+          "word": " had",
+          "start": 11.14,
+          "end": 11.28,
+          "probability": 0.991849422454834
+        },
+        {
+          "word": " made",
+          "start": 11.28,
+          "end": 11.54,
+          "probability": 0.9987002611160278
+        },
+        {
+          "word": " people",
+          "start": 11.54,
+          "end": 11.96,
+          "probability": 0.9982361793518066
+        },
+        {
+          "word": " afraid",
+          "start": 11.96,
+          "end": 12.34,
+          "probability": 0.9903507828712463
+        },
+        {
+          "word": " of",
+          "start": 12.34,
+          "end": 12.6,
+          "probability": 0.9985572695732117
+        },
+        {
+          "word": " him",
+          "start": 12.6,
+          "end": 12.78,
+          "probability": 0.9986686706542969
+        },
+        {
+          "word": " for",
+          "start": 12.78,
+          "end": 13.0,
+          "probability": 0.9960634112358093
+        },
+        {
+          "word": " so",
+          "start": 13.0,
+          "end": 13.34,
+          "probability": 0.9992712140083313
+        },
+        {
+          "word": " long",
+          "start": 13.34,
+          "end": 13.8,
+          "probability": 0.9994470477104187
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "seek": 0,
+      "start": 13.8,
+      "end": 16.74,
+      "text": " that he heartily knew how to respond to kindness.",
+      "tokens": [
+        51060,
+        300,
+        415,
+        1917,
+        953,
+        2586,
+        577,
+        281,
+        4196,
+        281,
+        18171,
+        13,
+        51224
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.2664784358097957,
+      "compression_ratio": 1.4240506329113924,
+      "no_speech_prob": 0.008043942041695118,
+      "words": [
+        {
+          "word": " that",
+          "start": 13.8,
+          "end": 14.22,
+          "probability": 0.9060344696044922
+        },
+        {
+          "word": " he",
+          "start": 14.22,
+          "end": 14.34,
+          "probability": 0.9981932044029236
+        },
+        {
+          "word": " heartily",
+          "start": 14.34,
+          "end": 14.78,
+          "probability": 0.7769996821880341
+        },
+        {
+          "word": " knew",
+          "start": 14.78,
+          "end": 15.04,
+          "probability": 0.9983108043670654
+        },
+        {
+          "word": " how",
+          "start": 15.04,
+          "end": 15.32,
+          "probability": 0.9979812502861023
+        },
+        {
+          "word": " to",
+          "start": 15.32,
+          "end": 15.48,
+          "probability": 0.999083399772644
+        },
+        {
+          "word": " respond",
+          "start": 15.48,
+          "end": 15.98,
+          "probability": 0.9964930415153503
+        },
+        {
+          "word": " to",
+          "start": 15.98,
+          "end": 16.28,
+          "probability": 0.9991058707237244
+        },
+        {
+          "word": " kindness.",
+          "start": 16.28,
+          "end": 16.74,
+          "probability": 0.9979782700538635
+        }
+      ]
+    }
+  ],
+  "language": "en"
+}

@@ -1,467 +1,107 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10221d">
+  <title>Kindness &amp; Repentance · A narrated wordless comic</title>
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <title>Kindness & Repentence</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <!-- Load PDF.js from cdnjs -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      background-color: #000000;
-      font-family: sans-serif;
-      touch-action: none; /* Disable default browser touch zoom/scroll */
-    }
-    #viewer-container {
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-    }
-    #pdf-container {
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform-origin: center top;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    canvas {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin-bottom: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-      background-color: #1a1a1a;
-    }
-    /* Loading overlay */
-    #loading {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #ffffff;
-      font-size: 18px;
-      z-index: 10000;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    /* Floating Fullscreen Button */
-    #fullscreen-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      z-index: 9999;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      transition: all 0.2s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-    #fullscreen-btn:active {
-      transform: scale(0.9);
-      background-color: rgba(0, 0, 0, 0.9);
-    }
-    #fullscreen-btn svg {
-      width: 24px;
-      height: 24px;
-      pointer-events: none;
-    }
-  </style>
   <link rel="stylesheet" href="../dialogue-brand.css">
+  <link rel="stylesheet" href="styles.css?v=20261007-kindness-1">
 </head>
 <body>
-  <div id="loading">Loading Story...</div>
-  <div id="viewer-container">
-    <div id="pdf-container"></div>
-  </div>
+  <a class="screen-brand" href="/" aria-label="Dialogue home">
+    <img src="../brand/dialogue-logo.png" alt="Dialogue">
+  </a>
+  <main class="app" id="app">
+    <header class="masthead">
+      <a class="brand" href="/" aria-label="Dialogue home"><img class="brand-logo" src="../brand/dialogue-logo.png" alt="Dialogue"></a>
+      <div class="title-block">
+        <p class="eyebrow" id="kicker"></p>
+        <h1><span id="title"></span> <span class="title-bn" id="title-bn" lang="bn"></span></h1>
+      </div>
+      <button class="ghost-btn" id="transcript-open" type="button" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v2H4zm0 6h16v2H4zm0 6h11v2H4z"/></svg>
+        Transcript
+      </button>
+    </header>
 
-  <!-- Floating Button to Toggle Fullscreen -->
-  <div id="fullscreen-btn" title="Toggle Fullscreen">
-    <svg id="enter-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
-    </svg>
-    <svg id="exit-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-      <path d="M4 14h6v6m10-6h-6v6M4 10h6V4m10 6h-6V4"></path>
-    </svg>
-  </div>
+    <section class="lesson" aria-label="Kindness &amp; Repentance listening exercise">
+      <nav class="passes" aria-label="Listening passes">
+        <button class="pass active" type="button" data-pass="1"><span>1</span><b>Just listen</b><small>শুধু শুনুন</small></button>
+        <button class="pass" type="button" data-pass="2"><span>2</span><b>Follow the words</b><small>শব্দ ধরে শুনুন</small></button>
+        <button class="pass" type="button" data-pass="3"><span>3</span><b>Explore phrases</b><small>বাক্যাংশ দেখুন</small></button>
+      </nav>
 
-  <script>
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      <div class="classroom-option"><a href="classroom.html">Tell it live →</a> <button id="fullscreen" type="button" aria-label="Enter fullscreen">Fullscreen</button></div>
+      <section class="cinema-card" aria-label="Animated narrated wordless comic">
+        <div class="cinema-stage" id="cinema-stage">
+          <div class="comic-world" id="comic-world" aria-label="The complete comic"></div>
+          <div class="stage-vignette" aria-hidden="true"></div>
 
-    var pdfUrl = "kindness_repentence.pdf";
-    var cacheBuster = "?v=" + Date.now();
+          <div class="stage-topbar">
+            <a class="stage-brand" href="/" aria-label="Dialogue home"><img src="../brand/dialogue-logo.png" alt=""><span>Dialogue</span></a>
+            <div class="frame-number" id="frame-number" aria-live="polite"></div>
+            <button class="stage-button" id="overview-toggle" type="button" aria-label="Show the whole comic">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/></svg>
+              <span>Whole comic</span>
+            </button>
+          </div>
 
-    var container = document.getElementById("pdf-container");
-    var loading = document.getElementById("loading");
+          <div class="caption-shell">
+            <div class="caption-meta"><span class="cc-badge">CC</span><span id="mode-label">Watch &amp; listen</span></div>
+            <div class="current-line" id="current-line" aria-live="polite"></div>
+            <p class="listen-cue" id="listen-cue">The gold highlight follows the storyteller.</p>
+          </div>
 
-    var scale = 1;
-    var posX = 0;
-    var posY = 0;
-    var contentHeight = 0;
+          <div class="transport">
+            <button class="play" id="play" type="button" aria-label="Play story">
+              <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+            </button>
+            <button class="round-btn" id="restart" type="button" aria-label="Restart story" title="Restart story">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5a7 7 0 1 1-6.3 4H3l3.5-4L10 9H7.7A5 5 0 1 0 12 7z"/></svg>
+            </button>
+            <button class="round-btn" id="replay-line" type="button" aria-label="Replay current line" title="Replay current line">↶</button>
+            <div class="timeline-wrap">
+              <input id="timeline" class="timeline" type="range" min="0" max="1000" value="0" aria-label="Story position">
+              <div class="time-row"><span id="elapsed">0:00</span><span id="duration">0:00</span></div>
+            </div>
+            <button class="transcript-icon" id="transcript-open-stage" type="button" aria-label="Open full transcript" title="Full transcript">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v2H4zm0 6h16v2H4zm0 6h11v2H4z"/></svg>
+            </button>
+          </div>
+          <p class="audio-status" id="audio-status" role="status"></p>
+          <button id="retry-audio" class="retry-audio" type="button" hidden>Retry recording</button>
+        </div>
+        <div class="stage-notes">
+          <button class="next-pass" id="next-pass" type="button" hidden></button>
+        </div>
+      </section>
+    </section>
+  </main>
 
-    var initDist = 0;
-    var initMidX = 0, initMidY = 0;
-    var baseScale = 1;
-    var basePosX = 0, basePosY = 0;
-    var startX = 0, startY = 0;
-    var activeTouch = false;
-    var isPinching = false;
+  <dialog class="transcript-dialog" id="transcript-dialog" aria-labelledby="transcript-title">
+    <div class="dialog-head">
+      <div><p class="eyebrow">Full story</p><h2 id="transcript-title">Listen, read, and explore</h2></div>
+      <button class="close-btn" id="transcript-close" type="button" aria-label="Close transcript">×</button>
+    </div>
+    <p class="transcript-help">Tap an underlined phrase for an explanation in English and Bangla.</p>
+    <div class="transcript" id="transcript"></div>
+  </dialog>
 
-    var touchStartTime = 0;
-    var startTouchX = 0, startTouchY = 0;
-    var isGesture = false;
-    var lastTap = 0;
+  <dialog class="gloss-dialog" id="gloss-dialog" aria-labelledby="gloss-title">
+    <button class="close-btn gloss-close" type="button" aria-label="Close explanation">×</button>
+    <p class="gloss-kind" id="gloss-kind"></p>
+    <h2 id="gloss-title"></h2>
+    <p class="gloss-meaning" id="gloss-meaning"></p>
+    <p class="gloss-bn" id="gloss-bn" lang="bn"></p>
+  </dialog>
 
-    // Load PDF
-    pdfjsLib.getDocument(pdfUrl + cacheBuster).promise.then(async function(pdf) {
-      for (var pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-        var page = await pdf.getPage(pageNum);
-        var viewport = page.getViewport({ scale: 1.0 });
-        var fitScale = window.innerWidth / viewport.width;
-        var pageViewport = page.getViewport({ scale: fitScale });
-
-        var canvas = document.createElement("canvas");
-        var ctx = canvas.getContext("2d");
-        var dpr = window.devicePixelRatio || 1;
-        
-        canvas.width = pageViewport.width * dpr;
-        canvas.height = pageViewport.height * dpr;
-        canvas.style.width = pageViewport.width + "px";
-        canvas.style.height = pageViewport.height + "px";
-
-        container.appendChild(canvas);
-
-        var renderContext = {
-          canvasContext: ctx,
-          viewport: pageViewport,
-          transform: [dpr, 0, 0, dpr, 0, 0]
-        };
-        await page.render(renderContext).promise;
-      }
-      loading.style.opacity = "0";
-      setTimeout(function() { loading.style.display = "none"; }, 300);
-      
-      // Update dimensions and initial centering
-      contentHeight = container.offsetHeight;
-      centerContent();
-    }).catch(function(err) {
-      console.error(err);
-      loading.innerText = "Error loading story.";
-    });
-
-    function centerContent() {
-      if (contentHeight * scale <= window.innerHeight) {
-        posY = (window.innerHeight - contentHeight * scale) / 2;
-      } else {
-        posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, posY));
-      }
-      posX = 0;
-      updateTransform();
-    }
-
-    function updateTransform() {
-      container.style.transform = "translate(" + posX + "px, " + posY + "px) scale(" + scale + ")";
-    }
-
-    // Touch Event Handlers
-    document.body.addEventListener("touchstart", function(e) {
-      activeTouch = true;
-      if (e.touches.length === 2) {
-        isPinching = true;
-        initDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-        initMidX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-        initMidY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-        baseScale = scale;
-        basePosX = posX;
-        basePosY = posY;
-      } else if (e.touches.length === 1) {
-        isPinching = false;
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        basePosX = posX;
-        basePosY = posY;
-
-        touchStartTime = Date.now();
-        startTouchX = e.touches[0].clientX;
-        startTouchY = e.touches[0].clientY;
-        isGesture = false;
-      }
-    });
-
-    document.body.addEventListener("touchmove", function(e) {
-      if (!activeTouch) return;
-      contentHeight = container.offsetHeight;
-
-      if (e.touches.length === 2 && isPinching) {
-        e.preventDefault();
-        var dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
-        var midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-        var midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-
-        var factor = dist / initDist;
-        var newScale = baseScale * factor;
-        if (newScale < 1) newScale = 1;
-        if (newScale > 5) newScale = 5;
-
-        // Midpoint-centered zoom formulas
-        var newPosX = midX - window.innerWidth / 2 - (newScale / baseScale) * (initMidX - window.innerWidth / 2 - basePosX);
-        var newPosY = midY - (newScale / baseScale) * (initMidY - basePosY);
-
-        // Apply scale & bound translations
-        var maxPanX = (newScale - 1) * window.innerWidth / 2;
-        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
-
-        if (contentHeight * newScale <= window.innerHeight) {
-          posY = (window.innerHeight - contentHeight * newScale) / 2;
-        } else {
-          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * newScale, newPosY));
-        }
-
-        scale = newScale;
-        updateTransform();
-      } else if (e.touches.length === 1) {
-        var dx = e.touches[0].clientX - startTouchX;
-        var dy = e.touches[0].clientY - startTouchY;
-        if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
-          isGesture = true;
-        }
-
-        // We can always drag if the content overflows the screen vertically, or if scale > 1
-        if (scale > 1 || contentHeight * scale > window.innerHeight) {
-          e.preventDefault();
-          var currentX = e.touches[0].clientX;
-          var currentY = e.touches[0].clientY;
-
-          var newPosX = basePosX + (currentX - startX);
-          var newPosY = basePosY + (currentY - startY);
-
-          var maxPanX = (scale - 1) * window.innerWidth / 2;
-          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
-
-          if (contentHeight * scale <= window.innerHeight) {
-            posY = (window.innerHeight - contentHeight * scale) / 2;
-          } else {
-            posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
-          }
-          updateTransform();
-        }
-      }
-    });
-
-    document.body.addEventListener("touchend", function(e) {
-      if (e.touches.length === 0) {
-        activeTouch = false;
-        isPinching = false;
-
-        // Double-tap reset
-        var currentTime = Date.now();
-        var tapLength = currentTime - lastTap;
-        if (tapLength < 300 && tapLength > 0 && !isGesture) {
-          scale = 1;
-          centerContent();
-          e.preventDefault();
-        }
-        lastTap = currentTime;
-      } else if (e.touches.length === 1) {
-        // Switch to panning cleanly
-        isPinching = false;
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        basePosX = posX;
-        basePosY = posY;
-      }
-    });
-
-    // DESKTOP EVENT LISTENERS
-
-    // 1. Mouse Wheel Scroll & Trackpad Zoom
-    document.body.addEventListener("wheel", function(e) {
-      contentHeight = container.offsetHeight;
-      if (e.ctrlKey) {
-        e.preventDefault();
-        var factor = 1 - e.deltaY * 0.01;
-        var newScale = scale * factor;
-        if (newScale < 1) newScale = 1;
-        if (newScale > 5) newScale = 5;
-        
-        var mouseX = e.clientX;
-        var mouseY = e.clientY;
-        
-        var newPosX = mouseX - window.innerWidth / 2 - (newScale / scale) * (mouseX - window.innerWidth / 2 - posX);
-        var newPosY = mouseY - (newScale / scale) * (mouseY - posY);
-        
-        var maxPanX = (newScale - 1) * window.innerWidth / 2;
-        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
-        
-        if (contentHeight * newScale <= window.innerHeight) {
-          posY = (window.innerHeight - contentHeight * newScale) / 2;
-        } else {
-          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * newScale, newPosY));
-        }
-        
-        scale = newScale;
-        updateTransform();
-      } else {
-        if (scale > 1 || contentHeight * scale > window.innerHeight) {
-          e.preventDefault();
-          var newPosY = posY - e.deltaY;
-          var newPosX = posX - e.deltaX;
-          
-          var maxPanX = (scale - 1) * window.innerWidth / 2;
-          posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
-          
-          if (contentHeight * scale <= window.innerHeight) {
-            posY = (window.innerHeight - contentHeight * scale) / 2;
-          } else {
-            posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
-          }
-          updateTransform();
-        }
-      }
-    }, { passive: false });
-
-    // 2. Mouse Click-and-Drag Panning
-    var isMouseDown = false;
-    var mouseStartX = 0, mouseStartY = 0;
-    document.body.addEventListener("mousedown", function(e) {
-      if (e.button !== 0 || e.target.closest("#fullscreen-btn")) return;
-      isMouseDown = true;
-      mouseStartX = e.clientX;
-      mouseStartY = e.clientY;
-      basePosX = posX;
-      basePosY = posY;
-      document.body.style.cursor = "grabbing";
-    });
-
-    document.body.addEventListener("mousemove", function(e) {
-      if (!isMouseDown) return;
-      contentHeight = container.offsetHeight;
-      if (scale > 1 || contentHeight * scale > window.innerHeight) {
-        e.preventDefault();
-        var dx = e.clientX - mouseStartX;
-        var dy = e.clientY - mouseStartY;
-        
-        var newPosX = basePosX + dx;
-        var newPosY = basePosY + dy;
-        
-        var maxPanX = (scale - 1) * window.innerWidth / 2;
-        posX = Math.min(maxPanX, Math.max(-maxPanX, newPosX));
-        
-        if (contentHeight * scale <= window.innerHeight) {
-          posY = (window.innerHeight - contentHeight * scale) / 2;
-        } else {
-          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
-        }
-        updateTransform();
-      }
-    });
-
-    document.body.addEventListener("mouseup", function() {
-      isMouseDown = false;
-      document.body.style.cursor = "default";
-    });
-    document.body.addEventListener("mouseleave", function() {
-      isMouseDown = false;
-      document.body.style.cursor = "default";
-    });
-
-    // 3. Keyboard Arrow & Page Key Scrolling
-    document.addEventListener("keydown", function(e) {
-      contentHeight = container.offsetHeight;
-      var scrollAmount = 40;
-      var pageScroll = window.innerHeight * 0.8;
-      
-      var deltaY = 0;
-      if (e.key === "ArrowDown") deltaY = scrollAmount;
-      else if (e.key === "ArrowUp") deltaY = -scrollAmount;
-      else if (e.key === "PageDown") deltaY = pageScroll;
-      else if (e.key === "PageUp") deltaY = -pageScroll;
-      else if (e.key === "Spacebar" || e.key === " ") deltaY = e.shiftKey ? -pageScroll : pageScroll;
-      else return;
-
-      if (scale > 1 || contentHeight * scale > window.innerHeight) {
-        e.preventDefault();
-        var newPosY = posY - deltaY;
-        if (contentHeight * scale <= window.innerHeight) {
-          posY = (window.innerHeight - contentHeight * scale) / 2;
-        } else {
-          posY = Math.min(0, Math.max(window.innerHeight - contentHeight * scale, newPosY));
-        }
-        updateTransform();
-      }
-    });
-
-    // Fullscreen Toggle logic
-    var btn = document.getElementById("fullscreen-btn");
-    var enterIcon = document.getElementById("enter-icon");
-    var exitIcon = document.getElementById("exit-icon");
-
-    btn.addEventListener("click", function() {
-      var isFullscreen = document.fullscreenElement || 
-                         document.mozFullScreenElement || 
-                         document.webkitFullscreenElement || 
-                         document.msFullscreenElement;
-      if (isFullscreen) {
-        if (document.exitFullscreen) document.exitFullscreen();
-        else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
-        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-        else if (document.msExitFullscreen) document.msExitFullscreen();
-      } else {
-        var docElm = document.documentElement;
-        if (docElm.requestFullscreen) docElm.requestFullscreen();
-        else if (docElm.mozRequestFullScreen) docElm.mozRequestFullScreen();
-        else if (docElm.webkitRequestFullscreen) docElm.webkitRequestFullscreen();
-        else if (docElm.msRequestFullscreen) docElm.msRequestFullscreen();
-      }
-    });
-
-    function updateFullscreenIcons() {
-      var isFullscreen = document.fullscreenElement || 
-                         document.mozFullScreenElement || 
-                         document.webkitFullscreenElement || 
-                         document.msFullscreenElement;
-      if (isFullscreen) {
-        enterIcon.style.display = "none";
-        exitIcon.style.display = "block";
-      } else {
-        enterIcon.style.display = "block";
-        exitIcon.style.display = "none";
-      }
-    }
-
-    document.addEventListener("fullscreenchange", updateFullscreenIcons);
-    document.addEventListener("webkitfullscreenchange", updateFullscreenIcons);
-    document.addEventListener("mozfullscreenchange", updateFullscreenIcons);
-    document.addEventListener("MSFullscreenChange", updateFullscreenIcons);
-
-    // Re-center on window resize
-    window.addEventListener("resize", function() {
-      contentHeight = container.offsetHeight;
-      centerContent();
-    });
-  </script>
-  <script src="../story-spread-view.js"></script>
-  <script src="../dialogue-brand.js"></script>
+  <audio id="audio" preload="auto"></audio>
+  <script src="story.js?v=20261007-kindness-1"></script>
+  <script src="story-timings.js?v=20261007-kindness-1"></script>
+  <script src="app.js?v=20261007-kindness-1"></script>
 </body>
 </html>

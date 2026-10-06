@@ -1,0 +1,27 @@
+{
+  "model": "Gemini 2.5 Pro Preview TTS",
+  "voice": "Gacrux",
+  "direction": "One mature male storyteller narrating a fictional bazaar story for B2 English learners. Speak warm, clear neutral General American English at about 150 words per minute, with quiet tension, gentle surprise and restrained emotion. Subtle quoted dialogue in the same narrator voice. Pronounce the Bengali loanwords exactly as a native Bangladeshi Bengali speaker: waz mahfil (ওয়াজ মাহফিল), mahfil (মাহফিল), mastan (মাস্তান), hujur (হুজুর), Dhaka (ঢাকা). Keep the surrounding English General American. Read only the exact narration below, with no additions, spoken directions, music or sound effects.",
+  "takes": [
+    {
+      "file": "audio/_originals/kindness-american.wav",
+      "script": "production/recording-submitted.txt"
+    },
+    {
+      "file": "audio/_originals/kindness-corrections.wav",
+      "lines": [
+        21,
+        24
+      ],
+      "text": "The preacher settled onto the bench beside him. A cup of tea for me too, please, he said to the seller.\nThe thug lowered his eyes. He had made people afraid of him for so long that he hardly knew how to respond to kindness."
+    },
+    {
+      "file": "audio/_originals/kindness-unearned-welcome.wav",
+      "lines": [
+        23
+      ],
+      "text": "For a while, the two men sat together. The man hadn't apologized, repaid anyone, or promised to change. Yet the preacher had welcomed him with kindness he hadn't earned."
+    }
+  ],
+  "local_word_review": "Native Bengali pronunciation is directed in Bengali orthography; a human Bengali listening review is still required to confirm pronunciation quality."
+}

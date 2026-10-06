@@ -1,0 +1,267 @@
+{
+  "text": " For a while the two men sat together. The man hadn't apologized, repaid anyone or promised to change, yet the preacher had welcomed him with kindness he hadn't earned.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0.0,
+      "end": 3.44,
+      "text": " For a while the two men sat together.",
+      "tokens": [
+        50364,
+        1171,
+        257,
+        1339,
+        264,
+        732,
+        1706,
+        3227,
+        1214,
+        13,
+        50564
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.16602033792540086,
+      "compression_ratio": 1.3046875,
+      "no_speech_prob": 0.025746962055563927,
+      "words": [
+        {
+          "word": " For",
+          "start": 0.0,
+          "end": 0.48,
+          "probability": 0.8692867755889893
+        },
+        {
+          "word": " a",
+          "start": 0.48,
+          "end": 0.64,
+          "probability": 0.8884798288345337
+        },
+        {
+          "word": " while",
+          "start": 0.64,
+          "end": 1.12,
+          "probability": 0.9990326166152954
+        },
+        {
+          "word": " the",
+          "start": 1.12,
+          "end": 1.86,
+          "probability": 0.5886213183403015
+        },
+        {
+          "word": " two",
+          "start": 1.86,
+          "end": 2.14,
+          "probability": 0.9962471127510071
+        },
+        {
+          "word": " men",
+          "start": 2.14,
+          "end": 2.5,
+          "probability": 0.9970947504043579
+        },
+        {
+          "word": " sat",
+          "start": 2.5,
+          "end": 2.9,
+          "probability": 0.9980378746986389
+        },
+        {
+          "word": " together.",
+          "start": 2.9,
+          "end": 3.44,
+          "probability": 0.9982447624206543
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 4.4,
+      "end": 9.54,
+      "text": " The man hadn't apologized, repaid anyone or promised to change,",
+      "tokens": [
+        50564,
+        440,
+        587,
+        8782,
+        380,
+        47815,
+        11,
+        1085,
+        17810,
+        2878,
+        420,
+        10768,
+        281,
+        1319,
+        11,
+        50864
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.16602033792540086,
+      "compression_ratio": 1.3046875,
+      "no_speech_prob": 0.025746962055563927,
+      "words": [
+        {
+          "word": " The",
+          "start": 4.4,
+          "end": 4.58,
+          "probability": 0.9892075061798096
+        },
+        {
+          "word": " man",
+          "start": 4.58,
+          "end": 4.88,
+          "probability": 0.9921762347221375
+        },
+        {
+          "word": " hadn't",
+          "start": 4.88,
+          "end": 5.5,
+          "probability": 0.9850240349769592
+        },
+        {
+          "word": " apologized,",
+          "start": 5.5,
+          "end": 6.3,
+          "probability": 0.9021823406219482
+        },
+        {
+          "word": " repaid",
+          "start": 6.88,
+          "end": 7.42,
+          "probability": 0.9849913120269775
+        },
+        {
+          "word": " anyone",
+          "start": 7.42,
+          "end": 7.84,
+          "probability": 0.976302981376648
+        },
+        {
+          "word": " or",
+          "start": 7.84,
+          "end": 8.22,
+          "probability": 0.4866875410079956
+        },
+        {
+          "word": " promised",
+          "start": 8.22,
+          "end": 8.74,
+          "probability": 0.9938467144966125
+        },
+        {
+          "word": " to",
+          "start": 8.74,
+          "end": 9.0,
+          "probability": 0.9904228448867798
+        },
+        {
+          "word": " change,",
+          "start": 9.0,
+          "end": 9.54,
+          "probability": 0.9991714954376221
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "seek": 0,
+      "start": 10.08,
+      "end": 14.58,
+      "text": " yet the preacher had welcomed him with kindness he hadn't earned.",
+      "tokens": [
+        50864,
+        1939,
+        264,
+        42078,
+        632,
+        23668,
+        796,
+        365,
+        18171,
+        415,
+        8782,
+        380,
+        12283,
+        13,
+        51114
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.16602033792540086,
+      "compression_ratio": 1.3046875,
+      "no_speech_prob": 0.025746962055563927,
+      "words": [
+        {
+          "word": " yet",
+          "start": 10.08,
+          "end": 10.38,
+          "probability": 0.9621802568435669
+        },
+        {
+          "word": " the",
+          "start": 10.38,
+          "end": 10.66,
+          "probability": 0.9905980229377747
+        },
+        {
+          "word": " preacher",
+          "start": 10.66,
+          "end": 11.12,
+          "probability": 0.9909055233001709
+        },
+        {
+          "word": " had",
+          "start": 11.12,
+          "end": 11.54,
+          "probability": 0.9968660473823547
+        },
+        {
+          "word": " welcomed",
+          "start": 11.54,
+          "end": 12.04,
+          "probability": 0.9968358874320984
+        },
+        {
+          "word": " him",
+          "start": 12.04,
+          "end": 12.34,
+          "probability": 0.9979432225227356
+        },
+        {
+          "word": " with",
+          "start": 12.34,
+          "end": 12.54,
+          "probability": 0.99856036901474
+        },
+        {
+          "word": " kindness",
+          "start": 12.54,
+          "end": 13.12,
+          "probability": 0.997343122959137
+        },
+        {
+          "word": " he",
+          "start": 13.12,
+          "end": 13.5,
+          "probability": 0.995471715927124
+        },
+        {
+          "word": " hadn't",
+          "start": 13.5,
+          "end": 14.12,
+          "probability": 0.9983604252338409
+        },
+        {
+          "word": " earned.",
+          "start": 14.12,
+          "end": 14.58,
+          "probability": 0.994397759437561
+        }
+      ]
+    }
+  ],
+  "language": "en"
+}
