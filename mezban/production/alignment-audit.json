@@ -1,0 +1,130 @@
+{
+  "model": "Whisper small",
+  "audio_sha256": "5c3dbc0fbd3f7f5f301be32f29ec735c552d93f2b30a465b3a5ec360e9223170",
+  "script_sha256": "3929dc5e05488c95e20f8544aa8a06399c1e4672d5a1637dc60d49fa463b1624",
+  "expected": "After years abroad, a young man finally came home to Bangladesh. His father had been waiting for this day.\nHe held his son close. His wife and daughter stood beside them, smiling. Their family was together again.\nThe father was a wealthy man, and he wanted to share his joy. He decided to hold a mezban, a great feast.\nCooks stirred enormous pots of rice. The family prepared beautiful invitations and sent them to rich neighbors and important people.\nUnder a white canopy, the tables were laid and the chairs were ready. There was room for hundreds of guests.\nBut the people who received the invitations had other plans. One man waved the messengers away at his gate.\nAn important official barely looked up from his desk. He said he couldn't come.\nA businessman was busy with his phone. A wealthy couple said they had no time. Each had an excuse.\nThe messengers returned with their invitations still in their hands. Almost nobody had agreed to come.\nThe father and his family waited by the gate. They watched the road, hoping the guests would arrive.\nThe rice was ready. Steam rose from the pots, and the plates gleamed on the tables. But the chairs were empty.\nTime passed. The feast was ready for everyone, but the invited guests couldn't be bothered to come.\nThe messengers explained what had happened. The father listened, then looked across his empty courtyard.\nFor a moment, his face fell. All this food, and nobody to share it with.\nThen he looked beyond the gate. A tired rickshaw driver sat beside the road. Children searched for something they could eat.\nNearby stood a group of hijra. They weren't on anyone's guest list. The father looked at them, and his expression changed.\nHe opened the gate wide and spread his arms. Come in, he called. My son's home, and we're having a feast. Come and celebrate with us.\nThe people outside stared at him. They were used to being turned away from houses like this.\nDo you mean us? someone asked. All of you, the father said. There's a place for you here.\nHis son smiled. The family stepped forward to welcome their new guests. Slowly, the people began to come through the gate.\nRickshaw drivers came in with children who lived on the streets. The hijra came too, still wondering if they were really welcome.\nThe father greeted them himself. His son offered water, and the children washed their hands.\nPlease, sit down, they said. The guests took their places. The family stayed beside them, talking and smiling.\nThen the father picked up a serving spoon. He filled a plate for his son and another for an older guest.\nHe served a child, then his wife. His son took a spoon too and began to serve the guests.\nThere was plenty to go around. Plates passed from hand to hand. Nobody was sent away, and nobody had to eat outside.\nSoon the courtyard was full of laughter. The father offered more rice, and his guests smiled back at him.\nHe stood with the hijra guests, laughing and talking. They were part of the celebration, just like everyone else.\nThe father and son sat down among the people they had welcomed. They shared the food and listened to each other's stories.\nWomen and men, young and old, rich and poor, people from Muslim backgrounds and Hindu backgrounds, all had a place at the feast.\nAt one table sat the family, rickshaw drivers, people who begged for a living, and hijra guests. They ate together, passing food and sharing their joy.\nThe father looked around the table. His son was home. His house was full. And the feast was finally what he had hoped it would be.",
+  "heard": " After years abroad, a young man finally came home to Bangladesh. His father had been waiting for this day. He held his son close. His wife and daughter stood beside them, smiling. Their family was together again. The father was a wealthy man, and he wanted to share his joy. He decided to hold a mezban, a great feast. Cooks stirred enormous pots of rice. The family prepared beautiful invitations and sent them to rich neighbors and important people. Under a white canopy, the tables were laid and the chairs were ready. There was room for hundreds of guests. But the people who received the invitations had other plans. One man waved the messengers away at his gate. An important official barely looked up from his desk. He said he couldn't come. A businessman was busy with his phone. A wealthy couple said they had no time. Each had an excuse. The messengers returned with their invitations still in their hands. hands. Almost nobody had agreed to come. The father and his family waited by the gate. They watched the road, hoping the guests would arrive. The rice was ready. Steam rose from the pots and the plates gleamed on the tables, but the chairs were empty. Time passed. The feast was ready for everyone, but the invited guests couldn't be bothered to come. The messengers explained what had happened. The father listened, then looked across his empty courtyard. For a moment, Then his face fell. All this food and nobody to share it with. Then he looked beyond the gate. A tired rickshaw driver sat beside the road. Children searched for something they could eat. Nearby stood a group of hedra. They weren't on anyone's guest list. The father looked at them and his expression changed. He opened the gate wide and spread his arms. Come in, he called, my son's home and we're having a feast. Come and celebrate with us. The people outside stared at him. They were used to being turned away from houses like this. Do you mean us? Someone asked. All of you, the father said. There's a place for you here. His son smiled. The family stepped forward to welcome their new guests. Slowly, the people began to come through the gate. Rick Shaw drivers came in with children who lived on the streets. The hedra came too, still wondering if they were really welcome. The father greeted them himself. His son offered water and the children washed their hands. Please sit down, they said. The guests took their places. The family stayed beside them, talking and smiling. Then the father picked up a serving spoon. He filled a plate for his son and another for an older guest. He served a child, then his wife. His son took a spoon too and began to serve the guests. There was plenty to go around. Plates passed from hand to hand. Nobody was sent away, and nobody had to eat outside. Soon the courtyard was full of laughter. The father offered more rice, and his guests smiled back at him. He stood with the hijra guests, laughing and talking. They were part of the celebration, just like everyone else. The father and son sat down among the people they had welcomed. They shared the food and listened to each other's stories. Women and men, young and old, rich and poor, People from Muslim backgrounds and Hindu backgrounds all had a place at the feast. At one table sat the family, rickshaw drivers, people who begged for a living, and hydro guests. They ate together, passing food and sharing their joy. The father looked around the table. His son was home. His house was full. And the feast was finally what he had hoped it would be.",
+  "exact_fraction": 0.9936406995230525,
+  "differences": [
+    {
+      "operation": "insert",
+      "script": "",
+      "heard": "hands"
+    },
+    {
+      "operation": "insert",
+      "script": "",
+      "heard": "Then"
+    },
+    {
+      "operation": "replace",
+      "script": "hijra",
+      "heard": "hedra"
+    },
+    {
+      "operation": "replace",
+      "script": "Rickshaw",
+      "heard": "Rick Shaw"
+    },
+    {
+      "operation": "replace",
+      "script": "hijra",
+      "heard": "hedra"
+    },
+    {
+      "operation": "replace",
+      "script": "hijra",
+      "heard": "hydro"
+    }
+  ],
+  "word_count": 629,
+  "acoustic_boundary_refinements": [
+    {
+      "word": 0,
+      "text": "After",
+      "method": "independent ASR word interval",
+      "interval": [
+        0.24,
+        0.48
+      ]
+    },
+    {
+      "word": 79,
+      "text": "Under",
+      "method": "independent ASR word interval",
+      "interval": [
+        30.36,
+        30.54
+      ]
+    },
+    {
+      "word": 167,
+      "text": "The",
+      "method": "independent ASR word interval",
+      "interval": [
+        60.3,
+        60.48
+      ]
+    },
+    {
+      "word": 238,
+      "text": "For",
+      "method": "independent ASR word interval",
+      "interval": [
+        85.36,
+        85.46
+      ]
+    },
+    {
+      "word": 241,
+      "text": "his",
+      "method": "independent ASR word interval",
+      "interval": [
+        85.94,
+        86.02
+      ]
+    },
+    {
+      "word": 399,
+      "text": "The",
+      "method": "independent ASR word interval",
+      "interval": [
+        141.82,
+        141.92
+      ]
+    },
+    {
+      "word": 472,
+      "text": "There",
+      "method": "independent ASR word interval",
+      "interval": [
+        168.04,
+        168.14
+      ]
+    },
+    {
+      "word": 166,
+      "text": "come",
+      "method": "independent ASR preceding boundary",
+      "interval": [
+        59.24,
+        59.46
+      ]
+    },
+    {
+      "word": 240,
+      "text": "moment",
+      "method": "independent ASR preceding boundary",
+      "interval": [
+        85.6,
+        85.8
+      ]
+    }
+  ],
+  "difference_review": [
+    "The two independent recognizers agree on daughter singular; displayed transcript adopts that spoken wording.",
+    "The extra hands and Then appear only in the small-model output around segment splits; the independent base-model output does not contain them.",
+    "Rick Shaw is a recognizer spelling split for rickshaw.",
+    "Hijra has inconsistent recognizer spellings. Intended local pronunciation is in the voice direction; a human pronunciation review remains advisable."
+  ]
+}

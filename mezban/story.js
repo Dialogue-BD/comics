@@ -1,0 +1,1700 @@
+const MEZBAN_STORY = {
+  "id": "mezban",
+  "title": "Mezban",
+  "titleBn": "মেজবান",
+  "kicker": "A Bengali retelling of the banquet parable",
+  "version": "20261007-mezban-1",
+  "audio": "audio/mezban-story.mp3",
+  "tts": {
+    "model": "Gemini 3.8 Flash TTS",
+    "voice": "Gacrux",
+    "direction": "Neutral General American English accent. Mature male narrator, warm and clear for English learners, natural connected speech at 145 words per minute. Gentle disappointment, then joyful welcome. One narrator with subtle quoted voices. Local words only: mezban = MEJ-baan; hijra = HIJ-raa. Keep all other English distinctly American. Read the exact text with no additions, music, or sound effects."
+  },
+  "cast": {
+    "N": {
+      "role": "storyteller; all quoted dialogue is performed by the narrator",
+      "voice": "Gacrux",
+      "accent": "neutral General American English"
+    },
+    "father": {
+      "role": "wealthy host",
+      "appearance": "middle-aged, salt-and-pepper beard, white panjabi, no cap"
+    },
+    "son": {
+      "role": "returned from abroad",
+      "appearance": "young adult, short dark hair, beige shirt, dark trousers"
+    },
+    "family": {
+      "role": "wife and daughters",
+      "appearance": "mother in light green, daughters in cream"
+    },
+    "guests": {
+      "role": "rickshaw drivers, street children, people who beg, hijra guests; Muslim and Hindu backgrounds",
+      "appearance": "retain people from original pages; no identities inferred solely from clothing"
+    }
+  },
+  "frames": [
+    {
+      "src": "assets/page-1.webp",
+      "alt": "A son returns and his family prepares a banquet."
+    },
+    {
+      "src": "assets/page-2.webp",
+      "alt": "Rich and important invitees refuse the invitations."
+    },
+    {
+      "src": "assets/page-3.webp",
+      "alt": "The family waits beside the empty feast."
+    },
+    {
+      "src": "assets/page-4.webp",
+      "alt": "The father notices people outside the gate."
+    },
+    {
+      "src": "assets/page-5.webp",
+      "alt": "He opens the gate and invites everyone in."
+    },
+    {
+      "src": "assets/page-6.webp",
+      "alt": "The family welcomes the guests and offers water and seats."
+    },
+    {
+      "src": "assets/page-7.webp",
+      "alt": "Father and son serve the food themselves."
+    },
+    {
+      "src": "assets/page-8.webp",
+      "alt": "The family and guests share food and laughter at one table."
+    }
+  ],
+  "portraitPages": [
+    {
+      "src": "assets/page-1.webp",
+      "alt": "A son returns and his family prepares a banquet."
+    },
+    {
+      "src": "assets/page-2.webp",
+      "alt": "Rich and important invitees refuse the invitations."
+    },
+    {
+      "src": "assets/page-3.webp",
+      "alt": "The family waits beside the empty feast."
+    },
+    {
+      "src": "assets/page-4.webp",
+      "alt": "The father notices people outside the gate."
+    },
+    {
+      "src": "assets/page-5.webp",
+      "alt": "He opens the gate and invites everyone in."
+    },
+    {
+      "src": "assets/page-6.webp",
+      "alt": "The family welcomes the guests and offers water and seats."
+    },
+    {
+      "src": "assets/page-7.webp",
+      "alt": "Father and son serve the food themselves."
+    },
+    {
+      "src": "assets/page-8.webp",
+      "alt": "The family and guests share food and laughter at one table."
+    }
+  ],
+  "lines": [
+    {
+      "frame": 1,
+      "panel": 1,
+      "speaker": "N",
+      "text": "After years abroad, a young man finally came home to Bangladesh. His father had been waiting for this day."
+    },
+    {
+      "frame": 1,
+      "panel": 2,
+      "speaker": "N",
+      "text": "He held his son close. His wife and daughter stood beside them, smiling. Their family was together again."
+    },
+    {
+      "frame": 1,
+      "panel": 3,
+      "speaker": "N",
+      "text": "The father was a wealthy man, and he wanted to share his joy. He decided to hold a mezban, a great feast."
+    },
+    {
+      "frame": 1,
+      "panel": 4,
+      "speaker": "N",
+      "text": "Cooks stirred enormous pots of rice. The family prepared beautiful invitations and sent them to rich neighbors and important people."
+    },
+    {
+      "frame": 1,
+      "panel": 5,
+      "speaker": "N",
+      "text": "Under a white canopy, the tables were laid and the chairs were ready. There was room for hundreds of guests."
+    },
+    {
+      "frame": 2,
+      "panel": 6,
+      "speaker": "N",
+      "text": "But the people who received the invitations had other plans. One man waved the messengers away at his gate."
+    },
+    {
+      "frame": 2,
+      "panel": 7,
+      "speaker": "N",
+      "text": "An important official barely looked up from his desk. He said he couldn't come."
+    },
+    {
+      "frame": 2,
+      "panel": 8,
+      "speaker": "N",
+      "text": "A businessman was busy with his phone. A wealthy couple said they had no time. Each had an excuse."
+    },
+    {
+      "frame": 2,
+      "panel": 9,
+      "speaker": "N",
+      "text": "The messengers returned with their invitations still in their hands. Almost nobody had agreed to come."
+    },
+    {
+      "frame": 3,
+      "panel": 10,
+      "speaker": "N",
+      "text": "The father and his family waited by the gate. They watched the road, hoping the guests would arrive."
+    },
+    {
+      "frame": 3,
+      "panel": 11,
+      "speaker": "N",
+      "text": "The rice was ready. Steam rose from the pots, and the plates gleamed on the tables. But the chairs were empty."
+    },
+    {
+      "frame": 3,
+      "panel": 12,
+      "speaker": "N",
+      "text": "Time passed. The feast was ready for everyone, but the invited guests couldn't be bothered to come."
+    },
+    {
+      "frame": 4,
+      "panel": 13,
+      "speaker": "N",
+      "text": "The messengers explained what had happened. The father listened, then looked across his empty courtyard."
+    },
+    {
+      "frame": 4,
+      "panel": 14,
+      "speaker": "N",
+      "text": "For a moment, his face fell. All this food, and nobody to share it with."
+    },
+    {
+      "frame": 4,
+      "panel": 15,
+      "speaker": "N",
+      "text": "Then he looked beyond the gate. A tired rickshaw driver sat beside the road. Children searched for something they could eat."
+    },
+    {
+      "frame": 4,
+      "panel": 16,
+      "speaker": "N",
+      "text": "Nearby stood a group of hijra. They weren't on anyone's guest list. The father looked at them, and his expression changed."
+    },
+    {
+      "frame": 5,
+      "panel": 17,
+      "speaker": "N",
+      "text": "He opened the gate wide and spread his arms. Come in, he called. My son's home, and we're having a feast. Come and celebrate with us."
+    },
+    {
+      "frame": 5,
+      "panel": 18,
+      "speaker": "N",
+      "text": "The people outside stared at him. They were used to being turned away from houses like this."
+    },
+    {
+      "frame": 5,
+      "panel": 19,
+      "speaker": "N",
+      "text": "Do you mean us? someone asked. All of you, the father said. There's a place for you here."
+    },
+    {
+      "frame": 5,
+      "panel": 20,
+      "speaker": "N",
+      "text": "His son smiled. The family stepped forward to welcome their new guests. Slowly, the people began to come through the gate."
+    },
+    {
+      "frame": 6,
+      "panel": 21,
+      "speaker": "N",
+      "text": "Rickshaw drivers came in with children who lived on the streets. The hijra came too, still wondering if they were really welcome."
+    },
+    {
+      "frame": 6,
+      "panel": 22,
+      "speaker": "N",
+      "text": "The father greeted them himself. His son offered water, and the children washed their hands."
+    },
+    {
+      "frame": 6,
+      "panel": 23,
+      "speaker": "N",
+      "text": "Please, sit down, they said. The guests took their places. The family stayed beside them, talking and smiling."
+    },
+    {
+      "frame": 7,
+      "panel": 24,
+      "speaker": "N",
+      "text": "Then the father picked up a serving spoon. He filled a plate for his son and another for an older guest."
+    },
+    {
+      "frame": 7,
+      "panel": 25,
+      "speaker": "N",
+      "text": "He served a child, then his wife. His son took a spoon too and began to serve the guests."
+    },
+    {
+      "frame": 7,
+      "panel": 26,
+      "speaker": "N",
+      "text": "There was plenty to go around. Plates passed from hand to hand. Nobody was sent away, and nobody had to eat outside."
+    },
+    {
+      "frame": 8,
+      "panel": 27,
+      "speaker": "N",
+      "text": "Soon the courtyard was full of laughter. The father offered more rice, and his guests smiled back at him."
+    },
+    {
+      "frame": 8,
+      "panel": 28,
+      "speaker": "N",
+      "text": "He stood with the hijra guests, laughing and talking. They were part of the celebration, just like everyone else."
+    },
+    {
+      "frame": 8,
+      "panel": 29,
+      "speaker": "N",
+      "text": "The father and son sat down among the people they had welcomed. They shared the food and listened to each other's stories."
+    },
+    {
+      "frame": 8,
+      "panel": 30,
+      "speaker": "N",
+      "text": "Women and men, young and old, rich and poor, people from Muslim backgrounds and Hindu backgrounds, all had a place at the feast."
+    },
+    {
+      "frame": 8,
+      "panel": 31,
+      "speaker": "N",
+      "text": "At one table sat the family, rickshaw drivers, people who begged for a living, and hijra guests. They ate together, passing food and sharing their joy."
+    },
+    {
+      "frame": 8,
+      "panel": 32,
+      "speaker": "N",
+      "text": "The father looked around the table. His son was home. His house was full. And the feast was finally what he had hoped it would be."
+    }
+  ],
+  "camera": [
+    {
+      "p": 1,
+      "py": 0.148,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.148,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.432,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.6635,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.8785000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.10450000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.10450000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.403,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.7985,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.1515,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.527,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.8755,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.155,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.4255,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.655,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.8835000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.1255,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.374,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.622,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.8725,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.1955,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.48450000000000004,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.7899999999999999,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.26,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.6355000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.8745,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.133,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.133,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.383,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.5985,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.8494999999999999,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 8,
+      "py": 0.8494999999999999,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    }
+  ],
+  "cameraBeats": [
+    {
+      "line": 0,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "label": "Beat 1: After years abroad, a young man finally came home to Bangladesh",
+      "portrait": [
+        0.006,
+        0.003,
+        0.39,
+        0.29
+      ],
+      "landscape": [
+        0.006,
+        0.003,
+        0.39,
+        0.29
+      ]
+    },
+    {
+      "line": 1,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "label": "Beat 2: He held his son close",
+      "portrait": [
+        0.402,
+        0.003,
+        0.592,
+        0.29
+      ],
+      "landscape": [
+        0.402,
+        0.003,
+        0.592,
+        0.29
+      ]
+    },
+    {
+      "line": 2,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "label": "Beat 3: The father was a wealthy man, and he wanted to share his joy",
+      "portrait": [
+        0.006,
+        0.297,
+        0.988,
+        0.27
+      ],
+      "landscape": [
+        0.006,
+        0.297,
+        0.988,
+        0.27
+      ]
+    },
+    {
+      "line": 3,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "label": "Beat 4: Cooks stirred enormous pots of rice",
+      "portrait": [
+        0.006,
+        0.297,
+        0.988,
+        0.27
+      ],
+      "landscape": [
+        0.006,
+        0.297,
+        0.988,
+        0.27
+      ]
+    },
+    {
+      "line": 3,
+      "word": 6,
+      "page": 1,
+      "frame": 1,
+      "label": "The family",
+      "portrait": [
+        0.006,
+        0.57,
+        0.448,
+        0.187
+      ],
+      "landscape": [
+        0.006,
+        0.57,
+        0.448,
+        0.187
+      ]
+    },
+    {
+      "line": 3,
+      "word": 12,
+      "page": 1,
+      "frame": 1,
+      "label": "sent them",
+      "portrait": [
+        0.46,
+        0.57,
+        0.534,
+        0.187
+      ],
+      "landscape": [
+        0.46,
+        0.57,
+        0.534,
+        0.187
+      ]
+    },
+    {
+      "line": 4,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "label": "Beat 5: Under a white canopy, the tables were laid and the chairs were ready",
+      "portrait": [
+        0.006,
+        0.76,
+        0.988,
+        0.237
+      ],
+      "landscape": [
+        0.006,
+        0.76,
+        0.988,
+        0.237
+      ]
+    },
+    {
+      "line": 5,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "label": "Beat 6: But the people who received the invitations had other plans",
+      "portrait": [
+        0.006,
+        0.003,
+        0.486,
+        0.203
+      ],
+      "landscape": [
+        0.006,
+        0.003,
+        0.486,
+        0.203
+      ]
+    },
+    {
+      "line": 6,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "label": "Beat 7: An important official barely looked up from his desk",
+      "portrait": [
+        0.498,
+        0.003,
+        0.496,
+        0.203
+      ],
+      "landscape": [
+        0.498,
+        0.003,
+        0.496,
+        0.203
+      ]
+    },
+    {
+      "line": 7,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "label": "Beat 8: A businessman was busy with his phone",
+      "portrait": [
+        0.006,
+        0.21,
+        0.988,
+        0.19
+      ],
+      "landscape": [
+        0.006,
+        0.21,
+        0.988,
+        0.19
+      ]
+    },
+    {
+      "line": 7,
+      "word": 7,
+      "page": 2,
+      "frame": 2,
+      "label": "A wealthy couple",
+      "portrait": [
+        0.006,
+        0.406,
+        0.988,
+        0.19
+      ],
+      "landscape": [
+        0.006,
+        0.406,
+        0.988,
+        0.19
+      ]
+    },
+    {
+      "line": 8,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "label": "Beat 9: The messengers returned with their invitations still in their hands",
+      "portrait": [
+        0.006,
+        0.6,
+        0.988,
+        0.397
+      ],
+      "landscape": [
+        0.006,
+        0.6,
+        0.988,
+        0.397
+      ]
+    },
+    {
+      "line": 9,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "label": "Beat 10: The father and his family waited by the gate",
+      "portrait": [
+        0.006,
+        0.003,
+        0.988,
+        0.297
+      ],
+      "landscape": [
+        0.006,
+        0.003,
+        0.988,
+        0.297
+      ]
+    },
+    {
+      "line": 10,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "label": "Beat 11: The rice was ready",
+      "portrait": [
+        0.006,
+        0.304,
+        0.988,
+        0.256
+      ],
+      "landscape": [
+        0.006,
+        0.304,
+        0.988,
+        0.256
+      ]
+    },
+    {
+      "line": 10,
+      "word": 10,
+      "page": 3,
+      "frame": 3,
+      "label": "the plates",
+      "portrait": [
+        0.006,
+        0.566,
+        0.448,
+        0.184
+      ],
+      "landscape": [
+        0.006,
+        0.566,
+        0.448,
+        0.184
+      ]
+    },
+    {
+      "line": 10,
+      "word": 16,
+      "page": 3,
+      "frame": 3,
+      "label": "But the chairs",
+      "portrait": [
+        0.006,
+        0.754,
+        0.988,
+        0.243
+      ],
+      "landscape": [
+        0.006,
+        0.754,
+        0.988,
+        0.243
+      ]
+    },
+    {
+      "line": 11,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "label": "Beat 12: Time passed",
+      "portrait": [
+        0.006,
+        0.754,
+        0.988,
+        0.243
+      ],
+      "landscape": [
+        0.006,
+        0.754,
+        0.988,
+        0.243
+      ]
+    },
+    {
+      "line": 12,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "label": "Beat 13: The messengers explained what had happened",
+      "portrait": [
+        0.006,
+        0.003,
+        0.988,
+        0.304
+      ],
+      "landscape": [
+        0.006,
+        0.003,
+        0.988,
+        0.304
+      ]
+    },
+    {
+      "line": 13,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "label": "Beat 14: For a moment, his face fell",
+      "portrait": [
+        0.006,
+        0.312,
+        0.387,
+        0.227
+      ],
+      "landscape": [
+        0.006,
+        0.312,
+        0.387,
+        0.227
+      ]
+    },
+    {
+      "line": 14,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "label": "Beat 15: Then he looked beyond the gate",
+      "portrait": [
+        0.006,
+        0.545,
+        0.459,
+        0.22
+      ],
+      "landscape": [
+        0.006,
+        0.545,
+        0.459,
+        0.22
+      ]
+    },
+    {
+      "line": 14,
+      "word": 6,
+      "page": 4,
+      "frame": 4,
+      "label": "A tired",
+      "portrait": [
+        0.47,
+        0.545,
+        0.261,
+        0.22
+      ],
+      "landscape": [
+        0.47,
+        0.545,
+        0.261,
+        0.22
+      ]
+    },
+    {
+      "line": 14,
+      "word": 14,
+      "page": 4,
+      "frame": 4,
+      "label": "Children",
+      "portrait": [
+        0.737,
+        0.545,
+        0.257,
+        0.22
+      ],
+      "landscape": [
+        0.737,
+        0.545,
+        0.257,
+        0.22
+      ]
+    },
+    {
+      "line": 15,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "label": "Beat 16: Nearby stood a group of hijra",
+      "portrait": [
+        0.006,
+        0.77,
+        0.522,
+        0.227
+      ],
+      "landscape": [
+        0.006,
+        0.77,
+        0.522,
+        0.227
+      ]
+    },
+    {
+      "line": 15,
+      "word": 12,
+      "page": 4,
+      "frame": 4,
+      "label": "The father",
+      "portrait": [
+        0.534,
+        0.77,
+        0.46,
+        0.227
+      ],
+      "landscape": [
+        0.534,
+        0.77,
+        0.46,
+        0.227
+      ]
+    },
+    {
+      "line": 16,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "label": "Beat 17: He opened the gate wide and spread his arms",
+      "portrait": [
+        0.006,
+        0.003,
+        0.988,
+        0.245
+      ],
+      "landscape": [
+        0.006,
+        0.003,
+        0.988,
+        0.245
+      ]
+    },
+    {
+      "line": 17,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "label": "Beat 18: The people outside stared at him",
+      "portrait": [
+        0.006,
+        0.252,
+        0.988,
+        0.244
+      ],
+      "landscape": [
+        0.006,
+        0.252,
+        0.988,
+        0.244
+      ]
+    },
+    {
+      "line": 18,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "label": "Beat 19: Do you mean us? someone asked",
+      "portrait": [
+        0.006,
+        0.501,
+        0.604,
+        0.242
+      ],
+      "landscape": [
+        0.006,
+        0.501,
+        0.604,
+        0.242
+      ]
+    },
+    {
+      "line": 19,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "label": "Beat 20: His son smiled",
+      "portrait": [
+        0.617,
+        0.501,
+        0.377,
+        0.242
+      ],
+      "landscape": [
+        0.617,
+        0.501,
+        0.377,
+        0.242
+      ]
+    },
+    {
+      "line": 19,
+      "word": 3,
+      "page": 5,
+      "frame": 5,
+      "label": "The family",
+      "portrait": [
+        0.006,
+        0.748,
+        0.988,
+        0.249
+      ],
+      "landscape": [
+        0.006,
+        0.748,
+        0.988,
+        0.249
+      ]
+    },
+    {
+      "line": 20,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "label": "Beat 21: Rickshaw drivers came in with children who lived on the streets",
+      "portrait": [
+        0.006,
+        0.003,
+        0.41,
+        0.194
+      ],
+      "landscape": [
+        0.006,
+        0.003,
+        0.41,
+        0.194
+      ]
+    },
+    {
+      "line": 20,
+      "word": 5,
+      "page": 6,
+      "frame": 6,
+      "label": "children",
+      "portrait": [
+        0.424,
+        0.003,
+        0.57,
+        0.194
+      ],
+      "landscape": [
+        0.424,
+        0.003,
+        0.57,
+        0.194
+      ]
+    },
+    {
+      "line": 20,
+      "word": 11,
+      "page": 6,
+      "frame": 6,
+      "label": "The hijra",
+      "portrait": [
+        0.006,
+        0.201,
+        0.486,
+        0.184
+      ],
+      "landscape": [
+        0.006,
+        0.201,
+        0.486,
+        0.184
+      ]
+    },
+    {
+      "line": 21,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "label": "Beat 22: The father greeted them himself",
+      "portrait": [
+        0.498,
+        0.201,
+        0.496,
+        0.184
+      ],
+      "landscape": [
+        0.498,
+        0.201,
+        0.496,
+        0.184
+      ]
+    },
+    {
+      "line": 21,
+      "word": 5,
+      "page": 6,
+      "frame": 6,
+      "label": "His son",
+      "portrait": [
+        0.006,
+        0.392,
+        0.486,
+        0.185
+      ],
+      "landscape": [
+        0.006,
+        0.392,
+        0.486,
+        0.185
+      ]
+    },
+    {
+      "line": 21,
+      "word": 10,
+      "page": 6,
+      "frame": 6,
+      "label": "the children",
+      "portrait": [
+        0.498,
+        0.392,
+        0.496,
+        0.185
+      ],
+      "landscape": [
+        0.498,
+        0.392,
+        0.496,
+        0.185
+      ]
+    },
+    {
+      "line": 22,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "label": "Beat 23: Please, sit down, they said",
+      "portrait": [
+        0.006,
+        0.583,
+        0.988,
+        0.175
+      ],
+      "landscape": [
+        0.006,
+        0.583,
+        0.988,
+        0.175
+      ]
+    },
+    {
+      "line": 22,
+      "word": 10,
+      "page": 6,
+      "frame": 6,
+      "label": "The family stayed",
+      "portrait": [
+        0.006,
+        0.764,
+        0.988,
+        0.233
+      ],
+      "landscape": [
+        0.006,
+        0.764,
+        0.988,
+        0.233
+      ]
+    },
+    {
+      "line": 23,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "label": "Beat 24: Then the father picked up a serving spoon",
+      "portrait": [
+        0.006,
+        0.003,
+        0.988,
+        0.287
+      ],
+      "landscape": [
+        0.006,
+        0.003,
+        0.988,
+        0.287
+      ]
+    },
+    {
+      "line": 23,
+      "word": 16,
+      "page": 7,
+      "frame": 7,
+      "label": "another",
+      "portrait": [
+        0.006,
+        0.295,
+        0.486,
+        0.222
+      ],
+      "landscape": [
+        0.006,
+        0.295,
+        0.486,
+        0.222
+      ]
+    },
+    {
+      "line": 24,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "label": "Beat 25: He served a child, then his wife",
+      "portrait": [
+        0.498,
+        0.295,
+        0.496,
+        0.222
+      ],
+      "landscape": [
+        0.498,
+        0.295,
+        0.496,
+        0.222
+      ]
+    },
+    {
+      "line": 24,
+      "word": 5,
+      "page": 7,
+      "frame": 7,
+      "label": "his wife",
+      "portrait": [
+        0.006,
+        0.524,
+        0.486,
+        0.223
+      ],
+      "landscape": [
+        0.006,
+        0.524,
+        0.486,
+        0.223
+      ]
+    },
+    {
+      "line": 24,
+      "word": 7,
+      "page": 7,
+      "frame": 7,
+      "label": "His son",
+      "portrait": [
+        0.498,
+        0.524,
+        0.496,
+        0.223
+      ],
+      "landscape": [
+        0.498,
+        0.524,
+        0.496,
+        0.223
+      ]
+    },
+    {
+      "line": 25,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "label": "Beat 26: There was plenty to go around",
+      "portrait": [
+        0.006,
+        0.752,
+        0.988,
+        0.245
+      ],
+      "landscape": [
+        0.006,
+        0.752,
+        0.988,
+        0.245
+      ]
+    },
+    {
+      "line": 26,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 27: Soon the courtyard was full of laughter",
+      "portrait": [
+        0.006,
+        0.003,
+        0.414,
+        0.26
+      ],
+      "landscape": [
+        0.006,
+        0.003,
+        0.414,
+        0.26
+      ]
+    },
+    {
+      "line": 27,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 28: He stood with the hijra guests, laughing and talking",
+      "portrait": [
+        0.426,
+        0.003,
+        0.568,
+        0.26
+      ],
+      "landscape": [
+        0.426,
+        0.003,
+        0.568,
+        0.26
+      ]
+    },
+    {
+      "line": 28,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 29: The father and son sat down among the people they had welcomed",
+      "portrait": [
+        0.006,
+        0.269,
+        0.988,
+        0.228
+      ],
+      "landscape": [
+        0.006,
+        0.269,
+        0.988,
+        0.228
+      ]
+    },
+    {
+      "line": 29,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 30: Women and men, young and old, rich and poor, people from Muslim backgrounds and Hindu backgrounds, all had a place at the feast",
+      "portrait": [
+        0.006,
+        0.501,
+        0.475,
+        0.195
+      ],
+      "landscape": [
+        0.006,
+        0.501,
+        0.475,
+        0.195
+      ]
+    },
+    {
+      "line": 29,
+      "word": 3,
+      "page": 8,
+      "frame": 8,
+      "label": "young and old",
+      "portrait": [
+        0.488,
+        0.501,
+        0.506,
+        0.195
+      ],
+      "landscape": [
+        0.488,
+        0.501,
+        0.506,
+        0.195
+      ]
+    },
+    {
+      "line": 29,
+      "word": 6,
+      "page": 8,
+      "frame": 8,
+      "label": "rich and poor",
+      "portrait": [
+        0.006,
+        0.702,
+        0.988,
+        0.295
+      ],
+      "landscape": [
+        0.006,
+        0.702,
+        0.988,
+        0.295
+      ]
+    },
+    {
+      "line": 30,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 31: At one table sat the family, rickshaw drivers, people who begged for a living, and hijra guests",
+      "portrait": [
+        0.006,
+        0.702,
+        0.988,
+        0.295
+      ],
+      "landscape": [
+        0.006,
+        0.702,
+        0.988,
+        0.295
+      ]
+    },
+    {
+      "line": 31,
+      "word": 0,
+      "page": 8,
+      "frame": 8,
+      "label": "Beat 32: The father looked around the table",
+      "portrait": [
+        0.006,
+        0.702,
+        0.988,
+        0.295
+      ],
+      "landscape": [
+        0.006,
+        0.702,
+        0.988,
+        0.295
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "line": 0,
+      "phrase": "abroad",
+      "kind": "word",
+      "meaning": "in another country",
+      "bn": "বিদেশে"
+    },
+    {
+      "line": 1,
+      "phrase": "held his son close",
+      "kind": "phrase",
+      "meaning": "hugged his son warmly",
+      "bn": "ছেলেকে বুকে জড়িয়ে ধরলেন"
+    },
+    {
+      "line": 2,
+      "phrase": "hold a mezban",
+      "kind": "culture",
+      "meaning": "host a large communal feast; mezban is associated especially with Chattogram. This story widens the invitation to everyone.",
+      "bn": "মেজবান আয়োজন করা; বিশেষত চট্টগ্রামের বড় সামাজিক ভোজ। এই গল্পে সবাই আমন্ত্রিত।"
+    },
+    {
+      "line": 4,
+      "phrase": "the tables were laid",
+      "kind": "grammar",
+      "meaning": "the tables had been prepared with plates and everything needed for the meal; a passive construction",
+      "bn": "খাবার টেবিল সাজানো হয়েছিল; এটি passive বা কর্মবাচ্যের উদাহরণ"
+    },
+    {
+      "line": 5,
+      "phrase": "waved the messengers away",
+      "kind": "phrasal verb",
+      "meaning": "used a hand gesture to tell the people carrying the invitation to leave",
+      "bn": "হাত নেড়ে আমন্ত্রণ নিয়ে আসা লোকদের চলে যেতে বললেন"
+    },
+    {
+      "line": 7,
+      "phrase": "an excuse",
+      "kind": "word",
+      "meaning": "a reason given for not doing something",
+      "bn": "অজুহাত"
+    },
+    {
+      "line": 10,
+      "phrase": "Steam rose",
+      "kind": "phrase",
+      "meaning": "hot water vapor moved upward from the food",
+      "bn": "খাবার থেকে গরম ভাপ উঠল"
+    },
+    {
+      "line": 11,
+      "phrase": "couldn't be bothered",
+      "kind": "idiom",
+      "meaning": "didn't care enough to make the effort",
+      "bn": "আসার জন্য কষ্ট করতে বা সময় দিতে রাজি ছিল না"
+    },
+    {
+      "line": 13,
+      "phrase": "his face fell",
+      "kind": "idiom",
+      "meaning": "his expression suddenly showed disappointment",
+      "bn": "হতাশায় তাঁর মুখ মলিন হয়ে গেল"
+    },
+    {
+      "line": 14,
+      "phrase": "rickshaw driver",
+      "kind": "phrase",
+      "meaning": "a person who earns a living by driving or pedaling a rickshaw. Rickshaw puller is also used in Bangladesh; rickshaw wallah is a regional term.",
+      "bn": "রিকশাচালক"
+    },
+    {
+      "line": 15,
+      "phrase": "hijra",
+      "kind": "culture",
+      "meaning": "a South Asian gender-diverse community with its own identities and social traditions. The guests are welcomed as people, not as entertainment.",
+      "bn": "দক্ষিণ এশিয়ার একটি লিঙ্গবৈচিত্র্যময় সম্প্রদায়, যার নিজস্ব পরিচয় ও সামাজিক রীতি আছে। এখানে তাঁরা সম্মানিত অতিথি।"
+    },
+    {
+      "line": 15,
+      "phrase": "guest list",
+      "kind": "phrase",
+      "meaning": "the list of people invited to an event",
+      "bn": "আমন্ত্রিত অতিথিদের তালিকা"
+    },
+    {
+      "line": 17,
+      "phrase": "being turned away",
+      "kind": "phrasal verb",
+      "meaning": "being refused entry or welcome",
+      "bn": "প্রবেশ করতে না দিয়ে ফিরিয়ে দেওয়া"
+    },
+    {
+      "line": 18,
+      "phrase": "There's a place for you here",
+      "kind": "discourse",
+      "meaning": "a warm invitation that says you belong and are welcome",
+      "bn": "এখানে তোমাদেরও জায়গা আছে; তোমরাও আপনজন"
+    },
+    {
+      "line": 19,
+      "phrase": "stepped forward",
+      "kind": "phrasal verb",
+      "meaning": "moved toward someone to offer help or a welcome",
+      "bn": "এগিয়ে এলেন"
+    },
+    {
+      "line": 22,
+      "phrase": "took their places",
+      "kind": "phrase",
+      "meaning": "sat in the seats prepared for them",
+      "bn": "নিজ নিজ আসনে বসলেন"
+    },
+    {
+      "line": 25,
+      "phrase": "plenty to go around",
+      "kind": "idiom",
+      "meaning": "enough for everyone to have some",
+      "bn": "সবার জন্য যথেষ্ট আছে"
+    },
+    {
+      "line": 25,
+      "phrase": "from hand to hand",
+      "kind": "phrase",
+      "meaning": "from one person to the next",
+      "bn": "একজনের হাত থেকে আরেকজনের হাতে"
+    },
+    {
+      "line": 27,
+      "phrase": "just like everyone else",
+      "kind": "phrase",
+      "meaning": "with the same welcome and belonging as the other guests",
+      "bn": "অন্য সবার মতোই"
+    },
+    {
+      "line": 28,
+      "phrase": "each other's stories",
+      "kind": "grammar",
+      "meaning": "each person tells a story and listens to the other person; a reciprocal expression",
+      "bn": "একে অন্যের গল্প; পারস্পরিক সম্পর্ক বোঝায়"
+    },
+    {
+      "line": 29,
+      "phrase": "Muslim backgrounds and Hindu backgrounds",
+      "kind": "culture",
+      "meaning": "people with different religious family or community histories; clothing alone doesn't tell us a person's religion",
+      "bn": "মুসলিম ও হিন্দু পারিবারিক বা সামাজিক পটভূমির মানুষ; শুধু পোশাক দেখে ধর্ম নির্ধারণ করা যায় না"
+    },
+    {
+      "line": 30,
+      "phrase": "begged for a living",
+      "kind": "phrase",
+      "meaning": "depended on asking others for food or money to survive",
+      "bn": "বেঁচে থাকার জন্য ভিক্ষার ওপর নির্ভর করতেন"
+    }
+  ],
+  "culturalNotes": [
+    "This is the user’s Bengali adaptation, not a word-for-word biblical quotation.",
+    "Hijra guests are treated with dignity and agency, never as a comic spectacle.",
+    "The final shared table includes men and women, rich and poor, and people of Muslim and Hindu backgrounds.",
+    "Do not identify religious backgrounds from clothes or require conversion for welcome.",
+    "Do not label the pictured food as beef; the inclusive feast is not narrowed to one dietary practice."
+  ],
+  "continuity": [
+    "Retain all eight original pages, unaltered.",
+    "Son returns from abroad, rich invitees refuse, host invites people outside, family serves, all share the feast."
+  ],
+  "assets": {
+    "source": "mezban.pdf",
+    "audio": "audio/mezban-story.mp3",
+    "timings": "story-timings.js"
+  }
+};
+if(typeof module!=="undefined") module.exports={MEZBAN_STORY};

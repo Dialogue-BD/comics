@@ -1,0 +1,13 @@
+{
+  "source": "audio/_originals/mezban-american.wav",
+  "delivery": "audio/mezban-story.mp3",
+  "source_sha256": "0bdfdac630d8d695df990c521e26a4135a1acf61589b44b37c6d4c8d49bad514",
+  "delivery_sha256": "5c3dbc0fbd3f7f5f301be32f29ec735c552d93f2b30a465b3a5ec360e9223170",
+  "filters": "loudnorm=I=-16:TP=-1.5:LRA=11",
+  "trim": "none",
+  "ambience": "none",
+  "duration": 223.52,
+  "voice": "Gacrux",
+  "model": "Gemini 3.8 Flash TTS",
+  "accent": "neutral General American English"
+}

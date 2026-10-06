@@ -1,0 +1,5817 @@
+{
+  "text": " After years abroad, a young man finally came home to Bangladesh. His father had been waiting for this day. He held his son close. His wife and daughter stood beside them, smiling. Their family was together again. The father was a wealthy man, and he wanted to share his joy. He decided to hold a mesbon, a great feast. Cooks stirred enormous pots of rice. The family prepared beautiful invitations and sent them to rich neighbors and important people. Under a white canopy, the tables were laid and the chairs were ready. There was room for hundreds of guests. But the people who received the invitations had other plans. One man waved the messengers away at his gate. An important official barely looked up from his desk. He said he couldn't come. A businessman was busy with his phone. A wealthy couple said they had no time. Each had an excuse. The messengers returned with their invitation still in their hands. Almost nobody had agreed to come. The father and his family waited by the gate. They watched the road, hoping the guests would arrive. The rice was ready. Steam rose from the pots and the plates gleamed on the tables, but the chairs were empty. Time passed, the feast was ready for everyone, but the invited guests couldn't be bothered to come. The messengers explained what had happened. The father listened, then looked across his empty courtyard. For a moment his face fell. All this food and nobody to share it with. Then he looked beyond the gate. A tired rickshaw driver sat beside the road. Children searched for something they could eat. Nearby stood a group of Hydra. They weren't on anyone's guest list. The father looked at them and his expression changed. He opened the gate wide and spread his arms. \"'Come in,' he called. My son's home and we're having a feast. Come and celebrate with us.\" The people outside stared at him. They were used to being turned away from houses like this. \"'Do you mean us?' someone asked. All of you,' the father said. \"'There's a place for you here.' His son smiled. The family stepped forward to welcome their new guests. Slowly, the people began to come through the gate. Rick Shaw drivers His son was always a little bit more worried about the children who lived on the streets. The Hydra came, too, still wondering if they were really welcome. The father greeted them himself. His son offered water, and the children washed their hands. He said, please sit down! The guests took their places. The family stayed beside them, talking and smiling. Then the father picked up a serving spoon. He filled a plate for his son and another for an older guest. He served a child, then his wife. His son took a spoon too and began to serve the guests. There was plenty to go around. Plates passed from hand to hand. Nobody was sent away, and nobody had to eat outside. Soon the courtyard was full of laughter. The father offered more rice, and his guests smiled back at him. He stood with the hidrogests, laughing and talking. They were part of the celebration, just like everyone else. The father and son sat down among the people they had welcomed. They shared the food and listened to each other's stories. Women and men, young and old, rich and poor, people from Muslim backgrounds and Hindu backgrounds all had a place at the feast. At one table sat the family, Rickshaw drivers, people who begged for a living and hidregests. They ate together, passing food and sharing their joy. The father looked around the table. His son was home. His house was full. And the feast was finally what he had hoped it would be.",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0.0,
+      "end": 3.84,
+      "text": " After years abroad, a young man finally came home to Bangladesh.",
+      "tokens": [
+        50364,
+        2381,
+        924,
+        12637,
+        11,
+        257,
+        2037,
+        587,
+        2721,
+        1361,
+        1280,
+        281,
+        35260,
+        13,
+        50594
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.16102427528018043,
+      "compression_ratio": 1.6008064516129032,
+      "no_speech_prob": 0.013730592094361782,
+      "words": [
+        {
+          "word": " After",
+          "start": 0.0,
+          "end": 0.5,
+          "probability": 0.9460592269897461
+        },
+        {
+          "word": " years",
+          "start": 0.5,
+          "end": 0.84,
+          "probability": 0.9907922744750977
+        },
+        {
+          "word": " abroad,",
+          "start": 0.84,
+          "end": 1.22,
+          "probability": 0.9253906607627869
+        },
+        {
+          "word": " a",
+          "start": 1.66,
+          "end": 1.74,
+          "probability": 0.9976000189781189
+        },
+        {
+          "word": " young",
+          "start": 1.74,
+          "end": 2.0,
+          "probability": 0.998855471611023
+        },
+        {
+          "word": " man",
+          "start": 2.0,
+          "end": 2.24,
+          "probability": 0.997825562953949
+        },
+        {
+          "word": " finally",
+          "start": 2.24,
+          "end": 2.76,
+          "probability": 0.9959140419960022
+        },
+        {
+          "word": " came",
+          "start": 2.76,
+          "end": 3.02,
+          "probability": 0.9974641799926758
+        },
+        {
+          "word": " home",
+          "start": 3.02,
+          "end": 3.24,
+          "probability": 0.9985645413398743
+        },
+        {
+          "word": " to",
+          "start": 3.24,
+          "end": 3.4,
+          "probability": 0.9965875148773193
+        },
+        {
+          "word": " Bangladesh.",
+          "start": 3.4,
+          "end": 3.84,
+          "probability": 0.9814963936805725
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 4.48,
+      "end": 6.52,
+      "text": " His father had been waiting for this day.",
+      "tokens": [
+        50594,
+        2812,
+        3086,
+        632,
+        668,
+        3806,
+        337,
+        341,
+        786,
+        13,
+        50714
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.16102427528018043,
+      "compression_ratio": 1.6008064516129032,
+      "no_speech_prob": 0.013730592094361782,
+      "words": [
+        {
+          "word": " His",
+          "start": 4.48,
+          "end": 4.84,
+          "probability": 0.9936145544052124
+        },
+        {
+          "word": " father",
+          "start": 4.84,
+          "end": 5.18,
+          "probability": 0.9964547157287598
+        },
+        {
+          "word": " had",
+          "start": 5.18,
+          "end": 5.38,
+          "probability": 0.9983943104743958
+        },
+        {
+          "word": " been",
+          "start": 5.38,
+          "end": 5.54,
+          "probability": 0.9990843534469604
+        },
+        {
+          "word": " waiting",
+          "start": 5.54,
+          "end": 5.9,
+          "probability": 0.9957901835441589
+        },
+        {
+          "word": " for",
+          "start": 5.9,
+          "end": 6.12,
+          "probability": 0.9978207349777222
+        },
+        {
+          "word": " this",
+          "start": 6.12,
+          "end": 6.3,
+          "probability": 0.9978176355361938
+        },
+        {
+          "word": " day.",
+          "start": 6.3,
+          "end": 6.52,
+          "probability": 0.9988825917243958
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "seek": 0,
+      "start": 7.04,
+      "end": 8.24,
+      "text": " He held his son close.",
+      "tokens": [
+        50714,
+        634,
+        5167,
+        702,
+        1872,
+        1998,
+        13,
+        50824
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.16102427528018043,
+      "compression_ratio": 1.6008064516129032,
+      "no_speech_prob": 0.013730592094361782,
+      "words": [
+        {
+          "word": " He",
+          "start": 7.04,
+          "end": 7.24,
+          "probability": 0.9966464638710022
+        },
+        {
+          "word": " held",
+          "start": 7.24,
+          "end": 7.5,
+          "probability": 0.9965697526931763
+        },
+        {
+          "word": " his",
+          "start": 7.5,
+          "end": 7.68,
+          "probability": 0.9983677268028259
+        },
+        {
+          "word": " son",
+          "start": 7.68,
+          "end": 7.92,
+          "probability": 0.989611029624939
+        },
+        {
+          "word": " close.",
+          "start": 7.92,
+          "end": 8.24,
+          "probability": 0.9901116490364075
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "seek": 0,
+      "start": 9.24,
+      "end": 11.82,
+      "text": " His wife and daughter stood beside them, smiling.",
+      "tokens": [
+        50824,
+        2812,
+        3836,
+        293,
+        4653,
+        9371,
+        15726,
+        552,
+        11,
+        16005,
+        13,
+        50984
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.16102427528018043,
+      "compression_ratio": 1.6008064516129032,
+      "no_speech_prob": 0.013730592094361782,
+      "words": [
+        {
+          "word": " His",
+          "start": 9.24,
+          "end": 9.46,
+          "probability": 0.9940382242202759
+        },
+        {
+          "word": " wife",
+          "start": 9.46,
+          "end": 9.72,
+          "probability": 0.9987351298332214
+        },
+        {
+          "word": " and",
+          "start": 9.72,
+          "end": 9.94,
+          "probability": 0.9936279058456421
+        },
+        {
+          "word": " daughter",
+          "start": 9.94,
+          "end": 10.14,
+          "probability": 0.5428828597068787
+        },
+        {
+          "word": " stood",
+          "start": 10.14,
+          "end": 10.5,
+          "probability": 0.9986956715583801
+        },
+        {
+          "word": " beside",
+          "start": 10.5,
+          "end": 10.86,
+          "probability": 0.9979362487792969
+        },
+        {
+          "word": " them,",
+          "start": 10.86,
+          "end": 11.1,
+          "probability": 0.9637131094932556
+        },
+        {
+          "word": " smiling.",
+          "start": 11.48,
+          "end": 11.82,
+          "probability": 0.993623673915863
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "seek": 0,
+      "start": 12.5,
+      "end": 14.02,
+      "text": " Their family was together again.",
+      "tokens": [
+        50984,
+        6710,
+        1605,
+        390,
+        1214,
+        797,
+        13,
+        51104
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.16102427528018043,
+      "compression_ratio": 1.6008064516129032,
+      "no_speech_prob": 0.013730592094361782,
+      "words": [
+        {
+          "word": " Their",
+          "start": 12.5,
+          "end": 12.68,
+          "probability": 0.9929996728897095
+        },
+        {
+          "word": " family",
+          "start": 12.68,
+          "end": 13.08,
+          "probability": 0.9993891716003418
+        },
+        {
+          "word": " was",
+          "start": 13.08,
+          "end": 13.3,
+          "probability": 0.9949323534965515
+        },
+        {
+          "word": " together",
+          "start": 13.3,
+          "end": 13.64,
+          "probability": 0.9921140670776367
+        },
+        {
+          "word": " again.",
+          "start": 13.64,
+          "end": 14.02,
+          "probability": 0.9975910186767578
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "seek": 0,
+      "start": 14.82,
+      "end": 17.86,
+      "text": " The father was a wealthy man, and he wanted to share his joy.",
+      "tokens": [
+        51104,
+        440,
+        3086,
+        390,
+        257,
+        17707,
+        587,
+        11,
+        293,
+        415,
+        1415,
+        281,
+        2073,
+        702,
+        6258,
+        13,
+        51289
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.16102427528018043,
+      "compression_ratio": 1.6008064516129032,
+      "no_speech_prob": 0.013730592094361782,
+      "words": [
+        {
+          "word": " The",
+          "start": 14.82,
+          "end": 14.96,
+          "probability": 0.9865906238555908
+        },
+        {
+          "word": " father",
+          "start": 14.96,
+          "end": 15.24,
+          "probability": 0.9934902191162109
+        },
+        {
+          "word": " was",
+          "start": 15.24,
+          "end": 15.44,
+          "probability": 0.9988952875137329
+        },
+        {
+          "word": " a",
+          "start": 15.44,
+          "end": 15.52,
+          "probability": 0.9981784820556641
+        },
+        {
+          "word": " wealthy",
+          "start": 15.52,
+          "end": 15.76,
+          "probability": 0.9987481832504272
+        },
+        {
+          "word": " man,",
+          "start": 15.76,
+          "end": 16.12,
+          "probability": 0.999068558216095
+        },
+        {
+          "word": " and",
+          "start": 16.52,
+          "end": 16.6,
+          "probability": 0.9975271821022034
+        },
+        {
+          "word": " he",
+          "start": 16.6,
+          "end": 16.7,
+          "probability": 0.9878643155097961
+        },
+        {
+          "word": " wanted",
+          "start": 16.7,
+          "end": 16.96,
+          "probability": 0.9993017911911011
+        },
+        {
+          "word": " to",
+          "start": 16.96,
+          "end": 17.14,
+          "probability": 0.9989905953407288
+        },
+        {
+          "word": " share",
+          "start": 17.14,
+          "end": 17.4,
+          "probability": 0.9976504445075989
+        },
+        {
+          "word": " his",
+          "start": 17.4,
+          "end": 17.64,
+          "probability": 0.9987950325012207
+        },
+        {
+          "word": " joy.",
+          "start": 17.64,
+          "end": 17.86,
+          "probability": 0.9975913763046265
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "seek": 0,
+      "start": 18.56,
+      "end": 21.46,
+      "text": " He decided to hold a mesbon, a great feast.",
+      "tokens": [
+        51289,
+        634,
+        3047,
+        281,
+        1797,
+        257,
+        3813,
+        4351,
+        11,
+        257,
+        869,
+        23707,
+        13,
+        51484
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.16102427528018043,
+      "compression_ratio": 1.6008064516129032,
+      "no_speech_prob": 0.013730592094361782,
+      "words": [
+        {
+          "word": " He",
+          "start": 18.56,
+          "end": 18.76,
+          "probability": 0.9975995421409607
+        },
+        {
+          "word": " decided",
+          "start": 18.76,
+          "end": 19.1,
+          "probability": 0.998893678188324
+        },
+        {
+          "word": " to",
+          "start": 19.1,
+          "end": 19.34,
+          "probability": 0.9994978904724121
+        },
+        {
+          "word": " hold",
+          "start": 19.34,
+          "end": 19.52,
+          "probability": 0.9991112351417542
+        },
+        {
+          "word": " a",
+          "start": 19.52,
+          "end": 19.76,
+          "probability": 0.9944994449615479
+        },
+        {
+          "word": " mesbon,",
+          "start": 19.76,
+          "end": 20.18,
+          "probability": 0.6119683682918549
+        },
+        {
+          "word": " a",
+          "start": 20.68,
+          "end": 20.8,
+          "probability": 0.9953306913375854
+        },
+        {
+          "word": " great",
+          "start": 20.8,
+          "end": 21.1,
+          "probability": 0.9912387728691101
+        },
+        {
+          "word": " feast.",
+          "start": 21.1,
+          "end": 21.46,
+          "probability": 0.9944906234741211
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "seek": 0,
+      "start": 22.54,
+      "end": 24.46,
+      "text": " Cooks stirred enormous pots of rice.",
+      "tokens": [
+        51484,
+        12259,
+        82,
+        49409,
+        11322,
+        22022,
+        295,
+        5090,
+        13,
+        51609
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.16102427528018043,
+      "compression_ratio": 1.6008064516129032,
+      "no_speech_prob": 0.013730592094361782,
+      "words": [
+        {
+          "word": " Cooks",
+          "start": 22.54,
+          "end": 22.88,
+          "probability": 0.7789386212825775
+        },
+        {
+          "word": " stirred",
+          "start": 22.88,
+          "end": 23.16,
+          "probability": 0.9745914936065674
+        },
+        {
+          "word": " enormous",
+          "start": 23.16,
+          "end": 23.64,
+          "probability": 0.994266927242279
+        },
+        {
+          "word": " pots",
+          "start": 23.64,
+          "end": 24.04,
+          "probability": 0.985260009765625
+        },
+        {
+          "word": " of",
+          "start": 24.04,
+          "end": 24.26,
+          "probability": 0.998488187789917
+        },
+        {
+          "word": " rice.",
+          "start": 24.26,
+          "end": 24.46,
+          "probability": 0.9947423934936523
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "seek": 0,
+      "start": 25.04,
+      "end": 26.94,
+      "text": " The family prepared beautiful invitations",
+      "tokens": [
+        51609,
+        440,
+        1605,
+        4927,
+        2238,
+        1048,
+        31265,
+        51714
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.16102427528018043,
+      "compression_ratio": 1.6008064516129032,
+      "no_speech_prob": 0.013730592094361782,
+      "words": [
+        {
+          "word": " The",
+          "start": 25.04,
+          "end": 25.14,
+          "probability": 0.9964964985847473
+        },
+        {
+          "word": " family",
+          "start": 25.14,
+          "end": 25.42,
+          "probability": 0.9988553524017334
+        },
+        {
+          "word": " prepared",
+          "start": 25.42,
+          "end": 25.7,
+          "probability": 0.988777220249176
+        },
+        {
+          "word": " beautiful",
+          "start": 25.7,
+          "end": 26.28,
+          "probability": 0.997804582118988
+        },
+        {
+          "word": " invitations",
+          "start": 26.28,
+          "end": 26.94,
+          "probability": 0.9942956268787384
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "seek": 2694,
+      "start": 26.94,
+      "end": 29.38,
+      "text": " and sent them to rich neighbors and important people.",
+      "tokens": [
+        50364,
+        293,
+        2279,
+        552,
+        281,
+        4593,
+        12512,
+        293,
+        1021,
+        561,
+        13,
+        50514
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09164560447304936,
+      "compression_ratio": 1.6268115942028984,
+      "no_speech_prob": 0.19624198973178864,
+      "words": [
+        {
+          "word": " and",
+          "start": 26.94,
+          "end": 27.22,
+          "probability": 0.508725106716156
+        },
+        {
+          "word": " sent",
+          "start": 27.22,
+          "end": 27.46,
+          "probability": 0.9391393661499023
+        },
+        {
+          "word": " them",
+          "start": 27.46,
+          "end": 27.66,
+          "probability": 0.9866234660148621
+        },
+        {
+          "word": " to",
+          "start": 27.66,
+          "end": 27.78,
+          "probability": 0.9982931017875671
+        },
+        {
+          "word": " rich",
+          "start": 27.78,
+          "end": 28.0,
+          "probability": 0.992500364780426
+        },
+        {
+          "word": " neighbors",
+          "start": 28.0,
+          "end": 28.38,
+          "probability": 0.9414800405502319
+        },
+        {
+          "word": " and",
+          "start": 28.38,
+          "end": 28.6,
+          "probability": 0.9315316081047058
+        },
+        {
+          "word": " important",
+          "start": 28.6,
+          "end": 28.98,
+          "probability": 0.9971953630447388
+        },
+        {
+          "word": " people.",
+          "start": 28.98,
+          "end": 29.38,
+          "probability": 0.9984686970710754
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "seek": 2694,
+      "start": 30.08,
+      "end": 33.66,
+      "text": " Under a white canopy, the tables were laid and the chairs were ready.",
+      "tokens": [
+        50514,
+        6974,
+        257,
+        2418,
+        38235,
+        11,
+        264,
+        8020,
+        645,
+        9897,
+        293,
+        264,
+        18299,
+        645,
+        1919,
+        13,
+        50714
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09164560447304936,
+      "compression_ratio": 1.6268115942028984,
+      "no_speech_prob": 0.19624198973178864,
+      "words": [
+        {
+          "word": " Under",
+          "start": 30.08,
+          "end": 30.56,
+          "probability": 0.95790034532547
+        },
+        {
+          "word": " a",
+          "start": 30.56,
+          "end": 30.72,
+          "probability": 0.9963255524635315
+        },
+        {
+          "word": " white",
+          "start": 30.72,
+          "end": 30.9,
+          "probability": 0.9934995174407959
+        },
+        {
+          "word": " canopy,",
+          "start": 30.9,
+          "end": 31.34,
+          "probability": 0.9939467310905457
+        },
+        {
+          "word": " the",
+          "start": 31.82,
+          "end": 31.88,
+          "probability": 0.9975202679634094
+        },
+        {
+          "word": " tables",
+          "start": 31.88,
+          "end": 32.18,
+          "probability": 0.9977251887321472
+        },
+        {
+          "word": " were",
+          "start": 32.18,
+          "end": 32.36,
+          "probability": 0.9896210432052612
+        },
+        {
+          "word": " laid",
+          "start": 32.36,
+          "end": 32.58,
+          "probability": 0.9868391156196594
+        },
+        {
+          "word": " and",
+          "start": 32.58,
+          "end": 32.9,
+          "probability": 0.7325782179832458
+        },
+        {
+          "word": " the",
+          "start": 32.9,
+          "end": 33.0,
+          "probability": 0.9872744083404541
+        },
+        {
+          "word": " chairs",
+          "start": 33.0,
+          "end": 33.24,
+          "probability": 0.9992945194244385
+        },
+        {
+          "word": " were",
+          "start": 33.24,
+          "end": 33.42,
+          "probability": 0.9987472295761108
+        },
+        {
+          "word": " ready.",
+          "start": 33.42,
+          "end": 33.66,
+          "probability": 0.9980448484420776
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "seek": 2694,
+      "start": 34.3,
+      "end": 35.84,
+      "text": " There was room for hundreds of guests.",
+      "tokens": [
+        50714,
+        821,
+        390,
+        1808,
+        337,
+        6779,
+        295,
+        9804,
+        13,
+        50814
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09164560447304936,
+      "compression_ratio": 1.6268115942028984,
+      "no_speech_prob": 0.19624198973178864,
+      "words": [
+        {
+          "word": " There",
+          "start": 34.3,
+          "end": 34.5,
+          "probability": 0.9930331707000732
+        },
+        {
+          "word": " was",
+          "start": 34.5,
+          "end": 34.64,
+          "probability": 0.9858777523040771
+        },
+        {
+          "word": " room",
+          "start": 34.64,
+          "end": 34.82,
+          "probability": 0.9988331198692322
+        },
+        {
+          "word": " for",
+          "start": 34.82,
+          "end": 35.0,
+          "probability": 0.9994435906410217
+        },
+        {
+          "word": " hundreds",
+          "start": 35.0,
+          "end": 35.4,
+          "probability": 0.9955729246139526
+        },
+        {
+          "word": " of",
+          "start": 35.4,
+          "end": 35.62,
+          "probability": 0.9991604089736938
+        },
+        {
+          "word": " guests.",
+          "start": 35.62,
+          "end": 35.84,
+          "probability": 0.9955481290817261
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "seek": 2694,
+      "start": 36.7,
+      "end": 39.38,
+      "text": " But the people who received the invitations had other plans.",
+      "tokens": [
+        50814,
+        583,
+        264,
+        561,
+        567,
+        4613,
+        264,
+        1048,
+        31265,
+        632,
+        661,
+        5482,
+        13,
+        51014
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09164560447304936,
+      "compression_ratio": 1.6268115942028984,
+      "no_speech_prob": 0.19624198973178864,
+      "words": [
+        {
+          "word": " But",
+          "start": 36.7,
+          "end": 36.9,
+          "probability": 0.9938262104988098
+        },
+        {
+          "word": " the",
+          "start": 36.9,
+          "end": 37.02,
+          "probability": 0.9886791110038757
+        },
+        {
+          "word": " people",
+          "start": 37.02,
+          "end": 37.28,
+          "probability": 0.9996888637542725
+        },
+        {
+          "word": " who",
+          "start": 37.28,
+          "end": 37.46,
+          "probability": 0.9936094284057617
+        },
+        {
+          "word": " received",
+          "start": 37.46,
+          "end": 37.8,
+          "probability": 0.9882344007492065
+        },
+        {
+          "word": " the",
+          "start": 37.8,
+          "end": 38.02,
+          "probability": 0.9965489506721497
+        },
+        {
+          "word": " invitations",
+          "start": 38.02,
+          "end": 38.52,
+          "probability": 0.9249799847602844
+        },
+        {
+          "word": " had",
+          "start": 38.52,
+          "end": 38.76,
+          "probability": 0.9920200705528259
+        },
+        {
+          "word": " other",
+          "start": 38.76,
+          "end": 39.08,
+          "probability": 0.995171844959259
+        },
+        {
+          "word": " plans.",
+          "start": 39.08,
+          "end": 39.38,
+          "probability": 0.9952040910720825
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "seek": 2694,
+      "start": 40.08,
+      "end": 42.2,
+      "text": " One man waved the messengers away at his gate.",
+      "tokens": [
+        51014,
+        1485,
+        587,
+        261,
+        12865,
+        264,
+        2082,
+        15315,
+        1314,
+        412,
+        702,
+        8539,
+        13,
+        51114
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09164560447304936,
+      "compression_ratio": 1.6268115942028984,
+      "no_speech_prob": 0.19624198973178864,
+      "words": [
+        {
+          "word": " One",
+          "start": 40.08,
+          "end": 40.38,
+          "probability": 0.963424801826477
+        },
+        {
+          "word": " man",
+          "start": 40.38,
+          "end": 40.66,
+          "probability": 0.9982478618621826
+        },
+        {
+          "word": " waved",
+          "start": 40.66,
+          "end": 40.98,
+          "probability": 0.8869288861751556
+        },
+        {
+          "word": " the",
+          "start": 40.98,
+          "end": 41.08,
+          "probability": 0.9912132620811462
+        },
+        {
+          "word": " messengers",
+          "start": 41.08,
+          "end": 41.4,
+          "probability": 0.8728095591068268
+        },
+        {
+          "word": " away",
+          "start": 41.4,
+          "end": 41.72,
+          "probability": 0.9952781200408936
+        },
+        {
+          "word": " at",
+          "start": 41.72,
+          "end": 41.86,
+          "probability": 0.9978170394897461
+        },
+        {
+          "word": " his",
+          "start": 41.86,
+          "end": 42.0,
+          "probability": 0.9976394176483154
+        },
+        {
+          "word": " gate.",
+          "start": 42.0,
+          "end": 42.2,
+          "probability": 0.9861542582511902
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "seek": 2694,
+      "start": 42.9,
+      "end": 45.1,
+      "text": " An important official barely looked up from his desk.",
+      "tokens": [
+        51114,
+        1107,
+        1021,
+        4783,
+        10268,
+        2956,
+        493,
+        490,
+        702,
+        10026,
+        13,
+        51264
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09164560447304936,
+      "compression_ratio": 1.6268115942028984,
+      "no_speech_prob": 0.19624198973178864,
+      "words": [
+        {
+          "word": " An",
+          "start": 42.9,
+          "end": 43.02,
+          "probability": 0.976918637752533
+        },
+        {
+          "word": " important",
+          "start": 43.02,
+          "end": 43.4,
+          "probability": 0.9987744688987732
+        },
+        {
+          "word": " official",
+          "start": 43.4,
+          "end": 43.8,
+          "probability": 0.9931400418281555
+        },
+        {
+          "word": " barely",
+          "start": 43.8,
+          "end": 44.2,
+          "probability": 0.9457836151123047
+        },
+        {
+          "word": " looked",
+          "start": 44.2,
+          "end": 44.46,
+          "probability": 0.9987163543701172
+        },
+        {
+          "word": " up",
+          "start": 44.46,
+          "end": 44.58,
+          "probability": 0.995144784450531
+        },
+        {
+          "word": " from",
+          "start": 44.58,
+          "end": 44.74,
+          "probability": 0.9951962828636169
+        },
+        {
+          "word": " his",
+          "start": 44.74,
+          "end": 44.88,
+          "probability": 0.9920727610588074
+        },
+        {
+          "word": " desk.",
+          "start": 44.88,
+          "end": 45.1,
+          "probability": 0.9990583062171936
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "seek": 2694,
+      "start": 45.64,
+      "end": 46.5,
+      "text": " He said he couldn't come.",
+      "tokens": [
+        51264,
+        634,
+        848,
+        415,
+        2809,
+        380,
+        808,
+        13,
+        51364
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09164560447304936,
+      "compression_ratio": 1.6268115942028984,
+      "no_speech_prob": 0.19624198973178864,
+      "words": [
+        {
+          "word": " He",
+          "start": 45.64,
+          "end": 45.84,
+          "probability": 0.9919112324714661
+        },
+        {
+          "word": " said",
+          "start": 45.84,
+          "end": 46.0,
+          "probability": 0.9992331266403198
+        },
+        {
+          "word": " he",
+          "start": 46.0,
+          "end": 46.12,
+          "probability": 0.9903032183647156
+        },
+        {
+          "word": " couldn't",
+          "start": 46.12,
+          "end": 46.32,
+          "probability": 0.9979948103427887
+        },
+        {
+          "word": " come.",
+          "start": 46.32,
+          "end": 46.5,
+          "probability": 0.9977231621742249
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "seek": 2694,
+      "start": 47.38,
+      "end": 49.06,
+      "text": " A businessman was busy with his phone.",
+      "tokens": [
+        51364,
+        316,
+        35317,
+        390,
+        5856,
+        365,
+        702,
+        2593,
+        13,
+        51464
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09164560447304936,
+      "compression_ratio": 1.6268115942028984,
+      "no_speech_prob": 0.19624198973178864,
+      "words": [
+        {
+          "word": " A",
+          "start": 47.38,
+          "end": 47.48,
+          "probability": 0.940776526927948
+        },
+        {
+          "word": " businessman",
+          "start": 47.48,
+          "end": 47.8,
+          "probability": 0.8180804252624512
+        },
+        {
+          "word": " was",
+          "start": 47.8,
+          "end": 48.26,
+          "probability": 0.998508870601654
+        },
+        {
+          "word": " busy",
+          "start": 48.26,
+          "end": 48.46,
+          "probability": 0.9974205493927002
+        },
+        {
+          "word": " with",
+          "start": 48.46,
+          "end": 48.68,
+          "probability": 0.9988985061645508
+        },
+        {
+          "word": " his",
+          "start": 48.68,
+          "end": 48.8,
+          "probability": 0.9993149042129517
+        },
+        {
+          "word": " phone.",
+          "start": 48.8,
+          "end": 49.06,
+          "probability": 0.9993371367454529
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "seek": 2694,
+      "start": 49.62,
+      "end": 51.42,
+      "text": " A wealthy couple said they had no time.",
+      "tokens": [
+        51464,
+        316,
+        17707,
+        1916,
+        848,
+        436,
+        632,
+        572,
+        565,
+        13,
+        51614
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09164560447304936,
+      "compression_ratio": 1.6268115942028984,
+      "no_speech_prob": 0.19624198973178864,
+      "words": [
+        {
+          "word": " A",
+          "start": 49.62,
+          "end": 49.74,
+          "probability": 0.98869389295578
+        },
+        {
+          "word": " wealthy",
+          "start": 49.74,
+          "end": 50.0,
+          "probability": 0.9978431463241577
+        },
+        {
+          "word": " couple",
+          "start": 50.0,
+          "end": 50.32,
+          "probability": 0.9971389770507812
+        },
+        {
+          "word": " said",
+          "start": 50.32,
+          "end": 50.58,
+          "probability": 0.9982613921165466
+        },
+        {
+          "word": " they",
+          "start": 50.58,
+          "end": 50.76,
+          "probability": 0.9882344007492065
+        },
+        {
+          "word": " had",
+          "start": 50.76,
+          "end": 50.94,
+          "probability": 0.9986900687217712
+        },
+        {
+          "word": " no",
+          "start": 50.94,
+          "end": 51.14,
+          "probability": 0.9965723752975464
+        },
+        {
+          "word": " time.",
+          "start": 51.14,
+          "end": 51.42,
+          "probability": 0.9996504783630371
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "seek": 2694,
+      "start": 52.18,
+      "end": 53.1,
+      "text": " Each had an excuse.",
+      "tokens": [
+        51614,
+        6947,
+        632,
+        364,
+        8960,
+        13,
+        51714
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.09164560447304936,
+      "compression_ratio": 1.6268115942028984,
+      "no_speech_prob": 0.19624198973178864,
+      "words": [
+        {
+          "word": " Each",
+          "start": 52.18,
+          "end": 52.48,
+          "probability": 0.9335583448410034
+        },
+        {
+          "word": " had",
+          "start": 52.48,
+          "end": 52.66,
+          "probability": 0.9953663349151611
+        },
+        {
+          "word": " an",
+          "start": 52.66,
+          "end": 52.78,
+          "probability": 0.9982295632362366
+        },
+        {
+          "word": " excuse.",
+          "start": 52.78,
+          "end": 53.1,
+          "probability": 0.9981667995452881
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "seek": 5310,
+      "start": 53.86,
+      "end": 57.06,
+      "text": " The messengers returned with their invitation still in their hands.",
+      "tokens": [
+        50364,
+        440,
+        2082,
+        15315,
+        8752,
+        365,
+        641,
+        17890,
+        920,
+        294,
+        641,
+        2377,
+        13,
+        50614
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.11205600870066676,
+      "compression_ratio": 1.7338403041825095,
+      "no_speech_prob": 0.6577252149581909,
+      "words": [
+        {
+          "word": " The",
+          "start": 53.86,
+          "end": 54.34,
+          "probability": 0.4388686418533325
+        },
+        {
+          "word": " messengers",
+          "start": 54.34,
+          "end": 54.7,
+          "probability": 0.7367243021726608
+        },
+        {
+          "word": " returned",
+          "start": 54.7,
+          "end": 55.12,
+          "probability": 0.9737188220024109
+        },
+        {
+          "word": " with",
+          "start": 55.12,
+          "end": 55.42,
+          "probability": 0.8606672883033752
+        },
+        {
+          "word": " their",
+          "start": 55.42,
+          "end": 55.56,
+          "probability": 0.9664335250854492
+        },
+        {
+          "word": " invitation",
+          "start": 55.56,
+          "end": 56.0,
+          "probability": 0.48384690284729004
+        },
+        {
+          "word": " still",
+          "start": 56.0,
+          "end": 56.46,
+          "probability": 0.9484152793884277
+        },
+        {
+          "word": " in",
+          "start": 56.46,
+          "end": 56.64,
+          "probability": 0.9624740481376648
+        },
+        {
+          "word": " their",
+          "start": 56.64,
+          "end": 56.74,
+          "probability": 0.9944677352905273
+        },
+        {
+          "word": " hands.",
+          "start": 56.74,
+          "end": 57.06,
+          "probability": 0.99720698595047
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "seek": 5310,
+      "start": 57.7,
+      "end": 59.42,
+      "text": " Almost nobody had agreed to come.",
+      "tokens": [
+        50614,
+        12627,
+        5079,
+        632,
+        9166,
+        281,
+        808,
+        13,
+        50714
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.11205600870066676,
+      "compression_ratio": 1.7338403041825095,
+      "no_speech_prob": 0.6577252149581909,
+      "words": [
+        {
+          "word": " Almost",
+          "start": 57.7,
+          "end": 58.02,
+          "probability": 0.9875189661979675
+        },
+        {
+          "word": " nobody",
+          "start": 58.02,
+          "end": 58.6,
+          "probability": 0.9797636270523071
+        },
+        {
+          "word": " had",
+          "start": 58.6,
+          "end": 58.84,
+          "probability": 0.9816106557846069
+        },
+        {
+          "word": " agreed",
+          "start": 58.84,
+          "end": 59.08,
+          "probability": 0.9955443739891052
+        },
+        {
+          "word": " to",
+          "start": 59.08,
+          "end": 59.24,
+          "probability": 0.9994016885757446
+        },
+        {
+          "word": " come.",
+          "start": 59.24,
+          "end": 59.42,
+          "probability": 0.9973028898239136
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "seek": 5310,
+      "start": 60.36,
+      "end": 62.24,
+      "text": " The father and his family waited by the gate.",
+      "tokens": [
+        50714,
+        440,
+        3086,
+        293,
+        702,
+        1605,
+        15240,
+        538,
+        264,
+        8539,
+        13,
+        50864
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.11205600870066676,
+      "compression_ratio": 1.7338403041825095,
+      "no_speech_prob": 0.6577252149581909,
+      "words": [
+        {
+          "word": " The",
+          "start": 60.36,
+          "end": 60.46,
+          "probability": 0.9891083240509033
+        },
+        {
+          "word": " father",
+          "start": 60.46,
+          "end": 60.74,
+          "probability": 0.937969982624054
+        },
+        {
+          "word": " and",
+          "start": 60.74,
+          "end": 60.92,
+          "probability": 0.9886651039123535
+        },
+        {
+          "word": " his",
+          "start": 60.92,
+          "end": 61.04,
+          "probability": 0.9945253133773804
+        },
+        {
+          "word": " family",
+          "start": 61.04,
+          "end": 61.38,
+          "probability": 0.9986060261726379
+        },
+        {
+          "word": " waited",
+          "start": 61.38,
+          "end": 61.72,
+          "probability": 0.9282970428466797
+        },
+        {
+          "word": " by",
+          "start": 61.72,
+          "end": 61.92,
+          "probability": 0.9959545135498047
+        },
+        {
+          "word": " the",
+          "start": 61.92,
+          "end": 62.08,
+          "probability": 0.9970141649246216
+        },
+        {
+          "word": " gate.",
+          "start": 62.08,
+          "end": 62.24,
+          "probability": 0.980346143245697
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "seek": 5310,
+      "start": 62.88,
+      "end": 65.08,
+      "text": " They watched the road, hoping the guests would arrive.",
+      "tokens": [
+        50864,
+        814,
+        6337,
+        264,
+        3060,
+        11,
+        7159,
+        264,
+        9804,
+        576,
+        8881,
+        13,
+        51014
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.11205600870066676,
+      "compression_ratio": 1.7338403041825095,
+      "no_speech_prob": 0.6577252149581909,
+      "words": [
+        {
+          "word": " They",
+          "start": 62.88,
+          "end": 62.96,
+          "probability": 0.9895512461662292
+        },
+        {
+          "word": " watched",
+          "start": 62.96,
+          "end": 63.26,
+          "probability": 0.9730997085571289
+        },
+        {
+          "word": " the",
+          "start": 63.26,
+          "end": 63.46,
+          "probability": 0.9982728958129883
+        },
+        {
+          "word": " road,",
+          "start": 63.46,
+          "end": 63.68,
+          "probability": 0.9915293455123901
+        },
+        {
+          "word": " hoping",
+          "start": 63.96,
+          "end": 64.2,
+          "probability": 0.993063747882843
+        },
+        {
+          "word": " the",
+          "start": 64.2,
+          "end": 64.4,
+          "probability": 0.9946392178535461
+        },
+        {
+          "word": " guests",
+          "start": 64.4,
+          "end": 64.54,
+          "probability": 0.7299640774726868
+        },
+        {
+          "word": " would",
+          "start": 64.54,
+          "end": 64.74,
+          "probability": 0.9959719777107239
+        },
+        {
+          "word": " arrive.",
+          "start": 64.74,
+          "end": 65.08,
+          "probability": 0.9972414970397949
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "seek": 5310,
+      "start": 65.98,
+      "end": 67.04,
+      "text": " The rice was ready.",
+      "tokens": [
+        51014,
+        440,
+        5090,
+        390,
+        1919,
+        13,
+        51114
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.11205600870066676,
+      "compression_ratio": 1.7338403041825095,
+      "no_speech_prob": 0.6577252149581909,
+      "words": [
+        {
+          "word": " The",
+          "start": 65.98,
+          "end": 66.12,
+          "probability": 0.9924049973487854
+        },
+        {
+          "word": " rice",
+          "start": 66.12,
+          "end": 66.34,
+          "probability": 0.926059365272522
+        },
+        {
+          "word": " was",
+          "start": 66.34,
+          "end": 66.7,
+          "probability": 0.9989895224571228
+        },
+        {
+          "word": " ready.",
+          "start": 66.7,
+          "end": 67.04,
+          "probability": 0.9878048896789551
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "seek": 5310,
+      "start": 67.68,
+      "end": 70.68,
+      "text": " Steam rose from the pots and the plates gleamed on the tables,",
+      "tokens": [
+        51114,
+        22517,
+        10895,
+        490,
+        264,
+        22022,
+        293,
+        264,
+        14231,
+        48956,
+        3475,
+        322,
+        264,
+        8020,
+        11,
+        51264
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.11205600870066676,
+      "compression_ratio": 1.7338403041825095,
+      "no_speech_prob": 0.6577252149581909,
+      "words": [
+        {
+          "word": " Steam",
+          "start": 67.68,
+          "end": 68.06,
+          "probability": 0.9608368277549744
+        },
+        {
+          "word": " rose",
+          "start": 68.06,
+          "end": 68.26,
+          "probability": 0.9637220501899719
+        },
+        {
+          "word": " from",
+          "start": 68.26,
+          "end": 68.48,
+          "probability": 0.998358428478241
+        },
+        {
+          "word": " the",
+          "start": 68.48,
+          "end": 68.6,
+          "probability": 0.9961153268814087
+        },
+        {
+          "word": " pots",
+          "start": 68.6,
+          "end": 68.88,
+          "probability": 0.9592304825782776
+        },
+        {
+          "word": " and",
+          "start": 68.88,
+          "end": 69.24,
+          "probability": 0.6682301163673401
+        },
+        {
+          "word": " the",
+          "start": 69.24,
+          "end": 69.36,
+          "probability": 0.9628851413726807
+        },
+        {
+          "word": " plates",
+          "start": 69.36,
+          "end": 69.56,
+          "probability": 0.995762050151825
+        },
+        {
+          "word": " gleamed",
+          "start": 69.56,
+          "end": 70.14,
+          "probability": 0.8582680821418762
+        },
+        {
+          "word": " on",
+          "start": 70.14,
+          "end": 70.24,
+          "probability": 0.9954578876495361
+        },
+        {
+          "word": " the",
+          "start": 70.24,
+          "end": 70.36,
+          "probability": 0.9970263838768005
+        },
+        {
+          "word": " tables,",
+          "start": 70.36,
+          "end": 70.68,
+          "probability": 0.9759408831596375
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "seek": 5310,
+      "start": 71.28,
+      "end": 72.34,
+      "text": " but the chairs were empty.",
+      "tokens": [
+        51264,
+        457,
+        264,
+        18299,
+        645,
+        6707,
+        13,
+        51364
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.11205600870066676,
+      "compression_ratio": 1.7338403041825095,
+      "no_speech_prob": 0.6577252149581909,
+      "words": [
+        {
+          "word": " but",
+          "start": 71.28,
+          "end": 71.5,
+          "probability": 0.995388388633728
+        },
+        {
+          "word": " the",
+          "start": 71.5,
+          "end": 71.62,
+          "probability": 0.9962579011917114
+        },
+        {
+          "word": " chairs",
+          "start": 71.62,
+          "end": 71.84,
+          "probability": 0.9965481162071228
+        },
+        {
+          "word": " were",
+          "start": 71.84,
+          "end": 72.06,
+          "probability": 0.9983310103416443
+        },
+        {
+          "word": " empty.",
+          "start": 72.06,
+          "end": 72.34,
+          "probability": 0.9994534850120544
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "seek": 5310,
+      "start": 73.14,
+      "end": 75.88,
+      "text": " Time passed, the feast was ready for everyone,",
+      "tokens": [
+        51364,
+        6161,
+        4678,
+        11,
+        264,
+        23707,
+        390,
+        1919,
+        337,
+        1518,
+        11,
+        51514
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.11205600870066676,
+      "compression_ratio": 1.7338403041825095,
+      "no_speech_prob": 0.6577252149581909,
+      "words": [
+        {
+          "word": " Time",
+          "start": 73.14,
+          "end": 73.48,
+          "probability": 0.9195948839187622
+        },
+        {
+          "word": " passed,",
+          "start": 73.48,
+          "end": 73.94,
+          "probability": 0.9907543659210205
+        },
+        {
+          "word": " the",
+          "start": 74.46,
+          "end": 74.56,
+          "probability": 0.9894437789916992
+        },
+        {
+          "word": " feast",
+          "start": 74.56,
+          "end": 74.8,
+          "probability": 0.9954812526702881
+        },
+        {
+          "word": " was",
+          "start": 74.8,
+          "end": 74.98,
+          "probability": 0.9996084570884705
+        },
+        {
+          "word": " ready",
+          "start": 74.98,
+          "end": 75.24,
+          "probability": 0.9993539452552795
+        },
+        {
+          "word": " for",
+          "start": 75.24,
+          "end": 75.46,
+          "probability": 0.9981085062026978
+        },
+        {
+          "word": " everyone,",
+          "start": 75.46,
+          "end": 75.88,
+          "probability": 0.9852263331413269
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "seek": 5310,
+      "start": 76.28,
+      "end": 78.72,
+      "text": " but the invited guests couldn't be bothered to come.",
+      "tokens": [
+        51514,
+        457,
+        264,
+        9185,
+        9804,
+        2809,
+        380,
+        312,
+        22996,
+        281,
+        808,
+        13,
+        51664
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.11205600870066676,
+      "compression_ratio": 1.7338403041825095,
+      "no_speech_prob": 0.6577252149581909,
+      "words": [
+        {
+          "word": " but",
+          "start": 76.28,
+          "end": 76.48,
+          "probability": 0.9967036843299866
+        },
+        {
+          "word": " the",
+          "start": 76.48,
+          "end": 76.62,
+          "probability": 0.9949719905853271
+        },
+        {
+          "word": " invited",
+          "start": 76.62,
+          "end": 76.98,
+          "probability": 0.980309784412384
+        },
+        {
+          "word": " guests",
+          "start": 76.98,
+          "end": 77.28,
+          "probability": 0.9973670840263367
+        },
+        {
+          "word": " couldn't",
+          "start": 77.28,
+          "end": 77.98,
+          "probability": 0.9941485822200775
+        },
+        {
+          "word": " be",
+          "start": 77.98,
+          "end": 78.12,
+          "probability": 0.9930551648139954
+        },
+        {
+          "word": " bothered",
+          "start": 78.12,
+          "end": 78.36,
+          "probability": 0.9987974166870117
+        },
+        {
+          "word": " to",
+          "start": 78.36,
+          "end": 78.54,
+          "probability": 0.9990419745445251
+        },
+        {
+          "word": " come.",
+          "start": 78.54,
+          "end": 78.72,
+          "probability": 0.9989983439445496
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "seek": 5310,
+      "start": 79.5,
+      "end": 81.06,
+      "text": " The messengers explained what had happened.",
+      "tokens": [
+        51664,
+        440,
+        2082,
+        15315,
+        8825,
+        437,
+        632,
+        2011,
+        13,
+        51764
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.11205600870066676,
+      "compression_ratio": 1.7338403041825095,
+      "no_speech_prob": 0.6577252149581909,
+      "words": [
+        {
+          "word": " The",
+          "start": 79.5,
+          "end": 79.62,
+          "probability": 0.9964386224746704
+        },
+        {
+          "word": " messengers",
+          "start": 79.62,
+          "end": 80.0,
+          "probability": 0.9936321675777435
+        },
+        {
+          "word": " explained",
+          "start": 80.0,
+          "end": 80.44,
+          "probability": 0.986426591873169
+        },
+        {
+          "word": " what",
+          "start": 80.44,
+          "end": 80.66,
+          "probability": 0.9854346513748169
+        },
+        {
+          "word": " had",
+          "start": 80.66,
+          "end": 80.74,
+          "probability": 0.8845323920249939
+        },
+        {
+          "word": " happened.",
+          "start": 80.74,
+          "end": 81.06,
+          "probability": 0.9977288842201233
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "seek": 8106,
+      "start": 81.06,
+      "end": 84.46,
+      "text": " The father listened, then looked across his empty courtyard.",
+      "tokens": [
+        50364,
+        440,
+        3086,
+        13207,
+        11,
+        550,
+        2956,
+        2108,
+        702,
+        6707,
+        41364,
+        13,
+        50554
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.23478027812221594,
+      "compression_ratio": 1.6206896551724137,
+      "no_speech_prob": 0.3405590057373047,
+      "words": [
+        {
+          "word": " The",
+          "start": 81.06,
+          "end": 81.84,
+          "probability": 0.14542697370052338
+        },
+        {
+          "word": " father",
+          "start": 81.84,
+          "end": 82.08,
+          "probability": 0.9055941104888916
+        },
+        {
+          "word": " listened,",
+          "start": 82.08,
+          "end": 82.46,
+          "probability": 0.981704831123352
+        },
+        {
+          "word": " then",
+          "start": 83.0,
+          "end": 83.06,
+          "probability": 0.9616500735282898
+        },
+        {
+          "word": " looked",
+          "start": 83.06,
+          "end": 83.24,
+          "probability": 0.9962982535362244
+        },
+        {
+          "word": " across",
+          "start": 83.24,
+          "end": 83.56,
+          "probability": 0.9947267174720764
+        },
+        {
+          "word": " his",
+          "start": 83.56,
+          "end": 83.82,
+          "probability": 0.9755715131759644
+        },
+        {
+          "word": " empty",
+          "start": 83.82,
+          "end": 84.04,
+          "probability": 0.9916268587112427
+        },
+        {
+          "word": " courtyard.",
+          "start": 84.04,
+          "end": 84.46,
+          "probability": 0.9446238875389099
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "seek": 8106,
+      "start": 85.12,
+      "end": 86.6,
+      "text": " For a moment his face fell.",
+      "tokens": [
+        50554,
+        1171,
+        257,
+        1623,
+        702,
+        1851,
+        5696,
+        13,
+        50694
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.23478027812221594,
+      "compression_ratio": 1.6206896551724137,
+      "no_speech_prob": 0.3405590057373047,
+      "words": [
+        {
+          "word": " For",
+          "start": 85.12,
+          "end": 85.48,
+          "probability": 0.8658614158630371
+        },
+        {
+          "word": " a",
+          "start": 85.48,
+          "end": 85.56,
+          "probability": 0.9970000386238098
+        },
+        {
+          "word": " moment",
+          "start": 85.56,
+          "end": 85.82,
+          "probability": 0.999750554561615
+        },
+        {
+          "word": " his",
+          "start": 85.82,
+          "end": 86.04,
+          "probability": 0.7847121953964233
+        },
+        {
+          "word": " face",
+          "start": 86.04,
+          "end": 86.32,
+          "probability": 0.9974965453147888
+        },
+        {
+          "word": " fell.",
+          "start": 86.32,
+          "end": 86.6,
+          "probability": 0.9876606464385986
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "seek": 8106,
+      "start": 87.54,
+      "end": 89.84,
+      "text": " All this food and nobody to share it with.",
+      "tokens": [
+        50694,
+        1057,
+        341,
+        1755,
+        293,
+        5079,
+        281,
+        2073,
+        309,
+        365,
+        13,
+        50858
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.23478027812221594,
+      "compression_ratio": 1.6206896551724137,
+      "no_speech_prob": 0.3405590057373047,
+      "words": [
+        {
+          "word": " All",
+          "start": 87.54,
+          "end": 87.7,
+          "probability": 0.8918914198875427
+        },
+        {
+          "word": " this",
+          "start": 87.7,
+          "end": 87.88,
+          "probability": 0.9858359098434448
+        },
+        {
+          "word": " food",
+          "start": 87.88,
+          "end": 88.38,
+          "probability": 0.997992753982544
+        },
+        {
+          "word": " and",
+          "start": 88.38,
+          "end": 88.54,
+          "probability": 0.6892907619476318
+        },
+        {
+          "word": " nobody",
+          "start": 88.54,
+          "end": 89.04,
+          "probability": 0.9743199348449707
+        },
+        {
+          "word": " to",
+          "start": 89.04,
+          "end": 89.28,
+          "probability": 0.9969672560691833
+        },
+        {
+          "word": " share",
+          "start": 89.28,
+          "end": 89.48,
+          "probability": 0.9978103041648865
+        },
+        {
+          "word": " it",
+          "start": 89.48,
+          "end": 89.66,
+          "probability": 0.9920320510864258
+        },
+        {
+          "word": " with.",
+          "start": 89.66,
+          "end": 89.84,
+          "probability": 0.9964377880096436
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "seek": 8106,
+      "start": 90.7,
+      "end": 91.92,
+      "text": " Then he looked beyond the gate.",
+      "tokens": [
+        50858,
+        1396,
+        415,
+        2956,
+        4399,
+        264,
+        8539,
+        13,
+        50944
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.23478027812221594,
+      "compression_ratio": 1.6206896551724137,
+      "no_speech_prob": 0.3405590057373047,
+      "words": [
+        {
+          "word": " Then",
+          "start": 90.7,
+          "end": 90.92,
+          "probability": 0.9633457660675049
+        },
+        {
+          "word": " he",
+          "start": 90.92,
+          "end": 91.04,
+          "probability": 0.9749937057495117
+        },
+        {
+          "word": " looked",
+          "start": 91.04,
+          "end": 91.22,
+          "probability": 0.9990719556808472
+        },
+        {
+          "word": " beyond",
+          "start": 91.22,
+          "end": 91.56,
+          "probability": 0.9927582740783691
+        },
+        {
+          "word": " the",
+          "start": 91.56,
+          "end": 91.76,
+          "probability": 0.9970344305038452
+        },
+        {
+          "word": " gate.",
+          "start": 91.76,
+          "end": 91.92,
+          "probability": 0.9791206121444702
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "seek": 8106,
+      "start": 92.66,
+      "end": 94.68,
+      "text": " A tired rickshaw driver sat beside the road.",
+      "tokens": [
+        50944,
+        316,
+        5868,
+        367,
+        618,
+        49813,
+        6787,
+        3227,
+        15726,
+        264,
+        3060,
+        13,
+        51104
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.23478027812221594,
+      "compression_ratio": 1.6206896551724137,
+      "no_speech_prob": 0.3405590057373047,
+      "words": [
+        {
+          "word": " A",
+          "start": 92.66,
+          "end": 92.72,
+          "probability": 0.8638416528701782
+        },
+        {
+          "word": " tired",
+          "start": 92.72,
+          "end": 93.04,
+          "probability": 0.9713608026504517
+        },
+        {
+          "word": " rickshaw",
+          "start": 93.04,
+          "end": 93.48,
+          "probability": 0.7518522143363953
+        },
+        {
+          "word": " driver",
+          "start": 93.48,
+          "end": 93.8,
+          "probability": 0.9908891320228577
+        },
+        {
+          "word": " sat",
+          "start": 93.8,
+          "end": 94.04,
+          "probability": 0.9749757051467896
+        },
+        {
+          "word": " beside",
+          "start": 94.04,
+          "end": 94.34,
+          "probability": 0.9980097413063049
+        },
+        {
+          "word": " the",
+          "start": 94.34,
+          "end": 94.5,
+          "probability": 0.9988677501678467
+        },
+        {
+          "word": " road.",
+          "start": 94.5,
+          "end": 94.68,
+          "probability": 0.9854825735092163
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "seek": 8106,
+      "start": 95.52,
+      "end": 97.12,
+      "text": " Children searched for something they could eat.",
+      "tokens": [
+        51104,
+        13354,
+        22961,
+        337,
+        746,
+        436,
+        727,
+        1862,
+        13,
+        51220
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.23478027812221594,
+      "compression_ratio": 1.6206896551724137,
+      "no_speech_prob": 0.3405590057373047,
+      "words": [
+        {
+          "word": " Children",
+          "start": 95.52,
+          "end": 95.78,
+          "probability": 0.9879244565963745
+        },
+        {
+          "word": " searched",
+          "start": 95.78,
+          "end": 96.2,
+          "probability": 0.9440168142318726
+        },
+        {
+          "word": " for",
+          "start": 96.2,
+          "end": 96.42,
+          "probability": 0.996971845626831
+        },
+        {
+          "word": " something",
+          "start": 96.42,
+          "end": 96.66,
+          "probability": 0.9970809817314148
+        },
+        {
+          "word": " they",
+          "start": 96.66,
+          "end": 96.82,
+          "probability": 0.9684605002403259
+        },
+        {
+          "word": " could",
+          "start": 96.82,
+          "end": 96.96,
+          "probability": 0.9965730905532837
+        },
+        {
+          "word": " eat.",
+          "start": 96.96,
+          "end": 97.12,
+          "probability": 0.9990585446357727
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "seek": 8106,
+      "start": 97.94,
+      "end": 99.46,
+      "text": " Nearby stood a group of Hydra.",
+      "tokens": [
+        51220,
+        22200,
+        2322,
+        9371,
+        257,
+        1594,
+        295,
+        24231,
+        424,
+        13,
+        51322
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.23478027812221594,
+      "compression_ratio": 1.6206896551724137,
+      "no_speech_prob": 0.3405590057373047,
+      "words": [
+        {
+          "word": " Nearby",
+          "start": 97.94,
+          "end": 98.42,
+          "probability": 0.9189433455467224
+        },
+        {
+          "word": " stood",
+          "start": 98.42,
+          "end": 98.64,
+          "probability": 0.9942535758018494
+        },
+        {
+          "word": " a",
+          "start": 98.64,
+          "end": 98.78,
+          "probability": 0.9970366954803467
+        },
+        {
+          "word": " group",
+          "start": 98.78,
+          "end": 98.94,
+          "probability": 0.9962478280067444
+        },
+        {
+          "word": " of",
+          "start": 98.94,
+          "end": 99.14,
+          "probability": 0.9987653493881226
+        },
+        {
+          "word": " Hydra.",
+          "start": 99.14,
+          "end": 99.46,
+          "probability": 0.7451585531234741
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "seek": 8106,
+      "start": 100.1,
+      "end": 101.6,
+      "text": " They weren't on anyone's guest list.",
+      "tokens": [
+        51322,
+        814,
+        4999,
+        380,
+        322,
+        2878,
+        311,
+        8341,
+        1329,
+        13,
+        51436
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.23478027812221594,
+      "compression_ratio": 1.6206896551724137,
+      "no_speech_prob": 0.3405590057373047,
+      "words": [
+        {
+          "word": " They",
+          "start": 100.1,
+          "end": 100.28,
+          "probability": 0.9935030341148376
+        },
+        {
+          "word": " weren't",
+          "start": 100.28,
+          "end": 100.48,
+          "probability": 0.9941363632678986
+        },
+        {
+          "word": " on",
+          "start": 100.48,
+          "end": 100.64,
+          "probability": 0.9930369257926941
+        },
+        {
+          "word": " anyone's",
+          "start": 100.64,
+          "end": 101.18,
+          "probability": 0.9922758638858795
+        },
+        {
+          "word": " guest",
+          "start": 101.18,
+          "end": 101.3,
+          "probability": 0.9613581299781799
+        },
+        {
+          "word": " list.",
+          "start": 101.3,
+          "end": 101.6,
+          "probability": 0.9828968644142151
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "seek": 8106,
+      "start": 102.24,
+      "end": 104.92,
+      "text": " The father looked at them and his expression changed.",
+      "tokens": [
+        51436,
+        440,
+        3086,
+        2956,
+        412,
+        552,
+        293,
+        702,
+        6114,
+        3105,
+        13,
+        51598
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.23478027812221594,
+      "compression_ratio": 1.6206896551724137,
+      "no_speech_prob": 0.3405590057373047,
+      "words": [
+        {
+          "word": " The",
+          "start": 102.24,
+          "end": 102.52,
+          "probability": 0.9912636280059814
+        },
+        {
+          "word": " father",
+          "start": 102.52,
+          "end": 102.8,
+          "probability": 0.998045802116394
+        },
+        {
+          "word": " looked",
+          "start": 102.8,
+          "end": 103.04,
+          "probability": 0.9989713430404663
+        },
+        {
+          "word": " at",
+          "start": 103.04,
+          "end": 103.18,
+          "probability": 0.9957776069641113
+        },
+        {
+          "word": " them",
+          "start": 103.18,
+          "end": 103.34,
+          "probability": 0.9967517852783203
+        },
+        {
+          "word": " and",
+          "start": 103.34,
+          "end": 103.78,
+          "probability": 0.631343424320221
+        },
+        {
+          "word": " his",
+          "start": 103.78,
+          "end": 103.96,
+          "probability": 0.9946956038475037
+        },
+        {
+          "word": " expression",
+          "start": 103.96,
+          "end": 104.34,
+          "probability": 0.9931530952453613
+        },
+        {
+          "word": " changed.",
+          "start": 104.34,
+          "end": 104.92,
+          "probability": 0.9947799444198608
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "seek": 8106,
+      "start": 105.46,
+      "end": 107.82,
+      "text": " He opened the gate wide and spread his arms.",
+      "tokens": [
+        51598,
+        634,
+        5625,
+        264,
+        8539,
+        4874,
+        293,
+        3974,
+        702,
+        5812,
+        13,
+        51724
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.23478027812221594,
+      "compression_ratio": 1.6206896551724137,
+      "no_speech_prob": 0.3405590057373047,
+      "words": [
+        {
+          "word": " He",
+          "start": 105.46,
+          "end": 105.78,
+          "probability": 0.9063131809234619
+        },
+        {
+          "word": " opened",
+          "start": 105.78,
+          "end": 106.04,
+          "probability": 0.9928827285766602
+        },
+        {
+          "word": " the",
+          "start": 106.04,
+          "end": 106.22,
+          "probability": 0.9971436858177185
+        },
+        {
+          "word": " gate",
+          "start": 106.22,
+          "end": 106.34,
+          "probability": 0.9975374937057495
+        },
+        {
+          "word": " wide",
+          "start": 106.34,
+          "end": 106.74,
+          "probability": 0.9640465974807739
+        },
+        {
+          "word": " and",
+          "start": 106.74,
+          "end": 107.0,
+          "probability": 0.9747194647789001
+        },
+        {
+          "word": " spread",
+          "start": 107.0,
+          "end": 107.3,
+          "probability": 0.9920793175697327
+        },
+        {
+          "word": " his",
+          "start": 107.3,
+          "end": 107.54,
+          "probability": 0.9948641657829285
+        },
+        {
+          "word": " arms.",
+          "start": 107.54,
+          "end": 107.82,
+          "probability": 0.9976375102996826
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "seek": 10782,
+      "start": 107.82,
+      "end": 113.46,
+      "text": " \"'Come in,' he called. My son's home and we're having a feast. Come and celebrate with",
+      "tokens": [
+        50364,
+        24543,
+        16044,
+        294,
+        12529,
+        415,
+        1219,
+        13,
+        1222,
+        1872,
+        311,
+        1280,
+        293,
+        321,
+        434,
+        1419,
+        257,
+        23707,
+        13,
+        2492,
+        293,
+        8098,
+        365,
+        50648
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20743803851372372,
+      "compression_ratio": 1.5345454545454544,
+      "no_speech_prob": 0.24767470359802246,
+      "words": [
+        {
+          "word": " \"'Come",
+          "start": 107.82,
+          "end": 108.74,
+          "probability": 0.3959711876232177
+        },
+        {
+          "word": " in,'",
+          "start": 108.74,
+          "end": 109.14,
+          "probability": 0.751920223236084
+        },
+        {
+          "word": " he",
+          "start": 109.14,
+          "end": 109.34,
+          "probability": 0.93646240234375
+        },
+        {
+          "word": " called.",
+          "start": 109.34,
+          "end": 109.52,
+          "probability": 0.9926757216453552
+        },
+        {
+          "word": " My",
+          "start": 110.06,
+          "end": 110.18,
+          "probability": 0.5108506083488464
+        },
+        {
+          "word": " son's",
+          "start": 110.18,
+          "end": 110.6,
+          "probability": 0.9800108075141907
+        },
+        {
+          "word": " home",
+          "start": 110.6,
+          "end": 110.76,
+          "probability": 0.998177170753479
+        },
+        {
+          "word": " and",
+          "start": 110.76,
+          "end": 111.0,
+          "probability": 0.6195858120918274
+        },
+        {
+          "word": " we're",
+          "start": 111.0,
+          "end": 111.16,
+          "probability": 0.9650426805019379
+        },
+        {
+          "word": " having",
+          "start": 111.16,
+          "end": 111.5,
+          "probability": 0.9953870177268982
+        },
+        {
+          "word": " a",
+          "start": 111.5,
+          "end": 111.64,
+          "probability": 0.9970148801803589
+        },
+        {
+          "word": " feast.",
+          "start": 111.64,
+          "end": 111.9,
+          "probability": 0.9949835538864136
+        },
+        {
+          "word": " Come",
+          "start": 112.5,
+          "end": 112.64,
+          "probability": 0.9192060232162476
+        },
+        {
+          "word": " and",
+          "start": 112.64,
+          "end": 112.88,
+          "probability": 0.9879077076911926
+        },
+        {
+          "word": " celebrate",
+          "start": 112.88,
+          "end": 113.26,
+          "probability": 0.9981297850608826
+        },
+        {
+          "word": " with",
+          "start": 113.26,
+          "end": 113.46,
+          "probability": 0.9979605674743652
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "seek": 10782,
+      "start": 113.46,
+      "end": 114.4,
+      "text": " us.\"",
+      "tokens": [
+        50648,
+        505,
+        889,
+        50702
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20743803851372372,
+      "compression_ratio": 1.5345454545454544,
+      "no_speech_prob": 0.24767470359802246,
+      "words": [
+        {
+          "word": " us.\"",
+          "start": 113.46,
+          "end": 114.4,
+          "probability": 0.7214016914367676
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "seek": 10782,
+      "start": 114.4,
+      "end": 118.4,
+      "text": " The people outside stared at him. They were used to being turned away from houses like",
+      "tokens": [
+        50702,
+        440,
+        561,
+        2380,
+        44738,
+        412,
+        796,
+        13,
+        814,
+        645,
+        1143,
+        281,
+        885,
+        3574,
+        1314,
+        490,
+        8078,
+        411,
+        50896
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20743803851372372,
+      "compression_ratio": 1.5345454545454544,
+      "no_speech_prob": 0.24767470359802246,
+      "words": [
+        {
+          "word": " The",
+          "start": 114.4,
+          "end": 114.6,
+          "probability": 0.9624360203742981
+        },
+        {
+          "word": " people",
+          "start": 114.6,
+          "end": 114.82,
+          "probability": 0.9970560073852539
+        },
+        {
+          "word": " outside",
+          "start": 114.82,
+          "end": 115.22,
+          "probability": 0.9968255758285522
+        },
+        {
+          "word": " stared",
+          "start": 115.22,
+          "end": 115.66,
+          "probability": 0.9716038703918457
+        },
+        {
+          "word": " at",
+          "start": 115.66,
+          "end": 115.86,
+          "probability": 0.9985664486885071
+        },
+        {
+          "word": " him.",
+          "start": 115.86,
+          "end": 116.02,
+          "probability": 0.9959172606468201
+        },
+        {
+          "word": " They",
+          "start": 116.58,
+          "end": 116.7,
+          "probability": 0.8886234760284424
+        },
+        {
+          "word": " were",
+          "start": 116.7,
+          "end": 116.8,
+          "probability": 0.9916825294494629
+        },
+        {
+          "word": " used",
+          "start": 116.8,
+          "end": 116.94,
+          "probability": 0.9975343942642212
+        },
+        {
+          "word": " to",
+          "start": 116.94,
+          "end": 117.08,
+          "probability": 0.9994947910308838
+        },
+        {
+          "word": " being",
+          "start": 117.08,
+          "end": 117.2,
+          "probability": 0.9899947643280029
+        },
+        {
+          "word": " turned",
+          "start": 117.2,
+          "end": 117.44,
+          "probability": 0.988036036491394
+        },
+        {
+          "word": " away",
+          "start": 117.44,
+          "end": 117.76,
+          "probability": 0.9992433786392212
+        },
+        {
+          "word": " from",
+          "start": 117.76,
+          "end": 117.94,
+          "probability": 0.9978869557380676
+        },
+        {
+          "word": " houses",
+          "start": 117.94,
+          "end": 118.22,
+          "probability": 0.9980344176292419
+        },
+        {
+          "word": " like",
+          "start": 118.22,
+          "end": 118.4,
+          "probability": 0.9986793398857117
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "seek": 10782,
+      "start": 118.4,
+      "end": 118.64,
+      "text": " this.",
+      "tokens": [
+        50896,
+        341,
+        13,
+        50946
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20743803851372372,
+      "compression_ratio": 1.5345454545454544,
+      "no_speech_prob": 0.24767470359802246,
+      "words": [
+        {
+          "word": " this.",
+          "start": 118.4,
+          "end": 118.64,
+          "probability": 0.9981099367141724
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "seek": 10782,
+      "start": 119.32,
+      "end": 123.16,
+      "text": " \"'Do you mean us?' someone asked. All of you,' the father said.",
+      "tokens": [
+        50946,
+        24543,
+        7653,
+        291,
+        914,
+        505,
+        8569,
+        1580,
+        2351,
+        13,
+        1057,
+        295,
+        291,
+        12529,
+        264,
+        3086,
+        848,
+        13,
+        51150
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20743803851372372,
+      "compression_ratio": 1.5345454545454544,
+      "no_speech_prob": 0.24767470359802246,
+      "words": [
+        {
+          "word": " \"'Do",
+          "start": 119.32,
+          "end": 119.8,
+          "probability": 0.7090881764888763
+        },
+        {
+          "word": " you",
+          "start": 119.8,
+          "end": 119.9,
+          "probability": 0.9964146614074707
+        },
+        {
+          "word": " mean",
+          "start": 119.9,
+          "end": 120.04,
+          "probability": 0.9847372174263
+        },
+        {
+          "word": " us?'",
+          "start": 120.04,
+          "end": 120.7,
+          "probability": 0.7609961628913879
+        },
+        {
+          "word": " someone",
+          "start": 120.7,
+          "end": 120.9,
+          "probability": 0.45221346616744995
+        },
+        {
+          "word": " asked.",
+          "start": 120.9,
+          "end": 121.14,
+          "probability": 0.9957857728004456
+        },
+        {
+          "word": " All",
+          "start": 121.68,
+          "end": 122.08,
+          "probability": 0.5753452181816101
+        },
+        {
+          "word": " of",
+          "start": 122.08,
+          "end": 122.26,
+          "probability": 0.9985113739967346
+        },
+        {
+          "word": " you,'",
+          "start": 122.26,
+          "end": 122.62,
+          "probability": 0.8034519851207733
+        },
+        {
+          "word": " the",
+          "start": 122.62,
+          "end": 122.76,
+          "probability": 0.9919622540473938
+        },
+        {
+          "word": " father",
+          "start": 122.76,
+          "end": 122.92,
+          "probability": 0.8946035504341125
+        },
+        {
+          "word": " said.",
+          "start": 122.92,
+          "end": 123.16,
+          "probability": 0.9972042441368103
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "seek": 10782,
+      "start": 123.92,
+      "end": 129.22,
+      "text": " \"'There's a place for you here.' His son smiled. The family stepped forward to welcome",
+      "tokens": [
+        51150,
+        24543,
+        9077,
+        311,
+        257,
+        1081,
+        337,
+        291,
+        510,
+        4443,
+        2812,
+        1872,
+        35132,
+        13,
+        440,
+        1605,
+        15251,
+        2128,
+        281,
+        2928,
+        51438
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20743803851372372,
+      "compression_ratio": 1.5345454545454544,
+      "no_speech_prob": 0.24767470359802246,
+      "words": [
+        {
+          "word": " \"'There's",
+          "start": 123.92,
+          "end": 124.1,
+          "probability": 0.7881465554237366
+        },
+        {
+          "word": " a",
+          "start": 124.1,
+          "end": 124.16,
+          "probability": 0.9977236390113831
+        },
+        {
+          "word": " place",
+          "start": 124.16,
+          "end": 124.44,
+          "probability": 0.9989750385284424
+        },
+        {
+          "word": " for",
+          "start": 124.44,
+          "end": 124.74,
+          "probability": 0.9985515475273132
+        },
+        {
+          "word": " you",
+          "start": 124.74,
+          "end": 124.88,
+          "probability": 0.9987472295761108
+        },
+        {
+          "word": " here.'",
+          "start": 124.88,
+          "end": 125.96,
+          "probability": 0.600142739713192
+        },
+        {
+          "word": " His",
+          "start": 125.96,
+          "end": 126.14,
+          "probability": 0.986125648021698
+        },
+        {
+          "word": " son",
+          "start": 126.14,
+          "end": 126.42,
+          "probability": 0.9881651401519775
+        },
+        {
+          "word": " smiled.",
+          "start": 126.42,
+          "end": 126.9,
+          "probability": 0.9944871068000793
+        },
+        {
+          "word": " The",
+          "start": 127.56,
+          "end": 127.72,
+          "probability": 0.9824867844581604
+        },
+        {
+          "word": " family",
+          "start": 127.72,
+          "end": 128.04,
+          "probability": 0.9784352779388428
+        },
+        {
+          "word": " stepped",
+          "start": 128.04,
+          "end": 128.28,
+          "probability": 0.9978823065757751
+        },
+        {
+          "word": " forward",
+          "start": 128.28,
+          "end": 128.72,
+          "probability": 0.9990105628967285
+        },
+        {
+          "word": " to",
+          "start": 128.72,
+          "end": 128.94,
+          "probability": 0.9979052543640137
+        },
+        {
+          "word": " welcome",
+          "start": 128.94,
+          "end": 129.22,
+          "probability": 0.9981796741485596
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "seek": 10782,
+      "start": 129.22,
+      "end": 134.7,
+      "text": " their new guests. Slowly, the people began to come through the gate. Rick Shaw drivers",
+      "tokens": [
+        51438,
+        641,
+        777,
+        9804,
+        13,
+        29674,
+        11,
+        264,
+        561,
+        4283,
+        281,
+        808,
+        807,
+        264,
+        8539,
+        13,
+        11224,
+        27132,
+        11590,
+        51712
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20743803851372372,
+      "compression_ratio": 1.5345454545454544,
+      "no_speech_prob": 0.24767470359802246,
+      "words": [
+        {
+          "word": " their",
+          "start": 129.22,
+          "end": 129.46,
+          "probability": 0.9944526553153992
+        },
+        {
+          "word": " new",
+          "start": 129.46,
+          "end": 129.62,
+          "probability": 0.9874064326286316
+        },
+        {
+          "word": " guests.",
+          "start": 129.62,
+          "end": 129.86,
+          "probability": 0.9934139847755432
+        },
+        {
+          "word": " Slowly,",
+          "start": 130.78,
+          "end": 131.26,
+          "probability": 0.9818075895309448
+        },
+        {
+          "word": " the",
+          "start": 131.42,
+          "end": 131.46,
+          "probability": 0.9917416572570801
+        },
+        {
+          "word": " people",
+          "start": 131.46,
+          "end": 131.68,
+          "probability": 0.9990832805633545
+        },
+        {
+          "word": " began",
+          "start": 131.68,
+          "end": 131.96,
+          "probability": 0.997490406036377
+        },
+        {
+          "word": " to",
+          "start": 131.96,
+          "end": 132.16,
+          "probability": 0.9988560676574707
+        },
+        {
+          "word": " come",
+          "start": 132.16,
+          "end": 132.34,
+          "probability": 0.997563362121582
+        },
+        {
+          "word": " through",
+          "start": 132.34,
+          "end": 132.52,
+          "probability": 0.9954013824462891
+        },
+        {
+          "word": " the",
+          "start": 132.52,
+          "end": 132.66,
+          "probability": 0.9961712956428528
+        },
+        {
+          "word": " gate.",
+          "start": 132.66,
+          "end": 132.88,
+          "probability": 0.9882281422615051
+        },
+        {
+          "word": " Rick",
+          "start": 133.68,
+          "end": 134.08,
+          "probability": 0.7255823016166687
+        },
+        {
+          "word": " Shaw",
+          "start": 134.08,
+          "end": 134.32,
+          "probability": 0.6310514211654663
+        },
+        {
+          "word": " drivers",
+          "start": 134.32,
+          "end": 134.7,
+          "probability": 0.8354670405387878
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "seek": 13470,
+      "start": 134.7,
+      "end": 136.78,
+      "text": " His son was always a little bit more worried about the children who lived on the streets.",
+      "tokens": [
+        50364,
+        2812,
+        1872,
+        390,
+        1009,
+        257,
+        707,
+        857,
+        544,
+        5804,
+        466,
+        264,
+        2227,
+        567,
+        5152,
+        322,
+        264,
+        8481,
+        13,
+        50609
+      ],
+      "temperature": 0.4,
+      "avg_logprob": -0.7517797355977898,
+      "compression_ratio": 1.7265917602996255,
+      "no_speech_prob": 0.13486653566360474,
+      "words": [
+        {
+          "word": " His",
+          "start": 134.7,
+          "end": 135.46,
+          "probability": 0.07750950008630753
+        },
+        {
+          "word": " son",
+          "start": 135.46,
+          "end": 135.86,
+          "probability": 0.6171095967292786
+        },
+        {
+          "word": " was",
+          "start": 135.86,
+          "end": 135.86,
+          "probability": 0.2624635100364685
+        },
+        {
+          "word": " always",
+          "start": 135.86,
+          "end": 135.86,
+          "probability": 0.025628065690398216
+        },
+        {
+          "word": " a",
+          "start": 135.86,
+          "end": 135.86,
+          "probability": 0.014742937870323658
+        },
+        {
+          "word": " little",
+          "start": 135.86,
+          "end": 135.86,
+          "probability": 0.06764665246009827
+        },
+        {
+          "word": " bit",
+          "start": 135.86,
+          "end": 135.86,
+          "probability": 0.1437789350748062
+        },
+        {
+          "word": " more",
+          "start": 135.86,
+          "end": 135.86,
+          "probability": 0.09155692160129547
+        },
+        {
+          "word": " worried",
+          "start": 135.86,
+          "end": 135.86,
+          "probability": 0.013796143233776093
+        },
+        {
+          "word": " about",
+          "start": 135.86,
+          "end": 135.86,
+          "probability": 0.2642644941806793
+        },
+        {
+          "word": " the",
+          "start": 135.86,
+          "end": 135.86,
+          "probability": 0.1687753051519394
+        },
+        {
+          "word": " children",
+          "start": 135.86,
+          "end": 135.86,
+          "probability": 0.06583753973245621
+        },
+        {
+          "word": " who",
+          "start": 135.86,
+          "end": 136.06,
+          "probability": 0.20639678835868835
+        },
+        {
+          "word": " lived",
+          "start": 136.06,
+          "end": 136.28,
+          "probability": 0.5468323826789856
+        },
+        {
+          "word": " on",
+          "start": 136.28,
+          "end": 136.36,
+          "probability": 0.6530076265335083
+        },
+        {
+          "word": " the",
+          "start": 136.36,
+          "end": 136.48,
+          "probability": 0.9580106735229492
+        },
+        {
+          "word": " streets.",
+          "start": 136.48,
+          "end": 136.78,
+          "probability": 0.9769775867462158
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "seek": 13470,
+      "start": 137.58,
+      "end": 140.78,
+      "text": " The Hydra came, too, still wondering if they were really welcome.",
+      "tokens": [
+        50609,
+        440,
+        24231,
+        424,
+        1361,
+        11,
+        886,
+        11,
+        920,
+        6359,
+        498,
+        436,
+        645,
+        534,
+        2928,
+        13,
+        50802
+      ],
+      "temperature": 0.4,
+      "avg_logprob": -0.7517797355977898,
+      "compression_ratio": 1.7265917602996255,
+      "no_speech_prob": 0.13486653566360474,
+      "words": [
+        {
+          "word": " The",
+          "start": 137.58,
+          "end": 137.78,
+          "probability": 0.6008617281913757
+        },
+        {
+          "word": " Hydra",
+          "start": 137.78,
+          "end": 138.14,
+          "probability": 0.6583923250436783
+        },
+        {
+          "word": " came,",
+          "start": 138.14,
+          "end": 138.4,
+          "probability": 0.9568957090377808
+        },
+        {
+          "word": " too,",
+          "start": 138.58,
+          "end": 138.72,
+          "probability": 0.9747055172920227
+        },
+        {
+          "word": " still",
+          "start": 139.14,
+          "end": 139.42,
+          "probability": 0.9406571984291077
+        },
+        {
+          "word": " wondering",
+          "start": 139.42,
+          "end": 139.76,
+          "probability": 0.9901267290115356
+        },
+        {
+          "word": " if",
+          "start": 139.76,
+          "end": 140.0,
+          "probability": 0.9824392795562744
+        },
+        {
+          "word": " they",
+          "start": 140.0,
+          "end": 140.14,
+          "probability": 0.9948986172676086
+        },
+        {
+          "word": " were",
+          "start": 140.14,
+          "end": 140.26,
+          "probability": 0.9523202180862427
+        },
+        {
+          "word": " really",
+          "start": 140.26,
+          "end": 140.48,
+          "probability": 0.8909163475036621
+        },
+        {
+          "word": " welcome.",
+          "start": 140.48,
+          "end": 140.78,
+          "probability": 0.9610562324523926
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "seek": 13470,
+      "start": 141.58,
+      "end": 143.38,
+      "text": " The father greeted them himself.",
+      "tokens": [
+        50802,
+        440,
+        3086,
+        38441,
+        552,
+        3647,
+        13,
+        50922
+      ],
+      "temperature": 0.4,
+      "avg_logprob": -0.7517797355977898,
+      "compression_ratio": 1.7265917602996255,
+      "no_speech_prob": 0.13486653566360474,
+      "words": [
+        {
+          "word": " The",
+          "start": 141.58,
+          "end": 141.9,
+          "probability": 0.8294076919555664
+        },
+        {
+          "word": " father",
+          "start": 141.9,
+          "end": 142.32,
+          "probability": 0.9779773950576782
+        },
+        {
+          "word": " greeted",
+          "start": 142.32,
+          "end": 142.64,
+          "probability": 0.964634120464325
+        },
+        {
+          "word": " them",
+          "start": 142.64,
+          "end": 142.88,
+          "probability": 0.9210129380226135
+        },
+        {
+          "word": " himself.",
+          "start": 142.88,
+          "end": 143.38,
+          "probability": 0.8785300254821777
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "seek": 13470,
+      "start": 144.2,
+      "end": 146.9,
+      "text": " His son offered water, and the children washed their hands.",
+      "tokens": [
+        50922,
+        2812,
+        1872,
+        8059,
+        1281,
+        11,
+        293,
+        264,
+        2227,
+        16300,
+        641,
+        2377,
+        13,
+        51135
+      ],
+      "temperature": 0.4,
+      "avg_logprob": -0.7517797355977898,
+      "compression_ratio": 1.7265917602996255,
+      "no_speech_prob": 0.13486653566360474,
+      "words": [
+        {
+          "word": " His",
+          "start": 144.2,
+          "end": 144.3,
+          "probability": 0.9865084886550903
+        },
+        {
+          "word": " son",
+          "start": 144.3,
+          "end": 144.48,
+          "probability": 0.9990630745887756
+        },
+        {
+          "word": " offered",
+          "start": 144.48,
+          "end": 144.8,
+          "probability": 0.9942653775215149
+        },
+        {
+          "word": " water,",
+          "start": 144.8,
+          "end": 145.18,
+          "probability": 0.9979745745658875
+        },
+        {
+          "word": " and",
+          "start": 145.52,
+          "end": 145.6,
+          "probability": 0.9584013223648071
+        },
+        {
+          "word": " the",
+          "start": 145.6,
+          "end": 145.68,
+          "probability": 0.9836784601211548
+        },
+        {
+          "word": " children",
+          "start": 145.68,
+          "end": 146.0,
+          "probability": 0.9962307810783386
+        },
+        {
+          "word": " washed",
+          "start": 146.0,
+          "end": 146.3,
+          "probability": 0.9267140030860901
+        },
+        {
+          "word": " their",
+          "start": 146.3,
+          "end": 146.54,
+          "probability": 0.9963305592536926
+        },
+        {
+          "word": " hands.",
+          "start": 146.54,
+          "end": 146.9,
+          "probability": 0.997231662273407
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "seek": 13470,
+      "start": 147.44,
+      "end": 148.6,
+      "text": " He said, please sit down!",
+      "tokens": [
+        51135,
+        634,
+        848,
+        11,
+        1767,
+        1394,
+        760,
+        0,
+        51265
+      ],
+      "temperature": 0.4,
+      "avg_logprob": -0.7517797355977898,
+      "compression_ratio": 1.7265917602996255,
+      "no_speech_prob": 0.13486653566360474,
+      "words": [
+        {
+          "word": " He",
+          "start": 147.44,
+          "end": 147.94,
+          "probability": 0.0012921246234327555
+        },
+        {
+          "word": " said,",
+          "start": 147.94,
+          "end": 147.98,
+          "probability": 0.48015639185905457
+        },
+        {
+          "word": " please",
+          "start": 147.98,
+          "end": 147.98,
+          "probability": 0.07103244215250015
+        },
+        {
+          "word": " sit",
+          "start": 147.98,
+          "end": 148.24,
+          "probability": 0.9084445834159851
+        },
+        {
+          "word": " down!",
+          "start": 148.24,
+          "end": 148.6,
+          "probability": 0.9941794872283936
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "seek": 13470,
+      "start": 150.02,
+      "end": 151.44,
+      "text": " The guests took their places.",
+      "tokens": [
+        51265,
+        440,
+        9804,
+        1890,
+        641,
+        3190,
+        13,
+        51387
+      ],
+      "temperature": 0.4,
+      "avg_logprob": -0.7517797355977898,
+      "compression_ratio": 1.7265917602996255,
+      "no_speech_prob": 0.13486653566360474,
+      "words": [
+        {
+          "word": " The",
+          "start": 150.02,
+          "end": 150.36,
+          "probability": 0.5290299654006958
+        },
+        {
+          "word": " guests",
+          "start": 150.36,
+          "end": 150.6,
+          "probability": 0.6459411382675171
+        },
+        {
+          "word": " took",
+          "start": 150.6,
+          "end": 150.94,
+          "probability": 0.9268665909767151
+        },
+        {
+          "word": " their",
+          "start": 150.94,
+          "end": 151.1,
+          "probability": 0.9681085348129272
+        },
+        {
+          "word": " places.",
+          "start": 151.1,
+          "end": 151.44,
+          "probability": 0.918502688407898
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "seek": 13470,
+      "start": 152.34,
+      "end": 154.94,
+      "text": " The family stayed beside them, talking and smiling.",
+      "tokens": [
+        51387,
+        440,
+        1605,
+        9181,
+        15726,
+        552,
+        11,
+        1417,
+        293,
+        16005,
+        13,
+        51546
+      ],
+      "temperature": 0.4,
+      "avg_logprob": -0.7517797355977898,
+      "compression_ratio": 1.7265917602996255,
+      "no_speech_prob": 0.13486653566360474,
+      "words": [
+        {
+          "word": " The",
+          "start": 152.34,
+          "end": 152.54,
+          "probability": 0.9362137317657471
+        },
+        {
+          "word": " family",
+          "start": 152.54,
+          "end": 152.84,
+          "probability": 0.9586673974990845
+        },
+        {
+          "word": " stayed",
+          "start": 152.84,
+          "end": 153.1,
+          "probability": 0.9863206744194031
+        },
+        {
+          "word": " beside",
+          "start": 153.1,
+          "end": 153.46,
+          "probability": 0.9823198914527893
+        },
+        {
+          "word": " them,",
+          "start": 153.46,
+          "end": 153.76,
+          "probability": 0.97198885679245
+        },
+        {
+          "word": " talking",
+          "start": 154.0,
+          "end": 154.32,
+          "probability": 0.8959817886352539
+        },
+        {
+          "word": " and",
+          "start": 154.32,
+          "end": 154.56,
+          "probability": 0.9178631901741028
+        },
+        {
+          "word": " smiling.",
+          "start": 154.56,
+          "end": 154.94,
+          "probability": 0.9933063387870789
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "seek": 13470,
+      "start": 155.86,
+      "end": 157.58,
+      "text": " Then the father picked up a serving spoon.",
+      "tokens": [
+        51546,
+        1396,
+        264,
+        3086,
+        6183,
+        493,
+        257,
+        8148,
+        12453,
+        13,
+        51669
+      ],
+      "temperature": 0.4,
+      "avg_logprob": -0.7517797355977898,
+      "compression_ratio": 1.7265917602996255,
+      "no_speech_prob": 0.13486653566360474,
+      "words": [
+        {
+          "word": " Then",
+          "start": 155.86,
+          "end": 156.1,
+          "probability": 0.8290258049964905
+        },
+        {
+          "word": " the",
+          "start": 156.1,
+          "end": 156.22,
+          "probability": 0.9405165314674377
+        },
+        {
+          "word": " father",
+          "start": 156.22,
+          "end": 156.48,
+          "probability": 0.9949718713760376
+        },
+        {
+          "word": " picked",
+          "start": 156.48,
+          "end": 156.72,
+          "probability": 0.9858999848365784
+        },
+        {
+          "word": " up",
+          "start": 156.72,
+          "end": 156.86,
+          "probability": 0.9866717457771301
+        },
+        {
+          "word": " a",
+          "start": 156.86,
+          "end": 156.96,
+          "probability": 0.9890973567962646
+        },
+        {
+          "word": " serving",
+          "start": 156.96,
+          "end": 157.24,
+          "probability": 0.9824560880661011
+        },
+        {
+          "word": " spoon.",
+          "start": 157.24,
+          "end": 157.58,
+          "probability": 0.9491092562675476
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "seek": 13470,
+      "start": 158.3,
+      "end": 161.14,
+      "text": " He filled a plate for his son and another for an older guest.",
+      "tokens": [
+        51669,
+        634,
+        6412,
+        257,
+        5924,
+        337,
+        702,
+        1872,
+        293,
+        1071,
+        337,
+        364,
+        4906,
+        8341,
+        13,
+        51856
+      ],
+      "temperature": 0.4,
+      "avg_logprob": -0.7517797355977898,
+      "compression_ratio": 1.7265917602996255,
+      "no_speech_prob": 0.13486653566360474,
+      "words": [
+        {
+          "word": " He",
+          "start": 158.3,
+          "end": 158.42,
+          "probability": 0.959740400314331
+        },
+        {
+          "word": " filled",
+          "start": 158.42,
+          "end": 158.6,
+          "probability": 0.9178892374038696
+        },
+        {
+          "word": " a",
+          "start": 158.6,
+          "end": 158.76,
+          "probability": 0.9185878038406372
+        },
+        {
+          "word": " plate",
+          "start": 158.76,
+          "end": 158.88,
+          "probability": 0.9935071468353271
+        },
+        {
+          "word": " for",
+          "start": 158.88,
+          "end": 159.06,
+          "probability": 0.9812397956848145
+        },
+        {
+          "word": " his",
+          "start": 159.06,
+          "end": 159.18,
+          "probability": 0.9805576801300049
+        },
+        {
+          "word": " son",
+          "start": 159.18,
+          "end": 159.52,
+          "probability": 0.9957408905029297
+        },
+        {
+          "word": " and",
+          "start": 159.52,
+          "end": 160.0,
+          "probability": 0.31799811124801636
+        },
+        {
+          "word": " another",
+          "start": 160.0,
+          "end": 160.3,
+          "probability": 0.9861935973167419
+        },
+        {
+          "word": " for",
+          "start": 160.3,
+          "end": 160.56,
+          "probability": 0.7076982259750366
+        },
+        {
+          "word": " an",
+          "start": 160.56,
+          "end": 160.68,
+          "probability": 0.9293113350868225
+        },
+        {
+          "word": " older",
+          "start": 160.68,
+          "end": 160.86,
+          "probability": 0.9747663140296936
+        },
+        {
+          "word": " guest.",
+          "start": 160.86,
+          "end": 161.14,
+          "probability": 0.9718510508537292
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "seek": 16114,
+      "start": 161.14,
+      "end": 163.76,
+      "text": " He served a child, then his wife.",
+      "tokens": [
+        50364,
+        634,
+        7584,
+        257,
+        1440,
+        11,
+        550,
+        702,
+        3836,
+        13,
+        50506
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.27395228510317593,
+      "compression_ratio": 1.649805447470817,
+      "no_speech_prob": 0.4399890899658203,
+      "words": [
+        {
+          "word": " He",
+          "start": 161.14,
+          "end": 162.06,
+          "probability": 0.20714248716831207
+        },
+        {
+          "word": " served",
+          "start": 162.06,
+          "end": 162.22,
+          "probability": 0.8412956595420837
+        },
+        {
+          "word": " a",
+          "start": 162.22,
+          "end": 162.36,
+          "probability": 0.9781060218811035
+        },
+        {
+          "word": " child,",
+          "start": 162.36,
+          "end": 162.78,
+          "probability": 0.9962098598480225
+        },
+        {
+          "word": " then",
+          "start": 163.08,
+          "end": 163.36,
+          "probability": 0.8147062063217163
+        },
+        {
+          "word": " his",
+          "start": 163.36,
+          "end": 163.52,
+          "probability": 0.9954969882965088
+        },
+        {
+          "word": " wife.",
+          "start": 163.52,
+          "end": 163.76,
+          "probability": 0.9993038177490234
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "seek": 16114,
+      "start": 164.86,
+      "end": 167.0,
+      "text": " His son took a spoon too and began to serve the guests.",
+      "tokens": [
+        50506,
+        2812,
+        1872,
+        1890,
+        257,
+        12453,
+        886,
+        293,
+        4283,
+        281,
+        4596,
+        264,
+        9804,
+        13,
+        50664
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.27395228510317593,
+      "compression_ratio": 1.649805447470817,
+      "no_speech_prob": 0.4399890899658203,
+      "words": [
+        {
+          "word": " His",
+          "start": 164.86,
+          "end": 164.98,
+          "probability": 0.9604060649871826
+        },
+        {
+          "word": " son",
+          "start": 164.98,
+          "end": 165.2,
+          "probability": 0.9971007704734802
+        },
+        {
+          "word": " took",
+          "start": 165.2,
+          "end": 165.38,
+          "probability": 0.9955326318740845
+        },
+        {
+          "word": " a",
+          "start": 165.38,
+          "end": 165.48,
+          "probability": 0.9725640416145325
+        },
+        {
+          "word": " spoon",
+          "start": 165.48,
+          "end": 165.66,
+          "probability": 0.9442179799079895
+        },
+        {
+          "word": " too",
+          "start": 165.66,
+          "end": 165.98,
+          "probability": 0.6377521753311157
+        },
+        {
+          "word": " and",
+          "start": 165.98,
+          "end": 166.14,
+          "probability": 0.833471417427063
+        },
+        {
+          "word": " began",
+          "start": 166.14,
+          "end": 166.36,
+          "probability": 0.9952496290206909
+        },
+        {
+          "word": " to",
+          "start": 166.36,
+          "end": 166.54,
+          "probability": 0.9986549615859985
+        },
+        {
+          "word": " serve",
+          "start": 166.54,
+          "end": 166.7,
+          "probability": 0.9975098371505737
+        },
+        {
+          "word": " the",
+          "start": 166.7,
+          "end": 166.84,
+          "probability": 0.9963142275810242
+        },
+        {
+          "word": " guests.",
+          "start": 166.84,
+          "end": 167.0,
+          "probability": 0.9967992305755615
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "seek": 16114,
+      "start": 167.74,
+      "end": 169.36,
+      "text": " There was plenty to go around.",
+      "tokens": [
+        50664,
+        821,
+        390,
+        7140,
+        281,
+        352,
+        926,
+        13,
+        50776
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.27395228510317593,
+      "compression_ratio": 1.649805447470817,
+      "no_speech_prob": 0.4399890899658203,
+      "words": [
+        {
+          "word": " There",
+          "start": 167.74,
+          "end": 168.14,
+          "probability": 0.9711316227912903
+        },
+        {
+          "word": " was",
+          "start": 168.14,
+          "end": 168.28,
+          "probability": 0.9950736165046692
+        },
+        {
+          "word": " plenty",
+          "start": 168.28,
+          "end": 168.66,
+          "probability": 0.9853915572166443
+        },
+        {
+          "word": " to",
+          "start": 168.66,
+          "end": 168.92,
+          "probability": 0.9992528557777405
+        },
+        {
+          "word": " go",
+          "start": 168.92,
+          "end": 169.08,
+          "probability": 0.9793691039085388
+        },
+        {
+          "word": " around.",
+          "start": 169.08,
+          "end": 169.36,
+          "probability": 0.9955240488052368
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "seek": 16114,
+      "start": 169.98,
+      "end": 171.86,
+      "text": " Plates passed from hand to hand.",
+      "tokens": [
+        50776,
+        2149,
+        1024,
+        4678,
+        490,
+        1011,
+        281,
+        1011,
+        13,
+        50896
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.27395228510317593,
+      "compression_ratio": 1.649805447470817,
+      "no_speech_prob": 0.4399890899658203,
+      "words": [
+        {
+          "word": " Plates",
+          "start": 169.98,
+          "end": 170.26,
+          "probability": 0.9417219758033752
+        },
+        {
+          "word": " passed",
+          "start": 170.26,
+          "end": 170.66,
+          "probability": 0.9835861325263977
+        },
+        {
+          "word": " from",
+          "start": 170.66,
+          "end": 170.98,
+          "probability": 0.9676386117935181
+        },
+        {
+          "word": " hand",
+          "start": 170.98,
+          "end": 171.28,
+          "probability": 0.997880220413208
+        },
+        {
+          "word": " to",
+          "start": 171.28,
+          "end": 171.48,
+          "probability": 0.978826105594635
+        },
+        {
+          "word": " hand.",
+          "start": 171.48,
+          "end": 171.86,
+          "probability": 0.9992369413375854
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "seek": 16114,
+      "start": 172.4,
+      "end": 175.42,
+      "text": " Nobody was sent away, and nobody had to eat outside.",
+      "tokens": [
+        50896,
+        9297,
+        390,
+        2279,
+        1314,
+        11,
+        293,
+        5079,
+        632,
+        281,
+        1862,
+        2380,
+        13,
+        51076
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.27395228510317593,
+      "compression_ratio": 1.649805447470817,
+      "no_speech_prob": 0.4399890899658203,
+      "words": [
+        {
+          "word": " Nobody",
+          "start": 172.4,
+          "end": 172.74,
+          "probability": 0.9706557393074036
+        },
+        {
+          "word": " was",
+          "start": 172.74,
+          "end": 173.0,
+          "probability": 0.9959510564804077
+        },
+        {
+          "word": " sent",
+          "start": 173.0,
+          "end": 173.16,
+          "probability": 0.991446852684021
+        },
+        {
+          "word": " away,",
+          "start": 173.16,
+          "end": 173.46,
+          "probability": 0.9974334836006165
+        },
+        {
+          "word": " and",
+          "start": 174.04,
+          "end": 174.16,
+          "probability": 0.9974919557571411
+        },
+        {
+          "word": " nobody",
+          "start": 174.16,
+          "end": 174.52,
+          "probability": 0.9964568018913269
+        },
+        {
+          "word": " had",
+          "start": 174.52,
+          "end": 174.78,
+          "probability": 0.9984673857688904
+        },
+        {
+          "word": " to",
+          "start": 174.78,
+          "end": 174.9,
+          "probability": 0.9992159605026245
+        },
+        {
+          "word": " eat",
+          "start": 174.9,
+          "end": 175.02,
+          "probability": 0.9975927472114563
+        },
+        {
+          "word": " outside.",
+          "start": 175.02,
+          "end": 175.42,
+          "probability": 0.9988729357719421
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "seek": 16114,
+      "start": 176.36,
+      "end": 178.22,
+      "text": " Soon the courtyard was full of laughter.",
+      "tokens": [
+        51076,
+        17610,
+        264,
+        41364,
+        390,
+        1577,
+        295,
+        13092,
+        13,
+        51216
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.27395228510317593,
+      "compression_ratio": 1.649805447470817,
+      "no_speech_prob": 0.4399890899658203,
+      "words": [
+        {
+          "word": " Soon",
+          "start": 176.36,
+          "end": 176.62,
+          "probability": 0.9953482747077942
+        },
+        {
+          "word": " the",
+          "start": 176.62,
+          "end": 176.78,
+          "probability": 0.7810284495353699
+        },
+        {
+          "word": " courtyard",
+          "start": 176.78,
+          "end": 177.16,
+          "probability": 0.9175229668617249
+        },
+        {
+          "word": " was",
+          "start": 177.16,
+          "end": 177.4,
+          "probability": 0.9993910789489746
+        },
+        {
+          "word": " full",
+          "start": 177.4,
+          "end": 177.7,
+          "probability": 0.9996455907821655
+        },
+        {
+          "word": " of",
+          "start": 177.7,
+          "end": 177.9,
+          "probability": 0.9989917874336243
+        },
+        {
+          "word": " laughter.",
+          "start": 177.9,
+          "end": 178.22,
+          "probability": 0.9966952800750732
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "seek": 16114,
+      "start": 178.94,
+      "end": 182.0,
+      "text": " The father offered more rice, and his guests smiled back at him.",
+      "tokens": [
+        51216,
+        440,
+        3086,
+        8059,
+        544,
+        5090,
+        11,
+        293,
+        702,
+        9804,
+        35132,
+        646,
+        412,
+        796,
+        13,
+        51398
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.27395228510317593,
+      "compression_ratio": 1.649805447470817,
+      "no_speech_prob": 0.4399890899658203,
+      "words": [
+        {
+          "word": " The",
+          "start": 178.94,
+          "end": 179.1,
+          "probability": 0.994066596031189
+        },
+        {
+          "word": " father",
+          "start": 179.1,
+          "end": 179.36,
+          "probability": 0.980851948261261
+        },
+        {
+          "word": " offered",
+          "start": 179.36,
+          "end": 179.68,
+          "probability": 0.998391330242157
+        },
+        {
+          "word": " more",
+          "start": 179.68,
+          "end": 179.92,
+          "probability": 0.9951745867729187
+        },
+        {
+          "word": " rice,",
+          "start": 179.92,
+          "end": 180.2,
+          "probability": 0.9866706728935242
+        },
+        {
+          "word": " and",
+          "start": 180.56,
+          "end": 180.64,
+          "probability": 0.9980037808418274
+        },
+        {
+          "word": " his",
+          "start": 180.64,
+          "end": 180.76,
+          "probability": 0.9946467280387878
+        },
+        {
+          "word": " guests",
+          "start": 180.76,
+          "end": 180.98,
+          "probability": 0.8107089996337891
+        },
+        {
+          "word": " smiled",
+          "start": 180.98,
+          "end": 181.3,
+          "probability": 0.9725252389907837
+        },
+        {
+          "word": " back",
+          "start": 181.3,
+          "end": 181.64,
+          "probability": 0.9988910555839539
+        },
+        {
+          "word": " at",
+          "start": 181.64,
+          "end": 181.82,
+          "probability": 0.9990923404693604
+        },
+        {
+          "word": " him.",
+          "start": 181.82,
+          "end": 182.0,
+          "probability": 0.9968476891517639
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "seek": 16114,
+      "start": 182.48,
+      "end": 185.2,
+      "text": " He stood with the hidrogests, laughing and talking.",
+      "tokens": [
+        51398,
+        634,
+        9371,
+        365,
+        264,
+        16253,
+        6675,
+        4409,
+        11,
+        5059,
+        293,
+        1417,
+        13,
+        51560
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.27395228510317593,
+      "compression_ratio": 1.649805447470817,
+      "no_speech_prob": 0.4399890899658203,
+      "words": [
+        {
+          "word": " He",
+          "start": 182.48,
+          "end": 182.66,
+          "probability": 0.9948517680168152
+        },
+        {
+          "word": " stood",
+          "start": 182.66,
+          "end": 182.86,
+          "probability": 0.9990971088409424
+        },
+        {
+          "word": " with",
+          "start": 182.86,
+          "end": 183.06,
+          "probability": 0.9978557229042053
+        },
+        {
+          "word": " the",
+          "start": 183.06,
+          "end": 183.2,
+          "probability": 0.9972260594367981
+        },
+        {
+          "word": " hidrogests,",
+          "start": 183.2,
+          "end": 183.82,
+          "probability": 0.4545571804046631
+        },
+        {
+          "word": " laughing",
+          "start": 184.3,
+          "end": 184.58,
+          "probability": 0.9733667373657227
+        },
+        {
+          "word": " and",
+          "start": 184.58,
+          "end": 184.84,
+          "probability": 0.6893543004989624
+        },
+        {
+          "word": " talking.",
+          "start": 184.84,
+          "end": 185.2,
+          "probability": 0.9939975738525391
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "seek": 16114,
+      "start": 185.76,
+      "end": 188.24,
+      "text": " They were part of the celebration, just like everyone else.",
+      "tokens": [
+        51560,
+        814,
+        645,
+        644,
+        295,
+        264,
+        14184,
+        11,
+        445,
+        411,
+        1518,
+        1646,
+        13,
+        51714
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.27395228510317593,
+      "compression_ratio": 1.649805447470817,
+      "no_speech_prob": 0.4399890899658203,
+      "words": [
+        {
+          "word": " They",
+          "start": 185.76,
+          "end": 185.9,
+          "probability": 0.9874704480171204
+        },
+        {
+          "word": " were",
+          "start": 185.9,
+          "end": 186.0,
+          "probability": 0.9989933371543884
+        },
+        {
+          "word": " part",
+          "start": 186.0,
+          "end": 186.22,
+          "probability": 0.9780067205429077
+        },
+        {
+          "word": " of",
+          "start": 186.22,
+          "end": 186.4,
+          "probability": 0.9991573095321655
+        },
+        {
+          "word": " the",
+          "start": 186.4,
+          "end": 186.5,
+          "probability": 0.9012786746025085
+        },
+        {
+          "word": " celebration,",
+          "start": 186.5,
+          "end": 187.06,
+          "probability": 0.9982800483703613
+        },
+        {
+          "word": " just",
+          "start": 187.32,
+          "end": 187.44,
+          "probability": 0.9982395172119141
+        },
+        {
+          "word": " like",
+          "start": 187.44,
+          "end": 187.62,
+          "probability": 0.999751627445221
+        },
+        {
+          "word": " everyone",
+          "start": 187.62,
+          "end": 187.94,
+          "probability": 0.989343523979187
+        },
+        {
+          "word": " else.",
+          "start": 187.94,
+          "end": 188.24,
+          "probability": 0.999518632888794
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "seek": 18824,
+      "start": 188.94,
+      "end": 192.06,
+      "text": " The father and son sat down among the people they had welcomed.",
+      "tokens": [
+        50364,
+        440,
+        3086,
+        293,
+        1872,
+        3227,
+        760,
+        3654,
+        264,
+        561,
+        436,
+        632,
+        23668,
+        13,
+        50594
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.19779696609034683,
+      "compression_ratio": 1.6487603305785123,
+      "no_speech_prob": 0.382350891828537,
+      "words": [
+        {
+          "word": " The",
+          "start": 188.94,
+          "end": 189.5,
+          "probability": 0.2131323516368866
+        },
+        {
+          "word": " father",
+          "start": 189.5,
+          "end": 189.74,
+          "probability": 0.8181208372116089
+        },
+        {
+          "word": " and",
+          "start": 189.74,
+          "end": 189.98,
+          "probability": 0.9818700551986694
+        },
+        {
+          "word": " son",
+          "start": 189.98,
+          "end": 190.18,
+          "probability": 0.9820288419723511
+        },
+        {
+          "word": " sat",
+          "start": 190.18,
+          "end": 190.52,
+          "probability": 0.9936082363128662
+        },
+        {
+          "word": " down",
+          "start": 190.52,
+          "end": 190.78,
+          "probability": 0.996581494808197
+        },
+        {
+          "word": " among",
+          "start": 190.78,
+          "end": 191.0,
+          "probability": 0.9801846146583557
+        },
+        {
+          "word": " the",
+          "start": 191.0,
+          "end": 191.16,
+          "probability": 0.9950579404830933
+        },
+        {
+          "word": " people",
+          "start": 191.16,
+          "end": 191.44,
+          "probability": 0.9989715814590454
+        },
+        {
+          "word": " they",
+          "start": 191.44,
+          "end": 191.62,
+          "probability": 0.9884916543960571
+        },
+        {
+          "word": " had",
+          "start": 191.62,
+          "end": 191.72,
+          "probability": 0.9827446341514587
+        },
+        {
+          "word": " welcomed.",
+          "start": 191.72,
+          "end": 192.06,
+          "probability": 0.998386025428772
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "seek": 18824,
+      "start": 192.82,
+      "end": 195.12,
+      "text": " They shared the food and listened to each other's stories.",
+      "tokens": [
+        50594,
+        814,
+        5507,
+        264,
+        1755,
+        293,
+        13207,
+        281,
+        1184,
+        661,
+        311,
+        3676,
+        13,
+        50772
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.19779696609034683,
+      "compression_ratio": 1.6487603305785123,
+      "no_speech_prob": 0.382350891828537,
+      "words": [
+        {
+          "word": " They",
+          "start": 192.82,
+          "end": 192.9,
+          "probability": 0.9842942357063293
+        },
+        {
+          "word": " shared",
+          "start": 192.9,
+          "end": 193.14,
+          "probability": 0.9868605732917786
+        },
+        {
+          "word": " the",
+          "start": 193.14,
+          "end": 193.3,
+          "probability": 0.9963601231575012
+        },
+        {
+          "word": " food",
+          "start": 193.3,
+          "end": 193.58,
+          "probability": 0.9981309771537781
+        },
+        {
+          "word": " and",
+          "start": 193.58,
+          "end": 193.76,
+          "probability": 0.9846269488334656
+        },
+        {
+          "word": " listened",
+          "start": 193.76,
+          "end": 194.0,
+          "probability": 0.9917130470275879
+        },
+        {
+          "word": " to",
+          "start": 194.0,
+          "end": 194.2,
+          "probability": 0.9986534118652344
+        },
+        {
+          "word": " each",
+          "start": 194.2,
+          "end": 194.36,
+          "probability": 0.9898754954338074
+        },
+        {
+          "word": " other's",
+          "start": 194.36,
+          "end": 195.12,
+          "probability": 0.9578592777252197
+        },
+        {
+          "word": " stories.",
+          "start": 195.12,
+          "end": 195.12,
+          "probability": 0.9968240261077881
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "seek": 18824,
+      "start": 196.16,
+      "end": 202.32,
+      "text": " Women and men, young and old, rich and poor, people from Muslim backgrounds and Hindu backgrounds",
+      "tokens": [
+        50772,
+        11065,
+        293,
+        1706,
+        11,
+        2037,
+        293,
+        1331,
+        11,
+        4593,
+        293,
+        4716,
+        11,
+        561,
+        490,
+        8178,
+        17336,
+        293,
+        21231,
+        17336,
+        51086
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.19779696609034683,
+      "compression_ratio": 1.6487603305785123,
+      "no_speech_prob": 0.382350891828537,
+      "words": [
+        {
+          "word": " Women",
+          "start": 196.16,
+          "end": 196.36,
+          "probability": 0.795505940914154
+        },
+        {
+          "word": " and",
+          "start": 196.36,
+          "end": 196.66,
+          "probability": 0.9382237792015076
+        },
+        {
+          "word": " men,",
+          "start": 196.66,
+          "end": 196.92,
+          "probability": 0.9972701668739319
+        },
+        {
+          "word": " young",
+          "start": 197.46,
+          "end": 197.6,
+          "probability": 0.9961993098258972
+        },
+        {
+          "word": " and",
+          "start": 197.6,
+          "end": 197.86,
+          "probability": 0.9928102493286133
+        },
+        {
+          "word": " old,",
+          "start": 197.86,
+          "end": 198.24,
+          "probability": 0.9985369443893433
+        },
+        {
+          "word": " rich",
+          "start": 198.72,
+          "end": 198.86,
+          "probability": 0.9723580479621887
+        },
+        {
+          "word": " and",
+          "start": 198.86,
+          "end": 199.06,
+          "probability": 0.9718070030212402
+        },
+        {
+          "word": " poor,",
+          "start": 199.06,
+          "end": 199.4,
+          "probability": 0.9983803033828735
+        },
+        {
+          "word": " people",
+          "start": 200.0,
+          "end": 200.3,
+          "probability": 0.9910954236984253
+        },
+        {
+          "word": " from",
+          "start": 200.3,
+          "end": 200.48,
+          "probability": 0.9755478501319885
+        },
+        {
+          "word": " Muslim",
+          "start": 200.48,
+          "end": 200.82,
+          "probability": 0.9475509524345398
+        },
+        {
+          "word": " backgrounds",
+          "start": 200.82,
+          "end": 201.3,
+          "probability": 0.9916619062423706
+        },
+        {
+          "word": " and",
+          "start": 201.3,
+          "end": 201.62,
+          "probability": 0.958034098148346
+        },
+        {
+          "word": " Hindu",
+          "start": 201.62,
+          "end": 201.84,
+          "probability": 0.9862918853759766
+        },
+        {
+          "word": " backgrounds",
+          "start": 201.84,
+          "end": 202.32,
+          "probability": 0.9956002235412598
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "seek": 18824,
+      "start": 202.32,
+      "end": 204.24,
+      "text": " all had a place at the feast.",
+      "tokens": [
+        51086,
+        439,
+        632,
+        257,
+        1081,
+        412,
+        264,
+        23707,
+        13,
+        51250
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.19779696609034683,
+      "compression_ratio": 1.6487603305785123,
+      "no_speech_prob": 0.382350891828537,
+      "words": [
+        {
+          "word": " all",
+          "start": 202.32,
+          "end": 203.0,
+          "probability": 0.6648412942886353
+        },
+        {
+          "word": " had",
+          "start": 203.0,
+          "end": 203.28,
+          "probability": 0.9984766840934753
+        },
+        {
+          "word": " a",
+          "start": 203.28,
+          "end": 203.38,
+          "probability": 0.9958199262619019
+        },
+        {
+          "word": " place",
+          "start": 203.38,
+          "end": 203.62,
+          "probability": 0.9982013702392578
+        },
+        {
+          "word": " at",
+          "start": 203.62,
+          "end": 203.8,
+          "probability": 0.9933371543884277
+        },
+        {
+          "word": " the",
+          "start": 203.8,
+          "end": 203.9,
+          "probability": 0.9974804520606995
+        },
+        {
+          "word": " feast.",
+          "start": 203.9,
+          "end": 204.24,
+          "probability": 0.9659627676010132
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "seek": 18824,
+      "start": 205.96,
+      "end": 211.14,
+      "text": " At one table sat the family, Rickshaw drivers, people who begged for a living and hidregests.",
+      "tokens": [
+        51250,
+        1711,
+        472,
+        3199,
+        3227,
+        264,
+        1605,
+        11,
+        11224,
+        49813,
+        11590,
+        11,
+        561,
+        567,
+        47653,
+        337,
+        257,
+        2647,
+        293,
+        16253,
+        3375,
+        4409,
+        13,
+        51548
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.19779696609034683,
+      "compression_ratio": 1.6487603305785123,
+      "no_speech_prob": 0.382350891828537,
+      "words": [
+        {
+          "word": " At",
+          "start": 205.7,
+          "end": 205.98,
+          "probability": 0.9457789063453674
+        },
+        {
+          "word": " one",
+          "start": 205.98,
+          "end": 206.14,
+          "probability": 0.9936776757240295
+        },
+        {
+          "word": " table",
+          "start": 206.14,
+          "end": 206.42,
+          "probability": 0.9951093792915344
+        },
+        {
+          "word": " sat",
+          "start": 206.42,
+          "end": 206.64,
+          "probability": 0.8171093463897705
+        },
+        {
+          "word": " the",
+          "start": 206.64,
+          "end": 206.8,
+          "probability": 0.9933338761329651
+        },
+        {
+          "word": " family,",
+          "start": 206.8,
+          "end": 207.18,
+          "probability": 0.9920529127120972
+        },
+        {
+          "word": " Rickshaw",
+          "start": 207.54,
+          "end": 207.84,
+          "probability": 0.6096228063106537
+        },
+        {
+          "word": " drivers,",
+          "start": 207.84,
+          "end": 208.2,
+          "probability": 0.9419474601745605
+        },
+        {
+          "word": " people",
+          "start": 208.7,
+          "end": 208.9,
+          "probability": 0.9959465861320496
+        },
+        {
+          "word": " who",
+          "start": 208.9,
+          "end": 209.06,
+          "probability": 0.997996985912323
+        },
+        {
+          "word": " begged",
+          "start": 209.06,
+          "end": 209.34,
+          "probability": 0.98336261510849
+        },
+        {
+          "word": " for",
+          "start": 209.34,
+          "end": 209.58,
+          "probability": 0.9993563294410706
+        },
+        {
+          "word": " a",
+          "start": 209.58,
+          "end": 209.68,
+          "probability": 0.9890486001968384
+        },
+        {
+          "word": " living",
+          "start": 209.68,
+          "end": 209.9,
+          "probability": 0.9986100196838379
+        },
+        {
+          "word": " and",
+          "start": 209.9,
+          "end": 210.48,
+          "probability": 0.5205617547035217
+        },
+        {
+          "word": " hidregests.",
+          "start": 210.48,
+          "end": 211.14,
+          "probability": 0.5710939268271128
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "seek": 18824,
+      "start": 211.68,
+      "end": 214.62,
+      "text": " They ate together, passing food and sharing their joy.",
+      "tokens": [
+        51548,
+        814,
+        8468,
+        1214,
+        11,
+        8437,
+        1755,
+        293,
+        5414,
+        641,
+        6258,
+        13,
+        51738
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.19779696609034683,
+      "compression_ratio": 1.6487603305785123,
+      "no_speech_prob": 0.382350891828537,
+      "words": [
+        {
+          "word": " They",
+          "start": 211.68,
+          "end": 212.0,
+          "probability": 0.989391565322876
+        },
+        {
+          "word": " ate",
+          "start": 212.0,
+          "end": 212.14,
+          "probability": 0.9916200637817383
+        },
+        {
+          "word": " together,",
+          "start": 212.14,
+          "end": 212.58,
+          "probability": 0.9989951252937317
+        },
+        {
+          "word": " passing",
+          "start": 212.98,
+          "end": 213.24,
+          "probability": 0.9759531021118164
+        },
+        {
+          "word": " food",
+          "start": 213.24,
+          "end": 213.62,
+          "probability": 0.9970688223838806
+        },
+        {
+          "word": " and",
+          "start": 213.62,
+          "end": 213.8,
+          "probability": 0.9557945132255554
+        },
+        {
+          "word": " sharing",
+          "start": 213.8,
+          "end": 214.12,
+          "probability": 0.9969050288200378
+        },
+        {
+          "word": " their",
+          "start": 214.12,
+          "end": 214.32,
+          "probability": 0.9982455968856812
+        },
+        {
+          "word": " joy.",
+          "start": 214.32,
+          "end": 214.62,
+          "probability": 0.9974864721298218
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "seek": 21462,
+      "start": 215.35999999999999,
+      "end": 219.98,
+      "text": " The father looked around the table. His son was home. His house was full.",
+      "tokens": [
+        50364,
+        440,
+        3086,
+        2956,
+        926,
+        264,
+        3199,
+        13,
+        2812,
+        1872,
+        390,
+        1280,
+        13,
+        2812,
+        1782,
+        390,
+        1577,
+        13,
+        50614
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.2735847200666155,
+      "compression_ratio": 1.2871287128712872,
+      "no_speech_prob": 0.08005990833044052,
+      "words": [
+        {
+          "word": " The",
+          "start": 215.35999999999999,
+          "end": 215.76,
+          "probability": 0.5089773535728455
+        },
+        {
+          "word": " father",
+          "start": 215.76,
+          "end": 216.04,
+          "probability": 0.9649739265441895
+        },
+        {
+          "word": " looked",
+          "start": 216.04,
+          "end": 216.24,
+          "probability": 0.9961005449295044
+        },
+        {
+          "word": " around",
+          "start": 216.24,
+          "end": 216.44,
+          "probability": 0.9906366467475891
+        },
+        {
+          "word": " the",
+          "start": 216.44,
+          "end": 216.56,
+          "probability": 0.9971303343772888
+        },
+        {
+          "word": " table.",
+          "start": 216.56,
+          "end": 216.86,
+          "probability": 0.9981133937835693
+        },
+        {
+          "word": " His",
+          "start": 217.62,
+          "end": 217.72,
+          "probability": 0.9924048781394958
+        },
+        {
+          "word": " son",
+          "start": 217.72,
+          "end": 217.96,
+          "probability": 0.9896945953369141
+        },
+        {
+          "word": " was",
+          "start": 217.96,
+          "end": 218.14,
+          "probability": 0.9982315897941589
+        },
+        {
+          "word": " home.",
+          "start": 218.14,
+          "end": 218.34,
+          "probability": 0.9946134686470032
+        },
+        {
+          "word": " His",
+          "start": 218.96,
+          "end": 219.12,
+          "probability": 0.9911180138587952
+        },
+        {
+          "word": " house",
+          "start": 219.12,
+          "end": 219.42,
+          "probability": 0.9957396984100342
+        },
+        {
+          "word": " was",
+          "start": 219.42,
+          "end": 219.64,
+          "probability": 0.999221920967102
+        },
+        {
+          "word": " full.",
+          "start": 219.64,
+          "end": 219.98,
+          "probability": 0.9995273351669312
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "seek": 21462,
+      "start": 220.82,
+      "end": 223.14,
+      "text": " And the feast was finally what he had hoped it would be.",
+      "tokens": [
+        50614,
+        400,
+        264,
+        23707,
+        390,
+        2721,
+        437,
+        415,
+        632,
+        19737,
+        309,
+        576,
+        312,
+        13,
+        50864
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.2735847200666155,
+      "compression_ratio": 1.2871287128712872,
+      "no_speech_prob": 0.08005990833044052,
+      "words": [
+        {
+          "word": " And",
+          "start": 220.82,
+          "end": 220.92,
+          "probability": 0.9432746171951294
+        },
+        {
+          "word": " the",
+          "start": 220.92,
+          "end": 221.02,
+          "probability": 0.9915010929107666
+        },
+        {
+          "word": " feast",
+          "start": 221.02,
+          "end": 221.34,
+          "probability": 0.9866105914115906
+        },
+        {
+          "word": " was",
+          "start": 221.34,
+          "end": 221.54,
+          "probability": 0.9974219799041748
+        },
+        {
+          "word": " finally",
+          "start": 221.54,
+          "end": 222.04,
+          "probability": 0.9923431277275085
+        },
+        {
+          "word": " what",
+          "start": 222.04,
+          "end": 222.32,
+          "probability": 0.9891356229782104
+        },
+        {
+          "word": " he",
+          "start": 222.32,
+          "end": 222.44,
+          "probability": 0.9885087609291077
+        },
+        {
+          "word": " had",
+          "start": 222.44,
+          "end": 222.52,
+          "probability": 0.8749821782112122
+        },
+        {
+          "word": " hoped",
+          "start": 222.52,
+          "end": 222.68,
+          "probability": 0.9993277788162231
+        },
+        {
+          "word": " it",
+          "start": 222.68,
+          "end": 222.84,
+          "probability": 0.9900230765342712
+        },
+        {
+          "word": " would",
+          "start": 222.84,
+          "end": 222.96,
+          "probability": 0.9873142838478088
+        },
+        {
+          "word": " be.",
+          "start": 222.96,
+          "end": 223.14,
+          "probability": 0.9983983635902405
+        }
+      ]
+    }
+  ],
+  "language": "en"
+}
