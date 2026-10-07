@@ -4,12 +4,12 @@ const KINDNESS_STORY = {
   "titleBn": "দয়া ও অনুতাপ",
   "kicker": "A Bengali retelling of Zacchaeus · B2 English",
   "level": "B2",
-  "version": "20261007-kindness-1",
+  "version": "20261007-kindness-2",
   "audio": "audio/kindness-story.mp3",
   "tts": {
     "model": "Gemini 2.5 Pro Preview TTS",
     "voice": "Gacrux",
-    "direction": "One mature male storyteller narrating a fictional bazaar story for B2 English learners. Speak warm, clear neutral General American English at about 150 words per minute, with quiet tension, gentle surprise and restrained emotion. Subtle quoted dialogue in the same narrator voice. Pronounce the Bengali loanwords exactly as a native Bangladeshi Bengali speaker: waz mahfil (ওয়াজ মাহফিল), mahfil (মাহফিল), mastan (মাস্তান), hujur (হুজুর), Dhaka (ঢাকা). Keep the surrounding English General American. Read only the exact narration below, with no additions, spoken directions, music or sound effects."
+    "direction": "One mature male storyteller narrating a fictional bazaar story for B2 English learners. Speak warm, clear neutral General American English at about 150 words per minute, with quiet tension, gentle surprise and restrained emotion. Subtle quoted dialogue in the same narrator voice. Pronounce the Bengali loanwords exactly as a native Bangladeshi Bengali speaker: waz mahfil (ওয়াজ মাহফিল), mahfil (মাহফিল), hujur (হুজুর), Dhaka (ঢাকা). Keep the surrounding English General American. Read only the exact narration below, with no additions, spoken directions, music or sound effects."
   },
   "cast": {
     "N": {
@@ -113,7 +113,7 @@ const KINDNESS_STORY = {
       "frame": 1,
       "panel": 2,
       "speaker": "N",
-      "text": "A stocky man in a dark waistcoat moved through the market. He was a local mastan, a thug whose political connections made him feel untouchable."
+      "text": "A stocky man in a dark waistcoat moved through the market. He was a local thug whose political connections made him feel untouchable."
     },
     {
       "frame": 1,
@@ -1711,9 +1711,9 @@ const KINDNESS_STORY = {
     },
     {
       "line": 1,
-      "phrase": "mastan",
-      "kind": "culture",
-      "meaning": "a local term for a thug or intimidating strongman; here, someone who forces vendors to pay",
+      "phrase": "thug",
+      "kind": "word",
+      "meaning": "a violent or intimidating person; here, someone who forces vendors to pay",
       "bn": "স্থানীয় গুন্ডা বা ভয় দেখিয়ে প্রভাব খাটানো ব্যক্তি; এখানে বিক্রেতাদের কাছ থেকে জোর করে টাকা নেয়"
     },
     {

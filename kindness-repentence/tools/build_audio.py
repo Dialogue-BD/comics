@@ -18,6 +18,6 @@ args=['ffmpeg','-hide_banner','-loglevel','error','-y']
 for source in sources:args+=['-i',str(source)]
 subprocess.run(args+['-filter_complex',graph,'-map','[out]','-ar','48000','-codec:a','libmp3lame','-b:a','128k',str(target)],check=True)
 duration=float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(target)]))
-build=dict(sources=[dict(path=str(p.relative_to(ROOT)),sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in sources],delivery=str(target.relative_to(ROOT)),delivery_sha256=hashlib.sha256(target.read_bytes()).hexdigest(),pieces=plan['pieces'],filters=graph,ambience='none',duration=duration,voice='Gacrux',model='Gemini 2.5 Pro Preview TTS',accent='neutral General American English',local_pronunciation='native Bangladeshi Bengali requested for waz mahfil, mahfil, mastan, hujur and Dhaka')
+build=dict(sources=[dict(path=str(p.relative_to(ROOT)),sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in sources],delivery=str(target.relative_to(ROOT)),delivery_sha256=hashlib.sha256(target.read_bytes()).hexdigest(),pieces=plan['pieces'],filters=graph,ambience='none',duration=duration,voice='Gacrux',model='Gemini 2.5 Pro Preview TTS',accent='neutral General American English',local_pronunciation='native Bangladeshi Bengali requested for waz mahfil, mahfil, hujur and Dhaka')
 (ROOT/'production/audio-build.json').write_text(json.dumps(build,indent=2)+'\n')
 print(f'Built {duration:.2f} seconds from {len(sources)} preserved dry takes.')

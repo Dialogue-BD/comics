@@ -1,7 +1,7 @@
 {
   "model": "Gemini 2.5 Pro Preview TTS",
   "voice": "Gacrux",
-  "direction": "One mature male storyteller narrating a fictional bazaar story for B2 English learners. Speak warm, clear neutral General American English at about 150 words per minute, with quiet tension, gentle surprise and restrained emotion. Subtle quoted dialogue in the same narrator voice. Pronounce the Bengali loanwords exactly as a native Bangladeshi Bengali speaker: waz mahfil (ওয়াজ মাহফিল), mahfil (মাহফিল), mastan (মাস্তান), hujur (হুজুর), Dhaka (ঢাকা). Keep the surrounding English General American. Read only the exact narration below, with no additions, spoken directions, music or sound effects.",
+  "direction": "One mature male storyteller narrating a fictional bazaar story for B2 English learners. Speak warm, clear neutral General American English at about 150 words per minute, with quiet tension, gentle surprise and restrained emotion. Subtle quoted dialogue in the same narrator voice. Pronounce the Bengali loanwords exactly as a native Bangladeshi Bengali speaker: waz mahfil (ওয়াজ মাহফিল), mahfil (মাহফিল), hujur (হুজুর), Dhaka (ঢাকা). Keep the surrounding English General American. Read only the exact narration below, with no additions, spoken directions, music or sound effects.",
   "takes": [
     {
       "file": "audio/_originals/kindness-american.wav",
@@ -21,7 +21,15 @@
         23
       ],
       "text": "For a while, the two men sat together. The man hadn't apologized, repaid anyone, or promised to change. Yet the preacher had welcomed him with kindness he hadn't earned."
+    },
+    {
+      "file": "audio/_originals/kindness-thug.wav",
+      "lines": [
+        1
+      ],
+      "text": "A stocky man in a dark waistcoat moved through the market. He was a local thug whose political connections made him feel untouchable.",
+      "direction": "Warm, clear neutral General American English, about 150 words per minute, mature Gacrux voice, quiet tension and restrained emotion. Read exact text with no additions, music or effects."
     }
   ],
-  "local_word_review": "Native Bengali pronunciation is directed in Bengali orthography; a human Bengali listening review is still required to confirm pronunciation quality."
+  "local_word_review": "The user identified mastan as mispronounced and requested the English term thug. That full paragraph is re-recorded; other Bengali terms retain native-pronunciation direction."
 }

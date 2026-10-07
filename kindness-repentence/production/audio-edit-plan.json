@@ -2,17 +2,71 @@
   "sources": [
     "audio/_originals/kindness-american.wav",
     "audio/_originals/kindness-corrections.wav",
-    "audio/_originals/kindness-unearned-welcome.wav"
+    "audio/_originals/kindness-unearned-welcome.wav",
+    "audio/_originals/kindness-thug.wav"
   ],
-  "reason": "Replace the ambiguous preacher-settled boundary, the disputed Yet/But connective and an unintended Hindi insertion flagged by both recognizers. New same-voice recordings use the exact canonical sentences. Adopt the original take's spoken he'd contraction in the later repayment sentence.",
-  "boundary_evidence": "Original speech: previous line ends 192.82; tea passage 193.66–199.82; next passage 200.64–206.94; welcome passage 208.06–219.74; thug passage 220.58–228.52; next passage begins 229.38. Cut points lie in surrounding silence. Correction take's first passage ends 7.60 and second begins 8.52; split at the midpoint of that observed silent interval. Timing evidence is preserved in the initial and correction ASR files.",
+  "reason": "Replace the ambiguous preacher-settled boundary, the disputed Yet/But connective and an unintended Hindi insertion flagged by both recognizers. New same-voice recordings use the exact canonical sentences. Adopt the original take's spoken he'd contraction in the later repayment sentence. Replace mastan with English thug at the user\u2019s request using a complete same-voice paragraph.",
+  "boundary_evidence": "Original speech: previous line ends 192.82; tea passage 193.66\u2013199.82; next passage 200.64\u2013206.94; welcome passage 208.06\u2013219.74; thug passage 220.58\u2013228.52; next passage begins 229.38. Cut points lie in surrounding silence. Correction take's first passage ends 7.60 and second begins 8.52; split at the midpoint of that observed silent interval. Timing evidence is preserved in the initial and correction ASR files. Introduction replacement: opening ends 14.16; original second paragraph begins 15.16 and ends 24.48; third paragraph begins 25.32. Cuts at 14.65 and 24.95 are in surrounding silence.",
   "pieces": [
-    {"source": 0, "start": 0, "end": 193.4},
-    {"source": 1, "start": 0, "end": 8.06, "lines": [21]},
-    {"source": 0, "start": 200.2, "end": 207.8},
-    {"source": 2, "start": 0, "end": null, "lines": [23]},
-    {"silence": 0.35, "reason": "Natural pause between the welcome and the man's response"},
-    {"source": 1, "start": 8.06, "end": null, "lines": [24]},
-    {"source": 0, "start": 228.9, "end": null}
+    {
+      "source": 0,
+      "start": 0,
+      "end": 14.65
+    },
+    {
+      "source": 3,
+      "start": 0,
+      "end": null,
+      "lines": [
+        1
+      ]
+    },
+    {
+      "silence": 0.3,
+      "reason": "Pause after the replacement introduction"
+    },
+    {
+      "source": 0,
+      "start": 24.95,
+      "end": 193.4
+    },
+    {
+      "source": 1,
+      "start": 0,
+      "end": 8.06,
+      "lines": [
+        21
+      ]
+    },
+    {
+      "source": 0,
+      "start": 200.2,
+      "end": 207.8
+    },
+    {
+      "source": 2,
+      "start": 0,
+      "end": null,
+      "lines": [
+        23
+      ]
+    },
+    {
+      "silence": 0.35,
+      "reason": "Natural pause between the welcome and the man's response"
+    },
+    {
+      "source": 1,
+      "start": 8.06,
+      "end": null,
+      "lines": [
+        24
+      ]
+    },
+    {
+      "source": 0,
+      "start": 228.9,
+      "end": null
+    }
   ]
 }

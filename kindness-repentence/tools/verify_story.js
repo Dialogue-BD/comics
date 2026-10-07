@@ -32,6 +32,8 @@ for(let i=0;i<S.lines.length;i++)assert(S.cameraBeats.some(c=>c.line===i&&c.word
 for(const gloss of S.glossary)assert(S.lines[gloss.line].text.toLowerCase().includes(gloss.phrase.toLowerCase()),'gloss span');
 assert.equal(S.cast.N.accent,'neutral General American English');
 assert.equal(S.level,'B2');
+assert(!/\bmastan\b/i.test(script),'removed loanword remains');
+assert(S.lines[1].text.includes('a local thug whose'),'English replacement missing');
 assert(script.includes('four times what I took'),'fourfold restitution missing');
 assert(script.includes("kindness he hadn't earned"),'unmerited favor missing');
 assert(script.includes('risk his good name'),'costly compassion missing');

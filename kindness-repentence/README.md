@@ -34,7 +34,7 @@ are available. Missing or mismatched media exposes an explicit retry state.
 
 Gacrux is the single mature narrator, with subtle quoted dialogue. Delivery
 direction specifies neutral General American English, with native Bangladeshi
-Bengali pronunciation for **ওয়াজ মাহফিল, মাহফিল, মাস্তান, হুজুর, ঢাকা**.
+Bengali pronunciation for **ওয়াজ মাহফিল, মাহফিল, হুজুর, ঢাকা**.
 The directions use Bengali orthography rather than rough English phonetics.
 
 Google AI Studio’s Gemini 2.5 Pro Preview TTS provides the downloadable take
@@ -45,7 +45,10 @@ available Pro speech model with the same Gacrux voice.
 Dry audio is preserved under `audio/_originals/`; `tools/build_audio.py`
 normalizes it to -16 LUFS without ambience and records media hashes and duration.
 Three same-voice correction passages replace an ambiguous boundary and an
-unintended word flagged in the initial take. `production/audio-edit-plan.json`
+unintended word flagged in the initial take. A fourth take replaces the full
+introduction paragraph after the user identified “mastan” as mispronounced:
+the final script and recording say “a local thug,” and the language note now
+teaches the English word “thug.” The original take remains in the audit archive. `production/audio-edit-plan.json`
 records the observed silent cut boundaries, source ranges and added pause.
 The initial delivery is retained as `audio/_originals/kindness-initial.mp3`,
 matching the hashes in both initial recognition audits. The canonical text
@@ -83,10 +86,11 @@ Useful B2 discussion prompts after listening:
 
 ## Production review
 
-The final delivery is **361.52 seconds (6:02)** with **918 exact-script,
+The final delivery is **363.61 seconds (6:04)** with **916 exact-script,
 forced-aligned word intervals**. Independent Whisper small recognition matches
-**98.80%** of canonical words. Every difference is reviewed in
-`production/alignment-audit.json`: Roman spellings of Bengali words, hyphenation,
+**98.91%** of canonical words. Every difference is reviewed in
+`production/alignment-audit.json`: Roman spellings of Bengali words, two recognition omissions and one substitution
+in unchanged source passages confirmed by the initial audit,
 the American-English homophones seller/cellar, and a small-model hardly/heartily
 confusion resolved by independent base-model recognition of the same dry take.
 No unintended Hindi insertion remains in final recognition. Collapsed or
@@ -110,6 +114,6 @@ glossary spans, JavaScript syntax and Git whitespace checks pass.
 Playback was spot-checked around the unearned-welcome
 passage; that does not constitute a complete human auditory review. American
 accent quality, joins between same-voice takes and especially native Bengali
-pronunciation still need a human listening check. A 36-second extract of the
+pronunciation still need a human listening check. A 39-second extract of the
 relevant words is preserved at `production/pronunciation-review.mp3` for that
 review. No claim of external cultural-review coverage is made.

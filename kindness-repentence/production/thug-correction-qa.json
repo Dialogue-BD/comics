@@ -1,0 +1,19 @@
+{
+  "version": "20261007-kindness-2",
+  "change": "Replace mastan with thug in the full re-recorded introduction and English\u2013Bangla glossary.",
+  "audio_sha256": "ea0531a94867c84dbc15099689ee98fd0957272199d37d9c72f4383ef63277cb",
+  "script_sha256": "bcd40073f7b809d4ff79fa9589f05339782018905a467de4defb295fb257949c",
+  "word_count": 916,
+  "asr_match": 0.9890829694323144,
+  "checks": [
+    "Complete replacement paragraph independently recognized exactly",
+    "916 positive monotonic word intervals and matching hashes",
+    "Corrected paragraph displayed at 0:20",
+    "Thug glossary opens the correct English and Bangla explanation",
+    "Replay begins at 0:15 and actual playback advances to the next paragraph at 0:32",
+    "Media readyState 4; paused and seeking work",
+    "Asset cache version changed"
+  ],
+  "camera_geometry": "Unchanged; prior 162 checks retained in browser-qa.json",
+  "auditory_limit": "Actual browser playback verified; no complete human auditory review claimed."
+}

@@ -3,11 +3,11 @@ import json, re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-VERSION = '20261007-kindness-1'
+VERSION = '20261007-kindness-2'
 # Each rectangle is an intact original panel, in normalized page coordinates.
 beats = [
  (1, "As evening fell over a bazaar in Bangladesh, vegetable sellers were finishing another long day. Behind their stalls, workers were preparing the stage for a waz mahfil, a large religious gathering.", [.008,.004,.984,.228]),
- (1, "A stocky man in a dark waistcoat moved through the market. He was a local mastan, a thug whose political connections made him feel untouchable.", [.008,.235,.984,.208]),
+ (1, "A stocky man in a dark waistcoat moved through the market. He was a local thug whose political connections made him feel untouchable.", [.008,.235,.984,.208]),
  (1, "He stopped beside an older vendor and held out his hand. The demand was familiar. Pay up, or there would be trouble.", [.008,.235,.984,.208]),
  (1, "The vendor handed over the money. It wasn't a payment for anything. It was extortion, and it came out of the little he had earned that day.", [.008,.446,.49,.17]),
  (1, "Other sellers watched in silence. The man slipped the notes into his pocket and walked on. Nobody dared to challenge him.", [.008,.619,.984,.186]),
@@ -50,7 +50,7 @@ beats = [
 glosses = [
  (0,'As evening fell','phrase','as it gradually became evening','সন্ধ্যা নেমে আসার সময়'),
  (0,'waz mahfil','culture','a public gathering for Islamic preaching; the background event in this Bengali retelling','ইসলামি আলোচনা ও উপদেশের জনসমাবেশ; এই বাংলা রূপান্তরের পটভূমি'),
- (1,'mastan','culture','a local term for a thug or intimidating strongman; here, someone who forces vendors to pay','স্থানীয় গুন্ডা বা ভয় দেখিয়ে প্রভাব খাটানো ব্যক্তি; এখানে বিক্রেতাদের কাছ থেকে জোর করে টাকা নেয়'),
+ (1,'thug','word','a violent or intimidating person; here, someone who forces vendors to pay','স্থানীয় গুন্ডা বা ভয় দেখিয়ে প্রভাব খাটানো ব্যক্তি; এখানে বিক্রেতাদের কাছ থেকে জোর করে টাকা নেয়'),
  (1,'political connections','phrase','relationships with influential political people that can provide power or protection','প্রভাবশালী রাজনৈতিক ব্যক্তিদের সঙ্গে সম্পর্ক'),
  (1,'untouchable','word','so powerful or protected that he thinks nobody can punish him','এত প্রভাবশালী বা সুরক্ষিত যে সে মনে করে কেউ তার শাস্তি দিতে পারবে না'),
  (2,'Pay up','phrasal verb','give the money demanded; here it is a threatening command','দাবি করা টাকা দাও; এখানে হুমকির সুরে বলা'),
@@ -85,7 +85,7 @@ glosses = [
  (38,'had come first','grammar','past perfect highlights the order: kindness was offered before apology, repayment or change','past perfect দিয়ে ঘটনার ক্রম বোঝানো: ক্ষমা চাওয়া, টাকা ফেরত দেওয়া বা বদলে যাওয়ার আগেই দয়া দেখানো হয়েছিল'),
  (39,'repentance was taking shape','phrase','his change of heart was becoming visible through actions that repaired harm; he was responding to kindness, not earning it','মনের পরিবর্তন ক্ষতির প্রতিকার করার কাজে প্রকাশ পাচ্ছিল; সে দয়ার প্রতিক্রিয়া দিচ্ছিল, দয়া অর্জন করছিল না'),
 ]
-direction = 'One mature male storyteller narrating a fictional bazaar story for B2 English learners. Speak warm, clear neutral General American English at about 150 words per minute, with quiet tension, gentle surprise and restrained emotion. Subtle quoted dialogue in the same narrator voice. Pronounce the Bengali loanwords exactly as a native Bangladeshi Bengali speaker: waz mahfil (ওয়াজ মাহফিল), mahfil (মাহফিল), mastan (মাস্তান), hujur (হুজুর), Dhaka (ঢাকা). Keep the surrounding English General American. Read only the exact narration below, with no additions, spoken directions, music or sound effects.'
+direction = 'One mature male storyteller narrating a fictional bazaar story for B2 English learners. Speak warm, clear neutral General American English at about 150 words per minute, with quiet tension, gentle surprise and restrained emotion. Subtle quoted dialogue in the same narrator voice. Pronounce the Bengali loanwords exactly as a native Bangladeshi Bengali speaker: waz mahfil (ওয়াজ মাহফিল), mahfil (মাহফিল), hujur (হুজুর), Dhaka (ঢাকা). Keep the surrounding English General American. Read only the exact narration below, with no additions, spoken directions, music or sound effects.'
 story = dict(id='kindness-repentance',title='Kindness & Repentance',titleBn='দয়া ও অনুতাপ',kicker='A Bengali retelling of Zacchaeus · B2 English',level='B2',version=VERSION,audio='audio/kindness-story.mp3',tts=dict(model='Gemini 2.5 Pro Preview TTS',voice='Gacrux',direction=direction))
 story['cast'] = {
  'N':dict(role='storyteller; performs all quoted dialogue',voice='Gacrux',accent='neutral General American English'),

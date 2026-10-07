@@ -83,7 +83,8 @@ def main():
  audit['acoustic_boundary_refinements']=refinements
  audit['difference_review'] = [
   'Bengali loanwords are recognized with variable Roman spellings. The Bengali-orthography voice direction is preserved; native pronunciation quality still needs human listening.',
-  'Tea-seller is ASR hyphenation; the canonical English spelling tea seller has two acoustic word intervals.',
+  'The re-recorded introduction uses English thug, replacing mastan at the user’s request; independent final recognition matches the complete replacement paragraph.',
+  'Final recognition omits That and Around and hears weave for leave in unchanged source passages. Initial independent recognition of the same preserved dry take includes That, Around and leave; the assembly retains those source ranges intact.',
   'Seller and cellar are homophones in the directed American accent. The context and canonical text identify the tea seller.',
   'Small recognizes heartily in the short correction take; independent base recognition of the same dry take says hardly, supporting the canonical wording.',
   'The disputed Yet/But sentence and unintended Hindi insertion in the initial take were replaced with exact same-voice recordings. Neither difference remains in final ASR.',
