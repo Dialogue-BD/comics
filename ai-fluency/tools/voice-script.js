@@ -93,7 +93,10 @@ fs.writeFileSync(path.join(AUD,'takes.json'),JSON.stringify(takes,null,1));
 /* what is already recorded */
 let have=new Set(); try{ have=new Set(JSON.parse(fs.readFileSync(path.join(AUD,'manifest.json'))).keys) }catch(e){}
 /* the transcript is what is SAID; the key stays the words on screen */
-const spoken=t=>t.replace(/_{3}/g,'…').replace(/Ayesha/g,'Eye-sha')   // two syllables, no y slide.replace(/Tap ⋮/g,'Tap the three dots').replace(/Tap \+/g,'Tap plus').replace(/■\s*/g,'')
+// Ayesha is said EYE-sha: two syllables, no y slide
+const spoken=t=>t.replace(/_{3}/g,'…').replace(/Ayesha/g,'Eye-sha').replace(/Chats \(WhatsApp-style\)/g,'Chats')
+  // a colon makes the model pause as long as a line break, which confuses the cutter
+  .replace(/:\s+/g,', ').replace(/Tap ⋮/g,'Tap the three dots').replace(/Tap \+/g,'Tap plus').replace(/■\s*/g,'')
   .replace(/৳\s?99/g,'ninety-nine taka').replace(/৳\s?2,500/g,'two thousand five hundred taka').replace(/৳\s?5,000/g,'five thousand taka')
   .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{20E3}]/gu,'').replace(/\s+/g,' ').trim();
 
