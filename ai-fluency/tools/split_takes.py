@@ -15,6 +15,10 @@ needs: re-record it. A take is cut at its N-1 longest pauses, so a pause
 inside a sentence never splits it as long as the gaps between lines are the
 longest silences in the file. Lines whose length is far from what the words
 predict are reported, so a misplaced cut is easy to spot by ear.
+
+When the pauses are close, it tries the cuts whose line lengths best fit the
+words, and only uses them if one answer is clearly best. A take that still
+won't cut can be recorded a line at a time as <take>_L1.wav, <take>_L2.wav ...
 """
 import json, os, re, shutil, subprocess, sys
 
@@ -41,6 +45,46 @@ def silences(path):
     return list(zip(starts, ends))
 
 
+def expect(text):
+    """rough spoken length in 'word units': a gap ___ is read as a pause worth about two words"""
+    blanks = text.count('___')
+    words = len(text.replace('___', ' ').split())
+    return max(1.0, words + 2.0 * blanks)
+
+
+def by_timing(keys, lines, gaps, lead, tail):
+    """When the pauses between lines are not clearly the longest, pick the set of cuts whose
+    line lengths best match the words in each line. Only long-ish pauses can be cuts, and the
+    best set must beat the next best clearly; otherwise give up (record again)."""
+    from itertools import combinations
+    from math import log
+    need = len(keys) - 1
+    cand = sorted(g for g in gaps if g[1] - g[0] >= 0.9)
+    if len(cand) < need or len(cand) > 14:
+        return None
+    w = [expect(lines[k]['text']) for k in keys]
+    scored = []
+    for combo in combinations(cand, need):
+        starts = [lead] + [b for a, b in combo]
+        ends = [a for a, b in combo] + [tail]
+        spans = [e - s0 for s0, e in zip(starts, ends)]
+        if min(spans) <= 0.3:
+            continue
+        pace = sum(spans) / sum(w)
+        err = sum(log(sp / (x * pace)) ** 2 for sp, x in zip(spans, w))
+        worst = max(abs(log(sp / (x * pace))) for sp, x in zip(spans, w))
+        scored.append((err, worst, list(combo)))
+    if not scored:
+        return None
+    scored.sort(key=lambda t: t[0])
+    best = scored[0]
+    second = scored[1][0] if len(scored) > 1 else 99
+    # every line within about x1.7 of its words, and the runner-up clearly worse
+    if best[1] > 0.55 or second < best[0] * 2.5 + 0.05:
+        return None
+    return best[2]
+
+
 def main():
     if len(sys.argv) < 2:
         print(__doc__); sys.exit(1)
@@ -48,6 +92,11 @@ def main():
     takes = json.load(open(os.path.join(AUD, 'takes.json')))
     lines = {l['key']: l for l in json.load(open(os.path.join(AUD, 'lines.json')))}
     done, skipped, flagged = 0, [], []
+    # a take that will not cut cleanly can be recorded one line at a time: <take>_L<n>.wav
+    for tid, keys in list(takes.items()):
+        for i, k in enumerate(keys):
+            if any(os.path.exists(os.path.join(src, f'{tid}_L{i + 1}{e}')) for e in ('.wav', '.mp3', '.m4a')):
+                takes[f'{tid}_L{i + 1}'] = [k]
     for tid, keys in takes.items():
         f = next((os.path.join(src, tid + e) for e in ('.wav', '.mp3', '.m4a') if os.path.exists(os.path.join(src, tid + e))), None)
         if not f:
@@ -70,10 +119,14 @@ def main():
             nextgap = (by_len[need][1] - by_len[need][0]) if len(by_len) > need else 0
             # the pauses between lines must be clearly longer than any pause inside a line;
             # otherwise a line was probably dropped or merged, and guessing would mislabel clips
-            if weakest < LINE_GAP or (nextgap and weakest < nextgap * 1.35):
-                skipped.append(f'{tid}: pauses are ambiguous ({weakest:.2f}s between lines vs {nextgap:.2f}s inside) — a line was probably dropped; record again')
-                continue
-        elif by_len and by_len[0][1] - by_len[0][0] >= LINE_GAP:
+            if weakest < LINE_GAP or (nextgap and weakest < nextgap * 1.6):
+                fit = by_timing(keys, lines, gaps, lead, tail)
+                if not fit:
+                    skipped.append(f'{tid}: pauses are ambiguous ({weakest:.2f}s between lines vs {nextgap:.2f}s inside) — a line was probably dropped; record again')
+                    continue
+                by_len = fit + [g for g in by_len if g not in fit]
+                flagged.append(f'{tid}: cut by word timing, not pause length — listen once')
+        elif '_L' not in tid and by_len and by_len[0][1] - by_len[0][0] >= LINE_GAP:
             skipped.append(f'{tid}: one line expected but there is a long pause inside it — record again')
             continue
         cuts = sorted(by_len[:need])
