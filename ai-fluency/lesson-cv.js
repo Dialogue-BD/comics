@@ -97,6 +97,46 @@ const FIX_CHIPS=[
 ];
 const fixText=x=>x.get('cvFix','')||FIX_CHIPS.slice(0,3).map(c=>c.text).join(' ');
 
+
+/* ---------- what happens next: risky choices and shortcuts, played out ----------
+   Every line follows one pattern students can reuse: "She ___, so ___." */
+const C=c=>AFL.conseq('cv',c);
+const CQ_CV={
+ claims:C({when:'Two weeks later',whenbn:'দুই সপ্তাহ পরে',
+   line:'She made bigger claims, so the interview panel will ask about things she never did.',
+   linebn:'সে বড় বড় দাবি লিখেছিল, তাই ইন্টারভিউ বোর্ড এমন সব বিষয়ে প্রশ্ন করবে যা সে কখনো করেনি।',
+   scene:{app:'mail',view:'read',mail:{from:'Internship Desk',color:'#00639B',subject:'Interview — Research Intern',time:'10:20 AM',
+     body:`<p>Dear Ayesha,</p><p>We would like to interview you on Thursday.</p><p>The panel will ask about <b>leading your team of 20 volunteers</b> and your <b>published research</b>. Please bring a copy of the publication.</p><p>Best wishes,<br>Internship Desk</p>`}}}),
+ files:C({when:'Later that day',whenbn:'সেদিন পরে',
+   line:'She uploaded private files, so her ID card is now on an AI company’s computers.',
+   linebn:'সে ব্যক্তিগত ফাইল আপলোড করেছিল, তাই তার NID এখন একটা AI কোম্পানির কম্পিউটারে।',
+   why:'Deleting the chat later doesn’t take a file back from the company’s computers. A CV never needs an ID card, a bank statement, or other people’s names.',
+   whybn:'পরে চ্যাট মুছলেও কোম্পানির কম্পিউটার থেকে ফাইল ফেরত আসে না। CV-তে কখনো NID, ব্যাংক স্টেটমেন্ট বা অন্যদের নাম লাগে না।',
+   scene:x=>({app:'settings',title:'Sathi · Your data',body:`<div class="sec-h">Files you uploaded</div>${x.get('cvFiles',[]).filter(id=>FILE_WHY[id].ok<0).map(id=>`<div class="prow"><span><b>${esc(AFL.FILES[id].name)}</b><small>Stored on Sathi’s servers</small></span><span style="color:#B3261E;font-weight:600">🔒✗</span></div>`).join('')}
+     <div class="prow"><span><b>Use my chats to improve Sathi</b><small>People at the company may read some chats</small></span><span class="tg"></span></div>
+     <div class="prow"><span><small>Deleting a chat doesn’t delete copies that were already saved or used.</small></span></div>`})}),
+ prompt:C({when:'Sathi answers',whenbn:'Sathi উত্তর দেয়',
+   line:'She asked it to sound impressive, so Sathi made things up again.',
+   linebn:'সে AI-কে চমৎকার শোনাতে বলেছিল, তাই Sathi আবার বানিয়ে লিখেছে।',
+   why:'“Impressive” tells the AI to exaggerate. The Process part — use only my files, ask me first — is what stops it.',
+   whybn:'“Impressive” মানে AI-কে বাড়িয়ে বলতে বলা। Process অংশ — শুধু আমার ফাইল, আগে জিজ্ঞেস করো — এটাই থামায়।',
+   scene:x=>({app:'sathi',msgs:[{role:'u',text:promptText(x),atts:safeFiles(x)},{role:'a',html:`<p>Absolutely! Here’s a version that will really impress them 🚀</p><h4>AYESHA RAHMAN</h4><ul><li><span class="flag ln v-bad">Award-winning young researcher</span> in development economics</li><li><span class="flag ln v-bad">Led a 20-person volunteer team</span> at RUCEI</li><li><span class="flag ln v-bad">Advanced Stata, SPSS and Python</span></li></ul>`}],composer:{text:''}})}),
+ answer:C({when:'Sathi writes the draft',whenbn:'Sathi খসড়া লেখে',
+   line:'She told it the paper was published, so her CV now has a lie in it.',
+   linebn:'সে AI-কে বলেছিল পেপারটা প্রকাশিত, তাই এখন তার CV-তে একটা মিথ্যা আছে।',
+   why:'The AI did exactly what she said. Committees can check publications in a minute.',
+   whybn:'সে যা বলেছে AI ঠিক তা-ই করেছে। কমিটি এক মিনিটেই প্রকাশনা যাচাই করতে পারে।',
+   scene:x=>({app:'sathi',msgs:[{role:'u',text:ansText(x)},{role:'a',html:`<p>Done! I updated your research section:</p><h4>Research and academic work</h4><ul><li><span class="flag ln v-bad">Published paper:</span> “The Impact of Female Education on Social and Economic Mobility in Bangladesh” (2025)</li></ul>`}],composer:{text:''}})}),
+ fix:C({when:'One week later',whenbn:'এক সপ্তাহ পরে',
+   line:'She left the wrong lines in, so the interviewers will ask about them.',
+   linebn:'সে ভুল লাইনগুলো রেখে দিয়েছিল, তাই ইন্টারভিউয়াররা ওগুলো নিয়েই প্রশ্ন করবেন।',
+   why:'Her name is on the CV. “Nobody will check” is a guess — and interview panels do check.',
+   whybn:'CV-তে তার নাম। “কেউ যাচাই করবে না” একটা অনুমান — আর ইন্টারভিউ বোর্ড যাচাই করে।',
+   scene:{app:'mail',view:'read',mail:{from:'Internship Desk',color:'#00639B',subject:'Interview — Research Intern',time:'11:05 AM',
+     body:`<p>Dear Ayesha,</p><p>Thank you for your new CV. In the interview, the panel would like to hear about:</p><ul><li><b>how you led the Book Support project</b></li><li><b>your advanced Stata work</b></li><li><b>your role in the Bangladesh Economic Association</b></li></ul><p>Best wishes,<br>Internship Desk</p>`}}})
+};
+const shortcut=(chips,key,x)=>chips.filter(c=>c.x&&x.get(key,'').includes(c.text));
+
 const chat=(x,upto)=>{
   const m=[];
   m.push({role:'u',text:promptText(x),atts:safeFiles(x)});
@@ -172,7 +212,7 @@ AFL.lesson({
    say:'Not shortlisted. What should she do next time?',bn:'শর্টলিস্টে নাম নেই। পরের বার সে কী করবে?',
    card:{type:'choice',key:'cvWhy',options:[
      {en:'📄✅ Send a clear CV with her real skills.',bn:'নিজের আসল দক্ষতা দিয়ে একটা পরিষ্কার CV পাঠানো।',ok:1,why:'Yes. The email asks for a clear academic CV.',whybn:'হ্যাঁ। ইমেইলে একটা পরিষ্কার একাডেমিক CV চাওয়া হয়েছে।'},
-     {en:'📢 Make bigger claims.',bn:'বড় বড় দাবি লেখা।',ok:0,why:'Big claims fall apart in an interview.',whybn:'বড় দাবি ইন্টারভিউতে টেকে না।'},
+     {en:'📢 Make bigger claims.',bn:'বড় বড় দাবি লেখা।',ok:0,then:CQ_CV.claims,why:'Big claims fall apart in an interview.',whybn:'বড় দাবি ইন্টারভিউতে টেকে না।'},
      {en:'🛑 Stop applying.',bn:'আবেদন বন্ধ করা।',ok:0,why:'The email says: apply again.',whybn:'ইমেইলে বলা আছে: আবার আবেদন করো।'}]}},
   {why:'Before she opens the AI, Ayesha decides which jobs are hers and which are the AI’s. Her facts and the final check stay with her.',whybn:'AI খোলার আগে আয়েশা ঠিক করে কোন কাজ তার, কোনটা AI-এর। তথ্য আর শেষ যাচাই তার হাতেই থাকে।',
    frame:{en:'I will check the facts. The AI can do the layout.',bn:'তথ্য আমি যাচাই করব। লেআউট AI করতে পারে।'},
@@ -218,12 +258,13 @@ AFL.lesson({
    frame:{en:'I won’t share ___. It’s private.',bn:'আমি ___ শেয়ার করব না। এটা ব্যক্তিগত।'},
    stage:'prompt',d:'dil',scene:{app:'sathi',msgs:[],composer:{text:'',attHit:'att',placeholder:'Ask Sathi'}},tap:'att',
    say:'New chat. First, give Sathi the right files. Tap +',bn:'নতুন চ্যাট। আগে Sathi-কে সঠিক ফাইল দাও। + চাপো।'},
-  {stage:'prompt',d:'dil',scene:{app:'picker',files:PICK_FILES,sel:'cvFiles',attachHit:'attach'},tap:'attach',pickShow:['cv','ielts','rucei','shortlist'],
+  {id:'pick',stage:'prompt',d:'dil',scene:{app:'picker',files:PICK_FILES,sel:'cvFiles',attachHit:'attach'},tap:'attach',pickShow:['cv','ielts','rucei','shortlist'],
    say:'Choose only the files a CV needs.',bn:'শুধু CV-র জন্য দরকারি ফাইলগুলো বাছো।',
    sub:'Does the CV need it? Is it mine to share?',subbn:'CV-র কি এটা লাগবে? এটা কি আমার শেয়ার করার জিনিস?',
    card:x=>{const c=chosen(x);if(!c.length) return {type:'html',html:`<div class="note">Tap a file. Tap again to remove it. Then tap <b>Attach</b>.<span class="bn" lang="bn">ফাইল বাছতে চাপো, বাদ দিতে আবার চাপো। তারপর Attach চাপো।</span></div>`};
      return {type:'html',html:`<div class="card" style="padding:10px">${c.map(id=>{const w=FILE_WHY[id];return `<div class="${w.ok>0?'good':w.ok===0?'note':'warn'}" style="margin-top:6px"><b>${esc(AFL.FILES[id].name)}</b> — ${w.en}<span class="bn" lang="bn">${w.bn}</span></div>`}).join('')}</div>`}}},
   {stage:'prompt',d:'dil',scene:x=>({app:'sathi',msgs:[],composer:{text:'',atts:safeFiles(x)}}),
+   cq:x=>chosen(x).some(id=>FILE_WHY[id].ok<0)?Object.assign({},CQ_CV.files,{rewind:x=>{x.set('cvFiles',chosen(x).filter(id=>FILE_WHY[id].ok>=0));AFL.goId('pick')}}):null,
    say:x=>chosen(x).some(id=>FILE_WHY[id].ok<0)?'Ayesha took out the private files.':'Good choice of files.',bn:x=>chosen(x).some(id=>FILE_WHY[id].ok<0)?'আয়েশা ব্যক্তিগত ফাইলগুলো সরিয়ে দিয়েছে।':'ফাইল বাছাই ভালো হয়েছে।',
    card:x=>{const bad=chosen(x).filter(id=>FILE_WHY[id].ok<0);const miss=['ielts','rucei'].filter(id=>!chosen(x).includes(id));
      return {type:'info',points:[...bad.map(id=>({i:'🚫',en:`<b>${esc(AFL.FILES[id].name)}</b> — removed.`,bn:FILE_WHY[id].bn})),
@@ -234,16 +275,17 @@ AFL.lesson({
      model:'She left out her ID card because it’s private. A CV doesn’t need her father’s bank statement.'}},
   {why:'Files chosen. Now she says exactly what she wants: Context, Product, Process, Performance.',whybn:'ফাইল বাছাই শেষ। এবার সে ঠিক কী চায় তা বলে: প্রেক্ষাপট, পণ্য, প্রক্রিয়া, আচরণ।',
    frame:{en:'Use only my files. If something is missing, ask me.',bn:'শুধু আমার ফাইল ব্যবহার করো। কিছু না থাকলে আমাকে জিজ্ঞেস করো।'},
-   stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS}}),tap:'send',
+   id:'prompt',stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS}}),tap:'send',
    say:'Now build a better prompt. Tap the parts above the keyboard.',bn:'এবার একটা ভালো প্রম্পট বানাও। কিবোর্ডের উপরের অংশগুলো চাপো।',
    sub:()=>say({solo:'Say each part out loud before you tap it.',pair:'Say each part to your partner before you tap it.',class:'Say each part together before you tap it.'}),
    subbn:()=>say({solo:'চাপার আগে প্রতিটা অংশ জোরে বলো।',pair:'চাপার আগে প্রতিটা অংশ সঙ্গীকে বলো।',class:'চাপার আগে প্রতিটা অংশ সবাই মিলে বলো।'}),
    compose:{key:'cvPrompt',title:'Prompt recipe',titlebn:'প্রম্পটের রেসিপি',slots:SLOTS,chips:PROMPT_CHIPS,best:['c1','c2','c3','c4'],ready:'All four parts are there. Tap send ➤ on the phone.',readybn:'চারটা অংশই আছে। ফোনে send ➤ চাপো।'}},
   {stage:'prompt',scene:x=>CHAT_SC(x,1),
+   cq:x=>shortcut(PROMPT_CHIPS,'cvPrompt',x).length?Object.assign({},CQ_CV.prompt,{rewind:x=>{AFL.unsay(x,'cvPrompt',shortcut(PROMPT_CHIPS,'cvPrompt',x).map(c=>c.text));AFL.goId('prompt')}}):null,
    say:'This time Sathi asks first — because your prompt told it to.',bn:'এবার Sathi আগে প্রশ্ন করছে — কারণ তোমার প্রম্পট তাকে বলেছে।',
    card:{type:'html',html:`<div class="good">✓ Ask before guessing. Your <b>Process</b> part did this.<span class="bn" lang="bn">অনুমানের আগে প্রশ্ন। তোমার Process অংশ এটা করেছে।</span></div>
      <div class="looks" style="margin-top:6px"><button class="look" data-view="bigd" data-mark="74,36.2,20,5">📄 Graduation year</button><button class="look" data-view="cv" data-mark="7.7,59.9,37,2.7">📄 Term paper</button></div>`}},
-  {stage:'prompt',scene:x=>Object.assign(CHAT_SC(x,1),{composer:{key:'cvAns',placeholder:'Reply to Sathi'},kb:{key:'cvAns',label:'ANSWERS',chips:ANS_CHIPS}}),tap:'send',
+  {id:'answers',stage:'prompt',scene:x=>Object.assign(CHAT_SC(x,1),{composer:{key:'cvAns',placeholder:'Reply to Sathi'},kb:{key:'cvAns',label:'ANSWERS',chips:ANS_CHIPS}}),tap:'send',
    docs:['bigd','cv'],
    say:'Answer Sathi’s three questions — truthfully.',bn:'Sathi-এর তিনটা প্রশ্নের উত্তর দাও — সত্যি করে।',
    compose:{key:'cvAns',title:'Answer all three',titlebn:'তিনটারই উত্তর দাও',chips:ANS_CHIPS,best:['a1','a2','a3'],slots:[
@@ -252,7 +294,9 @@ AFL.lesson({
      {label:'3 · Contact details',frame:'<em>I will add</em> ___ <em>myself.</em>',bn:'আমি নিজে ___ যোগ করব।',test:[/placeholder|myself/i]}]}},
 
   /* ---------- CHECK ---------- */
-  {stage:'check',why:'Even a good prompt doesn’t stop every mistake. Only her documents can prove each line.',whybn:'ভালো প্রম্পটও সব ভুল থামাতে পারে না। প্রতিটি লাইন প্রমাণ করতে পারে শুধু তার কাগজপত্র।',
+  {stage:'check',
+   cq:x=>shortcut(ANS_CHIPS,'cvAns',x).length?Object.assign({},CQ_CV.answer,{rewind:x=>{AFL.unsay(x,'cvAns',shortcut(ANS_CHIPS,'cvAns',x).map(c=>c.text));AFL.goId('answers')}}):null,
+   why:'Even a good prompt doesn’t stop every mistake. Only her documents can prove each line.',whybn:'ভালো প্রম্পটও সব ভুল থামাতে পারে না। প্রতিটি লাইন প্রমাণ করতে পারে শুধু তার কাগজপত্র।',
    frame:{en:'Is this true? Let me check.',bn:'এটা কি সত্য? দেখি যাচাই করে।'},
    scene:x=>CHAT_SC(x,3,{scrollTo:'[data-mid="draft"]'}),
    say:x=>document.querySelector('[data-stream]')?'Sathi is writing the draft…':'A draft! It looks good. Now check it.',bn:'একটা খসড়া! দেখতে ভালো। এবার যাচাই করো।',docs:['cv','ielts','rucei','shortlist'],
@@ -272,7 +316,7 @@ AFL.lesson({
   /* ---------- FIX ---------- */
   {why:'Every mistake she found becomes a precise instruction.',whybn:'যে ভুলগুলো পেয়েছে, প্রতিটি একটা স্পষ্ট নির্দেশ হয়ে যায়।',
    frame:{en:'Please change ___. I was not ___.',bn:'দয়া করে ___ বদলাও। আমি ___ ছিলাম না।'},
-   stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi'},kb:{key:'cvFix',label:'FIXES',chips:FIX_CHIPS}}),tap:'send',
+   id:'fixes',stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi'},kb:{key:'cvFix',label:'FIXES',chips:FIX_CHIPS}}),tap:'send',
    docs:['cv','ielts','rucei','shortlist'],
    say:'Tell Sathi exactly what to fix.',bn:'Sathi-কে ঠিক কী ঠিক করতে হবে, স্পষ্ট করে বলো।',
    compose:{key:'cvFix',title:'Fix three lines',titlebn:'তিনটা লাইন ঠিক করো',chips:FIX_CHIPS,best:['f1','f2','f3'],ready:'Clear and exact. Send it.',readybn:'স্পষ্ট আর সুনির্দিষ্ট। পাঠাও।',slots:[
@@ -280,6 +324,7 @@ AFL.lesson({
      {label:'Line 7 · software',frame:'<em>My</em> ___ <em>is basic, not advanced.</em>',bn:'আমার ___ বেসিক, অ্যাডভান্সড নয়।',test:[/basic/i]},
      {label:'Line 8 · membership',frame:'<em>Remove the</em> ___ <em>line. I am not</em> ___.',bn:'___ লাইনটা মুছে দাও। আমি ___ নই।',test:[/remove|not a member/i]}]}},
   {stage:'fix',scene:x=>CHAT_SC(x,5,{scrollTo:'[data-mid="fixed"]'}),
+   cq:x=>shortcut(FIX_CHIPS,'cvFix',x).length?Object.assign({},CQ_CV.fix,{rewind:x=>{AFL.unsay(x,'cvFix',shortcut(FIX_CHIPS,'cvFix',x).map(c=>c.text));AFL.goId('fixes')}}):null,
    say:'Fixed. And Sathi said sorry for the made-up line.',bn:'ঠিক হয়েছে। আর বানানো লাইনের জন্য Sathi দুঃখ প্রকাশ করেছে।',
    card:{type:'html',html:`<div class="loopline"><span>💬 prompt</span>→<span>🔍 check</span>→<span>✏️ fix</span>→<span>🔍 check again</span></div><span class="bn" lang="bn">প্রম্পট → যাচাই → সংশোধন → আবার যাচাই</span>`}},
 

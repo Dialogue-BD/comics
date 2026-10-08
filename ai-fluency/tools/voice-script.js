@@ -54,6 +54,11 @@ function each(L,b,v,cb){
 add('This is Ayesha’s phone. Learn AI, and English, by doing real tasks.','coach','common','start screen');
 for(const d of ['del','des','dis','dil']) D4.SAY[d].frames.forEach(f=>add(f.en,'ayesha','common',`${D4.META[d].n} phrase`));
 add('That’s asking the fox to guard the henhouse.','coach','agent','idiom');
+/* what happens next: the consequence lines, and the frame students answer with */
+/* (their own takes, so adding them never reshuffles takes that are already recorded) */
+add('What went wrong? Say it.','coach','cq','consequence question');
+add('She ___, so ___.','ayesha','cq','consequence frame');
+AFL.CQS.forEach(c=>add(c.line,'coach','cq',c.lesson+' · consequence · '+c.when));
 
 for(const id of ORDER){
   const L=LESSONS[id];
@@ -79,7 +84,7 @@ for(const id of ORDER){
 /* takes: per workflow and voice, in lesson order, a few lines each */
 const all=[...lines.values()];
 const takes={};
-for(const lesson of ['common',...ORDER]) for(const voice of ['coach','ayesha']){
+for(const lesson of ['common',...ORDER,'cq']) for(const voice of ['coach','ayesha']){
   const ls=all.filter(l=>l.lesson===lesson&&l.voice===voice);
   for(let i=0;i<ls.length;i+=MAX_PER_TAKE){
     const tid=`${lesson}-${voice}-${String(i/MAX_PER_TAKE+1).padStart(2,'0')}`;
@@ -165,7 +170,7 @@ ${v.context}
 \`\`\`
 
 `;}
-const TITLE={common:'Start screen and the four phrases',cv:'Workflow 1 · An honest CV with AI',agent:'Workflow 2 · Set up an AI agent',build:'Workflow 3 · Vibe-code an app'};
+const TITLE={common:'Start screen and the four phrases',cv:'Workflow 1 · An honest CV with AI',agent:'Workflow 2 · Set up an AI agent',build:'Workflow 3 · Vibe-code an app',cq:'What happens next — consequences of risky choices'};
 let cur='';
 for(const [tid,keys] of Object.entries(takes)){
   const L0=lines.get(keys[0]);

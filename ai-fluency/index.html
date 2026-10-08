@@ -745,7 +745,29 @@ body.bangla .d4legend.compact .lg-x .bn{display:block}
 .modepill{flex:none;display:inline-flex;align-items:center;gap:5px;border:1px solid var(--rule-strong);background:var(--card);border-radius:999px;padding:4px 10px 4px 7px;font-weight:700;font-size:13px;color:var(--forest)}
 .modepill span:first-child{font-size:16px;line-height:1}
 .iconbtn.voice{font-size:17px}
-@media (max-width:420px){ .c-actions{gap:6px;padding-left:8px;padding-right:8px} .c-actions .btn.gold span{display:none} .c-actions .btn.gold{padding:9px 12px} .c-actions .dots b{width:10px} .c-actions .dots b.on{width:16px} .c-actions .btn.next{padding:9px 12px} }
+/* what happens next: a risky choice plays out */
+.c-say.cq{background:#FBEAE7;border-left:4px solid var(--d-dil,#A8322A)}
+@media (min-width:900px){ .c-say.cq{margin:10px 14px 0;border-radius:10px;padding:10px 12px} }
+.cqw{font:700 11.5px/1.2 var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:#8C2A22;margin-bottom:3px}
+.cqw .bn{letter-spacing:0;text-transform:none;font-weight:600}
+.card.cq{border-color:#D9A39C}
+.card.cq .btn.rew{width:100%;justify-content:center;margin-top:10px}
+.btn.rew{white-space:nowrap}
+.cq-why{margin-top:10px;font-size:13.5px;color:var(--ink-muted)}
+.cq-why summary{cursor:pointer;font-weight:600;color:var(--forest)}
+.cq-why p{margin:6px 0 0;line-height:1.45}
+/* on the phone: what an agent did by itself */
+.cqtag{display:flex;gap:8px;align-items:center;background:#FFDAD6;color:#8C1D18;border-radius:12px;padding:8px 10px;margin:8px 0 10px;font-size:13px;font-weight:600;line-height:1.3}
+.log .bad{color:#8C1D18;font-weight:600}
+.log .bad small{color:#B3261E}
+.txn{margin:10px 16px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px #E8D3DC;padding:12px 14px;font-size:14px;line-height:1.45}
+.txn .amt{font-size:24px;font-weight:600;color:#B3261E}
+.txn small{display:block;color:var(--md-on-surface-var);font-size:12.5px}
+.prow{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--md-outline-var);font-size:14px;line-height:1.35}
+.prow small{display:block;color:var(--md-on-surface-var);font-size:12.5px}
+.prow .tg{flex:none;width:40px;height:22px;border-radius:99px;background:#6750A4;position:relative}
+.prow .tg::after{content:'';position:absolute;right:3px;top:3px;width:16px;height:16px;border-radius:99px;background:#fff}
+@media (max-width:420px){ .c-actions{gap:6px;padding-left:8px;padding-right:8px} .c-actions .btn.gold:not(.rew) span{display:none} .c-actions .btn.gold{padding:9px 12px} .c-actions .dots b{width:10px} .c-actions .dots b.on{width:16px} .c-actions .btn.next{padding:9px 12px} }
 @media (max-width:520px){ .modepill .ml{display:none} .modepill{padding:4px 7px} .c-logo img{height:22px} }
 /* narrow phones: the language switch becomes one button (the other language), so the lesson title has room for two lines */
 @media (max-width:440px){
@@ -932,11 +954,11 @@ body.stage{--ui:1.28}
 </div>
 <div id="menu" hidden></div>
 <noscript>This activity needs JavaScript.</noscript>
-<script src="compass.js?v=12"></script>
-<script src="engine.js?v=12"></script>
-<script src="lesson-cv.js?v=12"></script>
-<script src="lesson-agent.js?v=12"></script>
-<script src="lesson-build.js?v=12"></script>
+<script src="compass.js?v=13"></script>
+<script src="engine.js?v=13"></script>
+<script src="lesson-cv.js?v=13"></script>
+<script src="lesson-agent.js?v=13"></script>
+<script src="lesson-build.js?v=13"></script>
 <script src="intro.js"></script>
 <script>AFL.boot();</script>
 </body>

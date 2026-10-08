@@ -148,7 +148,7 @@ APPS.home=sc=>`<div class="view home" data-theme="home">
 APPS.mail=sc=>{
   if(sc.view==='read'){const m=sc.mail;return `<div class="view">${appBar('',{right:`<button class="mi">${ico('trash')}</button><button class="mi">${ico('mail')}</button><button class="mi">${ico('more')}</button>`})}
    <div class="scroll"><div class="mailbody"><h2>${esc(m.subject)}</h2>
-   <div class="sender"><span class="av" style="background:${m.color||'#7D5260'}">${esc(m.from[0])}</span><span><b>${esc(m.from)}</b><span>to me · ${esc(m.time||'9:12 AM')}</span></span></div>
+   <div class="sender"><span class="av" style="background:${m.color||'#7D5260'}">${esc(m.from[0])}</span><span><b>${esc(m.from)}</b><span>${m.to?'to '+esc(m.to):'to me'} · ${esc(m.time||'9:12 AM')}</span></span></div>
    ${m.body}${m.atts?`<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px">${m.atts.map(a=>`<span class="chipm">${ico('file')} ${esc(a)}</span>`).join('')}</div>`:''}
    </div></div></div>`;}
   return `<div class="view">${appBar('Inbox',{left:'menu'})}<div class="scroll">${(sc.mails||[]).map(m=>`<button class="li ${m.unread?'unread':''}" ${m.hit?`data-hit="${m.hit}"`:''}><span class="av" style="background:${m.color}">${esc(m.from[0])}</span><span><b>${esc(m.from)}</b><p>${esc(m.subject)}</p></span><small>${esc(m.time)}</small></button>`).join('')}</div></div>`;
@@ -233,7 +233,9 @@ function keyboard(kb){
 
 /* ------------------------------------------------------------- render phone */
 function renderPhone(anim){
-  const x=ctx(); const b=x.beat; const sc=fn(b.scene,x)||{app:'home'};
+  const x=ctx(); const b=x.beat; let sc=fn(b.scene,x)||{app:'home'};
+  if(REW) sc=Object.assign({},prevScene||sc,{skip:{big:'⏪',small:S.bn?'আবার বেছে নাও':'Rewind'}});
+  else if(cqOn()){ sc=Object.assign({},fn(CQ.then.scene,x)); if(CQ.phase==='jump') sc.skip={big:CQ.then.when,small:CQ.then.whensub||''}; }
   const dev=$('#device'); const scr=$('#screen');
   const theme=sc.theme||(sc.app==='lock'?'lock':sc.app==='home'?'home':(sc.app==='studio'||sc.app==='doc')?'dark':sc.app==='orbit'?'orbit':'light');
   const bgs={lock:'radial-gradient(130% 80% at 20% 0%,#C9B8F2 0,#8C77C9 40%,#3C2E6B 100%)',home:'radial-gradient(90% 60% at 80% 10%,#F2D6E6 0,transparent 60%),radial-gradient(100% 70% at 0% 100%,#BFD6F3 0,transparent 60%),linear-gradient(160deg,#E9DDFF,#D9E5FF)',dark:sc.app==='doc'?'#2b2b2f':'#131314',orbit:'#FFF8F5',light:sc.app==='gdoc'?'#F0F0F4':'var(--md-surface)'};
@@ -388,20 +390,25 @@ function renderCoach(){
   const x=ctx(), b=x.beat, L=x.L; const st=L.stages.find(s=>s.id===b.stage)||L.stages[0];
   const d=beatD(L,S.beat);
   renderBand(d,L,d?curFrame(L,S.beat,x):null);
-  const sayT=fn(b.say,x)||'';
-  $('#csay').innerHTML=`<div class="sayrow"><p class="say">${sayT}</p>${sayT?sayBtn(sayT):''}</div>${fn(b.bn,x)?`<span class="bn" lang="bn">${fn(b.bn,x)}</span>`:''}`
+  const sayT=fn(b.say,x)||''; const cqt=cqOn()?CQ.then:null;
+  $('#csay').classList.toggle('cq',!!cqt);
+  $('#csay').innerHTML=cqt?`<div class="cqw">⏩ ${esc(cqt.when)}${cqt.whenbn?`<span class="bn" lang="bn"> · ${cqt.whenbn}</span>`:''}</div><div class="sayrow"><p class="say">${esc(cqt.line)}</p>${sayBtn(cqt.line)}</div>${cqt.linebn?`<span class="bn" lang="bn">${cqt.linebn}</span>`:''}`
+    :`<div class="sayrow"><p class="say">${sayT}</p>${sayT?sayBtn(sayT):''}</div>${fn(b.bn,x)?`<span class="bn" lang="bn">${fn(b.bn,x)}</span>`:''}`
     +(b.sub?`<p class="sub">${fn(b.sub,x)}${fn(b.subbn,x)?`<span class="bn" lang="bn">${fn(b.subbn,x)}</span>`:''}</p>`:'');
-  let h=dShiftCard(x,L,S.beat);
+  let h='';
+  if(cqt) h=cqCard();
+  else {
+  h=dShiftCard(x,L,S.beat);
   if(b.compose) h+=composeCard(x,b);
   if(b.check) h+=checkCard(x,b);
   if(b.decide) h+=decideCard(x,b);
   if(b.card) h+=cardHTML(fn(b.card,x),x);
   if(b.talk) h+=talkCard(x,b);
   const docs=fn(b.docs,x); if(docs&&docs.length) h+=docStrip(docs);
+  }
   // on a phone the cards live in a pull-up sheet; the peek bar says what is inside
   const cd=fn(b.card,x)||{}, tk=fn(b.talk,x);
-  const hasMore=!!(h.replace(/<details[\s\S]*?<\/details>/,'').replace(/<[^>]+>/g,'').trim()||cd.type);
-  const peekL=peekLabel(x,b,cd,tk,!!h);
+  const peekL=cqt?(S.bn?'🗣 কী ভুল হলো? <small lang="bn">· আবার বেছে নাও</small>':'🗣 What went wrong?'):peekLabel(x,b,cd,tk,!!h);
   body.innerHTML=(h?`<button class="peek" data-c="sheet" aria-expanded="false"><span class="pl">${peekL}</span><span class="pc">▲</span></button>`:'')+h;
   if(sheetBeat!==S.lesson+'/'+S.beat){ sheetBeat=S.lesson+'/'+S.beat; sheetUp=sheetDefault(x,b,cd,tk); }
   coach.classList.toggle('no-sheet',!h); document.body.classList.toggle('no-sheet',!h);
@@ -415,7 +422,7 @@ function renderCoach(){
   const cdx=fn(b.card,x); const canShow=!!(b.tap||b.compose||b.pickShow||b.decide||b.check||b.showMe||(cdx&&(cdx.type==='pickeach'||cdx.type==='sort')));
   const last=S.beat===L.beats.length-1;
   act.innerHTML=`<button class="btn quiet" data-c="back" aria-label="Back" ${S.beat===0?'':''}>${ico('back')}</button>
-   ${canShow?`<button class="btn gold" data-c="show">${ico('play')}<span>${S.bn?'দেখাও':'Show me'}</span></button>`:''}
+   ${cqt?`<button class="btn gold rew" data-c="rewind">↩ <span>${S.bn?'আবার বেছে নাও':'Choose again'}</span></button>`:canShow?`<button class="btn gold" data-c="show">${ico('play')}<span>${S.bn?'দেখাও':'Show me'}</span></button>`:''}
    ${inStage.length>6?`<span class="count" aria-label="Step ${pos+1} of ${inStage.length}">${pos+1}/${inStage.length}</span>`:`<span class="dots" aria-label="Step ${pos+1} of ${inStage.length}">${inStage.map((_,i)=>`<b class="${i===pos?'on':i<pos?'done':''}"></b>`).join('')}</span>`}
    <button class="btn next" data-c="next">${last?'Finish':(fn(b.next,x)||(b.tap&&!b.card?'Skip':'Next'))} ${ico('back').replace('<svg','<svg style="transform:scaleX(-1)"')}</button>`;
   $('#c-head').textContent=L.title;
@@ -451,7 +458,7 @@ function cardHTML(c,x){
      ${a!=null?`<div class="why ${right?'':'no'}"><b>${right?'Yes.':'Think again.'}</b> ${right?it.why:(it.hint||it.why)}${S.bn&&(right?it.whybn:(it.hintbn||it.whybn))?`<span class="bn" lang="bn" style="display:block">${right?it.whybn:(it.hintbn||it.whybn)}</span>`:''}</div>`:''}</div>`}).join('')}</div>`;
   }
   if(c.type==='choice'){
-    const a=x.get(c.key);
+    CHOICES[c.key]=c.options; const a=x.get(c.key);
     return `<div class="opts">${c.options.map((o,i)=>`<button class="opt ${a===i?'pick'+(o.ok?'':' wrong'):''}" data-choice="${c.key}|${i}">${o.en}${o.bn?`<span class="bn" lang="bn">${o.bn}</span>`:''}</button>${a===i?`<div class="why ${o.ok?'':'no'}">${o.why}${o.whybn?`<span class="bn" lang="bn">${o.whybn}</span>`:''}</div>`:''}`).join('')}</div>`;
   }
   if(c.type==='checklist'){
@@ -627,16 +634,52 @@ function decideCard(x,b){
   return h;
 }
 
+const CHOICES={};
+const choiceOpt=(x,k,i)=>{ const o=(CHOICES[k]||[])[i]; return o&&o.then?Object.assign({},o,{then:Object.assign({why:o.why,whybn:o.whybn},o.then)}):o; };
+/* ---- what happens next: a risky choice plays out on the phone. Show, don't
+   tell: the student sees the result (a sent email, a paid scam, an upset
+   parent), says what went wrong in one frame, then rewinds and chooses again —
+   or keeps going (nothing is locked). Consequences come from AFL.conseq(). ---- */
+const CQS=[]; let CQ=null, REW=false;
+const CQ_ASK={en:'What went wrong? Say it.',bn:'কী ভুল হলো? বলো।'};
+const CQ_FRAME={en:'She ___, so ___.',bn:'সে ___, তাই ___।'};
+function conseq(lesson,c){ c.lesson=lesson; CQS.push(c); return c; }
+const cqOn=()=>!!(CQ&&S.lesson&&CQ.bk===S.lesson+'/'+S.beat);
+function startCQ(then,rewind){
+  const bk=S.lesson+'/'+S.beat; CQ={bk,then,rewind,phase:'jump'};
+  hush(); sheetUp=false; renderPhone(true); renderCoach();
+  setTimeout(()=>{ if(!cqOn()||CQ.phase!=='jump') return; CQ.phase='show'; renderPhone(true); if(S.voice) speak(CQ.then.line); },1700);
+}
+function rewindCQ(){
+  if(!CQ) return; const r=CQ.rewind, at=S.lesson+'/'+S.beat; CQ=null; hush();
+  REW=true; renderPhone(false); renderCoach();
+  setTimeout(()=>{ REW=false; const x=ctx(); if(r) r(x); if(S.lesson+'/'+S.beat===at){ renderPhone(true); renderCoach(); } },800);
+}
+function cqCard(){
+  const t=CQ.then, hd=TALK_HEAD[S.mode];
+  return `<div class="card talk cq"><div class="talk-h"><span class="ti" aria-hidden="true">${hd.i}</span><b>${hd.en}<span class="bn" lang="bn">${hd.bn}</span></b></div>
+   <p class="tq"><span>${CQ_ASK.en}<span class="bn" lang="bn">${CQ_ASK.bn}</span></span>${sayBtn(CQ_ASK.en)}</p>
+   <div class="frames"><div class="fr" data-say="${esc(CQ_FRAME.en)}"><span>${gapped(CQ_FRAME.en)}<span class="bn" lang="bn">${CQ_FRAME.bn}</span></span>${sayBtn(CQ_FRAME.en)}</div></div>
+   <button class="btn gold rew" data-c="rewind">↩ ${S.bn?'আবার বেছে নাও':'Rewind and choose again'}</button>
+   ${t.why?`<details class="cq-why"><summary>${S.bn?'কেন এমন হলো?':'Why did this happen?'}</summary><p>${t.why}${t.whybn?`<span class="bn" lang="bn">${t.whybn}</span>`:''}</p></details>`:''}</div>`;
+}
+function goId(id){ const L=LESSONS[S.lesson]; const i=L?L.beats.findIndex(b=>b.id===id):-1; if(i>=0) go(i); }
+/* take a shortcut chip's words back out of what the student wrote */
+function unsay(x,key,texts){ let v=x.get(key,''); [].concat(texts).forEach(t=>{v=v.replace(t,'')}); x.set(key,v.replace(/\s{2,}/g,' ').trim()); }
+
 /* ------------------------------------------------------------- navigation */
 function go(i,anim=true){
   const L=LESSONS[S.lesson]; if(!L) return;
   if(S.finishStream) S.finishStream();
   if(VIEW) closeView();
+  CQ=null;
   const moved=S.beat!==i||anim; S.beat=Math.max(0,Math.min(L.beats.length-1,i)); save();
   resetTalk(); hush();
   const x=ctx(); if(x.beat.enter) x.beat.enter(x);
   document.body.classList.toggle('wide',!!x.beat.wide);
   renderPhone(anim); renderCoach();
+  // a shortcut taken earlier can play out as soon as its result appears
+  const cq=x.beat.cq&&fn(x.beat.cq,x); if(cq){ startCQ(cq,cq.rewind); return; }
   if(S.voice&&moved) autoVoice(x);
   if(x.beat.auto){ const at=S.beat; setTimeout(()=>{ if(S.beat===at&&S.lesson===L.id) go(S.beat+1) },x.beat.auto) }
 }
@@ -675,6 +718,7 @@ function onPhoneClick(e){
   const hit=e.target.closest('[data-hit]');
   if(!S.lesson){ if(hit){const id=(hit.dataset.hit.match(/^start:(.+)/)||[])[1]; if(id){start(id);return}} pulseCoach(); return; }
   const b=x.beat;
+  if(cqOn()||REW){ if(ui||hit||sys) pulseCoach(); return; }
   if(ui){ handleUI(ui.dataset.ui,ui,x); return; }
   if(hit){
     const want=[].concat(fn(b.tap,x)||[]);
@@ -696,7 +740,9 @@ function handleUI(id,el,x){
   if(kind==='kbtoggle'){ S.keys=!S.keys; renderPhoneKeepFocus(); return; }
   if(kind==='chip'){ toggleChip(arg,x); return; }
   if(kind==='pick'){ const sc=fn(b.scene,x); const sel=x.get(sc.sel,[]).slice(); const k=sel.indexOf(arg); if(k>=0)sel.splice(k,1); else sel.push(arg); x.set(sc.sel,sel); renderPhone(false); renderCoach(); return; }
-  if(kind==='opt'&&b.decide){ const d=fn(b.decide,x); x.set(d.key,arg); if(d.onPick) d.onPick(x,arg); renderPhone(false); renderCoach(); if(innerWidth<900) $('#cbody').scrollTop=$('#cbody').scrollHeight; return; }
+  if(kind==='opt'&&b.decide){ const d=fn(b.decide,x); x.set(d.key,arg); if(d.onPick) d.onPick(x,arg);
+    const o=d.options[arg]; if(o&&o.then){ startCQ(Object.assign({why:o.why,whybn:o.whybn},o.then),x2=>{delete x2.ch[d.key]; save()}); return; }
+    renderPhone(false); renderCoach(); if(innerWidth<900) $('#cbody').scrollTop=$('#cbody').scrollHeight; return; }
   if(kind==='line'&&b.check){ x.set(b.check.key+'_sel',arg); sheetUp=true; renderPhone(false); renderCoach(); const lk=$('#cbody .looks'); if(lk&&innerWidth<900){const cb=$('#cbody'); cb.scrollTop=lk.offsetTop-cb.offsetTop-70;} return; }
   if(b.onUi&&b.onUi(x,kind,arg,el)!==false) return;
   if(x.L.onUi) x.L.onUi(x,kind,arg,el);
@@ -722,12 +768,12 @@ function onCoachClick(e){
   const mdc=e.target.closest('[data-mode]'); if(mdc){ setMode(mdc.dataset.mode); return; }
   const c=e.target.closest('[data-c]'); const st=e.target.closest('[data-start]');
   if(st){ start(st.dataset.start); return; }
-  if(c){ const a=c.dataset.c; if(a==='sheet'){ setSheet(!sheetUp); return; } if(a==='next')next(); else if(a==='back')back(); else if(a==='show')showMe(); else if(a==='menu')openMenu(); else if(a==='intro')openIntro(); return; }
+  if(c){ const a=c.dataset.c; if(a==='sheet'){ setSheet(!sheetUp); return; } if(a==='rewind'){ rewindCQ(); return; } if(a==='next')next(); else if(a==='back')back(); else if(a==='show')showMe(); else if(a==='menu')openMenu(); else if(a==='intro')openIntro(); return; }
   const stg=e.target.closest('[data-stage]'); if(stg&&S.lesson){ const i=LESSONS[S.lesson].beats.findIndex(b=>b.stage===stg.dataset.stage); if(i>=0) go(i); return; }
   if(!S.lesson) return; const x=ctx();
   const so=e.target.closest('[data-sort]'); if(so){ const [k,i,v]=so.dataset.sort.split('|'); const a=x.get(k,{}); a[i]=v; x.set(k,a); renderCoachKeep(); return; }
   const pe=e.target.closest('[data-pe]'); if(pe){ const [k,i,j]=pe.dataset.pe.split('|'); const a=x.get(k,{}); a[i]=+j; x.set(k,a); renderPhone(false); renderCoachKeep(); return; }
-  const ch=e.target.closest('[data-choice]'); if(ch){ const [k,i]=ch.dataset.choice.split('|'); x.set(k,+i); renderCoachKeep(); return; }
+  const ch=e.target.closest('[data-choice]'); if(ch){ const [k,i]=ch.dataset.choice.split('|'); x.set(k,+i); const o=choiceOpt(x,k,+i); if(o&&o.then){ startCQ(o.then,x2=>{delete x2.ch[k]; save()}); return; } renderCoachKeep(); return; }
   const tk=e.target.closest('[data-tick]'); if(tk){ const [k,i]=tk.dataset.tick.split('|'); const a=x.get(k,{}); a[i]=!a[i]; x.set(k,a); renderCoachKeep(); return; }
   const vd=e.target.closest('[data-verd]'); if(vd){ const [k,id,v]=vd.dataset.verd.split('|'); const a=x.get(k,{}); a[id]=v; x.set(k,a); renderPhone(false); renderCoachKeep(); if(innerWidth<900){const cb=$('#cbody'); cb.scrollTo({top:cb.scrollHeight,behavior:'smooth'})} return; }
   const sp=e.target.closest('[data-speak]'); if(sp){ speak(sp.dataset.speak); sp.classList.add('speaking'); if(sp.classList.contains('model')){const t=sp.nextElementSibling; if(t) t.hidden=false;} return; }
@@ -902,5 +948,5 @@ function boot(){
   if(!fromHash()){ if(S.lesson&&LESSONS[S.lesson]) go(S.beat,false); else hub(); }
 }
 
-window.AFL={_mode:k=>{S.mode=k},audioKey,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,next,ctx,renderPhone:()=>renderPhone(false),renderCoach,start,hub,STORY_DATE};
+window.AFL={_mode:k=>{S.mode=k},audioKey,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach,start,hub,STORY_DATE};
 })();

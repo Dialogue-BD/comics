@@ -112,6 +112,174 @@
   "take": "agent-coach-01"
  },
  {
+  "key": "006f9dd",
+  "text": "What went wrong? Say it.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "consequence question",
+  "take": "cq-coach-01"
+ },
+ {
+  "key": "1ojgc1r",
+  "text": "She ___, so ___.",
+  "voice": "ayesha",
+  "lesson": "cq",
+  "where": "consequence frame",
+  "take": "cq-ayesha-01"
+ },
+ {
+  "key": "0b34off",
+  "text": "She made bigger claims, so the interview panel will ask about things she never did.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "cv · consequence · Two weeks later",
+  "take": "cq-coach-01"
+ },
+ {
+  "key": "1t09s3c",
+  "text": "She uploaded private files, so her ID card is now on an AI company's computers.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "cv · consequence · Later that day",
+  "take": "cq-coach-01"
+ },
+ {
+  "key": "1127d7z",
+  "text": "She asked it to sound impressive, so Sathi made things up again.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "cv · consequence · Sathi answers",
+  "take": "cq-coach-01"
+ },
+ {
+  "key": "1babcdi",
+  "text": "She told it the paper was published, so her CV now has a lie in it.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "cv · consequence · Sathi writes the draft",
+  "take": "cq-coach-02"
+ },
+ {
+  "key": "0j203nw",
+  "text": "She left the wrong lines in, so the interviewers will ask about them.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "cv · consequence · One week later",
+  "take": "cq-coach-02"
+ },
+ {
+  "key": "1n6umjj",
+  "text": "She gave Orbit full access, so it sent emails in her name while she slept.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "agent · consequence · Next morning",
+  "take": "cq-coach-02"
+ },
+ {
+  "key": "0pp786g",
+  "text": "She gave Orbit all her files, so it opened the children's photos and the parents' phone numbers.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "agent · consequence · Three hours later",
+  "take": "cq-coach-02"
+ },
+ {
+  "key": "04lqazx",
+  "text": "She let Orbit into her chats, so it answered the parents in her name.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "agent · consequence · That evening",
+  "take": "cq-coach-03"
+ },
+ {
+  "key": "0iwpaap",
+  "text": "She let Orbit sign in for her, so it read 142 other students' results.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "agent · consequence · Three hours later",
+  "take": "cq-coach-03"
+ },
+ {
+  "key": "06cc2ur",
+  "text": "She linked bKash, so Orbit paid a fake fee from a web page. The money is gone.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "agent · consequence · Three hours later",
+  "take": "cq-coach-03"
+ },
+ {
+  "key": "17b15vr",
+  "text": "She allowed her contacts, so Orbit messaged all 400 people in her name.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "agent · consequence · A week later",
+  "take": "cq-coach-03"
+ },
+ {
+  "key": "0h6qn5w",
+  "text": "She pressed Send, so a confidential letter went to another professor. Prof. Islam was upset.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "agent · consequence · Two days later",
+  "take": "cq-coach-04"
+ },
+ {
+  "key": "1nlbgit",
+  "text": "She paid the fake fee, so now the scammers want five thousand taka more.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "agent · consequence · The next day",
+  "take": "cq-coach-04"
+ },
+ {
+  "key": "06yalj0",
+  "text": "She allowed Downloads, so Orbit read all 214 files — her ID card, her father's bank statement and her family photos.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "agent · consequence · Five minutes later",
+  "take": "cq-coach-04"
+ },
+ {
+  "key": "0yzrmbj",
+  "text": "She kept Orbit connected, so a data breach in June showed her emails and files to strangers.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "agent · consequence · June 2026",
+  "take": "cq-coach-04"
+ },
+ {
+  "key": "0y4k4rr",
+  "text": "She didn't stop it, so Studio built a sign-in and a cloud database that nobody asked for.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "build · consequence · Studio keeps going",
+  "take": "cq-coach-05"
+ },
+ {
+  "key": "0xvdo1t",
+  "text": "She said \"do whatever you think is best\", so Studio kept every extra feature.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "build · consequence · Studio answers",
+  "take": "cq-coach-05"
+ },
+ {
+  "key": "19nig84",
+  "text": "She only said \"something is wrong\", so Studio guessed — and fixed the wrong thing.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "build · consequence · Studio answers",
+  "take": "cq-coach-05"
+ },
+ {
+  "key": "0gfbw2b",
+  "text": "She added payments in one night, so paying customers got a broken, unsafe app.",
+  "voice": "coach",
+  "lesson": "cq",
+  "where": "build · consequence · A month later",
+  "take": "cq-coach-05"
+ },
+ {
   "key": "00netb2",
   "text": "Listen and repeat. Tap a picture to hear it.",
   "voice": "coach",
