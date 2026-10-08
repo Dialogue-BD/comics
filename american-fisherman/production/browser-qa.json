@@ -1,0 +1,1141 @@
+{
+  "testedOn": "2026-10-09",
+  "portrait": [
+    {
+      "beat": "1: A · panel 1-1",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 2
+    },
+    {
+      "beat": "The beautiful tuna",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 9
+    },
+    {
+      "beat": "2: A · panel 1-3",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 22
+    },
+    {
+      "beat": "3: F · panel 1-5",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 32
+    },
+    {
+      "beat": "4: A · panel 1-3",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 47
+    },
+    {
+      "beat": "5: A · panel 2-1",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 66
+    },
+    {
+      "beat": "A longer day of fishing",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 72
+    },
+    {
+      "beat": "A larger catch",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 75
+    },
+    {
+      "beat": "6: F · panel 2-4",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 83
+    },
+    {
+      "beat": "7: F · panel 2-6",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 100
+    },
+    {
+      "beat": "8: A · panel 2-7",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 122
+    },
+    {
+      "beat": "9: A · panel 2-1",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 141
+    },
+    {
+      "beat": "10: F · panel 2-5",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 148
+    },
+    {
+      "beat": "11: F · panel 3-1",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 164
+    },
+    {
+      "beat": "Play with the children",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 173
+    },
+    {
+      "beat": "Watch football",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 185
+    },
+    {
+      "beat": "A siesta with his wife",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 197
+    },
+    {
+      "beat": "12: F · panel 3-6",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 216
+    },
+    {
+      "beat": "Meet village friends",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 236
+    },
+    {
+      "beat": "13: F · panel 3-9",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 246
+    },
+    {
+      "beat": "14: A · panel 4-1",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 268
+    },
+    {
+      "beat": "15: A · panel 4-2",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 286
+    },
+    {
+      "beat": "16: A · panel 4-2",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 316
+    },
+    {
+      "beat": "17: A · panel 4-1",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 340
+    },
+    {
+      "beat": "18: A · panel 4-3",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 352
+    },
+    {
+      "beat": "Selling extra fish",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 366
+    },
+    {
+      "beat": "19: F · panel 4-6",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 378
+    },
+    {
+      "beat": "20: A · panel 5-2",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 381
+    },
+    {
+      "beat": "Earn more money",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 400
+    },
+    {
+      "beat": "21: F · panel 4-6",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 407
+    },
+    {
+      "beat": "22: A · panel 5-3",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 411
+    },
+    {
+      "beat": "A third boat",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 422
+    },
+    {
+      "beat": "A whole fleet",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 432
+    },
+    {
+      "beat": "23: F · panel 4-6",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 452
+    },
+    {
+      "beat": "24: A · panel 5-12",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 456
+    },
+    {
+      "beat": "Leaving for the city",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 470
+    },
+    {
+      "beat": "25: A · panel 5-15",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 475
+    },
+    {
+      "beat": "26: F · panel 6-1",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 506
+    },
+    {
+      "beat": "27: A · panel 6-2",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 540
+    },
+    {
+      "beat": "Years passing",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 562
+    },
+    {
+      "beat": "28: F · panel 6-11",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 579
+    },
+    {
+      "beat": "29: A · panel 6-10",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 607
+    },
+    {
+      "beat": "30: A · panel 7-1",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 632
+    },
+    {
+      "beat": "The imagined wealthy life",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 642
+    },
+    {
+      "beat": "A millionaire",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 653
+    },
+    {
+      "beat": "31: F · panel 7-14",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 665
+    },
+    {
+      "beat": "32: A · panel 7-6",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 704
+    },
+    {
+      "beat": "33: A · panel 7-7",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 728
+    },
+    {
+      "beat": "34: A · panel 7-8",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 766
+    },
+    {
+      "beat": "Play with grandchildren",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 777
+    },
+    {
+      "beat": "Watch football in retirement",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 789
+    },
+    {
+      "beat": "35: A · panel 7-11",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 795
+    },
+    {
+      "beat": "Evenings in the fishing village",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 808
+    },
+    {
+      "beat": "36: A · panel 7-12",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 818
+    },
+    {
+      "beat": "Sing with friends",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 830
+    },
+    {
+      "beat": "37: F · panel 7-14",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 842
+    },
+    {
+      "beat": "38: C · panel 8-1",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 861
+    },
+    {
+      "beat": "39: F · panel 8-2",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 884
+    },
+    {
+      "beat": "Enough fish to share",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 909
+    },
+    {
+      "beat": "40: F · panel 8-3",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 928
+    },
+    {
+      "beat": "The gift of fish",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 943
+    },
+    {
+      "beat": "41: F · panel 8-6",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 959
+    }
+  ],
+  "desktop": [
+    {
+      "beat": "1: A · panel 1-1",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 2
+    },
+    {
+      "beat": "The beautiful tuna",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 9
+    },
+    {
+      "beat": "2: A · panel 1-3",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 22
+    },
+    {
+      "beat": "3: F · panel 1-5",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 32
+    },
+    {
+      "beat": "4: A · panel 1-3",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 47
+    },
+    {
+      "beat": "5: A · panel 2-1",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 66
+    },
+    {
+      "beat": "A longer day of fishing",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 72
+    },
+    {
+      "beat": "A larger catch",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 75
+    },
+    {
+      "beat": "6: F · panel 2-4",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 83
+    },
+    {
+      "beat": "7: F · panel 2-6",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 100
+    },
+    {
+      "beat": "8: A · panel 2-7",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 122
+    },
+    {
+      "beat": "9: A · panel 2-1",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 141
+    },
+    {
+      "beat": "10: F · panel 2-5",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 148
+    },
+    {
+      "beat": "11: F · panel 3-1",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 164
+    },
+    {
+      "beat": "Play with the children",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 173
+    },
+    {
+      "beat": "Watch football",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 185
+    },
+    {
+      "beat": "A siesta with his wife",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 197
+    },
+    {
+      "beat": "12: F · panel 3-6",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 216
+    },
+    {
+      "beat": "Meet village friends",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 236
+    },
+    {
+      "beat": "13: F · panel 3-9",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 246
+    },
+    {
+      "beat": "14: A · panel 4-1",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 268
+    },
+    {
+      "beat": "15: A · panel 4-2",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 286
+    },
+    {
+      "beat": "16: A · panel 4-2",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 316
+    },
+    {
+      "beat": "17: A · panel 4-1",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 340
+    },
+    {
+      "beat": "18: A · panel 4-3",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 352
+    },
+    {
+      "beat": "Selling extra fish",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 366
+    },
+    {
+      "beat": "19: F · panel 4-6",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 378
+    },
+    {
+      "beat": "20: A · panel 5-2",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 381
+    },
+    {
+      "beat": "Earn more money",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 400
+    },
+    {
+      "beat": "21: F · panel 4-6",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 407
+    },
+    {
+      "beat": "22: A · panel 5-3",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 411
+    },
+    {
+      "beat": "A third boat",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 422
+    },
+    {
+      "beat": "A whole fleet",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 432
+    },
+    {
+      "beat": "23: F · panel 4-6",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 452
+    },
+    {
+      "beat": "24: A · panel 5-12",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 456
+    },
+    {
+      "beat": "Leaving for the city",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 470
+    },
+    {
+      "beat": "25: A · panel 5-15",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 475
+    },
+    {
+      "beat": "26: F · panel 6-1",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 506
+    },
+    {
+      "beat": "27: A · panel 6-2",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 540
+    },
+    {
+      "beat": "Years passing",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 562
+    },
+    {
+      "beat": "28: F · panel 6-11",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 579
+    },
+    {
+      "beat": "29: A · panel 6-10",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 607
+    },
+    {
+      "beat": "30: A · panel 7-1",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 632
+    },
+    {
+      "beat": "The imagined wealthy life",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 642
+    },
+    {
+      "beat": "A millionaire",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 653
+    },
+    {
+      "beat": "31: F · panel 7-14",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 665
+    },
+    {
+      "beat": "32: A · panel 7-6",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 704
+    },
+    {
+      "beat": "33: A · panel 7-7",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 728
+    },
+    {
+      "beat": "34: A · panel 7-8",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 766
+    },
+    {
+      "beat": "Play with grandchildren",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 777
+    },
+    {
+      "beat": "Watch football in retirement",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 789
+    },
+    {
+      "beat": "35: A · panel 7-11",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 795
+    },
+    {
+      "beat": "Evenings in the fishing village",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 808
+    },
+    {
+      "beat": "36: A · panel 7-12",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 818
+    },
+    {
+      "beat": "Sing with friends",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 830
+    },
+    {
+      "beat": "37: F · panel 7-14",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 842
+    },
+    {
+      "beat": "38: C · panel 8-1",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 861
+    },
+    {
+      "beat": "39: F · panel 8-2",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 884
+    },
+    {
+      "beat": "Enough fish to share",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 909
+    },
+    {
+      "beat": "40: F · panel 8-3",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 928
+    },
+    {
+      "beat": "The gift of fish",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 943
+    },
+    {
+      "beat": "41: F · panel 8-6",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 959
+    }
+  ],
+  "phoneLandscape": [
+    {
+      "beat": "1: A · panel 1-1",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 2
+    },
+    {
+      "beat": "The beautiful tuna",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 9
+    },
+    {
+      "beat": "2: A · panel 1-3",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 22
+    },
+    {
+      "beat": "3: F · panel 1-5",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 32
+    },
+    {
+      "beat": "4: A · panel 1-3",
+      "page": "assets/page-1.webp",
+      "pass": true,
+      "v": 47
+    },
+    {
+      "beat": "5: A · panel 2-1",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 66
+    },
+    {
+      "beat": "A longer day of fishing",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 72
+    },
+    {
+      "beat": "A larger catch",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 75
+    },
+    {
+      "beat": "6: F · panel 2-4",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 83
+    },
+    {
+      "beat": "7: F · panel 2-6",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 100
+    },
+    {
+      "beat": "8: A · panel 2-7",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 122
+    },
+    {
+      "beat": "9: A · panel 2-1",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 141
+    },
+    {
+      "beat": "10: F · panel 2-5",
+      "page": "assets/page-2.webp",
+      "pass": true,
+      "v": 148
+    },
+    {
+      "beat": "11: F · panel 3-1",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 164
+    },
+    {
+      "beat": "Play with the children",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 173
+    },
+    {
+      "beat": "Watch football",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 185
+    },
+    {
+      "beat": "A siesta with his wife",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 197
+    },
+    {
+      "beat": "12: F · panel 3-6",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 216
+    },
+    {
+      "beat": "Meet village friends",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 236
+    },
+    {
+      "beat": "13: F · panel 3-9",
+      "page": "assets/page-3.webp",
+      "pass": true,
+      "v": 246
+    },
+    {
+      "beat": "14: A · panel 4-1",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 268
+    },
+    {
+      "beat": "15: A · panel 4-2",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 286
+    },
+    {
+      "beat": "16: A · panel 4-2",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 316
+    },
+    {
+      "beat": "17: A · panel 4-1",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 340
+    },
+    {
+      "beat": "18: A · panel 4-3",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 352
+    },
+    {
+      "beat": "Selling extra fish",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 366
+    },
+    {
+      "beat": "19: F · panel 4-6",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 378
+    },
+    {
+      "beat": "20: A · panel 5-2",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 381
+    },
+    {
+      "beat": "Earn more money",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 400
+    },
+    {
+      "beat": "21: F · panel 4-6",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 407
+    },
+    {
+      "beat": "22: A · panel 5-3",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 411
+    },
+    {
+      "beat": "A third boat",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 422
+    },
+    {
+      "beat": "A whole fleet",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 432
+    },
+    {
+      "beat": "23: F · panel 4-6",
+      "page": "assets/page-4.webp",
+      "pass": true,
+      "v": 452
+    },
+    {
+      "beat": "24: A · panel 5-12",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 456
+    },
+    {
+      "beat": "Leaving for the city",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 470
+    },
+    {
+      "beat": "25: A · panel 5-15",
+      "page": "assets/page-5.webp",
+      "pass": true,
+      "v": 475
+    },
+    {
+      "beat": "26: F · panel 6-1",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 506
+    },
+    {
+      "beat": "27: A · panel 6-2",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 540
+    },
+    {
+      "beat": "Years passing",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 562
+    },
+    {
+      "beat": "28: F · panel 6-11",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 579
+    },
+    {
+      "beat": "29: A · panel 6-10",
+      "page": "assets/page-6.webp",
+      "pass": true,
+      "v": 607
+    },
+    {
+      "beat": "30: A · panel 7-1",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 632
+    },
+    {
+      "beat": "The imagined wealthy life",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 642
+    },
+    {
+      "beat": "A millionaire",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 653
+    },
+    {
+      "beat": "31: F · panel 7-14",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 665
+    },
+    {
+      "beat": "32: A · panel 7-6",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 704
+    },
+    {
+      "beat": "33: A · panel 7-7",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 728
+    },
+    {
+      "beat": "34: A · panel 7-8",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 766
+    },
+    {
+      "beat": "Play with grandchildren",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 777
+    },
+    {
+      "beat": "Watch football in retirement",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 789
+    },
+    {
+      "beat": "35: A · panel 7-11",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 795
+    },
+    {
+      "beat": "Evenings in the fishing village",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 808
+    },
+    {
+      "beat": "36: A · panel 7-12",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 818
+    },
+    {
+      "beat": "Sing with friends",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 830
+    },
+    {
+      "beat": "37: F · panel 7-14",
+      "page": "assets/page-7.webp",
+      "pass": true,
+      "v": 842
+    },
+    {
+      "beat": "38: C · panel 8-1",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 861
+    },
+    {
+      "beat": "39: F · panel 8-2",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 884
+    },
+    {
+      "beat": "Enough fish to share",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 909
+    },
+    {
+      "beat": "40: F · panel 8-3",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 928
+    },
+    {
+      "beat": "The gift of fish",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 943
+    },
+    {
+      "beat": "41: F · panel 8-6",
+      "page": "assets/page-8.webp",
+      "pass": true,
+      "v": 959
+    }
+  ],
+  "checks": 186,
+  "manualCoverage": [
+    "First pass hides captions and speaker name",
+    "Actual audio playback, persistent word follower and advancing camera",
+    "Transcript line replay and current-line replay",
+    "Pause, seek and restart",
+    "Full transcript has 41 speaker labels and 33 phrase buttons",
+    "English–Bangla fleet dialog",
+    "Fullscreen entered with one Dialogue home link; subsequent exit happened outside this check",
+    "Silent classroom: eight loaded images, final-page selection, whole-page zoom, no audio element",
+    "Footnote displays fourth edition, authors, publisher, 2011, unit, pages and T6.11 with separate AI-visuals credit"
+  ],
+  "limitations": [
+    "Full uninterrupted human listening review and external cultural review not performed",
+    "Local preview only; no deployment verified"
+  ]
+}

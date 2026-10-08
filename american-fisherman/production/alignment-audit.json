@@ -1,0 +1,93 @@
+{
+  "model": "Whisper small",
+  "audio_sha256": "3c473170ff0876a9ac0bd3c30b7c1158263b327460690f82256d6cbeeba1d93b",
+  "script_sha256": "5827617da145c3e050bc92d0705b558d7e76cd0a54a05c0bcfd94b78ef9a9b6d",
+  "expected": "Good morning. What beautiful tuna!\nHow long did it take to catch them?\nOh, about two hours.\nOnly two hours? Amazing!\nWhy didn't you fish for longer and catch more?\nI didn't want to fish for longer.\nWith this, I have enough fish for my family.\nBut what do you do with the rest of your day?\nAren't you bored?\nI'm never bored.\nI get up late, play with my children, watch football, and take a siesta with my wife.\nSometimes in the evenings I walk to the village to see my friends,\nplay the guitar, and sing some songs.\nReally? That's all you do?\nLook, I am a very successful businessman.\nI went to Harvard University and I studied business.\nI can help you.\nFish for four hours every day and sell the extra fish you catch.\nBut...\nThen you can buy a bigger boat, catch more and earn more money.\nBut...\nThen buy a second boat, a third, and so on, until you have a big fleet of fishing boats.\nBut...\nAnd you can export the fish and leave this village\nand move to Mexico City, or LA, or New York, and open a fishing business.\nOkay, okay, okay. But how long will all this take?\nAh, let me think. Um, probably about fifteen to twenty years.\nFifteen to twenty years? And then what, señor?\nWhy, that's the exciting part!\nYou can sell your business and become very rich. A millionaire.\nA millionaire? Really? But what do I do with all the money?\nWell, let me think. I know!\nYou can stop work and move to a lovely old fishing village\nwhere you can sleep late, play with your grandchildren, watch football,\ntake a siesta with your wife, and walk to the village in the evenings\nwhere you can play the guitar and sing with your friends all you want.\nWell...\nPapa! Papa! Did you catch many fish?\nI caught enough for us today and tomorrow and also some for this gentleman.\nPlease, señor, have some of my beautiful fish.\nGoodbye, señor. Come on, children. Let's go home.",
+  "heard": " Good morning. What beautiful tuna. How long did it take to catch them? Oh, about two hours. Only two hours? Amazing. Why didn't you fish for longer and catch more? I didn't want to fish for longer. With this, I have enough fish for my family. But what do you do with the rest of your day? Aren't you bored? I'm never bored. I get up late, play with my children, watch football, and take a siesta with my wife. Sometimes in the evenings I walk to the village to see my friends, play the guitar, and sing some songs. Really? That's all you do? Look, I am a very successful businessman. I went to Harvard University and I studied business. I can help you fish for four hours every day and sell the extra fish you catch. But then you can buy a bigger boat, catch more and earn more money. But then buy a second boat, a third and so on until you have a big fleet of fishing boats. But and you can export the fish and leave this village and move to Mexico City or LA or New York and open a fishing business. Okay, okay, okay. But how How long will all this take? Ah, let me think. Um, probably about fifteen to twenty years? fifteen to twenty years? And then what, senor? Why, that's the exciting part. You can sell your business and become very rich. A millionaire. A millionaire? Really? But what do I do with all the money? Well, let me think. I know you can stop work and move to a lovely old fishing village where you can sleep late, play with your grandchildren, watch football, take a siesta with your wife, and walk to the village in the evenings where you can play the guitar and sing with your friends all you want. Well... Papa! Papa! Did you catch many fish? I caught enough for us today and tomorrow, and also some for this gentleman. Please, senor, have some of my beautiful fish. Goodbye, senor. Come on, children, let's go home.",
+  "exact_fraction": 1.0,
+  "differences": [
+    {
+      "operation": "insert",
+      "script": "",
+      "heard": "How"
+    }
+  ],
+  "word_count": 350,
+  "acoustic_boundary_refinements": [
+    {
+      "word": 0,
+      "text": "Good",
+      "method": "independent ASR word interval",
+      "interval": [
+        0.18,
+        0.28
+      ]
+    },
+    {
+      "word": 5,
+      "text": "How",
+      "method": "independent ASR word interval",
+      "interval": [
+        3.28,
+        3.38
+      ]
+    },
+    {
+      "word": 183,
+      "text": "and",
+      "method": "independent ASR word interval",
+      "interval": [
+        73.8,
+        74.0
+      ]
+    },
+    {
+      "word": 261,
+      "text": "You",
+      "method": "independent ASR word interval",
+      "interval": [
+        113.26,
+        113.72
+      ]
+    },
+    {
+      "word": 260,
+      "text": "know",
+      "method": "independent ASR adjacent boundary",
+      "interval": [
+        113.0,
+        113.26
+      ]
+    },
+    {
+      "word": 262,
+      "text": "can",
+      "method": "independent ASR adjacent boundary",
+      "interval": [
+        113.72,
+        113.88
+      ]
+    },
+    {
+      "word": 259,
+      "text": "I",
+      "method": "independent ASR adjacent boundary",
+      "interval": [
+        111.96,
+        113.0
+      ]
+    }
+  ],
+  "difference_review": [
+    "The small recognizer duplicates How at a segment split in But how long; the two source passes and delivery base recognize only one How.",
+    "The delivery small recognizer and the publisher tapescript support studied; unnormalized source recognizers and delivery base miss the final consonant.",
+    "The publisher tapescript confirms speaker assignments: fisherman says But, businessman continues then.",
+    "Numbers expanded to spoken fifteen and twenty. Señor preserves the Spanish spelling.",
+    "Every canonical word matched the normalized small-model recognition. One extra ASR token remains in raw evidence; match fraction measures canonical word coverage, not insertion-free error rate.",
+    "A full human auditory review of all voices and pronunciation remains outstanding."
+  ],
+  "canonical_word_coverage": 1.0,
+  "recognition_insertions": 1,
+  "match_fraction_including_insertions": 0.9971509971509972,
+  "source_reference": "https://ektu.kz/files/DistanceEducation/Work/214581/hw_elem_trd_sb_tapescripts.pdf"
+}
