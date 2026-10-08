@@ -305,7 +305,9 @@ function beatD(L,i){ const b=L.beats[i]; if(!b) return null; if(b.d==='none') re
 function prevD(L,i){ for(let j=i-1;j>=0;j--){ const d=beatD(L,j); if(d) return d; } return null; }
 function usedDs(L,upto){ const u={}; for(let j=0;j<=upto;j++){const d=beatD(L,j); if(d) u[d]=1;} return u; }
 let bandD=null, bandAng=0, bandLesson=null;
-function renderBand(d,L){
+/* the phrase for the gear that is turning now: the last one this D introduced */
+function curFrame(L,i,x){ const d=beatD(L,i); if(!d) return null; for(let j=i;j>=0;j--){ if(beatD(L,j)!==d) break; const f=fn(L.beats[j].frame,x); if(f) return f; } return D4.SAY[d].frames[0]; }
+function renderBand(d,L,fr){
   const band=$('#dband'); if(!band) return;
   if(!L){ band.hidden=true; bandD=null; return; }
   band.hidden=false;
@@ -317,7 +319,7 @@ function renderBand(d,L){
   const m=d&&D4.META[d];
   band.className='dband'+(d?' d-'+d:' idle')+(band.classList.contains('pulse')?' pulse':'');
   const stg=(L.stages.find(z=>z.id===L.beats[S.beat].stage)||{}).label||'';
-  $('.dtx',band).innerHTML=`<small class="dstage">${esc(stg)}</small>`+(m?`<b><i>${D4.icon(d,13,'#fff')}</i>${m.n}<em> · ${m.v}</em></b><span class="dq">${m.q}</span><span class="bn" lang="bn">${m.nbn} · ${m.vbn} — ${m.qbn}</span>`
+  $('.dtx',band).innerHTML=`<small class="dstage">${esc(stg)}</small>`+(m?`<b><i>${D4.icon(d,13,'#fff')}</i>${m.n}<em> · ${m.v}</em></b>${fr?`<span class="dph">“${esc(fr.en).replace(/___/g,'…')}”</span>`:''}<span class="dq">${m.q}</span><span class="bn" lang="bn">${m.nbn} · ${m.vbn} — ${m.qbn}</span>`
     :`<b class="story">Ayesha’s story</b><span class="dq">Watch for the gear that turns.</span><span class="bn" lang="bn">খেয়াল করো কোন গিয়ারটা ঘোরে।</span>`);
   band.setAttribute('aria-label',m?`${m.n}: ${m.q} Tap to see all four Ds.`:'The four Ds. Tap to see all four.');
 }
@@ -350,26 +352,62 @@ function recap(x,texts){
     <div class="pathrow">${seq.map((d,i)=>`${i?`<span class="pa ${D4.META[d].loop!==D4.META[seq[i-1]].loop?'x':''}">→</span>`:''}${D4.badge(d,28)}`).join('')}</div>
     <p class="sub">She didn’t use each D once and stop. She went round and round — and the two loops crossed ${cross} times. Each D fed the next.<span class="bn" lang="bn">সে প্রতিটি D একবার ব্যবহার করে থামেনি। বারবার ঘুরেছে — দুই চক্র ${cross} বার মিলেছে। প্রতিটি D পরেরটাকে চালিয়েছে।</span></p></div>`;
 }
+let sheetBeat=null, sheetUp=false, keepScroll=false;
+/* which beats open the sheet by themselves: the ones where the coach card IS the task */
+function sheetDefault(x,b,cd,tk){
+  if(b.wide||b.open) return true;
+  if(['choice','sort','checklist','words','story','phrases','pickeach','say'].includes(cd.type)) return true;
+  if(tk&&!b.tap&&!b.compose&&!b.check&&!b.decide) return true;
+  return false;
+}
+function peekLabel(x,b,cd,tk,has){
+  const bn=S.bn; const L=(en,b_)=>bn&&b_?`${en} <small lang="bn" style="font-family:var(--font-bn);font-weight:400">· ${b_}</small>`:en;
+  const M={choice:['☝️ Choose an answer','একটা উত্তর বেছে নাও'],sort:['↔️ Who does each job?','কোন কাজ কে করবে?'],checklist:['✅ Checks','যাচাই'],words:['🖼 Picture words','ছবির শব্দ'],story:['🎧 The story','গল্প'],phrases:['🗣 Phrases','বাক্য'],pickeach:['☝️ Choose','বেছে নাও']};
+  if(M[cd.type]) return L(M[cd.type][0],M[cd.type][1]);
+  if(tk){ const hd=TALK_HEAD[S.mode]; return L(`${hd.i} ${hd.en}`,hd.bn); }
+  if(b.compose) return L('🧩 Recipe','রেসিপি');
+  if(b.check) return L('🔍 Check the lines','লাইনগুলো যাচাই করো');
+  if(b.decide) return L('🤔 Think first','আগে ভাবো');
+  if(cd.type) return L('📌 More','আরও');
+  const docs=fn(b.docs,x); if(docs&&docs.length) return L('📁 Her documents','তার কাগজপত্র');
+  return L('❓ Why now?','কেন এখন?');
+}
+/* the sheet's top edge sits just under the pinned instruction, above the action bar */
+function measure(){
+  if(innerWidth>=900) return;
+  const sy=$('#csay'), act=$('#cact'), top=$('#coach');
+  const bottom=Math.max(top.querySelector('.c-top').getBoundingClientRect().bottom, $('#dband').hidden?0:$('#dband').getBoundingClientRect().bottom, sy.offsetHeight?sy.getBoundingClientRect().bottom:0);
+  document.documentElement.style.setProperty('--toph',Math.round(bottom)+'px');
+  document.documentElement.style.setProperty('--acth',act.offsetHeight+'px');
+}
+function setSheet(up){ sheetUp=up; const c=$('#coach'); c.classList.toggle('sheet-up',up); const pk=$('#cbody .peek'); if(pk) pk.setAttribute('aria-expanded',up); }
 function renderCoach(){
   const body=$('#cbody'), act=$('#cact'); const coach=$('#coach');
   renderRail();
   if(!S.lesson){ hubCoach(); return; }
   const x=ctx(), b=x.beat, L=x.L; const st=L.stages.find(s=>s.id===b.stage)||L.stages[0];
   const d=beatD(L,S.beat);
-  renderBand(d,L);
-  let h=dShiftCard(x,L,S.beat);
+  renderBand(d,L,d?curFrame(L,S.beat,x):null);
   const sayT=fn(b.say,x)||'';
-  h+=`<div class="sayrow"><p class="say">${sayT}</p>${sayT?sayBtn(sayT):''}</div>${fn(b.bn,x)?`<span class="bn" lang="bn">${fn(b.bn,x)}</span>`:''}`;
-  if(b.sub) h+=`<p class="sub">${fn(b.sub,x)}${fn(b.subbn,x)?`<span class="bn" lang="bn">${fn(b.subbn,x)}</span>`:''}</p>`;
+  $('#csay').innerHTML=`<div class="sayrow"><p class="say">${sayT}</p>${sayT?sayBtn(sayT):''}</div>${fn(b.bn,x)?`<span class="bn" lang="bn">${fn(b.bn,x)}</span>`:''}`
+    +(b.sub?`<p class="sub">${fn(b.sub,x)}${fn(b.subbn,x)?`<span class="bn" lang="bn">${fn(b.subbn,x)}</span>`:''}</p>`:'');
+  let h=dShiftCard(x,L,S.beat);
   if(b.compose) h+=composeCard(x,b);
   if(b.check) h+=checkCard(x,b);
   if(b.decide) h+=decideCard(x,b);
   if(b.card) h+=cardHTML(fn(b.card,x),x);
   if(b.talk) h+=talkCard(x,b);
   const docs=fn(b.docs,x); if(docs&&docs.length) h+=docStrip(docs);
-  body.innerHTML=h; body.scrollTop=0; paintTimer();
-  // open as an overlay sheet on phones when the beat is a "think" moment
-  coach.classList.toggle('open',!!(b.open||b.wide));
+  // on a phone the cards live in a pull-up sheet; the peek bar says what is inside
+  const cd=fn(b.card,x)||{}, tk=fn(b.talk,x);
+  const hasMore=!!(h.replace(/<details[\s\S]*?<\/details>/,'').replace(/<[^>]+>/g,'').trim()||cd.type);
+  const peekL=peekLabel(x,b,cd,tk,!!h);
+  body.innerHTML=(h?`<button class="peek" data-c="sheet" aria-expanded="false"><span class="pl">${peekL}</span><span class="pc">▲</span></button>`:'')+h;
+  if(sheetBeat!==S.lesson+'/'+S.beat){ sheetBeat=S.lesson+'/'+S.beat; sheetUp=sheetDefault(x,b,cd,tk); }
+  coach.classList.toggle('no-sheet',!h); document.body.classList.toggle('no-sheet',!h);
+  coach.classList.toggle('sheet-up',!!h&&sheetUp); coach.classList.toggle('full',!!b.wide);
+  const pk=$('.peek',body); if(pk) pk.setAttribute('aria-expanded',sheetUp);
+  if(!keepScroll) body.scrollTop=0; paintTimer();
   // actions
   const stIdx=L.stages.findIndex(s=>s.id===b.stage);
   const inStage=L.beats.map((bb,i)=>[bb,i]).filter(([bb])=>bb.stage===b.stage);
@@ -381,9 +419,10 @@ function renderCoach(){
    ${inStage.length>6?`<span class="count" aria-label="Step ${pos+1} of ${inStage.length}">${pos+1}/${inStage.length}</span>`:`<span class="dots" aria-label="Step ${pos+1} of ${inStage.length}">${inStage.map((_,i)=>`<b class="${i===pos?'on':i<pos?'done':''}"></b>`).join('')}</span>`}
    <button class="btn next" data-c="next">${last?'Finish':(fn(b.next,x)||(b.tap&&!b.card?'Skip':'Next'))} ${ico('back').replace('<svg','<svg style="transform:scaleX(-1)"')}</button>`;
   $('#c-head').textContent=L.title;
+  measure();
 }
 function hubCoach(){
-  const body=$('#cbody'),act=$('#cact'); $('#coach').classList.remove('open'); renderBand(null,null); $('#c-head').textContent="Ayesha's Phone";
+  const body=$('#cbody'),act=$('#cact'); const co=$('#coach'); co.classList.add('sheet-up','full'); co.classList.remove('no-sheet'); document.body.classList.remove('no-sheet'); $('#csay').innerHTML=''; sheetBeat=null; renderBand(null,null); $('#c-head').textContent="Ayesha's Phone";
   const done=k=>{const c=S.ch[k];return c&&c._finished};
   body.innerHTML=`<div class="kick"><span>Start here</span></div>
    <div class="sayrow"><p class="say">This is Ayesha’s phone. Learn AI — and English — by doing real tasks.</p>${sayBtn('This is Ayesha’s phone. Learn AI, and English, by doing real tasks.')}</div><span class="bn" lang="bn">এটা আয়েশার ফোন। বাস্তব কাজ করে করে AI — আর ইংরেজি — শেখো।</span>
@@ -394,6 +433,7 @@ function hubCoach(){
    <div class="card"><h3>Four gears, four ways to use English<span class="bn" lang="bn">চারটা গিয়ার, ইংরেজির চারটা কাজ</span></h3>
     <div class="dphr">${['del','des','dis','dil'].map(d=>`<div class="dph d-${d}" data-say="${esc(D4.SAY[d].frames[0].en)}">${D4.badge(d,30)}<span><small>${D4.META[d].n}</small><span class="pq">${D4.SAY[d].fn}</span><span class="bn" lang="bn">${D4.SAY[d].fnbn}</span></span>${sayBtn(D4.SAY[d].frames[0].en)}</div>`).join('')}</div></div>`;
   act.innerHTML=`<span class="grow"></span><button class="btn quiet" data-c="menu">For the teacher</button>`;
+  measure();
 }
 
 /* --- coach cards --- */
@@ -530,7 +570,7 @@ function openView(id,mark){
    <div class="vscroll"><div class="vpage"><img src="${f.img}" alt="${esc(f.name)}">${marks.map(m=>`<i class="vmark" style="left:${m[0]}%;top:${m[1]}%;width:${m[2]}%;height:${m[3]}%"></i>`).join('')}</div></div>
    <div class="vhint">${marks.length?(S.bn?'সোনালি দাগের জায়গাটা পড়ো · টেনে সরাও':'Read the part inside the gold box · drag to move'):(S.bn?'দুই আঙুলে বড় করো · টেনে সরাও':'Pinch or + to zoom · drag to move')}</div>`;
   applyZoom(true); bindViewerGestures($('.vscroll',v));
-  if(innerWidth<900) $('#coach').classList.remove('open');
+  if(innerWidth<900) $('#coach').classList.remove('sheet-up');
 }
 /* zoom about a screen point, keeping that point under the finger/cursor */
 function zoomAt(z,cx,cy){
@@ -565,7 +605,7 @@ function applyZoom(center){
   const go=()=>{const m=VIEW.marks[0]; const x=Math.min(...VIEW.marks.map(z=>z[0])); sc.scrollLeft=pg.offsetWidth*x/100-12; sc.scrollTop=pg.offsetHeight*m[1]/100-sc.clientHeight*0.3;};
   const img=$('img',pg); if(img.complete) go(); else img.addEventListener('load',go,{once:true});
 }
-function closeView(){ VIEW=null; const v=$('#viewer'); if(v){v.hidden=true;v.innerHTML='';} if(S.lesson){const b=LESSONS[S.lesson].beats[S.beat]; if(b&&b.open&&innerWidth<900) $('#coach').classList.add('open');} }
+function closeView(){ VIEW=null; const v=$('#viewer'); if(v){v.hidden=true;v.innerHTML='';} if(S.lesson&&innerWidth<900) $('#coach').classList.toggle('sheet-up',sheetUp); }
 function checkCard(x,b){
   const c=b.check; const v=x.get(c.key,{}); const sel=x.get(c.key+'_sel');
   const L=c.lines; const doneN=Object.keys(v).length;
@@ -657,7 +697,7 @@ function handleUI(id,el,x){
   if(kind==='chip'){ toggleChip(arg,x); return; }
   if(kind==='pick'){ const sc=fn(b.scene,x); const sel=x.get(sc.sel,[]).slice(); const k=sel.indexOf(arg); if(k>=0)sel.splice(k,1); else sel.push(arg); x.set(sc.sel,sel); renderPhone(false); renderCoach(); return; }
   if(kind==='opt'&&b.decide){ const d=fn(b.decide,x); x.set(d.key,arg); if(d.onPick) d.onPick(x,arg); renderPhone(false); renderCoach(); if(innerWidth<900) $('#cbody').scrollTop=$('#cbody').scrollHeight; return; }
-  if(kind==='line'&&b.check){ x.set(b.check.key+'_sel',arg); renderPhone(false); renderCoach(); const lk=$('#cbody .looks'); if(lk&&innerWidth<900){const cb=$('#cbody'); cb.scrollTop=lk.offsetTop-cb.offsetTop-70;} return; }
+  if(kind==='line'&&b.check){ x.set(b.check.key+'_sel',arg); sheetUp=true; renderPhone(false); renderCoach(); const lk=$('#cbody .looks'); if(lk&&innerWidth<900){const cb=$('#cbody'); cb.scrollTop=lk.offsetTop-cb.offsetTop-70;} return; }
   if(b.onUi&&b.onUi(x,kind,arg,el)!==false) return;
   if(x.L.onUi) x.L.onUi(x,kind,arg,el);
 }
@@ -674,7 +714,7 @@ function toggleChip(id,x){
   else v=(v&&!/\s$/.test(v)?v+' ':v)+c.text;
   x.set(kb.key,v); renderPhoneKeepFocus(); renderCoachKeep();
 }
-function renderCoachKeep(){ const k=$('#cbody').scrollTop; renderCoach(); $('#cbody').scrollTop=k; }
+function renderCoachKeep(){ const k=$('#cbody').scrollTop; keepScroll=true; renderCoach(); keepScroll=false; $('#cbody').scrollTop=k; }
 
 /* ------------------------------------------------------------- coach clicks */
 function onCoachClick(e){
@@ -682,7 +722,7 @@ function onCoachClick(e){
   const mdc=e.target.closest('[data-mode]'); if(mdc){ setMode(mdc.dataset.mode); return; }
   const c=e.target.closest('[data-c]'); const st=e.target.closest('[data-start]');
   if(st){ start(st.dataset.start); return; }
-  if(c){ const a=c.dataset.c; if(a==='next')next(); else if(a==='back')back(); else if(a==='show')showMe(); else if(a==='menu')openMenu(); else if(a==='intro')openIntro(); return; }
+  if(c){ const a=c.dataset.c; if(a==='sheet'){ setSheet(!sheetUp); return; } if(a==='next')next(); else if(a==='back')back(); else if(a==='show')showMe(); else if(a==='menu')openMenu(); else if(a==='intro')openIntro(); return; }
   const stg=e.target.closest('[data-stage]'); if(stg&&S.lesson){ const i=LESSONS[S.lesson].beats.findIndex(b=>b.stage===stg.dataset.stage); if(i>=0) go(i); return; }
   if(!S.lesson) return; const x=ctx();
   const so=e.target.closest('[data-sort]'); if(so){ const [k,i,v]=so.dataset.sort.split('|'); const a=x.get(k,{}); a[i]=v; x.set(k,a); renderCoachKeep(); return; }
@@ -850,7 +890,7 @@ function boot(){
   paintHeader();
   $('#lang-en').addEventListener('click',()=>setBn(false));
   $('#lang-bn').addEventListener('click',()=>setBn(true));
-  addEventListener('resize',fit); fit();
+  addEventListener('resize',()=>{fit();measure()}); fit();
   addEventListener('keydown',e=>{
     if(e.target.matches('textarea,input')) return;
     if(e.key==='ArrowRight'&&S.lesson) next(); else if(e.key==='ArrowLeft'&&S.lesson) back();
