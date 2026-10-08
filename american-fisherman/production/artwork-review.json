@@ -1,0 +1,18 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "editTarget": "assets/source/page-7.jpg",
+  "references": [
+    "assets/source/page-6.jpg",
+    "assets/source/page-3.jpg"
+  ],
+  "output": "assets/source/page-7-retirement-repaired.png",
+  "prompt": "Use case: identity-preserve. Edit target image 1, a portrait 9:16 wordless photorealistic comic page with white gutters. Images 2 and 3 are character reference only, do not combine their layouts. Preserve target panel layout exactly, every gutter and row boundary, seaside village geography and photographic style. Correct the protagonist identity in the LOWER THREE ROWS of target image 1: retirement is imagined for the Mexican fisherman, not the American. Replace the white gray-haired American man in all lower retirement panels with the aged fisherman from image 2 row 4 right (tan Mexican complexion, curly dark hair graying, recognizable face), wearing a modest red short-sleeve shirt and gray shorts. In row 4 of target (three small panels) show this SAME aged fisherman sleeping late, playing with his grandchildren, watching football on a TV. Row 5 (two panels): aged fisherman relaxing in hammock with his same aged wife, then aged fisherman playing guitar at dusk. Wife should be the woman from image 3 hammock, modest floral sleeveless dress, aged naturally. Row 6: aged fisherman singing and playing guitar with village friends, and original younger fisherman in red shirt reaction close-up at right. Keep all original top three rows: businessman buying fishing company from suited fisherman, fisherman successful in imagined future with house and car, yacht and money, businessman explaining and pointing at village. In the yacht-couple panel replace luxury-clad companion with same fisherman wife in modest floral summer dress, identity from image 3. Make all retirement panels clearly depict aged FISHERMAN and never the gray-haired white American. Faces, hands, guitar, hammock anatomically plausible. No readable text, captions, speech bubbles, logos, letters or numbers. Preserve image 1's 9:16 aspect ratio and EXACT panel geometry so original timing rectangles still fit. Produce one finished repaired page, not separate images.",
+  "reviewed": "2026-10-09",
+  "inspection": [
+    "All eight source pages viewed at full size.",
+    "Repaired page viewed: fisherman face and red shirt persist across retirement scenes; wife is consistent; grandchildren and guitar remain visible.",
+    "Panel geometry retained; camera rectangles checked at phone and desktop sizes.",
+    "Original comic remains intact."
+  ],
+  "externalCulturalReview": "not performed"
+}

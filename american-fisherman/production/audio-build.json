@@ -1,0 +1,13 @@
+{
+  "source": "audio/_originals/american-fisherman-source.mp3",
+  "delivery": "audio/fisherman-story.mp3",
+  "source_sha256": "92607a2eda0fb0a3ef7f093bf075f98b7b8008d5869440cf6927a09a506351aa",
+  "delivery_sha256": "3c473170ff0876a9ac0bd3c30b7c1158263b327460690f82256d6cbeeba1d93b",
+  "filters": "atrim=start=7,asetpts=PTS-STARTPTS,loudnorm=I=-16:TP=-1.5:LRA=11",
+  "trimStart": 7,
+  "trimEnd": "none",
+  "ambience": "original only; no added ambience",
+  "duration": 155.691688,
+  "voice": "all original source actors; no substitutions",
+  "model": "source model unknown"
+}

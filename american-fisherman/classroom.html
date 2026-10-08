@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090d0b">
+  <title>The American &amp; The Fisherman · Tell it live</title>
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="classroom/viewer.css?v=20261009-fisherman-1">
+</head>
+<body>
+  <header class="toolbar">
+    <a class="brand" href="/" aria-label="Dialogue home"><img src="../brand/dialogue-logo.png" alt="Dialogue"></a>
+    <div class="title"><strong>The American &amp; The Fisherman</strong><span>Tell it live · You’re the storyteller</span></div>
+    <a class="student-link" href="./">Student listening →</a>
+  </header>
+  <main id="viewer" tabindex="0" aria-label="Wordless comic. Scroll or drag to move through the story.">
+    <div id="pages"></div>
+  </main>
+  <nav class="controls" aria-label="Comic controls">
+    <button id="previous" type="button" aria-label="Previous page">←</button>
+    <select id="page" aria-label="Choose comic page"></select>
+    <button id="next" type="button" aria-label="Next page">→</button>
+    <div class="zoom-controls">
+      <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+      <output id="zoom" aria-label="Zoom level">100%</output>
+      <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+      <button id="fit-width" type="button">Fit width</button>
+      <button id="fit-page" type="button">Whole page</button>
+    </div>
+    <button id="fullscreen" type="button" aria-label="Enter fullscreen">Fullscreen</button>
+  </nav>
+  <footer class="classroom-credit"><small>Story: <cite>New Headway Elementary</cite>, 4th ed., Liz &amp; John Soars, Oxford University Press (2011), Unit 6, pp. 50–51. Visuals created independently with AI.</small></footer>
+  <p id="status" role="status" hidden></p>
+  <script src="story.js?v=20261009-fisherman-1"></script>
+  <script>const CLASSROOM_STORY = {
+    frames: FISHERMAN_STORY.portraitPages.map(page => ({ ...page, width: 1080, height: 1920 })),
+    chapters: ['The catch', 'Enough', 'A full day', 'The advice', 'The business plan', 'Twenty years', 'Retirement', 'Home'].map(title => ({title}))
+  };</script>
+  <script src="classroom/viewer.js?v=20261009-fisherman-1"></script>
+</body>
+</html>
