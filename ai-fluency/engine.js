@@ -675,6 +675,7 @@ function go(i,anim=true){
   CQ=null;
   const moved=S.beat!==i||anim; S.beat=Math.max(0,Math.min(L.beats.length-1,i)); save();
   resetTalk(); hush();
+  setAddr(S.lesson+'/'+S.beat);
   const x=ctx(); if(x.beat.enter) x.beat.enter(x);
   document.body.classList.toggle('wide',!!x.beat.wide);
   renderPhone(anim); renderCoach();
@@ -685,8 +686,12 @@ function go(i,anim=true){
 }
 function next(force){ const x=ctx(); if(!force&&S.streaming&&S.finishStream){S.finishStream();return} if(x.beat.leave) x.beat.leave(x); if(S.beat>=x.L.beats.length-1){ x.set('_finished',true); hub(); return } go(S.beat+1) }
 function back(){ if(S.beat===0){hub();return} go(S.beat-1) }
-function start(id){ S.lesson=id; S.beat=0; prevScene=null; maybeFullscreen(); go(0); }
-function hub(){ S.lesson=null; S.beat=0; save(); prevScene=null; resetTalk(); hush(); document.body.classList.remove('wide'); renderHubPhone(); renderCoach(); }
+/* The address follows the student: #cv/4 inside a workflow, nothing on the lock screen.
+   Starting a workflow adds one history step, so the phone's Back button (or the
+   browser's) returns to Ayesha's lock screen instead of leaving the activity. */
+function setAddr(h,push){ try{ const url=location.pathname+location.search+(h?'#'+h:''); if(location.pathname+location.search+location.hash===url) return; history[push?'pushState':'replaceState'](null,'',url); }catch(e){} }
+function start(id){ S.lesson=id; S.beat=0; prevScene=null; maybeFullscreen(); setAddr(id+'/0',true); go(0); }
+function hub(){ S.lesson=null; S.beat=0; save(); prevScene=null; resetTalk(); hush(); document.body.classList.remove('wide'); setAddr(''); renderHubPhone(); renderCoach(); }
 /* the coach reads each new step aloud; a story or a phrase set then plays itself */
 function autoVoice(x){
   const at=S.beat, L=S.lesson; const b=x.beat; const c=fn(b.card,x)||{};
@@ -770,14 +775,15 @@ function onCoachClick(e){
   if(st){ start(st.dataset.start); return; }
   if(c){ const a=c.dataset.c; if(a==='sheet'){ setSheet(!sheetUp); return; } if(a==='rewind'){ rewindCQ(); return; } if(a==='next')next(); else if(a==='back')back(); else if(a==='show')showMe(); else if(a==='menu')openMenu(); else if(a==='intro')openIntro(); return; }
   const stg=e.target.closest('[data-stage]'); if(stg&&S.lesson){ const i=LESSONS[S.lesson].beats.findIndex(b=>b.stage===stg.dataset.stage); if(i>=0) go(i); return; }
-  if(!S.lesson) return; const x=ctx();
+  /* listening works everywhere, the start screen included */
+  const sp=e.target.closest('[data-speak]'); if(sp){ speak(sp.dataset.speak); sp.classList.add('speaking'); if(sp.classList.contains('model')){const t=sp.nextElementSibling; if(t) t.hidden=false;} return; }
+  const wd=e.target.closest('[data-word]'); if(wd){ wd.classList.add('open'); speak(wd.dataset.say); wd.classList.add('speaking'); return; }
+  if(!S.lesson){ const d0=e.target.closest('[data-say]'); if(d0){ speak(d0.dataset.say); d0.classList.add('speaking'); } return; } const x=ctx();
   const so=e.target.closest('[data-sort]'); if(so){ const [k,i,v]=so.dataset.sort.split('|'); const a=x.get(k,{}); a[i]=v; x.set(k,a); renderCoachKeep(); return; }
   const pe=e.target.closest('[data-pe]'); if(pe){ const [k,i,j]=pe.dataset.pe.split('|'); const a=x.get(k,{}); a[i]=+j; x.set(k,a); renderPhone(false); renderCoachKeep(); return; }
   const ch=e.target.closest('[data-choice]'); if(ch){ const [k,i]=ch.dataset.choice.split('|'); x.set(k,+i); const o=choiceOpt(x,k,+i); if(o&&o.then){ startCQ(o.then,x2=>{delete x2.ch[k]; save()}); return; } renderCoachKeep(); return; }
   const tk=e.target.closest('[data-tick]'); if(tk){ const [k,i]=tk.dataset.tick.split('|'); const a=x.get(k,{}); a[i]=!a[i]; x.set(k,a); renderCoachKeep(); return; }
   const vd=e.target.closest('[data-verd]'); if(vd){ const [k,id,v]=vd.dataset.verd.split('|'); const a=x.get(k,{}); a[id]=v; x.set(k,a); renderPhone(false); renderCoachKeep(); if(innerWidth<900){const cb=$('#cbody'); cb.scrollTo({top:cb.scrollHeight,behavior:'smooth'})} return; }
-  const sp=e.target.closest('[data-speak]'); if(sp){ speak(sp.dataset.speak); sp.classList.add('speaking'); if(sp.classList.contains('model')){const t=sp.nextElementSibling; if(t) t.hidden=false;} return; }
-  const wd=e.target.closest('[data-word]'); if(wd){ wd.classList.add('open'); speak(wd.dataset.say); wd.classList.add('speaking'); return; }
   const sy=e.target.closest('[data-story]'); if(sy){ const card=$('#story'); if(sy.dataset.story==='words'){ card.classList.toggle('words-on'); } else playSeq($$('.tpanel',card),'lit'); return; }
   const pa=e.target.closest('[data-phrases]'); if(pa){ playSeq($$('#cbody .dph'),'lit'); return; }
   const tt=e.target.closest('[data-tt]'); if(tt){ toggleTimer(+tt.dataset.tt); return; }
@@ -881,7 +887,15 @@ function onMenuClick(e){
   if(a.startsWith('start:')) start(a.slice(6)); else if(a==='hub') hub(); else if(a==='stage') toggleStage(); else if(a==='fs') toggleFS(); else if(a==='print') location.href='print.html'; else if(a==='intro') openIntro();
   else if(a==='reset'){ S.ch={}; save(); hub(); }
 }
-function openIntro(){ if(window.INTRO) INTRO.open({bn:S.bn,fullscreen:matchMedia('(min-width:900px)').matches,onExit:()=>{ if(location.hash==='#intro') history.replaceState(null,'',location.pathname+location.search) }}); }
+let introPushed=false;
+function openIntro(){ if(!window.INTRO) return;
+  // the film gets its own history step, so Back closes it rather than leaving the activity
+  if(location.hash!=='#intro'){ try{ history.pushState(null,'',location.pathname+location.search+'#intro'); introPushed=true; }catch(e){} }
+  const leave=()=>{ if(location.hash!=='#intro') return; if(introPushed){ introPushed=false; history.back(); } else history.replaceState(null,'',location.pathname+location.search); };
+  INTRO.open({bn:S.bn,fullscreen:matchMedia('(min-width:900px)').matches,
+   onExit:leave,
+   /* "Start with Ayesha's phone": her lock screen, where the three workflows wait */
+   onStart:()=>{ closeMenu(); hub(); }}); }
 function closeMenu(){ $('#menu').hidden=true; }
 function modeButtons(){ return `<div class="modes" role="group" aria-label="How are you working?">${Object.keys(MODES).map(k=>{const m=MODES[k];return `<button class="mode ${S.mode===k?'on':''}" data-mode="${k}" aria-pressed="${S.mode===k}"><span class="mi2" aria-hidden="true">${m.i}</span><b>${m.n}<span class="bn" lang="bn">${m.bn}</span></b><small>${m.d}<span class="bn" lang="bn">${m.dbn}</span></small></button>`}).join('')}</div>`; }
 function openModes(){
@@ -944,7 +958,11 @@ function boot(){
     else if(e.key==='Escape') closeMenu();
   });
   const fromHash=()=>{ if(location.hash==='#intro'){ openIntro(); return true }const h=(location.hash||'').slice(1); const m=h.match(/^(\w+)(?:\/(\d+))?$/); if(m&&LESSONS[m[1]]){ S.lesson=m[1]; prevScene=null; go(m[2]?+m[2]:0,false); return true } return false};
-  addEventListener('hashchange',fromHash);
+  addEventListener('hashchange',()=>{ if(location.hash!=='#intro'&&window.INTRO){ introPushed=false; INTRO.close(); } if(!fromHash()&&S.lesson&&!location.hash) hub(); });
+  // opening straight into a workflow (a saved place, or a #cv/3 link): put the lock screen
+  // underneath it in history, so Back lands there rather than outside the activity
+  const h0=(location.hash||'').match(/^#(\w+)(?:\/(\d+))?$/), into=h0&&LESSONS[h0[1]]?h0[1]+'/'+(h0[2]||0):(!location.hash&&S.lesson&&LESSONS[S.lesson]?S.lesson+'/'+S.beat:null);
+  if(into){ setAddr(''); setAddr(into,true); }
   if(!fromHash()){ if(S.lesson&&LESSONS[S.lesson]) go(S.beat,false); else hub(); }
 }
 

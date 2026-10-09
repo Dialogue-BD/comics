@@ -419,7 +419,7 @@ function textures(){
 }
 
 /* ---------- player ---------- */
-let root,stage,capEn,capBn,dotsEl,btnPlay,btnSnd,cur=-1,anims=[],master=null,playing=true,raf=0,onExit=null,renderMode=false,sound=true,played=[],fired=[],clip=null,ready=null;
+let onStart=null,root,stage,capEn,capBn,dotsEl,btnPlay,btnSnd,cur=-1,anims=[],master=null,playing=true,raf=0,onExit=null,renderMode=false,sound=true,played=[],fired=[],clip=null,ready=null;
 function loadDur(){ if(ready) return ready;
   ready=fetch('audio/manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(m=>{DUR=(m&&m.dur)||{}}).catch(()=>{}).then(plan);
   return ready; }
@@ -437,7 +437,7 @@ function build(){
   root.addEventListener('click',e=>{const b=e.target.closest('[data-i]');const g=e.target.closest('[data-go]');
     if(g){show(+g.dataset.go);return}
     if(!b){ if(e.target.closest('.i-end')) return; togglePlay();return}
-    const a=b.dataset.i; if(a==='prev')show(Math.max(0,cur-1)); else if(a==='next')advance(); else if(a==='play')togglePlay(); else if(a==='exit')close();
+    const a=b.dataset.i; if(a==='prev')show(Math.max(0,cur-1)); else if(a==='next')advance(); else if(a==='play')togglePlay(); else if(a==='exit')close(); else if(a==='start'){ const go=onStart; if(go) go(); close(); }
     else if(a==='snd'){sound=!sound;btnSnd.textContent=sound?'🔊':'🔇'; if(!sound) stopClip();}
     else if(a==='bn'){root.classList.toggle('bn')}});
   addEventListener('resize',fit); fit();
@@ -493,7 +493,7 @@ function tick(){
 function finale(){
   if(stage.querySelector('.i-end')) return;
   const d=document.createElement('div'); d.className='i-end';
-  d.innerHTML=`<button data-i="exit">Start with Ayesha’s phone</button><button data-replay="1">Watch again</button>`;
+  d.innerHTML=`<button data-i="start">Start with Ayesha’s phone</button><button data-replay="1">Watch again</button>`;
   d.querySelector('[data-replay]').onclick=e=>{e.stopPropagation();d.remove();playing=true;btnPlay.textContent='❚❚';show(0)};
   stage.appendChild(d);
 }
@@ -501,7 +501,7 @@ function advance(){ if(cur<SCENES.length-1) show(cur+1); }
 function togglePlay(){ playing=!playing; btnPlay.textContent=playing?'❚❚':'▶'; btnPlay.setAttribute('aria-label',playing?'Pause':'Play');
   anims.forEach(a=>playing?a.play():a.pause()); if(!playing){ if(clip) clip.pause(); try{speechSynthesis.pause()}catch(e){} } else { if(clip) clip.play().catch(()=>{}); try{speechSynthesis.resume()}catch(e){} } }
 function open(opts={}){
-  build(); root.hidden=false; onExit=opts.onExit||null; playing=!opts.paused; btnPlay.textContent=playing?'❚❚':'▶';
+  build(); root.hidden=false; onExit=opts.onExit||null; onStart=opts.onStart||null; playing=!opts.paused; btnPlay.textContent=playing?'❚❚':'▶';
   root.classList.toggle('bn',!!opts.bn); if(opts.sound===false){sound=false;btnSnd.textContent='🔇'}
   try{ if(opts.fullscreen&&!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{}) }catch(e){}
   loadDur().then(()=>{ show(opts.scene||0); cancelAnimationFrame(raf); raf=requestAnimationFrame(tick); });
