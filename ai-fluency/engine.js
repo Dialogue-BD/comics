@@ -556,6 +556,7 @@ function sheetSpeech(sh){
 function closeSheet(){ UI.sheet=null; renderSheet(); renderFoot(); }
 function onSheetClick(e){
   const dv=e.target.closest('[data-view]'); if(dv){ openView(dv.dataset.view,dv.dataset.mark); return; }
+  const ppb=e.target.closest('[data-pp]'); if(ppb){ const pp=ppb.parentNode, st=pp.querySelector('.pp-stage'); pp.classList.remove('min'); if(st) st.replaceWith(st.cloneNode(true)); return; }
   const kwb=e.target.closest('[data-kw]'); if(kwb){ kwPick(+kwb.dataset.kw); return; }
   const hv=e.target.closest('[data-hv]'); if(hv){ huntVerdict(hv.dataset.hv); return; }
   const sp=e.target.closest('[data-speak]'); if(sp){ speak(sp.dataset.speak); sp.classList.add('speaking'); return; }
@@ -958,7 +959,7 @@ function toggleChip(id,x){
   let v=x.get(kb.key,'');
   if(v.includes(c.text)) v=v.replace(c.text,'').replace(/ {2,}/g,' ').replace(/^\s+/,'');
   else v=(v&&!/\s$/.test(v)?v+' ':v)+c.text;
-  x.set(kb.key,v); renderPhoneKeepFocus(); renderFoot();
+  x.set(kb.key,v); if(kb.key==='cvPrompt'&&!x.get('ppDone')){ x.set('ppDone',1); renderCoachLine(); } renderPhoneKeepFocus(); renderFoot();
 }
 function composeChanged(){ renderFoot(); }
 function renderPhoneKeepFocus(){ const ta=$('#cmp'); const pos=ta?ta.selectionStart:null; const had=document.activeElement===ta; renderPhone(false); const t2=$('#cmp'); if(t2&&had){t2.focus(); if(pos!=null) t2.setSelectionRange(t2.value.length,t2.value.length)} }

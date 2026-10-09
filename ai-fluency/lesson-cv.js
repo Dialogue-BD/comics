@@ -103,6 +103,16 @@ const PICK_FILES=['cv','ielts','rucei','shortlist','checklist','attendance','nid
 const chosen=x=>x.get('cvFiles',[]);
 const safeFiles=x=>{const c=chosen(x).filter(id=>FILE_WHY[id].ok>=0);return c.length?c:['cv','ielts','rucei','shortlist']};
 
+
+/* Cog teaches the four parts of a prompt with one story: asking a tailor for a shirt (pure CSS, see play.css .pp) */
+const PP_SCENES=[
+ {t:'Context',i:'🧍‍♀️',art:['👩‍🎓','💬','🧑‍🔧'],say:'Friday: a wedding 💍',d:'Who I am. Why I need it.',bn:'আমি কে। কেন দরকার।',ex:'I am a third-year Economics student… applying for master’s programmes.'},
+ {t:'Product',i:'👔',art:['🧑‍🔧','👔'],say:'A shirt, please.',d:'What I want to get.',bn:'আমি কী পেতে চাই।',ex:'Make a 2-page academic CV.'},
+ {t:'Process',i:'📏',art:['📏','✂️'],say:'✅ my size  ❌ no extra cloth  ❓ ask me first',d:'How to do the job: rules and steps.',bn:'কাজটা কীভাবে হবে: নিয়ম ও ধাপ।',ex:'Use only facts from my files… If something is missing, ask me first.'},
+ {t:'Performance',i:'⭐',art:['🧑‍🔧','🔍','⭐'],say:'Be careful. Be honest.',d:'How the helper should behave.',bn:'সাহায্যকারী কেমন আচরণ করবে।',ex:'Be an honest editor. Use simple English I can explain.'}
+];
+const ppAnim=x=>`<span class="pp${x&&x.get('ppDone')?' min':''}"><span class="pp-stage">${PP_SCENES.map((s,k)=>`<span class="pp-scene pp-${s.t}" style="--i:${k}"><span class="pp-art">${s.art.map((e,j)=>`<i style="--j:${j}">${e}</i>`).join('')}<em>${s.say}</em></span><span class="pp-w">${s.t}</span><span class="pp-d">${s.d}<span class="bn">${s.bn}</span></span><span class="pp-ex">“${s.ex}”</span></span>`).join('')}<span class="pp-scene pp-sum" style="--i:4">${PP_SCENES.map(s=>`<span class="pp-${s.t}"><i>${s.i}</i>${s.t}</span>`).join('')}<span class="pp-eq">= one good prompt 💬</span></span></span><button class="pp-re" type="button" data-pp="re" aria-label="Play again">▶ What are the 4 parts?</button></span>`;
+
 const PROMPT_CHIPS=[
  {id:'c1',tag:'Context',text:'I am a third-year Economics student at Rajshahi University. I am applying for fully funded master’s programmes in Development Economics.'},
  {id:'c2',tag:'Product',text:'Make a 2-page academic CV from my attached files.'},
@@ -317,8 +327,9 @@ AFL.lesson({
    feedback:x=>{const c=chosen(x);const bad=c.filter(id=>FILE_WHY[id].ok<0);AFL.firstTry(x,'cvFiles',!bad.length&&['ielts','rucei'].every(id=>c.includes(id)));
      if(bad.length) return null;
      const miss=['ielts','rucei'].filter(id=>!c.includes(id));
-     return {ok:miss.length||c.some(id=>FILE_WHY[id].ok===0)?0:1,title:miss.length?'Good — but something is missing':'Good choice of files',
-       why:c.map(id=>`<b>${esc(AFL.FILES[id].name)}</b> — ${FILE_WHY[id].en}`).join('<br>')+(miss.length?`<br>➕ The IELTS and RUCEI reports give the AI <b>real facts</b>. Add them next time.`:''),
+     const extra=c.filter(id=>FILE_WHY[id].ok===0);
+     return {ok:miss.length?0:1,title:miss.length?'Good — but something is missing':extra.length?'Right files! One tip':'Right files! ✅',
+       why:c.map(id=>`<b>${esc(AFL.FILES[id].name)}</b> — ${FILE_WHY[id].en}`).join('<br>')+(miss.length?`<br>➕ The IELTS and RUCEI reports give the AI <b>real facts</b>. Add them next time.`:'')+(!miss.length&&extra.length?`<br>💡 Next time, leave out <b>${extra.map(id=>esc(AFL.FILES[id].name)).join(', ')}</b> — the CV does not need it.`:''),
        whybn:miss.length?'IELTS আর RUCEI রিপোর্ট AI-কে আসল তথ্য দেয়।':'শুধু কাজের জন্য যা দরকার, তা-ই দাও।'}},
    talk:{q:'Which files did Ayesha leave out? Why?',qbn:'আয়েশা কোন ফাইলগুলো বাদ দিল? কেন?',time:45,
      frames:[{en:'She left out ___ because it’s private.',bn:'সে ___ বাদ দিয়েছে, কারণ এটা ব্যক্তিগত।'},{en:'A CV doesn’t need ___.',bn:'CV-তে ___ লাগে না।'}],
@@ -329,7 +340,7 @@ AFL.lesson({
    say:'Ayesha took out the private files.',bn:'আয়েশা ব্যক্তিগত ফাইলগুলো সরিয়ে দিয়েছে।'},
   {d:'des',id:'prompt',stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi AI'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS}}),tap:'send',
    say:'Now build a better prompt. Tap the parts above the keyboard, then send ➤.',bn:'এবার একটা ভালো প্রম্পট বানাও। কিবোর্ডের উপরের অংশগুলো চাপো, তারপর পাঠাও ➤।',
-   sub:()=>say({solo:'Read each part out loud before you tap it.',pair:'Read each part to your partner before you tap it.',class:'Read each part together before you tap it.'}),
+   sub:x=>say({solo:'Read each part out loud before you tap it.',pair:'Read each part to your partner before you tap it.',class:'Read each part together before you tap it.'})+ppAnim(x),
    subbn:()=>say({solo:'চাপার আগে প্রতিটা অংশ জোরে পড়ো।',pair:'চাপার আগে প্রতিটা অংশ সঙ্গীকে পড়ে শোনাও।',class:'চাপার আগে প্রতিটা অংশ সবাই মিলে পড়ো।'}),
    compose:{key:'cvPrompt',slots:SLOTS,chips:PROMPT_CHIPS,best:['c1','c2','c3','c4']}},
   {d:'des',stage:'prompt',scene:x=>CHAT_SC(x,1),

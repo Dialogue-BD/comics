@@ -36,6 +36,9 @@ const clunk=(t0)=>{ tone(150,t0,.22,'triangle',.5,48); tone(70,t0,.3,'sine',.45,
 const sparkle=(t0,n)=>{ for(let i=0;i<n;i++) tone(2200+Math.random()*3200,t0+i*.07+Math.random()*.05,.22,'sine',.07+Math.random()*.05); };
 const NOTE={C5:523.25,E5:659.25,G5:783.99,C6:1046.5,E6:1318.5,G6:1568,D5:587.33,A5:880,G4:392,C4:261.63,E4:329.63};
 
+/* one schedule drives both the tick sounds and the gear's teeth, so every click you hear is a click you see */
+const GEAR_N=8;
+function gearTimes(){ const a=[]; let at=0,gap=.24; for(let i=0;i<GEAR_N;i++){ a.push(at); at+=gap; gap*=.8; } return {ticks:a,lock:a[a.length-1]+.34}; }
 const SOUNDS={
   tick:()=>tick(T()),
   ping:(o)=>bell(NOTE.C6*(1+(o||0)*.06),T(),.35,.14),
@@ -48,8 +51,8 @@ const SOUNDS={
     for(let i=0;i<14;i++) tick(w+.1+i*(.088-i*.0035),.07);
     bell(NOTE.G5,t+2.05,.9,.16); },
   /* a gear locks in: tick-tick-tick faster and faster, a clunk, then a bright arpeggio and sparkles */
-  gear:()=>{ const t=T(); let at=0,gap=.24; for(let i=0;i<8;i++){ tick(t+at,.12+i*.02); at+=gap; gap*=.8; }
-    const lock=t+1.42; clunk(lock);
+  gear:()=>{ const t=T(), G=gearTimes(); G.ticks.forEach((at,i)=>tick(t+at,.12+i*.02));
+    const lock=t+G.lock; clunk(lock);
     [NOTE.C5,NOTE.E5,NOTE.G5,NOTE.C6].forEach((f,i)=>{ bell(f,lock+.1+i*.09,1.1,.2); });
     bell(NOTE.E6,lock+.5,1.2,.14); sparkle(lock+.25,9); noise(lock,.45,.12,2000,7000,.7); },
   /* the mission: four gears land one after another, then the fanfare */
@@ -106,7 +109,15 @@ const GOLD=['#F5C542','#FFE08A','#E0A81C'];
 /* ---------------- a gear locks in ---------------- */
 FX.gearTurned=(root,d)=>{
   const g=root.querySelector('.lvl-gear'); if(!g) return;
-  FX.sfx('gear');
+  const G=gearTimes(); FX.sfx('gear');
+  /* the four gears turn one notch per tick, faster and faster, and the last notch lands them in place */
+  const rots=[...g.querySelectorAll('.rot')];
+  if(!reduced()) rots.forEach(r=>{ const on=r.closest('.gear')&&r.closest('.gear').classList.contains('on'); r.dataset.sg=on?-1:1; r.style.animation='none'; r.style.transition='transform .09s cubic-bezier(.3,1.6,.5,1)';
+    r.style.transform='rotate(calc(var(--o) + var(--ga,0deg) * var(--s) + '+(on?-120:120)+'deg * var(--s)))'; });
+  G.ticks.forEach((at,i)=>setTimeout(()=>{ if(!document.body.contains(g)) return; const rem=120*(1-(i+1)/GEAR_N);
+    rots.forEach(r=>{ if(r.dataset.sg) r.style.transform='rotate(calc(var(--o) + var(--ga,0deg) * var(--s) + '+(r.dataset.sg*rem)+'deg * var(--s)))'; });
+    g.classList.add('click'); setTimeout(()=>g.classList.remove('click'),90); },at*1000));
+  setTimeout(()=>rots.forEach(r=>{ r.style.transition=''; r.style.transform=''; r.style.animation=''; r.style.animationName='none'; }),(G.ticks[GEAR_N-1]+.3)*1000);
   g.classList.remove('cele'); void g.offsetWidth; g.classList.add('cele');
   const col=[DCOL(d),...GOLD,'#ffffff',DCOL(d)];
   setTimeout(()=>{ if(!document.body.contains(g)) return; const [x,y,r]=centre(g);
@@ -115,7 +126,7 @@ FX.gearTurned=(root,d)=>{
     setTimeout(()=>burst(x-r.width*.4,y+10,col,26,{speed:520,dir:-Math.PI*.78,spread:.9}),160);
     setTimeout(()=>burst(x+r.width*.4,y+10,col,26,{speed:520,dir:-Math.PI*.22,spread:.9}),160);
     const k=root.querySelector('.lvl-k'); if(k){ k.classList.remove('bump'); void k.offsetWidth; k.classList.add('bump'); }
-  },1420);
+  },G.lock*1000);
 };
 
 /* ---------------- the mission is done ---------------- */
