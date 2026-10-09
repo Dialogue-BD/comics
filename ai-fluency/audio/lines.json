@@ -280,6 +280,38 @@
   "take": "cq-coach-05"
  },
  {
+  "key": "1qejke0",
+  "text": "Delegation means deciding who does each job: me, the AI, or both.",
+  "voice": "coach",
+  "lesson": "introd",
+  "where": "four Ds film · what the D means",
+  "take": "introd-coach-01"
+ },
+ {
+  "key": "07r4w5b",
+  "text": "Description means telling the AI clearly what you want. A clear request gets a better answer.",
+  "voice": "coach",
+  "lesson": "introd",
+  "where": "four Ds film · what the D means",
+  "take": "introd-coach-01"
+ },
+ {
+  "key": "1ih0yhi",
+  "text": "Discernment means checking what the AI gives you. Is it right? Is it good?",
+  "voice": "coach",
+  "lesson": "introd",
+  "where": "four Ds film · what the D means",
+  "take": "introd-coach-01"
+ },
+ {
+  "key": "1o1l8iy",
+  "text": "Diligence means being careful and honest. Your name is on the work, so you are responsible.",
+  "voice": "coach",
+  "lesson": "introd",
+  "where": "four Ds film · what the D means",
+  "take": "introd-coach-01"
+ },
+ {
   "key": "1ox18ay",
   "text": "Many people use AI.",
   "voice": "coach",
@@ -324,7 +356,7 @@
   "text": "Description.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 6",
+  "where": "four Ds film · line 7",
   "take": "intro-coach-02"
  },
  {
@@ -332,7 +364,7 @@
   "text": "Discernment.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 7",
+  "where": "four Ds film · line 9",
   "take": "intro-coach-02"
  },
  {
@@ -340,7 +372,7 @@
   "text": "Diligence.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 8",
+  "where": "four Ds film · line 11",
   "take": "intro-coach-02"
  },
  {
@@ -348,7 +380,7 @@
   "text": "Delegation and Diligence make the first loop: the big decisions.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 9",
+  "where": "four Ds film · line 13",
   "take": "intro-coach-03"
  },
  {
@@ -356,7 +388,7 @@
   "text": "Delegation asks: what is the job, and who does it — me, the AI, or both?",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 10",
+  "where": "four Ds film · line 14",
   "take": "intro-coach-03"
  },
  {
@@ -364,7 +396,7 @@
   "text": "Diligence asks: is it safe and honest, and who is responsible for the result?",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 11",
+  "where": "four Ds film · line 15",
   "take": "intro-coach-03"
  },
  {
@@ -372,7 +404,7 @@
   "text": "Description and Discernment make the second loop: the conversation.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 12",
+  "where": "four Ds film · line 16",
   "take": "intro-coach-03"
  },
  {
@@ -380,7 +412,7 @@
   "text": "Description: say clearly what you want.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 13",
+  "where": "four Ds film · line 17",
   "take": "intro-coach-04"
  },
  {
@@ -388,7 +420,7 @@
   "text": "Discernment: judge what comes back.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 14",
+  "where": "four Ds film · line 18",
   "take": "intro-coach-04"
  },
  {
@@ -396,7 +428,7 @@
   "text": "Then say it again, better.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 15",
+  "where": "four Ds film · line 19",
   "take": "intro-coach-04"
  },
  {
@@ -404,7 +436,7 @@
   "text": "Now look. The gears touch.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 16",
+  "where": "four Ds film · line 20",
   "take": "intro-coach-04"
  },
  {
@@ -412,7 +444,7 @@
   "text": "When one gear turns, all four turn.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 17",
+  "where": "four Ds film · line 21",
   "take": "intro-coach-05"
  },
  {
@@ -420,7 +452,7 @@
   "text": "The big decisions shape the conversation, and the conversation changes the decisions.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 18",
+  "where": "four Ds film · line 22",
   "take": "intro-coach-05"
  },
  {
@@ -428,7 +460,7 @@
   "text": "Where the four gears meet is the sweet spot: AI fluency.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 19",
+  "where": "four Ds film · line 23",
   "take": "intro-coach-05"
  },
  {
@@ -436,7 +468,7 @@
   "text": "Working with AI in a way that is effective, efficient, ethical and safe.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 20",
+  "where": "four Ds film · line 24",
   "take": "intro-coach-05"
  },
  {
@@ -444,7 +476,7 @@
   "text": "And in the middle is you: the human in the loop.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 21",
+  "where": "four Ds film · line 25",
   "take": "intro-coach-06"
  },
  {
@@ -452,7 +484,7 @@
   "text": "For example: studying for an exam.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 22",
+  "where": "four Ds film · line 26",
   "take": "intro-coach-06"
  },
  {
@@ -460,7 +492,7 @@
   "text": "Delegation: the AI makes practice questions. You answer them.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 23",
+  "where": "four Ds film · line 27",
   "take": "intro-coach-06"
  },
  {
@@ -468,7 +500,7 @@
   "text": "Description: \"Give me five questions on chapter three.\"",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 24",
+  "where": "four Ds film · line 28",
   "take": "intro-coach-06"
  },
  {
@@ -476,7 +508,7 @@
   "text": "Discernment: question four is wrong. My book says something different.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 25",
+  "where": "four Ds film · line 29",
   "take": "intro-coach-07"
  },
  {
@@ -484,7 +516,7 @@
   "text": "Diligence: no AI in the real exam.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 26",
+  "where": "four Ds film · line 30",
   "take": "intro-coach-07"
  },
  {
@@ -492,7 +524,7 @@
   "text": "Four gears. Two loops. One sweet spot.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 27",
+  "where": "four Ds film · line 31",
   "take": "intro-coach-07"
  },
  {
@@ -500,7 +532,7 @@
   "text": "Now let's watch the gears turn on Ayesha's phone.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 28",
+  "where": "four Ds film · line 32",
   "take": "intro-coach-07"
  },
  {

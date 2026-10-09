@@ -31,7 +31,12 @@ const ICON={
  dis:'M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
  dil:'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z',
  ai:'M12 2c.4 4.9 5.1 9.6 10 10-4.9.4-9.6 5.1-10 10-.4-4.9-5.1-9.6-10-10 4.9-.4 9.6-5.1 10-10z',
- you:'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4z'};
+ you:'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4z',
+ pen:'M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z',
+ list:'M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z',
+ check:'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z',
+ book:'M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z',
+ lock:'M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z'};
 const svgI=(d,col)=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[d]}" fill="${col||'currentColor'}"/></svg>`;
 
 /* ---------- the gear, machined: teeth + six lightening holes, as a mask ---------- */
@@ -56,7 +61,7 @@ const plate=(d,a='')=>{const [x,y,al]=plateXY[d];
   return `<div class="plate pl-${al}" style="${al==='r'?`right:${W-x}px`:`left:${x}px`};top:${y}px;--c:${COL[d][1]}" ${a}><b>${NAME[d][0]}</b><span>${NAME[d][1]}</span></div>`};
 /* a gear with its name plate, wrapped so both dim together */
 const unit=(d,ga='',pa='',wa='')=>`<div class="unit u-${d}" ${wa}>${gear(d,ga)}${pa===null?'':plate(d,pa)}</div>`;
-const sockets=a=>`<div class="sockets" ${a}>${['del','dis','dil','des'].map(d=>`<i style="left:${POS[d][0]-RR}px;top:${POS[d][1]-RR}px"></i>`).join('')}</div>`;
+const sockets=(a,ds=['del','dis','dil','des'])=>`<div class="sockets" ${a}>${ds.map(d=>`<i style="left:${POS[d][0]-RR}px;top:${POS[d][1]-RR}px"></i>`).join('')}</div>`;
 /* curved "this way" arrow on a gear: a 90° arc with a head built on the arc's own tangent */
 function turnSvg(dir){ const r=99, L=30, hw=15, rad=a=>a*Math.PI/180, P=a=>[r*Math.cos(a),r*Math.sin(a)], f=n=>n.toFixed(1);
   // the shaft stops at `base`; the head sits on the tangent there, so shaft and head share one axis
@@ -90,6 +95,103 @@ const scr=(p,cam)=>[Math.round(CX+cam[2]*(p[0]-cam[0])),Math.round(CY+cam[2]*(p[
  * sfx:   [[at, 'seat'|'tick'|'clunk']]
  */
 const CAM_LOOP1=[1150,CY,.9], CAM_FULL=[CX,CY,.92], CAM_EX=[CX,CY,.8], CAM_END=[1340,CY,.62];
+/* ---------- what each D means, acted out ----------
+ * As each D is named its gear seats; then the camera pulls back so the four
+ * gears sit small in the top-left corner (a map: which gear we are on), and the
+ * rest of the stage acts the word out with people and things a beginner already
+ * knows — me, the AI, jobs, a question, a book, my name. Then the gears come back.
+ * Screen space: the picture lives in x 600–1860, y 80–880 (the caption is below).
+ */
+const ORDER4=['del','des','dis','dil'];
+const CAM_MAP=[CX+(CX-310)/.36, CY+(CY-268)/.36, .36];      // the mechanism, small, centred on (310,268)
+const DEF={
+ del:{name:['Delegation.','Delegation — দায়িত্ব ভাগ।'],
+      line:['Delegation means deciding who does each job: me, the AI, or both.','Delegation মানে ঠিক করা কোন কাজ কে করবে: আমি, AI, নাকি দুজনে।'],
+      gloss:['Who does each job?','কে কোন কাজ করবে?']},
+ des:{name:['Description.','Description — বর্ণনা।'],
+      line:['Description means telling the AI clearly what you want. A clear request gets a better answer.','Description মানে AI-কে স্পষ্ট করে বলা তুমি কী চাও। স্পষ্ট অনুরোধে ভালো উত্তর আসে।'],
+      gloss:['Say clearly what you want.','যা চাও, স্পষ্ট করে বলো।']},
+ dis:{name:['Discernment.','Discernment — যাচাই।'],
+      line:['Discernment means checking what the AI gives you. Is it right? Is it good?','Discernment মানে AI যা দেয় তা যাচাই করা। এটা কি ঠিক? এটা কি ভালো?'],
+      gloss:['Check what comes back.','যা ফিরে আসে, যাচাই করো।']},
+ dil:{name:['Diligence.','Diligence — সতর্কতা।'],
+      line:['Diligence means being careful and honest. Your name is on the work, so you are responsible.','Diligence মানে সতর্ক আর সৎ থাকা। কাজে তোমার নাম থাকে, তাই দায়িত্ব তোমার।'],
+      gloss:['Be careful, honest and responsible.','সতর্ক, সৎ আর দায়িত্বশীল হও।']}};
+
+/* the cast: me (gold, like the "you" medal at the sweet spot) and the AI (the little rainbow gear) */
+const who=(k,x,y,a,label)=>k==='ai'
+ ? `<div class="x-who" style="left:${x}px;top:${y}px" ${a}><div class="gear g-ai x-mini" style="--gs:150px;left:-75px;top:-75px"><div class="gsh"></div><div class="grot" data-rot="ai"><div class="gbody"></div></div><div class="gsheen"></div><div class="ghub">${svgI('ai')}</div></div><em>${label||'AI'}</em></div>`
+ : `<div class="x-who" style="left:${x}px;top:${y}px" ${a}><div class="x-me">${svgI('you')}</div><em>${label||'Me'}</em></div>`;
+/* a paper card: (cx,cy) is its centre; w×h its size */
+const paper=(cx,cy,w,h,inner,a,cls='')=>`<div class="x-pp ${cls}" style="left:${cx-w/2}px;top:${cy-h/2}px;width:${w}px;height:${h}px" ${a}>${inner}</div>`;
+const job=(icon,text)=>`<i class="x-pi">${svgI(icon)}</i><span>${text}</span>`;
+const bars=n=>`<u class="x-bars">${Array.from({length:n},(_,i)=>`<s style="width:${[92,78,86,64,80][i%5]}%"></s>`).join('')}</u>`;
+const stamp=(cx,cy,ok,a,big)=>`<div class="x-stp ${ok?'x-ok':'x-no'}${big?' x-big':''}" style="left:${cx-(big?60:42)}px;top:${cy-(big?60:42)}px" ${a}>${ok?'✓':'✕'}</div>`;
+/* a connecting line, drawn on (no end dot, so nothing shows before it draws) */
+const link=(pts,col,a)=>`<svg class="wire" viewBox="0 0 ${W} ${H}" aria-hidden="true"><path d="M${pts.map(p=>p.join(' ')).join(' L')}" pathLength="1" stroke="${col}" style="stroke-dasharray:1;stroke-dashoffset:1" ${a}/></svg>`;
+const pill=(cx,cy,text,cls,a)=>`<div class="x-pill ${cls||''}" style="left:${cx}px;top:${cy}px" ${a}><span>${text}</span></div>`;
+const bubble=(x,y,w,text,a,cls='')=>`<div class="x-bub ${cls}" style="left:${x}px;top:${y}px;width:${w}px" ${a}>${text}</div>`;
+
+const ACT={
+ /* jobs go to me, to the AI, or to both of us */
+ del:()=>{const ME=[860,300], AI=[1620,300], A=[1240,150], B=[1240,262], C=[1240,374], w=360,h=92;
+  return `${who('me',...ME,'data-a="popin @1-.3 .7"')}${who('ai',...AI,'data-a="popin @1-.1 .7"')}
+   ${paper(...A,w,h,job('pen','Answer the questions'),'data-a="rise @1+.1 .6|move @1%46 1 -380 380"','x-job')}
+   ${paper(...B,w,h,job('list','Write practice questions'),'data-a="rise @1+.3 .6|move @1%60 1 380 268"','x-job')}
+   ${paper(...C,w,h,job('check','Check the answers'),'data-a="rise @1+.5 .6|move @1%76 1 0 326"','x-job')}
+   ${link([[ME[0],A[1]+380+h/2+8],[ME[0],700],[C[0]-w/2-6,700]],COL.del[1],'data-a="wire @1%76+.9 .8"')}
+   ${link([[AI[0],B[1]+268+h/2+8],[AI[0],700],[C[0]+w/2+6,700]],COL.del[1],'data-a="wire @1%76+.9 .8"')}
+   ${pill(C[0],628,'Both','x-g','data-a="popin @1%76+1.2 .6"')}`},
+ /* a vague request gets a question back; a clear one gets the answer */
+ des:()=>{const ME=[820,330], AI=[1660,330];
+  return `${who('me',...ME,'data-a="popin @1-.3 .7"')}${who('ai',...AI,'data-a="popin @1-.1 .7"')}
+   ${bubble(930,150,380,'“Help me study.”','data-a="popin @1+.1 .6|fadeout @1%44 .4"','x-from-l')}
+   ${bubble(1590,110,140,'?','data-a="popin @1%22 .6|fadeout @1%44 .4"','x-from-r x-q')}
+   ${pill(1120,300,'✕ Not clear','x-r','data-a="popin @1%28 .5|fadeout @1%44 .4"')}
+   ${bubble(930,130,560,'“Write <b>5 easy questions</b> on <b>chapter 3</b>.”','data-a="popin @1%48 .6"','x-from-l')}
+   ${pill(1210,330,'✓ Clear','x-gr','data-a="popin @1%60 .5"')}
+   ${paper(1240,650,330,250,`<b class="x-pt">5 questions</b>${bars(5)}`,'data-a="arrive @1%68 1.1 420 -320"','x-res')}
+   ${stamp(1395,555,true,'data-a="stamp @1%88 .5"')}`},
+ /* the AI's answers, checked one by one against my book */
+ dis:()=>{const ME=[820,250], AI=[1680,250], X=1240, ys=[170,300,430,560], w=380,h=104;
+  return `${who('me',...ME,'data-a="popin @1-.3 .7"')}${who('ai',...AI,'data-a="popin @1-.1 .7"')}
+   ${paper(820,560,170,200,`<i class="x-pi x-big">${svgI('book')}</i><span>My book</span>`,'data-a="rise @1+.2 .6"','x-bk')}
+   ${ys.map((y,i)=>paper(X,y,w,h,`<b class="x-pt">Answer ${i+1}</b>${bars(2)}`,`data-a="slideR @1+${(.1+i*.18).toFixed(2)} .6${i===2?'|shake @1%34+1.65 .6':''}"`,'x-ans'+(i===2?' x-bad':''))).join('')}
+   <div class="x-lens" style="left:${X+w/2-40}px;top:${ys[0]-50}px" data-a="fade @1%34-.5 .4|scan @1%34 2.6 0 390|fadeout @1%34+3 .5">${svgI('dis')}</div>
+   ${ys.map((y,i)=>stamp(X+w/2+60,y,i!==2,`data-a="stamp @1%34+${(i*.85+.15).toFixed(2)} .45"`)).join('')}
+   ${link([[820+90,560],[960,560],[X-w/2-8,ys[2]]],COL.dis[1],'data-a="wire @1%34+1.65 .7"')}`},
+ /* my work: careful (the password is hidden), honest (I say AI helped), responsible (my name) */
+ dil:()=>{const P=[1190,476], w=440,h=620, top=P[1]-h/2, left=P[0]-w/2;
+  return `${who('me',760,476,'data-a="popin @1-.3 .7"')}
+   ${paper(...P,w,h,`<b class="x-pt x-big">My homework</b>${bars(3)}
+     <div class="x-pw">Password: 4 8 2 1 7<div class="x-cover" data-a="fade @1%10 .5"><i>${svgI('lock')}</i></div></div>
+     ${bars(2)}
+     <div class="x-note" data-a="rise @1%30 .6"><i>${svgI('ai')}</i>AI helped me practise.</div>
+     <div class="x-sig"><small>Name</small><svg viewBox="0 0 300 70"><path pathLength="1" data-a="draw @1%58 1.2" d="M8 50c14-30 22-38 24-30s-10 34-4 34 18-30 28-30-6 26 2 26 12-16 20-18 4 14 12 14 14-22 24-22-2 20 8 20 18-12 30-14c10-2 20 8 34 6s30-10 44-12 30 4 38 2"/></svg></div>`,'data-a="rise @1-.2 .8"','x-doc')}
+   ${pill(1530,250,`<i>${svgI('lock')}</i>Careful`,'x-k','data-a="slideR @1%10 .6"')}
+   ${pill(1530,370,`<i>${svgI('check')}</i>Honest`,'x-k','data-a="slideR @1%30 .6"')}
+   ${pill(1530,490,`<i>${svgI('dil')}</i>Responsible`,'x-k','data-a="slideR @1%74 .6"')}
+   ${link([[760,476+138],[760,top+h-86],[left-6,top+h-86]],COL.dil[1],'data-a="wire @1%58 .8"')}
+   ${stamp(left+w-50,top+70,true,'data-a="stamp @1%84 .55"',1)}`}
+};
+
+/* one scene per D: name it and seat its gear → pull back → act it out → gears come back */
+function dScene(d){
+  const k=ORDER4.indexOf(d), before=ORDER4.slice(0,k), after=ORDER4.slice(k+1), c=COL[d], D=DEF[d];
+  return {id:d, lead:.5, tail:3.1, ai:[[0,70]],
+   lines:[[...D.name,.5],[...D.line]],
+   cam0:[CX,CY,1], cam:[['@0+.9',1.5,...CAM_MAP],['@end-1.65',1.45,CX,CY,1]],
+   sfx:[['@0+.6','seat']],
+   html:()=>`${sockets(after.length?'':'data-a="fadeout @0+.8 .6"',[d,...after])}
+    ${before.map(b=>unit(b,'','','data-a="dim @0+1.2 1|undim @end-1.6 1.1"')).join('')}
+    ${unit(d,'data-a="seat @0 .8"','data-a="plate @0+.5"')}
+    <div class="ripple" style="left:${POS[d][0]}px;top:${POS[d][1]}px;--c:${c[1]}" data-a="ripple @0+.6 1.1"></div>
+    <div class="ripple" style="left:${POS[d][0]}px;top:${POS[d][1]}px;--c:${c[1]}" data-a="ripple @1+.2 1.4"></div>`,
+   scr:()=>`<div class="x-vg v-${d}" style="--c:${c[1]}" data-a="fade @0+1.6 .5|fadeout @end-1.95 .7">
+     <div class="x-dh" data-a="rise @0+1.8 .8"><small>${['First','Second','Third','Fourth'][k]} D</small><b>${D.name[0].replace('.','')}</b><span>${D.gloss[0]}</span><span class="bnc" lang="bn">${D.gloss[1]}</span></div>
+     ${ACT[d]()}</div>`};
+}
+
 const SCENES=[
 {id:'alone', lead:1.2, tail:.8,
  lines:[['Many people use AI.','অনেকেই AI ব্যবহার করে।'],
@@ -102,15 +204,12 @@ const SCENES=[
   <div class="i-spark" style="left:${CX}px;top:${CY}px" data-a="burst .6 1.4"></div>`,
  scr:()=>``},
 
-{id:'four', lead:.6, tail:1.2,
- lines:[['AI fluency has four gears: the four Ds.','AI-তে দক্ষতার চারটা গিয়ার: চারটা D।',.8],
-        ['Delegation.','Delegation — দায়িত্ব ভাগ।',.55],['Description.','Description — বর্ণনা।',.55],['Discernment.','Discernment — যাচাই।',.55],['Diligence.','Diligence — সতর্কতা।']],
- cam0:[CX,CY,1], ai:[[0,170]], sfx:[['@1+.6','seat'],['@2+.6','seat'],['@3+.6','seat'],['@4+.6','seat']],
- html:()=>`${sockets('data-a="fadeout @4+1 1"')}${gear('ai','data-a="exit @0+.8 1.8"')}
-  ${unit('del','data-a="seat @1 .8"','data-a="plate @1+.5"')}${unit('des','data-a="seat @2 .8"','data-a="plate @2+.5"')}
-  ${unit('dis','data-a="seat @3 .8"','data-a="plate @3+.5"')}${unit('dil','data-a="seat @4 .8"','data-a="plate @4+.5"')}
-  ${['del','des','dis','dil'].map((d,i)=>`<div class="ripple" style="left:${POS[d][0]}px;top:${POS[d][1]}px;--c:${COL[d][1]}" data-a="ripple @${i+1}+.6 1.1"></div>`).join('')}`,
+{id:'four', lead:.6, tail:.6,
+ lines:[['AI fluency has four gears: the four Ds.','AI-তে দক্ষতার চারটা গিয়ার: চারটা D।']],
+ cam0:[CX,CY,1], ai:[[0,170]],
+ html:()=>`${sockets('data-a="flash @0+1.6 1.4"')}${gear('ai','data-a="exit @0+.8 1.8"')}`,
  scr:()=>``},
+dScene('del'),dScene('des'),dScene('dis'),dScene('dil'),
 
 {id:'loop1', lead:.8, tail:1.4,
  lines:[['Delegation and Diligence make the first loop: the big decisions.','Delegation আর Diligence মিলে প্রথম চক্র: বড় সিদ্ধান্তগুলো।',.8],
@@ -219,9 +318,10 @@ function plan(){
     sc._ai0=ai; if(sc.ai){const t2=angleTable(sc,sc.ai,null,ai); sc._aiang=t2; ai=t2[t2.length-1];}
   });
 }
-/* "@2+.4" → seconds into the scene */
+/* "@2+.4" → seconds into the scene; "@2%60" → 60% of the way through line 2 (lands on a word, whatever the recording) */
 function T(sc,v){ if(typeof v==='number') return v; v=String(v).trim(); if(!v.startsWith('@')) return +v;
-  const m=v.match(/^@(end|\d+)([+-][\d.]+)?$/); if(!m) return 0; const base=m[1]==='end'?sc._dur:sc._t[+m[1]]; return Math.max(0,base+(m[2]?+m[2]:0)); }
+  const m=v.match(/^@(end|\d+)(?:%(\d+))?([+-][\d.]+)?$/); if(!m) return 0;
+  const base=m[1]==='end'?sc._dur:sc._t[+m[1]]+(m[2]?sc._d[+m[1]]*m[2]/100:0); return Math.max(0,base+(m[3]?+m[3]:0)); }
 const STEP=.05;
 function angleTable(sc,spin,tick,a0){
   const n=Math.ceil(sc._dur/STEP)+1, out=new Float64Array(n); const sp=(spin||[[0,0]]).map(([t,v])=>[T(sc,t),v]);
@@ -262,6 +362,11 @@ function anim(el,spec,sc,first=true){ const FILL=first?'both':'forwards';
    case 'track':{ const out=[]; el.querySelectorAll('[data-draw]').forEach(p=>{p.style.strokeDasharray=1; out.push(p.animate([{strokeDashoffset:1},{strokeDashoffset:0}],{duration:d,delay:t0,easing:EIO,fill:'both'}))});
      el.querySelectorAll('[data-flow]').forEach(p=>out.push(p.animate([{opacity:0},{opacity:1}],{duration:600,delay:t0+d,fill:'both'})));
      return out; }
+   case 'move':kf=[{transform:'none'},{transform:`translate(${+parts[3]||0}px,${+parts[4]||0}px)`}];ease=EIO;break;
+   case 'scan':kf=[{transform:'none'},{transform:`translate(${+parts[3]||0}px,${+parts[4]||0}px)`}];ease='linear';break;
+   case 'arrive':kf=[{opacity:0,transform:`translate(${+parts[3]||0}px,${+parts[4]||0}px) scale(.35)`},{opacity:1,transform:`translate(${(+parts[3]||0)*.8}px,${(+parts[4]||0)*.8}px) scale(.5)`,offset:.15},{opacity:1,transform:'none'}];ease=EIO;break;
+   case 'stamp':kf=[{opacity:0,transform:'scale(2.4) rotate(-22deg)'},{opacity:1,transform:'scale(.92) rotate(-8deg)',offset:.6},{opacity:1,transform:'scale(1) rotate(-8deg)'}];ease='cubic-bezier(.3,0,.4,1)';break;
+   case 'shake':kf=[{transform:'none'},{transform:'translateX(-14px)',offset:.2},{transform:'translateX(12px)',offset:.4},{transform:'translateX(-8px)',offset:.6},{transform:'translateX(5px)',offset:.8},{transform:'none'}];ease='linear';break;
    case 'tfade':{ const to=+(parts[3]||.3); kf=[{opacity:+(getComputedStyle(el).opacity||1)},{opacity:to}]; break; }
    case 'travel':{ const p=(el.dataset.path||'0,0').split(/\s+/).map(s=>s.split(',').map(Number)); kf=p.map((q,i)=>({transform:`translate(${q[0]}px,${q[1]}px) translate(-50%,-50%)`,opacity:i===0?0:1})); kf.splice(1,0,{transform:`translate(${p[0][0]}px,${p[0][1]}px) translate(-50%,-50%)`,opacity:1,offset:.12}); ease=EIO; break; }
    default:kf=[{opacity:0},{opacity:1}];
@@ -414,5 +519,5 @@ if(typeof document!=='undefined'&&document.addEventListener) document.addEventLi
 async function seek(i,t){ renderMode=true; await loadDur(); build(); root.hidden=false; root.classList.add('render'); fit(); if(i!==cur) show(i); anims.forEach(a=>{a.pause();a.currentTime=t*1000}); setCaption(t); }
 const total=()=>SCENES.reduce((s,sc)=>s+(sc._dur||0),0);
 
-if(typeof window!=='undefined') window.INTRO={open,close,seek,SCENES,LINES,W,H,plan,total,ready:loadDur};
+if(typeof window!=='undefined') window.INTRO={open,close,seek,SCENES,LINES,DEFS:ORDER4.map(d=>DEF[d].line[0]),W,H,plan,total,ready:loadDur};
 })();
