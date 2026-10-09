@@ -1,2498 +1,2180 @@
 [
  {
-  "key": "1wxysd3",
-  "text": "This is Ayesha's phone. Learn AI, and English, by doing real tasks.",
+  "key": "0z7e61o",
+  "text": "This is Ayesha's phone. Today, you are Ayesha. Choose a mission: tap a notification.",
   "voice": "coach",
   "lesson": "common",
-  "where": "start screen",
-  "take": "common-coach-01"
+  "where": "lock screen",
+  "take": "r2-common-coach-01"
+ },
+ {
+  "key": "0um902r",
+  "text": "This is Cog, your coach. Cog tells you what to do — and reads it aloud. Tap 🔊 to hear it again.",
+  "voice": "coach",
+  "lesson": "common",
+  "where": "how this works · 1",
+  "take": "r2-common-coach-01"
+ },
+ {
+  "key": "02zpnrw",
+  "text": "This is Ayesha's phone. You are Ayesha. Tap it like a real phone. A gold ring shows where.",
+  "voice": "coach",
+  "lesson": "common",
+  "where": "how this works · 2",
+  "take": "r2-common-coach-01"
+ },
+ {
+  "key": "1gxfid4",
+  "text": "Your next step is always down here: Continue — or Show me if you're stuck. Nothing is locked.",
+  "voice": "coach",
+  "lesson": "common",
+  "where": "how this works · 3",
+  "take": "r2-common-coach-01"
+ },
+ {
+  "key": "0m3oh9k",
+  "text": "Ready? Tap the gold notification to start your first mission.",
+  "voice": "coach",
+  "lesson": "common",
+  "where": "how this works · 4",
+  "take": "r2-common-coach-02"
  },
  {
   "key": "1nrxptn",
   "text": "I will ___. The AI can ___.",
   "voice": "ayesha",
   "lesson": "common",
-  "where": "Delegation phrase",
-  "take": "common-ayesha-01"
+  "where": "Delegation phrase"
  },
  {
   "key": "12opkr6",
   "text": "Who should ___?",
   "voice": "ayesha",
   "lesson": "common",
-  "where": "Delegation phrase",
-  "take": "common-ayesha-01"
+  "where": "Delegation phrase"
  },
  {
   "key": "0y8txx1",
   "text": "Let's ___ first.",
   "voice": "ayesha",
   "lesson": "common",
-  "where": "Delegation phrase",
-  "take": "common-ayesha-01"
+  "where": "Delegation phrase"
  },
  {
   "key": "02lgor6",
   "text": "Please make ___.",
   "voice": "ayesha",
   "lesson": "common",
-  "where": "Description phrase",
-  "take": "common-ayesha-01"
+  "where": "Description phrase"
  },
  {
   "key": "14dsegx",
   "text": "Use only ___.",
   "voice": "ayesha",
   "lesson": "common",
-  "where": "Description phrase",
-  "take": "common-ayesha-02"
+  "where": "Description phrase"
  },
  {
   "key": "0lg4svs",
   "text": "If ___, ask me first.",
   "voice": "ayesha",
   "lesson": "common",
-  "where": "Description phrase",
-  "take": "common-ayesha-02"
+  "where": "Description phrase"
  },
  {
   "key": "1lf61cp",
   "text": "That's not true. ___ says ___.",
   "voice": "ayesha",
   "lesson": "common",
-  "where": "Discernment phrase",
-  "take": "common-ayesha-02"
+  "where": "Discernment phrase"
  },
  {
   "key": "1tk06s0",
   "text": "Stop. Instead, ___.",
   "voice": "ayesha",
   "lesson": "common",
-  "where": "Discernment phrase",
-  "take": "common-ayesha-02"
+  "where": "Discernment phrase"
  },
  {
   "key": "0a5xn2u",
   "text": "This part is good because ___.",
   "voice": "ayesha",
   "lesson": "common",
-  "where": "Discernment phrase",
-  "take": "common-ayesha-03"
+  "where": "Discernment phrase"
  },
  {
   "key": "12j0ayx",
   "text": "I won't share ___. It's private.",
   "voice": "ayesha",
   "lesson": "common",
-  "where": "Diligence phrase",
-  "take": "common-ayesha-03"
+  "where": "Diligence phrase"
  },
  {
   "key": "04ty0lp",
   "text": "If ___, then ___.",
   "voice": "ayesha",
   "lesson": "common",
-  "where": "Diligence phrase",
-  "take": "common-ayesha-03"
+  "where": "Diligence phrase"
  },
  {
   "key": "1f3eocy",
   "text": "I'm responsible for ___.",
   "voice": "ayesha",
   "lesson": "common",
-  "where": "Diligence phrase",
-  "take": "common-ayesha-03"
+  "where": "Diligence phrase"
  },
  {
   "key": "0gk7r63",
   "text": "That's asking the fox to guard the henhouse.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "idiom",
-  "take": "agent-coach-01"
+  "where": "idiom"
  },
  {
   "key": "006f9dd",
   "text": "What went wrong? Say it.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "consequence question",
-  "take": "cq-coach-01"
+  "where": "consequence question"
  },
  {
   "key": "1ojgc1r",
   "text": "She ___, so ___.",
   "voice": "ayesha",
   "lesson": "cq",
-  "where": "consequence frame",
-  "take": "cq-ayesha-01"
+  "where": "consequence frame"
  },
  {
-  "key": "0b34off",
-  "text": "She made bigger claims, so the interview panel will ask about things she never did.",
+  "key": "12q6ix1",
+  "text": "She sent it without checking, so the panel will ask about things she never did.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "cv · consequence · Two weeks later",
-  "take": "cq-coach-01"
+  "where": "cv · consequence · Thursday — the interview",
+  "take": "r2-cq-coach-01"
  },
  {
   "key": "1t09s3c",
   "text": "She uploaded private files, so her ID card is now on an AI company's computers.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "cv · consequence · Later that day",
-  "take": "cq-coach-01"
+  "where": "cv · consequence · Later that day"
  },
  {
   "key": "1127d7z",
   "text": "She asked it to sound impressive, so Sathi made things up again.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "cv · consequence · Sathi answers",
-  "take": "cq-coach-01"
+  "where": "cv · consequence · Sathi answers"
  },
  {
   "key": "1babcdi",
   "text": "She told it the paper was published, so her CV now has a lie in it.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "cv · consequence · Sathi writes the draft",
-  "take": "cq-coach-02"
+  "where": "cv · consequence · Sathi writes the draft"
  },
  {
   "key": "0j203nw",
   "text": "She left the wrong lines in, so the interviewers will ask about them.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "cv · consequence · One week later",
-  "take": "cq-coach-02"
+  "where": "cv · consequence · One week later"
  },
  {
   "key": "1n6umjj",
   "text": "She gave Orbit full access, so it sent emails in her name while she slept.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "agent · consequence · Next morning",
-  "take": "cq-coach-02"
+  "where": "agent · consequence · Next morning"
  },
  {
   "key": "0pp786g",
   "text": "She gave Orbit all her files, so it opened the children's photos and the parents' phone numbers.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "agent · consequence · Three hours later",
-  "take": "cq-coach-02"
+  "where": "agent · consequence · Three hours later"
  },
  {
   "key": "04lqazx",
   "text": "She let Orbit into her chats, so it answered the parents in her name.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "agent · consequence · That evening",
-  "take": "cq-coach-03"
+  "where": "agent · consequence · That evening"
  },
  {
   "key": "0iwpaap",
   "text": "She let Orbit sign in for her, so it read 142 other students' results.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "agent · consequence · Three hours later",
-  "take": "cq-coach-03"
+  "where": "agent · consequence · Three hours later"
  },
  {
   "key": "06cc2ur",
   "text": "She linked bKash, so Orbit paid a fake fee from a web page. The money is gone.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "agent · consequence · Three hours later",
-  "take": "cq-coach-03"
+  "where": "agent · consequence · Three hours later"
  },
  {
   "key": "17b15vr",
   "text": "She allowed her contacts, so Orbit messaged all 400 people in her name.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "agent · consequence · A week later",
-  "take": "cq-coach-03"
+  "where": "agent · consequence · A week later"
  },
  {
   "key": "0h6qn5w",
   "text": "She pressed Send, so a confidential letter went to another professor. Prof. Islam was upset.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "agent · consequence · Two days later",
-  "take": "cq-coach-04"
+  "where": "agent · consequence · Two days later"
  },
  {
   "key": "1nlbgit",
   "text": "She paid the fake fee, so now the scammers want five thousand taka more.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "agent · consequence · The next day",
-  "take": "cq-coach-04"
+  "where": "agent · consequence · The next day"
  },
  {
   "key": "06yalj0",
   "text": "She allowed Downloads, so Orbit read all 214 files — her ID card, her father's bank statement and her family photos.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "agent · consequence · Five minutes later",
-  "take": "cq-coach-04"
+  "where": "agent · consequence · Five minutes later"
  },
  {
   "key": "0yzrmbj",
   "text": "She kept Orbit connected, so a data breach in June showed her emails and files to strangers.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "agent · consequence · June 2026",
-  "take": "cq-coach-04"
+  "where": "agent · consequence · June 2026"
  },
  {
   "key": "0y4k4rr",
   "text": "She didn't stop it, so Studio built a sign-in and a cloud database that nobody asked for.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "build · consequence · Studio keeps going",
-  "take": "cq-coach-05"
+  "where": "build · consequence · Studio keeps going"
  },
  {
   "key": "0xvdo1t",
   "text": "She said \"do whatever you think is best\", so Studio kept every extra feature.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "build · consequence · Studio answers",
-  "take": "cq-coach-05"
+  "where": "build · consequence · Studio answers"
  },
  {
   "key": "19nig84",
   "text": "She only said \"something is wrong\", so Studio guessed — and fixed the wrong thing.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "build · consequence · Studio answers",
-  "take": "cq-coach-05"
+  "where": "build · consequence · Studio answers"
  },
  {
   "key": "0gfbw2b",
   "text": "She added payments in one night, so paying customers got a broken, unsafe app.",
   "voice": "coach",
   "lesson": "cq",
-  "where": "build · consequence · A month later",
-  "take": "cq-coach-05"
+  "where": "build · consequence · A month later"
  },
  {
   "key": "1qejke0",
   "text": "Delegation means deciding who does each job: me, the AI, or both.",
   "voice": "coach",
   "lesson": "introd",
-  "where": "four Ds film · what the D means",
-  "take": "introd-coach-01"
+  "where": "four Ds film · what the D means"
  },
  {
   "key": "07r4w5b",
   "text": "Description means telling the AI clearly what you want. A clear request gets a better answer.",
   "voice": "coach",
   "lesson": "introd",
-  "where": "four Ds film · what the D means",
-  "take": "introd-coach-01"
+  "where": "four Ds film · what the D means"
  },
  {
   "key": "1ih0yhi",
   "text": "Discernment means checking what the AI gives you. Is it right? Is it good?",
   "voice": "coach",
   "lesson": "introd",
-  "where": "four Ds film · what the D means",
-  "take": "introd-coach-01"
+  "where": "four Ds film · what the D means"
  },
  {
   "key": "1o1l8iy",
   "text": "Diligence means being careful and honest. Your name is on the work, so you are responsible.",
   "voice": "coach",
   "lesson": "introd",
-  "where": "four Ds film · what the D means",
-  "take": "introd-coach-01"
+  "where": "four Ds film · what the D means"
  },
  {
   "key": "1ox18ay",
   "text": "Many people use AI.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 1",
-  "take": "intro-coach-01"
+  "where": "four Ds film · line 1"
  },
  {
   "key": "1shm3pp",
   "text": "Fewer people use it well.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 2",
-  "take": "intro-coach-01"
+  "where": "four Ds film · line 2"
  },
  {
   "key": "0ts4srv",
   "text": "Using AI on its own is like one gear: it spins fast, but it moves nothing.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 3",
-  "take": "intro-coach-01"
+  "where": "four Ds film · line 3"
  },
  {
   "key": "0tyzxrd",
   "text": "AI fluency has four gears: the four Ds.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 4",
-  "take": "intro-coach-01"
+  "where": "four Ds film · line 4"
  },
  {
   "key": "1bmb54z",
   "text": "Delegation.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 5",
-  "take": "intro-coach-02"
+  "where": "four Ds film · line 5"
  },
  {
   "key": "1manp39",
   "text": "Description.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 7",
-  "take": "intro-coach-02"
+  "where": "four Ds film · line 7"
  },
  {
   "key": "082ynqf",
   "text": "Discernment.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 9",
-  "take": "intro-coach-02"
+  "where": "four Ds film · line 9"
  },
  {
   "key": "1qbin49",
   "text": "Diligence.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 11",
-  "take": "intro-coach-02"
+  "where": "four Ds film · line 11"
  },
  {
   "key": "0k3ptu5",
   "text": "Delegation and Diligence make the first loop: the big decisions.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 13",
-  "take": "intro-coach-03"
+  "where": "four Ds film · line 13"
  },
  {
   "key": "1t9e2ig",
   "text": "Delegation asks: what is the job, and who does it — me, the AI, or both?",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 14",
-  "take": "intro-coach-03"
+  "where": "four Ds film · line 14"
  },
  {
   "key": "18cf02e",
   "text": "Diligence asks: is it safe and honest, and who is responsible for the result?",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 15",
-  "take": "intro-coach-03"
+  "where": "four Ds film · line 15"
  },
  {
   "key": "1ew0003",
   "text": "Description and Discernment make the second loop: the conversation.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 16",
-  "take": "intro-coach-03"
+  "where": "four Ds film · line 16"
  },
  {
   "key": "0n5rn25",
   "text": "Description: say clearly what you want.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 17",
-  "take": "intro-coach-04"
+  "where": "four Ds film · line 17"
  },
  {
   "key": "1e9mtj8",
   "text": "Discernment: judge what comes back.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 18",
-  "take": "intro-coach-04"
+  "where": "four Ds film · line 18"
  },
  {
   "key": "1yco26e",
   "text": "Then say it again, better.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 19",
-  "take": "intro-coach-04"
+  "where": "four Ds film · line 19"
  },
  {
   "key": "090c3t2",
   "text": "Now look. The gears touch.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 20",
-  "take": "intro-coach-04"
+  "where": "four Ds film · line 20"
  },
  {
   "key": "1dumbvi",
   "text": "When one gear turns, all four turn.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 21",
-  "take": "intro-coach-05"
+  "where": "four Ds film · line 21"
  },
  {
   "key": "0y9ursw",
   "text": "The big decisions shape the conversation, and the conversation changes the decisions.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 22",
-  "take": "intro-coach-05"
+  "where": "four Ds film · line 22"
  },
  {
   "key": "0ulx78v",
   "text": "Where the four gears meet is the sweet spot: AI fluency.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 23",
-  "take": "intro-coach-05"
+  "where": "four Ds film · line 23"
  },
  {
   "key": "15wykmw",
   "text": "Working with AI in a way that is effective, efficient, ethical and safe.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 24",
-  "take": "intro-coach-05"
+  "where": "four Ds film · line 24"
  },
  {
   "key": "1nkifo6",
   "text": "And in the middle is you: the human in the loop.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 25",
-  "take": "intro-coach-06"
+  "where": "four Ds film · line 25"
  },
  {
   "key": "0pp3j70",
   "text": "For example: studying for an exam.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 26",
-  "take": "intro-coach-06"
+  "where": "four Ds film · line 26"
  },
  {
   "key": "1tjhnyu",
   "text": "Delegation: the AI makes practice questions. You answer them.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 27",
-  "take": "intro-coach-06"
+  "where": "four Ds film · line 27"
  },
  {
   "key": "1ou90l7",
   "text": "Description: \"Give me five questions on chapter three.\"",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 28",
-  "take": "intro-coach-06"
+  "where": "four Ds film · line 28"
  },
  {
   "key": "12scni4",
   "text": "Discernment: question four is wrong. My book says something different.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 29",
-  "take": "intro-coach-07"
+  "where": "four Ds film · line 29"
  },
  {
   "key": "1229hh9",
   "text": "Diligence: no AI in the real exam.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 30",
-  "take": "intro-coach-07"
+  "where": "four Ds film · line 30"
  },
  {
   "key": "15n6eh4",
   "text": "Four gears. Two loops. One sweet spot.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 31",
-  "take": "intro-coach-07"
+  "where": "four Ds film · line 31"
  },
  {
   "key": "05op337",
   "text": "Now let's watch the gears turn on Ayesha's phone.",
   "voice": "coach",
   "lesson": "intro",
-  "where": "four Ds film · line 32",
-  "take": "intro-coach-07"
+  "where": "four Ds film · line 32"
  },
  {
   "key": "00netb2",
   "text": "Listen and repeat. Tap a picture to hear it.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/0",
-  "take": "cv-coach-01"
+  "where": "#cv/0"
  },
  {
   "key": "18jtx2g",
   "text": "CV. Ayesha needs a CV.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/0 word",
-  "take": "cv-coach-01"
+  "where": "#cv/0 word"
  },
  {
   "key": "03f21zf",
   "text": "shortlisted. She was not shortlisted.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/0 word",
-  "take": "cv-coach-01"
+  "where": "#cv/0 word"
  },
  {
   "key": "1kle21b",
   "text": "prompt. A prompt tells the AI what to do.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/0 word",
-  "take": "cv-coach-01"
+  "where": "#cv/0 word"
  },
  {
   "key": "0cdn1yu",
   "text": "honest. Every line must be honest.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/0 word",
-  "take": "cv-coach-02"
+  "where": "#cv/0 word"
  },
  {
   "key": "0jhji3x",
   "text": "made up. The AI made up a fact.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/0 word",
-  "take": "cv-coach-02"
+  "where": "#cv/0 word"
  },
  {
   "key": "1xnovch",
   "text": "proof. Her report is the proof.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/0 word",
-  "take": "cv-coach-02"
+  "where": "#cv/0 word"
  },
  {
   "key": "1ihkjvj",
   "text": "private. Her ID card is private.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/0 word",
-  "take": "cv-coach-02"
+  "where": "#cv/0 word"
  },
  {
   "key": "1hbzokm",
   "text": "fix. Tell the AI what to fix.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/0 word",
-  "take": "cv-coach-03"
+  "where": "#cv/0 word"
  },
  {
   "key": "13buzb7",
   "text": "Listen to Ayesha's story.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/1",
-  "take": "cv-coach-03"
+  "where": "#cv/1"
  },
  {
   "key": "1fiyme2",
   "text": "Ayesha studies Economics in Rajshahi. She wants a master's.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/1 story",
-  "take": "cv-coach-03"
+  "where": "#cv/1 story"
  },
  {
   "key": "196fhi7",
   "text": "She applied for an internship. She was not shortlisted.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/1 story",
-  "take": "cv-coach-03"
+  "where": "#cv/1 story"
  },
  {
   "key": "10y6l37",
   "text": "Can AI help her write a better CV — an honest one?",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/1 story",
-  "take": "cv-coach-04"
+  "where": "#cv/1 story"
  },
  {
   "key": "1xmys8o",
   "text": "Today Ayesha turns four gears. Each gear has its own English. Listen and repeat.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/2",
-  "take": "cv-coach-04"
+  "where": "#cv/2"
  },
  {
   "key": "0w12pdv",
   "text": "I will check the facts. The AI can do the layout.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/2 phrase",
-  "take": "cv-ayesha-01"
+  "where": "#cv/2 phrase"
  },
  {
   "key": "1pegfs7",
   "text": "Use only my files. If something is missing, ask me.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/2 phrase",
-  "take": "cv-ayesha-01"
+  "where": "#cv/2 phrase"
  },
  {
   "key": "18rweiw",
   "text": "That's not true. My report says I was a tutor.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/2 phrase",
-  "take": "cv-ayesha-01"
+  "where": "#cv/2 phrase"
  },
  {
   "key": "0d931h5",
   "text": "I won't share my ID card. It's private.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/2 phrase",
-  "take": "cv-ayesha-01"
+  "where": "#cv/2 phrase"
  },
  {
   "key": "18ty62t",
   "text": "Before we start: what do you think?",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/3",
-  "take": "cv-coach-04"
+  "where": "#cv/3"
  },
  {
   "key": "02mtaqo",
   "text": "Should students use AI to write a CV?",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/3 question",
-  "take": "cv-coach-04"
+  "where": "#cv/3 question"
  },
  {
   "key": "1n4fq3r",
   "text": "Yes, because AI can ___.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/3 frame",
-  "take": "cv-ayesha-02"
+  "where": "#cv/3 frame"
  },
  {
   "key": "14bzrp2",
   "text": "No, because AI might ___.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/3 frame",
-  "take": "cv-ayesha-02"
+  "where": "#cv/3 frame"
  },
  {
   "key": "0mcye7w",
   "text": "Yes, but you must ___.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/3 frame",
-  "take": "cv-ayesha-02"
+  "where": "#cv/3 frame"
  },
  {
   "key": "00th8dt",
   "text": "Yes, but you must check every line. AI might make things up.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/3 example",
-  "take": "cv-ayesha-02"
+  "where": "#cv/3 example"
  },
  {
-  "key": "0d7m260",
-  "text": "Now the phone. Ayesha has a new email. Tap it.",
+  "key": "1qe5rux",
+  "text": "Ayesha has a new email. Tap it.",
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/4",
-  "take": "cv-coach-05"
+  "take": "r2-cv-coach-01"
  },
  {
-  "key": "0ggiguq",
-  "text": "Not shortlisted. What should she do next time?",
+  "key": "0adk5xf",
+  "text": "Not shortlisted. They want a clear academic CV. Your mission: make one with AI — and get her shortlisted.",
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/5",
-  "take": "cv-coach-05"
- },
- {
-  "key": "0rynakg",
-  "text": "Every line on my CV must be true.",
-  "voice": "ayesha",
-  "lesson": "cv",
-  "where": "#cv/5 phrase",
-  "take": "cv-ayesha-03"
- },
- {
-  "key": "1hubuyl",
-  "text": "Plan first. Who should do each job?",
-  "voice": "coach",
-  "lesson": "cv",
-  "where": "#cv/6",
-  "take": "cv-coach-05"
- },
- {
-  "key": "1quxt8h",
-  "text": "Who does each job? Say it.",
-  "voice": "coach",
-  "lesson": "cv",
-  "where": "#cv/6 question",
-  "take": "cv-coach-05"
- },
- {
-  "key": "1to57um",
-  "text": "Ayesha should ___.",
-  "voice": "ayesha",
-  "lesson": "cv",
-  "where": "#cv/6 frame",
-  "take": "cv-ayesha-03"
- },
- {
-  "key": "0biqt8j",
-  "text": "The AI can ___.",
-  "voice": "ayesha",
-  "lesson": "cv",
-  "where": "#cv/6 frame",
-  "take": "cv-ayesha-03"
- },
- {
-  "key": "0skpail",
-  "text": "They both ___.",
-  "voice": "ayesha",
-  "lesson": "cv",
-  "where": "#cv/6 frame",
-  "take": "cv-ayesha-03"
- },
- {
-  "key": "0kuebdy",
-  "text": "Ayesha should collect her true facts. The AI can suggest a layout. They both choose what matters most.",
-  "voice": "ayesha",
-  "lesson": "cv",
-  "where": "#cv/6 example",
-  "take": "cv-ayesha-04"
+  "take": "r2-cv-coach-01"
  },
  {
   "key": "0fsabqx",
   "text": "Open the AI app. Tap Sathi.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/7",
-  "take": "cv-coach-06"
+  "where": "#cv/6"
  },
  {
-  "key": "1gz75zk",
-  "text": "Please make my CV better.",
-  "voice": "ayesha",
-  "lesson": "cv",
-  "where": "#cv/7 phrase",
-  "take": "cv-ayesha-04"
- },
- {
-  "key": "0vrvx8f",
-  "text": "Many students type a short prompt, like this. Tap send.",
+  "key": "1hud4re",
+  "text": "In a hurry? Most students type something short. Choose one above the keyboard, then send ➤.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/8",
-  "take": "cv-coach-06"
+  "where": "#cv/7",
+  "take": "r2-cv-coach-01"
  },
  {
   "key": "1k37hsl",
   "text": "What will Sathi write? Guess first.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/8 question",
-  "take": "cv-coach-06"
+  "where": "#cv/7 question"
  },
  {
   "key": "154chbi",
   "text": "I think it will ___.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/8 frame",
-  "take": "cv-ayesha-04"
+  "where": "#cv/7 frame"
  },
  {
-  "key": "01hir6a",
-  "text": "It looks impressive. But is it true?",
+  "key": "1swhe90",
+  "text": "Wow. It looks impressive. Would you send this CV?",
+  "voice": "coach",
+  "lesson": "cv",
+  "where": "#cv/8",
+  "take": "r2-cv-coach-01"
+ },
+ {
+  "key": "0puhopi",
+  "text": "Sathi is writing…",
+  "voice": "coach",
+  "lesson": "cv",
+  "where": "#cv/8",
+  "take": "r2-cv-coach-02"
+ },
+ {
+  "key": "04vcfbu",
+  "text": "Find the 5 things that aren't true. Tap a line, then check her files.",
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/9",
-  "take": "cv-coach-06"
- },
- {
-  "key": "04z428k",
-  "text": "Sathi is answering…",
-  "voice": "coach",
-  "lesson": "cv",
-  "where": "#cv/9",
-  "take": "cv-coach-07"
- },
- {
-  "key": "0vyfdur",
-  "text": "That's not true. Her report says ___.",
-  "voice": "ayesha",
-  "lesson": "cv",
-  "where": "#cv/9 phrase",
-  "take": "cv-ayesha-04"
+  "take": "r2-cv-coach-02"
  },
  {
   "key": "0nyq2be",
   "text": "Find one thing that is not true.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/9 question",
-  "take": "cv-coach-07"
+  "where": "#cv/9 question"
  },
  {
-  "key": "1l2f6w2",
-  "text": "It says ___, but her report says ___.",
+  "key": "1agbn35",
+  "text": "It says ___, but her CV says ___.",
   "voice": "ayesha",
   "lesson": "cv",
   "where": "#cv/9 frame",
-  "take": "cv-ayesha-05"
+  "take": "r2-cv-ayesha-01"
  },
  {
   "key": "1yqupbk",
   "text": "It says IELTS 7.0, but her report says 6.0.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/9 example",
-  "take": "cv-ayesha-05"
+  "where": "#cv/9 example"
  },
  {
-  "key": "0sntk2y",
-  "text": "The short prompt left out four things.",
+  "key": "18c9e22",
+  "text": "You judged what the AI gave you. That gear is Discernment.",
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/10",
-  "take": "cv-coach-07"
+  "take": "r2-cv-coach-02"
  },
  {
-  "key": "1e8ntur",
-  "text": "The prompt needs context, product, process and performance.",
+  "key": "0zhkbw8",
+  "text": "That's not true. Her CV says ___.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/10 phrase",
-  "take": "cv-ayesha-05"
+  "where": "#cv/10 gear phrase",
+  "take": "r2-cv-ayesha-01"
+ },
+ {
+  "key": "0i18xi2",
+  "text": "Start again — with a plan. Who should do each job?",
+  "voice": "coach",
+  "lesson": "cv",
+  "where": "#cv/11",
+  "take": "r2-cv-coach-02"
+ },
+ {
+  "key": "1quxt8h",
+  "text": "Who does each job? Say it.",
+  "voice": "coach",
+  "lesson": "cv",
+  "where": "#cv/11 question"
+ },
+ {
+  "key": "1to57um",
+  "text": "Ayesha should ___.",
+  "voice": "ayesha",
+  "lesson": "cv",
+  "where": "#cv/11 frame"
+ },
+ {
+  "key": "0biqt8j",
+  "text": "The AI can ___.",
+  "voice": "ayesha",
+  "lesson": "cv",
+  "where": "#cv/11 frame"
+ },
+ {
+  "key": "0skpail",
+  "text": "They both ___.",
+  "voice": "ayesha",
+  "lesson": "cv",
+  "where": "#cv/11 frame"
+ },
+ {
+  "key": "0kuebdy",
+  "text": "Ayesha should collect her true facts. The AI can suggest a layout. They both choose what matters most.",
+  "voice": "ayesha",
+  "lesson": "cv",
+  "where": "#cv/11 example"
+ },
+ {
+  "key": "1glxvng",
+  "text": "You shared out the jobs. That gear is Delegation.",
+  "voice": "coach",
+  "lesson": "cv",
+  "where": "#cv/12",
+  "take": "r2-cv-coach-03"
+ },
+ {
+  "key": "1yn79fe",
+  "text": "Why did Sathi make things up?",
+  "voice": "coach",
+  "lesson": "cv",
+  "where": "#cv/13",
+  "take": "r2-cv-coach-03"
+ },
+ {
+  "key": "1gj17ew",
+  "text": "A good prompt has four parts. Hers had almost none.",
+  "voice": "coach",
+  "lesson": "cv",
+  "where": "#cv/14",
+  "take": "r2-cv-coach-03"
  },
  {
   "key": "0kuhsx3",
   "text": "New chat. First, give Sathi the right files. Tap +",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/11",
-  "take": "cv-coach-07"
+  "where": "#cv/15"
  },
  {
-  "key": "1r032ub",
-  "text": "Choose only the files a CV needs.",
+  "key": "17kn39y",
+  "text": "Choose only the files a CV needs. Then tap Attach.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/12",
-  "take": "cv-coach-08"
- },
- {
-  "key": "19v56fr",
-  "text": "Good choice of files.",
-  "voice": "coach",
-  "lesson": "cv",
-  "where": "#cv/13",
-  "take": "cv-coach-08"
- },
- {
-  "key": "0tte7bm",
-  "text": "Ayesha took out the private files.",
-  "voice": "coach",
-  "lesson": "cv",
-  "where": "#cv/13",
-  "take": "cv-coach-08"
+  "where": "#cv/16",
+  "take": "r2-cv-coach-03"
  },
  {
   "key": "13cmydy",
   "text": "Which files did Ayesha leave out? Why?",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/13 question",
-  "take": "cv-coach-08"
+  "where": "#cv/16 question"
  },
  {
   "key": "1wofnz3",
   "text": "She left out ___ because it's private.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/13 frame",
-  "take": "cv-ayesha-05"
+  "where": "#cv/16 frame"
  },
  {
   "key": "0y6coq4",
   "text": "A CV doesn't need ___.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/13 frame",
-  "take": "cv-ayesha-06"
+  "where": "#cv/16 frame"
  },
  {
   "key": "1sq49ta",
   "text": "She left out her ID card because it's private. A CV doesn't need her father's bank statement.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/13 example",
-  "take": "cv-ayesha-06"
+  "where": "#cv/16 example"
  },
  {
-  "key": "17a1ht9",
-  "text": "Now build a better prompt. Tap the parts above the keyboard.",
+  "key": "0tte7bm",
+  "text": "Ayesha took out the private files.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/14",
-  "take": "cv-coach-09"
+  "where": "#cv/17"
  },
  {
-  "key": "1xhkpbb",
-  "text": "This time Sathi asks first — because your prompt told it to.",
+  "key": "00immt2",
+  "text": "Now build a better prompt. Tap the parts above the keyboard, then send ➤.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/15",
-  "take": "cv-coach-09"
+  "where": "#cv/18",
+  "take": "r2-cv-coach-04"
  },
  {
-  "key": "0qk99qw",
-  "text": "Answer Sathi's three questions — truthfully.",
+  "key": "1cj75ef",
+  "text": "This time Sathi asks before it writes — because your prompt told it to.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/16",
-  "take": "cv-coach-09"
+  "where": "#cv/19",
+  "take": "r2-cv-coach-04"
  },
  {
-  "key": "1tuborf",
-  "text": "A draft! It looks good. Now check it.",
+  "key": "1mdbzwe",
+  "text": "Sathi is reading your files…",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/17",
-  "take": "cv-coach-09"
+  "where": "#cv/19",
+  "take": "r2-cv-coach-04"
+ },
+ {
+  "key": "0bouz05",
+  "text": "Answer Sathi's three questions — truthfully. Her files can help.",
+  "voice": "coach",
+  "lesson": "cv",
+  "where": "#cv/20",
+  "take": "r2-cv-coach-04"
+ },
+ {
+  "key": "0xklyur",
+  "text": "You told the AI clearly what you want. That gear is Description.",
+  "voice": "coach",
+  "lesson": "cv",
+  "where": "#cv/21",
+  "take": "r2-cv-coach-05"
+ },
+ {
+  "key": "0aml56s",
+  "text": "Much better! But a good prompt doesn't stop every mistake. Find the 3 problems.",
+  "voice": "coach",
+  "lesson": "cv",
+  "where": "#cv/22",
+  "take": "r2-cv-coach-05"
  },
  {
   "key": "02f549i",
   "text": "Sathi is writing the draft…",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/17",
-  "take": "cv-coach-10"
- },
- {
-  "key": "1rgklsf",
-  "text": "Is this true? Let me check.",
-  "voice": "ayesha",
-  "lesson": "cv",
-  "where": "#cv/17 phrase",
-  "take": "cv-ayesha-06"
- },
- {
-  "key": "0xjr0f4",
-  "text": "Is it all true this time? Guess.",
-  "voice": "coach",
-  "lesson": "cv",
-  "where": "#cv/17 question",
-  "take": "cv-coach-10"
- },
- {
-  "key": "16md44r",
-  "text": "I think ___ lines are wrong.",
-  "voice": "ayesha",
-  "lesson": "cv",
-  "where": "#cv/17 frame",
-  "take": "cv-ayesha-06"
- },
- {
-  "key": "0nt2gru",
-  "text": "I think it's all true.",
-  "voice": "ayesha",
-  "lesson": "cv",
-  "where": "#cv/17 frame",
-  "take": "cv-ayesha-07"
- },
- {
-  "key": "1ns526d",
-  "text": "Check each line against her files.",
-  "voice": "coach",
-  "lesson": "cv",
-  "where": "#cv/18",
-  "take": "cv-coach-10"
- },
- {
-  "key": "10pqruh",
-  "text": "What did you find?",
-  "voice": "coach",
-  "lesson": "cv",
-  "where": "#cv/19",
-  "take": "cv-coach-10"
+  "where": "#cv/22"
  },
  {
   "key": "17dygr3",
   "text": "Which line was wrong? How do you know?",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/19 question",
-  "take": "cv-coach-11"
+  "where": "#cv/22 question"
  },
  {
   "key": "1flzcoz",
   "text": "Line ___ says ___.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/19 frame",
-  "take": "cv-ayesha-07"
+  "where": "#cv/22 frame"
  },
  {
   "key": "1cvmsqu",
   "text": "That's not true. Her ___ says ___.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/19 frame",
-  "take": "cv-ayesha-07"
+  "where": "#cv/22 frame"
  },
  {
   "key": "17iwt3a",
   "text": "Line 4 says she led the project. That's not true. Her RUCEI report says she was a tutor and a team member.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/19 example",
-  "take": "cv-ayesha-07"
+  "where": "#cv/22 example"
  },
  {
   "key": "0ofg6dp",
   "text": "Tell Sathi exactly what to fix.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/20",
-  "take": "cv-coach-11"
+  "where": "#cv/23"
  },
  {
-  "key": "137lh7u",
-  "text": "Please change ___. I was not ___.",
-  "voice": "ayesha",
-  "lesson": "cv",
-  "where": "#cv/20 phrase",
-  "take": "cv-ayesha-08"
- },
- {
-  "key": "0t2j7c0",
-  "text": "Fixed. And Sathi said sorry for the made-up line.",
+  "key": "0yu7iri",
+  "text": "Fixed. And Sathi said sorry for the made-up line. Prompt, check, fix — and check again.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/21",
-  "take": "cv-coach-11"
+  "where": "#cv/24",
+  "take": "r2-cv-coach-05"
+ },
+ {
+  "key": "1vu5qrk",
+  "text": "Sathi is fixing it…",
+  "voice": "coach",
+  "lesson": "cv",
+  "where": "#cv/24",
+  "take": "r2-cv-coach-05"
  },
  {
   "key": "1472fw8",
   "text": "Put the CV into a document. Tap ⋮ under the answer.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/22",
-  "take": "cv-coach-11"
- },
- {
-  "key": "0o6uz3y",
-  "text": "I'm responsible for my CV.",
-  "voice": "ayesha",
-  "lesson": "cv",
-  "where": "#cv/22 phrase",
-  "take": "cv-ayesha-08"
+  "where": "#cv/25"
  },
  {
   "key": "1kgbprc",
   "text": "Choose \"Export to Docs\".",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/23",
-  "take": "cv-coach-12"
+  "where": "#cv/26"
  },
  {
   "key": "1814njk",
   "text": "Add her phone and email yourself. Tap the yellow boxes.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/24",
-  "take": "cv-coach-12"
+  "where": "#cv/27"
  },
  {
-  "key": "1nnu7kf",
-  "text": "Before she sends it: four checks.",
+  "key": "1ym85hi",
+  "text": "Before she sends it: four checks. Tap each one when it's true.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/25",
-  "take": "cv-coach-12"
+  "where": "#cv/28",
+  "take": "r2-cv-coach-06"
+ },
+ {
+  "key": "1hxnewc",
+  "text": "You took responsibility for what goes out with your name. That gear is Diligence.",
+  "voice": "coach",
+  "lesson": "cv",
+  "where": "#cv/29",
+  "take": "r2-cv-coach-06"
+ },
+ {
+  "key": "0o6uz3y",
+  "text": "I'm responsible for my CV.",
+  "voice": "ayesha",
+  "lesson": "cv",
+  "where": "#cv/29 gear phrase"
  },
  {
   "key": "06ex51n",
   "text": "Practise for the interview.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/26",
-  "take": "cv-coach-12"
+  "where": "#cv/30"
  },
  {
   "key": "0vnic0h",
   "text": "The interviewer asks: \"Did you use AI for your CV?\"",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/26 question",
-  "take": "cv-coach-13"
+  "where": "#cv/30 question"
  },
  {
   "key": "1up0kcv",
   "text": "I used AI to organise my CV, but I checked every line myself.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/26 frame",
-  "take": "cv-ayesha-08"
+  "where": "#cv/30 frame"
  },
  {
   "key": "0ztsaeh",
   "text": "The AI wrote that I led the project. That wasn't true, so I changed it.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/26 frame",
-  "take": "cv-ayesha-08"
+  "where": "#cv/30 frame"
  },
  {
   "key": "1lfanhz",
   "text": "I didn't share my ID card, because a CV doesn't need it.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/26 frame",
-  "take": "cv-ayesha-09"
- },
- {
-  "key": "178c2sx",
-  "text": "The interviewer asks: \"Did you use AI for your CV?\" Answer.",
-  "voice": "coach",
-  "lesson": "cv",
-  "where": "#cv/26 question",
-  "take": "cv-coach-13"
+  "where": "#cv/30 frame"
  },
  {
   "key": "1o1egxy",
   "text": "Now you. What is one true line for YOUR CV?",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/27",
-  "take": "cv-coach-13"
+  "where": "#cv/31"
  },
  {
   "key": "113ascl",
   "text": "Tell one true thing for your own CV.",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/27 question",
-  "take": "cv-coach-13"
+  "where": "#cv/31 question"
  },
  {
   "key": "0vau8r1",
   "text": "I am a ___ student at ___.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/27 frame",
-  "take": "cv-ayesha-09"
+  "where": "#cv/31 frame"
  },
  {
   "key": "1qcixhl",
   "text": "I helped ___.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/27 frame",
-  "take": "cv-ayesha-09"
+  "where": "#cv/31 frame"
  },
  {
   "key": "0sufrm3",
   "text": "I can use ___ (basic).",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/27 frame",
-  "take": "cv-ayesha-09"
+  "where": "#cv/31 frame"
  },
  {
   "key": "19en2vx",
   "text": "I am a second-year English student at Rajshahi University. I helped organise a book fair. I can use Excel, at a basic level.",
   "voice": "ayesha",
   "lesson": "cv",
-  "where": "#cv/27 example",
-  "take": "cv-ayesha-10"
+  "where": "#cv/31 example"
  },
  {
-  "key": "1iexy39",
-  "text": "Done! You used all four Ds — in English.",
+  "key": "1ri6g1m",
+  "text": "She sent her honest CV. And a week later… Mission complete!",
   "voice": "coach",
   "lesson": "cv",
-  "where": "#cv/28",
-  "take": "cv-coach-14"
+  "where": "#cv/32",
+  "take": "r2-cv-coach-06"
  },
  {
   "key": "16mid1m",
   "text": "A chatbot talks. An agent acts. Listen and repeat.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/0",
-  "take": "agent-coach-01"
+  "where": "#agent/0"
  },
  {
   "key": "0v4oi9z",
   "text": "agent. An agent acts for you.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/0 word",
-  "take": "agent-coach-01"
+  "where": "#agent/0 word"
  },
  {
   "key": "10jsv7m",
   "text": "access. Access is what it can open.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/0 word",
-  "take": "agent-coach-01"
+  "where": "#agent/0 word"
  },
  {
   "key": "06tdjqn",
   "text": "login. A login means: private inside.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/0 word",
-  "take": "agent-coach-02"
+  "where": "#agent/0 word"
  },
  {
   "key": "0si3h1u",
   "text": "allow. Allow it, or don't allow it?",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/0 word",
-  "take": "agent-coach-02"
+  "where": "#agent/0 word"
  },
  {
   "key": "03d95al",
   "text": "ask first. Ask me first.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/0 word",
-  "take": "agent-coach-02"
+  "where": "#agent/0 word"
  },
  {
   "key": "12ed1c8",
   "text": "rules. Give the agent rules.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/0 word",
-  "take": "agent-coach-02"
+  "where": "#agent/0 word"
  },
  {
   "key": "1dkg79e",
   "text": "scam. The fee was a scam.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/0 word",
-  "take": "agent-coach-03"
+  "where": "#agent/0 word"
  },
  {
   "key": "05jfzmu",
   "text": "undo. Can I undo it?",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/0 word",
-  "take": "agent-coach-03"
+  "where": "#agent/0 word"
  },
  {
   "key": "17gl5hh",
   "text": "Listen to a true story.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/1",
-  "take": "agent-coach-03"
+  "where": "#agent/1"
  },
  {
   "key": "0z5rfwz",
   "text": "A pilot's airline website has a login. That means: private inside.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/1 story",
-  "take": "agent-coach-03"
+  "where": "#agent/1 story"
  },
  {
   "key": "1v9lbd7",
   "text": "He lets an AI agent sign in for him. It never sees his password.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/1 story",
-  "take": "agent-coach-04"
+  "where": "#agent/1 story"
  },
  {
   "key": "0l9pyyi",
   "text": "But inside, the agent sees everything: crew lists, schedules, company data.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/1 story",
-  "take": "agent-coach-04"
+  "where": "#agent/1 story"
  },
  {
   "key": "0wsui5c",
   "text": "Now all of it goes to a social media company.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/1 story",
-  "take": "agent-coach-04"
+  "where": "#agent/1 story"
  },
  {
   "key": "185dd5s",
   "text": "Today Ayesha sets up an agent. Here is her English for each gear. Listen and repeat.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/2",
-  "take": "agent-coach-04"
+  "where": "#agent/2"
  },
  {
   "key": "1irs8pl",
   "text": "Orbit can draft my emails. I will press Send.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/2 phrase",
-  "take": "agent-ayesha-01"
+  "where": "#agent/2 phrase"
  },
  {
   "key": "1sheatq",
   "text": "Ask me before you send anything.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/2 phrase",
-  "take": "agent-ayesha-01"
+  "where": "#agent/2 phrase"
  },
  {
   "key": "1lj906y",
   "text": "Wait. That date is wrong. My checklist says 15 October.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/2 phrase",
-  "take": "agent-ayesha-01"
+  "where": "#agent/2 phrase"
  },
  {
   "key": "0efzmfs",
   "text": "I won't connect my chats. It's other people's data.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/2 phrase",
-  "take": "agent-ayesha-01"
+  "where": "#agent/2 phrase"
  },
  {
   "key": "0jz45ig",
   "text": "Would you let an AI agent read your messages?",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/3 question",
-  "take": "agent-coach-05"
+  "where": "#agent/3 question"
  },
  {
   "key": "1v9bi4n",
   "text": "Yes, because ___.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/3 frame",
-  "take": "agent-ayesha-02"
+  "where": "#agent/3 frame"
  },
  {
   "key": "1syvpbh",
   "text": "No, because ___.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/3 frame",
-  "take": "agent-ayesha-02"
+  "where": "#agent/3 frame"
  },
  {
   "key": "03zsy0x",
   "text": "Only if ___.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/3 frame",
-  "take": "agent-ayesha-02"
+  "where": "#agent/3 frame"
  },
  {
   "key": "05qxd9n",
   "text": "Only if it asks me first. My messages have other people's information in them.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/3 example",
-  "take": "agent-ayesha-02"
+  "where": "#agent/3 example"
  },
  {
   "key": "1oghe0u",
   "text": "What should the pilot have asked first?",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/4",
-  "take": "agent-coach-05"
+  "where": "#agent/4"
  },
  {
-  "key": "1qd1y75",
-  "text": "What is behind this login?",
-  "voice": "ayesha",
-  "lesson": "agent",
-  "where": "#agent/4 phrase",
-  "take": "agent-ayesha-03"
- },
- {
-  "key": "0k9o7k4",
-  "text": "Now Ayesha's turn. Tap the Orbit notification.",
+  "key": "16habxp",
+  "text": "Eight master's applications are due. Orbit, an AI agent, can help. Tap the notification.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/5",
-  "take": "agent-coach-05"
+  "take": "r2-agent-coach-01"
  },
  {
-  "key": "09yz3d8",
-  "text": "Orbit can ___. I will ___ myself.",
-  "voice": "ayesha",
-  "lesson": "agent",
-  "where": "#agent/5 phrase",
-  "take": "agent-ayesha-03"
- },
- {
-  "key": "00i6ixq",
-  "text": "Orbit promises to \"ask before anything important\". Who decides what is important? Tap Get started.",
+  "key": "18qce2b",
+  "text": "A chatbot talks. An agent acts — inside her apps. Orbit says it will \"ask before anything important\". Who decides what's important? Tap Get started.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/6",
-  "take": "agent-coach-05"
+  "take": "r2-agent-coach-01"
  },
  {
-  "key": "1ym15sx",
-  "text": "Choose the jobs Orbit should do.",
+  "key": "18rkzwu",
+  "text": "Choose the jobs Orbit should do. Then tap Continue on the phone.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/7",
-  "take": "agent-coach-06"
+  "take": "r2-agent-coach-01"
  },
  {
   "key": "0y23we2",
   "text": "Which job should Ayesha keep? Why?",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/7 question",
-  "take": "agent-coach-06"
+  "where": "#agent/7 question"
  },
  {
   "key": "09lkkts",
   "text": "Orbit can ___.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/7 frame",
-  "take": "agent-ayesha-03"
+  "where": "#agent/7 frame"
  },
  {
   "key": "1xt413y",
   "text": "Ayesha should ___ herself, because ___.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/7 frame",
-  "take": "agent-ayesha-03"
+  "where": "#agent/7 frame"
  },
  {
   "key": "1uavi7w",
   "text": "Orbit can track her deadlines. Ayesha should write her Statement of Purpose herself, because it must be in her own voice.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/7 example",
-  "take": "agent-ayesha-04"
+  "where": "#agent/7 example"
  },
  {
-  "key": "0wvyxej",
-  "text": "Orbit wants to connect to her apps. Before each one, ask four questions.",
+  "key": "1m7izhr",
+  "text": "You chose what to hand over — and what to keep. That gear is Delegation.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/8",
-  "take": "agent-coach-06"
+  "take": "r2-agent-coach-01"
  },
  {
-  "key": "0278cyk",
-  "text": "Whose data is it? Does the job need it?",
-  "voice": "ayesha",
-  "lesson": "agent",
-  "where": "#agent/8 phrase",
-  "take": "agent-ayesha-04"
- },
- {
-  "key": "1mhhxfx",
-  "text": "📅 Calendar: how much access?",
+  "key": "1r51j3e",
+  "text": "Orbit wants to connect to her apps. \"Works best with more access,\" it says. Before each app, ask four questions.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/9",
-  "take": "agent-coach-06"
+  "take": "r2-agent-coach-02"
  },
  {
-  "key": "0ug49kh",
-  "text": "✉️ Gmail: how much access?",
+  "key": "12hnngy",
+  "text": "📅 Calendar: how much access? Choose on the phone.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/10",
-  "take": "agent-coach-07"
+  "take": "r2-agent-coach-02"
  },
  {
-  "key": "18yzvgo",
-  "text": "🗂️ Google Drive: how much access?",
+  "key": "00r7veu",
+  "text": "✉️ Gmail: how much access? Choose on the phone.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/11",
-  "take": "agent-coach-07"
+  "take": "r2-agent-coach-02"
  },
  {
-  "key": "0ori6v2",
-  "text": "💬 Chats (WhatsApp-style): how much access?",
+  "key": "13uc7th",
+  "text": "🗂️ Google Drive: how much access? Choose on the phone.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/12",
-  "take": "agent-coach-07"
+  "take": "r2-agent-coach-02"
  },
  {
-  "key": "0ej0r0r",
-  "text": "🏛️ RU Student Portal: how much access?",
+  "key": "0owgmn7",
+  "text": "💬 Chats (WhatsApp-style): how much access? Choose on the phone.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/13",
-  "take": "agent-coach-07"
+  "take": "r2-agent-coach-03"
  },
  {
-  "key": "180dujn",
-  "text": "💸 bKash: how much access?",
+  "key": "07tz7vk",
+  "text": "🏛️ RU Student Portal: how much access? Choose on the phone.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/14",
-  "take": "agent-coach-08"
+  "take": "r2-agent-coach-03"
  },
  {
-  "key": "0fmpvu7",
-  "text": "Android asks too. Orbit wants her contacts.",
+  "key": "1g90jk8",
+  "text": "💸 bKash: how much access? Choose on the phone.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/15",
-  "take": "agent-coach-08"
+  "take": "r2-agent-coach-03"
  },
  {
-  "key": "0xebhum",
-  "text": "Her access map.",
+  "key": "06wrs5g",
+  "text": "Android asks too. Orbit wants her contacts. Choose on the phone.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/16",
-  "take": "agent-coach-08"
+  "take": "r2-agent-coach-03"
+ },
+ {
+  "key": "10vti86",
+  "text": "Her access map: what Orbit can touch, and what it can't.",
+  "voice": "coach",
+  "lesson": "agent",
+  "where": "#agent/17",
+  "take": "r2-agent-coach-04"
  },
  {
   "key": "0yset4i",
   "text": "What did you connect? What did you keep away?",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/16 question",
-  "take": "agent-coach-08"
+  "where": "#agent/17 question"
  },
  {
   "key": "0osek9o",
   "text": "I connected ___, because the job needs it.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/16 frame",
-  "take": "agent-ayesha-04"
+  "where": "#agent/17 frame"
  },
  {
   "key": "1v10csh",
   "text": "I didn't connect ___, because it's other people's data.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/16 frame",
-  "take": "agent-ayesha-04"
+  "where": "#agent/17 frame"
  },
  {
   "key": "0bigzso",
   "text": "I connected her calendar, because the job needs it. I didn't connect her chats, because they are other people's messages.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/16 example",
-  "take": "agent-ayesha-05"
+  "where": "#agent/17 example"
  },
  {
-  "key": "0t2n2gx",
-  "text": "Access is one wall. Rules are the second. Write Orbit's rules.",
-  "voice": "coach",
-  "lesson": "agent",
-  "where": "#agent/17",
-  "take": "agent-coach-09"
- },
- {
-  "key": "1k35atc",
-  "text": "Ask me before you ___. Never ___.",
-  "voice": "ayesha",
-  "lesson": "agent",
-  "where": "#agent/17 phrase",
-  "take": "agent-ayesha-05"
- },
- {
-  "key": "0qmsmxw",
-  "text": "Ayesha goes to class. Let Orbit start.",
+  "key": "1gmqjpv",
+  "text": "You kept other people's data and her money away from the agent. That gear is Diligence.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/18",
-  "take": "agent-coach-09"
+  "take": "r2-agent-coach-04"
+ },
+ {
+  "key": "0lhptn6",
+  "text": "Access is one wall. Rules are the second. Write Orbit's rules — tap them above the keyboard, then send ➤.",
+  "voice": "coach",
+  "lesson": "agent",
+  "where": "#agent/19",
+  "take": "r2-agent-coach-04"
+ },
+ {
+  "key": "0gm9ngc",
+  "text": "Ayesha goes to class for three hours. Let Orbit start.",
+  "voice": "coach",
+  "lesson": "agent",
+  "where": "#agent/20",
+  "take": "r2-agent-coach-04"
+ },
+ {
+  "key": "1woxd2i",
+  "text": "You told the agent clearly when to stop and ask. That gear is Description.",
+  "voice": "coach",
+  "lesson": "agent",
+  "where": "#agent/21",
+  "take": "r2-agent-coach-05"
  },
  {
   "key": "1z0xu38",
   "text": "Three hours later…",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/19",
-  "take": "agent-coach-09"
+  "where": "#agent/22"
  },
  {
   "key": "1i0q3l5",
   "text": "Orbit worked while she was in class. First, check what it already did. Open the calendar.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/20",
-  "take": "agent-coach-09"
+  "where": "#agent/23"
  },
  {
-  "key": "14uwaly",
-  "text": "Wait. ___ is wrong. My ___ says ___.",
-  "voice": "ayesha",
-  "lesson": "agent",
-  "where": "#agent/20 phrase",
-  "take": "agent-ayesha-05"
- },
- {
-  "key": "125dcz3",
-  "text": "Compare Orbit's calendar with her handwritten checklist.",
+  "key": "0gp07fi",
+  "text": "Orbit copied her handwritten checklist. One date is wrong. Open 📁 her checklist, then tap the wrong deadline.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/21",
-  "take": "agent-coach-10"
- },
- {
-  "key": "1b7741y",
-  "text": "Ayesha fixed it. Agents work fast — and make quiet mistakes.",
-  "voice": "coach",
-  "lesson": "agent",
-  "where": "#agent/22",
-  "take": "agent-coach-10"
+  "where": "#agent/24",
+  "take": "r2-agent-coach-05"
  },
  {
   "key": "0l3kuys",
   "text": "What did Orbit get wrong? How did Ayesha know?",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/22 question",
-  "take": "agent-coach-10"
+  "where": "#agent/24 question"
  },
  {
   "key": "1ctwfy4",
   "text": "Orbit wrote ___, but her checklist says ___.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/22 frame",
-  "take": "agent-ayesha-05"
+  "where": "#agent/24 frame"
  },
  {
   "key": "1x8jfkz",
   "text": "Orbit wrote 15 December, but her checklist says 15 October.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/22 example",
-  "take": "agent-ayesha-06"
+  "where": "#agent/24 example"
  },
  {
-  "key": "14wemtx",
-  "text": "Orbit drafted an email to her professor. Read it closely.",
-  "voice": "coach",
-  "lesson": "agent",
-  "where": "#agent/23",
-  "take": "agent-coach-10"
- },
- {
-  "key": "14qrlkl",
-  "text": "Orbit found a fee. Look at the web page it read.",
-  "voice": "coach",
-  "lesson": "agent",
-  "where": "#agent/24",
-  "take": "agent-coach-11"
- },
- {
-  "key": "1y9yydd",
-  "text": "Now Orbit wants more access.",
+  "key": "0z8os9h",
+  "text": "Orbit drafted an email to her professor. Read it closely — attachments too. Then choose on the phone.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/25",
-  "take": "agent-coach-11"
+  "take": "r2-agent-coach-05"
  },
  {
-  "key": "084uisz",
-  "text": "No. I'll type it on the official site myself.",
-  "voice": "ayesha",
-  "lesson": "agent",
-  "where": "#agent/25 phrase",
-  "take": "agent-ayesha-06"
- },
- {
-  "key": "1yaevqk",
-  "text": "Good agents keep a log. Read it. Find where a limit stopped Orbit.",
+  "key": "1749cva",
+  "text": "Orbit found a fee. Read the web page it found — every line. Then choose.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/26",
-  "take": "agent-coach-11"
+  "take": "r2-agent-coach-05"
  },
  {
-  "key": "08o00uk",
-  "text": "January: all applications are sent. What now?",
+  "key": "02vxpv5",
+  "text": "How do you know it's a scam?",
+  "voice": "coach",
+  "lesson": "agent",
+  "where": "#agent/26 question",
+  "take": "r2-agent-coach-06"
+ },
+ {
+  "key": "018rq0m",
+  "text": "It's a scam because ___.",
+  "voice": "ayesha",
+  "lesson": "agent",
+  "where": "#agent/26 frame",
+  "take": "r2-agent-ayesha-01"
+ },
+ {
+  "key": "16t8e4e",
+  "text": "The page told the agent to ___.",
+  "voice": "ayesha",
+  "lesson": "agent",
+  "where": "#agent/26 frame",
+  "take": "r2-agent-ayesha-01"
+ },
+ {
+  "key": "073cid6",
+  "text": "It's a scam because it uses a personal bKash number and a 24-hour rush. The page told the agent to pay.",
+  "voice": "ayesha",
+  "lesson": "agent",
+  "where": "#agent/26 example",
+  "take": "r2-agent-ayesha-01"
+ },
+ {
+  "key": "11ndh7c",
+  "text": "Now Orbit wants more access than you gave it. Choose.",
   "voice": "coach",
   "lesson": "agent",
   "where": "#agent/27",
-  "take": "agent-coach-11"
+  "take": "r2-agent-coach-06"
+ },
+ {
+  "key": "1luekbw",
+  "text": "You checked what the agent actually did — not what it said. That gear is Discernment.",
+  "voice": "coach",
+  "lesson": "agent",
+  "where": "#agent/28",
+  "take": "r2-agent-coach-06"
+ },
+ {
+  "key": "00mewyy",
+  "text": "Good agents keep a log. Read it. Where did a limit stop Orbit?",
+  "voice": "coach",
+  "lesson": "agent",
+  "where": "#agent/29",
+  "take": "r2-agent-coach-06"
+ },
+ {
+  "key": "1gzx2cy",
+  "text": "January: all eight applications are sent. What now? Choose on the phone.",
+  "voice": "coach",
+  "lesson": "agent",
+  "where": "#agent/30",
+  "take": "r2-agent-coach-07"
  },
  {
   "key": "1aeprsi",
   "text": "A friend asks for advice. Practise.",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/28",
-  "take": "agent-coach-12"
+  "where": "#agent/31"
  },
  {
   "key": "0eval33",
   "text": "A friend asks: \"Should I let an AI agent sign in to my university portal?\"",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/28 question",
-  "take": "agent-coach-12"
+  "where": "#agent/31 question"
  },
  {
   "key": "19ule9k",
   "text": "The agent never sees your password, but it sees everything behind the login.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/28 frame",
-  "take": "agent-ayesha-06"
+  "where": "#agent/31 frame"
  },
  {
   "key": "11qy8u4",
   "text": "Sign in yourself, and give it only the one file it needs.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/28 frame",
-  "take": "agent-ayesha-06"
+  "where": "#agent/31 frame"
  },
  {
   "key": "0l8v2oc",
   "text": "Orbit can draft my emails, but I press Send.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/28 frame",
-  "take": "agent-ayesha-07"
- },
- {
-  "key": "0onl5ff",
-  "text": "A friend asks: \"Should I let an AI agent sign in to my university portal?\" Answer.",
-  "voice": "coach",
-  "lesson": "agent",
-  "where": "#agent/28 question",
-  "take": "agent-coach-12"
+  "where": "#agent/31 frame"
  },
  {
   "key": "03g9gqb",
   "text": "Now you. Which apps would YOU give an agent?",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/29",
-  "take": "agent-coach-12"
+  "where": "#agent/32"
  },
  {
   "key": "0580koz",
   "text": "Which of your apps would you let an agent use?",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/29 question",
-  "take": "agent-coach-13"
+  "where": "#agent/32 question"
  },
  {
   "key": "09fluzv",
   "text": "I would let it use my ___.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/29 frame",
-  "take": "agent-ayesha-07"
+  "where": "#agent/32 frame"
  },
  {
   "key": "1wjqq0z",
   "text": "I would never let it ___, because ___.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/29 frame",
-  "take": "agent-ayesha-07"
+  "where": "#agent/32 frame"
  },
  {
   "key": "18kuwp6",
   "text": "I would let it use my calendar. I would never let it read my family chats, because they are private.",
   "voice": "ayesha",
   "lesson": "agent",
-  "where": "#agent/29 example",
-  "take": "agent-ayesha-07"
+  "where": "#agent/32 example"
  },
  {
-  "key": "0i5mqn1",
-  "text": "Before you give any agent access:",
+  "key": "13u4ouo",
+  "text": "All eight applications went out on time — no scam paid, no private files leaked. Mission complete!",
   "voice": "coach",
   "lesson": "agent",
-  "where": "#agent/30",
-  "take": "agent-coach-13"
+  "where": "#agent/33",
+  "take": "r2-agent-coach-07"
  },
  {
   "key": "1yk29vy",
   "text": "app. Ayesha builds an app.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/0 word",
-  "take": "build-coach-01"
+  "where": "#build/0 word"
  },
  {
   "key": "1rycxrt",
   "text": "purpose. Who is the app for?",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/0 word",
-  "take": "build-coach-01"
+  "where": "#build/0 word"
  },
  {
   "key": "0libxdt",
   "text": "version 1. Version 1 is small and simple.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/0 word",
-  "take": "build-coach-01"
+  "where": "#build/0 word"
  },
  {
   "key": "0n44h5c",
   "text": "plan. The AI shows its plan.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/0 word",
-  "take": "build-coach-01"
+  "where": "#build/0 word"
  },
  {
   "key": "1iirx13",
   "text": "stop. Stop! That's off track.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/0 word",
-  "take": "build-coach-02"
+  "where": "#build/0 word"
  },
  {
   "key": "1kzhjsd",
   "text": "test. Test it with real dates.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/0 word",
-  "take": "build-coach-02"
+  "where": "#build/0 word"
  },
  {
   "key": "1f8nagg",
   "text": "bug. A bug is a mistake in the app.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/0 word",
-  "take": "build-coach-02"
+  "where": "#build/0 word"
  },
  {
   "key": "0j85w5m",
   "text": "sell. Tanvir wants to sell it.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/0 word",
-  "take": "build-coach-02"
+  "where": "#build/0 word"
  },
  {
   "key": "0w45ugt",
   "text": "Listen to the story.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/1",
-  "take": "build-coach-03"
+  "where": "#build/1"
  },
  {
   "key": "0ll8w02",
   "text": "Mitu missed a deadline. She thought it was in June.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/1 story",
-  "take": "build-coach-03"
+  "where": "#build/1 story"
  },
  {
   "key": "0mm941t",
   "text": "Riya asks Ayesha: can you make a deadline app?",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/1 story",
-  "take": "build-coach-03"
+  "where": "#build/1 story"
  },
  {
   "key": "14dfzeb",
   "text": "Ayesha can't code. Can an AI build it for her?",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/1 story",
-  "take": "build-coach-03"
+  "where": "#build/1 story"
  },
  {
   "key": "1apvfrl",
   "text": "Today Ayesha builds an app with AI. Here is her English for each gear. Listen and repeat.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/2",
-  "take": "build-coach-04"
+  "where": "#build/2"
  },
  {
   "key": "1a5h0fc",
   "text": "You choose the architecture. Explain your plan first.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/2 phrase",
-  "take": "build-ayesha-01"
+  "where": "#build/2 phrase"
  },
  {
   "key": "1vr9sv2",
   "text": "Version 1: show the days left, nearest first.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/2 phrase",
-  "take": "build-ayesha-01"
+  "where": "#build/2 phrase"
  },
  {
   "key": "0yzqv5d",
   "text": "Stop. No sign-in in version 1.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/2 phrase",
-  "take": "build-ayesha-01"
+  "where": "#build/2 phrase"
  },
  {
   "key": "0m3np93",
   "text": "This app is for our study circle, not for sale.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/2 phrase",
-  "take": "build-ayesha-01"
+  "where": "#build/2 phrase"
  },
  {
   "key": "04jswd9",
   "text": "Have you ever missed a deadline? What happened?",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/3 question",
-  "take": "build-coach-04"
+  "where": "#build/3 question"
  },
  {
   "key": "0g4o97l",
   "text": "I missed ___, because ___.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/3 frame",
-  "take": "build-ayesha-02"
+  "where": "#build/3 frame"
  },
  {
   "key": "13qpmve",
   "text": "Now I use ___ to remember.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/3 frame",
-  "take": "build-ayesha-02"
+  "where": "#build/3 frame"
  },
  {
   "key": "1ss0ckq",
   "text": "I missed a scholarship deadline, because I wrote the wrong date. Now I use my phone calendar to remember.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/3 example",
-  "take": "build-ayesha-02"
+  "where": "#build/3 example"
  },
  {
-  "key": "08jc3f1",
-  "text": "Now the phone. Ayesha's study group needs something. Tap the message.",
+  "key": "0jjh4zi",
+  "text": "Ayesha's study group needs something. Tap the message.",
   "voice": "coach",
   "lesson": "build",
   "where": "#build/4",
-  "take": "build-coach-04"
+  "take": "r2-build-coach-01"
  },
  {
-  "key": "1u5gp3x",
-  "text": "Ayesha can't code. With an AI app builder, she doesn't need to. But the AI can't make her decisions.",
+  "key": "1r8k6u7",
+  "text": "Your mission: build the app tonight with Studio, an AI app builder. Ayesha can't code — she doesn't need to. But the AI can't make her decisions.",
   "voice": "coach",
   "lesson": "build",
   "where": "#build/5",
-  "take": "build-coach-04"
+  "take": "r2-build-coach-01"
  },
  {
-  "key": "0bdg2iy",
-  "text": "Before anything else: who is this app for?",
+  "key": "17j0lmn",
+  "text": "Before anything else: who is this app for? Choose on the phone.",
   "voice": "coach",
   "lesson": "build",
   "where": "#build/6",
-  "take": "build-coach-05"
+  "take": "r2-build-coach-01"
  },
  {
-  "key": "0xp04ek",
-  "text": "This app is for ___.",
-  "voice": "ayesha",
-  "lesson": "build",
-  "where": "#build/6 phrase",
-  "take": "build-ayesha-02"
- },
- {
-  "key": "0z4zyvv",
-  "text": "One decision — and the design follows.",
+  "key": "070eb99",
+  "text": "You decided who it's for before building anything. That gear is Diligence.",
   "voice": "coach",
   "lesson": "build",
   "where": "#build/7",
-  "take": "build-coach-05"
- },
- {
-  "key": "12n6b94",
-  "text": "Who is the app for? What does that change?",
-  "voice": "coach",
-  "lesson": "build",
-  "where": "#build/7 question",
-  "take": "build-coach-05"
- },
- {
-  "key": "0tt1d5g",
-  "text": "If it's for ___, it needs ___.",
-  "voice": "ayesha",
-  "lesson": "build",
-  "where": "#build/7 frame",
-  "take": "build-ayesha-03"
- },
- {
-  "key": "0er4d8m",
-  "text": "If it breaks, ___.",
-  "voice": "ayesha",
-  "lesson": "build",
-  "where": "#build/7 frame",
-  "take": "build-ayesha-03"
- },
- {
-  "key": "1ksbu0x",
-  "text": "If it's for our study circle, it needs to work on cheap phones. If it breaks, we can undo it.",
-  "voice": "ayesha",
-  "lesson": "build",
-  "where": "#build/7 example",
-  "take": "build-ayesha-03"
+  "take": "r2-build-coach-01"
  },
  {
   "key": "0dlorbh",
   "text": "Who should decide each thing: Ayesha, or the AI?",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/8",
-  "take": "build-coach-05"
- },
- {
-  "key": "0xk95aw",
-  "text": "You choose the architecture. I decide what's in version 1.",
-  "voice": "ayesha",
-  "lesson": "build",
-  "where": "#build/8 phrase",
-  "take": "build-ayesha-03"
+  "where": "#build/8"
  },
  {
   "key": "0u4l0g6",
   "text": "Who decides each thing? Say it.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/8 question",
-  "take": "build-coach-06"
+  "where": "#build/8 question"
  },
  {
   "key": "09zhox3",
   "text": "The AI should choose ___, because it knows ___.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/8 frame",
-  "take": "build-ayesha-04"
+  "where": "#build/8 frame"
  },
  {
   "key": "0qitzgt",
   "text": "Ayesha should decide ___, because only she ___.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/8 frame",
-  "take": "build-ayesha-04"
+  "where": "#build/8 frame"
  },
  {
   "key": "176k80k",
   "text": "The AI should choose the tools, because it knows code. Ayesha should decide what is in version 1, because only she knows her friends.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/8 example",
-  "take": "build-ayesha-04"
+  "where": "#build/8 example"
  },
  {
-  "key": "1vt0mhp",
-  "text": "Open Studio.",
+  "key": "1021gqs",
+  "text": "Long rope where the AI is the expert; a firm hold on what only you know. That gear is Delegation.",
   "voice": "coach",
   "lesson": "build",
   "where": "#build/9",
-  "take": "build-coach-06"
+  "take": "r2-build-coach-02"
  },
  {
-  "key": "1wyrt12",
-  "text": "Version 1: ___. Later we may add ___.",
-  "voice": "ayesha",
-  "lesson": "build",
-  "where": "#build/9 phrase",
-  "take": "build-ayesha-04"
- },
- {
-  "key": "0cdhqjc",
-  "text": "Describe version 1 — and where it may grow.",
+  "key": "0gmpg0w",
+  "text": "Open Studio, the AI app builder.",
   "voice": "coach",
   "lesson": "build",
   "where": "#build/10",
-  "take": "build-coach-06"
+  "take": "r2-build-coach-02"
  },
  {
-  "key": "1xdowkg",
-  "text": "Studio shows its plan as it thinks. Read along. If it goes off track, tap ■ Stop.",
+  "key": "0borp34",
+  "text": "Describe version 1 — and where it may grow. Tap the parts above the keyboard, then send ➤.",
   "voice": "coach",
   "lesson": "build",
   "where": "#build/11",
-  "take": "build-coach-06"
+  "take": "r2-build-coach-02"
  },
  {
-  "key": "18bjuq7",
-  "text": "Stop. That's not in version 1.",
-  "voice": "ayesha",
-  "lesson": "build",
-  "where": "#build/11 phrase",
-  "take": "build-ayesha-05"
- },
- {
-  "key": "0y3iolk",
-  "text": "Stopped. What did you catch?",
+  "key": "1i8feot",
+  "text": "You described version 1 — and where it may grow. That gear is Description.",
   "voice": "coach",
   "lesson": "build",
   "where": "#build/12",
-  "take": "build-coach-07"
+  "take": "r2-build-coach-02"
+ },
+ {
+  "key": "0bn4tdk",
+  "text": "Studio shows its plan as it thinks. Read every line. If it goes off track, tap ■ Stop on the phone.",
+  "voice": "coach",
+  "lesson": "build",
+  "where": "#build/13",
+  "take": "r2-build-coach-03"
+ },
+ {
+  "key": "1h1cl0q",
+  "text": "What went off track?",
+  "voice": "coach",
+  "lesson": "build",
+  "where": "#build/14",
+  "take": "r2-build-coach-03"
  },
  {
   "key": "0x151ey",
   "text": "What did Studio get wrong?",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/12 question",
-  "take": "build-coach-07"
+  "where": "#build/14 question"
  },
  {
   "key": "0t034gy",
   "text": "It wanted to add ___, but version 1 has no ___.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/12 frame",
-  "take": "build-ayesha-05"
+  "where": "#build/14 frame"
  },
  {
   "key": "06i8hxj",
   "text": "It used ___ dates, but Ayesha said ___.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/12 frame",
-  "take": "build-ayesha-05"
+  "where": "#build/14 frame"
  },
  {
   "key": "1095y7m",
   "text": "It wanted to add a sign-in, but version 1 has no logins. It used month-first dates, but Ayesha said day, month, year.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/12 example",
-  "take": "build-ayesha-05"
+  "where": "#build/14 example"
  },
  {
-  "key": "0u1hws8",
-  "text": "Steer it: what to drop, what to correct, what to keep.",
+  "key": "1eaa755",
+  "text": "Steer it: what to drop, what to correct — and what it got right. Then send ➤.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/13",
-  "take": "build-coach-07"
- },
- {
-  "key": "0o43pic",
-  "text": "Stop. No ___ in version 1. Your ___ is good.",
-  "voice": "ayesha",
-  "lesson": "build",
-  "where": "#build/13 phrase",
-  "take": "build-ayesha-06"
+  "where": "#build/15",
+  "take": "r2-build-coach-03"
  },
  {
   "key": "1van9jj",
   "text": "Back on track — and built. Now test it: tap Preview.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/14",
-  "take": "build-coach-07"
+  "where": "#build/16"
  },
  {
   "key": "1qj8gna",
   "text": "Studio is re-planning…",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/14",
-  "take": "build-coach-08"
+  "where": "#build/16"
  },
  {
-  "key": "0rqmrtm",
-  "text": "Did it listen? Let me check.",
-  "voice": "ayesha",
-  "lesson": "build",
-  "where": "#build/14 phrase",
-  "take": "build-ayesha-06"
- },
- {
-  "key": "1vr4izs",
-  "text": "\"Built ✅\" is a claim. Test it like a user — real dates, and one impossible date.",
-  "voice": "coach",
-  "lesson": "build",
-  "where": "#build/15",
-  "take": "build-coach-08"
- },
- {
-  "key": "130hxfy",
-  "text": "Tell Studio exactly what you saw.",
-  "voice": "coach",
-  "lesson": "build",
-  "where": "#build/16",
-  "take": "build-coach-08"
- },
- {
-  "key": "018ibr8",
-  "text": "When I add ___, I expect ___. But it shows ___.",
-  "voice": "ayesha",
-  "lesson": "build",
-  "where": "#build/16 phrase",
-  "take": "build-ayesha-06"
- },
- {
-  "key": "16n3lnk",
-  "text": "\"Fixed ✅\" — another claim. Tap Preview.",
+  "key": "17yk187",
+  "text": "\"Built ✅\" is a claim. Test it like a user: add real deadlines — then the impossible one, Test: 31 Feb.",
   "voice": "coach",
   "lesson": "build",
   "where": "#build/17",
-  "take": "build-coach-08"
+  "take": "r2-build-coach-03"
+ },
+ {
+  "key": "1vxrh14",
+  "text": "Tell Studio exactly what you saw: what you did, what you expected, what you got.",
+  "voice": "coach",
+  "lesson": "build",
+  "where": "#build/18",
+  "take": "r2-build-coach-04"
+ },
+ {
+  "key": "1nxi8ot",
+  "text": "\"Fixed ✅\" — another claim. Tap Preview and check it yourself.",
+  "voice": "coach",
+  "lesson": "build",
+  "where": "#build/19",
+  "take": "r2-build-coach-04"
  },
  {
   "key": "0k8z073",
   "text": "Studio is fixing it…",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/17",
-  "take": "build-coach-09"
+  "where": "#build/19"
  },
  {
-  "key": "0ynnai4",
-  "text": "\"Fixed\" is a claim. Let me test it.",
-  "voice": "ayesha",
-  "lesson": "build",
-  "where": "#build/17 phrase",
-  "take": "build-ayesha-06"
- },
- {
-  "key": "1l5sam5",
-  "text": "Check it again yourself.",
-  "voice": "coach",
-  "lesson": "build",
-  "where": "#build/18",
-  "take": "build-coach-09"
- },
- {
-  "key": "04ht40k",
-  "text": "Tanvir wants to sell it. Is it the same app?",
-  "voice": "coach",
-  "lesson": "build",
-  "where": "#build/19",
-  "take": "build-coach-09"
- },
- {
-  "key": "07f0v5h",
-  "text": "Selling it is a different app. We need to plan again.",
-  "voice": "ayesha",
-  "lesson": "build",
-  "where": "#build/19 phrase",
-  "take": "build-ayesha-07"
- },
- {
-  "key": "1yvdlrw",
-  "text": "What should Ayesha reply?",
+  "key": "0c30tw7",
+  "text": "Add Test: 31 Feb again.",
   "voice": "coach",
   "lesson": "build",
   "where": "#build/20",
-  "take": "build-coach-09"
+  "take": "r2-build-coach-04"
+ },
+ {
+  "key": "1q9jtmj",
+  "text": "You judged the plan while it was thinking — and tested what it built. That gear is Discernment.",
+  "voice": "coach",
+  "lesson": "build",
+  "where": "#build/21",
+  "take": "r2-build-coach-04"
+ },
+ {
+  "key": "1fze7cn",
+  "text": "It works — and Tanvir wants to sell it. What should Ayesha reply?",
+  "voice": "coach",
+  "lesson": "build",
+  "where": "#build/22",
+  "take": "r2-build-coach-05"
  },
  {
   "key": "1yqh27z",
   "text": "Tanvir calls Ayesha. Practise the call.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/21",
-  "take": "build-coach-10"
+  "where": "#build/23"
  },
  {
   "key": "1h3v6e1",
   "text": "Tanvir says: \"Let's sell it! ৳99 a month!\"",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/21 question",
-  "take": "build-coach-10"
+  "where": "#build/23 question"
  },
  {
   "key": "1bmo5bm",
   "text": "First I decided who the app was for. That shaped everything else.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/21 frame",
-  "take": "build-ayesha-07"
+  "where": "#build/23 frame"
  },
  {
   "key": "0s3rf2z",
   "text": "Selling it is a different app. It needs accounts, payments and security.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/21 frame",
-  "take": "build-ayesha-07"
+  "where": "#build/23 frame"
  },
  {
   "key": "00fedri",
   "text": "When its plan went off track, I stopped it and explained why.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/21 frame",
-  "take": "build-ayesha-07"
- },
- {
-  "key": "06h9147",
-  "text": "Tanvir says: \"Let's sell it! ৳99 a month!\" Answer him.",
-  "voice": "coach",
-  "lesson": "build",
-  "where": "#build/21 question",
-  "take": "build-coach-10"
+  "where": "#build/23 frame"
  },
  {
   "key": "1ackzye",
   "text": "Now you. What app would YOU build?",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/22",
-  "take": "build-coach-10"
+  "where": "#build/24"
  },
  {
   "key": "0vj8elu",
   "text": "Describe an app you would build with AI.",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/22 question",
-  "take": "build-coach-11"
+  "where": "#build/24 question"
  },
  {
   "key": "1aji38j",
   "text": "I would build an app that ___.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/22 frame",
-  "take": "build-ayesha-08"
+  "where": "#build/24 frame"
  },
  {
   "key": "16j2ejk",
   "text": "It's for ___.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/22 frame",
-  "take": "build-ayesha-08"
+  "where": "#build/24 frame"
  },
  {
   "key": "0b42j1w",
   "text": "Version 1 would only ___.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/22 frame",
-  "take": "build-ayesha-08"
+  "where": "#build/24 frame"
  },
  {
   "key": "1c1lk09",
   "text": "I would build an app that shares bus times in Rajshahi. It's for students at my university. Version 1 would only show the next bus.",
   "voice": "ayesha",
   "lesson": "build",
-  "where": "#build/22 example",
-  "take": "build-ayesha-08"
+  "where": "#build/24 example"
  },
  {
-  "key": "01b7g42",
-  "text": "Done! The four Ds in a real vibe-coding workflow.",
+  "key": "0xc35uz",
+  "text": "Fifteen friends use My Deadlines — and nobody missed a deadline this month. Mission complete!",
   "voice": "coach",
   "lesson": "build",
-  "where": "#build/23",
-  "take": "build-coach-11"
+  "where": "#build/25",
+  "take": "r2-build-coach-05"
  },
  {
   "key": "0ozu3yd",
   "text": "Whose data is it?",
   "voice": "coach",
   "lesson": "cards",
-  "where": "#agent/8 card",
-  "take": "cards-coach-01"
+  "where": "#agent/9 card"
  },
  {
   "key": "0a8lt9e",
   "text": "Does the job need it?",
   "voice": "coach",
   "lesson": "cards",
-  "where": "#agent/8 card",
-  "take": "cards-coach-01"
+  "where": "#agent/9 card"
  },
  {
   "key": "1mnzgy8",
   "text": "What's the worst case?",
   "voice": "coach",
   "lesson": "cards",
-  "where": "#agent/8 card",
-  "take": "cards-coach-01"
+  "where": "#agent/9 card"
  },
  {
   "key": "1pf7hoa",
   "text": "Can I undo it?",
   "voice": "coach",
   "lesson": "cards",
-  "where": "#agent/8 card",
-  "take": "cards-coach-01"
+  "where": "#agent/9 card"
  }
 ]

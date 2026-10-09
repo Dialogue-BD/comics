@@ -51,7 +51,8 @@ function each(L,b,v,cb){
 }
 
 /* the start screen and the four default phrases */
-add('This is Ayesha’s phone. Learn AI, and English, by doing real tasks.','coach','common','start screen');
+add(AFL.HUB.en,'coach','common','lock screen');
+AFL.TOUR.forEach((t,i)=>add(t.en,'coach','common','how this works · '+(i+1)));
 for(const d of ['del','des','dis','dil']) D4.SAY[d].frames.forEach(f=>add(f.en,'ayesha','common',`${D4.META[d].n} phrase`));
 add('That’s asking the fox to guard the henhouse.','coach','agent','idiom');
 /* what happens next: the consequence lines, and the frame students answer with */
@@ -76,6 +77,8 @@ for(const id of ORDER){
       if(c.type==='words') c.items.forEach(w=>add(w.w+'. '+w.ex,'coach',id,where+' word'));
       if(c.type==='story') c.panels.forEach(p=>add(p.en,'coach',id,where+' story'));
       if(c.type==='phrases') Object.values(c.items).forEach(p=>add(p.en,'ayesha',id,where+' phrase'));
+      if(c.type==='level'&&c.phrase) add(c.phrase.en,'ayesha',id,where+' gear phrase');
+      if(c.type==='result'&&c.say) Object.values(c.say).forEach(p=>add(p.en,'ayesha',id,where+' phrase'));
     });
     /* lines a hand-written html card speaks through data-say / data-speak (kept in their own take, see below) */
     each(L,b,b.card,c=>{ if(c&&c.html) for(const m of String(c.html).matchAll(/data-(?:say|speak)="([^"]+)"/g)) LATE.push([m[1].replace(/&quot;/g,'"').replace(/&amp;/g,'&'),'coach','cards',where+' card']); });
@@ -92,10 +95,11 @@ LATE.forEach(a=>add(...a));
 /* takes: per workflow and voice, in lesson order, a few lines each */
 const all=[...lines.values()];
 const takes={};
+let have0=new Set(); try{ have0=new Set(JSON.parse(fs.readFileSync(path.join(AUD,'manifest.json'))).keys) }catch(e){}
 for(const lesson of ['common',...ORDER,'cq','intro','introd','cards']) for(const voice of ['coach','ayesha']){
-  const ls=all.filter(l=>l.lesson===lesson&&l.voice===voice);
+  const ls=all.filter(l=>l.lesson===lesson&&l.voice===voice&&!have0.has(l.key));
   for(let i=0;i<ls.length;i+=MAX_PER_TAKE){
-    const tid=`${lesson}-${voice}-${String(i/MAX_PER_TAKE+1).padStart(2,'0')}`;
+    const tid=`r2-${lesson}-${voice}-${String(i/MAX_PER_TAKE+1).padStart(2,'0')}`;
     takes[tid]=ls.slice(i,i+MAX_PER_TAKE).map(l=>{l.take=tid;return l.key});
   }
 }

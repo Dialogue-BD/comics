@@ -155,7 +155,7 @@ def main():
             r = ff(['-y', '-i', f,
                     '-af', f'atrim=start={a:.3f}:end={b:.3f},asetpts=PTS-STARTPTS,'
                            f'afade=t=in:d=0.03,afade=t=out:st={max(0.0, b - a - 0.06):.3f}:d=0.06',
-                    '-ac', '1', '-ar', '24000', '-codec:a', 'libmp3lame', '-b:a', '96k', out])
+                    '-ac', '1', '-ar', '24000', '-codec:a', 'libmp3lame', '-b:a', '40k', out])  # speech: 40 kb/s mono is clear and ~20 KB a line
             if r.returncode:
                 skipped.append(f'{tid}: ffmpeg failed on line {i + 1}'); break
             recut.add(k)
@@ -168,10 +168,10 @@ def main():
             print(f'✓ {tid}: {len(keys)} lines')
     have = sorted(k for k in lines if os.path.exists(os.path.join(AUD, k + '.mp3')))
     # clip lengths, so the intro film can time itself to the recordings
-    try: old = json.load(open(os.path.join(AUD, 'manifest.json'))).get('dur', {})
-    except Exception: old = {}
+    try: man = json.load(open(os.path.join(AUD, 'manifest.json'))); old = man.get('dur', {}); ver = man.get('v', '')
+    except Exception: old = {}; ver = ''
     dur = {k: (old[k] if k in old and k not in recut else round(duration(os.path.join(AUD, k + '.mp3')), 2)) for k in have}
-    json.dump({'keys': have, 'dur': dur}, open(os.path.join(AUD, 'manifest.json'), 'w'))
+    json.dump({'keys': have, 'dur': dur, 'v': ver}, open(os.path.join(AUD, 'manifest.json'), 'w'))  # v: bump to make phones fetch new files
     print(f'\n{done} takes cut · {len(have)} of {len(lines)} lines recorded · audio/manifest.json updated')
     for s in skipped:
         print('SKIPPED ', s)

@@ -1,478 +1,126 @@
 {
- "common-coach-01": [
-  "1wxysd3"
- ],
- "common-ayesha-01": [
-  "1nrxptn",
-  "12opkr6",
-  "0y8txx1",
-  "02lgor6"
- ],
- "common-ayesha-02": [
-  "14dsegx",
-  "0lg4svs",
-  "1lf61cp",
-  "1tk06s0"
- ],
- "common-ayesha-03": [
-  "0a5xn2u",
-  "12j0ayx",
-  "04ty0lp",
-  "1f3eocy"
- ],
- "cv-coach-01": [
-  "00netb2",
-  "18jtx2g",
-  "03f21zf",
-  "1kle21b"
- ],
- "cv-coach-02": [
-  "0cdn1yu",
-  "0jhji3x",
-  "1xnovch",
-  "1ihkjvj"
- ],
- "cv-coach-03": [
-  "1hbzokm",
-  "13buzb7",
-  "1fiyme2",
-  "196fhi7"
- ],
- "cv-coach-04": [
-  "10y6l37",
-  "1xmys8o",
-  "18ty62t",
-  "02mtaqo"
- ],
- "cv-coach-05": [
-  "0d7m260",
-  "0ggiguq",
-  "1hubuyl",
-  "1quxt8h"
- ],
- "cv-coach-06": [
-  "0fsabqx",
-  "0vrvx8f",
-  "1k37hsl",
-  "01hir6a"
- ],
- "cv-coach-07": [
-  "04z428k",
-  "0nyq2be",
-  "0sntk2y",
-  "0kuhsx3"
- ],
- "cv-coach-08": [
-  "1r032ub",
-  "19v56fr",
-  "0tte7bm",
-  "13cmydy"
- ],
- "cv-coach-09": [
-  "17a1ht9",
-  "1xhkpbb",
-  "0qk99qw",
-  "1tuborf"
- ],
- "cv-coach-10": [
-  "02f549i",
-  "0xjr0f4",
-  "1ns526d",
-  "10pqruh"
- ],
- "cv-coach-11": [
-  "17dygr3",
-  "0ofg6dp",
-  "0t2j7c0",
-  "1472fw8"
- ],
- "cv-coach-12": [
-  "1kgbprc",
-  "1814njk",
-  "1nnu7kf",
-  "06ex51n"
- ],
- "cv-coach-13": [
-  "0vnic0h",
-  "178c2sx",
-  "1o1egxy",
-  "113ascl"
- ],
- "cv-coach-14": [
-  "1iexy39"
- ],
- "cv-ayesha-01": [
-  "0w12pdv",
-  "1pegfs7",
-  "18rweiw",
-  "0d931h5"
- ],
- "cv-ayesha-02": [
-  "1n4fq3r",
-  "14bzrp2",
-  "0mcye7w",
-  "00th8dt"
- ],
- "cv-ayesha-03": [
-  "0rynakg",
-  "1to57um",
-  "0biqt8j",
-  "0skpail"
- ],
- "cv-ayesha-04": [
-  "0kuebdy",
-  "1gz75zk",
-  "154chbi",
-  "0vyfdur"
- ],
- "cv-ayesha-05": [
-  "1l2f6w2",
-  "1yqupbk",
-  "1e8ntur",
-  "1wofnz3"
- ],
- "cv-ayesha-06": [
-  "0y6coq4",
-  "1sq49ta",
-  "1rgklsf",
-  "16md44r"
- ],
- "cv-ayesha-07": [
-  "0nt2gru",
-  "1flzcoz",
-  "1cvmsqu",
-  "17iwt3a"
- ],
- "cv-ayesha-08": [
-  "137lh7u",
-  "0o6uz3y",
-  "1up0kcv",
-  "0ztsaeh"
- ],
- "cv-ayesha-09": [
-  "1lfanhz",
-  "0vau8r1",
-  "1qcixhl",
-  "0sufrm3"
- ],
- "cv-ayesha-10": [
-  "19en2vx"
- ],
- "agent-coach-01": [
-  "0gk7r63",
-  "16mid1m",
-  "0v4oi9z",
-  "10jsv7m"
- ],
- "agent-coach-02": [
-  "06tdjqn",
-  "0si3h1u",
-  "03d95al",
-  "12ed1c8"
- ],
- "agent-coach-03": [
-  "1dkg79e",
-  "05jfzmu",
-  "17gl5hh",
-  "0z5rfwz"
- ],
- "agent-coach-04": [
-  "1v9lbd7",
-  "0l9pyyi",
-  "0wsui5c",
-  "185dd5s"
- ],
- "agent-coach-05": [
-  "0jz45ig",
-  "1oghe0u",
-  "0k9o7k4",
-  "00i6ixq"
- ],
- "agent-coach-06": [
-  "1ym15sx",
-  "0y23we2",
-  "0wvyxej",
-  "1mhhxfx"
- ],
- "agent-coach-07": [
-  "0ug49kh",
-  "18yzvgo",
-  "0ori6v2",
-  "0ej0r0r"
- ],
- "agent-coach-08": [
-  "180dujn",
-  "0fmpvu7",
-  "0xebhum",
-  "0yset4i"
- ],
- "agent-coach-09": [
-  "0t2n2gx",
-  "0qmsmxw",
-  "1z0xu38",
-  "1i0q3l5"
- ],
- "agent-coach-10": [
-  "125dcz3",
-  "1b7741y",
-  "0l3kuys",
-  "14wemtx"
- ],
- "agent-coach-11": [
-  "14qrlkl",
-  "1y9yydd",
-  "1yaevqk",
-  "08o00uk"
- ],
- "agent-coach-12": [
-  "1aeprsi",
-  "0eval33",
-  "0onl5ff",
-  "03g9gqb"
- ],
- "agent-coach-13": [
-  "0580koz",
-  "0i5mqn1"
- ],
- "agent-ayesha-01": [
-  "1irs8pl",
-  "1sheatq",
-  "1lj906y",
-  "0efzmfs"
- ],
- "agent-ayesha-02": [
-  "1v9bi4n",
-  "1syvpbh",
-  "03zsy0x",
-  "05qxd9n"
- ],
- "agent-ayesha-03": [
-  "1qd1y75",
-  "09yz3d8",
-  "09lkkts",
-  "1xt413y"
- ],
- "agent-ayesha-04": [
-  "1uavi7w",
-  "0278cyk",
-  "0osek9o",
-  "1v10csh"
- ],
- "agent-ayesha-05": [
-  "0bigzso",
-  "1k35atc",
-  "14uwaly",
-  "1ctwfy4"
- ],
- "agent-ayesha-06": [
-  "1x8jfkz",
-  "084uisz",
-  "19ule9k",
-  "11qy8u4"
- ],
- "agent-ayesha-07": [
-  "0l8v2oc",
-  "09fluzv",
-  "1wjqq0z",
-  "18kuwp6"
- ],
- "build-coach-01": [
-  "1yk29vy",
-  "1rycxrt",
-  "0libxdt",
-  "0n44h5c"
- ],
- "build-coach-02": [
-  "1iirx13",
-  "1kzhjsd",
-  "1f8nagg",
-  "0j85w5m"
- ],
- "build-coach-03": [
-  "0w45ugt",
-  "0ll8w02",
-  "0mm941t",
-  "14dfzeb"
- ],
- "build-coach-04": [
-  "1apvfrl",
-  "04jswd9",
-  "08jc3f1",
-  "1u5gp3x"
- ],
- "build-coach-05": [
-  "0bdg2iy",
-  "0z4zyvv",
-  "12n6b94",
-  "0dlorbh"
- ],
- "build-coach-06": [
-  "0u4l0g6",
-  "1vt0mhp",
-  "0cdhqjc",
-  "1xdowkg"
- ],
- "build-coach-07": [
-  "0y3iolk",
-  "0x151ey",
-  "0u1hws8",
-  "1van9jj"
- ],
- "build-coach-08": [
-  "1qj8gna",
-  "1vr4izs",
-  "130hxfy",
-  "16n3lnk"
- ],
- "build-coach-09": [
-  "0k8z073",
-  "1l5sam5",
-  "04ht40k",
-  "1yvdlrw"
- ],
- "build-coach-10": [
-  "1yqh27z",
-  "1h3v6e1",
-  "06h9147",
-  "1ackzye"
- ],
- "build-coach-11": [
-  "0vj8elu",
-  "01b7g42"
- ],
- "build-ayesha-01": [
-  "1a5h0fc",
-  "1vr9sv2",
-  "0yzqv5d",
-  "0m3np93"
- ],
- "build-ayesha-02": [
-  "0g4o97l",
-  "13qpmve",
-  "1ss0ckq",
-  "0xp04ek"
- ],
- "build-ayesha-03": [
-  "0tt1d5g",
-  "0er4d8m",
-  "1ksbu0x",
-  "0xk95aw"
- ],
- "build-ayesha-04": [
-  "09zhox3",
-  "0qitzgt",
-  "176k80k",
-  "1wyrt12"
- ],
- "build-ayesha-05": [
-  "18bjuq7",
-  "0t034gy",
-  "06i8hxj",
-  "1095y7m"
- ],
- "build-ayesha-06": [
-  "0o43pic",
-  "0rqmrtm",
-  "018ibr8",
-  "0ynnai4"
- ],
- "build-ayesha-07": [
-  "07f0v5h",
-  "1bmo5bm",
-  "0s3rf2z",
-  "00fedri"
- ],
- "build-ayesha-08": [
-  "1aji38j",
-  "16j2ejk",
-  "0b42j1w",
-  "1c1lk09"
- ],
- "cq-coach-01": [
-  "006f9dd",
-  "0b34off",
-  "1t09s3c",
-  "1127d7z"
- ],
- "cq-coach-02": [
-  "1babcdi",
-  "0j203nw",
-  "1n6umjj",
-  "0pp786g"
- ],
- "cq-coach-03": [
-  "04lqazx",
-  "0iwpaap",
-  "06cc2ur",
-  "17b15vr"
- ],
- "cq-coach-04": [
-  "0h6qn5w",
-  "1nlbgit",
-  "06yalj0",
-  "0yzrmbj"
- ],
- "cq-coach-05": [
-  "0y4k4rr",
-  "0xvdo1t",
-  "19nig84",
-  "0gfbw2b"
- ],
- "cq-ayesha-01": [
-  "1ojgc1r"
- ],
- "intro-coach-01": [
-  "1ox18ay",
-  "1shm3pp",
-  "0ts4srv",
-  "0tyzxrd"
- ],
- "intro-coach-02": [
-  "1bmb54z",
-  "1manp39",
-  "082ynqf",
-  "1qbin49"
- ],
- "intro-coach-03": [
-  "0k3ptu5",
-  "1t9e2ig",
-  "18cf02e",
-  "1ew0003"
- ],
- "intro-coach-04": [
-  "0n5rn25",
-  "1e9mtj8",
-  "1yco26e",
-  "090c3t2"
- ],
- "intro-coach-05": [
-  "1dumbvi",
-  "0y9ursw",
-  "0ulx78v",
-  "15wykmw"
- ],
- "intro-coach-06": [
-  "1nkifo6",
-  "0pp3j70",
-  "1tjhnyu",
-  "1ou90l7"
- ],
- "intro-coach-07": [
-  "12scni4",
-  "1229hh9",
-  "15n6eh4",
-  "05op337"
- ],
- "introd-coach-01": [
-  "1qejke0",
-  "07r4w5b",
-  "1ih0yhi",
-  "1o1l8iy"
- ],
- "cards-coach-01": [
-  "0ozu3yd",
-  "0a8lt9e",
-  "1mnzgy8",
-  "1pf7hoa"
+ "r2-common-coach-01": [
+  "0z7e61o",
+  "0um902r",
+  "02zpnrw",
+  "1gxfid4"
+ ],
+ "r2-common-coach-02": [
+  "0m3oh9k"
+ ],
+ "r2-cv-coach-01": [
+  "1qe5rux",
+  "0adk5xf",
+  "1hud4re",
+  "1swhe90"
+ ],
+ "r2-cv-coach-02": [
+  "0puhopi",
+  "04vcfbu",
+  "18c9e22",
+  "0i18xi2"
+ ],
+ "r2-cv-coach-03": [
+  "1glxvng",
+  "1yn79fe",
+  "1gj17ew",
+  "17kn39y"
+ ],
+ "r2-cv-coach-04": [
+  "00immt2",
+  "1cj75ef",
+  "1mdbzwe",
+  "0bouz05"
+ ],
+ "r2-cv-coach-05": [
+  "0xklyur",
+  "0aml56s",
+  "0yu7iri",
+  "1vu5qrk"
+ ],
+ "r2-cv-coach-06": [
+  "1ym85hi",
+  "1hxnewc",
+  "1ri6g1m"
+ ],
+ "r2-cv-ayesha-01": [
+  "1agbn35",
+  "0zhkbw8"
+ ],
+ "r2-agent-coach-01": [
+  "16habxp",
+  "18qce2b",
+  "18rkzwu",
+  "1m7izhr"
+ ],
+ "r2-agent-coach-02": [
+  "1r51j3e",
+  "12hnngy",
+  "00r7veu",
+  "13uc7th"
+ ],
+ "r2-agent-coach-03": [
+  "0owgmn7",
+  "07tz7vk",
+  "1g90jk8",
+  "06wrs5g"
+ ],
+ "r2-agent-coach-04": [
+  "10vti86",
+  "1gmqjpv",
+  "0lhptn6",
+  "0gm9ngc"
+ ],
+ "r2-agent-coach-05": [
+  "1woxd2i",
+  "0gp07fi",
+  "0z8os9h",
+  "1749cva"
+ ],
+ "r2-agent-coach-06": [
+  "02vxpv5",
+  "11ndh7c",
+  "1luekbw",
+  "00mewyy"
+ ],
+ "r2-agent-coach-07": [
+  "1gzx2cy",
+  "13u4ouo"
+ ],
+ "r2-agent-ayesha-01": [
+  "018rq0m",
+  "16t8e4e",
+  "073cid6"
+ ],
+ "r2-build-coach-01": [
+  "0jjh4zi",
+  "1r8k6u7",
+  "17j0lmn",
+  "070eb99"
+ ],
+ "r2-build-coach-02": [
+  "1021gqs",
+  "0gmpg0w",
+  "0borp34",
+  "1i8feot"
+ ],
+ "r2-build-coach-03": [
+  "0bn4tdk",
+  "1h1cl0q",
+  "1eaa755",
+  "17yk187"
+ ],
+ "r2-build-coach-04": [
+  "1vxrh14",
+  "1nxi8ot",
+  "0c30tw7",
+  "1q9jtmj"
+ ],
+ "r2-build-coach-05": [
+  "1fze7cn",
+  "0xc35uz"
+ ],
+ "r2-cq-coach-01": [
+  "12q6ix1"
  ]
 }

@@ -1,27 +1,29 @@
 # AI Fluency Lab — Ayesha's Phone
 
-Students learn AI fluency by **doing real workflows on a simulated Android phone**, with a coach above the phone that walks them through the prompting *and the process*. Served at `/ai-fluency/`.
+Students learn AI fluency by **doing three missions on a simulated Android phone** — as Ayesha — with Cog, a gear-shaped coach, saying one thing at a time. Served at `/ai-fluency/`.
 
 ## Two layers
 
 | Layer | Look | Job |
 | --- | --- | --- |
 | **Phone** | Android / Material 3 (Roboto Flex, tonal purple) — lock screen, home screen, notifications, Gboard-style keyboard, permission dialogs, bottom sheets | Where the student *does* the task: taps apps, attaches files, writes prompts, tests an app |
-| **Coach** | Dialogue Brand Book (paper, forest, gold, Spectral) | One instruction at a time, a gold ring on the next tap target, cards for thinking moments, Bangla under every line |
+| **Play** | Dialogue Brand Book (paper, forest, gold, Spectral + Public Sans) | Cog’s one line (read aloud), cards for thinking moments, the one next button, feedback that slides up, Bangla under every line |
 
-The two layers never share colours, so students can always tell the teacher from the phone. On a phone the coach sits above the simulated phone (it opens as a sheet for thinking moments); on a laptop/projector the phone sits in a device frame with the coach beside it.
+The two layers never share colours, so students can always tell the coach from the phone. See **One screen at a time** below.
 
 ## The user: Ayesha Rahman
 
 Fictional 3rd-year Economics student at Rajshahi University (from the *RU AI Seminar — Ayesha Primary Sources* folder). Her real classroom documents appear as files on the phone (`docs/*.webp`): CV, IELTS mock report, RUCEI project report, master's shortlist, application checklist, an attendance sheet with children's names, her internship form, plus placeholder NID and bank-statement files that students must *not* share.
 
-## Three workflows (one class period each)
+## Three missions (one class period each)
 
-| Workflow | Stages | Spine |
+Each mission lets students **get it wrong first**: the AI’s mistakes are never pointed out in advance. They make the choice most people make, see it play out (⏩ *what happens next*), then rewind or carry on. Stars count good calls made first time.
+
+| Mission | Stages | Spine |
 | --- | --- | --- |
-| **An honest CV with AI** (`lesson-cv.js`) | Plan · Prompt · Check · Fix · Finish | The quick prompt invents IELTS 7.0 and "led 20 volunteers"; the four-part prompt (Context · Product · Process · Performance) makes the AI ask first; the draft still has 3 slips to catch against her documents |
-| **Set up an AI agent** (`lesson-agent.js`) | Goal · Access · Rules · Watch · Review | The pilot story (*logging in yourself ≠ giving your login to an agent*); seven access decisions with four questions — whose data? does the job need it? worst case? can I undo it?; Orbit then misreads a handwritten deadline, tries to forward a confidential reference letter, meets a prompt-injection scam fee, asks for more access; finally the activity log and revoking access |
-| **Vibe-code an app** (`lesson-build.js`) | Purpose · Hand over · Describe · Steer · Test · Grow | Not a coding lesson: the four Ds as a fluent non-programmer uses them with an AI app builder. **Diligence first** — who is the app for (just me · our 15-person study circle · a product to sell)? That one decision sets logins, private data, testing and what happens if it breaks. **Delegation** — the AI decides architecture and tools (give it rope where it is the expert); Ayesha keeps version 1, how it feels on cheap phones, and local details. **Description** — describe version 1 *and* where it may grow, so the AI structures the code for later. **Discernment** — Studio’s plan streams as it thinks and Ayesha presses ■ Stop when it drifts (sign-in, cloud database and AI reminders “now”; MM/DD dates), then steers it (drop · correct · keep); then she tests the real preview (31/02 silently becomes 3 March) and re-checks the fix. **Grow** — Tanvir wants to sell it: same screen, different app, back round the loop |
+| **An honest CV with AI** (`lesson-cv.js`) | First try · Plan · Prompt · Check · Fix · Finish | Ayesha wasn’t shortlisted. Students send a quick prompt, are asked *“Would you send this CV?”* (sending it plays out at the interview), then hunt the 5 things that aren’t true in her own documents. Then they plan (who does each job), learn why the AI made things up, choose only the files a CV needs, build a four-part prompt (Context · Product · Process · Performance), answer the AI’s questions truthfully, and hunt the 3 slips that a good prompt still lets through. Fix, add private details themselves, four checks — shortlisted. |
+| **Set up an AI agent** (`lesson-agent.js`) | Jobs · Access · Rules · Watch · Review | Eight master’s applications are due. Choose which jobs Orbit may do; seven access decisions with four questions — whose data? does the job need it? worst case? can I undo it? (💡 shows them); rules in plain words. Three hours later: find the deadline Orbit misread against her handwritten checklist, catch a confidential letter in an email draft, spot a prompt-injection scam fee, refuse more access; read the log; remove access when the job is done. Risky choices play out (emails sent in her name, children’s photos, a payment that can’t come back). |
+| **Vibe-code an app** (`lesson-build.js`) | Purpose · Hand over · Describe · Steer · Test · Grow | Not a coding lesson. **Diligence first** — who is the app for? That decision sets logins, private data, testing. **Delegation** — the AI chooses architecture and tools; Ayesha keeps version 1, how it feels, local details. **Description** — version 1 *and* where it may grow. **Discernment** — press ■ Stop when Studio’s streaming plan drifts (sign-in and a cloud database “now”, MM/DD dates) and say what went off track; steer it; test the real preview (31/02 silently becomes 3 March); report the bug as input · expected · actual; re-test. **Grow** — Tanvir wants to sell it. |
 
 Orbit, Sathi and Studio are invented apps modelled on Meta Muse / xAI Grok Bot, Gemini / ChatGPT / Claude, and Google AI Studio Build.
 
@@ -63,7 +65,9 @@ All three workflows follow this pattern: CV (29 steps), Agent (31) and Build (24
 
 Every spoken line has a key made from its words (`audioKey()` in `engine.js`, FNV-1a over the normalised text). The page plays `audio/<key>.mp3` when `audio/manifest.json` lists the key, and falls back to the browser's voice otherwise — so a line that changes simply falls back until it is re-recorded, and nothing has to be renamed.
 
-- `node tools/voice-script.js` lists every line from the lesson files (say lines, picture words, story panels, phrases, talk questions, frames and example answers, in every mode) into `audio/lines.json`, groups them into takes of up to four lines per voice (consequence lines get their own `cq-*` takes) in `audio/takes.json`, and writes **`voice-script.md`**: the voice settings and a transcript block per take to paste into the AI Studio speech playground. Run it again after any text change; recorded takes are ticked.
+Cog reads every new step by itself. One audio player is unlocked by the student’s first tap (phones block sound that starts on its own), and the lines for this step and the next two are fetched ahead, so a line starts at once. Clips are 40 kb/s mono (~20 KB each). If a phone blocks a clip, 🔊 pulses rather than the line dropping to the robot voice. Bump `v` in `audio/manifest.json` after re-encoding to make phones fetch the new files.
+
+- `node tools/voice-script.js` lists every line from the lesson files (say lines, picture words, story panels, phrases, talk questions, frames and example answers, in every mode) into `audio/lines.json`, groups the lines **not yet recorded** into new takes of up to four per voice, named `r2-…` so old take files can never be cut into the wrong lines in `audio/takes.json`, and writes **`voice-script.md`**: the voice settings and a transcript block per take to paste into the AI Studio speech playground. Run it again after any text change; recorded takes are ticked.
 - Two voices: **the coach** (instructions, words, stories, questions) and **Ayesha** (phrases, frames, example answers). Lines in a take are separated by `<long pause>`.
 - Download each take as `<take>.wav`, then `python3 tools/split_takes.py ~/Downloads` (needs ffmpeg) cuts each take at its pauses into `audio/<key>.mp3`, trims it, and rewrites the manifest. A take with too few pauses is skipped and reported (when pauses are close it tries the cut that best fits each line's words; a take that still won't cut can be recorded a line at a time as `<take>_L1.wav`, `_L2.wav` …); lines whose length looks wrong for their words are listed to check by ear.
 
@@ -73,20 +77,23 @@ Every spoken line has a key made from its words (`audioKey()` in `engine.js`, FN
 
 Every movement is a Web Animation built from `data-a="anim start [duration]"` attributes, so the film is a pure function of (scene, time). `INTRO.seek(scene, t)` freezes any frame; the narrated video is rendered from the same scenes. Narration script and voice settings: `intro-voice-script.md` (record one take in the AI Studio speech playground → `intro/four-ds-narration.wav`).
 
-## Phone mode (screens under 900px)
+## One screen at a time (`engine.js` · `play.css`)
 
-Two clear places, one job at a time (`tour.js`, `tour.css`):
+The same shape on every screen — the interaction grammar Gen Z students already know from Duolingo:
 
-- **💬 Coach** — a chat with Cog, the gear guide (a 12-tooth gear in the colour of the D in use, with the film's gold hub for a face). Each step is one spoken line, the task card under it (words, story, sort, talk), and one big button. Earlier lines stay above, to scroll back and hear again.
-- **📱 Ayesha's phone** — drawn as a framed handset, a little smaller than the screen, so it reads as *her* phone. A dark strip above it says the one thing to do now, with 🔊, Show me and Next; a gold ring marks where to tap. Nothing from the lesson sits on top of the phone. On a check step the line being judged and its verdict buttons ride in the strip; on a decision the verdict appears there too.
+- **Top** — ✕ (back to Ayesha’s lock screen) · a progress bar in the colours of the stages’ Ds · ★ stars · বাংলা · ⋯ menu.
+- **Cog** — the coach: one line, read aloud automatically (🔊 to hear it again), with the D in use above it. Cog takes that D’s colour, turns while it talks and frowns when a choice goes wrong.
+- **The stage** — *either* Ayesha’s phone (a framed handset, where students act; a gold ring marks where to tap) *or* a card (a question, a sort, a gear turned, a talk moment). Never both, so there is one place to look.
+- **The footer** — the one next thing: Continue — or Skip, 👆 Show me, 📁 her files, 💡 think. Answer buttons appear here when the phone must stay in view (*“Would you send this CV?”*).
+- **The sheet** — feedback slides up from the bottom: green (right), amber (think again, with Try again), red (risky — or ⏩ what happened next, with ↩ Choose again). Her documents open over everything, with a gold box on the evidence.
 
-A tab bar switches between them. Each step opens in the right place by itself (a tap that changes the phone stays on the phone so the student sees the result first), and a pulsing dot marks where the next action is. Nothing is locked. The engine is unchanged: `tour.js` moves `#csay` and `#cbody` into the chat, uses the engine's own `data-c` buttons, and puts everything back on wide screens, so desktop and projector layouts are untouched.
+On a laptop or projector the phone sits on the left and Cog, the sheet and the footer stand beside it. A short tour (*How this works*, also in the menu) introduces Cog, the phone and the button on the first visit. **Alone** skips the projector warm-up and partner talk — the English is in the action: the sentences students choose to send, and the phrase at each gear turned. **Pairs** and **Class** keep the warm-up, and talk moments follow the key steps on their own card.
 
 ## Files
 
-- `index.html` — page shell + all CSS
+- `index.html` — page shell + the phone’s CSS · `play.css` — Cog, cards, footer, sheet, layouts
 - `compass.js` — the 4D gears (legend, “why now” links, finish recap)
-- `engine.js` — Android simulator (app renderers, keyboard, dialogs, streaming AI replies) + coach + lesson runner
+- `engine.js` — Android simulator (app renderers, keyboard, dialogs, streaming AI replies) + the play layer + lesson runner
 - `lesson-cv.js`, `lesson-agent.js`, `lesson-build.js` — content banks (beats, scripted AI replies, Bangla)
 - `docs/` — Ayesha's documents as small webp images (~80 KB each)
 - `tools/voice-script.js`, `tools/split_takes.py`, `voice-script.md`, `audio/` — the recorded voices (above)
@@ -94,7 +101,7 @@ A tab bar switches between them. Each step opens in the right place by itself (a
 
 ### Beat shape
 
-Each lesson is `{id, title, stages[], beats[]}`. A beat has `stage`, `say`/`bn`, a `scene` (the phone's state — `{app:'sathi', msgs, composer, kb, sheet, dialog…}`) and one interaction: `tap` (a `data-hit` target), `compose` (prompt recipe with chips), `pickShow` (file picker), `decide` (options on the phone), `check` (verdicts on AI lines) or a coach `card` (`info`, `sort`, `choice`, `checklist`, `say`, `words`, `story`, `phrases`). `talk` adds a talk moment; `wide` makes a projector beat; `frame` sets the phrase shown when the gear turns. Any field may be a function of `ctx`. `interrupt:true` lets a tap (Studio’s ■ Stop) cut a streaming reply short instead of finishing it; Studio’s stop bar comes from `scene.stopHit`, and `msg.speed` slows a stream. Deep links: `#cv/12`, `#agent/0`, `#build/7`.
+Each lesson is `{id, title, stages[], beats[]}`. A beat has `stage`, `say`/`bn`, a `scene` (the phone's state — `{app:'sathi', msgs, composer, kb, sheet, dialog…}`) and one interaction: `tap` (a `data-hit` target, with optional `feedback(x)` → a sheet before moving on), `compose` (chips above the keyboard; `slots` light up as pills), `pickShow` (file picker), `decide` (options on the phone → feedback sheet; an option with `then:AFL.conseq(…)` plays out), `ask` (answer buttons in the footer, phone in view), `hunt` (every `.ln[data-ui=line:id]` in the AI reply can be tapped; `lines:[{id,v:'ok'|'bad',text,look,why}]` — find the ones that aren’t true) — or `view:'card'` with a `card` (`choice`, `sort`, `checklist`, `info`, `html`, `level` — a gear turned, `result` — mission complete, `words`, `story`, `phrases`). `hint` (💡) and `docs` (📁, ids or `{f,m,t}` with a gold box) add footer tools; `talk` adds a talk moment (Pairs/Class); `only:'class'` hides a beat from Alone; `pass:x=>…` skips a beat that doesn’t apply; `kick` labels a beat with no D. Any field may be a function of `ctx`. `interrupt:true` lets a tap (Studio’s ■ Stop) cut a streaming reply short instead of finishing it; Studio’s stop bar comes from `scene.stopHit`, and `msg.speed` slows a stream. Deep links: `#cv/12`, `#agent/0`, `#build/7`.
 
 ### Replacing scripted replies with real captures
 
