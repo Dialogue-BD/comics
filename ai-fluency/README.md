@@ -75,7 +75,12 @@ Every movement is a Web Animation built from `data-a="anim start [duration]"` at
 
 ## Phone mode (screens under 900px)
 
-On a phone the whole screen is Ayesha's phone and a little gear guide teaches on top of it (`tour.js`, `tour.css`). The guide's speech bubble carries the coach's line, 🔊, Back / Show me / Next; cards (words, stories, sorts, talk tasks) slide up as a sheet over the phone and drop away with Hide. A gold ring marks what to tap, and the guide moves to whichever end of the screen keeps the phone's buttons clear. The guide takes the colour of the D in use, spins while it talks, and looks worried while a risky choice plays out; tap it to tuck the bubble away. The engine is unchanged — `tour.js` moves `#dband`, `#csay` and `#cact` into the bubble and puts them back on wide screens, so desktop and projector layouts are untouched.
+Two clear places, one job at a time (`tour.js`, `tour.css`):
+
+- **💬 Coach** — a chat with Cog, the gear guide (a 12-tooth gear in the colour of the D in use, with the film's gold hub for a face). Each step is one spoken line, the task card under it (words, story, sort, talk), and one big button. Earlier lines stay above, to scroll back and hear again.
+- **📱 Ayesha's phone** — drawn as a framed handset, a little smaller than the screen, so it reads as *her* phone. A dark strip above it says the one thing to do now, with 🔊, Show me and Next; a gold ring marks where to tap. Nothing from the lesson sits on top of the phone. On a check step the line being judged and its verdict buttons ride in the strip; on a decision the verdict appears there too.
+
+A tab bar switches between them. Each step opens in the right place by itself (a tap that changes the phone stays on the phone so the student sees the result first), and a pulsing dot marks where the next action is. Nothing is locked. The engine is unchanged: `tour.js` moves `#csay` and `#cbody` into the chat, uses the engine's own `data-c` buttons, and puts everything back on wide screens, so desktop and projector layouts are untouched.
 
 ## Files
 
