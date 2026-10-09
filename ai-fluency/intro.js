@@ -57,6 +57,15 @@ const plate=(d,a='')=>{const [x,y,al]=plateXY[d];
 /* a gear with its name plate, wrapped so both dim together */
 const unit=(d,ga='',pa='',wa='')=>`<div class="unit u-${d}" ${wa}>${gear(d,ga)}${pa===null?'':plate(d,pa)}</div>`;
 const sockets=a=>`<div class="sockets" ${a}>${['del','dis','dil','des'].map(d=>`<i style="left:${POS[d][0]-RR}px;top:${POS[d][1]-RR}px"></i>`).join('')}</div>`;
+/* curved "this way" arrow on a gear: a 90° arc with a head built on the arc's own tangent */
+function turnSvg(dir){ const r=99, L=30, hw=15, rad=a=>a*Math.PI/180, P=a=>[r*Math.cos(a),r*Math.sin(a)], f=n=>n.toFixed(1);
+  // the shaft stops at `base`; the head sits on the tangent there, so shaft and head share one axis
+  const a0=rad(dir>0?-140:-40), base=rad(dir>0?-52:-128);
+  const [x0,y0]=P(a0),[xb,yb]=P(base), tx=-dir*Math.sin(base), ty=dir*Math.cos(base), nx=-ty, ny=tx;
+  const [xe,ye]=P(base+dir*4/r), xt=xb+tx*L, yt=yb+ty*L;
+  const arc=`M${f(x0)} ${f(y0)} A${r} ${r} 0 0 ${dir>0?1:0} ${f(xe)} ${f(ye)}`;
+  const head=`M${f(xt)} ${f(yt)} L${f(xb+nx*hw)} ${f(yb+ny*hw)} Q${f(xb+tx*L*.2)} ${f(yb+ty*L*.2)} ${f(xb-nx*hw)} ${f(yb-ny*hw)} Z`;
+  return `<svg viewBox="-100 -100 200 200"><path d="${arc}"/><path d="${head}" class="hd"/></svg>`; }
 const stad=(x,y,w,h)=>{ if(h>w){const r=w/2;return `M${x} ${y+r} A${r} ${r} 0 0 1 ${x+w} ${y+r} V${y+h-r} A${r} ${r} 0 0 1 ${x} ${y+h-r} Z`} const r=h/2;return `M${x+r} ${y} H${x+w-r} A${r} ${r} 0 0 1 ${x+w-r} ${y+h} H${x+r} A${r} ${r} 0 0 1 ${x+r} ${y} Z`};
 const TV=stad(CX-RR-PAD,CY-DIST-RR-PAD,2*(RR+PAD),2*(DIST+RR+PAD)), TH=stad(CX-DIST-RR-PAD,CY-RR-PAD,2*(DIST+RR+PAD),2*(RR+PAD));
 /* the two loops as tracks: a soft glow, a coloured rail, and light flowing round it */
@@ -145,7 +154,7 @@ const SCENES=[
   ${['del','des','dis','dil'].map(d=>unit(d)).join('')}
   <div class="mesh" style="left:${CX}px;top:${CY}px" data-a="fade @0+.4 .8|fadeout @1+1.4 .8">${['del','dis','dil','des'].map((d,i)=>{const a=45+90*i;return `<i style="transform:rotate(${a}deg) translateX(${DIST/Math.SQRT2}px)"></i>`}).join('')}</div>
   <div class="push" style="left:${POS.des[0]}px;top:${POS.des[1]}px" data-a="push @1-.1 1.2"></div>
-  ${['del','des','dis','dil'].map(d=>`<div class="turn t-${d}" style="left:${POS[d][0]}px;top:${POS[d][1]}px;--c:${COL[d][1]};transform:translate(-50%,-50%) rotate(${{del:0,dis:90,dil:180,des:270}[d]}deg)" data-a="fade @1+1.6 .8|fadeout @end-.8 .6"><svg viewBox="-100 -100 200 200"><path d="M${SPIN[d]>0?'-70 -70 A99 99 0 0 1 70 -70':'70 -70 A99 99 0 0 0 -70 -70'}" /><path d="M${SPIN[d]>0?'70 -70 l-26 -4 l10 24':'-70 -70 l26 -4 l-10 24'}" class="hd"/></svg></div>`).join('')}`,
+  ${['del','des','dis','dil'].map(d=>`<div class="turn t-${d}" style="left:${POS[d][0]}px;top:${POS[d][1]}px;--c:${COL[d][1]};transform:translate(-50%,-50%) rotate(${{del:0,dis:90,dil:180,des:270}[d]}deg)" data-a="fade @1+1.6 .8|fadeout @end-.8 .6">${turnSvg(SPIN[d])}</div>`).join('')}`,
  scr:()=>``},
 
 {id:'sweet', lead:.6, tail:1.6,
