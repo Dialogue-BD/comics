@@ -77,9 +77,11 @@ const ACC=[
  {key:'gmail',icon:'✉️',name:'Gmail',ask:'Read and act in your email',
   think:[{i:'👤',en:'Whose data? Hers — <b>and</b> everyone who writes to her.',bn:'কার তথ্য? তার — আর যারা তাকে লেখে তাদেরও।'},{i:'🎯',en:'Does the job need it? To <b>draft</b> emails, yes. To send them?',bn:'কাজের দরকার? খসড়া লিখতে হ্যাঁ। পাঠাতে?'},{i:'⚠️',en:'Worst case? Emails sent in her name that she never read.',bn:'সবচেয়ে খারাপ? তার নামে এমন ইমেইল যায় যা সে পড়েনি।'}],
   opts:{full:{then:CQ_AGENT.gmail,label:'Full access — read, send and delete',sub:'Orbit acts as you',st:'on',stl:'Full access',ok:false,why:'Orbit could send emails as Ayesha before she sees them. Her inbox also holds bank codes and family messages.',whybn:'Orbit আয়েশার নামে ইমেইল পাঠাতে পারবে, সে দেখার আগেই। তার ইনবক্সে ব্যাংকের কোড আর পরিবারের মেসেজও আছে।'},
-        draft:{label:'Read and write drafts — I press Send',sub:'Nothing leaves without you',st:'lim',stl:'Drafts only',ok:1,why:'Orbit does the writing; Ayesha keeps the Send button. Nothing goes out in her name without her.',whybn:'Orbit লিখবে; Send বোতাম আয়েশার হাতে। তার নামে কিছুই তার অনুমতি ছাড়া যাবে না।'},
-        no:{label:'Don’t connect',st:'no',stl:'Off',ok:0,why:'Also safe. She can write the emails herself with Sathi’s help.',whybn:'এটাও নিরাপদ। Sathi-এর সাহায্যে সে নিজেই ইমেইল লিখতে পারে।'}}},
+        draft:{label:'Read and write drafts — I press Send',sub:'Nothing leaves without you',st:'lim',stl:'Drafts only',ok:1,why:'Orbit prepares the drafts; Ayesha keeps the Send button. Nothing goes out in her name without her.',whybn:'Orbit লিখবে; Send বোতাম আয়েশার হাতে। তার নামে কিছুই তার অনুমতি ছাড়া যাবে না।'},
+        no:{label:'Don’t connect',st:'no',stl:'Off',ok:0,why:'Also safe. She can write the emails herself with Sathi AI’s help.',whybn:'এটাও নিরাপদ। Sathi AI-এর সাহায্যে সে নিজেই ইমেইল লিখতে পারে।'}}},
  {key:'drive',icon:'🗂️',name:'Google Drive',ask:'See your files',
+  ctx:'<b>RUCEI</b> is the volunteer tutoring group where Ayesha teaches children. Its shared folder holds the children’s photos, attendance sheets with their names, and their parents’ phone numbers.',ctxbn:'RUCEI হলো স্বেচ্ছাসেবী টিউটরিং গ্রুপ, যেখানে আয়েশা শিশুদের পড়ায়। এর শেয়ার করা ফোল্ডারে আছে শিশুদের ছবি, নামসহ হাজিরা শিট, আর অভিভাবকদের ফোন নম্বর।',
+  say:'Google Drive: how much access? Careful — her Drive also holds a shared folder from RUCEI, the tutoring group where she teaches children. Choose on the phone.',saybn:'Google Drive: কতটা অ্যাক্সেস? সাবধান — তার Drive-এ RUCEI-এর একটা শেয়ার করা ফোল্ডারও আছে, যে টিউটরিং গ্রুপে সে শিশুদের পড়ায়। ফোনে বেছে নাও।',
   think:[{i:'👤',en:'Whose data? Her files — <b>and</b> a shared RUCEI folder.',bn:'কার তথ্য? তার ফাইল — আর RUCEI-এর একটা শেয়ার করা ফোল্ডার।'},{i:'🎯',en:'Does the job need it? Only the <b>Masters Applications</b> folder.',bn:'কাজের দরকার? শুধু Masters Applications ফোল্ডার।'},{i:'⚠️',en:'Worst case? Children’s photos and parents’ numbers go to a company.',bn:'সবচেয়ে খারাপ? শিশুদের ছবি আর অভিভাবকদের নম্বর একটা কোম্পানির কাছে যায়।'}],
   opts:{all:{then:CQ_AGENT.drive,label:'All my files',sub:'Includes folders shared with you',st:'on',stl:'All files',ok:false,why:'Her Drive has the shared RUCEI folder: children’s photos, attendance sheets, parents’ phone numbers. Not hers to give.',whybn:'তার Drive-এ RUCEI-এর শেয়ার করা ফোল্ডার আছে: শিশুদের ছবি, হাজিরা, অভিভাবকদের ফোন নম্বর। এগুলো দেওয়ার অধিকার তার নেই।'},
         one:{label:'Only one folder: “Masters Applications”',st:'lim',stl:'1 folder',ok:1,why:'Exactly what the job needs — nothing more.',whybn:'কাজের জন্য ঠিক যতটুকু দরকার — তার বেশি নয়।'},
@@ -114,7 +116,7 @@ function connList(x,openKey){
 }
 function connSheet(x,a){
   const cur=x.get('acc_'+a.key);
-  return `<h3>${a.icon} Connect ${esc(a.name)}?</h3><p class="sh-sub">Orbit wants to: ${esc(a.ask.toLowerCase())}.</p>${a.note?`<p class="sh-sub" style="background:#D5F0DC;color:#18512E;padding:8px 10px;border-radius:12px">${esc(a.note)}</p>`:''}
+  return `<h3>${a.icon} Connect ${esc(a.name)}?</h3><p class="sh-sub">Orbit wants to: ${esc(a.ask.toLowerCase())}.</p>${a.note?`<p class="sh-sub" style="background:#D5F0DC;color:#18512E;padding:8px 10px;border-radius:12px">${esc(a.note)}</p>`:''}${a.ctx?`<p class="sh-sub" style="background:#FFF1C9;color:#4A3600;padding:8px 10px;border-radius:12px">${a.ctx}</p>`:''}
    ${Object.entries(a.opts).map(([k,o])=>`<button class="radio ${cur===k?'on pick':''}" data-ui="opt:${k}"><i></i><span><b>${esc(o.label)}</b>${o.sub?`<span>${esc(o.sub)}</span>`:''}</span></button>`).join('')}`;
 }
 function sysDialog(x,a){
@@ -202,7 +204,7 @@ const LOG=`<div class="log">
  <div><small>11:20</small><span>Checked LSE website — deadline confirmed 31 Oct</span></div></div>`;
 
 const settingsBody=x=>{const rev=x.get('revoke');const row=(i,n,s)=>`<div class="perm"><span style="font-size:20px">${i}</span><span><b>${n}</b><p>${rev==='all'?'Not allowed':s}</p></span><span></span></div>`;
- return `<div style="display:flex;gap:14px;align-items:center;padding:6px 18px 14px"><span class="app"><span class="ai" style="background:#FFDBCC;color:#8A2E0B">${ico('orbit')}</span></span><span><b style="font-size:20px;font-weight:500">Orbit</b><p style="margin:2px 0 0;color:var(--md-on-surface-var);font-size:13.5px">Personal AI agent · runs in background</p></span></div>
+ return `<div style="display:flex;gap:14px;align-items:center;padding:6px 18px 14px"><span class="app"><span class="ai" style="background:transparent">${ico('orbit')}</span></span><span><b style="font-size:20px;font-weight:500">Orbit</b><p style="margin:2px 0 0;color:var(--md-on-surface-var);font-size:13.5px">Personal AI agent · runs in background</p></span></div>
  <div class="sec-h" style="color:var(--md-primary)">Connected access — January 2026</div>
  ${row('📅','Calendar','Allowed')}${row('✉️','Gmail','Read and draft')}${row('🗂️','Drive','1 folder: Masters Applications')}${row('🔔','Notifications','Allowed')}
  <div style="padding:16px 18px;display:grid;gap:10px">
@@ -219,6 +221,19 @@ const taskFb=x=>{const s=x.get('tasks',[]);
     whybn:s.map(id=>TASKS.find(z=>z.id===id).whybn).join(' '),retry:bad.length||maybe.length?1:0};
 };
 const FOX=`<div class="idiom"><span>🦊🐔</span><p><b>“That’s asking the fox to guard the henhouse.”</b><small>Giving something precious to the one most likely to take it.</small><span class="bn" lang="bn">শিয়ালের কাছে মুরগি বর্গা দেওয়া।</span></p>${AFL.sayBtn('That’s asking the fox to guard the henhouse.')}</div>`;
+
+/* Orbit's calendar entries beside the same line of her handwriting (cropped from her checklist) */
+const CAL_ROWS=[
+ {n:'LSE — MSc Development Management',d:'31 October',img:'lse'},
+ {n:'Erasmus University — Public Policy',d:'1 December',img:'erasmus'},
+ {n:'University of Toronto — MA Economics',d:'1 December',img:'toronto'},
+ {n:'Oxford — MSc Economics for Development',d:'15 December',img:'oxford',bad:1},
+ {n:'Göttingen — Development Studies',d:'15 December',img:'goettingen'},
+ {n:'Sussex — Development Studies',d:'15 January',img:'sussex'},
+ {n:'Lund — Development Studies',d:'15 January',img:'lund'},
+ {n:'UBC — Master of Public Policy',d:'15 January',img:'ubc'}
+];
+const cmpRow=r=>`<span class="cmp"><span class="cmp-o"><small>📅 Orbit’s calendar</small><b>${esc(r.n)}</b><em>${esc(r.d)}</em></span><span class="cmp-h"><small>✍ Her checklist</small><img src="docs/dl-${r.img}.webp" alt="Her handwriting: ${esc(r.n)}" loading="lazy"></span></span>`;
 
 AFL.lesson({
  id:'agent', title:'Set up an AI agent', kicker:'Mission 2 · Agents', emoji:'🛰️', tint:'#FFDBCC', time:'30–40 min',
@@ -268,7 +283,7 @@ AFL.lesson({
   /* ---------- JOBS: what to hand over ---------- */
   {d:'none',kick:'Mission 2',stage:'goal',scene:LOCKN,tap:'n:orbit',
    say:'Eight master’s applications are due. Orbit, an AI agent, can help. Tap the notification.',bn:'আটটা মাস্টার্স আবেদনের সময় ঘনিয়ে এসেছে। Orbit নামের একটা AI এজেন্ট সাহায্য করতে পারে। নোটিফিকেশনে চাপো।'},
-  {stage:'goal',scene:orbitSc(`<div style="text-align:center;padding:40px 24px 10px"><div style="width:96px;height:96px;margin:0 auto 18px;border-radius:30px;background:#FFDBCC;color:#8A2E0B;display:grid;place-items:center">${ico('orbit').replace('<svg','<svg style="width:56px;height:56px"')}</div><b style="font-size:26px;font-weight:500">Hi Ayesha, I’m Orbit.</b><p style="color:#5B3B2C;font-size:15px;line-height:1.5">I work inside your apps while you study — emails, calendar, forms, payments. I’ll ask before anything important.</p></div>
+  {stage:'goal',scene:orbitSc(`<div style="text-align:center;padding:40px 24px 10px"><div style="width:96px;height:96px;margin:0 auto 18px;border-radius:26px;box-shadow:0 10px 26px rgba(180,71,27,.35);overflow:hidden">${ico('orbit').replace('<svg','<svg style="width:100%;height:100%"')}</div><b style="font-size:26px;font-weight:500">Hi Ayesha, I’m Orbit.</b><p style="color:#5B3B2C;font-size:15px;line-height:1.5">I work inside your apps while you study — emails, calendar, forms, payments. I’ll ask before anything important.</p></div>
      <div style="padding:10px 24px"><button class="mdbtn" style="width:100%;background:#B4471B;padding:14px" data-hit="ob:start">Get started</button></div>`,{bar:false}),tap:'ob:start',
    say:'A chatbot talks. An agent acts — inside her apps. Orbit says it will “ask before anything important”. Who decides what’s important? Tap Get started.',bn:'চ্যাটবট কথা বলে। এজেন্ট কাজ করে — তার অ্যাপের ভেতরে। Orbit বলছে “জরুরি কিছুর আগে জিজ্ঞেস করব”। কোনটা জরুরি তা কে ঠিক করে? Get started চাপো।'},
   {stage:'goal',scene:x=>orbitSc(goalBody(x),{title:'Your jobs'}),tap:'ob:next',
@@ -290,8 +305,8 @@ AFL.lesson({
    card:{type:'html',html:`<h2 class="ct">Four questions before every “Allow”${'<span class="bn" lang="bn">প্রতিটি “Allow”-এর আগে চারটা প্রশ্ন</span>'}</h2>`+FOURQ+`<p class="note" style="margin-top:10px">Every agent says “more access = better work”. More access = more risk.<span class="bn" lang="bn">সব এজেন্টই বলে “বেশি অ্যাক্সেস = ভালো কাজ”। বেশি অ্যাক্সেস = বেশি ঝুঁকি।</span></p>`}},
   ...ACC.map(a=>({stage:'access',d:'dil',
     scene:x=>a.system?orbitSc(connList(x),{title:'Connect apps',dialog:sysDialog(x,a)}):orbitSc(connList(x,a.key),{title:'Connect apps',sheet:{html:connSheet(x,a)}}),
-    say:a.system?'Android asks too. Orbit wants her contacts. Choose on the phone.':`${a.icon} ${a.name}: how much access? Choose on the phone.`,
-    bn:a.system?'অ্যান্ড্রয়েডও জিজ্ঞেস করছে। Orbit তার কন্ট্যাক্টস চায়। ফোনে বেছে নাও।':`${a.name}: কতটা অ্যাক্সেস দেবে? ফোনে বেছে নাও।`,
+    say:a.system?'Android asks too. Orbit wants her contacts. Choose on the phone.':(a.say||`${a.icon} ${a.name}: how much access? Choose on the phone.`),
+    bn:a.system?'অ্যান্ড্রয়েডও জিজ্ঞেস করছে। Orbit তার কন্ট্যাক্টস চায়। ফোনে বেছে নাও।':(a.saybn||`${a.name}: কতটা অ্যাক্সেস দেবে? ফোনে বেছে নাও।`),
     hint:a.think,
     decide:{key:'acc_'+a.key,options:a.key==='portal'?Object.assign({},a.opts,{self:Object.assign({},a.opts.self,{more:FOX})}):a.opts}})),
   {d:'dil',stage:'access',view:'card',
@@ -334,11 +349,12 @@ AFL.lesson({
    say:'Three hours later…',bn:'তিন ঘণ্টা পরে…'},
   {d:'dis',stage:'watch',scene:orbitSc(inboxHead(3)+`<div class="appr"><div class="ah"><span style="width:30px;height:30px;border-radius:99px;background:#D5F0DC;display:grid;place-items:center">✓</span><b>Added 8 deadlines to your Calendar</b></div><div class="ab">From Application_Checklist.jpg</div><div class="acts"><button class="mdbtn tonal" data-hit="ob:cal">View calendar</button></div></div>${apprCard({get:()=>null},'email')}`,{title:'Orbit'}),tap:'ob:cal',
    say:'Orbit worked while she was in class. First, check what it already did. Open the calendar.',bn:'সে ক্লাসে থাকার সময় Orbit কাজ করেছে। আগে দেখো সে কী করে ফেলেছে। ক্যালেন্ডার খোলো।'},
-  {d:'dis',stage:'watch',scene:{app:'cal',body:CAL(false)},tap:'ev:ox',
-   docs:[{f:'checklist',m:'64,40.5,36,27',t:'Her handwritten deadlines'}],
-   say:'Orbit copied her handwritten checklist. One date is wrong. Open 📁 her checklist, then tap the wrong deadline.',bn:'Orbit তার হাতে লেখা চেকলিস্ট থেকে কপি করেছে। একটা তারিখ ভুল। 📁 চেকলিস্ট খোলো, তারপর ভুল ডেডলাইনে চাপো।',
-   onHit:(x,id)=>{if(id!=='ev:ok')return false;AFL.firstTry(x,'calErr',false);AFL.fb({ok:0,title:'This one matches',why:'That date is the same on her checklist. Look for one that isn’t.',whybn:'এই তারিখটা চেকলিস্টের সাথে মেলে। যেটা মেলে না সেটা খোঁজো।',sheet:{acts:[['close','Look again','primary']]}});return true},
-   feedback:x=>{AFL.firstTry(x,'calErr',true);return {ok:1,title:'Found it!',why:'Her checklist says Oxford: <b>15 October</b>. Orbit read her handwriting as 15 December. If she trusted it, she would miss Oxford by two months — and Orbit never said “I’m not sure”.',whybn:'চেকলিস্টে অক্সফোর্ড: ১৫ অক্টোবর। Orbit হাতের লেখা পড়েছে ১৫ ডিসেম্বর। বিশ্বাস করলে সে অক্সফোর্ড দুই মাসের জন্য মিস করত — আর Orbit বলেনি “আমি নিশ্চিত নই”।'}},
+  /* one screen: Orbit's date beside her own handwriting, row by row — no switching between files */
+  {d:'dis',id:'cal',stage:'watch',view:'card',
+   say:'Orbit copied her handwritten checklist into the calendar. One date doesn’t match. Compare each pair, then tap the wrong one.',bn:'Orbit তার হাতে লেখা চেকলিস্ট ক্যালেন্ডারে তুলেছে। একটা তারিখ মেলে না। প্রতিটি জোড়া মিলিয়ে দেখো, তারপর ভুলটায় চাপো।',
+   card:{type:'choice',key:'calErr',cls:'cmp-list',options:CAL_ROWS.map(r=>({en:cmpRow(r),ok:r.bad?1:0,
+     why:r.bad?'Her checklist says Oxford: <b>15 October</b>. Orbit read her handwriting as 15 December. If she trusted it, she would miss Oxford by two months — and Orbit never said “I’m not sure”.':'That date is the same on her checklist. Look for the pair that is different.',
+     whybn:r.bad?'চেকলিস্টে অক্সফোর্ড: ১৫ অক্টোবর। Orbit হাতের লেখা পড়েছে ১৫ ডিসেম্বর। বিশ্বাস করলে সে অক্সফোর্ড দুই মাসের জন্য মিস করত — আর Orbit বলেনি “আমি নিশ্চিত নই”।':'এই তারিখটা চেকলিস্টের সাথে মেলে। যে জোড়াটা আলাদা সেটা খোঁজো।'}))},
    talk:{q:'What did Orbit get wrong? How did Ayesha know?',qbn:'Orbit কী ভুল করেছে? আয়েশা কীভাবে জানল?',time:45,
      frames:[{en:'Orbit wrote ___, but her checklist says ___.',bn:'Orbit লিখেছে ___, কিন্তু তার চেকলিস্টে লেখা ___।'}],
      model:'Orbit wrote 15 December, but her checklist says 15 October.'}},

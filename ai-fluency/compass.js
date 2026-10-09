@@ -64,7 +64,7 @@ D4.svg=(o={})=>{
   const on=o.on, ang=o.angle||0;
   const gear=d=>{const [x,y]=POS[d];const lit=on==='all'||d===on, used=o.used&&o.used[d];
     return `<g class="gear g-${d}${lit?' on':''}${used?' used':''}" transform="translate(${x.toFixed(2)} ${y.toFixed(2)})">
-      ${lit&&on!=='all'?`<circle class="halo" r="${R+A+5}"/>`:''}
+      ${lit&&on!=='all'?`<circle class="ghalo" r="${R+A+5}"/>`:''}
       <g class="rot" style="--o:${PH[d]}deg;--s:${SPIN[d]}"><path class="teeth" d="${GEAR}"/><circle class="axle" r="${R-A-3}"/></g>
       <path class="sym" d="${ICON[d]}" transform="translate(-18 -18) scale(1.5)"/></g>`};
   return `<svg class="compass${o.cls?' '+o.cls:''}" viewBox="0 0 200 200" style="--ga:${ang}deg" role="img" aria-label="${esc(o.title||'The four Ds as gears')}">

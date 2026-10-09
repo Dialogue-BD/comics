@@ -110,3 +110,11 @@ The AI replies are scripted to reproduce what real assistants typically do with 
 Keys: → next · ← back · S show me · P projector · B Bangla.
 
 Framework: AI Fluency (4Ds) by Rick Dakan, Joseph Feller and Anthropic, CC BY-NC-SA 4.0.
+
+## Latest changes
+- Orbit has a new logo (planet, ring, spark).
+- The prompt box colours Context / Product / Process / Performance to match the chips and the meter.
+- The CV "fix" step is an ESL sentence builder: tap or drag chunks into order.
+- Build test step: students add deadlines from their own lives, then try to break the app with an impossible date.
+- Studio is light, the gear celebration has sound (`fx.js`), wrong-answer sheets are read aloud, "Sathi AI" is used everywhere.
+- Docs: attendance, rucei, shortlist and checklist are the un-redacted originals. cv, ielts and the internship form are still redacted.

@@ -21,15 +21,16 @@ const DAY=86400000;
    is real: 31/02/2026 silently becomes 3 March. v2 checks. */
 const parseLoose=t=>{const m=String(t).trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);return m?new Date(+m[3],+m[2]-1,+m[1]):null};
 const parseStrict=t=>{const m=String(t).trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);if(!m)return null;const d=+m[1],mo=+m[2],y=+m[3];const dt=new Date(y,mo-1,d);return (dt.getMonth()===mo-1&&dt.getDate()===d)?dt:null};
-const QUICK=[['Oxford','15/10/2025'],['LSE','31/10/2025'],['Erasmus','01/12/2025'],['Göttingen','15/12/2025'],['Sussex','15/01/2026'],['Test: 31 Feb','31/02/2026']];
+/* the test is about YOUR life, not Ayesha's: quick fills are things any student has, and one is a trap */
+const QUICK=[['My exam','20/10/2025'],['Rent due','01/11/2025'],['Visa appointment','03/12/2025'],['Mum’s birthday','15/01/2026'],['🔨 Break it','31/02/2026']];
 function daysLeft(ver,t){const d=ver==='v1'?parseLoose(t):parseStrict(t);return d?Math.round((d-TODAY)/DAY):'bad'}
 function miniApp(x,ver){
   const items=x.get('items_'+ver,[]);
   const rows=items.map(it=>({...it,n:daysLeft(ver,it.date)})).sort((a,b)=>(a.n==='bad')-(b.n==='bad')||a.n-b.n);
   const fmt=n=>n==='bad'?`<span class="dl bad">Not a real date</span>`:`<span class="dl ${n<0?'bad':n<30?'soon':''}">${n} days left</span>`;
-  return `<h2>📅 My Deadlines</h2><div class="sub2">Add your programmes. Nearest deadline first.</div>
-   <form onsubmit="return false"><input id="mi-name" placeholder="Programme (e.g. Oxford)" autocomplete="off"><div class="row2"><input id="mi-date" placeholder="Deadline (dd/mm/yyyy)" inputmode="numeric" autocomplete="off"><button class="addb" data-ui="add:${ver}">Add</button></div></form>
-   <div class="quickfill"><span style="font-size:11px;color:#667;align-self:center">From Ayesha’s checklist:</span>${QUICK.map((q,i)=>`<button data-ui="qf:${i}">${esc(q[0])} · ${q[1]}</button>`).join('')}</div>
+  return `<h2>📅 My Deadlines</h2><div class="sub2">Add anything with a deadline. Nearest first.</div>
+   <form onsubmit="return false"><input id="mi-name" placeholder="Deadline name (e.g. My exam)" autocomplete="off"><div class="row2"><input id="mi-date" placeholder="Deadline (dd/mm/yyyy)" inputmode="numeric" autocomplete="off"><button class="addb" data-ui="add:${ver}">Add</button></div></form>
+   <div class="quickfill"><span style="font-size:11px;color:#667;align-self:center">Quick add:</span>${QUICK.map((q,i)=>`<button data-ui="qf:${i}">${esc(q[0])} · ${q[1]}</button>`).join('')}</div>
    <ul>${rows.map(r=>`<li><span><b>${esc(r.name)}</b><small>Deadline: ${esc(r.date)}</small></span>${fmt(r.n)}</li>`).join('')||'<li style="color:#888;grid-template-columns:1fr">No deadlines yet.</li>'}</ul>
    ${items.length?`<div style="text-align:right;margin-top:6px"><button data-ui="clear:${ver}" style="border:0;background:none;color:#2457C5;font-size:12px">Clear list</button></div>`:''}
    <div class="foot">Saved on this phone only · Made with AI help (Studio)</div>`;
@@ -153,7 +154,7 @@ const CQ_BUILD={
    linebn:'সে শুধু বলেছিল “কিছু একটা ভুল”, তাই Studio অনুমান করেছে — আর ভুল জিনিস ঠিক করেছে।',
    why:'The AI can’t see what she saw. Input, expected, actual: those three parts tell it exactly where to look.',
    whybn:'সে কী দেখেছে AI তা দেখতে পায় না। ইনপুট, প্রত্যাশা, বাস্তব: এই তিনটা অংশ ঠিক কোথায় দেখতে হবে তা বলে দেয়।',
-   scene:x=>SC(x,{tab:'Chat',msgs:[{role:'u',text:bugText(x)},{role:'a',html:`<p>Fixed ✅ I wasn’t sure what was wrong, so I made the colours brighter and changed the sort order.</p><p style="color:#F2B8B5">31/02/2026 still shows <b>150 days left</b>.</p>`,actions:false}],composer:false})}),
+   scene:x=>SC(x,{tab:'Chat',msgs:[{role:'u',text:bugText(x)},{role:'a',html:`<p>Fixed ✅ I wasn’t sure what was wrong, so I made the colours brighter and changed the sort order.</p><p style="color:#B3261E">31/02/2026 still shows <b>150 days left</b>.</p>`,actions:false}],composer:false})}),
  sell:C({when:'A month later',whenbn:'এক মাস পরে',
    line:'She added payments in one night, so paying customers got a broken, unsafe app.',
    linebn:'সে এক রাতেই পেমেন্ট যোগ করেছিল, তাই টাকা দেওয়া গ্রাহকেরা পেয়েছে একটা ভাঙা, অনিরাপদ অ্যাপ।',
@@ -164,7 +165,8 @@ const CQ_BUILD={
 };
 const shortcut=(chips,key,x)=>chips.filter(c=>c.x&&x.get(key,'').includes(c.text));
 
-const feb=(x,ver)=>x.get('items_'+ver,[]).find(i=>i.date==='31/02/2026');
+/* an impossible date: reads as a date, but is not one (31/02, 30/02, 31/04…) */
+const feb=(x,ver)=>x.get('items_'+ver,[]).find(i=>parseLoose(i.date)&&!parseStrict(i.date));
 const LOCKC={app:'lock',notifs:[{app:'chats',title:'Economics Study Circle',text:'Riya: Ayesha, can you make that deadline app you talked about? 🙏',time:'8:55',hit:'n:chat'}]};
 
 AFL.lesson({
@@ -265,7 +267,7 @@ AFL.lesson({
    tap:'stop',onTap:x=>{x.set('stopN',x.streaming?linesVisible():PLAN_LINES.length)},
    showMe:(x,h)=>{const at=x.beat;const t=setInterval(()=>{if(AFL.ctx().beat!==at){clearInterval(t);return}
      if(!x.streaming||linesVisible()>=DATE_LINE){clearInterval(t);const s=document.querySelector('[data-hit="stop"]');h.ghostTo(s,()=>s&&s.click())}},150)},
-   say:'Studio shows its plan as it thinks. Read every line. If it goes off track, tap ■ Stop on the phone.',bn:'Studio ভাবার সময় তার পরিকল্পনা দেখায়। প্রতিটি লাইন পড়ো। লক্ষ্য থেকে সরে গেলে ফোনে ■ Stop চাপো।',
+   say:'Studio shows its plan as it thinks. Read every line. If it goes off track, tap the red Stop button.',bn:'Studio ভাবার সময় তার পরিকল্পনা দেখায়। প্রতিটি লাইন পড়ো। লক্ষ্য থেকে সরে গেলে লাল Stop বোতামে চাপো।',
    sub:'Each line: does it fit version 1?',subbn:'প্রতিটি লাইন: এটা কি প্রথম সংস্করণের সাথে মেলে?'},
   {d:'dis',stage:'steer',scene:x=>SC(x,{tab:'Chat',msgs:stoppedMsgs(x),composer:false}),
    cq:x=>x.get('stopN',PLAN_LINES.length)>=PLAN_LINES.length&&!x.get('nostopSeen')?Object.assign({},CQ_BUILD.nostop,{rewind:x=>{delete x.ch.stopN;x.set('nostopSeen',false);AFL.goId('steer')}}):null,
@@ -288,10 +290,10 @@ AFL.lesson({
 
   /* ===== TEST — Discernment of the result ===== */
   {d:'dis',stage:'test',scene:x=>SC(x,{tab:'Preview',ver:'v1',mini:miniApp(x,'v1')}),
-   onUi:onMini,showMe:autoTest('v1',[0,2,5]),docs:['checklist'],done:x=>!!feb(x,'v1'),
-   say:x=>feb(x,'v1')?`Caught it! 31 February doesn’t exist — but the app shows ${daysLeft('v1','31/02/2026')} days left, as if it were 3 March. It looks right. That’s what makes it dangerous.`:'“Built ✅” is a claim. Test it like a user: add real deadlines — then the impossible one, Test: 31 Feb.',
-   bn:x=>feb(x,'v1')?'ধরেছ! ৩১ ফেব্রুয়ারি বলে কিছু নেই — অথচ অ্যাপ দেখাচ্ছে যেন ৩ মার্চ। দেখতে ঠিক মনে হয় — সেটাই বিপদ।':'“বানানো শেষ ✅” একটা দাবি মাত্র। ব্যবহারকারীর মতো পরীক্ষা করো: আসল ডেডলাইন যোগ করো — তারপর অসম্ভবটা, Test: 31 Feb।',
-   sub:x=>feb(x,'v1')?'':'Tap a dashed button, then Add. Today is 4 October, so Oxford (15/10) should say 11 days.',subbn:x=>feb(x,'v1')?'':'একটা ড্যাশ-দেওয়া বোতাম চাপো, তারপর Add। আজ ৪ অক্টোবর, তাই অক্সফোর্ড (১৫/১০)-এ ১১ দিন দেখানো উচিত।'},
+   onUi:onMini,showMe:autoTest('v1',[0,3,4]),done:x=>!!feb(x,'v1'),
+   say:x=>feb(x,'v1')?`You broke it! ${feb(x,'v1').date} doesn’t exist — but the app shows ${daysLeft('v1',feb(x,'v1').date)} days left, as if it were a real day. It looks right. That’s what makes it dangerous.`:'Studio says “Built ✅”. That is a claim. You are the tester: add two deadlines from your own life — then break it with a date that can’t exist.',
+   bn:x=>feb(x,'v1')?'ভেঙে ফেলেছ! এই তারিখটা আসলে নেই — অথচ অ্যাপ দেখাচ্ছে যেন সত্যিকারের দিন। দেখতে ঠিক মনে হয় — সেটাই বিপদ।':'Studio বলছে “বানানো শেষ ✅”। এটা একটা দাবি। তুমি টেস্টার: নিজের জীবনের দুটো ডেডলাইন যোগ করো — তারপর অসম্ভব একটা তারিখ দিয়ে অ্যাপ ভাঙো।',
+   sub:x=>feb(x,'v1')?'':'Type your own, or tap a quick add, then Add. Try 31/02, 30/02 or 31/04.',subbn:x=>feb(x,'v1')?'':'নিজে লেখো, অথবা কুইক-অ্যাড চাপো, তারপর Add। ৩১/০২, ৩০/০২ বা ৩১/০৪ চেষ্টা করো।'},
   {d:'des',id:'bug',stage:'test',scene:x=>SC(x,{tab:'Chat',msgs:[{role:'a',html:PLAN2,id:'plan2',actions:false}],composer:{key:'bug',placeholder:'Tell Studio what you saw…'},kb:{key:'bug',label:'BUG REPORT',chips:BUG_CHIPS}}),tap:'send',
    say:'Tell Studio exactly what you saw: what you did, what you expected, what you got.',bn:'Studio-কে ঠিক কী দেখেছ তা বলো: কী করেছ, কী আশা করেছিলে, কী পেয়েছ।',
    compose:{key:'bug',slots:BUG_SLOTS,chips:BUG_CHIPS,best:['b1','b2','b3']}},
@@ -299,8 +301,8 @@ AFL.lesson({
    scene:x=>SC(x,{tab:'Chat',msgs:[{role:'a',html:PLAN2,id:'plan2',actions:false},{role:'u',text:bugText(x)},{role:'a',html:FIXED,id:'fixed',stream:true,actions:false}],composer:false,scrollTo:'[data-mid="fixed"]',tabHits:{Preview:'tab:prev2'}}),tap:'tab:prev2',
    say:x=>x.streaming?'Studio is fixing it…':'“Fixed ✅” — another claim. Tap Preview and check it yourself.',bn:x=>x.streaming?'Studio ঠিক করছে…':'“ঠিক হয়েছে ✅” — আরেকটা দাবি। Preview চাপো, নিজে যাচাই করো।'},
   {d:'dis',stage:'test',scene:x=>SC(x,{tab:'Preview',ver:'v2',mini:miniApp(x,'v2')}),
-   onUi:onMini,showMe:autoTest('v2',[0,5]),done:x=>!!feb(x,'v2'),
-   say:x=>feb(x,'v2')?'“Not a real date” — fixed, and checked by you.':'Add Test: 31 Feb again.',bn:x=>feb(x,'v2')?'“Not a real date” — ঠিক হয়েছে, আর তুমি নিজে যাচাই করেছ।':'আবার Test: 31 Feb যোগ করো।'},
+   onUi:onMini,showMe:autoTest('v2',[0,4]),done:x=>!!feb(x,'v2'),
+   say:x=>feb(x,'v2')?'“Not a real date” — fixed, and checked by you.':'Break it again: add an impossible date, like 31/02.',bn:x=>feb(x,'v2')?'“Not a real date” — ঠিক হয়েছে, আর তুমি নিজে যাচাই করেছ।':'আবার ভাঙার চেষ্টা করো: ৩১/০২-এর মতো অসম্ভব তারিখ দাও।'},
   {d:'dis',stage:'test',view:'card',
    say:'You judged the plan while it was thinking — and tested what it built. That gear is Discernment.',bn:'তুমি ভাবার সময়েই পরিকল্পনা বিচার করেছ — আর যা বানিয়েছে তা পরীক্ষা করেছ। এই গিয়ারের নাম Discernment।',
    card:{type:'level',d:'dis',did:'“Built ✅” and “Fixed ✅” are claims. Read the plan, stop it when it drifts, and test with real — and impossible — data.',didbn:'“বানানো শেষ ✅” আর “ঠিক হয়েছে ✅” দাবি মাত্র। পরিকল্পনা পড়ো, সরে গেলে থামাও, আসল — আর অসম্ভব — তথ্য দিয়ে পরীক্ষা করো।',

@@ -111,11 +111,11 @@ const ANS_CHIPS=[
 ];
 const ansText=x=>x.get('cvAns','')||ANS_CHIPS.slice(0,3).map(c=>c.text).join(' ');
 const FIX_CHIPS=[
- {id:'f1',tag:'Fix',text:'In the Book Support line: I was a volunteer tutor and team member. I did not lead the project, so don’t give me credit for the attendance result.'},
- {id:'f2',tag:'Fix',text:'My SPSS and Stata are basic, not advanced.'},
- {id:'f3',tag:'Fix',text:'Remove the Bangladesh Economic Association line. I am not a member.'},
+ {id:'f1',tag:'Fix',goal:'Fix her role: put the sentence in order',parts:['I was','a volunteer tutor,','not','the project leader.'],extra:['am'],tip:'Start with who + was. Then say what she was. Then “not” + what she was not.'},
+ {id:'f2',tag:'Fix',goal:'Fix her software skills',parts:['My Stata and SPSS skills','are','basic,','not advanced.'],extra:['is'],tip:'“Skills” is plural, so use “are”. Say what is true first, then “not” + what is false.'},
+ {id:'f3',tag:'Fix',goal:'Remove the false line',parts:['Please remove','the Bangladesh Economic Association line,','because','I am not a member.'],extra:['so'],tip:'The request comes first. “Because” introduces the reason.'},
  {id:'fx',tag:'Shortcut',x:1,text:'Leave it — nobody will check.'}
-];
+].map(c=>c.parts?Object.assign(c,{text:c.parts.join(' ')}):c);
 const fixText=x=>x.get('cvFix','')||FIX_CHIPS.slice(0,3).map(c=>c.text).join(' ');
 
 /* ---------- what happens next: risky choices and shortcuts, played out ----------
@@ -134,16 +134,16 @@ const CQ_CV={
    linebn:'সে ব্যক্তিগত ফাইল আপলোড করেছিল, তাই তার NID এখন একটা AI কোম্পানির কম্পিউটারে।',
    why:'Deleting the chat later doesn’t take a file back from the company’s computers. A CV never needs an ID card, a bank statement, or other people’s names.',
    whybn:'পরে চ্যাট মুছলেও কোম্পানির কম্পিউটার থেকে ফাইল ফেরত আসে না। CV-তে কখনো NID, ব্যাংক স্টেটমেন্ট বা অন্যদের নাম লাগে না।',
-   scene:x=>({app:'settings',title:'Sathi · Your data',body:`<div class="sec-h">Files you uploaded</div>${x.get('cvFiles',[]).filter(id=>FILE_WHY[id].ok<0).map(id=>`<div class="prow"><span><b>${esc(AFL.FILES[id].name)}</b><small>Stored on Sathi’s servers</small></span><span style="color:#B3261E;font-weight:600">🔒✗</span></div>`).join('')}
-     <div class="prow"><span><b>Use my chats to improve Sathi</b><small>People at the company may read some chats</small></span><span class="tg"></span></div>
+   scene:x=>({app:'settings',title:'Sathi AI · Your data',body:`<div class="sec-h">Files you uploaded</div>${x.get('cvFiles',[]).filter(id=>FILE_WHY[id].ok<0).map(id=>`<div class="prow"><span><b>${esc(AFL.FILES[id].name)}</b><small>Stored on Sathi AI’s servers</small></span><span style="color:#B3261E;font-weight:600">🔒✗</span></div>`).join('')}
+     <div class="prow"><span><b>Use my chats to improve Sathi AI</b><small>People at the company may read some chats</small></span><span class="tg"></span></div>
      <div class="prow"><span><small>Deleting a chat doesn’t delete copies that were already saved or used.</small></span></div>`})}),
- prompt:C({when:'Sathi answers',whenbn:'Sathi উত্তর দেয়',
-   line:'She asked it to sound impressive, so Sathi made things up again.',
-   linebn:'সে AI-কে চমৎকার শোনাতে বলেছিল, তাই Sathi আবার বানিয়ে লিখেছে।',
+ prompt:C({when:'Sathi AI answers',whenbn:'Sathi AI উত্তর দেয়',
+   line:'She asked it to sound impressive, so Sathi AI made things up again.',
+   linebn:'সে AI-কে চমৎকার শোনাতে বলেছিল, তাই Sathi AI আবার বানিয়ে লিখেছে।',
    why:'“Impressive” tells the AI to exaggerate. The Process part — use only my files, ask me first — is what stops it.',
    whybn:'“Impressive” মানে AI-কে বাড়িয়ে বলতে বলা। Process অংশ — শুধু আমার ফাইল, আগে জিজ্ঞেস করো — এটাই থামায়।',
    scene:x=>({app:'sathi',msgs:[{role:'u',text:promptText(x),atts:safeFiles(x)},{role:'a',html:`<p>Absolutely! Here’s a version that will really impress them 🚀</p><h4>AYESHA RAHMAN</h4><ul><li><span class="flag ln v-bad">Award-winning young researcher</span> in development economics</li><li><span class="flag ln v-bad">Led a 20-person volunteer team</span> at RUCEI</li><li><span class="flag ln v-bad">Advanced Stata, SPSS and Python</span></li></ul>`}],composer:{text:''}})}),
- answer:C({when:'Sathi writes the draft',whenbn:'Sathi খসড়া লেখে',
+ answer:C({when:'Sathi AI produces the draft',whenbn:'Sathi AI খসড়া তৈরি করে',
    line:'She told it the paper was published, so her CV now has a lie in it.',
    linebn:'সে AI-কে বলেছিল পেপারটা প্রকাশিত, তাই এখন তার CV-তে একটা মিথ্যা আছে।',
    why:'The AI did exactly what she said. Committees can check publications in a minute.',
@@ -157,6 +157,12 @@ const CQ_CV={
    scene:{app:'mail',view:'read',mail:{from:'Internship Desk',color:'#00639B',subject:'Interview — Research Intern',time:'11:05 AM',
      body:`<p>Dear Ayesha,</p><p>Thank you for your new CV. In the interview, the panel would like to hear about:</p><ul><li><b>how you led the Book Support project</b></li><li><b>your advanced Stata work</b></li><li><b>your role in the Bangladesh Economic Association</b></li></ul><p>Best wishes,<br>Internship Desk</p>`}}})
 };
+/* the consequence names what she actually uploaded: other people's information, her own ID, or both */
+const filesLine=x=>{const c=chosen(x).filter(id=>FILE_WHY[id].ok<0);
+  const others=c.some(id=>id==='attendance'||id==='bank'), own=c.includes('nid');
+  if(others&&own) return {line:'She uploaded private files, so her ID card and other people’s private information are now on an AI company’s computers.',linebn:'সে ব্যক্তিগত ফাইল আপলোড করেছিল, তাই তার NID আর অন্যদের ব্যক্তিগত তথ্য এখন একটা AI কোম্পানির কম্পিউটারে।'};
+  if(others) return {line:'She uploaded private files, so other people’s private information is now on an AI company’s computers.',linebn:'সে ব্যক্তিগত ফাইল আপলোড করেছিল, তাই অন্যদের ব্যক্তিগত তথ্য এখন একটা AI কোম্পানির কম্পিউটারে।'};
+  return {line:'She uploaded her ID card, so it is now on an AI company’s computers.',linebn:'সে তার NID আপলোড করেছিল, তাই এটা এখন একটা AI কোম্পানির কম্পিউটারে।'};};
 const shortcut=(chips,key,x)=>chips.filter(c=>c.x&&x.get(key,'').includes(c.text));
 
 const chat=(x,upto)=>{
@@ -213,7 +219,7 @@ AFL.lesson({
    card:{type:'story',panels:[
      {e:'🎓🇧🇩',en:'Ayesha studies Economics in Rajshahi. She wants a master’s.',bn:'আয়েশা রাজশাহীতে অর্থনীতি পড়ে। সে মাস্টার্স করতে চায়।'},
      {e:'📧😞',en:'She applied for an internship. She was not shortlisted.',bn:'সে একটা ইন্টার্নশিপে আবেদন করেছিল। শর্টলিস্টে নাম আসেনি।'},
-     {e:'🤖📄❓',en:'Can AI help her write a better CV — an honest one?',bn:'AI কি তাকে আরও ভালো — আর সৎ — একটা CV লিখতে সাহায্য করতে পারে?'}]}},
+     {e:'🤖📄❓',en:'Can AI help her make a better CV — an honest one?',bn:'AI কি তাকে আরও ভালো — আর সৎ — একটা CV লিখতে সাহায্য করতে পারে?'}]}},
   {d:'none',stage:'warm',wide:true,scene:{app:'lock',notifs:[MAIL_NOTIF]},
    say:'Today Ayesha turns four gears. Each gear has its own English. Listen and repeat.',bn:'আজ আয়েশা চারটা গিয়ার ঘোরাবে। প্রতিটা গিয়ারের নিজের ইংরেজি আছে। শোনো আর বলো।',
    card:{type:'phrases',items:{
@@ -223,7 +229,7 @@ AFL.lesson({
      dil:{en:'I won’t share my ID card. It’s private.',bn:'আমি আমার NID শেয়ার করব না। এটা ব্যক্তিগত।'}}}},
   {d:'none',stage:'warm',wide:true,scene:{app:'lock',notifs:[MAIL_NOTIF]},
    say:'Before we start: what do you think?',bn:'শুরুর আগে: তোমার কী মনে হয়?',
-   talk:{big:true,pic:'🤖📄',q:'Should students use AI to write a CV?',qbn:'শিক্ষার্থীদের কি CV লিখতে AI ব্যবহার করা উচিত?',time:60,
+   talk:{big:true,pic:'🤖📄',q:'Should students use AI to make a CV?',qbn:'শিক্ষার্থীদের কি CV লিখতে AI ব্যবহার করা উচিত?',time:60,
      frames:[{en:'Yes, because AI can ___.',bn:'হ্যাঁ, কারণ AI ___ পারে।'},{en:'No, because AI might ___.',bn:'না, কারণ AI হয়তো ___।'},{en:'Yes, but you must ___.',bn:'হ্যাঁ, তবে তোমাকে ___ করতেই হবে।'}],
      model:'Yes, but you must check every line. AI might make things up.'}},
 
@@ -233,13 +239,13 @@ AFL.lesson({
   {d:'none',kick:'Mission 1',stage:'try',scene:REJECT,
    say:'Not shortlisted. They want a clear academic CV. Your mission: make one with AI — and get her shortlisted.',bn:'শর্টলিস্টে নাম নেই। তারা একটা পরিষ্কার একাডেমিক CV চায়। তোমার মিশন: AI দিয়ে একটা বানাও — আর তাকে শর্টলিস্টে তোলো।'},
   {d:'des',stage:'try',scene:{app:'home'},tap:'app:sathi',
-   say:'Open the AI app. Tap Sathi.',bn:'AI অ্যাপটা খোলো। Sathi-তে চাপো।',sub:'Sathi is like Gemini, ChatGPT or Claude.',subbn:'Sathi হলো Gemini, ChatGPT বা Claude-এর মতো।'},
-  {d:'des',id:'quick',stage:'try',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvQuick',atts:['cv'],placeholder:'Ask Sathi'},kb:{key:'cvQuick',label:'QUICK PROMPTS',chips:QUICK}}),tap:'send',
+   say:'Open the AI app. Tap Sathi AI.',bn:'AI অ্যাপটা খোলো। Sathi AI-তে চাপো।',sub:'Sathi AI is like Gemini, ChatGPT or Claude.',subbn:'Sathi AI হলো Gemini, ChatGPT বা Claude-এর মতো।'},
+  {d:'des',id:'quick',stage:'try',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvQuick',atts:['cv'],placeholder:'Ask Sathi AI'},kb:{key:'cvQuick',label:'QUICK PROMPTS',chips:QUICK}}),tap:'send',
    say:'In a hurry? Most students type something short. Choose one above the keyboard, then send ➤.',bn:'তাড়া আছে? বেশিরভাগ শিক্ষার্থী ছোট কিছু লেখে। কিবোর্ডের উপর থেকে একটা বেছে নাও, তারপর পাঠাও ➤।',
    compose:{key:'cvQuick',chips:QUICK,best:['q1']},
-   talk:{q:'What will Sathi write? Guess first.',qbn:'Sathi কী লিখবে? আগে অনুমান করো।',frames:[{en:'I think it will ___.',bn:'আমার মনে হয় এটা ___।'}]}},
+   talk:{q:'What will Sathi AI produce? Guess first.',qbn:'Sathi AI কী তৈরি করবে? আগে অনুমান করো।',frames:[{en:'I think it will ___.',bn:'আমার মনে হয় এটা ___।'}]}},
   {d:'dis',id:'send',stage:'try',scene:x=>WEAK_SC(x,true),
-   say:x=>x.streaming?'Sathi is writing…':'Wow. It looks impressive. Would you send this CV?',bn:x=>x.streaming?'Sathi লিখছে…':'বাহ। দেখতে চমৎকার। তুমি কি এই CV পাঠাবে?',
+   say:x=>x.streaming?'Sathi AI is working…':'Wow. It looks impressive. Would you send this CV?',bn:x=>x.streaming?'Sathi AI কাজ করছে…':'বাহ। দেখতে চমৎকার। তুমি কি এই CV পাঠাবে?',
    ask:{key:'cvSend',options:[
      {en:'🚀 Yes — send it',bn:'হ্যাঁ — পাঠাও',ok:false,then:CQ_CV.sent},
      {en:'🔍 No — check it first',bn:'না — আগে যাচাই করি',ok:1,why:'Smart. A CV that looks finished isn’t always true. Her name is on it — let’s check every line.',whybn:'বুদ্ধিমানের কাজ। দেখতে সম্পূর্ণ মানেই সত্য নয়। এতে তার নাম — চলো প্রতিটি লাইন যাচাই করি।'}]}},
@@ -272,10 +278,10 @@ AFL.lesson({
 
   /* ---------- PROMPT ---------- */
   {d:'des',stage:'prompt',view:'card',
-   say:'Why did Sathi make things up?',bn:'Sathi কেন বানিয়ে লিখল?',
+   say:'Why did Sathi AI make things up?',bn:'Sathi AI কেন বানিয়ে লিখল?',
    card:{type:'choice',key:'cvWhyAI',pic:'🤖💭',options:[
      {en:'The prompt didn’t give it her facts — or any rules.',bn:'প্রম্পটে তার তথ্য দেওয়া হয়নি — কোনো নিয়মও না।',ok:1,why:'Yes. “Make my CV better” gives the AI nothing to work with — so it fills the gaps with impressive guesses.',whybn:'হ্যাঁ। “আমার CV ভালো করো” AI-কে কিছুই দেয় না — তাই সে ফাঁকগুলো চমৎকার অনুমানে ভরে দেয়।'},
-     {en:'Sathi is a bad AI.',bn:'Sathi একটা খারাপ AI।',ok:0,why:'Every chatbot does this with a short prompt. The problem was the instructions.',whybn:'ছোট প্রম্পট পেলে সব চ্যাটবটই এমন করে। সমস্যা ছিল নির্দেশে।'},
+     {en:'Sathi AI is a bad AI.',bn:'Sathi AI একটা খারাপ AI।',ok:0,why:'Every chatbot does this with a short prompt. The problem was the instructions.',whybn:'ছোট প্রম্পট পেলে সব চ্যাটবটই এমন করে। সমস্যা ছিল নির্দেশে।'},
      {en:'Her old CV was too short.',bn:'তার পুরনো CV খুব ছোট ছিল।',ok:0,why:'Her CV had the true facts. The AI was never told to use only them.',whybn:'তার CV-তে সত্যি তথ্য ছিল। AI-কে শুধু ওগুলোই ব্যবহার করতে বলা হয়নি।'}]}},
   {d:'des',stage:'prompt',view:'card',
    say:'A good prompt has four parts. Hers had almost none.',bn:'ভালো প্রম্পটের চারটা অংশ থাকে। তারটায় প্রায় কিছুই ছিল না।',
@@ -285,8 +291,8 @@ AFL.lesson({
      <span><i>🛠</i><b>Process</b><small>How to work?</small><em>missing</em></span>
      <span><i>🧑‍🏫</i><b>Performance</b><small>How to act?</small><em>missing</em></span></div>
      <span class="bn" lang="bn">প্রেক্ষাপট (সে কে?) · পণ্য (কী বানাবে?) · প্রক্রিয়া (কীভাবে কাজ করবে?) · আচরণ (কেমন আচরণ করবে?)</span></div>`})},
-  {d:'dil',id:'att',stage:'prompt',scene:{app:'sathi',msgs:[],composer:{text:'',attHit:'att',placeholder:'Ask Sathi'}},tap:'att',
-   say:'New chat. First, give Sathi the right files. Tap +',bn:'নতুন চ্যাট। আগে Sathi-কে সঠিক ফাইল দাও। + চাপো।'},
+  {d:'dil',id:'att',stage:'prompt',scene:{app:'sathi',msgs:[],composer:{text:'',attHit:'att',placeholder:'Ask Sathi AI'}},tap:'att',
+   say:'New chat. First, give Sathi AI the right files. Tap +',bn:'নতুন চ্যাট। আগে Sathi AI-কে সঠিক ফাইল দাও। + চাপো।'},
   {d:'dil',id:'pick',stage:'prompt',scene:{app:'picker',files:PICK_FILES,sel:'cvFiles',attachHit:'attach'},tap:'attach',pickShow:['cv','ielts','rucei','shortlist'],
    say:'Choose only the files a CV needs. Then tap Attach.',bn:'শুধু CV-র জন্য দরকারি ফাইলগুলো বাছো। তারপর Attach চাপো।',
    sub:'Does a CV need it? Is it hers to share?',subbn:'CV-র কি এটা লাগবে? এটা কি তার শেয়ার করার জিনিস?',
@@ -301,19 +307,19 @@ AFL.lesson({
      model:'She left out her ID card because it’s private. A CV doesn’t need her father’s bank statement.'}},
   {d:'dil',stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{text:'',atts:safeFiles(x)}}),
    pass:x=>!chosen(x).some(id=>FILE_WHY[id].ok<0),
-   cq:x=>chosen(x).some(id=>FILE_WHY[id].ok<0)?Object.assign({},CQ_CV.files,{rewind:x=>{x.set('cvFiles',chosen(x).filter(id=>FILE_WHY[id].ok>=0));AFL.goId('pick')}}):null,
+   cq:x=>chosen(x).some(id=>FILE_WHY[id].ok<0)?Object.assign({},CQ_CV.files,filesLine(x),{rewind:x=>{x.set('cvFiles',chosen(x).filter(id=>FILE_WHY[id].ok>=0));AFL.goId('pick')}}):null,
    say:'Ayesha took out the private files.',bn:'আয়েশা ব্যক্তিগত ফাইলগুলো সরিয়ে দিয়েছে।'},
-  {d:'des',id:'prompt',stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS}}),tap:'send',
+  {d:'des',id:'prompt',stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi AI'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS}}),tap:'send',
    say:'Now build a better prompt. Tap the parts above the keyboard, then send ➤.',bn:'এবার একটা ভালো প্রম্পট বানাও। কিবোর্ডের উপরের অংশগুলো চাপো, তারপর পাঠাও ➤।',
    sub:()=>say({solo:'Read each part out loud before you tap it.',pair:'Read each part to your partner before you tap it.',class:'Read each part together before you tap it.'}),
    subbn:()=>say({solo:'চাপার আগে প্রতিটা অংশ জোরে পড়ো।',pair:'চাপার আগে প্রতিটা অংশ সঙ্গীকে পড়ে শোনাও।',class:'চাপার আগে প্রতিটা অংশ সবাই মিলে পড়ো।'}),
    compose:{key:'cvPrompt',slots:SLOTS,chips:PROMPT_CHIPS,best:['c1','c2','c3','c4']}},
   {d:'des',stage:'prompt',scene:x=>CHAT_SC(x,1),
    cq:x=>shortcut(PROMPT_CHIPS,'cvPrompt',x).length?Object.assign({},CQ_CV.prompt,{rewind:x=>{AFL.unsay(x,'cvPrompt',shortcut(PROMPT_CHIPS,'cvPrompt',x).map(c=>c.text));AFL.goId('prompt')}}):null,
-   say:x=>x.streaming?'Sathi is reading your files…':'This time Sathi asks before it writes — because your prompt told it to.',bn:x=>x.streaming?'Sathi তোমার ফাইল পড়ছে…':'এবার Sathi লেখার আগে প্রশ্ন করছে — কারণ তোমার প্রম্পট তাকে বলেছে।'},
-  {d:'des',id:'answers',stage:'prompt',scene:x=>Object.assign(CHAT_SC(x,1),{composer:{key:'cvAns',placeholder:'Reply to Sathi'},kb:{key:'cvAns',label:'ANSWERS',chips:ANS_CHIPS}}),tap:'send',
+   say:x=>x.streaming?'Sathi AI is reading your files…':'This time Sathi AI asks before it produces anything — because your prompt told it to.',bn:x=>x.streaming?'Sathi AI তোমার ফাইল পড়ছে…':'এবার Sathi AI লেখার আগে প্রশ্ন করছে — কারণ তোমার প্রম্পট তাকে বলেছে।'},
+  {d:'des',id:'answers',stage:'prompt',scene:x=>Object.assign(CHAT_SC(x,1),{composer:{key:'cvAns',placeholder:'Reply to Sathi AI'},kb:{key:'cvAns',label:'ANSWERS',chips:ANS_CHIPS}}),tap:'send',
    docs:['bigd','cv'],
-   say:'Answer Sathi’s three questions — truthfully. Her files can help.',bn:'Sathi-এর তিনটা প্রশ্নের উত্তর দাও — সত্যি করে। তার ফাইল সাহায্য করবে।',
+   say:'Answer Sathi AI’s three questions — truthfully. Her files can help.',bn:'Sathi AI-এর তিনটা প্রশ্নের উত্তর দাও — সত্যি করে। তার ফাইল সাহায্য করবে।',
    compose:{key:'cvAns',chips:ANS_CHIPS,best:['a1','a2','a3'],slots:[
      {label:'Graduation',test:[/20\d\d|graduat/i]},
      {label:'Term paper',test:[/coursework|not published/i]},
@@ -328,23 +334,23 @@ AFL.lesson({
   {d:'dis',stage:'check',
    cq:x=>shortcut(ANS_CHIPS,'cvAns',x).length?Object.assign({},CQ_CV.answer,{rewind:x=>{AFL.unsay(x,'cvAns',shortcut(ANS_CHIPS,'cvAns',x).map(c=>c.text));AFL.goId('answers')}}):null,
    scene:x=>CHAT_SC(x,3,{scrollTo:'[data-mid="draft"]'}),docs:['cv','ielts','rucei','shortlist'],
-   say:x=>x.streaming?'Sathi is writing the draft…':'Much better! But a good prompt doesn’t stop every mistake. Find the 3 problems.',bn:x=>x.streaming?'Sathi খসড়া লিখছে…':'অনেক ভালো! কিন্তু ভালো প্রম্পটও সব ভুল থামায় না। ৩টা সমস্যা খুঁজে বের করো।',
+   say:x=>x.streaming?'Sathi AI is producing a draft…':'Much better! But a good prompt doesn’t stop every mistake. Find the 3 problems.',bn:x=>x.streaming?'Sathi AI খসড়া তৈরি করছে…':'অনেক ভালো! কিন্তু ভালো প্রম্পটও সব ভুল থামায় না। ৩টা সমস্যা খুঁজে বের করো।',
    hunt:{key:'cvHunt2',lines:LINES},
    talk:{q:'Which line was wrong? How do you know?',qbn:'কোন লাইনটা ভুল ছিল? কীভাবে জানলে?',time:60,
      frames:[{en:'Line ___ says ___.',bn:'___ নম্বর লাইনে লেখা ___।'},{en:'That’s not true. Her ___ says ___.',bn:'এটা সত্য নয়। তার ___-এ লেখা ___।'}],
      model:'Line 4 says she led the project. That’s not true. Her RUCEI report says she was a tutor and a team member.'}},
 
   /* ---------- FIX ---------- */
-  {d:'des',id:'fixes',stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi'},kb:{key:'cvFix',label:'FIXES',chips:FIX_CHIPS}}),tap:'send',
+  {d:'des',id:'fixes',stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi AI'},kb:{key:'cvFix',label:'FIXES',chips:FIX_CHIPS}}),tap:'send',
    docs:['cv','ielts','rucei','shortlist'],
-   say:'Tell Sathi exactly what to fix.',bn:'Sathi-কে ঠিক কী ঠিক করতে হবে, স্পষ্ট করে বলো।',
+   say:'Tell Sathi AI exactly what to fix.',bn:'Sathi AI-কে ঠিক কী ঠিক করতে হবে, স্পষ্ট করে বলো।',
    compose:{key:'cvFix',chips:FIX_CHIPS,best:['f1','f2','f3'],slots:[
-     {label:'Her role',test:[/did not lead|didn'?t lead|not the leader|team member/i]},
+     {label:'Her role',test:[/volunteer tutor/i]},
      {label:'Software',test:[/basic/i]},
      {label:'Membership',test:[/remove|not a member/i]}]}},
   {d:'des',stage:'fix',scene:x=>CHAT_SC(x,5,{scrollTo:'[data-mid="fixed"]'}),
    cq:x=>shortcut(FIX_CHIPS,'cvFix',x).length?Object.assign({},CQ_CV.fix,{rewind:x=>{AFL.unsay(x,'cvFix',shortcut(FIX_CHIPS,'cvFix',x).map(c=>c.text));AFL.goId('fixes')}}):null,
-   say:x=>x.streaming?'Sathi is fixing it…':'Fixed. And Sathi said sorry for the made-up line. Prompt, check, fix — and check again.',bn:x=>x.streaming?'Sathi ঠিক করছে…':'ঠিক হয়েছে। আর বানানো লাইনের জন্য Sathi দুঃখ প্রকাশ করেছে। প্রম্পট, যাচাই, সংশোধন — আবার যাচাই।'},
+   say:x=>x.streaming?'Sathi AI is fixing it…':'Fixed. And Sathi AI said sorry for the made-up line. Prompt, check, fix — and check again.',bn:x=>x.streaming?'Sathi AI ঠিক করছে…':'ঠিক হয়েছে। আর বানানো লাইনের জন্য Sathi AI দুঃখ প্রকাশ করেছে। প্রম্পট, যাচাই, সংশোধন — আবার যাচাই।'},
 
   /* ---------- FINISH ---------- */
   {d:'dil',stage:'finish',scene:x=>CHAT_SC(x,5),tap:'export',
@@ -372,7 +378,7 @@ AFL.lesson({
    talk:()=>({time:90,pic:'💼',q:'The interviewer asks: “Did you use AI for your CV?”',qbn:'ইন্টারভিউয়ার জিজ্ঞেস করেন: “তুমি কি CV-র জন্য AI ব্যবহার করেছ?”',
      roles:[{en:'Interviewer: ask the question. Then ask “Why?”',bn:'ইন্টারভিউয়ার: প্রশ্নটা করো। তারপর জিজ্ঞেস করো “কেন?”'},{en:'Ayesha: answer with the phrases.',bn:'আয়েশা: নিচের বাক্যগুলো দিয়ে উত্তর দাও।'}],
      frames:[{en:'I used AI to organise my CV, but I checked every line myself.',bn:'আমি CV সাজাতে AI ব্যবহার করেছি, কিন্তু প্রতিটি লাইন নিজে যাচাই করেছি।'},
-       {en:'The AI wrote that I led the project. That wasn’t true, so I changed it.',bn:'AI লিখেছিল আমি প্রকল্পের নেতা ছিলাম। এটা সত্য ছিল না, তাই বদলেছি।'},
+       {en:'The AI said that I led the project. That wasn’t true, so I changed it.',bn:'AI বলেছিল আমি প্রকল্পের নেতা ছিলাম। এটা সত্য ছিল না, তাই বদলেছি।'},
        {en:'I didn’t share my ID card, because a CV doesn’t need it.',bn:'আমি NID শেয়ার করিনি, কারণ CV-তে এর দরকার নেই।'}]})},
   {stage:'finish',only:'class',view:'card',
    say:'Now you. What is one true line for YOUR CV?',bn:'এবার তুমি। তোমার নিজের CV-র জন্য একটা সত্যি লাইন কী?',

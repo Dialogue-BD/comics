@@ -62,7 +62,9 @@ const P={
  git:'M21.6 11.1 12.9 2.4a1.4 1.4 0 0 0-2 0L9.1 4.2l2.3 2.3a1.6 1.6 0 0 1 2.1 2.1l2.2 2.2a1.6 1.6 0 1 1-1 1l-2.1-2.1v5.4a1.6 1.6 0 1 1-1.3-.1V9.5a1.6 1.6 0 0 1-.9-2.2L8.2 5 2.4 10.9a1.4 1.4 0 0 0 0 2l8.7 8.7a1.4 1.4 0 0 0 2 0l8.5-8.5a1.4 1.4 0 0 0 0-2z',
  tune:'M3 17v2h6v-2zM3 5v2h10V5zm10 16v-2h8v-2h-8v-2h-2v6zM7 9v2H3v2h4v2h2V9zm14 4v-2H11v2zm-6-4h2V7h4V5h-4V3h-2z'
 };
-const ico=(n,cls='')=>`<svg viewBox="0 0 24 24" class="${cls}" aria-hidden="true"><path d="${P[n]||P.info}" fill="currentColor"/></svg>`;
+/* Orbit's logo: a warm planet circled by a ring, with one bright satellite — the agent that keeps going around while you're away */
+const ORBIT_LOGO=`<svg viewBox="0 0 24 24" class="orbit-logo" aria-hidden="true"><defs><linearGradient id="og-bg" x1=".1" y1="0" x2=".9" y2="1"><stop offset="0" stop-color="#FF9A55"/><stop offset=".55" stop-color="#E5532B"/><stop offset="1" stop-color="#992A14"/></linearGradient><radialGradient id="og-pl" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".6" stop-color="#FFE7D2"/><stop offset="1" stop-color="#FFBE94"/></radialGradient></defs><rect width="24" height="24" rx="7" fill="url(#og-bg)"/><path d="M2.6 14.2A9.6 3.6 0 0 1 21.4 9.8" transform="rotate(-24 12 12)" fill="none" stroke="#FFF4E8" stroke-opacity=".5" stroke-width="1.3" stroke-linecap="round"/><circle cx="12" cy="12" r="4.5" fill="url(#og-pl)"/><path d="M21.4 9.8A9.6 3.6 0 0 1 2.6 14.2" transform="rotate(-24 12 12)" fill="none" stroke="#FFF4E8" stroke-width="1.4" stroke-linecap="round"/><path d="M19.6 4.3l.62 1.55 1.55.62-1.55.62-.62 1.55-.62-1.55-1.55-.62 1.55-.62z" fill="#FFE27A"/><circle cx="4.3" cy="19" r=".7" fill="#FFE9D2" opacity=".8"/></svg>`;
+const ico=(n,cls='')=>n==='orbit'?ORBIT_LOGO:`<svg viewBox="0 0 24 24" class="${cls}" aria-hidden="true"><path d="${P[n]||P.info}" fill="currentColor"/></svg>`;
 
 /* ------------------------------------------------------------- the phone's files */
 const FILES={
@@ -120,8 +122,8 @@ APPS.lock=sc=>`<div class="view lock" data-theme="lock">
   <div class="hint">${sc.hint||'Tap a notification to open it'}</div></div>`;
 const APPINFO={
  sathi:{n:'Sathi AI',i:'spark',b:'linear-gradient(135deg,#4F6BED,#B24FC8,#E06A8C)',c:'#fff'},
- orbit:{n:'Orbit',i:'orbit',b:'#FFDBCC',c:'#8A2E0B'},
- studio:{n:'Studio',i:'code',b:'#1F1F23',c:'#A8C7FA'},
+ orbit:{n:'Orbit',i:'orbit',b:'transparent',c:'#8A2E0B'},
+ studio:{n:'Studio',i:'code',b:'#0B57D0',c:'#fff'},
  mail:{n:'Mail',i:'mail',b:'#FFDAD6',c:'#8C1D18'},
  cal:{n:'Calendar',i:'cal',b:'#D7E3FF',c:'#1B3A6B'},
  files:{n:'Files',i:'folder',b:'#D2E8D4',c:'#1F5130'},
@@ -154,13 +156,14 @@ APPS.mail=sc=>{
   return `<div class="view">${appBar('Inbox',{left:'menu'})}<div class="scroll">${(sc.mails||[]).map(m=>`<button class="li ${m.unread?'unread':''}" ${m.hit?`data-hit="${m.hit}"`:''}><span class="av" style="background:${m.color}">${esc(m.from[0])}</span><span><b>${esc(m.from)}</b><p>${esc(m.subject)}</p></span><small>${esc(m.time)}</small></button>`).join('')}</div></div>`;
 };
 
-/* --- Sathi: a chat assistant, in the shape every AI chat app shares --- */
+/* --- Sathi AI: a chat assistant, in the shape every AI chat app shares --- */
 function composer(sc,dark){
   const c=sc.composer||{}; const x=ctx(); const val=c.key?(x.get(c.key,c.prefill||'')):(c.text||'');
   const atts=(c.atts||[]).map(id=>`<span class="att" data-view="${id}">${fileThumb(id)}<span>${esc(FILES[id].name)}</span></span>`).join('');
+  const hl=hlHTML(val,(sc.kb&&sc.kb.chips)||[]);
   return `<div class="composer" ${c.hit?'':''}>${atts?`<div class="pend">${atts}</div>`:''}
    <div class="row"><button class="mi" ${c.attHit?`data-hit="${c.attHit}"`:''} aria-label="Add files">${ico('plus')}</button>
-   <textarea id="cmp" rows="1" inputmode="none" placeholder="${esc(c.placeholder||'Ask Sathi')}" ${c.key?`data-key="${c.key}"`:'readonly'}>${esc(val)}</textarea>
+   <div class="cmpw">${hl?`<div class="cmp-hl" aria-hidden="true">${hl}&#8203;</div>`:''}<textarea id="cmp" class="${hl?'hl-on':''}" rows="1" inputmode="none" placeholder="${esc(c.placeholder||'Ask Sathi AI')}" ${c.key?`data-key="${c.key}"`:'readonly'}>${esc(val)}</textarea></div>
    ${val.trim()||atts?`<button class="send" data-hit="${c.sendHit||'send'}" aria-label="Send">${ico('send')}</button>`:`<button class="mi" aria-label="Voice">${ico('mic')}</button>`}</div></div>`;
 }
 function aiMsg(m,dark){
@@ -173,8 +176,8 @@ function uMsg(m){
 APPS.sathi=sc=>{
   const msgs=sc.msgs||[];
   const body=msgs.length?msgs.map(m=>m.role==='u'?uMsg(m):aiMsg(m)).join(''):`<div class="hello">Hello, Ayesha</div><p>How can I help today?</p>`;
-  return `<div class="view sathi">${appBar('Sathi',{left:'menu',right:`<button class="mi" aria-label="New chat">${ico('edit')}</button><span class="mi"><span style="width:30px;height:30px;border-radius:99px;background:#C98E62;color:#fff;display:grid;place-items:center;font-weight:600;font-size:14px">A</span></span>`})}
-   <div class="scroll" id="chatscroll">${body}</div>${sc.composer===false?'':composer(sc)}<div class="disclaim">Sathi can make mistakes, so double-check it</div></div>`;
+  return `<div class="view sathi">${appBar('Sathi AI',{left:'menu',right:`<button class="mi" aria-label="New chat">${ico('edit')}</button><span class="mi"><span style="width:30px;height:30px;border-radius:99px;background:#C98E62;color:#fff;display:grid;place-items:center;font-weight:600;font-size:14px">A</span></span>`})}
+   <div class="scroll" id="chatscroll">${body}</div>${sc.composer===false?'':composer(sc)}<div class="disclaim">Sathi AI can make mistakes, so double-check it</div></div>`;
 };
 
 APPS.picker=sc=>{
@@ -197,7 +200,7 @@ APPS.orbit=sc=>`<div class="view orbit">${sc.bar!==false?appBar(sc.title||'Orbit
 
 APPS.studio=sc=>{
   const tabs=['Chat','Code','Preview'].concat(sc.git?['GitHub']:[]);
-  return `<div class="view studio" data-theme="dark">${appBar(esc(sc.title||'My Deadlines'),{left:'back',right:`${sc.gitHit!==undefined||sc.git?`<button class="mi" ${sc.gitHit?`data-hit="${sc.gitHit}"`:''} aria-label="GitHub">${ico('git')}</button>`:''}<button class="mi" ${sc.deployHit?`data-hit="${sc.deployHit}"`:''} aria-label="Deploy">${ico('share')}</button><button class="mi">${ico('more')}</button>`})}
+  return `<div class="view studio">${appBar(esc(sc.title||'My Deadlines'),{left:'back',right:`${sc.gitHit!==undefined||sc.git?`<button class="mi" ${sc.gitHit?`data-hit="${sc.gitHit}"`:''} aria-label="GitHub">${ico('git')}</button>`:''}<button class="mi" ${sc.deployHit?`data-hit="${sc.deployHit}"`:''} aria-label="Deploy">${ico('share')}</button><button class="mi">${ico('more')}</button>`})}
   <div class="stabs">${tabs.map(t=>`<button class="${(sc.tab||'Chat')===t?'on':''}" ${sc.tabHits&&sc.tabHits[t]?`data-hit="${sc.tabHits[t]}"`:''}>${t}</button>`).join('')}</div>
   ${sc.tab==='Preview'?`<div class="preview"><div class="pbar2"><span class="dot"></span> Preview · ${esc(sc.ver||'v1')}</div><div class="mini" id="mini">${sc.mini||''}</div></div>`:
     sc.tab==='Code'?`<div class="scroll">${sc.files?`<div class="ftree">${sc.files.map(f=>`<span class="${f===sc.fileOn?'on':''}">${esc(f)}</span>`).join('')}</div>`:''}<div class="code">${sc.code||''}</div></div>`:
@@ -217,16 +220,79 @@ function overlays(sc){
   if(sc.headsUp) h+=`<div class="headsup">${notif(sc.headsUp)}</div>`;
   if(sc.dialog){const d=sc.dialog;h+=`<div class="scrim"><div class="dlg">${d.icon?`<span class="di">${ico(d.icon)}</span>`:''}<h3>${d.title}</h3>${d.text?`<p>${d.text}</p>`:''}<div class="stack">${d.buttons.map(b=>`<button class="mdbtn ${b.cls||'tonal'} ${b.on?'':''}" ${b.ui?`data-ui="${b.ui}"`:''} ${b.hit?`data-hit="${b.hit}"`:''}>${b.label}</button>`).join('')}</div></div></div>`;}
   if(sc.sheet){const s=sc.sheet;h+=`<div class="scrim" style="align-items:flex-end;padding:0;background:rgba(0,0,0,.28)"></div><div class="sheet"><div class="handle"></div>${s.html}</div>`;}
-  if(sc.skip) h+=`<div class="skipper"><div><b>${sc.skip.big}</b><span>${sc.skip.small||''}</span></div></div>`;
+  if(sc.skip) h+=`<div class="skipper"><div>${sc.skip.big==='⏪'?'<i class="rw">⏪</i>':clockHTML(sc.skip.big)}<b>${sc.skip.big==='⏪'?'':sc.skip.big}</b><span>${sc.skip.small||''}</span></div></div>`;
   return h;
+}
+
+/* a clock for “three hours later”: the hands tick like a clock, then spin */
+function clockHTML(label){
+  const w={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,a:1,an:1}; const m=String(label).toLowerCase().match(/(\d+|one|two|three|four|five|six|seven|eight|nine|ten|a|an)\s+(minute|hour|day|week|month)/);
+  const n=m?(w[m[1]]||+m[1]||1):0, unit=m?m[2]:''; const hrs=unit==='minute'?0.2:unit==='hour'?n:unit==='day'?n*6:unit==='week'?36:unit==='month'?60:5;
+  const tk=Array.from({length:12},(_,i)=>`<i style="--r:${i*30}deg" class="${i%3?'':'q'}"></i>`).join('');
+  return `<span class="clk" style="--hh:${Math.round(hrs*30+720)}deg"><span class="face">${tk}<b class="hh"></b><b class="mh"></b><u></u></span></span>`;
 }
 
 /* ------------------------------------------------------------- keyboard */
 const ROWS=['qwertyuiop','asdfghjkl','zxcvbnm'];
+
+/* colour-code the four parts of a prompt (Context, Product, Process, Performance) so students can see how it is built */
+const PPPP=['Context','Product','Process','Performance'];
+function hlHTML(val,chips){
+  const segs=[]; chips.filter(c=>PPPP.includes(c.tag)).forEach(c=>{const i=val.indexOf(c.text); if(i>=0) segs.push({i,e:i+c.text.length,t:c.tag})});
+  if(!segs.length) return ''; segs.sort((a,b)=>a.i-b.i); let o='',p=0;
+  segs.forEach(g=>{ if(g.i<p) return; o+=esc(val.slice(p,g.i))+`<mark class="pp-${g.t}">${esc(val.slice(g.i,g.e))}</mark>`; p=g.e });
+  return o+esc(val.slice(p));
+}
+/* sentence builder: ESL word-order practice. Tiles are chunks, tap or drag them into order. */
+const bldItems=kb=>(kb.chips||[]).filter(c=>c.parts);
+const bldCur=(kb,val)=>bldItems(kb).find(c=>!val.includes(c.text));
+function bldTiles(c){
+  const h=s=>{let n=7;for(const ch of s)n=(n*31+ch.charCodeAt(0))>>>0;return n};
+  const all=c.parts.concat(c.extra||[]).map((t,i)=>({t,i})); all.sort((a,b)=>h(c.id+a.t)-h(c.id+b.t));
+  if(all.slice(0,c.parts.length).every(z=>z.i<c.parts.length)&&all.every((z,k)=>z.i===k)) all.push(all.shift());
+  return all;
+}
+function bldHTML(kb,val){
+  const x=ctx(), items=bldItems(kb), cur=bldCur(kb,val);
+  if(!cur) return `<div class="bld done">✓ ${tr('All sentences built. Now send ➤','সব বাক্য তৈরি হয়েছে। এবার পাঠাও ➤')}</div>`;
+  const all=bldTiles(cur), pl=x.get('bld:'+kb.key,[]), bad=x.get('bld:'+kb.key+'!',0), n=items.indexOf(cur)+1;
+  const txt=id=>(cur.parts.concat(cur.extra||[]))[id];
+  return `<div class="bld ${bad?'bad':''}"><div class="bld-h"><b>${esc(cur.goal||'Build the sentence')}</b><span>${n}/${items.length}</span></div>
+   <div class="bld-line" id="bldline">${pl.length?pl.map((id,k)=>`<button class="tile on" data-ui="untile:${k}">${esc(txt(id))}</button>`).join(''):`<em>${tr('Tap or drag the pieces here, in order','টুকরোগুলো ক্রমে এখানে চাপো বা টেনে আনো')}</em>`}</div>
+   ${bad?`<div class="bld-tip">${esc(cur.tip||'Not quite. Check the order.')}</div>`:''}
+   <div class="bld-pool">${all.filter(z=>!pl.includes(z.i)).map(z=>`<button class="tile" data-tile="${z.i}" data-ui="tile:${z.i}">${esc(z.t)}</button>`).join('')}</div></div>`;
+}
+function bldTap(kind,arg,x,at){
+  const kb=activeKB(x), key='bld:'+kb.key; if(x.get(key+'!',0)) return;
+  const cur=bldCur(kb,x.get(kb.key,'')); if(!cur) return; let pl=x.get(key,[]).slice();
+  if(kind==='tile'){ const id=+arg; if(pl.includes(id)) return; if(at==null) pl.push(id); else pl.splice(at,0,id); }
+  else pl.splice(+arg,1);
+  try{FX.sfx('tick')}catch(e){}
+  x.set(key,pl);
+  if(pl.length===cur.parts.length){
+    if(pl.every((v,k)=>v===k)){ x.set(key,[]); try{FX.sfx('ok')}catch(e){}; toggleChip(cur.id,x); return; }
+    x.set(key+'!',1); try{FX.sfx('no')}catch(e){}
+    setTimeout(()=>{ x.set(key,[]); x.set(key+'!',0); renderPhoneKeepFocus(); renderFoot(); },1500);
+  }
+  renderPhoneKeepFocus(); renderFoot();
+}
+/* drag a tile into the line (pointer events, so it works on touch too) */
+(function(){ let d=null,dragged=false;
+  document.addEventListener('pointerdown',e=>{ const t=e.target.closest&&e.target.closest('.tile[data-tile]'); if(!t) return; d={t,x:e.clientX,y:e.clientY,g:null}; });
+  document.addEventListener('pointermove',e=>{ if(!d) return; if(!d.g){ if(Math.hypot(e.clientX-d.x,e.clientY-d.y)<9) return; d.g=d.t.cloneNode(true); d.g.className='tile drag'; d.g.style.cssText='position:fixed;z-index:200;pointer-events:none;margin:0'; document.body.appendChild(d.g); d.t.style.opacity='.35'; }
+    d.g.style.left=(e.clientX-d.g.offsetWidth/2)+'px'; d.g.style.top=(e.clientY-d.g.offsetHeight/2)+'px';
+    const l=document.getElementById('bldline'); if(l){ const r=l.getBoundingClientRect(); l.classList.toggle('over',e.clientX>r.left&&e.clientX<r.right&&e.clientY>r.top-14&&e.clientY<r.bottom+14); } });
+  const end=e=>{ if(!d) return; const o=d; d=null; if(!o.g) return; o.g.remove(); o.t.style.opacity=''; dragged=true; setTimeout(()=>dragged=false,60);
+    const l=document.getElementById('bldline'); if(!l) return; l.classList.remove('over'); const r=l.getBoundingClientRect();
+    if(e.clientX>r.left&&e.clientX<r.right&&e.clientY>r.top-14&&e.clientY<r.bottom+14){ const ts=[...l.querySelectorAll('.tile')]; let at=ts.findIndex(z=>{const b=z.getBoundingClientRect();return e.clientX<b.left+b.width/2&&e.clientY<b.bottom}); if(at<0) at=null; bldTap('tile',o.t.dataset.tile,ctx(),at); } };
+  document.addEventListener('pointerup',end); document.addEventListener('pointercancel',end);
+  document.addEventListener('click',e=>{ if(dragged&&e.target.closest&&e.target.closest('.tile')){ e.stopPropagation(); e.preventDefault(); } },true);
+})();
 function keyboard(kb){
   const x=ctx(); const val=(kb&&kb.key)?x.get(kb.key,''):'';
-  const chips=(kb.chips||[]).map(c=>{const used=val.includes(c.text);return `<button class="kchip ${used?'used':''} ${c.x?'x':''}" data-ui="chip:${c.id}"><span class="tg">${esc(c.tag||'')}</span>${esc(c.text)}</button>`}).join('');
-  return `<div class="strip">${kb.label?`<span class="lbl">${esc(kb.label)}</span>`:''}${chips}${innerWidth<900?`<button class="kbt" data-ui="kbtoggle:1">${S.keys?'Hide keys':'⌨ Type'}</button>`:''}</div>
+  const bld=bldItems(kb).length;
+  const chips=(kb.chips||[]).filter(c=>!(bld&&c.parts)).map(c=>{const used=val.includes(c.text);return `<button class="kchip ${used?'used':''} ${c.x?'x':''} t-${esc(c.tag||'')}" data-ui="chip:${c.id}"><span class="tg">${esc(c.tag||'')}</span>${esc(c.text)}</button>`}).join('');
+  return (bld?bldHTML(kb,val):'')+`<div class="strip">${kb.label?`<span class="lbl">${esc(kb.label)}</span>`:''}${chips}${innerWidth<900?`<button class="kbt" data-ui="kbtoggle:1">${S.keys?'Hide keys':'⌨ Type'}</button>`:''}</div>
   <div class="rows">${ROWS.map((r,i)=>`<div class="kr">${i===2?`<button class="k w" data-ui="key:shift">⇧</button>`:''}${[...r].map(k=>`<button class="k" data-ui="key:${k}">${k}</button>`).join('')}${i===2?`<button class="k w" data-ui="key:bs">⌫</button>`:''}</div>`).join('')}
   <div class="kr"><button class="k w" data-ui="key:123">?123</button><button class="k w" data-ui="key:,">,</button><button class="k sp" data-ui="key: ">English</button><button class="k w" data-ui="key:.">.</button><button class="k go" data-ui="key:nl">↵</button></div></div>`;
 }
@@ -238,8 +304,8 @@ function renderPhone(anim){
   if(REW) sc=Object.assign({},prevScene||sc,{skip:{big:'⏪',small:S.bn?'আবার বেছে নাও':'Rewind'}});
   else if(cqOn()){ sc=Object.assign({},fn(CQ.then.scene,x)); if(CQ.phase==='jump') sc.skip={big:CQ.then.when,small:CQ.then.whensub||''}; }
   const dev=$('#device'); const scr=$('#screen');
-  const theme=sc.theme||(sc.app==='lock'?'lock':sc.app==='home'?'home':(sc.app==='studio'||sc.app==='doc')?'dark':sc.app==='orbit'?'orbit':'light');
-  const bgs={lock:'radial-gradient(130% 80% at 20% 0%,#C9B8F2 0,#8C77C9 40%,#3C2E6B 100%)',home:'radial-gradient(90% 60% at 80% 10%,#F2D6E6 0,transparent 60%),radial-gradient(100% 70% at 0% 100%,#BFD6F3 0,transparent 60%),linear-gradient(160deg,#E9DDFF,#D9E5FF)',dark:sc.app==='doc'?'#2b2b2f':'#131314',orbit:'#FFF8F5',light:sc.app==='gdoc'?'#F0F0F4':'var(--md-surface)'};
+  const theme=sc.theme||(sc.app==='lock'?'lock':sc.app==='home'?'home':(sc.app==='doc')?'dark':sc.app==='orbit'?'orbit':'light');
+  const bgs={lock:'radial-gradient(130% 80% at 20% 0%,#C9B8F2 0,#8C77C9 40%,#3C2E6B 100%)',home:'radial-gradient(90% 60% at 80% 10%,#F2D6E6 0,transparent 60%),radial-gradient(100% 70% at 0% 100%,#BFD6F3 0,transparent 60%),linear-gradient(160deg,#E9DDFF,#D9E5FF)',dark:'#2b2b2f',orbit:'#FFF8F5',light:sc.app==='gdoc'?'#F0F0F4':sc.app==='studio'?'#F8FAFD':'var(--md-surface)'};
   dev.style.background=bgs[theme];
   const darkUI=theme==='lock'||theme==='dark';
   $('#sb').className='sb'+(darkUI?' dark':''); $('#navbar').className='navbar'+(darkUI?' dark':'');
@@ -249,6 +315,7 @@ function renderPhone(anim){
   const prevKey=prevScene&&(prevScene.app+'|'+(prevScene.view||prevScene.tab||''));
   const keep=!anim&&prevKey===key&&renderedAt===S.lesson+'/'+S.beat?$$('.scroll',scr).map(e=>e.scrollTop):null;
   scr.innerHTML=html+overlays(sc); renderedAt=S.lesson+'/'+S.beat;
+  if(sc.skip&&sc.skip.big!=='⏪'&&anim!==false) try{ FX.clock(scr); }catch(e){}
   const v=$('.view',scr);
   if(v){v.style.background='transparent';if(anim&&prevKey!==key){v.classList.add(prevScene&&prevScene.app===sc.app?'slide':'enter')}}
   const kb=$('#kb'); if(sc.kb){kb.hidden=false;kb.innerHTML=keyboard(sc.kb);kb.className='kb'+(innerWidth<900?' compact':'')+(S.keys?' keys':'')}else{kb.hidden=true;kb.innerHTML=''}
@@ -384,7 +451,8 @@ function renderStage(){
   const k=stageKind(), was=document.body.classList.contains('show-card')?'card':'phone';
   document.body.classList.toggle('show-card',k==='card'); document.body.classList.toggle('show-phone',k!=='card');
   const pc=$('#pcard');
-  if(k==='card'){ const keep=was==='card'&&pc.dataset.at===S.lesson+'/'+S.beat+(UI.sub||'')?pc.scrollTop:0; pc.innerHTML=cardScreen(); pc.dataset.at=S.lesson+'/'+S.beat+(UI.sub||''); pc.scrollTop=keep; if(was!=='card'||!keep) pc.firstElementChild&&pc.firstElementChild.classList.add('enter'); }
+  if(k==='card'){ const keep=was==='card'&&pc.dataset.at===S.lesson+'/'+S.beat+(UI.sub||'')?pc.scrollTop:0; const fresh=pc.dataset.at!==S.lesson+'/'+S.beat+(UI.sub||''); pc.innerHTML=cardScreen(); pc.dataset.at=S.lesson+'/'+S.beat+(UI.sub||'');
+    if(fresh&&!UI.sub){ const bc=fn(ctx().beat.card,ctx()); if(bc&&bc.type==='level') setTimeout(()=>FX.gearTurned(pc,bc.d),60); else if(bc&&bc.type==='result') setTimeout(()=>FX.missionDone(pc),60); } pc.scrollTop=keep; if(was!=='card'||!keep) pc.firstElementChild&&pc.firstElementChild.classList.add('enter'); }
   else { pc.innerHTML=''; pc.dataset.at=''; }
   fitDevice();
 }
@@ -432,7 +500,8 @@ function renderFoot(){
   if(st.ask){ f.innerHTML=`<div class="askcol">${b.ask.options.map((o,i)=>`<button class="pb ask" data-ask="${i}">${o.en}${S.bn&&o.bn?` <span class="bn-in" lang="bn">· ${o.bn}</span>`:''}</button>`).join('')}</div>`; f.classList.remove('acting'); return; }
   let main;
   const label=fn(b.next,x);
-  if(st.stream) main=`<button class="pb quiet" data-c="next">${b.interrupt?tr('Let it finish','শেষ করতে দাও'):tr('Skip','বাদ দাও')+' ▸▸'}</button>`;
+  if(st.stream&&b.interrupt) main=`<button class="pb quiet" data-c="next">${tr('Let it finish','শেষ করতে দাও')}</button><button class="pb stop" data-c="stop"><span aria-hidden="true">■</span> ${tr('Stop','থামাও')}</button>`;
+  else if(st.stream) main=`<button class="pb quiet" data-c="next">${tr('Skip','বাদ দাও')+' ▸▸'}</button>`;
   else if(st.act) main=`<button class="pb quiet" data-c="${st.hunt?'huntdone':'next'}">${st.hunt?tr('I’m done','শেষ'):tr('Skip','বাদ দাও')}</button>`;
   else main=`<button class="pb primary" data-c="next">${label||(last?tr('Finish','শেষ'):tr('Continue','এগিয়ে যাও'))}</button>`;
   const back=`<button class="pb tool back" data-c="back" aria-label="Back" title="Back">${IC.back}</button>`;
@@ -446,7 +515,7 @@ function hubFoot(){
 /* the prompt recipe as a row of pills that light up as the parts go in */
 function meterHTML(x,b){
   const c=fn(b.compose,x); if(!c||!c.slots) return ''; const val=x.get(c.key,c.prefill||'');
-  return `<div class="meter">${c.slots.map(s=>{const on=s.test.some(r=>r.test(val));return `<span class="${on?'on':''}">${on?'✓':'○'} ${esc(s.label)}</span>`}).join('')}</div>`;
+  return `<div class="meter">${c.slots.map(s=>{const on=s.test.some(r=>r.test(val));return `<span class="${on?'on':''} pp-${esc(s.label)}">${on?'✓':'○'} ${esc(s.label)}</span>`}).join('')}</div>`;
 }
 
 /* ---------------------------------------------------------------- feedback sheet */
@@ -467,9 +536,22 @@ function renderSheet(){
       acts:[['rewind',`↩ ${tr('Choose again','আবার বেছে নাও')}`,'ghost'],['next',tr('Continue','এগিয়ে যাও'),'primary']]}; }
   sh.hidden=false; document.body.classList.add('sheet-on');
   sh.className='psheet t-'+o.tone;
+  const fresh=sh.dataset.k!==String(o.title)+'|'+String((o.html||'').length)+'|'+o.tone;
   sh.innerHTML=`<div class="sh-in">${o.title?`<h3>${o.tone==='ok'?'✓ ':o.tone==='bad'?(o.cq?'⏩ ':'⚠ '):o.tone==='think'?'↺ ':''}${esc(o.title)}${o.titlebn&&S.bn?` <span class="bn-in" lang="bn">· ${o.titlebn}</span>`:''}</h3>`:''}<div class="sh-body">${o.html||''}</div>
    <div class="frow">${(o.acts||[]).map(([a,l,c])=>`<button class="pb ${c}" data-s="${a}">${l}</button>`).join('')}</div></div>`;
   const p=$('.pb.primary',sh); if(p&&!matchMedia('(pointer:coarse)').matches) p.focus({preventScroll:true});
+  sh.dataset.k=String(o.title)+'|'+String((o.html||'').length)+'|'+o.tone;
+  // every explanation can be heard — and plays by itself when an answer needs another look
+  const say=o.tone==='info'?'':sheetSpeech(sh);
+  if(say){ const h3=$('h3',sh); const ear=document.createElement('button'); ear.className='ear sh-ear'; ear.dataset.speak=canon(say); ear.setAttribute('aria-label','Listen'); ear.textContent='🔊'; (h3||$('.sh-in',sh)).appendChild(ear); }
+  if(fresh&&!o.cq){ try{ if(o.tone==='ok') FX.sfx('ok'); else if(o.tone==='think'||o.tone==='bad') FX.sfx('no'); }catch(e){}
+    if(say&&S.voice&&(o.tone==='think'||o.tone==='bad'||o.tone==='ok')) setTimeout(()=>{ if(UI.sheet===s&&sh.dataset.k===String(o.title)+'|'+String((o.html||'').length)+'|'+o.tone) speak(say); },o.tone==='ok'?500:350); }
+}
+function sheetSpeech(sh){
+  const body=$('.sh-body',sh); if(!body) return ''; const b=body.cloneNode(true);
+  b.querySelectorAll('.bn,.bn-in,.looks,.verd2,.quote,.cq-talk,.fgrid2,button,svg,.ear,.miss .claim').forEach(e=>e.remove());
+  const h=$('h3',sh); let title=''; if(h){ const c=h.cloneNode(true); c.querySelectorAll('.bn-in,.ear').forEach(e=>e.remove()); title=c.textContent.replace(/^[✓⚠↺⏩\s]+/,'').trim(); if(title&&!/[.!?…]$/.test(title)) title+='.'; }
+  const t=plain(b.textContent).replace(/Eye-sha/g,'Ayesha'); return ((title?title+' ':'')+t).trim();
 }
 function closeSheet(){ UI.sheet=null; renderSheet(); renderFoot(); }
 function onSheetClick(e){
@@ -568,7 +650,7 @@ function cardHTML(c,x){
   }
   if(c.type==='choice'){
     CHOICES[c.key]=c.options; const a=x.get(c.key);
-    return head+`${c.pic?`<div class="cpic">${c.pic}</div>`:''}<div class="opts">${c.options.map((o,i)=>`<button class="opt ${a===i?'pick '+(o.ok?'right':'wrong'):''}" data-choice="${c.key}|${i}">${o.en}${BN(o.bn)}</button>`).join('')}</div>`;
+    return head+`${c.pic?`<div class="cpic">${c.pic}</div>`:''}<div class="opts ${c.cls||''}">${c.options.map((o,i)=>`<button class="opt ${a===i?'pick '+(o.ok?'right':'wrong'):''}" data-choice="${c.key}|${i}">${o.en}${BN(o.bn)}</button>`).join('')}</div>`;
   }
   if(c.type==='checklist'){
     const on=x.get(c.key,{});
@@ -598,7 +680,7 @@ function resultCard(c,x){
   const sc=x.get('_score',0), aw=x.get('_aw',{}), max=Object.keys(aw).length;
   x.set('_finished',true);
   return `<div class="res">${c.html||''}
-   <div class="res-stars">${IC.star}<b>${sc}</b><span>${S.bn?'প্রথমবারেই সঠিক সিদ্ধান্ত':'good calls, first time'}</span></div>
+   <div class="res-stars">${IC.star}<b data-to="${sc}">${sc}</b><span>${S.bn?'প্রথমবারেই সঠিক সিদ্ধান্ত':'good calls, first time'}</span></div>
    <div class="res-gears">${D4.svg({on:'all',loops:true,sweet:true,cls:'all'})}<p>${S.bn?'চারটা গিয়ারই ঘুরেছে। যেখানে মেলে, সেটাই AI fluency।':'All four gears turned. Where they meet is AI fluency.'}</p></div>
    ${c.say?`<div class="card"><h3>${S.bn?'তোমার ইংরেজি':'Your English today'}</h3><div class="dphr">${['del','des','dis','dil'].filter(d=>c.say[d]).map(d=>`<div class="dph d-${d}" data-say="${esc(c.say[d].en)}">${D4.badge(d,30)}<span><small>${D4.META[d].n}</small><span class="pq">${c.say[d].en}</span>${BN(c.say[d].bn)}</span>${sayBtn(c.say[d].en)}</div>`).join('')}</div></div>`:''}
    ${c.next?`<div class="pick-cards">${c.next.map(id=>{const L2=LESSONS[id];return L2?`<button class="pcard" data-start="${id}"><span class="pi" style="background:${L2.tint}">${L2.emoji}</span><span><em>${S.bn?'পরের মিশন':'Next mission'}</em><b>${esc(L2.title)}</b><span>${esc(L2.blurb)}</span></span></button>`:''}).join('')}</div>`:''}</div>`;
@@ -729,7 +811,7 @@ const cqOn=()=>!!(CQ&&S.lesson&&CQ.bk===S.lesson+'/'+S.beat);
 function startCQ(then,rewind){
   const bk=S.lesson+'/'+S.beat; CQ={bk,then,rewind,phase:'jump'}; UI.sheet=null; UI.sub=null;
   hush(); document.body.classList.add('cq-on'); renderPhone(true); renderUI();
-  setTimeout(()=>{ if(!cqOn()||CQ.phase!=='jump') return; CQ.phase='show'; renderPhone(true); renderUI(); if(S.voice) speak(CQ.then.line); },1700);
+  setTimeout(()=>{ if(!cqOn()||CQ.phase!=='jump') return; CQ.phase='show'; renderPhone(true); renderUI(); if(S.voice){ const t=CQ.then; speak(t.line,()=>{ if(cqOn()&&CQ.phase==='show'&&t.why) setTimeout(()=>{ if(cqOn()&&CQ.phase==='show') speak(plain(t.why).replace(/Eye-sha/g,'Ayesha')); },350); }); } },1700);
 }
 function rewindCQ(){
   if(!CQ) return; const r=CQ.rewind, at=S.lesson+'/'+S.beat; CQ=null; hush(); document.body.classList.remove('cq-on');
@@ -831,6 +913,7 @@ function handleUI(id,el,x){
   if(kind==='key'){ typeKey(arg,x); return; }
   if(kind==='kbtoggle'){ S.keys=!S.keys; renderPhoneKeepFocus(); return; }
   if(kind==='chip'){ toggleChip(arg,x); return; }
+  if(kind==='tile'||kind==='untile'){ bldTap(kind,arg,x); return; }
   if(kind==='pick'){ const sc=fn(b.scene,x); const sel=x.get(sc.sel,[]).slice(); const k=sel.indexOf(arg); if(k>=0)sel.splice(k,1); else sel.push(arg); x.set(sc.sel,sel); renderPhone(false); renderFoot(); return; }
   if(kind==='opt'&&b.decide){ const d=fn(b.decide,x); x.set(d.key,arg); if(d.onPick) d.onPick(x,arg);
     const o=d.options[arg]; firstTry(x,d.key,!!(o&&o.ok));
@@ -869,6 +952,7 @@ function onUIClick(e){
     else if(a==='files'){ const ids=fn(x.beat.docs,x)||[]; filesSheet(ids); }
     else if(a==='hint'){ hintSheet(fn(x.beat.hint,x)); }
     else if(a==='huntdone') huntDone();
+    else if(a==='stop'){ const bb=x.beat; if(bb.onTap) bb.onTap(x,'stop'); next(true); }
     return; }
   /* listening works everywhere, the lock screen included */
   const sp=e.target.closest('[data-speak]'); if(sp){ speak(sp.dataset.speak); sp.classList.add('speaking'); if(sp.classList.contains('model')){const t=sp.nextElementSibling; if(t) t.hidden=false;} return; }
@@ -892,7 +976,8 @@ function onUIClick(e){
    player, unlocked by the first tap, so every later line can start by itself);
    the browser's voice, sentence by sentence, for lines not yet recorded. ---- */
 let voiceEN=null, speakId=0;
-function pickVoice(){ try{ const vs=speechSynthesis.getVoices(); voiceEN=vs.find(v=>/en[-_]IN/i.test(v.lang))||vs.find(v=>/en[-_]GB/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null; }catch(e){} }
+const ANDROID=typeof navigator!=='undefined'&&/Android/i.test(navigator.userAgent||'');
+function pickVoice(){ if(ANDROID){ voiceEN=null; return; } try{ const vs=speechSynthesis.getVoices(); voiceEN=vs.find(v=>/en[-_]IN/i.test(v.lang))||vs.find(v=>/en[-_]GB/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null; }catch(e){} }
 const plain=t=>String(t||'').replace(/Ayesha/g,'Eye-sha').replace(/<span class="bn"[^>]*>.*?<\/span>/g,' ').replace(/<[^>]+>/g,' ').replace(/___/g,' blank ').replace(/&amp;/g,'&').replace(/&[a-z]+;/g,' ').replace(/\s+/g,' ').trim();
 /* Recorded voices. Every spoken line has a key made from its words, so a
    recording is found by what it says: change a line and the old file simply
@@ -914,7 +999,7 @@ function prefetchAround(){
   [S.beat,seek(L,S.beat+1,1),seek(L,S.beat+2,1)].filter(i=>i>=0).forEach(i=>{ const b=L.beats[i]; try{ prefetch(fn(b.say,x)); const tk=fn(b.talk,x); if(tk&&S.mode!=='solo') prefetch(tk.q); const cq=b.cq&&fn(b.cq,x); if(cq) prefetch(cq.line); }catch(e){} });
 }
 let unlocked=false;
-function unlockAudio(){ if(unlocked||!PLAYER) return; unlocked=true;
+function unlockAudio(){ try{ FX.unlock(); }catch(e){} if(unlocked||!PLAYER) return; unlocked=true;
   try{ const n=160,buf=new ArrayBuffer(44+n*2),v=new DataView(buf),w=(o,s)=>[...s].forEach((c,i)=>v.setUint8(o+i,c.charCodeAt(0)));
     w(0,'RIFF');v.setUint32(4,36+n*2,true);w(8,'WAVE');w(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,8000,true);v.setUint32(28,16000,true);v.setUint16(32,2,true);v.setUint16(34,16,true);w(36,'data');v.setUint32(40,n*2,true);
     if(!PLAYER.src||PLAYER.paused){ PLAYER.src=URL.createObjectURL(new Blob([buf],{type:'audio/wav'})); PLAYER.play().catch(()=>{}); } }catch(e){}
@@ -942,7 +1027,7 @@ function ttsSpeak(t,onEnd){
     speechSynthesis.cancel(); stopClip(); const my=++speakId; $$('.speaking').forEach(e=>e.classList.remove('speaking'));
     const parts=plain(t).match(/[^.!?…]+[.!?…]*/g)||[]; if(!parts.length){onEnd&&onEnd();return}
     if(!voiceEN) pickVoice(); talking(true);
-    parts.forEach((p,i)=>{ const u=new SpeechSynthesisUtterance(p.trim()); u.lang=voiceEN?voiceEN.lang:'en-GB'; if(voiceEN)u.voice=voiceEN; u.rate=S.mode==='class'?.82:.88;
+    parts.forEach((p,i)=>{ const u=new SpeechSynthesisUtterance(p.trim()); u.lang=voiceEN?voiceEN.lang:(ANDROID?'en-US':'en-GB'); if(voiceEN)u.voice=voiceEN; u.rate=ANDROID?(S.mode==='class'?.9:1):(S.mode==='class'?.82:.88);
       if(i===parts.length-1) u.onend=()=>{ if(my===speakId){ talking(false); $$('.speaking').forEach(e=>e.classList.remove('speaking')); onEnd&&onEnd(); } };
       speechSynthesis.speak(u); });
   }catch(e){ talking(false); onEnd&&onEnd(); }
@@ -974,7 +1059,7 @@ function showMe(){
     const c=fn(b.compose,x); const best=c.best;
     x.set(c.key,''); renderPhoneKeepFocus();
     const seq=best.slice(); const step=()=>{ if(!seq.length){ renderFoot(); const s=$('#screen [data-hit="'+(fn(b.tap,x)||'send')+'"]'); ghostTo(s,()=>{ showing=0; if(s) s.click(); }); return; }
-      const id=seq.shift(); const el=$(`#kb [data-ui="chip:${id}"]`); ghostTo(el,()=>{ toggleChip(id,x); setTimeout(step,120); }); };
+      const id=seq.shift(); const el=$(`#kb [data-ui="chip:${id}"]`)||$('#kb .bld-line'); ghostTo(el,()=>{ x.set('bld:'+c.key,[]); toggleChip(id,x); setTimeout(step,260); }); };
     step(); return;
   }
   if(b.pickShow){ const sc=fn(b.scene,x); x.set(sc.sel,[]); renderPhone(false); const seq=b.pickShow.slice();
@@ -1000,7 +1085,7 @@ function openMenu(){
    <p><b>The four Ds are also four jobs for English</b>: Delegation = planning and sharing jobs (<i>I will… The AI can…</i>); Description = clear instructions (<i>Use only… If…, ask me first</i>); Discernment = judging and disagreeing politely (<i>That’s not true. Her report says…</i>); Diligence = limits and responsibility (<i>I won’t share… It’s private</i>). Each gear turned ends with its phrase to say aloud.</p>
    <p>Nothing is locked: Skip and Show me (S) are always there. Cog reads aloud (V turns it off). The AI replies are scripted from real assistants, mistakes included. No data leaves the phone. Students without a phone: the Paper version (one A4 page per workflow).</p>
    <h3>Keys</h3><p>→ next · ← back · S show me · T talk timer · V read aloud · P projector · B Bangla</p>
-   <h3>Credits</h3><p class="cred">Framework: AI Fluency by Rick Dakan, Joseph Feller and Anthropic (CC BY-NC-SA 4.0). Ayesha Rahman and all her documents are fictional classroom materials. Orbit, Sathi and Studio are invented apps modelled on real ones (Meta Muse and Grok Bot; Gemini, ChatGPT and Claude; Google AI Studio). No affiliation is implied.</p></div>`;
+   <h3>Credits</h3><p class="cred">Framework: AI Fluency by Rick Dakan, Joseph Feller and Anthropic (CC BY-NC-SA 4.0). Ayesha Rahman and all her documents are fictional classroom materials. Orbit, Sathi AI and Studio are invented apps modelled on real ones (Meta Muse and Grok Bot; Gemini, ChatGPT and Claude; Google AI Studio). No affiliation is implied.</p></div>`;
 }
 function openLegend(){
   const m=$('#menu'); m.hidden=false; const L=S.lesson&&LESSONS[S.lesson]; const d=L?beatD(L,S.beat):null;
@@ -1088,7 +1173,7 @@ function tickClock(){ $('#sb').innerHTML=`<span>${now()}</span><span class="ico"
 
 /* ------------------------------------------------------------- boot */
 function boot(){
-  load(); loadPrefs(); loadAudio();
+  load(); loadPrefs(); loadAudio(); FX.on=()=>S.voice;
   ['solo','pair','class'].forEach(z=>document.body.classList.toggle('mode-'+z,z===S.mode));
   if(S.mode==='class'){ stageByMode=true; S.stage=true; document.body.classList.add('stage'); }
   if('speechSynthesis' in window){ pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; }
