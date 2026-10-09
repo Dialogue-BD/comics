@@ -126,7 +126,7 @@ const SCENES=[
         ['Discernment: judge what comes back.','Discernment: যা ফিরে আসে তা বিচার করো।',.7],
         ['Then say it again, better.','তারপর আবার বলো, আরও ভালো করে।']],
  cam0:CAM_LOOP1, cam:[[.2,1.8,...CAM_FULL]],
- html:()=>{const ty=CY-RR-PAD, by=CY+RR+PAD, x0=CX-DIST, x1=CX+DIST;
+ html:()=>{const ty=CY+RR+PAD+188, by=ty, x0=CX-DIST, x1=CX+DIST; /* one lane under the labels, clear of the plates */
   return `${tracks('data-a="tfade .3 1.2 .3"','data-a="track .9 1.8|tfade @end-1.2 1 .3"')}
   ${unit('des','','','data-a="flash @1 1.2"')}${unit('dis','','','data-a="flash @2 1.2"')}
   ${unit('del','','','data-a="dim .4 1|undim @end-1.2 1"')}${unit('dil','','','data-a="dim .4 1|undim @end-1.2 1"')}
