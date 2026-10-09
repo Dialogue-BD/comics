@@ -2462,5 +2462,37 @@
   "lesson": "build",
   "where": "#build/23",
   "take": "build-coach-11"
+ },
+ {
+  "key": "0ozu3yd",
+  "text": "Whose data is it?",
+  "voice": "coach",
+  "lesson": "cards",
+  "where": "#agent/8 card",
+  "take": "cards-coach-01"
+ },
+ {
+  "key": "0a8lt9e",
+  "text": "Does the job need it?",
+  "voice": "coach",
+  "lesson": "cards",
+  "where": "#agent/8 card",
+  "take": "cards-coach-01"
+ },
+ {
+  "key": "1mnzgy8",
+  "text": "What's the worst case?",
+  "voice": "coach",
+  "lesson": "cards",
+  "where": "#agent/8 card",
+  "take": "cards-coach-01"
+ },
+ {
+  "key": "1pf7hoa",
+  "text": "Can I undo it?",
+  "voice": "coach",
+  "lesson": "cards",
+  "where": "#agent/8 card",
+  "take": "cards-coach-01"
  }
 ]

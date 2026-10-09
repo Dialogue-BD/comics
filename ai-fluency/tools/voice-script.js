@@ -64,6 +64,7 @@ AFL.CQS.forEach(c=>add(c.line,'coach','cq',c.lesson+' · consequence · '+c.when
 INTRO.DEFS.forEach(t=>add(t,'coach','introd','four Ds film · what the D means'));
 INTRO.LINES.forEach((t,i)=>add(t,'coach','intro','four Ds film · line '+(i+1)));
 
+const LATE=[];
 for(const id of ORDER){
   const L=LESSONS[id];
   L.beats.forEach((b,i)=>{
@@ -76,6 +77,8 @@ for(const id of ORDER){
       if(c.type==='story') c.panels.forEach(p=>add(p.en,'coach',id,where+' story'));
       if(c.type==='phrases') Object.values(c.items).forEach(p=>add(p.en,'ayesha',id,where+' phrase'));
     });
+    /* lines a hand-written html card speaks through data-say / data-speak (kept in their own take, see below) */
+    each(L,b,b.card,c=>{ if(c&&c.html) for(const m of String(c.html).matchAll(/data-(?:say|speak)="([^"]+)"/g)) LATE.push([m[1].replace(/&quot;/g,'"').replace(/&amp;/g,'&'),'coach','cards',where+' card']); });
     each(L,b,b.talk,t=>{
       if(!t) return;
       add(t.q,'coach',id,where+' question');
@@ -85,10 +88,11 @@ for(const id of ORDER){
   });
 }
 
+LATE.forEach(a=>add(...a));
 /* takes: per workflow and voice, in lesson order, a few lines each */
 const all=[...lines.values()];
 const takes={};
-for(const lesson of ['common',...ORDER,'cq','intro','introd']) for(const voice of ['coach','ayesha']){
+for(const lesson of ['common',...ORDER,'cq','intro','introd','cards']) for(const voice of ['coach','ayesha']){
   const ls=all.filter(l=>l.lesson===lesson&&l.voice===voice);
   for(let i=0;i<ls.length;i+=MAX_PER_TAKE){
     const tid=`${lesson}-${voice}-${String(i/MAX_PER_TAKE+1).padStart(2,'0')}`;
@@ -174,7 +178,7 @@ ${v.context}
 \`\`\`
 
 `;}
-const TITLE={common:'Start screen and the four phrases',cv:'Workflow 1 · An honest CV with AI',agent:'Workflow 2 · Set up an AI agent',build:'Workflow 3 · Vibe-code an app',cq:'What happens next — consequences of risky choices',intro:'The four Ds — onboarding film (one line per caption)',introd:'The four Ds — what each D means (film)'};
+const TITLE={common:'Start screen and the four phrases',cv:'Workflow 1 · An honest CV with AI',agent:'Workflow 2 · Set up an AI agent',build:'Workflow 3 · Vibe-code an app',cq:'What happens next — consequences of risky choices',intro:'The four Ds — onboarding film (one line per caption)',introd:'The four Ds — what each D means (film)',cards:'Lines spoken from cards'};
 let cur='';
 for(const [tid,keys] of Object.entries(takes)){
   const L0=lines.get(keys[0]);
