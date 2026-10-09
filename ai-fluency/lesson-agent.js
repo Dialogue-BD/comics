@@ -1,7 +1,6 @@
-/* Set up an AI agent — Diligence first.
+/* Set up an AI agent — the access decisions play out.
  * Orbit is an invented agent app modelled on Meta's Muse and xAI's Grok Bot:
  * it connects to your apps, works while you're away, and asks before
- * sensitive actions. The lesson's spine is one idea: logging in yourself is
  * sensitive actions. The lesson's spine is one idea: a login page means
  * "private inside". Agents never see your password (it sits in a vault) —
  * but once signed in, they see everything the login protects.
@@ -156,16 +155,17 @@ const RULE_SLOTS=[
 ];
 const ruleList=x=>{const t=x.get('rules','');if(!t.trim())return RULE_CHIPS.slice(0,5).map(c=>c.text);const used=RULE_CHIPS.filter(c=>t.includes(c.text)).map(c=>c.text);let rest=t;used.forEach(u=>rest=rest.replace(u,''));rest=rest.trim();return rest?used.concat([rest]):used};
 const rulesText=x=>x.get('rules','')||RULE_CHIPS.slice(0,5).map(c=>c.text).join(' ');
+const shortcutUsed=x=>RULE_CHIPS.filter(c=>c.x&&x.get('rules','').includes(c.text));
 
 /* ---------- watch: what Orbit did ---------- */
 const CAL=(fixed)=>`<div class="cmonth">October 2025</div>
- <div class="cday"><div class="dn">Wed<b>15</b></div><div>${fixed?`<button class="cev ag">Oxford — MSc Economics for Development<small>Deadline · added by Orbit · fixed by Ayesha</small></button>`:''}</div></div>
- <div class="cday"><div class="dn">Fri<b>31</b></div><div><button class="cev ag">LSE — MSc Development Management<small>Deadline · added by Orbit</small></button></div></div>
+ <div class="cday"><div class="dn">Wed<b>15</b></div><div>${fixed?`<button class="cev ag" data-hit="ev:ok">Oxford — MSc Economics for Development<small>Deadline · added by Orbit · fixed by Ayesha</small></button>`:''}</div></div>
+ <div class="cday"><div class="dn">Fri<b>31</b></div><div><button class="cev ag" data-hit="ev:ok">LSE — MSc Development Management<small>Deadline · added by Orbit</small></button></div></div>
  <div class="cmonth">December 2025</div>
- <div class="cday"><div class="dn">Mon<b>1</b></div><div><button class="cev ag">Erasmus University — Public Policy<small>Deadline · added by Orbit</small></button><button class="cev ag">University of Toronto — MA Economics<small>Deadline · added by Orbit</small></button></div></div>
- <div class="cday"><div class="dn">Mon<b>15</b></div><div><button class="cev ag">Göttingen — Development Studies<small>Deadline · added by Orbit</small></button>${fixed?'':`<button class="cev ag" data-hit="ev:ox">Oxford — MSc Economics for Development<small>Deadline · added by Orbit</small></button>`}</div></div>
+ <div class="cday"><div class="dn">Mon<b>1</b></div><div><button class="cev ag" data-hit="ev:ok">Erasmus University — Public Policy<small>Deadline · added by Orbit</small></button><button class="cev ag" data-hit="ev:ok">University of Toronto — MA Economics<small>Deadline · added by Orbit</small></button></div></div>
+ <div class="cday"><div class="dn">Mon<b>15</b></div><div><button class="cev ag" data-hit="ev:ok">Göttingen — Development Studies<small>Deadline · added by Orbit</small></button>${fixed?'':`<button class="cev ag" data-hit="ev:ox">Oxford — MSc Economics for Development<small>Deadline · added by Orbit</small></button>`}</div></div>
  <div class="cmonth">January 2026</div>
- <div class="cday"><div class="dn">Thu<b>15</b></div><div><button class="cev ag">Sussex — Development Studies<small>Deadline · added by Orbit</small></button><button class="cev ag">Lund — Development Studies<small>Deadline · added by Orbit</small></button><button class="cev ag">UBC — Master of Public Policy<small>Deadline · added by Orbit</small></button></div></div>`;
+ <div class="cday"><div class="dn">Thu<b>15</b></div><div><button class="cev ag" data-hit="ev:ok">Sussex — Development Studies<small>Deadline · added by Orbit</small></button><button class="cev ag" data-hit="ev:ok">Lund — Development Studies<small>Deadline · added by Orbit</small></button><button class="cev ag" data-hit="ev:ok">UBC — Master of Public Policy<small>Deadline · added by Orbit</small></button></div></div>`;
 
 const APPR={
  email:{title:'Send email to Dr. Sanchita Bhowmik?',key:'ap_email',
@@ -209,14 +209,25 @@ const settingsBody=x=>{const rev=x.get('revoke');const row=(i,n,s)=>`<div class=
   <button class="mdbtn ${rev==='all'?'':'danger'}" data-ui="opt:all">${rev==='all'?'✓ All access removed':'Remove all access'}</button>
   <button class="mdbtn out" data-ui="opt:keep">${rev==='keep'?'✓ Keeping everything':'Keep everything, just in case'}</button></div>`};
 
+const LOCKN={app:'lock',notifs:[{app:'orbit',title:'Finish setting up Orbit',text:'Your AI agent is ready. Connect your apps to get started.',time:'8:40',hit:'n:orbit'}]};
+const taskFb=x=>{const s=x.get('tasks',[]);
+  const bad=s.map(id=>TASKS.find(t=>t.id===id)).filter(t=>t.ok===false), maybe=s.map(id=>TASKS.find(t=>t.id===id)).filter(t=>t.ok===0);
+  AFL.firstTry(x,'tasks',s.length>0&&!bad.length&&!maybe.length);
+  if(!s.length) return {ok:0,title:'No jobs yet',why:'Choose at least one job for Orbit — the safe ones.',whybn:'Orbit-এর জন্য অন্তত একটা কাজ বাছো — নিরাপদগুলো।',retry:1};
+  return {ok:bad.length?false:maybe.length?0:1,title:bad.length?'Some of these should stay with Ayesha':maybe.length?'Almost':'Good jobs to hand over',
+    why:s.map(id=>{const t=TASKS.find(z=>z.id===id);return `${t.ok?'✓':t.ok===0?'↺':'✗'} <b>${esc(t.en)}</b> — ${t.why}`}).join('<br>'),
+    whybn:s.map(id=>TASKS.find(z=>z.id===id).whybn).join(' '),retry:bad.length||maybe.length?1:0};
+};
+const FOX=`<div class="idiom"><span>🦊🐔</span><p><b>“That’s asking the fox to guard the henhouse.”</b><small>Giving something precious to the one most likely to take it.</small><span class="bn" lang="bn">শিয়ালের কাছে মুরগি বর্গা দেওয়া।</span></p>${AFL.sayBtn('That’s asking the fox to guard the henhouse.')}</div>`;
+
 AFL.lesson({
- id:'agent', title:'Set up an AI agent', kicker:'Workflow 2 · Agents', emoji:'🛰️', tint:'#FFDBCC', time:'40–45 min',
- blurb:'Decide what an agent may touch — then catch it when it goes too far.',
- blurbbn:'একটা এজেন্টকে কী কী ধরতে দেবে ঠিক করো — তারপর সে বেশি দূর গেলে ধরো।',
+ id:'agent', title:'Set up an AI agent', kicker:'Mission 2 · Agents', emoji:'🛰️', tint:'#FFDBCC', time:'30–40 min',
+ blurb:'Eight applications are due. Let an AI agent help — without letting it go too far.',
+ blurbbn:'আটটা আবেদনের সময় ঘনিয়ে এসেছে। একটা AI এজেন্টকে সাহায্য করতে দাও — কিন্তু বেশি দূর যেতে দিও না।',
  notif:{app:'orbit',title:'Finish setting up Orbit',text:'Your AI agent is ready. Connect your apps to get started.',time:'8:40',hit:'start:agent'},
- stages:[{id:'warm',label:'Warm up',icon:'🎧'},{id:'goal',label:'Goal',d:'del'},{id:'access',label:'Access',d:'dil'},{id:'rules',label:'Rules',d:'des'},{id:'watch',label:'Watch',d:'dis'},{id:'review',label:'Review',d:'dil'}],
+ stages:[{id:'warm',label:'Warm up',icon:'🎧'},{id:'goal',label:'Jobs',d:'del'},{id:'access',label:'Access',d:'dil'},{id:'rules',label:'Rules',d:'des'},{id:'watch',label:'Watch',d:'dis'},{id:'review',label:'Review',d:'dil'}],
  beats:[
-  /* ---------- WARM UP: projector first ---------- */
+  /* ---------- WARM UP (Pairs and Class): projector first ---------- */
   {d:'none',stage:'warm',wide:true,scene:LOCK,
    say:'A chatbot talks. An agent acts. Listen and repeat.',bn:'চ্যাটবট কথা বলে। এজেন্ট কাজ করে। শোনো আর বলো।',
    card:{type:'words',items:[
@@ -247,118 +258,137 @@ AFL.lesson({
    talk:{big:true,pic:'🛰️💬',q:'Would you let an AI agent read your messages?',qbn:'তুমি কি একটা AI এজেন্টকে তোমার মেসেজ পড়তে দেবে?',time:60,
      frames:[{en:'Yes, because ___.',bn:'হ্যাঁ, কারণ ___।'},{en:'No, because ___.',bn:'না, কারণ ___।'},{en:'Only if ___.',bn:'শুধু যদি ___।'}],
      model:'Only if it asks me first. My messages have other people’s information in them.'}},
-
-  /* ---------- GOAL ---------- */
-  {stage:'goal',open:true,d:'dil',why:'A login page is a door someone built to keep things private. Letting an agent through it is a responsibility decision.',whybn:'লগইন পেজ একটা দরজা — কেউ গোপন রাখতে বানিয়েছে। এজেন্টকে সেই দরজা দিয়ে ঢুকতে দেওয়া দায়িত্বের সিদ্ধান্ত।',
-   frame:{en:'What is behind this login?',bn:'এই লগইনের ওপাশে কী আছে?'},scene:LOCK,
+  {stage:'warm',only:'class',d:'none',view:'card',
    say:'What should the pilot have asked first?',bn:'পাইলটের আগে কী জিজ্ঞেস করা উচিত ছিল?',
-   card:x=>({type:'html',html:`${AFL.cardHTML({type:'choice',key:'pilotQ',options:[
-     {en:'🚪 “What is behind this login? Would my airline want an AI company to see it?”',bn:'“এই লগইনের ওপাশে কী আছে? আমার এয়ারলাইন কি চাইবে একটা AI কোম্পানি তা দেখুক?”',ok:1,why:'Yes. A login is the airline saying: this is private.',whybn:'হ্যাঁ। লগইন মানে এয়ারলাইন বলছে: এটা গোপন।'},
+   card:{type:'choice',key:'pilotQ',pic:'👨‍✈️🔐',options:[
+     {en:'🚪 “What is behind this login? Would my airline want an AI company to see it?”',bn:'“এই লগইনের ওপাশে কী আছে? আমার এয়ারলাইন কি চাইবে একটা AI কোম্পানি তা দেখুক?”',ok:1,why:'Yes. A login is the airline saying: this is private.',whybn:'হ্যাঁ। লগইন মানে এয়ারলাইন বলছে: এটা গোপন।',more:FOX},
      {en:'🔑 “Is my password safe?”',bn:'“আমার পাসওয়ার্ড কি নিরাপদ?”',ok:0,why:'It is — it sits in a locked vault. The risk is what the agent sees after the door opens.',whybn:'হ্যাঁ — এটা একটা তালাবদ্ধ ভল্টে থাকে। ঝুঁকি হলো দরজা খোলার পর এজেন্ট যা দেখে।'},
-     {en:'🤷 Nothing. The agent never sees my password.',bn:'কিছু না। এজেন্ট তো পাসওয়ার্ড দেখে না।',ok:0,why:'True. But it sees everything behind the door.',whybn:'সত্য। কিন্তু দরজার ওপাশের সব সে দেখে।'}]},x)}
-     ${x.get('pilotQ')!=null?`<div class="idiom"><span>🦊🐔</span><p><b>“That’s asking the fox to guard the henhouse.”</b><small>Giving something precious to the one most likely to take it.</small><span class="bn" lang="bn">শিয়ালের কাছে মুরগি বর্গা দেওয়া।</span></p>${AFL.sayBtn('That’s asking the fox to guard the henhouse.')}</div>`:''}`})},
-  {why:'Now Ayesha plans: which jobs Orbit does, and which she keeps.',whybn:'এবার আয়েশা পরিকল্পনা করে: কোন কাজ Orbit করবে, আর কোনটা সে নিজে রাখবে।',frame:{en:'Orbit can ___. I will ___ myself.',bn:'Orbit ___ পারে। আমি নিজে ___ করব।'},stage:'goal',scene:{app:'lock',notifs:[{app:'orbit',title:'Finish setting up Orbit',text:'Your AI agent is ready. Connect your apps to get started.',time:'8:40',hit:'n:orbit'}]},tap:'n:orbit',
-   say:'Now Ayesha’s turn. Tap the Orbit notification.',bn:'এবার আয়েশার পালা। Orbit-এর নোটিফিকেশনে চাপো।'},
+     {en:'🤷 Nothing. The agent never sees my password.',bn:'কিছু না। এজেন্ট তো পাসওয়ার্ড দেখে না।',ok:0,why:'True. But it sees everything behind the door.',whybn:'সত্য। কিন্তু দরজার ওপাশের সব সে দেখে।'}]}},
+
+  /* ---------- JOBS: what to hand over ---------- */
+  {d:'none',kick:'Mission 2',stage:'goal',scene:LOCKN,tap:'n:orbit',
+   say:'Eight master’s applications are due. Orbit, an AI agent, can help. Tap the notification.',bn:'আটটা মাস্টার্স আবেদনের সময় ঘনিয়ে এসেছে। Orbit নামের একটা AI এজেন্ট সাহায্য করতে পারে। নোটিফিকেশনে চাপো।'},
   {stage:'goal',scene:orbitSc(`<div style="text-align:center;padding:40px 24px 10px"><div style="width:96px;height:96px;margin:0 auto 18px;border-radius:30px;background:#FFDBCC;color:#8A2E0B;display:grid;place-items:center">${ico('orbit').replace('<svg','<svg style="width:56px;height:56px"')}</div><b style="font-size:26px;font-weight:500">Hi Ayesha, I’m Orbit.</b><p style="color:#5B3B2C;font-size:15px;line-height:1.5">I work inside your apps while you study — emails, calendar, forms, payments. I’ll ask before anything important.</p></div>
      <div style="padding:10px 24px"><button class="mdbtn" style="width:100%;background:#B4471B;padding:14px" data-hit="ob:start">Get started</button></div>`,{bar:false}),tap:'ob:start',
-   say:'Orbit promises to “ask before anything important”. Who decides what is important? Tap Get started.',bn:'Orbit বলছে “জরুরি কিছুর আগে জিজ্ঞেস করব”। কোনটা জরুরি তা কে ঠিক করে? Get started চাপো।'},
+   say:'A chatbot talks. An agent acts — inside her apps. Orbit says it will “ask before anything important”. Who decides what’s important? Tap Get started.',bn:'চ্যাটবট কথা বলে। এজেন্ট কাজ করে — তার অ্যাপের ভেতরে। Orbit বলছে “জরুরি কিছুর আগে জিজ্ঞেস করব”। কোনটা জরুরি তা কে ঠিক করে? Get started চাপো।'},
   {stage:'goal',scene:x=>orbitSc(goalBody(x),{title:'Your jobs'}),tap:'ob:next',
    showMe:(x,h)=>{x.set('tasks',['t1','t2']);h.render();setTimeout(()=>{const b=document.querySelector('[data-hit="ob:next"]');h.ghostTo(b,()=>b.click())},400)},
-   onUi:(x,kind,arg)=>{if(kind!=='task')return false;const s=x.get('tasks',[]).slice();const i=s.indexOf(arg);i>=0?s.splice(i,1):s.push(arg);x.set('tasks',s);AFL.renderPhone();AFL.renderCoach()},
-   say:'Choose the jobs Orbit should do.',bn:'Orbit কোন কাজগুলো করবে বেছে নাও।',sub:'Tap to choose. Then Continue.',subbn:'বাছতে চাপো। তারপর Continue।',
-   card:x=>{const s=x.get('tasks',[]);if(!s.length) return {type:'html',html:`<div class="note">Which jobs are safe to hand over? Which must stay with Ayesha?<span class="bn" lang="bn">কোন কাজ দেওয়া নিরাপদ? কোনটা আয়েশার কাছেই থাকা উচিত?</span></div>`};
-     return {type:'html',html:s.map(id=>{const t=TASKS.find(z=>z.id===id);return `<div class="${t.ok?'good':t.ok===0?'note':'warn'}"><b>${esc(t.en)}</b> — ${t.why}<span class="bn" lang="bn">${t.whybn}</span></div>`}).join('')}},
+   onUi:(x,kind,arg)=>{if(kind!=='task')return false;const s=x.get('tasks',[]).slice();const i=s.indexOf(arg);i>=0?s.splice(i,1):s.push(arg);x.set('tasks',s);AFL.renderPhone();AFL.renderUI()},
+   say:'Choose the jobs Orbit should do. Then tap Continue on the phone.',bn:'Orbit কোন কাজগুলো করবে বেছে নাও। তারপর ফোনে Continue চাপো।',
+   feedback:taskFb,
    talk:{q:'Which job should Ayesha keep? Why?',qbn:'কোন কাজ আয়েশার নিজের রাখা উচিত? কেন?',time:45,
      frames:[{en:'Orbit can ___.',bn:'Orbit ___ পারে।'},{en:'Ayesha should ___ herself, because ___.',bn:'আয়েশার নিজের ___ করা উচিত, কারণ ___।'}],
      model:'Orbit can track her deadlines. Ayesha should write her Statement of Purpose herself, because it must be in her own voice.'}},
-  {why:'Every app she connects lets Orbit see other people’s data too. She asks four questions before each one.',whybn:'প্রতিটি অ্যাপ যুক্ত করলে Orbit অন্যদের তথ্যও দেখতে পায়। প্রতিটির আগে সে চারটা প্রশ্ন করে।',frame:{en:'Whose data is it? Does the job need it?',bn:'এটা কার তথ্য? কাজের জন্য কি দরকার?'},stage:'access',open:true,scene:x=>orbitSc(connList(x),{title:'Connect apps'}),
-   say:'Orbit wants to connect to her apps. Before each one, ask four questions.',bn:'Orbit তার অ্যাপগুলোর সাথে যুক্ত হতে চায়। প্রতিটির আগে চারটা প্রশ্ন করো।',
-   card:{type:'html',html:FOURQ+`<div class="note">“Works best with more access.” Every agent says that. More access = more risk.<span class="bn" lang="bn">“বেশি অ্যাক্সেস পেলে ভালো কাজ করি।” সব এজেন্টই এটা বলে। বেশি অ্যাক্সেস = বেশি ঝুঁকি।</span></div>`}},
-  ...ACC.map((a,i)=>({stage:'access',
+  {d:'del',stage:'goal',view:'card',
+   say:'You chose what to hand over — and what to keep. That gear is Delegation.',bn:'তুমি ঠিক করেছ কী হাতে দেবে — আর কী রাখবে। এই গিয়ারের নাম Delegation।',
+   card:{type:'level',d:'del',did:'Hand over the jobs that are clear, checkable and low-risk. Keep the ones that need your voice or your money.',didbn:'স্পষ্ট, যাচাইযোগ্য, কম ঝুঁকির কাজ দাও। যেগুলোতে তোমার কণ্ঠ বা টাকা লাগে, সেগুলো রাখো।',
+     phrase:{en:'Orbit can draft my emails. I will press Send.',bn:'Orbit আমার ইমেইলের খসড়া লিখতে পারে। Send আমি চাপব।'}}},
+
+  /* ---------- ACCESS: seven doors ---------- */
+  {d:'dil',stage:'access',view:'card',
+   say:'Orbit wants to connect to her apps. “Works best with more access,” it says. Before each app, ask four questions.',bn:'Orbit তার অ্যাপগুলোর সাথে যুক্ত হতে চায়। সে বলে, “বেশি অ্যাক্সেস পেলে ভালো কাজ করি।” প্রতিটি অ্যাপের আগে চারটা প্রশ্ন করো।',
+   card:{type:'html',html:`<h2 class="ct">Four questions before every “Allow”${'<span class="bn" lang="bn">প্রতিটি “Allow”-এর আগে চারটা প্রশ্ন</span>'}</h2>`+FOURQ+`<p class="note" style="margin-top:10px">Every agent says “more access = better work”. More access = more risk.<span class="bn" lang="bn">সব এজেন্টই বলে “বেশি অ্যাক্সেস = ভালো কাজ”। বেশি অ্যাক্সেস = বেশি ঝুঁকি।</span></p>`}},
+  ...ACC.map(a=>({stage:'access',d:'dil',
     scene:x=>a.system?orbitSc(connList(x),{title:'Connect apps',dialog:sysDialog(x,a)}):orbitSc(connList(x,a.key),{title:'Connect apps',sheet:{html:connSheet(x,a)}}),
-    say:a.system?'Android asks too. Orbit wants her contacts.':`${a.icon} ${a.name}: how much access?`,
-    bn:a.system?'অ্যান্ড্রয়েডও জিজ্ঞেস করছে। Orbit তার কন্ট্যাক্টস চায়।':`${a.name}: কতটা অ্যাক্সেস দেবে?`,
-    decide:{key:'acc_'+a.key,options:a.opts,think:a.think,prompt:'Choose on the phone.',promptbn:'ফোনে বেছে নাও।'}})),
-  {stage:'access',open:true,scene:x=>orbitSc(connList(x),{title:'Connect apps'}),
-   say:'Her access map.',bn:'তার অ্যাক্সেস ম্যাপ।',
+    say:a.system?'Android asks too. Orbit wants her contacts. Choose on the phone.':`${a.icon} ${a.name}: how much access? Choose on the phone.`,
+    bn:a.system?'অ্যান্ড্রয়েডও জিজ্ঞেস করছে। Orbit তার কন্ট্যাক্টস চায়। ফোনে বেছে নাও।':`${a.name}: কতটা অ্যাক্সেস দেবে? ফোনে বেছে নাও।`,
+    hint:a.think,
+    decide:{key:'acc_'+a.key,options:a.key==='portal'?Object.assign({},a.opts,{self:Object.assign({},a.opts.self,{more:FOX})}):a.opts}})),
+  {d:'dil',stage:'access',view:'card',
+   say:'Her access map: what Orbit can touch, and what it can’t.',bn:'তার অ্যাক্সেস ম্যাপ: Orbit কী ছুঁতে পারবে, আর কী পারবে না।',
    card:x=>{const g=[],a=[],r=[];ACC.forEach(z=>{const c=x.get('acc_'+z.key);const o=c&&z.opts[c];const label=`${z.icon} ${z.name}${o?': '+o.stl:''}`;if(!o||o.ok===0)a.push(label);else if(o.ok)(o.st==='no'?r:g).push(label);else r.push(label+' ⚠')});
      const risky=ACC.filter(z=>{const c=x.get('acc_'+z.key);return c&&z.opts[c].ok===false});
-     return {type:'html',html:`<div class="lanes"><div class="lane g"><h4>Connected — needed for the job</h4><div>${g.map(s=>`<span>${esc(s)}</span>`).join('')||'<span>—</span>'}</div></div>
+     return {type:'html',html:`<div class="lanes"><div class="lane g"><h4>Connected — the job needs it</h4><div>${g.map(s=>`<span>${esc(s)}</span>`).join('')||'<span>—</span>'}</div></div>
       <div class="lane a"><h4>Your call</h4><div>${a.map(s=>`<span>${esc(s)}</span>`).join('')||'<span>—</span>'}</div></div>
       <div class="lane r"><h4>Kept away from the agent</h4><div>${r.map(s=>`<span>${esc(s)}</span>`).join('')||'<span>—</span>'}</div></div></div>
-      ${risky.length?`<div class="warn">You gave risky access to: ${risky.map(z=>z.name).join(', ')}. For the rest of the lesson, Ayesha uses the safe setup.<span class="bn" lang="bn">তুমি ঝুঁকিপূর্ণ অ্যাক্সেস দিয়েছ: ${risky.map(z=>z.name).join(', ')}। বাকি পাঠে আয়েশা নিরাপদ সেটআপ ব্যবহার করবে।</span></div>`:`<div class="good">Least access: only what the job needs.<span class="bn" lang="bn">সবচেয়ে কম অ্যাক্সেস: শুধু কাজের যতটুকু দরকার।</span></div>`}`}},
+      ${risky.length?`<p class="warn" style="margin-top:10px">You gave risky access to: ${risky.map(z=>z.name).join(', ')}. For the rest of the mission, Ayesha uses the safe setup.<span class="bn" lang="bn">তুমি ঝুঁকিপূর্ণ অ্যাক্সেস দিয়েছ: ${risky.map(z=>z.name).join(', ')}। বাকি মিশনে আয়েশা নিরাপদ সেটআপ ব্যবহার করবে।</span></p>`:`<p class="good" style="margin-top:10px">Least access: only what the job needs.<span class="bn" lang="bn">সবচেয়ে কম অ্যাক্সেস: শুধু কাজের যতটুকু দরকার।</span></p>`}`}},
    talk:{q:'What did you connect? What did you keep away?',qbn:'কী যুক্ত করলে? কী দূরে রাখলে?',time:60,
      frames:[{en:'I connected ___, because the job needs it.',bn:'আমি ___ যুক্ত করেছি, কারণ কাজের জন্য দরকার।'},{en:'I didn’t connect ___, because it’s other people’s data.',bn:'আমি ___ যুক্ত করিনি, কারণ এগুলো অন্যদের তথ্য।'}],
      model:'I connected her calendar, because the job needs it. I didn’t connect her chats, because they are other people’s messages.'},
    leave:x=>{Object.entries(SAFE).forEach(([k,v])=>{x.set('acc_'+k+'_final',v)})}},
-  {frame:{en:'Ask me before you ___. Never ___.',bn:'___ করার আগে আমাকে জিজ্ঞেস করো। কখনো ___ করো না।'},why:'Access is the wall. Rules are the words that tell Orbit when to stop and ask.',whybn:'অ্যাক্সেস হলো দেয়াল। নিয়ম হলো সেই কথা, যা Orbit-কে বলে কখন থেমে জিজ্ঞেস করতে হবে।',stage:'rules',scene:x=>orbitSc(`<div class="ob-hero" style="padding:14px"><b style="font-size:17px">Give Orbit its rules</b><p>Write them in plain words. Orbit reads these before every action.</p></div>`,{title:'Instructions',composer:{key:'rules',placeholder:'Write Orbit’s rules…'},kb:{key:'rules',label:'RULES',chips:RULE_CHIPS}}),tap:'send',
-   say:'Access is one wall. Rules are the second. Write Orbit’s rules.',bn:'অ্যাক্সেস একটা দেয়াল। নিয়ম হলো দ্বিতীয় দেয়াল। Orbit-এর নিয়ম লেখো।',
-   sub:()=>AFL.byMode({solo:'Say each rule out loud before you tap it.',pair:'Say each rule to your partner before you tap it.',class:'Say each rule together before you tap it.'}),
-   subbn:()=>AFL.byMode({solo:'চাপার আগে প্রতিটা নিয়ম জোরে বলো।',pair:'চাপার আগে প্রতিটা নিয়ম সঙ্গীকে বলো।',class:'চাপার আগে প্রতিটা নিয়ম সবাই মিলে বলো।'}),
-   compose:{key:'rules',title:'Four rules every agent needs',titlebn:'প্রতিটি এজেন্টের চারটা নিয়ম দরকার',slots:RULE_SLOTS,chips:RULE_CHIPS,best:['r1','r2','r3','r4','r5'],ready:'Strong rules. Send them to Orbit.',readybn:'শক্ত নিয়ম। Orbit-কে পাঠাও।'}},
-  {stage:'rules',scene:x=>orbitSc(`<div class="sec-h">Orbit will follow these rules</div>${ruleList(x).map(r=>`<div class="rulecard"><span>✅</span><span>${esc(r)}</span></div>`).join('')}
+  {d:'dil',stage:'access',view:'card',
+   say:'You kept other people’s data and her money away from the agent. That gear is Diligence.',bn:'তুমি অন্যদের তথ্য আর তার টাকা এজেন্ট থেকে দূরে রেখেছ। এই গিয়ারের নাম Diligence।',
+   card:{type:'level',d:'dil',did:'Whose data is it? Does the job need it? What’s the worst case? Can I undo it?',didbn:'কার তথ্য? কাজের কি দরকার? সবচেয়ে খারাপ কী? ফেরানো যাবে?',
+     phrase:{en:'I won’t connect my chats. It’s other people’s data.',bn:'আমি আমার চ্যাট যুক্ত করব না। এগুলো অন্যদের তথ্য।'}}},
+
+  /* ---------- RULES ---------- */
+  {d:'des',stage:'rules',scene:x=>orbitSc(`<div class="ob-hero" style="padding:14px"><b style="font-size:17px">Give Orbit its rules</b><p>Write them in plain words. Orbit reads these before every action.</p></div>`,{title:'Instructions',composer:{key:'rules',placeholder:'Write Orbit’s rules…'},kb:{key:'rules',label:'RULES',chips:RULE_CHIPS}}),tap:'send',
+   say:'Access is one wall. Rules are the second. Write Orbit’s rules — tap them above the keyboard, then send ➤.',bn:'অ্যাক্সেস একটা দেয়াল। নিয়ম হলো দ্বিতীয়টা। Orbit-এর নিয়ম লেখো — কিবোর্ডের উপর থেকে চাপো, তারপর পাঠাও ➤।',
+   sub:()=>AFL.byMode({solo:'Read each rule out loud before you tap it.',pair:'Read each rule to your partner before you tap it.',class:'Read each rule together before you tap it.'}),
+   subbn:()=>AFL.byMode({solo:'চাপার আগে প্রতিটা নিয়ম জোরে পড়ো।',pair:'চাপার আগে প্রতিটা নিয়ম সঙ্গীকে পড়ে শোনাও।',class:'চাপার আগে প্রতিটা নিয়ম সবাই মিলে পড়ো।'}),
+   compose:{key:'rules',slots:RULE_SLOTS,chips:RULE_CHIPS,best:['r1','r2','r3','r4','r5']}},
+  {d:'des',stage:'rules',scene:x=>orbitSc(`<div class="sec-h">Orbit will follow these rules</div>${ruleList(x).map(r=>`<div class="rulecard"><span>✅</span><span>${esc(r)}</span></div>`).join('')}
      <div class="sec-h">Access</div><div class="rulecard"><span>📅</span><span>Calendar</span></div><div class="rulecard"><span>✉️</span><span>Gmail — drafts only</span></div><div class="rulecard"><span>🗂️</span><span>Drive — Masters Applications folder</span></div>
      <div style="padding:16px"><button class="mdbtn" style="width:100%;background:#B4471B;padding:14px" data-hit="ob:go">Start working</button></div>`,{title:'Ready'}),tap:'ob:go',
-   say:'Ayesha goes to class. Let Orbit start.',bn:'আয়েশা ক্লাসে যাচ্ছে। Orbit-কে কাজ শুরু করতে দাও।',
-   card:{type:'html',html:`<div class="walls"><span>🧱<b>Access</b><small>a wall</small></span><span>📜<b>Rules</b><small>words — can be misread or tricked</small></span></div><span class="bn" lang="bn">অ্যাক্সেস = দেয়াল। নিয়ম = কথা — ভুল বোঝা বা প্রতারিত হওয়া সম্ভব।</span>`}},
+   say:'Ayesha goes to class for three hours. Let Orbit start.',bn:'আয়েশা তিন ঘণ্টার জন্য ক্লাসে যাচ্ছে। Orbit-কে কাজ শুরু করতে দাও।',
+   feedback:x=>{const sc=shortcutUsed(x);AFL.firstTry(x,'rules',!sc.length&&RULE_SLOTS.every(s=>s.test.some(r=>r.test(rulesText(x)))));
+     return sc.length?{ok:0,title:'Careful with “'+sc[0].text+'”',why:`${sc[0].warn.replace(/^./,c=>c.toUpperCase())} Let’s see what Orbit does with it.`,whybn:sc[0].warnbn}:
+       {ok:1,title:'Two walls',why:'🧱 <b>Access</b> is a wall: Orbit can’t open what it wasn’t given.<br>📜 <b>Rules</b> are words: Orbit reads them — but words can be misread, or tricked. So you still check.',whybn:'অ্যাক্সেস একটা দেয়াল। নিয়ম হলো কথা — ভুল বোঝা বা প্রতারিত হওয়া সম্ভব। তাই যাচাই চালিয়ে যাও।'}}},
+  {d:'des',stage:'rules',view:'card',
+   say:'You told the agent clearly when to stop and ask. That gear is Description.',bn:'তুমি এজেন্টকে স্পষ্ট বলে দিয়েছ কখন থেমে জিজ্ঞেস করতে হবে। এই গিয়ারের নাম Description।',
+   card:{type:'level',d:'des',did:'Rules in plain words: ask first, never pay, never type secrets, stay inside the limits.',didbn:'সহজ ভাষায় নিয়ম: আগে জিজ্ঞেস করো, টাকা দিও না, গোপন কিছু টাইপ করো না, সীমার মধ্যে থাকো।',
+     phrase:{en:'Ask me before you send anything.',bn:'কিছু পাঠানোর আগে আমাকে জিজ্ঞেস করো।'}}},
+
+  /* ---------- WATCH: what it did while she was away ---------- */
   {d:'none',stage:'watch',auto:1800,scene:orbitSc(`<div class="working"><span class="orb"></span><span>Working… reading your checklist</span></div>`,{title:'Orbit',skip:{big:'3 hours later',small:'Ayesha is in class'}}),
    say:'Three hours later…',bn:'তিন ঘণ্টা পরে…'},
-  {frame:{en:'Wait. ___ is wrong. My ___ says ___.',bn:'দাঁড়াও। ___ ভুল। আমার ___-এ লেখা ___।'},why:'Agents work while you’re away. Judge what Orbit actually did — not what it says it did.',whybn:'তুমি না থাকলেও এজেন্ট কাজ করে। Orbit আসলে কী করেছে তা বিচার করো — সে কী বলছে তা নয়।',stage:'watch',scene:orbitSc(inboxHead(3)+`<div class="appr"><div class="ah"><span style="width:30px;height:30px;border-radius:99px;background:#D5F0DC;display:grid;place-items:center">✓</span><b>Added 8 deadlines to your Calendar</b></div><div class="ab">From Application_Checklist.jpg</div><div class="acts"><button class="mdbtn tonal" data-hit="ob:cal">View calendar</button></div></div>${apprCard({get:()=>null},'email')}`,{title:'Orbit'}),tap:'ob:cal',
+  {d:'dis',stage:'watch',scene:orbitSc(inboxHead(3)+`<div class="appr"><div class="ah"><span style="width:30px;height:30px;border-radius:99px;background:#D5F0DC;display:grid;place-items:center">✓</span><b>Added 8 deadlines to your Calendar</b></div><div class="ab">From Application_Checklist.jpg</div><div class="acts"><button class="mdbtn tonal" data-hit="ob:cal">View calendar</button></div></div>${apprCard({get:()=>null},'email')}`,{title:'Orbit'}),tap:'ob:cal',
    say:'Orbit worked while she was in class. First, check what it already did. Open the calendar.',bn:'সে ক্লাসে থাকার সময় Orbit কাজ করেছে। আগে দেখো সে কী করে ফেলেছে। ক্যালেন্ডার খোলো।'},
-  {stage:'watch',scene:{app:'cal',body:CAL(false)},
-   say:'Compare Orbit’s calendar with her handwritten checklist.',bn:'Orbit-এর ক্যালেন্ডার তার হাতে লেখা চেকলিস্টের সাথে মেলাও।',
-   card:{type:'html',html:`<div class="card" style="padding:8px"><button data-view="checklist" data-mark="64,40.5,36,27" style="border:0;padding:0;background:none;width:100%;display:block;cursor:zoom-in"><img src="docs/deadlines-crop.webp" alt="Ayesha’s handwritten deadlines" style="width:100%;border-radius:8px;display:block"></button><p class="sub" style="margin:4px 2px 0;font-size:12.5px">Tap to open her full checklist.</p></div>`},
-   decide:{key:'calErr',think:null,prompt:'Which deadline is wrong? Tap it on the phone.',promptbn:'কোন ডেডলাইনটা ভুল? ফোনে চাপো।',options:{}},
-   onHit:(x,id)=>{if(id==='ev:ox'){x.set('calErr','ox');AFL.renderCoach();return true}return false},
-   showMe:(x,h)=>{const e=document.querySelector('[data-hit="ev:ox"]');h.ghostTo(e,()=>e.click())},
-   card2:true,
-   sub:x=>x.get('calErr')?'<b style="color:var(--ok)">Found it.</b> Her checklist says Oxford: <b>15 Oct</b>. Orbit read her handwriting as 15 Dec. If she trusted it, she would miss Oxford by two months.':'',
-   subbn:x=>x.get('calErr')?'পেয়েছ। চেকলিস্টে অক্সফোর্ড: ১৫ অক্টোবর। Orbit হাতের লেখা পড়েছে ১৫ ডিসেম্বর। বিশ্বাস করলে সে অক্সফোর্ড দুই মাসের জন্য মিস করত।':''},
-  {stage:'watch',scene:{app:'cal',body:CAL(true)},
-   say:'Ayesha fixed it. Agents work fast — and make quiet mistakes.',bn:'আয়েশা ঠিক করেছে। এজেন্ট দ্রুত কাজ করে — আর নিঃশব্দে ভুল করে।',
-   card:{type:'html',html:`<div class="note">🤫 Orbit didn’t say “I’m not sure”. Check an agent’s first results against your own records.<span class="bn" lang="bn">Orbit বলেনি “আমি নিশ্চিত নই”। এজেন্টের প্রথম ফলাফল নিজের রেকর্ডের সাথে মিলিয়ে দেখো।</span></div>`},
+  {d:'dis',stage:'watch',scene:{app:'cal',body:CAL(false)},tap:'ev:ox',
+   docs:[{f:'checklist',m:'64,40.5,36,27',t:'Her handwritten deadlines'}],
+   say:'Orbit copied her handwritten checklist. One date is wrong. Open 📁 her checklist, then tap the wrong deadline.',bn:'Orbit তার হাতে লেখা চেকলিস্ট থেকে কপি করেছে। একটা তারিখ ভুল। 📁 চেকলিস্ট খোলো, তারপর ভুল ডেডলাইনে চাপো।',
+   onHit:(x,id)=>{if(id!=='ev:ok')return false;AFL.firstTry(x,'calErr',false);AFL.fb({ok:0,title:'This one matches',why:'That date is the same on her checklist. Look for one that isn’t.',whybn:'এই তারিখটা চেকলিস্টের সাথে মেলে। যেটা মেলে না সেটা খোঁজো।',sheet:{acts:[['close','Look again','primary']]}});return true},
+   feedback:x=>{AFL.firstTry(x,'calErr',true);return {ok:1,title:'Found it!',why:'Her checklist says Oxford: <b>15 October</b>. Orbit read her handwriting as 15 December. If she trusted it, she would miss Oxford by two months — and Orbit never said “I’m not sure”.',whybn:'চেকলিস্টে অক্সফোর্ড: ১৫ অক্টোবর। Orbit হাতের লেখা পড়েছে ১৫ ডিসেম্বর। বিশ্বাস করলে সে অক্সফোর্ড দুই মাসের জন্য মিস করত — আর Orbit বলেনি “আমি নিশ্চিত নই”।'}},
    talk:{q:'What did Orbit get wrong? How did Ayesha know?',qbn:'Orbit কী ভুল করেছে? আয়েশা কীভাবে জানল?',time:45,
      frames:[{en:'Orbit wrote ___, but her checklist says ___.',bn:'Orbit লিখেছে ___, কিন্তু তার চেকলিস্টে লেখা ___।'}],
      model:'Orbit wrote 15 December, but her checklist says 15 October.'}},
-  {stage:'watch',scene:x=>orbitSc(inboxHead(3)+apprCard(x,'email',1),{title:'Needs your OK'}),
-   say:'Orbit drafted an email to her professor. Read it closely.',bn:'Orbit তার শিক্ষককে একটা ইমেইলের খসড়া লিখেছে। মন দিয়ে পড়ো।',decide:apprDecide('email')},
-  {stage:'watch',scene:x=>orbitSc(inboxHead(2)+apprCard(x,'pay',1),{title:'Needs your OK'}),
-   say:'Orbit found a fee. Look at the web page it read.',bn:'Orbit একটা ফি খুঁজে পেয়েছে। সে যে ওয়েবপেজ পড়েছে তা দেখো।',decide:apprDecide('pay'),
-   talk:x=>x.get('ap_pay')?{q:'How do you know it’s a scam?',qbn:'কীভাবে বুঝলে এটা প্রতারণা?',time:45,
+  {d:'dis',stage:'watch',scene:x=>orbitSc(inboxHead(3)+apprCard(x,'email',1),{title:'Needs your OK'}),
+   say:'Orbit drafted an email to her professor. Read it closely — attachments too. Then choose on the phone.',sub:'Scroll down on the phone to read it all.',subbn:'পুরোটা পড়তে ফোনে নিচে স্ক্রল করো।',bn:'Orbit তার শিক্ষককে একটা ইমেইলের খসড়া লিখেছে। মন দিয়ে পড়ো — সংযুক্তিগুলোও। তারপর ফোনে বেছে নাও।',decide:{key:APPR.email.key,options:APPR.email.opts}},
+  {d:'dis',stage:'watch',scene:x=>orbitSc(inboxHead(2)+apprCard(x,'pay',1),{title:'Needs your OK'}),
+   say:'Orbit found a fee. Read the web page it found — every line. Then choose.',bn:'Orbit একটা ফি খুঁজে পেয়েছে। সে যে ওয়েবপেজ পেয়েছে তা পড়ো — প্রতিটি লাইন। তারপর বেছে নাও।',decide:{key:APPR.pay.key,options:APPR.pay.opts},
+   talk:{q:'How do you know it’s a scam?',qbn:'কীভাবে বুঝলে এটা প্রতারণা?',time:45,
      frames:[{en:'It’s a scam because ___.',bn:'এটা প্রতারণা, কারণ ___।'},{en:'The page told the agent to ___.',bn:'পেজটা এজেন্টকে ___ করতে বলেছে।'}],
-     model:'It’s a scam because it uses a personal bKash number and a 24-hour rush. The page told the agent to pay.'}:null},
-  {d:'dil',frame:{en:'No. I’ll type it on the official site myself.',bn:'না। আমি নিজে অফিসিয়াল সাইটে টাইপ করব।'},why:'Orbit asks for more. That’s a responsibility decision again — the same four questions.',whybn:'Orbit আরও চাইছে। এটা আবার দায়িত্বের সিদ্ধান্ত — সেই একই চারটা প্রশ্ন।',stage:'watch',scene:x=>orbitSc(inboxHead(1)+apprCard(x,'more',1),{title:'Needs your OK'}),
-   say:'Now Orbit wants more access.',bn:'এখন Orbit আরও অ্যাক্সেস চাইছে।',decide:apprDecide('more')},
-  {stage:'review',scene:orbitSc(LOG,{title:'Activity log'}),
-   say:'Good agents keep a log. Read it. Find where a limit stopped Orbit.',bn:'ভালো এজেন্ট লগ রাখে। পড়ো। কোথায় একটা সীমা Orbit-কে থামিয়েছে খোঁজো।',
-   card:{type:'choice',key:'logQ',options:[
-     {en:'10:41 — Tried to open RUCEI Shared — blocked',bn:'১০:৪১ — RUCEI Shared খুলতে চেয়েছে — আটকে গেছে',ok:1,why:'Orbit wandered toward the children’s folder. Her Drive choice (one folder only) stopped it. Rules are words; access limits are walls.',whybn:'Orbit শিশুদের ফোল্ডারের দিকে গিয়েছিল। তার Drive-এর সিদ্ধান্ত (শুধু একটা ফোল্ডার) তাকে থামিয়েছে। নিয়ম হলো কথা; অ্যাক্সেসের সীমা হলো দেয়াল।'},
-     {en:'09:04 — Added 8 events to Calendar',bn:'০৯:০৪ — ক্যালেন্ডারে ৮টা ইভেন্ট যোগ করেছে',ok:0,why:'That was allowed — and one date was wrong, remember?',whybn:'ওটা অনুমোদিত ছিল — আর একটা তারিখ ভুল ছিল, মনে আছে?'},
-     {en:'11:20 — Checked the LSE website',bn:'১১:২০ — LSE ওয়েবসাইট দেখেছে',ok:0,why:'That was allowed: an official university website.',whybn:'ওটা অনুমোদিত: বিশ্ববিদ্যালয়ের অফিসিয়াল ওয়েবসাইট।'}]}},
-  {stage:'review',scene:x=>({app:'settings',title:'App info',body:settingsBody(x)}),
-   say:'January: all applications are sent. What now?',bn:'জানুয়ারি: সব আবেদন পাঠানো শেষ। এখন কী?',
-   decide:{key:'revoke',options:{all:{ok:1,why:'Job done, access gone. Unused access is risk with no benefit. She can connect again next time.',whybn:'কাজ শেষ, অ্যাক্সেসও শেষ। অব্যবহৃত অ্যাক্সেস মানে লাভ ছাড়াই ঝুঁকি। দরকার হলে আবার যুক্ত করতে পারবে।'},keep:{then:CQ_AGENT.revoke,ok:false,why:'Orbit keeps reading her calendar, email and Drive for no reason. Unused access is risk with no benefit.',whybn:'Orbit অকারণে তার ক্যালেন্ডার, ইমেইল আর Drive পড়তে থাকবে। অব্যবহৃত অ্যাক্সেস মানে লাভ ছাড়াই ঝুঁকি।'}},prompt:'Choose on the phone.',promptbn:'ফোনে বেছে নাও।'}},
-  {stage:'review',open:true,scene:x=>({app:'settings',title:'App info',body:settingsBody(x)}),
+     model:'It’s a scam because it uses a personal bKash number and a 24-hour rush. The page told the agent to pay.'}},
+  {d:'dil',stage:'watch',scene:x=>orbitSc(inboxHead(1)+apprCard(x,'more',1),{title:'Needs your OK'}),
+   say:'Now Orbit wants more access than you gave it. Choose.',bn:'এখন Orbit তোমার দেওয়া অ্যাক্সেসের চেয়ে বেশি চাইছে। বেছে নাও।',decide:{key:APPR.more.key,options:APPR.more.opts},
+   hint:[{i:'👤',en:'Whose data is in Downloads?',bn:'Downloads-এ কার তথ্য আছে?'},{i:'🎯',en:'Does the job need all of it?',bn:'কাজের কি সবটা দরকার?'},{i:'↩️',en:'Can she undo it once Orbit has read it?',bn:'Orbit পড়ে ফেললে কি ফেরানো যাবে?'}]},
+  {d:'dis',stage:'watch',view:'card',
+   say:'You checked what the agent actually did — not what it said. That gear is Discernment.',bn:'এজেন্ট আসলে কী করেছে তুমি তা যাচাই করেছ — সে কী বলেছে তা নয়। এই গিয়ারের নাম Discernment।',
+   card:{type:'level',d:'dis',did:'Agents work fast — and make quiet mistakes. Check results against your own records, and read what it wants to send.',didbn:'এজেন্ট দ্রুত কাজ করে — আর নিঃশব্দে ভুল করে। ফলাফল নিজের রেকর্ডের সাথে মেলাও, আর সে যা পাঠাতে চায় তা পড়ো।',
+     phrase:{en:'Wait. That date is wrong. My checklist says 15 October.',bn:'দাঁড়াও। ওই তারিখটা ভুল। আমার চেকলিস্টে লেখা ১৫ অক্টোবর।'}}},
+
+  /* ---------- REVIEW ---------- */
+  {d:'dis',stage:'review',scene:orbitSc(LOG,{title:'Activity log'}),
+   say:'Good agents keep a log. Read it. Where did a limit stop Orbit?',bn:'ভালো এজেন্ট লগ রাখে। পড়ো। কোথায় একটা সীমা Orbit-কে থামিয়েছে?',
+   ask:{key:'logQ',options:[
+     {en:'10:41 — tried to open RUCEI Shared',bn:'১০:৪১ — RUCEI Shared খুলতে চেয়েছে',ok:1,why:'Yes. Orbit wandered toward the children’s folder. Her Drive choice — one folder only — stopped it. Rules are words; access limits are walls.',whybn:'হ্যাঁ। Orbit শিশুদের ফোল্ডারের দিকে গিয়েছিল। তার Drive-এর সিদ্ধান্ত (শুধু একটা ফোল্ডার) তাকে থামিয়েছে। নিয়ম হলো কথা; অ্যাক্সেসের সীমা হলো দেয়াল।'},
+     {en:'09:04 — added 8 events to Calendar',bn:'০৯:০৪ — ক্যালেন্ডারে ৮টা ইভেন্ট যোগ করেছে',ok:0,why:'That was allowed — and one date was wrong, remember?',whybn:'ওটা অনুমোদিত ছিল — আর একটা তারিখ ভুল ছিল, মনে আছে?'},
+     {en:'11:20 — checked the LSE website',bn:'১১:২০ — LSE ওয়েবসাইট দেখেছে',ok:0,why:'That was allowed: an official university website.',whybn:'ওটা অনুমোদিত: বিশ্ববিদ্যালয়ের অফিসিয়াল ওয়েবসাইট।'}]}},
+  {d:'dil',stage:'review',scene:x=>({app:'settings',title:'App info',body:settingsBody(x)}),
+   say:'January: all eight applications are sent. What now? Choose on the phone.',bn:'জানুয়ারি: আটটা আবেদনই পাঠানো শেষ। এখন কী? ফোনে বেছে নাও।',
+   decide:{key:'revoke',options:{all:{ok:1,why:'Job done, access gone. Unused access is risk with no benefit. She can connect again next time.',whybn:'কাজ শেষ, অ্যাক্সেসও শেষ। অব্যবহৃত অ্যাক্সেস মানে লাভ ছাড়াই ঝুঁকি। দরকার হলে আবার যুক্ত করতে পারবে।'},keep:{then:CQ_AGENT.revoke,ok:false,why:'Orbit keeps reading her calendar, email and Drive for no reason. Unused access is risk with no benefit.',whybn:'Orbit অকারণে তার ক্যালেন্ডার, ইমেইল আর Drive পড়তে থাকবে। অব্যবহৃত অ্যাক্সেস মানে লাভ ছাড়াই ঝুঁকি।'}}}},
+  {stage:'review',only:'class',view:'card',
    say:'A friend asks for advice. Practise.',bn:'একজন বন্ধু পরামর্শ চাইছে। অনুশীলন করো।',
-   talk:()=>({time:90,pic:'🙋',q:AFL.mode()==='solo'?'A friend asks: “Should I let an AI agent sign in to my university portal?” Answer.':'A friend asks: “Should I let an AI agent sign in to my university portal?”',
+   talk:()=>({time:90,pic:'🙋',q:'A friend asks: “Should I let an AI agent sign in to my university portal?”',
      qbn:'এক বন্ধু জিজ্ঞেস করে: “আমি কি একটা AI এজেন্টকে আমার বিশ্ববিদ্যালয়ের পোর্টালে লগইন করতে দেব?”',
      roles:[{en:'Friend: ask the question. Then ask “Why not?”',bn:'বন্ধু: প্রশ্নটা করো। তারপর জিজ্ঞেস করো “কেন না?”'},{en:'Ayesha: answer with the phrases.',bn:'আয়েশা: নিচের বাক্যগুলো দিয়ে উত্তর দাও।'}],
      frames:[{en:'The agent never sees your password, but it sees everything behind the login.',bn:'এজেন্ট তোমার পাসওয়ার্ড দেখে না, কিন্তু লগইনের ওপাশের সব দেখে।'},
        {en:'Sign in yourself, and give it only the one file it needs.',bn:'নিজে লগইন করো, আর শুধু দরকারি একটা ফাইল দাও।'},
        {en:'Orbit can draft my emails, but I press Send.',bn:'Orbit ইমেইলের খসড়া লিখতে পারে, কিন্তু Send আমি চাপি।'}]})},
-  {stage:'review',open:true,scene:x=>({app:'settings',title:'App info',body:settingsBody(x)}),
+  {stage:'review',only:'class',view:'card',
    say:'Now you. Which apps would YOU give an agent?',bn:'এবার তুমি। তুমি একটা এজেন্টকে কোন অ্যাপ দেবে?',
    talk:{big:true,pic:'📱',q:'Which of your apps would you let an agent use?',qbn:'তোমার কোন অ্যাপগুলো তুমি একটা এজেন্টকে ব্যবহার করতে দেবে?',time:90,
      frames:[{en:'I would let it use my ___.',bn:'আমি এটাকে আমার ___ ব্যবহার করতে দেব।'},{en:'I would never let it ___, because ___.',bn:'আমি এটাকে কখনো ___ করতে দেব না, কারণ ___।'}],
      model:'I would let it use my calendar. I would never let it read my family chats, because they are private.'}},
-  {stage:'review',open:true,scene:x=>({app:'settings',title:'App info',body:settingsBody(x)}),
-   say:'Before you give any agent access:',bn:'যেকোনো এজেন্টকে অ্যাক্সেস দেওয়ার আগে:',
-   card:x=>({type:'html',html:FOURQ+AFL.recap(x,{
-     del:{en:'“Orbit can draft my emails. I will press Send.”',bn:'Orbit আমার ইমেইলের খসড়া লিখতে পারে। Send আমি চাপব।'},
-     des:{en:'“Ask me before you send anything.”',bn:'কিছু পাঠানোর আগে আমাকে জিজ্ঞেস করো।'},
-     dis:{en:'“Wait. That date is wrong. My checklist says 15 October.”',bn:'দাঁড়াও। ওই তারিখটা ভুল। আমার চেকলিস্টে লেখা ১৫ অক্টোবর।'},
-     dil:{en:'“I won’t connect my chats. It’s other people’s data.”',bn:'আমি আমার চ্যাট যুক্ত করব না। এগুলো অন্যদের তথ্য।'}})+`<div class="note">A login page means <b>private inside</b>. Letting an AI company in is asking the fox to guard the henhouse.<span class="bn" lang="bn">লগইন পেজ মানে ভেতরে গোপন তথ্য। AI কোম্পানিকে ভেতরে ঢুকতে দেওয়া মানে শিয়ালের কাছে মুরগি বর্গা দেওয়া।</span></div>
-    <div class="pick-cards"><button class="pcard" data-start="build"><span class="pi" style="background:#1F1F23;color:#A8C7FA">⌨️</span><span><em>Next</em><b>Vibe-code an app</b><span>Describe it, test it, fix it, share it.</span></span></button></div>`})}
+  {d:'none',kick:'Mission 2 · complete',stage:'review',view:'card',
+   say:'All eight applications went out on time — no scam paid, no private files leaked. Mission complete!',bn:'আটটা আবেদনই সময়মতো গেছে — কোনো প্রতারণায় টাকা যায়নি, কোনো গোপন ফাইল ফাঁস হয়নি। মিশন সম্পূর্ণ!',
+   card:{type:'result',next:['build','cv'],
+     html:`<div class="verdict"><div class="vh">🛰️ Orbit · January</div><div class="vb"><p>✓ 8 applications sent on time<br>✓ Oxford deadline fixed by you<br>✓ Scam fee stopped · confidential letter kept private<br>✓ Access removed when the job was done</p><p style="color:var(--ink-muted);font-size:14px">A login page means <b>private inside</b>. Before any “Allow”: whose data? does the job need it? worst case? can I undo it?</p></div></div>`,
+     say:{
+       del:{en:'Orbit can draft my emails. I will press Send.',bn:'Orbit আমার ইমেইলের খসড়া লিখতে পারে। Send আমি চাপব।'},
+       des:{en:'Ask me before you send anything.',bn:'কিছু পাঠানোর আগে আমাকে জিজ্ঞেস করো।'},
+       dis:{en:'Wait. That date is wrong. My checklist says 15 October.',bn:'দাঁড়াও। ওই তারিখটা ভুল। আমার চেকলিস্টে লেখা ১৫ অক্টোবর।'},
+       dil:{en:'I won’t connect my chats. It’s other people’s data.',bn:'আমি আমার চ্যাট যুক্ত করব না। এগুলো অন্যদের তথ্য।'}}}}
  ]
 });
 })();

@@ -405,3 +405,8 @@ table.ptab .on{background:var(--ok-soft);font-weight:700}
 .askcol{display:grid;gap:8px}
 .pb.ask{width:100%;background:var(--card);color:var(--ink);border:2px solid var(--rule-strong);box-shadow:0 4px 0 var(--rule);font-size:calc(17px*var(--ui));justify-content:flex-start;padding:0 16px;min-height:54px}
 .pb.ask:active{transform:translateY(2px);box-shadow:0 2px 0 var(--rule)}
+.pb{white-space:nowrap}
+@media (min-width:900px) and (min-aspect-ratio:5/4){
+  body.stage #app{grid-template-columns:minmax(0,1fr) auto minmax(420px,560px) minmax(0,1fr)}
+  body.stage .p-cog{width:76px;height:76px}
+}

@@ -432,7 +432,7 @@ function renderFoot(){
   if(st.ask){ f.innerHTML=`<div class="askcol">${b.ask.options.map((o,i)=>`<button class="pb ask" data-ask="${i}">${o.en}${S.bn&&o.bn?` <span class="bn-in" lang="bn">· ${o.bn}</span>`:''}</button>`).join('')}</div>`; f.classList.remove('acting'); return; }
   let main;
   const label=fn(b.next,x);
-  if(st.stream) main=`<button class="pb quiet" data-c="next">${tr('Skip','বাদ দাও')} ▸▸</button>`;
+  if(st.stream) main=`<button class="pb quiet" data-c="next">${b.interrupt?tr('Let it finish','শেষ করতে দাও'):tr('Skip','বাদ দাও')+' ▸▸'}</button>`;
   else if(st.act) main=`<button class="pb quiet" data-c="${st.hunt?'huntdone':'next'}">${st.hunt?tr('I’m done','শেষ'):tr('Skip','বাদ দাও')}</button>`;
   else main=`<button class="pb primary" data-c="next">${label||(last?tr('Finish','শেষ'):tr('Continue','এগিয়ে যাও'))}</button>`;
   const back=`<button class="pb tool back" data-c="back" aria-label="Back" title="Back">${IC.back}</button>`;
@@ -454,7 +454,8 @@ const TONE={ok:['Yes!','হ্যাঁ!'],think:['Think again','আবার �
 function fbSheet(o,retry){
   const tone=o.ok?'ok':o.ok===0?'think':'bad';
   const acts=tone==='ok'?[['next',tr('Continue','এগিয়ে যাও'),'primary']]:[['retry',tr('Try again','আবার চেষ্টা করো'),'ghost'],['next',tr('Continue','এগিয়ে যাও'),'primary']];
-  return {tone,title:o.title||TONE[tone][0],titlebn:TONE[tone][1],html:`<p>${o.why||''}${BN(o.whybn)}</p>${o.more||''}`,acts:retry?acts:[['next',tr('Continue','এগিয়ে যাও'),'primary']],retry};
+  const more=typeof o.more==='function'?o.more(ctx()):(o.more||'');
+  return {tone,title:o.title||TONE[tone][0],titlebn:TONE[tone][1],html:`<p>${o.why||''}${BN(o.whybn)}</p>${more}`,acts:retry?acts:[['next',tr('Continue','এগিয়ে যাও'),'primary']],retry};
 }
 function renderSheet(){
   const sh=$('#psheet'); const s=UI.sheet;
@@ -480,13 +481,16 @@ function onSheetClick(e){
   if(a==='close'){ closeSheet(); return; }
   if(a==='rewind'){ rewindCQ(); return; }
   if(a==='retry'){ const r=o&&o.retry; UI.sheet=null; if(typeof r==='function') r(ctx()); renderUI(); return; }
-  if(a==='next'){ const after=o&&o.after; UI.sheet=null; if(after){ after(ctx()); return; } next(true); return; }
+  if(a==='next'){ const after=o&&o.after; UI.sheet=null; if(after){ after(ctx()); return; }
+    // a consequence on a step that still has its own task (a hunt, a question): back to the task
+    if(!o&&cqOn()){ const bb=ctx().beat; if(bb.hunt||bb.ask){ CQ=null; document.body.classList.remove('cq-on'); hush(); renderPhone(true); renderUI(); if(S.voice) speak(coachText().en); return; } }
+    next(true); return; }
   if(a==='huntnext'){ UI.sheet=null; renderUI(); return; }
 }
 
 /* ---------------------------------------------------------------- her files */
 function filesSheet(ids){
-  UI.sheet={tone:'info',title:S.bn?'আয়েশার ফাইল':'Ayesha’s files',html:`<p class="sub" style="margin:0 0 8px">${S.bn?'খুলতে চাপো।':'Tap a file to open it.'}</p><div class="fgrid2">${ids.map(id=>`<button data-view="${id}">${fileThumb(id)}<span>${esc(FILES[id].name.replace(/_/g,' ').replace(/\.(pdf|jpg)$/,''))}</span></button>`).join('')}</div>`,acts:[['close',tr('Close','বন্ধ করো'),'ghost']]};
+  UI.sheet={tone:'info',title:S.bn?'আয়েশার ফাইল':'Ayesha’s files',html:`<p class="sub" style="margin:0 0 8px">${S.bn?'খুলতে চাপো।':'Tap a file to open it.'}</p><div class="fgrid2">${ids.map(d=>{const id=d.f||d;return `<button data-view="${id}" ${d.m?`data-mark="${d.m}"`:''}>${fileThumb(id)}<span>${esc(d.t||FILES[id].name.replace(/_/g,' ').replace(/\.(pdf|jpg)$/,''))}</span></button>`}).join('')}</div>`,acts:[['close',tr('Close','বন্ধ করো'),'ghost']]};
   renderSheet();
 }
 function hintSheet(h){
@@ -831,7 +835,7 @@ function handleUI(id,el,x){
   if(kind==='opt'&&b.decide){ const d=fn(b.decide,x); x.set(d.key,arg); if(d.onPick) d.onPick(x,arg);
     const o=d.options[arg]; firstTry(x,d.key,!!(o&&o.ok));
     if(o&&o.then){ startCQ(Object.assign({why:o.why,whybn:o.whybn},o.then),x2=>{delete x2.ch[d.key]; save()}); return; }
-    renderPhone(false); UI.sheet=fbSheet(o||{},x2=>{delete x2.ch[d.key]; save(); renderPhone(false);}); if(o&&o.more) UI.sheet.html+=fn(o.more,x); renderUI(); return; }
+    renderPhone(false); UI.sheet=fbSheet(o||{},x2=>{delete x2.ch[d.key]; save(); renderPhone(false);}); renderUI(); return; }
   if(kind==='line'&&b.hunt){ openLine(arg); return; }
   if(b.onUi&&b.onUi(x,kind,arg,el)!==false) return;
   if(x.L.onUi) x.L.onUi(x,kind,arg,el);
@@ -875,7 +879,7 @@ function onUIClick(e){
   const pe=e.target.closest('[data-pe]'); if(pe){ const [k,i,j]=pe.dataset.pe.split('|'); const a=x.get(k,{}); a[i]=+j; x.set(k,a); const c2=fn(x.beat.card,x); const op=c2&&c2.items[+i].options[+j]; if(op) firstTry(x,k+':'+i,!!op.ok); renderStage(); renderFoot(); return; }
   const ch=e.target.closest('[data-choice]'); if(ch){ const [k,i]=ch.dataset.choice.split('|'); x.set(k,+i); const o=choiceOpt(x,k,+i); firstTry(x,k,!!(o&&o.ok));
     if(o&&o.then){ startCQ(o.then,x2=>{delete x2.ch[k]; save()}); return; }
-    UI.sheet=fbSheet(o||{},x2=>{delete x2.ch[k]; save();}); if(o&&o.more) UI.sheet.html+=fn(o.more,x); renderUI(); return; }
+    UI.sheet=fbSheet(o||{},x2=>{delete x2.ch[k]; save();}); renderUI(); return; }
   const tk=e.target.closest('[data-tick]'); if(tk){ const [k,i]=tk.dataset.tick.split('|'); const a=x.get(k,{}); a[i]=!a[i]; x.set(k,a); renderStage(); renderFoot(); return; }
   const sy=e.target.closest('[data-story]'); if(sy){ const card=$('#story'); if(sy.dataset.story==='words'){ card.classList.toggle('words-on'); } else playSeq($$('.tpanel',card),'lit'); return; }
   const pa=e.target.closest('[data-phrases]'); if(pa){ playSeq($$('#pcard .dph'),'lit'); return; }
@@ -1118,5 +1122,6 @@ function boot(){
   else if(!fromHash()){ if(S.lesson&&LESSONS[S.lesson]) go(S.beat,false); else { hub(); setTimeout(()=>tour(false),700); } }
 }
 
-window.AFL={_mode:k=>{S.mode=k},audioKey,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach:renderUI,renderUI,start,hub,STORY_DATE,firstTry,huntMark,shown};
+function sheetFrom(o){ UI.sheet=Object.assign(fbSheet(o,o.retry?()=>{}:null),o.sheet||{}); renderUI(); }
+window.AFL={fb:sheetFrom,HUB,TOUR,_mode:k=>{S.mode=k},audioKey,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach:renderUI,renderUI,start,hub,STORY_DATE,firstTry,huntMark,shown};
 })();
