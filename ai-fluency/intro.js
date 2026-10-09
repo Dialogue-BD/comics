@@ -405,10 +405,12 @@ function anim(el,spec,sc,first=true){ const FILL=first?'both':'forwards';
   return el.animate(kf,{duration:d,delay:t0,easing:ease,fill:FILL});
 }
 const camT=c=>{const k=c[2]*PK; return `translate(${(SX-k*c[0]).toFixed(1)}px,${(SY-k*c[1]).toFixed(1)}px) scale(${k})`;};
-function camAnim(el,sc){
-  const D=sc._dur; let cur=sc._cam0; const kf=[{transform:camT(cur),offset:0}];
-  (sc.cam||[]).forEach(([at,du,x,y,s])=>{ const a=T(sc,at)/D, b=Math.min(1,(T(sc,at)+du)/D); kf.push({transform:camT(cur),offset:Math.min(1,a),easing:EIO}); cur=[x,y,s]; kf.push({transform:camT(cur),offset:b}); });
-  kf.push({transform:camT(cur),offset:1});
+/* the engraved rosette stays centred on the mechanism wherever the camera goes; it shrinks only gently */
+const backT=c=>{const k=c[2]*PK, m=Math.min(1,.45+.55*k/(.9*PK)); return `translate(${(SX+k*(CX-c[0])).toFixed(1)}px,${(SY+k*(CY-c[1])).toFixed(1)}px) scale(${m.toFixed(3)})`;};
+function camAnim(el,sc,f=camT){
+  const D=sc._dur; let cur=sc._cam0; const kf=[{transform:f(cur),offset:0}];
+  (sc.cam||[]).forEach(([at,du,x,y,s])=>{ const a=T(sc,at)/D, b=Math.min(1,(T(sc,at)+du)/D); kf.push({transform:f(cur),offset:Math.min(1,a),easing:EIO}); cur=[x,y,s]; kf.push({transform:f(cur),offset:b}); });
+  kf.push({transform:f(cur),offset:1});
   for(let i=1;i<kf.length;i++) if(kf[i].offset<kf[i-1].offset) kf[i].offset=kf[i-1].offset;
   return el.animate(kf,{duration:D*1000,fill:'both'});
 }
@@ -491,12 +493,12 @@ function fit(){ if(!root) return;
 function show(i){
   cur=i; anims.forEach(a=>a.cancel()); anims=[]; stopClip();
   const sc=SCENES[i];
-  stage.innerHTML=`<div class="i-bg"></div><div class="i-guil"></div>
+  stage.innerHTML=`<div class="i-bg"></div><div class="i-back"><div class="i-guil"></div></div>
    <div class="world" id="world">${sc.html()}</div><div class="scr">${sc.scr()}</div>
    <div class="i-vig"></div><div class="i-grain"></div>
    <div class="i-cap"><p class="en"></p><p class="bnc" lang="bn"></p></div>`;
   const world=stage.querySelector('#world');
-  anims.push(camAnim(world,sc));
+  anims.push(camAnim(world,sc), camAnim(stage.querySelector('.i-back'),sc,backT));
   anims.push(...rotAnims(stage,sc));
   stage.querySelectorAll('[data-a]').forEach(el=>el.dataset.a.split('|').forEach((sp,k)=>{const r=anim(el,sp,sc,k===0); [].concat(r).forEach(x=>anims.push(x))}));
   stage.querySelectorAll('[data-flow]').forEach(p=>anims.push(p.animate([{strokeDashoffset:0},{strokeDashoffset:-.2}],{duration:3200,iterations:Infinity})));
@@ -546,12 +548,12 @@ function advance(){ if(cur<SCENES.length-1) show(cur+1); }
 function togglePlay(){ playing=!playing; btnPlay.textContent=playing?'❚❚':'▶'; btnPlay.setAttribute('aria-label',playing?'Pause':'Play');
   anims.forEach(a=>playing?a.play():a.pause()); if(!playing){ if(clip) clip.pause(); try{speechSynthesis.pause()}catch(e){} } else { if(clip) clip.play().catch(()=>{}); try{speechSynthesis.resume()}catch(e){} } }
 function open(opts={}){
-  build(); root.hidden=false; onExit=opts.onExit||null; onStart=opts.onStart||null; playing=!opts.paused; btnPlay.textContent=playing?'❚❚':'▶';
+  build(); root.hidden=false; document.documentElement.classList.add('intro-on'); onExit=opts.onExit||null; onStart=opts.onStart||null; playing=!opts.paused; btnPlay.textContent=playing?'❚❚':'▶';
   root.classList.toggle('bn',!!opts.bn); if(opts.sound===false){sound=false;btnSnd.textContent='🔇'}
   try{ if(opts.fullscreen&&!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{}) }catch(e){}
   loadDur().then(()=>{ show(opts.scene||0); cancelAnimationFrame(raf); raf=requestAnimationFrame(tick); });
 }
-function close(){ if(!root) return; root.hidden=true; anims.forEach(a=>a.cancel()); anims=[]; stopClip(); cancelAnimationFrame(raf); if(onExit) onExit(); }
+function close(){ if(!root) return; root.hidden=true; document.documentElement.classList.remove('intro-on'); anims.forEach(a=>a.cancel()); anims=[]; stopClip(); cancelAnimationFrame(raf); if(onExit) onExit(); }
 if(typeof document!=='undefined'&&document.addEventListener) document.addEventListener('keydown',e=>{
   if(!root||root.hidden) return;
   const k=e.key; let used=true;

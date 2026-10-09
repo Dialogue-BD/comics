@@ -10,7 +10,12 @@
 
 /* the room */
 .i-bg{inset:0;background:radial-gradient(110% 90% at 50% 42%,#1C5836 0%,#12422B 30%,#0A2C1A 62%,#05170E 100%)}
-.i-guil{left:50%;top:43.5%;width:2200px;height:2200px;background:var(--guil) center/100% 100% no-repeat;opacity:.06;will-change:transform}
+.i-back{left:0;top:0;width:0;height:0;transform-origin:0 0}
+.i-guil{position:absolute;left:0;top:0;width:2200px;height:2200px;background:var(--guil) center/100% 100% no-repeat;opacity:.06}
+/* while the film plays, nothing of the app behind it is painted (phones drop layers under load and let it show through) */
+html.intro-on,html.intro-on body{overflow:hidden;overscroll-behavior:none}
+html.intro-on body>*:not(#intro){visibility:hidden!important}
+#intro{overscroll-behavior:contain;touch-action:manipulation}
 .i-vig{inset:0;background:radial-gradient(120% 100% at 50% 44%,transparent 52%,rgba(0,0,0,.6) 100%);pointer-events:none;z-index:20}
 .i-grain{inset:0;background:var(--grain);opacity:.075;mix-blend-mode:overlay;pointer-events:none;z-index:21}
 .world{left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;will-change:transform;z-index:5}
@@ -233,7 +238,6 @@ svg.ringtxt .rline{fill:none;stroke:rgba(226,201,142,.7);stroke-width:1.3}
    The stage is 1080×1920: the gears fill the top, the words and pictures the space below. */
 #intro.port .i-stage{width:1080px;height:1920px}
 #intro.port .i-bg{background:radial-gradient(130% 70% at 50% 33%,#1C5836 0%,#12422B 32%,#0A2C1A 64%,#05170E 100%)}
-#intro.port .i-guil{top:33%}
 #intro.port .i-vig{background:radial-gradient(130% 90% at 50% 38%,transparent 55%,rgba(0,0,0,.55) 100%)}
 #intro.port svg.wire{width:1080px;height:1920px}
 #intro.port .i-cap{height:300px;padding:0 64px 34px}
@@ -258,3 +262,5 @@ svg.ringtxt .rline{fill:none;stroke:rgba(226,201,142,.7);stroke-width:1.3}
 #intro.port .i-bar{gap:6px;padding:10px;width:100%;max-width:560px}
 #intro.port .i-bar>button{min-width:36px;height:36px;padding:0 8px;flex:none}
 #intro.port .i-dots{min-width:60px}
+/* phones: the grain without a blend layer (cheaper to composite) */
+#intro.port .i-grain,#intro.narrow .i-grain{mix-blend-mode:normal;opacity:.035}

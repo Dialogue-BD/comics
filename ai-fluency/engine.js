@@ -435,7 +435,7 @@ function hubCoach(){
    <div class="sayrow"><p class="say">This is Ayesha’s phone. Learn AI — and English — by doing real tasks.</p>${sayBtn('This is Ayesha’s phone. Learn AI, and English, by doing real tasks.')}</div><span class="bn" lang="bn">এটা আয়েশার ফোন। বাস্তব কাজ করে করে AI — আর ইংরেজি — শেখো।</span>
    <div class="hows"><span>🎧<b>Listen</b><span class="bn" lang="bn">শোনো</span></span><span>🗣<b>Talk</b><span class="bn" lang="bn">বলো</span></span><span>📱<b>Tap</b><span class="bn" lang="bn">চাপো</span></span></div>
    <h3 class="hh">How are you working?<span class="bn" lang="bn">তুমি কীভাবে কাজ করছ?</span></h3>${modeButtons()}
-   <button class="pcard" data-c="intro" style="margin-top:12px;width:100%;border-color:var(--gold);background:var(--gold-soft)"><span class="pi" style="background:var(--forest);color:var(--gold-light)">▶</span><span><em>Start here · projector</em><b>Watch: the four Ds</b><span>Two minutes. Four gears, two loops.</span><span class="bn" lang="bn">দুই মিনিট। চারটা গিয়ার, দুটো চক্র।</span></span></button>
+   <button class="pcard" data-c="intro" style="margin-top:12px;width:100%;border-color:var(--gold);background:var(--gold-soft)"><span class="pi" style="background:var(--forest);color:var(--gold-light)">▶</span><span><em>Start here · projector</em><b>Watch: the four Ds</b><span>Three minutes. Four gears, two loops.</span><span class="bn" lang="bn">তিন মিনিট। চারটা গিয়ার, দুটো চক্র।</span></span></button>
    <div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard" data-start="${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${esc(L.blurb)}</span>${L.blurbbn?`<span class="bn" lang="bn">${L.blurbbn}</span>`:''}</span>${done(id)?'<span class="done">✓ Done</span>':''}</button>`}).join('')}</div>
    <div class="card"><h3>Four gears, four ways to use English<span class="bn" lang="bn">চারটা গিয়ার, ইংরেজির চারটা কাজ</span></h3>
     <div class="dphr">${['del','des','dis','dil'].map(d=>`<div class="dph d-${d}" data-say="${esc(D4.SAY[d].frames[0].en)}">${D4.badge(d,30)}<span><small>${D4.META[d].n}</small><span class="pq">${D4.SAY[d].fn}</span><span class="bn" lang="bn">${D4.SAY[d].fnbn}</span></span>${sayBtn(D4.SAY[d].frames[0].en)}</div>`).join('')}</div></div>`;
@@ -874,7 +874,7 @@ function openMenu(){
    <li><b>🙋 Class</b> — you drive the phone on the projector (large text). At each talk moment, neighbours turn and talk while the timer runs; then take two or three answers before you tap Next.</li>
    <li><b>👤 Alone</b> — homework. The coach reads every step aloud, and at each talk moment the student records their answer and plays it back.</li></ul>
    <p><b>The four Ds are also four jobs for English</b>: Delegation = planning and sharing jobs (<i>I will… The AI can…</i>); Description = clear instructions (<i>Use only… If…, ask me first</i>); Discernment = judging and disagreeing politely (<i>That’s not true. Her report says…</i>); Diligence = limits and responsibility (<i>I won’t share… It’s private</i>). When a gear turns, the coach shows that D’s phrase. “Why now?” opens the reason — read it with the class if they need it.</p>
-   <p>The four Ds come from the AI Fluency framework by Rick Dakan, Joseph Feller and Anthropic. The theory film (<b>▶ The four Ds</b>) runs about 2 minutes; use it before the first workflow.</p>
+   <p>The four Ds come from the AI Fluency framework by Rick Dakan, Joseph Feller and Anthropic. The theory film (<b>▶ The four Ds</b>) runs about 3 minutes; use it before the first workflow.</p>
    <p>Nothing is locked. “Show me” plays any step. The coach reads aloud (🔊 / V to turn off). The AI replies are scripted from real assistants, mistakes included. No data leaves the phone.</p>
    <p>Students without a phone: use the Paper version (one A4 page per workflow).</p>
    <h3>Keys</h3><p>→ next · ← back · S show me · T talk timer · V read aloud · P projector · B Bangla</p>
@@ -963,7 +963,9 @@ function boot(){
   // underneath it in history, so Back lands there rather than outside the activity
   const h0=(location.hash||'').match(/^#(\w+)(?:\/(\d+))?$/), into=h0&&LESSONS[h0[1]]?h0[1]+'/'+(h0[2]||0):(!location.hash&&S.lesson&&LESSONS[S.lesson]?S.lesson+'/'+S.beat:null);
   if(into){ setAddr(''); setAddr(into,true); }
-  if(!fromHash()){ if(S.lesson&&LESSONS[S.lesson]) go(S.beat,false); else hub(); }
+  // opening straight into the film (#intro): draw the phone underneath first, so closing it lands somewhere
+  if(location.hash==='#intro'){ if(S.lesson&&LESSONS[S.lesson]) go(S.beat,false); else hub(); openIntro(); }
+  else if(!fromHash()){ if(S.lesson&&LESSONS[S.lesson]) go(S.beat,false); else hub(); }
 }
 
 window.AFL={_mode:k=>{S.mode=k},audioKey,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach,start,hub,STORY_DATE};
