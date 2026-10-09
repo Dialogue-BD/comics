@@ -280,6 +280,230 @@
   "take": "cq-coach-05"
  },
  {
+  "key": "1ox18ay",
+  "text": "Many people use AI.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 1",
+  "take": "intro-coach-01"
+ },
+ {
+  "key": "1shm3pp",
+  "text": "Fewer people use it well.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 2",
+  "take": "intro-coach-01"
+ },
+ {
+  "key": "0ts4srv",
+  "text": "Using AI on its own is like one gear: it spins fast, but it moves nothing.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 3",
+  "take": "intro-coach-01"
+ },
+ {
+  "key": "0tyzxrd",
+  "text": "AI fluency has four gears: the four Ds.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 4",
+  "take": "intro-coach-01"
+ },
+ {
+  "key": "1bmb54z",
+  "text": "Delegation.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 5",
+  "take": "intro-coach-02"
+ },
+ {
+  "key": "1manp39",
+  "text": "Description.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 6",
+  "take": "intro-coach-02"
+ },
+ {
+  "key": "082ynqf",
+  "text": "Discernment.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 7",
+  "take": "intro-coach-02"
+ },
+ {
+  "key": "1qbin49",
+  "text": "Diligence.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 8",
+  "take": "intro-coach-02"
+ },
+ {
+  "key": "0k3ptu5",
+  "text": "Delegation and Diligence make the first loop: the big decisions.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 9",
+  "take": "intro-coach-03"
+ },
+ {
+  "key": "1t9e2ig",
+  "text": "Delegation asks: what is the job, and who does it — me, the AI, or both?",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 10",
+  "take": "intro-coach-03"
+ },
+ {
+  "key": "18cf02e",
+  "text": "Diligence asks: is it safe and honest, and who is responsible for the result?",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 11",
+  "take": "intro-coach-03"
+ },
+ {
+  "key": "1ew0003",
+  "text": "Description and Discernment make the second loop: the conversation.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 12",
+  "take": "intro-coach-03"
+ },
+ {
+  "key": "0n5rn25",
+  "text": "Description: say clearly what you want.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 13",
+  "take": "intro-coach-04"
+ },
+ {
+  "key": "1e9mtj8",
+  "text": "Discernment: judge what comes back.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 14",
+  "take": "intro-coach-04"
+ },
+ {
+  "key": "1yco26e",
+  "text": "Then say it again, better.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 15",
+  "take": "intro-coach-04"
+ },
+ {
+  "key": "090c3t2",
+  "text": "Now look. The gears touch.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 16",
+  "take": "intro-coach-04"
+ },
+ {
+  "key": "1dumbvi",
+  "text": "When one gear turns, all four turn.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 17",
+  "take": "intro-coach-05"
+ },
+ {
+  "key": "0y9ursw",
+  "text": "The big decisions shape the conversation, and the conversation changes the decisions.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 18",
+  "take": "intro-coach-05"
+ },
+ {
+  "key": "0ulx78v",
+  "text": "Where the four gears meet is the sweet spot: AI fluency.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 19",
+  "take": "intro-coach-05"
+ },
+ {
+  "key": "15wykmw",
+  "text": "Working with AI in a way that is effective, efficient, ethical and safe.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 20",
+  "take": "intro-coach-05"
+ },
+ {
+  "key": "1nkifo6",
+  "text": "And in the middle is you: the human in the loop.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 21",
+  "take": "intro-coach-06"
+ },
+ {
+  "key": "0pp3j70",
+  "text": "For example: studying for an exam.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 22",
+  "take": "intro-coach-06"
+ },
+ {
+  "key": "1tjhnyu",
+  "text": "Delegation: the AI makes practice questions. You answer them.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 23",
+  "take": "intro-coach-06"
+ },
+ {
+  "key": "1ou90l7",
+  "text": "Description: \"Give me five questions on chapter three.\"",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 24",
+  "take": "intro-coach-06"
+ },
+ {
+  "key": "12scni4",
+  "text": "Discernment: question four is wrong. My book says something different.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 25",
+  "take": "intro-coach-07"
+ },
+ {
+  "key": "1229hh9",
+  "text": "Diligence: no AI in the real exam.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 26",
+  "take": "intro-coach-07"
+ },
+ {
+  "key": "15n6eh4",
+  "text": "Four gears. Two loops. One sweet spot.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 27",
+  "take": "intro-coach-07"
+ },
+ {
+  "key": "05op337",
+  "text": "Now let's watch the gears turn on Ayesha's phone.",
+  "voice": "coach",
+  "lesson": "intro",
+  "where": "four Ds film · line 28",
+  "take": "intro-coach-07"
+ },
+ {
   "key": "00netb2",
   "text": "Listen and repeat. Tap a picture to hear it.",
   "voice": "coach",
