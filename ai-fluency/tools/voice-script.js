@@ -20,10 +20,10 @@ const AUD=path.join(ROOT,'audio');
 /* load the page's own code with a stub browser */
 let STREAM=false;
 global.window=global;
-global.document={querySelector:q=>STREAM&&/stream/.test(q)?{}:null,querySelectorAll:()=>[]};
+global.document={querySelector:q=>STREAM&&/stream/.test(q)?{}:null,querySelectorAll:()=>[],addEventListener:()=>{}};
 require(path.join(ROOT,'compass.js'));
 require(path.join(ROOT,'engine.js'));
-for(const f of ['lesson-cv.js','lesson-agent.js','lesson-build.js']) require(path.join(ROOT,f));
+for(const f of ['lesson-cv.js','lesson-agent.js','lesson-build.js','intro.js']) require(path.join(ROOT,f));
 const {audioKey,canon,LESSONS,ORDER}=AFL; const D4=global.D4;
 
 const MAX_PER_TAKE=4;   // short takes: the model can silently drop a line from a long one
@@ -59,6 +59,8 @@ add('That’s asking the fox to guard the henhouse.','coach','agent','idiom');
 add('What went wrong? Say it.','coach','cq','consequence question');
 add('She ___, so ___.','ayesha','cq','consequence frame');
 AFL.CQS.forEach(c=>add(c.line,'coach','cq',c.lesson+' · consequence · '+c.when));
+/* the four Ds film: one line per caption, in the coach's voice */
+INTRO.LINES.forEach((t,i)=>add(t,'coach','intro','four Ds film · line '+(i+1)));
 
 for(const id of ORDER){
   const L=LESSONS[id];
@@ -84,7 +86,7 @@ for(const id of ORDER){
 /* takes: per workflow and voice, in lesson order, a few lines each */
 const all=[...lines.values()];
 const takes={};
-for(const lesson of ['common',...ORDER,'cq']) for(const voice of ['coach','ayesha']){
+for(const lesson of ['common',...ORDER,'cq','intro']) for(const voice of ['coach','ayesha']){
   const ls=all.filter(l=>l.lesson===lesson&&l.voice===voice);
   for(let i=0;i<ls.length;i+=MAX_PER_TAKE){
     const tid=`${lesson}-${voice}-${String(i/MAX_PER_TAKE+1).padStart(2,'0')}`;
@@ -170,7 +172,7 @@ ${v.context}
 \`\`\`
 
 `;}
-const TITLE={common:'Start screen and the four phrases',cv:'Workflow 1 · An honest CV with AI',agent:'Workflow 2 · Set up an AI agent',build:'Workflow 3 · Vibe-code an app',cq:'What happens next — consequences of risky choices'};
+const TITLE={common:'Start screen and the four phrases',cv:'Workflow 1 · An honest CV with AI',agent:'Workflow 2 · Set up an AI agent',build:'Workflow 3 · Vibe-code an app',cq:'What happens next — consequences of risky choices',intro:'The four Ds — onboarding film (one line per caption)'};
 let cur='';
 for(const [tid,keys] of Object.entries(takes)){
   const L0=lines.get(keys[0]);

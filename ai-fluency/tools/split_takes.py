@@ -92,6 +92,7 @@ def main():
     takes = json.load(open(os.path.join(AUD, 'takes.json')))
     lines = {l['key']: l for l in json.load(open(os.path.join(AUD, 'lines.json')))}
     done, skipped, flagged = 0, [], []
+    recut = set()
     # a take that will not cut cleanly can be recorded one line at a time: <take>_L<n>.wav
     for tid, keys in list(takes.items()):
         for i, k in enumerate(keys):
@@ -157,6 +158,7 @@ def main():
                     '-ac', '1', '-ar', '24000', '-codec:a', 'libmp3lame', '-b:a', '96k', out])
             if r.returncode:
                 skipped.append(f'{tid}: ffmpeg failed on line {i + 1}'); break
+            recut.add(k)
             got = duration(out); words = len(lines[k]['text'].split())
             want = words / 2.3                       # a slow, clear read: ~2.3 words a second
             if got < want * 0.45 or got > want * 2.4 + 1.5:
@@ -165,7 +167,11 @@ def main():
             done += 1
             print(f'✓ {tid}: {len(keys)} lines')
     have = sorted(k for k in lines if os.path.exists(os.path.join(AUD, k + '.mp3')))
-    json.dump({'keys': have}, open(os.path.join(AUD, 'manifest.json'), 'w'))
+    # clip lengths, so the intro film can time itself to the recordings
+    try: old = json.load(open(os.path.join(AUD, 'manifest.json'))).get('dur', {})
+    except Exception: old = {}
+    dur = {k: (old[k] if k in old and k not in recut else round(duration(os.path.join(AUD, k + '.mp3')), 2)) for k in have}
+    json.dump({'keys': have, 'dur': dur}, open(os.path.join(AUD, 'manifest.json'), 'w'))
     print(f'\n{done} takes cut · {len(have)} of {len(lines)} lines recorded · audio/manifest.json updated')
     for s in skipped:
         print('SKIPPED ', s)

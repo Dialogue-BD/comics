@@ -1,273 +1,409 @@
-/* The 4Ds — onboarding motion graphic for the projector.
- * One 1920×1080 stage, seven scenes: the two interlocking loops of the
- * AI Fluency framework (Delegation–Diligence, Description–Discernment).
- * Every movement is a Web Animation built from data-a attributes, so the
- * whole film is a pure function of (scene, t): the projector player runs it
- * live, and the video renderer seeks it frame by frame (INTRO.seek).
- * The gold ring is the mascot: the human eye. It makes every connection.
+/* The four Ds — the onboarding film, built from the app's own gears.
+ *
+ * One 1920×1080 stage. The four D gears are the same 12-tooth gears as the
+ * coach's compass (compass.js), machined large, on a dark green stage lit like
+ * a watch movement. A camera moves over one continuous mechanism, so the film
+ * reads as one take: a lone AI gear that moves nothing → four gears seat →
+ * loop 1 (the big decisions) → loop 2 (the conversation) → the gears mesh and
+ * turn → the sweet spot, with you at the centre → an example → the close.
+ *
+ * Timing follows the narration. Every caption is one recorded line
+ * (audio/<key>.mp3, cut by tools/split_takes.py, durations in the manifest);
+ * every movement is written against a line: "@2+.4" = 0.4 s after line 2
+ * starts, "@end-1" = 1 s before the scene ends. So re-recording a line
+ * re-times the film by itself. Before a line is recorded, its length is
+ * estimated from its words and the browser voice reads it.
+ *
+ * Every animation is a Web Animation, so the film is a pure function of
+ * (scene, t): the player runs it live, and INTRO.seek(i,t) renders any frame.
  */
 (function(){
 'use strict';
-const W=1920,H=1080;
-const C={forest:'#103D21',gold:'#B9924F',goldL:'#D2B978',goldS:'#F0E6CD',paper:'#F4F1E6',card:'#FFFDF7',ink:'#1D211C',muted:'#5F6A5C',clay:'#B0563A',ok:'#1F7A47',
- del:'#8A5610',delT:'#F6EBD7',des:'#0A6A62',desT:'#DDEFEC',dis:'#3F4FA8',disT:'#E4E7F7',dil:'#A8322A',dilT:'#F7E3E1',md:'#65558F'};
+const W=1920,H=1080, CX=960, CY=470, K=4.4;
+const R=36*K, A=5.5*K, RR=R+A, DIST=36*Math.SQRT2*K, NT=12, TD=360/NT, PAD=34;
+const POS={del:[CX,CY-DIST],dis:[CX+DIST,CY],dil:[CX,CY+DIST],des:[CX-DIST,CY]};
+const PH={del:0,dis:TD/2,dil:0,des:TD/2}, SPIN={del:1,dil:1,dis:-1,des:-1};
+const COL={del:['#8A5610','#D29A45','#4E2F06'],des:['#0A6A62','#38B2A3','#043B36'],dis:['#3F4FA8','#8395E2','#222B68'],dil:['#A8322A','#E2706A','#621510']};
+const NAME={del:['Delegation','Plan'],des:['Description','Say it'],dis:['Discernment','Judge it'],dil:['Diligence','Be responsible']};
+const ICON={
+ del:'M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z',
+ des:'M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z',
+ dis:'M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z',
+ dil:'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z',
+ ai:'M12 2c.4 4.9 5.1 9.6 10 10-4.9.4-9.6 5.1-10 10-.4-4.9-5.1-9.6-10-10 4.9-.4 9.6-5.1 10-10z',
+ you:'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4z'};
+const svgI=(d,col)=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[d]}" fill="${col||'currentColor'}"/></svg>`;
 
-/* ---------- drawings ---------- */
-const AYESHA=`<svg viewBox="0 0 200 300" class="ay"><defs><clipPath id="ayc"><rect width="200" height="300"/></clipPath></defs>
- <path d="M30 300 C34 220 60 190 100 186 C140 190 166 220 170 300Z" fill="#2F7F7A"/>
- <path d="M52 214 C80 236 120 236 148 214 L160 300 L118 300 C112 262 88 262 82 300 L40 300Z" fill="#E0A93F" opacity=".95"/>
- <rect x="88" y="160" width="24" height="34" rx="10" fill="#C98E62"/>
- <ellipse cx="100" cy="112" rx="50" ry="56" fill="#2B1D16"/>
- <ellipse cx="100" cy="124" rx="38" ry="46" fill="#D9A57A"/>
- <path d="M58 112 C62 70 138 66 144 112 C132 92 112 86 100 86 C86 86 68 92 58 112Z" fill="#2B1D16"/>
- <circle cx="100" cy="60" r="20" fill="#2B1D16"/>
- <g fill="none" stroke="#3B2A22" stroke-width="3"><circle cx="85" cy="126" r="11"/><circle cx="116" cy="126" r="11"/><path d="M96 126h9"/></g>
- <circle cx="85" cy="127" r="3" fill="#2B1D16"/><circle cx="116" cy="127" r="3" fill="#2B1D16"/>
- <path d="M90 150 Q100 157 110 150" stroke="#8E4A35" stroke-width="3" fill="none" stroke-linecap="round"/>
- <circle cx="72" cy="142" r="6" fill="#E9967A" opacity=".35"/><circle cx="128" cy="142" r="6" fill="#E9967A" opacity=".35"/></svg>`;
-const SPARK=`<svg viewBox="0 0 24 24"><path d="M12 2c.4 4.9 5.1 9.6 10 10-4.9.4-9.6 5.1-10 10-.4-4.9-5.1-9.6-10-10 4.9-.4 9.6-5.1 10-10z" fill="currentColor"/></svg>`;
-const PERSON=`<svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0 2c-2.7 0-8 1.3-8 4v2h16v-2c0-2.7-5.3-4-8-4z" fill="currentColor"/></svg>`;
-const SHIELD=`<svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5z" fill="currentColor"/></svg>`;
-const LOCK=`<svg viewBox="0 0 24 24"><path d="M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3.1-9H8.9V6a3.1 3.1 0 0 1 6.2 0z" fill="currentColor"/></svg>`;
+/* ---------- the gear, machined: teeth + six lightening holes, as a mask ---------- */
+const GEAR_MASK=(()=>{
+  const rad=a=>a*Math.PI/180, pt=(r,a)=>`${(RR+r*Math.cos(rad(a))).toFixed(1)} ${(RR+r*Math.sin(rad(a))).toFixed(1)}`;
+  const p=[]; for(let k=0;k<NT;k++){const c=k*TD;
+    p.push(`${k?'L':'M'}${pt(R-A,c-.36*TD)}`,`L${pt(R+A,c-.17*TD)}`,`A${R+A} ${R+A} 0 0 1 ${pt(R+A,c+.17*TD)}`,`L${pt(R-A,c+.36*TD)}`,`A${R-A} ${R-A} 0 0 1 ${pt(R-A,c+.64*TD)}`)}
+  let d=p.join('')+'Z';
+  for(let k=0;k<6;k++){const a=k*60+30, r=R*.135, cx=RR+R*.575*Math.cos(rad(a)), cy=RR+R*.575*Math.sin(rad(a));
+    d+=`M${(cx-r).toFixed(1)} ${cy.toFixed(1)}a${r.toFixed(1)} ${r.toFixed(1)} 0 1 0 ${(2*r).toFixed(1)} 0a${r.toFixed(1)} ${r.toFixed(1)} 0 1 0 ${(-2*r).toFixed(1)} 0Z`}
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${2*RR} ${2*RR}"><path fill-rule="evenodd" fill="#000" d="${d}"/></svg>`;
+  return `url("data:image/svg+xml;utf8,${encodeURIComponent(svg)}")`;
+})();
 
-const phone=(inner,x,y,a='')=>`<div class="ph" style="left:${x}px;top:${y}px" ${a}><div class="ph-sb"><span>9:41</span><span>▴ ◆ 76%</span></div><div class="ph-scr">${inner}</div><div class="ph-pill"></div></div>`;
-const chip=(n,name,q,col,colT,t)=>`<div class="chip" style="--c:${col};--ct:${colT}" data-a="left ${t}"><b>${n}</b><span>${name}</span><i>${q}</i></div>`;
-
-/* ---------- scenes ----------
- * dur: seconds at a slow reading pace (the projector default).
- * caps: [t, English, Bangla] — the narration, word for word.
- * data-a="anim start [duration]"   data-fly="dx,dy" for fly-ins
- * ring: [[t,x,y],…] the gold eye's path (centre point, stage px)
- */
-/* geometry helpers: a stadium-shaped loop (rounded rectangle with semicircle ends) */
+/* ---------- scene pieces (world coordinates) ---------- */
+const gear=(d,a='')=>{const [x,y]=d==='ai'?[CX,CY]:POS[d]; const c=COL[d]||[];
+  return `<div class="gear g-${d}" id="g-${d}" style="left:${x-RR}px;top:${y-RR}px;--c:${c[0]};--cl:${c[1]};--cd:${c[2]}" ${a}>
+   <div class="gsh"></div><div class="grot" data-rot="${d}"><div class="gbody"></div></div><div class="gsheen"></div>
+   <div class="ghub">${svgI(d)}</div></div>`};
+const plateXY={del:[CX-RR-40,CY-DIST-70,'r'],dis:[CX+RR+40,CY-DIST-70,'l'],des:[CX-RR-40,CY+DIST+10,'r'],dil:[CX+RR+40,CY+DIST+10,'l']};
+const plate=(d,a='')=>{const [x,y,al]=plateXY[d];
+  return `<div class="plate pl-${al}" style="${al==='r'?`right:${W-x}px`:`left:${x}px`};top:${y}px;--c:${COL[d][1]}" ${a}><b>${NAME[d][0]}</b><span>${NAME[d][1]}</span></div>`};
+/* a gear with its name plate, wrapped so both dim together */
+const unit=(d,ga='',pa='',wa='')=>`<div class="unit u-${d}" ${wa}>${gear(d,ga)}${pa===null?'':plate(d,pa)}</div>`;
+const sockets=a=>`<div class="sockets" ${a}>${['del','dis','dil','des'].map(d=>`<i style="left:${POS[d][0]-RR}px;top:${POS[d][1]-RR}px"></i>`).join('')}</div>`;
 const stad=(x,y,w,h)=>{ if(h>w){const r=w/2;return `M${x} ${y+r} A${r} ${r} 0 0 1 ${x+w} ${y+r} V${y+h-r} A${r} ${r} 0 0 1 ${x} ${y+h-r} Z`} const r=h/2;return `M${x+r} ${y} H${x+w-r} A${r} ${r} 0 0 1 ${x+w-r} ${y+h} H${x+r} A${r} ${r} 0 0 1 ${x+r} ${y} Z`};
-const arrowHead=(x,y,deg,col)=>`<path d="M0 -18 L30 0 L0 18 Z" fill="${col}" transform="translate(${x} ${y}) rotate(${deg})"/>`;
-const node=(x,y,label,col,colT,t,sub)=>`<div class="node" style="left:${x-130}px;top:${y-130}px;--c:${col};--ct:${colT}" data-a="pop ${t}"><b>${label}</b>${sub?`<small>${sub}</small>`:''}</div>`;
-const q=(x,y,txt,col,t,w)=>`<div class="qchip" style="left:${x}px;top:${y}px;--c:${col};${w?`width:${w}px`:''}" data-a="left ${t}">${txt}</div>`;
-const pill=(x,y,txt,t,cls='')=>`<div class="arcl ${cls}" style="left:${x}px;top:${y}px" data-a="pop ${t}">${txt}</div>`;
-/* the framework's cross: Delegation ⇄ Diligence vertical, Description ⇄ Discernment horizontal */
-const VL=[760,120,400,720], HL=[260,310,1400,400];   // x,y,w,h
-const CROSS=(opts={})=>{const V=stad(...VL), Hh=stad(...HL); const f=opts.faint?'opacity=".22"':'';
- return `<svg class="ln" viewBox="0 0 ${W} ${H}"><defs>
-  <linearGradient id="gV" x1="0" y1="0" x2="0" y2="1"><stop offset=".49" stop-color="${C.del}"/><stop offset=".51" stop-color="${C.dil}"/></linearGradient>
-  <linearGradient id="gH" x1="0" y1="0" x2="1" y2="0"><stop offset=".49" stop-color="${C.des}"/><stop offset=".51" stop-color="${C.dis}"/></linearGradient></defs>
-  <g ${f}><path d="${V}" pathLength="1" stroke="url(#gV)" stroke-width="30" fill="none" stroke-dasharray="1" data-a="draw ${opts.t1||0.4} 1.4"/>
-  <g data-a="fade ${opts.t2||1.2} .2"></g>
-  <path d="${Hh}" pathLength="1" stroke="url(#gH)" stroke-width="30" fill="none" stroke-dasharray="1" data-a="draw ${opts.t2||1.2} 1.4"/>
-  <g data-a="fade ${(opts.t2||1.2)+1.3} .3"><path d="M1160 296 V324" stroke="#F4F1E6" stroke-width="48"/><path d="M1160 282 V338" stroke="${C.del}" stroke-width="30"/>
-   <path d="M769 694 L777 726" stroke="#F4F1E6" stroke-width="48"/><path d="M765 680 L781 740" stroke="${C.dil}" stroke-width="30"/></g></g>
- </svg>`};
-const DPILLS=t=>`${pill(870,92,'Delegation',t,'c-del')}${pill(890,812,'Diligence',t+.4,'c-dil')}${pill(120,482,'Description',t+.8,'c-des')}${pill(1600,482,'Discernment',t+1.2,'c-dis')}`;
+const TV=stad(CX-RR-PAD,CY-DIST-RR-PAD,2*(RR+PAD),2*(DIST+RR+PAD)), TH=stad(CX-DIST-RR-PAD,CY-RR-PAD,2*(DIST+RR+PAD),2*(RR+PAD));
+/* the two loops as tracks: a soft glow, a coloured rail, and light flowing round it */
+const tracks=(av,ah)=>`<svg class="trk" viewBox="0 0 ${W} ${H}" aria-hidden="true"><defs>
+  <linearGradient id="tgV" x1="0" y1="${CY-DIST-RR}" x2="0" y2="${CY+DIST+RR}" gradientUnits="userSpaceOnUse"><stop offset=".2" stop-color="${COL.del[1]}"/><stop offset=".8" stop-color="${COL.dil[1]}"/></linearGradient>
+  <linearGradient id="tgH" x1="${CX-DIST-RR}" y1="0" x2="${CX+DIST+RR}" y2="0" gradientUnits="userSpaceOnUse"><stop offset=".2" stop-color="${COL.des[1]}"/><stop offset=".8" stop-color="${COL.dis[1]}"/></linearGradient>
+  <filter id="tglow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="9"/></filter></defs>
+  <g class="tv" ${av||''}><path d="${TV}" pathLength="1" class="tg" stroke="url(#tgV)" filter="url(#tglow)" data-draw/><path d="${TV}" pathLength="1" class="tr" stroke="url(#tgV)" data-draw/><path d="${TV}" pathLength="1" class="tf" data-flow/></g>
+  <g class="th" ${ah||''}><path d="${TH}" pathLength="1" class="tg" stroke="url(#tgH)" filter="url(#tglow)" data-draw/><path d="${TH}" pathLength="1" class="tr" stroke="url(#tgH)" data-draw/><path d="${TH}" pathLength="1" class="tf" data-flow/></g></svg>`;
+/* screen-space pieces */
+const title=(kick,big,a,col,right)=>`<div class="ttl${right?' ttl-r':''}" style="--c:${col||'#D2B978'}" ${a}><small>${kick}</small><b>${big}</b></div>`;
+const card=(d,x,y,head,body,a,w)=>`<div class="icard" style="left:${x}px;top:${y}px;--c:${COL[d][1]};${w?`width:${w}px`:''}" ${a}>${head?`<b><i>${svgI(d)}</i>${head}</b>`:''}<span>${body}</span></div>`;
+const wire=(pts,col,a)=>`<svg class="wire" viewBox="0 0 ${W} ${H}" aria-hidden="true"><path d="M${pts.map(p=>p.join(' ')).join(' L')}" pathLength="1" stroke="${col}" ${a}/><circle cx="${pts[0][0]}" cy="${pts[0][1]}" r="7" fill="${col}" ${a}/></svg>`;
+/* where a world point lands on screen for a camera [x,y,s] */
+const scr=(p,cam)=>[Math.round(CX+cam[2]*(p[0]-cam[0])),Math.round(CY+cam[2]*(p[1]-cam[1]))];
 
-/* ---------- scenes ----------
- * dur: seconds at a slow reading pace (the projector default).
- * caps: [t, English, Bangla] — the narration, word for word.
- * data-a="anim start [duration]"   data-fly="dx,dy" for fly-ins / moves
- * ring: [[t,x,y],…] the gold eye's path (centre point, stage px)
+/* ---------- the film ----------
+ * lines: [en, bn] — one recorded line each (the coach's voice)
+ * cam:   [[at, dur, x, y, s]] — moves; the camera looks at (x,y) at scale s
+ * spin:  [[at, deg/s]] — the four gears' speed, linear between points
+ * tick:  [[at, deg, dur]] — the gears click forward
+ * sfx:   [[at, 'seat'|'tick'|'clunk']]
  */
+const CAM_LOOP1=[1150,CY,.9], CAM_FULL=[CX,CY,.92], CAM_EX=[CX,CY,.8], CAM_END=[1340,CY,.62];
 const SCENES=[
-{id:'fluency',dur:17,
- caps:[[0,'Many people use AI. Fewer people are fluent with it.','অনেকেই AI ব্যবহার করে। দক্ষভাবে ব্যবহার করে কম মানুষ।'],
-       [5,'AI fluency means working with AI in a way that is effective, efficient, ethical and safe.','AI-তে দক্ষতা মানে AI-এর সাথে এমনভাবে কাজ করা যা কার্যকর, দ্রুত, নৈতিক আর নিরাপদ।'],
-       [12,'And it always keeps you, the human, in the loop.','আর এতে সবসময় তুমি, মানুষটি, নিয়ন্ত্রণে থাকো।']],
- ring:[[12.4,1300,480],[13.6,1060,560],[14.8,1300,480],[16.4,1300,480]],
- html:`<div class="col" style="left:150px;top:200px" data-a="left .2"><div class="colh">Using AI</div></div>
- <div class="ayw" style="left:180px;top:330px;width:200px" data-a="up .5">${AYESHA}</div>
- <div class="btnx" style="left:420px;top:450px" data-a="pop 1.2">▶ Go</div>
- <div class="outfly" style="left:600px;top:440px" data-a="right 1.8">${SPARK}<span>?</span></div>
- <div class="mute" style="left:180px;top:640px;position:absolute;width:600px" data-a="fade 2.4">Ask once. Copy. Hope it’s right.</div>
- <div class="col" style="left:1000px;top:200px" data-a="right 3.2"><div class="colh" style="color:${C.forest}">AI fluency</div></div>
- <div class="ayw" style="left:1200px;top:330px;width:200px" data-a="up 3.6">${AYESHA}</div>
- <div class="you sp2b" style="left:1010px;top:500px" data-a="pop 4">${SPARK}</div>
- <div class="adjs" data-a="fade 5.2"><span data-a="pop 6">effective</span><span data-a="pop 7">efficient</span><span data-a="pop 8">ethical</span><span data-a="pop 9">safe</span></div>
- <div class="hitl" data-a="pop 13">human in the loop</div>`},
+{id:'alone', lead:1.2, tail:.8,
+ lines:[['Many people use AI.','অনেকেই AI ব্যবহার করে।'],
+        ['Fewer people use it well.','ভালোভাবে ব্যবহার করে কম মানুষ।'],
+        ['Using AI on its own is like one gear: it spins fast, but it moves nothing.','শুধু AI চালানো একটা একা গিয়ারের মতো: জোরে ঘোরে, কিন্তু কিছুই নড়ায় না।',.9]],
+ cam0:[CX,CY,1.32], cam:[['@2+.2',4.2,CX,CY,1]],
+ ai:[[0,0],[1.4,170]],
+ html:()=>`${sockets('data-a="fade @2+1.4 1.6"')}
+  ${gear('ai','data-a="emerge .3 1.6"')}
+  <div class="i-spark" style="left:${CX}px;top:${CY}px" data-a="burst .6 1.4"></div>`,
+ scr:()=>``},
 
-{id:'pairs',dur:15,
- caps:[[0,'AI fluency has four parts: the four Ds.','AI-তে দক্ষতার চারটা অংশ: চারটা D।'],
-       [3.6,'Delegation. Description. Discernment. Diligence.','Delegation। Description। Discernment। Diligence।'],
-       [8,'They work in two pairs. Each pair is a loop.','এরা দুই জোড়ায় কাজ করে। প্রতিটি জোড়া একটা চক্র।']],
- ring:[[12.2,960,480],[14.6,960,480]],
- html:`<div class="tile4 t4s" style="--c:${C.del};--ct:${C.delT};left:760px;top:150px" data-fly="-220,130" data-a="fade 3.6|move 8.2 1.4">Delegation</div>
- <div class="tile4 t4s" style="--c:${C.des};--ct:${C.desT};left:160px;top:405px" data-fly="820,-125" data-a="fade 4.3|move 8.2 1.4">Description</div>
- <div class="tile4 t4s" style="--c:${C.dis};--ct:${C.disT};left:1360px;top:405px" data-fly="-820,75" data-a="fade 5|move 8.2 1.4">Discernment</div>
- <div class="tile4 t4s" style="--c:${C.dil};--ct:${C.dilT};left:760px;top:660px" data-fly="220,-180" data-a="fade 5.6|move 8.2 1.4">Diligence</div>
- <svg class="ln" viewBox="0 0 ${W} ${H}">
-  <path d="${stad(715,110,490,760)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" data-a="draw 9.8 1.2"/>
-  <path d="${stad(110,355,1700,250)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" data-a="draw 10.8 1.2"/></svg>
- ${pill(1230,150,'Loop 1 ↕',11.2)}${pill(130,620,'Loop 2 ↔',12)}`},
+{id:'four', lead:.6, tail:1.2,
+ lines:[['AI fluency has four gears: the four Ds.','AI-তে দক্ষতার চারটা গিয়ার: চারটা D।',.8],
+        ['Delegation.','Delegation — দায়িত্ব ভাগ।',.55],['Description.','Description — বর্ণনা।',.55],['Discernment.','Discernment — যাচাই।',.55],['Diligence.','Diligence — সতর্কতা।']],
+ cam0:[CX,CY,1], ai:[[0,170]], sfx:[['@1+.6','seat'],['@2+.6','seat'],['@3+.6','seat'],['@4+.6','seat']],
+ html:()=>`${sockets('data-a="fadeout @4+1 1"')}${gear('ai','data-a="exit @0+.8 1.8"')}
+  ${unit('del','data-a="seat @1 .8"','data-a="plate @1+.5"')}${unit('des','data-a="seat @2 .8"','data-a="plate @2+.5"')}
+  ${unit('dis','data-a="seat @3 .8"','data-a="plate @3+.5"')}${unit('dil','data-a="seat @4 .8"','data-a="plate @4+.5"')}
+  ${['del','des','dis','dil'].map((d,i)=>`<div class="ripple" style="left:${POS[d][0]}px;top:${POS[d][1]}px;--c:${COL[d][1]}" data-a="ripple @${i+1}+.6 1.1"></div>`).join('')}`,
+ scr:()=>``},
 
-{id:'loop1',dur:26,
- caps:[[0,'The first loop is Delegation and Diligence: the big decisions.','প্রথম চক্র: Delegation আর Diligence — বড় সিদ্ধান্তগুলো।'],
-       [5,'Delegation asks: What am I trying to do? Which AI tool fits? Who does what?','Delegation জিজ্ঞেস করে: আমি কী করতে চাই? কোন AI টুল মানানসই? কে কোন কাজ করবে?'],
-       [12.5,'Diligence asks: Is this safe and fair? Who needs to know AI helped? Who is responsible for the result?','Diligence জিজ্ঞেস করে: এটা কি নিরাপদ ও ন্যায্য? AI সাহায্য করেছে — কাকে জানাতে হবে? ফলাফলের দায় কার?'],
-       [20.5,'Each answer changes the other.','একটার উত্তর অন্যটাকে বদলে দেয়।']],
- ring:[[20.6,960,120],[21.4,1160,320],[22,1160,640],[22.6,960,840],[23.2,760,640],[23.8,760,320],[24.4,960,120],[25.6,960,120]],
- html:`<div class="ltitle" style="--c:${C.del}" data-a="left .2">Loop 1 · <b>the big decisions</b></div>
- <svg class="ln" viewBox="0 0 ${W} ${H}">
-  <path d="${stad(760,120,400,720)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" opacity=".85" data-a="draw .6 1.6"/>
-  <g data-a="fade 20.6 .4">${arrowHead(1160,500,90,C.ink)}${arrowHead(760,460,-90,C.ink)}</g></svg>
- ${node(960,320,'Delegation',C.del,C.delT,1.4,'plan')}${node(960,640,'Diligence',C.dil,C.dilT,2.2,'responsibility')}
- ${q(1230,180,'What am I trying to do?',C.del,6)}${q(1230,290,'Which AI tool fits?',C.del,8)}${q(1230,400,'Who does what — me, AI, or both?',C.del,9.8)}
- ${q(270,500,'Is it safe and fair?',C.dil,13.5)}${q(270,610,'Who needs to know AI helped?',C.dil,15.6)}${q(270,720,'Who is responsible for the result?',C.dil,17.8)}
- ${pill(1200,560,'↓ decisions raise questions',20.8)}${pill(330,330,'answers change the plan ↑',22.4)}`},
+{id:'loop1', lead:.8, tail:1.4,
+ lines:[['Delegation and Diligence make the first loop: the big decisions.','Delegation আর Diligence মিলে প্রথম চক্র: বড় সিদ্ধান্তগুলো।',.8],
+        ['Delegation asks: what is the job, and who does it — me, the AI, or both?','Delegation জিজ্ঞেস করে: কাজটা কী, আর কে করবে — আমি, AI, নাকি দুজনে?',.8],
+        ['Diligence asks: is it safe and honest, and who is responsible for the result?','Diligence জিজ্ঞেস করে: এটা কি নিরাপদ আর সৎ, আর ফলাফলের দায় কার?']],
+ cam0:[CX,CY,1], cam:[[.2,1.8,...CAM_LOOP1]],
+ html:()=>`${tracks('data-a="track .9 1.8"','style="opacity:0"')}
+  ${unit('del','','','data-a="flash @1 1.2"')}${unit('dil','','','data-a="flash @2 1.2"')}
+  ${unit('des','','','data-a="dim .4 1|undim @end-1.2 1"')}${unit('dis','','','data-a="dim .4 1|undim @end-1.2 1"')}`,
+ scr:()=>{const c=CAM_LOOP1, gd=scr(POS.del,c), gl=scr(POS.dil,c), ex=Math.round(RR*c[2]);
+  return `${title('Loop 1','The big decisions','data-a="rise .8 .9|fadeout @end-.9 .7"',COL.del[1],1)}
+  ${wire([[gd[0]+ex+12,gd[1]],[1250,gd[1]-12]],COL.del[1],'data-a="wire @1+.2 .7|fadeout @end-.9 .7"')}
+  ${card('del',1260,gd[1]-62,'Delegation','What is the job?','data-a="slide @1+.5 .8|fadeout @end-.9 .7"',560)}
+  ${card('del',1260,gd[1]+56,'','Who does it — me, the AI, or both?','data-a="slide @1+1.9 .8|fadeout @end-.9 .7"',560)}
+  ${wire([[gl[0]+ex+12,gl[1]],[1250,gl[1]]],COL.dil[1],'data-a="wire @2+.2 .7|fadeout @end-.9 .7"')}
+  ${card('dil',1260,gl[1]-118,'Diligence','Is it safe and honest?','data-a="slide @2+.5 .8|fadeout @end-.9 .7"',560)}
+  ${card('dil',1260,gl[1]+6,'','Who is responsible for the result?','data-a="slide @2+2 .8|fadeout @end-.9 .7"',560)}`}},
 
-{id:'loop2',dur:24,
- caps:[[0,'The second loop is Description and Discernment: the conversation.','দ্বিতীয় চক্র: Description আর Discernment — কথোপকথন।'],
-       [5.5,'Description: say what you want, how to work, and how the AI should behave.','Description: বলো তুমি কী চাও, কীভাবে কাজ হবে, আর AI কেমন আচরণ করবে।'],
-       [12.5,'Discernment: judge what comes back. Then describe again, better.','Discernment: যা ফিরে আসে তা বিচার করো। তারপর আবার, আরও ভালো করে বলো।'],
-       [19,'It is a conversation, not a command.','এটা কথোপকথন, আদেশ নয়।']],
- ring:[[12.8,1660,510],[14,1460,710],[15.2,460,710],[16,260,510],[16.8,460,310],[18,1460,310],[18.8,1660,510],[20,1660,510],[23.6,1660,510]],
- html:`<div class="ltitle" style="--c:${C.des}" data-a="left .2">Loop 2 · <b>the conversation</b></div>
- <svg class="ln" viewBox="0 0 ${W} ${H}">
-  <path d="${stad(260,310,1400,400)}" pathLength="1" stroke="${C.ink}" stroke-width="10" fill="none" stroke-dasharray="1" opacity=".85" data-a="draw .6 1.6"/>
-  <g data-a="fade 13 .4">${arrowHead(1000,310,0,C.ink)}${arrowHead(920,710,180,C.ink)}</g></svg>
- ${node(460,510,'Description',C.des,C.desT,1.4,'say it')}${node(1460,510,'Discernment',C.dis,C.disT,2.2,'judge it')}
- ${q(615,365,'<b>Product</b> — what I want',C.des,6.2,330)}${q(615,470,'<b>Process</b> — how to work',C.des,7.6,330)}${q(615,575,'<b>Performance</b> — how to behave',C.des,9,330)}
- ${q(975,365,'Is the product good?',C.dis,13.2,330)}${q(975,470,'Was the process sound?',C.dis,14.4,330)}${q(975,575,'Did it behave well?',C.dis,15.6,330)}
- ${pill(780,275,'describe → judge',13.4)}${pill(760,675,'← describe again, better',14.6)}
- <div class="cmd" style="left:560px;top:790px" data-a="pop 19.2">command ✗</div><div class="conv" style="left:880px;top:790px" data-a="pop 20.2"><span>💬</span><span>💬</span><span>💬</span> conversation ✓</div>`},
+{id:'loop2', lead:.8, tail:1.4,
+ lines:[['Description and Discernment make the second loop: the conversation.','Description আর Discernment মিলে দ্বিতীয় চক্র: কথোপকথন।',.8],
+        ['Description: say clearly what you want.','Description: তুমি কী চাও তা স্পষ্ট করে বলো।',.7],
+        ['Discernment: judge what comes back.','Discernment: যা ফিরে আসে তা বিচার করো।',.7],
+        ['Then say it again, better.','তারপর আবার বলো, আরও ভালো করে।']],
+ cam0:CAM_LOOP1, cam:[[.2,1.8,...CAM_FULL]],
+ html:()=>{const ty=CY-RR-PAD, by=CY+RR+PAD, x0=CX-DIST, x1=CX+DIST;
+  return `${tracks('data-a="tfade .3 1.2 .3"','data-a="track .9 1.8|tfade @end-1.2 1 .3"')}
+  ${unit('des','','','data-a="flash @1 1.2"')}${unit('dis','','','data-a="flash @2 1.2"')}
+  ${unit('del','','','data-a="dim .4 1|undim @end-1.2 1"')}${unit('dil','','','data-a="dim .4 1|undim @end-1.2 1"')}
+  <div class="tok tk-des" style="left:${x0}px;top:${ty}px" data-path="0,0 ${x1-x0},0" data-a="travel @1+.3 2.6|fadeout @2+.2 .5">“Make five questions on chapter three.”</div>
+  <div class="tok tk-dis" style="left:${x1}px;top:${by}px" data-path="0,0 ${x0-x1},0" data-a="travel @2+.4 2.6|fadeout @3+.3 .5"><s>Q4</s> wrong — my book says something else</div>
+  <div class="tok tk-des tk-ok" style="left:${x0}px;top:${ty}px" data-path="0,0 ${x1-x0},0" data-a="travel @3+.4 2.6|fadeout @end-.7 .5">“Check every answer with my book.” ✓</div>`},
+ scr:()=>`${title('Loop 2','The conversation','data-a="rise .8 .9|fadeout @end-.9 .7"',COL.des[1])}`},
 
-{id:'interlock',dur:18,
- caps:[[0,'The two loops lock together.','দুটো চক্র একসাথে আটকে থাকে।'],
-       [3.6,'The first loop makes the big decisions. The second loop does the work.','প্রথম চক্র বড় সিদ্ধান্ত নেয়। দ্বিতীয় চক্র কাজটা করে।'],
-       [9.6,'When both loops work well, you reach the sweet spot in the middle: AI fluency.','যখন দুটো চক্রই ভালোভাবে চলে, তখন মাঝখানের সেরা জায়গায় পৌঁছাও: AI-তে দক্ষতা।']],
- ring:[[9.8,960,200],[10.6,960,510],[11.4,400,510],[12.2,960,510],[13,960,820],[13.8,960,510],[14.6,1520,510],[15.2,960,510],[15.8,960,510,2.1],[17.8,960,510,2.1]],
- html:`${CROSS()}${DPILLS(3)}
- <div class="lname" style="left:1210px;top:150px" data-a="fade 5.4">the big decisions ↕</div><div class="lname" style="left:1210px;top:760px" data-a="fade 7.4">the work ↔</div>
- <div class="sweet" data-a="pop 15.6"><b>AI fluency</b><span>the sweet spot</span></div>`},
+{id:'mesh', lead:.6, tail:1.4,
+ lines:[['Now look. The gears touch.','এবার দেখো। গিয়ারগুলো একটা আরেকটাকে ছুঁয়ে আছে।',.7],
+        ['When one gear turns, all four turn.','একটা গিয়ার ঘুরলে চারটাই ঘোরে।',.9],
+        ['The big decisions shape the conversation, and the conversation changes the decisions.','বড় সিদ্ধান্তগুলো কথোপকথনকে গড়ে, আর কথোপকথন সিদ্ধান্তগুলোকে বদলায়।']],
+ cam0:CAM_FULL, cam:[['@1',4,CX,CY,1.0]],
+ spin:[[0,0],['@1+.25',0],['@1+1.6',34]], sfx:[['@1+.2','clunk']],
+ html:()=>`${tracks('style="opacity:.3" data-a="tfade @2 .8 .95|tfade @end-1.2 1 0"','style="opacity:.3" data-a="tfade @2+1.8 .8 .95|tfade @end-1.2 1 0"')}
+  ${['del','des','dis','dil'].map(d=>unit(d)).join('')}
+  <div class="mesh" style="left:${CX}px;top:${CY}px" data-a="fade @0+.4 .8|fadeout @1+1.4 .8">${['del','dis','dil','des'].map((d,i)=>{const a=45+90*i;return `<i style="transform:rotate(${a}deg) translateX(${DIST/Math.SQRT2}px)"></i>`}).join('')}</div>
+  <div class="push" style="left:${POS.des[0]}px;top:${POS.des[1]}px" data-a="push @1-.1 1.2"></div>
+  ${['del','des','dis','dil'].map(d=>`<div class="turn t-${d}" style="left:${POS[d][0]}px;top:${POS[d][1]}px;--c:${COL[d][1]};transform:translate(-50%,-50%) rotate(${{del:0,dis:90,dil:180,des:270}[d]}deg)" data-a="fade @1+1.6 .8|fadeout @end-.8 .6"><svg viewBox="-100 -100 200 200"><path d="M${SPIN[d]>0?'-70 -70 A99 99 0 0 1 70 -70':'70 -70 A99 99 0 0 0 -70 -70'}" /><path d="M${SPIN[d]>0?'70 -70 l-26 -4 l10 24':'-70 -70 l26 -4 l-10 24'}" class="hd"/></svg></div>`).join('')}`,
+ scr:()=>``},
 
-{id:'example',dur:22,
- caps:[[0,'For example: studying for an exam.','উদাহরণ: পরীক্ষার পড়া।'],
-       [3.4,'AI makes practice questions. You answer them.','AI অনুশীলনের প্রশ্ন বানায়। উত্তর দাও তুমি।'],
-       [8.2,'No AI in the real exam, and you check facts in your book.','আসল পরীক্ষায় AI নয়, আর তথ্য বই দেখে যাচাই করো।'],
-       [13.6,'Ask for five questions. Spot a wrong one. Ask again.','পাঁচটা প্রশ্ন চাও। ভুলটা ধরো। আবার চাও।']],
- ring:[[3.6,960,170],[8.4,960,830],[13.8,300,510],[16.4,1620,510],[18.6,300,510],[21.6,300,510]],
- html:`${CROSS({faint:1,t1:.1,t2:.2})}
- <div class="ltitle" style="--c:${C.forest}" data-a="left .2">📚 <b>Studying for an exam</b></div>
- <div class="exc" style="left:1240px;top:110px;--c:${C.del};--ct:${C.delT}" data-a="pop 3.4"><b>Delegation ↑</b>AI makes practice questions. I answer them.</div>
- <div class="exc" style="left:200px;top:720px;--c:${C.dil};--ct:${C.dilT}" data-a="pop 8.2"><b>Diligence ↓</b>No AI in the real exam. I check facts in my book.</div>
- <div class="exc" style="left:120px;top:190px;--c:${C.des};--ct:${C.desT}" data-a="pop 13.6"><b>← Description</b>“Give me 5 questions on chapter 3.”</div>
- <div class="exc" style="left:1300px;top:720px;--c:${C.dis};--ct:${C.disT}" data-a="pop 16.2"><b>Discernment →</b>Question 4 is wrong. My book says…</div>
- <div class="again" style="left:820px;top:470px" data-a="pop 18.4">↺ ask again</div>`},
+{id:'sweet', lead:.6, tail:1.6,
+ lines:[['Where the four gears meet is the sweet spot: AI fluency.','যেখানে চারটা গিয়ার মেলে, সেটাই সেরা জায়গা: AI-তে দক্ষতা।',.8],
+        ['Working with AI in a way that is effective, efficient, ethical and safe.','AI-এর সাথে এমনভাবে কাজ করা যা কার্যকর, দ্রুত, নৈতিক আর নিরাপদ।',.9],
+        ['And in the middle is you: the human in the loop.','আর মাঝখানে তুমি: চক্রের মানুষটি।']],
+ cam0:[CX,CY,1.0], cam:[[.3,2.4,CX,CY,2.3]],
+ spin:[[0,34],[3,10]],
+ html:()=>`${['del','des','dis','dil'].map(d=>unit(d,'','data-a="fadeout .2 .8"','data-a="dimmer @0+1.8 1.2"')).join('')}
+  <div class="halo" style="left:${CX}px;top:${CY}px" data-a="bloom @0+1.6 2"></div>
+  <svg class="ringtxt" viewBox="0 0 ${W} ${H}" aria-hidden="true"><defs><path id="rpt" d="M${CX-118} ${CY} A118 118 0 0 1 ${CX+118} ${CY}"/><path id="rpb" d="M${CX-137} ${CY} A137 137 0 0 0 ${CX+137} ${CY}"/></defs>
+   <circle cx="${CX}" cy="${CY}" r="96" class="rline" pathLength="1" data-a="draw @1 1.6"/><circle cx="${CX}" cy="${CY}" r="160" class="rline" pathLength="1" data-a="draw @1+.3 1.6"/>
+   ${[['effective','rpt',27],['efficient','rpt',73],['ethical','rpb',73],['safe','rpb',27]].map(([w,id,o],i)=>`<text data-a="fade @1+${(.7+i*.85).toFixed(2)} .7"><textPath href="#${id}" startOffset="${o}%" text-anchor="middle">${w}</textPath></text>`).join('')}</svg>
+  <div class="medal" style="left:${CX}px;top:${CY}px" data-a="pop @0+1.4 1"><span class="m-ai" data-a="fadeout @2 .6">AI<br>fluency</span><span class="m-you" data-a="popin @2+.2 .9">${svgI('you')}</span></div>`,
+ scr:()=>`${title('The sweet spot','AI fluency','data-a="rise @0+1.6 .9|fadeout @2 .7"','#D2B978')}
+  ${title('At the centre','You, the human in the loop','data-a="rise @2+.8 .9|fadeout @end-.6 .5"','#D2B978')}`},
 
-{id:'recap',dur:15,
- caps:[[0,'Two loops. Four Ds.','দুটো চক্র। চারটা D।'],[4,'In the middle, where both loops work well: AI fluency.','মাঝখানে, যেখানে দুটো চক্রই ভালো চলে: AI-তে দক্ষতা।'],[9.4,'And you are the human in the loop.','আর চক্রের মানুষটি তুমি।']],
- ring:[[9.6,1690,230],[14.6,1690,230]],
- html:`${CROSS({t1:.1,t2:.6})}${DPILLS(1.4)}
- <div class="sweet" data-a="pop 4.4"><b>AI fluency</b><span>the sweet spot</span></div>
- <div class="ayw" style="left:1580px;top:110px;width:220px" data-a="up 9.4">${AYESHA}</div>`}
+{id:'example', lead:.8, tail:1.6,
+ lines:[['For example: studying for an exam.','উদাহরণ: পরীক্ষার পড়া।',.7],
+        ['Delegation: the AI makes practice questions. You answer them.','Delegation: AI অনুশীলনের প্রশ্ন বানায়। উত্তর দাও তুমি।',.7],
+        ['Description: “Give me five questions on chapter three.”','Description: “আমাকে তৃতীয় অধ্যায় থেকে পাঁচটা প্রশ্ন দাও।”',.7],
+        ['Discernment: question four is wrong. My book says something different.','Discernment: চার নম্বর প্রশ্নটা ভুল। আমার বইতে অন্য কথা লেখা।',.7],
+        ['Diligence: no AI in the real exam.','Diligence: আসল পরীক্ষায় কোনো AI নয়।']],
+ cam0:[CX,CY,2.3], cam:[[0,2.2,...CAM_EX]],
+ spin:[[0,10],[1.5,4]], tick:[['@1',30,.5],['@2',30,.5],['@3',30,.5],['@4',30,.5]], sfx:[['@1','tick'],['@2','tick'],['@3','tick'],['@4','tick']],
+ html:()=>`${tracks('style="opacity:0" data-a="tfade 1.4 1 .22"','style="opacity:0" data-a="tfade 1.4 1 .22"')}
+  ${['del','des','dis','dil'].map((d,i)=>unit(d,'',null,`data-a="undim 0 1.6|flash @${i+1} 1.2"`)).join('')}`,
+ scr:()=>{const c=CAM_EX, ex=Math.round(RR*c[2]), g={};['del','des','dis','dil'].forEach(d=>g[d]=scr(POS[d],c));
+  const L=70, Rx=1330, w=520;
+  return `${title('For example','Studying for an exam','data-a="rise @0 .9|fadeout @end-.9 .7"','#D2B978')}
+  ${wire([[g.del[0]-ex*.72,g.del[1]-ex*.72],[L+w+14,300]],COL.del[1],'data-a="wire @1+.1 .6|fadeout @end-.9 .7"')}${card('del',L,240,'Delegation','The AI makes practice questions. I answer them.','data-a="slide @1+.2 .8|fadeout @end-.9 .7"',w)}
+  ${wire([[g.des[0]-ex-12,g.des[1]+30],[L+w+14,g.des[1]+100]],COL.des[1],'data-a="wire @2+.1 .6|fadeout @end-.9 .7"')}${card('des',L,g.des[1]+50,'Description','“Give me five questions on chapter three.”','data-a="slide @2+.2 .8|fadeout @end-.9 .7"',w)}
+  ${wire([[g.dis[0]+ex*.72,g.dis[1]-ex*.72],[Rx-14,300]],COL.dis[1],'data-a="wire @3+.1 .6|fadeout @end-.9 .7"')}${card('dis',Rx,240,'Discernment','Question 4 is wrong. My book says something different.','data-a="slideR @3+.2 .8|fadeout @end-.9 .7"',w)}
+  ${wire([[g.dil[0]+ex*.72,g.dil[1]+ex*.72],[Rx-14,g.des[1]+100]],COL.dil[1],'data-a="wire @4+.1 .6|fadeout @end-.9 .7"')}${card('dil',Rx,g.des[1]+50,'Diligence','No AI in the real exam.','data-a="slideR @4+.2 .8|fadeout @end-.9 .7"',w)}`}},
+
+{id:'close', lead:.6, tail:3.2,
+ lines:[['Four gears. Two loops. One sweet spot.','চারটা গিয়ার। দুটো চক্র। একটা সেরা জায়গা।',.9],
+        ['Now let’s watch the gears turn on Ayesha’s phone.','চলো, এবার আয়েশার ফোনে গিয়ারগুলো ঘুরতে দেখি।']],
+ cam0:CAM_EX, cam:[[.2,2.4,...CAM_END]],
+ spin:[[0,4],[2,14]],
+ html:()=>`${tracks('style="opacity:.22" data-a="tfade @0+.6 1.6 .5"','style="opacity:.22" data-a="tfade @0+.6 1.6 .5"')}
+  ${['del','des','dis','dil'].map(d=>unit(d,'',null)).join('')}
+  <div class="medal sm" style="left:${CX}px;top:${CY}px" data-a="pop @0+.4 .9"><span class="m-you">${svgI('you')}</span></div>`,
+ scr:()=>`<div class="i-lock" data-a="rise .8 1.1"><small>AI Fluency Lab</small><b>The four Ds</b>
+   <ul><li data-a="rise @0+.1 .7">Four gears.</li><li data-a="rise @0+1.1 .7">Two loops.</li><li data-a="rise @0+2.1 .7">One sweet spot.</li></ul></div>`}
 ];
+const LINES=SCENES.flatMap(s=>s.lines.map(l=>l[0]));
 
-/* ---------- keyframes ---------- */
-const E='cubic-bezier(.2,.7,.2,1)';
-function anim(el,spec){
-  const [name,st,du]=spec.trim().split(/\s+/); const t0=+st*1000; let d=(du?+du:.7)*1000;
-  let kf;
+/* ---------- timing: from the recordings, or estimated ---------- */
+let DUR={};          // audio key -> seconds, from audio/manifest.json
+const keyOf=t=>window.AFL&&AFL.audioKey?AFL.audioKey(t):null;
+const lineDur=t=>{const k=keyOf(t); if(k&&DUR[k]) return DUR[k]; return .35+t.replace(/[“”".,:;—-]/g,' ').split(/\s+/).filter(Boolean).length/2.35;};
+const has=t=>{const k=keyOf(t); return !!(k&&DUR[k]);};
+function plan(){
+  let ang=0, ai=0, cam=SCENES[0].cam0;
+  SCENES.forEach((sc,si)=>{
+    sc._t=[]; let t=sc.lead||.8;
+    sc.lines.forEach((l,i)=>{ sc._t[i]=t; sc._d=sc._d||[]; sc._d[i]=lineDur(l[0]); t+=sc._d[i]+(l[2]!=null?l[2]:.6); });
+    sc._dur=+(t-(sc.lines[sc.lines.length-1][2]!=null?sc.lines[sc.lines.length-1][2]:.6)+(sc.tail||1.2)).toFixed(2);
+    sc._cam0=sc.cam0||cam; cam=(sc.cam&&sc.cam.length)?sc.cam[sc.cam.length-1].slice(2):sc._cam0;
+    sc._ang0=ang; const tab=angleTable(sc,sc.spin,sc.tick,ang); sc._ang=tab; ang=tab[tab.length-1];
+    sc._ai0=ai; if(sc.ai){const t2=angleTable(sc,sc.ai,null,ai); sc._aiang=t2; ai=t2[t2.length-1];}
+  });
+}
+/* "@2+.4" → seconds into the scene */
+function T(sc,v){ if(typeof v==='number') return v; v=String(v).trim(); if(!v.startsWith('@')) return +v;
+  const m=v.match(/^@(end|\d+)([+-][\d.]+)?$/); if(!m) return 0; const base=m[1]==='end'?sc._dur:sc._t[+m[1]]; return Math.max(0,base+(m[2]?+m[2]:0)); }
+const STEP=.05;
+function angleTable(sc,spin,tick,a0){
+  const n=Math.ceil(sc._dur/STEP)+1, out=new Float64Array(n); const sp=(spin||[[0,0]]).map(([t,v])=>[T(sc,t),v]);
+  const speed=t=>{ if(t<=sp[0][0]) return sp[0][1]; for(let i=1;i<sp.length;i++){ if(t<=sp[i][0]){const [t0,v0]=sp[i-1],[t1,v1]=sp[i]; return t1===t0?v1:v0+(v1-v0)*(t-t0)/(t1-t0);} } return sp[sp.length-1][1]; };
+  const tk=(tick||[]).map(([t,d,du])=>[T(sc,t),d,du]); const ease=x=>x<=0?0:x>=1?1:1-Math.pow(1-x,3);
+  let a=a0; for(let i=0;i<n;i++){ const t=i*STEP; if(i) a+=speed(t-STEP/2)*STEP; let r=0; tk.forEach(([t0,d,du])=>{r+=d*Math.min(1,Math.max(0,ease((t-t0)/du)))}); out[i]=a+r; }
+  // ticks stay added after they finish: fold the total into the last value so the next scene starts there
+  return out;
+}
+
+/* ---------- motion ---------- */
+const E='cubic-bezier(.22,.8,.18,1)', EIO='cubic-bezier(.65,0,.25,1)';
+function anim(el,spec,sc,first=true){ const FILL=first?'both':'forwards';
+  const parts=spec.trim().split(/\s+/); const name=parts[0]; const t0=T(sc,parts[1]||0)*1000; let d=(parts[2]?+parts[2]:.7)*1000; let kf, ease=E;
   switch(name){
    case 'fade':kf=[{opacity:0},{opacity:1}];break;
-   case 'up':kf=[{opacity:0,transform:'translateY(50px)'},{opacity:1,transform:'none'}];break;
-   case 'left':kf=[{opacity:0,transform:'translateX(-90px)'},{opacity:1,transform:'none'}];break;
-   case 'right':kf=[{opacity:0,transform:'translateX(90px)'},{opacity:1,transform:'none'}];break;
-   case 'pop':kf=[{opacity:0,transform:'scale(.6)'},{opacity:1,transform:'scale(1.06)',offset:.7},{opacity:1,transform:'scale(1)'}];d=(du?+du:.55)*1000;break;
-   case 'stamp':kf=[{opacity:0,transform:'scale(2.4) rotate(-20deg)'},{opacity:1,transform:'scale(1) rotate(-8deg)'}];d=(du?+du:.4)*1000;break;
-   case 'draw':kf=[{strokeDashoffset:1},{strokeDashoffset:0}];break;
-   case 'fly':{const [dx,dy]=(el.dataset.fly||'0,0').split(',').map(Number);kf=[{opacity:0,transform:`translate(${dx}px,${dy}px) scale(.9)`},{opacity:1,transform:`translate(${dx}px,${dy}px) scale(1)`,offset:.15},{opacity:1,transform:'none'}];break;}
-   case 'move':{const [dx,dy]=(el.dataset.fly||'0,0').split(',').map(Number);kf=[{transform:`translate(${dx}px,${dy}px)`},{transform:'none'}];break;}
-   case 'spin':kf=[{transform:'rotate(0deg)'},{transform:'rotate(360deg)'}];return el.animate(kf,{duration:d,delay:t0,iterations:6,easing:'linear',fill:'both'});
+   case 'fadeout':kf=[{opacity:1},{opacity:0}];break;
+   case 'rise':kf=[{opacity:0,transform:'translateY(28px)'},{opacity:1,transform:'none'}];break;
+   case 'slide':kf=[{opacity:0,transform:'translateX(-60px)'},{opacity:1,transform:'none'}];break;
+   case 'slideR':kf=[{opacity:0,transform:'translateX(60px)'},{opacity:1,transform:'none'}];break;
+   case 'pop':kf=[{opacity:0,transform:'translate(-50%,-50%) scale(.4)'},{opacity:1,transform:'translate(-50%,-50%) scale(1.08)',offset:.65},{opacity:1,transform:'translate(-50%,-50%) scale(1)'}];break;
+   case 'popin':kf=[{opacity:0,transform:'scale(.4)'},{opacity:1,transform:'scale(1.1)',offset:.65},{opacity:1,transform:'scale(1)'}];break;
+   case 'emerge':kf=[{opacity:0,transform:'scale(.55)',filter:'blur(14px)'},{opacity:1,transform:'scale(1)',filter:'blur(0)'}];break;
+   case 'exit':kf=[{opacity:1,transform:'none'},{opacity:0,transform:'translate(-760px,120px) scale(.45)'}];ease=EIO;break;
+   case 'seat':kf=[{opacity:0,transform:'translateY(-300px) scale(1.12)'},{opacity:1,transform:'translateY(10px) scale(1)',offset:.72},{opacity:1,transform:'translateY(-3px)',offset:.86},{opacity:1,transform:'none'}];ease='cubic-bezier(.5,0,.75,0)';
+     return el.animate(kf,{duration:d,delay:t0,easing:'linear',fill:FILL});
+   case 'plate':kf=[{opacity:0,transform:'translateY(14px)',filter:'blur(6px)'},{opacity:1,transform:'none',filter:'blur(0)'}];break;
+   case 'ripple':kf=[{opacity:0,transform:'translate(-50%,-50%) scale(.85)'},{opacity:.9,transform:'translate(-50%,-50%) scale(.95)',offset:.1},{opacity:0,transform:'translate(-50%,-50%) scale(1.45)'}];ease='cubic-bezier(.1,.6,.3,1)';break;
+   case 'burst':kf=[{opacity:0,transform:'translate(-50%,-50%) scale(.2)'},{opacity:1,transform:'translate(-50%,-50%) scale(1)',offset:.25},{opacity:0,transform:'translate(-50%,-50%) scale(1.9)'}];ease='ease-out';break;
+   case 'dim':kf=[{opacity:1,filter:'saturate(1) brightness(1)'},{opacity:.28,filter:'saturate(.35) brightness(.8)'}];break;
+   case 'undim':kf=[{opacity:.28,filter:'saturate(.35) brightness(.8)'},{opacity:1,filter:'saturate(1) brightness(1)'}];break;
+   case 'dimmer':kf=[{opacity:1,filter:'brightness(1)'},{opacity:.3,filter:'brightness(.7)'}];break;
+   case 'flash':kf=[{filter:'brightness(1) drop-shadow(0 0 0 rgba(242,214,140,0))'},{filter:'brightness(1.35) drop-shadow(0 0 40px rgba(242,214,140,.55))',offset:.3},{filter:'brightness(1) drop-shadow(0 0 0 rgba(242,214,140,0))'}];ease='ease-out';break;
+   case 'bloom':kf=[{opacity:0,transform:'translate(-50%,-50%) scale(.3)'},{opacity:1,transform:'translate(-50%,-50%) scale(1)'}];break;
+   case 'push':kf=[{opacity:0,transform:'translate(-50%,-50%) scale(1.6)'},{opacity:1,transform:'translate(-50%,-50%) scale(1)',offset:.35},{opacity:0,transform:'translate(-50%,-50%) scale(.9)'}];ease='ease-out';break;
+   case 'wire':kf=[{strokeDashoffset:1,opacity:1},{strokeDashoffset:0,opacity:1}];el.style.strokeDasharray=1;break;
+   case 'draw':kf=[{strokeDashoffset:1},{strokeDashoffset:0}];el.style.strokeDasharray=1;break;
+   case 'track':{ const out=[]; el.querySelectorAll('[data-draw]').forEach(p=>{p.style.strokeDasharray=1; out.push(p.animate([{strokeDashoffset:1},{strokeDashoffset:0}],{duration:d,delay:t0,easing:EIO,fill:'both'}))});
+     el.querySelectorAll('[data-flow]').forEach(p=>out.push(p.animate([{opacity:0},{opacity:1}],{duration:600,delay:t0+d,fill:'both'})));
+     return out; }
+   case 'tfade':{ const to=+(parts[3]||.3); kf=[{opacity:+(getComputedStyle(el).opacity||1)},{opacity:to}]; break; }
+   case 'travel':{ const p=(el.dataset.path||'0,0').split(/\s+/).map(s=>s.split(',').map(Number)); kf=p.map((q,i)=>({transform:`translate(${q[0]}px,${q[1]}px) translate(-50%,-50%)`,opacity:i===0?0:1})); kf.splice(1,0,{transform:`translate(${p[0][0]}px,${p[0][1]}px) translate(-50%,-50%)`,opacity:1,offset:.12}); ease=EIO; break; }
    default:kf=[{opacity:0},{opacity:1}];
   }
-  if(name==='draw'){el.style.strokeDashoffset=1}
-  return el.animate(kf,{duration:d,delay:t0,easing:E,fill:'both'});
+  return el.animate(kf,{duration:d,delay:t0,easing:ease,fill:FILL});
 }
-function ringAnim(el,path,dur){
-  if(!path||!path.length){el.style.opacity=0;return []}
-  const T=dur*1000; const first=path[0];
-  const kf=[{transform:`translate(${first[1]}px,${first[2]}px) scale(.4)`,opacity:0,offset:0},{transform:`translate(${first[1]}px,${first[2]}px) scale(.4)`,opacity:0,offset:Math.max(0,(first[0]-.4)/dur)}];
-  path.forEach(([t,x,y,sc],i)=>kf.push({transform:`translate(${x}px,${y}px) scale(${sc||1})`,opacity:1,offset:Math.min(1,t/dur)}));
-  kf.push({transform:kf[kf.length-1].transform,opacity:1,offset:1});
-  // keep offsets non-decreasing
+const camT=c=>`translate(${(CX-c[2]*c[0]).toFixed(1)}px,${(CY-c[2]*c[1]).toFixed(1)}px) scale(${c[2]})`;
+function camAnim(el,sc){
+  const D=sc._dur; let cur=sc._cam0; const kf=[{transform:camT(cur),offset:0}];
+  (sc.cam||[]).forEach(([at,du,x,y,s])=>{ const a=T(sc,at)/D, b=Math.min(1,(T(sc,at)+du)/D); kf.push({transform:camT(cur),offset:Math.min(1,a),easing:EIO}); cur=[x,y,s]; kf.push({transform:camT(cur),offset:b}); });
+  kf.push({transform:camT(cur),offset:1});
   for(let i=1;i<kf.length;i++) if(kf[i].offset<kf[i-1].offset) kf[i].offset=kf[i-1].offset;
-  return [el.animate(kf,{duration:T,easing:'linear',fill:'both'})];
+  return el.animate(kf,{duration:D*1000,fill:'both'});
+}
+function rotAnims(stage,sc){
+  const out=[]; const D=sc._dur*1000;
+  const mk=(el,tab,dir,ph)=>{ const n=tab.length, kf=[]; for(let i=0;i<n;i+=2) kf.push({transform:`rotate(${(dir*tab[i]+ph).toFixed(2)}deg)`,offset:Math.min(1,i*STEP*1000/D)});
+    kf.push({transform:`rotate(${(dir*tab[n-1]+ph).toFixed(2)}deg)`,offset:1}); for(let i=1;i<kf.length;i++) if(kf[i].offset<kf[i-1].offset) kf[i].offset=kf[i-1].offset;
+    out.push(el.animate(kf,{duration:D,fill:'both',easing:'linear'})); };
+  stage.querySelectorAll('[data-rot]').forEach(el=>{ const d=el.dataset.rot;
+    if(d==='ai'){ if(sc._aiang) mk(el,sc._aiang,1,0); return; }
+    mk(el,sc._ang,SPIN[d],PH[d]); });
+  return out;
+}
+
+/* ---------- a soft mechanical click, made on the fly ---------- */
+let AC=null;
+function sfx(kind){
+  try{ AC=AC||new (window.AudioContext||window.webkitAudioContext)(); const t=AC.currentTime;
+    const n=AC.createBufferSource(), b=AC.createBuffer(1,AC.sampleRate*.12,AC.sampleRate), ch=b.getChannelData(0);
+    for(let i=0;i<ch.length;i++) ch[i]=(Math.random()*2-1)*Math.pow(1-i/ch.length,kind==='clunk'?2:5);
+    n.buffer=b; const f=AC.createBiquadFilter(); f.type='bandpass'; f.frequency.value=kind==='clunk'?900:kind==='seat'?1400:2600; f.Q.value=kind==='clunk'?1.2:3;
+    const g=AC.createGain(); g.gain.value=kind==='clunk'?.5:kind==='seat'?.35:.22; n.connect(f); f.connect(g); g.connect(AC.destination); n.start(t);
+    const o=AC.createOscillator(), og=AC.createGain(); o.frequency.setValueAtTime(kind==='clunk'?95:140,t); o.frequency.exponentialRampToValueAtTime(50,t+.15);
+    og.gain.setValueAtTime(kind==='tick'?.08:.22,t); og.gain.exponentialRampToValueAtTime(.0001,t+.18); o.connect(og); og.connect(AC.destination); o.start(t); o.stop(t+.2);
+  }catch(e){}
+}
+
+/* ---------- textures, made once ---------- */
+function textures(){
+  // the engraved rosette behind the mechanism (a watch dial's guilloché)
+  let s=''; for(let i=0;i<72;i++) s+=`<ellipse cx="0" cy="0" rx="560" ry="250" transform="rotate(${i*2.5})"/>`;
+  for(let r=640;r<1100;r+=26) s+=`<circle r="${r}"/>`;
+  const g=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1100 -1100 2200 2200"><g fill="none" stroke="#E2C98E" stroke-width="1.2">${s}</g></svg>`;
+  const guil=`url("data:image/svg+xml;utf8,${encodeURIComponent(g)}")`;
+  let grain='none';
+  try{ const c=document.createElement('canvas'); c.width=c.height=220; const x=c.getContext('2d'); const im=x.createImageData(220,220);
+    for(let i=0;i<im.data.length;i+=4){const v=Math.random()*255; im.data[i]=im.data[i+1]=im.data[i+2]=v; im.data[i+3]=255;} x.putImageData(im,0,0); grain=`url(${c.toDataURL()})`; }catch(e){}
+  return {guil,grain};
 }
 
 /* ---------- player ---------- */
-let master=null,root,stage,capEl,capBn,dotsEl,btnPlay,cur=-1,anims=[],t0=0,tPaused=0,playing=true,raf=0,speed=1,onExit=null,renderMode=false;
-const sceneDur=i=>SCENES[i].dur;
+let root,stage,capEn,capBn,dotsEl,btnPlay,btnSnd,cur=-1,anims=[],master=null,playing=true,raf=0,onExit=null,renderMode=false,sound=true,played=[],fired=[],clip=null,ready=null;
+function loadDur(){ if(ready) return ready;
+  ready=fetch('audio/manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(m=>{DUR=(m&&m.dur)||{}}).catch(()=>{}).then(plan);
+  return ready; }
 function build(){
   if(root) return;
+  const tx=textures();
   root=document.createElement('div'); root.id='intro'; root.setAttribute('role','dialog'); root.setAttribute('aria-label','The four Ds');
-  root.innerHTML=`<div class="i-wrap"><div class="i-stage" id="i-stage"></div></div>
-   <div class="i-bar"><button data-i="prev" aria-label="Previous">◀</button><button data-i="play" aria-label="Pause">❚❚</button><button data-i="next" aria-label="Next">▶</button>
-   <div class="i-dots" id="i-dots"></div><button data-i="speed" title="Speed">1×</button><button data-i="bn" title="Bangla">বাংলা</button><button data-i="exit" aria-label="Close">✕</button></div>`;
+  root.style.setProperty('--gm',GEAR_MASK); root.style.setProperty('--guil',tx.guil); root.style.setProperty('--grain',tx.grain);
+  root.innerHTML=`<div class="i-wrap"><div class="i-stage" id="i-stage"></div></div><div class="i-subs" aria-live="polite"><p class="en"></p><p class="bnc" lang="bn"></p></div><div class="i-turn">↻ Turn your phone sideways for the full picture</div>
+   <div class="i-bar"><button data-i="prev" aria-label="Previous scene">◀</button><button data-i="play" aria-label="Pause">❚❚</button><button data-i="next" aria-label="Next scene">▶</button>
+   <div class="i-dots" id="i-dots"></div><button data-i="snd" aria-label="Sound" title="Sound">🔊</button><button data-i="bn" title="বাংলা subtitles">বাংলা</button><button data-i="exit" aria-label="Close">✕</button></div>`;
   document.body.appendChild(root);
-  stage=root.querySelector('#i-stage');
-  dotsEl=root.querySelector('#i-dots'); btnPlay=root.querySelector('[data-i=play]');
+  stage=root.querySelector('#i-stage'); dotsEl=root.querySelector('#i-dots'); btnPlay=root.querySelector('[data-i=play]'); btnSnd=root.querySelector('[data-i=snd]');
   dotsEl.innerHTML=SCENES.map((s,i)=>`<button data-go="${i}" aria-label="Scene ${i+1}"><i></i></button>`).join('');
   root.addEventListener('click',e=>{const b=e.target.closest('[data-i]');const g=e.target.closest('[data-go]');
     if(g){show(+g.dataset.go);return}
-    if(!b) {togglePlay();return}
+    if(!b){ if(e.target.closest('.i-end')) return; togglePlay();return}
     const a=b.dataset.i; if(a==='prev')show(Math.max(0,cur-1)); else if(a==='next')advance(); else if(a==='play')togglePlay(); else if(a==='exit')close();
-    else if(a==='speed'){speed=speed===1?.75:speed===.75?1.25:1;b.textContent=speed+'×';anims.forEach(x=>x.playbackRate=speed)}
+    else if(a==='snd'){sound=!sound;btnSnd.textContent=sound?'🔊':'🔇'; if(!sound) stopClip();}
     else if(a==='bn'){root.classList.toggle('bn')}});
   addEventListener('resize',fit); fit();
 }
-function fit(){ if(!root) return; const s=Math.min(innerWidth/W,(innerHeight-(renderMode?0:64))/H); stage.style.transform=`scale(${s})`; stage.parentElement.style.width=W*s+'px'; stage.parentElement.style.height=H*s+'px'; }
-function sceneHTML(i){
-  const sc=SCENES[i];
-  return `<div class="i-bg"></div>${sc.html}<div class="ring" aria-hidden="true"></div>
-   <div class="i-brand"><span>AI Fluency Lab</span> · the four Ds</div>
-   <div class="i-cap"><p class="en"></p><p class="bnc" lang="bn"></p></div>`;
-}
+function fit(){ if(!root) return; const narrow=innerWidth<900&&!renderMode; root.classList.toggle('narrow',narrow); const s=Math.min(innerWidth/W,(innerHeight-(renderMode?0:narrow?200:64))/H); stage.style.transform=`scale(${s})`; stage.parentElement.style.width=W*s+'px'; stage.parentElement.style.height=H*s+'px'; }
 function show(i){
-  cur=i; anims.forEach(a=>a.cancel()); anims=[];
-  stage.innerHTML=sceneHTML(i);
-  stage.querySelectorAll('[data-a]').forEach(el=>{ el.dataset.a.split('|').forEach(sp=>anims.push(anim(el,sp))) });
-  anims.push(...ringAnim(stage.querySelector('.ring'),SCENES[i].ring,sceneDur(i)));
-  master=stage.animate([{outlineColor:'transparent'},{outlineColor:'transparent'}],{duration:sceneDur(i)*1000+60000,fill:'both'}); anims.push(master);
-  capEl=stage.querySelector('.i-cap .en'); capBn=stage.querySelector('.i-cap .bnc');
+  cur=i; anims.forEach(a=>a.cancel()); anims=[]; stopClip();
+  const sc=SCENES[i];
+  stage.innerHTML=`<div class="i-bg"></div><div class="i-guil"></div>
+   <div class="world" id="world">${sc.html()}</div><div class="scr">${sc.scr()}</div>
+   <div class="i-vig"></div><div class="i-grain"></div>
+   <div class="i-cap"><p class="en"></p><p class="bnc" lang="bn"></p></div>`;
+  const world=stage.querySelector('#world');
+  anims.push(camAnim(world,sc));
+  anims.push(...rotAnims(stage,sc));
+  stage.querySelectorAll('[data-a]').forEach(el=>el.dataset.a.split('|').forEach((sp,k)=>{const r=anim(el,sp,sc,k===0); [].concat(r).forEach(x=>anims.push(x))}));
+  stage.querySelectorAll('[data-flow]').forEach(p=>anims.push(p.animate([{strokeDashoffset:0},{strokeDashoffset:-.2}],{duration:3200,iterations:Infinity})));
+  const gu=stage.querySelector('.i-guil'); const g0=i*14; anims.push(gu.animate([{transform:`translate(-50%,-50%) rotate(${g0}deg)`},{transform:`translate(-50%,-50%) rotate(${g0+sc._dur*.5}deg)`}],{duration:sc._dur*1000,fill:'both'}));
+  master=stage.animate([{opacity:1},{opacity:1}],{duration:sc._dur*1000+60000,fill:'both'}); anims.push(master);
+  capEn=stage.querySelector('.i-cap .en'); capBn=stage.querySelector('.i-cap .bnc');
   [...dotsEl.children].forEach((d,k)=>d.className=k<i?'done':k===i?'on':'');
-  t0=performance.now(); tPaused=0;
-  if(renderMode||!playing) anims.forEach(a=>a.pause()); else anims.forEach(a=>{a.playbackRate=speed;a.play()});
+  played=sc.lines.map(()=>false); fired=(sc.sfx||[]).map(()=>false);
+  if(renderMode||!playing) anims.forEach(a=>a.pause()); else anims.forEach(a=>a.play());
   setCaption(0);
 }
+function capIdx(t){ const sc=SCENES[cur]; let k=0; sc._t.forEach((t0,i)=>{ if(t>=t0-.15) k=i; }); return k; }
+let capShown=-1;
 function setCaption(t){
-  const caps=SCENES[cur].caps; let c=caps[0]; for(const k of caps) if(t>=k[0]) c=k;
-  if(capEl.textContent!==c[1]){capEl.textContent=c[1];capBn.textContent=c[2];capEl.parentElement.animate([{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:renderMode?1:350,fill:'both'})}
+  const k=capIdx(t); if(k===capShown&&capEn.textContent) return; capShown=k;
+  const l=SCENES[cur].lines[k]; capEn.textContent=l[0]; capBn.textContent=l[1];
+  const sub=root.querySelector('.i-subs'); if(sub){ sub.querySelector('.en').textContent=l[0]; sub.querySelector('.bnc').textContent=l[1]; }
+  if(!renderMode) capEn.parentElement.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:320,easing:E,fill:'both'});
+}
+function stopClip(){ if(clip){ try{clip.pause()}catch(e){} clip=null; } try{ speechSynthesis.cancel() }catch(e){} }
+function say(text){
+  stopClip(); if(!sound) return;
+  const k=keyOf(text);
+  if(k&&DUR[k]){ clip=new Audio(`audio/${k}.mp3`); clip.play().catch(()=>{}); return; }
+  try{ const u=new SpeechSynthesisUtterance(text.replace(/Ayesha/g,'Eye-sha')); u.rate=.9; u.lang='en-GB'; speechSynthesis.speak(u); }catch(e){}
 }
 function sceneTime(){ return master?(master.currentTime||0)/1000:0; }
 function tick(){
   if(!root||root.hidden) return;
-  const t=sceneTime(); setCaption(t);
-  const prog=Math.min(1,t/sceneDur(cur)); const on=dotsEl.children[cur]; if(on) on.querySelector('i').style.width=(prog*100)+'%';
-  if(playing&&t>=sceneDur(cur)){ if(cur<SCENES.length-1) show(cur+1); else {playing=false;btnPlay.textContent='▶';btnPlay.setAttribute('aria-label','Play');finale()} }
+  const sc=SCENES[cur], t=sceneTime(); capShown=capShown; setCaption(t);
+  if(playing){
+    sc._t.forEach((t0,i)=>{ if(!played[i]&&t>=t0){ played[i]=true; if(t-t0<.6) say(sc.lines[i][0]); } });
+    (sc.sfx||[]).forEach(([at,kind],i)=>{ if(!fired[i]&&t>=T(sc,at)){ fired[i]=true; if(sound&&t-T(sc,at)<.3) sfx(kind); } });
+  }
+  const prog=Math.min(1,t/sc._dur); const on=dotsEl.children[cur]; if(on) on.querySelector('i').style.width=(prog*100)+'%';
+  if(playing&&t>=sc._dur){ if(cur<SCENES.length-1) show(cur+1); else { playing=false; btnPlay.textContent='▶'; btnPlay.setAttribute('aria-label','Play'); anims.forEach(a=>a.pause()); finale(); } }
   raf=requestAnimationFrame(tick);
 }
 function finale(){
-  if(root.querySelector('.i-end')) return;
+  if(stage.querySelector('.i-end')) return;
   const d=document.createElement('div'); d.className='i-end';
-  d.innerHTML=`<button data-i="exit">Start with Ayesha’s phone →</button><button data-replay="1">↺ Watch again</button>`;
+  d.innerHTML=`<button data-i="exit">Start with Ayesha’s phone</button><button data-replay="1">Watch again</button>`;
   d.querySelector('[data-replay]').onclick=e=>{e.stopPropagation();d.remove();playing=true;btnPlay.textContent='❚❚';show(0)};
   stage.appendChild(d);
 }
 function advance(){ if(cur<SCENES.length-1) show(cur+1); }
-function togglePlay(){ playing=!playing; btnPlay.textContent=playing?'❚❚':'▶'; btnPlay.setAttribute('aria-label',playing?'Pause':'Play'); anims.forEach(a=>playing?a.play():a.pause()); }
+function togglePlay(){ playing=!playing; btnPlay.textContent=playing?'❚❚':'▶'; btnPlay.setAttribute('aria-label',playing?'Pause':'Play');
+  anims.forEach(a=>playing?a.play():a.pause()); if(!playing){ if(clip) clip.pause(); try{speechSynthesis.pause()}catch(e){} } else { if(clip) clip.play().catch(()=>{}); try{speechSynthesis.resume()}catch(e){} } }
 function open(opts={}){
   build(); root.hidden=false; onExit=opts.onExit||null; playing=!opts.paused; btnPlay.textContent=playing?'❚❚':'▶';
-  if(opts.bn) root.classList.add('bn');
-  show(opts.scene||0); cancelAnimationFrame(raf); raf=requestAnimationFrame(tick);
+  root.classList.toggle('bn',!!opts.bn); if(opts.sound===false){sound=false;btnSnd.textContent='🔇'}
   try{ if(opts.fullscreen&&!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{}) }catch(e){}
+  loadDur().then(()=>{ show(opts.scene||0); cancelAnimationFrame(raf); raf=requestAnimationFrame(tick); });
 }
-function close(){ if(!root) return; root.hidden=true; anims.forEach(a=>a.cancel()); anims=[]; cancelAnimationFrame(raf); if(onExit) onExit(); }
-document.addEventListener('keydown',e=>{
+function close(){ if(!root) return; root.hidden=true; anims.forEach(a=>a.cancel()); anims=[]; stopClip(); cancelAnimationFrame(raf); if(onExit) onExit(); }
+if(typeof document!=='undefined'&&document.addEventListener) document.addEventListener('keydown',e=>{
   if(!root||root.hidden) return;
   const k=e.key; let used=true;
   if(k===' '||k==='k') togglePlay(); else if(k==='ArrowRight') advance(); else if(k==='ArrowLeft') show(Math.max(0,cur-1));
-  else if(k==='Escape') close(); else if(k==='b'||k==='B') root.classList.toggle('bn'); else used=false;
+  else if(k==='Escape') close(); else if(k==='b'||k==='B') root.classList.toggle('bn'); else if(k==='m'||k==='M'){sound=!sound;btnSnd.textContent=sound?'🔊':'🔇';if(!sound)stopClip();} else used=false;
   if(used){e.preventDefault();e.stopImmediatePropagation()}
 },true);
 
 /* ---------- deterministic seek, for the video renderer ---------- */
-function seek(i,t){ renderMode=true; build(); root.hidden=false; root.classList.add('render'); fit(); if(i!==cur) show(i); anims.forEach(a=>{a.pause();a.currentTime=t*1000}); setCaption(t); }
+async function seek(i,t){ renderMode=true; await loadDur(); build(); root.hidden=false; root.classList.add('render'); fit(); if(i!==cur) show(i); anims.forEach(a=>{a.pause();a.currentTime=t*1000}); setCaption(t); }
+const total=()=>SCENES.reduce((s,sc)=>s+(sc._dur||0),0);
 
-window.INTRO={open,close,seek,SCENES,W,H};
+if(typeof window!=='undefined') window.INTRO={open,close,seek,SCENES,LINES,W,H,plan,total,ready:loadDur};
 })();
