@@ -118,3 +118,4 @@ Framework: AI Fluency (4Ds) by Rick Dakan, Joseph Feller and Anthropic, CC BY-NC
 - Build test step: students add deadlines from their own lives, then try to break the app with an impossible date.
 - Studio is light, the gear celebration has sound (`fx.js`), wrong-answer sheets are read aloud, "Sathi AI" is used everywhere.
 - Docs: attendance, rucei, shortlist and checklist are the un-redacted originals. cv, ielts and the internship form are still redacted.
+- Discernment checks teach IELTS skimming and scanning: an animated skim → keywords → scan → check on Ayesha's RUCEI report (`alt.js`), then each "is this true?" runs keywords → scan → TRUE / FALSE / NOT GIVEN.

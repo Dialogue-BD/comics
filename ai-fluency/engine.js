@@ -451,8 +451,8 @@ function renderStage(){
   const k=stageKind(), was=document.body.classList.contains('show-card')?'card':'phone';
   document.body.classList.toggle('show-card',k==='card'); document.body.classList.toggle('show-phone',k!=='card');
   const pc=$('#pcard');
-  if(k==='card'){ const keep=was==='card'&&pc.dataset.at===S.lesson+'/'+S.beat+(UI.sub||'')?pc.scrollTop:0; const fresh=pc.dataset.at!==S.lesson+'/'+S.beat+(UI.sub||''); pc.innerHTML=cardScreen(); pc.dataset.at=S.lesson+'/'+S.beat+(UI.sub||'');
-    if(fresh&&!UI.sub){ const bc=fn(ctx().beat.card,ctx()); if(bc&&bc.type==='level') setTimeout(()=>FX.gearTurned(pc,bc.d),60); else if(bc&&bc.type==='result') setTimeout(()=>FX.missionDone(pc),60); } pc.scrollTop=keep; if(was!=='card'||!keep) pc.firstElementChild&&pc.firstElementChild.classList.add('enter'); }
+  if(k==='card'){ const keep=was==='card'&&pc.dataset.at===S.lesson+'/'+S.beat+(UI.sub||'')?pc.scrollTop:0; const fresh=pc.dataset.at!==S.lesson+'/'+S.beat+(UI.sub||''); const abc=!UI.sub&&fn(ctx().beat.card,ctx()); if(!fresh&&abc&&abc.type==='alt'){ fitDevice(); return; } pc.innerHTML=cardScreen(); pc.dataset.at=S.lesson+'/'+S.beat+(UI.sub||'');
+    if(fresh&&!UI.sub){ const bc=fn(ctx().beat.card,ctx()); if(bc&&bc.type==='level') setTimeout(()=>FX.gearTurned(pc,bc.d),60); else if(bc&&bc.type==='result') setTimeout(()=>FX.missionDone(pc),60); else if(bc&&bc.type==='alt') setTimeout(()=>ALT.play(pc,{card:bc,bn:S.bn,speak:t=>speak(t),voice:()=>S.voice}),60); } pc.scrollTop=keep; if(was!=='card'||!keep) pc.firstElementChild&&pc.firstElementChild.classList.add('enter'); }
   else { pc.innerHTML=''; pc.dataset.at=''; }
   fitDevice();
 }
@@ -556,6 +556,7 @@ function sheetSpeech(sh){
 function closeSheet(){ UI.sheet=null; renderSheet(); renderFoot(); }
 function onSheetClick(e){
   const dv=e.target.closest('[data-view]'); if(dv){ openView(dv.dataset.view,dv.dataset.mark); return; }
+  const kwb=e.target.closest('[data-kw]'); if(kwb){ kwPick(+kwb.dataset.kw); return; }
   const hv=e.target.closest('[data-hv]'); if(hv){ huntVerdict(hv.dataset.hv); return; }
   const sp=e.target.closest('[data-speak]'); if(sp){ speak(sp.dataset.speak); sp.classList.add('speaking'); return; }
   const sy=e.target.closest('[data-say]'); if(sy){ speak(sy.dataset.say); sy.classList.add('speaking'); return; }
@@ -589,27 +590,49 @@ function huntMark(x,b,scr){
   scr.querySelectorAll('.ln[data-ui^="line:"]').forEach(el=>{ const id=el.dataset.ui.slice(5); const ans=s.a[id];
     el.classList.toggle('hunt',!ans); el.classList.toggle('v-bad',ans==='bad'); el.classList.toggle('v-ok',ans==='ok'); });
 }
+const kwNorm=t=>String(t).toLowerCase().replace(/[^\p{L}\p{N}.%\/]+/gu,'').replace(/\.$/,'');
+const claimToks=l=>String(l.text).split(/\s+/).filter(w=>kwNorm(w));
+const lookHTML=l=>l.look&&l.look.length?`<div class="looks"><span>${S.bn?'২ · স্ক্যান: ফাইলটা খোলো। শুধু মানচিত্রে যেখানে বলেছে সেখানে দেখো।':'2 · Scan: open the file. Read only where your map points.'}</span>${l.look.map(k=>`<button class="look" data-view="${k.f}" ${k.m?`data-mark="${k.m}"`:''}>📄 ${esc(k.t||FILES[k.f].name)}</button>`).join('')}</div>`:'';
+const verdHTML=id=>`<div class="verd3"><button data-hv="${id}|ok"><i>✓</i>TRUE<small>${S.bn?'ফাইল একই বলে':'the file says the same'}</small></button><button data-hv="${id}|bad"><i>✗</i>FALSE<small>${S.bn?'ফাইল উল্টো বলে':'the file says the opposite'}</small></button><button data-hv="${id}|ng"><i>?</i>NOT GIVEN<small>${S.bn?'ফাইলে কিছুই নেই':'the file says nothing'}</small></button></div>`;
+const kwDone=l=>!l.kw||(UI.hs&&UI.hs.id===l.id&&UI.hs.pick.length>=Math.min(2,l.kw.length));
+function kwPick(i){
+  const x=ctx(), b=x.beat; if(!b.hunt||!UI.hs) return; const l=fn(b.hunt,x).lines.find(z=>z.id===UI.hs.id); if(!l) return;
+  const w=claimToks(l)[i]; if(w==null) return; const n=kwNorm(w);
+  if(UI.hs.pick.includes(i)) return;
+  if(l.kw.map(kwNorm).includes(n)){ UI.hs.pick.push(i); UI.hs.tip=''; try{FX.sfx('ok')}catch(e){} }
+  else { UI.hs.tip=n.length<=3||['and','the','with','for','from'].includes(n)?(S.bn?`“${w}” একটা ছোট শব্দ। নাম, সংখ্যা বা জোরালো শব্দ খোঁজো।`:`“${w}” is a small word. Scan for a name, a number or a strong word.`):(S.bn?'ওটা নয়। কোন শব্দটা ফাইলে খুঁজলে উত্তর পাবে?':'Not that one. Which word will lead you to the answer in the file?'); UI.hs.miss=i; try{FX.sfx('no')}catch(e){} }
+  openLine(l.id);
+}
 function openLine(id){
   const x=ctx(), b=x.beat, s=huntState(x,b), l=s.h.lines.find(z=>z.id===id); if(!l) return;
   const ans=s.a[id];
-  if(ans){ UI.sheet={tone:ans==='bad'?'bad':'ok',title:ans==='bad'?(S.bn?'সত্য নয়':'Not true'):(S.bn?'সত্য':'True'),html:`<p class="claim">“${l.text}”</p><p>${l.why}${BN(l.whybn)}</p>`,acts:[['close',tr('OK','ঠিক আছে'),'primary']]}; renderSheet(); return; }
-  UI.sheet={tone:'info',title:S.bn?'এটা কি সত্য?':'Is this true?',html:`<p class="claim">“${l.text}”</p>
-    ${l.look&&l.look.length?`<div class="looks"><span>${S.bn?'তার ফাইলে দেখো:':'Check her files:'}</span>${l.look.map(k=>`<button class="look" data-view="${k.f}" ${k.m?`data-mark="${k.m}"`:''}>📄 ${esc(k.t||FILES[k.f].name)}</button>`).join('')}</div>`:''}
-    <div class="verd2"><button data-hv="${id}|ok"><i>✓</i>${S.bn?'সত্য — ফাইলের সাথে মেলে':'True — it matches'}</button><button data-hv="${id}|bad"><i>✗</i>${S.bn?'সত্য নয়':'Not true'}</button></div>`,acts:[['close',tr('Not now','এখন না'),'ghost']]};
+  if(ans){ UI.sheet={tone:ans==='bad'?'bad':'ok',title:ans==='bad'?(l.vd==='NG'?'NOT GIVEN':(S.bn?'সত্য নয়':'FALSE')):(S.bn?'সত্য':'TRUE'),html:`<p class="claim">“${l.text}”</p><p>${l.why}${BN(l.whybn)}</p>`,acts:[['close',tr('OK','ঠিক আছে'),'primary']]}; renderSheet(); return; }
+  if(l.kw&&(!UI.hs||UI.hs.id!==id)) UI.hs={id,pick:[],tip:''};
+  if(!kwDone(l)){
+    const toks=claimToks(l);
+    UI.sheet={tone:'info',title:S.bn?'এটা কি সত্য?':'Is this true?',html:`<p class="kwq">${S.bn?'১ · কীওয়ার্ড: ফাইলে কোন ২টা শব্দ খুঁজবে? নাম, সংখ্যা বা জোরালো শব্দে চাপো।':'1 · Keywords: which 2 words will you scan for? Tap names, numbers or strong words.'}</p>
+      <div class="kws">${toks.map((w,i)=>`<button data-kw="${i}" ${l.kw.map(kwNorm).includes(kwNorm(w))?'data-ok="1"':''} class="${UI.hs.pick.includes(i)?'hit':UI.hs.miss===i&&UI.hs.tip?'miss':''}">${esc(w)}</button>`).join('')}</div><div class="kwhint">${UI.hs.tip||''}</div>`,acts:[['close',tr('Not now','এখন না'),'ghost']]};
+    renderSheet(); return;
+  }
+  const toks=claimToks(l);
+  UI.sheet={tone:'info',title:S.bn?'এটা কি সত্য?':'Is this true?',html:`<p class="claim">“${l.kw?toks.map(w=>l.kw.map(kwNorm).includes(kwNorm(w))?`<mark class="kwm">${esc(w)}</mark>`:esc(w)).join(' '):l.text}”</p>
+    ${lookHTML(l)}<p class="kwq" style="margin-top:8px">${S.bn?'৩ · যাচাই: একই কথা বলছে কি?':'3 · Check: same person, same action, same size?'}</p>${verdHTML(id)}`,acts:[['close',tr('Not now','এখন না'),'ghost']]};
   renderSheet();
 }
 function huntVerdict(arg){
-  const [id,v]=arg.split('|'); const x=ctx(), b=x.beat, h=fn(b.hunt,x), l=h.lines.find(z=>z.id===id); const want=l.v==='ok'?'ok':'bad';
+  const [id,v]=arg.split('|'); const x=ctx(), b=x.beat, h=fn(b.hunt,x), l=h.lines.find(z=>z.id===id); const want=l.v==='ok'?'ok':(l.vd==='NG'?'ng':'bad');
   firstTry(x,h.key+':'+id,v===want);
-  if(v===want){ const a=x.get(h.key,{}); a[id]=v; x.set(h.key,a);
+  if(v===want){ const a=x.get(h.key,{}); a[id]=v==='ok'?'ok':'bad'; x.set(h.key,a);
     const s=huntState(x,b); const all=s.found===s.need;
-    UI.sheet={tone:'ok',title:v==='bad'?(S.bn?'ধরেছ! এটা সত্য নয়।':'Caught it! Not true.'):(S.bn?'হ্যাঁ, এটা সত্য।':'Yes — this one is true.'),
+    UI.sheet={tone:'ok',title:v==='bad'?(S.bn?'ধরেছ! FALSE — ফাইল উল্টো বলে।':'Caught it! FALSE — the file says the opposite.'):v==='ng'?(S.bn?'ধরেছ! NOT GIVEN — ফাইলে কিছুই নেই।':'Caught it! NOT GIVEN — her files say nothing.'):(S.bn?'হ্যাঁ, TRUE।':'Yes — TRUE. It matches.'),
       html:`<p class="claim">“${l.text}”</p><p>${l.why}${BN(l.whybn)}</p>${l.src?`<div class="quote"><small>${esc(l.src)}</small>${l.quote||''}</div>`:''}${all?`<div class="good">🎉 ${S.bn?`${s.need}টাই পেয়েছ!`:`All ${s.need} found!`}</div>`:''}`,
       acts:[[all?'next':'huntnext',all?tr('Continue','এগিয়ে যাও'):tr('Find the next one','পরেরটা খোঁজো'),'primary']]};
+    UI.hs=null;
   } else {
-    UI.sheet={tone:'think',title:S.bn?'আবার দেখো':'Look again',html:`<p class="claim">“${l.text}”</p><p>${l.hint||(want==='ok'?(S.bn?'তার ফাইলের সাথে মিলিয়ে দেখো — মেলে কি?':'Open her file and compare. Does it match?'):(S.bn?'ফাইলে ঠিক এটাই লেখা আছে কি?':'Does her file say exactly this?'))}${BN(l.hintbn)}</p>
-      ${l.look&&l.look.length?`<div class="looks"><span>${S.bn?'তার ফাইলে দেখো:':'Check her files:'}</span>${l.look.map(k=>`<button class="look" data-view="${k.f}" ${k.m?`data-mark="${k.m}"`:''}>📄 ${esc(k.t||FILES[k.f].name)}</button>`).join('')}</div>`:''}
-      <div class="verd2"><button data-hv="${id}|ok"><i>✓</i>${S.bn?'সত্য':'True'}</button><button data-hv="${id}|bad"><i>✗</i>${S.bn?'সত্য নয়':'Not true'}</button></div>`,acts:[]};
+    const gen=want==='bad'&&v==='ng'?(S.bn?'NOT GIVEN মানে ফাইলে কিছুই নেই। এখানে ফাইল অন্য কথা বলছে — সেটা FALSE।':'NOT GIVEN means the file says nothing. Here the file says something different — that is FALSE.')
+      :want==='ng'&&v==='bad'?(S.bn?'FALSE মানে ফাইল উল্টো বলে। এখানে ফাইলে এটার কথাই নেই — NOT GIVEN।':'FALSE means the file says the opposite. Here the file never mentions it — that is NOT GIVEN.')
+      :(l.hint||(want==='ok'?(S.bn?'ফাইলের সাথে মিলিয়ে দেখো — মেলে কি?':'Open her file and compare. Does it match?'):(S.bn?'ফাইলে ঠিক এটাই লেখা আছে কি?':'Does her file say exactly this?')));
+    UI.sheet={tone:'think',title:S.bn?'আবার দেখো':'Look again',html:`<p class="claim">“${l.text}”</p><p>${gen}${BN(l.hintbn)}</p>${lookHTML(l)}${verdHTML(id)}`,acts:[]};
   }
   renderPhone(false); renderSheet(); renderFoot(); renderTop();
 }
@@ -639,6 +662,7 @@ function cardHTML(c,x){
   if(c.type==='words') return head+wordsCard(c);
   if(c.type==='story') return head+storyCard(c);
   if(c.type==='phrases') return head+phrasesCard(c);
+  if(c.type==='alt') return head+ALT.html(c,S.bn);
   if(c.type==='level') return levelCard(c,x);
   if(c.type==='result') return resultCard(c,x);
   if(c.type==='info') return `<div class="card">${head}${c.html||''}${c.points?`<ul class="plist">${c.points.map(p=>`<li><span class="ic">${p.i||'•'}</span><span>${p.en}${BN(p.bn)}</span></li>`).join('')}</ul>`:''}</div>`;
@@ -1054,7 +1078,7 @@ function showMe(){
   const cd=fn(b.card,x); if(cd&&cd.type==='pickeach'){ const a={}; cd.items.forEach((it,i)=>a[i]=it.options.findIndex(o=>o.ok)); x.set(cd.key,a); renderUI(); return; }
   if(cd&&cd.type==='sort'&&!b.tap&&!b.compose){ const a={}; cd.items.forEach((it,i)=>a[i]=it.ans); x.set(cd.key,a); renderUI(); return; }
   if(cd&&cd.type==='choice'){ const i=cd.options.findIndex(o=>o.ok); const el=$(`#pcard [data-choice="${cd.key}|${i}"]`); if(el) el.click(); return; }
-  if(b.hunt){ const s=huntState(x,b); const l=s.h.lines.find(z=>z.v!=='ok'&&s.a[z.id]!=='bad'); if(!l) return; const el=$(`#screen [data-ui="line:${l.id}"]`); ghostTo(el,()=>{ openLine(l.id); setTimeout(()=>{ const v=$('#psheet [data-hv$="|bad"]'); if(v) v.click(); },500); }); return; }
+  if(b.hunt){ const s=huntState(x,b); const l=s.h.lines.find(z=>z.v!=='ok'&&s.a[z.id]!=='bad'); if(!l) return; const el=$(`#screen [data-ui="line:${l.id}"]`); const want=l.vd==='NG'?'ng':'bad'; ghostTo(el,()=>{ openLine(l.id); const n=$$('#psheet [data-kw][data-ok]').length; for(let i=0;i<Math.min(2,n);i++) setTimeout(()=>{ const k=$('#psheet [data-kw][data-ok]:not(.hit)'); if(k) k.click(); },450+i*500); setTimeout(()=>{ const v=$(`#psheet [data-hv$="|${want}"]`); if(v) v.click(); },450+Math.min(2,n)*500+500); }); return; }
   if(b.compose){
     const c=fn(b.compose,x); const best=c.best;
     x.set(c.key,''); renderPhoneKeepFocus();

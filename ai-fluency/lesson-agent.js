@@ -351,7 +351,7 @@ AFL.lesson({
    say:'Orbit worked while she was in class. First, check what it already did. Open the calendar.',bn:'সে ক্লাসে থাকার সময় Orbit কাজ করেছে। আগে দেখো সে কী করে ফেলেছে। ক্যালেন্ডার খোলো।'},
   /* one screen: Orbit's date beside her own handwriting, row by row — no switching between files */
   {d:'dis',id:'cal',stage:'watch',view:'card',
-   say:'Orbit copied her handwritten checklist into the calendar. One date doesn’t match. Compare each pair, then tap the wrong one.',bn:'Orbit তার হাতে লেখা চেকলিস্ট ক্যালেন্ডারে তুলেছে। একটা তারিখ মেলে না। প্রতিটি জোড়া মিলিয়ে দেখো, তারপর ভুলটায় চাপো।',
+   say:'Scan, don’t read. Orbit copied her handwritten checklist into the calendar. Match the name — the keyword — then compare the date. Tap the pair that is different.',bn:'পড়ো না, স্ক্যান করো। Orbit তার হাতে লেখা চেকলিস্ট ক্যালেন্ডারে তুলেছে। নাম — কীওয়ার্ড — মেলাও, তারপর তারিখ মেলাও। যে জোড়া আলাদা সেটায় চাপো।',
    card:{type:'choice',key:'calErr',cls:'cmp-list',options:CAL_ROWS.map(r=>({en:cmpRow(r),ok:r.bad?1:0,
      why:r.bad?'Her checklist says Oxford: <b>15 October</b>. Orbit read her handwriting as 15 December. If she trusted it, she would miss Oxford by two months — and Orbit never said “I’m not sure”.':'That date is the same on her checklist. Look for the pair that is different.',
      whybn:r.bad?'চেকলিস্টে অক্সফোর্ড: ১৫ অক্টোবর। Orbit হাতের লেখা পড়েছে ১৫ ডিসেম্বর। বিশ্বাস করলে সে অক্সফোর্ড দুই মাসের জন্য মিস করত — আর Orbit বলেনি “আমি নিশ্চিত নই”।':'এই তারিখটা চেকলিস্টের সাথে মেলে। যে জোড়াটা আলাদা সেটা খোঁজো।'}))},
