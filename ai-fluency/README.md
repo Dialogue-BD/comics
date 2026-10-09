@@ -73,6 +73,10 @@ Every spoken line has a key made from its words (`audioKey()` in `engine.js`, FN
 
 Every movement is a Web Animation built from `data-a="anim start [duration]"` attributes, so the film is a pure function of (scene, time). `INTRO.seek(scene, t)` freezes any frame; the narrated video is rendered from the same scenes. Narration script and voice settings: `intro-voice-script.md` (record one take in the AI Studio speech playground → `intro/four-ds-narration.wav`).
 
+## Phone mode (screens under 900px)
+
+On a phone the whole screen is Ayesha's phone and a little gear guide teaches on top of it (`tour.js`, `tour.css`). The guide's speech bubble carries the coach's line, 🔊, Back / Show me / Next; cards (words, stories, sorts, talk tasks) slide up as a sheet over the phone and drop away with Hide. A gold ring marks what to tap, and the guide moves to whichever end of the screen keeps the phone's buttons clear. The guide takes the colour of the D in use, spins while it talks, and looks worried while a risky choice plays out; tap it to tuck the bubble away. The engine is unchanged — `tour.js` moves `#dband`, `#csay` and `#cact` into the bubble and puts them back on wide screens, so desktop and projector layouts are untouched.
+
 ## Files
 
 - `index.html` — page shell + all CSS
