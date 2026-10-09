@@ -1,0 +1,132 @@
+/* Phone mode (tour.js): the phone fills the screen, the guide teaches on top of it.
+   Only under body.tour, which tour.js sets on narrow screens. */
+body.tour{background:#000}
+body.tour #app{display:block}
+body.tour #stagewrap{position:fixed;inset:0;padding:0!important;background:#000;z-index:1;display:block}
+body.tour #device{width:100%;height:100%;border-radius:0;transform:none!important}
+body.tour #coach{position:fixed;inset:0;z-index:30;background:transparent;border:0;pointer-events:none;display:block;max-height:none}
+body.tour #coach>*{pointer-events:auto}
+body.tour #coach>.c-top,body.tour #coach>.c-rail{display:none}
+
+/* ---------- the card sheet ---------- */
+#gscrim{position:fixed;inset:0;z-index:33;background:rgba(6,24,13,.46);opacity:0;pointer-events:none!important;transition:opacity .35s var(--ease)}
+body.tour.tour-sheet #gscrim{opacity:1;pointer-events:auto!important}
+body.tour #coach .c-body{display:block!important;position:fixed;left:0;right:0;bottom:0;top:auto;z-index:35;background:var(--paper);
+  max-height:calc(100dvh - var(--gbh,180px) - 44px);min-height:0!important;overflow-y:auto;overscroll-behavior:contain;
+  padding:0 14px calc(16px + env(safe-area-inset-bottom));border-radius:24px 24px 0 0;
+  box-shadow:0 -14px 40px rgba(0,0,0,.35);transform:translateY(calc(100% + 30px));transition:transform .42s cubic-bezier(.2,.9,.25,1)}
+body.tour.tour-sheet #coach .c-body{transform:none}
+body.tour .peek{display:flex;position:sticky;top:0;z-index:3;width:calc(100% + 28px);margin:0 -14px 8px;padding:16px 16px 10px;border:0;
+  background:linear-gradient(var(--paper) 78%,rgba(244,241,230,0));border-radius:24px 24px 0 0;font-weight:800;font-size:14.5px;color:var(--forest);min-height:0}
+body.tour .peek::before{content:"";position:absolute;top:7px;left:50%;width:44px;height:5px;margin-left:-22px;border-radius:9px;background:var(--rule-strong)}
+body.tour .peek .pl{flex:1;text-align:left;padding-top:2px}
+body.tour .peek .pc,body.tour #coach.sheet-up .peek .pc{padding-top:2px;font-size:0;transform:none}
+body.tour .peek .pc::after{content:"Hide ▼";font-size:12.5px;font-weight:700;color:var(--ink-muted)}
+body.tour #coach.full .peek{display:flex}
+/* the hub's "More" sheet: modes, the film, the workflows, the four phrases */
+body.tour.tour-hub .c-body{padding-top:14px}
+body.tour.tour-hub .c-body>.kick,body.tour.tour-hub .c-body>.sayrow,body.tour.tour-hub .c-body>.sayrow+.bn{display:none}
+
+/* ---------- the guide and its bubble ---------- */
+#gwrap{position:fixed;left:10px;right:10px;z-index:40;display:flex;align-items:flex-end;gap:6px;
+  bottom:calc(var(--lift,0px) + 10px + env(safe-area-inset-bottom));transition:bottom .42s cubic-bezier(.2,.9,.25,1),top .42s cubic-bezier(.2,.9,.25,1)}
+body.tour:not(.tour-sheet) #gwrap{bottom:calc(30px + env(safe-area-inset-bottom))}
+#gwrap.at-top{bottom:auto!important;top:calc(34px + env(safe-area-inset-top));align-items:flex-start}
+body:not(.tour) #gwrap,body:not(.tour) #gscrim,body:not(.tour) #gspot{display:none}
+
+#cog{flex:none;width:62px;height:62px;padding:0;border:0;background:none;position:relative;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35));-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+#cog svg{width:100%;height:100%;overflow:visible;display:block}
+#cog .g-shadow{fill:rgba(0,0,0,.28);transform-origin:0 47px;animation:gshadow 3.2s ease-in-out infinite}
+#cog .g-body{animation:gbob 3.2s ease-in-out infinite}
+#cog .g-teeth{animation:gspin 14s linear infinite;transform-origin:0 0}
+#cog .g-teeth path{fill:var(--gc);transition:fill .6s}
+#cog .g-rim{fill:none;stroke:rgba(0,0,0,.18);stroke-width:2}
+#cog .g-face{fill:#FFF6DF;stroke:rgba(0,0,0,.12);stroke-width:1.2}
+#cog .g-white{fill:#fff}
+#cog .g-pupil{fill:#1C2A20;transform:translate(calc(var(--lx,0)*1px),calc(var(--ly,0)*1px));transition:transform .4s var(--ease)}
+#cog .g-eyes{transform-origin:0 -4px;animation:gblink 5.2s infinite}
+#cog .g-smile{fill:none;stroke:#1C2A20;stroke-width:2.6;stroke-linecap:round}
+#cog .g-mouth{fill:#5B2A1C;opacity:0;transform-origin:0 10px}
+#cog .g-cheek{fill:#F0A08A;opacity:.55}
+#cog .g-brow{fill:none;stroke:#1C2A20;stroke-width:2.2;stroke-linecap:round;opacity:0}
+#cog .g-dot{position:absolute;right:2px;top:4px;width:14px;height:14px;border-radius:50%;background:#E5483B;border:2px solid #fff;transform:scale(0);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+#gwrap.min #cog .g-dot{transform:scale(1)}
+/* talking: the gear turns faster and the mouth moves */
+body.g-talk #cog .g-teeth{animation-duration:2.6s}
+body.g-talk #cog .g-smile{opacity:0}
+body.g-talk #cog .g-mouth{opacity:1;animation:gtalk .32s ease-in-out infinite alternate}
+/* a risky choice playing out: worried */
+body.tour-cq #cog .g-brow{opacity:1}
+body.tour-cq #cog .g-smile{d:path("M-7 12 Q0 7 7 12")}
+body.tour-cq #cog .g-teeth{animation-duration:30s}
+#cog.hop .g-body{animation:ghop .6s cubic-bezier(.3,0,.3,1),gbob 3.2s ease-in-out .6s infinite}
+@keyframes gspin{to{transform:rotate(360deg)}}
+@keyframes gbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes gshadow{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.86);opacity:.75}}
+@keyframes gblink{0%,93%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes gtalk{from{transform:scaleY(.35)}to{transform:scaleY(1.1)}}
+@keyframes ghop{0%{transform:translateY(0) rotate(0)}35%{transform:translateY(-14px) rotate(-8deg)}65%{transform:translateY(2px) rotate(4deg)}100%{transform:translateY(0) rotate(0)}}
+
+#gbub{position:relative;flex:1;min-width:0;max-height:min(52dvh,430px);overflow-y:auto;overscroll-behavior:contain;
+  background:var(--card);color:var(--ink);border-radius:20px;padding:8px 12px 10px;
+  border:1px solid rgba(16,61,33,.14);box-shadow:0 18px 40px rgba(0,0,0,.36),0 2px 6px rgba(0,0,0,.18);
+  transform-origin:0 100%;transition:transform .38s cubic-bezier(.3,1.4,.5,1),opacity .25s}
+#gwrap.at-top #gbub{transform-origin:0 0}
+#gbub::before{content:"";position:absolute;left:-9px;bottom:18px;width:18px;height:18px;background:var(--card);border-left:1px solid rgba(16,61,33,.14);border-bottom:1px solid rgba(16,61,33,.14);transform:rotate(45deg);border-radius:0 0 0 4px}
+#gwrap.at-top #gbub::before{bottom:auto;top:20px}
+#gwrap.min #gbub{transform:scale(.2);opacity:0;pointer-events:none}
+#gbub.pop{animation:gpop .5s cubic-bezier(.3,1.4,.5,1)}
+@keyframes gpop{0%{transform:scale(.86);opacity:.2}100%{transform:none;opacity:1}}
+/* inside the bubble */
+.gb-top{display:flex;align-items:center;gap:6px;margin:0 -4px 2px;min-height:30px}
+.gb-top .grow{flex:1}
+.gb-top button{border:0;background:transparent;color:var(--ink-muted);font-weight:700;font-size:12.5px;padding:5px 8px;border-radius:99px;min-height:30px}
+.gb-top .gb-bn{font-family:var(--font-bn);border:1px solid var(--rule)}
+body.bangla .gb-top .gb-bn{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+.gb-top .gb-menu svg{width:20px;height:20px;display:block}
+body.tour .gb-d .dband{all:unset;display:flex;align-items:center;gap:6px;cursor:pointer;min-width:0;max-width:62vw;padding:3px 9px 3px 4px;border-radius:99px;background:color-mix(in srgb,var(--gc) 14%,transparent)}
+body.tour .gb-d .dband .dcomp{width:24px;height:24px;flex:none;display:block}
+body.tour .gb-d .dband .dcomp svg{width:100%;height:100%}
+body.tour .gb-d .dband .dtx{display:flex;flex-direction:column;min-width:0;line-height:1.1}
+body.tour .gb-d .dband .dtx b{font-size:12.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:4px}
+body.tour .gb-d .dband .dtx b i{display:none}
+body.tour .gb-d .dband .dtx b em{font-style:normal;font-weight:600;color:var(--ink-muted)}
+body.tour .gb-d .dband .dstage{display:block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--kicker)}
+body.tour .gb-d .dband .dph,body.tour .gb-d .dband .dq,body.tour .gb-d .dband .bn,body.tour .gb-d .dband .dmore{display:none}
+body.tour .gb-d .dband b.story{font-size:12.5px}
+body.tour #csay{padding:2px 0 0;border:0;background:transparent}
+body.tour #csay .say{font-family:var(--font-display);font-size:18px;line-height:1.32;color:var(--forest-deep);margin:0}
+body.tour #csay .sayrow{display:flex;gap:8px;align-items:flex-start}
+body.tour #csay .ear,.gb-hub .ear{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--paper);display:grid;place-items:center;font-size:16px}
+body.tour #csay.cq{background:transparent;margin:0}
+body.tour #csay .cqw{font-size:12px;font-weight:800;color:var(--clay-ink);margin-bottom:3px}
+body.tour #csay .sub{font-size:14px;margin-top:5px;color:var(--ink-muted)}
+body.tour #csay .bn,.gb-hub .bn{font-size:14px}
+.gb-hub:empty{display:none}
+.gb-hub .say{font-family:var(--font-display);font-size:18px;line-height:1.32;color:var(--forest-deep);margin:0}
+.gb-hub .sayrow{display:flex;gap:8px;align-items:flex-start}
+.gb-hint{margin:6px 0 0;font-size:13.5px;font-weight:700;color:var(--kicker)}
+.gb-row{display:flex;gap:8px;margin-top:9px}
+.gb-row .btn{flex:1;min-height:42px;font-size:14px;padding:8px 10px}
+.gb-card{display:flex;align-items:center;gap:8px;width:100%;margin:9px 0 0;padding:9px 12px;border-radius:12px;border:1px dashed color-mix(in srgb,var(--gc) 60%,#000);
+  background:color-mix(in srgb,var(--gc) 12%,var(--card));color:var(--ink);font-weight:800;font-size:14px;text-align:left;min-height:44px}
+.gb-card .gc-ic{font-size:11px;color:var(--gc);filter:brightness(.7)}
+.gb-card .gc-l{flex:1}
+.gb-card .gc-l small{font-weight:600;color:var(--ink-muted)}
+body.tour #cact{position:static;display:flex;gap:6px;padding:9px 0 0;margin-top:8px;border-top:1px solid var(--rule);background:transparent}
+body.tour #cact .btn{min-height:42px;padding:8px 11px;font-size:14px;min-width:0}
+body.tour #cact .btn.next{overflow:hidden}
+body.tour #cact:has(.rew) .dots,body.tour #cact:has(.rew) .count{display:none}
+@media (max-width:370px){ body.tour #cact .dots,body.tour #cact .count{display:none} }
+body.tour #cact .btn.next{flex:1;max-width:none}
+body.tour #cact .btn.gold span{display:inline}
+body.tour.tour-hub #cact .btn.quiet[data-c="menu"]{display:none}
+body.tour.tour-hub #cact{display:none}
+
+/* ---------- the spot to tap ---------- */
+#gspot{position:fixed;z-index:31;pointer-events:none;border-radius:16px;opacity:0;transition:opacity .3s,left .35s var(--ease),top .35s var(--ease),width .35s var(--ease),height .35s var(--ease)}
+#gspot.on{opacity:1}
+#gspot i{position:absolute;inset:0;border-radius:inherit;border:3px solid var(--gc,#E8C979);box-shadow:0 0 0 3px rgba(255,255,255,.65),0 0 26px var(--gc,#E8C979)}
+#gspot i+i{border-width:2px;box-shadow:none;animation:gring 1.6s cubic-bezier(.2,.6,.3,1) infinite}
+@keyframes gring{from{transform:scale(1);opacity:.9}to{transform:scale(1.22,1.4);opacity:0}}
+@media (prefers-reduced-motion:reduce){ #cog .g-teeth,#cog .g-body,#cog .g-shadow,#gspot i+i{animation:none!important} }
