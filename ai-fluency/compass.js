@@ -66,7 +66,7 @@ D4.svg=(o={})=>{
     return `<g class="gear g-${d}${lit?' on':''}${used?' used':''}" transform="translate(${x.toFixed(2)} ${y.toFixed(2)})">
       ${lit&&on!=='all'?`<circle class="ghalo" r="${R+A+5}"/>`:''}
       <g class="rot" style="--o:${PH[d]}deg;--s:${SPIN[d]}"><path class="teeth" d="${GEAR}"/><circle class="axle" r="${R-A-3}"/></g>
-      <path class="sym" d="${ICON[d]}" transform="translate(-18 -18) scale(1.5)"/></g>`};
+      <g class="symg"><path class="sym" d="${ICON[d]}" transform="translate(-18 -18) scale(1.5)"/></g></g>`};
   return `<svg class="compass${o.cls?' '+o.cls:''}" viewBox="0 0 200 200" style="--ga:${ang}deg" role="img" aria-label="${esc(o.title||'The four Ds as gears')}">
     ${o.loops?`<rect class="loop lv" x="${100-R-14}" y="4" width="${2*R+28}" height="192" rx="${R+14}"/><rect class="loop lh" x="4" y="${100-R-14}" width="192" height="${2*R+28}" rx="${R+14}"/>`:''}
     ${['del','dis','dil','des'].map(gear).join('')}

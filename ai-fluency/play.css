@@ -49,7 +49,10 @@ body.sheet-on #pfoot{visibility:hidden}
 .p-title small{font-size:12px;color:var(--ink-muted)}
 .p-mid{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;padding:0 4px}
 .p-prog{display:flex;gap:4px;height:14px;align-items:center}
-.pseg{position:relative;height:10px;border-radius:99px;background:rgba(16,61,33,.12);overflow:hidden;min-width:8px;transition:height .2s}
+.psegb{display:flex;align-items:center;height:30px;margin:-8px 0;padding:0;border:0;background:none;min-width:12px;cursor:pointer}
+.psegb:focus-visible{outline:2px solid var(--forest);outline-offset:-2px;border-radius:8px}
+.psegb:hover .pseg{filter:brightness(.92);height:14px}
+.pseg{flex:1;position:relative;height:10px;border-radius:99px;background:rgba(16,61,33,.12);overflow:hidden;min-width:8px;transition:height .2s}
 .pseg.on{height:14px}
 .pseg i{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:var(--dc,var(--gold));transition:width .5s var(--ease-emph)}
 .pseg.warm i{background:var(--gold)}
@@ -453,11 +456,11 @@ table.ptab .on{background:var(--ok-soft);font-weight:700}
 @keyframes slideup{from{transform:translateY(14px);opacity:0}}
 
 /* ---- the mission is done: the four gears land one after another ---- */
-.res-gears.cele .compass .gear .teeth,.res-gears.cele .compass .gear .sym{transform-box:fill-box;transform-origin:center;animation:tpop .7s cubic-bezier(.3,1.7,.5,1) both}
-.res-gears.cele .compass .g-del .teeth,.res-gears.cele .compass .g-del .sym{animation-delay:.38s}
-.res-gears.cele .compass .g-des .teeth,.res-gears.cele .compass .g-des .sym{animation-delay:.81s}
-.res-gears.cele .compass .g-dis .teeth,.res-gears.cele .compass .g-dis .sym{animation-delay:1.24s}
-.res-gears.cele .compass .g-dil .teeth,.res-gears.cele .compass .g-dil .sym{animation-delay:1.67s}
+.res-gears.cele .compass .gear .teeth,.res-gears.cele .compass .gear .symg{transform-box:fill-box;transform-origin:center;animation:tpop .7s cubic-bezier(.3,1.7,.5,1) both}
+.res-gears.cele .compass .g-del .teeth,.res-gears.cele .compass .g-del .symg{animation-delay:.38s}
+.res-gears.cele .compass .g-des .teeth,.res-gears.cele .compass .g-des .symg{animation-delay:.81s}
+.res-gears.cele .compass .g-dis .teeth,.res-gears.cele .compass .g-dis .symg{animation-delay:1.24s}
+.res-gears.cele .compass .g-dil .teeth,.res-gears.cele .compass .g-dil .symg{animation-delay:1.67s}
 .res-gears.cele .compass .sweet{animation:sweetpop .8s 2.3s cubic-bezier(.3,1.8,.5,1) both}
 @keyframes tpop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.28);opacity:1}100%{transform:scale(1)}}
 @keyframes sweetpop{0%{transform:scale(0)}60%{transform:scale(2.4)}100%{transform:scale(1)}}
@@ -574,34 +577,41 @@ mark.kwm{background:var(--gold-light);color:#2b1f02;border-radius:4px;padding:0 
 .kb.compact .strip{max-height:min(236px,38dvh)}
 .kb.compact .kchip{-webkit-line-clamp:2}
 
-/* Cog's tailor story: Context, Product, Process, Performance (CSS only) */
+/* Cog's tailor story: Context, Product, Process, Performance — one part at a time, at the student's pace */
 .pp{display:block;margin-top:8px}
-.pp-stage{position:relative;display:block;height:150px;border-radius:12px;background:var(--card);border:1.5px solid var(--rule-strong);overflow:hidden}
-.pp-scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:6px 10px;opacity:0;animation:ppsc 3.9s ease both;animation-delay:calc(var(--i)*3.9s)}
-.pp-sum{animation-name:ppsum;animation-duration:.6s;animation-delay:calc(4*3.9s);flex-direction:row;flex-wrap:wrap;gap:6px 8px;align-content:center}
-@keyframes ppsc{0%{opacity:0;transform:translateY(8px)}8%,88%{opacity:1;transform:none}100%{opacity:0}}
-@keyframes ppsum{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
-.pp-art{display:flex;align-items:center;gap:6px;font-size:34px;line-height:1;position:relative;margin-top:2px}
-.pp-art i{font-style:normal;display:inline-block;opacity:0;animation:pppop .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--i)*3.9s + .25s + var(--j)*.35s)}
-.pp-art em{font:600 calc(12.5px*var(--ui))/1.2 var(--font-ui);font-style:normal;background:var(--ppb);color:var(--pp);border:1.5px solid var(--pp);border-radius:12px;padding:4px 8px;opacity:0;animation:pppop .5s .95s both;animation-delay:calc(var(--i)*3.9s + 1.1s)}
-@keyframes pppop{from{opacity:0;transform:scale(.4) translateY(6px)}to{opacity:1;transform:none}}
-.pp-w{font:800 calc(15px*var(--ui))/1 var(--font-ui);color:#fff;background:var(--pp);border-radius:8px;padding:4px 10px;opacity:0;animation:pppop .4s both;animation-delay:calc(var(--i)*3.9s + 1.5s)}
-.pp-d{font:600 calc(13px*var(--ui))/1.25 var(--font-ui);color:var(--ink);text-align:center;opacity:0;animation:pppop .4s both;animation-delay:calc(var(--i)*3.9s + 1.8s)}
-.pp-d .bn{font-size:calc(12px*var(--ui))}
-.pp-ex{font:italic 500 calc(12px*var(--ui))/1.25 var(--font-display);text-align:center;background:var(--ppb);box-shadow:inset 0 -2px 0 var(--pp);border-radius:4px;padding:1px 6px;opacity:0;animation:pppop .4s both;animation-delay:calc(var(--i)*3.9s + 2.3s)}
-.pp-sum>span{display:inline-flex;align-items:center;gap:5px;font:800 calc(13px*var(--ui))/1 var(--font-ui);color:var(--pp);background:var(--ppb);border:1.5px solid var(--pp);border-radius:10px;padding:6px 9px}
-.pp-sum>span i{font-style:normal;font-size:20px}
-.pp-sum .pp-eq{flex-basis:100%;justify-content:center;background:none;border:0;color:var(--forest);font-size:calc(14px*var(--ui))}
-.pp-re{margin-top:6px;border:0;background:none;color:var(--forest);font:700 calc(13px*var(--ui)) var(--font-ui);padding:4px 0;text-decoration:underline}
-@media (prefers-reduced-motion:reduce){.pp-scene,.pp-art i,.pp-art em,.pp-w,.pp-d,.pp-ex{animation-duration:.01s}}
+.pp-stage{display:block;border-radius:12px;background:var(--card);border:1.5px solid var(--rule-strong);overflow:hidden}
+.pp-scene{display:none;padding:10px 12px 8px;border-top:5px solid var(--pp);animation:ppin .35s ease both}
+.pp[data-s="0"] .pp-s0,.pp[data-s="1"] .pp-s1,.pp[data-s="2"] .pp-s2,.pp[data-s="3"] .pp-s3,.pp[data-s="4"] .pp-s4{display:block}
+@keyframes ppin{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:none}}
+.pp-w{display:inline-block;font:800 calc(15px*var(--ui))/1 var(--font-ui);color:#fff;background:var(--pp);border-radius:8px;padding:5px 11px}
+.pp-d{display:block;margin:6px 0 2px;font:700 calc(14px*var(--ui))/1.3 var(--font-ui);color:var(--ink)}
+.pp-d .bn{display:block;font-weight:500;font-size:calc(12.5px*var(--ui));color:var(--ink-muted)}
+.pp-lab{display:block;margin:8px 0 3px;font:700 calc(11.5px*var(--ui))/1 var(--font-ui);color:var(--ink-muted)}
+.pp-say{display:block;font:500 calc(14px*var(--ui))/1.4 var(--font-display);background:var(--mist);border-radius:12px 12px 12px 3px;padding:7px 10px}
+.pp-ex{display:block;font:500 calc(14px*var(--ui))/1.4 var(--font-display);background:var(--mist);border-radius:12px 12px 12px 3px;padding:7px 10px}
+.pp-say mark,.pp-ex mark{background:var(--ppb);box-shadow:inset 0 -2px 0 var(--pp);color:inherit;border-radius:3px;padding:0 1px}
+.pp-all{display:grid;gap:6px}
+.pp-all>span{display:block;font:600 calc(13.5px*var(--ui))/1.35 var(--font-ui);color:var(--ink);background:var(--ppb);border-left:5px solid var(--pp);border-radius:8px;padding:6px 9px}
+.pp-all>span b{color:var(--pp)}
+.pp-nav{display:flex;align-items:center;gap:8px;margin-top:6px}
+.pp-nav button{border:1.5px solid var(--rule-strong);background:var(--card);border-radius:999px;padding:6px 14px;font:700 calc(13px*var(--ui)) var(--font-ui);color:var(--forest);min-height:34px}
+.pp-nav button[data-pp="next"]{background:var(--forest);color:#fff;border-color:var(--forest)}
+.pp-nav button:disabled{opacity:.35}
+.pp-dots{flex:1;display:flex;justify-content:center;gap:6px}
+.pp-dots i{width:9px;height:9px;border-radius:50%;background:var(--rule-strong)}
+.pp[data-s="0"] .pp-dots i:nth-child(1),.pp[data-s="1"] .pp-dots i:nth-child(2),.pp[data-s="2"] .pp-dots i:nth-child(3),.pp[data-s="3"] .pp-dots i:nth-child(4),.pp[data-s="4"] .pp-dots i:nth-child(5){background:var(--forest);transform:scale(1.25)}
+.pp-re{display:block;margin-top:6px;border:0;background:none;color:var(--forest);font:700 calc(13px*var(--ui)) var(--font-ui);padding:4px 0;text-decoration:underline}
+.pp:not(.min) .pp-re{display:none}
+@media (prefers-reduced-motion:reduce){.pp-scene{animation:none}}
 
 /* each tick nudges the gear and its halo */
-.lvl-gear.click svg{filter:drop-shadow(0 0 8px rgba(245,197,66,.55))}
+.lvl-gear.click::after{content:"";position:absolute;inset:-6%;border-radius:50%;background:radial-gradient(circle,rgba(245,197,66,.5) 0,transparent 66%);pointer-events:none}
 .pp.min .pp-stage{display:none}
-.pp-stage{height:132px}
 .kb.compact .strip{max-height:min(196px,33dvh)}
 .kb.compact .kchip{font-size:12.5px;padding:4px 8px;-webkit-line-clamp:2}
 .kb.compact .kchip .tg{font-size:9.5px}
 .kb.compact .strip .lbl{display:none}
 /* on small phones the prompt box must leave room for the chat and the send button */
-.composer textarea{max-height:78px!important;font-size:14px!important}
+.composer textarea{max-height:min(112px,19dvh)!important;font-size:14px!important;overflow-y:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;touch-action:pan-y}
+.composer textarea::-webkit-scrollbar{display:none}
+.cmp-hl{font-size:14px!important}

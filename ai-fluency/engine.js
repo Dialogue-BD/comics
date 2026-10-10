@@ -331,11 +331,11 @@ function renderPhone(anim){
   if(st){ const mid=st.closest('[data-mid]'); const id=S.lesson+':'+((mid&&mid.dataset.mid)||S.beat); const seen=x.get('_streamed',{}); if(!seen[id]){ streamIn(st,cs,()=>{seen[id]=1;x.set('_streamed',seen);onStreamDone()}) } else st.removeAttribute('data-stream'); }
   // composer: keep in sync with chips/keys
   const ta=$('#cmp',scr);
-  if(ta){ autoGrow(ta); ta.addEventListener('input',()=>{ if(ta.dataset.key){x.set(ta.dataset.key,ta.value);composeChanged()} autoGrow(ta)}); }
+  if(ta){ autoGrow(ta); ta.scrollTop=ta.scrollHeight; const hlb=ta.parentNode.querySelector('.cmp-hl'); const syncHl=()=>{ if(hlb) hlb.scrollTop=ta.scrollTop; }; syncHl(); ta.addEventListener('scroll',syncHl,{passive:true}); ta.addEventListener('input',()=>{ if(ta.dataset.key){x.set(ta.dataset.key,ta.value);composeChanged()} autoGrow(ta)}); }
   if(b.hunt) huntMark(x,b,scr);
   if(b.afterRender) b.afterRender(x,scr);
 }
-function autoGrow(t){t.style.height='auto';t.style.height=Math.min(t.scrollHeight,132)+'px'}
+function autoGrow(t){t.style.height='auto';t.style.height=Math.min(t.scrollHeight,112)+'px'}
 
 /* type an AI answer out, text node by text node — feels like a live reply */
 function streamIn(el,scroller,done){
@@ -421,8 +421,8 @@ function renderTop(){
   const segs=L.stages.map(st=>({st,idx:L.beats.map((b,i)=>i).filter(i=>L.beats[i].stage===st.id&&shown(L,i))})).filter(s=>s.idx.length);
   const cur=L.stages.find(s=>s.id===L.beats[S.beat].stage)||{};
   top.innerHTML=`<button class="p-ic" data-p="exit" aria-label="Back to Ayesha’s lock screen" title="Lock screen">${IC.x}</button>
-   <div class="p-mid"><div class="p-prog" role="progressbar" aria-label="${esc(L.title)}: ${esc(cur.label||'')}">${segs.map(s=>{const done=s.idx.filter(i=>i<S.beat).length+(s.idx.includes(S.beat)?.6:0);
-     return `<span class="pseg ${s.st.d?'d-'+s.st.d:'warm'} ${s.st.id===cur.id?'on':''}" style="flex:${s.idx.length}" title="${esc(s.st.label)}"><i style="width:${(100*done/s.idx.length).toFixed(1)}%"></i></span>`}).join('')}</div>
+   <div class="p-mid"><div class="p-prog" role="group" aria-label="${esc(L.title)}: ${esc(cur.label||'')}. Tap a section to jump to it.">${segs.map(s=>{const done=s.idx.filter(i=>i<S.beat).length+(s.idx.includes(S.beat)?.6:0);
+     return `<button type="button" class="psegb" data-p="seg" data-i="${s.idx[0]}" style="flex:${s.idx.length}" title="Go to: ${esc(s.st.label)}" aria-label="Go to ${esc(s.st.label)}"><span class="pseg ${s.st.d?'d-'+s.st.d:'warm'} ${s.st.id===cur.id?'on':''}"><i style="width:${(100*done/s.idx.length).toFixed(1)}%"></i></span></button>`}).join('')}</div>
      <small class="p-stage">${esc(L.title)} · <b>${esc(cur.label||'')}</b></small></div>
    <span class="p-score" id="p-score" title="Stars: good calls, first time">${IC.star}<b>${x.get('_score',0)}</b></span>${right}`;
 }
@@ -554,9 +554,16 @@ function sheetSpeech(sh){
   const t=plain(b.textContent).replace(/Eye-sha/g,'Ayesha'); return ((title?title+' ':'')+t).trim();
 }
 function closeSheet(){ UI.sheet=null; renderSheet(); renderFoot(); }
+function ppClick(e){
+  const ppb=e.target.closest('[data-pp]'); if(!ppb) return false;
+  if(ppb.dataset.pp==='goid'){ goId(ppb.dataset.id); return true; }
+  const pp=ppb.closest('.pp'), a=ppb.dataset.pp; let n=+pp.dataset.s||0;
+  if(a==='re'){ pp.classList.remove('min'); n=0; } else if(a==='next'){ if(n>=4){ if(pp.closest('#pcard')) next(true); else { pp.classList.add('min'); ctx().set('ppDone',1); } return true; } n++; } else if(a==='prev') n=Math.max(0,n-1);
+  pp.dataset.s=n; ctx().set('ppStep',n); const nx=pp.querySelector('[data-pp=next]'), pv=pp.querySelector('[data-pp=prev]'); if(nx) nx.textContent=n>=4?'Got it ✓':'Next ›'; if(pv) pv.disabled=n===0; return true;
+}
 function onSheetClick(e){
   const dv=e.target.closest('[data-view]'); if(dv){ openView(dv.dataset.view,dv.dataset.mark); return; }
-  const ppb=e.target.closest('[data-pp]'); if(ppb){ const pp=ppb.parentNode, st=pp.querySelector('.pp-stage'); pp.classList.remove('min'); if(st) st.replaceWith(st.cloneNode(true)); return; }
+  if(ppClick(e)) return;
   const kwb=e.target.closest('[data-kw]'); if(kwb){ kwPick(+kwb.dataset.kw); return; }
   const hv=e.target.closest('[data-hv]'); if(hv){ huntVerdict(hv.dataset.hv); return; }
   const sp=e.target.closest('[data-speak]'); if(sp){ speak(sp.dataset.speak); sp.classList.add('speaking'); return; }
@@ -959,17 +966,18 @@ function toggleChip(id,x){
   let v=x.get(kb.key,'');
   if(v.includes(c.text)) v=v.replace(c.text,'').replace(/ {2,}/g,' ').replace(/^\s+/,'');
   else v=(v&&!/\s$/.test(v)?v+' ':v)+c.text;
-  x.set(kb.key,v); if(kb.key==='cvPrompt'&&!x.get('ppDone')){ x.set('ppDone',1); renderCoachLine(); } renderPhoneKeepFocus(); renderFoot();
+  x.set(kb.key,v); if(kb.key==='cvPrompt'&&!x.get('ppDone')&&x.get('ppStep',0)>=4){ x.set('ppDone',1); renderCoachLine(); } renderPhoneKeepFocus(); renderFoot();
 }
 function composeChanged(){ renderFoot(); }
 function renderPhoneKeepFocus(){ const ta=$('#cmp'); const pos=ta?ta.selectionStart:null; const had=document.activeElement===ta; renderPhone(false); const t2=$('#cmp'); if(t2&&had){t2.focus(); if(pos!=null) t2.setSelectionRange(t2.value.length,t2.value.length)} }
 
 /* ------------------------------------------------------------- clicks on cards, footer and top bar */
 function onUIClick(e){
+  if(ppClick(e)) return;
   const dv=e.target.closest('[data-view]'); if(dv){openView(dv.dataset.view,dv.dataset.mark);return}
   const md=e.target.closest('[data-mode]'); if(md){ setMode(md.dataset.mode); return; }
   const st=e.target.closest('[data-start]'); if(st){ start(st.dataset.start); return; }
-  const p=e.target.closest('[data-p]'); if(p){ const a=p.dataset.p; if(a==='bn') setBn(!S.bn); else if(a==='menu') openMenu(); else if(a==='exit') hub(); return; }
+  const p=e.target.closest('[data-p]'); if(p){ const a=p.dataset.p; if(a==='bn') setBn(!S.bn); else if(a==='menu') openMenu(); else if(a==='exit') hub(); else if(a==='seg'){ const i=+p.dataset.i; if(!(S.beat===i)) go(i,true,i>S.beat?1:-1); } return; }
   const ak=e.target.closest('[data-ask]'); if(ak){ askPick(+ak.dataset.ask); return; }
   const c=e.target.closest('[data-c]');
   if(c){ const a=c.dataset.c; const x=S.lesson?ctx():null;

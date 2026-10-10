@@ -106,12 +106,13 @@ const safeFiles=x=>{const c=chosen(x).filter(id=>FILE_WHY[id].ok>=0);return c.le
 
 /* Cog teaches the four parts of a prompt with one story: asking a tailor for a shirt (pure CSS, see play.css .pp) */
 const PP_SCENES=[
- {t:'Context',i:'🧍‍♀️',art:['👩‍🎓','💬','🧑‍🔧'],say:'Friday: a wedding 💍',d:'Who I am. Why I need it.',bn:'আমি কে। কেন দরকার।',ex:'I am a third-year Economics student… applying for master’s programmes.'},
- {t:'Product',i:'👔',art:['🧑‍🔧','👔'],say:'A shirt, please.',d:'What I want to get.',bn:'আমি কী পেতে চাই।',ex:'Make a 2-page academic CV.'},
- {t:'Process',i:'📏',art:['📏','✂️'],say:'✅ my size  ❌ no extra cloth  ❓ ask me first',d:'How to do the job: rules and steps.',bn:'কাজটা কীভাবে হবে: নিয়ম ও ধাপ।',ex:'Use only facts from my files… If something is missing, ask me first.'},
- {t:'Performance',i:'⭐',art:['🧑‍🔧','🔍','⭐'],say:'Be careful. Be honest.',d:'How the helper should behave.',bn:'সাহায্যকারী কেমন আচরণ করবে।',ex:'Be an honest editor. Use simple English I can explain.'}
+ {t:'Context',say:'I need a shirt <mark>for my friend’s wedding on Friday</mark>.',d:'The background: who you are, and why you need it.',bn:'প্রেক্ষাপট: তুমি কে, আর কেন দরকার।',ex:'<mark>I am a third-year Economics student. I am applying for master’s programmes.</mark>'},
+ {t:'Product',say:'Please make me <mark>one blue cotton shirt</mark>.',d:'The thing you want to get.',bn:'তুমি যা পেতে চাও।',ex:'<mark>Make a 2-page academic CV.</mark>'},
+ {t:'Process',say:'<mark>Use my measurements. Ask me before you cut.</mark>',d:'How to do the job: the steps and the rules.',bn:'কাজটা কীভাবে হবে: ধাপ ও নিয়ম।',ex:'<mark>Use only facts from my files. If something is missing, ask me first.</mark>'},
+ {t:'Performance',say:'<mark>Be careful and honest.</mark> Tell me if something is wrong.',d:'How the helper should behave: its role and style.',bn:'সাহায্যকারী কেমন আচরণ করবে।',ex:'<mark>Be an honest editor. Use simple English I can explain.</mark>'}
 ];
-const ppAnim=x=>`<span class="pp${x&&x.get('ppDone')?' min':''}"><span class="pp-stage">${PP_SCENES.map((s,k)=>`<span class="pp-scene pp-${s.t}" style="--i:${k}"><span class="pp-art">${s.art.map((e,j)=>`<i style="--j:${j}">${e}</i>`).join('')}<em>${s.say}</em></span><span class="pp-w">${s.t}</span><span class="pp-d">${s.d}<span class="bn">${s.bn}</span></span><span class="pp-ex">“${s.ex}”</span></span>`).join('')}<span class="pp-scene pp-sum" style="--i:4">${PP_SCENES.map(s=>`<span class="pp-${s.t}"><i>${s.i}</i>${s.t}</span>`).join('')}<span class="pp-eq">= one good prompt 💬</span></span></span><button class="pp-re" type="button" data-pp="re" aria-label="Play again">▶ What are the 4 parts?</button></span>`;
+const ppAnim=x=>{ const s0=Math.min(4,Math.max(0,(x&&x.get('ppStep',0))||0));
+  return `<span class="pp${x&&x.get('ppDone')?' min':''}" data-s="${s0}"><span class="pp-stage">${PP_SCENES.map((s,k)=>`<span class="pp-scene pp-s${k} pp-${s.t}"><span class="pp-w">${k+1}. ${s.t}</span><span class="pp-d">${s.d}<span class="bn">${s.bn}</span></span><span class="pp-lab">You tell the tailor:</span><span class="pp-say">“${s.say}”</span><span class="pp-lab">You tell the AI:</span><span class="pp-ex">${s.ex}</span></span>`).join('')}<span class="pp-scene pp-s4 pp-Product"><span class="pp-w">4 parts = 1 good prompt</span><span class="pp-all">${PP_SCENES.map(s=>`<span class="pp-${s.t}"><b>${s.t}</b> — ${s.d}</span>`).join('')}</span></span></span><span class="pp-nav"><button type="button" data-pp="prev"${s0?'':' disabled'}>‹ Back</button><span class="pp-dots"><i></i><i></i><i></i><i></i><i></i></span><button type="button" data-pp="next">${s0>=4?'Got it ✓':'Next ›'}</button></span></span>`; };
 
 const PROMPT_CHIPS=[
  {id:'c1',tag:'Context',text:'I am a third-year Economics student at Rajshahi University. I am applying for fully funded master’s programmes in Development Economics.'},
@@ -338,9 +339,12 @@ AFL.lesson({
    pass:x=>!chosen(x).some(id=>FILE_WHY[id].ok<0),
    cq:x=>chosen(x).some(id=>FILE_WHY[id].ok<0)?Object.assign({},CQ_CV.files,filesLine(x),{rewind:x=>{x.set('cvFiles',chosen(x).filter(id=>FILE_WHY[id].ok>=0));AFL.goId('pick')}}):null,
    say:'Ayesha took out the private files.',bn:'আয়েশা ব্যক্তিগত ফাইলগুলো সরিয়ে দিয়েছে।'},
+  {d:'des',id:'parts',stage:'prompt',view:'card',
+   say:'A good prompt has four parts. Tap Next to see each one.',bn:'একটা ভালো প্রম্পটের চারটা অংশ থাকে। প্রতিটা দেখতে Next চাপো।',
+   card:x=>({type:'html',html:ppAnim(x)})},
   {d:'des',id:'prompt',stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi AI'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS}}),tap:'send',
    say:'Now build a better prompt. Tap the parts above the keyboard, then send ➤.',bn:'এবার একটা ভালো প্রম্পট বানাও। কিবোর্ডের উপরের অংশগুলো চাপো, তারপর পাঠাও ➤।',
-   sub:x=>say({solo:'Read each part out loud before you tap it.',pair:'Read each part to your partner before you tap it.',class:'Read each part together before you tap it.'})+ppAnim(x),
+   sub:x=>say({solo:'Read each part out loud before you tap it.',pair:'Read each part to your partner before you tap it.',class:'Read each part together before you tap it.'})+`<button class="pp-re" type="button" data-pp="goid" data-id="parts">↺ Review the 4 parts</button>`,
    subbn:()=>say({solo:'চাপার আগে প্রতিটা অংশ জোরে পড়ো।',pair:'চাপার আগে প্রতিটা অংশ সঙ্গীকে পড়ে শোনাও।',class:'চাপার আগে প্রতিটা অংশ সবাই মিলে পড়ো।'}),
    compose:{key:'cvPrompt',slots:SLOTS,chips:PROMPT_CHIPS,best:['c1','c2','c3','c4']}},
   {d:'des',stage:'prompt',scene:x=>CHAT_SC(x,1),

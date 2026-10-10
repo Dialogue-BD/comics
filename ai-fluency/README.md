@@ -119,3 +119,9 @@ Framework: AI Fluency (4Ds) by Rick Dakan, Joseph Feller and Anthropic, CC BY-NC
 - Studio is light, the gear celebration has sound (`fx.js`), wrong-answer sheets are read aloud, "Sathi AI" is used everywhere.
 - Docs: attendance, rucei, shortlist and checklist are the un-redacted originals. cv, ielts and the internship form are still redacted.
 - Discernment checks teach IELTS skimming and scanning: an animated skim → keywords → scan → check on Ayesha's RUCEI report (`alt.js`), then each "is this true?" runs keywords → scan → TRUE / FALSE / NOT GIVEN.
+
+### Latest changes (prompt parts, gears, progress bar)
+- The four prompt parts (Context, Product, Process, Performance) now have their own `parts` card before the prompt step: a tailor story, one part at a time, with Back/Next. The prompt step keeps a "Review the 4 parts" link.
+- Gear celebration clicks are driven by the audio clock (`FX.gearTurned`), so every tooth turns exactly when its click is heard. Mission-complete gear symbols sit inside a `.symg` wrapper so the pop animation no longer overrides their centring.
+- The progress-bar segments at the top are buttons (`data-p="seg"`): tap one to jump to the start of that section.
+- The prompt box scrolls, and its colour overlay scrolls with it.

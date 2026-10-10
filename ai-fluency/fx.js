@@ -51,7 +51,7 @@ const SOUNDS={
     for(let i=0;i<14;i++) tick(w+.1+i*(.088-i*.0035),.07);
     bell(NOTE.G5,t+2.05,.9,.16); },
   /* a gear locks in: tick-tick-tick faster and faster, a clunk, then a bright arpeggio and sparkles */
-  gear:()=>{ const t=T(), G=gearTimes(); G.ticks.forEach((at,i)=>tick(t+at,.12+i*.02));
+  gear:(base)=>{ const t=base!=null?base:T(), G=gearTimes(); G.ticks.forEach((at,i)=>tick(t+at,.12+i*.02));
     const lock=t+G.lock; clunk(lock);
     [NOTE.C5,NOTE.E5,NOTE.G5,NOTE.C6].forEach((f,i)=>{ bell(f,lock+.1+i*.09,1.1,.2); });
     bell(NOTE.E6,lock+.5,1.2,.14); sparkle(lock+.25,9); noise(lock,.45,.12,2000,7000,.7); },
@@ -109,24 +109,41 @@ const GOLD=['#F5C542','#FFE08A','#E0A81C'];
 /* ---------------- a gear locks in ---------------- */
 FX.gearTurned=(root,d)=>{
   const g=root.querySelector('.lvl-gear'); if(!g) return;
-  const G=gearTimes(); FX.sfx('gear');
-  /* the four gears turn one notch per tick, faster and faster, and the last notch lands them in place */
-  const rots=[...g.querySelectorAll('.rot')];
-  if(!reduced()) rots.forEach(r=>{ const on=r.closest('.gear')&&r.closest('.gear').classList.contains('on'); r.dataset.sg=on?-1:1; r.style.animation='none'; r.style.transition='transform .09s cubic-bezier(.3,1.6,.5,1)';
-    r.style.transform='rotate(calc(var(--o) + var(--ga,0deg) * var(--s) + '+(on?-120:120)+'deg * var(--s)))'; });
-  G.ticks.forEach((at,i)=>setTimeout(()=>{ if(!document.body.contains(g)) return; const rem=120*(1-(i+1)/GEAR_N);
-    rots.forEach(r=>{ if(r.dataset.sg) r.style.transform='rotate(calc(var(--o) + var(--ga,0deg) * var(--s) + '+(r.dataset.sg*rem)+'deg * var(--s)))'; });
-    g.classList.add('click'); setTimeout(()=>g.classList.remove('click'),90); },at*1000));
-  setTimeout(()=>rots.forEach(r=>{ r.style.transition=''; r.style.transform=''; r.style.animation=''; r.style.animationName='none'; }),(G.ticks[GEAR_N-1]+.3)*1000);
-  g.classList.remove('cele'); void g.offsetWidth; g.classList.add('cele');
-  const col=[DCOL(d),...GOLD,'#ffffff',DCOL(d)];
-  setTimeout(()=>{ if(!document.body.contains(g)) return; const [x,y,r]=centre(g);
+  const G=gearTimes();
+  /* One clock drives everything. When sound is on, that clock is the audio clock, so a tooth turns at the very moment its click is heard
+     (timers drift when the page is busy drawing; the audio clock does not). When sound is off, it is the page clock. */
+  let go=false;
+  const start=()=>{ if(go) return; go=true;
+    const useAudio=!!(FX.on()&&ensure()&&ac.state==='running');
+    const now=useAudio?(()=>ac.currentTime):(()=>performance.now()/1000);
+    const base=now()+.18;                       /* a short run-up so the card has drawn before the first click */
+    if(useAudio) SOUNDS.gear(base);
+    const rots=[...g.querySelectorAll('.rot')];
+    const sg=rots.map(r=>{ const on=r.closest('.gear')&&r.closest('.gear').classList.contains('on'); return on?-1:1; });
+    const setRem=(rem)=>rots.forEach((r,i)=>{ r.style.transform='rotate(calc(var(--o) + var(--ga,0deg) * var(--s) + '+(sg[i]*rem)+'deg * var(--s)))'; });
+    if(!reduced()){ rots.forEach(r=>{ r.style.animation='none'; r.style.transition='transform .08s cubic-bezier(.3,1.6,.5,1)'; }); setRem(120); }
+    g.classList.remove('cele'); void g.offsetWidth; g.classList.add('cele');
+    let nTick=0,locked=false;
+    const loop=()=>{
+      if(!document.body.contains(g)) return;
+      const t=now()-base;
+      while(nTick<GEAR_N&&t>=G.ticks[nTick]){ nTick++; if(!reduced()) setRem(120*(1-nTick/GEAR_N)); g.classList.add('click'); setTimeout(()=>g.classList.remove('click'),90); }
+      if(!locked&&t>=G.lock){ locked=true; lockIn(); }
+      if(!locked) requestAnimationFrame(loop);
+      else rots.forEach(r=>{ r.style.transition=''; r.style.transform=''; r.style.animation=''; r.style.animationName='none'; });
+    };
+    requestAnimationFrame(loop);
+  };
+  const lockIn=()=>{
+    const col=[DCOL(d),...GOLD,'#ffffff',DCOL(d)];
+    const [x,y,r]=centre(g);
     const ring=document.createElement('i'); ring.className='shock'; ring.style.cssText=`left:${x}px;top:${y}px;--c:${DCOL(d)}`; document.body.appendChild(ring); setTimeout(()=>ring.remove(),1100);
-    burst(x,y,col,70,{speed:640,g:820,spread:Math.PI*2,dir:0,kinds:['r','r','c','s','g','s']});
-    setTimeout(()=>burst(x-r.width*.4,y+10,col,26,{speed:520,dir:-Math.PI*.78,spread:.9}),160);
-    setTimeout(()=>burst(x+r.width*.4,y+10,col,26,{speed:520,dir:-Math.PI*.22,spread:.9}),160);
+    burst(x,y,col,56,{speed:640,g:820,spread:Math.PI*2,dir:0,kinds:['r','r','c','s','g','s']});
+    setTimeout(()=>burst(x-r.width*.4,y+10,col,20,{speed:520,dir:-Math.PI*.78,spread:.9}),160);
+    setTimeout(()=>burst(x+r.width*.4,y+10,col,20,{speed:520,dir:-Math.PI*.22,spread:.9}),160);
     const k=root.querySelector('.lvl-k'); if(k){ k.classList.remove('bump'); void k.offsetWidth; k.classList.add('bump'); }
-  },G.lock*1000);
+  };
+  if(FX.on()&&ensure()&&ac.state==='suspended'){ try{ ac.resume().then(start,start); }catch(e){ start(); } setTimeout(start,350); } else start();
 };
 
 /* ---------------- the mission is done ---------------- */
