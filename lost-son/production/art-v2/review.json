@@ -1,0 +1,114 @@
+{
+  "version": "20261010-lost-son-4-art-continuity",
+  "route": "built-in image_gen",
+  "scope": "seven reference-guided regenerated sheets, 73 panels",
+  "reference": "assets/art-v2/cast-and-home-reference.png",
+  "scriptAndAudio": "unchanged from verified short-take release",
+  "reviewMethod": "Native generated sheets inspected panel by panel for identities, actions, object joints, routes and story order. User annotations incorporated before acceptance.",
+  "pages": [
+    {
+      "page": 1,
+      "review": "Same three people, comfortable canonical home, no cigarette/phone before purchase; property signing and money transfer intact."
+    },
+    {
+      "page": 2,
+      "review": "Tan luggage consistent; corrected coherent central train aisle, seating on both sides and luggage out of walkway; normal bus boarding and CNG driver/passenger arrangement; departing home has same single gate."
+    },
+    {
+      "page": 3,
+      "review": "Same younger face and stable city shirt; phone rear cameras on back, selfie screen faces group; consistent friends and wallet; expenses progress to isolation."
+    },
+    {
+      "page": 4,
+      "review": "Same young man becomes tired without age/face replacement; luggage deterioration visible; small scaler and supported fish-cleaning work, normal dogs and non-gory fish scraps."
+    },
+    {
+      "page": 5,
+      "review": "Stable clothing and footwear; helper visibly operates pump with own connected arm while son washes; no thought bubble; broken case left behind; canonical single-storey farmhouse replaces mansion."
+    },
+    {
+      "page": 6,
+      "review": "Same elder and son, full-length garment detail, continuous wall and small gate; father exits gate toward son; kneeling son faces father approaching from ahead; embrace and head-cradling retained."
+    },
+    {
+      "page": 7,
+      "review": "Dirty clothes at washing, clean restoration afterward; correct older son in all complaint/invitation panels; structurally plausible kodal; child meets older brother in field; field conversation has no walls or nearby house; same late-afternoon light across all twelve panels; no bonfire; invitation remains unresolved."
+    }
+  ],
+  "userCorrections": [
+    "কোদাল rather than লাঙল",
+    "No open gap bypassing gate",
+    "Visible centre aisle in train",
+    "Father approaches kneeling son from in front",
+    "House wall/gate orientation continuity",
+    "Child meets older brother in field",
+    "Remove brick walls around field conversation",
+    "No night-to-dusk reversal"
+  ],
+  "delivery": [
+    {
+      "page": 1,
+      "source": "assets/art-v2/page-1.png",
+      "source_sha256": "18f9c0b43d7fb85b7a7cc18e43bf12bb5e2d4d9c51b254b16fb6d1d63351a6c5",
+      "path": "assets/art-v2/page-1.webp",
+      "sha256": "dc4c0fc9ad54c23e5ecb090467ff90b537928e186a3c1939e3da53f1ea8216af",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "page": 2,
+      "source": "assets/art-v2/page-2.png",
+      "source_sha256": "7e0e300a66824b7c22d1fb4b6f1d2d6aa626fb18c328eaf99e8108dda25b9d87",
+      "path": "assets/art-v2/page-2.webp",
+      "sha256": "abe3a3d249b9218f52bb489e1030d76a7636e1bcb7bbdcbc9721f8509b0ee013",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "page": 3,
+      "source": "assets/art-v2/page-3.png",
+      "source_sha256": "588ba88e22967bdde10f76d1291887dd017b8d175e8cc1bbc13ed76635e2e038",
+      "path": "assets/art-v2/page-3.webp",
+      "sha256": "67e3b988275decbfc73d90e4f31ca5f61c9cbc54fd882c1f49e47fb2dc431220",
+      "width": 1672,
+      "height": 940
+    },
+    {
+      "page": 4,
+      "source": "assets/art-v2/page-4.png",
+      "source_sha256": "a082003ff82fc2d66472f7c63ba84f8836d1ff7061dc2ca6098354d205b6db58",
+      "path": "assets/art-v2/page-4.webp",
+      "sha256": "ba3da5ee36ccd26eaf38e8bfeb3f77a3b69fa144399992662f8508fca7bdc49d",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "page": 5,
+      "source": "assets/art-v2/page-5.png",
+      "source_sha256": "a102a313fedba4dba0136e15a87bcfa918e6dad4c76896b5ba05aef619aa4118",
+      "path": "assets/art-v2/page-5.webp",
+      "sha256": "8870df9bb1fea2ac20065004fe4d8a8ef4a25f34fdab3fb9f2b5da1fac1aad40",
+      "width": 1672,
+      "height": 940
+    },
+    {
+      "page": 6,
+      "source": "assets/art-v2/page-6.png",
+      "source_sha256": "fcf03637494766074aa08cacad656b2a5e826ac82bc94d3735aefe5e7d36be93",
+      "path": "assets/art-v2/page-6.webp",
+      "sha256": "a40263ed2badeac35a3ddd5296e2a9f70dd9bfb65e835863a19b8014de74e391",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "page": 7,
+      "source": "assets/art-v2/page-7.png",
+      "source_sha256": "51866dd4a3e5a6cfff3862cee05e64572dbf63e1ae089bc8df12f99c13e3f81b",
+      "path": "assets/art-v2/page-7.webp",
+      "sha256": "0a13e87999048886918ffe8f382feb56486e56a7db9765cc7ef3f02d649b773e",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "originalSources": "Original PDF, extracted JPEGs and previous delivery art retained; no source overwrite"
+}

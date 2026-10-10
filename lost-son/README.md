@@ -13,21 +13,35 @@ The fish-market hardship sequence follows the supplied Bengali artwork.
 
 ## Artwork and story
 
-Six original pages are retained, including the entire moving reunion on
-page 6. Its original extraction checksum is recorded and checked. Page 3 uses
-a conservative built-in imagegen repair: numeric labels and the phone logo
-were removed, restaurant clothing received modest ornas, and all ten scenes
-and their composition were kept. Original PDF, extracted pages, repaired PNG,
-and complete generation prompt are preserved.
+All seven sheets now use reference-guided AI reconstructions in
+`assets/art-v2/`. Native PNGs are retained; WebP delivery is encoded at quality
+95 without resizing. Cast and home references, full prompts, native panel
+measurements, review notes, and initial rejected variants are preserved.
+
+The father keeps the reunion’s recognizable face and one comfortable,
+unpretentious single-storey farmhouse. Its low brick boundary has one narrow
+wooden gate and no bypass gap. The younger son retains his identity through
+spending, hardship and restoration. The older brother keeps the same brown
+clothes, white cap and full beard, and carries a correctly built কোদাল.
+
+Repairs include the train’s centre aisle, consistent luggage and footwear,
+plausible fish-scaling work, a visible pump operator, the father approaching
+his kneeling son from ahead, and the correct older brother in the final
+conversation. The washed son receives clean clothes afterward. The original
+reunion’s embrace and head-cradling remain the emotional centre.
+
+The original PDF, all seven image extractions (including the immutable
+reunion JPEG), and previous delivery art remain untouched. The new artwork
+is a reconstruction, not an upscale of the old compressed sheets.
 
 The father runs to the younger son and embraces him before an explanation.
 He later goes outside to invite the older son. The ending preserves the
 father’s open invitation; it does not invent the older son’s acceptance.
 
 The manifest has 63 caption lines, 84 camera cues, 37 English–Bangla phrase
-notes, stable cast metadata, and intact panel rectangles. One Gacrux narrator
-performs all narration and quoted dialogue. Other sheets are hidden during
-focused listening and revealed in whole-comic view.
+notes, stable cast metadata, and rectangles measured from the replacement sheets. One Gacrux narrator
+performs all narration and quoted dialogue. The player masks neighboring panels during focused listening, so later actions
+are not revealed early. Whole-comic view restores all seven intact sheets.
 
 ## Recording, assembly, and alignment
 
@@ -72,6 +86,7 @@ placements, recognition differences, and timing evidence are recorded in
 ## Rebuild and checks
 
 ```sh
+/Users/timothyhall/miniforge3/bin/python3 tools/measure_art.py
 /Users/timothyhall/miniforge3/bin/python3 tools/prepare.py
 /Users/timothyhall/miniforge3/bin/python3 tools/build_audio.py
 /Users/timothyhall/miniforge3/bin/python3 tools/review_audio.py
@@ -91,7 +106,7 @@ whitespace checks pass.
 
 All 84 camera cues passed at 390×844 phone portrait, 1280×800 desktop, and
 844×390 phone landscape: **252 checks**. Every intended rectangle stayed
-above captions, with the correct sheet and exact cue label selected. The final audio is checked again against those camera cues.
+above captions, with the correct sheet and exact cue label selected. The camera is checked again against the new sheet geometry.
 
 Browser checks also cover actual playback and smooth word following,
 transcript/current-line replay, pause, seeking, phrase help, fullscreen logo

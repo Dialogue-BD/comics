@@ -267,7 +267,14 @@
     const ty = sh / 2 - centerY * scale;
     if (!beat) world.style.transform = `translate3d(${tx}px,${ty}px,0) scale(${scale})`;
     stage.dataset.cameraBeat = beat?.label || "";
-    $$(".world-item", world).forEach((node, i) => node.classList.toggle("current", !overviewMode && i === itemIndex));
+    const activeFocus = !overviewMode ? beat?.[layoutMode] : null;
+    $$(".world-item", world).forEach((node, i) => {
+      const current = !overviewMode && i === itemIndex;
+      node.classList.toggle("current", current);
+      node.style.clipPath = current && activeFocus
+        ? `inset(${activeFocus[1] * 100}% ${(1 - activeFocus[0] - activeFocus[2]) * 100}% ${(1 - activeFocus[1] - activeFocus[3]) * 100}% ${activeFocus[0] * 100}%)`
+        : "";
+    });
     overviewToggle.querySelector("span").textContent = overviewMode ? "Return to story" : "Whole comic";
     overviewToggle.setAttribute("aria-label", overviewMode ? "Return to the current story scene" : "Show the whole comic");
     const camera = S.camera[lineIndex] || {};

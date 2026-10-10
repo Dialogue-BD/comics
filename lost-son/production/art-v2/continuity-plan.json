@@ -1,0 +1,108 @@
+{
+  "objective": "Faithfully reproduce seven existing sheets with higher image quality, stable identities and setting, and physically plausible actions. Retain narration, sequence, emotion and language help.",
+  "house": "One-story well-maintained ochre plastered brick farmhouse, muted red corrugated roof, shaded veranda with square posts, dark wooden doors and green shutters, simple courtyard, mango tree, narrow earth lane beside rice fields. Comfortable established small farming household, neither shack nor mansion. The low brick boundary is continuous on front and right sides, with exactly one wooden gate and no open side gap; the country lane remains outside.",
+  "cast": {
+    "father": "Same expressive elderly Bengali father as original reunion: around 68, medium brown skin, short silver hair, full neatly kept white beard, lined face, white panjabi and cream cotton lungi, brown sandals. No cap in any scene.",
+    "younger": "Same son as reunion, about 25, medium brown skin, oval face, short side-swept black hair, light stubble. Muted olive button-up shirt and charcoal trousers before leaving; city geometric blue-white shirt and dark jeans; hardship same olive shirt now worn and dusty, charcoal trousers, longer stubble; restored white panjabi and charcoal waistcoat.",
+    "older": "Around 33, sturdy build, medium brown skin, full black beard, plain white cap, brown panjabi and dark checked lungi throughout; correct full-size কোদাল with one broad iron digging blade and one wooden handle."
+  },
+  "continuityIssues": [
+    {
+      "pages": [
+        1,
+        5,
+        6,
+        7
+      ],
+      "issue": "Tin shack, two-story mansion, timber hut and varying courtyard imply changing father wealth",
+      "fix": "One identical comfortable farmhouse and geography."
+    },
+    {
+      "pages": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "issue": "Younger son ages and faces drift; restored son is a different face",
+      "fix": "Same reference identity across clothing and hardship phases."
+    },
+    {
+      "pages": [
+        1,
+        6,
+        7
+      ],
+      "issue": "Father face, beard and cap change",
+      "fix": "Use reunion father identity and clothing throughout."
+    },
+    {
+      "pages": [
+        2,
+        4
+      ],
+      "issue": "Suitcase changes tan to silver to black",
+      "fix": "Single tan hard-shell suitcase; absent once homeless."
+    },
+    {
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "issue": "Unmotivated cigarette and new-phone-like prop before purchase; logos and readable currency/deed",
+      "fix": "No cigarette; initial son empty hands; anonymous phone bought in city; wordless documents and money."
+    },
+    {
+      "pages": [
+        2
+      ],
+      "issue": "Bus/rail perspective and rickshaw geometry inconsistent",
+      "fix": "Recognizable bus boarding, rail window, train carriage and real three-wheel CNG structure."
+    },
+    {
+      "pages": [
+        4,
+        7
+      ],
+      "issue": "Huge curved market blade and axe-like farming tool imply weapons",
+      "fix": "Small fish scaler on work surface; normal hoe with perpendicular blade."
+    },
+    {
+      "pages": [
+        5
+      ],
+      "issue": "Thought bubble and two-handed washing with no pump operator",
+      "fix": "Visual memory of workers eating without bubble; visible second person operates pump."
+    },
+    {
+      "pages": [
+        6
+      ],
+      "issue": "Spilled cup gesture, garment lifting and embrace hands need anatomical review",
+      "fix": "Cup placed on table, minimal accidental spill, plausible cloth gathering and anatomically coherent hug."
+    },
+    {
+      "pages": [
+        7
+      ],
+      "issue": "Three cattle as feast shorthand and bonfire musicians imply disproportionate wealth/ritual",
+      "fix": "Father directs normal food preparation and modest courtyard musicians; no cattle procession or bonfire."
+    }
+  ],
+  "preservation": [
+    "Keep original source PDF and original seven extractions immutable.",
+    "Keep exact 63-line narration and 1023-word timing.",
+    "Preserve emotional staging of father running, embrace before apology, and open invitation to older son."
+  ],
+  "route": "built-in image_gen; reference-guided high-fidelity reconstruction; no generic sharpening or upscale-only repair",
+  "userCorrections": [
+    "Use a কোদাল, not লাঙল.",
+    "Close the inexplicable wall gap so the gate is the sole entrance.",
+    "Child meets older brother in field, not at gate.",
+    "No brick walls around field conversation.",
+    "One late-afternoon lighting period across final page."
+  ]
+}

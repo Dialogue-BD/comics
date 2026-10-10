@@ -17,6 +17,13 @@ let previous=0;
 for(const [a,b] of T.w){assert(Number.isFinite(a)&&Number.isFinite(b)&&a>=previous-.001&&b>a&&b<=T.dur,`invalid word interval ${a},${b}`);previous=b;}
 for(const page of S.frames)assert(fs.statSync(path.join(root,page.src)).size>10000,'missing art');
 assert.equal(S.frames.length,7);assert.equal(S.frames.length,S.portraitPages.length);
+assert.equal(S.artwork.version,'art-v2');assert.equal(S.artwork.delivery.length,7);
+for(const art of S.artwork.delivery){
+ assert.equal(S.frames[art.page-1].src,art.path,'mixed artwork versions');
+ assert.equal(hash(fs.readFileSync(path.join(root,art.path))),art.sha256,'stale delivery artwork');
+ assert.equal(hash(fs.readFileSync(path.join(root,art.source))),art.source_sha256,'changed native artwork');
+}
+assert.equal(S.panels.length,73,'replacement panel coverage');
 assert.equal(S.lines.length,S.camera.length);
 let last=-1;
 for(const cue of S.cameraBeats){

@@ -3,7 +3,7 @@ import json,re,shutil,hashlib
 from pathlib import Path
 from PIL import Image
 R=Path(__file__).resolve().parent.parent
-VERSION='20261010-lost-son-3-short-takes'
+VERSION='20261010-lost-son-4-art-continuity'
 # Complete source-panel rectangles, measured in the original landscape sheets.
 P={}
 for page in (1,5):
@@ -13,6 +13,10 @@ for page in (2,4):
 P[3]={1:[.03,.02,.314,.31],2:[.352,.02,.3,.31],3:[.66,.02,.311,.31],4:[.03,.345,.314,.307],5:[.352,.345,.3,.307],6:[.66,.345,.311,.307],7:[.03,.669,.274,.312],8:[.314,.669,.18,.312],9:[.502,.669,.223,.312],10:[.733,.669,.238,.312]}
 P[6]={n+1:[.043+(n%3)*.309,.047+(n//3)*.308,.299,.289] for n in range(9)}
 P[7]={1:[.033,.047,.184,.29],2:[.225,.047,.179,.29],3:[.412,.047,.178,.29],4:[.598,.047,.183,.29],5:[.789,.047,.186,.29],6:[.033,.349,.231,.303],7:[.272,.349,.225,.303],8:[.505,.349,.228,.303],9:[.741,.349,.234,.303],10:[.033,.669,.307,.294],11:[.348,.669,.299,.294],12:[.655,.669,.32,.294]}
+# Accepted replacement art uses measured native panel gutters.
+geometry=R/'production/art-v2/panel-geometry.json'
+if geometry.exists():
+ P={int(page):{int(n):rect for n,rect in panels.items()} for page,panels in json.loads(geometry.read_text()).items()}
 # Each line is displayed and recorded verbatim. Quoted dialogue is performed
 # by the same narrator; the character who owns a quotation is recorded too.
 D=[
@@ -88,8 +92,8 @@ def cue(line,phrase,page,panel,label,rect=None):
  if offset==0:
   b=next(b for b in beats if b['line']==line and b['word']==0);b.update(page=page,frame=page,portrait=r,landscape=r,label=label)
  else:beats.append(dict(line=line,word=offset,page=page,frame=page,portrait=r,landscape=r,label=label))
-cue(0,'The older',1,1,'The father and older son',[.015,.15,.2,.175])
-cue(0,'The younger',1,1,'The younger son',[.215,.15,.113,.175])
+cue(0,'The older',1,1,'The father and older son',[.010,.100,.207,.229])
+cue(0,'The younger',1,1,'The younger son',[.219,.105,.112,.224])
 cue(3,'The father',1,5,'The father’s response')
 cue(6,'then',1,8,'Money changes hands')
 cue(9,'the village',2,2,'Leaving home')
@@ -153,15 +157,23 @@ for i,(line,phrase,kind,meaning,bn) in enumerate(G):
  text=lines[line]['text'];start=text.index(phrase)
  gloss.append(dict(id=f'phrase-{i+1}',line=line,phrase=phrase,start=start,end=start+len(phrase),kind=kind,meaning=meaning,bn=bn))
 labels=['The father divides his property, and the younger son prepares to leave.','The younger son travels from the village to a distant city.','He spends his money on clothes, a phone, meals, and nights out.','Without money or friends, he works at a fish market and goes hungry.','He remembers home and begins the long journey back.','The father recognizes him, runs to him, and holds him close.','The household celebrates, but the older brother stays outside.']
-frames=[dict(src=f'assets/page-{i+1}.webp',width=2000,height=1125,alt=t) for i,t in enumerate(labels)]
+frames=[]
+for i,t in enumerate(labels,1):
+ native=Image.open(R/f'assets/art-v2/page-{i}.png')
+ frames.append(dict(src=f'assets/art-v2/page-{i}.webp',width=native.width,height=native.height,alt=t))
 direction='Warm, mature male storyteller, neutral General American English, around 145 words per minute. Conversational and clear for intermediate English learners. One consistent narrator with subtle quoted dialogue, never exaggerated character voices. Begin with gentle tension, keep city excitement light, speak the hardship quietly, and give the father’s running and embrace genuine tenderness without melodrama. Leave natural short pauses at paragraph boundaries and a calm longer breath at the silent embrace. End with the father’s open invitation, warm and unhurried. Pronounce veranda as vuh-RAN-duh. Read only the exact text. Do not speak directions, speaker names, headings, or paragraph numbers. No additions, music, or effects.'
 S=dict(id='lost-son',title='The Lost Son',titleBn='হারানো ছেলে',kicker='A Bengali retelling of a father and his two sons',version=VERSION,audio='audio/lost-son-story.mp3',mediaAspect=9/16,tts=dict(model='Gemini 2.5 Pro Preview TTS',voice='Gacrux',direction=direction),cast=dict(N=dict(name='The storyteller',role='One narrator; all quoted dialogue performed subtly in the same voice',voice='Gacrux',accent='neutral General American English'),father=dict(name='The father',role='father of both sons',appearance='older Bengali man with white hair and beard, white panjabi and loose lower garment; cap worn in some scenes',voice='quoted by narrator'),younger=dict(name='The younger son',role='leaves, spends inheritance, returns',appearance='young Bengali man, short black hair, stubble; muted olive/brown clothes, patterned city shirts, then torn dirty clothes and restored white panjabi with dark waistcoat',voice='quoted by narrator'),older=dict(name='The older son',role='works in fields, refuses the feast',appearance='Bengali man with full black beard, white cap, brown panjabi, farm tool',voice='quoted by narrator'),boy=dict(name='The boy',role='brings news from courtyard; employment not inferred',appearance='boy in brown shirt and green shorts',voice='quoted by narrator')),frames=frames,portraitPages=frames,lines=lines,camera=[dict(p=p,py=P[p][n][1]+P[p][n][3]/2,pz=1,lx=.5,ly=.5,lz=1) for p,n,t in D],cameraBeats=beats,panels=[dict(id=f'{p}-{n}',page=p,rect=rect) for p,items in P.items() for n,rect in items.items()],glossary=gloss,culturalNotes=['Contemporary Bengali adaptation of Luke 15:11–32; original narration, not a Bible translation.','Fish-market hardship follows the supplied Bengali visuals, replacing the ancient pig-feeding setting.','Do not infer religious identity or employment status solely from clothing or age.','The father welcomes the younger son before he can explain; forgiveness is not purchased by repayment.','The father also goes outside to invite the older son. Do not invent his acceptance of the invitation.'],continuity=['Preserve original reunion page 6 pixel-for-pixel in the extraction source.','Keep father, both sons, clothing phases, village geography, and open ending consistent.','Keep original PDF and original image extractions unchanged; use sibling files for repairs.'],assets=dict(originalComic='assets/source/prodigal-son-original.pdf',timings='story-timings.js',repair='assets/source/page-3-cleaned.png'),attribution=dict(source='Luke 15:11–32',url='https://www.bible.com/bible/95/LUK.15.11-32.MBCL',narration='Original English retelling for this activity',visuals='AI-created by the user; targeted wordless-page cleanup in this conversion'))
+plan=json.loads((R/'production/art-v2/continuity-plan.json').read_text())
+for actor in ('father','younger','older'):
+ S['cast'][actor]['appearance']=plan['cast'][actor]
+S['continuity'] += [plan['house'],'Father approaches kneeling younger son from ahead, through the same narrow single gate.','Older brother remains outside at the open invitation; no substitution with younger son.']
+S['attribution']['visuals']='AI-created original by the user; reference-guided reconstruction with continuity and anatomy repairs.'
+S['artwork']=dict(version='art-v2',reference='assets/art-v2/cast-and-home-reference.png',review='production/art-v2/review.json',nativeResolution=True,delivery=[])
 for i in range(1,8):
- src=R/f'assets/source/page-{i}.jpg'
- repaired=R/'assets/source/page-3-cleaned.png'
- if i==3 and repaired.exists():src=repaired
- im=Image.open(src).convert('RGB');im.resize((2000,1125)).save(R/f'assets/page-{i}.webp',quality=91,method=6)
- if i==6:S['assets']['reunion_source_sha256']=hashlib.sha256(src.read_bytes()).hexdigest()
+ src=R/f'assets/art-v2/page-{i}.png';target=R/f'assets/art-v2/page-{i}.webp'
+ im=Image.open(src).convert('RGB');im.save(target,quality=95,method=6)
+ S['artwork']['delivery'].append(dict(page=i,source=str(src.relative_to(R)),source_sha256=hashlib.sha256(src.read_bytes()).hexdigest(),path=str(target.relative_to(R)),sha256=hashlib.sha256(target.read_bytes()).hexdigest(),width=im.width,height=im.height))
+S['assets']['reunion_source_sha256']=hashlib.sha256((R/'assets/source/page-6.jpg').read_bytes()).hexdigest()
 (R/'production/manifest.json').write_text(json.dumps(S,ensure_ascii=False,indent=2)+'\n')
 (R/'story.js').write_text('const LOST_SON_STORY = '+json.dumps(S,ensure_ascii=False,indent=2)+';\nif(typeof module!=="undefined") module.exports={LOST_SON_STORY};\n')
 script='\n'.join(l['text'] for l in lines)
@@ -171,6 +183,18 @@ if not (R/'production/recording-plan.json').exists():
  (R/'production/recording-plan.json').write_text(json.dumps(dict(model=S['tts']['model'],voice='Gacrux',direction=direction,exactScript='production/script.txt',sourceTake='audio/_originals/lost-son-narration.wav'),indent=2)+'\n')
 BASE=R.parent/'american-fisherman'
 player=(BASE/'app.js').read_text().replace('FISHERMAN_STORY','LOST_SON_STORY').replace('FISHERMAN_TIMINGS','LOST_SON_TIMINGS')
+# Reveal the current visual evidence without showing future adjacent panels.
+old_focus='    $$(".world-item", world).forEach((node, i) => node.classList.toggle("current", !overviewMode && i === itemIndex));'
+new_focus='''    const activeFocus = !overviewMode ? beat?.[layoutMode] : null;
+    $$(".world-item", world).forEach((node, i) => {
+      const current = !overviewMode && i === itemIndex;
+      node.classList.toggle("current", current);
+      node.style.clipPath = current && activeFocus
+        ? `inset(${activeFocus[1] * 100}% ${(1 - activeFocus[0] - activeFocus[2]) * 100}% ${(1 - activeFocus[1] - activeFocus[3]) * 100}% ${activeFocus[0] * 100}%)`
+        : "";
+    });'''
+assert old_focus in player, 'Camera template changed; review scene masking before rebuilding.'
+player=player.replace(old_focus,new_focus)
 (R/'app.js').write_text(player)
 html=(BASE/'index.html').read_text().replace('The American &amp; The Fisherman','The Lost Son').replace('20261009-fisherman-1',VERSION)
 a=html.index('<footer class="source-credit"');b=html.index('</footer>',a)+len('</footer>')
@@ -179,6 +203,7 @@ html=html[:a]+'<footer class="source-credit" aria-label="Source credit"><small>A
 classroom=(BASE/'classroom.html').read_text().replace('The American &amp; The Fisherman','The Lost Son').replace('FISHERMAN_STORY','LOST_SON_STORY').replace('20261009-fisherman-1',VERSION).replace('height: 1920','height: 1125').replace('width: 1080','width: 2000').replace("['The catch', 'Enough', 'A full day', 'The advice', 'The business plan', 'Twenty years', 'Retirement', 'Home']","['The request', 'Leaving home', 'Spending', 'Hardship', 'The journey back', 'The reunion', 'The invitation']")
 a=classroom.index('<footer class="classroom-credit"');b=classroom.index('</footer>',a)+len('</footer>')
 classroom=classroom[:a]+'<footer class="classroom-credit"><small>The Lost Son · Contemporary Bengali retelling of <a href="https://www.bible.com/bible/95/LUK.15.11-32.MBCL" target="_blank" rel="noopener">Luke 15:11–32</a>. Visuals created with AI.</small></footer>'+classroom[b:]
+classroom=classroom.replace('page, width: 2000, height: 1125','page')
 (R/'classroom.html').write_text(classroom)
 for name in ('styles.css','classroom/viewer.js','classroom/viewer.css'):
  (R/name).parent.mkdir(exist_ok=True);shutil.copyfile(BASE/name,R/name)
