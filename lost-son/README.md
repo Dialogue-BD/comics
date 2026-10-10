@@ -40,8 +40,10 @@ father’s open invitation; it does not invent the older son’s acceptance.
 
 The manifest has 63 caption lines, 84 camera cues, 37 English–Bangla phrase
 notes, stable cast metadata, and rectangles measured from the replacement sheets. One Gacrux narrator
-performs all narration and quoted dialogue. The player masks neighboring panels during focused listening, so later actions
-are not revealed early. Whole-comic view restores all seven intact sheets.
+performs all narration and quoted dialogue. One camera pans over the intact comic directly between targets. Regular
+scenes on a sheet share a stable zoom; authored detail cues can zoom closer.
+Caption space is reserved consistently, so line wrapping does not make the
+camera pull back and zoom in again. Whole-comic view remains available.
 
 ## Recording, assembly, and alignment
 

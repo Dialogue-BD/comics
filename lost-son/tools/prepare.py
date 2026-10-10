@@ -3,7 +3,7 @@ import json,re,shutil,hashlib
 from pathlib import Path
 from PIL import Image
 R=Path(__file__).resolve().parent.parent
-VERSION='20261010-lost-son-4-art-continuity'
+VERSION='20261010-lost-son-5-camera-pan'
 # Complete source-panel rectangles, measured in the original landscape sheets.
 P={}
 for page in (1,5):
@@ -183,18 +183,14 @@ if not (R/'production/recording-plan.json').exists():
  (R/'production/recording-plan.json').write_text(json.dumps(dict(model=S['tts']['model'],voice='Gacrux',direction=direction,exactScript='production/script.txt',sourceTake='audio/_originals/lost-son-narration.wav'),indent=2)+'\n')
 BASE=R.parent/'american-fisherman'
 player=(BASE/'app.js').read_text().replace('FISHERMAN_STORY','LOST_SON_STORY').replace('FISHERMAN_TIMINGS','LOST_SON_TIMINGS')
-# Reveal the current visual evidence without showing future adjacent panels.
-old_focus='    $$(".world-item", world).forEach((node, i) => node.classList.toggle("current", !overviewMode && i === itemIndex));'
-new_focus='''    const activeFocus = !overviewMode ? beat?.[layoutMode] : null;
-    $$(".world-item", world).forEach((node, i) => {
-      const current = !overviewMode && i === itemIndex;
-      node.classList.toggle("current", current);
-      node.style.clipPath = current && activeFocus
-        ? `inset(${activeFocus[1] * 100}% ${(1 - activeFocus[0] - activeFocus[2]) * 100}% ${(1 - activeFocus[1] - activeFocus[3]) * 100}% ${activeFocus[0] * 100}%)`
-        : "";
-    });'''
-assert old_focus in player, 'Camera template changed; review scene masking before rebuilding.'
-player=player.replace(old_focus,new_focus)
+# Keep the intact comic visible and move one camera directly between cues.
+a=player.index('  function cameraBeatAt(time) {');b=player.index('  $("#title")',a)
+player=player[:a]+'  function cameraBeatAt(time) {\n    return cameraBeats.filter(beat => beat.time - .3 <= time).at(-1) || cameraBeats[0] || null;\n  }\n\n'+player[b:]
+a=player.index('  function setCamera(');b=player.index('  function buildCurrentLine(',a)
+player=player[:a]+(R/'tools/camera-runtime.js').read_text()+'\n'+player[b:]
+player=player.replace('    fitStage();\n    const nextMode', '    fitStage();\n    reserveCaptionSpace();\n    const nextMode')
+player=player.replace('    buildCurrentLine(lineIndex);\n    updateFromAudio();', '    buildCurrentLine(lineIndex);\n    reserveCaptionSpace();\n    updateFromAudio();')
+player=player.replace('${layoutMode}:${lineIndex}:${beat?.word ?? "line"}', '${layoutMode}:${beat?.line ?? lineIndex}:${beat?.word ?? "line"}')
 (R/'app.js').write_text(player)
 html=(BASE/'index.html').read_text().replace('The American &amp; The Fisherman','The Lost Son').replace('20261009-fisherman-1',VERSION)
 a=html.index('<footer class="source-credit"');b=html.index('</footer>',a)+len('</footer>')
@@ -207,7 +203,8 @@ classroom=classroom.replace('page, width: 2000, height: 1125','page')
 (R/'classroom.html').write_text(classroom)
 for name in ('styles.css','classroom/viewer.js','classroom/viewer.css'):
  (R/name).parent.mkdir(exist_ok=True);shutil.copyfile(BASE/name,R/name)
-with (R/'styles.css').open('a') as css:css.write('\n.comic-world:has(.world-item.current) .world-item:not(.current){visibility:hidden}\n')
+with (R/'styles.css').open('a') as css:css.write('\n.caption-shell{display:flex;flex-direction:column;justify-content:flex-end;align-items:center}.current-line{max-width:100%}\n')
+with (R/'styles.css').open('a') as css:css.write('\n@media(orientation:landscape) and (max-height:620px){.current-line{font-size:clamp(.9rem,2.1vw,1.05rem);line-height:1.35}.listen-cue{display:none}}\n')
 with (R/'classroom/viewer.css').open('a') as css:css.write('\n.classroom-credit a{color:#efbc42;text-underline-offset:2px}\n')
 # Page-local data is self-contained; static runtime requires no build or API key.
 print(f'Locked {len(lines)} lines, {len(WORD.findall(script))} words, {len(beats)} cues, {len(gloss)} phrase notes.')

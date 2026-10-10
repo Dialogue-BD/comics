@@ -1,0 +1,2684 @@
+{
+  "version": "20261010-lost-son-5-camera-pan",
+  "portrait": [
+    {
+      "beat": "1: panel 1-1",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.845588,
+      "width": 390,
+      "v": 1
+    },
+    {
+      "beat": "The father and older son",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.3413,
+      "width": 390,
+      "v": 10
+    },
+    {
+      "beat": "The younger son",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 2.34421,
+      "width": 390,
+      "v": 17
+    },
+    {
+      "beat": "2: panel 1-2",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.845588,
+      "width": 390,
+      "v": 25
+    },
+    {
+      "beat": "3: panel 1-3",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.845588,
+      "width": 390,
+      "v": 42
+    },
+    {
+      "beat": "4: panel 1-4",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.845588,
+      "width": 390,
+      "v": 58
+    },
+    {
+      "beat": "The father’s response",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.845588,
+      "width": 390,
+      "v": 62
+    },
+    {
+      "beat": "5: panel 1-5",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.845588,
+      "width": 390,
+      "v": 79
+    },
+    {
+      "beat": "6: panel 1-6",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.845588,
+      "width": 390,
+      "v": 96
+    },
+    {
+      "beat": "7: panel 1-7",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.845588,
+      "width": 390,
+      "v": 109
+    },
+    {
+      "beat": "Money changes hands",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.845588,
+      "width": 390,
+      "v": 113
+    },
+    {
+      "beat": "8: panel 1-9",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.845588,
+      "width": 390,
+      "v": 120
+    },
+    {
+      "beat": "9: panel 2-1",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.11593,
+      "width": 390,
+      "v": 138
+    },
+    {
+      "beat": "10: panel 2-2",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.11593,
+      "width": 390,
+      "v": 147
+    },
+    {
+      "beat": "Leaving home",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.11593,
+      "width": 390,
+      "v": 154
+    },
+    {
+      "beat": "11: panel 2-3",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.11593,
+      "width": 390,
+      "v": 160
+    },
+    {
+      "beat": "The fields through the window",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.11593,
+      "width": 390,
+      "v": 165
+    },
+    {
+      "beat": "12: panel 2-5",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.11593,
+      "width": 390,
+      "v": 172
+    },
+    {
+      "beat": "Buying the train ticket",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.11593,
+      "width": 390,
+      "v": 176
+    },
+    {
+      "beat": "The long train journey",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.11593,
+      "width": 390,
+      "v": 180
+    },
+    {
+      "beat": "13: panel 2-8",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.11593,
+      "width": 390,
+      "v": 187
+    },
+    {
+      "beat": "City streets",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.11593,
+      "width": 390,
+      "v": 194
+    },
+    {
+      "beat": "14: panel 2-10",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.11593,
+      "width": 390,
+      "v": 199
+    },
+    {
+      "beat": "The bright city lights",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.11593,
+      "width": 390,
+      "v": 205
+    },
+    {
+      "beat": "15: panel 3-1",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.811587,
+      "width": 390,
+      "v": 217
+    },
+    {
+      "beat": "The expensive phone",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.811587,
+      "width": 390,
+      "v": 221
+    },
+    {
+      "beat": "Money spent",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.811587,
+      "width": 390,
+      "v": 228
+    },
+    {
+      "beat": "16: panel 3-4",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.811587,
+      "width": 390,
+      "v": 234
+    },
+    {
+      "beat": "17: panel 3-5",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.811587,
+      "width": 390,
+      "v": 250
+    },
+    {
+      "beat": "18: panel 3-6",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.811587,
+      "width": 390,
+      "v": 265
+    },
+    {
+      "beat": "19: panel 3-7",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.811587,
+      "width": 390,
+      "v": 281
+    },
+    {
+      "beat": "20: panel 3-8",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.811587,
+      "width": 390,
+      "v": 296
+    },
+    {
+      "beat": "The almost empty wallet",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.811587,
+      "width": 390,
+      "v": 307
+    },
+    {
+      "beat": "21: panel 3-9",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.811587,
+      "width": 390,
+      "v": 310
+    },
+    {
+      "beat": "22: panel 3-10",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.811587,
+      "width": 390,
+      "v": 328
+    },
+    {
+      "beat": "23: panel 4-1",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.13226,
+      "width": 390,
+      "v": 341
+    },
+    {
+      "beat": "24: panel 4-2",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.13226,
+      "width": 390,
+      "v": 361
+    },
+    {
+      "beat": "25: panel 4-3",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.13226,
+      "width": 390,
+      "v": 377
+    },
+    {
+      "beat": "26: panel 4-4",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.13226,
+      "width": 390,
+      "v": 392
+    },
+    {
+      "beat": "27: panel 4-5",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.13226,
+      "width": 390,
+      "v": 408
+    },
+    {
+      "beat": "28: panel 4-7",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.13226,
+      "width": 390,
+      "v": 421
+    },
+    {
+      "beat": "Cleaning fish for little money",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.13226,
+      "width": 390,
+      "v": 428
+    },
+    {
+      "beat": "29: panel 4-9",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.13226,
+      "width": 390,
+      "v": 439
+    },
+    {
+      "beat": "30: panel 4-10",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.13226,
+      "width": 390,
+      "v": 457
+    },
+    {
+      "beat": "His empty stomach",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.13226,
+      "width": 390,
+      "v": 467
+    },
+    {
+      "beat": "31: panel 4-12",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.13226,
+      "width": 390,
+      "v": 472
+    },
+    {
+      "beat": "32: panel 5-1",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.842519,
+      "width": 390,
+      "v": 484
+    },
+    {
+      "beat": "33: panel 5-2",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.842519,
+      "width": 390,
+      "v": 498
+    },
+    {
+      "beat": "34: panel 5-3",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.842519,
+      "width": 390,
+      "v": 515
+    },
+    {
+      "beat": "35: panel 5-4",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.842519,
+      "width": 390,
+      "v": 528
+    },
+    {
+      "beat": "36: panel 5-4",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.842519,
+      "width": 390,
+      "v": 543
+    },
+    {
+      "beat": "37: panel 5-5",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.842519,
+      "width": 390,
+      "v": 558
+    },
+    {
+      "beat": "38: panel 5-6",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.842519,
+      "width": 390,
+      "v": 572
+    },
+    {
+      "beat": "Walking barefoot",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.842519,
+      "width": 390,
+      "v": 577
+    },
+    {
+      "beat": "39: panel 5-8",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.842519,
+      "width": 390,
+      "v": 586
+    },
+    {
+      "beat": "The house comes into view",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.842519,
+      "width": 390,
+      "v": 594
+    },
+    {
+      "beat": "40: panel 6-1",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.830461,
+      "width": 390,
+      "v": 600
+    },
+    {
+      "beat": "41: panel 6-2",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.830461,
+      "width": 390,
+      "v": 610
+    },
+    {
+      "beat": "42: panel 6-3",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.830461,
+      "width": 390,
+      "v": 625
+    },
+    {
+      "beat": "43: panel 6-4",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.830461,
+      "width": 390,
+      "v": 644
+    },
+    {
+      "beat": "44: panel 6-5",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.830461,
+      "width": 390,
+      "v": 653
+    },
+    {
+      "beat": "45: panel 6-6",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.830461,
+      "width": 390,
+      "v": 661
+    },
+    {
+      "beat": "46: panel 6-7",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.830461,
+      "width": 390,
+      "v": 671
+    },
+    {
+      "beat": "47: panel 6-8",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.830461,
+      "width": 390,
+      "v": 688
+    },
+    {
+      "beat": "48: panel 6-9",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.830461,
+      "width": 390,
+      "v": 703
+    },
+    {
+      "beat": "49: panel 6-9",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.830461,
+      "width": 390,
+      "v": 722
+    },
+    {
+      "beat": "50: panel 7-1",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 750
+    },
+    {
+      "beat": "The best clothes",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 761
+    },
+    {
+      "beat": "51: panel 7-2",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 768
+    },
+    {
+      "beat": "52: panel 7-3",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 789
+    },
+    {
+      "beat": "53: panel 7-4",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 803
+    },
+    {
+      "beat": "Music in the courtyard",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 812
+    },
+    {
+      "beat": "54: panel 7-5",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 821
+    },
+    {
+      "beat": "55: panel 7-6",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 840
+    },
+    {
+      "beat": "56: panel 7-7",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 857
+    },
+    {
+      "beat": "News of the return",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 862
+    },
+    {
+      "beat": "57: panel 7-8",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 877
+    },
+    {
+      "beat": "58: panel 7-10",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 895
+    },
+    {
+      "beat": "The father comes outside too",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 904
+    },
+    {
+      "beat": "59: panel 7-11",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 911
+    },
+    {
+      "beat": "60: panel 7-11",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 928
+    },
+    {
+      "beat": "61: panel 7-12",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 950
+    },
+    {
+      "beat": "62: panel 7-12",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 970
+    },
+    {
+      "beat": "63: panel 7-12",
+      "captionHeight": 118,
+      "height": 844,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.79491,
+      "width": 390,
+      "v": 991
+    }
+  ],
+  "desktop": [
+    {
+      "beat": "1: panel 1-1",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.18451,
+      "width": 1280,
+      "v": 1
+    },
+    {
+      "beat": "The father and older son",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.68203,
+      "width": 1280,
+      "v": 10
+    },
+    {
+      "beat": "The younger son",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.71958,
+      "width": 1280,
+      "v": 17
+    },
+    {
+      "beat": "2: panel 1-2",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.18451,
+      "width": 1280,
+      "v": 25
+    },
+    {
+      "beat": "3: panel 1-3",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.18451,
+      "width": 1280,
+      "v": 42
+    },
+    {
+      "beat": "4: panel 1-4",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.18451,
+      "width": 1280,
+      "v": 58
+    },
+    {
+      "beat": "The father’s response",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.18451,
+      "width": 1280,
+      "v": 62
+    },
+    {
+      "beat": "5: panel 1-5",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.18451,
+      "width": 1280,
+      "v": 79
+    },
+    {
+      "beat": "6: panel 1-6",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.18451,
+      "width": 1280,
+      "v": 96
+    },
+    {
+      "beat": "7: panel 1-7",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.18451,
+      "width": 1280,
+      "v": 109
+    },
+    {
+      "beat": "Money changes hands",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.18451,
+      "width": 1280,
+      "v": 113
+    },
+    {
+      "beat": "8: panel 1-9",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 1.18451,
+      "width": 1280,
+      "v": 120
+    },
+    {
+      "beat": "9: panel 2-1",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.18065,
+      "width": 1280,
+      "v": 138
+    },
+    {
+      "beat": "10: panel 2-2",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.18065,
+      "width": 1280,
+      "v": 147
+    },
+    {
+      "beat": "Leaving home",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.18065,
+      "width": 1280,
+      "v": 154
+    },
+    {
+      "beat": "11: panel 2-3",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.18065,
+      "width": 1280,
+      "v": 160
+    },
+    {
+      "beat": "The fields through the window",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.18065,
+      "width": 1280,
+      "v": 165
+    },
+    {
+      "beat": "12: panel 2-5",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.18065,
+      "width": 1280,
+      "v": 172
+    },
+    {
+      "beat": "Buying the train ticket",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.18065,
+      "width": 1280,
+      "v": 176
+    },
+    {
+      "beat": "The long train journey",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.18065,
+      "width": 1280,
+      "v": 180
+    },
+    {
+      "beat": "13: panel 2-8",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.18065,
+      "width": 1280,
+      "v": 187
+    },
+    {
+      "beat": "City streets",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.18065,
+      "width": 1280,
+      "v": 194
+    },
+    {
+      "beat": "14: panel 2-10",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.18065,
+      "width": 1280,
+      "v": 199
+    },
+    {
+      "beat": "The bright city lights",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 1.18065,
+      "width": 1280,
+      "v": 205
+    },
+    {
+      "beat": "15: panel 3-1",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 1.17557,
+      "width": 1280,
+      "v": 217
+    },
+    {
+      "beat": "The expensive phone",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 1.17557,
+      "width": 1280,
+      "v": 221
+    },
+    {
+      "beat": "Money spent",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 1.17557,
+      "width": 1280,
+      "v": 228
+    },
+    {
+      "beat": "16: panel 3-4",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 1.17557,
+      "width": 1280,
+      "v": 234
+    },
+    {
+      "beat": "17: panel 3-5",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 1.17557,
+      "width": 1280,
+      "v": 250
+    },
+    {
+      "beat": "18: panel 3-6",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 1.17557,
+      "width": 1280,
+      "v": 265
+    },
+    {
+      "beat": "19: panel 3-7",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 1.17557,
+      "width": 1280,
+      "v": 281
+    },
+    {
+      "beat": "20: panel 3-8",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 1.17557,
+      "width": 1280,
+      "v": 296
+    },
+    {
+      "beat": "The almost empty wallet",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 1.17557,
+      "width": 1280,
+      "v": 307
+    },
+    {
+      "beat": "21: panel 3-9",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 1.17557,
+      "width": 1280,
+      "v": 310
+    },
+    {
+      "beat": "22: panel 3-10",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 1.17557,
+      "width": 1280,
+      "v": 328
+    },
+    {
+      "beat": "23: panel 4-1",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.1923,
+      "width": 1280,
+      "v": 341
+    },
+    {
+      "beat": "24: panel 4-2",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.1923,
+      "width": 1280,
+      "v": 361
+    },
+    {
+      "beat": "25: panel 4-3",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.1923,
+      "width": 1280,
+      "v": 377
+    },
+    {
+      "beat": "26: panel 4-4",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.1923,
+      "width": 1280,
+      "v": 392
+    },
+    {
+      "beat": "27: panel 4-5",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.1923,
+      "width": 1280,
+      "v": 408
+    },
+    {
+      "beat": "28: panel 4-7",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.1923,
+      "width": 1280,
+      "v": 421
+    },
+    {
+      "beat": "Cleaning fish for little money",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.1923,
+      "width": 1280,
+      "v": 428
+    },
+    {
+      "beat": "29: panel 4-9",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.1923,
+      "width": 1280,
+      "v": 439
+    },
+    {
+      "beat": "30: panel 4-10",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.1923,
+      "width": 1280,
+      "v": 457
+    },
+    {
+      "beat": "His empty stomach",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.1923,
+      "width": 1280,
+      "v": 467
+    },
+    {
+      "beat": "31: panel 4-12",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 1.1923,
+      "width": 1280,
+      "v": 472
+    },
+    {
+      "beat": "32: panel 5-1",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 1.17939,
+      "width": 1280,
+      "v": 484
+    },
+    {
+      "beat": "33: panel 5-2",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 1.17939,
+      "width": 1280,
+      "v": 498
+    },
+    {
+      "beat": "34: panel 5-3",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 1.17939,
+      "width": 1280,
+      "v": 515
+    },
+    {
+      "beat": "35: panel 5-4",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 1.17939,
+      "width": 1280,
+      "v": 528
+    },
+    {
+      "beat": "36: panel 5-4",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 1.17939,
+      "width": 1280,
+      "v": 543
+    },
+    {
+      "beat": "37: panel 5-5",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 1.17939,
+      "width": 1280,
+      "v": 558
+    },
+    {
+      "beat": "38: panel 5-6",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 1.17939,
+      "width": 1280,
+      "v": 572
+    },
+    {
+      "beat": "Walking barefoot",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 1.17939,
+      "width": 1280,
+      "v": 577
+    },
+    {
+      "beat": "39: panel 5-8",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 1.17939,
+      "width": 1280,
+      "v": 586
+    },
+    {
+      "beat": "The house comes into view",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 1.17939,
+      "width": 1280,
+      "v": 594
+    },
+    {
+      "beat": "40: panel 6-1",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 1.11526,
+      "width": 1280,
+      "v": 600
+    },
+    {
+      "beat": "41: panel 6-2",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 1.11526,
+      "width": 1280,
+      "v": 610
+    },
+    {
+      "beat": "42: panel 6-3",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 1.11526,
+      "width": 1280,
+      "v": 625
+    },
+    {
+      "beat": "43: panel 6-4",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 1.11526,
+      "width": 1280,
+      "v": 644
+    },
+    {
+      "beat": "44: panel 6-5",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 1.11526,
+      "width": 1280,
+      "v": 653
+    },
+    {
+      "beat": "45: panel 6-6",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 1.11526,
+      "width": 1280,
+      "v": 661
+    },
+    {
+      "beat": "46: panel 6-7",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 1.11526,
+      "width": 1280,
+      "v": 671
+    },
+    {
+      "beat": "47: panel 6-8",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 1.11526,
+      "width": 1280,
+      "v": 688
+    },
+    {
+      "beat": "48: panel 6-9",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 1.11526,
+      "width": 1280,
+      "v": 703
+    },
+    {
+      "beat": "49: panel 6-9",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 1.11526,
+      "width": 1280,
+      "v": 722
+    },
+    {
+      "beat": "50: panel 7-1",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 750
+    },
+    {
+      "beat": "The best clothes",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 761
+    },
+    {
+      "beat": "51: panel 7-2",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 768
+    },
+    {
+      "beat": "52: panel 7-3",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 789
+    },
+    {
+      "beat": "53: panel 7-4",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 803
+    },
+    {
+      "beat": "Music in the courtyard",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 812
+    },
+    {
+      "beat": "54: panel 7-5",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 821
+    },
+    {
+      "beat": "55: panel 7-6",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 840
+    },
+    {
+      "beat": "56: panel 7-7",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 857
+    },
+    {
+      "beat": "News of the return",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 862
+    },
+    {
+      "beat": "57: panel 7-8",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 877
+    },
+    {
+      "beat": "58: panel 7-10",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 895
+    },
+    {
+      "beat": "The father comes outside too",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 904
+    },
+    {
+      "beat": "59: panel 7-11",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 911
+    },
+    {
+      "beat": "60: panel 7-11",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 928
+    },
+    {
+      "beat": "61: panel 7-12",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 950
+    },
+    {
+      "beat": "62: panel 7-12",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 970
+    },
+    {
+      "beat": "63: panel 7-12",
+      "captionHeight": 138,
+      "height": 800,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 1.15802,
+      "width": 1280,
+      "v": 991
+    }
+  ],
+  "landscape": [
+    {
+      "beat": "1: panel 1-1",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.627688,
+      "width": 844,
+      "v": 1
+    },
+    {
+      "beat": "The father and older son",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.891333,
+      "width": 844,
+      "v": 10
+    },
+    {
+      "beat": "The younger son",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.911229,
+      "width": 844,
+      "v": 17
+    },
+    {
+      "beat": "2: panel 1-2",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.627688,
+      "width": 844,
+      "v": 25
+    },
+    {
+      "beat": "3: panel 1-3",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.627688,
+      "width": 844,
+      "v": 42
+    },
+    {
+      "beat": "4: panel 1-4",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.627688,
+      "width": 844,
+      "v": 58
+    },
+    {
+      "beat": "The father’s response",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.627688,
+      "width": 844,
+      "v": 62
+    },
+    {
+      "beat": "5: panel 1-5",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.627688,
+      "width": 844,
+      "v": 79
+    },
+    {
+      "beat": "6: panel 1-6",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.627688,
+      "width": 844,
+      "v": 96
+    },
+    {
+      "beat": "7: panel 1-7",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.627688,
+      "width": 844,
+      "v": 109
+    },
+    {
+      "beat": "Money changes hands",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.627688,
+      "width": 844,
+      "v": 113
+    },
+    {
+      "beat": "8: panel 1-9",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-1.webp",
+      "pass": true,
+      "scale": 0.627688,
+      "width": 844,
+      "v": 120
+    },
+    {
+      "beat": "9: panel 2-1",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 0.625643,
+      "width": 844,
+      "v": 138
+    },
+    {
+      "beat": "10: panel 2-2",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 0.625643,
+      "width": 844,
+      "v": 147
+    },
+    {
+      "beat": "Leaving home",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 0.625643,
+      "width": 844,
+      "v": 154
+    },
+    {
+      "beat": "11: panel 2-3",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 0.625643,
+      "width": 844,
+      "v": 160
+    },
+    {
+      "beat": "The fields through the window",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 0.625643,
+      "width": 844,
+      "v": 165
+    },
+    {
+      "beat": "12: panel 2-5",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 0.625643,
+      "width": 844,
+      "v": 172
+    },
+    {
+      "beat": "Buying the train ticket",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 0.625643,
+      "width": 844,
+      "v": 176
+    },
+    {
+      "beat": "The long train journey",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 0.625643,
+      "width": 844,
+      "v": 180
+    },
+    {
+      "beat": "13: panel 2-8",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 0.625643,
+      "width": 844,
+      "v": 187
+    },
+    {
+      "beat": "City streets",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 0.625643,
+      "width": 844,
+      "v": 194
+    },
+    {
+      "beat": "14: panel 2-10",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 0.625643,
+      "width": 844,
+      "v": 199
+    },
+    {
+      "beat": "The bright city lights",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-2.webp",
+      "pass": true,
+      "scale": 0.625643,
+      "width": 844,
+      "v": 205
+    },
+    {
+      "beat": "15: panel 3-1",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.622949,
+      "width": 844,
+      "v": 217
+    },
+    {
+      "beat": "The expensive phone",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.622949,
+      "width": 844,
+      "v": 221
+    },
+    {
+      "beat": "Money spent",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.622949,
+      "width": 844,
+      "v": 228
+    },
+    {
+      "beat": "16: panel 3-4",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.622949,
+      "width": 844,
+      "v": 234
+    },
+    {
+      "beat": "17: panel 3-5",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.622949,
+      "width": 844,
+      "v": 250
+    },
+    {
+      "beat": "18: panel 3-6",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.622949,
+      "width": 844,
+      "v": 265
+    },
+    {
+      "beat": "19: panel 3-7",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.622949,
+      "width": 844,
+      "v": 281
+    },
+    {
+      "beat": "20: panel 3-8",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.622949,
+      "width": 844,
+      "v": 296
+    },
+    {
+      "beat": "The almost empty wallet",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.622949,
+      "width": 844,
+      "v": 307
+    },
+    {
+      "beat": "21: panel 3-9",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.622949,
+      "width": 844,
+      "v": 310
+    },
+    {
+      "beat": "22: panel 3-10",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-3.webp",
+      "pass": true,
+      "scale": 0.622949,
+      "width": 844,
+      "v": 328
+    },
+    {
+      "beat": "23: panel 4-1",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 0.631817,
+      "width": 844,
+      "v": 341
+    },
+    {
+      "beat": "24: panel 4-2",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 0.631817,
+      "width": 844,
+      "v": 361
+    },
+    {
+      "beat": "25: panel 4-3",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 0.631817,
+      "width": 844,
+      "v": 377
+    },
+    {
+      "beat": "26: panel 4-4",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 0.631817,
+      "width": 844,
+      "v": 392
+    },
+    {
+      "beat": "27: panel 4-5",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 0.631817,
+      "width": 844,
+      "v": 408
+    },
+    {
+      "beat": "28: panel 4-7",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 0.631817,
+      "width": 844,
+      "v": 421
+    },
+    {
+      "beat": "Cleaning fish for little money",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 0.631817,
+      "width": 844,
+      "v": 428
+    },
+    {
+      "beat": "29: panel 4-9",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 0.631817,
+      "width": 844,
+      "v": 439
+    },
+    {
+      "beat": "30: panel 4-10",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 0.631817,
+      "width": 844,
+      "v": 457
+    },
+    {
+      "beat": "His empty stomach",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 0.631817,
+      "width": 844,
+      "v": 467
+    },
+    {
+      "beat": "31: panel 4-12",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-4.webp",
+      "pass": true,
+      "scale": 0.631817,
+      "width": 844,
+      "v": 472
+    },
+    {
+      "beat": "32: panel 5-1",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.624978,
+      "width": 844,
+      "v": 484
+    },
+    {
+      "beat": "33: panel 5-2",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.624978,
+      "width": 844,
+      "v": 498
+    },
+    {
+      "beat": "34: panel 5-3",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.624978,
+      "width": 844,
+      "v": 515
+    },
+    {
+      "beat": "35: panel 5-4",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.624978,
+      "width": 844,
+      "v": 528
+    },
+    {
+      "beat": "36: panel 5-4",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.624978,
+      "width": 844,
+      "v": 543
+    },
+    {
+      "beat": "37: panel 5-5",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.624978,
+      "width": 844,
+      "v": 558
+    },
+    {
+      "beat": "38: panel 5-6",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.624978,
+      "width": 844,
+      "v": 572
+    },
+    {
+      "beat": "Walking barefoot",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.624978,
+      "width": 844,
+      "v": 577
+    },
+    {
+      "beat": "39: panel 5-8",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.624978,
+      "width": 844,
+      "v": 586
+    },
+    {
+      "beat": "The house comes into view",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-5.webp",
+      "pass": true,
+      "scale": 0.624978,
+      "width": 844,
+      "v": 594
+    },
+    {
+      "beat": "40: panel 6-1",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.590992,
+      "width": 844,
+      "v": 600
+    },
+    {
+      "beat": "41: panel 6-2",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.590992,
+      "width": 844,
+      "v": 610
+    },
+    {
+      "beat": "42: panel 6-3",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.590992,
+      "width": 844,
+      "v": 625
+    },
+    {
+      "beat": "43: panel 6-4",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.590992,
+      "width": 844,
+      "v": 644
+    },
+    {
+      "beat": "44: panel 6-5",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.590992,
+      "width": 844,
+      "v": 653
+    },
+    {
+      "beat": "45: panel 6-6",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.590992,
+      "width": 844,
+      "v": 661
+    },
+    {
+      "beat": "46: panel 6-7",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.590992,
+      "width": 844,
+      "v": 671
+    },
+    {
+      "beat": "47: panel 6-8",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.590992,
+      "width": 844,
+      "v": 688
+    },
+    {
+      "beat": "48: panel 6-9",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.590992,
+      "width": 844,
+      "v": 703
+    },
+    {
+      "beat": "49: panel 6-9",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-6.webp",
+      "pass": true,
+      "scale": 0.590992,
+      "width": 844,
+      "v": 722
+    },
+    {
+      "beat": "50: panel 7-1",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 750
+    },
+    {
+      "beat": "The best clothes",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 761
+    },
+    {
+      "beat": "51: panel 7-2",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 768
+    },
+    {
+      "beat": "52: panel 7-3",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 789
+    },
+    {
+      "beat": "53: panel 7-4",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 803
+    },
+    {
+      "beat": "Music in the courtyard",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 812
+    },
+    {
+      "beat": "54: panel 7-5",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 821
+    },
+    {
+      "beat": "55: panel 7-6",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 840
+    },
+    {
+      "beat": "56: panel 7-7",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 857
+    },
+    {
+      "beat": "News of the return",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 862
+    },
+    {
+      "beat": "57: panel 7-8",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 877
+    },
+    {
+      "beat": "58: panel 7-10",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 895
+    },
+    {
+      "beat": "The father comes outside too",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 904
+    },
+    {
+      "beat": "59: panel 7-11",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 911
+    },
+    {
+      "beat": "60: panel 7-11",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 928
+    },
+    {
+      "beat": "61: panel 7-12",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 950
+    },
+    {
+      "beat": "62: panel 7-12",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 970
+    },
+    {
+      "beat": "63: panel 7-12",
+      "captionHeight": 82,
+      "height": 390,
+      "page": "assets/art-v2/page-7.webp",
+      "pass": true,
+      "scale": 0.61365,
+      "width": 844,
+      "v": 991
+    }
+  ],
+  "stableZoom": {
+    "portrait": [
+      {
+        "page": 1,
+        "cues": 10,
+        "min": 0.845588,
+        "max": 0.845588,
+        "stable": true
+      },
+      {
+        "page": 2,
+        "cues": 12,
+        "min": 1.11593,
+        "max": 1.11593,
+        "stable": true
+      },
+      {
+        "page": 3,
+        "cues": 11,
+        "min": 0.811587,
+        "max": 0.811587,
+        "stable": true
+      },
+      {
+        "page": 4,
+        "cues": 11,
+        "min": 1.13226,
+        "max": 1.13226,
+        "stable": true
+      },
+      {
+        "page": 5,
+        "cues": 10,
+        "min": 0.842519,
+        "max": 0.842519,
+        "stable": true
+      },
+      {
+        "page": 6,
+        "cues": 10,
+        "min": 0.830461,
+        "max": 0.830461,
+        "stable": true
+      },
+      {
+        "page": 7,
+        "cues": 18,
+        "min": 0.79491,
+        "max": 0.79491,
+        "stable": true
+      }
+    ],
+    "desktop": [
+      {
+        "page": 1,
+        "cues": 10,
+        "min": 1.18451,
+        "max": 1.18451,
+        "stable": true
+      },
+      {
+        "page": 2,
+        "cues": 12,
+        "min": 1.18065,
+        "max": 1.18065,
+        "stable": true
+      },
+      {
+        "page": 3,
+        "cues": 11,
+        "min": 1.17557,
+        "max": 1.17557,
+        "stable": true
+      },
+      {
+        "page": 4,
+        "cues": 11,
+        "min": 1.1923,
+        "max": 1.1923,
+        "stable": true
+      },
+      {
+        "page": 5,
+        "cues": 10,
+        "min": 1.17939,
+        "max": 1.17939,
+        "stable": true
+      },
+      {
+        "page": 6,
+        "cues": 10,
+        "min": 1.11526,
+        "max": 1.11526,
+        "stable": true
+      },
+      {
+        "page": 7,
+        "cues": 18,
+        "min": 1.15802,
+        "max": 1.15802,
+        "stable": true
+      }
+    ],
+    "landscape": [
+      {
+        "page": 1,
+        "cues": 10,
+        "min": 0.627688,
+        "max": 0.627688,
+        "stable": true
+      },
+      {
+        "page": 2,
+        "cues": 12,
+        "min": 0.625643,
+        "max": 0.625643,
+        "stable": true
+      },
+      {
+        "page": 3,
+        "cues": 11,
+        "min": 0.622949,
+        "max": 0.622949,
+        "stable": true
+      },
+      {
+        "page": 4,
+        "cues": 11,
+        "min": 0.631817,
+        "max": 0.631817,
+        "stable": true
+      },
+      {
+        "page": 5,
+        "cues": 10,
+        "min": 0.624978,
+        "max": 0.624978,
+        "stable": true
+      },
+      {
+        "page": 6,
+        "cues": 10,
+        "min": 0.590992,
+        "max": 0.590992,
+        "stable": true
+      },
+      {
+        "page": 7,
+        "cues": 18,
+        "min": 0.61365,
+        "max": 0.61365,
+        "stable": true
+      }
+    ]
+  }
+}

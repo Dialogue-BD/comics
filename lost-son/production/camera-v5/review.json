@@ -1,0 +1,15 @@
+{
+  "request": "Pan and zoom over the intact comic, without zooming out and in at every scene.",
+  "changes": [
+    "Removed panel masks and hidden-sheet styling.",
+    "Reserved caption space to prevent caption length changing zoom.",
+    "Used stable zoom between ordinary scenes on each sheet; authored detail cues can zoom closer.",
+    "Kept the last active camera cue through pauses and moved directly to the next target."
+  ],
+  "checks": [
+    "252 framing checks pass.",
+    "All ordinary-cue zoom ranges are constant within each sheet in all three tested viewports.",
+    "Actual playback pan from panels 1-2 to 1-3: 180 observed samples, scale constant at 1.87294, horizontal translation changes from -412.702 to -1068.95."
+  ],
+  "artworkAndAudio": "Unchanged from artwork release 225ae28."
+}

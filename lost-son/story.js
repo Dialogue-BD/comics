@@ -3,7 +3,7 @@ const LOST_SON_STORY = {
   "title": "The Lost Son",
   "titleBn": "হারানো ছেলে",
   "kicker": "A Bengali retelling of a father and his two sons",
-  "version": "20261010-lost-son-4-art-continuity",
+  "version": "20261010-lost-son-5-camera-pan",
   "audio": "audio/lost-son-story.mp3",
   "mediaAspect": 0.5625,
   "tts": {
