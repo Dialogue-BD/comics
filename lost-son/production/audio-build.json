@@ -1,0 +1,98 @@
+{
+  "delivery": "audio/lost-son-story.mp3",
+  "delivery_sha256": "fec9d83ce63e4d5ca70a2f59252382a4a7e1138600a8f8b7e6ec9e9d3530ca45",
+  "source": "audio/_originals/lost-son-narration.wav",
+  "source_sha256": "b753f69ddb7abc5b780cd24a84f2ac24993cd7faa456fbb6fffdc41106c28f6d",
+  "duration": 416.106708,
+  "voice": "Gacrux",
+  "model": "Gemini 2.5 Pro Preview TTS",
+  "route": "signed-in Google AI Studio browser; no API key",
+  "normalization": "loudnorm=I=-16:TP=-1.5:LRA=11",
+  "master": "alimiter=limit=0.841395:level=false",
+  "ambience": "none",
+  "takePlacements": [
+    {
+      "source": "audio/_originals/lost-son-narration.wav",
+      "start": 0,
+      "end": 32.230000000000004,
+      "at": 0,
+      "sha256": "b753f69ddb7abc5b780cd24a84f2ac24993cd7faa456fbb6fffdc41106c28f6d"
+    },
+    {
+      "source": "audio/_originals/lost-son-father-reaction.wav",
+      "start": 0,
+      "end": 6.890958,
+      "at": 32.230000000000004,
+      "sha256": "953f3b92b4688a864b15659685513982363aeaf40ef88190bfb76df9414ffc91"
+    },
+    {
+      "source": "audio/_originals/lost-son-narration.wav",
+      "start": 38.28,
+      "end": 200.36,
+      "at": 39.120958,
+      "sha256": "b753f69ddb7abc5b780cd24a84f2ac24993cd7faa456fbb6fffdc41106c28f6d"
+    },
+    {
+      "source": "audio/_originals/lost-son-return.wav",
+      "start": 0,
+      "end": 48.010958,
+      "at": 201.200958,
+      "sha256": "684a81f6c96358295f8c9a4a7b8bddd9dfaddb0e9ffeb543e0f2876d3699a5c7"
+    },
+    {
+      "source": "audio/_originals/lost-son-running.wav",
+      "start": 0,
+      "end": 29.570958,
+      "at": 249.21191600000003,
+      "sha256": "a72694395eed7bdfab0854964cdd3436c3017b8acf94f2feac07314dcc696c92"
+    },
+    {
+      "source": "audio/_originals/lost-son-embrace.wav",
+      "start": 0,
+      "end": 49.010958,
+      "at": 278.78287400000005,
+      "sha256": "b71700b273d4e4491381b6905cfeaf4a9109ba44cf8153a04cb5e5bb48d185fa"
+    },
+    {
+      "source": "audio/_originals/lost-son-celebration.wav",
+      "start": 0,
+      "end": 43.970958,
+      "at": 327.79383200000007,
+      "sha256": "3cfd6251db58bdbe11e4637bc0311a8c2bb04579f10e40b7f96af96ac02d07e8"
+    },
+    {
+      "source": "audio/_originals/lost-son-older-brother.wav",
+      "start": 0,
+      "end": 22.890958,
+      "at": 371.76479000000006,
+      "sha256": "44c2f8809f41dc9a4f54fa53560d259b07057405f9c8dd99496ca185e823b032"
+    },
+    {
+      "source": "audio/_originals/lost-son-closing.wav",
+      "start": 0,
+      "end": 21.450958,
+      "at": 394.6557480000001,
+      "sha256": "2ebe7bc060c5784cc4a219d15f3df79aa6b3587d2d1132df72951c2b07c19d49"
+    }
+  ],
+  "pauseEvidence": {
+    "first": [
+      31.68,
+      32.78
+    ],
+    "afterReaction": [
+      37.88,
+      38.68
+    ],
+    "beforeReturn": [
+      199.88,
+      200.84
+    ]
+  },
+  "repair": {
+    "method": "replace long-take lines 31\u201359 with five short takes; retain fresh closing",
+    "direction": "production/short-take-direction.txt",
+    "reason": "listener still found grating speech after measured spectral cleanup",
+    "spectral_filtering": "none on replacement takes"
+  }
+}

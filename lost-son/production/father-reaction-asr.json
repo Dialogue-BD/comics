@@ -1,0 +1,513 @@
+{
+  "text": " His father lowered his eyes. It hurt to let him go, but he didn't force his son to stay.",
+  "segments": [
+    {
+      "start": 0.26,
+      "end": 1.92,
+      "text": " His father lowered his eyes.",
+      "seek": 0.0,
+      "tokens": [
+        2812,
+        3086,
+        28466,
+        702,
+        2575,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.17711190076974723,
+      "compression_ratio": 1.0731707317073171,
+      "no_speech_prob": 0.01303846761584282,
+      "words": [
+        {
+          "word": " His",
+          "start": 0.26,
+          "end": 0.4,
+          "probability": 0.04176241531968117,
+          "tokens": [
+            2812
+          ]
+        },
+        {
+          "word": " father",
+          "start": 0.4,
+          "end": 0.82,
+          "probability": 0.7461421489715576,
+          "tokens": [
+            3086
+          ]
+        },
+        {
+          "word": " lowered",
+          "start": 0.82,
+          "end": 1.22,
+          "probability": 0.9979084730148315,
+          "tokens": [
+            28466
+          ]
+        },
+        {
+          "word": " his",
+          "start": 1.22,
+          "end": 1.54,
+          "probability": 0.8818484544754028,
+          "tokens": [
+            702
+          ]
+        },
+        {
+          "word": " eyes.",
+          "start": 1.54,
+          "end": 1.92,
+          "probability": 0.9980104565620422,
+          "tokens": [
+            2575,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 2.5,
+      "end": 3.86,
+      "text": " It hurt to let him go,",
+      "seek": 0.0,
+      "tokens": [
+        467,
+        4607,
+        281,
+        718,
+        796,
+        352,
+        11
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.17711190076974723,
+      "compression_ratio": 1.0731707317073171,
+      "no_speech_prob": 0.01303846761584282,
+      "words": [
+        {
+          "word": " It",
+          "start": 2.5,
+          "end": 2.6,
+          "probability": 0.981631338596344,
+          "tokens": [
+            467
+          ]
+        },
+        {
+          "word": " hurt",
+          "start": 2.6,
+          "end": 2.88,
+          "probability": 0.993165910243988,
+          "tokens": [
+            4607
+          ]
+        },
+        {
+          "word": " to",
+          "start": 2.88,
+          "end": 3.16,
+          "probability": 0.9962598085403442,
+          "tokens": [
+            281
+          ]
+        },
+        {
+          "word": " let",
+          "start": 3.16,
+          "end": 3.36,
+          "probability": 0.9972187280654907,
+          "tokens": [
+            718
+          ]
+        },
+        {
+          "word": " him",
+          "start": 3.36,
+          "end": 3.5,
+          "probability": 0.9307381510734558,
+          "tokens": [
+            796
+          ]
+        },
+        {
+          "word": " go,",
+          "start": 3.5,
+          "end": 3.86,
+          "probability": 0.9988295435905457,
+          "tokens": [
+            352,
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "start": 4.42,
+      "end": 6.48,
+      "text": " but he didn't force his son to stay.",
+      "seek": 0.0,
+      "tokens": [
+        457,
+        415,
+        994,
+        380,
+        3464,
+        702,
+        1872,
+        281,
+        1754,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.17711190076974723,
+      "compression_ratio": 1.0731707317073171,
+      "no_speech_prob": 0.01303846761584282,
+      "words": [
+        {
+          "word": " but",
+          "start": 4.42,
+          "end": 4.54,
+          "probability": 0.9662403464317322,
+          "tokens": [
+            457
+          ]
+        },
+        {
+          "word": " he",
+          "start": 4.54,
+          "end": 4.7,
+          "probability": 0.9149841070175171,
+          "tokens": [
+            415
+          ]
+        },
+        {
+          "word": " didn't",
+          "start": 4.7,
+          "end": 5.2,
+          "probability": 0.9874997735023499,
+          "tokens": [
+            994,
+            380
+          ]
+        },
+        {
+          "word": " force",
+          "start": 5.28,
+          "end": 5.44,
+          "probability": 0.997683048248291,
+          "tokens": [
+            3464
+          ]
+        },
+        {
+          "word": " his",
+          "start": 5.44,
+          "end": 5.72,
+          "probability": 0.9843809604644775,
+          "tokens": [
+            702
+          ]
+        },
+        {
+          "word": " son",
+          "start": 5.72,
+          "end": 6.0,
+          "probability": 0.998702883720398,
+          "tokens": [
+            1872
+          ]
+        },
+        {
+          "word": " to",
+          "start": 6.0,
+          "end": 6.18,
+          "probability": 0.9994540810585022,
+          "tokens": [
+            281
+          ]
+        },
+        {
+          "word": " stay.",
+          "start": 6.18,
+          "end": 6.48,
+          "probability": 0.9993470311164856,
+          "tokens": [
+            1754,
+            13
+          ]
+        }
+      ]
+    }
+  ],
+  "language": "en",
+  "ori_dict": {
+    "text": " His father lowered his eyes. It hurt to let him go, but he didn't force his son to stay.",
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.26,
+        "end": 6.48,
+        "text": " His father lowered his eyes. It hurt to let him go, but he didn't force his son to stay.",
+        "seek": 0.0,
+        "tokens": [
+          2812,
+          3086,
+          28466,
+          702,
+          2575,
+          13,
+          467,
+          4607,
+          281,
+          718,
+          796,
+          352,
+          11,
+          457,
+          415,
+          994,
+          380,
+          3464,
+          702,
+          1872,
+          281,
+          1754,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.17711190076974723,
+        "compression_ratio": 1.0731707317073171,
+        "no_speech_prob": 0.01303846761584282,
+        "words": [
+          {
+            "word": " His",
+            "start": 0.26,
+            "end": 0.4,
+            "probability": 0.04176241531968117,
+            "tokens": [
+              2812
+            ]
+          },
+          {
+            "word": " father",
+            "start": 0.4,
+            "end": 0.82,
+            "probability": 0.7461421489715576,
+            "tokens": [
+              3086
+            ]
+          },
+          {
+            "word": " lowered",
+            "start": 0.82,
+            "end": 1.22,
+            "probability": 0.9979084730148315,
+            "tokens": [
+              28466
+            ]
+          },
+          {
+            "word": " his",
+            "start": 1.22,
+            "end": 1.54,
+            "probability": 0.8818484544754028,
+            "tokens": [
+              702
+            ]
+          },
+          {
+            "word": " eyes.",
+            "start": 1.54,
+            "end": 1.92,
+            "probability": 0.9980104565620422,
+            "tokens": [
+              2575,
+              13
+            ]
+          },
+          {
+            "word": " It",
+            "start": 2.5,
+            "end": 2.6,
+            "probability": 0.981631338596344,
+            "tokens": [
+              467
+            ]
+          },
+          {
+            "word": " hurt",
+            "start": 2.6,
+            "end": 2.88,
+            "probability": 0.993165910243988,
+            "tokens": [
+              4607
+            ]
+          },
+          {
+            "word": " to",
+            "start": 2.88,
+            "end": 3.16,
+            "probability": 0.9962598085403442,
+            "tokens": [
+              281
+            ]
+          },
+          {
+            "word": " let",
+            "start": 3.16,
+            "end": 3.36,
+            "probability": 0.9972187280654907,
+            "tokens": [
+              718
+            ]
+          },
+          {
+            "word": " him",
+            "start": 3.36,
+            "end": 3.5,
+            "probability": 0.9307381510734558,
+            "tokens": [
+              796
+            ]
+          },
+          {
+            "word": " go,",
+            "start": 3.5,
+            "end": 3.86,
+            "probability": 0.9988295435905457,
+            "tokens": [
+              352,
+              11
+            ]
+          },
+          {
+            "word": " but",
+            "start": 4.42,
+            "end": 4.54,
+            "probability": 0.9662403464317322,
+            "tokens": [
+              457
+            ]
+          },
+          {
+            "word": " he",
+            "start": 4.54,
+            "end": 4.7,
+            "probability": 0.9149841070175171,
+            "tokens": [
+              415
+            ]
+          },
+          {
+            "word": " didn't",
+            "start": 4.7,
+            "end": 5.2,
+            "probability": 0.9874997735023499,
+            "tokens": [
+              994,
+              380
+            ]
+          },
+          {
+            "word": " force",
+            "start": 5.28,
+            "end": 5.44,
+            "probability": 0.997683048248291,
+            "tokens": [
+              3464
+            ]
+          },
+          {
+            "word": " his",
+            "start": 5.44,
+            "end": 5.72,
+            "probability": 0.9843809604644775,
+            "tokens": [
+              702
+            ]
+          },
+          {
+            "word": " son",
+            "start": 5.72,
+            "end": 6.0,
+            "probability": 0.998702883720398,
+            "tokens": [
+              1872
+            ]
+          },
+          {
+            "word": " to",
+            "start": 6.0,
+            "end": 6.18,
+            "probability": 0.9994540810585022,
+            "tokens": [
+              281
+            ]
+          },
+          {
+            "word": " stay.",
+            "start": 6.18,
+            "end": 6.48,
+            "probability": 0.9993470311164856,
+            "tokens": [
+              1754,
+              13
+            ]
+          }
+        ]
+      }
+    ],
+    "language": "en",
+    "time_scale": null
+  },
+  "regroup_history": "isp=1_cm=2.5+++0_sp=.* /\u3002/?/\uff1f+0+0++++1_sg=0.5+0+0+1_sp=,* /\uff0c+0+0++50++1_sl=70++1+0+0+0+0+1_cm=2.5+++0",
+  "nonspeech_sections": [
+    {
+      "start": 0.0,
+      "end": 0.26
+    },
+    {
+      "start": 0.5,
+      "end": 0.54
+    },
+    {
+      "start": 1.36,
+      "end": 1.4
+    },
+    {
+      "start": 1.92,
+      "end": 2.52
+    },
+    {
+      "start": 2.7,
+      "end": 2.72
+    },
+    {
+      "start": 3.0,
+      "end": 3.08
+    },
+    {
+      "start": 4.0,
+      "end": 4.42
+    },
+    {
+      "start": 5.2,
+      "end": 5.28
+    },
+    {
+      "start": 5.88,
+      "end": 5.9
+    },
+    {
+      "start": 6.14,
+      "end": 6.16
+    },
+    {
+      "start": 6.66,
+      "end": 6.92
+    }
+  ]
+}

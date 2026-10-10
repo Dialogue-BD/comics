@@ -1,0 +1,3810 @@
+const LOST_SON_STORY = {
+  "id": "lost-son",
+  "title": "The Lost Son",
+  "titleBn": "হারানো ছেলে",
+  "kicker": "A Bengali retelling of a father and his two sons",
+  "version": "20261010-lost-son-3-short-takes",
+  "audio": "audio/lost-son-story.mp3",
+  "mediaAspect": 0.5625,
+  "tts": {
+    "model": "Gemini 2.5 Pro Preview TTS",
+    "voice": "Gacrux",
+    "direction": "Warm, mature male storyteller, neutral General American English, around 145 words per minute. Conversational and clear for intermediate English learners. One consistent narrator with subtle quoted dialogue, never exaggerated character voices. Begin with gentle tension, keep city excitement light, speak the hardship quietly, and give the father’s running and embrace genuine tenderness without melodrama. Leave natural short pauses at paragraph boundaries and a calm longer breath at the silent embrace. End with the father’s open invitation, warm and unhurried. Pronounce veranda as vuh-RAN-duh. Read only the exact text. Do not speak directions, speaker names, headings, or paragraph numbers. No additions, music, or effects."
+  },
+  "cast": {
+    "N": {
+      "name": "The storyteller",
+      "role": "One narrator; all quoted dialogue performed subtly in the same voice",
+      "voice": "Gacrux",
+      "accent": "neutral General American English"
+    },
+    "father": {
+      "name": "The father",
+      "role": "father of both sons",
+      "appearance": "older Bengali man with white hair and beard, white panjabi and loose lower garment; cap worn in some scenes",
+      "voice": "quoted by narrator"
+    },
+    "younger": {
+      "name": "The younger son",
+      "role": "leaves, spends inheritance, returns",
+      "appearance": "young Bengali man, short black hair, stubble; muted olive/brown clothes, patterned city shirts, then torn dirty clothes and restored white panjabi with dark waistcoat",
+      "voice": "quoted by narrator"
+    },
+    "older": {
+      "name": "The older son",
+      "role": "works in fields, refuses the feast",
+      "appearance": "Bengali man with full black beard, white cap, brown panjabi, farm tool",
+      "voice": "quoted by narrator"
+    },
+    "boy": {
+      "name": "The boy",
+      "role": "brings news from courtyard; employment not inferred",
+      "appearance": "boy in brown shirt and green shorts",
+      "voice": "quoted by narrator"
+    }
+  },
+  "frames": [
+    {
+      "src": "assets/page-1.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "The father divides his property, and the younger son prepares to leave."
+    },
+    {
+      "src": "assets/page-2.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "The younger son travels from the village to a distant city."
+    },
+    {
+      "src": "assets/page-3.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "He spends his money on clothes, a phone, meals, and nights out."
+    },
+    {
+      "src": "assets/page-4.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "Without money or friends, he works at a fish market and goes hungry."
+    },
+    {
+      "src": "assets/page-5.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "He remembers home and begins the long journey back."
+    },
+    {
+      "src": "assets/page-6.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "The father recognizes him, runs to him, and holds him close."
+    },
+    {
+      "src": "assets/page-7.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "The household celebrates, but the older brother stays outside."
+    }
+  ],
+  "portraitPages": [
+    {
+      "src": "assets/page-1.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "The father divides his property, and the younger son prepares to leave."
+    },
+    {
+      "src": "assets/page-2.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "The younger son travels from the village to a distant city."
+    },
+    {
+      "src": "assets/page-3.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "He spends his money on clothes, a phone, meals, and nights out."
+    },
+    {
+      "src": "assets/page-4.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "Without money or friends, he works at a fish market and goes hungry."
+    },
+    {
+      "src": "assets/page-5.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "He remembers home and begins the long journey back."
+    },
+    {
+      "src": "assets/page-6.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "The father recognizes him, runs to him, and holds him close."
+    },
+    {
+      "src": "assets/page-7.webp",
+      "width": 2000,
+      "height": 1125,
+      "alt": "The household celebrates, but the older brother stays outside."
+    }
+  ],
+  "lines": [
+    {
+      "frame": 1,
+      "panel": "1-1",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "A father lived in a village with his two sons. The older son worked beside him. The younger son wanted a different life."
+    },
+    {
+      "frame": 1,
+      "panel": "1-2",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "One day, the younger son approached his father. He was tired of waiting for his future to begin."
+    },
+    {
+      "frame": 1,
+      "panel": "1-3",
+      "speaker": "N",
+      "quotedSpeaker": "younger",
+      "text": "Father, he said, give me my share of the family property. I want to leave."
+    },
+    {
+      "frame": 1,
+      "panel": "1-4",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "His brother heard him. The father looked at the young man, then quietly agreed to divide what he owned between his sons."
+    },
+    {
+      "frame": 1,
+      "panel": "1-5",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "His father lowered his eyes. It hurt to let him go, but he didn’t force his son to stay."
+    },
+    {
+      "frame": 1,
+      "panel": "1-6",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "The father opened his cupboard. There were papers to sign and money to hand over."
+    },
+    {
+      "frame": 1,
+      "panel": "1-7",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He signed the papers, then placed the money in his son’s hands."
+    },
+    {
+      "frame": 1,
+      "panel": "1-9",
+      "speaker": "N",
+      "quotedSpeaker": "younger",
+      "text": "The young man held it close, smiling. Now, he thought, I can live exactly as I please."
+    },
+    {
+      "frame": 2,
+      "panel": "2-1",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He packed his suitcase and left the family home."
+    },
+    {
+      "frame": 2,
+      "panel": "2-2",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "With his money and his plans, he walked away from the village where he had grown up."
+    },
+    {
+      "frame": 2,
+      "panel": "2-3",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He climbed onto a bus. The green fields slipped past the window."
+    },
+    {
+      "frame": 2,
+      "panel": "2-5",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "At the station, he bought a ticket for a train. Soon he was far from home."
+    },
+    {
+      "frame": 2,
+      "panel": "2-8",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "The city was crowded, noisy, and full of possibilities."
+    },
+    {
+      "frame": 2,
+      "panel": "2-10",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He found a room in a comfortable hotel and looked out over the bright lights. Everything seemed to be waiting for him."
+    },
+    {
+      "frame": 3,
+      "panel": "3-1",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He bought new clothes and an expensive phone. For the first time, he could buy whatever caught his eye."
+    },
+    {
+      "frame": 3,
+      "panel": "3-4",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He made new friends. They ate in expensive restaurants, laughed together, and stayed out late."
+    },
+    {
+      "frame": 3,
+      "panel": "3-5",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "There was always another meal to order, another bill to pay, another reason to spend."
+    },
+    {
+      "frame": 3,
+      "panel": "3-6",
+      "speaker": "N",
+      "quotedSpeaker": "younger",
+      "text": "Don’t worry, he told them. It’s on me. His friends smiled and raised their glasses."
+    },
+    {
+      "frame": 3,
+      "panel": "3-7",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "For a while, it felt like freedom. Nobody told him when to come home or how to use his money."
+    },
+    {
+      "frame": 3,
+      "panel": "3-8",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "But the money kept leaving his wallet. He spent it as if it would never run out."
+    },
+    {
+      "frame": 3,
+      "panel": "3-9",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "Then the meals became quieter. He counted what was left, and his friends stopped coming around."
+    },
+    {
+      "frame": 3,
+      "panel": "3-10",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "At last, he opened his wallet and found almost nothing inside."
+    },
+    {
+      "frame": 4,
+      "panel": "4-1",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "Hard times came to the city. Food cost more, and work was difficult to find. He could no longer pay for his room."
+    },
+    {
+      "frame": 4,
+      "panel": "4-2",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "His new phone was damaged. The people he had called his friends were nowhere to be found."
+    },
+    {
+      "frame": 4,
+      "panel": "4-3",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He stood beside a food stall, showing his empty pockets. The seller sent him away."
+    },
+    {
+      "frame": 4,
+      "panel": "4-4",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "At the river, he watched men carrying heavy loads. He needed work. Any work."
+    },
+    {
+      "frame": 4,
+      "panel": "4-5",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "Please, he said to a man at the fish market. I’ll do whatever you need."
+    },
+    {
+      "frame": 4,
+      "panel": "4-7",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "The man gave him a job cleaning fish. He worked among the baskets and the mud, for very little money."
+    },
+    {
+      "frame": 4,
+      "panel": "4-9",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "Day after day, he grew weaker. He had left home with so much. Now he couldn’t even feed himself."
+    },
+    {
+      "frame": 4,
+      "panel": "4-10",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "Dogs ate the scraps beside the market. He watched them, holding his empty stomach."
+    },
+    {
+      "frame": 4,
+      "panel": "4-12",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "At night, he pulled a sheet of plastic around himself and tried to sleep."
+    },
+    {
+      "frame": 5,
+      "panel": "5-1",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "One morning, he finally came to his senses. He thought about his father’s house."
+    },
+    {
+      "frame": 5,
+      "panel": "5-2",
+      "speaker": "N",
+      "quotedSpeaker": "younger",
+      "text": "Even the people who work for my father have more than enough to eat, he thought. And here I am, starving."
+    },
+    {
+      "frame": 5,
+      "panel": "5-3",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He washed his face at a hand pump. He could no longer pretend that everything was fine."
+    },
+    {
+      "frame": 5,
+      "panel": "5-4",
+      "speaker": "N",
+      "quotedSpeaker": "younger",
+      "text": "I’ll go home, he decided. I’ll tell my father I’ve sinned against God and against him."
+    },
+    {
+      "frame": 5,
+      "panel": "5-4",
+      "speaker": "N",
+      "quotedSpeaker": "younger",
+      "text": "I’m no longer worthy to be called his son anymore. Perhaps he’ll let me work for him instead."
+    },
+    {
+      "frame": 5,
+      "panel": "5-5",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He set off with very little. Along the way, he took odd jobs in the fields."
+    },
+    {
+      "frame": 5,
+      "panel": "5-6",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "Sometimes a truck gave him a ride. Often, he walked barefoot, carrying his shoes."
+    },
+    {
+      "frame": 5,
+      "panel": "5-8",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "At last, the familiar fields came into view. Then he saw his father’s house."
+    },
+    {
+      "frame": 6,
+      "panel": "6-1",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "His father was standing on the veranda, looking down the road."
+    },
+    {
+      "frame": 6,
+      "panel": "6-2",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "Far away, a figure was coming toward the house. The father looked again."
+    },
+    {
+      "frame": 6,
+      "panel": "6-3",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "The clothes were dirty. The shoulders were bent. But he knew that walk. It was his son."
+    },
+    {
+      "frame": 6,
+      "panel": "6-4",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He put down his cup without thinking about the spilled tea."
+    },
+    {
+      "frame": 6,
+      "panel": "6-5",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He gathered up his clothes and began to run."
+    },
+    {
+      "frame": 6,
+      "panel": "6-6",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He didn’t wait for his son to reach the gate. He ran out to meet him."
+    },
+    {
+      "frame": 6,
+      "panel": "6-7",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "The young man dropped to his knees. His hands were empty. He had nothing to offer."
+    },
+    {
+      "frame": 6,
+      "panel": "6-8",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "Before he could explain, his father reached him and wrapped both arms around him."
+    },
+    {
+      "frame": 6,
+      "panel": "6-9",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "The father held his son’s head against his face. For a moment, neither of them said anything."
+    },
+    {
+      "frame": 6,
+      "panel": "6-9",
+      "speaker": "N",
+      "quotedSpeaker": "younger",
+      "text": "Then the son began. Father, I have sinned against God and against you. I am no longer worthy to be called your son anymore."
+    },
+    {
+      "frame": 7,
+      "panel": "7-1",
+      "speaker": "N",
+      "quotedSpeaker": "father",
+      "text": "But his father was already calling to the people in the house. Help him wash. Bring him our best clothes."
+    },
+    {
+      "frame": 7,
+      "panel": "7-2",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "The father helped him dress. He wasn’t being received as a stranger or a worker. He was being welcomed as a son."
+    },
+    {
+      "frame": 7,
+      "panel": "7-3",
+      "speaker": "N",
+      "quotedSpeaker": "father",
+      "text": "Prepare a feast, the father said. We’re going to celebrate."
+    },
+    {
+      "frame": 7,
+      "panel": "7-4",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "Soon, food was cooking in great pots. The courtyard filled with music and laughter."
+    },
+    {
+      "frame": 7,
+      "panel": "7-5",
+      "speaker": "N",
+      "quotedSpeaker": "father",
+      "text": "My son was lost. Now he’s found. I thought I’d lost him forever, but he’s home."
+    },
+    {
+      "frame": 7,
+      "panel": "7-6",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "Meanwhile, the older brother was coming back from the fields. He heard the music before he reached the house."
+    },
+    {
+      "frame": 7,
+      "panel": "7-7",
+      "speaker": "N",
+      "quotedSpeaker": "boy",
+      "text": "A boy ran out of the courtyard. Your brother’s home, he said. Your father’s having a feast because he’s come back safe."
+    },
+    {
+      "frame": 7,
+      "panel": "7-8",
+      "speaker": "N",
+      "quotedSpeaker": "older",
+      "text": "The older brother’s face changed. A feast? For him? After everything he’s done?"
+    },
+    {
+      "frame": 7,
+      "panel": "7-10",
+      "speaker": "N",
+      "quotedSpeaker": null,
+      "text": "He was angry and refused to go inside. So his father came out to speak with him."
+    },
+    {
+      "frame": 7,
+      "panel": "7-11",
+      "speaker": "N",
+      "quotedSpeaker": "older",
+      "text": "All these years I’ve worked for you, the older son said. I’ve done everything you asked."
+    },
+    {
+      "frame": 7,
+      "panel": "7-11",
+      "speaker": "N",
+      "quotedSpeaker": "older",
+      "text": "You never gave me a feast with my friends. But this son of yours wastes your money, comes home, and gets a celebration."
+    },
+    {
+      "frame": 7,
+      "panel": "7-12",
+      "speaker": "N",
+      "quotedSpeaker": "father",
+      "text": "The father listened. My son, he said, you’re always with me. Everything I have is yours."
+    },
+    {
+      "frame": 7,
+      "panel": "7-12",
+      "speaker": "N",
+      "quotedSpeaker": "father",
+      "text": "But we had to celebrate. Your brother was lost, and now he’s found. He was gone from us, and now he’s home."
+    },
+    {
+      "frame": 7,
+      "panel": "7-12",
+      "speaker": "N",
+      "quotedSpeaker": "father",
+      "text": "Come in, my son. Come and be glad with us."
+    }
+  ],
+  "camera": [
+    {
+      "p": 1,
+      "py": 0.16666666666666666,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.16666666666666666,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.16666666666666666,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.5,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.5,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.5,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.8333333333333333,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 1,
+      "py": 0.8333333333333333,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.169,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.169,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.169,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.5023333333333333,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.5023333333333333,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 2,
+      "py": 0.8356666666666667,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.175,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.49849999999999994,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.49849999999999994,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.49849999999999994,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.8250000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.8250000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.8250000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 3,
+      "py": 0.8250000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.169,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.169,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.169,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.169,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.5023333333333333,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.5023333333333333,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.8356666666666667,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.8356666666666667,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 4,
+      "py": 0.8356666666666667,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.16666666666666666,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.16666666666666666,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.16666666666666666,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.5,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.5,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.5,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.5,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 5,
+      "py": 0.8333333333333333,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.1915,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.1915,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.1915,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.49949999999999994,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.49949999999999994,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.49949999999999994,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.8075,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.8075,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.8075,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 6,
+      "py": 0.8075,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.192,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.192,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.192,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.192,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.192,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.5005,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.5005,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.5005,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.8160000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.8160000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.8160000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.8160000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.8160000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    },
+    {
+      "p": 7,
+      "py": 0.8160000000000001,
+      "pz": 1,
+      "lx": 0.5,
+      "ly": 0.5,
+      "lz": 1
+    }
+  ],
+  "cameraBeats": [
+    {
+      "line": 0,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "portrait": [
+        0.003,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.003,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "1: panel 1-1"
+    },
+    {
+      "line": 0,
+      "word": 10,
+      "page": 1,
+      "frame": 1,
+      "portrait": [
+        0.015,
+        0.15,
+        0.2,
+        0.175
+      ],
+      "landscape": [
+        0.015,
+        0.15,
+        0.2,
+        0.175
+      ],
+      "label": "The father and older son"
+    },
+    {
+      "line": 0,
+      "word": 16,
+      "page": 1,
+      "frame": 1,
+      "portrait": [
+        0.215,
+        0.15,
+        0.113,
+        0.175
+      ],
+      "landscape": [
+        0.215,
+        0.15,
+        0.113,
+        0.175
+      ],
+      "label": "The younger son"
+    },
+    {
+      "line": 1,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "portrait": [
+        0.3363333333333333,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.3363333333333333,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "2: panel 1-2"
+    },
+    {
+      "line": 2,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "portrait": [
+        0.6696666666666666,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.6696666666666666,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "3: panel 1-3"
+    },
+    {
+      "line": 3,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "portrait": [
+        0.003,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.003,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "4: panel 1-4"
+    },
+    {
+      "line": 3,
+      "word": 4,
+      "page": 1,
+      "frame": 1,
+      "portrait": [
+        0.3363333333333333,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.3363333333333333,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "The father’s response"
+    },
+    {
+      "line": 4,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "portrait": [
+        0.3363333333333333,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.3363333333333333,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "5: panel 1-5"
+    },
+    {
+      "line": 5,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "portrait": [
+        0.6696666666666666,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.6696666666666666,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "6: panel 1-6"
+    },
+    {
+      "line": 6,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "portrait": [
+        0.003,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.003,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "7: panel 1-7"
+    },
+    {
+      "line": 6,
+      "word": 4,
+      "page": 1,
+      "frame": 1,
+      "portrait": [
+        0.3363333333333333,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.3363333333333333,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "Money changes hands"
+    },
+    {
+      "line": 7,
+      "word": 0,
+      "page": 1,
+      "frame": 1,
+      "portrait": [
+        0.6696666666666666,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.6696666666666666,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "8: panel 1-9"
+    },
+    {
+      "line": 8,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "portrait": [
+        0.007,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.007,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "label": "9: panel 2-1"
+    },
+    {
+      "line": 9,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "portrait": [
+        0.257,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.257,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "label": "10: panel 2-2"
+    },
+    {
+      "line": 9,
+      "word": 10,
+      "page": 2,
+      "frame": 2,
+      "portrait": [
+        0.257,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.257,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "label": "Leaving home"
+    },
+    {
+      "line": 10,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "portrait": [
+        0.507,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.507,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "label": "11: panel 2-3"
+    },
+    {
+      "line": 10,
+      "word": 5,
+      "page": 2,
+      "frame": 2,
+      "portrait": [
+        0.757,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.757,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "label": "The fields through the window"
+    },
+    {
+      "line": 11,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "portrait": [
+        0.007,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.007,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "label": "12: panel 2-5"
+    },
+    {
+      "line": 11,
+      "word": 4,
+      "page": 2,
+      "frame": 2,
+      "portrait": [
+        0.257,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.257,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "label": "Buying the train ticket"
+    },
+    {
+      "line": 11,
+      "word": 10,
+      "page": 2,
+      "frame": 2,
+      "portrait": [
+        0.507,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.507,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "label": "The long train journey"
+    },
+    {
+      "line": 12,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "portrait": [
+        0.757,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.757,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "label": "13: panel 2-8"
+    },
+    {
+      "line": 12,
+      "word": 6,
+      "page": 2,
+      "frame": 2,
+      "portrait": [
+        0.007,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.007,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "label": "City streets"
+    },
+    {
+      "line": 13,
+      "word": 0,
+      "page": 2,
+      "frame": 2,
+      "portrait": [
+        0.257,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.257,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "label": "14: panel 2-10"
+    },
+    {
+      "line": 13,
+      "word": 9,
+      "page": 2,
+      "frame": 2,
+      "portrait": [
+        0.757,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.757,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "label": "The bright city lights"
+    },
+    {
+      "line": 14,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "portrait": [
+        0.03,
+        0.02,
+        0.314,
+        0.31
+      ],
+      "landscape": [
+        0.03,
+        0.02,
+        0.314,
+        0.31
+      ],
+      "label": "15: panel 3-1"
+    },
+    {
+      "line": 14,
+      "word": 5,
+      "page": 3,
+      "frame": 3,
+      "portrait": [
+        0.66,
+        0.02,
+        0.311,
+        0.31
+      ],
+      "landscape": [
+        0.66,
+        0.02,
+        0.311,
+        0.31
+      ],
+      "label": "The expensive phone"
+    },
+    {
+      "line": 14,
+      "word": 14,
+      "page": 3,
+      "frame": 3,
+      "portrait": [
+        0.352,
+        0.02,
+        0.3,
+        0.31
+      ],
+      "landscape": [
+        0.352,
+        0.02,
+        0.3,
+        0.31
+      ],
+      "label": "Money spent"
+    },
+    {
+      "line": 15,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "portrait": [
+        0.03,
+        0.345,
+        0.314,
+        0.307
+      ],
+      "landscape": [
+        0.03,
+        0.345,
+        0.314,
+        0.307
+      ],
+      "label": "16: panel 3-4"
+    },
+    {
+      "line": 16,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "portrait": [
+        0.352,
+        0.345,
+        0.3,
+        0.307
+      ],
+      "landscape": [
+        0.352,
+        0.345,
+        0.3,
+        0.307
+      ],
+      "label": "17: panel 3-5"
+    },
+    {
+      "line": 17,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "portrait": [
+        0.66,
+        0.345,
+        0.311,
+        0.307
+      ],
+      "landscape": [
+        0.66,
+        0.345,
+        0.311,
+        0.307
+      ],
+      "label": "18: panel 3-6"
+    },
+    {
+      "line": 18,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "portrait": [
+        0.03,
+        0.669,
+        0.274,
+        0.312
+      ],
+      "landscape": [
+        0.03,
+        0.669,
+        0.274,
+        0.312
+      ],
+      "label": "19: panel 3-7"
+    },
+    {
+      "line": 19,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "portrait": [
+        0.314,
+        0.669,
+        0.18,
+        0.312
+      ],
+      "landscape": [
+        0.314,
+        0.669,
+        0.18,
+        0.312
+      ],
+      "label": "20: panel 3-8"
+    },
+    {
+      "line": 19,
+      "word": 15,
+      "page": 3,
+      "frame": 3,
+      "portrait": [
+        0.733,
+        0.669,
+        0.238,
+        0.312
+      ],
+      "landscape": [
+        0.733,
+        0.669,
+        0.238,
+        0.312
+      ],
+      "label": "The almost empty wallet"
+    },
+    {
+      "line": 20,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "portrait": [
+        0.502,
+        0.669,
+        0.223,
+        0.312
+      ],
+      "landscape": [
+        0.502,
+        0.669,
+        0.223,
+        0.312
+      ],
+      "label": "21: panel 3-9"
+    },
+    {
+      "line": 21,
+      "word": 0,
+      "page": 3,
+      "frame": 3,
+      "portrait": [
+        0.733,
+        0.669,
+        0.238,
+        0.312
+      ],
+      "landscape": [
+        0.733,
+        0.669,
+        0.238,
+        0.312
+      ],
+      "label": "22: panel 3-10"
+    },
+    {
+      "line": 22,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "portrait": [
+        0.007,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.007,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "label": "23: panel 4-1"
+    },
+    {
+      "line": 23,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "portrait": [
+        0.257,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.257,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "label": "24: panel 4-2"
+    },
+    {
+      "line": 24,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "portrait": [
+        0.507,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.507,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "label": "25: panel 4-3"
+    },
+    {
+      "line": 25,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "portrait": [
+        0.757,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.757,
+        0.014,
+        0.24,
+        0.31
+      ],
+      "label": "26: panel 4-4"
+    },
+    {
+      "line": 26,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "portrait": [
+        0.007,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.007,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "label": "27: panel 4-5"
+    },
+    {
+      "line": 27,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "portrait": [
+        0.507,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.507,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "label": "28: panel 4-7"
+    },
+    {
+      "line": 27,
+      "word": 8,
+      "page": 4,
+      "frame": 4,
+      "portrait": [
+        0.757,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.757,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ],
+      "label": "Cleaning fish for little money"
+    },
+    {
+      "line": 28,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "portrait": [
+        0.007,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.007,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "label": "29: panel 4-9"
+    },
+    {
+      "line": 29,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "portrait": [
+        0.257,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.257,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "label": "30: panel 4-10"
+    },
+    {
+      "line": 29,
+      "word": 10,
+      "page": 4,
+      "frame": 4,
+      "portrait": [
+        0.507,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.507,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "label": "His empty stomach"
+    },
+    {
+      "line": 30,
+      "word": 0,
+      "page": 4,
+      "frame": 4,
+      "portrait": [
+        0.757,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "landscape": [
+        0.757,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ],
+      "label": "31: panel 4-12"
+    },
+    {
+      "line": 31,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "portrait": [
+        0.003,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.003,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "32: panel 5-1"
+    },
+    {
+      "line": 32,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "portrait": [
+        0.3363333333333333,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.3363333333333333,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "33: panel 5-2"
+    },
+    {
+      "line": 33,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "portrait": [
+        0.6696666666666666,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.6696666666666666,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "34: panel 5-3"
+    },
+    {
+      "line": 34,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "portrait": [
+        0.003,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.003,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "35: panel 5-4"
+    },
+    {
+      "line": 35,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "portrait": [
+        0.003,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.003,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "36: panel 5-4"
+    },
+    {
+      "line": 36,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "portrait": [
+        0.3363333333333333,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.3363333333333333,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "37: panel 5-5"
+    },
+    {
+      "line": 37,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "portrait": [
+        0.6696666666666666,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.6696666666666666,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "38: panel 5-6"
+    },
+    {
+      "line": 37,
+      "word": 7,
+      "page": 5,
+      "frame": 5,
+      "portrait": [
+        0.003,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.003,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "Walking barefoot"
+    },
+    {
+      "line": 38,
+      "word": 0,
+      "page": 5,
+      "frame": 5,
+      "portrait": [
+        0.3363333333333333,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.3363333333333333,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "39: panel 5-8"
+    },
+    {
+      "line": 38,
+      "word": 8,
+      "page": 5,
+      "frame": 5,
+      "portrait": [
+        0.6696666666666666,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "landscape": [
+        0.6696666666666666,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ],
+      "label": "The house comes into view"
+    },
+    {
+      "line": 39,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "portrait": [
+        0.043,
+        0.047,
+        0.299,
+        0.289
+      ],
+      "landscape": [
+        0.043,
+        0.047,
+        0.299,
+        0.289
+      ],
+      "label": "40: panel 6-1"
+    },
+    {
+      "line": 40,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "portrait": [
+        0.352,
+        0.047,
+        0.299,
+        0.289
+      ],
+      "landscape": [
+        0.352,
+        0.047,
+        0.299,
+        0.289
+      ],
+      "label": "41: panel 6-2"
+    },
+    {
+      "line": 41,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "portrait": [
+        0.661,
+        0.047,
+        0.299,
+        0.289
+      ],
+      "landscape": [
+        0.661,
+        0.047,
+        0.299,
+        0.289
+      ],
+      "label": "42: panel 6-3"
+    },
+    {
+      "line": 42,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "portrait": [
+        0.043,
+        0.355,
+        0.299,
+        0.289
+      ],
+      "landscape": [
+        0.043,
+        0.355,
+        0.299,
+        0.289
+      ],
+      "label": "43: panel 6-4"
+    },
+    {
+      "line": 43,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "portrait": [
+        0.352,
+        0.355,
+        0.299,
+        0.289
+      ],
+      "landscape": [
+        0.352,
+        0.355,
+        0.299,
+        0.289
+      ],
+      "label": "44: panel 6-5"
+    },
+    {
+      "line": 44,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "portrait": [
+        0.661,
+        0.355,
+        0.299,
+        0.289
+      ],
+      "landscape": [
+        0.661,
+        0.355,
+        0.299,
+        0.289
+      ],
+      "label": "45: panel 6-6"
+    },
+    {
+      "line": 45,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "portrait": [
+        0.043,
+        0.663,
+        0.299,
+        0.289
+      ],
+      "landscape": [
+        0.043,
+        0.663,
+        0.299,
+        0.289
+      ],
+      "label": "46: panel 6-7"
+    },
+    {
+      "line": 46,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "portrait": [
+        0.352,
+        0.663,
+        0.299,
+        0.289
+      ],
+      "landscape": [
+        0.352,
+        0.663,
+        0.299,
+        0.289
+      ],
+      "label": "47: panel 6-8"
+    },
+    {
+      "line": 47,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "portrait": [
+        0.661,
+        0.663,
+        0.299,
+        0.289
+      ],
+      "landscape": [
+        0.661,
+        0.663,
+        0.299,
+        0.289
+      ],
+      "label": "48: panel 6-9"
+    },
+    {
+      "line": 48,
+      "word": 0,
+      "page": 6,
+      "frame": 6,
+      "portrait": [
+        0.661,
+        0.663,
+        0.299,
+        0.289
+      ],
+      "landscape": [
+        0.661,
+        0.663,
+        0.299,
+        0.289
+      ],
+      "label": "49: panel 6-9"
+    },
+    {
+      "line": 49,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.033,
+        0.047,
+        0.184,
+        0.29
+      ],
+      "landscape": [
+        0.033,
+        0.047,
+        0.184,
+        0.29
+      ],
+      "label": "50: panel 7-1"
+    },
+    {
+      "line": 49,
+      "word": 15,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.225,
+        0.047,
+        0.179,
+        0.29
+      ],
+      "landscape": [
+        0.225,
+        0.047,
+        0.179,
+        0.29
+      ],
+      "label": "The best clothes"
+    },
+    {
+      "line": 50,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.225,
+        0.047,
+        0.179,
+        0.29
+      ],
+      "landscape": [
+        0.225,
+        0.047,
+        0.179,
+        0.29
+      ],
+      "label": "51: panel 7-2"
+    },
+    {
+      "line": 51,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.412,
+        0.047,
+        0.178,
+        0.29
+      ],
+      "landscape": [
+        0.412,
+        0.047,
+        0.178,
+        0.29
+      ],
+      "label": "52: panel 7-3"
+    },
+    {
+      "line": 52,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.598,
+        0.047,
+        0.183,
+        0.29
+      ],
+      "landscape": [
+        0.598,
+        0.047,
+        0.183,
+        0.29
+      ],
+      "label": "53: panel 7-4"
+    },
+    {
+      "line": 52,
+      "word": 7,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.789,
+        0.047,
+        0.186,
+        0.29
+      ],
+      "landscape": [
+        0.789,
+        0.047,
+        0.186,
+        0.29
+      ],
+      "label": "Music in the courtyard"
+    },
+    {
+      "line": 53,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.789,
+        0.047,
+        0.186,
+        0.29
+      ],
+      "landscape": [
+        0.789,
+        0.047,
+        0.186,
+        0.29
+      ],
+      "label": "54: panel 7-5"
+    },
+    {
+      "line": 54,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.033,
+        0.349,
+        0.231,
+        0.303
+      ],
+      "landscape": [
+        0.033,
+        0.349,
+        0.231,
+        0.303
+      ],
+      "label": "55: panel 7-6"
+    },
+    {
+      "line": 55,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.272,
+        0.349,
+        0.225,
+        0.303
+      ],
+      "landscape": [
+        0.272,
+        0.349,
+        0.225,
+        0.303
+      ],
+      "label": "56: panel 7-7"
+    },
+    {
+      "line": 55,
+      "word": 7,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.272,
+        0.349,
+        0.225,
+        0.303
+      ],
+      "landscape": [
+        0.272,
+        0.349,
+        0.225,
+        0.303
+      ],
+      "label": "News of the return"
+    },
+    {
+      "line": 56,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.505,
+        0.349,
+        0.228,
+        0.303
+      ],
+      "landscape": [
+        0.505,
+        0.349,
+        0.228,
+        0.303
+      ],
+      "label": "57: panel 7-8"
+    },
+    {
+      "line": 57,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.033,
+        0.669,
+        0.307,
+        0.294
+      ],
+      "landscape": [
+        0.033,
+        0.669,
+        0.307,
+        0.294
+      ],
+      "label": "58: panel 7-10"
+    },
+    {
+      "line": 57,
+      "word": 9,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.741,
+        0.349,
+        0.234,
+        0.303
+      ],
+      "landscape": [
+        0.741,
+        0.349,
+        0.234,
+        0.303
+      ],
+      "label": "The father comes outside too"
+    },
+    {
+      "line": 58,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.348,
+        0.669,
+        0.299,
+        0.294
+      ],
+      "landscape": [
+        0.348,
+        0.669,
+        0.299,
+        0.294
+      ],
+      "label": "59: panel 7-11"
+    },
+    {
+      "line": 59,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.348,
+        0.669,
+        0.299,
+        0.294
+      ],
+      "landscape": [
+        0.348,
+        0.669,
+        0.299,
+        0.294
+      ],
+      "label": "60: panel 7-11"
+    },
+    {
+      "line": 60,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.655,
+        0.669,
+        0.32,
+        0.294
+      ],
+      "landscape": [
+        0.655,
+        0.669,
+        0.32,
+        0.294
+      ],
+      "label": "61: panel 7-12"
+    },
+    {
+      "line": 61,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.655,
+        0.669,
+        0.32,
+        0.294
+      ],
+      "landscape": [
+        0.655,
+        0.669,
+        0.32,
+        0.294
+      ],
+      "label": "62: panel 7-12"
+    },
+    {
+      "line": 62,
+      "word": 0,
+      "page": 7,
+      "frame": 7,
+      "portrait": [
+        0.655,
+        0.669,
+        0.32,
+        0.294
+      ],
+      "landscape": [
+        0.655,
+        0.669,
+        0.32,
+        0.294
+      ],
+      "label": "63: panel 7-12"
+    }
+  ],
+  "panels": [
+    {
+      "id": "1-1",
+      "page": 1,
+      "rect": [
+        0.003,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "1-2",
+      "page": 1,
+      "rect": [
+        0.3363333333333333,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "1-3",
+      "page": 1,
+      "rect": [
+        0.6696666666666666,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "1-4",
+      "page": 1,
+      "rect": [
+        0.003,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "1-5",
+      "page": 1,
+      "rect": [
+        0.3363333333333333,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "1-6",
+      "page": 1,
+      "rect": [
+        0.6696666666666666,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "1-7",
+      "page": 1,
+      "rect": [
+        0.003,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "1-8",
+      "page": 1,
+      "rect": [
+        0.3363333333333333,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "1-9",
+      "page": 1,
+      "rect": [
+        0.6696666666666666,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "5-1",
+      "page": 5,
+      "rect": [
+        0.003,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "5-2",
+      "page": 5,
+      "rect": [
+        0.3363333333333333,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "5-3",
+      "page": 5,
+      "rect": [
+        0.6696666666666666,
+        0.003,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "5-4",
+      "page": 5,
+      "rect": [
+        0.003,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "5-5",
+      "page": 5,
+      "rect": [
+        0.3363333333333333,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "5-6",
+      "page": 5,
+      "rect": [
+        0.6696666666666666,
+        0.3363333333333333,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "5-7",
+      "page": 5,
+      "rect": [
+        0.003,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "5-8",
+      "page": 5,
+      "rect": [
+        0.3363333333333333,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "5-9",
+      "page": 5,
+      "rect": [
+        0.6696666666666666,
+        0.6696666666666666,
+        0.3273333333333333,
+        0.3273333333333333
+      ]
+    },
+    {
+      "id": "2-1",
+      "page": 2,
+      "rect": [
+        0.007,
+        0.014,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "2-2",
+      "page": 2,
+      "rect": [
+        0.257,
+        0.014,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "2-3",
+      "page": 2,
+      "rect": [
+        0.507,
+        0.014,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "2-4",
+      "page": 2,
+      "rect": [
+        0.757,
+        0.014,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "2-5",
+      "page": 2,
+      "rect": [
+        0.007,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "2-6",
+      "page": 2,
+      "rect": [
+        0.257,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "2-7",
+      "page": 2,
+      "rect": [
+        0.507,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "2-8",
+      "page": 2,
+      "rect": [
+        0.757,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "2-9",
+      "page": 2,
+      "rect": [
+        0.007,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "2-10",
+      "page": 2,
+      "rect": [
+        0.257,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "2-11",
+      "page": 2,
+      "rect": [
+        0.507,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "2-12",
+      "page": 2,
+      "rect": [
+        0.757,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "4-1",
+      "page": 4,
+      "rect": [
+        0.007,
+        0.014,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "4-2",
+      "page": 4,
+      "rect": [
+        0.257,
+        0.014,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "4-3",
+      "page": 4,
+      "rect": [
+        0.507,
+        0.014,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "4-4",
+      "page": 4,
+      "rect": [
+        0.757,
+        0.014,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "4-5",
+      "page": 4,
+      "rect": [
+        0.007,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "4-6",
+      "page": 4,
+      "rect": [
+        0.257,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "4-7",
+      "page": 4,
+      "rect": [
+        0.507,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "4-8",
+      "page": 4,
+      "rect": [
+        0.757,
+        0.3473333333333333,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "4-9",
+      "page": 4,
+      "rect": [
+        0.007,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "4-10",
+      "page": 4,
+      "rect": [
+        0.257,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "4-11",
+      "page": 4,
+      "rect": [
+        0.507,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "4-12",
+      "page": 4,
+      "rect": [
+        0.757,
+        0.6806666666666666,
+        0.24,
+        0.31
+      ]
+    },
+    {
+      "id": "3-1",
+      "page": 3,
+      "rect": [
+        0.03,
+        0.02,
+        0.314,
+        0.31
+      ]
+    },
+    {
+      "id": "3-2",
+      "page": 3,
+      "rect": [
+        0.352,
+        0.02,
+        0.3,
+        0.31
+      ]
+    },
+    {
+      "id": "3-3",
+      "page": 3,
+      "rect": [
+        0.66,
+        0.02,
+        0.311,
+        0.31
+      ]
+    },
+    {
+      "id": "3-4",
+      "page": 3,
+      "rect": [
+        0.03,
+        0.345,
+        0.314,
+        0.307
+      ]
+    },
+    {
+      "id": "3-5",
+      "page": 3,
+      "rect": [
+        0.352,
+        0.345,
+        0.3,
+        0.307
+      ]
+    },
+    {
+      "id": "3-6",
+      "page": 3,
+      "rect": [
+        0.66,
+        0.345,
+        0.311,
+        0.307
+      ]
+    },
+    {
+      "id": "3-7",
+      "page": 3,
+      "rect": [
+        0.03,
+        0.669,
+        0.274,
+        0.312
+      ]
+    },
+    {
+      "id": "3-8",
+      "page": 3,
+      "rect": [
+        0.314,
+        0.669,
+        0.18,
+        0.312
+      ]
+    },
+    {
+      "id": "3-9",
+      "page": 3,
+      "rect": [
+        0.502,
+        0.669,
+        0.223,
+        0.312
+      ]
+    },
+    {
+      "id": "3-10",
+      "page": 3,
+      "rect": [
+        0.733,
+        0.669,
+        0.238,
+        0.312
+      ]
+    },
+    {
+      "id": "6-1",
+      "page": 6,
+      "rect": [
+        0.043,
+        0.047,
+        0.299,
+        0.289
+      ]
+    },
+    {
+      "id": "6-2",
+      "page": 6,
+      "rect": [
+        0.352,
+        0.047,
+        0.299,
+        0.289
+      ]
+    },
+    {
+      "id": "6-3",
+      "page": 6,
+      "rect": [
+        0.661,
+        0.047,
+        0.299,
+        0.289
+      ]
+    },
+    {
+      "id": "6-4",
+      "page": 6,
+      "rect": [
+        0.043,
+        0.355,
+        0.299,
+        0.289
+      ]
+    },
+    {
+      "id": "6-5",
+      "page": 6,
+      "rect": [
+        0.352,
+        0.355,
+        0.299,
+        0.289
+      ]
+    },
+    {
+      "id": "6-6",
+      "page": 6,
+      "rect": [
+        0.661,
+        0.355,
+        0.299,
+        0.289
+      ]
+    },
+    {
+      "id": "6-7",
+      "page": 6,
+      "rect": [
+        0.043,
+        0.663,
+        0.299,
+        0.289
+      ]
+    },
+    {
+      "id": "6-8",
+      "page": 6,
+      "rect": [
+        0.352,
+        0.663,
+        0.299,
+        0.289
+      ]
+    },
+    {
+      "id": "6-9",
+      "page": 6,
+      "rect": [
+        0.661,
+        0.663,
+        0.299,
+        0.289
+      ]
+    },
+    {
+      "id": "7-1",
+      "page": 7,
+      "rect": [
+        0.033,
+        0.047,
+        0.184,
+        0.29
+      ]
+    },
+    {
+      "id": "7-2",
+      "page": 7,
+      "rect": [
+        0.225,
+        0.047,
+        0.179,
+        0.29
+      ]
+    },
+    {
+      "id": "7-3",
+      "page": 7,
+      "rect": [
+        0.412,
+        0.047,
+        0.178,
+        0.29
+      ]
+    },
+    {
+      "id": "7-4",
+      "page": 7,
+      "rect": [
+        0.598,
+        0.047,
+        0.183,
+        0.29
+      ]
+    },
+    {
+      "id": "7-5",
+      "page": 7,
+      "rect": [
+        0.789,
+        0.047,
+        0.186,
+        0.29
+      ]
+    },
+    {
+      "id": "7-6",
+      "page": 7,
+      "rect": [
+        0.033,
+        0.349,
+        0.231,
+        0.303
+      ]
+    },
+    {
+      "id": "7-7",
+      "page": 7,
+      "rect": [
+        0.272,
+        0.349,
+        0.225,
+        0.303
+      ]
+    },
+    {
+      "id": "7-8",
+      "page": 7,
+      "rect": [
+        0.505,
+        0.349,
+        0.228,
+        0.303
+      ]
+    },
+    {
+      "id": "7-9",
+      "page": 7,
+      "rect": [
+        0.741,
+        0.349,
+        0.234,
+        0.303
+      ]
+    },
+    {
+      "id": "7-10",
+      "page": 7,
+      "rect": [
+        0.033,
+        0.669,
+        0.307,
+        0.294
+      ]
+    },
+    {
+      "id": "7-11",
+      "page": 7,
+      "rect": [
+        0.348,
+        0.669,
+        0.299,
+        0.294
+      ]
+    },
+    {
+      "id": "7-12",
+      "page": 7,
+      "rect": [
+        0.655,
+        0.669,
+        0.32,
+        0.294
+      ]
+    }
+  ],
+  "glossary": [
+    {
+      "id": "phrase-1",
+      "line": 2,
+      "phrase": "my share of the family property",
+      "start": 25,
+      "end": 56,
+      "kind": "Vocabulary",
+      "meaning": "The part of the family’s money, land, or possessions that he expects to receive.",
+      "bn": "পারিবারিক সম্পত্তির যে অংশ সে পাওয়ার আশা করছে।"
+    },
+    {
+      "id": "phrase-2",
+      "line": 3,
+      "phrase": "divide what he owned",
+      "start": 82,
+      "end": 102,
+      "kind": "Grammar",
+      "meaning": "Split his property between the two sons. What he owned means the things that belonged to him.",
+      "bn": "তাঁর মালিকানাধীন সম্পত্তি দুই ছেলের মধ্যে ভাগ করা। what he owned মানে তাঁর যা ছিল।"
+    },
+    {
+      "id": "phrase-3",
+      "line": 6,
+      "phrase": "placed the money in his son’s hands",
+      "start": 27,
+      "end": 62,
+      "kind": "Phrase",
+      "meaning": "Gave the money to his son directly.",
+      "bn": "সরাসরি ছেলের হাতে টাকা তুলে দিলেন।"
+    },
+    {
+      "id": "phrase-4",
+      "line": 7,
+      "phrase": "as I please",
+      "start": 74,
+      "end": 85,
+      "kind": "Phrase",
+      "meaning": "In whatever way I want. It expresses a wish to choose freely.",
+      "bn": "নিজের ইচ্ছেমতো।"
+    },
+    {
+      "id": "phrase-5",
+      "line": 9,
+      "phrase": "grown up",
+      "start": 75,
+      "end": 83,
+      "kind": "Phrasal verb",
+      "meaning": "Spent his childhood and become an adult.",
+      "bn": "শৈশব কাটিয়ে বড় হয়েছে।"
+    },
+    {
+      "id": "phrase-6",
+      "line": 11,
+      "phrase": "far from home",
+      "start": 60,
+      "end": 73,
+      "kind": "Phrase",
+      "meaning": "A long distance away from the place and family he knows.",
+      "bn": "বাড়ি ও পরিচিত পরিবার থেকে অনেক দূরে।"
+    },
+    {
+      "id": "phrase-7",
+      "line": 14,
+      "phrase": "caught his eye",
+      "start": 88,
+      "end": 102,
+      "kind": "Idiom",
+      "meaning": "Attracted his attention and made him want it.",
+      "bn": "তার নজর কেড়েছিল বা তার ভালো লেগেছিল।"
+    },
+    {
+      "id": "phrase-8",
+      "line": 15,
+      "phrase": "stayed out late",
+      "start": 78,
+      "end": 93,
+      "kind": "Phrasal verb",
+      "meaning": "Remained away from home until late at night.",
+      "bn": "রাত পর্যন্ত বাড়ির বাইরে থাকত।"
+    },
+    {
+      "id": "phrase-9",
+      "line": 17,
+      "phrase": "It’s on me",
+      "start": 27,
+      "end": 37,
+      "kind": "Idiom",
+      "meaning": "I will pay for everyone. This is a common informal offer.",
+      "bn": "বিলটা আমি দেব—সবার খরচ দেওয়ার অনানুষ্ঠানিক প্রস্তাব।"
+    },
+    {
+      "id": "phrase-10",
+      "line": 19,
+      "phrase": "as if it would never run out",
+      "start": 51,
+      "end": 79,
+      "kind": "Grammar",
+      "meaning": "He acted like his money could never be used up, although it could. As if introduces an imagined situation.",
+      "bn": "টাকা যেন কখনো শেষ হবে না, এমনভাবে সে খরচ করত। as if কল্পিত অবস্থা বোঝায়।"
+    },
+    {
+      "id": "phrase-11",
+      "line": 20,
+      "phrase": "stopped coming around",
+      "start": 73,
+      "end": 94,
+      "kind": "Phrasal verb",
+      "meaning": "No longer visited or spent time with him.",
+      "bn": "তার কাছে আসা বা তার সঙ্গে সময় কাটানো বন্ধ করে দিল।"
+    },
+    {
+      "id": "phrase-12",
+      "line": 22,
+      "phrase": "Hard times",
+      "start": 0,
+      "end": 10,
+      "kind": "Phrase",
+      "meaning": "A period when money, food, or work is difficult to get.",
+      "bn": "অভাব বা কষ্টের সময়।"
+    },
+    {
+      "id": "phrase-13",
+      "line": 23,
+      "phrase": "nowhere to be found",
+      "start": 69,
+      "end": 88,
+      "kind": "Idiom",
+      "meaning": "Could not be found anywhere, even when he needed them.",
+      "bn": "কোথাও খুঁজে পাওয়া যাচ্ছিল না।"
+    },
+    {
+      "id": "phrase-14",
+      "line": 24,
+      "phrase": "sent him away",
+      "start": 68,
+      "end": 81,
+      "kind": "Phrasal verb",
+      "meaning": "Told him to leave.",
+      "bn": "তাকে চলে যেতে বলল বা ফিরিয়ে দিল।"
+    },
+    {
+      "id": "phrase-15",
+      "line": 26,
+      "phrase": "whatever you need",
+      "start": 53,
+      "end": 70,
+      "kind": "Grammar",
+      "meaning": "Anything you need me to do; he is ready to accept any work.",
+      "bn": "আপনার যে কাজই দরকার হোক, সে করতে রাজি।"
+    },
+    {
+      "id": "phrase-16",
+      "line": 28,
+      "phrase": "Day after day",
+      "start": 0,
+      "end": 13,
+      "kind": "Phrase",
+      "meaning": "Repeatedly, for many days.",
+      "bn": "দিনের পর দিন।"
+    },
+    {
+      "id": "phrase-17",
+      "line": 28,
+      "phrase": "couldn’t even feed himself",
+      "start": 69,
+      "end": 95,
+      "kind": "Grammar",
+      "meaning": "He could not manage the basic need of getting food. Even emphasizes how bad things had become.",
+      "bn": "নিজের খাবারও জোগাড় করতে পারছিল না। even অবস্থা কত খারাপ হয়েছে তা জোর দিয়ে বোঝায়।"
+    },
+    {
+      "id": "phrase-18",
+      "line": 29,
+      "phrase": "scraps",
+      "start": 13,
+      "end": 19,
+      "kind": "Vocabulary",
+      "meaning": "Small pieces left over from food or preparing it.",
+      "bn": "খাবারের বা খাবার তৈরির উচ্ছিষ্ট ছোট টুকরো।"
+    },
+    {
+      "id": "phrase-19",
+      "line": 31,
+      "phrase": "came to his senses",
+      "start": 24,
+      "end": 42,
+      "kind": "Idiom",
+      "meaning": "Recognized the truth and began thinking clearly about what to do.",
+      "bn": "বাস্তবতা বুঝে তার হুঁশ ফিরল, কী করা উচিত তা ভাবতে শুরু করল।"
+    },
+    {
+      "id": "phrase-20",
+      "line": 32,
+      "phrase": "more than enough",
+      "start": 44,
+      "end": 60,
+      "kind": "Phrase",
+      "meaning": "More than the amount needed. He remembers how different life at home was.",
+      "bn": "প্রয়োজনের চেয়েও বেশি; বাড়ির জীবন কত আলাদা ছিল তা তার মনে পড়ে।"
+    },
+    {
+      "id": "phrase-21",
+      "line": 34,
+      "phrase": "sinned against God and against him",
+      "start": 51,
+      "end": 85,
+      "kind": "Faith language",
+      "meaning": "Done wrong before God and hurt his father. He accepts responsibility for his choices.",
+      "bn": "ঈশ্বরের কাছে অন্যায় করেছে এবং বাবাকে কষ্ট দিয়েছে; সে নিজের দায় স্বীকার করছে।"
+    },
+    {
+      "id": "phrase-22",
+      "line": 35,
+      "phrase": "worthy to be called his son",
+      "start": 14,
+      "end": 41,
+      "kind": "Grammar",
+      "meaning": "Deserving the place or status of a son. To be called is a passive infinitive.",
+      "bn": "তাঁর ছেলে বলে পরিচিত হওয়ার যোগ্য। to be called কর্মবাচ্যের infinitive।"
+    },
+    {
+      "id": "phrase-23",
+      "line": 36,
+      "phrase": "set off",
+      "start": 3,
+      "end": 10,
+      "kind": "Phrasal verb",
+      "meaning": "Started a journey.",
+      "bn": "যাত্রা শুরু করল।"
+    },
+    {
+      "id": "phrase-24",
+      "line": 36,
+      "phrase": "odd jobs",
+      "start": 52,
+      "end": 60,
+      "kind": "Phrase",
+      "meaning": "Small temporary jobs rather than one steady job.",
+      "bn": "ছোটখাটো অস্থায়ী কাজ।"
+    },
+    {
+      "id": "phrase-25",
+      "line": 37,
+      "phrase": "gave him a ride",
+      "start": 18,
+      "end": 33,
+      "kind": "Phrase",
+      "meaning": "Let him travel in the vehicle.",
+      "bn": "গাড়িতে করে কিছু দূর নিয়ে গেল।"
+    },
+    {
+      "id": "phrase-26",
+      "line": 38,
+      "phrase": "came into view",
+      "start": 29,
+      "end": 43,
+      "kind": "Phrase",
+      "meaning": "Became visible as he came closer.",
+      "bn": "কাছে আসার সঙ্গে সঙ্গে চোখে পড়ল।"
+    },
+    {
+      "id": "phrase-27",
+      "line": 39,
+      "phrase": "veranda",
+      "start": 31,
+      "end": 38,
+      "kind": "Vocabulary",
+      "meaning": "A covered space outside a house where people can sit or stand.",
+      "bn": "বাড়ির বাইরের ছাউনিযুক্ত বারান্দা।"
+    },
+    {
+      "id": "phrase-28",
+      "line": 43,
+      "phrase": "gathered up his clothes",
+      "start": 3,
+      "end": 26,
+      "kind": "Phrase",
+      "meaning": "Lifted the loose cloth so he could run.",
+      "bn": "দৌড়াতে সুবিধা হওয়ার জন্য ঢিলা কাপড় গুটিয়ে ধরলেন।"
+    },
+    {
+      "id": "phrase-29",
+      "line": 45,
+      "phrase": "had nothing to offer",
+      "start": 61,
+      "end": 81,
+      "kind": "Phrase",
+      "meaning": "Could not bring money, gifts, or anything that might repay his father.",
+      "bn": "বাবাকে ফেরত দেওয়ার মতো টাকা বা উপহার কিছুই তার ছিল না।"
+    },
+    {
+      "id": "phrase-30",
+      "line": 46,
+      "phrase": "Before he could explain",
+      "start": 0,
+      "end": 23,
+      "kind": "Grammar",
+      "meaning": "The welcome came first, before an explanation or apology. Before shows the order of events.",
+      "bn": "সে কিছু ব্যাখ্যা করার আগেই বাবা তাকে জড়িয়ে ধরেন। before ঘটনার ক্রম বোঝায়।"
+    },
+    {
+      "id": "phrase-31",
+      "line": 50,
+      "phrase": "being welcomed as a son",
+      "start": 88,
+      "end": 111,
+      "kind": "Grammar",
+      "meaning": "Received with the place and dignity of a son; passive continuous form.",
+      "bn": "ছেলে হিসেবে সম্মান ও আপনত্ব দিয়ে গ্রহণ করা হচ্ছিল; চলমান কর্মবাচ্য।"
+    },
+    {
+      "id": "phrase-32",
+      "line": 54,
+      "phrase": "Meanwhile",
+      "start": 0,
+      "end": 9,
+      "kind": "Discourse",
+      "meaning": "At the same time, the story turns to another person or place.",
+      "bn": "এদিকে—একই সময়ে অন্য ব্যক্তি বা জায়গার ঘটনা শুরু হচ্ছে।"
+    },
+    {
+      "id": "phrase-33",
+      "line": 57,
+      "phrase": "refused to go inside",
+      "start": 17,
+      "end": 37,
+      "kind": "Grammar",
+      "meaning": "Would not enter, even though he was invited. Refuse is followed by to + verb.",
+      "bn": "আমন্ত্রণ থাকলেও ভেতরে যেতে রাজি হলো না। refuse-এর পরে to + verb বসে।"
+    },
+    {
+      "id": "phrase-34",
+      "line": 59,
+      "phrase": "this son of yours",
+      "start": 47,
+      "end": 64,
+      "kind": "Discourse",
+      "meaning": "He avoids saying my brother. The wording shows his anger and distance from his brother.",
+      "bn": "আমার ভাই না বলে আপনার এই ছেলে বলছে; তার রাগ ও দূরত্ব বোঝা যায়।"
+    },
+    {
+      "id": "phrase-35",
+      "line": 60,
+      "phrase": "Everything I have is yours",
+      "start": 61,
+      "end": 87,
+      "kind": "Grammar",
+      "meaning": "The father reassures him that he already belongs and shares in the household.",
+      "bn": "বাবা তাকে আশ্বস্ত করেন—সে এই পরিবারের আপনজন, সবকিছুতেই তার অংশ আছে।"
+    },
+    {
+      "id": "phrase-36",
+      "line": 61,
+      "phrase": "Your brother",
+      "start": 25,
+      "end": 37,
+      "kind": "Discourse",
+      "meaning": "The father restores the family connection that the older son’s words denied.",
+      "bn": "বাবা তোমার ভাই বলে আবার ভাইয়ের সম্পর্কটি মনে করিয়ে দেন।"
+    },
+    {
+      "id": "phrase-37",
+      "line": 62,
+      "phrase": "be glad with us",
+      "start": 26,
+      "end": 41,
+      "kind": "Phrase",
+      "meaning": "Join the family’s happiness and celebration.",
+      "bn": "পরিবারের আনন্দ ও উদ্‌যাপনে যোগ দাও।"
+    }
+  ],
+  "culturalNotes": [
+    "Contemporary Bengali adaptation of Luke 15:11–32; original narration, not a Bible translation.",
+    "Fish-market hardship follows the supplied Bengali visuals, replacing the ancient pig-feeding setting.",
+    "Do not infer religious identity or employment status solely from clothing or age.",
+    "The father welcomes the younger son before he can explain; forgiveness is not purchased by repayment.",
+    "The father also goes outside to invite the older son. Do not invent his acceptance of the invitation."
+  ],
+  "continuity": [
+    "Preserve original reunion page 6 pixel-for-pixel in the extraction source.",
+    "Keep father, both sons, clothing phases, village geography, and open ending consistent.",
+    "Keep original PDF and original image extractions unchanged; use sibling files for repairs."
+  ],
+  "assets": {
+    "originalComic": "assets/source/prodigal-son-original.pdf",
+    "timings": "story-timings.js",
+    "repair": "assets/source/page-3-cleaned.png",
+    "reunion_source_sha256": "466a9b5e5bd3b6e0d81d30c6b0e84e562c684ff65de51a9ac259edaf39b73705"
+  },
+  "attribution": {
+    "source": "Luke 15:11–32",
+    "url": "https://www.bible.com/bible/95/LUK.15.11-32.MBCL",
+    "narration": "Original English retelling for this activity",
+    "visuals": "AI-created by the user; targeted wordless-page cleanup in this conversion"
+  }
+};
+if(typeof module!=="undefined") module.exports={LOST_SON_STORY};

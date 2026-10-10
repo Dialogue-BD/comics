@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10221d">
+  <title>The Lost Son · A narrated wordless comic</title>
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="../dialogue-brand.css">
+  <link rel="stylesheet" href="styles.css?v=20261010-lost-son-3-short-takes">
+</head>
+<body>
+  <a class="screen-brand" href="/" aria-label="Dialogue home">
+    <img src="../brand/dialogue-logo.png" alt="Dialogue">
+  </a>
+  <main class="app" id="app">
+    <header class="masthead">
+      <a class="brand" href="/" aria-label="Dialogue home"><img class="brand-logo" src="../brand/dialogue-logo.png" alt="Dialogue"></a>
+      <div class="title-block">
+        <p class="eyebrow" id="kicker"></p>
+        <h1><span id="title"></span> <span class="title-bn" id="title-bn" lang="bn"></span></h1>
+      </div>
+      <button class="ghost-btn" id="transcript-open" type="button" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v2H4zm0 6h16v2H4zm0 6h11v2H4z"/></svg>
+        Transcript
+      </button>
+    </header>
+
+    <section class="lesson" aria-label="The Lost Son listening exercise">
+      <nav class="passes" aria-label="Listening passes">
+        <button class="pass active" type="button" data-pass="1"><span>1</span><b>Just listen</b><small>শুধু শুনুন</small></button>
+        <button class="pass" type="button" data-pass="2"><span>2</span><b>Follow the words</b><small>শব্দ ধরে শুনুন</small></button>
+        <button class="pass" type="button" data-pass="3"><span>3</span><b>Explore phrases</b><small>বাক্যাংশ দেখুন</small></button>
+      </nav>
+
+      <div class="classroom-option"><a href="classroom.html">Tell it live →</a> <button id="fullscreen" type="button" aria-label="Enter fullscreen">Fullscreen</button></div>
+      <section class="cinema-card" aria-label="Animated narrated wordless comic">
+        <div class="cinema-stage" id="cinema-stage">
+          <div class="comic-world" id="comic-world" aria-label="The complete comic"></div>
+          <div class="stage-vignette" aria-hidden="true"></div>
+
+          <div class="stage-topbar">
+            <a class="stage-brand" href="/" aria-label="Dialogue home"><img src="../brand/dialogue-logo.png" alt=""><span>Dialogue</span></a>
+            <div class="frame-number" id="frame-number" aria-live="polite"></div>
+            <button class="stage-button" id="overview-toggle" type="button" aria-label="Show the whole comic">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/></svg>
+              <span>Whole comic</span>
+            </button>
+          </div>
+
+          <div class="caption-shell">
+            <div class="caption-meta"><span class="cc-badge">CC</span><span id="speaker-name"></span><span id="mode-label">Watch &amp; listen</span></div>
+            <div class="current-line" id="current-line" aria-live="polite"></div>
+            <p class="listen-cue" id="listen-cue">The gold highlight follows the storyteller.</p>
+          </div>
+
+          <div class="transport">
+            <button class="play" id="play" type="button" aria-label="Play story">
+              <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+            </button>
+            <button class="round-btn" id="restart" type="button" aria-label="Restart story" title="Restart story">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5a7 7 0 1 1-6.3 4H3l3.5-4L10 9H7.7A5 5 0 1 0 12 7z"/></svg>
+            </button>
+            <button class="round-btn" id="replay-line" type="button" aria-label="Replay current line" title="Replay current line">↶</button>
+            <div class="timeline-wrap">
+              <input id="timeline" class="timeline" type="range" min="0" max="1000" value="0" aria-label="Story position">
+              <div class="time-row"><span id="elapsed">0:00</span><span id="duration">0:00</span></div>
+            </div>
+            <button class="transcript-icon" id="transcript-open-stage" type="button" aria-label="Open full transcript" title="Full transcript">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v2H4zm0 6h16v2H4zm0 6h11v2H4z"/></svg>
+            </button>
+          </div>
+          <p class="audio-status" id="audio-status" role="status"></p>
+          <button id="retry-audio" class="retry-audio" type="button" hidden>Retry recording</button>
+        </div>
+        <div class="stage-notes">
+          <button class="next-pass" id="next-pass" type="button" hidden></button>
+        </div>
+      </section>
+    </section>
+    <footer class="source-credit" aria-label="Source credit"><small>A contemporary Bengali retelling of <a href="https://www.bible.com/bible/95/LUK.15.11-32.MBCL" target="_blank" rel="noopener">Luke 15:11–32</a>. Original English narration for this activity. Visuals created with AI.</small></footer>
+  </main>
+
+  <dialog class="transcript-dialog" id="transcript-dialog" aria-labelledby="transcript-title">
+    <div class="dialog-head">
+      <div><p class="eyebrow">Full story</p><h2 id="transcript-title">Listen, read, and explore</h2></div>
+      <button class="close-btn" id="transcript-close" type="button" aria-label="Close transcript">×</button>
+    </div>
+    <p class="transcript-help">Tap an underlined phrase for an explanation in English and Bangla.</p>
+    <div class="transcript" id="transcript"></div>
+  </dialog>
+
+  <dialog class="gloss-dialog" id="gloss-dialog" aria-labelledby="gloss-title">
+    <button class="close-btn gloss-close" type="button" aria-label="Close explanation">×</button>
+    <p class="gloss-kind" id="gloss-kind"></p>
+    <h2 id="gloss-title"></h2>
+    <p class="gloss-meaning" id="gloss-meaning"></p>
+    <p class="gloss-bn" id="gloss-bn" lang="bn"></p>
+  </dialog>
+
+  <audio id="audio" preload="auto"></audio>
+  <script src="story.js?v=20261010-lost-son-3-short-takes"></script>
+  <script src="story-timings.js?v=20261010-lost-son-3-short-takes"></script>
+  <script src="app.js?v=20261010-lost-son-3-short-takes"></script>
+</body>
+</html>

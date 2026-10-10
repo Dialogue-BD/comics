@@ -1,0 +1,68 @@
+{
+  "delivery": "audio/lost-son-story.mp3",
+  "delivery_sha256": "0a100b6a19d27afcc0e2d8720e7ac220ee0784ac670702f566aed9b30a106a7c",
+  "source": "audio/_originals/lost-son-narration.wav",
+  "source_sha256": "b753f69ddb7abc5b780cd24a84f2ac24993cd7faa456fbb6fffdc41106c28f6d",
+  "duration": 402.531917,
+  "voice": "Gacrux",
+  "model": "Gemini 2.5 Pro Preview TTS",
+  "route": "signed-in Google AI Studio browser; no API key",
+  "normalization": "loudnorm=I=-16:TP=-1.5:LRA=11",
+  "master": "alimiter=limit=0.841395:level=false",
+  "ambience": "none",
+  "takePlacements": [
+    {
+      "source": "audio/_originals/lost-son-narration.wav",
+      "start": 0,
+      "end": 32.230000000000004,
+      "at": 0
+    },
+    {
+      "source": "audio/_originals/lost-son-father-reaction.wav",
+      "start": 0,
+      "end": 6.890958,
+      "at": 32.230000000000004,
+      "sha256": "953f3b92b4688a864b15659685513982363aeaf40ef88190bfb76df9414ffc91"
+    },
+    {
+      "source": "audio/_originals/lost-son-narration.wav",
+      "start": 38.28,
+      "end": 380.24,
+      "at": 39.120958
+    },
+    {
+      "source": "audio/_originals/lost-son-closing.wav",
+      "start": 0,
+      "end": 21.450958,
+      "at": 381.080958,
+      "sha256": "2ebe7bc060c5784cc4a219d15f3df79aa6b3587d2d1132df72951c2b07c19d49"
+    }
+  ],
+  "pauseEvidence": {
+    "first": [
+      31.68,
+      32.78
+    ],
+    "afterReaction": [
+      37.88,
+      38.68
+    ],
+    "beforeClosing": [
+      379.68,
+      380.8
+    ]
+  },
+  "cleanup": {
+    "filters": "equalizer=f=9050:t=q:w=30:g=-16,equalizer=f=9330:t=q:w=30:g=-16,equalizer=f=9920:t=q:w=30:g=-14,equalizer=f=10860:t=q:w=30:g=-16,highshelf=f=4500:g=-3,lowpass=f=8500:p=2",
+    "samples": 19321532,
+    "sample_rate": 48000,
+    "seconds": 402.5319166666667,
+    "protected_first_seconds": 210,
+    "fully_filtered_from": 280,
+    "filtering_stops": 381.080958,
+    "fade_out_seconds": 0.2,
+    "peak": 0.8441162109375,
+    "unchanged_early_samples": true,
+    "unchanged_closing_samples": true
+  }
+}

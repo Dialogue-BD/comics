@@ -1,0 +1,2684 @@
+{
+  "text": " Prepare a feast, the father said. We're going to celebrate. Soon, food was cooking in great pots. The courtyard filled with music and laughter. My son was lost, now he's found. I thought I'd lost him forever, but he's home. Meanwhile, the older brother was coming back from the fields. He heard the music before he reached the house. A boy ran out of the courtyard. Your brother's home, he said. Your father's having a feast because he's come back safe. The older brother's face changed. A feast? For him? After everything he's done?",
+  "segments": [
+    {
+      "start": 0.26,
+      "end": 2.52,
+      "text": " Prepare a feast, the father said.",
+      "seek": 0.0,
+      "tokens": [
+        29689,
+        257,
+        23707,
+        11,
+        264,
+        3086,
+        848,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1482423112747517,
+      "compression_ratio": 1.5205479452054795,
+      "no_speech_prob": 0.10989367216825485,
+      "words": [
+        {
+          "word": " Prepare",
+          "start": 0.26,
+          "end": 0.64,
+          "probability": 0.00637842807918787,
+          "tokens": [
+            29689
+          ]
+        },
+        {
+          "word": " a",
+          "start": 0.64,
+          "end": 1.06,
+          "probability": 0.9666092395782471,
+          "tokens": [
+            257
+          ]
+        },
+        {
+          "word": " feast,",
+          "start": 1.06,
+          "end": 1.4,
+          "probability": 0.9693899154663086,
+          "tokens": [
+            23707,
+            11
+          ]
+        },
+        {
+          "word": " the",
+          "start": 1.9,
+          "end": 2.12,
+          "probability": 0.8995022773742676,
+          "tokens": [
+            264
+          ]
+        },
+        {
+          "word": " father",
+          "start": 2.2,
+          "end": 2.38,
+          "probability": 0.9117516875267029,
+          "tokens": [
+            3086
+          ]
+        },
+        {
+          "word": " said.",
+          "start": 2.38,
+          "end": 2.52,
+          "probability": 0.9979103207588196,
+          "tokens": [
+            848,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 3.62,
+      "end": 4.72,
+      "text": " We're going to celebrate.",
+      "seek": 0.0,
+      "tokens": [
+        492,
+        434,
+        516,
+        281,
+        8098,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1482423112747517,
+      "compression_ratio": 1.5205479452054795,
+      "no_speech_prob": 0.10989367216825485,
+      "words": [
+        {
+          "word": " We're",
+          "start": 3.62,
+          "end": 3.74,
+          "probability": 0.8194625079631805,
+          "tokens": [
+            492,
+            434
+          ]
+        },
+        {
+          "word": " going",
+          "start": 3.74,
+          "end": 3.96,
+          "probability": 0.9926459789276123,
+          "tokens": [
+            516
+          ]
+        },
+        {
+          "word": " to",
+          "start": 3.96,
+          "end": 4.22,
+          "probability": 0.9978886246681213,
+          "tokens": [
+            281
+          ]
+        },
+        {
+          "word": " celebrate.",
+          "start": 4.22,
+          "end": 4.72,
+          "probability": 0.9715708494186401,
+          "tokens": [
+            8098,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 6.16,
+      "end": 8.84,
+      "text": " Soon, food was cooking in great pots.",
+      "seek": 0.0,
+      "tokens": [
+        17610,
+        11,
+        1755,
+        390,
+        6361,
+        294,
+        869,
+        22022,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1482423112747517,
+      "compression_ratio": 1.5205479452054795,
+      "no_speech_prob": 0.10989367216825485,
+      "words": [
+        {
+          "word": " Soon,",
+          "start": 6.16,
+          "end": 6.42,
+          "probability": 0.9468522071838379,
+          "tokens": [
+            17610,
+            11
+          ]
+        },
+        {
+          "word": " food",
+          "start": 6.84,
+          "end": 7.04,
+          "probability": 0.9855217337608337,
+          "tokens": [
+            1755
+          ]
+        },
+        {
+          "word": " was",
+          "start": 7.04,
+          "end": 7.34,
+          "probability": 0.9992547631263733,
+          "tokens": [
+            390
+          ]
+        },
+        {
+          "word": " cooking",
+          "start": 7.34,
+          "end": 7.72,
+          "probability": 0.9986673593521118,
+          "tokens": [
+            6361
+          ]
+        },
+        {
+          "word": " in",
+          "start": 7.72,
+          "end": 8.04,
+          "probability": 0.9530593156814575,
+          "tokens": [
+            294
+          ]
+        },
+        {
+          "word": " great",
+          "start": 8.04,
+          "end": 8.44,
+          "probability": 0.9904348850250244,
+          "tokens": [
+            869
+          ]
+        },
+        {
+          "word": " pots.",
+          "start": 8.44,
+          "end": 8.84,
+          "probability": 0.9877586960792542,
+          "tokens": [
+            22022,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 9.7,
+      "end": 12.38,
+      "text": " The courtyard filled with music and laughter.",
+      "seek": 0.0,
+      "tokens": [
+        440,
+        41364,
+        6412,
+        365,
+        1318,
+        293,
+        13092,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1482423112747517,
+      "compression_ratio": 1.5205479452054795,
+      "no_speech_prob": 0.10989367216825485,
+      "words": [
+        {
+          "word": " The",
+          "start": 9.7,
+          "end": 9.8,
+          "probability": 0.9707622528076172,
+          "tokens": [
+            440
+          ]
+        },
+        {
+          "word": " courtyard",
+          "start": 9.8,
+          "end": 10.18,
+          "probability": 0.9754509329795837,
+          "tokens": [
+            41364
+          ]
+        },
+        {
+          "word": " filled",
+          "start": 10.18,
+          "end": 10.76,
+          "probability": 0.9951134324073792,
+          "tokens": [
+            6412
+          ]
+        },
+        {
+          "word": " with",
+          "start": 10.76,
+          "end": 11.1,
+          "probability": 0.9965454936027527,
+          "tokens": [
+            365
+          ]
+        },
+        {
+          "word": " music",
+          "start": 11.1,
+          "end": 11.66,
+          "probability": 0.9966489672660828,
+          "tokens": [
+            1318
+          ]
+        },
+        {
+          "word": " and",
+          "start": 11.88,
+          "end": 11.98,
+          "probability": 0.9630564451217651,
+          "tokens": [
+            293
+          ]
+        },
+        {
+          "word": " laughter.",
+          "start": 11.98,
+          "end": 12.38,
+          "probability": 0.9987176656723022,
+          "tokens": [
+            13092,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 13.5,
+      "end": 14.98,
+      "text": " My son was lost,",
+      "seek": 0.0,
+      "tokens": [
+        1222,
+        1872,
+        390,
+        2731,
+        11
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1482423112747517,
+      "compression_ratio": 1.5205479452054795,
+      "no_speech_prob": 0.10989367216825485,
+      "words": [
+        {
+          "word": " My",
+          "start": 13.5,
+          "end": 13.68,
+          "probability": 0.9861602187156677,
+          "tokens": [
+            1222
+          ]
+        },
+        {
+          "word": " son",
+          "start": 13.68,
+          "end": 14.1,
+          "probability": 0.9941238760948181,
+          "tokens": [
+            1872
+          ]
+        },
+        {
+          "word": " was",
+          "start": 14.1,
+          "end": 14.48,
+          "probability": 0.9969934225082397,
+          "tokens": [
+            390
+          ]
+        },
+        {
+          "word": " lost,",
+          "start": 14.48,
+          "end": 14.98,
+          "probability": 0.9979497790336609,
+          "tokens": [
+            2731,
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "start": 15.5,
+      "end": 16.68,
+      "text": " now he's found.",
+      "seek": 0.0,
+      "tokens": [
+        586,
+        415,
+        311,
+        1352,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1482423112747517,
+      "compression_ratio": 1.5205479452054795,
+      "no_speech_prob": 0.10989367216825485,
+      "words": [
+        {
+          "word": " now",
+          "start": 15.5,
+          "end": 15.82,
+          "probability": 0.954179584980011,
+          "tokens": [
+            586
+          ]
+        },
+        {
+          "word": " he's",
+          "start": 15.82,
+          "end": 16.26,
+          "probability": 0.9877062141895294,
+          "tokens": [
+            415,
+            311
+          ]
+        },
+        {
+          "word": " found.",
+          "start": 16.26,
+          "end": 16.68,
+          "probability": 0.9991436004638672,
+          "tokens": [
+            1352,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 17.24,
+      "end": 19.78,
+      "text": " I thought I'd lost him forever, but he's home.",
+      "seek": 0.0,
+      "tokens": [
+        286,
+        1194,
+        286,
+        1116,
+        2731,
+        796,
+        5680,
+        11,
+        457,
+        415,
+        311,
+        1280,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1482423112747517,
+      "compression_ratio": 1.5205479452054795,
+      "no_speech_prob": 0.10989367216825485,
+      "words": [
+        {
+          "word": " I",
+          "start": 17.24,
+          "end": 17.36,
+          "probability": 0.9889910221099854,
+          "tokens": [
+            286
+          ]
+        },
+        {
+          "word": " thought",
+          "start": 17.36,
+          "end": 17.64,
+          "probability": 0.989469051361084,
+          "tokens": [
+            1194
+          ]
+        },
+        {
+          "word": " I'd",
+          "start": 17.64,
+          "end": 17.88,
+          "probability": 0.9882315397262573,
+          "tokens": [
+            286,
+            1116
+          ]
+        },
+        {
+          "word": " lost",
+          "start": 17.88,
+          "end": 18.12,
+          "probability": 0.997921884059906,
+          "tokens": [
+            2731
+          ]
+        },
+        {
+          "word": " him",
+          "start": 18.12,
+          "end": 18.36,
+          "probability": 0.9991487264633179,
+          "tokens": [
+            796
+          ]
+        },
+        {
+          "word": " forever,",
+          "start": 18.36,
+          "end": 18.92,
+          "probability": 0.9172098636627197,
+          "tokens": [
+            5680,
+            11
+          ]
+        },
+        {
+          "word": " but",
+          "start": 19.06,
+          "end": 19.2,
+          "probability": 0.9949201941490173,
+          "tokens": [
+            457
+          ]
+        },
+        {
+          "word": " he's",
+          "start": 19.2,
+          "end": 19.44,
+          "probability": 0.9980601072311401,
+          "tokens": [
+            415,
+            311
+          ]
+        },
+        {
+          "word": " home.",
+          "start": 19.44,
+          "end": 19.78,
+          "probability": 0.9987057447433472,
+          "tokens": [
+            1280,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 21.0,
+      "end": 21.42,
+      "text": " Meanwhile,",
+      "seek": 0.0,
+      "tokens": [
+        13879,
+        11
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1482423112747517,
+      "compression_ratio": 1.5205479452054795,
+      "no_speech_prob": 0.10989367216825485,
+      "words": [
+        {
+          "word": " Meanwhile,",
+          "start": 21.0,
+          "end": 21.42,
+          "probability": 0.9728482961654663,
+          "tokens": [
+            13879,
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "start": 22.04,
+      "end": 24.44,
+      "text": " the older brother was coming back from the fields.",
+      "seek": 0.0,
+      "tokens": [
+        264,
+        4906,
+        3708,
+        390,
+        1348,
+        646,
+        490,
+        264,
+        7909,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1482423112747517,
+      "compression_ratio": 1.5205479452054795,
+      "no_speech_prob": 0.10989367216825485,
+      "words": [
+        {
+          "word": " the",
+          "start": 22.04,
+          "end": 22.14,
+          "probability": 0.9833633899688721,
+          "tokens": [
+            264
+          ]
+        },
+        {
+          "word": " older",
+          "start": 22.14,
+          "end": 22.44,
+          "probability": 0.9903672933578491,
+          "tokens": [
+            4906
+          ]
+        },
+        {
+          "word": " brother",
+          "start": 22.44,
+          "end": 22.8,
+          "probability": 0.9980042576789856,
+          "tokens": [
+            3708
+          ]
+        },
+        {
+          "word": " was",
+          "start": 22.8,
+          "end": 23.06,
+          "probability": 0.9969539642333984,
+          "tokens": [
+            390
+          ]
+        },
+        {
+          "word": " coming",
+          "start": 23.06,
+          "end": 23.32,
+          "probability": 0.9984198808670044,
+          "tokens": [
+            1348
+          ]
+        },
+        {
+          "word": " back",
+          "start": 23.32,
+          "end": 23.64,
+          "probability": 0.9988195300102234,
+          "tokens": [
+            646
+          ]
+        },
+        {
+          "word": " from",
+          "start": 23.64,
+          "end": 23.88,
+          "probability": 0.9978371262550354,
+          "tokens": [
+            490
+          ]
+        },
+        {
+          "word": " the",
+          "start": 23.88,
+          "end": 24.06,
+          "probability": 0.9989616870880127,
+          "tokens": [
+            264
+          ]
+        },
+        {
+          "word": " fields.",
+          "start": 24.06,
+          "end": 24.44,
+          "probability": 0.991664469242096,
+          "tokens": [
+            7909,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 25.2,
+      "end": 27.46,
+      "text": " He heard the music before he reached the house.",
+      "seek": 0.0,
+      "tokens": [
+        634,
+        2198,
+        264,
+        1318,
+        949,
+        415,
+        6488,
+        264,
+        1782,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1482423112747517,
+      "compression_ratio": 1.5205479452054795,
+      "no_speech_prob": 0.10989367216825485,
+      "words": [
+        {
+          "word": " He",
+          "start": 25.2,
+          "end": 25.3,
+          "probability": 0.9911820888519287,
+          "tokens": [
+            634
+          ]
+        },
+        {
+          "word": " heard",
+          "start": 25.3,
+          "end": 25.48,
+          "probability": 0.996691107749939,
+          "tokens": [
+            2198
+          ]
+        },
+        {
+          "word": " the",
+          "start": 25.48,
+          "end": 25.64,
+          "probability": 0.99530029296875,
+          "tokens": [
+            264
+          ]
+        },
+        {
+          "word": " music",
+          "start": 25.64,
+          "end": 26.1,
+          "probability": 0.9988681077957153,
+          "tokens": [
+            1318
+          ]
+        },
+        {
+          "word": " before",
+          "start": 26.38,
+          "end": 26.48,
+          "probability": 0.9904143810272217,
+          "tokens": [
+            949
+          ]
+        },
+        {
+          "word": " he",
+          "start": 26.48,
+          "end": 26.7,
+          "probability": 0.9984045624732971,
+          "tokens": [
+            415
+          ]
+        },
+        {
+          "word": " reached",
+          "start": 26.7,
+          "end": 27.0,
+          "probability": 0.9974383115768433,
+          "tokens": [
+            6488
+          ]
+        },
+        {
+          "word": " the",
+          "start": 27.14,
+          "end": 27.24,
+          "probability": 0.9980549812316895,
+          "tokens": [
+            264
+          ]
+        },
+        {
+          "word": " house.",
+          "start": 27.24,
+          "end": 27.46,
+          "probability": 0.9972932934761047,
+          "tokens": [
+            1782,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 28.4,
+      "end": 29.82,
+      "text": " A boy ran out of the courtyard.",
+      "seek": 28.4,
+      "tokens": [
+        316,
+        3237,
+        5872,
+        484,
+        295,
+        264,
+        41364,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1936564992685787,
+      "compression_ratio": 1.4113475177304964,
+      "no_speech_prob": 0.007285826839506626,
+      "words": [
+        {
+          "word": " A",
+          "start": 28.4,
+          "end": 28.58,
+          "probability": 0.08842362463474274,
+          "tokens": [
+            316
+          ]
+        },
+        {
+          "word": " boy",
+          "start": 28.58,
+          "end": 28.8,
+          "probability": 0.9682638645172119,
+          "tokens": [
+            3237
+          ]
+        },
+        {
+          "word": " ran",
+          "start": 28.8,
+          "end": 29.08,
+          "probability": 0.9932472705841064,
+          "tokens": [
+            5872
+          ]
+        },
+        {
+          "word": " out",
+          "start": 29.08,
+          "end": 29.3,
+          "probability": 0.9975683093070984,
+          "tokens": [
+            484
+          ]
+        },
+        {
+          "word": " of",
+          "start": 29.3,
+          "end": 29.4,
+          "probability": 0.9840635061264038,
+          "tokens": [
+            295
+          ]
+        },
+        {
+          "word": " the",
+          "start": 29.4,
+          "end": 29.52,
+          "probability": 0.9900569319725037,
+          "tokens": [
+            264
+          ]
+        },
+        {
+          "word": " courtyard.",
+          "start": 29.52,
+          "end": 29.82,
+          "probability": 0.9600011110305786,
+          "tokens": [
+            41364,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 30.62,
+      "end": 32.32,
+      "text": " Your brother's home, he said.",
+      "seek": 28.4,
+      "tokens": [
+        2260,
+        3708,
+        311,
+        1280,
+        11,
+        415,
+        848,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1936564992685787,
+      "compression_ratio": 1.4113475177304964,
+      "no_speech_prob": 0.007285826839506626,
+      "words": [
+        {
+          "word": " Your",
+          "start": 30.62,
+          "end": 30.72,
+          "probability": 0.39619120955467224,
+          "tokens": [
+            2260
+          ]
+        },
+        {
+          "word": " brother's",
+          "start": 30.72,
+          "end": 31.28,
+          "probability": 0.9508313238620758,
+          "tokens": [
+            3708,
+            311
+          ]
+        },
+        {
+          "word": " home,",
+          "start": 31.28,
+          "end": 31.5,
+          "probability": 0.9981938004493713,
+          "tokens": [
+            1280,
+            11
+          ]
+        },
+        {
+          "word": " he",
+          "start": 31.96,
+          "end": 32.06,
+          "probability": 0.8471431732177734,
+          "tokens": [
+            415
+          ]
+        },
+        {
+          "word": " said.",
+          "start": 32.06,
+          "end": 32.32,
+          "probability": 0.9966418743133545,
+          "tokens": [
+            848,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 32.76,
+      "end": 35.88,
+      "text": " Your father's having a feast because he's come back safe.",
+      "seek": 28.4,
+      "tokens": [
+        2260,
+        3086,
+        311,
+        1419,
+        257,
+        23707,
+        570,
+        415,
+        311,
+        808,
+        646,
+        3273,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1936564992685787,
+      "compression_ratio": 1.4113475177304964,
+      "no_speech_prob": 0.007285826839506626,
+      "words": [
+        {
+          "word": " Your",
+          "start": 32.76,
+          "end": 32.84,
+          "probability": 0.9657506942749023,
+          "tokens": [
+            2260
+          ]
+        },
+        {
+          "word": " father's",
+          "start": 32.84,
+          "end": 33.38,
+          "probability": 0.9520204067230225,
+          "tokens": [
+            3086,
+            311
+          ]
+        },
+        {
+          "word": " having",
+          "start": 33.38,
+          "end": 33.6,
+          "probability": 0.9983332753181458,
+          "tokens": [
+            1419
+          ]
+        },
+        {
+          "word": " a",
+          "start": 33.6,
+          "end": 33.8,
+          "probability": 0.9985401630401611,
+          "tokens": [
+            257
+          ]
+        },
+        {
+          "word": " feast",
+          "start": 33.8,
+          "end": 34.14,
+          "probability": 0.9881282448768616,
+          "tokens": [
+            23707
+          ]
+        },
+        {
+          "word": " because",
+          "start": 34.14,
+          "end": 34.68,
+          "probability": 0.747836709022522,
+          "tokens": [
+            570
+          ]
+        },
+        {
+          "word": " he's",
+          "start": 34.68,
+          "end": 34.94,
+          "probability": 0.992040365934372,
+          "tokens": [
+            415,
+            311
+          ]
+        },
+        {
+          "word": " come",
+          "start": 35.08,
+          "end": 35.2,
+          "probability": 0.9769588112831116,
+          "tokens": [
+            808
+          ]
+        },
+        {
+          "word": " back",
+          "start": 35.2,
+          "end": 35.44,
+          "probability": 0.9979625940322876,
+          "tokens": [
+            646
+          ]
+        },
+        {
+          "word": " safe.",
+          "start": 35.44,
+          "end": 35.88,
+          "probability": 0.9945110082626343,
+          "tokens": [
+            3273,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 37.04,
+      "end": 38.85,
+      "text": " The older brother's face changed.",
+      "seek": 28.4,
+      "tokens": [
+        440,
+        4906,
+        3708,
+        311,
+        1851,
+        3105,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1936564992685787,
+      "compression_ratio": 1.4113475177304964,
+      "no_speech_prob": 0.007285826839506626,
+      "words": [
+        {
+          "word": " The",
+          "start": 37.04,
+          "end": 37.14,
+          "probability": 0.9518230557441711,
+          "tokens": [
+            440
+          ]
+        },
+        {
+          "word": " older",
+          "start": 37.14,
+          "end": 37.36,
+          "probability": 0.9940339922904968,
+          "tokens": [
+            4906
+          ]
+        },
+        {
+          "word": " brother's",
+          "start": 37.36,
+          "end": 37.94,
+          "probability": 0.981216549873352,
+          "tokens": [
+            3708,
+            311
+          ]
+        },
+        {
+          "word": " face",
+          "start": 37.94,
+          "end": 38.2,
+          "probability": 0.9980809688568115,
+          "tokens": [
+            1851
+          ]
+        },
+        {
+          "word": " changed.",
+          "start": 38.2,
+          "end": 38.85,
+          "probability": 0.9947473406791687,
+          "tokens": [
+            3105,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 39.7,
+      "end": 40.32,
+      "text": " A feast?",
+      "seek": 28.4,
+      "tokens": [
+        316,
+        23707,
+        30
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1936564992685787,
+      "compression_ratio": 1.4113475177304964,
+      "no_speech_prob": 0.007285826839506626,
+      "words": [
+        {
+          "word": " A",
+          "start": 39.7,
+          "end": 39.82,
+          "probability": 0.9819536209106445,
+          "tokens": [
+            316
+          ]
+        },
+        {
+          "word": " feast?",
+          "start": 39.82,
+          "end": 40.32,
+          "probability": 0.9067156910896301,
+          "tokens": [
+            23707,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "start": 40.72,
+      "end": 41.28,
+      "text": " For him?",
+      "seek": 28.4,
+      "tokens": [
+        1171,
+        796,
+        30
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1936564992685787,
+      "compression_ratio": 1.4113475177304964,
+      "no_speech_prob": 0.007285826839506626,
+      "words": [
+        {
+          "word": " For",
+          "start": 40.72,
+          "end": 40.98,
+          "probability": 0.7042421698570251,
+          "tokens": [
+            1171
+          ]
+        },
+        {
+          "word": " him?",
+          "start": 40.98,
+          "end": 41.28,
+          "probability": 0.9916169047355652,
+          "tokens": [
+            796,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "start": 41.88,
+      "end": 43.38,
+      "text": " After everything he's done?",
+      "seek": 28.4,
+      "tokens": [
+        2381,
+        1203,
+        415,
+        311,
+        1096,
+        30
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.1936564992685787,
+      "compression_ratio": 1.4113475177304964,
+      "no_speech_prob": 0.007285826839506626,
+      "words": [
+        {
+          "word": " After",
+          "start": 41.88,
+          "end": 42.1,
+          "probability": 0.9682528972625732,
+          "tokens": [
+            2381
+          ]
+        },
+        {
+          "word": " everything",
+          "start": 42.28,
+          "end": 42.66,
+          "probability": 0.9950365424156189,
+          "tokens": [
+            1203
+          ]
+        },
+        {
+          "word": " he's",
+          "start": 42.66,
+          "end": 43.12,
+          "probability": 0.993303507566452,
+          "tokens": [
+            415,
+            311
+          ]
+        },
+        {
+          "word": " done?",
+          "start": 43.12,
+          "end": 43.38,
+          "probability": 0.9991728663444519,
+          "tokens": [
+            1096,
+            30
+          ]
+        }
+      ]
+    }
+  ],
+  "language": "en",
+  "ori_dict": {
+    "text": " Prepare a feast, the father said. We're going to celebrate. Soon, food was cooking in great pots. The courtyard filled with music and laughter. My son was lost, now he's found. I thought I'd lost him forever, but he's home. Meanwhile, the older brother was coming back from the fields. He heard the music before he reached the house. A boy ran out of the courtyard. Your brother's home, he said. Your father's having a feast because he's come back safe. The older brother's face changed. A feast? For him? After everything he's done?",
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.26,
+        "end": 2.52,
+        "text": " Prepare a feast, the father said.",
+        "seek": 0.0,
+        "tokens": [
+          29689,
+          257,
+          23707,
+          11,
+          264,
+          3086,
+          848,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1482423112747517,
+        "compression_ratio": 1.5205479452054795,
+        "no_speech_prob": 0.10989367216825485,
+        "words": [
+          {
+            "word": " Prepare",
+            "start": 0.26,
+            "end": 0.64,
+            "probability": 0.00637842807918787,
+            "tokens": [
+              29689
+            ]
+          },
+          {
+            "word": " a",
+            "start": 0.64,
+            "end": 1.06,
+            "probability": 0.9666092395782471,
+            "tokens": [
+              257
+            ]
+          },
+          {
+            "word": " feast,",
+            "start": 1.06,
+            "end": 1.4,
+            "probability": 0.9693899154663086,
+            "tokens": [
+              23707,
+              11
+            ]
+          },
+          {
+            "word": " the",
+            "start": 1.9,
+            "end": 2.12,
+            "probability": 0.8995022773742676,
+            "tokens": [
+              264
+            ]
+          },
+          {
+            "word": " father",
+            "start": 2.2,
+            "end": 2.38,
+            "probability": 0.9117516875267029,
+            "tokens": [
+              3086
+            ]
+          },
+          {
+            "word": " said.",
+            "start": 2.38,
+            "end": 2.52,
+            "probability": 0.9979103207588196,
+            "tokens": [
+              848,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "start": 3.62,
+        "end": 4.72,
+        "text": " We're going to celebrate.",
+        "seek": 0.0,
+        "tokens": [
+          492,
+          434,
+          516,
+          281,
+          8098,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1482423112747517,
+        "compression_ratio": 1.5205479452054795,
+        "no_speech_prob": 0.10989367216825485,
+        "words": [
+          {
+            "word": " We're",
+            "start": 3.62,
+            "end": 3.74,
+            "probability": 0.8194625079631805,
+            "tokens": [
+              492,
+              434
+            ]
+          },
+          {
+            "word": " going",
+            "start": 3.74,
+            "end": 3.96,
+            "probability": 0.9926459789276123,
+            "tokens": [
+              516
+            ]
+          },
+          {
+            "word": " to",
+            "start": 3.96,
+            "end": 4.22,
+            "probability": 0.9978886246681213,
+            "tokens": [
+              281
+            ]
+          },
+          {
+            "word": " celebrate.",
+            "start": 4.22,
+            "end": 4.72,
+            "probability": 0.9715708494186401,
+            "tokens": [
+              8098,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "start": 6.16,
+        "end": 8.84,
+        "text": " Soon, food was cooking in great pots.",
+        "seek": 0.0,
+        "tokens": [
+          17610,
+          11,
+          1755,
+          390,
+          6361,
+          294,
+          869,
+          22022,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1482423112747517,
+        "compression_ratio": 1.5205479452054795,
+        "no_speech_prob": 0.10989367216825485,
+        "words": [
+          {
+            "word": " Soon,",
+            "start": 6.16,
+            "end": 6.42,
+            "probability": 0.9468522071838379,
+            "tokens": [
+              17610,
+              11
+            ]
+          },
+          {
+            "word": " food",
+            "start": 6.84,
+            "end": 7.04,
+            "probability": 0.9855217337608337,
+            "tokens": [
+              1755
+            ]
+          },
+          {
+            "word": " was",
+            "start": 7.04,
+            "end": 7.34,
+            "probability": 0.9992547631263733,
+            "tokens": [
+              390
+            ]
+          },
+          {
+            "word": " cooking",
+            "start": 7.34,
+            "end": 7.72,
+            "probability": 0.9986673593521118,
+            "tokens": [
+              6361
+            ]
+          },
+          {
+            "word": " in",
+            "start": 7.72,
+            "end": 8.04,
+            "probability": 0.9530593156814575,
+            "tokens": [
+              294
+            ]
+          },
+          {
+            "word": " great",
+            "start": 8.04,
+            "end": 8.44,
+            "probability": 0.9904348850250244,
+            "tokens": [
+              869
+            ]
+          },
+          {
+            "word": " pots.",
+            "start": 8.44,
+            "end": 8.84,
+            "probability": 0.9877586960792542,
+            "tokens": [
+              22022,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "start": 9.7,
+        "end": 12.38,
+        "text": " The courtyard filled with music and laughter.",
+        "seek": 0.0,
+        "tokens": [
+          440,
+          41364,
+          6412,
+          365,
+          1318,
+          293,
+          13092,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1482423112747517,
+        "compression_ratio": 1.5205479452054795,
+        "no_speech_prob": 0.10989367216825485,
+        "words": [
+          {
+            "word": " The",
+            "start": 9.7,
+            "end": 9.8,
+            "probability": 0.9707622528076172,
+            "tokens": [
+              440
+            ]
+          },
+          {
+            "word": " courtyard",
+            "start": 9.8,
+            "end": 10.18,
+            "probability": 0.9754509329795837,
+            "tokens": [
+              41364
+            ]
+          },
+          {
+            "word": " filled",
+            "start": 10.18,
+            "end": 10.76,
+            "probability": 0.9951134324073792,
+            "tokens": [
+              6412
+            ]
+          },
+          {
+            "word": " with",
+            "start": 10.76,
+            "end": 11.1,
+            "probability": 0.9965454936027527,
+            "tokens": [
+              365
+            ]
+          },
+          {
+            "word": " music",
+            "start": 11.1,
+            "end": 11.66,
+            "probability": 0.9966489672660828,
+            "tokens": [
+              1318
+            ]
+          },
+          {
+            "word": " and",
+            "start": 11.88,
+            "end": 11.98,
+            "probability": 0.9630564451217651,
+            "tokens": [
+              293
+            ]
+          },
+          {
+            "word": " laughter.",
+            "start": 11.98,
+            "end": 12.38,
+            "probability": 0.9987176656723022,
+            "tokens": [
+              13092,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "start": 13.5,
+        "end": 16.68,
+        "text": " My son was lost, now he's found.",
+        "seek": 0.0,
+        "tokens": [
+          1222,
+          1872,
+          390,
+          2731,
+          11,
+          586,
+          415,
+          311,
+          1352,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1482423112747517,
+        "compression_ratio": 1.5205479452054795,
+        "no_speech_prob": 0.10989367216825485,
+        "words": [
+          {
+            "word": " My",
+            "start": 13.5,
+            "end": 13.68,
+            "probability": 0.9861602187156677,
+            "tokens": [
+              1222
+            ]
+          },
+          {
+            "word": " son",
+            "start": 13.68,
+            "end": 14.1,
+            "probability": 0.9941238760948181,
+            "tokens": [
+              1872
+            ]
+          },
+          {
+            "word": " was",
+            "start": 14.1,
+            "end": 14.48,
+            "probability": 0.9969934225082397,
+            "tokens": [
+              390
+            ]
+          },
+          {
+            "word": " lost,",
+            "start": 14.48,
+            "end": 14.98,
+            "probability": 0.9979497790336609,
+            "tokens": [
+              2731,
+              11
+            ]
+          },
+          {
+            "word": " now",
+            "start": 15.5,
+            "end": 15.82,
+            "probability": 0.954179584980011,
+            "tokens": [
+              586
+            ]
+          },
+          {
+            "word": " he's",
+            "start": 15.82,
+            "end": 16.26,
+            "probability": 0.9877062141895294,
+            "tokens": [
+              415,
+              311
+            ]
+          },
+          {
+            "word": " found.",
+            "start": 16.26,
+            "end": 16.68,
+            "probability": 0.9991436004638672,
+            "tokens": [
+              1352,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "start": 17.24,
+        "end": 19.78,
+        "text": " I thought I'd lost him forever, but he's home.",
+        "seek": 0.0,
+        "tokens": [
+          286,
+          1194,
+          286,
+          1116,
+          2731,
+          796,
+          5680,
+          11,
+          457,
+          415,
+          311,
+          1280,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1482423112747517,
+        "compression_ratio": 1.5205479452054795,
+        "no_speech_prob": 0.10989367216825485,
+        "words": [
+          {
+            "word": " I",
+            "start": 17.24,
+            "end": 17.36,
+            "probability": 0.9889910221099854,
+            "tokens": [
+              286
+            ]
+          },
+          {
+            "word": " thought",
+            "start": 17.36,
+            "end": 17.64,
+            "probability": 0.989469051361084,
+            "tokens": [
+              1194
+            ]
+          },
+          {
+            "word": " I'd",
+            "start": 17.64,
+            "end": 17.88,
+            "probability": 0.9882315397262573,
+            "tokens": [
+              286,
+              1116
+            ]
+          },
+          {
+            "word": " lost",
+            "start": 17.88,
+            "end": 18.12,
+            "probability": 0.997921884059906,
+            "tokens": [
+              2731
+            ]
+          },
+          {
+            "word": " him",
+            "start": 18.12,
+            "end": 18.36,
+            "probability": 0.9991487264633179,
+            "tokens": [
+              796
+            ]
+          },
+          {
+            "word": " forever,",
+            "start": 18.36,
+            "end": 18.92,
+            "probability": 0.9172098636627197,
+            "tokens": [
+              5680,
+              11
+            ]
+          },
+          {
+            "word": " but",
+            "start": 19.06,
+            "end": 19.2,
+            "probability": 0.9949201941490173,
+            "tokens": [
+              457
+            ]
+          },
+          {
+            "word": " he's",
+            "start": 19.2,
+            "end": 19.44,
+            "probability": 0.9980601072311401,
+            "tokens": [
+              415,
+              311
+            ]
+          },
+          {
+            "word": " home.",
+            "start": 19.44,
+            "end": 19.78,
+            "probability": 0.9987057447433472,
+            "tokens": [
+              1280,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "start": 21.0,
+        "end": 24.44,
+        "text": " Meanwhile, the older brother was coming back from the fields.",
+        "seek": 0.0,
+        "tokens": [
+          13879,
+          11,
+          264,
+          4906,
+          3708,
+          390,
+          1348,
+          646,
+          490,
+          264,
+          7909,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1482423112747517,
+        "compression_ratio": 1.5205479452054795,
+        "no_speech_prob": 0.10989367216825485,
+        "words": [
+          {
+            "word": " Meanwhile,",
+            "start": 21.0,
+            "end": 21.42,
+            "probability": 0.9728482961654663,
+            "tokens": [
+              13879,
+              11
+            ]
+          },
+          {
+            "word": " the",
+            "start": 22.04,
+            "end": 22.14,
+            "probability": 0.9833633899688721,
+            "tokens": [
+              264
+            ]
+          },
+          {
+            "word": " older",
+            "start": 22.14,
+            "end": 22.44,
+            "probability": 0.9903672933578491,
+            "tokens": [
+              4906
+            ]
+          },
+          {
+            "word": " brother",
+            "start": 22.44,
+            "end": 22.8,
+            "probability": 0.9980042576789856,
+            "tokens": [
+              3708
+            ]
+          },
+          {
+            "word": " was",
+            "start": 22.8,
+            "end": 23.06,
+            "probability": 0.9969539642333984,
+            "tokens": [
+              390
+            ]
+          },
+          {
+            "word": " coming",
+            "start": 23.06,
+            "end": 23.32,
+            "probability": 0.9984198808670044,
+            "tokens": [
+              1348
+            ]
+          },
+          {
+            "word": " back",
+            "start": 23.32,
+            "end": 23.64,
+            "probability": 0.9988195300102234,
+            "tokens": [
+              646
+            ]
+          },
+          {
+            "word": " from",
+            "start": 23.64,
+            "end": 23.88,
+            "probability": 0.9978371262550354,
+            "tokens": [
+              490
+            ]
+          },
+          {
+            "word": " the",
+            "start": 23.88,
+            "end": 24.06,
+            "probability": 0.9989616870880127,
+            "tokens": [
+              264
+            ]
+          },
+          {
+            "word": " fields.",
+            "start": 24.06,
+            "end": 24.44,
+            "probability": 0.991664469242096,
+            "tokens": [
+              7909,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "start": 25.2,
+        "end": 27.46,
+        "text": " He heard the music before he reached the house.",
+        "seek": 0.0,
+        "tokens": [
+          634,
+          2198,
+          264,
+          1318,
+          949,
+          415,
+          6488,
+          264,
+          1782,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1482423112747517,
+        "compression_ratio": 1.5205479452054795,
+        "no_speech_prob": 0.10989367216825485,
+        "words": [
+          {
+            "word": " He",
+            "start": 25.2,
+            "end": 25.3,
+            "probability": 0.9911820888519287,
+            "tokens": [
+              634
+            ]
+          },
+          {
+            "word": " heard",
+            "start": 25.3,
+            "end": 25.48,
+            "probability": 0.996691107749939,
+            "tokens": [
+              2198
+            ]
+          },
+          {
+            "word": " the",
+            "start": 25.48,
+            "end": 25.64,
+            "probability": 0.99530029296875,
+            "tokens": [
+              264
+            ]
+          },
+          {
+            "word": " music",
+            "start": 25.64,
+            "end": 26.1,
+            "probability": 0.9988681077957153,
+            "tokens": [
+              1318
+            ]
+          },
+          {
+            "word": " before",
+            "start": 26.38,
+            "end": 26.48,
+            "probability": 0.9904143810272217,
+            "tokens": [
+              949
+            ]
+          },
+          {
+            "word": " he",
+            "start": 26.48,
+            "end": 26.7,
+            "probability": 0.9984045624732971,
+            "tokens": [
+              415
+            ]
+          },
+          {
+            "word": " reached",
+            "start": 26.7,
+            "end": 27.0,
+            "probability": 0.9974383115768433,
+            "tokens": [
+              6488
+            ]
+          },
+          {
+            "word": " the",
+            "start": 27.14,
+            "end": 27.24,
+            "probability": 0.9980549812316895,
+            "tokens": [
+              264
+            ]
+          },
+          {
+            "word": " house.",
+            "start": 27.24,
+            "end": 27.46,
+            "probability": 0.9972932934761047,
+            "tokens": [
+              1782,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "start": 28.4,
+        "end": 29.82,
+        "text": " A boy ran out of the courtyard.",
+        "seek": 28.4,
+        "tokens": [
+          316,
+          3237,
+          5872,
+          484,
+          295,
+          264,
+          41364,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1936564992685787,
+        "compression_ratio": 1.4113475177304964,
+        "no_speech_prob": 0.007285826839506626,
+        "words": [
+          {
+            "word": " A",
+            "start": 28.4,
+            "end": 28.58,
+            "probability": 0.08842362463474274,
+            "tokens": [
+              316
+            ]
+          },
+          {
+            "word": " boy",
+            "start": 28.58,
+            "end": 28.8,
+            "probability": 0.9682638645172119,
+            "tokens": [
+              3237
+            ]
+          },
+          {
+            "word": " ran",
+            "start": 28.8,
+            "end": 29.08,
+            "probability": 0.9932472705841064,
+            "tokens": [
+              5872
+            ]
+          },
+          {
+            "word": " out",
+            "start": 29.08,
+            "end": 29.3,
+            "probability": 0.9975683093070984,
+            "tokens": [
+              484
+            ]
+          },
+          {
+            "word": " of",
+            "start": 29.3,
+            "end": 29.4,
+            "probability": 0.9840635061264038,
+            "tokens": [
+              295
+            ]
+          },
+          {
+            "word": " the",
+            "start": 29.4,
+            "end": 29.52,
+            "probability": 0.9900569319725037,
+            "tokens": [
+              264
+            ]
+          },
+          {
+            "word": " courtyard.",
+            "start": 29.52,
+            "end": 29.82,
+            "probability": 0.9600011110305786,
+            "tokens": [
+              41364,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "start": 30.62,
+        "end": 32.32,
+        "text": " Your brother's home, he said.",
+        "seek": 28.4,
+        "tokens": [
+          2260,
+          3708,
+          311,
+          1280,
+          11,
+          415,
+          848,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1936564992685787,
+        "compression_ratio": 1.4113475177304964,
+        "no_speech_prob": 0.007285826839506626,
+        "words": [
+          {
+            "word": " Your",
+            "start": 30.62,
+            "end": 30.72,
+            "probability": 0.39619120955467224,
+            "tokens": [
+              2260
+            ]
+          },
+          {
+            "word": " brother's",
+            "start": 30.72,
+            "end": 31.28,
+            "probability": 0.9508313238620758,
+            "tokens": [
+              3708,
+              311
+            ]
+          },
+          {
+            "word": " home,",
+            "start": 31.28,
+            "end": 31.5,
+            "probability": 0.9981938004493713,
+            "tokens": [
+              1280,
+              11
+            ]
+          },
+          {
+            "word": " he",
+            "start": 31.96,
+            "end": 32.06,
+            "probability": 0.8471431732177734,
+            "tokens": [
+              415
+            ]
+          },
+          {
+            "word": " said.",
+            "start": 32.06,
+            "end": 32.32,
+            "probability": 0.9966418743133545,
+            "tokens": [
+              848,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "start": 32.76,
+        "end": 35.88,
+        "text": " Your father's having a feast because he's come back safe.",
+        "seek": 28.4,
+        "tokens": [
+          2260,
+          3086,
+          311,
+          1419,
+          257,
+          23707,
+          570,
+          415,
+          311,
+          808,
+          646,
+          3273,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1936564992685787,
+        "compression_ratio": 1.4113475177304964,
+        "no_speech_prob": 0.007285826839506626,
+        "words": [
+          {
+            "word": " Your",
+            "start": 32.76,
+            "end": 32.84,
+            "probability": 0.9657506942749023,
+            "tokens": [
+              2260
+            ]
+          },
+          {
+            "word": " father's",
+            "start": 32.84,
+            "end": 33.38,
+            "probability": 0.9520204067230225,
+            "tokens": [
+              3086,
+              311
+            ]
+          },
+          {
+            "word": " having",
+            "start": 33.38,
+            "end": 33.6,
+            "probability": 0.9983332753181458,
+            "tokens": [
+              1419
+            ]
+          },
+          {
+            "word": " a",
+            "start": 33.6,
+            "end": 33.8,
+            "probability": 0.9985401630401611,
+            "tokens": [
+              257
+            ]
+          },
+          {
+            "word": " feast",
+            "start": 33.8,
+            "end": 34.14,
+            "probability": 0.9881282448768616,
+            "tokens": [
+              23707
+            ]
+          },
+          {
+            "word": " because",
+            "start": 34.14,
+            "end": 34.68,
+            "probability": 0.747836709022522,
+            "tokens": [
+              570
+            ]
+          },
+          {
+            "word": " he's",
+            "start": 34.68,
+            "end": 34.94,
+            "probability": 0.992040365934372,
+            "tokens": [
+              415,
+              311
+            ]
+          },
+          {
+            "word": " come",
+            "start": 35.08,
+            "end": 35.2,
+            "probability": 0.9769588112831116,
+            "tokens": [
+              808
+            ]
+          },
+          {
+            "word": " back",
+            "start": 35.2,
+            "end": 35.44,
+            "probability": 0.9979625940322876,
+            "tokens": [
+              646
+            ]
+          },
+          {
+            "word": " safe.",
+            "start": 35.44,
+            "end": 35.88,
+            "probability": 0.9945110082626343,
+            "tokens": [
+              3273,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "start": 37.04,
+        "end": 38.92,
+        "text": " The older brother's face changed.",
+        "seek": 28.4,
+        "tokens": [
+          440,
+          4906,
+          3708,
+          311,
+          1851,
+          3105,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1936564992685787,
+        "compression_ratio": 1.4113475177304964,
+        "no_speech_prob": 0.007285826839506626,
+        "words": [
+          {
+            "word": " The",
+            "start": 37.04,
+            "end": 37.14,
+            "probability": 0.9518230557441711,
+            "tokens": [
+              440
+            ]
+          },
+          {
+            "word": " older",
+            "start": 37.14,
+            "end": 37.36,
+            "probability": 0.9940339922904968,
+            "tokens": [
+              4906
+            ]
+          },
+          {
+            "word": " brother's",
+            "start": 37.36,
+            "end": 37.94,
+            "probability": 0.981216549873352,
+            "tokens": [
+              3708,
+              311
+            ]
+          },
+          {
+            "word": " face",
+            "start": 37.94,
+            "end": 38.2,
+            "probability": 0.9980809688568115,
+            "tokens": [
+              1851
+            ]
+          },
+          {
+            "word": " changed.",
+            "start": 38.2,
+            "end": 38.92,
+            "probability": 0.9947473406791687,
+            "tokens": [
+              3105,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "start": 39.7,
+        "end": 41.28,
+        "text": " A feast? For him?",
+        "seek": 28.4,
+        "tokens": [
+          316,
+          23707,
+          30,
+          1171,
+          796,
+          30
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1936564992685787,
+        "compression_ratio": 1.4113475177304964,
+        "no_speech_prob": 0.007285826839506626,
+        "words": [
+          {
+            "word": " A",
+            "start": 39.7,
+            "end": 39.82,
+            "probability": 0.9819536209106445,
+            "tokens": [
+              316
+            ]
+          },
+          {
+            "word": " feast?",
+            "start": 39.82,
+            "end": 40.32,
+            "probability": 0.9067156910896301,
+            "tokens": [
+              23707,
+              30
+            ]
+          },
+          {
+            "word": " For",
+            "start": 40.72,
+            "end": 40.98,
+            "probability": 0.7042421698570251,
+            "tokens": [
+              1171
+            ]
+          },
+          {
+            "word": " him?",
+            "start": 40.98,
+            "end": 41.28,
+            "probability": 0.9916169047355652,
+            "tokens": [
+              796,
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "start": 41.88,
+        "end": 43.38,
+        "text": " After everything he's done?",
+        "seek": 28.4,
+        "tokens": [
+          2381,
+          1203,
+          415,
+          311,
+          1096,
+          30
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1936564992685787,
+        "compression_ratio": 1.4113475177304964,
+        "no_speech_prob": 0.007285826839506626,
+        "words": [
+          {
+            "word": " After",
+            "start": 41.88,
+            "end": 42.1,
+            "probability": 0.9682528972625732,
+            "tokens": [
+              2381
+            ]
+          },
+          {
+            "word": " everything",
+            "start": 42.28,
+            "end": 42.66,
+            "probability": 0.9950365424156189,
+            "tokens": [
+              1203
+            ]
+          },
+          {
+            "word": " he's",
+            "start": 42.66,
+            "end": 43.12,
+            "probability": 0.993303507566452,
+            "tokens": [
+              415,
+              311
+            ]
+          },
+          {
+            "word": " done?",
+            "start": 43.12,
+            "end": 43.38,
+            "probability": 0.9991728663444519,
+            "tokens": [
+              1096,
+              30
+            ]
+          }
+        ]
+      }
+    ],
+    "language": "en",
+    "time_scale": null
+  },
+  "regroup_history": "isp=1_cm=2.5+++0_sp=.* /\u3002/?/\uff1f+0+0++++1_sg=0.5+0+0+1_sp=,* /\uff0c+0+0++50++1_sl=70++1+0+0+0+0+1_cm=2.5+++0",
+  "nonspeech_sections": [
+    {
+      "start": 0.0,
+      "end": 0.26
+    },
+    {
+      "start": 0.46,
+      "end": 0.5
+    },
+    {
+      "start": 0.9,
+      "end": 0.92
+    },
+    {
+      "start": 1.08,
+      "end": 1.26
+    },
+    {
+      "start": 1.44,
+      "end": 2.2
+    },
+    {
+      "start": 2.52,
+      "end": 3.5
+    },
+    {
+      "start": 4.12,
+      "end": 4.14
+    },
+    {
+      "start": 4.72,
+      "end": 6.18
+    },
+    {
+      "start": 6.52,
+      "end": 6.56
+    },
+    {
+      "start": 6.7,
+      "end": 6.84
+    },
+    {
+      "start": 7.36,
+      "end": 7.5
+    },
+    {
+      "start": 7.64,
+      "end": 7.68
+    },
+    {
+      "start": 8.52,
+      "end": 8.68
+    },
+    {
+      "start": 8.84,
+      "end": 9.7
+    },
+    {
+      "start": 10.12,
+      "end": 10.14
+    },
+    {
+      "start": 10.4,
+      "end": 10.56
+    },
+    {
+      "start": 11.64,
+      "end": 11.92
+    },
+    {
+      "start": 12.38,
+      "end": 13.5
+    },
+    {
+      "start": 14.52,
+      "end": 14.54
+    },
+    {
+      "start": 15.04,
+      "end": 15.5
+    },
+    {
+      "start": 16.2,
+      "end": 16.38
+    },
+    {
+      "start": 16.78,
+      "end": 17.24
+    },
+    {
+      "start": 17.42,
+      "end": 17.5
+    },
+    {
+      "start": 18.46,
+      "end": 18.72
+    },
+    {
+      "start": 20.1,
+      "end": 21.06
+    },
+    {
+      "start": 21.8,
+      "end": 22.04
+    },
+    {
+      "start": 22.6,
+      "end": 22.62
+    },
+    {
+      "start": 23.1,
+      "end": 23.16
+    },
+    {
+      "start": 23.7,
+      "end": 23.82
+    },
+    {
+      "start": 24.08,
+      "end": 24.16
+    },
+    {
+      "start": 24.44,
+      "end": 25.22
+    },
+    {
+      "start": 26.22,
+      "end": 26.46
+    },
+    {
+      "start": 26.98,
+      "end": 27.18
+    },
+    {
+      "start": 27.46,
+      "end": 28.44
+    },
+    {
+      "start": 29.42,
+      "end": 29.6
+    },
+    {
+      "start": 29.78,
+      "end": 29.82
+    },
+    {
+      "start": 30.12,
+      "end": 30.58
+    },
+    {
+      "start": 31.7,
+      "end": 31.98
+    },
+    {
+      "start": 32.1,
+      "end": 32.16
+    },
+    {
+      "start": 32.32,
+      "end": 32.72
+    },
+    {
+      "start": 32.92,
+      "end": 33.0
+    },
+    {
+      "start": 33.82,
+      "end": 33.98
+    },
+    {
+      "start": 34.3,
+      "end": 34.64
+    },
+    {
+      "start": 34.92,
+      "end": 35.08
+    },
+    {
+      "start": 35.52,
+      "end": 35.58
+    },
+    {
+      "start": 35.94,
+      "end": 37.04
+    },
+    {
+      "start": 37.98,
+      "end": 38.02
+    },
+    {
+      "start": 38.32,
+      "end": 38.5
+    },
+    {
+      "start": 39.0,
+      "end": 39.7
+    },
+    {
+      "start": 39.88,
+      "end": 40.08
+    },
+    {
+      "start": 40.32,
+      "end": 41.14
+    },
+    {
+      "start": 41.54,
+      "end": 41.86
+    },
+    {
+      "start": 42.06,
+      "end": 42.28
+    },
+    {
+      "start": 42.7,
+      "end": 42.72
+    },
+    {
+      "start": 43.68,
+      "end": 44.0
+    }
+  ]
+}

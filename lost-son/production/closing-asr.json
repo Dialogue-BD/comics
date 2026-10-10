@@ -1,0 +1,1388 @@
+{
+  "text": " The father listened. My son, he said, you're always with me. Everything I have is yours. But we had to celebrate. Your brother was lost and now he's found. He was gone from us and now he's home. Come in, my son. Come and be glad with us.",
+  "segments": [
+    {
+      "start": 0.24,
+      "end": 1.44,
+      "text": " The father listened.",
+      "seek": 0.0,
+      "tokens": [
+        440,
+        3086,
+        13207,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.29271374473088907,
+      "compression_ratio": 1.4363636363636363,
+      "no_speech_prob": 0.07068834453821182,
+      "words": [
+        {
+          "word": " The",
+          "start": 0.24,
+          "end": 0.38,
+          "probability": 0.23760567605495453,
+          "tokens": [
+            440
+          ]
+        },
+        {
+          "word": " father",
+          "start": 0.38,
+          "end": 0.82,
+          "probability": 0.749980092048645,
+          "tokens": [
+            3086
+          ]
+        },
+        {
+          "word": " listened.",
+          "start": 0.82,
+          "end": 1.44,
+          "probability": 0.9848672747612,
+          "tokens": [
+            13207,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 2.44,
+      "end": 5.4,
+      "text": " My son, he said, you're always with me.",
+      "seek": 0.0,
+      "tokens": [
+        1222,
+        1872,
+        11,
+        415,
+        848,
+        11,
+        291,
+        434,
+        1009,
+        365,
+        385,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.29271374473088907,
+      "compression_ratio": 1.4363636363636363,
+      "no_speech_prob": 0.07068834453821182,
+      "words": [
+        {
+          "word": " My",
+          "start": 2.44,
+          "end": 2.6,
+          "probability": 0.6138160824775696,
+          "tokens": [
+            1222
+          ]
+        },
+        {
+          "word": " son,",
+          "start": 2.6,
+          "end": 3.04,
+          "probability": 0.9826292991638184,
+          "tokens": [
+            1872,
+            11
+          ]
+        },
+        {
+          "word": " he",
+          "start": 3.46,
+          "end": 3.56,
+          "probability": 0.9550399780273438,
+          "tokens": [
+            415
+          ]
+        },
+        {
+          "word": " said,",
+          "start": 3.56,
+          "end": 3.86,
+          "probability": 0.9981765747070312,
+          "tokens": [
+            848,
+            11
+          ]
+        },
+        {
+          "word": " you're",
+          "start": 4.28,
+          "end": 4.48,
+          "probability": 0.6994255483150482,
+          "tokens": [
+            291,
+            434
+          ]
+        },
+        {
+          "word": " always",
+          "start": 4.48,
+          "end": 4.94,
+          "probability": 0.9940198659896851,
+          "tokens": [
+            1009
+          ]
+        },
+        {
+          "word": " with",
+          "start": 4.94,
+          "end": 5.3,
+          "probability": 0.999427318572998,
+          "tokens": [
+            365
+          ]
+        },
+        {
+          "word": " me.",
+          "start": 5.3,
+          "end": 5.4,
+          "probability": 0.9980450868606567,
+          "tokens": [
+            385,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 6.06,
+      "end": 7.72,
+      "text": " Everything I have is yours.",
+      "seek": 0.0,
+      "tokens": [
+        5471,
+        286,
+        362,
+        307,
+        6342,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.29271374473088907,
+      "compression_ratio": 1.4363636363636363,
+      "no_speech_prob": 0.07068834453821182,
+      "words": [
+        {
+          "word": " Everything",
+          "start": 6.06,
+          "end": 6.48,
+          "probability": 0.9653095006942749,
+          "tokens": [
+            5471
+          ]
+        },
+        {
+          "word": " I",
+          "start": 6.48,
+          "end": 6.82,
+          "probability": 0.9960209727287292,
+          "tokens": [
+            286
+          ]
+        },
+        {
+          "word": " have",
+          "start": 6.82,
+          "end": 7.12,
+          "probability": 0.9983629584312439,
+          "tokens": [
+            362
+          ]
+        },
+        {
+          "word": " is",
+          "start": 7.12,
+          "end": 7.34,
+          "probability": 0.9960808157920837,
+          "tokens": [
+            307
+          ]
+        },
+        {
+          "word": " yours.",
+          "start": 7.34,
+          "end": 7.72,
+          "probability": 0.9954289197921753,
+          "tokens": [
+            6342,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 8.66,
+      "end": 10.06,
+      "text": " But we had to celebrate.",
+      "seek": 0.0,
+      "tokens": [
+        583,
+        321,
+        632,
+        281,
+        8098,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.29271374473088907,
+      "compression_ratio": 1.4363636363636363,
+      "no_speech_prob": 0.07068834453821182,
+      "words": [
+        {
+          "word": " But",
+          "start": 8.66,
+          "end": 8.8,
+          "probability": 0.9839644432067871,
+          "tokens": [
+            583
+          ]
+        },
+        {
+          "word": " we",
+          "start": 8.8,
+          "end": 9.02,
+          "probability": 0.9873708486557007,
+          "tokens": [
+            321
+          ]
+        },
+        {
+          "word": " had",
+          "start": 9.02,
+          "end": 9.34,
+          "probability": 0.9941337704658508,
+          "tokens": [
+            632
+          ]
+        },
+        {
+          "word": " to",
+          "start": 9.34,
+          "end": 9.56,
+          "probability": 0.9986969828605652,
+          "tokens": [
+            281
+          ]
+        },
+        {
+          "word": " celebrate.",
+          "start": 9.56,
+          "end": 10.06,
+          "probability": 0.9988935589790344,
+          "tokens": [
+            8098,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 10.78,
+      "end": 13.56,
+      "text": " Your brother was lost and now he's found.",
+      "seek": 0.0,
+      "tokens": [
+        2260,
+        3708,
+        390,
+        2731,
+        293,
+        586,
+        415,
+        311,
+        1352,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.29271374473088907,
+      "compression_ratio": 1.4363636363636363,
+      "no_speech_prob": 0.07068834453821182,
+      "words": [
+        {
+          "word": " Your",
+          "start": 10.78,
+          "end": 10.9,
+          "probability": 0.9908131957054138,
+          "tokens": [
+            2260
+          ]
+        },
+        {
+          "word": " brother",
+          "start": 10.9,
+          "end": 11.28,
+          "probability": 0.9959270358085632,
+          "tokens": [
+            3708
+          ]
+        },
+        {
+          "word": " was",
+          "start": 11.28,
+          "end": 11.54,
+          "probability": 0.9982808828353882,
+          "tokens": [
+            390
+          ]
+        },
+        {
+          "word": " lost",
+          "start": 11.54,
+          "end": 12.0,
+          "probability": 0.9985787868499756,
+          "tokens": [
+            2731
+          ]
+        },
+        {
+          "word": " and",
+          "start": 12.0,
+          "end": 12.56,
+          "probability": 0.23636884987354279,
+          "tokens": [
+            293
+          ]
+        },
+        {
+          "word": " now",
+          "start": 12.56,
+          "end": 12.88,
+          "probability": 0.9938378930091858,
+          "tokens": [
+            586
+          ]
+        },
+        {
+          "word": " he's",
+          "start": 12.88,
+          "end": 13.2,
+          "probability": 0.9821871519088745,
+          "tokens": [
+            415,
+            311
+          ]
+        },
+        {
+          "word": " found.",
+          "start": 13.2,
+          "end": 13.56,
+          "probability": 0.9992917776107788,
+          "tokens": [
+            1352,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 14.16,
+      "end": 16.56,
+      "text": " He was gone from us and now he's home.",
+      "seek": 0.0,
+      "tokens": [
+        634,
+        390,
+        2780,
+        490,
+        505,
+        293,
+        586,
+        415,
+        311,
+        1280,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.29271374473088907,
+      "compression_ratio": 1.4363636363636363,
+      "no_speech_prob": 0.07068834453821182,
+      "words": [
+        {
+          "word": " He",
+          "start": 14.16,
+          "end": 14.26,
+          "probability": 0.9922710657119751,
+          "tokens": [
+            634
+          ]
+        },
+        {
+          "word": " was",
+          "start": 14.26,
+          "end": 14.44,
+          "probability": 0.9979267120361328,
+          "tokens": [
+            390
+          ]
+        },
+        {
+          "word": " gone",
+          "start": 14.44,
+          "end": 14.8,
+          "probability": 0.9981258511543274,
+          "tokens": [
+            2780
+          ]
+        },
+        {
+          "word": " from",
+          "start": 14.8,
+          "end": 15.08,
+          "probability": 0.9991078972816467,
+          "tokens": [
+            490
+          ]
+        },
+        {
+          "word": " us",
+          "start": 15.08,
+          "end": 15.36,
+          "probability": 0.9986683130264282,
+          "tokens": [
+            505
+          ]
+        },
+        {
+          "word": " and",
+          "start": 15.36,
+          "end": 15.78,
+          "probability": 0.7943952679634094,
+          "tokens": [
+            293
+          ]
+        },
+        {
+          "word": " now",
+          "start": 15.78,
+          "end": 16.14,
+          "probability": 0.9965587258338928,
+          "tokens": [
+            586
+          ]
+        },
+        {
+          "word": " he's",
+          "start": 16.14,
+          "end": 16.46,
+          "probability": 0.9930477738380432,
+          "tokens": [
+            415,
+            311
+          ]
+        },
+        {
+          "word": " home.",
+          "start": 16.46,
+          "end": 16.56,
+          "probability": 0.9986300468444824,
+          "tokens": [
+            1280,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 17.74,
+      "end": 18.7,
+      "text": " Come in, my son.",
+      "seek": 0.0,
+      "tokens": [
+        2492,
+        294,
+        11,
+        452,
+        1872,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.29271374473088907,
+      "compression_ratio": 1.4363636363636363,
+      "no_speech_prob": 0.07068834453821182,
+      "words": [
+        {
+          "word": " Come",
+          "start": 17.74,
+          "end": 17.88,
+          "probability": 0.9877964854240417,
+          "tokens": [
+            2492
+          ]
+        },
+        {
+          "word": " in,",
+          "start": 17.88,
+          "end": 18.1,
+          "probability": 0.9965242743492126,
+          "tokens": [
+            294,
+            11
+          ]
+        },
+        {
+          "word": " my",
+          "start": 18.14,
+          "end": 18.32,
+          "probability": 0.9828888177871704,
+          "tokens": [
+            452
+          ]
+        },
+        {
+          "word": " son.",
+          "start": 18.32,
+          "end": 18.7,
+          "probability": 0.9981927275657654,
+          "tokens": [
+            1872,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 19.2,
+      "end": 20.84,
+      "text": " Come and be glad with us.",
+      "seek": 0.0,
+      "tokens": [
+        2492,
+        293,
+        312,
+        5404,
+        365,
+        505,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.29271374473088907,
+      "compression_ratio": 1.4363636363636363,
+      "no_speech_prob": 0.07068834453821182,
+      "words": [
+        {
+          "word": " Come",
+          "start": 19.2,
+          "end": 19.42,
+          "probability": 0.9925879836082458,
+          "tokens": [
+            2492
+          ]
+        },
+        {
+          "word": " and",
+          "start": 19.42,
+          "end": 19.7,
+          "probability": 0.9700636267662048,
+          "tokens": [
+            293
+          ]
+        },
+        {
+          "word": " be",
+          "start": 19.7,
+          "end": 19.88,
+          "probability": 0.9995942711830139,
+          "tokens": [
+            312
+          ]
+        },
+        {
+          "word": " glad",
+          "start": 19.88,
+          "end": 20.32,
+          "probability": 0.997246265411377,
+          "tokens": [
+            5404
+          ]
+        },
+        {
+          "word": " with",
+          "start": 20.32,
+          "end": 20.64,
+          "probability": 0.9993170499801636,
+          "tokens": [
+            365
+          ]
+        },
+        {
+          "word": " us.",
+          "start": 20.64,
+          "end": 20.84,
+          "probability": 0.999147891998291,
+          "tokens": [
+            505,
+            13
+          ]
+        }
+      ]
+    }
+  ],
+  "language": "en",
+  "ori_dict": {
+    "text": " The father listened. My son, he said, you're always with me. Everything I have is yours. But we had to celebrate. Your brother was lost and now he's found. He was gone from us and now he's home. Come in, my son. Come and be glad with us.",
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.24,
+        "end": 1.44,
+        "text": " The father listened.",
+        "seek": 0.0,
+        "tokens": [
+          440,
+          3086,
+          13207,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.29271374473088907,
+        "compression_ratio": 1.4363636363636363,
+        "no_speech_prob": 0.07068834453821182,
+        "words": [
+          {
+            "word": " The",
+            "start": 0.24,
+            "end": 0.38,
+            "probability": 0.23760567605495453,
+            "tokens": [
+              440
+            ]
+          },
+          {
+            "word": " father",
+            "start": 0.38,
+            "end": 0.82,
+            "probability": 0.749980092048645,
+            "tokens": [
+              3086
+            ]
+          },
+          {
+            "word": " listened.",
+            "start": 0.82,
+            "end": 1.44,
+            "probability": 0.9848672747612,
+            "tokens": [
+              13207,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "start": 2.44,
+        "end": 5.4,
+        "text": " My son, he said, you're always with me.",
+        "seek": 0.0,
+        "tokens": [
+          1222,
+          1872,
+          11,
+          415,
+          848,
+          11,
+          291,
+          434,
+          1009,
+          365,
+          385,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.29271374473088907,
+        "compression_ratio": 1.4363636363636363,
+        "no_speech_prob": 0.07068834453821182,
+        "words": [
+          {
+            "word": " My",
+            "start": 2.44,
+            "end": 2.6,
+            "probability": 0.6138160824775696,
+            "tokens": [
+              1222
+            ]
+          },
+          {
+            "word": " son,",
+            "start": 2.6,
+            "end": 3.04,
+            "probability": 0.9826292991638184,
+            "tokens": [
+              1872,
+              11
+            ]
+          },
+          {
+            "word": " he",
+            "start": 3.46,
+            "end": 3.56,
+            "probability": 0.9550399780273438,
+            "tokens": [
+              415
+            ]
+          },
+          {
+            "word": " said,",
+            "start": 3.56,
+            "end": 3.86,
+            "probability": 0.9981765747070312,
+            "tokens": [
+              848,
+              11
+            ]
+          },
+          {
+            "word": " you're",
+            "start": 4.28,
+            "end": 4.48,
+            "probability": 0.6994255483150482,
+            "tokens": [
+              291,
+              434
+            ]
+          },
+          {
+            "word": " always",
+            "start": 4.48,
+            "end": 4.94,
+            "probability": 0.9940198659896851,
+            "tokens": [
+              1009
+            ]
+          },
+          {
+            "word": " with",
+            "start": 4.94,
+            "end": 5.3,
+            "probability": 0.999427318572998,
+            "tokens": [
+              365
+            ]
+          },
+          {
+            "word": " me.",
+            "start": 5.3,
+            "end": 5.4,
+            "probability": 0.9980450868606567,
+            "tokens": [
+              385,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "start": 6.06,
+        "end": 7.72,
+        "text": " Everything I have is yours.",
+        "seek": 0.0,
+        "tokens": [
+          5471,
+          286,
+          362,
+          307,
+          6342,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.29271374473088907,
+        "compression_ratio": 1.4363636363636363,
+        "no_speech_prob": 0.07068834453821182,
+        "words": [
+          {
+            "word": " Everything",
+            "start": 6.06,
+            "end": 6.48,
+            "probability": 0.9653095006942749,
+            "tokens": [
+              5471
+            ]
+          },
+          {
+            "word": " I",
+            "start": 6.48,
+            "end": 6.82,
+            "probability": 0.9960209727287292,
+            "tokens": [
+              286
+            ]
+          },
+          {
+            "word": " have",
+            "start": 6.82,
+            "end": 7.12,
+            "probability": 0.9983629584312439,
+            "tokens": [
+              362
+            ]
+          },
+          {
+            "word": " is",
+            "start": 7.12,
+            "end": 7.34,
+            "probability": 0.9960808157920837,
+            "tokens": [
+              307
+            ]
+          },
+          {
+            "word": " yours.",
+            "start": 7.34,
+            "end": 7.72,
+            "probability": 0.9954289197921753,
+            "tokens": [
+              6342,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "start": 8.66,
+        "end": 10.06,
+        "text": " But we had to celebrate.",
+        "seek": 0.0,
+        "tokens": [
+          583,
+          321,
+          632,
+          281,
+          8098,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.29271374473088907,
+        "compression_ratio": 1.4363636363636363,
+        "no_speech_prob": 0.07068834453821182,
+        "words": [
+          {
+            "word": " But",
+            "start": 8.66,
+            "end": 8.8,
+            "probability": 0.9839644432067871,
+            "tokens": [
+              583
+            ]
+          },
+          {
+            "word": " we",
+            "start": 8.8,
+            "end": 9.02,
+            "probability": 0.9873708486557007,
+            "tokens": [
+              321
+            ]
+          },
+          {
+            "word": " had",
+            "start": 9.02,
+            "end": 9.34,
+            "probability": 0.9941337704658508,
+            "tokens": [
+              632
+            ]
+          },
+          {
+            "word": " to",
+            "start": 9.34,
+            "end": 9.56,
+            "probability": 0.9986969828605652,
+            "tokens": [
+              281
+            ]
+          },
+          {
+            "word": " celebrate.",
+            "start": 9.56,
+            "end": 10.06,
+            "probability": 0.9988935589790344,
+            "tokens": [
+              8098,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "start": 10.78,
+        "end": 13.56,
+        "text": " Your brother was lost and now he's found.",
+        "seek": 0.0,
+        "tokens": [
+          2260,
+          3708,
+          390,
+          2731,
+          293,
+          586,
+          415,
+          311,
+          1352,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.29271374473088907,
+        "compression_ratio": 1.4363636363636363,
+        "no_speech_prob": 0.07068834453821182,
+        "words": [
+          {
+            "word": " Your",
+            "start": 10.78,
+            "end": 10.9,
+            "probability": 0.9908131957054138,
+            "tokens": [
+              2260
+            ]
+          },
+          {
+            "word": " brother",
+            "start": 10.9,
+            "end": 11.28,
+            "probability": 0.9959270358085632,
+            "tokens": [
+              3708
+            ]
+          },
+          {
+            "word": " was",
+            "start": 11.28,
+            "end": 11.54,
+            "probability": 0.9982808828353882,
+            "tokens": [
+              390
+            ]
+          },
+          {
+            "word": " lost",
+            "start": 11.54,
+            "end": 12.0,
+            "probability": 0.9985787868499756,
+            "tokens": [
+              2731
+            ]
+          },
+          {
+            "word": " and",
+            "start": 12.0,
+            "end": 12.56,
+            "probability": 0.23636884987354279,
+            "tokens": [
+              293
+            ]
+          },
+          {
+            "word": " now",
+            "start": 12.56,
+            "end": 12.88,
+            "probability": 0.9938378930091858,
+            "tokens": [
+              586
+            ]
+          },
+          {
+            "word": " he's",
+            "start": 12.88,
+            "end": 13.2,
+            "probability": 0.9821871519088745,
+            "tokens": [
+              415,
+              311
+            ]
+          },
+          {
+            "word": " found.",
+            "start": 13.2,
+            "end": 13.56,
+            "probability": 0.9992917776107788,
+            "tokens": [
+              1352,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "start": 14.16,
+        "end": 16.56,
+        "text": " He was gone from us and now he's home.",
+        "seek": 0.0,
+        "tokens": [
+          634,
+          390,
+          2780,
+          490,
+          505,
+          293,
+          586,
+          415,
+          311,
+          1280,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.29271374473088907,
+        "compression_ratio": 1.4363636363636363,
+        "no_speech_prob": 0.07068834453821182,
+        "words": [
+          {
+            "word": " He",
+            "start": 14.16,
+            "end": 14.26,
+            "probability": 0.9922710657119751,
+            "tokens": [
+              634
+            ]
+          },
+          {
+            "word": " was",
+            "start": 14.26,
+            "end": 14.44,
+            "probability": 0.9979267120361328,
+            "tokens": [
+              390
+            ]
+          },
+          {
+            "word": " gone",
+            "start": 14.44,
+            "end": 14.8,
+            "probability": 0.9981258511543274,
+            "tokens": [
+              2780
+            ]
+          },
+          {
+            "word": " from",
+            "start": 14.8,
+            "end": 15.08,
+            "probability": 0.9991078972816467,
+            "tokens": [
+              490
+            ]
+          },
+          {
+            "word": " us",
+            "start": 15.08,
+            "end": 15.36,
+            "probability": 0.9986683130264282,
+            "tokens": [
+              505
+            ]
+          },
+          {
+            "word": " and",
+            "start": 15.36,
+            "end": 15.78,
+            "probability": 0.7943952679634094,
+            "tokens": [
+              293
+            ]
+          },
+          {
+            "word": " now",
+            "start": 15.78,
+            "end": 16.14,
+            "probability": 0.9965587258338928,
+            "tokens": [
+              586
+            ]
+          },
+          {
+            "word": " he's",
+            "start": 16.14,
+            "end": 16.46,
+            "probability": 0.9930477738380432,
+            "tokens": [
+              415,
+              311
+            ]
+          },
+          {
+            "word": " home.",
+            "start": 16.46,
+            "end": 16.56,
+            "probability": 0.9986300468444824,
+            "tokens": [
+              1280,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "start": 17.74,
+        "end": 18.7,
+        "text": " Come in, my son.",
+        "seek": 0.0,
+        "tokens": [
+          2492,
+          294,
+          11,
+          452,
+          1872,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.29271374473088907,
+        "compression_ratio": 1.4363636363636363,
+        "no_speech_prob": 0.07068834453821182,
+        "words": [
+          {
+            "word": " Come",
+            "start": 17.74,
+            "end": 17.88,
+            "probability": 0.9877964854240417,
+            "tokens": [
+              2492
+            ]
+          },
+          {
+            "word": " in,",
+            "start": 17.88,
+            "end": 18.1,
+            "probability": 0.9965242743492126,
+            "tokens": [
+              294,
+              11
+            ]
+          },
+          {
+            "word": " my",
+            "start": 18.14,
+            "end": 18.32,
+            "probability": 0.9828888177871704,
+            "tokens": [
+              452
+            ]
+          },
+          {
+            "word": " son.",
+            "start": 18.32,
+            "end": 18.7,
+            "probability": 0.9981927275657654,
+            "tokens": [
+              1872,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "start": 19.2,
+        "end": 20.84,
+        "text": " Come and be glad with us.",
+        "seek": 0.0,
+        "tokens": [
+          2492,
+          293,
+          312,
+          5404,
+          365,
+          505,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.29271374473088907,
+        "compression_ratio": 1.4363636363636363,
+        "no_speech_prob": 0.07068834453821182,
+        "words": [
+          {
+            "word": " Come",
+            "start": 19.2,
+            "end": 19.42,
+            "probability": 0.9925879836082458,
+            "tokens": [
+              2492
+            ]
+          },
+          {
+            "word": " and",
+            "start": 19.42,
+            "end": 19.7,
+            "probability": 0.9700636267662048,
+            "tokens": [
+              293
+            ]
+          },
+          {
+            "word": " be",
+            "start": 19.7,
+            "end": 19.88,
+            "probability": 0.9995942711830139,
+            "tokens": [
+              312
+            ]
+          },
+          {
+            "word": " glad",
+            "start": 19.88,
+            "end": 20.32,
+            "probability": 0.997246265411377,
+            "tokens": [
+              5404
+            ]
+          },
+          {
+            "word": " with",
+            "start": 20.32,
+            "end": 20.64,
+            "probability": 0.9993170499801636,
+            "tokens": [
+              365
+            ]
+          },
+          {
+            "word": " us.",
+            "start": 20.64,
+            "end": 20.84,
+            "probability": 0.999147891998291,
+            "tokens": [
+              505,
+              13
+            ]
+          }
+        ]
+      }
+    ],
+    "language": "en",
+    "time_scale": null
+  },
+  "regroup_history": "isp=1_cm=2.5+++0_sp=.* /\u3002/?/\uff1f+0+0++++1_sg=0.5+0+0+1_sp=,* /\uff0c+0+0++50++1_sl=70++1+0+0+0+0+1_cm=2.5+++0",
+  "nonspeech_sections": [
+    {
+      "start": 0.0,
+      "end": 0.24
+    },
+    {
+      "start": 0.44,
+      "end": 0.5
+    },
+    {
+      "start": 1.38,
+      "end": 1.42
+    },
+    {
+      "start": 1.68,
+      "end": 2.42
+    },
+    {
+      "start": 2.68,
+      "end": 2.7
+    },
+    {
+      "start": 3.26,
+      "end": 3.5
+    },
+    {
+      "start": 3.66,
+      "end": 3.7
+    },
+    {
+      "start": 3.86,
+      "end": 4.28
+    },
+    {
+      "start": 4.5,
+      "end": 4.56
+    },
+    {
+      "start": 5.32,
+      "end": 6.06
+    },
+    {
+      "start": 7.72,
+      "end": 7.8
+    },
+    {
+      "start": 7.98,
+      "end": 8.66
+    },
+    {
+      "start": 9.12,
+      "end": 9.18
+    },
+    {
+      "start": 9.46,
+      "end": 9.5
+    },
+    {
+      "start": 9.64,
+      "end": 9.74
+    },
+    {
+      "start": 10.3,
+      "end": 10.78
+    },
+    {
+      "start": 11.02,
+      "end": 11.04
+    },
+    {
+      "start": 12.2,
+      "end": 12.44
+    },
+    {
+      "start": 13.26,
+      "end": 13.32
+    },
+    {
+      "start": 13.82,
+      "end": 14.2
+    },
+    {
+      "start": 14.54,
+      "end": 14.58
+    },
+    {
+      "start": 15.42,
+      "end": 15.66
+    },
+    {
+      "start": 16.46,
+      "end": 16.54
+    },
+    {
+      "start": 17.02,
+      "end": 17.74
+    },
+    {
+      "start": 18.46,
+      "end": 18.48
+    },
+    {
+      "start": 18.88,
+      "end": 19.18
+    },
+    {
+      "start": 19.96,
+      "end": 20.06
+    },
+    {
+      "start": 20.64,
+      "end": 20.66
+    },
+    {
+      "start": 20.8,
+      "end": 20.82
+    },
+    {
+      "start": 20.96,
+      "end": 21.0
+    },
+    {
+      "start": 21.12,
+      "end": 21.48
+    }
+  ]
+}

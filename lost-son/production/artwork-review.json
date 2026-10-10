@@ -1,0 +1,20 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "target": "assets/source/page-3.jpg",
+  "output": "assets/source/page-3-cleaned.png",
+  "prompt": "Use case: precise-object-edit. Edit this existing landscape 16:9 photorealistic wordless graphic novel page very conservatively. Preserve every person, recognizable face, pose, scene, camera angle, panel boundary, white gutter, and object position. Preserve all ten panels exactly: three on top row, three middle, four bottom. The main young South Asian man must stay the same person and wear the same patterned shirts and jacket. Remove the small white numeric panel labels (4,5,6,7,8,9,10 and any others) by restoring the underlying scene seamlessly. Remove the Apple logo on the back of the phone in top-right panel, while keeping the cameras correctly on the back, hand, orientation and phone shape unchanged. Make any decorative lettering on the clothing non-readable. Keep currency as clearly Bangladeshi banknotes with indistinct fine detail, without readable letters or numbers. In the dinner group panels, give the women modest contemporary Bengali outfits with softly draped ornas covering their chest and shoulders; preserve their expressions and positions. Keep the glasses as soft drinks, no alcoholic branding or bottles. Preserve lively spending, buying things, expensive meals, friendly social scenes, decreasing money and empty wallet. Keep the original photographic natural lighting and visual quality. No new captions, labels, panel numbers, logos, readable text or speech bubbles. Do not redesign the page or change the story. Output one complete repaired landscape 16:9 page.",
+  "reviewed": "2026-10-09",
+  "inspection": [
+    "All seven original sheets inspected at full size.",
+    "Repaired spending page retains ten-panel layout, people, money progression, phone orientation, and restaurant scenes; labels and phone logo removed.",
+    "Reunion page 6 source remains unedited; its original source checksum is recorded in the manifest."
+  ],
+  "unchangedPages": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7
+  ]
+}

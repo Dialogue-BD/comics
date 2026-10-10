@@ -1,0 +1,81 @@
+{
+  "model": "Gemini 2.5 Pro Preview TTS",
+  "voice": "Gacrux",
+  "direction": "Warm, mature male storyteller, neutral General American English, around 145 words per minute. Conversational and clear for intermediate English learners. One consistent narrator with subtle quoted dialogue, never exaggerated character voices. Begin with gentle tension, keep city excitement light, speak the hardship quietly, and give the father’s running and embrace genuine tenderness without melodrama. Leave natural short pauses at paragraph boundaries and a calm longer breath at the silent embrace. End with the father’s open invitation, warm and unhurried. Pronounce veranda as vuh-RAN-duh. Read only the exact text. Do not speak directions, speaker names, headings, or paragraph numbers. No additions, music, or effects.",
+  "exactScript": "production/script.txt",
+  "sourceTake": "audio/_originals/lost-son-narration.wav",
+  "takes": [
+    {
+      "file": "audio/_originals/lost-son-narration.wav",
+      "script": "production/recording-submitted.txt",
+      "usedLines": [
+        0,
+        30
+      ]
+    },
+    {
+      "file": "audio/_originals/lost-son-father-reaction.wav",
+      "lines": [
+        4
+      ],
+      "text": "His father lowered his eyes. It hurt to let him go, but he didn’t force his son to stay."
+    },
+    {
+      "file": "audio/_originals/lost-son-closing.wav",
+      "lines": [
+        60,
+        61,
+        62
+      ],
+      "script": "production/closing-recording.txt",
+      "directionSuffix": "Keep every word and possessive exactly as written, especially Your brother."
+    },
+    {
+      "file": "audio/_originals/lost-son-return.wav",
+      "lines": [
+        31,
+        38
+      ],
+      "script": "production/short-take-return.txt",
+      "direction": "production/short-take-direction.txt"
+    },
+    {
+      "file": "audio/_originals/lost-son-running.wav",
+      "lines": [
+        39,
+        44
+      ],
+      "script": "production/short-take-running.txt",
+      "direction": "production/short-take-direction.txt"
+    },
+    {
+      "file": "audio/_originals/lost-son-embrace.wav",
+      "lines": [
+        45,
+        50
+      ],
+      "script": "production/short-take-embrace.txt",
+      "direction": "production/short-take-direction.txt"
+    },
+    {
+      "file": "audio/_originals/lost-son-celebration.wav",
+      "lines": [
+        51,
+        56
+      ],
+      "script": "production/short-take-celebration.txt",
+      "direction": "production/short-take-direction.txt"
+    },
+    {
+      "file": "audio/_originals/lost-son-older-brother.wav",
+      "lines": [
+        57,
+        59
+      ],
+      "script": "production/short-take-older-brother.txt",
+      "direction": "production/short-take-direction.txt"
+    }
+  ],
+  "shortTakeDirection": "Gacrux, the same mature male narrator as the beginning of this story. Natural, comfortable General American English. Use a relaxed, warm low-middle speaking register, clear consonants, and restrained pitch variation. Do not whisper, strain, rasp, become breathy, or raise the pitch to dramatize emotional dialogue. Let tenderness come from calm phrasing and short natural pauses. Narrate at about 145 words per minute. Keep one steady narrator voice for all quoted dialogue. Read the exact text with no additions or substitutions; do not speak directions, speaker labels, headings, or numbers. No music, effects, or theatrical vocal bursts.",
+  "repairDecision": "The initial spectral cleanup reduced whistles, but listener feedback still identified grating speech. Replace the long-take tail with short logical scenes using Gacrux."
+}

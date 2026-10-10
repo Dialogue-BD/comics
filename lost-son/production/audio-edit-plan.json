@@ -1,0 +1,9 @@
+{
+  "reason": "Match the early father-reaction caption to the father’s lowered eyes, without jumping ahead to cash already received.",
+  "line": 4,
+  "original": "The younger son could hardly believe it. His father had given him what he had asked for.",
+  "replacement": "His father lowered his eyes. It hurt to let him go, but he didn’t force his son to stay.",
+  "source": "audio/_originals/lost-son-narration.wav",
+  "correction": "audio/_originals/lost-son-father-reaction.wav",
+  "method": "Use acoustic line boundaries from the exact submitted script; rebuild from untouched dry takes and align the final assembly."
+}

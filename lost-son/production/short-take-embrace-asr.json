@@ -1,0 +1,3023 @@
+{
+  "text": " The young man dropped to his knees. His hands were empty. He had nothing to offer. Before he could explain, his father reached him and wrapped both arms around him. The father held his son's head against his face. For a moment, neither of them said anything. Then the son began, Father, I have sinned against God and against you. I am no longer worthy to be called your son anymore. But his father was already calling to the people in the house. Help him wash. Bring him our best clothes. The father helped him dress. He wasn't being received as a stranger or a worker. He was being welcomed as a son.",
+  "segments": [
+    {
+      "start": 0.18,
+      "end": 2.26,
+      "text": " The young man dropped to his knees.",
+      "seek": 0.0,
+      "tokens": [
+        440,
+        2037,
+        587,
+        8119,
+        281,
+        702,
+        10546,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.08752429989022269,
+      "compression_ratio": 1.5191256830601092,
+      "no_speech_prob": 0.25299549102783203,
+      "words": [
+        {
+          "word": " The",
+          "start": 0.18,
+          "end": 0.3,
+          "probability": 0.06892523169517517,
+          "tokens": [
+            440
+          ]
+        },
+        {
+          "word": " young",
+          "start": 0.3,
+          "end": 0.54,
+          "probability": 0.9895572066307068,
+          "tokens": [
+            2037
+          ]
+        },
+        {
+          "word": " man",
+          "start": 0.54,
+          "end": 0.88,
+          "probability": 0.9964194297790527,
+          "tokens": [
+            587
+          ]
+        },
+        {
+          "word": " dropped",
+          "start": 0.88,
+          "end": 1.32,
+          "probability": 0.9887748956680298,
+          "tokens": [
+            8119
+          ]
+        },
+        {
+          "word": " to",
+          "start": 1.32,
+          "end": 1.72,
+          "probability": 0.9934505224227905,
+          "tokens": [
+            281
+          ]
+        },
+        {
+          "word": " his",
+          "start": 1.78,
+          "end": 1.88,
+          "probability": 0.9936191439628601,
+          "tokens": [
+            702
+          ]
+        },
+        {
+          "word": " knees.",
+          "start": 1.88,
+          "end": 2.26,
+          "probability": 0.998195469379425,
+          "tokens": [
+            10546,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 3.24,
+      "end": 4.32,
+      "text": " His hands were empty.",
+      "seek": 0.0,
+      "tokens": [
+        2812,
+        2377,
+        645,
+        6707,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.08752429989022269,
+      "compression_ratio": 1.5191256830601092,
+      "no_speech_prob": 0.25299549102783203,
+      "words": [
+        {
+          "word": " His",
+          "start": 3.24,
+          "end": 3.36,
+          "probability": 0.9625405073165894,
+          "tokens": [
+            2812
+          ]
+        },
+        {
+          "word": " hands",
+          "start": 3.36,
+          "end": 3.72,
+          "probability": 0.9980745315551758,
+          "tokens": [
+            2377
+          ]
+        },
+        {
+          "word": " were",
+          "start": 3.72,
+          "end": 3.94,
+          "probability": 0.9985455274581909,
+          "tokens": [
+            645
+          ]
+        },
+        {
+          "word": " empty.",
+          "start": 3.94,
+          "end": 4.32,
+          "probability": 0.9994588494300842,
+          "tokens": [
+            6707,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 5.1,
+      "end": 6.16,
+      "text": " He had nothing to offer.",
+      "seek": 0.0,
+      "tokens": [
+        634,
+        632,
+        1825,
+        281,
+        2626,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.08752429989022269,
+      "compression_ratio": 1.5191256830601092,
+      "no_speech_prob": 0.25299549102783203,
+      "words": [
+        {
+          "word": " He",
+          "start": 5.1,
+          "end": 5.2,
+          "probability": 0.9890339374542236,
+          "tokens": [
+            634
+          ]
+        },
+        {
+          "word": " had",
+          "start": 5.2,
+          "end": 5.34,
+          "probability": 0.9986088871955872,
+          "tokens": [
+            632
+          ]
+        },
+        {
+          "word": " nothing",
+          "start": 5.34,
+          "end": 5.64,
+          "probability": 0.998472273349762,
+          "tokens": [
+            1825
+          ]
+        },
+        {
+          "word": " to",
+          "start": 5.64,
+          "end": 5.88,
+          "probability": 0.9984142780303955,
+          "tokens": [
+            281
+          ]
+        },
+        {
+          "word": " offer.",
+          "start": 5.88,
+          "end": 6.16,
+          "probability": 0.9992744326591492,
+          "tokens": [
+            2626,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 7.54,
+      "end": 8.68,
+      "text": " Before he could explain,",
+      "seek": 0.0,
+      "tokens": [
+        4546,
+        415,
+        727,
+        2903,
+        11
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.08752429989022269,
+      "compression_ratio": 1.5191256830601092,
+      "no_speech_prob": 0.25299549102783203,
+      "words": [
+        {
+          "word": " Before",
+          "start": 7.54,
+          "end": 7.64,
+          "probability": 0.9127732515335083,
+          "tokens": [
+            4546
+          ]
+        },
+        {
+          "word": " he",
+          "start": 7.64,
+          "end": 7.92,
+          "probability": 0.9872467517852783,
+          "tokens": [
+            415
+          ]
+        },
+        {
+          "word": " could",
+          "start": 7.92,
+          "end": 8.08,
+          "probability": 0.9975849390029907,
+          "tokens": [
+            727
+          ]
+        },
+        {
+          "word": " explain,",
+          "start": 8.08,
+          "end": 8.68,
+          "probability": 0.9987793564796448,
+          "tokens": [
+            2903,
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "start": 9.02,
+      "end": 12.64,
+      "text": " his father reached him and wrapped both arms around him.",
+      "seek": 0.0,
+      "tokens": [
+        702,
+        3086,
+        6488,
+        796,
+        293,
+        14226,
+        1293,
+        5812,
+        926,
+        796,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.08752429989022269,
+      "compression_ratio": 1.5191256830601092,
+      "no_speech_prob": 0.25299549102783203,
+      "words": [
+        {
+          "word": " his",
+          "start": 9.02,
+          "end": 9.14,
+          "probability": 0.9737175703048706,
+          "tokens": [
+            702
+          ]
+        },
+        {
+          "word": " father",
+          "start": 9.14,
+          "end": 9.5,
+          "probability": 0.989944338798523,
+          "tokens": [
+            3086
+          ]
+        },
+        {
+          "word": " reached",
+          "start": 9.5,
+          "end": 10.0,
+          "probability": 0.9880214929580688,
+          "tokens": [
+            6488
+          ]
+        },
+        {
+          "word": " him",
+          "start": 10.12,
+          "end": 10.36,
+          "probability": 0.993025541305542,
+          "tokens": [
+            796
+          ]
+        },
+        {
+          "word": " and",
+          "start": 10.36,
+          "end": 10.62,
+          "probability": 0.9325340390205383,
+          "tokens": [
+            293
+          ]
+        },
+        {
+          "word": " wrapped",
+          "start": 10.62,
+          "end": 10.96,
+          "probability": 0.9498100876808167,
+          "tokens": [
+            14226
+          ]
+        },
+        {
+          "word": " both",
+          "start": 11.14,
+          "end": 11.3,
+          "probability": 0.9972531199455261,
+          "tokens": [
+            1293
+          ]
+        },
+        {
+          "word": " arms",
+          "start": 11.3,
+          "end": 11.84,
+          "probability": 0.9973128437995911,
+          "tokens": [
+            5812
+          ]
+        },
+        {
+          "word": " around",
+          "start": 11.84,
+          "end": 12.22,
+          "probability": 0.9956050515174866,
+          "tokens": [
+            926
+          ]
+        },
+        {
+          "word": " him.",
+          "start": 12.22,
+          "end": 12.64,
+          "probability": 0.9988644123077393,
+          "tokens": [
+            796,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 13.9,
+      "end": 16.78,
+      "text": " The father held his son's head against his face.",
+      "seek": 0.0,
+      "tokens": [
+        440,
+        3086,
+        5167,
+        702,
+        1872,
+        311,
+        1378,
+        1970,
+        702,
+        1851,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.08752429989022269,
+      "compression_ratio": 1.5191256830601092,
+      "no_speech_prob": 0.25299549102783203,
+      "words": [
+        {
+          "word": " The",
+          "start": 13.9,
+          "end": 14.1,
+          "probability": 0.9577569365501404,
+          "tokens": [
+            440
+          ]
+        },
+        {
+          "word": " father",
+          "start": 14.16,
+          "end": 14.38,
+          "probability": 0.9747322201728821,
+          "tokens": [
+            3086
+          ]
+        },
+        {
+          "word": " held",
+          "start": 14.38,
+          "end": 14.8,
+          "probability": 0.9991205334663391,
+          "tokens": [
+            5167
+          ]
+        },
+        {
+          "word": " his",
+          "start": 14.8,
+          "end": 15.04,
+          "probability": 0.9970420002937317,
+          "tokens": [
+            702
+          ]
+        },
+        {
+          "word": " son's",
+          "start": 15.04,
+          "end": 15.52,
+          "probability": 0.980452835559845,
+          "tokens": [
+            1872,
+            311
+          ]
+        },
+        {
+          "word": " head",
+          "start": 15.58,
+          "end": 15.76,
+          "probability": 0.9948528409004211,
+          "tokens": [
+            1378
+          ]
+        },
+        {
+          "word": " against",
+          "start": 15.76,
+          "end": 16.16,
+          "probability": 0.997643768787384,
+          "tokens": [
+            1970
+          ]
+        },
+        {
+          "word": " his",
+          "start": 16.16,
+          "end": 16.46,
+          "probability": 0.9987084865570068,
+          "tokens": [
+            702
+          ]
+        },
+        {
+          "word": " face.",
+          "start": 16.46,
+          "end": 16.78,
+          "probability": 0.9992208480834961,
+          "tokens": [
+            1851,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 17.98,
+      "end": 20.3,
+      "text": " For a moment, neither of them said anything.",
+      "seek": 0.0,
+      "tokens": [
+        1171,
+        257,
+        1623,
+        11,
+        9662,
+        295,
+        552,
+        848,
+        1340,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.08752429989022269,
+      "compression_ratio": 1.5191256830601092,
+      "no_speech_prob": 0.25299549102783203,
+      "words": [
+        {
+          "word": " For",
+          "start": 17.98,
+          "end": 18.08,
+          "probability": 0.6004174947738647,
+          "tokens": [
+            1171
+          ]
+        },
+        {
+          "word": " a",
+          "start": 18.08,
+          "end": 18.2,
+          "probability": 0.9982529282569885,
+          "tokens": [
+            257
+          ]
+        },
+        {
+          "word": " moment,",
+          "start": 18.2,
+          "end": 18.64,
+          "probability": 0.9992152452468872,
+          "tokens": [
+            1623,
+            11
+          ]
+        },
+        {
+          "word": " neither",
+          "start": 18.86,
+          "end": 19.16,
+          "probability": 0.9974678754806519,
+          "tokens": [
+            9662
+          ]
+        },
+        {
+          "word": " of",
+          "start": 19.16,
+          "end": 19.42,
+          "probability": 0.9985733032226562,
+          "tokens": [
+            295
+          ]
+        },
+        {
+          "word": " them",
+          "start": 19.42,
+          "end": 19.56,
+          "probability": 0.9981468915939331,
+          "tokens": [
+            552
+          ]
+        },
+        {
+          "word": " said",
+          "start": 19.56,
+          "end": 19.88,
+          "probability": 0.9980417490005493,
+          "tokens": [
+            848
+          ]
+        },
+        {
+          "word": " anything.",
+          "start": 19.88,
+          "end": 20.3,
+          "probability": 0.9978153705596924,
+          "tokens": [
+            1340,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 21.48,
+      "end": 22.72,
+      "text": " Then the son began,",
+      "seek": 0.0,
+      "tokens": [
+        1396,
+        264,
+        1872,
+        4283,
+        11
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.08752429989022269,
+      "compression_ratio": 1.5191256830601092,
+      "no_speech_prob": 0.25299549102783203,
+      "words": [
+        {
+          "word": " Then",
+          "start": 21.48,
+          "end": 21.74,
+          "probability": 0.9601141810417175,
+          "tokens": [
+            1396
+          ]
+        },
+        {
+          "word": " the",
+          "start": 21.74,
+          "end": 21.96,
+          "probability": 0.9130694270133972,
+          "tokens": [
+            264
+          ]
+        },
+        {
+          "word": " son",
+          "start": 21.96,
+          "end": 22.32,
+          "probability": 0.9807127714157104,
+          "tokens": [
+            1872
+          ]
+        },
+        {
+          "word": " began,",
+          "start": 22.32,
+          "end": 22.72,
+          "probability": 0.9975104331970215,
+          "tokens": [
+            4283,
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "start": 23.68,
+      "end": 24.48,
+      "text": " Father,",
+      "seek": 22.8,
+      "tokens": [
+        7085,
+        11
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20660810037092728,
+      "compression_ratio": 1.6180904522613064,
+      "no_speech_prob": 0.017206033691763878,
+      "words": [
+        {
+          "word": " Father,",
+          "start": 23.68,
+          "end": 24.48,
+          "probability": 0.15022967755794525,
+          "tokens": [
+            7085,
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "start": 25.32,
+      "end": 27.94,
+      "text": " I have sinned against God and against you.",
+      "seek": 22.8,
+      "tokens": [
+        286,
+        362,
+        3343,
+        9232,
+        1970,
+        1265,
+        293,
+        1970,
+        291,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20660810037092728,
+      "compression_ratio": 1.6180904522613064,
+      "no_speech_prob": 0.017206033691763878,
+      "words": [
+        {
+          "word": " I",
+          "start": 25.32,
+          "end": 25.42,
+          "probability": 0.9906683564186096,
+          "tokens": [
+            286
+          ]
+        },
+        {
+          "word": " have",
+          "start": 25.42,
+          "end": 25.52,
+          "probability": 0.569566011428833,
+          "tokens": [
+            362
+          ]
+        },
+        {
+          "word": " sinned",
+          "start": 25.7,
+          "end": 26.0,
+          "probability": 0.9966955780982971,
+          "tokens": [
+            3343,
+            9232
+          ]
+        },
+        {
+          "word": " against",
+          "start": 26.0,
+          "end": 26.2,
+          "probability": 0.9964290261268616,
+          "tokens": [
+            1970
+          ]
+        },
+        {
+          "word": " God",
+          "start": 26.2,
+          "end": 26.7,
+          "probability": 0.9895524382591248,
+          "tokens": [
+            1265
+          ]
+        },
+        {
+          "word": " and",
+          "start": 26.7,
+          "end": 27.1,
+          "probability": 0.8583757281303406,
+          "tokens": [
+            293
+          ]
+        },
+        {
+          "word": " against",
+          "start": 27.1,
+          "end": 27.52,
+          "probability": 0.9981666803359985,
+          "tokens": [
+            1970
+          ]
+        },
+        {
+          "word": " you.",
+          "start": 27.52,
+          "end": 27.94,
+          "probability": 0.8780734539031982,
+          "tokens": [
+            291,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 28.72,
+      "end": 31.72,
+      "text": " I am no longer worthy to be called your son anymore.",
+      "seek": 22.8,
+      "tokens": [
+        286,
+        669,
+        572,
+        2854,
+        14829,
+        281,
+        312,
+        1219,
+        428,
+        1872,
+        3602,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20660810037092728,
+      "compression_ratio": 1.6180904522613064,
+      "no_speech_prob": 0.017206033691763878,
+      "words": [
+        {
+          "word": " I",
+          "start": 28.72,
+          "end": 28.82,
+          "probability": 0.9567878842353821,
+          "tokens": [
+            286
+          ]
+        },
+        {
+          "word": " am",
+          "start": 28.82,
+          "end": 28.92,
+          "probability": 0.7907528281211853,
+          "tokens": [
+            669
+          ]
+        },
+        {
+          "word": " no",
+          "start": 28.92,
+          "end": 29.14,
+          "probability": 0.9904519319534302,
+          "tokens": [
+            572
+          ]
+        },
+        {
+          "word": " longer",
+          "start": 29.14,
+          "end": 29.56,
+          "probability": 0.9978808164596558,
+          "tokens": [
+            2854
+          ]
+        },
+        {
+          "word": " worthy",
+          "start": 29.56,
+          "end": 30.12,
+          "probability": 0.9965760111808777,
+          "tokens": [
+            14829
+          ]
+        },
+        {
+          "word": " to",
+          "start": 30.12,
+          "end": 30.38,
+          "probability": 0.984411358833313,
+          "tokens": [
+            281
+          ]
+        },
+        {
+          "word": " be",
+          "start": 30.38,
+          "end": 30.54,
+          "probability": 0.9955481290817261,
+          "tokens": [
+            312
+          ]
+        },
+        {
+          "word": " called",
+          "start": 30.58,
+          "end": 30.76,
+          "probability": 0.9991949200630188,
+          "tokens": [
+            1219
+          ]
+        },
+        {
+          "word": " your",
+          "start": 30.76,
+          "end": 31.0,
+          "probability": 0.9160799384117126,
+          "tokens": [
+            428
+          ]
+        },
+        {
+          "word": " son",
+          "start": 31.0,
+          "end": 31.34,
+          "probability": 0.8563669323921204,
+          "tokens": [
+            1872
+          ]
+        },
+        {
+          "word": " anymore.",
+          "start": 31.34,
+          "end": 31.72,
+          "probability": 0.3779359757900238,
+          "tokens": [
+            3602,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 33.02,
+      "end": 36.08,
+      "text": " But his father was already calling to the people in the house.",
+      "seek": 22.8,
+      "tokens": [
+        583,
+        702,
+        3086,
+        390,
+        1217,
+        5141,
+        281,
+        264,
+        561,
+        294,
+        264,
+        1782,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20660810037092728,
+      "compression_ratio": 1.6180904522613064,
+      "no_speech_prob": 0.017206033691763878,
+      "words": [
+        {
+          "word": " But",
+          "start": 33.02,
+          "end": 33.14,
+          "probability": 0.8960404396057129,
+          "tokens": [
+            583
+          ]
+        },
+        {
+          "word": " his",
+          "start": 33.14,
+          "end": 33.26,
+          "probability": 0.7347187399864197,
+          "tokens": [
+            702
+          ]
+        },
+        {
+          "word": " father",
+          "start": 33.26,
+          "end": 33.6,
+          "probability": 0.8993484377861023,
+          "tokens": [
+            3086
+          ]
+        },
+        {
+          "word": " was",
+          "start": 33.6,
+          "end": 33.86,
+          "probability": 0.9931604862213135,
+          "tokens": [
+            390
+          ]
+        },
+        {
+          "word": " already",
+          "start": 33.86,
+          "end": 34.28,
+          "probability": 0.9929916858673096,
+          "tokens": [
+            1217
+          ]
+        },
+        {
+          "word": " calling",
+          "start": 34.28,
+          "end": 34.76,
+          "probability": 0.9954990744590759,
+          "tokens": [
+            5141
+          ]
+        },
+        {
+          "word": " to",
+          "start": 34.76,
+          "end": 35.04,
+          "probability": 0.9844902157783508,
+          "tokens": [
+            281
+          ]
+        },
+        {
+          "word": " the",
+          "start": 35.04,
+          "end": 35.18,
+          "probability": 0.979023814201355,
+          "tokens": [
+            264
+          ]
+        },
+        {
+          "word": " people",
+          "start": 35.18,
+          "end": 35.46,
+          "probability": 0.9967803955078125,
+          "tokens": [
+            561
+          ]
+        },
+        {
+          "word": " in",
+          "start": 35.46,
+          "end": 35.64,
+          "probability": 0.9912488460540771,
+          "tokens": [
+            294
+          ]
+        },
+        {
+          "word": " the",
+          "start": 35.64,
+          "end": 35.78,
+          "probability": 0.9935154914855957,
+          "tokens": [
+            264
+          ]
+        },
+        {
+          "word": " house.",
+          "start": 35.78,
+          "end": 36.08,
+          "probability": 0.9712058305740356,
+          "tokens": [
+            1782,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 36.48,
+      "end": 37.2,
+      "text": " Help him wash.",
+      "seek": 22.8,
+      "tokens": [
+        10773,
+        796,
+        5675,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20660810037092728,
+      "compression_ratio": 1.6180904522613064,
+      "no_speech_prob": 0.017206033691763878,
+      "words": [
+        {
+          "word": " Help",
+          "start": 36.48,
+          "end": 36.62,
+          "probability": 0.957098126411438,
+          "tokens": [
+            10773
+          ]
+        },
+        {
+          "word": " him",
+          "start": 36.62,
+          "end": 36.84,
+          "probability": 0.9954356551170349,
+          "tokens": [
+            796
+          ]
+        },
+        {
+          "word": " wash.",
+          "start": 36.84,
+          "end": 37.2,
+          "probability": 0.9893039464950562,
+          "tokens": [
+            5675,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 37.64,
+      "end": 39.18,
+      "text": " Bring him our best clothes.",
+      "seek": 22.8,
+      "tokens": [
+        12842,
+        796,
+        527,
+        1151,
+        5534,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20660810037092728,
+      "compression_ratio": 1.6180904522613064,
+      "no_speech_prob": 0.017206033691763878,
+      "words": [
+        {
+          "word": " Bring",
+          "start": 37.64,
+          "end": 37.84,
+          "probability": 0.6995640993118286,
+          "tokens": [
+            12842
+          ]
+        },
+        {
+          "word": " him",
+          "start": 37.84,
+          "end": 38.12,
+          "probability": 0.9965129494667053,
+          "tokens": [
+            796
+          ]
+        },
+        {
+          "word": " our",
+          "start": 38.12,
+          "end": 38.34,
+          "probability": 0.9838259816169739,
+          "tokens": [
+            527
+          ]
+        },
+        {
+          "word": " best",
+          "start": 38.34,
+          "end": 38.74,
+          "probability": 0.9959250688552856,
+          "tokens": [
+            1151
+          ]
+        },
+        {
+          "word": " clothes.",
+          "start": 38.74,
+          "end": 39.18,
+          "probability": 0.992302656173706,
+          "tokens": [
+            5534,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 40.48,
+      "end": 41.74,
+      "text": " The father helped him dress.",
+      "seek": 22.8,
+      "tokens": [
+        440,
+        3086,
+        4254,
+        796,
+        5231,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20660810037092728,
+      "compression_ratio": 1.6180904522613064,
+      "no_speech_prob": 0.017206033691763878,
+      "words": [
+        {
+          "word": " The",
+          "start": 40.48,
+          "end": 40.58,
+          "probability": 0.9472401142120361,
+          "tokens": [
+            440
+          ]
+        },
+        {
+          "word": " father",
+          "start": 40.58,
+          "end": 40.82,
+          "probability": 0.8627512454986572,
+          "tokens": [
+            3086
+          ]
+        },
+        {
+          "word": " helped",
+          "start": 40.82,
+          "end": 41.2,
+          "probability": 0.9902633428573608,
+          "tokens": [
+            4254
+          ]
+        },
+        {
+          "word": " him",
+          "start": 41.3,
+          "end": 41.4,
+          "probability": 0.9966273903846741,
+          "tokens": [
+            796
+          ]
+        },
+        {
+          "word": " dress.",
+          "start": 41.4,
+          "end": 41.74,
+          "probability": 0.9877638220787048,
+          "tokens": [
+            5231,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 42.76,
+      "end": 45.7,
+      "text": " He wasn't being received as a stranger or a worker.",
+      "seek": 22.8,
+      "tokens": [
+        634,
+        2067,
+        380,
+        885,
+        4613,
+        382,
+        257,
+        18834,
+        420,
+        257,
+        11346,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20660810037092728,
+      "compression_ratio": 1.6180904522613064,
+      "no_speech_prob": 0.017206033691763878,
+      "words": [
+        {
+          "word": " He",
+          "start": 42.76,
+          "end": 42.86,
+          "probability": 0.9894813299179077,
+          "tokens": [
+            634
+          ]
+        },
+        {
+          "word": " wasn't",
+          "start": 42.86,
+          "end": 43.2,
+          "probability": 0.8897803723812103,
+          "tokens": [
+            2067,
+            380
+          ]
+        },
+        {
+          "word": " being",
+          "start": 43.2,
+          "end": 43.4,
+          "probability": 0.990348219871521,
+          "tokens": [
+            885
+          ]
+        },
+        {
+          "word": " received",
+          "start": 43.4,
+          "end": 43.98,
+          "probability": 0.966478705406189,
+          "tokens": [
+            4613
+          ]
+        },
+        {
+          "word": " as",
+          "start": 43.98,
+          "end": 44.28,
+          "probability": 0.9974341988563538,
+          "tokens": [
+            382
+          ]
+        },
+        {
+          "word": " a",
+          "start": 44.28,
+          "end": 44.4,
+          "probability": 0.9971055388450623,
+          "tokens": [
+            257
+          ]
+        },
+        {
+          "word": " stranger",
+          "start": 44.4,
+          "end": 44.9,
+          "probability": 0.9925858378410339,
+          "tokens": [
+            18834
+          ]
+        },
+        {
+          "word": " or",
+          "start": 44.9,
+          "end": 45.32,
+          "probability": 0.9499906897544861,
+          "tokens": [
+            420
+          ]
+        },
+        {
+          "word": " a",
+          "start": 45.32,
+          "end": 45.46,
+          "probability": 0.8396204710006714,
+          "tokens": [
+            257
+          ]
+        },
+        {
+          "word": " worker.",
+          "start": 45.46,
+          "end": 45.7,
+          "probability": 0.9903924465179443,
+          "tokens": [
+            11346,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "start": 46.44,
+      "end": 48.42,
+      "text": " He was being welcomed as a son.",
+      "seek": 22.8,
+      "tokens": [
+        634,
+        390,
+        885,
+        23668,
+        382,
+        257,
+        1872,
+        13
+      ],
+      "temperature": 0.0,
+      "avg_logprob": -0.20660810037092728,
+      "compression_ratio": 1.6180904522613064,
+      "no_speech_prob": 0.017206033691763878,
+      "words": [
+        {
+          "word": " He",
+          "start": 46.44,
+          "end": 46.54,
+          "probability": 0.9861921072006226,
+          "tokens": [
+            634
+          ]
+        },
+        {
+          "word": " was",
+          "start": 46.54,
+          "end": 46.7,
+          "probability": 0.997477114200592,
+          "tokens": [
+            390
+          ]
+        },
+        {
+          "word": " being",
+          "start": 46.7,
+          "end": 46.94,
+          "probability": 0.9931943416595459,
+          "tokens": [
+            885
+          ]
+        },
+        {
+          "word": " welcomed",
+          "start": 46.94,
+          "end": 47.46,
+          "probability": 0.9913831353187561,
+          "tokens": [
+            23668
+          ]
+        },
+        {
+          "word": " as",
+          "start": 47.46,
+          "end": 47.96,
+          "probability": 0.9942314624786377,
+          "tokens": [
+            382
+          ]
+        },
+        {
+          "word": " a",
+          "start": 47.96,
+          "end": 48.1,
+          "probability": 0.9809808731079102,
+          "tokens": [
+            257
+          ]
+        },
+        {
+          "word": " son.",
+          "start": 48.1,
+          "end": 48.42,
+          "probability": 0.9905812740325928,
+          "tokens": [
+            1872,
+            13
+          ]
+        }
+      ]
+    }
+  ],
+  "language": "en",
+  "ori_dict": {
+    "text": " The young man dropped to his knees. His hands were empty. He had nothing to offer. Before he could explain, his father reached him and wrapped both arms around him. The father held his son's head against his face. For a moment, neither of them said anything. Then the son began, Father, I have sinned against God and against you. I am no longer worthy to be called your son anymore. But his father was already calling to the people in the house. Help him wash. Bring him our best clothes. The father helped him dress. He wasn't being received as a stranger or a worker. He was being welcomed as a son.",
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.18,
+        "end": 6.16,
+        "text": " The young man dropped to his knees. His hands were empty. He had nothing to offer.",
+        "seek": 0.0,
+        "tokens": [
+          440,
+          2037,
+          587,
+          8119,
+          281,
+          702,
+          10546,
+          13,
+          2812,
+          2377,
+          645,
+          6707,
+          13,
+          634,
+          632,
+          1825,
+          281,
+          2626,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.08752429989022269,
+        "compression_ratio": 1.5191256830601092,
+        "no_speech_prob": 0.25299549102783203,
+        "words": [
+          {
+            "word": " The",
+            "start": 0.18,
+            "end": 0.3,
+            "probability": 0.06892523169517517,
+            "tokens": [
+              440
+            ]
+          },
+          {
+            "word": " young",
+            "start": 0.3,
+            "end": 0.54,
+            "probability": 0.9895572066307068,
+            "tokens": [
+              2037
+            ]
+          },
+          {
+            "word": " man",
+            "start": 0.54,
+            "end": 0.88,
+            "probability": 0.9964194297790527,
+            "tokens": [
+              587
+            ]
+          },
+          {
+            "word": " dropped",
+            "start": 0.88,
+            "end": 1.32,
+            "probability": 0.9887748956680298,
+            "tokens": [
+              8119
+            ]
+          },
+          {
+            "word": " to",
+            "start": 1.32,
+            "end": 1.72,
+            "probability": 0.9934505224227905,
+            "tokens": [
+              281
+            ]
+          },
+          {
+            "word": " his",
+            "start": 1.78,
+            "end": 1.88,
+            "probability": 0.9936191439628601,
+            "tokens": [
+              702
+            ]
+          },
+          {
+            "word": " knees.",
+            "start": 1.88,
+            "end": 2.26,
+            "probability": 0.998195469379425,
+            "tokens": [
+              10546,
+              13
+            ]
+          },
+          {
+            "word": " His",
+            "start": 3.24,
+            "end": 3.36,
+            "probability": 0.9625405073165894,
+            "tokens": [
+              2812
+            ]
+          },
+          {
+            "word": " hands",
+            "start": 3.36,
+            "end": 3.72,
+            "probability": 0.9980745315551758,
+            "tokens": [
+              2377
+            ]
+          },
+          {
+            "word": " were",
+            "start": 3.72,
+            "end": 3.94,
+            "probability": 0.9985455274581909,
+            "tokens": [
+              645
+            ]
+          },
+          {
+            "word": " empty.",
+            "start": 3.94,
+            "end": 4.32,
+            "probability": 0.9994588494300842,
+            "tokens": [
+              6707,
+              13
+            ]
+          },
+          {
+            "word": " He",
+            "start": 5.1,
+            "end": 5.2,
+            "probability": 0.9890339374542236,
+            "tokens": [
+              634
+            ]
+          },
+          {
+            "word": " had",
+            "start": 5.2,
+            "end": 5.34,
+            "probability": 0.9986088871955872,
+            "tokens": [
+              632
+            ]
+          },
+          {
+            "word": " nothing",
+            "start": 5.34,
+            "end": 5.64,
+            "probability": 0.998472273349762,
+            "tokens": [
+              1825
+            ]
+          },
+          {
+            "word": " to",
+            "start": 5.64,
+            "end": 5.88,
+            "probability": 0.9984142780303955,
+            "tokens": [
+              281
+            ]
+          },
+          {
+            "word": " offer.",
+            "start": 5.88,
+            "end": 6.16,
+            "probability": 0.9992744326591492,
+            "tokens": [
+              2626,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "start": 7.54,
+        "end": 12.64,
+        "text": " Before he could explain, his father reached him and wrapped both arms around him.",
+        "seek": 0.0,
+        "tokens": [
+          4546,
+          415,
+          727,
+          2903,
+          11,
+          702,
+          3086,
+          6488,
+          796,
+          293,
+          14226,
+          1293,
+          5812,
+          926,
+          796,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.08752429989022269,
+        "compression_ratio": 1.5191256830601092,
+        "no_speech_prob": 0.25299549102783203,
+        "words": [
+          {
+            "word": " Before",
+            "start": 7.54,
+            "end": 7.64,
+            "probability": 0.9127732515335083,
+            "tokens": [
+              4546
+            ]
+          },
+          {
+            "word": " he",
+            "start": 7.64,
+            "end": 7.92,
+            "probability": 0.9872467517852783,
+            "tokens": [
+              415
+            ]
+          },
+          {
+            "word": " could",
+            "start": 7.92,
+            "end": 8.08,
+            "probability": 0.9975849390029907,
+            "tokens": [
+              727
+            ]
+          },
+          {
+            "word": " explain,",
+            "start": 8.08,
+            "end": 8.68,
+            "probability": 0.9987793564796448,
+            "tokens": [
+              2903,
+              11
+            ]
+          },
+          {
+            "word": " his",
+            "start": 9.02,
+            "end": 9.14,
+            "probability": 0.9737175703048706,
+            "tokens": [
+              702
+            ]
+          },
+          {
+            "word": " father",
+            "start": 9.14,
+            "end": 9.5,
+            "probability": 0.989944338798523,
+            "tokens": [
+              3086
+            ]
+          },
+          {
+            "word": " reached",
+            "start": 9.5,
+            "end": 10.0,
+            "probability": 0.9880214929580688,
+            "tokens": [
+              6488
+            ]
+          },
+          {
+            "word": " him",
+            "start": 10.12,
+            "end": 10.36,
+            "probability": 0.993025541305542,
+            "tokens": [
+              796
+            ]
+          },
+          {
+            "word": " and",
+            "start": 10.36,
+            "end": 10.62,
+            "probability": 0.9325340390205383,
+            "tokens": [
+              293
+            ]
+          },
+          {
+            "word": " wrapped",
+            "start": 10.62,
+            "end": 10.96,
+            "probability": 0.9498100876808167,
+            "tokens": [
+              14226
+            ]
+          },
+          {
+            "word": " both",
+            "start": 11.14,
+            "end": 11.3,
+            "probability": 0.9972531199455261,
+            "tokens": [
+              1293
+            ]
+          },
+          {
+            "word": " arms",
+            "start": 11.3,
+            "end": 11.84,
+            "probability": 0.9973128437995911,
+            "tokens": [
+              5812
+            ]
+          },
+          {
+            "word": " around",
+            "start": 11.84,
+            "end": 12.22,
+            "probability": 0.9956050515174866,
+            "tokens": [
+              926
+            ]
+          },
+          {
+            "word": " him.",
+            "start": 12.22,
+            "end": 12.64,
+            "probability": 0.9988644123077393,
+            "tokens": [
+              796,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "start": 13.9,
+        "end": 20.3,
+        "text": " The father held his son's head against his face. For a moment, neither of them said anything.",
+        "seek": 0.0,
+        "tokens": [
+          440,
+          3086,
+          5167,
+          702,
+          1872,
+          311,
+          1378,
+          1970,
+          702,
+          1851,
+          13,
+          1171,
+          257,
+          1623,
+          11,
+          9662,
+          295,
+          552,
+          848,
+          1340,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.08752429989022269,
+        "compression_ratio": 1.5191256830601092,
+        "no_speech_prob": 0.25299549102783203,
+        "words": [
+          {
+            "word": " The",
+            "start": 13.9,
+            "end": 14.1,
+            "probability": 0.9577569365501404,
+            "tokens": [
+              440
+            ]
+          },
+          {
+            "word": " father",
+            "start": 14.16,
+            "end": 14.38,
+            "probability": 0.9747322201728821,
+            "tokens": [
+              3086
+            ]
+          },
+          {
+            "word": " held",
+            "start": 14.38,
+            "end": 14.8,
+            "probability": 0.9991205334663391,
+            "tokens": [
+              5167
+            ]
+          },
+          {
+            "word": " his",
+            "start": 14.8,
+            "end": 15.04,
+            "probability": 0.9970420002937317,
+            "tokens": [
+              702
+            ]
+          },
+          {
+            "word": " son's",
+            "start": 15.04,
+            "end": 15.52,
+            "probability": 0.980452835559845,
+            "tokens": [
+              1872,
+              311
+            ]
+          },
+          {
+            "word": " head",
+            "start": 15.58,
+            "end": 15.76,
+            "probability": 0.9948528409004211,
+            "tokens": [
+              1378
+            ]
+          },
+          {
+            "word": " against",
+            "start": 15.76,
+            "end": 16.16,
+            "probability": 0.997643768787384,
+            "tokens": [
+              1970
+            ]
+          },
+          {
+            "word": " his",
+            "start": 16.16,
+            "end": 16.46,
+            "probability": 0.9987084865570068,
+            "tokens": [
+              702
+            ]
+          },
+          {
+            "word": " face.",
+            "start": 16.46,
+            "end": 16.78,
+            "probability": 0.9992208480834961,
+            "tokens": [
+              1851,
+              13
+            ]
+          },
+          {
+            "word": " For",
+            "start": 17.98,
+            "end": 18.08,
+            "probability": 0.6004174947738647,
+            "tokens": [
+              1171
+            ]
+          },
+          {
+            "word": " a",
+            "start": 18.08,
+            "end": 18.2,
+            "probability": 0.9982529282569885,
+            "tokens": [
+              257
+            ]
+          },
+          {
+            "word": " moment,",
+            "start": 18.2,
+            "end": 18.64,
+            "probability": 0.9992152452468872,
+            "tokens": [
+              1623,
+              11
+            ]
+          },
+          {
+            "word": " neither",
+            "start": 18.86,
+            "end": 19.16,
+            "probability": 0.9974678754806519,
+            "tokens": [
+              9662
+            ]
+          },
+          {
+            "word": " of",
+            "start": 19.16,
+            "end": 19.42,
+            "probability": 0.9985733032226562,
+            "tokens": [
+              295
+            ]
+          },
+          {
+            "word": " them",
+            "start": 19.42,
+            "end": 19.56,
+            "probability": 0.9981468915939331,
+            "tokens": [
+              552
+            ]
+          },
+          {
+            "word": " said",
+            "start": 19.56,
+            "end": 19.88,
+            "probability": 0.9980417490005493,
+            "tokens": [
+              848
+            ]
+          },
+          {
+            "word": " anything.",
+            "start": 19.88,
+            "end": 20.3,
+            "probability": 0.9978153705596924,
+            "tokens": [
+              1340,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "start": 21.48,
+        "end": 22.72,
+        "text": " Then the son began,",
+        "seek": 0.0,
+        "tokens": [
+          1396,
+          264,
+          1872,
+          4283,
+          11
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.08752429989022269,
+        "compression_ratio": 1.5191256830601092,
+        "no_speech_prob": 0.25299549102783203,
+        "words": [
+          {
+            "word": " Then",
+            "start": 21.48,
+            "end": 21.74,
+            "probability": 0.9601141810417175,
+            "tokens": [
+              1396
+            ]
+          },
+          {
+            "word": " the",
+            "start": 21.74,
+            "end": 21.96,
+            "probability": 0.9130694270133972,
+            "tokens": [
+              264
+            ]
+          },
+          {
+            "word": " son",
+            "start": 21.96,
+            "end": 22.32,
+            "probability": 0.9807127714157104,
+            "tokens": [
+              1872
+            ]
+          },
+          {
+            "word": " began,",
+            "start": 22.32,
+            "end": 22.72,
+            "probability": 0.9975104331970215,
+            "tokens": [
+              4283,
+              11
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "start": 23.68,
+        "end": 27.94,
+        "text": " Father, I have sinned against God and against you.",
+        "seek": 22.8,
+        "tokens": [
+          7085,
+          11,
+          286,
+          362,
+          3343,
+          9232,
+          1970,
+          1265,
+          293,
+          1970,
+          291,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.20660810037092728,
+        "compression_ratio": 1.6180904522613064,
+        "no_speech_prob": 0.017206033691763878,
+        "words": [
+          {
+            "word": " Father,",
+            "start": 23.68,
+            "end": 24.48,
+            "probability": 0.15022967755794525,
+            "tokens": [
+              7085,
+              11
+            ]
+          },
+          {
+            "word": " I",
+            "start": 25.32,
+            "end": 25.42,
+            "probability": 0.9906683564186096,
+            "tokens": [
+              286
+            ]
+          },
+          {
+            "word": " have",
+            "start": 25.42,
+            "end": 25.52,
+            "probability": 0.569566011428833,
+            "tokens": [
+              362
+            ]
+          },
+          {
+            "word": " sinned",
+            "start": 25.7,
+            "end": 26.0,
+            "probability": 0.9966955780982971,
+            "tokens": [
+              3343,
+              9232
+            ]
+          },
+          {
+            "word": " against",
+            "start": 26.0,
+            "end": 26.2,
+            "probability": 0.9964290261268616,
+            "tokens": [
+              1970
+            ]
+          },
+          {
+            "word": " God",
+            "start": 26.2,
+            "end": 26.7,
+            "probability": 0.9895524382591248,
+            "tokens": [
+              1265
+            ]
+          },
+          {
+            "word": " and",
+            "start": 26.7,
+            "end": 27.1,
+            "probability": 0.8583757281303406,
+            "tokens": [
+              293
+            ]
+          },
+          {
+            "word": " against",
+            "start": 27.1,
+            "end": 27.52,
+            "probability": 0.9981666803359985,
+            "tokens": [
+              1970
+            ]
+          },
+          {
+            "word": " you.",
+            "start": 27.52,
+            "end": 27.94,
+            "probability": 0.8780734539031982,
+            "tokens": [
+              291,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "start": 28.72,
+        "end": 31.72,
+        "text": " I am no longer worthy to be called your son anymore.",
+        "seek": 22.8,
+        "tokens": [
+          286,
+          669,
+          572,
+          2854,
+          14829,
+          281,
+          312,
+          1219,
+          428,
+          1872,
+          3602,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.20660810037092728,
+        "compression_ratio": 1.6180904522613064,
+        "no_speech_prob": 0.017206033691763878,
+        "words": [
+          {
+            "word": " I",
+            "start": 28.72,
+            "end": 28.82,
+            "probability": 0.9567878842353821,
+            "tokens": [
+              286
+            ]
+          },
+          {
+            "word": " am",
+            "start": 28.82,
+            "end": 28.92,
+            "probability": 0.7907528281211853,
+            "tokens": [
+              669
+            ]
+          },
+          {
+            "word": " no",
+            "start": 28.92,
+            "end": 29.14,
+            "probability": 0.9904519319534302,
+            "tokens": [
+              572
+            ]
+          },
+          {
+            "word": " longer",
+            "start": 29.14,
+            "end": 29.56,
+            "probability": 0.9978808164596558,
+            "tokens": [
+              2854
+            ]
+          },
+          {
+            "word": " worthy",
+            "start": 29.56,
+            "end": 30.12,
+            "probability": 0.9965760111808777,
+            "tokens": [
+              14829
+            ]
+          },
+          {
+            "word": " to",
+            "start": 30.12,
+            "end": 30.38,
+            "probability": 0.984411358833313,
+            "tokens": [
+              281
+            ]
+          },
+          {
+            "word": " be",
+            "start": 30.38,
+            "end": 30.54,
+            "probability": 0.9955481290817261,
+            "tokens": [
+              312
+            ]
+          },
+          {
+            "word": " called",
+            "start": 30.58,
+            "end": 30.76,
+            "probability": 0.9991949200630188,
+            "tokens": [
+              1219
+            ]
+          },
+          {
+            "word": " your",
+            "start": 30.76,
+            "end": 31.0,
+            "probability": 0.9160799384117126,
+            "tokens": [
+              428
+            ]
+          },
+          {
+            "word": " son",
+            "start": 31.0,
+            "end": 31.34,
+            "probability": 0.8563669323921204,
+            "tokens": [
+              1872
+            ]
+          },
+          {
+            "word": " anymore.",
+            "start": 31.34,
+            "end": 31.72,
+            "probability": 0.3779359757900238,
+            "tokens": [
+              3602,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "start": 33.02,
+        "end": 36.08,
+        "text": " But his father was already calling to the people in the house.",
+        "seek": 22.8,
+        "tokens": [
+          583,
+          702,
+          3086,
+          390,
+          1217,
+          5141,
+          281,
+          264,
+          561,
+          294,
+          264,
+          1782,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.20660810037092728,
+        "compression_ratio": 1.6180904522613064,
+        "no_speech_prob": 0.017206033691763878,
+        "words": [
+          {
+            "word": " But",
+            "start": 33.02,
+            "end": 33.14,
+            "probability": 0.8960404396057129,
+            "tokens": [
+              583
+            ]
+          },
+          {
+            "word": " his",
+            "start": 33.14,
+            "end": 33.26,
+            "probability": 0.7347187399864197,
+            "tokens": [
+              702
+            ]
+          },
+          {
+            "word": " father",
+            "start": 33.26,
+            "end": 33.6,
+            "probability": 0.8993484377861023,
+            "tokens": [
+              3086
+            ]
+          },
+          {
+            "word": " was",
+            "start": 33.6,
+            "end": 33.86,
+            "probability": 0.9931604862213135,
+            "tokens": [
+              390
+            ]
+          },
+          {
+            "word": " already",
+            "start": 33.86,
+            "end": 34.28,
+            "probability": 0.9929916858673096,
+            "tokens": [
+              1217
+            ]
+          },
+          {
+            "word": " calling",
+            "start": 34.28,
+            "end": 34.76,
+            "probability": 0.9954990744590759,
+            "tokens": [
+              5141
+            ]
+          },
+          {
+            "word": " to",
+            "start": 34.76,
+            "end": 35.04,
+            "probability": 0.9844902157783508,
+            "tokens": [
+              281
+            ]
+          },
+          {
+            "word": " the",
+            "start": 35.04,
+            "end": 35.18,
+            "probability": 0.979023814201355,
+            "tokens": [
+              264
+            ]
+          },
+          {
+            "word": " people",
+            "start": 35.18,
+            "end": 35.46,
+            "probability": 0.9967803955078125,
+            "tokens": [
+              561
+            ]
+          },
+          {
+            "word": " in",
+            "start": 35.46,
+            "end": 35.64,
+            "probability": 0.9912488460540771,
+            "tokens": [
+              294
+            ]
+          },
+          {
+            "word": " the",
+            "start": 35.64,
+            "end": 35.78,
+            "probability": 0.9935154914855957,
+            "tokens": [
+              264
+            ]
+          },
+          {
+            "word": " house.",
+            "start": 35.78,
+            "end": 36.08,
+            "probability": 0.9712058305740356,
+            "tokens": [
+              1782,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "start": 36.48,
+        "end": 39.18,
+        "text": " Help him wash. Bring him our best clothes.",
+        "seek": 22.8,
+        "tokens": [
+          10773,
+          796,
+          5675,
+          13,
+          12842,
+          796,
+          527,
+          1151,
+          5534,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.20660810037092728,
+        "compression_ratio": 1.6180904522613064,
+        "no_speech_prob": 0.017206033691763878,
+        "words": [
+          {
+            "word": " Help",
+            "start": 36.48,
+            "end": 36.62,
+            "probability": 0.957098126411438,
+            "tokens": [
+              10773
+            ]
+          },
+          {
+            "word": " him",
+            "start": 36.62,
+            "end": 36.84,
+            "probability": 0.9954356551170349,
+            "tokens": [
+              796
+            ]
+          },
+          {
+            "word": " wash.",
+            "start": 36.84,
+            "end": 37.2,
+            "probability": 0.9893039464950562,
+            "tokens": [
+              5675,
+              13
+            ]
+          },
+          {
+            "word": " Bring",
+            "start": 37.64,
+            "end": 37.84,
+            "probability": 0.6995640993118286,
+            "tokens": [
+              12842
+            ]
+          },
+          {
+            "word": " him",
+            "start": 37.84,
+            "end": 38.12,
+            "probability": 0.9965129494667053,
+            "tokens": [
+              796
+            ]
+          },
+          {
+            "word": " our",
+            "start": 38.12,
+            "end": 38.34,
+            "probability": 0.9838259816169739,
+            "tokens": [
+              527
+            ]
+          },
+          {
+            "word": " best",
+            "start": 38.34,
+            "end": 38.74,
+            "probability": 0.9959250688552856,
+            "tokens": [
+              1151
+            ]
+          },
+          {
+            "word": " clothes.",
+            "start": 38.74,
+            "end": 39.18,
+            "probability": 0.992302656173706,
+            "tokens": [
+              5534,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "start": 40.48,
+        "end": 41.74,
+        "text": " The father helped him dress.",
+        "seek": 22.8,
+        "tokens": [
+          440,
+          3086,
+          4254,
+          796,
+          5231,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.20660810037092728,
+        "compression_ratio": 1.6180904522613064,
+        "no_speech_prob": 0.017206033691763878,
+        "words": [
+          {
+            "word": " The",
+            "start": 40.48,
+            "end": 40.58,
+            "probability": 0.9472401142120361,
+            "tokens": [
+              440
+            ]
+          },
+          {
+            "word": " father",
+            "start": 40.58,
+            "end": 40.82,
+            "probability": 0.8627512454986572,
+            "tokens": [
+              3086
+            ]
+          },
+          {
+            "word": " helped",
+            "start": 40.82,
+            "end": 41.2,
+            "probability": 0.9902633428573608,
+            "tokens": [
+              4254
+            ]
+          },
+          {
+            "word": " him",
+            "start": 41.3,
+            "end": 41.4,
+            "probability": 0.9966273903846741,
+            "tokens": [
+              796
+            ]
+          },
+          {
+            "word": " dress.",
+            "start": 41.4,
+            "end": 41.74,
+            "probability": 0.9877638220787048,
+            "tokens": [
+              5231,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "start": 42.76,
+        "end": 45.7,
+        "text": " He wasn't being received as a stranger or a worker.",
+        "seek": 22.8,
+        "tokens": [
+          634,
+          2067,
+          380,
+          885,
+          4613,
+          382,
+          257,
+          18834,
+          420,
+          257,
+          11346,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.20660810037092728,
+        "compression_ratio": 1.6180904522613064,
+        "no_speech_prob": 0.017206033691763878,
+        "words": [
+          {
+            "word": " He",
+            "start": 42.76,
+            "end": 42.86,
+            "probability": 0.9894813299179077,
+            "tokens": [
+              634
+            ]
+          },
+          {
+            "word": " wasn't",
+            "start": 42.86,
+            "end": 43.2,
+            "probability": 0.8897803723812103,
+            "tokens": [
+              2067,
+              380
+            ]
+          },
+          {
+            "word": " being",
+            "start": 43.2,
+            "end": 43.4,
+            "probability": 0.990348219871521,
+            "tokens": [
+              885
+            ]
+          },
+          {
+            "word": " received",
+            "start": 43.4,
+            "end": 43.98,
+            "probability": 0.966478705406189,
+            "tokens": [
+              4613
+            ]
+          },
+          {
+            "word": " as",
+            "start": 43.98,
+            "end": 44.28,
+            "probability": 0.9974341988563538,
+            "tokens": [
+              382
+            ]
+          },
+          {
+            "word": " a",
+            "start": 44.28,
+            "end": 44.4,
+            "probability": 0.9971055388450623,
+            "tokens": [
+              257
+            ]
+          },
+          {
+            "word": " stranger",
+            "start": 44.4,
+            "end": 44.9,
+            "probability": 0.9925858378410339,
+            "tokens": [
+              18834
+            ]
+          },
+          {
+            "word": " or",
+            "start": 44.9,
+            "end": 45.32,
+            "probability": 0.9499906897544861,
+            "tokens": [
+              420
+            ]
+          },
+          {
+            "word": " a",
+            "start": 45.32,
+            "end": 45.46,
+            "probability": 0.8396204710006714,
+            "tokens": [
+              257
+            ]
+          },
+          {
+            "word": " worker.",
+            "start": 45.46,
+            "end": 45.7,
+            "probability": 0.9903924465179443,
+            "tokens": [
+              11346,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "start": 46.44,
+        "end": 48.42,
+        "text": " He was being welcomed as a son.",
+        "seek": 22.8,
+        "tokens": [
+          634,
+          390,
+          885,
+          23668,
+          382,
+          257,
+          1872,
+          13
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.20660810037092728,
+        "compression_ratio": 1.6180904522613064,
+        "no_speech_prob": 0.017206033691763878,
+        "words": [
+          {
+            "word": " He",
+            "start": 46.44,
+            "end": 46.54,
+            "probability": 0.9861921072006226,
+            "tokens": [
+              634
+            ]
+          },
+          {
+            "word": " was",
+            "start": 46.54,
+            "end": 46.7,
+            "probability": 0.997477114200592,
+            "tokens": [
+              390
+            ]
+          },
+          {
+            "word": " being",
+            "start": 46.7,
+            "end": 46.94,
+            "probability": 0.9931943416595459,
+            "tokens": [
+              885
+            ]
+          },
+          {
+            "word": " welcomed",
+            "start": 46.94,
+            "end": 47.46,
+            "probability": 0.9913831353187561,
+            "tokens": [
+              23668
+            ]
+          },
+          {
+            "word": " as",
+            "start": 47.46,
+            "end": 47.96,
+            "probability": 0.9942314624786377,
+            "tokens": [
+              382
+            ]
+          },
+          {
+            "word": " a",
+            "start": 47.96,
+            "end": 48.1,
+            "probability": 0.9809808731079102,
+            "tokens": [
+              257
+            ]
+          },
+          {
+            "word": " son.",
+            "start": 48.1,
+            "end": 48.42,
+            "probability": 0.9905812740325928,
+            "tokens": [
+              1872,
+              13
+            ]
+          }
+        ]
+      }
+    ],
+    "language": "en",
+    "time_scale": null
+  },
+  "regroup_history": "isp=1_cm=2.5+++0_sp=.* /\u3002/?/\uff1f+0+0++++1_sg=0.5+0+0+1_sp=,* /\uff0c+0+0++50++1_sl=70++1+0+0+0+0+1_cm=2.5+++0",
+  "nonspeech_sections": [
+    {
+      "start": 0.0,
+      "end": 0.18
+    },
+    {
+      "start": 1.36,
+      "end": 1.4
+    },
+    {
+      "start": 1.52,
+      "end": 1.56
+    },
+    {
+      "start": 1.86,
+      "end": 1.88
+    },
+    {
+      "start": 2.26,
+      "end": 2.34
+    },
+    {
+      "start": 2.46,
+      "end": 3.24
+    },
+    {
+      "start": 3.98,
+      "end": 4.02
+    },
+    {
+      "start": 4.46,
+      "end": 5.12
+    },
+    {
+      "start": 5.9,
+      "end": 5.94
+    },
+    {
+      "start": 6.16,
+      "end": 6.28
+    },
+    {
+      "start": 6.44,
+      "end": 7.62
+    },
+    {
+      "start": 7.96,
+      "end": 7.98
+    },
+    {
+      "start": 8.22,
+      "end": 8.4
+    },
+    {
+      "start": 9.18,
+      "end": 9.26
+    },
+    {
+      "start": 9.96,
+      "end": 10.12
+    },
+    {
+      "start": 10.48,
+      "end": 10.52
+    },
+    {
+      "start": 10.94,
+      "end": 11.14
+    },
+    {
+      "start": 11.42,
+      "end": 11.54
+    },
+    {
+      "start": 12.44,
+      "end": 12.46
+    },
+    {
+      "start": 12.72,
+      "end": 14.16
+    },
+    {
+      "start": 15.46,
+      "end": 15.58
+    },
+    {
+      "start": 15.84,
+      "end": 15.98
+    },
+    {
+      "start": 16.22,
+      "end": 16.6
+    },
+    {
+      "start": 16.78,
+      "end": 18.02
+    },
+    {
+      "start": 18.76,
+      "end": 18.8
+    },
+    {
+      "start": 19.46,
+      "end": 19.48
+    },
+    {
+      "start": 19.66,
+      "end": 19.76
+    },
+    {
+      "start": 20.18,
+      "end": 20.24
+    },
+    {
+      "start": 20.52,
+      "end": 21.48
+    },
+    {
+      "start": 22.0,
+      "end": 22.12
+    },
+    {
+      "start": 22.58,
+      "end": 22.62
+    },
+    {
+      "start": 23.0,
+      "end": 24.2
+    },
+    {
+      "start": 24.64,
+      "end": 25.34
+    },
+    {
+      "start": 25.5,
+      "end": 25.72
+    },
+    {
+      "start": 26.32,
+      "end": 26.44
+    },
+    {
+      "start": 26.78,
+      "end": 26.98
+    },
+    {
+      "start": 27.22,
+      "end": 27.28
+    },
+    {
+      "start": 27.5,
+      "end": 27.66
+    },
+    {
+      "start": 27.98,
+      "end": 28.76
+    },
+    {
+      "start": 30.2,
+      "end": 30.58
+    },
+    {
+      "start": 30.8,
+      "end": 30.84
+    },
+    {
+      "start": 31.08,
+      "end": 31.2
+    },
+    {
+      "start": 31.88,
+      "end": 33.02
+    },
+    {
+      "start": 33.34,
+      "end": 33.42
+    },
+    {
+      "start": 33.9,
+      "end": 33.96
+    },
+    {
+      "start": 34.36,
+      "end": 34.54
+    },
+    {
+      "start": 35.2,
+      "end": 35.28
+    },
+    {
+      "start": 36.08,
+      "end": 36.48
+    },
+    {
+      "start": 37.44,
+      "end": 37.64
+    },
+    {
+      "start": 38.48,
+      "end": 38.54
+    },
+    {
+      "start": 38.76,
+      "end": 38.8
+    },
+    {
+      "start": 38.92,
+      "end": 38.96
+    },
+    {
+      "start": 39.38,
+      "end": 40.5
+    },
+    {
+      "start": 40.64,
+      "end": 40.68
+    },
+    {
+      "start": 41.0,
+      "end": 41.04
+    },
+    {
+      "start": 41.2,
+      "end": 41.3
+    },
+    {
+      "start": 41.86,
+      "end": 42.78
+    },
+    {
+      "start": 43.74,
+      "end": 43.8
+    },
+    {
+      "start": 44.1,
+      "end": 44.12
+    },
+    {
+      "start": 44.44,
+      "end": 44.62
+    },
+    {
+      "start": 45.7,
+      "end": 46.48
+    },
+    {
+      "start": 47.4,
+      "end": 47.42
+    },
+    {
+      "start": 47.74,
+      "end": 47.86
+    },
+    {
+      "start": 48.12,
+      "end": 48.26
+    },
+    {
+      "start": 48.52,
+      "end": 49.04
+    }
+  ]
+}

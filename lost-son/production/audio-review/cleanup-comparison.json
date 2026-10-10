@@ -1,0 +1,73 @@
+{
+  "decoded_samples": 9660766,
+  "sample_rate": 24000,
+  "identical_decoded_duration": true,
+  "sections": [
+    {
+      "start": 10,
+      "end": 45,
+      "voice_band_change_db": -0.0,
+      "high_band_change_db": -0.0,
+      "before_high_to_voice_db": -14.26,
+      "after_high_to_voice_db": -14.26
+    },
+    {
+      "start": 170,
+      "end": 210,
+      "voice_band_change_db": 0.0,
+      "high_band_change_db": 0.0,
+      "before_high_to_voice_db": -15.55,
+      "after_high_to_voice_db": -15.55
+    },
+    {
+      "start": 250,
+      "end": 290,
+      "voice_band_change_db": -0.02,
+      "high_band_change_db": -7.05,
+      "before_high_to_voice_db": -11.72,
+      "after_high_to_voice_db": -18.74
+    },
+    {
+      "start": 300,
+      "end": 340,
+      "voice_band_change_db": -0.02,
+      "high_band_change_db": -8.14,
+      "before_high_to_voice_db": -8.21,
+      "after_high_to_voice_db": -16.32
+    },
+    {
+      "start": 340,
+      "end": 380,
+      "voice_band_change_db": -0.03,
+      "high_band_change_db": -7.51,
+      "before_high_to_voice_db": -9.74,
+      "after_high_to_voice_db": -17.21,
+      "whine_bands": [
+        {
+          "hz": 9050,
+          "reduction_db": -24.22
+        },
+        {
+          "hz": 9330,
+          "reduction_db": -24.49
+        },
+        {
+          "hz": 9920,
+          "reduction_db": -22.17
+        },
+        {
+          "hz": 10860,
+          "reduction_db": -24.92
+        }
+      ]
+    },
+    {
+      "start": 382,
+      "end": 401,
+      "voice_band_change_db": 0.0,
+      "high_band_change_db": 0.0,
+      "before_high_to_voice_db": -15.42,
+      "after_high_to_voice_db": -15.42
+    }
+  ]
+}

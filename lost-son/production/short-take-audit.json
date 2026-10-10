@@ -1,0 +1,41 @@
+[
+  {
+    "take": "return",
+    "differences": [
+      {
+        "operation": "delete",
+        "script": "perhaps",
+        "heard": ""
+      }
+    ],
+    "review": "Small missed Perhaps; independent base recognized Perhaps. Keep canonical wording."
+  },
+  {
+    "take": "running",
+    "differences": []
+  },
+  {
+    "take": "embrace",
+    "differences": [
+      {
+        "operation": "replace",
+        "script": "ve",
+        "heard": "have"
+      },
+      {
+        "operation": "replace",
+        "script": "m",
+        "heard": "am"
+      }
+    ],
+    "review": "Benign full forms I have / I am recognized; canonical displayed text updated to match. Exact submitted take text retained."
+  },
+  {
+    "take": "celebration",
+    "differences": []
+  },
+  {
+    "take": "older-brother",
+    "differences": []
+  }
+]
