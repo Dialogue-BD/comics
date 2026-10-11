@@ -1,6 +1,6 @@
 {
   "activity": "AI Dreams & Dictation",
-  "version": "karaoke-5",
+  "version": "open-navigation-6",
   "source": "https://claude.com/hard-questions",
   "narration": "Nine untouched original interview recordings; no generated voice or time stretching",
   "alignment": "Cached local faster-whisper small.en word timestamps; phrase/scene grouping follows real word starts",
@@ -21,7 +21,7 @@
     "automated_timing_and_game_contracts": "passed",
     "all_nine_full_decodes_and_media_measurements": "passed",
     "all_27_scene_keyframes": "reviewed visually",
-    "live_flow_and_phrase_seek": "passed; original MP3 buffer fixes static-server seeking",
+    "live_flow_and_phrase_seek": "passed; all four steps available before listening or answers for all nine speakers; speaker changes preserve selected step; word choices/checking/meanings/clip skipping available immediately; original MP3 buffer supports phrase seeking",
     "phone_and_landscape": "390 \u00d7 844 and 844 \u00d7 390 iframe layouts checked; no horizontal overflow",
     "word_follower": "one persistent solid gold element; 180 ms glide; holds ordinary pauses; reduced-motion override",
     "complete_perceptual_listen_to_every_word": "not_evaluated",
