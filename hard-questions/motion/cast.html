@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;background:#1d3b2b}svg{display:block}</style></head><body>
+<svg id="s" viewBox="0 0 1600 900" width="1600" height="900"></svg>
+<script src="vendor/gsap.min.js"></script>
+<script type="module">
+import {figure,SKIN,HAIRC,setPose} from './cast.js';
+import {g,place,defs} from './kit.js';
+const svg=document.getElementById('s');defs(svg);
+const specs=[
+ [{skin:SKIN.s4,hair:'long',hairColor:HAIRC.black,top:'#d9805f',outfit:'blouse',bottom:'#2f3e4a',earrings:true},'idle'],
+ [{skin:SKIN.s2,hair:'short',hairColor:HAIRC.brown,coat:true,top:'#9cc7e8',outfit:'shirt',glasses:true},'wave'],
+ [{skin:SKIN.s1,hair:'bald',hairColor:HAIRC.grey,beard:true,top:'#7fa7c9',outfit:'shirt',glasses:true,mood:'grin'},'think'],
+ [{skin:SKIN.s5,hair:'curly',hairColor:HAIRC.black,top:'#e7c178',outfit:'cardigan',accent:'#f4f1e6',mood:'worried'},'shrug'],
+ [{skin:SKIN.s3,hair:'hijab',hairColor:'#4f8a6a',top:'#e0b25c',outfit:'sweater',mood:'grin'},'cheer'],
+ [{skin:SKIN.s2,hair:'ponytail',hairColor:HAIRC.blond,top:'#df8466',outfit:'tee',age:'child',mood:'grin'},'point'],
+ [{skin:SKIN.s4,hair:'bun',hairColor:HAIRC.dark,top:'#8fb27f',outfit:'sweater',seated:true},'hold'],
+];
+specs.forEach(([o,p],i)=>{const h=g(svg);place(h,130+i*225,820,.95);const f=figure(h,o);setPose(gsap,f,p);});
+</script></body></html>

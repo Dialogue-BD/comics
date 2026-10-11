@@ -33,6 +33,7 @@ export function createStage(host, { label = true } = {}) {
   K.el('ellipse', { cx: 800, cy: 742, rx: 760, ry: 92, fill: 'url(#halo-paper)', opacity: .35 }, floor);
   K.el('ellipse', { cx: 800, cy: 736, rx: 560, ry: 40, fill: K.C.shadow, opacity: .22 }, floor);
   const world = K.g(svg, { class: 'world' });
+  const overlay = K.g(svg, { class: 'overlay' });
 
   const aurora = createAurora(canvas);
   const nameTag = document.createElement('span'); nameTag.className = 'hq-name';
@@ -40,7 +41,7 @@ export function createStage(host, { label = true } = {}) {
   hud.append(nameTag, progress);
   if (!label) nameTag.hidden = true;
 
-  let tl = null, duration = 1, keys = [0], reduced = false, built = null, loadToken = 0, lastMood = null, moods = [];
+  let fullBleed = false, tl = null, duration = 1, keys = [0], reduced = false, built = null, loadToken = 0, lastMood = null, moods = [];
 
   function context(transcript) {
     const words = transcript.words.map(w => ({ ...w, n: norm(w.w) }));
@@ -76,6 +77,72 @@ export function createStage(host, { label = true } = {}) {
       if (drift) tl.fromTo(b, { scale: 1, x: 0 }, { scale: 1.045, x: (moods.length % 2 ? -14 : 14) * drift, duration: Math.max(.5, t1 - start + .3), ease: 'none', svgOrigin: '800 520', immediateRender: true }, start);
       if (mood) moods.push([t0 - .1, mood]);
       return b;
+    };
+
+    /* A full-bleed scene in three parallax layers. Scenes slide in like a
+       camera pan (push) or dissolve (fade); the camera drifts while it holds. */
+    const scene = (t0, t1, { mood, enter = 'push', exit = 'push', zoom = [1, 1.05], origin = '800 450', pan = 18, lead = .5 } = {}) => {
+      const holder = K.g(world, { class: 'beat scene' });
+      // Each scene is clipped to its own frame so neighbours never bleed in.
+      const fid = K.id('frame'); const fcp = K.el('clipPath', { id: fid }, holder); K.el('rect', { x: -2, y: -2, width: 1604, height: 904 }, fcp);
+      const framed = K.g(holder, { 'clip-path': `url(#${fid})` });
+      const cam = K.g(framed), back = K.g(cam), mid = K.g(cam), front = K.g(cam);
+      const start = Math.max(0, t0 - lead), last = t1 >= duration - .05, first = t0 <= .05;
+      key(t0);
+      if (first) tl.set(holder, { autoAlpha: 1 }, 0);
+      else if (enter === 'push') {
+        tl.fromTo(holder, { autoAlpha: 0 }, { autoAlpha: 1, duration: .01, immediateRender: true }, start);
+        tl.fromTo(holder, { x: 1600 }, { x: 0, duration: .85, ease: 'expo.inOut', immediateRender: true }, start);
+        tl.fromTo(back, { x: -260 }, { x: 0, duration: .85, ease: 'expo.inOut', immediateRender: true }, start);
+        tl.fromTo(front, { x: 320 }, { x: 0, duration: .85, ease: 'expo.inOut', immediateRender: true }, start);
+      } else tl.fromTo(holder, { autoAlpha: 0 }, { autoAlpha: 1, duration: .55, ease: 'power2.out', immediateRender: true }, start);
+      const out = t1 - lead;
+      if (!last) {
+        if (exit === 'push') {
+          tl.to(holder, { x: -1600, duration: .85, ease: 'expo.inOut' }, out);
+          tl.to(back, { x: 260, duration: .85, ease: 'expo.inOut' }, out);
+          tl.to(front, { x: -320, duration: .85, ease: 'expo.inOut' }, out);
+          tl.set(holder, { autoAlpha: 0 }, out + .86);
+        } else tl.to(holder, { autoAlpha: 0, duration: .55, ease: 'power2.in' }, out + .2);
+      }
+      const span = Math.max(.6, (last ? t1 : out + .85) - start);
+      tl.fromTo(cam, { scale: zoom[0] }, { scale: zoom[1], svgOrigin: origin, duration: span, ease: 'sine.inOut', immediateRender: true }, start);
+      if (pan) { tl.to(back, { y: pan * .4, duration: Math.max(.3, (last ? t1 : out) - start - .95), ease: 'sine.inOut' }, start + .86); tl.to(front, { x: -pan, duration: Math.max(.3, (last ? t1 : out) - start - .95), ease: 'sine.inOut' }, start + .86); }
+      if (mood) moods.push([t0 - .1, mood]);
+      return { holder, cam, back, mid, front, t0, t1 };
+    };
+
+    /* An annotation label: a cream pill with the key word, optionally tied
+       to the thing it names by a leader line. The word wipes in as it is heard. */
+    const label = (word, t, { x = 800, y = 92, ax, ay, hold = 1.6, tone = 'gold', size = 44, parent } = {}) => {
+      key(t);
+      const layer = parent || overlay;
+      const grp = K.g(layer, { class: 'label' });
+      const tones = { gold: '#e2a64a', mint: '#3aa680', clay: '#d9694a', sky: '#4f8fc0' };
+      const h = size * 1.55, w = Math.round(word.length * size * .52 + size * 1.9);
+      let line, dot, ring;
+      if (ax !== undefined) {
+        line = K.el('path', { d: `M${x} ${y + h / 2 - 4} L${ax} ${ay}`, stroke: '#fbf8f1', 'stroke-width': 3, fill: 'none', 'stroke-linecap': 'round', opacity: .9 }, grp);
+        ring = K.el('circle', { cx: ax, cy: ay, r: 16, fill: 'none', stroke: '#fbf8f1', 'stroke-width': 3 }, grp);
+        dot = K.el('circle', { cx: ax, cy: ay, r: 8, fill: tones[tone] || tones.gold, stroke: '#fbf8f1', 'stroke-width': 3 }, grp);
+      }
+      const pill = K.g(grp);
+      K.el('rect', { x: x - w / 2 + 3, y: y - h / 2 + 7, width: w, height: h, rx: h / 2, fill: '#000', opacity: .22 }, pill);
+      K.el('rect', { x: x - w / 2, y: y - h / 2, width: w, height: h, rx: h / 2, fill: '#fbf8f1' }, pill);
+      K.el('circle', { cx: x - w / 2 + h / 2, cy: y, r: size * .17, fill: tones[tone] || tones.gold }, pill);
+      const cid = K.id('lbl'); const cp = K.el('clipPath', { id: cid }, pill);
+      const wipe = K.el('rect', { x: x - w / 2 + h * .7, y: y - h / 2, width: w, height: h }, cp);
+      const tx = K.el('text', { x: x + h * .18, y: y + size * .34, 'text-anchor': 'middle', 'font-family': "'Source Serif 4', Georgia, serif", 'font-weight': 600, 'font-size': size, fill: '#14261b', 'clip-path': `url(#${cid})` }, pill);
+      tx.textContent = word;
+      tl.fromTo(pill, { autoAlpha: 0, scale: .7, y: 10 }, { autoAlpha: 1, scale: 1, y: 0, duration: .5, ease: 'back.out(2)', svgOrigin: `${x} ${y}`, immediateRender: true }, t - .08);
+      tl.fromTo(wipe, { attr: { width: 0 } }, { attr: { width: w }, duration: .45, ease: 'power2.out', immediateRender: true }, t - .02);
+      if (line) {
+        tl.fromTo(line, { drawSVG: '0%' }, { drawSVG: '100%', duration: .35, ease: 'power2.out', immediateRender: true }, t);
+        tl.fromTo([dot, ring], { autoAlpha: 0, scale: 0 }, { autoAlpha: 1, scale: 1, duration: .35, ease: 'back.out(3)', svgOrigin: `${ax} ${ay}`, immediateRender: true }, t + .25);
+        tl.to(ring, { scale: 1.8, autoAlpha: 0, svgOrigin: `${ax} ${ay}`, duration: .8, ease: 'power1.out', repeat: Math.max(0, Math.floor(hold / .8) - 1) }, t + .6);
+      }
+      tl.to(grp, { autoAlpha: 0, duration: .35, ease: 'power2.in' }, t + hold);
+      return grp;
     };
 
     const pop = (node, t, { d = .65, from = .35, ease = 'back.out(1.7)', y = 0, rot = 0, origin = '50% 100%' } = {}) => {
@@ -149,7 +216,7 @@ export function createStage(host, { label = true } = {}) {
       }
       return grp;
     };
-    return { tl, svg, world, K, C: K.C, at, end, beat, pop, rise, fade, hide, move, draw, loop, spin, count, wave, reach, face, callout, burst, flow, key, get duration() { return duration; } };
+    return { tl, svg, world, overlay, K, C: K.C, at, end, beat, scene, label, pop, rise, fade, hide, move, draw, loop, spin, count, wave, reach, face, callout, burst, flow, key, get duration() { return duration; } };
   }
 
   async function load(voice, transcript) {
@@ -157,7 +224,7 @@ export function createStage(host, { label = true } = {}) {
     const mod = await import(`./beats/${voice.id}.js?v=1`);
     if (token !== loadToken) return;
     if (tl) tl.kill();
-    world.replaceChildren(); callouts.replaceChildren(); keys = [0]; moods = []; lastMood = null;
+    world.replaceChildren(); overlay.replaceChildren(); callouts.replaceChildren(); keys = [0]; moods = []; lastMood = null;
     duration = transcript.duration;
     tl = gsap.timeline({ paused: true, defaults: { overwrite: false } });
     // Each tween names its own pivot; never let GSAP "smooth" between pivots,
@@ -177,6 +244,7 @@ export function createStage(host, { label = true } = {}) {
     moods.sort((a, b) => a[0] - b[0]);
     // Record every tween's start values in time order, then rewind.
     tl.progress(1, true).progress(0, true);
+    fullBleed = !!mod.fullBleed; host.classList.toggle('full-bleed', fullBleed); if (fullBleed) aurora.stop();
     nameTag.textContent = `${voice.name} · ${voice.topic}`;
     built = voice.id;
     seek(0);
@@ -203,7 +271,7 @@ export function createStage(host, { label = true } = {}) {
     get built() { return built; },
     get duration() { return duration; },
     setReduced(v) { reduced = !!v; host.classList.toggle('reduced', reduced); if (reduced) aurora.stop(); },
-    setPlaying(v) { if (v && !reduced) aurora.start(); else aurora.stop(); },
+    setPlaying(v) { if (v && !reduced && !fullBleed) aurora.start(); else aurora.stop(); },
     host
   };
 }
