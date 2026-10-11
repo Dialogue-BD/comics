@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {sceneAt,cueAt,wordAt,followerAt} from '../motion.mjs';
+import {sceneAt,cueAt,wordAt,followerAt} from '../timing.mjs';
 const data=JSON.parse(await readFile(new URL('../transcripts.json',import.meta.url)));
 assert.equal(Object.keys(data).length,9);
 for(const [id,d] of Object.entries(data)){
