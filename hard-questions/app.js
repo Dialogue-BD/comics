@@ -1,5 +1,6 @@
 import {LEVELS,scoreRound,passAccuracy,adapt,nextRound,shuffle} from './game.mjs?v=2';
-import {drawMotion,sceneAt,cueAt,followerAt} from './motion.mjs?v=4';
+import {sceneAt,cueAt,followerAt} from './timing.mjs?v=1';
+import {createStage} from './motion/stage.js?v=1';
 
 const $=id=>document.getElementById(id);
 const STORAGE='dialogue-hard-questions-v1';
@@ -12,7 +13,7 @@ let audioReady=Promise.resolve(false),audioUrl=null,audioLoadId=0;
 let transcripts={},transcript=null,watchCue=-1,watchScene=-1;
 const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
 let reducedMotion=motionPreference.matches;
-const motionCanvas=$('motion-canvas'),motionContext=motionCanvas.getContext('2d');
+const motionHost=$('motion-stage'),stage=createStage(motionHost);stage.setReduced(reducedMotion);
 const pool=['tomorrow','computer','money','school','doctor','hospital','family','children','teacher','writing','robot','traffic','weather','birthday','travel','dinner','salary','business','creative','patient','energy','friend','garden','music','job','human','environment','education','control','empathy','replace','trust','internet','healthy','future','quicker','illness','research','company','machine','building','decisions','safety','questions','happy','equal','lives','planet','ideas','parents','holidays','art','science','alone','expensive'];
 function record(){return saved.voices[voice.id] ||= {gist:false,catchDone:false,done:false,reflection:'',score:null};}
 function save(){try{localStorage.setItem(STORAGE,JSON.stringify(saved));}catch{}}
@@ -42,6 +43,7 @@ function choose(v){
   stop();voice=v;transcript=transcripts[v.id];round=null;cursor=0;passScore={hits:0,total:0,falseAlarms:0};
   $('portrait').src=v.portrait;$('portrait').alt=`Portrait of ${v.name}, from Anthropic’s Hard Questions`;
   $('speaker-title').textContent=v.name;$('speaker-role').textContent=v.role;$('speaker-topic').textContent=v.topic;$('duration').textContent=`${Math.round(v.duration)} seconds · original interview`;
+  stage.load(v,transcript).then(()=>{if(voice===v&&step===2)renderWatch(Number($('watch-seek').value));}).catch(()=>{});
   $('support').value=saved.support;$('audio-error').hidden=true;$('complete-feedback').textContent='';drawVoices();drawStep();
   const loadId=++audioLoadId;
   $('play').disabled=true;$('replay').disabled=true;$('player-status').textContent='Loading the original recording…';
@@ -160,6 +162,7 @@ $('play').onclick=async()=>{
   else play(step===0?'whole':step===2?'watch':'catch');
 };
 $('replay').onclick=()=>play(step===0?'whole':step===2?'watch':checked?'help':'catch');
+audio.addEventListener('play',()=>stage.setPlaying(step===2));audio.addEventListener('pause',()=>stage.setPlaying(false));
 audio.onended=finishAudio;audio.onerror=()=>{stop();$('audio-error').hidden=false;};
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&playback&&!audio.paused){audio.pause();cancelAnimationFrame(raf);$('play').textContent='▶ Resume';$('player-status').textContent='Paused';}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('guide-dialog').open)stop();});
@@ -206,13 +209,13 @@ function prepareWatch(){
   $('watch-words').replaceChildren(...[...new Map(voice.keywords.map(t=>[t.word,t])).values()].map(t=>{
     const b=node('button',t.word);b.onclick=()=>{$('word-note').textContent=`${t.word}: ${t.meaning}`;const cue=transcript.cues.find(c=>t.start>=c.start&&t.start<=c.end)||transcript.cues.find(c=>c.start>=t.start);play('watch',cue?.start??t.start);};return b;
   }));
-  $('download-srt').href=`subtitles/${voice.id}.srt`;$('download-film').href=`films/${voice.id}.mp4?v=4`;
+  $('download-srt').href=`subtitles/${voice.id}.srt`;
   $('motion-toggle').setAttribute('aria-pressed',String(reducedMotion));renderWatch(0);
 }
 function timeLabel(seconds){return `${Math.floor(seconds/60)}:${String(Math.floor(seconds%60)).padStart(2,'0')}`;}
 function renderWatch(t){
   if(!transcript)return;
-  drawMotion(motionContext,transcript,t,{width:motionCanvas.width,height:motionCanvas.height,reduced:reducedMotion,poster:t===0&&!playback});
+  if(stage.built===voice.id)stage.seek(t);
   const {cue,index}=cueAt(transcript,t),scene=sceneAt(transcript,t),si=transcript.scenes.indexOf(scene);
   if(index!==watchCue){
     watchCue=index;$('karaoke-words').replaceChildren();
@@ -234,15 +237,15 @@ function renderWatch(t){
     glide.style.width=`${a.width}px`;glide.style.height=`${a.height}px`;glide.style.transform=`translate3d(${a.left-b.left}px,${a.top-b.top}px,0)`;
   }
   glide.classList.toggle('on',!!activeWord);$('karaoke-line').classList.toggle('motion-reduced',reducedMotion);
-  if(si!==watchScene){watchScene=si;$('scene-meaning').textContent=scene.meaning;motionCanvas.setAttribute('aria-label',scene.meaning);
+  if(si!==watchScene){watchScene=si;$('scene-meaning').textContent=scene.meaning;motionHost.setAttribute('aria-label',`Animated picture: ${scene.meaning}`);
     [...$('scene-chapters').children].forEach((b,i)=>{b.classList.toggle('current',i===si);if(i===si)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});
   }
   $('watch-seek').value=t;$('watch-seek').setAttribute('aria-valuetext',`${timeLabel(t)} of ${timeLabel(voice.duration)}`);$('watch-time').textContent=`${timeLabel(t)} / ${timeLabel(voice.duration)}`;
 }
 $('watch-seek').oninput=()=>{if(playback){audio.pause();cancelAnimationFrame(raf);}renderWatch(Number($('watch-seek').value));};
 $('watch-seek').onchange=()=>play('watch',Math.min(voice.duration-.05,Number($('watch-seek').value)));
-$('motion-toggle').onclick=()=>{reducedMotion=!reducedMotion;$('motion-toggle').setAttribute('aria-pressed',String(reducedMotion));renderWatch(Number($('watch-seek').value));};
-motionPreference.addEventListener('change',e=>{reducedMotion=e.matches;$('motion-toggle').setAttribute('aria-pressed',String(reducedMotion));if(step===2)renderWatch(Number($('watch-seek').value));});
+$('motion-toggle').onclick=()=>{reducedMotion=!reducedMotion;stage.setReduced(reducedMotion);$('motion-toggle').setAttribute('aria-pressed',String(reducedMotion));renderWatch(Number($('watch-seek').value));};
+motionPreference.addEventListener('change',e=>{reducedMotion=e.matches;stage.setReduced(reducedMotion);$('motion-toggle').setAttribute('aria-pressed',String(reducedMotion));if(step===2)renderWatch(Number($('watch-seek').value));});
 new ResizeObserver(()=>{if(step===2)renderWatch(Number($('watch-seek').value));}).observe($('karaoke-line'));
 $('to-talk').onclick=()=>{step=3;drawStep();focusTask();};
 $('reset').onclick=()=>{if(!confirm('Clear listening progress and notes on this device?'))return;stop();saved=empty();save();choose(voices[0]);};

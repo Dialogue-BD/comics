@@ -1,0 +1,44 @@
+/* AI Dreams & Dictation — polish layer over styles.css */
+:root{--spark:#b9924f}
+.bt-word{display:inline-block;white-space:nowrap}
+.bt-char{display:inline-block;will-change:transform,filter,opacity}
+h1#title em .bt-char{font-style:italic}
+
+/* Speaker cards: lift + SpotlightCard glow */
+.voice{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease;isolation:isolate}
+.voice::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .3s ease;
+  background:radial-gradient(180px circle at var(--mx,50%) var(--my,50%),rgba(231,193,120,.32),transparent 60%)}
+.voice:hover::before,.voice:focus-visible::before{opacity:1}
+.voice:hover{transform:translateY(-4px);box-shadow:0 16px 32px -18px rgba(16,61,33,.55)}
+.voice img{transition:filter .4s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.voice:hover img,.voice[aria-pressed=true] img{filter:saturate(1);transform:scale(1.04)}
+.scene-chapter{position:relative;overflow:hidden;transition:transform .25s ease,border-color .25s ease}
+.scene-chapter::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(140px circle at var(--mx,50%) var(--my,50%),rgba(185,146,79,.18),transparent 65%)}
+.scene-chapter:hover::before{opacity:1}
+.scene-chapter:hover{transform:translateY(-2px)}
+
+/* Primary buttons: a soft shine sweep */
+button.primary{position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .25s ease,background .25s ease}
+button.primary::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,253,247,.28) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+button.primary:hover::after{transform:translateX(120%)}
+button.primary:hover{box-shadow:0 10px 24px -12px rgba(16,61,33,.7)}
+button.primary:active{transform:scale(.98)}
+
+/* The theatre: stage + karaoke as one dark, cinematic unit */
+.motion-theatre{background:#06180e;border:1px solid rgba(143,178,127,.28);border-radius:20px;
+  box-shadow:0 34px 70px -34px rgba(6,24,14,.75),inset 0 0 0 1px rgba(255,253,247,.04)}
+.motion-theatre .hq-stage{border-radius:0}
+.karaoke{background:linear-gradient(180deg,#0b2716 0%,#06180e 100%);border-top:1px solid rgba(143,178,127,.22);color:#f4f1e6}
+.karaoke-label{color:rgba(227,234,217,.6)}
+#karaoke-line button{color:rgba(244,241,230,.42)}
+#karaoke-line button.spoken{color:#f4f1e6}
+#karaoke-line button.current{color:#0b2716}
+#karaoke-line button:hover{outline-color:rgba(231,193,120,.6)}
+#word-glide{background:linear-gradient(135deg,#f0cf8c,#e7c178);box-shadow:0 6px 22px -6px rgba(231,193,120,.6)}
+.picture-meaning p{font-family:'Source Serif 4',Georgia,serif;font-size:17px}
+
+/* Click sparks */
+.click-spark{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:60}
+
+body.projector .motion-theatre{border-radius:14px}
+@media (prefers-reduced-motion: reduce){.voice,.voice img,.scene-chapter,button.primary{transition:none}.voice:hover{transform:none}}
