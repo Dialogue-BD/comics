@@ -231,8 +231,21 @@ export function createStage(host, { label = true } = {}) {
     // or seeking backwards leaves pictures shifted from where they belong.
     const fix = v => (v && (v.transformOrigin || v.svgOrigin)) ? { ...v, smoothOrigin: false } : v;
     const _to = tl.to.bind(tl), _ft = tl.fromTo.bind(tl);
-    tl.to = (n, v, p) => _to(n, fix(v), p);
+    // A node drawn with a transform attribute (placed in the scene) would lose
+    // that placement the moment GSAP animates x/y/scale on it. Lift the
+    // placement onto a new parent first, so every tween is relative to where
+    // the thing was drawn.
+    const TF = ['x', 'y', 'scale', 'scaleX', 'scaleY', 'rotation', 'motionPath', 'keyframes'];
+    const lift = n => {
+      if (!(n instanceof SVGElement) || n.__lifted || n._gsap || !n.hasAttribute('transform') || !n.parentNode) return;
+      const w = document.createElementNS(K.NS, 'g');
+      w.setAttribute('transform', n.getAttribute('transform')); n.removeAttribute('transform');
+      n.parentNode.insertBefore(w, n); w.append(n); n.__lifted = true;
+    };
+    const prep = (n, ...vs) => { if (!vs.some(v => v && TF.some(k => k in v))) return; (n instanceof SVGElement ? [n] : Array.isArray(n) || n instanceof NodeList || n instanceof HTMLCollection ? [...n] : []).forEach(lift); };
+    tl.to = (n, v, p) => { prep(n, v); return _to(n, fix(v), p); };
     tl.fromTo = (n, a, b, p) => {
+      prep(n, a, b);
       if (b.transformOrigin && !a.transformOrigin) a = { ...a, transformOrigin: b.transformOrigin };
       if (b.svgOrigin && !a.svgOrigin) a = { ...a, svgOrigin: b.svgOrigin };
       return _ft(n, fix(a), fix(b), p);

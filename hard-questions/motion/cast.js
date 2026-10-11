@@ -250,7 +250,7 @@ export function pose(tl, f, name, t, d = .55, ease = 'power3.inOut') {
   tl.to(armR.fore, { rotation: fR, svgOrigin: o(armR.fore), duration: d, ease }, t);
 }
 export function setPose(gsap, f, name) {
-  const [uL, fL, uR, fR] = POSES[name];
+  const [uL, fL, uR, fR] = Array.isArray(name) ? name : POSES[name];
   const { armL, armR } = f.parts;
   const o = n => `${n.dataset.ox} ${n.dataset.oy}`;
   gsap.set(armL, { rotation: uL, svgOrigin: o(armL), smoothOrigin: false });

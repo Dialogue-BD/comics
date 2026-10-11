@@ -306,3 +306,186 @@ export function foliage(layer, x, y, s = 1, color = '#1f4a34') {
   }
   return f;
 }
+
+/* ---------- more places ---------- */
+export function street(layer, { skyTop = '#9fd3e6', skyBottom = '#f6e9cc', far = '#9fb4c4', near = '#7f97ab', lit = '#ffe2ad', curb = 720 } = {}) {
+  const s = g(layer, { class: 'street' });
+  sky(s, skyTop, skyBottom);
+  skyline(s, curb - 120, { color: near, far, lit });
+  R(s, -200, curb - 40, 2000, 50, 0, '#cfc6b6'); R(s, -200, curb - 40, 2000, 6, 0, '#e6dfd2');
+  R(s, -200, curb + 10, 2000, 400, 0, grad(s, ['#5d6670', '#3f474f']));
+  for (let x = -160; x < 1800; x += 220) R(s, x, curb + 90, 110, 10, 4, '#e9e3d4', { opacity: .7 });
+  return s;
+}
+export function houseFront(layer, x, y, s = 1, { wall = '#f1d8bd', roof = '#b0563a', door = '#2f7f73', lit = false } = {}) {
+  const h = g(layer, { class: 'housefront' }); place(h, x, y, s);
+  contact(h, 0, 2, 190);
+  R(h, 70, -330, 34, 80, 3, shade(wall, -.25));
+  R(h, -150, -230, 300, 230, 4, grad(h, [shade(wall, .06), shade(wall, -.1)], 'h'));
+  P(h, 'M-178 -222 L0 -350 L178 -222 Z', roof); P(h, 'M-178 -222 L0 -350 L0 -330 L-150 -222Z', shade(roof, .15));
+  R(h, -178, -228, 356, 14, 4, shade(roof, -.2));
+  h.windows = [];
+  for (const wx of [-110, 50]) { R(h, wx - 6, -194, 72, 82, 4, '#f7f3ea'); h.windows.push(R(h, wx, -188, 60, 70, 2, lit ? '#ffd38a' : grad(h, ['#bfe3ef', '#e9f3f3']))); L(h, `M${wx + 30} -188 V-118 M${wx} -153 H${wx + 60}`, '#f7f3ea', 5); }
+  R(h, -30, -96, 60, 96, 4, door); Cc(h, 18, -48, 4, '#e7c178');
+  R(h, -44, -4, 88, 8, 2, shade(wall, -.3));
+  return h;
+}
+export function shopFront(layer, x, y, s = 1, { wall = '#e9d9c0', awning = '#d9805f', sign = '' } = {}) {
+  const h = g(layer, { class: 'shop' }); place(h, x, y, s);
+  contact(h, 0, 2, 170);
+  R(h, -150, -320, 300, 320, 4, grad(h, [shade(wall, .05), shade(wall, -.12)], 'h'));
+  R(h, -150, -330, 300, 18, 3, shade(wall, -.3));
+  R(h, -120, -300, 240, 50, 6, '#2f3e4a');
+  if (sign) { const t = el('text', { x: 0, y: -266, 'text-anchor': 'middle', 'font-family': "'Public Sans',sans-serif", 'font-weight': 800, 'font-size': 26, 'letter-spacing': 3, fill: '#f4f1e6' }, h); t.textContent = sign; }
+  for (let i = 0; i < 6; i++) P(h, `M${-150 + i * 50} -236 h50 l-4 40 c-10 10 -32 10 -42 0z`, i % 2 ? '#fbf8f1' : awning);
+  R(h, -130, -180, 150, 130, 4, grad(h, ['#cfe8ee', '#9fc6d0']));
+  P(h, 'M-110 -180 L-60 -180 L-120 -50 L-130 -50 L-130 -160Z', '#fff', { opacity: .25 });
+  R(h, 40, -180, 80, 180, 4, '#5a4a3a'); Cc(h, 104, -90, 4, '#e7c178');
+  return h;
+}
+export function tower(layer, x, y, s = 1, { w = 300, h = 640, glass = ['#9fc6dc', '#4f7f9c'], logo = true } = {}) {
+  const t = g(layer, { class: 'tower' }); place(t, x, y, s);
+  contact(t, 0, 2, w * .7);
+  R(t, -w / 2, -h, w, h, 6, grad(t, glass, 'h'));
+  for (let yy = -h + 40; yy < -20; yy += 44) L(t, `M${-w / 2} ${yy} H${w / 2}`, '#ffffff', 2, { opacity: .25 });
+  for (let xx = -w / 2 + w / 5; xx < w / 2; xx += w / 5) L(t, `M${xx} ${-h} V0`, '#ffffff', 2, { opacity: .18 });
+  P(t, `M${-w / 2} ${-h} L${-w / 2 + w * .45} ${-h} L${-w / 2} ${-h + h * .5}Z`, '#ffffff', { opacity: .14 });
+  R(t, -w / 2 - 10, -h - 16, w + 20, 18, 4, shade(glass[1], -.3));
+  t.doors = g(t); R(t.doors, -60, -120, 120, 120, 4, '#1d2a33');
+  t.doorL = R(t.doors, -58, -118, 58, 118, 2, grad(t, ['#cfe8ee', '#8fb6c4']));
+  t.doorR = R(t.doors, 0, -118, 58, 118, 2, grad(t, ['#cfe8ee', '#8fb6c4']));
+  if (logo) t.logo = aiCore(t, 0, -h + 90, .32, { hud: false });
+  return t;
+}
+export function serverAisle(layer, { tint = '#5fd3ff' } = {}) {
+  const a = g(layer, { class: 'aisle' });
+  R(a, -200, -200, 2000, 1300, 0, grad(a, ['#0b1622', '#142638']));
+  P(a, 'M-200 900 L640 520 L960 520 L1800 900Z', grad(a, ['#1a2c3e', '#0d1824']));
+  for (let i = 0; i < 6; i++) L(a, `M${640 + i * 64} 520 L${-200 + i * 400} 900`, '#2a425a', 2, { opacity: .6 });
+  a.leds = [];
+  for (const side of [-1, 1]) {
+    for (let i = 0; i < 5; i++) {
+      const k = 1 - i * .17, xIn = 800 + side * (160 + 70 * k * 0), xo = 800 + side * (170 + 560 * k), top = 520 - 380 * k, bot = 520 + 330 * k * .55;
+      const x1 = 800 + side * (170 + 560 * (1 - (i + 1) * .17));
+      P(a, `M${xo} ${top} L${x1} ${520 - 380 * (1 - (i + 1) * .17)} L${x1} ${520 + 330 * (1 - (i + 1) * .17) * .55} L${xo} ${bot}Z`, side < 0 ? '#1d3247' : '#18293a', { stroke: '#2c4760', 'stroke-width': 2 });
+      for (let r = 0; r < 6; r++) { const yy = top + (bot - top) * (r + .5) / 6; const led = Cc(a, (xo * .7 + x1 * .3), yy, 3.4 * k + 1, r % 3 ? tint : '#ffd38a', { opacity: .9 }); a.leds.push(led); }
+    }
+  }
+  for (let i = 0; i < 4; i++) R(a, 620 - i * 60, 80 + i * 70, 360 + i * 120, 10, 5, '#cfe9ff', { opacity: .5 - i * .08 });
+  glow(a, 800, 520, 420, tint, .25);
+  return a;
+}
+export function dataCenter(layer, x, y, s = 1) {
+  const d = g(layer, { class: 'datacenter' }); place(d, x, y, s);
+  contact(d, 0, 4, 420);
+  R(d, -360, -200, 720, 200, 6, grad(d, ['#c9d2d6', '#9aa6ab']));
+  for (let i = 0; i < 9; i++) R(d, -330 + i * 74, -150, 50, 90, 3, '#6f7f87');
+  d.fans = [];
+  for (let i = 0; i < 5; i++) { R(d, -300 + i * 130, -246, 100, 46, 6, '#7f8d93'); const f = g(d); place(f, -250 + i * 130, -222); Cc(f, 0, 0, 18, '#3a464c'); L(f, 'M-16 0 H16 M0 -16 V16', '#9aa6ab', 4); d.fans.push(f); }
+  d.puffs = [];
+  for (let i = 0; i < 5; i++) { const p = g(d); place(p, -250 + i * 130, -260); for (let k = 0; k < 3; k++) Cc(p, k * 10 - 10, -k * 34, 22 + k * 8, '#e9eef0', { opacity: .55 }); d.puffs.push(p); }
+  R(d, -80, -70, 160, 70, 4, '#3a464c'); R(d, -76, -66, 72, 66, 2, '#5fd3ff', { opacity: .35 });
+  return d;
+}
+export function pylon(layer, x, y, s = 1) {
+  const p = g(layer, { class: 'pylon' }); place(p, x, y, s);
+  L(p, 'M-50 0 L0 -320 L50 0 M-36 -90 H36 M-24 -170 H24 M-14 -240 H14 M-70 -250 H70 M-56 -200 H56 M-30 -90 L20 -170 M30 -90 L-20 -170', '#7f8d93', 6);
+  return p;
+}
+export function campus(layer, x, y, s = 1, { stone = '#efe6d4' } = {}) {
+  const c = g(layer, { class: 'campus' }); place(c, x, y, s);
+  contact(c, 0, 2, 380);
+  for (let i = 0; i < 3; i++) R(c, -330 + i * 14, -30 + i * 10 - 30, 660 - i * 28, 20, 2, shade(stone, -.1 - i * .04));
+  R(c, -300, -330, 600, 260, 4, grad(c, [shade(stone, .04), shade(stone, -.08)]));
+  P(c, 'M-330 -330 L0 -450 L330 -330Z', shade(stone, .06)); P(c, 'M-300 -342 L0 -432 L300 -342Z', shade(stone, -.06));
+  for (let i = 0; i < 6; i++) { const cx = -250 + i * 100; R(c, cx - 18, -320, 36, 250, 6, grad(c, ['#ffffff', shade(stone, -.15)], 'h')); }
+  R(c, -50, -170, 100, 100, 50, '#5a4a3a');
+  return c;
+}
+export function board(layer, x, y, w = 420, h = 240, { color = '#2f5a46', frame = '#8a6a4a' } = {}) {
+  const b = g(layer, { class: 'board' }); place(b, x, y);
+  R(b, 6, 8, w, h, 8, '#000', { opacity: .14 });
+  R(b, 0, 0, w, h, 8, frame); R(b, 12, 12, w - 24, h - 24, 4, color);
+  b.surface = g(b); place(b.surface, 12, 12);
+  R(b, 20, h - 6, w - 40, 12, 4, shade(frame, -.15));
+  return b;
+}
+export function sofa(layer, x, y, s = 1, color = '#5b8fb8') {
+  const f = g(layer, { class: 'sofa' }); place(f, x, y, s);
+  contact(f, 0, 4, 260);
+  R(f, -230, -250, 460, 150, 40, grad(f, [shade(color, .1), color]));
+  R(f, -250, -170, 70, 150, 30, shade(color, -.1)); R(f, 180, -170, 70, 150, 30, shade(color, -.1));
+  R(f, -190, -140, 380, 90, 24, shade(color, .05));
+  R(f, -200, -54, 400, 36, 16, shade(color, -.18));
+  R(f, -200, -18, 16, 18, 3, '#5a4a3a'); R(f, 184, -18, 16, 18, 3, '#5a4a3a');
+  return f;
+}
+export function table(layer, x, y, w = 360, { top = '#c9a27a', h = 120 } = {}) {
+  const t = g(layer, { class: 'table' }); place(t, x, y);
+  contact(t, 0, 4, w * .6);
+  R(t, -w / 2 + 20, -h, 14, h, 4, shade(top, -.35)); R(t, w / 2 - 34, -h, 14, h, 4, shade(top, -.35));
+  R(t, -w / 2, -h - 22, w, 26, 8, grad(t, [shade(top, .15), top]));
+  return t;
+}
+export function cake(layer, x, y, s = 1, n = 5) {
+  const c = g(layer, { class: 'cake' }); place(c, x, y, s);
+  R(c, -90, -20, 180, 20, 8, '#e9e3d4');
+  R(c, -70, -110, 140, 92, 14, '#f0a3a0'); P(c, 'M-70 -96 C-50 -80 -30 -100 -10 -84 C10 -100 30 -80 50 -96 C60 -86 70 -92 70 -100 V-110 H-70Z', '#fbf8f1');
+  c.flames = [];
+  for (let i = 0; i < n; i++) { const cx = -48 + i * (96 / Math.max(1, n - 1)); R(c, cx - 4, -150, 8, 40, 3, ['#5b8fb8', '#e7c178', '#8fb27f', '#d9805f', '#a5e3c6'][i % 5]); const f = g(c); place(f, cx, -160); glow(f, 0, 0, 22, '#ffd38a', .7); P(f, 'M0 -14 C8 -4 6 6 0 8 C-6 6 -8 -4 0 -14Z', '#ffb84d'); c.flames.push(f); }
+  return c;
+}
+export function bot(layer, x, y, s = 1) {
+  const b = g(layer, { class: 'bot' }); place(b, x, y, s);
+  contact(b, 0, 2, 90);
+  b.inner = g(b);
+  const i = b.inner;
+  R(i, -60, -240, 120, 150, 40, grad(i, ['#eef3f2', '#b9c6c4'], 'h'));
+  R(i, -30, -90, 22, 80, 10, '#9aa8a6'); R(i, 8, -90, 22, 80, 10, '#9aa8a6');
+  R(i, -72, -400, 144, 130, 40, grad(i, ['#f7faf9', '#c3cfcd'], 'h'));
+  R(i, -56, -380, 112, 86, 26, '#123a2e');
+  b.eyes = g(i); Cc(b.eyes, -24, -340, 11, '#7fe0c4'); Cc(b.eyes, 24, -340, 11, '#7fe0c4');
+  b.mouth = L(i, 'M-18 -312 C-6 -304 6 -304 18 -312', '#7fe0c4', 5);
+  L(i, 'M0 -400 V-430', '#9aa8a6', 6); Cc(i, 0, -436, 10, '#e7c178');
+  b.armL = g(i); R(b.armL, -96, -230, 26, 110, 13, '#c3cfcd'); b.armR = g(i); R(b.armR, 70, -230, 26, 110, 13, '#c3cfcd');
+  return b;
+}
+export function drain(layer, color = '#7f8a85', o = .6) {
+  return R(layer, -200, -200, 2000, 1300, 0, color, { opacity: 0, 'data-o': o, class: 'drain' });
+}
+export function bokeh(layer, n = 14, colors = ['#ffd38a', '#a5e3c6', '#f0a3a0']) {
+  const b = g(layer, { class: 'bokeh' });
+  b.dots = [];
+  for (let i = 0; i < n; i++) b.dots.push(Cc(b, (i * 233) % 1600, 80 + (i * 137) % 700, 14 + (i * 7) % 30, colors[i % colors.length], { opacity: .18 + (i % 3) * .06 }));
+  return b;
+}
+export function river(layer, y = 760, color = '#6fb3cf') {
+  const r = g(layer, { class: 'river' });
+  r.water = P(r, `M-200 ${y} C300 ${y - 40} 700 ${y + 30} 1000 ${y - 10} C1300 ${y - 40} 1500 ${y + 20} 1800 ${y} V${y + 90} C1400 ${y + 110} 900 ${y + 60} 500 ${y + 100} C200 ${y + 120} 0 ${y + 90} -200 ${y + 100}Z`, color);
+  for (let i = 0; i < 6; i++) L(r, `M${100 + i * 260} ${y + 40} h70`, '#ffffff', 4, { opacity: .5 });
+  return r;
+}
+export function turbine(layer, x, y, s = 1) {
+  const t = g(layer, { class: 'turbine' }); place(t, x, y, s);
+  P(t, 'M-6 0 L-3 -300 H3 L6 0Z', '#f4f6f6');
+  t.blades = g(t); place(t.blades, 0, -300);
+  for (let i = 0; i < 3; i++) P(t.blades, 'M-5 0 C-8 -60 -4 -120 0 -150 C4 -120 8 -60 5 0Z', '#ffffff', { transform: `rotate(${i * 120})` });
+  Cc(t.blades, 0, 0, 9, '#d9dedd');
+  return t;
+}
+export function solar(layer, x, y, s = 1) {
+  const p = g(layer, { class: 'solar' }); place(p, x, y, s);
+  L(p, 'M0 0 V-60', '#9aa6ab', 6);
+  P(p, 'M-90 -60 L90 -60 L70 -130 L-70 -130Z', '#2c4a7a');
+  for (let i = 1; i < 4; i++) L(p, `M${-90 + i * 45} -60 L${-70 + i * 35} -130`, '#8fb6e6', 2, { opacity: .7 });
+  L(p, 'M-80 -95 H80', '#8fb6e6', 2, { opacity: .7 });
+  P(p, 'M-70 -130 L-20 -130 L-50 -60 L-90 -60Z', '#ffffff', { opacity: .15 });
+  return p;
+}
+export function stringLights(layer, x1, x2, y, sag = 40) {
+  const s = g(layer, { class: 'lights' });
+  L(s, `M${x1} ${y} Q${(x1 + x2) / 2} ${y + sag * 2} ${x2} ${y}`, '#3a3a3a', 2);
+  s.bulbs = [];
+  for (let i = 1; i < 14; i++) { const t = i / 14, bx = x1 + (x2 - x1) * t, by = y + sag * 4 * t * (1 - t); const b = g(s); place(b, bx, by + 8); const gl = glow(b, 0, 0, 24, '#ffd38a', .7); Cc(b, 0, 0, 6, '#ffe2a8'); b.setAttribute('opacity', .25); s.bulbs.push(b); }
+  return s;
+}

@@ -1,4 +1,6 @@
-import { badge, who, breathe, ask, free, whoFree } from './_shared.js';
+import { pose, tilt, express, waveHand, SKIN, HAIRC } from '../cast.js';
+import * as Z from '../sets.js';
+import { helpers } from './_scene.js';
 
 /* Sarah — Support.
    "My youngest has autism. He's 13, but as he becomes an adult, what kind of
@@ -7,130 +9,167 @@ import { badge, who, breathe, ask, free, whoFree } from './_shared.js';
     thinking about kids with special needs. Can AI help me be a better teacher,
     better mom, better wife?"
    Her son is shown simply as himself — no symbols or stereotypes for autism. */
+export const fullBleed = true;
+
+const SARAH = { skin: SKIN.s1, hair: 'long', hairColor: HAIRC.brown, top: '#7fc8a9', outfit: 'sweater', bottom: '#3b3a4a' };
+const SON = { skin: SKIN.s1, hair: 'short', hairColor: HAIRC.brown, top: '#e7c178', outfit: 'tee', bottom: '#2f3e4a' };
+const HUSBAND = { skin: SKIN.s2, hair: 'short', hairColor: HAIRC.dark, top: '#5b8fb8', outfit: 'shirt', beard: true };
+
 export default function (S) {
-  const { K, C, at, end, beat, pop, rise, draw, move, loop, spin, count, callout, burst, flow, hide, face, wave, reach, tl } = S;
+  const { K, tl, at, end, scene, label, pop, draw, loop, spin, count, burst, flow } = S;
+  const { actor, life, put, walkIn, walkTo } = helpers(S);
   const D = S.duration;
-  const SARAH = { tone: K.SKIN[1], hair: 'long', hairColor: K.HAIR.brown, top: C.mint, bottom: '#3b3a4a' };
-  const SON = { tone: K.SKIN[1], hair: 'short', hairColor: K.HAIR.brown, top: C.gold, bottom: '#2f3e4a', mood: 'smile' };
 
   /* 1 · My youngest has autism. He's 13, but as he becomes an adult… */
   {
     const t0 = 0, t1 = at('what');
-    const b = beat(t0, t1, { mood: 'calm' });
-    const sa = who(S, b, 520, 720, { ...SARAH, mood: 'smile' }, 1.1);
-    rise(sa, 0, { y: 30 }); breathe(S, sa, 0, t1);
-    reach(sa.p, 'r', .3, -40);
-    const son = who(S, b, 760, 720, { ...SON, age: 'teen' }, 1);
-    rise(son, at('youngest') - .1, { y: 30 });
-    const bal = K.wrap(b, 920, 330); const bl = K.balloon(bal, '1', C.sky);
-    pop(bal, at('13') - .5, { origin: '50% 100%', y: 60 });
-    count(bl.label, at('13') - .4, 1, 13, .6);
-    loop(bal, at('13') + .4, t1, { y: -12, rotation: 4 }, 1.4);
-    // Growing up: from teenager to adult.
-    tl.to(son, { scale: 1.2, duration: 1.0, ease: 'power2.inOut', transformOrigin: '50% 100%' }, at('becomes') - .1);
-    tl.to(son, { x: 140, duration: 1.0, ease: 'power2.inOut' }, at('becomes') - .1);
-    tl.to(bal, { autoAlpha: 0, duration: .4 }, at('becomes'));
-    const arrow = K.el('path', { d: 'M1110 690 V360 l-22 30 M1110 360 l22 30', stroke: C.gold, 'stroke-width': 9, fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, b);
-    draw(arrow, at('becomes'), .8, 'expo.out');
-    callout('autism', at('autism'), { hold: .8, small: true, tone: 'mint' });
-    callout('adult', at('adult'), { hold: .55 });
+    const sc = scene(t0, t1, { zoom: [1.04, 1], origin: '700 500' });
+    Z.room(sc.back, { ...Z.PAL.home, wall: '#e9dcc8' }, { horizon: 700 });
+    const w = Z.windowFrame(sc.back, 1080, 130, 340, 340, { sky: ['#a9dcec', '#f6e9cc'] });
+    Z.treeRound(w.scene, 200, 380, .7);
+    Z.frame(sc.back, 260, 190, 170, 130, '#e7c178');
+    Z.sofa(sc.back, 380, 720, .8, '#8fb27f');
+    const sa = actor(sc.mid, 520, 870, 1.05, { ...SARAH, mood: 'smile' }, 'reachR');
+    life(sa, t0, t1, 1);
+    const teen = actor(sc.mid, 820, 870, 1.0, { ...SON, age: 'teen', mood: 'smile' }, 'idle');
+    const adult = actor(sc.mid, 860, 870, 1.05, { ...SON, mood: 'grin' }, 'idle');
+    life(teen, t0, t1, 2); life(adult, t0, t1, 3);
+    S.rise(teen, at('youngest') - .2, { y: 30 });
+    tl.set(adult, { autoAlpha: 0 }, 0);
+    const ck = Z.cake(sc.mid, 1180, 760, .8, 0);
+    const num = K.el('text', { x: 1180, y: 600, 'text-anchor': 'middle', 'font-family': "'Source Serif 4', Georgia, serif", 'font-weight': 700, 'font-size': 120, fill: '#e2a64a' }, sc.front);
+    pop(num, at('13') - .4, { origin: '50% 100%' }); count(num, at('13') - .4, 1, 13, .6);
+    Z.table(sc.mid, 1180, 870, 240, { top: '#c9a27a', h: 110 });
+    // Growing up: the teenager becomes a young man.
+    const bc = at('becomes');
+    tl.to(teen, { autoAlpha: 0, scale: 1.08, transformOrigin: '50% 100%', duration: .7, ease: 'power2.inOut' }, bc);
+    tl.fromTo(adult, { autoAlpha: 0, scale: .9 }, { autoAlpha: 1, scale: 1, transformOrigin: '50% 100%', duration: .7, ease: 'power2.inOut', immediateRender: false }, bc);
+    tl.to(num, { autoAlpha: 0, duration: .3 }, bc);
+    const arrow = K.el('path', { d: 'M1000 820 V420 l-22 30 M1000 420 l22 30', stroke: '#e2a64a', 'stroke-width': 9, fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, sc.front);
+    draw(arrow, bc, .8, 'expo.out');
+    label('autism', at('autism'), { x: 820, y: 92, ax: 820, ay: 300, tone: 'mint', hold: .8, size: 38, parent: sc.front });
+    label('adult', at('adult'), { x: 860, y: 92, ax: 860, ay: 250, hold: .55, parent: sc.front });
   }
 
   /* 2 · …what kind of AI technology can assist him to live an independent life? */
   {
     const t0 = at('what'), t1 = at('what', 2);
-    const b = beat(t0, t1, { mood: 'wonder' });
-    const son = who(S, b, 560, 720, SON, 1.2);
-    rise(son, t0, { y: 30 }); breathe(S, son, t0, t1);
+    const sc = scene(t0, t1, { zoom: [1, 1.05], origin: '800 500' });
+    Z.room(sc.back, { ...Z.PAL.home, wall: '#dfe8e1', wallDark: '#c7d6cc', trim: '#a9bfb1', floor: '#c9a27a', floorDark: '#a98258' }, { horizon: 700 });
+    // His own kitchen.
+    K.el('rect', { x: 120, y: 460, width: 600, height: 240, rx: 6, fill: '#f7f3ea' }, sc.back);
+    K.el('rect', { x: 100, y: 440, width: 640, height: 26, rx: 6, fill: '#9aa39f' }, sc.back);
+    for (let i = 0; i < 4; i++) K.el('rect', { x: 140 + i * 145, y: 490, width: 130, height: 190, rx: 6, fill: '#e9e3d5', stroke: '#d4cdbb', 'stroke-width': 3 }, sc.back);
+    K.el('rect', { x: 140, y: 150, width: 560, height: 160, rx: 6, fill: '#f7f3ea' }, sc.back);
+    const dr = Z.door(sc.back, 1280, 700, { color: '#5b8fb8', w: 190, h: 400 });
+    const son = actor(sc.mid, 760, 900, .98, { ...SON, mood: 'smile' }, 'hold');
+    life(son, t0, t1, 4);
+    const ph = put(sc.mid, 760, 610, 1.0); K.phone(ph);
+    S.fade(ph, t0 + .2);
+    // Helpers on his phone: reminders, a calendar, a map.
     const tools = [
-      [400, 300, i => K.place(K.phone(i, { glow: false }), 0, 0, .7)],
-      [560, 220, i => K.place(K.calendar(i, { label: '' }), 0, 0, .55)],
-      [720, 300, i => { K.el('path', { d: 'M0 34 C-30 0 -30 -34 0 -34 C30 -34 30 0 0 34Z', fill: C.clay }, i); K.el('circle', { cy: -12, r: 10, fill: C.cream }, i); }]
+      [480, 330, i => { const c = K.g(i); c.setAttribute('transform', 'scale(.5)'); K.calendar(c, { label: '' }); }],
+      [760, 170, i => { K.el('path', { d: 'M0 30 C-26 0 -26 -30 0 -30 C26 -30 26 0 0 30Z', fill: '#d9805f' }, i); K.el('circle', { cy: -10, r: 9, fill: '#fbf8f1' }, i); }],
+      [1040, 330, i => { const b = K.g(i); b.setAttribute('transform', 'scale(.45)'); const sp = K.speech(b, { w: 140, h: 90 }); for (let k = 0; k < 3; k++) K.el('circle', { cx: -30 + k * 30, cy: 0, r: 9, fill: '#7fae8f' }, sp.inner); }]
     ];
-    const cards = tools.map(([x, y, d]) => badge(S, b, x, y, d, { r: 52 }));
+    const cards = tools.map(([x, y, d]) => { const b = put(sc.front, x, y, 1); b.glow = Z.glow(b, 0, 0, 100, '#7fe0c4', .6); b.glow.setAttribute('opacity', 0); K.el('circle', { r: 52, fill: '#fbf8f1' }, b); b.ring = K.el('circle', { r: 52, fill: 'none', stroke: '#e7c178', 'stroke-width': 5 }, b); d(K.g(b)); return b; });
     cards.forEach((c, i) => pop(c, at('technology') - .2 + i * .14, { origin: '50% 50%' }));
-    const ai = K.wrap(b, 560, 110, .45); K.chip(ai);
+    const ai = put(sc.front, 300, 230, 1); Z.aiCore(ai, 0, 0, .3, { hud: false });
     pop(ai, at('ai') - .1, { origin: '50% 50%' });
     const as = at('assist');
-    cards.forEach((c, i) => { tl.to(c.glow, { attr: { opacity: 1 }, duration: .4 }, as + i * .1); tl.to(c.ring, { attr: { stroke: C.mint }, duration: .4 }, as + i * .1); });
-    // An independent life: his own home, his own key.
-    const hm = K.wrap(b, 1080, 712, 1.25); const h = K.house(hm, { color: C.gold });
-    rise(hm, at('live') - .3, { y: 40 });
-    const ky = K.wrap(b, 880, 470, .8); K.key(ky);
-    pop(ky, at('independent') - .2, { origin: '50% 50%', rot: -30 });
-    tl.to(ky, { x: 160, y: 160, rotation: 90, scale: .5, autoAlpha: 0, duration: .7, ease: 'power3.in' }, at('life') - .1);
-    tl.to(son, { x: 420, duration: 1.0, ease: 'power2.inOut' }, at('life'));
-    burst(b, 1080, 560, at('life') + .5, { color: C.gold });
-    callout('assist', as, { hold: .9 });
-    callout('independent', at('independent'), { hold: 1.0 });
+    cards.forEach((c, i) => { tl.to(c.glow, { attr: { opacity: 1 }, duration: .4 }, as + i * .1); tl.to(c.ring, { attr: { stroke: '#7fe0c4' }, duration: .4 }, as + i * .1); const l = K.el('path', { d: `M760 560 L${tools[i][0]} ${tools[i][1] + 52}`, stroke: '#7fe0c4', 'stroke-width': 3, 'stroke-dasharray': '4 8', fill: 'none' }, sc.front); sc.front.insertBefore(l, sc.front.firstChild); draw(l, as + i * .1, .4); });
+    // Independent life: his own key, his own door.
+    const ky = put(sc.front, 0, 0, .9); K.key(ky);
+    tl.fromTo(ky, { x: 900, y: 520, autoAlpha: 0, rotation: -30 }, { autoAlpha: 1, rotation: 0, duration: .5, ease: 'back.out(2)', immediateRender: true }, at('independent') - .2);
+    tl.to(ky, { x: 1240, y: 500, rotation: 90, scale: .5, duration: .7, ease: 'power2.inOut' }, at('life'));
+    tl.to(dr.leaf, { scaleX: .12, svgOrigin: `${dr.leaf.dataset.ox} 0`, duration: .5, ease: 'power3.inOut' }, at('life') + .4);
+    express(tl, son.f, at('life'), 'happy');
+    label('assist', as, { x: 760, y: 92, ax: 760, ay: 118, tone: 'mint', hold: .9, parent: sc.front });
+    label('independent', at('independent'), { x: 1100, y: 92, ax: 1280, ay: 340, hold: 1.0, parent: sc.front });
   }
 
   /* 3 · …as independent as possible as he grows. */
   {
     const t0 = at('what', 2), t1 = at('so i');
-    const b = beat(t0, t1, { mood: 'hope' });
-    const stairs = [0, 1, 2, 3].map(i => { const s = K.el('rect', { x: 420 + i * 200, y: 720 - (i + 1) * 70, width: 200, height: (i + 1) * 70, rx: 8, fill: '#2b5a3f', stroke: '#4f8a64', 'stroke-width': 3 }, b); return s; });
-    stairs.forEach((s, i) => rise(s, t0 + i * .08, { y: 30 }));
-    const rail = K.el('path', { d: 'M440 560 L640 490 L840 420 L1040 350 L1180 300', stroke: C.mint, 'stroke-width': 8, fill: 'none', 'stroke-linecap': 'round' }, b);
-    draw(rail, t0 + .4, .8);
-    const posts = [440, 640, 840, 1040].map((x, i) => K.el('path', { d: `M${x + 20} ${650 - i * 70} V${560 - i * 70}`, stroke: C.mint, 'stroke-width': 6 }, b));
-    posts.forEach((p, i) => draw(p, t0 + .3 + i * .08, .3));
-    const son = whoFree(S, b, SON, .85);
-    const stepT = [at('do'), at('him', 2), at('independent', 2) - .4, at('possible') - .2];
-    tl.set(son, { x: 520, y: 650 }, 0);
-    stepT.forEach((t, i) => tl.to(son, { x: 520 + i * 200, y: 650 - i * 70, duration: .5, ease: 'power2.out' }, t));
-    // Supports fall away: he stands on his own.
-    tl.to([rail, ...posts], { autoAlpha: 0, y: 40, duration: .6, stagger: .05 }, at('possible') + .1);
-    face(son.p, at('grows') - .2, 'grin');
-    const st = K.wrap(b, 1120, 280); K.star(st, C.gold, 40);
+    const sc = scene(t0, t1, { zoom: [1, 1.05], origin: '800 520' });
+    Z.street(sc.back, { curb: 740 });
+    // A bus stop.
+    const stop = K.g(sc.mid);
+    K.el('rect', { x: 1180, y: 380, width: 12, height: 320, fill: '#5a6a6a' }, stop);
+    K.el('rect', { x: 1150, y: 360, width: 80, height: 60, rx: 8, fill: '#2f7f73' }, stop);
+    K.el('path', { d: 'M1170 380 h40 v24 h-40z', fill: '#fbf8f1' }, stop);
+    const sa = actor(sc.mid, 380, 800, 1.0, { ...SARAH, mood: 'smile' }, 'reachR');
+    const son = actor(sc.mid, 560, 800, 1.0, { ...SON, mood: 'smile' }, 'reachL');
+    life(sa, t0, t1, 5); life(son, t0, t1, 6);
+    // Holding hands at first… then he goes on his own.
+    const ind = at('independent', 2);
+    pose(tl, sa.f, 'idle', ind - .6, .4); pose(tl, son.f, 'hold', ind - .6, .4);
+    const ph = put(son.content, 0, -330, .9); K.phone(ph); pop(ph, ind - .5, { origin: '50% 50%' });
+    walkTo(son, ind - .3, 540, 1.6);
+    const pin = put(sc.front, 1190, 290, 1); K.el('path', { d: 'M0 34 C-30 0 -30 -34 0 -34 C30 -34 30 0 0 34Z', fill: '#d9805f' }, pin); K.el('circle', { cy: -12, r: 10, fill: '#fbf8f1' }, pin);
+    pop(pin, ind - .2, { origin: '50% 100%', y: -40 });
+    const route = K.el('path', { d: 'M600 640 C800 600 1000 640 1180 620', stroke: '#7fe0c4', 'stroke-width': 6, 'stroke-dasharray': '6 12', fill: 'none', 'stroke-linecap': 'round' }, sc.front);
+    draw(route, ind - .3, .8);
+    pose(tl, sa.f, 'wave', at('possible'), .4); waveHand(tl, sa.f, at('possible') + .3, 2);
+    express(tl, sa.f, at('possible'), 'happy');
+    pose(tl, son.f, 'wave', at('grows') - .3, .4);
+    const st = put(sc.front, 1100, 220, 1); K.star(st, '#e7c178', 40);
     pop(st, at('grows'), { origin: '50% 50%', from: .1, ease: 'back.out(3)' });
-    burst(b, 1120, 280, at('grows') + .1, { color: C.gold });
-    callout('independent', at('independent', 2), { hold: .6 });
-    callout('possible', at('possible'), { hold: .9 });
+    burst(sc.front, 1100, 220, at('grows') + .1, { color: '#ffd38a' });
+    label('independent', ind, { x: 900, y: 92, ax: 900, ay: 330, hold: .6, parent: sc.front });
+    label('possible', at('possible'), { x: 900, y: 92, ax: 1100, ay: 330, hold: .9, parent: sc.front });
   }
 
   /* 4 · So I'm thinking about kids with special needs. */
   {
     const t0 = at('so i'), t1 = at('can ai');
-    const b = beat(t0, t1, { mood: 'warm' });
+    const sc = scene(t0, t1, { zoom: [1, 1.05], origin: '800 520' });
+    Z.room(sc.back, Z.PAL.school, { horizon: 700 });
+    const bd = Z.board(sc.back, 520, 130, 560, 260, { color: '#2f5a46' });
+    ['M30 60 h120', 'M30 110 h80 m20 0 h60', 'M300 70 a30 30 0 1 0 1 0'].forEach((d, i) => K.el('path', { d, stroke: '#e9efe4', 'stroke-width': 6, fill: 'none', 'stroke-linecap': 'round' }, bd.surface));
     const kids = [
-      { tone: K.SKIN[3], hair: 'curly', hairColor: K.HAIR.black, top: C.gold, age: 'child', mood: 'grin' },
-      { tone: K.SKIN[0], hair: 'ponytail', hairColor: K.HAIR.blond, top: C.sky, age: 'child', mood: 'smile' },
-      { tone: K.SKIN[2], hair: 'short', hairColor: K.HAIR.black, top: C.rose, age: 'child', mood: 'grin' }
+      [380, { skin: SKIN.s4, hair: 'curly', hairColor: HAIRC.black, top: '#e7c178', outfit: 'tee', age: 'child', mood: 'grin' }],
+      [600, { skin: SKIN.s1, hair: 'ponytail', hairColor: HAIRC.blond, top: '#9cc7e8', outfit: 'tee', age: 'child', mood: 'smile' }],
+      [1180, { skin: SKIN.s3, hair: 'crop', hairColor: HAIRC.black, top: '#f0a3a0', outfit: 'tee', age: 'child', mood: 'grin' }]
     ];
-    const xs = [520, 700, 1060];
-    kids.forEach((k, i) => { const w = who(S, b, xs[i], 720, k, 1.15); rise(w, at('kids') - .3 + i * .12, { y: 30 }); breathe(S, w, t0, t1, 3, 1.8 + i * .2); });
-    const wc = K.wrap(b, 880, 720, .8); K.wheelchair(wc);
-    const rider = K.wrap(wc, -4, 26, .72); K.person(rider, { tone: K.SKIN[4], top: C.mint, hair: 'bun', hairColor: K.HAIR.black, age: 'adult', mood: 'grin', seated: true });
-    wc.append(wc.querySelector('.wheelchair'));
-    rise(wc, at('kids') + .1, { y: 30 });
-    const hearts = [[600, 300], [800, 240], [1000, 300]].map(([x, y], i) => { const h = K.wrap(b, x, y, .5); K.heart(h, [C.clay, C.rose, C.gold][i]); pop(h, at('special') + i * .12, { origin: '50% 50%', from: .1, ease: 'back.out(3)' }); return h; });
-    callout('special needs', at('special'), { hold: 1.1 });
+    kids.forEach(([x, k], i) => { const a = actor(sc.mid, x, 880, 1.25, k, i === 2 ? 'cheer' : 'wave'); life(a, t0, t1, i + 7); walkIn(a, at('kids') - .3 + i * .12, i === 2 ? 200 : -200, .6); });
+    // A pair of headphones for a child who likes it quiet.
+    const wcG = put(sc.mid, 880, 880, 1.05); const wcc = K.g(wcG); const wch = K.wheelchair(wcc);
+    actor(wcc, -4, 26, .82, { skin: SKIN.s6, hair: 'bun', hairColor: HAIRC.black, top: '#7fc8a9', outfit: 'tee', age: 'child', mood: 'grin', seated: true }, 'cheer');
+    wcc.append(wch);
+    S.rise(wcG, at('kids') + .1, { y: 30 });
+    [[540, 290, '#d9694a'], [800, 230, '#f0a3a0'], [1060, 290, '#e2a64a']].forEach(([x, y, c], i) => { const h = put(sc.front, x, y, .55); K.heart(h, c); pop(h, at('special') + i * .12, { origin: '50% 50%', from: .1, ease: 'back.out(3)' }); });
+    label('special needs', at('special'), { x: 800, y: 92, ax: 800, ay: 190, hold: 1.1, parent: sc.front });
   }
 
   /* 5 · Can AI help me be a better teacher, better mom, better wife? */
   {
     const t0 = at('can ai'), t1 = D;
-    const b = beat(t0, t1, { mood: 'warm' });
-    const sa = who(S, b, 420, 720, { ...SARAH, mood: 'smile' }, 1.15);
-    rise(sa, t0, { y: 30 }); breathe(S, sa, t0, t1);
-    const ai = K.wrap(b, 420, 240, .5); K.chip(ai);
+    const sc = scene(t0, t1, { zoom: [1, 1.04], origin: '800 480' });
+    K.el('rect', { x: -200, y: -200, width: 2000, height: 1300, fill: Z.grad(sc.back, ['#f3e7c9', '#e9d3ae']) }, sc.back);
+    const ai = put(sc.front, 800, 110, 1); Z.aiCore(ai, 0, 0, .3);
     pop(ai, at('ai', 2) - .1, { origin: '50% 50%' });
-    const roles = [
-      ['teacher', 720, i => { K.el('rect', { x: -44, y: -34, width: 88, height: 60, rx: 6, fill: C.mossDeep }, i); K.el('path', { d: 'M-30 -14 h40 M-30 4 h56', stroke: C.cream, 'stroke-width': 5, 'stroke-linecap': 'round' }, i); }],
-      ['mom', 960, i => { K.place(K.person(i, { ...SARAH, mood: 'grin' }), -16, 58, .3); K.place(K.person(i, { ...SON, age: 'child', mood: 'grin' }), 24, 58, .3); }],
-      ['wife', 1200, i => { K.el('circle', { cx: -14, cy: 0, r: 24, fill: 'none', stroke: C.goldDeep, 'stroke-width': 9 }, i); K.el('circle', { cx: 14, cy: 0, r: 24, fill: 'none', stroke: C.gold, 'stroke-width': 9 }, i); }]
+    // Three windows on her life.
+    const panels = [
+      ['teacher', 300, (p) => { Z.room(p, Z.PAL.school, { horizon: 330 }); const b = Z.board(p, 70, 60, 200, 110, { color: '#2f5a46' }); actor(p, 90, 420, .5, { ...SARAH, mood: 'grin' }, 'pointUp'); actor(p, 230, 430, .32, { skin: SKIN.s4, hair: 'curly', hairColor: HAIRC.black, top: '#e7c178', outfit: 'tee', age: 'child', mood: 'grin' }, 'cheer'); }],
+      ['mom', 800, (p) => { Z.room(p, Z.PAL.home, { horizon: 330 }); actor(p, 110, 420, .5, { ...SARAH, mood: 'grin' }, 'reachR'); actor(p, 230, 420, .5, { ...SON, mood: 'grin' }, 'reachL'); }],
+      ['wife', 1300, (p) => { Z.sky(p, '#f2a77a', '#fbe0b0'); Z.hills(p, ['#c9c08e', '#a9b27c', '#86a06a'], 520); actor(p, 110, 420, .5, { ...SARAH, mood: 'grin' }, 'reachR'); actor(p, 230, 420, .52, { ...HUSBAND, mood: 'grin' }, 'reachL'); }]
     ];
-    roles.forEach(([w, x, d], i) => {
+    panels.forEach(([w, cx, drawP], i) => {
       const t = at(w);
-      const bd = badge(S, b, x, 430, d, { r: 82 });
-      pop(bd, t - .3, { origin: '50% 50%', from: .2, ease: 'back.out(2)' });
-      tl.to(bd.glow, { attr: { opacity: 1 }, duration: .4 }, t);
-      const up = K.wrap(b, x + 70, 340); K.el('circle', { r: 26, fill: C.gold }, up); K.el('path', { d: 'M0 12 V-12 M-10 -2 L0 -12 L10 -2', stroke: C.deep, 'stroke-width': 6, fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, up);
+      const fr = put(sc.mid, cx - 170, 250, 1);
+      K.el('rect', { x: -10, y: -10, width: 360, height: 400, rx: 18, fill: '#fbf8f1' }, fr);
+      const cid = K.id('pnl'); const cp = K.el('clipPath', { id: cid }, fr); K.el('rect', { x: 0, y: 0, width: 340, height: 380, rx: 12 }, cp);
+      const inner = K.g(fr, { 'clip-path': `url(#${cid})` });
+      drawP(inner);
+      const dim = K.el('rect', { x: 0, y: 0, width: 340, height: 380, fill: '#6f6a60', opacity: .55 }, inner);
+      tl.fromTo(fr, { y: 40, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .6, ease: 'expo.out', immediateRender: true }, t0 + .1 + i * .12);
+      tl.to(dim, { attr: { opacity: 0 }, duration: .4 }, t - .1);
+      tl.to(fr, { scale: 1.06, transformOrigin: '50% 50%', duration: .3, yoyo: true, repeat: 1, ease: 'power2.out' }, t - .1);
+      const up = put(sc.front, cx + 150, 240, 1); K.el('circle', { r: 30, fill: '#e2a64a' }, up); K.el('path', { d: 'M0 14 V-14 M-12 -2 L0 -14 L12 -2', stroke: '#14261b', 'stroke-width': 7, fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, up);
       pop(up, at('better', i + 1), { origin: '50% 50%', from: .1, ease: 'back.out(3)' });
-      callout(w, t, { hold: i === 2 ? 1 : .6, small: true });
+      label(w, t, { x: cx, y: 760, hold: i === 2 ? 1 : .7, size: 40, parent: sc.front });
     });
-    face(sa.p, at('wife'), 'grin');
-    ask(S, b, 960, 220, end('wife') - .2, t1 + 1, { r: 32 });
+    const o = Z.orb(sc.front, 1300, 120, .6); pop(o.inner, end('wife') - .2, { origin: '50% 50%', from: .1, ease: 'back.out(2.4)' });
   }
 }
