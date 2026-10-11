@@ -79,6 +79,10 @@ for(const id of ORDER){
       if(c.type==='phrases') Object.values(c.items).forEach(p=>add(p.en,'ayesha',id,where+' phrase'));
       if(c.type==='level'&&c.phrase) add(c.phrase.en,'ayesha',id,where+' gear phrase');
       if(c.type==='result'&&c.say) Object.values(c.say).forEach(p=>add(p.en,'ayesha',id,where+' phrase'));
+      /* practice games (games.js): the questions are the coach's; the strong answers are Ayesha's */
+      if(c.type==='onthree'){ add(c.q,'coach',id,where+' On 3'); add(c.model,'ayesha',id,where+' On 3 example'); }
+      if(c.type==='rounds') c.items.forEach((it,k)=>{ if(c.kind!=='tt') add(it.q,'coach',id,where+' round '+(k+1)); add(it.model,'ayesha',id,where+' round '+(k+1)+' answer'); });
+      if(c.type==='chain') c.items.forEach(it=>add(it.real.en,'coach',id,where+' worst case'));
     });
     /* lines a hand-written html card speaks through data-say / data-speak (kept in their own take, see below) */
     each(L,b,b.card,c=>{ if(c&&c.html) for(const m of String(c.html).matchAll(/data-(?:say|speak)="([^"]+)"/g)) LATE.push([m[1].replace(/&quot;/g,'"').replace(/&amp;/g,'&'),'coach','cards',where+' card']); });

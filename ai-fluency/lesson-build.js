@@ -60,10 +60,19 @@ const purposeSheet=(x,key)=>`<h3>Who is this app for?</h3><p class="sh-sub">Ayes
   ${Object.entries(PURPOSE).map(([k,p])=>`<button class="radio ${x.get(key)===k?'on pick':''}" data-ui="opt:${k}"><i></i><span><b>${esc(p.t)}</b><span>${esc(p.s)}</span></span></button>`).join('')}`;
 
 /* ---------- Description: v1 + where it may grow ---------- */
+const PUZ=c=>Object.assign(c,{text:c.ok[0].t});
 const PROMPT_CHIPS=[
  {id:'p1',tag:'Purpose',text:'This app is for our 15-person study circle, on cheap Android phones.'},
- {id:'p2',tag:'Version 1',text:'Version 1: add a programme and its deadline, and show the days left, nearest first.'},
- {id:'p3',tag:'Later',text:'Later we may add a shared list and reminders, so structure the code so they can be added without a rewrite.'},
+ PUZ({id:'pv',tag:'Version 1',goal:'Version 1 — and later',goalbn:'প্রথম সংস্করণ — আর পরে',
+   tiles:['version 1:','add deadlines and show the days left, nearest first.','later:','a shared list and reminders.'],
+   ok:[{o:[0,1,2,3],t:'Version 1: add deadlines and show the days left, nearest first. Later: a shared list and reminders.'}],
+   traps:[{o:[0,3,2,1],t:'Version 1: a shared list and reminders. Later: add deadlines and show the days left, nearest first.',
+     ai:'<div class="think"><div class="th-h">Thinking · plan</div><p class="off">Version 1: Google sign-in, a shared cloud list, reminders.</p><p class="off">Deadlines and days left: later.</p></div><p>Starting with accounts… 🛠</p>',
+     why:'Good English — but now version 1 has the big features, and the one thing her friends need has to wait. <b>Small first. Big later.</b>',
+     whybn:'ইংরেজি ঠিক — কিন্তু এখন প্রথম সংস্করণে বড় ফিচারগুলো, আর বন্ধুদের আসল দরকারটা অপেক্ষায়। আগে ছোট, পরে বড়।'}],
+   tip:'Each label needs its own part: “Version 1:” + what it does now. “Later:” + what may come.',tipbn:'প্রতিটা লেবেলের পরে তার অংশ: “Version 1:” + এখন কী করবে। “Later:” + পরে কী আসতে পারে।',
+   good:'Small first. Big later.'}),
+ {id:'p3',tag:'Later',text:'Structure the code so the later parts can be added without a rewrite.'},
  {id:'p4',tag:'Your call',text:'You choose the architecture and tools. Explain your plan before you build.'},
  {id:'p5',tag:'Local detail',text:'Dates are day/month/year, like 15/01/2026.'},
  {id:'x1',tag:'Shortcut',x:1,text:'Build everything my friends asked for.',warn:'that skips the purpose decision — and hands the AI a pile of features to guess at.',warnbn:'এতে উদ্দেশ্যের সিদ্ধান্ত বাদ পড়ে — আর AI-কে অনুমানের জন্য একগাদা ফিচার দেওয়া হয়।'},
@@ -75,7 +84,7 @@ const PROMPT_SLOTS=[
  {label:'Where it may grow',frame:'<em>Later we may add</em> ___, <em>so structure the code</em> ___.',bn:'পরে হয়তো ___ যোগ হবে, তাই কোড ___ সাজাও।',test:[/later|future|without a rewrite/i]},
  {label:'Your call',frame:'<em>You choose</em> ___. <em>Explain your plan before you build.</em>',bn:'___ তুমি ঠিক করো। বানানোর আগে পরিকল্পনা ব্যাখ্যা করো।',test:[/you choose|your call|explain your plan/i]}
 ];
-const promptText=x=>x.get('desc','')||PROMPT_CHIPS.slice(0,5).map(c=>c.text).join(' ');
+const promptText=x=>x.get('desc','')||PROMPT_CHIPS.filter(c=>!c.x).map(c=>c.text).join(' ');
 
 /* ---------- Discernment: reading the plan while it thinks ---------- */
 const PLAN_LINES=[
@@ -92,33 +101,78 @@ const seen=x=>Math.max(FIRST_OFF,Math.min(DATE_LINE,x.get('stopN',DATE_LINE))); 
 const sawDates=x=>seen(x)>=DATE_LINE;
 const linesVisible=()=>[...document.querySelectorAll('[data-mid="plan1"] .think p')].filter(p=>p.textContent.trim()).length;
 const REDIRECT_CHIPS=[
- {id:'r1',tag:'Drop',text:'Stop — no sign-in and no cloud database in version 1. Keep each list on the phone.'},
+ PUZ({id:'rk',tag:'Keep and drop',goal:'What to keep, what to drop',goalbn:'কী রাখবে, কী বাদ দেবে',
+   tiles:['keep','drop','your architecture.','the sign-in and the cloud database.'],
+   ok:[{o:[0,2,1,3],t:'Keep your architecture. Drop the sign-in and the cloud database.'},{o:[1,3,0,2],t:'Drop the sign-in and the cloud database. Keep your architecture.'}],
+   traps:[{o:[0,3,1,2],t:'Keep the sign-in and the cloud database. Drop your architecture.',
+     ai:'<p>Done ✅ Kept: Google sign-in and the cloud database.</p><p><span class="flag ln v-bad">Removed the separate parts — everything is now in one big file.</span></p>',
+     why:'Good English — but you kept the drift and dropped the good part. The separate parts left room to grow. The sign-in was what went off track.',
+     whybn:'ইংরেজি ঠিক — কিন্তু তুমি ভুলটা রেখে ভালোটা বাদ দিয়েছ। আলাদা অংশগুলো বাড়ার জায়গা রাখত। সাইন-ইনটাই ছিল লক্ষ্যচ্যুতি।'},
+    {o:[1,2,0,3],t:'Drop your architecture. Keep the sign-in and the cloud database.',
+     ai:'<p>Done ✅ Kept: Google sign-in and the cloud database.</p><p><span class="flag ln v-bad">Removed the separate parts — everything is now in one big file.</span></p>',
+     why:'Good English — but it’s the wrong way round. Keep what was good (the architecture); drop what went off track (the sign-in).',
+     whybn:'ইংরেজি ঠিক — কিন্তু উল্টো। যা ভালো ছিল (আর্কিটেকচার) তা রাখো; যা লক্ষ্য থেকে সরেছে (সাইন-ইন) তা বাদ দাও।'}],
+   tip:'Each order word needs a thing: “keep” + something, “drop” + something.',tipbn:'প্রতিটা আদেশের পরে একটা জিনিস: “keep” + কিছু, “drop” + কিছু।',
+   good:'Keep what was good. Drop the drift.'}),
  {id:'r2',tag:'Drop',text:'No AI reminders. That’s not in version 1.'},
  {id:'r3',tag:'Correct',text:'Dates are day/month/year, not month/day/year.',dates:1},
- {id:'r4',tag:'Keep',text:'Your architecture is good — keep room for a shared list later.'},
  {id:'rx',tag:'Shortcut',x:1,text:'Never mind, do whatever you think is best.',warn:'you saw it drift. Letting it carry on means more to check, secure and undo later.',warnbn:'তুমি দেখেছ সে লক্ষ্য থেকে সরে গেছে। চালিয়ে যেতে দিলে পরে যাচাই, সুরক্ষা আর ফেরানোর কাজ বাড়বে।'}
 ];
 const REDIRECT_SLOTS=[
- {label:'What to drop',frame:'<em>Stop — no</em> ___ <em>in version 1.</em>',bn:'থামো — প্রথম সংস্করণে কোনো ___ নয়।',test:[/no sign-in|no cloud|no ai|not in version 1|no login/i]},
+ {label:'What to drop',frame:'<em>Stop — no</em> ___ <em>in version 1.</em>',bn:'থামো — প্রথম সংস্করণে কোনো ___ নয়।',test:[/drop the sign-in|no sign-in|no cloud|no ai|not in version 1|no login/i]},
  {label:'What to correct',frame:'<em>Dates are</em> ___, <em>not</em> ___.',bn:'তারিখ হলো ___, ___ নয়।',test:[/day\/month/i],dates:1},
- {label:'What to keep',frame:'<em>Your</em> ___ <em>is good — keep</em> ___.',bn:'তোমার ___ ভালো — ___ রাখো।',test:[/is good|keep room/i]}
+ {label:'What to keep',frame:'<em>Your</em> ___ <em>is good — keep</em> ___.',bn:'তোমার ___ ভালো — ___ রাখো।',test:[/keep your architecture|is good|keep room/i]}
 ];
 const rChips=x=>REDIRECT_CHIPS.filter(c=>!c.dates||sawDates(x));
 const redirectText=x=>x.get('redirect','')||rChips(x).filter(c=>!c.x).map(c=>c.text).join(' ');
 const PLAN2=`<div class="think"><div class="th-h">Thinking · revised plan</div><p>Got it — version 1 stays on the phone. No sign-in, no cloud, no AI reminders.</p><p>Dates: day/month/year, as you said in your first message.</p><p>I’m keeping the list, the date maths and saving as separate parts, so a shared list can be added later without a rewrite.</p></div><p>Built ✅ <b>My Deadlines</b>, version 1. Open <b>Preview</b> to try it.</p>`;
 const FIXED=`<p>Thanks — clear report. The date maths now checks that a date really exists, and shows <b>“Not a real date”</b> if it doesn’t. I only changed the date part. Fixed ✅</p>`;
 const BUG_CHIPS=[
- {id:'b1',tag:'Input',text:'When I add a deadline on 31/02/2026,'},
- {id:'b2',tag:'Expected',text:'I expect a warning — February has no 31st.'},
- {id:'b3',tag:'Actual',text:'But it shows 150 days left, as if it were 3 March.'},
+ {id:'b1',tag:'Input',text:'I added a deadline on 31/02/2026.'},
+ PUZ({id:'be',tag:'Expected and got',goal:'What you expected — what you got',goalbn:'কী আশা করেছিলে — কী পেলে',
+   tiles:['I expected','I got','a warning.','150 days left.'],
+   ok:[{o:[0,2,1,3],t:'I expected a warning. I got 150 days left.'},{o:[1,3,0,2],t:'I got 150 days left. I expected a warning.'}],
+   traps:[{o:[0,3,1,2],t:'I expected 150 days left. I got a warning.',
+     ai:'<p>Thanks for the clear report! You expected 150 days, so I <span class="flag ln v-bad">removed the date check</span>. Fixed ✅</p><p><span class="flag ln v-bad">31/02/2026 → 150 days left</span></p>',
+     why:'Good English — but the report is the wrong way round, so Studio “fixed” the app to give the wrong answer. <b>Expected</b> = what should happen. <b>Got</b> = what really happened.',
+     whybn:'ইংরেজি ঠিক — কিন্তু রিপোর্টটা উল্টো, তাই Studio অ্যাপকে ভুল উত্তর দিতে “ঠিক” করেছে। Expected = যা হওয়া উচিত। Got = যা আসলে হয়েছে।'},
+    {o:[1,2,0,3],t:'I got a warning. I expected 150 days left.',
+     ai:'<p>Thanks for the clear report! You expected 150 days, so I <span class="flag ln v-bad">removed the date check</span>. Fixed ✅</p><p><span class="flag ln v-bad">31/02/2026 → 150 days left</span></p>',
+     why:'Good English — but it’s the opposite of what she saw. The app showed 150 days; she expected a warning.',
+     whybn:'ইংরেজি ঠিক — কিন্তু সে যা দেখেছে তার উল্টো। অ্যাপ ১৫০ দিন দেখিয়েছে; সে সতর্কবার্তা আশা করেছিল।'}],
+   tip:'“I expected” + what should happen. “I got” + what happened.',tipbn:'“I expected” + যা হওয়া উচিত। “I got” + যা হয়েছে।',
+   good:'Expected = what should happen. Got = what happened.'}),
  {id:'bx',tag:'Shortcut',x:1,text:'Something is wrong, fix it.',warn:'the AI has to guess what you saw.',warnbn:'তুমি কী দেখেছ তা AI-কে অনুমান করতে হবে।'}
 ];
 const BUG_SLOTS=[
- {label:'Input',frame:'<em>When I add</em> ___,',bn:'যখন আমি ___ যোগ করি,',test:[/when i|i add|i enter/i]},
- {label:'Expected',frame:'<em>I expect</em> ___.',bn:'আমি ___ আশা করি।',test:[/expect|should/i]},
- {label:'Actual',frame:'<em>But it shows</em> ___.',bn:'কিন্তু দেখায় ___।',test:[/but it shows|but i see|instead/i]}
+ {label:'Input',frame:'<em>I added</em> ___.',bn:'আমি ___ যোগ করেছি।',test:[/when i|i add|i enter/i]},
+ {label:'Expected',frame:'<em>I expected</em> ___.',bn:'আমি ___ আশা করেছিলাম।',test:[/expect|should/i]},
+ {label:'Actual',frame:'<em>I got</em> ___.',bn:'আমি পেয়েছি ___।',test:[/i got|but it shows|but i see|instead/i]}
 ];
-const bugText=x=>x.get('bug','')||BUG_CHIPS.slice(0,3).map(c=>c.text).join(' ');
+const bugText=x=>x.get('bug','')||BUG_CHIPS.filter(c=>!c.x).map(c=>c.text).join(' ');
+
+/* ---------- practice games (games.js) ---------- */
+const CAN_SIGNS=[{id:'1',i:'☝️',en:'No way',bn:'কখনোই না'},{id:'2',i:'✌️',en:'Maybe',bn:'হয়তো'},{id:'3',i:'🖐️',en:'Yes!',bn:'হ্যাঁ!'}];
+const TANVIR={type:'rounds',key:'bdTanvir',kind:'curve',pic:'📞',title:'Tanvir calls',titlebn:'তানভিরের ফোন',secret:true,
+ intro:{en:'Tanvir wants to sell My Deadlines — and he won’t give up easily. His questions are a surprise.',bn:'তানভির My Deadlines বিক্রি করতে চায় — আর সহজে হাল ছাড়বে না। তার প্রশ্নগুলো আগে জানা নেই।'},
+ roles:{ask:{en:'Tanvir: hold the phone, read it, push hard. Then ask “Why not?”',bn:'তানভির: ফোন ধরো, পড়ো, জোর দিয়ে বলো। তারপর জিজ্ঞেস করো “কেন না?”'},ans:{en:'Ayesha: answer — with a reason.',bn:'আয়েশা: উত্তর দাও — কারণসহ।'}},
+ judge:{en:'did Ayesha give a real reason?',bn:'আয়েশা কি আসল কারণ দিয়েছে?'},
+ solo:{en:'Tanvir is on the phone. Answer him out loud — then record yourself.',bn:'তানভির ফোনে। জোরে উত্তর দাও — তারপর রেকর্ড করো।'},
+ items:[{q:'Let’s sell it! ৳99 a month — easy money!',qbn:'চলো বিক্রি করি! মাসে ৯৯ টাকা — সহজ টাকা!',model:'Not yet. It was built for fifteen friends. Selling it means accounts, payments and security first.'},
+        {q:'Why not just ask Studio to add payments tonight?',qbn:'আজ রাতেই Studio-কে পেমেন্ট যোগ করতে বলছ না কেন?',model:'Studio can add a button in a minute. But safe payments need planning, testing — and probably a real developer.'},
+        {q:'Studio said “Fixed ✅”. Why did you test it again?',qbn:'Studio তো বলেছে “ঠিক হয়েছে ✅”। আবার পরীক্ষা করলে কেন?',model:'“Fixed” is a claim. I checked it myself — with an impossible date.'},
+        {q:'Why did you stop the AI? Its plan had cool features!',qbn:'AI-কে থামালে কেন? তার পরিকল্পনায় দারুণ ফিচার ছিল!',model:'Cool — but not in version 1. Every extra feature is more to check, secure and fix.'}],
+ rate:[{id:'ok',i:'✓',en:'A real reason',good:1},{id:'more',i:'📞',en:'Tanvir wins this one'}],
+ lifeline:{t:'Useful words',items:['Not yet — first we need…','That’s a different app.','“Fixed” is a claim, so…','Small first, big later.']}};
+const MY_APP={type:'mine',key:'bdMine',
+ intro:{en:'Now YOU. Describe an app you could build with AI — version 1 first. Copy it, and try it in a real AI app builder.',bn:'এবার তুমি। AI দিয়ে বানাতে পারো এমন একটা অ্যাপ বর্ণনা করো — আগে প্রথম সংস্করণ। কপি করো, আর আসল AI অ্যাপ বিল্ডারে চেষ্টা করো।'},
+ fields:[{id:'p',cls:'d-dil',label:'This app is for…',labelbn:'এই অ্যাপটা কার জন্য…',ph:'This app is for students at my university who take the bus.'},
+   {id:'v',cls:'d-des',label:'Version 1 only…',labelbn:'প্রথম সংস্করণ শুধু…',ph:'Version 1 only shows the next bus from the main gate.'},
+   {id:'l',cls:'d-des',label:'Later, maybe…',labelbn:'পরে হয়তো…',ph:'Later: a map and alerts — so structure the code for them.'},
+   {id:'y',cls:'d-del',label:'Your call',labelbn:'তোমার সিদ্ধান্ত',ph:'You choose the tools. Explain your plan before you build.'}],
+ partner:{en:'🅱 plays Studio: suggest one exciting extra feature. 🅰: is it in version 1? Say yes or no — and why. Then swap.',bn:'অন্যজন Studio সাজো: একটা দারুণ বাড়তি ফিচার প্রস্তাব করো। প্রথমজন: এটা কি প্রথম সংস্করণে? হ্যাঁ বা না — আর কেন। তারপর অদলবদল।'}};
+const TILES=()=>AFL.byMode({solo:'Two orders can be good English — only one tells Studio the right thing.',pair:'👥 Take turns: one tile each. Read your tile aloud as you place it.',class:'👥 Take turns with the person next to you: one tile each, read aloud.'});
+const TILESBN=()=>AFL.byMode({solo:'দুই রকম ক্রমেই ইংরেজি ঠিক হতে পারে — কিন্তু Studio-কে ঠিক কথা বলে একটাই।',pair:'পালা করে: একবারে একটা টুকরো। বসানোর সময় জোরে পড়ো।',class:'পাশের জনের সাথে পালা করে: একটা করে টুকরো, জোরে পড়ে।'});
 
 const SC=(x,extra)=>Object.assign({app:'studio',title:'My Deadlines'},extra);
 const CHATS={group:'Economics Study Circle',members:'Riya, Tanvir, Mitu, you +12'};
@@ -202,10 +256,9 @@ AFL.lesson({
      dis:{en:'Stop. No sign-in in version 1.',bn:'থামো। প্রথম সংস্করণে কোনো সাইন-ইন নয়।'},
      dil:{en:'This app is for our study circle, not for sale.',bn:'এই অ্যাপটা আমাদের স্টাডি সার্কেলের জন্য, বিক্রির জন্য নয়।'}}}},
   {d:'none',stage:'warm',wide:true,scene:LOCK,
-   say:'Before we start: what do you think?',bn:'শুরুর আগে: তোমার কী মনে হয়?',
-   talk:{big:true,pic:'📅😭',q:'Have you ever missed a deadline? What happened?',qbn:'তুমি কি কখনো কোনো ডেডলাইন মিস করেছ? কী হয়েছিল?',time:60,
-     frames:[{en:'I missed ___, because ___.',bn:'আমি ___ মিস করেছিলাম, কারণ ___।'},{en:'Now I use ___ to remember.',bn:'এখন মনে রাখতে আমি ___ ব্যবহার করি।'}],
-     model:'I missed a scholarship deadline, because I wrote the wrong date. Now I use my phone calendar to remember.'}},
+   say:'Before we start: on 3, show your answer.',bn:'শুরুর আগে: ৩ গুনে তোমার উত্তর দেখাও।',
+   card:{type:'onthree',key:'bdO3',kind:'opinion',pic:'💻🤔',signs:CAN_SIGNS,q:'Could YOU build an app tonight — without coding?',qbn:'তুমি কি আজ রাতে একটা অ্যাপ বানাতে পারবে — কোড ছাড়া?',
+     model:'Maybe. I can’t code, but I can describe what I want — and test what the AI builds.',words:['I think… because…','But what if…?','I could…, but…']}},
 
   /* ===== PURPOSE — Diligence comes first ===== */
   {d:'none',kick:'Mission 3',stage:'purpose',scene:LOCKC,tap:'n:chat',
@@ -238,10 +291,7 @@ AFL.lesson({
      {en:'Which programming tools to use',bn:'কোন প্রোগ্রামিং টুল ব্যবহার হবে',ans:'ai',why:'The AI knows the tools. Ayesha’s job is to say what the app must do, not how.',whybn:'টুল AI চেনে। আয়েশার কাজ বলা অ্যাপ কী করবে, কীভাবে নয়।',hint:'Does Ayesha know any programming tools?',hintbn:'আয়েশা কি কোনো প্রোগ্রামিং টুল চেনে?'},
      {en:'What is in version 1 — and what is not',bn:'প্রথম সংস্করণে কী থাকবে — আর কী থাকবে না',ans:'me',why:'Only Ayesha knows her friends’ problem and her purpose.',whybn:'বন্ধুদের সমস্যা আর নিজের উদ্দেশ্য শুধু আয়েশা জানে।',hint:'Who talked to Mitu and Riya?',hintbn:'মিতু আর রিয়ার সাথে কে কথা বলেছে?'},
      {en:'How it should feel on her friends’ cheap phones',bn:'বন্ধুদের সস্তা ফোনে এটা কেমন লাগবে',ans:'me',why:'She knows her users. The AI has never met them.',whybn:'সে তার ব্যবহারকারীদের চেনে। AI তাদের কখনো দেখেনি।',hint:'Who has met the users?',hintbn:'ব্যবহারকারীদের কে চেনে?'},
-     {en:'What a correct date looks like in Bangladesh',bn:'বাংলাদেশে সঠিক তারিখ দেখতে কেমন',ans:'me',why:'Local knowledge. AI tools often assume American habits.',whybn:'স্থানীয় জ্ঞান। AI টুল প্রায়ই আমেরিকান অভ্যাস ধরে নেয়।',hint:'Whose habits does the AI usually assume?',hintbn:'AI সাধারণত কাদের অভ্যাস ধরে নেয়?'}]},
-   talk:{q:'Who decides each thing? Say it.',qbn:'কোনটা কে ঠিক করবে? বলো।',time:45,
-     frames:[{en:'The AI should choose ___, because it knows ___.',bn:'AI-এর ___ বেছে নেওয়া উচিত, কারণ সে ___ জানে।'},{en:'Ayesha should decide ___, because only she ___.',bn:'আয়েশার ___ ঠিক করা উচিত, কারণ শুধু সে ___।'}],
-     model:'The AI should choose the tools, because it knows code. Ayesha should decide what is in version 1, because only she knows her friends.'}},
+     {en:'What a correct date looks like in Bangladesh',bn:'বাংলাদেশে সঠিক তারিখ দেখতে কেমন',ans:'me',why:'Local knowledge. AI tools often assume American habits.',whybn:'স্থানীয় জ্ঞান। AI টুল প্রায়ই আমেরিকান অভ্যাস ধরে নেয়।',hint:'Whose habits does the AI usually assume?',hintbn:'AI সাধারণত কাদের অভ্যাস ধরে নেয়?'}]}},
   {d:'del',stage:'delegate',view:'card',
    say:'Long rope where the AI is the expert; a firm hold on what only you know. That gear is Delegation.',bn:'যেখানে AI বিশেষজ্ঞ সেখানে লম্বা দড়ি; যা শুধু তুমি জানো তা শক্ত করে ধরো। এই গিয়ারের নাম Delegation।',
    card:{type:'level',d:'del',did:'The AI chooses the code and tools; Ayesha decides version 1, how it feels, and the local details.',didbn:'কোড আর টুল AI বাছবে; প্রথম সংস্করণ, ব্যবহারের অনুভূতি আর স্থানীয় খুঁটিনাটি আয়েশা ঠিক করবে।',
@@ -250,12 +300,11 @@ AFL.lesson({
   /* ===== DESCRIBE — Description ===== */
   {d:'des',stage:'describe',scene:{app:'home'},tap:'app:studio',
    say:'Open Studio, the AI app builder.',bn:'Studio খোলো — AI অ্যাপ বিল্ডার।'},
-  {d:'des',stage:'describe',scene:x=>SC(x,{title:'New app',tab:'Chat',msgs:[],composer:{key:'desc',placeholder:'Describe your app…'},kb:{key:'desc',label:'DESCRIBE',chips:PROMPT_CHIPS}}),tap:'send',
-   say:'Describe version 1 — and where it may grow. Tap the parts above the keyboard, then send ➤.',bn:'প্রথম সংস্করণ বর্ণনা করো — আর ভবিষ্যতে কোথায় বাড়তে পারে। কিবোর্ডের উপরের অংশগুলো চাপো, তারপর পাঠাও ➤।',
-   sub:()=>AFL.byMode({solo:'Read each part out loud before you tap it.',pair:'Read each part to your partner before you tap it.',class:'Read each part together before you tap it.'}),
-   subbn:()=>AFL.byMode({solo:'চাপার আগে প্রতিটা অংশ জোরে পড়ো।',pair:'চাপার আগে প্রতিটা অংশ সঙ্গীকে পড়ে শোনাও।',class:'চাপার আগে প্রতিটা অংশ সবাই মিলে পড়ো।'}),
+  {d:'des',stage:'describe',scene:x=>SC(x,{title:'New app',tab:'Chat',msgs:[],composer:{key:'desc',placeholder:'Describe your app…'},kb:{key:'desc',label:'DESCRIBE',chips:PROMPT_CHIPS,ai:'studio'}}),tap:'send',
+   say:'Describe version 1 — and where it may grow. Build the version 1 sentence with the tiles, tap the other parts, then send ➤.',bn:'প্রথম সংস্করণ বর্ণনা করো — আর কোথায় বাড়তে পারে। টুকরো দিয়ে প্রথম সংস্করণের বাক্য বানাও, বাকি অংশগুলো চাপো, তারপর পাঠাও ➤।',
+   sub:()=>TILES(),subbn:()=>TILESBN(),
    onTap:x=>{AFL.firstTry(x,'desc',!shortcut(PROMPT_CHIPS,'desc',x).length&&PROMPT_SLOTS.every(s=>s.test.some(r=>r.test(x.get('desc','')))))},
-   compose:{key:'desc',slots:PROMPT_SLOTS,chips:PROMPT_CHIPS,best:['p1','p2','p3','p4','p5']}},
+   compose:{key:'desc',slots:PROMPT_SLOTS,chips:PROMPT_CHIPS,best:['p1','pv','p3','p4','p5']}},
   {d:'des',stage:'describe',view:'card',
    say:'You described version 1 — and where it may grow. That gear is Description.',bn:'তুমি প্রথম সংস্করণ বর্ণনা করেছ — আর কোথায় বাড়তে পারে। এই গিয়ারের নাম Description।',
    card:{type:'level',d:'des',did:'Purpose, version 1, a roadmap — and rope where the AI is the expert.',didbn:'উদ্দেশ্য, প্রথম সংস্করণ, ভবিষ্যতের পথ — আর যেখানে AI বিশেষজ্ঞ সেখানে ছাড়।',
@@ -268,7 +317,8 @@ AFL.lesson({
    showMe:(x,h)=>{const at=x.beat;const t=setInterval(()=>{if(AFL.ctx().beat!==at){clearInterval(t);return}
      if(!x.streaming||linesVisible()>=DATE_LINE){clearInterval(t);const s=document.querySelector('[data-hit="stop"]');h.ghostTo(s,()=>s&&s.click())}},150)},
    say:'Studio shows its plan as it thinks. Read every line. If it goes off track, tap the red Stop button.',bn:'Studio ভাবার সময় তার পরিকল্পনা দেখায়। প্রতিটি লাইন পড়ো। লক্ষ্য থেকে সরে গেলে লাল Stop বোতামে চাপো।',
-   sub:'Each line: does it fit version 1?',subbn:'প্রতিটি লাইন: এটা কি প্রথম সংস্করণের সাথে মেলে?'},
+   sub:()=>AFL.byMode({solo:'Each line: does it fit version 1?',pair:'👥 Race! The first to see it go off track says “Stop!” — and taps.',class:'👥 Race! The first to see it go off track says “Stop!”'}),
+   subbn:()=>AFL.byMode({solo:'প্রতিটি লাইন: এটা কি প্রথম সংস্করণের সাথে মেলে?',pair:'প্রতিযোগিতা! যে আগে দেখবে লক্ষ্য থেকে সরছে, সে বলবে “Stop!” — আর চাপবে।',class:'প্রতিযোগিতা! যে আগে দেখবে লক্ষ্য থেকে সরছে, সে বলবে “Stop!”'})},
   {d:'dis',stage:'steer',scene:x=>SC(x,{tab:'Chat',msgs:stoppedMsgs(x),composer:false}),
    cq:x=>x.get('stopN',PLAN_LINES.length)>=PLAN_LINES.length&&!x.get('nostopSeen')?Object.assign({},CQ_BUILD.nostop,{rewind:x=>{delete x.ch.stopN;x.set('nostopSeen',false);AFL.goId('steer')}}):null,
    leave:x=>x.set('nostopSeen',true),
@@ -277,12 +327,10 @@ AFL.lesson({
      {en:'Sign-in, a cloud database and AI reminders — “now”',bn:'এখনই সাইন-ইন, ক্লাউড ডাটাবেস আর AI রিমাইন্ডার',ok:1,why:'Yes. Her purpose said no logins and no one’s data in version 1 — and nobody asked for AI reminders. Every extra part is more to check, secure and fix.',whybn:'হ্যাঁ। তার উদ্দেশ্য অনুযায়ী প্রথম সংস্করণে লগইন নেই, কারও তথ্য নেই — আর AI রিমাইন্ডার কেউ চায়নি। প্রতিটি বাড়তি অংশ মানে আরও যাচাই, সুরক্ষা আর মেরামত।',
        more:x=>sawDates(x)?`<p class="warn">And one more: <b>MM/DD dates</b> — the opposite of what she said.<span class="bn" lang="bn">আরও একটা: MM/DD তারিখ — সে যা বলেছিল তার উল্টো।</span></p>`:''},
      {en:'Separate parts for the list, the dates and saving',bn:'তালিকা, তারিখ আর সংরক্ষণের জন্য আলাদা অংশ',ok:0,why:'That part is good! It leaves room for a shared list later. Keep it — the rope paid off. Look again for what she never asked for.',whybn:'ওই অংশটা ভালো! পরে শেয়ার করা তালিকার জায়গা রাখে। রাখো — ছাড় দেওয়ার সুফল। যা সে কখনো চায়নি তা আবার খোঁজো।'},
-     {en:'Keeping each list on the phone',bn:'প্রতিটি তালিকা ফোনেই রাখা',ok:0,why:'That fits version 1: no logins, no one’s data in the cloud. Look again.',whybn:'এটা প্রথম সংস্করণের সাথে মেলে: লগইন নেই, কারও তথ্য ক্লাউডে নেই। আবার দেখো।'}]},
-   talk:{q:'What did Studio get wrong?',qbn:'Studio কী ভুল করেছে?',time:45,
-     frames:[{en:'It wanted to add ___, but version 1 has no ___.',bn:'সে ___ যোগ করতে চেয়েছে, কিন্তু প্রথম সংস্করণে কোনো ___ নেই।'},{en:'It used ___ dates, but Ayesha said ___.',bn:'সে ___ তারিখ ব্যবহার করেছে, কিন্তু আয়েশা বলেছিল ___।'}],
-     model:'It wanted to add a sign-in, but version 1 has no logins. It used month-first dates, but Ayesha said day, month, year.'}},
-  {d:'des',id:'redirect',stage:'steer',scene:x=>SC(x,{tab:'Chat',msgs:stoppedMsgs(x),composer:{key:'redirect',placeholder:'Steer Studio…'},kb:{key:'redirect',label:'STEER',chips:rChips(x)}}),tap:'send',
-   say:'Steer it: what to drop, what to correct — and what it got right. Then send ➤.',bn:'পথ দেখাও: কী বাদ, কী ঠিক করবে — আর কী সে ঠিক করেছে। তারপর পাঠাও ➤।',
+     {en:'Keeping each list on the phone',bn:'প্রতিটি তালিকা ফোনেই রাখা',ok:0,why:'That fits version 1: no logins, no one’s data in the cloud. Look again.',whybn:'এটা প্রথম সংস্করণের সাথে মেলে: লগইন নেই, কারও তথ্য ক্লাউডে নেই। আবার দেখো।'}]}},
+  {d:'des',id:'redirect',stage:'steer',scene:x=>SC(x,{tab:'Chat',msgs:stoppedMsgs(x),composer:{key:'redirect',placeholder:'Steer Studio…'},kb:{key:'redirect',label:'STEER',chips:rChips(x),ai:'studio'}}),tap:'send',
+   say:'Steer it: what to keep, what to drop, what to correct. Build the first sentence with the tiles. Then send ➤.',bn:'পথ দেখাও: কী রাখবে, কী বাদ দেবে, কী ঠিক করবে। টুকরো দিয়ে প্রথম বাক্যটা বানাও। তারপর পাঠাও ➤।',
+   sub:()=>TILES(),subbn:()=>TILESBN(),
    compose:x=>({key:'redirect',slots:REDIRECT_SLOTS.filter(c=>!c.dates||sawDates(x)),chips:rChips(x),best:rChips(x).filter(c=>!c.x).map(c=>c.id)})},
   {d:'dis',stage:'steer',cq:x=>shortcut(REDIRECT_CHIPS,'redirect',x).length?Object.assign({},CQ_BUILD.steer,{rewind:x=>{AFL.unsay(x,'redirect',shortcut(REDIRECT_CHIPS,'redirect',x).map(c=>c.text));AFL.goId('redirect')}}):null,
    scene:x=>SC(x,{tab:'Chat',msgs:stoppedMsgs(x).concat([{role:'u',text:redirectText(x)},{role:'a',html:PLAN2,id:'plan2',stream:true,actions:false}]),composer:false,scrollTo:'[data-mid="plan2"]',tabHits:{Preview:'tab:prev'}}),tap:'tab:prev',
@@ -294,9 +342,10 @@ AFL.lesson({
    say:x=>feb(x,'v1')?`You broke it! ${feb(x,'v1').date} doesn’t exist — but the app shows ${daysLeft('v1',feb(x,'v1').date)} days left, as if it were a real day. It looks right. That’s what makes it dangerous.`:'Studio says “Built ✅”. That is a claim. You are the tester: add two deadlines from your own life — then break it with a date that can’t exist.',
    bn:x=>feb(x,'v1')?'ভেঙে ফেলেছ! এই তারিখটা আসলে নেই — অথচ অ্যাপ দেখাচ্ছে যেন সত্যিকারের দিন। দেখতে ঠিক মনে হয় — সেটাই বিপদ।':'Studio বলছে “বানানো শেষ ✅”। এটা একটা দাবি। তুমি টেস্টার: নিজের জীবনের দুটো ডেডলাইন যোগ করো — তারপর অসম্ভব একটা তারিখ দিয়ে অ্যাপ ভাঙো।',
    sub:x=>feb(x,'v1')?'':'Type your own, or tap a quick add, then Add. Try 31/02, 30/02 or 31/04.',subbn:x=>feb(x,'v1')?'':'নিজে লেখো, অথবা কুইক-অ্যাড চাপো, তারপর Add। ৩১/০২, ৩০/০২ বা ৩১/০৪ চেষ্টা করো।'},
-  {d:'des',id:'bug',stage:'test',scene:x=>SC(x,{tab:'Chat',msgs:[{role:'a',html:PLAN2,id:'plan2',actions:false}],composer:{key:'bug',placeholder:'Tell Studio what you saw…'},kb:{key:'bug',label:'BUG REPORT',chips:BUG_CHIPS}}),tap:'send',
+  {d:'des',id:'bug',stage:'test',scene:x=>SC(x,{tab:'Chat',msgs:[{role:'a',html:PLAN2,id:'plan2',actions:false}],composer:{key:'bug',placeholder:'Tell Studio what you saw…'},kb:{key:'bug',label:'BUG REPORT',chips:BUG_CHIPS,ai:'studio'}}),tap:'send',
    say:'Tell Studio exactly what you saw: what you did, what you expected, what you got.',bn:'Studio-কে ঠিক কী দেখেছ তা বলো: কী করেছ, কী আশা করেছিলে, কী পেয়েছ।',
-   compose:{key:'bug',slots:BUG_SLOTS,chips:BUG_CHIPS,best:['b1','b2','b3']}},
+   sub:()=>TILES(),subbn:()=>TILESBN(),
+   compose:{key:'bug',slots:BUG_SLOTS,chips:BUG_CHIPS,best:['b1','be']}},
   {d:'dis',stage:'test',cq:x=>shortcut(BUG_CHIPS,'bug',x).length?Object.assign({},CQ_BUILD.bug,{rewind:x=>{AFL.unsay(x,'bug',shortcut(BUG_CHIPS,'bug',x).map(c=>c.text));AFL.goId('bug')}}):null,
    scene:x=>SC(x,{tab:'Chat',msgs:[{role:'a',html:PLAN2,id:'plan2',actions:false},{role:'u',text:bugText(x)},{role:'a',html:FIXED,id:'fixed',stream:true,actions:false}],composer:false,scrollTo:'[data-mid="fixed"]',tabHits:{Preview:'tab:prev2'}}),tap:'tab:prev2',
    say:x=>x.streaming?'Studio is fixing it…':'“Fixed ✅” — another claim. Tap Preview and check it yourself.',bn:x=>x.streaming?'Studio ঠিক করছে…':'“ঠিক হয়েছে ✅” — আরেকটা দাবি। Preview চাপো, নিজে যাচাই করো।'},
@@ -318,22 +367,16 @@ AFL.lesson({
      {en:'“Sure! I’ll ask Studio to add payments tonight.”',bn:'“অবশ্যই! আজ রাতেই Studio-কে পেমেন্ট যোগ করতে বলি।”',ok:false,then:CQ_BUILD.sell,why:'Studio would happily add a payment button. But accounts, security, privacy and support don’t appear just because a button does.',whybn:'Studio খুশি মনে পেমেন্টের বোতাম যোগ করবে। কিন্তু বোতাম এলেই অ্যাকাউন্ট, নিরাপত্তা, গোপনীয়তা আর সাপোর্ট আসে না।'},
      {en:'“Let’s keep it for our circle. If we sell it, we’ll plan it again as a new version.”',bn:'“আপাতত আমাদের সার্কেলের জন্যই রাখি। বিক্রি করলে নতুন সংস্করণ হিসেবে আবার পরিকল্পনা করব।”',ok:1,why:'Yes. Same screen — a different app. A new purpose sends Ayesha back round the loop: Delegation and Description again, with much more Diligence.',whybn:'হ্যাঁ। একই স্ক্রিন — কিন্তু আলাদা অ্যাপ। নতুন উদ্দেশ্য আয়েশাকে চক্রের শুরুতে ফেরত পাঠায়।',more:purposeCard('sell')},
      {en:'“No. Selling apps is wrong.”',bn:'“না। অ্যাপ বিক্রি করা ঠিক নয়।”',ok:0,why:'Selling is fine. Selling a prototype built for 15 friends is the problem.',whybn:'বিক্রি করা ঠিক আছে। ১৫ জন বন্ধুর জন্য বানানো প্রোটোটাইপ বিক্রি করাটাই সমস্যা।'}]}},
-  {stage:'grow',only:'class',view:'card',
-   say:'Tanvir calls Ayesha. Practise the call.',bn:'তানভির আয়েশাকে ফোন করে। কথোপকথনটা অনুশীলন করো।',
-   talk:()=>({time:90,pic:'📞',q:'Tanvir says: “Let’s sell it! ৳99 a month!”',
-     qbn:'তানভির বলে: “চলো এটা বিক্রি করি! মাসে ৯৯ টাকা!”',
-     roles:[{en:'Tanvir: push to sell it. Ask “Why not?”',bn:'তানভির: বিক্রির জন্য চাপ দাও। জিজ্ঞেস করো “কেন না?”'},{en:'Ayesha: answer with the phrases.',bn:'আয়েশা: নিচের বাক্যগুলো দিয়ে উত্তর দাও।'}],
-     frames:[{en:'First I decided who the app was for. That shaped everything else.',bn:'আগে আমি ঠিক করেছি অ্যাপটা কার জন্য। সেটাই বাকি সব ঠিক করেছে।'},
-       {en:'Selling it is a different app. It needs accounts, payments and security.',bn:'বিক্রি করা মানে আলাদা অ্যাপ। এতে অ্যাকাউন্ট, পেমেন্ট আর নিরাপত্তা লাগে।'},
-       {en:'When its plan went off track, I stopped it and explained why.',bn:'তার পরিকল্পনা লক্ষ্য থেকে সরে গেলে আমি থামিয়ে কারণ ব্যাখ্যা করেছি।'}]})},
-  {stage:'grow',only:'class',view:'card',
-   say:'Now you. What app would YOU build?',bn:'এবার তুমি। তুমি কোন অ্যাপ বানাবে?',
-   talk:{big:true,pic:'💡',q:'Describe an app you would build with AI.',qbn:'AI দিয়ে তুমি যে অ্যাপ বানাবে, সেটা বর্ণনা করো।',time:90,
-     frames:[{en:'I would build an app that ___.',bn:'আমি এমন একটা অ্যাপ বানাব যা ___।'},{en:'It’s for ___.',bn:'এটা ___-এর জন্য।'},{en:'Version 1 would only ___.',bn:'প্রথম সংস্করণ শুধু ___ করবে।'}],
-     model:'I would build an app that shares bus times in Rajshahi. It’s for students at my university. Version 1 would only show the next bus.'}},
+  {stage:'grow',view:'card',
+   say:'Tanvir calls. He really wants to sell it.',bn:'তানভির ফোন করেছে। সে সত্যিই বিক্রি করতে চায়।',
+   card:TANVIR},
+  {stage:'grow',view:'card',
+   say:'Now you. Describe an app YOU could build — version 1 first.',bn:'এবার তুমি। তুমি বানাতে পারো এমন একটা অ্যাপ বর্ণনা করো — আগে প্রথম সংস্করণ।',
+   card:MY_APP},
   {d:'none',kick:'Mission 3 · complete',stage:'grow',view:'card',
    say:'Fifteen friends use My Deadlines — and nobody missed a deadline this month. Mission complete!',bn:'পনেরো জন বন্ধু My Deadlines ব্যবহার করছে — আর এই মাসে কেউ কোনো ডেডলাইন মিস করেনি। মিশন সম্পূর্ণ!',
    card:{type:'result',next:['cv','agent'],
+     callback:{en:'At the start: could you build an app tonight, without coding? On 3, show it again. Who changed — and why?',bn:'শুরুতে: কোড ছাড়া আজ রাতে অ্যাপ বানাতে পারবে? ৩ গুনে আবার দেখাও। কে মত বদলেছে — আর কেন?',signs:CAN_SIGNS,go:1},
      html:`<div class="verdict"><div class="vh">💬 Economics Study Circle</div><div class="vb"><p><b>Mitu:</b> Groningen round 2 — submitted 3 days early 😎</p><p><b>Riya:</b> The red “days left” saved me twice this week</p><p><b>Tanvir:</b> OK OK, we plan the paid version properly first 😅</p></div></div>`,
      say:{
        del:{en:'You choose the architecture. Explain your plan first.',bn:'আর্কিটেকচার তুমি ঠিক করো। আগে তোমার পরিকল্পনা ব্যাখ্যা করো।'},

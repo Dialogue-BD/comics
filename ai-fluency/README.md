@@ -128,3 +128,17 @@ Framework: AI Fluency (4Ds) by Rick Dakan, Joseph Feller and Anthropic, CC BY-NC
 
 ### Recording with the Gemini API (no browser, no cutting)
 `tools/gemini_tts.py` records every missing line directly: one API request per line, saved as `audio/<key>.mp3` and added to `audio/manifest.json`. Setup: `pip3 install google-genai`, `export GEMINI_API_KEY=…` (or save the key alone in `~/.gemini_key`; never commit it). Then, in this folder: `node tools/voice-script.js` (refreshes `audio/lines.json` and `audio/voices.json`), `python3 tools/gemini_tts.py --audition` (one sample per voice into `audio/_audition/`), and `python3 tools/gemini_tts.py` (records all missing lines; re-run to resume if the free quota runs out). Voices: `--coach NAME --ayesha NAME`.
+
+### Practice games (replaced the 20 sentence-frame talk moments)
+Pair work shares ONE phone, so the games never need a secret screen — except “press and hold”, where one partner holds the phone and the other only listens. Every game also works Alone. Card types live in `games.js`; the prompt puzzle lives in `engine.js` (`pzHTML`, `pzTap`).
+
+- **Same words, different AI** (Description): build a sentence from tiles. The tiles make more than one correct English sentence, but only one is a good instruction. A *trap* order is good English that tells the AI the wrong thing — the AI's literal reply plays out in the feedback sheet. Chips with `tiles/ok/traps` in a `kb` become puzzles. In: CV prompt (check first / ask, don't guess), CV fix (true part before “not”; because vs so), Agent rules (ask *before* you send; who presses Send), Build describe (version 1 vs later), steer (keep vs drop), bug report (expected vs got).
+- **On 3** (`onthree`): everyone decides in their head, counts 1·2·3 and shows a hand at the same moment. Opinion (Agent and Build warm-ups, with a callback on the result card) or a guess (CV: what will the quick prompt give?), paid off on the Discernment gear card. Sort cards get an On 3 bar in Pairs/Class.
+- **Speaking rounds** (`rounds`): A reads a hidden question (press and hold), asks it, judges the answer; swap each round. The interview (CV), a friend asks (Agent), Tanvir calls (Build), Orbit’s sales pitch (Agent, saying no with a reason), Two truths and a lie (CV warm-up). Alone: the phone asks aloud, the student records and compares with a strong answer.
+- **Worst case** (`chain`, Pairs/Class): A says what could go wrong if a private file were uploaded, B says something worse… then the real risk.
+- **Red flags** (`flags`): tap the five signs of the scam page Orbit found — including the hidden prompt injection.
+- **Your real prompt** (`mine`): the take-home — write your own CV prompt, agent plan or app description, part by part, and copy it.
+- Hunts and the calendar check carry a Pairs relay line (one reads aloud, one checks). Consequence sheets ask partners to retell (“she did…, so…”) instead of filling a frame.
+- `tools/voice-script.js` lists the new spoken lines (round questions, strong answers, worst cases). Run it again before recording.
+- Browser voice for lines not yet recorded: on Android the phone’s own default voice (no forced language); elsewhere the most natural English voice available (“Natural”, “Neural”, “Online”, Google, “Enhanced”), with old robotic voices ranked last (`voiceScore` in `engine.js`).
+- The CV “guess” (what will the quick prompt give?) is a prediction, not a bet — no stakes, number signs 1️⃣ 2️⃣ 3️⃣.

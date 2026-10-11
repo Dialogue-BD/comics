@@ -238,43 +238,73 @@ const ROWS=['qwertyuiop','asdfghjkl','zxcvbnm'];
 /* colour-code the four parts of a prompt (Context, Product, Process, Performance) so students can see how it is built */
 const PPPP=['Context','Product','Process','Performance'];
 function hlHTML(val,chips){
-  const segs=[]; chips.filter(c=>PPPP.includes(c.tag)).forEach(c=>{const i=val.indexOf(c.text); if(i>=0) segs.push({i,e:i+c.text.length,t:c.tag})});
+  const segs=[]; chips.filter(c=>PPPP.includes(c.tag)).forEach(c=>{ [c.text].concat(c.ok?c.ok.map(o=>o.t):[]).forEach(tx=>{ const i=tx?val.indexOf(tx):-1; if(i>=0&&!segs.some(g=>g.i===i)) segs.push({i,e:i+tx.length,t:c.tag}); }); });
   if(!segs.length) return ''; segs.sort((a,b)=>a.i-b.i); let o='',p=0;
   segs.forEach(g=>{ if(g.i<p) return; o+=esc(val.slice(p,g.i))+`<mark class="pp-${g.t}">${esc(val.slice(g.i,g.e))}</mark>`; p=g.e });
   return o+esc(val.slice(p));
 }
-/* sentence builder: ESL word-order practice. Tiles are chunks, tap or drag them into order. */
-const bldItems=kb=>(kb.chips||[]).filter(c=>c.parts);
-const bldCur=(kb,val)=>bldItems(kb).find(c=>!val.includes(c.text));
-function bldTiles(c){
+/* "Same words, different AI" — the prompt puzzle.
+ * Students build a sentence from tiles. The tiles can make MORE than one correct
+ * English sentence — but only one of them is a fluent prompt. A trap order is good
+ * English that tells the AI the wrong thing, and the AI's literal reply plays out
+ * in the feedback sheet. Wrong English gets a short grammar tip instead.
+ *   {id, tag, goal, tiles:[…], ok:[{o:[tile order], t:'the sentence'}],
+ *    traps:[{o:[…], t, ai:'html of the AI reply', why, whybn}], tip, tipbn, good}
+ * Tiles are lower case where the same tile can open or end a sentence; the line
+ * shows them in sentence case as they are placed. Decoy tiles are just extra tiles. */
+const AIWHO={sathi:{n:'Sathi AI',i:'spark'},orbit:{n:'Orbit',i:'orbit'},studio:{n:'Studio',i:'code'}};
+const pzItems=kb=>(kb&&kb.chips||[]).filter(c=>c.tiles);
+const pzTexts=c=>c.ok.map(o=>o.t);
+const pzCur=(kb,val)=>pzItems(kb).find(c=>!pzTexts(c).some(t=>val.includes(t)));
+const capFirst=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const pzShow=(c,ids)=>{ let start=true; return ids.map(id=>{ let t=c.tiles[id]; if(start) t=capFirst(t); start=/[.!?]$/.test(t); return t; }); };
+function pzPool(c){
   const h=s=>{let n=7;for(const ch of s)n=(n*31+ch.charCodeAt(0))>>>0;return n};
-  const all=c.parts.concat(c.extra||[]).map((t,i)=>({t,i})); all.sort((a,b)=>h(c.id+a.t)-h(c.id+b.t));
-  if(all.slice(0,c.parts.length).every(z=>z.i<c.parts.length)&&all.every((z,k)=>z.i===k)) all.push(all.shift());
+  const all=c.tiles.map((t,i)=>({t,i})); all.sort((a,b)=>h(c.id+a.t)-h(c.id+b.t));
+  const same=o=>o.every((v,k)=>all[k]&&all[k].i===v);
+  for(let k=0;k<all.length&&c.ok.some(o=>same(o.o));k++) all.push(all.shift());
   return all;
 }
-function bldHTML(kb,val){
-  const x=ctx(), items=bldItems(kb), cur=bldCur(kb,val);
-  if(!cur) return `<div class="bld done">✓ ${tr('All sentences built. Now send ➤','সব বাক্য তৈরি হয়েছে। এবার পাঠাও ➤')}</div>`;
-  const all=bldTiles(cur), pl=x.get('bld:'+kb.key,[]), bad=x.get('bld:'+kb.key+'!',0), n=items.indexOf(cur)+1;
-  const txt=id=>(cur.parts.concat(cur.extra||[]))[id];
-  return `<div class="bld ${bad?'bad':''}"><div class="bld-h"><b>${esc(cur.goal||'Build the sentence')}</b><span>${n}/${items.length}</span></div>
-   <div class="bld-line" id="bldline">${pl.length?pl.map((id,k)=>`<button class="tile on" data-ui="untile:${k}">${esc(txt(id))}</button>`).join(''):`<em>${tr('Tap or drag the pieces here, in order','টুকরোগুলো ক্রমে এখানে চাপো বা টেনে আনো')}</em>`}</div>
-   ${bad?`<div class="bld-tip">${esc(cur.tip||'Not quite. Check the order.')}</div>`:''}
-   <div class="bld-pool">${all.filter(z=>!pl.includes(z.i)).map(z=>`<button class="tile" data-tile="${z.i}" data-ui="tile:${z.i}">${esc(z.t)}</button>`).join('')}</div></div>`;
+function pzHTML(kb,val){
+  const x=ctx(), items=pzItems(kb), cur=pzCur(kb,val), key='pz:'+kb.key;
+  const good=x.get(key+'+','');
+  if(!cur) return `<div class="bld done">${good?`<span class="pz-good">✓ ${esc(good)}</span>`:''}✓ ${tr('All sentences built. Now send ➤','সব বাক্য তৈরি হয়েছে। এবার পাঠাও ➤')}</div>`;
+  const pl=x.get(key,[]), bad=x.get(key+'!',0), n=items.indexOf(cur)+1, shown=pzShow(cur,pl);
+  return `<div class="bld pz ${bad?'bad':''} t-${esc(cur.tag||'')}"><div class="bld-h"><b>${esc(cur.goal||'Build the sentence')}${S.bn&&cur.goalbn?` <span class="bn-in" lang="bn">· ${cur.goalbn}</span>`:''}</b><span>${n}/${items.length}</span></div>
+   <div class="bld-line" id="bldline">${pl.length?pl.map((id,k)=>`<button class="tile on" data-ui="untile:${k}">${esc(shown[k])}</button>`).join(''):good?`<em class="pz-was">✓ ${esc(good)} <b>${tr('Next one:','এবার পরেরটা:')}</b></em>`:`<em>${tr('Tap or drag the pieces here, in order','টুকরোগুলো ক্রমে এখানে চাপো বা টেনে আনো')}</em>`}</div>
+   ${bad?`<div class="bld-tip">${esc(cur.tip||'Not quite. Check the order.')}${S.bn&&cur.tipbn?`<span class="bn-in" lang="bn"> · ${cur.tipbn}</span>`:''}</div>`:''}
+   <div class="bld-pool">${pzPool(cur).filter(z=>!pl.includes(z.i)).map(z=>`<button class="tile" data-tile="${z.i}" data-ui="tile:${z.i}">${esc(z.t)}</button>`).join('')}</div></div>`;
 }
-function bldTap(kind,arg,x,at){
-  const kb=activeKB(x), key='bld:'+kb.key; if(x.get(key+'!',0)) return;
-  const cur=bldCur(kb,x.get(kb.key,'')); if(!cur) return; let pl=x.get(key,[]).slice();
+function pzAppend(x,kb,text){ let v=x.get(kb.key,''); v=(v&&!/\s$/.test(v)?v+' ':v)+text; x.set(kb.key,v); }
+function pzTap(kind,arg,x,at){
+  const kb=activeKB(x); if(!kb) return; const key='pz:'+kb.key; if(x.get(key+'!',0)||UI.sheet) return;
+  const cur=pzCur(kb,x.get(kb.key,'')); if(!cur) return; let pl=x.get(key,[]).slice();
   if(kind==='tile'){ const id=+arg; if(pl.includes(id)) return; if(at==null) pl.push(id); else pl.splice(at,0,id); }
   else pl.splice(+arg,1);
   try{FX.sfx('tick')}catch(e){}
-  x.set(key,pl);
-  if(pl.length===cur.parts.length){
-    if(pl.every((v,k)=>v===k)){ x.set(key,[]); try{FX.sfx('ok')}catch(e){}; toggleChip(cur.id,x); return; }
+  x.set(key,pl); x.set(key+'+','');
+  const need=cur.ok[0].o.length;
+  if(pl.length===need){
+    const eq=o=>o.length===pl.length&&o.every((v,k)=>v===pl[k]);
+    const ok=cur.ok.find(o=>eq(o.o)), trap=(cur.traps||[]).find(o=>eq(o.o));
+    if(ok){ x.set(key,[]); firstTry(x,'pz:'+cur.id,!x.get('pzm:'+cur.id)); pzAppend(x,kb,ok.t); x.set(key+'+',cur.good||''); try{FX.sfx('ok')}catch(e){}
+      renderPhoneKeepFocus(); renderFoot(); renderTop(); return; }
+    x.set('pzm:'+cur.id,1); firstTry(x,'pz:'+cur.id,false);
+    if(trap){ renderPhoneKeepFocus(); pzTrap(x,kb,cur,trap); return; }
     x.set(key+'!',1); try{FX.sfx('no')}catch(e){}
-    setTimeout(()=>{ x.set(key,[]); x.set(key+'!',0); renderPhoneKeepFocus(); renderFoot(); },1500);
+    setTimeout(()=>{ x.set(key,[]); x.set(key+'!',0); renderPhoneKeepFocus(); renderFoot(); },1700);
   }
   renderPhoneKeepFocus(); renderFoot();
+}
+/* a trap: good English, wrong instruction — the AI does exactly what it was told */
+function pzTrap(x,kb,cur,trap){
+  const who=AIWHO[kb.ai||'sathi']||AIWHO.sathi;
+  UI.sheet={tone:'think',title:S.bn?'ইংরেজি ঠিক — কিন্তু AI কী করে দেখো':'Correct English — but look what the AI does',
+    html:`<p class="claim">“${esc(trap.t)}”</p><div class="pz-ai"><div class="pz-who"><span class="spark pz-ic">${ico(who.i)}</span>${who.n}</div><div class="pz-reply">${trap.ai}</div></div>
+      <p>${trap.why||''}${BN(trap.whybn)}</p>${S.mode!=='solo'?`<p class="pz-talk">🗣 ${S.mode==='class'?'Tell the person next to you':'Tell your partner'}: what went wrong?${BN('সঙ্গীকে বলো: কী ভুল হলো?')}</p>`:''}`,
+    acts:[['retry','↺ '+tr('Change the order','ক্রম বদলাও'),'primary']],
+    retry:x2=>{ x2.set('pz:'+kb.key,[]); setTimeout(()=>{ renderPhoneKeepFocus(); renderFoot(); },0); }};
+  renderSheet(); renderFoot();
 }
 /* drag a tile into the line (pointer events, so it works on touch too) */
 (function(){ let d=null,dragged=false;
@@ -284,15 +314,15 @@ function bldTap(kind,arg,x,at){
     const l=document.getElementById('bldline'); if(l){ const r=l.getBoundingClientRect(); l.classList.toggle('over',e.clientX>r.left&&e.clientX<r.right&&e.clientY>r.top-14&&e.clientY<r.bottom+14); } });
   const end=e=>{ if(!d) return; const o=d; d=null; if(!o.g) return; o.g.remove(); o.t.style.opacity=''; dragged=true; setTimeout(()=>dragged=false,60);
     const l=document.getElementById('bldline'); if(!l) return; l.classList.remove('over'); const r=l.getBoundingClientRect();
-    if(e.clientX>r.left&&e.clientX<r.right&&e.clientY>r.top-14&&e.clientY<r.bottom+14){ const ts=[...l.querySelectorAll('.tile')]; let at=ts.findIndex(z=>{const b=z.getBoundingClientRect();return e.clientX<b.left+b.width/2&&e.clientY<b.bottom}); if(at<0) at=null; bldTap('tile',o.t.dataset.tile,ctx(),at); } };
+    if(e.clientX>r.left&&e.clientX<r.right&&e.clientY>r.top-14&&e.clientY<r.bottom+14){ const ts=[...l.querySelectorAll('.tile')]; let at=ts.findIndex(z=>{const b=z.getBoundingClientRect();return e.clientX<b.left+b.width/2&&e.clientY<b.bottom}); if(at<0) at=null; pzTap('tile',o.t.dataset.tile,ctx(),at); } };
   document.addEventListener('pointerup',end); document.addEventListener('pointercancel',end);
   document.addEventListener('click',e=>{ if(dragged&&e.target.closest&&e.target.closest('.tile')){ e.stopPropagation(); e.preventDefault(); } },true);
 })();
 function keyboard(kb){
   const x=ctx(); const val=(kb&&kb.key)?x.get(kb.key,''):'';
-  const bld=bldItems(kb).length;
-  const chips=(kb.chips||[]).filter(c=>!(bld&&c.parts)).map(c=>{const used=val.includes(c.text);return `<button class="kchip ${used?'used':''} ${c.x?'x':''} t-${esc(c.tag||'')}" data-ui="chip:${c.id}"><span class="tg">${esc(c.tag||'')}</span>${esc(c.text)}</button>`}).join('');
-  return (bld?bldHTML(kb,val):'')+`<div class="strip">${kb.label?`<span class="lbl">${esc(kb.label)}</span>`:''}${chips}${innerWidth<900?`<button class="kbt" data-ui="kbtoggle:1">${S.keys?'Hide keys':'⌨ Type'}</button>`:''}</div>
+  const bld=pzItems(kb).length;
+  const chips=(kb.chips||[]).filter(c=>!c.tiles).map(c=>{const used=val.includes(c.text);return `<button class="kchip ${used?'used':''} ${c.x?'x':''} t-${esc(c.tag||'')}" data-ui="chip:${c.id}"><span class="tg">${esc(c.tag||'')}</span>${esc(c.text)}</button>`}).join('');
+  return (bld?pzHTML(kb,val):'')+`<div class="strip">${kb.label?`<span class="lbl">${esc(kb.label)}</span>`:''}${chips}${innerWidth<900?`<button class="kbt" data-ui="kbtoggle:1">${S.keys?'Hide keys':'⌨ Type'}</button>`:''}</div>
   <div class="rows">${ROWS.map((r,i)=>`<div class="kr">${i===2?`<button class="k w" data-ui="key:shift">⇧</button>`:''}${[...r].map(k=>`<button class="k" data-ui="key:${k}">${k}</button>`).join('')}${i===2?`<button class="k w" data-ui="key:bs">⌫</button>`:''}</div>`).join('')}
   <div class="kr"><button class="k w" data-ui="key:123">?123</button><button class="k w" data-ui="key:,">,</button><button class="k sp" data-ui="key: ">English</button><button class="k w" data-ui="key:.">.</button><button class="k go" data-ui="key:nl">↵</button></div></div>`;
 }
@@ -318,7 +348,7 @@ function renderPhone(anim){
   if(sc.skip&&sc.skip.big!=='⏪'&&anim!==false) try{ FX.clock(scr); }catch(e){}
   const v=$('.view',scr);
   if(v){v.style.background='transparent';if(anim&&prevKey!==key){v.classList.add(prevScene&&prevScene.app===sc.app?'slide':'enter')}}
-  const kb=$('#kb'); if(sc.kb){kb.hidden=false;kb.innerHTML=keyboard(sc.kb);kb.className='kb'+(innerWidth<900?' compact':'')+(S.keys?' keys':'')}else{kb.hidden=true;kb.innerHTML=''}
+  const kb=$('#kb'); if(sc.kb){kb.hidden=false;kb.innerHTML=keyboard(sc.kb);kb.className='kb'+(innerWidth<900?' compact':'')+(S.keys?' keys':'')+(pzItems(sc.kb).length?' haspz':'')}else{kb.hidden=true;kb.innerHTML=''}
   prevScene=sc;
   // spotlight
   const tgt=fn(b.tap,x); const tgts=[].concat(tgt||[]).concat(fn(b.glow,x)||[]);
@@ -400,7 +430,7 @@ let UI={sheet:null,sub:null};
 
 /* ---- which beats this way of working shows: Alone skips the projector warm-up and partner talk ---- */
 function shown(L,i){ const b=L&&L.beats[i]; if(!b) return false;
-  if(S.mode==='solo'&&(b.stage==='warm'||b.only==='class')) return false;
+  if(S.mode==='solo'&&(b.stage==='warm'||b.only==='class'||b.only==='together')) return false;
   if(b.only==='solo'&&S.mode!=='solo') return false; return true; }
 function seek(L,i,dir){ for(let j=i;j>=0&&j<L.beats.length;j+=dir) if(shown(L,j)) return j; return -1; }
 
@@ -470,6 +500,7 @@ function stepState(x,b){
   const c=fn(b.card,x);
   if(b.view==='card'||b.wide){
     if(!c) return {read:1};
+    if(window.GAMES&&GAMES[c.type]) return Object.assign({card:1},GAMES[c.type].state(c,x));
     if(c.type==='choice') return {act:x.get(c.key)==null,card:1};
     if(c.type==='sort'){ const a=x.get(c.key,{}); return {act:c.items.some((it,i)=>a[i]!==it.ans),card:1,show:1}; }
     if(c.type==='pickeach'){ const a=x.get(c.key,{}); return {act:c.items.some((it,i)=>a[i]==null),card:1,show:1}; }
@@ -532,7 +563,7 @@ function renderSheet(){
   let o=s;
   if(!o){ const t=CQ.then, hd=TALK_HEAD[S.mode];
     o={tone:'bad',title:t.when,cq:1,html:`<p class="cq-line">${esc(t.line)}${BN(t.linebn)}</p>${t.why?`<p>${t.why}${BN(t.whybn)}</p>`:''}
-      ${S.mode!=='solo'?`<div class="cq-talk"><b>${hd.i} ${CQ_ASK.en}</b>${BN(CQ_ASK.bn)}<div class="fr" data-say="${esc(CQ_FRAME.en)}"><span>${gapped(CQ_FRAME.en)}${BN(CQ_FRAME.bn)}</span>${sayBtn(CQ_FRAME.en)}</div></div>`:''}`,
+      ${S.mode!=='solo'?`<div class="cq-talk"><b>${hd.i} ${S.mode==='class'?'With the person next to you':'Retell it'}: 🅰 says what she did. 🅱 says what happened next — with “so”.</b>${BN('🅰 বলো সে কী করেছিল। 🅱 বলো তারপর কী হলো — “so” দিয়ে।')}</div>`:''}`,
       acts:[['rewind',`↩ ${tr('Choose again','আবার বেছে নাও')}`,'ghost'],['next',tr('Continue','এগিয়ে যাও'),'primary']]}; }
   sh.hidden=false; document.body.classList.add('sheet-on');
   sh.className='psheet t-'+o.tone;
@@ -667,6 +698,7 @@ function cardHTML(c,x){
   if(!c) return '';
   const head=c.title?`<h2 class="ct">${c.title}${BN(c.titlebn)}</h2>`:'';
   if(c.type==='html') return head+c.html;
+  if(window.GAMES&&GAMES[c.type]) return GAMES[c.type].html(c,x);
   if(c.type==='words') return head+wordsCard(c);
   if(c.type==='story') return head+storyCard(c);
   if(c.type==='phrases') return head+phrasesCard(c);
@@ -676,8 +708,8 @@ function cardHTML(c,x){
   if(c.type==='info') return `<div class="card">${head}${c.html||''}${c.points?`<ul class="plist">${c.points.map(p=>`<li><span class="ic">${p.i||'•'}</span><span>${p.en}${BN(p.bn)}</span></li>`).join('')}</ul>`:''}</div>`;
   if(c.type==='sort'){
     const ans=x.get(c.key,{});
-    return head+`<div class="sort">${c.items.map((it,i)=>{const a=ans[i];const right=a===it.ans;return `<div class="srow ${a!=null?(right?'right':'wrong'):''}"><div class="it">${it.en}${BN(it.bn)}</div>
-     <div class="seg">${c.bins.map(bn=>`<button class="${a===bn.id?'pick':''}" data-sort="${c.key}|${i}|${bn.id}">${bn.label}</button>`).join('')}</div>
+    return head+(S.mode!=='solo'&&window.GAMES?GAMES.o3bar(c.bins):'')+`<div class="sort">${c.items.map((it,i)=>{const a=ans[i];const right=a===it.ans;return `<div class="srow ${a!=null?(right?'right':'wrong'):''}"><div class="it">${it.en}${BN(it.bn)}</div>
+     <div class="seg">${c.bins.map(bn=>`<button class="${a===bn.id?'pick':''}" data-sort="${c.key}|${i}|${bn.id}">${S.mode!=='solo'&&window.GAMES&&GAMES.sign(bn.id)?GAMES.sign(bn.id)+' ':''}${bn.label}</button>`).join('')}</div>
      ${a!=null?`<div class="why ${right?'':'no'}"><b>${right?'✓':'↺'}</b> ${right?it.why:(it.hint||it.why)}${S.bn?BN(right?it.whybn:(it.hintbn||it.whybn)):''}</div>`:''}</div>`}).join('')}</div>`;
   }
   if(c.type==='choice'){
@@ -705,7 +737,7 @@ function levelCard(c,x){
    <small class="lvl-k">${S.bn?'গিয়ার ঘুরেছে':'Gear turned'} · ${Object.keys(used).length}/4</small>
    <h2>${m.n}${BN(m.nbn)}</h2><p class="lvl-v"><b>${m.v}.</b> ${c.did||m.q}${BN(c.didbn||m.qbn)}</p>
    <div class="lvl-say" data-say="${esc(fr.en)}"><span>“${gapped(fr.en)}”${BN(fr.bn)}</span>${sayBtn(fr.en)}</div>
-   <small class="lvl-tip">${S.bn?'জোরে বলো।':'Say it out loud.'}</small></div>`;
+   <small class="lvl-tip">${S.bn?'জোরে বলো।':'Say it out loud.'}</small>${c.guess&&window.GAMES?GAMES.guessLine(c.guess,x):''}</div>`;
 }
 /* the end of a mission: what happened, the stars, the four gears */
 function resultCard(c,x){
@@ -714,6 +746,7 @@ function resultCard(c,x){
   return `<div class="res">${c.html||''}
    <div class="res-stars">${IC.star}<b data-to="${sc}">${sc}</b><span>${S.bn?'প্রথমবারেই সঠিক সিদ্ধান্ত':'good calls, first time'}</span></div>
    <div class="res-gears">${D4.svg({on:'all',loops:true,sweet:true,cls:'all'})}<p>${S.bn?'চারটা গিয়ারই ঘুরেছে। যেখানে মেলে, সেটাই AI fluency।':'All four gears turned. Where they meet is AI fluency.'}</p></div>
+   ${c.callback&&S.mode!=='solo'&&window.GAMES?GAMES.callback(c.callback,x):''}
    ${c.say?`<div class="card"><h3>${S.bn?'তোমার ইংরেজি':'Your English today'}</h3><div class="dphr">${['del','des','dis','dil'].filter(d=>c.say[d]).map(d=>`<div class="dph d-${d}" data-say="${esc(c.say[d].en)}">${D4.badge(d,30)}<span><small>${D4.META[d].n}</small><span class="pq">${c.say[d].en}</span>${BN(c.say[d].bn)}</span>${sayBtn(c.say[d].en)}</div>`).join('')}</div></div>`:''}
    ${c.next?`<div class="pick-cards">${c.next.map(id=>{const L2=LESSONS[id];return L2?`<button class="pcard" data-start="${id}"><span class="pi" style="background:${L2.tint}">${L2.emoji}</span><span><em>${S.bn?'পরের মিশন':'Next mission'}</em><b>${esc(L2.title)}</b><span>${esc(L2.blurb)}</span></span></button>`:''}).join('')}</div>`:''}</div>`;
 }
@@ -900,6 +933,7 @@ function autoVoice(x){
     const t=coachText().en;
     const then=()=>{ if(S.beat!==at||S.lesson!==L) return;
       if(c.type==='story') playSeq($$('#story .tpanel'),'lit');
+      else if(window.GAMES&&GAMES[c.type]&&GAMES[c.type].voice) GAMES[c.type].voice(c,x);
       else if(!c.type&&b.talk&&S.mode!=='solo'){ const tk=fn(b.talk,x); if(tk&&tk.q&&tk.q!==t) speak(tk.q); } };
     if(t&&t!=='…') speak(t,()=>setTimeout(then,450)); else then();
   },250);
@@ -945,7 +979,7 @@ function handleUI(id,el,x){
   if(kind==='key'){ typeKey(arg,x); return; }
   if(kind==='kbtoggle'){ S.keys=!S.keys; renderPhoneKeepFocus(); return; }
   if(kind==='chip'){ toggleChip(arg,x); return; }
-  if(kind==='tile'||kind==='untile'){ bldTap(kind,arg,x); return; }
+  if(kind==='tile'||kind==='untile'){ pzTap(kind,arg,x); return; }
   if(kind==='pick'){ const sc=fn(b.scene,x); const sel=x.get(sc.sel,[]).slice(); const k=sel.indexOf(arg); if(k>=0)sel.splice(k,1); else sel.push(arg); x.set(sc.sel,sel); renderPhone(false); renderFoot(); return; }
   if(kind==='opt'&&b.decide){ const d=fn(b.decide,x); x.set(d.key,arg); if(d.onPick) d.onPick(x,arg);
     const o=d.options[arg]; firstTry(x,d.key,!!(o&&o.ok));
@@ -962,7 +996,7 @@ function typeKey(k,x){
   x.set(kb.key,v); renderPhoneKeepFocus(); renderFoot();
 }
 function toggleChip(id,x){
-  const kb=activeKB(x); const c=(kb.chips||[]).find(z=>z.id===id); if(!c) return;
+  const kb=activeKB(x); if(!kb) return; const c=(kb.chips||[]).find(z=>z.id===id); if(!c) return;
   let v=x.get(kb.key,'');
   if(v.includes(c.text)) v=v.replace(c.text,'').replace(/ {2,}/g,' ').replace(/^\s+/,'');
   else v=(v&&!/\s$/.test(v)?v+' ':v)+c.text;
@@ -974,6 +1008,7 @@ function renderPhoneKeepFocus(){ const ta=$('#cmp'); const pos=ta?ta.selectionSt
 /* ------------------------------------------------------------- clicks on cards, footer and top bar */
 function onUIClick(e){
   if(ppClick(e)) return;
+  const gm=e.target.closest('[data-g]'); if(gm&&window.GAMES){ GAMES.click(gm,e); return; }
   const dv=e.target.closest('[data-view]'); if(dv){openView(dv.dataset.view,dv.dataset.mark);return}
   const md=e.target.closest('[data-mode]'); if(md){ setMode(md.dataset.mode); return; }
   const st=e.target.closest('[data-start]'); if(st){ start(st.dataset.start); return; }
@@ -1010,7 +1045,19 @@ function onUIClick(e){
    the browser's voice, sentence by sentence, for lines not yet recorded. ---- */
 let voiceEN=null, speakId=0;
 const ANDROID=typeof navigator!=='undefined'&&/Android/i.test(navigator.userAgent||'');
-function pickVoice(){ if(ANDROID){ voiceEN=null; return; } try{ const vs=speechSynthesis.getVoices(); voiceEN=vs.find(v=>/en[-_]IN/i.test(v.lang))||vs.find(v=>/en[-_]GB/i.test(v.lang))||vs.find(v=>/^en/i.test(v.lang))||null; }catch(e){} }
+/* the browser voice, for lines not yet recorded. Android: the phone's own default voice
+   (the one the student chose in Settings — Google's natural voices on most phones), so we
+   never force a language that might swap it for a weaker one. Elsewhere: the most natural
+   English voice the device has — "Natural", "Neural", "Online", Google or "Enhanced" voices
+   first; old robotic voices (macOS compact voices, eSpeak) last. */
+const ROBOTIC=/compact|espeak|fred|albert|zarvox|trinoids|whisper|bad news|bells|boing|bubbles|cellos|jester|organ|superstar|wobble|ralph|junior|kathy|princess|bahh/i;
+function voiceScore(v){ let s=0; const n=v.name||'';
+  if(/natural|neural/i.test(n)) s+=60; if(/online/i.test(n)) s+=25; if(/google/i.test(n)) s+=30; if(/enhanced|premium|siri/i.test(n)) s+=35;
+  if(ROBOTIC.test(n)) s-=100; if(/en[-_]IN/i.test(v.lang)) s+=12; else if(/en[-_]GB/i.test(v.lang)) s+=8; else if(/en[-_](US|AU|IE)/i.test(v.lang)) s+=6;
+  if(!v.localService) s+=4; return s; }
+function pickVoice(){ try{ const vs=speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang));
+  if(ANDROID){ voiceEN=vs.find(v=>v.default)||null; return; }
+  voiceEN=vs.slice().sort((a,b)=>voiceScore(b)-voiceScore(a))[0]||null; }catch(e){} }
 const plain=t=>String(t||'').replace(/Ayesha/g,'Eye-sha').replace(/<span class="bn"[^>]*>.*?<\/span>/g,' ').replace(/<[^>]+>/g,' ').replace(/___/g,' blank ').replace(/&amp;/g,'&').replace(/&[a-z]+;/g,' ').replace(/\s+/g,' ').trim();
 /* Recorded voices. Every spoken line has a key made from its words, so a
    recording is found by what it says: change a line and the old file simply
@@ -1060,7 +1107,7 @@ function ttsSpeak(t,onEnd){
     speechSynthesis.cancel(); stopClip(); const my=++speakId; $$('.speaking').forEach(e=>e.classList.remove('speaking'));
     const parts=plain(t).match(/[^.!?…]+[.!?…]*/g)||[]; if(!parts.length){onEnd&&onEnd();return}
     if(!voiceEN) pickVoice(); talking(true);
-    parts.forEach((p,i)=>{ const u=new SpeechSynthesisUtterance(p.trim()); u.lang=voiceEN?voiceEN.lang:(ANDROID?'en-US':'en-GB'); if(voiceEN)u.voice=voiceEN; u.rate=ANDROID?(S.mode==='class'?.9:1):(S.mode==='class'?.82:.88);
+    parts.forEach((p,i)=>{ const u=new SpeechSynthesisUtterance(p.trim()); if(voiceEN){ u.voice=voiceEN; u.lang=voiceEN.lang; } else if(!ANDROID) u.lang='en-GB'; u.rate=ANDROID?(S.mode==='class'?.9:1):(S.mode==='class'?.82:.88);
       if(i===parts.length-1) u.onend=()=>{ if(my===speakId){ talking(false); $$('.speaking').forEach(e=>e.classList.remove('speaking')); onEnd&&onEnd(); } };
       speechSynthesis.speak(u); });
   }catch(e){ talking(false); onEnd&&onEnd(); }
@@ -1081,18 +1128,26 @@ let showing=0;
 function showMe(){
   const x=ctx(), b=x.beat;
   if(S.streaming&&S.finishStream&&!b.interrupt){S.finishStream();return}
-  if(showing&&Date.now()-showing<9000) return; showing=Date.now(); const at=S.lesson+'/'+S.beat;
+  if(showing&&Date.now()-showing<30000) return; showing=Date.now(); const at=S.lesson+'/'+S.beat;
   const clear=()=>{ if(S.lesson+'/'+S.beat!==at||!S.lesson) showing=0; else setTimeout(clear,300); }; setTimeout(clear,300);
   if(b.showMe){ b.showMe(x,{ghostTo,click:el=>el&&el.click(),render:()=>{renderPhone(false);renderUI()}}); return; }
-  const cd=fn(b.card,x); if(cd&&cd.type==='pickeach'){ const a={}; cd.items.forEach((it,i)=>a[i]=it.options.findIndex(o=>o.ok)); x.set(cd.key,a); renderUI(); return; }
+  const cd=fn(b.card,x); if(cd&&window.GAMES&&GAMES[cd.type]&&GAMES[cd.type].show){ GAMES[cd.type].show(cd,x); return; }
+  if(cd&&cd.type==='pickeach'){ const a={}; cd.items.forEach((it,i)=>a[i]=it.options.findIndex(o=>o.ok)); x.set(cd.key,a); renderUI(); return; }
   if(cd&&cd.type==='sort'&&!b.tap&&!b.compose){ const a={}; cd.items.forEach((it,i)=>a[i]=it.ans); x.set(cd.key,a); renderUI(); return; }
   if(cd&&cd.type==='choice'){ const i=cd.options.findIndex(o=>o.ok); const el=$(`#pcard [data-choice="${cd.key}|${i}"]`); if(el) el.click(); return; }
   if(b.hunt){ const s=huntState(x,b); const l=s.h.lines.find(z=>z.v!=='ok'&&s.a[z.id]!=='bad'); if(!l) return; const el=$(`#screen [data-ui="line:${l.id}"]`); const want=l.vd==='NG'?'ng':'bad'; ghostTo(el,()=>{ openLine(l.id); const n=$$('#psheet [data-kw][data-ok]').length; for(let i=0;i<Math.min(2,n);i++) setTimeout(()=>{ const k=$('#psheet [data-kw][data-ok]:not(.hit)'); if(k) k.click(); },450+i*500); setTimeout(()=>{ const v=$(`#psheet [data-hv$="|${want}"]`); if(v) v.click(); },450+Math.min(2,n)*500+500); }); return; }
   if(b.compose){
     const c=fn(b.compose,x); const best=c.best;
     x.set(c.key,''); renderPhoneKeepFocus();
-    const seq=best.slice(); const step=()=>{ if(!seq.length){ renderFoot(); const s=$('#screen [data-hit="'+(fn(b.tap,x)||'send')+'"]'); ghostTo(s,()=>{ showing=0; if(s) s.click(); }); return; }
-      const id=seq.shift(); const el=$(`#kb [data-ui="chip:${id}"]`)||$('#kb .bld-line'); ghostTo(el,()=>{ x.set('bld:'+c.key,[]); toggleChip(id,x); setTimeout(step,260); }); };
+    const kbc=activeKB(x); x.set('pz:'+c.key,[]); x.set('pz:'+c.key+'+','');
+    const here=S.lesson+'/'+S.beat, gone=()=>S.lesson+'/'+S.beat!==here;   // stop if the student moves on mid-demo
+    const seq=best.slice(); const step=()=>{ if(gone()){ showing=0; return; } if(!seq.length){ renderFoot(); const s=$('#screen [data-hit="'+(fn(b.tap,x)||'send')+'"]'); ghostTo(s,()=>{ showing=0; if(s) s.click(); }); return; }
+      const id=seq.shift(); const pz=pzItems(kbc).find(z=>z.id===id);
+      if(pz){ // a puzzle: the finger places each tile of the fluent order
+        const order=pz.ok[0].o.slice(); x.set('pz:'+c.key,[]); renderPhoneKeepFocus();
+        const put=()=>{ if(gone()){ showing=0; return; } if(!order.length){ setTimeout(step,420); return; } const t=order.shift(); const el=$(`#kb [data-tile="${t}"]`); ghostTo(el,()=>{ pzTap('tile',t,x); setTimeout(put,120); }); };
+        put(); return; }
+      const el=$(`#kb [data-ui="chip:${id}"]`); ghostTo(el,()=>{ if(gone()) return; toggleChip(id,x); setTimeout(step,260); }); };
     step(); return;
   }
   if(b.pickShow){ const sc=fn(b.scene,x); x.set(sc.sel,[]); renderPhone(false); const seq=b.pickShow.slice();
@@ -1241,5 +1296,6 @@ function boot(){
 }
 
 function sheetFrom(o){ UI.sheet=Object.assign(fbSheet(o,o.retry?()=>{}:null),o.sheet||{}); renderUI(); }
-window.AFL={fb:sheetFrom,HUB,TOUR,_mode:k=>{S.mode=k},audioKey,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach:renderUI,renderUI,start,hub,STORY_DATE,firstTry,huntMark,shown};
+const GI={get S(){return S},esc,BN,tr,T,speak,hush,sayBtn,gapped,canon,renderStage,renderFoot,renderUI,renderTop,renderSheet,firstTry,resetTalk,toggleTimer,paintTimer,recToggle,rec:()=>REC,timer:()=>TIMER,fileThumb,FILES,next,ctx,fn,IC,ico,ui:()=>UI};
+window.AFL={_g:GI,fb:sheetFrom,HUB,TOUR,_mode:k=>{S.mode=k},audioKey,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach:renderUI,renderUI,start,hub,STORY_DATE,firstTry,huntMark,shown};
 })();

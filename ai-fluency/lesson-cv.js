@@ -114,10 +114,30 @@ const PP_SCENES=[
 const ppAnim=x=>{ const s0=Math.min(4,Math.max(0,(x&&x.get('ppStep',0))||0));
   return `<span class="pp${x&&x.get('ppDone')?' min':''}" data-s="${s0}"><span class="pp-stage">${PP_SCENES.map((s,k)=>`<span class="pp-scene pp-s${k} pp-${s.t}"><span class="pp-w">${k+1}. ${s.t}</span><span class="pp-d">${s.d}<span class="bn">${s.bn}</span></span><span class="pp-lab">You tell the tailor:</span><span class="pp-say">“${s.say}”</span><span class="pp-lab">You tell the AI:</span><span class="pp-ex">${s.ex}</span></span>`).join('')}<span class="pp-scene pp-s4 pp-Product"><span class="pp-w">4 parts = 1 good prompt</span><span class="pp-all">${PP_SCENES.map(s=>`<span class="pp-${s.t}"><b>${s.t}</b> — ${s.d}</span>`).join('')}</span></span></span><span class="pp-nav"><button type="button" data-pp="prev"${s0?'':' disabled'}>‹ Back</button><span class="pp-dots"><i></i><i></i><i></i><i></i><i></i></span><button type="button" data-pp="next">${s0>=4?'Got it ✓':'Next ›'}</button></span></span>`; };
 
+/* the same words can make two correct sentences — only one is a fluent prompt (see pzHTML in engine.js) */
+const PUZ=c=>Object.assign(c,{text:c.ok[0].t});
 const PROMPT_CHIPS=[
  {id:'c1',tag:'Context',text:'I am a third-year Economics student at Rajshahi University. I am applying for fully funded master’s programmes in Development Economics.'},
  {id:'c2',tag:'Product',text:'Make a 2-page academic CV from my attached files.'},
- {id:'c3',tag:'Process',text:'Use only facts from my files. Do not add numbers, titles or skills. If something is missing, ask me first.'},
+ {id:'c3',tag:'Process',text:'Use only facts from my files. Do not add numbers, titles or skills.'},
+ PUZ({id:'c3a',tag:'Process',goal:'Process: what comes first?',goalbn:'প্রক্রিয়া: কোনটা আগে?',
+   tiles:['first,','check the facts in my files.','then','write the CV.'],
+   ok:[{o:[0,1,2,3],t:'First, check the facts in my files. Then write the CV.'}],
+   traps:[{o:[0,3,2,1],t:'First, write the CV. Then check the facts in my files.',
+     ai:'<p>On it! ✍️ Here’s your CV first:</p><ul><li><span class="flag ln v-bad">Led a team of 20 volunteers</span></li><li><span class="flag ln v-bad">IELTS Academic: 7.0</span></li></ul><p>Now I’ll check the facts in your files…</p>',
+     why:'Good English — but the wrong order. The AI writes first, so the made-up lines are already in the CV. <b>Check first, then write.</b>',
+     whybn:'ইংরেজি ঠিক — কিন্তু ক্রম ভুল। AI আগে লিখে ফেলে, তাই বানানো লাইনগুলো CV-তে ঢুকে যায়। আগে যাচাই, তারপর লেখা।'}],
+   tip:'Start with “first,” + one step. Then “then” + the next step.',tipbn:'“first,” + একটা ধাপ দিয়ে শুরু করো। তারপর “then” + পরের ধাপ।',
+   good:'Sathi AI will check first — then write.'}),
+ PUZ({id:'c3b',tag:'Process',goal:'Process: what if something is missing?',goalbn:'প্রক্রিয়া: কিছু না থাকলে কী হবে?',
+   tiles:['if something is missing,','ask me.','do not','guess.','asks me.'],
+   ok:[{o:[0,1,2,3],t:'If something is missing, ask me. Do not guess.'}],
+   traps:[{o:[0,3,2,1],t:'If something is missing, guess. Do not ask me.',
+     ai:'<p>No problem — I won’t bother you! 😊 I filled the gaps:</p><ul><li><span class="flag ln v-bad">Graduation: 2025</span> (my guess)</li><li><span class="flag ln v-bad">IELTS: 7.5</span> (my guess)</li></ul>',
+     why:'Good English — but now the AI guesses instead of asking. On a CV, a guess looks exactly like a fact.',
+     whybn:'ইংরেজি ঠিক — কিন্তু এখন AI জিজ্ঞেস না করে অনুমান করছে। CV-তে অনুমান দেখতে একদম তথ্যের মতো।'}],
+   tip:'Give an order: “ask me”, not “asks me”. Then “do not” + what it must not do.',tipbn:'আদেশ দাও: “ask me”, “asks me” নয়। তারপর “do not” + যা করবে না।',
+   good:'Sathi AI will ask you — not guess.'}),
  {id:'c4',tag:'Performance',text:'Be an honest editor. Use simple English I can explain in an interview, and tell me if a line sounds bigger than the truth.'},
  {id:'x1',tag:'Shortcut',x:1,text:'Make me sound as impressive as possible.'},
  {id:'x2',tag:'Shortcut',x:1,text:'Add skills that scholarship committees like.'}
@@ -125,10 +145,10 @@ const PROMPT_CHIPS=[
 const SLOTS=[
  {label:'Context',test:[/\bi am\b|\bi'm\b|student/i]},
  {label:'Product',test:[/\bcv\b|resume|résumé/i]},
- {label:'Process',test:[/use only|only (use|facts)|do not add|don'?t add|ask me/i]},
+ {label:'Process',test:[/use only|check the facts|ask me|do not guess|do not add|don'?t add/i]},
  {label:'Performance',test:[/honest|editor|tell me|warn me|flag/i]}
 ];
-const promptText=x=>x.get('cvPrompt','')||PROMPT_CHIPS.slice(0,4).map(c=>c.text).join(' ');
+const promptText=x=>x.get('cvPrompt','')||PROMPT_CHIPS.filter(c=>!c.x).map(c=>c.text).join(' ');
 const ANS_CHIPS=[
  {id:'a1',tag:'Answer 1',text:'I expect to graduate in 2026.'},
  {id:'a2',tag:'Answer 2',text:'The term paper was coursework. It was not published.'},
@@ -137,11 +157,35 @@ const ANS_CHIPS=[
 ];
 const ansText=x=>x.get('cvAns','')||ANS_CHIPS.slice(0,3).map(c=>c.text).join(' ');
 const FIX_CHIPS=[
- {id:'f1',tag:'Fix',goal:'Fix her role: put the sentence in order',parts:['I was','a volunteer tutor,','not','the project leader.'],extra:['am'],tip:'Start with who + was. Then say what she was. Then “not” + what she was not.'},
- {id:'f2',tag:'Fix',goal:'Fix her software skills',parts:['My Stata and SPSS skills','are','basic,','not advanced.'],extra:['is'],tip:'“Skills” is plural, so use “are”. Say what is true first, then “not” + what is false.'},
- {id:'f3',tag:'Fix',goal:'Remove the false line',parts:['Please remove','the Bangladesh Economic Association line,','because','I am not a member.'],extra:['so'],tip:'The request comes first. “Because” introduces the reason.'},
+ PUZ({id:'f1',tag:'Fix',goal:'Fix her role',goalbn:'তার ভূমিকা ঠিক করো',
+   tiles:['I was','a volunteer tutor','not','the project leader','am'],
+   ok:[{o:[0,1,2,3],t:'I was a volunteer tutor, not the project leader.'}],
+   traps:[{o:[0,3,2,1],t:'I was the project leader, not a volunteer tutor.',
+     ai:'<p>Thanks for clarifying! I’ve made it stronger:</p><ul><li><span class="flag ln v-bad">Project Leader</span>, Book Support project — led the volunteer team</li></ul>',
+     why:'Good English — but it says the opposite of the truth, and the AI believes you. With “not”, the <b>true</b> part comes first.',
+     whybn:'ইংরেজি ঠিক — কিন্তু এটা সত্যের উল্টো, আর AI তোমাকে বিশ্বাস করে। “not” থাকলে সত্যিটা আগে আসে।'}],
+   tip:'Start with “I was” — she’s talking about the past. Then what she was, then “not” + what she was not.',tipbn:'“I was” দিয়ে শুরু করো — অতীতের কথা। তারপর সে কী ছিল, তারপর “not” + সে কী ছিল না।',
+   good:'True part first, then “not” + the false part.'}),
+ PUZ({id:'f2',tag:'Fix',goal:'Fix her software skills',goalbn:'তার সফটওয়্যার দক্ষতা ঠিক করো',
+   tiles:['My Stata and SPSS skills','are','basic','not','advanced','is'],
+   ok:[{o:[0,1,2,3,4],t:'My Stata and SPSS skills are basic, not advanced.'}],
+   traps:[{o:[0,1,4,3,2],t:'My Stata and SPSS skills are advanced, not basic.',
+     ai:'<p>Great news! Updated ✅</p><ul><li>Data analysis: <span class="flag ln v-bad">advanced Stata and SPSS</span></li></ul>',
+     why:'Good English — but now the CV says <b>advanced</b>. An interviewer could test it in five minutes.',
+     whybn:'ইংরেজি ঠিক — কিন্তু এখন CV-তে লেখা advanced। ইন্টারভিউয়ার পাঁচ মিনিটেই পরীক্ষা করতে পারেন।'}],
+   tip:'“Skills” is plural, so “are”. Say what is true first, then “not” + what is false.',tipbn:'“Skills” বহুবচন, তাই “are”। আগে সত্যিটা, তারপর “not” + মিথ্যাটা।',
+   good:'Basic, not advanced — the truth.'}),
+ PUZ({id:'f3',tag:'Fix',goal:'Remove the made-up line',goalbn:'বানানো লাইনটা সরাও',
+   tiles:['Please remove','the Bangladesh Economic Association line','because','I am not a member','so'],
+   ok:[{o:[0,1,2,3],t:'Please remove the Bangladesh Economic Association line, because I am not a member.'}],
+   traps:[{o:[0,1,4,3],t:'Please remove the Bangladesh Economic Association line, so I am not a member.',
+     ai:'<p>Removed ✅</p><p>Shall I also write to the Bangladesh Economic Association to <span class="flag ln v-bad">cancel your membership</span>? 🤔</p>',
+     why:'“So” gives a <b>result</b>: it sounds as if removing the line will end her membership. “Because” gives the <b>reason</b>: she was never a member.',
+     whybn:'“So” মানে ফলাফল: মনে হয় লাইন সরালে তার সদস্যপদ শেষ হবে। “Because” মানে কারণ: সে কখনো সদস্যই ছিল না।'}],
+   tip:'The request comes first. Then the reason.',tipbn:'অনুরোধ আগে। তারপর কারণ।',
+   good:'“Because” gives the reason.'}),
  {id:'fx',tag:'Shortcut',x:1,text:'Leave it — nobody will check.'}
-].map(c=>c.parts?Object.assign(c,{text:c.parts.join(' ')}):c);
+];
 const fixText=x=>x.get('cvFix','')||FIX_CHIPS.slice(0,3).map(c=>c.text).join(' ');
 
 /* ---------- what happens next: risky choices and shortcuts, played out ----------
@@ -216,10 +260,50 @@ const fillCV=x=>{const f=x.get('cvFill',{});
 };
 const filled=x=>{const f=x.get('cvFill',{});return !!(f.phone&&f.email)};
 
+/* ---------- practice games (games.js) ---------- */
+const GUESS_SIGNS=[{id:'1',i:'1️⃣',en:'A perfect, true CV',bn:'নিখুঁত, সত্যি CV'},{id:'2',i:'2️⃣',en:'An impressive CV — with made-up things',bn:'চমৎকার CV — কিন্তু বানানো কথা সহ'},{id:'3',i:'3️⃣',en:'Questions first',bn:'আগে প্রশ্ন'}];
+const TWO_TRUTHS={type:'rounds',key:'cvTT',kind:'tt',pic:'🤥',title:'Two truths and a lie',titlebn:'দুটো সত্য, একটা মিথ্যা',
+ intro:{en:'Think of 3 lines for YOUR CV. Two are true. One is made up — but make it sound real.',bn:'তোমার নিজের CV-র জন্য ৩টা লাইন ভাবো। দুটো সত্য। একটা বানানো — কিন্তু সত্যি শোনাতে হবে।'},prep:45,time:0,
+ items:[{q:'{A} says 3 lines. {B} asks ONE question — then points to the made-up line.',qbn:'একজন ৩টা লাইন বলো। অন্যজন একটা প্রশ্ন করো — তারপর বানানো লাইনটা ধরো।',model:'I was class captain in Class 9. I can type 60 words a minute. I won a national debate competition.'},
+        {q:'Swap! {A} says 3 lines. {B} asks ONE question — then points to the made-up line.',qbn:'এবার উল্টো! একজন ৩টা লাইন বলো। অন্যজন একটা প্রশ্ন করে বানানোটা ধরো।',model:'I volunteer at a library. I have a driving licence. I speak a little Japanese.'}],
+ rate:[{id:'caught',i:'🎯',en:'Caught it',good:1},{id:'fooled',i:'🎭',en:'Fooled!'}],
+ lifeline:{t:'Questions that catch a lie',items:['When did you…?','Who was with you?','What was the hardest part?','Can you show me?']},
+ outro:{en:'That’s Discernment: you checked a claim by asking questions. Today an AI will write made-up lines for Ayesha. Can you catch them all?',bn:'এটাই Discernment: প্রশ্ন করে দাবি যাচাই। আজ একটা AI আয়েশার জন্য বানানো লাইন লিখবে। সবগুলো ধরতে পারবে?'}};
+const WORST={type:'chain',key:'cvChain',
+ intro:{en:'What if Ayesha HAD uploaded these to the AI chat? 🅰 says what could go wrong. 🅱 says something worse. Keep going!',bn:'আয়েশা যদি এগুলো AI চ্যাটে আপলোড করত? একজন বলো কী খারাপ হতে পারে। অন্যজন বলো আরও খারাপ কিছু। চালিয়ে যাও!'},
+ words:['If the AI company had her ID card, someone could…','Worse: they could…','Then…','And her father could…'],
+ items:[{f:'nid',real:{en:'Her ID number and photo would sit on a company’s computers. With them, someone could register a SIM card or a mobile wallet in her name.',bn:'তার NID নম্বর আর ছবি একটা কোম্পানির কম্পিউটারে থাকত। এগুলো দিয়ে কেউ তার নামে সিম বা মোবাইল ওয়ালেট খুলতে পারে।'}},
+        {f:'bank',real:{en:'Her father’s account number and income would be on a company’s computers. He never agreed — and he can’t take them back.',bn:'তার বাবার অ্যাকাউন্ট নম্বর আর আয় একটা কোম্পানির কম্পিউটারে থাকত। তিনি রাজি হননি — আর ফেরতও নিতে পারবেন না।'}},
+        {f:'attendance',real:{en:'Children’s names would leave the phone. Their parents never agreed — and Ayesha can’t take them back.',bn:'শিশুদের নাম ফোনের বাইরে চলে যেত। তাদের অভিভাবকরা রাজি হননি — আর আয়েশা ফেরত আনতে পারবে না।'}}]};
+const INTERVIEW={type:'rounds',key:'cvInt',kind:'curve',pic:'💼',title:'The interview',titlebn:'ইন্টারভিউ',secret:true,
+ intro:{en:'Thursday. The panel has read her CV — every line. The questions are a surprise.',bn:'বৃহস্পতিবার। বোর্ড তার CV-র প্রতিটি লাইন পড়েছে। প্রশ্নগুলো আগে থেকে জানা নেই।'},
+ roles:{ask:{en:'Interviewer: hold the phone, read the question, ask it. Then ask “Why?”',bn:'ইন্টারভিউয়ার: ফোন ধরো, প্রশ্নটা পড়ে জিজ্ঞেস করো। তারপর জিজ্ঞেস করো “কেন?”'},ans:{en:'Ayesha: answer — honestly and clearly.',bn:'আয়েশা: উত্তর দাও — সৎভাবে, স্পষ্ট করে।'}},
+ judge:{en:'judge the answer: honest, and clear?',bn:'উত্তরটা বিচার করো: সৎ আর স্পষ্ট?'},
+ solo:{en:'The interviewer asks. Answer out loud — then record yourself.',bn:'ইন্টারভিউয়ার প্রশ্ন করছেন। জোরে উত্তর দাও — তারপর রেকর্ড করো।'},
+ items:[{q:'Did you use AI to write your CV?',qbn:'তুমি কি CV লিখতে AI ব্যবহার করেছ?',model:'Yes. I used AI to organise it, but I checked every line against my own documents.'},
+        {q:'Your first CV said you led a team of 20. Why did that change?',qbn:'তোমার প্রথম CV-তে লেখা ছিল তুমি ২০ জনের দল চালিয়েছ। সেটা বদলাল কেন?',model:'The AI wrote that, and it wasn’t true. I was a volunteer tutor and a team member, so I changed it.'},
+        {q:'Tell me about your Stata skills.',qbn:'তোমার Stata দক্ষতা সম্পর্কে বলো।',model:'They are basic. I used Stata in a 12-hour course, and I want to learn more in my master’s.'},
+        {q:'Is there anything on your CV that you can’t explain?',qbn:'তোমার CV-তে এমন কিছু আছে যা তুমি ব্যাখ্যা করতে পারবে না?',model:'No. I can explain every line, because every line is true.'}],
+ rate:[{id:'ok',i:'✓',en:'Honest and clear',good:1},{id:'more',i:'↺',en:'Say more'}],
+ lifeline:{t:'Useful words',items:['I used AI to…, but I…','That wasn’t true, so I…','To be honest, …','For example, …']},
+ outro:{en:'Every answer was easy for one reason: every line on her CV is true.',bn:'প্রতিটি উত্তর সহজ ছিল একটাই কারণে: তার CV-র প্রতিটি লাইন সত্য।'}};
+const MY_CV={type:'mine',key:'cvMine',
+ intro:{en:'Now YOUR CV. Write a real prompt — one box at a time. Copy it, and use it tonight with any AI app.',bn:'এবার তোমার CV। একটা আসল প্রম্পট লেখো — এক এক করে। কপি করো, আর আজ রাতেই যেকোনো AI অ্যাপে ব্যবহার করো।'},
+ fields:[{id:'c',cls:'pp-Context',label:'Context',labelbn:'প্রেক্ষাপট',ph:'I am a second-year English student at Rajshahi University.'},
+   {id:'p',cls:'pp-Product',label:'Product',labelbn:'পণ্য',ph:'Make a 1-page CV for a part-time tutoring job.'},
+   {id:'r',cls:'pp-Process',label:'Process',labelbn:'প্রক্রিয়া',ph:'Use only the facts I give you. If something is missing, ask me. Do not guess.'},
+   {id:'f',cls:'pp-Performance',label:'Performance',labelbn:'আচরণ',ph:'Be an honest editor. Use simple English I can explain.'}],
+ partner:{en:'🅱 plays the AI: before you write anything, ask one question you would need. Then swap.',bn:'অন্যজন AI সাজো: কিছু লেখার আগে একটা দরকারি প্রশ্ন করো। তারপর অদলবদল।'}};
+
 const MAIL_NOTIF={app:'mail',title:'Research Intern — application update',text:'Dear Ayesha, thank you for applying. After careful review…',time:'9:12',hit:'n:mail'};
 const REJECT={app:'mail',view:'read',mail:{from:'Internship Desk',color:'#00639B',subject:'Research Intern — application update',time:'9:12 AM',
   body:`<p>Dear Ayesha,</p><p>Thank you for applying for the Research Assistant Intern position. We received many strong applications, and we are not able to shortlist you this time.</p><p>Most shortlisted applicants sent a short <b>academic CV</b> that showed their research skills clearly. We encourage you to apply again.</p><p>Best wishes,<br>Internship Desk</p>`}};
 const say=(mode)=>AFL.byMode(mode);
+/* the hunts in Pairs: one reads, one checks, swap — reading aloud is half the practice */
+const RELAY=()=>say({solo:'',pair:'👥 🅰 reads the line aloud. 🅱 picks the keywords and checks. Swap after each one.',class:'👥 With the person next to you: one reads the line aloud, one checks. Swap after each one.'});
+const RELAYBN=()=>say({solo:'',pair:'একজন লাইনটা জোরে পড়ো। অন্যজন কীওয়ার্ড বেছে যাচাই করো। প্রতিবার অদলবদল।',class:'পাশের জনের সাথে: একজন জোরে পড়ো, একজন যাচাই করো। প্রতিবার অদলবদল।'});
+const TILES=()=>say({solo:'Two orders can be good English — only one is a good instruction.',pair:'👥 Take turns: one tile each. Read your tile aloud as you place it.',class:'👥 Take turns with the person next to you: one tile each, read aloud.'});
+const TILESBN=()=>say({solo:'দুই রকম ক্রমেই ইংরেজি ঠিক হতে পারে — কিন্তু ভালো নির্দেশ একটাই।',pair:'পালা করে: একবারে একটা টুকরো। বসানোর সময় জোরে পড়ো।',class:'পাশের জনের সাথে পালা করে: একটা করে টুকরো, জোরে পড়ে।'});
 
 AFL.lesson({
  id:'cv', title:'An honest CV with AI', kicker:'Mission 1 · Writing', emoji:'📄', tint:'#D7E3FF', time:'30–40 min',
@@ -254,10 +338,8 @@ AFL.lesson({
      dis:{en:'That’s not true. My report says I was a tutor.',bn:'এটা সত্য নয়। আমার রিপোর্টে লেখা আমি টিউটর ছিলাম।'},
      dil:{en:'I won’t share my ID card. It’s private.',bn:'আমি আমার NID শেয়ার করব না। এটা ব্যক্তিগত।'}}}},
   {d:'none',stage:'warm',wide:true,scene:{app:'lock',notifs:[MAIL_NOTIF]},
-   say:'Before we start: what do you think?',bn:'শুরুর আগে: তোমার কী মনে হয়?',
-   talk:{big:true,pic:'🤖📄',q:'Should students use AI to make a CV?',qbn:'শিক্ষার্থীদের কি CV লিখতে AI ব্যবহার করা উচিত?',time:60,
-     frames:[{en:'Yes, because AI can ___.',bn:'হ্যাঁ, কারণ AI ___ পারে।'},{en:'No, because AI might ___.',bn:'না, কারণ AI হয়তো ___।'},{en:'Yes, but you must ___.',bn:'হ্যাঁ, তবে তোমাকে ___ করতেই হবে।'}],
-     model:'Yes, but you must check every line. AI might make things up.'}},
+   say:'A game before the mission: two truths and a lie — about YOUR CV.',bn:'মিশনের আগে একটা খেলা: দুটো সত্য, একটা মিথ্যা — তোমার নিজের CV নিয়ে।',
+   card:TWO_TRUTHS},
 
   /* ---------- FIRST TRY: do what most students do — and judge what comes back ---------- */
   {d:'none',kick:'Mission 1',stage:'try',scene:{app:'lock',notifs:[MAIL_NOTIF]},tap:'n:mail',
@@ -268,8 +350,11 @@ AFL.lesson({
    say:'Open the AI app. Tap Sathi AI.',bn:'AI অ্যাপটা খোলো। Sathi AI-তে চাপো।',sub:'Sathi AI is like Gemini, ChatGPT or Claude.',subbn:'Sathi AI হলো Gemini, ChatGPT বা Claude-এর মতো।'},
   {d:'des',id:'quick',stage:'try',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvQuick',atts:['cv'],placeholder:'Ask Sathi AI'},kb:{key:'cvQuick',label:'QUICK PROMPTS',chips:QUICK}}),tap:'send',
    say:'In a hurry? Most students type something short. Choose one above the keyboard, then send ➤.',bn:'তাড়া আছে? বেশিরভাগ শিক্ষার্থী ছোট কিছু লেখে। কিবোর্ডের উপর থেকে একটা বেছে নাও, তারপর পাঠাও ➤।',
-   compose:{key:'cvQuick',chips:QUICK,best:['q1']},
-   talk:{q:'What will Sathi AI produce? Guess first.',qbn:'Sathi AI কী তৈরি করবে? আগে অনুমান করো।',frames:[{en:'I think it will ___.',bn:'আমার মনে হয় এটা ___।'}]}},
+   compose:{key:'cvQuick',chips:QUICK,best:['q1']}},
+  {d:'dis',stage:'try',view:'card',
+   say:'Sathi AI is reading that short prompt. Before it answers — what’s your guess?',bn:'Sathi AI ছোট প্রম্পটটা পড়ছে। উত্তর দেওয়ার আগে — তোমার অনুমান কী?',
+   card:x=>({type:'onthree',key:'cvGuess',kind:'guess',pic:'🤔',right:'2',signs:GUESS_SIGNS,
+     q:`What will Sathi AI give Ayesha for “${esc(quickText(x))}”?`,qbn:'এই প্রম্পটে Sathi AI আয়েশাকে কী দেবে?'})},
   {d:'dis',id:'send',stage:'try',scene:x=>WEAK_SC(x,true),
    say:x=>x.streaming?'Sathi AI is working…':'Wow. It looks impressive. Would you send this CV?',bn:x=>x.streaming?'Sathi AI কাজ করছে…':'বাহ। দেখতে চমৎকার। তুমি কি এই CV পাঠাবে?',
    ask:{key:'cvSend',options:[
@@ -280,13 +365,10 @@ AFL.lesson({
    card:ALT_CARD},
   {d:'dis',stage:'try',scene:x=>WEAK_SC(x,false),docs:['cv','ielts','rucei'],
    say:'Now you. Find the 5 things that aren’t true. Tap a line: keywords first, then scan her files.',bn:'এবার তুমি। ৫টা অসত্য কথা খুঁজে বের করো। একটা লাইনে চাপো: আগে কীওয়ার্ড, তারপর তার ফাইল স্ক্যান করো।',
-   hunt:{key:'cvHunt1',lines:HUNT1},
-   talk:{q:'Find one thing that is not true.',qbn:'একটা অসত্য কথা খুঁজে বের করো।',time:45,
-     frames:[{en:'It says ___, but her CV says ___.',bn:'এখানে লেখা ___, কিন্তু তার CV-তে লেখা ___।'}],
-     model:'It says IELTS 7.0, but her report says 6.0.'}},
+   hunt:{key:'cvHunt1',lines:HUNT1},sub:()=>RELAY(),subbn:()=>RELAYBN()},
   {d:'dis',stage:'try',view:'card',
    say:'You judged what the AI gave you. That gear is Discernment.',bn:'AI যা দিয়েছে, তুমি তা বিচার করেছ। এই গিয়ারের নাম Discernment।',
-   card:{type:'level',d:'dis',did:'Is it true? Check it against her real documents before you believe it.',didbn:'এটা কি সত্য? বিশ্বাস করার আগে তার আসল কাগজের সাথে মিলিয়ে দেখো।',
+   card:{type:'level',d:'dis',guess:{key:'cvGuess',right:'2',signs:GUESS_SIGNS,note:'it sounds sure, and it makes things up.'},did:'Is it true? Check it against her real documents before you believe it.',didbn:'এটা কি সত্য? বিশ্বাস করার আগে তার আসল কাগজের সাথে মিলিয়ে দেখো।',
      phrase:{en:'That’s not true. Her CV says ___.',bn:'এটা সত্য নয়। তার CV-তে লেখা ___।'}}},
 
   /* ---------- PLAN: start again, properly ---------- */
@@ -296,10 +378,7 @@ AFL.lesson({
      {en:'🔎 Collect her true facts',bn:'তার সত্যি তথ্য জোগাড় করা',ans:'me',why:'Only Ayesha knows her real life — the AI just showed you that.',whybn:'তার আসল জীবন শুধু আয়েশাই জানে — AI সেটা এইমাত্র দেখিয়ে দিল।',hint:'Did the AI know her real IELTS score?',hintbn:'AI কি তার আসল IELTS স্কোর জানত?'},
      {en:'🗂 Suggest a clean layout',bn:'পরিষ্কার লেআউট প্রস্তাব করা',ans:'ai',why:'A good AI job: low risk, no private facts.',whybn:'AI-এর জন্য ভালো কাজ: ঝুঁকি কম, ব্যক্তিগত তথ্য লাগে না।',hint:'Is a layout risky?',hintbn:'লেআউটে কি ঝুঁকি আছে?'},
      {en:'🎯 Choose what matters most',bn:'কোনটা সবচেয়ে জরুরি তা বাছা',ans:'both',why:'The AI suggests. Ayesha decides.',whybn:'AI প্রস্তাব দেয়। সিদ্ধান্ত আয়েশার।',hint:'Who knows her goal?',hintbn:'তার লক্ষ্য কে জানে?'},
-     {en:'✅ Check every line is true',bn:'প্রতিটি লাইন সত্য কি না যাচাই করা',ans:'me',why:'Her name is on the CV.',whybn:'CV-তে তার নাম থাকে।',hint:'Whose name is on the CV?',hintbn:'CV-তে কার নাম থাকে?'}]},
-   talk:{q:'Who does each job? Say it.',qbn:'কোন কাজ কে করবে? বলো।',time:45,
-     frames:[{en:'Ayesha should ___.',bn:'আয়েশার উচিত ___।'},{en:'The AI can ___.',bn:'AI ___ পারে।'},{en:'They both ___.',bn:'দুজনে মিলে ___।'}],
-     model:'Ayesha should collect her true facts. The AI can suggest a layout. They both choose what matters most.'}},
+     {en:'✅ Check every line is true',bn:'প্রতিটি লাইন সত্য কি না যাচাই করা',ans:'me',why:'Her name is on the CV.',whybn:'CV-তে তার নাম থাকে।',hint:'Whose name is on the CV?',hintbn:'CV-তে কার নাম থাকে?'}]}},
   {d:'del',stage:'plan',view:'card',
    say:'You shared out the jobs. That gear is Delegation.',bn:'তুমি কাজগুলো ভাগ করেছ। এই গিয়ারের নাম Delegation।',
    card:{type:'level',d:'del',did:'Decide who does each job — you, the AI, or both.',didbn:'ঠিক করো কোন কাজ কে করবে — তুমি, AI, নাকি দুজনে।',
@@ -331,22 +410,21 @@ AFL.lesson({
      const extra=c.filter(id=>FILE_WHY[id].ok===0);
      return {ok:miss.length?0:1,title:miss.length?'Good — but something is missing':extra.length?'Right files! One tip':'Right files! ✅',
        why:c.map(id=>`<b>${esc(AFL.FILES[id].name)}</b> — ${FILE_WHY[id].en}`).join('<br>')+(miss.length?`<br>➕ The IELTS and RUCEI reports give the AI <b>real facts</b>. Add them next time.`:'')+(!miss.length&&extra.length?`<br>💡 Next time, leave out <b>${extra.map(id=>esc(AFL.FILES[id].name)).join(', ')}</b> — the CV does not need it.`:''),
-       whybn:miss.length?'IELTS আর RUCEI রিপোর্ট AI-কে আসল তথ্য দেয়।':'শুধু কাজের জন্য যা দরকার, তা-ই দাও।'}},
-   talk:{q:'Which files did Ayesha leave out? Why?',qbn:'আয়েশা কোন ফাইলগুলো বাদ দিল? কেন?',time:45,
-     frames:[{en:'She left out ___ because it’s private.',bn:'সে ___ বাদ দিয়েছে, কারণ এটা ব্যক্তিগত।'},{en:'A CV doesn’t need ___.',bn:'CV-তে ___ লাগে না।'}],
-     model:'She left out her ID card because it’s private. A CV doesn’t need her father’s bank statement.'}},
+       whybn:miss.length?'IELTS আর RUCEI রিপোর্ট AI-কে আসল তথ্য দেয়।':'শুধু কাজের জন্য যা দরকার, তা-ই দাও।'}}},
   {d:'dil',stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{text:'',atts:safeFiles(x)}}),
    pass:x=>!chosen(x).some(id=>FILE_WHY[id].ok<0),
    cq:x=>chosen(x).some(id=>FILE_WHY[id].ok<0)?Object.assign({},CQ_CV.files,filesLine(x),{rewind:x=>{x.set('cvFiles',chosen(x).filter(id=>FILE_WHY[id].ok>=0));AFL.goId('pick')}}):null,
    say:'Ayesha took out the private files.',bn:'আয়েশা ব্যক্তিগত ফাইলগুলো সরিয়ে দিয়েছে।'},
+  {d:'dil',stage:'prompt',only:'together',view:'card',
+   say:'Game: worst case. How bad could it get?',bn:'খেলা: সবচেয়ে খারাপ কী। কতটা খারাপ হতে পারত?',
+   card:WORST},
   {d:'des',id:'parts',stage:'prompt',view:'card',
    say:'A good prompt has four parts. Tap Next to see each one.',bn:'একটা ভালো প্রম্পটের চারটা অংশ থাকে। প্রতিটা দেখতে Next চাপো।',
    card:x=>({type:'html',html:ppAnim(x)})},
-  {d:'des',id:'prompt',stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi AI'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS}}),tap:'send',
-   say:'Now build a better prompt. Tap the parts above the keyboard, then send ➤.',bn:'এবার একটা ভালো প্রম্পট বানাও। কিবোর্ডের উপরের অংশগুলো চাপো, তারপর পাঠাও ➤।',
-   sub:x=>say({solo:'Read each part out loud before you tap it.',pair:'Read each part to your partner before you tap it.',class:'Read each part together before you tap it.'})+`<button class="pp-re" type="button" data-pp="goid" data-id="parts">↺ Review the 4 parts</button>`,
-   subbn:()=>say({solo:'চাপার আগে প্রতিটা অংশ জোরে পড়ো।',pair:'চাপার আগে প্রতিটা অংশ সঙ্গীকে পড়ে শোনাও।',class:'চাপার আগে প্রতিটা অংশ সবাই মিলে পড়ো।'}),
-   compose:{key:'cvPrompt',slots:SLOTS,chips:PROMPT_CHIPS,best:['c1','c2','c3','c4']}},
+  {d:'des',id:'prompt',stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi AI'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS,ai:'sathi'}}),tap:'send',
+   say:'Build a better prompt: tap the parts, build the two tile sentences, then send ➤.',bn:'ভালো প্রম্পট বানাও: অংশগুলো চাপো, টুকরো দিয়ে দুটো বাক্য বানাও, তারপর পাঠাও ➤।',
+   sub:()=>TILES()+`<button class="pp-re" type="button" data-pp="goid" data-id="parts">↺ Review the 4 parts</button>`,subbn:()=>TILESBN(),
+   compose:{key:'cvPrompt',slots:SLOTS,chips:PROMPT_CHIPS,best:['c1','c2','c3','c3a','c3b','c4']}},
   {d:'des',stage:'prompt',scene:x=>CHAT_SC(x,1),
    cq:x=>shortcut(PROMPT_CHIPS,'cvPrompt',x).length?Object.assign({},CQ_CV.prompt,{rewind:x=>{AFL.unsay(x,'cvPrompt',shortcut(PROMPT_CHIPS,'cvPrompt',x).map(c=>c.text));AFL.goId('prompt')}}):null,
    say:x=>x.streaming?'Sathi AI is reading your files…':'This time Sathi AI asks before it produces anything — because your prompt told it to.',bn:x=>x.streaming?'Sathi AI তোমার ফাইল পড়ছে…':'এবার Sathi AI লেখার আগে প্রশ্ন করছে — কারণ তোমার প্রম্পট তাকে বলেছে।'},
@@ -368,15 +446,13 @@ AFL.lesson({
    cq:x=>shortcut(ANS_CHIPS,'cvAns',x).length?Object.assign({},CQ_CV.answer,{rewind:x=>{AFL.unsay(x,'cvAns',shortcut(ANS_CHIPS,'cvAns',x).map(c=>c.text));AFL.goId('answers')}}):null,
    scene:x=>CHAT_SC(x,3,{scrollTo:'[data-mid="draft"]'}),docs:['cv','ielts','rucei','shortlist'],
    say:x=>x.streaming?'Sathi AI is producing a draft…':'Much better! But a good prompt doesn’t stop every mistake. Find the 3 problems.',bn:x=>x.streaming?'Sathi AI খসড়া তৈরি করছে…':'অনেক ভালো! কিন্তু ভালো প্রম্পটও সব ভুল থামায় না। ৩টা সমস্যা খুঁজে বের করো।',
-   hunt:{key:'cvHunt2',lines:LINES},
-   talk:{q:'Which line was wrong? How do you know?',qbn:'কোন লাইনটা ভুল ছিল? কীভাবে জানলে?',time:60,
-     frames:[{en:'Line ___ says ___.',bn:'___ নম্বর লাইনে লেখা ___।'},{en:'That’s not true. Her ___ says ___.',bn:'এটা সত্য নয়। তার ___-এ লেখা ___।'}],
-     model:'Line 4 says she led the project. That’s not true. Her RUCEI report says she was a tutor and a team member.'}},
+   hunt:{key:'cvHunt2',lines:LINES},sub:()=>RELAY(),subbn:()=>RELAYBN()},
 
   /* ---------- FIX ---------- */
-  {d:'des',id:'fixes',stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi AI'},kb:{key:'cvFix',label:'FIXES',chips:FIX_CHIPS}}),tap:'send',
+  {d:'des',id:'fixes',stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi AI'},kb:{key:'cvFix',label:'FIXES',chips:FIX_CHIPS,ai:'sathi'}}),tap:'send',
    docs:['cv','ielts','rucei','shortlist'],
-   say:'Tell Sathi AI exactly what to fix.',bn:'Sathi AI-কে ঠিক কী ঠিক করতে হবে, স্পষ্ট করে বলো।',
+   say:'Tell Sathi AI exactly what to fix. Careful — the same words can say the opposite.',bn:'Sathi AI-কে ঠিক কী ঠিক করতে হবে, স্পষ্ট করে বলো। সাবধান — একই শব্দে উল্টো কথাও বলা যায়।',
+   sub:()=>TILES(),subbn:()=>TILESBN(),
    compose:{key:'cvFix',chips:FIX_CHIPS,best:['f1','f2','f3'],slots:[
      {label:'Her role',test:[/volunteer tutor/i]},
      {label:'Software',test:[/basic/i]},
@@ -406,21 +482,16 @@ AFL.lesson({
    say:'You took responsibility for what goes out with your name. That gear is Diligence.',bn:'তোমার নামে যা যাবে, তার দায়িত্ব তুমি নিয়েছ। এই গিয়ারের নাম Diligence।',
    card:{type:'level',d:'dil',did:'Her name is on it, so she is responsible: true lines, private details kept private.',didbn:'এতে তার নাম, তাই দায়িত্ব তার: সত্যি লাইন, ব্যক্তিগত তথ্য গোপন।',
      phrase:{en:'I’m responsible for my CV.',bn:'আমার CV-র দায়িত্ব আমার।'}}},
-  {stage:'finish',only:'class',view:'card',
-   say:'Practise for the interview.',bn:'ইন্টারভিউয়ের অনুশীলন করো।',
-   talk:()=>({time:90,pic:'💼',q:'The interviewer asks: “Did you use AI for your CV?”',qbn:'ইন্টারভিউয়ার জিজ্ঞেস করেন: “তুমি কি CV-র জন্য AI ব্যবহার করেছ?”',
-     roles:[{en:'Interviewer: ask the question. Then ask “Why?”',bn:'ইন্টারভিউয়ার: প্রশ্নটা করো। তারপর জিজ্ঞেস করো “কেন?”'},{en:'Ayesha: answer with the phrases.',bn:'আয়েশা: নিচের বাক্যগুলো দিয়ে উত্তর দাও।'}],
-     frames:[{en:'I used AI to organise my CV, but I checked every line myself.',bn:'আমি CV সাজাতে AI ব্যবহার করেছি, কিন্তু প্রতিটি লাইন নিজে যাচাই করেছি।'},
-       {en:'The AI said that I led the project. That wasn’t true, so I changed it.',bn:'AI বলেছিল আমি প্রকল্পের নেতা ছিলাম। এটা সত্য ছিল না, তাই বদলেছি।'},
-       {en:'I didn’t share my ID card, because a CV doesn’t need it.',bn:'আমি NID শেয়ার করিনি, কারণ CV-তে এর দরকার নেই।'}]})},
-  {stage:'finish',only:'class',view:'card',
-   say:'Now you. What is one true line for YOUR CV?',bn:'এবার তুমি। তোমার নিজের CV-র জন্য একটা সত্যি লাইন কী?',
-   talk:{big:true,pic:'📝',q:'Tell one true thing for your own CV.',qbn:'তোমার নিজের CV-র জন্য একটা সত্যি কথা বলো।',time:90,
-     frames:[{en:'I am a ___ student at ___.',bn:'আমি ___-এর ___ বর্ষের শিক্ষার্থী।'},{en:'I helped ___.',bn:'আমি ___ করতে সাহায্য করেছি।'},{en:'I can use ___ (basic).',bn:'আমি ___ ব্যবহার করতে পারি (বেসিক)।'}],
-     model:'I am a second-year English student at Rajshahi University. I helped organise a book fair. I can use Excel, at a basic level.'}},
+  {stage:'finish',view:'card',
+   say:'The interview. Can you answer every question — honestly?',bn:'ইন্টারভিউ। প্রতিটা প্রশ্নের উত্তর দিতে পারবে — সৎভাবে?',
+   card:INTERVIEW},
+  {stage:'finish',view:'card',
+   say:'Now you. Write a real prompt for YOUR CV — and take it home.',bn:'এবার তুমি। তোমার নিজের CV-র জন্য একটা আসল প্রম্পট লেখো — আর বাড়ি নিয়ে যাও।',
+   card:MY_CV},
   {d:'none',kick:'Mission 1 · complete',stage:'finish',view:'card',
    say:'She sent her honest CV. And a week later… Mission complete!',bn:'সে তার সৎ CV পাঠিয়েছে। আর এক সপ্তাহ পরে… মিশন সম্পূর্ণ!',
    card:{type:'result',next:['agent','build'],
+     callback:{en:'Two truths and a lie: today the AI told Ayesha five made-up things. Which one was the hardest to catch — and why?',bn:'দুটো সত্য, একটা মিথ্যা: আজ AI আয়েশাকে পাঁচটা বানানো কথা বলেছে। কোনটা ধরা সবচেয়ে কঠিন ছিল — আর কেন?'},
      html:`<div class="verdict"><div class="vh">📧 Internship Desk · Interview invitation</div><div class="vb"><p>Dear Ayesha,</p><p>Thank you for your new CV. It shows your research and volunteer work clearly. <b>You are shortlisted</b> — we would like to interview you on Thursday.</p><p>Best wishes,<br>Internship Desk</p></div></div>`,
      say:{
        del:{en:'I will check the facts. The AI can do the layout.',bn:'তথ্য আমি যাচাই করব। লেআউট AI করতে পারে।'},
