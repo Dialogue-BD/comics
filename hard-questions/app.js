@@ -1,4 +1,5 @@
 import {LEVELS,scoreRound,passAccuracy,adapt,nextRound,shuffle} from './game.mjs?v=2';
+import {drawMotion,sceneAt,cueAt,followerAt} from './motion.mjs?v=4';
 
 const $=id=>document.getElementById(id);
 const STORAGE='dialogue-hard-questions-v1';
@@ -7,6 +8,11 @@ let saved=empty();
 try{const v=JSON.parse(localStorage.getItem(STORAGE));if(v?.voices&&v?.adaptive&&[1,2,3].includes(v.adaptive.level))saved={...empty(),...v};}catch{}
 let voices=[],voice,step=0,round=null,cursor=0,passScore={hits:0,total:0,falseAlarms:0},checked=false,selection=new Set(),heardClip=false,roundStarted=false,playback=null,raf=0;
 const audio=$('audio');
+let audioReady=Promise.resolve(false),audioUrl=null,audioLoadId=0;
+let transcripts={},transcript=null,watchCue=-1,watchScene=-1;
+const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
+let reducedMotion=motionPreference.matches;
+const motionCanvas=$('motion-canvas'),motionContext=motionCanvas.getContext('2d');
 const pool=['tomorrow','computer','money','school','doctor','hospital','family','children','teacher','writing','robot','traffic','weather','birthday','travel','dinner','salary','business','creative','patient','energy','friend','garden','music','job','human','environment','education','control','empathy','replace','trust','internet','healthy','future','quicker','illness','research','company','machine','building','decisions','safety','questions','happy','equal','lives','planet','ideas','parents','holidays','art','science','alone','expensive'];
 function record(){return saved.voices[voice.id] ||= {gist:false,catchDone:false,done:false,reflection:'',score:null};}
 function save(){try{localStorage.setItem(STORAGE,JSON.stringify(saved));}catch{}}
@@ -29,22 +35,38 @@ function drawVoices(){
   });updateJourney();
 }
 function updatePlayLabel(){
-  $('play').textContent=step===1&&checked?$('next-round').textContent:step===1&&heardClip?'Check my words':'▶ Listen';
+  $('play').textContent=step===2?'▶ Watch & listen':step===1&&checked?$('next-round').textContent:step===1&&heardClip?'Check my words':'▶ Listen';
 }
 function stop(){cancelAnimationFrame(raf);audio.pause();playback=null;updatePlayLabel();$('player-status').textContent='Original voice · natural speed';}
 function choose(v){
-  stop();voice=v;round=null;cursor=0;passScore={hits:0,total:0,falseAlarms:0};step=0;audio.src=v.audio;audio.load();
+  stop();voice=v;transcript=transcripts[v.id];round=null;cursor=0;passScore={hits:0,total:0,falseAlarms:0};step=0;
   $('portrait').src=v.portrait;$('portrait').alt=`Portrait of ${v.name}, from Anthropic’s Hard Questions`;
   $('speaker-title').textContent=v.name;$('speaker-role').textContent=v.role;$('speaker-topic').textContent=v.topic;$('duration').textContent=`${Math.round(v.duration)} seconds · original interview`;
   $('support').value=saved.support;$('audio-error').hidden=true;$('complete-feedback').textContent='';drawVoices();drawStep();
+  const loadId=++audioLoadId;
+  $('play').disabled=true;$('replay').disabled=true;$('player-status').textContent='Loading the original recording…';
+  // Blob playback seeks reliably even on static hosts without byte-range support.
+  audioReady=(async()=>{
+    const response=await fetch(v.audio);if(!response.ok)throw Error('audio');
+    const blob=await response.blob();if(loadId!==audioLoadId)return false;
+    if(audioUrl)URL.revokeObjectURL(audioUrl);audioUrl=URL.createObjectURL(blob);
+    await new Promise((resolve,reject)=>{
+      const cleanup=()=>{audio.removeEventListener('loadedmetadata',loaded);audio.removeEventListener('error',failed);};
+      const loaded=()=>{cleanup();resolve();},failed=()=>{cleanup();reject(Error('audio decode'));};
+      audio.addEventListener('loadedmetadata',loaded);audio.addEventListener('error',failed);audio.src=audioUrl;audio.load();
+    });
+    if(loadId!==audioLoadId)return false;
+    $('play').disabled=false;$('replay').disabled=false;$('player-status').textContent='Original voice · natural speed';return true;
+  })().catch(()=>{if(loadId===audioLoadId){$('audio-error').hidden=false;$('player-status').textContent='Recording unavailable · refresh to retry';}return false;});
 }
 function focusTask(){ $('task-title').tabIndex=-1;$('task-title').focus({preventScroll:true}); }
 function drawStep(){
   stop();$('audio-progress').value=0;
-  document.querySelectorAll('[data-step]').forEach(b=>{const s=Number(b.dataset.step);b.disabled=s===1&&!record().gist||s===2&&!record().catchDone;if(s===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
-  $('hear-panel').hidden=step!==0;$('catch-panel').hidden=step!==1;$('talk-panel').hidden=step!==2;
-  $('play').hidden=step===2;$('replay').hidden=step===2;$('audio-progress').hidden=step===2;$('player-status').hidden=step===2;$('support').disabled=step!==1;
-  document.querySelector('.support-label').hidden=step!==1;document.querySelector('.player').hidden=step===2;
+  document.querySelectorAll('[data-step]').forEach(b=>{const s=Number(b.dataset.step);b.disabled=s===1&&!record().gist||s>=2&&!record().catchDone;if(s===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
+  $('hear-panel').hidden=step!==0;$('catch-panel').hidden=step!==1;$('watch-panel').hidden=step!==2;$('talk-panel').hidden=step!==3;
+  $('activity').classList.toggle('watching',step===2);
+  $('play').hidden=step===3;$('replay').hidden=step===3;$('audio-progress').hidden=step>=2;$('player-status').hidden=step===3;$('support').disabled=step!==1;
+  document.querySelector('.support-label').hidden=step!==1;document.querySelector('.player').hidden=step===3;
   if(step===0){
     $('step-label').textContent='Listen for the main idea';$('task-title').textContent='What matters to this person?';$('task-detail').textContent='Hear the whole recording first. Then choose the idea you heard.';
     $('gist-question').textContent=voice.gist.question;$('gist-options').replaceChildren();$('gist-feedback').textContent=record().gist?'Main idea found. Replay or move to the word challenge.':'The choices unlock after you listen.';
@@ -60,6 +82,10 @@ function drawStep(){
   }else if(step===1){
     $('step-label').textContent='Listen for the language';$('task-title').textContent='Tap the words you hear.';$('task-detail').textContent='Listen and tap, check your words, then continue to the next section. Replay is there whenever you need it.';
     if(!round)prepareRound();
+  }else if(step===2){
+    $('step-label').textContent='Connect sound, words and meaning';$('task-title').textContent='See the idea. Hear every word.';
+    $('task-detail').textContent='Follow the highlighted words and animated ideas. Tap a word or phrase to hear it again.';
+    prepareWatch();
   }else{
     $('step-label').textContent='From listening to speaking';$('task-title').textContent='Their question. Your perspective.';$('task-detail').textContent='Take turns. Share an idea, give a reason, and ask a follow-up question.';
     $('talk-question').textContent=voice.discussion.question;$('talk-context').textContent=voice.discussion.context;
@@ -88,6 +114,7 @@ function prepareRound(){
 }
 function tick(){
   if(!playback||audio.paused)return;
+  if(playback.mode==='watch')renderWatch(audio.currentTime);
   $('audio-progress').value=Math.max(0,Math.min(1,(audio.currentTime-playback.start)/(playback.end-playback.start)));
   if(playback.mode==='help')document.querySelectorAll('.definition').forEach(b=>b.classList.toggle('active',audio.currentTime>=Number(b.dataset.start)&&audio.currentTime<=Number(b.dataset.end)+.25));
   if(audio.currentTime>=playback.end-.035){finishAudio();return;}
@@ -95,21 +122,23 @@ function tick(){
 }
 function finishAudio(){
   if(!playback)return;const mode=playback.mode;stop();$('audio-progress').value=1;$('player-status').textContent='Finished · replay any time';
+  if(mode==='watch')renderWatch(voice.duration);
   if(mode==='whole'){
     if(!record().gist){document.querySelectorAll('#gist-options button').forEach(b=>b.disabled=false);$('gist-feedback').textContent='What idea did you hear? Choose below.';}
   }else if(mode==='catch'){heardClip=true;$('check').disabled=false;$('catch-feedback').textContent='Choose only the words you heard, then check. You can replay first.';}
   updatePlayLabel();
   document.querySelectorAll('.definition.active').forEach(b=>b.classList.remove('active'));
 }
-async function play(mode){
+async function play(mode,start=0){
+  const chosen=voice;if(!await audioReady||chosen!==voice)return;
   stop();$('audio-error').hidden=true;
-  const span=mode==='whole'?{start:0,end:voice.duration}:round;
+  const span=mode==='whole'?{start:0,end:voice.duration}:mode==='watch'?{start,end:voice.duration}:round;
   if(!span)return;
   playback={start:span.start,end:span.end,mode};
   const token=playback;
   try{
     audio.currentTime=span.start;audio.playbackRate=1;await audio.play();if(playback!==token)return;
-    $('play').textContent='Ⅱ Pause';$('player-status').textContent=mode==='whole'?'Listening · natural speed':'Listening to this clip · natural speed';
+    $('play').textContent='Ⅱ Pause';$('player-status').textContent=mode==='watch'?'Watching & listening · natural speed':mode==='whole'?'Listening · natural speed':'Listening to this clip · natural speed';
     if(mode==='catch'){roundStarted=true;document.querySelectorAll('.chip').forEach(b=>b.disabled=false);}
     tick();
   }catch{if(playback===token){stop();$('audio-error').hidden=false;}}
@@ -124,9 +153,9 @@ $('play').onclick=async()=>{
   else if(playback){try{await audio.play();$('play').textContent='Ⅱ Pause';tick();}catch{stop();$('audio-error').hidden=false;}}
   else if(step===1&&checked)$('next-round').click();
   else if(step===1&&heardClip)$('check').click();
-  else play(step===0?'whole':'catch');
+  else play(step===0?'whole':step===2?'watch':'catch');
 };
-$('replay').onclick=()=>play(step===0?'whole':checked?'help':'catch');
+$('replay').onclick=()=>play(step===0?'whole':step===2?'watch':checked?'help':'catch');
 audio.onended=finishAudio;audio.onerror=()=>{stop();$('audio-error').hidden=false;};
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&playback&&!audio.paused){audio.pause();cancelAnimationFrame(raf);$('play').textContent='▶ Resume';$('player-status').textContent='Paused';}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('guide-dialog').open)stop();});
@@ -147,7 +176,7 @@ $('check').onclick=()=>{
   $('definitions').replaceChildren(...round.targets.map(t=>{const d=node('div',undefined,'definition');d.dataset.start=t.start;d.dataset.end=t.end;d.append(node('b',t.word),node('p',t.meaning));return d;}));
   $('round-help').hidden=false;$('check').hidden=true;$('next-round').hidden=false;
   const more=voice.keywords.some(w=>w.start>=round.end-.04);
-  $('next-round').textContent=more?'Next clip →':'Think together →';updatePlayLabel();save();
+  $('next-round').textContent=more?'Next clip →':'Watch the meaning →';updatePlayLabel();save();
 };
 $('help-play').onclick=()=>play('help');
 $('next-round').onclick=()=>{stop();cursor=round.end;if(!voice.keywords.some(w=>w.start>=cursor-.04)){finishCatch();return;}round=null;prepareRound();$('play').focus();};
@@ -161,7 +190,59 @@ $('complete').onclick=()=>{record().done=true;save();updateJourney();$('complete
 $('projector').onclick=()=>{const enabled=document.body.classList.toggle('projector');$('projector').setAttribute('aria-pressed',String(enabled));};
 $('guide').onclick=()=>{if(playback&&!audio.paused){audio.pause();cancelAnimationFrame(raf);$('play').textContent='▶ Resume';}$('guide-dialog').showModal();};
 document.querySelectorAll('.close,.close-guide').forEach(b=>b.onclick=()=>$('guide-dialog').close());
+function prepareWatch(){
+  watchCue=-1;watchScene=-1;$('watch-seek').max=voice.duration;$('watch-seek').value=0;
+  $('transcript-details').open=false;$('word-note').textContent='Tap a word for its meaning and hear it in context.';
+  $('scene-chapters').replaceChildren(...transcript.scenes.map((scene,i)=>{
+    const b=node('button',undefined,'scene-chapter');b.append(node('small',`0${i+1}`),node('span',scene.title));b.onclick=()=>play('watch',scene.start);return b;
+  }));
+  $('full-transcript').replaceChildren(...transcript.cues.map(c=>{
+    const b=node('button',c.text);b.setAttribute('aria-label',`Listen from ${timeLabel(c.start)}: ${c.text}`);b.onclick=()=>play('watch',c.start);return b;
+  }));
+  $('watch-words').replaceChildren(...[...new Map(voice.keywords.map(t=>[t.word,t])).values()].map(t=>{
+    const b=node('button',t.word);b.onclick=()=>{$('word-note').textContent=`${t.word}: ${t.meaning}`;const cue=transcript.cues.find(c=>t.start>=c.start&&t.start<=c.end)||transcript.cues.find(c=>c.start>=t.start);play('watch',cue?.start??t.start);};return b;
+  }));
+  $('download-srt').href=`subtitles/${voice.id}.srt`;$('download-film').href=`films/${voice.id}.mp4?v=4`;
+  $('motion-toggle').setAttribute('aria-pressed',String(reducedMotion));renderWatch(0);
+}
+function timeLabel(seconds){return `${Math.floor(seconds/60)}:${String(Math.floor(seconds%60)).padStart(2,'0')}`;}
+function renderWatch(t){
+  if(!transcript)return;
+  drawMotion(motionContext,transcript,t,{width:motionCanvas.width,height:motionCanvas.height,reduced:reducedMotion,poster:t===0&&!playback});
+  const {cue,index}=cueAt(transcript,t),scene=sceneAt(transcript,t),si=transcript.scenes.indexOf(scene);
+  if(index!==watchCue){
+    watchCue=index;$('karaoke-words').replaceChildren();
+    for(let i=cue.first;i<=cue.last;i++){
+      const w=transcript.words[i],b=node('button',w.w);b.dataset.index=i;b.setAttribute('aria-label',`Hear “${w.w}” in this phrase`);b.onclick=()=>play('watch',Math.max(cue.start,w.s-.18));$('karaoke-words').append(b);
+    }
+    [...$('full-transcript').children].forEach((b,i)=>{b.classList.toggle('current',i===index);if(i===index)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});
+  }
+  const follower=followerAt(transcript,t);
+  let activeWord;
+  $('karaoke-line').querySelectorAll('button').forEach(b=>{
+    const wi=Number(b.dataset.index),w=transcript.words[wi],active=follower.active&&wi===follower.index;
+    b.classList.toggle('spoken',t>=w.s);b.classList.toggle('current',active);
+    if(active)activeWord=b;
+    if(active)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');
+  });
+  const glide=$('word-glide');
+  if(activeWord){const a=activeWord.getBoundingClientRect(),b=$('karaoke-line').getBoundingClientRect();
+    glide.style.width=`${a.width}px`;glide.style.height=`${a.height}px`;glide.style.transform=`translate3d(${a.left-b.left}px,${a.top-b.top}px,0)`;
+  }
+  glide.classList.toggle('on',!!activeWord);$('karaoke-line').classList.toggle('motion-reduced',reducedMotion);
+  if(si!==watchScene){watchScene=si;$('scene-meaning').textContent=scene.meaning;motionCanvas.setAttribute('aria-label',scene.meaning);
+    [...$('scene-chapters').children].forEach((b,i)=>{b.classList.toggle('current',i===si);if(i===si)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');});
+  }
+  $('watch-seek').value=t;$('watch-seek').setAttribute('aria-valuetext',`${timeLabel(t)} of ${timeLabel(voice.duration)}`);$('watch-time').textContent=`${timeLabel(t)} / ${timeLabel(voice.duration)}`;
+}
+$('watch-seek').oninput=()=>{if(playback){audio.pause();cancelAnimationFrame(raf);}renderWatch(Number($('watch-seek').value));};
+$('watch-seek').onchange=()=>play('watch',Math.min(voice.duration-.05,Number($('watch-seek').value)));
+$('motion-toggle').onclick=()=>{reducedMotion=!reducedMotion;$('motion-toggle').setAttribute('aria-pressed',String(reducedMotion));renderWatch(Number($('watch-seek').value));};
+motionPreference.addEventListener('change',e=>{reducedMotion=e.matches;$('motion-toggle').setAttribute('aria-pressed',String(reducedMotion));if(step===2)renderWatch(Number($('watch-seek').value));});
+new ResizeObserver(()=>{if(step===2)renderWatch(Number($('watch-seek').value));}).observe($('karaoke-line'));
+$('to-talk').onclick=()=>{step=3;drawStep();focusTask();};
 $('reset').onclick=()=>{if(!confirm('Clear listening progress and notes on this device?'))return;stop();saved=empty();save();choose(voices[0]);};
 try{
-  const response=await fetch('voices.json');if(!response.ok)throw Error('voices');voices=await response.json();choose(voices[0]);
+  const [response,textResponse]=await Promise.all([fetch('voices.json'),fetch('transcripts.json')]);if(!response.ok||!textResponse.ok)throw Error('voices');
+  voices=await response.json();transcripts=await textResponse.json();await document.fonts.ready;choose(voices[0]);
 }catch{$('task-title').textContent='The activity couldn’t load.';$('task-detail').textContent='Open this page through the activity website or local preview server, then refresh.';$('play').disabled=true;$('replay').disabled=true;}

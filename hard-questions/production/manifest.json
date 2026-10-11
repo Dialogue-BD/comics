@@ -1,0 +1,366 @@
+{
+  "activity": "AI Dreams & Dictation",
+  "version": "karaoke-5",
+  "source": "https://claude.com/hard-questions",
+  "narration": "Nine untouched original interview recordings; no generated voice or time stretching",
+  "alignment": "Cached local faster-whisper small.en word timestamps; phrase/scene grouping follows real word starts",
+  "editorial_changes": [
+    "Scott: ASR Well, changed to Will, corroborated by the published source question",
+    "Robert: five -year -old tokens joined as five-year-old, same timed span"
+  ],
+  "renderer": "Shared deterministic Canvas renderer; moving objects, mild camera approach, single solid gold word follower",
+  "export": {
+    "width": 1280,
+    "height": 720,
+    "fps": 24,
+    "video": "H.264, yuv420p, limited-range BT.709",
+    "audio": "AAC stereo, loudness normalized, natural speed",
+    "music": "none"
+  },
+  "acceptance": {
+    "automated_timing_and_game_contracts": "passed",
+    "all_nine_full_decodes_and_media_measurements": "passed",
+    "all_27_scene_keyframes": "reviewed visually",
+    "live_flow_and_phrase_seek": "passed; original MP3 buffer fixes static-server seeking",
+    "phone_and_landscape": "390 \u00d7 844 and 844 \u00d7 390 iframe layouts checked; no horizontal overflow",
+    "word_follower": "one persistent solid gold element; 180 ms glide; holds ordinary pauses; reduced-motion override",
+    "complete_perceptual_listen_to_every_word": "not_evaluated",
+    "complete_perceptual_playback_of_every_export": "not_evaluated",
+    "all_nine_browser_video_decodes_and_seeks": "passed; metadata 1280 \u00d7 720 and full seekable duration in the browser for each film"
+  },
+  "films": [
+    {
+      "id": "kamille",
+      "duration_seconds": 19.4573125,
+      "words": 67,
+      "scenes": [
+        {
+          "start": 0.0,
+          "end": 6.7,
+          "kind": "diagnosis",
+          "title": "Finding answers",
+          "meaning": "Medical records can be hard to understand."
+        },
+        {
+          "start": 6.7,
+          "end": 12.0,
+          "kind": "waiting",
+          "title": "Six years",
+          "meaning": "Kamille waited a long time for a diagnosis."
+        },
+        {
+          "start": 12.0,
+          "end": 19.4573125,
+          "kind": "diagnosis",
+          "title": "Could answers come sooner?",
+          "meaning": "She wonders whether AI could help doctors find answers sooner."
+        }
+      ],
+      "original_audio": "audio/hq-kamille.mp3",
+      "original_audio_sha256": "13b463bc4530a575a7c926b2fcc31ba24f889173e6749dd5ba4a48607ae44bea",
+      "film": "films/kamille.mp4",
+      "film_sha256": "74e94fea580aa5de089ecd4a0404930f930fa708878dd28a9e6b365b49b082be",
+      "captions": "subtitles/kamille.srt",
+      "measurement_report": "production/kamille-media-check.json",
+      "all_media_checks_passed": true,
+      "loudness_lufs": -16.03,
+      "true_peak_dbtp": -2.36
+    },
+    {
+      "id": "robert",
+      "duration_seconds": 19.8204375,
+      "words": 46,
+      "scenes": [
+        {
+          "start": 0.0,
+          "end": 5.84,
+          "kind": "family",
+          "title": "A father\u2019s question",
+          "meaning": "Robert is raising a young son."
+        },
+        {
+          "start": 5.84,
+          "end": 12.76,
+          "kind": "control",
+          "title": "Who is in control?",
+          "meaning": "He asks who should oversee how AI is used."
+        },
+        {
+          "start": 12.76,
+          "end": 19.8204375,
+          "kind": "infrastructure",
+          "title": "What does AI need?",
+          "meaning": "He wants openness about data centers and local impact."
+        }
+      ],
+      "original_audio": "audio/hq-robert.mp3",
+      "original_audio_sha256": "bbab872fcdb9d1dce205b37f635c6c213bf94cad8019a13d4a75a525cfe97501",
+      "film": "films/robert.mp4",
+      "film_sha256": "4ca45642c9527cdd2b2e8033402b4bd5495a093d338d0eb17f62147222c36c4f",
+      "captions": "subtitles/robert.srt",
+      "measurement_report": "production/robert-media-check.json",
+      "all_media_checks_passed": true,
+      "loudness_lufs": -16.47,
+      "true_peak_dbtp": -2.81
+    },
+    {
+      "id": "larissa",
+      "duration_seconds": 31.96325,
+      "words": 89,
+      "scenes": [
+        {
+          "start": 0.0,
+          "end": 5.82,
+          "kind": "compass",
+          "title": "What is the mission?",
+          "meaning": "She asks what drives AI companies."
+        },
+        {
+          "start": 5.82,
+          "end": 18.76,
+          "kind": "thinking",
+          "title": "Keep thinking",
+          "meaning": "She wants her son to develop his own thinking skills."
+        },
+        {
+          "start": 18.76,
+          "end": 31.96325,
+          "kind": "writing",
+          "title": "Partner or replacement?",
+          "meaning": "She wonders whether AI can support her writing and ideas."
+        }
+      ],
+      "original_audio": "audio/hq-larissa.mp3",
+      "original_audio_sha256": "ac759307e39b010a7ca0f474d364b056fcc65d8040bd7e89c5b979090c608a32",
+      "film": "films/larissa.mp4",
+      "film_sha256": "f0356c50dadef16324206c9f8754e5530ef52999f21df97413ee6d77fde30f60",
+      "captions": "subtitles/larissa.srt",
+      "measurement_report": "production/larissa-media-check.json",
+      "all_media_checks_passed": true,
+      "loudness_lufs": -15.99,
+      "true_peak_dbtp": -1.74
+    },
+    {
+      "id": "daniel",
+      "duration_seconds": 27.485125,
+      "words": 75,
+      "scenes": [
+        {
+          "start": 0.0,
+          "end": 11.84,
+          "kind": "work",
+          "title": "What stays human?",
+          "meaning": "He asks which parts of work should stay human."
+        },
+        {
+          "start": 11.84,
+          "end": 21.96,
+          "kind": "research",
+          "title": "A future in physics",
+          "meaning": "He worries about his daughter\u2019s future research work."
+        },
+        {
+          "start": 21.96,
+          "end": 27.485125,
+          "kind": "tasks",
+          "title": "Less tedious work?",
+          "meaning": "He asks whether AI could take over unwanted repetitive jobs."
+        }
+      ],
+      "original_audio": "audio/hq-daniel.mp3",
+      "original_audio_sha256": "ec587166a78ab9df75161c9b20afa65b0b96e0550781d38456793c13e9dfd161",
+      "film": "films/daniel.mp4",
+      "film_sha256": "6094ad6693b952a49a72a8c920e3c86d60ee29691b7a4932e61b0b3adfa2c8c1",
+      "captions": "subtitles/daniel.srt",
+      "measurement_report": "production/daniel-media-check.json",
+      "all_media_checks_passed": true,
+      "loudness_lufs": -16.35,
+      "true_peak_dbtp": -2.47
+    },
+    {
+      "id": "scott",
+      "duration_seconds": 19.68,
+      "words": 65,
+      "scenes": [
+        {
+          "start": 0.0,
+          "end": 8.66,
+          "kind": "growing",
+          "title": "Growing up with AI",
+          "meaning": "His children will grow up in a world with AI."
+        },
+        {
+          "start": 8.66,
+          "end": 17.28,
+          "kind": "creativity",
+          "title": "Room to create",
+          "meaning": "He wonders how AI could affect children\u2019s imagination."
+        },
+        {
+          "start": 17.28,
+          "end": 19.68,
+          "kind": "time",
+          "title": "More time together?",
+          "meaning": "He hopes for more time with his daughters."
+        }
+      ],
+      "original_audio": "audio/hq-scott.mp3",
+      "original_audio_sha256": "039e6476ba38ad24fafcf4896bc1163ded430427a72600b3c8c4f721015dcad9",
+      "film": "films/scott.mp4",
+      "film_sha256": "aef6c42ebd3955299856f7c13c3cb8e88fb3002376f6f9b2cbfac8ba06fed967",
+      "captions": "subtitles/scott.srt",
+      "measurement_report": "production/scott-media-check.json",
+      "all_media_checks_passed": true,
+      "loudness_lufs": -16.69,
+      "true_peak_dbtp": -2.41
+    },
+    {
+      "id": "tiffany",
+      "duration_seconds": 22.426125,
+      "words": 48,
+      "scenes": [
+        {
+          "start": 0.0,
+          "end": 7.32,
+          "kind": "isolation",
+          "title": "Stay connected",
+          "meaning": "She worries that technology could isolate people."
+        },
+        {
+          "start": 7.32,
+          "end": 13.2,
+          "kind": "empathy",
+          "title": "Our shared humanity",
+          "meaning": "She wants people to keep caring for one another."
+        },
+        {
+          "start": 13.2,
+          "end": 22.426125,
+          "kind": "access",
+          "title": "A place for everyone",
+          "meaning": "She asks whether everyone can access the benefits."
+        }
+      ],
+      "original_audio": "audio/hq-tiffany.mp3",
+      "original_audio_sha256": "25da11ab0a334ed3e682c93bdd8224058c95534a0aea55144707656f355e609c",
+      "film": "films/tiffany.mp4",
+      "film_sha256": "ba0325d23705e5d476694d4d935a971cc70e13675e7d57e8903a071875041884",
+      "captions": "subtitles/tiffany.srt",
+      "measurement_report": "production/tiffany-media-check.json",
+      "all_media_checks_passed": true,
+      "loudness_lufs": -16.36,
+      "true_peak_dbtp": -2.66
+    },
+    {
+      "id": "danielle",
+      "duration_seconds": 27.984,
+      "words": 94,
+      "scenes": [
+        {
+          "start": 0.0,
+          "end": 14.16,
+          "kind": "empathy",
+          "title": "The human part",
+          "meaning": "She values empathy and the beautiful parts of life."
+        },
+        {
+          "start": 14.16,
+          "end": 22.46,
+          "kind": "family",
+          "title": "Lives that feel fulfilled",
+          "meaning": "She hopes AI will help loved ones and future generations."
+        },
+        {
+          "start": 22.46,
+          "end": 27.984,
+          "kind": "connection",
+          "title": "Could AI bring us closer?",
+          "meaning": "She wonders whether AI could help humans show more empathy."
+        }
+      ],
+      "original_audio": "audio/hq-danielle.mp3",
+      "original_audio_sha256": "50a9913f397d1f8573bd06c6d912705ef919a89cdfebe13e929545800d87e674",
+      "film": "films/danielle.mp4",
+      "film_sha256": "37bd23d387291b4e7cdd8254d1ffe57ba1fb9d49c5870d0e25d41f6d4a65cc6a",
+      "captions": "subtitles/danielle.srt",
+      "measurement_report": "production/danielle-media-check.json",
+      "all_media_checks_passed": true,
+      "loudness_lufs": -15.83,
+      "true_peak_dbtp": -2.51
+    },
+    {
+      "id": "gwen",
+      "duration_seconds": 16.8,
+      "words": 41,
+      "scenes": [
+        {
+          "start": 0.0,
+          "end": 5.26,
+          "kind": "environment",
+          "title": "The cost to our world",
+          "meaning": "She worries about environmental and community harm."
+        },
+        {
+          "start": 5.26,
+          "end": 12.48,
+          "kind": "balance",
+          "title": "Finding a balance",
+          "meaning": "She asks how technology and community safety can coexist."
+        },
+        {
+          "start": 12.48,
+          "end": 16.8,
+          "kind": "nature",
+          "title": "Help instead of harm?",
+          "meaning": "She wonders whether AI could help the environment."
+        }
+      ],
+      "original_audio": "audio/hq-gwen.mp3",
+      "original_audio_sha256": "d5f5245cb8f39207de9218614ceb9b472a6095e105301d0c68a6c9dcc0a7a31a",
+      "film": "films/gwen.mp4",
+      "film_sha256": "accde00efb95a27c2da2c379a51d3dc16d1fbdac121c5145c71ca20913f8a4f2",
+      "captions": "subtitles/gwen.srt",
+      "measurement_report": "production/gwen-media-check.json",
+      "all_media_checks_passed": true,
+      "loudness_lufs": -16.65,
+      "true_peak_dbtp": -3.72
+    },
+    {
+      "id": "sarah",
+      "duration_seconds": 19.3141875,
+      "words": 63,
+      "scenes": [
+        {
+          "start": 0.0,
+          "end": 8.3,
+          "kind": "independence",
+          "title": "Growing into independence",
+          "meaning": "She hopes tools can support her son as he becomes an adult."
+        },
+        {
+          "start": 8.3,
+          "end": 13.12,
+          "kind": "path",
+          "title": "A life of his own",
+          "meaning": "She asks how AI could support an independent life."
+        },
+        {
+          "start": 13.12,
+          "end": 19.3141875,
+          "kind": "support",
+          "title": "Support in everyday life",
+          "meaning": "She wonders whether AI could help her as a teacher and parent."
+        }
+      ],
+      "original_audio": "audio/hq-sarah.mp3",
+      "original_audio_sha256": "4cf2fdd7fc2eefe825502ab186baa5e1f19ba22153248f541de295a4e97141e8",
+      "film": "films/sarah.mp4",
+      "film_sha256": "b4418f64c126ecc9e747711e8bd85233782e8f4dd9f25926d69fa40384abe344",
+      "captions": "subtitles/sarah.srt",
+      "measurement_report": "production/sarah-media-check.json",
+      "all_media_checks_passed": true,
+      "loudness_lufs": -16.83,
+      "true_peak_dbtp": -2.93
+    }
+  ]
+}
