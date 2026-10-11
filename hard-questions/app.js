@@ -39,7 +39,7 @@ function updatePlayLabel(){
 }
 function stop(){cancelAnimationFrame(raf);audio.pause();playback=null;updatePlayLabel();$('player-status').textContent='Original voice · natural speed';}
 function choose(v){
-  stop();voice=v;transcript=transcripts[v.id];round=null;cursor=0;passScore={hits:0,total:0,falseAlarms:0};step=0;
+  stop();voice=v;transcript=transcripts[v.id];round=null;cursor=0;passScore={hits:0,total:0,falseAlarms:0};
   $('portrait').src=v.portrait;$('portrait').alt=`Portrait of ${v.name}, from Anthropic’s Hard Questions`;
   $('speaker-title').textContent=v.name;$('speaker-role').textContent=v.role;$('speaker-topic').textContent=v.topic;$('duration').textContent=`${Math.round(v.duration)} seconds · original interview`;
   $('support').value=saved.support;$('audio-error').hidden=true;$('complete-feedback').textContent='';drawVoices();drawStep();
@@ -62,23 +62,23 @@ function choose(v){
 function focusTask(){ $('task-title').tabIndex=-1;$('task-title').focus({preventScroll:true}); }
 function drawStep(){
   stop();$('audio-progress').value=0;
-  document.querySelectorAll('[data-step]').forEach(b=>{const s=Number(b.dataset.step);b.disabled=s===1&&!record().gist||s>=2&&!record().catchDone;if(s===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
+  document.querySelectorAll('[data-step]').forEach(b=>{const s=Number(b.dataset.step);b.disabled=false;if(s===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
   $('hear-panel').hidden=step!==0;$('catch-panel').hidden=step!==1;$('watch-panel').hidden=step!==2;$('talk-panel').hidden=step!==3;
   $('activity').classList.toggle('watching',step===2);
   $('play').hidden=step===3;$('replay').hidden=step===3;$('audio-progress').hidden=step>=2;$('player-status').hidden=step===3;$('support').disabled=step!==1;
   document.querySelector('.support-label').hidden=step!==1;document.querySelector('.player').hidden=step===3;
   if(step===0){
-    $('step-label').textContent='Listen for the main idea';$('task-title').textContent='What matters to this person?';$('task-detail').textContent='Hear the whole recording first. Then choose the idea you heard.';
-    $('gist-question').textContent=voice.gist.question;$('gist-options').replaceChildren();$('gist-feedback').textContent=record().gist?'Main idea found. Replay or move to the word challenge.':'The choices unlock after you listen.';
+    $('step-label').textContent='Listen for the main idea';$('task-title').textContent='What matters to this person?';$('task-detail').textContent='Listen and choose the main idea. You can visit any step whenever you like.';
+    $('gist-question').textContent=voice.gist.question;$('gist-options').replaceChildren();$('gist-feedback').textContent=record().gist?'Main idea found. Replay or move to the word challenge.':'Choose the idea you hear. Replay whenever you like.';
     const opts=shuffle(voice.gist.options.map((text,i)=>({text,correct:i===0})));
     $('warmup-words').replaceChildren(...[...new Map(voice.keywords.map(t=>[t.word,t])).values()].slice(0,3).map(t=>{const d=node('div',undefined,'definition');d.append(node('b',t.word),node('p',t.meaning));return d;}));
     opts.forEach(opt=>{
-      const b=node('button',opt.text);b.disabled=!record().gist;
+      const b=node('button',opt.text);
       b.onclick=()=>{
-        if(opt.correct){b.classList.add('correct');record().gist=true;save();$('gist-feedback').textContent=voice.gist.feedback;$('to-catch').hidden=false;document.querySelector('[data-step="1"]').disabled=false;document.querySelectorAll('#gist-options button').forEach(x=>x.disabled=true);}
-        else{b.classList.add('wrong');b.textContent=`${opt.text} · Try another idea`;$('gist-feedback').textContent='Listen again if you need to. What is their main concern?';b.disabled=true;}
+        if(opt.correct){b.classList.add('correct');record().gist=true;save();$('gist-feedback').textContent=voice.gist.feedback;$('to-catch').hidden=false;}
+        else{b.classList.add('wrong');b.textContent=`${opt.text} · Try another idea`;$('gist-feedback').textContent='Listen again if you need to. What is their main concern?';}
       };$('gist-options').append(b);
-    });$('to-catch').hidden=!record().gist;
+    });$('to-catch').hidden=false;
   }else if(step===1){
     $('step-label').textContent='Listen for the language';$('task-title').textContent='Tap the words you hear.';$('task-detail').textContent='Listen and tap, check your words, then continue to the next section. Replay is there whenever you need it.';
     if(!round)prepareRound();
@@ -106,11 +106,15 @@ function prepareRound(){
   $('challenge-label').textContent=LEVELS[round.level].name+(saved.support==='auto'?' · adaptive':'');
   $('chips').replaceChildren();
   round.choices.forEach(word=>{
-    const b=node('button',word,'chip');b.dataset.word=word;b.setAttribute('aria-pressed','false');b.disabled=true;
+    const b=node('button',word,'chip');b.dataset.word=word;b.setAttribute('aria-pressed','false');
     b.onclick=()=>{if(checked)return;if(selection.has(word))selection.delete(word);else selection.add(word);b.setAttribute('aria-pressed',String(selection.has(word)));};$('chips').append(b);
   });
-  $('check').disabled=true;$('check').hidden=false;$('next-round').hidden=true;$('round-help').hidden=true;$('catch-feedback').textContent='Press Listen to start this clip.';
-  updatePlayLabel();
+  $('check').disabled=false;$('check').hidden=false;$('next-round').hidden=false;$('round-help').hidden=false;$('round-help').open=false;$('catch-feedback').textContent='Press Listen to start this clip.';
+  $('next-round').textContent=voice.keywords.some(w=>w.start>=round.end-.04)?'Next clip →':'Watch the meaning →';
+  drawRoundWords();updatePlayLabel();
+}
+function drawRoundWords(){
+  $('definitions').replaceChildren(...round.targets.map(t=>{const d=node('div',undefined,'definition');d.dataset.start=t.start;d.dataset.end=t.end;d.append(node('b',t.word),node('p',t.meaning));return d;}));
 }
 function tick(){
   if(!playback||audio.paused)return;
@@ -162,7 +166,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('guide-dialog').
 document.querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{step=Number(b.dataset.step);drawStep();focusTask();});
 $('to-catch').onclick=()=>{step=1;drawStep();focusTask();};
 $('check').onclick=()=>{
-  if(checked||!heardClip)return;stop();checked=true;
+  if(checked||!round||step!==1)return;stop();checked=true;
   const result=scoreRound(round.targets.map(t=>t.word),[...selection]);
   passScore.hits+=result.hits;passScore.total+=result.total;passScore.falseAlarms+=result.falseAlarms;
   const before=saved.adaptive.level;
@@ -173,7 +177,7 @@ $('check').onclick=()=>{
   $('catch-feedback').textContent=feedback;
   const correct=new Set(round.targets.map(t=>t.word));
   document.querySelectorAll('.chip').forEach(b=>{b.disabled=true;const w=b.dataset.word;let label='';if(correct.has(w)){b.classList.add(selection.has(w)?'hit':'miss');label=selection.has(w)?'✓ Caught':'○ Listen for this';}else if(selection.has(w)){b.classList.add('false');label='× Not heard';}else label='Not heard';b.append(node('small',label));});
-  $('definitions').replaceChildren(...round.targets.map(t=>{const d=node('div',undefined,'definition');d.dataset.start=t.start;d.dataset.end=t.end;d.append(node('b',t.word),node('p',t.meaning));return d;}));
+  drawRoundWords();$('round-help').open=true;
   $('round-help').hidden=false;$('check').hidden=true;$('next-round').hidden=false;
   const more=voice.keywords.some(w=>w.start>=round.end-.04);
   $('next-round').textContent=more?'Next clip →':'Watch the meaning →';updatePlayLabel();save();
