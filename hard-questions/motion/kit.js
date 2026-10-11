@@ -1,4 +1,4 @@
-/* AI Dreams & Dictation — illustration kit.
+/* AI: Hearing Human Voices on Hard Questions — illustration kit.
    Every picture in the motion graphics is built from these SVG pieces, so the
    nine voices share one visual language: the same people, the same AI chip,
    the same homes, papers, hearts and question marks. Learners decode a picture

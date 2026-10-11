@@ -1,4 +1,4 @@
-/* AI Dreams & Dictation — polish layer over styles.css */
+/* AI: Hearing Human Voices on Hard Questions — polish layer over styles.css */
 :root{--spark:#b9924f}
 .bt-word{display:inline-block;white-space:nowrap}
 .bt-char{display:inline-block;will-change:transform,filter,opacity}

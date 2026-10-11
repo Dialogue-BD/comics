@@ -1,4 +1,4 @@
-/* AI Dreams & Dictation — interface polish.
+/* AI: Hearing Human Voices on Hard Questions — interface polish.
    Smooth scrolling (Lenis), entrance and step transitions (GSAP), and three
    small effects ported from React Bits (reactbits.dev, MIT + Commons Clause)
    to vanilla JS so the page stays build-free: BlurText for the title,

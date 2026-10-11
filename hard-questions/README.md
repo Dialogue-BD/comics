@@ -1,4 +1,6 @@
-# AI Dreams & Dictation
+# AI: Hearing Human Voices on Hard Questions
+
+An exercise in AI fluency, listening comprehension and critical thinking.
 
 An independent, mixed-level English listening activity based on the nine public recordings at [Anthropic’s Hard Questions](https://claude.com/hard-questions).
 
