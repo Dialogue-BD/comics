@@ -125,3 +125,6 @@ Framework: AI Fluency (4Ds) by Rick Dakan, Joseph Feller and Anthropic, CC BY-NC
 - Gear celebration clicks are driven by the audio clock (`FX.gearTurned`), so every tooth turns exactly when its click is heard. Mission-complete gear symbols sit inside a `.symg` wrapper so the pop animation no longer overrides their centring.
 - The progress-bar segments at the top are buttons (`data-p="seg"`): tap one to jump to the start of that section.
 - The prompt box scrolls, and its colour overlay scrolls with it.
+
+### Recording with the Gemini API (no browser, no cutting)
+`tools/gemini_tts.py` records every missing line directly: one API request per line, saved as `audio/<key>.mp3` and added to `audio/manifest.json`. Setup: `pip3 install google-genai`, `export GEMINI_API_KEY=…` (or save the key alone in `~/.gemini_key`; never commit it). Then, in this folder: `node tools/voice-script.js` (refreshes `audio/lines.json` and `audio/voices.json`), `python3 tools/gemini_tts.py --audition` (one sample per voice into `audio/_audition/`), and `python3 tools/gemini_tts.py` (records all missing lines; re-run to resume if the free quota runs out). Voices: `--coach NAME --ayesha NAME`.
