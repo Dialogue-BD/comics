@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#103d21">
+  <title>AI Dreams &amp; Dictation · Dialogue</title>
+  <link rel="icon" href="../favicon.png">
+  <link rel="stylesheet" href="../dialogue-brand.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="masthead"><a class="brand-link" href="../" aria-label="Dialogue — all activities"><img src="../brand/dialogue-logo.png" alt="Dialogue English &amp; Skills Center"></a><div><button id="projector" aria-pressed="false">Projector view</button><button id="guide">Activity guide</button></div></header>
+  <main>
+    <section class="intro" aria-labelledby="title"><div><p class="eyebrow">Real voices. Big questions.</p><h1 id="title">AI Dreams<br><em>&amp; Dictation</em></h1><p class="lead">Nine people share their hopes and worries about AI.<br>Catch their words. Understand their view. Add yours.</p></div><div class="session-card"><span class="eyebrow">Your listening journey</span><strong id="journey">0 of 9 voices explored</strong><div class="journey-track"><i id="journey-fill"></i></div><p id="journey-detail">Choose a voice to begin.</p></div></section>
+    <section aria-label="Choose a speaker"><div class="section-line"><h2>Whose question will you hear?</h2><span>Start anywhere</span></div><div id="voices" class="voice-grid"></div></section>
+    <section id="activity" class="activity" aria-labelledby="speaker-title">
+      <aside class="portrait-panel"><img id="portrait" alt=""><div class="portrait-caption"><p class="eyebrow" id="speaker-topic"></p><h2 id="speaker-title"></h2><p id="speaker-role"></p><span class="duration" id="duration"></span></div></aside>
+      <div class="workspace"><nav class="steps" aria-label="Listening steps"><button data-step="0" aria-current="step"><span>01</span> Hear the person</button><button data-step="1"><span>02</span> Catch the words</button><button data-step="2"><span>03</span> Think together</button></nav>
+        <div class="activity-top"><p class="eyebrow" id="step-label"></p><label class="support-label">Challenge <select id="support" aria-label="Challenge"><option value="auto">Adapts to me</option><option value="1">More support</option><option value="2">Balanced</option><option value="3">Stretch</option></select></label></div>
+        <h2 id="task-title"></h2><p id="task-detail" class="muted"></p>
+        <div class="player"><button id="play" class="primary">▶ Listen</button><button id="replay">↻ Replay</button><span id="player-status" role="status">Original voice · natural speed</span><progress id="audio-progress" value="0" max="1" aria-label="Audio progress"></progress></div>
+        <audio id="audio" preload="metadata"></audio>
+        <p id="audio-error" role="alert" hidden>We couldn’t play this recording. Try Replay or <a href="https://claude.com/hard-questions" target="_blank" rel="noopener">listen on the original site</a>.</p>
+        <div id="hear-panel"><details id="warmup"><summary>Need a starting point? Meet three words.</summary><div id="warmup-words" class="definitions"></div></details><fieldset id="gist"><legend id="gist-question"></legend><div id="gist-options" class="answers"></div></fieldset><p id="gist-feedback" class="feedback" role="status"></p><button id="to-catch" class="primary" hidden>Catch the words →</button></div>
+        <div id="catch-panel" hidden><div class="round-line"><span id="round-label"></span><span id="challenge-label"></span></div><div id="chips" class="chips" aria-label="Words to listen for"></div><button id="check" class="primary" disabled>Check my words</button><p id="catch-feedback" class="feedback" role="status"></p><div id="round-help" hidden><h3>Words to take with you</h3><div id="definitions" class="definitions"></div><button id="help-play">▶ Hear these words again</button></div><button id="next-round" class="primary" hidden>Next clip →</button></div>
+        <div id="talk-panel" hidden><div class="discussion-card"><p class="eyebrow">Their question, in simple English</p><h3 id="talk-question"></h3><p id="talk-context"></p></div><div id="talk-prompts"></div><details><summary>Help me say it</summary><div id="sentence-frames"></div></details><label class="reflection-label" for="reflection">My idea <span>(optional · saved on this device)</span></label><textarea id="reflection" rows="3" placeholder="I think… because…"></textarea><button id="complete" class="primary">We’ve shared our ideas ✓</button><p id="complete-feedback" class="feedback" role="status"></p></div>
+      </div>
+    </section>
+    <footer>Original interviews and portraits: <a href="https://claude.com/hard-questions" target="_blank" rel="noopener">Anthropic · Hard Questions</a>. Independent English listening activity.<br>Audio always plays at its original speed. Progress stays on this device. <button id="reset">Start a fresh session</button></footer>
+  </main>
+  <dialog id="guide-dialog"><button class="close" aria-label="Close activity guide">×</button><p class="eyebrow">Listening activity · 25–40 minutes</p><h2>One voice. Three listens.<br>Everyone has something to say.</h2><ol><li><strong>Hear the person.</strong> Listen to the whole recording, then choose the main idea. In pairs, let one person control the audio and the other explain the idea.</li><li><strong>Catch the words.</strong> Listen to a section and tap only the words you hear. Check your words, then continue to the next section. Replay and review the meanings whenever you need to.</li><li><strong>Think together.</strong> Share a view, give a reason, and ask your partner a follow-up question. Different opinions are welcome.</li></ol><p>Swap roles for the next voice. Choose three voices for a shorter activity, or explore all nine over several sessions.</p><h3>How the challenge adapts</h3><p>Everyone starts with more support. Two strong rounds add a challenge. A difficult round adds support. Replay and hesitation never cost points. Students can choose a challenge themselves.</p><p>Each level uses the same sections of about eleven seconds. More support asks you to catch up to two words, Balanced up to four, and Stretch up to six. Harder challenges also add word choices. Speech is always at its original speed. This is practice feedback, not a language-level test.</p><p>Projector view enlarges the activity for a shared screen. Let teams discuss choices before checking them; use the group score as a shared goal.</p><p>Gwen’s clip concerns environmental impact; her job title refers to a sexual-assault support service. Choose the voices that suit your group.</p><button class="primary close-guide">Let’s listen</button></dialog>
+  <script type="module" src="app.js?v=2"></script>
+</body>
+</html>

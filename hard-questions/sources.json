@@ -1,0 +1,60 @@
+{
+  "page": "https://claude.com/hard-questions",
+  "retrieved": "2026-10-11",
+  "speakers": [
+    {
+      "id": "kamille",
+      "name": "Kamille",
+      "audio": "https://assets.claude.com/4f73b0c28489494205c28551bf43ea03a02b17fe.mp3",
+      "portrait": "https://assets.claude.com/2b6c723812866fd89c22727fc515a2d7d9e4efc8.jpg?rect=581%2C0%2C854%2C1067&w=1120&h=1400&fit=crop&fm=webp"
+    },
+    {
+      "id": "robert",
+      "name": "Robert",
+      "audio": "https://assets.claude.com/ab115c7371ddb86eef6dee1fe2f3a1971de1a35d.mp3",
+      "portrait": "https://assets.claude.com/57b821f15ea743a649f8ddd3db1b0d25d61b8e0f.jpg?rect=0%2C0%2C1025%2C1281&w=1120&h=1400&fit=crop&fm=webp"
+    },
+    {
+      "id": "larissa",
+      "name": "Larissa",
+      "audio": "https://assets.claude.com/6d7549164122f6041f58db68bb4f4075220cd285.mp3",
+      "portrait": "https://assets.claude.com/8dc1dec653c4ec90203e6bf754ea14d2d90af3c7.jpg?rect=516%2C0%2C854%2C1067&w=1120&h=1400&fit=crop&fm=webp"
+    },
+    {
+      "id": "daniel",
+      "name": "Daniel",
+      "audio": "https://assets.claude.com/24fd27458b72ba4f16393e589a70914b40d7fc9a.mp3",
+      "portrait": "https://assets.claude.com/e59342efddfb7a0f8e39730091ec60baa4166eff.jpg?rect=392%2C0%2C854%2C1067&w=1120&h=1400&fit=crop&fm=webp"
+    },
+    {
+      "id": "scott",
+      "name": "Scott",
+      "audio": "https://assets.claude.com/f342c6dbd2b3639c907101f4a395ae2615940d90.mp3",
+      "portrait": "https://assets.claude.com/332b99f47165fd654c5469da81ceb040264ca470.jpg?rect=87%2C0%2C854%2C1067&w=1120&h=1400&fit=crop&fm=webp"
+    },
+    {
+      "id": "tiffany",
+      "name": "Tiffany",
+      "audio": "https://assets.claude.com/144a69e42a624659b46e879a80a7138e1a9d4335.mp3",
+      "portrait": "https://assets.claude.com/2922fb4585e323b7bafa4b20a722b2ec646686f2.jpg?rect=459%2C0%2C854%2C1067&w=1120&h=1400&fit=crop&fm=webp"
+    },
+    {
+      "id": "danielle",
+      "name": "Danielle",
+      "audio": "https://assets.claude.com/65355ba6870db3b81f09ae3c09514f23f501bcf8.mp3",
+      "portrait": "https://assets.claude.com/8c2a363d9e6f2e720febb1eaa38e30bd14df7f34.jpg?rect=57%2C337%2C1010%2C1263&w=1120&h=1400&fit=crop&fm=webp"
+    },
+    {
+      "id": "gwen",
+      "name": "Gwen",
+      "audio": "https://assets.claude.com/c520c3e9caf2d32ded849b46fd7e9e51995114ee.mp3",
+      "portrait": "https://assets.claude.com/ce37b6a476f8013886d5c030787cb260dd41f8c5.jpg?rect=6%2C279%2C1057%2C1321&w=1120&h=1400&fit=crop&fm=webp"
+    },
+    {
+      "id": "sarah",
+      "name": "Sarah",
+      "audio": "https://assets.claude.com/cc6096f36d3f9d93fafeb3bfe42a7419c12fb94f.mp3",
+      "portrait": "https://assets.claude.com/fe6d279873929da9c5f2d8de5abac0e2e1df7de1.jpg?rect=0%2C133%2C1067%2C1334&w=1120&h=1400&fit=crop&fm=webp"
+    }
+  ]
+}
