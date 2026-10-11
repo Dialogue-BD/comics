@@ -1,0 +1,39 @@
+1
+00:00:00,000 --> 00:00:00,640
+I'm Robert.
+
+2
+00:00:01,220 --> 00:00:01,620
+I'm retired,
+
+3
+00:00:01,980 --> 00:00:03,080
+medical retired.
+
+4
+00:00:03,680 --> 00:00:05,060
+I'm raising my five-year-old son.
+
+5
+00:00:05,840 --> 00:00:06,700
+Who is in control?
+
+6
+00:00:06,900 --> 00:00:08,640
+Who will be in control of it,
+
+7
+00:00:09,000 --> 00:00:11,680
+overseeing its use and misuse?
+
+8
+00:00:12,760 --> 00:00:15,460
+Should they be required to be more forthcoming about
+
+9
+00:00:15,460 --> 00:00:18,120
+the infrastructure required for the data center,
+
+10
+00:00:18,380 --> 00:00:19,340
+for local economies?
