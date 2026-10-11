@@ -31,19 +31,21 @@ Recordings and portraits are unchanged originals from the public source, retriev
 
 ## Live motion graphics (no videos)
 
-The Watch step and the projector theatre (`/hard-questions/films/`) play **live motion graphics in the browser**, not video files. Each voice has a beat script in `motion/beats/<id>.js` that builds one paused GSAP timeline; the activity seeks it to `audio.currentTime` every frame, so pausing, replaying a phrase, tapping a word or dragging the seek bar keeps the pictures exactly in step with the speaker.
+The Watch step and the projector theatre (`/hard-questions/films/`) play **live illustrated scenes in the browser**, not video files. Each voice has a scene script in `motion/beats/<id>.js` that builds one paused GSAP timeline; the activity seeks it to `audio.currentTime` every frame, so pausing, replaying a phrase, tapping a word or dragging the seek bar keeps the pictures exactly in step with the speaker.
 
-Beats are anchored to the spoken words, not to hand-typed seconds: `at('six years')` returns the moment Kamille says “six”, so a picture appears as its word is heard (comprehensible input: sound, picture and word together). Key glossary words land as large BlurText-style callouts at the same instant. Each voice has five to eight beats; the three `scenes` in `transcripts.json` remain the chapter buttons and picture-idea captions.
+Every idea happens somewhere: a clinic, a waiting room where the sun races past the window for “six years”, a control room with an empty chair, a campus, a street of people in phone bubbles who later join hands. Scenes are full-bleed pictures in three parallax layers (back, mid, front) that slide in like a camera pan. Beats are anchored to the spoken words, not to typed seconds — `at('six years')` returns the moment Kamille says “six” — so a picture arrives as its word is heard. Key glossary words appear on annotation labels with a leader line to the thing they name. When the speaker is on screen her lips move with her own recorded words.
 
-- `motion/stage.js` — the stage, timeline helpers (`beat`, `pop`, `draw`, `count`, `callout`, `flow`…), reduced-motion snapping.
-- `motion/kit.js` — the shared SVG illustration kit: people, the AI chip, homes, papers, hearts, question orbs and the rest. Every voice draws from it so learners meet the same symbols again.
-- `motion/aurora.js` — the backdrop, a vanilla WebGL port of React Bits’ Aurora; its colour mood (calm, hope, worry, wonder, warm) follows the beats.
+- `motion/stage.js` — the stage: `scene()` (layers, push/fade transitions, camera drift, colour grade), `label()`, timeline helpers, reduced-motion snapping. Placed drawings are lifted before they animate, so tweens are always relative to where a thing was drawn.
+- `motion/cast.js` — the cast: shaded, posable characters with bending arms, poses, blinking, brows and lip movement. Preview at `motion/cast.html`.
+- `motion/sets.js` — places and props: rooms, windows, light shafts, furniture, streets, towers, data centre, campus, landscapes, the AI core and the question orb.
+- `motion/beats/_scene.js` — shared helpers for the scene scripts (`actor`, `life`, `talk`, `walkIn`, `motes`…).
+- `motion/aurora.js` — WebGL backdrop (a vanilla port of React Bits’ Aurora), now only used behind non-scene voices.
 - `motion/vendor/` — GSAP 3.13 (with DrawSVG and MotionPath) and Lenis, vendored so the page works without a CDN.
 - `polish.js` / `polish.css` — Lenis smooth scrolling, step transitions, and ports of React Bits’ BlurText, SpotlightCard and ClickSpark. Decoration only; nothing gates progress.
 
-Reduced motion (device setting or the button) shows each picture complete and still, changing only when the next idea arrives; the Aurora stops. Pictures illustrate each speaker’s questions and hopes, not predictions about AI. The live activity loads the original MP3 bytes into a seekable local buffer so phrase replay works on static hosts without byte-range support. Audio always plays at 1×.
+On phones the stage is 4:3 and crops the sides, so important things stay between x = 220 and 1380 of the 1600 × 900 scene. Reduced motion (device setting or the button) shows each picture complete and still, changing only when the next idea arrives. Pictures illustrate each speaker’s questions and hopes, not predictions about AI. Audio always plays at 1×, from the original MP3 bytes in a seekable local buffer.
 
-To add or change a picture, edit that voice’s beat file and preview it with `motion/dev.html?voice=<id>` (call `stage.seek(seconds)` in the console). Regenerate captions with `python3 hard-questions/tools/build-transcripts.py`.
+To change a scene, edit that voice’s script and preview it with `motion/dev.html?voice=<id>` (call `stage.seek(seconds)` in the console). Regenerate captions with `python3 hard-questions/tools/build-transcripts.py`.
 
 Gwen’s spoken clip addresses the environment; her source job title mentions a sexual-assault support service. Sarah discusses autism, and Kamille describes chronic illness. Teachers can choose the voices suitable for their group.
 

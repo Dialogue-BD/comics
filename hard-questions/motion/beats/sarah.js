@@ -17,7 +17,7 @@ const HUSBAND = { skin: SKIN.s2, hair: 'short', hairColor: HAIRC.dark, top: '#5b
 
 export default function (S) {
   const { K, tl, at, end, scene, label, pop, draw, loop, spin, count, burst, flow } = S;
-  const { actor, life, put, walkIn, walkTo } = helpers(S);
+  const { actor, life, put, walkIn, walkTo, talk, motes } = helpers(S);
   const D = S.duration;
 
   /* 1 · My youngest has autism. He's 13, but as he becomes an adult… */
@@ -30,7 +30,8 @@ export default function (S) {
     Z.frame(sc.back, 260, 190, 170, 130, '#e7c178');
     Z.sofa(sc.back, 380, 720, .8, '#8fb27f');
     const sa = actor(sc.mid, 520, 870, 1.05, { ...SARAH, mood: 'smile' }, 'reachR');
-    life(sa, t0, t1, 1);
+    life(sa, t0, t1, 1); talk(sa, t0, t1);
+    motes(sc.back, [1060, 160, 380, 520], t0, t1, 14);
     const teen = actor(sc.mid, 820, 870, 1.0, { ...SON, age: 'teen', mood: 'smile' }, 'idle');
     const adult = actor(sc.mid, 860, 870, 1.05, { ...SON, mood: 'grin' }, 'idle');
     life(teen, t0, t1, 2); life(adult, t0, t1, 3);
@@ -61,6 +62,8 @@ export default function (S) {
     K.el('rect', { x: 100, y: 440, width: 640, height: 26, rx: 6, fill: '#9aa39f' }, sc.back);
     for (let i = 0; i < 4; i++) K.el('rect', { x: 140 + i * 145, y: 490, width: 130, height: 190, rx: 6, fill: '#e9e3d5', stroke: '#d4cdbb', 'stroke-width': 3 }, sc.back);
     K.el('rect', { x: 140, y: 150, width: 560, height: 160, rx: 6, fill: '#f7f3ea' }, sc.back);
+    for (let i = 0; i < 4; i++) { K.el('rect', { x: 150 + i * 137, y: 160, width: 127, height: 140, rx: 4, fill: '#efe9dc', stroke: '#d4cdbb', 'stroke-width': 3 }, sc.back); K.el('rect', { x: 150 + i * 137 + (i % 2 ? 12 : 100), y: 222, width: 14, height: 16, rx: 4, fill: '#9aa39f' }, sc.back); }
+    K.el('rect', { x: 140, y: 310, width: 560, height: 14, fill: '#000', opacity: .08 }, sc.back);
     const dr = Z.door(sc.back, 1280, 700, { color: '#5b8fb8', w: 190, h: 400 });
     const son = actor(sc.mid, 760, 900, .98, { ...SON, mood: 'smile' }, 'hold');
     life(son, t0, t1, 4);
@@ -100,7 +103,7 @@ export default function (S) {
     K.el('path', { d: 'M1170 380 h40 v24 h-40z', fill: '#fbf8f1' }, stop);
     const sa = actor(sc.mid, 380, 800, 1.0, { ...SARAH, mood: 'smile' }, 'reachR');
     const son = actor(sc.mid, 560, 800, 1.0, { ...SON, mood: 'smile' }, 'reachL');
-    life(sa, t0, t1, 5); life(son, t0, t1, 6);
+    life(sa, t0, t1, 5); life(son, t0, t1, 6); talk(sa, t0, t1);
     // Holding hands at first… then he goes on his own.
     const ind = at('independent', 2);
     pose(tl, sa.f, 'idle', ind - .6, .4); pose(tl, son.f, 'hold', ind - .6, .4);
@@ -146,7 +149,8 @@ export default function (S) {
   {
     const t0 = at('can ai'), t1 = D;
     const sc = scene(t0, t1, { zoom: [1, 1.04], origin: '800 480' });
-    K.el('rect', { x: -200, y: -200, width: 2000, height: 1300, fill: Z.grad(sc.back, ['#f3e7c9', '#e9d3ae']) }, sc.back);
+    K.el('rect', { x: -200, y: -200, width: 2000, height: 1300, fill: Z.grad(sc.back, ['#f6ead0', '#e6cfa6']) }, sc.back);
+    Z.bokeh(sc.back, 16, ['#ffffff', '#ffd38a', '#f0a3a0']);
     const ai = put(sc.front, 800, 110, 1); Z.aiCore(ai, 0, 0, .3);
     pop(ai, at('ai', 2) - .1, { origin: '50% 50%' });
     // Three windows on her life.

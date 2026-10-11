@@ -13,7 +13,7 @@ const GWEN = { skin: SKIN.s2, hair: 'bob', hairColor: '#6b5a4a', glasses: true, 
 
 export default function (S) {
   const { K, tl, at, end, scene, label, pop, draw, loop, spin, count, burst, flow } = S;
-  const { actor, life, put, walkIn, walkTo, drainTo } = helpers(S);
+  const { actor, life, put, walkIn, walkTo, drainTo, talk } = helpers(S);
   const D = S.duration;
 
   /* 1 · It's dangerous for the environment. */
@@ -36,7 +36,7 @@ export default function (S) {
     pop(warn, dg, { origin: '50% 50%', from: .1, ease: 'back.out(3)' });
     loop(warn, dg + .6, t1, { scale: 1.08, transformOrigin: '50% 50%' }, .6);
     label('dangerous', dg, { x: 620, y: 92, ax: 620, ay: 240, tone: 'clay', hold: .6, parent: sc.front });
-    label('environment', at('environment'), { x: 400, y: 92, ax: 400, ay: 560, tone: 'mint', hold: .55, size: 38, parent: sc.front });
+    label('environment', at('environment'), { x: 1150, y: 92, ax: 1150, ay: 830, tone: 'mint', hold: .55, size: 38, parent: sc.front });
   }
 
   /* 2 · It's concerning for residents in marginalized communities. */
@@ -94,7 +94,7 @@ export default function (S) {
     tip(0, at('communities', 2) - .2, 1.1, 'elastic.out(1, .4)');
     burst(sc.front, 800, 470, at('communities', 2) + .3, { color: '#ffd38a', n: 12, r1: 220 });
     const gw = actor(sc.front, 260, 900, .95, { ...GWEN, mood: 'flat' }, 'chin');
-    life(gw, t0, t1, 3);
+    life(gw, t0, t1, 3); talk(gw, t0, t1);
     express(tl, gw.f, at('communities', 2), 'happy');
     label('balance', at('balance'), { x: 800, y: 92, ax: 800, ay: 470, hold: 1.1, parent: sc.front });
     label('goals', at('goals'), { x: 560, y: 92, ax: 520, ay: 420, hold: .5, size: 38, parent: sc.front });
@@ -131,10 +131,11 @@ export default function (S) {
     draw(no, at('harm') + .1, .3);
     tl.to([stack], { autoAlpha: .2, duration: .6 }, at('harm') + .5);
     const gw = actor(sc.front, 560, 960, .95, { ...GWEN, mood: 'smile' }, 'present');
-    life(gw, t0, t1, 4);
+    life(gw, t0, t1, 4); talk(gw, t0, t1);
+    Z.grassTufts(sc.front, 905);
     express(tl, gw.f, at('environment', 2), 'happy');
     label('environment', at('environment', 2), { x: 900, y: 92, ax: 760, ay: 460, tone: 'mint', hold: .9, parent: sc.front });
-    label('harm', at('harm'), { x: 400, y: 92, ax: 210, ay: 420, tone: 'clay', hold: .8, parent: sc.front });
+    label('harm', at('harm'), { x: 600, y: 92, ax: 230, ay: 420, tone: 'clay', hold: .8, parent: sc.front });
     const o = Z.orb(sc.front, 1200, 250, .7); pop(o.inner, end('harm') - .1, { origin: '50% 50%', from: .1, ease: 'back.out(2.4)' });
   }
 }

@@ -81,18 +81,24 @@ export function createStage(host, { label = true } = {}) {
 
     /* A full-bleed scene in three parallax layers. Scenes slide in like a
        camera pan (push) or dissolve (fade); the camera drifts while it holds. */
-    const scene = (t0, t1, { mood, enter = 'push', exit = 'push', zoom = [1, 1.05], origin = '800 450', pan = 18, lead = .5 } = {}) => {
+    const scene = (t0, t1, { mood, enter = 'push', exit = 'push', zoom = [1, 1.05], origin = '800 450', pan = 18, lead = .5, grade = true } = {}) => {
       const holder = K.g(world, { class: 'beat scene' });
       // Each scene is clipped to its own frame so neighbours never bleed in.
       const fid = K.id('frame'); const fcp = K.el('clipPath', { id: fid }, holder); K.el('rect', { x: -2, y: -2, width: 1604, height: 904 }, fcp);
       const framed = K.g(holder, { 'clip-path': `url(#${fid})` });
       const cam = K.g(framed), back = K.g(cam), mid = K.g(cam), front = K.g(cam);
+      if (grade) {
+        const gr = K.g(framed, { class: 'grade', 'pointer-events': 'none' });
+        K.el('rect', { x: 0, y: 0, width: 1600, height: 900, fill: 'url(#grade-key)' }, gr);
+        K.el('rect', { x: 0, y: 0, width: 1600, height: 900, fill: 'url(#grade-vig)' }, gr);
+      }
       const start = Math.max(0, t0 - lead), last = t1 >= duration - .05, first = t0 <= .05;
       key(t0);
       if (first) tl.set(holder, { autoAlpha: 1 }, 0);
       else if (enter === 'push') {
         tl.fromTo(holder, { autoAlpha: 0 }, { autoAlpha: 1, duration: .01, immediateRender: true }, start);
         tl.fromTo(holder, { x: 1600 }, { x: 0, duration: .85, ease: 'expo.inOut', immediateRender: true }, start);
+        tl.fromTo(framed, { scale: 1.08 }, { scale: 1, svgOrigin: '800 450', duration: .85, ease: 'power3.inOut', immediateRender: true }, start);
         tl.fromTo(back, { x: -260 }, { x: 0, duration: .85, ease: 'expo.inOut', immediateRender: true }, start);
         tl.fromTo(front, { x: 320 }, { x: 0, duration: .85, ease: 'expo.inOut', immediateRender: true }, start);
       } else tl.fromTo(holder, { autoAlpha: 0 }, { autoAlpha: 1, duration: .55, ease: 'power2.out', immediateRender: true }, start);
@@ -100,6 +106,7 @@ export function createStage(host, { label = true } = {}) {
       if (!last) {
         if (exit === 'push') {
           tl.to(holder, { x: -1600, duration: .85, ease: 'expo.inOut' }, out);
+          tl.to(framed, { scale: 1.08, svgOrigin: '800 450', duration: .85, ease: 'power3.inOut' }, out);
           tl.to(back, { x: 260, duration: .85, ease: 'expo.inOut' }, out);
           tl.to(front, { x: -320, duration: .85, ease: 'expo.inOut' }, out);
           tl.set(holder, { autoAlpha: 0 }, out + .86);
@@ -216,7 +223,7 @@ export function createStage(host, { label = true } = {}) {
       }
       return grp;
     };
-    return { tl, svg, world, overlay, K, C: K.C, at, end, beat, scene, label, pop, rise, fade, hide, move, draw, loop, spin, count, wave, reach, face, callout, burst, flow, key, get duration() { return duration; } };
+    return { tl, svg, world, overlay, K, C: K.C, words, at, end, beat, scene, label, pop, rise, fade, hide, move, draw, loop, spin, count, wave, reach, face, callout, burst, flow, key, get duration() { return duration; } };
   }
 
   async function load(voice, transcript) {

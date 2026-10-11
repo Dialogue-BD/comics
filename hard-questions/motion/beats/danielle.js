@@ -23,7 +23,7 @@ const FAMILY = [
 
 export default function (S) {
   const { K, tl, at, end, scene, label, pop, draw, loop, spin, count, burst, flow } = S;
-  const { actor, life, put, walkIn, walkTo, drainTo } = helpers(S);
+  const { actor, life, put, walkIn, walkTo, drainTo, talk, motes } = helpers(S);
   const D = S.duration;
   const park = (sc, { top = '#f2a77a', bottom = '#fbe0b0', sun = true } = {}) => {
     Z.sky(sc.back, top, bottom);
@@ -42,7 +42,8 @@ export default function (S) {
     K.el('ellipse', { cx: 800, cy: 820, rx: 420, ry: 60, fill: '#d9694a', opacity: .85 }, sc.mid);
     for (let i = 0; i < 6; i++) K.el('path', { d: `M${420 + i * 130} 790 l60 60`, stroke: '#fbf8f1', 'stroke-width': 10, opacity: .6 }, sc.mid);
     const a = actor(sc.mid, 560, 840, .95, { ...DANIELLE, mood: 'grin' }, 'wave'), b = actor(sc.mid, 820, 840, .95, { ...FRIEND, mood: 'grin' }, 'hold'), c = actor(sc.mid, 1060, 840, .9, { skin: SKIN.s5, hair: 'curly', hairColor: HAIRC.black, top: '#e7c178', outfit: 'tee', mood: 'grin' }, 'cheer');
-    [a, b, c].forEach((p, i) => life(p, t0, t1, i + 1));
+    [a, b, c].forEach((p, i) => life(p, t0, t1, i + 1)); talk(a, t0, t1);
+    Z.grassTufts(sc.front, 905, '#6f8a4a');
     const notes = [0, 1, 2].map(i => { const n = put(sc.front, 860 + i * 70, 300 - i * 40, 1); K.musicNote(n, '#e2a64a'); return n; });
     notes.forEach((n, i) => { S.fade(n, .3 + i * .3); loop(n, .5 + i * .3, t1, { y: -18, rotation: 8 }, 1.2); });
     [[380, 860], [1240, 860], [480, 880]].forEach(([x, y], i) => { const f = put(sc.front, x, y, 1); K.flower(f, ['#f0a3a0', '#e7c178', '#9cc7e8'][i]); });
@@ -66,7 +67,7 @@ export default function (S) {
     K.el('rect', { x: 500, y: 726, width: 18, height: 100, rx: 4, fill: '#3a3a3a' }, sc.mid); K.el('rect', { x: 1080, y: 726, width: 18, height: 100, rx: 4, fill: '#3a3a3a' }, sc.mid);
     const fr = actor(sc.mid, 920, 860, 1.05, { ...FRIEND, mood: 'sad' }, 'handsDown');
     const dn = actor(sc.mid, 600, 860, 1.05, { ...DANIELLE, mood: 'flat' }, 'idle');
-    life(fr, t0, t1, 3); life(dn, t0, t1, 4);
+    life(fr, t0, t1, 3); life(dn, t0, t1, 4); talk(dn, t0, t1);
     tilt(tl, fr.f, t0, -8);
     const sp = put(sc.front, 920, 230, 1); const bub = K.speech(sp, { w: 300, h: 150 });
     const letters = ['a', 'b', '?', 'w', '…'].map((ch, i) => K.text(bub.inner, ch, -100 + i * 50, 18, 54, '#22292e', { 'font-family': "'Source Serif 4', Georgia, serif" }));
@@ -95,12 +96,14 @@ export default function (S) {
     K.el('rect', { x: 760, y: 160, width: 600, height: 300, rx: 12, fill: '#22292e' }, sc.back);
     K.el('rect', { x: 774, y: 174, width: 572, height: 272, rx: 6, fill: Z.grad(sc.back, ['#173a4f', '#0d2233']) }, sc.back);
     const dn = actor(sc.mid, 420, 880, 1.08, { ...DANIELLE, mood: 'smile' }, 'heart');
-    life(dn, t0, t1, 5);
+    life(dn, t0, t1, 5); talk(dn, t0, t1);
     const hh = put(sc.front, 470, 330, .8); K.heart(hh, '#d9694a');
     pop(hh, at('empathy', 2) - .1, { origin: '50% 50%', from: .1, ease: 'back.out(3)' });
     loop(hh, at('empathy', 2) + .5, t1, { scale: 1.1, transformOrigin: '50% 50%' }, .8);
     const rb = Z.bot(sc.mid, 1060, 860, 1.05);
-    pop(rb.inner, at('machine') - .3, { origin: '50% 100%', from: .5 });
+    pop(rb.inner, t0 + .3, { origin: '50% 100%', from: .5 });
+    const wave = K.el('path', { d: 'M820 330 l40 0 l20 -40 l30 80 l30 -60 l20 20 l60 0 l20 -30 l30 50 l20 -20 l80 0', stroke: '#7fe0c4', 'stroke-width': 4, fill: 'none', opacity: .8 }, sc.back);
+    draw(wave, t0 + .4, 1.2);
     const ho = put(sc.front, 1060, 300, 1); const hol = K.heartOutline(ho, '#7fe0c4');
     pop(ho, at('cannot') - .15, { origin: '50% 50%' });
     const no = put(sc.front, 1140, 240, .7); K.cross(no, '#df8466');
@@ -126,6 +129,7 @@ export default function (S) {
     Z.hills(sc.back, ['#c9c08e', '#a9b27c', '#86a06a'], 1000);
     const xs = [400, 560, 700, 840];
     const fam = FAMILY.map((f, i) => { const a = actor(sc.mid, xs[i], 860, .95, { ...f, mood: 'grin' }, i === 1 ? 'reachR' : 'idle'); life(a, t0, t1, i + 6); return a; });
+    talk(fam[1], t0, t1);
     fam.forEach((a, i) => S.rise(a, t0 + .1 + i * .1, { y: 30 }));
     fam.forEach((a, i) => express(tl, a.f, at('loved') + i * .08, 'happy'));
     const ai = put(sc.front, 640, 200, 1); Z.aiCore(ai, 0, 0, .32);
@@ -153,6 +157,8 @@ export default function (S) {
     Z.lamp(sc.back, 1430, 700, .9);
     Z.table(sc.mid, 800, 820, 620, { top: '#b98a5e', h: 140 });
     const people = [[480, FRIEND], [800, DANIELLE], [1120, FAMILY[0]]].map(([x, f], i) => { const a = actor(sc.mid, x, 900, .95, { ...f, mood: 'smile' }, 'hold'); life(a, t0, t1, i + 12); return a; });
+    talk(people[1], t0, t1);
+    motes(sc.back, [200, 160, 1200, 400], t0, t1, 14);
     // Cups fill up — fulfilled.
     [480, 800, 1120].forEach((x, i) => {
       const cup = put(sc.mid, x, 660, 1);

@@ -1,5 +1,6 @@
 import { figure, pose, setPose, blinks, tilt, express, SKIN, HAIRC, shade } from '../cast.js';
 import * as Z from '../sets.js';
+import { helpers } from './_scene.js';
 
 /* Kamille — Health. Reference voice for the scene style.
    "There are a lot of specific fields that would benefit from the use of it.
@@ -16,6 +17,7 @@ export const fullBleed = true;
 export default function (S) {
   const { K, tl, at, end, scene, label, pop, draw, loop, spin, count, burst } = S;
   const gsap = window.gsap;
+  const { talk, motes } = helpers(S);
   const D = S.duration;
   // An actor: placed at (x,y), animatable in stage units, drawn at scale s.
   const actor = (parent, x, y, s, spec, p = 'idle') => {
@@ -106,6 +108,7 @@ export default function (S) {
     const sc = scene(t0, t1, { zoom: [1.02, 1.08], origin: '900 420' });
     const { mon } = clinic(sc);
     Z.xray(mon.content, -20, -182, 1.05);
+    motes(sc.back, [180, 480, 500, 380], t0, t1, 18);
     const doc = actor(sc.mid, 560, 820, .98, DOCTOR, 'idle');
     life(doc, t0, t1, 3);
     pose(tl, doc.f, 'present', t0 + .3, .6);
@@ -161,7 +164,7 @@ export default function (S) {
       tl.fromTo(pg, { scaleY: 1, y: 0, autoAlpha: 1 }, { scaleY: 0, y: -40, autoAlpha: 0, svgOrigin: '0 -30', duration: .35, ease: 'power2.in', immediateRender: true }, at('chronic') - .2 + i * .32);
     }
     const k = actor(sc.mid, 720, 1160, 1.55, { ...KAMILLE, mood: 'flat' }, 'idle');
-    life(k, t0, t1, 4);
+    life(k, t0, t1, 4); talk(k, t0, t1);
     pose(tl, k.f, 'hold', at('diagnosed') - .3, .6);
     const letter = put(sc.mid, 720, 610, 1); K.doc(letter, { mark: 'cross', w: 130, h: 160 });
     tl.fromTo(letter, { y: 80, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .6, ease: 'expo.out', immediateRender: true }, at('diagnosed') - .1);
@@ -192,7 +195,7 @@ export default function (S) {
     Z.waitingChairs(sc.mid, 1080, 680, 3, '#2f7f73');
     const dr = Z.door(sc.back, 1500, 660, { color: '#c9b08a' });
     const k = actor(sc.mid, 760, 790, .95, { ...KAMILLE, mood: 'flat' }, 'chin');
-    life(k, t0, t1, 5);
+    life(k, t0, t1, 5); talk(k, t0, t1);
     tilt(tl, k.f, t0 + .2, -4);
     express(tl, k.f, t0 + .2, 'worried');
     label('years', at('years'), { x: 330, y: 92, ax: 330, ay: 250, hold: .7, parent: sc.front });
@@ -220,7 +223,7 @@ export default function (S) {
     Z.windowFrame(sc.back, 120, 140, 300, 380, { sky: ['#5a5f8f', '#f2a77a'] });
     Z.lamp(sc.back, 1460, 740, .9);
     const k = actor(sc.mid, 470, 1180, 1.6, { ...KAMILLE, mood: 'flat' }, 'chin');
-    life(k, t0, t1, 6);
+    life(k, t0, t1, 6); talk(k, t0, at('impacted') - .3);
     tilt(tl, k.f, t0 + .2, 6);
     express(tl, k.f, t0 + .3, 'calm');
     // The daydream: a sunny day in the life she imagines.
@@ -270,9 +273,9 @@ export default function (S) {
     const ai = Z.aiCore(sc.mid, 980, 340, .32, { hud: false });
     pop(ai.inner, at('ai', 2) - .05, { origin: '50% 50%', from: .1, ease: 'back.out(2)' });
     const k = actor(sc.mid, 470, 830, .98, { ...KAMILLE, mood: 'smile' }, 'idle');
-    const doc = actor(sc.mid, 1300, 830, .95, { ...DOCTOR, mood: 'smile' }, 'idle');
-    life(k, t0, t1, 10); life(doc, t0, t1, 11);
-    pose(tl, doc.f, 'present', t0 + .4, .6);
+    const doc = actor(sc.mid, 1250, 830, .95, { ...DOCTOR, mood: 'smile' }, 'idle');
+    life(k, t0, t1, 10); life(doc, t0, t1, 11); talk(k, t0, t1);
+    pose(tl, doc.f, 'pointL', t0 + .4, .6);
     const dg = at('diagnosis', 2);
     pose(tl, k.f, 'heart', dg - .2, .5);
     express(tl, k.f, dg, 'happy');
@@ -280,7 +283,7 @@ export default function (S) {
     pop(ok, dg, { origin: '50% 50%', from: .1, ease: 'back.out(3)' });
     burst(sc.front, 980, 470, dg + .1, { color: '#a5e3c6' });
     label('quicker', q, { x: 980, y: 92, ax: 900, ay: 240, hold: .9, tone: 'mint', parent: sc.front });
-    const o = Z.orb(sc.front, 640, 200, .8);
+    const o = Z.orb(sc.front, 1130, 150, .75);
     pop(o.inner, end('diagnosis', 2) - .1, { origin: '50% 50%', from: .1, ease: 'back.out(2.4)' });
     loop(o.inner, end('diagnosis', 2) + .5, t1 + 2, { y: -10 }, 1.6);
   }

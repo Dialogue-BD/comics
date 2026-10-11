@@ -21,7 +21,7 @@ const WORKERS = [
 
 export default function (S) {
   const { K, tl, at, end, scene, label, pop, draw, loop, spin, count, burst, flow } = S;
-  const { actor, life, put, walkIn, walkTo } = helpers(S);
+  const { actor, life, put, walkIn, walkTo, talk, motes } = helpers(S);
   const D = S.duration;
   const badge = (parent, x, y, drawIcon, r = 56) => {
     const b = put(parent, x, y, 1);
@@ -71,7 +71,8 @@ export default function (S) {
     Z.skyline(w.scene, 400, { color: '#7f97ab', far: '#a9bccb' });
     Z.desk(sc.mid, 560, 820, 460, { top: '#6b4f36', leg: '#4a3a2a' });
     const d = actor(sc.mid, 330, 880, 1.08, DANIEL, 'present');
-    life(d, t0, t1, 4);
+    life(d, t0, t1, 4); talk(d, t0, t1);
+    motes(sc.back, [840, 140, 580, 360], t0, t1, 14);
     const tasks = [
       [780, 250, i => K.doc(i, { mark: 'chart', w: 56, h: 70, lines: 2 }), 'ai'],
       [980, 190, i => { K.el('rect', { x: -26, y: -34, width: 52, height: 68, rx: 8, fill: '#22292e' }, i); for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) K.el('rect', { x: -18 + c * 13, y: -12 + r * 13, width: 9, height: 9, rx: 2, fill: c === 2 ? '#e7c178' : '#c9d2d6' }, i); K.el('rect', { x: -18, y: -27, width: 36, height: 10, rx: 2, fill: '#7fe0c4' }, i); }, 'ai'],

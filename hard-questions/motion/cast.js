@@ -208,12 +208,15 @@ export function figure(parent, o = {}) {
   };
   const [md, mk] = mouths[mood] || mouths.smile;
   const mouth = mk === 'fill' ? P(faceG, md, '#6e2b22') : S(faceG, md, '#6e2b22', 4.2);
+  const talk = g(faceG, { class: 'talk', opacity: 0 });
+  P(talk, 'M-11 -501 C-11 -484 11 -484 11 -501 C11 -507 -11 -507 -11 -501Z', '#6e2b22');
+  P(talk, 'M-7 -489 C-3 -486 3 -486 7 -489 C4 -493 -4 -493 -7 -489Z', '#e07a6a');
   if (mk === 'fill') P(faceG, 'M-8 -490 C-3 -486 3 -486 8 -490 C4 -494 -4 -494 -8 -490Z', '#e07a6a');
   if (mood === 'worried' || mood === 'sad') { browL.setAttribute('d', 'M-28 -558 C-22 -562 -14 -566 -8 -568'); browR.setAttribute('d', 'M8 -568 C14 -566 22 -562 28 -558'); }
   if (glasses) { const gl = g(faceG); for (const s of [-1, 1]) el('rect', { x: s * 18 - 15, y: -554, width: 30, height: 24, rx: 9, fill: '#ffffff', 'fill-opacity': .12, stroke: '#2b2622', 'stroke-width': 3.5 }, gl); S(gl, 'M-3 -544 C-1 -548 1 -548 3 -544', '#2b2622', 3.5); }
   const front = g(H); hairFront(front, hair, hairColor);
 
-  root.parts = { body, upper, head, armL, armR, eyes, brows, browL, browR, mouth, mouthKind: mk, faceG, scale: sc, seated };
+  root.parts = { body, upper, head, armL, armR, eyes, brows, browL, browR, mouth, talk, mouthKind: mk, faceG, scale: sc, seated };
   return root;
 }
 

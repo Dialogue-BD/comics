@@ -16,7 +16,7 @@ const GIRL2 = { skin: SKIN.s1, hair: 'bob', hairColor: HAIRC.blond, top: '#e7c17
 
 export default function (S) {
   const { K, tl, at, end, scene, label, pop, draw, loop, spin, count, burst, flow } = S;
-  const { actor, life, put, walkIn, walkTo } = helpers(S);
+  const { actor, life, put, walkIn, walkTo, talk, motes } = helpers(S);
   const D = S.duration;
   const home = (sc, horizon = 700) => {
     Z.room(sc.back, { ...Z.PAL.home, wall: '#f3e2c9', wallDark: '#e2c9a6', trim: '#c9a57c' }, { horizon });
@@ -30,10 +30,13 @@ export default function (S) {
     const t0 = 0, t1 = at('right');
     const sc = scene(t0, t1, { zoom: [1.04, 1], origin: '700 500' });
     home(sc);
-    // A door frame with height marks.
-    K.el('rect', { x: 820, y: 180, width: 200, height: 520, fill: '#f7f3ea' }, sc.back);
-    K.el('rect', { x: 840, y: 196, width: 160, height: 504, fill: '#e9dcc4' }, sc.back);
-    const marks = [0, 1, 2, 3, 4].map(i => K.el('path', { d: `M820 ${640 - i * 70} h40`, stroke: '#5a4a3a', 'stroke-width': 5, 'stroke-linecap': 'round' }, sc.back));
+    // A growth chart on the wall: a tall paper ruler with coloured bands.
+    const chart = K.g(sc.back);
+    K.el('rect', { x: 886, y: 186, width: 120, height: 520, rx: 10, fill: '#000', opacity: .1 }, chart);
+    K.el('rect', { x: 880, y: 180, width: 120, height: 520, rx: 10, fill: '#fbf8f1' }, chart);
+    ['#f0a3a0', '#e7c178', '#a5e3c6', '#9cc7e8', '#c9a7e0'].forEach((c, i) => K.el('rect', { x: 880, y: 180 + i * 104, width: 120, height: 104, fill: c, opacity: .35 }, chart));
+    for (let i = 0; i < 13; i++) K.el('path', { d: `M880 ${690 - i * 40} h${i % 2 ? 22 : 40}`, stroke: '#5a4a3a', 'stroke-width': 3 }, chart);
+    const marks = [0, 1, 2, 3, 4].map(i => K.el('path', { d: `M890 ${560 - i * 50} h100`, stroke: '#d9694a', 'stroke-width': 6, 'stroke-linecap': 'round' }, sc.back));
     marks.forEach((m, i) => draw(m, at('grow') - .1 + i * .08, .25));
     const g1 = actor(sc.mid, 560, 820, .8, GIRL1, 'cheer'), g2 = actor(sc.mid, 720, 820, .8, GIRL2, 'wave');
     life(g1, t0, t1, 1); life(g2, t0, t1, 2);
@@ -53,7 +56,9 @@ export default function (S) {
     const sc = scene(t0, t1, { zoom: [1, 1.08], origin: '800 520' });
     Z.room(sc.back, Z.PAL.clinic, { horizon: 690 });
     K.el('rect', { x: 140, y: 120, width: 1320, height: 400, rx: 12, fill: '#f7f3ea' }, sc.back);
-    K.el('rect', { x: 160, y: 140, width: 1280, height: 360, rx: 6, fill: Z.grad(sc.back, ['#e9f3f0', '#d7e8e1']) }, sc.back);
+    K.el('rect', { x: 160, y: 140, width: 1280, height: 360, rx: 6, fill: Z.grad(sc.back, ['#f6e3ea', '#e3eef6']) }, sc.back);
+    for (const x of [260, 700, 1100]) K.el('path', { d: `M${x} 140 L${x + 120} 140 L${x - 60} 500 L${x - 180} 500Z`, fill: '#ffffff', opacity: .28 }, sc.back);
+    for (let i = 0; i < 7; i++) { const st = K.g(sc.back); st.setAttribute('transform', `translate(${260 + i * 180} 210)`); K.star(st, ['#f0a3a0', '#9cc7e8', '#e7c178'][i % 3], 12); }
     const cribs = [];
     for (let i = 0; i < 7; i++) {
       const c = put(sc.mid, 260 + i * 180, 470, .95); const cr = K.cradle(c);
@@ -92,7 +97,8 @@ export default function (S) {
     home(sc);
     Z.sofa(sc.back, 380, 720, .9, '#5b8fb8');
     const sc0 = actor(sc.mid, 330, 860, 1.05, { ...SCOTT, mood: 'smile' }, 'present');
-    life(sc0, t0, t1, 3);
+    life(sc0, t0, t1, 3); talk(sc0, t0, t1);
+    motes(sc.back, [1100, 160, 360, 520], t0, t1, 14);
     Z.table(sc.mid, 900, 820, 460, { top: '#e9e3d4', h: 100 });
     const g1 = actor(sc.mid, 760, 900, .95, GIRL1, 'write'), g2 = actor(sc.mid, 1080, 900, 1.0, GIRL2, 'write');
     life(g1, t0, t1, 4); life(g2, t0, t1, 5);
@@ -172,13 +178,14 @@ export default function (S) {
     tl.to(c.hour, { rotation: -60, svgOrigin: '0 0', duration: 1.3, ease: 'power2.inOut' }, at('time') - .4);
     const sc0 = actor(sc.mid, 720, 860, 1.1, { ...SCOTT, mood: 'grin' }, 'idle');
     const g1 = actor(sc.mid, 520, 860, 1.0, GIRL1, 'reachR'), g2 = actor(sc.mid, 920, 860, 1.1, GIRL2, 'reachL');
-    life(sc0, t0, t1, 9); life(g1, t0, t1, 10); life(g2, t0, t1, 11);
+    life(sc0, t0, t1, 9); life(g1, t0, t1, 10); life(g2, t0, t1, 11); talk(sc0, t0, t1);
+    Z.grassTufts(sc.front, 905, '#6f8a4a');
     walkIn(g1, t0, -260, .8); walkIn(g2, t0 + .1, 260, .8);
     pose(tl, sc0.f, [52, -20, -52, 20], at('spend') - .3, .5);
     const ht = put(sc.front, 960, 300, .9); K.heart(ht, '#d9694a');
     pop(ht, at('girls') - .1, { origin: '50% 50%', from: .1, ease: 'back.out(3)' });
     burst(sc.front, 960, 300, at('girls'), { color: '#f0a3a0' });
     label('time', at('time'), { x: 1000, y: 92, ax: 1200, ay: 170, hold: .55, parent: sc.front });
-    label('girls', at('girls'), { x: 760, y: 92, ax: 920, ay: 560, hold: 1.0, parent: sc.front });
+    label('girls', at('girls'), { x: 1180, y: 92, ax: 960, ay: 600, hold: 1.0, parent: sc.front });
   }
 }

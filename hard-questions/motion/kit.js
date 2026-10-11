@@ -71,6 +71,14 @@ export function defs(svg) {
   lg('grad-server', '#24463a', '#13291f');
   lg('grad-sun', '#ffe1a0', '#f2a65a');
   lg('grad-floor', '#2a6a45', '#103d21');
+  // Scene grade: warm key light from the upper left, and a soft vignette.
+  const key = el('radialGradient', { id: 'grade-key', cx: .12, cy: 0, r: 1.1 }, d);
+  el('stop', { offset: 0, 'stop-color': '#fff4d6', 'stop-opacity': .22 }, key);
+  el('stop', { offset: .5, 'stop-color': '#fff4d6', 'stop-opacity': .04 }, key);
+  el('stop', { offset: 1, 'stop-color': '#fff4d6', 'stop-opacity': 0 }, key);
+  const vig = el('radialGradient', { id: 'grade-vig', cx: .5, cy: .48, r: .78 }, d);
+  el('stop', { offset: .62, 'stop-color': '#0b1a12', 'stop-opacity': 0 }, vig);
+  el('stop', { offset: 1, 'stop-color': '#0b1a12', 'stop-opacity': .32 }, vig);
   return d;
 }
 export const halo = (p, r = 120, color = 'gold', x = 0, y = 0) => circ(p, x, y, r, `url(#halo-${color})`);

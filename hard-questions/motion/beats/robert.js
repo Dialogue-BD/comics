@@ -14,7 +14,7 @@ const SON = { skin: SKIN.s2, hair: 'curly', hairColor: HAIRC.brown, top: '#e7c17
 
 export default function (S) {
   const { K, tl, at, end, scene, label, pop, draw, loop, spin, count, burst, flow } = S;
-  const { actor, life, put, walkIn, blink } = helpers(S);
+  const { actor, life, put, walkIn, blink, talk, motes } = helpers(S);
   const D = S.duration;
 
   /* 1 · I'm Robert. I'm retired, medical retired. */
@@ -27,16 +27,17 @@ export default function (S) {
     Z.lightShaft(sc.back, 'M980 480 L1360 480 L1200 900 L700 900Z', '#fff3cf', .22);
     Z.frame(sc.back, 380, 200, 170, 130, '#d9805f');
     Z.shelf(sc.back, 600, 300, 200);
-    const chair = put(sc.mid, 1080, 760, 1); K.chair(chair);
+    Z.armchair(sc.mid, 1060, 760, .95, '#c96a4a');
+    motes(sc.back, [760, 480, 560, 380], t0, t1, 16);
     Z.table(sc.mid, 1300, 760, 160, { top: '#c9a27a', h: 140 });
     const r = actor(sc.mid, 620, 820, 1.02, ROBERT, 'wave');
-    life(r, 0, t1, 1); waveHand(tl, r.f, .1, 2);
+    life(r, 0, t1, 1); waveHand(tl, r.f, .1, 2); talk(r, t0, t1);
     pose(tl, r.f, 'idle', 1.0, .5);
     const bag = put(sc.mid, 780, 800, 1); K.briefcase(bag);
     const ret = at('retired');
     tl.to(bag, { x: -420, autoAlpha: 0, duration: .9, ease: 'power2.in' }, ret + .1);
     // Medical: a cane rests by the armchair, pills on the side table.
-    const cane = put(sc.mid, 1180, 760, 1.2); K.cane(cane);
+    const cane = put(sc.mid, 1200, 760, 1.2); K.cane(cane);
     pop(cane, at('medical') - .1, { origin: '50% 100%', rot: 12 });
     const pills = put(sc.mid, 1300, 618, .9);
     K.el('rect', { x: -22, y: -60, width: 44, height: 60, rx: 8, fill: '#f4f1e6' }, pills); K.el('rect', { x: -26, y: -74, width: 52, height: 18, rx: 6, fill: '#d9805f' }, pills); K.el('path', { d: 'M-8 -34 h16 M0 -42 v16', stroke: '#d9694a', 'stroke-width': 5, 'stroke-linecap': 'round' }, pills);
@@ -59,7 +60,8 @@ export default function (S) {
     const ck = Z.cake(sc.mid, 820, 630, 1, 5);
     const r = actor(sc.mid, 520, 840, 1.0, { ...ROBERT, mood: 'grin' }, 'reachR');
     const s = actor(sc.mid, 1080, 840, 1.0, SON, 'cheer');
-    life(r, t0, t1, 2); life(s, t0, t1, 3);
+    life(r, t0, t1, 2); life(s, t0, t1, 3); talk(r, t0, t1);
+    Z.grassTufts(sc.front, 905);
     walkIn(s, at('raising') - .3, 220, .7);
     const five = at('five');
     ck.flames.forEach((f, i) => tl.fromTo(f, { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, svgOrigin: '0 0', duration: .25, ease: 'back.out(3)', immediateRender: true }, five - .2 + i * .1));
@@ -98,7 +100,7 @@ export default function (S) {
     tl.to(chairG, { rotation: 8, svgOrigin: '800 860', duration: .8, ease: 'sine.inOut', repeat: 3, yoyo: true }, t0);
     const o1 = Z.orb(sc.front, 800, 470, .9); pop(o1.inner, at('who') + .3, { origin: '50% 50%', from: .1, ease: 'back.out(2.4)' });
     const r = actor(sc.front, 260, 1040, 1.25, { ...ROBERT, mood: 'worried' }, 'chin');
-    life(r, t0, t1, 4); tilt(tl, r.f, t0 + .3, 6);
+    life(r, t0, t1, 4); tilt(tl, r.f, t0 + .3, 6); talk(r, t0, t1);
     const o2 = Z.orb(sc.front, 420, 330, .7); pop(o2.inner, at('who', 2), { origin: '50% 50%', from: .1, ease: 'back.out(2.4)' });
     label('control', at('control'), { x: 1000, y: 92, ax: 800, ay: 560, hold: .5, parent: sc.front });
     label('control', at('control', 2), { x: 1000, y: 92, ax: 800, ay: 560, hold: .9, parent: sc.front });
@@ -113,9 +115,9 @@ export default function (S) {
     Z.shopFront(sc.mid, 800, 660, .95, { wall: '#f3e7c9', awning: '#e7c178', sign: 'SCHOOL' });
     Z.shopFront(sc.mid, 1220, 660, .95, { wall: '#e6e2d8', awning: '#5b8fb8', sign: 'BANK' });
     // AI helpers travel the street: mint ones help, one red one sneaks.
-    [380, 800].forEach((tx, i) => { const a = put(sc.front, 0, 0, 1); Z.aiCore(a, 0, 0, .22, { hud: false }); tl.fromTo(a, { x: 100 + i * 120, y: 820 }, { x: tx, y: 470, duration: 1.1, ease: 'power2.inOut', immediateRender: true }, at('use') - .6 + i * .2); });
+    [380, 800].forEach((tx, i) => { const a = put(sc.front, 0, 0, 1); Z.aiCore(a, 0, 0, .36, { hud: false }); tl.fromTo(a, { x: 100 + i * 120, y: 820 }, { x: tx, y: 470, duration: 1.1, ease: 'power2.inOut', immediateRender: true }, at('use') - .6 + i * .2); });
     [380, 800].forEach((x, i) => { const ok = put(sc.front, x, 380, .8); K.check(ok, '#7fe0c4'); pop(ok, at('use') + .5 + i * .15, { origin: '50% 50%', from: .1, ease: 'back.out(3)' }); });
-    const badG = put(sc.front, 0, 0, 1); const bad = Z.aiCore(badG, 0, 0, .22, { hud: false });
+    const badG = put(sc.front, 0, 0, 1); const bad = Z.aiCore(badG, 0, 0, .36, { hud: false });
     K.el('circle', { r: 120, fill: 'none', stroke: '#df8466', 'stroke-width': 10 }, bad.inner);
     tl.fromTo(badG, { x: 1550, y: 820 }, { x: 1220, y: 470, duration: 1.0, ease: 'power2.inOut', immediateRender: true }, at('misuse') - .7);
     const no = put(sc.front, 1220, 380, .8); K.cross(no, '#df8466');
@@ -149,7 +151,7 @@ export default function (S) {
       tl.fromTo(p, { x: 800, y: 660, autoAlpha: 0, rotation: 0 }, { x: 420 + i * 190, y: 420 - (i % 2) * 80, autoAlpha: 1, rotation: (i - 2) * 14, duration: 1, ease: 'expo.out', immediateRender: true }, fc + .25 + i * .08);
     }
     const r = actor(sc.front, 330, 900, 1.05, { ...ROBERT, mood: 'flat' }, 'point');
-    life(r, t0, t1, 5);
+    life(r, t0, t1, 5); talk(r, t0, t1);
     express(tl, r.f, fc + .4, 'happy');
     pose(tl, r.f, 'hold', fc + .6, .5);
     label('forthcoming', fc, { x: 800, y: 92, ax: 800, ay: 620, hold: 1.1, parent: sc.front });

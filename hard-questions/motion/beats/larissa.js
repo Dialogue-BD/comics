@@ -17,7 +17,7 @@ const SON = { skin: SKIN.s4, hair: 'crop', hairColor: HAIRC.black, top: '#5b8fb8
 
 export default function (S) {
   const { K, tl, at, end, scene, label, pop, draw, loop, spin, count, burst, flow } = S;
-  const { actor, life, put, walkIn, walkTo } = helpers(S);
+  const { actor, life, put, walkIn, walkTo, talk, motes } = helpers(S);
   const D = S.duration;
 
   /* Larissa's writing room, used for scenes 6 and 7. */
@@ -43,7 +43,7 @@ export default function (S) {
     const towers = [[860, 300, 560], [1110, 260, 640], [1350, 240, 520]].map(([x, w, h], i) => { const t = Z.tower(sc.mid, x, 720, 1, { w, h, glass: [['#a9cde0', '#5f8fae'], ['#b9d6e6', '#6f9cb8'], ['#a0c4d8', '#57849f']][i] }); return t; });
     towers.forEach((t, i) => tl.fromTo(t, { y: 120, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .8, ease: 'expo.out', immediateRender: true }, at('companies') - .4 + i * .12));
     const l = actor(sc.front, 380, 900, 1.08, { ...LARISSA, mood: 'smile' }, 'present');
-    life(l, t0, t1, 1);
+    life(l, t0, t1, 1); talk(l, t0, t1);
     const sp = put(sc.front, 520, 300, 1); const bub = K.speech(sp, { w: 150, h: 110 });
     const o = Z.orb(bub.inner, 0, 0, .65);
     pop(sp, at('question'), { origin: '0% 100%', from: .2 });
@@ -69,7 +69,7 @@ export default function (S) {
     K.el('path', { d: 'M480 690 L1120 690 L1340 900 L260 900Z', fill: Z.grad(sc.mid, ['#8a6a4a', '#6b4f36']) }, sc.mid);
     K.el('path', { d: 'M480 690 L1120 690 L1126 700 L474 700Z', fill: '#b08a62' }, sc.mid);
     const l = actor(sc.front, 300, 980, 1.2, { ...LARISSA, mood: 'flat' }, 'pointUp');
-    life(l, t0, t1, 2); express(tl, l.f, at('mission'), 'focused');
+    life(l, t0, t1, 2); talk(l, t0, t1); express(tl, l.f, at('mission'), 'focused');
     label('mission', at('mission'), { x: 640, y: 92, ax: 640, ay: 200, hold: .75, parent: sc.front });
     label('driving force', at('driving'), { x: 1000, y: 92, ax: 1000, ay: 230, hold: 1.2, parent: sc.front });
   }
@@ -90,7 +90,7 @@ export default function (S) {
     life(s, t0, t1, 3);
     walkTo(s, at('son') - .2, 200, 1.2);
     const l = actor(sc.mid, 300, 860, .95, { ...LARISSA, mood: 'flat' }, 'chin');
-    life(l, t0, t1, 4);
+    life(l, t0, t1, 4); talk(l, t0, t1);
     const hand = put(sc.front, 1700, 520, 1.3); K.robotHand(hand);
     tl.fromTo(hand, { x: 0 }, { x: -440, duration: .8, ease: 'power3.out', immediateRender: true }, at('rob') - .2);
     tl.to(dr.leaf, { scaleX: 1, duration: .5, ease: 'power3.in', svgOrigin: `${dr.leaf.dataset.ox} 0` }, at('opportunity') - .25);
@@ -136,6 +136,7 @@ export default function (S) {
     K.el('rect', { x: -200, y: 690, width: 2000, height: 300, fill: Z.grad(sc.back, ['#a6c58d', '#7fae6b']) }, sc.back);
     Z.campus(sc.back, 1040, 700, 1);
     Z.treeRound(sc.back, 560, 700, 1.1); Z.treeRound(sc.back, 1480, 700, 1);
+    Z.grassTufts(sc.front, 905);
     K.el('path', { d: 'M440 900 C700 820 900 760 1040 700', stroke: '#e9e3d4', 'stroke-width': 70, fill: 'none', 'stroke-linecap': 'round', opacity: .9 }, sc.back);
     // Analyze and criticize: an essay, a lens, red marks.
     const pg = put(sc.front, 330, 380, 1.3); K.doc(pg, { lines: 5 });
@@ -166,7 +167,8 @@ export default function (S) {
     const { lp, laptop } = study(sc);
     laptop.lines.forEach((ln, i) => draw(ln, t0 + .3 + i * .15, .3));
     const l = actor(sc.mid, 470, 900, 1.05, { ...LARISSA, mood: 'smile' }, 'write');
-    life(l, t0, t1, 7);
+    life(l, t0, t1, 7); talk(l, t0, t1);
+    motes(sc.back, [1000, 160, 420, 520], t0, t1, 14);
     const ai = put(sc.front, 1150, 330, 1); const core = Z.aiCore(ai, 0, 0, .4);
     pop(ai, at("ai's") - .1, { origin: '50% 50%', from: .1 });
     const cap = at('capabilities');
@@ -188,7 +190,7 @@ export default function (S) {
     const { laptop } = study(sc);
     laptop.lines.forEach((ln, i) => { ln.setAttribute('stroke', i % 2 ? '#7fe0c4' : '#ffd38a'); draw(ln, at('writing') - .2 + i * .14, .3); });
     const l = actor(sc.mid, 470, 900, 1.05, { ...LARISSA, mood: 'grin' }, 'write');
-    life(l, t0, t1, 8);
+    life(l, t0, t1, 8); talk(l, t0, t1);
     const ai = put(sc.mid, 1040, 560, 1); Z.aiCore(ai, 0, 0, .45, { face: true, hud: false });
     pop(ai, t0 + .1, { origin: '50% 50%', from: .2 });
     loop(ai, t0 + .7, t1, { y: -12 }, 1.4);
@@ -214,7 +216,7 @@ export default function (S) {
     K.el('rect', { x: -200, y: -200, width: 2000, height: 1300, fill: Z.grad(sc.back, ['#2c4a6a', '#5a4a7a', '#c97a6a']) }, sc.back);
     Z.bokeh(sc.back, 18);
     const l = actor(sc.mid, 470, 1300, 1.7, { ...LARISSA, mood: 'smile' }, 'chin');
-    life(l, t0, t1, 9);
+    life(l, t0, t1, 9); talk(l, t0, t1);
     const ai = put(sc.mid, 1260, 470, 1); Z.aiCore(ai, 0, 0, .55, { face: true });
     pop(ai, at('use ai') + .1, { origin: '50% 50%', from: .2 });
     const gen = at('generate');

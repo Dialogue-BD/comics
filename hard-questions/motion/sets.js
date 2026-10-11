@@ -45,6 +45,10 @@ export function room(layer, pal, { horizon = 640, wainscot = true } = {}) {
     R(r, -200, horizon - 176, 2000, 10, 0, shade(pal.trim, .2));
   }
   R(r, -200, horizon - 18, 2000, 18, 0, shade(pal.trim, -.25));
+  // Ceiling shadow and corner falloff give the wall some depth.
+  R(r, -200, -200, 2000, 330, 0, grad(r, [['#000', .16], ['#000', 0]]));
+  R(r, -200, -200, 420, horizon + 200, 0, grad(r, [['#000', .08], ['#000', 0]], 'h'));
+  R(r, 1380, -200, 420, horizon + 200, 0, grad(r, [['#000', 0], ['#000', .1]], 'h'));
   // Floor with perspective planks
   P(r, `M-200 ${horizon} H1800 V1100 H-200Z`, grad(r, [pal.floor, pal.floorDark]));
   for (let i = -8; i <= 8; i++) L(r, `M${800 + i * 110} ${horizon} L${800 + i * 330} 1100`, shade(pal.floorDark, -.12), 2, { opacity: .35 });
@@ -488,4 +492,24 @@ export function stringLights(layer, x1, x2, y, sag = 40) {
   s.bulbs = [];
   for (let i = 1; i < 14; i++) { const t = i / 14, bx = x1 + (x2 - x1) * t, by = y + sag * 4 * t * (1 - t); const b = g(s); place(b, bx, by + 8); const gl = glow(b, 0, 0, 24, '#ffd38a', .7); Cc(b, 0, 0, 6, '#ffe2a8'); b.setAttribute('opacity', .25); s.bulbs.push(b); }
   return s;
+}
+export function armchair(layer, x, y, s = 1, color = '#c96a4a') {
+  const a = g(layer, { class: 'armchair' }); place(a, x, y, s);
+  contact(a, 0, 4, 170);
+  R(a, -130, -290, 260, 220, 50, grad(a, [shade(color, .1), shade(color, -.08)], 'h'));
+  R(a, -100, -270, 200, 150, 40, shade(color, .14));
+  R(a, -160, -170, 70, 160, 30, grad(a, [shade(color, .05), shade(color, -.15)], 'h'));
+  R(a, 90, -170, 70, 160, 30, grad(a, [shade(color, -.02), shade(color, -.2)], 'h'));
+  R(a, -100, -110, 200, 70, 22, shade(color, .08));
+  R(a, -110, -44, 220, 30, 12, shade(color, -.22));
+  R(a, -120, -14, 18, 16, 4, '#5a4a3a'); R(a, 102, -14, 18, 16, 4, '#5a4a3a');
+  return a;
+}
+export function grassTufts(layer, y = 900, color = '#3f7a4a') {
+  const t = g(layer, { class: 'tufts' });
+  for (const [x, s] of [[-40, 1.2], [90, .9], [1480, 1.1], [1600, 1.3], [1380, .8]]) {
+    const tf = g(t); place(tf, x, y, s);
+    for (let i = -4; i <= 4; i++) P(tf, `M${i * 12} 0 Q${i * 16} -60 ${i * 26} ${-110 - (i * i * 3) % 40} Q${i * 10 + 6} -50 ${i * 12 + 10} 0Z`, i % 2 ? color : shade(color, -.15));
+  }
+  return t;
 }

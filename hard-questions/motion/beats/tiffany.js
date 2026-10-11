@@ -20,7 +20,7 @@ const CROWD = [
 
 export default function (S) {
   const { K, tl, at, end, scene, label, pop, draw, loop, spin, count, burst, flow } = S;
-  const { actor, life, put, walkIn, walkTo, drainTo } = helpers(S);
+  const { actor, life, put, walkIn, walkTo, drainTo, talk } = helpers(S);
   const D = S.duration;
 
   /* 1 · I am hesitant about the technology. */
@@ -31,7 +31,7 @@ export default function (S) {
     Z.frame(sc.back, 240, 200, 160, 130, '#8fb27f');
     Z.plant(sc.back, 200, 700, 1);
     const tf = actor(sc.mid, 560, 870, 1.12, { ...TIFFANY, mood: 'flat' }, 'idle');
-    life(tf, 0, t1, 1);
+    life(tf, 0, t1, 1); talk(tf, t0, t1);
     const h = at('hesitant');
     tl.to(tf, { x: -60, duration: .7, ease: 'power2.out' }, h);
     tilt(tl, tf.f, h, -6);
