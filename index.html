@@ -1177,7 +1177,7 @@
           </p>
 
           <div class="slide-url-box">
-            <span id="slide-url-text" class="slide-url-text">https://twinhall.github.io/comics/good-bird/</span>
+            <span id="slide-url-text" class="slide-url-text">https://dialogue-bd.com/good-bird/</span>
             <div class="slide-url-actions">
               <button id="btn-copy-link" class="slide-action-btn" type="button">📋 Copy</button>
               <a id="btn-open-link" class="slide-action-btn" href="#" target="_blank" rel="noopener">↗ Open</a>
@@ -1556,27 +1556,19 @@
     var progressInterval = null;
     var progressStart = 0;
 
-    // Production base URL fallback (for when running locally or on file://)
-    var productionOrigin = "https://twinhall.github.io/comics";
+    // Canonical public site. Share links and QR codes always point here
+    // unless the page is already being served from the domain itself, so
+    // previews (localhost, file://, Replit dev, GitHub Pages) never leak
+    // a stray github.io or preview link onto a projected QR code.
+    var productionOrigin = "https://dialogue-bd.com";
 
     function getAbsoluteUrl(relPath) {
       var cleanRel = relPath.replace(/^\.?\//, "").replace(/^\//, "");
-      var origin = window.location.origin;
-      var pathname = window.location.pathname;
-
-      // If running on local server or file protocol, default to live GitHub Pages
-      if (!origin || origin.includes("localhost") || origin.includes("127.0.0.1") || origin === "null" || window.location.protocol === "file:") {
-        return "https://dialogue-bd.github.io/comics/" + cleanRel;
+      var host = window.location.hostname || "";
+      if (/(^|\.)dialogue-bd\.com$/.test(host)) {
+        return window.location.origin + "/" + cleanRel;
       }
-
-      // Compute base path on current host. Strip a trailing filename
-      // (e.g. /index.html -> ""), then any legacy /qr subpath
-      // (e.g. /comics/qr/ -> /comics), then a trailing slash.
-      var basePath = pathname
-        .replace(/\/[^\/]*\.[a-zA-Z0-9]+$/, "")
-        .replace(/\/qr\/?.*$/, "")
-        .replace(/\/+$/, "");
-      return origin + (basePath ? basePath : "") + "/" + cleanRel;
+      return productionOrigin + "/" + cleanRel;
     }
 
     /* ------------------------------------------------------------- */

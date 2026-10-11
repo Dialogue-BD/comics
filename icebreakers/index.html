@@ -424,8 +424,7 @@ if (isLockedView){
 }
 
 function questionShareUrl(id){
-  const localHost = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-  if (localHost) return `https://dialogue-bd.github.io/comics/icebreakers/?question=${id}`;
+  if (!/(^|\.)dialogue-bd\.com$/.test(location.hostname)) return `https://dialogue-bd.com/icebreakers/?question=${id}`;
   const url = new URL(location.href);
   url.search = "";
   url.hash = "";
