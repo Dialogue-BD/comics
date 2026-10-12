@@ -10,28 +10,30 @@ export default function TeacherNotes({ onClose }) {
         <button className="icon-btn dlg-x" onClick={onClose} aria-label="Close"><IClose /></button>
         <p className="kicker">For the teacher · not shown on the projected screen</p>
         <h2 id="tn-h">Running Voice Lab</h2>
-        <p className="lead">Seven short units, about ten minutes each. The aim is <strong>intelligibility, not a native accent</strong>: speech many listeners can follow with less effort.</p>
+        <p className="lead">Ten short units, about ten minutes each. The aim is <strong>intelligibility, not a native accent</strong>: speech many listeners can follow with less effort.</p>
 
         <h3>The order</h3>
         <ul className="sq-list">
-          <li><strong>The music first</strong> (Units 1–2). Word stress, thought groups and pauses do the most for comprehensibility in spontaneous speech, and they are where Bangla and English differ most.</li>
-          <li><strong>Then the sounds</strong> (Units 3–7), in order of how often they change meaning for Bangla speakers: vowel length, voicing, aspiration, clusters. TH comes last and is taught for recognition only.</li>
+          <li><strong>The music first</strong> (Units 1–5): word stress, big and small words in a sentence, thought groups, linking, numbers. Stress, rhythm and grouping do the most for how easily people understand spontaneous speech, and they are where Bangla and English differ most.</li>
+          <li><strong>Then the sounds</strong> (Units 6–10), in order of how often they change meaning for Bangla speakers: vowel length, voice and air, the puff, clusters. TH comes last and is taught for recognition.</li>
         </ul>
 
-        <h3>Each unit: Hear → Say → Play</h3>
+        <h3>Each unit is one page</h3>
         <ul className="sq-list">
-          <li><strong>Hear</strong> on the projector. Each picture is drawn from the recording itself: the line is the voice’s real pitch, the gold circles are the stressed syllables, the bars are loudness. Teach students to read the picture once — the four symbols on the opening page — and then let the sound and motion do the explaining.</li>
-          <li><strong>Say</strong> in pairs on one phone. Students listen, then say each item three to five times. <em>Record me</em> is optional: it draws the student’s own pitch line in blue over the model so they can compare the shape. There is no score — a machine score is not a fair judge of pronunciation.</li>
-          <li><strong>Play</strong> alone or in pairs: hear a word, choose. Every step can be skipped; nothing is locked.</li>
+          <li>Students scroll down through <strong>Hear → Say → Play</strong>. There is no Next button; the bar at the top shows where they are and jumps to a step.</li>
+          <li><strong>Hear</strong> on the projector. The pictures are drawn from the recordings: the brush line is the voice’s real pitch (thick on the big beat), the ball bounces from beat to beat, small words shrink. In the sound units a front and a side view of the mouth move with each recording; for long and short vowels the cheek muscles pull tight (coral) or let go (blue).</li>
+          <li><strong>Say</strong> in pairs on one phone: listen, then say it three to five times. <em>Record me</em> draws the student’s own pitch line over the model. There is no score.</li>
+          <li><strong>Play</strong>: hear, choose, see why. Nothing is locked.</li>
         </ul>
 
         <h3>On the projector</h3>
-        <p>Press <kbd>P</kbd> or the TV button for large type. <kbd>→</kbd> or <kbd>Space</kbd> moves on, <kbd>←</kbd> goes back. With “Play sound automatically” on, each listening screen counts down 3–2–1 and plays; tap the countdown to cancel.</p>
+        <p>Press <kbd>P</kbd> or the TV button for large type. <kbd>→</kbd> or <kbd>Space</kbd> scrolls to the next section, <kbd>←</kbd> back. With “Play sound as I scroll” on, a listening section plays once when it reaches the middle of the screen.</p>
 
         <h3>Things to know</h3>
         <ul className="sq-list">
-          <li>The “melody off” sentence in Unit 2 is the same recording with its pitch flattened by computer, so only the melody changes.</li>
-          <li>The recordings come from the Voice Lab prototypes and use very few voices. Research on listening training favours many different voices, so recordings from other speakers would make this stronger.</li>
+          <li>The “melody off” sentence in Unit 3 is the same recording with its melody squashed by computer. It keeps the small natural wobble of the voice, so it sounds like a person speaking in a monotone.</li>
+          <li><em>desert / dessert</em> (Unit 6) has no recording yet: say both aloud. Add <code>dec-desert.mp3</code> and <code>dec-dessert.mp3</code> to the audio folder (and measure them) and play buttons appear.</li>
+          <li>The recordings use very few voices. Research on listening training favours many different voices, so recordings from other speakers would make this stronger.</li>
           <li>The Bangla explanations should be checked by a native speaker before wide use.</li>
           <li>No phone or data? Print the one-page cheat sheet from the menu.</li>
         </ul>

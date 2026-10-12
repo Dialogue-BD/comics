@@ -4,6 +4,7 @@ import { SettingsProvider } from './lib/settings';
 import App from './App';
 import './styles/brand.css';
 import './styles/app.css';
+import './styles/mouth.css';
 import './styles/print.css';
 
 createRoot(document.getElementById('root')).render(

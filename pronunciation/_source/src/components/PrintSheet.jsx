@@ -3,10 +3,13 @@ import React from 'react';
 import { UNITS } from '../content/units';
 
 const EX = {
-  'word-stress': [<><b>PHO</b>·to·graph → pho·to·<b>GRAPH</b>·ic</>, <>a·<b>BOUT</b> · <b>SO</b>·fa · sup·<b>PLY</b> <span className="pm">(weak = ə)</span></>, <>-tion -sion -ity -ic -ous → beat just before: in·for·<b>MA</b>·tion</>],
+  'word-stress': [<><b>PHO</b>·to·graph → pho·to·<b>GRAPH</b>·ic · un·<b>HAP</b>·py (un- stays light)</>, <>a·<b>BOUT</b> · <b>SO</b>·fa · sup·<b>PLY</b> <span className="pm">(weak = ə)</span></>, <>a <b>BLACK</b>board (one thing) · a black <b>BOARD</b> (a board that is black)</>],
+  'sentence-stress': [<>Big words big, small words rush: turn off the <b>LIGHT</b>.</>, <>the, a, to, for, and, my, was → quick and quiet.</>, <>One news word in each group: after the long <b>MEET</b>ing…</>],
+  linking: [<>go‿on · an‿apple · come‿in (“co-min”)</>, <>pick‿it‿up (“pi-cki-tup”) · turn‿off the light</>, <>Don’t stop after every word. Carry the sound across.</>],
+  numbers: [<>19 | 94 → nineteen ninety-<b>FOUR</b> · 20 | 26 → twenty twenty-<b>SIX</b></>, <>017 · 12 · 345 · 678 — small groups, small pauses</>, <>October twelfth · fourteen thousand taka · five thirty · four<b>TEEN</b> ≠ <b>FOR</b>ty</>],
   melody: [<>After the long <b>MEET</b>ing <i>//</i> I went straight <b>HOME</b> <i>//</i> and slept for <b>HOURS</b>.</>, <>Let’s eat, <i>//</i> Grandma! <span className="pm">≠</span> Let’s eat Grandma!</>, <>Hum the tune first: mm-<b>MM</b>-mm. Then say it.</>],
-  vowels: [<>team / Tim · beat / bit · fool / full · pool / pull</>, <>Open syllable → long: me, go, <b>ba</b>·by</>, <>Closed → short: cat, bed, <b>hop</b>·ping</>],
-  'voice-air': [<>air: f s · buzz: v z — fan / van · sip / zip</>, <>At the end, the vowel is longer before v, z: safe / save · price / prize</>, <>p pops · f hisses · w rounds — pin / fin · west / best · herd / hard</>],
+  vowels: [<>Long = tense, stretch and hold: team · beat · fool · pool. Short = relaxed: Tim · bit · full · pull</>, <>Open syllable → long: me, go, <b>ba</b>·by</>, <>Closed → short: cat, bed, <b>hop</b>·ping · <b>DES</b>ert (sand) ≠ des<b>SERT</b> (sweet)</>],
+  'voice-air': [<>air: f s · buzz: v z — fan / van · sip / zip</>, <>At the end, the vowel is longer before v, z: safe / save · price / prize</>, <>p pops · f hisses · w rounds — pin / fin · west / best</>, <>“er”: earth, earn, herd — tongue bunched in the middle (herd ≠ hard)</>],
   puff: [<>Hand test: <b>p</b>in / spin · <b>t</b>op / stop · <b>k</b>ey / ski</>, <><span lang="bn">ভ</span> ≠ v: teeth on lip, keep buzzing — van</>],
   clusters: [<>school (not <span lang="bn">ইস্কুল</span>) · street · splash · spring</>, <>Start on the s. No vowel before it.</>],
   th: [<>θ air: think · three · thank — ð buzz: this · that · those</>, <>think / sink · three / tree · thank / sank — use the context.</>],

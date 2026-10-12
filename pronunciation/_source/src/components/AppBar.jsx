@@ -3,6 +3,7 @@ import { useSettings, T } from '../lib/settings';
 import { IMenu, IClose, ITv, IPrint, IBook, STEP_ICON } from './Icons';
 import { UNITS, STEPS, UI } from '../content/units';
 import TeacherNotes from './TeacherNotes';
+import { getLenis, lockScroll } from '../lib/scroll';
 
 export function LangToggle() {
   const { bangla, setBangla } = useSettings();
@@ -30,6 +31,21 @@ export default function AppBar({ unit, stepKey, onStep, go }) {
     return () => ro.disconnect();
   }, []);
 
+  // how far down the page we are: a thin gold line under the bar
+  const prog = useRef(null);
+  useEffect(() => {
+    const set = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const p = h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0;
+      if (prog.current) prog.current.style.transform = `scaleX(${p.toFixed(4)})`;
+    };
+    set();
+    const l = getLenis();
+    if (l) l.on('scroll', set); else window.addEventListener('scroll', set, { passive: true });
+    return () => { if (l) l.off('scroll', set); else window.removeEventListener('scroll', set); };
+  }, []);
+  useEffect(() => { lockScroll(open || notes); }, [open, notes]);
+
   useEffect(() => {
     const k = (e) => {
       if (e.target && /input|textarea|select/i.test(e.target.tagName)) return;
@@ -49,7 +65,7 @@ export default function AppBar({ unit, stepKey, onStep, go }) {
           </a>
           <a className="brand-name" href="#/" onClick={(e) => { e.preventDefault(); go('#/'); }}>
             <span className="brand-g" aria-hidden="true">🎵</span>
-            <span className="brand-t">Voice Lab</span>
+            <span className="brand-t">Voice Lab{unit && <span className="brand-u"> · {unit.n} {unit.title.en}</span>}</span>
             {stage && <span className="on-tv">ON TV</span>}
           </a>
           {unit && (
@@ -73,6 +89,7 @@ export default function AppBar({ unit, stepKey, onStep, go }) {
             <button className="icon-btn" onClick={() => setOpen(true)} aria-label="Menu" aria-expanded={open}><IMenu /></button>
           </div>
         </div>
+        <span className="bar-progress" aria-hidden="true"><i ref={prog} /></span>
         {unit && (
           <nav className="steps-ctl is-narrow" aria-label="Steps">
             {unit.steps.map((s, i) => (

@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import engine from '../lib/audio';
+import React from 'react';
+import engine, { clip as getClip } from '../lib/audio';
 import { usePlayingId } from '../lib/hooks';
-import { T, useSettings } from '../lib/settings';
+import { T } from '../lib/settings';
 import { IPlay, IPause, IHand, IThroat, IEar } from './Icons';
-import { LABEL, UI } from '../content/units';
+import { LABEL } from '../content/units';
 
-export const labelOf = (id) => LABEL[id] || (id.split('-').slice(1).join('-'));
+export const labelOf = (id) => LABEL[id] || (getClip(id) ? getClip(id).words.map(w => w.w).join(' ') : id.split('-').slice(1).join('-'));
 
 // Play one clip, or several in a row.
 export function ClipButton({ ids, label, sub, className = '', variant = 'word', children, onPlayed, disabled }) {
@@ -19,7 +18,7 @@ export function ClipButton({ ids, label, sub, className = '', variant = 'word', 
     if (r === 'ended' && onPlayed) onPlayed();
   };
   return (
-    <button type="button" className={`clip-btn v-${variant} ${playing ? 'is-playing' : ''} ${className}`} onClick={click} disabled={disabled}
+    <button type="button" data-clip={list.join(' ')} className={`clip-btn v-${variant} ${playing ? 'is-playing' : ''} ${className}`} onClick={click} disabled={disabled}
       aria-label={`${playing ? 'Stop' : 'Play'} ${label || list.map(labelOf).join(', ')}`}>
       <span className="cb-ico">{playing ? <IPause /> : <IPlay />}</span>
       {children || (
@@ -36,7 +35,7 @@ export function L1Note({ text }) {
   if (!text) return null;
   return (
     <aside className="l1-note">
-      <span className="l1-tag" aria-hidden="true"><b>বাংলা</b><i>↔</i><b>English</b></span>
+      <span className="l1-tag" aria-hidden="true"><b lang="bn">বাংলা</b><i>↔</i><b>English</b></span>
       <T en={text.en} bn={text.bn} as="p" />
     </aside>
   );
@@ -55,52 +54,7 @@ export function Feel({ text, icon = 'hand' }) {
 
 export function Note({ text }) {
   if (!text) return null;
-  return <T en={text.en} bn={text.bn} as="p" className="scene-note" />;
-}
-
-// "Audio starts in 3" — only after the student has touched the page once, and only
-// when automatic sound is on. Tapping it plays now; the × cancels.
-export function Countdown({ ids, sceneKey }) {
-  const { autoplay } = useSettings();
-  const [n, setN] = useState(null);
-  const timer = useRef(null);
-  useEffect(() => {
-    if (!autoplay || !ids || !ids.length) return;
-    let cancelled = false;
-    const start = () => {
-      if (cancelled) return;
-      let k = 3; setN(k);
-      timer.current = setInterval(() => {
-        k -= 1;
-        if (k <= 0) { clearInterval(timer.current); setN(null); if (!cancelled) engine.sequence(ids); }
-        else setN(k);
-      }, 900);
-    };
-    const delay = setTimeout(() => { if (engine.unlocked && !engine.playingId()) start(); }, 700);
-    // any sound the student starts themselves cancels the countdown
-    const off = engine.subscribe(s => { if (s.playing && timer.current) { clearInterval(timer.current); timer.current = null; setN(null); } });
-    return () => { cancelled = true; clearTimeout(delay); clearInterval(timer.current); timer.current = null; off(); setN(null); };
-  }, [sceneKey, autoplay]);
-  if (n == null) return null;
-  return (
-    <div className="countdown" role="status">
-      <button className="cd-main" onClick={() => { clearInterval(timer.current); setN(null); engine.sequence(ids); }}>
-        <span className="cd-ring"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" /><circle cx="18" cy="18" r="15" className="cd-arc" style={{ strokeDashoffset: (n / 3) * 94 }} /></svg><b>{n}</b></span>
-        <T en={UI.startsIn.en} bn={UI.startsIn.bn} className="cd-l" />
-      </button>
-      <button className="cd-x" aria-label="Cancel" onClick={() => { clearInterval(timer.current); setN(null); }}>×</button>
-    </div>
-  );
-}
-
-export function useEnter(dep) {
-  const ref = useRef(null);
-  useEffect(() => {
-    if (!ref.current) return;
-    const kids = ref.current.querySelectorAll(':scope > .enter, :scope .enter');
-    gsap.fromTo(kids, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.07, ease: 'power3.out', clearProps: 'transform' });
-  }, [dep]);
-  return ref;
+  return <T en={text.en} bn={text.bn} as="p" className="rule-note" />;
 }
 
 export function EarDisc({ active }) {
@@ -111,3 +65,23 @@ export function EarDisc({ active }) {
     </div>
   );
 }
+
+// a syllable string with the stressed part big: [['pho',1],['to',0],['GRAPH',2]]
+export function Beats({ parts, className = '' }) {
+  return (
+    <span className={`beats ${className}`}>
+      {parts.map(([t, lv], i) => (
+        <React.Fragment key={i}>
+          <span className={`bt lv${lv}`}>{t}</span>
+          {i < parts.length - 1 && <span className="bt-dot" aria-hidden="true">·</span>}
+        </React.Fragment>
+      ))}
+    </span>
+  );
+}
+
+export const partsOf = (id) => {
+  const c = getClip(id);
+  if (!c) return [];
+  return c.words.flatMap(w => w.syl.map(s => [s.lv === 2 ? s.t.toUpperCase() : s.t, s.lv]));
+};

@@ -1,0 +1,26 @@
+/* ============================ the mouth diagram ============================ */
+.mouthdia{margin:0;display:flex;flex-direction:column;gap:calc(8px*var(--ui))}
+.md-panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:calc(10px*var(--ui))}
+.md-panel{position:relative;background:var(--surface-card);border:2px solid var(--ink);overflow:hidden}
+.md-panel svg{display:block;width:100%;height:auto}
+.md-tag{position:absolute;left:8px;top:6px;font:800 calc(.62rem*var(--ui))/1 var(--font-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--tx-muted)}
+.md-tag .bn{display:inline;letter-spacing:0;text-transform:none}
+.mouthdia figcaption{font-size:calc(.9rem*var(--ui));color:var(--tx-muted)}
+
+.md-skin{fill:#F7E5D8}
+.md-nose,.md-chin{fill:none;stroke:#C7957D;stroke-width:3;stroke-linecap:round}
+.md-cavity{fill:#4A1820;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round}
+.md-teeth{fill:#FFFDF6;stroke:var(--ink);stroke-width:1.8;stroke-linejoin:round}
+.md-tgap{fill:none;stroke:var(--ink);stroke-width:1.1;opacity:.4}
+.md-tongue{fill:#D2566A;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round}
+.md-lip,.md-lip-side{fill:#E2806C;stroke:var(--ink);stroke-width:2.6;stroke-linejoin:round}
+.md-muscles{transition:opacity .2s}
+.md-muscle{fill:none;stroke-linecap:round;transition:stroke .25s}
+.md-line{fill:none;stroke:var(--ink);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.md-faint{fill:none;stroke:var(--ink);stroke-width:1.4;stroke-dasharray:3 4;opacity:.22}
+.md-palate{fill:none;stroke:#B85A52;stroke-width:4.5;stroke-linecap:round}
+.md-box{stroke:var(--ink);stroke-width:1.8;transition:fill .1s}
+.md-folds{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linejoin:round}
+.md-ring{fill:none;stroke:var(--v-buzz);stroke-width:2.6;stroke-linecap:round}
+.md-air{fill:var(--v-air)}
+.mouthdia.small .md-tag{display:none}

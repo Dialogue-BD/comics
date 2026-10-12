@@ -8,22 +8,25 @@
 :root{
   --forest:#103D21; --forest-print:#134219; --forest-deep:#0C3319; --stage-green:#174629;
   --gold:#B9924F;   --gold-light:#D2B978;   --gold-soft:#F0E6CD;
-  --paper:#F4F1E6;  --card:#FFFDF7;         --mist:#F4F6F0;
-  --ink:#1D211C;    --ink-muted:#5F6A5C;
+  --paper:#FAF5E8;  --card:#FFFDF7;         --mist:#F4F6F0;
+  --ink:#17251F;    --ink-muted:#5F6A5C;
   --moss:#6F8F62;   --moss-soft:#E3EAD9;
   --clay:#B0563A;   --clay-ink:#8E402B;
 
-  /* voice colours */
-  --v-pitch:#103D21;           /* the melody line */
-  --v-glow:rgba(210,185,120,.55);
-  --v-beat:#B9924F;            /* the big beat */
-  --v-weak:#6F8F62;            /* small beats */
-  --v-air:#4E6E8E;             /* breath / noise */
-  --v-buzz:#B8741A;            /* voicing */
-  --v-you:#2F64A8;             /* the student's own voice */
-  --v-wave:#C9C3AE;
+  /* functional colours, as in the prototypes: high contrast, one job each */
+  --coral:#E0553A; --coral-ink:#B23B22; --coral-soft:#FCE3DB;
+  --blue:#1E7FA3;  --blue-ink:#15607D;  --blue-soft:#DCEFF4;
+  --gold-hi:#EFB732; --gold-hi-soft:#FFF0B5; --green-soft:#DFEEE2;
 
-  --radius-sm:7px; --radius-md:12px; --radius-pill:999px;
+  /* voice colours */
+  --v-ink:#17251F;             /* the calligraphy line */
+  --v-beat:#EFB732;            /* the ball, the big beat */
+  --v-air:var(--coral);        /* breath / noise */
+  --v-buzz:var(--blue);        /* voicing */
+  --v-you:#7B3FB5;             /* the student's own voice */
+  --v-flat:var(--coral);       /* melody off */
+
+  --radius-sm:4px; --radius-md:6px; --radius-pill:999px;
   --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
   --font-display:'Spectral','Source Serif 4',Georgia,serif;
   --font-ui:'Public Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
@@ -66,7 +69,6 @@
   --panel:#F1ECDB;
   --well:#F6F2E6;
   --focus:#14603A;
-  --v-wave:#B5AE96;
   --ui:1.3;
 }
 @media (max-height:980px){ :root[data-theme="stage"]{--ui:1.16} }

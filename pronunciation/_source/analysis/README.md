@@ -20,6 +20,14 @@ in `wav/`).
 Hand-checked values were read off spectrograms; they live in `MANUAL`, `VOWEL` and
 `ASP` in `finalize.py`, and the cluster tiles live in `TILES` in `src/content/units.js`.
 
-`pro-sent1-mono` and `pro-sent2-mono` are the natural sentences with their pitch
-flattened by Praat (PSOLA). The prototype's "flat" recording (`flat1`) turned out to
-have as much melody as the natural one, so it is not used.
+`pro-sent1-mono` and `pro-sent2-mono` (the "melody off" sentences) are made from the
+natural ones by `monotone.py`: the slow melody is squashed to about a tenth while the
+voice's small natural wobble and a gentle downward drift are kept, then Praat (PSOLA)
+resynthesises it — a person speaking in a monotone, not a robot. The prototype's "flat"
+recording (`flat1`) turned out to have as much melody as the natural one, so it is not
+used.
+
+`phones.py` adds phone timings (`ph`) to the single-word clips for the moving mouth.
+
+The scripts read and write in `$VOICELAB_WORK` (`wav/`, `ana/out/`). To add clips without
+touching the others: `python3 analyse.py <id-or-prefix> …` then `python3 finalize.py --merge`.

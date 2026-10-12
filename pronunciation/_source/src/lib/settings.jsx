@@ -28,7 +28,7 @@ export function SettingsProvider({ children }) {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', stage ? 'stage' : 'paper');
     const m = document.querySelector('meta[name="theme-color"]');
-    if (m) m.setAttribute('content', stage ? '#E6E0CB' : '#F4F1E6');
+    if (m) m.setAttribute('content', stage ? '#E6E0CB' : '#FAF5E8');
   }, [stage]);
   useEffect(() => {
     document.body.classList.toggle('bangla', bangla);

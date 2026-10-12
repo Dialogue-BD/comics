@@ -57,6 +57,18 @@ export default function UnitGlyph({ unit, size = 120, live = false }) {
       case 'th':
         tl.fromTo(q('.gth'), { opacity: 0.35 }, { opacity: 1, duration: 0.5, stagger: 0.6, yoyo: true, repeat: 1 });
         break;
+      case 'rush':
+        tl.fromTo(q('.gr-big'), { scale: 0.7, transformOrigin: '50% 100%' }, { scale: 1, duration: 0.45, stagger: 0.5, ease: 'back.out(2.5)' }, 0)
+          .fromTo(q('.gr-small'), { x: -8, skewX: 0 }, { x: 0, skewX: -12, duration: 0.3, stagger: 0.5, ease: 'power2.out' }, 0.25).to({}, { duration: 0.6 });
+        break;
+      case 'link': {
+        const p = el.querySelector('.gk');
+        tl.fromTo(p, { strokeDashoffset: 60 }, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.out' }).to({}, { duration: 1 });
+        break;
+      }
+      case 'digits':
+        tl.fromTo(q('.gd'), { opacity: 0.3, y: 6 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.35, ease: 'power2.out' }).to({}, { duration: 0.8 });
+        break;
       default:
     }
     return () => tl.kill();
@@ -108,6 +120,25 @@ export default function UnitGlyph({ unit, size = 120, live = false }) {
               <text x={14 + [0, 30, 60, 108][i] + [14, 14, 23, 14][i]} y={57} textAnchor="middle" className="gtt">{t}</text>
             </g>
           ))}
+        </g>
+      )}
+      {unit.glyph === 'rush' && (
+        <g>
+          <text x={10} y={64} className="gr-big gl">big</text>
+          <text x={62} y={64} className="gr-small gs-t">the</text>
+          <text x={92} y={64} className="gr-big gl">word</text>
+          <path d="M8 76H152" className="gbase" />
+        </g>
+      )}
+      {unit.glyph === 'link' && (
+        <g>
+          <text x={14} y={58} className="gl">go</text><text x={92} y={58} className="gl">on</text>
+          <path d="M58 64Q74 86 90 64" className="gk" strokeDasharray="60" />
+        </g>
+      )}
+      {unit.glyph === 'digits' && (
+        <g>
+          <text x={12} y={64} className="gd gl big">19</text><text x={72} y={64} className="gd gslash gl big">/</text><text x={92} y={64} className="gd gl big coral">94</text>
         </g>
       )}
       {unit.glyph === 'th' && (
