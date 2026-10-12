@@ -21,9 +21,9 @@ export default function TeacherNotes({ onClose }) {
 
         <h3>Each unit is one page</h3>
         <ul className="sq-list">
-          <li>Students scroll down through <strong>Hear → Say → Play</strong>. There is no Next button; the bar at the top shows where they are and jumps to a step.</li>
+          <li>Students scroll down through <strong>Hear → Play</strong>. There is no Next button; the bar at the top shows where they are and jumps to a step.</li>
           <li><strong>Hear</strong> on the projector. The pictures are drawn from the recordings: the brush line is the voice’s real pitch (thick on the big beat), the ball bounces from beat to beat, small words shrink. In the sound units a front and a side view of the mouth move with each recording; for long and short vowels the cheek muscles pull tight (coral) or let go (blue).</li>
-          <li><strong>Say</strong> in pairs on one phone: listen, then say it three to five times. <em>Record me</em> draws the student’s own pitch line over the model. There is no score.</li>
+          <li>There is no recording step: after each sound, let the class say it back two or three times. <em>Both voices ×2</em> gives them four models to copy.</li>
           <li><strong>Play</strong>: hear, choose, see why. Nothing is locked.</li>
         </ul>
 
@@ -31,7 +31,7 @@ export default function TeacherNotes({ onClose }) {
         <p>Every recording comes in two voices: <strong>Alice</strong> (British) and <strong>Brian</strong> (American). Choose one at the top, or press <kbd>V</kbd>. After any sound, a small bar at the bottom offers it again: tap a voice, or <em>Both voices ×2</em> to hear each say it twice. The pictures follow whoever is speaking. A pair that is compared on screen (team / Tim) always plays in one voice; where Brian has not recorded both words, the pair stays with Alice.</p>
 
         <h3>On the projector</h3>
-        <p>Press <kbd>P</kbd> or the TV button for large type. <kbd>→</kbd> or <kbd>Space</kbd> scrolls to the next section, <kbd>←</kbd> back. With “Play sound as I scroll” on, a listening section plays once when it reaches the middle of the screen.</p>
+        <p>Press <kbd>P</kbd> or the TV button for the projector layout. Each section fits on one screen: <kbd>→</kbd> or <kbd>Space</kbd> moves to the next section, <kbd>←</kbd> back. Where a section has several pairs, words or sentences, it shows one at a time — tap one along the top, or <em>Next</em>. The mouth sits beside the words, so the class sees the word and the mouth together. With “Play sound as I scroll” on, a listening section plays once when it reaches the middle of the screen.</p>
 
         <h3>Things to know</h3>
         <ul className="sq-list">

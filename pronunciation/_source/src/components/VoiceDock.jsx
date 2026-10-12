@@ -1,7 +1,8 @@
 // After any recording plays, a small dock offers it again in every voice: tap a voice
 // to hear just that one, or "Both voices" to hear each voice say it twice. The picture
 // on the page follows whoever is speaking. The dock stays out of the way: it never
-// appears for a game's hidden answer, and it slips away when you scroll on or wait.
+// appears for a game's hidden answer or for autoplay, and it slips away when you scroll
+// on or wait.
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import engine, { VOICES } from '../lib/audio';
@@ -34,7 +35,9 @@ export default function VoiceDock() {
     if (s.playing) {
       if (s.quiz) { if (!S.running) setOpen(false); return; }
       const mine = s.seq && (s.seq.kind === 'every' || s.seq.kind === 'dock');
-      if (!mine && engine.voicesOf(s.id).length > 1) {
+      // only after someone taps a sound: autoplay while scrolling does not call the dock up
+      const auto = s.seq && s.seq.kind === 'auto';
+      if (!mine && !auto && engine.voicesOf(s.id).length > 1) {
         if (S.last !== s.id) { S.last = s.id; setId(s.id); }
         S.y = window.scrollY;
         setOpen(true);
