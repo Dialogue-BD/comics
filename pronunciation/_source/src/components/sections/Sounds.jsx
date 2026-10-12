@@ -11,8 +11,8 @@ import PuffMeter from '../visuals/PuffMeter';
 import engine, { clip as getClip } from '../../lib/audio';
 import { usePlayingId, useClipFrame } from '../../lib/hooks';
 import { T } from '../../lib/settings';
-import { ClipButton, Note, L1Note, Feel, Beats, labelOf } from '../Bits';
-import { IPlay, IPause } from '../Icons';
+import { ClipButton, Note, L1Note, Feel, Beats, labelOf, TabBar, NarrowSwitch, SwipeHint } from '../Bits';
+import { IPlay, IPause, IArrowR } from '../Icons';
 import { UI, TILES } from '../../content/units';
 
 export const LBL = {
@@ -37,47 +37,61 @@ function useLastPlayed(ids, first) {
 }
 
 // ---------------------------------------------------------------- pairs
+// One pair at a time: tabs to pick the pair, then the two words, their picture and the
+// mouth (front and side, side by side) all on one screen, so the mouth moves right
+// next to the word being spoken. No scrolling between a word and its mouth.
 export function PairsSection({ scene }) {
   const v = scene.visual;
+  const [k, setK] = useState(0);
   const all = scene.pairs.flatMap(p => [p.a, p.b]);
-  const poseOf = (id) => {
-    for (const p of scene.pairs) {
-      if (p.pose && p.a === id) return p.pose[0];
-      if (p.pose && p.b === id) return p.pose[1];
-    }
-    return focusShape((getClip(id) || {}).ph);
-  };
-  const labelOfId = (id) => { for (const p of scene.pairs) { if (p.a === id) return p.la; if (p.b === id) return p.lb; } return ''; };
-  const last = useLastPlayed(all, all[0]);
-  const withMouth = v !== 'tiles' && v !== 'endvowel';
+  // one scale for every pair, so switching pairs compares like with like
   const shared = Math.max(...all.map(id => { const c = getClip(id); return c.off - c.on + 0.1; }));
   const tspan = v === 'tiles' ? tilesSpan(all) : 0;
   const vmax = Math.max(...all.map(id => { const c = getClip(id); const s = c.vowel || [0, 0.3]; return s[1] - s[0]; }));
-  const status = lbl(labelOfId(last));
+  const go = (i) => { engine.stop(); setK((i + scene.pairs.length) % scene.pairs.length); };
+  const many = scene.pairs.length > 1;
   return (
     <>
       {scene.feel && <Feel text={scene.feel} icon={v === 'puff' ? 'hand' : 'throat'} />}
-      <div className={`pairs-layout ${withMouth ? 'with-mouth' : ''}`}>
-        {withMouth && (
-          <div className="mouth-col">
-            <div className="mouth-stick">
-              <MouthDiagram ids={all} pose={poseOf(last)} poseFor={poseOf} muscles={v === 'vowel'} />
-              <div className={`mouth-status ${v === 'vowel' ? (TENSE[labelOfId(last)] ? 'tense' : 'relaxed') : ''}`}>
-                <b>{labelOf(last)}</b> <T en={status.en} bn={status.bn} block={false} />
-              </div>
-              {v === 'puff' && <PuffMeter ids={all} size={170} />}
-            </div>
+      <div className="pair-stage">
+        {many && (
+          <div className="ps-tabs" role="tablist" aria-label="Pairs">
+            {scene.pairs.map((q, i) => (
+              <button key={i} role="tab" aria-selected={i === k} className={`ps-tab ${i === k ? 'on' : ''}`} onClick={() => go(i)}>
+                {labelOf(q.a)}<i>/</i>{labelOf(q.b)}
+              </button>
+            ))}
+            <button className="ps-next" onClick={() => go(k + 1)} aria-label="Next pair">Next pair <IArrowR /></button>
           </div>
         )}
-        <div className="pair-list">
-          {scene.pairs.map((p, i) => (
-            <PairCard key={i} p={p} v={v} shared={shared} tspan={tspan} vmax={vmax} />
-          ))}
-        </div>
+        <PairStage key={k} p={scene.pairs[k]} v={v} shared={shared} tspan={tspan} vmax={vmax} />
       </div>
       <Note text={scene.note} />
       <L1Note text={scene.l1} />
     </>
+  );
+}
+
+function PairStage({ p, v, shared, tspan, vmax }) {
+  const ids = [p.a, p.b];
+  const last = useLastPlayed(ids, ids[0]);
+  const withMouth = v !== 'tiles' && v !== 'endvowel';
+  const poseOf = (id) => (p.pose ? p.pose[id === p.a ? 0 : 1] : focusShape((getClip(id) || {}).ph));
+  const lab = last === p.b ? p.lb : p.la;
+  const status = lbl(lab);
+  return (
+    <div className={`ps-main ${withMouth ? 'with-mouth' : ''}`}>
+      {withMouth && (
+        <div className="ps-mouth">
+          <MouthDiagram ids={ids} pose={poseOf(last)} poseFor={poseOf} muscles={v === 'vowel'} />
+          <div className={`mouth-status ${v === 'vowel' ? (TENSE[lab] ? 'tense' : 'relaxed') : ''}`}>
+            <b>{labelOf(last)}</b> <T en={status.en} bn={status.bn} block={false} />
+            {v === 'puff' && <PuffMeter ids={ids} size={96} />}
+          </div>
+        </div>
+      )}
+      <div className="ps-stack"><PairCard p={p} v={v} shared={shared} tspan={tspan} vmax={vmax} /></div>
+    </div>
   );
 }
 
@@ -117,14 +131,12 @@ export function ErSection({ scene }) {
     return <>{w.slice(0, i)}<span className="er-hi">{m[0]}</span>{w.slice(i + m[0].length)}</>;
   };
   return (
-    <div className="pairs-layout with-mouth">
-      <div className="mouth-col">
-        <div className="mouth-stick">
-          <MouthDiagram ids={all} pose={last === scene.vs.b ? 'ah' : 'er'} poseFor={(id) => (id === scene.vs.b ? 'ah' : 'er')} />
-          <div className="mouth-status"><b>{labelOf(last)}</b> {last === scene.vs.b ? <T en="open “ar”: jaw down" bn="খোলা “ar”: চোয়াল নিচে" block={false} /> : <T en="“er”: tongue bunched in the middle" bn="“er”: জিভ মাঝখানে গুটানো" block={false} />}</div>
-        </div>
+    <div className="ps-main with-mouth">
+      <div className="ps-mouth">
+        <MouthDiagram ids={all} pose={last === scene.vs.b ? 'ah' : 'er'} poseFor={(id) => (id === scene.vs.b ? 'ah' : 'er')} />
+        <div className="mouth-status"><b>{labelOf(last)}</b> {last === scene.vs.b ? <T en="open “ar”: jaw down" bn="খোলা “ar”: চোয়াল নিচে" block={false} /> : <T en="“er”: tongue bunched in the middle" bn="“er”: জিভ মাঝখানে গুটানো" block={false} />}</div>
       </div>
-      <div className="pair-list">
+      <div className="ps-stack">
         <div className="pair-card">
           <T en="Same sound in all three" bn="তিনটিতেই একই ধ্বনি" className="kick coral" />
           <div className="er-words">
@@ -156,9 +168,14 @@ export function ErSection({ scene }) {
 
 // ---------------------------------------------------------------- open / closed
 export function DoorsSection({ scene }) {
+  // three ideas, one at a time: the rule, the double-letter twin, the desert/dessert question
+  const parts = ['Open or closed?', scene.twin.open.show.replace('·', '') + ' / ' + scene.twin.closed.show.replace('·', '')];
+  if (scene.ask) parts.push('desert / dessert');
+  const [k, setK] = useState(0);
   return (
     <>
-      <div className="board cols-2 doors-board">
+      <TabBar items={parts} k={k} onPick={setK} label="Parts" next="Next" />
+      {k === 0 && <div className="board cols-2 doors-board">
         {[['open', scene.open], ['closed', scene.closed]].map(([k, list]) => (
           <div key={k} className={`board-cell door-col ${k}`}>
             <span className="kick">{k === 'open' ? 'OPEN · ENDS IN A VOWEL' : 'CLOSED · ENDS IN A CONSONANT'}</span>
@@ -168,8 +185,8 @@ export function DoorsSection({ scene }) {
             </div>
           </div>
         ))}
-      </div>
-      <div className="twin">
+      </div>}
+      {k === 1 && <><div className="twin">
         {[['open', scene.twin.open], ['closed', scene.twin.closed]].map(([k, it]) => {
           const [a, b] = it.show.split('·');
           return (
@@ -183,8 +200,8 @@ export function DoorsSection({ scene }) {
           );
         })}
       </div>
-      <Note text={scene.note} />
-      {scene.ask && <AskCard ask={scene.ask} />}
+      <Note text={scene.note} /></>}
+      {k === 2 && scene.ask && <AskCard ask={scene.ask} />}
     </>
   );
 }
@@ -233,14 +250,17 @@ const DessertIcon = () => (
 
 // ---------------------------------------------------------------- ভ is not v
 export function BhvSection({ scene }) {
+  const [pick, setPick] = useState(0);
   return (
-    <div className="board cols-2 shadow-coral">
-      <div className="board-cell bhv-cell">
+    <>
+    <NarrowSwitch items={[<span lang="bn" key="b">ভ</span>, 'v']} k={pick} onPick={setPick} label="Compare" />
+    <div className={`board cols-2 shadow-coral pick-${pick}`}>
+      <div className="board-cell bhv-cell nz-0">
         <span className="bhv-sym" lang="bn">ভ</span>
         <MouthDiagram pose="pb" views={['front', 'side']} small />
         <T en="Lips close… then open with a breath." bn="ঠোঁট বন্ধ… তারপর নিঃশ্বাসসহ খোলে।" as="p" />
       </div>
-      <div className="board-cell bhv-cell">
+      <div className="board-cell bhv-cell nz-1">
         <span className="bhv-sym">v</span>
         <MouthDiagram ids={[scene.clip]} pose="fv" poseFor={() => 'fv'} views={['front', 'side']} small />
         <T en="Top teeth on the bottom lip. Lips never close. Keep buzzing." bn="উপরের দাঁত নিচের ঠোঁটে। ঠোঁট কখনো বন্ধ হয় না। গুঞ্জন চলতে থাকে।" as="p" />
@@ -248,6 +268,7 @@ export function BhvSection({ scene }) {
         <ClipButton ids={scene.clip} variant="pill" label="van" />
       </div>
     </div>
+    </>
   );
 }
 
@@ -255,9 +276,10 @@ export function BhvSection({ scene }) {
 export function ClustersSection({ scene }) {
   return (
     <>
-      <div className="board cols-2 shadow-blue">
+      <div className="board cols-2 cols-4-wide shadow-blue swipe">
         {scene.words.map(w => <ClusterCard key={w.clip} w={w} />)}
       </div>
+      <SwipeHint />
       <div className="row-actions"><ClipButton ids={scene.words.map(w => w.clip)} variant="pill" label={UI.playAll.en} /></div>
     </>
   );
@@ -291,14 +313,12 @@ export function ThGroupsSection({ scene }) {
   const last = useLastPlayed(all, all[0]);
   const voiced = scene.groups[1].clips.includes(last);
   return (
-    <div className="pairs-layout with-mouth">
-      <div className="mouth-col">
-        <div className="mouth-stick">
-          <MouthDiagram ids={all} pose="th" poseFor={() => 'th'} />
-          <div className="mouth-status"><b>{labelOf(last)}</b> {voiced ? <T en="air + buzz" bn="বাতাস + গুঞ্জন" block={false} /> : <T en="air only" bn="শুধু বাতাস" block={false} />}</div>
-        </div>
+    <div className="ps-main with-mouth">
+      <div className="ps-mouth">
+        <MouthDiagram ids={all} pose="th" poseFor={() => 'th'} />
+        <div className="mouth-status"><b>{labelOf(last)}</b> {voiced ? <T en="air + buzz" bn="বাতাস + গুঞ্জন" block={false} /> : <T en="air only" bn="শুধু বাতাস" block={false} />}</div>
       </div>
-      <div className="pair-list">
+      <div className="ps-stack">
         {scene.groups.map((g, i) => (
           <div key={i} className={`pair-card th-card ${i ? 'voiced' : 'air'}`}>
             <div className="th-top"><span className="th-sym">{g.label}</span><T en={g.name.en} bn={g.name.bn} className="kick" /></div>

@@ -1,5 +1,5 @@
 // One unit = one long page. No Next button: the student scrolls (smoothly, with
-// Lenis) from the hero through Hear → Say → Play, and on into the next unit.
+// Lenis) from the hero through Hear → Play, and on into the next unit.
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import AppBar from '../components/AppBar';
@@ -16,7 +16,6 @@ import UnitGlyph from '../components/UnitGlyph';
 import SplitText from '../reactbits/SplitText';
 import * as M from '../components/sections/Music';
 import * as S from '../components/sections/Sounds';
-import * as Say from '../components/sections/Say';
 import * as G from '../components/sections/Games';
 import * as A from '../components/sections/Accent';
 
@@ -25,7 +24,6 @@ const BODY = {
   legend: M.LegendSection, rushdemo: M.RushDemoSection, melody: M.MelodySection, pause: M.PauseSection, links: M.LinksSection,
   years: M.YearsSection, phone: M.PhoneSection, meaning: M.MeaningSection,
   pairs: S.PairsSection, er: S.ErSection, doors: S.DoorsSection, bhv: S.BhvSection, clusters: S.ClustersSection, thgroups: S.ThGroupsSection,
-  echo: Say.EchoSection, numbersay: Say.NumberSaySection,
   identify: G.IdentifyGame, stress: G.StressGame, compoundgame: G.CompoundGame, bigbeat: G.BigBeatGame, rush: G.RushGame,
   pausegame: G.PauseGame, linkgame: G.LinkGame, numbergame: G.NumberGame, clustergame: G.ClusterGame,
   accentpairs: A.AccentPairsSection, matters: A.MattersSection, accentgame: A.AccentGame,
@@ -96,7 +94,7 @@ export default function Unit({ unitId, idx, go }) {
     const t = setTimeout(() => {
       if (!engine.unlocked || engine.playingId()) return;
       autoplayed.current.add(sc.id);
-      engine.sequence(sc.autoplay);
+      engine.sequence(sc.autoplay, 0.35, { seq: { kind: 'auto' } });
     }, 900);
     return () => clearTimeout(t);
   }, [active, autoplay]);
