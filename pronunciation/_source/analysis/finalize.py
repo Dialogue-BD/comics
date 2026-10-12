@@ -4,9 +4,11 @@ Adds hand-checked syllable timings for multi-syllable words (read off
 spectrograms), a smoothed semitone pitch contour, the strong vowel core,
 air/voice spans and the aspiration (VOT) measure.
 """
-import json, numpy as np
+import json, os, sys, numpy as np
 
-A = json.load(open('/home/claude/ana/out/analysis.json'))
+WORK = os.environ.get('VOICELAB_WORK', '/home/claude')
+A = json.load(open(f'{WORK}/ana/out/analysis.json'))
+APP = os.path.join(os.path.dirname(__file__), '..', 'src', 'data', 'clips.json')
 STEP = 0.01
 
 # Hand-checked from fine-grid spectrograms: (syllable start, vowel onset, end) per syllable.
@@ -26,6 +28,23 @@ MANUAL = {
  'vow-supply': [(.07, .22, .30), (.30, .36, .88)],
  'clu-eekul': [(.03, .03, .45), (.45, .66, 1.03)],
  'clu-sitreet': [(.09, .29, .45), (.45, .55, 1.03)],
+}
+
+
+# Multi-word clips: per word, (syllable start, vowel onset, end) per syllable, read off
+# spectrograms where the DTW alignment drifted (short linked phrases, numbers).
+MANUAL_S = {
+ 'lnk-turn-off': [[(.04, .13, .33)], [(.33, .36, .56)], [(.56, .60, .66)], [(.66, .70, 1.30)]],
+ 'lnk-pick-it-up': [[(.06, .09, .21)], [(.21, .24, .37)], [(.37, .40, .80)]],
+ 'lnk-an-apple': [[(.04, .05, .28)], [(.28, .28, .47), (.47, .52, .80)]],
+ 'lnk-come-in': [[(.02, .09, .23)], [(.23, .24, .68)]],
+ 'lnk-go-on': [[(.03, .09, .26)], [(.26, .27, .62)]],
+ 'lnk-whats-up': [[(.04, .06, .32)], [(.32, .33, .66)]],
+ 'num-year1994': [[(.07, .10, .35), (.35, .40, .66)], [(.66, .68, .87), (.87, .92, 1.0)], [(1.0, 1.13, 1.48)]],
+ 'num-year2026': [[(.04, .12, .33), (.33, .36, .53)], [(.53, .60, .77), (.77, .79, .93)], [(.93, 1.03, 1.55)]],
+ 'num-price-14000': [[(.03, .12, .35), (.35, .41, .65)], [(.65, .72, .93), (.93, .97, 1.17)], [(1.19, 1.25, 1.40), (1.40, 1.42, 1.65)]],
+ 'num-date-oct12': [[(.05, .06, .20), (.20, .27, .47), (.47, .49, .65)], [(.65, .79, 1.30)]],
+ 'num-time-530': [[(.06, .14, .42)], [(.42, .50, .72), (.72, .80, 1.02)]],
 }
 
 
@@ -94,7 +113,7 @@ def finalize():
     res = {}
     import parselmouth as pm, librosa
     for k, d in A.items():
-        x, sr = librosa.load(f'/home/claude/wav/{k}.wav', sr=None)
+        x, sr = librosa.load(f'{WORK}/wav/{k}.wav', sr=None)
         n = len(d['f0'])
         S = np.abs(librosa.stft(x, n_fft=1024, hop_length=int(sr * STEP), win_length=int(sr * .025))) ** 2
         fr = librosa.fft_frequencies(sr=sr, n_fft=1024)
@@ -108,6 +127,11 @@ def finalize():
             for s, (a, v, e) in zip(w['syl'], MANUAL[k]):
                 s['s'], s['v'], s['e'] = a, [v, e], e
             w['s'], w['e'] = MANUAL[k][0][0], MANUAL[k][-1][2]
+        if k in MANUAL_S:
+            for w, sy in zip(words, MANUAL_S[k]):
+                for s, (a, v, e) in zip(w['syl'], sy):
+                    s['s'], s['v'], s['e'] = a, [v, e], e
+                w['s'], w['e'] = sy[0][0], sy[-1][2]
         # strong vowel core per syllable: voiced & band >= local max - 6 dB
         for w in words:
             for s in w['syl']:
@@ -156,9 +180,18 @@ def finalize():
 
 if __name__ == '__main__':
     r = finalize()
-    js = json.dumps(r, separators=(',', ':'))
-    open('/home/claude/ana/out/clips.json', 'w').write(js)
+    if '--merge' in sys.argv:
+        # add / replace only the clips analysed this run; keep the rest of the app's data
+        app = json.load(open(APP))
+        app.update(r)
+        r = dict(sorted(app.items()))
+        js = json.dumps(r, separators=(',', ':'))
+        open(APP, 'w').write(js)
+    else:
+        js = json.dumps(r, separators=(',', ':'))
+        open(f'{WORK}/ana/out/clips.json', 'w').write(js)
     print(len(js), 'bytes')
+    if '--merge' in sys.argv: sys.exit(0)
     for k in ['vow-team', 'vow-tim', 'vow-fool', 'vow-full', 'vow-beat', 'vow-bit', 'vow-pool', 'vow-pull',
               'asp-pin', 'asp-spin', 'asp-top', 'asp-stop', 'asp-key', 'asp-ski', 'clu-school', 'clu-eekul']:
         c = r[k]

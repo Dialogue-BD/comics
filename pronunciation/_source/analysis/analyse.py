@@ -12,8 +12,9 @@ from scipy.signal import medfilt, find_peaks
 sys.path.insert(0, os.path.dirname(__file__))
 from spec import WORDS, SENTENCES
 
-WAV = '/home/claude/wav'
-OUT = '/home/claude/ana/out'
+WORK = os.environ.get('VOICELAB_WORK', '/home/claude')
+WAV = f'{WORK}/wav'
+OUT = f'{WORK}/ana/out'
 os.makedirs(OUT, exist_ok=True)
 STEP = 0.01
 
@@ -361,11 +362,14 @@ def do_sentence(k):
 
 
 if __name__ == '__main__':
+    # optional: only these clip ids (e.g. python analyse.py cmp- lnk- num-); default all
+    only = sys.argv[1:]
+    want = lambda k: not only or any(k.startswith(p) or k == p for p in only)
     res = {}
     for k in WORDS:
-        res[k] = do_word(k)
+        if want(k): res[k] = do_word(k)
     for k in SENTENCES:
-        res[k] = do_sentence(k)
+        if want(k): res[k] = do_sentence(k)
     json.dump(res, open(f'{OUT}/analysis.json', 'w'))
     for k, d in res.items():
         ws = d['words']
