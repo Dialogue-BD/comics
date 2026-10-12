@@ -1,0 +1,121 @@
+/* ===========================================================================
+   Dialogue Brand Book · Edition 1 · September 2026 — classroom register.
+   Paper by day; "Present on TV" (Stage) on the projector — the same warm
+   ground with larger type and heavier rules, as in Culture Circles.
+   The voice visuals (pitch line, beats, air, buzz) are this activity's own
+   game colours; the brand layer frames them and leaves them alone.
+   =========================================================================== */
+:root{
+  --forest:#103D21; --forest-print:#134219; --forest-deep:#0C3319; --stage-green:#174629;
+  --gold:#B9924F;   --gold-light:#D2B978;   --gold-soft:#F0E6CD;
+  --paper:#F4F1E6;  --card:#FFFDF7;         --mist:#F4F6F0;
+  --ink:#1D211C;    --ink-muted:#5F6A5C;
+  --moss:#6F8F62;   --moss-soft:#E3EAD9;
+  --clay:#B0563A;   --clay-ink:#8E402B;
+
+  /* voice colours */
+  --v-pitch:#103D21;           /* the melody line */
+  --v-glow:rgba(210,185,120,.55);
+  --v-beat:#B9924F;            /* the big beat */
+  --v-weak:#6F8F62;            /* small beats */
+  --v-air:#4E6E8E;             /* breath / noise */
+  --v-buzz:#B8741A;            /* voicing */
+  --v-you:#2F64A8;             /* the student's own voice */
+  --v-wave:#C9C3AE;
+
+  --radius-sm:7px; --radius-md:12px; --radius-pill:999px;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px;
+  --font-display:'Spectral','Source Serif 4',Georgia,serif;
+  --font-ui:'Public Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-bn:'Noto Sans Bengali','Public Sans',sans-serif;
+  --ui:1;
+  --header-h:64px; --footer-h:72px;
+}
+:root,:root[data-theme="paper"]{
+  color-scheme:light;
+  --surface:var(--paper);
+  --surface-card:var(--card);
+  --tx:var(--ink);
+  --tx-muted:var(--ink-muted);
+  --heading:var(--forest-print);
+  --accent:var(--forest);
+  --on-accent:var(--paper);
+  --accent-quiet:var(--moss-soft);
+  --kicker:#795E20;
+  --rule:rgba(16,61,33,.16);
+  --rule-strong:rgba(16,61,33,.34);
+  --panel:var(--mist);
+  --well:#F7F5EE;
+  --focus:#1F7A47;
+  --shadow-card:0 1px 2px rgba(16,61,33,.06),0 6px 16px rgba(16,61,33,.07);
+  --shadow-raised:0 2px 4px rgba(16,61,33,.07),0 14px 34px rgba(16,61,33,.11);
+  --shadow-dialog:0 26px 68px rgba(12,51,25,.32);
+}
+/* STAGE — projectors and smart TVs: Paper, deeper ground, bigger type, heavier rules. */
+:root[data-theme="stage"]{
+  color-scheme:light;
+  --surface:#E6E0CB;
+  --surface-card:#FFFDF6;
+  --tx:#0E1210;
+  --tx-muted:#3A463A;
+  --accent:var(--forest-print);
+  --on-accent:#ffffff;
+  --kicker:#6B5116;
+  --rule:rgba(16,61,33,.32);
+  --rule-strong:rgba(16,61,33,.6);
+  --panel:#F1ECDB;
+  --well:#F6F2E6;
+  --focus:#14603A;
+  --v-wave:#B5AE96;
+  --ui:1.3;
+}
+@media (max-height:980px){ :root[data-theme="stage"]{--ui:1.16} }
+@media (max-height:820px){ :root[data-theme="stage"]{--ui:1.02} }
+@media (max-height:700px){ :root[data-theme="stage"]{--ui:.94} }
+:root[data-theme="stage"] body.bangla{--ui:1.18}
+@media (max-height:980px){ :root[data-theme="stage"] body.bangla{--ui:1.06} }
+@media (max-height:820px){ :root[data-theme="stage"] body.bangla{--ui:.96} }
+
+*{box-sizing:border-box}
+html{background:var(--surface);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--surface);color:var(--tx);font-family:var(--font-ui);font-size:calc(16px*var(--ui));line-height:1.5;
+  -webkit-tap-highlight-color:transparent;overflow-x:hidden}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+[hidden]{display:none!important}
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:var(--radius-sm)}
+.bn{font-family:var(--font-bn);display:block;color:var(--tx-muted);font-weight:400;letter-spacing:0;line-height:1.55}
+.has-bn > .en{display:block}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;color:var(--heading);margin:0;line-height:1.08;letter-spacing:-.01em}
+.kicker{font:700 calc(.74rem*var(--ui))/1.3 var(--font-ui);letter-spacing:.13em;text-transform:uppercase;color:var(--kicker)}
+.kicker .bn{display:inline;margin-left:.5em;letter-spacing:0;text-transform:none;font-weight:600;color:var(--kicker);font-size:1.08em}
+.muted{color:var(--tx-muted)}
+.sq{display:inline-block;width:.5em;height:.5em;background:var(--gold);margin-right:.55em;vertical-align:.1em}
+
+/* buttons — radius 7, one primary per view, verbs a beginner can read */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:calc(46px*var(--ui));padding:0 calc(20px*var(--ui));
+  border-radius:var(--radius-pill);border:1.5px solid var(--rule-strong);background:var(--surface-card);color:var(--tx);
+  font:700 calc(1rem*var(--ui))/1 var(--font-ui);text-decoration:none;transition:background .15s,border-color .15s,transform .15s,box-shadow .15s;white-space:nowrap}
+.btn:hover{border-color:var(--accent);background:#fff}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{background:var(--forest-deep)}
+.btn.quiet{background:var(--accent-quiet);border-color:transparent;color:var(--forest)}
+.btn.ghost{background:transparent;border-color:transparent}
+.btn.small{min-height:calc(36px*var(--ui));padding:0 calc(14px*var(--ui));font-size:calc(.88rem*var(--ui))}
+.btn:disabled{opacity:1;color:var(--tx-muted);background:var(--well);border-color:var(--rule);cursor:default}
+.btn .ico{width:1.1em;height:1.1em;flex:0 0 auto}
+.btn.is-playing{border-color:var(--gold);background:var(--gold-soft);color:var(--forest)}
+.btn .bn{display:inline;font-size:.86em;color:inherit;opacity:.85;font-weight:600}
+.pill{display:inline-flex;align-items:center;gap:.4em;padding:.2em .7em;border-radius:var(--radius-pill);background:var(--accent-quiet);color:var(--forest);font:600 calc(.78rem*var(--ui))/1.6 var(--font-ui)}
+
+/* logo chip — the colour logo always sits on paper/white */
+.logo-chip{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;padding:calc(5px*var(--ui)) calc(9px*var(--ui));
+  background:#fff;border-radius:calc(9px*var(--ui));box-shadow:0 0 0 1px var(--rule),0 1px 2px rgba(16,61,33,.08);text-decoration:none;transition:box-shadow .18s,transform .18s}
+.logo-chip:hover{box-shadow:0 0 0 1px var(--rule-strong),0 4px 12px rgba(16,61,33,.14);transform:translateY(-1px)}
+.logo-chip img{width:calc(92px*var(--ui));height:auto;display:block}
+
+.card{background:var(--surface-card);border:1px solid var(--rule);border-radius:var(--radius-md);box-shadow:var(--shadow-card)}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
