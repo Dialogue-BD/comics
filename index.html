@@ -1110,6 +1110,50 @@
       .act-card:hover { transform: none !important; }
     }
   </style>
+
+  <style id="pillar-taxonomy">
+    :root { --pillar-english: #4f7ef8; --pillar-digital: #8b5cf6; --pillar-durable: #f59e0b; }
+    .pillar-english { --pillar: var(--pillar-english); --pillar-ink: #2851b3; --pillar-wash: #eef3ff; }
+    .pillar-digital { --pillar: var(--pillar-digital); --pillar-ink: #6840ae; --pillar-wash: #f3effc; }
+    .pillar-durable { --pillar: var(--pillar-durable); --pillar-ink: #815519; --pillar-wash: #fff5e4; }
+    .taxonomy-intro { margin: 0 0 18px; font: 400 14px/1.6 var(--font-main); color: var(--ink-soft); }
+    .pillar-groups { display: grid; grid-template-columns: 1fr .85fr 1.2fr; gap: 14px; margin-bottom: 20px; }
+    .pillar-group { min-width: 0; padding: 18px; background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--pillar); border-radius: 12px; }
+    #grid-view .pillar-heading { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 0; border: 0; background: transparent; color: var(--ink); cursor: pointer; text-align: left; font: 600 17px/1.25 var(--font-main); }
+    .pillar-heading > svg { color: var(--pillar-ink); width: 24px; height: 24px; flex: 0 0 auto; }
+    .pillar-heading .pillar-toggle { display: grid; place-items: center; width: 22px; height: 22px; flex: 0 0 auto; margin-left: auto; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--paper); color: transparent; }
+    .pillar-heading[aria-pressed="true"] .pillar-toggle, .pillar-heading[aria-pressed="mixed"] .pillar-toggle { background: var(--pillar-ink); border-color: var(--pillar-ink); color: white; }
+    .pillar-heading[aria-pressed="mixed"] .pillar-toggle svg { display: none; }
+    .pillar-heading[aria-pressed="mixed"] .pillar-toggle::after { content: ""; width: 10px; height: 2px; background: white; }
+    .pillar-note { margin: 3px 0 14px; color: var(--ink-soft); font: 400 12px/1.5 var(--font-main); }
+    .pillar-options { display: flex; flex-wrap: wrap; gap: 7px; }
+    #grid-view .skill-chip { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--pillar-ink); font: 500 12px/1.35 var(--font-main); text-align: left; cursor: pointer; transition: background .15s, border-color .15s; }
+    .skill-chip > svg, .skill-tag svg { flex: 0 0 auto; width: 16px; height: 16px; }
+    #grid-view .skill-chip:hover { background: var(--pillar-wash); border-color: var(--pillar); }
+    #grid-view .skill-chip[aria-pressed="true"] { background: var(--pillar-ink); border-color: var(--pillar-ink); color: white; }
+    .skill-count { margin-left: 1px; opacity: .8; font: 600 11px/1 var(--font-main); }
+    .skill-check { display: none; width: 13px; height: 13px; }
+    .skill-check svg { display: block; width: 13px; height: 13px; }
+    .pillar-toggle svg { width: 14px; height: 14px; }
+    .skill-chip[aria-pressed="true"] .skill-check { display: inline; }
+    #grid-view .gv-toolbar-row { flex-wrap: wrap; }
+    #grid-view .taxonomy-status { flex: 1 1 220px; color: var(--ink-soft); font: 500 13px/1.5 var(--font-main); }
+    #grid-view .taxonomy-reset { min-height: 44px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--card); color: var(--forest); font: 600 13px/1 var(--font-main); cursor: pointer; }
+    #grid-view .taxonomy-reset:disabled { opacity: .45; cursor: default; }
+    #grid-view button:focus-visible, #grid-view a:focus-visible { outline: 3px solid var(--forest); outline-offset: 3px; }
+    .pillar-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; list-style: none; }
+    .skill-tag { display: inline-flex; align-items: center; gap: 5px; padding: 5px 7px; border: 1px solid transparent; border-radius: 6px; background: var(--pillar-wash); color: var(--pillar-ink); font: 500 11px/1.3 var(--font-main); }
+    .skill-tag.is-selected { border-color: var(--pillar-ink); font-weight: 700; }
+    .match-indicator { margin-top: 4px; color: var(--ink-soft); font: 500 12px/1.5 var(--font-main); }
+    .match-indicator[hidden] { display: none; }
+    .act-card.is-relevant { --line-c: #779078; box-shadow: 0 0 0 1px #779078, 0 10px 24px -16px rgba(16,61,33,.22); }
+    .act-card.is-relevant .match-indicator { color: var(--forest); font-weight: 600; }
+    .act-card.is-best-match { --line-c: var(--forest); background: #f8fcf5; }
+    .act-card.is-best-match::before { background: var(--forest); transform: scaleX(1); }
+    @media (max-width: 1100px) { .pillar-groups { grid-template-columns: 1fr 1fr; } .pillar-group:last-child { grid-column: 1 / -1; } }
+    @media (max-width: 720px) { .pillar-groups { grid-template-columns: 1fr; gap: 10px; } .pillar-group { padding: 14px; } .pillar-group:last-child { grid-column: auto; } .pillar-note { margin-bottom: 10px; } #grid-view .taxonomy-status { flex: 1 1 180px; } .taxonomy-intro { margin-bottom: 14px; } }
+    @media (prefers-reduced-motion: reduce) { .skill-chip { transition: none !important; } }
+  </style>
 </head>
 <body>
 
@@ -1244,6 +1288,11 @@
         <p class="gv-stat"><b id="gv-total">30</b> activities</p>
       </div>
 
+      <div class="gv-wrap">
+        <p class="taxonomy-intro" id="taxonomy-help">Three program pillars. Choose any mix of skills to bring the closest matches to the top. All activities stay available.</p>
+        <div id="pillar-groups" class="pillar-groups" aria-describedby="taxonomy-help"></div>
+      </div>
+
       <div class="gv-toolbar" id="gv-toolbar">
         <div class="gv-wrap gv-toolbar-row">
           <div class="gv-search" id="gv-search">
@@ -1255,8 +1304,8 @@
               <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m5.5 5.5 9 9m0-9-9 9"/></svg>
             </button>
           </div>
-          <div class="gv-chips" id="gv-chips" role="group" aria-label="Filter by type"></div>
-          <span id="grid-count-badge" class="gv-count" aria-live="polite"></span>
+          <p id="grid-count-badge" class="taxonomy-status" role="status" aria-live="polite" aria-atomic="true"></p>
+          <button id="taxonomy-reset" class="taxonomy-reset" type="button" disabled>Clear skills</button>
         </div>
       </div>
 
@@ -1285,6 +1334,7 @@
     var defaultActivities = [
       {
         href: "/ai-fluency/",
+        tags: ["ai-fluency", "writing", "critical-thinking"],
         icon: "🤖",
         title: "AI Fluency Lab — Ayesha's Phone",
         desc: "Learn AI by doing it on a simulated Android phone: write an honest CV with AI, set up an AI agent safely, and vibe-code a small app — with a coach guiding every prompt and decision.",
@@ -1293,6 +1343,7 @@
       },
       {
         href: "/icebreakers/",
+        tags: ["speaking", "vocabulary"],
         icon: "🗣️",
         title: "Discussion Icebreakers",
         desc: "Project a random deep question on the screen — each one comes with a glossed vocabulary list, phrase chunks, and sentence scaffolds so students can start talking straight away.",
@@ -1301,6 +1352,7 @@
       },
       {
         href: "/discussion-guides/",
+        tags: ["speaking", "listening", "critical-thinking"],
         icon: "💬",
         title: "Discussion Guides",
         desc: "Each group picks a question and follows six simple steps — understand, first voices, explore, change the lens, decide, report — on one phone or a one-page printed guide.",
@@ -1309,6 +1361,7 @@
       },
       {
         href: "/debate/",
+        tags: ["speaking", "listening", "critical-thinking"],
         icon: "🇧🇩",
         title: "Classroom Debate",
         desc: "3v3 Bangladesh parliamentary debate with isolated team rooms, live bells, POI timers, prep room, turn-by-turn scaffolding coach, and 50 Rajshahi student topics.",
@@ -1317,6 +1370,7 @@
       },
       {
         href: "/good-bird/",
+        tags: ["listening", "speaking", "sla"],
         icon: "🐦",
         title: "The Good Bird",
         desc: "Visual story inspired by Peter Wezel's wordless picture book. Features a size-maximized widescreen storyboard for classroom projection, interactive sorting activity, and karaoke song!",
@@ -1325,6 +1379,7 @@
       },
       {
         href: "/join-community/",
+        tags: [],
         qrUrl: "https://chat.whatsapp.com/DifdH7ya5cc5o7YMSzx1Lh?s=sh&p=i&ilr=0",
         logo: "../attached_assets/dialogue-logo-white-background.jpg",
         icon: "💚",
@@ -1335,6 +1390,7 @@
       },
       {
         href: "https://maps.app.goo.gl/WNZQaiSb32949oiq6",
+        tags: [],
         qrUrl: "https://maps.app.goo.gl/WNZQaiSb32949oiq6",
         logo: "../attached_assets/dialogue-logo-white-background.jpg",
         icon: "📍",
@@ -1345,6 +1401,7 @@
       },
       {
         href: "/comic.html",
+        tags: ["speaking", "sla"],
         icon: "🎲",
         title: "Action Comic — Random Viewer",
         desc: "Opens a random comic image in a full-screen viewer. Pinch to zoom, drag to pan. Tap to go fullscreen on mobile.",
@@ -1353,6 +1410,7 @@
       },
       {
         href: "/action-pictures/",
+        tags: ["speaking", "vocabulary"],
         icon: "🎬",
         title: "Action Pictures",
         desc: "101 color action pictures from Southeast Asia. A random picture pops up every time the page is refreshed, with pinch-to-zoom, pan, and full gallery browser.",
@@ -1361,6 +1419,7 @@
       },
       {
         href: "/mouse-strawberry/",
+        tags: ["reading", "listening", "speaking"],
         icon: "🍓",
         title: "The Little Mouse & Red Ripe Strawberry",
         desc: "Audrey & Don Wood's classic picture story! Features double-page spread reader, song with karaoke subtitles, and narrative structure sequencing activity.",
@@ -1369,6 +1428,7 @@
       },
       {
         href: "/narratives/",
+        tags: ["speaking", "sla"],
         icon: "📖",
         title: "Action Narrative",
         desc: "Swipeable sequential image narratives. Follow the story panel by panel.",
@@ -1377,6 +1437,7 @@
       },
       {
         href: "/busy-pictures/",
+        tags: ["listening", "vocabulary", "grammar", "sla"],
         icon: "🔍",
         title: "Busy Pictures",
         desc: "Wimmelbook-style scenes with AI tap-to-speak. Tap objects to hear and learn vocabulary.",
@@ -1385,6 +1446,7 @@
       },
       {
         href: "/whos-this/",
+        tags: ["speaking", "listening", "grammar"],
         icon: "🪪",
         title: "Who's This?",
         desc: "Two students, one phone. An identity card appears — one asks the four present-tense questions, the other answers from the card, then the roles swap.",
@@ -1393,6 +1455,7 @@
       },
       {
         href: "/picture-this/",
+        tags: ["speaking"],
         icon: "🃏",
         title: "Picture This!",
         desc: "Illustrated conversation cards — describe the scene, tell the story, or discuss the topic.",
@@ -1401,6 +1464,7 @@
       },
       {
         href: "/local-problems/",
+        tags: ["speaking", "listening", "service-mindset", "entrepreneurial"],
         icon: "🏙️",
         title: "Local Problems",
         desc: "Explore 25 everyday Rajshahi and Bangladesh problems through action pictures, discussion questions, and listening games.",
@@ -1409,6 +1473,7 @@
       },
       {
         href: "/emotions/",
+        tags: ["sel", "speaking", "vocabulary", "sla"],
         icon: "😊",
         title: "How Are You Feeling?",
         desc: "Name a feeling, calm the storm, and take one English word up the iceberg — a projected lesson, a seven-step phone activity and a one-page worksheet.",
@@ -1417,6 +1482,7 @@
       },
       {
         href: "/pronunciation/",
+        tags: ["pronunciation", "listening", "speaking"],
         icon: "🎵",
         title: "Voice Lab",
         desc: "See the music of spoken English: word stress, big and small words, thought groups, linking, numbers — then the sounds Bangla speakers find hardest, with a moving mouth for each. Every line and beat is drawn from the voice itself. Scroll through Hear, Say, Play on the projector or a phone, with Bangla help.",
@@ -1425,6 +1491,7 @@
       },
       {
         href: "/reflecting-listening/",
+        tags: ["listening", "speaking", "sel"],
         icon: "🪞",
         title: "Listen Like a Mirror",
         desc: "A visual, levelled pair activity for practising reflective listening in English.",
@@ -1433,6 +1500,7 @@
       },
       {
         href: "/american-fisherman/",
+        tags: ["listening", "speaking", "ethics-values", "cross-cultural", "sla"],
         icon: "🎣",
         title: "The American & The Fisherman",
         desc: "Listen to a dialogue about ambition and enough, follow the words, and explore English–Bangla phrases.",
@@ -1441,6 +1509,7 @@
       },
       {
         href: "/ethnographic-interviews/",
+        tags: ["listening", "cross-cultural"],
         icon: "🎯",
         title: "Culture Circles",
         desc: "A listening and cultural-intelligence exercise. Watch a puzzling Western behaviour, choose a research question that actually opens someone up, interview three people by ear \u2014 then read the four circles underneath the behaviour: values, beliefs, worldview, with the Bengali set beside it.",
@@ -1449,6 +1518,7 @@
       },
       {
         href: "/hard-questions/",
+        tags: ["ai-fluency", "listening", "speaking", "critical-thinking"],
         icon: "🎧",
         title: "AI: Hearing Human Voices on Hard Questions",
         desc: "Nine real people share their hopes and worries about AI. Catch their words at natural speed, watch each idea come to life, and weigh their questions with a partner — AI fluency, listening comprehension and critical thinking in one activity.",
@@ -1457,6 +1527,7 @@
       },
       {
         href: "/cross-cultural-coms/",
+        tags: ["speaking", "listening", "cross-cultural"],
         icon: "🌏",
         title: "Cross-Cultural Communication",
         desc: "Activities and scenarios for navigating communication across cultures.",
@@ -1465,6 +1536,7 @@
       },
       {
         href: "/dialogue-comics-practice/",
+        tags: ["writing", "speaking"],
         icon: "💬",
         title: "Dialogue Comics Practice",
         desc: "Create an English dialogue comic, analyse the picture, and practise the conversation with guided support for Bengali ESL learners.",
@@ -1473,6 +1545,7 @@
       },
       {
         href: "/ecclesiastes/",
+        tags: ["listening", "speaking", "ethics-values", "sla"],
         icon: "📜",
         title: "Ecclesiastes — হেদায়েতকারী",
         desc: "Follow a visual journey through ambition, loss, and gratitude with narrated comics, synchronized captions, and English–Bangla phrase help.",
@@ -1481,6 +1554,7 @@
       },
       {
         href: "/hingsha/",
+        tags: ["listening", "speaking", "ethics-values", "sel", "sla"],
         icon: "⚖️",
         title: "Hingsha",
         desc: "A visual story exploring conflict and resolution.",
@@ -1489,6 +1563,7 @@
       },
       {
         href: "/kindness-repentence/",
+        tags: ["listening", "speaking", "ethics-values", "sel", "sla"],
         icon: "🤝",
         title: "Kindness & Repentence",
         desc: "A picture story on themes of kindness, forgiveness, and change.",
@@ -1497,6 +1572,7 @@
       },
       {
         href: "/mezban/",
+        tags: ["listening", "speaking", "service-mindset", "cross-cultural", "sla"],
         icon: "🍽️",
         title: "Mezban",
         desc: "A feast and community story illustrated in comic form.",
@@ -1505,6 +1581,7 @@
       },
       {
         "href": "/lost-son/",
+        tags: ["listening", "speaking", "ethics-values", "sel", "sla"],
         "icon": "🏡",
         "title": "The Lost Son",
         "desc": "Follow a father and his two sons through leaving, loss, and an unexpected welcome—with narrated pictures and English–Bangla phrase help.",
@@ -1514,6 +1591,7 @@
       },
       {
         href: "/north-end/",
+        tags: ["listening", "speaking", "service-mindset", "entrepreneurial", "sla"],
         icon: "🏙️",
         title: "North End Story",
         desc: "A neighbourhood picture narrative set in the North End.",
@@ -1522,6 +1600,7 @@
       },
       {
         href: "/stories/",
+        tags: ["speaking", "sla"],
         icon: "📚",
         title: "Wordless Picture Stories",
         desc: "A collection of stories told entirely through images — open any title as a PDF.",
@@ -1530,6 +1609,7 @@
       },
       {
         href: "/ielts-reading/",
+        tags: ["reading"],
         icon: "🔍",
         title: "Reading Altitude — IELTS Skimming & Scanning",
         desc: "A guided reading journey: find your pace, learn one skimming or scanning move at a time, practise with focused drills, then bring the skills together in a timed paper.",
@@ -1538,6 +1618,7 @@
       },
       {
         href: "/ielts-listening/",
+        tags: ["listening"],
         icon: "🎧",
         title: "Listening Focus — IELTS Listening Lab",
         desc: "A guided listening journey: notice what you miss, practise prediction and precision one move at a time, then use the method in a full four-part run.",
@@ -1546,6 +1627,7 @@
       },
       {
         href: "/guess-what/",
+        tags: ["vocabulary", "speaking"],
         icon: "❓",
         title: "Guess What? — Classroom Play",
         desc: "Projector-ready vocabulary games for mixed-age teams. Includes a guided 20–30 minute class session, timers, scores, and rotating speakers.",
@@ -1820,7 +1902,8 @@
     var gridCountBadge = document.getElementById("grid-count-badge");
     var gvSearch = document.getElementById("gv-search");
     var gvClear = document.getElementById("gv-clear");
-    var gvChips = document.getElementById("gv-chips");
+    var pillarGroups = document.getElementById("pillar-groups");
+    var taxonomyReset = document.getElementById("taxonomy-reset");
     var gvEmpty = document.getElementById("gv-empty");
     var gvToolbar = document.getElementById("gv-toolbar");
     var viewSeg = document.getElementById("view-seg");
@@ -1843,7 +1926,7 @@
 
     var gridBuilt = false;
     var cardEls = [];
-    var activeGroup = "all";
+    var selectedTags = new Set();
     var revealObserver = null;
 
     function groupOf(act) {
@@ -1880,6 +1963,7 @@
             '</div>' +
             '<h3 class="act-title">' + esc(act.title) + '</h3>' +
             '<p class="act-desc">' + esc(act.desc) + '</p>' +
+            cardSkills(act) +
           '</div>' +
           '<div class="act-stub">' +
             '<div class="act-qr" role="img" aria-label="QR code for ' + esc(act.title) + '"></div>' +
@@ -1900,8 +1984,9 @@
         });
 
         card._g = g;
+        card._tags = act.tags || [];
         card._idx = idx;
-        card._text = [act.title, act.desc, act.badge, act.category, (GROUPS.filter(function(x) { return x.id === g; })[0] || {}).label]
+        card._text = [act.title, act.desc, act.badge, act.category, (GROUPS.filter(function(x) { return x.id === g; })[0] || {}).label, card._tags.map(function(key) { return tagInfo[key].label + ' ' + tagInfo[key].fullLabel; }).join(" ")]
           .join(" ").toLowerCase();
 
         card.addEventListener("click", function(e) {
@@ -1928,22 +2013,118 @@
       }, 110);
     }
 
+
+    /* Inline Lucide icons: https://github.com/lucide-icons/lucide
+ISC License
+
+Copyright (c) 2026 Lucide Icons and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+---
+
+The following Lucide icons are derived from the Feather project:
+
+airplay, alert-circle, alert-octagon, alert-triangle, aperture, arrow-down-circle, arrow-down-left, arrow-down-right, arrow-down, arrow-left-circle, arrow-left, arrow-right-circle, arrow-right, arrow-up-circle, arrow-up-left, arrow-up-right, arrow-up, at-sign, calendar, cast, check, chevron-down, chevron-left, chevron-right, chevron-up, chevrons-down, chevrons-left, chevrons-right, chevrons-up, circle, clipboard, clock, code, columns, command, compass, corner-down-left, corner-down-right, corner-left-down, corner-left-up, corner-right-down, corner-right-up, corner-up-left, corner-up-right, crosshair, database, divide-circle, divide-square, dollar-sign, download, external-link, feather, frown, hash, headphones, help-circle, info, italic, key, layout, life-buoy, link-2, link, loader, lock, log-in, log-out, maximize, meh, minimize, minimize-2, minus-circle, minus-square, minus, monitor, moon, more-horizontal, more-vertical, move, music, navigation-2, navigation, octagon, pause-circle, percent, plus-circle, plus-square, plus, power, radio, rss, search, server, share, shopping-bag, sidebar, smartphone, smile, square, table-2, tablet, target, terminal, trash-2, trash, triangle, tv, type, upload, x-circle, x-octagon, x-square, x, zoom-in, zoom-out
+
+The MIT License (MIT) (for the icons listed above)
+
+Copyright (c) 2013-present Cole Bemis
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+    */
+    var SKILL_ICONS = {"languages": "<path d=\"m5 8 6 6\" />\n  <path d=\"m4 14 6-6 2-3\" />\n  <path d=\"M2 5h12\" />\n  <path d=\"M7 2h1\" />\n  <path d=\"m22 22-5-10-5 10\" />\n  <path d=\"M14 18h6\" />", "headphones": "<path d=\"M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3\" />", "mic": "<path d=\"M12 19v3\" />\n  <path d=\"M19 10v2a7 7 0 0 1-14 0v-2\" />\n  <rect x=\"9\" y=\"2\" width=\"6\" height=\"13\" rx=\"3\" />", "book-open": "<path d=\"M12 5v16\" />\n  <path d=\"M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z\" />", "pen-line": "<path d=\"M13 21h8\" />\n  <path d=\"M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z\" />", "spell-check": "<path d=\"m20 15-5.5 5.5L12 18\" />\n  <path d=\"m4 16 6-12 5.115 10.23\" />\n  <path d=\"M6 12h8\" />", "text-cursor-input": "<path d=\"M12 20h-1a2 2 0 0 1-2-2 2 2 0 0 1-2 2H6\" />\n  <path d=\"M13 8h7a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-7\" />\n  <path d=\"M5 16H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1\" />\n  <path d=\"M6 4h1a2 2 0 0 1 2 2 2 2 0 0 1 2-2h1\" />\n  <path d=\"M9 6v12\" />", "audio-lines": "<path d=\"M2 10v3\" />\n  <path d=\"M6 6v11\" />\n  <path d=\"M10 3v18\" />\n  <path d=\"M14 8v7\" />\n  <path d=\"M18 5v13\" />\n  <path d=\"M22 10v3\" />", "laptop": "<path d=\"M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z\" />\n  <path d=\"M20.054 15.987H3.946\" />", "bot": "<path d=\"M12 8V4H8\" />\n  <rect width=\"16\" height=\"12\" x=\"4\" y=\"8\" rx=\"2\" />\n  <path d=\"M2 14h2\" />\n  <path d=\"M20 14h2\" />\n  <path d=\"M15 13v2\" />\n  <path d=\"M9 13v2\" />", "briefcase": "<path d=\"M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16\" />\n  <rect width=\"20\" height=\"14\" x=\"2\" y=\"6\" rx=\"2\" />", "app-window": "<rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"2\" />\n  <path d=\"M10 4v4\" />\n  <path d=\"M2 8h20\" />\n  <path d=\"M6 4v4\" />", "gem": "<path d=\"M10.5 3 8 9l4 13 4-13-2.5-6\" />\n  <path d=\"M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z\" />\n  <path d=\"M2 9h20\" />", "heart-handshake": "<path d=\"M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762\" />", "globe": "<circle cx=\"12\" cy=\"12\" r=\"10\" />\n  <path d=\"M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20\" />\n  <path d=\"M2 12h20\" />", "hand-heart": "<path d=\"M11 14h2a2 2 0 0 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16\" />\n  <path d=\"m14.45 13.39 5.05-4.694C20.196 8 21 6.85 21 5.75a2.75 2.75 0 0 0-4.797-1.837.276.276 0 0 1-.406 0A2.75 2.75 0 0 0 11 5.75c0 1.2.802 2.248 1.5 2.946L16 11.95\" />\n  <path d=\"m2 15 6 6\" />\n  <path d=\"m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a1 1 0 0 0-2.75-2.91\" />", "scale": "<path d=\"M12 3v18\" />\n  <path d=\"m19 8 3 8a5 5 0 0 1-6 0zV7\" />\n  <path d=\"M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1\" />\n  <path d=\"m5 8 3 8a5 5 0 0 1-6 0zV7\" />\n  <path d=\"M7 21h10\" />", "lightbulb": "<path d=\"M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5\" />\n  <path d=\"M9 18h6\" />\n  <path d=\"M10 22h4\" />", "brain": "<path d=\"M12 18V5\" />\n  <path d=\"M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4\" />\n  <path d=\"M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5\" />\n  <path d=\"M17.997 5.125a4 4 0 0 1 2.526 5.77\" />\n  <path d=\"M18 18a4 4 0 0 0 2-7.464\" />\n  <path d=\"M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517\" />\n  <path d=\"M6 18a4 4 0 0 1-2-7.464\" />\n  <path d=\"M6.003 5.125a4 4 0 0 0-2.526 5.77\" />", "check": "<path d=\"M20 6 9 17l-5-5\" />", "x": "<path d=\"M18 6 6 18\" />\n  <path d=\"m6 6 12 12\" />", "graduation-cap": "<path d=\"M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z\" />\n  <path d=\"M22 10v6\" />\n  <path d=\"M6 12.5V16a6 3 0 0 0 12 0v-3.5\" />"};
+    var TAXONOMY = [{"id": "english", "label": "Professional English", "icon": "languages", "note": "Understand, express, connect.", "tags": [["listening", "Listening", "headphones"], ["speaking", "Speaking", "mic"], ["reading", "Reading", "book-open"], ["writing", "Writing", "pen-line"], ["vocabulary", "Vocabulary", "spell-check"], ["grammar", "Grammar", "text-cursor-input"], ["pronunciation", "Pronunciation", "audio-lines"]]}, {"id": "digital", "label": "Digital & Freelance", "icon": "laptop", "note": "Create good work with digital skills.", "tags": [["ai-fluency", "AI Fluency", "bot"], ["freelancing", "Freelancing", "briefcase"], ["digital-tools", "Digital Tools", "app-window"]]}, {"id": "durable", "label": "Durable Skills", "icon": "gem", "note": "Grow the skills that travel with you.", "tags": [["sel", "SEL", "heart-handshake", "Social Emotional Learning"], ["cross-cultural", "Cross-Cultural Communication", "globe"], ["service-mindset", "Service Mindset", "hand-heart"], ["ethics-values", "Ethics & Values", "scale"], ["entrepreneurial", "Entrepreneurial Skills", "lightbulb"], ["critical-thinking", "Critical Thinking", "brain"], ["sla", "SLA Strategies", "graduation-cap", "Second Language Acquisition Strategies"]]}];
+    var tagInfo = {};
+    TAXONOMY.forEach(function(pillar) {
+      pillar.tags.forEach(function(tag) {
+        tagInfo[tag[0]] = { label: tag[1], fullLabel: tag[3] || tag[1], icon: tag[2], pillar: pillar.id };
+      });
+    });
+    function skillIcon(name) {
+      return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + SKILL_ICONS[name] + '</svg>';
+    }
+    function cardSkills(act) {
+      var skills = (act.tags || []).map(function(key) {
+        var tag = tagInfo[key];
+        return '<li class="skill-tag pillar-' + tag.pillar + '" data-tag="' + key + '" title="' + esc(tag.fullLabel) + '">' + skillIcon(tag.icon) + '<span>' + esc(tag.label) + '</span></li>';
+      }).join('');
+      return (skills ? '<ul class="pillar-tags" aria-label="Skills practised">' + skills + '</ul>' : '') + '<p class="match-indicator" hidden></p>';
+    }
+    function sortByRelevance(list, selection) {
+      return list.map(function(activity, originalIndex) {
+        return { activity: activity, originalIndex: originalIndex, score: (activity.tags || []).filter(function(tag) { return selection.has(tag); }).length };
+      }).sort(function(a, b) { return b.score - a.score || a.originalIndex - b.originalIndex; });
+    }
+    function updateSkillButtons() {
+      pillarGroups.querySelectorAll('[data-tag]').forEach(function(button) {
+        button.setAttribute('aria-pressed', String(selectedTags.has(button.dataset.tag)));
+      });
+      TAXONOMY.forEach(function(pillar) {
+        var count = pillar.tags.filter(function(tag) { return selectedTags.has(tag[0]); }).length;
+        var button = pillarGroups.querySelector('[data-pillar="' + pillar.id + '"]');
+        button.setAttribute('aria-pressed', count === 0 ? 'false' : count === pillar.tags.length ? 'true' : 'mixed');
+        button.querySelector('.pillar-selection').textContent = count + ' of ' + pillar.tags.length + ' skills selected. Toggle all skills in this pillar.';
+      });
+      taxonomyReset.disabled = selectedTags.size === 0;
+    }
     function buildChips() {
-      var list = [{ id: "all", label: "All" }].concat(GROUPS);
-      if (cardEls.some(function(c) { return c._g === "more"; })) list.push({ id: "more", label: "More" });
-      gvChips.innerHTML = list.map(function(g) {
-        return '<button class="gv-chip" type="button" data-g="' + g.id + '" aria-pressed="' + (g.id === activeGroup) + '">' +
-          (g.id === "all" ? "" : '<span class="dot" aria-hidden="true"></span>') +
-          esc(g.label) + '<span class="n"></span></button>';
-      }).join("");
-      gvChips.addEventListener("click", function(e) {
-        var chip = e.target.closest(".gv-chip");
-        if (!chip || chip.dataset.g === activeGroup) return;
-        activeGroup = chip.dataset.g;
-        gvChips.querySelectorAll(".gv-chip").forEach(function(c) {
-          c.setAttribute("aria-pressed", String(c === chip));
-        });
-        chip.scrollIntoView({ block: "nearest", inline: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
+      pillarGroups.innerHTML = TAXONOMY.map(function(pillar) {
+        return '<section class="pillar-group pillar-' + pillar.id + '" aria-label="' + esc(pillar.label) + '">' +
+          '<button class="pillar-heading" type="button" data-pillar="' + pillar.id + '" aria-pressed="false">' + skillIcon(pillar.icon) +
+          '<span>' + esc(pillar.label) + '</span><span class="pillar-toggle" aria-hidden="true">' + skillIcon('check') + '</span><span class="sr-only pillar-selection"></span></button>' +
+          '<p class="pillar-note">' + esc(pillar.note) + '</p><div class="pillar-options" role="group" aria-label="' + esc(pillar.label) + ' skills">' + pillar.tags.map(function(tag) {
+            var n = activities.filter(function(act) { return (act.tags || []).indexOf(tag[0]) !== -1; }).length;
+            var countLabel = n + (n === 1 ? ' activity' : ' activities');
+            return '<button class="skill-chip" type="button" data-tag="' + tag[0] + '" aria-pressed="false" title="' + esc(tag[3] || tag[1]) + ': ' + countLabel + (n ? '' : ' — no activities yet') + '">' +
+              skillIcon(tag[2]) + '<span>' + esc(tag[1]) + '</span><span class="skill-count" aria-hidden="true">' + n + '</span><span class="sr-only">' + (tag[3] ? ' (' + esc(tag[3]) + ')' : '') + ', ' + countLabel + '</span><span class="skill-check" aria-hidden="true">' + skillIcon('check') + '</span></button>';
+          }).join('') + '</div></section>';
+      }).join('');
+      updateSkillButtons();
+      pillarGroups.addEventListener('click', function(e) {
+        var button = e.target.closest('button');
+        if (!button) return;
+        if (button.dataset.tag) {
+          var key = button.dataset.tag;
+          if (selectedTags.has(key)) selectedTags.delete(key); else selectedTags.add(key);
+        } else {
+          var pillar = TAXONOMY.find(function(p) { return p.id === button.dataset.pillar; });
+          var allSelected = pillar.tags.every(function(tag) { return selectedTags.has(tag[0]); });
+          pillar.tags.forEach(function(tag) { if (allSelected) selectedTags.delete(tag[0]); else selectedTags.add(tag[0]); });
+        }
+        updateSkillButtons();
+        applyFilter(true);
+      });
+      taxonomyReset.addEventListener('click', function() {
+        selectedTags.clear();
+        updateSkillButtons();
         applyFilter(true);
       });
     }
@@ -1965,26 +2146,31 @@
       }
 
       var shown = 0;
-      var perGroup = { all: 0 };
-      cardEls.forEach(function(c) {
-        var inSearch = matchesSearch(c, terms);
-        if (inSearch) {
-          perGroup.all++;
-          perGroup[c._g] = (perGroup[c._g] || 0) + 1;
-        }
-        var ok = inSearch && (activeGroup === "all" || c._g === activeGroup);
-        c.hidden = !ok;
-        if (ok) shown++;
+      var relevant = 0;
+      var ranked = sortByRelevance(activities, selectedTags);
+      var bestScore = ranked.reduce(function(best, entry) {
+        return matchesSearch(cardEls[entry.originalIndex], terms) ? Math.max(best, entry.score) : best;
+      }, 0);
+      ranked.forEach(function(entry) {
+        var c = cardEls[entry.originalIndex];
+        c.hidden = !matchesSearch(c, terms);
+        if (!c.hidden) { shown++; if (entry.score > 0) relevant++; }
+        c.classList.toggle('is-relevant', entry.score > 0);
+        c.classList.toggle('is-best-match', entry.score > 0 && entry.score === bestScore);
+        c.querySelectorAll('.skill-tag').forEach(function(tag) {
+          tag.classList.toggle('is-selected', selectedTags.has(tag.dataset.tag));
+        });
+        var indicator = c.querySelector('.match-indicator');
+        indicator.hidden = selectedTags.size === 0;
+        indicator.textContent = entry.score > 0 ?
+          (entry.score === bestScore ? 'Closest match · ' : '') + entry.score + ' of ' + selectedTags.size + ' selected skills' : 'Other skills to explore';
+        // Move existing cards: QR codes and original slideshow indexes stay intact.
+        qrCardsGrid.appendChild(c);
       });
-
-      gvChips.querySelectorAll(".gv-chip").forEach(function(chip) {
-        var n = perGroup[chip.dataset.g] || 0;
-        chip.querySelector(".n").textContent = n;
-        chip.classList.toggle("is-empty", n === 0);
-      });
-
-      var filtered = shown !== activities.length;
-      gridCountBadge.textContent = filtered ? shown + " of " + activities.length + " shown" : "";
+      var totalText = terms.length ? shown + ' of ' + activities.length + ' activities match your search' : 'All ' + activities.length + ' activities';
+      gridCountBadge.textContent = selectedTags.size ?
+        relevant + ' relevant · ' + selectedTags.size + ' skill' + (selectedTags.size === 1 ? '' : 's') + ' selected. ' + totalText + '.' : totalText + ' · original order.';
+      if (selectedTags.size && relevant === 0) gridCountBadge.textContent = 'No activities for these skills yet. ' + totalText + ' remain available.';
       gvSearch.classList.toggle("has-value", !!gridSearchInput.value);
       gvEmpty.hidden = shown !== 0;
 
@@ -2062,10 +2248,8 @@
     });
     document.getElementById("gv-empty-reset").addEventListener("click", function() {
       gridSearchInput.value = "";
-      activeGroup = "all";
-      gvChips.querySelectorAll(".gv-chip").forEach(function(c) {
-        c.setAttribute("aria-pressed", String(c.dataset.g === "all"));
-      });
+      selectedTags.clear();
+      updateSkillButtons();
       applyFilter(true);
     });
 
