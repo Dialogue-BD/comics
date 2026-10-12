@@ -2,7 +2,7 @@ import React from 'react';
 import engine, { clip as getClip } from '../lib/audio';
 import { usePlayingId } from '../lib/hooks';
 import { T } from '../lib/settings';
-import { IPlay, IPause, IHand, IThroat, IEar } from './Icons';
+import { IPlay, IPause, IHand, IThroat, IEar, IArrowR } from './Icons';
 import { LABEL } from '../content/units';
 
 export const labelOf = (id) => LABEL[id] || (getClip(id) ? getClip(id).words.map(w => w.w).join(' ') : id.split('-').slice(1).join('-'));
@@ -31,6 +31,30 @@ export function ClipButton({ ids, label, sub, className = '', variant = 'word', 
     </button>
   );
 }
+
+// Tabs for showing one part of a section at a time (pairs, sentences, words).
+export function TabBar({ items, k, onPick, label, next }) {
+  return (
+    <div className="ps-tabs" role="tablist" aria-label={label}>
+      {items.map((it, i) => (
+        <button key={i} role="tab" aria-selected={i === k} className={`ps-tab ${i === k ? 'on' : ''}`} onClick={() => { engine.stop(); onPick(i); }}>{it}</button>
+      ))}
+      {next && items.length > 1 && <button className="ps-next" onClick={() => { engine.stop(); onPick((k + 1) % items.length); }}>{next} <IArrowR /></button>}
+    </div>
+  );
+}
+
+// On a phone, two side-by-side halves become one at a time with this switch.
+export function NarrowSwitch({ items, k, onPick, label }) {
+  return (
+    <div className="nswitch" role="tablist" aria-label={label}>
+      {items.map((it, i) => <button key={i} role="tab" aria-selected={i === k} className={i === k ? 'on' : ''} onClick={() => { engine.stop(); onPick(i); }}>{it}</button>)}
+    </div>
+  );
+}
+
+// "Swipe for more" — shown on phones under a swipeable row of cards.
+export const SwipeHint = () => <p className="swipe-hint" aria-hidden="true">Swipe for more →</p>;
 
 export function L1Note({ text }) {
   if (!text) return null;

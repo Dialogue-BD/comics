@@ -2,17 +2,17 @@
 // carries the explanation underneath when the বাংলা toggle is on.
 // Bangla here should be checked by a native speaker before wide use.
 //
-// Each unit is one long page: a hero, then Hear → Say → Play sections.
+// Each unit is one long page: a hero, then Hear → Play sections. (Students repeat after
+// the recordings on their own; there is no record-yourself step.)
 // Section types (see pages/Unit.jsx): lines, schwa, suffix, prefix, compound, legend,
 //   rushdemo, melody, pause, links, years, phone, meaning, pairs, er, doors, bhv,
-//   clusters, thgroups, echo, numbersay, identify, stress, compoundgame, bigbeat, rush,
+//   clusters, thgroups, identify, stress, compoundgame, bigbeat, rush,
 //   pausegame, linkgame, numbergame, clustergame, accentpairs, matters, accentgame
 // Every clip id refers to an mp3 in audio/ and an entry in data/clips.json; a second voice
 // has the same ids in audio/<voice>/ and data/clips-<voice>.json (see lib/audio.js).
 
 export const STEPS = {
   hear: { en: 'Hear', bn: 'শুনুন', icon: 'ear', verb: { en: 'Notice it', bn: 'লক্ষ করুন' } },
-  say: { en: 'Say', bn: 'বলুন', icon: 'mouth', verb: { en: 'Try it', bn: 'চেষ্টা করুন' } },
   play: { en: 'Play', bn: 'খেলুন', icon: 'game', verb: { en: 'Use it', bn: 'কাজে লাগান' } },
 };
 
@@ -94,11 +94,6 @@ export const UNITS = [
             { n: 'cmp-hotdog-n', p: 'cmp-hot-dog-p', a: 'hot', b: 'dog', mn: L('the food', 'খাবারটা'), mp: L('a warm dog!', 'গরমে কাতর কুকুর!') },
           ] },
       ] },
-      { key: 'say', sections: [
-        { type: 'echo', id: 'echo-beat', mode: 'beat', title: L('Echo the beat', 'তালটা ফিরিয়ে বলুন'),
-          cue: L('Listen. Then say it five times. Make the big beat big and the small beats small.', 'শুনুন। তারপর পাঁচবার বলুন। বড় তালটা বড় করে, ছোট তালগুলো ছোট করে বলুন।'),
-          items: ['dec-photograph', 'dec-photographic', 'dec-information', 'dec-ability', 'vow-about', 'dec-unhappy', 'dec-disagree'] },
-      ] },
       { key: 'play', sections: [
         { type: 'stress', id: 'find-beat', title: L('Where is the big beat?', 'বড় তালটা কোথায়?'),
           cue: L('Say it to yourself. Tap the strong syllable. Then the recording checks you.', 'মনে মনে বলুন। জোরালো অক্ষরে চাপ দিন। তারপর রেকর্ডিং মিলিয়ে দেবে।'),
@@ -133,11 +128,6 @@ export const UNITS = [
           l1: L('Bangla speakers often give every word the same weight. In English that hides the message.', 'বাংলাভাষীরা প্রায়ই প্রতিটি শব্দে সমান জোর দেন। ইংরেজিতে তাতে বার্তাটা চাপা পড়ে।'),
           clip: 'pro-sent4' },
       ] },
-      { key: 'say', sections: [
-        { type: 'echo', id: 'echo-big-small', mode: 'tune', title: L('Big words big', 'বড় শব্দ বড় করে'),
-          cue: L('Listen. Say the big words big and let the small words rush.', 'শুনুন। বড় শব্দগুলো বড় করে বলুন, ছোটগুলো দ্রুত বলে ফেলুন।'),
-          items: ['lnk-turn-off', 'pro-sent1', 'pro-sent2', 'pro-sent4'] },
-      ] },
       { key: 'play', sections: [
         { type: 'bigbeat', id: 'message-visible', title: L('Make the message visible', 'বার্তাটা চোখে দেখুন'),
           cue: L('Tap the word that should be biggest in each part. Then listen as it grows.', 'প্রতিটি অংশে যে শব্দটা সবচেয়ে বড় হওয়া উচিত তাতে চাপ দিন। তারপর শুনুন, সেটা কীভাবে বড় হয়।'),
@@ -168,16 +158,11 @@ export const UNITS = [
         { type: 'lines', id: 'groups', title: L('One sentence, several small tunes', 'এক বাক্য, কয়েকটি ছোট সুর'),
           cue: L('Each group starts high enough to carry, then drifts down. // = a short breath.', 'প্রতিটি দল একটু উঁচু থেকে শুরু হয়, তারপর নেমে আসে। // = ছোট্ট নিঃশ্বাস।'),
           l1: L('In Bangla, the listener helps carry the meaning. In English, the voice carries it.', 'বাংলায় শ্রোতাও অর্থ বুঝে নিতে সাহায্য করেন। ইংরেজিতে কণ্ঠকেই অর্থ বহন করতে হয়।'),
-          clips: ['pro-sent1', 'pro-sent2'], stack: 'always', labels: 'words', autoplay: ['pro-sent2'] },
+          clips: ['pro-sent1', 'pro-sent2'], stack: 'always', labels: 'words', autoplay: ['pro-sent1'] },
         { type: 'pause', id: 'grandma', title: L('The pause is the message', 'বিরতিতেই অর্থ'),
           cue: L('One small pause changes everything.', 'একটা ছোট্ট বিরতি পুরো অর্থ বদলে দেয়।'),
           a: { clip: 'pro-sent3', text: 'Let’s eat, Grandma!', mean: L('Grandma is invited to dinner.', 'দাদি/নানিকে খেতে ডাকা হচ্ছে।') },
           b: { clip: 'pro-nopause', text: 'Let’s eat Grandma!', mean: L('Grandma IS the dinner!', 'দাদি/নানিকেই খাওয়া হবে!') } },
-      ] },
-      { key: 'say', sections: [
-        { type: 'echo', id: 'hum', mode: 'tune', title: L('Hum it, then say it', 'আগে গুনগুন, তারপর বলুন'),
-          cue: L('First hum the tune with no words: mm-MM-mm. Then add the words.', 'প্রথমে শব্দ ছাড়া শুধু সুরটা গুনগুন করুন: মম-মম-মম। তারপর শব্দ যোগ করুন।'),
-          items: ['pro-sent1', 'pro-sent2', 'pro-sent4', 'pro-sent3'] },
       ] },
       { key: 'play', sections: [
         { type: 'pausegame', id: 'detective', title: L('Pause detective', 'বিরতি গোয়েন্দা'),
@@ -220,11 +205,6 @@ export const UNITS = [
             { clip: 'lnk-pick-it-up', words: ['pick', 'it', 'up'], links: [0, 1], kind: L('a chain of two links', 'পরপর দুটি জোড়া'), like: 'pi-cki-tup' },
             { clip: 'lnk-turn-off', words: ['turn', 'off', 'the', 'light'], links: [0], kind: L('r carries across', 'r পার হয়ে যায়'), like: 'tur-noff the light' },
           ] },
-      ] },
-      { key: 'say', sections: [
-        { type: 'echo', id: 'shadow', mode: 'tune', title: L('Shadow it', 'ছায়ার মতো বলুন'),
-          cue: L('Play it. Then speak along, just after the voice. Copy the flow, not only the words.', 'শুনুন। তারপর কণ্ঠের ঠিক পরপর সাথে সাথে বলুন। শুধু শব্দ নয়, প্রবাহটাও নকল করুন।'),
-          items: ['lnk-go-on', 'lnk-an-apple', 'lnk-come-in', 'lnk-whats-up', 'lnk-pick-it-up', 'lnk-turn-off'] },
       ] },
       { key: 'play', sections: [
         { type: 'linkgame', id: 'link-detective', title: L('Where do the words join?', 'শব্দগুলো কোথায় জোড়ে?'),
@@ -269,18 +249,6 @@ export const UNITS = [
             { clip: 'num-date-oct12', label: L('Date', 'তারিখ'), show: 'October 12th', say: 'October twelfth' },
             { clip: 'num-price-14000', label: L('Price', 'দাম'), show: '14,000 taka', say: 'fourteen thousand taka' },
             { clip: 'num-time-530', label: L('Time', 'সময়'), show: '5:30', say: 'five thirty' },
-          ] },
-      ] },
-      { key: 'say', sections: [
-        { type: 'numbersay', id: 'your-turn', title: L('Your turn first', 'আগে আপনি বলুন'),
-          cue: L('Say it aloud yourself. Then tap to hear the model and compare.', 'আগে নিজে জোরে বলুন। তারপর চাপ দিয়ে মডেলটা শুনে মিলিয়ে নিন।'),
-          items: [
-            { clip: 'num-year1994', show: '1994', say: 'nineteen · ninety-four' },
-            { clip: 'num-phone', show: '01712 345678', say: 'zero one seven · one two · three four five · six seven eight' },
-            { clip: 'num-date-oct12', show: 'Oct 12', say: 'October twelfth' },
-            { clip: 'num-price-14000', show: '৳14,000', say: 'fourteen thousand taka' },
-            { clip: 'num-time-530', show: '5:30', say: 'five thirty' },
-            { clip: 'num-year2026', show: '2026', say: 'twenty · twenty-six' },
           ] },
       ] },
       { key: 'play', sections: [
@@ -333,11 +301,6 @@ export const UNITS = [
             a: { word: 'desert', parts: [['DES', 2], ['ert', 0]], clip: 'dec-desert', mean: L('sand, heat, camels', 'বালু, গরম, উট') },
             b: { word: 'dessert', parts: [['des', 0], ['SERT', 2]], clip: 'dec-dessert', mean: L('cake, ice cream, mishti', 'কেক, আইসক্রিম, মিষ্টি') },
           } },
-      ] },
-      { key: 'say', sections: [
-        { type: 'echo', id: 'echo-vowels', mode: 'pair', title: L('Stretch, then relax', 'টেনে, তারপর ঢিলে'),
-          cue: L('Say the long one: smile hard and hold. Then the short one: let your face go soft.', 'লম্বাটা বলুন: জোরে হাসির মতো টেনে ধরে রাখুন। তারপর ছোটটা: মুখ নরম করে ছেড়ে দিন।'),
-          items: [['vow-team', 'vow-tim'], ['vow-beat', 'vow-bit'], ['vow-fool', 'vow-full'], ['vow-pool', 'vow-pull']] },
       ] },
       { key: 'play', sections: [
         { type: 'identify', id: 'which-vowel', visual: 'vowel', title: L('Which word?', 'কোন শব্দ?'),
@@ -392,11 +355,6 @@ export const UNITS = [
           vs: { a: 'con-herd', b: 'con-hard' },
           vsCue: L('Not open “ar”: herd is not hard.', 'খোলা “ar” নয়: herd আর hard আলাদা।') },
       ] },
-      { key: 'say', sections: [
-        { type: 'echo', id: 'echo-buzz', mode: 'pair', title: L('Feel the buzz', 'গুঞ্জন অনুভব করুন'),
-          cue: L('Fingers on your throat. Say each pair. Buzz off, buzz on.', 'গলায় আঙুল রাখুন। প্রতিটি জোড়া বলুন। গুঞ্জন বন্ধ, গুঞ্জন চালু।'),
-          items: [['con-fan', 'con-van'], ['con-sip', 'con-zip'], ['con-pin', 'con-fin'], ['con-west', 'con-best'], ['con-herd', 'con-hard'], ['con-earth', 'con-earn']] },
-      ] },
       { key: 'play', sections: [
         { type: 'identify', id: 'which-cons', visual: 'airvoice', title: L('Which word?', 'কোন শব্দ?'),
           cue: L('Listen first. Then tap the word you heard.', 'আগে শুনুন। তারপর যে শব্দটা শুনলেন তাতে চাপ দিন।'),
@@ -430,11 +388,6 @@ export const UNITS = [
           cue: L('ভ starts with closed lips, then breath. v never closes: top teeth on the bottom lip, keep buzzing.', '‘ভ’ বন্ধ ঠোঁট দিয়ে শুরু হয়, তারপর নিঃশ্বাস। v-তে ঠোঁট কখনো বন্ধ হয় না: উপরের দাঁত নিচের ঠোঁটে, গুঞ্জন চলতে থাকে।'),
           clip: 'con-van' },
       ] },
-      { key: 'say', sections: [
-        { type: 'echo', id: 'echo-puff', mode: 'puff', title: L('Hand test', 'হাতের পরীক্ষা'),
-          cue: L('Hand in front of your mouth. Feel the puff on the first word, not the second.', 'মুখের সামনে হাত রাখুন। প্রথম শব্দে ঝাপটা টের পাবেন, দ্বিতীয়টায় নয়।'),
-          items: [['asp-pin', 'asp-spin'], ['asp-top', 'asp-stop'], ['asp-key', 'asp-ski']] },
-      ] },
       { key: 'play', sections: [
         { type: 'identify', id: 'which-puff', visual: 'puff', title: L('Which word?', 'কোন শব্দ?'),
           cue: L('Listen to the whole word first. The puff is your second clue.', 'আগে পুরো শব্দটা শুনুন। ঝাপটাটা আপনার দ্বিতীয় সূত্র।'),
@@ -466,11 +419,6 @@ export const UNITS = [
         { type: 'clusters', id: 'four', title: L('One smooth start', 'এক টানে শুরু'),
           cue: L('Two or three consonants, locked together. No gap, no helper vowel.', 'দুই বা তিনটি ব্যঞ্জন, একসাথে আটকানো। ফাঁক নেই, সাহায্যকারী স্বর নেই।'),
           words: [{ clip: 'clu-school', c: 'sk' }, { clip: 'clu-street', c: 'str' }, { clip: 'clu-splash', c: 'spl' }, { clip: 'clu-spring', c: 'spr' }] },
-      ] },
-      { key: 'say', sections: [
-        { type: 'echo', id: 'echo-clusters', mode: 'cluster', title: L('Build it up', 'ধাপে ধাপে বলুন'),
-          cue: L('Hiss the s, then slide straight in: sss… school.', 's-এর হিস্‌ দিয়ে শুরু করুন, তারপর সোজা চলে যান: সসস… school।'),
-          items: ['clu-school', 'clu-street', 'clu-splash', 'clu-spring'] },
       ] },
       { key: 'play', sections: [
         { type: 'clustergame', id: 'catch-vowel', title: L('Catch the extra vowel', 'বাড়তি স্বরটা ধরুন'),
@@ -543,11 +491,6 @@ export const UNITS = [
               body: L('Pause where the ideas divide. Let the big beat carry the news.', 'যেখানে ভাবনা ভাগ হয় সেখানে থামুন। বড় তালটাই খবরটা বহন করুক।'), unit: 'melody' },
           ] },
       ] },
-      { key: 'say', sections: [
-        { type: 'echo', id: 'your-way', title: L('Say it your way — clearly', 'নিজের মতো বলুন — স্পষ্ট করে'),
-          cue: L('Pick a voice at the top, or keep your own accent. Just make every sound clear.', 'ওপরে একটা কণ্ঠ বেছে নিন, অথবা নিজের উচ্চারণভঙ্গিই রাখুন। শুধু প্রতিটি ধ্বনি স্পষ্ট করুন।'),
-          items: ['acc-water', 'acc-car', 'acc-dance', 'acc-schedule', 'acc-vitamin', 'acc-tomato'] },
-      ] },
       { key: 'play', sections: [
         { type: 'accentgame', id: 'accent-or-not', title: L('Accent — or a clarity problem?', 'উচ্চারণভঙ্গি — নাকি স্পষ্টতার সমস্যা?'),
           cue: L('Hear it, read about it, then choose the best label.', 'শুনুন, পড়ুন, তারপর ঠিক নামটা বেছে নিন।'),
@@ -612,11 +555,7 @@ export const UI = {
   check: L('Check', 'মিলিয়ে দেখুন'),
   tryAgain: L('Try again', 'আবার চেষ্টা'),
   playWord: L('Play the word', 'শব্দটা শুনুন'),
-  record: L('Record me', 'আমার কণ্ঠ রেকর্ড'),
   stop: L('Stop', 'থামুন'),
-  hearMe: L('Hear me', 'আমারটা শুনুন'),
-  you: L('You', 'আপনি'),
-  said: L('Said it', 'বলেছি'),
   done: L('Unit complete', 'ইউনিট শেষ'),
   upNext: L('Up next', 'এরপর'),
 };

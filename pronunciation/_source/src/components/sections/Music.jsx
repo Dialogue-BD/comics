@@ -7,7 +7,7 @@ import RhythmLane from '../visuals/RhythmLane';
 import engine, { clip as getClip } from '../../lib/audio';
 import { usePlayingId, useClipFrame } from '../../lib/hooks';
 import { T } from '../../lib/settings';
-import { ClipButton, Note, L1Note, Beats, partsOf, labelOf } from '../Bits';
+import { ClipButton, Note, L1Note, Beats, partsOf, labelOf, TabBar, NarrowSwitch, SwipeHint } from '../Bits';
 import { IPlay, IPause } from '../Icons';
 import { UI } from '../../content/units';
 
@@ -16,20 +16,26 @@ const spanOf = (ids, lead = 0.08) => Math.max(...ids.map(id => { const c = getCl
 // ---------------------------------------------------------------- voice lines
 export function LinesSection({ scene }) {
   const shared = scene.shareScale ? spanOf(scene.clips) : undefined;
+  // several sentences: one at a time with tabs, so a stacked sentence fits one screen;
+  // words (photograph / photographic) stay together on one shared scale
+  const sentences = scene.clips.length > 1 && scene.clips.every(id => getClip(id).words.length > 3);
+  const [k, setK] = useState(0);
+  const shown = sentences ? [scene.clips[k]] : scene.clips;
   return (
     <>
-      <div className="board shadow-blue">
-        {scene.clips.map(id => {
+      {sentences && <TabBar items={scene.clips.map(id => labelOf(id).split(' ').slice(0, 4).join(' ') + '…')} k={k} onPick={setK} label="Sentences" next="Next sentence" />}
+      <div className={`board shadow-blue ${!sentences && shown.length === 2 ? 'cols-2' : ''}`}>
+        {shown.map(id => {
           const multi = getClip(id).words.length > 1;
           return (
             <div className="board-row line-row" key={id}>
               <ClipButton ids={id} variant={multi ? 'sentence' : 'word'} label={multi ? labelOf(id) : getClip(id).words[0].syl.map(s => s.t).join('·')} />
-              <VoiceLine id={id} span={shared} size="lg" stack={scene.stack || 'auto'} labels={scene.labels || 'auto'} />
+              <VoiceLine id={id} span={shared} size={multi ? 'md' : 'lg'} stack={scene.stack || 'auto'} labels={scene.labels || 'auto'} />
             </div>
           );
         })}
       </div>
-      {scene.clips.length > 1 && <div className="row-actions"><ClipButton ids={scene.clips} variant="pill" label={UI.playAll.en} /></div>}
+      {scene.clips.length > 1 && !sentences && <div className="row-actions"><ClipButton ids={scene.clips} variant="pill" label={UI.playAll.en} /></div>}
       <Note text={scene.note} />
       <L1Note text={scene.l1} />
     </>
@@ -40,9 +46,10 @@ export function LinesSection({ scene }) {
 export function SchwaSection({ scene }) {
   return (
     <>
-      <div className="board cols-3 shadow-gold">
+      <div className="board cols-3 shadow-gold swipe">
         {scene.words.map(w => <SchwaCard key={w.clip} w={w} />)}
       </div>
+      <SwipeHint />
       <L1Note text={scene.l1} />
     </>
   );
@@ -194,11 +201,13 @@ export function RushDemoSection({ scene }) {
 // ---------------------------------------------------------------- melody on / off
 export function MelodySection({ scene }) {
   const playing = usePlayingId([scene.on, scene.off]);
+  const [pick, setPick] = useState(0);
   return (
     <>
-      <div className="melody-grid">
-        {[['on', scene.on], ['off', scene.off]].map(([k, id]) => (
-          <div key={k} className={`melody-card ${k} ${playing === id ? 'is-playing' : ''}`}>
+      <NarrowSwitch items={['Melody on', 'Melody off']} k={pick} onPick={setPick} label="Melody" />
+      <div className={`melody-grid pick-${pick}`}>
+        {[['on', scene.on], ['off', scene.off]].map(([k, id], i) => (
+          <div key={k} className={`melody-card ${k} nz-${i} ${playing === id ? 'is-playing' : ''}`}>
             <span className="kick coral">{k === 'on' ? 'NATURAL · MELODY ON' : 'MONOTONE · MELODY OFF'}</span>
             <T en={k === 'on' ? 'Small tunes that rise and fall' : 'One flat line'} bn={k === 'on' ? 'ওঠা-নামা করা ছোট ছোট সুর' : 'একটাই সমান রেখা'} as="h3" />
             <ClipButton ids={id} variant="pill" label={k === 'on' ? 'Melody on' : 'Melody off'} />

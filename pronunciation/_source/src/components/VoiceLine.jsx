@@ -29,7 +29,6 @@ export default function VoiceLine({
   span,                   // seconds across the width (to compare clips on one scale)
   stack = 'auto',         // 'auto' | 'never' | 'always'
   tone = 'ink',           // 'ink' | 'flat' | 'quiet'
-  overlay,                // [{t, st}] — the student's own pitch, drawn dotted
   playable = true,
   forcePlayed = false,
   showPauses = true,
@@ -69,7 +68,8 @@ export default function VoiceLine({
       rows = [{ t0, t1: t0 + whole, groups }];
     }
     // vertical bands
-    const lineH = line ? Math.round((multi ? 92 : 104) * ui * K) : 0;
+    // a sentence broken into rows: each row is one short tune, so it needs less height
+    const lineH = line ? Math.round((multi ? (rows.length > 1 ? 70 : 92) : 104) * ui * K) : 0;
     const wf = Math.max(0.62, Math.min(1, W / 640));     // narrower screens: smaller labels
     const fs = (s, w) => {
       if (mode === 'words') {
@@ -307,10 +307,6 @@ export default function VoiceLine({
               })}
               {showPauses && L.rows.length > 1 && ri < L.rows.length - 1 && (
                 <text className="vl-pause" x={Math.min(W - L.pad - 8 * ui, row.X(row.t1) + 10 * ui)} y={row.y + row.base} fontSize={22 * ui * K} textAnchor="middle">//</text>
-              )}
-              {overlay && overlay.length > 1 && (
-                <path className="vl-you" strokeWidth={3.5 * ui} transform={`translate(0,${row.y})`}
-                  d={overlay.filter(p => p.t >= row.t0 && p.t <= row.t1).map((p, i, a) => (i && p.st != null && a[i - 1].st != null ? 'L' : 'M') + row.X(p.t).toFixed(1) + ' ' + L.yOf(p.st == null ? 0 : p.st).toFixed(1)).join('')} />
               )}
             </g>
           ))}

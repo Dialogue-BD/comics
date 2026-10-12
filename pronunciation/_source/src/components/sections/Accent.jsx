@@ -6,7 +6,7 @@ import engine, { VOICES } from '../../lib/audio';
 import { usePlayingVoice } from '../../lib/hooks';
 import { T, useSettings } from '../../lib/settings';
 import ClickSpark from '../../reactbits/ClickSpark';
-import { ClipButton } from '../Bits';
+import { ClipButton, TabBar, SwipeHint } from '../Bits';
 import { IPlay, IPause, IArrowR, ICheck } from '../Icons';
 import { UNITS, UI } from '../../content/units';
 
@@ -73,18 +73,20 @@ export function AccentHeroVisual({ unit }) {
 
 // ------------------------------------------------------------------ same word, two accents
 export function AccentPairsSection({ scene }) {
+  // one word at a time: both accents side by side on one screen
+  const [k, setK] = useState(0);
+  const r = scene.rows[k];
   return (
-    <div className="ac-rows">
-      {scene.rows.map((r, k) => (
-        <div key={r.clip} className="ac-row rv">
-          <div className="ac-n"><b>{String(k + 1).padStart(2, '0')}</b><span>{r.word}</span>
-            <BothVoices id={r.clip} />
-          </div>
-          <VoiceCard id={r.clip} side={r.uk} voice="alice" />
-          <span className="ac-both"><ICheck /> <span>both<br />correct</span></span>
-          <VoiceCard id={r.clip} side={r.us} voice="brian" />
+    <div className="ac-stage">
+      <TabBar items={scene.rows.map(x => x.word)} k={k} onPick={setK} label="Words" next="Next word" />
+      <div className="ac-row" key={r.clip}>
+        <div className="ac-n"><b>{String(k + 1).padStart(2, '0')}</b><span>{r.word}</span>
+          <BothVoices id={r.clip} />
         </div>
-      ))}
+        <VoiceCard id={r.clip} side={r.uk} voice="alice" />
+        <span className="ac-both"><ICheck /> <span>both<br />correct</span></span>
+        <VoiceCard id={r.clip} side={r.us} voice="brian" />
+      </div>
     </div>
   );
 }
@@ -155,7 +157,8 @@ export function AccentGame({ scene }) {
 // ------------------------------------------------------------------ what actually matters
 export function MattersSection({ scene }) {
   return (
-    <div className="matters">
+    <>
+    <div className="matters swipe">
       {scene.cards.map((c, k) => {
         const u = UNITS.find(x => x.id === c.unit);
         return (
@@ -176,5 +179,7 @@ export function MattersSection({ scene }) {
         );
       })}
     </div>
+    <SwipeHint />
+    </>
   );
 }

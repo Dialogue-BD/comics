@@ -8,7 +8,7 @@ import engine from '../lib/audio';
 import { usePlayingId } from '../lib/hooks';
 import { T, useSettings } from '../lib/settings';
 import { scrollToEl, scrollTop, ScrollTrigger } from '../lib/scroll';
-import { IPlay, IPause, IArrowR, IEar, IMouth, IGame, IBook, IPrint } from '../components/Icons';
+import { IPlay, IPause, IArrowR, IEar, IGame, IBook, IPrint } from '../components/Icons';
 import { UNITS, UI } from '../content/units';
 import SplitText from '../reactbits/SplitText';
 import Threads from '../reactbits/Threads';
@@ -92,7 +92,7 @@ export default function Landing({ go, focus }) {
         <section className="units-sec" id="units" aria-labelledby="units-h">
           <div className="lesson-heading rv">
             <div><div className="section-number">ELEVEN SHORT UNITS</div><T en="Music first. Then the sounds." bn="আগে সুর। তারপর ধ্বনি।" as="h2" id="units-h" /></div>
-            <p className="lesson-cue steps-line"><span><IEar /> Hear</span><span><IMouth /> Say</span><span><IGame /> Play</span><T en="· about 10 minutes each" bn="· প্রতিটি প্রায় ১০ মিনিট" block={false} /></p>
+            <p className="lesson-cue steps-line"><span><IEar /> Hear</span><span><IGame /> Play</span><T en="· about 10 minutes each" bn="· প্রতিটি প্রায় ১০ মিনিট" block={false} /></p>
           </div>
           {[['music', 'The music', 'সুর'], ['sounds', 'The sounds', 'ধ্বনি'], ['accent', 'And your accent', 'আর আপনার উচ্চারণভঙ্গি']].map(([g, en, bn]) => (
             <div key={g} className={`unit-group g-${g}`}>
