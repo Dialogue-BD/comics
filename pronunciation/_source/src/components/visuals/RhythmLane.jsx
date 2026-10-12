@@ -3,12 +3,13 @@
 // the same size (for the games). Words light up in time with the voice.
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import engine, { clip as getClip } from '../../lib/audio';
+import engine from '../../lib/audio';
+import { useClip } from '../../lib/hooks';
 
 export const isFn = (w) => w.syl.every(s => s.lv === 0);
 
 export default function RhythmLane({ id, reveal = true, marks = {}, onWord, pauses = true, className = '', size = 'md' }) {
-  const c = getClip(id);
+  const c = useClip(id);
   const refs = useRef([]);
   useEffect(() => {
     if (!c) return;
@@ -29,7 +30,7 @@ export default function RhythmLane({ id, reveal = true, marks = {}, onWord, paus
         cur = k;
       }
     });
-  }, [id, reveal]);
+  }, [id, reveal, c]);
   if (!c) return null;
   const Tag = onWord ? 'button' : 'span';
   return (

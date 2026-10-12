@@ -8,13 +8,14 @@ import { LABEL } from '../content/units';
 export const labelOf = (id) => LABEL[id] || (getClip(id) ? getClip(id).words.map(w => w.w).join(' ') : id.split('-').slice(1).join('-'));
 
 // Play one clip, or several in a row.
-export function ClipButton({ ids, label, sub, className = '', variant = 'word', children, onPlayed, disabled }) {
+// voice: play in this voice (when it has the clip) instead of the chosen one
+export function ClipButton({ ids, label, sub, className = '', variant = 'word', children, onPlayed, disabled, voice }) {
   const list = Array.isArray(ids) ? ids : [ids];
   const playing = usePlayingId(list);
   const click = async (e) => {
     e.stopPropagation();
     if (playing) { engine.stop(); return; }
-    const r = list.length > 1 ? await engine.sequence(list) : await engine.play(list[0]);
+    const r = list.length > 1 ? await engine.sequence(list.map(id => ({ id, voice }))) : await engine.play(list[0], { voice });
     if (r === 'ended' && onPlayed) onPlayed();
   };
   return (

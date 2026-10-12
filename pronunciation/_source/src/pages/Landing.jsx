@@ -11,6 +11,7 @@ import { scrollToEl, scrollTop, ScrollTrigger } from '../lib/scroll';
 import { IPlay, IPause, IArrowR, IEar, IMouth, IGame, IBook, IPrint } from '../components/Icons';
 import { UNITS, UI } from '../content/units';
 import SplitText from '../reactbits/SplitText';
+import Threads from '../reactbits/Threads';
 
 export default function Landing({ go, focus }) {
   const [notes, setNotes] = useState(false);
@@ -35,6 +36,9 @@ export default function Landing({ go, focus }) {
     <div className="app landing" ref={root}>
       <AppBar go={go} />
       <main>
+        <div className="home-hero-wrap">
+        {/* flowing lines, like voices: they drift with the pointer */}
+        <Threads className="hero-threads" lines={22} lineWidth={5} amplitude={1.1} distance={0.15} color={[0.06, 0.24, 0.13]} />
         <section className="unit-hero home">
           <div className="uh-copy">
             <p className="eyebrow">Pronunciation practice{bangla && <span className="bn" lang="bn">উচ্চারণ অনুশীলন</span>}</p>
@@ -52,6 +56,7 @@ export default function Landing({ go, focus }) {
             <p className="sc-foot">Tap it. The line is the melody; the ball bounces on the beats.</p>
           </div>
         </section>
+        </div>
 
         <blockquote className="manifesto">In Bangla, the listener helps carry the meaning. <em>In English, the voice has to carry it.</em>{bangla && <span className="bn" lang="bn">বাংলায় শ্রোতাও অর্থ বুঝে নিতে সাহায্য করেন। ইংরেজিতে কণ্ঠকেই অর্থ বহন করতে হয়।</span>}</blockquote>
 
@@ -86,12 +91,12 @@ export default function Landing({ go, focus }) {
 
         <section className="units-sec" id="units" aria-labelledby="units-h">
           <div className="lesson-heading rv">
-            <div><div className="section-number">TEN SHORT UNITS</div><T en="Music first. Then the sounds." bn="আগে সুর। তারপর ধ্বনি।" as="h2" id="units-h" /></div>
+            <div><div className="section-number">ELEVEN SHORT UNITS</div><T en="Music first. Then the sounds." bn="আগে সুর। তারপর ধ্বনি।" as="h2" id="units-h" /></div>
             <p className="lesson-cue steps-line"><span><IEar /> Hear</span><span><IMouth /> Say</span><span><IGame /> Play</span><T en="· about 10 minutes each" bn="· প্রতিটি প্রায় ১০ মিনিট" block={false} /></p>
           </div>
-          {['music', 'sounds'].map(g => (
+          {[['music', 'The music', 'সুর'], ['sounds', 'The sounds', 'ধ্বনি'], ['accent', 'And your accent', 'আর আপনার উচ্চারণভঙ্গি']].map(([g, en, bn]) => (
             <div key={g} className={`unit-group g-${g}`}>
-              <T en={g === 'music' ? 'The music' : 'The sounds'} bn={g === 'music' ? 'সুর' : 'ধ্বনি'} as="h3" className="ug-h rv" />
+              <T en={en} bn={bn} as="h3" className="ug-h rv" />
               <div className="unit-grid">
                 {UNITS.filter(u => u.group === g).map(u => <UnitCard key={u.id} unit={u} go={go} />)}
               </div>

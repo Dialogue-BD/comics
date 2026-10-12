@@ -6,8 +6,9 @@
 // Section types (see pages/Unit.jsx): lines, schwa, suffix, prefix, compound, legend,
 //   rushdemo, melody, pause, links, years, phone, meaning, pairs, er, doors, bhv,
 //   clusters, thgroups, echo, numbersay, identify, stress, compoundgame, bigbeat, rush,
-//   pausegame, linkgame, numbergame, clustergame
-// Every clip id refers to an mp3 in audio/ and an entry in data/clips.json.
+//   pausegame, linkgame, numbergame, clustergame, accentpairs, matters, accentgame
+// Every clip id refers to an mp3 in audio/ and an entry in data/clips.json; a second voice
+// has the same ids in audio/<voice>/ and data/clips-<voice>.json (see lib/audio.js).
 
 export const STEPS = {
   hear: { en: 'Hear', bn: 'শুনুন', icon: 'ear', verb: { en: 'Notice it', bn: 'লক্ষ করুন' } },
@@ -16,6 +17,29 @@ export const STEPS = {
 };
 
 const L = (en, bn) => ({ en, bn });
+
+// Accent pairs: the same word in each voice's own accent (Alice British, Brian American).
+// parts: the spelling, with the letters that change marked ('hi') or silent ('ghost').
+const ACCENT_ROWS = [
+  { clip: 'acc-car', word: 'car',
+    uk: { tag: L('R drops', 'r পড়ে যায়'), parts: [['ca'], ['r', 'ghost']], say: 'kah', ipa: '/kɑː/', note: L('No r after the vowel.', 'স্বরের পরে r বলা হয় না।') },
+    us: { tag: L('R stays', 'r থাকে'), parts: [['ca'], ['r', 'hi']], say: 'kar', ipa: '/kɑr/', note: L('The r is clearly there.', 'r স্পষ্ট শোনা যায়।') } },
+  { clip: 'acc-water', word: 'water',
+    uk: { tag: L('Clear t', 'স্পষ্ট t'), parts: [['wa'], ['t', 'hi'], ['e'], ['r', 'ghost']], say: 'waw-tuh', ipa: '/ˈwɔːtə/', note: L('A clear t, and no r at the end.', 'স্পষ্ট t, আর শেষে r নেই।') },
+    us: { tag: L('Flap t', 'নরম t'), parts: [['wa'], ['t', 'hi'], ['er']], say: 'wah-der', ipa: '/ˈwɑːɾɚ/', note: L('The t turns into a quick, soft d.', 't হয়ে যায় দ্রুত, নরম d-এর মতো।') } },
+  { clip: 'acc-dance', word: 'dance',
+    uk: { tag: L('Long ah', 'লম্বা আ'), parts: [['d'], ['a', 'hi'], ['nce']], say: 'dahns', ipa: '/dɑːns/', note: L('A long, open “ah”, as in father.', 'father-এর মতো লম্বা, খোলা “আ”।') },
+    us: { tag: L('Short a', 'ছোট অ্যা'), parts: [['d'], ['a', 'hi'], ['nce']], say: 'dans', ipa: '/dæns/', note: L('The vowel from cat.', 'cat-এর স্বর।') } },
+  { clip: 'acc-schedule', word: 'schedule',
+    uk: { tag: L('Sh- start', 'sh দিয়ে শুরু'), parts: [['sch', 'hi'], ['edule']], say: 'shed-yool', ipa: '/ˈʃedjuːl/', note: L('Begins with sh.', 'sh দিয়ে শুরু।') },
+    us: { tag: L('Sk- start', 'sk দিয়ে শুরু'), parts: [['sch', 'hi'], ['edule']], say: 'sked-jool', ipa: '/ˈskedʒuːl/', note: L('Begins with sk.', 'sk দিয়ে শুরু।') } },
+  { clip: 'acc-vitamin', word: 'vitamin',
+    uk: { tag: L('Short i', 'ছোট ই'), parts: [['v'], ['i', 'hi'], ['tamin']], say: 'VIT-a-min', ipa: '/ˈvɪtəmɪn/', note: L('vit-, as in sit.', 'sit-এর মতো vit-।') },
+    us: { tag: L('Long i', 'আই'), parts: [['v'], ['i', 'hi'], ['tamin']], say: 'VY-ta-min', ipa: '/ˈvaɪtəmɪn/', note: L('vite-, as in bite.', 'bite-এর মতো vite-।') } },
+  { clip: 'acc-tomato', word: 'tomato',
+    uk: { tag: L('mah', 'মা'), parts: [['tom'], ['a', 'hi'], ['to']], say: 'tuh-MAH-toh', ipa: '/təˈmɑːtəʊ/', note: L('The middle vowel is a long ah.', 'মাঝের স্বর লম্বা “আ”।') },
+    us: { tag: L('may', 'মে'), parts: [['tom'], ['a', 'hi'], ['to']], say: 'tuh-MAY-toh', ipa: '/təˈmeɪtoʊ/', note: L('The middle vowel sounds like may.', 'মাঝের স্বর “may”-এর মতো।') } },
+];
 
 export const UNITS = [
   // ───────────────────────────────────────────────────────── 1 · WORD STRESS
@@ -490,11 +514,69 @@ export const UNITS = [
       ] },
     ],
   },
+  // ───────────────────────────────────────────────────────── 11 · ACCENT OR MISTAKE
+  {
+    id: 'accent', n: 11, group: 'accent', glyph: 'accent',
+    title: L('Accent or Mistake?', 'উচ্চারণভঙ্গি, নাকি ভুল?'),
+    tag: L('Clear beats copied', 'নকলের চেয়ে স্পষ্টতা'),
+    hero: L('Which accent? Whichever you like.', 'কোন উচ্চারণভঙ্গি? যেটা আপনার ভালো লাগে।'),
+    intro: L('British, American, Bangladeshi — or a mix. What matters is clear pronunciation: the right sounds, the beat in the right place, and no missing or extra sounds.', 'ব্রিটিশ, আমেরিকান, বাংলাদেশি — বা মিশ্র। আসল কথা স্পষ্ট উচ্চারণ: ঠিক ধ্বনি, ঠিক জায়গায় তাল, কোনো ধ্বনি বাদ বা বাড়তি নয়।'),
+    heroClip: 'acc-water', heroVisual: 'accent', heroRow: ACCENT_ROWS[1],
+    manifesto: L('Accent is identity. <em>Pronunciation is clarity.</em>', 'উচ্চারণভঙ্গি আপনার পরিচয়। উচ্চারণ হলো স্পষ্টতা।'),
+    takeaway: L('Your accent is fine. Make your pronunciation clear.', 'আপনার উচ্চারণভঙ্গি ঠিক আছে। উচ্চারণটা স্পষ্ট করুন।'),
+    preload: ['acc-car', 'acc-water', 'acc-dance', 'acc-schedule', 'acc-vitamin', 'acc-tomato'],
+    steps: [
+      { key: 'hear', sections: [
+        { type: 'accentpairs', id: 'two-accents', title: L('Different — and both correct', 'আলাদা — আর দুটোই সঠিক'),
+          cue: L('Alice speaks British English. Brian speaks American English. Tap both cards in each row. The difference is regular and familiar, so listeners understand both.', 'অ্যালিস ব্রিটিশ ইংরেজি বলেন। ব্রায়ান আমেরিকান ইংরেজি বলেন। প্রতিটি সারির দুটো কার্ডেই চাপ দিন। পার্থক্যটা নিয়মিত আর পরিচিত, তাই শ্রোতারা দুটোই বোঝেন।'),
+          rows: ACCENT_ROWS },
+        { type: 'matters', id: 'what-matters', title: L('What actually matters', 'আসলে কী গুরুত্বপূর্ণ'),
+          cue: L('These four skills keep you clear in any accent — Bangladeshi, British, American, or in between.', 'এই চারটি দক্ষতা যেকোনো উচ্চারণভঙ্গিতে আপনাকে স্পষ্ট রাখে — বাংলাদেশি, ব্রিটিশ, আমেরিকান, বা মাঝামাঝি।'),
+          cards: [
+            { title: L('Keep vowels apart', 'স্বরগুলো আলাদা রাখুন'), clips: ['vow-ship', 'vow-sheep'], labels: ['ship', 'sheep'],
+              body: L('The vowel is what tells these words apart — in every accent.', 'স্বরটাই শব্দ দুটোকে আলাদা করে — সব উচ্চারণভঙ্গিতে।'), unit: 'vowels' },
+            { title: L('Put the beat in the right place', 'তাল ঠিক জায়গায় দিন'), clips: ['dec-photograph', 'dec-photographic'], labels: ['PHOtograph', 'photoGRAPHic'], sep: '→',
+              body: L('The strong syllable helps the listener find the word fast.', 'জোরালো অক্ষরটা শ্রোতাকে দ্রুত শব্দটা চিনতে সাহায্য করে।'), unit: 'word-stress' },
+            { title: L('No extra vowels', 'বাড়তি স্বর নয়'), clips: ['clu-school', 'clu-eekul'], labels: ['school', 'eeskool'], sep: 'not', bad: 1,
+              body: L('Keep the first consonants together, so the word keeps its shape.', 'শুরুর ব্যঞ্জনগুলো একসাথে রাখুন, যাতে শব্দের আকার ঠিক থাকে।'), unit: 'clusters' },
+            { title: L('Speak in thought groups', 'ভাবনার দলে বলুন'), clips: ['pro-sent1'], labels: ['After the long meeting // I went straight home // …'],
+              body: L('Pause where the ideas divide. Let the big beat carry the news.', 'যেখানে ভাবনা ভাগ হয় সেখানে থামুন। বড় তালটাই খবরটা বহন করুক।'), unit: 'melody' },
+          ] },
+      ] },
+      { key: 'say', sections: [
+        { type: 'echo', id: 'your-way', title: L('Say it your way — clearly', 'নিজের মতো বলুন — স্পষ্ট করে'),
+          cue: L('Pick a voice at the top, or keep your own accent. Just make every sound clear.', 'ওপরে একটা কণ্ঠ বেছে নিন, অথবা নিজের উচ্চারণভঙ্গিই রাখুন। শুধু প্রতিটি ধ্বনি স্পষ্ট করুন।'),
+          items: ['acc-water', 'acc-car', 'acc-dance', 'acc-schedule', 'acc-vitamin', 'acc-tomato'] },
+      ] },
+      { key: 'play', sections: [
+        { type: 'accentgame', id: 'accent-or-not', title: L('Accent — or a clarity problem?', 'উচ্চারণভঙ্গি — নাকি স্পষ্টতার সমস্যা?'),
+          cue: L('Hear it, read about it, then choose the best label.', 'শুনুন, পড়ুন, তারপর ঠিক নামটা বেছে নিন।'),
+          rounds: [
+            { clip: 'acc-water', voice: 'brian', label: L('“water” with an American flap'), detail: L('The t sounds like a quick d: “wader”.', 't দ্রুত d-এর মতো শোনায়: “ওয়াডার”।'), answer: 'accent',
+              why: L('American speakers soften this t every time. The word stays clear.', 'আমেরিকানরা সবসময় এই t নরম করেন। শব্দটা স্পষ্টই থাকে।') },
+            { clip: 'acc-watar', voice: 'brian', label: L('“watar”: a strong vowel at the end'), detail: L('The weak “uh” at the end turns into a full, strong “ar”.', 'শেষের দুর্বল “আ” পুরো, জোরালো “আর” হয়ে যায়।'), answer: 'issue',
+              why: L('The wrong vowel moves the beat and changes the word’s shape. Listeners have to work harder. That is a clarity problem.', 'ভুল স্বর তাল সরিয়ে দেয়, শব্দের আকার বদলায়। শ্রোতাকে বেশি কষ্ট করতে হয়। এটা স্পষ্টতার সমস্যা।'),
+              compare: 'acc-water', compareLabel: 'water' },
+            { clip: 'acc-car', voice: 'alice', label: L('“car” with no r'), detail: L('Many British accents drop the r after a vowel.', 'অনেক ব্রিটিশ উচ্চারণে স্বরের পরের r বলা হয় না।'), answer: 'accent',
+              why: L('Dropping this r is a shared accent pattern. Everyone still hears car.', 'এই r বাদ দেওয়া একটা প্রচলিত উচ্চারণভঙ্গি। সবাই car-ই শোনেন।') },
+            { clip: 'acc-eschool', voice: 'brian', label: L('“eschool” for school'), detail: L('An extra vowel appears before sk.', 'sk-এর আগে একটা বাড়তি স্বর আসে।'), answer: 'issue',
+              why: L('The extra vowel adds a syllable and changes the word’s shape. That is a clarity problem.', 'বাড়তি স্বর একটা অক্ষর যোগ করে, শব্দের আকার বদলায়। এটা স্পষ্টতার সমস্যা।'),
+              compare: 'clu-school', compareLabel: 'school' },
+            { clip: 'acc-tomato', voice: 'brian', label: L('“to-MAY-to”'), detail: L('The middle vowel sounds like may, not mah.', 'মাঝের স্বর “মা” নয়, “মে”-র মতো।'), answer: 'accent',
+              why: L('Both tomatoes are correct. The beat stays on the middle syllable either way.', 'দুটো tomato-ই সঠিক। তাল দুইভাবেই মাঝের অক্ষরে থাকে।') },
+            { clip: 'clu-sitreet', label: L('“sitreet” for street'), detail: L('A helper vowel splits the s from tr.', 'একটা সাহায্যকারী স্বর s আর tr-কে আলাদা করে দেয়।'), answer: 'issue',
+              why: L('One word becomes two syllables. That is a clarity problem, in any accent.', 'এক অক্ষরের শব্দ দুই অক্ষর হয়ে যায়। যেকোনো উচ্চারণভঙ্গিতেই এটা স্পষ্টতার সমস্যা।'),
+              compare: 'clu-street', compareLabel: 'street' },
+          ] },
+      ] },
+    ],
+  },
 ];
 
 // Word labels for clips (what the student sees on a button).
 export const LABEL = {
-  'vow-tim': 'Tim', 'con-jew': 'Jew', 'clu-eekul': 'eeskool', 'clu-sitreet': 'sitreet',
+  'vow-tim': 'Tim', 'con-jew': 'Jew', 'clu-eekul': 'eeskool', 'clu-sitreet': 'sitreet', 'clu-iskul': 'iskool',
+  'acc-watar': 'watar', 'acc-eschool': 'eschool',
   'pro-sent1': 'After the long meeting, I went straight home, and slept for hours.',
   'pro-sent1-mono': 'After the long meeting, I went straight home, and slept for hours.',
   'pro-sent2': 'When I finished my homework, I called my friend, and we played football.',

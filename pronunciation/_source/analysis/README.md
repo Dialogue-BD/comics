@@ -31,3 +31,32 @@ used.
 
 The scripts read and write in `$VOICELAB_WORK` (`wav/`, `ana/out/`). To add clips without
 touching the others: `python3 analyse.py <id-or-prefix> …` then `python3 finalize.py --merge`.
+
+## A second voice (Brian, American)
+
+Every script works on one voice at a time: `VOICELAB_VOICE=brian` (default `alice`) picks
+the audio folder (`../../audio/brian/`), the data file (`../src/data/clips-brian.json`), the
+pitch range (60–300 Hz for a deep voice) and the hand-checked tables (`manual_brian.py`).
+
+```
+W=/path/to/brian-work
+python3 import_voice.py brian /path/to/voice-lab-brian [/path/to/fixes …] --work $W
+export VOICELAB_VOICE=brian VOICELAB_WORK=$W
+python3 analyse.py
+python3 align_ps.py > /tmp/aligned.py      # paste MANUAL / VOWEL / MANUAL_S into manual_brian.py
+python3 finalize.py --merge && python3 phones.py && python3 monotone.py
+```
+
+- `import_voice.py` maps the export's files to clip ids, trims the scrap of the carrier
+  phrase ("Say …") that word clips often start with, and skips clips listed in `SKIP`
+  (October 2026: words cut off at the start or end, and a "phone number" clip that reads
+  the manifest note instead of the digits). A later folder of fixes replaces files from
+  the export. Alice's British half of the accent pairs comes from the same export:
+  `import_voice.py alice … --only acc-`.
+- `align_ps.py` finds word, syllable and vowel timings with pocketsphinx forced alignment
+  (`pip install pocketsphinx`; its US English model ships inside the package). In
+  connected speech it is far closer than the espeak DTW of `analyse.py`; its output was
+  checked on spectrograms before going into `manual_brian.py`. The aspiration timings
+  there (`ASP`) were read off spectrograms by hand.
+- A clip a voice does not have simply is not in its data file: the app plays Alice instead,
+  for that word and for any pair it is compared with.

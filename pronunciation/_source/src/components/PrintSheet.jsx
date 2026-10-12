@@ -13,6 +13,7 @@ const EX = {
   puff: [<>Hand test: <b>p</b>in / spin · <b>t</b>op / stop · <b>k</b>ey / ski</>, <><span lang="bn">ভ</span> ≠ v: teeth on lip, keep buzzing — van</>],
   clusters: [<>school (not <span lang="bn">ইস্কুল</span>) · street · splash · spring</>, <>Start on the s. No vowel before it.</>],
   th: [<>θ air: think · three · thank — ð buzz: this · that · those</>, <>think / sink · three / tree · thank / sank — use the context.</>],
+  accent: [<>Accent = shared and clear: ca(r) · wa<b>t</b>er / “wader” · d<b>a</b>nce · <b>sch</b>edule — British or American, both correct.</>, <>Clarity problem = the word gets harder to recognise: “watar” · “eschool” · “sitreet”.</>, <>Keep any accent; train ship ≠ sheep, <b>PHO</b>tograph, school (no extra vowel), thought groups.</>],
 };
 
 export default function PrintSheet() {
@@ -38,7 +39,7 @@ export default function PrintSheet() {
           <section key={u.id} className="ps-unit">
             <h2><span>{u.n}</span>{u.title.en} <em lang="bn">{u.title.bn}</em></h2>
             <p className="ps-take">{u.takeaway.en} <span lang="bn">{u.takeaway.bn}</span></p>
-            <ul>{EX[u.id].map((e, i) => <li key={i}>{e}</li>)}</ul>
+            <ul>{(EX[u.id] || []).map((e, i) => <li key={i}>{e}</li>)}</ul>
           </section>
         ))}
         <section className="ps-unit ps-routine">

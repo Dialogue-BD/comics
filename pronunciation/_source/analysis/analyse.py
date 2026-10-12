@@ -11,6 +11,7 @@ import numpy as np, parselmouth as pm, librosa
 from scipy.signal import medfilt, find_peaks
 sys.path.insert(0, os.path.dirname(__file__))
 from spec import WORDS, SENTENCES
+from voice import F0_RANGE
 
 WORK = os.environ.get('VOICELAB_WORK', '/home/claude')
 WAV = f'{WORK}/wav'
@@ -25,7 +26,7 @@ def load(k):
 
 
 def f0_track(s):
-    p = s.to_pitch_ac(time_step=STEP, pitch_floor=75, pitch_ceiling=500, voicing_threshold=0.42,
+    p = s.to_pitch_ac(time_step=STEP, pitch_floor=F0_RANGE[0], pitch_ceiling=F0_RANGE[1], voicing_threshold=0.42,
                       octave_jump_cost=0.6, very_accurate=True)
     t = p.xs(); f = p.selected_array['frequency'].copy()
     v = f > 0
@@ -364,7 +365,8 @@ def do_sentence(k):
 if __name__ == '__main__':
     # optional: only these clip ids (e.g. python analyse.py cmp- lnk- num-); default all
     only = sys.argv[1:]
-    want = lambda k: not only or any(k.startswith(p) or k == p for p in only)
+    # a voice may not have every clip (see import_voice.py SKIP)
+    want = lambda k: (not only or any(k.startswith(p) or k == p for p in only)) and os.path.exists(f'{WAV}/{k}.wav')
     res = {}
     for k in WORDS:
         if want(k): res[k] = do_word(k)

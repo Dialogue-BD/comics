@@ -5,6 +5,7 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import { gsap } from 'gsap';
 import engine, { clip as getClip } from '../../lib/audio';
+import { useVoiceKey } from '../../lib/hooks';
 import { SHAPES, REST, track, shapeAt, focusShape } from './visemes';
 import { T } from '../../lib/settings';
 
@@ -146,7 +147,10 @@ export default function MouthDiagram({ ids = [], pose, poseFor, muscles = false,
   const root = useRef(null);
   const els = useRef({});
   const key = ids.join('|');
-  const tracks = useMemo(() => Object.fromEntries(ids.map(id => [id, track((getClip(id) || {}).ph)])), [key]);
+  const vk = useVoiceKey(ids);            // each voice moves its mouth on its own timings
+  const tracks = useMemo(() => Object.fromEntries(ids.map(id => [id, track((getClip(id) || {}).ph)])), [key, vk]);
+  const tracksRef = useRef(tracks);
+  tracksRef.current = tracks;          // the frame loop always reads the latest voice's track
   const restPose = pose || (ids[0] ? focusShape((getClip(ids[0]) || {}).ph) : 'rest');
   const st = useRef(null);
   if (!st.current) {
@@ -194,8 +198,9 @@ export default function MouthDiagram({ ids = [], pose, poseFor, muscles = false,
     let pt = -1;
     if (S.play) {
       pt = engine.time();
-      const sh = shapeAt(tracks[S.play.id] || [], pt, S.play.end);
-      target = SHAPES[sh || (pt < ((tracks[S.play.id] || [])[0] || { t: 0 }).t ? 'rest' : S.pose)] || REST;
+      const tr = tracksRef.current[S.play.id] || [];
+      const sh = shapeAt(tr, pt, S.play.end);
+      target = SHAPES[sh || (pt < (tr[0] || { t: 0 }).t ? 'rest' : S.pose)] || REST;
     }
     const nSub = Math.ceil(dt / 0.006), h = dt / nSub;
     let moving = false;

@@ -2,11 +2,12 @@
 // only air (f, s, th, the puff), a blue wave that vibrates where the voice is on.
 // Measured from the recording; it lights up as the voice reaches it.
 import React, { useEffect, useMemo, useRef } from 'react';
-import engine, { clip as getClip } from '../../lib/audio';
+import engine from '../../lib/audio';
+import { useClip } from '../../lib/hooks';
 import { useWidth } from '../../lib/settings';
 
 export default function SignalStrip({ id, span, height = 34, showPuff = true }) {
-  const c = getClip(id);
+  const c = useClip(id);
   const box = useRef(null);
   const W = useWidth(box);
   const R = useRef({});

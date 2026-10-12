@@ -40,3 +40,43 @@ export const frameClass = (clip, t) => {
   for (const [a, b] of clip.air) if (t >= a && t <= b) return 1;
   return 0;
 };
+
+// The voice a clip's pictures are drawn in; re-renders when it changes (voice switch,
+// or the clip speaking in another voice). Use the result as a memo dependency.
+export function useVoiceKey(ids) {
+  const list = Array.isArray(ids) ? ids : [ids];
+  const key = list.join('|');
+  const get = () => list.map(i => engine.voiceOf(i)).join(',');
+  const [k, setK] = useState(get);
+  useEffect(() => {
+    setK(get());
+    return engine.onVoice(changed => {
+      if (changed && !changed.some(i => list.includes(i))) return;
+      setK(get());
+    });
+  }, [key]);
+  return k;
+}
+
+// The clip's measurements in the voice its pictures show now.
+export function useClip(id) {
+  useVoiceKey(id);
+  return engine.data(id);
+}
+
+// The chosen voice, and a setter.
+export function useVoice() {
+  const [v, setV] = useState(engine.voice);
+  useEffect(() => engine.onVoice(changed => { if (!changed) setV(engine.voice); }), []);
+  return [v, (x) => engine.setVoice(x)];
+}
+
+// Which voice is speaking clip `id` right now (or null).
+export function usePlayingVoice(id) {
+  const [v, setV] = useState(null);
+  useEffect(() => engine.subscribe(s => {
+    const next = s.playing && s.id === id ? s.voice : null;
+    setV(prev => (prev === next ? prev : next));
+  }), [id]);
+  return v;
+}

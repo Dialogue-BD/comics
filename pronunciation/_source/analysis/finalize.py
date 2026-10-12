@@ -4,11 +4,13 @@ Adds hand-checked syllable timings for multi-syllable words (read off
 spectrograms), a smoothed semitone pitch contour, the strong vowel core,
 air/voice spans and the aspiration (VOT) measure.
 """
-import json, os, sys, numpy as np
+import importlib, json, os, sys, numpy as np
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from voice import VOICE, DEFAULT, app_json
 
 WORK = os.environ.get('VOICELAB_WORK', '/home/claude')
 A = json.load(open(f'{WORK}/ana/out/analysis.json'))
-APP = os.path.join(os.path.dirname(__file__), '..', 'src', 'data', 'clips.json')
+APP = app_json()
 STEP = 0.01
 
 # Hand-checked from fine-grid spectrograms: (syllable start, vowel onset, end) per syllable.
@@ -28,6 +30,11 @@ MANUAL = {
  'vow-supply': [(.07, .22, .30), (.30, .36, .88)],
  'clu-eekul': [(.03, .03, .45), (.45, .66, 1.03)],
  'clu-sitreet': [(.09, .29, .45), (.45, .55, 1.03)],
+ # accent words (pocketsphinx alignment, align_ps.py)
+ 'acc-water': [(0.040, 0.190, 0.365), (0.365, 0.500, 0.720)],
+ 'acc-schedule': [(0.050, 0.300, 0.415), (0.415, 0.540, 0.950)],
+ 'acc-vitamin': [(0.050, 0.200, 0.265), (0.265, 0.380, 0.465), (0.465, 0.465, 0.770)],
+ 'acc-tomato': [(0.040, 0.140, 0.175), (0.175, 0.175, 0.455), (0.455, 0.480, 0.810)],
 }
 
 
@@ -57,6 +64,13 @@ VOWEL = {'vow-team': (.19, .45), 'vow-tim': (.21, .40), 'vow-beat': (.24, .47), 
 ASP = {'asp-pin': (.26, .34), 'asp-spin': (.35, .36), 'asp-top': (.20, .29), 'asp-stop': (.13, .14),
        'asp-key': (.16, .28), 'asp-ski': (.32, .34), 'con-pin': (.30, .41), 'con-pat': (.22, .30),
        'vow-pool': (.20, .31), 'vow-pull': (.22, .31), 'vow-team': (.09, .19), 'vow-tim': (.11, .21)}
+
+
+# The tables above were read off Alice's recordings. Other voices keep their own in
+# manual_<voice>.py (same four names).
+if VOICE != DEFAULT:
+    _m = importlib.import_module(f'manual_{VOICE}')
+    MANUAL, MANUAL_S, VOWEL, ASP = _m.MANUAL, _m.MANUAL_S, _m.VOWEL, _m.ASP
 
 
 def smooth_contour(f0, breaks):
@@ -182,7 +196,7 @@ if __name__ == '__main__':
     r = finalize()
     if '--merge' in sys.argv:
         # add / replace only the clips analysed this run; keep the rest of the app's data
-        app = json.load(open(APP))
+        app = json.load(open(APP)) if os.path.exists(APP) else {}
         app.update(r)
         r = dict(sorted(app.items()))
         js = json.dumps(r, separators=(',', ':'))

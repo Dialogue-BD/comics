@@ -9,7 +9,7 @@ import { scrollToEl, scrollTop, ScrollTrigger, getLenis } from '../lib/scroll';
 import { L1Note } from '../components/Bits';
 import { IArrowR, IPlay, IPause, STEP_ICON } from '../components/Icons';
 import { UNITS, STEPS, UI } from '../content/units';
-import { usePlayingId } from '../lib/hooks';
+import { usePlayingId, useClip } from '../lib/hooks';
 import VoiceLine from '../components/VoiceLine';
 import MouthDiagram from '../components/mouth/MouthDiagram';
 import UnitGlyph from '../components/UnitGlyph';
@@ -18,6 +18,7 @@ import * as M from '../components/sections/Music';
 import * as S from '../components/sections/Sounds';
 import * as Say from '../components/sections/Say';
 import * as G from '../components/sections/Games';
+import * as A from '../components/sections/Accent';
 
 const BODY = {
   lines: M.LinesSection, schwa: M.SchwaSection, suffix: M.SuffixSection, prefix: M.PrefixSection, compound: M.CompoundSection,
@@ -27,6 +28,7 @@ const BODY = {
   echo: Say.EchoSection, numbersay: Say.NumberSaySection,
   identify: G.IdentifyGame, stress: G.StressGame, compoundgame: G.CompoundGame, bigbeat: G.BigBeatGame, rush: G.RushGame,
   pausegame: G.PauseGame, linkgame: G.LinkGame, numbergame: G.NumberGame, clustergame: G.ClusterGame,
+  accentpairs: A.AccentPairsSection, matters: A.MattersSection, accentgame: A.AccentGame,
 };
 
 export default function Unit({ unitId, idx, go }) {
@@ -196,8 +198,11 @@ function UnitHero({ unit, onStart }) {
   const playing = usePlayingId(unit.heroClip);
   const { bangla } = useSettings();
   const music = unit.group === 'music';
-  const c = getClip(unit.heroClip);
-  const play = () => (playing ? engine.stop() : engine.play(unit.heroClip));
+  const c = useClip(unit.heroClip);
+  const accent = unit.heroVisual === 'accent';
+  const play = () => (playing ? engine.stop()
+    : accent ? engine.sequence([{ id: unit.heroClip, voice: 'alice' }, { id: unit.heroClip, voice: 'brian' }], 0.5)
+      : engine.play(unit.heroClip));
   return (
     <section className="unit-hero">
       <div className="uh-copy">
@@ -206,16 +211,17 @@ function UnitHero({ unit, onStart }) {
         {bangla && <p className="bn uh-bn" lang="bn">{unit.hero.bn}</p>}
         <T en={unit.intro.en} bn={unit.intro.bn} as="p" className="intro" />
         <div className="uh-actions">
-          <button className={`btn primary big ${playing ? 'is-playing' : ''}`} onClick={play}>{playing ? <IPause /> : <IPlay />} {c && c.words.length <= 3 ? <>Hear “{c.words.map(w => w.w).join(' ')}”</> : <T en="Hear the example" bn="উদাহরণটা শুনুন" block={false} />}</button>
+          <button className={`btn primary big ${playing ? 'is-playing' : ''}`} onClick={play}>{playing ? <IPause /> : <IPlay />} {accent ? <T en="Hear two correct answers" bn="দুটো সঠিক উত্তর শুনুন" block={false} /> : c && c.words.length <= 3 ? <>Hear “{c.words.map(w => w.w).join(' ')}”</> : <T en="Hear the example" bn="উদাহরণটা শুনুন" block={false} />}</button>
           <button className="btn big ghost-ink" onClick={onStart}><T en="Start" bn="শুরু" block={false} /> ↓</button>
         </div>
       </div>
       <div className="uh-visual stage-card">
         <div className="sc-top"><span>{unit.tag.en.toUpperCase()}</span><span className={`status ${playing ? 'on' : ''}`}>{playing ? 'Playing' : 'Ready'}</span></div>
-        {music
-          ? <VoiceLine id={unit.heroClip} size="md" labels="auto" stack="auto" />
-          : <MouthDiagram ids={[unit.heroClip]} muscles={unit.id === 'vowels'} />}
-        <p className="sc-foot">{music ? 'Tap the picture to hear it. Watch the ball ride the beats.' : `Tap Hear: the mouth moves with the recording, sound by sound.`}</p>
+        {accent ? <A.AccentHeroVisual unit={unit} />
+          : music
+            ? <VoiceLine id={unit.heroClip} size="md" labels="auto" stack="auto" />
+            : <MouthDiagram ids={[unit.heroClip]} muscles={unit.id === 'vowels'} />}
+        <p className="sc-foot">{accent ? '“Should I sound British or American?” Either — as long as it is clear.' : music ? 'Tap the picture to hear it. Watch the ball ride the beats.' : `Tap Hear: the mouth moves with the recording, sound by sound.`}</p>
       </div>
     </section>
   );

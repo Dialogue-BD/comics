@@ -7,7 +7,8 @@
 // the way a reader breathes.
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import engine, { clip as getClip } from '../lib/audio';
+import engine from '../lib/audio';
+import { useClip } from '../lib/hooks';
 import { useWidth } from '../lib/settings';
 import { groupsOf, stroke, ribbonPath, centerPath, yScale, makeBall } from '../lib/line';
 
@@ -37,7 +38,7 @@ export default function VoiceLine({
   ariaLabel,
   onPlay,
 }) {
-  const c = getClip(id);
+  const c = useClip(id);              // follows the voice that is speaking
   const wrap = useRef(null);
   const W = useWidth(wrap);
   const [played, setPlayed] = useState(forcePlayed);

@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Landing from './pages/Landing';
 import Unit from './pages/Unit';
 import PrintSheet from './components/PrintSheet';
+import VoiceDock from './components/VoiceDock';
 import engine from './lib/audio';
 import { startScroll } from './lib/scroll';
+import { linkComparisons } from './lib/links';
+import { UNITS } from './content/units';
+
+linkComparisons(UNITS);
 
 function parse(h) {
   const m = (h || '').match(/^#\/u\/([\w-]+)(?:\/(\d+))?/);
@@ -34,6 +39,7 @@ export default function App() {
       {route.page === 'unit'
         ? <Unit key={route.unit} unitId={route.unit} idx={route.idx} go={go} />
         : <Landing key={route.focus || 'home'} go={go} focus={route.focus} />}
+      <VoiceDock />
       <PrintSheet />
     </>
   );

@@ -12,9 +12,10 @@ sys.path.insert(0, HERE)
 from analyse import analyse_clip, STEP
 from spec import WORDS, SAY
 from finalize import VOWEL, ASP
+from voice import app_json
 import phon
 
-APP = os.path.join(HERE, '..', 'src', 'data', 'clips.json')
+APP = app_json()
 
 
 def phones_for(k):
@@ -47,7 +48,7 @@ def phones_for(k):
 
 
 if __name__ == '__main__':
-    pref = sys.argv[1:] or ['vow-', 'con-', 'asp-', 'th-', 'clu-']
+    pref = sys.argv[1:] or ['vow-', 'con-', 'asp-', 'th-', 'clu-', 'acc-']
     app = json.load(open(APP))
     for k in WORDS:
         if any(k.startswith(p) for p in pref) and k in app:

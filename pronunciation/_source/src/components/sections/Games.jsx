@@ -57,7 +57,7 @@ export function IdentifyGame({ scene }) {
   const r = rounds[idx % rounds.length];
   const playing = usePlayingId(r.target);
   const order = useMemo(() => (Math.random() < 0.5 ? r.pair : [r.pair[1], r.pair[0]]), [idx]);
-  const playTarget = async () => { if (playing) { engine.stop(); return; } const res = await engine.play(r.target); if (res === 'ended') setHeard(true); };
+  const playTarget = async () => { if (playing) { engine.stop(); return; } const res = await engine.play(r.target, { quiz: true }); if (res === 'ended') setHeard(true); };
   const choose = (id, e) => {
     if (pick) return;
     setPick(id);
@@ -171,7 +171,7 @@ export function CompoundGame({ scene }) {
   return (
     <ClickSpark ref={spark} className="game">
       <div className="game-board">
-        <ListenPanel count={(idx % order.length) + 1} total={order.length} results={results} idx={idx % order.length} playing={!!playing} onPlay={() => (playing ? engine.stop() : engine.play(id))} label="Play hidden clip" hint="Listen first. The spelling is hidden until you answer." />
+        <ListenPanel count={(idx % order.length) + 1} total={order.length} results={results} idx={idx % order.length} playing={!!playing} onPlay={() => (playing ? engine.stop() : engine.play(id, { quiz: true }))} label="Play hidden clip" hint="Listen first. The spelling is hidden until you answer." />
         <div className="gb-light">
           <T en="Ear training" bn="কানের অনুশীলন" className="kick" />
           <h3 className="gb-q">Where was the stress?</h3>
@@ -444,7 +444,7 @@ export function NumberGame({ scene }) {
   return (
     <ClickSpark ref={spark} className="game">
       <div className="game-board">
-        <ListenPanel count={(idx % rounds.length) + 1} total={rounds.length} results={results} idx={idx % rounds.length} playing={!!playing} onPlay={() => (playing ? engine.stop() : engine.play(r.clip))} label="Play the number" />
+        <ListenPanel count={(idx % rounds.length) + 1} total={rounds.length} results={results} idx={idx % rounds.length} playing={!!playing} onPlay={() => (playing ? engine.stop() : engine.play(r.clip, { quiz: true }))} label="Play the number" />
         <div className="gb-light">
           <T en="Listen for the groups and the beat" bn="দল আর তাল শুনুন" className="kick" />
           <h3 className="gb-q">Which did you hear?</h3>
@@ -488,7 +488,7 @@ export function ClusterGame({ scene }) {
   return (
     <ClickSpark ref={spark} className="game">
       <div className="game-board">
-        <ListenPanel count={(idx % rounds.length) + 1} total={rounds.length} results={results} idx={idx % rounds.length} playing={!!playing} onPlay={() => (playing ? engine.stop() : engine.play(target))} label={r.word} />
+        <ListenPanel count={(idx % rounds.length) + 1} total={rounds.length} results={results} idx={idx % rounds.length} playing={!!playing} onPlay={() => (playing ? engine.stop() : engine.play(target, { quiz: true }))} label={r.word} />
         <div className="gb-light">
           <T en="Listen to the very beginning" bn="একেবারে শুরুটা শুনুন" className="kick" />
           <h3 className="gb-q">Is this clear English “{r.word}”?</h3>

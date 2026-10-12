@@ -30,8 +30,15 @@ WORDS = {
  # th
  'th-think':('think','2'),'th-sink':('sink','2'),'th-three':('three','2'),'th-tree':('tree','2'),'th-thank':('thank','2'),
  'th-sank':('sank','2'),'th-this':('this','2'),'th-that':('that','2'),'th-those':('those','2'),
+ # Brian's export only: ship / sheep, and the "i-school" vowel Bangla speakers add
+ 'vow-sheep':('sheep','2'), 'vow-ship':('ship','2'), 'clu-iskul':('i·skul','12'),
+ # accent pairs: the same word in each voice's own accent (Alice British, Brian American)
+ 'acc-car':('car','2'), 'acc-water':('wa·ter','20'), 'acc-dance':('dance','2'),
+ 'acc-schedule':('sched·ule','20'), 'acc-vitamin':('vi·ta·min','200'), 'acc-tomato':('to·ma·to','020'),
+ # ... and two clarity problems for contrast (Brian only): a full vowel for the schwa, an added vowel
+ 'acc-watar':('wa·tar','21'), 'acc-eschool':('e·school','02'),
 }
-SAY = {'clu-eekul': 'ee skool', 'clu-sitreet': 'sih treet', 'vow-tim': 'Tim', 'con-jew': 'Jew'}
+SAY = {'clu-eekul': 'ee skool', 'clu-sitreet': 'sih treet', 'vow-tim': 'Tim', 'con-jew': 'Jew', 'clu-iskul': 'ih skool', 'acc-watar': 'watar', 'acc-eschool': 'eschool'}
 
 # Sentences. Words are 'syl·syl:levels'. '|' = thought-group boundary (pause).
 # '*' marks the tonic (nuclear) word of the group.

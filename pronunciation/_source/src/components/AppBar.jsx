@@ -4,6 +4,8 @@ import { IMenu, IClose, ITv, IPrint, IBook, STEP_ICON } from './Icons';
 import { UNITS, STEPS, UI } from '../content/units';
 import TeacherNotes from './TeacherNotes';
 import { getLenis, lockScroll } from '../lib/scroll';
+import engine, { VOICES } from '../lib/audio';
+import { useVoice } from '../lib/hooks';
 
 export function LangToggle() {
   const { bangla, setBangla } = useSettings();
@@ -11,6 +13,23 @@ export function LangToggle() {
     <div className="lang" role="group" aria-label="Language">
       <button className={!bangla ? 'on' : ''} aria-pressed={!bangla} onClick={() => setBangla(false)}>EN</button>
       <button className={bangla ? 'on' : ''} aria-pressed={bangla} onClick={() => setBangla(true)} lang="bn">বাংলা</button>
+    </div>
+  );
+}
+
+// Who speaks: Alice (British) or Brian (American). Pairs Brian has not recorded stay
+// with Alice, so a comparison is never split between two voices.
+export function VoiceToggle({ big = false }) {
+  const [voice, setVoice] = useVoice();
+  return (
+    <div className={`voice-tg ${big ? 'big' : ''}`} role="group" aria-label="Voice">
+      {VOICES.map(v => (
+        <button key={v.id} className={voice === v.id ? 'on' : ''} aria-pressed={voice === v.id} onClick={() => setVoice(v.id)}
+          title={`${v.name} · ${v.accentLong} English (V to switch)`}>
+          <span className="vt-av" aria-hidden="true">{v.name[0]}</span>
+          <span className="vt-n">{v.name}</span><span className="vt-a">{v.accent}</span>
+        </button>
+      ))}
     </div>
   );
 }
@@ -50,6 +69,10 @@ export default function AppBar({ unit, stepKey, onStep, go }) {
     const k = (e) => {
       if (e.target && /input|textarea|select/i.test(e.target.tagName)) return;
       if (e.key === 'p' || e.key === 'P') setStage(s => !s);
+      if ((e.key === 'v' || e.key === 'V') && !e.metaKey && !e.ctrlKey) {
+        const i = VOICES.findIndex(v => v.id === engine.voice);
+        engine.setVoice(VOICES[(i + 1) % VOICES.length].id);
+      }
       if (e.key === 'Escape') { setOpen(false); setNotes(false); }
     };
     window.addEventListener('keydown', k);
@@ -82,6 +105,7 @@ export default function AppBar({ unit, stepKey, onStep, go }) {
             </nav>
           )}
           <div className="bar-end">
+            <VoiceToggle />
             <LangToggle />
             <button className={`icon-btn tv ${stage ? 'on' : ''}`} onClick={() => setStage(!stage)} aria-pressed={stage} title="Present on TV (P)">
               <ITv /><span className="tv-l">TV</span>
@@ -117,6 +141,11 @@ export default function AppBar({ unit, stepKey, onStep, go }) {
                   <T en={u.title.en} bn={u.title.bn} className="st" />
                 </a>
               ))}
+            </div>
+            <div className="sheet-sec sheet-voice">
+              <T en="Voice" bn="কণ্ঠ" as="strong" className="sv-h" />
+              <VoiceToggle big />
+              <T as="p" className="sv-note" en="Alice speaks British English, Brian American. Both are correct. After any sound, “Both voices” plays it twice in each." bn="অ্যালিস ব্রিটিশ ইংরেজি বলেন, ব্রায়ান আমেরিকান। দুটোই সঠিক। যেকোনো শব্দের পরে “Both voices” চাপলে দুজনেই দুবার করে বলবেন।" />
             </div>
             <div className="sheet-sec">
               <label className="switch"><input type="checkbox" checked={stage} onChange={e => setStage(e.target.checked)} /><span className="track" /><T en={UI.presentOnTv.en + ' (P)'} bn={UI.presentOnTv.bn} /></label>

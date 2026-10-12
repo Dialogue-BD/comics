@@ -4,6 +4,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import engine, { clip as getClip } from '../../lib/audio';
 import { labelOf } from '../Bits';
+import { useVoiceKey } from '../../lib/hooks';
 
 export const vowelSpan = (id) => {
   const c = getClip(id);
@@ -17,6 +18,7 @@ export const vowelSpan = (id) => {
 export default function LengthBars({ ids, kinds = ['long', 'short'], max }) {
   const fills = useRef({});
   const [seen, setSeen] = useState({});
+  useVoiceKey(ids);                     // bar lengths are this voice's vowels
   useEffect(() => engine.subscribe(s => {
     if (!ids.includes(s.id)) return;
     const [a, b] = vowelSpan(s.id);

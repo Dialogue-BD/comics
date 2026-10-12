@@ -10,17 +10,19 @@ and only squash the slow melody — the rises and falls that carry meaning:
 where the slow melody is the pitch line smoothed over ~0.3 s and the quick wobble is
 what is left over. Resynthesis is Praat's PSOLA, so the voice quality is unchanged.
 
-    VOICELAB_WORK=/path/to/work python3 monotone.py
-reads  ../../audio/pro-sent1.mp3, pro-sent2.mp3
-writes ../../audio/pro-sent1-mono.mp3, pro-sent2-mono.mp3 and their pitch in ../src/data/clips.json
+    [VOICELAB_VOICE=brian] VOICELAB_WORK=/path/to/work python3 monotone.py
+reads  ../../audio[/<voice>]/pro-sent1.mp3, pro-sent2.mp3
+writes ../../audio[/<voice>]/pro-sent1-mono.mp3, pro-sent2-mono.mp3 and their pitch in the voice's clip data
 """
 import json, os, subprocess, sys, tempfile
 import numpy as np, parselmouth as pm
 from parselmouth.praat import call
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-AUDIO = os.path.join(HERE, '..', '..', 'audio')
-APP = os.path.join(HERE, '..', 'src', 'data', 'clips.json')
+sys.path.insert(0, HERE)
+from voice import audio_dir, app_json, F0_RANGE
+AUDIO = audio_dir()
+APP = app_json()
 KEEP = 0.12          # how much of the slow melody survives (0 = robot, 1 = natural)
 WOBBLE = 1.0         # how much of the quick micro-prosody survives
 DECLINE = -1.6       # semitones of slow downward drift across the sentence
@@ -36,8 +38,8 @@ def decode(mp3):
 
 def monotone(src_wav, out_wav):
     s = pm.Sound(src_wav)
-    man = call(s, 'To Manipulation', 0.01, 75, 500)
-    pitch = s.to_pitch_ac(time_step=0.01, pitch_floor=75, pitch_ceiling=500, very_accurate=True)
+    man = call(s, 'To Manipulation', 0.01, F0_RANGE[0], F0_RANGE[1])
+    pitch = s.to_pitch_ac(time_step=0.01, pitch_floor=F0_RANGE[0], pitch_ceiling=F0_RANGE[1], very_accurate=True)
     t = pitch.xs(); f = pitch.selected_array['frequency']
     v = f > 0
     med = float(np.median(f[v]))

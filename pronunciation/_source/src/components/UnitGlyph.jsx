@@ -66,6 +66,10 @@ export default function UnitGlyph({ unit, size = 120, live = false }) {
         tl.fromTo(p, { strokeDashoffset: 60 }, { strokeDashoffset: 0, duration: 0.6, ease: 'power2.out' }).to({}, { duration: 1 });
         break;
       }
+      case 'accent':
+        tl.fromTo(q('.gac'), { scale: 0.6, opacity: 0.3, transformOrigin: '50% 60%' }, { scale: 1, opacity: 1, duration: 0.4, stagger: 0.5, ease: 'back.out(2.5)' })
+          .fromTo(q('.gchk'), { strokeDasharray: 40, strokeDashoffset: 40 }, { strokeDashoffset: 0, duration: 0.4, ease: 'power2.out' }).to({}, { duration: 1 });
+        break;
       case 'digits':
         tl.fromTo(q('.gd'), { opacity: 0.3, y: 6 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.35, ease: 'power2.out' }).to({}, { duration: 0.8 });
         break;
@@ -139,6 +143,19 @@ export default function UnitGlyph({ unit, size = 120, live = false }) {
       {unit.glyph === 'digits' && (
         <g>
           <text x={12} y={64} className="gd gl big">19</text><text x={72} y={64} className="gd gslash gl big">/</text><text x={92} y={64} className="gd gl big coral">94</text>
+        </g>
+      )}
+      {unit.glyph === 'accent' && (
+        <g>
+          <g className="gac">
+            <path d="M14 22h52a8 8 0 0 1 8 8v22a8 8 0 0 1-8 8H34l-12 10v-10h-8a8 8 0 0 1-8-8V30a8 8 0 0 1 8-8z" className="gbub" />
+            <text x={40} y={49} textAnchor="middle" className="gl mid">UK</text>
+          </g>
+          <g className="gac">
+            <path d="M146 22H94a8 8 0 0 0-8 8v22a8 8 0 0 0 8 8h32l12 10v-10h8a8 8 0 0 0 8-8V30a8 8 0 0 0-8-8z" className="gbub alt" />
+            <text x={120} y={49} textAnchor="middle" className="gl mid">US</text>
+          </g>
+          <path d="M70 84l7 7 14-15" className="gchk" />
         </g>
       )}
       {unit.glyph === 'th' && (
