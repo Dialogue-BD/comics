@@ -1,0 +1,962 @@
+[
+  {
+    "n": 1,
+    "group": "Elements",
+    "visual": "Line",
+    "text": "Sentence",
+    "kind": "line",
+    "visualLead": "A line guides the eye. Direction, weight and movement can make it hurry, wander or stop.",
+    "textLead": "A sentence guides a reader through an idea. Length and structure control pace and direction.",
+    "visualVocab": [
+      [
+        "Straight",
+        "Direct and controlled; the eye travels without a detour.",
+        "<span class=\"demo-line thin\"></span>"
+      ],
+      [
+        "Curved",
+        "Soft and changing; the eye follows a gentle turn.",
+        "<span class=\"demo-line curved\"></span>"
+      ],
+      [
+        "Zigzag",
+        "Sharp changes create energy, tension or surprise.",
+        "<span class=\"mini-zigzag\">／＼／＼</span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Simple",
+        "One complete idea moves in a clear direction.",
+        "<span class=\"demo-sentence short\">We began.</span>"
+      ],
+      [
+        "Compound",
+        "Two complete ideas travel side by side.",
+        "<span class=\"demo-sentence\">We began, and they followed.</span>"
+      ],
+      [
+        "Complex",
+        "A main idea changes direction through a dependent clause.",
+        "<span class=\"demo-sentence long\">Although it rained, we continued.</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Stop",
+        "━━",
+        "Stop.",
+        "Both end quickly and firmly."
+      ],
+      [
+        "Flow",
+        "〰〰",
+        "The road curved past the market and into the fading light.",
+        "Both carry the eye forward gently."
+      ],
+      [
+        "Turn",
+        "／＼／",
+        "We agreed—then everything changed.",
+        "Both interrupt the expected direction."
+      ]
+    ],
+    "game": "lineMatch"
+  },
+  {
+    "n": 2,
+    "group": "Elements",
+    "visual": "Color",
+    "text": "Diction",
+    "kind": "color",
+    "visualLead": "Color changes mood before we name what an image shows. Temperature and saturation carry feeling.",
+    "textLead": "Diction means word choice. Connotation gives language its emotional color.",
+    "visualVocab": [
+      [
+        "Warm",
+        "Reds, oranges and yellows often feel energetic or welcoming.",
+        "<span class=\"swatch warm\"></span>"
+      ],
+      [
+        "Cool",
+        "Blues and blue-greens often feel calm, distant or controlled.",
+        "<span class=\"swatch cool\"></span>"
+      ],
+      [
+        "Muted",
+        "Low saturation feels restrained, soft or serious.",
+        "<span class=\"swatch muted\"></span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Warm diction",
+        "Glowing, welcome and lively create emotional warmth.",
+        "<span class=\"word-chip warm\">glowing</span>"
+      ],
+      [
+        "Cool diction",
+        "Crisp, still and distant create emotional coolness.",
+        "<span class=\"word-chip cool\">distant</span>"
+      ],
+      [
+        "Muted diction",
+        "Quiet words reduce intensity.",
+        "<span class=\"word-chip muted\">subdued</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Warm",
+        "#d76537",
+        "The room glowed with lively conversation.",
+        "Warm color and warm words feel close and active."
+      ],
+      [
+        "Cool",
+        "#387e9c",
+        "The room held a crisp, distant silence.",
+        "Cool color and cool words create distance."
+      ],
+      [
+        "Muted",
+        "#87958b",
+        "The room settled into subdued conversation.",
+        "Less saturation and quieter diction lower intensity."
+      ]
+    ],
+    "game": "repaint"
+  },
+  {
+    "n": 3,
+    "group": "Elements",
+    "visual": "Shape",
+    "text": "Text shapes",
+    "kind": "shape",
+    "visualLead": "Shapes create boundaries and recognizable structures. Their silhouette helps us predict how to read them.",
+    "textLead": "Whole texts also have shapes: information can narrow, widen, leave and return.",
+    "visualVocab": [
+      [
+        "Triangle",
+        "A wide base and narrow point create direction and stability.",
+        "<span class=\"shape-demo triangle\"></span>"
+      ],
+      [
+        "Hourglass",
+        "Wide ends meet at a narrow turning point.",
+        "<span class=\"shape-demo hourglass\">◆</span>"
+      ],
+      [
+        "Circle",
+        "A continuous edge returns to where it began.",
+        "<span class=\"shape-demo circle\"></span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Inverted pyramid",
+        "News begins with the most important facts, then narrows into detail.",
+        "<span class=\"text-shape pyramid\">▰ ▬ ━</span>"
+      ],
+      [
+        "Narrative arc",
+        "A story builds toward a turning point, then resolves.",
+        "<span class=\"text-shape\">rise → turn → resolve</span>"
+      ],
+      [
+        "Circular essay",
+        "The ending returns to an image or idea from the opening.",
+        "<span class=\"text-shape\">A → B → A</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "News",
+        "▼",
+        "Who, what, where first; details follow.",
+        "The text narrows from essential facts to supporting detail."
+      ],
+      [
+        "Narrative",
+        "◇",
+        "A student misses a bus, adapts, and arrives changed.",
+        "The middle turning point gives the hourglass its waist."
+      ],
+      [
+        "Circular",
+        "○",
+        "It opens at the river and returns there at the end.",
+        "The ending closes the same loop the opening began."
+      ]
+    ],
+    "game": "shapeSort"
+  },
+  {
+    "n": 4,
+    "group": "Elements",
+    "visual": "Texture",
+    "text": "Sound & rhythm",
+    "kind": "texture",
+    "visualLead": "Texture makes a surface feel rough, smooth, heavy or light—even when we only see it.",
+    "textLead": "Sound and rhythm give language texture. Consonants can scrape; vowels can flow.",
+    "visualVocab": [
+      [
+        "Rough",
+        "Irregular marks make a surface feel coarse or resistant.",
+        "<span class=\"texture-demo rough\"></span>"
+      ],
+      [
+        "Smooth",
+        "Even surfaces and gentle transitions feel calm and easy.",
+        "<span class=\"texture-demo smooth\"></span>"
+      ],
+      [
+        "Grain",
+        "Small repeated marks add visible material.",
+        "<span class=\"texture-demo grain\"></span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Alliteration",
+        "Repeated opening sounds create a noticeable verbal surface.",
+        "<span class=\"demo-sentence\">silver streams slide</span>"
+      ],
+      [
+        "Harsh consonants",
+        "K, t and cr sounds can feel clipped or rough.",
+        "<span class=\"demo-sentence\">cracked, cut, struck</span>"
+      ],
+      [
+        "Flowing rhythm",
+        "Long vowels and connected phrases feel smooth.",
+        "<span class=\"demo-sentence\">low waves roll away</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Rough",
+        "▒▓▒",
+        "Cracked carts clattered.",
+        "Hard consonants behave like a rough surface."
+      ],
+      [
+        "Smooth",
+        "━━━━",
+        "Low waves rolled away.",
+        "Long sounds and even rhythm reduce friction."
+      ],
+      [
+        "Grainy",
+        "░░░",
+        "Soft rain ticked, tapped, whispered.",
+        "Tiny repeated sounds add fine texture."
+      ]
+    ],
+    "game": "feelText"
+  },
+  {
+    "n": 5,
+    "group": "Elements",
+    "visual": "Form",
+    "text": "Subtext",
+    "kind": "form",
+    "visualLead": "Form adds depth. Light, shadow and viewpoint reveal that an object has more than a surface.",
+    "textLead": "Subtext is meaning below the literal words. Context reveals what a speaker does not say directly.",
+    "visualVocab": [
+      [
+        "Volume",
+        "Shading makes a flat shape feel solid.",
+        "<span class=\"form-demo sphere\"></span>"
+      ],
+      [
+        "Light",
+        "Highlights show which surface faces the source.",
+        "<span class=\"form-demo lit\"></span>"
+      ],
+      [
+        "Shadow",
+        "A shadow suggests depth beyond the visible edge.",
+        "<span class=\"form-demo shadow\"></span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Literal meaning",
+        "The exact surface meaning of the words.",
+        "<span class=\"demo-sentence\">It is late.</span>"
+      ],
+      [
+        "Implied meaning",
+        "A meaning suggested by context, not directly stated.",
+        "<span class=\"demo-sentence\">It is late. → Please leave.</span>"
+      ],
+      [
+        "Tone",
+        "The attitude that shapes how the words are understood.",
+        "<span class=\"demo-sentence\">“Fine.”</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Flat",
+        "□",
+        "“Nice work.”",
+        "Without context, only the surface is visible."
+      ],
+      [
+        "Depth",
+        "◐",
+        "“Nice work,” she said, looking at the broken chair.",
+        "Context adds a second meaning: criticism."
+      ],
+      [
+        "Shadow",
+        "◒",
+        "“We should talk later.”",
+        "The unsaid concern casts a shadow beneath polite words."
+      ]
+    ],
+    "game": "iceberg"
+  },
+  {
+    "n": 6,
+    "group": "Elements",
+    "visual": "Space",
+    "text": "Silence",
+    "kind": "space",
+    "visualLead": "Space gives elements room, separates groups and lets the eye rest.",
+    "textLead": "Silence appears as pauses, paragraph breaks and deliberate omission. It gives meaning room.",
+    "visualVocab": [
+      [
+        "Positive space",
+        "The area occupied by the main subject.",
+        "<span class=\"space-demo positive\">■</span>"
+      ],
+      [
+        "Negative space",
+        "The open area around and between subjects.",
+        "<span class=\"space-demo negative\">■　　　　■</span>"
+      ],
+      [
+        "Margin",
+        "A quiet boundary protects content from the edge.",
+        "<span class=\"space-demo margin\">▣</span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Pause",
+        "Punctuation creates a small silence inside a sentence.",
+        "<span class=\"demo-sentence\">Wait… listen.</span>"
+      ],
+      [
+        "Paragraph break",
+        "A larger silence marks a turn in idea, time or speaker.",
+        "<span class=\"paragraph-demo break\"><span></span><span></span><span></span></span>"
+      ],
+      [
+        "Omission",
+        "Leaving something unsaid can invite inference.",
+        "<span class=\"demo-sentence\">She read the message. Then—nothing.</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Crowded",
+        "■■■■",
+        "We arrived we sat we spoke we left.",
+        "No open space or pauses make both forms hard to enter."
+      ],
+      [
+        "Breathing",
+        "■　■　■",
+        "We arrived. We sat. Then we spoke.",
+        "Small gaps and sentence stops create usable rhythm."
+      ],
+      [
+        "Quiet",
+        "■　　　　■",
+        "She asked.\n\nNo one answered.",
+        "A large gap makes silence meaningful."
+      ]
+    ],
+    "game": "pause"
+  },
+  {
+    "n": 7,
+    "group": "Elements",
+    "visual": "Typography",
+    "text": "Emphasis & voice",
+    "kind": "typography",
+    "visualLead": "Typefaces have posture and personality. Size, weight and spacing influence how words sound in the mind.",
+    "textLead": "Emphasis and voice reveal who seems to speak—and which words deserve attention.",
+    "visualVocab": [
+      [
+        "Serif",
+        "Small finishing strokes often feel established or formal.",
+        "<span class=\"type-demo serif\">Aa</span>"
+      ],
+      [
+        "Rounded",
+        "Soft corners often feel friendly or playful.",
+        "<span class=\"type-demo rounded\">Aa</span>"
+      ],
+      [
+        "Bold",
+        "Heavy weight creates strong emphasis.",
+        "<span class=\"type-demo bold\">Aa</span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Register",
+        "Language can be formal, neutral or casual for different situations.",
+        "<span class=\"demo-sentence\">I am writing to request…</span>"
+      ],
+      [
+        "Stress",
+        "Emphasizing one word changes the sentence's focus.",
+        "<span class=\"demo-sentence\">I said <b>today</b>.</span>"
+      ],
+      [
+        "Voice",
+        "Patterns of word choice and rhythm create a recognizable speaker.",
+        "<span class=\"demo-sentence\">Guess what happened!</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Formal",
+        "Aa",
+        "Please submit the document by noon.",
+        "A formal serif posture fits an official register."
+      ],
+      [
+        "Playful",
+        "Aa",
+        "Come see what we made!",
+        "Rounded forms fit an inviting voice."
+      ],
+      [
+        "Forceful",
+        "AA",
+        "ACT NOW.",
+        "Heavy weight and short wording intensify emphasis."
+      ]
+    ],
+    "game": "fontVoice"
+  },
+  {
+    "n": 8,
+    "group": "Principles",
+    "visual": "Contrast",
+    "text": "Antithesis",
+    "kind": "contrast",
+    "visualLead": "Contrast makes difference visible: light against dark, large beside small, still beside active.",
+    "textLead": "Antithesis places opposing ideas in parallel form so their difference becomes clear.",
+    "visualVocab": [
+      [
+        "Value contrast",
+        "Light and dark separate strongly.",
+        "<span class=\"contrast-demo value\"><i></i><i></i></span>"
+      ],
+      [
+        "Scale contrast",
+        "A large form beside a small one creates emphasis.",
+        "<span class=\"contrast-demo scale\"><i></i><i></i></span>"
+      ],
+      [
+        "Low contrast",
+        "Similar forms feel quiet and less distinct.",
+        "<span class=\"contrast-demo low\"><i></i><i></i></span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Antithesis",
+        "Opposing ideas appear in balanced grammatical form.",
+        "<span class=\"demo-sentence\">Many are called; few are chosen.</span>"
+      ],
+      [
+        "Juxtaposition",
+        "Two unlike images or ideas sit beside each other.",
+        "<span class=\"demo-sentence\">A wedding beside a storm.</span>"
+      ],
+      [
+        "Parallel form",
+        "Matching grammar makes the opposition easier to see.",
+        "<span class=\"demo-sentence\">To err is human; to forgive, divine.</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "High",
+        "◼ □",
+        "We build bridges, not walls.",
+        "Strong opposites in matching forms create a sharp edge."
+      ],
+      [
+        "Scale",
+        "● ·",
+        "One voice whispered; a thousand answered.",
+        "Large numerical difference creates scale contrast."
+      ],
+      [
+        "Low",
+        "◻ ▫",
+        "The room was calm and quiet.",
+        "Related words create harmony rather than opposition."
+      ]
+    ],
+    "game": "opposites"
+  },
+  {
+    "n": 9,
+    "group": "Principles",
+    "visual": "Hierarchy",
+    "text": "Information architecture",
+    "kind": "hierarchy",
+    "visualLead": "Hierarchy tells the eye what to notice first, second and third.",
+    "textLead": "Information architecture orders ideas so readers can find the point, key detail and background.",
+    "visualVocab": [
+      [
+        "Dominant",
+        "The strongest element attracts attention first.",
+        "<span class=\"hier-demo big\">FIRST</span>"
+      ],
+      [
+        "Secondary",
+        "A supporting element attracts attention next.",
+        "<span class=\"hier-demo mid\">Second</span>"
+      ],
+      [
+        "Tertiary",
+        "Small detail rewards closer reading.",
+        "<span class=\"hier-demo small\">context and detail</span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Headline",
+        "Names the main point quickly.",
+        "<span class=\"demo-sentence short\">Library reopens</span>"
+      ],
+      [
+        "Lead",
+        "Gives the most important supporting information.",
+        "<span class=\"demo-sentence\">Doors open Monday after repairs.</span>"
+      ],
+      [
+        "Background",
+        "Adds context after the reader knows the point.",
+        "<span class=\"demo-sentence long\">The building closed in June following flood damage.</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Clear",
+        "1  2  3",
+        "Headline → key detail → background",
+        "Visible levels give the reader a reliable path."
+      ],
+      [
+        "Flat",
+        "2  2  2",
+        "Every fact has equal weight.",
+        "The reader must decide what matters without help."
+      ],
+      [
+        "Reversed",
+        "3  2  1",
+        "Background → detail → headline",
+        "Hiding the point creates delay or confusion."
+      ]
+    ],
+    "game": "stack"
+  },
+  {
+    "n": 10,
+    "group": "Principles",
+    "visual": "Alignment",
+    "text": "Parallelism",
+    "kind": "alignment",
+    "visualLead": "Alignment creates invisible lines that make separate elements feel organized.",
+    "textLead": "Parallelism aligns grammar. Items in a series feel connected when they share the same form.",
+    "visualVocab": [
+      [
+        "Edge alignment",
+        "Elements share a left, right, top or bottom edge.",
+        "<span class=\"align-demo edge\"><i></i><i></i><i></i></span>"
+      ],
+      [
+        "Center alignment",
+        "Elements share a central axis.",
+        "<span class=\"align-demo center\"><i></i><i></i><i></i></span>"
+      ],
+      [
+        "Misalignment",
+        "One element breaks the shared line and attracts attention.",
+        "<span class=\"align-demo crooked\"><i></i><i></i><i></i></span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Parallel verbs",
+        "List items use the same verb form.",
+        "<span class=\"demo-sentence\">plan, test, revise</span>"
+      ],
+      [
+        "Parallel clauses",
+        "Clauses repeat a grammatical pattern.",
+        "<span class=\"demo-sentence\">We came; we saw; we learned.</span>"
+      ],
+      [
+        "Faulty parallelism",
+        "One item changes form and feels crooked.",
+        "<span class=\"demo-sentence\">reading, writing, and to speak</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Aligned",
+        "▰\n▰\n▰",
+        "to read, to write, to speak",
+        "Shared visual edges match shared grammatical forms."
+      ],
+      [
+        "Crooked",
+        "▰\n  ▰\n▰",
+        "reading, writing, and to speak",
+        "One changed form breaks the pattern."
+      ],
+      [
+        "Repaired",
+        "▰\n▰\n▰",
+        "reading, writing, and speaking",
+        "The correction restores both rhythm and expectation."
+      ]
+    ],
+    "game": "shelf"
+  },
+  {
+    "n": 11,
+    "group": "Principles",
+    "visual": "Balance",
+    "text": "Punctuation",
+    "kind": "balance",
+    "visualLead": "Balance distributes visual weight. Symmetry feels stable; asymmetry feels dynamic.",
+    "textLead": "Punctuation distributes the weight of clauses. It separates, balances or interrupts ideas.",
+    "visualVocab": [
+      [
+        "Symmetrical",
+        "Equal forms on either side feel formal and steady.",
+        "<span class=\"balance-demo sym\"><i></i><i></i></span>"
+      ],
+      [
+        "Asymmetrical",
+        "Unequal forms find equilibrium through contrast.",
+        "<span class=\"balance-demo asym\"><i></i><i></i></span>"
+      ],
+      [
+        "Radial",
+        "Forms balance around a central point.",
+        "<span class=\"punct-demo\">✣</span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Semicolon",
+        "Balances two complete, closely related clauses.",
+        "<span class=\"punct-demo\">;</span>"
+      ],
+      [
+        "Em dash",
+        "Interrupts the line and throws emphasis to one side.",
+        "<span class=\"punct-demo\">—</span>"
+      ],
+      [
+        "Period",
+        "Separates ideas into independent units with a clean stop.",
+        "<span class=\"punct-demo\">.</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Level",
+        "■ ━ ■",
+        "The room grew quiet; the speaker began.",
+        "The semicolon holds equal complete clauses in balance."
+      ],
+      [
+        "Tilt",
+        "■■ ━ ▪",
+        "The plan looked simple—but one detail changed everything.",
+        "The em dash makes a dramatic asymmetrical shift."
+      ],
+      [
+        "Separate",
+        "■   ■",
+        "The room grew quiet. The speaker began.",
+        "The period gives each idea its own stable space."
+      ]
+    ],
+    "game": "scales"
+  },
+  {
+    "n": 12,
+    "group": "Principles",
+    "visual": "Proximity",
+    "text": "Paragraphing",
+    "kind": "proximity",
+    "visualLead": "Items placed near each other appear related. Distance marks where one group ends and another begins.",
+    "textLead": "Related sentences share a paragraph. A break creates meaningful distance between ideas.",
+    "visualVocab": [
+      [
+        "Near",
+        "Small distance says: these belong together.",
+        "<span class=\"near-demo\"><i></i><i></i></span>"
+      ],
+      [
+        "Far",
+        "Large distance says: these are separate groups.",
+        "<span class=\"far-demo\"><i></i><i></i></span>"
+      ],
+      [
+        "Group",
+        "Consistent spacing makes several items one unit.",
+        "<span class=\"near-demo\"><i></i><i></i><i></i></span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Paragraph",
+        "Gathers sentences that develop one controlling idea.",
+        "<span class=\"paragraph-demo\"><span></span><span></span><span></span></span>"
+      ],
+      [
+        "Break",
+        "Signals a new idea, time, speaker or focus.",
+        "<span class=\"paragraph-demo break\"><span></span><span></span><span></span></span>"
+      ],
+      [
+        "Cohesion",
+        "Repeated key words and links hold nearby ideas together.",
+        "<span class=\"demo-sentence\">idea → this → therefore</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Near",
+        "■ ■ ■",
+        "Rain filled the street. Buses moved slowly.",
+        "Close forms and related sentences read as one group."
+      ],
+      [
+        "Far",
+        "■　　　■",
+        "Inside, the meeting began on time.",
+        "Distance and a paragraph break mark a new focus."
+      ],
+      [
+        "Grouped",
+        "■■　■■",
+        "Street details together; meeting details together.",
+        "Two clusters make two relationships visible."
+      ]
+    ],
+    "game": "magnets"
+  },
+  {
+    "n": 13,
+    "group": "Principles",
+    "visual": "Repetition",
+    "text": "Anaphora / inclusio",
+    "kind": "repetition",
+    "visualLead": "Repetition builds pattern, unity and recognition by bringing a form back.",
+    "textLead": "Anaphora repeats an opening; inclusio repeats at the end to create a verbal bookend.",
+    "visualVocab": [
+      [
+        "Motif",
+        "A recognizable form returns across a design.",
+        "<span class=\"repeat-demo\">● ● ●</span>"
+      ],
+      [
+        "Pattern",
+        "A planned sequence repeats predictably.",
+        "<span class=\"repeat-demo\">▲ ● ▲ ●</span>"
+      ],
+      [
+        "Variation",
+        "A repeated form changes once to create interest.",
+        "<span class=\"repeat-demo\">■ ■ ◆ ■</span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Anaphora",
+        "Successive lines begin with the same words.",
+        "<span class=\"demo-sentence\">We will learn. We will build.</span>"
+      ],
+      [
+        "Refrain",
+        "A line returns at intervals.",
+        "<span class=\"demo-sentence\">Still, we continue.</span>"
+      ],
+      [
+        "Inclusio",
+        "The ending repeats the opening to frame the whole text.",
+        "<span class=\"demo-sentence\">Home … home.</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Pattern",
+        "A A A",
+        "We will listen. We will learn. We will lead.",
+        "Repeated openings create rhythm and unity."
+      ],
+      [
+        "Bookend",
+        "A … A",
+        "The river welcomed us … We returned to the river.",
+        "Inclusio closes the frame."
+      ],
+      [
+        "Variation",
+        "A A B A",
+        "We came to learn, to test, to change—and to learn again.",
+        "One change prevents repetition from becoming flat."
+      ]
+    ],
+    "game": "bookend"
+  },
+  {
+    "n": 14,
+    "group": "Principles",
+    "visual": "Simplicity",
+    "text": "Concision",
+    "kind": "simplicity",
+    "visualLead": "Simplicity removes anything that does not help the message. Fewer elements give important ones more force.",
+    "textLead": "Concision removes words that do not add meaning. The idea becomes easier to see.",
+    "visualVocab": [
+      [
+        "Essential",
+        "Every remaining element has a job.",
+        "<span class=\"simple-demo\">●</span>"
+      ],
+      [
+        "Restraint",
+        "Limited choices create focus.",
+        "<span class=\"simple-demo\">■　●</span>"
+      ],
+      [
+        "Clutter",
+        "Competing elements make the main point hard to find.",
+        "<span class=\"simple-demo clutter\">◆●▲■✦</span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "Redundancy",
+        "Two expressions repeat the same meaning.",
+        "<span class=\"demo-sentence\">future plans</span>"
+      ],
+      [
+        "Filler",
+        "Words occupy space without advancing the idea.",
+        "<span class=\"demo-sentence\">It is important to note that…</span>"
+      ],
+      [
+        "Concision",
+        "The shortest clear form keeps the full meaning.",
+        "<span class=\"demo-sentence short\">We decided.</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Cluttered",
+        "◆●▲■✦",
+        "At this point in time, we are currently ready.",
+        "Extra objects and repeated words hide the point."
+      ],
+      [
+        "Edited",
+        "● ■",
+        "We are now ready.",
+        "Removing redundancy restores focus."
+      ],
+      [
+        "Essential",
+        "●",
+        "We are ready.",
+        "Nothing remains without a job."
+      ]
+    ],
+    "game": "surgeon"
+  },
+  {
+    "n": 15,
+    "group": "Principles",
+    "visual": "Function",
+    "text": "Genre & purpose",
+    "kind": "function",
+    "visualLead": "A design succeeds when its form helps it do its job. A map, poster and warning need different choices.",
+    "textLead": "Genre is a form shaped by purpose. A CV, story and essay arrange language differently because they do different jobs.",
+    "visualVocab": [
+      [
+        "Inform",
+        "Clear labels and structure help people understand.",
+        "<span class=\"function-demo\">i</span>"
+      ],
+      [
+        "Persuade",
+        "Emphasis and appeal encourage a decision.",
+        "<span class=\"function-demo\">!</span>"
+      ],
+      [
+        "Guide",
+        "Sequence and signals help people act.",
+        "<span class=\"function-demo\">→</span>"
+      ]
+    ],
+    "textVocab": [
+      [
+        "CV line",
+        "Proves ability with a concise action and result.",
+        "<span class=\"demo-sentence\">Led a five-person team.</span>"
+      ],
+      [
+        "Story opening",
+        "Creates curiosity, character or change.",
+        "<span class=\"demo-sentence\">The letter arrived at dawn.</span>"
+      ],
+      [
+        "Essay claim",
+        "States a position the text will support.",
+        "<span class=\"demo-sentence\">Public parks strengthen cities.</span>"
+      ]
+    ],
+    "lab": [
+      [
+        "Inform",
+        "i",
+        "Classes begin Monday at 9:00.",
+        "A notice prioritizes exact usable facts."
+      ],
+      [
+        "Engage",
+        "?",
+        "At dawn, the empty classroom light switched on.",
+        "A story delays explanation to create curiosity."
+      ],
+      [
+        "Persuade",
+        "!",
+        "Choose the safer route.",
+        "A call to action makes the desired response clear."
+      ]
+    ],
+    "game": "purpose"
+  }
+]

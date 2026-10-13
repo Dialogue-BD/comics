@@ -1,0 +1,53 @@
+{
+  "source_file": "/Users/timothyhall/Downloads/Design Module Prototype.html",
+  "snapshot_file": "research/design-module-prototype.html",
+  "sha256": "84e782acb497da7f3e6d27a81797fcdc0b93338178861a27d3a096ee6b235a7c",
+  "reviewed": "2026-10-13",
+  "basis": "Static review of all 15 lesson definitions, lab states, game markup, and validation handlers. Browser inspection of the file URL was blocked by browser policy; no prototype browser-play claim is made.",
+  "strong_features": [
+    "Three concrete visual and textual subtype examples per unit",
+    "Named multi-state meaning labs",
+    "Concept-specific interaction metaphors: repaint, sound sorting, magnets, word surgery, shelf repair, bookending",
+    "Short explanations linking a manipulation to its effect"
+  ],
+  "retain_from_current": [
+    "Two distinct entry identities and the paper-craft writing workspace",
+    "All 15 original visual word animations",
+    "Meaning-led Diction word art",
+    "Five-line B1 lexical chiasm",
+    "Multiple ghost interpretations of subtext",
+    "Two-stanza biblical parallelism",
+    "Colon fulcrum and musical resonance",
+    "Guide examples, source attribution, bottom coach, open navigation, saved progress, accessibility and offline runtime"
+  ],
+  "review_findings": [
+    {
+      "prototype_game": "pause",
+      "finding": "The handler marks every single active pause as successful, irrespective of which sentence boundary is chosen.",
+      "merge_action": "Specify a pacing goal and assess its placement, or compare multiple supported choices."
+    },
+    {
+      "prototype_game": "surgeon",
+      "finding": "The display begins at 9 words; the rendered sentence has 11. Subtracting the three removable phrases produces an incorrect live count, while final checking still accepts all three cuts.",
+      "merge_action": "Compute token counts from actual current text and test preserved meaning."
+    },
+    {
+      "prototype_game": "iceberg",
+      "finding": "One fixed hidden meaning is marked correct without sufficiently constraining context.",
+      "merge_action": "Provide tone/action/context clues and retain multiple plausible readings where evidence is open."
+    },
+    {
+      "prototype_game": "scales",
+      "finding": "The semicolon is treated as the single level solution and an em dash as grammatical but unsuccessful.",
+      "merge_action": "Assess a stated rhetorical purpose; retain the current colon/explanation example."
+    },
+    {
+      "prototype_lab": "paired effects",
+      "finding": "Some comparisons change content, structure, register, and mood simultaneously, making the cause of the effect difficult to isolate.",
+      "merge_action": "Hold the scenario and core information stable where appropriate and identify the changed variable."
+    }
+  ],
+  "recommended_core": "User selected several short challenges in every unit. Plan three complementary challenges: notice, manipulate, transfer, with optional deeper examples.",
+  "implemented": "2026-10-14",
+  "delivery": "15 units × 3 short challenges; 45 subtype pairs and 45 named lab states; existing visual shell and semantic motion preserved"
+}

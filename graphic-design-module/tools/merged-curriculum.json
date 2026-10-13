@@ -1,0 +1,2038 @@
+{
+  "line": {
+    "goal": "Use lines and sentence structure to guide movement and pace.",
+    "examples": [
+      {
+        "visual": {
+          "id": "weight",
+          "term": "Line weight",
+          "meaning": "How thick or thin a line is.",
+          "visual": "weight"
+        },
+        "written": {
+          "term": "Simple",
+          "meaning": "One complete idea moves in a clear direction.",
+          "example": "We began."
+        }
+      },
+      {
+        "visual": {
+          "id": "direction",
+          "term": "Direction",
+          "meaning": "The way a line runs.",
+          "visual": "diagonal"
+        },
+        "written": {
+          "term": "Compound",
+          "meaning": "Two complete ideas travel side by side.",
+          "example": "We began, and they followed."
+        }
+      },
+      {
+        "visual": {
+          "id": "contour",
+          "term": "Contour",
+          "meaning": "The line around the edge of a shape.",
+          "visual": "contour"
+        },
+        "written": {
+          "term": "Complex",
+          "meaning": "A main idea changes direction through a dependent clause.",
+          "example": "Although it rained, we continued."
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Stop",
+        "visual": "horizontal",
+        "value": 0,
+        "text": [
+          "We crossed the bridge. The wind rose. We stopped."
+        ],
+        "effect": "Short complete sentences make distinct stops."
+      },
+      {
+        "label": "Flow",
+        "visual": "curved",
+        "value": 50,
+        "text": [
+          "As we crossed the bridge, the wind rose and we stopped."
+        ],
+        "effect": "Connected clauses carry the scene in one movement."
+      },
+      {
+        "label": "Turn",
+        "visual": "zigzag",
+        "value": 100,
+        "text": [
+          "We crossed the bridge—but when the wind rose, we stopped."
+        ],
+        "effect": "The dash and but foreground an interruption."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "What does the horizontal rule do in this timetable?",
+        "tiles": [
+          "It separates the two sessions.",
+          "It changes the starting time.",
+          "It adds a new room."
+        ],
+        "answer": 0,
+        "reason": "The rule separates the two sessions while the wording stays the same.",
+        "visual": "application",
+        "id": "line-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "match",
+        "prompt": "Match each description to the movement it names.",
+        "left": [
+          "We walked directly to the gate.",
+          "The path curved around the pond.",
+          "We turned sharply, stopped, and turned again."
+        ],
+        "right": [
+          "Straight path",
+          "Curving path",
+          "Zigzag path"
+        ],
+        "rightVisual": [
+          "path-straight",
+          "curved",
+          "zigzag"
+        ],
+        "answer": [
+          0,
+          1,
+          2
+        ],
+        "reason": "Direct, curving, and repeated sharp turns describe different visible paths.",
+        "id": "line-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "order",
+        "prompt": "Make the wind interrupt the journey. Build the sentence, then let the final stop land.",
+        "tiles": [
+          "We crossed the bridge",
+          "—but when the wind rose,",
+          "we stopped."
+        ],
+        "answer": [
+          0,
+          1,
+          2
+        ],
+        "reason": "The dash and but mark a turn; the final clause completes the interruption.",
+        "id": "line-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "color": {
+    "goal": "Choose colours and words that fit the atmosphere you want.",
+    "examples": [
+      {
+        "visual": {
+          "term": "Warm palette",
+          "visual": "palette-warm",
+          "meaning": "Reds, oranges, and yellows form this warm palette."
+        },
+        "written": {
+          "term": "Vivid diction",
+          "example": "The room glowed with lively conversation.",
+          "meaning": "Lively foregrounds energy in this scene."
+        }
+      },
+      {
+        "visual": {
+          "term": "Cool palette",
+          "visual": "palette-cool",
+          "meaning": "Blues and blue-greens form this cool palette."
+        },
+        "written": {
+          "term": "Distant diction",
+          "example": "The room held a distant silence.",
+          "meaning": "Distant suggests separation in this context."
+        }
+      },
+      {
+        "visual": {
+          "term": "Muted palette",
+          "visual": "palette-muted",
+          "meaning": "Reduced saturation gives this palette a restrained appearance."
+        },
+        "written": {
+          "term": "Restrained diction",
+          "example": "The room settled into subdued conversation.",
+          "meaning": "Subdued reduces the described intensity."
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Warm",
+        "visual": "palette-warm",
+        "value": 0,
+        "text": [
+          "The room glowed with lively conversation."
+        ],
+        "effect": "This palette and wording suggest an energetic gathering in this example."
+      },
+      {
+        "label": "Cool",
+        "visual": "palette-cool",
+        "value": 50,
+        "text": [
+          "The room held a crisp, distant silence."
+        ],
+        "effect": "This version replaces conversation with silence. Crisp and distant also add separation."
+      },
+      {
+        "label": "Muted",
+        "visual": "palette-muted",
+        "value": 100,
+        "text": [
+          "The room settled into subdued conversation."
+        ],
+        "effect": "Conversation remains, but subdued reduces its intensity, alongside less saturated colour."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "Why can a color key help a reader use this club timetable?",
+        "tiles": [
+          "The color and written labels identify different activities.",
+          "Every activity has changed its time.",
+          "Bright colors always mean the same thing everywhere."
+        ],
+        "answer": 0,
+        "reason": "The colors repeat beside the activity names. The written labels give a second cue, so color is not the only way to identify an activity.",
+        "visual": "application",
+        "id": "color-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "paint",
+        "prompt": "Choose words to make the gathering feel energetic and friendly.",
+        "slots": [
+          {
+            "label": "Room",
+            "choices": [
+              "lively",
+              "distant",
+              "subdued"
+            ]
+          },
+          {
+            "label": "Sound",
+            "choices": [
+              "laughter",
+              "whispers",
+              "murmurs"
+            ]
+          },
+          {
+            "label": "Guests",
+            "choices": [
+              "chatted",
+              "waited",
+              "spoke softly"
+            ]
+          }
+        ],
+        "frame": "The {0} room was filled with {1} as guests {2}.",
+        "answer": [
+          0,
+          0,
+          0
+        ],
+        "reason": "Lively, laughter, and chatted most directly show the energetic gathering requested. Other combinations can make different scenes.",
+        "palette": [
+          "warm",
+          "cool",
+          "muted"
+        ],
+        "id": "color-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "choose",
+        "prompt": "The narrator wants an empty classroom to feel unsettling. Choose the wording that best serves that intention.",
+        "tiles": [
+          "The classroom was peaceful and welcoming.",
+          "The classroom was deserted and silent.",
+          "The classroom was busy and noisy."
+        ],
+        "answer": 1,
+        "reason": "Deserted and silent support the requested unease. Peaceful suggests calm; busy changes the empty scene.",
+        "id": "color-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "shape": {
+    "goal": "Find repeated words and a turning point in a five-part text shape.",
+    "examples": [
+      {
+        "visual": {
+          "id": "boundary",
+          "term": "Boundary",
+          "meaning": "The edge that separates a shape from its surroundings.",
+          "visual": "outline"
+        },
+        "written": {
+          "term": "Lexical repetition",
+          "example": "afraid … not afraid",
+          "meaning": "The same key word returns in a changed situation.",
+          "features": [
+            "afraid",
+            "not afraid"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "corner",
+          "term": "Corner",
+          "meaning": "A point where two edges meet.",
+          "visual": "corner"
+        },
+        "written": {
+          "term": "Related word forms",
+          "example": "help … helped",
+          "meaning": "These are forms of the same English verb.",
+          "features": [
+            "help",
+            "helped"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "geometric",
+          "term": "Geometric",
+          "meaning": "Built from regular geometry, such as a circle or square.",
+          "visual": "geometric"
+        },
+        "written": {
+          "term": "Turning point",
+          "example": "His friend came.",
+          "meaning": "The arrival connects asking for help with receiving it.",
+          "features": [
+            "His friend came."
+          ]
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Five lines",
+        "visual": "shape-lines",
+        "value": 0,
+        "text": [
+          "Ben was afraid.",
+          "He called for help.",
+          "His friend came.",
+          "His friend helped him.",
+          "Ben was not afraid."
+        ],
+        "effect": "The sentences keep their logical story order."
+      },
+      {
+        "label": "Find the echoes",
+        "visual": "shape-echoes",
+        "value": 50,
+        "text": [
+          "Ben was afraid.",
+          "He called for help.",
+          "His friend came.",
+          "His friend helped him.",
+          "Ben was not afraid."
+        ],
+        "effect": "Afraid returns; help returns as helped."
+      },
+      {
+        "label": "Reveal the chiasm",
+        "visual": "shape-chiasm",
+        "value": 100,
+        "text": [
+          "Ben was afraid.",
+          "He called for help.",
+          "His friend came.",
+          "His friend helped him.",
+          "Ben was not afraid."
+        ],
+        "effect": "A–B–X–B′–A′ surrounds the friend’s arrival."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "Which feature makes these simple activity icons easy to tell apart?",
+        "tiles": [
+          "Their different outlines.",
+          "Their hidden file names.",
+          "Their three-dimensional mass."
+        ],
+        "answer": 0,
+        "reason": "You can distinguish the circle, square, and triangle by their outlines. They are flat shapes.",
+        "visual": "application",
+        "id": "shape-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "order",
+        "prompt": "Build the short story: Ben feels afraid, calls for help, his friend comes, helps him, and Ben feels calm.",
+        "tiles": [
+          "Ben was afraid.",
+          "He called for help.",
+          "His friend came.",
+          "His friend helped him.",
+          "Ben was not afraid."
+        ],
+        "answer": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "reason": "Afraid returns at the end. Help returns as helped. His friend came is the turning point between asking for help and receiving it.",
+        "id": "shape-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "choose",
+        "prompt": "Read: “Eva was tired. She asked for rest. Her friend found a seat. Eva rested. Eva was not tired.” Which sentence turns asking into receiving?",
+        "tiles": [
+          "Eva was tired.",
+          "Her friend found a seat.",
+          "Eva was not tired."
+        ],
+        "answer": 1,
+        "reason": "The friend finding a seat is the central turn. Tired returns as not tired; rest returns as rested.",
+        "case": [
+          "Eva was tired.",
+          "She asked for rest.",
+          "Her friend found a seat.",
+          "Eva rested.",
+          "Eva was not tired."
+        ],
+        "id": "shape-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "texture": {
+    "goal": "Use repeated sounds and phrasing to give prose a texture.",
+    "examples": [
+      {
+        "visual": {
+          "id": "grain",
+          "term": "Grain",
+          "meaning": "The lines and changes visible in a material such as wood.",
+          "visual": "wood"
+        },
+        "written": {
+          "term": "Alliteration",
+          "meaning": "Repeated opening sounds create a noticeable verbal surface.",
+          "example": "silver streams slide",
+          "features": [
+            "silver",
+            "streams",
+            "slide"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "rough",
+          "term": "Rough",
+          "meaning": "A surface that appears uneven.",
+          "visual": "stone"
+        },
+        "written": {
+          "term": "Harsh consonants",
+          "meaning": "Listen for abrupt stops and clusters in this particular phrase.",
+          "example": "cracked, cut, struck"
+        }
+      },
+      {
+        "visual": {
+          "id": "smooth",
+          "term": "Smooth",
+          "meaning": "A surface that appears even, with few irregular marks.",
+          "visual": "smooth"
+        },
+        "written": {
+          "term": "Flowing rhythm",
+          "meaning": "Long vowels and connected phrases feel smooth.",
+          "example": "low waves roll away"
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Rough",
+        "visual": "rough",
+        "value": 0,
+        "text": [
+          "Cracked carts clattered."
+        ],
+        "effect": "Repeated stops and clusters make this phrase sound abrupt."
+      },
+      {
+        "label": "Smooth",
+        "visual": "smooth",
+        "value": 50,
+        "text": [
+          "Low waves rolled away."
+        ],
+        "effect": "The long sounds and connected phrasing flow in this example."
+      },
+      {
+        "label": "Fine grain",
+        "visual": "woven",
+        "value": 100,
+        "text": [
+          "Soft rain ticked, tapped, whispered."
+        ],
+        "effect": "Small repeated sounds create a fine verbal texture. These choices describe different scenes."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "What should you check before placing small text over this textured invitation?",
+        "tiles": [
+          "Whether the surface marks compete with the words.",
+          "Whether the screen feels like wood.",
+          "Whether texture changes the event date."
+        ],
+        "answer": 0,
+        "reason": "A strong texture can compete with small text. A quieter area behind the words can help readability.",
+        "visual": "application",
+        "id": "texture-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "group",
+        "prompt": "Sort these model phrases by the sound effect demonstrated. Listen for stops and flowing sounds.",
+        "tiles": [
+          "Cracked carts clattered.",
+          "Low waves rolled away.",
+          "Cut, struck, snapped.",
+          "Silver streams slid slowly."
+        ],
+        "groups": [
+          "Abrupt / rough",
+          "Flowing / smooth"
+        ],
+        "answer": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "reason": "Stops and clusters support an abrupt effect in the first pair; longer connected sounds support flow in the other pair.",
+        "surface": true,
+        "id": "texture-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "choose",
+        "prompt": "Which version best suggests the boat moving gently? Read or hear the phrasing.",
+        "tiles": [
+          "The boat slid slowly over the still water.",
+          "The boat bumped and banged against the dock.",
+          "The boat moved."
+        ],
+        "answer": 0,
+        "reason": "Slid slowly and still water support gentle movement and a continuous sound pattern in this scene.",
+        "id": "texture-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "form": {
+    "goal": "Use context to explore meaning beneath the spoken words.",
+    "examples": [
+      {
+        "visual": {
+          "id": "highlight",
+          "term": "Highlight",
+          "meaning": "A lighter area on the surface.",
+          "visual": "highlight"
+        },
+        "written": {
+          "term": "Literal words",
+          "example": "“You’re leaving already?”",
+          "meaning": "The words ask about leaving."
+        }
+      },
+      {
+        "visual": {
+          "id": "shadow",
+          "term": "Surface shadow",
+          "meaning": "A darker area on the surface.",
+          "visual": "shadow"
+        },
+        "written": {
+          "term": "Possible implication",
+          "example": "Perhaps she wants the guest to stay.",
+          "meaning": "Context and tone can support an inference."
+        }
+      },
+      {
+        "visual": {
+          "id": "cast",
+          "term": "Cast shadow",
+          "meaning": "A shadow falling onto another surface.",
+          "visual": "cast"
+        },
+        "written": {
+          "term": "Tone and context",
+          "example": "“Nice work,” she said, smiling.",
+          "meaning": "The surrounding action changes which reading is plausible."
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Words alone",
+        "visual": "shape",
+        "value": 0,
+        "text": [
+          "“Nice work.”"
+        ],
+        "effect": "Without the surrounding action, several readings remain possible."
+      },
+      {
+        "label": "A smile",
+        "visual": "highlight",
+        "value": 50,
+        "text": [
+          "“Nice work,” she said, smiling at the finished drawing."
+        ],
+        "effect": "The smile and completed drawing support praise."
+      },
+      {
+        "label": "A frown",
+        "visual": "shadow",
+        "value": 100,
+        "text": [
+          "“Nice work,” she said, frowning at the torn drawing."
+        ],
+        "effect": "The frown and damage support criticism or concern. The words alone do not prove the intention."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "Which visible features suggest depth in this ball illustration?",
+        "tiles": [
+          "The highlight and shaded side.",
+          "A changed circular outline.",
+          "A different event time."
+        ],
+        "answer": 0,
+        "reason": "The highlight and shaded side suggest volume within the same circular outline.",
+        "visual": "application",
+        "id": "form-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "choose",
+        "prompt": "She frowns at the torn drawing and says “Nice work.” Which readings can that context support?",
+        "tiles": [
+          "Possible criticism",
+          "Unqualified praise",
+          "Concern about the damage"
+        ],
+        "answer": 0,
+        "reason": "The damaged drawing and frown support criticism or concern. They do not prove a single hidden intention.",
+        "answers": [
+          0,
+          2
+        ],
+        "case": [
+          "“Nice work,” she said, frowning at the torn drawing."
+        ],
+        "id": "form-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "choose",
+        "prompt": "The teacher points to an unfinished task and says, “We have only five minutes left.” What request does this context most strongly support?",
+        "tiles": [
+          "Please focus and finish.",
+          "Begin an unrelated game.",
+          "Take as much time as you like."
+        ],
+        "answer": 0,
+        "reason": "The unfinished task, pointing, and time limit support a request to finish. The request is implied rather than stated directly.",
+        "case": [
+          "“We have only five minutes left,” the teacher said, pointing to the unfinished task."
+        ],
+        "id": "form-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "space": {
+    "goal": "Place gaps and pauses where they serve the reader.",
+    "examples": [
+      {
+        "visual": {
+          "id": "positive",
+          "term": "Positive space",
+          "meaning": "Area occupied by a visible element.",
+          "visual": "positive"
+        },
+        "written": {
+          "term": "Pause",
+          "example": "Wait. Listen.",
+          "meaning": "The full stops create two separate pauses.",
+          "features": [
+            "Wait.",
+            "Listen."
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "negative",
+          "term": "Negative space",
+          "meaning": "The empty area inside, around, or between elements.",
+          "visual": "negative"
+        },
+        "written": {
+          "term": "Paragraph break",
+          "example": "He heard a voice inside. His hand fell.\n\nHe waited.",
+          "paragraphs": [
+            "He heard a voice inside. His hand fell.",
+            "He waited."
+          ],
+          "meaning": "The gap separates the final wait and gives it attention.",
+          "features": [
+            "He waited."
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "margin",
+          "term": "Margin",
+          "meaning": "Space between the outer edge and content.",
+          "visual": "margin"
+        },
+        "written": {
+          "term": "Omission",
+          "example": "She read the message. She put the phone down.",
+          "meaning": "Her reply is left unsaid. We know the actions, but the text withholds the words of the message."
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Continuous",
+        "visual": "lab",
+        "value": 0,
+        "text": [
+          "He raised his hand to knock. He heard a voice inside. His hand fell. He waited."
+        ],
+        "effect": "The action and final wait stay in one block."
+      },
+      {
+        "label": "A pause",
+        "visual": "lab",
+        "value": 50,
+        "text": [
+          "He raised his hand to knock. He heard a voice inside. His hand fell.",
+          "He waited."
+        ],
+        "effect": "A paragraph gap gives the final wait room."
+      },
+      {
+        "label": "A longer silence",
+        "visual": "lab",
+        "value": 100,
+        "text": [
+          "He raised his hand to knock. He heard a voice inside. His hand fell.",
+          "He waited."
+        ],
+        "effect": "A larger visible interval makes the same pause more noticeable.",
+        "gap": 40
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "What does the empty gap between these timetable columns help show?",
+        "tiles": [
+          "That the columns are separate groups.",
+          "That the timetable has no content.",
+          "That all empty space must be white."
+        ],
+        "answer": 0,
+        "reason": "The gutter separates the columns. It contains the same background color as the page, but it is still empty space.",
+        "visual": "application",
+        "id": "space-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "break",
+        "prompt": "Give “He waited.” its own paragraph so that the final pause stands out.",
+        "tiles": [
+          "He raised his hand to knock.",
+          "He heard a voice inside.",
+          "His hand fell.",
+          "He waited."
+        ],
+        "answer": 3,
+        "reason": "The break separates the final wait from the preceding action. It can make the pause more noticeable without adding an explanation.",
+        "id": "space-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "break",
+        "prompt": "Give “The screen went black.” its own paragraph to make that final event stand out.",
+        "tiles": [
+          "He opened the laptop.",
+          "He read the message.",
+          "His hands stopped moving.",
+          "The screen went black."
+        ],
+        "answer": 3,
+        "reason": "The break after the third sentence separates the final event. The task specifies this pacing effect; other paragraphings could serve other intentions.",
+        "id": "space-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "typography": {
+    "goal": "Use type and emphasis to direct attention and shape a voice.",
+    "examples": [
+      {
+        "visual": {
+          "term": "Weight",
+          "visual": "weight",
+          "meaning": "Heavier strokes give selected words more visual emphasis."
+        },
+        "written": {
+          "term": "Stress",
+          "example": "I said TODAY.",
+          "meaning": "Stress today to correct the day.",
+          "features": [
+            "TODAY"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "term": "Line spacing",
+          "visual": "leading",
+          "meaning": "Space separates lines and makes reading easier."
+        },
+        "written": {
+          "term": "Pacing",
+          "example": "Wait. Then speak.",
+          "meaning": "Two short sentences make separate pauses."
+        }
+      },
+      {
+        "visual": {
+          "term": "Type style",
+          "visual": "serif",
+          "meaning": "A serif is a finishing stroke on a letter; style is a presentation choice."
+        },
+        "written": {
+          "term": "Voice",
+          "example": "Honestly, I had waited long enough.",
+          "meaning": "Honestly and the phrasing contribute to this speaker’s voice. A font does not determine the register."
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Who spoke?",
+        "visual": "weight",
+        "value": 0,
+        "text": [
+          "SHE said she had seen him leave."
+        ],
+        "effect": "Stress she to contrast the speaker."
+      },
+      {
+        "label": "Who was seen?",
+        "visual": "weight",
+        "value": 50,
+        "text": [
+          "She said she had seen HIM leave."
+        ],
+        "effect": "Stress him to contrast the person seen."
+      },
+      {
+        "label": "What happened?",
+        "visual": "weight",
+        "value": 100,
+        "text": [
+          "She said she had seen him LEAVE."
+        ],
+        "effect": "Stress leave to contrast the action."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "Why is generous line spacing useful in this short reading panel?",
+        "tiles": [
+          "It helps separate the lines without changing the wording.",
+          "It changes a serif into a sans serif.",
+          "It makes every character monospaced."
+        ],
+        "answer": 0,
+        "reason": "The visible gaps separate the lines. This is leading, not a change in letterform family.",
+        "visual": "application",
+        "id": "typography-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "choose",
+        "prompt": "The narrator is correcting who she saw: that man, rather than someone else. Which word should receive stress?",
+        "tiles": [
+          "She",
+          "him",
+          "leave"
+        ],
+        "answer": 1,
+        "reason": "Stress him to contrast that person with someone else. Stress on she or leave would shift the point of contrast.",
+        "variants": [
+          "SHE said she had seen him leave.",
+          "She said she had seen HIM leave.",
+          "She said she had seen him LEAVE."
+        ],
+        "id": "typography-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "choose",
+        "prompt": "“I wanted the BLUE notebook, not the red one.” Which word needs emphasis to show the intended correction?",
+        "tiles": [
+          "I",
+          "blue",
+          "notebook"
+        ],
+        "answer": 1,
+        "reason": "Blue identifies the colour being corrected. The same noun remains a notebook.",
+        "variants": [
+          "I wanted the blue notebook, not the red one.",
+          "I wanted the BLUE notebook, not the red one.",
+          "I wanted the blue NOTEBOOK, not the red one."
+        ],
+        "id": "typography-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "contrast": {
+    "goal": "Make an opposition clear through difference and parallel form.",
+    "examples": [
+      {
+        "visual": {
+          "id": "difference",
+          "term": "Difference",
+          "meaning": "The visible feature that is not the same.",
+          "visual": "shape"
+        },
+        "written": {
+          "term": "Antithesis",
+          "example": "The street roared; the house whispered.",
+          "meaning": "Opposing ideas use a matching clause frame.",
+          "features": [
+            "roared",
+            "whispered"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "value",
+          "term": "Value contrast",
+          "meaning": "A light–dark difference.",
+          "visual": "value"
+        },
+        "written": {
+          "term": "Juxtaposition",
+          "example": "A quiet garden lay beside a busy road.",
+          "meaning": "Adjacent unlike images invite comparison.",
+          "features": [
+            "quiet",
+            "busy"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "size",
+          "term": "Size contrast",
+          "meaning": "A big–small difference.",
+          "visual": "size"
+        },
+        "written": {
+          "term": "Parallel form",
+          "example": "We came to listen; we stayed to learn.",
+          "meaning": "Matching grammar makes the relationship easy to follow.",
+          "features": [
+            "to listen",
+            "to learn"
+          ]
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Low contrast",
+        "visual": "value",
+        "value": 0,
+        "text": [
+          "Outside, the street was quiet. Inside, the house was calm."
+        ],
+        "effect": "Related impressions create little opposition."
+      },
+      {
+        "label": "Antithesis",
+        "visual": "value",
+        "value": 50,
+        "text": [
+          "Outside, the street roared.",
+          "Inside, the house whispered."
+        ],
+        "effect": "Roared and whispered oppose sound in a matching clause pattern."
+      },
+      {
+        "label": "Juxtaposition",
+        "visual": "shape",
+        "value": 100,
+        "text": [
+          "A crowded street lay beside an empty garden."
+        ],
+        "effect": "Adjacent images invite comparison without requiring an identical clause frame."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "Why is the time easier to locate in the second notice?",
+        "tiles": [
+          "Its darker color creates a stronger value difference.",
+          "Its meaning has changed.",
+          "The whole notice uses identical values."
+        ],
+        "answer": 0,
+        "reason": "The darker time stands out from the pale background and the supporting text.",
+        "visual": "application",
+        "id": "contrast-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "order",
+        "prompt": "Rebuild the opposed descriptions: Outside first, then Inside.",
+        "tiles": [
+          "Outside,",
+          "the street roared;",
+          "inside,",
+          "the house whispered."
+        ],
+        "answer": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "reason": "Outside and inside frame opposing sound impressions. Roared and whispered personify the places; they suggest loudness and quietness.",
+        "punctuation": true,
+        "id": "contrast-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "choose",
+        "prompt": "Choose a clear opposition in a matching clause pattern.",
+        "tiles": [
+          "Her pockets were empty; her notebook was full.",
+          "Her pockets were empty; her bag was empty too.",
+          "Her notebook lay on the desk."
+        ],
+        "answer": 0,
+        "reason": "Empty and full oppose one another in parallel clauses. Repeating empty gives similarity; the last option supplies no paired opposition.",
+        "id": "contrast-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "hierarchy": {
+    "goal": "Put the point and its support in a useful reading order.",
+    "examples": [
+      {
+        "visual": {
+          "id": "primary",
+          "term": "Primary information",
+          "meaning": "The message that needs attention first.",
+          "visual": "size"
+        },
+        "written": {
+          "term": "Main point",
+          "example": "A library can be a useful place to study.",
+          "meaning": "Give the reader the idea that the explanation develops."
+        }
+      },
+      {
+        "visual": {
+          "id": "secondary",
+          "term": "Secondary information",
+          "meaning": "Details that support the main message.",
+          "visual": "weight"
+        },
+        "written": {
+          "term": "Reason",
+          "example": "A quiet desk can make it easier to focus.",
+          "meaning": "Explain why the main point makes sense."
+        }
+      },
+      {
+        "visual": {
+          "id": "tertiary",
+          "term": "Tertiary information",
+          "meaning": "Additional supporting detail.",
+          "visual": "position"
+        },
+        "written": {
+          "term": "Example",
+          "example": "For example, a student might read a chapter away from street noise.",
+          "meaning": "Make the idea concrete through a particular case."
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Point first",
+        "visual": "hierarchy-point",
+        "value": 0,
+        "text": [
+          "A library can be a useful place to study.",
+          "A quiet desk can make it easier to focus.",
+          "For example, a student might read a chapter away from street noise."
+        ],
+        "effect": "Point → reason → example gives an explanation a clear route."
+      },
+      {
+        "label": "Point last",
+        "visual": "hierarchy-last",
+        "value": 50,
+        "text": [
+          "A quiet desk can make it easier to focus.",
+          "For example, a student might read a chapter away from street noise.",
+          "A library can be a useful place to study."
+        ],
+        "effect": "The reader waits to discover the main point."
+      },
+      {
+        "label": "Equal emphasis",
+        "visual": "hierarchy-flat",
+        "value": 100,
+        "text": [
+          "A library can be a useful place to study.",
+          "A quiet desk can make it easier to focus.",
+          "For example, a student might read a chapter away from street noise."
+        ],
+        "effect": "The order stays, but equal visual emphasis gives less help finding the point."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "What should a reader notice first on this community-event notice?",
+        "tiles": [
+          "The event name, followed by the time and place.",
+          "Every line with exactly equal emphasis.",
+          "The tiny decorative marks before the event name."
+        ],
+        "answer": 0,
+        "reason": "The headline introduces the event. The supporting details then tell the reader when and where.",
+        "visual": "application",
+        "id": "hierarchy-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "order",
+        "prompt": "Build an explanatory paragraph: main point → explanation → example.",
+        "tiles": [
+          "A library can be a useful place to study.",
+          "A quiet desk can make it easier to focus.",
+          "For example, a student might read a chapter away from street noise."
+        ],
+        "answer": [
+          0,
+          1,
+          2
+        ],
+        "reason": "The first sentence states the main point. The second explains it; For example introduces a supporting illustration.",
+        "id": "hierarchy-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "order",
+        "prompt": "Build a short explanation: main point → reason → example.",
+        "tiles": [
+          "Trees can cool a street.",
+          "Their leaves provide shade.",
+          "For example, the path beneath the tree feels cooler."
+        ],
+        "answer": [
+          0,
+          1,
+          2
+        ],
+        "reason": "The first sentence states the point, the second explains it, and the third makes it concrete.",
+        "id": "hierarchy-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "alignment": {
+    "goal": "Find correspondences across shapes, grammar, and poetic stanzas.",
+    "examples": [
+      {
+        "visual": {
+          "id": "edge",
+          "term": "Edge",
+          "meaning": "The side along which elements line up.",
+          "visual": "left"
+        },
+        "written": {
+          "term": "Related lines",
+          "example": "The sea retreats; the Jordan turns back.",
+          "meaning": "Different images correspond through meaning."
+        }
+      },
+      {
+        "visual": {
+          "id": "axis",
+          "term": "Centre axis",
+          "meaning": "The shared middle guide.",
+          "visual": "center"
+        },
+        "written": {
+          "term": "Stanza echoes",
+          "example": "The sea saw it and ran away.\nSea, why did you run away?",
+          "paragraphs": [
+            "The sea saw it and ran away.",
+            "Sea, why did you run away?"
+          ],
+          "meaning": "The question returns to the same sea and movement. Adapted from Psalm 114:3, 5; see the labelled stanzas above.",
+          "features": [
+            "sea",
+            "Sea",
+            "away"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "baseline",
+          "term": "Baseline",
+          "meaning": "Letters can share a common bottom guide.",
+          "visual": "baseline"
+        },
+        "written": {
+          "term": "Parallel grammar",
+          "example": "reading, writing, and speaking",
+          "meaning": "The items share a grammatical form."
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Crooked grammar",
+        "visual": "lab",
+        "value": 0,
+        "text": [
+          "She wanted to read the story,",
+          "understanding the ending,",
+          "and an explanation of the characters."
+        ],
+        "effect": "The list changes grammatical form."
+      },
+      {
+        "label": "Aligned grammar",
+        "visual": "lab",
+        "value": 100,
+        "text": [
+          "She wanted to read the story,",
+          "understand the ending,",
+          "and explain the characters."
+        ],
+        "effect": "Three matching verbs restore the series."
+      },
+      {
+        "label": "Stanza echoes",
+        "visual": "poetry",
+        "value": 100,
+        "text": [],
+        "effect": "The same four images return in the same order, now as questions."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "Which feature makes these reading blocks look organised?",
+        "tiles": [
+          "Their common left edge.",
+          "Changing each word to a new language.",
+          "Giving each block an unrelated starting point."
+        ],
+        "answer": 0,
+        "reason": "The blocks line up along one left edge. The shared guide creates a visible connection.",
+        "visual": "application",
+        "id": "alignment-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "match",
+        "prompt": "Match each description to the question that returns to its image.",
+        "left": [
+          "The sea saw it and ran away.",
+          "The Jordan River turned back.",
+          "The mountains jumped like rams.",
+          "The hills jumped like lambs."
+        ],
+        "right": [
+          "Sea, why did you run away?",
+          "Jordan River, why did you turn back?",
+          "Mountains, why did you jump like rams?",
+          "Hills, why did you jump like lambs?"
+        ],
+        "answer": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "reason": "Each question revisits the same subject and action or comparison. The images return in the same order across the stanzas.",
+        "id": "alignment-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "choose",
+        "prompt": "Repair the series: “reading reports, writing summaries, and ___”.",
+        "tiles": [
+          "presenting findings",
+          "a presentation of findings",
+          "to present findings"
+        ],
+        "answer": 0,
+        "reason": "Reading, writing, and presenting share the same grammatical form.",
+        "case": [
+          "reading reports, writing summaries, and ___"
+        ],
+        "id": "alignment-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "balance": {
+    "goal": "Choose punctuation that explains how two clauses relate.",
+    "examples": [
+      {
+        "visual": {
+          "id": "weight",
+          "term": "Visual weight",
+          "meaning": "How strongly an element attracts attention.",
+          "visual": "weight"
+        },
+        "written": {
+          "term": "Colon",
+          "example": "The room grew quiet: everyone had left.",
+          "meaning": "The second clause explains the first.",
+          "features": [
+            ":"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "axis",
+          "term": "Axis of symmetry",
+          "meaning": "The guide around which an arrangement is mirrored.",
+          "visual": "symmetric"
+        },
+        "written": {
+          "term": "Em dash",
+          "example": "The room grew quiet—everyone had left.",
+          "meaning": "The added clause can feel like a reveal or afterthought.",
+          "features": [
+            "—"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "symmetric",
+          "term": "Symmetrical",
+          "meaning": "Similar arrangements on opposite sides.",
+          "visual": "symmetric"
+        },
+        "written": {
+          "term": "Period",
+          "example": "The room grew quiet. Everyone had left.",
+          "meaning": "The clauses become separate sentences.",
+          "features": [
+            "."
+          ]
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Explain",
+        "visual": "colon",
+        "value": 0,
+        "text": [
+          "The room grew quiet: everyone had left."
+        ],
+        "effect": "A colon explicitly introduces the explanation."
+      },
+      {
+        "label": "Separate",
+        "visual": "period",
+        "value": 50,
+        "text": [
+          "The room grew quiet. Everyone had left."
+        ],
+        "effect": "A period makes two complete sentences."
+      },
+      {
+        "label": "Reveal",
+        "visual": "dash",
+        "value": 100,
+        "text": [
+          "The room grew quiet—everyone had left."
+        ],
+        "effect": "A dash can foreground a reveal or added thought. All three versions are grammatical."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "Why can the second composition feel balanced without being a mirror image?",
+        "tiles": [
+          "Different-sized elements distribute visual weight across both sides.",
+          "Balance always requires identical objects.",
+          "The picture has physical mass on a scale."
+        ],
+        "answer": 0,
+        "reason": "The arrangement uses different elements on opposite sides. It illustrates asymmetrical balance; visual weight is perceived attention.",
+        "visual": "application",
+        "id": "balance-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "order",
+        "prompt": "Place a colon between the complete statement and the clause that explains it.",
+        "tiles": [
+          "The room grew quiet",
+          ":",
+          "everyone had left."
+        ],
+        "answer": [
+          0,
+          1,
+          2
+        ],
+        "reason": "The room grew quiet is a complete statement. Everyone had left explains why. The colon signals that explanatory relationship.",
+        "punctuation": true,
+        "id": "balance-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "choose",
+        "prompt": "Introduce the reason after a complete statement. Which punctuation fits that explanatory job?",
+        "tiles": [
+          "The lamp went out: its battery had run out.",
+          "The lamp went out, its battery had run out.",
+          "The lamp went out. Its battery had run out."
+        ],
+        "answer": 0,
+        "reason": "The colon introduces the reason. A comma alone splices these independent clauses. A period is grammatical but gives two separate statements.",
+        "optionFeedback": [
+          "The colon introduces why.",
+          "A comma alone cannot join these two independent clauses.",
+          "Two sentences are grammatical. For this task, choose the punctuation that introduces the explanation."
+        ],
+        "id": "balance-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "proximity": {
+    "goal": "Gather related details into readable groups and paragraphs.",
+    "examples": [
+      {
+        "visual": {
+          "id": "group",
+          "term": "Group",
+          "meaning": "Elements perceived as belonging together.",
+          "visual": "groups"
+        },
+        "written": {
+          "term": "Paragraph",
+          "example": "Mist covered the river. The water was still.",
+          "meaning": "One paragraph gathers two details about the water.",
+          "features": [
+            "river",
+            "water"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "related",
+          "term": "Related",
+          "meaning": "Information that has a meaningful connection.",
+          "visual": "paired"
+        },
+        "written": {
+          "term": "New focus",
+          "example": "Mist covered the river.\n\nThe boat’s paint was peeling.",
+          "paragraphs": [
+            "Mist covered the river.",
+            "The boat’s paint was peeling."
+          ],
+          "meaning": "A paragraph break marks the move from the water to the boat.",
+          "features": [
+            "river",
+            "boat"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "gap",
+          "term": "Gap",
+          "meaning": "Empty space separating elements.",
+          "visual": "groups"
+        },
+        "written": {
+          "term": "Cohesion",
+          "example": "Lina found a boat. It lay beside the river.",
+          "meaning": "It refers back to a boat, linking the two sentences.",
+          "features": [
+            "a boat",
+            "It"
+          ]
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Mixed details",
+        "visual": "proximity-mixed",
+        "value": 0,
+        "text": [
+          "At dawn, Lina reached the river.",
+          "The boat’s blue paint was peeling.",
+          "Mist covered the water.",
+          "Inside the boat, a rope lay beside the oar."
+        ],
+        "effect": "Setting and boat details interrupt one another."
+      },
+      {
+        "label": "Related paragraphs",
+        "visual": "proximity-groups",
+        "value": 100,
+        "text": [
+          "At dawn, Lina reached the river. Mist covered the water.",
+          "The boat’s blue paint was peeling. Inside the boat, a rope lay beside the oar."
+        ],
+        "effect": "Each paragraph develops a related focus."
+      },
+      {
+        "label": "Picture and caption",
+        "visual": "proximity-captions",
+        "value": 100,
+        "text": [
+          "At dawn, Lina reached the river. Mist covered the water.",
+          "The boat’s blue paint was peeling. Inside the boat, a rope lay beside the oar."
+        ],
+        "effect": "Keep the river image with river details and the boat image with boat details."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "Which gap makes the date and time read as one group?",
+        "tiles": [
+          "A small gap between them and a larger gap before the address.",
+          "Equal huge gaps between every detail.",
+          "Placing the time beside an unrelated caption."
+        ],
+        "answer": 0,
+        "reason": "The date and time sit close together, while extra space separates the location group.",
+        "visual": "application",
+        "id": "proximity-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "group",
+        "prompt": "Group the scene into two paragraphs: the riverside setting, then the details of the boat.",
+        "tiles": [
+          "At dawn, Lina reached the river.",
+          "The boat’s blue paint was peeling.",
+          "Mist covered the water.",
+          "Inside the boat, a rope lay beside the oar."
+        ],
+        "groups": [
+          "Setting",
+          "Boat details"
+        ],
+        "answer": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "reason": "Dawn, the river, and mist establish the setting. Paint, rope, and oar develop the boat. Grouping gives the reader a clear focus for each paragraph.",
+        "binVisual": [
+          "river",
+          "boat"
+        ],
+        "id": "proximity-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "group",
+        "prompt": "Make one paragraph about the library and one about transport.",
+        "tiles": [
+          "The library was quiet.",
+          "The bus stopped outside.",
+          "Students read at the tables.",
+          "Passengers waited by the gate."
+        ],
+        "groups": [
+          "Library",
+          "Transport"
+        ],
+        "answer": [
+          0,
+          1,
+          0,
+          1
+        ],
+        "reason": "Library, students, and tables share one focus; bus and passengers share the transport focus.",
+        "binVisual": [
+          "library",
+          "transport"
+        ],
+        "id": "proximity-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "repetition": {
+    "goal": "Make a repeated opening or returning image serve the passage.",
+    "examples": [
+      {
+        "visual": {
+          "id": "motif",
+          "term": "Motif",
+          "meaning": "One visual unit that repeats.",
+          "visual": "regular"
+        },
+        "written": {
+          "term": "Anaphora",
+          "meaning": "Successive lines begin with the same words.",
+          "example": "We will learn. We will build.",
+          "features": [
+            "We will"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "rhythm",
+          "term": "Rhythm",
+          "meaning": "The visible pattern created as features repeat.",
+          "visual": "alternating"
+        },
+        "written": {
+          "term": "Refrain",
+          "meaning": "A line returns at intervals.",
+          "example": "Still, we continue.",
+          "features": [
+            "Still"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "consistent",
+          "term": "Consistent",
+          "meaning": "Selected features follow the same system.",
+          "visual": "consistent"
+        },
+        "written": {
+          "term": "Inclusio",
+          "meaning": "The ending repeats the opening to frame the whole text.",
+          "example": "Home … home.",
+          "features": [
+            "Home",
+            "home"
+          ]
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Repeated opening",
+        "visual": "regular",
+        "value": 0,
+        "text": [
+          "She remembered the narrow path.",
+          "She remembered the empty bench.",
+          "She remembered the quiet house."
+        ],
+        "effect": "She remembered repeats at the beginning: anaphora."
+      },
+      {
+        "label": "A returning refrain",
+        "visual": "alternating",
+        "value": 50,
+        "text": [
+          "The wind rose.",
+          "Still, we continued.",
+          "The rain fell.",
+          "Still, we continued."
+        ],
+        "effect": "A line returns at intervals: refrain."
+      },
+      {
+        "label": "Bookends",
+        "visual": "regular",
+        "value": 100,
+        "text": [
+          "We left the river at dawn.",
+          "We walked through the hills.",
+          "At last, we returned to the river."
+        ],
+        "effect": "The returning river image frames the passage: inclusio."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "What connects these three club cards?",
+        "tiles": [
+          "The repeated color, headline style, and divider position.",
+          "Identical wording on every card.",
+          "A different visual style on every card."
+        ],
+        "answer": 0,
+        "reason": "The content differs, but the same selected design features repeat.",
+        "visual": "application",
+        "id": "repetition-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "order",
+        "prompt": "Rebuild the memory sequence: path → bench → house. Keep the repeated opening.",
+        "tiles": [
+          "She remembered the narrow path.",
+          "She remembered the empty bench.",
+          "She remembered the quiet house."
+        ],
+        "answer": [
+          0,
+          1,
+          2
+        ],
+        "reason": "She remembered repeats at the start of successive sentences. This anaphora frames three memories in the requested sequence.",
+        "id": "repetition-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "choose",
+        "prompt": "Opening: “We left the river at dawn.” Choose an ending that returns to the opening image.",
+        "tiles": [
+          "At last, we returned to the river.",
+          "The city seemed larger than we expected.",
+          "We left our bikes at the station."
+        ],
+        "answer": 0,
+        "reason": "The river returns at the close, framing the intervening journey.",
+        "case": [
+          "We left the river at dawn.",
+          "We walked through the hills.",
+          "…"
+        ],
+        "id": "repetition-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "simplicity": {
+    "goal": "Remove redundancy while keeping the information the reader needs.",
+    "examples": [
+      {
+        "visual": {
+          "id": "essential",
+          "term": "Essential",
+          "meaning": "Needed for the message to work.",
+          "visual": "essential"
+        },
+        "written": {
+          "term": "Redundancy",
+          "example": "We planned ahead for the future.",
+          "meaning": "Ahead and for the future overlap with planned. Here, We planned keeps the central information.",
+          "features": [
+            "ahead",
+            "for the future"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "clutter",
+          "term": "Clutter",
+          "meaning": "Competing detail that makes the message harder to find.",
+          "visual": "clutter"
+        },
+        "written": {
+          "term": "Filler",
+          "example": "It is important to note that the gate is closed.",
+          "meaning": "The opening delays the useful fact. The gate is closed states it directly.",
+          "features": [
+            "It is important to note that"
+          ]
+        }
+      },
+      {
+        "visual": {
+          "id": "redundant",
+          "term": "Redundant",
+          "meaning": "Repeated information that adds little here.",
+          "visual": "clutter"
+        },
+        "written": {
+          "term": "Concision",
+          "example": "We decided to leave.",
+          "meaning": "The sentence keeps who decided and what they decided to do.",
+          "features": [
+            "We",
+            "to leave"
+          ]
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Redundant",
+        "visual": "clutter",
+        "value": 0,
+        "text": [
+          "He took a deep breath in order to calm himself."
+        ],
+        "effect": "In order adds no extra purpose here."
+      },
+      {
+        "label": "Concise",
+        "visual": "essential",
+        "value": 100,
+        "text": [
+          "He took a deep breath to calm himself."
+        ],
+        "effect": "The action and its reason survive the cut."
+      },
+      {
+        "label": "Too little",
+        "visual": "too-little",
+        "value": 100,
+        "text": [
+          "He breathed."
+        ],
+        "effect": "This removes the reason. Fewer words alone do not fulfil the task."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "Which simplified invitation still works?",
+        "tiles": [
+          "The one keeping the event, date, place, and action.",
+          "The one showing only the event name.",
+          "The one hiding every useful detail."
+        ],
+        "answer": 0,
+        "reason": "Simplicity preserves the essential message. Fewer elements are not better if needed information disappears.",
+        "visual": "application",
+        "id": "simplicity-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "trim",
+        "prompt": "Keep the action and its purpose. Remove the two-word phrase that adds no meaning here.",
+        "tiles": [
+          "He took",
+          "a deep breath",
+          "in order",
+          "to calm himself."
+        ],
+        "answer": [
+          0,
+          1,
+          3
+        ],
+        "reason": "Removing in order preserves what he did and why: He took a deep breath to calm himself.",
+        "id": "simplicity-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "trim",
+        "prompt": "State present readiness. Remove repeated time wording and the duplicate state, while keeping who is ready.",
+        "tiles": [
+          "At this point in time,",
+          "we are",
+          "currently",
+          "ready",
+          "and prepared."
+        ],
+        "answer": [
+          1,
+          3
+        ],
+        "reason": "We are ready keeps the subject and current state. The other pieces repeat time or readiness.",
+        "id": "simplicity-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  },
+  "function": {
+    "goal": "Choose a form and wording that serve a stated purpose.",
+    "examples": [
+      {
+        "visual": {
+          "id": "purpose",
+          "term": "Purpose",
+          "meaning": "The job the design needs to do.",
+          "visual": "invite"
+        },
+        "written": {
+          "term": "Narrative",
+          "example": "When the power failed, the room fell silent. Then Mina lit a candle.",
+          "meaning": "Recount events in a particular scene."
+        }
+      },
+      {
+        "visual": {
+          "id": "audience",
+          "term": "Audience",
+          "meaning": "The people who need to use or understand it.",
+          "visual": "inform"
+        },
+        "written": {
+          "term": "Explanation",
+          "example": "A mains-powered lamp goes out when its electricity supply is interrupted.",
+          "meaning": "Show a cause, process, or relationship."
+        }
+      },
+      {
+        "visual": {
+          "id": "context",
+          "term": "Viewing context",
+          "meaning": "Where and how someone will see the design.",
+          "visual": "guide"
+        },
+        "written": {
+          "term": "Argument",
+          "example": "Quiet study spaces should stay open later.",
+          "meaning": "State a position that a passage will support."
+        }
+      }
+    ],
+    "labs": [
+      {
+        "label": "Tell a scene",
+        "visual": "inform",
+        "value": 0,
+        "text": [
+          "When the power failed, the room fell silent. Then Mina lit a candle."
+        ],
+        "effect": "Events unfold through a particular character: narrative."
+      },
+      {
+        "label": "Explain",
+        "visual": "guide",
+        "value": 50,
+        "text": [
+          "A mains-powered lamp goes out when its electricity supply is interrupted."
+        ],
+        "effect": "The sentence explains a cause and result."
+      },
+      {
+        "label": "Argue",
+        "visual": "act",
+        "value": 100,
+        "text": [
+          "We should keep a battery lamp ready so a power cut does not leave us in darkness."
+        ],
+        "effect": "A position and reason support an argument."
+      }
+    ],
+    "challenges": {
+      "notice": {
+        "kind": "choose",
+        "prompt": "Which information lets someone act on this event poster?",
+        "tiles": [
+          "The date, place, and clear registration instruction.",
+          "Only the decorative circle.",
+          "A beautiful headline with no event details."
+        ],
+        "answer": 0,
+        "reason": "The practical details and the call to action let a viewer decide what to do next.",
+        "visual": "application",
+        "id": "function-notice-v1",
+        "title": "Notice the feature"
+      },
+      "manipulate": {
+        "kind": "choose",
+        "prompt": "Your paragraph’s job is to explain a cause and result, rather than tell a particular story. Choose the explanatory sentence.",
+        "tiles": [
+          "When the power failed, the room fell silent. Then Mina lit a candle.",
+          "A mains-powered lamp goes out when its electricity supply is interrupted.",
+          "We should prepare for power failures so that work can continue."
+        ],
+        "answer": 1,
+        "reason": "The selected sentence explains how loss of supply affects a lamp. The first recounts a scene; the third argues for action.",
+        "id": "function-manipulate-v1",
+        "title": "Make a design choice"
+      },
+      "transfer": {
+        "kind": "choose",
+        "prompt": "Begin a narrative with an event that could lead into a story.",
+        "tiles": [
+          "The old key turned at last.",
+          "A key opens a matching lock.",
+          "The school should repair its broken locks."
+        ],
+        "answer": 0,
+        "reason": "The first sentence presents a particular event. The second explains a general relationship; the third states a position.",
+        "id": "function-transfer-v1",
+        "title": "Try a fresh example"
+      }
+    }
+  }
+}

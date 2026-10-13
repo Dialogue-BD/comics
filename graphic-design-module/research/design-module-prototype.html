@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <title>Design: Visual &amp; Textual Communication</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --forest: #123f32;
+      --forest-2: #205846;
+      --forest-soft: #dce9df;
+      --gold: #c99325;
+      --gold-bright: #e7b84d;
+      --paper: #f7f1df;
+      --paper-2: #fffaf0;
+      --ink: #17211d;
+      --muted: #53615a;
+      --rule: #cfc7af;
+      --coral: #a84f35;
+      --sky: #2e7184;
+      --surface: #fffdf6;
+      --shadow: 0 18px 50px rgba(29, 48, 40, .12);
+      --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --forest: #b7dec7;
+        --forest-2: #80bea0;
+        --forest-soft: #19352b;
+        --gold: #e6b64d;
+        --gold-bright: #f1c866;
+        --paper: #151a17;
+        --paper-2: #1c231f;
+        --ink: #f1efe4;
+        --muted: #bbc5bd;
+        --rule: #49554e;
+        --coral: #e68b6e;
+        --sky: #72bbcc;
+        --surface: #202923;
+        --shadow: 0 20px 60px rgba(0,0,0,.28);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, transparent 49.8%, color-mix(in srgb, var(--rule) 35%, transparent) 50%, transparent 50.2%) 0 0 / 72px 72px,
+        var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.5;
+    }
+    button, textarea, input { font: inherit; }
+    button { color: inherit; }
+    button:focus-visible, textarea:focus-visible, input:focus-visible {
+      outline: 3px solid var(--gold-bright);
+      outline-offset: 3px;
+    }
+    [hidden] { display: none !important; }
+    .shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .utility {
+      min-height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--rule);
+      font-size: .78rem;
+      color: var(--muted);
+    }
+    .link-note { display: inline-flex; gap: 8px; align-items: center; }
+    .link-note svg { width: 17px; height: 17px; color: var(--gold); }
+    .mode-switch {
+      display: flex;
+      border: 1px solid var(--rule);
+      background: var(--surface);
+      padding: 3px;
+      border-radius: 999px;
+    }
+    .mode-switch button {
+      border: 0;
+      background: transparent;
+      padding: 7px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: 700;
+    }
+    .mode-switch button[aria-pressed="true"] { background: var(--forest); color: var(--paper-2); }
+    @media (prefers-color-scheme: dark) {
+      .mode-switch button[aria-pressed="true"] { color: #10231b; }
+    }
+
+    /* Entry */
+    .entry { min-height: calc(100vh - 54px); display: grid; place-items: center; padding: 54px 0 80px; }
+    .entry-inner { width: min(1020px, 100%); }
+    .thesis {
+      margin: 0 0 14px;
+      font: 700 clamp(2.6rem, 7.5vw, 6.8rem)/.92 var(--serif);
+      letter-spacing: -.055em;
+      color: var(--forest);
+      max-width: 980px;
+    }
+    .thesis .equals { color: var(--gold); font-style: italic; }
+    .entry-copy { max-width: 720px; font-size: clamp(1rem, 2vw, 1.3rem); margin: 24px 0 36px; }
+    .path-label { font-weight: 800; margin: 0 0 12px; }
+    .path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .path-card {
+      position: relative;
+      min-height: 250px;
+      border: 1px solid var(--rule);
+      background: var(--surface);
+      padding: 28px;
+      text-align: left;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 5px 0 color-mix(in srgb, var(--rule) 55%, transparent);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .path-card:first-child { border-radius: 40px 8px 8px 8px; }
+    .path-card:last-child { border-radius: 8px 8px 40px 8px; }
+    .path-card:hover { transform: translateY(-4px); box-shadow: 0 10px 0 color-mix(in srgb, var(--gold) 45%, transparent); border-color: var(--gold); }
+    .path-card h2 { margin: 10px 0 8px; font: 700 clamp(1.55rem, 3vw, 2.25rem)/1.05 var(--serif); color: var(--forest); }
+    .path-card p { margin: 0; max-width: 430px; padding-right: 82px; color: var(--muted); }
+    .choice-kicker { font: 800 .72rem/1 var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--coral); }
+    .visual-composition { height: 84px; position: relative; margin: 0 0 8px; }
+    .visual-composition span { position: absolute; display: block; }
+    .visual-composition .circle { width: 62px; height: 62px; border-radius: 50%; background: var(--gold); left: 8px; top: 8px; }
+    .visual-composition .square { width: 48px; height: 48px; background: var(--forest); left: 94px; top: 28px; transform: rotate(8deg); }
+    .visual-composition .line { height: 8px; width: 145px; background: var(--coral); left: 172px; top: 20px; }
+    .visual-composition .line.two { width: 88px; top: 50px; left: 204px; background: var(--sky); }
+    .text-composition { height: 84px; margin: 0 0 8px; font-family: var(--serif); position: relative; }
+    .text-composition .big { display: block; font-size: 2.25rem; line-height: 1; color: var(--forest); }
+    .text-composition .small { display: block; margin-top: 8px; width: 82%; color: var(--muted); }
+    .text-composition .mark { color: var(--coral); text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 4px; }
+    .coach-peek { position: absolute; right: 22px; bottom: 18px; width: 68px; height: 68px; color: var(--forest); opacity: .92; }
+
+    /* Hub */
+    .hub { padding: 44px 0 90px; }
+    .hub-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(250px, .7fr);
+      gap: 40px;
+      align-items: end;
+      padding: 38px 0 48px;
+      border-bottom: 2px solid var(--forest);
+    }
+    .hub h1 { margin: 0; font: 700 clamp(2.8rem, 6vw, 5.7rem)/.94 var(--serif); letter-spacing: -.045em; color: var(--forest); }
+    .hub-lede { font-size: 1.12rem; max-width: 680px; margin: 18px 0 0; }
+    .coach-card { display: flex; align-items: center; gap: 16px; background: var(--forest-soft); padding: 18px; border-radius: 34px 8px 34px 8px; }
+    .coach-card svg { width: 66px; height: 66px; flex: 0 0 auto; color: var(--forest); }
+    .coach-card strong { display: block; font-family: var(--serif); color: var(--forest); }
+    .coach-card span { font-size: .88rem; color: var(--muted); }
+    .visual-only, .written-only { display: none; }
+    body[data-mode="visual"] .visual-only { display: block; }
+    body[data-mode="written"] .written-only { display: block; }
+    .coach-card.visual-only, .coach-card.written-only { display: none; }
+    body[data-mode="visual"] .coach-card.visual-only { display: flex; }
+    body[data-mode="written"] .coach-card.written-only { display: flex; }
+    .sequence-note { display: flex; gap: 12px; align-items: center; margin: 32px 0 20px; color: var(--muted); }
+    .sequence-note svg { width: 22px; height: 22px; color: var(--gold); flex: 0 0 auto; }
+    .hub-section { margin-top: 38px; }
+    .section-cap { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+    .section-cap h2 { font: 700 1.55rem/1 var(--serif); margin: 0; color: var(--forest); }
+    .section-cap span { color: var(--muted); font-size: .86rem; }
+    .pair-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .pair-card {
+      min-height: 172px;
+      border: 1px solid var(--rule);
+      background: var(--surface);
+      padding: 18px;
+      text-align: left;
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+    .pair-card:nth-child(3n+1) { border-radius: 20px 5px 5px 5px; }
+    .pair-card:nth-child(3n+2) { border-radius: 5px; }
+    .pair-card:nth-child(3n) { border-radius: 5px 20px 5px 5px; }
+    .pair-card.available:hover { transform: translateY(-3px); border-color: var(--gold); background: color-mix(in srgb, var(--gold) 7%, var(--surface)); }
+    .pair-card.locked { cursor: default; opacity: .72; }
+    .pair-number { font: 700 .72rem/1 var(--mono); color: var(--coral); }
+    .pair-symbol { width: 34px; height: 34px; color: var(--forest); margin: 12px 0; }
+    .pair-name { font: 700 1.18rem/1.15 var(--serif); color: var(--forest); }
+    .pair-arrow { color: var(--gold); padding: 0 4px; }
+    .pair-status { display: block; color: var(--muted); font-size: .78rem; margin-top: 8px; }
+    body[data-mode="written"] .pair-name .visual-name { order: 3; }
+    body[data-mode="written"] .pair-name .text-name { order: 1; }
+    body[data-mode="written"] .pair-name .pair-arrow { order: 2; transform: rotate(180deg); display: inline-block; }
+    body[data-mode="written"] .pair-name { display: flex; align-items: center; flex-wrap: wrap; gap: 3px; }
+    body[data-mode="written"] .pair-card { font-family: var(--serif); }
+    body[data-mode="visual"] .pair-card::after {
+      content: ""; position: absolute; width: 22px; height: 22px; right: 14px; top: 14px;
+      border: 3px solid var(--gold); border-radius: 50%; opacity: .6;
+    }
+
+    /* Lesson */
+    .lesson { padding: 22px 0 90px; }
+    .lesson-nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: 8px 0 28px; }
+    .back-btn, .quiet-btn, .solid-btn, .choice-btn {
+      border: 1px solid var(--rule); background: var(--surface); cursor: pointer; padding: 10px 14px; border-radius: 7px; font-weight: 750;
+    }
+    .back-btn { display: inline-flex; align-items: center; gap: 8px; }
+    .back-btn svg { width: 18px; height: 18px; }
+    .lesson-count { font: 700 .78rem/1 var(--mono); color: var(--muted); }
+    .lesson-mast {
+      padding: clamp(28px, 5vw, 56px);
+      background: var(--forest);
+      color: var(--paper-2);
+      min-height: 320px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 28px;
+      border-radius: 52px 8px 52px 8px;
+      box-shadow: var(--shadow);
+    }
+    @media (prefers-color-scheme: dark) { .lesson-mast { color: #13231c; } }
+    .mast-side small { display: block; font: 700 .74rem/1 var(--mono); text-transform: uppercase; letter-spacing: .11em; color: var(--gold-bright); margin-bottom: 12px; }
+    .mast-side h1 { margin: 0; font: 700 clamp(2.7rem, 6vw, 5rem)/.9 var(--serif); letter-spacing: -.04em; }
+    .mast-side p { max-width: 420px; margin: 18px 0 0; opacity: .92; }
+    .equals-mark { font: italic 700 clamp(2.5rem, 5vw, 4.2rem)/1 var(--serif); color: var(--gold-bright); }
+    body[data-mode="written"] .mast-visual { order: 3; }
+    body[data-mode="written"] .equals-mark { order: 2; }
+    body[data-mode="written"] .mast-text { order: 1; }
+    body[data-mode="written"] .paired-grid .domain-panel.visual { order: 2; }
+    body[data-mode="written"] .paired-grid .domain-panel.textual { order: 1; }
+    .path-framing {
+      margin: 18px 0 0;
+      padding: 16px 18px;
+      background: color-mix(in srgb, var(--gold) 12%, var(--surface));
+      border-top: 3px solid var(--gold);
+      font-size: .96rem;
+    }
+    .phase { margin-top: 68px; }
+    .phase-head { display: grid; grid-template-columns: 90px 1fr; gap: 18px; align-items: start; margin-bottom: 24px; }
+    .phase-no { font: 700 3.2rem/.85 var(--serif); color: var(--gold); }
+    .phase h2 { font: 700 clamp(1.8rem, 3.5vw, 3rem)/1 var(--serif); color: var(--forest); margin: 0 0 8px; }
+    .phase-head p { margin: 0; color: var(--muted); max-width: 700px; }
+    .paired-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
+    .domain-panel { background: var(--surface); border: 1px solid var(--rule); padding: 22px; }
+    .domain-panel.visual { border-radius: 30px 6px 6px 6px; }
+    .domain-panel.textual { border-radius: 6px 6px 30px 6px; }
+    .domain-label { display: flex; align-items: center; gap: 8px; font: 800 .72rem/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--coral); margin-bottom: 15px; }
+    .domain-label svg { width: 18px; height: 18px; }
+    .domain-panel h3 { margin: 0 0 14px; font: 700 1.4rem/1.1 var(--serif); color: var(--forest); }
+    .vocab-stack { display: grid; gap: 9px; }
+    .vocab-card {
+      width: 100%; border: 1px solid var(--rule); background: var(--paper-2); cursor: pointer; text-align: left; padding: 0; overflow: hidden;
+    }
+    .vocab-face { min-height: 84px; display: grid; grid-template-columns: minmax(112px, .42fr) 1fr; align-items: center; }
+    .vocab-term { padding: 16px; font: 700 1.15rem/1.05 var(--serif); color: var(--forest); }
+    .vocab-demo { min-height: 84px; display: grid; place-items: center; padding: 10px; background: color-mix(in srgb, var(--forest-soft) 60%, var(--surface)); overflow: hidden; }
+    .vocab-reveal { display: none; border-top: 1px solid var(--rule); padding: 14px 16px; color: var(--muted); font-size: .92rem; }
+    .vocab-card[aria-expanded="true"] { border-color: var(--gold); }
+    .vocab-card[aria-expanded="true"] .vocab-reveal { display: block; }
+    .tap-hint { font-size: .77rem; color: var(--muted); margin: 12px 0 0; }
+    .demo-line { display: block; width: 80%; background: var(--forest); }
+    .demo-line.thin { height: 2px; }
+    .demo-line.thick { height: 12px; }
+    .demo-line.curved { height: 30px; border-radius: 0 0 50% 50%; background: transparent; border-bottom: 5px solid var(--coral); }
+    .demo-sentence { font-family: var(--serif); color: var(--forest); }
+    .demo-sentence.short { font-size: 1.4rem; font-weight: 800; }
+    .demo-sentence.long { font-size: .8rem; max-width: 190px; }
+    .swatch { width: 62px; height: 42px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+    .swatch.warm { background: #d76537; }
+    .swatch.cool { background: #387e9c; }
+    .swatch.muted { background: #87958b; }
+    .word-chip { font-family: var(--serif); font-weight: 700; font-size: 1.25rem; }
+    .word-chip.warm { color: #b14828; }
+    .word-chip.cool { color: #26708a; }
+    .word-chip.muted { color: #68726d; font-weight: 400; }
+    .balance-demo { width: 90%; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .balance-demo i { display: block; background: var(--forest); }
+    .balance-demo.sym i { width: 42px; height: 42px; }
+    .balance-demo.asym i:first-child { width: 72px; height: 45px; }
+    .balance-demo.asym i:last-child { width: 26px; height: 26px; background: var(--gold); }
+    .punct-demo { font: 700 2rem/1 var(--serif); color: var(--forest); letter-spacing: .05em; }
+    .near-demo { display: flex; gap: 5px; }
+    .near-demo i, .far-demo i { width: 30px; height: 30px; display: inline-block; background: var(--forest); }
+    .far-demo { width: 100%; display: flex; justify-content: space-around; }
+    .paragraph-demo { width: 88%; }
+    .paragraph-demo span { display: block; height: 5px; margin: 5px 0; background: var(--forest); }
+    .paragraph-demo.break span:nth-child(3) { margin-top: 16px; }
+
+    .lab { background: var(--forest-soft); padding: clamp(20px, 4vw, 36px); border-radius: 8px 44px 8px 44px; }
+    .lab-intro { margin: 0 0 22px; font-size: 1.02rem; }
+    .lab-controls { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .choice-btn[aria-pressed="true"], .solid-btn { background: var(--forest); color: var(--paper-2); border-color: var(--forest); }
+    @media (prefers-color-scheme: dark) { .choice-btn[aria-pressed="true"], .solid-btn { color: #10231b; } }
+    .cause-effect { display: grid; grid-template-columns: 1fr 54px 1fr; gap: 14px; align-items: center; }
+    .effect-arrow { display: grid; place-items: center; color: var(--gold); }
+    .effect-arrow svg { width: 34px; height: 34px; }
+    .effect-card { min-height: 210px; background: var(--surface); border: 1px solid var(--rule); padding: 24px; display: grid; place-items: center; text-align: center; }
+    .effect-card:first-child { border-radius: 28px 5px 5px 5px; }
+    .effect-card:last-child { border-radius: 5px 5px 28px 5px; }
+    .effect-card h3 { margin: 0 0 10px; font: 700 1.15rem/1.1 var(--serif); color: var(--forest); }
+    .effect-card p { margin: 0; }
+    .line-stage { width: 100%; height: 90px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+    .line-stage i { display: block; height: 5px; background: var(--forest); transition: all .35s ease; }
+    .line-stage[data-rhythm="short"] i { width: 28%; height: 9px; }
+    .line-stage[data-rhythm="short"] i:nth-child(2) { width: 18%; }
+    .line-stage[data-rhythm="balanced"] i { width: 70%; }
+    .line-stage[data-rhythm="balanced"] i:nth-child(2) { width: 70%; }
+    .line-stage[data-rhythm="flowing"] i:first-child { width: 96%; border-radius: 0 20px 20px 0; }
+    .line-stage[data-rhythm="flowing"] i:nth-child(2) { width: 82%; border-radius: 0 20px 20px 0; }
+    .mood-visual { transition: background .35s, color .35s; }
+    .mood-visual[data-mood="warm"] { background: #cf5b32; color: #fff8e5; }
+    .mood-visual[data-mood="cool"] { background: #286c84; color: #edfaff; }
+    .mood-visual[data-mood="muted"] { background: #7d887f; color: #f6f3ea; }
+    .mood-visual .mood-shape { width: 80px; height: 80px; border-radius: 50%; background: currentColor; opacity: .85; }
+    .mood-text { font: 700 clamp(1.3rem, 2.5vw, 2rem)/1.15 var(--serif); transition: color .35s; }
+    .balance-stage { width: 100%; min-height: 110px; display: flex; align-items: center; justify-content: center; gap: 12px; transition: gap .35s; }
+    .balance-stage i { display: block; background: var(--forest); transition: all .35s; }
+    .balance-stage[data-punct="semicolon"] i { width: 58px; height: 58px; }
+    .balance-stage[data-punct="dash"] i:first-child { width: 92px; height: 62px; }
+    .balance-stage[data-punct="dash"] i:last-child { width: 34px; height: 34px; background: var(--gold); }
+    .balance-stage[data-punct="period"] { gap: 24px; }
+    .balance-stage[data-punct="period"] i { width: 50px; height: 50px; }
+    .punctuation-output { font: 700 1.45rem/1.45 var(--serif); }
+    .proximity-stage { width: 100%; min-height: 120px; display: flex; align-items: center; justify-content: center; gap: var(--prox-gap, 12px); transition: gap .2s; }
+    .proximity-stage i { display: block; width: 42px; height: 42px; background: var(--forest); }
+    .proximity-stage i:nth-child(3) { background: var(--gold); }
+    .range-wrap { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; width: min(520px, 100%); margin: 0 0 20px; color: var(--muted); font-size: .82rem; }
+    input[type="range"] { width: 100%; accent-color: var(--forest); }
+    .paragraph-output { font-family: var(--serif); text-align: left; transition: all .25s; }
+    .paragraph-output .sentence { display: inline; }
+    .paragraph-output.separated .sentence:last-child { display: block; margin-top: 22px; }
+
+    .cross-box { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--forest); background: var(--surface); }
+    .cross-task { padding: clamp(22px, 4vw, 38px); min-height: 280px; }
+    .cross-task + .cross-task { border-left: 2px solid var(--forest); }
+    .cross-task small { font: 700 .72rem/1 var(--mono); color: var(--coral); text-transform: uppercase; letter-spacing: .1em; }
+    .cross-task h3 { margin: 10px 0; font: 700 1.45rem/1.15 var(--serif); color: var(--forest); }
+    .cross-task p { color: var(--muted); }
+    textarea { width: 100%; min-height: 100px; resize: vertical; border: 1px solid var(--rule); background: var(--paper-2); color: var(--ink); padding: 12px; border-radius: 6px; }
+    .model-answer { display: none; margin-top: 12px; padding: 14px; background: var(--forest-soft); color: var(--ink); }
+    .model-answer.show { display: block; }
+    .sketch-pad { min-height: 100px; border: 1px dashed var(--forest); background: repeating-linear-gradient(0deg, transparent 0 23px, color-mix(in srgb, var(--rule) 50%, transparent) 24px); display: grid; place-items: center; color: var(--muted); text-align: center; padding: 15px; }
+    .lesson-footer { margin-top: 54px; padding-top: 26px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .lesson-footer strong { font-family: var(--serif); color: var(--forest); }
+
+    .notice {
+      position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none;
+      background: var(--ink); color: var(--paper-2); padding: 12px 18px; border-radius: 8px; box-shadow: var(--shadow); transition: .25s; z-index: 10;
+    }
+    .notice.show { opacity: 1; transform: translate(-50%, 0); }
+
+
+    /* Full lesson vocabulary and cross-description games */
+    .mini-zigzag, .text-shape, .repeat-demo, .simple-demo, .function-demo { color: var(--forest); font: 800 1.25rem/1 var(--mono); }
+    .shape-demo { display: inline-block; width: 54px; height: 48px; color: var(--forest); }
+    .shape-demo.triangle { background: var(--forest); clip-path: polygon(50% 0,100% 100%,0 100%); }
+    .shape-demo.circle { border: 7px solid var(--forest); border-radius: 50%; }
+    .shape-demo.hourglass { font-size: 3rem; line-height: 1; }
+    .texture-demo { width: 82px; height: 42px; display: block; }
+    .texture-demo.rough { background: repeating-linear-gradient(135deg,var(--forest) 0 4px,transparent 4px 9px); }
+    .texture-demo.smooth { background: linear-gradient(90deg,var(--forest),var(--gold)); border-radius: 24px; }
+    .texture-demo.grain { background: radial-gradient(circle,var(--forest) 1.5px,transparent 2px) 0 0/8px 8px; }
+    .form-demo { display: inline-block; width: 54px; height: 54px; border-radius: 50%; }
+    .form-demo.sphere { background: radial-gradient(circle at 32% 28%,var(--paper-2),var(--forest)); }
+    .form-demo.lit { background: linear-gradient(115deg,var(--gold-bright),var(--forest)); }
+    .form-demo.shadow { background: var(--forest); box-shadow: 14px 11px 0 color-mix(in srgb,var(--ink) 28%,transparent); }
+    .space-demo { display: block; color: var(--forest); font: 800 1.5rem/1.4 var(--mono); }
+    .space-demo.margin { border: 1px solid var(--rule); padding: 8px 18px; }
+    .type-demo { font-size: 2rem; color: var(--forest); }
+    .type-demo.serif { font-family: Georgia,serif; }
+    .type-demo.rounded { font-family: "Trebuchet MS",sans-serif; border: 3px solid currentColor; border-radius: 18px; padding: 1px 8px; }
+    .type-demo.bold { font-family: Impact,sans-serif; font-weight: 900; }
+    .contrast-demo { display:flex;align-items:center;gap:8px; }
+    .contrast-demo i { display:block;width:36px;height:36px; }
+    .contrast-demo.value i:first-child{background:var(--ink)} .contrast-demo.value i:last-child{background:var(--paper-2);border:1px solid var(--ink)}
+    .contrast-demo.scale i:first-child{width:52px;height:52px;background:var(--forest)} .contrast-demo.scale i:last-child{width:18px;height:18px;background:var(--gold)}
+    .contrast-demo.low i{background:color-mix(in srgb,var(--forest) 55%,var(--surface))} .contrast-demo.low i:last-child{background:color-mix(in srgb,var(--forest) 42%,var(--surface))}
+    .hier-demo { display:block;color:var(--forest);font-family:var(--serif); } .hier-demo.big{font-size:1.65rem;font-weight:800}.hier-demo.mid{font-size:1.15rem;font-weight:700}.hier-demo.small{font-size:.72rem}
+    .align-demo { width:90px;display:grid;gap:5px;justify-items:start; }.align-demo i{height:6px;background:var(--forest);width:72px}.align-demo i:nth-child(2){width:52px}.align-demo.center{justify-items:center}.align-demo.crooked i:nth-child(2){margin-left:16px}
+    .simple-demo { font-size:2rem; }.simple-demo.clutter{letter-spacing:-.18em;color:var(--coral)}
+    .function-demo { display:grid;place-items:center;width:46px;height:46px;border:3px solid var(--forest);border-radius:50%;font-size:1.7rem; }
+    .generic-visual { white-space: normal; color: var(--forest); font: 800 clamp(2rem,6vw,4rem)/1.15 var(--mono); letter-spacing:.04em; }
+    .generic-text { white-space: normal; font: 700 clamp(1.15rem,2.2vw,1.65rem)/1.3 var(--serif); }
+    .effect-note { margin-top: 14px !important; color: var(--muted); font-size:.9rem; }
+    .game-board { border:2px solid var(--forest); background:var(--surface); padding:clamp(22px,4vw,38px); border-radius:8px 40px 8px 40px; min-height:320px; }
+    .game-instruction { margin:0 0 22px; font:700 1.15rem/1.4 var(--serif); color:var(--forest); max-width:780px; }
+    .game-board button { border:1px solid var(--rule); background:var(--paper-2); color:var(--ink); padding:12px 14px; border-radius:7px; cursor:pointer; font-weight:700; text-align:left; }
+    .game-board button:hover:not(:disabled), .game-board button.selected { border-color:var(--gold); background:color-mix(in srgb,var(--gold) 13%,var(--surface)); }
+    .game-board button:disabled { opacity:.45; cursor:default; text-decoration:line-through; }
+    .game-score { min-height:28px; margin:20px 0 0; padding-top:14px; border-top:1px solid var(--rule); color:var(--muted); font-weight:750; }
+    .game-score.good { color:var(--forest); }
+    .game-score.good::before { content:"✓ "; color:var(--gold); }
+    .match-grid { display:grid;grid-template-columns:1.4fr .8fr;gap:18px; }
+    .match-bank { display:grid;gap:9px; }.match-bank.lines button{text-align:center;font:800 1.55rem/1 var(--mono);color:var(--forest);min-height:56px}
+    .paint-sentence { padding:26px;background:var(--paper-2);font:700 clamp(1.35rem,3vw,2rem)/1.4 var(--serif);border-left:8px solid var(--rule);transition:.25s; }
+    .repaint-game[data-palette="warm"] .paint-sentence{border-color:#d76537;color:#a43b1d}.repaint-game[data-palette="cool"] .paint-sentence{border-color:#387e9c;color:#235d74}.repaint-game[data-palette="muted"] .paint-sentence{border-color:#87958b;color:var(--muted)}
+    .paint-swatches,.voice-choices,.antithesis-options,.hidden-meanings,.sort-bins,.magnet-bins,.purpose-game>div:last-of-type,.shelf-game>div,.scales-game>div:last-of-type,.bookend-copy+div { display:flex;gap:9px;flex-wrap:wrap; }
+    .shape-round { display:grid;grid-template-columns:140px 1fr;gap:24px;align-items:center; }.big-shape{font-size:7rem;color:var(--forest);text-align:center}.shape-round>div:last-child{display:grid;gap:9px}
+    .sort-words,.magnet-pool { display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px; }
+    .iceberg-surface { width:100%;text-align:center!important;font:700 1.35rem/1.3 var(--serif)!important; }.waterline{text-align:center;color:var(--sky);padding:22px 0;font-weight:800;letter-spacing:.08em}
+    .dense-copy { display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:22px;background:var(--paper-2);font:700 1.12rem/1.6 var(--serif); }.pause-slot{padding:3px 8px!important;color:var(--coral)!important}.pause-slot.active{flex-basis:100%;border:0!important;background:transparent!important;text-align:center!important;color:var(--gold)!important}
+    .voice-sample { padding:28px;text-align:center;background:var(--paper-2);font-size:1.8rem; }.formal-font{font-family:Georgia,serif;letter-spacing:.01em}
+    blockquote { margin:18px 0;padding:20px 24px;border-left:6px solid var(--gold);background:var(--paper-2);font:700 clamp(1.2rem,3vw,1.8rem)/1.25 var(--serif); }
+    .stack-list { display:grid;gap:8px;margin-bottom:16px; }.stack-list>div{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;padding:12px 14px;background:var(--paper-2);border:1px solid var(--rule)}.stack-list button{font-size:1.3rem;padding:7px 12px}
+    .shelf-game ul { list-style:none;padding:0;margin:0 0 18px;display:grid;gap:8px;max-width:560px }.shelf-game li{padding:10px 18px;background:var(--forest-soft);border-bottom:5px solid var(--forest)}.shelf-game li.crooked{margin-left:34px;transform:rotate(2deg);border-color:var(--coral)}
+    .seesaw { display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;text-align:center;padding:26px 12px;margin-bottom:18px;background:var(--paper-2);border-bottom:8px solid var(--forest);transition:.25s; }.seesaw b{font-size:2rem;color:var(--gold)}.seesaw[data-state="tilt"]{transform:rotate(-2deg)}.seesaw[data-state="crash"]{transform:rotate(6deg);border-color:var(--coral)}
+    .bookend-copy { padding:22px;background:var(--paper-2);font-family:var(--serif); }
+    .surgery-line { padding:26px;background:var(--paper-2);font:700 clamp(1.25rem,3vw,1.8rem)/1.6 var(--serif); }.surgery-line button{display:inline;padding:2px 5px;font:inherit;color:var(--coral);border-style:dashed}.surgery-line button.cut{text-decoration:line-through;opacity:.35;background:transparent}
+    @media(max-width:650px){.match-grid,.shape-round{grid-template-columns:1fr}.sort-words,.magnet-pool{grid-template-columns:1fr}.paint-swatches,.voice-choices,.antithesis-options,.hidden-meanings,.sort-bins,.magnet-bins{display:grid}.game-board{border-radius:7px 28px 7px 28px}.big-shape{font-size:5rem}.seesaw{grid-template-columns:1fr}.seesaw[data-state="tilt"],.seesaw[data-state="crash"]{transform:none;border-color:var(--coral)}}
+
+    @media (max-width: 850px) {
+      .path-grid, .paired-grid, .cross-box { grid-template-columns: 1fr; }
+      .pair-grid { grid-template-columns: repeat(2, 1fr); }
+      .hub-hero { grid-template-columns: 1fr; }
+      .lesson-mast { grid-template-columns: 1fr; text-align: left; gap: 14px; min-height: 0; }
+      .equals-mark { transform: rotate(90deg); width: min-content; margin-left: 14px; }
+      body[data-mode="written"] .mast-visual { order: 3; }
+      .cause-effect { grid-template-columns: 1fr; }
+      .effect-arrow { transform: rotate(90deg); }
+      .cross-task + .cross-task { border-left: 0; border-top: 2px solid var(--forest); }
+      /* On phones the paired domains deliberately alternate, rather than pretending two columns fit. */
+      .domain-panel.visual { border-radius: 24px 6px 6px 6px; }
+      .domain-panel.textual { border-radius: 6px 6px 24px 6px; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 22px, 1180px); }
+      .utility { align-items: flex-start; padding: 10px 0; min-height: 68px; }
+      .link-note { max-width: 190px; line-height: 1.25; }
+      .mode-switch button { padding: 7px 9px; font-size: .68rem; }
+      .entry { padding-top: 35px; }
+      .path-card { min-height: 220px; padding: 22px 22px 96px; }
+      .pair-grid { grid-template-columns: 1fr; }
+      .pair-card { min-height: 138px; border-radius: 10px !important; }
+      .phase-head { grid-template-columns: 58px 1fr; }
+      .phase-no { font-size: 2.4rem; }
+      .domain-panel { padding: 15px; }
+      .vocab-face { grid-template-columns: 112px 1fr; }
+      .lesson-mast { padding: 28px 22px; border-radius: 34px 7px 34px 7px; }
+      .lesson-footer { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell utility">
+    <span class="link-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v7M14 20h3"/></svg>
+      Class QR will appear after this lesson gets its permanent link.
+    </span>
+    <div class="mode-switch" id="modeSwitch" hidden aria-label="Choose entry lens">
+      <button type="button" data-mode="visual" aria-pressed="false">Visual lens</button>
+      <button type="button" data-mode="written" aria-pressed="false">Written lens</button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="entry" id="entry">
+      <div class="entry-inner">
+        <h1 class="thesis">Design <span class="equals">=</span> visual communication <span class="equals">=</span> textual communication.</h1>
+        <p class="entry-copy">Both begin with elements. Both arrange those elements with principles. Choose the doorway that feels most familiar—you will learn through both.</p>
+        <p class="path-label">Where would you like to begin?</p>
+        <div class="path-grid">
+          <button class="path-card" type="button" data-enter="visual">
+            <span class="choice-kicker">Begin with seeing</span>
+            <div class="visual-composition" aria-hidden="true"><span class="circle"></span><span class="square"></span><span class="line"></span><span class="line two"></span></div>
+            <h2>I’m interested in visual communication</h2>
+            <p>Enter through line, color, shape and composition. Meet their writing twins inside each lesson.</p>
+            <svg class="coach-peek" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><circle cx="40" cy="40" r="30"/><path d="M22 34c5-6 11-9 18-9s13 3 18 9c-5 7-11 10-18 10s-13-3-18-10Z"/><circle cx="40" cy="34" r="5" fill="currentColor"/><path d="M28 55c7 4 17 4 24 0"/></svg>
+          </button>
+          <button class="path-card" type="button" data-enter="written">
+            <span class="choice-kicker">Begin with language</span>
+            <div class="text-composition" aria-hidden="true"><span class="big">Every sentence is a <span class="mark">line.</span></span><span class="small">Word choice gives it color; punctuation gives it balance.</span></div>
+            <h2>I’m interested in written communication</h2>
+            <p>Enter through sentences, diction and paragraphs. Meet their visual twins inside each lesson.</p>
+            <svg class="coach-peek" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 16h33l9 9v39H20z"/><path d="M53 16v10h9M28 35h26M28 44h22M28 53h17"/><path d="m17 60 9-2-7-7-2 9Z" fill="currentColor"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="hub" id="hub" hidden>
+      <div class="hub-hero">
+        <div>
+          <div class="visual-only">
+            <h1>See the pieces.<br>Shape the message.</h1>
+            <p class="hub-lede">Begin with what the eye notices. Every visual idea opens into its written partner.</p>
+          </div>
+          <div class="written-only">
+            <h1>Words are designed,<br>not merely written.</h1>
+            <p class="hub-lede">A sentence carries direction. Diction sets a mood. Paragraphs make meaning by gathering—and separating—ideas.</p>
+          </div>
+        </div>
+        <div class="coach-card visual-only">
+          <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><circle cx="40" cy="40" r="30"/><path d="M22 34c5-6 11-9 18-9s13 3 18 9c-5 7-11 10-18 10s-13-3-18-10Z"/><circle cx="40" cy="34" r="5" fill="currentColor"/><path d="M28 55c7 4 17 4 24 0"/></svg>
+          <div><strong>Meet Iris, your visual coach.</strong><span>She asks: where does your eye go first, and why?</span></div>
+        </div>
+        <div class="coach-card written-only">
+          <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 16h33l9 9v39H20z"/><path d="M53 16v10h9M28 35h26M28 44h22M28 53h17"/><path d="m17 60 9-2-7-7-2 9Z" fill="currentColor"/></svg>
+          <div><strong>Meet Reed, your writing coach.</strong><span>He asks: how is the reader’s attention being guided?</span></div>
+        </div>
+      </div>
+      <div class="sequence-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <span>Recommended route: learn the <strong>7 elements</strong> first, then use the <strong>8 principles</strong> to arrange them. You may open any available lesson.</span>
+      </div>
+      <div id="hubSections"></div>
+    </section>
+
+    <section class="lesson" id="lesson" hidden aria-live="polite">
+      <div class="lesson-nav">
+        <button class="back-btn" id="backBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>All pairings</button>
+        <span class="lesson-count" id="lessonCount"></span>
+      </div>
+      <div id="lessonContent"></div>
+    </section>
+  </main>
+  <div class="notice" id="notice" role="status"></div>
+
+  <script>
+    (function () {
+      "use strict";
+      var lessons = [
+        {n:1,group:"Elements",visual:"Line",text:"Sentence",kind:"line",
+          visualLead:"A line guides the eye. Direction, weight and movement can make it hurry, wander or stop.",
+          textLead:"A sentence guides a reader through an idea. Length and structure control pace and direction.",
+          visualVocab:[["Straight","Direct and controlled; the eye travels without a detour.",'<span class="demo-line thin"></span>'],["Curved","Soft and changing; the eye follows a gentle turn.",'<span class="demo-line curved"></span>'],["Zigzag","Sharp changes create energy, tension or surprise.",'<span class="mini-zigzag">／＼／＼</span>']],
+          textVocab:[["Simple","One complete idea moves in a clear direction.",'<span class="demo-sentence short">We began.</span>'],["Compound","Two complete ideas travel side by side.",'<span class="demo-sentence">We began, and they followed.</span>'],["Complex","A main idea changes direction through a dependent clause.",'<span class="demo-sentence long">Although it rained, we continued.</span>']],
+          lab:[["Stop","━━","Stop.","Both end quickly and firmly."],["Flow","〰〰","The road curved past the market and into the fading light.","Both carry the eye forward gently."],["Turn","／＼／","We agreed—then everything changed.","Both interrupt the expected direction."]],game:"lineMatch"},
+        {n:2,group:"Elements",visual:"Color",text:"Diction",kind:"color",
+          visualLead:"Color changes mood before we name what an image shows. Temperature and saturation carry feeling.",
+          textLead:"Diction means word choice. Connotation gives language its emotional color.",
+          visualVocab:[["Warm","Reds, oranges and yellows often feel energetic or welcoming.",'<span class="swatch warm"></span>'],["Cool","Blues and blue-greens often feel calm, distant or controlled.",'<span class="swatch cool"></span>'],["Muted","Low saturation feels restrained, soft or serious.",'<span class="swatch muted"></span>']],
+          textVocab:[["Warm diction","Glowing, welcome and lively create emotional warmth.",'<span class="word-chip warm">glowing</span>'],["Cool diction","Crisp, still and distant create emotional coolness.",'<span class="word-chip cool">distant</span>'],["Muted diction","Quiet words reduce intensity.",'<span class="word-chip muted">subdued</span>']],
+          lab:[["Warm","#d76537","The room glowed with lively conversation.","Warm color and warm words feel close and active."],["Cool","#387e9c","The room held a crisp, distant silence.","Cool color and cool words create distance."],["Muted","#87958b","The room settled into subdued conversation.","Less saturation and quieter diction lower intensity."]],game:"repaint"},
+        {n:3,group:"Elements",visual:"Shape",text:"Text shapes",kind:"shape",
+          visualLead:"Shapes create boundaries and recognizable structures. Their silhouette helps us predict how to read them.",
+          textLead:"Whole texts also have shapes: information can narrow, widen, leave and return.",
+          visualVocab:[["Triangle","A wide base and narrow point create direction and stability.",'<span class="shape-demo triangle"></span>'],["Hourglass","Wide ends meet at a narrow turning point.",'<span class="shape-demo hourglass">◆</span>'],["Circle","A continuous edge returns to where it began.",'<span class="shape-demo circle"></span>']],
+          textVocab:[["Inverted pyramid","News begins with the most important facts, then narrows into detail.",'<span class="text-shape pyramid">▰ ▬ ━</span>'],["Narrative arc","A story builds toward a turning point, then resolves.",'<span class="text-shape">rise → turn → resolve</span>'],["Circular essay","The ending returns to an image or idea from the opening.",'<span class="text-shape">A → B → A</span>']],
+          lab:[["News","▼","Who, what, where first; details follow.","The text narrows from essential facts to supporting detail."],["Narrative","◇","A student misses a bus, adapts, and arrives changed.","The middle turning point gives the hourglass its waist."],["Circular","○","It opens at the river and returns there at the end.","The ending closes the same loop the opening began."]],game:"shapeSort"},
+        {n:4,group:"Elements",visual:"Texture",text:"Sound & rhythm",kind:"texture",
+          visualLead:"Texture makes a surface feel rough, smooth, heavy or light—even when we only see it.",
+          textLead:"Sound and rhythm give language texture. Consonants can scrape; vowels can flow.",
+          visualVocab:[["Rough","Irregular marks make a surface feel coarse or resistant.",'<span class="texture-demo rough"></span>'],["Smooth","Even surfaces and gentle transitions feel calm and easy.",'<span class="texture-demo smooth"></span>'],["Grain","Small repeated marks add visible material.",'<span class="texture-demo grain"></span>']],
+          textVocab:[["Alliteration","Repeated opening sounds create a noticeable verbal surface.",'<span class="demo-sentence">silver streams slide</span>'],["Harsh consonants","K, t and cr sounds can feel clipped or rough.",'<span class="demo-sentence">cracked, cut, struck</span>'],["Flowing rhythm","Long vowels and connected phrases feel smooth.",'<span class="demo-sentence">low waves roll away</span>']],
+          lab:[["Rough","▒▓▒","Cracked carts clattered.","Hard consonants behave like a rough surface."],["Smooth","━━━━","Low waves rolled away.","Long sounds and even rhythm reduce friction."],["Grainy","░░░","Soft rain ticked, tapped, whispered.","Tiny repeated sounds add fine texture."]],game:"feelText"},
+        {n:5,group:"Elements",visual:"Form",text:"Subtext",kind:"form",
+          visualLead:"Form adds depth. Light, shadow and viewpoint reveal that an object has more than a surface.",
+          textLead:"Subtext is meaning below the literal words. Context reveals what a speaker does not say directly.",
+          visualVocab:[["Volume","Shading makes a flat shape feel solid.",'<span class="form-demo sphere"></span>'],["Light","Highlights show which surface faces the source.",'<span class="form-demo lit"></span>'],["Shadow","A shadow suggests depth beyond the visible edge.",'<span class="form-demo shadow"></span>']],
+          textVocab:[["Literal meaning","The exact surface meaning of the words.",'<span class="demo-sentence">It is late.</span>'],["Implied meaning","A meaning suggested by context, not directly stated.",'<span class="demo-sentence">It is late. → Please leave.</span>'],["Tone","The attitude that shapes how the words are understood.",'<span class="demo-sentence">“Fine.”</span>']],
+          lab:[["Flat","□","“Nice work.”","Without context, only the surface is visible."],["Depth","◐","“Nice work,” she said, looking at the broken chair.","Context adds a second meaning: criticism."],["Shadow","◒","“We should talk later.”","The unsaid concern casts a shadow beneath polite words."]],game:"iceberg"},
+        {n:6,group:"Elements",visual:"Space",text:"Silence",kind:"space",
+          visualLead:"Space gives elements room, separates groups and lets the eye rest.",
+          textLead:"Silence appears as pauses, paragraph breaks and deliberate omission. It gives meaning room.",
+          visualVocab:[["Positive space","The area occupied by the main subject.",'<span class="space-demo positive">■</span>'],["Negative space","The open area around and between subjects.",'<span class="space-demo negative">■　　　　■</span>'],["Margin","A quiet boundary protects content from the edge.",'<span class="space-demo margin">▣</span>']],
+          textVocab:[["Pause","Punctuation creates a small silence inside a sentence.",'<span class="demo-sentence">Wait… listen.</span>'],["Paragraph break","A larger silence marks a turn in idea, time or speaker.",'<span class="paragraph-demo break"><span></span><span></span><span></span></span>'],["Omission","Leaving something unsaid can invite inference.",'<span class="demo-sentence">She read the message. Then—nothing.</span>']],
+          lab:[["Crowded","■■■■","We arrived we sat we spoke we left.","No open space or pauses make both forms hard to enter."],["Breathing","■　■　■","We arrived. We sat. Then we spoke.","Small gaps and sentence stops create usable rhythm."],["Quiet","■　　　　■","She asked.\n\nNo one answered.","A large gap makes silence meaningful."]],game:"pause"},
+        {n:7,group:"Elements",visual:"Typography",text:"Emphasis & voice",kind:"typography",
+          visualLead:"Typefaces have posture and personality. Size, weight and spacing influence how words sound in the mind.",
+          textLead:"Emphasis and voice reveal who seems to speak—and which words deserve attention.",
+          visualVocab:[["Serif","Small finishing strokes often feel established or formal.",'<span class="type-demo serif">Aa</span>'],["Rounded","Soft corners often feel friendly or playful.",'<span class="type-demo rounded">Aa</span>'],["Bold","Heavy weight creates strong emphasis.",'<span class="type-demo bold">Aa</span>']],
+          textVocab:[["Register","Language can be formal, neutral or casual for different situations.",'<span class="demo-sentence">I am writing to request…</span>'],["Stress","Emphasizing one word changes the sentence's focus.",'<span class="demo-sentence">I said <b>today</b>.</span>'],["Voice","Patterns of word choice and rhythm create a recognizable speaker.",'<span class="demo-sentence">Guess what happened!</span>']],
+          lab:[["Formal","Aa","Please submit the document by noon.","A formal serif posture fits an official register."],["Playful","Aa","Come see what we made!","Rounded forms fit an inviting voice."],["Forceful","AA","ACT NOW.","Heavy weight and short wording intensify emphasis."]],game:"fontVoice"},
+        {n:8,group:"Principles",visual:"Contrast",text:"Antithesis",kind:"contrast",
+          visualLead:"Contrast makes difference visible: light against dark, large beside small, still beside active.",
+          textLead:"Antithesis places opposing ideas in parallel form so their difference becomes clear.",
+          visualVocab:[["Value contrast","Light and dark separate strongly.",'<span class="contrast-demo value"><i></i><i></i></span>'],["Scale contrast","A large form beside a small one creates emphasis.",'<span class="contrast-demo scale"><i></i><i></i></span>'],["Low contrast","Similar forms feel quiet and less distinct.",'<span class="contrast-demo low"><i></i><i></i></span>']],
+          textVocab:[["Antithesis","Opposing ideas appear in balanced grammatical form.",'<span class="demo-sentence">Many are called; few are chosen.</span>'],["Juxtaposition","Two unlike images or ideas sit beside each other.",'<span class="demo-sentence">A wedding beside a storm.</span>'],["Parallel form","Matching grammar makes the opposition easier to see.",'<span class="demo-sentence">To err is human; to forgive, divine.</span>']],
+          lab:[["High","◼ □","We build bridges, not walls.","Strong opposites in matching forms create a sharp edge."],["Scale","● ·","One voice whispered; a thousand answered.","Large numerical difference creates scale contrast."],["Low","◻ ▫","The room was calm and quiet.","Related words create harmony rather than opposition."]],game:"opposites"},
+        {n:9,group:"Principles",visual:"Hierarchy",text:"Information architecture",kind:"hierarchy",
+          visualLead:"Hierarchy tells the eye what to notice first, second and third.",
+          textLead:"Information architecture orders ideas so readers can find the point, key detail and background.",
+          visualVocab:[["Dominant","The strongest element attracts attention first.",'<span class="hier-demo big">FIRST</span>'],["Secondary","A supporting element attracts attention next.",'<span class="hier-demo mid">Second</span>'],["Tertiary","Small detail rewards closer reading.",'<span class="hier-demo small">context and detail</span>']],
+          textVocab:[["Headline","Names the main point quickly.",'<span class="demo-sentence short">Library reopens</span>'],["Lead","Gives the most important supporting information.",'<span class="demo-sentence">Doors open Monday after repairs.</span>'],["Background","Adds context after the reader knows the point.",'<span class="demo-sentence long">The building closed in June following flood damage.</span>']],
+          lab:[["Clear","1  2  3","Headline → key detail → background","Visible levels give the reader a reliable path."],["Flat","2  2  2","Every fact has equal weight.","The reader must decide what matters without help."],["Reversed","3  2  1","Background → detail → headline","Hiding the point creates delay or confusion."]],game:"stack"},
+        {n:10,group:"Principles",visual:"Alignment",text:"Parallelism",kind:"alignment",
+          visualLead:"Alignment creates invisible lines that make separate elements feel organized.",
+          textLead:"Parallelism aligns grammar. Items in a series feel connected when they share the same form.",
+          visualVocab:[["Edge alignment","Elements share a left, right, top or bottom edge.",'<span class="align-demo edge"><i></i><i></i><i></i></span>'],["Center alignment","Elements share a central axis.",'<span class="align-demo center"><i></i><i></i><i></i></span>'],["Misalignment","One element breaks the shared line and attracts attention.",'<span class="align-demo crooked"><i></i><i></i><i></i></span>']],
+          textVocab:[["Parallel verbs","List items use the same verb form.",'<span class="demo-sentence">plan, test, revise</span>'],["Parallel clauses","Clauses repeat a grammatical pattern.",'<span class="demo-sentence">We came; we saw; we learned.</span>'],["Faulty parallelism","One item changes form and feels crooked.",'<span class="demo-sentence">reading, writing, and to speak</span>']],
+          lab:[["Aligned","▰\n▰\n▰","to read, to write, to speak","Shared visual edges match shared grammatical forms."],["Crooked","▰\n  ▰\n▰","reading, writing, and to speak","One changed form breaks the pattern."],["Repaired","▰\n▰\n▰","reading, writing, and speaking","The correction restores both rhythm and expectation."]],game:"shelf"},
+        {n:11,group:"Principles",visual:"Balance",text:"Punctuation",kind:"balance",
+          visualLead:"Balance distributes visual weight. Symmetry feels stable; asymmetry feels dynamic.",
+          textLead:"Punctuation distributes the weight of clauses. It separates, balances or interrupts ideas.",
+          visualVocab:[["Symmetrical","Equal forms on either side feel formal and steady.",'<span class="balance-demo sym"><i></i><i></i></span>'],["Asymmetrical","Unequal forms find equilibrium through contrast.",'<span class="balance-demo asym"><i></i><i></i></span>'],["Radial","Forms balance around a central point.",'<span class="punct-demo">✣</span>']],
+          textVocab:[["Semicolon","Balances two complete, closely related clauses.",'<span class="punct-demo">;</span>'],["Em dash","Interrupts the line and throws emphasis to one side.",'<span class="punct-demo">—</span>'],["Period","Separates ideas into independent units with a clean stop.",'<span class="punct-demo">.</span>']],
+          lab:[["Level","■ ━ ■","The room grew quiet; the speaker began.","The semicolon holds equal complete clauses in balance."],["Tilt","■■ ━ ▪","The plan looked simple—but one detail changed everything.","The em dash makes a dramatic asymmetrical shift."],["Separate","■   ■","The room grew quiet. The speaker began.","The period gives each idea its own stable space."]],game:"scales"},
+        {n:12,group:"Principles",visual:"Proximity",text:"Paragraphing",kind:"proximity",
+          visualLead:"Items placed near each other appear related. Distance marks where one group ends and another begins.",
+          textLead:"Related sentences share a paragraph. A break creates meaningful distance between ideas.",
+          visualVocab:[["Near","Small distance says: these belong together.",'<span class="near-demo"><i></i><i></i></span>'],["Far","Large distance says: these are separate groups.",'<span class="far-demo"><i></i><i></i></span>'],["Group","Consistent spacing makes several items one unit.",'<span class="near-demo"><i></i><i></i><i></i></span>']],
+          textVocab:[["Paragraph","Gathers sentences that develop one controlling idea.",'<span class="paragraph-demo"><span></span><span></span><span></span></span>'],["Break","Signals a new idea, time, speaker or focus.",'<span class="paragraph-demo break"><span></span><span></span><span></span></span>'],["Cohesion","Repeated key words and links hold nearby ideas together.",'<span class="demo-sentence">idea → this → therefore</span>']],
+          lab:[["Near","■ ■ ■","Rain filled the street. Buses moved slowly.","Close forms and related sentences read as one group."],["Far","■　　　■","Inside, the meeting began on time.","Distance and a paragraph break mark a new focus."],["Grouped","■■　■■","Street details together; meeting details together.","Two clusters make two relationships visible."]],game:"magnets"},
+        {n:13,group:"Principles",visual:"Repetition",text:"Anaphora / inclusio",kind:"repetition",
+          visualLead:"Repetition builds pattern, unity and recognition by bringing a form back.",
+          textLead:"Anaphora repeats an opening; inclusio repeats at the end to create a verbal bookend.",
+          visualVocab:[["Motif","A recognizable form returns across a design.",'<span class="repeat-demo">● ● ●</span>'],["Pattern","A planned sequence repeats predictably.",'<span class="repeat-demo">▲ ● ▲ ●</span>'],["Variation","A repeated form changes once to create interest.",'<span class="repeat-demo">■ ■ ◆ ■</span>']],
+          textVocab:[["Anaphora","Successive lines begin with the same words.",'<span class="demo-sentence">We will learn. We will build.</span>'],["Refrain","A line returns at intervals.",'<span class="demo-sentence">Still, we continue.</span>'],["Inclusio","The ending repeats the opening to frame the whole text.",'<span class="demo-sentence">Home … home.</span>']],
+          lab:[["Pattern","A A A","We will listen. We will learn. We will lead.","Repeated openings create rhythm and unity."],["Bookend","A … A","The river welcomed us … We returned to the river.","Inclusio closes the frame."],["Variation","A A B A","We came to learn, to test, to change—and to learn again.","One change prevents repetition from becoming flat."]],game:"bookend"},
+        {n:14,group:"Principles",visual:"Simplicity",text:"Concision",kind:"simplicity",
+          visualLead:"Simplicity removes anything that does not help the message. Fewer elements give important ones more force.",
+          textLead:"Concision removes words that do not add meaning. The idea becomes easier to see.",
+          visualVocab:[["Essential","Every remaining element has a job.",'<span class="simple-demo">●</span>'],["Restraint","Limited choices create focus.",'<span class="simple-demo">■　●</span>'],["Clutter","Competing elements make the main point hard to find.",'<span class="simple-demo clutter">◆●▲■✦</span>']],
+          textVocab:[["Redundancy","Two expressions repeat the same meaning.",'<span class="demo-sentence">future plans</span>'],["Filler","Words occupy space without advancing the idea.",'<span class="demo-sentence">It is important to note that…</span>'],["Concision","The shortest clear form keeps the full meaning.",'<span class="demo-sentence short">We decided.</span>']],
+          lab:[["Cluttered","◆●▲■✦","At this point in time, we are currently ready.","Extra objects and repeated words hide the point."],["Edited","● ■","We are now ready.","Removing redundancy restores focus."],["Essential","●","We are ready.","Nothing remains without a job."]],game:"surgeon"},
+        {n:15,group:"Principles",visual:"Function",text:"Genre & purpose",kind:"function",
+          visualLead:"A design succeeds when its form helps it do its job. A map, poster and warning need different choices.",
+          textLead:"Genre is a form shaped by purpose. A CV, story and essay arrange language differently because they do different jobs.",
+          visualVocab:[["Inform","Clear labels and structure help people understand.",'<span class="function-demo">i</span>'],["Persuade","Emphasis and appeal encourage a decision.",'<span class="function-demo">!</span>'],["Guide","Sequence and signals help people act.",'<span class="function-demo">→</span>']],
+          textVocab:[["CV line","Proves ability with a concise action and result.",'<span class="demo-sentence">Led a five-person team.</span>'],["Story opening","Creates curiosity, character or change.",'<span class="demo-sentence">The letter arrived at dawn.</span>'],["Essay claim","States a position the text will support.",'<span class="demo-sentence">Public parks strengthen cities.</span>']],
+          lab:[["Inform","i","Classes begin Monday at 9:00.","A notice prioritizes exact usable facts."],["Engage","?","At dawn, the empty classroom light switched on.","A story delays explanation to create curiosity."],["Persuade","!","Choose the safer route.","A call to action makes the desired response clear."]],game:"purpose"}
+      ];
+
+      var body=document.body,entry=document.getElementById("entry"),hub=document.getElementById("hub"),lesson=document.getElementById("lesson"),modeSwitch=document.getElementById("modeSwitch"),hubSections=document.getElementById("hubSections"),lessonContent=document.getElementById("lessonContent"),lessonCount=document.getElementById("lessonCount"),notice=document.getElementById("notice"),currentLesson=null,noticeTimer;
+
+      function iconFor(kind){var p={line:'<path d="M4 19 20 5"/><path d="M4 8h7M13 16h7"/>',color:'<path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 1.2-2-.7-.9 0-2 1.2-2H17a4 4 0 0 0 4-4c0-5.5-4-10-9-10Z"/>',shape:'<path d="M4 19 12 4l8 15Z"/>',texture:'<path d="M4 7h16M4 12h11M4 17h16"/>',form:'<circle cx="12" cy="12" r="8"/><path d="M7 7c4 1 7 4 9 9"/>',space:'<rect x="4" y="4" width="5" height="5"/><rect x="15" y="15" width="5" height="5"/>',typography:'<path d="M5 5h14M12 5v14M8 19h8"/>',contrast:'<path d="M12 3a9 9 0 1 0 0 18Z"/>',hierarchy:'<path d="M4 5h16M6 11h12M9 17h6"/>',alignment:'<path d="M5 4v16M5 7h14M5 12h10M5 17h12"/>',balance:'<path d="M12 3v18M5 7h14M7 7l-4 8h8L7 7ZM17 7l-4 8h8l-4-8Z"/>',proximity:'<rect x="3" y="5" width="6" height="6"/><rect x="11" y="5" width="6" height="6"/><rect x="16" y="15" width="5" height="5"/>',repetition:'<circle cx="6" cy="12" r="3"/><circle cx="12" cy="12" r="3"/><circle cx="18" cy="12" r="3"/>',simplicity:'<circle cx="12" cy="12" r="5"/>',function:'<path d="m5 12 4 4L19 6"/>'};return '<svg class="pair-symbol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">'+p[kind]+'</svg>';}
+      function setMode(mode){body.setAttribute("data-mode",mode);Array.prototype.forEach.call(modeSwitch.querySelectorAll("button"),function(b){b.setAttribute("aria-pressed",b.getAttribute("data-mode")===mode?"true":"false");});if(currentLesson)renderLesson(currentLesson);}
+      function enterMode(mode){setMode(mode);entry.hidden=true;lesson.hidden=true;hub.hidden=false;modeSwitch.hidden=false;window.scrollTo(0,0);}
+      function renderHub(){hubSections.innerHTML="";["Elements","Principles"].forEach(function(group){var list=lessons.filter(function(l){return l.group===group;}),section=document.createElement("section");section.className="hub-section";section.innerHTML='<div class="section-cap"><h2>'+group+'</h2><span>'+(group==="Elements"?"the materials of a message":"how the materials are arranged")+'</span></div><div class="pair-grid"></div>';var grid=section.querySelector(".pair-grid");list.forEach(function(item){var card=document.createElement("button");card.type="button";card.className="pair-card available";card.setAttribute("data-number",item.n);card.innerHTML='<span class="pair-number">'+String(item.n).padStart(2,"0")+'</span>'+iconFor(item.kind)+'<span><span class="pair-name"><span class="visual-name">'+item.visual+'</span><span class="pair-arrow">→</span><span class="text-name">'+item.text+'</span></span><span class="pair-status">Play paired lesson</span></span>';card.addEventListener("click",function(){openLesson(item);});grid.appendChild(card);});hubSections.appendChild(section);});}
+      function domainLabel(type){var svg=type==="Visual"?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16M4 10h16M4 15h10M4 20h13"/></svg>';return '<div class="domain-label">'+svg+type+' communication</div>';}
+      function vocabHTML(items){return '<div class="vocab-stack">'+items.map(function(v){return '<button type="button" class="vocab-card" aria-expanded="false"><span class="vocab-face"><span class="vocab-term">'+v[0]+'</span><span class="vocab-demo">'+v[2]+'</span></span><span class="vocab-reveal">'+v[1]+'</span></button>';}).join("")+'</div><p class="tap-hint">Tap each term to reveal its meaning.</p>';}
+      function framingText(){return body.getAttribute("data-mode")==="visual"?"You entered through seeing. Notice the visual effect first; then use language to name it and transfer it.":"You entered through writing. Feel the language effect first; then use the visual arrangement to make its structure visible.";}
+      function labHTML(item){return '<div class="lab-controls" role="group" aria-label="Change the paired example">'+item.lab.map(function(o,i){return '<button class="choice-btn lab-option" data-index="'+i+'" aria-pressed="'+(i===0?'true':'false')+'">'+o[0]+'</button>';}).join("")+'</div><div class="cause-effect"><div class="effect-card"><div><h3>Visual design</h3><div class="generic-visual">'+item.lab[0][1].replace(/\n/g,"<br>")+'</div></div></div><div class="effect-arrow">'+arrowIcon()+'</div><div class="effect-card"><div><h3>Written design</h3><p class="generic-text">'+item.lab[0][2].replace(/\n/g,"<br>")+'</p><p class="effect-note">'+item.lab[0][3]+'</p></div></div></div>';}
+      function arrowIcon(){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';}
+
+      function gameHTML(item){
+        if(item.game==="lineMatch")return '<div class="game-board"><p class="game-instruction">Tap a sentence, then tap the line that moves the same way. Match all four.</p><div class="match-grid" data-match-game><div class="match-bank sentences"><button data-key="straight">We walked directly to the gate.</button><button data-key="wave">The river wandered through the quiet fields.</button><button data-key="zigzag">We turned, stopped, doubled back, and ran.</button><button data-key="spiral">She returned to the question again and again, getting closer each time.</button></div><div class="match-bank lines"><button data-key="zigzag" aria-label="zigzag line">／＼／＼</button><button data-key="spiral" aria-label="spiral line">◎</button><button data-key="straight" aria-label="straight line">━━━━</button><button data-key="wave" aria-label="wavy line">～～～</button></div></div><p class="game-score" aria-live="polite">0 / 4 matched</p></div>';
+        if(item.game==="repaint")return '<div class="game-board repaint-game"><p class="game-instruction">Repaint the bland sentence. Pick a mood swatch and watch the words change color.</p><p class="paint-sentence">The <b data-paint="room">room</b> had <b data-paint="sound">sound</b>, and people <b data-paint="moved">moved</b>.</p><div class="paint-swatches"><button data-palette="warm">Warm & vivid</button><button data-palette="cool">Cold & still</button><button data-palette="muted">Muted & restrained</button></div><p class="game-score paint-note" aria-live="polite">Choose a palette.</p></div>';
+        if(item.game==="shapeSort")return '<div class="game-board"><p class="game-instruction">Shape sort: choose the text structure that belongs inside each silhouette.</p><div class="shape-round"><div class="big-shape">▼</div><div><button data-shape-answer="wrong">Circular essay</button><button data-shape-answer="right">News inverted pyramid</button><button data-shape-answer="wrong">Narrative hourglass</button></div></div><p class="game-score" aria-live="polite">Which text narrows from essential facts to details?</p></div>';
+        if(item.game==="feelText")return '<div class="game-board"><p class="game-instruction">Feel the text: sort each phrase by its sound. Tap a phrase, then choose rough or smooth.</p><div class="sort-words"><button data-texture="rough">cracked carts clattered</button><button data-texture="smooth">low waves rolled away</button><button data-texture="rough">cut, struck, snapped</button><button data-texture="smooth">silver streams slid slowly</button></div><div class="sort-bins"><button data-bin="rough">Rough bin</button><button data-bin="smooth">Smooth bin</button></div><p class="game-score" aria-live="polite">0 / 4 sorted</p></div>';
+        if(item.game==="iceberg")return '<div class="game-board iceberg-game"><p class="game-instruction">What’s underneath? Tap the polite surface sentence, then choose the hidden meaning that belongs below the waterline.</p><button class="iceberg-surface">“That is an interesting idea.”</button><div class="waterline">surface 〰〰〰〰〰〰 subtext</div><div class="hidden-meanings" hidden><button data-subtext="wrong">I already understand every detail.</button><button data-subtext="right">I am not convinced yet.</button><button data-subtext="wrong">Please repeat the exact same words.</button></div><p class="game-score" aria-live="polite">Tap the surface first.</p></div>';
+        if(item.game==="pause")return '<div class="game-board pause-game"><p class="game-instruction">The pause game: tap between sentences to add only the breaks clarity needs.</p><div class="dense-copy"><span>We entered the room.</span><button class="pause-slot" aria-label="Add pause">＋</button><span>The lights were off.</span><button class="pause-slot" aria-label="Add pause">＋</button><span>Someone whispered my name.</span><button class="pause-slot" aria-label="Add pause">＋</button><span>I stopped.</span></div><p class="game-score" aria-live="polite">0 pauses · Can you create one powerful turn?</p></div>';
+        if(item.game==="fontVoice")return '<div class="game-board"><p class="game-instruction">Say it like the font: match this typographic voice to the speaker.</p><p class="voice-sample formal-font">Please submit the completed form by noon.</p><div class="voice-choices"><button data-voice="wrong">An excited six-year-old</button><button data-voice="right">A formal administrator</button><button data-voice="wrong">A stadium announcer</button></div><p class="game-score" aria-live="polite">Listen with your eyes.</p></div>';
+        if(item.game==="opposites")return '<div class="game-board"><p class="game-instruction">Opposites attract: complete the antithesis with the strongest contrasting half.</p><blockquote>“It was the best of times…”</blockquote><div class="antithesis-options"><button data-opposite="low">and the most exciting of times.</button><button data-opposite="high">it was the worst of times.</button><button data-opposite="low">and everyone remembers those times.</button></div><p class="game-score" aria-live="polite">Choose the highest-contrast parallel ending.</p></div>';
+        if(item.game==="stack")return '<div class="game-board stack-game"><p class="game-instruction">Stack the page: use the arrows to put the most important block first.</p><div class="stack-list"><div data-rank="3"><span>Background: The building closed after June flood damage.</span><button data-up>↑</button></div><div data-rank="1"><span>Headline: Library reopens Monday</span><button data-up>↑</button></div><div data-rank="2"><span>Key detail: Doors open at 9:00.</span><button data-up>↑</button></div></div><button class="solid-btn check-stack">Check the stack</button><p class="game-score" aria-live="polite">Build a 1 → 2 → 3 reading path.</p></div>';
+        if(item.game==="shelf")return '<div class="game-board shelf-game"><p class="game-instruction">Fix the crooked shelf: choose the repair that aligns all three list items.</p><ul><li>reading reports</li><li>writing summaries</li><li class="crooked">to present findings</li></ul><div><button data-shelf="wrong">presentation of findings</button><button data-shelf="right">presenting findings</button><button data-shelf="wrong">to be presenting findings</button></div><p class="game-score" aria-live="polite">Which form straightens the grammar?</p></div>';
+        if(item.game==="scales")return '<div class="game-board scales-game"><p class="game-instruction">Balance the scales: place punctuation between two complete clauses.</p><div class="seesaw"><span>The rain stopped</span><b>?</b><span>the match began</span></div><div><button data-punct-game=",">comma</button><button data-punct-game=";">semicolon</button><button data-punct-game="—">em dash</button></div><p class="game-score" aria-live="polite">Find the level balance.</p></div>';
+        if(item.game==="magnets")return '<div class="game-board magnet-game"><p class="game-instruction">Group the magnets: tap each sentence to send it to the correct paragraph.</p><div class="magnet-pool"><button data-group="street">Rain filled the street.</button><button data-group="meeting">The chair opened the meeting.</button><button data-group="street">Buses moved slowly.</button><button data-group="meeting">Members approved the plan.</button></div><div class="magnet-bins"><button data-target="street">Street paragraph</button><button data-target="meeting">Meeting paragraph</button></div><p class="game-score" aria-live="polite">0 / 4 grouped</p></div>';
+        if(item.game==="bookend")return '<div class="game-board"><p class="game-instruction">Bookend it: choose the closing line that repeats the opening image and closes the frame.</p><p class="bookend-copy"><strong>Opening:</strong> The river knew our names.<br><br>We left, learned, and changed…</p><div><button data-bookend="wrong">The city was larger than we expected.</button><button data-bookend="right">At last, the river called us home.</button><button data-bookend="wrong">This experience taught us many things.</button></div><p class="game-score" aria-live="polite">Which ending echoes the opening?</p></div>';
+        if(item.game==="surgeon")return '<div class="game-board surgeon-game"><p class="game-instruction">Word surgeon: tap unnecessary words. Keep the meaning alive with the fewest words.</p><p class="surgery-line"><button data-cut>At this point in time,</button> we are <button data-cut>currently</button> ready <button data-cut>and prepared</button>.</p><button class="solid-btn check-surgery">Check the patient</button><p class="game-score" aria-live="polite">9 words remain.</p></div>';
+        return '<div class="game-board purpose-game"><p class="game-instruction">What’s it for? Match the text snippet to the job it was designed to do.</p><blockquote>“Led a five-person team and delivered the project two weeks early.”</blockquote><div><button data-purpose="wrong">Open a mystery story</button><button data-purpose="right">Prove achievement in a CV</button><button data-purpose="wrong">State an essay thesis</button></div><p class="game-score" aria-live="polite">Choose its function.</p></div>';
+      }
+
+      function renderLesson(item){lessonCount.textContent=String(item.n).padStart(2,"0")+" / 15 · "+item.group;lessonContent.innerHTML='<div class="lesson-mast"><div class="mast-side mast-visual"><small>Visual element or principle</small><h1>'+item.visual+'</h1><p>'+item.visualLead+'</p></div><div class="equals-mark">=</div><div class="mast-side mast-text"><small>Textual equivalent</small><h1>'+item.text+'</h1><p>'+item.textLead+'</p></div></div><p class="path-framing">'+framingText()+'</p><section class="phase"><div class="phase-head"><span class="phase-no">01</span><div><h2>Notice and name</h2><p>Build precise vocabulary through examples. Tap each card to uncover the meaning.</p></div></div><div class="paired-grid"><div class="domain-panel visual">'+domainLabel("Visual")+'<h3>'+item.visual+' vocabulary</h3>'+vocabHTML(item.visualVocab)+'</div><div class="domain-panel textual">'+domainLabel("Textual")+'<h3>'+item.text+' vocabulary</h3>'+vocabHTML(item.textVocab)+'</div></div></section><section class="phase"><div class="phase-head"><span class="phase-no">02</span><div><h2>Change it. Watch meaning move.</h2><p>Choose one option. Negotiate what changed and why the visual and written effects belong together.</p></div></div><div class="lab"><p class="lab-intro"><strong>Meaning lab:</strong> Name the shared effect before reading the explanation.</p>'+labHTML(item)+'</div></section><section class="phase"><div class="phase-head"><span class="phase-no">03</span><div><h2>Play the bridge</h2><p>Use words to read visual design and graphics to read written design—by doing, matching, sorting or transforming.</p></div></div>'+gameHTML(item)+'</section><div class="lesson-footer"><div><strong>One design idea. Two mediums.</strong><br><span>Return to the hub when you are ready to connect another pair.</span></div><button type="button" class="solid-btn footer-back">Explore another pairing</button></div>';bindLessonInteractions(item);}
+
+      function bindLessonInteractions(item){Array.prototype.forEach.call(lessonContent.querySelectorAll(".vocab-card"),function(card){card.addEventListener("click",function(){card.setAttribute("aria-expanded",card.getAttribute("aria-expanded")==="true"?"false":"true");});});Array.prototype.forEach.call(lessonContent.querySelectorAll(".lab-option"),function(btn){btn.addEventListener("click",function(){Array.prototype.forEach.call(lessonContent.querySelectorAll(".lab-option"),function(b){b.setAttribute("aria-pressed","false");});btn.setAttribute("aria-pressed","true");var o=item.lab[Number(btn.getAttribute("data-index"))];lessonContent.querySelector(".generic-visual").innerHTML=o[1].replace(/\n/g,"<br>");lessonContent.querySelector(".generic-text").innerHTML=o[2].replace(/\n/g,"<br>");lessonContent.querySelector(".effect-note").textContent=o[3];});});lessonContent.querySelector(".footer-back").addEventListener("click",showHub);bindGame(item);}
+      function gameResult(el,msg,good){el.textContent=msg;el.classList.toggle("good",!!good);}
+      function bindGame(item){var board=lessonContent.querySelector(".game-board"),score=board.querySelector(".game-score");
+        if(item.game==="lineMatch"){var selected=null,done={},buttons=board.querySelectorAll("[data-key]");Array.prototype.forEach.call(buttons,function(b){b.addEventListener("click",function(){if(b.disabled)return;if(!selected){selected=b;b.classList.add("selected");gameResult(score,"Now choose its partner.",false);return;}if(selected.parentNode===b.parentNode){selected.classList.remove("selected");selected=b;b.classList.add("selected");return;}if(selected.getAttribute("data-key")===b.getAttribute("data-key")){done[b.getAttribute("data-key")]=true;selected.disabled=true;b.disabled=true;selected.classList.remove("selected");selected=null;gameResult(score,Object.keys(done).length+" / 4 matched",Object.keys(done).length===4);}else{selected.classList.remove("selected");selected=null;gameResult(score,"Not yet—compare the movement and try again.",false);}});});}
+        else if(item.game==="repaint"){var maps={warm:["glowing hall","laughter","danced","Warm words make the sentence vivid and close."],cool:["pale chamber","whispers","drifted","Cool words create stillness and distance."],muted:["quiet room","murmurs","shifted","Muted words lower the emotional saturation."]};Array.prototype.forEach.call(board.querySelectorAll("[data-palette]"),function(b){b.addEventListener("click",function(){var m=maps[b.getAttribute("data-palette")],bits=board.querySelectorAll("[data-paint]");bits[0].textContent=m[0];bits[1].textContent=m[1];bits[2].textContent=m[2];board.setAttribute("data-palette",b.getAttribute("data-palette"));gameResult(score,m[3],true);});});}
+        else if(item.game==="feelText"){bindSort(board,score,"data-texture","data-bin",4);}
+        else if(item.game==="iceberg"){board.querySelector(".iceberg-surface").addEventListener("click",function(){board.querySelector(".hidden-meanings").hidden=false;gameResult(score,"Now read below the surface.",false);});bindRightWrong(board,score,"data-subtext","Yes—the polite sentence can hide doubt.");}
+        else if(item.game==="pause"){Array.prototype.forEach.call(board.querySelectorAll(".pause-slot"),function(b){b.addEventListener("click",function(){b.classList.toggle("active");b.textContent=b.classList.contains("active")?"¶":"＋";var n=board.querySelectorAll(".pause-slot.active").length;gameResult(score,n+" pause"+(n===1?"":"s")+(n===1?" · Strong: one break creates a clear turn.":" · Try for clarity with fewer breaks."),n===1);});});}
+        else if(item.game==="stack"){Array.prototype.forEach.call(board.querySelectorAll("[data-up]"),function(b){b.addEventListener("click",function(){var row=b.parentNode;if(row.previousElementSibling)row.parentNode.insertBefore(row,row.previousElementSibling);});});board.querySelector(".check-stack").addEventListener("click",function(){var rows=board.querySelectorAll(".stack-list>div"),ok=rows[0].getAttribute("data-rank")==="1"&&rows[1].getAttribute("data-rank")==="2";gameResult(score,ok?"Clear hierarchy: point, key detail, background.":"Not yet—put the main point where the eye begins.",ok);});}
+        else if(item.game==="magnets"){bindSort(board,score,"data-group","data-target",4);}
+        else if(item.game==="surgeon"){Array.prototype.forEach.call(board.querySelectorAll("[data-cut]"),function(b){b.addEventListener("click",function(){b.classList.toggle("cut");var left=9;Array.prototype.forEach.call(board.querySelectorAll("[data-cut].cut"),function(c){left-=c.textContent.trim().split(/\s+/).length;});gameResult(score,left+" words remain.",left===3);});});board.querySelector(".check-surgery").addEventListener("click",function(){var n=board.querySelectorAll("[data-cut].cut").length;gameResult(score,n===3?"Meaning preserved: “We are ready.” 3 words.":"The patient can be leaner. Remove all three unnecessary parts.",n===3);});}
+        else if(item.game==="scales"){Array.prototype.forEach.call(board.querySelectorAll("[data-punct-game]"),function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-punct-game");board.querySelector(".seesaw b").textContent=v;board.querySelector(".seesaw").setAttribute("data-state",v===","?"crash":v===";"?"level":"tilt");gameResult(score,v===";"?"Balanced: two complete, related clauses.":v===","?"Comma splice—crash! A comma cannot carry both clauses alone.":"Dramatic tilt: grammatical, but not symmetrical.",v===";");});});}
+        else if(item.game==="shapeSort"){bindRightWrong(board,score,"data-shape-answer","Correct—the inverted pyramid narrows from key facts to detail.");}
+        else if(item.game==="fontVoice"){bindRightWrong(board,score,"data-voice","Correct—the formal wording and serif posture speak with the same voice.");}
+        else if(item.game==="opposites"){Array.prototype.forEach.call(board.querySelectorAll("[data-opposite]"),function(b){b.addEventListener("click",function(){var ok=b.getAttribute("data-opposite")==="high";gameResult(score,ok?"High contrast: best / worst, same grammatical frame.":"Low contrast—look for a true opposite in parallel form.",ok);});});}
+        else if(item.game==="shelf"){bindRightWrong(board,score,"data-shelf","Straight shelf: reading, writing, presenting.",function(){board.querySelector(".crooked").textContent="presenting findings";board.querySelector(".crooked").classList.remove("crooked");});}
+        else if(item.game==="bookend"){bindRightWrong(board,score,"data-bookend","Bookended: river at the opening, river at the close.");}
+        else if(item.game==="purpose"){bindRightWrong(board,score,"data-purpose","Correct—the action plus measurable result is designed for a CV.");}
+      }
+      function bindRightWrong(board,score,attr,success,onSuccess){Array.prototype.forEach.call(board.querySelectorAll("["+attr+"]"),function(b){b.addEventListener("click",function(){var ok=b.getAttribute(attr)==="right";gameResult(score,ok?success:"Not this one—compare the form with the job.",ok);if(ok&&onSuccess)onSuccess();});});}
+      function bindSort(board,score,itemAttr,binAttr,total){var selected=null,count=0;Array.prototype.forEach.call(board.querySelectorAll("["+itemAttr+"]"),function(b){b.addEventListener("click",function(){if(b.disabled)return;if(selected)selected.classList.remove("selected");selected=b;b.classList.add("selected");gameResult(score,"Choose a destination.",false);});});Array.prototype.forEach.call(board.querySelectorAll("["+binAttr+"]"),function(bin){bin.addEventListener("click",function(){if(!selected){gameResult(score,"Choose a phrase first.",false);return;}if(selected.getAttribute(itemAttr)===bin.getAttribute(binAttr)){selected.disabled=true;selected.classList.remove("selected");selected=null;count++;gameResult(score,count+" / "+total+(count===total?" sorted—sound made texture visible.":" sorted"),count===total);}else{gameResult(score,"That sound resists that bin. Try the other texture.",false);}});});}
+      function openLesson(item){currentLesson=item;hub.hidden=true;lesson.hidden=false;renderLesson(item);window.scrollTo(0,0);}
+      function showHub(){currentLesson=null;lesson.hidden=true;hub.hidden=false;window.scrollTo(0,0);}
+      function showNotice(message){notice.textContent=message;notice.classList.add("show");clearTimeout(noticeTimer);noticeTimer=setTimeout(function(){notice.classList.remove("show");},2300);}
+      Array.prototype.forEach.call(document.querySelectorAll("[data-enter]"),function(btn){btn.addEventListener("click",function(){enterMode(btn.getAttribute("data-enter"));});});Array.prototype.forEach.call(modeSwitch.querySelectorAll("button"),function(btn){btn.addEventListener("click",function(){setMode(btn.getAttribute("data-mode"));});});document.getElementById("backBtn").addEventListener("click",showHub);renderHub();
+    })();
+
+  </script>
+</body>
+</html>
