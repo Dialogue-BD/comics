@@ -1,0 +1,15 @@
+{
+  "id": "definition-intro",
+  "concept": "intro",
+  "duration": 7.117125,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Graphic design. Graphic design combines graphical elements and design principles to communicate a message to an audience.",
+      "start": 0,
+      "end": 7.117125,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

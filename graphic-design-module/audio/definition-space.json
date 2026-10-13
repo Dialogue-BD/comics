@@ -1,0 +1,15 @@
+{
+  "id": "definition-space",
+  "concept": "space",
+  "duration": 7.304667,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Space. Space includes the areas occupied by elements and the empty areas within, around, or between them.",
+      "start": 0,
+      "end": 7.304667,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

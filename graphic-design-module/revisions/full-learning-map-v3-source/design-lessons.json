@@ -1,0 +1,1475 @@
+{
+  "line": {
+    "id": "line",
+    "title": "Line",
+    "hook": "A line can do a job before anyone reads a word.",
+    "goal": "Find how a line divides, connects, outlines, or guides.",
+    "types": [
+      {
+        "id": "horizontal",
+        "label": "Horizontal",
+        "input": "The line runs from left to right.",
+        "visual": "horizontal"
+      },
+      {
+        "id": "vertical",
+        "label": "Vertical",
+        "input": "The line runs from top to bottom.",
+        "visual": "vertical"
+      },
+      {
+        "id": "diagonal",
+        "label": "Diagonal",
+        "input": "The line slopes across the picture.",
+        "visual": "diagonal"
+      },
+      {
+        "id": "curved",
+        "label": "Curved",
+        "input": "The path bends instead of staying straight.",
+        "visual": "curved"
+      },
+      {
+        "id": "dashed",
+        "label": "Dashed",
+        "input": "Small gaps break the line into separate marks.",
+        "visual": "dashed"
+      },
+      {
+        "id": "implied",
+        "label": "Implied",
+        "input": "Separate dots suggest a path without a continuous stroke.",
+        "visual": "implied"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "weight",
+        "term": "Line weight",
+        "meaning": "How thick or thin a line is.",
+        "visual": "weight"
+      },
+      {
+        "id": "direction",
+        "term": "Direction",
+        "meaning": "The way a line runs.",
+        "visual": "diagonal"
+      },
+      {
+        "id": "contour",
+        "term": "Contour",
+        "meaning": "The line around the edge of a shape.",
+        "visual": "contour"
+      },
+      {
+        "id": "divider",
+        "term": "Divider",
+        "meaning": "A line that separates information.",
+        "visual": "divider"
+      },
+      {
+        "id": "border",
+        "term": "Border",
+        "meaning": "A line around the outside of a design.",
+        "visual": "border"
+      },
+      {
+        "id": "guide",
+        "term": "Guide",
+        "meaning": "A path that leads the eye.",
+        "visual": "curved"
+      }
+    ],
+    "lab": {
+      "label": "Change the line weight",
+      "low": "Thin",
+      "high": "Thick",
+      "default": 30,
+      "observation": "The path stays in the same place. Only its thickness changes."
+    },
+    "check": {
+      "question": "What does the horizontal rule do in this timetable?",
+      "choices": [
+        "It separates the two sessions.",
+        "It changes the starting time.",
+        "It adds a new room."
+      ],
+      "answer": 0,
+      "reason": "The rule separates the two sessions while the wording stays the same."
+    },
+    "extension": "A heavy line can compete with information. Choose a weight that supports the message, then check it at the final viewing size.",
+    "source_slides": [
+      3,
+      4,
+      5,
+      6
+    ]
+  },
+  "color": {
+    "id": "color",
+    "title": "Color",
+    "hook": "A color can identify a group or make one detail stand out.",
+    "goal": "Separate the color itself from its intensity and lightness.",
+    "types": [
+      {
+        "id": "hue",
+        "label": "Hue",
+        "input": "Orange, yellow, green, blue, purple: the color family changes.",
+        "visual": "hue"
+      },
+      {
+        "id": "saturation",
+        "label": "Saturation",
+        "input": "The same hue changes from muted to vivid.",
+        "visual": "saturation"
+      },
+      {
+        "id": "value",
+        "label": "Value / lightness",
+        "input": "The same hue changes from dark to light.",
+        "visual": "value"
+      },
+      {
+        "id": "monochromatic",
+        "label": "Monochromatic",
+        "input": "The colors share one hue but have different lightness.",
+        "visual": "monochromatic"
+      },
+      {
+        "id": "analogous",
+        "label": "Analogous",
+        "input": "The hues sit beside each other on this digital color wheel.",
+        "visual": "analogous"
+      },
+      {
+        "id": "complementary",
+        "label": "Complementary",
+        "input": "The two hues sit opposite each other on this digital wheel.",
+        "visual": "complementary"
+      },
+      {
+        "id": "triadic",
+        "label": "Triadic",
+        "input": "Three hues are evenly spaced around the digital wheel.",
+        "visual": "triadic"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "hue",
+        "term": "Hue",
+        "meaning": "The color family, such as orange, green, or blue.",
+        "visual": "hue"
+      },
+      {
+        "id": "saturation",
+        "term": "Saturation",
+        "meaning": "How vivid or muted a color appears.",
+        "visual": "saturation"
+      },
+      {
+        "id": "value",
+        "term": "Value",
+        "meaning": "How light or dark a color appears.",
+        "visual": "value"
+      },
+      {
+        "id": "tint",
+        "term": "Tint",
+        "meaning": "A color made lighter by adding white.",
+        "visual": "tint"
+      },
+      {
+        "id": "shade",
+        "term": "Shade",
+        "meaning": "A color made darker by adding black.",
+        "visual": "shade"
+      },
+      {
+        "id": "palette",
+        "term": "Palette",
+        "meaning": "The selected colors used together.",
+        "visual": "analogous"
+      }
+    ],
+    "lab": {
+      "label": "Change saturation",
+      "low": "Muted",
+      "high": "Vivid",
+      "default": 65,
+      "observation": "The hue and lightness stay fixed. The color becomes more or less vivid."
+    },
+    "check": {
+      "question": "Why can a color key help a reader use this club timetable?",
+      "choices": [
+        "The color and written labels identify different activities.",
+        "Every activity has changed its time.",
+        "Bright colors always mean the same thing everywhere."
+      ],
+      "answer": 0,
+      "reason": "The colors repeat beside the activity names. The written labels give a second cue, so color is not the only way to identify an activity."
+    },
+    "extension": "A palette does not guarantee readable text. Check light–dark difference separately. Meanings associated with colors depend on audience and context; ask rather than assume.",
+    "source_slides": [
+      7,
+      8
+    ]
+  },
+  "shape": {
+    "id": "shape",
+    "title": "Shape",
+    "hook": "A shape is a flat area with a boundary. It can be drawn, filled, or cut out.",
+    "goal": "Compare geometric and organic shapes without confusing shape with volume.",
+    "types": [
+      {
+        "id": "geometric",
+        "label": "Geometric",
+        "input": "Circles, squares, and triangles have regular geometric structures.",
+        "visual": "geometric"
+      },
+      {
+        "id": "organic",
+        "label": "Organic",
+        "input": "The irregular outlines resemble forms found in nature.",
+        "visual": "organic"
+      },
+      {
+        "id": "outline",
+        "label": "Outline",
+        "input": "A line describes the boundary; the middle is unfilled.",
+        "visual": "outline"
+      },
+      {
+        "id": "solid",
+        "label": "Solid",
+        "input": "The flat area inside the boundary is filled.",
+        "visual": "solid"
+      },
+      {
+        "id": "cutout",
+        "label": "Cut-out",
+        "input": "The empty shape is visible inside a filled area.",
+        "visual": "cutout"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "boundary",
+        "term": "Boundary",
+        "meaning": "The edge that separates a shape from its surroundings.",
+        "visual": "outline"
+      },
+      {
+        "id": "corner",
+        "term": "Corner",
+        "meaning": "A point where two edges meet.",
+        "visual": "corner"
+      },
+      {
+        "id": "geometric",
+        "term": "Geometric",
+        "meaning": "Built from regular geometry, such as a circle or square.",
+        "visual": "geometric"
+      },
+      {
+        "id": "organic",
+        "term": "Organic",
+        "meaning": "An irregular shape with a less rigid outline.",
+        "visual": "organic"
+      },
+      {
+        "id": "silhouette",
+        "term": "Silhouette",
+        "meaning": "The outer shape seen as one flat area.",
+        "visual": "solid"
+      },
+      {
+        "id": "cutout",
+        "term": "Cut-out",
+        "meaning": "An empty area removed from a filled shape.",
+        "visual": "cutout"
+      }
+    ],
+    "lab": {
+      "label": "Round the corners",
+      "low": "Sharp",
+      "high": "Round",
+      "default": 20,
+      "observation": "The outline changes, but the shape is still a flat area."
+    },
+    "check": {
+      "question": "Which feature makes these simple activity icons easy to tell apart?",
+      "choices": [
+        "Their different outlines.",
+        "Their hidden file names.",
+        "Their three-dimensional mass."
+      ],
+      "answer": 0,
+      "reason": "You can distinguish the circle, square, and triangle by their outlines. They are flat shapes."
+    },
+    "extension": "Shape associations are interpretations, not universal meanings. A curved shape may seem softer in one context, but the audience and the rest of the design matter.",
+    "source_slides": [
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "texture": {
+    "id": "texture",
+    "title": "Texture",
+    "hook": "A flat illustration can make a surface look rough, smooth, or woven.",
+    "goal": "Identify the visual surface and distinguish a texture from a physical touch.",
+    "types": [
+      {
+        "id": "wood",
+        "label": "Wood grain",
+        "input": "Irregular flowing lines suggest the grain of wood.",
+        "visual": "wood"
+      },
+      {
+        "id": "stone",
+        "label": "Rough stone",
+        "input": "Uneven marks suggest a rough, mottled surface.",
+        "visual": "stone"
+      },
+      {
+        "id": "woven",
+        "label": "Woven fabric",
+        "input": "Crossing threads form a regular weave.",
+        "visual": "woven"
+      },
+      {
+        "id": "smooth",
+        "label": "Smooth surface",
+        "input": "Few surface marks make this illustration look smooth.",
+        "visual": "smooth"
+      },
+      {
+        "id": "pattern",
+        "label": "Repeating pattern",
+        "input": "The same motif repeats in a regular arrangement.",
+        "visual": "pattern"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "grain",
+        "term": "Grain",
+        "meaning": "The lines and changes visible in a material such as wood.",
+        "visual": "wood"
+      },
+      {
+        "id": "rough",
+        "term": "Rough",
+        "meaning": "A surface that appears uneven.",
+        "visual": "stone"
+      },
+      {
+        "id": "smooth",
+        "term": "Smooth",
+        "meaning": "A surface that appears even, with few irregular marks.",
+        "visual": "smooth"
+      },
+      {
+        "id": "woven",
+        "term": "Woven",
+        "meaning": "Made from threads crossing over and under each other.",
+        "visual": "woven"
+      },
+      {
+        "id": "motif",
+        "term": "Motif",
+        "meaning": "One visual unit that repeats.",
+        "visual": "pattern"
+      },
+      {
+        "id": "implied",
+        "term": "Implied texture",
+        "meaning": "Texture suggested by an image; you cannot feel the illustrated surface through the screen.",
+        "visual": "wood"
+      }
+    ],
+    "lab": {
+      "label": "Change texture strength",
+      "low": "Subtle",
+      "high": "Strong",
+      "default": 45,
+      "observation": "The illustration keeps the same outline. Its surface marks become more noticeable."
+    },
+    "check": {
+      "question": "What should you check before placing small text over this textured invitation?",
+      "choices": [
+        "Whether the surface marks compete with the words.",
+        "Whether the screen feels like wood.",
+        "Whether texture changes the event date."
+      ],
+      "answer": 0,
+      "reason": "A strong texture can compete with small text. A quieter area behind the words can help readability."
+    },
+    "extension": "Texture may suggest a material or tone, but it is also visual detail. Keep its strength appropriate to the message and check small lettering against it.",
+    "source_slides": [
+      13,
+      14,
+      15
+    ]
+  },
+  "space": {
+    "id": "space",
+    "title": "Space",
+    "hook": "Space is occupied area and empty area. Empty space does not have to be white.",
+    "goal": "Use gaps to separate information and understand inside, outside, and between.",
+    "types": [
+      {
+        "id": "positive",
+        "label": "Positive space",
+        "input": "The filled shape occupies space.",
+        "visual": "positive"
+      },
+      {
+        "id": "negative",
+        "label": "Negative space",
+        "input": "The empty area around and inside the shape helps define it.",
+        "visual": "negative"
+      },
+      {
+        "id": "margin",
+        "label": "Margin",
+        "input": "The gap lies between the page edge and its content.",
+        "visual": "margin"
+      },
+      {
+        "id": "padding",
+        "label": "Padding",
+        "input": "The gap lies inside a panel, around its content.",
+        "visual": "padding"
+      },
+      {
+        "id": "gutter",
+        "label": "Gutter",
+        "input": "The gap separates two columns.",
+        "visual": "gutter"
+      },
+      {
+        "id": "overlap",
+        "label": "Overlap",
+        "input": "One shape partly covers another, suggesting a front and a back.",
+        "visual": "overlap"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "positive",
+        "term": "Positive space",
+        "meaning": "Area occupied by a visible element.",
+        "visual": "positive"
+      },
+      {
+        "id": "negative",
+        "term": "Negative space",
+        "meaning": "The empty area inside, around, or between elements.",
+        "visual": "negative"
+      },
+      {
+        "id": "margin",
+        "term": "Margin",
+        "meaning": "Space between the outer edge and content.",
+        "visual": "margin"
+      },
+      {
+        "id": "padding",
+        "term": "Padding",
+        "meaning": "Space inside a panel around its content.",
+        "visual": "padding"
+      },
+      {
+        "id": "gutter",
+        "term": "Gutter",
+        "meaning": "Space between columns.",
+        "visual": "gutter"
+      },
+      {
+        "id": "overlap",
+        "term": "Overlap",
+        "meaning": "One element covering part of another.",
+        "visual": "overlap"
+      }
+    ],
+    "lab": {
+      "label": "Change the gap around the heading",
+      "low": "Crowded",
+      "high": "Open",
+      "default": 65,
+      "observation": "The words stay the same. More or less empty area separates the heading from the details."
+    },
+    "check": {
+      "question": "What does the empty gap between these timetable columns help show?",
+      "choices": [
+        "That the columns are separate groups.",
+        "That the timetable has no content.",
+        "That all empty space must be white."
+      ],
+      "answer": 0,
+      "reason": "The gutter separates the columns. It contains the same background color as the page, but it is still empty space."
+    },
+    "extension": "Spacing affects grouping, emphasis, and comfort. Large gaps can separate related details too much; choose space in relation to the content.",
+    "source_slides": [
+      16,
+      17
+    ]
+  },
+  "form": {
+    "id": "form",
+    "title": "Form",
+    "hook": "Light and shadow can make a flat drawing suggest depth.",
+    "goal": "Distinguish a two-dimensional shape from an image suggesting three-dimensional volume.",
+    "types": [
+      {
+        "id": "flat",
+        "label": "Flat shape",
+        "input": "A uniform circle does not show a light side or a shaded side.",
+        "visual": "flat"
+      },
+      {
+        "id": "sphere",
+        "label": "Sphere",
+        "input": "Light and shadow suggest a rounded solid.",
+        "visual": "sphere"
+      },
+      {
+        "id": "cube",
+        "label": "Cube",
+        "input": "Visible faces and edges suggest width, height, and depth.",
+        "visual": "cube"
+      },
+      {
+        "id": "cylinder",
+        "label": "Cylinder",
+        "input": "Elliptical ends and a shaded side suggest a curved solid.",
+        "visual": "cylinder"
+      },
+      {
+        "id": "cone",
+        "label": "Cone",
+        "input": "A pointed top and a curved base suggest a tapered solid.",
+        "visual": "cone"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "highlight",
+        "term": "Highlight",
+        "meaning": "A lighter area on the surface.",
+        "visual": "highlight"
+      },
+      {
+        "id": "shadow",
+        "term": "Surface shadow",
+        "meaning": "A darker area on the surface.",
+        "visual": "shadow"
+      },
+      {
+        "id": "cast",
+        "term": "Cast shadow",
+        "meaning": "A shadow falling onto another surface.",
+        "visual": "cast"
+      },
+      {
+        "id": "volume",
+        "term": "Volume",
+        "meaning": "The three-dimensional extent of a form.",
+        "visual": "cube"
+      },
+      {
+        "id": "perspective",
+        "term": "Perspective",
+        "meaning": "A way of drawing that suggests depth and viewing position.",
+        "visual": "cube"
+      },
+      {
+        "id": "outline",
+        "term": "Outline",
+        "meaning": "The outer boundary can stay circular while the interior suggests depth.",
+        "visual": "sphere"
+      }
+    ],
+    "lab": {
+      "label": "Move the light source",
+      "low": "From the left",
+      "high": "From the right",
+      "default": 25,
+      "observation": "The outline stays circular. The highlight moves and the darker side changes."
+    },
+    "check": {
+      "question": "Which visible features suggest depth in this ball illustration?",
+      "choices": [
+        "The highlight and shaded side.",
+        "A changed circular outline.",
+        "A different event time."
+      ],
+      "answer": 0,
+      "reason": "The highlight and shaded side suggest volume within the same circular outline."
+    },
+    "extension": "These are depth cues in a flat image. A rendered illustration has no physical volume; lighting direction, cast shadows, overlap, and perspective should work coherently.",
+    "source_slides": [
+      18,
+      19
+    ]
+  },
+  "typography": {
+    "id": "typography",
+    "title": "Typography",
+    "hook": "The words can stay the same while their visual voice changes.",
+    "goal": "Identify letterform families and the spacing that makes text readable.",
+    "types": [
+      {
+        "id": "serif",
+        "label": "Serif",
+        "input": "Small finishing strokes appear on letters in this serif style.",
+        "visual": "serif"
+      },
+      {
+        "id": "sans",
+        "label": "Sans serif",
+        "input": "The letters have no serifs.",
+        "visual": "sans"
+      },
+      {
+        "id": "script",
+        "label": "Script-like",
+        "input": "Sloping, expressive strokes suggest handwriting.",
+        "visual": "script"
+      },
+      {
+        "id": "display",
+        "label": "Display",
+        "input": "A bold, distinctive style is used for a short headline.",
+        "visual": "display"
+      },
+      {
+        "id": "mono",
+        "label": "Monospaced",
+        "input": "Each character occupies the same horizontal advance.",
+        "visual": "mono"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "serif",
+        "term": "Serif",
+        "meaning": "A small finishing stroke on a letter.",
+        "visual": "serif-detail"
+      },
+      {
+        "id": "sans",
+        "term": "Sans serif",
+        "meaning": "A style without serifs.",
+        "visual": "sans"
+      },
+      {
+        "id": "kerning",
+        "term": "Kerning",
+        "meaning": "Adjusting the space between a particular pair of letters.",
+        "visual": "kerning"
+      },
+      {
+        "id": "tracking",
+        "term": "Tracking",
+        "meaning": "Adjusting spacing across a group of letters.",
+        "visual": "tracking"
+      },
+      {
+        "id": "leading",
+        "term": "Leading",
+        "meaning": "The distance between lines of type.",
+        "visual": "leading"
+      },
+      {
+        "id": "baseline",
+        "term": "Baseline",
+        "meaning": "The guide on which most letters sit.",
+        "visual": "baseline"
+      },
+      {
+        "id": "counter",
+        "term": "Counter",
+        "meaning": "An enclosed or partly enclosed space in a letter.",
+        "visual": "counter"
+      },
+      {
+        "id": "weight",
+        "term": "Weight",
+        "meaning": "The relative thickness of the strokes.",
+        "visual": "weight"
+      },
+      {
+        "id": "cap-height",
+        "term": "Cap height",
+        "meaning": "The height of a capital letter above the baseline.",
+        "visual": "cap height"
+      },
+      {
+        "id": "x-height",
+        "term": "X-height",
+        "meaning": "The height of the main body of lowercase letters such as x.",
+        "visual": "x-height"
+      },
+      {
+        "id": "ascender",
+        "term": "Ascender",
+        "meaning": "A stroke that rises above the main body of a lowercase letter.",
+        "visual": "ascender"
+      },
+      {
+        "id": "descender",
+        "term": "Descender",
+        "meaning": "A stroke that extends below the baseline.",
+        "visual": "descender"
+      },
+      {
+        "id": "stem",
+        "term": "Stem",
+        "meaning": "A main stroke of a letter.",
+        "visual": "stem"
+      }
+    ],
+    "lab": {
+      "label": "Change the space between lines",
+      "low": "Tight",
+      "high": "Open",
+      "default": 55,
+      "observation": "The words and type size stay fixed. The line spacing changes."
+    },
+    "check": {
+      "question": "Why is generous line spacing useful in this short reading panel?",
+      "choices": [
+        "It helps separate the lines without changing the wording.",
+        "It changes a serif into a sans serif.",
+        "It makes every character monospaced."
+      ],
+      "answer": 0,
+      "reason": "The visible gaps separate the lines. This is leading, not a change in letterform family."
+    },
+    "extension": "Legibility concerns recognising individual characters; readability concerns reading the text comfortably. Body text needs testing at its actual size, spacing, length, and background.",
+    "source_slides": [
+      20,
+      21,
+      22
+    ]
+  },
+  "contrast": {
+    "id": "contrast",
+    "title": "Contrast",
+    "hook": "A difference can help one detail stand out. Contrast is more than color.",
+    "goal": "Compare differences in value, size, weight, shape, and direction.",
+    "types": [
+      {
+        "id": "value",
+        "label": "Light–dark contrast",
+        "input": "One dark circle differs from the lighter circles.",
+        "visual": "value"
+      },
+      {
+        "id": "size",
+        "label": "Size contrast",
+        "input": "One large circle differs from the smaller circles.",
+        "visual": "size"
+      },
+      {
+        "id": "shape",
+        "label": "Shape contrast",
+        "input": "One square differs from the circles.",
+        "visual": "shape"
+      },
+      {
+        "id": "weight",
+        "label": "Weight contrast",
+        "input": "One word has heavier strokes than the others.",
+        "visual": "weight"
+      },
+      {
+        "id": "direction",
+        "label": "Direction contrast",
+        "input": "One line points in a different direction.",
+        "visual": "direction"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "difference",
+        "term": "Difference",
+        "meaning": "The visible feature that is not the same.",
+        "visual": "shape"
+      },
+      {
+        "id": "value",
+        "term": "Value contrast",
+        "meaning": "A light–dark difference.",
+        "visual": "value"
+      },
+      {
+        "id": "size",
+        "term": "Size contrast",
+        "meaning": "A big–small difference.",
+        "visual": "size"
+      },
+      {
+        "id": "weight",
+        "term": "Weight contrast",
+        "meaning": "A difference in stroke thickness.",
+        "visual": "weight"
+      },
+      {
+        "id": "emphasis",
+        "term": "Emphasis",
+        "meaning": "Giving a feature more visual attention.",
+        "visual": "size"
+      }
+    ],
+    "lab": {
+      "label": "Change the light–dark difference",
+      "low": "Low",
+      "high": "High",
+      "default": 75,
+      "observation": "The wording and size stay fixed. The text becomes more distinct from the background."
+    },
+    "check": {
+      "question": "Why is the time easier to locate in the second notice?",
+      "choices": [
+        "Its darker color creates a stronger value difference.",
+        "Its meaning has changed.",
+        "The whole notice uses identical values."
+      ],
+      "answer": 0,
+      "reason": "The darker time stands out from the pale background and the supporting text."
+    },
+    "extension": "Strong contrast can support hierarchy, but making everything contrast equally creates competition. Use shape, size, and labels as well as color when information must be distinguished.",
+    "source_slides": [
+      24,
+      25
+    ]
+  },
+  "hierarchy": {
+    "id": "hierarchy",
+    "title": "Hierarchy",
+    "hook": "The reader needs an order: what matters first, next, and after that?",
+    "goal": "Organise visual importance using more than size alone.",
+    "types": [
+      {
+        "id": "size",
+        "label": "Size hierarchy",
+        "input": "The largest heading attracts attention before the smaller details.",
+        "visual": "size"
+      },
+      {
+        "id": "weight",
+        "label": "Weight hierarchy",
+        "input": "The heavier heading differs from lighter supporting text.",
+        "visual": "weight"
+      },
+      {
+        "id": "color",
+        "label": "Color hierarchy",
+        "input": "An accent distinguishes one item from the surrounding information.",
+        "visual": "color"
+      },
+      {
+        "id": "position",
+        "label": "Position hierarchy",
+        "input": "Placement separates the heading from supporting content.",
+        "visual": "position"
+      },
+      {
+        "id": "space",
+        "label": "Space hierarchy",
+        "input": "Extra space isolates the most important message.",
+        "visual": "space"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "primary",
+        "term": "Primary information",
+        "meaning": "The message that needs attention first.",
+        "visual": "size"
+      },
+      {
+        "id": "secondary",
+        "term": "Secondary information",
+        "meaning": "Details that support the main message.",
+        "visual": "weight"
+      },
+      {
+        "id": "tertiary",
+        "term": "Tertiary information",
+        "meaning": "Additional supporting detail.",
+        "visual": "position"
+      },
+      {
+        "id": "focal",
+        "term": "Focal point",
+        "meaning": "A feature that attracts attention.",
+        "visual": "color"
+      },
+      {
+        "id": "emphasis",
+        "term": "Emphasis",
+        "meaning": "A way of making information more prominent.",
+        "visual": "space"
+      }
+    ],
+    "lab": {
+      "label": "Change the headline size",
+      "low": "Similar sizes",
+      "high": "Clear order",
+      "default": 70,
+      "observation": "The heading grows while the supporting details stay the same size."
+    },
+    "check": {
+      "question": "What should a reader notice first on this community-event notice?",
+      "choices": [
+        "The event name, followed by the time and place.",
+        "Every line with exactly equal emphasis.",
+        "The tiny decorative marks before the event name."
+      ],
+      "answer": 0,
+      "reason": "The headline introduces the event. The supporting details then tell the reader when and where."
+    },
+    "extension": "Visual order should follow the communication goal. The biggest text is not automatically the right primary message; decide what the audience needs first.",
+    "source_slides": [
+      26,
+      27,
+      28
+    ]
+  },
+  "alignment": {
+    "id": "alignment",
+    "title": "Alignment",
+    "hook": "Shared edges and guides help separate pieces feel organised.",
+    "goal": "See left, right, centred, justified, and grid-based alignment.",
+    "types": [
+      {
+        "id": "left",
+        "label": "Left aligned",
+        "input": "The lines begin along the same left edge.",
+        "visual": "left"
+      },
+      {
+        "id": "right",
+        "label": "Right aligned",
+        "input": "The lines end along the same right edge.",
+        "visual": "right"
+      },
+      {
+        "id": "center",
+        "label": "Centred",
+        "input": "The lines share a centre axis.",
+        "visual": "center"
+      },
+      {
+        "id": "justified",
+        "label": "Justified",
+        "input": "Most lines reach both edges; the final line can be shorter.",
+        "visual": "justified"
+      },
+      {
+        "id": "grid",
+        "label": "Grid",
+        "input": "Rows and columns share repeated guides.",
+        "visual": "grid"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "edge",
+        "term": "Edge",
+        "meaning": "The side along which elements line up.",
+        "visual": "left"
+      },
+      {
+        "id": "axis",
+        "term": "Centre axis",
+        "meaning": "The shared middle guide.",
+        "visual": "center"
+      },
+      {
+        "id": "baseline",
+        "term": "Baseline",
+        "meaning": "Letters can share a common bottom guide.",
+        "visual": "baseline"
+      },
+      {
+        "id": "grid",
+        "term": "Grid",
+        "meaning": "A system of rows and columns.",
+        "visual": "grid"
+      },
+      {
+        "id": "column",
+        "term": "Column",
+        "meaning": "A vertical group in a layout.",
+        "visual": "grid"
+      },
+      {
+        "id": "gutter",
+        "term": "Gutter",
+        "meaning": "The space between columns.",
+        "visual": "grid"
+      }
+    ],
+    "lab": {
+      "label": "Bring the text blocks to a shared edge",
+      "low": "Scattered",
+      "high": "Aligned",
+      "default": 70,
+      "observation": "The wording stays fixed. The starting edges move towards a shared guide."
+    },
+    "check": {
+      "question": "Which feature makes these reading blocks look organised?",
+      "choices": [
+        "Their common left edge.",
+        "Changing each word to a new language.",
+        "Giving each block an unrelated starting point."
+      ],
+      "answer": 0,
+      "reason": "The blocks line up along one left edge. The shared guide creates a visible connection."
+    },
+    "extension": "Alignment does not mean centring everything. Pick guides suited to the content, and use exceptions deliberately rather than scattering every edge.",
+    "source_slides": [
+      29,
+      30,
+      31
+    ]
+  },
+  "balance": {
+    "id": "balance",
+    "title": "Balance",
+    "hook": "Visual weight is attention, not physical mass.",
+    "goal": "Compare symmetrical, asymmetrical, and radial arrangements.",
+    "types": [
+      {
+        "id": "symmetric",
+        "label": "Symmetrical",
+        "input": "Similar visual weight is mirrored around the centre.",
+        "visual": "symmetric"
+      },
+      {
+        "id": "asymmetric",
+        "label": "Asymmetrical",
+        "input": "Different elements can distribute attention across the composition.",
+        "visual": "asymmetric"
+      },
+      {
+        "id": "radial",
+        "label": "Radial",
+        "input": "Elements are arranged around a central point.",
+        "visual": "radial"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "weight",
+        "term": "Visual weight",
+        "meaning": "How strongly an element attracts attention.",
+        "visual": "weight"
+      },
+      {
+        "id": "axis",
+        "term": "Axis of symmetry",
+        "meaning": "The guide around which an arrangement is mirrored.",
+        "visual": "symmetric"
+      },
+      {
+        "id": "symmetric",
+        "term": "Symmetrical",
+        "meaning": "Similar arrangements on opposite sides.",
+        "visual": "symmetric"
+      },
+      {
+        "id": "asymmetric",
+        "term": "Asymmetrical",
+        "meaning": "Different arrangements on opposite sides.",
+        "visual": "asymmetric"
+      },
+      {
+        "id": "radial",
+        "term": "Radial",
+        "meaning": "An arrangement around a centre.",
+        "visual": "radial"
+      },
+      {
+        "id": "centre",
+        "term": "Centre",
+        "meaning": "The point or area around which the composition is organised.",
+        "visual": "radial"
+      }
+    ],
+    "lab": {
+      "label": "Change the left shape’s visual weight",
+      "low": "Small",
+      "high": "Large",
+      "default": 45,
+      "observation": "The positions stay fixed. The left circle changes size relative to the right circle."
+    },
+    "check": {
+      "question": "Why can the second composition feel balanced without being a mirror image?",
+      "choices": [
+        "Different-sized elements distribute visual weight across both sides.",
+        "Balance always requires identical objects.",
+        "The picture has physical mass on a scale."
+      ],
+      "answer": 0,
+      "reason": "The arrangement uses different elements on opposite sides. It illustrates asymmetrical balance; visual weight is perceived attention."
+    },
+    "extension": "Size, darkness, color, detail, and position can all influence visual weight. An asymmetrical arrangement needs judgement and testing, not a physical-weight equation.",
+    "source_slides": [
+      32,
+      33
+    ]
+  },
+  "proximity": {
+    "id": "proximity",
+    "title": "Proximity",
+    "hook": "A gap can tell the reader which details belong together.",
+    "goal": "Distinguish space within a group from space between groups.",
+    "types": [
+      {
+        "id": "paired",
+        "label": "Related pair",
+        "input": "A heading and its detail sit close together.",
+        "visual": "paired"
+      },
+      {
+        "id": "groups",
+        "label": "Separate groups",
+        "input": "Small internal gaps and a larger external gap suggest two groups.",
+        "visual": "groups"
+      },
+      {
+        "id": "unrelated",
+        "label": "Misleading proximity",
+        "input": "An unrelated detail sits close enough to appear connected.",
+        "visual": "unrelated"
+      },
+      {
+        "id": "caption",
+        "label": "Image and caption",
+        "input": "The caption sits close to the image it describes.",
+        "visual": "caption"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "group",
+        "term": "Group",
+        "meaning": "Elements perceived as belonging together.",
+        "visual": "groups"
+      },
+      {
+        "id": "related",
+        "term": "Related",
+        "meaning": "Information that has a meaningful connection.",
+        "visual": "paired"
+      },
+      {
+        "id": "gap",
+        "term": "Gap",
+        "meaning": "Empty space separating elements.",
+        "visual": "groups"
+      },
+      {
+        "id": "cluster",
+        "term": "Cluster",
+        "meaning": "Several elements gathered closely.",
+        "visual": "groups"
+      },
+      {
+        "id": "caption",
+        "term": "Caption",
+        "meaning": "Text explaining an image.",
+        "visual": "caption"
+      }
+    ],
+    "lab": {
+      "label": "Bring a heading and its detail together",
+      "low": "Far apart",
+      "high": "Close together",
+      "default": 70,
+      "observation": "The two related lines move closer. The gap to the next group stays larger."
+    },
+    "check": {
+      "question": "Which gap makes the date and time read as one group?",
+      "choices": [
+        "A small gap between them and a larger gap before the address.",
+        "Equal huge gaps between every detail.",
+        "Placing the time beside an unrelated caption."
+      ],
+      "answer": 0,
+      "reason": "The date and time sit close together, while extra space separates the location group."
+    },
+    "extension": "Close placement communicates a relationship even when you did not intend one. Check whether the visual grouping matches the actual meaning.",
+    "source_slides": [
+      34,
+      35
+    ]
+  },
+  "repetition": {
+    "id": "repetition",
+    "title": "Repetition",
+    "hook": "Repeated features can make different messages belong to one system.",
+    "goal": "Compare repetition, rhythm, and controlled variation.",
+    "types": [
+      {
+        "id": "regular",
+        "label": "Regular repetition",
+        "input": "The same motif returns at equal intervals.",
+        "visual": "regular"
+      },
+      {
+        "id": "alternating",
+        "label": "Alternating rhythm",
+        "input": "Two features repeat in an A–B–A–B arrangement.",
+        "visual": "alternating"
+      },
+      {
+        "id": "progressive",
+        "label": "Progressive rhythm",
+        "input": "A repeated form changes in a regular sequence.",
+        "visual": "progressive"
+      },
+      {
+        "id": "consistent",
+        "label": "Consistent identity",
+        "input": "Different cards share selected colors, type, and layout.",
+        "visual": "consistent"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "motif",
+        "term": "Motif",
+        "meaning": "One visual unit that repeats.",
+        "visual": "regular"
+      },
+      {
+        "id": "rhythm",
+        "term": "Rhythm",
+        "meaning": "The visible pattern created as features repeat.",
+        "visual": "alternating"
+      },
+      {
+        "id": "consistent",
+        "term": "Consistent",
+        "meaning": "Selected features follow the same system.",
+        "visual": "consistent"
+      },
+      {
+        "id": "variation",
+        "term": "Variation",
+        "meaning": "A controlled difference within a repeated system.",
+        "visual": "progressive"
+      },
+      {
+        "id": "identity",
+        "term": "Visual identity",
+        "meaning": "Shared visual features that help messages feel related.",
+        "visual": "consistent"
+      }
+    ],
+    "lab": {
+      "label": "Bring the cards into one visual system",
+      "low": "Unrelated styles",
+      "high": "Shared style",
+      "default": 70,
+      "observation": "The messages remain different. Their color and type treatment become more consistent."
+    },
+    "check": {
+      "question": "What connects these three club cards?",
+      "choices": [
+        "The repeated color, headline style, and divider position.",
+        "Identical wording on every card.",
+        "A different visual style on every card."
+      ],
+      "answer": 0,
+      "reason": "The content differs, but the same selected design features repeat."
+    },
+    "extension": "Repeat useful features, not every detail. Controlled variation can distinguish different messages while keeping a recognisable system.",
+    "source_slides": [
+      37
+    ]
+  },
+  "simplicity": {
+    "id": "simplicity",
+    "title": "Simplicity",
+    "hook": "Remove unnecessary complication while keeping the information people need.",
+    "goal": "Distinguish useful simplicity from a design that is merely empty.",
+    "types": [
+      {
+        "id": "clutter",
+        "label": "Cluttered",
+        "input": "Extra marks compete with the event information.",
+        "visual": "clutter"
+      },
+      {
+        "id": "essential",
+        "label": "Essential information",
+        "input": "The event, date, place, and action remain visible.",
+        "visual": "essential"
+      },
+      {
+        "id": "too-little",
+        "label": "Too little information",
+        "input": "Removing the date and place makes this invitation less useful.",
+        "visual": "too-little"
+      },
+      {
+        "id": "purposeful",
+        "label": "Purposeful detail",
+        "input": "A necessary route or instruction can require more detail.",
+        "visual": "purposeful"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "essential",
+        "term": "Essential",
+        "meaning": "Needed for the message to work.",
+        "visual": "essential"
+      },
+      {
+        "id": "clutter",
+        "term": "Clutter",
+        "meaning": "Competing detail that makes the message harder to find.",
+        "visual": "clutter"
+      },
+      {
+        "id": "redundant",
+        "term": "Redundant",
+        "meaning": "Repeated information that adds little here.",
+        "visual": "clutter"
+      },
+      {
+        "id": "decoration",
+        "term": "Decoration",
+        "meaning": "A visual addition that may not carry essential information.",
+        "visual": "clutter"
+      },
+      {
+        "id": "purpose",
+        "term": "Purpose",
+        "meaning": "What the design needs to help someone do.",
+        "visual": "purposeful"
+      }
+    ],
+    "lab": {
+      "label": "Remove decorative clutter",
+      "low": "Many marks",
+      "high": "Few marks",
+      "default": 55,
+      "observation": "Decorative marks disappear. The event name, date, place, and invitation remain."
+    },
+    "check": {
+      "question": "Which simplified invitation still works?",
+      "choices": [
+        "The one keeping the event, date, place, and action.",
+        "The one showing only the event name.",
+        "The one hiding every useful detail."
+      ],
+      "answer": 0,
+      "reason": "Simplicity preserves the essential message. Fewer elements are not better if needed information disappears."
+    },
+    "extension": "Simplicity is relative to a purpose. A timetable or a map may need more information than a logo; remove unnecessary complexity rather than counting elements.",
+    "source_slides": [
+      36
+    ]
+  },
+  "function": {
+    "id": "function",
+    "title": "Function",
+    "hook": "A design succeeds when its audience can understand or do what it is for.",
+    "goal": "Judge the design by its purpose, audience, context, and action.",
+    "types": [
+      {
+        "id": "inform",
+        "label": "Inform",
+        "input": "A timetable tells people when activities happen.",
+        "visual": "inform"
+      },
+      {
+        "id": "guide",
+        "label": "Guide",
+        "input": "A sign and an arrow help people find a place.",
+        "visual": "guide"
+      },
+      {
+        "id": "invite",
+        "label": "Invite",
+        "input": "A poster gives the event, date, place, and next action.",
+        "visual": "invite"
+      },
+      {
+        "id": "act",
+        "label": "Support an action",
+        "input": "A clearly labelled control tells someone what to do next.",
+        "visual": "act"
+      }
+    ],
+    "vocab": [
+      {
+        "id": "purpose",
+        "term": "Purpose",
+        "meaning": "The job the design needs to do.",
+        "visual": "invite"
+      },
+      {
+        "id": "audience",
+        "term": "Audience",
+        "meaning": "The people who need to use or understand it.",
+        "visual": "inform"
+      },
+      {
+        "id": "context",
+        "term": "Viewing context",
+        "meaning": "Where and how someone will see the design.",
+        "visual": "guide"
+      },
+      {
+        "id": "action",
+        "term": "Call to action",
+        "meaning": "A clear next step for the viewer.",
+        "visual": "act"
+      },
+      {
+        "id": "legible",
+        "term": "Legible",
+        "meaning": "Individual characters can be recognised.",
+        "visual": "invite"
+      },
+      {
+        "id": "affordance",
+        "term": "Affordance cue",
+        "meaning": "A visible cue that suggests how something can be used.",
+        "visual": "act"
+      }
+    ],
+    "lab": {
+      "label": "Simulate seeing the notice from farther away",
+      "low": "Near",
+      "high": "Far",
+      "default": 25,
+      "observation": "The notice gets smaller on the screen. Check which details you can still identify."
+    },
+    "check": {
+      "question": "Which information lets someone act on this event poster?",
+      "choices": [
+        "The date, place, and clear registration instruction.",
+        "Only the decorative circle.",
+        "A beautiful headline with no event details."
+      ],
+      "answer": 0,
+      "reason": "The practical details and the call to action let a viewer decide what to do next."
+    },
+    "extension": "A beautiful design can still fail its purpose. Test it with someone from the intended audience in a realistic viewing or use context.",
+    "source_slides": []
+  }
+}

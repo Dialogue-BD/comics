@@ -1,0 +1,82 @@
+[
+  {
+    "id": "definition-intro",
+    "concept": "intro",
+    "text": "Graphic design. Graphic design combines graphical elements and design principles to communicate a message to an audience."
+  },
+  {
+    "id": "definition-line",
+    "concept": "line",
+    "text": "Line. A line is a visible path. It can divide, connect, outline, or guide."
+  },
+  {
+    "id": "definition-color",
+    "concept": "color",
+    "text": "Color. Color is a visual quality we can change to identify, group, emphasise, or suggest a mood."
+  },
+  {
+    "id": "definition-shape",
+    "concept": "shape",
+    "text": "Shape. A shape is a two-dimensional area with a boundary."
+  },
+  {
+    "id": "definition-texture",
+    "concept": "texture",
+    "text": "Texture. Texture is the appearance or feel of a surface. A flat image can suggest a texture."
+  },
+  {
+    "id": "definition-space",
+    "concept": "space",
+    "text": "Space. Space includes the areas occupied by elements and the empty areas within, around, or between them."
+  },
+  {
+    "id": "definition-form",
+    "concept": "form",
+    "text": "Form. Form concerns three-dimensional volume. A flat image can suggest form through light, shadow, and perspective."
+  },
+  {
+    "id": "definition-typography",
+    "concept": "typography",
+    "text": "Typography. Typography is the visual presentation of written language: letterforms, size, weight, spacing, and arrangement."
+  },
+  {
+    "id": "definition-contrast",
+    "concept": "contrast",
+    "text": "Contrast. Contrast is a visible difference between elements, such as light and dark, big and small, or straight and curved."
+  },
+  {
+    "id": "definition-hierarchy",
+    "concept": "hierarchy",
+    "text": "Hierarchy. Hierarchy establishes an order of importance so viewers know what to notice first and next."
+  },
+  {
+    "id": "definition-alignment",
+    "concept": "alignment",
+    "text": "Alignment. Alignment places elements along shared edges, centres, or guides."
+  },
+  {
+    "id": "definition-balance",
+    "concept": "balance",
+    "text": "Balance. Balance distributes visual weight. It can be symmetrical or asymmetrical."
+  },
+  {
+    "id": "definition-proximity",
+    "concept": "proximity",
+    "text": "Proximity. Proximity places related elements close together so their relationship is clearer."
+  },
+  {
+    "id": "definition-repetition",
+    "concept": "repetition",
+    "text": "Repetition. Repetition reuses selected visual features to create consistency."
+  },
+  {
+    "id": "definition-simplicity",
+    "concept": "simplicity",
+    "text": "Simplicity. Simplicity removes unnecessary complication while keeping what the message needs."
+  },
+  {
+    "id": "definition-function",
+    "concept": "function",
+    "text": "Function. Function asks whether the design helps its intended audience understand or do what the brief requires."
+  }
+]

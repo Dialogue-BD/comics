@@ -1,0 +1,15 @@
+{
+  "id": "definition-function",
+  "concept": "function",
+  "duration": 6.679083,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Function. Function asks whether the design helps its intended audience understand or do what the brief requires.",
+      "start": 0,
+      "end": 6.679083,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

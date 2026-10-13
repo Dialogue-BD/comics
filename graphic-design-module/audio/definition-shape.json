@@ -1,0 +1,15 @@
+{
+  "id": "definition-shape",
+  "concept": "shape",
+  "duration": 3.556917,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Shape. A shape is a two-dimensional area with a boundary.",
+      "start": 0,
+      "end": 3.556917,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

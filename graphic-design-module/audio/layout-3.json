@@ -1,0 +1,28 @@
+{
+  "id": "layout-3",
+  "duration": 14.028083,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "Can we add every menu item and three photos?",
+      "start": 0,
+      "end": 3.644,
+      "voice": "Isha (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "There is too much information for a small phone post. I suggest a short invitation and a link to the full menu.",
+      "start": 3.644,
+      "end": 10.64,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "All right. Keep the opening offer and the address.",
+      "start": 10.64,
+      "end": 14.028,
+      "voice": "Isha (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

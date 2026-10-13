@@ -1,0 +1,28 @@
+{
+  "id": "clients-3",
+  "duration": 17.023083,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "I haven’t heard from you. Is the draft still coming today?",
+      "start": 0,
+      "end": 3.949,
+      "voice": "Isha (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I’m sorry I missed the update. The first draft is ready, but I still need to check the address. I’ll send it by 6 pm Bangladesh time.",
+      "start": 3.949,
+      "end": 13.086,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Thanks. Please message me if that timing changes.",
+      "start": 13.086,
+      "end": 17.023,
+      "voice": "Isha (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

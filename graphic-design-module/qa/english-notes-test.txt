@@ -1,0 +1,114 @@
+DIALOGUE · DESIGNER’S NOTEBOOK
+English for Freelancers — Graphic Design
+Saved 2026-10-13
+Completed labs: 
+
+PRACTICE RECORD · not a proficiency grade
+Practice XP: 340
+foundation-intro:meaning — Meaning checked (10 XP)
+foundation-line:meaning — Meaning checked (10 XP)
+foundation-color:meaning — Meaning checked (10 XP)
+foundation-shape:meaning — Meaning checked (10 XP)
+foundation-texture:meaning — Meaning checked (10 XP)
+foundation-space:meaning — Meaning checked (10 XP)
+foundation-form:meaning — Meaning checked (10 XP)
+foundation-typography:meaning — Meaning checked (10 XP)
+foundation-contrast:meaning — Meaning checked (10 XP)
+foundation-hierarchy:meaning — Meaning checked (10 XP)
+foundation-alignment:meaning — Meaning checked (10 XP)
+foundation-balance:meaning — Meaning checked (10 XP)
+foundation-proximity:meaning — Meaning checked (10 XP)
+foundation-repetition:meaning — Meaning checked (10 XP)
+foundation-simplicity:meaning — Meaning checked (10 XP)
+foundation-function:meaning — Meaning checked (10 XP)
+typography-1:build — Sentence built (10 XP)
+typography-1:transfer — New brief practised (20 XP)
+voice-date:listen — Gist understood (5 XP)
+voice-date:details — Details caught (10 XP)
+voice-pop:listen — Gist understood (5 XP)
+voice-pop:details — Details caught (10 XP)
+voice-scope:listen — Gist understood (5 XP)
+voice-scope:details — Details caught (10 XP)
+voice-update:listen — Gist understood (5 XP)
+voice-update:details — Details caught (10 XP)
+voice-audience:listen — Gist understood (5 XP)
+voice-audience:details — Details caught (10 XP)
+voice-editable:listen — Gist understood (5 XP)
+voice-editable:details — Details caught (10 XP)
+logo-nike:listen — Gist understood (5 XP)
+logo-nike:details — Details caught (10 XP)
+logo-microsoft:listen — Gist understood (5 XP)
+logo-microsoft:details — Details caught (10 XP)
+logo-amazon:listen — Gist understood (5 XP)
+logo-amazon:details — Details caught (10 XP)
+logo-mcdonalds:listen — Gist understood (5 XP)
+logo-mcdonalds:details — Details caught (10 XP)
+
+english / typography-1 / question
+Which information should people notice first?
+
+english / typography-1 / response
+I recommend the larger offer because people will see it from a distance.
+
+english / typography-1 / independent
+I would make the clinic hours larger. How far away will people sit?
+
+listening / voice-date / phrase
+I can barely read the address.
+
+listening / voice-date / response
+I will check the detail before delivery.
+
+listening / voice-pop / phrase
+I can barely read the address.
+
+listening / voice-pop / response
+I will check the detail before delivery.
+
+listening / voice-scope / phrase
+I can barely read the address.
+
+listening / voice-scope / response
+I will check the detail before delivery.
+
+listening / voice-update / phrase
+I can barely read the address.
+
+listening / voice-update / response
+I will check the detail before delivery.
+
+listening / voice-audience / phrase
+I can barely read the address.
+
+listening / voice-audience / response
+I will check the detail before delivery.
+
+listening / voice-editable / phrase
+I can barely read the address.
+
+listening / voice-editable / response
+I will check the detail before delivery.
+
+listening / logo-nike / phrase
+I can barely read the address.
+
+listening / logo-nike / response
+I will check the detail before delivery.
+
+listening / logo-microsoft / phrase
+I can barely read the address.
+
+listening / logo-microsoft / response
+I will check the detail before delivery.
+
+listening / logo-amazon / phrase
+I can barely read the address.
+
+listening / logo-amazon / response
+I will check the detail before delivery.
+
+listening / logo-mcdonalds / phrase
+I can barely read the address.
+
+listening / logo-mcdonalds / response
+I will check the detail before delivery.

@@ -1,0 +1,28 @@
+{
+  "id": "foundation-color",
+  "duration": 9.804875,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "The opening offer is getting lost in the poster.",
+      "start": 0,
+      "end": 2.978,
+      "voice": "Isha (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I changed the offer’s color so it stands out from the other information.",
+      "start": 2.978,
+      "end": 7.108,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Please keep our brand colors around it.",
+      "start": 7.108,
+      "end": 9.805,
+      "voice": "Isha (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

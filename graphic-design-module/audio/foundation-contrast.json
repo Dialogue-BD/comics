@@ -1,0 +1,28 @@
+{
+  "id": "foundation-contrast",
+  "duration": 9.492792,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "One item needs to be easier to notice.",
+      "start": 0,
+      "end": 2.62,
+      "voice": "Zoe (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I made that circle darker than its neighbors. The difference creates contrast.",
+      "start": 2.62,
+      "end": 7.589,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Keep the other circles quieter.",
+      "start": 7.589,
+      "end": 9.493,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

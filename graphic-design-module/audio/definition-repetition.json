@@ -1,0 +1,15 @@
+{
+  "id": "definition-repetition",
+  "concept": "repetition",
+  "duration": 5.066833,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Repetition. Repetition reuses selected visual features to create consistency.",
+      "start": 0,
+      "end": 5.066833,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

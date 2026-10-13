@@ -1,0 +1,107 @@
+{
+  "scope": "Psalm 114:3–6, two four-colon teaching stanzas in an existing design/ESL unit; not a full exegetical study",
+  "accessed": "2026-10-13",
+  "sources": [
+    {
+      "edition": "Masoretic Hebrew text, Mechon Mamre",
+      "url": "https://www.mechon-mamre.org/p/pt/pt26b4.htm"
+    },
+    {
+      "edition": "World English Bible, public domain",
+      "url": "https://ebible.org/engwebp/PSA114.htm",
+      "reuse": "https://ebible.org/engwebp/copyright.htm"
+    }
+  ],
+  "verse_manifest": [
+    "3a",
+    "3b",
+    "4a",
+    "4b",
+    "5a",
+    "5b",
+    "6a",
+    "6b"
+  ],
+  "adaptation": {
+    "stanzas": [
+      [
+        "The sea saw it and ran away.",
+        "The Jordan River turned back.",
+        "The mountains jumped like rams.",
+        "The hills jumped like lambs."
+      ],
+      [
+        "Sea, why did you run away?",
+        "Jordan River, why did you turn back?",
+        "Mountains, why did you jump like rams?",
+        "Hills, why did you jump like lambs?"
+      ]
+    ],
+    "headings": [
+      "Description · verses 3–4",
+      "Questions · verses 5–6"
+    ],
+    "labels": [
+      "Sea / retreat",
+      "Jordan / return",
+      "Mountains / rams",
+      "Hills / lambs"
+    ],
+    "source": "Psalm 114:3–6",
+    "edition": "Accessible English adaptation, informed by the Hebrew text and the public-domain World English Bible",
+    "url": "https://ebible.org/engwebp/PSA114.htm",
+    "hebrew_url": "https://www.mechon-mamre.org/p/pt/pt26b4.htm",
+    "context": "The psalm recalls Israel’s departure from Egypt. The landscape is personified: waters retreat and mountains jump.",
+    "guide": [
+      "Within each stanza: sea / Jordan and mountains / hills are related pairs.",
+      "Across the stanzas: the same four images return in the same order, changing description into direct questions.",
+      "The questions make readers attend to the surprising images again. The full poem’s following lines connect this response to divine presence."
+    ]
+  },
+  "claims": [
+    {
+      "id": "line-pairs",
+      "status": "accepted textual observation",
+      "anchors": [
+        "3a",
+        "3b",
+        "4a",
+        "4b",
+        "5a",
+        "5b",
+        "6a",
+        "6b"
+      ],
+      "statement": "Sea/Jordan and mountains/hills are specific semantic pairs; rams/young sheep develop the animal comparison with a scale difference.",
+      "qualification": "Correspondence is not identity of meaning, action, or grammar."
+    },
+    {
+      "id": "stanza-return",
+      "status": "accepted textual observation",
+      "anchors": [
+        "3a~5a",
+        "3b~5b",
+        "4a~6a",
+        "4b~6b"
+      ],
+      "statement": "The four subjects recur in the same order; narrated actions become direct address under the governing interrogative.",
+      "qualification": "The two four-line stanza layout is editorial colometry; it is not asserted as manuscript lineation or a universal poetic scheme."
+    },
+    {
+      "id": "ellipsis",
+      "status": "accepted textual observation",
+      "anchors": [
+        "4b",
+        "6b"
+      ],
+      "statement": "The hills clauses omit the skipping verb; the accessible adaptation supplies jumped.",
+      "qualification": "The adaptation is explicitly labelled, rather than presented as verbatim Scripture."
+    }
+  ],
+  "review": {
+    "primary_text": "checked by bounded source agent and parent against both live source pages",
+    "English": "accessible reading adaptation; all eight cola covered",
+    "interpretation": "local correspondences only; no unsupported root, chronology, or canonical-dependence claim",
+    "coverage": "Requested stanza and line parallelism verified; wider biblical exegesis and exhaustive literary feature mining outside this lesson change"
+  }
+}

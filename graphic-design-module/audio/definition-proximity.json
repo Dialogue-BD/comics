@@ -1,0 +1,15 @@
+{
+  "id": "definition-proximity",
+  "concept": "proximity",
+  "duration": 5.659,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Proximity. Proximity places related elements close together so their relationship is clearer.",
+      "start": 0,
+      "end": 5.659,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

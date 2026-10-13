@@ -1,0 +1,15 @@
+{
+  "id": "definition-line",
+  "concept": "line",
+  "duration": 6.065292,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Line. A line is a visible path. It can divide, connect, outline, or guide.",
+      "start": 0,
+      "end": 6.065292,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "layout-1",
+  "duration": 10.747292,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "Where have you put the opening details?",
+      "start": 0,
+      "end": 2.097,
+      "voice": "Zoe (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "The date is below the headline, and the location is next to it. They are grouped together.",
+      "start": 2.097,
+      "end": 7.547,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Good. That makes the information easy to find.",
+      "start": 7.547,
+      "end": 10.747,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

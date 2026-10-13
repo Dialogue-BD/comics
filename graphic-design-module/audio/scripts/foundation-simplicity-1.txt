@@ -1,0 +1,1 @@
+I removed extra decoration and kept the invitation, date, time, and location.

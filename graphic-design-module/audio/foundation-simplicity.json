@@ -1,0 +1,28 @@
+{
+  "id": "foundation-simplicity",
+  "duration": 12.284125,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "The poster feels busy. What can we remove?",
+      "start": 0,
+      "end": 3.398,
+      "voice": "Isha (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I removed extra decoration and kept the invitation, date, time, and location.",
+      "start": 3.398,
+      "end": 9.411,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Good. Those details are essential.",
+      "start": 9.411,
+      "end": 12.284,
+      "voice": "Isha (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

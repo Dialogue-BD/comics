@@ -1,0 +1,14 @@
+{
+  "id": "voice-date",
+  "duration": 14.670833,
+  "turns": [
+    {
+      "role": "client",
+      "text": "Hi, I've looked at the poster on my phone. The book club title is clear, but I can barely read the meeting date. Could you make that easier to see? I'd like to keep the warm colors and the gold line. Thanks. Send me a quick preview before you share the final version.",
+      "start": 0,
+      "end": 14.671,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "definition-alignment",
+  "concept": "alignment",
+  "duration": 5.553833,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Alignment. Alignment places elements along shared edges, centres, or guides.",
+      "start": 0,
+      "end": 5.553833,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

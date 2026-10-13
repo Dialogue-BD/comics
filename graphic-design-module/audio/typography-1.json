@@ -1,0 +1,28 @@
+{
+  "id": "typography-1",
+  "duration": 12.191042,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "I need people to notice the opening offer. Which headline works better?",
+      "start": 0,
+      "end": 4.129,
+      "voice": "Zoe (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "The headline in B is larger than the headline in A. It is easier to read from a distance.",
+      "start": 4.129,
+      "end": 9.072,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Good. Please keep the smaller details below it.",
+      "start": 9.072,
+      "end": 12.191,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

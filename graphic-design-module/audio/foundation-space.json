@@ -1,0 +1,28 @@
+{
+  "id": "foundation-space",
+  "duration": 9.638042,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "The heading feels squeezed between the pictures.",
+      "start": 0,
+      "end": 2.704,
+      "voice": "Jamie (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I added more empty space around it. The words are easier to pick out.",
+      "start": 2.704,
+      "end": 7.07,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Good. Keep the heading and both pictures.",
+      "start": 7.07,
+      "end": 9.638,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

@@ -1,0 +1,29 @@
+DIALOGUE · DESIGNER’S NOTEBOOK
+Visual Design English
+Saved 2026-10-13
+Reference labs visited: Typography
+
+PRACTICE RECORD · not a proficiency grade
+Guided missions: 
+Practice XP: 0
+
+typography / message
+I chose a calm serif headline for the café.
+
+color / palette
+#684727, #AA7541, #6494C4, #97B8D8, #EEE0D3
+
+scenario / 0
+I can add this for an extra fee.
+
+judgment / exercise1
+The unreadable offer: Keep gold as decoration. Use forest green for important text.
+
+judgment / exercise2
+The wrong spelling: Correct the spelling and keep the final text in an editable layer.
+
+judgment / exercise3
+The missing priority: Give the offer the strongest size and position; keep the name visible but secondary.
+
+judgment / exercise4
+The wrong deliverable: Rebuild at 1:1, keep the text editable, and deliver both the preview and agreed source file.

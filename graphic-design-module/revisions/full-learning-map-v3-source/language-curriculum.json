@@ -1,0 +1,4601 @@
+{
+  "typography": [
+    {
+      "id": "typography-1",
+      "title": "Compare two headlines",
+      "focus": "Comparatives: larger than; easier to read",
+      "visual": "type-size",
+      "dialogue": [
+        [
+          "Organiser",
+          "I need people to notice the opening offer. Which headline works better?"
+        ],
+        [
+          "You",
+          "The headline in B is larger than the headline in A. It is easier to read from a distance."
+        ],
+        [
+          "Organiser",
+          "Good. Please keep the smaller details below it."
+        ]
+      ],
+      "target": "The headline in B is larger than the headline in A.",
+      "levels": {
+        "A2": {
+          "model": "The headline in B is bigger.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The headline in B is larger than the headline in A.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Although B uses more space, its larger headline makes the offer easier to notice.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "larger than",
+          "Compare the sizes of two things.",
+          "The headline in B is larger than the headline in A."
+        ],
+        [
+          "easier to read",
+          "Describe how much effort reading takes.",
+          "The larger letters are easier to read from the back of the room."
+        ],
+        [
+          "from a distance",
+          "When the viewer is far away.",
+          "Can you read the offer from a distance?"
+        ]
+      ],
+      "meaning": {
+        "question": "Why does the designer prefer B?",
+        "choices": [
+          "The main headline is larger.",
+          "B has more opening information.",
+          "A has a spelling error."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. The headline is larger; the words are the same.",
+          "The information is unchanged. Compare the size of the headline.",
+          "Both versions use the same spelling. Look at the size."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "B is more larger than A.",
+          "B is larger than A.",
+          "B is larger that A."
+        ],
+        "answer": 1,
+        "reason": "Use “larger than”. Do not add “more” to this -er comparative."
+      },
+      "roles": {
+        "client": "You want an opening offer visible from the back of a classroom. The brand name can be smaller. Do not tell the designer your priority until they ask.",
+        "designer": "You have two versions with the same words. Ask which message must stand out, compare the sizes, and recommend one."
+      },
+      "mission": "Agree on one headline hierarchy for the opening poster.",
+      "success": [
+        "Ask what should stand out first.",
+        "Use a comparison with than.",
+        "Connect the size to where viewers will see it."
+      ],
+      "question_model": "Which information should people notice first?",
+      "client_answer": "The opening offer must be visible from the back of the room. The café name can be smaller.",
+      "transfer_model": "I recommend the version with the larger offer. It should be easier to notice from the back of the room. Would you like the café name to stay above it?",
+      "new_brief": "A clinic needs a waiting-room poster. Patients must find the opening hours quickly; the clinic name is already on the wall. Recommend a type hierarchy and ask one question.",
+      "independent_model": "I would make the opening hours larger than the supporting text so patients can find them quickly. How far from the poster will people usually sit?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Community",
+        "why": "Help someone find the important information on an invitation."
+      },
+      "everyday_use": "Help someone find the important information on an invitation.",
+      "notice": {
+        "question": "What changes from A to B?",
+        "choices": [
+          "The headline becomes larger.",
+          "The date changes.",
+          "The words disappear."
+        ],
+        "answer": 0,
+        "reason": "The headline is larger; the wording stays the same."
+      }
+    },
+    {
+      "id": "typography-2",
+      "title": "Explain a font choice",
+      "focus": "Purpose: to + verb; impressions: looks / feels",
+      "visual": "type-style",
+      "dialogue": [
+        [
+          "Organiser",
+          "Our café should feel calm and welcoming."
+        ],
+        [
+          "You",
+          "I chose a serif headline to give the poster a quieter feel. I kept the body text simple so the details are easy to read."
+        ],
+        [
+          "Organiser",
+          "Can you show me a second option before we decide?"
+        ]
+      ],
+      "target": "I chose a serif headline to give the poster a quieter feel.",
+      "levels": {
+        "A2": {
+          "model": "This font looks calm. I chose it for the café.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "I chose a serif headline to give the poster a quieter feel.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "I would keep the serif headline for a quieter feel, while using a simple sans-serif font for the practical details.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "I chose",
+          "Name a decision you already made.",
+          "I chose a serif headline."
+        ],
+        [
+          "to give",
+          "Explain the purpose of the choice.",
+          "I chose this font to give the poster a quieter feel."
+        ],
+        [
+          "a quieter feel",
+          "An impression, not a guaranteed reaction.",
+          "To me, the serif version has a quieter feel."
+        ]
+      ],
+      "meaning": {
+        "question": "What is the purpose of the serif headline?",
+        "choices": [
+          "To make the opening date disappear.",
+          "To suggest a calmer tone.",
+          "To prove every café must use serif type."
+        ],
+        "answer": 1,
+        "reasons": [
+          "The details still need to be clear. The choice is about tone.",
+          "Yes. The designer connects the font to the organiser’s requested tone.",
+          "This is a recommendation for this café, not a rule for all cafés."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "I chose this font to make the poster feel calmer.",
+          "I chose this font for make the poster calmer.",
+          "I chose this font to making the poster calmer."
+        ],
+        "answer": 0,
+        "reason": "After “to” for purpose, use the base verb: to make."
+      },
+      "roles": {
+        "client": "Your café is quiet during the day but hosts lively evening events. Ask whether one font choice can work for both.",
+        "designer": "Suggest a calm daytime version and an energetic evening alternative. Explain an impression with “looks”, “feels”, or “may”."
+      },
+      "mission": "Recommend a type direction without pretending the feeling is universal.",
+      "success": [
+        "Name a visible choice.",
+        "Explain its purpose with to + verb.",
+        "Ask whether the tone matches the intended event."
+      ],
+      "question_model": "Should this version feel quiet or lively?",
+      "client_answer": "The daytime café should feel quiet, but the evening event needs more energy.",
+      "transfer_model": "I suggest a quieter serif headline for the daytime café and a stronger sans-serif headline for the evening event. We can keep the body text consistent. Shall I show you both?",
+      "new_brief": "A small museum needs a poster for a lively family event. The main heading should feel welcoming and energetic; the access details must stay readable. Explain a pairing choice.",
+      "independent_model": "I would use a bold, simple headline to give the event more energy and a clear body font for the access details. Could you show me an example of the tone you prefer?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Community",
+        "why": "Help someone find the important information on an invitation."
+      },
+      "everyday_use": "Help someone find the important information on an invitation.",
+      "notice": {
+        "question": "What changes between the two headings?",
+        "choices": [
+          "The type style.",
+          "The actual message.",
+          "The date of the event."
+        ],
+        "answer": 0,
+        "reason": "The same wording appears in serif and sans-serif type."
+      }
+    },
+    {
+      "id": "typography-3",
+      "title": "Translate vague feedback",
+      "focus": "Clarifying questions; either / or",
+      "visual": "type-size",
+      "dialogue": [
+        [
+          "Organiser",
+          "Could you make it pop?"
+        ],
+        [
+          "You",
+          "Which element should stand out first: the café name or the opening offer?"
+        ],
+        [
+          "Organiser",
+          "The offer. People already know our name."
+        ]
+      ],
+      "target": "Which element should stand out first: the café name or the opening offer?",
+      "levels": {
+        "A2": {
+          "model": "Should the name or the offer be bigger?",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "Which element should stand out first: the café name or the opening offer?",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "When you say “make it pop”, are you looking for stronger emphasis on the offer or a more energetic overall style?",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "stand out",
+          "Be easier to notice than nearby elements.",
+          "The offer should stand out."
+        ],
+        [
+          "Which element",
+          "Ask the organiser to identify a particular part.",
+          "Which element should stand out first?"
+        ],
+        [
+          "when you say",
+          "Check what the organiser means by a phrase.",
+          "When you say “bold”, do you mean the font weight or the mood?"
+        ]
+      ],
+      "meaning": {
+        "question": "What did “make it pop” mean for this client?",
+        "choices": [
+          "Add as many colors as possible.",
+          "Change every font.",
+          "Give the offer more emphasis."
+        ],
+        "answer": 2,
+        "reasons": [
+          "The organiser identifies the offer, not a color change.",
+          "The designer asks before changing the fonts.",
+          "Yes. The clarification gives the designer a specific next step."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "What you mean by “pop”?",
+          "What do you mean by “pop”?",
+          "What does you mean by “pop”?"
+        ],
+        "answer": 1,
+        "reason": "Use “do” with “you” in this present-simple question."
+      },
+      "roles": {
+        "client": "You want more emphasis on the 50% opening offer, not a different brand personality. Begin with “make it pop”.",
+        "designer": "Do not redesign immediately. Ask a specific either/or question, then confirm one change."
+      },
+      "mission": "Turn vague feedback into one agreed revision.",
+      "success": [
+        "Ask a clarifying question.",
+        "Restate the organiser’s priority.",
+        "Confirm one visible change."
+      ],
+      "question_model": "When you say “pop”, do you mean the offer or the overall style?",
+      "client_answer": "I mean the 50% offer. I want the same calm brand style.",
+      "transfer_model": "I’ll give the 50% offer more emphasis while keeping the calm style. Would you prefer a larger offer or more space around it?",
+      "new_brief": "Your volunteer group says “make it bold”. The poster asks for helpers, but no one has explained what “bold” means. Ask for clarification, then agree on one revision.",
+      "independent_model": "When you say “bold”, do you mean a heavier font or more emphasis on the call for volunteers? Once we confirm that, I can show a focused revision.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Community",
+        "why": "Help someone find the important information on an invitation."
+      },
+      "everyday_use": "Help someone find the important information on an invitation.",
+      "notice": {
+        "question": "What changes from A to B?",
+        "choices": [
+          "The headline becomes larger.",
+          "The date changes.",
+          "The words disappear."
+        ],
+        "answer": 0,
+        "reason": "The headline is larger; the wording stays the same."
+      }
+    }
+  ],
+  "color": [
+    {
+      "id": "color-1",
+      "title": "Describe a readable change",
+      "focus": "Before / now; comparative + reason",
+      "visual": "contrast",
+      "dialogue": [
+        [
+          "Organiser",
+          "The gold text looks lovely. Why did you change it?"
+        ],
+        [
+          "You",
+          "The forest text is easier to read on the cream background. We can keep gold for the decorative line."
+        ],
+        [
+          "Organiser",
+          "That works. Please keep the warm feeling."
+        ]
+      ],
+      "target": "The forest text is easier to read on the cream background.",
+      "levels": {
+        "A2": {
+          "model": "The green text is easier to read.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The forest text is easier to read on the cream background.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "The gold can remain as an accent, while the forest text provides stronger contrast for the essential details.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "on the background",
+          "Locate text against the surface behind it.",
+          "The text is hard to read on this background."
+        ],
+        [
+          "easier to read",
+          "Compare readability rather than beauty alone.",
+          "The forest text is easier to read."
+        ],
+        [
+          "keep as an accent",
+          "Retain a color for a smaller decorative role.",
+          "We can keep gold as an accent."
+        ]
+      ],
+      "meaning": {
+        "question": "What will happen to the gold?",
+        "choices": [
+          "It will be removed everywhere.",
+          "It can stay in a decorative line.",
+          "It must become the body text."
+        ],
+        "answer": 1,
+        "reasons": [
+          "The designer offers to keep gold for decoration.",
+          "Yes. The function changes; the palette can stay warm.",
+          "The important text is changing to forest for readability."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "The text is more easy to read.",
+          "The text is easier to read.",
+          "The text is easier read."
+        ],
+        "answer": 1,
+        "reason": "Use the comparative “easier”, followed by “to read”."
+      },
+      "roles": {
+        "client": "You like gold because it matches your café décor. The opening date must still be readable on a phone.",
+        "designer": "Keep the warm brand impression while recommending a readable text/background pair."
+      },
+      "mission": "Explain a color revision without dismissing the organiser’s preference.",
+      "success": [
+        "Acknowledge what the organiser likes.",
+        "Compare the readable versions.",
+        "Suggest a role for the original color."
+      ],
+      "question_model": "Which parts of the gold palette are important to keep?",
+      "client_answer": "The gold matches our décor. I need the date readable on a phone, but I want to keep the warm palette.",
+      "transfer_model": "I can keep gold for the decorative line and use forest for the date and address. That keeps the warm palette while making the details easier to read. Would you like a phone-size preview?",
+      "new_brief": "An event ticket uses pale yellow text on white. The organiser likes yellow, but people need to read the seat number. Suggest a readable revision without removing yellow everywhere.",
+      "independent_model": "I would use a darker color for the seat number and keep yellow as decoration. The number will be easier to read while the ticket keeps its original character.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Everyday life",
+        "why": "Discuss a clear, readable choice for screens and posters."
+      },
+      "everyday_use": "Discuss a clear, readable choice for screens and posters.",
+      "notice": {
+        "question": "Which text is easier to distinguish from the pale background?",
+        "choices": [
+          "The forest text in B.",
+          "The pale gold text in A.",
+          "There is no visible difference."
+        ],
+        "answer": 0,
+        "reason": "The darker forest text has a stronger light–dark difference."
+      }
+    },
+    {
+      "id": "color-2",
+      "title": "Ask about a palette",
+      "focus": "Open questions; preferences; audience",
+      "visual": "palette",
+      "dialogue": [
+        [
+          "Organiser",
+          "Can you choose the colors for us?"
+        ],
+        [
+          "You",
+          "What feeling would you like customers to have: calm, energetic, or formal?"
+        ],
+        [
+          "Organiser",
+          "Calm. Our audience is students who come to read and talk."
+        ]
+      ],
+      "target": "What feeling would you like customers to have?",
+      "levels": {
+        "A2": {
+          "model": "Should the colors feel calm or lively?",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "What feeling would you like customers to have?",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Before choosing a palette, could you tell me what impression you want to create and who the main audience is?",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "would you like",
+          "Ask about a preference politely.",
+          "What feeling would you like the colors to create?"
+        ],
+        [
+          "main audience",
+          "The people the design is mainly for.",
+          "Who is the main audience?"
+        ],
+        [
+          "muted palette",
+          "A group of less intense colors.",
+          "A muted palette may fit the quieter brief."
+        ]
+      ],
+      "meaning": {
+        "question": "Which information guides the palette choice?",
+        "choices": [
+          "The audience and desired feeling.",
+          "The designer’s favorite color alone.",
+          "The largest available number of colors."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. The designer learns the purpose before choosing.",
+          "A personal preference is not enough to understand this brief.",
+          "More colors do not automatically fit the audience."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "What feeling would you like to create?",
+          "What feeling you would like to create?",
+          "What feeling would you likes to create?"
+        ],
+        "answer": 0,
+        "reason": "In a direct question, put “would” before “you”; use the base verb “like”."
+      },
+      "roles": {
+        "client": "Your daytime customers want a quiet place to study. You dislike neon colors. Reveal these details only when asked.",
+        "designer": "Ask about the audience and feeling. Compare the muted and vibrant sample palettes."
+      },
+      "mission": "Choose a palette based on a short discovery conversation.",
+      "success": [
+        "Ask an open question.",
+        "Name the audience.",
+        "Recommend a palette with a reason."
+      ],
+      "question_model": "Who will see the post, and what feeling should it create?",
+      "client_answer": "Students use the café for quiet study. I dislike neon colors.",
+      "transfer_model": "A muted palette may fit the quiet study brief better than neon colors. Would you like me to compare two calm options?",
+      "new_brief": "A youth sports club needs a campaign for new members. The organiser wants energy but does not want the text to become difficult to read. Ask about the audience and recommend a direction.",
+      "independent_model": "Who is the main audience: younger children, teenagers, or parents? We could try a vibrant accent with readable dark text, then check the result at phone size.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Everyday life",
+        "why": "Discuss a clear, readable choice for screens and posters."
+      },
+      "everyday_use": "Discuss a clear, readable choice for screens and posters.",
+      "notice": {
+        "question": "What can you observe without guessing the audience’s feelings?",
+        "choices": [
+          "A and B use different color palettes.",
+          "Everyone will prefer B.",
+          "The invitation wording changes."
+        ],
+        "answer": 0,
+        "reason": "The colors differ. A viewer’s feelings need to be checked, not assumed."
+      }
+    },
+    {
+      "id": "color-3",
+      "title": "Give a conditional option",
+      "focus": "If + present, can + verb",
+      "visual": "palette",
+      "dialogue": [
+        [
+          "Organiser",
+          "We might use the poster on a bright outdoor sign too."
+        ],
+        [
+          "You",
+          "If people see it from the street, we can use stronger contrast and fewer small details."
+        ],
+        [
+          "Organiser",
+          "Let’s make a separate version for the sign."
+        ]
+      ],
+      "target": "If people see it from the street, we can use stronger contrast.",
+      "levels": {
+        "A2": {
+          "model": "For the street sign, we need clear colors.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "If people see it from the street, we can use stronger contrast.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "If the design needs to work outdoors, I would create a separate version with stronger contrast and fewer details.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "if people see it",
+          "Introduce a viewing condition.",
+          "If people see it from the street, the offer needs to be clear."
+        ],
+        [
+          "we can use",
+          "Offer an available option.",
+          "We can use stronger contrast."
+        ],
+        [
+          "a separate version",
+          "A second design adapted to another use.",
+          "The sign needs a separate version."
+        ]
+      ],
+      "meaning": {
+        "question": "Why does the designer suggest a second version?",
+        "choices": [
+          "To use a random new brand.",
+          "To match a different viewing situation.",
+          "To hide the same opening details."
+        ],
+        "answer": 1,
+        "reasons": [
+          "The brand can stay consistent. The use is different.",
+          "Yes. A street sign needs different readability decisions.",
+          "The aim is clearer information, not hiding it."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "If people will see it from the street, we can simplify it.",
+          "If people see it from the street, we can simplify it.",
+          "If people seeing it from the street, we can simplify it."
+        ],
+        "answer": 1,
+        "reason": "For this real possible condition, use present simple after “if”: if people see it."
+      },
+      "roles": {
+        "client": "You need both a phone post and a street sign. The sign will be read quickly from a distance.",
+        "designer": "Ask where each version will be seen. Offer a conditional recommendation and define two versions."
+      },
+      "mission": "Adapt the same palette to two viewing conditions.",
+      "success": [
+        "Ask about the viewing conditions.",
+        "Use an if-clause naturally.",
+        "Confirm whether a second version is in scope."
+      ],
+      "question_model": "Where will people see each version?",
+      "client_answer": "We need a phone post and a street sign. People will read the sign quickly from a distance.",
+      "transfer_model": "If people read the sign from the street, we can use stronger contrast and fewer small details. I suggest keeping a separate phone version. Should I quote for both versions?",
+      "new_brief": "A workshop invitation will appear in a mobile message and on a noticeboard across a large hall. Explain how the viewing conditions affect the design and confirm the versions needed.",
+      "independent_model": "If people read the noticeboard from across the hall, we can make the key details larger and use stronger contrast. Do you need a separate mobile version as well?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Everyday life",
+        "why": "Discuss a clear, readable choice for screens and posters."
+      },
+      "everyday_use": "Discuss a clear, readable choice for screens and posters.",
+      "notice": {
+        "question": "What can you observe without guessing the audience’s feelings?",
+        "choices": [
+          "A and B use different color palettes.",
+          "Everyone will prefer B.",
+          "The invitation wording changes."
+        ],
+        "answer": 0,
+        "reason": "The colors differ. A viewer’s feelings need to be checked, not assumed."
+      }
+    }
+  ],
+  "layout": [
+    {
+      "id": "layout-1",
+      "title": "Describe where things are",
+      "focus": "Position phrases: above / below / next to",
+      "visual": "layout",
+      "dialogue": [
+        [
+          "Organiser",
+          "Where have you put the opening details?"
+        ],
+        [
+          "You",
+          "The date is below the headline, and the location is next to it. They are grouped together."
+        ],
+        [
+          "Organiser",
+          "Good. That makes the information easy to find."
+        ]
+      ],
+      "target": "The date is below the headline, and the location is next to it.",
+      "levels": {
+        "A2": {
+          "model": "The date is below the headline.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The date is below the headline, and the location is next to it.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "I grouped the date and location below the headline so the practical details form one clear unit.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "below the headline",
+          "Lower than the main line of text.",
+          "The date is below the headline."
+        ],
+        [
+          "next to it",
+          "Beside the detail just mentioned.",
+          "The location is next to the date."
+        ],
+        [
+          "grouped together",
+          "Put related items close to one another.",
+          "The practical details are grouped together."
+        ]
+      ],
+      "meaning": {
+        "question": "Which details are grouped together?",
+        "choices": [
+          "The date and location.",
+          "Only the headline letters.",
+          "Every element in a random corner."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. They tell the viewer when and where to come.",
+          "The question is about practical details, not letter spacing.",
+          "Grouping is intentional; these details belong together."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "The date is under to the headline.",
+          "The date is below the headline.",
+          "The date is below of the headline."
+        ],
+        "answer": 1,
+        "reason": "Use “below” directly before the noun phrase: below the headline."
+      },
+      "roles": {
+        "client": "You want customers to find the date and location together. Ask the designer to point out where they are.",
+        "designer": "Describe two positions clearly. Avoid “it” until you have named the detail."
+      },
+      "mission": "Guide an organiser around a layout with unambiguous English.",
+      "success": [
+        "Name each element before referring to it.",
+        "Use two accurate position phrases.",
+        "Explain why the details are together."
+      ],
+      "question_model": "Which practical details should customers find together?",
+      "client_answer": "Please keep the date and location together. Show me where they are.",
+      "transfer_model": "The date and location are grouped below the headline. Customers can find when and where to come in one place. Would you like the address on a separate line?",
+      "new_brief": "A school notice puts a room number in the top corner and a meeting time at the bottom. Describe a clearer arrangement using two position phrases.",
+      "independent_model": "I would place the meeting time below the heading and the room number next to it. That keeps the practical details together.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "School",
+        "why": "Help a group organise a notice or presentation."
+      },
+      "everyday_use": "Help a group organise a notice or presentation.",
+      "notice": {
+        "question": "What changes in the arrangement?",
+        "choices": [
+          "The heading and details move.",
+          "The date changes from Friday to Sunday.",
+          "The café name is removed."
+        ],
+        "answer": 0,
+        "reason": "Compare where the heading and practical details sit."
+      }
+    },
+    {
+      "id": "layout-2",
+      "title": "Explain a revision",
+      "focus": "Past-simple change + purpose",
+      "visual": "layout",
+      "dialogue": [
+        [
+          "Organiser",
+          "What did you change in the second version?"
+        ],
+        [
+          "You",
+          "I moved the details below the headline to make the layout easier to scan."
+        ],
+        [
+          "Organiser",
+          "Please keep this version and make the address a little larger."
+        ]
+      ],
+      "target": "I moved the details below the headline to make the layout easier to scan.",
+      "levels": {
+        "A2": {
+          "model": "I moved the details. Now the layout is clearer.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "I moved the details below the headline to make the layout easier to scan.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "I reorganised the practical details into one group, which makes the layout easier to scan without adding more content.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "I moved",
+          "Describe a completed change.",
+          "I moved the opening date."
+        ],
+        [
+          "to make",
+          "Give the purpose of a change.",
+          "I moved the date to make it easier to find."
+        ],
+        [
+          "scan the layout",
+          "Look quickly for useful information.",
+          "Customers can scan the layout quickly."
+        ]
+      ],
+      "meaning": {
+        "question": "What changed between the versions?",
+        "choices": [
+          "All the opening facts.",
+          "The arrangement of the same information.",
+          "The location of the café."
+        ],
+        "answer": 1,
+        "reasons": [
+          "The poster still carries the same facts.",
+          "Yes. The revision changes the arrangement rather than the facts.",
+          "The café has not moved; its details moved on the poster."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "I moved the date to make it easier to find.",
+          "I moved the date for make it easier to find.",
+          "I move the date yesterday to make it easier to find."
+        ],
+        "answer": 0,
+        "reason": "Use past simple for the completed change and “to make” for its purpose."
+      },
+      "roles": {
+        "client": "Your address has been overlooked in earlier posters. You need it clearer, but the opening offer should still lead.",
+        "designer": "Describe a completed revision, then ask which detail needs the next change."
+      },
+      "mission": "Present a revision and respond to one further request.",
+      "success": [
+        "Describe a specific completed change.",
+        "Explain its purpose.",
+        "Confirm the next request."
+      ],
+      "question_model": "Which detail was missed in earlier posters?",
+      "client_answer": "People overlooked the address. Make it clearer, but keep the opening offer first.",
+      "transfer_model": "I’ll make the address larger within the details group while keeping the opening offer as the focal point. Would you like me to send a revised proof?",
+      "new_brief": "You revised a conference poster by moving the registration link below the main invitation. Explain the change in past tense, give its purpose, and request review.",
+      "independent_model": "I moved the registration link below the invitation to make the next step easier to find. Could you check the revised proof before I export it?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "School",
+        "why": "Help a group organise a notice or presentation."
+      },
+      "everyday_use": "Help a group organise a notice or presentation.",
+      "notice": {
+        "question": "What changes in the arrangement?",
+        "choices": [
+          "The heading and details move.",
+          "The date changes from Friday to Sunday.",
+          "The café name is removed."
+        ],
+        "answer": 0,
+        "reason": "Compare where the heading and practical details sit."
+      }
+    },
+    {
+      "id": "layout-3",
+      "title": "Push back on clutter",
+      "focus": "Too much / too many; polite recommendation",
+      "visual": "clutter",
+      "dialogue": [
+        [
+          "Organiser",
+          "Can we add every menu item and three photos?"
+        ],
+        [
+          "You",
+          "There is too much information for a small phone post. I suggest a short invitation and a link to the full menu."
+        ],
+        [
+          "Organiser",
+          "All right. Keep the opening offer and the address."
+        ]
+      ],
+      "target": "There is too much information for a small phone post.",
+      "levels": {
+        "A2": {
+          "model": "There is too much text. Let’s keep the offer.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "There is too much information for a small phone post.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Although the menu matters, adding every item would compete with the opening offer; I suggest linking to the full menu instead.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "too much information",
+          "Information is uncountable in this use.",
+          "There is too much information."
+        ],
+        [
+          "too many elements",
+          "Elements are separate countable things.",
+          "There are too many competing elements."
+        ],
+        [
+          "I suggest",
+          "Offer a recommendation respectfully.",
+          "I suggest keeping the opening offer."
+        ]
+      ],
+      "meaning": {
+        "question": "What is the alternative to adding the full menu?",
+        "choices": [
+          "Delete the opening offer.",
+          "Make every line smaller.",
+          "Use a short invitation and a menu link."
+        ],
+        "answer": 2,
+        "reasons": [
+          "The opening offer is the message that should lead.",
+          "Smaller text may make the problem worse.",
+          "Yes. This keeps the post focused without losing access to the menu."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "There are too many informations.",
+          "There is too much information.",
+          "There is too many information."
+        ],
+        "answer": 1,
+        "reason": "“Information” is uncountable: too much information."
+      },
+      "roles": {
+        "client": "You believe including the whole menu will attract customers. Your real priority is getting opening-day visitors.",
+        "designer": "Acknowledge the menu request, explain the size constraint, and offer a way to keep the full menu accessible."
+      },
+      "mission": "Negotiate a focused phone layout.",
+      "success": [
+        "Acknowledge the organiser’s goal.",
+        "Use too much or too many accurately.",
+        "Offer a practical alternative."
+      ],
+      "question_model": "What is the most important result you want from this post?",
+      "client_answer": "I want opening-day visitors. I thought showing the whole menu would attract them.",
+      "transfer_model": "I suggest keeping the opening offer and address on the post, with a link to the full menu. There is too much information for every menu item at phone size. Would that meet your goal?",
+      "new_brief": "Your school club wants every activity, every organiser, and every contact detail on a small phone post. Explain the space problem politely and suggest where the extra details can go.",
+      "independent_model": "There is too much information for one small post. I suggest one clear invitation with a link to the full course list, so the details stay accessible.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "School",
+        "why": "Help a group organise a notice or presentation."
+      },
+      "everyday_use": "Help a group organise a notice or presentation.",
+      "notice": {
+        "question": "What does B do with the extra menu information?",
+        "choices": [
+          "Links to it instead of crowding the post.",
+          "Hides the opening date.",
+          "Adds more competing lines."
+        ],
+        "answer": 0,
+        "reason": "The post keeps one invitation and points to the full menu."
+      }
+    }
+  ],
+  "clients": [
+    {
+      "id": "clients-1",
+      "title": "Clarify a vague request",
+      "focus": "Could you clarify / do you mean",
+      "visual": "client-brief",
+      "dialogue": [
+        [
+          "Organiser",
+          "Can you make the design more professional?"
+        ],
+        [
+          "You",
+          "Could you clarify what you mean by professional? Do you mean simpler colors, a cleaner layout, or a more formal typeface?"
+        ],
+        [
+          "Organiser",
+          "A cleaner layout, please. The information feels crowded."
+        ]
+      ],
+      "target": "Could you clarify what you mean by professional?",
+      "levels": {
+        "A2": {
+          "model": "Do you mean a cleaner layout?",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "Could you clarify what you mean by professional?",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Could you point to a reference that captures the style you mean, so I can make the next revision more focused?",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "could you clarify",
+          "Ask someone to make an unclear point specific.",
+          "Could you clarify what you mean?"
+        ],
+        [
+          "do you mean",
+          "Check one possible interpretation.",
+          "Do you mean a cleaner layout?"
+        ],
+        [
+          "a reference",
+          "An example to compare or discuss.",
+          "Could you share a reference?"
+        ]
+      ],
+      "meaning": {
+        "question": "Which action would best follow the clarification?",
+        "choices": [
+          "Change the layout spacing and grouping.",
+          "Change every design feature at once.",
+          "Ignore the request because it is vague."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. The organiser has identified the crowded layout.",
+          "The clarification narrows the revision to a cleaner layout.",
+          "The designer can use a question to make the request useful."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "Could you clarify what do you mean?",
+          "Could you clarify what you mean?",
+          "Could you clarifying what you mean?"
+        ],
+        "answer": 1,
+        "reason": "Inside “Could you clarify…”, use statement order: what you mean."
+      },
+      "roles": {
+        "client": "You are worried that your opening poster looks crowded. Begin with “make it professional”; explain the crowding when asked.",
+        "designer": "Ask for clarification and propose one focused revision, not a complete unexplained redesign."
+      },
+      "mission": "Turn a vague brief into a usable next step.",
+      "success": [
+        "Ask without sounding dismissive.",
+        "Offer interpretations or ask for a reference.",
+        "Confirm the specific change."
+      ],
+      "question_model": "Which part feels unprofessional to you: the type, colors, or spacing?",
+      "client_answer": "The information feels crowded. I want the layout cleaner, not a new logo.",
+      "transfer_model": "I’ll group the related details and add more breathing room while keeping the logo. Could you confirm whether the opening offer should still be the main message?",
+      "new_brief": "Your classmate says the project title slide “doesn’t feel serious enough”. Ask what they mean and which part they want to change.",
+      "independent_model": "When you say “serious enough”, do you mean the type style, colors, or spacing? Which part would you like us to change first?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Working together",
+        "why": "Agree on what someone means, what needs doing, and when."
+      },
+      "everyday_use": "Agree on what someone means, what needs doing, and when.",
+      "notice": {
+        "question": "What do we still need to learn?",
+        "choices": [
+          "What the person means by “professional”.",
+          "Which extra decoration to add immediately.",
+          "Whether words have been banned."
+        ],
+        "answer": 0,
+        "reason": "The feedback is vague, so a useful question comes before a revision."
+      }
+    },
+    {
+      "id": "clients-2",
+      "title": "Agree on an extra task",
+      "focus": "Can + base verb; checking time",
+      "visual": "client-scope",
+      "dialogue": [
+        [
+          "Organiser",
+          "Thanks for making the poster. Could you make a separate invitation too?"
+        ],
+        [
+          "You",
+          "I can make the invitation, but I need more time. Shall we agree on the deadline first?"
+        ],
+        [
+          "Organiser",
+          "Yes. The invitation is for Friday, and we need it on Wednesday."
+        ]
+      ],
+      "target": "I can make the invitation, but I need more time.",
+      "levels": {
+        "A2": {
+          "model": "I can help, but I need more time.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "I can make the invitation, but I need more time.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "I can help with a separate invitation, but I need to check the deadline and my available time before I commit.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "a separate task",
+          "Another piece of work, not a change to the same file.",
+          "The handout is a separate task."
+        ],
+        [
+          "need more time",
+          "Explain a practical limit.",
+          "I need more time to make the invitation."
+        ],
+        [
+          "agree on the deadline",
+          "Decide together when the work is needed.",
+          "Shall we agree on the deadline first?"
+        ]
+      ],
+      "meaning": {
+        "question": "Why does the speaker ask about the deadline?",
+        "choices": [
+          "The invitation is extra work and needs time.",
+          "The poster has no words.",
+          "The organiser wants to cancel the event."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. A separate invitation needs its own time.",
+          "The request is for an extra invitation, not missing poster text.",
+          "No cancellation is mentioned."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "I can to help with the invitation.",
+          "I can helping with the invitation.",
+          "I can help with the invitation."
+        ],
+        "answer": 2,
+        "reason": "After can, use the base verb: can help."
+      },
+      "roles": {
+        "client": "You asked for a poster. You now need a separate invitation for Friday. Tell your partner you need it by Wednesday after they ask.",
+        "designer": "Ask whether the invitation is a separate task and when it is needed. Agree on a realistic next step."
+      },
+      "mission": "Agree on what you can help with and when.",
+      "success": [
+        "Name the extra task calmly.",
+        "Ask when it is needed.",
+        "Agree on a realistic next step."
+      ],
+      "question_model": "Is this a separate invitation, and when do you need it?",
+      "client_answer": "Yes, a separate invitation for Friday. We need it by Wednesday.",
+      "transfer_model": "I can help with the invitation, but it is a separate task. I will check whether I can finish by Wednesday and let you know today.",
+      "new_brief": "You agreed to help with a class presentation. Your classmate now asks for a separate handout too. Explain what extra time you need and ask about the deadline.",
+      "independent_model": "I can help with the handout, but it is extra work. When do you need it? I will check my time before I promise.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Working together",
+        "why": "Agree on what someone means, what needs doing, and when."
+      },
+      "everyday_use": "Agree on what someone means, what needs doing, and when.",
+      "notice": {
+        "question": "How is the new request different?",
+        "choices": [
+          "It is a separate invitation.",
+          "It is a spelling correction in the poster.",
+          "It cancels the event."
+        ],
+        "answer": 0,
+        "reason": "A separate invitation is another task, so check the time needed."
+      }
+    },
+    {
+      "id": "clients-3",
+      "title": "Recover after a late update",
+      "focus": "Apology + status + future commitment",
+      "visual": "client-update",
+      "dialogue": [
+        [
+          "Organiser",
+          "I haven’t heard from you. Is the draft still coming today?"
+        ],
+        [
+          "You",
+          "I’m sorry I missed the update. The first draft is ready, but I still need to check the address. I’ll send it by 6 pm Bangladesh time."
+        ],
+        [
+          "Organiser",
+          "Thanks. Please message me if that timing changes."
+        ]
+      ],
+      "target": "I will send the checked draft by 6 pm Bangladesh time.",
+      "levels": {
+        "A2": {
+          "model": "I’m sorry. I will send the draft by 6 pm.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "I will send the checked draft by 6 pm Bangladesh time.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "I missed the agreed update, and I’m sorry; the draft is ready for a final copy check, and I will send it by 6 pm Bangladesh time.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "missed the update",
+          "Did not communicate at the agreed time.",
+          "I missed the update this morning."
+        ],
+        [
+          "still need to",
+          "Name unfinished work honestly.",
+          "I still need to check the address."
+        ],
+        [
+          "by 6 pm",
+          "No later than 6 pm, rather than exactly at 6 pm.",
+          "I will send it by 6 pm Bangladesh time."
+        ]
+      ],
+      "meaning": {
+        "question": "What still needs to happen before sharing?",
+        "choices": [
+          "The address needs a final check.",
+          "The designer must invent a new opening date.",
+          "Nothing; the draft has already been delivered."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. The designer gives a specific unfinished step.",
+          "The approved information should not be invented.",
+          "Ready for checking does not mean already delivered."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "I will sent it by 6 pm.",
+          "I will send it by 6 pm.",
+          "I will sending it by 6 pm."
+        ],
+        "answer": 1,
+        "reason": "After “will”, use the base verb: will send."
+      },
+      "roles": {
+        "client": "Your class project group needs a preview before an online meeting. Ask when it will be ready.",
+        "designer": "Give an honest status, a specific deadline with time zone, and an update plan if there is a delay."
+      },
+      "mission": "Recover trust with a precise status message.",
+      "success": [
+        "Acknowledge the missed update.",
+        "Name what is complete and unfinished.",
+        "Give a deadline and time zone."
+      ],
+      "question_model": "What time is your meeting, and which time zone are you using?",
+      "client_answer": "My meeting is at 3 pm London time. I need to know the exact sharing time in my time zone.",
+      "transfer_model": "I’ll confirm the sharing time in both London and Bangladesh time before sending the next update. The draft is ready for the final address check. If the timing changes, I’ll message you before the deadline.",
+      "new_brief": "You promised your class project group an update but missed it. The slide layout is ready, and the venue still needs confirmation. Write a short status message; do not invent the venue.",
+      "independent_model": "I’m sorry I missed the update. The slide layout is ready, but I still need to confirm the venue. Could you check it today? I’ll then send the final version.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Working together",
+        "why": "Agree on what someone means, what needs doing, and when."
+      },
+      "everyday_use": "Agree on what someone means, what needs doing, and when.",
+      "notice": {
+        "question": "What is still unfinished?",
+        "choices": [
+          "The address check.",
+          "The whole layout.",
+          "The time-zone label."
+        ],
+        "answer": 0,
+        "reason": "The visual separates a finished layout from an unfinished address check."
+      }
+    }
+  ],
+  "toolkit": [
+    {
+      "id": "toolkit-1",
+      "title": "Choose a workflow",
+      "focus": "Can / cannot; version requirements",
+      "visual": "tool-workflow",
+      "dialogue": [
+        [
+          "Organiser",
+          "I need a square social post, and I want to edit the date later."
+        ],
+        [
+          "You",
+          "We can use an editor with separate text layers. A flattened generated image will not give you editable text."
+        ],
+        [
+          "Organiser",
+          "Please include the editable file in the sharing."
+        ]
+      ],
+      "target": "We can use an editor with separate text layers.",
+      "levels": {
+        "A2": {
+          "model": "We can keep the text editable.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "We can use an editor with separate text layers.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "I recommend assembling the post in an editor with separate text layers, so your team can update the date without regenerating the artwork.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "editable text",
+          "Words the organiser can change independently.",
+          "The date must remain editable."
+        ],
+        [
+          "text layers",
+          "Separate editable text objects in a design file.",
+          "I will keep the date in a separate text layer."
+        ],
+        [
+          "flattened image",
+          "One pixel image without separate editable objects.",
+          "A flattened image is useful as a preview."
+        ]
+      ],
+      "meaning": {
+        "question": "Why does the organiser need an editable source file?",
+        "choices": [
+          "To change the date later.",
+          "To make the preview harder to open.",
+          "To add a random watermark."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. The workflow follows the future editing requirement.",
+          "A preview can still be delivered in a common image format.",
+          "The organiser asks for editable text, not a watermark."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "We can keep the text editable.",
+          "We can to keep the text editable.",
+          "We can keeping the text editable."
+        ],
+        "answer": 0,
+        "reason": "After “can”, use the base verb “keep”."
+      },
+      "roles": {
+        "client": "Your opening date may change. A colleague with basic editing skills will update the file.",
+        "designer": "Ask who will edit the file and what tool they use. Recommend a compatible editable source and a preview."
+      },
+      "mission": "Choose tools from the version, not from novelty.",
+      "success": [
+        "Ask about future editing.",
+        "Explain one tool capability.",
+        "Confirm source and preview formats."
+      ],
+      "question_model": "Who will edit the date later, and which editor do they use?",
+      "client_answer": "A colleague with basic Canva skills will update the date. We need a square post and an editable source.",
+      "transfer_model": "I suggest a square Canva layout with the date in a separate text layer. I’ll include a preview and the editable source. Would you like your colleague to test the edit before final sharing?",
+      "new_brief": "Your club needs a weekly meeting poster, and the time may change. Recommend a file that a classmate can edit next week.",
+      "independent_model": "I recommend keeping the meeting time in a separate text layer, so a classmate can update it next week. Which editor can they use?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "School",
+        "why": "Choose and share a design file that other people can use."
+      },
+      "everyday_use": "Choose and share a design file that other people can use.",
+      "notice": {
+        "question": "Which file keeps text separately editable?",
+        "choices": [
+          "B, with a text layer.",
+          "A, with one pixel image.",
+          "Neither file."
+        ],
+        "answer": 0,
+        "reason": "A separate text layer allows someone to change the words."
+      }
+    },
+    {
+      "id": "toolkit-2",
+      "title": "Check before sharing",
+      "focus": "Need to + base verb; asking permission",
+      "visual": "tool-license",
+      "dialogue": [
+        [
+          "Organiser",
+          "This picture looks good on our class slide. Can we post it on the public club page?"
+        ],
+        [
+          "You",
+          "The download note says classroom use only. We need to check permission before posting it publicly."
+        ],
+        [
+          "Organiser",
+          "Let’s ask, or choose a picture that allows public sharing."
+        ]
+      ],
+      "target": "We need to check permission before posting it publicly.",
+      "levels": {
+        "A2": {
+          "model": "We need to check permission first.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "We need to check permission before posting it publicly.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Although the picture works on our slide, we need to confirm that public sharing is permitted before posting it on the club page.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "classroom use only",
+          "The fictional download note limits the stated use.",
+          "This note says classroom use only."
+        ],
+        [
+          "before posting",
+          "Check first; post later.",
+          "Ask before posting the picture."
+        ],
+        [
+          "public sharing",
+          "Posting where anyone can see it.",
+          "Does this note allow public sharing?"
+        ]
+      ],
+      "meaning": {
+        "question": "What is the useful next step?",
+        "choices": [
+          "Assume every downloaded picture can be shared anywhere.",
+          "Check permission or choose a picture with suitable terms.",
+          "Post it before reading the note."
+        ],
+        "answer": 1,
+        "reasons": [
+          "The given note states a limit.",
+          "Yes. Check the intended public use before sharing.",
+          "Read and check the stated condition first."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "We need check permission.",
+          "We need to check permission.",
+          "We need checking permission."
+        ],
+        "answer": 1,
+        "reason": "Use need to followed by the base verb: need to check."
+      },
+      "roles": {
+        "client": "You want to post the class slide on a public club page. The picture’s download note says classroom use only.",
+        "designer": "Explain the note, ask about the intended use, and suggest asking permission or choosing a suitable picture."
+      },
+      "mission": "Check a stated condition before sharing a design publicly.",
+      "success": [
+        "Read the stated condition.",
+        "Ask where the design will be shared.",
+        "Suggest a practical next step."
+      ],
+      "question_model": "Will this stay in class or appear on a public page?",
+      "client_answer": "We want it on the public club page, not only in class.",
+      "transfer_model": "We need to check whether public sharing is permitted. We can ask for permission or choose another picture with suitable terms.",
+      "new_brief": "A classmate wants to reuse a photograph in a public event poster. The download note is unclear. Explain what you would check before sharing it.",
+      "independent_model": "We need to check the sharing conditions before using that photograph publicly. If they are unclear, we can ask or choose another picture.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "School",
+        "why": "Choose and share a design file that other people can use."
+      },
+      "everyday_use": "Choose and share a design file that other people can use.",
+      "notice": {
+        "question": "What does the fictional download note say?",
+        "choices": [
+          "Classroom use only.",
+          "Public sharing is already confirmed.",
+          "No one needs to read it."
+        ],
+        "answer": 0,
+        "reason": "Read the stated condition before deciding where to share it."
+      }
+    },
+    {
+      "id": "toolkit-3",
+      "title": "Write a useful production brief",
+      "focus": "Requirements; negative constraints; aspect ratio",
+      "visual": "tool-prompt",
+      "dialogue": [
+        [
+          "Organiser",
+          "The background needs to leave room for our headline."
+        ],
+        [
+          "You",
+          "I’ll ask for a landscape café image with empty space on the left and no generated text. Then I’ll add the approved wording in the editor."
+        ],
+        [
+          "Organiser",
+          "Please keep the table and cup away from that empty area."
+        ]
+      ],
+      "target": "Leave empty space on the left for the headline.",
+      "levels": {
+        "A2": {
+          "model": "Leave space on the left. Do not add text.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "Leave empty space on the left for the headline.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Create a landscape café background with clear negative space on the left, while keeping the cup and table outside the headline area.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "leave space",
+          "Reserve an area for another element.",
+          "Leave space for the headline."
+        ],
+        [
+          "on the left",
+          "Identify a specific part of the frame.",
+          "The headline will go on the left."
+        ],
+        [
+          "approved wording",
+          "Text the organiser has confirmed.",
+          "I will add the approved wording myself."
+        ]
+      ],
+      "meaning": {
+        "question": "Which task will the designer do in the editor?",
+        "choices": [
+          "Invent the café’s final address.",
+          "Add the approved headline as editable text.",
+          "Accept whatever text the generator creates."
+        ],
+        "answer": 1,
+        "reasons": [
+          "The address must come from the organiser.",
+          "Yes. The prompt separates the background asset from the final text.",
+          "The designer explicitly requests no generated text."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "Leave space for the headline.",
+          "Leave space to the headline.",
+          "Leave space at the headline."
+        ],
+        "answer": 0,
+        "reason": "Use “space for” when explaining what the empty area will hold."
+      },
+      "roles": {
+        "client": "You need the headline on the left because the right side carries a cup image. You also need an empty area for a future offer.",
+        "designer": "Ask about placement and dimensions. Write a concise asset brief with both positive and negative requirements."
+      },
+      "mission": "Produce a prompt another person could use without guessing.",
+      "success": [
+        "Name subject and format.",
+        "Specify the empty area.",
+        "Keep factual wording separate from generation."
+      ],
+      "question_model": "Which part of the image needs to remain empty?",
+      "client_answer": "The headline goes on the left. Keep the cup on the right and reserve room for a future offer too.",
+      "transfer_model": "I’ll request a landscape café background with the cup on the right and clear space on the left. I’ll keep the wording in editable layers so you can add another offer later.",
+      "new_brief": "A class presentation needs a vertical title image. A bottle illustration belongs at the bottom, with clear space at the top for the heading. Write clear instructions for the image.",
+      "independent_model": "Create a vertical product background with the bottle near the bottom and clear space at the top. Do not generate text; I will add the approved wording in editable layers.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "School",
+        "why": "Choose and share a design file that other people can use."
+      },
+      "everyday_use": "Choose and share a design file that other people can use.",
+      "notice": {
+        "question": "Where is space reserved for the heading?",
+        "choices": [
+          "On the left.",
+          "Inside the cup.",
+          "Only at the bottom."
+        ],
+        "answer": 0,
+        "reason": "The left area is clear; the cup sits on the right."
+      }
+    }
+  ],
+  "visual": [
+    {
+      "id": "visual-1",
+      "title": "Separate observation from interpretation",
+      "focus": "I notice + fact; may suggest + inference",
+      "visual": "scene",
+      "dialogue": [
+        [
+          "Organiser",
+          "Which lighting feels better for our café invitation?"
+        ],
+        [
+          "You",
+          "I notice warmer light in A. It may suggest a more welcoming mood, but we should check whether that fits your audience."
+        ],
+        [
+          "Organiser",
+          "Our daytime customers want a quiet place to read."
+        ]
+      ],
+      "target": "The warmer light may suggest a more welcoming mood.",
+      "levels": {
+        "A2": {
+          "model": "A looks warmer. It feels welcoming to me.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The warmer light may suggest a more welcoming mood.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "The warmer cast may support a welcoming mood, although the audience’s response needs checking rather than assuming.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "I notice",
+          "Introduce something you can point to.",
+          "I notice a warmer color cast."
+        ],
+        [
+          "may suggest",
+          "Offer a possible meaning, not a proven fact.",
+          "The shadow may suggest tension."
+        ],
+        [
+          "to me",
+          "Show that an interpretation is yours.",
+          "The softer light feels calmer to me."
+        ]
+      ],
+      "meaning": {
+        "question": "Which sentence is an interpretation rather than a visible fact?",
+        "choices": [
+          "A has a warmer color cast.",
+          "The same cup appears in both frames.",
+          "A may feel more welcoming."
+        ],
+        "answer": 2,
+        "reasons": [
+          "The color cast can be compared visually.",
+          "The repeated cup is a visible detail.",
+          "Yes. A mood is a possible reading, not something the picture proves."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "The light may suggest a calm mood.",
+          "The light may suggests a calm mood.",
+          "The light may to suggest a calm mood."
+        ],
+        "answer": 0,
+        "reason": "After “may”, use the base verb: may suggest."
+      },
+      "roles": {
+        "client": "Your café serves students in the day and busy groups in the evening. Ask which mood the proposed image is designed for.",
+        "designer": "Point to one visible lighting difference, offer a cautious interpretation, and ask about the actual audience."
+      },
+      "mission": "Explain mood without claiming to know every viewer’s reaction.",
+      "success": [
+        "Separate what you see from what you infer.",
+        "Use may or to me for a reading.",
+        "Check the occasion and audience."
+      ],
+      "question_model": "Is this image for the quiet daytime café or the lively evening event?",
+      "client_answer": "The daytime café. Students should expect a quiet place to read.",
+      "transfer_model": "The warmer, softer version may support that quiet daytime mood. I’ll compare it with a cooler option so you can judge the feeling. Does the warm version match what customers actually experience?",
+      "new_brief": "Your friends are making a slideshow about a family beach trip. Compare a dark, dramatic image with a bright, open version. Describe what you can see, then give your interpretation.",
+      "independent_model": "I notice more light and less shadow in the bright version. To me, it feels more open and relaxed, but we should check whether that reading fits the intended families.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Everyday life",
+        "why": "Explain what an image shows and what it may suggest."
+      },
+      "everyday_use": "Explain what an image shows and what it may suggest.",
+      "notice": {
+        "question": "Which is a visible observation?",
+        "choices": [
+          "B has cooler-looking light.",
+          "Everyone feels worried in B.",
+          "A is certainly a real photograph."
+        ],
+        "answer": 0,
+        "reason": "Describe the light you can see before interpreting the mood."
+      }
+    },
+    {
+      "id": "visual-2",
+      "title": "Discuss a shape’s personality",
+      "focus": "Looks / feels; might + verb",
+      "visual": "shapes",
+      "dialogue": [
+        [
+          "Organiser",
+          "Could we use the sharp triangle for our nursery mark?"
+        ],
+        [
+          "You",
+          "We could, but the rounded shape might suggest a softer tone. Which personality should the nursery communicate?"
+        ],
+        [
+          "Organiser",
+          "Warm and reassuring, rather than exciting."
+        ]
+      ],
+      "target": "The rounded shape might suggest a softer tone.",
+      "levels": {
+        "A2": {
+          "model": "The circle looks softer to me.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The rounded shape might suggest a softer tone.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "A rounded mark might support a softer tone, but I would compare it with the audience’s expectations before choosing a direction.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "rounded shape",
+          "A shape with curved rather than sharp edges.",
+          "The mark uses a rounded shape."
+        ],
+        [
+          "might suggest",
+          "Offer a possibility while leaving room for another reading.",
+          "The triangle might suggest energy."
+        ],
+        [
+          "rather than",
+          "Contrast the preferred choice with an alternative.",
+          "We want reassurance rather than excitement."
+        ]
+      ],
+      "meaning": {
+        "question": "Which personality does this client want?",
+        "choices": [
+          "Warm and reassuring.",
+          "Aggressive and dangerous.",
+          "Whatever the designer personally likes."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. The organiser names the desired tone.",
+          "That is not the tone the organiser requests.",
+          "The direction should serve this organiser’s audience."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "The circle might suggests a softer tone.",
+          "The circle might suggest a softer tone.",
+          "The circle might suggesting a softer tone."
+        ],
+        "answer": 1,
+        "reason": "Use the base verb after “might”: might suggest."
+      },
+      "roles": {
+        "client": "Your nursery serves parents of young children. You want reassurance, but you do not want a childish or cartoonish mark.",
+        "designer": "Compare rounded and angular shapes. Ask about the audience and offer a tone without treating shape associations as universal."
+      },
+      "mission": "Recommend a shape direction with a qualified reason.",
+      "success": [
+        "Describe the actual shape.",
+        "Qualify the interpretation.",
+        "Ask which brand personality matters."
+      ],
+      "question_model": "Should the nursery feel playful, reassuring, or formal?",
+      "client_answer": "Reassuring. Our audience is parents of young children, but we do not want a childish cartoon mark.",
+      "transfer_model": "A rounded, simple mark might support a reassuring tone without becoming cartoonish. I’ll keep the details restrained. Could we compare it with one more structured option?",
+      "new_brief": "A school safety club wants a reliable-looking poster. Someone says “triangles always mean strength”. Give a more careful explanation and ask about the audience.",
+      "independent_model": "Angular shapes might suggest energy, but that reading is not universal. We could compare a more stable square-based mark. What impression matters most to your customers?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Everyday life",
+        "why": "Explain what an image shows and what it may suggest."
+      },
+      "everyday_use": "Explain what an image shows and what it may suggest.",
+      "notice": {
+        "question": "How do the shapes differ?",
+        "choices": [
+          "A is rounded; B is angular.",
+          "Both are circles.",
+          "B has no boundary."
+        ],
+        "answer": 0,
+        "reason": "The circular boundary is rounded, while the triangle has corners."
+      }
+    },
+    {
+      "id": "visual-3",
+      "title": "Ask for a cultural review",
+      "focus": "Could someone…; before final sharing",
+      "visual": "rtl",
+      "dialogue": [
+        [
+          "Organiser",
+          "We need an Arabic version for our Gulf customers."
+        ],
+        [
+          "You",
+          "I’ll adapt the reading flow and alignment. Could someone on your team review the Arabic wording and layout before final sharing?"
+        ],
+        [
+          "Organiser",
+          "Yes. Keep our brand mark unchanged and send a preview first."
+        ]
+      ],
+      "target": "Could someone on your team review the Arabic wording and layout?",
+      "levels": {
+        "A2": {
+          "model": "Could an Arabic reader check the words and layout?",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "Could someone on your team review the Arabic wording and layout?",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Before final sharing, could a fluent Arabic reader review the wording, reading flow, and alignment while we keep the brand mark intact?",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "reading flow",
+          "The order and direction in which content is read.",
+          "The reading flow needs adapting."
+        ],
+        [
+          "keep unchanged",
+          "Do not alter this item.",
+          "Keep the brand mark unchanged."
+        ],
+        [
+          "review before sharing",
+          "Check the work before the final files are sent.",
+          "Please review the layout before sharing."
+        ]
+      ],
+      "meaning": {
+        "question": "Which item should remain unchanged in this brief?",
+        "choices": [
+          "The English text.",
+          "The whole layout direction.",
+          "The brand mark."
+        ],
+        "answer": 2,
+        "reasons": [
+          "The text needs an Arabic version.",
+          "The reading flow and alignment need adaptation.",
+          "Yes. The organiser explicitly asks to keep the brand mark intact."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "Could someone reviews the layout?",
+          "Could someone review the layout?",
+          "Could someone to review the layout?"
+        ],
+        "answer": 1,
+        "reason": "After “could”, use the base verb: could someone review…?"
+      },
+      "roles": {
+        "client": "You have an approved Arabic translation and a brand mark that must stay intact. Your colleague can review the proof.",
+        "designer": "Do not claim to validate Arabic if you cannot. Ask for approved wording and a local reviewer; confirm what will change."
+      },
+      "mission": "Arrange an audience and language review.",
+      "success": [
+        "Ask for approved wording.",
+        "Confirm what stays intact.",
+        "Name the reviewer and review stage."
+      ],
+      "question_model": "Do you have approved Arabic wording and someone who can review the proof?",
+      "client_answer": "Yes. The translation is approved, our mark must remain unchanged, and my colleague can review the Arabic proof.",
+      "transfer_model": "I’ll use the approved wording, adapt the reading flow and alignment, and keep the mark intact. Could your colleague review the proof before we prepare the final files?",
+      "new_brief": "A community invitation will appear in English and Urdu. You do not read Urdu fluently. Ask for the exact wording and someone who can review it before sharing.",
+      "independent_model": "Could you provide approved Urdu wording and nominate a fluent reader to review the proof? I’ll adapt the layout direction and confirm which brand elements must remain unchanged.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Everyday life",
+        "why": "Explain what an image shows and what it may suggest."
+      },
+      "everyday_use": "Explain what an image shows and what it may suggest.",
+      "notice": {
+        "question": "What does this comparison demonstrate?",
+        "choices": [
+          "Two reading-direction layouts.",
+          "An exact Arabic translation.",
+          "A new date."
+        ],
+        "answer": 0,
+        "reason": "The English labels illustrate layout direction, not translated text."
+      }
+    }
+  ],
+  "judgment": [
+    {
+      "id": "judgment-1",
+      "title": "Report a factual error",
+      "focus": "Found + past; needs + noun / verb-ing",
+      "visual": "spelling",
+      "dialogue": [
+        [
+          "Organiser",
+          "The draft looks good. Is it ready to publish?"
+        ],
+        [
+          "You",
+          "I found a spelling error in “Opening”. I’ll correct the headline and check it against the approved copy before exporting."
+        ],
+        [
+          "Organiser",
+          "Thanks. Please send the corrected proof first."
+        ]
+      ],
+      "target": "I found a spelling error in the headline.",
+      "levels": {
+        "A2": {
+          "model": "The headline has a spelling mistake.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "I found a spelling error in the headline.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "The draft is visually promising, but I found a spelling error that needs correcting before the final export.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "I found",
+          "Report a problem you discovered.",
+          "I found a spelling error."
+        ],
+        [
+          "approved copy",
+          "The exact wording confirmed by the organiser.",
+          "Check the headline against the approved copy."
+        ],
+        [
+          "corrected proof",
+          "An updated preview for review.",
+          "I will send the corrected proof first."
+        ]
+      ],
+      "meaning": {
+        "question": "What should happen before export?",
+        "choices": [
+          "Correct the spelling and check the approved text.",
+          "Publish immediately because the colors look good.",
+          "Change the organiser’s actual offer without asking."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. Accurate copy is part of the version.",
+          "Visual quality does not cancel a factual error.",
+          "The organiser’s offer needs approval, not invention."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "I found a spelling error.",
+          "I finded a spelling error.",
+          "I founded a spelling error."
+        ],
+        "answer": 0,
+        "reason": "The past of “find” is “found”. “Founded” means established an organisation."
+      },
+      "roles": {
+        "client": "You approved “Grand Opening” and want a corrected proof before it goes public.",
+        "designer": "Identify the specific error without blaming the tool, explain your correction, and ask for final approval."
+      },
+      "mission": "Report a draft error and give a credible next step.",
+      "success": [
+        "Name the specific problem.",
+        "Use completed-review language.",
+        "Offer a correction and a proof."
+      ],
+      "question_model": "Could you confirm the exact approved headline?",
+      "client_answer": "It is “Grand Opening”. Please send a corrected proof before it goes public.",
+      "transfer_model": "I found the spelling error and will correct it to “Grand Opening”. I’ll check the rest of the copy and send a corrected proof before publication.",
+      "new_brief": "An attractive generated invitation displays “Sunday” instead of the organiser-approved “Saturday”. Write a review note and explain the next step.",
+      "independent_model": "I found that the day does not match the approved copy. I’ll change it to Saturday, check the other details, and send a corrected proof before publication.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Community",
+        "why": "Check facts and requirements before sharing a design."
+      },
+      "everyday_use": "Check facts and requirements before sharing a design.",
+      "notice": {
+        "question": "Which word needs checking in A?",
+        "choices": [
+          "Opennig.",
+          "Friday.",
+          "Talaimari."
+        ],
+        "answer": 0,
+        "reason": "Compare Opennig with the agreed spelling Opening."
+      }
+    },
+    {
+      "id": "judgment-2",
+      "title": "Check against the brief",
+      "focus": "Meets / does not meet; needs to",
+      "visual": "format",
+      "dialogue": [
+        [
+          "Organiser",
+          "This wide image looks good, but we asked for a square post."
+        ],
+        [
+          "You",
+          "The draft does not meet the required aspect ratio. I’ll rebuild it as a square and keep the text editable."
+        ],
+        [
+          "Organiser",
+          "Please send the square preview and the editable source."
+        ]
+      ],
+      "target": "The draft does not meet the required aspect ratio.",
+      "levels": {
+        "A2": {
+          "model": "The draft is wide. We need a square post.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The draft does not meet the required aspect ratio.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Although the draft looks polished, it does not meet the square-format requirement or the need for an editable source.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "meet the requirement",
+          "Satisfy something the brief asks for.",
+          "This version meets the requirement."
+        ],
+        [
+          "aspect ratio",
+          "The relationship between width and height.",
+          "The brief asks for a 1:1 aspect ratio."
+        ],
+        [
+          "editable source",
+          "The working file with elements that can be changed.",
+          "The organiser needs an editable source."
+        ]
+      ],
+      "meaning": {
+        "question": "Why is the wide draft not ready?",
+        "choices": [
+          "It is not new enough.",
+          "It does not meet the agreed format.",
+          "Every wide image is always bad design."
+        ],
+        "answer": 1,
+        "reasons": [
+          "Novelty is not the requirement being checked.",
+          "Yes. The assessment is against this specific square-post brief.",
+          "Wide images suit other briefs; this brief requires a square."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "The draft does not meets the brief.",
+          "The draft does not meeting the brief.",
+          "The draft does not meet the brief."
+        ],
+        "answer": 2,
+        "reason": "After “does not”, use the base verb: does not meet."
+      },
+      "roles": {
+        "client": "You need a 1:1 post and text your staff can edit. Both were in the agreed brief.",
+        "designer": "Compare the current draft with both requirements. Define the corrected preview and source versions."
+      },
+      "mission": "Explain why a polished output can still fail a brief.",
+      "success": [
+        "Name the exact unmet requirement.",
+        "Propose a concrete fix.",
+        "Confirm the final file types."
+      ],
+      "question_model": "Do you need both a square preview and the editable text source?",
+      "client_answer": "Yes. The 1:1 format and editable source were both in the brief.",
+      "transfer_model": "The current wide, flattened draft does not meet those requirements. I’ll rebuild it at 1:1 with editable text and send both the preview and the source. Could you confirm the editor your staff will use?",
+      "new_brief": "An organiser requested a transparent logo but receives an image with a solid background. Explain the unmet requirement and the files you will deliver after correcting it.",
+      "independent_model": "The current file does not meet the transparent-background requirement. I’ll prepare a transparent version and send a preview for review along with the agreed source file.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Community",
+        "why": "Check facts and requirements before sharing a design."
+      },
+      "everyday_use": "Check facts and requirements before sharing a design.",
+      "notice": {
+        "question": "What visible format difference can you point to?",
+        "choices": [
+          "A is wide; B is square.",
+          "A is transparent.",
+          "B has no text."
+        ],
+        "answer": 0,
+        "reason": "The two files have different proportions. Requirements must be checked too."
+      }
+    },
+    {
+      "id": "judgment-3",
+      "title": "Present a refinement",
+      "focus": "Before / now; so + result; client question",
+      "visual": "contrast",
+      "dialogue": [
+        [
+          "Organiser",
+          "What did your review improve?"
+        ],
+        [
+          "You",
+          "Before, the opening details were hard to read. I changed the text color, so the date and location are clearer now."
+        ],
+        [
+          "Organiser",
+          "Please keep the gold line and send the final proof."
+        ]
+      ],
+      "target": "I changed the text color, so the details are clearer now.",
+      "levels": {
+        "A2": {
+          "model": "I changed the text color. Now the details are clearer.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "I changed the text color, so the details are clearer now.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "I kept the original palette but increased the text contrast, so the essential details are clearer without losing the warm brand tone.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "before / now",
+          "Compare an earlier state with the current state.",
+          "Before, the text was faint. Now, it is clearer."
+        ],
+        [
+          "so",
+          "Connect a cause to its result.",
+          "I darkened the text, so it is easier to read."
+        ],
+        [
+          "without losing",
+          "Keep a useful quality while changing something else.",
+          "Increase contrast without losing the warm tone."
+        ]
+      ],
+      "meaning": {
+        "question": "What did the review preserve?",
+        "choices": [
+          "Every unreadable text color.",
+          "The factual spelling error.",
+          "The palette’s warm character."
+        ],
+        "answer": 2,
+        "reasons": [
+          "The important text color changed to improve readability.",
+          "This task concerns contrast, not preserving an error.",
+          "Yes. The designer changes a function while keeping the overall tone."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use in this exchange?",
+        "choices": [
+          "I darkened the text, so it is clearer.",
+          "I darkened the text, because it is clearer now.",
+          "I darkened the text, so is clearer it."
+        ],
+        "answer": 0,
+        "reason": "“So” introduces the result here: the darker text makes the details clearer."
+      },
+      "roles": {
+        "client": "You like the warm palette and gold decoration, but the date must be readable on a phone.",
+        "designer": "Explain the before/after clearly, identify what you kept, and ask for confirmation before final export."
+      },
+      "mission": "Demonstrate the value of your review in two or three clear sentences.",
+      "success": [
+        "Describe the earlier problem.",
+        "Connect a specific change to its result.",
+        "Name what you preserved and request confirmation."
+      ],
+      "question_model": "Which parts of the original palette should I preserve?",
+      "client_answer": "Keep the warm palette and gold decoration. The date must be readable on a phone.",
+      "transfer_model": "I’ll keep the gold decoration and use darker text for the date. The details will be easier to read while the warm palette stays intact. Could you check the phone-size proof?",
+      "new_brief": "You simplified a crowded poster but kept the organiser’s logo and palette. Describe the earlier problem, the change, and its result in a short review message.",
+      "independent_model": "Before, too many details competed with the main offer. I grouped the practical information and added more space, so the message is clearer now. The logo and palette are unchanged.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the visible detail or project problem.",
+          "Give one recommendation and its reason.",
+          "Ask one useful follow-up question."
+        ],
+        "B2": [
+          "Acknowledge the organiser’s goal before recommending.",
+          "Explain a tradeoff or qualify an interpretation.",
+          "Confirm a decision, requirement, or review step."
+        ]
+      },
+      "context": {
+        "setting": "Community",
+        "why": "Check facts and requirements before sharing a design."
+      },
+      "everyday_use": "Check facts and requirements before sharing a design.",
+      "notice": {
+        "question": "Which text is easier to distinguish from the pale background?",
+        "choices": [
+          "The forest text in B.",
+          "The pale gold text in A.",
+          "There is no visible difference."
+        ],
+        "answer": 0,
+        "reason": "The darker forest text has a stronger light–dark difference."
+      }
+    }
+  ],
+  "foundations": [
+    {
+      "id": "foundation-intro",
+      "title": "Put it together: graphic design",
+      "focus": "Define a purpose: uses … to …",
+      "visual": "foundation-intro",
+      "concept": "intro",
+      "category": "intro",
+      "dialogue": [
+        [
+          "Organiser",
+          "We need students to know when and where the café opens."
+        ],
+        [
+          "You",
+          "The colors, shapes, and words are the ingredients. We arrange them so the opening information is clear."
+        ],
+        [
+          "Organiser",
+          "Then please make the opening time and place easy to find."
+        ]
+      ],
+      "target": "Graphic design uses graphical elements and design principles to communicate a message.",
+      "levels": {
+        "A2": {
+          "model": "Graphic design uses visuals to communicate a message.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "Graphic design uses graphical elements and design principles to communicate a message.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Graphic design combines visual elements with deliberate organisation to communicate a particular message to a particular audience.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "graphical elements",
+          "The visible ingredients a designer uses.",
+          "Line, color, and type are graphical elements."
+        ],
+        [
+          "arranged to",
+          "Connect organisation with its purpose.",
+          "The elements are arranged to make the invitation clear."
+        ],
+        [
+          "communicate a message",
+          "Help an audience understand something.",
+          "This poster communicates the opening details."
+        ]
+      ],
+      "meaning": {
+        "question": "Which version tells people when and where to come?",
+        "choices": [
+          "The abstract arrangement without details.",
+          "The invitation with time and location.",
+          "Both communicate the same opening facts."
+        ],
+        "answer": 1,
+        "reasons": [
+          "The abstract arrangement may look interesting, but it does not provide the opening details.",
+          "Yes. It communicates the information the organiser wants viewers to use.",
+          "Only the invitation supplies the time and place."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "Graphic design uses visuals to communicate.",
+          "Graphic design uses visuals for communicate.",
+          "Graphic design uses visuals to communicating."
+        ],
+        "answer": 0,
+        "reason": "Use “to communicate” for the purpose: to + base verb."
+      },
+      "roles": {
+        "client": "You need students to attend the café opening. They need the date, time, and location.",
+        "designer": "Ask who the audience is and what they should understand or do. Name one element and one organising choice."
+      },
+      "mission": "Combine graphical elements and design principles to explain how a design communicates.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Who should see this, and what should they do?",
+      "client_answer": "University students should know that we open Friday at 4 pm in Talaimari.",
+      "transfer_model": "I will make the opening time and place clear for university students. I can use type and color, with hierarchy to guide attention. Is attending the opening the main goal?",
+      "new_brief": "A blood-donation event needs a poster. Viewers must know where to register and when to arrive. Explain what graphic design will do for this audience.",
+      "independent_model": "I would arrange the words, colors, and shapes to make the registration step and arrival time clear. Where should people register?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "Community",
+        "why": "Bring the visual ingredients and organising principles together to make a message useful for its audience."
+      },
+      "everyday_use": "Bring the visual ingredients and organising principles together to make a message useful for its audience.",
+      "notice": {
+        "question": "Which version gives a viewer enough information to visit?",
+        "choices": [
+          "B, with a date, time, and place.",
+          "A, with separate shapes only.",
+          "Neither has an invitation."
+        ],
+        "answer": 0,
+        "reason": "B organises the ingredients into a usable invitation."
+      }
+    },
+    {
+      "id": "foundation-line",
+      "title": "Line",
+      "focus": "Describe a function: separates … from …",
+      "visual": "foundation-line",
+      "concept": "line",
+      "category": "elements",
+      "dialogue": [
+        [
+          "Organiser",
+          "The date and location are running together."
+        ],
+        [
+          "You",
+          "I added a line between them so readers can see the two pieces of information."
+        ],
+        [
+          "Organiser",
+          "That helps. Keep both details readable."
+        ]
+      ],
+      "target": "The line separates the date from the location.",
+      "levels": {
+        "A2": {
+          "model": "The line separates the two details.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The line separates the date from the location.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "A clear dividing line can separate different information while keeping the whole invitation organised.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "separates … from …",
+          "Describe a useful division.",
+          "The line separates the date from the location."
+        ],
+        [
+          "a dividing line",
+          "A line placed between different information.",
+          "I added a dividing line."
+        ],
+        [
+          "between the details",
+          "Locate the divider.",
+          "The line sits between the two details."
+        ]
+      ],
+      "meaning": {
+        "question": "What does the line do here?",
+        "choices": [
+          "It changes the actual opening date.",
+          "It separates two pieces of information.",
+          "It translates the location into another language."
+        ],
+        "answer": 1,
+        "reasons": [
+          "The line changes the presentation, not the date.",
+          "Yes. You can see the division between the two details.",
+          "A visual divider does not translate words."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "The line separates the date from the location.",
+          "The line separates the date of the location.",
+          "The line separates the date to the location."
+        ],
+        "answer": 0,
+        "reason": "Use “separate X from Y”."
+      },
+      "roles": {
+        "client": "The date and address look like one long sentence. You want a clearer separation.",
+        "designer": "Show a version with and without a divider. Explain what the line does rather than only naming it."
+      },
+      "mission": "Use a line to communicate a useful division.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Which pieces of information should be separate?",
+      "client_answer": "The date and the street address should be separate.",
+      "transfer_model": "I can add a dividing line between the date and address. It separates the details without changing the wording. Would you prefer a line or more empty space?",
+      "new_brief": "A timetable mixes two days of opening hours. Recommend how a line could help and ask a follow-up question.",
+      "independent_model": "A dividing line can separate Monday’s hours from Tuesday’s hours. Should the two days stay in one box or have separate boxes?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "School",
+        "why": "Separate timetable information so readers can find the right day."
+      },
+      "everyday_use": "Separate timetable information so readers can find the right day.",
+      "notice": {
+        "question": "What has been added to separate the two details?",
+        "choices": [
+          "A dividing path.",
+          "A second opening date.",
+          "A photograph."
+        ],
+        "answer": 0,
+        "reason": "The vertical line divides the time from the location."
+      }
+    },
+    {
+      "id": "foundation-color",
+      "title": "Color",
+      "focus": "Describe a visible change: changes / stands out",
+      "visual": "foundation-color",
+      "concept": "color",
+      "category": "elements",
+      "dialogue": [
+        [
+          "Organiser",
+          "The opening offer is getting lost in the poster."
+        ],
+        [
+          "You",
+          "I changed the offer’s color so it stands out from the other information."
+        ],
+        [
+          "Organiser",
+          "Please keep our brand colors around it."
+        ]
+      ],
+      "target": "The accent color makes the opening offer stand out.",
+      "levels": {
+        "A2": {
+          "model": "The offer has a different color.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The accent color makes the opening offer stand out.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Using one contrasting accent can make the offer more noticeable, while leaving the rest of the palette consistent.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "stands out",
+          "Gets more attention than nearby elements.",
+          "The offer stands out in the accent color."
+        ],
+        [
+          "an accent color",
+          "A color used for selective emphasis.",
+          "We can use an accent color for the offer."
+        ],
+        [
+          "keep unchanged",
+          "Do not alter an agreed feature.",
+          "I will keep the logo colors unchanged."
+        ]
+      ],
+      "meaning": {
+        "question": "Which detail changed color?",
+        "choices": [
+          "The opening offer.",
+          "The café’s actual location.",
+          "Every element in both versions."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. The new accent singles out the offer.",
+          "The location stays the same.",
+          "Most of the palette remains unchanged."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "The offer stand out.",
+          "The offer stands out.",
+          "The offer standing out."
+        ],
+        "answer": 1,
+        "reason": "With singular “the offer”, use “stands”."
+      },
+      "roles": {
+        "client": "Your opening offer is 50% off. You want it noticed, but the logo must keep its original colors.",
+        "designer": "Suggest one accent change and explain which element it emphasises."
+      },
+      "mission": "Use color for an agreed message.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Which part should the accent color emphasise?",
+      "client_answer": "The 50% offer. Keep the logo’s colors unchanged.",
+      "transfer_model": "I can use an accent color for the 50% offer while keeping the logo unchanged. Would you like a phone-size comparison first?",
+      "new_brief": "A community notice needs the registration deadline to stand out. Explain one color choice without changing every element.",
+      "independent_model": "I would use one contrasting accent for the deadline and keep the other text consistent. Is the deadline the most important detail?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "Community",
+        "why": "Help someone notice a deadline on a notice."
+      },
+      "everyday_use": "Help someone notice a deadline on a notice.",
+      "notice": {
+        "question": "Which visible detail changes?",
+        "choices": [
+          "The offer’s color.",
+          "The offer’s wording.",
+          "The café name."
+        ],
+        "answer": 0,
+        "reason": "Only the offer uses a different accent color in B."
+      }
+    },
+    {
+      "id": "foundation-shape",
+      "title": "Shape",
+      "focus": "Describe what you see: is / has",
+      "visual": "foundation-shape",
+      "concept": "shape",
+      "category": "elements",
+      "dialogue": [
+        [
+          "Organiser",
+          "Can you show a simple circular mark?"
+        ],
+        [
+          "You",
+          "Here is a flat circle. Its boundary gives it a clear shape."
+        ],
+        [
+          "Organiser",
+          "Let’s test it at a small size."
+        ]
+      ],
+      "target": "The mark is a flat circle with a clear outline.",
+      "levels": {
+        "A2": {
+          "model": "The mark is a circle.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The mark is a flat circle with a clear outline.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "A simple two-dimensional shape can form a recognisable mark before we add color, texture, or shading.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "a curved outline",
+          "A boundary made with a curve.",
+          "The circle has a curved outline."
+        ],
+        [
+          "two-dimensional",
+          "Describes a flat area rather than volume.",
+          "This is a two-dimensional shape."
+        ],
+        [
+          "at a small size",
+          "When the mark is reduced.",
+          "Test the outline at a small size."
+        ]
+      ],
+      "meaning": {
+        "question": "Which statement describes shape rather than suggested depth?",
+        "choices": [
+          "It has a curved boundary.",
+          "It has a rounded three-dimensional surface.",
+          "We can physically hold the screen’s circle."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. Shape describes the two-dimensional boundary here.",
+          "Suggested three-dimensional volume belongs to form.",
+          "This is a flat image, not a physical object."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "The mark have a curved outline.",
+          "The mark has a curved outline.",
+          "The mark having a curved outline."
+        ],
+        "answer": 1,
+        "reason": "Use “has” with the singular subject “the mark”."
+      },
+      "roles": {
+        "client": "You need a simple icon recognisable when small. You want to compare circular and square outlines.",
+        "designer": "Describe the outlines accurately and offer to test both at a small size."
+      },
+      "mission": "Describe a shape without inventing its meaning.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Should we compare a circle and a square at the final icon size?",
+      "client_answer": "Yes. The icon will appear very small on a phone.",
+      "transfer_model": "I can compare a circular outline with a square outline at phone size. Which is easier for your audience to recognise?",
+      "new_brief": "A transport app needs a simple stop marker. Describe a possible shape and suggest a small-size check.",
+      "independent_model": "The marker could use a clear circular shape. I would test the outline at the smallest map size before adding detail.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "Everyday life",
+        "why": "Describe the shapes you see in signs and map markers."
+      },
+      "everyday_use": "Describe the shapes you see in signs and map markers.",
+      "notice": {
+        "question": "What can you say about both examples?",
+        "choices": [
+          "They are flat areas with boundaries.",
+          "They both show a shaded ball.",
+          "Neither has an outline."
+        ],
+        "answer": 0,
+        "reason": "The circle and square have two-dimensional boundaries."
+      }
+    },
+    {
+      "id": "foundation-texture",
+      "title": "Texture",
+      "focus": "Describe appearance: looks + adjective",
+      "visual": "foundation-texture",
+      "concept": "texture",
+      "category": "elements",
+      "dialogue": [
+        [
+          "Organiser",
+          "Could the packaging look less plain?"
+        ],
+        [
+          "You",
+          "A repeated pattern can suggest a textured surface. We should check whether it makes the label harder to read."
+        ],
+        [
+          "Organiser",
+          "Keep the product name clear."
+        ]
+      ],
+      "target": "The patterned surface looks less smooth than the plain surface.",
+      "levels": {
+        "A2": {
+          "model": "The second surface looks patterned.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The patterned surface looks less smooth than the plain surface.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "The printed pattern suggests texture, even though the screen itself stays physically flat.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "looks textured",
+          "Describes an appearance, not a proven physical feel.",
+          "The surface looks textured."
+        ],
+        [
+          "suggests texture",
+          "Creates a visual impression of a surface.",
+          "The printed pattern suggests texture."
+        ],
+        [
+          "keep the name clear",
+          "Preserve readability while adding detail.",
+          "I can add texture and keep the name clear."
+        ]
+      ],
+      "meaning": {
+        "question": "What can we tell from this screen image?",
+        "choices": [
+          "The physical paper is definitely rough.",
+          "The surface looks patterned.",
+          "The package smells like tea."
+        ],
+        "answer": 1,
+        "reasons": [
+          "A picture does not prove how the actual paper feels.",
+          "Yes. We can describe the visible appearance.",
+          "Smell is not visible."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "The surface looks textured.",
+          "The surface looks texture.",
+          "The surface look textured."
+        ],
+        "answer": 0,
+        "reason": "Use an adjective after “looks”: looks textured."
+      },
+      "roles": {
+        "client": "You want a tea label to suggest handmade paper, but the product name must remain clear.",
+        "designer": "Use appearance language rather than claiming the printed material really feels rough."
+      },
+      "mission": "Describe texture as a visual impression.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Do you mean a textured look or a physically textured material?",
+      "client_answer": "A textured look. We will print on ordinary smooth paper.",
+      "transfer_model": "I can create a subtle textured look while keeping the name readable. The pattern suggests roughness, but the printed paper will still be smooth.",
+      "new_brief": "A café menu uses a wood-grain image behind small text. Describe what you see and explain what needs checking.",
+      "independent_model": "The background looks textured, but the pattern may compete with the small text. I would check readability before using it behind the menu details.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "Everyday life",
+        "why": "Explain why a textured background may affect small words."
+      },
+      "everyday_use": "Explain why a textured background may affect small words.",
+      "notice": {
+        "question": "What does B add to the flat illustration?",
+        "choices": [
+          "A surface pattern.",
+          "A different tea name.",
+          "A real wooden object."
+        ],
+        "answer": 0,
+        "reason": "The pattern suggests a surface; the image is still flat."
+      }
+    },
+    {
+      "id": "foundation-space",
+      "title": "Space",
+      "focus": "Quantities: more space / enough space",
+      "visual": "foundation-space",
+      "concept": "space",
+      "category": "elements",
+      "dialogue": [
+        [
+          "Organiser",
+          "The heading feels squeezed between the pictures."
+        ],
+        [
+          "You",
+          "I added more empty space around it. The words are easier to pick out."
+        ],
+        [
+          "Organiser",
+          "Good. Keep the heading and both pictures."
+        ]
+      ],
+      "target": "There is more empty space around the headline in B.",
+      "levels": {
+        "A2": {
+          "model": "B has more empty space.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "There is more empty space around the headline in B.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "The additional empty space separates the headline from nearby elements and gives it room to remain readable.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "more empty space",
+          "A larger unoccupied area.",
+          "There is more empty space around the headline."
+        ],
+        [
+          "around the headline",
+          "On the sides of the main text.",
+          "I added space around the headline."
+        ],
+        [
+          "not enough room",
+          "Too little space for the content.",
+          "There is not enough room between the pictures."
+        ]
+      ],
+      "meaning": {
+        "question": "What changed while the content stayed the same?",
+        "choices": [
+          "The amount of empty space.",
+          "The actual headline wording.",
+          "The number of opening days."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. The elements have more room around them.",
+          "The wording stays unchanged.",
+          "This visual is about spacing, not the calendar."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "There are more space around the heading.",
+          "There is more space around the heading.",
+          "There is more spaces around the heading."
+        ],
+        "answer": 1,
+        "reason": "In this use, “space” is uncountable: there is more space."
+      },
+      "roles": {
+        "client": "You need to keep the same heading and two pictures, but the current version feels crowded.",
+        "designer": "Recommend a spacing change without removing the required content."
+      },
+      "mission": "Explain what empty space contributes.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Which elements must stay in this version?",
+      "client_answer": "The heading and both pictures must stay.",
+      "transfer_model": "I can add more space around the heading while keeping both pictures. Would you like the heading moved slightly higher?",
+      "new_brief": "A lesson handout squeezes instructions between two diagrams. Recommend a change using “space” naturally.",
+      "independent_model": "There is not enough space around the instructions. I would increase the gap so readers can separate the words from the diagrams.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "School",
+        "why": "Make instructions easier to separate from nearby diagrams."
+      },
+      "everyday_use": "Make instructions easier to separate from nearby diagrams.",
+      "notice": {
+        "question": "What gives the headline room in B?",
+        "choices": [
+          "More empty area around it.",
+          "A different wording.",
+          "Removing both pictures."
+        ],
+        "answer": 0,
+        "reason": "The headline and both pictures remain, with more surrounding empty space."
+      }
+    },
+    {
+      "id": "foundation-form",
+      "title": "Form",
+      "focus": "Cause and appearance: makes … look …",
+      "visual": "foundation-form",
+      "concept": "form",
+      "category": "elements",
+      "dialogue": [
+        [
+          "Organiser",
+          "Can the ball look less flat?"
+        ],
+        [
+          "You",
+          "I added shading to suggest a rounded surface."
+        ],
+        [
+          "Organiser",
+          "Please keep the shape and size the same."
+        ]
+      ],
+      "target": "The shading makes the circle look like a three-dimensional ball.",
+      "levels": {
+        "A2": {
+          "model": "The shading makes it look like a ball.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The shading makes the circle look like a three-dimensional ball.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Light and shadow suggest three-dimensional form even though the illustration is drawn on a flat surface.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "makes it look",
+          "Connect a visual change to an appearance.",
+          "The shading makes it look rounded."
+        ],
+        [
+          "light and shadow",
+          "Lighter and darker areas suggesting depth.",
+          "Light and shadow suggest a rounded form."
+        ],
+        [
+          "three-dimensional",
+          "Having or suggesting volume and depth.",
+          "The ball looks three-dimensional."
+        ]
+      ],
+      "meaning": {
+        "question": "Which change suggests depth?",
+        "choices": [
+          "The shading.",
+          "A new opening date.",
+          "A translated label."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. Light and dark areas suggest a rounded surface.",
+          "A date does not create visual depth here.",
+          "The label is not the source of depth in this example."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "The shading makes it looks rounded.",
+          "The shading makes it look rounded.",
+          "The shading makes it to look rounded."
+        ],
+        "answer": 1,
+        "reason": "After “makes it”, use the base verb: makes it look."
+      },
+      "roles": {
+        "client": "You want a ball illustration to suggest depth, but its outline and size should remain unchanged.",
+        "designer": "Describe how light and shadow can suggest depth without changing the outline."
+      },
+      "mission": "Distinguish a flat shape from suggested form.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Should I add depth while keeping the outline unchanged?",
+      "client_answer": "Yes. Keep the same circular outline and size.",
+      "transfer_model": "I can keep the outline and add light and shadow to suggest a rounded form. Do you prefer a subtle or stronger shaded effect?",
+      "new_brief": "A product illustration looks flat. The organiser wants depth while keeping the approved silhouette. Explain a suitable change.",
+      "independent_model": "I would keep the approved silhouette and add restrained shading to suggest depth. Could you confirm the intended light direction?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "School",
+        "why": "Describe how a drawing suggests depth."
+      },
+      "everyday_use": "Describe how a drawing suggests depth.",
+      "notice": {
+        "question": "What makes B look like a ball rather than a flat circle?",
+        "choices": [
+          "Light and shadow.",
+          "A different outline.",
+          "A new word."
+        ],
+        "answer": 0,
+        "reason": "Light and shadow suggest volume within the circular outline."
+      }
+    },
+    {
+      "id": "foundation-typography",
+      "title": "Typography",
+      "focus": "Contrast: stays the same, but … changes",
+      "visual": "foundation-typography",
+      "concept": "typography",
+      "category": "elements",
+      "dialogue": [
+        [
+          "Organiser",
+          "Please show the same headline in two type styles."
+        ],
+        [
+          "You",
+          "The words are unchanged. The different letterforms give you two typographic options."
+        ],
+        [
+          "Organiser",
+          "Now compare them at phone size."
+        ]
+      ],
+      "target": "The wording stays the same, but the type style changes.",
+      "levels": {
+        "A2": {
+          "model": "The words are the same. The type looks different.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The wording stays the same, but the type style changes.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Typography changes how the same wording is presented through choices of letterform, size, weight, and spacing.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "the wording stays the same",
+          "The actual words are unchanged.",
+          "The wording stays the same in both versions."
+        ],
+        [
+          "type style",
+          "The appearance of the letters.",
+          "The type style changes."
+        ],
+        [
+          "compare the letterforms",
+          "Look at the design of the letters.",
+          "Compare the letterforms before choosing."
+        ]
+      ],
+      "meaning": {
+        "question": "Which part stays unchanged in this comparison?",
+        "choices": [
+          "The exact wording.",
+          "The letterform style.",
+          "The font weight."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. The comparison isolates typography rather than changing the message.",
+          "The type styles visibly differ.",
+          "The examples also differ in visual weight."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "The words stay the same, but the type changes.",
+          "The words stays the same, but the type changes.",
+          "The words stay the same, but the type change."
+        ],
+        "answer": 0,
+        "reason": "Use plural “words stay” and singular “type changes”."
+      },
+      "roles": {
+        "client": "You need the approved wording kept exactly, but want to compare type styles.",
+        "designer": "Show the same text in two styles and discuss readability before recommending."
+      },
+      "mission": "Treat words and their visual presentation as different decisions.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Should I keep the approved wording exactly the same in both versions?",
+      "client_answer": "Yes. Only the type style should change.",
+      "transfer_model": "I’ll keep the wording unchanged and compare two type styles at phone size. Which tone should the headline suggest?",
+      "new_brief": "An organiser asks for a different type style on a poster. The event title and date are already approved. Explain what will and will not change.",
+      "independent_model": "I will keep the approved title and date unchanged while comparing two type styles. Could you confirm the tone you want?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "School",
+        "why": "Discuss how a title looks without changing what it says."
+      },
+      "everyday_use": "Discuss how a title looks without changing what it says.",
+      "notice": {
+        "question": "What changes while the headline wording stays the same?",
+        "choices": [
+          "The way the letters are presented.",
+          "The event date.",
+          "The location."
+        ],
+        "answer": 0,
+        "reason": "The type style and weight change; the written message does not."
+      }
+    },
+    {
+      "id": "foundation-contrast",
+      "title": "Contrast",
+      "focus": "Compare differences: different from",
+      "visual": "foundation-contrast",
+      "concept": "contrast",
+      "category": "principles",
+      "dialogue": [
+        [
+          "Organiser",
+          "One item needs to be easier to notice."
+        ],
+        [
+          "You",
+          "I made that circle darker than its neighbors. The difference creates contrast."
+        ],
+        [
+          "Organiser",
+          "Keep the other circles quieter."
+        ]
+      ],
+      "target": "The dark circle is different from the lighter circles around it.",
+      "levels": {
+        "A2": {
+          "model": "The dark circle stands out.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The dark circle is different from the lighter circles around it.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "A visible difference in color, scale, shape, or direction can create contrast and draw attention to one element.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "different from",
+          "Make a comparison between unlike features.",
+          "The dark circle is different from the others."
+        ],
+        [
+          "darker than",
+          "Compare lightness.",
+          "The middle circle is darker than its neighbors."
+        ],
+        [
+          "stronger contrast",
+          "A greater visible difference.",
+          "We can use stronger contrast for the main option."
+        ]
+      ],
+      "meaning": {
+        "question": "Why is one circle easier to notice in B?",
+        "choices": [
+          "It differs in color from its neighbors.",
+          "Every circle has the same color.",
+          "It has disappeared."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. The color difference creates the contrast.",
+          "B contains one visibly darker circle.",
+          "The circle remains present and becomes more noticeable."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "The circle is different from the others.",
+          "The circle is different than of the others.",
+          "The circle different from the others."
+        ],
+        "answer": 0,
+        "reason": "Use “is different from” for this description."
+      },
+      "roles": {
+        "client": "One option in a group must be noticed first. Keep all the options visible.",
+        "designer": "Propose a visible difference rather than deleting the competing items."
+      },
+      "mission": "Use contrast to guide attention.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Which option should be easiest to notice?",
+      "client_answer": "The middle option, but the others still need to be visible.",
+      "transfer_model": "I can give the middle option a stronger contrast while keeping the others visible. Would you prefer a color or size difference?",
+      "new_brief": "A price list needs the most popular plan to stand out. Suggest a contrast choice and ask which plan should lead.",
+      "independent_model": "We can use a visible color difference for one plan. Which option should be easiest to notice?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "Everyday life",
+        "why": "Find the detail that stands out on a poster."
+      },
+      "everyday_use": "Find the detail that stands out on a poster.",
+      "notice": {
+        "question": "Why does the middle circle stand out in B?",
+        "choices": [
+          "It is darker than the others.",
+          "It is much bigger.",
+          "There are five circles."
+        ],
+        "answer": 0,
+        "reason": "The light–dark difference draws attention to the middle circle."
+      }
+    },
+    {
+      "id": "foundation-hierarchy",
+      "title": "Hierarchy",
+      "focus": "Priority: first / next / then",
+      "visual": "foundation-hierarchy",
+      "concept": "hierarchy",
+      "category": "principles",
+      "dialogue": [
+        [
+          "Organiser",
+          "What should viewers read first?"
+        ],
+        [
+          "You",
+          "The invitation should lead. The opening details can come next."
+        ],
+        [
+          "Organiser",
+          "Yes. The details must still be readable."
+        ]
+      ],
+      "target": "The invitation stands out first, then the practical details.",
+      "levels": {
+        "A2": {
+          "model": "People see the headline first.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The invitation stands out first, then the practical details.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "The difference in visual importance creates a hierarchy that guides viewers from the invitation to the practical details.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "stands out first",
+          "Receives the earliest or strongest attention.",
+          "The invitation stands out first."
+        ],
+        [
+          "comes next",
+          "Follows in the intended order of attention.",
+          "The practical information comes next."
+        ],
+        [
+          "an order of importance",
+          "A hierarchy of stronger and weaker emphasis.",
+          "The sizes create an order of importance."
+        ]
+      ],
+      "meaning": {
+        "question": "What does the hierarchy guide?",
+        "choices": [
+          "The order in which information gets attention.",
+          "The café’s opening hours themselves.",
+          "A translation of every word."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. The design establishes relative importance.",
+          "Hierarchy changes the presentation, not the opening hours.",
+          "Hierarchy is not a translation process."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "People notice the invitation first.",
+          "People notices the invitation first.",
+          "People notice first the invitation yesterday."
+        ],
+        "answer": 0,
+        "reason": "Use plural “people notice”. “First” identifies the intended order of attention."
+      },
+      "roles": {
+        "client": "You want the opening invitation first and the date and location second.",
+        "designer": "Explain the order of attention and keep the supporting details readable."
+      },
+      "mission": "Set a hierarchy from the communication goal.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Should the invitation lead or should the opening date lead?",
+      "client_answer": "The invitation first; the date and location next.",
+      "transfer_model": "I’ll give the invitation the strongest emphasis and keep the date and location together below it. Could you review that reading order?",
+      "new_brief": "A course advert should lead with the benefit, followed by start date and registration. Explain the intended order.",
+      "independent_model": "Viewers should notice the benefit first, then the start date and registration step. I would use size and spacing to make that hierarchy clear.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "School",
+        "why": "Put the information a reader needs first in the right order."
+      },
+      "everyday_use": "Put the information a reader needs first in the right order.",
+      "notice": {
+        "question": "Which information is most prominent in B?",
+        "choices": [
+          "The main invitation.",
+          "The street name.",
+          "All three lines equally."
+        ],
+        "answer": 0,
+        "reason": "A larger, heavier heading creates an order of importance."
+      }
+    },
+    {
+      "id": "foundation-alignment",
+      "title": "Alignment",
+      "focus": "Shared edge: line up along …",
+      "visual": "foundation-alignment",
+      "concept": "alignment",
+      "category": "principles",
+      "dialogue": [
+        [
+          "Organiser",
+          "The text blocks look scattered."
+        ],
+        [
+          "You",
+          "I lined them up along one left edge."
+        ],
+        [
+          "Organiser",
+          "Keep the spacing comfortable as well."
+        ]
+      ],
+      "target": "The text blocks line up along the same left edge in B.",
+      "levels": {
+        "A2": {
+          "model": "The left edges line up.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The text blocks line up along the same left edge in B.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "A shared alignment gives separate blocks a common visual structure and makes the layout easier to follow.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "line up",
+          "Share a visible edge or guide.",
+          "The text blocks line up."
+        ],
+        [
+          "along the same edge",
+          "Use one common boundary.",
+          "The blocks line up along the same left edge."
+        ],
+        [
+          "a shared guide",
+          "A reference that connects positions.",
+          "I aligned the headings to a shared guide."
+        ]
+      ],
+      "meaning": {
+        "question": "What do the blocks share in B?",
+        "choices": [
+          "A common left edge.",
+          "Exactly the same words.",
+          "A new language."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. Their starting positions align.",
+          "Alignment does not require identical wording.",
+          "The comparison changes positions rather than language."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "The blocks line up along the same edge.",
+          "The blocks lines up along the same edge.",
+          "The blocks are line up along the same edge."
+        ],
+        "answer": 0,
+        "reason": "Use plural “blocks line up”."
+      },
+      "roles": {
+        "client": "You want three text blocks to look organised without changing the copy.",
+        "designer": "Align the blocks on a shared edge and explain where that edge is."
+      },
+      "mission": "Use alignment to create a clear structure.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Would you like the text blocks to share a left edge or a centre line?",
+      "client_answer": "A left edge. Keep the wording as it is.",
+      "transfer_model": "I can align the blocks along one left edge while keeping the copy unchanged. Would you like the headings aligned there too?",
+      "new_brief": "An application form has labels beginning at different positions. Recommend an alignment change and explain it.",
+      "independent_model": "I would line the labels up along a common left edge so the form is easier to follow. Should the input fields share a second edge?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "Everyday life",
+        "why": "Make a form easier to scan."
+      },
+      "everyday_use": "Make a form easier to scan.",
+      "notice": {
+        "question": "What do the lines share in B?",
+        "choices": [
+          "A common starting edge.",
+          "The same word count.",
+          "A single word."
+        ],
+        "answer": 0,
+        "reason": "The text blocks begin along the same left guide."
+      }
+    },
+    {
+      "id": "foundation-balance",
+      "title": "Balance",
+      "focus": "Distribution: on both sides",
+      "visual": "foundation-balance",
+      "concept": "balance",
+      "category": "principles",
+      "dialogue": [
+        [
+          "Organiser",
+          "The composition feels heavy on one side."
+        ],
+        [
+          "You",
+          "I spread the visual weight across both sides."
+        ],
+        [
+          "Organiser",
+          "Could an unequal arrangement work too?"
+        ]
+      ],
+      "target": "The visual weight is spread across both sides in B.",
+      "levels": {
+        "A2": {
+          "model": "B has shapes on both sides.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The visual weight is spread across both sides in B.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "The distribution of visual weight can make a composition feel balanced without requiring every object to be identical.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "visual weight",
+          "How strongly an element occupies attention.",
+          "The large shapes carry more visual weight."
+        ],
+        [
+          "on both sides",
+          "Spread across the two parts of the frame.",
+          "The shapes are on both sides."
+        ],
+        [
+          "asymmetrical balance",
+          "Balance without identical arrangements.",
+          "Unequal elements can create asymmetrical balance."
+        ]
+      ],
+      "meaning": {
+        "question": "Which version distributes weight across the frame?",
+        "choices": [
+          "A, with all the large shapes on the left.",
+          "B, with large shapes on both sides.",
+          "Neither version contains any shapes."
+        ],
+        "answer": 1,
+        "reasons": [
+          "A concentrates the weight on one side.",
+          "Yes. B distributes it more evenly across the frame.",
+          "Both versions contain visible shapes."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "The shapes are on both sides.",
+          "The shapes is on both sides.",
+          "The shapes are in both side."
+        ],
+        "answer": 0,
+        "reason": "Use plural “shapes are” and “both sides”."
+      },
+      "roles": {
+        "client": "You like an informal layout, but the current large images all sit on the left.",
+        "designer": "Redistribute the visual weight. Explain that balance can be symmetrical or asymmetrical."
+      },
+      "mission": "Describe balance without requiring perfect symmetry.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Do you want a symmetrical layout or a less formal balanced arrangement?",
+      "client_answer": "Less formal, but the left side should not carry all the weight.",
+      "transfer_model": "I can balance the larger image with smaller elements on the other side. That may feel less formal than a perfectly symmetrical layout. Shall I show both?",
+      "new_brief": "A portfolio cover has a large photograph in one corner. Suggest how to balance the composition without simply duplicating the photo.",
+      "independent_model": "I could balance the photograph with a smaller text group on the opposite side. I would compare the visual weight rather than duplicate the image automatically.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "Community",
+        "why": "Discuss how pictures and words share the page."
+      },
+      "everyday_use": "Discuss how pictures and words share the page.",
+      "notice": {
+        "question": "How are the large squares distributed in B?",
+        "choices": [
+          "Across both sides of the centre.",
+          "Only on the left.",
+          "There are no squares."
+        ],
+        "answer": 0,
+        "reason": "The two large shapes distribute visual weight across the composition."
+      }
+    },
+    {
+      "id": "foundation-proximity",
+      "title": "Proximity",
+      "focus": "Relationship: closer together",
+      "visual": "foundation-proximity",
+      "concept": "proximity",
+      "category": "principles",
+      "dialogue": [
+        [
+          "Organiser",
+          "People miss the time because it is far from the date."
+        ],
+        [
+          "You",
+          "I grouped the date and time together."
+        ],
+        [
+          "Organiser",
+          "Please do the same for the location and address."
+        ]
+      ],
+      "target": "The date and time are closer together in B.",
+      "levels": {
+        "A2": {
+          "model": "The date and time are together.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The date and time are closer together in B.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Putting related details close together helps viewers understand their relationship before reading every word.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "closer together",
+          "With a smaller gap between related items.",
+          "The date and time are closer together."
+        ],
+        [
+          "related details",
+          "Information that belongs to the same useful group.",
+          "Keep related details together."
+        ],
+        [
+          "grouped with",
+          "Placed near something it belongs with.",
+          "The address is grouped with the location."
+        ]
+      ],
+      "meaning": {
+        "question": "Which items belong together in this invitation?",
+        "choices": [
+          "The date and time.",
+          "The date and an unrelated decorative dot.",
+          "Any random pair of words."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. Together they tell viewers when to come.",
+          "The dot does not explain the date.",
+          "Grouping should follow a meaningful relationship."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "The date and time are closer together.",
+          "The date and time is closer together.",
+          "The date and time are more closer together."
+        ],
+        "answer": 0,
+        "reason": "The combined subject is plural: “are”. Use “closer” without “more”."
+      },
+      "roles": {
+        "client": "You want date and time grouped together, and location with street address.",
+        "designer": "Explain the two related groups and keep a gap between them."
+      },
+      "mission": "Show relationships through proximity.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Which details should readers understand as one group?",
+      "client_answer": "Date with time, and location with its street address.",
+      "transfer_model": "I’ll place the related details close together and leave a larger gap between the two groups. Does that match the way customers will use the information?",
+      "new_brief": "A restaurant menu puts each price far from its dish name. Recommend a grouping change and explain its function.",
+      "independent_model": "I would keep each dish name close to its price so readers can connect them quickly. Should descriptions stay directly below each name?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "Everyday life",
+        "why": "Keep a label close to the information it belongs with."
+      },
+      "everyday_use": "Keep a label close to the information it belongs with.",
+      "notice": {
+        "question": "How does B show that the date and time belong together?",
+        "choices": [
+          "It places them close together.",
+          "It puts them at opposite corners.",
+          "It removes the time."
+        ],
+        "answer": 0,
+        "reason": "Related details form a visible group when they sit close together."
+      }
+    },
+    {
+      "id": "foundation-repetition",
+      "title": "Repetition",
+      "focus": "Consistency: the same … across …",
+      "visual": "foundation-repetition",
+      "concept": "repetition",
+      "category": "principles",
+      "dialogue": [
+        [
+          "Organiser",
+          "These three posts feel like different brands."
+        ],
+        [
+          "You",
+          "I repeated the same colors and type style across the set."
+        ],
+        [
+          "Organiser",
+          "Keep each post’s message different, though."
+        ]
+      ],
+      "target": "The same colors and type style repeat across the cards in B.",
+      "levels": {
+        "A2": {
+          "model": "B repeats the same style.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "The same colors and type style repeat across the cards in B.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Repeating selected visual features creates consistency across different items without requiring every item to carry the same content.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "repeats across",
+          "Appears again in several items.",
+          "The same style repeats across the cards."
+        ],
+        [
+          "the same type style",
+          "Consistent letter presentation.",
+          "Use the same type style for the headings."
+        ],
+        [
+          "consistent with",
+          "Matches the chosen visual system.",
+          "This card is consistent with the other two."
+        ]
+      ],
+      "meaning": {
+        "question": "What repeats in B while the messages differ?",
+        "choices": [
+          "The visual style.",
+          "Exactly the same post content.",
+          "The opening date everywhere, regardless of truth."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. Consistent style can connect different messages.",
+          "The content is allowed to change.",
+          "Repetition is not permission to reuse inaccurate facts."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "The same style repeat across the cards.",
+          "The same style repeats across the cards.",
+          "The same style repeating across the cards."
+        ],
+        "answer": 1,
+        "reason": "Singular “style” takes “repeats”."
+      },
+      "roles": {
+        "client": "You need three different social posts that still look like one brand.",
+        "designer": "Repeat selected colors, type, or shapes without making all the content identical."
+      },
+      "mission": "Create consistency across a set.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Which brand features should stay consistent across the posts?",
+      "client_answer": "Keep the same colors and headline style, but the offers are different.",
+      "transfer_model": "I’ll repeat the colors and headline style while changing the offer text for each post. Would you like a reusable template too?",
+      "new_brief": "A course provider needs posters for three different classes. Recommend how they can look connected while keeping their details distinct.",
+      "independent_model": "I would repeat the headline style and color system across the posters, while keeping each class’s dates and details accurate.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "Community",
+        "why": "Make several event notices look like a connected set."
+      },
+      "everyday_use": "Make several event notices look like a connected set.",
+      "notice": {
+        "question": "What connects the three cards in B?",
+        "choices": [
+          "Shared colors and type style.",
+          "Identical messages.",
+          "Three unrelated shapes."
+        ],
+        "answer": 0,
+        "reason": "Visual features repeat even though the three messages differ."
+      }
+    },
+    {
+      "id": "foundation-simplicity",
+      "title": "Simplicity",
+      "focus": "Remove extra …; keep essential …",
+      "visual": "foundation-simplicity",
+      "concept": "simplicity",
+      "category": "principles",
+      "dialogue": [
+        [
+          "Organiser",
+          "The poster feels busy. What can we remove?"
+        ],
+        [
+          "You",
+          "I removed extra decoration and kept the invitation, date, time, and location."
+        ],
+        [
+          "Organiser",
+          "Good. Those details are essential."
+        ]
+      ],
+      "target": "B removes extra decoration and keeps the essential information.",
+      "levels": {
+        "A2": {
+          "model": "B keeps the important details.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "B removes extra decoration and keeps the essential information.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "Simplifying a design can remove competing decoration while preserving the information people actually need.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "remove extra decoration",
+          "Take away details the message does not need.",
+          "I removed extra decoration."
+        ],
+        [
+          "essential information",
+          "The facts needed to understand or act.",
+          "The date and location are essential information."
+        ],
+        [
+          "without losing",
+          "Keep something useful while making a change.",
+          "Simplify without losing the opening details."
+        ]
+      ],
+      "meaning": {
+        "question": "What should stay after simplification?",
+        "choices": [
+          "The essential information.",
+          "Only decoration, with no opening details.",
+          "Nothing at all."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. Simplification should preserve the communication job.",
+          "That would lose the information viewers need.",
+          "An empty poster would not communicate this invitation."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "I removed the extra decoration.",
+          "I removed the extra informations.",
+          "I removed the essential details because they are essential."
+        ],
+        "answer": 0,
+        "reason": "“Decoration” works as an uncountable category here; the useful change removes extras rather than essential details."
+      },
+      "roles": {
+        "client": "You want a less busy poster, but the invitation, date, time, and location all have to remain.",
+        "designer": "Choose one extra decoration to remove and explain what you preserved."
+      },
+      "mission": "Simplify without losing the message.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "Which information is essential for people to attend?",
+      "client_answer": "The invitation, date, time, and location all need to stay.",
+      "transfer_model": "I can remove extra decoration while keeping those four details. Would you like a version with one simple image instead of several?",
+      "new_brief": "A crowded workshop slide contains ornamental borders and a long registration instruction. Explain what you would simplify and what must stay.",
+      "independent_model": "I would remove the ornamental borders and shorten the instruction without losing the registration steps. Could you confirm which steps are essential?",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "School",
+        "why": "Remove distractions from a slide while keeping important details."
+      },
+      "everyday_use": "Remove distractions from a slide while keeping important details.",
+      "notice": {
+        "question": "What disappears in B?",
+        "choices": [
+          "Extra decoration.",
+          "The date and time.",
+          "The invitation."
+        ],
+        "answer": 0,
+        "reason": "The decoration is removed while the useful information remains."
+      }
+    },
+    {
+      "id": "foundation-function",
+      "title": "Function",
+      "focus": "Usefulness: helps people …",
+      "visual": "foundation-function",
+      "concept": "function",
+      "category": "principles",
+      "dialogue": [
+        [
+          "Organiser",
+          "The artwork is attractive, but does it invite people to the opening?"
+        ],
+        [
+          "You",
+          "Version B gives the date, time, and location. It helps viewers act on the invitation."
+        ],
+        [
+          "Organiser",
+          "That is the information we need."
+        ]
+      ],
+      "target": "Version B helps people know when and where to come.",
+      "levels": {
+        "A2": {
+          "model": "B tells people when and where to come.",
+          "hint": "Say one clear idea. Use the frame if it helps."
+        },
+        "B1": {
+          "model": "Version B helps people know when and where to come.",
+          "hint": "Connect a visible detail to a reason."
+        },
+        "B2": {
+          "model": "The design’s function is to help the intended audience understand or do something, so we judge the result against that purpose.",
+          "hint": "Explain a choice, qualify an interpretation, and invite a response."
+        }
+      },
+      "chunks": [
+        [
+          "helps people",
+          "Connect a design to what the audience can do.",
+          "The poster helps people find the event."
+        ],
+        [
+          "meets the brief",
+          "Satisfies the agreed requirements.",
+          "This version meets the brief."
+        ],
+        [
+          "communication goal",
+          "What the audience should understand or do.",
+          "Attendance is the communication goal."
+        ]
+      ],
+      "meaning": {
+        "question": "Why does B serve this brief better?",
+        "choices": [
+          "It supplies the details viewers need to attend.",
+          "It contains no information.",
+          "It guarantees everyone will attend."
+        ],
+        "answer": 0,
+        "reasons": [
+          "Yes. It serves the intended communication purpose.",
+          "B includes date, time, and location.",
+          "The design can help communicate; it cannot guarantee attendance."
+        ]
+      },
+      "repair": {
+        "question": "Which sentence would you use here?",
+        "choices": [
+          "The poster helps people find the event.",
+          "The poster helps people finding the event.",
+          "The poster help people find the event."
+        ],
+        "answer": 0,
+        "reason": "Use “helps” with singular “poster”; “helps people find” is natural here."
+      },
+      "roles": {
+        "client": "Your goal is opening-day attendance. A beautiful abstract image alone is not giving the practical details.",
+        "designer": "Ask what viewers need to do, then check whether the design gives them the information to do it."
+      },
+      "mission": "Judge the design by its communication purpose.",
+      "success": [
+        "Point to a real visible choice.",
+        "Explain what the choice does for the message.",
+        "Check the organiser’s goal before confirming."
+      ],
+      "question_model": "What should the viewer be able to do after seeing the poster?",
+      "client_answer": "Know when and where to attend the opening.",
+      "transfer_model": "I’ll make the date, time, and location clear so viewers can act on the invitation. Could you confirm that attendance is the main goal?",
+      "new_brief": "A sign in a clinic is meant to direct patients to reception. The design is beautiful but gives no direction. Explain what its function requires.",
+      "independent_model": "The sign needs to help patients find reception. I would add a clear direction and test whether someone can follow it quickly.",
+      "scaffolds": {
+        "A2": [
+          "I can see ___.",
+          "I suggest ___ because ___.",
+          "Could you confirm ___?"
+        ],
+        "B1": [
+          "Describe the change you can point to.",
+          "Explain how it helps the message.",
+          "Ask about the audience or the requirement."
+        ],
+        "B2": [
+          "Connect one element or principle to the communication goal.",
+          "Explain a tradeoff or a limit of the interpretation.",
+          "Ask for the information needed to judge the result."
+        ]
+      },
+      "context": {
+        "setting": "Everyday life",
+        "why": "Judge a sign by whether it helps someone find the way."
+      },
+      "everyday_use": "Judge a sign by whether it helps someone find the way.",
+      "notice": {
+        "question": "What makes B work as an invitation?",
+        "choices": [
+          "It tells a viewer when and where to come.",
+          "It has the most decoration.",
+          "It makes the date harder to find."
+        ],
+        "answer": 0,
+        "reason": "The design supports the intended action, not just an appearance."
+      }
+    }
+  ]
+}

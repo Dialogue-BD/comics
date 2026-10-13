@@ -1,0 +1,28 @@
+{
+  "id": "toolkit-1",
+  "duration": 13.249708,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "I need a square social post, and I want to edit the date later.",
+      "start": 0,
+      "end": 3.618,
+      "voice": "Zoe (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "We can use an editor with separate text layers. A flattened generated image will not give you editable text.",
+      "start": 3.618,
+      "end": 10.55,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Please include the editable file in the sharing.",
+      "start": 10.55,
+      "end": 13.25,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "foundation-balance",
+  "duration": 8.105042,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "The composition feels heavy on one side.",
+      "start": 0,
+      "end": 2.753,
+      "voice": "Lee (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I spread the visual weight across both sides.",
+      "start": 2.753,
+      "end": 5.84,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Could an unequal arrangement work too?",
+      "start": 5.84,
+      "end": 8.105,
+      "voice": "Lee (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

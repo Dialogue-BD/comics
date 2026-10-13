@@ -1,0 +1,28 @@
+{
+  "id": "typography-3",
+  "duration": 8.920125,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "Could you make it pop?",
+      "start": 0,
+      "end": 1.443,
+      "voice": "Isha (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "Which element should stand out first: the café name or the opening offer?",
+      "start": 1.443,
+      "end": 6.023,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "The offer. People already know our name.",
+      "start": 6.023,
+      "end": 8.92,
+      "voice": "Isha (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

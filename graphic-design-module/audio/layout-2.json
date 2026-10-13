@@ -1,0 +1,28 @@
+{
+  "id": "layout-2",
+  "duration": 9.659417,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "What did you change in the second version?",
+      "start": 0,
+      "end": 2.213,
+      "voice": "Jamie (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I moved the details below the headline to make the layout easier to scan.",
+      "start": 2.213,
+      "end": 6.486,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Please keep this version and make the address a little larger.",
+      "start": 6.486,
+      "end": 9.659,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

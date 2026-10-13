@@ -1,0 +1,28 @@
+{
+  "id": "judgment-1",
+  "duration": 12.478875,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "The draft looks good. Is it ready to publish?",
+      "start": 0,
+      "end": 2.759,
+      "voice": "Zoe (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I found a spelling error in “Opening”. I’ll correct the headline and check it against the approved copy before exporting.",
+      "start": 2.759,
+      "end": 9.656,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Thanks. Please send the corrected proof first.",
+      "start": 9.656,
+      "end": 12.479,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

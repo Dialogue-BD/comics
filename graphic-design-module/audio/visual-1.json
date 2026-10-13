@@ -1,0 +1,28 @@
+{
+  "id": "visual-1",
+  "duration": 12.715125,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "Which lighting feels better for our café invitation?",
+      "start": 0,
+      "end": 3.107,
+      "voice": "Zoe (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I notice warmer light in A. It may suggest a more welcoming mood, but we should check whether that fits your audience.",
+      "start": 3.107,
+      "end": 9.678,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Our daytime customers want a quiet place to read.",
+      "start": 9.678,
+      "end": 12.715,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

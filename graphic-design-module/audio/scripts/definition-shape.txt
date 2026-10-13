@@ -1,0 +1,1 @@
+Shape. A shape is a two-dimensional area with a boundary.

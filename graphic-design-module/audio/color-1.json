@@ -1,0 +1,28 @@
+{
+  "id": "color-1",
+  "duration": 11.814292,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "The gold text looks lovely. Why did you change it?",
+      "start": 0,
+      "end": 3.158,
+      "voice": "Zoe (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "The forest text is easier to read on the cream background. We can keep gold for the decorative line.",
+      "start": 3.158,
+      "end": 9.23,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "That works. Please keep the warm feeling.",
+      "start": 9.23,
+      "end": 11.814,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

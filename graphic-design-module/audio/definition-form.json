@@ -1,0 +1,15 @@
+{
+  "id": "definition-form",
+  "concept": "form",
+  "duration": 8.038,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Form. Form concerns three-dimensional volume. A flat image can suggest form through light, shadow, and perspective.",
+      "start": 0,
+      "end": 8.038,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

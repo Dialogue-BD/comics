@@ -1,0 +1,952 @@
+{
+  "line": {
+    "title": "Follow the line. Inspect the connection.",
+    "word": "INSPECT",
+    "visual": "inspect",
+    "story": [
+      "A line joins two points. Follow its path.",
+      "Inspect: look carefully at where the line goes.",
+      "The arrow guides the eye from the label to its object."
+    ],
+    "parts": [
+      {
+        "form": "spect",
+        "meaning": "look",
+        "origin": "Latin"
+      },
+      {
+        "form": "in-",
+        "meaning": "into, in this word",
+        "origin": "Latin"
+      }
+    ],
+    "family": [
+      "inspect · look carefully",
+      "spectator · someone who watches",
+      "inspection · a careful check"
+    ],
+    "rule": "Name the relationship: a line runs along an edge, goes through an area, or connects one thing to another. The root spect is a useful clue in words about looking.",
+    "levels": {
+      "A2": {
+        "model": "The line connects A to B.",
+        "note": "Connect A to B: use to for the destination."
+      },
+      "B1": {
+        "model": "The line connects the label to the picture, so the relationship is clear.",
+        "note": "So connects the visible choice to its result."
+      },
+      "B2": {
+        "model": "The line that connects the label to the picture makes the reference explicit.",
+        "note": "The clause beginning with that identifies which line you mean."
+      }
+    },
+    "check": {
+      "question": "Which sentence matches the line that joins the two points?",
+      "choices": [
+        "The line connects A to B.",
+        "The line connects A at B.",
+        "The line connects A under B."
+      ],
+      "answer": 0,
+      "reason": "Connect one thing to another: the line joins A and B."
+    },
+    "transfer": {
+      "context": "Before printing, a designer inspects every connector to check that it points to the right object.",
+      "choices": [
+        "Looks at each connector carefully.",
+        "Deletes every connector.",
+        "Changes every connector to red."
+      ],
+      "answer": 0,
+      "reason": "Spect suggests looking; checking where each line points confirms that inspect means examine carefully."
+    },
+    "prompt": "Point to a line in a guide example. Say what it connects, divides, or guides.",
+    "sources": [
+      "https://www.etymonline.com/word/inspect",
+      "https://www.etymonline.com/word/spectator"
+    ]
+  },
+  "color": {
+    "title": "One hue. A whole word family.",
+    "word": "MONOCHROMATIC",
+    "visual": "mono",
+    "story": [
+      "Many hues compete: red, blue, green, and gold.",
+      "Mono means one. The colors move into one hue family.",
+      "Different lightness levels; one hue. This palette is monochromatic."
+    ],
+    "parts": [
+      {
+        "form": "mono-",
+        "meaning": "one",
+        "origin": "Greek"
+      },
+      {
+        "form": "chromat-",
+        "meaning": "color",
+        "origin": "Greek"
+      },
+      {
+        "form": "-ic",
+        "meaning": "often makes an adjective: related to",
+        "origin": "Greek origin"
+      },
+      {
+        "form": "multi-",
+        "meaning": "many",
+        "origin": "Latin"
+      }
+    ],
+    "family": [
+      "monochromatic · one hue family",
+      "multicolored · several colors",
+      "monolingual / multilingual · one language / several languages"
+    ],
+    "rule": "Use word parts as clues, then check the picture and sentence. Monochromatic does not mean every swatch has identical lightness. Mono and chroma are Greek; multi is Latin.",
+    "levels": {
+      "A2": {
+        "model": "This palette uses one hue.",
+        "note": "A hue is a color family, such as green."
+      },
+      "B1": {
+        "model": "The palette is monochromatic because it uses lighter and darker greens.",
+        "note": "Because gives visible evidence for the design term."
+      },
+      "B2": {
+        "model": "Although the values differ, the palette remains monochromatic because the swatches share a hue.",
+        "note": "Although signals a difference that does not change the conclusion."
+      }
+    },
+    "check": {
+      "question": "The green swatches vary from light to dark. Why are they monochromatic?",
+      "choices": [
+        "They share one hue family.",
+        "They must all have the same lightness.",
+        "They use every hue on the wheel."
+      ],
+      "answer": 0,
+      "reason": "Mono points to one; the picture confirms one green hue with different values."
+    },
+    "transfer": {
+      "context": "A multilingual notice gives the opening details in English, Bangla, and Arabic. What does multilingual mean here?",
+      "choices": [
+        "Using several languages.",
+        "Using only one language.",
+        "Using no written words."
+      ],
+      "answer": 0,
+      "reason": "Multi means many; the three named languages confirm the meaning. A useful reading habit, including for IELTS: word parts → context → likely meaning."
+    },
+    "prompt": "Choose a palette from the guide. Describe its hue relationship and say what helped you decode the term.",
+    "sources": [
+      "https://www.etymonline.com/word/monochromatic",
+      "https://www.etymonline.com/word/multi-"
+    ]
+  },
+  "shape": {
+    "title": "Let the adjective show the shape.",
+    "word": "ROUNDED",
+    "visual": "shape",
+    "story": [
+      "Sharp corners: an angular shape.",
+      "The corners soften while the word ROUNDED rounds off.",
+      "Rounded is an adjective: a rounded shape."
+    ],
+    "parts": [],
+    "family": [
+      "shape → shaped",
+      "angle → angular",
+      "round → rounded"
+    ],
+    "rule": "An adjective usually comes before the noun it describes: a rounded shape, an angular shape. A/an follows the next sound: a rounded shape; an angular shape.",
+    "levels": {
+      "A2": {
+        "model": "It is a rounded shape.",
+        "note": "Say a + adjective + noun."
+      },
+      "B1": {
+        "model": "The rounded shape has curved edges, whereas the angular shape has corners.",
+        "note": "Whereas connects two visible differences."
+      },
+      "B2": {
+        "model": "The angular silhouette creates a different impression from the rounded one; audience context still matters.",
+        "note": "Describe the feature before interpreting the impression."
+      }
+    },
+    "check": {
+      "question": "Which phrase correctly names a shape with sharp corners?",
+      "choices": [
+        "An angular shape.",
+        "An shape angular.",
+        "A angular shape."
+      ],
+      "answer": 0,
+      "reason": "Angular starts with a vowel sound; the adjective comes before shape."
+    },
+    "transfer": {
+      "context": "The designer replaces an angular border with a rounded one. What changes?",
+      "choices": [
+        "Sharp corners become curved.",
+        "A flat image becomes a real object.",
+        "The wording disappears."
+      ],
+      "answer": 0,
+      "reason": "Rounded describes the curved outline, not a change to the text or physical dimension."
+    },
+    "prompt": "Compare a geometric and an organic example. Describe the outlines before guessing their effect.",
+    "sources": []
+  },
+  "texture": {
+    "title": "Say what a surface looks like.",
+    "word": "WOVEN",
+    "visual": "texture",
+    "story": [
+      "Separate strands cross over and under.",
+      "The strands weave together through the letters.",
+      "Woven describes the visible result of weaving."
+    ],
+    "parts": [
+      {
+        "form": "tex / text",
+        "meaning": "weave; a historical root family",
+        "origin": "Latin"
+      }
+    ],
+    "family": [
+      "texture · surface appearance or feel",
+      "textile · woven cloth / fabric",
+      "text · historically connected to weaving words together"
+    ],
+    "rule": "A screen image can look rough, smooth, or woven. Use looks + adjective for visible evidence. Texture and textile share a Latin weaving history; this is a word family, not a rule for splitting every text- word.",
+    "levels": {
+      "A2": {
+        "model": "The surface looks woven.",
+        "note": "Looks + adjective: looks rough, looks smooth."
+      },
+      "B1": {
+        "model": "The texture looks woven because the strands cross over and under.",
+        "note": "Woven is the irregular past participle of weave."
+      },
+      "B2": {
+        "model": "The image suggests a woven surface; we cannot judge its actual tactile feel from the picture alone.",
+        "note": "Suggests distinguishes visual appearance from physical evidence."
+      }
+    },
+    "check": {
+      "question": "You are describing a photo of rough stone. Which sentence keeps the claim visual?",
+      "choices": [
+        "The stone looks rough.",
+        "I can feel the stone through the screen.",
+        "The stone looks roughly."
+      ],
+      "answer": 0,
+      "reason": "Looks takes the adjective rough. The photo shows appearance, not direct tactile experience."
+    },
+    "transfer": {
+      "context": "A textile designer repeats interlaced strands in a fabric pattern. Which meaning fits textile?",
+      "choices": [
+        "Cloth or fabric.",
+        "A type of battery.",
+        "An empty margin."
+      ],
+      "answer": 0,
+      "reason": "The weaving root is a clue; interlaced strands and fabric confirm the meaning."
+    },
+    "prompt": "Choose two source textures. Describe how they look, then explain one use for each.",
+    "sources": [
+      "https://www.etymonline.com/word/texture",
+      "https://www.etymonline.com/word/textile",
+      "https://www.etymonline.com/word/text"
+    ]
+  },
+  "space": {
+    "title": "Make the invisible visible.",
+    "word": "VISIBLE",
+    "visual": "visible",
+    "story": [
+      "The word is invisible; only the surrounding area remains.",
+      "It becomes visible as the letters emerge.",
+      "Empty space makes the visible word easier to separate from its surroundings."
+    ],
+    "parts": [
+      {
+        "form": "vis / vid",
+        "meaning": "see",
+        "origin": "Latin"
+      },
+      {
+        "form": "in-",
+        "meaning": "not, in invisible",
+        "origin": "Latin"
+      },
+      {
+        "form": "-ible",
+        "meaning": "able to be, in visible",
+        "origin": "Latin origin"
+      }
+    ],
+    "family": [
+      "visible / invisible · can / cannot be seen",
+      "visual · related to seeing",
+      "video · shares the Latin seeing family"
+    ],
+    "rule": "Vis/vid is a clue about seeing. In invisible, in- means not; in inspect, in- means into. Prefixes can have different jobs. Say less space / more space for an amount of empty area.",
+    "levels": {
+      "A2": {
+        "model": "There is more space around the word.",
+        "note": "Space is uncountable here: more space, less space."
+      },
+      "B1": {
+        "model": "More space makes the word visible as a separate item.",
+        "note": "A separate gap can be counted: two spaces between groups."
+      },
+      "B2": {
+        "model": "The negative space remains visible as the background and helps define the adjoining letterforms.",
+        "note": "Negative space is an empty area; it is not necessarily white or invisible."
+      }
+    },
+    "check": {
+      "question": "You increase the empty area around a headline. Which sentence fits?",
+      "choices": [
+        "There is more space around the headline.",
+        "There are more space around the headline.",
+        "There is many space around the headline."
+      ],
+      "answer": 0,
+      "reason": "For an amount of empty area, space is uncountable: there is more space."
+    },
+    "transfer": {
+      "context": "The pale caption is barely visible against the pale background. Which meaning fits barely visible?",
+      "choices": [
+        "Almost impossible to see clearly.",
+        "Extremely large.",
+        "Written in several languages."
+      ],
+      "answer": 0,
+      "reason": "Vis suggests seeing; pale against pale and barely tell us it is difficult to see."
+    },
+    "prompt": "Point to occupied and empty areas in an example. Explain what the empty area helps you see.",
+    "sources": [
+      "https://www.etymonline.com/word/visible",
+      "https://www.etymonline.com/word/invisible",
+      "https://www.etymonline.com/word/video"
+    ]
+  },
+  "form": {
+    "title": "Transform a shape. Explain the result.",
+    "word": "TRANSFORM",
+    "visual": "form",
+    "story": [
+      "A flat square has height and width.",
+      "Transform: the square changes into a shaded cube illustration.",
+      "Shading makes it look three-dimensional; the screen image is still flat."
+    ],
+    "parts": [
+      {
+        "form": "form",
+        "meaning": "shape",
+        "origin": "Latin"
+      },
+      {
+        "form": "trans-",
+        "meaning": "across / beyond; change in transform",
+        "origin": "Latin"
+      }
+    ],
+    "family": [
+      "form · shape or configuration",
+      "transform · change the form",
+      "uniform · one consistent form"
+    ],
+    "rule": "After makes + object, use the base verb: makes it look rounded. Form is a reusable root clue. Transform means change form; a rendered cube only suggests volume on a flat screen.",
+    "levels": {
+      "A2": {
+        "model": "Shading makes it look solid.",
+        "note": "Use look, not to look or looks, after makes it."
+      },
+      "B1": {
+        "model": "Light and shadow make the flat shape look three-dimensional.",
+        "note": "A plural subject uses make: light and shadow make…"
+      },
+      "B2": {
+        "model": "The shading transforms our perception of the shape without adding physical depth to the screen.",
+        "note": "Separate suggested volume from actual physical volume."
+      }
+    },
+    "check": {
+      "question": "Which sentence describes the shaded illustration naturally?",
+      "choices": [
+        "The shading makes it look rounded.",
+        "The shading makes it to look rounded.",
+        "The shading makes it looks rounded."
+      ],
+      "answer": 0,
+      "reason": "Makes + object + base verb: makes it look."
+    },
+    "transfer": {
+      "context": "The icons are uniform: each uses the same outline and stroke weight. What does uniform mean here?",
+      "choices": [
+        "Consistent in form.",
+        "Wearing school clothes.",
+        "All different in style."
+      ],
+      "answer": 0,
+      "reason": "Form gives a clue about shape; same outline and weight show that uniform here means consistent."
+    },
+    "prompt": "Use the experiment to add shading. Explain what makes the shape look solid.",
+    "sources": [
+      "https://www.etymonline.com/word/transform",
+      "https://www.etymonline.com/word/uniform"
+    ]
+  },
+  "typography": {
+    "title": "Read the word. Decode legible.",
+    "word": "LEGIBLE",
+    "visual": "legible",
+    "story": [
+      "Blurred letters are difficult to read: illegible.",
+      "The letters sharpen and separate.",
+      "Legible: the word can be read clearly."
+    ],
+    "parts": [
+      {
+        "form": "leg / lect",
+        "meaning": "read, in this word family",
+        "origin": "Latin"
+      },
+      {
+        "form": "-ible",
+        "meaning": "able to be, in legible",
+        "origin": "Latin origin"
+      },
+      {
+        "form": "il-",
+        "meaning": "not; a form of in-",
+        "origin": "Latin origin"
+      }
+    ],
+    "family": [
+      "legible / illegible · readable / not readable",
+      "lecture · shares a historical reading family",
+      "legibility · how easily letterforms can be read"
+    ],
+    "rule": "Legible concerns recognizing the letters. Readability also concerns reading longer passages comfortably. Compare specific versions: clearer than, easier to read than. Not every word beginning leg- belongs to this family.",
+    "levels": {
+      "A2": {
+        "model": "This word is easier to read.",
+        "note": "Easier to read compares two versions."
+      },
+      "B1": {
+        "model": "The spaced letters are easier to read than the crowded letters.",
+        "note": "Use than after the comparative."
+      },
+      "B2": {
+        "model": "The individual letters are legible, although the dense paragraph still takes effort to read.",
+        "note": "Legibility and readability overlap, but the paragraph adds length and layout considerations."
+      }
+    },
+    "check": {
+      "question": "Which sentence makes a clear comparison?",
+      "choices": [
+        "This version is easier to read than the other one.",
+        "This version is more easier to read.",
+        "This version is easier to read that the other one."
+      ],
+      "answer": 0,
+      "reason": "Easier is already comparative; use than to introduce the other version."
+    },
+    "transfer": {
+      "context": "The notice is illegible because the letters overlap. What does illegible mean?",
+      "choices": [
+        "Impossible or difficult to read.",
+        "Perfectly clear.",
+        "Written in one hue."
+      ],
+      "answer": 0,
+      "reason": "Il- supplies a negative clue; overlapping letters confirm that the notice cannot be read clearly."
+    },
+    "prompt": "Compare two type examples. Say which is easier to read in a small notice and point to evidence.",
+    "sources": [
+      "https://www.etymonline.com/word/legible",
+      "https://www.etymonline.com/word/illegible"
+    ]
+  },
+  "contrast": {
+    "title": "Show a difference. Join the ideas.",
+    "word": "WHEREAS",
+    "visual": "contrast",
+    "story": [
+      "One word uses pale, light letters.",
+      "The other uses dark, heavy letters.",
+      "Whereas joins the contrast: this is light, whereas that is dark."
+    ],
+    "parts": [],
+    "family": [
+      "contrast → contrasting",
+      "different → difference",
+      "whereas / while · can contrast two ideas"
+    ],
+    "rule": "Use whereas or while to connect contrasting clauses. Describe a specific difference: lighter than, heavier than, different from. Contrast needs a relationship between things.",
+    "levels": {
+      "A2": {
+        "model": "This is light. That is dark.",
+        "note": "Two short sentences can express a contrast."
+      },
+      "B1": {
+        "model": "This word is light, whereas the other is dark.",
+        "note": "Whereas joins complete clauses, not isolated adjectives."
+      },
+      "B2": {
+        "model": "The light word recedes, whereas the heavier word attracts attention against this background.",
+        "note": "Qualify the effect with the actual viewing context."
+      }
+    },
+    "check": {
+      "question": "Which sentence connects the two visible differences?",
+      "choices": [
+        "This word is light, whereas the other is dark.",
+        "This word is light because whereas dark.",
+        "This word is light, whereas is dark other."
+      ],
+      "answer": 0,
+      "reason": "Each side of whereas has a subject and verb."
+    },
+    "transfer": {
+      "context": "The title is bold, while the supporting text is light. What does while do here?",
+      "choices": [
+        "Contrasts two type weights.",
+        "Says the event happens at the same time.",
+        "Gives the location."
+      ],
+      "answer": 0,
+      "reason": "While can express time or contrast; the two different type weights make contrast the relevant meaning."
+    },
+    "prompt": "Choose one contrast example. Describe both sides of the relationship, then explain its effect.",
+    "sources": []
+  },
+  "hierarchy": {
+    "title": "Primary first. Details next.",
+    "word": "PRIMARY",
+    "visual": "hierarchy",
+    "story": [
+      "All three pieces of information compete equally.",
+      "Primary information becomes the first thing you notice.",
+      "Secondary and tertiary details follow in a useful order."
+    ],
+    "parts": [
+      {
+        "form": "prim",
+        "meaning": "first",
+        "origin": "Latin"
+      }
+    ],
+    "family": [
+      "primary · first or main",
+      "secondary · second or supporting",
+      "tertiary · third level"
+    ],
+    "rule": "Primary can mean main in importance, not only first in time. First, next, and finally organize your explanation of reading order. Check the context: primary colors use the same word differently.",
+    "levels": {
+      "A2": {
+        "model": "First, I notice the title.",
+        "note": "First introduces the first noticed detail."
+      },
+      "B1": {
+        "model": "First, I notice the title. Next, I read the date. Finally, I find the place.",
+        "note": "Reading order should support what the viewer needs."
+      },
+      "B2": {
+        "model": "The title has primary emphasis, while the date and location provide secondary and tertiary information.",
+        "note": "Importance depends on the brief, not a universal order for all posters."
+      }
+    },
+    "check": {
+      "question": "The title is largest, the date medium, and the location smallest. Which explains the order?",
+      "choices": [
+        "First the title, next the date, finally the location.",
+        "Finally the title, first the date, next the location.",
+        "Everything has the same visual importance."
+      ],
+      "answer": 0,
+      "reason": "The sizes establish a visible order of emphasis."
+    },
+    "transfer": {
+      "context": "The primary objective of the notice is to show where to register. What does primary mean here?",
+      "choices": [
+        "Main or most important.",
+        "Only red, yellow, and blue.",
+        "A small decorative detail."
+      ],
+      "answer": 0,
+      "reason": "Prim supplies a first/main clue; objective makes importance the relevant sense."
+    },
+    "prompt": "Describe the reading order in a source example. Say why that order fits the message.",
+    "sources": [
+      "https://www.etymonline.com/word/primary"
+    ]
+  },
+  "alignment": {
+    "title": "Build a structure for pictures and sentences.",
+    "word": "CONSTRUCT",
+    "visual": "structure",
+    "story": [
+      "Scattered blocks have no shared starting edge.",
+      "Construct: the blocks build a shared structure.",
+      "Parallel visual edges and parallel verb forms make the sequence clear."
+    ],
+    "parts": [
+      {
+        "form": "struct",
+        "meaning": "build / arrange",
+        "origin": "Latin"
+      }
+    ],
+    "family": [
+      "structure · arrangement of parts",
+      "construct · build",
+      "reconstruct · build again"
+    ],
+    "rule": "The Latin struct family gives a building clue. English also needs parallel structure: compare verbs with verbs, or nouns with nouns. Read, compare, and explain share a grammatical pattern.",
+    "levels": {
+      "A2": {
+        "model": "Read. Compare. Explain.",
+        "note": "Three base verbs give three clear instructions."
+      },
+      "B1": {
+        "model": "Read the title, compare the versions, and explain the change.",
+        "note": "Keep all three actions in the same grammatical form."
+      },
+      "B2": {
+        "model": "A shared alignment organizes the layout, while parallel verb forms organize the instruction.",
+        "note": "Parallel grammatical structure means matching forms, not necessarily matching line lengths."
+      }
+    },
+    "check": {
+      "question": "Which instruction has parallel verb forms?",
+      "choices": [
+        "Read, compare, and explain.",
+        "Read, comparing, and explanation.",
+        "Reading, compare, and explained."
+      ],
+      "answer": 0,
+      "reason": "Read, compare, and explain are all base-form verbs."
+    },
+    "transfer": {
+      "context": "After the page file was lost, the designer reconstructed the layout from a sketch. What happened?",
+      "choices": [
+        "Built the layout again.",
+        "Deleted the sketch.",
+        "Changed every word into a picture."
+      ],
+      "answer": 0,
+      "reason": "Re- suggests again; struct suggests build. Lost file and sketch confirm rebuilding."
+    },
+    "prompt": "Find a shared edge in the guide. Explain it using two parallel actions.",
+    "sources": [
+      "https://www.etymonline.com/word/structure",
+      "https://www.etymonline.com/word/construct",
+      "https://www.etymonline.com/word/reconstruct"
+    ]
+  },
+  "balance": {
+    "title": "Both sides. Different ways to balance.",
+    "word": "BOTH",
+    "visual": "balance",
+    "story": [
+      "One side carries all the visual weight.",
+      "Both sides now contain the same-sized square.",
+      "Both squares are equal here. Other designs can balance unequal elements."
+    ],
+    "parts": [],
+    "family": [
+      "both · two together",
+      "one … the other · distinguish two",
+      "although · a concession"
+    ],
+    "rule": "Both + plural noun takes a plural verb: both squares are large. One … the other distinguishes two items. Visual balance is perceived attention, not a measurement of physical mass.",
+    "levels": {
+      "A2": {
+        "model": "Both squares are the same size.",
+        "note": "Both refers to two, not three or more."
+      },
+      "B1": {
+        "model": "One square is on the left; the other is on the right.",
+        "note": "The other identifies the remaining member of a pair."
+      },
+      "B2": {
+        "model": "Although the elements are unequal in size, their position and contrast can still create visual balance.",
+        "note": "Although allows an unexpected result without claiming symmetry."
+      }
+    },
+    "check": {
+      "question": "Which sentence describes the two equal squares correctly?",
+      "choices": [
+        "Both squares are the same size.",
+        "Both square is the same size.",
+        "Both squares is the same size."
+      ],
+      "answer": 0,
+      "reason": "Both takes the plural squares and the plural verb are."
+    },
+    "transfer": {
+      "context": "Although the photograph is larger, the small dark title attracts strong attention. What does although signal?",
+      "choices": [
+        "A result that may seem unexpected.",
+        "Two elements must be identical.",
+        "The title is physically heavier."
+      ],
+      "answer": 0,
+      "reason": "Although recognizes that size alone does not determine perceived visual weight."
+    },
+    "prompt": "Compare a symmetric and an asymmetric example. Describe both sides without treating visual weight as physical mass.",
+    "sources": []
+  },
+  "proximity": {
+    "title": "Near in the picture. Clear in the sentence.",
+    "word": "PROXIMITY",
+    "visual": "proximity",
+    "story": [
+      "A caption sits far from the picture it explains.",
+      "The caption moves nearer to its picture.",
+      "Proximity makes the relationship easier to identify."
+    ],
+    "parts": [
+      {
+        "form": "proxim",
+        "meaning": "near / nearest",
+        "origin": "Latin"
+      },
+      {
+        "form": "-ity",
+        "meaning": "often names a quality or state",
+        "origin": "Latin origin"
+      }
+    ],
+    "family": [
+      "proximity · nearness",
+      "proximate · near or closely related",
+      "approximate · related historically; use context for its modern sense"
+    ],
+    "rule": "Proxim gives a nearness clue. Proximity is a noun. Clear English references work like clear image/caption groups: this caption, these pictures, the date beside the title. Avoid a vague it when two referents compete.",
+    "levels": {
+      "A2": {
+        "model": "This caption explains this picture.",
+        "note": "This for one; these for more than one."
+      },
+      "B1": {
+        "model": "The caption is close to the picture, so their relationship is clear.",
+        "note": "Name the caption and picture before using their."
+      },
+      "B2": {
+        "model": "Moving the caption closer reduces the risk that readers associate it with the neighboring image.",
+        "note": "Reference can become ambiguous in both language and layout."
+      }
+    },
+    "check": {
+      "question": "Which sentence clearly identifies the relationship?",
+      "choices": [
+        "The caption beside the moon picture describes the moon.",
+        "It describes it there.",
+        "They are this."
+      ],
+      "answer": 0,
+      "reason": "Naming the caption and picture removes competing references."
+    },
+    "transfer": {
+      "context": "The registration desk is in close proximity to the entrance, so new visitors find it quickly. Where is the desk?",
+      "choices": [
+        "Near the entrance.",
+        "Far from the building.",
+        "Inside the headline."
+      ],
+      "answer": 0,
+      "reason": "Proxim suggests near; visitors finding it quickly at the entrance confirms the relationship."
+    },
+    "prompt": "Find a picture/caption pair. Explain which caption belongs to which image.",
+    "sources": [
+      "https://www.etymonline.com/word/proximity",
+      "https://www.etymonline.com/word/proximate"
+    ]
+  },
+  "repetition": {
+    "title": "Use it. Reuse it. Make a system.",
+    "word": "REUSE",
+    "visual": "repeat",
+    "story": [
+      "One reusable card sets a visual pattern.",
+      "Re- adds again: use the pattern again.",
+      "Different messages share the same visual system."
+    ],
+    "parts": [
+      {
+        "form": "re-",
+        "meaning": "again / back; again in reuse",
+        "origin": "Latin"
+      }
+    ],
+    "family": [
+      "reuse · use again",
+      "redesign · design again",
+      "rearrange · arrange again"
+    ],
+    "rule": "Re- is productive in many English verbs: reuse, redesign, rearrange. The letters re at the start of a word are not always this prefix. Do not invent usefully meaningless splits such as re + peat for repeat.",
+    "levels": {
+      "A2": {
+        "model": "Reuse the same color.",
+        "note": "Reuse is a verb. Reusable is an adjective."
+      },
+      "B1": {
+        "model": "Reuse the same heading style to connect the cards.",
+        "note": "To explains the purpose of reusing a feature."
+      },
+      "B2": {
+        "model": "Repeating selected features creates consistency while allowing the messages themselves to vary.",
+        "note": "Consistency can include controlled variation; it need not mean copying every detail."
+      }
+    },
+    "check": {
+      "question": "What should repeat to make a consistent set of three different notices?",
+      "choices": [
+        "Selected colors and type styles.",
+        "Every word of all three messages.",
+        "Random decoration on each notice."
+      ],
+      "answer": 0,
+      "reason": "A visual system repeats selected features while content can change."
+    },
+    "transfer": {
+      "context": "The designer rearranges the same text blocks into two columns. What does rearranges mean?",
+      "choices": [
+        "Arranges the blocks again in a new layout.",
+        "Adds a new language.",
+        "Removes all the wording."
+      ],
+      "answer": 0,
+      "reason": "Re- suggests again; the same blocks and new columns confirm a new arrangement."
+    },
+    "prompt": "Choose a repeated feature. Explain what stays consistent and what can vary.",
+    "sources": [
+      "https://www.etymonline.com/word/re-"
+    ]
+  },
+  "simplicity": {
+    "title": "Shorten the sentence. Keep the message.",
+    "word": "BREVITY",
+    "visual": "brevity",
+    "story": [
+      "Extra words slow the sentence without adding needed meaning.",
+      "Brevity: the unnecessary wording becomes shorter.",
+      "He breathed deeply to calm himself. The action and purpose remain."
+    ],
+    "parts": [
+      {
+        "form": "brev",
+        "meaning": "short",
+        "origin": "Latin"
+      },
+      {
+        "form": "-ity",
+        "meaning": "a quality or state, in brevity",
+        "origin": "Latin origin"
+      }
+    ],
+    "family": [
+      "brevity · shortness of expression",
+      "abbreviate · shorten",
+      "brief · short / a set of instructions, depending on context"
+    ],
+    "rule": "Concision in prose preserves the action, purpose, and needed details while removing unnecessary wording. Brevity can help, but a necessary qualification should stay.",
+    "levels": {
+      "A2": {
+        "model": "Join us Friday at 4 pm.",
+        "note": "Join us is a direct invitation."
+      },
+      "B1": {
+        "model": "Join us Friday at 4 pm at the community hall.",
+        "note": "Keep the place if the reader needs it."
+      },
+      "B2": {
+        "model": "The shorter invitation preserves the action, time, and place while removing redundant wording.",
+        "note": "Concise does not mean incomplete."
+      }
+    },
+    "check": {
+      "question": "Which edit keeps the action and time from “We would like to invite you to join us on Friday at 4 pm”?",
+      "choices": [
+        "Join us Friday at 4 pm.",
+        "Join us.",
+        "Friday."
+      ],
+      "answer": 0,
+      "reason": "The shorter sentence retains the invitation, day, and time."
+    },
+    "transfer": {
+      "context": "Please abbreviate the month from September to Sept. to fit the label. What does abbreviate mean?",
+      "choices": [
+        "Shorten the written form.",
+        "Translate it into another language.",
+        "Make the letters impossible to read."
+      ],
+      "answer": 0,
+      "reason": "Brev suggests short; September → Sept. shows a shortened written form."
+    },
+    "prompt": "Edit a wordy invitation. Point out what you removed and which essential details you kept.",
+    "sources": [
+      "https://www.etymonline.com/word/brevity",
+      "https://www.etymonline.com/word/abbreviate"
+    ]
+  },
+  "function": {
+    "title": "Give the design a purpose.",
+    "word": "TO GUIDE",
+    "visual": "purpose",
+    "story": [
+      "An arrow has a shape and a color.",
+      "The arrow points to a named place.",
+      "Its function is to guide visitors to the entrance."
+    ],
+    "parts": [],
+    "family": [
+      "guide → guidance",
+      "inform → information",
+      "communicate → communication"
+    ],
+    "rule": "Use to + base verb to state a purpose: to guide, to inform, to invite. Use so that + clause for an intended result: so that visitors can find the entrance. Word families help predict grammatical roles.",
+    "levels": {
+      "A2": {
+        "model": "The arrow guides visitors.",
+        "note": "Name the audience and action."
+      },
+      "B1": {
+        "model": "The arrow is placed here to guide visitors to the entrance.",
+        "note": "To + base verb gives the purpose."
+      },
+      "B2": {
+        "model": "The arrow and label work together so that first-time visitors can identify the entrance quickly.",
+        "note": "So that introduces the intended result, not a guaranteed outcome."
+      }
+    },
+    "check": {
+      "question": "Which sentence states the arrow’s purpose clearly?",
+      "choices": [
+        "It points right to guide visitors to the entrance.",
+        "It points right to guiding visitors.",
+        "It points right so that guide visitors."
+      ],
+      "answer": 0,
+      "reason": "To + base verb: to guide visitors."
+    },
+    "transfer": {
+      "context": "The notice gives information so that visitors can register before Friday. What is the intended result?",
+      "choices": [
+        "Visitors register before Friday.",
+        "Visitors learn a new texture name.",
+        "Every visitor likes the color."
+      ],
+      "answer": 0,
+      "reason": "So that introduces the intended result; it does not guarantee that everybody acts."
+    },
+    "prompt": "Name the audience, message, and intended action of a design. Explain how one element and one principle support it.",
+    "sources": []
+  }
+}

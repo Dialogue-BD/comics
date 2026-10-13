@@ -1,0 +1,906 @@
+{
+  "line": {
+    "twin": "Sentence",
+    "bridge": "Vary the line. Vary the sentence. A change in length can change the rhythm.",
+    "before": [
+      "The rain fell. The path darkened. We walked on. The wind rose."
+    ],
+    "after": [
+      "Rain darkened the path as we walked toward the river.",
+      "Then the wind rose."
+    ],
+    "game": {
+      "kind": "order",
+      "prompt": "Build the longer sentence beginning with As, then give the short ending its own line.",
+      "tiles": [
+        "As we walked",
+        "toward the river,",
+        "rain darkened the path.",
+        "Then the wind rose."
+      ],
+      "answer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reason": "The As clause establishes the background. The short final sentence changes the pace.",
+      "breaks": [
+        3
+      ]
+    },
+    "vocab": [
+      {
+        "visual": "line weight",
+        "textual": "sentence length",
+        "meaning": "Thick and thin lines vary visual emphasis; different sentence lengths vary prose rhythm."
+      },
+      {
+        "visual": "continuous line",
+        "textual": "connected clause",
+        "meaning": "A conjunction can connect clauses into a continuous thought."
+      },
+      {
+        "visual": "divider",
+        "textual": "full stop",
+        "meaning": "A line can divide areas; a full stop separates complete sentences."
+      }
+    ],
+    "notes": [
+      "Sentence length is an analogy for line variation, not a rule that longer sentences are better.",
+      "In a complex sentence, a dependent clause needs a main clause."
+    ],
+    "levels": {
+      "A2": "One long sentence. One short sentence. Listen to the rhythm.",
+      "B1": "As connects the background action to the rain-darkened path. The short ending changes the pace.",
+      "B2": "Sentence variety shapes narrative rhythm; a short sentence can gain emphasis after a longer one."
+    }
+  },
+  "color": {
+    "twin": "Diction",
+    "bridge": "A palette colors what we see. Diction colors how a narrator presents a scene.",
+    "before": [
+      "The room was empty and quiet."
+    ],
+    "after": [
+      "The room was deserted and silent."
+    ],
+    "game": {
+      "kind": "choose",
+      "prompt": "The narrator wants the empty room to feel unsettling. Which word pair best supports that intention?",
+      "tiles": [
+        "peaceful / still",
+        "deserted / silent",
+        "busy / crowded"
+      ],
+      "answer": 1,
+      "reason": "Deserted and silent can suggest unease in this context. Peaceful and still suggest calm; busy and crowded change the basic scene.",
+      "variants": [
+        "The empty room felt peaceful and still.",
+        "The room was deserted and silent.",
+        "The room was busy and crowded."
+      ]
+    },
+    "vocab": [
+      {
+        "visual": "warm palette",
+        "textual": "welcoming diction",
+        "meaning": "Both can suggest an inviting mood in this context."
+      },
+      {
+        "visual": "muted palette",
+        "textual": "restrained wording",
+        "meaning": "Both can reduce intensity; audience and setting matter."
+      },
+      {
+        "visual": "color relationship",
+        "textual": "connotation",
+        "meaning": "Related hues create a palette; word associations help create a verbal tone."
+      }
+    ],
+    "notes": [
+      "A word’s connotation is an association beyond its basic meaning. The effect depends on audience and context.",
+      "Deserted does not always imply fear, and silent does not always imply danger. Here, the narrator’s intended mood supplies the context."
+    ],
+    "levels": {
+      "A2": "Empty and deserted both suggest no people here. Peaceful suggests calm.",
+      "B1": "The basic scene stays similar, but the connotations change its mood.",
+      "B2": "Diction colors the narrator’s presentation of the scene. Reader response still depends on the surrounding prose."
+    }
+  },
+  "shape": {
+    "twin": "Text shapes",
+    "bridge": "Read five short sentences in order. Then watch repeated words reveal a mirrored shape.",
+    "before": [
+      "Ben was afraid.",
+      "He called for help.",
+      "His friend came.",
+      "His friend helped him.",
+      "Ben was not afraid."
+    ],
+    "after": [
+      "Ben was afraid.",
+      "He called for help.",
+      "His friend came.",
+      "His friend helped him.",
+      "Ben was not afraid."
+    ],
+    "game": {
+      "kind": "order",
+      "prompt": "Build the short story: Ben feels afraid, calls for help, his friend comes, helps him, and Ben feels calm.",
+      "tiles": [
+        "Ben was afraid.",
+        "He called for help.",
+        "His friend came.",
+        "His friend helped him.",
+        "Ben was not afraid."
+      ],
+      "answer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reason": "Afraid returns at the end. Help returns as helped. His friend came is the turning point between asking for help and receiving it."
+    },
+    "vocab": [
+      {
+        "visual": "matching shapes",
+        "textual": "repeated words",
+        "meaning": "Afraid appears in the first and last sentences."
+      },
+      {
+        "visual": "paired pieces",
+        "textual": "related word forms",
+        "meaning": "Help and helped are two forms of the same English verb."
+      },
+      {
+        "visual": "centre",
+        "textual": "turning point",
+        "meaning": "His friend came links the call for help to the help Ben receives."
+      }
+    ],
+    "notes": [
+      "This is an original short prose narrative. It keeps a logical order while using repeated words in mirrored positions.",
+      "Each sentence starts on its own line for easy reading. Indentation reveals the pattern without reordering the sentences.",
+      "The repeated words support this particular chiasm. A mirrored arrangement should be argued from the text, rather than imposed on every story."
+    ],
+    "levels": {
+      "A2": "Afraid. Help. A friend comes. Helped. Not afraid.",
+      "B1": "Afraid matches not afraid. Help matches helped. The friend’s arrival is the centre.",
+      "B2": "This authored A–B–X–B′–A′ narrative uses explicit lexical recurrence: afraid / not afraid and help / helped. The central arrival turns the request into a response."
+    },
+    "biblicalChiasm": {
+      "title": "A five-part biblical comparison",
+      "source": "Psalm 67",
+      "url": "https://ebible.org/engwebp/PSA067.htm",
+      "hebrew_url": "https://www.mechon-mamre.org/p/pt/pt2667.htm",
+      "lines": [
+        "God, please bless us.",
+        "Let all people praise you.",
+        "You guide the nations.",
+        "Let all people praise you.",
+        "God will bless us."
+      ],
+      "verses": [
+        1,
+        3,
+        4,
+        5,
+        7
+      ],
+      "notice": "Selected-clause English adaptation, not the full psalm. Verse numbers follow the English edition.",
+      "explanation": "Bless frames the example; praise returns on either side of the guiding line. The full poem supports a five-part concentric reading: verses 1–2 / 3 / 4 / 5 / 6–7.",
+      "omissions": "This short selection omits mercy, the shining face, salvation, parts of the refrain, joy, fair judgment, harvest, worldwide reverence, and Selah."
+    }
+  },
+  "texture": {
+    "twin": "Sound & rhythm",
+    "bridge": "Look at a surface. Listen to a sentence. Both can have a noticeable texture.",
+    "before": [
+      "The stream moved over stones and made a quiet sound."
+    ],
+    "after": [
+      "The stream slipped softly over smooth stones."
+    ],
+    "game": {
+      "kind": "order",
+      "prompt": "Build the flowing description. Follow the stream’s movement over the stones.",
+      "tiles": [
+        "The stream",
+        "slipped softly",
+        "over smooth stones."
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "reason": "Stream, slipped, softly, smooth, and stones repeat an initial s sound. The sound pattern gives the description a noticeable texture."
+    },
+    "vocab": [
+      {
+        "visual": "rough / smooth",
+        "textual": "clunky / flowing",
+        "meaning": "These describe an impression, not a universally fixed effect."
+      },
+      {
+        "visual": "repeated surface motif",
+        "textual": "alliteration",
+        "meaning": "Alliteration repeats initial consonant sounds in nearby words."
+      },
+      {
+        "visual": "surface pattern",
+        "textual": "cadence",
+        "meaning": "Cadence is the rise, fall, and rhythm of speech."
+      }
+    ],
+    "notes": [
+      "Alliteration repeats sounds, not simply letters. Assonance repeats vowel sounds.",
+      "Read both versions aloud. A sound pattern can be memorable without always being suitable.",
+      "The musical score is a visual reading cue for repeated sounds and phrasing. Use Hear the example to listen to the sentence."
+    ],
+    "levels": {
+      "A2": "Hear the s sounds. Slipped softly suggests gentle movement.",
+      "B1": "Repeated initial consonant sounds create alliteration in this description.",
+      "B2": "Alliteration, stress, and phrasing contribute to the sentence’s cadence. Sound supports the scene rather than merely decorating it."
+    }
+  },
+  "form": {
+    "twin": "Subtext",
+    "bridge": "Shading suggests visual depth. Context can suggest meaning beneath the spoken words.",
+    "before": [
+      "Mina glanced at her guest’s coat.",
+      "“You’re leaving already?” she asked."
+    ],
+    "after": [
+      "Mina glanced at her guest’s coat.",
+      "“You’re leaving already?” she asked.",
+      "Possible subtext: she wants the guest to stay longer."
+    ],
+    "game": {
+      "kind": "choose",
+      "prompt": "The guest has picked up a coat. Mina says, “You’re leaving already?” What might she be implying?",
+      "tiles": [
+        "She may want the guest to stay longer.",
+        "She is confirming a printed departure timetable.",
+        "She is giving directions to a bus stop."
+      ],
+      "answer": 0,
+      "reason": "Already and the glance at the coat support a possible wish for the guest to stay. The line does not prove that intention."
+    },
+    "vocab": [
+      {
+        "visual": "suggested volume",
+        "textual": "implied meaning",
+        "meaning": "A flat picture can suggest depth; a sentence in context can suggest more than it states."
+      },
+      {
+        "visual": "surface",
+        "textual": "literal statement",
+        "meaning": "This is what you can directly see or what the sentence explicitly says."
+      },
+      {
+        "visual": "depth",
+        "textual": "subtext",
+        "meaning": "Subtext is an implied meaning supported by context."
+      }
+    ],
+    "notes": [
+      "An implication is an interpretation, not a guaranteed hidden message. Ask or check when the stakes matter.",
+      "People in every culture can use indirect language; avoid assuming everyone in a country communicates in the same way."
+    ],
+    "levels": {
+      "A2": "She asks about leaving. She may want the guest to stay.",
+      "B1": "Already and the surrounding action help us infer a possible unstated feeling.",
+      "B2": "Subtext emerges from dialogue in context. It remains an interpretation; another tone of voice could support a different reading."
+    }
+  },
+  "space": {
+    "twin": "Silence",
+    "bridge": "Empty areas make room around visual elements. Breaks and omission create pauses within prose.",
+    "before": [
+      "He raised his hand to knock. He heard a voice inside. His hand fell. He waited."
+    ],
+    "after": [
+      "He raised his hand to knock. He heard a voice inside. His hand fell.",
+      "He waited."
+    ],
+    "game": {
+      "kind": "break",
+      "prompt": "Give “He waited.” its own paragraph so that the final pause stands out.",
+      "tiles": [
+        "He raised his hand to knock.",
+        "He heard a voice inside.",
+        "His hand fell.",
+        "He waited."
+      ],
+      "answer": 3,
+      "reason": "The break separates the final wait from the preceding action. It can make the pause more noticeable without adding an explanation."
+    },
+    "vocab": [
+      {
+        "visual": "negative space",
+        "textual": "pause / paragraph break",
+        "meaning": "Both can separate groups and make relationships easier to see."
+      },
+      {
+        "visual": "margin",
+        "textual": "room around a thought",
+        "meaning": "A break gives the reader a visible pause before a new group."
+      },
+      {
+        "visual": "omission",
+        "textual": "what remains unsaid",
+        "meaning": "Leaving something out can carry meaning, but essential details must stay."
+      }
+    ],
+    "notes": [
+      "This task asks for a particular pacing choice; several other paragraph arrangements are possible.",
+      "A pause can suggest tension without proving the character’s reason. Omission should leave enough context for the intended reading."
+    ],
+    "levels": {
+      "A2": "The final sentence stands alone. Pause before you read it.",
+      "B1": "A paragraph break changes the pacing without changing the words.",
+      "B2": "The unstated reason for his hesitation leaves room for inference. White space and omission contribute differently to that effect."
+    }
+  },
+  "typography": {
+    "twin": "Emphasis & voice",
+    "bridge": "Type directs the eye. Stress, emphasis, and register shape the voice of prose.",
+    "before": [
+      "She said she had seen him leave."
+    ],
+    "after": [
+      "She said she had seen HIM leave."
+    ],
+    "game": {
+      "kind": "choose",
+      "prompt": "The narrator is correcting who she saw: that man, rather than someone else. Which word should receive stress?",
+      "tiles": [
+        "She",
+        "him",
+        "leave"
+      ],
+      "answer": 1,
+      "reason": "Stress him to contrast that person with someone else. Stress on she or leave would shift the point of contrast.",
+      "variants": [
+        "SHE said she had seen him leave.",
+        "She said she had seen HIM leave.",
+        "She said she had seen him LEAVE."
+      ]
+    },
+    "vocab": [
+      {
+        "visual": "type weight",
+        "textual": "spoken stress",
+        "meaning": "Both can direct attention to a particular part."
+      },
+      {
+        "visual": "typeface character",
+        "textual": "register",
+        "meaning": "Register is language suited to an audience and situation."
+      },
+      {
+        "visual": "italic / bold",
+        "textual": "focus",
+        "meaning": "Formatting can mark emphasis, but too much emphasis makes everything compete."
+      }
+    ],
+    "notes": [
+      "Serif and sans serif do not map rigidly onto formal and casual writing. Context and the particular typeface matter.",
+      "Use formatting to support meaning; do not rely on color or styling alone to communicate essential information."
+    ],
+    "levels": {
+      "A2": "Stress him. The important difference is the person.",
+      "B1": "The same words can emphasize who spoke, who was seen, or what happened.",
+      "B2": "Spoken stress and written emphasis can focus a contrast. Register also shapes a narrative voice through vocabulary and phrasing."
+    }
+  },
+  "contrast": {
+    "twin": "Antithesis & juxtaposition",
+    "bridge": "Visible differences attract attention. Opposed ideas can make a sentence memorable.",
+    "before": [
+      "Outside, the street was crowded. Inside, the house was quiet."
+    ],
+    "after": [
+      "Outside, the street roared.",
+      "Inside, the house whispered."
+    ],
+    "game": {
+      "kind": "order",
+      "prompt": "Rebuild the opposed descriptions: Outside first, then Inside.",
+      "tiles": [
+        "Outside,",
+        "the street roared;",
+        "inside,",
+        "the house whispered."
+      ],
+      "answer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reason": "Outside and inside frame opposing sound impressions. Roared and whispered personify the places; they suggest loudness and quietness.",
+      "punctuation": true
+    },
+    "vocab": [
+      {
+        "visual": "light / dark",
+        "textual": "opposed ideas",
+        "meaning": "Both create a relationship through difference."
+      },
+      {
+        "visual": "difference in scale",
+        "textual": "antithesis",
+        "meaning": "Antithesis places contrasting ideas in a parallel structure."
+      },
+      {
+        "visual": "side by side",
+        "textual": "juxtaposition",
+        "meaning": "Juxtaposition places things beside each other so the reader can compare them."
+      }
+    ],
+    "notes": [
+      "The street and house do not literally speak. Roared and whispered are figurative descriptions.",
+      "Antithesis places opposed ideas in a parallel structure. Juxtaposition is a broader technique of placing things together for comparison."
+    ],
+    "levels": {
+      "A2": "Roared suggests a loud sound. Whispered suggests a quiet sound.",
+      "B1": "The matching clause pattern makes the outside / inside contrast clear.",
+      "B2": "Antithesis and parallel structure sharpen the comparison; personification gives each setting a voice."
+    },
+    "authentic": {
+      "quote": "It was the best of times, it was the worst of times,",
+      "author": "Charles Dickens",
+      "work": "A Tale of Two Cities, opening sentence (1859)",
+      "url": "https://www.gutenberg.org/files/98/98-h/98-h.htm",
+      "notice": "Excerpt: best / worst are opposed within a repeated sentence pattern."
+    }
+  },
+  "hierarchy": {
+    "twin": "Information architecture",
+    "bridge": "A visual layout has levels of importance. A prose paragraph connects its main point, explanation, and support.",
+    "before": [
+      "A quiet desk can make it easier to focus.",
+      "A student might read a chapter away from street noise.",
+      "A library can be a useful place to study."
+    ],
+    "after": [
+      "A library can be a useful place to study.",
+      "A quiet desk can make it easier to focus.",
+      "For example, a student might read a chapter away from street noise."
+    ],
+    "game": {
+      "kind": "order",
+      "prompt": "Build an explanatory paragraph: main point → explanation → example.",
+      "tiles": [
+        "A library can be a useful place to study.",
+        "A quiet desk can make it easier to focus.",
+        "For example, a student might read a chapter away from street noise."
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "reason": "The first sentence states the main point. The second explains it; For example introduces a supporting illustration."
+    },
+    "vocab": [
+      {
+        "visual": "primary emphasis",
+        "textual": "main message",
+        "meaning": "Both tell the reader what matters first."
+      },
+      {
+        "visual": "supporting detail",
+        "textual": "evidence / explanation",
+        "meaning": "Supporting information develops the main point."
+      },
+      {
+        "visual": "reading order",
+        "textual": "front-loaded information",
+        "meaning": "A quick notice often benefits from giving the key answer early."
+      }
+    ],
+    "notes": [
+      "This is one common explanatory structure, not a compulsory order for every paragraph.",
+      "A narrative may delay its main point; an argument may need evidence beyond an illustrative example."
+    ],
+    "levels": {
+      "A2": "First the main idea. Then a reason. Then an example.",
+      "B1": "The topic sentence organizes the explanation and supporting example.",
+      "B2": "The paragraph’s hierarchy connects its main claim to explanation and illustration. Longer essays can repeat this relationship across sections."
+    }
+  },
+  "alignment": {
+    "twin": "Parallelism",
+    "bridge": "Parallelism links corresponding meanings. A line can answer another line; a whole stanza can return to an earlier stanza.",
+    "before": [
+      "The sea saw it and ran away.",
+      "The Jordan River turned back.",
+      "The mountains jumped like rams.",
+      "The hills jumped like lambs.",
+      "Sea, why did you run away?",
+      "Jordan River, why did you turn back?",
+      "Mountains, why did you jump like rams?",
+      "Hills, why did you jump like lambs?"
+    ],
+    "after": [
+      "The sea saw it and ran away.",
+      "The Jordan River turned back.",
+      "The mountains jumped like rams.",
+      "The hills jumped like lambs.",
+      "Sea, why did you run away?",
+      "Jordan River, why did you turn back?",
+      "Mountains, why did you jump like rams?",
+      "Hills, why did you jump like lambs?"
+    ],
+    "game": {
+      "kind": "group",
+      "prompt": "Match each question to the earlier image it returns to. Notice the subject and its action or comparison.",
+      "tiles": [
+        "Sea, why did you run away?",
+        "Jordan River, why did you turn back?",
+        "Mountains, why did you jump like rams?",
+        "Hills, why did you jump like lambs?"
+      ],
+      "groups": [
+        "Sea / retreat",
+        "Jordan / return",
+        "Mountains / rams",
+        "Hills / lambs"
+      ],
+      "answer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reason": "The four questions revisit the four earlier images in the same order. Sea and Jordan form a water pair; mountains and hills form a land pair. Parallelism builds connections within and across the stanzas."
+    },
+    "vocab": [
+      {
+        "visual": "aligned pieces",
+        "textual": "corresponding lines",
+        "meaning": "Tap a line to reveal its counterpart in the other stanza."
+      },
+      {
+        "visual": "paired forms",
+        "textual": "semantic parallelism",
+        "meaning": "Sea / Jordan, mountains / hills, and rams / lambs relate through meaning; they are not identical things."
+      },
+      {
+        "visual": "repeated arrangement",
+        "textual": "stanza-level correspondence",
+        "meaning": "The later stanza returns to all four earlier images, transforming description into questions."
+      }
+    ],
+    "notes": [
+      "The two four-line stanzas are a teaching layout for Psalm 114:3–6, not a claim about manuscript line breaks or the structure of every Hebrew poem.",
+      "This is an accessible adaptation, not a verbatim quotation. Jumped simplifies skipped, River clarifies Jordan, and the omitted verb in the hills line is made explicit.",
+      "Rams are adult male sheep; lambs are young sheep. The paired comparisons develop the image with a change in scale.",
+      "It refers back to the earlier scene. The sea line does not name its object explicitly. Read the linked full passage for context.",
+      "Grammatical parallelism is one form of parallelism. In poetry, the relationship between meanings and images matters too."
+    ],
+    "levels": {
+      "A2": "Sea and river. Mountains and hills. The questions return to the same pictures.",
+      "B1": "The first stanza describes. The second asks questions about those same actions and images.",
+      "B2": "Poetic parallelism works through semantic correspondence and purposeful variation, not merely matching grammar. These four descriptive cola are reprised as direct address in the same order."
+    },
+    "authentic": {
+      "quote": "of the people, by the people, for the people",
+      "author": "Abraham Lincoln",
+      "work": "Gettysburg Address, Hay draft (1863)",
+      "url": "https://loc.gov/exhibits/gettysburg-address/ext/trans-hay-draft.html",
+      "notice": "Excerpt: each phrase uses preposition + the people. The phrase lengths match here, but parallelism does not require equal length."
+    },
+    "poetry": {
+      "stanzas": [
+        [
+          "The sea saw it and ran away.",
+          "The Jordan River turned back.",
+          "The mountains jumped like rams.",
+          "The hills jumped like lambs."
+        ],
+        [
+          "Sea, why did you run away?",
+          "Jordan River, why did you turn back?",
+          "Mountains, why did you jump like rams?",
+          "Hills, why did you jump like lambs?"
+        ]
+      ],
+      "headings": [
+        "Description · verses 3–4",
+        "Questions · verses 5–6"
+      ],
+      "labels": [
+        "Sea / retreat",
+        "Jordan / return",
+        "Mountains / rams",
+        "Hills / lambs"
+      ],
+      "source": "Psalm 114:3–6",
+      "edition": "Accessible English adaptation, informed by the Hebrew text and the public-domain World English Bible",
+      "url": "https://ebible.org/engwebp/PSA114.htm",
+      "hebrew_url": "https://www.mechon-mamre.org/p/pt/pt26b4.htm",
+      "context": "The psalm recalls Israel’s departure from Egypt. The landscape is personified: waters retreat and mountains jump.",
+      "guide": [
+        "Within each stanza: sea / Jordan and mountains / hills are related pairs.",
+        "Across the stanzas: the same four images return in the same order, changing description into direct questions.",
+        "The questions make readers attend to the surprising images again. The full poem’s following lines connect this response to divine presence."
+      ]
+    }
+  },
+  "balance": {
+    "twin": "Punctuation & sentence architecture",
+    "bridge": "A fulcrum connects the two sides of a balance. A colon connects a statement to an explanation.",
+    "before": [
+      "The room grew quiet. Everyone had left."
+    ],
+    "after": [
+      "The room grew quiet: everyone had left."
+    ],
+    "game": {
+      "kind": "order",
+      "prompt": "Place a colon between the complete statement and the clause that explains it.",
+      "tiles": [
+        "The room grew quiet",
+        ":",
+        "everyone had left."
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "reason": "The room grew quiet is a complete statement. Everyone had left explains why. The colon signals that explanatory relationship.",
+      "punctuation": true
+    },
+    "vocab": [
+      {
+        "visual": "fulcrum",
+        "textual": "colon",
+        "meaning": "The visible centre links a complete statement with an explanation."
+      },
+      {
+        "visual": "two sides",
+        "textual": "statement and explanation",
+        "meaning": "The room grew quiet is the statement; everyone had left explains why."
+      },
+      {
+        "visual": "visual weight",
+        "textual": "clause weight",
+        "meaning": "Different clause lengths can still make a clear, purposeful sentence."
+      }
+    ],
+    "notes": [
+      "Use a colon after a complete clause when the following material explains or expands it. The illustration is an analogy, not a rule requiring equal clause lengths.",
+      "A semicolon links related independent clauses without specifying the explanatory relationship in the same way. Other punctuation can be appropriate for a different purpose."
+    ],
+    "levels": {
+      "A2": "The room was quiet. The next part tells us why.",
+      "B1": "The first clause is complete. The colon introduces its explanation.",
+      "B2": "The second independent clause explains the first. The balance is a visual analogy; the clauses need not have equal lengths or identical grammatical weight."
+    },
+    "grammarSource": {
+      "title": "Purdue OWL · punctuation overview",
+      "url": "https://owl.purdue.edu/owl/general_writing/punctuation/punctuation/index.html"
+    }
+  },
+  "proximity": {
+    "twin": "Paragraphing & cohesion",
+    "bridge": "Nearby items look related. Related ideas belong together; language makes their connection explicit.",
+    "before": [
+      "At dawn, Lina reached the river.",
+      "The boat’s blue paint was peeling.",
+      "Mist covered the water.",
+      "Inside the boat, a rope lay beside the oar."
+    ],
+    "after": [
+      "At dawn, Lina reached the river. Mist covered the water.",
+      "The boat’s blue paint was peeling. Inside the boat, a rope lay beside the oar."
+    ],
+    "game": {
+      "kind": "group",
+      "prompt": "Group the scene into two paragraphs: the riverside setting, then the details of the boat.",
+      "tiles": [
+        "At dawn, Lina reached the river.",
+        "The boat’s blue paint was peeling.",
+        "Mist covered the water.",
+        "Inside the boat, a rope lay beside the oar."
+      ],
+      "groups": [
+        "Setting",
+        "Boat details"
+      ],
+      "answer": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "reason": "Dawn, the river, and mist establish the setting. Paint, rope, and oar develop the boat. Grouping gives the reader a clear focus for each paragraph."
+    },
+    "vocab": [
+      {
+        "visual": "close group",
+        "textual": "paragraph",
+        "meaning": "A paragraph holds related ideas together."
+      },
+      {
+        "visual": "separation",
+        "textual": "topic break",
+        "meaning": "A break can mark a change in topic."
+      },
+      {
+        "visual": "connection",
+        "textual": "cohesive device",
+        "meaning": "Words such as however, also, and this can show relationships when their references are clear."
+      }
+    ],
+    "notes": [
+      "A cohesive word cannot repair unrelated ideas by itself.",
+      "This needs a clear referent. Name the noun when several things could be meant."
+    ],
+    "levels": {
+      "A2": "Put the setting together. Put the boat details together.",
+      "B1": "Related sentences share a paragraph. The break signals a shift in descriptive focus.",
+      "B2": "Paragraphing helps coherence; repeated references to river, water, and boat help create cohesion within the scene."
+    }
+  },
+  "repetition": {
+    "twin": "Anaphora, refrain & bookending",
+    "bridge": "Repeating a visual feature creates a pattern. Repeating selected words can create a verbal pattern.",
+    "before": [
+      "She remembered the narrow path, the empty bench, and the quiet house."
+    ],
+    "after": [
+      "She remembered the narrow path.",
+      "She remembered the empty bench.",
+      "She remembered the quiet house."
+    ],
+    "game": {
+      "kind": "order",
+      "prompt": "Rebuild the memory sequence: path → bench → house. Keep the repeated opening.",
+      "tiles": [
+        "She remembered the narrow path.",
+        "She remembered the empty bench.",
+        "She remembered the quiet house."
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "reason": "She remembered repeats at the start of successive sentences. This anaphora frames three memories in the requested sequence."
+    },
+    "vocab": [
+      {
+        "visual": "repeated motif",
+        "textual": "anaphora",
+        "meaning": "Anaphora repeats a word or phrase at the start of successive units."
+      },
+      {
+        "visual": "returning pattern",
+        "textual": "refrain",
+        "meaning": "A refrain returns at intervals."
+      },
+      {
+        "visual": "matching first / last",
+        "textual": "bookending / inclusio",
+        "meaning": "The same phrase or idea frames the opening and ending."
+      }
+    ],
+    "notes": [
+      "Purposeful repetition can create emphasis; accidental repetition can make prose cumbersome.",
+      "Bookending example: The river kept its secrets. … The river kept its secrets. The intervening passage develops what that returning line means."
+    ],
+    "levels": {
+      "A2": "Hear She remembered at the start of each sentence.",
+      "B1": "The repeated opening unifies separate memories and gives them a rhythm.",
+      "B2": "Anaphora repeats openings; a refrain returns at intervals; inclusio frames a passage with a returning phrase or idea."
+    }
+  },
+  "simplicity": {
+    "twin": "Concision",
+    "bridge": "Remove extra decoration. Remove extra wording. Keep the information the audience needs.",
+    "before": [
+      "He took a deep breath in order to calm himself."
+    ],
+    "after": [
+      "He took a deep breath to calm himself."
+    ],
+    "game": {
+      "kind": "trim",
+      "prompt": "Keep the action and its purpose. Remove the two-word phrase that adds no meaning here.",
+      "tiles": [
+        "He took",
+        "a deep breath",
+        "in order",
+        "to calm himself."
+      ],
+      "answer": [
+        0,
+        1,
+        3
+      ],
+      "reason": "Removing in order preserves what he did and why: He took a deep breath to calm himself."
+    },
+    "vocab": [
+      {
+        "visual": "unnecessary decoration",
+        "textual": "redundant wording",
+        "meaning": "Remove what does not serve the message."
+      },
+      {
+        "visual": "essential detail",
+        "textual": "meaning to preserve",
+        "meaning": "A simpler design or sentence still needs the key information."
+      },
+      {
+        "visual": "simplicity",
+        "textual": "concision",
+        "meaning": "Concision communicates the needed meaning with economical wording."
+      }
+    ],
+    "notes": [
+      "Shorter is not automatically better. Do not remove a necessary date, place, or qualification.",
+      "The requested short model is one good edit, not the only grammatical invitation."
+    ],
+    "levels": {
+      "A2": "Keep what he did and why. Remove in order.",
+      "B1": "To calm himself states the purpose; in order adds no extra meaning in this sentence.",
+      "B2": "Concision preserves the action and motivation. It does not remove information simply to make every sentence short."
+    }
+  },
+  "function": {
+    "twin": "Genre & purpose",
+    "bridge": "A design serves a purpose. Narrative, explanation, and argument organize prose for different purposes.",
+    "before": [
+      "When the power failed, the room fell silent. Then Mina lit a candle."
+    ],
+    "after": [
+      "A mains-powered lamp goes out when its electricity supply is interrupted."
+    ],
+    "game": {
+      "kind": "choose",
+      "prompt": "Your paragraph’s job is to explain a cause and result, rather than tell a particular story. Choose the explanatory sentence.",
+      "tiles": [
+        "When the power failed, the room fell silent. Then Mina lit a candle.",
+        "A mains-powered lamp goes out when its electricity supply is interrupted.",
+        "We should prepare for power failures so that work can continue."
+      ],
+      "answer": 1,
+      "reason": "The selected sentence explains how loss of supply affects a lamp. The first recounts a scene; the third argues for action."
+    },
+    "vocab": [
+      {
+        "visual": "design brief",
+        "textual": "purpose / audience",
+        "meaning": "Both ask who needs the message and what they should do or understand."
+      },
+      {
+        "visual": "format",
+        "textual": "genre",
+        "meaning": "A notice, CV, and story have different conventions and jobs."
+      },
+      {
+        "visual": "usable result",
+        "textual": "successful communication",
+        "meaning": "Judge the result against the audience’s task, not decoration alone."
+      }
+    ],
+    "notes": [
+      "These examples compare purposes; they are not interchangeable rewrites with identical information.",
+      "The game asks for an explanation. A narrative or argument could be appropriate for a different writing purpose."
+    ],
+    "levels": {
+      "A2": "Mains-powered means using the electrical supply. Goes out means stops giving light.",
+      "B1": "A narrative recounts events. An explanation shows how or why. An argument supports a position.",
+      "B2": "Purpose shapes the organization and register of prose. A single text can combine narrative, exposition, and argument."
+    }
+  }
+}

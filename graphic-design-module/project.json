@@ -1,0 +1,90 @@
+{
+  "title": "Design: Visual & Textual Communication",
+  "mode": "paired sequence",
+  "audience": "PSDP students / English club learners",
+  "level_support": [
+    "A2",
+    "B1",
+    "B2"
+  ],
+  "element_count": 7,
+  "principle_count": 8,
+  "pairing_count": 15,
+  "entry_paths": [
+    "visual",
+    "textual"
+  ],
+  "unit_stages": [
+    "See the idea",
+    "Change a choice",
+    "Play the redesign"
+  ],
+  "writing_medium": "original narrative, descriptive, explanatory, and argumentative prose; labelled accessible biblical poetry adaptations; short attributed authentic excerpts",
+  "writing_interactions": [
+    "order tiles",
+    "drag and drop",
+    "tap to build",
+    "group sentences",
+    "choose emphasis / diction",
+    "insert paragraph break",
+    "keep useful words"
+  ],
+  "required_typed_responses": 0,
+  "retained_original_motion_graphics": 15,
+  "embedded_recordings": 32,
+  "embedded_original_guide_pages": 22,
+  "source_spec": "/Users/timothyhall/Downloads/design-module-spec.pdf",
+  "source_guide": "/Users/timothyhall/Downloads/graphic-design-handoff/reference/guides/beginners-guide-graphic-design.pdf",
+  "authentic_sources": [
+    "https://www.gutenberg.org/files/98/98-h/98-h.htm",
+    "https://loc.gov/exhibits/gettysburg-address/ext/trans-hay-draft.html",
+    "https://ebible.org/engwebp/PSA114.htm",
+    "https://www.mechon-mamre.org/p/pt/pt26b4.htm"
+  ],
+  "format": "single self-contained HTML, offline file-compatible",
+  "state_key": "dialogue-design-v1",
+  "qa_state_key": "dialogue-design-qa",
+  "coach": "bottom feedback sheet; two related vector characters; green checked success",
+  "user_constraints": [
+    "QR and taxonomy tags belong to main hub",
+    "No machine-translated Bangla",
+    "Replit imports from the repository; no deployment package",
+    "All mission steps freely navigable; no progress gates",
+    "Speaking and classroom pair work optional"
+  ],
+  "scope": "15 paired visual/textual concepts and a prose synthesis activity; broader workshops archived",
+  "entry_identities": {
+    "visual": "dark graphic design studio; original motion gallery",
+    "textual": "physical paper writing workspace; torn lesson sheets, sentence strips, handwriting, and changing lift shadows"
+  },
+  "entry_ui_stack": {
+    "react": "19.3.0",
+    "gsap": "3.15.0",
+    "lenis": "1.3.26",
+    "react_bits": [
+      "SplitText",
+      "AnimatedContent",
+      "SpotlightCard"
+    ],
+    "runtime": "locally bundled; offline; no CDN"
+  },
+  "literary_motion_graphics": 15,
+  "ui_theme": "physical paper craft: generated cotton-paper texture, torn silhouettes, layered sheets, paper shadows, and handwritten annotations",
+  "subtext_motion": "reading between printed lines; three possible ghost interpretations",
+  "assets": {
+    "paper_texture": "assets/paper-texture.png; original generated texture; embedded offline",
+    "handwriting_font": "assets/caveat.ttf; Caveat; SIL Open Font License 1.1"
+  },
+  "shape_narrative": "five short B1 prose sentences; afraid / not afraid, help / helped; friend\u2019s arrival at centre; sentence lines from outset; indentation-only GSAP Flip; five-tile reconstruction; optional selected-clause Psalm 67 comparison",
+  "alignment_poetry": "Psalm 114:3\u20136; labelled accessible English adaptation; two four-colon teaching stanzas; within-stanza semantic pairs and cross-stanza description-to-question correspondence; interactive line matching",
+  "diction_word_art": {
+    "pairs": [
+      "bright \u2192 radiant",
+      "small \u2192 tiny",
+      "empty \u2192 deserted"
+    ],
+    "purpose": "meaning-led typographic transformations; fuller colour/detail where meaningful; contextual prose examples; saved selection; selected-example speech; pause; reduced-motion static display"
+  },
+  "balance_motion": "prominent colon fulcrum beneath a balancing clause beam; statement \u2192 explanation",
+  "texture_motion": "musical score theme, note pulses, recurring s resonance, and a cadence waveform"
+}

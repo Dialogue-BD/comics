@@ -1,0 +1,28 @@
+{
+  "id": "judgment-3",
+  "duration": 13.341375,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "What did your review improve?",
+      "start": 0,
+      "end": 2.312,
+      "voice": "Isha (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "Before, the opening details were hard to read. I changed the text color, so the date and location are clearer now.",
+      "start": 2.312,
+      "end": 9.866,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Please keep the gold line and send the final proof.",
+      "start": 9.866,
+      "end": 13.341,
+      "voice": "Isha (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

@@ -1,0 +1,1 @@
+Space. Space includes the areas occupied by elements and the empty areas within, around, or between them.

@@ -1,0 +1,28 @@
+{
+  "id": "typography-2",
+  "duration": 13.157083,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "Our café should feel calm and welcoming.",
+      "start": 0,
+      "end": 2.55,
+      "voice": "Jamie (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I chose a serif headline to give the poster a quieter feel. I kept the body text simple so the details are easy to read.",
+      "start": 2.55,
+      "end": 10.001,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Can you show me a second option before we decide?",
+      "start": 10.001,
+      "end": 13.157,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

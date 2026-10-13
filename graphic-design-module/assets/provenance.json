@@ -1,0 +1,14 @@
+{
+  "paper_texture": {
+    "file": "paper-texture.png",
+    "source": "original imagegen generation",
+    "date": "2026-10-13",
+    "prompt": "Seamless photographic macro texture of warm ivory handmade cotton drawing paper; surface only; no text, edges, or objects."
+  },
+  "handwriting_font": {
+    "file": "caveat.ttf",
+    "source": "https://github.com/google/fonts/tree/main/ofl/caveat",
+    "license": "CAVEAT-OFL.txt"
+  },
+  "material_reference": "https://www.petersdesigncompany.com/target-spring"
+}

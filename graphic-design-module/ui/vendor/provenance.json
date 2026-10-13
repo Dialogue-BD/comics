@@ -1,0 +1,11 @@
+{
+  "source": "https://github.com/DavidHDev/react-bits",
+  "files": {
+    "Animations/AnimatedContent/AnimatedContent.jsx": "AnimatedContent.jsx",
+    "Components/SpotlightCard/SpotlightCard.jsx": "SpotlightCard.jsx",
+    "Components/SpotlightCard/SpotlightCard.css": "SpotlightCard.css",
+    "TextAnimations/SplitText/SplitText.jsx": "SplitText.jsx"
+  },
+  "retrieved": "2026-10-13",
+  "usage": "AnimatedContent, SpotlightCard, SplitText; small reduced-motion adaptations documented in README"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "foundation-shape",
+  "duration": 8.262875,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "Can you show a simple circular mark?",
+      "start": 0,
+      "end": 2.209,
+      "voice": "Lee (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "Here is a flat circle. Its boundary gives it a clear shape.",
+      "start": 2.209,
+      "end": 6.197,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Let’s test it at a small size.",
+      "start": 6.197,
+      "end": 8.263,
+      "voice": "Lee (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

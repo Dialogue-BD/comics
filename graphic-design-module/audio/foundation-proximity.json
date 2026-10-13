@@ -1,0 +1,28 @@
+{
+  "id": "foundation-proximity",
+  "duration": 7.7325,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "People miss the time because it is far from the date.",
+      "start": 0,
+      "end": 2.913,
+      "voice": "Zoe (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I grouped the date and time together.",
+      "start": 2.913,
+      "end": 5.155,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Please do the same for the location and address.",
+      "start": 5.155,
+      "end": 7.733,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

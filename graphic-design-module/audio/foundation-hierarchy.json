@@ -1,0 +1,28 @@
+{
+  "id": "foundation-hierarchy",
+  "duration": 9.133625,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "What should viewers read first?",
+      "start": 0,
+      "end": 1.877,
+      "voice": "Jamie (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "The invitation should lead. The opening details can come next.",
+      "start": 1.877,
+      "end": 6.165,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Yes. The details must still be readable.",
+      "start": 6.165,
+      "end": 9.134,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

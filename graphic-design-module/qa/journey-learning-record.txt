@@ -1,0 +1,619 @@
+DIALOGUE · DESIGNER’S NOTEBOOK
+Visual Design English
+Saved 2026-10-13
+Reference labs visited: 
+
+PRACTICE RECORD · not a proficiency grade
+Guided missions: What Is Graphic Design?, Compare two headlines, Explain a font choice, Translate vague feedback, Describe a readable change, Ask about a palette, Give a conditional option, Describe where things are, Explain a revision, Push back on clutter, Clarify a vague request, Agree on an extra task, Recover after a late update, Choose a workflow, Check before sharing, Write a useful production brief, Separate observation from interpretation, Discuss a shape’s personality, Ask for a cultural review, Report a factual error, Check against the brief, Present a refinement, Line, Color, Shape, Texture, Space, Form, Typography, Contrast, Hierarchy, Alignment, Balance, Proximity, Repetition, Simplicity, Function, The date is hard to read, “Make it pop” with a clue, A second language version, A deadline with a missing detail, A tone for the audience, The file we need to edit, Nike: simplicity and interpretation, Microsoft: shape, space, and repetition, Amazon: the arrow as a visual clue, McDonald’s: recognisable form with few details
+Practice XP: 3055
+typography-1:notice — Visual noticed (5 XP)
+typography-1:meaning — Message understood (10 XP)
+typography-1:language — Language checked (5 XP)
+typography-1:build — Sentence built (10 XP)
+typography-1:input — Spoken practice recorded (5 XP)
+typography-1:exchange — Design discussion practised (10 XP)
+typography-1:transfer — New situation tried (20 XP)
+typography-2:notice — Visual noticed (5 XP)
+typography-2:meaning — Message understood (10 XP)
+typography-2:language — Language checked (5 XP)
+typography-2:build — Sentence built (10 XP)
+typography-2:input — Spoken practice recorded (5 XP)
+typography-2:exchange — Design discussion practised (10 XP)
+typography-2:transfer — New situation tried (20 XP)
+typography-3:notice — Visual noticed (5 XP)
+typography-3:meaning — Message understood (10 XP)
+typography-3:language — Language checked (5 XP)
+typography-3:build — Sentence built (10 XP)
+typography-3:input — Spoken practice recorded (5 XP)
+typography-3:exchange — Design discussion practised (10 XP)
+typography-3:transfer — New situation tried (20 XP)
+color-1:notice — Visual noticed (5 XP)
+color-1:meaning — Message understood (10 XP)
+color-1:language — Language checked (5 XP)
+color-1:build — Sentence built (10 XP)
+color-1:input — Spoken practice recorded (5 XP)
+color-1:exchange — Design discussion practised (10 XP)
+color-1:transfer — New situation tried (20 XP)
+color-2:notice — Visual noticed (5 XP)
+color-2:meaning — Message understood (10 XP)
+color-2:language — Language checked (5 XP)
+color-2:build — Sentence built (10 XP)
+color-2:input — Spoken practice recorded (5 XP)
+color-2:exchange — Design discussion practised (10 XP)
+color-2:transfer — New situation tried (20 XP)
+color-3:notice — Visual noticed (5 XP)
+color-3:meaning — Message understood (10 XP)
+color-3:language — Language checked (5 XP)
+color-3:build — Sentence built (10 XP)
+color-3:input — Spoken practice recorded (5 XP)
+color-3:exchange — Design discussion practised (10 XP)
+color-3:transfer — New situation tried (20 XP)
+layout-1:notice — Visual noticed (5 XP)
+layout-1:meaning — Message understood (10 XP)
+layout-1:language — Language checked (5 XP)
+layout-1:build — Sentence built (10 XP)
+layout-1:input — Spoken practice recorded (5 XP)
+layout-1:exchange — Design discussion practised (10 XP)
+layout-1:transfer — New situation tried (20 XP)
+layout-2:notice — Visual noticed (5 XP)
+layout-2:meaning — Message understood (10 XP)
+layout-2:language — Language checked (5 XP)
+layout-2:build — Sentence built (10 XP)
+layout-2:input — Spoken practice recorded (5 XP)
+layout-2:exchange — Design discussion practised (10 XP)
+layout-2:transfer — New situation tried (20 XP)
+layout-3:notice — Visual noticed (5 XP)
+layout-3:meaning — Message understood (10 XP)
+layout-3:language — Language checked (5 XP)
+layout-3:build — Sentence built (10 XP)
+layout-3:input — Spoken practice recorded (5 XP)
+layout-3:exchange — Design discussion practised (10 XP)
+layout-3:transfer — New situation tried (20 XP)
+clients-1:notice — Visual noticed (5 XP)
+clients-1:meaning — Message understood (10 XP)
+clients-1:language — Language checked (5 XP)
+clients-1:build — Sentence built (10 XP)
+clients-1:input — Spoken practice recorded (5 XP)
+clients-1:exchange — Design discussion practised (10 XP)
+clients-1:transfer — New situation tried (20 XP)
+clients-2:notice — Visual noticed (5 XP)
+clients-2:meaning — Message understood (10 XP)
+clients-2:language — Language checked (5 XP)
+clients-2:build — Sentence built (10 XP)
+clients-2:input — Spoken practice recorded (5 XP)
+clients-2:exchange — Design discussion practised (10 XP)
+clients-2:transfer — New situation tried (20 XP)
+clients-3:notice — Visual noticed (5 XP)
+clients-3:meaning — Message understood (10 XP)
+clients-3:language — Language checked (5 XP)
+clients-3:build — Sentence built (10 XP)
+clients-3:input — Spoken practice recorded (5 XP)
+clients-3:exchange — Design discussion practised (10 XP)
+clients-3:transfer — New situation tried (20 XP)
+toolkit-1:notice — Visual noticed (5 XP)
+toolkit-1:meaning — Message understood (10 XP)
+toolkit-1:language — Language checked (5 XP)
+toolkit-1:build — Sentence built (10 XP)
+toolkit-1:input — Spoken practice recorded (5 XP)
+toolkit-1:exchange — Design discussion practised (10 XP)
+toolkit-1:transfer — New situation tried (20 XP)
+toolkit-2:notice — Visual noticed (5 XP)
+toolkit-2:meaning — Message understood (10 XP)
+toolkit-2:language — Language checked (5 XP)
+toolkit-2:build — Sentence built (10 XP)
+toolkit-2:input — Spoken practice recorded (5 XP)
+toolkit-2:exchange — Design discussion practised (10 XP)
+toolkit-2:transfer — New situation tried (20 XP)
+toolkit-3:notice — Visual noticed (5 XP)
+toolkit-3:meaning — Message understood (10 XP)
+toolkit-3:language — Language checked (5 XP)
+toolkit-3:build — Sentence built (10 XP)
+toolkit-3:input — Spoken practice recorded (5 XP)
+toolkit-3:exchange — Design discussion practised (10 XP)
+toolkit-3:transfer — New situation tried (20 XP)
+visual-1:notice — Visual noticed (5 XP)
+visual-1:meaning — Message understood (10 XP)
+visual-1:language — Language checked (5 XP)
+visual-1:build — Sentence built (10 XP)
+visual-1:input — Spoken practice recorded (5 XP)
+visual-1:exchange — Design discussion practised (10 XP)
+visual-1:transfer — New situation tried (20 XP)
+visual-2:notice — Visual noticed (5 XP)
+visual-2:meaning — Message understood (10 XP)
+visual-2:language — Language checked (5 XP)
+visual-2:build — Sentence built (10 XP)
+visual-2:input — Spoken practice recorded (5 XP)
+visual-2:exchange — Design discussion practised (10 XP)
+visual-2:transfer — New situation tried (20 XP)
+visual-3:notice — Visual noticed (5 XP)
+visual-3:meaning — Message understood (10 XP)
+visual-3:language — Language checked (5 XP)
+visual-3:build — Sentence built (10 XP)
+visual-3:input — Spoken practice recorded (5 XP)
+visual-3:exchange — Design discussion practised (10 XP)
+visual-3:transfer — New situation tried (20 XP)
+judgment-1:notice — Visual noticed (5 XP)
+judgment-1:meaning — Message understood (10 XP)
+judgment-1:language — Language checked (5 XP)
+judgment-1:build — Sentence built (10 XP)
+judgment-1:input — Spoken practice recorded (5 XP)
+judgment-1:exchange — Design discussion practised (10 XP)
+judgment-1:transfer — New situation tried (20 XP)
+judgment-2:notice — Visual noticed (5 XP)
+judgment-2:meaning — Message understood (10 XP)
+judgment-2:language — Language checked (5 XP)
+judgment-2:build — Sentence built (10 XP)
+judgment-2:input — Spoken practice recorded (5 XP)
+judgment-2:exchange — Design discussion practised (10 XP)
+judgment-2:transfer — New situation tried (20 XP)
+judgment-3:notice — Visual noticed (5 XP)
+judgment-3:meaning — Message understood (10 XP)
+judgment-3:language — Language checked (5 XP)
+judgment-3:build — Sentence built (10 XP)
+judgment-3:input — Spoken practice recorded (5 XP)
+judgment-3:exchange — Design discussion practised (10 XP)
+judgment-3:transfer — New situation tried (20 XP)
+foundation-intro:notice — Visual noticed (5 XP)
+foundation-intro:meaning — Message understood (10 XP)
+foundation-intro:language — Language checked (5 XP)
+foundation-intro:build — Sentence built (10 XP)
+foundation-intro:input — Spoken practice recorded (5 XP)
+foundation-intro:exchange — Design discussion practised (10 XP)
+foundation-intro:transfer — New situation tried (20 XP)
+foundation-line:notice — Visual noticed (5 XP)
+foundation-line:meaning — Message understood (10 XP)
+foundation-line:language — Language checked (5 XP)
+foundation-line:build — Sentence built (10 XP)
+foundation-line:input — Spoken practice recorded (5 XP)
+foundation-line:exchange — Design discussion practised (10 XP)
+foundation-line:transfer — New situation tried (20 XP)
+foundation-color:notice — Visual noticed (5 XP)
+foundation-color:meaning — Message understood (10 XP)
+foundation-color:language — Language checked (5 XP)
+foundation-color:build — Sentence built (10 XP)
+foundation-color:input — Spoken practice recorded (5 XP)
+foundation-color:exchange — Design discussion practised (10 XP)
+foundation-color:transfer — New situation tried (20 XP)
+foundation-shape:notice — Visual noticed (5 XP)
+foundation-shape:meaning — Message understood (10 XP)
+foundation-shape:language — Language checked (5 XP)
+foundation-shape:build — Sentence built (10 XP)
+foundation-shape:input — Spoken practice recorded (5 XP)
+foundation-shape:exchange — Design discussion practised (10 XP)
+foundation-shape:transfer — New situation tried (20 XP)
+foundation-texture:notice — Visual noticed (5 XP)
+foundation-texture:meaning — Message understood (10 XP)
+foundation-texture:language — Language checked (5 XP)
+foundation-texture:build — Sentence built (10 XP)
+foundation-texture:input — Spoken practice recorded (5 XP)
+foundation-texture:exchange — Design discussion practised (10 XP)
+foundation-texture:transfer — New situation tried (20 XP)
+foundation-space:notice — Visual noticed (5 XP)
+foundation-space:meaning — Message understood (10 XP)
+foundation-space:language — Language checked (5 XP)
+foundation-space:build — Sentence built (10 XP)
+foundation-space:input — Spoken practice recorded (5 XP)
+foundation-space:exchange — Design discussion practised (10 XP)
+foundation-space:transfer — New situation tried (20 XP)
+foundation-form:notice — Visual noticed (5 XP)
+foundation-form:meaning — Message understood (10 XP)
+foundation-form:language — Language checked (5 XP)
+foundation-form:build — Sentence built (10 XP)
+foundation-form:input — Spoken practice recorded (5 XP)
+foundation-form:exchange — Design discussion practised (10 XP)
+foundation-form:transfer — New situation tried (20 XP)
+foundation-typography:notice — Visual noticed (5 XP)
+foundation-typography:meaning — Message understood (10 XP)
+foundation-typography:language — Language checked (5 XP)
+foundation-typography:build — Sentence built (10 XP)
+foundation-typography:input — Spoken practice recorded (5 XP)
+foundation-typography:exchange — Design discussion practised (10 XP)
+foundation-typography:transfer — New situation tried (20 XP)
+foundation-contrast:notice — Visual noticed (5 XP)
+foundation-contrast:meaning — Message understood (10 XP)
+foundation-contrast:language — Language checked (5 XP)
+foundation-contrast:build — Sentence built (10 XP)
+foundation-contrast:input — Spoken practice recorded (5 XP)
+foundation-contrast:exchange — Design discussion practised (10 XP)
+foundation-contrast:transfer — New situation tried (20 XP)
+foundation-hierarchy:notice — Visual noticed (5 XP)
+foundation-hierarchy:meaning — Message understood (10 XP)
+foundation-hierarchy:language — Language checked (5 XP)
+foundation-hierarchy:build — Sentence built (10 XP)
+foundation-hierarchy:input — Spoken practice recorded (5 XP)
+foundation-hierarchy:exchange — Design discussion practised (10 XP)
+foundation-hierarchy:transfer — New situation tried (20 XP)
+foundation-alignment:notice — Visual noticed (5 XP)
+foundation-alignment:meaning — Message understood (10 XP)
+foundation-alignment:language — Language checked (5 XP)
+foundation-alignment:build — Sentence built (10 XP)
+foundation-alignment:input — Spoken practice recorded (5 XP)
+foundation-alignment:exchange — Design discussion practised (10 XP)
+foundation-alignment:transfer — New situation tried (20 XP)
+foundation-balance:notice — Visual noticed (5 XP)
+foundation-balance:meaning — Message understood (10 XP)
+foundation-balance:language — Language checked (5 XP)
+foundation-balance:build — Sentence built (10 XP)
+foundation-balance:input — Spoken practice recorded (5 XP)
+foundation-balance:exchange — Design discussion practised (10 XP)
+foundation-balance:transfer — New situation tried (20 XP)
+foundation-proximity:notice — Visual noticed (5 XP)
+foundation-proximity:meaning — Message understood (10 XP)
+foundation-proximity:language — Language checked (5 XP)
+foundation-proximity:build — Sentence built (10 XP)
+foundation-proximity:input — Spoken practice recorded (5 XP)
+foundation-proximity:exchange — Design discussion practised (10 XP)
+foundation-proximity:transfer — New situation tried (20 XP)
+foundation-repetition:notice — Visual noticed (5 XP)
+foundation-repetition:meaning — Message understood (10 XP)
+foundation-repetition:language — Language checked (5 XP)
+foundation-repetition:build — Sentence built (10 XP)
+foundation-repetition:input — Spoken practice recorded (5 XP)
+foundation-repetition:exchange — Design discussion practised (10 XP)
+foundation-repetition:transfer — New situation tried (20 XP)
+foundation-simplicity:notice — Visual noticed (5 XP)
+foundation-simplicity:meaning — Message understood (10 XP)
+foundation-simplicity:language — Language checked (5 XP)
+foundation-simplicity:build — Sentence built (10 XP)
+foundation-simplicity:input — Spoken practice recorded (5 XP)
+foundation-simplicity:exchange — Design discussion practised (10 XP)
+foundation-simplicity:transfer — New situation tried (20 XP)
+foundation-function:notice — Visual noticed (5 XP)
+foundation-function:meaning — Message understood (10 XP)
+foundation-function:language — Language checked (5 XP)
+foundation-function:build — Sentence built (10 XP)
+foundation-function:input — Spoken practice recorded (5 XP)
+foundation-function:exchange — Design discussion practised (10 XP)
+foundation-function:transfer — New situation tried (20 XP)
+voice-date:notice — Visual noticed (5 XP)
+voice-date:meaning — Message understood (10 XP)
+voice-date:language — Language checked (5 XP)
+voice-date:build — Sentence built (10 XP)
+voice-date:input — Spoken practice recorded (5 XP)
+voice-date:exchange — Design discussion practised (10 XP)
+voice-date:transfer — New situation tried (20 XP)
+voice-pop:notice — Visual noticed (5 XP)
+voice-pop:meaning — Message understood (10 XP)
+voice-pop:language — Language checked (5 XP)
+voice-pop:build — Sentence built (10 XP)
+voice-pop:input — Spoken practice recorded (5 XP)
+voice-pop:exchange — Design discussion practised (10 XP)
+voice-pop:transfer — New situation tried (20 XP)
+voice-scope:notice — Visual noticed (5 XP)
+voice-scope:meaning — Message understood (10 XP)
+voice-scope:language — Language checked (5 XP)
+voice-scope:build — Sentence built (10 XP)
+voice-scope:input — Spoken practice recorded (5 XP)
+voice-scope:exchange — Design discussion practised (10 XP)
+voice-scope:transfer — New situation tried (20 XP)
+voice-update:notice — Visual noticed (5 XP)
+voice-update:meaning — Message understood (10 XP)
+voice-update:language — Language checked (5 XP)
+voice-update:build — Sentence built (10 XP)
+voice-update:input — Spoken practice recorded (5 XP)
+voice-update:exchange — Design discussion practised (10 XP)
+voice-update:transfer — New situation tried (20 XP)
+voice-audience:notice — Visual noticed (5 XP)
+voice-audience:meaning — Message understood (10 XP)
+voice-audience:language — Language checked (5 XP)
+voice-audience:build — Sentence built (10 XP)
+voice-audience:input — Spoken practice recorded (5 XP)
+voice-audience:exchange — Design discussion practised (10 XP)
+voice-audience:transfer — New situation tried (20 XP)
+voice-editable:notice — Visual noticed (5 XP)
+voice-editable:meaning — Message understood (10 XP)
+voice-editable:language — Language checked (5 XP)
+voice-editable:build — Sentence built (10 XP)
+voice-editable:input — Spoken practice recorded (5 XP)
+voice-editable:exchange — Design discussion practised (10 XP)
+voice-editable:transfer — New situation tried (20 XP)
+logo-nike:notice — Visual noticed (5 XP)
+logo-nike:meaning — Message understood (10 XP)
+logo-nike:language — Language checked (5 XP)
+logo-nike:build — Sentence built (10 XP)
+logo-nike:input — Spoken practice recorded (5 XP)
+logo-nike:exchange — Design discussion practised (10 XP)
+logo-nike:transfer — New situation tried (20 XP)
+logo-microsoft:notice — Visual noticed (5 XP)
+logo-microsoft:meaning — Message understood (10 XP)
+logo-microsoft:language — Language checked (5 XP)
+logo-microsoft:build — Sentence built (10 XP)
+logo-microsoft:input — Spoken practice recorded (5 XP)
+logo-microsoft:exchange — Design discussion practised (10 XP)
+logo-microsoft:transfer — New situation tried (20 XP)
+logo-amazon:notice — Visual noticed (5 XP)
+logo-amazon:meaning — Message understood (10 XP)
+logo-amazon:language — Language checked (5 XP)
+logo-amazon:build — Sentence built (10 XP)
+logo-amazon:input — Spoken practice recorded (5 XP)
+logo-amazon:exchange — Design discussion practised (10 XP)
+logo-amazon:transfer — New situation tried (20 XP)
+logo-mcdonalds:notice — Visual noticed (5 XP)
+logo-mcdonalds:meaning — Message understood (10 XP)
+logo-mcdonalds:language — Language checked (5 XP)
+logo-mcdonalds:build — Sentence built (10 XP)
+logo-mcdonalds:input — Spoken practice recorded (5 XP)
+logo-mcdonalds:exchange — Design discussion practised (10 XP)
+logo-mcdonalds:transfer — New situation tried (20 XP)
+
+journey / typography-1 / reply
+I recommend the version with the larger offer. It should be easier to notice from the back of the room. Would you like the café name to stay above it?
+
+journey / typography-1 / attempt
+I would make the opening hours larger than the supporting text so patients can find them quickly. How far from the poster will people usually sit?
+
+journey / typography-2 / reply
+I suggest a quieter serif headline for the daytime café and a stronger sans-serif headline for the evening event. We can keep the body text consistent. Shall I show you both?
+
+journey / typography-2 / attempt
+I would use a bold, simple headline to give the event more energy and a clear body font for the access details. Could you show me an example of the tone you prefer?
+
+journey / typography-3 / reply
+I’ll give the 50% offer more emphasis while keeping the calm style. Would you prefer a larger offer or more space around it?
+
+journey / typography-3 / attempt
+When you say “bold”, do you mean a heavier font or more emphasis on the call for volunteers? Once we confirm that, I can show a focused revision.
+
+journey / color-1 / reply
+I can keep gold for the decorative line and use forest for the date and address. That keeps the warm palette while making the details easier to read. Would you like a phone-size preview?
+
+journey / color-1 / attempt
+I would use a darker color for the seat number and keep yellow as decoration. The number will be easier to read while the ticket keeps its original character.
+
+journey / color-2 / reply
+A muted palette may fit the quiet study brief better than neon colors. Would you like me to compare two calm options?
+
+journey / color-2 / attempt
+Who is the main audience: younger children, teenagers, or parents? We could try a vibrant accent with readable dark text, then check the result at phone size.
+
+journey / color-3 / reply
+If people read the sign from the street, we can use stronger contrast and fewer small details. I suggest keeping a separate phone version. Should I quote for both versions?
+
+journey / color-3 / attempt
+If people read the noticeboard from across the hall, we can make the key details larger and use stronger contrast. Do you need a separate mobile version as well?
+
+journey / layout-1 / reply
+The date and location are grouped below the headline. Customers can find when and where to come in one place. Would you like the address on a separate line?
+
+journey / layout-1 / attempt
+I would place the meeting time below the heading and the room number next to it. That keeps the practical details together.
+
+journey / layout-2 / reply
+I’ll make the address larger within the details group while keeping the opening offer as the focal point. Would you like me to send a revised proof?
+
+journey / layout-2 / attempt
+I moved the registration link below the invitation to make the next step easier to find. Could you check the revised proof before I export it?
+
+journey / layout-3 / reply
+I suggest keeping the opening offer and address on the post, with a link to the full menu. There is too much information for every menu item at phone size. Would that meet your goal?
+
+journey / layout-3 / attempt
+There is too much information for one small post. I suggest one clear invitation with a link to the full course list, so the details stay accessible.
+
+journey / clients-1 / reply
+I’ll group the related details and add more breathing room while keeping the logo. Could you confirm whether the opening offer should still be the main message?
+
+journey / clients-1 / attempt
+When you say “serious enough”, do you mean the type style, colors, or spacing? Which part would you like us to change first?
+
+journey / clients-2 / reply
+I can help with the invitation, but it is a separate task. I will check whether I can finish by Wednesday and let you know today.
+
+journey / clients-2 / attempt
+I can help with the handout, but it is extra work. When do you need it? I will check my time before I promise.
+
+journey / clients-3 / reply
+I’ll confirm the sharing time in both London and Bangladesh time before sending the next update. The draft is ready for the final address check. If the timing changes, I’ll message you before the deadline.
+
+journey / clients-3 / attempt
+I’m sorry I missed the update. The slide layout is ready, but I still need to confirm the venue. Could you check it today? I’ll then send the final version.
+
+journey / toolkit-1 / reply
+I suggest a square Canva layout with the date in a separate text layer. I’ll include a preview and the editable source. Would you like your colleague to test the edit before final sharing?
+
+journey / toolkit-1 / attempt
+I recommend keeping the meeting time in a separate text layer, so a classmate can update it next week. Which editor can they use?
+
+journey / toolkit-2 / reply
+We need to check whether public sharing is permitted. We can ask for permission or choose another picture with suitable terms.
+
+journey / toolkit-2 / attempt
+We need to check the sharing conditions before using that photograph publicly. If they are unclear, we can ask or choose another picture.
+
+journey / toolkit-3 / reply
+I’ll request a landscape café background with the cup on the right and clear space on the left. I’ll keep the wording in editable layers so you can add another offer later.
+
+journey / toolkit-3 / attempt
+Create a vertical product background with the bottle near the bottom and clear space at the top. Do not generate text; I will add the approved wording in editable layers.
+
+journey / visual-1 / reply
+The warmer, softer version may support that quiet daytime mood. I’ll compare it with a cooler option so you can judge the feeling. Does the warm version match what customers actually experience?
+
+journey / visual-1 / attempt
+I notice more light and less shadow in the bright version. To me, it feels more open and relaxed, but we should check whether that reading fits the intended families.
+
+journey / visual-2 / reply
+A rounded, simple mark might support a reassuring tone without becoming cartoonish. I’ll keep the details restrained. Could we compare it with one more structured option?
+
+journey / visual-2 / attempt
+Angular shapes might suggest energy, but that reading is not universal. We could compare a more stable square-based mark. What impression matters most to your customers?
+
+journey / visual-3 / reply
+I’ll use the approved wording, adapt the reading flow and alignment, and keep the mark intact. Could your colleague review the proof before we prepare the final files?
+
+journey / visual-3 / attempt
+Could you provide approved Urdu wording and nominate a fluent reader to review the proof? I’ll adapt the layout direction and confirm which brand elements must remain unchanged.
+
+journey / judgment-1 / reply
+I found the spelling error and will correct it to “Grand Opening”. I’ll check the rest of the copy and send a corrected proof before publication.
+
+journey / judgment-1 / attempt
+I found that the day does not match the approved copy. I’ll change it to Saturday, check the other details, and send a corrected proof before publication.
+
+journey / judgment-2 / reply
+The current wide, flattened draft does not meet those requirements. I’ll rebuild it at 1:1 with editable text and send both the preview and the source. Could you confirm the editor your staff will use?
+
+journey / judgment-2 / attempt
+The current file does not meet the transparent-background requirement. I’ll prepare a transparent version and send a preview for review along with the agreed source file.
+
+journey / judgment-3 / reply
+I’ll keep the gold decoration and use darker text for the date. The details will be easier to read while the warm palette stays intact. Could you check the phone-size proof?
+
+journey / judgment-3 / attempt
+Before, too many details competed with the main offer. I grouped the practical information and added more space, so the message is clearer now. The logo and palette are unchanged.
+
+journey / foundation-intro / reply
+I will make the opening time and place clear for university students. I can use type and color, with hierarchy to guide attention. Is attending the opening the main goal?
+
+journey / foundation-intro / attempt
+I would arrange the words, colors, and shapes to make the registration step and arrival time clear. Where should people register?
+
+journey / foundation-line / reply
+I can add a dividing line between the date and address. It separates the details without changing the wording. Would you prefer a line or more empty space?
+
+journey / foundation-line / attempt
+A dividing line can separate Monday’s hours from Tuesday’s hours. Should the two days stay in one box or have separate boxes?
+
+journey / foundation-color / reply
+I can use an accent color for the 50% offer while keeping the logo unchanged. Would you like a phone-size comparison first?
+
+journey / foundation-color / attempt
+I would use one contrasting accent for the deadline and keep the other text consistent. Is the deadline the most important detail?
+
+journey / foundation-shape / reply
+I can compare a circular outline with a square outline at phone size. Which is easier for your audience to recognise?
+
+journey / foundation-shape / attempt
+The marker could use a clear circular shape. I would test the outline at the smallest map size before adding detail.
+
+journey / foundation-texture / reply
+I can create a subtle textured look while keeping the name readable. The pattern suggests roughness, but the printed paper will still be smooth.
+
+journey / foundation-texture / attempt
+The background looks textured, but the pattern may compete with the small text. I would check readability before using it behind the menu details.
+
+journey / foundation-space / reply
+I can add more space around the heading while keeping both pictures. Would you like the heading moved slightly higher?
+
+journey / foundation-space / attempt
+There is not enough space around the instructions. I would increase the gap so readers can separate the words from the diagrams.
+
+journey / foundation-form / reply
+I can keep the outline and add light and shadow to suggest a rounded form. Do you prefer a subtle or stronger shaded effect?
+
+journey / foundation-form / attempt
+I would keep the approved silhouette and add restrained shading to suggest depth. Could you confirm the intended light direction?
+
+journey / foundation-typography / reply
+I’ll keep the wording unchanged and compare two type styles at phone size. Which tone should the headline suggest?
+
+journey / foundation-typography / attempt
+I will keep the approved title and date unchanged while comparing two type styles. Could you confirm the tone you want?
+
+journey / foundation-contrast / reply
+I can give the middle option a stronger contrast while keeping the others visible. Would you prefer a color or size difference?
+
+journey / foundation-contrast / attempt
+We can use a visible color difference for one plan. Which option should be easiest to notice?
+
+journey / foundation-hierarchy / reply
+I’ll give the invitation the strongest emphasis and keep the date and location together below it. Could you review that reading order?
+
+journey / foundation-hierarchy / attempt
+Viewers should notice the benefit first, then the start date and registration step. I would use size and spacing to make that hierarchy clear.
+
+journey / foundation-alignment / reply
+I can align the blocks along one left edge while keeping the copy unchanged. Would you like the headings aligned there too?
+
+journey / foundation-alignment / attempt
+I would line the labels up along a common left edge so the form is easier to follow. Should the input fields share a second edge?
+
+journey / foundation-balance / reply
+I can balance the larger image with smaller elements on the other side. That may feel less formal than a perfectly symmetrical layout. Shall I show both?
+
+journey / foundation-balance / attempt
+I could balance the photograph with a smaller text group on the opposite side. I would compare the visual weight rather than duplicate the image automatically.
+
+journey / foundation-proximity / reply
+I’ll place the related details close together and leave a larger gap between the two groups. Does that match the way customers will use the information?
+
+journey / foundation-proximity / attempt
+I would keep each dish name close to its price so readers can connect them quickly. Should descriptions stay directly below each name?
+
+journey / foundation-repetition / reply
+I’ll repeat the colors and headline style while changing the offer text for each post. Would you like a reusable template too?
+
+journey / foundation-repetition / attempt
+I would repeat the headline style and color system across the posters, while keeping each class’s dates and details accurate.
+
+journey / foundation-simplicity / reply
+I can remove extra decoration while keeping those four details. Would you like a version with one simple image instead of several?
+
+journey / foundation-simplicity / attempt
+I would remove the ornamental borders and shorten the instruction without losing the registration steps. Could you confirm which steps are essential?
+
+journey / foundation-function / reply
+I’ll make the date, time, and location clear so viewers can act on the invitation. Could you confirm that attendance is the main goal?
+
+journey / foundation-function / attempt
+The sign needs to help patients find reception. I would add a clear direction and test whether someone can follow it quickly.
+
+journey / voice-date / reply
+I’ll make the meeting date easier to read while keeping the warm palette and gold line. I’ll send a phone-size preview before sharing the final version.
+
+journey / voice-date / attempt
+I’ll make the meeting date clearer and keep the warm colors. I would check the details with the intended audience before sharing.
+
+journey / voice-pop / reply
+I’ll keep the logo and overall style, then show two ways to emphasise the registration deadline. Would you prefer a size change in one version and a stronger color contrast in the other?
+
+journey / voice-pop / attempt
+I’ll keep the style and show two ways to emphasise the deadline. I would check the details with the intended audience before sharing.
+
+journey / voice-scope / reply
+I’ll use the exact Arabic wording and keep the flower symbol. I’ll check the extra time needed before confirming when it will be ready, then send a preview for your cousin to review.
+
+journey / voice-scope / attempt
+I’ll use the exact translation and ask someone to check the new version. I would check the details with the intended audience before sharing.
+
+journey / voice-update / reply
+The layout is ready for discussion, but I still need the confirmed venue. What time is your meeting, and which time zone are you using? I’ll confirm when I can send the preview once we agree that timing.
+
+journey / voice-update / attempt
+The layout is ready; I still need the venue before I can confirm the time. I would check the details with the intended audience before sharing.
+
+journey / voice-audience / reply
+I’ll use the softer version for the daytime invitation and keep the practical details clear. We can develop an energetic version for evening events later. Could you confirm the opening time and location?
+
+journey / voice-audience / attempt
+I suggest the softer version for the quiet daytime event. I would check the details with the intended audience before sharing.
+
+journey / voice-editable / reply
+I’ll prepare a Canva source with the meeting time in a separate editable text layer and include a normal image preview. Could someone in the club test the meeting time edit before I finalise the sharing?
+
+journey / voice-editable / attempt
+I’ll share an editable version so the club can change the time later. I would check the details with the intended audience before sharing.
+
+journey / logo-nike / reply
+I notice a single curved shape with little internal detail. To me, it suggests movement. I would test its outline at a small size before making a similar design choice for a new client.
+
+journey / logo-nike / attempt
+The simple curve may suggest movement, but that is an interpretation. I would check the details with the intended audience before sharing.
+
+journey / logo-microsoft / reply
+The symbol uses four square shapes with different colors. Repetition and regular spacing connect them as a group. I would test whether the gaps remain clear at a small size.
+
+journey / logo-microsoft / attempt
+The repeated squares and regular gaps make an organised group. I would check the details with the intended audience before sharing.
+
+journey / logo-amazon / reply
+I can see an orange curved arrow beneath the wordmark, pointing from A toward Z. It may resemble a smile. I would check whether that detail remains clear at a small size and in one color.
+
+journey / logo-amazon / attempt
+The arrow goes from A toward Z and may also look like a smile. I would check the details with the intended audience before sharing.
+
+journey / logo-mcdonalds / reply
+I notice two joined arches and a yellow color. The simple shape has few internal details, but familiarity also helps me recognise it. A new mark still needs its own clarity and audience test.
+
+journey / logo-mcdonalds / attempt
+The simple yellow arches are recognisable, partly through familiarity. I would check the details with the intended audience before sharing.

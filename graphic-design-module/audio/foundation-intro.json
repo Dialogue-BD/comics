@@ -1,0 +1,28 @@
+{
+  "id": "foundation-intro",
+  "duration": 13.28225,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "We need students to know when and where the café opens.",
+      "start": 0,
+      "end": 3.247,
+      "voice": "Zoe (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "The colors, shapes, and words are the ingredients. We arrange them so the opening information is clear.",
+      "start": 3.247,
+      "end": 10.2,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Then please make the opening time and place easy to find.",
+      "start": 10.2,
+      "end": 13.282,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

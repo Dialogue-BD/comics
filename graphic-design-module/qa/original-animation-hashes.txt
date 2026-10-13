@@ -1,0 +1,2 @@
+b4340592242e0f48452f442f977c49dfa9060a58bb64878a06e1bcb5f40a3976  graphic-design-module/tools/typographic-reveals.js
+2a38b1525272ad208a81db15cacfddeb56f2d55b978de74a71ffd7d6e7cf462e  graphic-design-module/tools/typographic-reveals.css

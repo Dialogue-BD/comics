@@ -1,0 +1,15 @@
+{
+  "id": "definition-contrast",
+  "concept": "contrast",
+  "duration": 8.078958,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Contrast. Contrast is a visible difference between elements, such as light and dark, big and small, or straight and curved.",
+      "start": 0,
+      "end": 8.078958,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

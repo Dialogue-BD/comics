@@ -1,0 +1,28 @@
+{
+  "id": "toolkit-3",
+  "duration": 15.359542,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "The background needs to leave room for our headline.",
+      "start": 0,
+      "end": 3.501,
+      "voice": "Isha (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I’ll ask for a landscape café image with empty space on the left and no generated text. Then I’ll add the approved wording in the editor.",
+      "start": 3.501,
+      "end": 11.5,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Please keep the table and cup away from that empty area.",
+      "start": 11.5,
+      "end": 15.36,
+      "voice": "Isha (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

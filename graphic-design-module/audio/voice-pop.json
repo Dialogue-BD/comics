@@ -1,0 +1,14 @@
+{
+  "id": "voice-pop",
+  "duration": 18.513042,
+  "turns": [
+    {
+      "role": "client",
+      "text": "Thanks for sending the draft. It feels close to our style, so I don't want to start again. Could you make the registration deadline pop a little more? The last day to sign up is the reason we're posting this. Please keep the logo where it is, and show me two options for the deadline rather than changing the whole design.",
+      "start": 0,
+      "end": 18.513,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

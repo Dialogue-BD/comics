@@ -1,0 +1,15 @@
+{
+  "id": "definition-hierarchy",
+  "concept": "hierarchy",
+  "duration": 6.169958,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Hierarchy. Hierarchy establishes an order of importance so viewers know what to notice first and next.",
+      "start": 0,
+      "end": 6.169958,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

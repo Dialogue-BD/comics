@@ -1,0 +1,28 @@
+{
+  "id": "toolkit-2",
+  "duration": 15.412125,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "This picture looks good on our class slide. Can we post it on the public club page?",
+      "start": 0,
+      "end": 5.185,
+      "voice": "Jamie (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "The download note says classroom use only. We need to check permission before posting it publicly.",
+      "start": 5.185,
+      "end": 11.573,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Let’s ask, or choose a picture that allows public sharing.",
+      "start": 11.573,
+      "end": 15.412,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

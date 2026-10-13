@@ -1,0 +1,15 @@
+{
+  "id": "definition-color",
+  "concept": "color",
+  "duration": 6.884292,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Color. Color is a visual quality we can change to identify, group, emphasise, or suggest a mood.",
+      "start": 0,
+      "end": 6.884292,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

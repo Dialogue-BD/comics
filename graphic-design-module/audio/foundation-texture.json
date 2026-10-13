@@ -1,0 +1,28 @@
+{
+  "id": "foundation-texture",
+  "duration": 10.2,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "Could the packaging look less plain?",
+      "start": 0,
+      "end": 1.876,
+      "voice": "Zoe (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "A repeated pattern can suggest a textured surface. We should check whether it makes the label harder to read.",
+      "start": 1.876,
+      "end": 8.32,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Keep the product name clear.",
+      "start": 8.32,
+      "end": 10.2,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

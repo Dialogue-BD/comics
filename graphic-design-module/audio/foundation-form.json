@@ -1,0 +1,28 @@
+{
+  "id": "foundation-form",
+  "duration": 7.612042,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "Can the ball look less flat?",
+      "start": 0,
+      "end": 1.977,
+      "voice": "Isha (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I added shading to suggest a rounded surface.",
+      "start": 1.977,
+      "end": 4.961,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Please keep the shape and size the same.",
+      "start": 4.961,
+      "end": 7.612,
+      "voice": "Isha (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

@@ -1,0 +1,137 @@
+{
+  "title": "Beginners guide to Graphic Design",
+  "author": "Gareth David / TastyTuts",
+  "source_file": "/Users/timothyhall/Downloads/graphic-design-handoff/reference/guides/beginners-guide-graphic-design.pdf",
+  "units": {
+    "line": [
+      {
+        "page": 11,
+        "file": "page-11.webp"
+      }
+    ],
+    "color": [
+      {
+        "page": 12,
+        "file": "page-12.webp"
+      },
+      {
+        "page": 13,
+        "file": "page-13.webp"
+      }
+    ],
+    "shape": [
+      {
+        "page": 14,
+        "file": "page-14.webp"
+      },
+      {
+        "page": 15,
+        "file": "page-15.webp"
+      },
+      {
+        "page": 16,
+        "file": "page-16.webp"
+      },
+      {
+        "page": 17,
+        "file": "page-17.webp"
+      }
+    ],
+    "texture": [
+      {
+        "page": 19,
+        "file": "page-19.webp"
+      },
+      {
+        "page": 20,
+        "file": "page-20.webp"
+      }
+    ],
+    "space": [
+      {
+        "page": 21,
+        "file": "page-21.webp"
+      },
+      {
+        "page": 22,
+        "file": "page-22.webp"
+      }
+    ],
+    "form": [
+      {
+        "page": 23,
+        "file": "page-23.webp"
+      },
+      {
+        "page": 24,
+        "file": "page-24.webp"
+      }
+    ],
+    "typography": [
+      {
+        "page": 25,
+        "file": "page-25.webp"
+      },
+      {
+        "page": 26,
+        "file": "page-26.webp"
+      },
+      {
+        "page": 27,
+        "file": "page-27.webp"
+      }
+    ],
+    "contrast": [
+      {
+        "page": 29,
+        "file": "page-29.webp"
+      }
+    ],
+    "hierarchy": [
+      {
+        "page": 31,
+        "file": "page-31.webp"
+      },
+      {
+        "page": 32,
+        "file": "page-32.webp"
+      }
+    ],
+    "alignment": [
+      {
+        "page": 34,
+        "file": "page-34.webp"
+      }
+    ],
+    "balance": [
+      {
+        "page": 36,
+        "file": "page-36.webp"
+      }
+    ],
+    "proximity": [
+      {
+        "page": 38,
+        "file": "page-38.webp"
+      }
+    ],
+    "repetition": [
+      {
+        "page": 39,
+        "file": "page-39.webp"
+      }
+    ],
+    "simplicity": [
+      {
+        "page": 40,
+        "file": "page-40.webp"
+      }
+    ],
+    "function": [
+      {
+        "page": 41,
+        "file": "page-41.webp"
+      }
+    ]
+  }
+}

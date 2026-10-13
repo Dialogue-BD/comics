@@ -1,0 +1,780 @@
+{
+  "typography-1": {
+    "title": "Compare two things",
+    "parts": [
+      [
+        "B",
+        "thing"
+      ],
+      [
+        "is",
+        "link"
+      ],
+      [
+        "larger",
+        "comparative adjective"
+      ],
+      [
+        "than A.",
+        "comparison"
+      ]
+    ],
+    "rule": "Use “larger than”. Do not add “more” to this -er comparative."
+  },
+  "typography-2": {
+    "title": "Explain your purpose",
+    "parts": [
+      [
+        "I",
+        "who"
+      ],
+      [
+        "chose this font",
+        "past action"
+      ],
+      [
+        "to make",
+        "purpose: to + verb"
+      ],
+      [
+        "the poster feel calmer.",
+        "intended effect"
+      ]
+    ],
+    "rule": "After “to” for purpose, use the base verb: to make."
+  },
+  "typography-3": {
+    "title": "Ask what someone means",
+    "parts": [
+      [
+        "What",
+        "question word"
+      ],
+      [
+        "do",
+        "question helper"
+      ],
+      [
+        "you",
+        "who"
+      ],
+      [
+        "mean",
+        "base verb"
+      ],
+      [
+        "by “pop”?",
+        "phrase to clarify"
+      ]
+    ],
+    "rule": "Use “do” with “you” in this present-simple question."
+  },
+  "color-1": {
+    "title": "Compare readability",
+    "parts": [
+      [
+        "The text",
+        "thing"
+      ],
+      [
+        "is",
+        "link"
+      ],
+      [
+        "easier",
+        "comparative adjective"
+      ],
+      [
+        "to read.",
+        "to + verb"
+      ]
+    ],
+    "rule": "Use the comparative “easier”, followed by “to read”."
+  },
+  "color-2": {
+    "title": "Ask about a preference",
+    "parts": [
+      [
+        "What feeling",
+        "question phrase"
+      ],
+      [
+        "would",
+        "polite helper"
+      ],
+      [
+        "you",
+        "who"
+      ],
+      [
+        "like",
+        "base verb"
+      ],
+      [
+        "to create?",
+        "to + verb"
+      ]
+    ],
+    "rule": "In a direct question, put “would” before “you”; use the base verb “like”."
+  },
+  "color-3": {
+    "title": "Connect a condition to a possibility",
+    "parts": [
+      [
+        "If people see it from the street,",
+        "condition: if + present"
+      ],
+      [
+        "we",
+        "who"
+      ],
+      [
+        "can",
+        "possibility"
+      ],
+      [
+        "simplify it.",
+        "base verb + object"
+      ]
+    ],
+    "rule": "For this real possible condition, use present simple after “if”: if people see it."
+  },
+  "layout-1": {
+    "title": "Describe a position",
+    "parts": [
+      [
+        "The date",
+        "thing"
+      ],
+      [
+        "is",
+        "link"
+      ],
+      [
+        "below",
+        "position"
+      ],
+      [
+        "the headline.",
+        "reference point"
+      ]
+    ],
+    "rule": "Use “below” directly before the noun phrase: below the headline."
+  },
+  "layout-2": {
+    "title": "Explain a change and its purpose",
+    "parts": [
+      [
+        "I",
+        "who"
+      ],
+      [
+        "moved the date",
+        "past action"
+      ],
+      [
+        "to make",
+        "purpose: to + verb"
+      ],
+      [
+        "it easier to find.",
+        "intended effect"
+      ]
+    ],
+    "rule": "Use past simple for the completed change and “to make” for its purpose."
+  },
+  "layout-3": {
+    "title": "Talk about an uncountable amount",
+    "parts": [
+      [
+        "There is",
+        "singular: there is"
+      ],
+      [
+        "too much",
+        "excess amount"
+      ],
+      [
+        "information.",
+        "uncountable noun"
+      ]
+    ],
+    "rule": "“Information” is uncountable: too much information."
+  },
+  "clients-1": {
+    "title": "Put the embedded question in statement order",
+    "parts": [
+      [
+        "Could you clarify",
+        "polite question"
+      ],
+      [
+        "what",
+        "question word"
+      ],
+      [
+        "you mean?",
+        "subject + verb"
+      ]
+    ],
+    "rule": "Inside “Could you clarify…”, use statement order: what you mean."
+  },
+  "clients-2": {
+    "title": "Say what you can do",
+    "parts": [
+      [
+        "I",
+        "who"
+      ],
+      [
+        "can",
+        "ability"
+      ],
+      [
+        "help",
+        "base verb"
+      ],
+      [
+        "with the invitation.",
+        "task"
+      ]
+    ],
+    "rule": "After can, use the base verb: can help."
+  },
+  "clients-3": {
+    "title": "Say what will happen",
+    "parts": [
+      [
+        "I",
+        "who"
+      ],
+      [
+        "will",
+        "future helper"
+      ],
+      [
+        "send it",
+        "base verb + object"
+      ],
+      [
+        "by 6 pm.",
+        "deadline"
+      ]
+    ],
+    "rule": "After “will”, use the base verb: will send."
+  },
+  "toolkit-1": {
+    "title": "Describe a possibility",
+    "parts": [
+      [
+        "We",
+        "who"
+      ],
+      [
+        "can",
+        "possibility"
+      ],
+      [
+        "keep",
+        "base verb"
+      ],
+      [
+        "the text",
+        "object"
+      ],
+      [
+        "editable.",
+        "adjective: result"
+      ]
+    ],
+    "rule": "After “can”, use the base verb “keep”."
+  },
+  "toolkit-2": {
+    "title": "Describe what is necessary",
+    "parts": [
+      [
+        "We",
+        "who"
+      ],
+      [
+        "need",
+        "necessity"
+      ],
+      [
+        "to check",
+        "to + verb"
+      ],
+      [
+        "permission.",
+        "object"
+      ]
+    ],
+    "rule": "Use need to followed by the base verb: need to check."
+  },
+  "toolkit-3": {
+    "title": "Give a useful instruction",
+    "parts": [
+      [
+        "Leave",
+        "base verb: instruction"
+      ],
+      [
+        "space",
+        "uncountable noun"
+      ],
+      [
+        "for the headline.",
+        "purpose: for + noun"
+      ]
+    ],
+    "rule": "Use “space for” when explaining what the empty area will hold."
+  },
+  "visual-1": {
+    "title": "Qualify an interpretation",
+    "parts": [
+      [
+        "The light",
+        "visible feature"
+      ],
+      [
+        "may",
+        "possibility, not certainty"
+      ],
+      [
+        "suggest",
+        "base verb"
+      ],
+      [
+        "a calm mood.",
+        "interpretation"
+      ]
+    ],
+    "rule": "After “may”, use the base verb: may suggest."
+  },
+  "visual-2": {
+    "title": "Qualify an interpretation",
+    "parts": [
+      [
+        "The circle",
+        "visible feature"
+      ],
+      [
+        "might",
+        "possibility, not certainty"
+      ],
+      [
+        "suggest",
+        "base verb"
+      ],
+      [
+        "a softer tone.",
+        "interpretation"
+      ]
+    ],
+    "rule": "Use the base verb after “might”: might suggest."
+  },
+  "visual-3": {
+    "title": "Make a polite request",
+    "parts": [
+      [
+        "Could",
+        "polite helper"
+      ],
+      [
+        "someone",
+        "who"
+      ],
+      [
+        "review",
+        "base verb"
+      ],
+      [
+        "the layout?",
+        "object"
+      ]
+    ],
+    "rule": "After “could”, use the base verb: could someone review…?"
+  },
+  "judgment-1": {
+    "title": "Describe a completed observation",
+    "parts": [
+      [
+        "I",
+        "who"
+      ],
+      [
+        "found",
+        "past of find"
+      ],
+      [
+        "a spelling error.",
+        "object"
+      ]
+    ],
+    "rule": "The past of “find” is “found”. “Founded” means established an organisation."
+  },
+  "judgment-2": {
+    "title": "Explain what does not work",
+    "parts": [
+      [
+        "The draft",
+        "singular subject"
+      ],
+      [
+        "does not",
+        "negative helper"
+      ],
+      [
+        "meet",
+        "base verb"
+      ],
+      [
+        "the brief.",
+        "requirement"
+      ]
+    ],
+    "rule": "After “does not”, use the base verb: does not meet."
+  },
+  "judgment-3": {
+    "title": "Connect a change to its result",
+    "parts": [
+      [
+        "I darkened the text,",
+        "past change"
+      ],
+      [
+        "so",
+        "result connector"
+      ],
+      [
+        "it is clearer.",
+        "present result"
+      ]
+    ],
+    "rule": "“So” introduces the result here: the darker text makes the details clearer."
+  },
+  "foundation-intro": {
+    "title": "Explain what something is for",
+    "parts": [
+      [
+        "Graphic design",
+        "singular subject"
+      ],
+      [
+        "uses",
+        "present verb: +s"
+      ],
+      [
+        "visuals",
+        "object"
+      ],
+      [
+        "to communicate.",
+        "purpose: to + verb"
+      ]
+    ],
+    "rule": "Use “to communicate” for the purpose: to + base verb."
+  },
+  "foundation-line": {
+    "title": "Separate one thing from another",
+    "parts": [
+      [
+        "The line",
+        "singular subject"
+      ],
+      [
+        "separates",
+        "present verb: +s"
+      ],
+      [
+        "the date",
+        "first thing"
+      ],
+      [
+        "from the location.",
+        "from + second thing"
+      ]
+    ],
+    "rule": "Use “separate X from Y”."
+  },
+  "foundation-color": {
+    "title": "Describe what catches attention",
+    "parts": [
+      [
+        "The offer",
+        "singular subject"
+      ],
+      [
+        "stands out.",
+        "present phrase: +s"
+      ]
+    ],
+    "rule": "With singular “the offer”, use “stands”."
+  },
+  "foundation-shape": {
+    "title": "Say what one thing has",
+    "parts": [
+      [
+        "The mark",
+        "singular subject"
+      ],
+      [
+        "has",
+        "has, not have"
+      ],
+      [
+        "a curved outline.",
+        "feature"
+      ]
+    ],
+    "rule": "Use “has” with the singular subject “the mark”."
+  },
+  "foundation-texture": {
+    "title": "Describe an appearance",
+    "parts": [
+      [
+        "The surface",
+        "singular subject"
+      ],
+      [
+        "looks",
+        "appearance: look + s"
+      ],
+      [
+        "textured.",
+        "adjective, not adverb"
+      ]
+    ],
+    "rule": "Use an adjective after “looks”: looks textured."
+  },
+  "foundation-space": {
+    "title": "Talk about space",
+    "parts": [
+      [
+        "There is",
+        "singular: there is"
+      ],
+      [
+        "more space",
+        "uncountable noun"
+      ],
+      [
+        "around the heading.",
+        "position"
+      ]
+    ],
+    "rule": "In this use, “space” is uncountable: there is more space."
+  },
+  "foundation-form": {
+    "title": "Cause → appearance",
+    "parts": [
+      [
+        "The shading",
+        "cause"
+      ],
+      [
+        "makes",
+        "causative verb"
+      ],
+      [
+        "it",
+        "object"
+      ],
+      [
+        "look",
+        "base verb: no to, no s"
+      ],
+      [
+        "rounded.",
+        "adjective: appearance"
+      ]
+    ],
+    "rule": "After “makes it”, use the base verb: makes it look."
+  },
+  "foundation-typography": {
+    "title": "Match the verb to its subject",
+    "parts": [
+      [
+        "The words",
+        "plural subject"
+      ],
+      [
+        "stay the same,",
+        "base present verb"
+      ],
+      [
+        "but",
+        "contrast connector"
+      ],
+      [
+        "the type",
+        "singular subject"
+      ],
+      [
+        "changes.",
+        "present verb: +s"
+      ]
+    ],
+    "rule": "Use plural “words stay” and singular “type changes”."
+  },
+  "foundation-contrast": {
+    "title": "Compare with different from",
+    "parts": [
+      [
+        "The circle",
+        "singular subject"
+      ],
+      [
+        "is",
+        "link"
+      ],
+      [
+        "different",
+        "adjective"
+      ],
+      [
+        "from the others.",
+        "from + comparison"
+      ]
+    ],
+    "rule": "Use “is different from” for this description."
+  },
+  "foundation-hierarchy": {
+    "title": "Describe what people notice",
+    "parts": [
+      [
+        "People",
+        "plural subject"
+      ],
+      [
+        "notice",
+        "base present verb"
+      ],
+      [
+        "the invitation",
+        "object"
+      ],
+      [
+        "first.",
+        "order"
+      ]
+    ],
+    "rule": "Use plural “people notice”. “First” identifies the intended order of attention."
+  },
+  "foundation-alignment": {
+    "title": "Describe a shared edge",
+    "parts": [
+      [
+        "The blocks",
+        "plural subject"
+      ],
+      [
+        "line up",
+        "base present phrase"
+      ],
+      [
+        "along the same edge.",
+        "shared position"
+      ]
+    ],
+    "rule": "Use plural “blocks line up”."
+  },
+  "foundation-balance": {
+    "title": "Match a plural noun to are",
+    "parts": [
+      [
+        "The shapes",
+        "plural subject"
+      ],
+      [
+        "are",
+        "plural link"
+      ],
+      [
+        "on both sides.",
+        "position"
+      ]
+    ],
+    "rule": "Use plural “shapes are” and “both sides”."
+  },
+  "foundation-proximity": {
+    "title": "Describe a smaller distance",
+    "parts": [
+      [
+        "The date and time",
+        "plural subject"
+      ],
+      [
+        "are",
+        "plural link"
+      ],
+      [
+        "closer together.",
+        "comparative adjective"
+      ]
+    ],
+    "rule": "The combined subject is plural: “are”. Use “closer” without “more”."
+  },
+  "foundation-repetition": {
+    "title": "Describe a repeating pattern",
+    "parts": [
+      [
+        "The same style",
+        "singular subject"
+      ],
+      [
+        "repeats",
+        "present verb: +s"
+      ],
+      [
+        "across the cards.",
+        "where"
+      ]
+    ],
+    "rule": "Singular “style” takes “repeats”."
+  },
+  "foundation-simplicity": {
+    "title": "Describe a finished change",
+    "parts": [
+      [
+        "I",
+        "who"
+      ],
+      [
+        "removed",
+        "past verb: +ed"
+      ],
+      [
+        "the extra decoration.",
+        "object"
+      ]
+    ],
+    "rule": "“Decoration” works as an uncountable category here; the useful change removes extras rather than essential details."
+  },
+  "foundation-function": {
+    "title": "Explain how design helps people",
+    "parts": [
+      [
+        "The poster",
+        "singular subject"
+      ],
+      [
+        "helps",
+        "present verb: +s"
+      ],
+      [
+        "people",
+        "object"
+      ],
+      [
+        "find",
+        "base verb after help"
+      ],
+      [
+        "the event.",
+        "goal"
+      ]
+    ],
+    "rule": "Use “helps” with singular “poster”; “helps people find” is natural here."
+  }
+}

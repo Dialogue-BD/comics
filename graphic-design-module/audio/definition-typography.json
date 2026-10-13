@@ -1,0 +1,15 @@
+{
+  "id": "definition-typography",
+  "concept": "typography",
+  "duration": 9.173,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Typography. Typography is the visual presentation of written language: letterforms, size, weight, spacing, and arrangement.",
+      "start": 0,
+      "end": 9.173,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

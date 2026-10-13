@@ -1,0 +1,90 @@
+{
+  "scope": "Optional five-line biblical comparison for a B1 lexical chiasm lesson; selected-clause adaptation, not a full study or full text quotation",
+  "accessed": "2026-10-13",
+  "sources": [
+    "https://ebible.org/engwebp/PSA067.htm",
+    "https://www.mechon-mamre.org/p/pt/pt2667.htm",
+    "https://ebible.org/engwebp/copyright.htm"
+  ],
+  "English_outline": {
+    "A": [
+      1,
+      2
+    ],
+    "B": [
+      3
+    ],
+    "X": [
+      4
+    ],
+    "B_prime": [
+      5
+    ],
+    "A_prime": [
+      6,
+      7
+    ]
+  },
+  "Hebrew_outline": {
+    "A": [
+      2,
+      3
+    ],
+    "B": [
+      4
+    ],
+    "X": [
+      5
+    ],
+    "B_prime": [
+      6
+    ],
+    "A_prime": [
+      7,
+      8
+    ]
+  },
+  "numbering": "The Hebrew edition counts the superscription as verse 1. Reader-facing citations use English verse numbering.",
+  "selected_clauses": [
+    "1 blessing",
+    "3 praise refrain",
+    "4 guiding",
+    "5 praise refrain",
+    "7 blessing"
+  ],
+  "claims": [
+    {
+      "status": "accepted textual observation",
+      "statement": "The praise refrains at English verses 3 and 5 repeat exactly; blessing returns at verses 1, 6, and 7."
+    },
+    {
+      "status": "supported structural reading",
+      "statement": "Blessing units surround repeated praise refrains, which surround the nations’ joy, just judgment, and guidance at verse 4.",
+      "limits": "Outer sections do not match clause for clause. The reading does not prove an exclusive theological climax."
+    }
+  ],
+  "adaptation": {
+    "title": "A five-part biblical comparison",
+    "source": "Psalm 67",
+    "url": "https://ebible.org/engwebp/PSA067.htm",
+    "hebrew_url": "https://www.mechon-mamre.org/p/pt/pt2667.htm",
+    "lines": [
+      "God, please bless us.",
+      "Let all people praise you.",
+      "You guide the nations.",
+      "Let all people praise you.",
+      "God will bless us."
+    ],
+    "verses": [
+      1,
+      3,
+      4,
+      5,
+      7
+    ],
+    "notice": "Selected-clause English adaptation, not the full psalm. Verse numbers follow the English edition.",
+    "explanation": "Bless frames the example; praise returns on either side of the guiding line. The full poem supports a five-part concentric reading: verses 1–2 / 3 / 4 / 5 / 6–7.",
+    "omissions": "This short selection omits mercy, the shining face, salvation, parts of the refrain, joy, fair judgment, harvest, worldwide reverence, and Selah."
+  },
+  "review": "Primary text independently checked by source agent and parent; selected boundaries and omissions labelled."
+}

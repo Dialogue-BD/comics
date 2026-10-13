@@ -1,0 +1,1 @@
+The headline in B is larger than the headline in A. It is easier to read from a distance.

@@ -1,0 +1,28 @@
+{
+  "id": "foundation-line",
+  "duration": 9.970625,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "The date and location are running together.",
+      "start": 0,
+      "end": 2.502,
+      "voice": "Jamie (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I added a line between them so readers can see the two pieces of information.",
+      "start": 2.502,
+      "end": 6.992,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "That helps. Keep both details readable.",
+      "start": 6.992,
+      "end": 9.971,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

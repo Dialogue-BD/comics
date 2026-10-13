@@ -1,0 +1,28 @@
+{
+  "id": "clients-1",
+  "duration": 13.3305,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "Can you make the design more professional?",
+      "start": 0,
+      "end": 2.131,
+      "voice": "Zoe (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "Could you clarify what you mean by professional? Do you mean simpler colors, a cleaner layout, or a more formal typeface?",
+      "start": 2.131,
+      "end": 9.573,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "A cleaner layout, please. The information feels crowded.",
+      "start": 9.573,
+      "end": 13.331,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

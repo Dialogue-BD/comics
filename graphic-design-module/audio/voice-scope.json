@@ -1,0 +1,14 @@
+{
+  "id": "voice-scope",
+  "duration": 23.447333,
+  "turns": [
+    {
+      "role": "client",
+      "text": "Hello, the English invitation is approved. Our family also needs a version in Arabic. I've got the exact translation, and my cousin can check it. I know you've already finished the English version. Please tell me how much more time you need and when the new version will be ready before you begin. The little flower symbol should stay exactly as it is.",
+      "start": 0,
+      "end": 23.447,
+      "voice": "Isha (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

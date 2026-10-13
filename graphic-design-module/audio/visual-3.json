@@ -1,0 +1,28 @@
+{
+  "id": "visual-3",
+  "duration": 15.653208,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "We need an Arabic version for our Gulf customers.",
+      "start": 0,
+      "end": 3.758,
+      "voice": "Isha (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I’ll adapt the reading flow and alignment. Could someone on your team review the Arabic wording and layout before final sharing?",
+      "start": 3.758,
+      "end": 11.095,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Yes. Keep our brand mark unchanged and send a preview first.",
+      "start": 11.095,
+      "end": 15.653,
+      "voice": "Isha (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

@@ -1,0 +1,28 @@
+{
+  "id": "color-3",
+  "duration": 12.073667,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "We might use the poster on a bright outdoor sign too.",
+      "start": 0,
+      "end": 3.51,
+      "voice": "Isha (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "If people see it from the street, we can use stronger contrast and fewer small details.",
+      "start": 3.51,
+      "end": 9.14,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Let’s make a separate version for the sign.",
+      "start": 9.14,
+      "end": 12.074,
+      "voice": "Isha (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

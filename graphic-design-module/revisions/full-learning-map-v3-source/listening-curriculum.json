@@ -1,0 +1,668 @@
+[
+  {
+    "id": "voice-date",
+    "kind": "client",
+    "title": "The date is hard to read",
+    "voice": "Zoe (Premium)",
+    "script": "Hi, I've looked at the poster on my phone. The book club title is clear, but I can barely read the meeting date. Could you make that easier to see? I'd like to keep the warm colors and the gold line. Thanks. Send me a quick preview before you share the final version.",
+    "gist": {
+      "question": "What is the organiser mainly asking for?",
+      "choices": [
+        "A more readable meeting date.",
+        "A new book club title.",
+        "A completely different palette."
+      ],
+      "answer": 0
+    },
+    "details": [
+      {
+        "question": "Where did the organiser view the poster?",
+        "choices": [
+          "On a phone.",
+          "On a street sign.",
+          "On printed packaging."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What should remain?",
+        "choices": [
+          "The warm colors and gold line.",
+          "Every unreadable text color.",
+          "Only the book club title."
+        ],
+        "answer": 0
+      }
+    ],
+    "phrases": [
+      [
+        "I can barely read",
+        "I can read it only with difficulty."
+      ],
+      [
+        "before you share",
+        "The organiser wants a preview before the final post."
+      ]
+    ],
+    "response": "Respond to the readability problem, preserve what the organiser likes, and confirm the proof.",
+    "model": "I’ll make the meeting date easier to read while keeping the warm palette and gold line. I’ll send a phone-size preview before sharing the final version.",
+    "logo": null,
+    "speaker": "Friend or organiser",
+    "context": {
+      "setting": "School",
+      "why": "Help a book club share a readable invitation."
+    },
+    "levels": {
+      "A2": {
+        "model": "I’ll make the meeting date easier to read."
+      },
+      "B1": {
+        "model": "I’ll make the meeting date clearer and keep the warm colors."
+      },
+      "B2": {
+        "model": "I’ll make the meeting date easier to read while keeping the warm palette and gold line. I’ll send a phone-size preview before sharing the final version."
+      }
+    },
+    "new_brief": "A sports-club invitation has a clear title, but the meeting place is tiny. Suggest a readable change and ask what should stay.",
+    "independent_model": "I’ll make the meeting date clearer and keep the warm colors. I would check the details with the intended audience before sharing."
+  },
+  {
+    "id": "voice-pop",
+    "kind": "client",
+    "title": "“Make it pop” with a clue",
+    "voice": "Jamie (Premium)",
+    "script": "Thanks for sending the draft. It feels close to our style, so I don't want to start again. Could you make the registration deadline pop a little more? The last day to sign up is the reason we're posting this. Please keep the logo where it is, and show me two options for the deadline rather than changing the whole design.",
+    "gist": {
+      "question": "What does “make it pop” mean here?",
+      "choices": [
+        "Redesign the logo.",
+        "Emphasise the registration deadline.",
+        "Replace the entire style."
+      ],
+      "answer": 1
+    },
+    "details": [
+      {
+        "question": "What must stay in its position?",
+        "choices": [
+          "The logo.",
+          "Every text line.",
+          "The date only."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "How many deadline options does the organiser want?",
+        "choices": [
+          "Two.",
+          "One.",
+          "Ten."
+        ],
+        "answer": 0
+      }
+    ],
+    "phrases": [
+      [
+        "start again",
+        "Begin the design from the beginning."
+      ],
+      [
+        "rather than",
+        "Choose one action instead of another."
+      ]
+    ],
+    "response": "Clarify or confirm the requested emphasis and propose the two options.",
+    "model": "I’ll keep the logo and overall style, then show two ways to emphasise the registration deadline. Would you prefer a size change in one version and a stronger color contrast in the other?",
+    "logo": null,
+    "speaker": "Friend or organiser",
+    "context": {
+      "setting": "Community",
+      "why": "Clarify vague feedback on a club notice."
+    },
+    "levels": {
+      "A2": {
+        "model": "I’ll make the registration deadline stand out."
+      },
+      "B1": {
+        "model": "I’ll keep the style and show two ways to emphasise the deadline."
+      },
+      "B2": {
+        "model": "I’ll keep the logo and overall style, then show two ways to emphasise the registration deadline. Would you prefer a size change in one version and a stronger color contrast in the other?"
+      }
+    },
+    "new_brief": "A class notice says “make the room number pop”. Confirm what should change and propose two options.",
+    "independent_model": "I’ll keep the style and show two ways to emphasise the deadline. I would check the details with the intended audience before sharing."
+  },
+  {
+    "id": "voice-scope",
+    "kind": "client",
+    "title": "A second language version",
+    "voice": "Isha (Premium)",
+    "script": "Hello, the English invitation is approved. Our family also needs a version in Arabic. I've got the exact translation, and my cousin can check it. I know you've already finished the English version. Please tell me how much more time you need and when the new version will be ready before you begin. The little flower symbol should stay exactly as it is.",
+    "gist": {
+      "question": "What new work does the organiser need?",
+      "choices": [
+        "An Arabic version.",
+        "A new brand mark.",
+        "Another English spelling check only."
+      ],
+      "answer": 0
+    },
+    "details": [
+      {
+        "question": "Who can review the proof?",
+        "choices": [
+          "The organiser’s cousin.",
+          "No one.",
+          "An unnamed generator."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What must happen before work begins?",
+        "choices": [
+          "Confirm the extra time and the new sharing date.",
+          "Publish the English draft immediately.",
+          "Change the flower symbol."
+        ],
+        "answer": 0
+      }
+    ],
+    "phrases": [
+      [
+        "approved translation",
+        "The organiser has confirmed the exact translated wording."
+      ],
+      [
+        "before you begin",
+        "Agree on the additional work and terms first."
+      ]
+    ],
+    "response": "Confirm the extra task, the wording, the reviewer, and a realistic time.",
+    "model": "I’ll use the exact Arabic wording and keep the flower symbol. I’ll check the extra time needed before confirming when it will be ready, then send a preview for your cousin to review.",
+    "logo": null,
+    "speaker": "Friend or organiser",
+    "context": {
+      "setting": "Personal life",
+      "why": "Help with a family invitation in another language."
+    },
+    "levels": {
+      "A2": {
+        "model": "I’ll check the extra time before I start."
+      },
+      "B1": {
+        "model": "I’ll use the exact translation and ask someone to check the new version."
+      },
+      "B2": {
+        "model": "I’ll use the exact Arabic wording and keep the flower symbol. I’ll check the extra time needed before confirming when it will be ready, then send a preview for your cousin to review."
+      }
+    },
+    "new_brief": "Your family asks for a second-language birthday invitation. You have the wording but cannot read the language. Explain the time and review support you need.",
+    "independent_model": "I’ll use the exact translation and ask someone to check the new version. I would check the details with the intended audience before sharing."
+  },
+  {
+    "id": "voice-update",
+    "kind": "client",
+    "title": "A deadline with a missing detail",
+    "voice": "Lee (Premium)",
+    "script": "Hi, just checking on the first draft. Our class project meeting is tomorrow afternoon, and I'd like something we can discuss there. It doesn't have to be the final version yet. Please tell me what is ready, what you still need from us, and when you'll send the preview. We're working in different time zones, so please include the time zone in your message.",
+    "gist": {
+      "question": "What does the organiser need before the meeting?",
+      "choices": [
+        "A discussion preview and clear status.",
+        "A perfect final version immediately.",
+        "No update until after the meeting."
+      ],
+      "answer": 0
+    },
+    "details": [
+      {
+        "question": "Does the preview need to be final?",
+        "choices": [
+          "No. A discussion draft is enough.",
+          "Yes. All files must be final.",
+          "The organiser does not mention the issue."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What must the sharing time include?",
+        "choices": [
+          "The time zone.",
+          "Only “tomorrow”.",
+          "A random guess."
+        ],
+        "answer": 0
+      }
+    ],
+    "phrases": [
+      [
+        "something we can discuss",
+        "A draft good enough for a team conversation."
+      ],
+      [
+        "what you still need",
+        "Name the information preventing progress."
+      ]
+    ],
+    "response": "Give an honest progress update. If you do not know the meeting time, ask rather than invent a deadline.",
+    "model": "The layout is ready for discussion, but I still need the confirmed venue. What time is your meeting, and which time zone are you using? I’ll confirm when I can send the preview once we agree that timing.",
+    "logo": null,
+    "speaker": "Friend or organiser",
+    "context": {
+      "setting": "School",
+      "why": "Give a useful update to your project group."
+    },
+    "levels": {
+      "A2": {
+        "model": "The layout is ready, but I need one detail."
+      },
+      "B1": {
+        "model": "The layout is ready; I still need the venue before I can confirm the time."
+      },
+      "B2": {
+        "model": "The layout is ready for discussion, but I still need the confirmed venue. What time is your meeting, and which time zone are you using? I’ll confirm when I can send the preview once we agree that timing."
+      }
+    },
+    "new_brief": "Your group needs a discussion preview tomorrow. Your title and layout are ready, but the event time is unconfirmed. Give a useful status update.",
+    "independent_model": "The layout is ready; I still need the venue before I can confirm the time. I would check the details with the intended audience before sharing."
+  },
+  {
+    "id": "voice-audience",
+    "kind": "client",
+    "title": "A tone for the audience",
+    "voice": "Matilda (Premium)",
+    "script": "I've compared the two mood boards. The bright version is fun, but our daytime visitors mostly come to read and have quiet conversations. I prefer the softer version for this poster. We can use a more energetic style for evening events later. For now, keep the invitation calm and make the practical details easy to find.",
+    "gist": {
+      "question": "Which direction fits this poster?",
+      "choices": [
+        "The softer, calmer version.",
+        "The most energetic version.",
+        "A style chosen without considering the audience."
+      ],
+      "answer": 0
+    },
+    "details": [
+      {
+        "question": "Who is this version for?",
+        "choices": [
+          "Daytime visitors who read and talk quietly.",
+          "Evening performers only.",
+          "A completely different event."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "When might an energetic version be useful?",
+        "choices": [
+          "For later evening events.",
+          "Never under any circumstances.",
+          "For every daytime post."
+        ],
+        "answer": 0
+      }
+    ],
+    "phrases": [
+      [
+        "for now",
+        "This is the current decision, not a permanent rule."
+      ],
+      [
+        "practical details",
+        "The information viewers need to act."
+      ]
+    ],
+    "response": "Recommend the current mood and distinguish it from the later campaign.",
+    "model": "I’ll use the softer version for the daytime invitation and keep the practical details clear. We can develop an energetic version for evening events later. Could you confirm the opening time and location?",
+    "logo": null,
+    "speaker": "Friend or organiser",
+    "context": {
+      "setting": "Community",
+      "why": "Choose a suitable tone for a library event."
+    },
+    "levels": {
+      "A2": {
+        "model": "The softer version fits a quiet reading event."
+      },
+      "B1": {
+        "model": "I suggest the softer version for the quiet daytime event."
+      },
+      "B2": {
+        "model": "I’ll use the softer version for the daytime invitation and keep the practical details clear. We can develop an energetic version for evening events later. Could you confirm the opening time and location?"
+      }
+    },
+    "new_brief": "A library wants a calm daytime notice and a lively evening notice. Explain why they might need different visual moods.",
+    "independent_model": "I suggest the softer version for the quiet daytime event. I would check the details with the intended audience before sharing."
+  },
+  {
+    "id": "voice-editable",
+    "kind": "client",
+    "title": "The file we need to edit",
+    "voice": "Daniel (Enhanced)",
+    "script": "The image looks good, but our club needs to change the meeting time each week. Right now, all the words seem to be part of the picture. Could you send an editable version with the time in its own text layer? Our classmate uses Canva. A normal image preview would still be useful, but it won't replace the working file.",
+    "gist": {
+      "question": "What is the main unmet requirement?",
+      "choices": [
+        "Editable meeting-time text in the working file.",
+        "A more dramatic photograph.",
+        "A completely new offer."
+      ],
+      "answer": 0
+    },
+    "details": [
+      {
+        "question": "Which editor does the team use?",
+        "choices": [
+          "Canva.",
+          "An unspecified paid animation program.",
+          "A spreadsheet only."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does the organiser say about the normal image preview?",
+        "choices": [
+          "It is useful but does not replace the working file.",
+          "It is the only file needed.",
+          "It must never be delivered."
+        ],
+        "answer": 0
+      }
+    ],
+    "phrases": [
+      [
+        "in its own text layer",
+        "The meeting time must be separately editable."
+      ],
+      [
+        "won’t replace",
+        "The preview is not a substitute for the source."
+      ]
+    ],
+    "response": "Confirm the compatible source file and the separate preview.",
+    "model": "I’ll prepare a Canva source with the meeting time in a separate editable text layer and include a normal image preview. Could someone in the club test the meeting time edit before I finalise the sharing?",
+    "logo": null,
+    "speaker": "Friend or organiser",
+    "context": {
+      "setting": "School",
+      "why": "Make a club timetable someone can update."
+    },
+    "levels": {
+      "A2": {
+        "model": "Keep the time in a separate text layer."
+      },
+      "B1": {
+        "model": "I’ll share an editable version so the club can change the time later."
+      },
+      "B2": {
+        "model": "I’ll prepare a Canva source with the meeting time in a separate editable text layer and include a normal image preview. Could someone in the club test the meeting time edit before I finalise the sharing?"
+      }
+    },
+    "new_brief": "Your class needs a weekly timetable. The room number often changes. Explain which part should be editable and ask who will update it.",
+    "independent_model": "I’ll share an editable version so the club can change the time later. I would check the details with the intended audience before sharing."
+  },
+  {
+    "id": "logo-nike",
+    "kind": "logo",
+    "title": "Nike: simplicity and interpretation",
+    "voice": "Jamie (Premium)",
+    "script": "Look at the Nike mark without the word. It is one curved shape, with a broader section at one end and a narrower tip at the other. The mark has very little internal detail, so we can still see its outline when it becomes small. To me, the curve suggests movement. That is an interpretation, rather than a fact the shape proves. In an analysis, describe the visible shape first, then explain what it may suggest and how it works at a smaller size.",
+    "gist": {
+      "question": "What does this analysis connect?",
+      "choices": [
+        "A simple shape, small-size use, and a possible reading.",
+        "A comparison of two typefaces in the wordmark.",
+        "A recommendation to add more internal detail."
+      ],
+      "answer": 0
+    },
+    "details": [
+      {
+        "question": "Which observation is visible?",
+        "choices": [
+          "The outline has very little internal detail.",
+          "The outline contains several separate small shapes.",
+          "The main feature is a textured surface."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "How is “movement” presented?",
+        "choices": [
+          "As a possible interpretation.",
+          "As the documented intention of the original designer.",
+          "As the only reading the audience can have."
+        ],
+        "answer": 0
+      }
+    ],
+    "phrases": [
+      [
+        "internal detail",
+        "Small features inside the outline."
+      ],
+      [
+        "to me",
+        "The speaker qualifies a personal interpretation."
+      ]
+    ],
+    "response": "Analyse the mark in three sentences: visible fact, possible reading, practical test.",
+    "model": "I notice a single curved shape with little internal detail. To me, it suggests movement. I would test its outline at a small size before making a similar design choice for a new client.",
+    "logo": "Nike",
+    "context": {
+      "setting": "Everyday life",
+      "why": "Describe a familiar logo and qualify what it may suggest."
+    },
+    "levels": {
+      "A2": {
+        "model": "The mark is one curved shape."
+      },
+      "B1": {
+        "model": "The simple curve may suggest movement, but that is an interpretation."
+      },
+      "B2": {
+        "model": "I notice a single curved shape with little internal detail. To me, it suggests movement. I would test its outline at a small size before making a similar design choice for a new client."
+      }
+    },
+    "new_brief": "A new club symbol uses a simple curved line. Describe one visible feature, qualify a possible meaning, and suggest a small-size check.",
+    "independent_model": "The simple curve may suggest movement, but that is an interpretation. I would check the details with the intended audience before sharing."
+  },
+  {
+    "id": "logo-microsoft",
+    "kind": "logo",
+    "title": "Microsoft: shape, space, and repetition",
+    "voice": "Zoe (Premium)",
+    "script": "The Microsoft symbol uses four colored squares. They sit in a two-by-two arrangement, with clear gaps between them. The repeated square shape and the regular spacing make the group feel organised to me. Notice that repetition does not require one color: the shape repeats while the colors differ. We can describe those choices without claiming that each color has one universal meaning. When analysing a new mark, ask which features repeat, which features change, and what remains recognisable when the mark is small.",
+    "gist": {
+      "question": "What repeats in this symbol?",
+      "choices": [
+        "The square shape and regular arrangement.",
+        "A single color across every part.",
+        "A shading effect that makes the squares look three-dimensional."
+      ],
+      "answer": 0
+    },
+    "details": [
+      {
+        "question": "How many squares are there?",
+        "choices": [
+          "Four.",
+          "Two.",
+          "Six."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What differs between the squares?",
+        "choices": [
+          "The colors differ while the square shape repeats.",
+          "The shapes differ while every color stays the same.",
+          "The gaps disappear as the colors change."
+        ],
+        "answer": 0
+      }
+    ],
+    "phrases": [
+      [
+        "a two-by-two arrangement",
+        "Two rows and two columns."
+      ],
+      [
+        "while the colors differ",
+        "One feature changes while another stays consistent."
+      ]
+    ],
+    "response": "Describe two elements and one principle, then give a small-size test.",
+    "model": "The symbol uses four square shapes with different colors. Repetition and regular spacing connect them as a group. I would test whether the gaps remain clear at a small size.",
+    "logo": "Microsoft",
+    "context": {
+      "setting": "Everyday life",
+      "why": "Describe a familiar logo and qualify what it may suggest."
+    },
+    "levels": {
+      "A2": {
+        "model": "Four squares repeat in a regular arrangement."
+      },
+      "B1": {
+        "model": "The repeated squares and regular gaps make an organised group."
+      },
+      "B2": {
+        "model": "The symbol uses four square shapes with different colors. Repetition and regular spacing connect them as a group. I would test whether the gaps remain clear at a small size."
+      }
+    },
+    "new_brief": "A student group symbol uses three repeated circles in different colors. Explain what repeats and what changes without assigning a universal meaning to each color.",
+    "independent_model": "The repeated squares and regular gaps make an organised group. I would check the details with the intended audience before sharing."
+  },
+  {
+    "id": "logo-amazon",
+    "kind": "logo",
+    "title": "Amazon: the arrow as a visual clue",
+    "voice": "Isha (Premium)",
+    "script": "Look beneath the Amazon wordmark. The orange curved arrow starts under the letter A and points toward the letter Z. Those are visible details we can point to. Its curved shape may also look like a smile to a viewer. That is a reading of the shape, not proof of how everyone will respond. In an organiser explanation, separate what you can see from the meaning you suggest. Then ask whether the detail still reads clearly when the wordmark is small or shown in one color.",
+    "gist": {
+      "question": "What distinction does the speaker make?",
+      "choices": [
+        "Visible details versus suggested meanings.",
+        "A fixed meaning for every orange shape.",
+        "A recommendation to replace the arrow with a straight line."
+      ],
+      "answer": 0
+    },
+    "details": [
+      {
+        "question": "Which letters does the speaker identify?",
+        "choices": [
+          "A and Z.",
+          "A and M.",
+          "M and Z."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Which description is an interpretation?",
+        "choices": [
+          "The arrow may resemble a smile.",
+          "The arrow is beneath the wordmark.",
+          "The arrow has an orange color."
+        ],
+        "answer": 0
+      }
+    ],
+    "phrases": [
+      [
+        "points toward",
+        "Shows a direction to something."
+      ],
+      [
+        "may look like",
+        "Qualifies a resemblance rather than guaranteeing it."
+      ]
+    ],
+    "response": "Point to the arrow, describe its direction, and qualify one possible reading.",
+    "model": "I can see an orange curved arrow beneath the wordmark, pointing from A toward Z. It may resemble a smile. I would check whether that detail remains clear at a small size and in one color.",
+    "logo": "Amazon",
+    "context": {
+      "setting": "Everyday life",
+      "why": "Describe a familiar logo and qualify what it may suggest."
+    },
+    "levels": {
+      "A2": {
+        "model": "The curved arrow may look like a smile."
+      },
+      "B1": {
+        "model": "The arrow goes from A toward Z and may also look like a smile."
+      },
+      "B2": {
+        "model": "I can see an orange curved arrow beneath the wordmark, pointing from A toward Z. It may resemble a smile. I would check whether that detail remains clear at a small size and in one color."
+      }
+    },
+    "new_brief": "A library symbol has a curved arrow beneath its name. Separate an observation from an interpretation, then say what you would check at a small size.",
+    "independent_model": "The arrow goes from A toward Z and may also look like a smile. I would check the details with the intended audience before sharing."
+  },
+  {
+    "id": "logo-mcdonalds",
+    "kind": "logo",
+    "title": "McDonald’s: recognisable form with few details",
+    "voice": "Lee (Premium)",
+    "script": "The supplied McDonald's mark uses two joined arches that make an M-like shape. The color is yellow, and there is very little extra detail inside the mark. We can discuss shape and color as elements, and simplicity as a principle. Familiarity may help us recognise this particular mark, so recognition alone does not prove that any similar yellow shape would work for a new business. A designer still needs to check distinctiveness, clarity, and whether the mark fits the organiser's actual audience.",
+    "gist": {
+      "question": "Which design principle is discussed?",
+      "choices": [
+        "Simplicity.",
+        "A more detailed interior pattern.",
+        "A new type-pairing system."
+      ],
+      "answer": 0
+    },
+    "details": [
+      {
+        "question": "What basic shape does the speaker describe?",
+        "choices": [
+          "Two joined arches forming an M-like mark.",
+          "Two separate circles forming a wordmark.",
+          "Four colored squares forming a grid."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Why is familiarity mentioned?",
+        "choices": [
+          "Knowing the brand already can help recognition.",
+          "Familiarity proves the mark works for every new audience.",
+          "Familiarity removes the need for small-size testing."
+        ],
+        "answer": 0
+      }
+    ],
+    "phrases": [
+      [
+        "very little extra detail",
+        "Few internal features to distract from the main shape."
+      ],
+      [
+        "does not prove",
+        "Avoids an unsupported conclusion."
+      ]
+    ],
+    "response": "Describe the mark and explain why a new organiser’s logo needs its own audience test.",
+    "model": "I notice two joined arches and a yellow color. The simple shape has few internal details, but familiarity also helps me recognise it. A new mark still needs its own clarity and audience test.",
+    "logo": "McDonald’s",
+    "context": {
+      "setting": "Everyday life",
+      "why": "Describe a familiar logo and qualify what it may suggest."
+    },
+    "levels": {
+      "A2": {
+        "model": "The mark has two yellow arches."
+      },
+      "B1": {
+        "model": "The simple yellow arches are recognisable, partly through familiarity."
+      },
+      "B2": {
+        "model": "I notice two joined arches and a yellow color. The simple shape has few internal details, but familiarity also helps me recognise it. A new mark still needs its own clarity and audience test."
+      }
+    },
+    "new_brief": "A new café proposes two yellow arches for its symbol. Explain why familiarity alone does not show that the new symbol is distinctive or suitable.",
+    "independent_model": "The simple yellow arches are recognisable, partly through familiarity. I would check the details with the intended audience before sharing."
+  }
+]

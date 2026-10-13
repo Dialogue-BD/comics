@@ -1,0 +1,15 @@
+{
+  "id": "definition-balance",
+  "concept": "balance",
+  "duration": 5.411042,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Balance. Balance distributes visual weight. It can be symmetrical or asymmetrical.",
+      "start": 0,
+      "end": 5.411042,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

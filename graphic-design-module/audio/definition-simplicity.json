@@ -1,0 +1,15 @@
+{
+  "id": "definition-simplicity",
+  "concept": "simplicity",
+  "duration": 5.670292,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Simplicity. Simplicity removes unnecessary complication while keeping what the message needs.",
+      "start": 0,
+      "end": 5.670292,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

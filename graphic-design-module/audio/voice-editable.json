@@ -1,0 +1,14 @@
+{
+  "id": "voice-editable",
+  "duration": 19.654542,
+  "turns": [
+    {
+      "role": "client",
+      "text": "The image looks good, but our club needs to change the meeting time each week. Right now, all the words seem to be part of the picture. Could you send an editable version with the time in its own text layer? Our classmate uses Canva. A normal image preview would still be useful, but it won't replace the working file.",
+      "start": 0,
+      "end": 19.655,
+      "voice": "Daniel (Enhanced)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

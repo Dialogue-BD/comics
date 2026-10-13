@@ -1,0 +1,1178 @@
+[
+  {
+    "id": "typography-1",
+    "duration": 12.191042,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "I need people to notice the opening offer. Which headline works better?",
+        "start": 0,
+        "end": 4.129,
+        "voice": "Zoe (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "The headline in B is larger than the headline in A. It is easier to read from a distance.",
+        "start": 4.129,
+        "end": 9.072,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Good. Please keep the smaller details below it.",
+        "start": 9.072,
+        "end": 12.191,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "typography-2",
+    "duration": 13.157083,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Our café should feel calm and welcoming.",
+        "start": 0,
+        "end": 2.55,
+        "voice": "Jamie (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I chose a serif headline to give the poster a quieter feel. I kept the body text simple so the details are easy to read.",
+        "start": 2.55,
+        "end": 10.001,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Can you show me a second option before we decide?",
+        "start": 10.001,
+        "end": 13.157,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "typography-3",
+    "duration": 8.920125,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Could you make it pop?",
+        "start": 0,
+        "end": 1.443,
+        "voice": "Isha (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "Which element should stand out first: the café name or the opening offer?",
+        "start": 1.443,
+        "end": 6.023,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "The offer. People already know our name.",
+        "start": 6.023,
+        "end": 8.92,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "color-1",
+    "duration": 11.814292,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "The gold text looks lovely. Why did you change it?",
+        "start": 0,
+        "end": 3.158,
+        "voice": "Zoe (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "The forest text is easier to read on the cream background. We can keep gold for the decorative line.",
+        "start": 3.158,
+        "end": 9.23,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "That works. Please keep the warm feeling.",
+        "start": 9.23,
+        "end": 11.814,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "color-2",
+    "duration": 11.315208,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Can you choose the colors for us?",
+        "start": 0,
+        "end": 1.924,
+        "voice": "Jamie (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "What feeling would you like customers to have: calm, energetic, or formal?",
+        "start": 1.924,
+        "end": 7.364,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Calm. Our audience is students who come to read and talk.",
+        "start": 7.364,
+        "end": 11.315,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "color-3",
+    "duration": 12.073667,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "We might use the poster on a bright outdoor sign too.",
+        "start": 0,
+        "end": 3.51,
+        "voice": "Isha (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "If people see it from the street, we can use stronger contrast and fewer small details.",
+        "start": 3.51,
+        "end": 9.14,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Let’s make a separate version for the sign.",
+        "start": 9.14,
+        "end": 12.074,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "layout-1",
+    "duration": 10.747292,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Where have you put the opening details?",
+        "start": 0,
+        "end": 2.097,
+        "voice": "Zoe (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "The date is below the headline, and the location is next to it. They are grouped together.",
+        "start": 2.097,
+        "end": 7.547,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Good. That makes the information easy to find.",
+        "start": 7.547,
+        "end": 10.747,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "layout-2",
+    "duration": 9.659417,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "What did you change in the second version?",
+        "start": 0,
+        "end": 2.213,
+        "voice": "Jamie (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I moved the details below the headline to make the layout easier to scan.",
+        "start": 2.213,
+        "end": 6.486,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Please keep this version and make the address a little larger.",
+        "start": 6.486,
+        "end": 9.659,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "layout-3",
+    "duration": 14.028083,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Can we add every menu item and three photos?",
+        "start": 0,
+        "end": 3.644,
+        "voice": "Isha (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "There is too much information for a small phone post. I suggest a short invitation and a link to the full menu.",
+        "start": 3.644,
+        "end": 10.64,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "All right. Keep the opening offer and the address.",
+        "start": 10.64,
+        "end": 14.028,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "clients-1",
+    "duration": 13.3305,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Can you make the design more professional?",
+        "start": 0,
+        "end": 2.131,
+        "voice": "Zoe (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "Could you clarify what you mean by professional? Do you mean simpler colors, a cleaner layout, or a more formal typeface?",
+        "start": 2.131,
+        "end": 9.573,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "A cleaner layout, please. The information feels crowded.",
+        "start": 9.573,
+        "end": 13.331,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "clients-2",
+    "duration": 14.532125,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Thanks for making the poster. Could you make a separate invitation too?",
+        "start": 0,
+        "end": 4.14,
+        "voice": "Jamie (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I can make the invitation, but I need more time. Shall we agree on the deadline first?",
+        "start": 4.14,
+        "end": 9.811,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Yes. The invitation is for Friday, and we need it on Wednesday.",
+        "start": 9.811,
+        "end": 14.532,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "clients-3",
+    "duration": 17.023083,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "I haven’t heard from you. Is the draft still coming today?",
+        "start": 0,
+        "end": 3.949,
+        "voice": "Isha (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I’m sorry I missed the update. The first draft is ready, but I still need to check the address. I’ll send it by 6 pm Bangladesh time.",
+        "start": 3.949,
+        "end": 13.086,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Thanks. Please message me if that timing changes.",
+        "start": 13.086,
+        "end": 17.023,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "toolkit-1",
+    "duration": 13.249708,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "I need a square social post, and I want to edit the date later.",
+        "start": 0,
+        "end": 3.618,
+        "voice": "Zoe (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "We can use an editor with separate text layers. A flattened generated image will not give you editable text.",
+        "start": 3.618,
+        "end": 10.55,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Please include the editable file in the sharing.",
+        "start": 10.55,
+        "end": 13.25,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "toolkit-2",
+    "duration": 15.412125,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "This picture looks good on our class slide. Can we post it on the public club page?",
+        "start": 0,
+        "end": 5.185,
+        "voice": "Jamie (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "The download note says classroom use only. We need to check permission before posting it publicly.",
+        "start": 5.185,
+        "end": 11.573,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Let’s ask, or choose a picture that allows public sharing.",
+        "start": 11.573,
+        "end": 15.412,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "toolkit-3",
+    "duration": 15.359542,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "The background needs to leave room for our headline.",
+        "start": 0,
+        "end": 3.501,
+        "voice": "Isha (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I’ll ask for a landscape café image with empty space on the left and no generated text. Then I’ll add the approved wording in the editor.",
+        "start": 3.501,
+        "end": 11.5,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Please keep the table and cup away from that empty area.",
+        "start": 11.5,
+        "end": 15.36,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "visual-1",
+    "duration": 12.715125,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Which lighting feels better for our café invitation?",
+        "start": 0,
+        "end": 3.107,
+        "voice": "Zoe (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I notice warmer light in A. It may suggest a more welcoming mood, but we should check whether that fits your audience.",
+        "start": 3.107,
+        "end": 9.678,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Our daytime customers want a quiet place to read.",
+        "start": 9.678,
+        "end": 12.715,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "visual-2",
+    "duration": 13.403792,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Could we use the sharp triangle for our nursery mark?",
+        "start": 0,
+        "end": 3.425,
+        "voice": "Jamie (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "We could, but the rounded shape might suggest a softer tone. Which personality should the nursery communicate?",
+        "start": 3.425,
+        "end": 10.355,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Warm and reassuring, rather than exciting.",
+        "start": 10.355,
+        "end": 13.404,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "visual-3",
+    "duration": 15.653208,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "We need an Arabic version for our Gulf customers.",
+        "start": 0,
+        "end": 3.758,
+        "voice": "Isha (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I’ll adapt the reading flow and alignment. Could someone on your team review the Arabic wording and layout before final sharing?",
+        "start": 3.758,
+        "end": 11.095,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Yes. Keep our brand mark unchanged and send a preview first.",
+        "start": 11.095,
+        "end": 15.653,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "judgment-1",
+    "duration": 12.478875,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "The draft looks good. Is it ready to publish?",
+        "start": 0,
+        "end": 2.759,
+        "voice": "Zoe (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I found a spelling error in “Opening”. I’ll correct the headline and check it against the approved copy before exporting.",
+        "start": 2.759,
+        "end": 9.656,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Thanks. Please send the corrected proof first.",
+        "start": 9.656,
+        "end": 12.479,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "judgment-2",
+    "duration": 13.404833,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "This wide image looks good, but we asked for a square post.",
+        "start": 0,
+        "end": 3.988,
+        "voice": "Jamie (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "The draft does not meet the required aspect ratio. I’ll rebuild it as a square and keep the text editable.",
+        "start": 3.988,
+        "end": 10.519,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Please send the square preview and the editable source.",
+        "start": 10.519,
+        "end": 13.405,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "judgment-3",
+    "duration": 13.341375,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "What did your review improve?",
+        "start": 0,
+        "end": 2.312,
+        "voice": "Isha (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "Before, the opening details were hard to read. I changed the text color, so the date and location are clearer now.",
+        "start": 2.312,
+        "end": 9.866,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Please keep the gold line and send the final proof.",
+        "start": 9.866,
+        "end": 13.341,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-intro",
+    "duration": 13.28225,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "We need students to know when and where the café opens.",
+        "start": 0,
+        "end": 3.247,
+        "voice": "Zoe (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "The colors, shapes, and words are the ingredients. We arrange them so the opening information is clear.",
+        "start": 3.247,
+        "end": 10.2,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Then please make the opening time and place easy to find.",
+        "start": 10.2,
+        "end": 13.282,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-line",
+    "duration": 9.970625,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "The date and location are running together.",
+        "start": 0,
+        "end": 2.502,
+        "voice": "Jamie (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I added a line between them so readers can see the two pieces of information.",
+        "start": 2.502,
+        "end": 6.992,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "That helps. Keep both details readable.",
+        "start": 6.992,
+        "end": 9.971,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-color",
+    "duration": 9.804875,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "The opening offer is getting lost in the poster.",
+        "start": 0,
+        "end": 2.978,
+        "voice": "Isha (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I changed the offer’s color so it stands out from the other information.",
+        "start": 2.978,
+        "end": 7.108,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Please keep our brand colors around it.",
+        "start": 7.108,
+        "end": 9.805,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-shape",
+    "duration": 8.262875,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Can you show a simple circular mark?",
+        "start": 0,
+        "end": 2.209,
+        "voice": "Lee (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "Here is a flat circle. Its boundary gives it a clear shape.",
+        "start": 2.209,
+        "end": 6.197,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Let’s test it at a small size.",
+        "start": 6.197,
+        "end": 8.263,
+        "voice": "Lee (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-texture",
+    "duration": 10.2,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Could the packaging look less plain?",
+        "start": 0,
+        "end": 1.876,
+        "voice": "Zoe (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "A repeated pattern can suggest a textured surface. We should check whether it makes the label harder to read.",
+        "start": 1.876,
+        "end": 8.32,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Keep the product name clear.",
+        "start": 8.32,
+        "end": 10.2,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-space",
+    "duration": 9.638042,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "The heading feels squeezed between the pictures.",
+        "start": 0,
+        "end": 2.704,
+        "voice": "Jamie (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I added more empty space around it. The words are easier to pick out.",
+        "start": 2.704,
+        "end": 7.07,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Good. Keep the heading and both pictures.",
+        "start": 7.07,
+        "end": 9.638,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-form",
+    "duration": 7.612042,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Can the ball look less flat?",
+        "start": 0,
+        "end": 1.977,
+        "voice": "Isha (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I added shading to suggest a rounded surface.",
+        "start": 1.977,
+        "end": 4.961,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Please keep the shape and size the same.",
+        "start": 4.961,
+        "end": 7.612,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-typography",
+    "duration": 10.931333,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "Please show the same headline in two type styles.",
+        "start": 0,
+        "end": 3.309,
+        "voice": "Lee (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "The words are unchanged. The different letterforms give you two typographic options.",
+        "start": 3.309,
+        "end": 8.648,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Now compare them at phone size.",
+        "start": 8.648,
+        "end": 10.931,
+        "voice": "Lee (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-contrast",
+    "duration": 9.492792,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "One item needs to be easier to notice.",
+        "start": 0,
+        "end": 2.62,
+        "voice": "Zoe (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I made that circle darker than its neighbors. The difference creates contrast.",
+        "start": 2.62,
+        "end": 7.589,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Keep the other circles quieter.",
+        "start": 7.589,
+        "end": 9.493,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-hierarchy",
+    "duration": 9.133625,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "What should viewers read first?",
+        "start": 0,
+        "end": 1.877,
+        "voice": "Jamie (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "The invitation should lead. The opening details can come next.",
+        "start": 1.877,
+        "end": 6.165,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Yes. The details must still be readable.",
+        "start": 6.165,
+        "end": 9.134,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-alignment",
+    "duration": 7.315625,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "The text blocks look scattered.",
+        "start": 0,
+        "end": 2.155,
+        "voice": "Isha (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I lined them up along one left edge.",
+        "start": 2.155,
+        "end": 4.791,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Keep the spacing comfortable as well.",
+        "start": 4.791,
+        "end": 7.316,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-balance",
+    "duration": 8.105042,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "The composition feels heavy on one side.",
+        "start": 0,
+        "end": 2.753,
+        "voice": "Lee (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I spread the visual weight across both sides.",
+        "start": 2.753,
+        "end": 5.84,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Could an unequal arrangement work too?",
+        "start": 5.84,
+        "end": 8.105,
+        "voice": "Lee (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-proximity",
+    "duration": 7.7325,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "People miss the time because it is far from the date.",
+        "start": 0,
+        "end": 2.913,
+        "voice": "Zoe (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I grouped the date and time together.",
+        "start": 2.913,
+        "end": 5.155,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Please do the same for the location and address.",
+        "start": 5.155,
+        "end": 7.733,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-repetition",
+    "duration": 9.803292,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "These three posts feel like different brands.",
+        "start": 0,
+        "end": 3.131,
+        "voice": "Jamie (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I repeated the same colors and type style across the set.",
+        "start": 3.131,
+        "end": 6.916,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Keep each post’s message different, though.",
+        "start": 6.916,
+        "end": 9.803,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-simplicity",
+    "duration": 12.284125,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "The poster feels busy. What can we remove?",
+        "start": 0,
+        "end": 3.398,
+        "voice": "Isha (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "I removed extra decoration and kept the invitation, date, time, and location.",
+        "start": 3.398,
+        "end": 9.411,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "Good. Those details are essential.",
+        "start": 9.411,
+        "end": 12.284,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "foundation-function",
+    "duration": 12.324292,
+    "turns": [
+      {
+        "role": "Organiser",
+        "text": "The artwork is attractive, but does it invite people to the opening?",
+        "start": 0,
+        "end": 3.989,
+        "voice": "Lee (Premium)"
+      },
+      {
+        "role": "You",
+        "text": "Version B gives the date, time, and location. It helps viewers act on the invitation.",
+        "start": 3.989,
+        "end": 10.317,
+        "voice": "Daniel (Enhanced)"
+      },
+      {
+        "role": "Organiser",
+        "text": "That is the information we need.",
+        "start": 10.317,
+        "end": 12.324,
+        "voice": "Lee (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "voice-date",
+    "duration": 14.670833,
+    "turns": [
+      {
+        "role": "client",
+        "text": "Hi, I've looked at the poster on my phone. The book club title is clear, but I can barely read the meeting date. Could you make that easier to see? I'd like to keep the warm colors and the gold line. Thanks. Send me a quick preview before you share the final version.",
+        "start": 0,
+        "end": 14.671,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "voice-pop",
+    "duration": 18.513042,
+    "turns": [
+      {
+        "role": "client",
+        "text": "Thanks for sending the draft. It feels close to our style, so I don't want to start again. Could you make the registration deadline pop a little more? The last day to sign up is the reason we're posting this. Please keep the logo where it is, and show me two options for the deadline rather than changing the whole design.",
+        "start": 0,
+        "end": 18.513,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "voice-scope",
+    "duration": 23.447333,
+    "turns": [
+      {
+        "role": "client",
+        "text": "Hello, the English invitation is approved. Our family also needs a version in Arabic. I've got the exact translation, and my cousin can check it. I know you've already finished the English version. Please tell me how much more time you need and when the new version will be ready before you begin. The little flower symbol should stay exactly as it is.",
+        "start": 0,
+        "end": 23.447,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "voice-update",
+    "duration": 20.718542,
+    "turns": [
+      {
+        "role": "client",
+        "text": "Hi, just checking on the first draft. Our class project meeting is tomorrow afternoon, and I'd like something we can discuss there. It doesn't have to be the final version yet. Please tell me what is ready, what you still need from us, and when you'll send the preview. We're working in different time zones, so please include the time zone in your message.",
+        "start": 0,
+        "end": 20.719,
+        "voice": "Lee (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "voice-audience",
+    "duration": 21.577875,
+    "turns": [
+      {
+        "role": "client",
+        "text": "I've compared the two mood boards. The bright version is fun, but our daytime visitors mostly come to read and have quiet conversations. I prefer the softer version for this poster. We can use a more energetic style for evening events later. For now, keep the invitation calm and make the practical details easy to find.",
+        "start": 0,
+        "end": 21.578,
+        "voice": "Matilda (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "voice-editable",
+    "duration": 19.654542,
+    "turns": [
+      {
+        "role": "client",
+        "text": "The image looks good, but our club needs to change the meeting time each week. Right now, all the words seem to be part of the picture. Could you send an editable version with the time in its own text layer? Our classmate uses Canva. A normal image preview would still be useful, but it won't replace the working file.",
+        "start": 0,
+        "end": 19.655,
+        "voice": "Daniel (Enhanced)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "logo-nike",
+    "duration": 27.709,
+    "turns": [
+      {
+        "role": "logo",
+        "text": "Look at the Nike mark without the word. It is one curved shape, with a broader section at one end and a narrower tip at the other. The mark has very little internal detail, so we can still see its outline when it becomes small. To me, the curve suggests movement. That is an interpretation, rather than a fact the shape proves. In an analysis, describe the visible shape first, then explain what it may suggest and how it works at a smaller size.",
+        "start": 0,
+        "end": 27.709,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "logo-microsoft",
+    "duration": 29.62375,
+    "turns": [
+      {
+        "role": "logo",
+        "text": "The Microsoft symbol uses four colored squares. They sit in a two-by-two arrangement, with clear gaps between them. The repeated square shape and the regular spacing make the group feel organised to me. Notice that repetition does not require one color: the shape repeats while the colors differ. We can describe those choices without claiming that each color has one universal meaning. When analysing a new mark, ask which features repeat, which features change, and what remains recognisable when the mark is small.",
+        "start": 0,
+        "end": 29.624,
+        "voice": "Zoe (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "logo-amazon",
+    "duration": 31.877,
+    "turns": [
+      {
+        "role": "logo",
+        "text": "Look beneath the Amazon wordmark. The orange curved arrow starts under the letter A and points toward the letter Z. Those are visible details we can point to. Its curved shape may also look like a smile to a viewer. That is a reading of the shape, not proof of how everyone will respond. In an organiser explanation, separate what you can see from the meaning you suggest. Then ask whether the detail still reads clearly when the wordmark is small or shown in one color.",
+        "start": 0,
+        "end": 31.877,
+        "voice": "Isha (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  },
+  {
+    "id": "logo-mcdonalds",
+    "duration": 29.374,
+    "turns": [
+      {
+        "role": "logo",
+        "text": "The supplied McDonald's mark uses two joined arches that make an M-like shape. The color is yellow, and there is very little extra detail inside the mark. We can discuss shape and color as elements, and simplicity as a principle. Familiarity may help us recognise this particular mark, so recognition alone does not prove that any similar yellow shape would work for a new business. A designer still needs to check distinctiveness, clarity, and whether the mark fits the organiser's actual audience.",
+        "start": 0,
+        "end": 29.374,
+        "voice": "Lee (Premium)"
+      }
+    ],
+    "provenance": "Original lesson script, synthesised with installed Apple English voices."
+  }
+]

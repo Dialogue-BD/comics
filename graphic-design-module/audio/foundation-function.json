@@ -1,0 +1,28 @@
+{
+  "id": "foundation-function",
+  "duration": 12.324292,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "The artwork is attractive, but does it invite people to the opening?",
+      "start": 0,
+      "end": 3.989,
+      "voice": "Lee (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "Version B gives the date, time, and location. It helps viewers act on the invitation.",
+      "start": 3.989,
+      "end": 10.317,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "That is the information we need.",
+      "start": 10.317,
+      "end": 12.324,
+      "voice": "Lee (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

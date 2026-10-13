@@ -1,0 +1,242 @@
+[
+  {
+    "id": "definition-intro",
+    "concept": "intro",
+    "duration": 7.117125,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Graphic design. Graphic design combines graphical elements and design principles to communicate a message to an audience.",
+        "start": 0,
+        "end": 7.117125,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-line",
+    "concept": "line",
+    "duration": 6.065292,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Line. A line is a visible path. It can divide, connect, outline, or guide.",
+        "start": 0,
+        "end": 6.065292,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-color",
+    "concept": "color",
+    "duration": 6.884292,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Color. Color is a visual quality we can change to identify, group, emphasise, or suggest a mood.",
+        "start": 0,
+        "end": 6.884292,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-shape",
+    "concept": "shape",
+    "duration": 3.556917,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Shape. A shape is a two-dimensional area with a boundary.",
+        "start": 0,
+        "end": 3.556917,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-texture",
+    "concept": "texture",
+    "duration": 5.699,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Texture. Texture is the appearance or feel of a surface. A flat image can suggest a texture.",
+        "start": 0,
+        "end": 5.699,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-space",
+    "concept": "space",
+    "duration": 7.304667,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Space. Space includes the areas occupied by elements and the empty areas within, around, or between them.",
+        "start": 0,
+        "end": 7.304667,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-form",
+    "concept": "form",
+    "duration": 8.038,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Form. Form concerns three-dimensional volume. A flat image can suggest form through light, shadow, and perspective.",
+        "start": 0,
+        "end": 8.038,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-typography",
+    "concept": "typography",
+    "duration": 9.173,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Typography. Typography is the visual presentation of written language: letterforms, size, weight, spacing, and arrangement.",
+        "start": 0,
+        "end": 9.173,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-contrast",
+    "concept": "contrast",
+    "duration": 8.078958,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Contrast. Contrast is a visible difference between elements, such as light and dark, big and small, or straight and curved.",
+        "start": 0,
+        "end": 8.078958,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-hierarchy",
+    "concept": "hierarchy",
+    "duration": 6.169958,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Hierarchy. Hierarchy establishes an order of importance so viewers know what to notice first and next.",
+        "start": 0,
+        "end": 6.169958,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-alignment",
+    "concept": "alignment",
+    "duration": 5.553833,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Alignment. Alignment places elements along shared edges, centres, or guides.",
+        "start": 0,
+        "end": 5.553833,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-balance",
+    "concept": "balance",
+    "duration": 5.411042,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Balance. Balance distributes visual weight. It can be symmetrical or asymmetrical.",
+        "start": 0,
+        "end": 5.411042,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-proximity",
+    "concept": "proximity",
+    "duration": 5.659,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Proximity. Proximity places related elements close together so their relationship is clearer.",
+        "start": 0,
+        "end": 5.659,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-repetition",
+    "concept": "repetition",
+    "duration": 5.066833,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Repetition. Repetition reuses selected visual features to create consistency.",
+        "start": 0,
+        "end": 5.066833,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-simplicity",
+    "concept": "simplicity",
+    "duration": 5.670292,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Simplicity. Simplicity removes unnecessary complication while keeping what the message needs.",
+        "start": 0,
+        "end": 5.670292,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  },
+  {
+    "id": "definition-function",
+    "concept": "function",
+    "duration": 6.679083,
+    "turns": [
+      {
+        "role": "Definition",
+        "text": "Function. Function asks whether the design helps its intended audience understand or do what the brief requires.",
+        "start": 0,
+        "end": 6.679083,
+        "voice": "Jamie (Premium)"
+      }
+    ],
+    "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+  }
+]

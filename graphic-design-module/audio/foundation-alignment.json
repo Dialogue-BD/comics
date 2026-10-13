@@ -1,0 +1,28 @@
+{
+  "id": "foundation-alignment",
+  "duration": 7.315625,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "The text blocks look scattered.",
+      "start": 0,
+      "end": 2.155,
+      "voice": "Isha (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I lined them up along one left edge.",
+      "start": 2.155,
+      "end": 4.791,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Keep the spacing comfortable as well.",
+      "start": 4.791,
+      "end": 7.316,
+      "voice": "Isha (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

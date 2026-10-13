@@ -1,0 +1,1 @@
+Version B gives the date, time, and location. It helps viewers act on the invitation.

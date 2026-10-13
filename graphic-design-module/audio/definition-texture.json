@@ -1,0 +1,15 @@
+{
+  "id": "definition-texture",
+  "concept": "texture",
+  "duration": 5.699,
+  "turns": [
+    {
+      "role": "Definition",
+      "text": "Texture. Texture is the appearance or feel of a surface. A flat image can suggest a texture.",
+      "start": 0,
+      "end": 5.699,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson definition, synthesised using an installed Apple English voice."
+}

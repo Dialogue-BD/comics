@@ -1,0 +1,14 @@
+{
+  "id": "logo-microsoft",
+  "duration": 29.62375,
+  "turns": [
+    {
+      "role": "logo",
+      "text": "The Microsoft symbol uses four colored squares. They sit in a two-by-two arrangement, with clear gaps between them. The repeated square shape and the regular spacing make the group feel organised to me. Notice that repetition does not require one color: the shape repeats while the colors differ. We can describe those choices without claiming that each color has one universal meaning. When analysing a new mark, ask which features repeat, which features change, and what remains recognisable when the mark is small.",
+      "start": 0,
+      "end": 29.624,
+      "voice": "Zoe (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

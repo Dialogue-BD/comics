@@ -1,0 +1,1 @@
+A repeated pattern can suggest a textured surface. We should check whether it makes the label harder to read.

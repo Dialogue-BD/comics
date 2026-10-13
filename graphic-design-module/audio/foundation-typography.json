@@ -1,0 +1,28 @@
+{
+  "id": "foundation-typography",
+  "duration": 10.931333,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "Please show the same headline in two type styles.",
+      "start": 0,
+      "end": 3.309,
+      "voice": "Lee (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "The words are unchanged. The different letterforms give you two typographic options.",
+      "start": 3.309,
+      "end": 8.648,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Now compare them at phone size.",
+      "start": 8.648,
+      "end": 10.931,
+      "voice": "Lee (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

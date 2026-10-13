@@ -1,0 +1,28 @@
+{
+  "id": "judgment-2",
+  "duration": 13.404833,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "This wide image looks good, but we asked for a square post.",
+      "start": 0,
+      "end": 3.988,
+      "voice": "Jamie (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "The draft does not meet the required aspect ratio. I’ll rebuild it as a square and keep the text editable.",
+      "start": 3.988,
+      "end": 10.519,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Please send the square preview and the editable source.",
+      "start": 10.519,
+      "end": 13.405,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

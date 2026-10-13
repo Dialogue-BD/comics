@@ -1,0 +1,1 @@
+Before, the opening details were hard to read. I changed the text color, so the date and location are clearer now.

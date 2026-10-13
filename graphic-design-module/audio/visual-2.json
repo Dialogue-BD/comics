@@ -1,0 +1,28 @@
+{
+  "id": "visual-2",
+  "duration": 13.403792,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "Could we use the sharp triangle for our nursery mark?",
+      "start": 0,
+      "end": 3.425,
+      "voice": "Jamie (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "We could, but the rounded shape might suggest a softer tone. Which personality should the nursery communicate?",
+      "start": 3.425,
+      "end": 10.355,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Warm and reassuring, rather than exciting.",
+      "start": 10.355,
+      "end": 13.404,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

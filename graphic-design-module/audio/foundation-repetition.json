@@ -1,0 +1,28 @@
+{
+  "id": "foundation-repetition",
+  "duration": 9.803292,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "These three posts feel like different brands.",
+      "start": 0,
+      "end": 3.131,
+      "voice": "Jamie (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I repeated the same colors and type style across the set.",
+      "start": 3.131,
+      "end": 6.916,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Keep each post’s message different, though.",
+      "start": 6.916,
+      "end": 9.803,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}

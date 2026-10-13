@@ -1,0 +1,475 @@
+{
+  "inputs": {
+    "node_modules/react/cjs/react.production.js": {
+      "bytes": 18040,
+      "imports": [],
+      "format": "cjs"
+    },
+    "node_modules/react/index.js": {
+      "bytes": 186,
+      "imports": [
+        {
+          "path": "node_modules/react/cjs/react.production.js",
+          "kind": "require-call",
+          "original": "./cjs/react.production.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/scheduler/cjs/scheduler.production.js": {
+      "bytes": 10181,
+      "imports": [],
+      "format": "cjs"
+    },
+    "node_modules/scheduler/index.js": {
+      "bytes": 194,
+      "imports": [
+        {
+          "path": "node_modules/scheduler/cjs/scheduler.production.js",
+          "kind": "require-call",
+          "original": "./cjs/scheduler.production.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react-dom/cjs/react-dom.production.js": {
+      "bytes": 7326,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "require-call",
+          "original": "react"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react-dom/index.js": {
+      "bytes": 1359,
+      "imports": [
+        {
+          "path": "node_modules/react-dom/cjs/react-dom.production.js",
+          "kind": "require-call",
+          "original": "./cjs/react-dom.production.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react-dom/cjs/react-dom-client.production.js": {
+      "bytes": 625168,
+      "imports": [
+        {
+          "path": "node_modules/scheduler/index.js",
+          "kind": "require-call",
+          "original": "scheduler"
+        },
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "require-call",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/react-dom/index.js",
+          "kind": "require-call",
+          "original": "react-dom"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/react-dom/client.js": {
+      "bytes": 1373,
+      "imports": [
+        {
+          "path": "node_modules/react-dom/cjs/react-dom-client.production.js",
+          "kind": "require-call",
+          "original": "./cjs/react-dom-client.production.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "node_modules/gsap/gsap-core.js": {
+      "bytes": 171676,
+      "imports": [],
+      "format": "esm"
+    },
+    "node_modules/gsap/CSSPlugin.js": {
+      "bytes": 65156,
+      "imports": [
+        {
+          "path": "node_modules/gsap/gsap-core.js",
+          "kind": "import-statement",
+          "original": "./gsap-core.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/gsap/index.js": {
+      "bytes": 664,
+      "imports": [
+        {
+          "path": "node_modules/gsap/gsap-core.js",
+          "kind": "import-statement",
+          "original": "./gsap-core.js"
+        },
+        {
+          "path": "node_modules/gsap/CSSPlugin.js",
+          "kind": "import-statement",
+          "original": "./CSSPlugin.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/gsap/Observer.js": {
+      "bytes": 26275,
+      "imports": [],
+      "format": "esm"
+    },
+    "node_modules/gsap/ScrollTrigger.js": {
+      "bytes": 112578,
+      "imports": [
+        {
+          "path": "node_modules/gsap/Observer.js",
+          "kind": "import-statement",
+          "original": "./Observer.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/gsap/utils/matrix.js": {
+      "bytes": 15372,
+      "imports": [],
+      "format": "esm"
+    },
+    "node_modules/gsap/Flip.js": {
+      "bytes": 49106,
+      "imports": [
+        {
+          "path": "node_modules/gsap/utils/matrix.js",
+          "kind": "import-statement",
+          "original": "./utils/matrix.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/lenis/dist/lenis.mjs": {
+      "bytes": 33166,
+      "imports": [
+        {
+          "path": "<runtime>",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/react/cjs/react-jsx-runtime.production.js": {
+      "bytes": 976,
+      "imports": [],
+      "format": "cjs"
+    },
+    "node_modules/react/jsx-runtime.js": {
+      "bytes": 210,
+      "imports": [
+        {
+          "path": "node_modules/react/cjs/react-jsx-runtime.production.js",
+          "kind": "require-call",
+          "original": "./cjs/react-jsx-runtime.production.js"
+        }
+      ],
+      "format": "cjs"
+    },
+    "src/react-bits/AnimatedContent.jsx": {
+      "bytes": 2504,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/gsap/index.js",
+          "kind": "import-statement",
+          "original": "gsap"
+        },
+        {
+          "path": "node_modules/gsap/ScrollTrigger.js",
+          "kind": "import-statement",
+          "original": "gsap/ScrollTrigger"
+        },
+        {
+          "path": "node_modules/react/jsx-runtime.js",
+          "kind": "import-statement",
+          "original": "react/jsx-runtime"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/react-bits/SpotlightCard.css": {
+      "bytes": 980,
+      "imports": []
+    },
+    "src/react-bits/SpotlightCard.jsx": {
+      "bytes": 10294,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "src/react-bits/SpotlightCard.css",
+          "kind": "import-statement",
+          "original": "./SpotlightCard.css"
+        },
+        {
+          "path": "node_modules/react/jsx-runtime.js",
+          "kind": "import-statement",
+          "original": "react/jsx-runtime"
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/gsap/SplitText.js": {
+      "bytes": 17263,
+      "imports": [],
+      "format": "esm"
+    },
+    "node_modules/@gsap/react/src/index.js": {
+      "bytes": 2325,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/gsap/index.js",
+          "kind": "import-statement",
+          "original": "gsap"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/react-bits/SplitText.jsx": {
+      "bytes": 4552,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/gsap/index.js",
+          "kind": "import-statement",
+          "original": "gsap"
+        },
+        {
+          "path": "node_modules/gsap/ScrollTrigger.js",
+          "kind": "import-statement",
+          "original": "gsap/ScrollTrigger"
+        },
+        {
+          "path": "node_modules/gsap/SplitText.js",
+          "kind": "import-statement",
+          "original": "gsap/SplitText"
+        },
+        {
+          "path": "node_modules/@gsap/react/src/index.js",
+          "kind": "import-statement",
+          "original": "@gsap/react"
+        },
+        {
+          "path": "node_modules/react/jsx-runtime.js",
+          "kind": "import-statement",
+          "original": "react/jsx-runtime"
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/lenis/dist/lenis.css": {
+      "bytes": 513,
+      "imports": []
+    },
+    "src/entry.css": {
+      "bytes": 22975,
+      "imports": []
+    },
+    "src/entry.jsx": {
+      "bytes": 14465,
+      "imports": [
+        {
+          "path": "node_modules/react/index.js",
+          "kind": "import-statement",
+          "original": "react"
+        },
+        {
+          "path": "node_modules/react-dom/client.js",
+          "kind": "import-statement",
+          "original": "react-dom/client"
+        },
+        {
+          "path": "node_modules/react-dom/index.js",
+          "kind": "import-statement",
+          "original": "react-dom"
+        },
+        {
+          "path": "node_modules/gsap/index.js",
+          "kind": "import-statement",
+          "original": "gsap"
+        },
+        {
+          "path": "node_modules/gsap/ScrollTrigger.js",
+          "kind": "import-statement",
+          "original": "gsap/ScrollTrigger"
+        },
+        {
+          "path": "node_modules/gsap/Flip.js",
+          "kind": "import-statement",
+          "original": "gsap/Flip"
+        },
+        {
+          "path": "node_modules/lenis/dist/lenis.mjs",
+          "kind": "import-statement",
+          "original": "lenis"
+        },
+        {
+          "path": "src/react-bits/AnimatedContent.jsx",
+          "kind": "import-statement",
+          "original": "./react-bits/AnimatedContent.jsx"
+        },
+        {
+          "path": "src/react-bits/SpotlightCard.jsx",
+          "kind": "import-statement",
+          "original": "./react-bits/SpotlightCard.jsx"
+        },
+        {
+          "path": "src/react-bits/SplitText.jsx",
+          "kind": "import-statement",
+          "original": "./react-bits/SplitText.jsx"
+        },
+        {
+          "path": "node_modules/lenis/dist/lenis.css",
+          "kind": "import-statement",
+          "original": "lenis/dist/lenis.css"
+        },
+        {
+          "path": "src/entry.css",
+          "kind": "import-statement",
+          "original": "./entry.css"
+        },
+        {
+          "path": "node_modules/react/jsx-runtime.js",
+          "kind": "import-statement",
+          "original": "react/jsx-runtime"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "dist/entry.js": {
+      "imports": [],
+      "exports": [],
+      "entryPoint": "src/entry.jsx",
+      "cssBundle": "dist/entry.css",
+      "inputs": {
+        "node_modules/react/cjs/react.production.js": {
+          "bytesInOutput": 8203
+        },
+        "node_modules/react/index.js": {
+          "bytesInOutput": 51
+        },
+        "node_modules/scheduler/cjs/scheduler.production.js": {
+          "bytesInOutput": 3900
+        },
+        "node_modules/scheduler/index.js": {
+          "bytesInOutput": 51
+        },
+        "node_modules/react-dom/cjs/react-dom.production.js": {
+          "bytesInOutput": 3904
+        },
+        "node_modules/react-dom/index.js": {
+          "bytesInOutput": 253
+        },
+        "node_modules/react-dom/cjs/react-dom-client.production.js": {
+          "bytesInOutput": 205879
+        },
+        "node_modules/react-dom/client.js": {
+          "bytesInOutput": 253
+        },
+        "node_modules/react/cjs/react-jsx-runtime.production.js": {
+          "bytesInOutput": 610
+        },
+        "node_modules/react/jsx-runtime.js": {
+          "bytesInOutput": 51
+        },
+        "src/entry.jsx": {
+          "bytesInOutput": 15024
+        },
+        "node_modules/gsap/gsap-core.js": {
+          "bytesInOutput": 51863
+        },
+        "node_modules/gsap/CSSPlugin.js": {
+          "bytesInOutput": 19019
+        },
+        "node_modules/gsap/index.js": {
+          "bytesInOutput": 50
+        },
+        "node_modules/gsap/Observer.js": {
+          "bytesInOutput": 9342
+        },
+        "node_modules/gsap/ScrollTrigger.js": {
+          "bytesInOutput": 34999
+        },
+        "node_modules/gsap/utils/matrix.js": {
+          "bytesInOutput": 5073
+        },
+        "node_modules/gsap/Flip.js": {
+          "bytesInOutput": 19950
+        },
+        "node_modules/lenis/dist/lenis.mjs": {
+          "bytesInOutput": 19262
+        },
+        "src/react-bits/AnimatedContent.jsx": {
+          "bytesInOutput": 1142
+        },
+        "src/react-bits/SpotlightCard.jsx": {
+          "bytesInOutput": 6029
+        },
+        "src/react-bits/SpotlightCard.css": {
+          "bytesInOutput": 0
+        },
+        "src/react-bits/SplitText.jsx": {
+          "bytesInOutput": 1899
+        },
+        "node_modules/gsap/SplitText.js": {
+          "bytesInOutput": 7362
+        },
+        "node_modules/@gsap/react/src/index.js": {
+          "bytesInOutput": 1018
+        },
+        "node_modules/lenis/dist/lenis.css": {
+          "bytesInOutput": 0
+        },
+        "src/entry.css": {
+          "bytesInOutput": 0
+        }
+      },
+      "bytes": 416040
+    },
+    "dist/entry.css": {
+      "imports": [],
+      "inputs": {
+        "src/react-bits/SpotlightCard.css": {
+          "bytesInOutput": 835
+        },
+        "node_modules/lenis/dist/lenis.css": {
+          "bytesInOutput": 456
+        },
+        "src/entry.css": {
+          "bytesInOutput": 22911
+        }
+      },
+      "bytes": 24203
+    }
+  }
+}

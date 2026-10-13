@@ -1,0 +1,1 @@
+The date is below the headline, and the location is next to it. They are grouped together.

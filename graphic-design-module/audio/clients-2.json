@@ -1,0 +1,28 @@
+{
+  "id": "clients-2",
+  "duration": 14.532125,
+  "turns": [
+    {
+      "role": "Organiser",
+      "text": "Thanks for making the poster. Could you make a separate invitation too?",
+      "start": 0,
+      "end": 4.14,
+      "voice": "Jamie (Premium)"
+    },
+    {
+      "role": "You",
+      "text": "I can make the invitation, but I need more time. Shall we agree on the deadline first?",
+      "start": 4.14,
+      "end": 9.811,
+      "voice": "Daniel (Enhanced)"
+    },
+    {
+      "role": "Organiser",
+      "text": "Yes. The invitation is for Friday, and we need it on Wednesday.",
+      "start": 9.811,
+      "end": 14.532,
+      "voice": "Jamie (Premium)"
+    }
+  ],
+  "provenance": "Original lesson script, synthesised with installed Apple English voices."
+}
