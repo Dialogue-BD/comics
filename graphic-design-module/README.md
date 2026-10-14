@@ -36,7 +36,7 @@ Balance now places a large two-dot colon beneath the balancing beam as its fulcr
 
 The current app is the visual and technical base. Selected subtype coverage and interaction ideas from the supplied *Design Module Prototype.html* are adapted into structured content; its full source is preserved as a reference snapshot in `research/design-module-prototype.html`. Source-review findings and the prototype hash are in `research/prototype-merge-review.json`. The prototype was reviewed statically; its blocked local-file URL was not bypassed.
 
-Every unit has a clear learning goal, **three paired subtype comparisons, three named lab states, and three short challenges**. The challenges are distributed through See the idea → Change a choice → Play the redesign:
+Every unit has a clear learning goal, **independent visual and written example galleries, three named lab states, and three short challenges**. The challenges are distributed through See the idea → Change a choice → Play the redesign:
 
 1. **Notice:** interpret a real applied visual example, rather than recall a label.
 2. **Manipulate:** match, order, group, repaint, stress, pause, or cut for a stated effect.
@@ -48,9 +48,9 @@ The comparisons show an actual native diagram alongside a short text example. Re
 |---|---|---|
 | Line / Sentence | Match described movement to straight, curved, and zigzag graphics | Build a sentence with an interruption |
 | Color / Diction | Repaint a gathering through word chips and a live palette | Choose wording for an unsettling empty classroom |
-| Shape / Text shapes | Rebuild the five-line afraid/help chiasm | Find the central turn in a new rest/rested chiasm |
+| Shape / Document forms | Match six recognisable document templates | Choose a CV for experience, education, and contact details |
 | Texture / Sound & rhythm | Sort phrases against rough and smooth surfaces | Choose wording for gentle boat movement |
-| Form / Subtext | Explore two supported readings of a contextual remark | Infer a request from an unfinished task and time limit |
+| Form / Literary structure | Build a problem-to-outcome story arc | Find the centre of a lexical chiasm |
 | Space / Silence | Give the final wait its own paragraph | Separate a final event for attention |
 | Typography / Emphasis & voice | Move stress to the person being corrected | Emphasise the colour being corrected |
 | Contrast / Antithesis | Assemble opposed descriptions | Find empty/full in matching clauses |
@@ -62,11 +62,11 @@ The comparisons show an actual native diagram alongside a short text example. Re
 | Simplicity / Concision | Cut filler while preserving action and purpose | Reduce eleven words to three without losing present readiness |
 | Function / Genre & purpose | Distinguish narrative, explanation, and argument | Choose a story-opening event |
 
-The main writing bank uses original narrative, descriptive, explanatory, and argumentative prose. Brief authentic excerpts from Dickens and Lincoln remain attributed. The five-line lexical chiasm, Psalm 114 stanzas, ghost subtext readings, semantic diction art, colon fulcrum, and musical resonance remain the specialised teaching anchors.
+The main writing bank uses original narrative, descriptive, explanatory, and argumentative prose. Brief authentic excerpts from Dickens and Lincoln remain attributed. Recognisable document templates, an original concrete poem, an Oulipo snowball, Psalm 114 stanzas, ghost subtext readings, semantic diction art, colon fulcrum, and musical resonance are specialised teaching anchors. The five-step lexical chiasm now belongs to Form’s underlying literary structures, with an indentation reveal that retains story order.
 
 All controls have tap and keyboard alternatives. Ordering and sentence magnets support desktop drag and drop; order pieces also have move buttons. New word surgery starts with the whole sentence, crosses out removable pieces, calculates the real remaining word count, and removes visual clutter in its preview. Browser voice playback follows the selected lab or current word-chip sentence; complete text stays visible. No extended typed response or self-report completion checkbox is required.
 
-Feedback checks the **stated purpose**. The subtext case accepts criticism or concern where both are supported. Paragraph-break checks use an exact requested pacing goal. Punctuation feedback acknowledges a grammatical period while explaining why the task calls for a colon. Font, colour, and sound analogies are contextual teaching examples, rather than universal rules.
+Feedback checks the **stated purpose**. The Space gallery offers several context-supported subtext readings without treating one hidden meaning as guaranteed. Paragraph-break checks use an exact requested pacing goal. Punctuation feedback acknowledges a grammatical period while explaining why the task calls for a colon. Font, colour, and sound analogies are contextual teaching examples, rather than universal rules.
 
 The finale still builds a short prose passage with its setting, action, and return diagram. A compact two-choice synthesis asks which organisation and pacing decisions serve that scene. It does not repeat the full learning map.
 
@@ -112,7 +112,7 @@ node graphic-design-module/tools/check-diction-word-art.cjs
 node graphic-design-module/tools/check-balance-resonance.cjs
 ```
 
-The merged browser check covers all 45 challenges, 45 subtype examples, and 45 named lab states; purpose-based retries; alternate subtext readings; precise paragraph breaks; actual word counts; sentence/palette/speech agreement; native drag and keyboard controls; one-time rewards; preserved records; both entry paths; guide zoom; the finale; phone layouts; and reduced-motion offline use. The specialist motion and entry suites retain their existing assertions with the new game selectors. `check-pairings.cjs` forwards to the merged integration suite for compatibility. The test requires the local server on port 8766 and the bundled Playwright/Chrome paths in the script. `?qa=1` uses separate test storage to protect learner records.
+The merged browser check covers all 45 challenges, 199 independent gallery examples, and 45 named lab states; purpose-based retries; context-supported subtext readings; precise paragraph breaks; actual word counts; sentence/palette/speech agreement; native drag and keyboard controls; one-time rewards; preserved records; both entry paths; guide zoom; the finale; phone layouts; and reduced-motion offline use. The specialist motion and entry suites retain their existing assertions with the new game selectors. `check-pairings.cjs` forwards to the merged integration suite for compatibility. The test requires the local server on port 8766 and the bundled Playwright/Chrome paths in the script. `?qa=1` uses separate test storage to protect learner records.
 
 The entry-page check additionally verifies both identities, all fifteen topic links, motion cleanup, saved entry/support state, desktop/390px/320px widths, reduced motion, and offline entry rendering.
 
@@ -123,3 +123,12 @@ Earlier versions are preserved in `revisions/full-learning-map-v3.html` and `rev
 ## Classroom review
 
 Interface and goal-specific checks verify the authored cases, but they do not establish learning outcomes. A short B1 learner trial is still useful: ask learners to describe the effect before revealing the definition, then try the fresh-case challenge. Note whether the paired analogy helps them explain a choice in their own words.
+
+
+The example galleries now select each medium independently. `tools/author_effects.py` authors 91 visual uses and 108 written demonstrations; `tools/effects-curriculum.json` supplies labels, purposes, concrete examples, and feature notes. `tools/document-forms.js` and `tools/writing-effects.js` draw the actual written operation. The Shape gallery includes letter, haiku and limerick templates, CV, advertisement, newspaper and scientific articles, dramatic dialogue, an original concrete leaf poem, and an Oulipo snowball. Placeholder typography demonstrates layout, not syllables, rhyme, or metre.
+
+`tools/render_effect_clips.py` reproducibly renders 71 adapted guide crops from the supplied PDF. `tools/effect-clips.json` records source page, normalized crop bounds, compositing, and treatment. Monochrome diagrams become transparent green ink; colour wheels and palettes lose the page background while retaining internal white markings; photographs retain detail and blend with the paper surface. Picture captions and the lesson footer credit Gareth David / TastyTuts. The 22 full guide pages remain available for inspection. Repetition, simplicity, and function use original diagrams because the guide provides no example boards for them.
+
+Regenerate in this order: `author_effects.py`, `author_merged_curriculum.py`, `render_effect_clips.py`, then `build.py`. The crop renderer requires Pillow and Poppler. It accepts optional crop IDs for selective regeneration. The built HTML embeds all data, images, and recordings. The new gallery checks exercise every selection and feature reveal at 320px, captions, independent selections, pause persistence, reduced motion, the snowball rule, and migration of old Shape drafts and awards. Challenge regression still covers all 45 short challenges. Historical Shape test entry forwards to the replacement gallery suite. `check-literary-structure.cjs` covers Form’s relocated five-step chiasm, its smooth indentation and pause, Space’s subtext, and preservation of earlier Form awards.
+
+The literary mapping distinguishes visible document Shape, underlying narrative Form, and Space as pauses, omissions, and implications. Form now teaches six underlying structures. Space has fourteen examples, including the six former subtext examples. Changed Form challenges use new IDs; their old drafts and practised flags are archived while previous awards remain.

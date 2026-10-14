@@ -1,0 +1,15 @@
+Verified 2026-10-14
+
+Passed check-effects-gallery.cjs: 91 visual uses and 108 written examples, independent selections and feature reveals, all examples at 320px, source captions, pause persistence, reduced-motion subtext, Oulipo snowball, and old Shape draft/award migration.
+Passed check-literary-structure.cjs: logical five-line lexical chiasm under Form; smooth GSAP indentation, pause, phone layouts, complete static reduced motion; subtext under Space; old Form draft/award preservation. First-visit migration was additionally verified to persist across reload without duplicate archive records.
+Passed check-merged-curriculum.cjs: all 45 short challenges and 45 lab states; retries, precise breaks, live word surgery, speech/palette agreement, native drag and keyboard controls, one-time rewards, preserved drafts, full source zoom, synthesis, both entry paths, 390/320 widths, phone coach, offline and reduced motion; no remote runtime requests.
+Passed check-literary-motion.cjs: fifteen diagrams and original visual word graphics, labels, pause, widths, relocated subtext, parchment entry.
+Passed check-entry-pages.cjs: both entries, all fifteen topics, bundled UI libraries, cleanup, persistence, 1365/390/320 widths, reduced motion and offline.
+Passed check-balance-resonance.cjs, check-diction-word-art.cjs, and check-parallel-poetry.cjs: retained colon fulcrum, musical resonance, three diction transformations, and eight adapted poetic cola in two stanzas.
+
+Image adaptation: all 54 monochrome crops have zero-alpha background pixels; colour-crop alpha spans 0–255 and intentional white diagram marks remain. Seventeen other assets retain colour/photo detail. Total 71 crops, with normalized source boxes and page provenance.
+Original typographic-reveals.js SHA-256 b4340592242e0f48452f442f977c49dfa9060a58bb64878a06e1bcb5f40a3976
+Original typographic-reveals.css SHA-256 2a38b1525272ad208a81db15cacfddeb56f2d55b978de74a71ffd7d6e7cf462e
+
+QA correction: a literal $1 in an empty group preview was removed. Native drag checks use an actual stepped pointer trajectory; a single automated hover jump failed to start the second native drag in the saved regression state. Real stepped drags and keyboard alternatives passed.
+These are implementation/interaction checks, not a claim of classroom learning effectiveness.

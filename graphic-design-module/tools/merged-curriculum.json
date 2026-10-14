@@ -276,7 +276,7 @@
     }
   },
   "shape": {
-    "goal": "Find repeated words and a turning point in a five-part text shape.",
+    "goal": "Recognise how visual outlines and document layouts give a message a form.",
     "examples": [
       {
         "visual": {
@@ -331,43 +331,28 @@
     ],
     "labs": [
       {
-        "label": "Five lines",
-        "visual": "shape-lines",
-        "value": 0,
+        "label": "Letter",
+        "form": "letter",
         "text": [
-          "Ben was afraid.",
-          "He called for help.",
-          "His friend came.",
-          "His friend helped him.",
-          "Ben was not afraid."
+          "Date, greeting, body paragraphs, closing, and signature."
         ],
-        "effect": "The sentences keep their logical story order."
+        "effect": "The page groups a message around familiar letter conventions."
       },
       {
-        "label": "Find the echoes",
-        "visual": "shape-echoes",
-        "value": 50,
+        "label": "Haiku template",
+        "form": "haiku",
         "text": [
-          "Ben was afraid.",
-          "He called for help.",
-          "His friend came.",
-          "His friend helped him.",
-          "Ben was not afraid."
+          "Three compact lines. A traditional English haiku template often uses 5–7–5 syllables."
         ],
-        "effect": "Afraid returns; help returns as helped."
+        "effect": "The line pattern is visible. Placeholder text alone does not establish syllables or poetic content."
       },
       {
-        "label": "Reveal the chiasm",
-        "visual": "shape-chiasm",
-        "value": 100,
+        "label": "CV",
+        "form": "cv",
         "text": [
-          "Ben was afraid.",
-          "He called for help.",
-          "His friend came.",
-          "His friend helped him.",
-          "Ben was not afraid."
+          "Name and contact details, followed by grouped experience and education."
         ],
-        "effect": "A–B–X–B′–A′ surrounds the friend’s arrival."
+        "effect": "Headings, dates, and repeated entries make the information easy to scan."
       }
     ],
     "challenges": {
@@ -386,44 +371,60 @@
         "title": "Notice the feature"
       },
       "manipulate": {
-        "kind": "order",
-        "prompt": "Build the short story: Ben feels afraid, calls for help, his friend comes, helps him, and Ben feels calm.",
-        "tiles": [
-          "Ben was afraid.",
-          "He called for help.",
-          "His friend came.",
-          "His friend helped him.",
-          "Ben was not afraid."
+        "kind": "match",
+        "prompt": "Match each document name to its placeholder-text template. Use the arrangement, rather than the words.",
+        "left": [
+          "Letter",
+          "Haiku template",
+          "CV",
+          "Advertisement",
+          "Newspaper article",
+          "Scientific article"
+        ],
+        "right": [
+          "Letter layout",
+          "Three-line layout",
+          "CV layout",
+          "Advertisement layout",
+          "Newspaper layout",
+          "Scientific article layout"
+        ],
+        "rightForms": [
+          "letter",
+          "haiku",
+          "cv",
+          "ad",
+          "newspaper",
+          "journal"
         ],
         "answer": [
           0,
           1,
           2,
           3,
-          4
+          4,
+          5
         ],
-        "reason": "Afraid returns at the end. Help returns as helped. His friend came is the turning point between asking for help and receiving it.",
-        "id": "shape-manipulate-v1",
+        "reason": "Dates and a signature identify the letter; three compact lines give the haiku template; dated sections give the CV; headline and action give the ad; columns give the news page; abstract and sections give the journal template.",
+        "id": "shape-manipulate-document-v1",
         "title": "Make a design choice"
       },
       "transfer": {
         "kind": "choose",
-        "prompt": "Read: “Eva was tired. She asked for rest. Her friend found a seat. Eva rested. Eva was not tired.” Which sentence turns asking into receiving?",
+        "prompt": "Which page shape would best organise work experience, education, and contact details?",
         "tiles": [
-          "Eva was tired.",
-          "Her friend found a seat.",
-          "Eva was not tired."
+          "A three-line poem template",
+          "A CV template",
+          "An advertisement template"
+        ],
+        "optionForms": [
+          "haiku",
+          "cv",
+          "ad"
         ],
         "answer": 1,
-        "reason": "The friend finding a seat is the central turn. Tired returns as not tired; rest returns as rested.",
-        "case": [
-          "Eva was tired.",
-          "She asked for rest.",
-          "Her friend found a seat.",
-          "Eva rested.",
-          "Eva was not tired."
-        ],
-        "id": "shape-transfer-v1",
+        "reason": "The CV template groups experience and education under headings and places contact information near the name. The other shapes serve different jobs.",
+        "id": "shape-transfer-document-v1",
         "title": "Try a fresh example"
       }
     }
@@ -560,7 +561,7 @@
     }
   },
   "form": {
-    "goal": "Use context to explore meaning beneath the spoken words.",
+    "goal": "Trace how an underlying story structure gives events depth and direction.",
     "examples": [
       {
         "visual": {
@@ -604,31 +605,42 @@
     ],
     "labs": [
       {
-        "label": "Words alone",
-        "visual": "shape",
+        "label": "Story arc",
+        "visual": "structure-arc",
         "value": 0,
         "text": [
-          "“Nice work.”"
+          "The radio stopped.",
+          "Ben could not fix it.",
+          "He asked his friend for help.",
+          "They found a loose wire.",
+          "The music played again."
         ],
-        "effect": "Without the surrounding action, several readings remain possible."
+        "effect": "The request is a turning point; the outcome resolves the opening problem."
       },
       {
-        "label": "A smile",
-        "visual": "highlight",
+        "label": "Thematic chiasm",
+        "visual": "structure-chiasm",
         "value": 50,
         "text": [
-          "“Nice work,” she said, smiling at the finished drawing."
+          "Ben was afraid.",
+          "He called for help.",
+          "His friend came.",
+          "His friend helped him.",
+          "Ben was not afraid."
         ],
-        "effect": "The smile and completed drawing support praise."
+        "effect": "A–B–X–B′–A′: afraid and help return around the friend’s arrival."
       },
       {
-        "label": "A frown",
-        "visual": "shadow",
+        "label": "A story within a story",
+        "visual": "structure-frame",
         "value": 100,
         "text": [
-          "“Nice work,” she said, frowning at the torn drawing."
+          "I told my friend about the storm.",
+          "The rain came through our roof.",
+          "We moved the beds and stayed together.",
+          "My friend listened without speaking."
         ],
-        "effect": "The frown and damage support criticism or concern. The words alone do not prove the intention."
+        "effect": "The present act of telling frames the remembered events."
       }
     ],
     "challenges": {
@@ -647,39 +659,44 @@
         "title": "Notice the feature"
       },
       "manipulate": {
-        "kind": "choose",
-        "prompt": "She frowns at the torn drawing and says “Nice work.” Which readings can that context support?",
+        "kind": "order",
+        "prompt": "Build this short story: problem → difficulty → request for help → response → outcome.",
         "tiles": [
-          "Possible criticism",
-          "Unqualified praise",
-          "Concern about the damage"
+          "The radio stopped.",
+          "Ben could not fix it.",
+          "He asked his friend for help.",
+          "They found a loose wire.",
+          "The music played again."
         ],
-        "answer": 0,
-        "reason": "The damaged drawing and frown support criticism or concern. They do not prove a single hidden intention.",
-        "answers": [
+        "answer": [
           0,
-          2
+          1,
+          2,
+          3,
+          4
         ],
-        "case": [
-          "“Nice work,” she said, frowning at the torn drawing."
-        ],
-        "id": "form-manipulate-v1",
+        "reason": "The request changes the situation. The response finds the cause; the outcome answers the opening problem.",
+        "id": "form-manipulate-structure-v1",
         "title": "Make a design choice"
       },
       "transfer": {
         "kind": "choose",
-        "prompt": "The teacher points to an unfinished task and says, “We have only five minutes left.” What request does this context most strongly support?",
-        "tiles": [
-          "Please focus and finish.",
-          "Begin an unrelated game.",
-          "Take as much time as you like."
-        ],
-        "answer": 0,
-        "reason": "The unfinished task, pointing, and time limit support a request to finish. The request is implied rather than stated directly.",
+        "prompt": "In this five-step chiasm, which sentence is the centre around which afraid and help return?",
         "case": [
-          "“We have only five minutes left,” the teacher said, pointing to the unfinished task."
+          "Eva was afraid.",
+          "She asked for help.",
+          "Her friend arrived.",
+          "Her friend helped her.",
+          "Eva was not afraid."
         ],
-        "id": "form-transfer-v1",
+        "tiles": [
+          "Eva was afraid.",
+          "Her friend arrived.",
+          "Eva was not afraid."
+        ],
+        "answer": 1,
+        "reason": "The arrival is the central event. Afraid returns as not afraid; help returns as helped on either side.",
+        "id": "form-transfer-structure-v1",
         "title": "Try a fresh example"
       }
     }

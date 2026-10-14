@@ -97,8 +97,18 @@ T={
 }
 for id,g in T.items():D[id]['challenges']['transfer']=g
 D['proximity']['challenges']['manipulate']['binVisual']=['river','boat']
+shape=json.loads((P/'effects-curriculum.json').read_text())['shape_core']
+D['shape']['goal']=shape['goal'];D['shape']['labs']=shape['labs']
+form=json.loads((P/'effects-curriculum.json').read_text())['form_core']
+D['form']['goal']=form['goal'];D['form']['labs']=form['labs']
+for key in ['manipulate','transfer']:D['form']['challenges'][key]=form[key]
+for key in ['manipulate','transfer']:D['shape']['challenges'][key]=shape[key]
 for id,d in D.items():
  for key,g in d['challenges'].items():g['id']=f'{id}-{key}-v1';g['title']={'notice':'Notice the feature','manipulate':'Make a design choice','transfer':'Try a fresh example'}[key]
+ if id=='form':
+  for key in ['manipulate','transfer']:d['challenges'][key]['id']=f'form-{key}-structure-v1'
+ if id=='shape':
+  for key in ['manipulate','transfer']:d['challenges'][key]['id']=f'shape-{key}-document-v1'
  assert len(d['labs'])==3 and len(d['examples'])==3 and len(d['challenges'])==3
 (P/'merged-curriculum.json').write_text(json.dumps(D,ensure_ascii=False,indent=2)+'\n')
-print('Authored 15 units, 45 short challenges, 45 named lab states, and 45 paired subtype comparisons.')
+print('Authored 15 units, 45 short challenges, 45 named lab states, and independent visual/written gallery examples.')

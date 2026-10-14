@@ -1,0 +1,971 @@
+{
+  "line-connect": {
+    "page": 11,
+    "boxes": [
+      [
+        0.055,
+        0.16,
+        0.385,
+        0.81
+      ]
+    ],
+    "file": "line-connect.webp",
+    "treatment": "green-ink"
+  },
+  "line-emphasise": {
+    "page": 11,
+    "boxes": [
+      [
+        0.437,
+        0.14,
+        0.606,
+        0.48
+      ]
+    ],
+    "file": "line-emphasise.webp",
+    "treatment": "green-ink"
+  },
+  "line-frame": {
+    "page": 11,
+    "boxes": [
+      [
+        0.617,
+        0.14,
+        0.786,
+        0.48
+      ]
+    ],
+    "file": "line-frame.webp",
+    "treatment": "green-ink"
+  },
+  "line-structure": {
+    "page": 11,
+    "boxes": [
+      [
+        0.799,
+        0.14,
+        0.969,
+        0.48
+      ]
+    ],
+    "file": "line-structure.webp",
+    "treatment": "green-ink"
+  },
+  "line-divide": {
+    "page": 11,
+    "boxes": [
+      [
+        0.617,
+        0.584,
+        0.786,
+        0.923
+      ]
+    ],
+    "file": "line-divide.webp",
+    "treatment": "green-ink"
+  },
+  "line-decorate": {
+    "page": 11,
+    "boxes": [
+      [
+        0.799,
+        0.584,
+        0.969,
+        0.923
+      ]
+    ],
+    "file": "line-decorate.webp",
+    "treatment": "green-ink"
+  },
+  "color-mono": {
+    "page": 13,
+    "boxes": [
+      [
+        0.383,
+        0.228,
+        0.484,
+        0.368
+      ],
+      [
+        0.53,
+        0.302,
+        0.936,
+        0.359
+      ]
+    ],
+    "file": "color-mono.webp",
+    "layout": "palette",
+    "treatment": "source-colour"
+  },
+  "color-analogous": {
+    "page": 13,
+    "boxes": [
+      [
+        0.383,
+        0.421,
+        0.484,
+        0.561
+      ],
+      [
+        0.53,
+        0.487,
+        0.936,
+        0.548
+      ]
+    ],
+    "file": "color-analogous.webp",
+    "layout": "palette",
+    "treatment": "source-colour"
+  },
+  "color-complementary": {
+    "page": 13,
+    "boxes": [
+      [
+        0.383,
+        0.615,
+        0.484,
+        0.754
+      ],
+      [
+        0.53,
+        0.694,
+        0.936,
+        0.751
+      ]
+    ],
+    "file": "color-complementary.webp",
+    "layout": "palette",
+    "treatment": "source-colour"
+  },
+  "color-triadic": {
+    "page": 13,
+    "boxes": [
+      [
+        0.383,
+        0.807,
+        0.484,
+        0.947
+      ],
+      [
+        0.53,
+        0.887,
+        0.936,
+        0.948
+      ]
+    ],
+    "file": "color-triadic.webp",
+    "layout": "palette",
+    "treatment": "source-colour"
+  },
+  "color-warm-cool": {
+    "page": 13,
+    "boxes": [
+      [
+        0.042,
+        0.804,
+        0.146,
+        0.947
+      ]
+    ],
+    "file": "color-warm-cool.webp",
+    "treatment": "source-colour"
+  },
+  "shape-boundaries": {
+    "page": 14,
+    "boxes": [
+      [
+        0.42,
+        0.52,
+        0.568,
+        0.76
+      ],
+      [
+        0.579,
+        0.52,
+        0.727,
+        0.76
+      ],
+      [
+        0.754,
+        0.505,
+        0.96,
+        0.76
+      ]
+    ],
+    "file": "shape-boundaries.webp",
+    "treatment": "green-ink"
+  },
+  "shape-geometric": {
+    "page": 15,
+    "boxes": [
+      [
+        0.061,
+        0.315,
+        0.449,
+        0.856
+      ]
+    ],
+    "file": "shape-geometric.webp",
+    "treatment": "green-ink"
+  },
+  "shape-organic": {
+    "page": 15,
+    "boxes": [
+      [
+        0.563,
+        0.315,
+        0.952,
+        0.865
+      ]
+    ],
+    "file": "shape-organic.webp",
+    "treatment": "green-ink"
+  },
+  "shape-symbol": {
+    "page": 16,
+    "boxes": [
+      [
+        0.045,
+        0.2,
+        0.953,
+        0.902
+      ]
+    ],
+    "file": "shape-symbol.webp",
+    "treatment": "green-ink"
+  },
+  "shape-silhouette": {
+    "page": 17,
+    "boxes": [
+      [
+        0.074,
+        0.306,
+        0.419,
+        0.749
+      ]
+    ],
+    "file": "shape-silhouette.webp",
+    "treatment": "green-ink"
+  },
+  "shape-build": {
+    "page": 17,
+    "boxes": [
+      [
+        0.759,
+        0.122,
+        0.948,
+        0.5
+      ]
+    ],
+    "file": "shape-build.webp",
+    "treatment": "green-ink"
+  },
+  "shape-decorate": {
+    "page": 17,
+    "boxes": [
+      [
+        0.51,
+        0.122,
+        0.7,
+        0.5
+      ]
+    ],
+    "file": "shape-decorate.webp",
+    "treatment": "green-ink"
+  },
+  "shape-pattern": {
+    "page": 17,
+    "boxes": [
+      [
+        0.762,
+        0.565,
+        0.948,
+        0.944
+      ]
+    ],
+    "file": "shape-pattern.webp",
+    "treatment": "green-ink"
+  },
+  "texture-environment": {
+    "page": 19,
+    "boxes": [
+      [
+        0.043,
+        0.343,
+        0.329,
+        0.875
+      ]
+    ],
+    "file": "texture-environment.webp",
+    "treatment": "source-colour"
+  },
+  "texture-biological": {
+    "page": 19,
+    "boxes": [
+      [
+        0.354,
+        0.343,
+        0.64,
+        0.875
+      ]
+    ],
+    "file": "texture-biological.webp",
+    "treatment": "source-colour"
+  },
+  "texture-made": {
+    "page": 19,
+    "boxes": [
+      [
+        0.665,
+        0.343,
+        0.951,
+        0.875
+      ]
+    ],
+    "file": "texture-made.webp",
+    "treatment": "source-colour"
+  },
+  "texture-natural-pattern": {
+    "page": 20,
+    "boxes": [
+      [
+        0.048,
+        0.343,
+        0.333,
+        0.875
+      ]
+    ],
+    "file": "texture-natural-pattern.webp",
+    "treatment": "source-colour"
+  },
+  "texture-made-pattern": {
+    "page": 20,
+    "boxes": [
+      [
+        0.354,
+        0.343,
+        0.64,
+        0.875
+      ]
+    ],
+    "file": "texture-made-pattern.webp",
+    "treatment": "source-colour"
+  },
+  "texture-motif": {
+    "page": 20,
+    "boxes": [
+      [
+        0.821,
+        0.345,
+        0.96,
+        0.605
+      ]
+    ],
+    "file": "texture-motif.webp",
+    "treatment": "source-colour"
+  },
+  "space-figure-ground": {
+    "page": 21,
+    "boxes": [
+      [
+        0.515,
+        0.32,
+        0.93,
+        0.763
+      ]
+    ],
+    "file": "space-figure-ground.webp",
+    "treatment": "green-ink"
+  },
+  "space-proximity": {
+    "page": 22,
+    "boxes": [
+      [
+        0.043,
+        0.326,
+        0.183,
+        0.922
+      ]
+    ],
+    "file": "space-proximity.webp",
+    "treatment": "green-ink"
+  },
+  "space-overlap": {
+    "page": 22,
+    "boxes": [
+      [
+        0.197,
+        0.326,
+        0.343,
+        0.922
+      ]
+    ],
+    "file": "space-overlap.webp",
+    "treatment": "green-ink"
+  },
+  "space-opacity": {
+    "page": 22,
+    "boxes": [
+      [
+        0.357,
+        0.326,
+        0.5,
+        0.922
+      ]
+    ],
+    "file": "space-opacity.webp",
+    "treatment": "green-ink"
+  },
+  "space-shadow": {
+    "page": 22,
+    "boxes": [
+      [
+        0.516,
+        0.326,
+        0.663,
+        0.922
+      ]
+    ],
+    "file": "space-shadow.webp",
+    "treatment": "green-ink"
+  },
+  "space-depth": {
+    "page": 22,
+    "boxes": [
+      [
+        0.68,
+        0.326,
+        0.82,
+        0.922
+      ]
+    ],
+    "file": "space-depth.webp",
+    "treatment": "green-ink"
+  },
+  "form-flat-depth": {
+    "page": 23,
+    "boxes": [
+      [
+        0.467,
+        0.52,
+        0.924,
+        0.774
+      ]
+    ],
+    "file": "form-flat-depth.webp",
+    "treatment": "source-colour"
+  },
+  "form-geometric": {
+    "page": 24,
+    "boxes": [
+      [
+        0.046,
+        0.34,
+        0.457,
+        0.926
+      ]
+    ],
+    "file": "form-geometric.webp",
+    "treatment": "source-colour"
+  },
+  "form-organic": {
+    "page": 24,
+    "boxes": [
+      [
+        0.538,
+        0.34,
+        0.956,
+        0.926
+      ]
+    ],
+    "file": "form-organic.webp",
+    "treatment": "source-colour"
+  },
+  "form-facet": {
+    "page": 24,
+    "boxes": [
+      [
+        0.2,
+        0.34,
+        0.327,
+        0.605
+      ]
+    ],
+    "file": "form-facet.webp",
+    "treatment": "source-colour"
+  },
+  "form-ribbed": {
+    "page": 24,
+    "boxes": [
+      [
+        0.537,
+        0.34,
+        0.664,
+        0.605
+      ]
+    ],
+    "file": "form-ribbed.webp",
+    "treatment": "source-colour"
+  },
+  "form-type": {
+    "page": 24,
+    "boxes": [
+      [
+        0.046,
+        0.34,
+        0.173,
+        0.605
+      ]
+    ],
+    "file": "form-type.webp",
+    "treatment": "source-colour"
+  },
+  "type-sans": {
+    "page": 26,
+    "boxes": [
+      [
+        0.041,
+        0.314,
+        0.244,
+        0.568
+      ]
+    ],
+    "file": "type-sans.webp",
+    "treatment": "green-ink"
+  },
+  "type-serif": {
+    "page": 26,
+    "boxes": [
+      [
+        0.279,
+        0.314,
+        0.48,
+        0.568
+      ]
+    ],
+    "file": "type-serif.webp",
+    "treatment": "green-ink"
+  },
+  "type-slab": {
+    "page": 26,
+    "boxes": [
+      [
+        0.517,
+        0.314,
+        0.718,
+        0.568
+      ]
+    ],
+    "file": "type-slab.webp",
+    "treatment": "green-ink"
+  },
+  "type-rounded": {
+    "page": 26,
+    "boxes": [
+      [
+        0.755,
+        0.314,
+        0.957,
+        0.568
+      ]
+    ],
+    "file": "type-rounded.webp",
+    "treatment": "green-ink"
+  },
+  "type-script": {
+    "page": 26,
+    "boxes": [
+      [
+        0.041,
+        0.68,
+        0.244,
+        0.934
+      ]
+    ],
+    "file": "type-script.webp",
+    "treatment": "green-ink"
+  },
+  "type-blackletter": {
+    "page": 26,
+    "boxes": [
+      [
+        0.279,
+        0.68,
+        0.48,
+        0.934
+      ]
+    ],
+    "file": "type-blackletter.webp",
+    "treatment": "green-ink"
+  },
+  "type-decorative": {
+    "page": 26,
+    "boxes": [
+      [
+        0.517,
+        0.68,
+        0.718,
+        0.934
+      ]
+    ],
+    "file": "type-decorative.webp",
+    "treatment": "green-ink"
+  },
+  "type-abstract": {
+    "page": 26,
+    "boxes": [
+      [
+        0.755,
+        0.68,
+        0.957,
+        0.934
+      ]
+    ],
+    "file": "type-abstract.webp",
+    "treatment": "green-ink"
+  },
+  "type-anatomy": {
+    "page": 25,
+    "boxes": [
+      [
+        0.429,
+        0.535,
+        0.943,
+        0.92
+      ]
+    ],
+    "file": "type-anatomy.webp",
+    "treatment": "green-ink"
+  },
+  "type-functional": {
+    "page": 27,
+    "boxes": [
+      [
+        0.043,
+        0.38,
+        0.495,
+        0.938
+      ]
+    ],
+    "file": "type-functional.webp",
+    "treatment": "green-ink"
+  },
+  "type-creative": {
+    "page": 27,
+    "boxes": [
+      [
+        0.543,
+        0.38,
+        0.956,
+        0.938
+      ]
+    ],
+    "file": "type-creative.webp",
+    "treatment": "green-ink"
+  },
+  "contrast-shape": {
+    "page": 29,
+    "boxes": [
+      [
+        0.041,
+        0.219,
+        0.207,
+        0.55
+      ]
+    ],
+    "file": "contrast-shape.webp",
+    "treatment": "green-ink"
+  },
+  "contrast-value": {
+    "page": 29,
+    "boxes": [
+      [
+        0.23,
+        0.219,
+        0.397,
+        0.55
+      ]
+    ],
+    "file": "contrast-value.webp",
+    "treatment": "green-ink"
+  },
+  "contrast-scale": {
+    "page": 29,
+    "boxes": [
+      [
+        0.418,
+        0.219,
+        0.584,
+        0.55
+      ]
+    ],
+    "file": "contrast-scale.webp",
+    "treatment": "green-ink"
+  },
+  "contrast-layout": {
+    "page": 29,
+    "boxes": [
+      [
+        0.794,
+        0.219,
+        0.96,
+        0.55
+      ]
+    ],
+    "file": "contrast-layout.webp",
+    "treatment": "green-ink"
+  },
+  "contrast-type": {
+    "page": 29,
+    "boxes": [
+      [
+        0.041,
+        0.61,
+        0.207,
+        0.94
+      ]
+    ],
+    "file": "contrast-type.webp",
+    "treatment": "green-ink"
+  },
+  "contrast-direction": {
+    "page": 29,
+    "boxes": [
+      [
+        0.418,
+        0.61,
+        0.584,
+        0.94
+      ]
+    ],
+    "file": "contrast-direction.webp",
+    "treatment": "green-ink"
+  },
+  "hierarchy-scale": {
+    "page": 31,
+    "boxes": [
+      [
+        0.041,
+        0.219,
+        0.207,
+        0.55
+      ]
+    ],
+    "file": "hierarchy-scale.webp",
+    "treatment": "green-ink"
+  },
+  "hierarchy-color": {
+    "page": 31,
+    "boxes": [
+      [
+        0.418,
+        0.219,
+        0.584,
+        0.55
+      ]
+    ],
+    "file": "hierarchy-color.webp",
+    "treatment": "green-ink"
+  },
+  "hierarchy-layer": {
+    "page": 31,
+    "boxes": [
+      [
+        0.607,
+        0.219,
+        0.772,
+        0.55
+      ]
+    ],
+    "file": "hierarchy-layer.webp",
+    "treatment": "green-ink"
+  },
+  "hierarchy-perspective": {
+    "page": 31,
+    "boxes": [
+      [
+        0.794,
+        0.219,
+        0.96,
+        0.55
+      ]
+    ],
+    "file": "hierarchy-perspective.webp",
+    "treatment": "green-ink"
+  },
+  "hierarchy-value": {
+    "page": 31,
+    "boxes": [
+      [
+        0.23,
+        0.611,
+        0.397,
+        0.941
+      ]
+    ],
+    "file": "hierarchy-value.webp",
+    "treatment": "green-ink"
+  },
+  "hierarchy-depth": {
+    "page": 31,
+    "boxes": [
+      [
+        0.607,
+        0.611,
+        0.772,
+        0.941
+      ]
+    ],
+    "file": "hierarchy-depth.webp",
+    "treatment": "green-ink"
+  },
+  "alignment-grid": {
+    "page": 34,
+    "boxes": [
+      [
+        0.042,
+        0.269,
+        0.204,
+        0.593
+      ],
+      [
+        0.228,
+        0.269,
+        0.39,
+        0.593
+      ]
+    ],
+    "file": "alignment-grid.webp",
+    "treatment": "green-ink"
+  },
+  "alignment-columns": {
+    "page": 34,
+    "boxes": [
+      [
+        0.609,
+        0.269,
+        0.77,
+        0.593
+      ]
+    ],
+    "file": "alignment-columns.webp",
+    "treatment": "green-ink"
+  },
+  "alignment-rotation": {
+    "page": 34,
+    "boxes": [
+      [
+        0.793,
+        0.626,
+        0.955,
+        0.939
+      ]
+    ],
+    "file": "alignment-rotation.webp",
+    "treatment": "green-ink"
+  },
+  "alignment-vertical": {
+    "page": 34,
+    "boxes": [
+      [
+        0.423,
+        0.626,
+        0.586,
+        0.939
+      ]
+    ],
+    "file": "alignment-vertical.webp",
+    "treatment": "green-ink"
+  },
+  "balance-symmetric": {
+    "page": 36,
+    "boxes": [
+      [
+        0.086,
+        0.303,
+        0.272,
+        0.897
+      ]
+    ],
+    "file": "balance-symmetric.webp",
+    "treatment": "green-ink"
+  },
+  "balance-asymmetric": {
+    "page": 36,
+    "boxes": [
+      [
+        0.403,
+        0.303,
+        0.59,
+        0.897
+      ]
+    ],
+    "file": "balance-asymmetric.webp",
+    "treatment": "green-ink"
+  },
+  "balance-radial": {
+    "page": 36,
+    "boxes": [
+      [
+        0.723,
+        0.303,
+        0.922,
+        0.897
+      ]
+    ],
+    "file": "balance-radial.webp",
+    "treatment": "green-ink"
+  },
+  "proximity-related": {
+    "page": 38,
+    "boxes": [
+      [
+        0.042,
+        0.34,
+        0.26,
+        0.776
+      ]
+    ],
+    "file": "proximity-related.webp",
+    "treatment": "green-ink"
+  },
+  "proximity-clear": {
+    "page": 38,
+    "boxes": [
+      [
+        0.277,
+        0.34,
+        0.496,
+        0.776
+      ]
+    ],
+    "file": "proximity-clear.webp",
+    "treatment": "green-ink"
+  },
+  "proximity-confused": {
+    "page": 38,
+    "boxes": [
+      [
+        0.508,
+        0.34,
+        0.725,
+        0.776
+      ]
+    ],
+    "file": "proximity-confused.webp",
+    "treatment": "green-ink"
+  },
+  "proximity-scattered": {
+    "page": 38,
+    "boxes": [
+      [
+        0.742,
+        0.34,
+        0.96,
+        0.776
+      ]
+    ],
+    "file": "proximity-scattered.webp",
+    "treatment": "green-ink"
+  }
+}

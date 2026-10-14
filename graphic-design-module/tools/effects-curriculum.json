@@ -1,0 +1,2368 @@
+{
+  "line": {
+    "visual": [
+      {
+        "id": "line-v-0",
+        "label": "Connect and map",
+        "clip": "line-connect",
+        "native": null,
+        "effect": "Branches show relationships.",
+        "notice": "Follow the shared trunk to the separate icons."
+      },
+      {
+        "id": "line-v-1",
+        "label": "Emphasise",
+        "clip": "line-emphasise",
+        "native": null,
+        "effect": "A rule singles out words.",
+        "notice": "The underline makes a selected phrase stand apart."
+      },
+      {
+        "id": "line-v-2",
+        "label": "Frame",
+        "clip": "line-frame",
+        "native": null,
+        "effect": "A border encloses one message.",
+        "notice": "The double frame gives the content a boundary."
+      },
+      {
+        "id": "line-v-3",
+        "label": "Organise",
+        "clip": "line-structure",
+        "native": null,
+        "effect": "Rules organise a sequence.",
+        "notice": "Each chapter number belongs beside its horizontal rule."
+      },
+      {
+        "id": "line-v-4",
+        "label": "Divide",
+        "clip": "line-divide",
+        "native": null,
+        "effect": "Rules separate editorial areas.",
+        "notice": "The news page uses lines between its sections."
+      },
+      {
+        "id": "line-v-5",
+        "label": "Decorate and direct",
+        "clip": "line-decorate",
+        "native": null,
+        "effect": "Repeated diagonals create rhythm and lead the eye.",
+        "notice": "The diagonal strokes occupy corners without enclosing the body text."
+      }
+    ],
+    "written": [
+      {
+        "id": "line-w-0",
+        "label": "Short sentences",
+        "graphic": "stops",
+        "example": [
+          "Rain fell.",
+          "Leaves shook.",
+          "We ran."
+        ],
+        "effect": "Each full stop separates a complete movement.",
+        "notice": "The three stops create a distinct pace; brevity does not always mean excitement."
+      },
+      {
+        "id": "line-w-1",
+        "label": "A cumulative sentence",
+        "graphic": "cumulative",
+        "example": [
+          "We reached the river,",
+          "tired from the climb,",
+          "hungry after the long walk."
+        ],
+        "effect": "The main clause arrives first; added details extend it.",
+        "notice": "The sentence is already complete at the first comma."
+      },
+      {
+        "id": "line-w-2",
+        "label": "A periodic sentence",
+        "graphic": "periodic",
+        "example": [
+          "After the rain stopped,",
+          "when the path was clear,",
+          "we crossed the bridge."
+        ],
+        "effect": "The main clause is delayed until the end.",
+        "notice": "The first two pieces prepare the reader; the last supplies the main action."
+      },
+      {
+        "id": "line-w-3",
+        "label": "Coordination",
+        "graphic": "coordination",
+        "example": [
+          "Mina opened the window,",
+          "and cool air filled the room."
+        ],
+        "effect": "A conjunction connects two independent clauses.",
+        "notice": "Each side can stand as a sentence; and joins their movements."
+      },
+      {
+        "id": "line-w-4",
+        "label": "Subordination",
+        "graphic": "subordinate",
+        "example": [
+          "Although it was late,",
+          "we stayed."
+        ],
+        "effect": "A dependent clause gives the main clause a condition or contrast.",
+        "notice": "Although introduces a clause that depends on the main statement."
+      },
+      {
+        "id": "line-w-5",
+        "label": "A deliberate fragment",
+        "graphic": "fragment",
+        "example": [
+          "Footsteps.",
+          "Closer now."
+        ],
+        "effect": "A fragment can isolate an impression in narrative or dialogue.",
+        "notice": "These are intentional fragments, not models of complete sentences for every task."
+      },
+      {
+        "id": "line-w-6",
+        "label": "A question",
+        "graphic": "question",
+        "example": [
+          "Did she hear us?"
+        ],
+        "effect": "A question opens an unresolved route for the reader.",
+        "notice": "The question mark identifies the sentence’s job; the text does not supply its answer."
+      }
+    ]
+  },
+  "color": {
+    "visual": [
+      {
+        "id": "color-v-0",
+        "label": "Monochromatic",
+        "clip": "color-mono",
+        "native": null,
+        "effect": "One hue varies in tint, shade, or lightness.",
+        "notice": "Each strip stays within one colour family."
+      },
+      {
+        "id": "color-v-1",
+        "label": "Analogous",
+        "clip": "color-analogous",
+        "native": null,
+        "effect": "Neighbouring hues create related variation.",
+        "notice": "The selected hues lie next to each other on this traditional wheel."
+      },
+      {
+        "id": "color-v-2",
+        "label": "Complementary",
+        "clip": "color-complementary",
+        "native": null,
+        "effect": "Opposite hues create a strong relationship of difference.",
+        "notice": "The wheel joins opposite sides. Intensity still depends on the chosen tones."
+      },
+      {
+        "id": "color-v-3",
+        "label": "Triadic",
+        "clip": "color-triadic",
+        "native": null,
+        "effect": "Three spaced hues distribute colour variety.",
+        "notice": "Three selected points form a triangle around the wheel."
+      },
+      {
+        "id": "color-v-4",
+        "label": "Warm and cool",
+        "clip": "color-warm-cool",
+        "native": null,
+        "effect": "Hue groups offer different palette directions.",
+        "notice": "Reds and oranges sit opposite blues and blue-greens; mood depends on context."
+      },
+      {
+        "id": "color-v-5",
+        "label": "Saturation",
+        "clip": null,
+        "native": "saturation",
+        "effect": "Muted and vivid colours have different intensity.",
+        "notice": "The hue stays while saturation changes."
+      },
+      {
+        "id": "color-v-6",
+        "label": "Value",
+        "clip": null,
+        "native": "value",
+        "effect": "Dark and light values change legibility and focus.",
+        "notice": "The hue stays while the swatches get lighter."
+      }
+    ],
+    "written": [
+      {
+        "id": "color-w-0",
+        "label": "Intensity",
+        "graphic": "word-pair",
+        "example": [
+          "bright",
+          "radiant"
+        ],
+        "effect": "Radiant suggests light spreading out with greater intensity.",
+        "notice": "The word art expands in light and detail.",
+        "pair": "bright"
+      },
+      {
+        "id": "color-w-1",
+        "label": "Size made precise",
+        "graphic": "word-pair",
+        "example": [
+          "small",
+          "tiny"
+        ],
+        "effect": "Tiny narrows the description toward a very small size.",
+        "notice": "The richer word contracts rather than becoming bigger.",
+        "pair": "small"
+      },
+      {
+        "id": "color-w-2",
+        "label": "Connotation",
+        "graphic": "word-pair",
+        "example": [
+          "empty",
+          "deserted"
+        ],
+        "effect": "Deserted can suggest absence or abandonment in this scene.",
+        "notice": "The wording adds an association beyond an unoccupied space.",
+        "pair": "empty"
+      },
+      {
+        "id": "color-w-3",
+        "label": "A more specific verb",
+        "graphic": "heavy-word",
+        "example": [
+          "walked",
+          "trudged"
+        ],
+        "effect": "Trudged describes walking with effort.",
+        "notice": "The heavier, downward movement visualises the added sense of effort."
+      },
+      {
+        "id": "color-w-4",
+        "label": "Sound in a reporting verb",
+        "graphic": "whisper-word",
+        "example": [
+          "said",
+          "whispered"
+        ],
+        "effect": "Whispered tells us how the words were spoken.",
+        "notice": "The lower, quieter presentation shows the added information; this is a choice about delivery, not just decoration."
+      },
+      {
+        "id": "color-w-5",
+        "label": "Register",
+        "graphic": "register",
+        "example": [
+          "I need a hand.",
+          "I need assistance."
+        ],
+        "effect": "Different wording can suit different situations and voices.",
+        "notice": "Assistance sounds more formal here; the central request remains close."
+      }
+    ]
+  },
+  "shape": {
+    "visual": [
+      {
+        "id": "shape-v-0",
+        "label": "Outline, fill, and cut-out",
+        "clip": "shape-boundaries",
+        "native": null,
+        "effect": "A shape can be drawn by its edge, its filled area, or the surrounding space.",
+        "notice": "The same circular outline appears in three different ways."
+      },
+      {
+        "id": "shape-v-1",
+        "label": "Geometric shapes",
+        "clip": "shape-geometric",
+        "native": null,
+        "effect": "Regular shapes provide recognisable building blocks.",
+        "notice": "Look for straight edges, circles, repeated angles, and symmetry."
+      },
+      {
+        "id": "shape-v-2",
+        "label": "Organic shapes",
+        "clip": "shape-organic",
+        "native": null,
+        "effect": "Irregular curves create varied silhouettes.",
+        "notice": "These contours resemble flowing or natural forms rather than regular polygons."
+      },
+      {
+        "id": "shape-v-3",
+        "label": "Shape as a symbol",
+        "clip": "shape-symbol",
+        "native": null,
+        "effect": "A silhouette can carry a recognisable identity.",
+        "notice": "The marks remain distinct even without colour. Familiarity also matters."
+      },
+      {
+        "id": "shape-v-4",
+        "label": "Text as a silhouette",
+        "clip": "shape-silhouette",
+        "native": null,
+        "effect": "Many small marks build one larger outline.",
+        "notice": "The digits follow the outer circular contour."
+      },
+      {
+        "id": "shape-v-5",
+        "label": "Build an illustration",
+        "clip": "shape-build",
+        "native": null,
+        "effect": "Facets combine into a recognisable figure.",
+        "notice": "Small geometric areas together suggest the head and torso."
+      },
+      {
+        "id": "shape-v-6",
+        "label": "Decorative construction",
+        "clip": "shape-decorate",
+        "native": null,
+        "effect": "Simple parts build a more elaborate sign.",
+        "notice": "Bars, circles, and arcs become a decorative numeral."
+      },
+      {
+        "id": "shape-v-7",
+        "label": "Shape as pattern",
+        "clip": "shape-pattern",
+        "native": null,
+        "effect": "A repeated shape makes a surface pattern.",
+        "notice": "The same angular unit tiles across the field."
+      }
+    ],
+    "written": [
+      {
+        "id": "shape-w-0",
+        "label": "Letter",
+        "graphic": "document",
+        "example": [],
+        "effect": "Date, greeting, body, closing, and signature give a letter a familiar form.",
+        "notice": "The placeholder words can change while the layout stays recognisable.",
+        "form": "letter"
+      },
+      {
+        "id": "shape-w-1",
+        "label": "Haiku template",
+        "graphic": "document",
+        "example": [],
+        "effect": "A compact three-line layout makes a haiku-style template visible.",
+        "notice": "This shows layout. The traditional English 5–7–5 syllable pattern needs real words; three lines alone do not identify every haiku.",
+        "form": "haiku"
+      },
+      {
+        "id": "shape-w-2",
+        "label": "Limerick template",
+        "graphic": "document",
+        "example": [],
+        "effect": "Five lines, with shorter third and fourth lines, suggest the limerick’s familiar outline.",
+        "notice": "AABBA is a rhyme plan. Placeholder text demonstrates the planned shape, not actual rhyme or metre.",
+        "form": "limerick"
+      },
+      {
+        "id": "shape-w-3",
+        "label": "CV",
+        "graphic": "document",
+        "example": [],
+        "effect": "A name, contact line, and organised experience sections make a CV recognisable.",
+        "notice": "Repeated entries and dates give the information a scannable shape; CV conventions vary.",
+        "form": "cv"
+      },
+      {
+        "id": "shape-w-4",
+        "label": "Advertisement",
+        "graphic": "document",
+        "example": [],
+        "effect": "A headline, focal image, brief message, and action line create one common ad layout.",
+        "notice": "This is one useful template, rather than a single required form for all ads.",
+        "form": "ad"
+      },
+      {
+        "id": "shape-w-5",
+        "label": "Newspaper article",
+        "graphic": "document",
+        "example": [],
+        "effect": "Headline, deck, byline, and columns give this article a news-page shape.",
+        "notice": "The wide headline sits above narrower continuous reading columns.",
+        "form": "newspaper"
+      },
+      {
+        "id": "shape-w-6",
+        "label": "Scientific article",
+        "graphic": "document",
+        "example": [],
+        "effect": "Title, authors, abstract, and organised sections create one journal-article template.",
+        "notice": "This IMRaD-style layout is common in empirical research, but journal and discipline conventions vary.",
+        "form": "journal"
+      },
+      {
+        "id": "shape-w-7",
+        "label": "Dramatic dialogue",
+        "graphic": "document",
+        "example": [],
+        "effect": "Speaker names and turns make a script recognisable.",
+        "notice": "Indentation and repeated speaker positions distinguish turns from prose narration.",
+        "form": "dialogue"
+      },
+      {
+        "id": "shape-w-8",
+        "label": "Concrete poem",
+        "graphic": "document",
+        "example": [],
+        "effect": "The arrangement of words makes a visible silhouette.",
+        "notice": "The words widen through light and narrow toward here, making a leaf-like silhouette.",
+        "form": "concrete"
+      },
+      {
+        "id": "shape-w-9",
+        "label": "Oulipo snowball",
+        "graphic": "snowball",
+        "example": [
+          "I",
+          "am",
+          "now",
+          "just",
+          "small",
+          "enough"
+        ],
+        "effect": "A rule makes each successive word one letter longer.",
+        "notice": "Our original six-line example grows through 1, 2, 3, 4, 5, and 6 letters; punctuation is not counted.",
+        "form": "snowball"
+      }
+    ]
+  },
+  "texture": {
+    "visual": [
+      {
+        "id": "texture-v-0",
+        "label": "Environmental surfaces",
+        "clip": "texture-environment",
+        "native": null,
+        "effect": "A depicted surface suggests a material or environment.",
+        "notice": "Cloud, grain, cracks, and particles have different visible marks."
+      },
+      {
+        "id": "texture-v-1",
+        "label": "Biological surfaces",
+        "clip": "texture-biological",
+        "native": null,
+        "effect": "Marks suggest living surfaces.",
+        "notice": "Stripes, spots, feather lines, and leaf veins organise the surface differently."
+      },
+      {
+        "id": "texture-v-2",
+        "label": "Made textures",
+        "clip": "texture-made",
+        "native": null,
+        "effect": "Designed marks can suggest a material or process.",
+        "notice": "Compare a swirl, camouflage, halftone dots, and brush marks."
+      },
+      {
+        "id": "texture-v-3",
+        "label": "Natural pattern",
+        "clip": "texture-natural-pattern",
+        "native": null,
+        "effect": "Repeated structures can come from living or environmental forms.",
+        "notice": "The wing, cells, clustered forms, and scales repeat in different ways."
+      },
+      {
+        "id": "texture-v-4",
+        "label": "Designed pattern",
+        "clip": "texture-made-pattern",
+        "native": null,
+        "effect": "A repeat unit creates regular texture.",
+        "notice": "Check the repeated checks, tiles, and ornaments."
+      },
+      {
+        "id": "texture-v-5",
+        "label": "A repeating motif",
+        "clip": "texture-motif",
+        "native": null,
+        "effect": "One repeat unit links the whole field.",
+        "notice": "Trace one houndstooth unit before looking at the complete pattern."
+      }
+    ],
+    "written": [
+      {
+        "id": "texture-w-0",
+        "label": "Alliteration",
+        "graphic": "sound",
+        "example": [
+          "Silver streams slide slowly."
+        ],
+        "effect": "Repeated initial /s/ sounds link the words.",
+        "notice": "The highlighted beginnings return like notes.",
+        "sound": "s",
+        "features": [
+          "S",
+          "s"
+        ]
+      },
+      {
+        "id": "texture-w-1",
+        "label": "Assonance",
+        "graphic": "sound",
+        "example": [
+          "Low moans rolled over the road."
+        ],
+        "effect": "The repeated vowel sound in low, moans, and rolled links the phrase.",
+        "notice": "Listen for the shared /oʊ/ sound in a common pronunciation.",
+        "features": [
+          "Low",
+          "moans",
+          "rolled"
+        ],
+        "sound": "oʊ"
+      },
+      {
+        "id": "texture-w-2",
+        "label": "Consonance",
+        "graphic": "sound",
+        "example": [
+          "Tap, step, stop."
+        ],
+        "effect": "The repeated final /p/ sound links words with different vowels.",
+        "notice": "The ends, rather than only the beginnings, carry the repeated consonant.",
+        "features": [
+          "p"
+        ],
+        "sound": "p"
+      },
+      {
+        "id": "texture-w-3",
+        "label": "Abrupt clusters",
+        "graphic": "rough-sound",
+        "example": [
+          "Cracked carts clattered."
+        ],
+        "effect": "Stops and consonant clusters make this particular phrase sound abrupt.",
+        "notice": "The /kr/ and /kl/ beginnings require a different articulation from long flowing vowels."
+      },
+      {
+        "id": "texture-w-4",
+        "label": "Flowing phrasing",
+        "graphic": "smooth-sound",
+        "example": [
+          "Low waves rolled away."
+        ],
+        "effect": "Longer vowels and connected phrasing support flow in this example.",
+        "notice": "The connected word strips travel over one continuous wave."
+      },
+      {
+        "id": "texture-w-5",
+        "label": "Onomatopoeia",
+        "graphic": "sound-words",
+        "example": [
+          "Tap.",
+          "Tap.",
+          "Crack!"
+        ],
+        "effect": "Sound-evoking words make the event audible in imagination.",
+        "notice": "The typography distinguishes small repeated taps from the sharper final sound."
+      },
+      {
+        "id": "texture-w-6",
+        "label": "Phrase cadence",
+        "graphic": "cadence",
+        "example": [
+          "The rain stopped,",
+          "the clouds opened,",
+          "and sunlight reached the path."
+        ],
+        "effect": "Phrase boundaries organise the sentence into a cadence.",
+        "notice": "The returns follow the phrase groups, rather than a claim that all prose has a musical metre."
+      }
+    ]
+  },
+  "form": {
+    "visual": [
+      {
+        "id": "form-v-0",
+        "label": "Flat shape to form",
+        "clip": "form-flat-depth",
+        "native": null,
+        "effect": "Shaded faces make a flat outline suggest volume.",
+        "notice": "The second triangular figure has separate light and dark planes."
+      },
+      {
+        "id": "form-v-1",
+        "label": "Geometric forms",
+        "clip": "form-geometric",
+        "native": null,
+        "effect": "Planes and regular volumes suggest solid construction.",
+        "notice": "Look at the block letters and faceted structures."
+      },
+      {
+        "id": "form-v-2",
+        "label": "Organic forms",
+        "clip": "form-organic",
+        "native": null,
+        "effect": "Curving volumes suggest softer or irregular solids.",
+        "notice": "Highlights and shading follow the curved surfaces."
+      },
+      {
+        "id": "form-v-3",
+        "label": "Facets",
+        "clip": "form-facet",
+        "native": null,
+        "effect": "Changes in tone distinguish planes.",
+        "notice": "Adjacent triangular faces have different values."
+      },
+      {
+        "id": "form-v-4",
+        "label": "Surface ribs",
+        "clip": "form-ribbed",
+        "native": null,
+        "effect": "Repeated shading follows the object’s curvature.",
+        "notice": "The ribs wrap around the volume rather than lying flat."
+      },
+      {
+        "id": "form-v-5",
+        "label": "Type with depth",
+        "clip": "form-type",
+        "native": null,
+        "effect": "Extrusion and shading turn a letter into an object.",
+        "notice": "The B has a front face, side faces, and a cast shadow."
+      }
+    ],
+    "written": [
+      {
+        "id": "form-w-0",
+        "label": "Story arc",
+        "graphic": "story-arc",
+        "example": [
+          "The radio stopped.",
+          "Ben could not fix it.",
+          "He asked his friend for help.",
+          "They found a loose wire.",
+          "The music played again."
+        ],
+        "effect": "A problem, growing difficulty, turning point, and outcome give events an underlying arc.",
+        "notice": "The request changes what happens next; the ending answers the opening problem.",
+        "roles": [
+          "Problem",
+          "Difficulty",
+          "Turning point",
+          "Response",
+          "Outcome"
+        ]
+      },
+      {
+        "id": "form-w-1",
+        "label": "Chiasm",
+        "graphic": "chiasm",
+        "example": [
+          "Ben was afraid.",
+          "He called for help.",
+          "His friend came.",
+          "His friend helped him.",
+          "Ben was not afraid."
+        ],
+        "effect": "Themes return in reverse order around a central event: A–B–X–B′–A′.",
+        "notice": "Afraid returns as not afraid; help returns as helped. The story remains in logical order.",
+        "features": [
+          "afraid",
+          "help",
+          "helped"
+        ],
+        "roles": [
+          "A",
+          "B",
+          "X",
+          "B′",
+          "A′"
+        ]
+      },
+      {
+        "id": "form-w-2",
+        "label": "Framed narrative",
+        "graphic": "frame-story",
+        "example": [
+          "I told my friend about the storm.",
+          "The rain came through our roof.",
+          "We moved the beds and stayed together.",
+          "My friend listened without speaking."
+        ],
+        "effect": "An outer situation encloses the story being told.",
+        "notice": "The telling and listening frame the remembered events.",
+        "roles": [
+          "Outer frame",
+          "Inner story",
+          "Inner story",
+          "Outer frame"
+        ]
+      },
+      {
+        "id": "form-w-3",
+        "label": "Flashback",
+        "graphic": "flashback",
+        "example": [
+          "Mina found the old key.",
+          "Years ago, her father had given it to her.",
+          "Now she knew which door to try."
+        ],
+        "effect": "A return to the past gives a present event new significance.",
+        "notice": "Years ago moves back in story time; now brings the reader to the present.",
+        "roles": [
+          "Present",
+          "Past",
+          "Present"
+        ]
+      },
+      {
+        "id": "form-w-4",
+        "label": "Parallel story strands",
+        "graphic": "story-strands",
+        "example": [
+          "Mina waited by the gate.",
+          "Ben searched for the key.",
+          "Mina heard footsteps.",
+          "Ben ran toward the gate.",
+          "They met at last."
+        ],
+        "effect": "Alternating strands let separate actions develop before they converge.",
+        "notice": "Mina and Ben occupy different strands until the shared final event.",
+        "roles": [
+          "Mina",
+          "Ben",
+          "Mina",
+          "Ben",
+          "Together"
+        ],
+        "groups": [
+          0,
+          1,
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "id": "form-w-5",
+        "label": "Turning point",
+        "graphic": "turning-point",
+        "example": [
+          "Ben planned to leave.",
+          "Then he heard a child crying.",
+          "He stayed to help."
+        ],
+        "effect": "A decisive event changes the direction of the action.",
+        "notice": "The middle event turns leaving into staying; it is not simply a decorative central line.",
+        "roles": [
+          "Before",
+          "Change",
+          "After"
+        ]
+      }
+    ]
+  },
+  "space": {
+    "visual": [
+      {
+        "id": "space-v-0",
+        "label": "Figure and ground",
+        "clip": "space-figure-ground",
+        "native": null,
+        "effect": "Occupied and empty areas can define the same silhouette.",
+        "notice": "Compare the dark capsule with the capsule-shaped opening."
+      },
+      {
+        "id": "space-v-1",
+        "label": "Separate and gather",
+        "clip": "space-proximity",
+        "native": null,
+        "effect": "Gaps change which marks belong together.",
+        "notice": "The separated marks become a gathered arrangement."
+      },
+      {
+        "id": "space-v-2",
+        "label": "Overlap",
+        "clip": "space-overlap",
+        "native": null,
+        "effect": "Shared areas imply layers and relationships.",
+        "notice": "Crossing bars create different occupied and empty spaces."
+      },
+      {
+        "id": "space-v-3",
+        "label": "Transparency",
+        "clip": "space-opacity",
+        "native": null,
+        "effect": "Partial transparency reveals shared areas.",
+        "notice": "Overlaps remain visible through the translucent marks."
+      },
+      {
+        "id": "space-v-4",
+        "label": "Shadow and layer",
+        "clip": "space-shadow",
+        "native": null,
+        "effect": "Shadows suggest which shape sits above another.",
+        "notice": "The shadow separates the front crossbar from the vertical bar."
+      },
+      {
+        "id": "space-v-5",
+        "label": "Depth through scale",
+        "clip": "space-depth",
+        "native": null,
+        "effect": "Changing size and value can suggest distance.",
+        "notice": "The bars decrease in size or contrast across the sequence."
+      }
+    ],
+    "written": [
+      {
+        "id": "space-w-0",
+        "label": "Ellipsis: trailing off",
+        "graphic": "ellipsis",
+        "example": [
+          "“I thought you might…”"
+        ],
+        "effect": "An ellipsis can leave a spoken thought unfinished.",
+        "notice": "The three dots allow the sentence to trail away; they do not state the missing ending."
+      },
+      {
+        "id": "space-w-1",
+        "label": "Dash: interruption",
+        "graphic": "interruption",
+        "example": [
+          "“I was going to—”",
+          "“We have to leave.”"
+        ],
+        "effect": "A dash can mark an abrupt cut-off.",
+        "notice": "The second voice enters before the first thought is completed."
+      },
+      {
+        "id": "space-w-2",
+        "label": "Paragraph break",
+        "graphic": "paragraph-gap",
+        "example": [
+          "He heard a voice inside. His hand fell.",
+          "He waited."
+        ],
+        "effect": "A blank interval can give the last action room and attention.",
+        "notice": "The words stay in order; the gap changes their grouping and pace."
+      },
+      {
+        "id": "space-w-3",
+        "label": "Scene break",
+        "graphic": "scene-break",
+        "example": [
+          "The last train left the city.",
+          "At dawn, Mina woke beside the sea."
+        ],
+        "effect": "A marked gap can signal a change of time or scene.",
+        "notice": "The separated blocks belong to different moments."
+      },
+      {
+        "id": "space-w-4",
+        "label": "End-stopped line",
+        "graphic": "end-stop",
+        "example": [
+          "The door was closed.",
+          "The room was still."
+        ],
+        "effect": "A line ending and punctuation can work together as a stop.",
+        "notice": "Each line ends with a completed sentence."
+      },
+      {
+        "id": "space-w-5",
+        "label": "Enjambment",
+        "graphic": "enjambment",
+        "example": [
+          "She held the cup",
+          "until her hands grew warm."
+        ],
+        "effect": "A grammatical thought can continue over the line break.",
+        "notice": "The line break does not end the sentence; the connection crosses it."
+      },
+      {
+        "id": "space-w-6",
+        "label": "Omitted reply",
+        "graphic": "omission",
+        "example": [
+          "“Will you come back?”",
+          "He looked at the road."
+        ],
+        "effect": "An unanswered question leaves a meaningful gap.",
+        "notice": "The action is given, but his answer is withheld; several interpretations remain possible."
+      },
+      {
+        "id": "space-w-7",
+        "label": "Parenthetical pause",
+        "graphic": "parenthesis",
+        "example": [
+          "She came",
+          "as she had promised",
+          "before dark."
+        ],
+        "effect": "An aside can momentarily step out of the main sentence.",
+        "notice": "The parenthetical remark adds information while the main sentence continues."
+      },
+      {
+        "id": "space-w-8",
+        "label": "Reading between the lines",
+        "graphic": "ghost",
+        "example": [
+          "Mina glances at her guest’s coat.",
+          "“You’re leaving already?”"
+        ],
+        "effect": "Literal words can support more than one possible implication.",
+        "notice": "The context supports possible wishes or concerns; no one ghost thought is guaranteed.",
+        "ghosts": [
+          "I hoped you’d stay.",
+          "I thought we had more time.",
+          "Have I upset you?"
+        ]
+      },
+      {
+        "id": "space-w-9",
+        "label": "Gesture and words",
+        "graphic": "ghost",
+        "example": [
+          "“I’m fine,” Mina said.",
+          "She folded the letter again."
+        ],
+        "effect": "An action can complicate the spoken message.",
+        "notice": "The repeated folding may invite concern, but it does not prove what she feels.",
+        "ghosts": [
+          "I’m worried.",
+          "I don’t want to discuss it."
+        ]
+      },
+      {
+        "id": "space-w-10",
+        "label": "Indirect request",
+        "graphic": "ghost",
+        "example": [
+          "The window stood open.",
+          "“It’s cold in here,” Mina said."
+        ],
+        "effect": "Context can make a statement function as a request.",
+        "notice": "Please close the window is a plausible inference, rather than the literal wording.",
+        "ghosts": [
+          "Could you close the window?"
+        ]
+      },
+      {
+        "id": "space-w-11",
+        "label": "Possible irony",
+        "graphic": "ghost",
+        "example": [
+          "Rain flooded the road.",
+          "“Wonderful weather,” Mina said."
+        ],
+        "effect": "The situation can make apparently positive words ironic.",
+        "notice": "Tone would help confirm whether she is being ironic.",
+        "ghosts": [
+          "This weather is awful."
+        ]
+      },
+      {
+        "id": "space-w-12",
+        "label": "Understatement",
+        "graphic": "understatement",
+        "example": [
+          "Water covered the floor.",
+          "“It’s a little wet,” Mina said."
+        ],
+        "effect": "The wording deliberately presents less intensity than the situation suggests.",
+        "notice": "A little contrasts with the large amount of water shown in the context."
+      },
+      {
+        "id": "space-w-13",
+        "label": "Different knowledge",
+        "graphic": "knowledge",
+        "example": [
+          "The key is inside the coat.",
+          "“The key is gone,” Mina said."
+        ],
+        "effect": "A reader can know something that a character does not.",
+        "notice": "The separate layers show reader knowledge and character belief.",
+        "ghosts": [
+          "The reader knows where it is."
+        ]
+      }
+    ]
+  },
+  "typography": {
+    "visual": [
+      {
+        "id": "typography-v-0",
+        "label": "Sans serif",
+        "clip": "type-sans",
+        "native": null,
+        "effect": "Plain finishing strokes create one type treatment.",
+        "notice": "This R has no serif at the ends of its strokes."
+      },
+      {
+        "id": "typography-v-1",
+        "label": "Serif",
+        "clip": "type-serif",
+        "native": null,
+        "effect": "Finishing strokes change the letter’s detail.",
+        "notice": "Notice the serifs on the R’s stem."
+      },
+      {
+        "id": "typography-v-2",
+        "label": "Slab serif",
+        "clip": "type-slab",
+        "native": null,
+        "effect": "Broad serifs give the letter a different texture and weight.",
+        "notice": "The finishing strokes are thick and block-like."
+      },
+      {
+        "id": "typography-v-3",
+        "label": "Rounded",
+        "clip": "type-rounded",
+        "native": null,
+        "effect": "Rounded corners soften the contour of the letter.",
+        "notice": "The outside and inside corners are rounded."
+      },
+      {
+        "id": "typography-v-4",
+        "label": "Script",
+        "clip": "type-script",
+        "native": null,
+        "effect": "Connected, flowing strokes suggest a written gesture.",
+        "notice": "The R uses a looping stroke rather than a plain stem."
+      },
+      {
+        "id": "typography-v-5",
+        "label": "Blackletter",
+        "clip": "type-blackletter",
+        "native": null,
+        "effect": "Broken and angular strokes create a dense type texture.",
+        "notice": "The R is built from sharp transitions and ornamental strokes."
+      },
+      {
+        "id": "typography-v-6",
+        "label": "Decorative and abstract",
+        "clip": "type-decorative",
+        "native": null,
+        "effect": "A letter can also act as an expressive image.",
+        "notice": "Decoration changes the inside and outside of the R."
+      },
+      {
+        "id": "typography-v-7",
+        "label": "Anatomy",
+        "clip": "type-anatomy",
+        "native": null,
+        "effect": "Named letter parts help us describe typography precisely.",
+        "notice": "The guides identify the stem, counter, serif, and reference lines."
+      },
+      {
+        "id": "typography-v-8",
+        "label": "Functional typography",
+        "clip": "type-functional",
+        "native": null,
+        "effect": "Type organises reading as well as displaying words.",
+        "notice": "Headings, columns, and scale give these pages different reading routes."
+      },
+      {
+        "id": "typography-v-9",
+        "label": "Creative typography",
+        "clip": "type-creative",
+        "native": null,
+        "effect": "Type can become a composition or image.",
+        "notice": "The letter forms are rotated, layered, or given depth."
+      }
+    ],
+    "written": [
+      {
+        "id": "typography-w-0",
+        "label": "Contrastive stress",
+        "graphic": "stress",
+        "example": [
+          "She said she had seen HIM leave."
+        ],
+        "effect": "Stress can correct which person was seen.",
+        "notice": "The noun/pronoun is foregrounded; a different stressed word would change the contrast.",
+        "features": [
+          "HIM"
+        ]
+      },
+      {
+        "id": "typography-w-1",
+        "label": "Italics for inner thought",
+        "graphic": "inner-thought",
+        "example": [
+          "She smiled.",
+          "Not again, she thought."
+        ],
+        "effect": "A writer can use a type treatment to distinguish a thought from narration.",
+        "notice": "This is one convention for presenting thought, not a compulsory format."
+      },
+      {
+        "id": "typography-w-2",
+        "label": "Emphatic repetition",
+        "graphic": "stress",
+        "example": [
+          "No. No. NO."
+        ],
+        "effect": "A growing type treatment can represent increasing emphasis.",
+        "notice": "The words repeat while their presentation becomes more forceful.",
+        "features": [
+          "NO"
+        ]
+      },
+      {
+        "id": "typography-w-3",
+        "label": "Different voices",
+        "graphic": "voices",
+        "example": [
+          "“Stay,” Mina said.",
+          "“Only a moment,” Leo replied."
+        ],
+        "effect": "Distinct presentation can help a reader distinguish speakers.",
+        "notice": "Turn position and type treatment mark the voices; fonts do not determine personality."
+      },
+      {
+        "id": "typography-w-4",
+        "label": "Quoted words",
+        "graphic": "quotation",
+        "example": [
+          "Mina read the note:",
+          "“Meet me at dawn.”"
+        ],
+        "effect": "Quotation marks identify words presented as someone’s wording.",
+        "notice": "The quoted message is framed inside the surrounding narration."
+      },
+      {
+        "id": "typography-w-5",
+        "label": "Headings and emphasis",
+        "graphic": "heading",
+        "example": [
+          "Before the journey",
+          "Mina packed a map, water, and a torch."
+        ],
+        "effect": "A heading signals the topic and makes a section easier to find.",
+        "notice": "The headline and body have distinct jobs; bold type alone does not supply an argument."
+      }
+    ]
+  },
+  "contrast": {
+    "visual": [
+      {
+        "id": "contrast-v-0",
+        "label": "Shape difference",
+        "clip": "contrast-shape",
+        "native": null,
+        "effect": "Unlike contours make a comparison visible.",
+        "notice": "A smooth circle sits above an angular shape."
+      },
+      {
+        "id": "contrast-v-1",
+        "label": "Value difference",
+        "clip": "contrast-value",
+        "native": null,
+        "effect": "Light and dark values distinguish marks.",
+        "notice": "The darker central form stands apart from the lighter surrounding marks."
+      },
+      {
+        "id": "contrast-v-2",
+        "label": "Scale difference",
+        "clip": "contrast-scale",
+        "native": null,
+        "effect": "A size difference changes emphasis.",
+        "notice": "The same horizontal direction remains while stroke size changes."
+      },
+      {
+        "id": "contrast-v-3",
+        "label": "Order and disorder",
+        "clip": "contrast-layout",
+        "native": null,
+        "effect": "An arrangement can contrast with another arrangement.",
+        "notice": "The upper squares form a grid; the lower squares are scattered."
+      },
+      {
+        "id": "contrast-v-4",
+        "label": "Type contrast",
+        "clip": "contrast-type",
+        "native": null,
+        "effect": "Differences in type treatment separate text roles.",
+        "notice": "Compare headings, body copy, and the quotation."
+      },
+      {
+        "id": "contrast-v-5",
+        "label": "Direction and type",
+        "clip": "contrast-direction",
+        "native": null,
+        "effect": "Rotation and scale create strong visual differences.",
+        "notice": "Large horizontal words contrast with smaller rotated text."
+      }
+    ],
+    "written": [
+      {
+        "id": "contrast-w-0",
+        "label": "Antithesis",
+        "graphic": "antithesis",
+        "example": [
+          "Her pockets were empty;",
+          "her notebook was full."
+        ],
+        "effect": "Opposed ideas in a matching clause pattern make the contrast clear.",
+        "notice": "Empty and full occupy corresponding positions.",
+        "features": [
+          "empty",
+          "full"
+        ]
+      },
+      {
+        "id": "contrast-w-1",
+        "label": "Juxtaposition",
+        "graphic": "juxtaposition",
+        "example": [
+          "A busy road ran beside a quiet garden."
+        ],
+        "effect": "Adjacent unlike images invite comparison.",
+        "notice": "Busy and quiet are put close enough for the reader to compare them.",
+        "features": [
+          "busy",
+          "quiet"
+        ]
+      },
+      {
+        "id": "contrast-w-2",
+        "label": "Long, then short",
+        "graphic": "long-short",
+        "example": [
+          "We walked along the wet path, past the empty houses, and down toward the river.",
+          "Then we stopped."
+        ],
+        "effect": "A short sentence can land differently after a longer one.",
+        "notice": "The unequal sentence lengths make the change of pace visible."
+      },
+      {
+        "id": "contrast-w-3",
+        "label": "Although",
+        "graphic": "subordinate",
+        "example": [
+          "Although the room was crowded,",
+          "Mina felt alone."
+        ],
+        "effect": "A concessive clause contrasts an expectation with what happens.",
+        "notice": "Crowded and alone describe different sides of the situation."
+      },
+      {
+        "id": "contrast-w-4",
+        "label": "However",
+        "graphic": "turn",
+        "example": [
+          "The map was clear.",
+          "However, the path had disappeared."
+        ],
+        "effect": "A connective marks a turn between statements.",
+        "notice": "However signals that the second statement complicates the first."
+      },
+      {
+        "id": "contrast-w-5",
+        "label": "Expectation and reversal",
+        "graphic": "reversal",
+        "example": [
+          "She opened the large gift.",
+          "Inside was a tiny key."
+        ],
+        "effect": "A reveal can contrast with a reader’s expectation.",
+        "notice": "Large and tiny are arranged as setup and reveal, rather than as a universal rule about surprises."
+      }
+    ]
+  },
+  "hierarchy": {
+    "visual": [
+      {
+        "id": "hierarchy-v-0",
+        "label": "Scale leads",
+        "clip": "hierarchy-scale",
+        "native": null,
+        "effect": "Large marks can lead attention before small ones.",
+        "notice": "Follow the descending widths and weights."
+      },
+      {
+        "id": "hierarchy-v-1",
+        "label": "Colour leads",
+        "clip": "hierarchy-color",
+        "native": null,
+        "effect": "A tonal difference can prioritise selected marks.",
+        "notice": "The darker horizontal bars stand apart from the lighter vertical ones."
+      },
+      {
+        "id": "hierarchy-v-2",
+        "label": "Layer leads",
+        "clip": "hierarchy-layer",
+        "native": null,
+        "effect": "Overlap and shadow distinguish foreground from background.",
+        "notice": "The crossbar appears in front of the vertical shape."
+      },
+      {
+        "id": "hierarchy-v-3",
+        "label": "Perspective leads",
+        "clip": "hierarchy-perspective",
+        "native": null,
+        "effect": "Depth cues arrange relative prominence.",
+        "notice": "The nearby-looking bars have more visual presence."
+      },
+      {
+        "id": "hierarchy-v-4",
+        "label": "Value leads",
+        "clip": "hierarchy-value",
+        "native": null,
+        "effect": "One darker item gains emphasis in a field of lighter items.",
+        "notice": "Locate the dark dot before scanning the rest."
+      },
+      {
+        "id": "hierarchy-v-5",
+        "label": "Depth leads",
+        "clip": "hierarchy-depth",
+        "native": null,
+        "effect": "Sharpness and shadow separate one focus from the surrounding field.",
+        "notice": "The sharply visible bar contrasts with more distant-looking marks."
+      }
+    ],
+    "written": [
+      {
+        "id": "hierarchy-w-0",
+        "label": "Point before support",
+        "graphic": "argument",
+        "example": [
+          "Trees can cool a street.",
+          "Their leaves provide shade.",
+          "The path beneath this tree feels cooler."
+        ],
+        "effect": "A main point gives the supporting information a place to belong.",
+        "notice": "The point, reason, and example have distinct roles.",
+        "roles": [
+          "Point",
+          "Reason",
+          "Example"
+        ]
+      },
+      {
+        "id": "hierarchy-w-1",
+        "label": "Delayed main point",
+        "graphic": "periodic",
+        "example": [
+          "After three missed buses,",
+          "after a long walk in the rain,",
+          "Mina finally reached home."
+        ],
+        "effect": "The main event can arrive after its preparation.",
+        "notice": "The last part supplies the action that the opening has held back."
+      },
+      {
+        "id": "hierarchy-w-2",
+        "label": "Background and foreground",
+        "graphic": "background",
+        "example": [
+          "While the room grew darker,",
+          "Mina lit a candle."
+        ],
+        "effect": "A subordinate clause can supply background for the main action.",
+        "notice": "The background remains visible while the main action gains emphasis."
+      },
+      {
+        "id": "hierarchy-w-3",
+        "label": "Known to new",
+        "graphic": "theme-chain",
+        "example": [
+          "A tree shaded the path.",
+          "The path led to a house.",
+          "The house had a red door."
+        ],
+        "effect": "A returning element can carry the reader toward new information.",
+        "notice": "Path and house return as the next sentence’s starting points.",
+        "features": [
+          "path",
+          "house"
+        ]
+      },
+      {
+        "id": "hierarchy-w-4",
+        "label": "End-weight",
+        "graphic": "end-weight",
+        "example": [
+          "Mina carried",
+          "a heavy wooden box filled with old maps."
+        ],
+        "effect": "A short opening can lead toward a longer information group.",
+        "notice": "The longer object phrase sits at the end; this is one useful arrangement, not the only correct one."
+      },
+      {
+        "id": "hierarchy-w-5",
+        "label": "Section headings",
+        "graphic": "heading",
+        "example": [
+          "A place to wait",
+          "The station had one small room and a bench beside the window."
+        ],
+        "effect": "A heading prepares the reader for the section beneath it.",
+        "notice": "The section marker has more prominence than its supporting detail."
+      }
+    ]
+  },
+  "alignment": {
+    "visual": [
+      {
+        "id": "alignment-v-0",
+        "label": "Grid",
+        "clip": "alignment-grid",
+        "native": null,
+        "effect": "Shared guides organise several kinds of content.",
+        "notice": "Compare the empty grid with the page placed on it."
+      },
+      {
+        "id": "alignment-v-1",
+        "label": "Text columns",
+        "clip": "alignment-columns",
+        "native": null,
+        "effect": "Common edges help the eye enter and leave lines consistently.",
+        "notice": "The prose blocks follow the same column boundaries."
+      },
+      {
+        "id": "alignment-v-2",
+        "label": "Rotated axis",
+        "clip": "alignment-rotation",
+        "native": null,
+        "effect": "A composition can share an angled guide.",
+        "notice": "The headline and related material follow the same rotated direction."
+      },
+      {
+        "id": "alignment-v-3",
+        "label": "Vertical type",
+        "clip": "alignment-vertical",
+        "native": null,
+        "effect": "Aligned directions can also be vertical.",
+        "notice": "The tall words form related columns."
+      },
+      {
+        "id": "alignment-v-4",
+        "label": "Shared baseline",
+        "clip": null,
+        "native": "baseline",
+        "effect": "Different letters can share one reference line.",
+        "notice": "The letter sizes differ, but their bases meet the same guide."
+      }
+    ],
+    "written": [
+      {
+        "id": "alignment-w-0",
+        "label": "Parallel verbs",
+        "graphic": "parallel",
+        "example": [
+          "She wanted to read the story,",
+          "understand the ending,",
+          "and explain the characters."
+        ],
+        "effect": "Matching grammatical forms organise a series.",
+        "notice": "Read, understand, and explain share the same verb form.",
+        "features": [
+          "read",
+          "understand",
+          "explain"
+        ]
+      },
+      {
+        "id": "alignment-w-1",
+        "label": "Parallel clauses",
+        "graphic": "parallel",
+        "example": [
+          "We came to listen.",
+          "We stayed to learn."
+        ],
+        "effect": "Corresponding clause patterns make a relationship easy to follow.",
+        "notice": "The subjects and verbs sit in corresponding positions.",
+        "features": [
+          "We",
+          "to"
+        ]
+      },
+      {
+        "id": "alignment-w-2",
+        "label": "Related meaning",
+        "graphic": "semantic-pair",
+        "example": [
+          "The sea became calm.",
+          "The waves lay still."
+        ],
+        "effect": "Different words can develop a related image.",
+        "notice": "Calm and still correspond in meaning without being identical grammar.",
+        "features": [
+          "calm",
+          "still"
+        ]
+      },
+      {
+        "id": "alignment-w-3",
+        "label": "Contrasting parallels",
+        "graphic": "semantic-pair",
+        "example": [
+          "Mina spoke in a whisper.",
+          "Leo answered with a shout."
+        ],
+        "effect": "Corresponding positions can carry opposing meanings.",
+        "notice": "The voices differ, but the two clauses form a related pattern.",
+        "features": [
+          "whisper",
+          "shout"
+        ]
+      },
+      {
+        "id": "alignment-w-4",
+        "label": "Stanza correspondence",
+        "graphic": "stanza",
+        "example": [
+          "The sea saw it and ran away.",
+          "The Jordan River turned back.",
+          "The mountains jumped like rams.",
+          "The hills jumped like lambs.",
+          "Sea, why did you run away?",
+          "Jordan River, why did you turn back?",
+          "Mountains, why did you jump like rams?",
+          "Hills, why did you jump like lambs?"
+        ],
+        "effect": "Descriptions return as questions about the same four images.",
+        "notice": "The short adaptation and two-stanza teaching layout use Psalm 114:3–6; the source and context remain in the lesson."
+      },
+      {
+        "id": "alignment-w-5",
+        "label": "A consistent list",
+        "graphic": "parallel",
+        "example": [
+          "reading reports,",
+          "writing summaries,",
+          "presenting findings."
+        ],
+        "effect": "A series can share a consistent grammatical shape.",
+        "notice": "The three -ing forms begin their items in the same way.",
+        "features": [
+          "reading",
+          "writing",
+          "presenting"
+        ]
+      }
+    ]
+  },
+  "balance": {
+    "visual": [
+      {
+        "id": "balance-v-0",
+        "label": "Symmetrical balance",
+        "clip": "balance-symmetric",
+        "native": null,
+        "effect": "Visual weight is organised around a corresponding structure.",
+        "notice": "Inspect both sides and the larger page structure; they need not contain identical wording."
+      },
+      {
+        "id": "balance-v-1",
+        "label": "Asymmetrical balance",
+        "clip": "balance-asymmetric",
+        "native": null,
+        "effect": "Different objects can distribute visual weight without mirroring.",
+        "notice": "Compare the large image with the smaller type and objects."
+      },
+      {
+        "id": "balance-v-2",
+        "label": "Radial balance",
+        "clip": "balance-radial",
+        "native": null,
+        "effect": "Objects are organised around a centre.",
+        "notice": "The repeated images lead around the central point."
+      },
+      {
+        "id": "balance-v-3",
+        "label": "Weight through size",
+        "clip": null,
+        "native": "weight",
+        "effect": "Size changes the distribution of visual weight.",
+        "notice": "A large circle has more presence than a small one in this example."
+      },
+      {
+        "id": "balance-v-4",
+        "label": "Balance around an axis",
+        "clip": null,
+        "native": "axis",
+        "effect": "A shared axis makes a distribution easy to compare.",
+        "notice": "Inspect the corresponding forms on either side of the guide."
+      }
+    ],
+    "written": [
+      {
+        "id": "balance-w-0",
+        "label": "Colon: explanation",
+        "graphic": "colon",
+        "example": [
+          "The room grew quiet",
+          "everyone had left."
+        ],
+        "effect": "A colon can introduce an explanation of a complete statement.",
+        "notice": "The second clause explains why the room grew quiet; clause lengths need not be equal."
+      },
+      {
+        "id": "balance-w-1",
+        "label": "Semicolon: related statements",
+        "graphic": "semicolon",
+        "example": [
+          "The river rose",
+          "the bridge disappeared."
+        ],
+        "effect": "A semicolon can join related independent clauses.",
+        "notice": "Each side is complete; the mark shows a close relationship without supplying a conjunction."
+      },
+      {
+        "id": "balance-w-2",
+        "label": "Paired clause pattern",
+        "graphic": "balanced-clauses",
+        "example": [
+          "She kept the map",
+          "he kept the key."
+        ],
+        "effect": "A matching grammatical pattern can balance two related actions.",
+        "notice": "The parallel clauses distribute the actions between two people."
+      },
+      {
+        "id": "balance-w-3",
+        "label": "Comma after a dependent opening",
+        "graphic": "subordinate",
+        "example": [
+          "Although it rained,",
+          "we continued."
+        ],
+        "effect": "A comma can mark the boundary before the main clause.",
+        "notice": "The first clause depends on the second. A comma does not always join two independent clauses."
+      },
+      {
+        "id": "balance-w-4",
+        "label": "Dash: a reveal",
+        "graphic": "dash-reveal",
+        "example": [
+          "We found one thing",
+          "the missing key."
+        ],
+        "effect": "A dash can foreground an added reveal.",
+        "notice": "The second piece identifies the thing; it need not be a complete clause."
+      },
+      {
+        "id": "balance-w-5",
+        "label": "Periods: separate statements",
+        "graphic": "stops",
+        "example": [
+          "The lamp went out.",
+          "Its battery was empty."
+        ],
+        "effect": "Separate sentences give each statement its own stop.",
+        "notice": "This version is grammatical. It presents two statements rather than explicitly introducing an explanation."
+      }
+    ]
+  },
+  "proximity": {
+    "visual": [
+      {
+        "id": "proximity-v-0",
+        "label": "Grouped editorial content",
+        "clip": "proximity-related",
+        "native": null,
+        "effect": "Related items form readable clusters.",
+        "notice": "Pictures, labels, and text have local relationships."
+      },
+      {
+        "id": "proximity-v-1",
+        "label": "Clear picture–caption relations",
+        "clip": "proximity-clear",
+        "native": null,
+        "effect": "Close placement supports the intended reading relationship.",
+        "notice": "The picture names sit near the matching pictures."
+      },
+      {
+        "id": "proximity-v-2",
+        "label": "Crowded without a clear order",
+        "clip": "proximity-confused",
+        "native": null,
+        "effect": "Closeness alone does not guarantee clarity.",
+        "notice": "Different items share space without a consistent relationship."
+      },
+      {
+        "id": "proximity-v-3",
+        "label": "Scattered relations",
+        "clip": "proximity-scattered",
+        "native": null,
+        "effect": "Distance can make the intended association difficult to find.",
+        "notice": "The text and pictures are dispersed across the page."
+      },
+      {
+        "id": "proximity-v-4",
+        "label": "Gap between groups",
+        "clip": null,
+        "native": "group",
+        "effect": "A small inside gap and larger outside gap define groups.",
+        "notice": "Read the two clusters separately."
+      }
+    ],
+    "written": [
+      {
+        "id": "proximity-w-0",
+        "label": "Paragraph focus",
+        "graphic": "groups",
+        "example": [
+          "Mist covered the river.",
+          "The water was still.",
+          "The boat’s paint was peeling.",
+          "A rope lay beside the oar."
+        ],
+        "effect": "A paragraph gathers details with a shared focus.",
+        "notice": "Water details and boat details form two local groups.",
+        "groups": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "names": [
+          "Water",
+          "Boat"
+        ]
+      },
+      {
+        "id": "proximity-w-1",
+        "label": "Parenthesis",
+        "graphic": "parenthesis",
+        "example": [
+          "Mina returned",
+          "to everyone’s relief",
+          "before dark."
+        ],
+        "effect": "Parentheses place an aside inside its host sentence.",
+        "notice": "The paired marks keep the extra comment together while the main sentence continues."
+      },
+      {
+        "id": "proximity-w-2",
+        "label": "Square brackets",
+        "graphic": "brackets",
+        "example": [
+          "“She",
+          "Mina",
+          "closed the door.”"
+        ],
+        "effect": "Square brackets can identify an editor’s inserted clarification.",
+        "notice": "This original teaching quotation shows [Mina] clarifying she; the addition is visibly marked."
+      },
+      {
+        "id": "proximity-w-3",
+        "label": "Apposition",
+        "graphic": "apposition",
+        "example": [
+          "Leo,",
+          "Mina’s brother,",
+          "held the door."
+        ],
+        "effect": "An adjacent noun phrase can rename or explain a person.",
+        "notice": "Mina’s brother identifies Leo. The phrase stays next to the person it explains."
+      },
+      {
+        "id": "proximity-w-4",
+        "label": "Pronoun and antecedent",
+        "graphic": "reference",
+        "example": [
+          "Mina found a boat.",
+          "It lay beside the river."
+        ],
+        "effect": "A pronoun links back to an earlier noun.",
+        "notice": "It refers to a boat; the highlight makes the relationship visible.",
+        "features": [
+          "a boat",
+          "It"
+        ]
+      },
+      {
+        "id": "proximity-w-5",
+        "label": "A footnote",
+        "graphic": "footnote",
+        "example": [
+          "Mina marked the path¹ on her map.",
+          "1. The route beside the river."
+        ],
+        "effect": "A reference marker links the reading to a nearby note.",
+        "notice": "The matching 1 carries the association even when the note sits outside the sentence."
+      },
+      {
+        "id": "proximity-w-6",
+        "label": "Quotation and commentary",
+        "graphic": "quote-comment",
+        "example": [
+          "“Meet me at dawn,” the note said.",
+          "Mina put it beside her bag."
+        ],
+        "effect": "Related commentary helps a quoted message stay in its local context.",
+        "notice": "The quote and immediate response form one short reading group."
+      }
+    ]
+  },
+  "repetition": {
+    "visual": [
+      {
+        "id": "repetition-v-0",
+        "label": "Repeat a motif",
+        "clip": null,
+        "native": "motif",
+        "effect": "One recurring mark links a field.",
+        "notice": "A repeated circle is the shared visual unit."
+      },
+      {
+        "id": "repetition-v-1",
+        "label": "Regular rhythm",
+        "clip": null,
+        "native": "regular",
+        "effect": "Equal intervals create a steady sequence.",
+        "notice": "The recurring objects have similar spacing."
+      },
+      {
+        "id": "repetition-v-2",
+        "label": "Alternation",
+        "clip": null,
+        "native": "alternating",
+        "effect": "Two recurring units create an alternating pattern.",
+        "notice": "Follow the change between green and gold."
+      },
+      {
+        "id": "repetition-v-3",
+        "label": "Progression",
+        "clip": null,
+        "native": "progressive",
+        "effect": "A repeated unit can change in a systematic way.",
+        "notice": "The circles grow while remaining circles."
+      },
+      {
+        "id": "repetition-v-4",
+        "label": "Consistent identity",
+        "clip": null,
+        "native": "identity",
+        "effect": "Repeated style links different messages.",
+        "notice": "Colour, heading treatment, and divider position recur across the cards."
+      }
+    ],
+    "written": [
+      {
+        "id": "repetition-w-0",
+        "label": "Anaphora",
+        "graphic": "anaphora",
+        "example": [
+          "She remembered the path.",
+          "She remembered the bench.",
+          "She remembered the house."
+        ],
+        "effect": "A repeated beginning links separate statements.",
+        "notice": "She remembered returns at the start.",
+        "features": [
+          "She remembered"
+        ]
+      },
+      {
+        "id": "repetition-w-1",
+        "label": "Epistrophe",
+        "graphic": "epistrophe",
+        "example": [
+          "She waited by the river.",
+          "She searched by the river.",
+          "She rested by the river."
+        ],
+        "effect": "A repeated ending links separate statements.",
+        "notice": "By the river returns at the end.",
+        "features": [
+          "by the river"
+        ]
+      },
+      {
+        "id": "repetition-w-2",
+        "label": "Anadiplosis",
+        "graphic": "theme-chain",
+        "example": [
+          "The wait brought fear.",
+          "Fear brought silence."
+        ],
+        "effect": "An ending returns as the next beginning.",
+        "notice": "Fear makes the link between the two sentences.",
+        "features": [
+          "fear",
+          "Fear"
+        ]
+      },
+      {
+        "id": "repetition-w-3",
+        "label": "Refrain",
+        "graphic": "refrain",
+        "example": [
+          "The wind rose.",
+          "Still, we continued.",
+          "The rain fell.",
+          "Still, we continued."
+        ],
+        "effect": "A line returns at intervals.",
+        "notice": "Still, we continued is the returning line.",
+        "features": [
+          "Still, we continued."
+        ]
+      },
+      {
+        "id": "repetition-w-4",
+        "label": "Inclusio / bookends",
+        "graphic": "bookends",
+        "example": [
+          "We left the river at dawn.",
+          "We walked through the hills.",
+          "At last, we returned to the river."
+        ],
+        "effect": "A returning image frames the passage.",
+        "notice": "The river occurs at both the opening and the close.",
+        "features": [
+          "river"
+        ]
+      },
+      {
+        "id": "repetition-w-5",
+        "label": "Motif",
+        "graphic": "motif-text",
+        "example": [
+          "A red ribbon tied the box.",
+          "Later, a red ribbon marked the door.",
+          "She kept a red ribbon in her pocket."
+        ],
+        "effect": "A recurring detail can connect different parts of a story.",
+        "notice": "The ribbon returns in different situations; its larger meaning depends on the story.",
+        "features": [
+          "red ribbon"
+        ]
+      },
+      {
+        "id": "repetition-w-6",
+        "label": "Polysyndeton",
+        "graphic": "conjunctions",
+        "example": [
+          "We waited and listened and watched and hoped."
+        ],
+        "effect": "Repeated conjunctions can give each action a returning beat.",
+        "notice": "And links every item, rather than appearing only before the last.",
+        "features": [
+          "and"
+        ]
+      }
+    ]
+  },
+  "simplicity": {
+    "visual": [
+      {
+        "id": "simplicity-v-0",
+        "label": "Remove decoration",
+        "clip": null,
+        "native": "clutter",
+        "effect": "Extra decoration can compete with necessary information.",
+        "notice": "Compare the ornament with the event details."
+      },
+      {
+        "id": "simplicity-v-1",
+        "label": "Keep essentials",
+        "clip": null,
+        "native": "essential",
+        "effect": "A useful reduction preserves the message’s job.",
+        "notice": "The event, time, place, and action are retained."
+      },
+      {
+        "id": "simplicity-v-2",
+        "label": "Too little information",
+        "clip": null,
+        "native": "too-little",
+        "effect": "A minimal design can still fail its purpose.",
+        "notice": "The headline alone does not give the time or place."
+      },
+      {
+        "id": "simplicity-v-3",
+        "label": "One clear route",
+        "clip": null,
+        "native": "purposeful",
+        "effect": "One relevant path can explain a journey clearly.",
+        "notice": "The line leads from the entrance to the library."
+      },
+      {
+        "id": "simplicity-v-4",
+        "label": "Purposeful whitespace",
+        "clip": null,
+        "native": "margin",
+        "effect": "Room around the content can help its important parts stand out.",
+        "notice": "The surrounding area separates the message from the edge."
+      }
+    ],
+    "written": [
+      {
+        "id": "simplicity-w-0",
+        "label": "Cut filler",
+        "graphic": "cut",
+        "example": [
+          "It is important to note that",
+          "the gate is closed."
+        ],
+        "effect": "Removing an unnecessary opening brings the useful fact forward.",
+        "notice": "The essential information remains.",
+        "remove": [
+          0
+        ]
+      },
+      {
+        "id": "simplicity-w-1",
+        "label": "Remove overlap",
+        "graphic": "cut",
+        "example": [
+          "We planned",
+          "ahead for the future."
+        ],
+        "effect": "Overlapping wording can repeat information already present.",
+        "notice": "Planned already points ahead in this short example.",
+        "remove": [
+          1
+        ]
+      },
+      {
+        "id": "simplicity-w-2",
+        "label": "One precise verb",
+        "graphic": "replace",
+        "example": [
+          "She made a quick movement towards the door.",
+          "She rushed to the door."
+        ],
+        "effect": "A precise verb can replace a longer description.",
+        "notice": "Rushed combines movement and speed; it also makes the description more specific."
+      },
+      {
+        "id": "simplicity-w-3",
+        "label": "Direct actor and action",
+        "graphic": "replace",
+        "example": [
+          "The door was opened by Mina.",
+          "Mina opened the door."
+        ],
+        "effect": "A direct subject–verb route can foreground the actor.",
+        "notice": "The active version puts Mina first. Passive wording can be useful when the door is the focus."
+      },
+      {
+        "id": "simplicity-w-4",
+        "label": "Grammatical ellipsis",
+        "graphic": "omitted-verb",
+        "example": [
+          "Mina carried a map;",
+          "Leo, a torch."
+        ],
+        "effect": "A recoverable verb can be omitted from a parallel clause.",
+        "notice": "The second clause borrows carried from the first; this compact form suits some contexts."
+      },
+      {
+        "id": "simplicity-w-5",
+        "label": "Keep the necessary reason",
+        "graphic": "keep-purpose",
+        "example": [
+          "He took a deep breath",
+          "to calm himself."
+        ],
+        "effect": "A concise sentence should still retain the information the task needs.",
+        "notice": "Removing the purpose would change what the reader understands."
+      },
+      {
+        "id": "simplicity-w-6",
+        "label": "Oulipo lipogram",
+        "graphic": "lipogram",
+        "example": [
+          "Rain taps on old tin roofs."
+        ],
+        "effect": "A chosen letter is excluded from the text.",
+        "notice": "This original sentence contains no e. The restriction is a creative design rule, rather than a general rule of good writing.",
+        "exclude": "e"
+      }
+    ]
+  },
+  "function": {
+    "visual": [
+      {
+        "id": "function-v-0",
+        "label": "Inform",
+        "clip": null,
+        "native": "inform",
+        "effect": "A timetable helps someone find information.",
+        "notice": "The session names, times, and rooms answer practical questions."
+      },
+      {
+        "id": "function-v-1",
+        "label": "Guide",
+        "clip": null,
+        "native": "guide",
+        "effect": "A direction sign helps someone navigate.",
+        "notice": "The arrow and place name work together."
+      },
+      {
+        "id": "function-v-2",
+        "label": "Invite",
+        "clip": null,
+        "native": "invite",
+        "effect": "An invitation needs details that make attendance possible.",
+        "notice": "Find the event, time, location, and next action."
+      },
+      {
+        "id": "function-v-3",
+        "label": "Prompt an action",
+        "clip": null,
+        "native": "act",
+        "effect": "A clear control makes the next step apparent.",
+        "notice": "The button wording identifies an action."
+      },
+      {
+        "id": "function-v-4",
+        "label": "Fit the viewing context",
+        "clip": null,
+        "native": "context",
+        "effect": "A visual must work where and how it will be read.",
+        "notice": "Consider the size, distance, and information needed."
+      }
+    ],
+    "written": [
+      {
+        "id": "function-w-0",
+        "label": "Narrative",
+        "graphic": "sequence",
+        "example": [
+          "Mina turned the key.",
+          "The door opened.",
+          "She stepped inside."
+        ],
+        "effect": "A narrative follows particular events.",
+        "notice": "The sequence forms a story route."
+      },
+      {
+        "id": "function-w-1",
+        "label": "Explanation",
+        "graphic": "cause",
+        "example": [
+          "The power failed.",
+          "The lamp went out."
+        ],
+        "effect": "An explanation connects a cause and an effect.",
+        "notice": "The causal arrow explains the relationship rather than only presenting two events."
+      },
+      {
+        "id": "function-w-2",
+        "label": "Description",
+        "graphic": "description",
+        "example": [
+          "Light rested on a chipped blue cup."
+        ],
+        "effect": "Description develops the qualities of a person, place, or object.",
+        "notice": "The words add light, surface, and colour to one object.",
+        "features": [
+          "Light",
+          "chipped",
+          "blue"
+        ]
+      },
+      {
+        "id": "function-w-3",
+        "label": "Argument",
+        "graphic": "argument",
+        "example": [
+          "Keep the library open later.",
+          "Evening access could help students after work."
+        ],
+        "effect": "An argument gives a position and supporting reason.",
+        "notice": "The first sentence proposes a choice; the second supports it.",
+        "roles": [
+          "Position",
+          "Reason"
+        ]
+      },
+      {
+        "id": "function-w-4",
+        "label": "Instruction",
+        "graphic": "instructions",
+        "example": [
+          "Open the lid.",
+          "Place the battery inside.",
+          "Close the lid."
+        ],
+        "effect": "Instructions organise actions for someone to carry out.",
+        "notice": "Numbering and imperative verbs provide a practical route."
+      },
+      {
+        "id": "function-w-5",
+        "label": "Reflection",
+        "graphic": "reflection",
+        "example": [
+          "I used to rush.",
+          "Now I notice the small details."
+        ],
+        "effect": "Reflection can compare an earlier view with a changed understanding.",
+        "notice": "Used to and now distinguish the two perspectives."
+      },
+      {
+        "id": "function-w-6",
+        "label": "Inquiry",
+        "graphic": "question",
+        "example": [
+          "Why had the path disappeared?"
+        ],
+        "effect": "An inquiry opens a question to investigate.",
+        "notice": "The question asks for an explanation; it does not already provide one."
+      }
+    ]
+  },
+  "shape_core": {
+    "goal": "Recognise how visual outlines and document layouts give a message a form.",
+    "labs": [
+      {
+        "label": "Letter",
+        "form": "letter",
+        "text": [
+          "Date, greeting, body paragraphs, closing, and signature."
+        ],
+        "effect": "The page groups a message around familiar letter conventions."
+      },
+      {
+        "label": "Haiku template",
+        "form": "haiku",
+        "text": [
+          "Three compact lines. A traditional English haiku template often uses 5–7–5 syllables."
+        ],
+        "effect": "The line pattern is visible. Placeholder text alone does not establish syllables or poetic content."
+      },
+      {
+        "label": "CV",
+        "form": "cv",
+        "text": [
+          "Name and contact details, followed by grouped experience and education."
+        ],
+        "effect": "Headings, dates, and repeated entries make the information easy to scan."
+      }
+    ],
+    "manipulate": {
+      "kind": "match",
+      "prompt": "Match each document name to its placeholder-text template. Use the arrangement, rather than the words.",
+      "left": [
+        "Letter",
+        "Haiku template",
+        "CV",
+        "Advertisement",
+        "Newspaper article",
+        "Scientific article"
+      ],
+      "right": [
+        "Letter layout",
+        "Three-line layout",
+        "CV layout",
+        "Advertisement layout",
+        "Newspaper layout",
+        "Scientific article layout"
+      ],
+      "rightForms": [
+        "letter",
+        "haiku",
+        "cv",
+        "ad",
+        "newspaper",
+        "journal"
+      ],
+      "answer": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "reason": "Dates and a signature identify the letter; three compact lines give the haiku template; dated sections give the CV; headline and action give the ad; columns give the news page; abstract and sections give the journal template."
+    },
+    "transfer": {
+      "kind": "choose",
+      "prompt": "Which page shape would best organise work experience, education, and contact details?",
+      "tiles": [
+        "A three-line poem template",
+        "A CV template",
+        "An advertisement template"
+      ],
+      "optionForms": [
+        "haiku",
+        "cv",
+        "ad"
+      ],
+      "answer": 1,
+      "reason": "The CV template groups experience and education under headings and places contact information near the name. The other shapes serve different jobs."
+    }
+  },
+  "form_core": {
+    "goal": "Trace how an underlying story structure gives events depth and direction.",
+    "labs": [
+      {
+        "label": "Story arc",
+        "visual": "structure-arc",
+        "value": 0,
+        "text": [
+          "The radio stopped.",
+          "Ben could not fix it.",
+          "He asked his friend for help.",
+          "They found a loose wire.",
+          "The music played again."
+        ],
+        "effect": "The request is a turning point; the outcome resolves the opening problem."
+      },
+      {
+        "label": "Thematic chiasm",
+        "visual": "structure-chiasm",
+        "value": 50,
+        "text": [
+          "Ben was afraid.",
+          "He called for help.",
+          "His friend came.",
+          "His friend helped him.",
+          "Ben was not afraid."
+        ],
+        "effect": "A–B–X–B′–A′: afraid and help return around the friend’s arrival."
+      },
+      {
+        "label": "A story within a story",
+        "visual": "structure-frame",
+        "value": 100,
+        "text": [
+          "I told my friend about the storm.",
+          "The rain came through our roof.",
+          "We moved the beds and stayed together.",
+          "My friend listened without speaking."
+        ],
+        "effect": "The present act of telling frames the remembered events."
+      }
+    ],
+    "manipulate": {
+      "kind": "order",
+      "prompt": "Build this short story: problem → difficulty → request for help → response → outcome.",
+      "tiles": [
+        "The radio stopped.",
+        "Ben could not fix it.",
+        "He asked his friend for help.",
+        "They found a loose wire.",
+        "The music played again."
+      ],
+      "answer": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reason": "The request changes the situation. The response finds the cause; the outcome answers the opening problem."
+    },
+    "transfer": {
+      "kind": "choose",
+      "prompt": "In this five-step chiasm, which sentence is the centre around which afraid and help return?",
+      "case": [
+        "Eva was afraid.",
+        "She asked for help.",
+        "Her friend arrived.",
+        "Her friend helped her.",
+        "Eva was not afraid."
+      ],
+      "tiles": [
+        "Eva was afraid.",
+        "Her friend arrived.",
+        "Eva was not afraid."
+      ],
+      "answer": 1,
+      "reason": "The arrival is the central event. Afraid returns as not afraid; help returns as helped on either side."
+    }
+  }
+}
