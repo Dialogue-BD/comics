@@ -294,7 +294,7 @@
       "imports": []
     },
     "src/entry.jsx": {
-      "bytes": 14465,
+      "bytes": 14857,
       "imports": [
         {
           "path": "node_modules/react/index.js",
@@ -403,7 +403,7 @@
           "bytesInOutput": 51
         },
         "src/entry.jsx": {
-          "bytesInOutput": 15024
+          "bytesInOutput": 15236
         },
         "node_modules/gsap/gsap-core.js": {
           "bytesInOutput": 51863
@@ -454,7 +454,7 @@
           "bytesInOutput": 0
         }
       },
-      "bytes": 416040
+      "bytes": 416252
     },
     "dist/entry.css": {
       "imports": [],

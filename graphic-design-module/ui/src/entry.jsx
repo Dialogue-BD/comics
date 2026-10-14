@@ -12,7 +12,8 @@ import 'lenis/dist/lenis.css';
 import './entry.css';
 
 gsap.registerPlugin(ScrollTrigger,Flip);
-let root=null,container=null,activeLenis=null,chiasticCleanup=null,chiasticTimeline=null,chiasticFlip=null,chiasticPaused=false;
+let root=null,container=null,activeLenis=null;
+const chiasticMotions=new Map();
 const Arrow=({diagonal=false})=><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d={diagonal?'M5 19L19 5M5 5h14v14':'M4 12h15M13 5l7 7-7 7'} stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/></svg>;
 function useReduced(){const [reduced,setReduced]=useState(()=>matchMedia('(prefers-reduced-motion: reduce)').matches);useEffect(()=>{const q=matchMedia('(prefers-reduced-motion: reduce)'),on=()=>setReduced(q.matches);q.addEventListener('change',on);return()=>q.removeEventListener('change',on)},[]);return reduced}
 function Reveal({children,className='',delay=0,reduced}){return reduced?<div className={className}>{children}</div>:<AnimatedContent className={className} distance={26} duration={.65} delay={delay} threshold={.04} ease="power2.out">{children}</AnimatedContent>}
@@ -28,18 +29,42 @@ function CourseSections({data,reduced}){const visual=data.path==='visual';return
 function EntryFooter({data,reduced}){const v=data.path==='visual';return <><Reveal reduced={reduced}><section className="entry-finale"><div><span className="entry-section-kicker">The final study</span><h2>{v?'Give the idea a form.':'Bring the passage together.'}</h2><p>{v?'A message takes shape when elements and principles work together.':'Build a prose passage. See its structure in another medium.'}</p></div><button className="entry-primary" data-open="intro">{v?'Put it together':'Read the final study'}<Arrow/></button></section></Reveal><footer className="entry-colophon"><div><span className="entry-colophon-mark">{v?'◈':'¶'}</span><p>Dialogue<br/><span>Design: Visual &amp; Textual Communication</span></p></div><p>Fifteen pairings. Two ways in.<br/>One shared discipline.</p><small>Original guide artwork: Gareth David / TastyTuts.<br/>Practice progress is saved on this device.</small></footer></>}
 function EntryApp({data}){const reduced=useReduced(),ref=useRef(null);useEffect(()=>{const el=ref.current,media=gsap.matchMedia();let lenis=null,ticker=null;media.add('(prefers-reduced-motion: no-preference)',()=>{lenis=new Lenis({autoRaf:false,smoothWheel:true,syncTouch:false,lerp:.1,allowNestedScroll:true,prevent:node=>!!node.closest('dialog,[data-lenis-prevent]')});activeLenis=lenis;lenis.on('scroll',ScrollTrigger.update);ticker=time=>lenis.raf(time*1000);gsap.ticker.add(ticker);gsap.ticker.lagSmoothing(0);return()=>{gsap.ticker.remove(ticker);lenis.destroy();if(activeLenis===lenis)activeLenis=null;}});media.add('(prefers-reduced-motion: no-preference)',()=>{const pieces=el.querySelectorAll('.desk-strip');if(!pieces.length)return;const ctx=gsap.context(()=>{const tl=gsap.timeline({repeat:-1,repeatDelay:2});tl.fromTo(pieces,{x:i=>[12,-15,9][i],rotation:i=>[-3,4,-2][i],filter:'drop-shadow(7px 17px 9px #47372340)'},{x:0,rotation:0,filter:'drop-shadow(2px 4px 2px #47372345)',duration:1.6,stagger:.35,ease:'power2.inOut'}).to(pieces,{x:i=>[12,-15,9][i],rotation:i=>[-3,4,-2][i],filter:'drop-shadow(7px 17px 9px #47372340)',duration:1.6,stagger:.25,delay:3,ease:'power2.inOut'});},el);return()=>ctx.revert()});media.add('(prefers-reduced-motion: no-preference) and (pointer: fine)',()=>{const art=el.querySelector('.studio-art,.publisher-art');if(!art)return;const x=gsap.quickTo(art,'x',{duration:1,ease:'power2.out'}),y=gsap.quickTo(art,'y',{duration:1,ease:'power2.out'});const move=e=>{const b=art.getBoundingClientRect();x((e.clientX-b.left-b.width/2)*.02);y((e.clientY-b.top-b.height/2)*.02)},leave=()=>{x(0);y(0)};art.addEventListener('pointermove',move);art.addEventListener('pointerleave',leave);return()=>{art.removeEventListener('pointermove',move);art.removeEventListener('pointerleave',leave);x.tween.kill();y.tween.kill();}});const scroll=e=>{const btn=e.target.closest('[data-entry-scroll]');if(!btn)return;const target=document.getElementById(btn.dataset.entryScroll);if(activeLenis)activeLenis.scrollTo(target,{offset:-22});else target?.scrollIntoView({behavior:reduced?'instant':'smooth'})};el.addEventListener('click',scroll);const refresh=()=>ScrollTrigger.refresh();document.fonts.ready.then(refresh);const frame=requestAnimationFrame(refresh);return()=>{cancelAnimationFrame(frame);el.removeEventListener('click',scroll);media.revert();}},[data.path,reduced]);return <div className={`entry-app entry-${data.path}`} ref={ref} data-motion-stack="lenis-gsap-react-bits"><nav className="entry-masthead" aria-label="Entry page controls"><div className="entry-wordmark">{data.path==='visual'?<><span>◈</span> DESIGN STUDIO</>:<><span>¶</span> THE WRITING ROOM</>}</div><PathSwitch path={data.path}/><div className="entry-masthead-detail"><span>{data.explored}/15 explored</span><span>{data.points} XP</span></div></nav>{data.path==='visual'?<StudioHero data={data} reduced={reduced}/>:<PublisherHero data={data} reduced={reduced}/>}<div className="entry-interlude"><p>{data.path==='visual'?<><b>Visual thinking.</b> A different way into the same ideas.</>:<><em>Writing is designed, too.</em> Start with words. Discover their visual twin.</>}</p><LevelSwitch level={data.level}/></div><CourseSections data={data} reduced={reduced}/><EntryFooter data={data} reduced={reduced}/></div>}
 export function mount(el,data){if(root)root.unmount();root=createRoot(el);container=el;flushSync(()=>root.render(<EntryApp data={data}/>));}
-export function unmount(){chiasticCleanup?.();chiasticCleanup=null;if(root){root.unmount();root=null;container=null}}
+export function unmount(){chiasticMotions.forEach(m=>m.cleanup());chiasticMotions.clear();if(root){root.unmount();root=null;container=null}}
 export function getContainer(){return container}
 export function diagnostics(){return {react:React.version,gsap:gsap.version,lenisActive:!!activeLenis,triggers:ScrollTrigger.getAll().length}}
 
-export function setLiteraryPaused(value){chiasticPaused=value;chiasticTimeline?.paused(value);chiasticFlip?.paused(value)}
+// Each example owns its loop. Gallery redraws do not restart the opening example.
+export function setLiteraryPaused(value,scope=document){
+ chiasticMotions.forEach((motion,block)=>{if(scope===block||scope.contains(block))motion.setPaused(value)});
+}
 export function bindChiastic(){
- chiasticCleanup?.();chiasticCleanup=null;const block=document.querySelector('.chiastic-prose');if(!block)return;const pieces=[...block.querySelectorAll('.chiastic-sentence')];chiasticPaused=false;
- if(matchMedia('(prefers-reduced-motion: reduce)').matches){block.classList.add('chiastic-formed');return}
- block.classList.add('chiastic-formed');const formed=block.getBoundingClientRect().height;block.classList.remove('chiastic-formed');block.style.minHeight=formed+'px';
- let visible=false;const reshape=value=>{chiasticFlip?.kill();const positions=Flip.getState(pieces);block.classList.toggle('chiastic-formed',value);chiasticFlip=Flip.from(positions,{duration:1.6,ease:'power2.inOut',absolute:true,stagger:.055,onComplete:()=>{chiasticFlip=null}});};
- chiasticTimeline=gsap.timeline({repeat:-1,paused:true}).to({},{duration:6}).call(()=>reshape(true)).to({},{duration:10}).call(()=>reshape(false)).to({},{duration:6});
- const observe=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;chiasticTimeline?.paused(!visible||chiasticPaused)},{threshold:.1});observe.observe(block);
- const pref=matchMedia('(prefers-reduced-motion: reduce)'),onPref=()=>{chiasticTimeline?.kill();chiasticFlip?.kill();block.classList.add('chiastic-formed');block.style.minHeight='';};pref.addEventListener('change',onPref);
- chiasticCleanup=()=>{observe.disconnect();pref.removeEventListener('change',onPref);chiasticTimeline?.kill();chiasticFlip?.kill();chiasticTimeline=null;chiasticFlip=null;};
+ chiasticMotions.forEach((motion,block)=>{if(!block.isConnected){motion.cleanup();chiasticMotions.delete(block)}});
+ document.querySelectorAll('.chiastic-prose').forEach(block=>{
+  if(chiasticMotions.has(block))return;
+  const pieces=[...block.querySelectorAll('.chiastic-sentence')],pref=matchMedia('(prefers-reduced-motion: reduce)');
+  let timeline=null,flip=null,visible=false,paused=!!block.closest('.motion-paused,.ef-paused');
+  const sync=()=>{const stop=!visible||paused;timeline?.paused(stop);flip?.paused(stop)};
+  const reshape=value=>{
+   flip?.kill();const positions=Flip.getState(pieces);block.classList.toggle('chiastic-formed',value);
+   flip=Flip.from(positions,{duration:1.6,ease:'power2.inOut',absolute:true,stagger:.055,onComplete:()=>{flip=null}});
+   sync();
+  };
+  const configure=()=>{
+   timeline?.kill();flip?.kill();timeline=flip=null;
+   gsap.set(pieces,{clearProps:'transform,width,height,position,top,left'});
+   block.style.minHeight='';block.classList.add('chiastic-formed');
+   if(pref.matches)return;
+   const formed=block.getBoundingClientRect().height;block.classList.remove('chiastic-formed');
+   block.style.minHeight=Math.max(formed,block.getBoundingClientRect().height)+'px';
+   timeline=gsap.timeline({repeat:-1,paused:true}).to({},{duration:6}).call(()=>reshape(true)).to({},{duration:10}).call(()=>reshape(false)).to({},{duration:6});
+   sync();
+  };
+  configure();
+  const observe=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync()},{threshold:.1});observe.observe(block);
+  pref.addEventListener('change',configure);
+  chiasticMotions.set(block,{
+   setPaused:value=>{paused=value;sync()},
+   cleanup:()=>{observe.disconnect();pref.removeEventListener('change',configure);timeline?.kill();flip?.kill()}
+  });
+ });
 }
