@@ -2,7 +2,7 @@
 const MERGED=__MERGED_LESSONS__;
 let mcDragging=null;
 function mcDown(){return '<span class="mc-down" aria-hidden="true">'+icon('ArrowRight')+'</span>'}
-function mcRecord(id){const r=pairRecord(id);if(!r.merged)r.merged={version:1,example:0,lab:0,revealed:[],done:{},states:{}};return r.merged}
+function mcRecord(id){const r=pairRecord(id);if(!r.merged)r.merged={};const defaults={version:1,example:0,lab:0,revealed:[],done:{},states:{}};for(const [key,value]of Object.entries(defaults))if(r.merged[key]===undefined)r.merged[key]=value;return r.merged}
 function mcState(id,key){const m=mcRecord(id),g=MERGED[id].challenges[key];let r=m.states[key];if(!r||r.id!==g.id){if(r){m.previous=m.previous||[];m.previous.push(r)}r=m.states[key]={id:g.id,choice:null,order:[],cut:[],groups:{},matches:{},selected:null,breakAt:null,words:g.slots?g.slots.map(()=>null):[]};}return r}
 function mcProgress(id){return ['notice','manipulate','transfer'].filter(k=>mcRecord(id).done[k]).length}
 function mcWords(text){return (text.match(/[\p{L}\p{N}]+(?:[’'\-][\p{L}\p{N}]+)*/gu)||[]).length}

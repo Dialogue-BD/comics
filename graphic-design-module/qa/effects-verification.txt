@@ -13,3 +13,5 @@ Original typographic-reveals.css SHA-256 2a38b1525272ad208a81db15cacfddeb56f2d55
 
 QA correction: a literal $1 in an empty group preview was removed. Native drag checks use an actual stepped pointer trajectory; a single automated hover jump failed to start the second native drag in the saved regression state. Real stepped drags and keyboard alternatives passed.
 These are implementation/interaction checks, not a claim of classroom learning effectiveness.
+
+Passed check-progress-migration.cjs after repairing partial legacy record defaults: both Form and Shape render, old order arrays and replies remain, changed drafts are archived exactly once, earlier notice progress and awards survive, and reload persists the migration.
