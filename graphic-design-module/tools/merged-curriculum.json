@@ -358,16 +358,20 @@
     "challenges": {
       "notice": {
         "kind": "choose",
-        "prompt": "Which feature makes these simple activity icons easy to tell apart?",
+        "prompt": "A reading club wants a gentle, welcoming symbol. Which outline would you try first?",
         "tiles": [
-          "Their different outlines.",
-          "Their hidden file names.",
-          "Their three-dimensional mass."
+          "Round edges and flowing curves.",
+          "Sharp points and jagged edges.",
+          "Straight edges and firm angles."
         ],
         "answer": 0,
-        "reason": "You can distinguish the circle, square, and triangle by their outlines. They are flat shapes.",
-        "visual": "application",
-        "id": "shape-notice-v1",
+        "reason": "For this brief, the flowing curves can support a gentle feel. Shape associations depend on the audience and context.",
+        "optionFeedback": [
+          "The flowing curves fit the gentle feel requested here.",
+          "The points can suggest energy. Try a softer outline for this gentle brief.",
+          "Firm angles can suggest solidity. Try flowing curves for a gentler feel."
+        ],
+        "id": "shape-notice-brief-v1",
         "title": "Notice the feature"
       },
       "manipulate": {
@@ -1459,21 +1463,30 @@
         "title": "Notice the feature"
       },
       "manipulate": {
-        "kind": "order",
-        "prompt": "Place a colon between the complete statement and the clause that explains it.",
+        "kind": "punctuation",
+        "prompt": "Find the calm connection between these two complete ideas.",
+        "clauses": [
+          "The rain stopped",
+          "the match began"
+        ],
         "tiles": [
-          "The room grew quiet",
-          ":",
-          "everyone had left."
+          "Comma",
+          "Semicolon",
+          "Em dash"
         ],
-        "answer": [
-          0,
-          1,
-          2
+        "marks": [
+          ",",
+          ";",
+          "—"
         ],
-        "reason": "The room grew quiet is a complete statement. Everyone had left explains why. The colon signals that explanatory relationship.",
-        "punctuation": true,
-        "id": "balance-manipulate-v1",
+        "answer": 1,
+        "reason": "A semicolon links two related complete ideas. Their lengths do not need to match. A dash also works, with a stronger pause.",
+        "optionFeedback": [
+          "A comma alone cannot join these two complete ideas. Try a semicolon, or add a joining word such as and.",
+          "A semicolon links these related ideas with a calm pause.",
+          "The dash also works here. It adds a stronger pause. Try a semicolon for a calmer connection."
+        ],
+        "id": "balance-manipulate-punctuation-v1",
         "title": "Make a design choice"
       },
       "transfer": {

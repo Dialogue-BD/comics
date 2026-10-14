@@ -53,6 +53,8 @@ for id in ['contrast','balance','repetition']:
   if id=='repetition':e['written']['features']={'Anaphora':['We will'],'Refrain':['Still'],'Inclusio':['Home','home']}[e['written']['term']]
 D['typography']['examples'][0]['written']['features']=['TODAY']
 
+D['shape']['challenges']['notice']=choose('A reading club wants a gentle, welcoming symbol. Which outline would you try first?',['Round edges and flowing curves.','Sharp points and jagged edges.','Straight edges and firm angles.'],0,'For this brief, the flowing curves can support a gentle feel. Shape associations depend on the audience and context.',optionFeedback=['The flowing curves fit the gentle feel requested here.','The points can suggest energy. Try a softer outline for this gentle brief.','Firm angles can suggest solidity. Try flowing curves for a gentler feel.'])
+
 # Named labs give a specific visible/textual choice rather than a generic amount of improvement.
 D['line']['labs']=[state('Stop','horizontal',0,['We crossed the bridge. The wind rose. We stopped.'],'Short complete sentences make distinct stops.'),state('Flow','curved',50,['As we crossed the bridge, the wind rose and we stopped.'],'Connected clauses carry the scene in one movement.'),state('Turn','zigzag',100,['We crossed the bridge—but when the wind rose, we stopped.'],'The dash and but foreground an interruption.')]
 D['color']['labs']=[state('Warm','palette-warm',0,['The room glowed with lively conversation.'],'This palette and wording suggest an energetic gathering in this example.'),state('Cool','palette-cool',50,['The room held a crisp, distant silence.'],'This version replaces conversation with silence. Crisp and distant also add separation.'),state('Muted','palette-muted',100,['The room settled into subdued conversation.'],'Conversation remains, but subdued reduces its intensity, alongside less saturated colour.')]
@@ -95,6 +97,8 @@ T={
 'simplicity':dict(kind='trim',prompt='State present readiness. Remove repeated time wording and the duplicate state, while keeping who is ready.',tiles=['At this point in time,','we are','currently','ready','and prepared.'],answer=[1,3],reason='We are ready keeps the subject and current state. The other pieces repeat time or readiness.'),
 'function':choose('Begin a narrative with an event that could lead into a story.',['The old key turned at last.','A key opens a matching lock.','The school should repair its broken locks.'],0,'The first sentence presents a particular event. The second explains a general relationship; the third states a position.')
 }
+# Prototype's punctuation scales: a reading-effect metaphor, not a rule about clause lengths.
+D['balance']['challenges']['manipulate']=dict(kind='punctuation',prompt='Find the calm connection between these two complete ideas.',clauses=['The rain stopped','the match began'],tiles=['Comma','Semicolon','Em dash'],marks=[',',';','—'],answer=1,reason='A semicolon links two related complete ideas. Their lengths do not need to match. A dash also works, with a stronger pause.',optionFeedback=['A comma alone cannot join these two complete ideas. Try a semicolon, or add a joining word such as and.','A semicolon links these related ideas with a calm pause.','The dash also works here. It adds a stronger pause. Try a semicolon for a calmer connection.'])
 for id,g in T.items():D[id]['challenges']['transfer']=g
 D['proximity']['challenges']['manipulate']['binVisual']=['river','boat']
 shape=json.loads((P/'effects-curriculum.json').read_text())['shape_core']
@@ -105,9 +109,11 @@ for key in ['manipulate','transfer']:D['form']['challenges'][key]=form[key]
 for key in ['manipulate','transfer']:D['shape']['challenges'][key]=shape[key]
 for id,d in D.items():
  for key,g in d['challenges'].items():g['id']=f'{id}-{key}-v1';g['title']={'notice':'Notice the feature','manipulate':'Make a design choice','transfer':'Try a fresh example'}[key]
+ if id=='balance':d['challenges']['manipulate']['id']='balance-manipulate-punctuation-v1'
  if id=='form':
   for key in ['manipulate','transfer']:d['challenges'][key]['id']=f'form-{key}-structure-v1'
  if id=='shape':
+  d['challenges']['notice']['id']='shape-notice-brief-v1'
   for key in ['manipulate','transfer']:d['challenges'][key]['id']=f'shape-{key}-document-v1'
  assert len(d['labs'])==3 and len(d['examples'])==3 and len(d['challenges'])==3
 (P/'merged-curriculum.json').write_text(json.dumps(D,ensure_ascii=False,indent=2)+'\n')

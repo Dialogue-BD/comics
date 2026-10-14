@@ -1,0 +1,7 @@
+.mc-lab-pair .prx-line-art{max-height:310px}.prx-line-art .prx-ink{stroke-dasharray:1;stroke-dashoffset:0;animation:prxDraw 18s ease-in-out infinite}.prx-line-art .prx-water{animation:prxResonance 6s ease-in-out infinite;transform-origin:center;transform-box:fill-box}.prx-line-art .prx-mist{animation:prxMist 8s ease-in-out infinite;transform-origin:center}.prx-line-art[data-prx-mode=captions] .prx-caption{animation:prxCaptionClose 18s ease-in-out infinite;transform-box:fill-box;transform-origin:center}.prx-line-art[data-prx-mode=mixed] .prx-tether{display:none}.prx-line-art .prx-tether{animation:prxTether 18s ease-in-out infinite}.motion-paused .prx-line-art *{animation-play-state:paused!important}
+@keyframes prxDraw{0%,3%{stroke-dashoffset:1}22%,89%{stroke-dashoffset:0}100%{stroke-dashoffset:1}}
+@keyframes prxResonance{0%,100%{opacity:.45;transform:translateX(-3px)}50%{opacity:.9;transform:translateX(3px)}}
+@keyframes prxMist{0%,100%{opacity:.3;transform:translateX(-4px)}50%{opacity:.65;transform:translateX(4px)}}
+@keyframes prxCaptionClose{0%,20%,100%{translate:0 35px}32%,88%{translate:0 0}}
+@keyframes prxTether{0%,24%,100%{opacity:0}32%,88%{opacity:.75}}
+@media(prefers-reduced-motion:reduce){.prx-line-art *{animation:none!important;stroke-dashoffset:0}.prx-line-art .prx-caption{translate:none}}
