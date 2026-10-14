@@ -123,6 +123,10 @@ w('line','Coordination','coordination',['Mina opened the window,','and cool air 
 w('line','Subordination','subordinate',['Although it was late,','we stayed.'],'A dependent clause gives the main clause a condition or contrast.','Although introduces a clause that depends on the main statement.')
 w('line','A deliberate fragment','fragment',['Footsteps.','Closer now.'],'A fragment can isolate an impression in narrative or dialogue.','These are intentional fragments, not models of complete sentences for every task.')
 w('line','A question','question',['Did she hear us?'],'A question opens an unresolved route for the reader.','The question mark identifies the sentence’s job; the text does not supply its answer.')
+# Sentence functions from the prototype, shown with one familiar situation.
+w('line','A statement','statement',['The door is open.'],'A statement gives the reader information.','The full stop closes a complete statement.')
+w('line','An instruction','instruction',['Open the door.'],'An instruction asks someone to do something.','Open names the action. The subject you is understood.',features=['Open'])
+w('line','An exclamation','exclamation',['The door is open!'],'An exclamation adds a strong reaction to a statement.','The words give the same information; the exclamation mark adds surprise in this example.')
 w('color','Intensity','word-pair',['bright','radiant'],'Radiant suggests light spreading out with greater intensity.','The word art expands in light and detail.',pair='bright')
 w('color','Size made precise','word-pair',['small','tiny'],'Tiny narrows the description toward a very small size.','The richer word contracts rather than becoming bigger.',pair='small')
 w('color','Connotation','word-pair',['empty','deserted'],'Deserted can suggest absence or abandonment in this scene.','The wording adds an association beyond an unoccupied space.',pair='empty')

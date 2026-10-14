@@ -129,6 +129,39 @@
         ],
         "effect": "A question opens an unresolved route for the reader.",
         "notice": "The question mark identifies the sentence’s job; the text does not supply its answer."
+      },
+      {
+        "id": "line-w-7",
+        "label": "A statement",
+        "graphic": "statement",
+        "example": [
+          "The door is open."
+        ],
+        "effect": "A statement gives the reader information.",
+        "notice": "The full stop closes a complete statement."
+      },
+      {
+        "id": "line-w-8",
+        "label": "An instruction",
+        "graphic": "instruction",
+        "example": [
+          "Open the door."
+        ],
+        "effect": "An instruction asks someone to do something.",
+        "notice": "Open names the action. The subject you is understood.",
+        "features": [
+          "Open"
+        ]
+      },
+      {
+        "id": "line-w-9",
+        "label": "An exclamation",
+        "graphic": "exclamation",
+        "example": [
+          "The door is open!"
+        ],
+        "effect": "An exclamation adds a strong reaction to a statement.",
+        "notice": "The words give the same information; the exclamation mark adds surprise in this example."
       }
     ]
   },
