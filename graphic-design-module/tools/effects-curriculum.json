@@ -282,17 +282,6 @@
         ],
         "effect": "Whispered tells us how the words were spoken.",
         "notice": "The lower, quieter presentation shows the added information; this is a choice about delivery, not just decoration."
-      },
-      {
-        "id": "color-w-5",
-        "label": "Register",
-        "graphic": "register",
-        "example": [
-          "I need a hand.",
-          "I need assistance."
-        ],
-        "effect": "Different wording can suit different situations and voices.",
-        "notice": "Assistance sounds more formal here; the central request remains close."
       }
     ]
   },
@@ -1167,6 +1156,17 @@
         ],
         "effect": "A heading signals the topic and makes a section easier to find.",
         "notice": "The headline and body have distinct jobs; bold type alone does not supply an argument."
+      },
+      {
+        "id": "typography-w-6",
+        "label": "Register",
+        "graphic": "register",
+        "example": [
+          "I need a hand.",
+          "I need assistance."
+        ],
+        "effect": "Formal and casual wording suggest different voices, just as type choices can.",
+        "notice": "The informal idiom hand becomes the more formal assistance. The central request stays close."
       }
     ]
   },
