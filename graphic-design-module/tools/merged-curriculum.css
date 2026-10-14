@@ -10,3 +10,12 @@
 .mc-magnet-pool:empty{display:none}
 
 .mc-model p{white-space:pre-line}
+
+/* Prototype-inspired word chips connect a palette choice to the descriptive words. */
+.mc-mood-word{color:var(--mc-mood-ink);font-family:inherit;font-size:inherit;line-height:inherit;font-weight:600;transition:color .25s ease}
+.mc-mood-warm{--mc-mood-ink:#a14324;--mc-mood-swatch:#d76537}
+.mc-mood-cool{--mc-mood-ink:#235d74;--mc-mood-swatch:#387e9c}
+.mc-mood-neutral{--mc-mood-ink:#5a655e;--mc-mood-swatch:#87958b}
+.mc-mood-word.mc-mood-neutral{font-weight:400}
+.mc-mood-swatch{display:inline-block;flex:none;width:12px;height:12px;border-radius:2px;background:var(--mc-mood-swatch);border:1px solid #ffffff66;margin-right:3px}
+@media(prefers-reduced-motion:reduce){.mc-mood-word{transition:none}}

@@ -15,3 +15,5 @@ QA correction: a literal $1 in an empty group preview was removed. Native drag c
 These are implementation/interaction checks, not a claim of classroom learning effectiveness.
 
 Passed check-progress-migration.cjs after repairing partial legacy record defaults: both Form and Shape render, old order arrays and replies remain, changed drafts are archived exactly once, earlier notice progress and awards survive, and reload persists the migration.
+
+Colour cue refinement: warm/cool/neutral keyword treatment verified in all three lab states and legacy comparison/reveal rendering; unchanged literal sentences; all three selected repaint phrases coloured; 320px layout and no page errors. Foreground contrast against the three plain paper/preview backgrounds is at least 4.64:1.
