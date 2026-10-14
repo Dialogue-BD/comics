@@ -20,12 +20,16 @@ function efDocument(form,features=false,compact=false){let html='';const f=t=>ef
 function efSnowball(features=false){const words=['I','am','now','just','small','enough'];return `<div class="ef-snowball" role="img" aria-label="An original snowball poem: I, am, now, just, small, enough. Word lengths grow from one to six letters.">${words.map((word,i)=>`<div class="ef-snow-line" style="--ef-n:${i};--ef-letters:${word.length}"><span>${esc(word)}</span>${features?`<small>${word.length} ${word.length===1?'letter':'letters'}</small>`:''}</div>`).join('')}</div>`}
 function efDocumentSVG(form='letter',label){let body='';const rect=(x,y,w,h)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#244331"/>`,line=(x,y,w)=>rect(x,y,w,3);
  if(form==='haiku')body=[80,116,152].map((y,i)=>line(122-(i===1?12:0),y,i===1?116:92)).join('');
+ else if(form==='limerick')body='<g class="ef-mini-limerick">'+[156,156,88,88,156].map((w,i)=>line(i===2||i===3?89:67,72+i*30,w)).join('')+'</g>';
+ else if(form==='dialogue')body=rect(101,40,88,7)+line(105,61,80)+'<g class="ef-mini-dialogue">'+[80,119,158,197].map((y,i)=>`<g class="ef-mini-turn"><rect class="ef-mini-speaker" x="${i%2?121:127}" y="${y}" width="${i%2?48:36}" height="5" fill="#244331"/>${line(76,y+13,140)}${line(76,y+23,i%2?112:128)}</g>`).join('')+'</g>';
+ else if(form==='concrete')body='<g class="ef-mini-concrete">'+[8,22,38,58,86,112,138,120,100,74,44,18].map((w,i)=>line(145-w/2,40+i*14,w)).join('')+'<path d="M145 205q4 9 -5 18" fill="none" stroke="#244331" stroke-width="2"/></g>';
  else if(form==='cv')body=rect(73,44,132,14)+line(73,69,132)+[100,144,188].map(y=>rect(66,y,54,6)+line(66,y+16,148)+line(66,y+27,118)).join('');
  else if(form==='ad')body=rect(68,42,126,22)+`<circle cx="145" cy="119" r="35" fill="#b9924f"/>`+line(85,166,120)+rect(103,190,85,16);
  else if(form==='newspaper')body=rect(68,42,152,15)+line(68,69,145)+[70,122,174].map(x=>[92,104,116,128,140,152,164,176,188,200].map(y=>line(x,y,42)).join('')).join('');
  else if(form==='journal')body=rect(80,42,130,10)+line(97,60,97)+[86,96,106].map(y=>line(75,y,145)).join('')+[75,150].map(x=>[131,143,155,167,179,191,203].map(y=>line(x,y,62)).join('')).join('');
- else body=line(155,45,59)+line(70,77,69)+[101,114,127,140,165,178,191].map(y=>line(70,y,y===140?112:142)).join('')+line(70,212,65);
- return `<svg class="ef-document-svg" viewBox="0 0 290 255" role="img" aria-label="${esc(label||EF_FORMS[form]||form)}"><path d="M43 16L245 12L248 238L40 242Z" fill="#fff8e7" stroke="#bbaa82"/>${body}</svg>`;
+ else if(form==='letter')body=line(155,45,59)+line(70,77,69)+[101,114,127,140,165,178,191].map(y=>line(70,y,y===140?112:142)).join('')+line(70,212,65);
+ else throw new Error('Missing document thumbnail: '+form);
+ return `<svg class="ef-document-svg" data-document-form="${esc(form)}" viewBox="0 0 290 255" role="img" aria-label="${esc(label||EF_FORMS[form]||form)}"><path d="M43 16L245 12L248 238L40 242Z" fill="#fff8e7" stroke="#bbaa82"/>${body}</svg>`;
 }
 function efShapeMotion(){return `<svg class="literary-svg ef-shape-motion" data-literary-concept="shape" viewBox="0 0 600 300" role="img" aria-label="Document forms: letter, compact three-line poem, and CV have different page outlines">${['letter','haiku','cv'].map((form,i)=>`<g class="ef-doc-motion" style="--ef-doc-i:${i}" transform="translate(${i*195+8} 5)"><svg width="185" height="245" viewBox="0 0 290 255">${efDocumentSVG(form).split('</svg>')[0].split('>').slice(1).join('>')}</svg><text x="92" y="267" text-anchor="middle" font-family="Georgia" font-size="17" fill="#244331">${esc(EF_FORMS[form])}</text></g>`).join('')}</svg>`}
 
