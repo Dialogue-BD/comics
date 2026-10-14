@@ -16,23 +16,20 @@ function dpSpecs(hue,mode){
  const f=dpFamily(hue);
  if(mode==='complementary'){
   const other=dpFamily(hue+180),words=f.contrast.concat(other.contrast);
-  return words.map((word,n)=>({word,f:n<3?f:other,h:hue+(n>=3?180:0),l:(n<3?f:other).light[2],sat:n<3?f.sat:other.sat}));
+  return words.map((word,n)=>({word,f:n<3?f:other,h:hue+(n>=3?180:0),l:Math.max(20,Math.min(82,(n<3?f:other).light[2]+[-12,0,12][n%3])),sat:n<3?f.sat:other.sat}));
  }
  const words=mode==='monochromatic'?f.intensity:f.adjacent,center=f.key==='red'&&hue>=345?hue-360:hue,span=Math.min(40,f.range[1]-f.range[0]-2),start=Math.min(f.range[1]-1-span,Math.max(f.range[0]+1,center-span/2));
- // Only monochromatic varies strength/tint. The other schemes isolate hue relationships.
+ // Neighbouring hues stay in one mood family; each complementary hue retains three distinct shades.
  return words.map((word,n)=>({word,f,h:mode==='monochromatic'?hue:start+span*n/4,l:mode==='monochromatic'?f.light[n]:f.light[2],sat:Math.max(32,f.sat-(mode==='monochromatic'?n*9:0))}));
 }
 function dpRecord(){const r=pairRecord('color');if(!r.palette)r.palette={hue:145,mode:'monochromatic',word:2};return r.palette}
 function dpData(hue,mode){return {f:dpFamily(hue),words:dpSpecs(hue,mode).map(x=>x.word)}}
 function dpHex(hue,light,saturation=40){const h=((hue%360)+360)%360/60,s=saturation/100,l=light/100,c=(1-Math.abs(2*l-1))*s,x=c*(1-Math.abs(h%2-1)),m=l-c/2;const rgb=h<1?[c,x,0]:h<2?[x,c,0]:h<3?[0,c,x]:h<4?[0,x,c]:h<5?[x,0,c]:[c,0,x];return '#'+rgb.map(v=>Math.round((v+m)*255).toString(16).padStart(2,'0')).join('')}
 function dpColour(hue,light,saturation){
- let bg=dpHex(hue,light,saturation);
- for(let step=0;step<20;step++){
-  const cream=pairRatio(bg,'#fff9e8'),green=pairRatio(bg,'#133a29'),ink=cream>green?'#fff9e8':'#133a29';
-  if(Math.max(cream,green)>=4.5)return {bg,ink};
-  bg=dpHex(hue,Math.min(95,light+step+1),saturation);
- }
- return {bg,ink:'#133a29'};
+ const bg=dpHex(hue,light,saturation),cream=pairRatio(bg,'#fff9e8'),green=pairRatio(bg,'#133a29');
+ if(Math.max(cream,green)>=4.5)return {bg,ink:cream>green?'#fff9e8':'#133a29'};
+ // Keep the authored shade intact. A neutral ink handles the few middle tones between brand inks.
+ return {bg,ink:pairRatio(bg,'#ffffff')>pairRatio(bg,'#000000')?'#ffffff':'#000000'};
 }
 function dpSwatches(hue,mode,selected){return dpSpecs(hue,mode).map(({word,f,h,l,sat},n)=>{const {bg,ink}=dpColour(h,l,sat);return `<button type="button" class="dp-word" data-palette-word="${n}" data-word-colour="${f.key}" style="--dp-colour:${bg};--dp-ink:${ink}" aria-pressed="${selected===n}">${esc(word)}</button>`}).join('')}
 function dpSentence(hue,mode,n){const spec=dpSpecs(hue,mode)[n]||dpSpecs(hue,mode)[2],sentence=DP_EXAMPLES[spec.word]||spec.f.frame.replace('{word}',spec.word);return esc(sentence).replace(esc(spec.word),`<strong>${esc(spec.word)}</strong>`)}
