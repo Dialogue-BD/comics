@@ -39,6 +39,8 @@ body.dialogue-activity-shell {
   --accent-glow: rgba(185, 146, 79, .22);
   --text: var(--dialogue-ink);
   --text-muted: var(--dialogue-ink-soft);
+  color-scheme: light;
+  accent-color: var(--dialogue-forest);
   color: var(--dialogue-ink);
   background: var(--dialogue-paper);
   font-family: 'Public Sans', system-ui, sans-serif;
@@ -55,6 +57,8 @@ body.dialogue-home {
   --accent-glow: rgba(185, 146, 79, .22);
   --text: var(--dialogue-ink);
   --text-muted: var(--dialogue-ink-soft);
+  color-scheme: light;
+  accent-color: var(--dialogue-forest);
   color: var(--dialogue-ink);
   background: #eae7dc;
   font-family: 'Public Sans', system-ui, sans-serif;
@@ -74,6 +78,8 @@ body.dialogue-activity-shell:has(.setup-view) {
   --yellow: #d2b978;
   --blue: #9bb695;
   --coral: #c67a5d;
+  color-scheme: dark;
+  accent-color: var(--dialogue-gold);
   background: var(--dialogue-deep);
 }
 body.dialogue-activity-shell:has(.setup-view) :where(.topbar, .panel, .mode-card, .score-column, .phase-card, .complete-card, .help-dialog, .deck-dialog) {
