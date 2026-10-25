@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="940" height="752" viewBox="20 68 470 376">
-  <g>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450" viewBox="205 135 295 190">
+  <title>Dialogue English &amp; Skills Center — Logomark D-Monogram</title>
+  <g id="Dialogue_Logomark_D" transform="translate(230.0, 98.0) scale(0.45484)">
     <path d="M 138 108 L 262 108 C 386 108 478 174 478 265 C 478 356 386 422 258 422 L 138 422 C 124 422 114 412 114 398 L 114 132 C 114 118 124 108 138 108 Z" fill="#103D21"/>
     <g transform="translate(267, 263) rotate(16) scale(1.10, 0.90) translate(-250, -256)">
       <circle cx="250" cy="256" r="140" fill="#FFFFFF"/>
     </g>
     <defs>
-      <clipPath id="globe-clip-r121-35">
+      <clipPath id="globe-clip-r121-4">
         <circle cx="250" cy="256" r="121"/>
       </clipPath>
     </defs>
@@ -15,7 +16,7 @@
     <ellipse cx="228" cy="220" rx="86" ry="70" fill="#58CBF8"/>
     <ellipse cx="218" cy="206" rx="54" ry="42" fill="#88DDFC"/>
     <path d="M 142 308 C 176 352 248 372 312 348 C 340 338 358 318 366 298 C 350 344 304 374 250 374 C 198 374 158 346 142 308 Z" fill="#0E5C8E"/>
-    <g clip-path="url(#globe-clip-r121-35)">
+    <g clip-path="url(#globe-clip-r121-4)">
         <g transform="translate(256, 254) rotate(-9) translate(-250, -256)">
       <path d="M 124 214 C 134 164 176 128 238 128 C 242 142 232 154 214 156 C 202 158 204 168 192 172 C 174 176 168 190 152 196 C 140 202 132 212 124 214 Z" fill="#D49B42"/>
       <path d="M 132 192 C 148 156 184 130 238 128 C 240 138 230 148 214 150 C 186 154 160 168 132 192 Z" fill="#7BB369"/>

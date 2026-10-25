@@ -41,13 +41,6 @@ export async function fetchBrand(knownCommit, proxy) {
     const bytes = Buffer.from(data.content, 'base64');
     if (key.endsWith('Svg') && !bytes.toString('utf8').includes('<svg')) throw new Error('Invalid SVG');
     if (key.endsWith('Png')) PNG.sync.read(bytes);
-    if (key === 'logoMotion') {
-      const motion = JSON.parse(bytes.toString('utf8'));
-      if (!(motion.w > 0 && motion.h > 0 && motion.op > motion.ip) ||
-          !Array.isArray(motion.layers) || motion.assets?.length) {
-        throw new Error('Invalid or externally dependent motion asset');
-      }
-    }
     return [key, bytes];
   }));
   const assets = Object.fromEntries(pairs);
@@ -59,7 +52,6 @@ export async function fetchBrand(knownCommit, proxy) {
     '/favicon.svg': assets.iconSvg,
     '/favicon.png': squareIcon(assets.iconPng, 48),
     '/apple-touch-icon.png': squareIcon(assets.iconPng, 180),
-    '/brand/dialogue-logo-motion.json': assets.logoMotion,
   };
   return { commit, resources: Object.fromEntries(
     Object.entries(resources).map(([path, bytes]) => [path, bytes.toString('base64')])
