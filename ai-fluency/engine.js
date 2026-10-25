@@ -446,7 +446,7 @@ function usedDs(L,upto){ const u={}; for(let j=0;j<=upto;j++){const d=beatD(L,j)
 function renderTop(){
   const top=$('#ptop'); const inL=!!S.lesson; document.body.classList.toggle('inlesson',inL);
   const right=`<button class="p-ic p-bn" data-p="bn" lang="bn" aria-pressed="${S.bn}" title="বাংলা">বাংলা</button><button class="p-ic" data-p="menu" aria-label="Menu">${IC.dots}</button>`;
-  if(!inL){ top.innerHTML=`<a class="p-logo" href="../" title="All activities"><img src="../brand/dialogue-logo.png" alt="Dialogue"></a><div class="p-title"><b>AI Fluency Lab</b><small>Ayesha’s phone</small></div>${right}`; return; }
+  if(!inL){ top.innerHTML=`<a class="p-logo" href="../" title="All activities"><img src="../brand/dialogue-logo.png?v=a53d061" alt="Dialogue"></a><div class="p-title"><b>AI Fluency Lab</b><small>Ayesha’s phone</small></div>${right}`; return; }
   const L=LESSONS[S.lesson], x=ctx();
   const segs=L.stages.map(st=>({st,idx:L.beats.map((b,i)=>i).filter(i=>L.beats[i].stage===st.id&&shown(L,i))})).filter(s=>s.idx.length);
   const cur=L.stages.find(s=>s.id===L.beats[S.beat].stage)||{};

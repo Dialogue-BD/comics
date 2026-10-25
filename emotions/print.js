@@ -72,7 +72,7 @@ const Print = (() => {
     return '<div class="ws-box"><h3>' + label + '</h3><div class="ws-storm">' + [1, 2, 3, 4, 5].map(n => '<div>' + ART.shutter(n) + '<div>' + n + '</div></div>').join('') + '</div></div>';
   }
   function head(w){
-    return '<div class="ws-head"><img src="../brand/dialogue-logo.png" alt=""><div class="ws-t"><h1>How Are You Feeling?</h1><p>The word iceberg · name a feeling, then take its word from “heard it” to “it is mine”.</p></div>' +
+    return '<div class="ws-head"><img src="../brand/dialogue-logo.png?v=a53d061" alt=""><div class="ws-t"><h1>How Are You Feeling?</h1><p>The word iceberg · name a feeling, then take its word from “heard it” to “it is mine”.</p></div>' +
       (w ? '<div class="ws-word"><span class="e">' + emoji(w) + '</span><div><b>' + esc(w) + '</b><span>' + esc(EMO.pron[lower(w)] || '') + ' ' + esc(bnWord(w)) + '</span></div></div>'
          : '<div class="ws-word"><span class="e">🙂</span><div><b>&nbsp;</b><span>My word: ____________________</span></div></div>') + '</div>' +
       '<div class="ws-name"><span>Name</span><i></i><span>Date</span><i style="flex:.5"></i></div>';

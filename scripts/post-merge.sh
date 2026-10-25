@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e
 
-# Static site — no dependencies to install, no build step needed.
+npm ci --omit=dev --ignore-scripts
 echo "Post-merge setup complete."

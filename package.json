@@ -1,0 +1,26 @@
+{
+  "name": "dialogue-brand-refresh",
+  "version": "1.0.0",
+  "description": "Authenticated refresh of official Dialogue brand assets",
+  "main": "dialogue-brand.js",
+  "scripts": {
+    "test": "node --test tests/brand-refresh.test.mjs && python -m unittest discover -s tests -p 'test_brand*.py'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dialogue-BD/comics.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Dialogue-BD/comics/issues"
+  },
+  "homepage": "https://github.com/Dialogue-BD/comics#readme",
+  "dependencies": {
+    "@replit/connectors-sdk": "^0.5.0",
+    "pngjs": "^7.0.0"
+  }
+}

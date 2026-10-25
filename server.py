@@ -27,12 +27,14 @@ import time
 from urllib.parse import parse_qs, urlparse
 
 from classroom_db import ClassroomDatabase
+from brand_assets import BrandAssets
 
 PORT = int(os.environ.get("PORT", "5000"))
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.environ.get("DIALOGUE_DB_PATH", os.path.join(DIRECTORY, "poll.db"))
 DATABASE_URL = os.environ.get("DATABASE_URL", "").strip()
 IS_DEPLOYMENT = os.environ.get("REPLIT_DEPLOYMENT") == "1"
+BRAND_ASSETS = BrandAssets()
 
 if IS_DEPLOYMENT and not DATABASE_URL:
     raise RuntimeError(
@@ -345,8 +347,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         path = os.path.join(DIRECTORY, "busy-pictures", "index.html")
         with open(path, "rb") as source:
             body = source.read()
+        body = body.replace(b"../favicon.svg?v=03a", b"../favicon.svg?v=a53d061")
         body = body.replace(
             b"</head>",
+            b'<link rel="icon" type="image/png" sizes="48x48" href="../favicon.png?v=a53d061">\n'
+            b'<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png?v=a53d061">\n'
             b'<link rel="stylesheet" href="../dialogue-brand.css">\n</head>',
             1,
         )
@@ -379,15 +384,17 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
     # ── GET classroom APIs ────────────────────────────────────────────────────
+    def do_HEAD(self):
+        if BRAND_ASSETS.serve(self, urlparse(self.path).path):
+            return
+        super().do_HEAD()
+
     def do_GET(self):
         parsed = urlparse(self.path)
-        if parsed.path == "/favicon.svg":
-            self.send_response(302)
-            self.send_header(
-                "Location",
-                "/favicon.png",
-            )
-            self.end_headers()
+        if parsed.path == "/api/brand-status":
+            _json_response(self, 200, BRAND_ASSETS.status())
+            return
+        if BRAND_ASSETS.serve(self, parsed.path):
             return
         if parsed.path in {"/busy-pictures/", "/busy-pictures/index.html"}:
             self._serve_branded_busy_pictures()
@@ -989,6 +996,7 @@ class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
 
 if __name__ == "__main__":
+    BRAND_ASSETS.start()
     # Warm up the DB on the main thread before accepting connections
     database = _get_db()
     print(f"Classroom database: {database.backend_name}")
