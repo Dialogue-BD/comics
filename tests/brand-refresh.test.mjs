@@ -8,6 +8,7 @@ const config = JSON.parse(await readFile(new URL('../brand/source.json', import.
 const commit = 'b'.repeat(40);
 const png = PNG.sync.write(new PNG({ width: 40, height: 20 }));
 const svg = Buffer.from('<svg xmlns="http://www.w3.org/2000/svg"></svg>');
+const motion = Buffer.from(JSON.stringify({ w: 1920, h: 1080, ip: 0, op: 120, layers: [], assets: [] }));
 const response = value => new Response(JSON.stringify(value));
 
 test('unchanged commit needs only one GitHub request', async () => {
@@ -25,12 +26,13 @@ test('every asset uses one immutable commit; complete snapshot includes icons', 
     requests.push(path);
     if (path.includes('/commits/')) return response({ sha: commit });
     assert.ok(path.endsWith(`?ref=${commit}`));
-    const bytes = path.includes('.svg?') ? svg : png;
+    const bytes = path.includes('.json?') ? motion : path.includes('.svg?') ? svg : png;
     return response({ encoding: 'base64', content: bytes.toString('base64') });
   });
   assert.equal(result.commit, commit);
-  assert.equal(requests.length, 5);
-  assert.equal(Object.keys(result.resources).length, 7);
+  assert.equal(requests.length, 6);
+  assert.equal(Object.keys(result.resources).length, 8);
+  assert.deepEqual(Buffer.from(result.resources['/brand/dialogue-logo-motion.json'], 'base64'), motion);
   assert.deepEqual(Buffer.from(result.resources['/favicon.svg'], 'base64'), svg);
   assert.equal(PNG.sync.read(Buffer.from(result.resources['/favicon.png'], 'base64')).width, 48);
   assert.equal(PNG.sync.read(Buffer.from(result.resources['/apple-touch-icon.png'], 'base64')).width, 180);
@@ -54,4 +56,5 @@ test('square icon preserves aspect ratio and transparent padding', () => {
 test('source paths select the requested Studio Modern and 03A variants', () => {
   assert.ok(config.assets.logoSvg.includes('02-Dialogue-Primary-Studio-Modern'));
   assert.ok(config.assets.iconSvg.includes('03A-Logomark-D-Color-On-Light-Transparent'));
+  assert.equal(config.assets.logoMotion, 'motion/01-Studio-Modern-Lockup-Intro-lottie.json');
 });

@@ -17,6 +17,7 @@ Everything else is served as static files from the same directory.
 """
 
 import http.server
+from io import BytesIO
 import json
 import os
 import re
@@ -28,6 +29,7 @@ from urllib.parse import parse_qs, urlparse
 
 from classroom_db import ClassroomDatabase
 from brand_assets import BrandAssets
+from brand_motion import enhance_html, motion_runtime
 
 PORT = int(os.environ.get("PORT", "5000"))
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
@@ -336,6 +338,32 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Expires", "0")
         super().end_headers()
 
+    def send_head(self):
+        """Enhance every static HTML route, including nested classroom views."""
+        url_path = urlparse(self.path).path
+        if url_path == "/brand/lottie-light.min.js":
+            path = str(motion_runtime(DIRECTORY))
+        else:
+            path = self.translate_path(self.path)
+            if os.path.isdir(path) and url_path.endswith("/"):
+                path = os.path.join(path, "index.html")
+            if not path.endswith(".html") or not os.path.isfile(path):
+                return super().send_head()
+        try:
+            with open(path, "rb") as source:
+                body = source.read()
+        except OSError:
+            self.send_error(404, "File not found")
+            return None
+        is_runtime = url_path == "/brand/lottie-light.min.js"
+        if not is_runtime:
+            body = enhance_html(body)
+        self.send_response(200)
+        self.send_header("Content-Type", "application/javascript" if is_runtime else "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        return BytesIO(body)
+
     def copyfile(self, source, outputfile):
         try:
             super().copyfile(source, outputfile)
@@ -360,6 +388,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             b'<script src="../dialogue-brand.js"></script>\n</body>',
             1,
         )
+        body = enhance_html(body)
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))

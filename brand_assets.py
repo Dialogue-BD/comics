@@ -14,6 +14,7 @@ RESOURCE_PATHS = frozenset({
     "/brand/dialogue-logo.svg", "/brand/dialogue-logo.png",
     "/brand/dialogue-logomark-d.svg", "/brand/dialogue-logomark-d.png",
     "/favicon.svg", "/favicon.png", "/apple-touch-icon.png",
+    "/brand/dialogue-logo-motion.json",
 })
 NESTED_ICONS = {
     f"/daily-check-in/emotions-live/public/{name}": f"/{name}"

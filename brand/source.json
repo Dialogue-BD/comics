@@ -1,11 +1,12 @@
 {
   "repository": "Dialogue-BD/dialogue-brand-identity",
   "branch": "main",
-  "bundledCommit": "a53d0612808cd1923b0207ec7feebd148f4f49a8",
+  "bundledCommit": "0d3d194c9989715ecedeffb94ed27bff059fbae2",
   "assets": {
     "logoSvg": "svg/02-Dialogue-Primary-Studio-Modern.svg",
     "logoPng": "png/02-Dialogue-Primary-Studio-Modern.png",
     "iconSvg": "brand_asset_matrix/03_Logomark_Monogram_D/svg/03A-Logomark-D-Color-On-Light-Transparent.svg",
-    "iconPng": "brand_asset_matrix/03_Logomark_Monogram_D/png/03A-Logomark-D-Color-On-Light-Transparent.png"
+    "iconPng": "brand_asset_matrix/03_Logomark_Monogram_D/png/03A-Logomark-D-Color-On-Light-Transparent.png",
+    "logoMotion": "motion/01-Studio-Modern-Lockup-Intro-lottie.json"
   }
 }
