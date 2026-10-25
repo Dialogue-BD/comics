@@ -718,7 +718,7 @@ body[data-dialogue-page="stories"],
 body[data-dialogue-page="narratives"] { --page-accent: #d2b978; --page-tint: #f0e6cd; }
 
 body[data-dialogue-page] .dialogue-brandbar {
-  width: 132px;
+  width: fit-content;
   height: 48px;
   padding: 4px 8px;
   overflow: visible;
@@ -726,9 +726,10 @@ body[data-dialogue-page] .dialogue-brandbar {
   box-shadow: 0 8px 24px var(--page-shadow);
 }
 body[data-dialogue-page] .dialogue-brandbar img {
-  width: 116px;
+  width: auto;
   height: 38px;
-  flex: 0 0 116px;
+  max-width: 116px;
+  flex: 0 0 auto;
   object-fit: contain;
   object-position: left center;
   background: var(--dialogue-card);
@@ -736,14 +737,14 @@ body[data-dialogue-page] .dialogue-brandbar img {
 }
 body[data-dialogue-page] .dialogue-brandbar > span { display: none; }
 body[data-dialogue-page] .dialogue-brandbar:hover,
-body[data-dialogue-page] .dialogue-brandbar:focus-visible { width: 132px; }
+body[data-dialogue-page] .dialogue-brandbar:focus-visible { width: fit-content; }
 body[data-dialogue-page] #app-header,
 body[data-dialogue-page] .site-header,
-body[data-dialogue-page] header.app-header { padding-left: 154px !important; }
-body[data-dialogue-page] .topbar { padding-left: max(154px, env(safe-area-inset-left)) !important; }
-body[data-dialogue-page] #page-nav-bar { left: 154px !important; }
-body[data-dialogue-page] nav.top .bar { padding-left: 154px !important; }
-body[data-dialogue-page] #story-spread-toggle { left: 154px !important; }
+body[data-dialogue-page] header.app-header { padding-left: 100px !important; }
+body[data-dialogue-page] .topbar { padding-left: max(100px, env(safe-area-inset-left)) !important; }
+body[data-dialogue-page] #page-nav-bar { left: 100px !important; }
+body[data-dialogue-page] nav.top .bar { padding-left: 100px !important; }
+body[data-dialogue-page] #story-spread-toggle { left: 100px !important; }
 
 /* Story stages may not load the shared JS shell, so style the brand control
    directly. The canonical lockup is designed for light backgrounds. */
@@ -1665,17 +1666,17 @@ body[data-dialogue-page="whos-this"] .tts--key.is-speaking {
 }
 
 @media (max-width: 600px) {
-  body[data-dialogue-page] .dialogue-brandbar { width: 118px; height: 44px; }
-  body[data-dialogue-page] .dialogue-brandbar img { width: 102px; height: 34px; flex-basis: 102px; }
+  body[data-dialogue-page] .dialogue-brandbar { width: fit-content; height: 44px; }
+  body[data-dialogue-page] .dialogue-brandbar img { width: auto; height: 34px; max-width: 102px; flex-basis: auto; }
   body[data-dialogue-page] .dialogue-brandbar:hover,
-  body[data-dialogue-page] .dialogue-brandbar:focus-visible { width: 118px; }
+  body[data-dialogue-page] .dialogue-brandbar:focus-visible { width: fit-content; }
   body[data-dialogue-page] #app-header,
   body[data-dialogue-page] .site-header,
-  body[data-dialogue-page] header.app-header { padding-left: 136px !important; }
-  body[data-dialogue-page] .topbar { padding-left: max(136px, env(safe-area-inset-left)) !important; }
-  body[data-dialogue-page] #page-nav-bar { left: 136px !important; }
-  body[data-dialogue-page] nav.top .bar { padding-left: 136px !important; }
-  body[data-dialogue-page] #story-spread-toggle { left: 136px !important; }
+  body[data-dialogue-page] header.app-header { padding-left: 92px !important; }
+  body[data-dialogue-page] .topbar { padding-left: max(92px, env(safe-area-inset-left)) !important; }
+  body[data-dialogue-page] #page-nav-bar { left: 92px !important; }
+  body[data-dialogue-page] nav.top .bar { padding-left: 92px !important; }
+  body[data-dialogue-page] #story-spread-toggle { left: 92px !important; }
   .stage-topbar .stage-brand img { width: 82px; height: 50px; flex-basis: 82px; }
   body[data-dialogue-page="whos-this"] .topbar { padding-left: 58px; }
   body[data-dialogue-page="action-pictures"] :where(.hud-btn, .flank-btn, .gallery-nav-btn, #info-btn) { min-width: 44px; }
