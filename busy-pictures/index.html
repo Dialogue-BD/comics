@@ -7,7 +7,6 @@
   <title>Busy Pictures - Wimmelbook Output Flooding & AI Tap-to-Speak</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="stylesheet" href="../dialogue-brand.css">
   <style>
     body, html {
       margin: 0;
@@ -39,7 +38,7 @@
        viewport moves under pinch-zoom and the collapsing address bar. */
     #img-wrap {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 22px;
       margin: auto;
       width: max-content;
       height: max-content;
@@ -49,11 +48,35 @@
     #comic-img {
       display: block;
       max-width: 100vw;
-      max-height: 100vh;
+      max-height: calc(100vh - 24px);
+      max-height: calc(100dvh - 24px);
       width: auto;
       height: auto;
       -webkit-user-drag: none;
       user-drag: none;
+    }
+    #artwork-credit {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      padding: 4px 10px 0;
+      color: rgba(203, 213, 225, 0.78);
+      font-size: 10.5px;
+      font-weight: 500;
+      line-height: 1.25;
+      text-align: center;
+      letter-spacing: 0.15px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      pointer-events: none;
+      user-select: none;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+    }
+    #artwork-credit cite {
+      font-style: italic;
+      color: rgba(226, 232, 240, 0.9);
     }
     
     /* Target Ring & Speech Toast */
@@ -508,7 +531,8 @@
       z-index: 1100;
     }
     #tour-launch,
-    #mute-btn {
+    #mute-btn,
+    #hd-btn {
       min-height: 42px;
       padding: 0 14px;
       border: 1px solid rgba(56, 189, 248, 0.55);
@@ -524,17 +548,24 @@
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
     }
-    #mute-btn {
+    #mute-btn,
+    #hd-btn {
       min-width: 46px;
       padding-inline: 12px;
     }
-    #mute-btn[aria-pressed="true"] {
+    #mute-btn[aria-pressed="true"],
+    #hd-btn[data-quality="saver"] {
       border-color: rgba(251, 191, 36, 0.7);
       background: rgba(120, 53, 15, 0.94);
       color: #fef3c7;
     }
+    #hd-btn[data-loaded="hd"] {
+      border-color: rgba(52, 211, 153, 0.75);
+      color: #a7f3d0;
+    }
     #tour-launch:hover, #tour-launch:focus-visible,
-    #mute-btn:hover, #mute-btn:focus-visible {
+    #mute-btn:hover, #mute-btn:focus-visible,
+    #hd-btn:hover, #hd-btn:focus-visible {
       background: #38bdf8;
       color: #0f172a;
       outline: none;
@@ -644,12 +675,16 @@
         flex-direction: column;
         align-items: flex-end;
       }
-      #tour-launch, #mute-btn { min-height: 44px; }
+      #tour-launch, #mute-btn, #hd-btn { min-height: 44px; }
       #mute-btn {
         width: 44px;
         padding: 0;
       }
       #mute-label { display: none; }
+      #hd-btn {
+        padding: 0 11px;
+        font-size: 11.5px;
+      }
       body.tour-active #fullscreen-btn { display: none; }
       body.tour-active.panel-open #tour-controls {
         top: max(64px, calc(env(safe-area-inset-top) + 64px));
@@ -1000,22 +1035,24 @@
 </head>
 <body>
   <!-- Top Page Navigation Bar -->
-  <div id="page-nav-bar">
-    <button class="nav-btn" onclick="prevImage()" title="Previous Picture">◀</button>
-    <span id="page-indicator">Pic 1 of 25</span>
-    <button class="nav-btn" onclick="nextImage()" title="Next Picture">▶</button>
+  <div id="page-nav-bar" role="navigation" aria-label="Picture navigation">
+    <button class="nav-btn" type="button" onclick="prevImage()" aria-label="Previous picture" title="Previous Picture">◀</button>
+    <span id="page-indicator" aria-live="polite">Pic 1 of 22</span>
+    <button class="nav-btn" type="button" onclick="nextImage()" aria-label="Next picture" title="Next Picture">▶</button>
   </div>
 
-  <div id="top-controls" role="group" aria-label="Playback controls">
+  <div id="top-controls" role="group" aria-label="Playback and quality controls">
+    <button id="hd-btn" type="button" onclick="cycleImageQuality()" aria-label="Image resolution: HD Auto (upgrades on zoom)" title="Switch between HD Auto (upgrades on zoom), Always HD, and Data Saver"><span id="hd-icon" aria-hidden="true">✨</span> <span id="hd-label">HD Auto</span></button>
     <button id="mute-btn" type="button" onclick="toggleMute()" aria-label="Mute narration" aria-pressed="false" title="Mute narration"><span id="mute-icon" aria-hidden="true">🔊</span> <span id="mute-label">Sound</span></button>
     <button id="tour-launch" type="button" onclick="startTour()" aria-label="Start an automatic object tour">▶ Auto tour</button>
   </div>
 
   <div id="viewer-container">
     <div id="img-wrap">
-      <img id="comic-img" src="" alt="Wimmelbook Page" draggable="false">
+      <img id="comic-img" src="" alt="Wimmelbook Page" fetchpriority="high" decoding="async" draggable="false">
       <div id="target-ring"></div>
       <div id="box-highlight"><span id="box-label"></span></div>
+      <div id="artwork-credit" role="note" aria-label="Artwork credit"></div>
     </div>
   </div>
 
@@ -1681,6 +1718,177 @@
       }
     }
     
+    // Artwork Credits & Adaptive Resolution Delivery
+    var artworkCredits = {
+      1:  { scene: "Mountain railway station and alpine valley", artist: "Stefan Lohr", book: "My Big Wimmelbook—All Aboard the Train!", pub: "The Experiment, 2021" },
+      2:  { scene: "Passenger train interior and dining car", artist: "Stefan Lohr", book: "My Big Wimmelbook—All Aboard the Train!", pub: "The Experiment, 2021" },
+      3:  { scene: "Railyard, roundhouse, and locomotive depot", artist: "Stefan Lohr", book: "My Big Wimmelbook—All Aboard the Train!", pub: "The Experiment, 2021" },
+      4:  { scene: "North American prairie wildlife and campsite", artist: "Stefan Lohr", book: "My Big Wimmelbook—Animals Around the World", pub: "The Experiment, 2020" },
+      5:  { scene: "House construction site and timber framing", artist: "Max Walther", book: "My Big Wimmelbook—At the Construction Site", pub: "The Experiment, 2018" },
+      6:  { scene: "Suburban neighborhood, woods, and backyard wildlife", artist: "Stefan Lohr", book: "My Big Wimmelbook—Animals Around the World", pub: "The Experiment, 2020" },
+      7:  { scene: "Suburban neighborhood, woods, and backyard wildlife", artist: "Stefan Lohr", book: "My Big Wimmelbook—Animals Around the World", pub: "The Experiment, 2020" },
+      8:  { scene: "Morning apartment building cross-section", artist: "Caryad", book: "My Big Wimmelbook—My Busy Day", pub: "The Experiment, 2020" },
+      9:  { scene: "Busy town street, shops, and construction", artist: "Caryad", book: "My Big Wimmelbook—My Busy Day", pub: "The Experiment, 2020" },
+      10: { scene: "City park, cafe terrace, and playground", artist: "Caryad", book: "My Big Wimmelbook—My Busy Day", pub: "The Experiment, 2020" },
+      11: { scene: "Community sports fields and athletics track", artist: "Caryad", book: "My Big Wimmelbook—My Busy Day", pub: "The Experiment, 2020" },
+      12: { scene: "Lakeside beach, pier, and boating", artist: "Caryad", book: "My Big Wimmelbook—My Busy Day", pub: "The Experiment, 2020" },
+      13: { scene: "Evening apartment building after dark", artist: "Caryad", book: "My Big Wimmelbook—My Busy Day", pub: "The Experiment, 2020" },
+      14: { scene: "Morning barnyard, farmhouse, and stables", artist: "Max Walther", book: "My Big Wimmelbook—On the Farm", pub: "The Experiment, 2018" },
+      15: { scene: "Farmhouse cross-section, dairy barn, and workshop", artist: "Max Walther", book: "My Big Wimmelbook—On the Farm", pub: "The Experiment, 2018" },
+      16: { scene: "Orchard, pasture, and country pond", artist: "Max Walther", book: "My Big Wimmelbook—On the Farm", pub: "The Experiment, 2018" },
+      17: { scene: "Vegetable garden, greenhouse, and farm market", artist: "Max Walther", book: "My Big Wimmelbook—On the Farm", pub: "The Experiment, 2018" },
+      18: { scene: "Harvest fields, combine harvester, and hay baling", artist: "Max Walther", book: "My Big Wimmelbook—On the Farm", pub: "The Experiment, 2018" },
+      19: { scene: "Farmyard evening campfire and starry sky", artist: "Max Walther", book: "My Big Wimmelbook—On the Farm", pub: "The Experiment, 2018" },
+      20: { scene: "Morning arrival at school and crosswalk", artist: "Carolin Görtler", book: "My Big Wimmelbook—A Day at School", pub: "The Experiment, 2020" },
+      21: { scene: "Classrooms, science lab, and art room", artist: "Carolin Görtler", book: "My Big Wimmelbook—A Day at School", pub: "The Experiment, 2020" },
+      22: { scene: "Schoolyard recess, garden, and sports court", artist: "Carolin Görtler", book: "My Big Wimmelbook—A Day at School", pub: "The Experiment, 2020" },
+      23: { scene: "School library, music room, and cafeteria", artist: "Carolin Görtler", book: "My Big Wimmelbook—A Day at School", pub: "The Experiment, 2020" },
+      24: { scene: "Afternoon school festival and stage performance", artist: "Carolin Görtler", book: "My Big Wimmelbook—A Day at School", pub: "The Experiment, 2020" },
+      25: { scene: "School dismissal and heading home", artist: "Carolin Görtler", book: "My Big Wimmelbook—A Day at School", pub: "The Experiment, 2020" }
+    };
+
+    var hdBtn = document.getElementById("hd-btn");
+    var hdIcon = document.getElementById("hd-icon");
+    var hdLabel = document.getElementById("hd-label");
+    var artworkCreditEl = document.getElementById("artwork-credit");
+    var currentLoadedTier = "std"; // "std" | "hd" | "loading-hd"
+    var hdLoadToken = 0;
+
+    function isSlowOrDataSaverConnection() {
+      try {
+        var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        if (!conn) return false;
+        if (conn.saveData) return true;
+        return conn.effectiveType === "slow-2g" || conn.effectiveType === "2g";
+      } catch (err) {
+        return false;
+      }
+    }
+
+    function getSavedImageQuality() {
+      try {
+        var saved = window.localStorage.getItem("busyPicturesImageQuality");
+        if (saved === "auto" || saved === "hd" || saved === "saver") return saved;
+      } catch (err) {}
+      return isSlowOrDataSaverConnection() ? "saver" : "auto";
+    }
+
+    var imageQualityMode = getSavedImageQuality();
+
+    function saveImageQuality(mode) {
+      try {
+        window.localStorage.setItem("busyPicturesImageQuality", mode);
+      } catch (err) {}
+    }
+
+    function getImageTierUrl(index, tier) {
+      var pageNum = index + 1;
+      if (tier === "hd") return "wimmelbook_" + pageNum + "_hd.webp";
+      if (tier === "std") return "wimmelbook_" + pageNum + "_std.webp";
+      return images[index];
+    }
+
+    function updateHdButtonUI() {
+      if (!hdBtn) return;
+      var isHdActive = currentLoadedTier === "hd";
+      var isUpgrading = currentLoadedTier === "loading-hd";
+      hdBtn.setAttribute("data-quality", imageQualityMode);
+      hdBtn.setAttribute("data-loaded", isHdActive ? "hd" : "std");
+      hdBtn.setAttribute("aria-pressed", String(imageQualityMode === "hd" || isHdActive));
+      if (imageQualityMode === "saver") {
+        if (hdIcon) hdIcon.textContent = "⚡";
+        if (hdLabel) hdLabel.textContent = "Data Saver";
+        hdBtn.setAttribute("aria-label", "Image resolution: Data Saver active (~500 KB per picture). Activate to switch to HD Auto.");
+        hdBtn.title = "Data Saver active (~500 KB per picture) — click for HD Auto";
+      } else if (imageQualityMode === "hd") {
+        if (hdIcon) hdIcon.textContent = "✨";
+        if (hdLabel) hdLabel.textContent = isUpgrading ? "HD…" : "HD 3K";
+        hdBtn.setAttribute("aria-label", "Image resolution: Always 3K HD. Activate to switch to Data Saver.");
+        hdBtn.title = "Always 3K HD (3240p) — click for Data Saver";
+      } else {
+        if (hdIcon) hdIcon.textContent = "✨";
+        if (hdLabel) hdLabel.textContent = isUpgrading ? "HD…" : (isHdActive ? "HD Ready ✓" : "HD Auto");
+        hdBtn.setAttribute("aria-label", "Image resolution: HD Auto (loads fast 500 KB first, upgrades to 3K HD when you zoom). Activate to lock 3K HD.");
+        hdBtn.title = isHdActive
+          ? "3K HD active for this picture — click to lock Always HD"
+          : "HD Auto: fast load now, upgrades to 3K HD when you zoom — click to lock Always HD";
+      }
+    }
+
+    function updateArtworkCredit(index) {
+      var pageNum = index + 1;
+      var info = artworkCredits[pageNum] || {
+        scene: "Wimmelbook busy picture",
+        artist: "My Big Wimmelbook series",
+        book: "My Big Wimmelbook",
+        pub: "The Experiment"
+      };
+      if (artworkCreditEl) {
+        artworkCreditEl.innerHTML =
+          "Artwork: " + info.artist + " · <cite>" + info.book + "</cite> (" + info.pub + ")";
+      }
+      if (img) {
+        img.alt =
+          "Picture " + pageNum + " of " + images.length + ": " + info.scene +
+          " — Illustration by " + info.artist + " from " + info.book + " (" + info.pub + ")";
+      }
+    }
+
+    function maybeUpgradeToHd(force) {
+      if (!force && imageQualityMode === "saver") return;
+      if (currentLoadedTier === "hd" || currentLoadedTier === "loading-hd") return;
+      var targetIdx = currentImageIndex;
+      var token = ++hdLoadToken;
+      currentLoadedTier = "loading-hd";
+      updateHdButtonUI();
+
+      var preloader = new Image();
+      preloader.decoding = "async";
+      var hdUrl = getImageTierUrl(targetIdx, "hd");
+      preloader.onload = function() {
+        if (token !== hdLoadToken || targetIdx !== currentImageIndex) return;
+        function commitSwap() {
+          if (token !== hdLoadToken || targetIdx !== currentImageIndex) return;
+          img.src = hdUrl;
+          currentLoadedTier = "hd";
+          updateHdButtonUI();
+        }
+        if (typeof preloader.decode === "function") {
+          preloader.decode().then(commitSwap, commitSwap);
+        } else {
+          commitSwap();
+        }
+      };
+      preloader.onerror = function() {
+        if (token !== hdLoadToken || targetIdx !== currentImageIndex) return;
+        // Fallback to high-res JPEG if _hd.webp isn't available yet
+        img.src = images[targetIdx];
+        currentLoadedTier = "hd";
+        updateHdButtonUI();
+      };
+      preloader.src = hdUrl;
+    }
+
+    function cycleImageQuality() {
+      if (imageQualityMode === "auto") {
+        imageQualityMode = "hd";
+        saveImageQuality("hd");
+        maybeUpgradeToHd(true);
+        showSpeechToast("Always 3K HD", "Full 3240p resolution enabled for maximum zoom clarity.");
+      } else if (imageQualityMode === "hd") {
+        imageQualityMode = "saver";
+        saveImageQuality("saver");
+        updateHdButtonUI();
+        showSpeechToast("Data Saver on", "Uses compact ~500 KB WebP images to save mobile data.");
+      } else {
+        imageQualityMode = "auto";
+        saveImageQuality("auto");
+        updateHdButtonUI();
+        if (scale > 1.25 || tourState.active) maybeUpgradeToHd(false);
+        showSpeechToast("HD Auto", "Loads compact images first and upgrades to 3K HD when you zoom in.");
+      }
+    }
+
     // Rolling & Navigation
     function prevImage() {
       var newIndex = (currentImageIndex - 1 + images.length) % images.length;
@@ -1699,7 +1907,18 @@
       updateTourLaunch();
       updateSuggestionTools();
       speechToast.classList.remove("visible");
-      img.src = images[currentImageIndex] + "?v=" + Date.now();
+      hdLoadToken += 1;
+      updateArtworkCredit(currentImageIndex);
+      if (imageQualityMode === "hd") {
+        currentLoadedTier = "hd";
+        img.onerror = function() { img.onerror = null; img.src = images[currentImageIndex]; };
+        img.src = getImageTierUrl(currentImageIndex, "hd");
+      } else {
+        currentLoadedTier = "std";
+        img.onerror = function() { img.onerror = null; img.src = images[currentImageIndex]; };
+        img.src = getImageTierUrl(currentImageIndex, "std");
+      }
+      updateHdButtonUI();
       updatePageIndicator();
       scale = 1;
       posX = 0;
@@ -2133,6 +2352,7 @@
       tourControls.classList.add("visible");
       togglePanel(true);
       updateTourControls();
+      maybeUpgradeToHd(false);
       presentTourObject(true);
     }
 
@@ -2452,6 +2672,9 @@
     function updateTransform() {
       imgWrap.style.transform = "translate(" + posX + "px, " + posY + "px) scale(" + scale + ")";
       applyOverlayScale();
+      if (scale > 1.25) {
+        maybeUpgradeToHd(false);
+      }
     }
 
     function clampZoom(value) {
@@ -2614,6 +2837,10 @@
         bl.style.transformOrigin = "top center";
         bl.style.transform = "scale(" + k + ")";
       }
+      if (artworkCreditEl) {
+        artworkCreditEl.style.transformOrigin = "top center";
+        artworkCreditEl.style.transform = "scale(" + k + ")";
+      }
     }
     
     // CLICK / TOUCH TAP DETECTION
@@ -2693,6 +2920,5 @@
       init();
     };
   </script>
-  <script src="../dialogue-brand.js"></script>
 </body>
 </html>
