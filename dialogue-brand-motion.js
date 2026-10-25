@@ -7,9 +7,6 @@
   var MOTION_URL = '/brand/dialogue-logo-motion.json';
   var RUNTIME_URL = '/brand/lottie-light.min.js';
   var logoSelector = 'img[src], img[srcset]';
-  var hoverMedia = window.matchMedia
-    ? window.matchMedia('(hover: hover) and (pointer: fine)')
-    : null;
   var reducedMedia = window.matchMedia
     ? window.matchMedia('(prefers-reduced-motion: reduce)')
     : null;
@@ -25,8 +22,9 @@
   var activeRecord = null;
 
   function allowsMotion() {
-    return Boolean(hoverMedia && hoverMedia.matches) &&
-      !(reducedMedia && reducedMedia.matches) &&
+    // Actual pointer-enter events are reliable even on hybrid/touch laptops
+    // whose primary-pointer media query says they cannot hover.
+    return !(reducedMedia && reducedMedia.matches) &&
       !(printMedia && printMedia.matches) &&
       !(window.matchMedia && window.matchMedia('(forced-colors: active)').matches) &&
       !window.__dialoguePrintMode;
@@ -69,6 +67,10 @@
       script.onerror = function () { reject(new Error('Dialogue motion runtime unavailable.')); };
       (document.head || document.documentElement).appendChild(script);
     });
+    runtimePromise = runtimePromise.catch(function (error) {
+      runtimePromise = null;
+      throw error;
+    });
     return runtimePromise;
   }
 
@@ -78,6 +80,9 @@
       .then(function (response) {
         if (!response.ok) throw new Error('Dialogue logo motion data unavailable.');
         return response.json();
+      }).catch(function (error) {
+        dataPromise = null;
+        throw error;
       });
     return dataPromise;
   }
@@ -321,6 +326,9 @@
     owner.addEventListener('pointerenter', function (event) {
       if (event.pointerType !== 'touch') {
         record.pointerActive = true;
+        // A new hover is a new request, even if this link still has focus.
+        record.playedInSession = false;
+        record.failed = false;
         activate(record);
       }
     });
@@ -330,6 +338,7 @@
     });
     owner.addEventListener('focusin', function () {
       record.focusActive = true;
+      record.failed = false;
       activate(record);
     });
     owner.addEventListener('focusout', function (event) {
@@ -399,7 +408,6 @@
       attributes: true,
       attributeFilter: ['src', 'srcset']
     });
-    if (hoverMedia && hoverMedia.addEventListener) hoverMedia.addEventListener('change', onViewportChange);
     if (reducedMedia && reducedMedia.addEventListener) reducedMedia.addEventListener('change', onViewportChange);
     if (printMedia && printMedia.addEventListener) printMedia.addEventListener('change', onViewportChange);
     window.addEventListener('beforeprint', stopAll);

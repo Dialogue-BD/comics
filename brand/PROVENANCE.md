@@ -36,3 +36,8 @@ local Lottie SVG player load only on hover or keyboard focus. The original stati
 logo remains the accessible fallback and the print version. Reduced-motion and
 touch-only devices do not download the animation. The motion JSON participates in
 the same atomic, five-minute repository refresh as the static branding.
+
+The Lottie light SVG player and its MIT license are bundled in `brand/vendor/`.
+Serving this browser asset must not depend on a deployed `node_modules` folder.
+Mouse and pen hover events trigger playback directly, including on hybrid
+devices; touch pointer events never start a download.

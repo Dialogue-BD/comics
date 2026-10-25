@@ -15,5 +15,6 @@ class MotionInjectionTests(unittest.TestCase):
     def test_no_head_does_not_change_other_content(self):
         self.assertEqual(enhance_html(b"not an HTML page"), b"not an HTML page")
 
-    def test_runtime_uses_installed_dependency(self):
+    def test_runtime_is_bundled_and_does_not_require_node_modules(self):
         self.assertTrue(motion_runtime(".").is_file())
+        self.assertNotIn("node_modules", str(motion_runtime(".")))

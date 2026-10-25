@@ -17,4 +17,6 @@ def enhance_html(body):
 
 
 def motion_runtime(root):
-    return Path(root) / "node_modules/lottie-web/build/player/lottie_light.min.js"
+    # The browser runtime is part of the app, not an install-only dependency.
+    # Publishing must work even when node_modules is excluded from the snapshot.
+    return Path(root) / "brand/vendor/lottie-light.min.js"
