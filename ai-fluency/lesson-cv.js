@@ -190,7 +190,8 @@ PROMPT_CHIPS.filter(c=>c.tag!=='Process').forEach(c=>{ c.matches=SLOTS.find(s=>s
 /* Send checks the prompt has all four parts; a missing part is explained with the tailor. "Send anyway" still sends: nothing is locked. */
 const slotHits=(sl,v)=>sl.test.filter(r=>r.test(v)).length;
 const slotOn=(sl,v)=>sl.all?slotHits(sl,v)===sl.test.length:slotHits(sl,v)>0;
-const PROCESS_PIECES=['the rule: use only facts from her files','the order: check first, then write','what to do if something is missing: ask, don’t guess'];
+// one recorded line per missing piece (audio: ➕ Still to add: <piece>.) — keep this wording in step with the recordings
+const PROCESS_PIECES=['use only facts from her files','the order — check first, then write','if something is missing, ask — don’t guess'];
 const MISSING={
  Context:'<b>Context</b> — who she is, and why. A tailor who doesn’t know it’s for a gaye holud can’t make it fit the day.',
  Product:'<b>Product</b> — what to make. A tailor can’t start until you say “a yellow blouse to match this shari”.',
@@ -205,7 +206,7 @@ const MISSING_BN={
 const PROCESS_PIECES_BN=['নিয়ম: শুধু তার ফাইলের তথ্য ব্যবহার করো','ক্রম: আগে যাচাই করো, তারপর লেখো','কিছু না থাকলে কী করবে: জিজ্ঞেস করো, অনুমান কোরো না'];
 const promptCheck=x=>{ const v=x.get('cvPrompt',''); const miss=SLOTS.filter(sl=>!slotOn(sl,v)); if(!miss.length) return null;
   const proc=SLOTS.find(sl=>sl.label==='Process'), left=proc.test.map((r,k)=>r.test(v)?null:k).filter(k=>k!==null);
-  const lines=miss.map(sl=>`<p class="pp-miss pp-${sl.label}">${MISSING[sl.label]}${BN(MISSING_BN[sl.label])}${sl.label==='Process'&&left.length<proc.test.length?` Still to add: ${left.map(k=>PROCESS_PIECES[k]).join('; ')}.${BN('এখনো যোগ করতে হবে: '+left.map(k=>PROCESS_PIECES_BN[k]).join('; ')+'।')}`:''}</p>`).join('');
+  const lines=miss.map(sl=>`<div class="pp-miss pp-${sl.label}"><p>${MISSING[sl.label]}${BN(MISSING_BN[sl.label])}</p>${sl.label==='Process'&&left.length<proc.test.length?left.map(k=>`<p class="pp-add">➕ Still to add: ${PROCESS_PIECES[k]}.${BN('এখনো যোগ করতে হবে: '+PROCESS_PIECES_BN[k]+'।')}</p>`).join(''):''}</div>`).join('');
   return {ok:0,title:miss.length===1?'Your prompt is missing one part':`Your prompt is missing ${miss.length} parts`,
     titlebn:miss.length===1?'তোমার প্রম্পটের একটি অংশ বাকি আছে':`তোমার প্রম্পটের ${miss.length}টি অংশ বাকি আছে`,
     why:'A good prompt has all four parts.',whybn:'একটি ভালো প্রম্পটে চারটি অংশই থাকে।',more:lines,retry:()=>{},
