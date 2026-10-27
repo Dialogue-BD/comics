@@ -19,7 +19,7 @@ OUT = ROOT / 'production' / 'cv-tts'
 def belongs(line):
     for use in line.get('uses', [line]):
         lesson, where = use['lesson'], use['where']
-        if lesson in ('common', 'cv', 'intro', 'introd'):
+        if lesson in ('common', 'cv', 'intro', 'introd', 'sheets'):
             return True
         if where.startswith(('#cv/', 'cv ·')):
             return True

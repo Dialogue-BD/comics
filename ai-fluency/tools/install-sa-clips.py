@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Install single-line Ayesha accent recordings (production/cv-tts/takes/cv-ayesha-sa-<key>.wav)
+"""Install single-line recordings (production/cv-tts/takes/cv-ayesha-sa-<key>.wav for Ayesha,
+cv-coach-sh-<key>.wav for the coach's feedback-sheet lines)
 as audio/<key>.mp3, trimmed like tools/gemini_tts.py, and refresh audio/manifest.json.
 
   python3 tools/install-sa-clips.py [KEY,KEY...]     # default: every sa take newer than its mp3
@@ -16,7 +17,7 @@ lines = {l['key']: l for l in json.loads((AUD/'lines.json').read_text())}
 want = set(sys.argv[1].split(',')) if len(sys.argv) > 1 else None
 man = json.loads((AUD/'manifest.json').read_text())
 done = []
-for wav in sorted(TAKES.glob('cv-ayesha-sa-*.wav')):
+for wav in sorted([*TAKES.glob('cv-ayesha-sa-*.wav'), *TAKES.glob('cv-coach-sh-*.wav')]):
     k = wav.stem.rsplit('-', 1)[1]
     if k not in lines: print('not a current line, skipped:', wav.name); continue
     out = AUD / (k + '.mp3')

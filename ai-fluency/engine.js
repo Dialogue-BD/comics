@@ -573,16 +573,36 @@ function renderSheet(){
   const p=$('.pb.primary',sh); if(p&&!matchMedia('(pointer:coarse)').matches) p.focus({preventScroll:true});
   sh.dataset.k=String(o.title)+'|'+String((o.html||'').length)+'|'+o.tone;
   // every explanation can be heard — and plays by itself when an answer needs another look
-  const say=o.tone==='info'?'':sheetSpeech(sh);
-  if(say){ const h3=$('h3',sh); const ear=document.createElement('button'); ear.className='ear sh-ear'; ear.dataset.speak=canon(say); ear.setAttribute('aria-label','Listen'); ear.textContent='🔊'; (h3||$('.sh-in',sh)).appendChild(ear); }
+  const say=o.tone==='info'?'':sheetSpeech(sh), parts=say?sheetParts(sh):[];
+  if(window.__sheetLog&&say) window.__sheetLog.push({say,parts,tone:o.tone});
+  if(say){ const h3=$('h3',sh); const ear=document.createElement('button'); ear.className='ear sh-ear'; ear.dataset.speak=canon(say); ear.dataset.parts=JSON.stringify(parts); ear.setAttribute('aria-label','Listen'); ear.textContent='🔊'; (h3||$('.sh-in',sh)).appendChild(ear); }
   if(fresh&&!o.cq){ try{ if(o.tone==='ok') FX.sfx('ok'); else if(o.tone==='think'||o.tone==='bad') FX.sfx('no'); }catch(e){}
-    if(say&&S.voice&&(o.tone==='think'||o.tone==='bad'||o.tone==='ok')) setTimeout(()=>{ if(UI.sheet===s&&sh.dataset.k===String(o.title)+'|'+String((o.html||'').length)+'|'+o.tone) speak(say); },o.tone==='ok'?500:350); }
+    if(say&&S.voice&&(o.tone==='think'||o.tone==='bad'||o.tone==='ok')) setTimeout(()=>{ if(UI.sheet===s&&sh.dataset.k===String(o.title)+'|'+String((o.html||'').length)+'|'+o.tone) speakParts(say,parts); },o.tone==='ok'?500:350); }
 }
+const SHEET_MUTE='.bn,.bn-in,.looks,.verd2,.quote,.cq-talk,.fgrid2,button,svg,.ear,.miss .claim,.pz-who';
+function sheetTitle(sh){ const h=$('h3',sh); let title=''; if(h){ const c=h.cloneNode(true); c.querySelectorAll('.bn-in,.ear').forEach(e=>e.remove()); title=c.textContent.replace(/^[✓⚠↺⏩\s]+/,'').trim(); if(title&&!/[.!?…]$/.test(title)) title+='.'; } return title; }
 function sheetSpeech(sh){
   const body=$('.sh-body',sh); if(!body) return ''; const b=body.cloneNode(true);
-  b.querySelectorAll('.bn,.bn-in,.looks,.verd2,.quote,.cq-talk,.fgrid2,button,svg,.ear,.miss .claim').forEach(e=>e.remove());
-  const h=$('h3',sh); let title=''; if(h){ const c=h.cloneNode(true); c.querySelectorAll('.bn-in,.ear').forEach(e=>e.remove()); title=c.textContent.replace(/^[✓⚠↺⏩\s]+/,'').trim(); if(title&&!/[.!?…]$/.test(title)) title+='.'; }
+  b.querySelectorAll(SHEET_MUTE).forEach(e=>e.remove());
+  const title=sheetTitle(sh);
   const t=plain(b.textContent).replace(/Eye-sha/g,'Ayesha'); return ((title?title+' ':'')+t).trim();
+}
+/* the same speech, line by line: the title, then each paragraph / line break / list item / box.
+   A sheet assembled on the fly (the files she chose, the claim she judged) is never one recorded line,
+   but each of its lines is — so it plays as a run of recordings instead of the device voice. */
+function sheetParts(sh){
+  const body=$('.sh-body',sh); if(!body) return []; const b=body.cloneNode(true);
+  b.querySelectorAll(SHEET_MUTE).forEach(e=>e.remove());
+  b.querySelectorAll('br').forEach(e=>e.replaceWith('\n'));
+  b.querySelectorAll('p,li,div,h3,h4,blockquote').forEach(e=>{ e.prepend('\n'); e.append('\n'); });
+  const out=[], t=sheetTitle(sh); if(t) out.push(t);
+  b.textContent.split('\n').forEach(z=>{ z=plain(z).replace(/Eye-sha/g,'Ayesha').trim(); if(/[\p{L}\p{N}]/u.test(z)) out.push(z); });
+  return out;
+}
+/* whole recording if there is one; otherwise each part's recording in turn (device voice only for a part not yet recorded) */
+function speakParts(full,parts,onEnd){
+  if(!parts||parts.length<2||AUDIO.has(audioKey(full))){ speak(full,onEnd); return; }
+  let i=0; const go=()=>{ if(i>=parts.length){ onEnd&&onEnd(); return; } speak(parts[i++],go); }; go();
 }
 function closeSheet(){ UI.sheet=null; renderSheet(); renderFoot(); }
 function ppClick(e){
@@ -597,7 +617,7 @@ function onSheetClick(e){
   if(ppClick(e)) return;
   const kwb=e.target.closest('[data-kw]'); if(kwb){ kwPick(+kwb.dataset.kw); return; }
   const hv=e.target.closest('[data-hv]'); if(hv){ huntVerdict(hv.dataset.hv); return; }
-  const sp=e.target.closest('[data-speak]'); if(sp){ speak(sp.dataset.speak); sp.classList.add('speaking'); return; }
+  const sp=e.target.closest('[data-speak]'); if(sp){ if(sp.dataset.parts) speakParts(sp.dataset.speak,JSON.parse(sp.dataset.parts)); else speak(sp.dataset.speak); sp.classList.add('speaking'); return; }
   const sy=e.target.closest('[data-say]'); if(sy){ speak(sy.dataset.say); sy.classList.add('speaking'); return; }
   const s=e.target.closest('[data-s]'); if(!s) return; const a=s.dataset.s, o=UI.sheet;
   if(a==='close'){ closeSheet(); return; }
@@ -1299,4 +1319,6 @@ function boot(){
 function sheetFrom(o){ UI.sheet=Object.assign(fbSheet(o,o.retry?()=>{}:null),o.sheet||{}); renderUI(); }
 const GI={get S(){return S},esc,BN,tr,T,speak,hush,sayBtn,gapped,canon,renderStage,renderFoot,renderUI,renderTop,renderSheet,firstTry,resetTalk,toggleTimer,paintTimer,recToggle,rec:()=>REC,timer:()=>TIMER,fileThumb,FILES,next,ctx,fn,IC,ico,ui:()=>UI};
 window.AFL={_g:GI,fb:sheetFrom,HUB,TOUR,_mode:k=>{S.mode=k},audioKey,audioDuration,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach:renderUI,renderUI,start,hub,STORY_DATE,firstTry,huntMark,shown};
+/* for tools/sheet-lines.cjs: reach the sheet builders from a test browser (not used by the page) */
+AFL._t={openLine,huntVerdict,huntDone,askPick,pzTrap,ctx,fbSheet,renderUI,renderSheet,activeKB,goId,S,get UI(){return UI},set UI(v){UI=v}};
 })();
