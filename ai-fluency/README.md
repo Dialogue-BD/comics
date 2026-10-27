@@ -63,6 +63,27 @@ All three workflows follow this pattern: CV (29 steps), Agent (31) and Build (24
 
 ## Recorded voices (Gemini TTS, no API)
 
+First-challenge recording queue: `production/cv-tts/browser-recording-queue.md`.
+Refresh it with `node tools/voice-script.js`, then
+`python3 tools/check-cv-audio.py --allow-missing` from this folder. The audit
+checks that existing MP3s decode, and includes the shared onboarding, four-D
+film, reading demonstration, speaking hints and consequence explanations.
+Its JSON report records the remaining gaps. Dynamically assembled feedback
+sheets still need a separate coverage pass; the static queue does not certify
+complete speech coverage or perceptual listening quality.
+
+Ayesha's lines in the first challenge are recorded one line per take, as
+`production/cv-tts/takes/cv-ayesha-sa-<key>.wav`: AI Studio, Gemini 3.8 Flash TTS,
+voice Leda, with a style note asking for a young Bangladeshi woman from Rajshahi
+speaking English with a natural Bangladeshi accent, slowly and clearly. Install
+them with `python3 tools/install-sa-clips.py [KEY,KEY...]`, which trims each WAV
+to `audio/<key>.mp3`, keeps the previous clip in `audio/_rejected/`, and bumps
+the manifest version. `production/` holds the raw takes and stays out of git.
+
+New take filenames contain a hash of their exact line sequence. Keep each
+downloaded filename unchanged so a refreshed queue cannot cut an old take
+into different lines.
+
 Every spoken line has a key made from its words (`audioKey()` in `engine.js`, FNV-1a over the normalised text). The page plays `audio/<key>.mp3` when `audio/manifest.json` lists the key, and falls back to the browser's voice otherwise — so a line that changes simply falls back until it is re-recorded, and nothing has to be renamed.
 
 Cog reads every new step by itself. One audio player is unlocked by the student’s first tap (phones block sound that starts on its own), and the lines for this step and the next two are fetched ahead, so a line starts at once. Clips are 40 kb/s mono (~20 KB each). If a phone blocks a clip, 🔊 pulses rather than the line dropping to the robot voice. Bump `v` in `audio/manifest.json` after re-encoding to make phones fetch the new files.

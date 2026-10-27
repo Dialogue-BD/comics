@@ -1,0 +1,18 @@
+{
+ "coach": {
+  "name": "The coach",
+  "pick": "Extended Voice Library: filter Accent → Bangladeshi or Indian English, a warm adult teacher voice. If none fits: Sulafat (Warm) or Achird (Friendly).",
+  "profile": "A warm, patient teacher’s voice in the middle of its range. Unhurried and very clear, every consonant finished. Short pauses at commas; a small lift on the key word of each sentence. Never sing-song, never salesy. Pronounce Sathi as Bengali সাথী, SHA-tʰee, with an aspirated dental stop /t̪ʰ/ for থ: tongue against the upper teeth, release with a short puff of air. AI is the two letters A I.",
+  "scene": "A quiet university classroom in Rajshahi, late morning, a ceiling fan turning slowly.\nRoom tone: a soft, steady fan hum, very low.",
+  "context": "Short spoken instructions and questions for English learners (B1) working through a lesson on a phone. The speaker is their teacher, guiding one small step at a time and wanting every word understood the first time.",
+  "style": "calm, warm and encouraging, speaking slowly and clearly for English learners"
+ },
+ "ayesha": {
+  "name": "Ayesha",
+  "pick": "Extended Voice Library: filter Accent → Bangladeshi or Indian English, Gender → female, a young adult voice. If none fits: Leda (Youthful) or Autonoe (Bright).",
+  "profile": "A young woman’s voice, bright but not high, clear and steady. Natural South Asian English rhythm. Stress lands on the content words; a short, natural pause where a gap … appears in the sentence. Pronounce Sathi as Bengali সাথী, SHA-tʰee, with an aspirated dental stop /t̪ʰ/ for থ: tongue against the upper teeth, release with a short puff of air. AI is the two letters A I.",
+  "scene": "A student common room at Rajshahi University in the afternoon.\nRoom tone: faint, distant student chatter, very low.",
+  "context": "Model sentences that English learners will repeat and then adapt. The speaker is Ayesha, a third-year Economics student, saying each sentence the way she would say it to a friend: plainly, confidently, and slowly enough to copy.",
+  "style": "friendly and confident, speaking slowly and clearly, like a student explaining something to a friend"
+ }
+}

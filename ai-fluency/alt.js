@@ -44,7 +44,8 @@ ALT.play=(root,o)=>{
     el.classList.remove('s-skim','s-key','s-scan','s-chk'); tags.forEach(g=>g.classList.remove('on','pick')); words.forEach(w=>w.classList.remove('on','off'));
     chks.forEach(k=>k.classList.remove('on')); eye.style.opacity=0; sweep.classList.remove('go'); el.querySelector('.alt-found').classList.remove('on'); count.textContent=''; zoom(1);
     const stamp=el.querySelector('.alt-stamp'); stamp.classList.remove('on');
-    const dwell=s.ms||5200;
+    const seconds=o.voice&&o.voice()&&window.AFL&&AFL.audioDuration?AFL.audioDuration(s.h+'. '+s.en):0;
+    const dwell=Math.max(s.ms||5200,seconds*1000+300);
     if(n===1){ el.classList.add('s-skim'); let read=0;
       c.map.forEach((m,i)=>{ at(300+i*430,()=>{ tags[i].classList.add('on'); eye.style.opacity=1; eye.style.left=(m.x+3)+'%'; eye.style.top=(m.y+m.h/2)+'%'; read+=m.n||2; count.textContent=(bn?'পড়া শব্দ: ':'Words read: ')+read+' / '+c.total; },tk); });
     }

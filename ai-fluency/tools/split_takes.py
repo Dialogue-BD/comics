@@ -90,6 +90,15 @@ def main():
         print(__doc__); sys.exit(1)
     src = os.path.expanduser(sys.argv[1]); force = '--force' in sys.argv
     takes = json.load(open(os.path.join(AUD, 'takes.json')))
+    if '--only' in sys.argv:
+        at = sys.argv.index('--only')
+        if at + 1 >= len(sys.argv):
+            sys.exit('--only needs a take name (or comma-separated names)')
+        wanted = set(sys.argv[at + 1].split(','))
+        unknown = wanted - takes.keys()
+        if unknown:
+            sys.exit('Unknown takes: ' + ', '.join(sorted(unknown)))
+        takes = {name: keys for name, keys in takes.items() if name in wanted}
     lines = {l['key']: l for l in json.load(open(os.path.join(AUD, 'lines.json')))}
     done, skipped, flagged = 0, [], []
     recut = set()
