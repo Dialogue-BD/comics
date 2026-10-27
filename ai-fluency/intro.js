@@ -3,7 +3,8 @@
  * One 1920×1080 stage. The four D gears are the same 12-tooth gears as the
  * coach's compass (compass.js), machined large, on a dark green stage lit like
  * a watch movement. A camera moves over one continuous mechanism, so the film
- * reads as one take: a lone AI gear that moves nothing → four gears seat →
+ * reads as one take: a lone AI gear that moves nothing → all four gears seat
+ * together → each D in turn steps forward and is acted out →
  * loop 1 (the big decisions) → loop 2 (the conversation) → the gears mesh and
  * turn → the sweet spot, with you at the centre → an example → the close.
  *
@@ -106,7 +107,7 @@ let CAM_LOOP1, CAM_FULL, CAM_EX, CAM_END, CAM_MAP;
  * knows — me, the AI, jobs, a question, a book, my name. Then the gears come back.
  * Screen space: the picture lives in x 600–1860, y 80–880 (the caption is below).
  */
-const ORDER4=['del','des','dis','dil'];
+const ORDER4=['del','des','dis','dil'], SEAT4=['del','dis','dil','des'];
 /* where the camera sits for each mode; CAM_MAP puts the mechanism small in the top-left corner */
 function cams(){
   const map=(x,y,s)=>{const k=s/PK; return [CX+(SX-x)/s, CY+(SY-y)/s, k];};
@@ -195,16 +196,16 @@ const ACT={
    ${stamp(left+w-50,top+70,true,'data-a="stamp @1%84 .55"',1)}`}
 };
 
-/* one scene per D: name it and seat its gear → pull back → act it out → gears come back */
+/* one scene per D: all four gears are already seated; this one steps forward and the
+   other three dim → pull back → act it out → gears come back */
 function dScene(d){
-  const k=ORDER4.indexOf(d), before=ORDER4.slice(0,k), after=ORDER4.slice(k+1), c=COL[d], D=DEF[d];
+  const k=ORDER4.indexOf(d), others=ORDER4.filter(o=>o!==d), c=COL[d], D=DEF[d];
   return {id:d, lead:.5, tail:3.1, ai:[[0,70]],
    lines:[[...D.name,.5],[...D.line]],
    cam0:C(1), cam:[['@0+.9',1.5,...CAM_MAP],['@end-1.65',1.45,...C(1)]],
-   sfx:[['@0+.6','seat']],
-   html:()=>`${sockets(after.length?'':'data-a="fadeout @0+.8 .6"',[d,...after])}
-    ${before.map(b=>unit(b,'','','data-a="dim @0+1.2 1|undim @end-1.6 1.1"')).join('')}
-    ${unit(d,'data-a="seat @0 .8"','data-a="plate @0+.5"')}
+   sfx:[['@0+.15','tick']],
+   html:()=>`${others.map(b=>unit(b,'','','data-a="dim @0 .7|undim @end-1.6 1.1"')).join('')}
+    ${unit(d,'data-a="focus @0 1"','','data-a="flash @0+.1 1.3"')}
     <div class="ripple" style="left:${POS[d][0]}px;top:${POS[d][1]}px;--c:${c[1]}" data-a="ripple @0+.6 1.1"></div>
     <div class="ripple" style="left:${POS[d][0]}px;top:${POS[d][1]}px;--c:${c[1]}" data-a="ripple @1+.2 1.4"></div>`,
    scr:()=>`<div class="x-vg v-${d}" style="--c:${c[1]}" data-a="fade @0+1.6 .5|fadeout @end-1.95 .7">
@@ -225,10 +226,14 @@ function scenesFor(){ return [
   <div class="i-spark" style="left:${CX}px;top:${CY}px" data-a="burst .6 1.4"></div>`,
  scr:()=>``},
 
-{id:'four', lead:.6, tail:.6,
+/* all four gears seat together, clockwise from the top, before any one is explained */
+{id:'four', lead:.6, tail:2.4,
  lines:[['AI fluency has four gears: the four Ds.','AI-তে দক্ষতার চারটা গিয়ার: চারটা D।']],
  cam0:C(1), ai:[[0,170]],
- html:()=>`${sockets('data-a="flash @0+1.6 1.4"')}${gear('ai','data-a="exit @0+.8 1.8"')}`,
+ sfx:SEAT4.map((d,i)=>[`@0+${(1.4+i*.38).toFixed(2)}`,'seat']),
+ html:()=>`${sockets('data-a="flash @0+.3 1.1|fadeout @0+2.9 .6"')}${gear('ai','data-a="exit @0+.1 1.2"')}
+  ${SEAT4.map((d,i)=>unit(d,`data-a="seat @0+${(.82+i*.38).toFixed(2)} .8"`,`data-a="plate @0+${(1.35+i*.38).toFixed(2)}"`,'data-a="flash @end-1.4 1.2"')).join('')}
+  ${SEAT4.map((d,i)=>`<div class="ripple" style="left:${POS[d][0]}px;top:${POS[d][1]}px;--c:${COL[d][1]}" data-a="ripple @0+${(1.4+i*.38).toFixed(2)} 1.1"></div>`).join('')}`,
  scr:()=>``},
 dScene('del'),dScene('des'),dScene('dis'),dScene('dil'),
 
@@ -379,6 +384,7 @@ function anim(el,spec,sc,first=true){ const FILL=first?'both':'forwards';
    case 'exit':kf=[{opacity:1,transform:'none'},{opacity:0,transform:'translate(-760px,120px) scale(.45)'}];ease=EIO;break;
    case 'seat':kf=[{opacity:0,transform:'translateY(-300px) scale(1.12)'},{opacity:1,transform:'translateY(10px) scale(1)',offset:.72},{opacity:1,transform:'translateY(-3px)',offset:.86},{opacity:1,transform:'none'}];ease='cubic-bezier(.5,0,.75,0)';
      return el.animate(kf,{duration:d,delay:t0,easing:'linear',fill:FILL});
+   case 'focus':kf=[{transform:'none'},{transform:'scale(1.12)',offset:.4},{transform:'scale(.98)',offset:.75},{transform:'none'}];ease='cubic-bezier(.3,.6,.3,1)';break;
    case 'plate':kf=[{opacity:0,transform:'translateY(14px)',filter:'blur(6px)'},{opacity:1,transform:'none',filter:'blur(0)'}];break;
    case 'ripple':kf=[{opacity:0,transform:'translate(-50%,-50%) scale(.85)'},{opacity:.9,transform:'translate(-50%,-50%) scale(.95)',offset:.1},{opacity:0,transform:'translate(-50%,-50%) scale(1.45)'}];ease='cubic-bezier(.1,.6,.3,1)';break;
    case 'burst':kf=[{opacity:0,transform:'translate(-50%,-50%) scale(.2)'},{opacity:1,transform:'translate(-50%,-50%) scale(1)',offset:.25},{opacity:0,transform:'translate(-50%,-50%) scale(1.9)'}];ease='ease-out';break;
