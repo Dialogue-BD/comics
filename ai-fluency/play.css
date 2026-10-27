@@ -399,8 +399,9 @@ table.ptab .on{background:var(--ok-soft);font-weight:700}
   .p-cog{width:64px;height:64px}
   #pdock{grid-column:3;grid-row:4;margin-bottom:18px}
   #pfoot{border:0;background:transparent;padding:8px 0 0}
-  .psheet{position:static;border-radius:18px;box-shadow:0 8px 24px rgba(12,51,25,.16);max-height:62dvh;margin-bottom:-58px}
-  body.sheet-on #pfoot{visibility:hidden}
+  /* the feedback takes the button bar's place: the bar leaves the layout (not just hidden), so the sheet ends on the dock's own margin */
+  .psheet{position:static;border-radius:18px;box-shadow:0 8px 24px rgba(12,51,25,.16);max-height:62dvh}
+  body.sheet-on #pfoot{display:none}
   .pb.primary{min-width:200px}
 }
 @media (prefers-reduced-motion:reduce){ svg.cog .g-teeth,.lvl-gear .rot{animation:none!important} }
