@@ -2038,7 +2038,6 @@
     "where": "#cv/21"
    }
   ],
-  "take": "r3-cv-coach-1f49u4d",
   "spoken": "A good prompt has four parts — like asking a tailor for a blouse. Tap Next to see each one."
  },
  {
@@ -2053,7 +2052,6 @@
     "where": "#cv/22"
    }
   ],
-  "take": "r3-cv-coach-1jpwaia",
   "spoken": "Build all four parts of the prompt, one at a time. Then read your prompt and tap Send."
  },
  {
@@ -4578,7 +4576,6 @@
     "where": "#cv/21 card"
    }
   ],
-  "take": "r3-cards-coach-1tomnoy",
   "spoken": "Context, who you are, and why. To the tailor, it's my friend's gaye holud on Friday. I'm wearing this yellow শাড়ি. To the AI, I am a third-year Economics student, applying for master's programmes."
  },
  {
@@ -4593,7 +4590,6 @@
     "where": "#cv/21 card"
    }
   ],
-  "take": "r3-cards-coach-16a2yy0",
   "spoken": "Product, what you want. To the tailor, a yellow blouse to match this শাড়ি. To the AI, make a two-page academic CV."
  },
  {
@@ -4608,7 +4604,6 @@
     "where": "#cv/21 card"
    }
   ],
-  "take": "r3-cards-coach-0qqwbcw",
   "spoken": "Process, how to do the job. To the tailor, measure me first, and ask me before you cut. To the AI, use only facts from my files. If something is missing, ask me first."
  },
  {
@@ -4623,7 +4618,6 @@
     "where": "#cv/21 card"
    }
   ],
-  "take": "r3-cards-coach-1j3381v",
   "spoken": "Performance, how the helper should act. To the tailor, be honest, and tell me if something is wrong. To the AI, be an honest editor. Use simple English I can explain."
  },
  {
@@ -4638,7 +4632,6 @@
     "where": "#cv/21 card"
    }
   ],
-  "take": "r3-cards-coach-1y0dlmu",
   "spoken": "Four parts make one good prompt — for a tailor, and for an AI."
  },
  {
@@ -5423,7 +5416,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0eiovx2",
   "spoken": "Your prompt is missing 4 parts."
  },
  {
@@ -5438,7 +5430,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1lnwnwo",
   "spoken": "A good prompt has all four parts."
  },
  {
@@ -5453,7 +5444,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0uvvqte",
   "spoken": "Context — who she is, and why. A tailor who doesn't know it's for a gaye holud can't make it fit the day."
  },
  {
@@ -5468,7 +5458,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-16fs8vi",
   "spoken": "Product — what to make. A tailor can't start until you say \"a yellow blouse to match this শাড়ি\"."
  },
  {
@@ -5483,7 +5472,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0tz3aet",
   "spoken": "Process — how to do the job. A tailor who cuts before he measures ruins the cloth."
  },
  {
@@ -5498,7 +5486,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-04unkld",
   "spoken": "Performance — how the helper should act. An honest tailor tells you when something is wrong."
  },
  {
@@ -5513,7 +5500,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1qopw2u",
   "spoken": "Your prompt is missing 3 parts."
  },
  {
@@ -5528,23 +5514,7 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1c8pwo0",
   "spoken": "Your prompt is missing 2 parts."
- },
- {
-  "key": "02nwhdr",
-  "text": "➕ Still to add: the order — check first, then write.",
-  "voice": "coach",
-  "lesson": "sheets",
-  "where": "feedback sheet line",
-  "uses": [
-   {
-    "lesson": "sheets",
-    "where": "feedback sheet line"
-   }
-  ],
-  "take": "r3-sheets-coach-0j20y06",
-  "spoken": "Still to add, the order — check first, then write."
  },
  {
   "key": "1gu9urf",
@@ -5558,7 +5528,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0l8opqe",
   "spoken": "Still to add, if something is missing, ask — don't guess."
  },
  {
@@ -5573,8 +5542,21 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0qu0ms7",
   "spoken": "Still to add, use only facts from her files."
+ },
+ {
+  "key": "02nwhdr",
+  "text": "➕ Still to add: the order — check first, then write.",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "spoken": "Still to add, the order — check first, then write."
  },
  {
   "key": "09i2ogp",
@@ -5588,7 +5570,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-00c2199",
   "spoken": "Your prompt is missing one part."
  },
  {

@@ -1,5 +1,5 @@
 {
- "sheets": 211,
+ "sheets": 195,
  "lines": [
   {
    "key": "0prtvyn",
@@ -246,16 +246,16 @@
    "text": "Your prompt is missing 2 parts."
   },
   {
-   "key": "02nwhdr",
-   "text": "➕ Still to add: the order — check first, then write."
-  },
-  {
    "key": "1gu9urf",
    "text": "➕ Still to add: if something is missing, ask — don’t guess."
   },
   {
    "key": "1kt2i0w",
    "text": "➕ Still to add: use only facts from her files."
+  },
+  {
+   "key": "02nwhdr",
+   "text": "➕ Still to add: the order — check first, then write."
   },
   {
    "key": "09i2ogp",
