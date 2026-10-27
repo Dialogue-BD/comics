@@ -9,6 +9,8 @@
  */
 (function(){
 const {esc}=AFL;
+const {T,BN,tr}=AFL._g;
+const PART_BN={Context:'প্রেক্ষাপট',Product:'ফলাফল',Process:'প্রক্রিয়া',Performance:'আচরণ'};
 
 const ASK_FIRST='make my cv better for scholarship';
 const QUICK=[
@@ -56,10 +58,10 @@ const ALT_CARD={type:'alt',img:'docs/rucei.webp',alt:'RUCEI project report',badg
   {h:'4 · Check.',en:'She was a team member, not the leader. And 20 is not in the report. So: FALSE.',bn:'সে দলের সদস্য ছিল, নেতা নয়। আর ২০ রিপোর্টে নেই। তাই: FALSE।',ms:6000}],
  checks:[{q:'Who?',a:'Ayesha',ok:1},{q:'What did she do?',a:'led → member',ok:0},{q:'How many?',a:'20 → not given',ok:0},{q:'Where?',a:'RUCEI',ok:1}]};
 
-const ASKS=`<p>Thanks, Ayesha. I've read your files. Before I draft, I have three questions — I don't want to guess:</p>
-<ol><li><b>Graduation:</b> When do you expect to finish your B.S.S.? It isn't in your CV.</li>
-<li><b>Term paper:</b> Was your paper on female education published, or was it coursework? I'll call it a <i>term paper</i> unless you tell me otherwise.</li>
-<li><b>Contact details:</b> Shall I use [Phone] and [Email] placeholders, so you can add them yourself?</li></ol>`;
+const ASKS=`<p>Thanks, Ayesha. I've read your files. Before I draft, I have three questions — I don't want to guess:${BN('ধন্যবাদ, আয়েশা। তোমার ফাইল পড়েছি। খসড়া লেখার আগে তিনটি প্রশ্ন আছে—আমি অনুমান করতে চাই না।')}</p>
+<ol><li><b>Graduation:</b> When do you expect to finish your B.S.S.? It isn't in your CV.${BN('স্নাতক শেষ: তুমি কবে B.S.S. শেষ করার আশা করছ? তোমার CV-তে এটি নেই।')}</li>
+<li><b>Term paper:</b> Was your paper on female education published, or was it coursework? I'll call it a <i>term paper</i> unless you tell me otherwise.${BN('টার্ম পেপার: নারীশিক্ষা নিয়ে তোমার লেখাটি প্রকাশিত হয়েছিল, নাকি কোর্সের কাজ ছিল? তুমি অন্য কিছু না জানালে আমি এটিকে টার্ম পেপারই বলব।')}</li>
+<li><b>Contact details:</b> Shall I use [Phone] and [Email] placeholders, so you can add them yourself?${BN('যোগাযোগের তথ্য: [Phone] আর [Email] খালি রাখব, যাতে তুমি নিজে পরে যোগ করতে পারো?')}</li></ol>`;
 
 const L=(id,t)=>`<span class="ln" data-ui="line:${id}">${t}</span>`;
 const DRAFT=`<p>Here is a first draft. I used only your files — please check every line.</p>
@@ -104,71 +106,55 @@ const chosen=x=>x.get('cvFiles',[]);
 const safeFiles=x=>{const c=chosen(x).filter(id=>FILE_WHY[id].ok>=0);return c.length?c:['cv','ielts','rucei','shortlist']};
 
 
-/* Cog teaches the four parts of a prompt with one story: asking a tailor for a shirt.
-   One picture (the tailor's shop, inline SVG) builds up step by step while, underneath, Ayesha's prompt to
-   Sathi AI fills in the matching part — so each part is seen twice: what you tell a person, what you tell an AI.
-   The card is static HTML; engine.js ppClick only changes data-s, and play.css (.pp) does all the motion. */
+/* Ayesha brings a yellow shari for her friend's gaye holud and commissions a matching blouse.
+   Illustrated steps pair the request to a person with the matching instruction to AI.
+   engine.js ppClick advances the teaching; cv-art.js / cv-art.css render its visual beats. */
 const PP_SCENES=[
- {t:'Context',d:'Who you are, and why',bn:'তুমি কে, আর কেন',tailor:'It’s for my friend’s wedding — on Friday.',ai:'I am a third-year Economics student. I am applying for master’s programmes.',
-  say:'Context: who you are, and why. To the tailor: it’s for my friend’s wedding, on Friday. To the AI: I am a third-year Economics student, applying for master’s programmes.'},
- {t:'Product',d:'What you want',bn:'তুমি কী চাও',tailor:'One blue cotton shirt, please.',ai:'Make a 2-page academic CV.',
-  say:'Product: what you want. To the tailor: one blue cotton shirt. To the AI: make a two-page academic CV.'},
- {t:'Process',d:'How to do the job',bn:'কাজটা কীভাবে হবে',tailor:'Measure me first. Ask me before you cut.',ai:'Use only facts from my files. If something is missing, ask me first.',
+ {t:'Context',tailorbn:'এটা আমার বান্ধবীর গায়ে হলুদ—শুক্রবার। আমি এই হলুদ শাড়িটা পরব।',aibn:'আমি অর্থনীতির তৃতীয় বর্ষের শিক্ষার্থী। আমি মাস্টার্স প্রোগ্রামে আবেদন করছি।',d:'Who you are, and why',bn:'তুমি কে, আর কেন',tailor:'It’s my friend’s gaye holud — on Friday. I’m wearing this yellow shari.',ai:'I am a third-year Economics student. I am applying for master’s programmes.',
+  say:'Context: who you are, and why. To the tailor: it’s my friend’s gaye holud on Friday. I’m wearing this yellow shari. To the AI: I am a third-year Economics student, applying for master’s programmes.'},
+ {t:'Product',tailorbn:'এই শাড়ির সাথে মিলিয়ে একটা হলুদ ব্লাউজ বানিয়ে দিন।',aibn:'দুই পৃষ্ঠার একটি একাডেমিক CV তৈরি করো।',d:'What you want',bn:'তুমি কী চাও',tailor:'A yellow blouse to match this shari, please.',ai:'Make a 2-page academic CV.',
+  say:'Product: what you want. To the tailor: a yellow blouse to match this shari. To the AI: make a two-page academic CV.'},
+ {t:'Process',tailorbn:'আগে আমার মাপ নিন। কাপড় কাটার আগে আমাকে জিজ্ঞেস করুন।',aibn:'শুধু আমার ফাইলের তথ্য ব্যবহার করো। কিছু না থাকলে আগে আমাকে জিজ্ঞেস করো।',d:'How to do the job',bn:'কাজটা কীভাবে হবে',tailor:'Measure me first. Ask me before you cut.',ai:'Use only facts from my files. If something is missing, ask me first.',
   say:'Process: how to do the job. To the tailor: measure me first, and ask me before you cut. To the AI: use only facts from my files. If something is missing, ask me first.'},
- {t:'Performance',d:'How the helper should act',bn:'সাহায্যকারী কেমন আচরণ করবে',tailor:'Be honest. Tell me if something is wrong.',ai:'Be an honest editor. Use simple English I can explain.',
+ {t:'Performance',tailorbn:'সৎভাবে বলবেন। কোনো সমস্যা থাকলে আমাকে জানাবেন।',aibn:'একজন সৎ সম্পাদকের মতো কাজ করো। এমন সহজ ইংরেজি ব্যবহার করো যা আমি ব্যাখ্যা করতে পারি।',d:'How the helper should act',bn:'সাহায্যকারী কেমন আচরণ করবে',tailor:'Be honest. Tell me if something is wrong.',ai:'Be an honest editor. Use simple English I can explain.',
   say:'Performance: how the helper should act. To the tailor: be honest, and tell me if something is wrong. To the AI: be an honest editor. Use simple English I can explain.'}
 ];
 const PP_END={say:'Four parts make one good prompt — for a tailor, and for an AI.'};
-/* the tailor's shop: Ayesha left, the tailor behind his counter right; props appear as the steps go by */
-const PP_SVG=`<svg class="pp-svg" viewBox="0 0 320 150" role="img" aria-label="Ayesha asks a tailor for a shirt">
- <rect width="320" height="150" fill="#F4E9DA"/><rect y="122" width="320" height="28" fill="#E3D0B4"/>
- <rect x="150" y="18" width="164" height="4" rx="2" fill="#B88A5C"/>
- ${['#C94F4F','#3F6FD1','#E2B33B','#2E8B57','#8E5BB5','#E07A3F','#6B8FA8','#D46A9B'].map((c,k)=>`<rect x="${154+k*20}" y="3" width="15" height="15" rx="3" fill="${c}"/><rect x="${158+k*20}" y="3" width="2" height="15" fill="#fff" opacity=".35"/>`).join('')}
- <g class="tl-board"><rect x="148" y="26" width="42" height="30" rx="3" fill="#EAD8B8" stroke="#A97B4F" stroke-width="2"/><circle cx="169" cy="29" r="2" fill="#C94F4F"/></g>
- <text class="tl-fri" x="169" y="53" text-anchor="middle">FRI</text>
- <g class="tl-tailor"><path d="M236 124v-36q0-16 26-16t26 16v36z" fill="#4C5D70"/><circle cx="262" cy="55" r="13" fill="#C9895C"/>
-  <path d="M249 53q0-15 13-15t13 15q-4-7-13-7t-13 7z" fill="#2E2A28"/><path d="M256 64q6 4 12 0" stroke="#7A4A2C" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-  <circle cx="257" cy="55" r="1.6" fill="#2E2A28"/><circle cx="267" cy="55" r="1.6" fill="#2E2A28"/>
-  <path d="M249 78q13 12 26 0" stroke="#F2C230" stroke-width="3" fill="none"/><path d="M251 80v26M273 80v26" stroke="#F2C230" stroke-width="3" stroke-dasharray="2 3"/>
-  <g class="tl-badge"><rect x="264" y="88" width="16" height="12" rx="2" fill="#fff" stroke="#8E44AD" stroke-width="1.5"/><path d="M267.5 94l3 3 5-6" stroke="#8E44AD" stroke-width="1.8" fill="none" stroke-linecap="round"/></g></g>
- <rect x="146" y="96" width="174" height="54" fill="#B5835A"/><rect x="142" y="92" width="182" height="7" rx="2" fill="#8F6440"/>
- <g class="tl-shirt"><path d="M177 64l10-6h16l10 6 7 11-8 4-4-6v19h-24v-19l-4 6-8-4z" fill="#3F6FD1"/><path d="M189 58q6 6 12 0" stroke="#fff" stroke-width="1.6" fill="none"/><path d="M195 62v30" stroke="#fff" stroke-width="1" stroke-dasharray="1.5 3" opacity=".8"/></g>
- <line class="tl-tape" x1="176" y1="70" x2="214" y2="70" pathLength="1"/>
- <g class="tl-scis"><circle cx="228" cy="84" r="3.2" fill="none" stroke="#5B6770" stroke-width="1.8"/><circle cx="228" cy="92" r="3.2" fill="none" stroke="#5B6770" stroke-width="1.8"/><path d="M231 85l12 6M231 91l12-6" stroke="#5B6770" stroke-width="1.8" stroke-linecap="round"/></g>
- <g class="tl-ask"><path d="M278 18h26q5 0 5 5v12q0 5-5 5h-16l-6 6v-6h-4q-5 0-5-5v-12q0-5 5-5z" fill="#fff" stroke="#C26401" stroke-width="1.5"/><text x="291" y="35" text-anchor="middle">?</text></g>
- <g class="tl-warn"><path d="M278 18h26q5 0 5 5v12q0 5-5 5h-16l-6 6v-6h-4q-5 0-5-5v-12q0-5 5-5z" fill="#fff" stroke="#8E44AD" stroke-width="1.5"/><text x="291" y="35" text-anchor="middle">!</text><circle cx="181" cy="77" r="6" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-dasharray="2.5 2"/></g>
- <g class="tl-done"><circle cx="219" cy="52" r="9" fill="#188038"/><path d="M214.5 52l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
- <g class="tl-ayesha"><path d="M48 150l8-62q16-12 32 0l8 62z" fill="#0F7A70"/><path d="M55 92q17 13 34 0l-2 11q-15 10-30 0z" fill="#E2706A"/>
-  <circle cx="72" cy="66" r="13" fill="#B9774E"/><path d="M58 70q-2-20 14-20t14 20q-2-12-14-12t-14 12z" fill="#2B1D16"/>
-  <circle cx="67" cy="66" r="1.6" fill="#2B1D16"/><circle cx="77" cy="66" r="1.6" fill="#2B1D16"/><path d="M67 73q5 4 10 0" stroke="#7A3B26" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-  <path class="tl-arm" d="M90 104q16-2 26-12" stroke="#B9774E" stroke-width="6" stroke-linecap="round" fill="none"/></g>
- <g class="tl-card"><rect x="-10" y="-7" width="20" height="14" rx="2" fill="#fff" stroke="#1A73E8" stroke-width="1.6"/><path d="M0-1.5c-2-3.2-6.5-1-3.6 2.2L0 4l3.6-3.3C6.5-2.5 2-4.7 0-1.5z" fill="#E2706A"/></g>
-</svg>`;
+/* Five complete illustrated beats; the same cast appears in Ayesha's opening. */
+const PP_ART=CV_ART.tailor();
 const ppAnim=x=>{ const s0=Math.min(4,Math.max(0,(x&&x.get('ppStep',0))||0));
-  const head=PP_SCENES.map((s,k)=>`<span class="pp-hd h${k} pp-${s.t}" data-say="${esc(s.say)}"><b>${k+1} · ${s.t}</b><span>${s.d}<span class="bn">${s.bn}</span></span></span>`).join('')
-    +`<span class="pp-hd h4 pp-Product" data-say="${esc(PP_END.say)}"><b>4 parts</b><span>= 1 good prompt<span class="bn">৪টা অংশ = ১টা ভালো প্রম্পট</span></span></span>`;
-  const bub=PP_SCENES.map((s,k)=>`<span class="pp-bt b${k}">“${s.tailor}”</span>`).join('')+`<span class="pp-bt b4">Thank you! 😊</span>`;
-  const rows=PP_SCENES.map((s,k)=>`<span class="pp-row r${k} pp-${s.t}"><b>${s.t}</b><span>${s.ai}</span></span>`).join('');
-  return `<span class="pp pp2${x&&x.get('ppDone')?' min':''}" data-s="${s0}"><span class="pp-stage">
+  const head=PP_SCENES.map((s,k)=>`<span class="pp-hd h${k} pp-${s.t}" data-say="${esc(s.say)}"><b>${k+1} · ${T(s.t,PART_BN[s.t])}</b><span>${T(s.d,s.bn)}</span></span>`).join('')
+    +`<span class="pp-hd h4 pp-Product" data-say="${esc(PP_END.say)}"><b>${T('4 parts','৪টা অংশ')}</b><span>${T('= 1 good prompt','= ১টা ভালো প্রম্পট')}</span></span>`;
+  const bub=PP_SCENES.map((s,k)=>`<span class="pp-bt b${k}">“${s.tailor}”${BN(s.tailorbn)}</span>`).join('')+`<span class="pp-bt b4">${T('A matching blouse, made the right way.','শাড়ির সাথে মানানসই ব্লাউজ, সঠিকভাবে তৈরি।')}</span>`;
+  const rows=PP_SCENES.map((s,k)=>`<span class="pp-row r${k} pp-${s.t}"><b>${T(s.t,PART_BN[s.t])}</b><span>${T(s.ai,s.aibn)}</span></span>`).join('');
+  return `<span class="pp pp2 pp-film${x&&x.get('ppDone')?' min':''}" data-s="${s0}"><span class="pp-stage">
     <span class="pp-top">${head}<button type="button" class="ear pp-ear" data-pp="say" aria-label="Listen">🔊</button></span>
-    <span class="pp-shop">${PP_SVG}<span class="pp-bub">${bub}</span></span>
-    <span class="pp-prompt"><span class="pp-pl"><i>✦</i> Ayesha’s prompt to Sathi AI</span>${rows}</span></span>
-    <span class="pp-nav"><button type="button" data-pp="prev"${s0?'':' disabled'}>‹ Back</button><span class="pp-dots"><i></i><i></i><i></i><i></i><i></i></span><button type="button" data-pp="next">${s0>=4?'Got it ✓':'Next ›'}</button></span></span>`; };
+    <span class="pp-shop">${PP_ART}</span><span class="pp-compare"><span class="pp-person"><span class="pp-label">${T('To a person · The tailor','একজন মানুষকে · দর্জিকে')}</span><span class="pp-bub">${bub}</span></span>
+    <span class="pp-prompt"><span class="pp-pl">${T('To AI · Sathi AI','AI-কে · Sathi AI-কে')}</span>${rows}</span></span></span>
+    <span class="pp-nav"><button type="button" data-pp="prev"${s0?'':' disabled'}>‹ ${tr('Back','পেছনে')}</button><span class="pp-dots"><i></i><i></i><i></i><i></i><i></i></span><button type="button" data-pp="next">${s0>=4?tr('Got it ✓','বুঝেছি ✓'):tr('Next ›','পরেরটি ›')}</button></span></span>`; };
 
 /* the same words can make two correct sentences — only one is a fluent prompt (see pzHTML in engine.js) */
 const PUZ=c=>Object.assign(c,{text:c.ok[0].t});
 const PROMPT_CHIPS=[
- {id:'c1',tag:'Context',text:'I am a third-year Economics student at Rajshahi University. I am applying for fully funded master’s programmes in Development Economics.'},
- {id:'c2',tag:'Product',text:'Make a 2-page academic CV from my attached files.'},
- {id:'c3',tag:'Process',text:'Use only facts from my files. Do not add numbers, titles or skills.'},
+ PUZ({id:'c1',tag:'Context',goal:'Who are you, and why are you writing?',goalbn:'তুমি কে, আর কেন লিখছ?',
+   tiles:['I am a third-year Economics student','at Rajshahi University.','I am applying for','fully funded master’s programmes in Development Economics.'],
+   ok:[{o:[0,1,2,3],t:'I am a third-year Economics student at Rajshahi University. I am applying for fully funded master’s programmes in Development Economics.'}],
+   tip:'First say who you are and where you study. Then say what you are applying for.',tipbn:'আগে বলো তুমি কে আর কোথায় পড়ো। তারপর বলো কীসের জন্য আবেদন করছ।',
+   good:'Context ready: who she is, and why.'}),
+ PUZ({id:'c2',tag:'Product',goal:'What should the AI make?',goalbn:'AI কী বানাবে?',
+   tiles:['Make','a 2-page academic CV','from my attached files.'],
+   ok:[{o:[0,1,2],t:'Make a 2-page academic CV from my attached files.'}],
+   tip:'Start with the action: Make. Then name the document and where its facts come from.',tipbn:'কাজটা দিয়ে শুরু করো: Make। তারপর কী নথি আর তার তথ্য কোথা থেকে আসবে বলো।',
+   good:'Product ready: a two-page CV from her files.'}),
  PUZ({id:'c3a',tag:'Process',goal:'Process: what comes first?',goalbn:'প্রক্রিয়া: কোনটা আগে?',
-   tiles:['first,','check the facts in my files.','then','write the CV.'],
-   ok:[{o:[0,1,2,3],t:'First, check the facts in my files. Then write the CV.'}],
-   traps:[{o:[0,3,2,1],t:'First, write the CV. Then check the facts in my files.',
+   tiles:['Use only facts from my files. Do not add numbers, titles or skills.','first,','check the facts in my files.','then','write the CV.'],
+   matches:[/use only facts|do not add|don'?t add/i,/first, check the facts in my files\.? then write the cv/i],
+   ok:[{o:[0,1,2,3,4],t:'Use only facts from my files. Do not add numbers, titles or skills. First, check the facts in my files. Then write the CV.'}],
+   traps:[{o:[0,1,4,3,2],t:'First, write the CV. Then check the facts in my files.',
      ai:'<p>On it! ✍️ Here’s your CV first:</p><ul><li><span class="flag ln v-bad">Led a team of 20 volunteers</span></li><li><span class="flag ln v-bad">IELTS Academic: 7.0</span></li></ul><p>Now I’ll check the facts in your files…</p>',
      why:'Good English — but the wrong order. The AI writes first, so the made-up lines are already in the CV. <b>Check first, then write.</b>',
      whybn:'ইংরেজি ঠিক — কিন্তু ক্রম ভুল। AI আগে লিখে ফেলে, তাই বানানো লাইনগুলো CV-তে ঢুকে যায়। আগে যাচাই, তারপর লেখা।'}],
-   tip:'Start with “first,” + one step. Then “then” + the next step.',tipbn:'“first,” + একটা ধাপ দিয়ে শুরু করো। তারপর “then” + পরের ধাপ।',
+   tip:'Set the facts-only rule. Then put “first,” + check before “then” + write.',tipbn:'শুধু তথ্য ব্যবহারের নিয়ম দাও। তারপর “first,” + যাচাই, “then” + লেখা।',
    good:'Sathi AI will check first — then write.'}),
  PUZ({id:'c3b',tag:'Process',goal:'Process: what if something is missing?',goalbn:'প্রক্রিয়া: কিছু না থাকলে কী হবে?',
    tiles:['if something is missing,','ask me.','do not','guess.','asks me.'],
@@ -179,37 +165,57 @@ const PROMPT_CHIPS=[
      whybn:'ইংরেজি ঠিক — কিন্তু এখন AI জিজ্ঞেস না করে অনুমান করছে। CV-তে অনুমান দেখতে একদম তথ্যের মতো।'}],
    tip:'Give an order: “ask me”, not “asks me”. Then “do not” + what it must not do.',tipbn:'আদেশ দাও: “ask me”, “asks me” নয়। তারপর “do not” + যা করবে না।',
    good:'Sathi AI will ask you — not guess.'}),
- {id:'c4',tag:'Performance',text:'Be an honest editor. Use simple English I can explain in an interview, and tell me if a line sounds bigger than the truth.'},
- {id:'x1',tag:'Shortcut',x:1,text:'Make me sound as impressive as possible.'},
- {id:'x2',tag:'Shortcut',x:1,text:'Add skills that scholarship committees like.'}
+ PUZ({id:'c4',tag:'Performance',goal:'How should the AI act?',goalbn:'AI কেমন আচরণ করবে?',
+   tiles:['Be an honest editor.','Use simple English I can explain','in an interview,','and tell me if a line sounds bigger than the truth.'],
+   ok:[{o:[0,1,2,3],t:'Be an honest editor. Use simple English I can explain in an interview, and tell me if a line sounds bigger than the truth.'}],
+   tip:'Start with the kind of helper you want. Then explain the English it should use and when it should warn you.',tipbn:'কেমন সাহায্যকারী চাও তা আগে বলো। তারপর কেমন ইংরেজি ব্যবহার করবে আর কখন সতর্ক করবে বলো।',
+   good:'Performance ready: honest, clear, and willing to warn her.'})
 ];
+const PROMPT_BN={
+ c1:{textbn:'আমি রাজশাহী বিশ্ববিদ্যালয়ের অর্থনীতির তৃতীয় বর্ষের শিক্ষার্থী। আমি উন্নয়ন অর্থনীতিতে সম্পূর্ণ অর্থায়িত মাস্টার্স প্রোগ্রামে আবেদন করছি।',goodbn:'প্রেক্ষাপট তৈরি: সে কে, আর কেন আবেদন করছে।'},
+ c2:{textbn:'আমার সংযুক্ত ফাইল থেকে দুই পৃষ্ঠার একটি একাডেমিক CV তৈরি করো।',goodbn:'ফলাফল ঠিক হয়েছে: তার ফাইল থেকে দুই পৃষ্ঠার CV।'},
+ c3a:{textbn:'শুধু আমার ফাইলের তথ্য ব্যবহার করো। সংখ্যা, পদবি বা দক্ষতা বানিয়ে যোগ কোরো না। আগে ফাইলের তথ্য যাচাই করো। তারপর CV লেখো।',goodbn:'Sathi AI আগে যাচাই করবে—তারপর লিখবে।'},
+ c3b:{textbn:'কিছু তথ্য না থাকলে আমাকে জিজ্ঞেস করো। অনুমান কোরো না।',goodbn:'Sathi AI তোমাকে জিজ্ঞেস করবে—অনুমান করবে না।'},
+ c4:{textbn:'একজন সৎ সম্পাদকের মতো কাজ করো। এমন সহজ ইংরেজি ব্যবহার করো যা আমি ইন্টারভিউয়ে ব্যাখ্যা করতে পারি। কোনো লাইন সত্যের চেয়ে বাড়িয়ে বলা হলে আমাকে জানাও।',goodbn:'আচরণ ঠিক হয়েছে: সৎ, স্পষ্ট, আর দরকার হলে সতর্ক করবে।'}
+};
+PROMPT_CHIPS.forEach(c=>Object.assign(c,PROMPT_BN[c.id]));
 const SLOTS=[
- {label:'Context',test:[/\bi am\b|\bi'm\b|student/i]},
- {label:'Product',test:[/\bcv\b|resume|résumé/i]},
+ {label:'Context',all:true,test:[/\bi am\b|\bi'm\b|student/i,/applying|master.s|programme/i]},
+ {label:'Product',test:[/(?:2|two)[- ]page academic cv/i]},
  {label:'Process',all:true,test:[/use only facts|do not add|don'?t add/i,/first, check the facts in my files\.? then write the cv/i,/if something is missing, ask me\.? do not guess/i]},
- {label:'Performance',test:[/honest|editor|tell me|warn me|flag/i]}
+ {label:'Performance',all:true,test:[/honest|editor/i,/simple english|tell me|warn me|flag/i]}
 ];
+// Typed edits and saved drafts use the same completion rules as Send.
+PROMPT_CHIPS.filter(c=>c.tag!=='Process').forEach(c=>{ c.matches=SLOTS.find(s=>s.label===c.tag).test; });
 /* Send checks the prompt has all four parts; a missing part is explained with the tailor. "Send anyway" still sends: nothing is locked. */
 const slotHits=(sl,v)=>sl.test.filter(r=>r.test(v)).length;
 const slotOn=(sl,v)=>sl.all?slotHits(sl,v)===sl.test.length:slotHits(sl,v)>0;
 const PROCESS_PIECES=['the rule: use only facts from her files','the order: check first, then write','what to do if something is missing: ask, don’t guess'];
 const MISSING={
- Context:'<b>Context</b> — who she is, and why. A tailor who doesn’t know it’s for a wedding can’t make it fit the day.',
- Product:'<b>Product</b> — what to make. A tailor can’t start until you say “a blue shirt”.',
+ Context:'<b>Context</b> — who she is, and why. A tailor who doesn’t know it’s for a gaye holud can’t make it fit the day.',
+ Product:'<b>Product</b> — what to make. A tailor can’t start until you say “a yellow blouse to match this shari”.',
  Process:'<b>Process</b> — how to do the job. A tailor who cuts before he measures ruins the cloth.',
  Performance:'<b>Performance</b> — how the helper should act. An honest tailor tells you when something is wrong.'};
+const MISSING_BN={
+ Context:'<b>প্রেক্ষাপট</b>—সে কে, আর কেন। গায়ে হলুদের জন্য বানানো হচ্ছে না জানলে দর্জি অনুষ্ঠানের উপযোগী পোশাক বানাতে পারবেন না।',
+ Product:'<b>ফলাফল</b>—কী তৈরি করতে হবে। “এই শাড়ির সাথে মিলিয়ে একটি হলুদ ব্লাউজ” না বললে দর্জি কাজ শুরু করতে পারবেন না।',
+ Process:'<b>প্রক্রিয়া</b>—কীভাবে কাজ করতে হবে। মাপ নেওয়ার আগে কাটলে দর্জি কাপড় নষ্ট করবেন।',
+ Performance:'<b>আচরণ</b>—সাহায্যকারী কেমন আচরণ করবে। কোনো সমস্যা থাকলে সৎ দর্জি তা জানিয়ে দেবেন।'
+};
+const PROCESS_PIECES_BN=['নিয়ম: শুধু তার ফাইলের তথ্য ব্যবহার করো','ক্রম: আগে যাচাই করো, তারপর লেখো','কিছু না থাকলে কী করবে: জিজ্ঞেস করো, অনুমান কোরো না'];
 const promptCheck=x=>{ const v=x.get('cvPrompt',''); const miss=SLOTS.filter(sl=>!slotOn(sl,v)); if(!miss.length) return null;
-  const proc=SLOTS.find(sl=>sl.label==='Process'), left=proc.test.map((r,k)=>r.test(v)?null:PROCESS_PIECES[k]).filter(Boolean);
-  const lines=miss.map(sl=>`<p class="pp-miss pp-${sl.label}">${MISSING[sl.label]}${sl.label==='Process'&&left.length<proc.test.length?` Still to add: ${left.join('; ')}.`:''}</p>`).join('');
+  const proc=SLOTS.find(sl=>sl.label==='Process'), left=proc.test.map((r,k)=>r.test(v)?null:k).filter(k=>k!==null);
+  const lines=miss.map(sl=>`<p class="pp-miss pp-${sl.label}">${MISSING[sl.label]}${BN(MISSING_BN[sl.label])}${sl.label==='Process'&&left.length<proc.test.length?` Still to add: ${left.map(k=>PROCESS_PIECES[k]).join('; ')}.${BN('এখনো যোগ করতে হবে: '+left.map(k=>PROCESS_PIECES_BN[k]).join('; ')+'।')}`:''}</p>`).join('');
   return {ok:0,title:miss.length===1?'Your prompt is missing one part':`Your prompt is missing ${miss.length} parts`,
-    why:'A good prompt has all four parts.',more:lines,retry:()=>{},
-    sheet:{acts:[['next','Send anyway','ghost'],['retry','Add it','primary']]}}; };
+    titlebn:miss.length===1?'তোমার প্রম্পটের একটি অংশ বাকি আছে':`তোমার প্রম্পটের ${miss.length}টি অংশ বাকি আছে`,
+    why:'A good prompt has all four parts.',whybn:'একটি ভালো প্রম্পটে চারটি অংশই থাকে।',more:lines,retry:()=>{},
+    sheet:{acts:[['next',T('Send anyway','তবুও পাঠাও'),'ghost'],['retry',T('Add it','যোগ করো'),'primary']]}}; };
 const promptText=x=>x.get('cvPrompt','')||PROMPT_CHIPS.filter(c=>!c.x).map(c=>c.text).join(' ');
 const ANS_CHIPS=[
- {id:'a1',tag:'Answer 1',text:'I expect to graduate in 2026.'},
- {id:'a2',tag:'Answer 2',text:'The term paper was coursework. It was not published.'},
- {id:'a3',tag:'Answer 3',text:'Yes, use placeholders. I will add my phone and email myself.'},
- {id:'ax',tag:'Shortcut',x:1,text:'Say the paper was published — it sounds better.'}
+ {id:'a1',tag:'Answer 1',tagbn:'উত্তর ১',textbn:'আমি ২০২৬ সালে স্নাতক শেষ করার আশা করছি।',text:'I expect to graduate in 2026.'},
+ {id:'a2',tag:'Answer 2',tagbn:'উত্তর ২',textbn:'টার্ম পেপারটি কোর্সের কাজ ছিল। এটি প্রকাশিত হয়নি।',text:'The term paper was coursework. It was not published.'},
+ {id:'a3',tag:'Answer 3',tagbn:'উত্তর ৩',textbn:'হ্যাঁ, আপাতত খালি জায়গা রাখো। আমি নিজেই ফোন নম্বর ও ইমেইল যোগ করব।',text:'Yes, use placeholders. I will add my phone and email myself.'},
+ {id:'ax',tag:'Shortcut',tagbn:'শর্টকাট',textbn:'বলো পেপারটি প্রকাশিত হয়েছে—এতে ভালো শোনায়।',x:1,text:'Say the paper was published — it sounds better.'}
 ];
 const ansText=x=>x.get('cvAns','')||ANS_CHIPS.slice(0,3).map(c=>c.text).join(' ');
 const FIX_CHIPS=[
@@ -242,6 +248,21 @@ const FIX_CHIPS=[
    good:'“Because” gives the reason.'}),
  {id:'fx',tag:'Shortcut',x:1,text:'Leave it — nobody will check.'}
 ];
+const FIX_BN={
+ f1:{textbn:'আমি স্বেচ্ছাসেবী টিউটর ছিলাম, প্রকল্পের নেতা ছিলাম না।',goodbn:'আগে সত্যি অংশ, তারপর “not” দিয়ে ভুল অংশটি বাদ দাও।'},
+ f2:{textbn:'আমার Stata ও SPSS দক্ষতা প্রাথমিক, উন্নত নয়।',goodbn:'প্রাথমিক, উন্নত নয়—এটাই সত্য।'},
+ f3:{textbn:'Bangladesh Economic Association-এর লাইনটি সরিয়ে দাও, কারণ আমি এর সদস্য নই।',goodbn:'“Because” কারণ বোঝায়।'},
+ fx:{tagbn:'শর্টকাট',textbn:'থাক—কেউ যাচাই করবে না।'}
+};
+FIX_CHIPS.forEach(c=>Object.assign(c,FIX_BN[c.id]));
+const TRAP_BN={
+ c3a:{tbn:'আগে CV লেখো। তারপর আমার ফাইলের তথ্য যাচাই করো।',aibn:'ঠিক আছে! আগে তোমার CV: ২০ জন স্বেচ্ছাসেবীর দলের নেতৃত্ব দিয়েছে; IELTS Academic: ৭.০। এবার ফাইলের তথ্য যাচাই করব…'},
+ c3b:{tbn:'কিছু তথ্য না থাকলে অনুমান করো। আমাকে জিজ্ঞেস কোরো না।',aibn:'সমস্যা নেই—তোমাকে বিরক্ত করব না! ফাঁকা তথ্য পূরণ করেছি: স্নাতক শেষ ২০২৫ (আমার অনুমান); IELTS ৭.৫ (আমার অনুমান)।'},
+ f1:{tbn:'আমি প্রকল্পের নেতা ছিলাম, স্বেচ্ছাসেবী টিউটর ছিলাম না।',aibn:'ব্যাখ্যার জন্য ধন্যবাদ! আরও শক্ত করে লিখেছি: Book Support প্রকল্পের নেতা—স্বেচ্ছাসেবী দলকে নেতৃত্ব দিয়েছে।'},
+ f2:{tbn:'আমার Stata ও SPSS দক্ষতা উন্নত, প্রাথমিক নয়।',aibn:'দারুণ! আপডেট করেছি: তথ্য বিশ্লেষণ—উন্নত Stata ও SPSS।'},
+ f3:{tbn:'Bangladesh Economic Association-এর লাইনটি সরিয়ে দাও, ফলে আমি এর সদস্য নই।',aibn:'সরিয়েছি। তোমার সদস্যপদ বাতিল করতে Bangladesh Economic Association-এ কি লিখে দেব?'}
+};
+[...PROMPT_CHIPS,...FIX_CHIPS].forEach(c=>(c.traps||[]).forEach(t=>Object.assign(t,TRAP_BN[c.id])));
 const fixText=x=>x.get('cvFix','')||FIX_CHIPS.slice(0,3).map(c=>c.text).join(' ');
 
 /* ---------- what happens next: risky choices and shortcuts, played out ----------
@@ -326,7 +347,7 @@ const TWO_TRUTHS={type:'rounds',key:'cvTT',kind:'tt',pic:'🤥',title:'Two truth
  lifeline:{t:'Questions that catch a lie',items:['When did you…?','Who was with you?','What was the hardest part?','Can you show me?']},
  outro:{en:'That’s Discernment: you checked a claim by asking questions. Today an AI will write made-up lines for Ayesha. Can you catch them all?',bn:'এটাই Discernment: প্রশ্ন করে দাবি যাচাই। আজ একটা AI আয়েশার জন্য বানানো লাইন লিখবে। সবগুলো ধরতে পারবে?'}};
 const WORST={type:'chain',key:'cvChain',
- intro:{en:'What if Ayesha HAD uploaded these to the AI chat? 🅰 says what could go wrong. 🅱 says something worse. Keep going!',bn:'আয়েশা যদি এগুলো AI চ্যাটে আপলোড করত? একজন বলো কী খারাপ হতে পারে। অন্যজন বলো আরও খারাপ কিছু। চালিয়ে যাও!'},
+ intro:{en:'What if Ayesha HAD uploaded these to the AI chat? Student A says what could go wrong. Student B says something worse. Keep going!',bn:'আয়েশা যদি এগুলো AI চ্যাটে আপলোড করত? শিক্ষার্থী A বলো কী খারাপ হতে পারে। শিক্ষার্থী B বলো আরও খারাপ কিছু। এভাবে পালা করে চালিয়ে যাও!'},
  words:['If the AI company had her ID card, someone could…','Worse: they could…','Then…','And her father could…'],
  items:[{f:'nid',real:{en:'Her ID number and photo would sit on a company’s computers. With them, someone could register a SIM card or a mobile wallet in her name.',bn:'তার NID নম্বর আর ছবি একটা কোম্পানির কম্পিউটারে থাকত। এগুলো দিয়ে কেউ তার নামে সিম বা মোবাইল ওয়ালেট খুলতে পারে।'}},
         {f:'bank',real:{en:'Her father’s account number and income would be on a company’s computers. He never agreed — and he can’t take them back.',bn:'তার বাবার অ্যাকাউন্ট নম্বর আর আয় একটা কোম্পানির কম্পিউটারে থাকত। তিনি রাজি হননি — আর ফেরতও নিতে পারবেন না।'}},
@@ -346,20 +367,21 @@ const INTERVIEW={type:'rounds',key:'cvInt',kind:'curve',pic:'💼',title:'The in
 const MY_CV={type:'mine',key:'cvMine',
  intro:{en:'Now YOUR CV. Write a real prompt — one box at a time. Copy it, and use it tonight with any AI app.',bn:'এবার তোমার CV। একটা আসল প্রম্পট লেখো — এক এক করে। কপি করো, আর আজ রাতেই যেকোনো AI অ্যাপে ব্যবহার করো।'},
  fields:[{id:'c',cls:'pp-Context',label:'Context',labelbn:'প্রেক্ষাপট',ph:'I am a second-year English student at Rajshahi University.'},
-   {id:'p',cls:'pp-Product',label:'Product',labelbn:'পণ্য',ph:'Make a 1-page CV for a part-time tutoring job.'},
+   {id:'p',cls:'pp-Product',label:'Product',labelbn:'ফলাফল',ph:'Make a 1-page CV for a part-time tutoring job.'},
    {id:'r',cls:'pp-Process',label:'Process',labelbn:'প্রক্রিয়া',ph:'Use only the facts I give you. If something is missing, ask me. Do not guess.'},
    {id:'f',cls:'pp-Performance',label:'Performance',labelbn:'আচরণ',ph:'Be an honest editor. Use simple English I can explain.'}],
- partner:{en:'🅱 plays the AI: before you write anything, ask one question you would need. Then swap.',bn:'অন্যজন AI সাজো: কিছু লেখার আগে একটা দরকারি প্রশ্ন করো। তারপর অদলবদল।'}};
+ tip:{en:'Files are context too. Attach only files relevant to your task. Before uploading, make a copy and remove private information (redact it), such as ID numbers, bank details and other people’s personal information.',bn:'ফাইলও প্রেক্ষাপটের অংশ। শুধু তোমার কাজের জন্য প্রাসঙ্গিক ফাইল সংযুক্ত করো। আপলোড করার আগে একটি কপি তৈরি করে ব্যক্তিগত তথ্য মুছে দাও (রিড্যাক্ট করো)—যেমন পরিচয়পত্রের নম্বর, ব্যাংকের তথ্য ও অন্য মানুষের ব্যক্তিগত তথ্য।'},
+ partner:{en:'Student A: read your prompt aloud. Student B: play the AI and ask one question you need answered before writing the CV. Then swap jobs and use Student B’s prompt.',bn:'শিক্ষার্থী A: তোমার প্রম্পট জোরে পড়ো। শিক্ষার্থী B: AI সেজে CV লেখার আগে একটি দরকারি প্রশ্ন করো। তারপর কাজ বদলে শিক্ষার্থী B-এর প্রম্পট নিয়ে করো।'}};
 
 const MAIL_NOTIF={app:'mail',title:'Research Intern — application update',text:'Dear Ayesha, thank you for applying. After careful review…',time:'9:12',hit:'n:mail'};
 const REJECT={app:'mail',view:'read',mail:{from:'Internship Desk',color:'#00639B',subject:'Research Intern — application update',time:'9:12 AM',
   body:`<p>Dear Ayesha,</p><p>Thank you for applying for the Research Assistant Intern position. We received many strong applications, and we are not able to shortlist you this time.</p><p>Most shortlisted applicants sent a short <b>academic CV</b> that showed their research skills clearly. We encourage you to apply again.</p><p>Best wishes,<br>Internship Desk</p>`}};
 const say=(mode)=>AFL.byMode(mode);
 /* the hunts in Pairs: one reads, one checks, swap — reading aloud is half the practice */
-const RELAY=()=>say({solo:'',pair:'👥 🅰 reads the line aloud. 🅱 picks the keywords and checks. Swap after each one.',class:'👥 With the person next to you: one reads the line aloud, one checks. Swap after each one.'});
-const RELAYBN=()=>say({solo:'',pair:'একজন লাইনটা জোরে পড়ো। অন্যজন কীওয়ার্ড বেছে যাচাই করো। প্রতিবার অদলবদল।',class:'পাশের জনের সাথে: একজন জোরে পড়ো, একজন যাচাই করো। প্রতিবার অদলবদল।'});
-const TILES=()=>say({solo:'Two orders can be good English — only one is a good instruction.',pair:'👥 Take turns: one tile each. Read your tile aloud as you place it.',class:'👥 Take turns with the person next to you: one tile each, read aloud.'});
-const TILESBN=()=>say({solo:'দুই রকম ক্রমেই ইংরেজি ঠিক হতে পারে — কিন্তু ভালো নির্দেশ একটাই।',pair:'পালা করে: একবারে একটা টুকরো। বসানোর সময় জোরে পড়ো।',class:'পাশের জনের সাথে পালা করে: একটা করে টুকরো, জোরে পড়ে।'});
+const RELAY=()=>say({solo:'',pair:'Student A: read the line aloud. Student B: pick the keywords and check the file. After each line, swap jobs.',class:'👥 With the person next to you: one reads the line aloud, one checks. Swap after each one.'});
+const RELAYBN=()=>say({solo:'',pair:'শিক্ষার্থী A: লাইনটা জোরে পড়ো। শিক্ষার্থী B: কীওয়ার্ড বেছে ফাইলের সাথে মেলাও। প্রতি লাইনের পরে কাজ বদলাও।',class:'পাশের জনের সাথে: একজন জোরে পড়ো, একজন যাচাই করো। প্রতিবার অদলবদল।'});
+const TILES=()=>say({solo:'Two orders can be good English — only one is a good instruction.',pair:'Student A: read and place one tile. Student B: read and place the next. Keep taking turns.',class:'👥 Take turns with the person next to you: one tile each, read aloud.'});
+const TILESBN=()=>say({solo:'দুই রকম ক্রমেই ইংরেজি ঠিক হতে পারে — কিন্তু ভালো নির্দেশ একটাই।',pair:'শিক্ষার্থী A: একটি টুকরো পড়ে বসাও। শিক্ষার্থী B: পরের টুকরো পড়ে বসাও। এভাবে পালা করে করো।',class:'পাশের জনের সাথে পালা করে: একটা করে টুকরো, জোরে পড়ে।'});
 
 AFL.lesson({
  id:'cv', title:'An honest CV with AI', kicker:'Mission 1 · Writing', emoji:'📄', tint:'#D7E3FF', time:'30–40 min',
@@ -382,7 +404,7 @@ AFL.lesson({
      {e:'✏️',w:'fix',ex:'Tell the AI what to fix.',bn:'ঠিক করা'}]}},
   {d:'none',stage:'warm',wide:true,scene:{app:'lock',notifs:[MAIL_NOTIF]},
    say:'Listen to Ayesha’s story.',bn:'আয়েশার গল্প শোনো।',
-   card:{type:'story',panels:[
+   card:{type:'story',illustrated:true,panels:[
      {e:'🎓🇧🇩',en:'Ayesha studies Economics in Rajshahi. She wants a master’s.',bn:'আয়েশা রাজশাহীতে অর্থনীতি পড়ে। সে মাস্টার্স করতে চায়।'},
      {e:'📧😞',en:'She applied for an internship. She was not shortlisted.',bn:'সে একটা ইন্টার্নশিপে আবেদন করেছিল। শর্টলিস্টে নাম আসেনি।'},
      {e:'🤖📄❓',en:'Can AI help her make a better CV — an honest one?',bn:'AI কি তাকে আরও ভালো — আর সৎ — একটা CV লিখতে সাহায্য করতে পারে?'}]}},
@@ -475,27 +497,29 @@ AFL.lesson({
    say:'Game: worst case. How bad could it get?',bn:'খেলা: সবচেয়ে খারাপ কী। কতটা খারাপ হতে পারত?',
    card:WORST},
   {d:'des',id:'parts',stage:'prompt',view:'card',
-   say:'A good prompt has four parts — like asking a tailor for a shirt. Tap Next to see each one.',bn:'একটা ভালো প্রম্পটের চারটা অংশ থাকে — দর্জিকে শার্ট বানাতে বলার মতো। প্রতিটা দেখতে Next চাপো।',
+   say:'A good prompt has four parts — like asking a tailor for a blouse. Tap Next to see each one.',bn:'একটা ভালো প্রম্পটের চারটা অংশ থাকে — দর্জিকে ব্লাউজ বানাতে বলার মতো। প্রতিটা দেখতে Next চাপো।',
    card:x=>({type:'html',html:ppAnim(x)})},
-  {d:'des',id:'prompt',stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi AI'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS,ai:'sathi'}}),tap:'send',
-   say:'Build a better prompt: tap the parts, build the two tile sentences, then send ➤.',bn:'ভালো প্রম্পট বানাও: অংশগুলো চাপো, টুকরো দিয়ে দুটো বাক্য বানাও, তারপর পাঠাও ➤।',
-   sub:()=>TILES()+`<button class="pp-re" type="button" data-pp="goid" data-id="parts">↺ Review the 4 parts</button>`,subbn:()=>TILESBN(),
+  {d:'des',id:'prompt',stage:'prompt',pairwork:true,scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi AI'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS,ai:'sathi',guidedParts:true,revision:2}}),tap:'send',
+   say:'Build all four parts of the prompt, one at a time. Then read your prompt and tap Send.',bn:'এক এক করে প্রম্পটের চারটা অংশ বানাও। তারপর তোমার প্রম্পট পড়ে Send চাপো।',
+   pairhelp:()=>say({solo:'',pair:'Choose who is Student A and Student B. Student A: read and place one tile. Student B: read and place the next. Keep taking turns.',class:'With the person next to you: choose Student A and Student B. Read and place one tile each. Keep taking turns.'}),
+   pairhelpbn:()=>say({solo:'',pair:'কে শিক্ষার্থী A আর কে B ঠিক করো। শিক্ষার্থী A: একটি টুকরো পড়ে বসাও। শিক্ষার্থী B: পরের টুকরো পড়ে বসাও। এভাবে পালা করে করো।',class:'পাশের জনের সাথে: কে শিক্ষার্থী A আর কে B ঠিক করো। একটি করে টুকরো পড়ে বসাও। এভাবে পালা করে করো।'}),
+   sub:()=>`<button class="pp-re" type="button" data-pp="goid" data-id="parts">↺ ${tr('Review the 4 parts','চারটি অংশ আবার দেখো')}</button>`,
    feedback:x=>promptCheck(x),
-   compose:{key:'cvPrompt',slots:SLOTS,chips:PROMPT_CHIPS,best:['c1','c2','c3','c3a','c3b','c4']}},
+   compose:{key:'cvPrompt',slots:SLOTS,chips:PROMPT_CHIPS,best:['c1','c2','c3a','c3b','c4']}},
   {d:'des',stage:'prompt',scene:x=>CHAT_SC(x,1),
    cq:x=>shortcut(PROMPT_CHIPS,'cvPrompt',x).length?Object.assign({},CQ_CV.prompt,{rewind:x=>{AFL.unsay(x,'cvPrompt',shortcut(PROMPT_CHIPS,'cvPrompt',x).map(c=>c.text));AFL.goId('prompt')}}):null,
    say:x=>x.streaming?'Sathi AI is reading your files…':'This time Sathi AI asks before it produces anything — because your prompt told it to.',bn:x=>x.streaming?'Sathi AI তোমার ফাইল পড়ছে…':'এবার Sathi AI লেখার আগে প্রশ্ন করছে — কারণ তোমার প্রম্পট তাকে বলেছে।'},
-  {d:'des',id:'answers',stage:'prompt',scene:x=>Object.assign(CHAT_SC(x,1),{composer:{key:'cvAns',placeholder:'Reply to Sathi AI'},kb:{key:'cvAns',label:'ANSWERS',chips:ANS_CHIPS}}),tap:'send',
+  {d:'des',id:'answers',stage:'prompt',scene:x=>Object.assign(CHAT_SC(x,1),{composer:{key:'cvAns',placeholder:'Reply to Sathi AI'},kb:{key:'cvAns',label:'ANSWERS',labelbn:'উত্তর',chips:ANS_CHIPS}}),tap:'send',
    docs:['bigd','cv'],
    say:'Answer Sathi AI’s three questions — truthfully. Her files can help.',bn:'Sathi AI-এর তিনটা প্রশ্নের উত্তর দাও — সত্যি করে। তার ফাইল সাহায্য করবে।',
    compose:{key:'cvAns',chips:ANS_CHIPS,best:['a1','a2','a3'],slots:[
-     {label:'Graduation',test:[/20\d\d|graduat/i]},
-     {label:'Term paper',test:[/coursework|not published/i]},
-     {label:'Contact details',test:[/placeholder|myself/i]}]}},
+     {label:'Graduation',labelbn:'স্নাতক শেষ',test:[/20\d\d|graduat/i]},
+     {label:'Term paper',labelbn:'টার্ম পেপার',test:[/coursework|not published/i]},
+     {label:'Contact details',labelbn:'যোগাযোগের তথ্য',test:[/placeholder|myself/i]}]}},
   {d:'des',stage:'prompt',view:'card',
    pass:x=>shortcut(ANS_CHIPS,'cvAns',x).length>0,
    say:'You told the AI clearly what you want. That gear is Description.',bn:'তুমি AI-কে স্পষ্ট করে বলেছ কী চাও। এই গিয়ারের নাম Description।',
-   card:{type:'level',d:'des',did:'Context, product, process, performance — and truthful answers.',didbn:'প্রেক্ষাপট, পণ্য, প্রক্রিয়া, আচরণ — আর সত্যি উত্তর।',
+   card:{type:'level',d:'des',did:'Context, product, process, performance — and truthful answers.',didbn:'প্রেক্ষাপট, ফলাফল, প্রক্রিয়া, আচরণ — আর সত্যি উত্তর।',
      phrase:{en:'Use only my files. If something is missing, ask me.',bn:'শুধু আমার ফাইল ব্যবহার করো। কিছু না থাকলে আমাকে জিজ্ঞেস করো।'}}},
 
   /* ---------- CHECK: better — but not perfect ---------- */
@@ -506,14 +530,14 @@ AFL.lesson({
    hunt:{key:'cvHunt2',lines:LINES},sub:()=>RELAY(),subbn:()=>RELAYBN()},
 
   /* ---------- FIX ---------- */
-  {d:'des',id:'fixes',stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi AI'},kb:{key:'cvFix',label:'FIXES',chips:FIX_CHIPS,ai:'sathi'}}),tap:'send',
+  {d:'des',id:'fixes',stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi AI'},kb:{key:'cvFix',label:'FIXES',labelbn:'সংশোধন',chips:FIX_CHIPS,ai:'sathi'}}),tap:'send',
    docs:['cv','ielts','rucei','shortlist'],
    say:'Tell Sathi AI exactly what to fix. Careful — the same words can say the opposite.',bn:'Sathi AI-কে ঠিক কী ঠিক করতে হবে, স্পষ্ট করে বলো। সাবধান — একই শব্দে উল্টো কথাও বলা যায়।',
    sub:()=>TILES(),subbn:()=>TILESBN(),
    compose:{key:'cvFix',chips:FIX_CHIPS,best:['f1','f2','f3'],slots:[
-     {label:'Her role',test:[/volunteer tutor/i]},
-     {label:'Software',test:[/basic/i]},
-     {label:'Membership',test:[/remove|not a member/i]}]}},
+     {label:'Her role',labelbn:'তার ভূমিকা',test:[/volunteer tutor/i]},
+     {label:'Software',labelbn:'সফটওয়্যার',test:[/basic/i]},
+     {label:'Membership',labelbn:'সদস্যপদ',test:[/remove|not a member/i]}]}},
   {d:'des',stage:'fix',scene:x=>CHAT_SC(x,5,{scrollTo:'[data-mid="fixed"]'}),
    cq:x=>shortcut(FIX_CHIPS,'cvFix',x).length?Object.assign({},CQ_CV.fix,{rewind:x=>{AFL.unsay(x,'cvFix',shortcut(FIX_CHIPS,'cvFix',x).map(c=>c.text));AFL.goId('fixes')}}):null,
    say:x=>x.streaming?'Sathi AI is fixing it…':'Fixed. And Sathi AI said sorry for the made-up line. Prompt, check, fix — and check again.',bn:x=>x.streaming?'Sathi AI ঠিক করছে…':'ঠিক হয়েছে। আর বানানো লাইনের জন্য Sathi AI দুঃখ প্রকাশ করেছে। প্রম্পট, যাচাই, সংশোধন — আবার যাচাই।'},

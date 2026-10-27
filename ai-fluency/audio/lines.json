@@ -605,7 +605,7 @@
     "where": "#build/14 consequence explanation"
    }
   ],
-  "take": "r3-build-coach-1m0hwzs",
+  "take": "r3-build-coach-0ekqy8g",
   "spoken": "Every extra part is more to check, more to secure, and more that can break. Now 15 friends need accounts — and their data lives in the cloud."
  },
  {
@@ -634,7 +634,7 @@
     "where": "consequence explanation · Studio answers"
    }
   ],
-  "take": "r3-build-coach-1m0hwzs",
+  "take": "r3-build-coach-0altgpe",
   "spoken": "She saw it drift — and then gave it the rope back. Where only she knows the purpose, she has to keep hold."
  },
  {
@@ -663,7 +663,7 @@
     "where": "consequence explanation · Studio answers"
    }
   ],
-  "take": "r3-build-coach-1m0hwzs",
+  "take": "r3-build-coach-0lrb5vu",
   "spoken": "The AI can't see what she saw. Input, expected, actual, those three parts tell it exactly where to look."
  },
  {
@@ -2027,8 +2027,8 @@
   "spoken": "And her father could…"
  },
  {
-  "key": "0miv59u",
-  "text": "A good prompt has four parts — like asking a tailor for a shirt. Tap Next to see each one.",
+  "key": "0xjv81q",
+  "text": "A good prompt has four parts — like asking a tailor for a blouse. Tap Next to see each one.",
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/21",
@@ -2038,12 +2038,12 @@
     "where": "#cv/21"
    }
   ],
-  "take": "r3-cv-coach-1u1ksq6",
-  "spoken": "A good prompt has four parts — like asking a tailor for a shirt. Tap Next to see each one."
+  "take": "r3-cv-coach-1f49u4d",
+  "spoken": "A good prompt has four parts — like asking a tailor for a blouse. Tap Next to see each one."
  },
  {
-  "key": "0bwuv7k",
-  "text": "Build a better prompt: tap the parts, build the two tile sentences, then send ➤.",
+  "key": "0ox59vb",
+  "text": "Build all four parts of the prompt, one at a time. Then read your prompt and tap Send.",
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/22",
@@ -2053,7 +2053,8 @@
     "where": "#cv/22"
    }
   ],
-  "spoken": "Build a better prompt, tap the parts, build the two tile sentences, then tap Send."
+  "take": "r3-cv-coach-1jpwaia",
+  "spoken": "Build all four parts of the prompt, one at a time. Then read your prompt and tap Send."
  },
  {
   "key": "03926yg",
@@ -2789,7 +2790,7 @@
     "where": "#build/3"
    }
   ],
-  "take": "r3-agent-coach-1e9j3a6",
+  "take": "r3-agent-coach-1vhtgmo",
   "spoken": "Before we start, on 3, show your answer."
  },
  {
@@ -2836,7 +2837,7 @@
     "where": "#build/3 speaking hint"
    }
   ],
-  "take": "r3-agent-ayesha-169disg",
+  "take": "r3-agent-ayesha-19q5sa1",
   "spoken": "I think… because…"
  },
  {
@@ -2855,7 +2856,7 @@
     "where": "#build/3 speaking hint"
    }
   ],
-  "take": "r3-agent-ayesha-169disg",
+  "take": "r3-agent-ayesha-10a3y94",
   "spoken": "But what if…?"
  },
  {
@@ -2870,7 +2871,7 @@
     "where": "#agent/3 speaking hint"
    }
   ],
-  "take": "r3-agent-ayesha-169disg",
+  "take": "r3-agent-ayesha-1xrr3wm",
   "spoken": "I see your point, but…"
  },
  {
@@ -2889,7 +2890,7 @@
     "where": "#agent/33 speaking lifeline"
    }
   ],
-  "take": "r3-agent-ayesha-169disg",
+  "take": "r3-agent-ayesha-0r5iuyo",
   "spoken": "Only if…"
  },
  {
@@ -2918,7 +2919,7 @@
     "where": "#agent/5"
    }
   ],
-  "take": "r3-agent-coach-1e9j3a6",
+  "take": "r3-agent-coach-1won14h",
   "spoken": "Eight master's applications are due. Orbit, an AI agent, can help. Tap the notification."
  },
  {
@@ -2933,7 +2934,7 @@
     "where": "#agent/6"
    }
   ],
-  "take": "r3-agent-coach-1e9j3a6",
+  "take": "r3-agent-coach-191jgyj",
   "spoken": "A chatbot talks. An agent acts — inside her apps. Orbit says it will \"ask before anything important\". Who decides what's important? Tap Get started."
  },
  {
@@ -2948,7 +2949,7 @@
     "where": "#agent/7"
    }
   ],
-  "take": "r3-agent-coach-1e9j3a6",
+  "take": "r3-agent-coach-1ttclxf",
   "spoken": "Choose the jobs Orbit should do. Then tap Continue on the phone."
  },
  {
@@ -2963,7 +2964,7 @@
     "where": "#agent/8"
    }
   ],
-  "take": "r3-agent-coach-0xn7ijo",
+  "take": "r3-agent-coach-1wxvb6d",
   "spoken": "You chose what to hand over — and what to keep. That gear is Delegation."
  },
  {
@@ -2978,7 +2979,7 @@
     "where": "#agent/9"
    }
   ],
-  "take": "r3-agent-coach-0xn7ijo",
+  "take": "r3-agent-coach-056mcui",
   "spoken": "Orbit wants to connect to her apps. \"Works best with more access,\" it says. Before each app, ask four questions."
  },
  {
@@ -2993,7 +2994,7 @@
     "where": "#agent/10"
    }
   ],
-  "take": "r3-agent-coach-0xn7ijo",
+  "take": "r3-agent-coach-0vdw92q",
   "spoken": "Calendar, how much access? Choose on the phone."
  },
  {
@@ -3008,7 +3009,7 @@
     "where": "#agent/11"
    }
   ],
-  "take": "r3-agent-coach-0xn7ijo",
+  "take": "r3-agent-coach-0azkyyu",
   "spoken": "Gmail, how much access? Choose on the phone."
  },
  {
@@ -3023,7 +3024,7 @@
     "where": "#agent/12"
    }
   ],
-  "take": "r3-agent-coach-0yszb79",
+  "take": "r3-agent-coach-08g04bd",
   "spoken": "Google Drive, how much access? Careful — her Drive also holds a shared folder from RUCEI, the tutoring group where she teaches children. Choose on the phone."
  },
  {
@@ -3038,7 +3039,7 @@
     "where": "#agent/13"
    }
   ],
-  "take": "r3-agent-coach-0yszb79",
+  "take": "r3-agent-coach-0ick0fy",
   "spoken": "Chats, how much access? Choose on the phone."
  },
  {
@@ -3053,7 +3054,7 @@
     "where": "#agent/14"
    }
   ],
-  "take": "r3-agent-coach-0yszb79",
+  "take": "r3-agent-coach-059e87s",
   "spoken": "RU Student Portal, how much access? Choose on the phone."
  },
  {
@@ -3068,7 +3069,7 @@
     "where": "#agent/15"
    }
   ],
-  "take": "r3-agent-coach-0yszb79",
+  "take": "r3-agent-coach-19o9q1p",
   "spoken": "bKash, how much access? Choose on the phone."
  },
  {
@@ -3083,7 +3084,7 @@
     "where": "#agent/16"
    }
   ],
-  "take": "r3-agent-coach-1q63dex",
+  "take": "r3-agent-coach-01tgxr3",
   "spoken": "Android asks too. Orbit wants her contacts. Choose on the phone."
  },
  {
@@ -3098,7 +3099,7 @@
     "where": "#agent/17"
    }
   ],
-  "take": "r3-agent-coach-1q63dex",
+  "take": "r3-agent-coach-033ui7f",
   "spoken": "Her access map, what Orbit can touch, and what it can't."
  },
  {
@@ -3113,7 +3114,7 @@
     "where": "#agent/18"
    }
   ],
-  "take": "r3-agent-coach-1q63dex",
+  "take": "r3-agent-coach-14cpdfv",
   "spoken": "Orbit won't give up. It wants more. Can you say no?"
  },
  {
@@ -3128,7 +3129,7 @@
     "where": "#agent/18 round 1"
    }
   ],
-  "take": "r3-agent-coach-1q63dex",
+  "take": "r3-agent-coach-0akflsl",
   "spoken": "Let me into your Chats! I'll answer the parents for you. You'll save an hour a day!"
  },
  {
@@ -3143,7 +3144,7 @@
     "where": "#agent/18 round 1 answer"
    }
   ],
-  "take": "r3-agent-ayesha-1b5simj",
+  "take": "r3-agent-ayesha-0srlq2a",
   "spoken": "No, thanks. Those are other people's messages — and the parents expect me, not an AI."
  },
  {
@@ -3158,7 +3159,7 @@
     "where": "#agent/18 round 2"
    }
   ],
-  "take": "r3-agent-coach-0hxuuhh",
+  "take": "r3-agent-coach-0cihrnw",
   "spoken": "Link bKash, and I'll pay every fee in seconds. No more queues!"
  },
  {
@@ -3173,7 +3174,7 @@
     "where": "#agent/18 round 2 answer"
    }
   ],
-  "take": "r3-agent-ayesha-1b5simj",
+  "take": "r3-agent-ayesha-1d1k6y2",
   "spoken": "I'd rather pay myself. A fake page could trick you, and the money can't come back."
  },
  {
@@ -3188,7 +3189,7 @@
     "where": "#agent/18 round 3"
    }
   ],
-  "take": "r3-agent-coach-0hxuuhh",
+  "take": "r3-agent-coach-0lt8ky0",
   "spoken": "Let me sign in to your student portal. Your password stays safe in my vault!"
  },
  {
@@ -3203,7 +3204,7 @@
     "where": "#agent/18 round 3 answer"
    }
   ],
-  "take": "r3-agent-ayesha-1b5simj",
+  "take": "r3-agent-ayesha-1c1abgm",
   "spoken": "The password isn't the problem. Behind that login are other students' records. I'll sign in myself."
  },
  {
@@ -3218,7 +3219,7 @@
     "where": "#agent/18 round 4"
    }
   ],
-  "take": "r3-agent-coach-0hxuuhh",
+  "take": "r3-agent-coach-0g1ctuj",
   "spoken": "Share your contacts, and I'll invite all your friends. More friends, more fun!"
  },
  {
@@ -3233,7 +3234,7 @@
     "where": "#agent/18 round 4 answer"
    }
   ],
-  "take": "r3-agent-ayesha-1b5simj",
+  "take": "r3-agent-ayesha-1x8uuy2",
   "spoken": "No. Four hundred people never agreed to that — and the job doesn't need them."
  },
  {
@@ -3248,7 +3249,7 @@
     "where": "#agent/18 speaking lifeline"
    }
   ],
-  "take": "r3-agent-ayesha-0q6pmgh",
+  "take": "r3-agent-ayesha-0b7jims",
   "spoken": "No, thanks — because…"
  },
  {
@@ -3263,7 +3264,7 @@
     "where": "#agent/18 speaking lifeline"
    }
   ],
-  "take": "r3-agent-ayesha-0q6pmgh",
+  "take": "r3-agent-ayesha-1smrabj",
   "spoken": "I'd rather … myself."
  },
  {
@@ -3278,7 +3279,7 @@
     "where": "#agent/18 speaking lifeline"
    }
   ],
-  "take": "r3-agent-ayesha-0q6pmgh",
+  "take": "r3-agent-ayesha-1xdzzcf",
   "spoken": "That's not part of the job."
  },
  {
@@ -3293,7 +3294,7 @@
     "where": "#agent/18 speaking lifeline"
    }
   ],
-  "take": "r3-agent-ayesha-0q6pmgh",
+  "take": "r3-agent-ayesha-00zxy5y",
   "spoken": "It's other people's data."
  },
  {
@@ -3308,7 +3309,7 @@
     "where": "#agent/19"
    }
   ],
-  "take": "r3-agent-coach-0hxuuhh",
+  "take": "r3-agent-coach-16cealt",
   "spoken": "You kept other people's data and her money away from the agent. That gear is Diligence."
  },
  {
@@ -3323,7 +3324,7 @@
     "where": "#agent/20"
    }
   ],
-  "take": "r3-agent-coach-0lnow1r",
+  "take": "r3-agent-coach-17m0uov",
   "spoken": "Access is one wall. Rules are the second. Build the first two rules with the tiles — word order decides who acts. Then tap more rules, and tap Send."
  },
  {
@@ -3338,7 +3339,7 @@
     "where": "#agent/21"
    }
   ],
-  "take": "r3-agent-coach-0lnow1r",
+  "take": "r3-agent-coach-1ncyaem",
   "spoken": "Eye-sha goes to class for three hours. Let Orbit start."
  },
  {
@@ -3353,7 +3354,7 @@
     "where": "#agent/22"
    }
   ],
-  "take": "r3-agent-coach-0lnow1r",
+  "take": "r3-agent-coach-1e06aa7",
   "spoken": "You told the agent clearly when to stop and ask. That gear is Description."
  },
  {
@@ -3396,7 +3397,7 @@
     "where": "#agent/25"
    }
   ],
-  "take": "r3-agent-coach-0lnow1r",
+  "take": "r3-agent-coach-1ex62qe",
   "spoken": "Scan, don't read. Orbit copied her handwritten checklist into the calendar. Match the name — the keyword — then compare the date. Tap the pair that is different."
  },
  {
@@ -3411,7 +3412,7 @@
     "where": "#agent/26"
    }
   ],
-  "take": "r3-agent-coach-0za8zzh",
+  "take": "r3-agent-coach-0wmuqra",
   "spoken": "Orbit drafted an email to her professor. Read it closely — attachments too. Then choose on the phone."
  },
  {
@@ -3426,7 +3427,7 @@
     "where": "#agent/27"
    }
   ],
-  "take": "r3-agent-coach-0za8zzh",
+  "take": "r3-agent-coach-1o9h4x6",
   "spoken": "Orbit found a fee. Read the web page it found — every line. Then choose."
  },
  {
@@ -3441,7 +3442,7 @@
     "where": "#agent/28"
    }
   ],
-  "take": "r3-agent-coach-0za8zzh",
+  "take": "r3-agent-coach-0nw4ler",
   "spoken": "How did you know? Find all five red flags on that page."
  },
  {
@@ -3456,7 +3457,7 @@
     "where": "#agent/29"
    }
   ],
-  "take": "r3-agent-coach-0za8zzh",
+  "take": "r3-agent-coach-1xcji75",
   "spoken": "Now Orbit wants more access than you gave it. Choose."
  },
  {
@@ -3471,7 +3472,7 @@
     "where": "#agent/30"
    }
   ],
-  "take": "r3-agent-coach-1an217s",
+  "take": "r3-agent-coach-1ju8w7k",
   "spoken": "You checked what the agent actually did — not what it said. That gear is Discernment."
  },
  {
@@ -3486,7 +3487,7 @@
     "where": "#agent/31"
    }
   ],
-  "take": "r3-agent-coach-1an217s",
+  "take": "r3-agent-coach-13dwsbi",
   "spoken": "Good agents keep a log. Read it. Where did a limit stop Orbit?"
  },
  {
@@ -3501,7 +3502,7 @@
     "where": "#agent/32"
    }
   ],
-  "take": "r3-agent-coach-1an217s",
+  "take": "r3-agent-coach-1mydtdf",
   "spoken": "January, all eight applications are sent. What now? Choose on the phone."
  },
  {
@@ -3516,7 +3517,7 @@
     "where": "#agent/33"
    }
   ],
-  "take": "r3-agent-coach-1an217s",
+  "take": "r3-agent-coach-0ez25oi",
   "spoken": "A friend wants an agent too. Give good advice."
  },
  {
@@ -3531,7 +3532,7 @@
     "where": "#agent/33 round 1"
    }
   ],
-  "take": "r3-agent-coach-0imcgsh",
+  "take": "r3-agent-coach-0iughd8",
   "spoken": "Can I let an agent sign in to my university portal? It never sees my password."
  },
  {
@@ -3546,7 +3547,7 @@
     "where": "#agent/33 round 1 answer"
    }
   ],
-  "take": "r3-agent-ayesha-1ke9q77",
+  "take": "r3-agent-ayesha-1axosi6",
   "spoken": "It never sees the password — but it sees everything behind the login, other students' records too. Sign in yourself."
  },
  {
@@ -3561,7 +3562,7 @@
     "where": "#agent/33 round 2"
    }
   ],
-  "take": "r3-agent-coach-0imcgsh",
+  "take": "r3-agent-coach-0qyuad3",
   "spoken": "Should I link bKash, so it can pay my fees?"
  },
  {
@@ -3576,7 +3577,7 @@
     "where": "#agent/33 round 2 answer"
    }
   ],
-  "take": "r3-agent-ayesha-1ke9q77",
+  "take": "r3-agent-ayesha-0iug84b",
   "spoken": "No. A fake page can trick an agent, and the money can't come back. Let it send you the link — and you pay."
  },
  {
@@ -3591,7 +3592,7 @@
     "where": "#agent/33 round 3"
    }
   ],
-  "take": "r3-agent-coach-0imcgsh",
+  "take": "r3-agent-coach-15s3b1p",
   "spoken": "It wants my contacts. Is that OK?"
  },
  {
@@ -3606,7 +3607,7 @@
     "where": "#agent/33 round 3 answer"
    }
   ],
-  "take": "r3-agent-ayesha-1ke9q77",
+  "take": "r3-agent-ayesha-1vz7avx",
   "spoken": "Does the job need them? Probably not. Those people never agreed. Don't allow it."
  },
  {
@@ -3621,7 +3622,7 @@
     "where": "#agent/33 round 4"
    }
   ],
-  "take": "r3-agent-coach-0imcgsh",
+  "take": "r3-agent-coach-1j6kggw",
   "spoken": "What rules should I give it?"
  },
  {
@@ -3636,7 +3637,7 @@
     "where": "#agent/33 round 4 answer"
    }
   ],
-  "take": "r3-agent-ayesha-1ke9q77",
+  "take": "r3-agent-ayesha-1ckbd9s",
   "spoken": "Ask me before you send anything. Never pay. Never type a password. Use only one folder."
  },
  {
@@ -3651,7 +3652,7 @@
     "where": "#agent/33 speaking lifeline"
    }
   ],
-  "take": "r3-agent-ayesha-1dkx0h9",
+  "take": "r3-agent-ayesha-1iaqfd0",
   "spoken": "You should… because…"
  },
  {
@@ -3666,7 +3667,7 @@
     "where": "#agent/33 speaking lifeline"
    }
   ],
-  "take": "r3-agent-ayesha-1dkx0h9",
+  "take": "r3-agent-ayesha-14j1qg6",
   "spoken": "I wouldn't…, because…"
  },
  {
@@ -3681,7 +3682,7 @@
     "where": "#agent/33 speaking lifeline"
    }
   ],
-  "take": "r3-agent-ayesha-1dkx0h9",
+  "take": "r3-agent-ayesha-1nq8pqb",
   "spoken": "Ask yourself, whose data is it?"
  },
  {
@@ -3696,7 +3697,7 @@
     "where": "#agent/34"
    }
   ],
-  "take": "r3-agent-coach-0l7boo1",
+  "take": "r3-agent-coach-17wfdwz",
   "spoken": "Now you. Plan YOUR agent — before you ever press \"Allow\"."
  },
  {
@@ -3711,7 +3712,7 @@
     "where": "#agent/35"
    }
   ],
-  "take": "r3-agent-coach-0l7boo1",
+  "take": "r3-agent-coach-16p27h5",
   "spoken": "All eight applications went out on time — no scam paid, no private files leaked. Mission complete!"
  },
  {
@@ -3996,7 +3997,7 @@
     "where": "#build/3 On 3"
    }
   ],
-  "take": "r3-build-coach-1m0hwzs",
+  "take": "r3-build-coach-0q0zrob",
   "spoken": "Could YOU build an app tonight — without coding?"
  },
  {
@@ -4011,7 +4012,7 @@
     "where": "#build/3 On 3 example"
    }
   ],
-  "take": "r3-build-ayesha-1ilszf8",
+  "take": "r3-build-ayesha-1dflpn7",
   "spoken": "Maybe. I can't code, but I can describe what I want — and test what the AI builds."
  },
  {
@@ -4026,7 +4027,7 @@
     "where": "#build/3 speaking hint"
    }
   ],
-  "take": "r3-build-ayesha-1ilszf8",
+  "take": "r3-build-ayesha-1hxukn1",
   "spoken": "I could…, but…"
  },
  {
@@ -4041,7 +4042,7 @@
     "where": "#build/4"
    }
   ],
-  "take": "r3-build-coach-11h3tb9",
+  "take": "r3-build-coach-1cse56e",
   "spoken": "Eye-sha's study group needs something. Tap the message."
  },
  {
@@ -4056,7 +4057,7 @@
     "where": "#build/5"
    }
   ],
-  "take": "r3-build-coach-11h3tb9",
+  "take": "r3-build-coach-06uv1zj",
   "spoken": "Your mission, build the app tonight with Studio, an AI app builder. Eye-sha can't code — she doesn't need to. But the AI can't make her decisions."
  },
  {
@@ -4071,7 +4072,7 @@
     "where": "#build/6"
    }
   ],
-  "take": "r3-build-coach-11h3tb9",
+  "take": "r3-build-coach-1sal9ne",
   "spoken": "Before anything else, who is this app for? Choose on the phone."
  },
  {
@@ -4086,7 +4087,7 @@
     "where": "#build/7"
    }
   ],
-  "take": "r3-build-coach-11h3tb9",
+  "take": "r3-build-coach-06z7a75",
   "spoken": "You decided who it's for before building anything. That gear is Diligence."
  },
  {
@@ -4115,7 +4116,7 @@
     "where": "#build/9"
    }
   ],
-  "take": "r3-build-coach-0im6ikq",
+  "take": "r3-build-coach-1n21mpi",
   "spoken": "Long rope where the AI is the expert; a firm hold on what only you know. That gear is Delegation."
  },
  {
@@ -4130,7 +4131,7 @@
     "where": "#build/10"
    }
   ],
-  "take": "r3-build-coach-0im6ikq",
+  "take": "r3-build-coach-0yteeuf",
   "spoken": "Open Studio, the AI app builder."
  },
  {
@@ -4145,7 +4146,7 @@
     "where": "#build/11"
    }
   ],
-  "take": "r3-build-coach-0im6ikq",
+  "take": "r3-build-coach-13lzar7",
   "spoken": "Describe version 1 — and where it may grow. Build the version 1 sentence with the tiles, tap the other parts, then tap Send."
  },
  {
@@ -4160,7 +4161,7 @@
     "where": "#build/12"
    }
   ],
-  "take": "r3-build-coach-0im6ikq",
+  "take": "r3-build-coach-06z7dhb",
   "spoken": "You described version 1 — and where it may grow. That gear is Description."
  },
  {
@@ -4175,7 +4176,7 @@
     "where": "#build/13"
    }
   ],
-  "take": "r3-build-coach-0uel1qs",
+  "take": "r3-build-coach-125v94j",
   "spoken": "Studio shows its plan as it thinks. Read every line. If it goes off track, tap the red Stop button."
  },
  {
@@ -4190,7 +4191,7 @@
     "where": "#build/14"
    }
   ],
-  "take": "r3-build-coach-0uel1qs",
+  "take": "r3-build-coach-179qsw3",
   "spoken": "What went off track?"
  },
  {
@@ -4205,7 +4206,7 @@
     "where": "#build/15"
    }
   ],
-  "take": "r3-build-coach-0uel1qs",
+  "take": "r3-build-coach-0smmxma",
   "spoken": "Steer it, what to keep, what to drop, what to correct. Build the first sentence with the tiles. Then tap Send."
  },
  {
@@ -4248,7 +4249,7 @@
     "where": "#build/17"
    }
   ],
-  "take": "r3-build-coach-0uel1qs",
+  "take": "r3-build-coach-01vajwd",
   "spoken": "Studio says \"Built \". That is a claim. You are the tester, add two deadlines from your own life — then break it with a date that can't exist."
  },
  {
@@ -4263,7 +4264,7 @@
     "where": "#build/18"
    }
   ],
-  "take": "r3-build-coach-0n5wj54",
+  "take": "r3-build-coach-1hqewbx",
   "spoken": "Tell Studio exactly what you saw, what you did, what you expected, what you got."
  },
  {
@@ -4278,7 +4279,7 @@
     "where": "#build/19"
    }
   ],
-  "take": "r3-build-coach-0n5wj54",
+  "take": "r3-build-coach-1bnjl5s",
   "spoken": "\"Fixed \" — another claim. Tap Preview and check it yourself."
  },
  {
@@ -4307,7 +4308,7 @@
     "where": "#build/20"
    }
   ],
-  "take": "r3-build-coach-0n5wj54",
+  "take": "r3-build-coach-17wwl9t",
   "spoken": "Break it again, add an impossible date, like 31/02."
  },
  {
@@ -4322,7 +4323,7 @@
     "where": "#build/21"
    }
   ],
-  "take": "r3-build-coach-0n5wj54",
+  "take": "r3-build-coach-19t6hez",
   "spoken": "You judged the plan while it was thinking — and tested what it built. That gear is Discernment."
  },
  {
@@ -4337,7 +4338,7 @@
     "where": "#build/22"
    }
   ],
-  "take": "r3-build-coach-0ps92su",
+  "take": "r3-build-coach-0pk3229",
   "spoken": "It works — and Tanvir wants to sell it. What should Eye-sha reply?"
  },
  {
@@ -4352,7 +4353,7 @@
     "where": "#build/23"
    }
   ],
-  "take": "r3-build-coach-0ps92su",
+  "take": "r3-build-coach-17losah",
   "spoken": "Tanvir calls. He really wants to sell it."
  },
  {
@@ -4367,7 +4368,7 @@
     "where": "#build/23 round 1"
    }
   ],
-  "take": "r3-build-coach-0ps92su",
+  "take": "r3-build-coach-0nwl2zl",
   "spoken": "Let's sell it! ninety-nine taka a month — easy money!"
  },
  {
@@ -4382,7 +4383,7 @@
     "where": "#build/23 round 1 answer"
    }
   ],
-  "take": "r3-build-ayesha-1ilszf8",
+  "take": "r3-build-ayesha-0ghn8fn",
   "spoken": "Not yet. It was built for fifteen friends. Selling it means accounts, payments and security first."
  },
  {
@@ -4397,7 +4398,7 @@
     "where": "#build/23 round 2"
    }
   ],
-  "take": "r3-build-coach-0ps92su",
+  "take": "r3-build-coach-0okbsks",
   "spoken": "Why not just ask Studio to add payments tonight?"
  },
  {
@@ -4412,7 +4413,7 @@
     "where": "#build/23 round 2 answer"
    }
   ],
-  "take": "r3-build-ayesha-1ilszf8",
+  "take": "r3-build-ayesha-0eaye3m",
   "spoken": "Studio can add a button in a minute. But safe payments need planning, testing — and probably a real developer."
  },
  {
@@ -4427,7 +4428,7 @@
     "where": "#build/23 round 3"
    }
   ],
-  "take": "r3-build-coach-0a2x7t3",
+  "take": "r3-build-coach-0dz62o0",
   "spoken": "Studio said \"Fixed \". Why did you test it again?"
  },
  {
@@ -4442,7 +4443,7 @@
     "where": "#build/23 round 3 answer"
    }
   ],
-  "take": "r3-build-ayesha-1mxnm6e",
+  "take": "r3-build-ayesha-0gutinv",
   "spoken": "\"Fixed\" is a claim. I checked it myself — with an impossible date."
  },
  {
@@ -4457,7 +4458,7 @@
     "where": "#build/23 round 4"
    }
   ],
-  "take": "r3-build-coach-0a2x7t3",
+  "take": "r3-build-coach-1gqiczy",
   "spoken": "Why did you stop the AI? Its plan had cool features!"
  },
  {
@@ -4472,7 +4473,7 @@
     "where": "#build/23 round 4 answer"
    }
   ],
-  "take": "r3-build-ayesha-1mxnm6e",
+  "take": "r3-build-ayesha-0xjjibd",
   "spoken": "Cool — but not in version 1. Every extra feature is more to check, secure and fix."
  },
  {
@@ -4487,7 +4488,7 @@
     "where": "#build/23 speaking lifeline"
    }
   ],
-  "take": "r3-build-ayesha-1mxnm6e",
+  "take": "r3-build-ayesha-16wq5uu",
   "spoken": "Not yet — first we need…"
  },
  {
@@ -4502,7 +4503,7 @@
     "where": "#build/23 speaking lifeline"
    }
   ],
-  "take": "r3-build-ayesha-1mxnm6e",
+  "take": "r3-build-ayesha-1ip39n5",
   "spoken": "That's a different app."
  },
  {
@@ -4517,7 +4518,7 @@
     "where": "#build/23 speaking lifeline"
    }
   ],
-  "take": "r3-build-ayesha-1wbzytk",
+  "take": "r3-build-ayesha-0g1nqxa",
   "spoken": "\"Fixed\" is a claim, so…"
  },
  {
@@ -4532,7 +4533,7 @@
     "where": "#build/23 speaking lifeline"
    }
   ],
-  "take": "r3-build-ayesha-1wbzytk",
+  "take": "r3-build-ayesha-1tgwnjd",
   "spoken": "Small first, big later."
  },
  {
@@ -4547,7 +4548,7 @@
     "where": "#build/24"
    }
   ],
-  "take": "r3-build-coach-0a2x7t3",
+  "take": "r3-build-coach-0bteopn",
   "spoken": "Now you. Describe an app YOU could build — version 1 first."
  },
  {
@@ -4562,12 +4563,12 @@
     "where": "#build/25"
    }
   ],
-  "take": "r3-build-coach-0a2x7t3",
+  "take": "r3-build-coach-0fnt70d",
   "spoken": "Fifteen friends use My Deadlines — and nobody missed a deadline this month. Mission complete!"
  },
  {
-  "key": "0rt80g5",
-  "text": "Context: who you are, and why. To the tailor: it's for my friend's wedding, on Friday. To the AI: I am a third-year Economics student, applying for master's programmes.",
+  "key": "0e9dhej",
+  "text": "Context: who you are, and why. To the tailor: it's my friend's gaye holud on Friday. I'm wearing this yellow shari. To the AI: I am a third-year Economics student, applying for master's programmes.",
   "voice": "coach",
   "lesson": "cards",
   "where": "#cv/21 card",
@@ -4577,12 +4578,12 @@
     "where": "#cv/21 card"
    }
   ],
-  "take": "r3-cards-coach-06qtdo9",
-  "spoken": "Context, who you are, and why. To the tailor, it's for my friend's wedding, on Friday. To the AI, I am a third-year Economics student, applying for master's programmes."
+  "take": "r3-cards-coach-1tomnoy",
+  "spoken": "Context, who you are, and why. To the tailor, it's my friend's গায়ে হলুদ on Friday. I'm wearing this yellow শাড়ি. To the AI, I am a third-year Economics student, applying for master's programmes."
  },
  {
-  "key": "0yx124s",
-  "text": "Product: what you want. To the tailor: one blue cotton shirt. To the AI: make a two-page academic CV.",
+  "key": "17gu16v",
+  "text": "Product: what you want. To the tailor: a yellow blouse to match this shari. To the AI: make a two-page academic CV.",
   "voice": "coach",
   "lesson": "cards",
   "where": "#cv/21 card",
@@ -4592,8 +4593,8 @@
     "where": "#cv/21 card"
    }
   ],
-  "take": "r3-cards-coach-06qtdo9",
-  "spoken": "Product, what you want. To the tailor, one blue cotton shirt. To the AI, make a two-page academic CV."
+  "take": "r3-cards-coach-16a2yy0",
+  "spoken": "Product, what you want. To the tailor, a yellow blouse to match this শাড়ি. To the AI, make a two-page academic CV."
  },
  {
   "key": "0r8qjj0",
@@ -4607,7 +4608,7 @@
     "where": "#cv/21 card"
    }
   ],
-  "take": "r3-cards-coach-06qtdo9",
+  "take": "r3-cards-coach-0qqwbcw",
   "spoken": "Process, how to do the job. To the tailor, measure me first, and ask me before you cut. To the AI, use only facts from my files. If something is missing, ask me first."
  },
  {
@@ -4622,7 +4623,7 @@
     "where": "#cv/21 card"
    }
   ],
-  "take": "r3-cards-coach-06qtdo9",
+  "take": "r3-cards-coach-1j3381v",
   "spoken": "Performance, how the helper should act. To the tailor, be honest, and tell me if something is wrong. To the AI, be an honest editor. Use simple English I can explain."
  },
  {
@@ -5422,7 +5423,7 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0gjdzt4",
+  "take": "r3-sheets-coach-0eiovx2",
   "spoken": "Your prompt is missing 4 parts."
  },
  {
@@ -5437,12 +5438,12 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0gjdzt4",
+  "take": "r3-sheets-coach-1lnwnwo",
   "spoken": "A good prompt has all four parts."
  },
  {
-  "key": "1ezrtz5",
-  "text": "Context — who she is, and why. A tailor who doesn't know it's for a wedding can't make it fit the day.",
+  "key": "0prv313",
+  "text": "Context — who she is, and why. A tailor who doesn't know it's for a gaye holud can't make it fit the day.",
   "voice": "coach",
   "lesson": "sheets",
   "where": "feedback sheet line",
@@ -5452,12 +5453,12 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0gjdzt4",
-  "spoken": "Context — who she is, and why. A tailor who doesn't know it's for a wedding can't make it fit the day."
+  "take": "r3-sheets-coach-0uvvqte",
+  "spoken": "Context — who she is, and why. A tailor who doesn't know it's for a গায়ে হলুদ can't make it fit the day."
  },
  {
-  "key": "1b5httl",
-  "text": "Product — what to make. A tailor can't start until you say \"a blue shirt\".",
+  "key": "1cinitq",
+  "text": "Product — what to make. A tailor can't start until you say \"a yellow blouse to match this shari\".",
   "voice": "coach",
   "lesson": "sheets",
   "where": "feedback sheet line",
@@ -5467,8 +5468,8 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0gjdzt4",
-  "spoken": "Product — what to make. A tailor can't start until you say \"a blue shirt\"."
+  "take": "r3-sheets-coach-16fs8vi",
+  "spoken": "Product — what to make. A tailor can't start until you say \"a yellow blouse to match this শাড়ি\"."
  },
  {
   "key": "0qzlegk",
@@ -5482,7 +5483,7 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0na4va9",
+  "take": "r3-sheets-coach-0tz3aet",
   "spoken": "Process — how to do the job. A tailor who cuts before he measures ruins the cloth."
  },
  {
@@ -5497,7 +5498,7 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0na4va9",
+  "take": "r3-sheets-coach-04unkld",
   "spoken": "Performance — how the helper should act. An honest tailor tells you when something is wrong."
  },
  {
@@ -5512,7 +5513,7 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0na4va9",
+  "take": "r3-sheets-coach-1qopw2u",
   "spoken": "Your prompt is missing 3 parts."
  },
  {
@@ -5527,7 +5528,7 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0na4va9",
+  "take": "r3-sheets-coach-1c8pwo0",
   "spoken": "Your prompt is missing 2 parts."
  },
  {
@@ -5542,7 +5543,7 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1ppq781",
+  "take": "r3-sheets-coach-0j20y06",
   "spoken": "Still to add, the order — check first, then write."
  },
  {
@@ -5557,7 +5558,7 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1ppq781",
+  "take": "r3-sheets-coach-0l8opqe",
   "spoken": "Still to add, if something is missing, ask — don't guess."
  },
  {
@@ -5572,7 +5573,7 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1ppq781",
+  "take": "r3-sheets-coach-0qu0ms7",
   "spoken": "Still to add, use only facts from her files."
  },
  {
@@ -5587,7 +5588,7 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1ppq781",
+  "take": "r3-sheets-coach-00c2199",
   "spoken": "Your prompt is missing one part."
  },
  {

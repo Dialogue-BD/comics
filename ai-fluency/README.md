@@ -89,7 +89,7 @@ Every spoken line has a key made from its words (`audioKey()` in `engine.js`, FN
 Cog reads every new step by itself. One audio player is unlocked by the student’s first tap (phones block sound that starts on its own), and the lines for this step and the next two are fetched ahead, so a line starts at once. Clips are 40 kb/s mono (~20 KB each). If a phone blocks a clip, 🔊 pulses rather than the line dropping to the robot voice. Bump `v` in `audio/manifest.json` after re-encoding to make phones fetch the new files.
 
 - `node tools/voice-script.js` lists every line from the lesson files (say lines, picture words, story panels, phrases, talk questions, frames and example answers, in every mode) into `audio/lines.json`, groups the lines **not yet recorded** into new takes of up to four per voice, named `r2-…` so old take files can never be cut into the wrong lines in `audio/takes.json`, and writes **`voice-script.md`**: the voice settings and a transcript block per take to paste into the AI Studio speech playground. Run it again after any text change; recorded takes are ticked.
-- Two voices: **the coach** (instructions, words, stories, questions) and **Ayesha** (phrases, frames, example answers). Lines in a take are separated by `<long pause>`.
+- Two voices: **the coach** (instructions, words, stories, questions) and **Ayesha** (phrases, frames, example answers). Record one line per take, with delivery instructions only in the Style field; pause tags can be read aloud.
 - Download each take as `<take>.wav`, then `python3 tools/split_takes.py ~/Downloads` (needs ffmpeg) cuts each take at its pauses into `audio/<key>.mp3`, trims it, and rewrites the manifest. A take with too few pauses is skipped and reported (when pauses are close it tries the cut that best fits each line's words; a take that still won't cut can be recorded a line at a time as `<take>_L1.wav`, `_L2.wav` …); lines whose length looks wrong for their words are listed to check by ear.
 
 ## The four Ds — onboarding animation
@@ -163,3 +163,47 @@ Pair work shares ONE phone, so the games never need a secret screen — except �
 - `tools/voice-script.js` lists the new spoken lines (round questions, strong answers, worst cases). Run it again before recording.
 - Browser voice for lines not yet recorded: on Android the phone’s own default voice (no forced language); elsewhere the most natural English voice available (“Natural”, “Neural”, “Online”, Google, “Enhanced”), with old robotic voices ranked last (`voiceScore` in `engine.js`).
 - The CV “guess” (what will the quick prompt give?) is a prediction, not a bet — no stakes, number signs 1️⃣ 2️⃣ 3️⃣.
+
+### Activity 1 illustrated story and tailor lesson
+
+`cv-art.js` and `cv-art.css` give Ayesha’s opening story and the four-part prompt
+lesson illustrated stages, scene replay, optional captions, a whole-story view,
+calm transitions and reduced-motion support. The story uses furnishings from
+real RU departmental library photos; phone and laptop backs stay plain, with
+email/AI content in separate callouts. The tailor example now commissions a
+yellow blouse to match Ayesha’s yellow shari for her friend’s gaye holud.
+
+The existing four-part Send check and both Process tile puzzles remain in place.
+Artwork, credits and geometry notes: `assets/cv-scenes/README.md`. Prompts and
+local QA screenshots: `production/visual-polish/`. The first-challenge recording
+queue has been refreshed for the corrected example and guided builder: 19 lines remain to record.
+
+### One consistent prompt builder
+
+Activity 1 now builds Context, Product, Process and Performance from tiles in
+that order. Process has two builds: the facts-only rule plus check-before-write,
+then ask-rather-than-guess. There are no separate add-text chips or shortcut
+choices on this step. The header names the current part (1–4); Process progress
+counts the same two visible builds in the header and footer.
+
+Saved drafts keep their text and are recognised by the new builder. Old partial
+tile IDs are cleared once when its revision changes. Typed edits update the
+current build, coloured text and completion meter together. The finished prompt
+box expands to 220px where space permits and starts at the beginning for review.
+The complete prompt was built and sent through the real browser UI at phone
+size; the wrong-order consequence and laptop layout were also checked.
+
+### Ayesha’s story: karaoke read-along
+
+Show the words now uses the Culture Circles style: one persistent gold word
+follower, completed words staying readable, and a calm hold through short gaps.
+All 29 words across the three existing MP3s have local forced-alignment timings
+in `audio/story-timings.js`; playback follows the audio clock at any playback
+speed. `story-voice.js` verifies the exact transcript, word count, duration and
+recording SHA-256 before highlighting. Missing or mismatched media shows a
+retry/reload message instead of guessed timing or an unrelated fallback voice.
+
+Just listen stays wordless. Scene replay, Stop, the whole-story view and toggling
+the words during playback are supported. Existing story DOM is preserved when
+the language changes, keeping playback and the read-along selection intact.
+Build and validation instructions: `assets/cv-scenes/README.md`.
