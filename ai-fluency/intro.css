@@ -22,6 +22,11 @@ html.intro-on body>*:not(#intro){visibility:hidden!important}
 .world>*,.scr>*{position:absolute}
 .scr{inset:0;z-index:15;pointer-events:none}
 .i-brand{right:70px;top:56px;display:flex;align-items:center;gap:12px;font:600 24px 'Public Sans',sans-serif;color:#D2B978;letter-spacing:.02em;z-index:31}
+.i-logo{top:40px;right:48px;padding:10px 12px;border-radius:12px;background:#F4F1E6;box-shadow:0 3px 14px rgba(0,0,0,.16);z-index:31;pointer-events:none}
+.i-logo img{display:block;width:180px;height:auto}
+/* Loop 1 puts its title on the right; the logo uses the open corner instead.
+   Keep this overlay outside the camera world so it also appears in film exports. */
+.i-logo-left{right:auto;left:48px}
 .bg-gear{width:30px;height:30px;background:#D2B978;-webkit-mask:var(--gm) center/100% 100% no-repeat;mask:var(--gm) center/100% 100% no-repeat}
 
 /* the gears */
@@ -244,7 +249,8 @@ svg.ringtxt .rline{fill:none;stroke:rgba(226,201,142,.7);stroke-width:1.3}
 #intro.port .i-cap .en{font-size:58px;line-height:1.18}
 #intro.port .i-cap .bnc{font-size:38px}
 #intro.port.bn .i-cap{height:360px}
-#intro.port .ttl{left:64px;top:110px}
+#intro.port .i-logo{left:48px;right:auto;top:24px}
+#intro.port .ttl{left:64px;top:180px}
 #intro.port .ttl.ttl-r{left:64px;right:auto;align-items:flex-start;text-align:left}
 #intro.port .ttl b{font-size:86px}
 #intro.port .icard span{font-size:38px}

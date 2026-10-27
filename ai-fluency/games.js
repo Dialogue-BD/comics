@@ -101,10 +101,21 @@ GAMES._signs={};
 /* the end of a mission comes back to how it began */
 GAMES.callback=(cb,x)=>`<div class="card cbk"><b>🔁 ${cb.en}</b>${BN(cb.bn)}${cb.signs?`<div class="o3-signs small">${cb.signs.map(z=>`<span class="o3-sign"><i>${z.i}</i><b>${z.en}</b></span>`).join('')}</div>`:''}${cb.go?`<button class="o3-go small" data-g="o3s|go"><span class="o3n">✋ 1·2·3</span></button>`:''}</div>`;
 
+/* A short worked example makes an unfamiliar speaking game concrete before students play. */
+function truthDemo(s){
+ const step=s.demoStep||0,examples=[['I volunteer at a library.','আমি একটি লাইব্রেরিতে স্বেচ্ছাসেবী কাজ করি।'],['I can type 60 words a minute.','আমি মিনিটে ৬০টি শব্দ টাইপ করতে পারি।'],['I won a national debate competition.','আমি একটি জাতীয় বিতর্ক প্রতিযোগিতায় জিতেছি।']];
+ const steps=[['Student A says three things.','শিক্ষার্থী A তিনটি কথা বলে।','Two are true. One is made up. Keep the made-up one secret.','দুটি সত্য। একটি বানানো। কোনটি বানানো, তা এখনই বলবে না।'],['Student B asks a question.','শিক্ষার্থী B একটি প্রশ্ন করে।','Ask for a detail that could help you check one statement.','একটি কথা যাচাই করতে কাজে লাগবে এমন কোনো বিস্তারিত তথ্য জানতে চাও।'],['The question reveals the made-up statement.','প্রশ্ন করে বানানো কথাটি ধরা গেল।','Now you know how to play. Use your own examples, then swap jobs.','এবার নিজের উদাহরণ দিয়ে করো। তারপর কাজ বদলাও।']];
+ const row=steps[step];return `<div class="tt-demo" data-demo-step="${step}"><div class="tt-demo-head"><span>${tr('Worked example','একটি উদাহরণ')}</span><small>${step+1} / 3</small></div><h2>${row[0]}${BN(row[1])}</h2><p>${row[2]}${BN(row[3])}</p>
+ <div class="tt-example-label">${student(0)} ${tr('Example statements','উদাহরণের কথা')}</div><div class="tt-statements">${examples.map(([en,bn],i)=>`<div class="tt-statement ${step===2?(i===2?'invented':'truth'):''}" style="--delay:${i*100}ms"><span class="tt-number">${i+1}</span><p>${en}${BN(bn)}</p><b class="tt-reveal">${i===2?tr('Made up','বানানো'):tr('True','সত্য')}</b></div>`).join('')}</div>
+ ${step>0?`<div class="tt-dialogue"><div>${student(1)}<p>Which competition did you win?${BN('কোন প্রতিযোগিতায় জিতেছ?')}</p></div>${step===2?`<div>${student(0)}<p>I didn’t win one. That’s my made-up statement.${BN('আমি জিতিনি। ওই কথাটি বানানো।')}</p></div>`:''}</div>`:''}
+ <div class="tt-demo-nav">${step?`<button class="pb ghost" data-g="rd|demoBack">${tr('Back','পেছনে')}</button>`:''}<button class="pb primary" data-g="rd|demo">${step===2?tr('Our turn — try it','এবার আমরা করব'):tr('See what happens next','এরপর কী হয় দেখো')}</button></div></div>`;
+}
+
 /* ============================================================ speaking rounds */
 GAMES.rounds={
   html(c,x){
     const s=st(x,c,{i:0,res:[]}), n=c.items.length, solo=mode()==='solo', pair=mode()==='pair';
+    if(c.demo&&!solo&&!s.demoDone) return truthDemo(s);
     const dots=`<span class="rd-dots">${c.items.map((it,k)=>`<i class="${k<s.i?(WIN.test(s.res[k]||'')?'done':'more'):k===s.i?'now':''}"></i>`).join('')}</span>`;
     const head=`<div class="rd-h">${c.pic?`<span class="tpic" aria-hidden="true">${c.pic}</span>`:''}<b>${c.title}${BN(c.titlebn)}</b>${dots}</div>`;
     const intro=c.intro&&s.i===0&&!s.res.length?`<p class="rd-intro">${c.intro.en}${BN(c.intro.bn)}</p>${c.prep&&!solo?`<div class="rd-prep">${timer(c.prep)}<span>${tr('Think time first','আগে ভাবার সময়')}</span></div>`:''}`:'';
@@ -132,6 +143,8 @@ GAMES.rounds={
   state(c,x){ const s=st(x,c,{i:0}); return {act:s.i<c.items.length}; },
   click(c,x,a,arg){
     const s=st(x,c,{i:0,res:[]});
+    if(a==='demo'){g().hush();s.demoStep=(s.demoStep||0)+1;if(s.demoStep>=3)s.demoDone=1;save(x,c,s);redraw();return;}
+    if(a==='demoBack'){s.demoStep=Math.max(0,(s.demoStep||0)-1);save(x,c,s);redraw();return;}
     if(a==='model'){ const it=c.items[s.i]; if(it){ g().speak(it.model); save(x,c,Object.assign(s,{peekModel:s.i})); redraw(); } return; }
     if(a==='reset'){ g().resetTalk(); save(x,c,{i:0,res:[]}); redraw(); this.voice(c,x); return; }
     if(a==='rate'){ g().hush(); g().resetTalk(); s.res=s.res.concat([arg]); s.i++; delete s.peekModel; save(x,c,s); sfx(WIN.test(arg)?'ok':'tick'); redraw(); this.voice(c,x); return; }
