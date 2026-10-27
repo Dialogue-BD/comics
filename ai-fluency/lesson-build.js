@@ -170,7 +170,7 @@ const MY_APP={type:'mine',key:'bdMine',
    {id:'v',cls:'d-des',label:'Version 1 only…',labelbn:'প্রথম সংস্করণ শুধু…',ph:'Version 1 only shows the next bus from the main gate.'},
    {id:'l',cls:'d-des',label:'Later, maybe…',labelbn:'পরে হয়তো…',ph:'Later: a map and alerts — so structure the code for them.'},
    {id:'y',cls:'d-del',label:'Your call',labelbn:'তোমার সিদ্ধান্ত',ph:'You choose the tools. Explain your plan before you build.'}],
- partner:{en:'🅱 plays Studio: suggest one exciting extra feature. 🅰: is it in version 1? Say yes or no — and why. Then swap.',bn:'অন্যজন Studio সাজো: একটা দারুণ বাড়তি ফিচার প্রস্তাব করো। প্রথমজন: এটা কি প্রথম সংস্করণে? হ্যাঁ বা না — আর কেন। তারপর অদলবদল।'}};
+ partner:{en:'Student B plays Studio: suggest one exciting extra feature. Student A: is it in version 1? Say yes or no — and why. Then swap.',bn:'অন্যজন Studio সাজো: একটা দারুণ বাড়তি ফিচার প্রস্তাব করো। প্রথমজন: এটা কি প্রথম সংস্করণে? হ্যাঁ বা না — আর কেন। তারপর অদলবদল।'}};
 const TILES=()=>AFL.byMode({solo:'Two orders can be good English — only one tells Studio the right thing.',pair:'👥 Take turns: one tile each. Read your tile aloud as you place it.',class:'👥 Take turns with the person next to you: one tile each, read aloud.'});
 const TILESBN=()=>AFL.byMode({solo:'দুই রকম ক্রমেই ইংরেজি ঠিক হতে পারে — কিন্তু Studio-কে ঠিক কথা বলে একটাই।',pair:'পালা করে: একবারে একটা টুকরো। বসানোর সময় জোরে পড়ো।',class:'পাশের জনের সাথে পালা করে: একটা করে টুকরো, জোরে পড়ে।'});
 

@@ -75,7 +75,7 @@ def main():
     all_by_key = {line['key']: line for line in lines}
     report = {
         'scope': 'CV challenge, shared onboarding, four-D film, and authored listening controls',
-        'coverage_limit': 'Dynamically assembled feedback sheets are not enumerated by voice-script.js.',
+        'coverage_limit': 'Includes the cached feedback-sheet inventory; newly assembled feedback text may still use device speech.',
         'source_digest': hashlib.sha256((AUD / 'lines.json').read_bytes()).hexdigest(),
         'total': len(checks),
         'recorded': sum(c['status'] == 'recorded' for c in checks),
@@ -91,11 +91,11 @@ def main():
           f"{report['recorded']} existing clips decode successfully; "
           f"{report['missing']} missing, {report['invalid']} invalid.", '',
           'This queue includes shared onboarding and the four-D film. '
-          'Dynamically assembled feedback sheets still need a separate coverage pass.', '',
+          'Feedback coverage follows audio/sheet-lines.json; refresh it after changing feedback behaviour.', '',
           'Record in Google AI Studio, Gemini 3.8 Flash TTS. '
           'Use Sulafat for the coach and Leda for Ayesha, matching the existing recorder settings. '
           'Keep each downloaded WAV named exactly as its take heading. '
-          'Keep the long pauses between lines; the splitter uses them.', '']
+          'Record one line per take. Keep delivery directions out of the transcript; do not add pause tags.', '']
     for voice in ('coach', 'ayesha'):
         v = voices[voice]
         md += ['## '+v['name'], '', '**Style:** '+v['style'], '', v['profile'], '']
@@ -103,7 +103,7 @@ def main():
             if all_by_key[keys[0]]['voice'] != voice:
                 continue
             md += ['### '+name+'.wav', '', '```text',
-                   '\n<long pause> <long pause>\n'.join(all_by_key[k]['spoken'] for k in keys),
+                   '\n'.join(all_by_key[k]['spoken'] for k in keys),
                    '```', '']
     md += ['After downloading, run the existing splitter against the download folder, '
            'then refresh voice-script.js and rerun this audit. '

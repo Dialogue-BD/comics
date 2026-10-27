@@ -93,7 +93,7 @@ const S={lesson:null,beat:0,bn:false,ch:{},stage:false,mode:'pair',voice:true};
    class (teacher up front on the projector). Kept per device, like a remembered tab. */
 const MODES={
  solo:{i:'👤',n:'Alone',bn:'একা',d:'At home, on your own phone',dbn:'বাড়িতে, নিজের ফোনে'},
- pair:{i:'👥',n:'Pairs',bn:'জোড়ায়',d:'Two students, one phone',dbn:'দুজন শিক্ষার্থী, একটা ফোন'},
+ pair:{i:'👥',n:'Pair work',bn:'জোড়ায় কাজ',d:'Two students, one phone · choose Student A and Student B',dbn:'দুজন শিক্ষার্থী, একটা ফোন · কে শিক্ষার্থী A আর কে B ঠিক করো'},
  class:{i:'🙋',n:'Class',bn:'পুরো ক্লাস',d:'Teacher up front, on the projector',dbn:'শিক্ষক সামনে, প্রজেক্টরে'}
 };
 function loadPrefs(){try{const v=JSON.parse(localStorage.getItem('afl-prefs')||'null');if(v){if(MODES[v.mode])S.mode=v.mode;if(typeof v.voice==='boolean')S.voice=v.voice}}catch(e){}}
@@ -237,6 +237,7 @@ const ROWS=['qwertyuiop','asdfghjkl','zxcvbnm'];
 
 /* colour-code the four parts of a prompt (Context, Product, Process, Performance) so students can see how it is built */
 const PPPP=['Context','Product','Process','Performance'];
+const PART_BN={Context:'প্রেক্ষাপট',Product:'ফলাফল',Process:'প্রক্রিয়া',Performance:'আচরণ'};
 function hlHTML(val,chips){
   const segs=[]; chips.filter(c=>PPPP.includes(c.tag)).forEach(c=>{ [c.text].concat(c.ok?c.ok.map(o=>o.t):[]).forEach(tx=>{ const i=tx?val.indexOf(tx):-1; if(i>=0&&!segs.some(g=>g.i===i)) segs.push({i,e:i+tx.length,t:c.tag}); }); });
   if(!segs.length) return ''; segs.sort((a,b)=>a.i-b.i); let o='',p=0;
@@ -255,7 +256,8 @@ function hlHTML(val,chips){
 const AIWHO={sathi:{n:'Sathi AI',i:'spark'},orbit:{n:'Orbit',i:'orbit'},studio:{n:'Studio',i:'code'}};
 const pzItems=kb=>(kb&&kb.chips||[]).filter(c=>c.tiles);
 const pzTexts=c=>c.ok.map(o=>o.t);
-const pzCur=(kb,val)=>pzItems(kb).find(c=>!pzTexts(c).some(t=>val.includes(t)));
+const pzDone=(c,val)=>c.matches?c.matches.every(r=>r.test(val)):pzTexts(c).some(t=>val.includes(t));
+const pzCur=(kb,val)=>pzItems(kb).find(c=>!pzDone(c,val));
 const capFirst=s=>s.charAt(0).toUpperCase()+s.slice(1);
 const pzShow=(c,ids)=>{ let start=true; return ids.map(id=>{ let t=c.tiles[id]; if(start) t=capFirst(t); start=/[.!?]$/.test(t); return t; }); };
 function pzPool(c){
@@ -267,11 +269,15 @@ function pzPool(c){
 }
 function pzHTML(kb,val){
   const x=ctx(), items=pzItems(kb), cur=pzCur(kb,val), key='pz:'+kb.key;
-  const good=x.get(key+'+','');
-  if(!cur) return `<div class="bld done">${good?`<span class="pz-good">✓ ${esc(good)}</span>`:''}✓ ${tr('All sentences built. Now send ➤','সব বাক্য তৈরি হয়েছে। এবার পাঠাও ➤')}</div>`;
+  const good=x.get(key+'+',''), goodbn=(items.find(c=>c.good===good)||{}).goodbn;
+  if(!cur) return `<div class="bld done">${good&&!kb.guidedParts?`<span class="pz-good">✓ ${T(esc(good),goodbn)}</span>`:''}✓ ${kb.guidedParts?tr('All four parts ready. Read your prompt above, then tap Send.','চারটা অংশ তৈরি। উপরের প্রম্পট পড়ে Send চাপো।'):tr('All sentences built. Now send ➤','সব বাক্য তৈরি হয়েছে। এবার পাঠাও ➤')}</div>`;
   const pl=x.get(key,[]), bad=x.get(key+'!',0), n=items.indexOf(cur)+1, shown=pzShow(cur,pl);
-  return `<div class="bld pz ${bad?'bad':''} t-${esc(cur.tag||'')}"><div class="bld-h"><b>${esc(cur.goal||'Build the sentence')}${S.bn&&cur.goalbn?` <span class="bn-in" lang="bn">· ${cur.goalbn}</span>`:''}</b><span>${n}/${items.length}</span></div>
-   <div class="bld-line" id="bldline">${pl.length?pl.map((id,k)=>`<button class="tile on" data-ui="untile:${k}">${esc(shown[k])}</button>`).join(''):good?`<em class="pz-was">✓ ${esc(good)} <b>${tr('Next one:','এবার পরেরটা:')}</b></em>`:`<em>${tr('Tap or drag the pieces here, in order','টুকরোগুলো ক্রমে এখানে চাপো বা টেনে আনো')}</em>`}</div>
+  const siblings=items.filter(c=>c.tag===cur.tag), part=PPPP.indexOf(cur.tag)+1;
+  const head=kb.guidedParts?`<b>${part} · ${tr(esc(cur.tag),PART_BN[cur.tag])}</b><span>${tr('Part','অংশ')} ${part}/4</span>`:`<b>${esc(cur.goal||'Build the sentence')}${S.bn&&cur.goalbn?` <span class="bn-in" lang="bn">· ${cur.goalbn}</span>`:''}</b><span>${n}/${items.length}</span>`;
+  const goal=kb.guidedParts?`<div class="pz-goal">${esc(cur.goal.replace(/^Process: /,''))}${siblings.length>1?` <small>${tr('Build','বাক্য')} ${siblings.indexOf(cur)+1}/${siblings.length}</small>`:''}${S.bn&&cur.goalbn?`<span class="bn-in" lang="bn">${esc(cur.goalbn)}</span>`:''}</div>`:'';
+  return `<div class="bld pz ${bad?'bad':''} t-${esc(cur.tag||'')}"><div class="bld-h">${head}</div>${goal}
+   ${S.bn&&cur.textbn?`<details class="pz-meaning" lang="bn"><summary>বাংলা অর্থ দেখো</summary><p>${esc(cur.textbn)}</p></details>`:''}
+   <div class="bld-line" id="bldline">${pl.length?pl.map((id,k)=>`<button class="tile on" data-ui="untile:${k}">${esc(shown[k])}</button>`).join(''):good?`<em class="pz-was">✓ ${T(esc(good),goodbn)} <b>${tr('Next one:','এবার পরেরটা:')}</b></em>`:`<em>${tr('Tap or drag the pieces here, in order','টুকরোগুলো ক্রমে এখানে চাপো বা টেনে আনো')}</em>`}</div>
    ${bad?`<div class="bld-tip">${esc(cur.tip||'Not quite. Check the order.')}${S.bn&&cur.tipbn?`<span class="bn-in" lang="bn"> · ${cur.tipbn}</span>`:''}</div>`:''}
    <div class="bld-pool">${pzPool(cur).filter(z=>!pl.includes(z.i)).map(z=>`<button class="tile" data-tile="${z.i}" data-ui="tile:${z.i}">${esc(z.t)}</button>`).join('')}</div></div>`;
 }
@@ -300,7 +306,7 @@ function pzTap(kind,arg,x,at){
 function pzTrap(x,kb,cur,trap){
   const who=AIWHO[kb.ai||'sathi']||AIWHO.sathi;
   UI.sheet={tone:'think',title:S.bn?'ইংরেজি ঠিক — কিন্তু AI কী করে দেখো':'Correct English — but look what the AI does',
-    html:`<p class="claim">“${esc(trap.t)}”</p><div class="pz-ai"><div class="pz-who"><span class="spark pz-ic">${ico(who.i)}</span>${who.n}</div><div class="pz-reply">${trap.ai}</div></div>
+    html:`<p class="claim">“${esc(trap.t)}”${BN(trap.tbn)}</p><div class="pz-ai"><div class="pz-who"><span class="spark pz-ic">${ico(who.i)}</span>${who.n}</div><div class="pz-reply">${trap.ai}${BN(trap.aibn)}</div></div>
       <p>${trap.why||''}${BN(trap.whybn)}</p>${S.mode!=='solo'?`<p class="pz-talk">🗣 ${S.mode==='class'?'Tell the person next to you':'Tell your partner'}: what went wrong?${BN('সঙ্গীকে বলো: কী ভুল হলো?')}</p>`:''}`,
     acts:[['retry','↺ '+tr('Change the order','ক্রম বদলাও'),'primary']],
     retry:x2=>{ x2.set('pz:'+kb.key,[]); setTimeout(()=>{ renderPhoneKeepFocus(); renderFoot(); },0); }};
@@ -320,9 +326,13 @@ function pzTrap(x,kb,cur,trap){
 })();
 function keyboard(kb){
   const x=ctx(); const val=(kb&&kb.key)?x.get(kb.key,''):'';
+  // Keep an existing draft, but discard unfinished tile IDs from an older layout.
+  if(kb.revision&&x.get('pz:'+kb.key+':revision')!==kb.revision){
+    x.set('pz:'+kb.key,[]); x.set('pz:'+kb.key+'!',0); x.set('pz:'+kb.key+'+',''); x.set('pz:'+kb.key+':revision',kb.revision);
+  }
   const bld=pzItems(kb).length;
-  const chips=(kb.chips||[]).filter(c=>!c.tiles).map(c=>{const used=val.includes(c.text);return `<button class="kchip ${used?'used':''} ${c.x?'x':''} t-${esc(c.tag||'')}" data-ui="chip:${c.id}"><span class="tg">${esc(c.tag||'')}</span>${esc(c.text)}</button>`}).join('');
-  return (bld?pzHTML(kb,val):'')+`<div class="strip">${kb.label?`<span class="lbl">${esc(kb.label)}</span>`:''}${chips}${innerWidth<900?`<button class="kbt" data-ui="kbtoggle:1">${S.keys?'Hide keys':'⌨ Type'}</button>`:''}</div>
+  const chips=(kb.chips||[]).filter(c=>!c.tiles).map(c=>{const used=val.includes(c.text);return `<button class="kchip ${used?'used':''} ${c.x?'x':''} t-${esc(c.tag||'')}" data-ui="chip:${c.id}"><span class="tg">${tr(esc(c.tag||''),c.tagbn||PART_BN[c.tag])}</span>${T(esc(c.text),c.textbn)}</button>`}).join('');
+  return (bld?pzHTML(kb,val):'')+`<div class="strip">${kb.label&&!kb.guidedParts?`<span class="lbl">${tr(esc(kb.label),kb.labelbn)}</span>`:''}${chips}${innerWidth<900||kb.guidedParts?`<button class="kbt" data-ui="kbtoggle:1">${S.keys?tr('Hide keys','কি-বোর্ড লুকাও'):tr('⌨ Type','টাইপ করো')}</button>`:''}</div>
   <div class="rows">${ROWS.map((r,i)=>`<div class="kr">${i===2?`<button class="k w" data-ui="key:shift">⇧</button>`:''}${[...r].map(k=>`<button class="k" data-ui="key:${k}">${k}</button>`).join('')}${i===2?`<button class="k w" data-ui="key:bs">⌫</button>`:''}</div>`).join('')}
   <div class="kr"><button class="k w" data-ui="key:123">?123</button><button class="k w" data-ui="key:,">,</button><button class="k sp" data-ui="key: ">English</button><button class="k w" data-ui="key:.">.</button><button class="k go" data-ui="key:nl">↵</button></div></div>`;
 }
@@ -348,7 +358,7 @@ function renderPhone(anim){
   if(sc.skip&&sc.skip.big!=='⏪'&&anim!==false) try{ FX.clock(scr); }catch(e){}
   const v=$('.view',scr);
   if(v){v.style.background='transparent';if(anim&&prevKey!==key){v.classList.add(prevScene&&prevScene.app===sc.app?'slide':'enter')}}
-  const kb=$('#kb'); if(sc.kb){kb.hidden=false;kb.innerHTML=keyboard(sc.kb);kb.className='kb'+(innerWidth<900?' compact':'')+(S.keys?' keys':'')+(pzItems(sc.kb).length?' haspz':'')}else{kb.hidden=true;kb.innerHTML=''}
+  const kb=$('#kb'); if(sc.kb){kb.hidden=false;kb.innerHTML=keyboard(sc.kb);kb.className='kb'+(innerWidth<900?' compact':'')+(S.keys?' keys':'')+(pzItems(sc.kb).length?' haspz':'')+(sc.kb.guidedParts?' guided-parts':'')}else{kb.hidden=true;kb.innerHTML=''}
   prevScene=sc;
   // spotlight
   const tgt=fn(b.tap,x); const tgts=[].concat(tgt||[]).concat(fn(b.glow,x)||[]);
@@ -361,17 +371,22 @@ function renderPhone(anim){
   if(st){ const mid=st.closest('[data-mid]'); const id=S.lesson+':'+((mid&&mid.dataset.mid)||S.beat); const seen=x.get('_streamed',{}); if(!seen[id]){ streamIn(st,cs,()=>{seen[id]=1;x.set('_streamed',seen);onStreamDone()}) } else st.removeAttribute('data-stream'); }
   // composer: keep in sync with chips/keys
   const ta=$('#cmp',scr);
-  if(ta){ autoGrow(ta); ta.scrollTop=ta.scrollHeight; const hlb=ta.parentNode.querySelector('.cmp-hl'); const syncHl=()=>{ if(hlb) hlb.scrollTop=ta.scrollTop; }; syncHl(); ta.addEventListener('scroll',syncHl,{passive:true}); ta.addEventListener('input',()=>{ if(ta.dataset.key){x.set(ta.dataset.key,ta.value);composeChanged()} autoGrow(ta)}); }
+  if(ta){ autoGrow(ta); ta.scrollTop=$('#kb.guided-parts .bld.done')?0:ta.scrollHeight; const syncHl=()=>{ const hlb=ta.parentNode.querySelector('.cmp-hl'); if(hlb) hlb.scrollTop=ta.scrollTop; }; syncHl(); ta.addEventListener('scroll',syncHl,{passive:true}); ta.addEventListener('input',()=>{
+    if(ta.dataset.key){x.set(ta.dataset.key,ta.value);composeChanged()}
+    const html=hlHTML(ta.value,(sc.kb&&sc.kb.chips)||[]); let layer=ta.parentNode.querySelector('.cmp-hl');
+    if(html){ if(!layer){layer=document.createElement('div');layer.className='cmp-hl';layer.setAttribute('aria-hidden','true');ta.before(layer)} layer.innerHTML=html+'&#8203;'; } else if(layer) layer.remove();
+    ta.classList.toggle('hl-on',!!html); autoGrow(ta);syncHl();
+  }); }
   if(b.hunt) huntMark(x,b,scr);
   if(b.afterRender) b.afterRender(x,scr);
 }
-function autoGrow(t){t.style.height='auto';t.style.height=Math.min(t.scrollHeight,112)+'px'}
+function autoGrow(t){ const limit=$('#kb.guided-parts .bld.done')?Math.min(220,innerHeight*.3):112; t.style.height='auto';t.style.height=Math.min(t.scrollHeight,limit)+'px'}
 
 /* type an AI answer out, text node by text node — feels like a live reply */
 function streamIn(el,scroller,done){
   clearInterval(streamTimer);
   const walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT); const nodes=[]; let n;
-  while(n=walker.nextNode()) nodes.push([n,n.nodeValue]);
+  while(n=walker.nextNode()) if(!n.parentElement.closest('.bn')) nodes.push([n,n.nodeValue]);
   nodes.forEach(([t])=>t.nodeValue='');
   const blocks=$$(':scope > *',el); blocks.forEach(b=>b.style.visibility='hidden');
   const dots=document.createElement('div');dots.className='typing';dots.innerHTML='<i></i><i></i><i></i>';el.prepend(dots);
@@ -453,7 +468,7 @@ function renderTop(){
   top.innerHTML=`<button class="p-ic" data-p="exit" aria-label="Back to Ayesha’s lock screen" title="Lock screen">${IC.x}</button>
    <div class="p-mid"><div class="p-prog" role="group" aria-label="${esc(L.title)}: ${esc(cur.label||'')}. Tap a section to jump to it.">${segs.map(s=>{const done=s.idx.filter(i=>i<S.beat).length+(s.idx.includes(S.beat)?.6:0);
      return `<button type="button" class="psegb" data-p="seg" data-i="${s.idx[0]}" style="flex:${s.idx.length}" title="Go to: ${esc(s.st.label)}" aria-label="Go to ${esc(s.st.label)}"><span class="pseg ${s.st.d?'d-'+s.st.d:'warm'} ${s.st.id===cur.id?'on':''}"><i style="width:${(100*done/s.idx.length).toFixed(1)}%"></i></span></button>`}).join('')}</div>
-     <small class="p-stage">${esc(L.title)} · <b>${esc(cur.label||'')}</b></small></div>
+     <small class="p-stage">${esc(L.title)} · <b>${esc(cur.label||'')}</b>${S.mode==='pair'?' · Pair work':''}</small></div>
    <span class="p-score" id="p-score" title="Stars: good calls, first time">${IC.star}<b>${x.get('_score',0)}</b></span>${right}`;
 }
 
@@ -465,13 +480,16 @@ function coachText(){
   if(cqOn()){ const t=CQ.then; return {en:CQ.phase==='jump'?'…':t.line,bn:CQ.phase==='jump'?'':t.linebn,kick:`⏩ ${t.when}`,cq:1}; }
   if(UI.sub==='talk'){ const tk=fn(b.talk,x)||{}, hd=TALK_HEAD[S.mode]; return {en:tk.q||hd.en,bn:tk.qbn||'',kick:`${hd.i} ${hd.en}`}; }
   const m=d&&D4.META[d];
-  return {en:fn(b.say,x)||'',bn:fn(b.bn,x)||'',sub:fn(b.sub,x)||'',subbn:fn(b.subbn,x)||'',kick:m?`${m.n} · ${m.v}`:(b.kick||'')};
+  return {en:fn(b.say,x)||'',bn:fn(b.bn,x)||'',sub:fn(b.sub,x)||'',subbn:fn(b.subbn,x)||'',kick:m?`${m.n} · ${m.v}`:(b.kick||''),kickbn:m?`${m.nbn} · ${m.vbn}`:''};
 }
 function renderCoachLine(){
   const c=coachText(), box=$('#pcoach');
   const d=S.lesson?beatD(LESSONS[S.lesson],S.beat):null;
   box.style.setProperty('--gc',d?`var(--d-${d})`:'#B9924F'); box.classList.toggle('cq',!!c.cq);
-  $('#p-say').innerHTML=`${c.kick?`<small class="k">${esc(c.kick)}</small>`:''}<p class="say">${c.en}</p>${BN(c.bn)}${c.sub?`<p class="sub">${c.sub}${BN(c.subbn)}</p>`:''}`;
+  const b=S.lesson&&ctx().beat, partnerTask=S.mode!=='solo'&&b&&(b.hunt||b.pairwork);
+  const pairHelp=partnerTask&&(b.pairhelp?fn(b.pairhelp,ctx()):c.sub);
+  const pairHelpBn=partnerTask&&(b.pairhelp?fn(b.pairhelpbn,ctx()):c.subbn);
+  $('#p-say').innerHTML=`${c.kick?`<small class="k">${esc(c.kick)}${BN(c.kickbn)}</small>`:''}<p class="say">${c.en}</p>${BN(c.bn)}${pairHelp?`<details class="pair-instruction"><summary>${tr('Pair work: Student A + Student B','জোড়ায় কাজ: শিক্ষার্থী A + শিক্ষার্থী B')}</summary><p>${pairHelp}${BN(pairHelpBn)}</p></details>`:''}${c.sub&&(!partnerTask||b.pairhelp)?`<p class="sub">${c.sub}${BN(c.subbn)}</p>`:''}`;
   const ear=$('#p-ear'); ear.dataset.speak=canon(c.en); ear.hidden=!c.en||c.en==='…';
 }
 
@@ -481,17 +499,24 @@ function renderStage(){
   const k=stageKind(), was=document.body.classList.contains('show-card')?'card':'phone';
   document.body.classList.toggle('show-card',k==='card'); document.body.classList.toggle('show-phone',k!=='card');
   const pc=$('#pcard');
-  if(k==='card'){ const keep=was==='card'&&pc.dataset.at===S.lesson+'/'+S.beat+(UI.sub||'')?pc.scrollTop:0; const fresh=pc.dataset.at!==S.lesson+'/'+S.beat+(UI.sub||''); const abc=!UI.sub&&fn(ctx().beat.card,ctx()); if(!fresh&&abc&&abc.type==='alt'){ fitDevice(); return; } pc.innerHTML=cardScreen(); pc.dataset.at=S.lesson+'/'+S.beat+(UI.sub||'');
+  if(k==='card'){ const keep=was==='card'&&pc.dataset.at===S.lesson+'/'+S.beat+(UI.sub||'')?pc.scrollTop:0; const fresh=pc.dataset.at!==S.lesson+'/'+S.beat+(UI.sub||''); const abc=!UI.sub&&fn(ctx().beat.card,ctx()); if(!fresh&&abc&&abc.type==='alt'){ fitDevice(); return; }
+    if(!fresh&&abc&&abc.type==='story'&&abc.illustrated&&pc.querySelector('.cv-story')){ CV_ART.language(pc.querySelector('.cv-story'),S.bn); fitDevice(); return; }
+    pc.innerHTML=cardScreen(); pc.dataset.at=S.lesson+'/'+S.beat+(UI.sub||'');
     if(fresh&&!UI.sub){ const bc=fn(ctx().beat.card,ctx()); if(bc&&bc.type==='level') setTimeout(()=>FX.gearTurned(pc,bc.d),60); else if(bc&&bc.type==='result') setTimeout(()=>FX.missionDone(pc),60); else if(bc&&bc.type==='alt') setTimeout(()=>ALT.play(pc,{card:bc,bn:S.bn,speak:t=>speak(t),voice:()=>S.voice}),60); } pc.scrollTop=keep; if(was!=='card'||!keep) pc.firstElementChild&&pc.firstElementChild.classList.add('enter'); }
   else { pc.innerHTML=''; pc.dataset.at=''; }
   fitDevice();
 }
 function cardScreen(){
   const x=ctx(), b=x.beat;
-  if(UI.sub==='talk') return `<div class="pc-in">${talkCard(x,b)}</div>`;
+  if(UI.sub==='talk') return `<div class="pc-in">${pairGuide()}${talkCard(x,b)}</div>`;
   const c=fn(b.card,x); let h=c?cardHTML(c,x):'';
   if(!c&&b.talk) h=talkCard(x,b);
-  return `<div class="pc-in ${c?'t-'+c.type:'t-talk'}">${h}</div>`;
+  const paired=c?['onthree','rounds','chain','flags','mine'].includes(c.type):!!b.talk;
+  return `<div class="pc-in ${c?'t-'+c.type:'t-talk'}">${paired?pairGuide():''}${h}</div>`;
+}
+function pairGuide(){
+  if(S.mode==='solo') return '';
+  return `<aside class="pair-guide"><b>${tr('Pair work','জোড়ায় কাজ')} <span>· ${tr(S.mode==='pair'?'2 students, 1 phone':'With the person next to you',S.mode==='pair'?'২ জন শিক্ষার্থী, ১টি ফোন':'পাশের জনের সাথে')}</span></b><p>${tr('Choose who is Student A and who is Student B. Keep your letter; swap jobs when asked.','কে শিক্ষার্থী A আর কে শিক্ষার্থী B ঠিক করো। নিজের অক্ষর একই রাখো; নির্দেশ পেলে কাজ বদলাও।')}</p></aside>`;
 }
 
 /* ---------------------------------------------------------------- what this step still needs */
@@ -546,8 +571,14 @@ function hubFoot(){
 /* the prompt recipe as a row of pills that light up as the parts go in */
 function meterHTML(x,b){
   const c=fn(b.compose,x); if(!c||!c.slots) return ''; const val=x.get(c.key,c.prefill||'');
-  // a slot with all:true needs every one of its sentences (e.g. Process = the rule + both tile sentences); it shows how far along it is
-  return `<div class="meter">${c.slots.map(s=>{const n=s.test.filter(r=>r.test(val)).length, on=s.all?n===s.test.length:n>0, part=s.all&&n&&!on;return `<span class="${on?'on':part?'part':''} pp-${esc(s.label)}">${on?'✓':part?'○':'○'} ${esc(s.label)}${part?` <small>${n}/${s.test.length}</small>`:''}</span>`}).join('')}</div>`;
+  const kb=activeKB(x);
+  // Guided progress counts visible builds, rather than hidden validation rules.
+  return `<div class="meter">${c.slots.map(s=>{
+    const hits=s.test.filter(r=>r.test(val)).length, on=s.all?hits===s.test.length:hits>0;
+    const builds=kb&&kb.guidedParts?pzItems(kb).filter(p=>p.tag===s.label):null;
+    const n=builds?builds.filter(p=>pzDone(p,val)).length:hits, total=builds?builds.length:s.test.length, part=n&&!on;
+    return `<span class="${on?'on':part?'part':''} pp-${esc(s.label)}">${on?'✓':'○'} ${esc(s.label)}${S.bn&&(s.labelbn||PART_BN[s.label])?` <small lang="bn">· ${s.labelbn||PART_BN[s.label]}</small>`:''}${part?` <small>${n}/${total}</small>`:''}</span>`;
+  }).join('')}</div>`;
 }
 
 /* ---------------------------------------------------------------- feedback sheet */
@@ -556,7 +587,7 @@ function fbSheet(o,retry){
   const tone=o.ok?'ok':o.ok===0?'think':'bad';
   const acts=tone==='ok'?[['next',tr('Continue','এগিয়ে যাও'),'primary']]:[['retry',tr('Try again','আবার চেষ্টা করো'),'ghost'],['next',tr('Continue','এগিয়ে যাও'),'primary']];
   const more=typeof o.more==='function'?o.more(ctx()):(o.more||'');
-  return {tone,title:o.title||TONE[tone][0],titlebn:TONE[tone][1],html:`<p>${o.why||''}${BN(o.whybn)}</p>${more}`,acts:retry?acts:[['next',tr('Continue','এগিয়ে যাও'),'primary']],retry};
+  return {tone,title:o.title||TONE[tone][0],titlebn:o.titlebn||TONE[tone][1],html:`<p>${o.why||''}${BN(o.whybn)}</p>${more}`,acts:retry?acts:[['next',tr('Continue','এগিয়ে যাও'),'primary']],retry};
 }
 function renderSheet(){
   const sh=$('#psheet'); const s=UI.sheet;
@@ -564,7 +595,7 @@ function renderSheet(){
   let o=s;
   if(!o){ const t=CQ.then, hd=TALK_HEAD[S.mode];
     o={tone:'bad',title:t.when,cq:1,html:`<p class="cq-line">${esc(t.line)}${BN(t.linebn)}</p>${t.why?`<p>${t.why}${BN(t.whybn)}</p>`:''}
-      ${S.mode!=='solo'?`<div class="cq-talk"><b>${hd.i} ${S.mode==='class'?'With the person next to you':'Retell it'}: 🅰 says what she did. 🅱 says what happened next — with “so”.</b>${BN('🅰 বলো সে কী করেছিল। 🅱 বলো তারপর কী হলো — “so” দিয়ে।')}</div>`:''}`,
+      ${S.mode!=='solo'?`<div class="cq-talk"><b>${tr('Pair work — retell it','জোড়ায় কাজ — আবার বলো')}</b><p>Student A: say what Ayesha did. Student B: say what happened next, using “so”. Then swap jobs.${BN('শিক্ষার্থী A: আয়েশা কী করেছিল বলো। শিক্ষার্থী B: “so” দিয়ে তারপর কী হলো বলো। তারপর কাজ বদলাও।')}</p></div>`:''}`,
       acts:[['rewind',`↩ ${tr('Choose again','আবার বেছে নাও')}`,'ghost'],['next',tr('Continue','এগিয়ে যাও'),'primary']]}; }
   sh.hidden=false; document.body.classList.add('sheet-on');
   sh.className='psheet t-'+o.tone;
@@ -614,7 +645,7 @@ function ppClick(e){
   const sayStep=()=>{ const h=pp.querySelector('.pp-hd.h'+n); if(h&&h.dataset.say&&S.voice!==false) speak(h.dataset.say); };
   if(a==='say'){ const h=pp.querySelector('.pp-hd.h'+n); if(h&&h.dataset.say) speak(h.dataset.say); return true; }
   if(a==='re'){ pp.classList.remove('min'); n=0; } else if(a==='next'){ if(n>=4){ if(pp.closest('#pcard')) next(true); else { pp.classList.add('min'); ctx().set('ppDone',1); } return true; } n++; } else if(a==='prev') n=Math.max(0,n-1);
-  pp.dataset.s=n; ctx().set('ppStep',n); const nx=pp.querySelector('[data-pp=next]'), pv=pp.querySelector('[data-pp=prev]'); if(nx) nx.textContent=n>=4?'Got it ✓':'Next ›'; if(pv) pv.disabled=n===0; if(pp.classList.contains('pp2')) sayStep(); return true;
+  pp.dataset.s=n; ctx().set('ppStep',n); const nx=pp.querySelector('[data-pp=next]'), pv=pp.querySelector('[data-pp=prev]'); if(nx) nx.innerHTML=n>=4?tr('Got it ✓','বুঝেছি ✓'):tr('Next ›','পরেরটি ›'); if(pv) pv.disabled=n===0; if(pp.classList.contains('pp2')) sayStep(); return true;
 }
 function onSheetClick(e){
   const dv=e.target.closest('[data-view]'); if(dv){ openView(dv.dataset.view,dv.dataset.mark); return; }
@@ -780,6 +811,7 @@ function wordsCard(c){
   return `<div class="words"><div class="wgrid">${c.items.map((w,i)=>`<button class="wtile" data-word="${i}" data-say="${esc(w.w+'. '+w.ex)}"><span class="we" aria-hidden="true">${w.e}</span><b>${esc(w.w)}</b><span class="wex">${esc(w.ex)}</span>${BN(w.bn)}</button>`).join('')}</div></div>`;
 }
 function storyCard(c){
+  if(c.illustrated) return CV_ART.story(c,esc,BN,S.bn);
   return `<div class="tale" id="story"><div class="tpanels" style="--n:${c.panels.length}">${c.panels.map((p,i)=>`<figure class="tpanel" data-pi="${i}" data-say="${esc(p.en)}"><div class="pe" aria-hidden="true">${p.e}</div><figcaption>${esc(p.en)}${BN(p.bn)}</figcaption><span class="pn">${i+1}</span></figure>`).join('')}</div>
    <div class="row"><button class="btn gold" data-story="play">▶ ${S.bn?'শোনো':'Listen'}</button><button class="btn quiet" data-story="words">${S.bn?'শব্দগুলো দেখাও':'Show the words'}</button></div></div>`;
 }
@@ -788,18 +820,28 @@ function phrasesCard(c){
    <div class="row"><button class="btn gold" data-phrases="all">▶ ${S.bn?'সবগুলো শোনো, তারপর বলো':'Hear all four, then repeat'}</button></div></div>`;
 }
 let seqId=0;
+function markStoryPanel(el){
+  const card=el.closest('.cv-story'); if(!card) return;
+  const n=+el.dataset.pi;
+  $$('.tpanel',card).forEach(p=>p.classList.toggle('lit',p===el));
+  $$('[data-story-panel]',card).forEach(b=>b.setAttribute('aria-pressed',+b.dataset.storyPanel===n?'true':'false'));
+  $('.cv-count',card).textContent=(n+1)+' / '+$$('.tpanel',card).length;
+}
 function playSeq(els,cls,done){
   hush(); let i=0; const my=++seqId;
-  const step=()=>{ if(my!==seqId) return; els.forEach(e=>e.classList.remove(cls)); if(i>=els.length){done&&done();return}
-    const el=els[i++]; el.classList.add(cls); el.scrollIntoView({block:'nearest',behavior:'smooth'});
-    speak(el.dataset.say,()=>setTimeout(step,S.mode==='class'?1100:700)); };
+  const step=()=>{ if(my!==seqId||!els.length||!els[0].isConnected) return;
+    if(i>=els.length){done&&done();return}
+    els.forEach(e=>e.classList.remove(cls));
+    const el=els[i++]; el.classList.add(cls); markStoryPanel(el);
+    if(!el.closest('.cv-story')) el.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    speak(el.dataset.say,()=>setTimeout(step,S.mode==='class'?1100:700),el.closest('.cv-story')?el:null); };
   step();
 }
 
 /* the talk moment: Pairs and Class only — the same question, set up for how the class is working */
 const TALK_HEAD={
  solo:{i:'🗣',en:'Say it out loud',bn:'জোরে জোরে বলো'},
- pair:{i:'👥',en:'Talk to your partner',bn:'সঙ্গীর সাথে কথা বলো'},
+ pair:{i:'👥',en:'Pair work · talk to your partner',bn:'জোড়ায় কাজ · সঙ্গীর সাথে কথা বলো'},
  class:{i:'🙋',en:'Talk to the person next to you',bn:'পাশের জনের সাথে কথা বলো'}
 };
 let TIMER={left:0,total:0,id:null};
@@ -807,7 +849,7 @@ let REC={mr:null,chunks:[],url:null,on:false};
 function resetTalk(){ clearInterval(TIMER.id); TIMER={left:0,total:0,id:null}; if(REC.mr&&REC.on){try{REC.mr.stop()}catch(e){}} if(REC.url) URL.revokeObjectURL(REC.url); REC={mr:null,chunks:[],url:null,on:false}; }
 function talkCard(x,b){
   const t=fn(b.talk,x); if(!t) return ''; const hd=TALK_HEAD[S.mode];
-  const roles=t.roles&&S.mode!=='solo'?`<div class="roles">${t.roles.map((r,i)=>`<span><b>${'AB'[i]}</b>${esc(r.en)}${BN(r.bn)}</span>`).join('')}</div>`:'';
+  const roles=t.roles&&S.mode!=='solo'?`<div class="roles">${t.roles.map((r,i)=>`<span><b class="student-label student-${i?'b':'a'}">Student ${'AB'[i]}</b><span>${esc(r.en)}${BN(r.bn)}</span></span>`).join('')}</div>`:'';
   const solo=S.mode==='solo'?`<div class="rec">${REC.url?`<audio controls src="${REC.url}"></audio>`:''}<button class="btn ${REC.on?'':'quiet'}" data-rec="${REC.on?'stop':'start'}">${REC.on?'■ Stop':'● '+(REC.url?'Record again':'Record yourself')}</button></div>`:'';
   const timer=t.time&&S.mode!=='solo'?`<button class="ttimer" data-tt="${t.time}" aria-label="Timer"><span class="ttbar"></span><span class="tt">⏱ ${Math.floor(t.time/60)}:${String(t.time%60).padStart(2,'0')}</span></button>`:'';
   return `<div class="card talk ${t.big?'big':''}"><div class="talk-h"><span class="ti" aria-hidden="true">${hd.i}</span><b>${hd.en}${BN(hd.bn)}</b>${timer}</div>
@@ -948,18 +990,25 @@ function back(){ if(UI.sub){ UI.sub=null; renderUI(); return; } const L=LESSONS[
    Starting a workflow adds one history step, so the phone's Back button (or the
    browser's) returns to Ayesha's lock screen instead of leaving the activity. */
 function setAddr(h,push){ try{ const url=location.pathname+location.search+(h?'#'+h:''); if(location.pathname+location.search+location.hash===url) return; history[push?'pushState':'replaceState'](null,'',url); }catch(e){} }
-function start(id){ closeMenu(); S.lesson=id; S.beat=0; prevScene=null; const c=S.ch[id]; if(c){ delete c._score; delete c._aw; } maybeFullscreen(); setAddr(id+'/0',true); go(seek(LESSONS[id],0,1)); }
+/* Missions 2 and 3 wait until Mission 1 is finished (Tim, Oct 2026: they are less complete, and everyone should start with the CV).
+   A #agent/3 link still opens them directly, for a teacher demonstrating. */
+const missionLocked=id=>id!==ORDER[0]&&!(S.ch[ORDER[0]]&&S.ch[ORDER[0]]._finished);
+function lockedNote(){ const L=LESSONS[ORDER[0]];
+  UI.sheet={tone:'info',title:S.bn?'🔒 আগে মিশন ১':'🔒 Mission 1 first',
+    html:`<p>${S.bn?`আগে “${esc(L.title)}” শেষ করো। তারপর এই মিশন খুলবে।`:`Finish “${esc(L.title)}” first. Then this mission opens.`}</p>`,
+    acts:[['close',tr('OK','ঠিক আছে'),'primary']]}; renderSheet(); }
+function start(id){ if(missionLocked(id)){ closeMenu(); lockedNote(); return; } closeMenu(); S.lesson=id; S.beat=0; prevScene=null; const c=S.ch[id]; if(c){ delete c._score; delete c._aw; } maybeFullscreen(); setAddr(id+'/0',true); go(seek(LESSONS[id],0,1)); }
 function hub(){ S.lesson=null; S.beat=0; save(); prevScene=null; CQ=null; UI={sheet:null,sub:null}; document.body.classList.remove('cq-on','wide'); resetTalk(); hush(); setAddr(''); renderHubPhone(); renderUI(); }
 /* Cog reads each new step aloud; a story or a phrase set then plays itself */
 function autoVoice(x){
-  const at=S.beat, L=S.lesson; const b=x.beat; const c=fn(b.card,x)||{};
-  setTimeout(()=>{ if(S.beat!==at||S.lesson!==L) return;
+  const at=S.beat, L=S.lesson, token=speakId; const b=x.beat; const c=fn(b.card,x)||{};
+  setTimeout(()=>{ if(S.beat!==at||S.lesson!==L||speakId!==token) return;
     const t=coachText().en;
     const then=()=>{ if(S.beat!==at||S.lesson!==L) return;
       if(c.type==='story') playSeq($$('#story .tpanel'),'lit');
       else if(window.GAMES&&GAMES[c.type]&&GAMES[c.type].voice) GAMES[c.type].voice(c,x);
       else if(!c.type&&b.talk&&S.mode!=='solo'){ const tk=fn(b.talk,x); if(tk&&tk.q&&tk.q!==t) speak(tk.q); } };
-    if(t&&t!=='…') speak(t,()=>setTimeout(then,450)); else then();
+    if(t&&t!=='…') speak(t,()=>{ const endToken=speakId; setTimeout(()=>{if(speakId===endToken) then();},450); }); else then();
   },250);
 }
 function renderHubPhone(){
@@ -967,7 +1016,7 @@ function renderHubPhone(){
   dev.style.background='radial-gradient(130% 80% at 20% 0%,#C9B8F2 0,#8C77C9 40%,#3C2E6B 100%)';
   $('#sb').className='sb dark'; $('#navbar').className='navbar dark';
   const done=id=>S.ch[id]&&S.ch[id]._finished; const nextId=ORDER.find(id=>!done(id))||ORDER[0];
-  scr.innerHTML=APPS.lock({notifs:ORDER.map(id=>Object.assign({},LESSONS[id].notif,{cls:(id===nextId?'hl ':'')+(done(id)?'done':''),title:(done(id)?'✓ ':'')+LESSONS[id].notif.title})),hint:'Tap a notification to start'});
+  scr.innerHTML=APPS.lock({notifs:ORDER.map(id=>Object.assign({},LESSONS[id].notif,{cls:(id===nextId?'hl ':'')+(done(id)?'done':'')+(missionLocked(id)?' locked':''),title:(done(id)?'✓ ':missionLocked(id)?'🔒 ':'')+LESSONS[id].notif.title})),hint:'Tap a notification to start'});
   $('.view',scr).style.background='transparent';
   fitDevice();
 }
@@ -1026,7 +1075,14 @@ function toggleChip(id,x){
   else v=(v&&!/\s$/.test(v)?v+' ':v)+c.text;
   x.set(kb.key,v); if(kb.key==='cvPrompt'&&!x.get('ppDone')&&x.get('ppStep',0)>=4){ x.set('ppDone',1); renderCoachLine(); } renderPhoneKeepFocus(); renderFoot();
 }
-function composeChanged(){ renderFoot(); }
+function composeChanged(){
+  const x=ctx(), kb=activeKB(x);
+  if(kb&&kb.guidedParts){
+    x.set('pz:'+kb.key,[]); x.set('pz:'+kb.key+'!',0); x.set('pz:'+kb.key+'+','');
+    const panel=$('#kb'); if(panel) panel.innerHTML=keyboard(kb);
+  }
+  renderFoot();
+}
 function renderPhoneKeepFocus(){ const ta=$('#cmp'); const pos=ta?ta.selectionStart:null; const had=document.activeElement===ta; renderPhone(false); const t2=$('#cmp'); if(t2&&had){t2.focus(); if(pos!=null) t2.setSelectionRange(t2.value.length,t2.value.length)} }
 
 /* ------------------------------------------------------------- clicks on cards, footer and top bar */
@@ -1057,7 +1113,13 @@ function onUIClick(e){
     if(o&&o.then){ startCQ(o.then,x2=>{delete x2.ch[k]; save()}); return; }
     UI.sheet=fbSheet(o||{},x2=>{delete x2.ch[k]; save();}); renderUI(); return; }
   const tk=e.target.closest('[data-tick]'); if(tk){ const [k,i]=tk.dataset.tick.split('|'); const a=x.get(k,{}); a[i]=!a[i]; x.set(k,a); renderStage(); renderFoot(); return; }
-  const sy=e.target.closest('[data-story]'); if(sy){ const card=$('#story'); if(sy.dataset.story==='words'){ card.classList.toggle('words-on'); } else playSeq($$('.tpanel',card),'lit'); return; }
+  const panel=e.target.closest('[data-story-panel]'); if(panel){
+    hush(); const el=$('#story .tpanel[data-pi="'+panel.dataset.storyPanel+'"]');
+    if(el){ markStoryPanel(el); speak(el.dataset.say,null,el); } return;
+  }
+  const sy=e.target.closest('[data-story]'); if(sy){ const card=$('#story'), a=sy.dataset.story;
+    if(a==='words'||a==='overview'){ const on=card.classList.toggle(a==='words'?'words-on':'overview'); sy.setAttribute('aria-pressed',String(on)); window.CV_STORY_VOICE?.refresh(); }
+    else if(a==='stop') hush(); else playSeq($$('.tpanel',card),'lit'); return; }
   const pa=e.target.closest('[data-phrases]'); if(pa){ playSeq($$('#pcard .dph'),'lit'); return; }
   const tt=e.target.closest('[data-tt]'); if(tt){ toggleTimer(+tt.dataset.tt); return; }
   const rc=e.target.closest('[data-rec]'); if(rc){ recToggle(rc.dataset.rec); return; }
@@ -1110,21 +1172,29 @@ function unlockAudio(){ try{ FX.unlock(); }catch(e){} if(unlocked||!PLAYER) retu
     if(!PLAYER.src||PLAYER.paused){ PLAYER.src=URL.createObjectURL(new Blob([buf],{type:'audio/wav'})); PLAYER.play().catch(()=>{}); } }catch(e){}
   try{ const u=new SpeechSynthesisUtterance(' '); u.volume=0; speechSynthesis.speak(u); }catch(e){} }
 function talking(on){ document.body.classList.toggle('g-talk',!!on); }
-function stopClip(){ if(PLAYER){ try{PLAYER.pause()}catch(e){} PLAYER.onended=PLAYER.onerror=null; } talking(false); }
-function speak(t,onEnd){
+function stopClip(){ window.CV_STORY_VOICE?.stop(); if(PLAYER){ try{PLAYER.pause()}catch(e){} PLAYER.onended=PLAYER.onerror=null; } talking(false); }
+function speak(t,onEnd,storyPanel){
   const k=audioKey(t);
-  if(PLAYER&&AUDIO.has(k)){
+  if(PLAYER&&(AUDIO.has(k)||storyPanel)){
     try{ speechSynthesis.cancel() }catch(e){} stopClip(); const my=++speakId; $$('.speaking').forEach(e=>e.classList.remove('speaking'));
     const done=()=>{ if(my!==speakId) return; talking(false); $$('.speaking').forEach(e=>e.classList.remove('speaking')); onEnd&&onEnd(); };
-    const play=src=>{ if(my!==speakId) return; PLAYER.src=src; PLAYER.playbackRate=S.mode==='class'?.94:1; PLAYER.onended=done;
-      PLAYER.onerror=()=>{ if(my!==speakId) return; AUDIO.delete(k); ttsSpeak(t,onEnd); };
+    const play=async src=>{ if(my!==speakId) return;
+      const entry=storyPanel?await CV_STORY_VOICE.prepare(storyPanel,k,t,src):null;
+      if(my!==speakId||(storyPanel&&!storyPanel.isConnected)) return;
+      PLAYER.src=src; PLAYER.playbackRate=S.mode==='class'?.94:1; PLAYER.onended=done;
+      if(storyPanel) CV_STORY_VOICE.attach(PLAYER,storyPanel,t,entry);
+      PLAYER.onerror=()=>{ if(my!==speakId) return;
+        if(storyPanel){stopClip();CV_STORY_VOICE.unavailable(storyPanel,'audio-error');return;}
+        AUDIO.delete(k); ttsSpeak(t,onEnd); };
       talking(true); PLAYER.play().catch(err=>{ if(my!==speakId) return; talking(false);
         // blocked before the first tap: wait — 🔊 plays it. Any other failure: the browser voice reads it.
+        if(storyPanel){stopClip();CV_STORY_VOICE.unavailable(storyPanel,'audio-error');return;}
         if(err&&err.name==='NotAllowedError'){ const ear=$('#p-ear'); if(ear) ear.classList.add('nudge'); } else ttsSpeak(t,onEnd); }); };
     const c=CLIP[k];
     if(typeof c==='string') play(c); else if(c&&c.then) c.then(u=>play(u||'audio/'+k+'.mp3')); else { prefetch(t); play('audio/'+k+'.mp3'+(AUDIO_V?'?v='+AUDIO_V:'')); }
     return;
   }
+  if(storyPanel){CV_STORY_VOICE.unavailable(storyPanel,'audio-error');return;}
   ttsSpeak(t,onEnd);
 }
 function ttsSpeak(t,onEnd){
@@ -1186,14 +1256,14 @@ function showMe(){
 function openMenu(){
   const m=$('#menu'); m.hidden=false;
   m.innerHTML=`<div class="panel" role="dialog" aria-label="Menu"><div class="mh"><h2>AI Fluency Lab</h2><button class="p-ic" data-m="close" aria-label="Close">${IC.x}</button></div>
-   <h3>Missions</h3><div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard" data-m="start:${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${esc(L.time||'')}</span></span>${S.ch[id]&&S.ch[id]._finished?'<span class="done">✓</span>':''}</button>`}).join('')}</div>
+   <h3>Missions</h3><div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard${missionLocked(id)?' locked':''}" data-m="start:${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${esc(L.time||'')}</span></span>${S.ch[id]&&S.ch[id]._finished?'<span class="done">✓</span>':missionLocked(id)?'<span class="done lk" aria-label="Locked">🔒</span>':''}</button>`}).join('')}</div>
    <h3>How are you working?</h3>${modeButtons()}
    <div class="mrow"><button class="btn quiet" data-m="voice">${S.voice?'🔊 Cog reads aloud — turn off':'🔇 Cog is silent — read aloud'}</button><button class="btn quiet" data-m="tour">❓ How this works</button><button class="btn gold" data-m="intro">▶ The four Ds (film)</button><button class="btn quiet" data-m="legend">⚙ The four Ds (gears)</button><button class="btn quiet" data-m="hub">📱 Ayesha’s lock screen</button><button class="btn quiet" data-m="stage">${S.stage?'Leave':'Present on'} projector (P)</button><button class="btn quiet" data-m="fs">Full screen</button><button class="btn quiet" data-m="print">Paper version</button><button class="btn quiet" data-m="reset">Start over</button></div>
    <h3>For the teacher</h3>
    <p><b>One screen at a time.</b> Cog (top) says what to do and reads it aloud. The middle is either Ayesha’s phone — where students act — or a card: a question, a sort, a gear earned. The button at the bottom is always the next thing. Feedback slides up from the bottom: green, amber or red. Stars count good calls made first time.</p>
    <p><b>Students find the problems themselves.</b> The AI’s mistakes are never pointed out in advance: students send the quick prompt, judge what comes back, spot what isn’t true in her documents, and see risky choices play out (⏩) before they rewind and choose again.</p>
    <ul class="tlist"><li><b>👤 Alone</b> — homework. No warm-up and no partner talk: the English is in the action — the sentences they choose to send, and the phrase at each gear.</li>
-   <li><b>👥 Pairs</b> — one phone, two students. Each workflow opens with a warm-up (picture words, a story, the four phrases), and talk moments follow the key steps with a one-minute timer (T).</li>
+   <li><b>👥 Pair work</b> — one phone, two students. Choose Student A and Student B; keep those labels and swap jobs when asked. Each workflow opens with a warm-up (picture words, a story, the four phrases), and talk moments follow the key steps with a one-minute timer (T).</li>
    <li><b>🙋 Class</b> — you drive on the projector (large type). Same warm-up and talk moments; neighbours talk while the timer runs.</li></ul>
    <p><b>The four Ds are also four jobs for English</b>: Delegation = planning and sharing jobs (<i>I will… The AI can…</i>); Description = clear instructions (<i>Use only… If…, ask me first</i>); Discernment = judging and disagreeing politely (<i>That’s not true. Her report says…</i>); Diligence = limits and responsibility (<i>I won’t share… It’s private</i>). Each gear turned ends with its phrase to say aloud.</p>
    <p>Nothing is locked: Skip and Show me (S) are always there. Cog reads aloud (V turns it off). The AI replies are scripted from real assistants, mistakes included. No data leaves the phone. Students without a phone: the Paper version (one A4 page per workflow).</p>

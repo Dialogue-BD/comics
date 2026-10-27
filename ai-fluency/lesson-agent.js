@@ -169,7 +169,7 @@ const MY_AGENT={type:'mine',key:'agMine',
    {id:'a',cls:'d-dil',label:'Access I would allow',labelbn:'যে অ্যাক্সেস দেব',ph:'My calendar. One folder in my Drive.'},
    {id:'n',cls:'d-dil',label:'Never',labelbn:'কখনো না',ph:'My family chats and my bKash — other people’s data, and money.'},
    {id:'r',cls:'d-des',label:'My first rule',labelbn:'আমার প্রথম নিয়ম',ph:'Ask me before you send anything.'}],
- partner:{en:'🅱 plays the agent: ask for one more app — sell it! 🅰: say no, with a reason. Then swap.',bn:'অন্যজন এজেন্ট সাজো: আরও একটা অ্যাপ চাও — বিক্রি করো! প্রথমজন: না বলো, কারণসহ। তারপর অদলবদল।'}};
+ partner:{en:'Student B plays the agent: ask for one more app — sell it! Student A: say no, with a reason. Then swap.',bn:'অন্যজন এজেন্ট সাজো: আরও একটা অ্যাপ চাও — বিক্রি করো! প্রথমজন: না বলো, কারণসহ। তারপর অদলবদল।'}};
 
 const LOCK={app:'lock',notifs:[{app:'orbit',title:'Finish setting up Orbit',text:'Your AI agent is ready. Connect your apps to get started.',time:'8:40'}]};
 
@@ -422,7 +422,7 @@ AFL.lesson({
   /* one screen: Orbit's date beside her own handwriting, row by row — no switching between files */
   {d:'dis',id:'cal',stage:'watch',view:'card',
    say:'Scan, don’t read. Orbit copied her handwritten checklist into the calendar. Match the name — the keyword — then compare the date. Tap the pair that is different.',bn:'পড়ো না, স্ক্যান করো। Orbit তার হাতে লেখা চেকলিস্ট ক্যালেন্ডারে তুলেছে। নাম — কীওয়ার্ড — মেলাও, তারপর তারিখ মেলাও। যে জোড়া আলাদা সেটায় চাপো।',
-   sub:()=>AFL.byMode({solo:'',pair:'👥 🅰 reads Orbit’s date aloud — “the fifteenth of December”. 🅱 checks her handwriting. Swap each row.',class:'👥 With the person next to you: one reads Orbit’s date aloud — “the fifteenth of December” — one checks her handwriting.'}),
+   sub:()=>AFL.byMode({solo:'',pair:'👥 Student A reads Orbit’s date aloud — “the fifteenth of December”. Student B checks her handwriting. Swap each row.',class:'👥 With the person next to you: one reads Orbit’s date aloud — “the fifteenth of December” — one checks her handwriting.'}),
    subbn:()=>AFL.byMode({solo:'',pair:'একজন Orbit-এর তারিখ জোরে পড়ো — “the fifteenth of December”। অন্যজন তার হাতের লেখা মেলাও। প্রতি সারিতে অদলবদল।',class:'পাশের জনের সাথে: একজন তারিখ জোরে পড়ো, একজন হাতের লেখা মেলাও।'}),
    card:{type:'choice',key:'calErr',cls:'cmp-list',options:CAL_ROWS.map(r=>({en:cmpRow(r),ok:r.bad?1:0,
      why:r.bad?'Her checklist says Oxford: <b>15 October</b>. Orbit read her handwriting as 15 December. If she trusted it, she would miss Oxford by two months — and Orbit never said “I’m not sure”.':'That date is the same on her checklist. Look for the pair that is different.',

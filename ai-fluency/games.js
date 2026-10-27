@@ -19,7 +19,8 @@
 'use strict';
 const g=()=>AFL._g;
 const $=(s,r=document)=>r.querySelector(s);
-const AB=['🅰','🅱'];
+const AB=['Student A','Student B'];
+const student=k=>`<b class="student-label student-${k?'b':'a'}">${AB[k]}</b>`;
 const mode=()=>g().S.mode;
 const bnOn=()=>g().S.bn;
 const esc=t=>g().esc(t);
@@ -56,7 +57,7 @@ GAMES.onthree={
       <p class="o3-how">${c.kind==='guess'?tr('Choose in your head. Count together — then show your fingers.','মনে মনে বাছো। একসাথে গোনো — তারপর আঙুল দেখাও।'):tr('Choose in your head. Count together — then show your hand.','মনে মনে বাছো। একসাথে গোনো — তারপর হাত দেখাও।')}</p>`;
     else if(s.ph===0||(solo&&s.ph<2)) body=`<p class="o3-how">${tr('Tap your answer:','তোমার উত্তরে চাপো:')}</p><div class="o3-pick">${c.signs.map(z=>`<button data-g="o3|pick|a|${z.id}"><i>${z.i}</i>${z.en}</button>`).join('')}</div>`;
     else if(s.ph===1&&cls) body=`<p class="o3-how">${tr('Look around the room.','চারপাশে তাকাও।')}</p><div class="o3-pick two"><button data-g="o3|cls|same">🤝 ${tr('Mostly the same','প্রায় সবাই একই')}</button><button data-g="o3|cls|split">⚡ ${tr('Split','ভাগ হয়ে গেছে')}</button></div>`;
-    else if(s.ph===1) body=`<p class="o3-how">${tr('What did you show?','কে কী দেখালে?')}</p>${[0,1].map(k=>`<div class="o3-row"><b>${AB[k]}</b>${c.signs.map(z=>`<button class="${s[k?'b':'a']===z.id?'on':''}" data-g="o3|pick|${k?'b':'a'}|${z.id}" aria-label="${AB[k]} ${esc(z.en)}">${z.i}</button>`).join('')}</div>`).join('')}`;
+    else if(s.ph===1) body=`<p class="o3-how">${tr('What did you show?','কে কী দেখালে?')}</p>${[0,1].map(k=>`<div class="o3-row">${student(k)}${c.signs.map(z=>`<button class="${s[k?'b':'a']===z.id?'on':''}" data-g="o3|pick|${k?'b':'a'}|${z.id}" aria-label="${AB[k]} ${esc(z.en)}">${z.i}</button>`).join('')}</div>`).join('')}`;
     else body=verdict(c,s,sign);
     return `<div class="o3 o3-${c.kind||'opinion'}">${c.q?`<p class="tq">${c.pic?`<span class="tpic" aria-hidden="true">${c.pic}</span>`:''}<span>${c.q}${BN(c.qbn)}</span>${g().sayBtn(c.q)}</p>`:''}${signs}${body}</div>`;
   },
@@ -74,7 +75,7 @@ GAMES.onthree={
 };
 function verdict(c,s,sign){
   const solo=mode()==='solo';
-  const picks=solo?`<div class="o3-res one"><span>${sign(s.a).i} ${sign(s.a).en}</span></div>`:s.cls?'':`<div class="o3-res"><span><b>${AB[0]}</b> ${sign(s.a).i}</span><span><b>${AB[1]}</b> ${sign(s.b).i}</span></div>`;
+  const picks=solo?`<div class="o3-res one"><span>${sign(s.a).i} ${sign(s.a).en}</span></div>`:s.cls?'':`<div class="o3-res"><span>${student(0)} ${sign(s.a).i}</span><span>${student(1)} ${sign(s.b).i}</span></div>`;
   const same=s.cls?s.cls==='same':s.a===s.b;
   if(c.kind==='guess') return `${picks}<div class="o3-v guess"><b>🔒 ${tr('Guesses locked in!','অনুমান ঠিক করা হলো!')}</b><p>${solo?tr('You’ll find out after you check it.','যাচাই করার পর জানতে পারবে।'):tr('Each of you: say why, in one sentence.','দুজনেই এক বাক্যে বলো কেন।')+` <i>“I think it will … because …”</i>`}</p>${solo?'':`<small>${tr('You’ll find out after you check it.','যাচাই করার পর জানতে পারবে।')}</small>`}</div>`;
   const words=c.words?`<details class="o3-words"><summary>💡 ${tr('Words to argue','তর্কের শব্দ')}</summary>${c.words.map(w=>`<span data-say="${esc(w)}">${esc(w)}</span>`).join('')}</details>`:'';
@@ -110,7 +111,7 @@ GAMES.rounds={
     if(s.i>=n) return `<div class="rd rd-${c.kind}">${head}<div class="rd-end"><div class="rd-sum">${s.res.map(r=>`<span class="${WIN.test(r)?'win':'lose'}">${((c.rate||[]).find(z=>z.id===r)||{}).i||(r==='next'?'✓':'•')}</span>`).join('')}</div>
       ${c.outro?`<p>${c.outro.en}${BN(c.outro.bn)}</p>`:''}<button class="btn quiet" data-g="rd|reset">↺ ${tr('Play again','আবার খেলো')}</button></div></div>`;
     const it=c.items[s.i], ask=s.i%2;      // who asks this round: A, then B, then A…
-    const roles=c.roles&&!solo?`<div class="rd-roles"><span><b>${AB[ask]}</b>${c.roles.ask.en}${BN(c.roles.ask.bn)}</span><span><b>${AB[1-ask]}</b>${c.roles.ans.en}${BN(c.roles.ans.bn)}</span></div>`:'';
+    const roles=c.roles&&!solo?`<div class="rd-roles"><span>${student(ask)}<span>${c.roles.ask.en}${BN(c.roles.ask.bn)}</span></span><span>${student(1-ask)}<span>${c.roles.ans.en}${BN(c.roles.ans.bn)}</span></span></div>`:'';
     const q=it.q.replace(/\{A\}/g,AB[ask]).replace(/\{B\}/g,AB[1-ask]);
     const qbox=c.secret&&pair
       ?`<button class="rd-peek" data-peek="1" aria-label="Press and hold to read"><span class="rd-cover">👁 ${AB[ask]} ${tr('press and hold to read','চেপে ধরে পড়ো')}<small>${AB[1-ask]}: ${tr('don’t look — just listen!','দেখো না — শুধু শোনো!')}</small></span><span class="rd-q">“${esc(q)}”${BN(it.qbn)}</span></button>`
@@ -123,8 +124,9 @@ GAMES.rounds={
       return `<div class="rd rd-${c.kind}">${head}${intro}<p class="rd-who">${c.solo?c.solo.en:tr('Listen. Then answer out loud.','শোনো। তারপর জোরে উত্তর দাও।')}</p>${qbox}${rec}<div class="rd-tools">${life}</div>${model}
         <div class="rd-rate"><button class="pb primary" data-g="rd|rate|next">${s.i<n-1?tr('Next question','পরের প্রশ্ন'):tr('Finish','শেষ')} ›</button></div></div>`;
     }
-    return `<div class="rd rd-${c.kind}">${head}${intro}${roles}${qbox}<div class="rd-tools">${c.time===0?'':timer(c.time||45)}${life}</div>${model}
+    return `<div class="rd rd-${c.kind}">${head}${intro}<p class="rd-who">${tr('This round','এই পালায়')}</p>${roles}${qbox}<div class="rd-tools">${c.time===0?'':timer(c.time||45)}${life}</div>${model}
       <div class="rd-rate">${(c.rate||[{id:'ok',i:'✓',en:'Done'}]).map(r=>`<button class="pb ${r.good?'primary':'ghost'}" data-g="rd|rate|${r.id}">${r.i?r.i+' ':''}${r.en}</button>`).join('')}</div>
+      ${s.i<n-1?`<p class="rd-swap">↔ ${tr(`After this round, swap jobs. ${AB[1-ask]} goes first next.`,`এই পালা শেষে কাজ বদলাও। পরের পালায় শিক্ষার্থী ${1-ask?'B':'A'} আগে শুরু করবে।`)}</p>`:''}
       ${c.judge&&c.roles?`<small class="rd-judge">${AB[ask]}: ${c.judge.en}${BN(c.judge.bn)}</small>`:''}</div>`;
   },
   state(c,x){ const s=st(x,c,{i:0}); return {act:s.i<c.items.length}; },
@@ -145,10 +147,10 @@ GAMES.chain={
     const turn=s.links%2;
     const top=`<p class="ch-intro">${c.intro.en}${BN(c.intro.bn)}</p><div class="ch-item">${g().fileThumb(it.f,'ch-th')}<span><b>${esc(f?f.name:it.label)}</b><small>${tr('…uploaded to an AI chat','…একটা AI চ্যাটে আপলোড করা')}</small></span><em>${s.i+1}/${n}</em></div>`;
     if(!s.rev) return `<div class="ch">${top}
-      <div class="ch-turn"><b>${AB[turn]}</b><span>${s.links===0?tr('What could go wrong?','কী খারাপ হতে পারে?'):tr('Worse! What could happen next?','আরও খারাপ! তারপর কী হতে পারে?')}</span></div>
+      <div class="ch-turn">${mode()==='solo'?`<b>${tr('Your turn','তোমার পালা')}</b>`:student(turn)}<span>${s.links===0?tr('What could go wrong?','কী খারাপ হতে পারে?'):tr('Worse! What could happen next?','আরও খারাপ! তারপর কী হতে পারে?')}</span></div>
       <div class="ch-links" aria-label="${s.links} links">${s.links?'🔗'.repeat(Math.min(s.links,12)):''}<b>${s.links}</b></div>
       <div class="ch-bar"><i></i></div>
-      <div class="ch-acts"><button class="pb primary" data-g="ch|link">✓ ${tr('Said it','বলেছি')}</button><button class="pb ghost" data-g="ch|stop">✋ ${tr('Out of ideas','আর মাথায় আসছে না')}</button></div>
+      <div class="ch-acts"><button class="pb primary" data-g="ch|link">✓ ${tr(mode()==='solo'?'Said it':'Said it — next student',mode()==='solo'?'বলেছি':'বলেছি — এবার অন্যজন')}</button><button class="pb ghost" data-g="ch|stop">✋ ${tr('Out of ideas','আর মাথায় আসছে না')}</button></div>
       <details class="o3-words"><summary>💡 ${tr('Need a start?','শুরু করতে পারছ না?')}</summary>${c.words.map(w=>`<span data-say="${esc(w)}">${esc(w)}</span>`).join('')}</details></div>`;
     return `<div class="ch">${top}<div class="ch-real"><small>${tr('The real risk','আসল ঝুঁকি')}</small><p>${it.real.en}${BN(it.real.bn)}</p>${g().sayBtn(it.real.en)}</div>
       <p class="ch-score">🔗 ${tr('Your chain','তোমাদের শিকল')}: <b>${s.links}</b> ${s.links===1?'link':'links'}${s.links>=6?' 🔥':''}</p>
@@ -197,6 +199,7 @@ GAMES.mine={
     return `<div class="mine"><p class="ch-intro">${c.intro.en}${BN(c.intro.bn)}</p>
       ${c.fields.map(f=>`<label class="mn-f ${f.cls||''}"><span class="mn-l">${f.label}${f.labelbn&&bnOn()?` <span class="bn-in" lang="bn">· ${f.labelbn}</span>`:''}</span><textarea rows="2" data-mine="${c.key}|${f.id}" placeholder="${esc(f.ph)}">${esc(v[f.id]||'')}</textarea></label>`).join('')}
       <div class="mn-acts"><button class="pb ${filled?'primary':'ghost'}" data-g="mine|copy">📋 ${tr('Copy my prompt','আমার প্রম্পট কপি করো')}</button><span class="mn-ok" ${v._copied?'':'hidden'}>✓ ${tr('Copied — paste it into any AI app.','কপি হয়েছে — যেকোনো AI অ্যাপে পেস্ট করো।')}</span></div>
+      ${c.tip?`<aside class="mn-tip"><b>${tr('Before you attach files','ফাইল সংযুক্ত করার আগে')}</b><p>${c.tip.en}${BN(c.tip.bn)}</p></aside>`:''}
       ${mode()!=='solo'&&c.partner?`<div class="mn-p"><b>👥 ${c.partner.en}</b>${BN(c.partner.bn)}</div>`:''}
       ${c.note?`<p class="note">${c.note.en}${BN(c.note.bn)}</p>`:''}</div>`;
   },
