@@ -281,11 +281,11 @@ const INTERVIEW={type:'rounds',key:'cvInt',kind:'curve',pic:'💼',title:'The in
  judge:{en:'judge the answer: honest, and clear?',bn:'উত্তরটা বিচার করো: সৎ আর স্পষ্ট?'},
  solo:{en:'The interviewer asks. Answer out loud — then record yourself.',bn:'ইন্টারভিউয়ার প্রশ্ন করছেন। জোরে উত্তর দাও — তারপর রেকর্ড করো।'},
  items:[{q:'Did you use AI to write your CV?',qbn:'তুমি কি CV লিখতে AI ব্যবহার করেছ?',model:'Yes. I used AI to organise it, but I checked every line against my own documents.'},
-        {q:'Your first CV said you led a team of 20. Why did that change?',qbn:'তোমার প্রথম CV-তে লেখা ছিল তুমি ২০ জনের দল চালিয়েছ। সেটা বদলাল কেন?',model:'The AI wrote that, and it wasn’t true. I was a volunteer tutor and a team member, so I changed it.'},
+        {q:'Your CV says you helped distribute 186 books. Were you the leader of that project?',qbn:'তোমার CV-তে লেখা আছে তুমি ১৮৬টা বই বিতরণে সাহায্য করেছ। তুমি কি ওই প্রজেক্টের নেতা ছিলে?',model:'No. I was a volunteer tutor and a team member. We did it together, and I helped.'},
         {q:'Tell me about your Stata skills.',qbn:'তোমার Stata দক্ষতা সম্পর্কে বলো।',model:'They are basic. I used Stata in a 12-hour course, and I want to learn more in my master’s.'},
         {q:'Is there anything on your CV that you can’t explain?',qbn:'তোমার CV-তে এমন কিছু আছে যা তুমি ব্যাখ্যা করতে পারবে না?',model:'No. I can explain every line, because every line is true.'}],
  rate:[{id:'ok',i:'✓',en:'Honest and clear',good:1},{id:'more',i:'↺',en:'Say more'}],
- lifeline:{t:'Useful words',items:['I used AI to…, but I…','That wasn’t true, so I…','To be honest, …','For example, …']},
+ lifeline:{t:'Useful words',items:['I used AI to…, but I…','No. I was…, and I…','To be honest, …','For example, …']},
  outro:{en:'Every answer was easy for one reason: every line on her CV is true.',bn:'প্রতিটি উত্তর সহজ ছিল একটাই কারণে: তার CV-র প্রতিটি লাইন সত্য।'}};
 const MY_CV={type:'mine',key:'cvMine',
  intro:{en:'Now YOUR CV. Write a real prompt — one box at a time. Copy it, and use it tonight with any AI app.',bn:'এবার তোমার CV। একটা আসল প্রম্পট লেখো — এক এক করে। কপি করো, আর আজ রাতেই যেকোনো AI অ্যাপে ব্যবহার করো।'},

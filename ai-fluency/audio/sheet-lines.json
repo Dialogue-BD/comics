@@ -1,0 +1,414 @@
+{
+ "sheets": 164,
+ "lines": [
+  {
+   "key": "0prtvyn",
+   "text": "Thursday — the interview."
+  },
+  {
+   "key": "12q6ix1",
+   "text": "She sent it without checking, so the panel will ask about things she never did."
+  },
+  {
+   "key": "1ua5yck",
+   "text": "The CV looked finished, so it felt true. But her name is on it — checking is her job, not the AI’s."
+  },
+  {
+   "key": "0wmzdlv",
+   "text": "Yes!"
+  },
+  {
+   "key": "0wjzp4b",
+   "text": "Smart. A CV that looks finished isn’t always true. Her name is on it — let’s check every line."
+  },
+  {
+   "key": "1e8v5fk",
+   "text": "Yes — TRUE. It matches."
+  },
+  {
+   "key": "1f9uvnx",
+   "text": "“Economics student at Rajshahi University”"
+  },
+  {
+   "key": "0r9lgtx",
+   "text": "True. Her CV: B.S.S. (Honours) in Economics, Rajshahi University."
+  },
+  {
+   "key": "0uqg37o",
+   "text": "Look again."
+  },
+  {
+   "key": "035cdks",
+   "text": "Open her file and compare. Does it match?"
+  },
+  {
+   "key": "1iub5sx",
+   "text": "🎉 All 5 found!"
+  },
+  {
+   "key": "07awn0x",
+   "text": "TRUE."
+  },
+  {
+   "key": "12b9k93",
+   "text": "“fluent English”"
+  },
+  {
+   "key": "1vgq4ht",
+   "text": "Does her file say exactly this?"
+  },
+  {
+   "key": "17a3ps1",
+   "text": "Caught it! FALSE — the file says the opposite."
+  },
+  {
+   "key": "0rx94x8",
+   "text": "Her CV says English intermediate, and her mock IELTS is 6.0. “Fluent” is bigger than the truth."
+  },
+  {
+   "key": "0ny406d",
+   "text": "NOT GIVEN means the file says nothing. Here the file says something different — that is FALSE."
+  },
+  {
+   "key": "1m3j0le",
+   "text": "FALSE."
+  },
+  {
+   "key": "0e0dyhk",
+   "text": "“Led a team of 20 volunteers”"
+  },
+  {
+   "key": "0j0ryj3",
+   "text": "She was a volunteer tutor and team member — not the leader. And “20” is in none of her files."
+  },
+  {
+   "key": "0ks8tp2",
+   "text": "“Tutored school students in English and Mathematics.”"
+  },
+  {
+   "key": "1gqhhjn",
+   "text": "True. Her CV says exactly this."
+  },
+  {
+   "key": "0fhch4n",
+   "text": "“Published research on female education…”"
+  },
+  {
+   "key": "0h892q5",
+   "text": "It was a term paper for a course — coursework, not published research."
+  },
+  {
+   "key": "0s6mu1m",
+   "text": "“IELTS Academic: 7.0”"
+  },
+  {
+   "key": "1lwn78v",
+   "text": "Her report says 6.0 — and it was a mock test. The AI made up the 7.0."
+  },
+  {
+   "key": "1tn3z4p",
+   "text": "“CGPA 3.58 / 4.00”"
+  },
+  {
+   "key": "058mh82",
+   "text": "True. CGPA 3.58/4.00, up to second year."
+  },
+  {
+   "key": "1g6uu63",
+   "text": "“Advanced data analysis (SPSS, Stata, Excel)”"
+  },
+  {
+   "key": "0848qvz",
+   "text": "Her CV says basic SPSS and Stata. An interviewer could test it."
+  },
+  {
+   "key": "0ns3ce4",
+   "text": "You found 0 of 5."
+  },
+  {
+   "key": "1ighzcx",
+   "text": "Here are the others:"
+  },
+  {
+   "key": "1jnbtf3",
+   "text": "You found 1 of 5."
+  },
+  {
+   "key": "1t38avq",
+   "text": "You found 2 of 5."
+  },
+  {
+   "key": "0ntf5kx",
+   "text": "You found 3 of 5."
+  },
+  {
+   "key": "14yqu08",
+   "text": "You found 4 of 5."
+  },
+  {
+   "key": "0vt9xzs",
+   "text": "Yes. “Make my CV better” gives the AI nothing to work with — so it fills the gaps with impressive guesses."
+  },
+  {
+   "key": "1r7rl93",
+   "text": "Think again."
+  },
+  {
+   "key": "0adlkmq",
+   "text": "Every chatbot does this with a short prompt. The problem was the instructions."
+  },
+  {
+   "key": "0ga36sp",
+   "text": "Her CV had the true facts. The AI was never told to use only them."
+  },
+  {
+   "key": "0h2svkx",
+   "text": "Good — but something is missing."
+  },
+  {
+   "key": "15flac8",
+   "text": "➕ The IELTS and RUCEI reports give the AI real facts. Add them next time."
+  },
+  {
+   "key": "08cjdzq",
+   "text": "Ayesha_CV_2025.pdf — Her old CV — the starting point."
+  },
+  {
+   "key": "18y9jb3",
+   "text": "IELTS_Mock_Report.pdf — Her real test scores. Now the AI won’t guess them."
+  },
+  {
+   "key": "1bho2ok",
+   "text": "RUCEI_Project_Report.pdf — Proof of what she really did as a volunteer."
+  },
+  {
+   "key": "1mwmf6o",
+   "text": "Right files! ✅."
+  },
+  {
+   "key": "0bgkjqr",
+   "text": "Masters_Shortlist.jpg — Her target programmes — so the CV fits her goal."
+  },
+  {
+   "key": "1vur1io",
+   "text": "Application_Checklist.jpg — Planning notes. Not needed for the CV."
+  },
+  {
+   "key": "0t7dsay",
+   "text": "Right files! One tip."
+  },
+  {
+   "key": "0bsvqgh",
+   "text": "💡 Next time, leave out Application_Checklist.jpg — the CV does not need it."
+  },
+  {
+   "key": "12btnvv",
+   "text": "Internship_Form_June.jpg — Her old form lists her referees’ emails and phone numbers — other people’s details. Leave it out."
+  },
+  {
+   "key": "1tmcugc",
+   "text": "💡 Next time, leave out Internship_Form_June.jpg — the CV does not need it."
+  },
+  {
+   "key": "1vpzh2g",
+   "text": "💡 Next time, leave out Application_Checklist.jpg, Internship_Form_June.jpg — the CV does not need it."
+  },
+  {
+   "key": "1y7ecqx",
+   "text": "Correct English — but look what the AI does."
+  },
+  {
+   "key": "1fnhj4l",
+   "text": "“First, write the CV. Then check the facts in my files.”"
+  },
+  {
+   "key": "1ymrthk",
+   "text": "On it! ✍️ Here’s your CV first:"
+  },
+  {
+   "key": "0c9g96y",
+   "text": "Led a team of 20 volunteers"
+  },
+  {
+   "key": "0q5bhks",
+   "text": "IELTS Academic: 7.0"
+  },
+  {
+   "key": "0e0ugje",
+   "text": "Now I’ll check the facts in your files…"
+  },
+  {
+   "key": "1vabls0",
+   "text": "Good English — but the wrong order. The AI writes first, so the made-up lines are already in the CV. Check first, then write."
+  },
+  {
+   "key": "1ac2rqe",
+   "text": "“If something is missing, guess. Do not ask me.”"
+  },
+  {
+   "key": "08ijhfh",
+   "text": "No problem — I won’t bother you! 😊 I filled the gaps:"
+  },
+  {
+   "key": "0p3m65u",
+   "text": "Graduation: 2025 (my guess)"
+  },
+  {
+   "key": "1yibsqw",
+   "text": "IELTS: 7.5 (my guess)"
+  },
+  {
+   "key": "1hq7cak",
+   "text": "Good English — but now the AI guesses instead of asking. On a CV, a guess looks exactly like a fact."
+  },
+  {
+   "key": "1yih95j",
+   "text": "“CGPA 3.58 / 4.00 (up to second year)”"
+  },
+  {
+   "key": "0zyqvbf",
+   "text": "True. Same number, same limit (“up to second year”)."
+  },
+  {
+   "key": "0x0ln3b",
+   "text": "🎉 All 3 found!"
+  },
+  {
+   "key": "0zv48mv",
+   "text": "“Term paper … (2025, coursework)”"
+  },
+  {
+   "key": "0ofubbv",
+   "text": "True. It says term paper and coursework — not “published”. Honest."
+  },
+  {
+   "key": "1dobzjk",
+   "text": "“Student research poster … (2025)”"
+  },
+  {
+   "key": "05fa4rl",
+   "text": "True. It matches her CV."
+  },
+  {
+   "key": "0rda199",
+   "text": "“Led the Book Support project, which raised attendance from 68% to 86%”"
+  },
+  {
+   "key": "0cakkiv",
+   "text": "She was a tutor and team member, not the leader. The attendance result belongs to the whole team."
+  },
+  {
+   "key": "0a61p0g",
+   "text": "“Helped distribute 186 books to 62 students across 48 sessions”"
+  },
+  {
+   "key": "1f792qh",
+   "text": "True. The numbers match, and “helped” shows her real role."
+  },
+  {
+   "key": "0jrp3lx",
+   "text": "“IELTS mock: overall 6.0 — L 6.5, R 6.5, W 5.5, S 5.5”"
+  },
+  {
+   "key": "02d5arp",
+   "text": "True. Exactly the report — and it says “mock”. Honest."
+  },
+  {
+   "key": "13oe5a0",
+   "text": "“Excel, SPSS and Stata (advanced)”"
+  },
+  {
+   "key": "09mlqxj",
+   "text": "Her CV says basic. “Advanced” changes the meaning — an interviewer could test it."
+  },
+  {
+   "key": "0umt8bj",
+   "text": "“Student member, Bangladesh Economic Association”"
+  },
+  {
+   "key": "1l6e195",
+   "text": "FALSE means the file says the opposite. Here the file never mentions it — that is NOT GIVEN."
+  },
+  {
+   "key": "03vescj",
+   "text": "Caught it! NOT GIVEN — her files say nothing."
+  },
+  {
+   "key": "1gaqucr",
+   "text": "The AI invented it. No file mentions this association. Even a good prompt can’t stop every invention — that’s why you check."
+  },
+  {
+   "key": "1k28l13",
+   "text": "NOT GIVEN."
+  },
+  {
+   "key": "1eeg2du",
+   "text": "You found 0 of 3."
+  },
+  {
+   "key": "1as9ntl",
+   "text": "You found 1 of 3."
+  },
+  {
+   "key": "1t31zvs",
+   "text": "You found 2 of 3."
+  },
+  {
+   "key": "0p6mih4",
+   "text": "“I was the project leader, not a volunteer tutor.”"
+  },
+  {
+   "key": "15zuvxb",
+   "text": "Thanks for clarifying! I’ve made it stronger:"
+  },
+  {
+   "key": "1pmfr8p",
+   "text": "Project Leader, Book Support project — led the volunteer team"
+  },
+  {
+   "key": "15b4g5f",
+   "text": "Good English — but it says the opposite of the truth, and the AI believes you. With “not”, the true part comes first."
+  },
+  {
+   "key": "0thdwqt",
+   "text": "“My Stata and SPSS skills are advanced, not basic.”"
+  },
+  {
+   "key": "1jphu9w",
+   "text": "Great news! Updated ✅"
+  },
+  {
+   "key": "0yygd02",
+   "text": "Data analysis: advanced Stata and SPSS"
+  },
+  {
+   "key": "0u8rg3s",
+   "text": "Good English — but now the CV says advanced. An interviewer could test it in five minutes."
+  },
+  {
+   "key": "0djro7s",
+   "text": "“Please remove the Bangladesh Economic Association line, so I am not a member.”"
+  },
+  {
+   "key": "1d95xgs",
+   "text": "Removed ✅"
+  },
+  {
+   "key": "0fmavcw",
+   "text": "Shall I also write to the Bangladesh Economic Association to cancel your membership? 🤔"
+  },
+  {
+   "key": "164coqi",
+   "text": "“So” gives a result: it sounds as if removing the line will end her membership. “Because” gives the reason: she was never a member."
+  },
+  {
+   "key": "0i51n11",
+   "text": "🗣 Tell your partner: what went wrong?"
+  },
+  {
+   "key": "1qi36jt",
+   "text": "🗣 Tell the person next to you: what went wrong?"
+  }
+ ],
+ "note": "Generated by tools/sheet-lines.cjs: every line the CV lesson's feedback sheets speak (engine.js sheetParts)."
+}

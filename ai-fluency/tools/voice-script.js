@@ -119,12 +119,16 @@ for(const id of ORDER){
 }
 
 LATE.forEach(a=>add(...a));
+/* lines the feedback sheets speak, one per paragraph (engine.js sheetParts), listed by driving the page:
+   node tools/sheet-lines.cjs <page url> cv > audio/sheet-lines.json   (needs Playwright) */
+try{ const sl=JSON.parse(fs.readFileSync(path.join(AUD,'sheet-lines.json')));
+  sl.lines.forEach(l=>add(l.text,'coach','sheets','feedback sheet line')); }catch(e){}
 /* takes: per workflow and voice, in lesson order, a few lines each */
 const all=[...lines.values()];
 const takes={};
 let have0=new Set(); try{ have0=new Set(JSON.parse(fs.readFileSync(path.join(AUD,'manifest.json'))).keys) }catch(e){}
 have0=new Set([...have0].filter(k=>fs.existsSync(path.join(AUD,k+'.mp3'))));
-for(const lesson of ['common',...ORDER,'cq','intro','introd','cards']) for(const voice of ['coach','ayesha']){
+for(const lesson of ['common',...ORDER,'cq','intro','introd','cards','sheets']) for(const voice of ['coach','ayesha']){
   const ls=all.filter(l=>l.lesson===lesson&&l.voice===voice&&!have0.has(l.key));
   for(let i=0;i<ls.length;i+=MAX_PER_TAKE){
     // Include the exact key sequence: refreshing after a take is cut must never
@@ -141,7 +145,7 @@ fs.writeFileSync(path.join(AUD,'takes.json'),JSON.stringify(takes,null,1));
 const have=have0;
 /* the transcript is what is SAID; the key stays the words on screen */
 // Ayesha is said EYE-sha: two syllables, no y slide
-const spoken=t=>t.replace(/_{3}/g,'…').replace(/Ayesha/g,'Eye-sha').replace(/Sathi/g,'সাথী').replace(/Chats \(WhatsApp-style\)/g,'Chats')
+const spoken=t=>t.replace(/\b([A-Za-z0-9]+(?:_[A-Za-z0-9]+)+)\.(?:pdf|jpg|png|docx)\b/g,(m,n)=>n.replace(/_/g,' ')).replace(/_{3}/g,'…').replace(/Ayesha/g,'Eye-sha').replace(/Sathi/g,'সাথী').replace(/Chats \(WhatsApp-style\)/g,'Chats')
   // a colon makes the model pause as long as a line break, which confuses the cutter
   .replace(/:\s+/g,', ').replace(/Tap ⋮/g,'Tap the three dots').replace(/Tap \+/g,'Tap plus').replace(/Tap 🔊/g,'Tap the speaker button').replace(/send ➤/g,'tap Send').replace(/■\s*/g,'')
   .replace(/৳\s?99/g,'ninety-nine taka').replace(/৳\s?2,500/g,'two thousand five hundred taka').replace(/৳\s?5,000/g,'five thousand taka')
@@ -217,7 +221,7 @@ ${v.context}
 \`\`\`
 
 `;}
-const TITLE={common:'Start screen and the four phrases',cv:'Workflow 1 · An honest CV with AI',agent:'Workflow 2 · Set up an AI agent',build:'Workflow 3 · Vibe-code an app',cq:'What happens next — consequences of risky choices',intro:'The four Ds — onboarding film (one line per caption)',introd:'The four Ds — what each D means (film)',cards:'Lines spoken from cards'};
+const TITLE={common:'Start screen and the four phrases',cv:'Workflow 1 · An honest CV with AI',agent:'Workflow 2 · Set up an AI agent',build:'Workflow 3 · Vibe-code an app',cq:'What happens next — consequences of risky choices',intro:'The four Ds — onboarding film (one line per caption)',introd:'The four Ds — what each D means (film)',cards:'Lines spoken from cards',sheets:'Feedback sheets, line by line'};
 let cur='';
 for(const [tid,keys] of Object.entries(takes)){
   const L0=lines.get(keys[0]);
