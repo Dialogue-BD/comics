@@ -546,7 +546,8 @@ function hubFoot(){
 /* the prompt recipe as a row of pills that light up as the parts go in */
 function meterHTML(x,b){
   const c=fn(b.compose,x); if(!c||!c.slots) return ''; const val=x.get(c.key,c.prefill||'');
-  return `<div class="meter">${c.slots.map(s=>{const on=s.test.some(r=>r.test(val));return `<span class="${on?'on':''} pp-${esc(s.label)}">${on?'✓':'○'} ${esc(s.label)}</span>`}).join('')}</div>`;
+  // a slot with all:true needs every one of its sentences (e.g. Process = the rule + both tile sentences); it shows how far along it is
+  return `<div class="meter">${c.slots.map(s=>{const n=s.test.filter(r=>r.test(val)).length, on=s.all?n===s.test.length:n>0, part=s.all&&n&&!on;return `<span class="${on?'on':part?'part':''} pp-${esc(s.label)}">${on?'✓':part?'○':'○'} ${esc(s.label)}${part?` <small>${n}/${s.test.length}</small>`:''}</span>`}).join('')}</div>`;
 }
 
 /* ---------------------------------------------------------------- feedback sheet */
@@ -609,8 +610,11 @@ function ppClick(e){
   const ppb=e.target.closest('[data-pp]'); if(!ppb) return false;
   if(ppb.dataset.pp==='goid'){ goId(ppb.dataset.id); return true; }
   const pp=ppb.closest('.pp'), a=ppb.dataset.pp; let n=+pp.dataset.s||0;
+  // each step of the tailor story can be heard: 🔊 replays it, and moving to a step reads it
+  const sayStep=()=>{ const h=pp.querySelector('.pp-hd.h'+n); if(h&&h.dataset.say&&S.voice!==false) speak(h.dataset.say); };
+  if(a==='say'){ const h=pp.querySelector('.pp-hd.h'+n); if(h&&h.dataset.say) speak(h.dataset.say); return true; }
   if(a==='re'){ pp.classList.remove('min'); n=0; } else if(a==='next'){ if(n>=4){ if(pp.closest('#pcard')) next(true); else { pp.classList.add('min'); ctx().set('ppDone',1); } return true; } n++; } else if(a==='prev') n=Math.max(0,n-1);
-  pp.dataset.s=n; ctx().set('ppStep',n); const nx=pp.querySelector('[data-pp=next]'), pv=pp.querySelector('[data-pp=prev]'); if(nx) nx.textContent=n>=4?'Got it ✓':'Next ›'; if(pv) pv.disabled=n===0; return true;
+  pp.dataset.s=n; ctx().set('ppStep',n); const nx=pp.querySelector('[data-pp=next]'), pv=pp.querySelector('[data-pp=prev]'); if(nx) nx.textContent=n>=4?'Got it ✓':'Next ›'; if(pv) pv.disabled=n===0; if(pp.classList.contains('pp2')) sayStep(); return true;
 }
 function onSheetClick(e){
   const dv=e.target.closest('[data-view]'); if(dv){ openView(dv.dataset.view,dv.dataset.mark); return; }
