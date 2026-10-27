@@ -82,7 +82,7 @@ const FIXED=`<p>Thanks for catching these. I've made the changes:</p>
 const LINES=[
  {id:'l1',kw:['CGPA', '3.58'],look:[{f:'cv',m:'7.7,29,26,2.7',t:'Her CV — Education'}],text:'CGPA 3.58 / 4.00 (up to second year)',v:'ok',src:'Her old CV',quote:'“CGPA: 3.58/4.00 up to second year, 60 credit hours completed”',why:'True. Same number, same limit (“up to second year”).',whybn:'সত্য। একই সংখ্যা, একই সীমা।'},
  {id:'l2',kw:['Term', 'coursework)'],look:[{f:'cv',m:'7.7,59.9,37,2.7',t:'Her CV — Academic projects'}],text:'Term paper … (2025, coursework)',v:'ok',src:'Her old CV',quote:'“Term Paper … Prepared as Development Economics coursework.”',why:'True. It says term paper and coursework — not “published”. Honest.',whybn:'সত্য। এটা টার্ম পেপার আর কোর্সওয়ার্ক — “প্রকাশিত” নয়। সৎ।'},
- {id:'l3',kw:['poster', 'unemployment'],look:[{f:'cv',m:'6.3,63.6,32,4.6',t:'Her CV — Academic projects'}],text:'Student research poster … (2025)',v:'ok',src:'Her old CV',quote:'“Student Research Poster: Youth Unemployment and Skills Development in Bangladesh (2025) — Economics Study Circle Student Research Forum”',why:'True. It matches her CV.',whybn:'সত্য। তার CV-র সাথে মেলে।'},
+ {id:'l3',kw:['poster', 'unemployment'],look:[{f:'cv',m:'6.3,63.6,32,4.6',t:'Her CV — Academic projects'}],text:'Student research poster: youth unemployment and skills development (2025)',v:'ok',src:'Her old CV',quote:'“Student Research Poster: Youth Unemployment and Skills Development in Bangladesh (2025) — Economics Study Circle Student Research Forum”',why:'True. It matches her CV.',whybn:'সত্য। তার CV-র সাথে মেলে।'},
  {id:'l4',kw:['Led', '68%'],look:[{f:'rucei',m:'7.5,22.8,48,4.6;9.5,68.2,45,2.8',t:'RUCEI report — her role and the results'},{f:'cv',m:'6.3,41.3,29,2.7',t:'Her CV — Volunteer'}],text:'Led the Book Support project, which raised attendance from 68% to 86%',v:'bad',src:'RUCEI project report',quote:'Role: “Volunteer Tutor &amp; Organizing Team Member”. Attendance 68% → 86% is a result of the whole project.',why:'She was a tutor and team member, not the leader. The attendance result belongs to the whole team.',whybn:'সে টিউটর ও দলের সদস্য ছিল, নেতা নয়। উপস্থিতির ফল পুরো দলের।'},
  {id:'l5',kw:['186', 'books'],look:[{f:'rucei',m:'8,56,46,11.5',t:'RUCEI report — Key outputs'}],text:'Helped distribute 186 books to 62 students across 48 sessions',v:'ok',src:'RUCEI project report',quote:'Books distributed: 186 · Students enrolled: 62 · Tutoring sessions: 48 (15 Jan – 30 Apr 2025)',why:'True. The numbers match, and “helped” shows her real role.',whybn:'সত্য। সংখ্যা মেলে, আর “helped” তার আসল ভূমিকা দেখায়।'},
  {id:'l6',kw:['IELTS', '6.0'],look:[{f:'ielts',m:'5.5,40,87,22',t:'IELTS mock report — scores'}],text:'IELTS mock: overall 6.0 — L 6.5, R 6.5, W 5.5, S 5.5',v:'ok',src:'IELTS mock report',quote:'Listening 6.5 · Reading 6.5 · Writing 5.5 · Speaking 5.5 · Overall 6.0 (test date 24 May 2025)',why:'True. Exactly the report — and it says “mock”. Honest.',whybn:'সত্য। রিপোর্টের সাথে হুবহু মেলে — “mock” কথাটাও আছে। সৎ।'},
@@ -128,6 +128,7 @@ const ppAnim=x=>{ const s0=Math.min(4,Math.max(0,(x&&x.get('ppStep',0))||0));
   const bub=PP_SCENES.map((s,k)=>`<span class="pp-bt b${k}">“${s.tailor}”${BN(s.tailorbn)}</span>`).join('')+`<span class="pp-bt b4">${T('A matching blouse, made the right way.','শাড়ির সাথে মানানসই ব্লাউজ, সঠিকভাবে তৈরি।')}</span>`;
   const rows=PP_SCENES.map((s,k)=>`<span class="pp-row r${k} pp-${s.t}"><b>${T(s.t,PART_BN[s.t])}</b><span>${T(s.ai,s.aibn)}</span></span>`).join('');
   return `<span class="pp pp2 pp-film${x&&x.get('ppDone')?' min':''}" data-s="${s0}"><span class="pp-stage">
+    <span class="pp-bridge"><b>${T('A clear brief for a person. A clear prompt for AI.','মানুষকে স্পষ্ট করে কাজ বোঝানো। AI-কে স্পষ্ট প্রম্পট দেওয়া।')}</b><span>${T('Ayesha needs a blouse to match her yellow shari for a friend’s gaye holud. A tailor needs four things explained. An AI does too. See how the same four parts guide both.','বান্ধবীর গায়ে হলুদের জন্য আয়েশার হলুদ শাড়ির সাথে মানানসই ব্লাউজ দরকার। দর্জিকে চারটি বিষয় বোঝাতে হয়। AI-কেও তাই। দেখো, একই চারটি অংশ কীভাবে দুজনকেই সাহায্য করে।')}</span></span>
     <span class="pp-top">${head}<button type="button" class="ear pp-ear" data-pp="say" aria-label="Listen">🔊</button></span>
     <span class="pp-shop">${PP_ART}</span><span class="pp-compare"><span class="pp-person"><span class="pp-label">${T('To a person · The tailor','একজন মানুষকে · দর্জিকে')}</span><span class="pp-bub">${bub}</span></span>
     <span class="pp-prompt"><span class="pp-pl">${T('To AI · Sathi AI','AI-কে · Sathi AI-কে')}</span>${rows}</span></span></span>
@@ -221,13 +222,14 @@ const ANS_CHIPS=[
 const ansText=x=>x.get('cvAns','')||ANS_CHIPS.slice(0,3).map(c=>c.text).join(' ');
 const FIX_CHIPS=[
  PUZ({id:'f1',tag:'Fix',goal:'Fix her role',goalbn:'তার ভূমিকা ঠিক করো',
-   tiles:['I was','a volunteer tutor','not','the project leader','am'],
-   ok:[{o:[0,1,2,3],t:'I was a volunteer tutor, not the project leader.'}],
-   traps:[{o:[0,3,2,1],t:'I was the project leader, not a volunteer tutor.',
+   tiles:['I','was','a volunteer tutor','not','the project leader','am'],
+   matches:[/\bi was a volunteer tutor\s*,?\s*not (?:the )?project leader\b/i],
+   ok:[{o:[0,1,2,3,4],t:'I was a volunteer tutor, not the project leader.'}],
+   traps:[{o:[0,1,4,3,2],t:'I was the project leader, not a volunteer tutor.',
      ai:'<p>Thanks for clarifying! I’ve made it stronger:</p><ul><li><span class="flag ln v-bad">Project Leader</span>, Book Support project — led the volunteer team</li></ul>',
      why:'Good English — but it says the opposite of the truth, and the AI believes you. With “not”, the <b>true</b> part comes first.',
      whybn:'ইংরেজি ঠিক — কিন্তু এটা সত্যের উল্টো, আর AI তোমাকে বিশ্বাস করে। “not” থাকলে সত্যিটা আগে আসে।'}],
-   tip:'Start with “I was” — she’s talking about the past. Then what she was, then “not” + what she was not.',tipbn:'“I was” দিয়ে শুরু করো — অতীতের কথা। তারপর সে কী ছিল, তারপর “not” + সে কী ছিল না।',
+   tip:'Start with “I” + “was” — she’s talking about the past. Then what she was, then “not” + what she was not.',tipbn:'“I was” দিয়ে শুরু করো — অতীতের কথা। তারপর সে কী ছিল, তারপর “not” + সে কী ছিল না।',
    good:'True part first, then “not” + the false part.'}),
  PUZ({id:'f2',tag:'Fix',goal:'Fix her software skills',goalbn:'তার সফটওয়্যার দক্ষতা ঠিক করো',
    tiles:['My Stata and SPSS skills','are','basic','not','advanced','is'],
@@ -340,7 +342,8 @@ const filled=x=>{const f=x.get('cvFill',{});return !!(f.phone&&f.email)};
 
 /* ---------- practice games (games.js) ---------- */
 const GUESS_SIGNS=[{id:'1',i:'1️⃣',en:'A perfect, true CV',bn:'নিখুঁত, সত্যি CV'},{id:'2',i:'2️⃣',en:'An impressive CV — with made-up things',bn:'চমৎকার CV — কিন্তু বানানো কথা সহ'},{id:'3',i:'3️⃣',en:'Questions first',bn:'আগে প্রশ্ন'}];
-const TWO_TRUTHS={type:'rounds',key:'cvTT',kind:'tt',pic:'🤥',title:'Two truths and a lie',titlebn:'দুটো সত্য, একটা মিথ্যা',
+const TWO_TRUTHS={type:'rounds',key:'cvTT',kind:'tt',demo:true,
+ roles:{ask:{en:'Say three short statements about yourself: two true, one made up.',bn:'নিজের সম্পর্কে তিনটি ছোট কথা বলো: দুটি সত্য, একটি বানানো।'},ans:{en:'Ask a question. Then identify the made-up statement.',bn:'একটি প্রশ্ন করো। তারপর বানানো কথাটি চিহ্নিত করো।'}},pic:'🤥',title:'Two truths and a lie',titlebn:'দুটো সত্য, একটা মিথ্যা',
  intro:{en:'Think of 3 lines for YOUR CV. Two are true. One is made up — but make it sound real.',bn:'তোমার নিজের CV-র জন্য ৩টা লাইন ভাবো। দুটো সত্য। একটা বানানো — কিন্তু সত্যি শোনাতে হবে।'},prep:45,time:0,
  items:[{q:'{A} says 3 lines. {B} asks ONE question — then points to the made-up line.',qbn:'একজন ৩টা লাইন বলো। অন্যজন একটা প্রশ্ন করো — তারপর বানানো লাইনটা ধরো।',model:'I was class captain in Class 9. I can type 60 words a minute. I won a national debate competition.'},
         {q:'Swap! {A} says 3 lines. {B} asks ONE question — then points to the made-up line.',qbn:'এবার উল্টো! একজন ৩টা লাইন বলো। অন্যজন একটা প্রশ্ন করে বানানোটা ধরো।',model:'I volunteer at a library. I have a driving licence. I speak a little Japanese.'}],
@@ -432,6 +435,7 @@ AFL.lesson({
    compose:{key:'cvQuick',chips:QUICK,best:['q1']}},
   {d:'dis',stage:'try',view:'card',
    say:'Sathi AI is reading that short prompt. Before it answers — what’s your guess?',bn:'Sathi AI ছোট প্রম্পটটা পড়ছে। উত্তর দেওয়ার আগে — তোমার অনুমান কী?',
+   pass:()=>true,
    card:x=>({type:'onthree',key:'cvGuess',kind:'guess',pic:'🤔',right:'2',signs:GUESS_SIGNS,
      q:`What will Sathi AI give Ayesha for “${esc(quickText(x))}”?`,qbn:'এই প্রম্পটে Sathi AI আয়েশাকে কী দেবে?'})},
   {d:'dis',id:'send',stage:'try',scene:x=>WEAK_SC(x,true),
@@ -447,7 +451,7 @@ AFL.lesson({
    hunt:{key:'cvHunt1',lines:HUNT1},sub:()=>RELAY(),subbn:()=>RELAYBN()},
   {d:'dis',stage:'try',view:'card',
    say:'You judged what the AI gave you. That gear is Discernment.',bn:'AI যা দিয়েছে, তুমি তা বিচার করেছ। এই গিয়ারের নাম Discernment।',
-   card:{type:'level',d:'dis',guess:{key:'cvGuess',right:'2',signs:GUESS_SIGNS,note:'it sounds sure, and it makes things up.'},did:'Is it true? Check it against her real documents before you believe it.',didbn:'এটা কি সত্য? বিশ্বাস করার আগে তার আসল কাগজের সাথে মিলিয়ে দেখো।',
+   card:{type:'level',d:'dis',did:'Is it true? Check it against her real documents before you believe it.',didbn:'এটা কি সত্য? বিশ্বাস করার আগে তার আসল কাগজের সাথে মিলিয়ে দেখো।',
      phrase:{en:'That’s not true. Her CV says ___.',bn:'এটা সত্য নয়। তার CV-তে লেখা ___।'}}},
 
   /* ---------- PLAN: start again, properly ---------- */
@@ -531,7 +535,7 @@ AFL.lesson({
    hunt:{key:'cvHunt2',lines:LINES},sub:()=>RELAY(),subbn:()=>RELAYBN()},
 
   /* ---------- FIX ---------- */
-  {d:'des',id:'fixes',stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi AI'},kb:{key:'cvFix',label:'FIXES',labelbn:'সংশোধন',chips:FIX_CHIPS,ai:'sathi'}}),tap:'send',
+  {d:'des',id:'fixes',stage:'fix',scene:x=>Object.assign(CHAT_SC(x,3),{composer:{key:'cvFix',placeholder:'Reply to Sathi AI'},kb:{key:'cvFix',revision:2,label:'FIXES',labelbn:'সংশোধন',chips:FIX_CHIPS,ai:'sathi'}}),tap:'send',
    docs:['cv','ielts','rucei','shortlist'],
    say:'Tell Sathi AI exactly what to fix. Careful — the same words can say the opposite.',bn:'Sathi AI-কে ঠিক কী ঠিক করতে হবে, স্পষ্ট করে বলো। সাবধান — একই শব্দে উল্টো কথাও বলা যায়।',
    sub:()=>TILES(),subbn:()=>TILESBN(),

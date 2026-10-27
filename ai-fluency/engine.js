@@ -101,8 +101,14 @@ function savePrefs(){try{localStorage.setItem('afl-prefs',JSON.stringify({mode:S
 const byMode=o=>o[S.mode]!==undefined?o[S.mode]:o.pair;
 const LESSONS={}; const ORDER=[];
 let prevScene=null, streamTimer=null, ghostBusy=false, renderedAt='';
-function save(){try{sessionStorage.setItem(KEY,JSON.stringify({lesson:S.lesson,beat:S.beat,bn:S.bn,ch:S.ch}))}catch(e){}}
-function load(){try{const v=JSON.parse(sessionStorage.getItem(KEY)||'null');if(v){Object.assign(S,v)}}catch(e){}}
+function save(){
+ try{sessionStorage.setItem(KEY,JSON.stringify({lesson:S.lesson,beat:S.beat,bn:S.bn,ch:S.ch}))}catch(e){}
+ try{localStorage.setItem('afl-completed',JSON.stringify(ORDER.filter(id=>S.ch[id]&&S.ch[id]._finished)))}catch(e){}
+}
+function load(){
+ try{const v=JSON.parse(sessionStorage.getItem(KEY)||'null');if(v)Object.assign(S,v)}catch(e){}
+ try{for(const id of JSON.parse(localStorage.getItem('afl-completed')||'[]'))if(LESSONS[id]){S.ch[id]=S.ch[id]||{};S.ch[id]._finished=true;}}catch(e){}
+}
 function ctx(){
   const L=LESSONS[S.lesson]; const ch=S.ch[S.lesson]||(S.ch[S.lesson]={});
   return {ch,L,beat:L&&L.beats[S.beat],get streaming(){return S.streaming},set(k,v){ch[k]=v;save()},get(k,d){return k in ch?ch[k]:d},bn:S.bn,files:FILES,esc,ico};
@@ -110,14 +116,14 @@ function ctx(){
 
 /* ------------------------------------------------------------- clock */
 const now=()=>{const d=new Date();let h=d.getHours()%12||12;return h+':'+String(d.getMinutes()).padStart(2,'0')};
-const STORY_DATE='Saturday, 4 October';
+const dateLabel=(short=false,date=new Date())=>new Intl.DateTimeFormat('en-GB',{weekday:short?'short':'long',day:'numeric',month:short?'short':'long'}).format(date);
 
 /* ------------------------------------------------------------- APP RENDERERS */
 const APPS={};
 const appBar=(title,{left='back',right='',hitBack='',cls=''}={})=>`<div class="tab ${cls}">${left?`<button class="mi" ${hitBack?`data-hit="${hitBack}"`:'data-sys="back"'} aria-label="Back">${ico(left)}</button>`:''}<h1>${title}</h1>${right}</div>`;
 
 APPS.lock=sc=>`<div class="view lock" data-theme="lock">
-  <div class="clk"><div class="t">${now()}</div><div class="d">${STORY_DATE} · 31°C</div></div>
+  <div class="clk"><div class="t">${now()}</div><div class="d">${dateLabel()}</div></div>
   <div class="notifs">${(sc.notifs||[]).map(n=>notif(n)).join('')}</div>
   <div class="hint">${sc.hint||'Tap a notification to open it'}</div></div>`;
 const APPINFO={
@@ -142,7 +148,7 @@ const APPINFO={
 function notif(n){const a=APPINFO[n.app]||APPINFO.system;return `<button class="notif ${n.cls||''}" ${n.hit?`data-hit="${n.hit}"`:''}><span class="ap" style="background:${a.b};color:${a.c}">${ico(a.i)}</span><span><span class="meta">${esc(a.n)} · ${esc(n.time||'now')}</span><b>${esc(n.title)}</b><p>${esc(n.text)}</p></span></button>`}
 function appIcon(id,hit){const a=APPINFO[id];return `<button class="app" data-hit="${hit||'app:'+id}"><span class="ai" style="--ib:${a.b};--ic:${a.c};background:${a.b};color:${a.c}">${ico(a.i)}</span>${esc(a.n)}</button>`}
 APPS.home=sc=>`<div class="view home" data-theme="home">
-  <div class="glance"><div class="d">Sat, 4 Oct</div><div class="w">☀ 31°C · Rajshahi</div></div>
+  <div class="glance"><div class="d">${dateLabel(true)}</div><div class="w">Rajshahi · Ayesha’s phone</div></div>
   <div class="grid">${['sathi','orbit','studio','docs','mail','cal','files','settings'].map(id=>appIcon(id)).join('')}</div>
   <div class="search">${ico('search')}<span>Search</span></div>
   <div class="dock">${['phone','msgs','browser','camera'].map(id=>appIcon(id)).join('')}</div></div>`;
@@ -278,12 +284,12 @@ function pzHTML(kb,val){
   return `<div class="bld pz ${bad?'bad':''} t-${esc(cur.tag||'')}"><div class="bld-h">${head}</div>${goal}
    ${S.bn&&cur.textbn?`<details class="pz-meaning" lang="bn"><summary>বাংলা অর্থ দেখো</summary><p>${esc(cur.textbn)}</p></details>`:''}
    <div class="bld-line" id="bldline">${pl.length?pl.map((id,k)=>`<button class="tile on" data-ui="untile:${k}">${esc(shown[k])}</button>`).join(''):good?`<em class="pz-was">✓ ${T(esc(good),goodbn)} <b>${tr('Next one:','এবার পরেরটা:')}</b></em>`:`<em>${tr('Tap or drag the pieces here, in order','টুকরোগুলো ক্রমে এখানে চাপো বা টেনে আনো')}</em>`}</div>
-   ${bad?`<div class="bld-tip">${esc(cur.tip||'Not quite. Check the order.')}${S.bn&&cur.tipbn?`<span class="bn-in" lang="bn"> · ${cur.tipbn}</span>`:''}</div>`:''}
+   ${bad?`<div class="bld-tip">${esc(cur.tip||'Not quite. Check the order.')}${S.bn&&cur.tipbn?`<span class="bn-in" lang="bn"> · ${cur.tipbn}</span>`:''}<button class="pz-reset" data-ui="pzreset:1">${tr('Try this sentence again','বাক্যটি আবার বানাও')}</button></div>`:''}
    <div class="bld-pool">${pzPool(cur).filter(z=>!pl.includes(z.i)).map(z=>`<button class="tile" data-tile="${z.i}" data-ui="tile:${z.i}">${esc(z.t)}</button>`).join('')}</div></div>`;
 }
 function pzAppend(x,kb,text){ let v=x.get(kb.key,''); v=(v&&!/\s$/.test(v)?v+' ':v)+text; x.set(kb.key,v); }
 function pzTap(kind,arg,x,at){
-  const kb=activeKB(x); if(!kb) return; const key='pz:'+kb.key; if(x.get(key+'!',0)||UI.sheet) return;
+  const kb=activeKB(x); if(!kb) return; const key='pz:'+kb.key; if(UI.sheet) return; if(x.get(key+'!',0)&&kind!=='untile') return; x.set(key+'!',0);
   const cur=pzCur(kb,x.get(kb.key,'')); if(!cur) return; let pl=x.get(key,[]).slice();
   if(kind==='tile'){ const id=+arg; if(pl.includes(id)) return; if(at==null) pl.push(id); else pl.splice(at,0,id); }
   else pl.splice(+arg,1);
@@ -294,11 +300,11 @@ function pzTap(kind,arg,x,at){
     const eq=o=>o.length===pl.length&&o.every((v,k)=>v===pl[k]);
     const ok=cur.ok.find(o=>eq(o.o)), trap=(cur.traps||[]).find(o=>eq(o.o));
     if(ok){ x.set(key,[]); firstTry(x,'pz:'+cur.id,!x.get('pzm:'+cur.id)); pzAppend(x,kb,ok.t); x.set(key+'+',cur.good||''); try{FX.sfx('ok')}catch(e){}
-      renderPhoneKeepFocus(); renderFoot(); renderTop(); return; }
+      renderPhoneKeepFocus(); renderFoot(); renderTop(); celebrateBuild(cur,kb,x); return; }
     x.set('pzm:'+cur.id,1); firstTry(x,'pz:'+cur.id,false);
     if(trap){ renderPhoneKeepFocus(); pzTrap(x,kb,cur,trap); return; }
     x.set(key+'!',1); try{FX.sfx('no')}catch(e){}
-    setTimeout(()=>{ x.set(key,[]); x.set(key+'!',0); renderPhoneKeepFocus(); renderFoot(); },1700);
+    // Keep the attempt and its explanation visible; students can undo a tile or start again.
   }
   renderPhoneKeepFocus(); renderFoot();
 }
@@ -332,7 +338,7 @@ function keyboard(kb){
   }
   const bld=pzItems(kb).length;
   const chips=(kb.chips||[]).filter(c=>!c.tiles).map(c=>{const used=val.includes(c.text);return `<button class="kchip ${used?'used':''} ${c.x?'x':''} t-${esc(c.tag||'')}" data-ui="chip:${c.id}"><span class="tg">${tr(esc(c.tag||''),c.tagbn||PART_BN[c.tag])}</span>${T(esc(c.text),c.textbn)}</button>`}).join('');
-  return (bld?pzHTML(kb,val):'')+`<div class="strip">${kb.label&&!kb.guidedParts?`<span class="lbl">${tr(esc(kb.label),kb.labelbn)}</span>`:''}${chips}${innerWidth<900||kb.guidedParts?`<button class="kbt" data-ui="kbtoggle:1">${S.keys?tr('Hide keys','কি-বোর্ড লুকাও'):tr('⌨ Type','টাইপ করো')}</button>`:''}</div>
+  return (bld?pzHTML(kb,val):'')+`<div class="strip">${kb.label&&!kb.guidedParts?`<span class="lbl">${tr(esc(kb.label),kb.labelbn)}</span>`:''}${chips}<button class="kbt" data-ui="kbtoggle:1">${S.keys?tr('Hide keys','কি-বোর্ড লুকাও'):tr('⌨ Type','টাইপ করো')}</button></div>
   <div class="rows">${ROWS.map((r,i)=>`<div class="kr">${i===2?`<button class="k w" data-ui="key:shift">⇧</button>`:''}${[...r].map(k=>`<button class="k" data-ui="key:${k}">${k}</button>`).join('')}${i===2?`<button class="k w" data-ui="key:bs">⌫</button>`:''}</div>`).join('')}
   <div class="kr"><button class="k w" data-ui="key:123">?123</button><button class="k w" data-ui="key:,">,</button><button class="k sp" data-ui="key: ">English</button><button class="k w" data-ui="key:.">.</button><button class="k go" data-ui="key:nl">↵</button></div></div>`;
 }
@@ -636,14 +642,18 @@ function speakParts(full,parts,onEnd){
   if(!parts||parts.length<2||AUDIO.has(audioKey(full))){ speak(full,onEnd); return; }
   let i=0; const go=()=>{ if(i>=parts.length){ onEnd&&onEnd(); return; } speak(parts[i++],go); }; go();
 }
-function closeSheet(){ UI.sheet=null; renderSheet(); renderFoot(); }
+function closeSheet(){ hush(); UI.sheet=null; renderSheet(); renderFoot(); }
+function narratePP(pp){
+  const h=pp&&$('.pp-hd.h'+pp.dataset.s,pp);if(!h||!h.dataset.say)return;
+  pp.dataset.narration='playing';speak(h.dataset.say,()=>{if(pp.isConnected)delete pp.dataset.narration;});
+}
 function ppClick(e){
   const ppb=e.target.closest('[data-pp]'); if(!ppb) return false;
   if(ppb.dataset.pp==='goid'){ goId(ppb.dataset.id); return true; }
   const pp=ppb.closest('.pp'), a=ppb.dataset.pp; let n=+pp.dataset.s||0;
   // each step of the tailor story can be heard: 🔊 replays it, and moving to a step reads it
-  const sayStep=()=>{ const h=pp.querySelector('.pp-hd.h'+n); if(h&&h.dataset.say&&S.voice!==false) speak(h.dataset.say); };
-  if(a==='say'){ const h=pp.querySelector('.pp-hd.h'+n); if(h&&h.dataset.say) speak(h.dataset.say); return true; }
+  const sayStep=()=>{if(S.voice!==false)narratePP(pp);};
+  if(a==='say'){narratePP(pp);return true;}
   if(a==='re'){ pp.classList.remove('min'); n=0; } else if(a==='next'){ if(n>=4){ if(pp.closest('#pcard')) next(true); else { pp.classList.add('min'); ctx().set('ppDone',1); } return true; } n++; } else if(a==='prev') n=Math.max(0,n-1);
   pp.dataset.s=n; ctx().set('ppStep',n); const nx=pp.querySelector('[data-pp=next]'), pv=pp.querySelector('[data-pp=prev]'); if(nx) nx.innerHTML=n>=4?tr('Got it ✓','বুঝেছি ✓'):tr('Next ›','পরেরটি ›'); if(pv) pv.disabled=n===0; if(pp.classList.contains('pp2')) sayStep(); return true;
 }
@@ -654,7 +664,7 @@ function onSheetClick(e){
   const hv=e.target.closest('[data-hv]'); if(hv){ huntVerdict(hv.dataset.hv); return; }
   const sp=e.target.closest('[data-speak]'); if(sp){ if(sp.dataset.parts) speakParts(sp.dataset.speak,JSON.parse(sp.dataset.parts)); else speak(sp.dataset.speak); sp.classList.add('speaking'); return; }
   const sy=e.target.closest('[data-say]'); if(sy){ speak(sy.dataset.say); sy.classList.add('speaking'); return; }
-  const s=e.target.closest('[data-s]'); if(!s) return; const a=s.dataset.s, o=UI.sheet;
+  const s=e.target.closest('[data-s]'); if(!s) return; const a=s.dataset.s, o=UI.sheet; hush();
   if(a==='close'){ closeSheet(); return; }
   if(a==='rewind'){ rewindCQ(); return; }
   if(a==='retry'){ const r=o&&o.retry; UI.sheet=null; if(typeof r==='function') r(ctx()); renderUI(); return; }
@@ -662,7 +672,7 @@ function onSheetClick(e){
     // a consequence on a step that still has its own task (a hunt, a question): back to the task
     if(!o&&cqOn()){ const bb=ctx().beat; if(bb.hunt||bb.ask){ CQ=null; document.body.classList.remove('cq-on'); hush(); renderPhone(true); renderUI(); if(S.voice) speak(coachText().en); return; } }
     next(true); return; }
-  if(a==='huntnext'){ UI.sheet=null; renderUI(); return; }
+  if(a==='huntnext'){ UI.hs=null; UI.sheet=null; renderUI(); return; }
 }
 
 /* ---------------------------------------------------------------- her files */
@@ -686,8 +696,10 @@ function huntMark(x,b,scr){
 }
 const kwNorm=t=>String(t).toLowerCase().replace(/[^\p{L}\p{N}.%\/]+/gu,'').replace(/\.$/,'');
 const claimToks=l=>String(l.text).split(/\s+/).filter(w=>kwNorm(w));
-const lookHTML=l=>l.look&&l.look.length?`<div class="looks"><span>${S.bn?'২ · স্ক্যান: ফাইলটা খোলো। শুধু মানচিত্রে যেখানে বলেছে সেখানে দেখো।':'2 · Scan: open the file. Read only where your map points.'}</span>${l.look.map(k=>`<button class="look" data-view="${k.f}" ${k.m?`data-mark="${k.m}"`:''}>📄 ${esc(k.t||FILES[k.f].name)}</button>`).join('')}</div>`:'';
-const verdHTML=id=>`<div class="verd3"><button data-hv="${id}|ok"><i>✓</i>TRUE<small>${S.bn?'ফাইল একই বলে':'the file says the same'}</small></button><button data-hv="${id}|bad"><i>✗</i>FALSE<small>${S.bn?'ফাইল উল্টো বলে':'the file says the opposite'}</small></button><button data-hv="${id}|ng"><i>?</i>NOT GIVEN<small>${S.bn?'ফাইলে কিছুই নেই':'the file says nothing'}</small></button></div>`;
+const evidenceFiles=l=>(l.look||[]).map(k=>k.f);
+const evidenceDone=l=>evidenceFiles(l).every(f=>UI.hs&&UI.hs.id===l.id&&(UI.hs.views||[]).includes(f));
+const lookHTML=l=>l.look&&l.look.length?`<div class="looks evidence-step"><span>${tr('2 · Open the evidence before you judge.','২ · বিচার করার আগে প্রমাণের ফাইল খোলো।')}</span><div class="evidence-files">${l.look.map(k=>{const seen=UI.hs&&(UI.hs.views||[]).includes(k.f);return `<button class="look ${seen?'viewed':'needs-open'}" data-view="${k.f}" ${k.m?`data-mark="${k.m}"`:''}><i aria-hidden="true">${seen?'✓':'↗'}</i> ${esc(k.t||FILES[k.f].name)}<small>${seen?tr('Opened','খোলা হয়েছে'):tr('Open file','ফাইল খোলো')}</small></button>`}).join('')}</div><small id="evidence-hint" class="evidence-hint" role="status">${evidenceDone(l)?tr('Evidence opened. Now choose your verdict.','প্রমাণের ফাইল খোলা হয়েছে। এবার উত্তর বেছে নাও।'):tr('Open each file above to unlock TRUE / FALSE / NOT GIVEN.','উপরের প্রতিটি ফাইল খুললে TRUE / FALSE / NOT GIVEN বেছে নিতে পারবে।')}</small></div>`:'';
+const verdHTML=(id,l)=>`<div class="verd3" aria-describedby="evidence-hint">${[['ok','✓','TRUE','the file says the same','ফাইল একই বলে'],['bad','✗','FALSE','the file says the opposite','ফাইল উল্টো বলে'],['ng','?','NOT GIVEN','the file says nothing','ফাইলে কিছুই নেই']].map(([v,i,label,en,bn])=>`<button data-hv="${id}|${v}" ${evidenceDone(l)?'':'disabled'}><i>${i}</i>${label}<small>${S.bn?bn:en}</small></button>`).join('')}</div>`;
 const kwDone=l=>!l.kw||(UI.hs&&UI.hs.id===l.id&&UI.hs.pick.length>=Math.min(2,l.kw.length));
 function kwPick(i){
   const x=ctx(), b=x.beat; if(!b.hunt||!UI.hs) return; const l=fn(b.hunt,x).lines.find(z=>z.id===UI.hs.id); if(!l) return;
@@ -698,23 +710,24 @@ function kwPick(i){
   openLine(l.id);
 }
 function openLine(id){
+  hush();
   const x=ctx(), b=x.beat, s=huntState(x,b), l=s.h.lines.find(z=>z.id===id); if(!l) return;
   const ans=s.a[id];
   if(ans){ UI.sheet={tone:ans==='bad'?'bad':'ok',title:ans==='bad'?(l.vd==='NG'?'NOT GIVEN':(S.bn?'সত্য নয়':'FALSE')):(S.bn?'সত্য':'TRUE'),html:`<p class="claim">“${l.text}”</p><p>${l.why}${BN(l.whybn)}</p>`,acts:[['close',tr('OK','ঠিক আছে'),'primary']]}; renderSheet(); return; }
-  if(l.kw&&(!UI.hs||UI.hs.id!==id)) UI.hs={id,pick:[],tip:''};
+  if(!UI.hs||UI.hs.id!==id) UI.hs={id,pick:[],tip:'',views:[]};
   if(!kwDone(l)){
     const toks=claimToks(l);
-    UI.sheet={tone:'info',title:S.bn?'এটা কি সত্য?':'Is this true?',html:`<p class="kwq">${S.bn?'১ · কীওয়ার্ড: ফাইলে কোন ২টা শব্দ খুঁজবে? নাম, সংখ্যা বা জোরালো শব্দে চাপো।':'1 · Keywords: which 2 words will you scan for? Tap names, numbers or strong words.'}</p>
+    UI.sheet={tone:'info',huntId:id,title:S.bn?'এটা কি সত্য?':'Is this true?',html:`<p class="kwq">${S.bn?'১ · কীওয়ার্ড: ফাইলে কোন ২টা শব্দ খুঁজবে? নাম, সংখ্যা বা জোরালো শব্দে চাপো।':'1 · Keywords: which 2 words will you scan for? Tap names, numbers or strong words.'}</p>
       <div class="kws">${toks.map((w,i)=>`<button data-kw="${i}" ${l.kw.map(kwNorm).includes(kwNorm(w))?'data-ok="1"':''} class="${UI.hs.pick.includes(i)?'hit':UI.hs.miss===i&&UI.hs.tip?'miss':''}">${esc(w)}</button>`).join('')}</div><div class="kwhint">${UI.hs.tip||''}</div>`,acts:[['close',tr('Not now','এখন না'),'ghost']]};
     renderSheet(); return;
   }
   const toks=claimToks(l);
-  UI.sheet={tone:'info',title:S.bn?'এটা কি সত্য?':'Is this true?',html:`<p class="claim">“${l.kw?toks.map(w=>l.kw.map(kwNorm).includes(kwNorm(w))?`<mark class="kwm">${esc(w)}</mark>`:esc(w)).join(' '):l.text}”</p>
-    ${lookHTML(l)}<p class="kwq" style="margin-top:8px">${S.bn?'৩ · যাচাই: একই কথা বলছে কি?':'3 · Check: same person, same action, same size?'}</p>${verdHTML(id)}`,acts:[['close',tr('Not now','এখন না'),'ghost']]};
+  UI.sheet={tone:'info',huntId:id,title:S.bn?'এটা কি সত্য?':'Is this true?',html:`<p class="claim">“${l.kw?toks.map(w=>l.kw.map(kwNorm).includes(kwNorm(w))?`<mark class="kwm">${esc(w)}</mark>`:esc(w)).join(' '):l.text}”</p>
+    ${lookHTML(l)}<p class="kwq" style="margin-top:8px">${S.bn?'৩ · যাচাই: একই কথা বলছে কি?':'3 · Check: same person, same action, same size?'}</p>${verdHTML(id,l)}`,acts:[['close',tr('Not now','এখন না'),'ghost']]};
   renderSheet();
 }
 function huntVerdict(arg){
-  const [id,v]=arg.split('|'); const x=ctx(), b=x.beat, h=fn(b.hunt,x), l=h.lines.find(z=>z.id===id); const want=l.v==='ok'?'ok':(l.vd==='NG'?'ng':'bad');
+  const [id,v]=arg.split('|'); const x=ctx(), b=x.beat, h=fn(b.hunt,x), l=h.lines.find(z=>z.id===id); if(!l||!kwDone(l)||!evidenceDone(l)){if(l)openLine(id);return;} const want=l.v==='ok'?'ok':(l.vd==='NG'?'ng':'bad');
   firstTry(x,h.key+':'+id,v===want);
   if(v===want){ const a=x.get(h.key,{}); a[id]=v==='ok'?'ok':'bad'; x.set(h.key,a);
     const s=huntState(x,b); const all=s.found===s.need;
@@ -726,7 +739,7 @@ function huntVerdict(arg){
     const gen=want==='bad'&&v==='ng'?(S.bn?'NOT GIVEN মানে ফাইলে কিছুই নেই। এখানে ফাইল অন্য কথা বলছে — সেটা FALSE।':'NOT GIVEN means the file says nothing. Here the file says something different — that is FALSE.')
       :want==='ng'&&v==='bad'?(S.bn?'FALSE মানে ফাইল উল্টো বলে। এখানে ফাইলে এটার কথাই নেই — NOT GIVEN।':'FALSE means the file says the opposite. Here the file never mentions it — that is NOT GIVEN.')
       :(l.hint||(want==='ok'?(S.bn?'ফাইলের সাথে মিলিয়ে দেখো — মেলে কি?':'Open her file and compare. Does it match?'):(S.bn?'ফাইলে ঠিক এটাই লেখা আছে কি?':'Does her file say exactly this?')));
-    UI.sheet={tone:'think',title:S.bn?'আবার দেখো':'Look again',html:`<p class="claim">“${l.text}”</p><p>${gen}${BN(l.hintbn)}</p>${lookHTML(l)}${verdHTML(id)}`,acts:[]};
+    UI.sheet={tone:'think',title:S.bn?'আবার দেখো':'Look again',html:`<p class="claim">“${l.text}”</p><p>${gen}${BN(l.hintbn)}</p>${lookHTML(l)}${verdHTML(id,l)}`,acts:[]};
   }
   renderPhone(false); renderSheet(); renderFoot(); renderTop();
 }
@@ -884,6 +897,7 @@ async function recToggle(kind){
 /* ---- document viewer: opens over everything, so her files are never hidden behind a tab ---- */
 let VIEW=null;
 function openView(id,mark){
+  hush();
   const f=FILES[id]; if(!f||!f.img) return;
   const marks=(mark||'').split(';').filter(Boolean).map(m=>m.split(',').map(Number));
   VIEW={id,marks,zoom:1};
@@ -893,6 +907,8 @@ function openView(id,mark){
    <div class="vscroll"><div class="vpage"><img src="${f.img}" alt="${esc(f.name)}">${marks.map(m=>`<i class="vmark" style="left:${m[0]}%;top:${m[1]}%;width:${m[2]}%;height:${m[3]}%"></i>`).join('')}</div></div>
    <div class="vhint">${marks.length?(S.bn?'সোনালি দাগের জায়গাটা পড়ো · টেনে সরাও':'Read the part inside the gold box · drag to move'):(S.bn?'দুই আঙুলে বড় করো · টেনে সরাও':'Pinch or + to zoom · drag to move')}</div>
    <button class="vdone" data-vclose="1">${S.bn?'ফিরে যাও':'Back'}</button></div>`;
+  const evidenceLoaded=()=>{if(!UI.hs||!UI.sheet||UI.sheet.huntId!==UI.hs.id)return; const h=fn(ctx().beat.hunt,ctx()),l=h&&h.lines.find(z=>z.id===UI.hs.id);if(l&&evidenceFiles(l).includes(id)&&!(UI.hs.views||[]).includes(id)){UI.hs.views=(UI.hs.views||[]).concat(id);}};
+  const img=$('img',v); img.addEventListener('load',evidenceLoaded,{once:true});if(img.complete&&img.naturalWidth)evidenceLoaded();
   applyZoom(true); bindViewerGestures($('.vscroll',v));
 }
 function zoomAt(z,cx,cy){
@@ -923,7 +939,7 @@ function applyZoom(center){
   const go=()=>{const m=VIEW.marks[0]; const x=Math.min(...VIEW.marks.map(z=>z[0])); sc.scrollLeft=pg.offsetWidth*x/100-12; sc.scrollTop=pg.offsetHeight*m[1]/100-sc.clientHeight*0.3;};
   const img=$('img',pg); if(img.complete) go(); else img.addEventListener('load',go,{once:true});
 }
-function closeView(){ VIEW=null; const v=$('#viewer'); if(v){v.hidden=true;v.innerHTML='';} }
+function closeView(){ VIEW=null; const v=$('#viewer'); if(v){v.hidden=true;v.innerHTML='';} if(UI.hs&&UI.sheet&&UI.sheet.huntId===UI.hs.id)openLine(UI.hs.id); }
 function onViewerClick(e){
   if(e.target.closest('[data-vclose]')||e.target.id==='viewer'){ closeView(); return; }
   const vz=e.target.closest('[data-vzoom]'); if(vz){const r=$('#viewer .vscroll').getBoundingClientRect(); zoomAt(VIEW.zoom+(+vz.dataset.vzoom)*0.5,r.left+r.width/2,r.top+r.height/2);}
@@ -956,13 +972,15 @@ function unsay(x,key,texts){ let v=x.get(key,''); [].concat(texts).forEach(t=>{v
 /* ------------------------------------------------------------- navigation */
 function go(i,anim=true,dir=1){
   const L=LESSONS[S.lesson]; if(!L) return;
+  $('#pstage .build-toast')?.remove();
+  if(missionLocked(S.lesson)){hub();lockedNote();return;}
   i=Math.max(0,Math.min(L.beats.length-1,i|0));
   if(!shown(L,i)){ const j=seek(L,i,dir); i=j<0?seek(L,i,-dir):j; if(i<0) i=Math.max(0,seek(L,0,1)); }
   for(let k=0;k<40;k++){ const bb=L.beats[i]; let p=false; try{ p=!!(bb&&bb.pass&&bb.pass(ctx())); }catch(e){} if(!p) break; const j=seek(L,i+dir,dir); if(j<0) break; i=j; }
   if(S.finishStream) S.finishStream();
   if(VIEW) closeView();
   CQ=null; UI={sheet:null,sub:null}; document.body.classList.remove('cq-on');
-  const moved=S.beat!==i||anim; S.beat=Math.max(0,Math.min(L.beats.length-1,i)); save();
+  const moved=S.beat!==i||anim||!renderedAt; S.beat=Math.max(0,Math.min(L.beats.length-1,i)); save();
   resetTalk(); hush();
   setAddr(S.lesson+'/'+S.beat);
   const x=ctx(); if(x.beat.enter) x.beat.enter(x);
@@ -970,6 +988,7 @@ function go(i,anim=true,dir=1){
   renderPhone(anim); renderUI();
   const cq=x.beat.cq&&fn(x.beat.cq,x); if(cq){ startCQ(cq,cq.rewind); return; }
   if(S.voice&&moved) autoVoice(x);
+  renderedAt=S.lesson+'/'+S.beat;
   prefetchAround();
   if(x.beat.auto){ const at=S.beat; setTimeout(()=>{ if(S.beat===at&&S.lesson===L.id) next(true) },x.beat.auto) }
 }
@@ -985,13 +1004,13 @@ function next(force){
   if(j<0){ x.set('_finished',true); hub(); return }
   go(j);
 }
-function back(){ if(UI.sub){ UI.sub=null; renderUI(); return; } const L=LESSONS[S.lesson]; const j=seek(L,S.beat-1,-1); if(j<0){hub();return} go(j,true,-1) }
+function back(){ hush(); if(UI.sub){ UI.sub=null; renderUI(); return; } const L=LESSONS[S.lesson]; const j=seek(L,S.beat-1,-1); if(j<0){hub();return} go(j,true,-1) }
 /* The address follows the student: #cv/4 inside a workflow, nothing on the lock screen.
    Starting a workflow adds one history step, so the phone's Back button (or the
    browser's) returns to Ayesha's lock screen instead of leaving the activity. */
 function setAddr(h,push){ try{ const url=location.pathname+location.search+(h?'#'+h:''); if(location.pathname+location.search+location.hash===url) return; history[push?'pushState':'replaceState'](null,'',url); }catch(e){} }
 /* Missions 2 and 3 wait until Mission 1 is finished (Tim, Oct 2026: they are less complete, and everyone should start with the CV).
-   A #agent/3 link still opens them directly, for a teacher demonstrating. */
+   Direct links and saved places follow the same lock as the mission cards. */
 const missionLocked=id=>id!==ORDER[0]&&!(S.ch[ORDER[0]]&&S.ch[ORDER[0]]._finished);
 function lockedNote(){ const L=LESSONS[ORDER[0]];
   UI.sheet={tone:'info',title:S.bn?'🔒 আগে মিশন ১':'🔒 Mission 1 first',
@@ -1003,9 +1022,10 @@ function hub(){ S.lesson=null; S.beat=0; save(); prevScene=null; CQ=null; UI={sh
 function autoVoice(x){
   const at=S.beat, L=S.lesson, token=speakId; const b=x.beat; const c=fn(b.card,x)||{};
   setTimeout(()=>{ if(S.beat!==at||S.lesson!==L||speakId!==token) return;
-    const t=coachText().en;
+    const t=coachText().en;const pp=$('#pcard .pp-film');if(c.type==='html'&&pp)pp.dataset.narration='intro';
     const then=()=>{ if(S.beat!==at||S.lesson!==L) return;
       if(c.type==='story') playSeq($$('#story .tpanel'),'lit');
+      else if(c.type==='html'&&$('#pcard .pp-film')){narratePP($('#pcard .pp-film'));}
       else if(window.GAMES&&GAMES[c.type]&&GAMES[c.type].voice) GAMES[c.type].voice(c,x);
       else if(!c.type&&b.talk&&S.mode!=='solo'){ const tk=fn(b.talk,x); if(tk&&tk.q&&tk.q!==t) speak(tk.q); } };
     if(t&&t!=='…') speak(t,()=>{ const endToken=speakId; setTimeout(()=>{if(speakId===endToken) then();},450); }); else then();
@@ -1016,7 +1036,7 @@ function renderHubPhone(){
   dev.style.background='radial-gradient(130% 80% at 20% 0%,#C9B8F2 0,#8C77C9 40%,#3C2E6B 100%)';
   $('#sb').className='sb dark'; $('#navbar').className='navbar dark';
   const done=id=>S.ch[id]&&S.ch[id]._finished; const nextId=ORDER.find(id=>!done(id))||ORDER[0];
-  scr.innerHTML=APPS.lock({notifs:ORDER.map(id=>Object.assign({},LESSONS[id].notif,{cls:(id===nextId?'hl ':'')+(done(id)?'done':'')+(missionLocked(id)?' locked':''),title:(done(id)?'✓ ':missionLocked(id)?'🔒 ':'')+LESSONS[id].notif.title})),hint:'Tap a notification to start'});
+  scr.innerHTML=APPS.lock({notifs:ORDER.map(id=>Object.assign({},LESSONS[id].notif,{cls:(id===nextId?'hl ':'')+(done(id)?'done':'')+(missionLocked(id)?' locked':''),text:missionLocked(id)?'Complete Mission 1 to unlock this activity.':LESSONS[id].notif.text,title:(done(id)?'✓ ':missionLocked(id)?'🔒 ':'')+LESSONS[id].notif.title})),hint:'Tap a notification to start'});
   $('.view',scr).style.background='transparent';
   fitDevice();
 }
@@ -1051,6 +1071,7 @@ function handleUI(id,el,x){
   const b=x.beat; const [kind,arg]=[id.split(':')[0],id.slice(id.indexOf(':')+1)];
   if(kind==='key'){ typeKey(arg,x); return; }
   if(kind==='kbtoggle'){ S.keys=!S.keys; renderPhoneKeepFocus(); return; }
+  if(kind==='pzreset'){const kb=activeKB(x);if(kb){x.set('pz:'+kb.key,[]);x.set('pz:'+kb.key+'!',0);renderPhoneKeepFocus();}return;}
   if(kind==='chip'){ toggleChip(arg,x); return; }
   if(kind==='tile'||kind==='untile'){ pzTap(kind,arg,x); return; }
   if(kind==='pick'){ const sc=fn(b.scene,x); const sel=x.get(sc.sel,[]).slice(); const k=sel.indexOf(arg); if(k>=0)sel.splice(k,1); else sel.push(arg); x.set(sc.sel,sel); renderPhone(false); renderFoot(); return; }
@@ -1077,7 +1098,7 @@ function toggleChip(id,x){
 }
 function composeChanged(){
   const x=ctx(), kb=activeKB(x);
-  if(kb&&kb.guidedParts){
+  if(kb&&pzItems(kb).length){
     x.set('pz:'+kb.key,[]); x.set('pz:'+kb.key+'!',0); x.set('pz:'+kb.key+'+','');
     const panel=$('#kb'); if(panel) panel.innerHTML=keyboard(kb);
   }
@@ -1103,7 +1124,7 @@ function onUIClick(e){
     else if(a==='stop'){ const bb=x.beat; if(bb.onTap) bb.onTap(x,'stop'); next(true); }
     return; }
   /* listening works everywhere, the lock screen included */
-  const sp=e.target.closest('[data-speak]'); if(sp){ speak(sp.dataset.speak); sp.classList.add('speaking'); if(sp.classList.contains('model')){const t=sp.nextElementSibling; if(t) t.hidden=false;} return; }
+  const sp=e.target.closest('[data-speak]'); if(sp){ const at=S.lesson+'/'+S.beat,pp=$('#pcard .pp-film');if(sp.id==='p-ear'&&pp){pp.dataset.narration='intro';speak(sp.dataset.speak,()=>{if(S.lesson+'/'+S.beat===at)narratePP($('#pcard .pp-film'));});}else speak(sp.dataset.speak); sp.classList.add('speaking'); if(sp.classList.contains('model')){const t=sp.nextElementSibling; if(t) t.hidden=false;} return; }
   const wd=e.target.closest('[data-word]'); if(wd){ wd.classList.add('open'); speak(wd.dataset.say); wd.classList.add('speaking'); return; }
   if(!S.lesson){ const d0=e.target.closest('[data-say]'); if(d0){ speak(d0.dataset.say); d0.classList.add('speaking'); } return; }
   const x=ctx();
@@ -1207,7 +1228,7 @@ function ttsSpeak(t,onEnd){
       speechSynthesis.speak(u); });
   }catch(e){ talking(false); onEnd&&onEnd(); }
 }
-function hush(){ speakId++; seqId++; stopClip(); try{speechSynthesis.cancel()}catch(e){} $$('.speaking').forEach(e=>e.classList.remove('speaking')); }
+function hush(){ $$('.pp[data-narration]').forEach(el=>delete el.dataset.narration); speakId++; seqId++; stopClip(); try{speechSynthesis.cancel()}catch(e){} $$('.speaking').forEach(e=>e.classList.remove('speaking')); }
 const sayBtn=(text,label)=>`<button class="ear" data-speak="${esc(canon(text))}" aria-label="${label||'Listen'}">🔊</button>`;
 
 /* ------------------------------------------------------------- Show me (ghost finger) */
@@ -1219,19 +1240,38 @@ function ghostTo(el,cb){
   ghostBusy=true;
   setTimeout(()=>{g.classList.add('tap');setTimeout(()=>{g.classList.remove('tap');ghostBusy=false;cb&&cb();setTimeout(()=>g.style.opacity=0,350)},180)},620);
 }
+function demoCurrentBuild(x,kb){
+  const at=S.lesson+'/'+S.beat,cur=pzCur(kb,x.get(kb.key,'')); if(!cur){showing=0;return;}
+  const list=kb.guidedParts?pzItems(kb).filter(c=>c.tag===cur.tag&&!pzDone(c,x.get(kb.key,''))):[cur];
+  x.set('pz:'+kb.key,[]);x.set('pz:'+kb.key+'!',0);renderPhoneKeepFocus();
+  const finish=()=>{showing=0;renderFoot();};
+  const nextBuild=()=>{if(S.lesson+'/'+S.beat!==at){showing=0;return;}const item=list.shift();if(!item){finish();return;}const order=item.ok[0].o.slice();
+    const put=()=>{if(S.lesson+'/'+S.beat!==at||!showing){showing=0;return;}if(!order.length){setTimeout(nextBuild,350);return;}if(pzCur(kb,x.get(kb.key,''))?.id!==item.id){finish();return;}
+      const id=order.shift(),el=$(`#kb [data-tile="${id}"]`);if(!el){finish();return;}ghostTo(el,()=>{pzTap('tile',id,x);setTimeout(put,120);});};put();};nextBuild();
+}
+function celebrateBuild(cur,kb,x){
+  const same=pzItems(kb).filter(c=>c.tag===cur.tag),complete=same.every(c=>pzDone(c,x.get(kb.key,'')));
+  const label=complete?(kb.guidedParts?`${cur.tag} complete`:'Sentence complete'):'Process sentence ready';
+  const bn=complete?(kb.guidedParts?`${PART_BN[cur.tag]} তৈরি`:'বাক্য তৈরি'):'প্রক্রিয়ার বাক্য তৈরি';
+  const root=$('#pstage');root.querySelector('.build-toast')?.remove();const toast=document.createElement('div');toast.className='build-toast pp-'+cur.tag;toast.setAttribute('role','status');toast.innerHTML=`<span aria-hidden="true">✓</span><b>${S.bn?bn:label}</b><i aria-hidden="true">✦</i>`;root.appendChild(toast);
+  if(complete){const pill=$('#pfoot .pp-'+cur.tag);if(pill){pill.classList.add('just-built');setTimeout(()=>pill.classList.remove('just-built'),1600);}}
+  setTimeout(()=>toast.remove(),1600);
+}
 let showing=0;
 function showMe(){
   const x=ctx(), b=x.beat;
   if(S.streaming&&S.finishStream&&!b.interrupt){S.finishStream();return}
   if(showing&&Date.now()-showing<30000) return; showing=Date.now(); const at=S.lesson+'/'+S.beat;
-  const clear=()=>{ if(S.lesson+'/'+S.beat!==at||!S.lesson) showing=0; else setTimeout(clear,300); }; setTimeout(clear,300);
+  const clear=()=>{ if(!showing)return; if(S.lesson+'/'+S.beat!==at||!S.lesson) showing=0; else setTimeout(clear,300); }; setTimeout(clear,300);
   if(b.showMe){ b.showMe(x,{ghostTo,click:el=>el&&el.click(),render:()=>{renderPhone(false);renderUI()}}); return; }
   const cd=fn(b.card,x); if(cd&&window.GAMES&&GAMES[cd.type]&&GAMES[cd.type].show){ GAMES[cd.type].show(cd,x); return; }
   if(cd&&cd.type==='pickeach'){ const a={}; cd.items.forEach((it,i)=>a[i]=it.options.findIndex(o=>o.ok)); x.set(cd.key,a); renderUI(); return; }
   if(cd&&cd.type==='sort'&&!b.tap&&!b.compose){ const a={}; cd.items.forEach((it,i)=>a[i]=it.ans); x.set(cd.key,a); renderUI(); return; }
   if(cd&&cd.type==='choice'){ const i=cd.options.findIndex(o=>o.ok); const el=$(`#pcard [data-choice="${cd.key}|${i}"]`); if(el) el.click(); return; }
-  if(b.hunt){ const s=huntState(x,b); const l=s.h.lines.find(z=>z.v!=='ok'&&s.a[z.id]!=='bad'); if(!l) return; const el=$(`#screen [data-ui="line:${l.id}"]`); const want=l.vd==='NG'?'ng':'bad'; ghostTo(el,()=>{ openLine(l.id); const n=$$('#psheet [data-kw][data-ok]').length; for(let i=0;i<Math.min(2,n);i++) setTimeout(()=>{ const k=$('#psheet [data-kw][data-ok]:not(.hit)'); if(k) k.click(); },450+i*500); setTimeout(()=>{ const v=$(`#psheet [data-hv$="|${want}"]`); if(v) v.click(); },450+Math.min(2,n)*500+500); }); return; }
+  if(b.hunt){ const s=huntState(x,b), l=s.h.lines.find(z=>z.v!=='ok'&&s.a[z.id]!=='bad'); if(!l){showing=0;return;}
+    const el=$(`#screen [data-ui="line:${l.id}"]`); ghostTo(el,()=>{openLine(l.id);const choose=()=>{if(S.lesson+'/'+S.beat!==at){showing=0;return;} const k=$('#psheet [data-kw][data-ok]:not(.hit)');if(k){ghostTo(k,()=>{k.click();setTimeout(choose,120);});return;}const file=$('#psheet .look.needs-open');ghostTo(file,()=>{showing=0;if(file)file.click();});};choose();});return; }
   if(b.compose){
+    const kb=activeKB(x);if(pzItems(kb).length){demoCurrentBuild(x,kb);return;}
     const c=fn(b.compose,x); const best=c.best;
     x.set(c.key,''); renderPhoneKeepFocus();
     const kbc=activeKB(x); x.set('pz:'+c.key,[]); x.set('pz:'+c.key+'+','');
@@ -1256,7 +1296,7 @@ function showMe(){
 function openMenu(){
   const m=$('#menu'); m.hidden=false;
   m.innerHTML=`<div class="panel" role="dialog" aria-label="Menu"><div class="mh"><h2>AI Fluency Lab</h2><button class="p-ic" data-m="close" aria-label="Close">${IC.x}</button></div>
-   <h3>Missions</h3><div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard${missionLocked(id)?' locked':''}" data-m="start:${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${esc(L.time||'')}</span></span>${S.ch[id]&&S.ch[id]._finished?'<span class="done">✓</span>':missionLocked(id)?'<span class="done lk" aria-label="Locked">🔒</span>':''}</button>`}).join('')}</div>
+   <h3>Missions</h3><div class="pick-cards">${ORDER.map(id=>{const L=LESSONS[id];return `<button class="pcard${missionLocked(id)?' locked':''}" aria-disabled="${missionLocked(id)}" data-m="start:${id}"><span class="pi" style="background:${L.tint}">${L.emoji}</span><span><em>${esc(L.kicker)}</em><b>${esc(L.title)}</b><span>${missionLocked(id)?tr('Complete Mission 1 to unlock','মিশন ১ শেষ করলে খুলবে'):esc(L.time||'')}</span></span>${S.ch[id]&&S.ch[id]._finished?'<span class="done">✓</span>':missionLocked(id)?'<span class="done lk" aria-label="Locked">🔒</span>':''}</button>`}).join('')}</div>
    <h3>How are you working?</h3>${modeButtons()}
    <div class="mrow"><button class="btn quiet" data-m="voice">${S.voice?'🔊 Cog reads aloud — turn off':'🔇 Cog is silent — read aloud'}</button><button class="btn quiet" data-m="tour">❓ How this works</button><button class="btn gold" data-m="intro">▶ The four Ds (film)</button><button class="btn quiet" data-m="legend">⚙ The four Ds (gears)</button><button class="btn quiet" data-m="hub">📱 Ayesha’s lock screen</button><button class="btn quiet" data-m="stage">${S.stage?'Leave':'Present on'} projector (P)</button><button class="btn quiet" data-m="fs">Full screen</button><button class="btn quiet" data-m="print">Paper version</button><button class="btn quiet" data-m="reset">Start over</button></div>
    <h3>For the teacher</h3>
@@ -1266,7 +1306,7 @@ function openMenu(){
    <li><b>👥 Pair work</b> — one phone, two students. Choose Student A and Student B; keep those labels and swap jobs when asked. Each workflow opens with a warm-up (picture words, a story, the four phrases), and talk moments follow the key steps with a one-minute timer (T).</li>
    <li><b>🙋 Class</b> — you drive on the projector (large type). Same warm-up and talk moments; neighbours talk while the timer runs.</li></ul>
    <p><b>The four Ds are also four jobs for English</b>: Delegation = planning and sharing jobs (<i>I will… The AI can…</i>); Description = clear instructions (<i>Use only… If…, ask me first</i>); Discernment = judging and disagreeing politely (<i>That’s not true. Her report says…</i>); Diligence = limits and responsibility (<i>I won’t share… It’s private</i>). Each gear turned ends with its phrase to say aloud.</p>
-   <p>Nothing is locked: Skip and Show me (S) are always there. Cog reads aloud (V turns it off). The AI replies are scripted from real assistants, mistakes included. No data leaves the phone. Students without a phone: the Paper version (one A4 page per workflow).</p>
+   <p>Mission 1 unlocks the later missions. Inside an activity, Skip and Show me (S) remain available. Cog reads aloud (V turns it off). The AI replies are scripted from real assistants, mistakes included. No data leaves the phone. Students without a phone: the Paper version (one A4 page per workflow).</p>
    <h3>Keys</h3><p>→ next · ← back · S show me · T talk timer · V read aloud · P projector · B Bangla</p>
    <h3>Credits</h3><p class="cred">Framework: AI Fluency by Rick Dakan, Joseph Feller and Anthropic (CC BY-NC-SA 4.0). Ayesha Rahman and all her documents are fictional classroom materials. Orbit, Sathi AI and Studio are invented apps modelled on real ones (Meta Muse and Grok Bot; Gemini, ChatGPT and Claude; Google AI Studio). No affiliation is implied.</p></div>`;
 }
@@ -1344,6 +1384,7 @@ function setBn(on){ S.bn=on; document.body.classList.toggle('bangla',on); save()
 function fitDevice(){
   const w=$('#stagewrap'), dev=$('#device'); if(!w||!dev) return;
   const aw=w.clientWidth, ah=w.clientHeight; if(!aw||!ah) return;
+  if(innerWidth>=1000&&innerWidth/innerHeight>=1.25){dev.style.width=Math.round(aw)+'px';dev.style.height=Math.round(ah)+'px';dev.style.transform='none';return;}
   if(innerWidth<700){ // a phone: a handset the shape of the space, shown at 90% so it reads as a phone in a frame
     const Z=.9, px=16, py=12; dev.style.width=Math.round((aw-2*px)/Z)+'px'; dev.style.height=Math.round((ah-2*py)/Z)+'px'; dev.style.transform=`scale(${Z})`;
   } else { // a laptop or projector: a real phone's proportions, as large as fits
@@ -1352,7 +1393,7 @@ function fitDevice(){
 }
 
 /* ------------------------------------------------------------- status bar clock */
-function tickClock(){ $('#sb').innerHTML=`<span>${now()}</span><span class="ico"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 22h20V2z" opacity=".95"/></svg><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 21 0 8.5A17 17 0 0 1 24 8.5z"/></svg><svg viewBox="0 0 24 24" style="width:22px"><rect x="2" y="7" width="18" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="9" width="11" height="6" rx="1" fill="currentColor"/><rect x="21" y="10" width="1.8" height="4" rx=".8" fill="currentColor"/></svg>76%</span>`; const lt=$('.lock .t'); if(lt) lt.textContent=now(); }
+function tickClock(){ $('#sb').innerHTML=`<span>${now()}</span><span class="ico"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M2 22h20V2z" opacity=".95"/></svg><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 21 0 8.5A17 17 0 0 1 24 8.5z"/></svg><svg viewBox="0 0 24 24" style="width:22px"><rect x="2" y="7" width="18" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="9" width="11" height="6" rx="1" fill="currentColor"/><rect x="21" y="10" width="1.8" height="4" rx=".8" fill="currentColor"/></svg>76%</span>`; const lt=$('.lock .t'); if(lt) lt.textContent=now(); const ld=$('.lock .d'); if(ld) ld.textContent=dateLabel(); const hd=$('.glance .d'); if(hd) hd.textContent=dateLabel(true); }
 
 /* ------------------------------------------------------------- boot */
 function boot(){
@@ -1371,7 +1412,8 @@ function boot(){
   $('#viewer').addEventListener('click',onViewerClick);
   $('#menu').addEventListener('click',onMenuClick);
   $('#pmark').addEventListener('click',onTourClick);
-  addEventListener('resize',()=>{ fitDevice(); if(tourAt>=0) showTour(); });
+  addEventListener('focus',tickClock);document.addEventListener('visibilitychange',()=>{if(!document.hidden)tickClock();});
+  addEventListener('resize',()=>{if(S.lesson&&stageKind()==='phone')renderPhone(false);fitDevice(); if(tourAt>=0) showTour(); });
   if(window.ResizeObserver) new ResizeObserver(()=>fitDevice()).observe($('#stagewrap'));
   addEventListener('keydown',e=>{
     if(e.target.matches('textarea,input')) return;
@@ -1379,7 +1421,7 @@ function boot(){
     if(e.key==='ArrowRight'&&S.lesson) next(true); else if(e.key==='ArrowLeft'&&S.lesson) back();
     else if(e.key==='s'||e.key==='S'){ if(S.lesson) showMe(); } else if(e.key==='p'||e.key==='P') toggleStage(); else if(e.key==='b'||e.key==='B') setBn(!S.bn); else if(e.key==='v'||e.key==='V') setVoice(!S.voice); else if(e.key==='t'||e.key==='T'){ const tt=$('#pcard .ttimer'); if(tt) toggleTimer(+tt.dataset.tt); }
   });
-  const fromHash=()=>{ if(location.hash==='#intro'){ openIntro(); return true }const h=(location.hash||'').slice(1); const m=h.match(/^(\w+)(?:\/(\d+))?$/); if(m&&LESSONS[m[1]]){ S.lesson=m[1]; prevScene=null; go(m[2]?+m[2]:0,false); return true } return false};
+  const fromHash=()=>{ if(location.hash==='#intro'){ openIntro(); return true }const h=(location.hash||'').slice(1); const m=h.match(/^(\w+)(?:\/(\d+))?$/); if(m&&LESSONS[m[1]]){ if(missionLocked(m[1])){hub();lockedNote();return true} S.lesson=m[1]; prevScene=null; go(m[2]?+m[2]:0,false); return true } return false};
   addEventListener('hashchange',()=>{ if(location.hash!=='#intro'&&window.INTRO){ introPushed=false; INTRO.close(); } if(!fromHash()&&S.lesson&&!location.hash) hub(); });
   // opening straight into a workflow (a saved place, or a #cv/3 link): put the lock screen
   // underneath it in history, so Back lands there rather than outside the activity
@@ -1392,7 +1434,7 @@ function boot(){
 
 function sheetFrom(o){ UI.sheet=Object.assign(fbSheet(o,o.retry?()=>{}:null),o.sheet||{}); renderUI(); }
 const GI={get S(){return S},esc,BN,tr,T,speak,hush,sayBtn,gapped,canon,renderStage,renderFoot,renderUI,renderTop,renderSheet,firstTry,resetTalk,toggleTimer,paintTimer,recToggle,rec:()=>REC,timer:()=>TIMER,fileThumb,FILES,next,ctx,fn,IC,ico,ui:()=>UI};
-window.AFL={_g:GI,fb:sheetFrom,HUB,TOUR,_mode:k=>{S.mode=k},audioKey,audioDuration,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach:renderUI,renderUI,start,hub,STORY_DATE,firstTry,huntMark,shown};
+window.AFL={_g:GI,fb:sheetFrom,HUB,TOUR,_mode:k=>{S.mode=k},audioKey,audioDuration,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach:renderUI,renderUI,start,hub,dateLabel,get STORY_DATE(){return dateLabel()},firstTry,huntMark,shown};
 /* for tools/sheet-lines.cjs: reach the sheet builders from a test browser (not used by the page) */
-AFL._t={openLine,huntVerdict,huntDone,askPick,pzTrap,ctx,fbSheet,renderUI,renderSheet,activeKB,goId,S,get UI(){return UI},set UI(v){UI=v}};
+AFL._t={missionLocked,evidenceDone,kwDone,pzDone,openLine,huntVerdict,huntDone,askPick,pzTrap,ctx,fbSheet,renderUI,renderSheet,activeKB,goId,S,get UI(){return UI},set UI(v){UI=v}};
 })();

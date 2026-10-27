@@ -230,11 +230,11 @@ function scenesFor(){ return [
 
 /* all four gears seat together, clockwise from the top, before any one is explained */
 {id:'four', lead:.6, tail:2.4,
- lines:[['AI fluency has four gears: the four Ds.','AI-তে দক্ষতার চারটা গিয়ার: চারটা D।']],
+ lines:[['AI fluency has four gears: the four Ds.','AI-তে দক্ষতার চারটা গিয়ার: চারটা D।',.7],...ORDER4.map(d=>[DEF[d].name[0],DEF[d].name[1],.45])],
  cam0:C(1), ai:[[0,170]],
  sfx:SEAT4.map((d,i)=>[`@0+${(1.4+i*.38).toFixed(2)}`,'seat']),
  html:()=>`${sockets('data-a="flash @0+.3 1.1|fadeout @0+2.9 .6"')}${gear('ai','data-a="exit @0+.1 1.2"')}
-  ${SEAT4.map((d,i)=>unit(d,`data-a="seat @0+${(.82+i*.38).toFixed(2)} .8"`,`data-a="plate @0+${(1.35+i*.38).toFixed(2)}"`,'data-a="flash @end-1.4 1.2"')).join('')}
+  ${SEAT4.map((d,i)=>unit(d,`data-a="seat @0+${(.82+i*.38).toFixed(2)} .8"`,`data-a="plate @0+${(1.35+i*.38).toFixed(2)}"`,`data-a="flash @${ORDER4.indexOf(d)+1} 1.2|flash @end-1.4 1.2"`)).join('')}
   ${SEAT4.map((d,i)=>`<div class="ripple" style="left:${POS[d][0]}px;top:${POS[d][1]}px;--c:${COL[d][1]}" data-a="ripple @0+${(1.4+i*.38).toFixed(2)} 1.1"></div>`).join('')}`,
  scr:()=>``},
 dScene('del'),dScene('des'),dScene('dis'),dScene('dil'),
@@ -504,6 +504,7 @@ function show(i){
   stage.innerHTML=`<div class="i-bg"></div><div class="i-back"><div class="i-guil"></div></div>
    <div class="world" id="world">${sc.html()}</div><div class="scr">${sc.scr()}</div>
    <div class="i-vig"></div><div class="i-grain"></div>
+   <div class="i-logo${sc.id==='loop1'?' i-logo-left':''}"><img src="../brand/dialogue-logo.svg" alt="Dialogue English &amp; Skills Center" width="180" height="108"></div>
    <div class="i-cap"><p class="en"></p><p class="bnc" lang="bn"></p></div>`;
   const world=stage.querySelector('#world');
   anims.push(camAnim(world,sc), camAnim(stage.querySelector('.i-back'),sc,backT));
