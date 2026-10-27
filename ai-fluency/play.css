@@ -793,3 +793,76 @@ mark.kwm{background:var(--gold-light);color:#2b1f02;border-radius:4px;padding:0 
 .bld-line em.pz-was{color:#0D652D;font-weight:600}.bld-line em.pz-was b{color:var(--md-on-surface-var);font-weight:500}
 .kb.compact.haspz .kchip{font-size:12px;padding:4px 8px}
 .o3-res.one>span{font:700 calc(16px*var(--ui))/1.3 var(--font-ui);padding:8px 14px}
+
+/* ================================================================ the four parts, told as a visit to the tailor (lesson-cv.js ppAnim) */
+.pp2 .pp-stage{border-top:0;background:var(--card)}
+.pp2 .pp-top{display:flex;align-items:center;gap:8px;padding:8px 10px 6px}
+.pp2 .pp-hd{display:none;flex:1;align-items:baseline;gap:8px;min-width:0;animation:ppin .35s ease both}
+.pp2[data-s="0"] .h0,.pp2[data-s="1"] .h1,.pp2[data-s="2"] .h2,.pp2[data-s="3"] .h3,.pp2[data-s="4"] .h4{display:flex}
+.pp2 .pp-hd b{flex:none;font:800 calc(14.5px*var(--ui))/1 var(--font-ui);color:#fff;background:var(--pp);border-radius:8px;padding:5px 10px}
+.pp2 .pp-hd>span{font:700 calc(14px*var(--ui))/1.25 var(--font-ui);color:var(--ink)}
+.pp2 .pp-hd .bn{display:block;font-weight:500;font-size:calc(12px*var(--ui));color:var(--ink-muted)}
+.pp2 .pp-ear{flex:none;font-size:18px}
+.pp2 .pp-shop{display:block;position:relative;margin:0 8px;border-radius:10px;overflow:hidden;border:1px solid var(--rule);background:linear-gradient(#F4E9DA 81%,#E3D0B4 81%)}
+.pp-svg{display:block;width:100%;height:auto;max-height:34dvh}
+.pp-svg text{font:800 15px var(--font-ui)}
+.pp-svg .tl-fri{font:800 8px var(--font-ui);fill:#1A73E8;opacity:0;transition:opacity .4s .7s}
+/* the customer's words, in a bubble over Ayesha */
+.pp2 .pp-bub{position:absolute;left:3%;top:5%;max-width:46%;pointer-events:none}
+.pp2 .pp-bt{display:none;background:#fff;border:1.5px solid var(--pp,#5B6770);border-radius:12px 12px 12px 3px;padding:5px 8px;font:600 calc(12.5px*var(--ui))/1.3 var(--font-display);color:var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.12);animation:ppbub .45s cubic-bezier(.3,1.4,.5,1) both}
+.pp2[data-s="0"] .b0,.pp2[data-s="1"] .b1,.pp2[data-s="2"] .b2,.pp2[data-s="3"] .b3,.pp2[data-s="4"] .b4{display:block}
+.pp2[data-s="0"] .pp-bub{--pp:#1A73E8}.pp2[data-s="1"] .pp-bub{--pp:#188038}.pp2[data-s="2"] .pp-bub{--pp:#C26401}.pp2[data-s="3"] .pp-bub{--pp:#8E44AD}.pp2[data-s="4"] .pp-bub{--pp:#188038}
+@keyframes ppbub{from{opacity:0;transform:translateY(6px) scale(.9)}}
+/* props: hidden until their step, then they stay */
+.pp-svg .tl-card{transform:translate(118px,92px) scale(.2);opacity:0;transition:transform .9s cubic-bezier(.5,0,.3,1),opacity .2s}
+.pp2[data-s="0"] .tl-card,.pp2[data-s="1"] .tl-card,.pp2[data-s="2"] .tl-card,.pp2[data-s="3"] .tl-card,.pp2[data-s="4"] .tl-card{opacity:1;transform:translate(169px,39px) scale(.9)}
+.pp2[data-s="0"] .tl-fri,.pp2[data-s="1"] .tl-fri,.pp2[data-s="2"] .tl-fri,.pp2[data-s="3"] .tl-fri,.pp2[data-s="4"] .tl-fri{opacity:1}
+.pp-svg .tl-arm{transform-box:fill-box;transform-origin:0 100%;transition:transform .5s}
+.pp2[data-s="0"] .tl-arm,.pp2[data-s="1"] .tl-arm{animation:pparm 1s ease both}
+@keyframes pparm{40%{transform:rotate(-14deg)}}
+.pp-svg .tl-shirt{transform-box:fill-box;transform-origin:50% 100%;transform:scale(0);opacity:0;transition:transform .6s cubic-bezier(.3,1.5,.5,1),opacity .2s}
+.pp2[data-s="1"] .tl-shirt,.pp2[data-s="2"] .tl-shirt,.pp2[data-s="3"] .tl-shirt,.pp2[data-s="4"] .tl-shirt{transform:none;opacity:1}
+.pp-svg .tl-tape{stroke:#F2C230;stroke-width:3.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:0;transition:stroke-dashoffset 1.1s .2s ease,opacity .2s}
+.pp2[data-s="2"] .tl-tape,.pp2[data-s="3"] .tl-tape,.pp2[data-s="4"] .tl-tape{stroke-dashoffset:0;opacity:1}
+.pp-svg .tl-scis,.pp-svg .tl-ask,.pp-svg .tl-warn,.pp-svg .tl-done{opacity:0;transition:opacity .35s,transform .45s cubic-bezier(.3,1.5,.5,1);transform-box:fill-box;transform-origin:50% 100%;transform:scale(.6)}
+.pp2[data-s="2"] .tl-scis,.pp2[data-s="3"] .tl-scis,.pp2[data-s="4"] .tl-scis{opacity:1;transform:none}
+.pp2[data-s="2"] .tl-ask{opacity:1;transform:none;transition-delay:.9s}
+.pp2[data-s="2"] .tl-scis{animation:ppsnip .5s 1.4s 2 ease-in-out}
+@keyframes ppsnip{50%{transform:rotate(-12deg)}}
+.pp2[data-s="3"] .tl-warn{opacity:1;transform:none;transition-delay:.5s}
+.pp-svg .tl-badge{transform-box:fill-box;transform-origin:center;transition:filter .4s}
+.pp2[data-s="3"] .tl-badge{animation:ppglow 1.4s .2s 2 ease-in-out}
+@keyframes ppglow{50%{transform:scale(1.5);filter:drop-shadow(0 0 4px #B57BD6)}}
+.pp2[data-s="4"] .tl-done{opacity:1;transform:none;transition-delay:.3s}
+.pp2[data-s="4"] .tl-shirt{animation:pphang .9s ease both}
+@keyframes pphang{40%{transform:translateY(-8px)}}
+/* Ayesha's prompt fills in, one coloured part per step */
+.pp2 .pp-prompt{display:block;margin:8px 8px 6px;padding:7px 8px 6px;border-radius:12px;background:#F3F1FA;border:1.5px dashed #CFC8E6}
+.pp2 .pp-pl{display:block;font:800 calc(11px*var(--ui))/1 var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:#6A5FA0;margin-bottom:5px}
+.pp2 .pp-pl i{font-style:normal}
+.pp2 .pp-row{display:flex;gap:7px;align-items:baseline;margin-top:4px;padding:4px 7px;border-radius:8px;background:var(--ppb);border-left:4px solid var(--pp);font:500 calc(12.5px*var(--ui))/1.3 var(--font-display);color:var(--ink);opacity:.18;filter:grayscale(1);transform:translateX(-10px);transition:opacity .35s,transform .45s cubic-bezier(.3,1.4,.5,1),filter .35s,box-shadow .35s}
+.pp2 .pp-row b{flex:none;font:800 calc(10.5px*var(--ui))/1.5 var(--font-ui);text-transform:uppercase;letter-spacing:.03em;color:var(--pp);min-width:76px}
+.pp2 .pp-row>span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.pp2[data-s="0"] .r0,.pp2[data-s="1"] .r0,.pp2[data-s="2"] .r0,.pp2[data-s="3"] .r0,.pp2[data-s="4"] .r0,.pp2[data-s="1"] .r1,.pp2[data-s="2"] .r1,.pp2[data-s="3"] .r1,.pp2[data-s="4"] .r1,.pp2[data-s="2"] .r2,.pp2[data-s="3"] .r2,.pp2[data-s="4"] .r2,.pp2[data-s="3"] .r3,.pp2[data-s="4"] .r3{opacity:1;filter:none;transform:none}
+.pp2[data-s="0"] .r0,.pp2[data-s="1"] .r1,.pp2[data-s="2"] .r2,.pp2[data-s="3"] .r3{box-shadow:0 0 0 2px var(--pp),0 4px 12px rgba(0,0,0,.12);transition-delay:.35s}
+.pp2[data-s="4"] .pp-prompt{border-style:solid;border-color:#188038;background:#EEF7F0;animation:ppdone .8s ease both}
+@keyframes ppdone{40%{transform:scale(1.02)}}
+@media (prefers-reduced-motion:reduce){.pp2 *{animation:none!important;transition:none!important}}
+
+/* ================================================================ building the prompt */
+.meter span.part{background:#FFF4E0;color:#A35400}
+.meter span small{font-weight:800;opacity:.8}
+.psheet .pp-miss{border-left:4px solid var(--pp);background:var(--ppb);border-radius:8px;padding:6px 9px;margin:0 0 6px}
+.psheet .pp-miss b{color:var(--pp)}
+.psheet .pp-miss p{margin:0}
+.psheet .pp-miss .pp-add{margin-top:4px;font-weight:600;font-size:.94em}
+/* her prompt can be long: let the box show that it scrolls */
+.composer textarea{scrollbar-width:thin!important;scrollbar-color:rgba(0,0,0,.28) transparent}
+.composer textarea::-webkit-scrollbar{display:block!important;width:5px}
+.composer textarea::-webkit-scrollbar-thumb{background:rgba(0,0,0,.28);border-radius:4px}
+/* on a phone the prompt-parts panel leaves little screen: give the prompt box the room (slim app bar, no file row, no disclaimer) */
+#device:has(#kb.compact:not([hidden])) .view .tab{min-height:0;padding-top:2px;padding-bottom:2px}
+#device:has(#kb.compact:not([hidden])) .view .tab .mi{height:30px;width:30px}
+#device:has(#kb.compact:not([hidden])) .view .scroll{flex:0 0 0;min-height:0;overflow:hidden}
+#device:has(#kb.compact:not([hidden])) .composer .pend,#device:has(#kb.compact:not([hidden])) .view .disclaim{display:none}
+#device:has(#kb.compact:not([hidden])) .composer textarea{max-height:min(84px,14dvh)!important}

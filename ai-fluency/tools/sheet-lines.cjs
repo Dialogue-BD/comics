@@ -36,6 +36,9 @@ const [url,lesson='cv']=process.argv.slice(2);
         /* composer shortcuts that lead to consequences: each chip alone, and each chip with the best ones */
         const comp=fn(b.compose,x);
         if(comp&&b.cq){ const ids=(comp.chips||[]).map(c=>c.id); for(const id of ids){ for(const set of [[id],[...(comp.best||[]),id]]){ x.set(comp.key,set); const c=b.cq(x); if(c) cq(c); } } reset(); }
+        /* a composer whose Send is checked (feedback): every combination of its best parts */
+        if(comp&&b.feedback&&comp.best){ const txt=id=>{ const c=(comp.chips||[]).find(z=>z.id===id); return c?(c.ok?c.ok[0].t:c.text):''; };
+          for(const set of subsets(comp.best)){ x.set(comp.key,set.map(txt).join(' ')); const o=b.feedback(x,'send'); if(o) show(Object.assign(T.fbSheet(o,o.retry),o.sheet||{})); } reset(); }
         /* prompt puzzles: every trap */
         if(comp) for(const c of comp.chips||[]) for(const t of c.traps||[]){ T.pzTrap(x,sc.kb||{},c,t); T.renderSheet(); T.UI.sheet=null; }
         /* questions, decisions, choice cards */

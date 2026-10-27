@@ -2027,8 +2027,8 @@
   "spoken": "And her father could…"
  },
  {
-  "key": "0z59zbc",
-  "text": "A good prompt has four parts. Tap Next to see each one.",
+  "key": "0miv59u",
+  "text": "A good prompt has four parts — like asking a tailor for a shirt. Tap Next to see each one.",
   "voice": "coach",
   "lesson": "cv",
   "where": "#cv/21",
@@ -2038,7 +2038,8 @@
     "where": "#cv/21"
    }
   ],
-  "spoken": "A good prompt has four parts. Tap Next to see each one."
+  "take": "r3-cv-coach-1u1ksq6",
+  "spoken": "A good prompt has four parts — like asking a tailor for a shirt. Tap Next to see each one."
  },
  {
   "key": "0bwuv7k",
@@ -2318,7 +2319,6 @@
     "where": "#cv/34 round 2"
    }
   ],
-  "take": "r3-cv-coach-08wbtnp",
   "spoken": "Your CV says you helped distribute 186 books. Were you the leader of that project?"
  },
  {
@@ -2333,7 +2333,6 @@
     "where": "#cv/34 round 2 answer"
    }
   ],
-  "take": "r3-cv-ayesha-0ogxiwm",
   "spoken": "No. I was a volunteer tutor and a team member. We did it together, and I helped."
  },
  {
@@ -2418,7 +2417,6 @@
     "where": "#cv/34 speaking lifeline"
    }
   ],
-  "take": "r3-cv-ayesha-0ogxiwm",
   "spoken": "No. I was…, and I…"
  },
  {
@@ -4568,6 +4566,81 @@
   "spoken": "Fifteen friends use My Deadlines — and nobody missed a deadline this month. Mission complete!"
  },
  {
+  "key": "0rt80g5",
+  "text": "Context: who you are, and why. To the tailor: it's for my friend's wedding, on Friday. To the AI: I am a third-year Economics student, applying for master's programmes.",
+  "voice": "coach",
+  "lesson": "cards",
+  "where": "#cv/21 card",
+  "uses": [
+   {
+    "lesson": "cards",
+    "where": "#cv/21 card"
+   }
+  ],
+  "take": "r3-cards-coach-06qtdo9",
+  "spoken": "Context, who you are, and why. To the tailor, it's for my friend's wedding, on Friday. To the AI, I am a third-year Economics student, applying for master's programmes."
+ },
+ {
+  "key": "0yx124s",
+  "text": "Product: what you want. To the tailor: one blue cotton shirt. To the AI: make a two-page academic CV.",
+  "voice": "coach",
+  "lesson": "cards",
+  "where": "#cv/21 card",
+  "uses": [
+   {
+    "lesson": "cards",
+    "where": "#cv/21 card"
+   }
+  ],
+  "take": "r3-cards-coach-06qtdo9",
+  "spoken": "Product, what you want. To the tailor, one blue cotton shirt. To the AI, make a two-page academic CV."
+ },
+ {
+  "key": "0r8qjj0",
+  "text": "Process: how to do the job. To the tailor: measure me first, and ask me before you cut. To the AI: use only facts from my files. If something is missing, ask me first.",
+  "voice": "coach",
+  "lesson": "cards",
+  "where": "#cv/21 card",
+  "uses": [
+   {
+    "lesson": "cards",
+    "where": "#cv/21 card"
+   }
+  ],
+  "take": "r3-cards-coach-06qtdo9",
+  "spoken": "Process, how to do the job. To the tailor, measure me first, and ask me before you cut. To the AI, use only facts from my files. If something is missing, ask me first."
+ },
+ {
+  "key": "1uf54uh",
+  "text": "Performance: how the helper should act. To the tailor: be honest, and tell me if something is wrong. To the AI: be an honest editor. Use simple English I can explain.",
+  "voice": "coach",
+  "lesson": "cards",
+  "where": "#cv/21 card",
+  "uses": [
+   {
+    "lesson": "cards",
+    "where": "#cv/21 card"
+   }
+  ],
+  "take": "r3-cards-coach-06qtdo9",
+  "spoken": "Performance, how the helper should act. To the tailor, be honest, and tell me if something is wrong. To the AI, be an honest editor. Use simple English I can explain."
+ },
+ {
+  "key": "0xjj44w",
+  "text": "Four parts make one good prompt — for a tailor, and for an AI.",
+  "voice": "coach",
+  "lesson": "cards",
+  "where": "#cv/21 card",
+  "uses": [
+   {
+    "lesson": "cards",
+    "where": "#cv/21 card"
+   }
+  ],
+  "take": "r3-cards-coach-1y0dlmu",
+  "spoken": "Four parts make one good prompt — for a tailor, and for an AI."
+ },
+ {
   "key": "0ozu3yd",
   "text": "Whose data is it?",
   "voice": "coach",
@@ -4635,7 +4708,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-05lnad5",
   "spoken": "Thursday — the interview."
  },
  {
@@ -4650,7 +4722,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-05lnad5",
   "spoken": "Yes!"
  },
  {
@@ -4665,7 +4736,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-05lnad5",
   "spoken": "Smart. A CV that looks finished isn't always true. Her name is on it — let's check every line."
  },
  {
@@ -4680,7 +4750,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-05lnad5",
   "spoken": "Yes — TRUE. It matches."
  },
  {
@@ -4695,7 +4764,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0chj48r",
   "spoken": "\"Economics student at রাজশাহী University\""
  },
  {
@@ -4710,7 +4778,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0chj48r",
   "spoken": "True. Her CV, B.S.S. (Honours) in Economics, রাজশাহী University."
  },
  {
@@ -4725,7 +4792,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0chj48r",
   "spoken": "Look again."
  },
  {
@@ -4740,7 +4806,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0chj48r",
   "spoken": "Open her file and compare. Does it match?"
  },
  {
@@ -4755,7 +4820,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-00by4sz",
   "spoken": "All 5 found!"
  },
  {
@@ -4770,7 +4834,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-00by4sz",
   "spoken": "TRUE."
  },
  {
@@ -4785,7 +4848,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-00by4sz",
   "spoken": "\"fluent English\""
  },
  {
@@ -4800,7 +4862,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-00by4sz",
   "spoken": "Does her file say exactly this?"
  },
  {
@@ -4815,7 +4876,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-01v8ml1",
   "spoken": "Caught it! FALSE — the file says the opposite."
  },
  {
@@ -4830,7 +4890,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-01v8ml1",
   "spoken": "Her CV says English intermediate, and her mock IELTS is 6.0. \"Fluent\" is bigger than the truth."
  },
  {
@@ -4845,7 +4904,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-01v8ml1",
   "spoken": "NOT GIVEN means the file says nothing. Here the file says something different — that is FALSE."
  },
  {
@@ -4860,7 +4918,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-01v8ml1",
   "spoken": "FALSE."
  },
  {
@@ -4875,7 +4932,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0e2wb4r",
   "spoken": "\"Led a team of 20 volunteers\""
  },
  {
@@ -4890,7 +4946,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0e2wb4r",
   "spoken": "She was a volunteer tutor and team member — not the leader. And \"20\" is in none of her files."
  },
  {
@@ -4905,7 +4960,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0e2wb4r",
   "spoken": "\"Tutored school students in English and Mathematics.\""
  },
  {
@@ -4920,7 +4974,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0e2wb4r",
   "spoken": "True. Her CV says exactly this."
  },
  {
@@ -4935,7 +4988,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0kh82cb",
   "spoken": "\"Published research on female education…\""
  },
  {
@@ -4950,7 +5002,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0kh82cb",
   "spoken": "It was a term paper for a course — coursework, not published research."
  },
  {
@@ -4965,7 +5016,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0kh82cb",
   "spoken": "\"IELTS Academic, 7.0\""
  },
  {
@@ -4980,7 +5030,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0kh82cb",
   "spoken": "Her report says 6.0 — and it was a mock test. The AI made up the 7.0."
  },
  {
@@ -4995,7 +5044,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1lchf39",
   "spoken": "\"CGPA 3.58 / 4.00\""
  },
  {
@@ -5010,7 +5058,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1lchf39",
   "spoken": "True. CGPA 3.58/4.00, up to second year."
  },
  {
@@ -5025,7 +5072,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1lchf39",
   "spoken": "\"Advanced data analysis (SPSS, Stata, Excel)\""
  },
  {
@@ -5040,7 +5086,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1lchf39",
   "spoken": "Her CV says basic SPSS and Stata. An interviewer could test it."
  },
  {
@@ -5055,7 +5100,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0rgrxcv",
   "spoken": "You found 0 of 5."
  },
  {
@@ -5070,7 +5114,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0rgrxcv",
   "spoken": "Here are the others:"
  },
  {
@@ -5085,7 +5128,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0rgrxcv",
   "spoken": "You found 1 of 5."
  },
  {
@@ -5100,7 +5142,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0rgrxcv",
   "spoken": "You found 2 of 5."
  },
  {
@@ -5115,7 +5156,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0hfaelr",
   "spoken": "You found 3 of 5."
  },
  {
@@ -5130,7 +5170,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0hfaelr",
   "spoken": "You found 4 of 5."
  },
  {
@@ -5145,7 +5184,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0hfaelr",
   "spoken": "Yes. \"Make my CV better\" gives the AI nothing to work with — so it fills the gaps with impressive guesses."
  },
  {
@@ -5160,7 +5198,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0hfaelr",
   "spoken": "Think again."
  },
  {
@@ -5175,7 +5212,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1ys0tyr",
   "spoken": "Every chatbot does this with a short prompt. The problem was the instructions."
  },
  {
@@ -5190,7 +5226,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1ys0tyr",
   "spoken": "Her CV had the true facts. The AI was never told to use only them."
  },
  {
@@ -5205,7 +5240,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1ys0tyr",
   "spoken": "Good — but something is missing."
  },
  {
@@ -5220,7 +5254,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1ys0tyr",
   "spoken": "The IELTS and RUCEI reports give the AI real facts. Add them next time."
  },
  {
@@ -5235,7 +5268,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1fgbuaw",
   "spoken": "Eye-sha CV 2025 — Her old CV — the starting point."
  },
  {
@@ -5250,7 +5282,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1fgbuaw",
   "spoken": "IELTS Mock Report — Her real test scores. Now the AI won't guess them."
  },
  {
@@ -5265,7 +5296,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1fgbuaw",
   "spoken": "RUCEI Project Report — Proof of what she really did as a volunteer."
  },
  {
@@ -5280,7 +5310,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1fgbuaw",
   "spoken": "Right files! ."
  },
  {
@@ -5295,7 +5324,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1qrf632",
   "spoken": "Masters Shortlist — Her target programmes — so the CV fits her goal."
  },
  {
@@ -5310,7 +5338,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1qrf632",
   "spoken": "Application Checklist — Planning notes. Not needed for the CV."
  },
  {
@@ -5325,7 +5352,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1qrf632",
   "spoken": "Right files! One tip."
  },
  {
@@ -5340,7 +5366,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1qrf632",
   "spoken": "Next time, leave out Application Checklist — the CV does not need it."
  },
  {
@@ -5355,7 +5380,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1us1rju",
   "spoken": "Internship Form June — Her old form lists her referees' emails and phone numbers — other people's details. Leave it out."
  },
  {
@@ -5370,7 +5394,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1us1rju",
   "spoken": "Next time, leave out Internship Form June — the CV does not need it."
  },
  {
@@ -5385,8 +5408,187 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1us1rju",
   "spoken": "Next time, leave out Application Checklist, Internship Form June — the CV does not need it."
+ },
+ {
+  "key": "1tvkwb8",
+  "text": "Your prompt is missing 4 parts.",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "take": "r3-sheets-coach-0gjdzt4",
+  "spoken": "Your prompt is missing 4 parts."
+ },
+ {
+  "key": "17m4kjy",
+  "text": "A good prompt has all four parts.",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "take": "r3-sheets-coach-0gjdzt4",
+  "spoken": "A good prompt has all four parts."
+ },
+ {
+  "key": "1ezrtz5",
+  "text": "Context — who she is, and why. A tailor who doesn't know it's for a wedding can't make it fit the day.",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "take": "r3-sheets-coach-0gjdzt4",
+  "spoken": "Context — who she is, and why. A tailor who doesn't know it's for a wedding can't make it fit the day."
+ },
+ {
+  "key": "1b5httl",
+  "text": "Product — what to make. A tailor can't start until you say \"a blue shirt\".",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "take": "r3-sheets-coach-0gjdzt4",
+  "spoken": "Product — what to make. A tailor can't start until you say \"a blue shirt\"."
+ },
+ {
+  "key": "0qzlegk",
+  "text": "Process — how to do the job. A tailor who cuts before he measures ruins the cloth.",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "take": "r3-sheets-coach-0na4va9",
+  "spoken": "Process — how to do the job. A tailor who cuts before he measures ruins the cloth."
+ },
+ {
+  "key": "1bownzc",
+  "text": "Performance — how the helper should act. An honest tailor tells you when something is wrong.",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "take": "r3-sheets-coach-0na4va9",
+  "spoken": "Performance — how the helper should act. An honest tailor tells you when something is wrong."
+ },
+ {
+  "key": "05kkzrb",
+  "text": "Your prompt is missing 3 parts.",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "take": "r3-sheets-coach-0na4va9",
+  "spoken": "Your prompt is missing 3 parts."
+ },
+ {
+  "key": "1h5y0mm",
+  "text": "Your prompt is missing 2 parts.",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "take": "r3-sheets-coach-0na4va9",
+  "spoken": "Your prompt is missing 2 parts."
+ },
+ {
+  "key": "02nwhdr",
+  "text": "➕ Still to add: the order — check first, then write.",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "take": "r3-sheets-coach-1ppq781",
+  "spoken": "Still to add, the order — check first, then write."
+ },
+ {
+  "key": "1gu9urf",
+  "text": "➕ Still to add: if something is missing, ask — don't guess.",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "take": "r3-sheets-coach-1ppq781",
+  "spoken": "Still to add, if something is missing, ask — don't guess."
+ },
+ {
+  "key": "1kt2i0w",
+  "text": "➕ Still to add: use only facts from her files.",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "take": "r3-sheets-coach-1ppq781",
+  "spoken": "Still to add, use only facts from her files."
+ },
+ {
+  "key": "09i2ogp",
+  "text": "Your prompt is missing one part.",
+  "voice": "coach",
+  "lesson": "sheets",
+  "where": "feedback sheet line",
+  "uses": [
+   {
+    "lesson": "sheets",
+    "where": "feedback sheet line"
+   }
+  ],
+  "take": "r3-sheets-coach-1ppq781",
+  "spoken": "Your prompt is missing one part."
  },
  {
   "key": "1y7ecqx",
@@ -5400,7 +5602,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1us1rju",
   "spoken": "Correct English — but look what the AI does."
  },
  {
@@ -5415,7 +5616,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1gdhlij",
   "spoken": "\"First, write the CV. Then check the facts in my files.\""
  },
  {
@@ -5430,7 +5630,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1gdhlij",
   "spoken": "On it! Here's your CV first:"
  },
  {
@@ -5445,7 +5644,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1gdhlij",
   "spoken": "Led a team of 20 volunteers"
  },
  {
@@ -5460,7 +5658,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1gdhlij",
   "spoken": "IELTS Academic, 7.0"
  },
  {
@@ -5475,7 +5672,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0dxw8ue",
   "spoken": "Now I'll check the facts in your files…"
  },
  {
@@ -5490,7 +5686,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0dxw8ue",
   "spoken": "Good English — but the wrong order. The AI writes first, so the made-up lines are already in the CV. Check first, then write."
  },
  {
@@ -5505,7 +5700,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0dxw8ue",
   "spoken": "\"If something is missing, guess. Do not ask me.\""
  },
  {
@@ -5520,7 +5714,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0dxw8ue",
   "spoken": "No problem — I won't bother you! I filled the gaps:"
  },
  {
@@ -5535,7 +5728,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1yzwfxu",
   "spoken": "Graduation, 2025 (my guess)"
  },
  {
@@ -5550,7 +5742,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1yzwfxu",
   "spoken": "IELTS, 7.5 (my guess)"
  },
  {
@@ -5565,7 +5756,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1yzwfxu",
   "spoken": "Good English — but now the AI guesses instead of asking. On a CV, a guess looks exactly like a fact."
  },
  {
@@ -5580,7 +5770,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1yzwfxu",
   "spoken": "\"CGPA 3.58 / 4.00 (up to second year)\""
  },
  {
@@ -5595,7 +5784,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0ryjpgz",
   "spoken": "True. Same number, same limit (\"up to second year\")."
  },
  {
@@ -5610,7 +5798,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0ryjpgz",
   "spoken": "All 3 found!"
  },
  {
@@ -5625,7 +5812,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0ryjpgz",
   "spoken": "\"Term paper … (2025, coursework)\""
  },
  {
@@ -5640,7 +5826,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0ryjpgz",
   "spoken": "True. It says term paper and coursework — not \"published\". Honest."
  },
  {
@@ -5655,7 +5840,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1xsjjr1",
   "spoken": "\"Student research poster … (2025)\""
  },
  {
@@ -5670,7 +5854,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1xsjjr1",
   "spoken": "True. It matches her CV."
  },
  {
@@ -5685,7 +5868,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1xsjjr1",
   "spoken": "\"Led the Book Support project, which raised attendance from 68% to 86%\""
  },
  {
@@ -5700,7 +5882,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1xsjjr1",
   "spoken": "She was a tutor and team member, not the leader. The attendance result belongs to the whole team."
  },
  {
@@ -5715,7 +5896,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1udc4j5",
   "spoken": "\"Helped distribute 186 books to 62 students across 48 sessions\""
  },
  {
@@ -5730,7 +5910,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1udc4j5",
   "spoken": "True. The numbers match, and \"helped\" shows her real role."
  },
  {
@@ -5745,7 +5924,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1udc4j5",
   "spoken": "\"IELTS mock, overall 6.0 — L 6.5, R 6.5, W 5.5, S 5.5\""
  },
  {
@@ -5760,7 +5938,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1udc4j5",
   "spoken": "True. Exactly the report — and it says \"mock\". Honest."
  },
  {
@@ -5775,7 +5952,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-14sfvop",
   "spoken": "\"Excel, SPSS and Stata (advanced)\""
  },
  {
@@ -5790,7 +5966,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-14sfvop",
   "spoken": "Her CV says basic. \"Advanced\" changes the meaning — an interviewer could test it."
  },
  {
@@ -5805,7 +5980,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-14sfvop",
   "spoken": "\"Student member, Bangladesh Economic Association\""
  },
  {
@@ -5820,7 +5994,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-14sfvop",
   "spoken": "FALSE means the file says the opposite. Here the file never mentions it — that is NOT GIVEN."
  },
  {
@@ -5835,7 +6008,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0ssqthi",
   "spoken": "Caught it! NOT GIVEN — her files say nothing."
  },
  {
@@ -5850,7 +6022,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0ssqthi",
   "spoken": "The AI invented it. No file mentions this association. Even a good prompt can't stop every invention — that's why you check."
  },
  {
@@ -5865,7 +6036,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0ssqthi",
   "spoken": "NOT GIVEN."
  },
  {
@@ -5880,7 +6050,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0ssqthi",
   "spoken": "You found 0 of 3."
  },
  {
@@ -5895,7 +6064,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1kde6ig",
   "spoken": "You found 1 of 3."
  },
  {
@@ -5910,7 +6078,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1kde6ig",
   "spoken": "You found 2 of 3."
  },
  {
@@ -5925,7 +6092,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1kde6ig",
   "spoken": "\"I was the project leader, not a volunteer tutor.\""
  },
  {
@@ -5940,7 +6106,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1kde6ig",
   "spoken": "Thanks for clarifying! I've made it stronger:"
  },
  {
@@ -5955,7 +6120,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1wmi6p7",
   "spoken": "Project Leader, Book Support project — led the volunteer team"
  },
  {
@@ -5970,7 +6134,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1wmi6p7",
   "spoken": "Good English — but it says the opposite of the truth, and the AI believes you. With \"not\", the true part comes first."
  },
  {
@@ -5985,7 +6148,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1wmi6p7",
   "spoken": "\"My Stata and SPSS skills are advanced, not basic.\""
  },
  {
@@ -6000,7 +6162,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-1wmi6p7",
   "spoken": "Great news! Updated"
  },
  {
@@ -6015,7 +6176,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0vkcwcs",
   "spoken": "Data analysis, advanced Stata and SPSS"
  },
  {
@@ -6030,7 +6190,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0vkcwcs",
   "spoken": "Good English — but now the CV says advanced. An interviewer could test it in five minutes."
  },
  {
@@ -6045,7 +6204,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0vkcwcs",
   "spoken": "\"Please remove the Bangladesh Economic Association line, so I am not a member.\""
  },
  {
@@ -6060,7 +6218,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0vkcwcs",
   "spoken": "Removed"
  },
  {
@@ -6075,7 +6232,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0u7pqyj",
   "spoken": "Shall I also write to the Bangladesh Economic Association to cancel your membership?"
  },
  {
@@ -6090,7 +6246,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0u7pqyj",
   "spoken": "\"So\" gives a result, it sounds as if removing the line will end her membership. \"Because\" gives the reason, she was never a member."
  },
  {
@@ -6105,7 +6260,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0u7pqyj",
   "spoken": "Tell your partner, what went wrong?"
  },
  {
@@ -6120,7 +6274,6 @@
     "where": "feedback sheet line"
    }
   ],
-  "take": "r3-sheets-coach-0u7pqyj",
   "spoken": "Tell the person next to you, what went wrong?"
  }
 ]

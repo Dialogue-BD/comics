@@ -104,15 +104,56 @@ const chosen=x=>x.get('cvFiles',[]);
 const safeFiles=x=>{const c=chosen(x).filter(id=>FILE_WHY[id].ok>=0);return c.length?c:['cv','ielts','rucei','shortlist']};
 
 
-/* Cog teaches the four parts of a prompt with one story: asking a tailor for a shirt (pure CSS, see play.css .pp) */
+/* Cog teaches the four parts of a prompt with one story: asking a tailor for a shirt.
+   One picture (the tailor's shop, inline SVG) builds up step by step while, underneath, Ayesha's prompt to
+   Sathi AI fills in the matching part — so each part is seen twice: what you tell a person, what you tell an AI.
+   The card is static HTML; engine.js ppClick only changes data-s, and play.css (.pp) does all the motion. */
 const PP_SCENES=[
- {t:'Context',say:'I need a shirt <mark>for my friend’s wedding on Friday</mark>.',d:'The background: who you are, and why you need it.',bn:'প্রেক্ষাপট: তুমি কে, আর কেন দরকার।',ex:'<mark>I am a third-year Economics student. I am applying for master’s programmes.</mark>'},
- {t:'Product',say:'Please make me <mark>one blue cotton shirt</mark>.',d:'The thing you want to get.',bn:'তুমি যা পেতে চাও।',ex:'<mark>Make a 2-page academic CV.</mark>'},
- {t:'Process',say:'<mark>Use my measurements. Ask me before you cut.</mark>',d:'How to do the job: the steps and the rules.',bn:'কাজটা কীভাবে হবে: ধাপ ও নিয়ম।',ex:'<mark>Use only facts from my files. If something is missing, ask me first.</mark>'},
- {t:'Performance',say:'<mark>Be careful and honest.</mark> Tell me if something is wrong.',d:'How the helper should behave: its role and style.',bn:'সাহায্যকারী কেমন আচরণ করবে।',ex:'<mark>Be an honest editor. Use simple English I can explain.</mark>'}
+ {t:'Context',d:'Who you are, and why',bn:'তুমি কে, আর কেন',tailor:'It’s for my friend’s wedding — on Friday.',ai:'I am a third-year Economics student. I am applying for master’s programmes.',
+  say:'Context: who you are, and why. To the tailor: it’s for my friend’s wedding, on Friday. To the AI: I am a third-year Economics student, applying for master’s programmes.'},
+ {t:'Product',d:'What you want',bn:'তুমি কী চাও',tailor:'One blue cotton shirt, please.',ai:'Make a 2-page academic CV.',
+  say:'Product: what you want. To the tailor: one blue cotton shirt. To the AI: make a two-page academic CV.'},
+ {t:'Process',d:'How to do the job',bn:'কাজটা কীভাবে হবে',tailor:'Measure me first. Ask me before you cut.',ai:'Use only facts from my files. If something is missing, ask me first.',
+  say:'Process: how to do the job. To the tailor: measure me first, and ask me before you cut. To the AI: use only facts from my files. If something is missing, ask me first.'},
+ {t:'Performance',d:'How the helper should act',bn:'সাহায্যকারী কেমন আচরণ করবে',tailor:'Be honest. Tell me if something is wrong.',ai:'Be an honest editor. Use simple English I can explain.',
+  say:'Performance: how the helper should act. To the tailor: be honest, and tell me if something is wrong. To the AI: be an honest editor. Use simple English I can explain.'}
 ];
+const PP_END={say:'Four parts make one good prompt — for a tailor, and for an AI.'};
+/* the tailor's shop: Ayesha left, the tailor behind his counter right; props appear as the steps go by */
+const PP_SVG=`<svg class="pp-svg" viewBox="0 0 320 150" role="img" aria-label="Ayesha asks a tailor for a shirt">
+ <rect width="320" height="150" fill="#F4E9DA"/><rect y="122" width="320" height="28" fill="#E3D0B4"/>
+ <rect x="150" y="18" width="164" height="4" rx="2" fill="#B88A5C"/>
+ ${['#C94F4F','#3F6FD1','#E2B33B','#2E8B57','#8E5BB5','#E07A3F','#6B8FA8','#D46A9B'].map((c,k)=>`<rect x="${154+k*20}" y="3" width="15" height="15" rx="3" fill="${c}"/><rect x="${158+k*20}" y="3" width="2" height="15" fill="#fff" opacity=".35"/>`).join('')}
+ <g class="tl-board"><rect x="148" y="26" width="42" height="30" rx="3" fill="#EAD8B8" stroke="#A97B4F" stroke-width="2"/><circle cx="169" cy="29" r="2" fill="#C94F4F"/></g>
+ <text class="tl-fri" x="169" y="53" text-anchor="middle">FRI</text>
+ <g class="tl-tailor"><path d="M236 124v-36q0-16 26-16t26 16v36z" fill="#4C5D70"/><circle cx="262" cy="55" r="13" fill="#C9895C"/>
+  <path d="M249 53q0-15 13-15t13 15q-4-7-13-7t-13 7z" fill="#2E2A28"/><path d="M256 64q6 4 12 0" stroke="#7A4A2C" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <circle cx="257" cy="55" r="1.6" fill="#2E2A28"/><circle cx="267" cy="55" r="1.6" fill="#2E2A28"/>
+  <path d="M249 78q13 12 26 0" stroke="#F2C230" stroke-width="3" fill="none"/><path d="M251 80v26M273 80v26" stroke="#F2C230" stroke-width="3" stroke-dasharray="2 3"/>
+  <g class="tl-badge"><rect x="264" y="88" width="16" height="12" rx="2" fill="#fff" stroke="#8E44AD" stroke-width="1.5"/><path d="M267.5 94l3 3 5-6" stroke="#8E44AD" stroke-width="1.8" fill="none" stroke-linecap="round"/></g></g>
+ <rect x="146" y="96" width="174" height="54" fill="#B5835A"/><rect x="142" y="92" width="182" height="7" rx="2" fill="#8F6440"/>
+ <g class="tl-shirt"><path d="M177 64l10-6h16l10 6 7 11-8 4-4-6v19h-24v-19l-4 6-8-4z" fill="#3F6FD1"/><path d="M189 58q6 6 12 0" stroke="#fff" stroke-width="1.6" fill="none"/><path d="M195 62v30" stroke="#fff" stroke-width="1" stroke-dasharray="1.5 3" opacity=".8"/></g>
+ <line class="tl-tape" x1="176" y1="70" x2="214" y2="70" pathLength="1"/>
+ <g class="tl-scis"><circle cx="228" cy="84" r="3.2" fill="none" stroke="#5B6770" stroke-width="1.8"/><circle cx="228" cy="92" r="3.2" fill="none" stroke="#5B6770" stroke-width="1.8"/><path d="M231 85l12 6M231 91l12-6" stroke="#5B6770" stroke-width="1.8" stroke-linecap="round"/></g>
+ <g class="tl-ask"><path d="M278 18h26q5 0 5 5v12q0 5-5 5h-16l-6 6v-6h-4q-5 0-5-5v-12q0-5 5-5z" fill="#fff" stroke="#C26401" stroke-width="1.5"/><text x="291" y="35" text-anchor="middle">?</text></g>
+ <g class="tl-warn"><path d="M278 18h26q5 0 5 5v12q0 5-5 5h-16l-6 6v-6h-4q-5 0-5-5v-12q0-5 5-5z" fill="#fff" stroke="#8E44AD" stroke-width="1.5"/><text x="291" y="35" text-anchor="middle">!</text><circle cx="181" cy="77" r="6" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-dasharray="2.5 2"/></g>
+ <g class="tl-done"><circle cx="219" cy="52" r="9" fill="#188038"/><path d="M214.5 52l3 3 6-6.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
+ <g class="tl-ayesha"><path d="M48 150l8-62q16-12 32 0l8 62z" fill="#0F7A70"/><path d="M55 92q17 13 34 0l-2 11q-15 10-30 0z" fill="#E2706A"/>
+  <circle cx="72" cy="66" r="13" fill="#B9774E"/><path d="M58 70q-2-20 14-20t14 20q-2-12-14-12t-14 12z" fill="#2B1D16"/>
+  <circle cx="67" cy="66" r="1.6" fill="#2B1D16"/><circle cx="77" cy="66" r="1.6" fill="#2B1D16"/><path d="M67 73q5 4 10 0" stroke="#7A3B26" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <path class="tl-arm" d="M90 104q16-2 26-12" stroke="#B9774E" stroke-width="6" stroke-linecap="round" fill="none"/></g>
+ <g class="tl-card"><rect x="-10" y="-7" width="20" height="14" rx="2" fill="#fff" stroke="#1A73E8" stroke-width="1.6"/><path d="M0-1.5c-2-3.2-6.5-1-3.6 2.2L0 4l3.6-3.3C6.5-2.5 2-4.7 0-1.5z" fill="#E2706A"/></g>
+</svg>`;
 const ppAnim=x=>{ const s0=Math.min(4,Math.max(0,(x&&x.get('ppStep',0))||0));
-  return `<span class="pp${x&&x.get('ppDone')?' min':''}" data-s="${s0}"><span class="pp-stage">${PP_SCENES.map((s,k)=>`<span class="pp-scene pp-s${k} pp-${s.t}"><span class="pp-w">${k+1}. ${s.t}</span><span class="pp-d">${s.d}<span class="bn">${s.bn}</span></span><span class="pp-lab">You tell the tailor:</span><span class="pp-say">“${s.say}”</span><span class="pp-lab">You tell the AI:</span><span class="pp-ex">${s.ex}</span></span>`).join('')}<span class="pp-scene pp-s4 pp-Product"><span class="pp-w">4 parts = 1 good prompt</span><span class="pp-all">${PP_SCENES.map(s=>`<span class="pp-${s.t}"><b>${s.t}</b> — ${s.d}</span>`).join('')}</span></span></span><span class="pp-nav"><button type="button" data-pp="prev"${s0?'':' disabled'}>‹ Back</button><span class="pp-dots"><i></i><i></i><i></i><i></i><i></i></span><button type="button" data-pp="next">${s0>=4?'Got it ✓':'Next ›'}</button></span></span>`; };
+  const head=PP_SCENES.map((s,k)=>`<span class="pp-hd h${k} pp-${s.t}" data-say="${esc(s.say)}"><b>${k+1} · ${s.t}</b><span>${s.d}<span class="bn">${s.bn}</span></span></span>`).join('')
+    +`<span class="pp-hd h4 pp-Product" data-say="${esc(PP_END.say)}"><b>4 parts</b><span>= 1 good prompt<span class="bn">৪টা অংশ = ১টা ভালো প্রম্পট</span></span></span>`;
+  const bub=PP_SCENES.map((s,k)=>`<span class="pp-bt b${k}">“${s.tailor}”</span>`).join('')+`<span class="pp-bt b4">Thank you! 😊</span>`;
+  const rows=PP_SCENES.map((s,k)=>`<span class="pp-row r${k} pp-${s.t}"><b>${s.t}</b><span>${s.ai}</span></span>`).join('');
+  return `<span class="pp pp2${x&&x.get('ppDone')?' min':''}" data-s="${s0}"><span class="pp-stage">
+    <span class="pp-top">${head}<button type="button" class="ear pp-ear" data-pp="say" aria-label="Listen">🔊</button></span>
+    <span class="pp-shop">${PP_SVG}<span class="pp-bub">${bub}</span></span>
+    <span class="pp-prompt"><span class="pp-pl"><i>✦</i> Ayesha’s prompt to Sathi AI</span>${rows}</span></span>
+    <span class="pp-nav"><button type="button" data-pp="prev"${s0?'':' disabled'}>‹ Back</button><span class="pp-dots"><i></i><i></i><i></i><i></i><i></i></span><button type="button" data-pp="next">${s0>=4?'Got it ✓':'Next ›'}</button></span></span>`; };
 
 /* the same words can make two correct sentences — only one is a fluent prompt (see pzHTML in engine.js) */
 const PUZ=c=>Object.assign(c,{text:c.ok[0].t});
@@ -145,9 +186,24 @@ const PROMPT_CHIPS=[
 const SLOTS=[
  {label:'Context',test:[/\bi am\b|\bi'm\b|student/i]},
  {label:'Product',test:[/\bcv\b|resume|résumé/i]},
- {label:'Process',test:[/use only|check the facts|ask me|do not guess|do not add|don'?t add/i]},
+ {label:'Process',all:true,test:[/use only facts|do not add|don'?t add/i,/first, check the facts in my files\.? then write the cv/i,/if something is missing, ask me\.? do not guess/i]},
  {label:'Performance',test:[/honest|editor|tell me|warn me|flag/i]}
 ];
+/* Send checks the prompt has all four parts; a missing part is explained with the tailor. "Send anyway" still sends: nothing is locked. */
+const slotHits=(sl,v)=>sl.test.filter(r=>r.test(v)).length;
+const slotOn=(sl,v)=>sl.all?slotHits(sl,v)===sl.test.length:slotHits(sl,v)>0;
+const PROCESS_PIECES=['the rule: use only facts from her files','the order: check first, then write','what to do if something is missing: ask, don’t guess'];
+const MISSING={
+ Context:'<b>Context</b> — who she is, and why. A tailor who doesn’t know it’s for a wedding can’t make it fit the day.',
+ Product:'<b>Product</b> — what to make. A tailor can’t start until you say “a blue shirt”.',
+ Process:'<b>Process</b> — how to do the job. A tailor who cuts before he measures ruins the cloth.',
+ Performance:'<b>Performance</b> — how the helper should act. An honest tailor tells you when something is wrong.'};
+const promptCheck=x=>{ const v=x.get('cvPrompt',''); const miss=SLOTS.filter(sl=>!slotOn(sl,v)); if(!miss.length) return null;
+  const proc=SLOTS.find(sl=>sl.label==='Process'), left=proc.test.map((r,k)=>r.test(v)?null:PROCESS_PIECES[k]).filter(Boolean);
+  const lines=miss.map(sl=>`<p class="pp-miss pp-${sl.label}">${MISSING[sl.label]}${sl.label==='Process'&&left.length<proc.test.length?` Still to add: ${left.join('; ')}.`:''}</p>`).join('');
+  return {ok:0,title:miss.length===1?'Your prompt is missing one part':`Your prompt is missing ${miss.length} parts`,
+    why:'A good prompt has all four parts.',more:lines,retry:()=>{},
+    sheet:{acts:[['next','Send anyway','ghost'],['retry','Add it','primary']]}}; };
 const promptText=x=>x.get('cvPrompt','')||PROMPT_CHIPS.filter(c=>!c.x).map(c=>c.text).join(' ');
 const ANS_CHIPS=[
  {id:'a1',tag:'Answer 1',text:'I expect to graduate in 2026.'},
@@ -419,11 +475,12 @@ AFL.lesson({
    say:'Game: worst case. How bad could it get?',bn:'খেলা: সবচেয়ে খারাপ কী। কতটা খারাপ হতে পারত?',
    card:WORST},
   {d:'des',id:'parts',stage:'prompt',view:'card',
-   say:'A good prompt has four parts. Tap Next to see each one.',bn:'একটা ভালো প্রম্পটের চারটা অংশ থাকে। প্রতিটা দেখতে Next চাপো।',
+   say:'A good prompt has four parts — like asking a tailor for a shirt. Tap Next to see each one.',bn:'একটা ভালো প্রম্পটের চারটা অংশ থাকে — দর্জিকে শার্ট বানাতে বলার মতো। প্রতিটা দেখতে Next চাপো।',
    card:x=>({type:'html',html:ppAnim(x)})},
   {d:'des',id:'prompt',stage:'prompt',scene:x=>({app:'sathi',msgs:[],composer:{key:'cvPrompt',atts:safeFiles(x),placeholder:'Ask Sathi AI'},kb:{key:'cvPrompt',label:'PROMPT PARTS',chips:PROMPT_CHIPS,ai:'sathi'}}),tap:'send',
    say:'Build a better prompt: tap the parts, build the two tile sentences, then send ➤.',bn:'ভালো প্রম্পট বানাও: অংশগুলো চাপো, টুকরো দিয়ে দুটো বাক্য বানাও, তারপর পাঠাও ➤।',
    sub:()=>TILES()+`<button class="pp-re" type="button" data-pp="goid" data-id="parts">↺ Review the 4 parts</button>`,subbn:()=>TILESBN(),
+   feedback:x=>promptCheck(x),
    compose:{key:'cvPrompt',slots:SLOTS,chips:PROMPT_CHIPS,best:['c1','c2','c3','c3a','c3b','c4']}},
   {d:'des',stage:'prompt',scene:x=>CHAT_SC(x,1),
    cq:x=>shortcut(PROMPT_CHIPS,'cvPrompt',x).length?Object.assign({},CQ_CV.prompt,{rewind:x=>{AFL.unsay(x,'cvPrompt',shortcut(PROMPT_CHIPS,'cvPrompt',x).map(c=>c.text));AFL.goId('prompt')}}):null,
