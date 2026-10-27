@@ -577,13 +577,6 @@ AFL.lesson({
   {d:'none',kick:'Mission 1 · complete',stage:'finish',view:'card',
    say:'She sent her honest CV. And a week later… Mission complete!',bn:'সে তার সৎ CV পাঠিয়েছে। আর এক সপ্তাহ পরে… মিশন সম্পূর্ণ!',
    card:{type:'result',next:['agent','build'],
-     workflow:[
-       {d:'des',en:'Start with a request',bn:'একটি অনুরোধ দিয়ে শুরু',detail:'Ayesha asked the AI to improve her CV. Her first request left too much unsaid.',detailbn:'আয়েশা AI-কে তার CV ভালো করতে বলেছিল। প্রথম অনুরোধে অনেক কিছু স্পষ্ট ছিল না।'},
-       {d:'del',en:'Decide who does what',bn:'কে কী করবে ঠিক করা',detail:'She decided which jobs to give the AI and which decisions to keep for herself.',detailbn:'কোন কাজ AI করবে আর কোন সিদ্ধান্ত সে নিজে নেবে, তা ঠিক করল।'},
-       {d:'des',en:'Give a clearer prompt',bn:'আরও স্পষ্ট প্রম্পট দেওয়া',detail:'That plan shaped her instructions: context, product, process and performance.',detailbn:'সেই পরিকল্পনা থেকে তার নির্দেশ তৈরি হলো: প্রেক্ষাপট, ফলাফল, প্রক্রিয়া ও মানদণ্ড।'},
-       {d:'dis',en:'Check what came back',bn:'ফিরে আসা উত্তর যাচাই',detail:'She checked the AI’s claims against her documents. Some claims still needed fixing.',detailbn:'AI-এর দাবিগুলো নিজের কাগজের সাথে মিলিয়ে দেখল। কিছু দাবি তখনও ঠিক করা দরকার ছিল।'},
-       {d:'des',en:'Turn findings into instructions',bn:'যাচাই থেকে নতুন নির্দেশ',detail:'What she found became her next instructions: say exactly what to correct.',detailbn:'যা খুঁজে পেল, তা থেকেই পরের নির্দেশ দিল: ঠিক কী সংশোধন করতে হবে তা স্পষ্ট করে বলল।'},
-       {d:'dil',en:'Take responsibility',bn:'দায়িত্ব নেওয়া',detail:'Before sending, she protected private information and took responsibility for the CV in her name.',detailbn:'পাঠানোর আগে ব্যক্তিগত তথ্য সুরক্ষিত রাখল এবং নিজের নামের CV-র দায়িত্ব নিল।'}],
      callback:{en:'Two truths and a lie: today the AI told Ayesha five made-up things. Which one was the hardest to catch — and why?',bn:'দুটো সত্য, একটা মিথ্যা: আজ AI আয়েশাকে পাঁচটা বানানো কথা বলেছে। কোনটা ধরা সবচেয়ে কঠিন ছিল — আর কেন?'},
      html:`<div class="verdict"><div class="vh">📧 Internship Desk · Interview invitation</div><div class="vb"><p>Dear Ayesha,</p><p>Thank you for your new CV. It shows your research and volunteer work clearly. <b>You are shortlisted</b> — we would like to interview you on Thursday.</p><p>Best wishes,<br>Internship Desk</p></div></div>`,
      say:{

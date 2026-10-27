@@ -8,16 +8,6 @@ for(const file of ['compass','engine','story-voice','cv-art','lesson-cv','lesson
 const L=AFL.LESSONS.cv,x={ch:{},files:AFL.FILES,get:(k,d)=>d};
 const norm=t=>t.toLowerCase().replace(/[^\p{L}\p{N}.%\/]+/gu,'').replace(/\.$/,'');
 
-test('the mission recap revisits Description in the requested route and gives every decision bilingual context',()=>{
- const route=L.beats.find(b=>b.card&&b.card.type==='result').card.workflow;
- assert.deepEqual(route.map(s=>s.d),['des','del','des','dis','des','dil']);
- assert.equal(new Set(route.filter(s=>s.d==='des').map(s=>s.en)).size,3);
- for(const step of route)for(const field of ['en','bn','detail','detailbn'])assert(step[field]);
- const labelled=D4.svg({on:'all',labels:true});
- for(const d of D4.ORDER)assert(labelled.includes('>'+D4.META[d].n+'</text>'));
- assert(!D4.svg().includes('gear-name'));
-});
-
 test('every requested CV keyword is present in the selectable claim',()=>{
  for(const b of L.beats.filter(b=>b.hunt))for(const l of b.hunt.lines){
   const tokens=l.text.split(/\s+/).map(norm);
