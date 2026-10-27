@@ -661,7 +661,7 @@ Small first, big later.
 ### `r3-cards-coach-1tomnoy.wav` — The coach · 1 lines
 
 ```text
-Context, who you are, and why. To the tailor, it's my friend's গায়ে হলুদ on Friday. I'm wearing this yellow শাড়ি. To the AI, I am a third-year Economics student, applying for master's programmes.
+Context, who you are, and why. To the tailor, it's my friend's gaye holud on Friday. I'm wearing this yellow শাড়ি. To the AI, I am a third-year Economics student, applying for master's programmes.
 ```
 
 ### `r3-cards-coach-16a2yy0.wav` — The coach · 1 lines
@@ -705,7 +705,7 @@ A good prompt has all four parts.
 ### `r3-sheets-coach-0uvvqte.wav` — The coach · 1 lines
 
 ```text
-Context — who she is, and why. A tailor who doesn't know it's for a গায়ে হলুদ can't make it fit the day.
+Context — who she is, and why. A tailor who doesn't know it's for a gaye holud can't make it fit the day.
 ```
 
 ### `r3-sheets-coach-16fs8vi.wav` — The coach · 1 lines
