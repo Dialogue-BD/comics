@@ -30,15 +30,23 @@ const MAX_PER_TAKE=4;   // short takes: the model can silently drop a line from 
 const lines=new Map();               // key -> {key,text,voice,lesson,where}
 function add(text,voice,lesson,where){
   if(!text) return; const t=canon(text); if(!t) return;
-  const k=audioKey(t); if(lines.has(k)) return;
-  lines.set(k,{key:k,text:t,voice,lesson,where});
+  const k=audioKey(t), use={lesson,where};
+  if(lines.has(k)){
+    const l=lines.get(k);
+    if(l.text.toLowerCase()!==t.toLowerCase()) throw new Error('Audio key collision: '+k);
+    if(!l.uses.some(u=>u.lesson===lesson&&u.where===where)) l.uses.push(use);
+    return;
+  }
+  lines.set(k,{key:k,text:t,voice,lesson,where,uses:[use]});
 }
 
 /* contexts a function-valued field may be evaluated in */
 function ctxs(L,b){
   const out=[];
-  for(const mode of ['pair','solo','class']) for(const stream of [false,true]) for(const rich of [false,true]){
+  const fileChoices=L.id==='cv'?[[],['nid'],['bank'],['attendance'],['nid','bank'],['nid','attendance'],['cv','ielts','rucei','shortlist']]:[null];
+  for(const mode of ['pair','solo','class']) for(const stream of [false,true]) for(const rich of [false,true]) for(const cvFiles of fileChoices){
     const ch={};
+    if(cvFiles) ch.cvFiles=cvFiles;
     out.push({mode,stream,x:{ch,L,beat:b,bn:false,streaming:stream,files:AFL.FILES,esc:AFL.esc,ico:AFL.ico,
       set(k,v){ch[k]=v},get(k,d){ if(k in ch) return ch[k]; if(!rich) return d; return Array.isArray(d)?['nid']:d; }}});
   }
@@ -59,7 +67,10 @@ add('That’s asking the fox to guard the henhouse.','coach','agent','idiom');
 /* (their own takes, so adding them never reshuffles takes that are already recorded) */
 add('What went wrong? Say it.','coach','cq','consequence question');
 add('She ___, so ___.','ayesha','cq','consequence frame');
-AFL.CQS.forEach(c=>add(c.line,'coach','cq',c.lesson+' · consequence · '+c.when));
+AFL.CQS.forEach(c=>{
+  add(c.line,'coach','cq',c.lesson+' · consequence · '+c.when);
+  add(c.why,'coach',c.lesson,'consequence explanation · '+c.when);
+});
 /* the four Ds film: one line per caption, in the coach's voice */
 /* what each D means: added later, so their own take */
 INTRO.DEFS.forEach(t=>add(t,'coach','introd','four Ds film · what the D means'));
@@ -83,6 +94,18 @@ for(const id of ORDER){
       if(c.type==='onthree'){ add(c.q,'coach',id,where+' On 3'); add(c.model,'ayesha',id,where+' On 3 example'); }
       if(c.type==='rounds') c.items.forEach((it,k)=>{ if(c.kind!=='tt') add(it.q,'coach',id,where+' round '+(k+1)); add(it.model,'ayesha',id,where+' round '+(k+1)+' answer'); });
       if(c.type==='chain') c.items.forEach(it=>add(it.real.en,'coach',id,where+' worst case'));
+      // These are listening controls too: the reading demonstration, hints and lifelines.
+      if(c.type==='alt'){
+        add(c.claim.map(w=>w.w).join(' '),'coach',id,where+' reading claim');
+        c.steps.forEach(s=>add(s.h+'. '+s.en,'coach',id,where+' reading demonstration'));
+      }
+      (c.words||[]).forEach(w=>add(w,'ayesha',id,where+' speaking hint'));
+      (c.lifeline?.items||[]).forEach(w=>add(w,'ayesha',id,where+' speaking lifeline'));
+    });
+    each(L,b,b.cq,c=>{
+      if(!c) return;
+      add(c.line,'coach',id,where+' consequence');
+      add(c.why,'coach',id,where+' consequence explanation');
     });
     /* lines a hand-written html card speaks through data-say / data-speak (kept in their own take, see below) */
     each(L,b,b.card,c=>{ if(c&&c.html) for(const m of String(c.html).matchAll(/data-(?:say|speak)="([^"]+)"/g)) LATE.push([m[1].replace(/&quot;/g,'"').replace(/&amp;/g,'&'),'coach','cards',where+' card']); });
@@ -100,10 +123,13 @@ LATE.forEach(a=>add(...a));
 const all=[...lines.values()];
 const takes={};
 let have0=new Set(); try{ have0=new Set(JSON.parse(fs.readFileSync(path.join(AUD,'manifest.json'))).keys) }catch(e){}
+have0=new Set([...have0].filter(k=>fs.existsSync(path.join(AUD,k+'.mp3'))));
 for(const lesson of ['common',...ORDER,'cq','intro','introd','cards']) for(const voice of ['coach','ayesha']){
   const ls=all.filter(l=>l.lesson===lesson&&l.voice===voice&&!have0.has(l.key));
   for(let i=0;i<ls.length;i+=MAX_PER_TAKE){
-    const tid=`r2-${lesson}-${voice}-${String(i/MAX_PER_TAKE+1).padStart(2,'0')}`;
+    // Include the exact key sequence: refreshing after a take is cut must never
+    // assign an old download name to a different set of lines.
+    const tid=`r3-${lesson}-${voice}-${audioKey(ls.slice(i,i+MAX_PER_TAKE).map(l=>l.key).join('|'))}`;
     takes[tid]=ls.slice(i,i+MAX_PER_TAKE).map(l=>{l.take=tid;return l.key});
   }
 }
@@ -112,23 +138,23 @@ fs.writeFileSync(path.join(AUD,'lines.json'),JSON.stringify(all,null,1));
 fs.writeFileSync(path.join(AUD,'takes.json'),JSON.stringify(takes,null,1));
 
 /* what is already recorded */
-let have=new Set(); try{ have=new Set(JSON.parse(fs.readFileSync(path.join(AUD,'manifest.json'))).keys) }catch(e){}
+const have=have0;
 /* the transcript is what is SAID; the key stays the words on screen */
 // Ayesha is said EYE-sha: two syllables, no y slide
-const spoken=t=>t.replace(/_{3}/g,'…').replace(/Ayesha/g,'Eye-sha').replace(/Chats \(WhatsApp-style\)/g,'Chats')
+const spoken=t=>t.replace(/_{3}/g,'…').replace(/Ayesha/g,'Eye-sha').replace(/Sathi/g,'সাথী').replace(/Chats \(WhatsApp-style\)/g,'Chats')
   // a colon makes the model pause as long as a line break, which confuses the cutter
-  .replace(/:\s+/g,', ').replace(/Tap ⋮/g,'Tap the three dots').replace(/Tap \+/g,'Tap plus').replace(/■\s*/g,'')
+  .replace(/:\s+/g,', ').replace(/Tap ⋮/g,'Tap the three dots').replace(/Tap \+/g,'Tap plus').replace(/Tap 🔊/g,'Tap the speaker button').replace(/send ➤/g,'tap Send').replace(/■\s*/g,'')
   .replace(/৳\s?99/g,'ninety-nine taka').replace(/৳\s?2,500/g,'two thousand five hundred taka').replace(/৳\s?5,000/g,'five thousand taka')
   .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{20E3}]/gu,'').replace(/\s+/g,' ').trim();
 
 const VOICES={
  coach:{name:'The coach',pick:'Extended Voice Library: filter Accent → Bangladeshi or Indian English, a warm adult teacher voice. If none fits: Sulafat (Warm) or Achird (Friendly).',
-   profile:'A warm, patient teacher’s voice in the middle of its range. Unhurried and very clear, every consonant finished. Short pauses at commas; a small lift on the key word of each sentence. Never sing-song, never salesy.',
+   profile:'A warm, patient teacher’s voice in the middle of its range. Unhurried and very clear, every consonant finished. Short pauses at commas; a small lift on the key word of each sentence. Never sing-song, never salesy. Pronounce Sathi as Bengali সাথী, SHA-tʰee, with an aspirated dental stop /t̪ʰ/ for থ: tongue against the upper teeth, release with a short puff of air. AI is the two letters A I.',
    scene:'A quiet university classroom in Rajshahi, late morning, a ceiling fan turning slowly.\nRoom tone: a soft, steady fan hum, very low.',
    context:'Short spoken instructions and questions for English learners (B1) working through a lesson on a phone. The speaker is their teacher, guiding one small step at a time and wanting every word understood the first time.',
    style:'calm, warm and encouraging, speaking slowly and clearly for English learners'},
  ayesha:{name:'Ayesha',pick:'Extended Voice Library: filter Accent → Bangladeshi or Indian English, Gender → female, a young adult voice. If none fits: Leda (Youthful) or Autonoe (Bright).',
-   profile:'A young woman’s voice, bright but not high, clear and steady. Natural South Asian English rhythm. Stress lands on the content words; a short, natural pause where a gap … appears in the sentence.',
+   profile:'A young woman’s voice, bright but not high, clear and steady. Natural South Asian English rhythm. Stress lands on the content words; a short, natural pause where a gap … appears in the sentence. Pronounce Sathi as Bengali সাথী, SHA-tʰee, with an aspirated dental stop /t̪ʰ/ for থ: tongue against the upper teeth, release with a short puff of air. AI is the two letters A I.',
    scene:'A student common room at Rajshahi University in the afternoon.\nRoom tone: faint, distant student chatter, very low.',
    context:'Model sentences that English learners will repeat and then adapt. The speaker is Ayesha, a third-year Economics student, saying each sentence the way she would say it to a friend: plainly, confidently, and slowly enough to copy.',
    style:'friendly and confident, speaking slowly and clearly, like a student explaining something to a friend'}
@@ -165,7 +191,7 @@ Generated by \`tools/voice-script.js\` from the lesson files. **Do not edit by h
 
 Gaps in sentence frames are written as **…** — read them as a short natural pause, never as a word.
 
-**Names to check in the first take** (re-run if one is wrong): Ayesha (*EYE-sha* — two syllables, no y slide; the transcripts spell it *Eye-sha* so the model can’t get it wrong), Sathi (*SHA-thee*, the AI app), Rajshahi (*RAJ-sha-hee*), bKash (*bee-cash*), RUCEI (say the letters), Riya, Mitu, Tanvir, Göttingen. The text keeps them as students see them; if the model stumbles, a spelling hint in the Style box (e.g. *“Sathi is said SHA-thee”*) usually fixes it.
+**Names to check in the first take** (re-run if one is wrong): Ayesha (*EYE-sha* — two syllables, no y slide; the transcripts spell it *Eye-sha* so the model can’t get it wrong), Sathi (Bengali *সাথী*, /ʃa.t̪ʰi/: the থ is an aspirated dental stop, tongue at the upper teeth with a short puff of air; the AI app), Rajshahi (*RAJ-sha-hee*), bKash (*bee-cash*), RUCEI (say the letters), Riya, Mitu, Tanvir, Göttingen. The text keeps them as students see them; if the model stumbles, a spelling hint in the Style box (e.g. *“Sathi is said SHA-thee”*) usually fixes it.
 
 ## The two voices
 

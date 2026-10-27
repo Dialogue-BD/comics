@@ -1066,10 +1066,11 @@ const plain=t=>String(t||'').replace(/Ayesha/g,'Eye-sha').replace(/<span class="
    AI Studio takes into audio/<key>.mp3 and writes audio/manifest.json. */
 const canon=t=>String(t||'').replace(/<span class="bn"[^>]*>.*?<\/span>/g,' ').replace(/<[^>]+>/g,' ').replace(/&amp;/g,'&').replace(/&[a-z]+;/g,' ').replace(/[“”]/g,'"').replace(/[‘’]/g,"'").replace(/\s+/g,' ').trim();
 const audioKey=t=>{ let h=0x811c9dc5; const c=canon(t).toLowerCase(); for(let i=0;i<c.length;i++){ h^=c.charCodeAt(i); h=Math.imul(h,0x01000193)>>>0; } return h.toString(36).padStart(7,'0'); };
-let AUDIO=new Set(), AUDIO_V='';
+let AUDIO=new Set(), AUDIO_V='', AUDIO_DUR={};
+const audioDuration=t=>Number(AUDIO_DUR[audioKey(t)]||0)/(S.mode==='class'?.94:1);
 const PLAYER=typeof Audio!=='undefined'?new Audio():null; if(PLAYER) PLAYER.preload='auto';
 const CLIP={};   // key → blob URL (or a promise while it loads)
-function loadAudio(){ try{ fetch('audio/manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(m=>{ if(m&&m.keys){ AUDIO=new Set(m.keys); AUDIO_V=m.v||''; prefetchAround(); } }).catch(()=>{}); }catch(e){} }
+function loadAudio(){ try{ fetch('audio/manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(m=>{ if(m&&m.keys){ AUDIO=new Set(m.keys); AUDIO_V=m.v||''; AUDIO_DUR=m.dur||{}; prefetchAround(); } }).catch(()=>{}); }catch(e){} }
 function prefetch(t){ if(!t) return; const k=audioKey(t); if(!AUDIO.has(k)||CLIP[k]) return;
   CLIP[k]=fetch('audio/'+k+'.mp3'+(AUDIO_V?'?v='+AUDIO_V:'')).then(r=>r.ok?r.blob():Promise.reject()).then(b=>{ CLIP[k]=URL.createObjectURL(b); return CLIP[k]; }).catch(()=>{ delete CLIP[k]; }); }
 /* the lines likely to be needed next: this step, the next one, a consequence */
@@ -1297,5 +1298,5 @@ function boot(){
 
 function sheetFrom(o){ UI.sheet=Object.assign(fbSheet(o,o.retry?()=>{}:null),o.sheet||{}); renderUI(); }
 const GI={get S(){return S},esc,BN,tr,T,speak,hush,sayBtn,gapped,canon,renderStage,renderFoot,renderUI,renderTop,renderSheet,firstTry,resetTalk,toggleTimer,paintTimer,recToggle,rec:()=>REC,timer:()=>TIMER,fileThumb,FILES,next,ctx,fn,IC,ico,ui:()=>UI};
-window.AFL={_g:GI,fb:sheetFrom,HUB,TOUR,_mode:k=>{S.mode=k},audioKey,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach:renderUI,renderUI,start,hub,STORY_DATE,firstTry,huntMark,shown};
+window.AFL={_g:GI,fb:sheetFrom,HUB,TOUR,_mode:k=>{S.mode=k},audioKey,audioDuration,canon,LESSONS,ORDER,cardHTML,sayBtn,byMode,mode:()=>S.mode,speak,recap,openLegend,boot,openView,closeView,lesson(L){LESSONS[L.id]=L;ORDER.push(L.id)},esc,ico,FILES,fileThumb,go,goId,next,ctx,conseq,CQS,unsay,renderPhone:()=>renderPhone(false),renderCoach:renderUI,renderUI,start,hub,STORY_DATE,firstTry,huntMark,shown};
 })();
