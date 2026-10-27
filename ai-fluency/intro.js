@@ -45,10 +45,12 @@ const ICON={
 const svgI=(d,col)=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[d]}" fill="${col||'currentColor'}"/></svg>`;
 
 /* ---------- the gear, machined: teeth + six lightening holes, as a mask ---------- */
+/* teeth sized to their gaps: a tooth is .60 of the pitch wide at the root and .28 at the tip, so its tip is just narrower
+   than the floor of the neighbouring gear's gap and meshing gears never overlap as they turn (checked across a full tooth) */
 const GEAR_MASK=(()=>{
   const rad=a=>a*Math.PI/180, pt=(r,a)=>`${(RR+r*Math.cos(rad(a))).toFixed(1)} ${(RR+r*Math.sin(rad(a))).toFixed(1)}`;
   const p=[]; for(let k=0;k<NT;k++){const c=k*TD;
-    p.push(`${k?'L':'M'}${pt(R-A,c-.36*TD)}`,`L${pt(R+A,c-.17*TD)}`,`A${R+A} ${R+A} 0 0 1 ${pt(R+A,c+.17*TD)}`,`L${pt(R-A,c+.36*TD)}`,`A${R-A} ${R-A} 0 0 1 ${pt(R-A,c+.64*TD)}`)}
+    p.push(`${k?'L':'M'}${pt(R-A,c-.30*TD)}`,`L${pt(R+A,c-.14*TD)}`,`A${R+A} ${R+A} 0 0 1 ${pt(R+A,c+.14*TD)}`,`L${pt(R-A,c+.30*TD)}`,`A${R-A} ${R-A} 0 0 1 ${pt(R-A,c+.70*TD)}`)}
   let d=p.join('')+'Z';
   for(let k=0;k<6;k++){const a=k*60+30, r=R*.135, cx=RR+R*.575*Math.cos(rad(a)), cy=RR+R*.575*Math.sin(rad(a));
     d+=`M${(cx-r).toFixed(1)} ${cy.toFixed(1)}a${r.toFixed(1)} ${r.toFixed(1)} 0 1 0 ${(2*r).toFixed(1)} 0a${r.toFixed(1)} ${r.toFixed(1)} 0 1 0 ${(-2*r).toFixed(1)} 0Z`}

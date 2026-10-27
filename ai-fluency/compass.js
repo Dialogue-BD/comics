@@ -54,9 +54,11 @@ const N_T=12, T=360/N_T, R=36, A=5.5, DIST=R*Math.SQRT2;
 const POS={del:[100,100-DIST],dis:[100+DIST,100],dil:[100,100+DIST],des:[100-DIST,100]};
 /* phase offsets so the teeth interlock around the ring, and spin direction */
 const PH={del:0,dis:T/2,dil:0,des:T/2}, SPIN={del:1,dil:1,dis:-1,des:-1};
+/* teeth sized to their gaps: a tooth is .60 of the pitch wide at the root and .28 at the tip, so its tip is just narrower
+   than the floor of the neighbouring gear's gap and meshing gears never overlap as they turn (checked across a full tooth) */
 const GEAR=(()=>{const p=[],rad=a=>a*Math.PI/180,pt=(r,a)=>`${(r*Math.cos(rad(a))).toFixed(2)} ${(r*Math.sin(rad(a))).toFixed(2)}`;
   for(let k=0;k<N_T;k++){const c=k*T;
-    p.push(`${k?'L':'M'}${pt(R-A,c-.36*T)}`,`L${pt(R+A,c-.17*T)}`,`A${R+A} ${R+A} 0 0 1 ${pt(R+A,c+.17*T)}`,`L${pt(R-A,c+.36*T)}`,`A${R-A} ${R-A} 0 0 1 ${pt(R-A,c+.64*T)}`)}
+    p.push(`${k?'L':'M'}${pt(R-A,c-.30*T)}`,`L${pt(R+A,c-.14*T)}`,`A${R+A} ${R+A} 0 0 1 ${pt(R+A,c+.14*T)}`,`L${pt(R-A,c+.30*T)}`,`A${R-A} ${R-A} 0 0 1 ${pt(R-A,c+.70*T)}`)}
   return p.join('')+'Z';})();
 
 /* the gears SVG. o: {on:'dis', used:{del:1,…}, angle:deg, cls:'', title:''} */
