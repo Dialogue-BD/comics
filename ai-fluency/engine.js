@@ -508,8 +508,7 @@ function renderStage(){
   if(k==='card'){ const keep=was==='card'&&pc.dataset.at===S.lesson+'/'+S.beat+(UI.sub||'')?pc.scrollTop:0; const fresh=pc.dataset.at!==S.lesson+'/'+S.beat+(UI.sub||''); const abc=!UI.sub&&fn(ctx().beat.card,ctx()); if(!fresh&&abc&&abc.type==='alt'){ fitDevice(); return; }
     if(!fresh&&abc&&abc.type==='story'&&abc.illustrated&&pc.querySelector('.cv-story')){ CV_ART.language(pc.querySelector('.cv-story'),S.bn); fitDevice(); return; }
     pc.innerHTML=cardScreen(); pc.dataset.at=S.lesson+'/'+S.beat+(UI.sub||'');
-    if(abc&&abc.type==='result'&&abc.workflow) MISSION_WORKFLOW.mount(pc,abc.workflow);
-    if(fresh&&!UI.sub){ const bc=fn(ctx().beat.card,ctx()); if(bc&&bc.type==='level') setTimeout(()=>FX.gearTurned(pc,bc.d),60); else if(bc&&bc.type==='result'&&!bc.workflow) setTimeout(()=>FX.missionDone(pc),60); else if(bc&&bc.type==='alt') setTimeout(()=>ALT.play(pc,{card:bc,bn:S.bn,speak:t=>speak(t),voice:()=>S.voice}),60); } pc.scrollTop=keep; if(was!=='card'||!keep) pc.firstElementChild&&pc.firstElementChild.classList.add('enter'); }
+    if(fresh&&!UI.sub){ const bc=fn(ctx().beat.card,ctx()); if(bc&&bc.type==='level') setTimeout(()=>FX.gearTurned(pc,bc.d),60); else if(bc&&bc.type==='result') setTimeout(()=>FX.missionDone(pc),60); else if(bc&&bc.type==='alt') setTimeout(()=>ALT.play(pc,{card:bc,bn:S.bn,speak:t=>speak(t),voice:()=>S.voice}),60); } pc.scrollTop=keep; if(was!=='card'||!keep) pc.firstElementChild&&pc.firstElementChild.classList.add('enter'); }
   else { pc.innerHTML=''; pc.dataset.at=''; }
   fitDevice();
 }
@@ -812,9 +811,9 @@ function levelCard(c,x){
 function resultCard(c,x){
   const sc=x.get('_score',0), aw=x.get('_aw',{}), max=Object.keys(aw).length;
   x.set('_finished',true);
-  return `<div class="res">${c.workflow?MISSION_WORKFLOW.html(c.workflow,S.bn):''}${c.html||''}
+  return `<div class="res">${c.html||''}
    <div class="res-stars">${IC.star}<b data-to="${sc}">${sc}</b><span>${S.bn?'প্রথমবারেই সঠিক সিদ্ধান্ত':'good calls, first time'}</span></div>
-   ${c.workflow?'':`<div class="res-gears">${D4.svg({on:'all',loops:true,sweet:true,cls:'all'})}<p>${S.bn?'চারটা গিয়ারই ঘুরেছে। যেখানে মেলে, সেটাই AI fluency।':'All four gears turned. Where they meet is AI fluency.'}</p></div>`}
+   <div class="res-gears">${D4.svg({on:'all',loops:true,sweet:true,cls:'all'})}<p>${S.bn?'চারটা গিয়ারই ঘুরেছে। যেখানে মেলে, সেটাই AI fluency।':'All four gears turned. Where they meet is AI fluency.'}</p></div>
    ${c.callback&&S.mode!=='solo'&&window.GAMES?GAMES.callback(c.callback,x):''}
    ${c.say?`<div class="card"><h3>${S.bn?'তোমার ইংরেজি':'Your English today'}</h3><div class="dphr">${['del','des','dis','dil'].filter(d=>c.say[d]).map(d=>`<div class="dph d-${d}" data-say="${esc(c.say[d].en)}">${D4.badge(d,30)}<span><small>${D4.META[d].n}</small><span class="pq">${c.say[d].en}</span>${BN(c.say[d].bn)}</span>${sayBtn(c.say[d].en)}</div>`).join('')}</div></div>`:''}
    ${c.next?`<div class="pick-cards">${c.next.map(id=>{const L2=LESSONS[id];return L2?`<button class="pcard" data-start="${id}"><span class="pi" style="background:${L2.tint}">${L2.emoji}</span><span><em>${S.bn?'পরের মিশন':'Next mission'}</em><b>${esc(L2.title)}</b><span>${esc(L2.blurb)}</span></span></button>`:''}).join('')}</div>`:''}</div>`;
