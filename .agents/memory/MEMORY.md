@@ -2,3 +2,4 @@
 - [Replit Python dependencies](replit-python-user-site.md) — Use `.pythonlibs` locally and Nix for publishing; pip cannot modify immutable system Python.
 - [Nested Node package installation](nested-node-installation.md) — The package-install callback has no directory option and rejects CLI flags; nested pnpm workspaces need shell installation.
 - [Canonical branding](canonical-branding.md) — Keep site branding tied to the latest official brand repo; use Studio Modern lockups and the 03A on-light favicon.
+- [Design and writing](design-and-writing.md) — Present the visual/textual communication course as equally about writing and graphic design.
