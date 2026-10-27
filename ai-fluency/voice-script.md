@@ -395,9 +395,9 @@ Yes — TRUE. It matches.
 ### `r3-sheets-coach-0chj48r.wav` — The coach · 4 lines
 
 ```text
-"Economics student at Rajshahi University"
+"Economics student at রাজশাহী University"
 <long pause> <long pause>
-True. Her CV, B.S.S. (Honours) in Economics, Rajshahi University.
+True. Her CV, B.S.S. (Honours) in Economics, রাজশাহী University.
 <long pause> <long pause>
 Look again.
 <long pause> <long pause>

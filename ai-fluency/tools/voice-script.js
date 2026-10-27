@@ -145,7 +145,7 @@ fs.writeFileSync(path.join(AUD,'takes.json'),JSON.stringify(takes,null,1));
 const have=have0;
 /* the transcript is what is SAID; the key stays the words on screen */
 // Ayesha is said EYE-sha: two syllables, no y slide
-const spoken=t=>t.replace(/\b([A-Za-z0-9]+(?:_[A-Za-z0-9]+)+)\.(?:pdf|jpg|png|docx)\b/g,(m,n)=>n.replace(/_/g,' ')).replace(/_{3}/g,'…').replace(/Ayesha/g,'Eye-sha').replace(/Sathi/g,'সাথী').replace(/Chats \(WhatsApp-style\)/g,'Chats')
+const spoken=t=>t.replace(/\b([A-Za-z0-9]+(?:_[A-Za-z0-9]+)+)\.(?:pdf|jpg|png|docx)\b/g,(m,n)=>n.replace(/_/g,' ')).replace(/_{3}/g,'…').replace(/Ayesha/g,'Eye-sha').replace(/Sathi/g,'সাথী').replace(/Rajshahi/g,'রাজশাহী').replace(/Chats \(WhatsApp-style\)/g,'Chats')
   // a colon makes the model pause as long as a line break, which confuses the cutter
   .replace(/:\s+/g,', ').replace(/Tap ⋮/g,'Tap the three dots').replace(/Tap \+/g,'Tap plus').replace(/Tap 🔊/g,'Tap the speaker button').replace(/send ➤/g,'tap Send').replace(/■\s*/g,'')
   .replace(/৳\s?99/g,'ninety-nine taka').replace(/৳\s?2,500/g,'two thousand five hundred taka').replace(/৳\s?5,000/g,'five thousand taka')
