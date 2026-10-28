@@ -2082,6 +2082,15 @@ body.bangla .bn-inline{display:inline}
   font:inherit;text-align:left;cursor:pointer;
 }
 .print-option:hover{background:var(--moss-soft)}
+.print-lang{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:10px 14px;background:var(--surface-card)}
+.print-lang__lab{font-size:.85em;font-weight:600;color:var(--tx-muted)}
+.print-lang__seg{display:inline-flex;border:1px solid var(--rule-strong);border-radius:var(--radius-pill);overflow:hidden}
+.print-lang__btn{appearance:none;border:0;background:transparent;color:var(--tx);font:inherit;font-size:.88em;font-weight:600;
+  padding:5px 14px;cursor:pointer;min-height:32px}
+.print-lang__btn[lang="bn"]{font-family:'Noto Sans Bengali','Hind Siliguri',sans-serif}
+.print-lang__btn[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.print-lang__btn:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}
+.print-lang__note{flex-basis:100%;font-size:.78em;color:var(--tx-muted)}
 .print-option__icon{font-size:1.2em;line-height:1.2}
 .print-option .glyph.print-option__icon{width:30px;height:30px}
 .beat-mark .mark-ico{color:#1D211C;overflow:visible}
@@ -3309,7 +3318,7 @@ body.is-welcome #theme-pill{visibility:hidden}
   .ps-k-scenario .pp-map-h.k-west{color:#1B4F9C}
   .ps-k-scenario .pp-map-h.k-east{color:#B5231F}
   .ps-k-scenario .pp-map-k{display:flex;gap:5pt;align-items:center;padding:3pt 4pt;border-left:2.5pt solid var(--k)}
-  .ps-k-scenario .pp-map-k b{display:block;font-size:6.6pt;letter-spacing:.09em;text-transform:uppercase;color:var(--k)}
+  .ps-k-scenario .pp-map-k b{display:block;font-size:6.1pt;letter-spacing:.06em;text-transform:uppercase;color:var(--k)}
   .ps-k-scenario .pp-map-k i{display:block;font-family:'Spectral',Georgia,serif;font-size:7pt;color:#5F6A5C}
   .ps-k-scenario .pp-map-c{padding:2.5pt 6pt;font-size:7.2pt;line-height:1.3}
   .ps-k-scenario .pp-wv{background:#F2F5F9}
@@ -8377,6 +8386,14 @@ function bx(tag, cls, txt){
 }
 const sbOf = sx => (typeof SCEN_BN !== 'undefined' && SCEN_BN[sx.id]) || {};
 
+/* Which language the explanations print in. Bangla is the default, for the
+   classes this was built for; English is there for a class that reads it.
+   The listening is English either way. */
+let psLang = 'bn';
+try { if (localStorage.getItem('ei-print-lang') === 'en') psLang = 'en'; } catch (e) {}
+const PS_STEPS_EN = ['what is done?', 'one question that opens', 'three people, one question',
+                     'what all three said', 'from the outside in'];
+
 /* The five steps, with the same symbols the rail and the lesson's step panel
    use, so a student holding the paper can find their place on the screen. */
 const PS_STEPS = [
@@ -8394,8 +8411,12 @@ function psStep(box, n, line){
   b.appendChild(el('span', 'ps-step-n', String(n + 1)));
   h.appendChild(b);
   h.appendChild(el('span', 'ps-step-name', S[0]));
-  h.appendChild(bx('span', 'ps-step-bn', STEP_BN[S[0]]));
-  h.appendChild(bx('span', 'ps-step-line', line || S[2]));
+  if (psLang === 'en'){
+    h.appendChild(el('span', 'ps-step-line', line || PS_STEPS_EN[n]));
+  } else {
+    h.appendChild(bx('span', 'ps-step-bn', STEP_BN[S[0]]));
+    h.appendChild(bx('span', 'ps-step-line', line || S[2]));
+  }
   box.appendChild(h);
   return h;
 }
@@ -8548,7 +8569,7 @@ function psStepRail(){
     b.appendChild(el('span', 'ps-step-n', String(i + 1)));
     d.appendChild(b);
     d.appendChild(el('span', null, S[0]));
-    d.appendChild(bx('span', 'ps-rail-bn', RAIL_BN[S[0]]));
+    if (psLang !== 'en') d.appendChild(bx('span', 'ps-rail-bn', RAIL_BN[S[0]]));
     r.appendChild(d);
     if (i < PS_STEPS.length - 1) r.appendChild(el('span', 'ps-rail-arr', '→'));
   });
@@ -8772,7 +8793,8 @@ function psScenario(sx){
 function psLessonFig(L){
   const s = svg('0 0 ' + ZW + ' ' + ZH, 'zs instant ps-zs');
   const was = bnOn;
-  bnOn = true;
+  const bnOnly = psLang !== 'en';
+  bnOn = bnOnly;
   try { L.draw(s); } finally { bnOn = was; }
   if (L.dx){
     const w = zN(null, 'g', { transform: 'translate(' + L.dx + ' 0)' });
@@ -8797,7 +8819,7 @@ function psLessonFig(L){
   /* Bangla only: each Bangla line takes its English twin's place and size,
      and the English goes. A label with no Bangla twin (a name, a "?")
      stays as it is. */
-  s.querySelectorAll('text.zt-bn').forEach(b => {
+  if (bnOnly) s.querySelectorAll('text.zt-bn').forEach(b => {
     let en = b.previousElementSibling;
     while (en && !(en.tagName === 'text' && !en.classList.contains('zt-bn'))) en = en.previousElementSibling;
     if (!en) return;
@@ -8846,6 +8868,293 @@ function psLesson(){
   return s;
 }
 
+
+/* ---- the English sheets, for a class that reads English: the same pictures,
+   with the explanations in English instead of Bangla ---- */
+function psMastEn(prog, title, tag, aside){
+  return psMast(prog, el('h1', null, title), tag ? el('p', 'ps-tag', tag) : null, aside);
+}
+function psFieldEn(){
+  const s = el('div', 'ps ps-k-field');
+  s.appendChild(psHead('Field Sheet'));
+  s.appendChild(psMastEn('Culture Circles · Listening for Cultural Intelligence',
+    'Field Sheet',
+    'Watch what is done, ask one good question, listen to three people, then work inwards.',
+    psStepRail()));
+
+  const id = el('div', 'pp-idbar');
+  id.textContent = 'Name ______________________   Date ____________   Where ______________________';
+  s.appendChild(id);
+
+  const two = el('div', 'ps-2'); two.style.marginTop = '6pt';
+
+  const c1 = el('div');
+  psStep(c1, 0, 'only what a camera would record');
+  c1.appendChild(el('p', 'ps-cap', 'What I saw. No explanation yet.'));
+  const watch = el('div', 'pp-watch');
+  [1, 2, 3].forEach(i => { const f = el('div', 'pp-frame'); f.appendChild(el('span', null, String(i))); watch.appendChild(f); });
+  c1.appendChild(watch);
+  c1.appendChild(el('p', 'ps-cap', 'Why it surprised me'));
+  c1.appendChild(el('div', 'pp-lines pp-short'));
+
+  psStep(c1, 1, 'a question that opens, not one that closes');
+  const oc = el('div', 'pp-oc');
+  [['open', 'Opens', ['Tell me about the last time you…', 'Walk me through it, start to finish.']],
+   ['shut', 'Closes', ['Do you…? Is it…? (yes / no)', 'Why are you so…? (a judgment inside)']]].forEach(c => {
+    const d = el('div', 'pp-oc-' + c[0]);
+    d.appendChild(el('span', 'pp-chip pp-chip-' + c[0], (c[0] === 'open' ? '✓ ' : '✕ ') + c[1]));
+    c[2].forEach(t => d.appendChild(el('div', 'pp-oc-q', t)));
+    oc.appendChild(d);
+  });
+  c1.appendChild(oc);
+  c1.appendChild(el('p', 'ps-cap', 'My question'));
+  const qb = el('div', 'pp-bubble');
+  c1.appendChild(qb);
+  two.appendChild(c1);
+
+  const c2 = el('div');
+  psStep(c2, 2, 'three people, the same question');
+  [1, 2, 3].forEach(i => {
+    const r = el('div', 'pp-person');
+    const av = el('span', 'pp-av'); av.appendChild(icon('person')); r.appendChild(av);
+    const w = el('div', 'pp-person-w');
+    w.appendChild(el('p', 'ps-cap', 'Person ' + i + '  ______________________'));
+    w.appendChild(el('div', 'pp-lines'));
+    r.appendChild(w);
+    c2.appendChild(r);
+  });
+  psStep(c2, 3, 'one person is a story, three are a pattern');
+  const ck = el('div', 'pp-check');
+  ck.appendChild(psVenn(null));
+  const ckw = el('div');
+  ckw.appendChild(el('p', 'ps-cap', 'Said by all three — the culture'));
+  ckw.appendChild(el('div', 'pp-lines pp-short'));
+  ckw.appendChild(el('p', 'ps-cap', 'Said by only one — set it aside'));
+  ckw.appendChild(el('div', 'pp-rule'));
+  ck.appendChild(ckw);
+  c2.appendChild(ck);
+  two.appendChild(c2);
+  s.appendChild(two);
+
+  psStep(s, 4, 'both sets of rings, the same situation');
+  const grid = el('div', 'pp-mapgrid');
+  [['Their rings', 'k-west'], ['My own rings', 'k-east']].forEach(side => {
+    const col = el('div', 'pp-mapcol');
+    const hd = el('div', 'pp-maphd ' + side[1]);
+    hd.appendChild(psTarget(null, 'pt-side'));
+    hd.appendChild(el('span', null, side[0]));
+    col.appendChild(hd);
+    RINGS.forEach(R => {
+      const b = el('div', 'pp-box B-' + R.key);
+      b.appendChild(psTarget(R.key));
+      const w = el('div');
+      const cap = el('p', 'ps-cap L-' + R.key);
+      cap.textContent = R.name + ' ';
+      cap.appendChild(el('span', 'pp-q', R.q));
+      w.appendChild(cap);
+      w.appendChild(el('div', 'pp-rule'));
+      w.appendChild(el('div', 'pp-rule'));
+      b.appendChild(w);
+      col.appendChild(b);
+    });
+    grid.appendChild(col);
+  });
+  s.appendChild(grid);
+
+  const traps = el('div', 'ps-note pp-traps');
+  [['Restatement', 'you renamed the behaviour and called it a value.'],
+   ['Judgment', 'you wrote how you feel, not what they put first.'],
+   ['Stereotype', 'it explains everything and no interview can check it.']]
+   .forEach(t => { const d = el('div');
+     d.appendChild(el('b', null, '✕ ' + t[0]));
+     d.appendChild(el('span', null, t[1])); traps.appendChild(d); });
+  s.appendChild(traps);
+
+  s.appendChild(psFoot());
+  return s;
+}
+
+function psScenarioEn(sx){
+  const s = el('div', 'ps ps-k-scenario');
+  const th = THEMES[sx.theme];
+  const n = SCENARIOS.indexOf(sx) + 1;
+  const SCN = (typeof SCENES !== 'undefined' && SCENES[sx.id]) || null;
+  s.appendChild(psHead('Scenario ' + n + ' of ' + SCENARIOS.length + ' · Teaching sheet'));
+
+  const chips = el('div', 'ps-chips');
+  [['pin', sx.setting], [themeIco(sx.theme), th.label]].forEach(c => {
+    if (!c[1]) return;
+    const d = el('span', 'ps-chip'); d.appendChild(icon(c[0])); d.appendChild(el('span', null, c[1])); chips.appendChild(d);
+  });
+  s.appendChild(psMastEn('Culture Circles · A story from America', sx.title, null, chips));
+
+  /* 1 · WATCH — the scene comic, six pictures in a row */
+  psStep(s, 0, 'the story, one picture at a time');
+  const strip = el('div', 'pp-comic');
+  const cells = SCN ? SCN.panels.length : 3;
+  for (let i = 0; i < cells; i++){
+    const f = el('div', 'pp-cell');
+    if (SCN && SCN.panelSheet){
+      /* one drawing holds all six, two across and three down: each cell is a
+         window onto its own sixth of it */
+      const im = psImg('scene/panels/' + sx.id + '-sheet.webp', 'pp-sheet');
+      im.style.left = -(i % 2) * 100 + '%';
+      im.style.top = -Math.floor(i / 2) * 100 + '%';
+      im.addEventListener('load', () => {
+        f.style.aspectRatio = (im.naturalWidth / 2) + ' / ' + (im.naturalHeight / 3);
+      });
+      f.appendChild(im);
+    } else if (SCN){
+      f.appendChild(psImg('scene/panels/' + sx.id + '-' + (i + 1) + '.jpg', 'pp-one'));
+    } else {
+      f.appendChild(psImg('strip/' + sx.id + '-' + (i + 1) + '.jpg', 'pp-one'));
+    }
+    f.appendChild(el('span', 'pp-cell-n', String(i + 1)));
+    strip.appendChild(f);
+  }
+  s.appendChild(strip);
+  const notice = el('div', 'pp-notice');
+  notice.appendChild(el('p', 'pp-obs', sx.observation));
+  const band = el('div', 'pp-noticeband');
+  band.appendChild(icon('glasses'));
+  band.appendChild(el('span', null, sx.noticing));
+  notice.appendChild(band);
+  s.appendChild(notice);
+
+  /* 2 · ASK — one question opens, three close */
+  psStep(s, 1, 'a good question opens a conversation; a bad one closes it');
+  const ask = el('div', 'pp-ask');
+  const good = sx.questions.find(q => q.ok);
+  const op = el('div', 'pp-open');
+  const who = el('div', 'pp-asker');
+  const av = el('span', 'pp-av pp-av-teal'); av.appendChild(icon('person')); who.appendChild(av);
+  who.appendChild(el('span', 'pp-chip pp-chip-open', '✓ Opens'));
+  op.appendChild(who);
+  const bub = el('div', 'pp-say');
+  bub.appendChild(el('div', 'pp-say-q', '“' + good.q + '”'));
+  bub.appendChild(el('div', 'pp-say-why', good.why));
+  op.appendChild(bub);
+  ask.appendChild(op);
+  const cl = el('div', 'pp-closers');
+  sx.questions.filter(q => !q.ok).forEach(q => {
+    const d = el('div', 'pp-closer');
+    d.appendChild(el('span', 'pp-chip pp-chip-shut', '✕ ' + ((FLAWS[q.flaw] || {}).short || 'Closes')));
+    d.appendChild(el('span', 'pp-closer-q', '“' + q.q + '”'));
+    cl.appendChild(d);
+  });
+  ask.appendChild(cl);
+  s.appendChild(ask);
+
+  /* 3 · LISTEN — the three faces, and what each one said */
+  psStep(s, 2, 'read each answer aloud, or let three students read');
+  const three = el('div', 'ps-3 pp-three');
+  sx.speakers.forEach((sp, j) => {
+    const c = el('div', 'pp-spk');
+    const hd = el('div', 'pp-spk-hd');
+    hd.appendChild(psImg('portraits/' + sx.id + '-' + (j + 1) + '.jpg', 'pp-face', sp.name));
+    const id = el('div');
+    id.appendChild(el('div', 'pp-who', sp.name));
+    id.appendChild(el('div', 'pp-meta', sp.age + ' · ' + sp.job));
+    id.appendChild(el('div', 'pp-meta', sp.city));
+    hd.appendChild(id);
+    c.appendChild(hd);
+    c.appendChild(el('div', 'pp-script', sp.script));
+    three.appendChild(c);
+  });
+  s.appendChild(three);
+
+  /* 4 · CHECK — the circles, numbered to the list beside them */
+  psStep(s, 3, 'what all three said is the culture');
+  const ck = el('div', 'pp-check');
+  ck.appendChild(psVenn(sx));
+  const lists = el('div', 'pp-claims');
+  const cms = psClaims(sx);
+  const shared = el('div', 'pp-cl-all');
+  shared.appendChild(el('p', 'ps-cap pp-cap-teal', 'All three said it — the pattern'));
+  const own = el('div', 'pp-cl-one');
+  own.appendChild(el('p', 'ps-cap', 'Only one said it — that person'));
+  cms.forEach((cm, i) => {
+    const r = el('div', 'pp-claim' + (cm.shared ? ' is-all' : ''));
+    r.appendChild(el('span', 'pp-tok', String(i + 1)));
+    const t = el('span', 'pp-claim-t', cm.text);
+    if (!cm.shared && cm.who) t.appendChild(el('b', 'pp-claim-who', ' — ' + cm.who));
+    r.appendChild(t);
+    (cm.shared ? shared : own).appendChild(r);
+  });
+  lists.appendChild(shared);
+  lists.appendChild(own);
+  ck.appendChild(lists);
+  s.appendChild(ck);
+
+  /* 5 · MAP — both sets of rings, outside in */
+  psStep(s, 4, 'start from what they did, then work inwards');
+  const east = sx.contrast.east_label || 'Bengali';
+  const tbl = el('div', 'pp-map');
+  const hr = el('div', 'pp-map-row pp-map-hd');
+  hr.appendChild(el('div'));
+  [['k-west', 'Western', 'pp-wv'], ['k-east', east, 'pp-ev']].forEach(h => {
+    const d = el('div', 'pp-map-h ' + h[0]);
+    d.appendChild(psTarget(null, 'pt-side'));
+    d.appendChild(el('span', null, h[1]));
+    hr.appendChild(d);
+  });
+  tbl.appendChild(hr);
+  RINGS.forEach(R => {
+    const tr = el('div', 'pp-map-row k-' + R.key);
+    const k = el('div', 'pp-map-k');
+    k.appendChild(psTarget(R.key));
+    const kn = el('div');
+    kn.appendChild(el('b', null, R.name));
+    kn.appendChild(el('i', null, R.q));
+    k.appendChild(kn);
+    tr.appendChild(k);
+    tr.appendChild(el('div', 'pp-map-c pp-wv', sx.rings[R.key]));
+    tr.appendChild(el('div', 'pp-map-c pp-ev', sx.contrast[R.key]));
+    tbl.appendChild(tr);
+  });
+  s.appendChild(tbl);
+
+  const pb = el('div', 'ps-band pp-punch');
+  pb.appendChild(icon('target'));
+  pb.appendChild(el('span', null, sx.punch + ' ' + sx.contrast.note));
+  s.appendChild(pb);
+  s.appendChild(psFoot());
+  return s;
+}
+
+function psLessonEn(){
+  const s = el('div', 'ps ps-k-lesson');
+  s.appendChild(psHead('Lesson Sheet'));
+  s.appendChild(psMastEn('Culture Circles · Before You Start', 'What Is Culture?',
+    'A group of people who answer four questions the same way. Only the first can be seen.',
+    psStepRail()));
+
+  const grid = el('div', 'pp-panels');
+  LESSON.forEach((L, i) => {
+    const c = el('div', 'pp-panel');
+    const hd = el('div', 'pp-panel-hd');
+    hd.appendChild(el('span', 'pp-panel-n', String(i + 1)));
+    const ht = el('div');
+    ht.appendChild(el('p', 'pp-panel-k', L.kicker));
+    ht.appendChild(el('h3', null, L.title));
+    hd.appendChild(ht);
+    c.appendChild(hd);
+    const fig = el('div', 'pp-panel-fig');
+    fig.appendChild(psLessonFig(L));
+    c.appendChild(fig);
+    c.appendChild(el('p', 'pp-panel-cap', L.beats[L.beats.length - 1][0]));
+    grid.appendChild(c);
+  });
+  s.appendChild(grid);
+
+  s.appendChild(el('div', 'ps-band',
+    'You cannot see a value. You have to ask — and then check the answer against other people. ' +
+    'That is an ethnographic interview, and it is real listening practice at the same time.'));
+  s.appendChild(psFoot());
+  return s;
+}
+
+
 /* Build exactly the sheets asked for, print, then take them back out of the
    page. A set prints one sheet to a side — no duplex, no stapling.
 
@@ -8854,8 +9163,8 @@ function psLesson(){
    is scaled down to fit it — a long transcript must never push a sheet onto
    a second page. */
 const SHEETS = {
-  field:  psField,
-  lesson: psLesson
+  field:  () => psLang === 'en' ? psFieldEn() : psField(),
+  lesson: () => psLang === 'en' ? psLessonEn() : psLesson()
 };
 const PS_PAGE_H = 275 * 96 / 25.4;      /* A4 less the 11mm top and bottom margins, in CSS px */
 function psFit(){
@@ -8882,7 +9191,7 @@ function printSheet(what){
     if (SHEETS[k]) { psRoot.appendChild(SHEETS[k]()); return; }
     const id = k === 'scenario' ? sc.id : k.replace(/^sc:/, '');
     const found = SCENARIOS.find(x => x.id === id);
-    if (found) psRoot.appendChild(psScenario(found));
+    if (found) psRoot.appendChild(psLang === 'en' ? psScenarioEn(found) : psScenario(found));
   });
   if (!psRoot.children.length) return;
   psBusy = true;
@@ -8902,10 +9211,10 @@ function printSheet(what){
 function printMenu(){
   const rows = [
     ['field',  'ask', 'Field sheet',  'Blank. For running a real interview outside the room.'],
-    ['lesson', 'book', 'Lesson sheet', 'The eight opening pictures, each with the line it ends on, in Bangla.']
+    ['lesson', 'book', 'Lesson sheet', 'The eight opening pictures, each with the line it ends on.']
   ];
   SCENARIOS.forEach(x => rows.push(['sc:' + x.id, themeIco(x.theme), x.title,
-    x.setting + ' · English only for the listening; everything else in Bangla']));
+    x.setting + ' · the comic, the three people, the circles and both sets of rings']));
   rows.push([SCENARIOS.map(x => 'sc:' + x.id), 'eye', 'All ' + SCENARIOS.length + ' scenario sheets',
              'One page each, in one print job.']);
   rows.push([['field', 'lesson'].concat(SCENARIOS.map(x => 'sc:' + x.id)), 'rank',
@@ -9098,6 +9407,31 @@ scenToggle.onclick = () => {
 };
 
 const printToggle = $('#m-print-toggle'), printOptions = $('#print-options');
+/* the sheets' language: Bangla explanations (the default) or English ones */
+(function(){
+  const row = el('div', 'print-lang');
+  const lab = el('span', 'print-lang__lab', 'Explanations in');
+  row.appendChild(lab);
+  const seg = el('div', 'print-lang__seg');
+  const opts = [['bn', 'বাংলা'], ['en', 'English']];
+  const paint = () => seg.querySelectorAll('button').forEach(b =>
+    b.setAttribute('aria-pressed', b.dataset.lang === psLang ? 'true' : 'false'));
+  opts.forEach(o => {
+    const b = el('button', 'print-lang__btn', o[1]);
+    b.type = 'button'; b.dataset.lang = o[0];
+    if (o[0] === 'bn') b.lang = 'bn';
+    b.onclick = () => {
+      psLang = o[0];
+      try { localStorage.setItem('ei-print-lang', psLang); } catch (e) {}
+      paint();
+    };
+    seg.appendChild(b);
+  });
+  row.appendChild(seg);
+  row.appendChild(el('small', 'print-lang__note', 'The listening stays in English either way.'));
+  paint();
+  printOptions.appendChild(row);
+})();
 printMenu().forEach(row => {
   const b = el('button', 'print-option');
   b.type = 'button';
