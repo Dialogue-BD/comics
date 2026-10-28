@@ -3267,7 +3267,7 @@ body.is-welcome #theme-pill{visibility:hidden}
     font-family:'Spectral',Georgia,serif;font-size:8.4pt;line-height:1.35}
   .ps-k-scenario .pp-noticeband .ico{flex:0 0 auto;width:13pt;height:13pt;color:#D2B978}
 
-  .ps-k-scenario .pp-ask{display:grid;grid-template-columns:1.05fr 1fr;gap:10pt;align-items:start}
+  .ps-k-scenario .pp-ask{display:grid;grid-template-columns:.9fr 1.1fr;gap:10pt;align-items:start}
   .ps-k-scenario .pp-open{display:flex;gap:6pt;align-items:flex-start}
   .ps-k-scenario .pp-asker{display:flex;flex-direction:column;align-items:center;gap:3pt;flex:0 0 auto;padding-top:2pt}
   .ps-k-scenario .pp-say{position:relative;flex:1;background:#EEF7F5;border:.75pt solid #6fb0a8;border-radius:8pt;padding:5pt 8pt}
@@ -3328,6 +3328,52 @@ body.is-welcome #theme-pill{visibility:hidden}
   .ps-k-lesson .pp-panel-fig{margin-top:3pt}
   .ps-k-lesson .pp-panel-fig svg{display:block;width:100%;height:auto;aspect-ratio:1600/620}
   .ps-k-lesson .pp-panel-cap{margin:2pt 0 0;text-align:center;font-weight:600;font-size:7.6pt;color:#1D211C}
+
+/* ---- the Bangla on paper ----
+   Bangla glyphs sit small beside Latin at the same point size, so every
+   Bangla line is set a notch larger, and never in italic or small caps,
+   which Bangla does not have. */
+.ps .zs .zt-solo{font-family:'Noto Sans Bengali','Hind Siliguri','Bangla Sangam MN',sans-serif;font-style:normal;letter-spacing:0}
+.ps .bnx{font-family:'Noto Sans Bengali','Hind Siliguri','Bangla Sangam MN',sans-serif;font-style:normal;
+  letter-spacing:0;text-transform:none}
+.ps h1.bnx{font-weight:700;font-size:18pt;line-height:1.2}
+.ps .ps-tag.bnx{font-size:8.6pt;line-height:1.45}
+.ps .ps-cap.bnx{font-size:7.4pt;font-weight:600;color:#5F6A5C}
+.ps-step-bn{font-size:8pt;font-weight:700;color:#134219;white-space:nowrap}
+.ps-step-name{white-space:nowrap}
+.ps-step .ps-step-line.bnx{font-size:8.2pt;font-weight:400;color:#5F6A5C}
+.ps-rail-bn{font-size:6pt !important;font-weight:600;color:#5F6A5C}
+.ps .pp-chip.bnx{font-size:6.8pt;display:inline-flex;align-items:center;gap:2pt}
+.ps .pp-chip .ico{width:7pt;height:7pt}
+.ps .pp-gloss{font-size:7pt;line-height:1.35;color:#5F6A5C;font-weight:400;margin-top:1pt}
+.ps .pp-ringlab-top{display:flex;align-items:baseline;gap:4pt;flex-wrap:wrap}
+.ps .pp-ringlab b{font-size:8.6pt;font-weight:700;color:var(--k,inherit)}
+.ps .pp-ringlab-en{font-size:5.6pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5F6A5C}
+.ps .pp-ringlab i{display:block;font-size:7pt;color:#5F6A5C}
+.ps-k-field .pp-ringlab-top .pp-q{font-size:7.2pt;color:#5F6A5C}
+.ps-k-field .L-behavior{--k:#8A5610} .ps-k-field .L-value{--k:#0A6A62}
+.ps-k-field .L-belief{--k:#3F4FA8} .ps-k-field .L-worldview{--k:#A8322A}
+.ps-k-scenario .pp-rules{display:flex;flex-wrap:wrap;gap:3pt 8pt;margin-top:4pt}
+.ps-k-scenario .pp-rule-ok{display:inline-flex;align-items:center;gap:3pt;font-size:6.8pt;color:#0A6A62}
+.ps-k-scenario .pp-rule-ok .ico{width:8pt;height:8pt}
+.ps-k-scenario .pp-obs.bnx{font-size:7.6pt;line-height:1.45}
+.ps-k-scenario .pp-noticeband .bnx{font-size:8pt;line-height:1.45}
+.ps-k-scenario .pp-claim-t.bnx{font-size:7.4pt;line-height:1.36}
+.ps-k-scenario .pp-claim-who{font-family:'Public Sans',sans-serif;font-size:6.8pt}
+.ps-k-scenario .pp-map-c.bnx{font-size:7.3pt;line-height:1.36}
+.ps-k-scenario .pp-map-row{grid-template-columns:70pt 1fr 1fr}
+.ps-k-scenario .pp-map-k .ps-target{width:16pt;height:16pt}
+.ps-k-scenario .pp-map-k .pp-ringlab-top{flex-direction:column;gap:0}
+.ps-k-scenario .pp-meta.bnx{font-size:6.6pt;line-height:1.35}
+.ps-k-scenario .pp-closer{align-items:flex-start}
+.ps-k-scenario .pp-closer .pp-gloss{font-size:6.6pt;line-height:1.3}
+.ps-k-scenario .pp-closers{gap:3pt}
+.ps .ps-band.bnx,.ps .pp-punch .bnx{font-size:8pt;line-height:1.5}
+.ps-k-lesson .pp-panel-k.bnx{font-size:6.6pt;font-weight:700;color:#795E20}
+.ps-k-lesson .pp-panel h3.bnx{font-size:9.6pt;font-weight:700;line-height:1.3}
+.ps-k-lesson .pp-panel-cap.bnx{font-size:8pt}
+.ps-k-field .pp-traps .bnx{font-size:7.2pt}
+.ps-k-field .pp-idbar.bnx{font-size:8.2pt}
 
 /* off-screen, at the page's printed width, so a sheet can be measured and
    its pictures loaded before the print dialog opens */
@@ -8304,8 +8350,8 @@ function psMast(prog, title, tag, aside){
   const m = el('div', 'ps-mast');
   const tx = el('div', 'ps-mast-t');
   tx.appendChild(el('p', 'ps-prog', prog));
-  tx.appendChild(el('h1', null, title));
-  if (tag) tx.appendChild(el('p', 'ps-tag', tag));
+  tx.appendChild(title);
+  if (tag) tx.appendChild(tag);
   m.appendChild(tx);
   if (aside) m.appendChild(aside);
   return m;
@@ -8316,16 +8362,29 @@ function psFoot(){
   f.appendChild(el('span', null, 'dialogue-bd.com'));
   return f;
 }
-function psSection(box, title){ box.appendChild(el('h2', null, title)); }
+
+/* ------------------------------------------------------- the paper's two languages
+   After the first class trial the rule became: English for what the students
+   hear or say, Bangla for everything that explains it. So on paper the English
+   is only the listening — the three answers and the interview questions — and
+   the names that tie the sheet to the screen (the story's title, the step
+   words on the rail, the speakers). Everything else is in Bangla, and never
+   doubled: a line in two languages is two lines to read. */
+function bx(tag, cls, txt){
+  const n = el(tag, 'bnx' + (cls ? ' ' + cls : ''), txt);
+  n.lang = 'bn';
+  return n;
+}
+const sbOf = sx => (typeof SCEN_BN !== 'undefined' && SCEN_BN[sx.id]) || {};
 
 /* The five steps, with the same symbols the rail and the lesson's step panel
    use, so a student holding the paper can find their place on the screen. */
 const PS_STEPS = [
-  ['Watch',  'eye',    'what is done?'],
-  ['Ask',    'ask',    'one question that opens'],
-  ['Listen', 'ear',    'three people, one question'],
-  ['Check',  'tick',   'what all three said'],
-  ['Map',    'target', 'from the outside in']
+  ['Watch',  'eye',    'গল্পটি — একটির পর একটি ছবি'],
+  ['Ask',    'ask',    'যে প্রশ্ন কথা খোলে, আর যে প্রশ্ন কথা থামায়'],
+  ['Listen', 'ear',    'তিনজন মানুষ, একটি প্রশ্ন'],
+  ['Check',  'tick',   'তিনজনই যা বলেন, সেটিই সংস্কৃতি'],
+  ['Map',    'target', 'বাইরে থেকে ভেতরে']
 ];
 function psStep(box, n, line){
   const S = PS_STEPS[n];
@@ -8335,12 +8394,12 @@ function psStep(box, n, line){
   b.appendChild(el('span', 'ps-step-n', String(n + 1)));
   h.appendChild(b);
   h.appendChild(el('span', 'ps-step-name', S[0]));
-  h.appendChild(el('span', 'ps-step-line', line || S[2]));
+  h.appendChild(bx('span', 'ps-step-bn', STEP_BN[S[0]]));
+  h.appendChild(bx('span', 'ps-step-line', line || S[2]));
   box.appendChild(h);
   return h;
 }
-/* the ring target, small, with one ring picked out — used as the row marker
-   for each ring and as the West / Bengali column heads */
+/* the small ring target, with one ring picked out */
 function psTarget(lit, cls){
   const s = svg('0 0 100 100', 'ps-target' + (cls ? ' ' + cls : ''));
   [48, 36, 24, 12].forEach((r, i) => {
@@ -8350,7 +8409,17 @@ function psTarget(lit, cls){
   });
   return s;
 }
-/* a square picture, cropped to fit its frame — the speakers' portraits */
+/* a ring's label: its Bangla name, with the English word the screen uses
+   kept small beside it so the two can be matched */
+function psRingLabel(R, withQ){
+  const d = el('div', 'pp-ringlab');
+  const top = el('div', 'pp-ringlab-top L-' + R.key);
+  top.appendChild(bx('b', null, RING_BN[R.key][0]));
+  top.appendChild(el('span', 'pp-ringlab-en', R.name));
+  d.appendChild(top);
+  if (withQ) d.appendChild(bx('i', null, RING_BN[R.key][1]));
+  return d;
+}
 function psImg(src, cls, alt){
   const im = new Image();
   im.className = cls || '';
@@ -8360,86 +8429,94 @@ function psImg(src, cls, alt){
   im.src = src;
   return im;
 }
+/* an English line with its Bangla meaning under it, small and muted — used
+   only for the interview questions, which have to be met in English */
+function psEnBn(en, bn, cls){
+  const d = el('div', cls || '');
+  d.appendChild(el('div', 'pp-en', en));
+  if (bn) d.appendChild(bx('div', 'pp-gloss', bn));
+  return d;
+}
 
 /* ---- A · the blank field sheet, for a real interview outside the room ---- */
 function psField(){
   const s = el('div', 'ps ps-k-field');
   s.appendChild(psHead('Field Sheet'));
-  s.appendChild(psMast('Culture Circles · Listening for Cultural Intelligence',
-    'Field Sheet',
-    'Watch what is done, ask one good question, listen to three people, then work inwards.',
+  s.appendChild(psMast('Culture Circles · Field Sheet',
+    bx('h1', null, 'মাঠের পাতা'),
+    bx('p', 'ps-tag', 'দেখুন কী করা হয়, একটি ভালো প্রশ্ন করুন, তিনজনের কথা শুনুন — তারপর ভেতরের দিকে যান।'),
     psStepRail()));
 
-  const id = el('div', 'pp-idbar');
-  id.textContent = 'Name ______________________   Date ____________   Where ______________________';
+  const id = bx('div', 'pp-idbar');
+  id.textContent = 'নাম ______________________   তারিখ ____________   কোথায় ______________________';
   s.appendChild(id);
 
   const two = el('div', 'ps-2'); two.style.marginTop = '6pt';
 
   const c1 = el('div');
-  psStep(c1, 0, 'only what a camera would record');
-  c1.appendChild(el('p', 'ps-cap', 'What I saw. No explanation yet.'));
+  psStep(c1, 0, 'শুধু যা ক্যামেরায় ধরা পড়ত');
+  c1.appendChild(bx('p', 'ps-cap', 'যা দেখলাম — এখনো কোনো ব্যাখ্যা নয়'));
   const watch = el('div', 'pp-watch');
   [1, 2, 3].forEach(i => { const f = el('div', 'pp-frame'); f.appendChild(el('span', null, String(i))); watch.appendChild(f); });
   c1.appendChild(watch);
-  c1.appendChild(el('p', 'ps-cap', 'Why it surprised me'));
+  c1.appendChild(bx('p', 'ps-cap', 'কেন অবাক লাগল'));
   c1.appendChild(el('div', 'pp-lines pp-short'));
 
-  psStep(c1, 1, 'a question that opens, not one that closes');
+  psStep(c1, 1);
   const oc = el('div', 'pp-oc');
-  [['open', 'Opens', ['Tell me about the last time you…', 'Walk me through it, start to finish.']],
-   ['shut', 'Closes', ['Do you…? Is it…? (yes / no)', 'Why are you so…? (a judgment inside)']]].forEach(c => {
+  [['open', '✓ কথা খোলে', [['Tell me about the last time you…', 'শেষবার যখন আপনি… সেটার কথা বলুন।'],
+                           ['Walk me through it, start to finish.', 'শুরু থেকে শেষ পর্যন্ত বলুন।']]],
+   ['shut', '✕ কথা থামায়', [['Do you…? Is it…?', 'উত্তর শুধু হ্যাঁ / না'],
+                            ['Why are you so…?', 'প্রশ্নের ভেতরেই বিচার লুকানো']]]].forEach(c => {
     const d = el('div', 'pp-oc-' + c[0]);
-    d.appendChild(el('span', 'pp-chip pp-chip-' + c[0], (c[0] === 'open' ? '✓ ' : '✕ ') + c[1]));
-    c[2].forEach(t => d.appendChild(el('div', 'pp-oc-q', t)));
+    d.appendChild(bx('span', 'pp-chip pp-chip-' + c[0], c[1]));
+    c[2].forEach(t => d.appendChild(psEnBn(t[0], t[1], 'pp-oc-q')));
     oc.appendChild(d);
   });
   c1.appendChild(oc);
-  c1.appendChild(el('p', 'ps-cap', 'My question'));
-  const qb = el('div', 'pp-bubble');
-  c1.appendChild(qb);
+  c1.appendChild(bx('p', 'ps-cap', 'আমার প্রশ্ন — ইংরেজিতে লিখুন'));
+  c1.appendChild(el('div', 'pp-bubble'));
   two.appendChild(c1);
 
   const c2 = el('div');
-  psStep(c2, 2, 'three people, the same question');
+  psStep(c2, 2);
   [1, 2, 3].forEach(i => {
     const r = el('div', 'pp-person');
     const av = el('span', 'pp-av'); av.appendChild(icon('person')); r.appendChild(av);
     const w = el('div', 'pp-person-w');
-    w.appendChild(el('p', 'ps-cap', 'Person ' + i + '  ______________________'));
+    w.appendChild(bx('p', 'ps-cap', 'ব্যক্তি ' + bnNum(i) + '  ______________________'));
     w.appendChild(el('div', 'pp-lines'));
     r.appendChild(w);
     c2.appendChild(r);
   });
-  psStep(c2, 3, 'one person is a story, three are a pattern');
+  psStep(c2, 3, 'একজন মানে একটি গল্প, তিনজন মানে একটি ধারা');
   const ck = el('div', 'pp-check');
   ck.appendChild(psVenn(null));
   const ckw = el('div');
-  ckw.appendChild(el('p', 'ps-cap', 'Said by all three — the culture'));
+  ckw.appendChild(bx('p', 'ps-cap', 'তিনজনই বলেছেন — এটিই সংস্কৃতি'));
   ckw.appendChild(el('div', 'pp-lines pp-short'));
-  ckw.appendChild(el('p', 'ps-cap', 'Said by only one — set it aside'));
+  ckw.appendChild(bx('p', 'ps-cap', 'কেবল একজন বলেছেন — সরিয়ে রাখুন'));
   ckw.appendChild(el('div', 'pp-rule'));
   ck.appendChild(ckw);
   c2.appendChild(ck);
   two.appendChild(c2);
   s.appendChild(two);
 
-  psStep(s, 4, 'both sets of rings, the same situation');
+  psStep(s, 4, 'একই ঘটনা, দুই সেট বৃত্ত');
   const grid = el('div', 'pp-mapgrid');
-  [['Their rings', 'k-west'], ['My own rings', 'k-east']].forEach(side => {
+  [['তাঁদের বৃত্ত', 'k-west'], ['আমার নিজের বৃত্ত', 'k-east']].forEach(side => {
     const col = el('div', 'pp-mapcol');
     const hd = el('div', 'pp-maphd ' + side[1]);
     hd.appendChild(psTarget(null, 'pt-side'));
-    hd.appendChild(el('span', null, side[0]));
+    hd.appendChild(bx('span', null, side[0]));
     col.appendChild(hd);
     RINGS.forEach(R => {
       const b = el('div', 'pp-box B-' + R.key);
       b.appendChild(psTarget(R.key));
       const w = el('div');
-      const cap = el('p', 'ps-cap L-' + R.key);
-      cap.textContent = R.name + ' ';
-      cap.appendChild(el('span', 'pp-q', R.q));
-      w.appendChild(cap);
+      const lab = psRingLabel(R, false);
+      lab.querySelector('.pp-ringlab-top').appendChild(bx('i', 'pp-q', RING_BN[R.key][1]));
+      w.appendChild(lab);
       w.appendChild(el('div', 'pp-rule'));
       w.appendChild(el('div', 'pp-rule'));
       b.appendChild(w);
@@ -8450,12 +8527,12 @@ function psField(){
   s.appendChild(grid);
 
   const traps = el('div', 'ps-note pp-traps');
-  [['Restatement', 'you renamed the behaviour and called it a value.'],
-   ['Judgment', 'you wrote how you feel, not what they put first.'],
-   ['Stereotype', 'it explains everything and no interview can check it.']]
+  [['restatement', 'আচরণটাকেই নতুন নাম দিয়ে মূল্যবোধ বলা হয়েছে।'],
+   ['judgment',    'তাঁরা কী আগে রাখেন তা নয় — আপনার কেমন লাগে, তা লেখা হয়েছে।'],
+   ['stereotype',  'সবকিছু ব্যাখ্যা করে, অথচ কোনো সাক্ষাৎকার দিয়ে যাচাই করা যায় না।']]
    .forEach(t => { const d = el('div');
-     d.appendChild(el('b', null, '✕ ' + t[0]));
-     d.appendChild(el('span', null, t[1])); traps.appendChild(d); });
+     d.appendChild(bx('b', null, '✕ ' + ((CHIP_FAULTS[t[0]] || {}).label_bn || t[0])));
+     d.appendChild(bx('span', null, t[1])); traps.appendChild(d); });
   s.appendChild(traps);
 
   s.appendChild(psFoot());
@@ -8471,6 +8548,7 @@ function psStepRail(){
     b.appendChild(el('span', 'ps-step-n', String(i + 1)));
     d.appendChild(b);
     d.appendChild(el('span', null, S[0]));
+    d.appendChild(bx('span', 'ps-rail-bn', RAIL_BN[S[0]]));
     r.appendChild(d);
     if (i < PS_STEPS.length - 1) r.appendChild(el('span', 'ps-rail-arr', '→'));
   });
@@ -8535,20 +8613,21 @@ function psClaims(sx){
    pictures the class sees: the comic, the faces, the circles, the rings ---- */
 function psScenario(sx){
   const s = el('div', 'ps ps-k-scenario');
-  const th = THEMES[sx.theme];
+  const SB = sbOf(sx);
   const n = SCENARIOS.indexOf(sx) + 1;
   const SCN = (typeof SCENES !== 'undefined' && SCENES[sx.id]) || null;
-  s.appendChild(psHead('Scenario ' + n + ' of ' + SCENARIOS.length + ' · Teaching sheet'));
+  s.appendChild(psHead('Scenario ' + n + ' of ' + SCENARIOS.length));
 
   const chips = el('div', 'ps-chips');
-  [['pin', sx.setting], [themeIco(sx.theme), th.label]].forEach(c => {
+  [['pin', SB.setting || sx.setting], [themeIco(sx.theme), THEME_BN[sx.theme] || THEMES[sx.theme].label]].forEach(c => {
     if (!c[1]) return;
-    const d = el('span', 'ps-chip'); d.appendChild(icon(c[0])); d.appendChild(el('span', null, c[1])); chips.appendChild(d);
+    const d = el('span', 'ps-chip'); d.appendChild(icon(c[0])); d.appendChild(bx('span', null, c[1])); chips.appendChild(d);
   });
-  s.appendChild(psMast('Culture Circles · A story from America', sx.title, null, chips));
+  s.appendChild(psMast('Culture Circles', el('h1', null, sx.title),
+    sx.title_bn ? bx('p', 'ps-tag', sx.title_bn) : null, chips));
 
   /* 1 · WATCH — the scene comic, six pictures in a row */
-  psStep(s, 0, 'the story, one picture at a time');
+  psStep(s, 0);
   const strip = el('div', 'pp-comic');
   const cells = SCN ? SCN.panels.length : 3;
   for (let i = 0; i < cells; i++){
@@ -8573,39 +8652,44 @@ function psScenario(sx){
   }
   s.appendChild(strip);
   const notice = el('div', 'pp-notice');
-  notice.appendChild(el('p', 'pp-obs', sx.observation));
+  notice.appendChild(bx('p', 'pp-obs', sx.observation_bn || sx.observation));
   const band = el('div', 'pp-noticeband');
   band.appendChild(icon('glasses'));
-  band.appendChild(el('span', null, sx.noticing));
+  band.appendChild(bx('span', null, sx.noticing_bn || sx.noticing));
   notice.appendChild(band);
   s.appendChild(notice);
 
-  /* 2 · ASK — one question opens, three close */
-  psStep(s, 1, 'a good question opens a conversation; a bad one closes it');
+  /* 2 · ASK — the questions stay in English, because they are what a student
+     will say; why each one opens or closes is in Bangla, as pictures */
+  psStep(s, 1);
   const ask = el('div', 'pp-ask');
-  const good = sx.questions.find(q => q.ok);
+  const gi = sx.questions.findIndex(q => q.ok);
+  const good = sx.questions[gi];
   const op = el('div', 'pp-open');
   const who = el('div', 'pp-asker');
   const av = el('span', 'pp-av pp-av-teal'); av.appendChild(icon('person')); who.appendChild(av);
-  who.appendChild(el('span', 'pp-chip pp-chip-open', '✓ Opens'));
+  who.appendChild(bx('span', 'pp-chip pp-chip-open', '✓ কথা খোলে'));
   op.appendChild(who);
   const bub = el('div', 'pp-say');
-  bub.appendChild(el('div', 'pp-say-q', '“' + good.q + '”'));
-  bub.appendChild(el('div', 'pp-say-why', good.why));
+  bub.appendChild(psEnBn('“' + good.q + '”', (SB.questions || [])[gi], 'pp-say-q'));
   op.appendChild(bub);
   ask.appendChild(op);
   const cl = el('div', 'pp-closers');
-  sx.questions.filter(q => !q.ok).forEach(q => {
+  sx.questions.forEach((q, qi) => {
+    if (q.ok) return;
+    const R = QRULES.find(x => x.flaw === q.flaw);
     const d = el('div', 'pp-closer');
-    d.appendChild(el('span', 'pp-chip pp-chip-shut', '✕ ' + ((FLAWS[q.flaw] || {}).short || 'Closes')));
-    d.appendChild(el('span', 'pp-closer-q', '“' + q.q + '”'));
+    const chip = bx('span', 'pp-chip pp-chip-shut', ((FLAWS[q.flaw] || {}).short_bn || 'কথা থামায়'));
+    if (R){ const ic = icon(R.no); chip.insertBefore(ic, chip.firstChild); }
+    d.appendChild(chip);
+    d.appendChild(psEnBn('“' + q.q + '”', (SB.questions || [])[qi], 'pp-closer-q'));
     cl.appendChild(d);
   });
   ask.appendChild(cl);
   s.appendChild(ask);
 
-  /* 3 · LISTEN — the three faces, and what each one said */
-  psStep(s, 2, 'read each answer aloud, or let three students read');
+  /* 3 · LISTEN — the English to listen to, with the faces it belongs to */
+  psStep(s, 2);
   const three = el('div', 'ps-3 pp-three');
   sx.speakers.forEach((sp, j) => {
     const c = el('div', 'pp-spk');
@@ -8613,8 +8697,8 @@ function psScenario(sx){
     hd.appendChild(psImg('portraits/' + sx.id + '-' + (j + 1) + '.jpg', 'pp-face', sp.name));
     const id = el('div');
     id.appendChild(el('div', 'pp-who', sp.name));
-    id.appendChild(el('div', 'pp-meta', sp.age + ' · ' + sp.job));
-    id.appendChild(el('div', 'pp-meta', sp.city));
+    id.appendChild(bx('div', 'pp-meta', bnNum(sp.age) + ' · ' + (JOB_BN[sp.job] || sp.job)));
+    id.appendChild(bx('div', 'pp-meta', CITY_BN[sp.city] || sp.city));
     hd.appendChild(id);
     c.appendChild(hd);
     c.appendChild(el('div', 'pp-script', sp.script));
@@ -8623,19 +8707,19 @@ function psScenario(sx){
   s.appendChild(three);
 
   /* 4 · CHECK — the circles, numbered to the list beside them */
-  psStep(s, 3, 'what all three said is the culture');
+  psStep(s, 3);
   const ck = el('div', 'pp-check');
   ck.appendChild(psVenn(sx));
   const lists = el('div', 'pp-claims');
   const cms = psClaims(sx);
   const shared = el('div', 'pp-cl-all');
-  shared.appendChild(el('p', 'ps-cap pp-cap-teal', 'All three said it — the pattern'));
+  shared.appendChild(bx('p', 'ps-cap pp-cap-teal', 'তিনজনই বলেছেন — এটিই ধারা'));
   const own = el('div', 'pp-cl-one');
-  own.appendChild(el('p', 'ps-cap', 'Only one said it — that person'));
+  own.appendChild(bx('p', 'ps-cap', 'কেবল একজন বলেছেন — শুধু তাঁর কথা'));
   cms.forEach((cm, i) => {
     const r = el('div', 'pp-claim' + (cm.shared ? ' is-all' : ''));
     r.appendChild(el('span', 'pp-tok', String(i + 1)));
-    const t = el('span', 'pp-claim-t', cm.text);
+    const t = bx('span', 'pp-claim-t', cm.text_bn || cm.text);
     if (!cm.shared && cm.who) t.appendChild(el('b', 'pp-claim-who', ' — ' + cm.who));
     r.appendChild(t);
     (cm.shared ? shared : own).appendChild(r);
@@ -8646,15 +8730,16 @@ function psScenario(sx){
   s.appendChild(ck);
 
   /* 5 · MAP — both sets of rings, outside in */
-  psStep(s, 4, 'start from what they did, then work inwards');
-  const east = sx.contrast.east_label || 'Bengali';
+  psStep(s, 4);
+  const C = SB.contrast || {};
+  const east = sx.contrast.east_label ? (sx.contrast.east_label_bn || sx.contrast.east_label) : 'বাঙালি';
   const tbl = el('div', 'pp-map');
   const hr = el('div', 'pp-map-row pp-map-hd');
   hr.appendChild(el('div'));
-  [['k-west', 'Western', 'pp-wv'], ['k-east', east, 'pp-ev']].forEach(h => {
+  [['k-west', 'পশ্চিমা'], ['k-east', east]].forEach(h => {
     const d = el('div', 'pp-map-h ' + h[0]);
     d.appendChild(psTarget(null, 'pt-side'));
-    d.appendChild(el('span', null, h[1]));
+    d.appendChild(bx('span', null, h[1]));
     hr.appendChild(d);
   });
   tbl.appendChild(hr);
@@ -8662,20 +8747,17 @@ function psScenario(sx){
     const tr = el('div', 'pp-map-row k-' + R.key);
     const k = el('div', 'pp-map-k');
     k.appendChild(psTarget(R.key));
-    const kn = el('div');
-    kn.appendChild(el('b', null, R.name));
-    kn.appendChild(el('i', null, R.q));
-    k.appendChild(kn);
+    k.appendChild(psRingLabel(R, false));
     tr.appendChild(k);
-    tr.appendChild(el('div', 'pp-map-c pp-wv', sx.rings[R.key]));
-    tr.appendChild(el('div', 'pp-map-c pp-ev', sx.contrast[R.key]));
+    tr.appendChild(bx('div', 'pp-map-c pp-wv', (SB.rings || {})[R.key] || sx.rings[R.key]));
+    tr.appendChild(bx('div', 'pp-map-c pp-ev', C[R.key] || sx.contrast[R.key]));
     tbl.appendChild(tr);
   });
   s.appendChild(tbl);
 
   const pb = el('div', 'ps-band pp-punch');
   pb.appendChild(icon('target'));
-  pb.appendChild(el('span', null, sx.punch + ' ' + sx.contrast.note));
+  pb.appendChild(bx('span', null, (SB.punch || sx.punch) + ' ' + (C.note || sx.contrast.note)));
   s.appendChild(pb);
   s.appendChild(psFoot());
   return s;
@@ -8684,10 +8766,14 @@ function psScenario(sx){
 /* ---- C · the lesson, as the class saw it ----
    Each opening panel is redrawn from the same picture code the projector
    uses, frozen at its last beat, with the sentence it ends on. The sheet
-   and the screen cannot drift apart because they are the same drawing. */
+   and the screen cannot drift apart because they are the same drawing. The
+   pictures are drawn as they are in Bangla mode, so every label in them
+   carries its Bangla. */
 function psLessonFig(L){
   const s = svg('0 0 ' + ZW + ' ' + ZH, 'zs instant ps-zs');
-  L.draw(s);
+  const was = bnOn;
+  bnOn = true;
+  try { L.draw(s); } finally { bnOn = was; }
   if (L.dx){
     const w = zN(null, 'g', { transform: 'translate(' + L.dx + ' 0)' });
     [...s.childNodes].forEach(n => { if (n.nodeName !== 'defs') w.appendChild(n); });
@@ -8708,36 +8794,54 @@ function psLessonFig(L){
     Object.keys(on).forEach(c => n.classList.toggle(c, on[c]));
   });
   if (L.onBeat){ try { L.onBeat(k, s); } catch (e) {} }
+  /* Bangla only: each Bangla line takes its English twin's place and size,
+     and the English goes. A label with no Bangla twin (a name, a "?")
+     stays as it is. */
+  s.querySelectorAll('text.zt-bn').forEach(b => {
+    let en = b.previousElementSibling;
+    while (en && !(en.tagName === 'text' && !en.classList.contains('zt-bn'))) en = en.previousElementSibling;
+    if (!en) return;
+    b.setAttribute('y', en.getAttribute('y'));
+    b.setAttribute('x', en.getAttribute('x'));
+    if (en.getAttribute('text-anchor')) b.setAttribute('text-anchor', en.getAttribute('text-anchor'));
+    const fs = parseFloat((en.getAttribute('style') || '').replace(/.*font-size:\s*/, '')) || null;
+    b.setAttribute('class', (en.getAttribute('class') || '') + ' zt-solo');
+    if (fs) b.style.fontSize = (fs * .92) + 'px';
+    en.remove();
+  });
   return s;
 }
 function psLesson(){
   const s = el('div', 'ps ps-k-lesson');
   s.appendChild(psHead('Lesson Sheet'));
-  s.appendChild(psMast('Culture Circles · Before You Start', 'What Is Culture?',
-    'A group of people who answer four questions the same way. Only the first can be seen.',
+  s.appendChild(psMast('Culture Circles · Before You Start',
+    bx('h1', null, 'সংস্কৃতি কী?'),
+    bx('p', 'ps-tag', 'এমন একদল মানুষ, যাঁরা চারটি প্রশ্নের উত্তর একইভাবে দেন। এর মধ্যে কেবল প্রথমটিই চোখে দেখা যায়।'),
     psStepRail()));
 
   const grid = el('div', 'pp-panels');
   LESSON.forEach((L, i) => {
+    const LB = LESSON_BN[i] || [];
     const c = el('div', 'pp-panel');
     const hd = el('div', 'pp-panel-hd');
     hd.appendChild(el('span', 'pp-panel-n', String(i + 1)));
     const ht = el('div');
-    ht.appendChild(el('p', 'pp-panel-k', L.kicker));
-    ht.appendChild(el('h3', null, L.title));
+    ht.appendChild(bx('p', 'pp-panel-k', LB[0] || L.kicker));
+    ht.appendChild(bx('h3', null, LB[1] || L.title));
     hd.appendChild(ht);
     c.appendChild(hd);
     const fig = el('div', 'pp-panel-fig');
     fig.appendChild(psLessonFig(L));
     c.appendChild(fig);
-    c.appendChild(el('p', 'pp-panel-cap', L.beats[L.beats.length - 1][0]));
+    const last = L.beats[L.beats.length - 1];
+    c.appendChild(bx('p', 'pp-panel-cap', last[1] || last[0]));
     grid.appendChild(c);
   });
   s.appendChild(grid);
 
-  s.appendChild(el('div', 'ps-band',
-    'You cannot see a value. You have to ask — and then check the answer against other people. ' +
-    'That is an ethnographic interview, and it is real listening practice at the same time.'));
+  s.appendChild(bx('div', 'ps-band',
+    'মূল্যবোধ চোখে দেখা যায় না। জিজ্ঞেস করতে হয় — তারপর অন্যদের উত্তরের সঙ্গে মিলিয়ে দেখতে হয়। ' +
+    'এটিই নৃতাত্ত্বিক সাক্ষাৎকার — আর একইসঙ্গে ইংরেজি শোনার সত্যিকারের অনুশীলন।'));
   s.appendChild(psFoot());
   return s;
 }
@@ -8759,7 +8863,7 @@ function psFit(){
   [...psRoot.children].forEach(p => {
     p.style.zoom = '';
     const h = p.getBoundingClientRect().height;
-    if (h > PS_PAGE_H - 24) p.style.zoom = String(Math.floor((PS_PAGE_H - 24) / h * 1000) / 1000);
+    if (h > PS_PAGE_H - 16) p.style.zoom = String(Math.floor((PS_PAGE_H - 16) / h * 1000) / 1000);
   });
   psRoot.classList.remove('is-measuring');
 }
@@ -8798,10 +8902,10 @@ function printSheet(what){
 function printMenu(){
   const rows = [
     ['field',  'ask', 'Field sheet',  'Blank. For running a real interview outside the room.'],
-    ['lesson', 'book', 'Lesson sheet', 'The eight opening pictures, each with the line it ends on.']
+    ['lesson', 'book', 'Lesson sheet', 'The eight opening pictures, each with the line it ends on, in Bangla.']
   ];
   SCENARIOS.forEach(x => rows.push(['sc:' + x.id, themeIco(x.theme), x.title,
-    x.setting + ' · the comic, the three people, the circles and both sets of rings']));
+    x.setting + ' · English only for the listening; everything else in Bangla']));
   rows.push([SCENARIOS.map(x => 'sc:' + x.id), 'eye', 'All ' + SCENARIOS.length + ' scenario sheets',
              'One page each, in one print job.']);
   rows.push([['field', 'lesson'].concat(SCENARIOS.map(x => 'sc:' + x.id)), 'rank',
