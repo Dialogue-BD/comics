@@ -3116,7 +3116,13 @@ body.is-welcome #theme-pill{visibility:hidden}
   html,body{overflow:visible;height:auto;background:#fff;color:#1D211C}
   #printsheet{display:block;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   #printsheet *{box-sizing:border-box}
+}
 
+/* the sheets themselves are styled outside the print query, so they can be
+   laid out and measured on screen before the dialog opens */
+#printsheet *{box-sizing:border-box}
+#printsheet{-webkit-print-color-adjust:exact;print-color-adjust:exact;--surface-card:#FFFDF7;--tx:#1D211C;--tx-muted:#5F6A5C;--heading:#134219;--kicker:#795E20;
+  --rule:rgba(16,61,33,.16);--rule-strong:rgba(16,61,33,.34);--ui:1}
   /* ---- shared furniture ---- */
   .ps{font-family:'Public Sans',sans-serif;font-size:8.6pt;line-height:1.42;color:#1D211C}
   .ps-head{display:flex;justify-content:space-between;align-items:baseline;
@@ -3158,104 +3164,176 @@ body.is-welcome #theme-pill{visibility:hidden}
      prints, and a set of several breaks one to a side. */
   #printsheet .ps + .ps{break-before:page;page-break-before:always}
 
+  /* ---- the five steps, as the rail and the lesson draw them ---- */
+  .ps-mast{display:flex;justify-content:space-between;align-items:flex-end;gap:10pt}
+  .ps-mast-t{min-width:0}
+  .ps .ico{width:100%;height:100%;display:block}
+  .ps-step{display:flex;align-items:center;gap:5pt;border-bottom:.5pt solid #d6d0bd;padding-bottom:2pt;
+    letter-spacing:0;text-transform:none;color:#134219;font-size:8pt}
+  .ps-step-b{position:relative;flex:0 0 auto;width:15pt;height:15pt;border-radius:50%;background:#134219;color:#fff;
+    display:inline-flex;align-items:center;justify-content:center}
+  .ps-step-b .ico{width:8.5pt;height:8.5pt}
+  .ps-step-n{position:absolute;right:-3pt;top:-3pt;width:8pt;height:8pt;border-radius:50%;background:#B9924F;color:#fff;
+    font-size:5.4pt;font-weight:700;line-height:8pt;text-align:center}
+  .ps-step-name{font-weight:800;font-size:8.4pt;letter-spacing:.14em;text-transform:uppercase;color:#134219}
+  .ps-step-line{font-family:'Spectral',Georgia,serif;font-style:italic;font-weight:400;font-size:8.6pt;color:#5F6A5C}
+  .ps-rail{display:flex;align-items:center;gap:3pt;flex:0 0 auto;padding:0 4pt 2pt 0}
+  .ps-rail-i{display:flex;flex-direction:column;align-items:center;gap:2pt;font-size:5.6pt;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;color:#134219}
+  .ps-rail-arr{color:#B9924F;font-size:8pt;margin-top:-8pt}
+  .ps-chips{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:3pt;padding-bottom:2pt;max-width:46%}
+  .ps-chip{display:inline-flex;align-items:center;gap:3pt;border:.6pt solid #d6d0bd;background:#FBF9F1;border-radius:999px;
+    padding:1.5pt 6pt 1.5pt 4pt;font-size:7pt;font-weight:600;color:#1D211C}
+  .ps-chip .ico{width:7.5pt;height:7.5pt;color:#134219}
+  .pp-chip{display:inline-block;border-radius:999px;padding:1pt 6pt;font-size:6.4pt;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+  .pp-chip-open{background:#134219;color:#fff}
+  .pp-chip-shut{background:#F7E3E1;color:#8E402B;border:.5pt solid #d9a99c}
+  .pp-av{display:inline-flex;align-items:center;justify-content:center;width:18pt;height:18pt;border-radius:50%;
+    background:#E3EAD9;color:#5F6A5C;flex:0 0 auto}
+  .pp-av .ico{width:11pt;height:11pt}
+  .pp-av-teal{background:#DDEFEC;color:#0A6A62}
+
+  /* the small ring target: one ring lit, the rest faint */
+  .ps-target{width:20pt;height:20pt;flex:0 0 auto;overflow:visible}
+  .ps-target .pt-ring{fill:#fff;stroke:#c9c3b0;stroke-width:2.5}
+  .ps-target .pt-behavior.is-lit{fill:#F6EBD7;stroke:#8A5610;stroke-width:3.5}
+  .ps-target .pt-value.is-lit{fill:#DDEFEC;stroke:#0A6A62;stroke-width:3.5}
+  .ps-target .pt-belief.is-lit{fill:#E4E7F7;stroke:#3F4FA8;stroke-width:3.5}
+  .ps-target .pt-worldview.is-lit{fill:#F7E3E1;stroke:#A8322A;stroke-width:3.5}
+  .ps-target.pt-side{width:14pt;height:14pt}
+  .k-west .ps-target.pt-side .pt-ring{fill:#E7EDF6;stroke:#1B4F9C;stroke-width:3}
+  .k-east .ps-target.pt-side .pt-ring{fill:#F7E6E4;stroke:#B5231F;stroke-width:3}
+
+  /* the Venn, as the Check step draws it */
+  .ps-venn{width:100%;height:auto;display:block}
+  .ps-venn .pv-disc{fill:rgba(10,106,98,.06);stroke:#0A6A62;stroke-opacity:.55;stroke-width:2.5}
+  .ps-venn .pv-core{fill:rgba(10,106,98,.12);stroke:#0A6A62;stroke-width:2.5;stroke-dasharray:5 5}
+  .ps-venn .pv-ring{fill:#fff;stroke:#0A6A62;stroke-width:3}
+  .ps-venn .pv-ph{fill:#E3EAD9}
+  .ps-venn .pv-ph-t{font:700 26px 'Public Sans',sans-serif;fill:#5F6A5C}
+  .ps-venn .pv-tok circle{fill:#fff;stroke:#5F6A5C;stroke-width:2.5}
+  .ps-venn .pv-tok text{font:700 20px 'Public Sans',sans-serif;fill:#5F6A5C}
+  .ps-venn .pv-tok.is-mid circle{fill:#0A6A62;stroke:#fff}
+  .ps-venn .pv-tok.is-mid text{fill:#fff}
+
   /* ---- A · the blank field sheet ---- */
-  .ps-k-field .pp-lines{border:.6pt solid #9aa39a;height:44pt;margin-top:3pt}
-  .ps-k-field .pp-lines.pp-tall{height:62pt}
-  .ps-k-field .pp-rule{border-bottom:.5pt solid #b6bdb6;height:15pt;margin-top:3pt}
-  .ps-k-field .pp-box{border:.6pt solid #1D211C;padding:4pt 5pt;margin-top:4pt}
-  .ps-k-field .pp-box .ps-cap{color:#134219}
+  .ps-k-field .ps-step{margin:8pt 0 3pt}
+  .ps-k-field .pp-lines{border:.6pt solid #9aa39a;height:40pt;margin-top:3pt;background:#fff}
+  .ps-k-field .pp-lines.pp-short{height:42pt}
+  .ps-k-field .pp-rule{border-bottom:.5pt solid #b6bdb6;height:14pt;margin-top:2pt}
   .ps-k-field .pp-q{font-family:'Spectral',Georgia,serif;font-style:italic;font-weight:400;
     text-transform:none;letter-spacing:0;color:#5F6A5C;font-size:7.6pt}
   .ps-k-field .pp-idbar{background:#F4F6F0;border-left:3pt solid #B9924F;padding:4pt 7pt;margin-top:5pt;font-size:8pt}
+  .ps-k-field .pp-watch{display:grid;grid-template-columns:repeat(3,1fr);gap:4pt;margin-bottom:3pt}
+  .ps-k-field .pp-frame{position:relative;aspect-ratio:1/1;border:.75pt solid #9aa39a;background:#fff}
+  .ps-k-field .pp-frame span{position:absolute;left:3pt;top:3pt;width:10pt;height:10pt;border-radius:50%;background:#134219;
+    color:#fff;font-size:6pt;font-weight:700;line-height:10pt;text-align:center}
+  .ps-k-field .pp-oc{display:grid;grid-template-columns:1fr 1fr;gap:6pt;margin-bottom:3pt}
+  .ps-k-field .pp-oc > div{border:.6pt solid #d6d0bd;background:#FBF9F1;padding:3pt 5pt}
+  .ps-k-field .pp-oc-open{border-color:#9cc7c1 !important;background:#EEF7F5 !important}
+  .ps-k-field .pp-oc-q{font-family:'Spectral',Georgia,serif;font-style:italic;font-size:7.6pt;margin-top:2pt;line-height:1.3}
+  .ps-k-field .pp-bubble{position:relative;height:52pt;border:.75pt solid #0A6A62;border-radius:9pt;background:#fff;margin:2pt 0 8pt}
+  .ps-k-field .pp-bubble::after{content:"";position:absolute;left:18pt;bottom:-5.5pt;width:9pt;height:9pt;background:#fff;
+    border-right:.75pt solid #0A6A62;border-bottom:.75pt solid #0A6A62;transform:rotate(45deg)}
+  .ps-k-field .pp-person{display:flex;gap:5pt;align-items:flex-start;margin-top:3pt}
+  .ps-k-field .pp-person-w{flex:1}
+  .ps-k-field .pp-person .pp-lines{height:46pt;margin-top:1pt}
+  .ps-k-field .pp-check{display:grid;grid-template-columns:78pt 1fr;gap:7pt;align-items:center}
+  .ps-k-field .pp-mapgrid{display:grid;grid-template-columns:1fr 1fr;gap:5pt 12pt}
+  .ps-k-field .pp-maphd{display:flex;align-items:center;gap:4pt;font-size:6.8pt;font-weight:700;letter-spacing:.11em;
+    text-transform:uppercase;margin-bottom:1pt}
+  .ps-k-field .pp-maphd.k-west{color:#1B4F9C}
+  .ps-k-field .pp-maphd.k-east{color:#B5231F}
+  .ps-k-field .pp-box{display:flex;gap:6pt;align-items:center;border:.6pt solid #b6bdb6;border-left-width:2.5pt;
+    padding:3pt 5pt;margin-top:3pt;background:#fff}
+  .ps-k-field .pp-box > div{flex:1}
+  .ps-k-field .pp-box .ps-cap{margin:0}
+  .ps-k-field .pp-traps{display:grid;grid-template-columns:repeat(3,1fr);gap:8pt;font-size:7.4pt;line-height:1.3}
+  .ps-k-field .pp-traps b{display:block;color:#8E402B;font-size:7pt;letter-spacing:.06em;text-transform:uppercase}
 
   /* ---- B · one scenario, taught from paper ---- */
   .ps-k-scenario{font-size:7.6pt;line-height:1.36}
-  .ps-k-scenario h2{margin:7pt 0 3pt}
-  .ps-k-scenario .pp-beats{display:grid;grid-template-columns:repeat(3,1fr);gap:6pt;margin-top:4pt}
-  .ps-k-scenario .pp-beat{border:.6pt solid #d6d0bd;background:#FBF9F1;padding:4pt 5pt}
-  .ps-k-scenario .pp-beat b{display:block;font-size:6.4pt;letter-spacing:.1em;color:#795E20}
-  .ps-k-scenario .pp-qgrid{display:grid;grid-template-columns:1fr 1fr;gap:3pt 9pt;margin-top:3pt}
-  .ps-k-scenario .pp-qq{border-left:2.5pt solid #d6d0bd;padding-left:5pt}
-  .ps-k-scenario .pp-qq.pp-ok{border-left-color:#134219;background:#F4F6F0;padding:3pt 5pt}
-  .ps-k-scenario .pp-qq .pp-tag{font-size:6.2pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5F6A5C}
-  .ps-k-scenario .pp-qq.pp-ok .pp-tag{color:#134219}
-  .ps-k-scenario .pp-spk{border-top:1.5pt solid #134219;padding-top:3pt}
-  .ps-k-scenario .pp-spk .pp-who{font-weight:700;font-size:8pt;color:#134219}
-  .ps-k-scenario .pp-spk .pp-meta{font-size:6.4pt;color:#5F6A5C;margin-bottom:2pt}
-  .ps-k-scenario .pp-spk .pp-say{font-size:7pt;line-height:1.32;text-align:justify;hyphens:auto}
-  .ps-k-scenario .pp-rings{width:100%;border-collapse:collapse;margin-top:3pt}
-  .ps-k-scenario .pp-rings th{font-size:6.4pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-    text-align:left;padding:2pt 4pt;border-bottom:.75pt solid #b6bdb6}
-  .ps-k-scenario .pp-rings th.pp-w{color:#1D4E89}
-  .ps-k-scenario .pp-rings th.pp-e{color:#A8322A}
-  .ps-k-scenario .pp-rings td{vertical-align:top;padding:3pt 4pt;border-bottom:.4pt solid #e2ded0;font-size:7pt;line-height:1.3}
-  .ps-k-scenario .pp-rings td.pp-k{width:62pt;font-size:6.4pt;font-weight:700;letter-spacing:.09em;
-    text-transform:uppercase;border-left:2.5pt solid}
-  .ps-k-scenario .pp-rings td.pp-wv{width:calc((100% - 62pt)/2);background:#F2F5F9}
-  .ps-k-scenario .pp-rings td.pp-ev{width:calc((100% - 62pt)/2);background:#FBF1EF}
-  .ps-k-scenario .pp-chain{display:grid;grid-template-columns:repeat(4,1fr);gap:4pt;margin-top:3pt}
-  .ps-k-scenario .pp-chain div{border:.6pt solid;padding:3pt 4pt;font-size:6.8pt;line-height:1.25}
-  .ps-k-scenario .pp-chain b{display:block;font-size:6.2pt;letter-spacing:.1em;text-transform:uppercase}
+  .ps-k-scenario .ps-step{margin:5pt 0 3pt}
+  .ps-k-scenario .pp-comic{display:grid;grid-template-columns:repeat(6,1fr);gap:4pt}
+  .ps-k-scenario .pp-cell{position:relative;overflow:hidden;aspect-ratio:1/1;border:.6pt solid #b6bdb6;background:#F4F1E6}
+  .ps-k-scenario .pp-cell .pp-sheet{position:absolute;width:200%;height:300%;max-width:none}
+  .ps-k-scenario .pp-cell .pp-one{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ps-k-scenario .pp-cell img.is-missing{visibility:hidden}
+  .ps-k-scenario .pp-cell-n{position:absolute;left:2.5pt;top:2.5pt;width:10pt;height:10pt;border-radius:50%;background:#134219;
+    color:#fff;font-size:6pt;font-weight:700;line-height:10pt;text-align:center;box-shadow:0 0 0 1pt #fff}
+  .ps-k-scenario .pp-notice{display:grid;grid-template-columns:1.1fr 1fr;gap:9pt;margin-top:5pt;align-items:stretch}
+  .ps-k-scenario .pp-obs{margin:0;font-size:7.4pt;line-height:1.38}
+  .ps-k-scenario .pp-noticeband{display:flex;gap:6pt;align-items:center;background:#134219;color:#fff;padding:5pt 8pt;
+    font-family:'Spectral',Georgia,serif;font-size:8.4pt;line-height:1.35}
+  .ps-k-scenario .pp-noticeband .ico{flex:0 0 auto;width:13pt;height:13pt;color:#D2B978}
 
-  /* ---- C · the lesson, on one side ---- */
-  .ps-k-lesson .pp-rank{display:grid;grid-template-columns:1fr 1fr;gap:9pt;margin-top:4pt}
-  .ps-k-lesson .pp-rank .pp-col{border-top:2.5pt solid;padding-top:3pt}
-  .ps-k-lesson .pp-rank .pp-col.pp-w{border-color:#1D4E89}
-  .ps-k-lesson .pp-rank .pp-col.pp-e{border-color:#A8322A}
-  .ps-k-lesson .pp-rank h3{margin:0 0 3pt;font-size:6.8pt;font-weight:700;letter-spacing:.11em;text-transform:uppercase}
-  .ps-k-lesson .pp-rank .pp-col.pp-w h3{color:#1D4E89}
-  .ps-k-lesson .pp-rank .pp-col.pp-e h3{color:#A8322A}
-  .ps-k-lesson .pp-rank ol{margin:0;padding-left:13pt;font-size:8.2pt;line-height:1.5}
-  .ps-k-lesson .pp-rank li:first-child{font-weight:700}
-  .ps-k-lesson .pp-chain{display:grid;grid-template-columns:repeat(4,1fr);gap:5pt;margin-top:4pt}
-  .ps-k-lesson .pp-chain div{border:.75pt solid;padding:4pt 5pt;font-size:7.4pt;line-height:1.3}
-  .ps-k-lesson .pp-chain b{display:block;font-size:6.4pt;letter-spacing:.1em;text-transform:uppercase}
-  .ps-k-lesson .pp-four{display:grid;grid-template-columns:auto 1fr;gap:10pt;align-items:center;margin-top:4pt}
-  .ps-k-lesson .pp-four > svg{width:152pt;height:152pt}
-  .ps-k-lesson .pp-four .ring-ico{display:none}   /* the key rows name every ring already */
-  .ps-k-lesson .pp-keyrow{border-left:3pt solid;padding:2pt 0 2pt 6pt;margin-bottom:4pt}
-  .ps-k-lesson .pp-keyrow b{font-size:7.4pt;letter-spacing:.09em;text-transform:uppercase}
-  .ps-k-lesson .pp-keyrow i{font-family:'Spectral',Georgia,serif;color:#5F6A5C;font-size:8pt}
-  .ps-k-lesson .pp-keyrow span{display:block;font-size:7.6pt;color:#1D211C}
-  .ps-k-lesson .pp-why{display:grid;grid-template-columns:1fr 1fr;gap:10pt;margin-top:4pt}
-  .ps-k-lesson .pp-why h3{margin:0 0 2pt;font-size:6.8pt;font-weight:700;letter-spacing:.11em;
-    text-transform:uppercase;color:#134219}
-  .ps-k-lesson .pp-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6pt;margin-top:4pt}
-  .ps-k-lesson .pp-steps div{border-top:2pt solid #134219;padding-top:3pt;font-size:7.2pt;line-height:1.3}
-  .ps-k-lesson .pp-steps b{display:block;font-size:6.6pt;letter-spacing:.1em;text-transform:uppercase;color:#134219}
-}
+  .ps-k-scenario .pp-ask{display:grid;grid-template-columns:1.05fr 1fr;gap:10pt;align-items:start}
+  .ps-k-scenario .pp-open{display:flex;gap:6pt;align-items:flex-start}
+  .ps-k-scenario .pp-asker{display:flex;flex-direction:column;align-items:center;gap:3pt;flex:0 0 auto;padding-top:2pt}
+  .ps-k-scenario .pp-say{position:relative;flex:1;background:#EEF7F5;border:.75pt solid #6fb0a8;border-radius:8pt;padding:5pt 8pt}
+  .ps-k-scenario .pp-say::before{content:"";position:absolute;left:-4.4pt;top:9pt;width:7pt;height:7pt;background:#EEF7F5;
+    border-left:.75pt solid #6fb0a8;border-bottom:.75pt solid #6fb0a8;transform:rotate(45deg)}
+  .ps-k-scenario .pp-say-q{font-family:'Spectral',Georgia,serif;font-weight:600;font-size:9pt;line-height:1.3;color:#134219}
+  .ps-k-scenario .pp-say-why{margin-top:3pt;font-size:6.9pt;line-height:1.32;color:#3A463A}
+  .ps-k-scenario .pp-closers{display:flex;flex-direction:column;gap:4pt}
+  .ps-k-scenario .pp-closer{display:flex;gap:5pt;align-items:baseline;border-left:2pt solid #d9a99c;padding:1pt 0 1pt 5pt}
+  .ps-k-scenario .pp-closer .pp-chip{flex:0 0 auto}
+  .ps-k-scenario .pp-closer-q{font-family:'Spectral',Georgia,serif;font-style:italic;font-size:7.8pt;line-height:1.3;color:#5F6A5C}
 
-/* Intact comic artwork, with a camera that fits each complete panel. */
-.scn-view{background:#ebe8df; isolation:isolate}
-.scn-canvas{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translate(var(--pan-x,0px),var(--pan-y,0px)) scale(var(--zoom,.96));transform-origin:center;transition:transform 900ms cubic-bezier(.22,.68,.2,1);will-change:transform}
-.scn-canvas>img{display:block;width:100%;height:100%;object-fit:contain}
-.scn-canvas.is-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:0}
-.scn-canvas.is-grid>img{min-width:0;min-height:0}
-.scn-focus{position:absolute;width:50%;height:33.333333%;border:3px solid var(--gold);box-shadow:0 0 0 100vmax rgba(18,34,22,.22);pointer-events:none}
-.scn-overview{min-height:40px;white-space:nowrap;font-size:.8rem}
-.scn-left{gap:8px}
-.scn-ctl{gap:8px;flex-wrap:wrap;justify-content:center}
-.scn-prog{flex-basis:100%;height:4px}
-.scn-pass-1 .scn-view,.scn-pass-2 .scn-view,.scn-pass-3 .scn-view{max-width:520px;aspect-ratio:4/3;height:clamp(220px,calc(100dvh - 500px),400px);width:100%}
-.scn-marks{gap:8px}
-@media(min-width:900px){
- .scn-pass-1 .scn-left{display:grid;grid-template-columns:minmax(0,1fr) 220px;grid-template-rows:1fr auto 1fr;column-gap:28px;max-width:840px;width:100%;margin:auto}
- .scn-pass-1 .scn-view{grid-column:1;grid-row:1/4;height:clamp(250px,calc(100dvh - 410px),480px);max-width:none}
- .scn-pass-1 .scn-marks{grid-column:2;grid-row:1;align-self:end;flex-wrap:wrap}
- .scn-pass-1 .scn-ctl{grid-column:2;grid-row:2}
-}
-@media(max-width:899px){
- .scn-pass-1 .scn-view,.scn-pass-2 .scn-view{height:clamp(200px,calc(100dvh - 530px),300px)}
- .scn-pass-3 .scn-view{height:150px;width:38%;max-width:38%}
- .scn-pass-2 .scn-body{display:flex;flex-direction:column;gap:8px}
- .scn-pass-2 .scn-kara{order:-1;min-height:90px;width:100%;padding:4px 0}
- .scn-pass-2 .scn-left{width:100%}
- .scn-pass-2 .scn-view{height:180px}
- .scn-pass-3 .scn-ctl{flex-direction:row}
-}
-.scn-view .scn-bigplay{width:64px;height:64px}
-@media(prefers-reduced-motion:reduce){.scn-canvas{transition:none}}
+  .ps-k-scenario .pp-three{gap:5pt 10pt}
+  .ps-k-scenario .pp-spk{border-top:1.5pt solid #134219;padding-top:4pt}
+  .ps-k-scenario .pp-spk-hd{display:flex;gap:6pt;align-items:center;margin-bottom:2pt}
+  .ps-k-scenario .pp-face{width:30pt;height:30pt;border-radius:50%;object-fit:cover;flex:0 0 auto;
+    border:1.2pt solid #fff;box-shadow:0 0 0 .75pt #0A6A62;background:#E3EAD9}
+  .ps-k-scenario .pp-who{font-family:'Spectral',Georgia,serif;font-weight:600;font-size:10pt;color:#134219;line-height:1.1}
+  .ps-k-scenario .pp-meta{font-size:6.4pt;color:#5F6A5C;line-height:1.3}
+  .ps-k-scenario .pp-script{font-size:7pt;line-height:1.3;text-align:justify;hyphens:auto}
 
+  .ps-k-scenario .pp-check{display:grid;grid-template-columns:98pt 1fr;gap:10pt;align-items:center}
+  .ps-k-scenario .pp-claims{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9pt}
+  .ps-k-scenario .pp-check > *,.ps-k-scenario .pp-ask > *,.ps-k-scenario .pp-notice > *{min-width:0}
+  .ps-k-scenario .pp-cap-teal{color:#0A6A62}
+  .ps-k-scenario .pp-claim{display:flex;gap:5pt;align-items:flex-start;margin-top:2.5pt;font-size:7.3pt;line-height:1.28;
+    padding:2pt 5pt;border:.6pt solid #e2ded0;background:#fff}
+  .ps-k-scenario .pp-claim.is-all{background:#DDEFEC;border-color:#9cc7c1}
+  .ps-k-scenario .pp-tok{flex:0 0 auto;width:11pt;height:11pt;border-radius:50%;border:.75pt solid #5F6A5C;color:#5F6A5C;
+    font-size:6.4pt;font-weight:700;line-height:9.6pt;text-align:center;background:#fff}
+  .ps-k-scenario .pp-claim.is-all .pp-tok{background:#0A6A62;border-color:#0A6A62;color:#fff}
+  .ps-k-scenario .pp-claim-who{font-weight:600;color:#5F6A5C}
+
+  .ps-k-scenario .pp-map{border-top:.75pt solid #b6bdb6}
+  .ps-k-scenario .pp-map-row{display:grid;grid-template-columns:86pt 1fr 1fr;border-bottom:.4pt solid #e2ded0}
+  .ps-k-scenario .pp-map-hd{border-bottom:.75pt solid #b6bdb6}
+  .ps-k-scenario .pp-map-h{display:flex;align-items:center;gap:4pt;padding:3pt 5pt;font-size:6.8pt;font-weight:700;
+    letter-spacing:.11em;text-transform:uppercase}
+  .ps-k-scenario .pp-map-h.k-west{color:#1B4F9C}
+  .ps-k-scenario .pp-map-h.k-east{color:#B5231F}
+  .ps-k-scenario .pp-map-k{display:flex;gap:5pt;align-items:center;padding:3pt 4pt;border-left:2.5pt solid var(--k)}
+  .ps-k-scenario .pp-map-k b{display:block;font-size:6.6pt;letter-spacing:.09em;text-transform:uppercase;color:var(--k)}
+  .ps-k-scenario .pp-map-k i{display:block;font-family:'Spectral',Georgia,serif;font-size:7pt;color:#5F6A5C}
+  .ps-k-scenario .pp-map-c{padding:2.5pt 6pt;font-size:7.2pt;line-height:1.3}
+  .ps-k-scenario .pp-wv{background:#F2F5F9}
+  .ps-k-scenario .pp-ev{background:#FBF1EF}
+  .ps-k-scenario .pp-punch{display:flex;gap:7pt;align-items:center;font-size:8.2pt;padding:5pt 8pt}
+  .ps-k-scenario .pp-punch .ico{flex:0 0 auto;width:14pt;height:14pt;color:#D2B978}
+
+  /* ---- C · the lesson, as the class saw it ---- */
+  .ps-k-lesson .pp-panels{display:grid;grid-template-columns:1fr 1fr;gap:8pt 12pt;margin-top:8pt}
+  .ps-k-lesson .pp-panel{border:.6pt solid #d6d0bd;background:#FFFDF7;padding:5pt 6pt 5pt}
+  .ps-k-lesson .pp-panel-hd{display:flex;gap:5pt;align-items:flex-start}
+  .ps-k-lesson .pp-panel-n{flex:0 0 auto;width:13pt;height:13pt;border-radius:50%;background:#134219;color:#fff;
+    font-size:7pt;font-weight:700;line-height:13pt;text-align:center;margin-top:1pt}
+  .ps-k-lesson .pp-panel-k{margin:0;font-size:5.8pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#795E20}
+  .ps-k-lesson .pp-panel h3{margin:0;font-family:'Spectral',Georgia,serif;font-weight:600;font-size:9.6pt;line-height:1.15;color:#134219}
+  .ps-k-lesson .pp-panel-fig{margin-top:3pt}
+  .ps-k-lesson .pp-panel-fig svg{display:block;width:100%;height:auto;aspect-ratio:1600/620}
+  .ps-k-lesson .pp-panel-cap{margin:2pt 0 0;text-align:center;font-weight:600;font-size:7.6pt;color:#1D211C}
+
+/* off-screen, at the page's printed width, so a sheet can be measured and
+   its pictures loaded before the print dialog opens */
+#printsheet.is-measuring{display:block;position:absolute;left:-10000px;top:0;width:190mm;
+  --surface-card:#FFFDF7;--tx:#1D211C;--tx-muted:#5F6A5C;--heading:#134219;--kicker:#795E20;
+  --rule:rgba(16,61,33,.16);--rule-strong:rgba(16,61,33,.34);--ui:1}
 </style>
 </head>
 <body>
@@ -8218,32 +8296,79 @@ const psRoot = $('#printsheet');
 
 function psHead(right){
   const h = el('div', 'ps-head');
-  h.appendChild(el('span', null, 'Dialogue · Professional Skills Development Center'));
+  h.appendChild(el('span', null, 'Dialogue · English & Skills Center'));
   h.appendChild(el('span', null, right));
   return h;
 }
-function psMast(prog, title, tag){
+function psMast(prog, title, tag, aside){
   const m = el('div', 'ps-mast');
-  m.appendChild(el('p', 'ps-prog', prog));
-  m.appendChild(el('h1', null, title));
-  if (tag) m.appendChild(el('p', 'ps-tag', tag));
+  const tx = el('div', 'ps-mast-t');
+  tx.appendChild(el('p', 'ps-prog', prog));
+  tx.appendChild(el('h1', null, title));
+  if (tag) tx.appendChild(el('p', 'ps-tag', tag));
+  m.appendChild(tx);
+  if (aside) m.appendChild(aside);
   return m;
 }
 function psFoot(){
   const f = el('div', 'ps-foot');
-  f.appendChild(el('span', null, 'Dialogue · Professional Skills Development Center, Rajshahi'));
+  f.appendChild(el('span', null, 'Dialogue · English & Skills Center, Rajshahi'));
   f.appendChild(el('span', null, 'dialogue-bd.com'));
   return f;
 }
 function psSection(box, title){ box.appendChild(el('h2', null, title)); }
 
+/* The five steps, with the same symbols the rail and the lesson's step panel
+   use, so a student holding the paper can find their place on the screen. */
+const PS_STEPS = [
+  ['Watch',  'eye',    'what is done?'],
+  ['Ask',    'ask',    'one question that opens'],
+  ['Listen', 'ear',    'three people, one question'],
+  ['Check',  'tick',   'what all three said'],
+  ['Map',    'target', 'from the outside in']
+];
+function psStep(box, n, line){
+  const S = PS_STEPS[n];
+  const h = el('h2', 'ps-step');
+  const b = el('span', 'ps-step-b');
+  b.appendChild(icon(S[1]));
+  b.appendChild(el('span', 'ps-step-n', String(n + 1)));
+  h.appendChild(b);
+  h.appendChild(el('span', 'ps-step-name', S[0]));
+  h.appendChild(el('span', 'ps-step-line', line || S[2]));
+  box.appendChild(h);
+  return h;
+}
+/* the ring target, small, with one ring picked out — used as the row marker
+   for each ring and as the West / Bengali column heads */
+function psTarget(lit, cls){
+  const s = svg('0 0 100 100', 'ps-target' + (cls ? ' ' + cls : ''));
+  [48, 36, 24, 12].forEach((r, i) => {
+    const R = RINGS[i];
+    s.appendChild(shape('circle', { cx: 50, cy: 50, r: r,
+      class: 'pt-ring pt-' + R.key + (lit == null || lit === R.key ? ' is-lit' : '') }));
+  });
+  return s;
+}
+/* a square picture, cropped to fit its frame — the speakers' portraits */
+function psImg(src, cls, alt){
+  const im = new Image();
+  im.className = cls || '';
+  im.alt = alt || '';
+  im.decoding = 'sync';
+  im.onerror = () => im.classList.add('is-missing');
+  im.src = src;
+  return im;
+}
+
 /* ---- A · the blank field sheet, for a real interview outside the room ---- */
 function psField(){
   const s = el('div', 'ps ps-k-field');
   s.appendChild(psHead('Field Sheet'));
-  s.appendChild(psMast('Applied Professional English · Cultural Intelligence',
-    'Culture Circles · Field Sheet',
-    'Watch what is done, ask one good question, listen to three people, then work inwards.'));
+  s.appendChild(psMast('Culture Circles · Listening for Cultural Intelligence',
+    'Field Sheet',
+    'Watch what is done, ask one good question, listen to three people, then work inwards.',
+    psStepRail()));
 
   const id = el('div', 'pp-idbar');
   id.textContent = 'Name ______________________   Date ____________   Where ______________________';
@@ -8252,245 +8377,363 @@ function psField(){
   const two = el('div', 'ps-2'); two.style.marginTop = '6pt';
 
   const c1 = el('div');
-  psSection(c1, '1 · Watch — what is done?');
-  c1.appendChild(el('p', 'ps-cap', 'Only what a camera would record. No explanation yet.'));
-  c1.appendChild(el('div', 'pp-lines pp-tall'));
+  psStep(c1, 0, 'only what a camera would record');
+  c1.appendChild(el('p', 'ps-cap', 'What I saw. No explanation yet.'));
+  const watch = el('div', 'pp-watch');
+  [1, 2, 3].forEach(i => { const f = el('div', 'pp-frame'); f.appendChild(el('span', null, String(i))); watch.appendChild(f); });
+  c1.appendChild(watch);
   c1.appendChild(el('p', 'ps-cap', 'Why it surprised me'));
-  c1.appendChild(el('div', 'pp-lines'));
+  c1.appendChild(el('div', 'pp-lines pp-short'));
 
-  psSection(c1, '2 · Ask — my research question');
-  const chk = el('div', 'ps-2');
-  ['Cannot be answered yes / no', 'No judgment hidden inside it',
-   'About one person, one event', 'Asks for a story, not a theory']
-    .forEach(t => chk.appendChild(el('div', null, '☐ ' + t)));
-  c1.appendChild(chk);
-  const ul = el('ul', 'ps-bul');
-  ['Tell me about the last time you…', 'Walk me through it, start to finish.',
-   'What did you do first?'].forEach(t => ul.appendChild(el('li', null, t)));
-  c1.appendChild(ul);
+  psStep(c1, 1, 'a question that opens, not one that closes');
+  const oc = el('div', 'pp-oc');
+  [['open', 'Opens', ['Tell me about the last time you…', 'Walk me through it, start to finish.']],
+   ['shut', 'Closes', ['Do you…? Is it…? (yes / no)', 'Why are you so…? (a judgment inside)']]].forEach(c => {
+    const d = el('div', 'pp-oc-' + c[0]);
+    d.appendChild(el('span', 'pp-chip pp-chip-' + c[0], (c[0] === 'open' ? '✓ ' : '✕ ') + c[1]));
+    c[2].forEach(t => d.appendChild(el('div', 'pp-oc-q', t)));
+    oc.appendChild(d);
+  });
+  c1.appendChild(oc);
   c1.appendChild(el('p', 'ps-cap', 'My question'));
-  c1.appendChild(el('div', 'pp-lines'));
+  const qb = el('div', 'pp-bubble');
+  c1.appendChild(qb);
   two.appendChild(c1);
 
   const c2 = el('div');
-  psSection(c2, '3 · Listen — three people, three answers');
+  psStep(c2, 2, 'three people, the same question');
   [1, 2, 3].forEach(i => {
-    c2.appendChild(el('p', 'ps-cap', 'Person ' + i + '  ______________________'));
-    c2.appendChild(el('div', 'pp-lines'));
+    const r = el('div', 'pp-person');
+    const av = el('span', 'pp-av'); av.appendChild(icon('person')); r.appendChild(av);
+    const w = el('div', 'pp-person-w');
+    w.appendChild(el('p', 'ps-cap', 'Person ' + i + '  ______________________'));
+    w.appendChild(el('div', 'pp-lines'));
+    r.appendChild(w);
+    c2.appendChild(r);
   });
-  psSection(c2, '4 · Triangulate');
-  c2.appendChild(el('p', 'ps-cap', 'Said by all three — the cultural pattern'));
-  c2.appendChild(el('div', 'pp-lines'));
-  c2.appendChild(el('p', 'ps-cap', 'Said by only one — personal, set it aside'));
-  c2.appendChild(el('div', 'pp-rule'));
+  psStep(c2, 3, 'one person is a story, three are a pattern');
+  const ck = el('div', 'pp-check');
+  ck.appendChild(psVenn(null));
+  const ckw = el('div');
+  ckw.appendChild(el('p', 'ps-cap', 'Said by all three — the culture'));
+  ckw.appendChild(el('div', 'pp-lines pp-short'));
+  ckw.appendChild(el('p', 'ps-cap', 'Said by only one — set it aside'));
+  ckw.appendChild(el('div', 'pp-rule'));
+  ck.appendChild(ckw);
+  c2.appendChild(ck);
   two.appendChild(c2);
   s.appendChild(two);
 
-  psSection(s, '5 · Fill the rings — both sets, same situation');
-  const grid = el('div', 'ps-2');
-  [['Their rings', 'them'], ['My own rings', 'me']].forEach(side => {
-    const col = el('div');
-    col.appendChild(el('p', 'ps-cap', side[0]));
+  psStep(s, 4, 'both sets of rings, the same situation');
+  const grid = el('div', 'pp-mapgrid');
+  [['Their rings', 'k-west'], ['My own rings', 'k-east']].forEach(side => {
+    const col = el('div', 'pp-mapcol');
+    const hd = el('div', 'pp-maphd ' + side[1]);
+    hd.appendChild(psTarget(null, 'pt-side'));
+    hd.appendChild(el('span', null, side[0]));
+    col.appendChild(hd);
     RINGS.forEach(R => {
       const b = el('div', 'pp-box B-' + R.key);
-      b.style.borderLeftWidth = '2.5pt';
+      b.appendChild(psTarget(R.key));
+      const w = el('div');
       const cap = el('p', 'ps-cap L-' + R.key);
       cap.textContent = R.name + ' ';
       cap.appendChild(el('span', 'pp-q', R.q));
-      b.appendChild(cap);
-      b.appendChild(el('div', 'pp-rule'));
+      w.appendChild(cap);
+      w.appendChild(el('div', 'pp-rule'));
+      w.appendChild(el('div', 'pp-rule'));
+      b.appendChild(w);
       col.appendChild(b);
     });
     grid.appendChild(col);
   });
   s.appendChild(grid);
 
-  const traps = el('div', 'ps-note');
-  traps.appendChild(el('p', 'ps-cap', 'Three traps'));
-  const tl = el('ul', 'ps-bul');
-  [['Restatement', 'you renamed the behaviour and called it a value. Nothing was explained.'],
-   ['Judgment', 'you wrote how you feel about them, not what they rank highest.'],
-   ['Stereotype', 'it explains everything, predicts nothing, and no interview can check it.']]
-   .forEach(t => { const li = el('li');
-     const b = el('b', null, t[0]); li.appendChild(b);
-     li.appendChild(document.createTextNode(' — ' + t[1])); tl.appendChild(li); });
-  traps.appendChild(tl);
+  const traps = el('div', 'ps-note pp-traps');
+  [['Restatement', 'you renamed the behaviour and called it a value.'],
+   ['Judgment', 'you wrote how you feel, not what they put first.'],
+   ['Stereotype', 'it explains everything and no interview can check it.']]
+   .forEach(t => { const d = el('div');
+     d.appendChild(el('b', null, '✕ ' + t[0]));
+     d.appendChild(el('span', null, t[1])); traps.appendChild(d); });
   s.appendChild(traps);
 
   s.appendChild(psFoot());
   return s;
 }
-/* ---- B · one scenario, everything a class needs to run it off paper ---- */
+
+/* the five steps as a small rail, for the masthead */
+function psStepRail(){
+  const r = el('div', 'ps-rail');
+  PS_STEPS.forEach((S, i) => {
+    const d = el('div', 'ps-rail-i');
+    const b = el('span', 'ps-step-b'); b.appendChild(icon(S[1]));
+    b.appendChild(el('span', 'ps-step-n', String(i + 1)));
+    d.appendChild(b);
+    d.appendChild(el('span', null, S[0]));
+    r.appendChild(d);
+    if (i < PS_STEPS.length - 1) r.appendChild(el('span', 'ps-rail-arr', '→'));
+  });
+  return r;
+}
+
+/* The three answers as overlapping circles, drawn like the Check step: each
+   speaker's face outside their own circle, what all three said in the middle,
+   and what only one said out in that person's own lobe. Blank on the field
+   sheet; numbered to match the list on a scenario sheet. */
+function psVenn(sx){
+  const s = svg('0 0 400 380', 'ps-venn');
+  const C = [[200, 146], [140, 250], [260, 250]];
+  C.forEach(c => s.appendChild(shape('circle', { cx: c[0], cy: c[1], r: 112, class: 'pv-disc' })));
+  s.appendChild(shape('circle', { cx: 200, cy: 214, r: 44, class: 'pv-core' }));
+  const FACE = [[200, 30], [40, 336], [360, 336]];
+  const defs = shape('defs', {});
+  s.appendChild(defs);
+  FACE.forEach((f, j) => {
+    const g = shape('g', { transform: 'translate(' + f[0] + ' ' + f[1] + ')' });
+    g.appendChild(shape('circle', { cx: 0, cy: 0, r: 33, class: 'pv-ring' }));
+    if (sx){
+      const id = 'pvc-' + sx.id + '-' + j;
+      const cp = shape('clipPath', { id: id });
+      cp.appendChild(shape('circle', { cx: 0, cy: 0, r: 30 }));
+      defs.appendChild(cp);
+      g.appendChild(shape('image', { href: 'portraits/' + sx.id + '-' + (j + 1) + '.jpg',
+        x: -30, y: -30, width: 60, height: 60, 'clip-path': 'url(#' + id + ')',
+        preserveAspectRatio: 'xMidYMid slice' }));
+    } else {
+      g.appendChild(shape('circle', { cx: 0, cy: 0, r: 30, class: 'pv-ph' }));
+      const t0 = shape('text', { x: 0, y: 1, 'text-anchor': 'middle', 'dominant-baseline': 'central', class: 'pv-ph-t' });
+      t0.textContent = String(j + 1);
+      g.appendChild(t0);
+    }
+    s.appendChild(g);
+  });
+  if (sx){
+    const MID = [[176, 198], [224, 198], [200, 236]];
+    const LOBE = [[200, 84], [106, 290], [294, 290]];
+    psClaims(sx).forEach((cm, n) => {
+      const who = sx.speakers.findIndex(sp => sp.name === cm.who);
+      const at = cm.shared ? MID[n] : LOBE[Math.max(0, who)];
+      const g = shape('g', { class: 'pv-tok' + (cm.shared ? ' is-mid' : ''), transform: 'translate(' + at[0] + ' ' + at[1] + ')' });
+      g.appendChild(shape('circle', { cx: 0, cy: 0, r: 19 }));
+      const tx = shape('text', { x: 0, y: 1, 'text-anchor': 'middle', 'dominant-baseline': 'central' });
+      tx.textContent = String(n + 1);
+      g.appendChild(tx);
+      s.appendChild(g);
+    });
+  }
+  return s;
+}
+/* shared first (numbered 1–3), then each speaker's own, in speaker order */
+function psClaims(sx){
+  const own = sx.claims.filter(c => !c.shared);
+  own.sort((a, b) => sx.speakers.findIndex(sp => sp.name === a.who) - sx.speakers.findIndex(sp => sp.name === b.who));
+  return sx.claims.filter(c => c.shared).concat(own);
+}
+
+/* ---- B · one scenario, the five steps the class works through, in the
+   pictures the class sees: the comic, the faces, the circles, the rings ---- */
 function psScenario(sx){
   const s = el('div', 'ps ps-k-scenario');
   const th = THEMES[sx.theme];
   const n = SCENARIOS.indexOf(sx) + 1;
-  s.appendChild(psHead('Scenario ' + n + ' of ' + SCENARIOS.length + ' · ' + th.label));
-  s.appendChild(psMast('Culture Circles · Teaching Sheet', sx.title, sx.setting));
+  const SCN = (typeof SCENES !== 'undefined' && SCENES[sx.id]) || null;
+  s.appendChild(psHead('Scenario ' + n + ' of ' + SCENARIOS.length + ' · Teaching sheet'));
 
-  const beats = el('div', 'pp-beats');
-  sx.beats.forEach((b, i) => {
-    const t = el('div', 'pp-beat');
-    t.appendChild(el('b', null, String(i + 1)));
-    t.appendChild(document.createTextNode(b.ico + '  ' + b.t));
-    beats.appendChild(t);
+  const chips = el('div', 'ps-chips');
+  [['pin', sx.setting], [themeIco(sx.theme), th.label]].forEach(c => {
+    if (!c[1]) return;
+    const d = el('span', 'ps-chip'); d.appendChild(icon(c[0])); d.appendChild(el('span', null, c[1])); chips.appendChild(d);
   });
-  s.appendChild(beats);
-  s.appendChild(el('p', null, sx.observation)).style.marginTop = '4pt';
-  const band = el('div', 'ps-note', sx.noticing);
-  s.appendChild(band);
+  s.appendChild(psMast('Culture Circles · A story from America', sx.title, null, chips));
 
-  psSection(s, '2 · Ask — one question opens it, three close it');
-  const qg = el('div', 'pp-qgrid');
-  sx.questions.forEach(q => {
-    const d = el('div', 'pp-qq' + (q.ok ? ' pp-ok' : ''));
-    d.appendChild(el('span', 'pp-tag', q.ok ? '✓ use this one' : (FLAWS[q.flaw] || {}).short || 'closes it'));
-    d.appendChild(el('div', null, '“' + q.q + '”'));
-    if (q.ok) d.appendChild(el('div', null, q.why));
-    qg.appendChild(d);
+  /* 1 · WATCH — the scene comic, six pictures in a row */
+  psStep(s, 0, 'the story, one picture at a time');
+  const strip = el('div', 'pp-comic');
+  const cells = SCN ? SCN.panels.length : 3;
+  for (let i = 0; i < cells; i++){
+    const f = el('div', 'pp-cell');
+    if (SCN && SCN.panelSheet){
+      /* one drawing holds all six, two across and three down: each cell is a
+         window onto its own sixth of it */
+      const im = psImg('scene/panels/' + sx.id + '-sheet.webp', 'pp-sheet');
+      im.style.left = -(i % 2) * 100 + '%';
+      im.style.top = -Math.floor(i / 2) * 100 + '%';
+      im.addEventListener('load', () => {
+        f.style.aspectRatio = (im.naturalWidth / 2) + ' / ' + (im.naturalHeight / 3);
+      });
+      f.appendChild(im);
+    } else if (SCN){
+      f.appendChild(psImg('scene/panels/' + sx.id + '-' + (i + 1) + '.jpg', 'pp-one'));
+    } else {
+      f.appendChild(psImg('strip/' + sx.id + '-' + (i + 1) + '.jpg', 'pp-one'));
+    }
+    f.appendChild(el('span', 'pp-cell-n', String(i + 1)));
+    strip.appendChild(f);
+  }
+  s.appendChild(strip);
+  const notice = el('div', 'pp-notice');
+  notice.appendChild(el('p', 'pp-obs', sx.observation));
+  const band = el('div', 'pp-noticeband');
+  band.appendChild(icon('glasses'));
+  band.appendChild(el('span', null, sx.noticing));
+  notice.appendChild(band);
+  s.appendChild(notice);
+
+  /* 2 · ASK — one question opens, three close */
+  psStep(s, 1, 'a good question opens a conversation; a bad one closes it');
+  const ask = el('div', 'pp-ask');
+  const good = sx.questions.find(q => q.ok);
+  const op = el('div', 'pp-open');
+  const who = el('div', 'pp-asker');
+  const av = el('span', 'pp-av pp-av-teal'); av.appendChild(icon('person')); who.appendChild(av);
+  who.appendChild(el('span', 'pp-chip pp-chip-open', '✓ Opens'));
+  op.appendChild(who);
+  const bub = el('div', 'pp-say');
+  bub.appendChild(el('div', 'pp-say-q', '“' + good.q + '”'));
+  bub.appendChild(el('div', 'pp-say-why', good.why));
+  op.appendChild(bub);
+  ask.appendChild(op);
+  const cl = el('div', 'pp-closers');
+  sx.questions.filter(q => !q.ok).forEach(q => {
+    const d = el('div', 'pp-closer');
+    d.appendChild(el('span', 'pp-chip pp-chip-shut', '✕ ' + ((FLAWS[q.flaw] || {}).short || 'Closes')));
+    d.appendChild(el('span', 'pp-closer-q', '“' + q.q + '”'));
+    cl.appendChild(d);
   });
-  s.appendChild(qg);
+  ask.appendChild(cl);
+  s.appendChild(ask);
 
-  psSection(s, '3 · Listen — read each answer aloud, or let three students read');
-  const three = el('div', 'ps-3');
-  sx.speakers.forEach(sp => {
+  /* 3 · LISTEN — the three faces, and what each one said */
+  psStep(s, 2, 'read each answer aloud, or let three students read');
+  const three = el('div', 'ps-3 pp-three');
+  sx.speakers.forEach((sp, j) => {
     const c = el('div', 'pp-spk');
-    c.appendChild(el('div', 'pp-who', sp.name));
-    c.appendChild(el('div', 'pp-meta', sp.age + ' · ' + sp.job + ' · ' + sp.city));
-    if (sp.context) c.appendChild(el('div', 'pp-meta', sp.context));
-    c.appendChild(el('div', 'pp-say', sp.script));
+    const hd = el('div', 'pp-spk-hd');
+    hd.appendChild(psImg('portraits/' + sx.id + '-' + (j + 1) + '.jpg', 'pp-face', sp.name));
+    const id = el('div');
+    id.appendChild(el('div', 'pp-who', sp.name));
+    id.appendChild(el('div', 'pp-meta', sp.age + ' · ' + sp.job));
+    id.appendChild(el('div', 'pp-meta', sp.city));
+    hd.appendChild(id);
+    c.appendChild(hd);
+    c.appendChild(el('div', 'pp-script', sp.script));
     three.appendChild(c);
   });
   s.appendChild(three);
 
-  psSection(s, '4 · Triangulate');
-  const tri = el('div', 'ps-2');
-  [['Said by all three — the pattern', true], ['Said by one only — personal', false]].forEach(side => {
-    const col = el('div');
-    col.appendChild(el('p', 'ps-cap', side[0]));
-    const ul = el('ul', 'ps-bul');
-    sx.claims.filter(c => !!c.shared === side[1]).forEach(c => ul.appendChild(el('li', null, c.text)));
-    col.appendChild(ul);
-    tri.appendChild(col);
+  /* 4 · CHECK — the circles, numbered to the list beside them */
+  psStep(s, 3, 'what all three said is the culture');
+  const ck = el('div', 'pp-check');
+  ck.appendChild(psVenn(sx));
+  const lists = el('div', 'pp-claims');
+  const cms = psClaims(sx);
+  const shared = el('div', 'pp-cl-all');
+  shared.appendChild(el('p', 'ps-cap pp-cap-teal', 'All three said it — the pattern'));
+  const own = el('div', 'pp-cl-one');
+  own.appendChild(el('p', 'ps-cap', 'Only one said it — that person'));
+  cms.forEach((cm, i) => {
+    const r = el('div', 'pp-claim' + (cm.shared ? ' is-all' : ''));
+    r.appendChild(el('span', 'pp-tok', String(i + 1)));
+    const t = el('span', 'pp-claim-t', cm.text);
+    if (!cm.shared && cm.who) t.appendChild(el('b', 'pp-claim-who', ' — ' + cm.who));
+    r.appendChild(t);
+    (cm.shared ? shared : own).appendChild(r);
   });
-  s.appendChild(tri);
+  lists.appendChild(shared);
+  lists.appendChild(own);
+  ck.appendChild(lists);
+  s.appendChild(ck);
 
-  psSection(s, '5 · Two sets of rings, same situation');
-  const tbl = el('table', 'pp-rings');
-  const hr = el('tr');
-  hr.appendChild(el('th', null, ''));
-  hr.appendChild(el('th', 'pp-w', 'Western'));
-  hr.appendChild(el('th', 'pp-e', 'Bengali'));
+  /* 5 · MAP — both sets of rings, outside in */
+  psStep(s, 4, 'start from what they did, then work inwards');
+  const east = sx.contrast.east_label || 'Bengali';
+  const tbl = el('div', 'pp-map');
+  const hr = el('div', 'pp-map-row pp-map-hd');
+  hr.appendChild(el('div'));
+  [['k-west', 'Western', 'pp-wv'], ['k-east', east, 'pp-ev']].forEach(h => {
+    const d = el('div', 'pp-map-h ' + h[0]);
+    d.appendChild(psTarget(null, 'pt-side'));
+    d.appendChild(el('span', null, h[1]));
+    hr.appendChild(d);
+  });
   tbl.appendChild(hr);
   RINGS.forEach(R => {
-    const tr = el('tr');
-    const k = el('td', 'pp-k L-' + R.key + ' B-' + R.key, R.name);
+    const tr = el('div', 'pp-map-row k-' + R.key);
+    const k = el('div', 'pp-map-k');
+    k.appendChild(psTarget(R.key));
+    const kn = el('div');
+    kn.appendChild(el('b', null, R.name));
+    kn.appendChild(el('i', null, R.q));
+    k.appendChild(kn);
     tr.appendChild(k);
-    tr.appendChild(el('td', 'pp-wv', sx.rings[R.key]));
-    tr.appendChild(el('td', 'pp-ev', sx.contrast[R.key]));
+    tr.appendChild(el('div', 'pp-map-c pp-wv', sx.rings[R.key]));
+    tr.appendChild(el('div', 'pp-map-c pp-ev', sx.contrast[R.key]));
     tbl.appendChild(tr);
   });
   s.appendChild(tbl);
 
-  const ch = el('div', 'pp-chain');
-  ['behavior', 'value', 'belief', 'worldview'].forEach((k, j) => {
-    const i = 3 - j;
-    const R = RINGS.find(x => x.key === k);
-    const d = el('div', 'L-' + k + ' B-' + k);
-    d.appendChild(el('b', null, R.name));
-    d.appendChild(document.createTextNode(sx.chain[i]));
-    ch.appendChild(d);
-  });
-  s.appendChild(ch);
-  s.appendChild(el('div', 'ps-band', sx.punch + ' ' + sx.contrast.note));
+  const pb = el('div', 'ps-band pp-punch');
+  pb.appendChild(icon('target'));
+  pb.appendChild(el('span', null, sx.punch + ' ' + sx.contrast.note));
+  s.appendChild(pb);
   s.appendChild(psFoot());
   return s;
 }
 
-const RING_WHY = {
-  behavior:  'You can watch this one. It is the only ring you can see.',
-  value:     'Invisible. Ask what they put first when two good things collide.',
-  belief:    'Invisible. Ask what has to be true for that value to make sense.',
-  worldview: 'Invisible. Ask what shape of world those beliefs assume.'
-};
-
-/* ---- C · the four opening panels, on one side ---- */
+/* ---- C · the lesson, as the class saw it ----
+   Each opening panel is redrawn from the same picture code the projector
+   uses, frozen at its last beat, with the sentence it ends on. The sheet
+   and the screen cannot drift apart because they are the same drawing. */
+function psLessonFig(L){
+  const s = svg('0 0 ' + ZW + ' ' + ZH, 'zs instant ps-zs');
+  L.draw(s);
+  if (L.dx){
+    const w = zN(null, 'g', { transform: 'translate(' + L.dx + ' 0)' });
+    [...s.childNodes].forEach(n => { if (n.nodeName !== 'defs') w.appendChild(n); });
+    s.appendChild(w);
+  }
+  const k = L.beats.length - 1;
+  s.querySelectorAll('[data-in]').forEach(n => n.classList.toggle('vis', k >= +n.getAttribute('data-in')));
+  s.querySelectorAll('[data-out]').forEach(n => n.classList.toggle('gone', k >= +n.getAttribute('data-out')));
+  s.querySelectorAll('[data-now]').forEach(n =>
+    n.classList.toggle('now', n.getAttribute('data-now').split(' ').indexOf(String(k)) >= 0));
+  s.querySelectorAll('[data-at]').forEach(n => {
+    const on = {};
+    n.getAttribute('data-at').split(' ').forEach(p => {
+      const m = p.match(/^(\d+)(?:-(\d+))?:(.+)$/);
+      if (!m) return;
+      on[m[3]] = on[m[3]] || (k >= +m[1] && (m[2] == null || k < +m[2]));
+    });
+    Object.keys(on).forEach(c => n.classList.toggle(c, on[c]));
+  });
+  if (L.onBeat){ try { L.onBeat(k, s); } catch (e) {} }
+  return s;
+}
 function psLesson(){
   const s = el('div', 'ps ps-k-lesson');
   s.appendChild(psHead('Lesson Sheet'));
   s.appendChild(psMast('Culture Circles · Before You Start', 'What Is Culture?',
-    'A group of people who answer four questions the same way. Only the first can be seen.'));
+    'A group of people who answer four questions the same way. Only the first can be seen.',
+    psStepRail()));
 
-  const four = el('div', 'pp-four');
-  const fig = ringDiagram(false);
-  fig.removeAttribute('class'); fig.setAttribute('class', 'rings');
-  four.appendChild(fig);
-  const keys = el('div');
-  RINGS.forEach(R => {
-    const r = el('div', 'pp-keyrow B-' + R.key);
-    const b = el('b', 'L-' + R.key, R.name);
-    r.appendChild(b);
-    r.appendChild(document.createTextNode(' '));
-    r.appendChild(el('i', null, R.q));
-    r.appendChild(el('span', null, RING_WHY[R.key]));
-    keys.appendChild(r);
+  const grid = el('div', 'pp-panels');
+  LESSON.forEach((L, i) => {
+    const c = el('div', 'pp-panel');
+    const hd = el('div', 'pp-panel-hd');
+    hd.appendChild(el('span', 'pp-panel-n', String(i + 1)));
+    const ht = el('div');
+    ht.appendChild(el('p', 'pp-panel-k', L.kicker));
+    ht.appendChild(el('h3', null, L.title));
+    hd.appendChild(ht);
+    c.appendChild(hd);
+    const fig = el('div', 'pp-panel-fig');
+    fig.appendChild(psLessonFig(L));
+    c.appendChild(fig);
+    c.appendChild(el('p', 'pp-panel-cap', L.beats[L.beats.length - 1][0]));
+    grid.appendChild(c);
   });
-  four.appendChild(keys);
-  s.appendChild(four);
-
-  psSection(s, 'No culture is better — the same values, in a different order');
-  const rank = el('div', 'pp-rank');
-  [['west', 'A Western office'], ['east', 'A Rajshahi office']].forEach(side => {
-    const col = el('div', 'pp-col ' + (side[0] === 'west' ? 'pp-w' : 'pp-e'));
-    col.appendChild(el('h3', null, side[1]));
-    const ol = el('ol');
-    RANKINGS[side[0]].forEach(v => ol.appendChild(el('li', null, v)));
-    col.appendChild(ol);
-    rank.appendChild(col);
-  });
-  s.appendChild(rank);
-  s.appendChild(el('p', 'ps-cap', 'Both lists hold all three. Read the top line of each, then imagine the same meeting in both rooms.'));
-
-  psSection(s, 'Where the order comes from — each ring rests on the one inside it');
-  const ch = el('div', 'pp-chain');
-  [['behavior', 'what people do'], ['value', 'why? what they value most'],
-   ['belief', 'why? what they hold to be true'], ['worldview', 'why? how they see the world']].forEach(L => {
-    const R = RINGS.find(x => x.key === L[0]);
-    const d = el('div', 'L-' + L[0] + ' B-' + L[0]);
-    d.appendChild(el('b', null, R.name));
-    d.appendChild(document.createTextNode(L[1]));
-    ch.appendChild(d);
-  });
-  s.appendChild(ch);
-  s.appendChild(el('p', 'ps-cap', 'Start with what people do, and keep asking why until you reach the centre.'));
-
-  psSection(s, 'Why interview anyone?');
-  const why = el('div', 'pp-why');
-  [['About them', ['What they actually do, not what you assume', 'Which value they put first',
-                   'Why a strange habit is obvious to them']],
-   ['In English', ['Real speech at natural speed', 'The idioms nobody puts in a textbook',
-                   'Asking a question that opens somebody up']]].forEach(col => {
-    const c = el('div');
-    c.appendChild(el('h3', null, col[0]));
-    const ul = el('ul', 'ps-bul');
-    col[1].forEach(t => ul.appendChild(el('li', null, t)));
-    c.appendChild(ul);
-    why.appendChild(c);
-  });
-  s.appendChild(why);
-  psSection(s, 'The four steps');
-  const steps = el('div', 'pp-steps');
-  [['Watch', 'A behaviour that makes no sense to you. Describe it as a camera would.'],
-   ['Ask', 'One question that cannot be answered in a word, and hides no judgment.'],
-   ['Listen', 'Three people, three answers. One answer is a story, not a culture.'],
-   ['Map', 'What all three share is the pattern. Work in: values, beliefs, worldview.']
-  ].forEach((st, i) => {
-    const d = el('div');
-    d.appendChild(el('b', null, (i + 1) + ' · ' + st[0]));
-    d.appendChild(document.createTextNode(st[1]));
-    steps.appendChild(d);
-  });
-  s.appendChild(steps);
+  s.appendChild(grid);
 
   s.appendChild(el('div', 'ps-band',
     'You cannot see a value. You have to ask — and then check the answer against other people. ' +
@@ -8500,12 +8743,35 @@ function psLesson(){
 }
 
 /* Build exactly the sheets asked for, print, then take them back out of the
-   page. A set prints one sheet to a side — no duplex, no stapling. */
+   page. A set prints one sheet to a side — no duplex, no stapling.
+
+   Before printing, the sheets are laid out off-screen at the page's width,
+   every picture is waited for, and any sheet that has grown past one A4 side
+   is scaled down to fit it — a long transcript must never push a sheet onto
+   a second page. */
 const SHEETS = {
   field:  psField,
   lesson: psLesson
 };
+const PS_PAGE_H = 275 * 96 / 25.4;      /* A4 less the 11mm top and bottom margins, in CSS px */
+function psFit(){
+  psRoot.classList.add('is-measuring');
+  [...psRoot.children].forEach(p => {
+    p.style.zoom = '';
+    const h = p.getBoundingClientRect().height;
+    if (h > PS_PAGE_H - 24) p.style.zoom = String(Math.floor((PS_PAGE_H - 24) / h * 1000) / 1000);
+  });
+  psRoot.classList.remove('is-measuring');
+}
+function psReady(){
+  const ims = [...psRoot.querySelectorAll('img')];
+  const wait = Promise.all(ims.map(im => (im.complete && im.naturalWidth) || im.classList.contains('is-missing') ? 0 :
+    new Promise(r => { im.addEventListener('load', r, { once: true }); im.addEventListener('error', r, { once: true }); })));
+  return Promise.race([wait, new Promise(r => setTimeout(r, 6000))]);
+}
+let psBusy = false;
 function printSheet(what){
+  if (psBusy) return;
   const list = Array.isArray(what) ? what : [what];
   psRoot.innerHTML = '';
   list.forEach(k => {
@@ -8515,10 +8781,16 @@ function printSheet(what){
     if (found) psRoot.appendChild(psScenario(found));
   });
   if (!psRoot.children.length) return;
-  document.documentElement.setAttribute('data-print', 'on');
-  const clear = () => { document.documentElement.removeAttribute('data-print'); psRoot.innerHTML = ''; };
-  window.addEventListener('afterprint', clear, { once: true });
-  setTimeout(() => window.print(), 60);
+  psBusy = true;
+  psRoot.classList.add('is-measuring');
+  psReady().then(() => {
+    psRoot.classList.remove('is-measuring');
+    psFit();
+    document.documentElement.setAttribute('data-print', 'on');
+    const clear = () => { psBusy = false; document.documentElement.removeAttribute('data-print'); psRoot.innerHTML = ''; };
+    window.addEventListener('afterprint', clear, { once: true });
+    setTimeout(() => window.print(), 60);
+  });
 }
 
 /* the menu's printable list, built from the scenario bank so a new scenario
@@ -8526,10 +8798,10 @@ function printSheet(what){
 function printMenu(){
   const rows = [
     ['field',  'ask', 'Field sheet',  'Blank. For running a real interview outside the room.'],
-    ['lesson', 'book', 'Lesson sheet', 'What culture is, the two rankings, and the four steps.']
+    ['lesson', 'book', 'Lesson sheet', 'The eight opening pictures, each with the line it ends on.']
   ];
   SCENARIOS.forEach(x => rows.push(['sc:' + x.id, themeIco(x.theme), x.title,
-    x.setting + ' · transcripts, answer key, both sets of rings']));
+    x.setting + ' · the comic, the three people, the circles and both sets of rings']));
   rows.push([SCENARIOS.map(x => 'sc:' + x.id), 'eye', 'All ' + SCENARIOS.length + ' scenario sheets',
              'One page each, in one print job.']);
   rows.push([['field', 'lesson'].concat(SCENARIOS.map(x => 'sc:' + x.id)), 'rank',
