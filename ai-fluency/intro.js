@@ -460,7 +460,7 @@ function textures(){
 }
 
 /* ---------- player ---------- */
-let onStart=null,root,stage,capEn,capBn,dotsEl,btnPlay,btnSnd,cur=-1,anims=[],master=null,playing=true,raf=0,onExit=null,renderMode=false,sound=true,played=[],fired=[],clip=null,ready=null;
+let onStart=null,root,stage,capEn,capBn,dotsEl,btnPlay,btnSnd,cur=-1,anims=[],master=null,playing=true,raf=0,onExit=null,renderMode=false,sound=true,played=[],fired=[],clip=null,ready=null,narration=null,lastTick=null,openId=0;
 function loadDur(){ if(ready) return ready;
   ready=fetch('audio/manifest.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).then(m=>{DUR=(m&&m.dur)||{}}).catch(()=>{}).then(plan);
   return ready; }
@@ -470,7 +470,7 @@ function build(){
   root=document.createElement('div'); root.id='intro'; root.setAttribute('role','dialog'); root.setAttribute('aria-label','The four Ds');
   root.style.setProperty('--gm',GEAR_MASK); root.style.setProperty('--guil',tx.guil); root.style.setProperty('--grain',tx.grain);
   root.innerHTML=`<div class="i-wrap"><div class="i-stage" id="i-stage"></div></div><div class="i-subs" aria-live="polite"><p class="en"></p><p class="bnc" lang="bn"></p></div><div class="i-turn">↻ Turn your phone sideways for the full picture</div>
-   <div class="i-bar"><button data-i="prev" aria-label="Previous scene">◀</button><button data-i="play" aria-label="Pause">❚❚</button><button data-i="next" aria-label="Next scene">▶</button>
+   <div class="i-load" role="status" hidden></div><div class="i-bar"><button data-i="prev" aria-label="Previous scene">◀</button><button data-i="play" aria-label="Pause">❚❚</button><button data-i="next" aria-label="Next scene">▶</button>
    <div class="i-dots" id="i-dots"></div><button data-i="snd" aria-label="Sound" title="Sound">🔊</button><button data-i="bn" title="বাংলা subtitles">বাংলা</button><button data-i="exit" aria-label="Close">✕</button></div>`;
   document.body.appendChild(root);
   stage=root.querySelector('#i-stage'); dotsEl=root.querySelector('#i-dots'); btnPlay=root.querySelector('[data-i=play]'); btnSnd=root.querySelector('[data-i=snd]');
@@ -479,7 +479,7 @@ function build(){
     if(g){show(+g.dataset.go);return}
     if(!b){ if(e.target.closest('.i-end')) return; togglePlay();return}
     const a=b.dataset.i; if(a==='prev')show(Math.max(0,cur-1)); else if(a==='next')advance(); else if(a==='play')togglePlay(); else if(a==='exit')close(); else if(a==='start'){ const go=onStart; if(go) go(); close(); }
-    else if(a==='snd'){sound=!sound;btnSnd.textContent=sound?'🔊':'🔇'; if(!sound) stopClip();}
+    else if(a==='snd') toggleSound(); else if(a==='retry') retryNarration();
     else if(a==='bn'){root.classList.toggle('bn')}});
   addEventListener('resize',fit); fit();
 }
@@ -494,12 +494,12 @@ function setMode(p){
   return true;
 }
 function fit(){ if(!root) return;
-  if(setMode(wantP())&&cur>=0&&!root.hidden){ const t=sceneTime(); show(cur); if(t>0) anims.forEach(a=>{ try{a.currentTime=t*1000}catch(e){} }); }
+  if(setMode(wantP())&&cur>=0&&!root.hidden){ const t=sceneTime(); show(cur,true); frame(t);setCaption(t); }
   root.classList.toggle('port',P); stage.style.width=SW+'px'; stage.style.height=SH+'px';
   const narrow=!P&&innerWidth<900&&!renderMode; root.classList.toggle('narrow',narrow);
   const s=Math.min(innerWidth/SW,(innerHeight-(renderMode?0:narrow?200:64))/SH); stage.style.transform=`scale(${s})`; stage.parentElement.style.width=SW*s+'px'; stage.parentElement.style.height=SH*s+'px'; }
-function show(i){
-  cur=i; anims.forEach(a=>a.cancel()); anims=[]; stopClip();
+function show(i,preserve=false){
+  cur=i; anims.forEach(a=>a.cancel()); anims=[]; if(!preserve) stopClip(); lastTick=null;
   const sc=SCENES[i];
   stage.innerHTML=`<div class="i-bg"></div><div class="i-back"><div class="i-guil"></div></div>
    <div class="world" id="world">${sc.html()}</div><div class="scr">${sc.scr()}</div>
@@ -515,8 +515,9 @@ function show(i){
   master=stage.animate([{opacity:1},{opacity:1}],{duration:sc._dur*1000+60000,fill:'both'}); anims.push(master);
   capEn=stage.querySelector('.i-cap .en'); capBn=stage.querySelector('.i-cap .bnc');
   [...dotsEl.children].forEach((d,k)=>d.className=k<i?'done':k===i?'on':'');
-  played=sc.lines.map(()=>false); fired=(sc.sfx||[]).map(()=>false);
-  if(renderMode||!playing) anims.forEach(a=>a.pause()); else anims.forEach(a=>a.play());
+  if(!preserve){ played=sc.lines.map(()=>false); fired=(sc.sfx||[]).map(()=>false); }
+  // One playhead drives every animation; narration owns it while a line plays.
+  anims.forEach(a=>a.pause()); frame(0);
   setCaption(0);
 }
 function capIdx(t){ const sc=SCENES[cur]; let k=0; sc._t.forEach((t0,i)=>{ if(t>=t0-.15) k=i; }); return k; }
@@ -527,23 +528,70 @@ function setCaption(t){
   const sub=root.querySelector('.i-subs'); if(sub){ sub.querySelector('.en').textContent=l[0]; sub.querySelector('.bnc').textContent=l[1]; }
   if(!renderMode) capEn.parentElement.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:320,easing:E,fill:'both'});
 }
-function stopClip(){ if(clip){ try{clip.pause()}catch(e){} clip=null; } try{ speechSynthesis.cancel() }catch(e){} }
-function say(text){
-  stopClip(); if(!sound) return;
+function frame(t){ anims.forEach(a=>{a.currentTime=t*1000}); }
+function loading(message='',retry=false){
+  const el=root&&root.querySelector('.i-load'); if(!el) return;
+  el.hidden=!message; el.textContent=message;
+  if(retry){const b=document.createElement('button');b.dataset.i='retry';b.textContent='Retry audio';el.appendChild(b);}
+}
+function syncPlay(){btnPlay.textContent=playing?'❚❚':'▶';btnPlay.setAttribute('aria-label',playing?'Pause':'Play');}
+function stopClip(){
+  // Invalidate callbacks before pause/cancel: old downloads must not move a new scene.
+  narration=null;
+  if(clip){const a=clip;clip=null;a.onended=a.onerror=a.onwaiting=a.onplaying=null;try{a.pause()}catch(e){}}
+  try{speechSynthesis.cancel()}catch(e){} loading();
+}
+function say(text,index){
+  stopClip(); if(!sound||renderMode) return;
+  const sc=SCENES[cur],n={index,start:sc._t[index],duration:sc._d[index],started:false,failed:false};
+  narration=n; frame(n.start); loading('Loading narration…');
+  const live=()=>narration===n&&!root.hidden;
+  const done=()=>{if(!live())return;frame(n.start+n.duration);narration=null;clip=null;lastTick=null;loading();};
+  const fail=()=>{if(!live())return;n.failed=true;playing=false;if(clip)clip.pause();syncPlay();loading('Narration could not play. Retry to continue this line.',true);};
   const k=keyOf(text);
-  if(k&&DUR[k]){ clip=new Audio(`audio/${k}.mp3`); clip.play().catch(()=>{}); return; }
-  try{ const u=new SpeechSynthesisUtterance(text.replace(/Ayesha/g,'Eye-sha')); u.rate=.9; u.lang='en-GB'; speechSynthesis.speak(u); }catch(e){}
+  if(k&&DUR[k]){
+    const a=new Audio(`audio/${k}.mp3`);clip=a;n.audio=a;a.preload='auto';
+    a.onended=done;a.onerror=fail;
+    a.onwaiting=()=>{if(live())loading('Buffering narration…');};
+    a.onplaying=()=>{if(live()){if(!playing)a.pause();else loading();}};
+    a.play().then(()=>{if(!live()||!playing)a.pause();},()=>{if(live()&&playing)fail();});
+  }else{
+    try{
+      const u=new SpeechSynthesisUtterance(text.replace(/Ayesha/g,'Eye-sha'));u.rate=.9;u.lang='en-GB';
+      u.onstart=()=>{if(live()){n.started=true;lastTick=null;loading();if(!playing)speechSynthesis.pause();}};
+      u.onend=done;u.onerror=fail;speechSynthesis.speak(u);
+    }catch(e){fail();}
+  }
+}
+function retryNarration(){
+  if(!narration)return;const i=narration.index;playing=true;lastTick=null;syncPlay();say(SCENES[cur].lines[i][0],i);
+}
+function toggleSound(){
+  sound=!sound;btnSnd.textContent=sound?'🔊':'🔇';
+  if(!sound){stopClip();lastTick=null;}
+  else if(!renderMode&&cur>=0){const i=capIdx(sceneTime());played[i]=true;say(SCENES[cur].lines[i][0],i);if(!playing&&clip)clip.pause();}
 }
 function sceneTime(){ return master?(master.currentTime||0)/1000:0; }
-function tick(){
+function tick(now=performance.now()){
   if(!root||root.hidden) return;
-  const sc=SCENES[cur], t=sceneTime(); capShown=capShown; setCaption(t);
-  if(playing){
-    sc._t.forEach((t0,i)=>{ if(!played[i]&&t>=t0){ played[i]=true; if(t-t0<.6) say(sc.lines[i][0]); } });
+  const dt=lastTick===null?0:Math.max(0,(now-lastTick)/1000);lastTick=now;
+  const sc=SCENES[cur];let t=sceneTime();
+  if(playing&&!renderMode){
+    if(narration){
+      const n=narration;
+      // currentTime stops during download/buffering. Never use wall time for recorded speech.
+      t=n.audio?n.start+Math.min(n.duration,n.audio.currentTime||0):n.started?Math.min(t+dt,n.start+n.duration):n.start;
+    }else{
+      t+=dt;
+      const i=sc._t.findIndex((at,i)=>!played[i]&&t>=at);
+      if(i>=0){t=sc._t[i];played[i]=true;say(sc.lines[i][0],i);}
+    }
+    frame(t);
     (sc.sfx||[]).forEach(([at,kind],i)=>{ if(!fired[i]&&t>=T(sc,at)){ fired[i]=true; if(sound&&t-T(sc,at)<.3) sfx(kind); } });
   }
+  setCaption(t);
   const prog=Math.min(1,t/sc._dur); const on=dotsEl.children[cur]; if(on) on.querySelector('i').style.width=(prog*100)+'%';
-  if(playing&&t>=sc._dur){ if(cur<SCENES.length-1) show(cur+1); else { playing=false; btnPlay.textContent='▶'; btnPlay.setAttribute('aria-label','Play'); anims.forEach(a=>a.pause()); finale(); } }
+  if(playing&&!narration&&t>=sc._dur){ if(cur<SCENES.length-1) show(cur+1); else {playing=false;syncPlay();finale();} }
   raf=requestAnimationFrame(tick);
 }
 function finale(){
@@ -554,25 +602,30 @@ function finale(){
   stage.appendChild(d);
 }
 function advance(){ if(cur<SCENES.length-1) show(cur+1); }
-function togglePlay(){ playing=!playing; btnPlay.textContent=playing?'❚❚':'▶'; btnPlay.setAttribute('aria-label',playing?'Pause':'Play');
-  anims.forEach(a=>playing?a.play():a.pause()); if(!playing){ if(clip) clip.pause(); try{speechSynthesis.pause()}catch(e){} } else { if(clip) clip.play().catch(()=>{}); try{speechSynthesis.resume()}catch(e){} } }
-function open(opts={}){
-  build(); root.hidden=false; document.documentElement.classList.add('intro-on'); onExit=opts.onExit||null; onStart=opts.onStart||null; playing=!opts.paused; btnPlay.textContent=playing?'❚❚':'▶';
-  root.classList.toggle('bn',!!opts.bn); if(opts.sound===false){sound=false;btnSnd.textContent='🔇'}
-  try{ if(opts.fullscreen&&!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{}) }catch(e){}
-  loadDur().then(()=>{ show(opts.scene||0); cancelAnimationFrame(raf); raf=requestAnimationFrame(tick); });
+function togglePlay(){
+  if(narration&&narration.failed){retryNarration();return;}
+  playing=!playing;lastTick=null;syncPlay();
+  if(!playing){if(clip)clip.pause();try{speechSynthesis.pause()}catch(e){}}
+  else if(clip){const a=clip,n=narration;a.play().then(()=>{if(clip!==a||!playing)a.pause();},()=>{if(narration===n&&playing){n.failed=true;playing=false;syncPlay();loading('Narration could not play. Retry to continue this line.',true);}});}
+  else try{speechSynthesis.resume()}catch(e){}
 }
-function close(){ if(!root) return; root.hidden=true; document.documentElement.classList.remove('intro-on'); anims.forEach(a=>a.cancel()); anims=[]; stopClip(); cancelAnimationFrame(raf); if(onExit) onExit(); }
+function open(opts={}){
+  build(); root.hidden=false; document.documentElement.classList.add('intro-on'); onExit=opts.onExit||null; onStart=opts.onStart||null; playing=!opts.paused;renderMode=false;root.classList.remove('render');syncPlay();
+  root.classList.toggle('bn',!!opts.bn); if(opts.sound!=null)sound=!!opts.sound;btnSnd.textContent=sound?'🔊':'🔇';
+  try{ if(opts.fullscreen&&!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{}) }catch(e){}
+  const id=++openId;loadDur().then(()=>{ if(id!==openId||root.hidden)return;show(opts.scene||0); cancelAnimationFrame(raf); raf=requestAnimationFrame(tick); });
+}
+function close(){ ++openId;if(!root) return; root.hidden=true; document.documentElement.classList.remove('intro-on'); anims.forEach(a=>a.cancel()); anims=[]; stopClip(); cancelAnimationFrame(raf); if(onExit) onExit(); }
 if(typeof document!=='undefined'&&document.addEventListener) document.addEventListener('keydown',e=>{
   if(!root||root.hidden) return;
   const k=e.key; let used=true;
   if(k===' '||k==='k') togglePlay(); else if(k==='ArrowRight') advance(); else if(k==='ArrowLeft') show(Math.max(0,cur-1));
-  else if(k==='Escape') close(); else if(k==='b'||k==='B') root.classList.toggle('bn'); else if(k==='m'||k==='M'){sound=!sound;btnSnd.textContent=sound?'🔊':'🔇';if(!sound)stopClip();} else used=false;
+  else if(k==='Escape') close(); else if(k==='b'||k==='B') root.classList.toggle('bn'); else if(k==='m'||k==='M')toggleSound(); else used=false;
   if(used){e.preventDefault();e.stopImmediatePropagation()}
 },true);
 
 /* ---------- deterministic seek, for the video renderer ---------- */
-async function seek(i,t,o){ renderMode=true; if(o&&o.portrait!=null) forceP=!!o.portrait; await loadDur(); build(); root.hidden=false; root.classList.add('render'); const sw=SCENES; fit(); if(i!==cur||sw!==SCENES) show(i); anims.forEach(a=>{a.pause();a.currentTime=t*1000}); setCaption(t); }
+async function seek(i,t,o){ renderMode=true; if(o&&o.portrait!=null) forceP=!!o.portrait; await loadDur(); build(); root.hidden=false; root.classList.add('render'); const sw=SCENES; fit(); if(i!==cur||sw!==SCENES) show(i); frame(t); setCaption(t); }
 const total=()=>SCENES.reduce((s,sc)=>s+(sc._dur||0),0);
 
 if(typeof window!=='undefined'){ window.INTRO={open,close,seek,LINES,DEFS:ORDER4.map(d=>DEF[d].line[0]),W,H,plan,total,ready:loadDur}; Object.defineProperty(window.INTRO,'SCENES',{get:()=>SCENES,enumerable:true}); }

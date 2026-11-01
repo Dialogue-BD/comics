@@ -508,7 +508,7 @@ function renderStage(){
   if(k==='card'){ const keep=was==='card'&&pc.dataset.at===S.lesson+'/'+S.beat+(UI.sub||'')?pc.scrollTop:0; const fresh=pc.dataset.at!==S.lesson+'/'+S.beat+(UI.sub||''); const abc=!UI.sub&&fn(ctx().beat.card,ctx()); if(!fresh&&abc&&abc.type==='alt'){ fitDevice(); return; }
     if(!fresh&&abc&&abc.type==='story'&&abc.illustrated&&pc.querySelector('.cv-story')){ CV_ART.language(pc.querySelector('.cv-story'),S.bn); fitDevice(); return; }
     pc.innerHTML=cardScreen(); pc.dataset.at=S.lesson+'/'+S.beat+(UI.sub||'');
-    if(fresh&&!UI.sub){ const bc=fn(ctx().beat.card,ctx()); if(bc&&bc.type==='level') setTimeout(()=>FX.gearTurned(pc,bc.d),60); else if(bc&&bc.type==='result') setTimeout(()=>FX.missionDone(pc),60); else if(bc&&bc.type==='alt') setTimeout(()=>ALT.play(pc,{card:bc,bn:S.bn,speak:t=>speak(t),voice:()=>S.voice}),60); } pc.scrollTop=keep; if(was!=='card'||!keep) pc.firstElementChild&&pc.firstElementChild.classList.add('enter'); }
+    if(fresh&&!UI.sub){ const bc=fn(ctx().beat.card,ctx()); if(bc&&bc.type==='level') setTimeout(()=>FX.gearTurned(pc,bc.d),60); else if(bc&&bc.type==='result') setTimeout(()=>FX.missionDone(pc),60); else if(bc&&bc.type==='alt') setTimeout(()=>ALT.play(pc,{card:bc,bn:S.bn,speak:(t,end)=>speak(t,end),voice:()=>S.voice}),60); } pc.scrollTop=keep; if(was!=='card'||!keep) pc.firstElementChild&&pc.firstElementChild.classList.add('enter'); }
   else { pc.innerHTML=''; pc.dataset.at=''; }
   fitDevice();
 }

@@ -98,6 +98,11 @@ Cog reads every new step by itself. One audio player is unlocked by the student�
 
 Every movement is a Web Animation built from `data-a="anim start [duration]"` attributes, so the film is a pure function of (scene, time). `INTRO.seek(scene, t)` freezes any frame; the narrated video is rendered from the same scenes. Narration script and voice settings: `intro-voice-script.md` (record one take in the AI Studio speech playground → `intro/four-ds-narration.wav`).
 
+During live playback, a recorded line's `Audio.currentTime` drives the shared animation playhead. Download delays and buffering hold the picture and captions; the next line or scene waits for `ended`. A failed or blocked recording pauses on the same line with **Retry audio**. Pause, scene navigation, closing and phone rotation invalidate or preserve narration as appropriate, so late download callbacks cannot move a different scene. Muting allows silent playback. The reading demonstration (`alt.js`) waits for both its visual dwell and the narration completion callback before moving to another step.
+
+Run `node --test ai-fluency/tools/*.test.cjs` from the repository root. `buffering.test.cjs` covers delayed downloads, mid-line stalls, late animation frames, final-line completion, pending play/pause, retries, stale callbacks, mute, speech synthesis fallback and the reading demonstration. Browser verification also held a real MP3 request, checked a frozen playhead followed by resumption, and checked pause/resume, navigation and portrait layout.
+
+
 ## One screen at a time (`engine.js` · `play.css`)
 
 The same shape on every screen — the interaction grammar Gen Z students already know from Duolingo:

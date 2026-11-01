@@ -270,3 +270,8 @@ svg.ringtxt .rline{fill:none;stroke:rgba(226,201,142,.7);stroke-width:1.3}
 #intro.port .i-dots{min-width:60px}
 /* phones: the grain without a blend layer (cheaper to composite) */
 #intro.port .i-grain,#intro.narrow .i-grain{mix-blend-mode:normal;opacity:.035}
+
+/* Network feedback stays outside the film's teaching captions. */
+#intro .i-load{position:absolute;bottom:76px;left:50%;transform:translateX(-50%);z-index:20;max-width:90%;padding:10px 16px;background:#183c32;color:#fff;border-radius:12px;font:16px/1.4 system-ui;text-align:center}
+#intro .i-load[hidden]{display:none}
+#intro .i-load button{margin-left:12px;padding:6px 12px;cursor:pointer}

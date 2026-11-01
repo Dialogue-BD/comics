@@ -39,7 +39,8 @@ ALT.play=(root,o)=>{
     el.querySelectorAll('.alt-dots button').forEach((b,i)=>b.classList.toggle('on',i===n));
     el.querySelector('.alt-next').textContent=n===c.steps.length-1?'↻':'▶';
     const s=c.steps[n]; txt.innerHTML=`<b>${esc(s.h)}</b> ${esc(s.en)}${BN(s.bn,bn)}`; cap.dataset.say=s.h+'. '+s.en;
-    if(o.voice&&o.voice()) o.speak(s.h+'. '+s.en);
+    const voiced=!!(o.voice&&o.voice());let visualDone=false,voiceDone=!voiced;
+    const advance=()=>{if(tk===tok&&el.isConnected&&auto&&visualDone&&voiceDone&&n<c.steps.length-1)go(n+1);};
     // reset
     el.classList.remove('s-skim','s-key','s-scan','s-chk'); tags.forEach(g=>g.classList.remove('on','pick')); words.forEach(w=>w.classList.remove('on','off'));
     chks.forEach(k=>k.classList.remove('on')); eye.style.opacity=0; sweep.classList.remove('go'); el.querySelector('.alt-found').classList.remove('on'); count.textContent=''; zoom(1);
@@ -59,7 +60,8 @@ ALT.play=(root,o)=>{
     if(n===4){ el.classList.add('s-chk'); at(100,()=>zoom(c.zoom.s*.82,c.zoom.cx,c.zoom.cy),tk); el.querySelector('.alt-found').classList.add('on');
       chks.forEach((k,i)=>at(500+i*650,()=>k.classList.add('on'),tk));
       at(500+chks.length*650+250,()=>stamp.classList.add('on'),tk); }
-    if(auto&&n<c.steps.length-1) at(dwell,()=>go(n+1),tk);
+    if(auto&&n<c.steps.length-1) at(dwell,()=>{visualDone=true;advance();},tk);
+    if(voiced)o.speak(s.h+'. '+s.en,()=>{voiceDone=true;advance();});
   }
   el.addEventListener('click',e=>{ const b=e.target.closest('[data-alt]'); if(!b) return; const a=b.dataset.alt;
     if(a==='next'){ const n=+el.dataset.step; go(n>=c.steps.length-1?0:n+1,true); }
