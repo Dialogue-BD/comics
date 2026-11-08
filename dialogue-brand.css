@@ -1476,16 +1476,196 @@ body[data-dialogue-page="narratives"] :where(.nav, .controls, .story-header) {
 }
 
 /* 23 · Picture This — paper card details stay inked inside a forest theatre. */
-body[data-dialogue-page="picture-this"] :where(#card-count, #instructions-text) { color: #314034 !important; }
-body[data-dialogue-page="picture-this"] .app { background: radial-gradient(circle at 50% 42%, rgba(111,143,98,.25), transparent 42%), linear-gradient(145deg,#174629,#08250f) !important; }
-body[data-dialogue-page="picture-this"] :where(.topbar, .game-strip, .action) { color: #f4f1e6; }
-body[data-dialogue-page="local-problems"] :where(#card-count, #instructions-text) { color: #d8e2d2 !important; }
-body[data-dialogue-page="local-problems"] .app { background: radial-gradient(circle at 50% 42%, rgba(111,143,98,.25), transparent 42%), linear-gradient(145deg,#174629,#08250f) !important; }
-body[data-dialogue-page="local-problems"] :where(.topbar, .game-strip, .action) { color: #f4f1e6; }
-body[data-dialogue-page="local-problems"] :where(.game-picker-card, .game-panel, .game-strip, .audio-match-board, .word-help-card) { color: #f4f1e6; background: #174629; border-color: rgba(185,146,79,.58); }
-body[data-dialogue-page="local-problems"] :where(.game-picker, .word-help) { background: rgba(8,37,15,.86); }
-body[data-dialogue-page="local-problems"] .game-option { color: #f4f1e6; background: #205536; border-color: rgba(185,146,79,.45); }
-body[data-dialogue-page="local-problems"] .game-option:hover { background: #2a6240; border-color: #d2b978; }
+body[data-dialogue-page="picture-this"],
+body[data-dialogue-page="local-problems"] {
+  --accent: 43 56% 68%;
+  --ink: #f7f5ec;
+  --muted: #e0eadb;
+  --glass: rgba(14, 54, 28, .92);
+  --border: rgba(216, 211, 194, .36);
+  color: #f7f5ec;
+  color-scheme: dark;
+}
+body[data-dialogue-page="picture-this"] #card-count,
+body[data-dialogue-page="local-problems"] #card-count {
+  color: #f7f5ec !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .55);
+}
+body[data-dialogue-page="picture-this"] #instructions-text,
+body[data-dialogue-page="local-problems"] #instructions-text {
+  color: #e2ecde !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .55);
+}
+body[data-dialogue-page="picture-this"] .app,
+body[data-dialogue-page="local-problems"] .app {
+  background: radial-gradient(circle at 50% 42%, rgba(111,143,98,.25), transparent 42%), linear-gradient(145deg,#174629,#08250f) !important;
+}
+body[data-dialogue-page="picture-this"] :where(.topbar, .game-strip, .action, .side-pill, .dual-label-pill, .drawer-peek),
+body[data-dialogue-page="local-problems"] :where(.topbar, .game-strip, .action, .side-pill, .dual-label-pill, .drawer-peek) {
+  color: #f7f5ec;
+}
+body[data-dialogue-page="picture-this"] :where(.action, .side-pill, .dual-label-pill, .drawer-peek),
+body[data-dialogue-page="local-problems"] :where(.action, .side-pill, .dual-label-pill, .drawer-peek) {
+  background: rgba(14, 54, 28, .92);
+  border-color: rgba(210, 185, 120, .52);
+}
+body[data-dialogue-page="picture-this"] .action:hover,
+body[data-dialogue-page="local-problems"] .action:hover {
+  background: #205536;
+  border-color: #dbb96e;
+  color: #ffffff;
+}
+body[data-dialogue-page="picture-this"] :where(.view-toggle),
+body[data-dialogue-page="local-problems"] :where(.view-toggle) {
+  color: #f7f5ec;
+  background: rgba(24, 74, 43, .92);
+  border-color: rgba(210, 185, 120, .58);
+}
+body[data-dialogue-page="picture-this"] .view-toggle.game-menu-button,
+body[data-dialogue-page="local-problems"] .view-toggle.game-menu-button {
+  color: #fff9ea;
+  background: rgba(219, 185, 110, .2);
+  border-color: #dbb96e;
+}
+body[data-dialogue-page="picture-this"] .view-toggle:hover,
+body[data-dialogue-page="local-problems"] .view-toggle:hover {
+  color: #ffffff;
+  background: #26663e;
+  border-color: #e5c87f;
+}
+body[data-dialogue-page="picture-this"] .view-toggle.active,
+body[data-dialogue-page="local-problems"] .view-toggle.active {
+  color: #101812;
+  background: #dbb96e;
+  border-color: #dbb96e;
+}
+body[data-dialogue-page="picture-this"] .game-score-chip,
+body[data-dialogue-page="local-problems"] .game-score-chip {
+  color: #101812;
+  background: #dbb96e;
+  border-color: #e5c87f;
+}
+body[data-dialogue-page="picture-this"] :where(.game-picker-card, .game-panel, .game-strip, .audio-match-board),
+body[data-dialogue-page="local-problems"] :where(.game-picker-card, .game-panel, .game-strip, .audio-match-board, .word-help-card) {
+  color: #f7f5ec;
+  background: #143f24;
+  border-color: rgba(210, 185, 120, .62);
+}
+body[data-dialogue-page="picture-this"] :where(.game-picker),
+body[data-dialogue-page="local-problems"] :where(.game-picker, .word-help) {
+  background: rgba(6, 28, 12, .88);
+}
+body[data-dialogue-page="picture-this"] .game-picker-card h2,
+body[data-dialogue-page="local-problems"] .game-picker-card h2 {
+  color: #f7f5ec;
+}
+body[data-dialogue-page="picture-this"] .game-picker-card > p,
+body[data-dialogue-page="local-problems"] .game-picker-card > p {
+  color: #e4ece0;
+}
+body[data-dialogue-page="picture-this"] .game-picker-close,
+body[data-dialogue-page="local-problems"] .game-picker-close {
+  color: #f7f5ec;
+  background: rgba(244, 241, 230, .14);
+  border-color: rgba(210, 185, 120, .55);
+}
+body[data-dialogue-page="picture-this"] .game-picker-close:hover,
+body[data-dialogue-page="local-problems"] .game-picker-close:hover {
+  color: #101812;
+  background: #dbb96e;
+  border-color: #dbb96e;
+}
+body[data-dialogue-page="picture-this"] .game-option,
+body[data-dialogue-page="local-problems"] .game-option {
+  color: #f7f5ec;
+  background: #1c5030;
+  border-color: rgba(210, 185, 120, .52);
+}
+body[data-dialogue-page="picture-this"] .game-option:hover,
+body[data-dialogue-page="picture-this"] .game-option:focus-visible,
+body[data-dialogue-page="local-problems"] .game-option:hover,
+body[data-dialogue-page="local-problems"] .game-option:focus-visible {
+  background: #24613b;
+  border-color: #e2c57c;
+}
+body[data-dialogue-page="picture-this"] .game-option strong,
+body[data-dialogue-page="local-problems"] .game-option strong {
+  color: #ffffff;
+}
+body[data-dialogue-page="picture-this"] .game-option > span:not(.game-option-icon),
+body[data-dialogue-page="local-problems"] .game-option > span:not(.game-option-icon) {
+  color: #e6efe2;
+}
+body[data-dialogue-page="picture-this"] .game-option-icon,
+body[data-dialogue-page="local-problems"] .game-option-icon {
+  color: #101812;
+  background: #dbb96e;
+}
+body[data-dialogue-page="picture-this"] :where(.game-mode-kicker, .audio-match-title-wrap span),
+body[data-dialogue-page="local-problems"] :where(.game-mode-kicker, .audio-match-title-wrap span) {
+  color: #e5c87f;
+}
+body[data-dialogue-page="picture-this"] :where(.game-score, .audio-match-stat, .link-word, .game-strip-linkword, .guess-form button, .game-panel-action.primary, .audio-match-actions .primary),
+body[data-dialogue-page="local-problems"] :where(.game-score, .audio-match-stat, .link-word, .game-strip-linkword, .guess-form button, .game-panel-action.primary, .audio-match-actions .primary) {
+  color: #101812;
+  background: #dbb96e;
+  border-color: transparent;
+}
+body[data-dialogue-page="picture-this"] :where(.game-panel-action:not(.primary), .audio-match-actions button:not(.primary)),
+body[data-dialogue-page="local-problems"] :where(.game-panel-action:not(.primary), .audio-match-actions button:not(.primary)) {
+  color: #f7f5ec;
+  background: #205536;
+  border-color: rgba(210, 185, 120, .5);
+}
+body[data-dialogue-page="picture-this"] :where(.guess-form input, .game-strip .guess-form input),
+body[data-dialogue-page="local-problems"] :where(.guess-form input, .game-strip .guess-form input) {
+  color: #f7f5ec;
+  background: #0d2b18;
+  border-color: rgba(210, 185, 120, .55);
+}
+body[data-dialogue-page="picture-this"] :where(.guess-form input::placeholder, .game-strip .guess-form input::placeholder),
+body[data-dialogue-page="local-problems"] :where(.guess-form input::placeholder, .game-strip .guess-form input::placeholder) {
+  color: #b8ccb2;
+  opacity: 1;
+}
+body[data-dialogue-page="picture-this"] :where(.game-feedback, .audio-match-feedback),
+body[data-dialogue-page="local-problems"] :where(.game-feedback, .audio-match-feedback) {
+  color: #eaf2e6;
+  background: rgba(8, 33, 16, .68);
+  border-color: rgba(216, 211, 194, .28);
+}
+body[data-dialogue-page="picture-this"] :where(.game-feedback.correct, .game-strip-feedback.correct, .audio-match-feedback.correct),
+body[data-dialogue-page="local-problems"] :where(.game-feedback.correct, .game-strip-feedback.correct, .audio-match-feedback.correct) {
+  color: #e9ffcd;
+}
+body[data-dialogue-page="picture-this"] :where(.game-feedback.correct, .audio-match-feedback.correct, .game-strip.is-nurturer-strip .game-strip-feedback.correct),
+body[data-dialogue-page="local-problems"] :where(.game-feedback.correct, .audio-match-feedback.correct) {
+  background: rgba(28, 79, 36, .88);
+  border-color: rgba(163, 235, 106, .55);
+}
+body[data-dialogue-page="picture-this"] :where(.game-feedback.wrong, .game-strip-feedback.wrong, .audio-match-feedback.wrong),
+body[data-dialogue-page="local-problems"] :where(.game-feedback.wrong, .game-strip-feedback.wrong, .audio-match-feedback.wrong) {
+  color: #ffe0dc;
+}
+body[data-dialogue-page="picture-this"] :where(.game-feedback.wrong, .audio-match-feedback.wrong),
+body[data-dialogue-page="local-problems"] :where(.game-feedback.wrong, .audio-match-feedback.wrong) {
+  background: rgba(92, 28, 26, .86);
+  border-color: rgba(255, 138, 128, .55);
+}
+body[data-dialogue-page="picture-this"] :where(.game-feedback.recast, .game-strip-feedback.recast, .audio-match-feedback.recast) {
+  color: #fff2cc;
+}
+body[data-dialogue-page="picture-this"] :where(.game-feedback.recast, .audio-match-feedback.recast, .game-strip.is-nurturer-strip .game-strip-feedback.recast) {
+  background: rgba(84, 54, 14, .88);
+  border-color: rgba(246, 198, 103, .62);
+}
+body[data-dialogue-page="picture-this"] .game-end,
+body[data-dialogue-page="local-problems"] .game-end {
+  color: #e2ecde;
+  background: rgba(255, 255, 255, .07);
+  border: 1px solid rgba(216, 211, 194, .28);
+  border-radius: 11px;
+}
 body[data-dialogue-page="local-problems"] .word-help-card :where(p, li) { color: #d8e2d2; }
 body[data-dialogue-page="local-problems"] #word-help-list details { background: #205536; border-color: rgba(185,146,79,.45); }
 body[data-dialogue-page="local-problems"] #word-help-list details[open] summary { color: #dec78f; }

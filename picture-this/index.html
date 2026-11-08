@@ -13,11 +13,11 @@
   <style>
     :root {
       color-scheme: dark;
-      --accent: 193 86% 64%;
-      --ink: #f7f7f4;
-      --muted: rgba(247, 247, 244, .66);
-      --glass: rgba(20, 22, 29, .66);
-      --border: rgba(255, 255, 255, .14);
+      --accent: 43 56% 68%;
+      --ink: #f7f5ec;
+      --muted: #e0eadb;
+      --glass: rgba(14, 54, 28, .92);
+      --border: rgba(216, 211, 194, .36);
       --card-ratio: .6470588;
       font-family: ui-rounded, "SF Pro Rounded", "Avenir Next", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
@@ -114,11 +114,11 @@
       align-items: center;
       min-height: 34px;
       padding: 7px 12px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(210, 185, 120, .52);
       border-radius: 999px;
       background: var(--glass);
       box-shadow: 0 8px 28px rgba(0, 0, 0, .2);
-      color: var(--muted);
+      color: var(--ink);
       font-size: .74rem;
       font-weight: 800;
       letter-spacing: .1em;
@@ -136,10 +136,10 @@
       align-items: center;
       min-height: 34px;
       padding: 0 12px;
-      border: 1px solid var(--border);
+      border: 1px solid #e5c87f;
       border-radius: 999px;
-      background: hsl(var(--accent) / .16);
-      color: hsl(var(--accent));
+      background: #dbb96e;
+      color: #101812;
       font-size: .74rem;
       font-weight: 900;
       white-space: nowrap;
@@ -321,7 +321,7 @@
       transition: transform .18s ease, background .18s ease, border-color .18s ease;
     }
 
-    .action:hover { background: rgba(37, 40, 50, .82); border-color: rgba(255,255,255,.24); }
+    .action:hover { background: #205536; border-color: #dbb96e; color: #ffffff; }
     .action:active { transform: scale(.94); }
     .action:focus-visible { outline: 3px solid hsl(var(--accent)); outline-offset: 3px; }
     .action svg { width: 19px; height: 19px; }
@@ -339,11 +339,11 @@
       min-height: 34px;
       padding: 6px 14px;
       font-size: .78rem;
-      font-weight: 760;
+      font-weight: 800;
       gap: 6px;
-      background: var(--glass);
-      border: 1px solid hsl(var(--accent) / .42);
-      color: hsl(var(--accent));
+      background: rgba(24, 74, 43, .92);
+      border: 1px solid rgba(210, 185, 120, .58);
+      color: var(--ink);
       border-radius: 999px;
       box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
       cursor: pointer;
@@ -355,22 +355,23 @@
     }
 
     .view-toggle:hover {
-      background: hsl(var(--accent) / .2);
-      border-color: hsl(var(--accent));
+      background: #26663e;
+      border-color: #e5c87f;
       color: #ffffff;
       transform: translateY(-1px);
     }
 
     .view-toggle.active {
-      background: hsl(var(--accent));
-      color: #0d1117;
-      border-color: transparent;
+      background: #dbb96e;
+      color: #101812;
+      border-color: #dbb96e;
       box-shadow: 0 0 18px hsl(var(--accent) / .5);
     }
 
     .game-menu-button {
-      background: hsl(var(--accent) / .16);
-      border-color: hsl(var(--accent) / .42);
+      background: rgba(219, 185, 110, .2);
+      border-color: #dbb96e;
+      color: #fff9ea;
     }
 
     .category-mask {
@@ -382,7 +383,8 @@
       height: 9.2%;
       overflow: hidden;
       border-radius: 10px;
-      background: rgba(255, 255, 255, .58);
+      border: 1px solid rgba(16, 61, 33, .24);
+      background: rgba(255, 253, 247, .88);
       backdrop-filter: blur(15px) saturate(.25);
       -webkit-backdrop-filter: blur(15px) saturate(.25);
       transition: opacity .35s ease, transform .35s ease;
@@ -395,12 +397,12 @@
       inset: 0;
       display: grid;
       place-items: center;
-      color: #4e5360;
+      color: #162419;
       font-size: clamp(.62rem, 2.2vw, .85rem);
       font-weight: 900;
       letter-spacing: .08em;
       text-transform: uppercase;
-      text-shadow: 0 1px 5px white;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, .92);
     }
 
     .category-mask.is-revealed { opacity: 0; transform: scale(1.04); }
@@ -440,7 +442,7 @@
       inset: 0;
       display: grid;
       place-items: center;
-      color: hsl(var(--accent) / .72);
+      color: #174629;
       font-size: clamp(1.5rem, 7vw, 3.2rem);
       font-weight: 950;
       transition: opacity .2s ease, transform .25s ease;
@@ -451,12 +453,13 @@
       left: 50%;
       bottom: 5px;
       max-width: calc(100% - 12px);
-      padding: 4px 8px;
+      padding: 4px 9px;
+      border: 1px solid rgba(16, 61, 33, .22);
       border-radius: 999px;
-      color: #11141b;
-      background: rgba(255, 255, 255, .94);
-      box-shadow: 0 3px 12px rgba(0, 0, 0, .18);
-      font-size: clamp(.52rem, 1.8vw, .76rem);
+      color: #111813;
+      background: rgba(255, 253, 247, .96);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, .24);
+      font-size: clamp(.54rem, 1.8vw, .78rem);
       font-weight: 900;
       line-height: 1.05;
       text-align: center;
@@ -511,6 +514,42 @@
     @keyframes link-wrong {
       25% { transform: translateX(-4px); }
       75% { transform: translateX(4px); }
+    }
+
+    .item-grid.is-nurturer-mode { pointer-events: auto; }
+    .item-grid.is-nurturer-mode .item-cell {
+      border: 2px solid transparent;
+      background: transparent;
+      box-shadow: none;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .item-grid.is-nurturer-mode .item-cell:hover,
+    .item-grid.is-nurturer-mode .item-cell:focus-visible {
+      border-color: hsl(var(--accent) / .72);
+      background: hsl(var(--accent) / .09);
+      outline: none;
+    }
+    .item-grid.is-nurturer-mode .item-question { display: none; }
+    .item-grid.is-nurturer-mode .item-cell.is-revealed {
+      border-color: #8ee55d;
+      background: rgba(126, 214, 76, .16);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.84) inset, 0 0 22px rgba(126, 214, 76, .42);
+    }
+    .item-grid.is-nurturer-mode .item-cell.is-revealed .item-label {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    .item-grid.is-nurturer-mode .item-cell.is-recast {
+      border-color: #f6c667;
+      background: rgba(246, 198, 103, .18);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.86) inset, 0 0 22px rgba(246, 198, 103, .45);
+    }
+    .item-grid.is-nurturer-mode .item-cell.is-recast .item-label {
+      opacity: 1;
+      transform: translate(-50%, 0);
+      background: #fff6de;
+      color: #3a2a0a;
     }
 
     .item-footer-mask {
@@ -620,7 +659,7 @@
       display: grid;
       place-items: center;
       padding: 22px;
-      background: rgba(7, 9, 14, .76);
+      background: rgba(6, 28, 12, .88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       overflow-y: auto;
@@ -630,22 +669,23 @@
       position: relative;
       width: min(760px, 100%);
       padding: clamp(24px, 5vw, 42px);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(210, 185, 120, .62);
       border-radius: 28px;
-      background: #191c25;
-      box-shadow: 0 35px 110px rgba(0,0,0,.58);
+      color: var(--ink);
+      background: #143f24;
+      box-shadow: 0 35px 110px rgba(0,0,0,.62);
     }
 
-    .game-picker-card > p { max-width: 590px; margin: 8px 0 25px; color: var(--muted); line-height: 1.55; }
-    .game-picker-card h2 { margin: 0; font-size: clamp(2rem, 7vw, 4.4rem); line-height: .95; letter-spacing: -.055em; }
-    .game-picker-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 13px; color: var(--muted); background: rgba(255,255,255,.05); font-size: 1.3rem; cursor: pointer; }
+    .game-picker-card > p { max-width: 590px; margin: 8px 0 25px; color: #e4ece0; font-size: .95rem; font-weight: 500; line-height: 1.55; }
+    .game-picker-card h2 { margin: 0; color: var(--ink); font-size: clamp(2rem, 7vw, 4.4rem); line-height: .95; letter-spacing: -.055em; }
+    .game-picker-close { position: absolute; top: 16px; right: 16px; width: 42px; height: 42px; border: 1px solid rgba(210, 185, 120, .55); border-radius: 13px; color: var(--ink); background: rgba(244, 241, 230, .14); font-size: 1.3rem; font-weight: 700; cursor: pointer; transition: background .16s ease, color .16s ease, border-color .16s ease; }
+    .game-picker-close:hover, .game-picker-close:focus-visible { color: #101812; background: #dbb96e; border-color: #dbb96e; }
     .game-options { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
-    .game-option { min-height: 154px; padding: 20px; border: 1px solid hsl(var(--accent) / .28); border-radius: 19px; color: var(--ink); background: hsl(var(--accent) / .045); text-align: left; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
-    .game-option:hover { transform: translateY(-2px); border-color: hsl(var(--accent) / .75); background: hsl(var(--accent) / .14); }
-    .game-option-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 15px; border-radius: 13px 13px 13px 4px; color: #11141b; background: hsl(var(--accent)); font-size: 1.2rem; font-weight: 950; line-height: 1; }
-    .game-option strong { display: block; }
-    .game-option strong { margin-bottom: 7px; font-size: 1.12rem; }
-    .game-option > span:not(.game-option-icon) { display: block; color: var(--muted); font-size: .8rem; line-height: 1.45; }
+    .game-option { min-height: 154px; padding: 20px; border: 1px solid rgba(210, 185, 120, .52); border-radius: 19px; color: var(--ink); background: #1c5030; text-align: left; cursor: pointer; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+    .game-option:hover, .game-option:focus-visible { transform: translateY(-2px); border-color: #e2c57c; background: #24613b; }
+    .game-option-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 15px; border-radius: 13px 13px 13px 4px; color: #101812; background: #dbb96e; font-size: 1.2rem; font-weight: 950; line-height: 1; }
+    .game-option strong { display: block; margin-bottom: 7px; color: #ffffff; font-size: 1.13rem; font-weight: 800; }
+    .game-option > span:not(.game-option-icon) { display: block; color: #e6efe2; font-size: .85rem; font-weight: 500; line-height: 1.48; }
     .game-option[data-start-game="audio-match"] { grid-column: 1 / -1; min-height: 132px; }
 
     .game-panel {
@@ -659,10 +699,11 @@
       width: min(350px, calc(100vw - 32px));
       overflow: auto;
       padding: 22px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(210, 185, 120, .62);
       border-radius: 24px;
-      background: rgba(22, 25, 34, .94);
-      box-shadow: 0 25px 75px rgba(0,0,0,.5);
+      color: var(--ink);
+      background: #143f24;
+      box-shadow: 0 25px 75px rgba(0,0,0,.52);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
     }
@@ -680,35 +721,157 @@
     .game-strip[hidden] { display: none; }
 
     .game-panel-top { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
-    .game-mode-kicker { display: block; color: hsl(var(--accent)); font-size: .67rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
-    .game-panel h2 { margin: 5px 0 0; font-size: 1.65rem; line-height: 1; letter-spacing: -.035em; }
-    .game-score { min-width: 70px; padding: 9px 10px; border-radius: 14px; color: #101218; background: hsl(var(--accent)); text-align: center; }
+    .game-mode-kicker { display: block; color: #e5c87f; font-size: .68rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+    .game-panel h2 { margin: 5px 0 0; color: var(--ink); font-size: 1.65rem; line-height: 1; letter-spacing: -.035em; }
+    .game-score { min-width: 70px; padding: 9px 10px; border-radius: 14px; color: #101812; background: #dbb96e; text-align: center; }
     .game-score span, .game-score strong { display: block; }
     .game-score span { font-size: .58rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
     .game-score strong { margin-top: 1px; font-size: 1.45rem; font-variant-numeric: tabular-nums; }
     .game-score.pulse { animation: score-pop .28s ease; }
     @keyframes score-pop { 50% { transform: scale(1.12) rotate(-2deg); } }
     .game-prompt { margin: 21px 0 10px; color: var(--ink); font-size: 1rem; font-weight: 800; line-height: 1.45; }
-    .link-word { margin: 2px 0 16px; padding: 14px 16px; border: 1px solid hsl(var(--accent) / .42); border-radius: 15px; color: #101218; background: hsl(var(--accent)); text-align: center; }
-    .link-word span { display: block; font-size: .58rem; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+    .link-word { margin: 2px 0 16px; padding: 14px 16px; border: 1px solid #e5c87f; border-radius: 15px; color: #101812; background: #dbb96e; text-align: center; }
+    .link-word span { display: block; color: #1b281e; font-size: .6rem; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
     .link-word strong { display: block; margin-top: 2px; font-size: clamp(1.45rem, 4vw, 2rem); line-height: 1; letter-spacing: -.025em; }
-    .game-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; color: var(--muted); font-size: .73rem; font-weight: 800; }
-    .game-progress-track { flex: 1; height: 6px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.09); }
-    .game-progress-track i { display: block; width: 0; height: 100%; border-radius: inherit; background: hsl(var(--accent)); transition: width .3s ease; }
+    .game-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; color: #e2ecde; font-size: .75rem; font-weight: 800; }
+    .game-progress-track { flex: 1; height: 6px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.18); }
+    .game-progress-track i { display: block; width: 0; height: 100%; border-radius: inherit; background: #dbb96e; transition: width .3s ease; }
     .guess-form { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
-    .guess-form input { min-width: 0; min-height: 49px; padding: 10px 13px; border: 1px solid var(--border); border-radius: 13px; outline: none; color: var(--ink); background: rgba(0,0,0,.2); font: inherit; }
-    .guess-form input:focus { border-color: hsl(var(--accent)); box-shadow: 0 0 0 3px hsl(var(--accent) / .15); }
-    .guess-form button, .game-panel-action { min-height: 49px; border: 0; border-radius: 13px; color: #101218; background: hsl(var(--accent)); font-weight: 900; cursor: pointer; }
+    .guess-form input { min-width: 0; min-height: 49px; padding: 10px 13px; border: 1px solid rgba(210, 185, 120, .55); border-radius: 13px; outline: none; color: var(--ink); background: #0d2b18; font: inherit; }
+    .guess-form input::placeholder { color: #b8ccb2; opacity: 1; }
+    .guess-form input:focus { border-color: #e5c87f; box-shadow: 0 0 0 3px rgba(219, 185, 110, .26); }
+    .guess-form button, .game-panel-action { min-height: 49px; border: 0; border-radius: 13px; color: #101812; background: #dbb96e; font-weight: 900; cursor: pointer; }
     .guess-form button { padding: 0 15px; }
-    .guess-form button:disabled, .guess-form input:disabled { opacity: .48; cursor: default; }
-    .game-feedback { min-height: 59px; margin: 11px 0 4px; padding: 11px 13px; border: 1px solid transparent; border-radius: 13px; color: var(--muted); background: rgba(255,255,255,.035); font-size: .8rem; font-weight: 750; line-height: 1.4; }
-    .game-feedback.correct { color: #d7ff9e; border-color: rgba(176, 235, 91, .3); background: rgba(126, 179, 47, .12); }
-    .game-feedback.wrong { color: #ffc2bd; border-color: rgba(255, 110, 100, .28); background: rgba(255, 90, 80, .1); }
-    .creative-accept { width: 100%; min-height: 45px; margin: 5px 0 10px; padding: 9px 12px; border: 1px solid rgba(176,235,91,.35); border-radius: 13px; color: #d7ff9e; background: rgba(126,179,47,.13); font: inherit; font-size: .78rem; font-weight: 900; cursor: pointer; }
+    .guess-form button:disabled, .guess-form input:disabled { opacity: .55; cursor: default; }
+    .game-feedback { min-height: 59px; margin: 11px 0 4px; padding: 11px 13px; border: 1px solid rgba(216, 211, 194, .28); border-radius: 13px; color: #eaf2e6; background: rgba(8, 33, 16, .68); font-size: .82rem; font-weight: 750; line-height: 1.42; }
+    .game-feedback.correct { color: #e9ffcd; border-color: rgba(163, 235, 106, .55); background: rgba(28, 79, 36, .88); }
+    .game-feedback.wrong { color: #ffe0dc; border-color: rgba(255, 138, 128, .55); background: rgba(92, 28, 26, .86); }
+    .game-feedback.recast { color: #fff2cc; border-color: rgba(246, 198, 103, .62); background: rgba(84, 54, 14, .88); }
+    .nurturer-tts-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 11px; }
+    .nurturer-tts-bar[hidden] { display: none; }
+    .nurturer-tts-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 31px;
+      padding: 4px 10px;
+      border: 1px solid rgba(210, 185, 120, .58);
+      border-radius: 999px;
+      color: var(--ink);
+      background: #1e5734;
+      font: inherit;
+      font-size: .72rem;
+      font-weight: 850;
+      cursor: pointer;
+      transition: background .15s ease, border-color .15s ease, transform .15s ease;
+    }
+    .nurturer-tts-pill:hover,
+    .nurturer-tts-pill:focus-visible {
+      border-color: #e5c87f;
+      background: #276940;
+      color: #ffffff;
+      outline: none;
+    }
+    .nurturer-tts-pill[aria-pressed="true"],
+    .nurturer-tts-pill.is-speaking {
+      color: #101812;
+      border-color: #e5c87f;
+      background: #dbb96e;
+    }
+    .nurturer-feedback-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+    .nurturer-kicker {
+      font-size: .65rem;
+      font-weight: 950;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+    .nurturer-tts-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      border: 1px solid rgba(255, 255, 255, .45);
+      border-radius: 999px;
+      color: #f7f5ec;
+      background: rgba(8, 30, 15, .68);
+      font: inherit;
+      font-size: .68rem;
+      font-weight: 900;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .nurturer-tts-btn:hover,
+    .nurturer-tts-btn:focus-visible,
+    .nurturer-tts-btn.is-speaking {
+      color: #101812;
+      background: #dbb96e;
+      border-color: #fff3d1;
+      outline: none;
+    }
+    .nurturer-main {
+      margin: 0;
+      font-size: .82rem;
+      font-weight: 800;
+      line-height: 1.42;
+    }
+    .nurturer-collocations {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 5px;
+      margin-top: 7px;
+    }
+    .nurturer-collocations-label {
+      font-size: .64rem;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-right: 2px;
+    }
+    .collocation-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      border: 1px solid rgba(255, 255, 255, .4);
+      border-radius: 999px;
+      color: #ffffff;
+      background: rgba(8, 30, 15, .72);
+      font: inherit;
+      font-size: .72rem;
+      font-weight: 850;
+      cursor: pointer;
+      transition: background .14s ease, border-color .14s ease, transform .14s ease;
+    }
+    .collocation-chip:hover,
+    .collocation-chip:focus-visible,
+    .collocation-chip.is-speaking {
+      color: #101812;
+      background: #dbb96e;
+      border-color: #fff3d1;
+      transform: translateY(-1px);
+      outline: none;
+    }
+    .nurturer-followup {
+      margin: 7px 0 0;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, .22);
+      font-size: .76rem;
+      font-weight: 800;
+    }
+    .creative-accept { width: 100%; min-height: 45px; margin: 5px 0 10px; padding: 9px 12px; border: 1px solid rgba(163, 235, 106, .55); border-radius: 13px; color: #e9ffcd; background: rgba(28, 79, 36, .88); font: inherit; font-size: .78rem; font-weight: 900; cursor: pointer; }
     .game-panel-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
-    .game-panel-action { padding: 10px; color: var(--ink); background: rgba(255,255,255,.07); border: 1px solid var(--border); }
-    .game-panel-action.primary { color: #101218; background: hsl(var(--accent)); border-color: transparent; }
-    .game-end { width: 100%; margin-top: 9px; min-height: 42px; border: 0; color: var(--muted); background: transparent; font-size: .75rem; font-weight: 850; cursor: pointer; }
+    .game-panel-action { padding: 10px; color: var(--ink); background: #205536; border: 1px solid rgba(210, 185, 120, .5); }
+    .game-panel-action:hover:not(.primary) { background: #276640; border-color: #dbb96e; }
+    .game-panel-action.primary { color: #101812; background: #dbb96e; border-color: transparent; }
+    .game-end { width: 100%; margin-top: 9px; min-height: 42px; border: 1px solid rgba(216, 211, 194, .28); border-radius: 11px; color: #e2ecde; background: rgba(255, 255, 255, .07); font-size: .76rem; font-weight: 850; cursor: pointer; }
+    .game-end:hover { color: #ffffff; background: rgba(255, 255, 255, .14); border-color: rgba(210, 185, 120, .52); }
     .app.game-active .stage { right: 374px; }
     .app.game-active .footer { right: 374px; }
     .app.game-active #view-toggle,
@@ -725,9 +888,10 @@
       margin: 0 auto;
       padding: clamp(14px, 2.2vw, 24px);
       overflow: auto;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(210, 185, 120, .62);
       border-radius: 26px;
-      background: rgba(22, 25, 34, .97);
+      color: var(--ink);
+      background: #143f24;
       box-shadow: 0 25px 85px rgba(0,0,0,.55);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
@@ -738,14 +902,16 @@
     .app.audio-match-active #view-toggle,
     .app.audio-match-active #hint-button { display: none; }
     .audio-match-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .audio-match-title-wrap span { display: block; color: hsl(var(--accent)); font-size: .68rem; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
-    .audio-match-title-wrap h2 { margin: 3px 0 0; font-size: clamp(1.55rem, 4vw, 2.5rem); line-height: 1; letter-spacing: -.04em; }
+    .audio-match-title-wrap span { display: block; color: #e5c87f; font-size: .68rem; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
+    .audio-match-title-wrap h2 { margin: 3px 0 0; color: var(--ink); font-size: clamp(1.55rem, 4vw, 2.5rem); line-height: 1; letter-spacing: -.04em; }
     .audio-match-stats { display: flex; gap: 8px; }
-    .audio-match-stat { min-width: 72px; padding: 8px 11px; border-radius: 14px; color: #101218; background: hsl(var(--accent)); text-align: center; }
+    .audio-match-stat { min-width: 72px; padding: 8px 11px; border-radius: 14px; color: #101812; background: #dbb96e; text-align: center; }
     .audio-match-stat span, .audio-match-stat strong { display: block; }
     .audio-match-stat span { font-size: .56rem; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
     .audio-match-stat strong { margin-top: 1px; font-size: 1.35rem; font-variant-numeric: tabular-nums; }
-    .audio-match-instructions { margin: 0; color: var(--muted); font-size: clamp(.78rem, 1.8vw, .96rem); font-weight: 750; line-height: 1.4; }
+    .audio-match-top-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+    .audio-match-instructions { margin: 0; color: #e6efe2; font-size: clamp(.78rem, 1.8vw, .96rem); font-weight: 750; line-height: 1.4; }
+    .audio-match-tts-bar { margin: 0; }
     .audio-match-grid {
       flex: 1;
       display: grid;
@@ -760,36 +926,40 @@
       aspect-ratio: 1 / 1;
       overflow: hidden;
       padding: 0;
-      border: 2px solid rgba(255,255,255,.12);
+      border: 2px solid rgba(210, 185, 120, .38);
       border-radius: clamp(14px, 2vw, 20px);
       color: var(--ink);
-      background: rgba(255,255,255,.055);
+      background: #1b4d2e;
       box-shadow: 0 10px 24px rgba(0,0,0,.18);
       cursor: pointer;
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
       transition: transform .16s ease, border-color .16s ease, background .16s ease, opacity .2s ease;
     }
-    .audio-match-tile:hover { transform: translateY(-2px); border-color: hsl(var(--accent) / .55); }
-    .audio-match-tile:focus-visible { outline: 3px solid hsl(var(--accent)); outline-offset: 2px; }
-    .audio-match-tile.is-selected { border-color: hsl(var(--accent)); background: hsl(var(--accent) / .18); box-shadow: 0 0 0 3px hsl(var(--accent) / .18), 0 12px 28px rgba(0,0,0,.28); }
+    .audio-match-tile:hover { transform: translateY(-2px); border-color: #e5c87f; }
+    .audio-match-tile:focus-visible { outline: 3px solid #e5c87f; outline-offset: 2px; }
+    .audio-match-tile.is-selected { border-color: #e5c87f; background: #26663e; box-shadow: 0 0 0 3px rgba(219, 185, 110, .28), 0 12px 28px rgba(0,0,0,.28); }
     .audio-match-tile.is-wrong { border-color: #ff716a; background: rgba(255, 90, 80, .14); animation: link-wrong .34s ease; }
+    .audio-match-tile.is-recast { border-color: #f6c667; background: rgba(246, 198, 103, .18); box-shadow: 0 0 0 3px rgba(246, 198, 103, .28); }
     .audio-match-tile.is-matched { border-color: #8ee55d; background: rgba(126, 214, 76, .13); cursor: default; }
     .audio-match-tile.is-matched:hover { transform: none; }
     .audio-match-picture { position: absolute; inset: 0; background-color: #fff; background-repeat: no-repeat; background-size: 208.334% 416.667%; background-position: var(--crop-x) var(--crop-y); }
-    .audio-match-audio { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 35% 28%, hsl(var(--accent) / .3), transparent 40%), linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); }
-    .audio-match-speaker { width: 45%; max-width: 72px; color: hsl(var(--accent)); filter: drop-shadow(0 5px 12px rgba(0,0,0,.28)); }
+    .audio-match-audio { position: absolute; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 35% 28%, rgba(219, 185, 110, .28), transparent 45%), linear-gradient(145deg, #215b37, #153f24); }
+    .audio-match-speaker { width: 45%; max-width: 72px; color: #e5c87f; filter: drop-shadow(0 5px 12px rgba(0,0,0,.28)); }
     .audio-match-speaker path { fill: currentColor; }
     .audio-match-speaker .waves { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
-    .audio-match-type { position: absolute; top: 8px; left: 8px; z-index: 2; padding: 4px 7px; border-radius: 999px; color: #11141b; background: rgba(255,255,255,.9); font-size: .55rem; font-weight: 950; letter-spacing: .06em; text-transform: uppercase; }
-    .audio-match-label { position: absolute; z-index: 3; left: 7px; right: 7px; bottom: 7px; padding: 6px 7px; border-radius: 10px; color: #11141b; background: rgba(255,255,255,.94); box-shadow: 0 4px 14px rgba(0,0,0,.2); font-size: clamp(.58rem, 1.4vw, .78rem); font-weight: 950; line-height: 1.05; text-align: center; opacity: 0; transform: translateY(5px); transition: opacity .2s ease, transform .2s ease; }
+    .audio-match-type { position: absolute; top: 8px; left: 8px; z-index: 2; padding: 4px 8px; border: 1px solid rgba(16, 61, 33, .2); border-radius: 999px; color: #111813; background: rgba(255, 253, 247, .96); font-size: .56rem; font-weight: 950; letter-spacing: .06em; text-transform: uppercase; }
+    .audio-match-label { position: absolute; z-index: 3; left: 7px; right: 7px; bottom: 7px; padding: 6px 7px; border: 1px solid rgba(16, 61, 33, .2); border-radius: 10px; color: #111813; background: rgba(255, 253, 247, .96); box-shadow: 0 4px 14px rgba(0,0,0,.22); font-size: clamp(.58rem, 1.4vw, .78rem); font-weight: 950; line-height: 1.05; text-align: center; opacity: 0; transform: translateY(5px); transition: opacity .2s ease, transform .2s ease; }
     .audio-match-tile.is-matched .audio-match-label { opacity: 1; transform: none; }
-    .audio-match-feedback { min-height: 43px; margin: 0; padding: 9px 12px; border: 1px solid transparent; border-radius: 12px; color: var(--muted); background: rgba(255,255,255,.04); font-size: .78rem; font-weight: 800; line-height: 1.35; }
-    .audio-match-feedback.correct { color: #d7ff9e; border-color: rgba(176,235,91,.3); background: rgba(126,179,47,.12); }
-    .audio-match-feedback.wrong { color: #ffc2bd; border-color: rgba(255,110,100,.28); background: rgba(255,90,80,.1); }
+    .audio-match-tile.is-recast .audio-match-label { opacity: 1; transform: none; background: #fff6de; color: #3a2a0a; }
+    .audio-match-feedback { min-height: 43px; margin: 0; padding: 9px 12px; border: 1px solid rgba(216, 211, 194, .28); border-radius: 12px; color: #eaf2e6; background: rgba(8, 33, 16, .68); font-size: .8rem; font-weight: 800; line-height: 1.38; }
+    .audio-match-feedback.correct { color: #e9ffcd; border-color: rgba(163, 235, 106, .55); background: rgba(28, 79, 36, .88); }
+    .audio-match-feedback.wrong { color: #ffe0dc; border-color: rgba(255, 138, 128, .55); background: rgba(92, 28, 26, .86); }
+    .audio-match-feedback.recast { color: #fff2cc; border-color: rgba(246, 198, 103, .62); background: rgba(84, 54, 14, .88); }
     .audio-match-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
-    .audio-match-actions button { min-height: 46px; padding: 9px 13px; border: 1px solid var(--border); border-radius: 13px; color: var(--ink); background: rgba(255,255,255,.07); font: inherit; font-size: .78rem; font-weight: 900; cursor: pointer; }
-    .audio-match-actions .primary { color: #101218; border-color: transparent; background: hsl(var(--accent)); }
+    .audio-match-actions button { min-height: 46px; padding: 9px 13px; border: 1px solid rgba(210, 185, 120, .5); border-radius: 13px; color: var(--ink); background: #205536; font: inherit; font-size: .78rem; font-weight: 900; cursor: pointer; }
+    .audio-match-actions button:hover:not(.primary) { background: #276640; border-color: #dbb96e; }
+    .audio-match-actions .primary { color: #101812; border-color: transparent; background: #dbb96e; }
 
     .dual-stage {
       display: flex;
@@ -1114,10 +1284,10 @@
         gap: 8px;
         min-height: 44px;
         padding: 0 18px;
-        border: 1px solid var(--border);
+        border: 1px solid rgba(210, 185, 120, .58);
         border-radius: 999px;
         color: var(--ink);
-        background: rgba(22, 25, 34, .94);
+        background: #143f24;
         box-shadow: 0 14px 40px rgba(0, 0, 0, .45);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
@@ -1128,7 +1298,7 @@
         white-space: nowrap;
       }
       .drawer-peek[hidden] { display: none; }
-      .drawer-peek span:first-child { color: hsl(var(--accent)); flex-shrink: 0; }
+      .drawer-peek span:first-child { color: #e5c87f; flex-shrink: 0; }
       .drawer-peek span:last-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 
       /* Fixed (non-draggable) toolbar that carries the actual play loop — clue,
@@ -1152,9 +1322,10 @@
         gap: 6px;
         width: min(calc(100vw - 24px), 420px);
         padding: 10px 16px;
-        border: 1px solid var(--border);
+        border: 1px solid rgba(210, 185, 120, .62);
         border-radius: 18px;
-        background: rgba(22, 25, 34, .92);
+        color: var(--ink);
+        background: #143f24;
         box-shadow: 0 14px 38px rgba(0, 0, 0, .42);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
@@ -1170,12 +1341,12 @@
         gap: 8px;
         padding: 7px 14px;
         border-radius: 999px;
-        background: hsl(var(--accent));
-        color: #101218;
+        background: #dbb96e;
+        color: #101812;
         box-shadow: 0 3px 0 rgba(0, 0, 0, .12) inset;
       }
       .game-strip-linkword[hidden] { display: none; }
-      .game-strip-linkword span { font-size: .58rem; font-weight: 950; letter-spacing: .09em; text-transform: uppercase; opacity: .7; }
+      .game-strip-linkword span { color: #1b281e; font-size: .58rem; font-weight: 950; letter-spacing: .09em; text-transform: uppercase; }
       .game-strip-linkword strong { font-size: 1.28rem; font-weight: 900; letter-spacing: -.02em; }
 
       /* The question itself is the thing a player needs to read every round —
@@ -1195,7 +1366,8 @@
         padding: 0 11px;
         border-radius: 10px;
         font-size: .8rem;
-        background: rgba(0, 0, 0, .3);
+        color: var(--ink);
+        background: #0d2b18;
       }
       .game-strip .guess-form button {
         min-height: 38px;
@@ -1212,17 +1384,38 @@
         max-width: 100%;
         margin: 0;
         overflow: hidden;
-        color: var(--muted);
-        font-size: .72rem;
-        font-weight: 700;
-        line-height: 1.32;
+        color: #eaf2e6;
+        font-size: .74rem;
+        font-weight: 750;
+        line-height: 1.34;
         text-align: center;
         white-space: nowrap;
         text-overflow: ellipsis;
       }
       .game-strip-feedback:empty { display: none; }
-      .game-strip-feedback.correct { color: #d7ff9e; }
-      .game-strip-feedback.wrong { color: #ffc2bd; }
+      .game-strip-feedback.correct { color: #e9ffcd; }
+      .game-strip-feedback.wrong { color: #ffe0dc; }
+      .game-strip-feedback.recast { color: #fff2cc; }
+      .game-strip.is-nurturer-strip { align-items: stretch; gap: 5px; max-height: 44dvh; overflow-y: auto; }
+      .game-strip.is-nurturer-strip .nurturer-tts-bar { justify-content: center; margin: 0; }
+      .game-strip.is-nurturer-strip .game-strip-feedback {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        text-align: left;
+        padding: 7px 10px;
+        border-radius: 11px;
+        border: 1px solid rgba(216, 211, 194, .28);
+        background: rgba(8, 33, 16, .68);
+      }
+      .game-strip.is-nurturer-strip .game-strip-feedback.correct {
+        border-color: rgba(163, 235, 106, .55);
+        background: rgba(28, 79, 36, .88);
+      }
+      .game-strip.is-nurturer-strip .game-strip-feedback.recast {
+        border-color: rgba(246, 198, 103, .62);
+        background: rgba(84, 54, 14, .88);
+      }
     }
 
     /* On phones, the deck previously had to shrink to make room for the permanently
@@ -1287,7 +1480,7 @@
       .stage { padding-top: calc(max(60px, calc(env(safe-area-inset-top) + 54px)) + var(--game-header-h, 0px)); padding-bottom: max(78px, calc(env(safe-area-inset-bottom) + 70px)); }
       .deck { width: min(calc(100vw - 170px), calc((100dvh - 140px - var(--game-header-h, 0px)) * var(--card-ratio)), 540px); }
       .topbar { padding-top: max(10px, env(safe-area-inset-top)); }
-      .brand, .side-pill { opacity: .86; }
+      .brand, .side-pill { opacity: .94; }
       .footer { grid-template-columns: auto 1fr auto; }
       .instructions { visibility: hidden; }
 
@@ -1331,7 +1524,7 @@
       .deck, .app { transition-duration: .01ms; }
     }
   </style>
-  <link rel="stylesheet" href="../dialogue-brand.css?v=20260908-1">
+  <link rel="stylesheet" href="../dialogue-brand.css?v=20261108-1">
   </head>
 <body>
   <main class="app" id="app">
@@ -1461,6 +1654,11 @@
         <div class="game-score" id="game-score"><span>Score</span><strong id="game-score-value">0</strong></div>
       </div>
       <p class="game-prompt" id="game-prompt">What category connects these six items?</p>
+      <div class="nurturer-tts-bar" id="nurturer-tts-bar" hidden aria-label="Nurturer voice controls">
+        <button class="nurturer-tts-pill" id="nurturer-speak-prompt" type="button">🔊 Speak prompt</button>
+        <button class="nurturer-tts-pill" id="nurturer-slow-toggle" type="button" aria-pressed="false">🐢 Slower</button>
+        <button class="nurturer-tts-pill" id="nurturer-auto-toggle" type="button" aria-pressed="false">Auto voice: Off</button>
+      </div>
       <div class="link-word" id="link-word" hidden><span>Link word</span><strong id="link-word-value"></strong></div>
       <div class="game-progress" id="game-progress" hidden><span id="game-progress-label">0 of 6 found</span><span class="game-progress-track"><i id="game-progress-fill"></i></span></div>
       <form class="guess-form" id="guess-form" autocomplete="off">
@@ -1492,8 +1690,13 @@
         <strong id="game-strip-linkword-value"></strong>
       </div>
       <p class="game-strip-prompt" id="game-strip-prompt"></p>
+      <div class="nurturer-tts-bar" id="strip-nurturer-tts-bar" hidden aria-label="Nurturer voice controls">
+        <button class="nurturer-tts-pill" id="strip-nurturer-speak-prompt" type="button">🔊 Prompt</button>
+        <button class="nurturer-tts-pill" id="strip-nurturer-slow-toggle" type="button" aria-pressed="false">🐢 Slower</button>
+        <button class="nurturer-tts-pill" id="strip-nurturer-auto-toggle" type="button" aria-pressed="false">Auto: Off</button>
+      </div>
       <!-- guess-form relocated here by JS for typing modes -->
-      <p class="game-strip-feedback" id="game-strip-feedback" role="status" aria-live="polite"></p>
+      <div class="game-strip-feedback" id="game-strip-feedback" role="status" aria-live="polite"></div>
     </div>
 
     <section class="audio-match-board" id="audio-match-board" hidden aria-labelledby="audio-match-title">
@@ -1508,9 +1711,16 @@
           <div class="audio-match-stat"><span>Score</span><strong id="audio-match-score">0</strong></div>
         </div>
       </header>
-      <p class="audio-match-instructions">Tap an audio tile to hear a word, then match it to the correct picture. Labels appear after a successful match.</p>
+      <div class="audio-match-top-row">
+        <p class="audio-match-instructions">Tap an audio tile to hear a word, then match it to the correct picture. Wrong taps give a gentle GPA recast with collocations.</p>
+        <div class="nurturer-tts-bar audio-match-tts-bar" id="audio-match-tts-bar" aria-label="Nurturer voice controls">
+          <button class="nurturer-tts-pill" id="audio-nurturer-speak-last" type="button">🔊 Read feedback</button>
+          <button class="nurturer-tts-pill" id="audio-nurturer-slow-toggle" type="button" aria-pressed="false">🐢 Slower</button>
+          <button class="nurturer-tts-pill" id="audio-nurturer-auto-toggle" type="button" aria-pressed="false">Auto voice: Off</button>
+        </div>
+      </div>
       <div class="audio-match-grid" id="audio-match-grid" role="group" aria-label="Six picture tiles and six audio tiles"></div>
-      <p class="audio-match-feedback" id="audio-match-feedback" role="status" aria-live="polite">Choose an audio tile and a picture tile.</p>
+      <div class="audio-match-feedback" id="audio-match-feedback" role="status" aria-live="polite">Choose an audio tile and a picture tile.</div>
       <div class="audio-match-actions">
         <button id="end-audio-match" type="button">End game</button>
         <button class="primary" id="new-audio-match" type="button">New six words →</button>
@@ -1535,8 +1745,8 @@
           </button>
           <button class="game-option" type="button" data-start-game="items">
             <span class="game-option-icon" aria-hidden="true">6</span>
-            <strong>Guess the Items</strong>
-            <span>The category stays visible. Correct item guesses reveal the matching picture and label.</span>
+            <strong>Guess the Items · GPA Nurturer</strong>
+            <span>Listen &amp; Point: the Nurturer asks you to find each picture, affirms with collocations, and gently recasts wrong taps (with optional TTS).</span>
           </button>
           <button class="game-option" type="button" data-start-game="find-pair">
             <span class="game-option-icon" aria-hidden="true">2</span>
@@ -1550,8 +1760,8 @@
           </button>
           <button class="game-option" type="button" data-start-game="audio-match">
             <span class="game-option-icon" aria-hidden="true">Aa</span>
-            <strong>Audio Match</strong>
-            <span>Match six spoken vocabulary labels with six pictures drawn from across the whole deck.</span>
+            <strong>Audio Match · GPA Nurturer</strong>
+            <span>Match six spoken vocabulary words with six pictures across the deck, with collocation feedback and gentle recasts.</span>
           </button>
         </div>
       </div>
@@ -1567,6 +1777,7 @@
     document.write(`<script src="game-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="link-data.js?v=${pictureThisDataRevision}"><\/script>`);
     document.write(`<script src="question-data.js?v=${pictureThisDataRevision}"><\/script>`);
+    document.write(`<script src="nurturer-data.js?v=${pictureThisDataRevision}"><\/script>`);
   </script>
   <script>
     // Mirrors cards.json so the activity also works when opened directly from file://.
@@ -2649,6 +2860,7 @@
     const gameMeta = window.PICTURE_THIS_GAME_META?.cards || {};
     const curatedLinkData = window.PICTURE_THIS_LINK_DATA || {};
     const questionData = window.PICTURE_THIS_QUESTION_DATA || {};
+    const nurturerData = window.PICTURE_THIS_NURTURER_DATA || {};
     const gameMenuButton = document.querySelector("#game-menu-button");
     const hintButton = document.querySelector("#hint-button");
     const itemListenGrid = document.querySelector("#item-listen-grid");
@@ -2700,6 +2912,17 @@
     const gameStripPrompt = document.querySelector("#game-strip-prompt");
     const gameStripFeedback = document.querySelector("#game-strip-feedback");
     const gameScoreChip = document.querySelector("#game-score-chip");
+    const nurturerTtsBar = document.querySelector("#nurturer-tts-bar");
+    const nurturerSpeakPromptButton = document.querySelector("#nurturer-speak-prompt");
+    const nurturerSlowToggleButton = document.querySelector("#nurturer-slow-toggle");
+    const nurturerAutoToggleButton = document.querySelector("#nurturer-auto-toggle");
+    const stripNurturerTtsBar = document.querySelector("#strip-nurturer-tts-bar");
+    const stripNurturerSpeakPromptButton = document.querySelector("#strip-nurturer-speak-prompt");
+    const stripNurturerSlowToggleButton = document.querySelector("#strip-nurturer-slow-toggle");
+    const stripNurturerAutoToggleButton = document.querySelector("#strip-nurturer-auto-toggle");
+    const audioNurturerSpeakLastButton = document.querySelector("#audio-nurturer-speak-last");
+    const audioNurturerSlowToggleButton = document.querySelector("#audio-nurturer-slow-toggle");
+    const audioNurturerAutoToggleButton = document.querySelector("#audio-nurturer-auto-toggle");
     const mobileGameStripQuery = window.matchMedia("(max-width: 900px)");
 
     let isDualView = false;
@@ -2708,6 +2931,13 @@
     let gamePoints = 0;
     let roundComplete = false;
     let foundItems = new Set();
+    let nurturerOrder = [];
+    let nurturerTargetIndex = -1;
+    let nurturerRecastTimer = 0;
+    let nurturerSlowMode = false;
+    let nurturerAutoVoice = false;
+    let lastNurturerPromptSpeech = "";
+    let lastNurturerFeedbackSpeech = "";
     let linkPuzzle = null;
     let linkSessionExhausted = false;
     let linkRoundTransitionPending = false;
@@ -2756,6 +2986,118 @@
         "name-link": "Name the link",
         "audio-match": "Audio match"
       }[gameMode] || "Picture This!";
+    }
+
+    function nurturerEntryFor(cardId, itemIndex, fallbackLabel = "") {
+      const cardEntries = nurturerData[cardId];
+      const entry = Array.isArray(cardEntries) ? cardEntries[itemIndex] : null;
+      const label = entry?.label || fallbackLabel || (gameData[cardId] || [])[itemIndex] || "this item";
+      const collocations = Array.isArray(entry?.collocations) && entry.collocations.length
+        ? entry.collocations
+        : [`see ${label}`, `talk about ${label}`, `notice ${label}`];
+      return {
+        label,
+        ask: entry?.ask || `Where is ${label}? Can you point to ${label}?`,
+        yes: entry?.yes || `Yes! That’s ${label}.`,
+        recast: entry?.recast || `Ah, you pointed to ${label}.`,
+        collocations
+      };
+    }
+
+    function syncNurturerTtsControls() {
+      [nurturerSlowToggleButton, stripNurturerSlowToggleButton, audioNurturerSlowToggleButton].forEach(button => {
+        if (!button) return;
+        button.setAttribute("aria-pressed", String(nurturerSlowMode));
+        button.textContent = nurturerSlowMode ? "🐢 Slower: On" : "🐢 Slower";
+      });
+      [nurturerAutoToggleButton, audioNurturerAutoToggleButton].forEach(button => {
+        if (!button) return;
+        button.setAttribute("aria-pressed", String(nurturerAutoVoice));
+        button.textContent = nurturerAutoVoice ? "🔊 Auto voice: On" : "Auto voice: Off";
+      });
+      if (stripNurturerAutoToggleButton) {
+        stripNurturerAutoToggleButton.setAttribute("aria-pressed", String(nurturerAutoVoice));
+        stripNurturerAutoToggleButton.textContent = nurturerAutoVoice ? "🔊 Auto: On" : "Auto: Off";
+      }
+    }
+
+    function toggleNurturerSlowMode() {
+      nurturerSlowMode = !nurturerSlowMode;
+      syncNurturerTtsControls();
+      status.textContent = nurturerSlowMode ? "Slower Nurturer speech enabled." : "Normal Nurturer speech speed.";
+    }
+
+    function toggleNurturerAutoVoice() {
+      nurturerAutoVoice = !nurturerAutoVoice;
+      syncNurturerTtsControls();
+      if (nurturerAutoVoice) {
+        const toSpeak = gameMode === "items"
+          ? (lastNurturerPromptSpeech || lastNurturerFeedbackSpeech)
+          : lastNurturerFeedbackSpeech;
+        if (toSpeak) speakText(toSpeak, null, "Auto voice enabled.");
+      } else {
+        stopSpeech();
+      }
+    }
+
+    function buildNurturerFeedbackFragment({ badge, mainText, collocations = [], followUp = "", ttsText = "" }) {
+      const fragment = document.createDocumentFragment();
+      if (badge || ttsText) {
+        const head = document.createElement("div");
+        head.className = "nurturer-feedback-head";
+        const kicker = document.createElement("span");
+        kicker.className = "nurturer-kicker";
+        kicker.textContent = badge || "GPA Nurturer";
+        head.append(kicker);
+        if (ttsText) {
+          const listenBtn = document.createElement("button");
+          listenBtn.type = "button";
+          listenBtn.className = "nurturer-tts-btn";
+          listenBtn.textContent = "🔊 Listen";
+          listenBtn.setAttribute("aria-label", `Listen to Nurturer feedback: ${ttsText}`);
+          listenBtn.addEventListener("click", event => {
+            event.stopPropagation();
+            speakText(ttsText, listenBtn, "Nurturer feedback played.");
+          });
+          head.append(listenBtn);
+        }
+        fragment.append(head);
+      }
+
+      const main = document.createElement("p");
+      main.className = "nurturer-main";
+      main.textContent = mainText;
+      fragment.append(main);
+
+      if (Array.isArray(collocations) && collocations.length) {
+        const wrap = document.createElement("div");
+        wrap.className = "nurturer-collocations";
+        const label = document.createElement("span");
+        label.className = "nurturer-collocations-label";
+        label.textContent = "Collocations:";
+        wrap.append(label);
+        collocations.forEach(phrase => {
+          const chip = document.createElement("button");
+          chip.type = "button";
+          chip.className = "collocation-chip";
+          chip.textContent = `🔊 “${phrase}”`;
+          chip.setAttribute("aria-label", `Hear collocation: ${phrase}`);
+          chip.addEventListener("click", event => {
+            event.stopPropagation();
+            speakText(phrase, chip, `Collocation played: ${phrase}.`);
+          });
+          wrap.append(chip);
+        });
+        fragment.append(wrap);
+      }
+
+      if (followUp) {
+        const next = document.createElement("p");
+        next.className = "nurturer-followup";
+        next.textContent = followUp;
+        fragment.append(next);
+      }
+      return fragment;
     }
 
     function generatedLinkPuzzles(cardId) {
@@ -2886,6 +3228,20 @@
       audioMatchFeedback.textContent = message;
       audioMatchFeedback.classList.toggle("correct", tone === "correct");
       audioMatchFeedback.classList.toggle("wrong", tone === "wrong");
+      audioMatchFeedback.classList.toggle("recast", tone === "recast");
+      lastNurturerFeedbackSpeech = message;
+    }
+
+    function renderNurturerAudioFeedback(payload) {
+      const { tone = "", ttsText = "", mainText = "", autoSpeak = true } = payload;
+      audioMatchFeedback.replaceChildren(buildNurturerFeedbackFragment(payload));
+      audioMatchFeedback.classList.toggle("correct", tone === "correct");
+      audioMatchFeedback.classList.toggle("wrong", tone === "wrong");
+      audioMatchFeedback.classList.toggle("recast", tone === "recast");
+      lastNurturerFeedbackSpeech = ttsText || mainText;
+      if (nurturerAutoVoice && autoSpeak && lastNurturerFeedbackSpeech) {
+        speakText(lastNurturerFeedbackSpeech, null, "Nurturer feedback played.");
+      }
     }
 
     function updateAudioMatchScore(delta = 0) {
@@ -2900,7 +3256,7 @@
       speakingControl = null;
     }
 
-    function speakText(text, control = null, announcement = "Audio played.") {
+    function speakText(text, control = null, announcement = "Audio played.", customRate = null) {
       if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
         status.textContent = "Speech playback is unavailable in this browser. Try Chrome, Safari, Edge, or Firefox.";
         return false;
@@ -2908,7 +3264,7 @@
       stopSpeech();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "en-US";
-      utterance.rate = .86;
+      utterance.rate = customRate ?? (nurturerSlowMode ? .68 : .86);
       utterance.pitch = 1;
       if (control) {
         speakingControl = control;
@@ -2945,6 +3301,8 @@
       tile.dataset.kind = kind;
       tile.dataset.pairKey = item.key;
       tile.dataset.label = item.label;
+      tile.dataset.cardId = item.cardId;
+      tile.dataset.itemIndex = String(item.itemIndex);
 
       const type = document.createElement("span");
       type.className = "audio-match-type";
@@ -3001,14 +3359,22 @@
         { item, kind: "audio" }
       ]));
       tiles.forEach(({ item, kind }) => audioMatchGrid.append(makeAudioMatchTile(item, kind)));
-      setAudioMatchFeedback("Choose an audio tile and a picture tile.");
+      renderNurturerAudioFeedback({
+        tone: "",
+        badge: "🌱 GPA Audio Match · Listen & Point",
+        mainText: "Tap an audio tile to hear the Nurturer’s word, then tap the matching picture. Matches share natural collocations; mismatches give a gentle recast with no penalty.",
+        collocations: [],
+        followUp: "",
+        ttsText: "Tap an audio tile to hear a word, then point to its matching picture.",
+        autoSpeak: false
+      });
       audioMatchGrid.querySelector("button")?.focus();
       status.textContent = "New Audio Match round with six vocabulary pairs.";
     }
 
     function clearAudioMatchSelection() {
-      selectedAudioTile?.classList.remove("is-selected", "is-wrong");
-      selectedPictureTile?.classList.remove("is-selected", "is-wrong");
+      selectedAudioTile?.classList.remove("is-selected", "is-wrong", "is-recast");
+      selectedPictureTile?.classList.remove("is-selected", "is-wrong", "is-recast");
       selectedAudioTile = null;
       selectedPictureTile = null;
     }
@@ -3018,8 +3384,11 @@
       const correct = selectedAudioTile.dataset.pairKey === selectedPictureTile.dataset.pairKey;
       if (correct) {
         const label = selectedAudioTile.dataset.label;
-        selectedAudioTile.classList.remove("is-selected");
-        selectedPictureTile.classList.remove("is-selected");
+        const cardId = selectedAudioTile.dataset.cardId;
+        const itemIndex = Number(selectedAudioTile.dataset.itemIndex);
+        const entry = nurturerEntryFor(cardId, itemIndex, label);
+        selectedAudioTile.classList.remove("is-selected", "is-recast");
+        selectedPictureTile.classList.remove("is-selected", "is-recast");
         selectedAudioTile.classList.add("is-matched");
         selectedPictureTile.classList.add("is-matched");
         selectedAudioTile.disabled = true;
@@ -3037,23 +3406,49 @@
         if (audioMatchPairsFound === 6) {
           roundComplete = true;
           newAudioMatchButton.textContent = "Play another six →";
-          setAudioMatchFeedback(`Round complete! You matched all six pairs with ${gamePoints} total point${gamePoints === 1 ? "" : "s"}.`, "correct");
+          renderNurturerAudioFeedback({
+            tone: "correct",
+            badge: "✓ All 6 Matched · Affirmation + Collocations",
+            mainText: `${entry.yes} (+1 point)`,
+            collocations: entry.collocations,
+            followUp: `Round complete! You matched all six pairs with ${gamePoints} total point${gamePoints === 1 ? "" : "s"}.`,
+            ttsText: `${entry.yes} We often say: ${entry.collocations.join(", ")}. Round complete!`
+          });
         } else {
-          setAudioMatchFeedback(`Correct—${label}! Choose another audio and picture. +1 point.`, "correct");
+          renderNurturerAudioFeedback({
+            tone: "correct",
+            badge: "✓ Affirmation + Collocations · +1",
+            mainText: `${entry.yes} (+1 point)`,
+            collocations: entry.collocations,
+            followUp: `Choose another audio tile and picture (${6 - audioMatchPairsFound} pair${6 - audioMatchPairsFound === 1 ? "" : "s"} left).`,
+            ttsText: `${entry.yes} We often say: ${entry.collocations.join(", ")}.`
+          });
         }
         return;
       }
 
+      const audioLabel = selectedAudioTile.dataset.label;
+      const picCardId = selectedPictureTile.dataset.cardId;
+      const picItemIndex = Number(selectedPictureTile.dataset.itemIndex);
+      const picLabel = selectedPictureTile.dataset.label;
+      const picEntry = nurturerEntryFor(picCardId, picItemIndex, picLabel);
+
       audioMatchLocked = true;
-      selectedAudioTile.classList.add("is-wrong");
-      selectedPictureTile.classList.add("is-wrong");
-      updateAudioMatchScore(-1);
-      setAudioMatchFeedback("Those tiles do not match. −1 point. Listen and try again.", "wrong");
+      selectedAudioTile.classList.add("is-recast");
+      selectedPictureTile.classList.add("is-recast");
+      renderNurturerAudioFeedback({
+        tone: "recast",
+        badge: "💬 Gentle Recast · No Penalty",
+        mainText: picEntry.recast,
+        collocations: picEntry.collocations,
+        followUp: `Take your time — listen again for “${audioLabel}” and find its picture.`,
+        ttsText: `${picEntry.recast} We often say: ${picEntry.collocations.join(", ")}. Take your time and listen again for ${audioLabel}.`
+      });
       window.setTimeout(() => {
         if (gameMode !== "audio-match") return;
         clearAudioMatchSelection();
         audioMatchLocked = false;
-      }, 520);
+      }, 1500);
     }
 
     function handleAudioMatchTile(tile) {
@@ -3214,7 +3609,7 @@
         if (gameMode === "category") {
           card.setAttribute("aria-label", "Mystery category picture card. Type a category guess in the game panel.");
         } else if (gameMode === "items") {
-          card.setAttribute("aria-label", `${current.title}. Item guessing card. Type an item guess in the game panel.`);
+          card.setAttribute("aria-label", `${current.title}. GPA Nurturer Listen and Point card. Tap the picture that matches the Nurturer prompt.`);
         } else if (gameMode === "find-pair") {
           card.setAttribute("aria-label", `${current.title}. Select the two pictures linked by ${linkPuzzle?.word || "the displayed word"}.`);
         } else {
@@ -3420,8 +3815,9 @@
           if (saturation < .06) return;
 
           const roundedHue = Math.round(hue);
-          app.style.setProperty("--accent", `${roundedHue} 84% 64%`);
-          app.style.setProperty("--accent-shifted", `${(roundedHue + 22) % 360} 74% 60%`);
+          const accessibleLightness = roundedHue >= 200 && roundedHue <= 295 ? 76 : 68;
+          app.style.setProperty("--accent", `${roundedHue} 78% ${accessibleLightness}%`);
+          app.style.setProperty("--accent-shifted", `${(roundedHue + 22) % 360} 74% 64%`);
         } catch (_) {
           // If an image cannot be sampled, retain the current accessible accent.
         }
@@ -3866,12 +4262,50 @@
       gameFeedback.textContent = message;
       gameFeedback.classList.toggle("correct", tone === "correct");
       gameFeedback.classList.toggle("wrong", tone === "wrong");
+      gameFeedback.classList.toggle("recast", tone === "recast");
       gameStripFeedback.textContent = message;
       gameStripFeedback.classList.toggle("correct", tone === "correct");
       gameStripFeedback.classList.toggle("wrong", tone === "wrong");
+      gameStripFeedback.classList.toggle("recast", tone === "recast");
+      lastNurturerFeedbackSpeech = message;
       // Feedback text appearing/disappearing (or wrapping to another line)
       // changes the strip's real height mid-round, not just at round start.
       requestAnimationFrame(updateGameHeaderReserve);
+    }
+
+    function renderNurturerGameFeedback(payload) {
+      const { tone = "", ttsText = "", mainText = "", autoSpeak = true } = payload;
+      gameFeedback.replaceChildren(buildNurturerFeedbackFragment(payload));
+      gameFeedback.classList.toggle("correct", tone === "correct");
+      gameFeedback.classList.toggle("wrong", tone === "wrong");
+      gameFeedback.classList.toggle("recast", tone === "recast");
+      gameStripFeedback.replaceChildren(buildNurturerFeedbackFragment(payload));
+      gameStripFeedback.classList.toggle("correct", tone === "correct");
+      gameStripFeedback.classList.toggle("wrong", tone === "wrong");
+      gameStripFeedback.classList.toggle("recast", tone === "recast");
+      lastNurturerFeedbackSpeech = ttsText || mainText;
+      if (nurturerAutoVoice && autoSpeak && lastNurturerFeedbackSpeech) {
+        speakText(lastNurturerFeedbackSpeech, null, "Nurturer feedback played.");
+      }
+      requestAnimationFrame(updateGameHeaderReserve);
+    }
+
+    function updateNurturerPrompt(speakIfAuto = false) {
+      if (gameMode !== "items") return;
+      const current = cards[cardIndex];
+      const items = gameData[current.id] || [];
+      if (nurturerTargetIndex < 0 || foundItems.size >= 6) {
+        gamePrompt.textContent = `🎉 Wonderful! You found all six pictures in ${current.title}.`;
+        lastNurturerPromptSpeech = `Wonderful! You found all six pictures in ${current.title}.`;
+      } else {
+        const entry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
+        gamePrompt.textContent = `👂 Nurturer: “${entry.ask}”`;
+        lastNurturerPromptSpeech = entry.ask;
+      }
+      syncGameStripMeta();
+      if (speakIfAuto && nurturerAutoVoice && lastNurturerPromptSpeech) {
+        speakText(lastNurturerPromptSpeech, null, "Nurturer prompt played.");
+      }
     }
 
     // Score is persistent app-chrome state (topbar badge), and for Guess the
@@ -3903,6 +4337,10 @@
 
     function resetGameRound() {
       if (gameMode === "browse") return;
+      if (nurturerRecastTimer) {
+        window.clearTimeout(nurturerRecastTimer);
+        nurturerRecastTimer = 0;
+      }
       const current = cards[cardIndex];
       const items = gameData[current.id] || [];
       foundItems = new Set();
@@ -3918,13 +4356,18 @@
       guessSubmit.disabled = false;
       revealGameAnswerButton.disabled = false;
       newGameCardButton.disabled = false;
-      guessForm.hidden = gameMode === "find-pair";
+      guessForm.hidden = gameMode === "find-pair" || gameMode === "items";
+      nurturerTtsBar.hidden = gameMode !== "items";
+      stripNurturerTtsBar.hidden = gameMode !== "items";
+      gameStrip.classList.toggle("is-nurturer-strip", gameMode === "items");
+      syncNurturerTtsControls();
       linkWord.hidden = gameMode !== "find-pair";
       acceptCreativeLinkButton.hidden = true;
       categoryMask.hidden = gameMode !== "category";
       categoryMask.classList.remove("is-revealed");
       itemGrid.hidden = gameMode !== "items" && !isLinkMode();
       itemGrid.setAttribute("aria-hidden", gameMode === "items" || isLinkMode() ? "false" : "true");
+      itemGrid.classList.toggle("is-nurturer-mode", gameMode === "items");
       itemGrid.classList.toggle("is-link-mode", isLinkMode());
       itemGrid.classList.toggle("is-pair-word", gameMode === "name-link");
       itemGrid.classList.remove("is-locked");
@@ -3932,7 +4375,7 @@
       newGameCardButton.textContent = isLinkMode() ? "Random unseen link →" : "New card →";
 
       itemCells.forEach((cell, index) => {
-        cell.classList.remove("is-revealed", "is-selected", "is-target", "is-correct", "is-wrong");
+        cell.classList.remove("is-revealed", "is-selected", "is-target", "is-correct", "is-wrong", "is-recast");
         cell.querySelector(".item-label").textContent = items[index] || "";
         cell.tabIndex = -1;
         cell.removeAttribute("role");
@@ -3949,19 +4392,37 @@
         revealGameAnswerButton.textContent = "Reveal category";
         setGameFeedback("Correct: +1 point · Incorrect: −1 point");
       } else if (gameMode === "items") {
-        gameModeKicker.textContent = current.title;
-        gamePanelTitle.textContent = "Guess the Items";
-        gamePrompt.textContent = "Name something you think is hidden on this card.";
-        guessInput.placeholder = "Type an item…";
+        gameModeKicker.textContent = `${current.title} · GPA Listen & Point`;
+        gamePanelTitle.textContent = "GPA Nurturer";
         gameProgress.hidden = false;
         revealGameAnswerButton.textContent = "Reveal all items";
         updateItemProgress();
-        setGameFeedback("Each new correct item earns 1 point. Incorrect guesses lose 1 point.");
         if (items.length !== 6) {
+          nurturerOrder = [];
+          nurturerTargetIndex = -1;
           guessInput.disabled = true;
           guessSubmit.disabled = true;
           revealGameAnswerButton.disabled = true;
           setGameFeedback("This card is missing its item answer key.", "wrong");
+        } else {
+          nurturerOrder = shuffledCopy([0, 1, 2, 3, 4, 5]);
+          nurturerTargetIndex = nurturerOrder[0];
+          itemCells.forEach((cell, index) => {
+            cell.tabIndex = 0;
+            cell.setAttribute("role", "button");
+            cell.setAttribute("aria-label", `Picture ${index + 1}`);
+          });
+          const firstEntry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
+          updateNurturerPrompt(true);
+          renderNurturerGameFeedback({
+            tone: "",
+            badge: "🌱 GPA Listen & Point · No Penalty",
+            mainText: "Tap the picture on the card that matches the Nurturer’s prompt. Correct taps share natural collocations; wrong taps get a gentle recast with no penalty.",
+            collocations: [],
+            followUp: "",
+            ttsText: firstEntry.ask,
+            autoSpeak: false
+          });
         }
       } else {
         gameModeKicker.textContent = linkPuzzle
@@ -4017,7 +4478,7 @@
         }
       }
       layoutGameControls();
-      if (gameMode !== "find-pair") window.setTimeout(() => guessInput.focus(), 180);
+      if (gameMode !== "find-pair" && gameMode !== "items") window.setTimeout(() => guessInput.focus(), 180);
     }
 
     function newGameRound() {
@@ -4214,7 +4675,14 @@
 
     function endGame() {
       stopSpeech();
+      if (nurturerRecastTimer) {
+        window.clearTimeout(nurturerRecastTimer);
+        nurturerRecastTimer = 0;
+      }
       gameMode = "browse";
+      nurturerTtsBar.hidden = true;
+      stripNurturerTtsBar.hidden = true;
+      gameStrip.classList.remove("is-nurturer-strip");
       layoutGameControls();
       gamePanel.hidden = true;
       audioMatchBoard.hidden = true;
@@ -4229,7 +4697,7 @@
       categoryMask.hidden = true;
       itemGrid.hidden = true;
       itemGrid.setAttribute("aria-hidden", "true");
-      itemGrid.classList.remove("is-link-mode", "is-pair-word", "is-locked");
+      itemGrid.classList.remove("is-nurturer-mode", "is-link-mode", "is-pair-word", "is-locked");
       itemFooterMask.hidden = true;
       linkWord.hidden = true;
       linkPuzzle = null;
@@ -4241,7 +4709,7 @@
       guessForm.hidden = false;
       revealGameAnswerButton.disabled = false;
       itemCells.forEach(cell => {
-        cell.classList.remove("is-selected", "is-target", "is-correct", "is-wrong");
+        cell.classList.remove("is-selected", "is-target", "is-correct", "is-wrong", "is-recast");
         cell.tabIndex = -1;
         cell.removeAttribute("role");
         cell.removeAttribute("aria-label");
@@ -4260,20 +4728,33 @@
         categoryMask.classList.add("is-revealed");
         setGameFeedback(`The category is “${cards[cardIndex].title}.”`, "correct");
       } else if (gameMode === "items") {
-        const answers = gameData[cards[cardIndex].id] || [];
+        const current = cards[cardIndex];
+        const answers = gameData[current.id] || [];
         if (answers.length !== 6) {
           roundComplete = false;
           revealGameAnswerButton.disabled = true;
           setGameFeedback("The answer key did not load. Refresh the page to reload the deck data.", "wrong");
           return;
         }
+        const entryIndex = nurturerTargetIndex >= 0 ? nurturerTargetIndex : 0;
+        const entry = nurturerEntryFor(current.id, entryIndex, answers[entryIndex]);
+        nurturerTargetIndex = -1;
         itemCells.forEach((cell, index) => {
           foundItems.add(index);
-          cell.classList.add("is-revealed");
+          cell.classList.remove("is-recast");
+          cell.classList.add("is-revealed", "is-correct");
           cell.setAttribute("aria-label", `${answers[index]}, revealed`);
         });
         updateItemProgress();
-        setGameFeedback("All six answers are revealed. No points were added.");
+        updateNurturerPrompt(false);
+        renderNurturerGameFeedback({
+          tone: "correct",
+          badge: "🌱 All 6 Pictures Revealed",
+          mainText: `${entry.yes}`,
+          collocations: entry.collocations,
+          followUp: "Tap any picture on the card to hear its Nurturer affirmation and collocations.",
+          ttsText: `${entry.yes} We often say: ${entry.collocations.join(", ")}.`
+        });
       } else if (linkPuzzle) {
         itemGrid.classList.add("is-locked");
         linkPuzzle.items.forEach(index => itemCells[index].classList.add("is-correct"));
@@ -4284,6 +4765,91 @@
           setGameFeedback(`Model word: “${linkPuzzle.word}.” ${linkPuzzle.explanation}`, "correct");
         }
       }
+    }
+
+    function handleNurturerCellSelection(index) {
+      if (gameMode !== "items") return;
+      const current = cards[cardIndex];
+      const items = gameData[current.id] || [];
+      if (items.length !== 6) return;
+
+      if (nurturerRecastTimer) {
+        window.clearTimeout(nurturerRecastTimer);
+        nurturerRecastTimer = 0;
+      }
+      itemCells.forEach(cell => cell.classList.remove("is-recast"));
+
+      const tappedEntry = nurturerEntryFor(current.id, index, items[index]);
+
+      if (foundItems.has(index)) {
+        const nextEntry = nurturerTargetIndex >= 0
+          ? nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex])
+          : null;
+        renderNurturerGameFeedback({
+          tone: "correct",
+          badge: "✓ Already Found · Collocations",
+          mainText: tappedEntry.yes,
+          collocations: tappedEntry.collocations,
+          followUp: nextEntry
+            ? `Now let’s find the next one: “${nextEntry.ask}”`
+            : "All six pictures found! Tap any picture to review or draw a new card.",
+          ttsText: `${tappedEntry.yes} We often say: ${tappedEntry.collocations.join(", ")}.`
+        });
+        return;
+      }
+
+      if (index === nurturerTargetIndex) {
+        foundItems.add(index);
+        itemCells[index].classList.add("is-revealed", "is-correct");
+        itemCells[index].setAttribute("aria-label", `${tappedEntry.label}, found`);
+        changeScore(1);
+        updateItemProgress();
+
+        const nextTarget = nurturerOrder.find(candidate => !foundItems.has(candidate));
+        nurturerTargetIndex = nextTarget !== undefined ? nextTarget : -1;
+
+        if (foundItems.size === 6 || nurturerTargetIndex < 0) {
+          roundComplete = true;
+          updateNurturerPrompt(false);
+          renderNurturerGameFeedback({
+            tone: "correct",
+            badge: "✓ All 6 Found · Affirmation + Collocations",
+            mainText: `${tappedEntry.yes} (+1 point)`,
+            collocations: tappedEntry.collocations,
+            followUp: "Round complete! Tap any picture to revisit its collocations, or click “New card →”.",
+            ttsText: `${tappedEntry.yes} We often say: ${tappedEntry.collocations.join(", ")}. Wonderful! You found all six pictures.`
+          });
+        } else {
+          const nextEntry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
+          updateNurturerPrompt(false);
+          renderNurturerGameFeedback({
+            tone: "correct",
+            badge: "✓ Affirmation + Collocations · +1",
+            mainText: `${tappedEntry.yes} (+1 point)`,
+            collocations: tappedEntry.collocations,
+            followUp: `Next Nurturer prompt: “${nextEntry.ask}”`,
+            ttsText: `${tappedEntry.yes} We often say: ${tappedEntry.collocations.join(", ")}. Next: ${nextEntry.ask}`
+          });
+        }
+        return;
+      }
+
+      // Wrong picture tapped -> Gentle GPA Recast (no point penalty!)
+      const targetEntry = nurturerEntryFor(current.id, nurturerTargetIndex, items[nurturerTargetIndex]);
+      itemCells[index].classList.add("is-recast");
+      nurturerRecastTimer = window.setTimeout(() => {
+        itemCells[index]?.classList.remove("is-recast");
+        nurturerRecastTimer = 0;
+      }, 2200);
+
+      renderNurturerGameFeedback({
+        tone: "recast",
+        badge: "💬 Gentle Recast · No Penalty",
+        mainText: tappedEntry.recast,
+        collocations: tappedEntry.collocations,
+        followUp: `Take your time — ${targetEntry.ask}`,
+        ttsText: `${tappedEntry.recast} We often say: ${tappedEntry.collocations.join(", ")}. Take your time: ${targetEntry.ask}`
+      });
     }
 
     function handleLinkCellSelection(index) {
@@ -4402,34 +4968,6 @@
         }
         return;
       }
-
-      const items = gameData[cards[cardIndex].id] || [];
-      const match = matchingItemIndex(rawGuess, items, cards[cardIndex].id, false);
-      const anyMatch = matchingItemIndex(rawGuess, items, cards[cardIndex].id, true);
-      if (match >= 0) {
-        foundItems.add(match);
-        itemCells[match].classList.add("is-revealed");
-        changeScore(1);
-        updateItemProgress();
-        const answer = items[match];
-        guessInput.value = "";
-        if (foundItems.size === 6) {
-          roundComplete = true;
-          guessInput.disabled = true;
-          guessSubmit.disabled = true;
-          setGameFeedback(`All six found! “${answer}” completes the card.`, "correct");
-        } else {
-          setGameFeedback(`Yes—${answer}! +1 point. ${6 - foundItems.size} left.`, "correct");
-          guessInput.focus();
-        }
-      } else if (anyMatch >= 0 && foundItems.has(anyMatch)) {
-        setGameFeedback(`${items[anyMatch]} is already revealed. No score change.`);
-        guessInput.select();
-      } else {
-        changeScore(-1);
-        setGameFeedback(`“${rawGuess}” is not on this card. −1 point.`, "wrong");
-        guessInput.select();
-      }
     }
 
     function fullscreenElement() {
@@ -4483,17 +5021,41 @@
     });
     newAudioMatchButton.addEventListener("click", startAudioMatchRound);
     endAudioMatchButton.addEventListener("click", endGame);
+    [nurturerSpeakPromptButton, stripNurturerSpeakPromptButton].forEach(button => {
+      button?.addEventListener("click", () => {
+        if (lastNurturerPromptSpeech) speakText(lastNurturerPromptSpeech, button, "Nurturer prompt played.");
+      });
+    });
+    audioNurturerSpeakLastButton?.addEventListener("click", () => {
+      if (lastNurturerFeedbackSpeech) speakText(lastNurturerFeedbackSpeech, audioNurturerSpeakLastButton, "Nurturer feedback played.");
+    });
+    [nurturerSlowToggleButton, stripNurturerSlowToggleButton, audioNurturerSlowToggleButton].forEach(button => {
+      button?.addEventListener("click", toggleNurturerSlowMode);
+    });
+    [nurturerAutoToggleButton, stripNurturerAutoToggleButton, audioNurturerAutoToggleButton].forEach(button => {
+      button?.addEventListener("click", toggleNurturerAutoVoice);
+    });
     itemCells.forEach((cell, index) => {
       cell.addEventListener("click", event => {
-        if (gameMode !== "find-pair") return;
-        event.stopPropagation();
-        handleLinkCellSelection(index);
+        if (gameMode === "find-pair") {
+          event.stopPropagation();
+          handleLinkCellSelection(index);
+        } else if (gameMode === "items") {
+          event.stopPropagation();
+          handleNurturerCellSelection(index);
+        }
       });
       cell.addEventListener("keydown", event => {
-        if (gameMode !== "find-pair" || (event.key !== "Enter" && event.key !== " ")) return;
-        event.preventDefault();
-        event.stopPropagation();
-        handleLinkCellSelection(index);
+        if (event.key !== "Enter" && event.key !== " ") return;
+        if (gameMode === "find-pair") {
+          event.preventDefault();
+          event.stopPropagation();
+          handleLinkCellSelection(index);
+        } else if (gameMode === "items") {
+          event.preventDefault();
+          event.stopPropagation();
+          handleNurturerCellSelection(index);
+        }
       });
     });
     [itemListenButtons, dualItemListenButtons].forEach(buttons => {
