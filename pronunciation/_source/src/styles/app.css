@@ -710,18 +710,14 @@ kbd{font:700 .85em var(--font-ui);border:1.5px solid var(--ink);border-bottom-wi
 /* ───────── voices: the switch in the bar, and the "hear it again" dock ───────── */
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .voice-tg{display:inline-flex;border:2px solid var(--ink);border-radius:var(--radius-pill);overflow:hidden;background:var(--surface-card)}
-.voice-tg button{display:inline-flex;align-items:center;gap:calc(6px*var(--ui));border:0;background:transparent;color:var(--tx);
-  padding:calc(3px*var(--ui)) calc(10px*var(--ui)) calc(3px*var(--ui)) calc(4px*var(--ui));font:800 calc(.8rem*var(--ui))/1.2 var(--font-ui);cursor:pointer}
-.voice-tg .vt-av{display:grid;place-items:center;width:calc(24px*var(--ui));height:calc(24px*var(--ui));border-radius:50%;
-  background:var(--paper);border:2px solid var(--ink);font:800 calc(.74rem*var(--ui))/1 var(--font-display)}
-.voice-tg .vt-a{font-size:.72em;letter-spacing:.06em;opacity:.7}
+.voice-tg button{display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:var(--tx);
+  padding:calc(6px*var(--ui)) calc(10px*var(--ui));font:800 calc(.8rem*var(--ui))/1.2 var(--font-ui);cursor:pointer;
+  white-space:nowrap;transition:background-color .15s,color .15s}
 .voice-tg button.on{background:var(--ink);color:#fff}
-.voice-tg button.on .vt-av{background:var(--gold-hi);color:var(--ink);border-color:var(--gold-hi)}
 .voice-tg button:not(.on):hover{background:var(--gold-hi-soft)}
-.voice-tg.big button{padding:6px 14px 6px 6px;font-size:.95rem}
-.voice-tg.big .vt-av{width:30px;height:30px;font-size:.9rem}
-@media (max-width:860px){.voice-tg:not(.big) .vt-n{display:none}}
-@media (max-width:480px){.voice-tg:not(.big) .vt-a{display:none}.voice-tg:not(.big) button{padding:3px}}
+.voice-tg button:focus-visible{position:relative;z-index:1;outline:2px solid var(--gold-hi);outline-offset:-3px}
+.voice-tg.big button{padding:8px 14px;font-size:.95rem}
+@media (max-width:480px){.voice-tg:not(.big) button{padding:5px 6px;font-size:max(11px,calc(.68rem*var(--ui)))}}
 .sheet-voice{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .sheet-voice .sv-h{font:800 .78rem/1 var(--font-ui);letter-spacing:.1em;text-transform:uppercase}
 .sheet-voice .sv-note{margin:0;font-size:.9rem;color:var(--tx-muted, var(--tx))}
@@ -920,7 +916,6 @@ kbd{font:700 .85em var(--font-ui);border:1.5px solid var(--ink);border-bottom-wi
 .md-tag{font-size:max(11.5px,calc(.62rem*var(--ui)))}
 .l1-tag{font-size:max(11.5px,.66rem)}
 .on-tv{font-size:max(11px,calc(.62rem*var(--ui)))}
-.voice-tg .vt-a{font-size:max(11px,.72em)}
 :root[data-theme="stage"] .kick,:root[data-theme="stage"] .section-number,:root[data-theme="stage"] .wt-meta,
 :root[data-theme="stage"] .sc-top,:root[data-theme="stage"] .ac-tag,:root[data-theme="stage"] .ac-who{font-size:max(15px,calc(.8rem*var(--ui)))}
 :root[data-theme="stage"] .md-tag,:root[data-theme="stage"] .lane-label{font-size:max(14px,calc(.7rem*var(--ui)))}

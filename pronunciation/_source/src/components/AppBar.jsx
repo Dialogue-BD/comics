@@ -17,17 +17,16 @@ export function LangToggle() {
   );
 }
 
-// Who speaks: Alice (British) or Brian (American). Pairs Brian has not recorded stay
+// Who speaks: British or American. Pairs the American voice has not recorded stay
 // with Alice, so a comparison is never split between two voices.
 export function VoiceToggle({ big = false }) {
   const [voice, setVoice] = useVoice();
   return (
-    <div className={`voice-tg ${big ? 'big' : ''}`} role="group" aria-label="Voice">
+    <div className={`voice-tg ${big ? 'big' : ''}`} role="group" aria-label="English accent">
       {VOICES.map(v => (
         <button key={v.id} className={voice === v.id ? 'on' : ''} aria-pressed={voice === v.id} onClick={() => setVoice(v.id)}
-          title={`${v.name} · ${v.accentLong} English (V to switch)`}>
-          <span className="vt-av" aria-hidden="true">{v.name[0]}</span>
-          <span className="vt-n">{v.name}</span><span className="vt-a">{v.accent}</span>
+          title={`${v.accentLong} English (V to switch)`}>
+          <span className="vt-n">{v.accentLong}</span>
         </button>
       ))}
     </div>
