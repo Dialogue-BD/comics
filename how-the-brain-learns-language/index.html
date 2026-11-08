@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#103D21">
 <title>How the Brain Learns Language · Dialogue English &amp; Skills Center</title>
-<meta name="description" content="An interactive teaching module &amp; slideshow on Comprehensible Input, the Iceberg Principle, the Affective Filter, and AI as a GPA Nurturer — with natural Edge-TTS voice.">
+<meta name="description" content="An interactive teaching module &amp; classroom slideshow on Comprehensible Input, the Iceberg Principle, the Affective Filter, and AI as a GPA Nurturer — with 96 natural Edge-TTS neural voice clips.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,22 +34,26 @@ button{font:inherit;cursor:pointer;transition:transform .16s ease, box-shadow .1
 
 /* ---------- TOP NAV / TIMELINE ---------- */
 .topbar{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, #0d331b 0%, var(--forest) 100%);color:#fff;padding:10px 16px 12px;box-shadow:0 6px 24px rgba(0,0,0,.28);border-bottom:2px solid rgba(210,185,120,.28)}
-.topbar-inner{max-width:1220px;margin:0 auto}
+.topbar-inner{max-width:1240px;margin:0 auto}
 .brandrow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .brand-group{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.back-home{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#fff;background:rgba(255,255,255,.10);border:1.5px solid rgba(255,255,255,.25);padding:6px 13px;border-radius:999px;font-weight:700;font-size:.86rem;transition:background .15s,border-color .15s}
+.back-home{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#fff;background:rgba(255,255,255,.10);border:1.5px solid rgba(255,255,255,.25);padding:6px 13px;border-radius:999px;font-weight:700;font-size:.86rem;transition:background .15s,border-color .15s}
 .back-home:hover{background:rgba(255,255,255,.20);border-color:var(--gold-light)}
 .brand{font-weight:800;letter-spacing:.02em;font-size:.98rem;display:flex;align-items:center;gap:8px}
 .brand span{color:var(--gold-light)}
-.voicebar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.vbtn{border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;padding:8px 14px;font-weight:700;font-size:.88rem;min-height:42px;display:inline-flex;align-items:center;gap:6px}
+.voicebar{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.vbtn{border:2px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;padding:7px 13px;font-weight:700;font-size:.86rem;min-height:40px;display:inline-flex;align-items:center;gap:6px}
 .vbtn:hover{background:rgba(255,255,255,.16);border-color:var(--gold-light)}
 .vbtn[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#10281A;box-shadow:0 3px 12px rgba(185,146,79,.4)}
-.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:11px}
-.tl{border:2px solid transparent;text-align:left;border-radius:14px;padding:10px 12px;background:rgba(255,255,255,.10);color:#fff;min-height:62px;position:relative;overflow:hidden}
+.timer-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.32);border:1.5px solid rgba(210,185,120,.45);color:var(--gold-light);border-radius:999px;padding:6px 13px;font-weight:800;font-size:.86rem;font-variant-numeric:tabular-nums;min-height:40px;cursor:pointer}
+.timer-pill:hover{border-color:#fff;color:#fff}
+.timer-pill.running{background:rgba(45,157,51,.28);border-color:#5EE265;color:#fff}
+
+.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:11px}
+.tl{border:2px solid transparent;text-align:left;border-radius:14px;padding:9px 11px;background:rgba(255,255,255,.10);color:#fff;min-height:60px;position:relative;overflow:hidden}
 .tl:hover{background:rgba(255,255,255,.16);border-color:rgba(210,185,120,.45)}
-.tl b{display:block;font-size:1rem;line-height:1.15}
-.tl small{opacity:.85;font-weight:700;letter-spacing:.04em;font-size:.75rem}
+.tl b{display:block;font-size:.95rem;line-height:1.15}
+.tl small{opacity:.85;font-weight:700;letter-spacing:.04em;font-size:.72rem}
 .tl.active{background:var(--gold);color:#10281A;border-color:#fff;box-shadow:0 4px 16px rgba(185,146,79,.4)}
 .tl.done{background:var(--green);color:#fff}
 .tl.done.active{background:var(--gold);color:#10281A;box-shadow:0 0 0 3px var(--green)}
@@ -57,7 +61,7 @@ button{font:inherit;cursor:pointer;transition:transform .16s ease, box-shadow .1
 .progress i{display:block;height:100%;width:0;background:linear-gradient(90deg, var(--gold-light), #5EE265);border-radius:99px;transition:width .5s ease}
 
 /* Live Audio Wave Indicator in Caption */
-.caption-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;min-height:28px;background:rgba(0,0,0,.22);border-radius:10px;padding:5px 12px;border:1px solid rgba(255,255,255,.12)}
+.caption-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;min-height:30px;background:rgba(0,0,0,.25);border-radius:10px;padding:6px 14px;border:1px solid rgba(255,255,255,.14)}
 .caption-wrap:has(.caption:empty){display:none}
 .caption{font-weight:700;font-size:.98rem;color:var(--gold-light);flex:1}
 .eq-bars{display:inline-flex;align-items:flex-end;gap:3px;height:16px;opacity:0;transition:opacity .2s}
@@ -82,20 +86,35 @@ body.deck-mode section.phase.active-slide{display:block}
 .deck-btn{border:2px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;border-radius:999px;padding:8px 16px;font-weight:800;font-size:.92rem;min-height:40px;display:inline-flex;align-items:center;gap:6px}
 .deck-btn:hover:not(:disabled){background:var(--gold);color:#10281A;border-color:var(--gold)}
 .deck-btn:disabled{opacity:.35;cursor:default}
-.deck-counter{font-weight:800;font-size:.92rem;color:var(--gold-light);min-width:110px;text-align:center;letter-spacing:.03em}
+.deck-counter{font-weight:800;font-size:.92rem;color:var(--gold-light);min-width:130px;text-align:center;letter-spacing:.03em}
 
 /* ---------- LAYOUT ---------- */
 .wrap{max-width:1180px;margin:0 auto;padding:18px 16px 88px}
-.hero{text-align:center;padding:30px 18px 24px;background:var(--card);border:2px solid var(--line);border-radius:28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero{text-align:center;padding:30px 20px 26px;background:var(--card);border:2px solid var(--line);border-radius:28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%, rgba(185,146,79,.14), transparent 65%);pointer-events:none}
-.hero h1{font-size:clamp(2.2rem,5.6vw,4.1rem);line-height:.96;margin:0;color:var(--forest);font-weight:800;position:relative}
+.hero h1{font-size:clamp(2.2rem,5.4vw,4rem);line-height:.96;margin:0;color:var(--forest);font-weight:800;position:relative}
 @media (prefers-color-scheme: dark){.hero h1{color:#F4F1E6}}
 .hero h1 em{font-style:normal;color:var(--green)}
-.hero p{font-size:clamp(1.15rem,2.4vw,1.45rem);font-weight:600;color:var(--muted);max-width:740px;margin:14px auto 0;position:relative}
-.hero-visual{display:flex;justify-content:center;gap:10px;align-items:flex-end;margin:22px auto 8px;max-width:680px;position:relative}
-.brainwrap{background:var(--paper);border:2px solid var(--line);border-radius:24px;padding:18px 22px;box-shadow:inset 0 2px 8px rgba(0,0,0,.04);width:100%}
-.chiprow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;position:relative}
-.chip{background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:9px 16px;font-weight:800;font-size:.98rem;box-shadow:0 3px 8px rgba(0,0,0,.04)}
+.hero p{font-size:clamp(1.12rem,2.3vw,1.42rem);font-weight:600;color:var(--muted);max-width:740px;margin:12px auto 0;position:relative}
+.hero-visual{display:flex;justify-content:center;gap:10px;align-items:flex-end;margin:20px auto 8px;max-width:680px;position:relative}
+.brainwrap{background:var(--paper);border:2px solid var(--line);border-radius:24px;padding:16px 20px;box-shadow:inset 0 2px 8px rgba(0,0,0,.04);width:100%}
+.chiprow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;position:relative}
+.chip{background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:8px 15px;font-weight:800;font-size:.96rem;box-shadow:0 3px 8px rgba(0,0,0,.04)}
+
+/* Hero Interactive Two Brains Comparison Cards */
+.two-brains-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:920px;margin:20px auto 6px;position:relative;text-align:left}
+.bpath{border-radius:22px;padding:18px 20px;border:3px solid var(--line);background:var(--paper);cursor:pointer;transition:transform .2s, box-shadow .2s, border-color .2s;display:flex;gap:14px;align-items:center}
+.bpath:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.bpath.trap{background:#FFF4F1;border-color:#EFC0B8;color:#14231A}
+.bpath.trap.selected{border-color:var(--red);box-shadow:0 0 0 3px rgba(217,79,61,.25)}
+.bpath.flow{background:#EDF8EB;border-color:#BFE0B8;color:#14231A}
+.bpath.flow.selected{border-color:var(--green);box-shadow:0 0 0 3px rgba(45,157,51,.25)}
+.bpath svg{width:70px;height:70px;flex:0 0 70px}
+.bpath h3{margin:0 0 4px;font-size:1.22rem;line-height:1.15}
+.bpath p{margin:0;font-size:.94rem;font-weight:600;color:#405144;line-height:1.35}
+.bpath .tag-pill{display:inline-block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:99px;margin-bottom:4px}
+.bpath.trap .tag-pill{background:#FBE0DA;color:#8E2619}
+.bpath.flow .tag-pill{background:#D4F0D0;color:#145218}
 
 section.phase{background:var(--card);border:2px solid var(--line);border-radius:28px;padding:clamp(20px,3.2vw,34px);margin-top:28px;box-shadow:var(--shadow);scroll-margin-top:155px;position:relative}
 .phase-head{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
@@ -110,7 +129,7 @@ section.phase{background:var(--card);border:2px solid var(--line);border-radius:
 /* Teacher Cue Pill */
 .teacher-cue{background:var(--paper);border:2px dashed var(--gold);border-radius:16px;padding:12px 16px;margin-top:14px;font-size:.96rem;font-weight:600;color:var(--ink);display:none}
 body.show-notes .teacher-cue{display:block}
-.teacher-cue b{color:var(--forest);text-transform:uppercase;letter-spacing:.05em;font-size:.82rem;display:inline-block;margin-right:6px;background:var(--gold-light);padding:2px 8px;border-radius:6px;color:#10281A}
+.teacher-cue b{color:#10281A;text-transform:uppercase;letter-spacing:.05em;font-size:.80rem;display:inline-block;margin-right:6px;background:var(--gold-light);padding:2px 8px;border-radius:6px}
 
 .bigbtn{border:none;border-radius:18px;padding:16px 22px;font-weight:800;font-size:1.12rem;min-height:60px;background:var(--forest);color:#fff;box-shadow:0 6px 0 rgba(16,61,33,.35);display:inline-flex;align-items:center;justify-content:center;gap:8px}
 .bigbtn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 0 rgba(16,61,33,.38)}
@@ -198,12 +217,12 @@ input[type=range]{width:100%;height:22px;accent-color:var(--green);cursor:pointe
 .gauge-track{height:22px;border-radius:99px;background:#E5E0CC;overflow:hidden;border:2px solid rgba(0,0,0,.1)}
 .gauge-fill{height:100%;width:20%;border-radius:99px;transition:width .7s ease,background .7s}
 .bubblebox{min-height:112px;border-radius:16px;background:rgba(255,255,255,.85);padding:14px 16px;font-size:1.16rem;font-weight:700;margin-top:12px;border:2px solid rgba(0,0,0,.06);display:flex;align-items:center}
-.chunk{display:inline-block;background:#fff;border:2px solid var(--sage);border-radius:999px;padding:6px 13px;margin:4px;font-weight:800;animation:floaty 3s ease-in-out infinite;cursor:pointer}
+.chunk{display:inline-block;background:#fff;border:2px solid var(--sage);border-radius:999px;padding:6px 13px;margin:4px;font-weight:800;animation:floaty 3s ease-in-out infinite;cursor:pointer;color:#14231A}
 .chunk:hover{background:var(--green);color:#fff;border-color:var(--green)}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 
 /* ---------- PHASE 4: AI NURTURER GAMES ---------- */
-.game-card{background:var(--paper);border:2px solid var(--line);border-radius:24px;padding:20px;margin-top:20px}
+.game-card{background:var(--paper);border:2px solid var(--line);border-radius:24px;padding:22px;margin-top:20px}
 .qdgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
 .qd{border:3px solid var(--line);background:#fff;border-radius:20px;padding:12px 8px;text-align:center;min-height:142px;color:#14231A;box-shadow:0 4px 12px rgba(0,0,0,.04)}
 .qd:hover{transform:translateY(-3px);border-color:var(--gold)}
@@ -214,6 +233,7 @@ input[type=range]{width:100%;height:22px;accent-color:var(--green);cursor:pointe
 .chat{margin-top:16px;border:2px solid var(--line);border-radius:20px;padding:16px;background:var(--card);max-height:360px;overflow:auto;box-shadow:inset 0 2px 10px rgba(0,0,0,.04)}
 .msg{max-width:88%;padding:12px 16px;border-radius:18px;margin:10px 0;font-size:1.08rem;font-weight:600;line-height:1.4}
 .msg.ai{background:#fff;border:2px solid #BFE0B8;color:#14231A;box-shadow:0 4px 12px rgba(0,0,0,.04)}
+.msg.redpen{background:#FFF0ED;border:2px solid #EFC0B8;color:#7A1F14;box-shadow:0 4px 12px rgba(0,0,0,.04)}
 .msg.me{background:var(--forest);color:#fff;margin-left:auto}
 .msg .who{font-size:.76rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.75;display:block;margin-bottom:3px}
 .recast-chips{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:10px;margin-top:14px}
@@ -222,6 +242,12 @@ input[type=range]{width:100%;height:22px;accent-color:var(--green);cursor:pointe
 .chipbtn small{display:block;font-weight:600;color:#5A6B5E;margin-top:2px}
 .stars{font-size:1.75rem;letter-spacing:.22em;color:var(--gold);min-height:38px;text-align:center;font-weight:800;margin-top:6px}
 
+/* Red Pen vs Nurturer Mode Switcher */
+.mode-toggle-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;background:var(--card);padding:10px 14px;border-radius:16px;border:2px solid var(--line)}
+.mode-pill{border-radius:999px;padding:8px 16px;font-weight:800;font-size:.92rem;border:2px solid var(--line);background:var(--paper);color:var(--ink)}
+.mode-pill.active-nurturer{background:var(--green);color:#fff;border-color:var(--green)}
+.mode-pill.active-redpen{background:var(--red);color:#fff;border-color:var(--red)}
+
 /* Busy Picture Story Massaging Card (Phase 4 Game 3) */
 .story-massage-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;align-items:center;margin-top:14px}
 .busy-scene-box{background:#fff;border:3px solid var(--line);border-radius:20px;padding:12px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
@@ -229,7 +255,7 @@ input[type=range]{width:100%;height:22px;accent-color:var(--green);cursor:pointe
 .hotspot{cursor:pointer;transition:filter .2s, transform .2s}
 .hotspot:hover{filter:drop-shadow(0 0 8px rgba(212,175,55,.9))}
 
-/* ---------- PHASE 5: PROTOCOL CARDS ---------- */
+/* ---------- PHASE 5: PROTOCOL CARDS & 4 GOLDEN LAWS ---------- */
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
 .pcard{border:2px solid var(--line);border-radius:22px;padding:18px;background:var(--paper);display:flex;flex-direction:column;justify-content:space-between}
 .pcard h3{margin:0 0 8px;font-size:1.32rem;color:var(--forest)}
@@ -248,15 +274,25 @@ input[type=range]{width:100%;height:22px;accent-color:var(--green);cursor:pointe
 .step svg{width:54px;height:54px;margin-bottom:4px}
 .step span{display:block;font-size:1.35rem;font-family:"Spectral",serif;color:var(--forest)}
 @media (prefers-color-scheme: dark){.step span{color:var(--gold-light)}}
+
+/* 4 Golden Laws Medallion Grid */
+.laws-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.law-card{border:2px solid var(--line);background:var(--paper);border-radius:20px;padding:18px 14px;text-align:center;cursor:pointer;transition:transform .2s, border-color .2s, box-shadow .2s}
+.law-card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:var(--shadow)}
+.law-icon{width:54px;height:54px;border-radius:50%;background:var(--forest);color:var(--gold-light);display:grid;place-items:center;font-size:1.5rem;margin:0 auto 10px;border:2px solid var(--gold)}
+.law-card h4{margin:0 0 6px;font-size:1.12rem;font-family:"Spectral",serif;color:var(--forest)}
+@media (prefers-color-scheme: dark){.law-card h4{color:var(--gold-light)}}
+.law-card p{margin:0;font-size:.9rem;font-weight:600;color:var(--muted);line-height:1.35}
+
 footer{text-align:center;padding:28px 16px 100px;color:var(--muted);font-weight:700}
 footer b{color:var(--forest)}
 @media (prefers-color-scheme: dark){footer b{color:#F4F1E6}}
 
-@media (max-width:760px){
-  .timeline{grid-template-columns:repeat(5,1fr);gap:5px}
-  .tl{padding:8px 6px;min-height:58px}.tl b{font-size:.80rem}.tl small{font-size:.66rem}
-  .objgrid,.qdgrid{grid-template-columns:1fr 1fr}
-  .split,.cards,.legend,.story-massage-grid{grid-template-columns:1fr}
+@media (max-width:860px){
+  .timeline{grid-template-columns:repeat(3,1fr);gap:6px}
+  .tl{padding:8px 8px;min-height:54px}.tl b{font-size:.82rem}.tl small{font-size:.66rem}
+  .objgrid,.qdgrid,.laws-grid{grid-template-columns:1fr 1fr}
+  .split,.cards,.legend,.story-massage-grid,.two-brains-grid{grid-template-columns:1fr}
   .counters{grid-template-columns:1fr 1fr 1fr;gap:8px}.counter b{font-size:1.45rem}.counter span{font-size:.78rem}
   .routine{grid-template-columns:1fr 1fr}
   .week{gap:5px}.day{font-size:.75rem;padding:8px 2px}
@@ -278,6 +314,7 @@ footer b{color:var(--forest)}
         <div class="brand">DIALOGUE <span>English &amp; Skills Center</span> · How the Brain Learns Language</div>
       </div>
       <div class="voicebar" role="group" aria-label="Module &amp; Voice controls">
+        <button class="timer-pill" id="sessionTimerBtn" title="Click to Start/Pause 25-Minute Lecture Timer">⏱️ <span id="timerDisplay">25:00</span></button>
         <button class="vbtn" id="deckToggle" aria-pressed="false" title="Toggle Single-Slide Projector Mode (S)">📽️ Slideshow</button>
         <button class="vbtn" id="notesToggle" aria-pressed="false" title="Toggle Teacher Lecture Notes (N)">📝 Teacher Cues</button>
         <button class="vbtn" id="voiceToggle" aria-pressed="true" title="Toggle Neural Voice (M)">🔊 Voice ON</button>
@@ -285,7 +322,8 @@ footer b{color:var(--forest)}
       </div>
     </div>
     <nav class="timeline" aria-label="Module phases">
-      <button class="tl active" data-target="p1"><small>00:00 · 4 MIN</small><b>1 · Immersion Shock</b></button>
+      <button class="tl active" data-target="p0"><small>INTRO · HOOK</small><b>0 · Two Brains</b></button>
+      <button class="tl" data-target="p1"><small>00:00 · 4 MIN</small><b>1 · Immersion Shock</b></button>
       <button class="tl" data-target="p2"><small>04:00 · 6 MIN</small><b>2 · Iceberg Lab</b></button>
       <button class="tl" data-target="p3"><small>10:00 · 6 MIN</small><b>3 · Two Worlds</b></button>
       <button class="tl" data-target="p4"><small>16:00 · 6 MIN</small><b>4 · AI Nurturer</b></button>
@@ -301,10 +339,15 @@ footer b{color:var(--forest)}
 
 <div class="wrap">
 
-  <!-- HERO: picture first, almost no words -->
+  <!-- ============ SLIDE 0 / HERO: PICTURE FIRST + THE TWO PATHS ============ -->
   <div class="hero active-slide" id="p0">
     <h1>Your brain already knows<br><em>how to learn a language.</em></h1>
     <p>Don't study the pictures. Just look, listen, and tap. You'll feel it happen — in the next 25 minutes.</p>
+
+    <div class="teacher-cue" style="text-align:left;max-width:920px;margin:14px auto 0">
+      <b>Teacher Cue</b> Ask the room: <em>"Who here has studied English grammar rules for 8–10 years, but still freezes when speaking?"</em> Tap the two brain cards below to contrast the Grammar-Translation Trap with Natural GPA Acquisition.
+    </div>
+
     <div class="brainwrap hero-visual" aria-hidden="true">
       <svg viewBox="0 0 600 170" width="100%" height="170" role="img" aria-label="An eye and ear taking in pictures and sound, flowing into a glowing brain, then out as speech">
         <defs>
@@ -338,6 +381,37 @@ footer b{color:var(--forest)}
         </g>
       </svg>
     </div>
+
+    <!-- Interactive Two Paths Comparison -->
+    <div class="two-brains-grid">
+      <div class="bpath trap" id="heroPathTrap" role="button" tabindex="0" onclick="selectHeroPath('trap')">
+        <svg viewBox="0 0 80 80" aria-hidden="true">
+          <circle cx="40" cy="40" r="34" fill="#FADCD6" stroke="#D94F3D" stroke-width="3"/>
+          <circle cx="33" cy="36" r="13" fill="none" stroke="#B03324" stroke-width="3.5" stroke-dasharray="5 3" class="spin-fast"/>
+          <rect x="33" y="38" width="16" height="14" rx="3" fill="#D94F3D"/>
+          <path d="M36 38v-5a5 5 0 0110 0v5" fill="none" stroke="#7A1F14" stroke-width="2.5"/>
+        </svg>
+        <div>
+          <span class="tag-pill">Path A · Grammar-Translation</span>
+          <h3>Conscious Rule Memorization</h3>
+          <p>10 years of textbook rules &amp; word lists → brain calculates every word and freezes.</p>
+        </div>
+      </div>
+
+      <div class="bpath flow" id="heroPathFlow" role="button" tabindex="0" onclick="selectHeroPath('flow')">
+        <svg viewBox="0 0 80 80" aria-hidden="true">
+          <circle cx="40" cy="40" r="34" fill="#D4F0D0" stroke="#2D9D33" stroke-width="3"/>
+          <path d="M22 42q18-16 36 0M26 52q14 10 28 0" fill="none" stroke="#103D21" stroke-width="3.5" stroke-linecap="round"/>
+          <circle cx="28" cy="36" r="4.5" fill="#B9924F"/><circle cx="52" cy="36" r="4.5" fill="#B9924F"/><circle cx="40" cy="28" r="5" fill="#2D9D33"/>
+        </svg>
+        <div>
+          <span class="tag-pill">Path B · Comprehensible Input (GPA)</span>
+          <h3>Subconscious Acquisition</h3>
+          <p>Sound coupled directly to pictures &amp; context → effortless, spontaneous speech.</p>
+        </div>
+      </div>
+    </div>
+
     <div class="chiprow">
       <span class="chip">👀 Look</span><span class="chip">👂 Listen</span><span class="chip">👆 Tap</span><span class="chip">💬 Speak — later</span>
     </div>
@@ -544,7 +618,7 @@ footer b{color:var(--forest)}
         </svg>
         <svg class="gear spin-fast" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6l6 12 13-5 2 14 14 2-5 13 12 6-12 6 5 13-14 2-2 14-13-5-6 12-6-12-13 5-2-14-14-2 5-13L8 50l12-6-5-13 14-2 2-14 13 5z" fill="#D94F3D"/><circle cx="50" cy="50" r="17" fill="#fff"/><text x="50" y="56" text-anchor="middle" font-size="11" font-weight="800" fill="#7A1F14">RULES?</text></svg>
         <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;font-weight:800;font-size:.85rem"><span style="background:#fff;border:2px solid #EFC0B8;border-radius:8px;padding:4px 8px">past tense?</span><span style="background:#fff;border:2px solid #EFC0B8;border-radius:8px;padding:4px 8px">a / the?</span><span style="background:#fff;border:2px solid #EFC0B8;border-radius:8px;padding:4px 8px">⚠ don't make a mistake</span></div>
-        <div class="gauge"><div style="display:flex;justify-content:space-between;font-weight:800"><span>AFFECTIVE FILTER — anxiety wall</span><span id="badPct">HIGH</span></div><div class="gauge-track"><div class="gauge-fill" id="badGauge" style="background:var(--red);width:92%"></div></div></div>
+        <div class="gauge"><div style="display:flex;justify-content:space-between;font-weight:800"><span>AFFECTIVE FILTER — anxiety wall</span><span id="badPct">HIGH (92%)</span></div><div class="gauge-track"><div class="gauge-fill" id="badGauge" style="background:var(--red);width:92%"></div></div><small style="font-weight:700">High wall = input bounces OFF &amp; speech locks up.</small></div>
         <div class="bubblebox" id="badBubble">“I… would… like… uh… is it ‘a coffee’ or…? Sorry, sorry…” 🧊 <b>Frozen.</b></div>
       </div>
 
@@ -576,11 +650,11 @@ footer b{color:var(--forest)}
         </svg>
         <svg class="gear spin-slow" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6l6 12 13-5 2 14 14 2-5 13 12 6-12 6 5 13-14 2-2 14-13-5-6 12-6-12-13 5-2-14-14-2 5-13L8 50l12-6-5-13 14-2 2-14 13 5z" fill="#2D9D33"/><circle cx="50" cy="50" r="17" fill="#fff"/><text x="50" y="56" text-anchor="middle" font-size="11" font-weight="800" fill="#103D21">CHUNKS</text></svg>
         <div style="text-align:center">
-          <button type="button" class="chunk" data-speak="Hi! Can I have a coffee, please — for here. Thanks!">“Can I have…”</button>
-          <button type="button" class="chunk" data-speak="Hi! Can I have a coffee, please — for here. Thanks!">“a coffee, please”</button>
-          <button type="button" class="chunk" data-speak="Hi! Can I have a coffee, please — for here. Thanks!">“for here, thanks!”</button>
+          <button type="button" class="chunk" data-speak="Can I have...">“Can I have…”</button>
+          <button type="button" class="chunk" data-speak="the usual, please.">“the usual, please”</button>
+          <button type="button" class="chunk" data-speak="for here, thanks!">“for here, thanks!”</button>
         </div>
-        <div class="gauge"><div style="display:flex;justify-content:space-between;font-weight:800"><span>AFFECTIVE FILTER — anxiety wall</span><span id="goodPct">LOW</span></div><div class="gauge-track"><div class="gauge-fill" id="goodGauge" style="background:var(--green);width:18%"></div></div><small style="font-weight:700">Low wall = input gets IN &amp; chunks flow OUT.</small></div>
+        <div class="gauge"><div style="display:flex;justify-content:space-between;font-weight:800"><span>AFFECTIVE FILTER — anxiety wall</span><span id="goodPct">LOW (16%)</span></div><div class="gauge-track"><div class="gauge-fill" id="goodGauge" style="background:var(--green);width:16%"></div></div><small style="font-weight:700">Low wall = input gets IN &amp; chunks flow OUT.</small></div>
         <div class="bubblebox" id="goodBubble">“Hi! Can I have a coffee, please — for here. Thanks!” ☕ <b>Done. Smiling.</b></div>
       </div>
     </div>
@@ -607,7 +681,7 @@ footer b{color:var(--forest)}
     </div>
 
     <div class="teacher-cue">
-      <b>Teacher Cue</b> Walk through the 3 core AI Nurturer games: (1) <strong>Quick Dozen</strong> Listen &amp; Point, (2) <strong>Implicit Recasting</strong> where broken learner phrases are reformulated warmly without a red pen, and (3) <strong>Busy Picture Story Massaging</strong>.
+      <b>Teacher Cue</b> Walk through the 3 core AI Nurturer games: (1) <strong>Quick Dozen</strong> Listen &amp; Point, (2) <strong>Implicit Recasting</strong> (switch between Nurturer Mode and Red-Pen Mode so students feel the difference!), and (3) <strong>Busy Picture Story Massaging</strong>.
     </div>
 
     <div class="game-card">
@@ -625,14 +699,21 @@ footer b{color:var(--forest)}
 
     <div class="game-card">
       <h3 style="margin:0;font-size:1.45rem">Game 2 — Say it your way. Hear it grow. (Implicit Recasting)</h3>
-      <p style="font-weight:700;margin:6px 0 0;color:var(--muted)">Tap a learner sentence. Listen to what a Nurturer does — <b>no correction, just a natural recast.</b></p>
+      <p style="font-weight:700;margin:6px 0 0;color:var(--muted)">Tap a learner sentence. Compare what a <b>GPA Nurturer</b> does versus a <b>Red-Pen Teacher</b>:</p>
+
+      <div class="mode-toggle-row" role="group" aria-label="Response style">
+        <span style="font-weight:800;font-size:.92rem">Response Mode:</span>
+        <button type="button" class="mode-pill active-nurturer" id="modeNurturerBtn" onclick="setRecastMode('nurturer')">💚 GPA Nurturer (Implicit Recast)</button>
+        <button type="button" class="mode-pill" id="modeRedPenBtn" onclick="setRecastMode('redpen')">❌ Traditional Red Pen (Grammar Lecture)</button>
+      </div>
+
       <div class="recast-chips">
-        <button class="chipbtn" data-recast="0">🗣️ “Boy run road.”<small>Tap to hear the recast →</small></button>
-        <button class="chipbtn" data-recast="1">🗣️ “He go store.”<small>Tap to hear the recast →</small></button>
-        <button class="chipbtn" data-recast="2">🗣️ “She have two child.”<small>Tap to hear the recast →</small></button>
-        <button class="chipbtn" data-recast="3">🗣️ “Yesterday I buy phone.”<small>Tap to hear the recast →</small></button>
-        <button class="chipbtn" data-recast="4">🗣️ “Tea very hot no drink.”<small>Tap to hear the recast →</small></button>
-        <button class="chipbtn" data-recast="5">🗣️ “Bus late I walk school.”<small>Tap to hear the recast →</small></button>
+        <button class="chipbtn" data-recast="0">🗣️ “Boy run road.”<small>Tap to hear response →</small></button>
+        <button class="chipbtn" data-recast="1">🗣️ “He go store.”<small>Tap to hear response →</small></button>
+        <button class="chipbtn" data-recast="2">🗣️ “She have two child.”<small>Tap to hear response →</small></button>
+        <button class="chipbtn" data-recast="3">🗣️ “Yesterday I buy phone.”<small>Tap to hear response →</small></button>
+        <button class="chipbtn" data-recast="4">🗣️ “Tea very hot no drink.”<small>Tap to hear response →</small></button>
+        <button class="chipbtn" data-recast="5">🗣️ “Bus late I walk school.”<small>Tap to hear response →</small></button>
       </div>
       <div class="chat" id="chatLog" aria-live="polite">
         <div class="msg ai"><span class="who">Nurturer (Emma)</span>Welcome! I will never mark you wrong. I will play, point, and say things in a way you can understand — at your level, plus one small step. That step is called <b>i+1</b>: 95% familiar, 5% new.</div>
@@ -696,10 +777,17 @@ footer b{color:var(--forest)}
     </div>
 
     <div style="margin-top:16px;background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:16px">
-      <b style="font-size:1.1rem">The i+1 dial — feel it:</b>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <b style="font-size:1.1rem">The i+1 dial — feel &amp; hear it:</b>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button type="button" class="spbtn" style="min-height:36px;padding:5px 12px;font-size:.85rem" onclick="setIDial(15)">😴 Hear i − 1</button>
+          <button type="button" class="spbtn" style="min-height:36px;padding:5px 12px;font-size:.85rem" onclick="setIDial(50)">🎯 Hear i + 1</button>
+          <button type="button" class="spbtn" style="min-height:36px;padding:5px 12px;font-size:.85rem" onclick="setIDial(88)">😱 Hear i + 10</button>
+        </div>
+      </div>
       <div class="slider-labels" style="margin-top:8px"><span>😴 i − 1<br><small>too easy, nothing new</small></span><span style="text-align:center;color:var(--green)">🎯 i + 1<br><small>just right (95% known)</small></span><span style="text-align:right">😱 i + 10<br><small>noise again</small></span></div>
       <input type="range" id="iSlider" min="0" max="100" value="50" aria-label="i plus one dial">
-      <div class="status good" id="iStatus" style="margin-top:8px">🎯 <b>Just right — i+1.</b> You understand almost everything, and one new word rides in on the meaning.</div>
+      <div class="status good" id="iStatus" style="margin-top:8px">🎯 <b>Just right — i+1:</b> “The sleepy orange cat is <u>stretching</u> on the warm sunlit windowsill.” (1 new word rides in on the picture!)</div>
     </div>
 
   </section>
@@ -765,6 +853,31 @@ footer b{color:var(--forest)}
       </div>
     </div>
 
+    <!-- 4 Golden Laws Summary Medallions (Tap to hear each law) -->
+    <h3 style="margin:26px 0 4px;font-size:1.4rem">The 4 Golden Laws of Natural Acquisition <small style="font-size:.85rem;color:var(--muted);font-family:'Public Sans',sans-serif">(tap any card to hear)</small></h3>
+    <div class="laws-grid">
+      <div class="law-card" role="button" tabindex="0" data-speak="Law one: Input precedes output. Listen and point before you try to speak.">
+        <div class="law-icon">👂</div>
+        <h4>1 · Input First</h4>
+        <p>Listen &amp; point before speaking. Comprehension leads production.</p>
+      </div>
+      <div class="law-card" role="button" tabindex="0" data-speak="Law two: Grow the underwater iceberg. Passive comprehension lifts spoken fluency.">
+        <div class="law-icon">🌊</div>
+        <h4>2 · Grow the Base</h4>
+        <p>Fill the underwater 90% with stories &amp; context; the tip rises by itself.</p>
+      </div>
+      <div class="law-card" role="button" tabindex="0" data-speak="Law three: Lower the anxiety wall. Quiet the grammar monitor so chunks can flow.">
+        <div class="law-icon">🧘</div>
+        <h4>3 · Lower the Wall</h4>
+        <p>Quiet the conscious grammar monitor so ready-made chunks flow out.</p>
+      </div>
+      <div class="law-card" role="button" tabindex="0" data-speak="Law four: Practice fifteen minutes daily with your pocket Nurturer. No red pens.">
+        <div class="law-icon">🤖</div>
+        <h4>4 · No Red Pens</h4>
+        <p>Play 15 minutes a day with your AI Nurturer through warm recasts.</p>
+      </div>
+    </div>
+
     <div class="status good" style="margin-top:18px">🌱 <span><b>You already proved it in Phase 1:</b> with pictures + sound + zero pressure, your brain learns. Do that — in English — for 15 minutes a day.</span></div>
     <div class="speechbar"><button class="spbtn" data-speak="Remember: look, listen, tap, play. Fifteen minutes every day. Your underwater English will grow, and speaking will rise on its own.">🔊 Hear the finish</button></div>
 
@@ -775,7 +888,7 @@ footer b{color:var(--forest)}
 <!-- Floating Classroom Slide Deck Bar -->
 <div class="deck-bar" role="navigation" aria-label="Slide navigation">
   <button class="deck-btn" id="prevSlideBtn" title="Previous Phase (←)">← Prev</button>
-  <span class="deck-counter" id="slideCounterText">Intro · 1 / 6</span>
+  <span class="deck-counter" id="slideCounterText">0 · Two Brains (1/6)</span>
   <button class="deck-btn" id="nextSlideBtn" title="Next Phase (→)">Next →</button>
 </div>
 
@@ -792,6 +905,8 @@ var lastSpoken = "", lastSeq = null;
 var CLIPMAP = {
   "voice on":"voice-on",
   "your brain already knows how to learn a language don t study the pictures just look listen and tap":"hero-intro",
+  "studying grammar rules and vocabulary lists locks the brain in conscious calculation in real conversation it freezes":"trap-brain",
+  "connecting sound directly to pictures and real life builds automatic neural pathways speech flows out naturally":"flow-brain",
   "the monitor checks rules the filter blocks input when we feel stressed low anxiety lets language in":"monitor-idea",
   "remember look listen tap play fifteen minutes every day your underwater english will grow and speaking will rise on its own":"finish-line",
   "plokta zorin fek tor which picture is it take a guess":"noise-question",
@@ -820,6 +935,9 @@ var CLIPMAP = {
   "two students order coffee the first one is checking rules and freezes the second one listened in context for months and the words simply come":"two-students",
   "hi can i have a coffee please for here thanks":"coffee-line",
   "i would like uh is it a coffee or sorry sorry":"frozen-line",
+  "can i have":"chunk-can-i-have",
+  "the usual please":"chunk-the-usual",
+  "for here thanks":"chunk-for-here",
   "find the boots where are the boots":"qd-ask-boots",
   "yes those are the black boots":"qd-yes-boots",
   "now show me the red scarf":"qd-ask-scarf",
@@ -847,9 +965,22 @@ var CLIPMAP = {
   "you bought a new phone yesterday exciting is it fast":"recast-ai-3",
   "oh the tea is too hot to drink right now let s wait a minute for it to cool down":"recast-ai-4",
   "the bus was late so you walked all the way to school were you tired when you arrived":"recast-ai-5",
+  "incorrect grammar missing auxiliary verb and article say the boy is running down the road":"redpen-0",
+  "wrong tense go is present tense use past simple he went to the store":"redpen-1",
+  "subject verb agreement error use has and plural irregular noun children":"redpen-2",
+  "error yesterday requires past tense bought plus indefinite article a":"redpen-3",
+  "fragment missing copula is and infinitive structure too hot to drink":"redpen-4",
+  "incorrect missing past tense copula was and regular past suffix walked":"redpen-5",
   "look at the busy market a woman in a green sari is buying fresh mangoes":"story-1",
   "beside her a little boy is pointing at a basket of sweet bananas":"story-2",
-  "a stray dog is sleeping peacefully under the wooden table in the shade":"story-3"
+  "a stray dog is sleeping peacefully under the wooden table in the shade":"story-3",
+  "the cat is big it is a cat you already know every word so nothing new grows":"i-minus-1",
+  "the sleepy orange cat is stretching on the warm sunlit windowsill you understand the picture and a new word rides in naturally":"i-plus-1",
+  "the crepuscular feline exhibited somnolent pandiculation upon the fenestral sill too many unknown words it becomes noise again":"i-plus-10",
+  "law one input precedes output listen and point before you try to speak":"law-1",
+  "law two grow the underwater iceberg passive comprehension lifts spoken fluency":"law-2",
+  "law three lower the anxiety wall quiet the grammar monitor so chunks can flow":"law-3",
+  "law four practice fifteen minutes daily with your pocket nurturer no red pens":"law-4"
 };
 var player = new Audio();
 player.preload = "auto";
@@ -938,12 +1069,47 @@ document.getElementById("slowToggle").addEventListener("click", function(){
   if(lastSeq) speakSeq(lastSeq); else if(lastSpoken) speak(lastSpoken);
 });
 document.querySelectorAll("[data-speak]").forEach(function(b){
-  b.addEventListener("click", function(){ speak(b.getAttribute("data-speak"), {slow: b.getAttribute("data-speak-slow")==="true"}); });
+  b.addEventListener("click", function(){
+    chime(true);
+    speak(b.getAttribute("data-speak"), {slow: b.getAttribute("data-speak-slow")==="true"});
+  });
 });
+
+/* ================= 25-MINUTE CLASSROOM PACING TIMER ================= */
+var timerSec = 25 * 60, timerRunning = false, timerIv = null;
+function renderTimer(){
+  var m = Math.floor(timerSec / 60), s = timerSec % 60;
+  document.getElementById("timerDisplay").textContent = (m < 10 ? "0"+m : m) + ":" + (s < 10 ? "0"+s : s);
+}
+document.getElementById("sessionTimerBtn").addEventListener("click", function(){
+  timerRunning = !timerRunning;
+  this.classList.toggle("running", timerRunning);
+  if(timerRunning){
+    timerIv = setInterval(function(){
+      if(timerSec > 0){ timerSec--; renderTimer(); }
+      else { clearInterval(timerIv); timerRunning = false; chime(true); }
+    }, 1000);
+  } else {
+    clearInterval(timerIv);
+  }
+});
+
+/* ================= HERO INTERACTIVE TWO BRAINS ================= */
+function selectHeroPath(which){
+  document.getElementById("heroPathTrap").classList.toggle("selected", which === "trap");
+  document.getElementById("heroPathFlow").classList.toggle("selected", which === "flow");
+  if(which === "trap"){
+    chime(false);
+    speak("Studying grammar rules and vocabulary lists locks the brain in conscious calculation. In real conversation, it freezes.");
+  } else {
+    chime(true);
+    speak("Connecting sound directly to pictures and real life builds automatic neural pathways. Speech flows out naturally.");
+  }
+}
 
 /* ================= SLIDESHOW / DECK MODE & NAV ================= */
 var slideIds = ["p0", "p1", "p2", "p3", "p4", "p5"];
-var slideNames = ["Intro", "Phase 1", "Phase 2", "Phase 3", "Phase 4", "Phase 5"];
+var slideNames = ["0 · Two Brains", "1 · Immersion", "2 · Iceberg", "3 · Two Worlds", "4 · AI Nurturer", "5 · Protocol"];
 var currentSlideIdx = 0;
 var deckMode = false;
 var donePhases = {};
@@ -953,9 +1119,8 @@ function updateSlideDeckUI(){
     var el = document.getElementById(id);
     if(el) el.classList.toggle("active-slide", idx === currentSlideIdx);
   });
-  var activePhaseId = slideIds[currentSlideIdx] === "p0" ? "p1" : slideIds[currentSlideIdx];
-  setActive(activePhaseId);
-  document.getElementById("slideCounterText").textContent = slideNames[currentSlideIdx] + " · " + (currentSlideIdx + 1) + " / " + slideIds.length;
+  setActive(slideIds[currentSlideIdx]);
+  document.getElementById("slideCounterText").textContent = slideNames[currentSlideIdx] + " (" + (currentSlideIdx + 1) + "/6)";
   document.getElementById("prevSlideBtn").disabled = currentSlideIdx === 0;
   document.getElementById("nextSlideBtn").disabled = currentSlideIdx === slideIds.length - 1;
 }
@@ -1020,7 +1185,7 @@ function markDone(id){
     if(donePhases[t.getAttribute("data-target")]) t.classList.add("done");
   });
   var n = Object.keys(donePhases).length;
-  document.getElementById("progressBar").style.width = (n/5*100)+"%";
+  document.getElementById("progressBar").style.width = Math.min(100, (n/5*100))+"%";
 }
 document.querySelectorAll(".tl").forEach(function(t){
   t.addEventListener("click", function(){ goPhase(t.getAttribute("data-target")); });
@@ -1033,14 +1198,14 @@ var io = new IntersectionObserver(function(es){
       var idx = slideIds.indexOf(e.target.id);
       if(idx !== -1){
         currentSlideIdx = idx;
-        document.getElementById("slideCounterText").textContent = slideNames[currentSlideIdx] + " · " + (currentSlideIdx + 1) + " / " + slideIds.length;
+        document.getElementById("slideCounterText").textContent = slideNames[currentSlideIdx] + " (" + (currentSlideIdx + 1) + "/6)";
         document.getElementById("prevSlideBtn").disabled = currentSlideIdx === 0;
         document.getElementById("nextSlideBtn").disabled = currentSlideIdx === slideIds.length - 1;
       }
     }
   });
 },{rootMargin:"-35% 0px -45% 0px"});
-["p1","p2","p3","p4","p5"].forEach(function(id){ io.observe(document.getElementById(id)); });
+["p0","p1","p2","p3","p4","p5"].forEach(function(id){ io.observe(document.getElementById(id)); });
 
 /* ================= PHASE 1 ================= */
 var alienWords = { apple:"Zorin", cup:"Plokta", dog:"Vamu", bike:"Trelo" };
@@ -1274,9 +1439,11 @@ document.getElementById("btnPlayWorlds").addEventListener("click", function(){
   setTimeout(function(){ markDone("p3"); }, 1200);
 });
 document.getElementById("btnPlayBadOnly").addEventListener("click", function(){
+  chime(false);
   speak("I... would... like... uh... is it a coffee or... Sorry, sorry...");
 });
 document.getElementById("btnPlayGoodOnly").addEventListener("click", function(){
+  chime(true);
   speak("Hi! Can I have a coffee, please — for here. Thanks!");
 });
 
@@ -1345,14 +1512,22 @@ function qdTap(item, el){
   }
 }
 
-/* Recasts */
+/* Recasts vs Red Pen */
+var recastMode = "nurturer";
+function setRecastMode(m){
+  recastMode = m;
+  var nBtn = document.getElementById("modeNurturerBtn");
+  var rBtn = document.getElementById("modeRedPenBtn");
+  nBtn.className = "mode-pill" + (m === "nurturer" ? " active-nurturer" : "");
+  rBtn.className = "mode-pill" + (m === "redpen" ? " active-redpen" : "");
+}
 var RECASTS = [
-  {me:"Boy run road.", ai:"Yes! The young boy is running down the busy road. Where is he headed?"},
-  {me:"He go store.", ai:"Ah, yes! He went to the grocery store to buy apples. What did he buy?"},
-  {me:"She have two child.", ai:"She has two children! Are they playing outside today?"},
-  {me:"Yesterday I buy phone.", ai:"You bought a new phone yesterday — exciting! Is it fast?"},
-  {me:"Tea very hot no drink.", ai:"Oh, the tea is too hot to drink right now! Let's wait a minute for it to cool down."},
-  {me:"Bus late I walk school.", ai:"The bus was late, so you walked all the way to school! Were you tired when you arrived?"}
+  {me:"Boy run road.", ai:"Yes! The young boy is running down the busy road. Where is he headed?", red:"Incorrect grammar! Missing auxiliary verb and article. Say: The boy is running down the road."},
+  {me:"He go store.", ai:"Ah, yes! He went to the grocery store to buy apples. What did he buy?", red:"Wrong tense! Go is present tense. Use past simple: He went to the store."},
+  {me:"She have two child.", ai:"She has two children! Are they playing outside today?", red:"Subject-verb agreement error! Use has, and plural irregular noun children."},
+  {me:"Yesterday I buy phone.", ai:"You bought a new phone yesterday — exciting! Is it fast?", red:"Error! Yesterday requires past tense bought, plus indefinite article a."},
+  {me:"Tea very hot no drink.", ai:"Oh, the tea is too hot to drink right now! Let's wait a minute for it to cool down.", red:"Fragment! Missing copula is and infinitive structure too hot to drink."},
+  {me:"Bus late I walk school.", ai:"The bus was late, so you walked all the way to school! Were you tired when you arrived?", red:"Incorrect! Missing past tense copula was and regular past suffix walked."}
 ];
 function addMsg(who, text, cls){
   var log = document.getElementById("chatLog");
@@ -1366,11 +1541,17 @@ document.querySelectorAll("[data-recast]").forEach(function(b){
     addMsg("Learner (Ava)", "“"+r.me+"”", "me");
     speak(r.me).then(function(){
       setTimeout(function(){
-        addMsg("Nurturer (Emma) — recast, no red pen", "“"+r.ai+"”", "ai");
-        speak(r.ai);
-        chime(true);
-        markDone("p4");
-      }, 350);
+        if(recastMode === "redpen"){
+          addMsg("❌ Red-Pen Teacher — explicit grammar correction", "“"+r.red+"”", "redpen");
+          speak(r.red);
+          chime(false);
+        } else {
+          addMsg("💚 Nurturer (Emma) — recast, no red pen", "“"+r.ai+"”", "ai");
+          speak(r.ai);
+          chime(true);
+          markDone("p4");
+        }
+      }, 300);
     });
   });
 });
@@ -1393,11 +1574,31 @@ function playAllStory(){
 }
 
 /* i+1 dial */
+function updateIDial(v, playAudio){
+  var el = document.getElementById("iStatus");
+  if(v<33){
+    el.innerHTML="😴 <b>Too easy (i − 1):</b> “The cat is big. It is a cat.” You already know every word, so nothing new grows.";
+    el.className="status think";
+    if(playAudio) speak("The cat is big. It is a cat. You already know every word, so nothing new grows.");
+  } else if(v>66){
+    el.innerHTML="😱 <b>Too much new (i + 10):</b> “The crepuscular feline exhibited somnolent pandiculation upon the fenestral sill.” Noise again!";
+    el.className="status think";
+    if(playAudio) speak("The crepuscular feline exhibited somnolent pandiculation upon the fenestral sill. Too many unknown words — it becomes noise again!");
+  } else {
+    el.innerHTML="🎯 <b>Just right — i+1:</b> “The sleepy orange cat is <u>stretching</u> on the warm sunlit windowsill.” (1 new word rides in on the picture!)";
+    el.className="status good";
+    if(playAudio) speak("The sleepy orange cat is stretching on the warm sunlit windowsill. You understand the picture, and a new word rides in naturally!");
+  }
+}
+function setIDial(v){
+  document.getElementById("iSlider").value = v;
+  updateIDial(v, true);
+}
 document.getElementById("iSlider").addEventListener("input", function(){
-  var v = parseInt(this.value,10), el = document.getElementById("iStatus");
-  if(v<33){ el.innerHTML="😴 <b>Too easy.</b> Comfortable — but nothing new arrives, so nothing grows."; el.className="status think"; }
-  else if(v>66){ el.innerHTML="😱 <b>Too much new.</b> The meaning collapses — it's noise again, like Phase 1, Step A."; el.className="status think"; }
-  else { el.innerHTML="🎯 <b>Just right — i+1.</b> You understand almost everything, and one new word rides in on the meaning."; el.className="status good"; }
+  updateIDial(parseInt(this.value,10), false);
+});
+document.getElementById("iSlider").addEventListener("change", function(){
+  updateIDial(parseInt(this.value,10), true);
 });
 
 /* ================= PHASE 5: copy + week ================= */

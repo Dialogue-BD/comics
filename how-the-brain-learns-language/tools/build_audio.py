@@ -54,6 +54,11 @@ CLIPS = [
     ("two-students", "Two students order coffee. The first one is checking rules, and freezes. The second one listened, in context, for months — and the words simply come.", EMMA),
     ("coffee-line", "Hi! Can I have a coffee, please — for here. Thanks!", AVA),
     ("frozen-line", "I... would... like... uh... is it a coffee or... Sorry, sorry...", AVA),
+    ("chunk-can-i-have", "Can I have...", AVA),
+    ("chunk-the-usual", "the usual, please.", AVA),
+    ("chunk-for-here", "for here, thanks!", AVA),
+    ("trap-brain", "Studying grammar rules and vocabulary lists locks the brain in conscious calculation. In real conversation, it freezes.", EMMA),
+    ("flow-brain", "Connecting sound directly to pictures and real life builds automatic neural pathways. Speech flows out naturally.", EMMA),
     ("qd-ask-boots", "Find the boots. Where are the boots?", EMMA),
     ("qd-yes-boots", "Yes! Those are the black boots.", EMMA),
     ("qd-ask-scarf", "Now — show me the red scarf.", EMMA),
@@ -96,10 +101,23 @@ CLIPS = [
     ("recast-ai-3", "You bought a new phone yesterday — exciting! Is it fast?", EMMA),
     ("recast-ai-4", "Oh, the tea is too hot to drink right now! Let's wait a minute for it to cool down.", EMMA),
     ("recast-ai-5", "The bus was late, so you walked all the way to school! Were you tired when you arrived?", EMMA),
+    ("redpen-0", "Incorrect grammar! Missing auxiliary verb and article. Say: The boy is running down the road.", EMMA),
+    ("redpen-1", "Wrong tense! Go is present tense. Use past simple: He went to the store.", EMMA),
+    ("redpen-2", "Subject-verb agreement error! Use has, and plural irregular noun children.", EMMA),
+    ("redpen-3", "Error! Yesterday requires past tense bought, plus indefinite article a.", EMMA),
+    ("redpen-4", "Fragment! Missing copula is and infinitive structure too hot to drink.", EMMA),
+    ("redpen-5", "Incorrect! Missing past tense copula was and regular past suffix walked.", EMMA),
     ("story-1", "Look at the busy market. A woman in a green sari is buying fresh mangoes.", EMMA),
     ("story-2", "Beside her, a little boy is pointing at a basket of sweet bananas.", EMMA),
     ("story-3", "A stray dog is sleeping peacefully under the wooden table in the shade.", EMMA),
     ("hero-intro", "Your brain already knows how to learn a language. Don't study the pictures. Just look, listen, and tap.", EMMA),
+    ("i-minus-1", "The cat is big. It is a cat. You already know every word, so nothing new grows.", EMMA),
+    ("i-plus-1", "The sleepy orange cat is stretching on the warm sunlit windowsill. You understand the picture, and a new word rides in naturally!", EMMA),
+    ("i-plus-10", "The crepuscular feline exhibited somnolent pandiculation upon the fenestral sill. Too many unknown words — it becomes noise again!", EMMA),
+    ("law-1", "Law one: Input precedes output. Listen and point before you try to speak.", EMMA),
+    ("law-2", "Law two: Grow the underwater iceberg. Passive comprehension lifts spoken fluency.", EMMA),
+    ("law-3", "Law three: Lower the anxiety wall. Quiet the grammar monitor so chunks can flow.", EMMA),
+    ("law-4", "Law four: Practice fifteen minutes daily with your pocket Nurturer. No red pens.", EMMA),
 ]
 
 
@@ -147,19 +165,6 @@ def synth_via_gradio(slug: str, text: str, voice: str, rate: int = -15) -> bool:
                 print(f"  [FAIL] {slug}: {e}", file=sys.stderr)
                 return False
     return False
-
-
-async def synth_direct_edge_tts():
-    """Fallback direct edge-tts when run outside a WebSocket-restricted proxy."""
-    import edge_tts
-
-    for slug, text, voice in CLIPS:
-        out_path = os.path.join(AUDIO_DIR, f"{slug}.mp3")
-        if os.path.exists(out_path) and os.path.getsize(out_path) > 500:
-            continue
-        comm = edge_tts.Communicate(text, voice, rate="-15%")
-        await comm.save(out_path)
-        print(f"  [OK] {slug}.mp3 · {voice}")
 
 
 def main():
